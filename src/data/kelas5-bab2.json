@@ -26,8 +26,45 @@
       "silabus": {
         "teksSuara": "Kita belajar kelipatan. Kelipatan adalah hasil kali suatu bilangan dengan bilangan bulat positif. Kita bermain tepuk bilangan dan mewarnai tabel. Nol kali bilangan tidak dihitung sebagai kelipatan di buku ini. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menentukan bilangan kelipatan suatu bilangan.",
-        "referensi": "Buku Siswa Matematika Kelas V Bab 2 Sub-Bab A hlm. 33–37; skip-counting; hundred chart multiples (Van de Walle)."
+        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2: KPK dan FPB, Sub-Bab A)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Skip Counting",
+          "namaId": "Lompat Hitung",
+          "asal": "Van de Walle",
+          "ringkas": "Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Hundred Chart",
+          "namaId": "Tabel Seratus",
+          "asal": "Van de Walle",
+          "ringkas": "Tandai kelipatan pada tabel seratus untuk melihat pola.",
+          "tahap": [
+            "Mind",
+            "Infografis",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Divisibility Check",
+          "namaId": "Cek Habis Dibagi",
+          "asal": "Number sense",
+          "ringkas": "Angka adalah kelipatan jika habis dibagi bilangan itu.",
+          "tahap": [
+            "Concrete",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K5B2A-V1-1",
@@ -45,7 +82,7 @@
           "id": "K5B2A-V1-3",
           "titleHint": "Cek cepat",
           "sceneType": "K5B2A-V1-3",
-          "voiceNarration": "Bagaimana mengecek? Bagi bilangan itu. Jika habis tanpa sisa, ya. Jika ada sisa, bukan."
+          "voiceNarration": "Bagaimana mengecek? Bagi bilangan itu. Jika habis tanpa sisa, ya. Jika ada sisa, bukan. METODE LUAR. Lompat Hitung: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …"
         },
         {
           "id": "K5B2A-V2-1",
@@ -63,7 +100,7 @@
           "id": "K5B2A-V2-3",
           "titleHint": "Ganti bilangan",
           "sceneType": "K5B2A-V2-3",
-          "voiceNarration": "Bisa kelipatan tujuh. Bisa kelipatan sembilan. Aturannya sama. Seru dan fokus."
+          "voiceNarration": "Bisa kelipatan tujuh. Bisa kelipatan sembilan. Aturannya sama. Seru dan fokus. METODE LUAR. Tabel Seratus: Tandai kelipatan pada tabel seratus untuk melihat pola."
         },
         {
           "id": "K5B2A-V3-1",
@@ -81,7 +118,7 @@
           "id": "K5B2A-V3-3",
           "titleHint": "Siap bermain",
           "sceneType": "K5B2A-V3-3",
-          "voiceNarration": "Definisi sudah jelas. Tepuk dan tabel sudah siap. Ayo ke permainan. Semangat!"
+          "voiceNarration": "Definisi sudah jelas. Tepuk dan tabel sudah siap. Ayo ke permainan. Semangat! METODE LUAR. Cek Habis Dibagi: Angka adalah kelipatan jika habis dibagi bilangan itu."
         }
       ],
       "videos": [
@@ -129,13 +166,15 @@
                 "Bagaimana mengecek?",
                 "Bagi bilangan itu.",
                 "Jika habis tanpa sisa, ya.",
-                "Jika ada sisa, bukan."
+                "Jika ada sisa, bukan.",
+                "METODE LUAR. Lompat Hitung: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …"
               ],
               "papan": [
                 "bagi",
                 "habis?",
                 "ya",
-                "bukan"
+                "bukan",
+                "METODE LUAR · Lompat Hitung"
               ]
             }
           ]
@@ -184,13 +223,15 @@
                 "Bisa kelipatan tujuh.",
                 "Bisa kelipatan sembilan.",
                 "Aturannya sama.",
-                "Seru dan fokus."
+                "Seru dan fokus.",
+                "METODE LUAR. Tabel Seratus: Tandai kelipatan pada tabel seratus untuk melihat pola."
               ],
               "papan": [
                 "7",
                 "9",
                 "sama",
-                "seru"
+                "seru",
+                "METODE LUAR · Tabel Seratus"
               ]
             }
           ]
@@ -239,13 +280,15 @@
                 "Definisi sudah jelas.",
                 "Tepuk dan tabel sudah siap.",
                 "Ayo ke permainan.",
-                "Semangat!"
+                "Semangat!",
+                "METODE LUAR. Cek Habis Dibagi: Angka adalah kelipatan jika habis dibagi bilangan itu."
               ],
               "papan": [
                 "arti",
                 "latihan",
                 "main",
-                "semangat"
+                "semangat",
+                "METODE LUAR · Cek Habis Dibagi"
               ]
             }
           ]
@@ -298,6 +341,22 @@
           "stepDesc": "Latihan fokus",
           "icon": "👏",
           "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Lompat Hitung",
+          "stepDesc": "Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Tabel Seratus",
+          "stepDesc": "Tandai kelipatan pada tabel seratus untuk melihat pola.",
+          "icon": "🌍",
+          "flowFrom": "7",
           "flowTo": "END"
         }
       ],
@@ -371,6 +430,27 @@
           "countNum": 1,
           "countWord": "persekutuan",
           "voiceSentence": "Lanjut kelipatan persekutuan."
+        },
+        {
+          "fruitName": "Lompat Hitung",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Skip Counting",
+          "voiceSentence": "METODE LUAR. Lompat Hitung. Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …"
+        },
+        {
+          "fruitName": "Tabel Seratus",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Hundred Chart",
+          "voiceSentence": "METODE LUAR. Tabel Seratus. Tandai kelipatan pada tabel seratus untuk melihat pola."
+        },
+        {
+          "fruitName": "Cek Habis Dibagi",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Divisibility Check",
+          "voiceSentence": "METODE LUAR. Cek Habis Dibagi. Angka adalah kelipatan jika habis dibagi bilangan itu."
         }
       ],
       "concreteSlides": [
@@ -378,7 +458,7 @@
           "title": "Cek Kelipatan",
           "emoji": "👏",
           "targetCount": 6,
-          "voiceGuide": "Pilih ya/tidak."
+          "voiceGuide": "METODE LUAR · Lompat Hitung. Pilih ya/tidak."
         },
         {
           "title": "Lanjutkan Barisan",
@@ -441,7 +521,7 @@
           "diagramType": "table",
           "numberA": 1,
           "numberB": 3,
-          "caption": "Baca tabel."
+          "caption": "Baca tabel. (METODE LUAR · Lompat Hitung)"
         },
         {
           "title": "Diagram Barisan",
@@ -512,7 +592,7 @@
           "symbolLarge": "3×n",
           "wordLarge": "CEK",
           "mathNotation": "kelipatan",
-          "voiceReadout": "Pilih."
+          "voiceReadout": "METODE LUAR · Lompat Hitung. Pilih."
         },
         {
           "symbolLarge": "+n",
@@ -577,9 +657,9 @@
           "gameType": "cek-kelipatan",
           "title": "Cek Kelipatan",
           "bookReference": "Buku Siswa hlm. 33–37",
-          "objective": "Mengenali kelipatan.",
+          "objective": "Mengenali kelipatan. (METODE LUAR · Lompat Hitung)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih ya/tidak."
+          "voiceGuide": "METODE LUAR · Lompat Hitung. Pilih ya/tidak."
         },
         {
           "gameId": "subK5B2A-game-2",
@@ -687,9 +767,9 @@
           "gameType": "tabel-kelipatan",
           "title": "Tabel Kelipatan",
           "bookReference": "Buku Siswa hlm. 35–37",
-          "objective": "Baca tabel.",
+          "objective": "Baca tabel. (METODE LUAR · Lompat Hitung)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Lompat Hitung. Pilih."
         },
         {
           "gameId": "subK5B2A-game-12",
@@ -797,9 +877,9 @@
           "gameType": "write-cek",
           "title": "Tulis Cek Kelipatan",
           "bookReference": "Buku Siswa hlm. 35–37",
-          "objective": "Menulis.",
+          "objective": "Menulis. (METODE LUAR · Lompat Hitung)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Lompat Hitung. Pilih."
         },
         {
           "gameId": "subK5B2A-game-22",
@@ -922,6 +1002,21 @@
             "nama": "Bukan nol",
             "isi": "0×n tidak dihitung kelipatan di buku ini.",
             "suara": "Nol dikecualikan."
+          },
+          {
+            "nama": "Lompat Hitung",
+            "isi": "METODE LUAR · Skip Counting: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, … (asal: Van de Walle).",
+            "suara": "METODE LUAR. Lompat Hitung. Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …"
+          },
+          {
+            "nama": "Tabel Seratus",
+            "isi": "METODE LUAR · Hundred Chart: Tandai kelipatan pada tabel seratus untuk melihat pola. (asal: Van de Walle).",
+            "suara": "METODE LUAR. Tabel Seratus. Tandai kelipatan pada tabel seratus untuk melihat pola."
+          },
+          {
+            "nama": "Cek Habis Dibagi",
+            "isi": "METODE LUAR · Divisibility Check: Angka adalah kelipatan jika habis dibagi bilangan itu. (asal: Number sense).",
+            "suara": "METODE LUAR. Cek Habis Dibagi. Angka adalah kelipatan jika habis dibagi bilangan itu."
           }
         ],
         "suara": "Ingat: kelipatan, tepuk, cek bagi, dan bukan nol.",
@@ -945,8 +1040,45 @@
       "silabus": {
         "teksSuara": "Kita belajar kelipatan persekutuan. Irisan daftar kelipatan dua bilangan disebut kelipatan persekutuan. Yang terkecil disebut KPK. KPK membantu mencari jadwal bertemu berikutnya, seperti latihan renang Nisa dan Yohana. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menentukan kelipatan persekutuan dan KPK dua atau lebih bilangan.",
-        "referensi": "Buku Siswa Matematika Kelas V Bab 2 Sub-Bab B hlm. 38–42; listing method for LCM; calendar scheduling problems."
+        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2: KPK dan FPB, Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "LCM Listing",
+          "namaId": "Daftar Kelipatan Bersama",
+          "asal": "Elementary number theory pedagogy",
+          "ringkas": "Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Prime Factor KPK",
+          "namaId": "KPK dari Faktor Prima",
+          "asal": "Prime factorization method",
+          "ringkas": "Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
+          "tahap": [
+            "Mind",
+            "Picture",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Venn Factors",
+          "namaId": "Diagram Faktor",
+          "asal": "Visual LCM/GCF",
+          "ringkas": "Gabungan himpunan faktor prima membantu menemukan KPK.",
+          "tahap": [
+            "Infografis",
+            "Picture"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K5B2B-V1-1",
@@ -964,7 +1096,7 @@
           "id": "K5B2B-V1-3",
           "titleHint": "Yang terkecil",
           "sceneType": "K5B2B-V1-3",
-          "voiceNarration": "Dari daftar yang sama. Ambil yang paling kecil. Itu KPK. Kelipatan persekutuan terkecil."
+          "voiceNarration": "Dari daftar yang sama. Ambil yang paling kecil. Itu KPK. Kelipatan persekutuan terkecil. METODE LUAR. Daftar Kelipatan Bersama: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK."
         },
         {
           "id": "K5B2B-V2-1",
@@ -982,7 +1114,7 @@
           "id": "K5B2B-V2-3",
           "titleHint": "Tiga bilangan",
           "sceneType": "K5B2B-V2-3",
-          "voiceNarration": "Bisa tiga bilangan. Misal tiga, empat, lima. KPK-nya enam puluh. Cara daftar tetap jalan."
+          "voiceNarration": "Bisa tiga bilangan. Misal tiga, empat, lima. KPK-nya enam puluh. Cara daftar tetap jalan. METODE LUAR. KPK dari Faktor Prima: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan."
         },
         {
           "id": "K5B2B-V3-1",
@@ -1000,7 +1132,7 @@
           "id": "K5B2B-V3-3",
           "titleHint": "Siap bermain",
           "sceneType": "K5B2B-V3-3",
-          "voiceNarration": "Irisan sudah jelas. KPK dan jadwal siap. Ayo ke permainan. Semangat!"
+          "voiceNarration": "Irisan sudah jelas. KPK dan jadwal siap. Ayo ke permainan. Semangat! METODE LUAR. Diagram Faktor: Gabungan himpunan faktor prima membantu menemukan KPK."
         }
       ],
       "videos": [
@@ -1048,13 +1180,15 @@
                 "Dari daftar yang sama.",
                 "Ambil yang paling kecil.",
                 "Itu KPK.",
-                "Kelipatan persekutuan terkecil."
+                "Kelipatan persekutuan terkecil.",
+                "METODE LUAR. Daftar Kelipatan Bersama: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK."
               ],
               "papan": [
                 "daftar",
                 "terkecil",
                 "KPK",
-                "nama"
+                "nama",
+                "METODE LUAR · Daftar Kelipatan Bersama"
               ]
             }
           ]
@@ -1103,13 +1237,15 @@
                 "Bisa tiga bilangan.",
                 "Misal tiga, empat, lima.",
                 "KPK-nya enam puluh.",
-                "Cara daftar tetap jalan."
+                "Cara daftar tetap jalan.",
+                "METODE LUAR. KPK dari Faktor Prima: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan."
               ],
               "papan": [
                 "3",
                 "4",
                 "5",
-                "60"
+                "60",
+                "METODE LUAR · KPK dari Faktor Prima"
               ]
             }
           ]
@@ -1158,13 +1294,15 @@
                 "Irisan sudah jelas.",
                 "KPK dan jadwal siap.",
                 "Ayo ke permainan.",
-                "Semangat!"
+                "Semangat!",
+                "METODE LUAR. Diagram Faktor: Gabungan himpunan faktor prima membantu menemukan KPK."
               ],
               "papan": [
                 "irisan",
                 "KPK",
                 "main",
-                "semangat"
+                "semangat",
+                "METODE LUAR · Diagram Faktor"
               ]
             }
           ]
@@ -1217,6 +1355,22 @@
           "stepDesc": "Kelipatan keduanya?",
           "icon": "✅",
           "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Daftar Kelipatan Bersama",
+          "stepDesc": "Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · KPK dari Faktor Prima",
+          "stepDesc": "Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
+          "icon": "🌍",
+          "flowFrom": "7",
           "flowTo": "END"
         }
       ],
@@ -1290,6 +1444,27 @@
           "countNum": 1,
           "countWord": "faktor",
           "voiceSentence": "Lanjut faktor."
+        },
+        {
+          "fruitName": "Daftar Kelipatan Bersama",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · LCM Listing",
+          "voiceSentence": "METODE LUAR. Daftar Kelipatan Bersama. Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK."
+        },
+        {
+          "fruitName": "KPK dari Faktor Prima",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Prime Factor KPK",
+          "voiceSentence": "METODE LUAR. KPK dari Faktor Prima. Ambil faktor prima dengan pangkat tertinggi, lalu kalikan."
+        },
+        {
+          "fruitName": "Diagram Faktor",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Venn Factors",
+          "voiceSentence": "METODE LUAR. Diagram Faktor. Gabungan himpunan faktor prima membantu menemukan KPK."
         }
       ],
       "concreteSlides": [
@@ -1297,7 +1472,7 @@
           "title": "Cek Kelipatan Persekutuan",
           "emoji": "🤝",
           "targetCount": 6,
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Daftar Kelipatan Bersama. Pilih."
         },
         {
           "title": "Hitung KPK",
@@ -1360,7 +1535,7 @@
           "diagramType": "venn",
           "numberA": 1,
           "numberB": 2,
-          "caption": "Baca irisan."
+          "caption": "Baca irisan. (METODE LUAR · Daftar Kelipatan Bersama)"
         },
         {
           "title": "Diagram KPK",
@@ -1431,7 +1606,7 @@
           "symbolLarge": "6∈",
           "wordLarge": "IRISAN",
           "mathNotation": "cek",
-          "voiceReadout": "Pilih."
+          "voiceReadout": "METODE LUAR · Daftar Kelipatan Bersama. Pilih."
         },
         {
           "symbolLarge": "KPK",
@@ -1496,9 +1671,9 @@
           "gameType": "cek-persekutuan",
           "title": "Cek Kelipatan Persekutuan",
           "bookReference": "Buku Siswa hlm. 38–40",
-          "objective": "Mengenali irisan kelipatan.",
+          "objective": "Mengenali irisan kelipatan. (METODE LUAR · Daftar Kelipatan Bersama)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Daftar Kelipatan Bersama. Pilih."
         },
         {
           "gameId": "subK5B2B-game-2",
@@ -1606,9 +1781,9 @@
           "gameType": "diagram-persekutuan",
           "title": "Diagram Persekutuan",
           "bookReference": "Buku Siswa hlm. 38–40",
-          "objective": "Baca irisan.",
+          "objective": "Baca irisan. (METODE LUAR · Daftar Kelipatan Bersama)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Daftar Kelipatan Bersama. Pilih."
         },
         {
           "gameId": "subK5B2B-game-12",
@@ -1716,9 +1891,9 @@
           "gameType": "write-persekutuan",
           "title": "Tulis Cek Persekutuan",
           "bookReference": "Buku Siswa hlm. 38–40",
-          "objective": "Menulis.",
+          "objective": "Menulis. (METODE LUAR · Daftar Kelipatan Bersama)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Daftar Kelipatan Bersama. Pilih."
         },
         {
           "gameId": "subK5B2B-game-22",
@@ -1841,6 +2016,21 @@
             "nama": "Jadwal",
             "isi": "KPK menentukan jarak hari bertemu lagi.",
             "suara": "Pakai KPK untuk jadwal."
+          },
+          {
+            "nama": "Daftar Kelipatan Bersama",
+            "isi": "METODE LUAR · LCM Listing: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK. (asal: Elementary number theory pedagogy).",
+            "suara": "METODE LUAR. Daftar Kelipatan Bersama. Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK."
+          },
+          {
+            "nama": "KPK dari Faktor Prima",
+            "isi": "METODE LUAR · Prime Factor KPK: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan. (asal: Prime factorization method).",
+            "suara": "METODE LUAR. KPK dari Faktor Prima. Ambil faktor prima dengan pangkat tertinggi, lalu kalikan."
+          },
+          {
+            "nama": "Diagram Faktor",
+            "isi": "METODE LUAR · Venn Factors: Gabungan himpunan faktor prima membantu menemukan KPK. (asal: Visual LCM/GCF).",
+            "suara": "METODE LUAR. Diagram Faktor. Gabungan himpunan faktor prima membantu menemukan KPK."
           }
         ],
         "suara": "Ingat: persekutuan, KPK, cara daftar, dan jadwal.",
@@ -1864,8 +2054,44 @@
       "silabus": {
         "teksSuara": "Kita belajar faktor. Faktor adalah bilangan yang membagi habis tanpa sisa. Kita memotong kertas berpetak tanpa sisa dan menemukan pasangan faktor. Satu dan bilangan itu sendiri selalu menjadi faktor. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menentukan faktor-faktor suatu bilangan.",
-        "referensi": "Buku Siswa Matematika Kelas V Bab 2 Sub-Bab C hlm. 43–46; array/area model for factors; factor pairs."
+        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2: KPK dan FPB, Sub-Bab C)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Factor Pairs",
+          "namaId": "Pasangan Faktor",
+          "asal": "Array model",
+          "ringkas": "Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Divisor List",
+          "namaId": "Daftar Pembagi",
+          "asal": "Number sense",
+          "ringkas": "Urutkan semua pembagi dari kecil ke besar.",
+          "tahap": [
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Array Model",
+          "namaId": "Model Susunan Persegi Panjang",
+          "asal": "Van de Walle",
+          "ringkas": "Susunan baris×kolom menunjukkan pasangan faktor.",
+          "tahap": [
+            "Infografis",
+            "Picture"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K5B2C-V1-1",
@@ -1883,7 +2109,7 @@
           "id": "K5B2C-V1-3",
           "titleHint": "Selalu ada",
           "sceneType": "K5B2C-V1-3",
-          "voiceNarration": "Satu selalu faktor. Bilangan itu sendiri juga. Cari yang di tengah. Lengkapkan daftar."
+          "voiceNarration": "Satu selalu faktor. Bilangan itu sendiri juga. Cari yang di tengah. Lengkapkan daftar. METODE LUAR. Pasangan Faktor: Faktor datang berpasangan yang dikalikan jadi bilangan itu."
         },
         {
           "id": "K5B2C-V2-1",
@@ -1901,7 +2127,7 @@
           "id": "K5B2C-V2-3",
           "titleHint": "Faktor 18",
           "sceneType": "K5B2C-V2-3",
-          "voiceNarration": "Ulang untuk delapan belas. Temukan semua pembagi. Isi lingkaran faktor. Urut dari kecil."
+          "voiceNarration": "Ulang untuk delapan belas. Temukan semua pembagi. Isi lingkaran faktor. Urut dari kecil. METODE LUAR. Daftar Pembagi: Urutkan semua pembagi dari kecil ke besar."
         },
         {
           "id": "K5B2C-V3-1",
@@ -1919,7 +2145,7 @@
           "id": "K5B2C-V3-3",
           "titleHint": "Siap bermain",
           "sceneType": "K5B2C-V3-3",
-          "voiceNarration": "Definisi sudah jelas. Petak dan pasangan siap. Ayo ke permainan. Semangat!"
+          "voiceNarration": "Definisi sudah jelas. Petak dan pasangan siap. Ayo ke permainan. Semangat! METODE LUAR. Model Susunan Persegi Panjang: Susunan baris×kolom menunjukkan pasangan faktor."
         }
       ],
       "videos": [
@@ -1967,13 +2193,15 @@
                 "Satu selalu faktor.",
                 "Bilangan itu sendiri juga.",
                 "Cari yang di tengah.",
-                "Lengkapkan daftar."
+                "Lengkapkan daftar.",
+                "METODE LUAR. Pasangan Faktor: Faktor datang berpasangan yang dikalikan jadi bilangan itu."
               ],
               "papan": [
                 "1",
                 "n",
                 "tengah",
-                "daftar"
+                "daftar",
+                "METODE LUAR · Pasangan Faktor"
               ]
             }
           ]
@@ -2022,13 +2250,15 @@
                 "Ulang untuk delapan belas.",
                 "Temukan semua pembagi.",
                 "Isi lingkaran faktor.",
-                "Urut dari kecil."
+                "Urut dari kecil.",
+                "METODE LUAR. Daftar Pembagi: Urutkan semua pembagi dari kecil ke besar."
               ],
               "papan": [
                 "18",
                 "pembagi",
                 "lingkaran",
-                "urut"
+                "urut",
+                "METODE LUAR · Daftar Pembagi"
               ]
             }
           ]
@@ -2077,13 +2307,15 @@
                 "Definisi sudah jelas.",
                 "Petak dan pasangan siap.",
                 "Ayo ke permainan.",
-                "Semangat!"
+                "Semangat!",
+                "METODE LUAR. Model Susunan Persegi Panjang: Susunan baris×kolom menunjukkan pasangan faktor."
               ],
               "papan": [
                 "arti",
                 "model",
                 "main",
-                "semangat"
+                "semangat",
+                "METODE LUAR · Model Susunan Persegi Panjang"
               ]
             }
           ]
@@ -2136,6 +2368,22 @@
           "stepDesc": "Potong tanpa sisa",
           "icon": "📏",
           "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Pasangan Faktor",
+          "stepDesc": "Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Daftar Pembagi",
+          "stepDesc": "Urutkan semua pembagi dari kecil ke besar.",
+          "icon": "🌍",
+          "flowFrom": "7",
           "flowTo": "END"
         }
       ],
@@ -2209,6 +2457,27 @@
           "countNum": 1,
           "countWord": "siap",
           "voiceSentence": "Kelipatan, KPK, faktor."
+        },
+        {
+          "fruitName": "Pasangan Faktor",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Factor Pairs",
+          "voiceSentence": "METODE LUAR. Pasangan Faktor. Faktor datang berpasangan yang dikalikan jadi bilangan itu."
+        },
+        {
+          "fruitName": "Daftar Pembagi",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Divisor List",
+          "voiceSentence": "METODE LUAR. Daftar Pembagi. Urutkan semua pembagi dari kecil ke besar."
+        },
+        {
+          "fruitName": "Model Susunan Persegi Panjang",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Array Model",
+          "voiceSentence": "METODE LUAR. Model Susunan Persegi Panjang. Susunan baris×kolom menunjukkan pasangan faktor."
         }
       ],
       "concreteSlides": [
@@ -2216,7 +2485,7 @@
           "title": "Cek Faktor",
           "emoji": "➗",
           "targetCount": 6,
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Pasangan Faktor. Pilih."
         },
         {
           "title": "Pasangan Faktor",
@@ -2279,7 +2548,7 @@
           "diagramType": "grid",
           "numberA": 1,
           "numberB": 2,
-          "caption": "Baca potongan."
+          "caption": "Baca potongan. (METODE LUAR · Pasangan Faktor)"
         },
         {
           "title": "Diagram Pasangan",
@@ -2350,7 +2619,7 @@
           "symbolLarge": "n|d",
           "wordLarge": "CEK",
           "mathNotation": "faktor",
-          "voiceReadout": "Pilih."
+          "voiceReadout": "METODE LUAR · Pasangan Faktor. Pilih."
         },
         {
           "symbolLarge": "a×b",
@@ -2415,9 +2684,9 @@
           "gameType": "cek-faktor",
           "title": "Cek Faktor",
           "bookReference": "Buku Siswa hlm. 43–46",
-          "objective": "Mengenali faktor.",
+          "objective": "Mengenali faktor. (METODE LUAR · Pasangan Faktor)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Pasangan Faktor. Pilih."
         },
         {
           "gameId": "subK5B2C-game-2",
@@ -2525,9 +2794,9 @@
           "gameType": "diagram-bagi",
           "title": "Diagram Bagi Petak",
           "bookReference": "Buku Siswa hlm. 43–44",
-          "objective": "Baca potongan.",
+          "objective": "Baca potongan. (METODE LUAR · Pasangan Faktor)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Pasangan Faktor. Pilih."
         },
         {
           "gameId": "subK5B2C-game-12",
@@ -2635,9 +2904,9 @@
           "gameType": "write-cek-f",
           "title": "Tulis Cek Faktor",
           "bookReference": "Buku Siswa hlm. 43–46",
-          "objective": "Menulis.",
+          "objective": "Menulis. (METODE LUAR · Pasangan Faktor)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Pasangan Faktor. Pilih."
         },
         {
           "gameId": "subK5B2C-game-22",
@@ -2760,6 +3029,21 @@
             "nama": "1 dan n",
             "isi": "Satu dan bilangan itu sendiri selalu faktor.",
             "suara": "Selalu ada di daftar."
+          },
+          {
+            "nama": "Pasangan Faktor",
+            "isi": "METODE LUAR · Factor Pairs: Faktor datang berpasangan yang dikalikan jadi bilangan itu. (asal: Array model).",
+            "suara": "METODE LUAR. Pasangan Faktor. Faktor datang berpasangan yang dikalikan jadi bilangan itu."
+          },
+          {
+            "nama": "Daftar Pembagi",
+            "isi": "METODE LUAR · Divisor List: Urutkan semua pembagi dari kecil ke besar. (asal: Number sense).",
+            "suara": "METODE LUAR. Daftar Pembagi. Urutkan semua pembagi dari kecil ke besar."
+          },
+          {
+            "nama": "Model Susunan Persegi Panjang",
+            "isi": "METODE LUAR · Array Model: Susunan baris×kolom menunjukkan pasangan faktor. (asal: Van de Walle).",
+            "suara": "METODE LUAR. Model Susunan Persegi Panjang. Susunan baris×kolom menunjukkan pasangan faktor."
           }
         ],
         "suara": "Ingat: faktor, model petak, pasangan, dan satu serta n.",
@@ -2783,8 +3067,45 @@
       "silabus": {
         "teksSuara": "Kita belajar faktor persekutuan. Irisan daftar faktor disebut faktor persekutuan. Yang terbesar disebut FPB. Kita memakai model congklak, lalu membagi mawar ke vas dan membuat paket bingkisan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menentukan faktor persekutuan dan FPB dua atau lebih bilangan.",
-        "referensi": "Buku Siswa Matematika Kelas V Bab 2 Sub-Bab D hlm. 46–52; listing common factors; GCD applications (equal sharing)."
+        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2: KPK dan FPB, Sub-Bab D)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "GCF Listing",
+          "namaId": "Daftar Faktor Persekutuan",
+          "asal": "Elementary number theory pedagogy",
+          "ringkas": "Faktor yang sama terbesar = FPB.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Prime Factor FPB",
+          "namaId": "FPB dari Faktor Prima",
+          "asal": "Prime factorization method",
+          "ringkas": "Ambil faktor prima yang sama dengan pangkat terendah.",
+          "tahap": [
+            "Mind",
+            "Picture",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Euclid Idea",
+          "namaId": "Ide Selisih / Sisa",
+          "asal": "Euclidean algorithm (disederhanakan)",
+          "ringkas": "FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai.",
+          "tahap": [
+            "Infografis",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K5B2D-V1-1",
@@ -2802,7 +3123,7 @@
           "id": "K5B2D-V1-3",
           "titleHint": "Definisi",
           "sceneType": "K5B2D-V1-3",
-          "voiceNarration": "Faktor yang sama disebut persekutuan. Yang terbesar disebut FPB. Berguna untuk membagi rata. Tanpa sisa."
+          "voiceNarration": "Faktor yang sama disebut persekutuan. Yang terbesar disebut FPB. Berguna untuk membagi rata. Tanpa sisa. METODE LUAR. Daftar Faktor Persekutuan: Faktor yang sama terbesar = FPB."
         },
         {
           "id": "K5B2D-V2-1",
@@ -2820,7 +3141,7 @@
           "id": "K5B2D-V2-3",
           "titleHint": "FPB = 1",
           "sceneType": "K5B2D-V2-3",
-          "voiceNarration": "Kadang tidak ada prima sama. Contoh lima belas dan dua delapan. FPB-nya satu. Tetap sah."
+          "voiceNarration": "Kadang tidak ada prima sama. Contoh lima belas dan dua delapan. FPB-nya satu. Tetap sah. METODE LUAR. FPB dari Faktor Prima: Ambil faktor prima yang sama dengan pangkat terendah."
         },
         {
           "id": "K5B2D-V3-1",
@@ -2838,7 +3159,7 @@
           "id": "K5B2D-V3-3",
           "titleHint": "Paket Dania",
           "sceneType": "K5B2D-V3-3",
-          "voiceNarration": "Tiga puluh enam, empat delapan, dua empat. FPB dua belas. Dua belas paket. Siap bermain!"
+          "voiceNarration": "Tiga puluh enam, empat delapan, dua empat. FPB dua belas. Dua belas paket. Siap bermain! METODE LUAR. Ide Selisih / Sisa: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai."
         }
       ],
       "videos": [
@@ -2886,13 +3207,15 @@
                 "Faktor yang sama disebut persekutuan.",
                 "Yang terbesar disebut FPB.",
                 "Berguna untuk membagi rata.",
-                "Tanpa sisa."
+                "Tanpa sisa.",
+                "METODE LUAR. Daftar Faktor Persekutuan: Faktor yang sama terbesar = FPB."
               ],
               "papan": [
                 "sama",
                 "FPB",
                 "bagi rata",
-                "tanpa sisa"
+                "tanpa sisa",
+                "METODE LUAR · Daftar Faktor Persekutuan"
               ]
             }
           ]
@@ -2941,13 +3264,15 @@
                 "Kadang tidak ada prima sama.",
                 "Contoh lima belas dan dua delapan.",
                 "FPB-nya satu.",
-                "Tetap sah."
+                "Tetap sah.",
+                "METODE LUAR. FPB dari Faktor Prima: Ambil faktor prima yang sama dengan pangkat terendah."
               ],
               "papan": [
                 "15",
                 "28",
                 "FPB=1",
-                "sah"
+                "sah",
+                "METODE LUAR · FPB dari Faktor Prima"
               ]
             }
           ]
@@ -2996,13 +3321,15 @@
                 "Tiga puluh enam, empat delapan, dua empat.",
                 "FPB dua belas.",
                 "Dua belas paket.",
-                "Siap bermain!"
+                "Siap bermain!",
+                "METODE LUAR. Ide Selisih / Sisa: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai."
               ],
               "papan": [
                 "36,48,24",
                 "FPB 12",
                 "paket",
-                "main"
+                "main",
+                "METODE LUAR · Ide Selisih / Sisa"
               ]
             }
           ]
@@ -3055,6 +3382,22 @@
           "stepDesc": "Tanpa sisa?",
           "icon": "✅",
           "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Daftar Faktor Persekutuan",
+          "stepDesc": "Faktor yang sama terbesar = FPB.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · FPB dari Faktor Prima",
+          "stepDesc": "Ambil faktor prima yang sama dengan pangkat terendah.",
+          "icon": "🌍",
+          "flowFrom": "7",
           "flowTo": "END"
         }
       ],
@@ -3128,6 +3471,27 @@
           "countNum": 1,
           "countWord": "prima",
           "voiceSentence": "Lanjut faktorisasi."
+        },
+        {
+          "fruitName": "Daftar Faktor Persekutuan",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · GCF Listing",
+          "voiceSentence": "METODE LUAR. Daftar Faktor Persekutuan. Faktor yang sama terbesar = FPB."
+        },
+        {
+          "fruitName": "FPB dari Faktor Prima",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Prime Factor FPB",
+          "voiceSentence": "METODE LUAR. FPB dari Faktor Prima. Ambil faktor prima yang sama dengan pangkat terendah."
+        },
+        {
+          "fruitName": "Ide Selisih / Sisa",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Euclid Idea",
+          "voiceSentence": "METODE LUAR. Ide Selisih / Sisa. FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai."
         }
       ],
       "concreteSlides": [
@@ -3135,7 +3499,7 @@
           "title": "Cek Faktor Persekutuan",
           "emoji": "🤝",
           "targetCount": 6,
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Daftar Faktor Persekutuan. Pilih."
         },
         {
           "title": "Hitung FPB",
@@ -3198,7 +3562,7 @@
           "diagramType": "venn",
           "numberA": 1,
           "numberB": 2,
-          "caption": "Baca irisan."
+          "caption": "Baca irisan. (METODE LUAR · Daftar Faktor Persekutuan)"
         },
         {
           "title": "Diagram FPB",
@@ -3269,7 +3633,7 @@
           "symbolLarge": "∈",
           "wordLarge": "CEK",
           "mathNotation": "irisan",
-          "voiceReadout": "Pilih."
+          "voiceReadout": "METODE LUAR · Daftar Faktor Persekutuan. Pilih."
         },
         {
           "symbolLarge": "FPB",
@@ -3334,9 +3698,9 @@
           "gameType": "cek-persekutuan-f",
           "title": "Cek Faktor Persekutuan",
           "bookReference": "Buku Siswa hlm. 46–49",
-          "objective": "Mengenali irisan faktor.",
+          "objective": "Mengenali irisan faktor. (METODE LUAR · Daftar Faktor Persekutuan)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Daftar Faktor Persekutuan. Pilih."
         },
         {
           "gameId": "subK5B2D-game-2",
@@ -3444,9 +3808,9 @@
           "gameType": "diagram-irisan-f",
           "title": "Diagram Irisan Faktor",
           "bookReference": "Buku Siswa hlm. 48–49",
-          "objective": "Baca irisan.",
+          "objective": "Baca irisan. (METODE LUAR · Daftar Faktor Persekutuan)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Daftar Faktor Persekutuan. Pilih."
         },
         {
           "gameId": "subK5B2D-game-12",
@@ -3554,9 +3918,9 @@
           "gameType": "write-cek-fp",
           "title": "Tulis Cek Persekutuan",
           "bookReference": "Buku Siswa hlm. 46–49",
-          "objective": "Menulis.",
+          "objective": "Menulis. (METODE LUAR · Daftar Faktor Persekutuan)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Daftar Faktor Persekutuan. Pilih."
         },
         {
           "gameId": "subK5B2D-game-22",
@@ -3679,6 +4043,21 @@
             "nama": "Bagi rata",
             "isi": "Bagi tiap jenis dengan FPB untuk paket/vas maksimal.",
             "suara": "Aplikasi FPB."
+          },
+          {
+            "nama": "Daftar Faktor Persekutuan",
+            "isi": "METODE LUAR · GCF Listing: Faktor yang sama terbesar = FPB. (asal: Elementary number theory pedagogy).",
+            "suara": "METODE LUAR. Daftar Faktor Persekutuan. Faktor yang sama terbesar = FPB."
+          },
+          {
+            "nama": "FPB dari Faktor Prima",
+            "isi": "METODE LUAR · Prime Factor FPB: Ambil faktor prima yang sama dengan pangkat terendah. (asal: Prime factorization method).",
+            "suara": "METODE LUAR. FPB dari Faktor Prima. Ambil faktor prima yang sama dengan pangkat terendah."
+          },
+          {
+            "nama": "Ide Selisih / Sisa",
+            "isi": "METODE LUAR · Euclid Idea: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai. (asal: Euclidean algorithm (disederhanakan)).",
+            "suara": "METODE LUAR. Ide Selisih / Sisa. FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai."
           }
         ],
         "suara": "Ingat: persekutuan, FPB, congklak, dan bagi rata.",
@@ -3702,8 +4081,45 @@
       "silabus": {
         "teksSuara": "Kita belajar bilangan prima dan faktorisasi prima. Dengan pohon faktor kita mengurai bilangan. FPB diambil dari prima berpasangan. KPK mengambil semua prima dengan pangkat terbesar. Ada juga cara pembagian berulang. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menentukan bilangan prima, faktorisasi prima, serta KPK dan FPB dengan faktorisasi prima.",
-        "referensi": "Buku Siswa Matematika Kelas V Bab 2 Sub-Bab E hlm. 53–59; Sieve of Eratosthenes; prime factorization trees; Euclidean continuous division."
+        "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2: KPK dan FPB, Sub-Bab E)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Factor Tree",
+          "namaId": "Pohon Faktor",
+          "asal": "Prime factorization pedagogy",
+          "ringkas": "Urai bilangan jadi faktor sampai semua prima.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Sieve Idea",
+          "namaId": "Ide Ayakan Prima",
+          "asal": "Sieve of Eratosthenes (disederhanakan)",
+          "ringkas": "Prima hanya punya faktor 1 dan dirinya.",
+          "tahap": [
+            "Mind",
+            "Infografis",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "KPK FPB Bridge",
+          "namaId": "Jembatan KPK dan FPB",
+          "asal": "Number theory relation",
+          "ringkas": "Faktorisasi prima dipakai bersama untuk KPK dan FPB.",
+          "tahap": [
+            "Picture",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K5B2E-V1-1",
@@ -3721,7 +4137,7 @@
           "id": "K5B2E-V1-3",
           "titleHint": "Lanjut saring",
           "sceneType": "K5B2E-V1-3",
-          "voiceNarration": "Lanjut lima dan tujuh. Sampai tidak ada yang bisa dihapus. Daftar prima siap. Dipakai di faktorisasi."
+          "voiceNarration": "Lanjut lima dan tujuh. Sampai tidak ada yang bisa dihapus. Daftar prima siap. Dipakai di faktorisasi. METODE LUAR. Pohon Faktor: Urai bilangan jadi faktor sampai semua prima."
         },
         {
           "id": "K5B2E-V2-1",
@@ -3739,7 +4155,7 @@
           "id": "K5B2E-V2-3",
           "titleHint": "Lebih besar",
           "sceneType": "K5B2E-V2-3",
-          "voiceNarration": "Seratus sembilan enam: dua dua tujuh tujuh. Tiga ratus: dua dua tiga lima lima. Urai sampai prima semua. Lalu siap KPK FPB."
+          "voiceNarration": "Seratus sembilan enam: dua dua tujuh tujuh. Tiga ratus: dua dua tiga lima lima. Urai sampai prima semua. Lalu siap KPK FPB. METODE LUAR. Ide Ayakan Prima: Prima hanya punya faktor 1 dan dirinya."
         },
         {
           "id": "K5B2E-V3-1",
@@ -3757,7 +4173,7 @@
           "id": "K5B2E-V3-3",
           "titleHint": "Pembagian berulang",
           "sceneType": "K5B2E-V3-3",
-          "voiceNarration": "Bagi bersama dengan prima. Kalikan semua pembagi untuk KPK. Yang membagi keduanya untuk FPB. Ayo bermain!"
+          "voiceNarration": "Bagi bersama dengan prima. Kalikan semua pembagi untuk KPK. Yang membagi keduanya untuk FPB. Ayo bermain! METODE LUAR. Jembatan KPK dan FPB: Faktorisasi prima dipakai bersama untuk KPK dan FPB."
         }
       ],
       "videos": [
@@ -3805,13 +4221,15 @@
                 "Lanjut lima dan tujuh.",
                 "Sampai tidak ada yang bisa dihapus.",
                 "Daftar prima siap.",
-                "Dipakai di faktorisasi."
+                "Dipakai di faktorisasi.",
+                "METODE LUAR. Pohon Faktor: Urai bilangan jadi faktor sampai semua prima."
               ],
               "papan": [
                 "×5",
                 "×7",
                 "selesai",
-                "siap"
+                "siap",
+                "METODE LUAR · Pohon Faktor"
               ]
             }
           ]
@@ -3860,13 +4278,15 @@
                 "Seratus sembilan enam: dua dua tujuh tujuh.",
                 "Tiga ratus: dua dua tiga lima lima.",
                 "Urai sampai prima semua.",
-                "Lalu siap KPK FPB."
+                "Lalu siap KPK FPB.",
+                "METODE LUAR. Ide Ayakan Prima: Prima hanya punya faktor 1 dan dirinya."
               ],
               "papan": [
                 "196",
                 "300",
                 "urai",
-                "siap"
+                "siap",
+                "METODE LUAR · Ide Ayakan Prima"
               ]
             }
           ]
@@ -3915,13 +4335,15 @@
                 "Bagi bersama dengan prima.",
                 "Kalikan semua pembagi untuk KPK.",
                 "Yang membagi keduanya untuk FPB.",
-                "Ayo bermain!"
+                "Ayo bermain!",
+                "METODE LUAR. Jembatan KPK dan FPB: Faktorisasi prima dipakai bersama untuk KPK dan FPB."
               ],
               "papan": [
                 "bagi berulang",
                 "KPK",
                 "FPB",
-                "main"
+                "main",
+                "METODE LUAR · Jembatan KPK dan FPB"
               ]
             }
           ]
@@ -3974,6 +4396,22 @@
           "stepDesc": "Banding cara daftar",
           "icon": "✅",
           "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Pohon Faktor",
+          "stepDesc": "Urai bilangan jadi faktor sampai semua prima.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Ide Ayakan Prima",
+          "stepDesc": "Prima hanya punya faktor 1 dan dirinya.",
+          "icon": "🌍",
+          "flowFrom": "7",
           "flowTo": "END"
         }
       ],
@@ -4047,6 +4485,27 @@
           "countNum": 1,
           "countWord": "A–E",
           "voiceSentence": "Materi lengkap."
+        },
+        {
+          "fruitName": "Pohon Faktor",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Factor Tree",
+          "voiceSentence": "METODE LUAR. Pohon Faktor. Urai bilangan jadi faktor sampai semua prima."
+        },
+        {
+          "fruitName": "Ide Ayakan Prima",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Sieve Idea",
+          "voiceSentence": "METODE LUAR. Ide Ayakan Prima. Prima hanya punya faktor 1 dan dirinya."
+        },
+        {
+          "fruitName": "Jembatan KPK dan FPB",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · KPK FPB Bridge",
+          "voiceSentence": "METODE LUAR. Jembatan KPK dan FPB. Faktorisasi prima dipakai bersama untuk KPK dan FPB."
         }
       ],
       "concreteSlides": [
@@ -4054,7 +4513,7 @@
           "title": "Cek Bilangan Prima",
           "emoji": "✨",
           "targetCount": 6,
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Pohon Faktor. Pilih."
         },
         {
           "title": "Faktorisasi Prima",
@@ -4117,7 +4576,7 @@
           "diagramType": "sieve",
           "numberA": 1,
           "numberB": 2,
-          "caption": "Baca saringan."
+          "caption": "Baca saringan. (METODE LUAR · Pohon Faktor)"
         },
         {
           "title": "Diagram Pohon Faktor",
@@ -4188,7 +4647,7 @@
           "symbolLarge": "p?",
           "wordLarge": "PRIMA",
           "mathNotation": "cek",
-          "voiceReadout": "Pilih."
+          "voiceReadout": "METODE LUAR · Pohon Faktor. Pilih."
         },
         {
           "symbolLarge": "2×3",
@@ -4253,9 +4712,9 @@
           "gameType": "cek-prima",
           "title": "Cek Bilangan Prima",
           "bookReference": "Buku Siswa hlm. 53–54",
-          "objective": "Mengenali prima.",
+          "objective": "Mengenali prima. (METODE LUAR · Pohon Faktor)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Pohon Faktor. Pilih."
         },
         {
           "gameId": "subK5B2E-game-2",
@@ -4363,9 +4822,9 @@
           "gameType": "diagram-saringan",
           "title": "Diagram Saringan",
           "bookReference": "Buku Siswa hlm. 53–54",
-          "objective": "Baca saringan.",
+          "objective": "Baca saringan. (METODE LUAR · Pohon Faktor)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Pohon Faktor. Pilih."
         },
         {
           "gameId": "subK5B2E-game-12",
@@ -4473,9 +4932,9 @@
           "gameType": "write-prima",
           "title": "Tulis Cek Prima",
           "bookReference": "Buku Siswa hlm. 53–54",
-          "objective": "Menulis.",
+          "objective": "Menulis. (METODE LUAR · Pohon Faktor)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Pohon Faktor. Pilih."
         },
         {
           "gameId": "subK5B2E-game-22",
@@ -4598,6 +5057,21 @@
             "nama": "KPK prima",
             "isi": "Ambil semua prima dengan pangkat terbesar.",
             "suara": "Itu KPK."
+          },
+          {
+            "nama": "Pohon Faktor",
+            "isi": "METODE LUAR · Factor Tree: Urai bilangan jadi faktor sampai semua prima. (asal: Prime factorization pedagogy).",
+            "suara": "METODE LUAR. Pohon Faktor. Urai bilangan jadi faktor sampai semua prima."
+          },
+          {
+            "nama": "Ide Ayakan Prima",
+            "isi": "METODE LUAR · Sieve Idea: Prima hanya punya faktor 1 dan dirinya. (asal: Sieve of Eratosthenes (disederhanakan)).",
+            "suara": "METODE LUAR. Ide Ayakan Prima. Prima hanya punya faktor 1 dan dirinya."
+          },
+          {
+            "nama": "Jembatan KPK dan FPB",
+            "isi": "METODE LUAR · KPK FPB Bridge: Faktorisasi prima dipakai bersama untuk KPK dan FPB. (asal: Number theory relation).",
+            "suara": "METODE LUAR. Jembatan KPK dan FPB. Faktorisasi prima dipakai bersama untuk KPK dan FPB."
           }
         ],
         "suara": "Ingat: prima, faktorisasi, FPB pangkat min, KPK pangkat max.",

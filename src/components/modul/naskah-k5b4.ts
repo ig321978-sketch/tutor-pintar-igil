@@ -27,7 +27,7 @@ export const SUB_A54: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar apa itu keliling. Keliling adalah jumlah panjang semua sisi bangun datar. Berguna untuk pagar, bingkai, dan batas benteng. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menjelaskan dan menghitung keliling bangun datar.",
-    "referensi": "Buku Siswa Matematika Kelas V Bab 4 Sub-Bab A hlm. 107–114; perimeter as path length; real-world fencing contexts."
+    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 4: Keliling Bangun Datar, Sub-Bab A hlm. 107–114)."
   },
   "videos": [
     {
@@ -74,13 +74,15 @@ export const SUB_A54: SubBabNaskah = {
             "Sisi empat, empat, empat, empat.",
             "Jumlah enam belas.",
             "Itu keliling.",
-            "Siap lanjut."
+            "Siap lanjut.",
+            "METODE LUAR. Keliling sebagai Panjang Jalur: Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal."
           ],
           "papan": [
             "4+4+4+4",
             "16",
             "keliling",
-            "lanjut"
+            "lanjut",
+            "METODE LUAR · Keliling sebagai Panjang Jalur"
           ]
         }
       ]
@@ -129,13 +131,15 @@ export const SUB_A54: SubBabNaskah = {
             "Bingkai mengelilingi foto.",
             "Kayu yang dibutuhkan.",
             "Sama dengan keliling.",
-            "Ayo hitung."
+            "Ayo hitung.",
+            "METODE LUAR. Konteks Pagar dan Bingkai: Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas."
           ],
           "papan": [
             "bingkai",
             "kayu",
             "keliling",
-            "hitung"
+            "hitung",
+            "METODE LUAR · Konteks Pagar dan Bingkai"
           ]
         }
       ]
@@ -184,13 +188,15 @@ export const SUB_A54: SubBabNaskah = {
             "Nanti ada rumus khusus.",
             "Segitiga, segi empat, segi banyak.",
             "Dasarnya tetap jumlah sisi.",
-            "Ayo!"
+            "Ayo!",
+            "METODE LUAR. Bedakan Keliling dan Luas: Keliling mengelilingi luar; luas mengisi dalam. Jangan tertukar."
           ],
           "papan": [
             "rumus",
             "bangun",
             "dasar",
-            "ayo"
+            "ayo",
+            "METODE LUAR · Bedakan Keliling dan Luas"
           ]
         }
       ]
@@ -243,6 +249,22 @@ export const SUB_A54: SubBabNaskah = {
       "stepDesc": "Pagar/bingkai",
       "icon": "🏠",
       "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. METODE LUAR · Keliling sebagai Panjang Jalur",
+      "stepDesc": "Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal.",
+      "icon": "🌍",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. METODE LUAR · Konteks Pagar dan Bingkai",
+      "stepDesc": "Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas.",
+      "icon": "🌍",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -316,6 +338,27 @@ export const SUB_A54: SubBabNaskah = {
       "countNum": 1,
       "countWord": "segitiga",
       "suara": "Lanjut."
+    },
+    {
+      "judul": "Keliling sebagai Panjang Jalur",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Path Length",
+      "suara": "METODE LUAR. Keliling sebagai Panjang Jalur. Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal."
+    },
+    {
+      "judul": "Konteks Pagar dan Bingkai",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Fencing Context",
+      "suara": "METODE LUAR. Konteks Pagar dan Bingkai. Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas."
+    },
+    {
+      "judul": "Bedakan Keliling dan Luas",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Perimeter vs Area",
+      "suara": "METODE LUAR. Bedakan Keliling dan Luas. Keliling mengelilingi luar; luas mengisi dalam. Jangan tertukar."
     }
   ],
   "games": [
@@ -324,9 +367,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "hitung-a-c",
       "title": "Hitung Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Latihan topik.",
+      "objective": "Latihan topik. (METODE LUAR · Keliling sebagai Panjang Jalur)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "voiceGuide": "METODE LUAR · Keliling sebagai Panjang Jalur. Mainkan.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -434,9 +477,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "hitung-a-p",
       "title": "Diagram Hitung Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Baca diagram.",
+      "objective": "Baca diagram. (METODE LUAR · Keliling sebagai Panjang Jalur)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Keliling sebagai Panjang Jalur. Pilih.",
       "diagramType": "hitung",
       "numberA": 1,
       "numberB": 2
@@ -554,9 +597,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "hitung-a-a",
       "title": "Tulis Hitung Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Notasi.",
+      "objective": "Notasi. (METODE LUAR · Keliling sebagai Panjang Jalur)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Keliling sebagai Panjang Jalur. Pilih.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -694,6 +737,24 @@ export const SUB_A54: SubBabNaskah = {
       "nama": "Bukan luas",
       "isi": "Luas mengisi dalam, keliling mengelilingi luar.",
       "suara": "Jangan tertukar."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Keliling sebagai Panjang Jalur",
+      "isi": "METODE LUAR · Path Length: Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal. (asal: Van de Walle / pengukuran).",
+      "suara": "METODE LUAR. Keliling sebagai Panjang Jalur. Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Konteks Pagar dan Bingkai",
+      "isi": "METODE LUAR · Fencing Context: Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas. (asal: Real-world measurement pedagogy).",
+      "suara": "METODE LUAR. Konteks Pagar dan Bingkai. Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Bedakan Keliling dan Luas",
+      "isi": "METODE LUAR · Perimeter vs Area: Keliling mengelilingi luar; luas mengisi dalam. Jangan tertukar. (asal: Common misconception research).",
+      "suara": "METODE LUAR. Bedakan Keliling dan Luas. Keliling mengelilingi luar; luas mengisi dalam. Jangan tertukar."
     }
   ],
   "poinSuara": "Ingat: keliling jumlah sisi, bukan luas, dipakai pagar dan bingkai.",
@@ -723,8 +784,49 @@ export const SUB_A54: SubBabNaskah = {
     "Apa beda keliling dan luas?",
     "Mengapa pagar memakai keliling?",
     "Bagaimana menghitung 4+4+4+4?"
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Path Length",
+      "namaId": "Keliling sebagai Panjang Jalur",
+      "asal": "Van de Walle / pengukuran",
+      "ringkas": "Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal.",
+      "tahap": [
+        "Story",
+        "Mind",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Fencing Context",
+      "namaId": "Konteks Pagar dan Bingkai",
+      "asal": "Real-world measurement pedagogy",
+      "ringkas": "Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas.",
+      "tahap": [
+        "Story",
+        "Infografis",
+        "Concrete",
+        "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Perimeter vs Area",
+      "namaId": "Bedakan Keliling dan Luas",
+      "asal": "Common misconception research",
+      "ringkas": "Keliling mengelilingi luar; luas mengisi dalam. Jangan tertukar.",
+      "tahap": [
+        "Story",
+        "Infografis",
+        "Abstract"
+      ]
+    }
   ]
 };
+
 export const SUB_B54: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Keliling Segitiga)",
@@ -736,7 +838,7 @@ export const SUB_B54: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar keliling segitiga. Jumlahkan tiga sisi. Jika sama sisi, boleh dikali tiga. Contoh lima plus empat plus tujuh sama dengan enam belas. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menentukan keliling segitiga.",
-    "referensi": "Buku Siswa Matematika Kelas V Bab 4 Sub-Bab B hlm. 115–117; triangle perimeter; equilateral shortcut."
+    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 4: Keliling Bangun Datar, Sub-Bab B hlm. 115–117)."
   },
   "videos": [
     {
@@ -783,13 +885,15 @@ export const SUB_B54: SubBabNaskah = {
             "Secara umum.",
             "Keliling sama dengan sisi satu plus dua plus tiga.",
             "Berlaku untuk semua segitiga.",
-            "Ingat."
+            "Ingat.",
+            "METODE LUAR. Jumlah Tiga Sisi: Keliling segitiga = sisi satu + sisi dua + sisi tiga."
           ],
           "papan": [
             "umum",
             "a+b+c",
             "semua",
-            "ingat"
+            "ingat",
+            "METODE LUAR · Jumlah Tiga Sisi"
           ]
         }
       ]
@@ -838,13 +942,15 @@ export const SUB_B54: SubBabNaskah = {
             "Jika sisi enam.",
             "Tiga kali enam.",
             "Delapan belas.",
-            "Ayo latihan."
+            "Ayo latihan.",
+            "METODE LUAR. Pintasan Segitiga Sama Sisi: Jika ketiga sisi sama, keliling = 3 × panjang sisi."
           ],
           "papan": [
             "sisi 6",
             "3×6",
             "18",
-            "latihan"
+            "latihan",
+            "METODE LUAR · Pintasan Segitiga Sama Sisi"
           ]
         }
       ]
@@ -893,13 +999,15 @@ export const SUB_B54: SubBabNaskah = {
             "Segitiga selesai.",
             "Lanjut segi empat.",
             "Ada persegi panjang dan persegi.",
-            "Ayo!"
+            "Ayo!",
+            "METODE LUAR. Ukur Dulu Baru Jumlah: Ukur tiap sisi dengan satuan sama, lalu jumlahkan."
           ],
           "papan": [
             "selesai",
             "segi 4",
             "PP & persegi",
-            "ayo"
+            "ayo",
+            "METODE LUAR · Ukur Dulu Baru Jumlah"
           ]
         }
       ]
@@ -952,6 +1060,22 @@ export const SUB_B54: SubBabNaskah = {
       "stepDesc": "Masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. METODE LUAR · Jumlah Tiga Sisi",
+      "stepDesc": "Keliling segitiga = sisi satu + sisi dua + sisi tiga.",
+      "icon": "🌍",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. METODE LUAR · Pintasan Segitiga Sama Sisi",
+      "stepDesc": "Jika ketiga sisi sama, keliling = 3 × panjang sisi.",
+      "icon": "🌍",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -1025,6 +1149,27 @@ export const SUB_B54: SubBabNaskah = {
       "countNum": 1,
       "countWord": "segi 4",
       "suara": "Lanjut."
+    },
+    {
+      "judul": "Jumlah Tiga Sisi",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Side Sum",
+      "suara": "METODE LUAR. Jumlah Tiga Sisi. Keliling segitiga = sisi satu + sisi dua + sisi tiga."
+    },
+    {
+      "judul": "Pintasan Segitiga Sama Sisi",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Equilateral Shortcut",
+      "suara": "METODE LUAR. Pintasan Segitiga Sama Sisi. Jika ketiga sisi sama, keliling = 3 × panjang sisi."
+    },
+    {
+      "judul": "Ukur Dulu Baru Jumlah",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Measure Then Sum",
+      "suara": "METODE LUAR. Ukur Dulu Baru Jumlah. Ukur tiap sisi dengan satuan sama, lalu jumlahkan."
     }
   ],
   "games": [
@@ -1033,9 +1178,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "hitung-b-c",
       "title": "Hitung Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Latihan topik.",
+      "objective": "Latihan topik. (METODE LUAR · Jumlah Tiga Sisi)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "voiceGuide": "METODE LUAR · Jumlah Tiga Sisi. Mainkan.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1143,9 +1288,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "hitung-b-p",
       "title": "Diagram Hitung Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Baca diagram.",
+      "objective": "Baca diagram. (METODE LUAR · Jumlah Tiga Sisi)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Jumlah Tiga Sisi. Pilih.",
       "diagramType": "hitung",
       "numberA": 1,
       "numberB": 2
@@ -1263,9 +1408,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "hitung-b-a",
       "title": "Tulis Hitung Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Notasi.",
+      "objective": "Notasi. (METODE LUAR · Jumlah Tiga Sisi)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Jumlah Tiga Sisi. Pilih.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -1403,6 +1548,24 @@ export const SUB_B54: SubBabNaskah = {
       "nama": "Cek",
       "isi": "Hasil > sisi terpanjang.",
       "suara": "Masuk akal."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Jumlah Tiga Sisi",
+      "isi": "METODE LUAR · Side Sum: Keliling segitiga = sisi satu + sisi dua + sisi tiga. (asal: Elementary geometry).",
+      "suara": "METODE LUAR. Jumlah Tiga Sisi. Keliling segitiga = sisi satu + sisi dua + sisi tiga."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Pintasan Segitiga Sama Sisi",
+      "isi": "METODE LUAR · Equilateral Shortcut: Jika ketiga sisi sama, keliling = 3 × panjang sisi. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Pintasan Segitiga Sama Sisi. Jika ketiga sisi sama, keliling = 3 × panjang sisi."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Ukur Dulu Baru Jumlah",
+      "isi": "METODE LUAR · Measure Then Sum: Ukur tiap sisi dengan satuan sama, lalu jumlahkan. (asal: Hands-on measurement).",
+      "suara": "METODE LUAR. Ukur Dulu Baru Jumlah. Ukur tiap sisi dengan satuan sama, lalu jumlahkan."
     }
   ],
   "poinSuara": "Ingat: a+b+c, atau 3×sisi jika sama sisi.",
@@ -1432,8 +1595,47 @@ export const SUB_B54: SubBabNaskah = {
     "Kapan boleh memakai 3×sisi?",
     "Berapa keliling 5+4+7?",
     "Mengapa satuan penting?"
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Side Sum",
+      "namaId": "Jumlah Tiga Sisi",
+      "asal": "Elementary geometry",
+      "ringkas": "Keliling segitiga = sisi satu + sisi dua + sisi tiga.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Equilateral Shortcut",
+      "namaId": "Pintasan Segitiga Sama Sisi",
+      "asal": "Van de Walle",
+      "ringkas": "Jika ketiga sisi sama, keliling = 3 × panjang sisi.",
+      "tahap": [
+        "Story",
+        "Mind",
+        "Picture",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Measure Then Sum",
+      "namaId": "Ukur Dulu Baru Jumlah",
+      "asal": "Hands-on measurement",
+      "ringkas": "Ukur tiap sisi dengan satuan sama, lalu jumlahkan.",
+      "tahap": [
+        "Concrete",
+        "Infografis"
+      ]
+    }
   ]
 };
+
 export const SUB_C54: SubBabNaskah = {
   "id": "C",
   "codeTitle": "Sub-Bab C (Keliling Segi Empat)",
@@ -1445,7 +1647,7 @@ export const SUB_C54: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar keliling segi empat. Persegi panjang: dua kali panjang plus lebar. Persegi: empat kali sisi. Sisi berhadapan sama. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menentukan keliling persegi panjang dan persegi.",
-    "referensi": "Buku Siswa Matematika Kelas V Bab 4 Sub-Bab C hlm. 118–121; rectangle/square perimeter formulas."
+    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 4: Keliling Bangun Datar, Sub-Bab C hlm. 118–121)."
   },
   "videos": [
     {
@@ -1492,13 +1694,15 @@ export const SUB_C54: SubBabNaskah = {
             "Dua kali lima plus tiga.",
             "Dua kali delapan.",
             "Enam belas.",
-            "Itu keliling."
+            "Itu keliling.",
+            "METODE LUAR. Rumus 2 kali Panjang Plus Lebar: Keliling persegi panjang = 2 × (panjang + lebar), karena sisi berhadapan sama."
           ],
           "papan": [
             "2(5+3)",
             "2×8",
             "16",
-            "keliling"
+            "keliling",
+            "METODE LUAR · Rumus 2 kali Panjang Plus Lebar"
           ]
         }
       ]
@@ -1547,13 +1751,15 @@ export const SUB_C54: SubBabNaskah = {
             "Jika panjang sama lebar.",
             "Itu persegi.",
             "Pakai 4×sisi.",
-            "Atau tetap 2(p+l)."
+            "Atau tetap 2(p+l).",
+            "METODE LUAR. Pintasan Empat Kali Sisi: Keliling persegi = 4 × sisi karena keempat sisi sama."
           ],
           "papan": [
             "p=l",
             "persegi",
             "4×s",
-            "atau 2(p+l)"
+            "atau 2(p+l)",
+            "METODE LUAR · Pintasan Empat Kali Sisi"
           ]
         }
       ]
@@ -1602,13 +1808,15 @@ export const SUB_C54: SubBabNaskah = {
             "Segi empat siap.",
             "Lanjut segi banyak.",
             "Segi lima dan enam.",
-            "Ayo!"
+            "Ayo!",
+            "METODE LUAR. Bukan Panjang Kali Lebar: Panjang × lebar adalah luas, bukan keliling."
           ],
           "papan": [
             "siap",
             "segi banyak",
             "5 & 6",
-            "ayo"
+            "ayo",
+            "METODE LUAR · Bukan Panjang Kali Lebar"
           ]
         }
       ]
@@ -1661,6 +1869,22 @@ export const SUB_C54: SubBabNaskah = {
       "stepDesc": "Bukan p×l",
       "icon": "⚠️",
       "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. METODE LUAR · Rumus 2 kali Panjang Plus Lebar",
+      "stepDesc": "Keliling persegi panjang = 2 × (panjang + lebar), karena sisi berhadapan sama.",
+      "icon": "🌍",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. METODE LUAR · Pintasan Empat Kali Sisi",
+      "stepDesc": "Keliling persegi = 4 × sisi karena keempat sisi sama.",
+      "icon": "🌍",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -1734,6 +1958,27 @@ export const SUB_C54: SubBabNaskah = {
       "countNum": 1,
       "countWord": "segi banyak",
       "suara": "Lanjut."
+    },
+    {
+      "judul": "Rumus 2 kali Panjang Plus Lebar",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Rectangle Formula",
+      "suara": "METODE LUAR. Rumus 2 kali Panjang Plus Lebar. Keliling persegi panjang = 2 × (panjang + lebar), karena sisi berhadapan sama."
+    },
+    {
+      "judul": "Pintasan Empat Kali Sisi",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Square Shortcut",
+      "suara": "METODE LUAR. Pintasan Empat Kali Sisi. Keliling persegi = 4 × sisi karena keempat sisi sama."
+    },
+    {
+      "judul": "Bukan Panjang Kali Lebar",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Not Area Product",
+      "suara": "METODE LUAR. Bukan Panjang Kali Lebar. Panjang × lebar adalah luas, bukan keliling."
     }
   ],
   "games": [
@@ -1742,9 +1987,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "hitung-c-c",
       "title": "Hitung Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Latihan topik.",
+      "objective": "Latihan topik. (METODE LUAR · Rumus 2 kali Panjang Plus Lebar)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "voiceGuide": "METODE LUAR · Rumus 2 kali Panjang Plus Lebar. Mainkan.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1852,9 +2097,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "hitung-c-p",
       "title": "Diagram Hitung Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Baca diagram.",
+      "objective": "Baca diagram. (METODE LUAR · Rumus 2 kali Panjang Plus Lebar)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Rumus 2 kali Panjang Plus Lebar. Pilih.",
       "diagramType": "hitung",
       "numberA": 1,
       "numberB": 2
@@ -1972,9 +2217,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "hitung-c-a",
       "title": "Tulis Hitung Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Notasi.",
+      "objective": "Notasi. (METODE LUAR · Rumus 2 kali Panjang Plus Lebar)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Rumus 2 kali Panjang Plus Lebar. Pilih.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -2112,6 +2357,24 @@ export const SUB_C54: SubBabNaskah = {
       "nama": "Cek",
       "isi": "Boleh dijumlah manual empat sisi.",
       "suara": "Hasil sama."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Rumus 2 kali Panjang Plus Lebar",
+      "isi": "METODE LUAR · Rectangle Formula: Keliling persegi panjang = 2 × (panjang + lebar), karena sisi berhadapan sama. (asal: Singapore Math / formula fluency).",
+      "suara": "METODE LUAR. Rumus 2 kali Panjang Plus Lebar. Keliling persegi panjang = 2 × (panjang + lebar), karena sisi berhadapan sama."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Pintasan Empat Kali Sisi",
+      "isi": "METODE LUAR · Square Shortcut: Keliling persegi = 4 × sisi karena keempat sisi sama. (asal: Elementary geometry).",
+      "suara": "METODE LUAR. Pintasan Empat Kali Sisi. Keliling persegi = 4 × sisi karena keempat sisi sama."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Bukan Panjang Kali Lebar",
+      "isi": "METODE LUAR · Not Area Product: Panjang × lebar adalah luas, bukan keliling. (asal: Misconception prevention).",
+      "suara": "METODE LUAR. Bukan Panjang Kali Lebar. Panjang × lebar adalah luas, bukan keliling."
     }
   ],
   "poinSuara": "Ingat: 2(p+l) untuk PP, 4×sisi untuk persegi.",
@@ -2141,8 +2404,47 @@ export const SUB_C54: SubBabNaskah = {
     "Apa rumus keliling PP?",
     "Mengapa persegi memakai 4×sisi?",
     "Apa beda keliling dan luas?"
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Rectangle Formula",
+      "namaId": "Rumus 2 kali Panjang Plus Lebar",
+      "asal": "Singapore Math / formula fluency",
+      "ringkas": "Keliling persegi panjang = 2 × (panjang + lebar), karena sisi berhadapan sama.",
+      "tahap": [
+        "Story",
+        "Mind",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Square Shortcut",
+      "namaId": "Pintasan Empat Kali Sisi",
+      "asal": "Elementary geometry",
+      "ringkas": "Keliling persegi = 4 × sisi karena keempat sisi sama.",
+      "tahap": [
+        "Story",
+        "Picture",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Not Area Product",
+      "namaId": "Bukan Panjang Kali Lebar",
+      "asal": "Misconception prevention",
+      "ringkas": "Panjang × lebar adalah luas, bukan keliling.",
+      "tahap": [
+        "Infografis",
+        "Abstract"
+      ]
+    }
   ]
 };
+
 export const SUB_D54: SubBabNaskah = {
   "id": "D",
   "codeTitle": "Sub-Bab D (Keliling Segi Banyak)",
@@ -2154,7 +2456,7 @@ export const SUB_D54: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar keliling segi banyak. Jika beraturan, kali banyak sisi dengan panjang sisi. Segi lima kali lima. Segi enam kali enam. Jika sisi beda, jumlahkan semua. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menentukan keliling segi banyak beraturan dan tidak beraturan.",
-    "referensi": "Buku Siswa Matematika Kelas V Bab 4 Sub-Bab D hlm. 122–124; regular polygon perimeter; irregular side-sum."
+    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 4: Keliling Bangun Datar, Sub-Bab D hlm. 122–124)."
   },
   "videos": [
     {
@@ -2201,13 +2503,15 @@ export const SUB_D54: SubBabNaskah = {
             "Di tabel buku.",
             "Lima sisi: lima kali sisi.",
             "Enam sisi: enam kali sisi.",
-            "Pola jelas."
+            "Pola jelas.",
+            "METODE LUAR. Segi-n Beraturan n Kali Sisi: Jika semua sisi sama, keliling = banyak sisi × panjang satu sisi."
           ],
           "papan": [
             "tabel",
             "5×s",
             "6×s",
-            "pola"
+            "pola",
+            "METODE LUAR · Segi-n Beraturan n Kali Sisi"
           ]
         }
       ]
@@ -2256,13 +2560,15 @@ export const SUB_D54: SubBabNaskah = {
             "Jika sisi tidak sama.",
             "Jangan langsung kali n.",
             "Jumlahkan satu-satu.",
-            "Aman."
+            "Aman.",
+            "METODE LUAR. Sisi Beda Jumlah Satu-satu: Jika sisi tidak sama, jangan langsung kali n; jumlahkan semua sisi."
           ],
           "papan": [
             "beda",
             "jangan ×n",
             "jumlah",
-            "aman"
+            "aman",
+            "METODE LUAR · Sisi Beda Jumlah Satu-satu"
           ]
         }
       ]
@@ -2311,13 +2617,15 @@ export const SUB_D54: SubBabNaskah = {
             "Segi banyak siap.",
             "Lanjut bangun gabungan.",
             "Denah rumah.",
-            "Ayo!"
+            "Ayo!",
+            "METODE LUAR. Pola Tabel Banyak Sisi: Segi lima 5×s, segi enam 6×s: pola n×s untuk segi-n beraturan."
           ],
           "papan": [
             "siap",
             "gabungan",
             "denah",
-            "ayo"
+            "ayo",
+            "METODE LUAR · Pola Tabel Banyak Sisi"
           ]
         }
       ]
@@ -2370,6 +2678,22 @@ export const SUB_D54: SubBabNaskah = {
       "stepDesc": "Masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. METODE LUAR · Segi-n Beraturan n Kali Sisi",
+      "stepDesc": "Jika semua sisi sama, keliling = banyak sisi × panjang satu sisi.",
+      "icon": "🌍",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. METODE LUAR · Sisi Beda Jumlah Satu-satu",
+      "stepDesc": "Jika sisi tidak sama, jangan langsung kali n; jumlahkan semua sisi.",
+      "icon": "🌍",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -2443,6 +2767,27 @@ export const SUB_D54: SubBabNaskah = {
       "countNum": 1,
       "countWord": "gabungan",
       "suara": "Lanjut."
+    },
+    {
+      "judul": "Segi-n Beraturan n Kali Sisi",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Regular n-gon",
+      "suara": "METODE LUAR. Segi-n Beraturan n Kali Sisi. Jika semua sisi sama, keliling = banyak sisi × panjang satu sisi."
+    },
+    {
+      "judul": "Sisi Beda Jumlah Satu-satu",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Irregular Side Sum",
+      "suara": "METODE LUAR. Sisi Beda Jumlah Satu-satu. Jika sisi tidak sama, jangan langsung kali n; jumlahkan semua sisi."
+    },
+    {
+      "judul": "Pola Tabel Banyak Sisi",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Table Pattern",
+      "suara": "METODE LUAR. Pola Tabel Banyak Sisi. Segi lima 5×s, segi enam 6×s: pola n×s untuk segi-n beraturan."
     }
   ],
   "games": [
@@ -2451,9 +2796,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "hitung-d-c",
       "title": "Hitung Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Latihan topik.",
+      "objective": "Latihan topik. (METODE LUAR · Segi-n Beraturan n Kali Sisi)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "voiceGuide": "METODE LUAR · Segi-n Beraturan n Kali Sisi. Mainkan.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2561,9 +2906,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "hitung-d-p",
       "title": "Diagram Hitung Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Baca diagram.",
+      "objective": "Baca diagram. (METODE LUAR · Segi-n Beraturan n Kali Sisi)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Segi-n Beraturan n Kali Sisi. Pilih.",
       "diagramType": "hitung",
       "numberA": 1,
       "numberB": 2
@@ -2681,9 +3026,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "hitung-d-a",
       "title": "Tulis Hitung Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Notasi.",
+      "objective": "Notasi. (METODE LUAR · Segi-n Beraturan n Kali Sisi)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Segi-n Beraturan n Kali Sisi. Pilih.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -2821,6 +3166,24 @@ export const SUB_D54: SubBabNaskah = {
       "nama": "Segi 6",
       "isi": "6 × sisi. Contoh 6×4=24.",
       "suara": "Hexagon."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Segi-n Beraturan n Kali Sisi",
+      "isi": "METODE LUAR · Regular n-gon: Jika semua sisi sama, keliling = banyak sisi × panjang satu sisi. (asal: Polygon perimeter).",
+      "suara": "METODE LUAR. Segi-n Beraturan n Kali Sisi. Jika semua sisi sama, keliling = banyak sisi × panjang satu sisi."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Sisi Beda Jumlah Satu-satu",
+      "isi": "METODE LUAR · Irregular Side Sum: Jika sisi tidak sama, jangan langsung kali n; jumlahkan semua sisi. (asal: Flexible strategy).",
+      "suara": "METODE LUAR. Sisi Beda Jumlah Satu-satu. Jika sisi tidak sama, jangan langsung kali n; jumlahkan semua sisi."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Pola Tabel Banyak Sisi",
+      "isi": "METODE LUAR · Table Pattern: Segi lima 5×s, segi enam 6×s: pola n×s untuk segi-n beraturan. (asal: Pattern generalization).",
+      "suara": "METODE LUAR. Pola Tabel Banyak Sisi. Segi lima 5×s, segi enam 6×s: pola n×s untuk segi-n beraturan."
     }
   ],
   "poinSuara": "Ingat: beraturan n×sisi; sisi beda jumlahkan semua.",
@@ -2850,8 +3213,47 @@ export const SUB_D54: SubBabNaskah = {
     "Kapan memakai n×sisi?",
     "Berapa keliling segi lima sisi 3?",
     "Apa yang dilakukan jika sisi berbeda?"
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Regular n-gon",
+      "namaId": "Segi-n Beraturan n Kali Sisi",
+      "asal": "Polygon perimeter",
+      "ringkas": "Jika semua sisi sama, keliling = banyak sisi × panjang satu sisi.",
+      "tahap": [
+        "Story",
+        "Mind",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Irregular Side Sum",
+      "namaId": "Sisi Beda Jumlah Satu-satu",
+      "asal": "Flexible strategy",
+      "ringkas": "Jika sisi tidak sama, jangan langsung kali n; jumlahkan semua sisi.",
+      "tahap": [
+        "Story",
+        "Picture",
+        "Concrete"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Table Pattern",
+      "namaId": "Pola Tabel Banyak Sisi",
+      "asal": "Pattern generalization",
+      "ringkas": "Segi lima 5×s, segi enam 6×s: pola n×s untuk segi-n beraturan.",
+      "tahap": [
+        "Infografis",
+        "Abstract"
+      ]
+    }
   ]
 };
+
 export const SUB_E54: SubBabNaskah = {
   "id": "E",
   "codeTitle": "Sub-Bab E (Bangun Gabungan)",
@@ -2863,7 +3265,7 @@ export const SUB_E54: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar keliling bangun gabungan. Hanya batas luar yang dihitung. Sekat dalam tidak ikut. Bisa ukur sisi luar satu-satu atau bungkus dengan persegi panjang besar. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menentukan keliling bangun gabungan.",
-    "referensi": "Buku Siswa Matematika Kelas V Bab 4 Sub-Bab E hlm. 125–130; composite perimeter; outer path only."
+    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 4: Keliling Bangun Datar, Sub-Bab E hlm. 125–130)."
   },
   "videos": [
     {
@@ -2910,13 +3312,15 @@ export const SUB_E54: SubBabNaskah = {
             "Ukur sisi luar satu-satu.",
             "Tulis panjangnya.",
             "Jumlahkan.",
-            "Itu keliling."
+            "Itu keliling.",
+            "METODE LUAR. Hanya Batas Luar: Keliling bangun gabungan hanya menjumlah sisi terluar; sekat dalam diabaikan."
           ],
           "papan": [
             "ukur luar",
             "tulis",
             "jumlah",
-            "K"
+            "K",
+            "METODE LUAR · Hanya Batas Luar"
           ]
         }
       ]
@@ -2965,13 +3369,15 @@ export const SUB_E54: SubBabNaskah = {
             "Sisi belum diketahui.",
             "Pakai selisih panjang.",
             "Atau kesamaan denah.",
-            "Lengkapi dulu."
+            "Lengkapi dulu.",
+            "METODE LUAR. Strategi Bungkus Persegi Panjang: Bayangkan persegi panjang besar yang membungkus denah, lalu hitung kelilingnya."
           ],
           "papan": [
             "?",
             "selisih",
             "sama",
-            "lengkapi"
+            "lengkapi",
+            "METODE LUAR · Strategi Bungkus Persegi Panjang"
           ]
         }
       ]
@@ -3020,13 +3426,15 @@ export const SUB_E54: SubBabNaskah = {
             "Konsep, segitiga, segi empat.",
             "Segi banyak, gabungan.",
             "Materi keliling lengkap.",
-            "Hebat!"
+            "Hebat!",
+            "METODE LUAR. Lengkapi Sisi Hilang: Cari sisi belum diketahui dengan selisih atau kesamaan ukuran sebelum menjumlah."
           ],
           "papan": [
             "A–E",
             "lengkap",
             "keliling",
-            "hebat"
+            "hebat",
+            "METODE LUAR · Lengkapi Sisi Hilang"
           ]
         }
       ]
@@ -3079,6 +3487,22 @@ export const SUB_E54: SubBabNaskah = {
       "stepDesc": "Hanya luar?",
       "icon": "✅",
       "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. METODE LUAR · Hanya Batas Luar",
+      "stepDesc": "Keliling bangun gabungan hanya menjumlah sisi terluar; sekat dalam diabaikan.",
+      "icon": "🌍",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. METODE LUAR · Strategi Bungkus Persegi Panjang",
+      "stepDesc": "Bayangkan persegi panjang besar yang membungkus denah, lalu hitung kelilingnya.",
+      "icon": "🌍",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -3152,6 +3576,27 @@ export const SUB_E54: SubBabNaskah = {
       "countNum": 1,
       "countWord": "A–E siap",
       "suara": "Materi."
+    },
+    {
+      "judul": "Hanya Batas Luar",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Outer Path Only",
+      "suara": "METODE LUAR. Hanya Batas Luar. Keliling bangun gabungan hanya menjumlah sisi terluar; sekat dalam diabaikan."
+    },
+    {
+      "judul": "Strategi Bungkus Persegi Panjang",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Bounding Rectangle",
+      "suara": "METODE LUAR. Strategi Bungkus Persegi Panjang. Bayangkan persegi panjang besar yang membungkus denah, lalu hitung kelilingnya."
+    },
+    {
+      "judul": "Lengkapi Sisi Hilang",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Missing Length",
+      "suara": "METODE LUAR. Lengkapi Sisi Hilang. Cari sisi belum diketahui dengan selisih atau kesamaan ukuran sebelum menjumlah."
     }
   ],
   "games": [
@@ -3160,9 +3605,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "hitung-e-c",
       "title": "Hitung Gabungan",
       "bookReference": "hlm. 125–130",
-      "objective": "Latihan topik.",
+      "objective": "Latihan topik. (METODE LUAR · Hanya Batas Luar)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "voiceGuide": "METODE LUAR · Hanya Batas Luar. Mainkan.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -3270,9 +3715,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "hitung-e-p",
       "title": "Diagram Hitung Gabungan",
       "bookReference": "hlm. 125–130",
-      "objective": "Baca diagram.",
+      "objective": "Baca diagram. (METODE LUAR · Hanya Batas Luar)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Hanya Batas Luar. Pilih.",
       "diagramType": "hitung",
       "numberA": 1,
       "numberB": 2
@@ -3390,9 +3835,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "hitung-e-a",
       "title": "Tulis Hitung Gabungan",
       "bookReference": "hlm. 125–130",
-      "objective": "Notasi.",
+      "objective": "Notasi. (METODE LUAR · Hanya Batas Luar)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Hanya Batas Luar. Pilih.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3530,6 +3975,24 @@ export const SUB_E54: SubBabNaskah = {
       "nama": "Sisi hilang",
       "isi": "Cari dengan selisih atau kesamaan ukuran.",
       "suara": "Lengkapi dulu."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Hanya Batas Luar",
+      "isi": "METODE LUAR · Outer Path Only: Keliling bangun gabungan hanya menjumlah sisi terluar; sekat dalam diabaikan. (asal: Composite figure pedagogy).",
+      "suara": "METODE LUAR. Hanya Batas Luar. Keliling bangun gabungan hanya menjumlah sisi terluar; sekat dalam diabaikan."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Strategi Bungkus Persegi Panjang",
+      "isi": "METODE LUAR · Bounding Rectangle: Bayangkan persegi panjang besar yang membungkus denah, lalu hitung kelilingnya. (asal: Problem-solving strategy).",
+      "suara": "METODE LUAR. Strategi Bungkus Persegi Panjang. Bayangkan persegi panjang besar yang membungkus denah, lalu hitung kelilingnya."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Lengkapi Sisi Hilang",
+      "isi": "METODE LUAR · Missing Length: Cari sisi belum diketahui dengan selisih atau kesamaan ukuran sebelum menjumlah. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Lengkapi Sisi Hilang. Cari sisi belum diketahui dengan selisih atau kesamaan ukuran sebelum menjumlah."
     }
   ],
   "poinSuara": "Ingat: hanya batas luar, abaikan sekat dalam, boleh bungkus PP.",
@@ -3559,6 +4022,45 @@ export const SUB_E54: SubBabNaskah = {
     "Mengapa sekat dalam tidak dihitung?",
     "Apa strategi bungkus?",
     "Berapa 2(12+6)?"
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Outer Path Only",
+      "namaId": "Hanya Batas Luar",
+      "asal": "Composite figure pedagogy",
+      "ringkas": "Keliling bangun gabungan hanya menjumlah sisi terluar; sekat dalam diabaikan.",
+      "tahap": [
+        "Story",
+        "Mind",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Bounding Rectangle",
+      "namaId": "Strategi Bungkus Persegi Panjang",
+      "asal": "Problem-solving strategy",
+      "ringkas": "Bayangkan persegi panjang besar yang membungkus denah, lalu hitung kelilingnya.",
+      "tahap": [
+        "Story",
+        "Picture",
+        "Concrete"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Missing Length",
+      "namaId": "Lengkapi Sisi Hilang",
+      "asal": "Van de Walle",
+      "ringkas": "Cari sisi belum diketahui dengan selisih atau kesamaan ukuran sebelum menjumlah.",
+      "tahap": [
+        "Infografis",
+        "Picture",
+        "Abstract"
+      ]
+    }
   ]
 };
 

@@ -39,6 +39,16 @@ export type PanelNaskah = {
 
 export type PoinNaskah = { ikon: string; nama: string; isi: string; suara: string };
 
+/** Metode pedagogis dari luar Buku Siswa, dianyam ke tahap SMICPA (bukan hanya catatan referensi). */
+export type MetodeLuarNaskah = {
+  label: "METODE LUAR";
+  nama: string;
+  namaId: string;
+  asal: string;
+  ringkas: string;
+  tahap: ("Story" | "Mind" | "Infografis" | "Concrete" | "Picture" | "Abstract")[];
+};
+
 export type GameNaskah = {
   stage: "Concrete" | "Picture" | "Abstract";
   gameType: string;
@@ -70,6 +80,8 @@ export type SubBabNaskah = {
   secondaryBorder: string;
   secondaryText: string;
   silabus: { teksSuara: string; cp: string; referensi: string };
+  /** Metode luar berlabel; kosong/undefined = kartu Silabus belum menampilkan bagian ini. */
+  metodeLuar?: MetodeLuarNaskah[];
   videos: VideoNaskah[];
   mindMaps: LangkahPetaNaskah[];
   infografis: PanelNaskah[];

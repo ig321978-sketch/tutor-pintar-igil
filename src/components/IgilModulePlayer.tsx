@@ -325,6 +325,15 @@ interface SubBabContent {
   segeraHadir?: boolean;
   /** Bahan halaman Silabus untuk bab yang membawa naskahnya sendiri di berkas JSON. */
   silabus?: { teksSuara: string; cp: string; referensi: string };
+  /** Metode pedagogis dari luar buku, berlabel, dianyam ke Materi. */
+  metodeLuar?: {
+    label: "METODE LUAR";
+    nama: string;
+    namaId: string;
+    asal: string;
+    ringkas: string;
+    tahap: ("Story" | "Mind" | "Infografis" | "Concrete" | "Picture" | "Abstract")[];
+  }[];
   stories: StorySlideItem[];
   mindMaps: MindMapSlideItem[];
   infografisData: {
@@ -1704,6 +1713,36 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                     ? "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 2: Penjumlahan sampai dengan 10)."
                     : "Buku Siswa Matematika Kelas I Kemendikbudristek (Bab 1: Ayo Membilang sampai dengan 10, Halaman 1–32)."}
                 </BarisIkon>
+                {currentSubContent.metodeLuar && currentSubContent.metodeLuar.length > 0 ? (
+                  <BarisIkon emoji="🌍" warna="#EDE9FE" judul="Metode dari Luar Buku">
+                    <div className="flex flex-col gap-3 pt-2">
+                      {currentSubContent.metodeLuar.map((m) => {
+                        const badge = `${m.label} · ${m.nama} — ${m.namaId}`;
+                        const teksSuara = `${badge}. ${m.ringkas} Sumber: ${m.asal}. Dipakai di tahap ${m.tahap.join(", ")}.`;
+                        return (
+                          <div key={`${m.nama}-${m.namaId}`} className="rounded-2xl border border-indigo-100 bg-white/90 p-3">
+                            <div className="flex flex-wrap items-start justify-between gap-2">
+                              <span className="inline-flex max-w-full items-center rounded-full bg-amber-400 px-3 py-1 text-xs font-black text-indigo-950">
+                                {badge}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => speakGuru(teksSuara)}
+                                className="rounded-full border-2 border-indigo-900 bg-indigo-50 px-3 py-1 text-[11px] font-black text-indigo-950"
+                              >
+                                Suara Guru
+                              </button>
+                            </div>
+                            <p className="mt-2 text-sm font-bold leading-snug text-indigo-950">{m.ringkas}</p>
+                            <p className="mt-1 text-[11px] font-semibold text-indigo-800/80">
+                              Asal: {m.asal} · Tahap: {m.tahap.join(" · ")}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </BarisIkon>
+                ) : null}
                 <BarisIkon emoji="🚀" warna="#CDEFD8" judul="Metode Pedagogis SMICPA">
                   <span className="flex flex-wrap gap-2.5 pt-2">
                     {TAHAP_SILABUS.map((s, i) => (
