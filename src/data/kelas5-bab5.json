@@ -1,0 +1,3696 @@
+{
+  "chapterId": "k5-mat-bab5",
+  "chapter_id": "k5-mat-bab5",
+  "phase_code": "FASE_C",
+  "grade": 5,
+  "subjectLabel": "MATEMATIKA - KELAS 5 SD",
+  "title": "BAB 5: LUAS DAERAH BANGUN DATAR",
+  "silabusElemen": "🌈 Fase C • Elemen Pengukuran: Luas Daerah Bangun Datar — Konsep, Rumus, Gabungan, dan Hubungan Keliling–Luas (Kelas 5 SD/MI)",
+  "suaraPerangkatSaja": true,
+  "suaraLaju": 0.7,
+  "suaraNada": 1,
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Konsep Luas)",
+      "fullTitle": "Sub-Bab A: Konsep Luas Daerah Bangun Datar",
+      "targetDescription": "Siswa memahami luas sebagai ukuran daerah di dalam batas bangun, mengukur dengan pengubinan petak satuan (cm²/m²), memakai Array Model pada persegi panjang, serta konservasi luas ala Cara Yohana sesuai Buku Siswa Kelas V Bab 5 Sub-Bab A hlm. 133–143.",
+      "secondaryBg": "#FFEDD5",
+      "secondaryBorder": "#EA580C",
+      "secondaryText": "#7C2D12",
+      "silabus": {
+        "teksSuara": "Kita belajar apa itu luas daerah. Luas menjawab: seberapa besar daerah di dalam batas bangun. Kita menutup lantai dengan ubin atau petak satuan sampai rapat. Guru dunia menyebutnya Unit Square Covering dan Array Model. Ada juga Cara Yohana: potong-tempel petak tak utuh tanpa mengubah luas, namanya Area Conservation. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menjelaskan arti luas, satuan luas, dan menghitung luas dengan petak satuan serta pengubinan.",
+        "referensi": "Buku Siswa Matematika Kelas V Bab 5 Sub-Bab A hlm. 133–143; METODE LUAR · Unit Square Covering; Array Model; Area Conservation (Cara Yohana)."
+      },
+      "stories": [
+        {
+          "id": "K5B5A-V1-1",
+          "titleHint": "Pasir Alun-Alun",
+          "sceneType": "K5B5A-V1-1",
+          "voiceNarration": "Di buku ada Alun-Alun Utara Keraton Yogyakarta yang dipugar dengan pasir pantai. Banyak pasir bergantung pada seberapa besar daerah alun-alun yang ditutup. Itulah pertanyaan luas: berapa besar daerah di dalam batas? Bukan pertanyaan keliling pagar di tepi luar."
+        },
+        {
+          "id": "K5B5A-V1-2",
+          "titleHint": "Definisi",
+          "sceneType": "K5B5A-V1-2",
+          "voiceNarration": "Luas daerah bangun datar adalah ukuran besar kecilnya daerah yang dibatasi bangun itu. Satuan yang dipakai disebut satuan luas. Bayangkan menutup seluruh daerah tanpa celah dan tanpa lubang. METODE LUAR · Unit Square Covering: tutup rapat dengan petak satuan."
+        },
+        {
+          "id": "K5B5A-V1-3",
+          "titleHint": "Bukan keliling",
+          "sceneType": "K5B5A-V1-3",
+          "voiceNarration": "Keliling menjawab panjang jalur di tepi luar. Luas menjawab isi daerah di dalam. Jangan tertukar seperti di Bab 4 dan Bab 5. Satuannya juga beda: cm versus cm persegi."
+        },
+        {
+          "id": "K5B5A-V2-1",
+          "titleHint": "Denah rumah",
+          "sceneType": "K5B5A-V2-1",
+          "voiceNarration": "Lukas dan teman menghitung ubin 1 meter kali 1 meter untuk tiap ruang. Satu ubin mewakili 1 meter persegi. Ruang yang lebih luas butuh lebih banyak ubin. Itu makna praktis luas di denah."
+        },
+        {
+          "id": "K5B5A-V2-2",
+          "titleHint": "Petak satuan",
+          "sceneType": "K5B5A-V2-2",
+          "voiceNarration": "Buat persegi 1 cm kali 1 cm. Itu 1 sentimeter persegi. Atau 1 m kali 1 m untuk 1 meter persegi. Tempel atau gambar petak sampai menutup seluruh bangun. Hitung banyak petak: itulah luas dalam satuan petak."
+        },
+        {
+          "id": "K5B5A-V2-3",
+          "titleHint": "Array Model",
+          "sceneType": "K5B5A-V2-3",
+          "voiceNarration": "Pada persegi panjang, petak tersusun baris dan kolom. Luas sama dengan banyak baris dikali banyak kolom. Contoh 5 kali 2 sama dengan 10 petak. METODE LUAR · Array Model: baris × kolom = luas."
+        },
+        {
+          "id": "K5B5A-V3-1",
+          "titleHint": "Petak tak utuh",
+          "sceneType": "K5B5A-V3-1",
+          "voiceNarration": "Ada bangun yang sisi memotong petak tidak utuh. Yohana memotong bagian lebih dan menempel ke bagian kurang. Bentuk tampak berubah, tetapi luas tetap. METODE LUAR · Area Conservation: luas tidak berubah saat dipotong-tempel tanpa hilang."
+        },
+        {
+          "id": "K5B5A-V3-2",
+          "titleHint": "Contoh 9",
+          "sceneType": "K5B5A-V3-2",
+          "voiceNarration": "Setelah dirapikan jadi petak utuh, Yohana mendapat 9 satuan luas. Cara ini membantu memperkirakan luas bangun E, F, G di buku. Kunci: jangan buang atau menambah daerah. Hanya memindahkan."
+        },
+        {
+          "id": "K5B5A-V3-3",
+          "titleHint": "Siap rumus",
+          "sceneType": "K5B5A-V3-3",
+          "voiceNarration": "Konsep luas, satuan, pengubinan, dan konservasi sudah siap. Berikutnya kita temukan rumus cepat untuk tiap bangun. Dasarnya tetap covering dan array. Ayo lanjut Sub-Bab B!"
+        }
+      ],
+      "videos": [
+        {
+          "id": "K5B5A-V1",
+          "judul": "Alun-Alun dan Arti Luas",
+          "subjudul": "Covering",
+          "adegan": [
+            {
+              "id": "K5B5A-V1-1",
+              "judul": "Pasir Alun-Alun",
+              "ketukan": [
+                "Di buku ada Alun-Alun Utara Keraton Yogyakarta yang dipugar dengan pasir pantai.",
+                "Banyak pasir bergantung pada seberapa besar daerah alun-alun yang ditutup.",
+                "Itulah pertanyaan luas: berapa besar daerah di dalam batas?",
+                "Bukan pertanyaan keliling pagar di tepi luar."
+              ],
+              "papan": [
+                "Alun-Alun",
+                "pasir menutup",
+                "daerah dalam",
+                "bukan keliling"
+              ]
+            },
+            {
+              "id": "K5B5A-V1-2",
+              "judul": "Definisi",
+              "ketukan": [
+                "Luas daerah bangun datar adalah ukuran besar kecilnya daerah yang dibatasi bangun itu.",
+                "Satuan yang dipakai disebut satuan luas.",
+                "Bayangkan menutup seluruh daerah tanpa celah dan tanpa lubang.",
+                "METODE LUAR · Unit Square Covering: tutup rapat dengan petak satuan."
+              ],
+              "papan": [
+                "definisi",
+                "satuan luas",
+                "tutup rapat",
+                "Unit Square"
+              ]
+            },
+            {
+              "id": "K5B5A-V1-3",
+              "judul": "Bukan keliling",
+              "ketukan": [
+                "Keliling menjawab panjang jalur di tepi luar.",
+                "Luas menjawab isi daerah di dalam.",
+                "Jangan tertukar seperti di Bab 4 dan Bab 5.",
+                "Satuannya juga beda: cm versus cm persegi."
+              ],
+              "papan": [
+                "keliling = tepi",
+                "luas = dalam",
+                "jangan tertukar",
+                "cm²"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B5A-V2",
+          "judul": "Ubin, Petak, Array",
+          "subjudul": "Array Model",
+          "adegan": [
+            {
+              "id": "K5B5A-V2-1",
+              "judul": "Denah rumah",
+              "ketukan": [
+                "Lukas dan teman menghitung ubin 1 meter kali 1 meter untuk tiap ruang.",
+                "Satu ubin mewakili 1 meter persegi.",
+                "Ruang yang lebih luas butuh lebih banyak ubin.",
+                "Itu makna praktis luas di denah."
+              ],
+              "papan": [
+                "ubin 1m²",
+                "denah",
+                "lebih luas",
+                "lebih ubin"
+              ]
+            },
+            {
+              "id": "K5B5A-V2-2",
+              "judul": "Petak satuan",
+              "ketukan": [
+                "Buat persegi 1 cm kali 1 cm. Itu 1 sentimeter persegi.",
+                "Atau 1 m kali 1 m untuk 1 meter persegi.",
+                "Tempel atau gambar petak sampai menutup seluruh bangun.",
+                "Hitung banyak petak: itulah luas dalam satuan petak."
+              ],
+              "papan": [
+                "1 cm²",
+                "1 m²",
+                "tempel petak",
+                "hitung petak"
+              ]
+            },
+            {
+              "id": "K5B5A-V2-3",
+              "judul": "Array Model",
+              "ketukan": [
+                "Pada persegi panjang, petak tersusun baris dan kolom.",
+                "Luas sama dengan banyak baris dikali banyak kolom.",
+                "Contoh 5 kali 2 sama dengan 10 petak.",
+                "METODE LUAR · Array Model: baris × kolom = luas."
+              ],
+              "papan": [
+                "baris×kolom",
+                "5×2",
+                "10",
+                "Array Model"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B5A-V3",
+          "judul": "Cara Yohana",
+          "subjudul": "Conservation",
+          "adegan": [
+            {
+              "id": "K5B5A-V3-1",
+              "judul": "Petak tak utuh",
+              "ketukan": [
+                "Ada bangun yang sisi memotong petak tidak utuh.",
+                "Yohana memotong bagian lebih dan menempel ke bagian kurang.",
+                "Bentuk tampak berubah, tetapi luas tetap.",
+                "METODE LUAR · Area Conservation: luas tidak berubah saat dipotong-tempel tanpa hilang."
+              ],
+              "papan": [
+                "tak utuh",
+                "potong-tempel",
+                "luas tetap",
+                "Conservation"
+              ]
+            },
+            {
+              "id": "K5B5A-V3-2",
+              "judul": "Contoh 9",
+              "ketukan": [
+                "Setelah dirapikan jadi petak utuh, Yohana mendapat 9 satuan luas.",
+                "Cara ini membantu memperkirakan luas bangun E, F, G di buku.",
+                "Kunci: jangan buang atau menambah daerah.",
+                "Hanya memindahkan."
+              ],
+              "papan": [
+                "9 satuan",
+                "E F G",
+                "jangan buang",
+                "pindah saja"
+              ]
+            },
+            {
+              "id": "K5B5A-V3-3",
+              "judul": "Siap rumus",
+              "ketukan": [
+                "Konsep luas, satuan, pengubinan, dan konservasi sudah siap.",
+                "Berikutnya kita temukan rumus cepat untuk tiap bangun.",
+                "Dasarnya tetap covering dan array.",
+                "Ayo lanjut Sub-Bab B!"
+              ],
+              "papan": [
+                "konsep siap",
+                "rumus berikutnya",
+                "dasar covering",
+                "lanjut B"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Tanya luas",
+          "stepDesc": "Seberapa besar daerah dalam?",
+          "icon": "❓",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Satuan",
+          "stepDesc": "cm² / m² / petak",
+          "icon": "📐",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Covering",
+          "stepDesc": "Tutup rapat petak",
+          "icon": "🧩",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Array",
+          "stepDesc": "baris × kolom",
+          "icon": "▦",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Konservasi",
+          "stepDesc": "Cara Yohana",
+          "icon": "✂️",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Bukan K",
+          "stepDesc": "Bukan path length",
+          "icon": "⚠️",
+          "flowFrom": "5",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Arti luas",
+          "emoji": "⬜",
+          "countNum": 1,
+          "countWord": "daerah dalam",
+          "voiceSentence": "Definisi buku."
+        },
+        {
+          "fruitName": "Satuan",
+          "emoji": "📐",
+          "countNum": 1,
+          "countWord": "cm² / m²",
+          "voiceSentence": "Persegi satuan."
+        },
+        {
+          "fruitName": "Covering",
+          "emoji": "🧩",
+          "countNum": 1,
+          "countWord": "Unit Square",
+          "voiceSentence": "Tutup rapat."
+        },
+        {
+          "fruitName": "Array",
+          "emoji": "▦",
+          "countNum": 10,
+          "countWord": "5×2=10",
+          "voiceSentence": "Baris×kolom."
+        },
+        {
+          "fruitName": "Ubin",
+          "emoji": "🧱",
+          "countNum": 1,
+          "countWord": "1 m²",
+          "voiceSentence": "Denah rumah."
+        },
+        {
+          "fruitName": "Alun-Alun",
+          "emoji": "🏖️",
+          "countNum": 1,
+          "countWord": "butuh luas",
+          "voiceSentence": "Konteks pasir."
+        },
+        {
+          "fruitName": "Yohana",
+          "emoji": "✂️",
+          "countNum": 9,
+          "countWord": "luas tetap",
+          "voiceSentence": "Conservation."
+        },
+        {
+          "fruitName": "Bukan K",
+          "emoji": "⭕",
+          "countNum": 1,
+          "countWord": "path length",
+          "voiceSentence": "Bab 4."
+        },
+        {
+          "fruitName": "Metode",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "3 label luar",
+          "voiceSentence": "Covering·Array·Conservation."
+        },
+        {
+          "fruitName": "Siap B",
+          "emoji": "➡️",
+          "countNum": 1,
+          "countWord": "rumus bangun",
+          "voiceSentence": "Lanjut."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Hitung Petak",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "title": "Arti Luas",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "title": "Pilih Definisi",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "title": "Pilah Luas/Bukan",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "title": "Jodohkan Konsep",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "title": "Memori Luas",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "title": "Ketuk Hasil",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "title": "Ketuk Semua Benar",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "title": "Cerita Ubin & Pasir",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "title": "Urutkan Luas",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram Hitung Petak",
+          "diagramType": "hitung",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas."
+        },
+        {
+          "title": "Diagram Arti Luas",
+          "diagramType": "rumus",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas."
+        },
+        {
+          "title": "Diagram Pilih Definisi",
+          "diagramType": "arti",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas."
+        },
+        {
+          "title": "Diagram Pilah Luas/Bukan",
+          "diagramType": "sortir",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas."
+        },
+        {
+          "title": "Diagram Jodohkan Konsep",
+          "diagramType": "jodoh",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas."
+        },
+        {
+          "title": "Diagram Memori Luas",
+          "diagramType": "memori",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas."
+        },
+        {
+          "title": "Diagram Ketuk Hasil",
+          "diagramType": "ketuk",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas."
+        },
+        {
+          "title": "Diagram Ketuk Semua Benar",
+          "diagramType": "semua",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas."
+        },
+        {
+          "title": "Diagram Cerita Ubin & Pasir",
+          "diagramType": "cerita",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas."
+        },
+        {
+          "title": "Diagram Urutkan Luas",
+          "diagramType": "urut",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar atau salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih dari petunjuk."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih isi kotak."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Baca lalu pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK5B5A-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "hitung-a-c",
+          "title": "Hitung Petak",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "rumus-a-c",
+          "title": "Arti Luas",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "arti-a-c",
+          "title": "Pilih Definisi",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sortir-a-c",
+          "title": "Pilah Luas/Bukan",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "jodoh-a-c",
+          "title": "Jodohkan Konsep",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memori-a-c",
+          "title": "Memori Luas",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "ketuk-a-c",
+          "title": "Ketuk Hasil",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "semua-a-c",
+          "title": "Ketuk Semua Benar",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "cerita-a-c",
+          "title": "Cerita Ubin & Pasir",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "urut-a-c",
+          "title": "Urutkan Luas",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "hitung-a-p",
+          "title": "Diagram Hitung Petak",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "rumus-a-p",
+          "title": "Diagram Arti Luas",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "arti-a-p",
+          "title": "Diagram Pilih Definisi",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "sortir-a-p",
+          "title": "Diagram Pilah Luas/Bukan",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "jodoh-a-p",
+          "title": "Diagram Jodohkan Konsep",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "memori-a-p",
+          "title": "Diagram Memori Luas",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "ketuk-a-p",
+          "title": "Diagram Ketuk Hasil",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "semua-a-p",
+          "title": "Diagram Ketuk Semua Benar",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "cerita-a-p",
+          "title": "Diagram Cerita Ubin & Pasir",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "urut-a-p",
+          "title": "Diagram Urutkan Luas",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "hitung-a-a",
+          "title": "Tulis Hitung Petak",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "rumus-a-a",
+          "title": "Tulis Arti Luas",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "arti-a-a",
+          "title": "Tulis Pilih Definisi",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "sortir-a-a",
+          "title": "Tulis Pilah Luas/Bukan",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "jodoh-a-a",
+          "title": "Tulis Jodohkan Konsep",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memori-a-a",
+          "title": "Tulis Memori Luas",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde. Terapkan Unit Square Covering / Array / Conservation sesuai soal.",
+          "voiceGuide": "Hitung petak atau pilih arti luas. Bukan keliling."
+        },
+        {
+          "gameId": "subK5B5A-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "bs-a",
+          "title": "Benar atau Salah",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Dua ronde menilai pernyataan.",
+          "voiceGuide": "Benar atau salah."
+        },
+        {
+          "gameId": "subK5B5A-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "det-a",
+          "title": "Detektif Luas",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga soal petunjuk.",
+          "voiceGuide": "Pilih dari petunjuk."
+        },
+        {
+          "gameId": "subK5B5A-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "peta-a",
+          "title": "Peta Konsep",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Satu peta konsep.",
+          "voiceGuide": "Pilih isi kotak."
+        },
+        {
+          "gameId": "subK5B5A-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "cerita-q-a",
+          "title": "Cerita Angka",
+          "bookReference": "Buku Siswa hlm. 133–143",
+          "objective": "Ukur daerah dalam dengan petak satuan, Array Model, dan konservasi luas.",
+          "mechanicDescription": "Tiga ronde cerita.",
+          "voiceGuide": "Baca lalu pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Arti",
+            "isi": "Luas = ukuran daerah di dalam batas bangun.",
+            "suara": "Definisi buku."
+          },
+          {
+            "nama": "Covering",
+            "isi": "Tutup rapat dengan petak satuan (Unit Square Covering).",
+            "suara": "Tanpa celah/lubang."
+          },
+          {
+            "nama": "Array",
+            "isi": "Pada PP: luas = baris × kolom.",
+            "suara": "METODE LUAR · Array Model."
+          },
+          {
+            "nama": "Yohana",
+            "isi": "Potong-tempel tanpa mengubah luas (Area Conservation).",
+            "suara": "Petak tak utuh."
+          }
+        ],
+        "suara": "Ingat: luas daerah dalam, petak satuan, array baris kali kolom, Cara Yohana luas tetap.",
+        "caraMenyebutkan": "Tentukan satuan tutup petak hitung / array cek konservasi",
+        "rumah": "Ayo Mencoba di rumah: gambar persegi panjang di kertas berpetak, hitung petaknya, lalu bandingkan dengan panjang kali lebar.",
+        "refleksi": [
+          "Apa beda luas dan keliling?",
+          "Mengapa ubin 1 m² mewakili 1 m² luas?",
+          "Apa yang tetap saat Cara Yohana?"
+        ]
+      }
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Rumus Luas)",
+      "fullTitle": "Sub-Bab B: Luas Daerah Bangun Datar",
+      "targetDescription": "Siswa menemukan dan memakai rumus luas persegi panjang, persegi, segitiga, jajargenjang, trapesium, belah ketupat, dan layang-layang melalui Dissection Method, Shear Principle, dan unifikasi Base×Height sesuai Buku Siswa Kelas V Bab 5 Sub-Bab B hlm. 144–157.",
+      "secondaryBg": "#DBEAFE",
+      "secondaryBorder": "#2563EB",
+      "secondaryText": "#1E3A8A",
+      "silabus": {
+        "teksSuara": "Kita menemukan rumus luas. Persegi panjang panjang kali lebar. Persegi sisi kali sisi. Segitiga setengah alas kali tinggi lewat Dissection Method. Jajargenjang alas kali tinggi lewat Shear Principle. Trapesium setengah jumlah sisi sejajar kali tinggi. Belah ketupat dan layang-layang setengah kali dua diagonal. Semua bertemu di Base kali Height. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menentukan luas berbagai bangun datar dengan rumus yang tepat.",
+        "referensi": "Buku Siswa Matematika Kelas V Bab 5 Sub-Bab B hlm. 144–157; METODE LUAR · Dissection Method; Shear Principle; Base×Height Unification."
+      },
+      "stories": [
+        {
+          "id": "K5B5B-V1-1",
+          "titleHint": "Temukan p×l",
+          "sceneType": "K5B5B-V1-1",
+          "voiceNarration": "Dari petak, panjang 5 dan lebar 2 memberi 10 satuan luas. Pola: luas persegi panjang = panjang × lebar. Itu percepatan dari Array Model Sub-Bab A. Tulis L = p × l."
+        },
+        {
+          "id": "K5B5B-V1-2",
+          "titleHint": "Persegi",
+          "sceneType": "K5B5B-V1-2",
+          "voiceNarration": "Jika panjang sama lebar, bangun itu persegi. Luas = sisi × sisi. Atau tetap p × l dengan p = l. Contoh sisi 4 → luas 16."
+        },
+        {
+          "id": "K5B5B-V1-3",
+          "titleHint": "Base×Height",
+          "sceneType": "K5B5B-V1-3",
+          "voiceNarration": "Panjang dan lebar adalah alas dan tinggi yang saling tegak lurus. METODE LUAR · Base×Height Unification: banyak rumus luas memakai alas × tinggi. Simpan ide ini untuk jajar dan segitiga. Siap lanjut."
+        },
+        {
+          "id": "K5B5B-V2-1",
+          "titleHint": "Dissection",
+          "sceneType": "K5B5B-V2-1",
+          "voiceNarration": "Dua segitiga kongruen bisa digabung jadi satu persegi panjang. Maka luas satu segitiga setengah luas PP itu. Rumus: L = setengah × alas × tinggi. METODE LUAR · Dissection Method."
+        },
+        {
+          "id": "K5B5B-V2-2",
+          "titleHint": "Shear",
+          "sceneType": "K5B5B-V2-2",
+          "voiceNarration": "Jajargenjang bisa digeser menjadi persegi panjang sama alas dan tinggi. Luas tidak berubah saat digeser sejajar. Rumus: L = alas × tinggi. METODE LUAR · Shear Principle."
+        },
+        {
+          "id": "K5B5B-V2-3",
+          "titleHint": "Contoh",
+          "sceneType": "K5B5B-V2-3",
+          "voiceNarration": "Segitiga alas 6 tinggi 4 → luas 12. Jajar alas 8 tinggi 3 → luas 24. Jangan lupa: tinggi tegak lurus alas. Bukan sisi miring sembarang."
+        },
+        {
+          "id": "K5B5B-V3-1",
+          "titleHint": "Trapesium",
+          "sceneType": "K5B5B-V3-1",
+          "voiceNarration": "Trapesium punya sepasang sisi sejajar. Luas = setengah × (jumlah sisi sejajar) × tinggi. Contoh alas 5 dan 3, tinggi 4 → 16. Bisa dibuktikan dengan dua segitiga atau potong-gabung."
+        },
+        {
+          "id": "K5B5B-V3-2",
+          "titleHint": "Diagonal",
+          "sceneType": "K5B5B-V3-2",
+          "voiceNarration": "Belah ketupat: L = setengah × d1 × d2. Layang-layang rumusnya sama: setengah kali dua diagonal. Contoh d1=6 d2=4 → 12. Diagonal saling tegak lurus di bangun ini."
+        },
+        {
+          "id": "K5B5B-V3-3",
+          "titleHint": "Rangkum B",
+          "sceneType": "K5B5B-V3-3",
+          "voiceNarration": "Simpan keluarga rumus: p×l, s×s, ½a t, a t, ½(a+b)t, ½ d1 d2. Semua bisa ditelusuri dari covering dan Base×Height. Siap ke bangun gabungan. Ayo Sub-Bab C!"
+        }
+      ],
+      "videos": [
+        {
+          "id": "K5B5B-V1",
+          "judul": "PP dan Persegi",
+          "subjudul": "p×l / s×s",
+          "adegan": [
+            {
+              "id": "K5B5B-V1-1",
+              "judul": "Temukan p×l",
+              "ketukan": [
+                "Dari petak, panjang 5 dan lebar 2 memberi 10 satuan luas.",
+                "Pola: luas persegi panjang = panjang × lebar.",
+                "Itu percepatan dari Array Model Sub-Bab A.",
+                "Tulis L = p × l."
+              ],
+              "papan": [
+                "5×2=10",
+                "L=p×l",
+                "dari array",
+                "rumus PP"
+              ]
+            },
+            {
+              "id": "K5B5B-V1-2",
+              "judul": "Persegi",
+              "ketukan": [
+                "Jika panjang sama lebar, bangun itu persegi.",
+                "Luas = sisi × sisi.",
+                "Atau tetap p × l dengan p = l.",
+                "Contoh sisi 4 → luas 16."
+              ],
+              "papan": [
+                "p=l",
+                "L=s×s",
+                "sisi 4",
+                "16"
+              ]
+            },
+            {
+              "id": "K5B5B-V1-3",
+              "judul": "Base×Height",
+              "ketukan": [
+                "Panjang dan lebar adalah alas dan tinggi yang saling tegak lurus.",
+                "METODE LUAR · Base×Height Unification: banyak rumus luas memakai alas × tinggi.",
+                "Simpan ide ini untuk jajar dan segitiga.",
+                "Siap lanjut."
+              ],
+              "papan": [
+                "alas×tinggi",
+                "Base×Height",
+                "tegak lurus",
+                "lanjut"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B5B-V2",
+          "judul": "Segitiga dan Jajar",
+          "subjudul": "Dissection & Shear",
+          "adegan": [
+            {
+              "id": "K5B5B-V2-1",
+              "judul": "Dissection",
+              "ketukan": [
+                "Dua segitiga kongruen bisa digabung jadi satu persegi panjang.",
+                "Maka luas satu segitiga setengah luas PP itu.",
+                "Rumus: L = setengah × alas × tinggi.",
+                "METODE LUAR · Dissection Method."
+              ],
+              "papan": [
+                "2 segitiga→PP",
+                "½ luas PP",
+                "½×a×t",
+                "Dissection"
+              ]
+            },
+            {
+              "id": "K5B5B-V2-2",
+              "judul": "Shear",
+              "ketukan": [
+                "Jajargenjang bisa digeser menjadi persegi panjang sama alas dan tinggi.",
+                "Luas tidak berubah saat digeser sejajar.",
+                "Rumus: L = alas × tinggi.",
+                "METODE LUAR · Shear Principle."
+              ],
+              "papan": [
+                "geser jajar",
+                "jadi PP",
+                "a×t",
+                "Shear"
+              ]
+            },
+            {
+              "id": "K5B5B-V2-3",
+              "judul": "Contoh",
+              "ketukan": [
+                "Segitiga alas 6 tinggi 4 → luas 12.",
+                "Jajar alas 8 tinggi 3 → luas 24.",
+                "Jangan lupa: tinggi tegak lurus alas.",
+                "Bukan sisi miring sembarang."
+              ],
+              "papan": [
+                "½×6×4=12",
+                "8×3=24",
+                "tinggi ⊥",
+                "hati-hati"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B5B-V3",
+          "judul": "Trapesium, Belah, Layang",
+          "subjudul": "Rumus lanjut",
+          "adegan": [
+            {
+              "id": "K5B5B-V3-1",
+              "judul": "Trapesium",
+              "ketukan": [
+                "Trapesium punya sepasang sisi sejajar.",
+                "Luas = setengah × (jumlah sisi sejajar) × tinggi.",
+                "Contoh alas 5 dan 3, tinggi 4 → 16.",
+                "Bisa dibuktikan dengan dua segitiga atau potong-gabung."
+              ],
+              "papan": [
+                "½(a+b)×t",
+                "5&3 t4",
+                "16",
+                "sejajar"
+              ]
+            },
+            {
+              "id": "K5B5B-V3-2",
+              "judul": "Diagonal",
+              "ketukan": [
+                "Belah ketupat: L = setengah × d1 × d2.",
+                "Layang-layang rumusnya sama: setengah kali dua diagonal.",
+                "Contoh d1=6 d2=4 → 12.",
+                "Diagonal saling tegak lurus di bangun ini."
+              ],
+              "papan": [
+                "½×d1×d2",
+                "belah & layang",
+                "6&4→12",
+                "⊥ diagonal"
+              ]
+            },
+            {
+              "id": "K5B5B-V3-3",
+              "judul": "Rangkum B",
+              "ketukan": [
+                "Simpan keluarga rumus: p×l, s×s, ½a t, a t, ½(a+b)t, ½ d1 d2.",
+                "Semua bisa ditelusuri dari covering dan Base×Height.",
+                "Siap ke bangun gabungan.",
+                "Ayo Sub-Bab C!"
+              ],
+              "papan": [
+                "keluarga rumus",
+                "dari covering",
+                "gabungan",
+                "lanjut C"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Kenali bangun",
+          "stepDesc": "PP/persegi/segitiga/…",
+          "icon": "👀",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Pilih rumus",
+          "stepDesc": "Sesuai ciri",
+          "icon": "🧮",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Tegak lurus",
+          "stepDesc": "Tinggi ⊥ alas",
+          "icon": "⊥",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Hitung",
+          "stepDesc": "Ganti angka",
+          "icon": "🔢",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Metode luar",
+          "stepDesc": "Dissection/Shear/Base×H",
+          "icon": "🌍",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Cek",
+          "stepDesc": "Masuk akal?",
+          "icon": "✅",
+          "flowFrom": "5",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "PP",
+          "emoji": "▭",
+          "countNum": 10,
+          "countWord": "p×l",
+          "voiceSentence": "5×2."
+        },
+        {
+          "fruitName": "Persegi",
+          "emoji": "⬜",
+          "countNum": 16,
+          "countWord": "s×s",
+          "voiceSentence": "sisi 4."
+        },
+        {
+          "fruitName": "Segitiga",
+          "emoji": "🔺",
+          "countNum": 12,
+          "countWord": "½×a×t",
+          "voiceSentence": "Dissection."
+        },
+        {
+          "fruitName": "Jajar",
+          "emoji": "▱",
+          "countNum": 24,
+          "countWord": "a×t",
+          "voiceSentence": "Shear."
+        },
+        {
+          "fruitName": "Trapesium",
+          "emoji": "⏢",
+          "countNum": 16,
+          "countWord": "½(a+b)×t",
+          "voiceSentence": "Sejajar."
+        },
+        {
+          "fruitName": "Belah",
+          "emoji": "◇",
+          "countNum": 12,
+          "countWord": "½×d1×d2",
+          "voiceSentence": "Diagonal."
+        },
+        {
+          "fruitName": "Layang",
+          "emoji": "🪁",
+          "countNum": 24,
+          "countWord": "½×d1×d2",
+          "voiceSentence": "Sama rumus."
+        },
+        {
+          "fruitName": "Base×H",
+          "emoji": "⊥",
+          "countNum": 1,
+          "countWord": "alas×tinggi",
+          "voiceSentence": "Unifikasi."
+        },
+        {
+          "fruitName": "Metode",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "3 label",
+          "voiceSentence": "Dissection·Shear·Base×H."
+        },
+        {
+          "fruitName": "Siap C",
+          "emoji": "➡️",
+          "countNum": 1,
+          "countWord": "gabungan",
+          "voiceSentence": "Lanjut."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Hitung Rumus Luas",
+          "emoji": "🧮",
+          "targetCount": 6,
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "title": "Pilih Rumus",
+          "emoji": "🧮",
+          "targetCount": 6,
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "title": "Arti Base×Height",
+          "emoji": "🧮",
+          "targetCount": 6,
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "title": "Pilah Rumus/Bukan",
+          "emoji": "🧮",
+          "targetCount": 6,
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "title": "Jodohkan Bangun-Rumus",
+          "emoji": "🧮",
+          "targetCount": 6,
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "title": "Memori Rumus",
+          "emoji": "🧮",
+          "targetCount": 6,
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "title": "Ketuk Hasil",
+          "emoji": "🧮",
+          "targetCount": 6,
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "title": "Ketuk Semua Benar",
+          "emoji": "🧮",
+          "targetCount": 6,
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "title": "Cerita Rumus",
+          "emoji": "🧮",
+          "targetCount": 6,
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "title": "Urutkan Luas",
+          "emoji": "🧮",
+          "targetCount": 6,
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram Hitung Rumus Luas",
+          "diagramType": "hitung",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height."
+        },
+        {
+          "title": "Diagram Pilih Rumus",
+          "diagramType": "rumus",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height."
+        },
+        {
+          "title": "Diagram Arti Base×Height",
+          "diagramType": "arti",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height."
+        },
+        {
+          "title": "Diagram Pilah Rumus/Bukan",
+          "diagramType": "sortir",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height."
+        },
+        {
+          "title": "Diagram Jodohkan Bangun-Rumus",
+          "diagramType": "jodoh",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height."
+        },
+        {
+          "title": "Diagram Memori Rumus",
+          "diagramType": "memori",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height."
+        },
+        {
+          "title": "Diagram Ketuk Hasil",
+          "diagramType": "ketuk",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height."
+        },
+        {
+          "title": "Diagram Ketuk Semua Benar",
+          "diagramType": "semua",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height."
+        },
+        {
+          "title": "Diagram Cerita Rumus",
+          "diagramType": "cerita",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height."
+        },
+        {
+          "title": "Diagram Urutkan Luas",
+          "diagramType": "urut",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar atau salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih dari petunjuk."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih isi kotak."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Baca lalu pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK5B5B-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "hitung-b-c",
+          "title": "Hitung Rumus Luas",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "rumus-b-c",
+          "title": "Pilih Rumus",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "arti-b-c",
+          "title": "Arti Base×Height",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sortir-b-c",
+          "title": "Pilah Rumus/Bukan",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "jodoh-b-c",
+          "title": "Jodohkan Bangun-Rumus",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memori-b-c",
+          "title": "Memori Rumus",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "ketuk-b-c",
+          "title": "Ketuk Hasil",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "semua-b-c",
+          "title": "Ketuk Semua Benar",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "cerita-b-c",
+          "title": "Cerita Rumus",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "urut-b-c",
+          "title": "Urutkan Luas",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "hitung-b-p",
+          "title": "Diagram Hitung Rumus Luas",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "rumus-b-p",
+          "title": "Diagram Pilih Rumus",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "arti-b-p",
+          "title": "Diagram Arti Base×Height",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "sortir-b-p",
+          "title": "Diagram Pilah Rumus/Bukan",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "jodoh-b-p",
+          "title": "Diagram Jodohkan Bangun-Rumus",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "memori-b-p",
+          "title": "Diagram Memori Rumus",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "ketuk-b-p",
+          "title": "Diagram Ketuk Hasil",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "semua-b-p",
+          "title": "Diagram Ketuk Semua Benar",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "cerita-b-p",
+          "title": "Diagram Cerita Rumus",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "urut-b-p",
+          "title": "Diagram Urutkan Luas",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "hitung-b-a",
+          "title": "Tulis Hitung Rumus Luas",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "rumus-b-a",
+          "title": "Tulis Pilih Rumus",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "arti-b-a",
+          "title": "Tulis Arti Base×Height",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "sortir-b-a",
+          "title": "Tulis Pilah Rumus/Bukan",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "jodoh-b-a",
+          "title": "Tulis Jodohkan Bangun-Rumus",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memori-b-a",
+          "title": "Tulis Memori Rumus",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde rumus dan hitung untuk PP, persegi, segitiga, jajar, trap, belah/layang.",
+          "voiceGuide": "Pilih rumus atau hasil luas yang tepat."
+        },
+        {
+          "gameId": "subK5B5B-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "bs-b",
+          "title": "Benar atau Salah",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Dua ronde menilai pernyataan.",
+          "voiceGuide": "Benar atau salah."
+        },
+        {
+          "gameId": "subK5B5B-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "det-b",
+          "title": "Detektif Luas",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga soal petunjuk.",
+          "voiceGuide": "Pilih dari petunjuk."
+        },
+        {
+          "gameId": "subK5B5B-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "peta-b",
+          "title": "Peta Konsep",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Satu peta konsep.",
+          "voiceGuide": "Pilih isi kotak."
+        },
+        {
+          "gameId": "subK5B5B-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "cerita-q-b",
+          "title": "Cerita Angka",
+          "bookReference": "Buku Siswa hlm. 144–157",
+          "objective": "Pilih dan hitung rumus luas dengan Dissection, Shear, dan Base×Height.",
+          "mechanicDescription": "Tiga ronde cerita.",
+          "voiceGuide": "Baca lalu pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "PP/Persegi",
+            "isi": "L = p×l; persegi L = s×s.",
+            "suara": "Dari array."
+          },
+          {
+            "nama": "Segitiga",
+            "isi": "L = ½×alas×tinggi (Dissection).",
+            "suara": "Setengah PP."
+          },
+          {
+            "nama": "Jajar",
+            "isi": "L = alas×tinggi (Shear).",
+            "suara": "Geser jadi PP."
+          },
+          {
+            "nama": "Trap/Belah/Layang",
+            "isi": "½(a+b)×t atau ½×d1×d2.",
+            "suara": "Ciri sejajar/diagonal."
+          }
+        ],
+        "suara": "Ingat rumus: p kali l, s kali s, setengah a t, a t, setengah a plus b kali t, setengah d1 d2.",
+        "caraMenyebutkan": "Kenali bangun pilih rumus tinggi tegak lurus hitung & cek",
+        "rumah": "Ayo Mencoba di rumah: ukur alas dan tinggi sebuah jajargenjang atau segitiga pada benda datar, lalu hitung luasnya.",
+        "refleksi": [
+          "Mengapa segitiga memakai setengah?",
+          "Apa arti Shear pada jajargenjang?",
+          "Rumus belah ketupat memakai apa?"
+        ]
+      }
+    },
+    "C": {
+      "id": "C",
+      "codeTitle": "Sub-Bab C (Bangun Gabungan)",
+      "fullTitle": "Sub-Bab C: Luas Daerah Bangun Gabungan",
+      "targetDescription": "Siswa mengurai bangun gabungan menjadi bagian yang dikenal (cara Yohana: layang+segitiga; cara Komang: jajar+segitiga), menghitung tiap luas, lalu menjumlahkannya dengan Additive Decomposition / Composite Area Strategy sesuai Buku Siswa Kelas V Bab 5 Sub-Bab C hlm. 158–159.",
+      "secondaryBg": "#DCFCE7",
+      "secondaryBorder": "#16A34A",
+      "secondaryText": "#14532D",
+      "silabus": {
+        "teksSuara": "Kita hitung luas bangun gabungan. Urai jadi bagian yang sudah punya rumus. Yohana membagi jadi layang-layang dan segitiga. Komang membagi jadi jajargenjang dan segitiga. Jumlahkan luas bagian. Itu Additive Decomposition atau Composite Area Strategy. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menentukan luas bangun gabungan dengan mengurai dan menjumlahkan luas bagian.",
+        "referensi": "Buku Siswa Matematika Kelas V Bab 5 Sub-Bab C hlm. 158–159; METODE LUAR · Additive Decomposition; Composite Area Strategy."
+      },
+      "stories": [
+        {
+          "id": "K5B5C-V1-1",
+          "titleHint": "Bangun aneh",
+          "sceneType": "K5B5C-V1-1",
+          "voiceNarration": "Ada bangun yang tidak langsung cocok satu rumus saja. Kita membaginya menjadi bangun yang sudah dikenal. METODE LUAR · Composite Area Strategy: urai, hitung, jumlahkan. Pastikan bagian tidak saling menutup dua kali."
+        },
+        {
+          "id": "K5B5C-V1-2",
+          "titleHint": "Sifat aditif",
+          "sceneType": "K5B5C-V1-2",
+          "voiceNarration": "Jika dua daerah saling tempel tanpa tumpang tindih, luas total = jumlah luas. METODE LUAR · Additive Decomposition. Itu alasan menjumlahkan sah. Kalau tumpang tindih, jangan dihitung dua kali."
+        },
+        {
+          "id": "K5B5C-V1-3",
+          "titleHint": "Dua cara",
+          "sceneType": "K5B5C-V1-3",
+          "voiceNarration": "Boleh lebih dari satu cara mengurai. Hasil akhir harus sama jika semuanya benar. Itu alat cek silang. Siap lihat Yohana dan Komang."
+        },
+        {
+          "id": "K5B5C-V2-1",
+          "titleHint": "Yohana",
+          "sceneType": "K5B5C-V2-1",
+          "voiceNarration": "Yohana membagi bangun jadi layang-layang dan segitiga. Luas layang = setengah × d1 × d2. Luas segitiga = setengah × alas × tinggi. Jumlahkan keduanya."
+        },
+        {
+          "id": "K5B5C-V2-2",
+          "titleHint": "Komang",
+          "sceneType": "K5B5C-V2-2",
+          "voiceNarration": "Komang membagi jadi jajargenjang dan segitiga. Luas jajar = alas × tinggi. Luas segitiga lagi setengah alas tinggi. Jumlahkan: dapat luas gabungan yang sama target."
+        },
+        {
+          "id": "K5B5C-V2-3",
+          "titleHint": "Angka latihan",
+          "sceneType": "K5B5C-V2-3",
+          "voiceNarration": "Contoh latihan: 12 plus 8 sama dengan 20. Atau 24 plus 12 sama dengan 36. Fokus pada langkah, bukan menebak. Tulis rumus tiap bagian dulu."
+        },
+        {
+          "id": "K5B5C-V3-1",
+          "titleHint": "Checklist",
+          "sceneType": "K5B5C-V3-1",
+          "voiceNarration": "Satu: gambar garis uraian yang jelas. Dua: setiap bagian punya rumus. Tiga: tidak ada daerah terlewat atau dobel. Empat: jumlahkan dengan satuan sama."
+        },
+        {
+          "id": "K5B5C-V3-2",
+          "titleHint": "Validasi",
+          "sceneType": "K5B5C-V3-2",
+          "voiceNarration": "Jika sempat, hitung dengan cara uraian kedua. Hasil harus cocok. Kalau beda, cari bagian yang keliru. Itu kebiasaan matematikawan kecil."
+        },
+        {
+          "id": "K5B5C-V3-3",
+          "titleHint": "Siap D",
+          "sceneType": "K5B5C-V3-3",
+          "voiceNarration": "Gabungan luas siap. Berikutnya: keliling sama, luas bisa beda. Hubungan K dan L. Ayo Sub-Bab D!"
+        }
+      ],
+      "videos": [
+        {
+          "id": "K5B5C-V1",
+          "judul": "Mengapa Diurai?",
+          "subjudul": "Composite",
+          "adegan": [
+            {
+              "id": "K5B5C-V1-1",
+              "judul": "Bangun aneh",
+              "ketukan": [
+                "Ada bangun yang tidak langsung cocok satu rumus saja.",
+                "Kita membaginya menjadi bangun yang sudah dikenal.",
+                "METODE LUAR · Composite Area Strategy: urai, hitung, jumlahkan.",
+                "Pastikan bagian tidak saling menutup dua kali."
+              ],
+              "papan": [
+                "tidak 1 rumus",
+                "urai bagian",
+                "Composite Area",
+                "tanpa tindih"
+              ]
+            },
+            {
+              "id": "K5B5C-V1-2",
+              "judul": "Sifat aditif",
+              "ketukan": [
+                "Jika dua daerah saling tempel tanpa tumpang tindih, luas total = jumlah luas.",
+                "METODE LUAR · Additive Decomposition.",
+                "Itu alasan menjumlahkan sah.",
+                "Kalau tumpang tindih, jangan dihitung dua kali."
+              ],
+              "papan": [
+                "aditif",
+                "jumlah luas",
+                "Additive",
+                "jangan 2×"
+              ]
+            },
+            {
+              "id": "K5B5C-V1-3",
+              "judul": "Dua cara",
+              "ketukan": [
+                "Boleh lebih dari satu cara mengurai.",
+                "Hasil akhir harus sama jika semuanya benar.",
+                "Itu alat cek silang.",
+                "Siap lihat Yohana dan Komang."
+              ],
+              "papan": [
+                "banyak cara",
+                "hasil sama",
+                "cek silang",
+                "Yohana/Komang"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B5C-V2",
+          "judul": "Cara Yohana & Komang",
+          "subjudul": "Contoh buku",
+          "adegan": [
+            {
+              "id": "K5B5C-V2-1",
+              "judul": "Yohana",
+              "ketukan": [
+                "Yohana membagi bangun jadi layang-layang dan segitiga.",
+                "Luas layang = setengah × d1 × d2.",
+                "Luas segitiga = setengah × alas × tinggi.",
+                "Jumlahkan keduanya."
+              ],
+              "papan": [
+                "layang+segitiga",
+                "½ d1 d2",
+                "½ a t",
+                "jumlah"
+              ]
+            },
+            {
+              "id": "K5B5C-V2-2",
+              "judul": "Komang",
+              "ketukan": [
+                "Komang membagi jadi jajargenjang dan segitiga.",
+                "Luas jajar = alas × tinggi.",
+                "Luas segitiga lagi setengah alas tinggi.",
+                "Jumlahkan: dapat luas gabungan yang sama target."
+              ],
+              "papan": [
+                "jajar+segitiga",
+                "a×t",
+                "½ a t",
+                "jumlah"
+              ]
+            },
+            {
+              "id": "K5B5C-V2-3",
+              "judul": "Angka latihan",
+              "ketukan": [
+                "Contoh latihan: 12 plus 8 sama dengan 20.",
+                "Atau 24 plus 12 sama dengan 36.",
+                "Fokus pada langkah, bukan menebak.",
+                "Tulis rumus tiap bagian dulu."
+              ],
+              "papan": [
+                "12+8=20",
+                "24+12=36",
+                "langkah",
+                "tulis rumus"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B5C-V3",
+          "judul": "Aturan Aman",
+          "subjudul": "Cek",
+          "adegan": [
+            {
+              "id": "K5B5C-V3-1",
+              "judul": "Checklist",
+              "ketukan": [
+                "Satu: gambar garis uraian yang jelas.",
+                "Dua: setiap bagian punya rumus.",
+                "Tiga: tidak ada daerah terlewat atau dobel.",
+                "Empat: jumlahkan dengan satuan sama."
+              ],
+              "papan": [
+                "garis uraian",
+                "ada rumus",
+                "tak dobel",
+                "satuan sama"
+              ]
+            },
+            {
+              "id": "K5B5C-V3-2",
+              "judul": "Validasi",
+              "ketukan": [
+                "Jika sempat, hitung dengan cara uraian kedua.",
+                "Hasil harus cocok.",
+                "Kalau beda, cari bagian yang keliru.",
+                "Itu kebiasaan matematikawan kecil."
+              ],
+              "papan": [
+                "cara 2",
+                "hasil cocok",
+                "cari salah",
+                "kebiasaan"
+              ]
+            },
+            {
+              "id": "K5B5C-V3-3",
+              "judul": "Siap D",
+              "ketukan": [
+                "Gabungan luas siap.",
+                "Berikutnya: keliling sama, luas bisa beda.",
+                "Hubungan K dan L.",
+                "Ayo Sub-Bab D!"
+              ],
+              "papan": [
+                "C siap",
+                "K vs L",
+                "isoperimetric",
+                "lanjut D"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Lihat bangun",
+          "stepDesc": "Gabungan apa?",
+          "icon": "🧩",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Urai",
+          "stepDesc": "Bagian dikenal",
+          "icon": "✂️",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Rumus tiap",
+          "stepDesc": "PP/segitiga/…",
+          "icon": "🧮",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Jumlahkan",
+          "stepDesc": "Additive",
+          "icon": "➕",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Cek tindih",
+          "stepDesc": "Tanpa dobel",
+          "icon": "⚠️",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Validasi",
+          "stepDesc": "Cara kedua?",
+          "icon": "✅",
+          "flowFrom": "5",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Urai",
+          "emoji": "✂️",
+          "countNum": 1,
+          "countWord": "bagi bagian",
+          "voiceSentence": "Langkah 1."
+        },
+        {
+          "fruitName": "Yohana",
+          "emoji": "🪁",
+          "countNum": 1,
+          "countWord": "layang+△",
+          "voiceSentence": "Buku."
+        },
+        {
+          "fruitName": "Komang",
+          "emoji": "▱",
+          "countNum": 1,
+          "countWord": "jajar+△",
+          "voiceSentence": "Buku."
+        },
+        {
+          "fruitName": "Jumlah",
+          "emoji": "➕",
+          "countNum": 20,
+          "countWord": "12+8",
+          "voiceSentence": "Additive."
+        },
+        {
+          "fruitName": "24+12",
+          "emoji": "🔢",
+          "countNum": 36,
+          "countWord": "36",
+          "voiceSentence": "Contoh."
+        },
+        {
+          "fruitName": "Composite",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "urai+hitung+Σ",
+          "voiceSentence": "Metode luar."
+        },
+        {
+          "fruitName": "Tak tindih",
+          "emoji": "✅",
+          "countNum": 1,
+          "countWord": "jangan 2×",
+          "voiceSentence": "Aturan."
+        },
+        {
+          "fruitName": "Validasi",
+          "emoji": "🔍",
+          "countNum": 1,
+          "countWord": "dua cara",
+          "voiceSentence": "Cek."
+        },
+        {
+          "fruitName": "Satuan",
+          "emoji": "📐",
+          "countNum": 1,
+          "countWord": "sama",
+          "voiceSentence": "cm²."
+        },
+        {
+          "fruitName": "Siap D",
+          "emoji": "➡️",
+          "countNum": 1,
+          "countWord": "K dan L",
+          "voiceSentence": "Lanjut."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Hitung Gabungan",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "title": "Cara Urai",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "title": "Pilih Strategi",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "title": "Pilah Urai/Bukan",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "title": "Jodohkan Cara",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "title": "Memori Gabungan",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "title": "Ketuk Hasil",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "title": "Ketuk Semua Benar",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "title": "Cerita Yohana/Komang",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "title": "Urutkan Luas",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram Hitung Gabungan",
+          "diagramType": "hitung",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area)."
+        },
+        {
+          "title": "Diagram Cara Urai",
+          "diagramType": "rumus",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area)."
+        },
+        {
+          "title": "Diagram Pilih Strategi",
+          "diagramType": "arti",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area)."
+        },
+        {
+          "title": "Diagram Pilah Urai/Bukan",
+          "diagramType": "sortir",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area)."
+        },
+        {
+          "title": "Diagram Jodohkan Cara",
+          "diagramType": "jodoh",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area)."
+        },
+        {
+          "title": "Diagram Memori Gabungan",
+          "diagramType": "memori",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area)."
+        },
+        {
+          "title": "Diagram Ketuk Hasil",
+          "diagramType": "ketuk",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area)."
+        },
+        {
+          "title": "Diagram Ketuk Semua Benar",
+          "diagramType": "semua",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area)."
+        },
+        {
+          "title": "Diagram Cerita Yohana/Komang",
+          "diagramType": "cerita",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area)."
+        },
+        {
+          "title": "Diagram Urutkan Luas",
+          "diagramType": "urut",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area)."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar atau salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih dari petunjuk."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih isi kotak."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Baca lalu pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK5B5C-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "hitung-c-c",
+          "title": "Hitung Gabungan",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "rumus-c-c",
+          "title": "Cara Urai",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "arti-c-c",
+          "title": "Pilih Strategi",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sortir-c-c",
+          "title": "Pilah Urai/Bukan",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "jodoh-c-c",
+          "title": "Jodohkan Cara",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memori-c-c",
+          "title": "Memori Gabungan",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "ketuk-c-c",
+          "title": "Ketuk Hasil",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "semua-c-c",
+          "title": "Ketuk Semua Benar",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "cerita-c-c",
+          "title": "Cerita Yohana/Komang",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "urut-c-c",
+          "title": "Urutkan Luas",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "hitung-c-p",
+          "title": "Diagram Hitung Gabungan",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "rumus-c-p",
+          "title": "Diagram Cara Urai",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "arti-c-p",
+          "title": "Diagram Pilih Strategi",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "sortir-c-p",
+          "title": "Diagram Pilah Urai/Bukan",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "jodoh-c-p",
+          "title": "Diagram Jodohkan Cara",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "memori-c-p",
+          "title": "Diagram Memori Gabungan",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "ketuk-c-p",
+          "title": "Diagram Ketuk Hasil",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "semua-c-p",
+          "title": "Diagram Ketuk Semua Benar",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "cerita-c-p",
+          "title": "Diagram Cerita Yohana/Komang",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "urut-c-p",
+          "title": "Diagram Urutkan Luas",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "hitung-c-a",
+          "title": "Tulis Hitung Gabungan",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "rumus-c-a",
+          "title": "Tulis Cara Urai",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "arti-c-a",
+          "title": "Tulis Pilih Strategi",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "sortir-c-a",
+          "title": "Tulis Pilah Urai/Bukan",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "jodoh-c-a",
+          "title": "Tulis Jodohkan Cara",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memori-c-a",
+          "title": "Tulis Memori Gabungan",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde Additive Decomposition: jumlah bagian, strategi Yohana/Komang.",
+          "voiceGuide": "Jumlahkan atau pilih cara uraian yang benar."
+        },
+        {
+          "gameId": "subK5B5C-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "bs-c",
+          "title": "Benar atau Salah",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Dua ronde menilai pernyataan.",
+          "voiceGuide": "Benar atau salah."
+        },
+        {
+          "gameId": "subK5B5C-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "det-c",
+          "title": "Detektif Luas",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga soal petunjuk.",
+          "voiceGuide": "Pilih dari petunjuk."
+        },
+        {
+          "gameId": "subK5B5C-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "peta-c",
+          "title": "Peta Konsep",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Satu peta konsep.",
+          "voiceGuide": "Pilih isi kotak."
+        },
+        {
+          "gameId": "subK5B5C-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "cerita-q-c",
+          "title": "Cerita Angka",
+          "bookReference": "Buku Siswa hlm. 158–159",
+          "objective": "Urai bangun gabungan lalu jumlahkan luas bagian (Composite Area).",
+          "mechanicDescription": "Tiga ronde cerita.",
+          "voiceGuide": "Baca lalu pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Urai",
+            "isi": "Bagi jadi bangun yang punya rumus.",
+            "suara": "Composite Area."
+          },
+          {
+            "nama": "Jumlah",
+            "isi": "Luas total = jumlah luas bagian tak tindih.",
+            "suara": "Additive Decomposition."
+          },
+          {
+            "nama": "Yohana",
+            "isi": "Layang-layang + segitiga.",
+            "suara": "Contoh buku."
+          },
+          {
+            "nama": "Komang",
+            "isi": "Jajargenjang + segitiga.",
+            "suara": "Validasi silang."
+          }
+        ],
+        "suara": "Ingat: urai, hitung tiap rumus, jumlahkan tanpa tumpang tindih, cek dua cara.",
+        "caraMenyebutkan": "Urai bangun hitung tiap bagian jumlahkan validasi",
+        "rumah": "Ayo Mencoba di rumah: gambar rumah dari persegi panjang plus segitiga atap, hitung luas gabungannya dua cara.",
+        "refleksi": [
+          "Apa beda cara Yohana dan Komang?",
+          "Mengapa bagian tak boleh tumpang tindih?",
+          "Berapa 12+8?"
+        ]
+      }
+    },
+    "D": {
+      "id": "D",
+      "codeTitle": "Sub-Bab D (K dan L)",
+      "fullTitle": "Sub-Bab D: Hubungan Keliling dan Luas Daerah",
+      "targetDescription": "Siswa memahami bahwa kerangka kawat ber-keliling tetap (mis. 60 cm) dapat membentuk banyak persegi panjang dengan luas berbeda, dan luas cenderung besar saat bentuk mendekati persegi (Isoperimetric Relationship / Fixed Perimeter Maximize Area) sesuai Buku Siswa Kelas V Bab 5 Sub-Bab D hlm. 159–161.",
+      "secondaryBg": "#FCE7F3",
+      "secondaryBorder": "#DB2777",
+      "secondaryText": "#9D174D",
+      "silabus": {
+        "teksSuara": "Kita bandingkan keliling dan luas. Kawat 60 centi meter membuat kerangka persegi panjang: dua kali panjang plus lebar sama 60, jadi panjang plus lebar 30. Banyak pasangan panjang-lebar. Luasnya bisa 200, 125, bahkan 225 jika mendekati persegi. METODE LUAR Isoperimetric Relationship: keliling sama tidak menjamin luas sama. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa membandingkan luas berbagai persegi panjang ber-keliling sama dan menjelaskan kapan luas cenderung besar.",
+        "referensi": "Buku Siswa Matematika Kelas V Bab 5 Sub-Bab D hlm. 159–161; METODE LUAR · Isoperimetric Relationship; Fixed Perimeter Maximize Area."
+      },
+      "stories": [
+        {
+          "id": "K5B5D-V1-1",
+          "titleHint": "Kerangka",
+          "sceneType": "K5B5D-V1-1",
+          "voiceNarration": "Bapak punya kawat 60 cm untuk kerangka persegi panjang. Keliling kerangka = 60 cm. Jadi 2(p + l) = 60, atau p + l = 30. Banyak cara memilih p dan l."
+        },
+        {
+          "id": "K5B5D-V1-2",
+          "titleHint": "Tabel buku",
+          "sceneType": "K5B5D-V1-2",
+          "voiceNarration": "Contoh: panjang 20 lebar 10 → K=60, L=200. Panjang 25 lebar 5 → K=60, L=125. Keliling sama, luas berbeda! METODE LUAR · Isoperimetric Relationship."
+        },
+        {
+          "id": "K5B5D-V1-3",
+          "titleHint": "Aplikasi",
+          "sceneType": "K5B5D-V1-3",
+          "voiceNarration": "Kawat dan pagar butuh keliling. Ubin, cat lantai, pasir butuh luas. Jangan memakai angka K untuk menjawab pertanyaan L. Pilih konsep sesuai kebutuhan."
+        },
+        {
+          "id": "K5B5D-V2-1",
+          "titleHint": "Bandingkan",
+          "sceneType": "K5B5D-V2-1",
+          "voiceNarration": "Di antara pasangan dengan p + l = 30, hitung luas p × l. 20×10=200, 18×12=216, 15×15=225, 28×2=56. Yang mendekati persegi lebih luas. Yang sangat pipih luasnya kecil."
+        },
+        {
+          "id": "K5B5D-V2-2",
+          "titleHint": "Intuisi",
+          "sceneType": "K5B5D-V2-2",
+          "voiceNarration": "METODE LUAR · Fixed Perimeter Maximize Area. Untuk keliling tetap, daerah terbesar cenderung bentuk paling 'gendut' atau mendekati bundar/persegi. Di kelas 5 cukup amati tabel: persegi menang di antara PP. Tidak perlu rumus lanjutan."
+        },
+        {
+          "id": "K5B5D-V2-3",
+          "titleHint": "Hati-hati",
+          "sceneType": "K5B5D-V2-3",
+          "voiceNarration": "Jangan bilang keliling besar otomatis luas besar tanpa konteks. Di soal ini keliling dikunci sama. Yang berubah hanya pasangan p dan l. Fokus pada perbandingan luas."
+        },
+        {
+          "id": "K5B5D-V3-1",
+          "titleHint": "Alur bab",
+          "sceneType": "K5B5D-V3-1",
+          "voiceNarration": "A: konsep covering dan array. B: rumus bangun lewat dissection dan shear. C: gabungan aditif. D: K tetap, L bisa beda."
+        },
+        {
+          "id": "K5B5D-V3-2",
+          "titleHint": "Label metode",
+          "sceneType": "K5B5D-V3-2",
+          "voiceNarration": "Unit Square Covering, Array Model, Area Conservation. Dissection, Shear, Base×Height. Additive Decomposition, Composite Area. Isoperimetric Relationship."
+        },
+        {
+          "id": "K5B5D-V3-3",
+          "titleHint": "Siap materi",
+          "sceneType": "K5B5D-V3-3",
+          "voiceNarration": "Materi Tab Materi Bab 5 Sub-Bab A sampai D siap dimainkan. Latihan dan ujian menyusul instruksi terpisah. Mainkan permainan Concrete, Picture, Abstract. Hebat sudah sampai sini!"
+        }
+      ],
+      "videos": [
+        {
+          "id": "K5B5D-V1",
+          "judul": "Kawat 60 cm",
+          "subjudul": "Syarat K",
+          "adegan": [
+            {
+              "id": "K5B5D-V1-1",
+              "judul": "Kerangka",
+              "ketukan": [
+                "Bapak punya kawat 60 cm untuk kerangka persegi panjang.",
+                "Keliling kerangka = 60 cm.",
+                "Jadi 2(p + l) = 60, atau p + l = 30.",
+                "Banyak cara memilih p dan l."
+              ],
+              "papan": [
+                "kawat 60",
+                "K=60",
+                "p+l=30",
+                "banyak cara"
+              ]
+            },
+            {
+              "id": "K5B5D-V1-2",
+              "judul": "Tabel buku",
+              "ketukan": [
+                "Contoh: panjang 20 lebar 10 → K=60, L=200.",
+                "Panjang 25 lebar 5 → K=60, L=125.",
+                "Keliling sama, luas berbeda!",
+                "METODE LUAR · Isoperimetric Relationship."
+              ],
+              "papan": [
+                "20×10→200",
+                "25×5→125",
+                "K sama",
+                "L beda"
+              ]
+            },
+            {
+              "id": "K5B5D-V1-3",
+              "judul": "Aplikasi",
+              "ketukan": [
+                "Kawat dan pagar butuh keliling.",
+                "Ubin, cat lantai, pasir butuh luas.",
+                "Jangan memakai angka K untuk menjawab pertanyaan L.",
+                "Pilih konsep sesuai kebutuhan."
+              ],
+              "papan": [
+                "kawat→K",
+                "ubin→L",
+                "jangan tertukar",
+                "sesuai kebutuhan"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B5D-V2",
+          "judul": "Mencari yang Terluas",
+          "subjudul": "Maximize Area",
+          "adegan": [
+            {
+              "id": "K5B5D-V2-1",
+              "judul": "Bandingkan",
+              "ketukan": [
+                "Di antara pasangan dengan p + l = 30, hitung luas p × l.",
+                "20×10=200, 18×12=216, 15×15=225, 28×2=56.",
+                "Yang mendekati persegi lebih luas.",
+                "Yang sangat pipih luasnya kecil."
+              ],
+              "papan": [
+                "banding L",
+                "15×15=225",
+                "28×2=56",
+                "dekat persegi"
+              ]
+            },
+            {
+              "id": "K5B5D-V2-2",
+              "judul": "Intuisi",
+              "ketukan": [
+                "METODE LUAR · Fixed Perimeter Maximize Area.",
+                "Untuk keliling tetap, daerah terbesar cenderung bentuk paling 'gendut' atau mendekati bundar/persegi.",
+                "Di kelas 5 cukup amati tabel: persegi menang di antara PP.",
+                "Tidak perlu rumus lanjutan."
+              ],
+              "papan": [
+                "Fixed Perimeter",
+                "maksimalkan L",
+                "gendut/persegi",
+                "tabel cukup"
+              ]
+            },
+            {
+              "id": "K5B5D-V2-3",
+              "judul": "Hati-hati",
+              "ketukan": [
+                "Jangan bilang keliling besar otomatis luas besar tanpa konteks.",
+                "Di soal ini keliling dikunci sama.",
+                "Yang berubah hanya pasangan p dan l.",
+                "Fokus pada perbandingan luas."
+              ],
+              "papan": [
+                "K dikunci",
+                "p,l berubah",
+                "banding L",
+                "fokus"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B5D-V3",
+          "judul": "Rangkum Bab 5",
+          "subjudul": "A–D",
+          "adegan": [
+            {
+              "id": "K5B5D-V3-1",
+              "judul": "Alur bab",
+              "ketukan": [
+                "A: konsep covering dan array.",
+                "B: rumus bangun lewat dissection dan shear.",
+                "C: gabungan aditif.",
+                "D: K tetap, L bisa beda."
+              ],
+              "papan": [
+                "A konsep",
+                "B rumus",
+                "C gabungan",
+                "D K vs L"
+              ]
+            },
+            {
+              "id": "K5B5D-V3-2",
+              "judul": "Label metode",
+              "ketukan": [
+                "Unit Square Covering, Array Model, Area Conservation.",
+                "Dissection, Shear, Base×Height.",
+                "Additive Decomposition, Composite Area.",
+                "Isoperimetric Relationship."
+              ],
+              "papan": [
+                "Covering/Array",
+                "Dissection/Shear",
+                "Additive",
+                "Isoperimetric"
+              ]
+            },
+            {
+              "id": "K5B5D-V3-3",
+              "judul": "Siap materi",
+              "ketukan": [
+                "Materi Tab Materi Bab 5 Sub-Bab A sampai D siap dimainkan.",
+                "Latihan dan ujian menyusul instruksi terpisah.",
+                "Mainkan permainan Concrete, Picture, Abstract.",
+                "Hebat sudah sampai sini!"
+              ],
+              "papan": [
+                "Materi siap",
+                "tanpa Latihan dulu",
+                "30 permainan",
+                "hebat"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Kunci K",
+          "stepDesc": "2(p+l) tetap",
+          "icon": "🔒",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Pasangan p,l",
+          "stepDesc": "p+l tetap",
+          "icon": "🔢",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Hitung L",
+          "stepDesc": "p×l tiap pasangan",
+          "icon": "🧮",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Bandingkan",
+          "stepDesc": "L bisa beda",
+          "icon": "⚖️",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Terluas",
+          "stepDesc": "dekat persegi",
+          "icon": "⬜",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Pilih konsep",
+          "stepDesc": "K atau L?",
+          "icon": "🎯",
+          "flowFrom": "5",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "K=60",
+          "emoji": "🔒",
+          "countNum": 60,
+          "countWord": "2(p+l)",
+          "voiceSentence": "Syarat."
+        },
+        {
+          "fruitName": "p+l",
+          "emoji": "➕",
+          "countNum": 30,
+          "countWord": "30",
+          "voiceSentence": "Turunan."
+        },
+        {
+          "fruitName": "20×10",
+          "emoji": "▭",
+          "countNum": 200,
+          "countWord": "L=200",
+          "voiceSentence": "Buku."
+        },
+        {
+          "fruitName": "25×5",
+          "emoji": "📏",
+          "countNum": 125,
+          "countWord": "L=125",
+          "voiceSentence": "Pipih."
+        },
+        {
+          "fruitName": "15×15",
+          "emoji": "⬜",
+          "countNum": 225,
+          "countWord": "L=225",
+          "voiceSentence": "Terluas PP."
+        },
+        {
+          "fruitName": "28×2",
+          "emoji": "➖",
+          "countNum": 56,
+          "countWord": "L=56",
+          "voiceSentence": "Sangat pipih."
+        },
+        {
+          "fruitName": "Isoperimetric",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "K sama ≠ L sama",
+          "voiceSentence": "Metode luar."
+        },
+        {
+          "fruitName": "Kawat",
+          "emoji": "🧵",
+          "countNum": 1,
+          "countWord": "keliling",
+          "voiceSentence": "Aplikasi K."
+        },
+        {
+          "fruitName": "Ubin/cat",
+          "emoji": "🧱",
+          "countNum": 1,
+          "countWord": "luas",
+          "voiceSentence": "Aplikasi L."
+        },
+        {
+          "fruitName": "Bab 5",
+          "emoji": "🎉",
+          "countNum": 1,
+          "countWord": "A–D siap",
+          "voiceSentence": "Materi."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Hitung K dan L",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "title": "Syarat Kawat",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "title": "Banding Luas",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "title": "Pilah K/L",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "title": "Jodohkan Pasangan",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "title": "Memori K&L",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "title": "Ketuk Luas",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "title": "Ketuk Semua Benar",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "title": "Cerita Isoperimetric",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "title": "Urutkan Luas",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram Hitung K dan L",
+          "diagramType": "hitung",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship)."
+        },
+        {
+          "title": "Diagram Syarat Kawat",
+          "diagramType": "rumus",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship)."
+        },
+        {
+          "title": "Diagram Banding Luas",
+          "diagramType": "arti",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship)."
+        },
+        {
+          "title": "Diagram Pilah K/L",
+          "diagramType": "sortir",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship)."
+        },
+        {
+          "title": "Diagram Jodohkan Pasangan",
+          "diagramType": "jodoh",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship)."
+        },
+        {
+          "title": "Diagram Memori K&L",
+          "diagramType": "memori",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship)."
+        },
+        {
+          "title": "Diagram Ketuk Luas",
+          "diagramType": "ketuk",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship)."
+        },
+        {
+          "title": "Diagram Ketuk Semua Benar",
+          "diagramType": "semua",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship)."
+        },
+        {
+          "title": "Diagram Cerita Isoperimetric",
+          "diagramType": "cerita",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship)."
+        },
+        {
+          "title": "Diagram Urutkan Luas",
+          "diagramType": "urut",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship)."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "symbolLarge": "L",
+          "wordLarge": "LUAS",
+          "mathNotation": "rumus",
+          "voiceReadout": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar atau salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih dari petunjuk."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih isi kotak."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Baca lalu pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK5B5D-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "hitung-d-c",
+          "title": "Hitung K dan L",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "rumus-d-c",
+          "title": "Syarat Kawat",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "arti-d-c",
+          "title": "Banding Luas",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sortir-d-c",
+          "title": "Pilah K/L",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "jodoh-d-c",
+          "title": "Jodohkan Pasangan",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memori-d-c",
+          "title": "Memori K&L",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "ketuk-d-c",
+          "title": "Ketuk Luas",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "semua-d-c",
+          "title": "Ketuk Semua Benar",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "cerita-d-c",
+          "title": "Cerita Isoperimetric",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "urut-d-c",
+          "title": "Urutkan Luas",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "hitung-d-p",
+          "title": "Diagram Hitung K dan L",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "rumus-d-p",
+          "title": "Diagram Syarat Kawat",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "arti-d-p",
+          "title": "Diagram Banding Luas",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "sortir-d-p",
+          "title": "Diagram Pilah K/L",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "jodoh-d-p",
+          "title": "Diagram Jodohkan Pasangan",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "memori-d-p",
+          "title": "Diagram Memori K&L",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "ketuk-d-p",
+          "title": "Diagram Ketuk Luas",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "semua-d-p",
+          "title": "Diagram Ketuk Semua Benar",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "cerita-d-p",
+          "title": "Diagram Cerita Isoperimetric",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "urut-d-p",
+          "title": "Diagram Urutkan Luas",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "hitung-d-a",
+          "title": "Tulis Hitung K dan L",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "rumus-d-a",
+          "title": "Tulis Syarat Kawat",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "arti-d-a",
+          "title": "Tulis Banding Luas",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "sortir-d-a",
+          "title": "Tulis Pilah K/L",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "jodoh-d-a",
+          "title": "Tulis Jodohkan Pasangan",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memori-d-a",
+          "title": "Tulis Memori K&L",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde: hitung L dari pasangan p,l dengan K tetap 60.",
+          "voiceGuide": "Pilih luas atau pasangan yang benar."
+        },
+        {
+          "gameId": "subK5B5D-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "bs-d",
+          "title": "Benar atau Salah",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Dua ronde menilai pernyataan.",
+          "voiceGuide": "Benar atau salah."
+        },
+        {
+          "gameId": "subK5B5D-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "det-d",
+          "title": "Detektif Luas",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga soal petunjuk.",
+          "voiceGuide": "Pilih dari petunjuk."
+        },
+        {
+          "gameId": "subK5B5D-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "peta-d",
+          "title": "Peta Konsep",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Satu peta konsep.",
+          "voiceGuide": "Pilih isi kotak."
+        },
+        {
+          "gameId": "subK5B5D-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "cerita-q-d",
+          "title": "Cerita Angka",
+          "bookReference": "Buku Siswa hlm. 159–161",
+          "objective": "Bandingkan luas PP ber-keliling sama (Isoperimetric Relationship).",
+          "mechanicDescription": "Tiga ronde cerita.",
+          "voiceGuide": "Baca lalu pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Syarat",
+            "isi": "K=60 → 2(p+l)=60 → p+l=30.",
+            "suara": "Kerangka kawat."
+          },
+          {
+            "nama": "Beda L",
+            "isi": "K sama tidak menjamin L sama.",
+            "suara": "Isoperimetric."
+          },
+          {
+            "nama": "Terluas",
+            "isi": "Mendekati persegi cenderung L lebih besar.",
+            "suara": "Fixed Perimeter Maximize Area."
+          },
+          {
+            "nama": "Pilih konsep",
+            "isi": "Kawat/pagar → K; ubin/cat/pasir → L.",
+            "suara": "Konteks."
+          }
+        ],
+        "suara": "Ingat: keliling sama luas bisa beda; mendekati persegi lebih luas; pilih K atau L sesuai kebutuhan.",
+        "caraMenyebutkan": "Kunci keliling daftar p,l hitung luas bandingkan",
+        "rumah": "Ayo Mencoba di rumah: dengan tali sama panjang, bentuk beberapa persegi panjang berbeda, perkirakan mana daerah dalamnya paling luas.",
+        "refleksi": [
+          "Mengapa 20×10 lebih luas dari 25×5 saat K sama?",
+          "Apa arti Isoperimetric Relationship?",
+          "Kapan memakai keliling, kapan luas?"
+        ]
+      }
+    }
+  },
+  "practiceQuestions": []
+}
