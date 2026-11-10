@@ -1,0 +1,1858 @@
+{
+  "chapterId": "k4-mat-bab6",
+  "chapter_id": "k4-mat-bab6",
+  "phase_code": "FASE_B",
+  "grade": 4,
+  "subjectLabel": "MATEMATIKA - KELAS 4 SD",
+  "title": "BAB 6: PIKTOGRAM DAN DIAGRAM BATANG",
+  "silabusElemen": "🌈 Fase B • Elemen Data dan Ketidakpastian: Piktogram serta Diagram Batang (Kelas 4 SD/MI)",
+  "suaraPerangkatSaja": true,
+  "suaraLaju": 0.7,
+  "suaraNada": 1,
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Piktogram)",
+      "fullTitle": "Sub-Bab A: Piktogram",
+      "targetDescription": "Siswa menyajikan dan menafsirkan data dalam piktogram (diagram gambar), termasuk skala 1 dan skala lebih dari 1, menentukan paling banyak/sedikit serta jumlah keseluruhan sesuai Buku Siswa Kelas IV Bab 6.",
+      "secondaryBg": "#FFEDD5",
+      "secondaryBorder": "#EA580C",
+      "secondaryText": "#7C2D12",
+      "silabus": {
+        "teksSuara": "Kita belajar piktogram. Piktogram adalah diagram yang memakai gambar untuk menyatakan banyak tiap kategori. Kadang satu gambar berarti satu benda, kadang satu gambar berarti beberapa. Kita baca dengan menghitung gambar lalu mengalikan skala. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menampilkan dan menafsirkan data dalam bentuk diagram gambar (piktogram).",
+        "referensi": "Buku Siswa Matematika Kelas IV Bab 6 Sub-Bab A hlm. 179–186; pictorial representation; scale in pictographs (van de Walle)."
+      },
+      "stories": [
+        {
+          "id": "K4B6A-V1-1",
+          "titleHint": "Data butuh gambar",
+          "sceneType": "K4B6A-V1-1",
+          "voiceNarration": "Ada banyak benda di kelas. Kita ingin menyajikannya rapi. Pakai gambar yang mewakili banyak. Itulah piktogram."
+        },
+        {
+          "id": "K4B6A-V1-2",
+          "titleHint": "Satu gambar satu arti",
+          "sceneType": "K4B6A-V1-2",
+          "voiceNarration": "Setiap gambar harus sama. Satu gambar bisa berarti satu benda. Atau satu gambar berarti beberapa. Baca keterangan skalanya."
+        },
+        {
+          "id": "K4B6A-V1-3",
+          "titleHint": "Baca paling banyak",
+          "sceneType": "K4B6A-V1-3",
+          "voiceNarration": "Hitung gambar tiap baris. Kalikan dengan skala. Bandingkan hasilnya. Itu paling banyak atau sedikit."
+        },
+        {
+          "id": "K4B6A-V2-1",
+          "titleHint": "Skala satu",
+          "sceneType": "K4B6A-V2-1",
+          "voiceNarration": "Satu gambar sama dengan satu siswa. Empat gambar sama dengan empat siswa. Mudah dihitung. Cocok untuk bilangan kecil."
+        },
+        {
+          "id": "K4B6A-V2-2",
+          "titleHint": "Skala empat",
+          "sceneType": "K4B6A-V2-2",
+          "voiceNarration": "Satu gambar bisa sama dengan empat siswa. Tiga gambar menjadi dua belas. Hemat ruang gambar. Tetap akurat jika skala jelas."
+        },
+        {
+          "id": "K4B6A-V2-3",
+          "titleHint": "Jangan lupa skala",
+          "sceneType": "K4B6A-V2-3",
+          "voiceNarration": "Tanpa skala, gambar membingungkan. Selalu baca baris keterangan. Nilai = gambar dikali skala. Latih sampai mahir."
+        },
+        {
+          "id": "K4B6A-V3-1",
+          "titleHint": "Mainan Karel",
+          "sceneType": "K4B6A-V3-1",
+          "voiceNarration": "Mobil enam, robot empat. Pesawat tiga, puzzle satu. Kelereng sembilan. Total dua puluh tiga."
+        },
+        {
+          "id": "K4B6A-V3-2",
+          "titleHint": "Warna kesukaan",
+          "sceneType": "K4B6A-V3-2",
+          "voiceNarration": "Ungu empat, kuning dua. Hitam satu, merah lima. Total dua belas siswa. Merah paling disukai."
+        },
+        {
+          "id": "K4B6A-V3-3",
+          "titleHint": "Siap bermain",
+          "sceneType": "K4B6A-V3-3",
+          "voiceNarration": "Kita sudah paham piktogram. Saatnya menghitung dan membandingkan. Ayo ke permainan. Semangat!"
+        }
+      ],
+      "videos": [
+        {
+          "id": "K4B6A-V1",
+          "judul": "Apa itu Piktogram?",
+          "subjudul": "Diagram gambar",
+          "adegan": [
+            {
+              "id": "K4B6A-V1-1",
+              "judul": "Data butuh gambar",
+              "ketukan": [
+                "Ada banyak benda di kelas.",
+                "Kita ingin menyajikannya rapi.",
+                "Pakai gambar yang mewakili banyak.",
+                "Itulah piktogram."
+              ],
+              "papan": [
+                "data",
+                "gambar",
+                "mewakili",
+                "piktogram"
+              ]
+            },
+            {
+              "id": "K4B6A-V1-2",
+              "judul": "Satu gambar satu arti",
+              "ketukan": [
+                "Setiap gambar harus sama.",
+                "Satu gambar bisa berarti satu benda.",
+                "Atau satu gambar berarti beberapa.",
+                "Baca keterangan skalanya."
+              ],
+              "papan": [
+                "gambar sama",
+                "skala 1",
+                "skala n",
+                "baca legenda"
+              ]
+            },
+            {
+              "id": "K4B6A-V1-3",
+              "judul": "Baca paling banyak",
+              "ketukan": [
+                "Hitung gambar tiap baris.",
+                "Kalikan dengan skala.",
+                "Bandingkan hasilnya.",
+                "Itu paling banyak atau sedikit."
+              ],
+              "papan": [
+                "hitung",
+                "× skala",
+                "banding",
+                "ekstrem"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B6A-V2",
+          "judul": "Skala pada Piktogram",
+          "subjudul": "1 gambar = n",
+          "adegan": [
+            {
+              "id": "K4B6A-V2-1",
+              "judul": "Skala satu",
+              "ketukan": [
+                "Satu gambar sama dengan satu siswa.",
+                "Empat gambar sama dengan empat siswa.",
+                "Mudah dihitung.",
+                "Cocok untuk bilangan kecil."
+              ],
+              "papan": [
+                "1 = 1",
+                "4 gambar",
+                "4 siswa",
+                "mudah"
+              ]
+            },
+            {
+              "id": "K4B6A-V2-2",
+              "judul": "Skala empat",
+              "ketukan": [
+                "Satu gambar bisa sama dengan empat siswa.",
+                "Tiga gambar menjadi dua belas.",
+                "Hemat ruang gambar.",
+                "Tetap akurat jika skala jelas."
+              ],
+              "papan": [
+                "1 = 4",
+                "3 gambar",
+                "12",
+                "hemat"
+              ]
+            },
+            {
+              "id": "K4B6A-V2-3",
+              "judul": "Jangan lupa skala",
+              "ketukan": [
+                "Tanpa skala, gambar membingungkan.",
+                "Selalu baca baris keterangan.",
+                "Nilai = gambar dikali skala.",
+                "Latih sampai mahir."
+              ],
+              "papan": [
+                "wajib skala",
+                "keterangan",
+                "nilai",
+                "latihan"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B6A-V3",
+          "judul": "Mainan dan Warna",
+          "subjudul": "Contoh buku",
+          "adegan": [
+            {
+              "id": "K4B6A-V3-1",
+              "judul": "Mainan Karel",
+              "ketukan": [
+                "Mobil enam, robot empat.",
+                "Pesawat tiga, puzzle satu.",
+                "Kelereng sembilan.",
+                "Total dua puluh tiga."
+              ],
+              "papan": [
+                "6 4 3 1",
+                "9",
+                "total 23",
+                "paling banyak"
+              ]
+            },
+            {
+              "id": "K4B6A-V3-2",
+              "judul": "Warna kesukaan",
+              "ketukan": [
+                "Ungu empat, kuning dua.",
+                "Hitam satu, merah lima.",
+                "Total dua belas siswa.",
+                "Merah paling disukai."
+              ],
+              "papan": [
+                "4 2 1 5",
+                "total 12",
+                "merah",
+                "hitam"
+              ]
+            },
+            {
+              "id": "K4B6A-V3-3",
+              "judul": "Siap bermain",
+              "ketukan": [
+                "Kita sudah paham piktogram.",
+                "Saatnya menghitung dan membandingkan.",
+                "Ayo ke permainan.",
+                "Semangat!"
+              ],
+              "papan": [
+                "paham",
+                "hitung",
+                "main",
+                "semangat"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Data",
+          "stepDesc": "Kumpulan keterangan yang bisa dihitung",
+          "icon": "📋",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Tabel",
+          "stepDesc": "Susun kategori dan banyaknya",
+          "icon": "📑",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Piktogram",
+          "stepDesc": "Diagram memakai gambar",
+          "icon": "🖼️",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Skala",
+          "stepDesc": "Satu gambar = n data",
+          "icon": "✖️",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Membaca",
+          "stepDesc": "Hitung gambar × skala",
+          "icon": "👀",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Menafsirkan",
+          "stepDesc": "Paling banyak, sedikit, total",
+          "icon": "💡",
+          "flowFrom": "5",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Definisi",
+          "emoji": "🖼️",
+          "countNum": 1,
+          "countWord": "diagram gambar",
+          "voiceSentence": "Piktogram memakai gambar untuk menyatakan banyak."
+        },
+        {
+          "fruitName": "Skala 1",
+          "emoji": "1️⃣",
+          "countNum": 1,
+          "countWord": "1 gambar = 1",
+          "voiceSentence": "Satu gambar mewakili satu data."
+        },
+        {
+          "fruitName": "Skala n",
+          "emoji": "4️⃣",
+          "countNum": 4,
+          "countWord": "1 gambar = n",
+          "voiceSentence": "Satu gambar mewakili beberapa data."
+        },
+        {
+          "fruitName": "Mainan",
+          "emoji": "🔵",
+          "countNum": 23,
+          "countWord": "total 23",
+          "voiceSentence": "Mainan Karel berjumlah dua puluh tiga."
+        },
+        {
+          "fruitName": "Kelereng",
+          "emoji": "9️⃣",
+          "countNum": 9,
+          "countWord": "paling banyak",
+          "voiceSentence": "Kelereng paling banyak."
+        },
+        {
+          "fruitName": "Puzzle",
+          "emoji": "1️⃣",
+          "countNum": 1,
+          "countWord": "paling sedikit",
+          "voiceSentence": "Puzzle paling sedikit."
+        },
+        {
+          "fruitName": "Warna merah",
+          "emoji": "🔴",
+          "countNum": 5,
+          "countWord": "5 siswa",
+          "voiceSentence": "Merah paling disukai."
+        },
+        {
+          "fruitName": "Total warna",
+          "emoji": "1️⃣2️⃣",
+          "countNum": 12,
+          "countWord": "12 siswa",
+          "voiceSentence": "Total dua belas siswa."
+        },
+        {
+          "fruitName": "Baca",
+          "emoji": "✖️",
+          "countNum": 1,
+          "countWord": "gambar × skala",
+          "voiceSentence": "Nilai sama dengan gambar dikali skala."
+        },
+        {
+          "fruitName": "Siap B",
+          "emoji": "📊",
+          "countNum": 1,
+          "countWord": "lanjut batang",
+          "voiceSentence": "Berikutnya diagram batang."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Hitung Gambar Piktogram",
+          "emoji": "🔵",
+          "targetCount": 6,
+          "voiceGuide": "Hitung gambar."
+        },
+        {
+          "title": "Pilih Jenis Diagram",
+          "emoji": "📊",
+          "targetCount": 6,
+          "voiceGuide": "Pilih istilah."
+        },
+        {
+          "title": "Baca Skala Simbol",
+          "emoji": "✖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "title": "Pilah Piktogram/Bukan",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah."
+        },
+        {
+          "title": "Jodohkan Data Piktogram",
+          "emoji": "🔗",
+          "targetCount": 12,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Data Gambar",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Kategori Diminta",
+          "emoji": "👆",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "title": "Ketuk Semua Sesuai Nilai",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Mainan dan Warna",
+          "emoji": "📖",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Urutkan Nilai Data",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Urutkan."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram Hitung Simbol",
+          "diagramType": "picto",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Baca diagram gambar."
+        },
+        {
+          "title": "Diagram Skala n",
+          "diagramType": "scale",
+          "numberA": 4,
+          "numberB": 12,
+          "caption": "Skala lebih dari 1."
+        },
+        {
+          "title": "Jodohkan Diagram Data",
+          "diagramType": "match",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Diagram Data",
+          "diagramType": "mem",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Kategori–Nilai",
+          "diagramType": "table",
+          "numberA": 1,
+          "numberB": 3,
+          "caption": "Isi tabel."
+        },
+        {
+          "title": "Ketuk Semua Diagram",
+          "diagramType": "select",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Ketuk semua."
+        },
+        {
+          "title": "Pilah Diagram Gambar",
+          "diagramType": "sort",
+          "numberA": 1,
+          "numberB": 6,
+          "caption": "Pilah."
+        },
+        {
+          "title": "Bandingkan Paling Banyak",
+          "diagramType": "max",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih ekstrem."
+        },
+        {
+          "title": "Pilih Bacaan Cocok",
+          "diagramType": "choose",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih pernyataan."
+        },
+        {
+          "title": "Cerita Diagram Gambar",
+          "diagramType": "story",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Cerita + diagram."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "📊",
+          "wordLarge": "PIKTOGRAM",
+          "mathNotation": "definisi",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "n×s",
+          "wordLarge": "NILAI",
+          "mathNotation": "skala",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "gambar",
+          "wordLarge": "JENIS",
+          "mathNotation": "klasifikasi",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "9>6>1",
+          "wordLarge": "URUT",
+          "mathNotation": "nilai",
+          "voiceReadout": "Urutkan."
+        },
+        {
+          "symbolLarge": "★=4",
+          "wordLarge": "JODOH",
+          "mathNotation": "teks",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "total",
+          "wordLarge": "MEMORI",
+          "mathNotation": "notasi",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK4B6A-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "hitung-gambar",
+          "title": "Hitung Gambar Piktogram",
+          "bookReference": "Buku Siswa hlm. 180–184",
+          "objective": "Menghitung nilai dari banyak gambar.",
+          "mechanicDescription": "Tiga ronde data buku.",
+          "voiceGuide": "Hitung gambar."
+        },
+        {
+          "gameId": "subK4B6A-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "jenis-diagram",
+          "title": "Pilih Jenis Diagram",
+          "bookReference": "Buku Siswa hlm. 184",
+          "objective": "Mengenali piktogram.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih istilah."
+        },
+        {
+          "gameId": "subK4B6A-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "skala-baca",
+          "title": "Baca Skala Simbol",
+          "bookReference": "Buku Siswa hlm. 182–186",
+          "objective": "Mengalikan gambar × skala.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "gameId": "subK4B6A-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sort-pikto",
+          "title": "Pilah Piktogram/Bukan",
+          "bookReference": "Buku Siswa hlm. 184",
+          "objective": "Memilah bentuk penyajian.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B6A-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "match-data",
+          "title": "Jodohkan Data Piktogram",
+          "bookReference": "Buku Siswa hlm. 181–186",
+          "objective": "Menjodohkan fakta data.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B6A-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memory-data",
+          "title": "Memori Data Gambar",
+          "bookReference": "Buku Siswa hlm. 181–184",
+          "objective": "Memori pasangan data.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B6A-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-kategori",
+          "title": "Ketuk Kategori Diminta",
+          "bookReference": "Buku Siswa hlm. 180–184",
+          "objective": "Mengetuk baris data.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "gameId": "subK4B6A-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "tap-all-nilai",
+          "title": "Ketuk Semua Sesuai Nilai",
+          "bookReference": "Buku Siswa hlm. 181–184",
+          "objective": "Ketuk semua yang cocok.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B6A-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "story-pikto",
+          "title": "Cerita Mainan dan Warna",
+          "bookReference": "Buku Siswa hlm. 181–184",
+          "objective": "Soal cerita data.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6A-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "order-nilai",
+          "title": "Urutkan Nilai Data",
+          "bookReference": "Buku Siswa hlm. 181–185",
+          "objective": "Mengurutkan banyak.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B6A-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "diagram-hitung",
+          "title": "Diagram Hitung Simbol",
+          "bookReference": "Buku Siswa hlm. 180–184",
+          "objective": "Baca diagram gambar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6A-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "diagram-skala",
+          "title": "Diagram Skala n",
+          "bookReference": "Buku Siswa hlm. 182–186",
+          "objective": "Skala lebih dari 1.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6A-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-diagram-a",
+          "title": "Jodohkan Diagram Data",
+          "bookReference": "Buku Siswa hlm. 181–186",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B6A-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-diagram-a",
+          "title": "Memori Diagram Data",
+          "bookReference": "Buku Siswa hlm. 181–184",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B6A-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "table-a",
+          "title": "Tabel Kategori–Nilai",
+          "bookReference": "Buku Siswa hlm. 180–185",
+          "objective": "Isi tabel.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6A-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-a",
+          "title": "Ketuk Semua Diagram",
+          "bookReference": "Buku Siswa hlm. 181–184",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B6A-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-diagram-a",
+          "title": "Pilah Diagram Gambar",
+          "bookReference": "Buku Siswa hlm. 184",
+          "objective": "Pilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B6A-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "banding-a",
+          "title": "Bandingkan Paling Banyak",
+          "bookReference": "Buku Siswa hlm. 180–185",
+          "objective": "Pilih ekstrem.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6A-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "choose-a",
+          "title": "Pilih Bacaan Cocok",
+          "bookReference": "Buku Siswa hlm. 181–186",
+          "objective": "Pilih pernyataan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6A-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "story-picture-a",
+          "title": "Cerita Diagram Gambar",
+          "bookReference": "Buku Siswa hlm. 181–186",
+          "objective": "Cerita + diagram.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6A-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "write-istilah",
+          "title": "Tulis Istilah Piktogram",
+          "bookReference": "Buku Siswa hlm. 184",
+          "objective": "Menulis istilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6A-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "write-nilai",
+          "title": "Tulis Nilai dari Simbol",
+          "bookReference": "Buku Siswa hlm. 182–186",
+          "objective": "Menulis angka.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6A-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "choose-jenis-a",
+          "title": "Pilih Klasifikasi Data",
+          "bookReference": "Buku Siswa hlm. 184",
+          "objective": "Piktogram atau bukan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6A-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "order-abstract-a",
+          "title": "Urutkan Nilai Abstrak",
+          "bookReference": "Buku Siswa hlm. 181–185",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B6A-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-abstract-a",
+          "title": "Jodohkan Notasi Data",
+          "bookReference": "Buku Siswa hlm. 181–186",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B6A-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-abstract-a",
+          "title": "Memori Notasi Data",
+          "bookReference": "Buku Siswa hlm. 181–184",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B6A-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-a",
+          "title": "Benar atau Salah: Piktogram",
+          "bookReference": "Buku Siswa hlm. 180–186",
+          "objective": "Menilai.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK4B6A-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-a",
+          "title": "Detektif Piktogram",
+          "bookReference": "Buku Siswa hlm. 181–186",
+          "objective": "Petunjuk → jawaban.",
+          "mechanicDescription": "Tiga soal.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6A-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-a",
+          "title": "Peta Konsep Piktogram",
+          "bookReference": "Buku Siswa hlm. 178–184",
+          "objective": "Mengisi kotak.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK4B6A-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-abstract-a",
+          "title": "Cerita Angka Data",
+          "bookReference": "Buku Siswa hlm. 181–186",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Piktogram",
+            "isi": "Diagram yang memakai gambar untuk menyatakan banyak tiap kategori.",
+            "suara": "Piktogram adalah diagram gambar."
+          },
+          {
+            "nama": "Skala",
+            "isi": "Satu gambar dapat mewakili 1 atau n data; selalu baca keterangan.",
+            "suara": "Baca skala sebelum menghitung."
+          },
+          {
+            "nama": "Membaca",
+            "isi": "Hitung banyak gambar, kalikan skala, bandingkan hasil.",
+            "suara": "Hitung, kalikan, bandingkan."
+          },
+          {
+            "nama": "Total",
+            "isi": "Jumlah keseluruhan = jumlah semua nilai kategori.",
+            "suara": "Total adalah jumlah semua."
+          }
+        ],
+        "suara": "Ingat empat kunci piktogram: definisi, skala, cara baca, dan total.",
+        "caraMenyebutkan": "Data → tabel Gambar sama Skala jelas Hitung × skala",
+        "rumah": "Ayo Mencoba di rumah: catat 4 jenis benda di meja belajarmu, buat piktogram skala 1, lalu tulis paling banyak dan total.",
+        "refleksi": [
+          "Mengapa skala harus ditulis jelas?",
+          "Apa beda piktogram skala 1 dan skala 4?",
+          "Bagaimana mencari total dari piktogram?"
+        ]
+      }
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Diagram Batang)",
+      "fullTitle": "Sub-Bab B: Diagram Batang",
+      "targetDescription": "Siswa menyajikan dan menafsirkan data dalam diagram batang tegak maupun mendatar, membaca sumbu, membandingkan tinggi/panjang batang, serta menentukan paling banyak/sedikit dan jumlah sesuai Buku Siswa Kelas IV Bab 6.",
+      "secondaryBg": "#DBEAFE",
+      "secondaryBorder": "#2563EB",
+      "secondaryText": "#1E3A8A",
+      "silabus": {
+        "teksSuara": "Kita belajar diagram batang. Diagram batang memakai batang persegi panjang untuk menunjukkan banyak tiap kategori. Ada yang tegak dan ada yang mendatar. Sumbu membantu kita membaca nilai. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menampilkan dan menafsirkan data dalam bentuk diagram batang.",
+        "referensi": "Buku Siswa Matematika Kelas IV Bab 6 Sub-Bab B hlm. 187–194; bar graphs; axis reading; dual orientation."
+      },
+      "stories": [
+        {
+          "id": "K4B6B-V1-1",
+          "titleHint": "Bukan hanya gambar",
+          "sceneType": "K4B6B-V1-1",
+          "voiceNarration": "Data juga bisa digambar batang. Batang berbentuk persegi panjang. Tinggi atau panjang menunjukkan nilai. Itulah diagram batang."
+        },
+        {
+          "id": "K4B6B-V1-2",
+          "titleHint": "Dua sumbu",
+          "sceneType": "K4B6B-V1-2",
+          "voiceNarration": "Ada sumbu tegak. Ada sumbu datar. Satu untuk banyak. Satu untuk nama kategori."
+        },
+        {
+          "id": "K4B6B-V1-3",
+          "titleHint": "Tegak atau mendatar",
+          "sceneType": "K4B6B-V1-3",
+          "voiceNarration": "Batang bisa naik ke atas. Atau memanjang ke samping. Artinya sama. Hanya arah berbeda."
+        },
+        {
+          "id": "K4B6B-V2-1",
+          "titleHint": "Lihat tinggi",
+          "sceneType": "K4B6B-V2-1",
+          "voiceNarration": "Pada batang tegak, lihat tingginya. Samakan dengan skala sumbu. Itulah nilai kategori. Bandingkan dengan batang lain."
+        },
+        {
+          "id": "K4B6B-V2-2",
+          "titleHint": "Lihat panjang",
+          "sceneType": "K4B6B-V2-2",
+          "voiceNarration": "Pada batang mendatar, lihat panjangnya. Panjang mewakili banyak. Cara membacanya sama. Cari paling tinggi atau panjang."
+        },
+        {
+          "id": "K4B6B-V2-3",
+          "titleHint": "Total dari batang",
+          "sceneType": "K4B6B-V2-3",
+          "voiceNarration": "Jumlahkan nilai tiap batang. Itu total keseluruhan. Bisa juga hitung selisih. Latih dengan data transportasi."
+        },
+        {
+          "id": "K4B6B-V3-1",
+          "titleHint": "Ke sekolah",
+          "sceneType": "K4B6B-V3-1",
+          "voiceNarration": "Ada jalan kaki, sepeda, motor. Ada juga becak atau lainnya. Batang tertinggi paling banyak dipakai. Batang terendah paling sedikit."
+        },
+        {
+          "id": "K4B6B-V3-2",
+          "titleHint": "Lomba dan bunga",
+          "sceneType": "K4B6B-V3-2",
+          "voiceNarration": "Data lomba memakai batang tegak. Data bunga bisa batang mendatar. Keduanya diagram batang. Pilih bentuk yang mudah dibaca."
+        },
+        {
+          "id": "K4B6B-V3-3",
+          "titleHint": "Siap bermain",
+          "sceneType": "K4B6B-V3-3",
+          "voiceNarration": "Kita sudah paham batang. Saatnya membaca sumbu dan nilai. Ayo ke permainan. Semangat!"
+        }
+      ],
+      "videos": [
+        {
+          "id": "K4B6B-V1",
+          "judul": "Apa itu Diagram Batang?",
+          "subjudul": "Batang persegi panjang",
+          "adegan": [
+            {
+              "id": "K4B6B-V1-1",
+              "judul": "Bukan hanya gambar",
+              "ketukan": [
+                "Data juga bisa digambar batang.",
+                "Batang berbentuk persegi panjang.",
+                "Tinggi atau panjang menunjukkan nilai.",
+                "Itulah diagram batang."
+              ],
+              "papan": [
+                "batang",
+                "persegi panjang",
+                "nilai",
+                "diagram"
+              ]
+            },
+            {
+              "id": "K4B6B-V1-2",
+              "judul": "Dua sumbu",
+              "ketukan": [
+                "Ada sumbu tegak.",
+                "Ada sumbu datar.",
+                "Satu untuk banyak.",
+                "Satu untuk nama kategori."
+              ],
+              "papan": [
+                "tegak",
+                "datar",
+                "banyak",
+                "kategori"
+              ]
+            },
+            {
+              "id": "K4B6B-V1-3",
+              "judul": "Tegak atau mendatar",
+              "ketukan": [
+                "Batang bisa naik ke atas.",
+                "Atau memanjang ke samping.",
+                "Artinya sama.",
+                "Hanya arah berbeda."
+              ],
+              "papan": [
+                "tegak",
+                "mendatar",
+                "sama arti",
+                "beda arah"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B6B-V2",
+          "judul": "Membaca Batang",
+          "subjudul": "Tinggi dan panjang",
+          "adegan": [
+            {
+              "id": "K4B6B-V2-1",
+              "judul": "Lihat tinggi",
+              "ketukan": [
+                "Pada batang tegak, lihat tingginya.",
+                "Samakan dengan skala sumbu.",
+                "Itulah nilai kategori.",
+                "Bandingkan dengan batang lain."
+              ],
+              "papan": [
+                "tinggi",
+                "skala",
+                "nilai",
+                "banding"
+              ]
+            },
+            {
+              "id": "K4B6B-V2-2",
+              "judul": "Lihat panjang",
+              "ketukan": [
+                "Pada batang mendatar, lihat panjangnya.",
+                "Panjang mewakili banyak.",
+                "Cara membacanya sama.",
+                "Cari paling tinggi atau panjang."
+              ],
+              "papan": [
+                "panjang",
+                "banyak",
+                "sama cara",
+                "ekstrem"
+              ]
+            },
+            {
+              "id": "K4B6B-V2-3",
+              "judul": "Total dari batang",
+              "ketukan": [
+                "Jumlahkan nilai tiap batang.",
+                "Itu total keseluruhan.",
+                "Bisa juga hitung selisih.",
+                "Latih dengan data transportasi."
+              ],
+              "papan": [
+                "jumlah",
+                "total",
+                "selisih",
+                "latihan"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B6B-V3",
+          "judul": "Transportasi dan Lomba",
+          "subjudul": "Contoh konteks",
+          "adegan": [
+            {
+              "id": "K4B6B-V3-1",
+              "judul": "Ke sekolah",
+              "ketukan": [
+                "Ada jalan kaki, sepeda, motor.",
+                "Ada juga becak atau lainnya.",
+                "Batang tertinggi paling banyak dipakai.",
+                "Batang terendah paling sedikit."
+              ],
+              "papan": [
+                "jalan kaki",
+                "sepeda",
+                "motor",
+                "banding"
+              ]
+            },
+            {
+              "id": "K4B6B-V3-2",
+              "judul": "Lomba dan bunga",
+              "ketukan": [
+                "Data lomba memakai batang tegak.",
+                "Data bunga bisa batang mendatar.",
+                "Keduanya diagram batang.",
+                "Pilih bentuk yang mudah dibaca."
+              ],
+              "papan": [
+                "lomba",
+                "bunga",
+                "dua bentuk",
+                "mudah"
+              ]
+            },
+            {
+              "id": "K4B6B-V3-3",
+              "judul": "Siap bermain",
+              "ketukan": [
+                "Kita sudah paham batang.",
+                "Saatnya membaca sumbu dan nilai.",
+                "Ayo ke permainan.",
+                "Semangat!"
+              ],
+              "papan": [
+                "paham",
+                "sumbu",
+                "main",
+                "semangat"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Data",
+          "stepDesc": "Keterangan banyak per kategori",
+          "icon": "📋",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Sumbu",
+          "stepDesc": "Tegak = banyak, datar = nama (atau sebaliknya)",
+          "icon": "➕",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Batang tegak",
+          "stepDesc": "Tinggi batang = nilai",
+          "icon": "▮",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Batang mendatar",
+          "stepDesc": "Panjang batang = nilai",
+          "icon": "▬",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Membaca",
+          "stepDesc": "Samakan ujung batang dengan skala",
+          "icon": "👀",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Menafsirkan",
+          "stepDesc": "Paling banyak, sedikit, total, selisih",
+          "icon": "💡",
+          "flowFrom": "5",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Definisi",
+          "emoji": "▮",
+          "countNum": 1,
+          "countWord": "batang",
+          "voiceSentence": "Diagram batang memakai persegi panjang."
+        },
+        {
+          "fruitName": "Sumbu Y",
+          "emoji": "⬆️",
+          "countNum": 1,
+          "countWord": "banyak",
+          "voiceSentence": "Sumbu tegak sering menyatakan banyak."
+        },
+        {
+          "fruitName": "Sumbu X",
+          "emoji": "➡️",
+          "countNum": 1,
+          "countWord": "kategori",
+          "voiceSentence": "Sumbu datar sering menyatakan nama."
+        },
+        {
+          "fruitName": "Tegak",
+          "emoji": "📊",
+          "countNum": 1,
+          "countWord": "ke atas",
+          "voiceSentence": "Batang tegak tumbuh ke atas."
+        },
+        {
+          "fruitName": "Mendatar",
+          "emoji": "📈",
+          "countNum": 1,
+          "countWord": "ke samping",
+          "voiceSentence": "Batang mendatar memanjang ke samping."
+        },
+        {
+          "fruitName": "Baca",
+          "emoji": "👀",
+          "countNum": 1,
+          "countWord": "tinggi/panjang",
+          "voiceSentence": "Nilai dibaca dari tinggi atau panjang."
+        },
+        {
+          "fruitName": "Transport",
+          "emoji": "🚶",
+          "countNum": 8,
+          "countWord": "jalan kaki 8",
+          "voiceSentence": "Contoh nilai jalan kaki delapan."
+        },
+        {
+          "fruitName": "Banding",
+          "emoji": "⚖️",
+          "countNum": 1,
+          "countWord": "ekstrem",
+          "voiceSentence": "Bandingkan batang untuk paling banyak."
+        },
+        {
+          "fruitName": "Total",
+          "emoji": "➕",
+          "countNum": 1,
+          "countWord": "jumlah nilai",
+          "voiceSentence": "Total = jumlah semua batang."
+        },
+        {
+          "fruitName": "Bab 6 siap",
+          "emoji": "✅",
+          "countNum": 1,
+          "countWord": "A+B",
+          "voiceSentence": "Piktogram dan batang siap."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Baca Tinggi Batang",
+          "emoji": "📏",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Tegak atau Mendatar",
+          "emoji": "↕️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Sumbu Tegak dan Datar",
+          "emoji": "➕",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Pilah Batang Tegak/Mendatar",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah."
+        },
+        {
+          "title": "Jodohkan Fakta Batang",
+          "emoji": "🔗",
+          "targetCount": 12,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Diagram Batang",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Batang Diminta",
+          "emoji": "👆",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "title": "Ketuk Semua Arah Batang",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Transport dan Lomba",
+          "emoji": "🚌",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Urutkan Tinggi Batang",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Urutkan."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram Batang Tegak",
+          "diagramType": "bar-v",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Baca tinggi."
+        },
+        {
+          "title": "Diagram Batang Mendatar",
+          "diagramType": "bar-h",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Baca panjang."
+        },
+        {
+          "title": "Jodohkan Diagram Batang",
+          "diagramType": "match",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Diagram Batang",
+          "diagramType": "mem",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Sumbu–Arti",
+          "diagramType": "table",
+          "numberA": 1,
+          "numberB": 3,
+          "caption": "Isi tabel."
+        },
+        {
+          "title": "Ketuk Semua Diagram Arah",
+          "diagramType": "select",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Ketuk semua."
+        },
+        {
+          "title": "Pilah Diagram Arah",
+          "diagramType": "sort",
+          "numberA": 1,
+          "numberB": 6,
+          "caption": "Pilah."
+        },
+        {
+          "title": "Bandingkan Batang",
+          "diagramType": "compare",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih ekstrem."
+        },
+        {
+          "title": "Pilih Bacaan Batang",
+          "diagramType": "choose",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih pernyataan."
+        },
+        {
+          "title": "Cerita Diagram Batang",
+          "diagramType": "story",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Cerita + diagram."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "▮",
+          "wordLarge": "BATANG",
+          "mathNotation": "definisi",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "h",
+          "wordLarge": "NILAI",
+          "mathNotation": "tinggi",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "↕️",
+          "wordLarge": "ARAH",
+          "mathNotation": "klasifikasi",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "14>10>5",
+          "wordLarge": "URUT",
+          "mathNotation": "nilai",
+          "voiceReadout": "Urutkan."
+        },
+        {
+          "symbolLarge": "Y=banyak",
+          "wordLarge": "JODOH",
+          "mathNotation": "teks",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "sumbu",
+          "wordLarge": "MEMORI",
+          "mathNotation": "notasi",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK4B6B-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "baca-batang",
+          "title": "Baca Tinggi Batang",
+          "bookReference": "Buku Siswa hlm. 187–191",
+          "objective": "Membaca nilai batang.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "jenis-batang",
+          "title": "Tegak atau Mendatar",
+          "bookReference": "Buku Siswa hlm. 188–191",
+          "objective": "Membedakan arah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "sumbu",
+          "title": "Sumbu Tegak dan Datar",
+          "bookReference": "Buku Siswa hlm. 187–190",
+          "objective": "Mengenali sumbu.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sort-arah",
+          "title": "Pilah Batang Tegak/Mendatar",
+          "bookReference": "Buku Siswa hlm. 188–191",
+          "objective": "Memilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B6B-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "match-batang",
+          "title": "Jodohkan Fakta Batang",
+          "bookReference": "Buku Siswa hlm. 189–192",
+          "objective": "Menjodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B6B-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memory-batang",
+          "title": "Memori Diagram Batang",
+          "bookReference": "Buku Siswa hlm. 189–192",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B6B-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-batang",
+          "title": "Ketuk Batang Diminta",
+          "bookReference": "Buku Siswa hlm. 189–193",
+          "objective": "Mengetuk batang.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "gameId": "subK4B6B-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "tap-all-arah",
+          "title": "Ketuk Semua Arah Batang",
+          "bookReference": "Buku Siswa hlm. 188–191",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B6B-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "story-batang",
+          "title": "Cerita Transport dan Lomba",
+          "bookReference": "Buku Siswa hlm. 189–193",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "order-batang",
+          "title": "Urutkan Tinggi Batang",
+          "bookReference": "Buku Siswa hlm. 189–192",
+          "objective": "Mengurutkan nilai.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B6B-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "diagram-tegak",
+          "title": "Diagram Batang Tegak",
+          "bookReference": "Buku Siswa hlm. 188–189",
+          "objective": "Baca tinggi.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "diagram-mendatar",
+          "title": "Diagram Batang Mendatar",
+          "bookReference": "Buku Siswa hlm. 190–192",
+          "objective": "Baca panjang.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-diagram-b",
+          "title": "Jodohkan Diagram Batang",
+          "bookReference": "Buku Siswa hlm. 189–192",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B6B-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-diagram-b",
+          "title": "Memori Diagram Batang",
+          "bookReference": "Buku Siswa hlm. 189–192",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B6B-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "table-b",
+          "title": "Tabel Sumbu–Arti",
+          "bookReference": "Buku Siswa hlm. 187–191",
+          "objective": "Isi tabel.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-b",
+          "title": "Ketuk Semua Diagram Arah",
+          "bookReference": "Buku Siswa hlm. 188–191",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B6B-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-diagram-b",
+          "title": "Pilah Diagram Arah",
+          "bookReference": "Buku Siswa hlm. 188–191",
+          "objective": "Pilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B6B-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "banding-b",
+          "title": "Bandingkan Batang",
+          "bookReference": "Buku Siswa hlm. 189–193",
+          "objective": "Pilih ekstrem.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "choose-b",
+          "title": "Pilih Bacaan Batang",
+          "bookReference": "Buku Siswa hlm. 189–193",
+          "objective": "Pilih pernyataan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "story-picture-b",
+          "title": "Cerita Diagram Batang",
+          "bookReference": "Buku Siswa hlm. 189–193",
+          "objective": "Cerita + diagram.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "write-istilah-b",
+          "title": "Tulis Istilah Batang",
+          "bookReference": "Buku Siswa hlm. 188–191",
+          "objective": "Menulis istilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "write-nilai-b",
+          "title": "Tulis Nilai Batang",
+          "bookReference": "Buku Siswa hlm. 189–192",
+          "objective": "Menulis angka.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "choose-jenis-b",
+          "title": "Pilih Arah Batang",
+          "bookReference": "Buku Siswa hlm. 188–191",
+          "objective": "Tegak/mendatar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "order-abstract-b",
+          "title": "Urutkan Nilai Batang",
+          "bookReference": "Buku Siswa hlm. 189–192",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B6B-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-abstract-b",
+          "title": "Jodohkan Notasi Batang",
+          "bookReference": "Buku Siswa hlm. 187–192",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B6B-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-abstract-b",
+          "title": "Memori Notasi Batang",
+          "bookReference": "Buku Siswa hlm. 187–192",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B6B-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-b",
+          "title": "Benar atau Salah: Batang",
+          "bookReference": "Buku Siswa hlm. 187–193",
+          "objective": "Menilai.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK4B6B-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-b",
+          "title": "Detektif Diagram Batang",
+          "bookReference": "Buku Siswa hlm. 189–193",
+          "objective": "Petunjuk → jawaban.",
+          "mechanicDescription": "Tiga soal.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B6B-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-b",
+          "title": "Peta Konsep Batang",
+          "bookReference": "Buku Siswa hlm. 178–191",
+          "objective": "Mengisi kotak.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK4B6B-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-abstract-b",
+          "title": "Cerita Angka Batang",
+          "bookReference": "Buku Siswa hlm. 189–193",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Diagram batang",
+            "isi": "Diagram memakai batang persegi panjang untuk menunjukkan banyak kategori.",
+            "suara": "Diagram batang memakai batang."
+          },
+          {
+            "nama": "Sumbu",
+            "isi": "Sumbu tegak dan datar memuat nilai dan nama kategori.",
+            "suara": "Baca kedua sumbu."
+          },
+          {
+            "nama": "Dua arah",
+            "isi": "Batang bisa tegak atau mendatar; arti data tetap sama.",
+            "suara": "Arah boleh berbeda."
+          },
+          {
+            "nama": "Membaca",
+            "isi": "Samakan ujung batang dengan skala untuk mendapat nilai.",
+            "suara": "Samakan dengan skala."
+          }
+        ],
+        "suara": "Ingat empat kunci batang: definisi, sumbu, dua arah, dan cara baca.",
+        "caraMenyebutkan": "Gambar sumbu Skala teratur Gambar batang Baca & bandingkan",
+        "rumah": "Ayo Mencoba di rumah: catat lama belajar 4 hari, buat diagram batang tegak, lalu tulis hari paling lama dan total menit.",
+        "refleksi": [
+          "Apa beda batang tegak dan mendatar?",
+          "Mengapa skala sumbu harus teratur?",
+          "Bagaimana mencari selisih dua batang?"
+        ]
+      }
+    }
+  },
+  "practiceQuestions": []
+}
