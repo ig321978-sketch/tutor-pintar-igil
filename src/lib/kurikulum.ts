@@ -965,6 +965,7 @@ export const JUDUL_MTK_3_BAB4 = "Bab 4: Unsur-Unsur Bangun Datar";
 export const JUDUL_MTK_3_BAB5 = "Bab 5: Penyajian Data dalam Tabel";
 export const JUDUL_MTK_4_BAB1 = "Bab 1: Bilangan Cacah sampai 10.000";
 export const JUDUL_MTK_4_BAB2 = "Bab 2: Pecahan";
+export const JUDUL_MTK_4_BAB3 = "Bab 3: Pola Gambar dan Pola Bilangan";
 export const JUDUL_MTK_5_BAB8 =
   "Bab 8: Data (Tabel Frekuensi, Piktogram, dan Diagram Batang)";
 export const JUDUL_MTK_6_BAB1 = "Bab 1: Pecahan dan Desimal";
@@ -981,7 +982,7 @@ const BAB_TERPASANG: Record<string, Record<string, string[]>> = {
     Matematika: [JUDUL_MTK_3_BAB1, JUDUL_MTK_3_BAB2, JUDUL_MTK_3_BAB3, JUDUL_MTK_3_BAB4, JUDUL_MTK_3_BAB5],
   },
   "4 SD": {
-    Matematika: [JUDUL_MTK_4_BAB1, JUDUL_MTK_4_BAB2],
+    Matematika: [JUDUL_MTK_4_BAB1, JUDUL_MTK_4_BAB2, JUDUL_MTK_4_BAB3],
   },
   "5 SD": {
     Matematika: [JUDUL_MTK_5_BAB8],

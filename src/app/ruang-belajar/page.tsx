@@ -28,6 +28,7 @@ import {
   JUDUL_MTK_2_BAB8,
   JUDUL_MTK_4_BAB1,
   JUDUL_MTK_4_BAB2,
+  JUDUL_MTK_4_BAB3,
   JUDUL_MTK_5_BAB8,
   JUDUL_MTK_6_BAB1,
   JUDUL_MTK_6_BAB3,
@@ -275,7 +276,7 @@ export default function RuangBelajarPage() {
         : kelas === "2 SD"
           ? { [JUDUL_MTK_2_BAB1]: "/ruang-belajar/mtk-2-bab1", [JUDUL_MTK_2_BAB2]: "/ruang-belajar/mtk-2-bab2", [JUDUL_MTK_2_BAB3]: "/ruang-belajar/mtk-2-bab3", [JUDUL_MTK_2_BAB4]: "/ruang-belajar/mtk-2-bab4", [JUDUL_MTK_2_BAB5]: "/ruang-belajar/mtk-2-bab5", [JUDUL_MTK_2_BAB6]: "/ruang-belajar/mtk-2-bab6", [JUDUL_MTK_2_BAB7]: "/ruang-belajar/mtk-2-bab7", [JUDUL_MTK_2_BAB8]: "/ruang-belajar/mtk-2-bab8" }
           : kelas === "4 SD"
-            ? { [JUDUL_MTK_4_BAB1]: "/ruang-belajar/mtk-4-bab1", [JUDUL_MTK_4_BAB2]: "/ruang-belajar/mtk-4-bab2" }
+            ? { [JUDUL_MTK_4_BAB1]: "/ruang-belajar/mtk-4-bab1", [JUDUL_MTK_4_BAB2]: "/ruang-belajar/mtk-4-bab2", [JUDUL_MTK_4_BAB3]: "/ruang-belajar/mtk-4-bab3" }
             : kelas === "5 SD"
               ? { [JUDUL_MTK_5_BAB8]: "/ruang-belajar/mtk-5-bab8" }
               : kelas === "6 SD"

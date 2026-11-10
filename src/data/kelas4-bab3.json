@@ -1,0 +1,1892 @@
+{
+  "chapterId": "k4-mat-bab3",
+  "chapter_id": "k4-mat-bab3",
+  "phase_code": "FASE_B",
+  "grade": 4,
+  "subjectLabel": "MATEMATIKA - KELAS 4 SD",
+  "title": "BAB 3: POLA GAMBAR DAN POLA BILANGAN",
+  "silabusElemen": "🌈 Fase B • Elemen Aljabar: Pola Gambar (membesar–mengecil) dan Pola Bilangan (membesar–mengecil) (Kelas 4 SD/MI)",
+  "suaraPerangkatSaja": true,
+  "suaraLaju": 0.7,
+  "suaraNada": 1,
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Pola Gambar)",
+      "fullTitle": "Sub-Bab A: Pola Gambar",
+      "targetDescription": "Siswa menemukan dan membuat pola gambar membesar (mis. jeruk 2,4,6,… beda +2 hingga kumpulan ke-7 = 14) dan mengecil (mis. permen 9,7,5,… beda −2 hingga kumpulan ke-5 = 1) memakai tabel selisih.",
+      "secondaryBg": "#FFEDD5",
+      "secondaryBorder": "#EA580C",
+      "secondaryText": "#7C2D12",
+      "silabus": {
+        "teksSuara": "Kita belajar pola gambar. Jeruk disusun 2, 4, 6, lalu ditambah 2 terus sampai kumpulan ketujuh berisi 14. Permen disusun 9, 7, 5, dikurangi 2 sampai tersisa 1. Pola bisa membesar atau mengecil. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menemukan dan membuat pola gambar membesar dan mengecil.",
+        "referensi": "Buku Siswa Matematika Kelas IV Bab 3 Sub-Bab A hlm. 87–94; arithmetic visual patterns."
+      },
+      "stories": [
+        {
+          "id": "K4B3A-V1-1",
+          "titleHint": "Tiga kumpulan",
+          "sceneType": "K4B3A-V1-1",
+          "voiceNarration": "Ada tiga kumpulan jeruk. Dua, empat, lalu enam. Apakah kamu melihat polanya? Setiap kumpulan bertambah dua."
+        },
+        {
+          "id": "K4B3A-V1-2",
+          "titleHint": "Tabel +2",
+          "sceneType": "K4B3A-V1-2",
+          "voiceNarration": "Buat tabel seperti di buku. Kumpulan empat jadi delapan. Terus tambah dua. Sampai kumpulan tujuh."
+        },
+        {
+          "id": "K4B3A-V1-3",
+          "titleHint": "Hasil 14",
+          "sceneType": "K4B3A-V1-3",
+          "voiceNarration": "Kumpulan ketujuh berisi empat belas jeruk. Pola membesar berarti semakin banyak. Beda tetap positif. Siap berlatih."
+        },
+        {
+          "id": "K4B3A-V2-1",
+          "titleHint": "Semakin sedikit",
+          "sceneType": "K4B3A-V2-1",
+          "voiceNarration": "Ada juga pola yang mengecil. Sembilan, tujuh, lima permen. Setiap langkah berkurang dua. Jumlah semakin sedikit."
+        },
+        {
+          "id": "K4B3A-V2-2",
+          "titleHint": "Tabel −2",
+          "sceneType": "K4B3A-V2-2",
+          "voiceNarration": "Isi tabel selisih. Kumpulan empat berisi tiga. Kumpulan lima berisi satu. Ikuti beda tetap."
+        },
+        {
+          "id": "K4B3A-V2-3",
+          "titleHint": "Kesimpulan",
+          "sceneType": "K4B3A-V2-3",
+          "voiceNarration": "Pola mengecil memakai beda negatif. Pola membesar memakai beda positif. Selisih antar langkah sama. Itulah kunci pola gambar."
+        },
+        {
+          "id": "K4B3A-V3-1",
+          "titleHint": "Amati",
+          "sceneType": "K4B3A-V3-1",
+          "voiceNarration": "Hitung benda tiap kumpulan. Bandingkan dengan sebelumnya. Catat selisihnya. Apakah selisihnya sama?"
+        },
+        {
+          "id": "K4B3A-V3-2",
+          "titleHint": "Tentukan beda",
+          "sceneType": "K4B3A-V3-2",
+          "voiceNarration": "Jika selisih sama, itu beda pola. Beda positif berarti membesar. Beda negatif berarti mengecil. Lanjutkan dengan beda itu."
+        },
+        {
+          "id": "K4B3A-V3-3",
+          "titleHint": "Prediksi",
+          "sceneType": "K4B3A-V3-3",
+          "voiceNarration": "Prediksi kumpulan berikutnya. Cek lagi dengan tabel. Presentasikan pola. Siap ke pola bilangan."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K4B3A-V1",
+          "judul": "Jeruk Membesar",
+          "subjudul": "2, 4, 6, … → 14",
+          "adegan": [
+            {
+              "id": "K4B3A-V1-1",
+              "judul": "Tiga kumpulan",
+              "ketukan": [
+                "Ada tiga kumpulan jeruk.",
+                "Dua, empat, lalu enam.",
+                "Apakah kamu melihat polanya?",
+                "Setiap kumpulan bertambah dua."
+              ],
+              "papan": [
+                "3 kumpulan",
+                "2-4-6",
+                "pola?",
+                "+2"
+              ]
+            },
+            {
+              "id": "K4B3A-V1-2",
+              "judul": "Tabel +2",
+              "ketukan": [
+                "Buat tabel seperti di buku.",
+                "Kumpulan empat jadi delapan.",
+                "Terus tambah dua.",
+                "Sampai kumpulan tujuh."
+              ],
+              "papan": [
+                "tabel",
+                "8",
+                "+2",
+                "ke-7"
+              ]
+            },
+            {
+              "id": "K4B3A-V1-3",
+              "judul": "Hasil 14",
+              "ketukan": [
+                "Kumpulan ketujuh berisi empat belas jeruk.",
+                "Pola membesar berarti semakin banyak.",
+                "Beda tetap positif.",
+                "Siap berlatih."
+              ],
+              "papan": [
+                "14 jeruk",
+                "membesar",
+                "beda +",
+                "siap"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B3A-V2",
+          "judul": "Permen Mengecil",
+          "subjudul": "9, 7, 5, … → 1",
+          "adegan": [
+            {
+              "id": "K4B3A-V2-1",
+              "judul": "Semakin sedikit",
+              "ketukan": [
+                "Ada juga pola yang mengecil.",
+                "Sembilan, tujuh, lima permen.",
+                "Setiap langkah berkurang dua.",
+                "Jumlah semakin sedikit."
+              ],
+              "papan": [
+                "mengecil",
+                "9-7-5",
+                "−2",
+                "sedikit"
+              ]
+            },
+            {
+              "id": "K4B3A-V2-2",
+              "judul": "Tabel −2",
+              "ketukan": [
+                "Isi tabel selisih.",
+                "Kumpulan empat berisi tiga.",
+                "Kumpulan lima berisi satu.",
+                "Ikuti beda tetap."
+              ],
+              "papan": [
+                "tabel",
+                "3",
+                "1",
+                "beda −2"
+              ]
+            },
+            {
+              "id": "K4B3A-V2-3",
+              "judul": "Kesimpulan",
+              "ketukan": [
+                "Pola mengecil memakai beda negatif.",
+                "Pola membesar memakai beda positif.",
+                "Selisih antar langkah sama.",
+                "Itulah kunci pola gambar."
+              ],
+              "papan": [
+                "beda −",
+                "beda +",
+                "selisih sama",
+                "kunci"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B3A-V3",
+          "judul": "Temukan Pola",
+          "subjudul": "Amati → beda → lanjutkan",
+          "adegan": [
+            {
+              "id": "K4B3A-V3-1",
+              "judul": "Amati",
+              "ketukan": [
+                "Hitung benda tiap kumpulan.",
+                "Bandingkan dengan sebelumnya.",
+                "Catat selisihnya.",
+                "Apakah selisihnya sama?"
+              ],
+              "papan": [
+                "hitung",
+                "banding",
+                "selisih",
+                "sama?"
+              ]
+            },
+            {
+              "id": "K4B3A-V3-2",
+              "judul": "Tentukan beda",
+              "ketukan": [
+                "Jika selisih sama, itu beda pola.",
+                "Beda positif berarti membesar.",
+                "Beda negatif berarti mengecil.",
+                "Lanjutkan dengan beda itu."
+              ],
+              "papan": [
+                "beda",
+                "+",
+                "−",
+                "lanjut"
+              ]
+            },
+            {
+              "id": "K4B3A-V3-3",
+              "judul": "Prediksi",
+              "ketukan": [
+                "Prediksi kumpulan berikutnya.",
+                "Cek lagi dengan tabel.",
+                "Presentasikan pola.",
+                "Siap ke pola bilangan."
+              ],
+              "papan": [
+                "prediksi",
+                "tabel",
+                "presentasi",
+                "siap B"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Amati",
+          "stepDesc": "Hitung tiap kumpulan.",
+          "icon": "👀",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Selisih",
+          "stepDesc": "Catat beda tetap.",
+          "icon": "➖",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Membesar",
+          "stepDesc": "Beda positif.",
+          "icon": "📈",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Mengecil",
+          "stepDesc": "Beda negatif.",
+          "icon": "📉",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Jeruk +2",
+          "stepDesc": "2→14 di ke-7.",
+          "icon": "🟠",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Permen −2",
+          "stepDesc": "9→1 di ke-5.",
+          "icon": "🍬",
+          "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Tabel",
+          "stepDesc": "Alat bantu.",
+          "icon": "📋",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Siap B",
+          "stepDesc": "Pola bilangan.",
+          "icon": "➡️",
+          "flowFrom": "7",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "AMATI",
+          "emoji": "👀",
+          "countNum": 1,
+          "countWord": "lihat",
+          "voiceSentence": "Hitung benda."
+        },
+        {
+          "fruitName": "BEDA",
+          "emoji": "➖",
+          "countNum": 2,
+          "countWord": "selisih",
+          "voiceSentence": "Selisih tetap."
+        },
+        {
+          "fruitName": "+2",
+          "emoji": "📈",
+          "countNum": 2,
+          "countWord": "jeruk",
+          "voiceSentence": "Membesar."
+        },
+        {
+          "fruitName": "−2",
+          "emoji": "📉",
+          "countNum": 2,
+          "countWord": "permen",
+          "voiceSentence": "Mengecil."
+        },
+        {
+          "fruitName": "2,4,6",
+          "emoji": "🟠",
+          "countNum": 6,
+          "countWord": "pola",
+          "voiceSentence": "Contoh buku."
+        },
+        {
+          "fruitName": "14",
+          "emoji": "✅",
+          "countNum": 7,
+          "countWord": "ke-7",
+          "voiceSentence": "Hasil jeruk."
+        },
+        {
+          "fruitName": "9,7,5",
+          "emoji": "🍬",
+          "countNum": 5,
+          "countWord": "pola",
+          "voiceSentence": "Permen."
+        },
+        {
+          "fruitName": "1",
+          "emoji": "🍬",
+          "countNum": 5,
+          "countWord": "ke-5",
+          "voiceSentence": "Sisa satu."
+        },
+        {
+          "fruitName": "TABEL",
+          "emoji": "📋",
+          "countNum": 1,
+          "countWord": "alat",
+          "voiceSentence": "Uraian selisih."
+        },
+        {
+          "fruitName": "SIAP B",
+          "emoji": "✅",
+          "countNum": 1,
+          "countWord": "lanjut",
+          "voiceSentence": "Pola bilangan."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Baca Pola Gambar",
+          "emoji": "🟠",
+          "targetCount": 6,
+          "voiceGuide": "Pilih beda/jenis."
+        },
+        {
+          "title": "Lanjutkan Pola Membesar",
+          "emoji": "📈",
+          "targetCount": 6,
+          "voiceGuide": "Pilih banyak benda."
+        },
+        {
+          "title": "Lanjutkan Pola Mengecil",
+          "emoji": "📉",
+          "targetCount": 6,
+          "voiceGuide": "Pilih banyak benda."
+        },
+        {
+          "title": "Pilah Membesar/Mengecil",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah."
+        },
+        {
+          "title": "Jodohkan Pola dan Beda",
+          "emoji": "🔗",
+          "targetCount": 12,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Pola Gambar",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Pola Diminta",
+          "emoji": "👆",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "title": "Ketuk Semua Jenis Pola",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Jeruk dan Permen",
+          "emoji": "📖",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Urutkan Banyak Benda",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Urutkan."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram Pola Membesar",
+          "diagramType": "grow",
+          "numberA": 2,
+          "numberB": 4,
+          "caption": "Baca diagram."
+        },
+        {
+          "title": "Diagram Pola Mengecil",
+          "diagramType": "shrink",
+          "numberA": 9,
+          "numberB": 5,
+          "caption": "Baca diagram."
+        },
+        {
+          "title": "Jodohkan Diagram Pola",
+          "diagramType": "match",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Diagram Pola",
+          "diagramType": "mem",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Selisih Pola",
+          "diagramType": "table",
+          "numberA": 1,
+          "numberB": 3,
+          "caption": "Isi lanjut."
+        },
+        {
+          "title": "Ketuk Semua Diagram",
+          "diagramType": "select",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Ketuk semua."
+        },
+        {
+          "title": "Pilah Diagram Pola",
+          "diagramType": "sort",
+          "numberA": 1,
+          "numberB": 6,
+          "caption": "Pilah."
+        },
+        {
+          "title": "Temukan Beda Visual",
+          "diagramType": "diff",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih beda."
+        },
+        {
+          "title": "Pilih Gambar Berikutnya",
+          "diagramType": "choose",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih lanjut."
+        },
+        {
+          "title": "Cerita Diagram Pola",
+          "diagramType": "story",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Cerita + gambar."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "8",
+          "wordLarge": "LANJUT",
+          "mathNotation": "suku+beda",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "+2",
+          "wordLarge": "BEDA",
+          "mathNotation": "selisih",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "📈",
+          "wordLarge": "JENIS",
+          "mathNotation": "jenis",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "2<4<6",
+          "wordLarge": "URUT",
+          "mathNotation": "nilai",
+          "voiceReadout": "Urutkan."
+        },
+        {
+          "symbolLarge": "2,4,6",
+          "wordLarge": "JODOH",
+          "mathNotation": "teks",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "+2",
+          "wordLarge": "MEMORI",
+          "mathNotation": "notasi",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK4B3A-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "baca-pola",
+          "title": "Baca Pola Gambar",
+          "bookReference": "Buku Siswa hlm. 89–90 (jeruk)",
+          "objective": "Membaca kumpulan membesar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih beda/jenis."
+        },
+        {
+          "gameId": "subK4B3A-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "lanjut-besar",
+          "title": "Lanjutkan Pola Membesar",
+          "bookReference": "Buku Siswa hlm. 90 (kumpulan ke-7)",
+          "objective": "Menemukan suku berikutnya.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih banyak benda."
+        },
+        {
+          "gameId": "subK4B3A-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "lanjut-kecil",
+          "title": "Lanjutkan Pola Mengecil",
+          "bookReference": "Buku Siswa hlm. 91–93 (permen)",
+          "objective": "Menemukan suku mengecil.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih banyak benda."
+        },
+        {
+          "gameId": "subK4B3A-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sort-pola",
+          "title": "Pilah Membesar/Mengecil",
+          "bookReference": "Buku Siswa hlm. 87–93",
+          "objective": "Memilah jenis pola.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B3A-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "match-beda",
+          "title": "Jodohkan Pola dan Beda",
+          "bookReference": "Buku Siswa hlm. 90–93",
+          "objective": "Menjodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B3A-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memory-pola",
+          "title": "Memori Pola Gambar",
+          "bookReference": "Buku Siswa hlm. 90–93",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B3A-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-pola",
+          "title": "Ketuk Pola Diminta",
+          "bookReference": "Buku Siswa hlm. 89–93",
+          "objective": "Mengetuk.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "gameId": "subK4B3A-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "tap-all-pola",
+          "title": "Ketuk Semua Jenis Pola",
+          "bookReference": "Buku Siswa hlm. 87–93",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B3A-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "story-pola",
+          "title": "Cerita Jeruk dan Permen",
+          "bookReference": "Buku Siswa hlm. 89–93",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3A-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "order-pola",
+          "title": "Urutkan Banyak Benda",
+          "bookReference": "Buku Siswa hlm. 90–93",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B3A-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "gambar-besar",
+          "title": "Diagram Pola Membesar",
+          "bookReference": "Buku Siswa hlm. 89–90",
+          "objective": "Baca diagram.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3A-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "gambar-kecil",
+          "title": "Diagram Pola Mengecil",
+          "bookReference": "Buku Siswa hlm. 91–93",
+          "objective": "Baca diagram.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3A-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-diagram-a",
+          "title": "Jodohkan Diagram Pola",
+          "bookReference": "Buku Siswa hlm. 90–93",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B3A-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-diagram-a",
+          "title": "Memori Diagram Pola",
+          "bookReference": "Buku Siswa hlm. 90",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B3A-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "table-a",
+          "title": "Tabel Selisih Pola",
+          "bookReference": "Buku Siswa hlm. 90 & 93",
+          "objective": "Isi lanjut.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3A-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-a",
+          "title": "Ketuk Semua Diagram",
+          "bookReference": "Buku Siswa hlm. 87–93",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B3A-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-diagram-a",
+          "title": "Pilah Diagram Pola",
+          "bookReference": "Buku Siswa hlm. 87–93",
+          "objective": "Pilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B3A-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "beda-visual",
+          "title": "Temukan Beda Visual",
+          "bookReference": "Buku Siswa hlm. 90–93",
+          "objective": "Pilih beda.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3A-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "choose-next",
+          "title": "Pilih Gambar Berikutnya",
+          "bookReference": "Buku Siswa hlm. 93–94",
+          "objective": "Pilih lanjut.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3A-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "story-picture-a",
+          "title": "Cerita Diagram Pola",
+          "bookReference": "Buku Siswa hlm. 89–93",
+          "objective": "Cerita + gambar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3A-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "write-next",
+          "title": "Tulis Suku Berikutnya",
+          "bookReference": "Buku Siswa hlm. 90–93",
+          "objective": "Menulis angka lanjut.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3A-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "write-beda",
+          "title": "Tulis Beda Pola",
+          "bookReference": "Buku Siswa hlm. 90–93",
+          "objective": "Menulis beda.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3A-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "choose-jenis",
+          "title": "Pilih Jenis Pola",
+          "bookReference": "Buku Siswa hlm. 87–93",
+          "objective": "Membesar/mengecil.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3A-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "order-abstract-a",
+          "title": "Urutkan Suku",
+          "bookReference": "Buku Siswa hlm. 90–93",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B3A-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-abstract-a",
+          "title": "Jodohkan Notasi Pola",
+          "bookReference": "Buku Siswa hlm. 90–93",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B3A-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-abstract-a",
+          "title": "Memori Notasi Pola",
+          "bookReference": "Buku Siswa hlm. 90",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B3A-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-a",
+          "title": "Benar atau Salah: Pola Gambar",
+          "bookReference": "Buku Siswa hlm. 87–93",
+          "objective": "Menilai.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK4B3A-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-a",
+          "title": "Detektif Pola Gambar",
+          "bookReference": "Buku Siswa hlm. 89–93",
+          "objective": "Petunjuk → suku.",
+          "mechanicDescription": "Empat soal.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3A-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-a",
+          "title": "Peta Konsep Pola Gambar",
+          "bookReference": "Buku Siswa hlm. 87–93",
+          "objective": "Mengisi kotak.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK4B3A-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-abstract-a",
+          "title": "Cerita Angka Pola Gambar",
+          "bookReference": "Buku Siswa hlm. 89–93",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Amati",
+            "isi": "Hitung banyak benda tiap kumpulan dan bandingkan.",
+            "suara": "Hitung dulu, lalu bandingkan."
+          },
+          {
+            "nama": "Beda tetap",
+            "isi": "Selisih antar kumpulan yang berurutan sama.",
+            "suara": "Selisih yang sama adalah beda pola."
+          },
+          {
+            "nama": "Membesar/mengecil",
+            "isi": "Beda positif membesarkan; beda negatif mengecilkan.",
+            "suara": "Tanda beda menentukan jenis."
+          },
+          {
+            "nama": "Tabel",
+            "isi": "Tabel uraian membantu menemukan suku berikutnya.",
+            "suara": "Pakai tabel seperti di buku."
+          }
+        ],
+        "suara": "Empat poin pola gambar.",
+        "caraMenyebutkan": "Amati Beda tetap Membesar/mengecil Tabel",
+        "rumah": "Ayo Berlatih: lengkapi pola gambar membesar dan mengecil pada hlm. 93–94.",
+        "refleksi": [
+          "Aku menghitung benda.",
+          "Aku menemukan beda.",
+          "Aku membedakan jenis.",
+          "Aku memprediksi kumpulan berikutnya."
+        ]
+      }
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Pola Bilangan)",
+      "fullTitle": "Sub-Bab B: Pola Bilangan",
+      "targetDescription": "Siswa menemukan dan membuat pola bilangan membesar (3,5,7…; 1,4,7…; telur +8) dan mengecil (23,18,13…; 32,28…; produksi TV −6) dengan mengamati selisih tetap, serta menyelesaikan cerita rak buku, kursi, dan panen.",
+      "secondaryBg": "#DBEAFE",
+      "secondaryBorder": "#2563EB",
+      "secondaryText": "#1E3A8A",
+      "silabus": {
+        "teksSuara": "Kita belajar pola bilangan. Tiga, lima, tujuh, sembilan, sebelas, bedanya plus dua. Satu, empat, tujuh, sepuluh, bedanya plus tiga. Dua puluh tiga, delapan belas, tiga belas, delapan, bedanya minus lima. Pola bilangan bisa membesar atau mengecil. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menemukan dan membuat pola bilangan membesar dan mengecil.",
+        "referensi": "Buku Siswa Matematika Kelas IV Bab 3 Sub-Bab B hlm. 95–102; arithmetic sequences."
+      },
+      "stories": [
+        {
+          "id": "K4B3B-V1-1",
+          "titleHint": "Deret buku",
+          "sceneType": "K4B3B-V1-1",
+          "voiceNarration": "Lihat deret tiga, lima, tujuh, sembilan, sebelas. Apa hubungan antar bilangan? Tiap langkah ditambah dua. Itulah beda tetap."
+        },
+        {
+          "id": "K4B3B-V1-2",
+          "titleHint": "Suku ke-6",
+          "sceneType": "K4B3B-V1-2",
+          "voiceNarration": "Suku berikutnya sebelas plus dua. Hasilnya tiga belas. Pola membesar. Nilai semakin besar."
+        },
+        {
+          "id": "K4B3B-V1-3",
+          "titleHint": "Kasus +3",
+          "sceneType": "K4B3B-V1-3",
+          "voiceNarration": "Kasus satu: satu, empat, tujuh, sepuluh. Bedanya plus tiga. Lanjutannya tiga belas. Selalu amati selisih."
+        },
+        {
+          "id": "K4B3B-V2-1",
+          "titleHint": "Kasus dua",
+          "sceneType": "K4B3B-V2-1",
+          "voiceNarration": "Dua puluh tiga, delapan belas, tiga belas, delapan. Selisihnya minus lima. Lanjutannya tiga. Nilai semakin kecil."
+        },
+        {
+          "id": "K4B3B-V2-2",
+          "titleHint": "Ingat definisi",
+          "sceneType": "K4B3B-V2-2",
+          "voiceNarration": "Pola bilangan punya aturan penyusunan. Bisa membesar atau mengecil. Kuncinya beda antar suku. Tulis di tabel agar jelas."
+        },
+        {
+          "id": "K4B3B-V2-3",
+          "titleHint": "Contoh 32…",
+          "sceneType": "K4B3B-V2-3",
+          "voiceNarration": "Tiga puluh dua, dua puluh delapan, dua puluh empat. Bedanya minus empat. Ini pola mengecil. Latihan cerita menyusul."
+        },
+        {
+          "id": "K4B3B-V3-1",
+          "titleHint": "Panen telur",
+          "sceneType": "K4B3B-V3-1",
+          "voiceNarration": "Hari satu dua puluh telur. Hari dua dua puluh delapan. Hari tiga tiga puluh enam. Bedanya plus delapan."
+        },
+        {
+          "id": "K4B3B-V3-2",
+          "titleHint": "Hari ke-5",
+          "sceneType": "K4B3B-V3-2",
+          "voiceNarration": "Lanjutkan pola sampai hari lima. Hasilnya lima puluh dua. Cerita memakai pola bilangan. Sama seperti deret angka."
+        },
+        {
+          "id": "K4B3B-V3-3",
+          "titleHint": "Siap berlatih",
+          "sceneType": "K4B3B-V3-3",
+          "voiceNarration": "Rak buku, kursi, dan televisi juga berpola. Cari bedanya dulu. Lalu hitung suku yang diminta. Siap latihan pola bilangan."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K4B3B-V1",
+          "judul": "Beda Tetap",
+          "subjudul": "3, 5, 7, 9, 11, …",
+          "adegan": [
+            {
+              "id": "K4B3B-V1-1",
+              "judul": "Deret buku",
+              "ketukan": [
+                "Lihat deret tiga, lima, tujuh, sembilan, sebelas.",
+                "Apa hubungan antar bilangan?",
+                "Tiap langkah ditambah dua.",
+                "Itulah beda tetap."
+              ],
+              "papan": [
+                "3 5 7 9 11",
+                "hubungan?",
+                "+2",
+                "beda"
+              ]
+            },
+            {
+              "id": "K4B3B-V1-2",
+              "judul": "Suku ke-6",
+              "ketukan": [
+                "Suku berikutnya sebelas plus dua.",
+                "Hasilnya tiga belas.",
+                "Pola membesar.",
+                "Nilai semakin besar."
+              ],
+              "papan": [
+                "11+2",
+                "13",
+                "membesar",
+                "besar"
+              ]
+            },
+            {
+              "id": "K4B3B-V1-3",
+              "judul": "Kasus +3",
+              "ketukan": [
+                "Kasus satu: satu, empat, tujuh, sepuluh.",
+                "Bedanya plus tiga.",
+                "Lanjutannya tiga belas.",
+                "Selalu amati selisih."
+              ],
+              "papan": [
+                "1 4 7 10",
+                "+3",
+                "13",
+                "amati"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B3B-V2",
+          "judul": "Pola Mengecil",
+          "subjudul": "23, 18, 13, 8, …",
+          "adegan": [
+            {
+              "id": "K4B3B-V2-1",
+              "judul": "Kasus dua",
+              "ketukan": [
+                "Dua puluh tiga, delapan belas, tiga belas, delapan.",
+                "Selisihnya minus lima.",
+                "Lanjutannya tiga.",
+                "Nilai semakin kecil."
+              ],
+              "papan": [
+                "23 18 13 8",
+                "−5",
+                "3",
+                "mengecil"
+              ]
+            },
+            {
+              "id": "K4B3B-V2-2",
+              "judul": "Ingat definisi",
+              "ketukan": [
+                "Pola bilangan punya aturan penyusunan.",
+                "Bisa membesar atau mengecil.",
+                "Kuncinya beda antar suku.",
+                "Tulis di tabel agar jelas."
+              ],
+              "papan": [
+                "aturan",
+                "±",
+                "beda",
+                "tabel"
+              ]
+            },
+            {
+              "id": "K4B3B-V2-3",
+              "judul": "Contoh 32…",
+              "ketukan": [
+                "Tiga puluh dua, dua puluh delapan, dua puluh empat.",
+                "Bedanya minus empat.",
+                "Ini pola mengecil.",
+                "Latihan cerita menyusul."
+              ],
+              "papan": [
+                "32 28 24",
+                "−4",
+                "mengecil",
+                "cerita"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B3B-V3",
+          "judul": "Cerita Telur",
+          "subjudul": "20, 28, 36, 44, 52",
+          "adegan": [
+            {
+              "id": "K4B3B-V3-1",
+              "judul": "Panen telur",
+              "ketukan": [
+                "Hari satu dua puluh telur.",
+                "Hari dua dua puluh delapan.",
+                "Hari tiga tiga puluh enam.",
+                "Bedanya plus delapan."
+              ],
+              "papan": [
+                "20",
+                "28",
+                "36",
+                "+8"
+              ]
+            },
+            {
+              "id": "K4B3B-V3-2",
+              "judul": "Hari ke-5",
+              "ketukan": [
+                "Lanjutkan pola sampai hari lima.",
+                "Hasilnya lima puluh dua.",
+                "Cerita memakai pola bilangan.",
+                "Sama seperti deret angka."
+              ],
+              "papan": [
+                "hari 5",
+                "52",
+                "cerita",
+                "deret"
+              ]
+            },
+            {
+              "id": "K4B3B-V3-3",
+              "judul": "Siap berlatih",
+              "ketukan": [
+                "Rak buku, kursi, dan televisi juga berpola.",
+                "Cari bedanya dulu.",
+                "Lalu hitung suku yang diminta.",
+                "Siap latihan pola bilangan."
+              ],
+              "papan": [
+                "rak/kursi",
+                "cari beda",
+                "hitung",
+                "siap"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Amati deret",
+          "stepDesc": "Lihat antar suku.",
+          "icon": "👀",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Hitung beda",
+          "stepDesc": "Selisih tetap.",
+          "icon": "➖",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Membesar",
+          "stepDesc": "Beda +.",
+          "icon": "📈",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Mengecil",
+          "stepDesc": "Beda −.",
+          "icon": "📉",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Kasus +3",
+          "stepDesc": "1,4,7,10…",
+          "icon": "3️⃣",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Kasus −5",
+          "stepDesc": "23,18,13…",
+          "icon": "5️⃣",
+          "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Cerita",
+          "stepDesc": "Telur +8.",
+          "icon": "🥚",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Prediksi",
+          "stepDesc": "Suku ke-n.",
+          "icon": "✅",
+          "flowFrom": "7",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "BEDA",
+          "emoji": "➖",
+          "countNum": 1,
+          "countWord": "kunci",
+          "voiceSentence": "Selisih tetap."
+        },
+        {
+          "fruitName": "+2",
+          "emoji": "📈",
+          "countNum": 2,
+          "countWord": "contoh",
+          "voiceSentence": "3,5,7…"
+        },
+        {
+          "fruitName": "+3",
+          "emoji": "3️⃣",
+          "countNum": 3,
+          "countWord": "kasus",
+          "voiceSentence": "1,4,7,10…"
+        },
+        {
+          "fruitName": "−5",
+          "emoji": "📉",
+          "countNum": 5,
+          "countWord": "kasus",
+          "voiceSentence": "23,18,13…"
+        },
+        {
+          "fruitName": "−4",
+          "emoji": "📉",
+          "countNum": 4,
+          "countWord": "contoh",
+          "voiceSentence": "32,28,24…"
+        },
+        {
+          "fruitName": "+8",
+          "emoji": "🥚",
+          "countNum": 8,
+          "countWord": "telur",
+          "voiceSentence": "20→52."
+        },
+        {
+          "fruitName": "13",
+          "emoji": "✅",
+          "countNum": 6,
+          "countWord": "lanjut",
+          "voiceSentence": "Setelah 11."
+        },
+        {
+          "fruitName": "3",
+          "emoji": "✅",
+          "countNum": 1,
+          "countWord": "lanjut",
+          "voiceSentence": "Setelah 8."
+        },
+        {
+          "fruitName": "TABEL",
+          "emoji": "📋",
+          "countNum": 1,
+          "countWord": "alat",
+          "voiceSentence": "Uraian hari."
+        },
+        {
+          "fruitName": "INGAT",
+          "emoji": "📜",
+          "countNum": 1,
+          "countWord": "definisi",
+          "voiceSentence": "Ada aturan."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Baca Pola Bilangan",
+          "emoji": "🔢",
+          "targetCount": 6,
+          "voiceGuide": "Pilih beda/jenis."
+        },
+        {
+          "title": "Lanjutkan Pola Membesar",
+          "emoji": "📈",
+          "targetCount": 6,
+          "voiceGuide": "Pilih bilangan."
+        },
+        {
+          "title": "Lanjutkan Pola Mengecil",
+          "emoji": "📉",
+          "targetCount": 6,
+          "voiceGuide": "Pilih bilangan."
+        },
+        {
+          "title": "Pilah Membesar/Mengecil",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah."
+        },
+        {
+          "title": "Jodohkan Deret dan Beda",
+          "emoji": "🔗",
+          "targetCount": 12,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Pola Bilangan",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Deret Diminta",
+          "emoji": "👆",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "title": "Ketuk Semua Jenis Bilangan",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Telur, Rak, Kursi, TV",
+          "emoji": "🥚",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Urutkan Bilangan Pola",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Urutkan."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Rantai Membesar",
+          "diagramType": "chain",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Baca rantai."
+        },
+        {
+          "title": "Rantai Mengecil",
+          "diagramType": "chain",
+          "numberA": 23,
+          "numberB": 8,
+          "caption": "Baca rantai."
+        },
+        {
+          "title": "Jodohkan Rantai Bilangan",
+          "diagramType": "match",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Rantai",
+          "diagramType": "mem",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Uraian Bilangan",
+          "diagramType": "table",
+          "numberA": 1,
+          "numberB": 3,
+          "caption": "Isi lanjut."
+        },
+        {
+          "title": "Ketuk Semua Rantai",
+          "diagramType": "select",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Ketuk semua."
+        },
+        {
+          "title": "Pilah Rantai Pola",
+          "diagramType": "sort",
+          "numberA": 1,
+          "numberB": 6,
+          "caption": "Pilah."
+        },
+        {
+          "title": "Temukan Beda Bilangan",
+          "diagramType": "diff",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih beda."
+        },
+        {
+          "title": "Pilih Bilangan Berikutnya",
+          "diagramType": "choose",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih lanjut."
+        },
+        {
+          "title": "Cerita Diagram Bilangan",
+          "diagramType": "story",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Cerita + rantai."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "13",
+          "wordLarge": "LANJUT",
+          "mathNotation": "a_n",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "+3",
+          "wordLarge": "BEDA",
+          "mathNotation": "d",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "📈",
+          "wordLarge": "JENIS",
+          "mathNotation": "jenis",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "3<5<7",
+          "wordLarge": "URUT",
+          "mathNotation": "nilai",
+          "voiceReadout": "Urutkan."
+        },
+        {
+          "symbolLarge": "1,4,7",
+          "wordLarge": "JODOH",
+          "mathNotation": "teks",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "-5",
+          "wordLarge": "MEMORI",
+          "mathNotation": "notasi",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK4B3B-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "baca-bil",
+          "title": "Baca Pola Bilangan",
+          "bookReference": "Buku Siswa hlm. 96–97 (3,5,7…)",
+          "objective": "Membaca beda bilangan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih beda/jenis."
+        },
+        {
+          "gameId": "subK4B3B-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "lanjut-besar-b",
+          "title": "Lanjutkan Pola Membesar",
+          "bookReference": "Buku Siswa hlm. 97 (kasus +3)",
+          "objective": "Suku berikutnya.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih bilangan."
+        },
+        {
+          "gameId": "subK4B3B-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "lanjut-kecil-b",
+          "title": "Lanjutkan Pola Mengecil",
+          "bookReference": "Buku Siswa hlm. 98 (kasus −5)",
+          "objective": "Suku mengecil.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih bilangan."
+        },
+        {
+          "gameId": "subK4B3B-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sort-bil",
+          "title": "Pilah Membesar/Mengecil",
+          "bookReference": "Buku Siswa hlm. 97–98",
+          "objective": "Memilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B3B-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "match-bil",
+          "title": "Jodohkan Deret dan Beda",
+          "bookReference": "Buku Siswa hlm. 97–100",
+          "objective": "Menjodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B3B-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memory-bil",
+          "title": "Memori Pola Bilangan",
+          "bookReference": "Buku Siswa hlm. 97–99",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B3B-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-bil",
+          "title": "Ketuk Deret Diminta",
+          "bookReference": "Buku Siswa hlm. 97–100",
+          "objective": "Mengetuk.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "gameId": "subK4B3B-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "tap-all-bil",
+          "title": "Ketuk Semua Jenis Bilangan",
+          "bookReference": "Buku Siswa hlm. 97–98",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B3B-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "story-bil",
+          "title": "Cerita Telur, Rak, Kursi, TV",
+          "bookReference": "Buku Siswa hlm. 98–100",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3B-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "order-bil",
+          "title": "Urutkan Bilangan Pola",
+          "bookReference": "Buku Siswa hlm. 96–99",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B3B-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "rantai-besar",
+          "title": "Rantai Membesar",
+          "bookReference": "Buku Siswa hlm. 97",
+          "objective": "Baca rantai.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3B-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "rantai-kecil",
+          "title": "Rantai Mengecil",
+          "bookReference": "Buku Siswa hlm. 98",
+          "objective": "Baca rantai.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3B-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-diagram-b",
+          "title": "Jodohkan Rantai Bilangan",
+          "bookReference": "Buku Siswa hlm. 97–100",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B3B-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-diagram-b",
+          "title": "Memori Rantai",
+          "bookReference": "Buku Siswa hlm. 97",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B3B-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "table-b",
+          "title": "Tabel Uraian Bilangan",
+          "bookReference": "Buku Siswa hlm. 96 & 99",
+          "objective": "Isi lanjut.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3B-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-b",
+          "title": "Ketuk Semua Rantai",
+          "bookReference": "Buku Siswa hlm. 97–98",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B3B-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-diagram-b",
+          "title": "Pilah Rantai Pola",
+          "bookReference": "Buku Siswa hlm. 97–98",
+          "objective": "Pilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B3B-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "beda-bil",
+          "title": "Temukan Beda Bilangan",
+          "bookReference": "Buku Siswa hlm. 97–98",
+          "objective": "Pilih beda.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3B-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "choose-next-b",
+          "title": "Pilih Bilangan Berikutnya",
+          "bookReference": "Buku Siswa hlm. 99–100",
+          "objective": "Pilih lanjut.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3B-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "story-picture-b",
+          "title": "Cerita Diagram Bilangan",
+          "bookReference": "Buku Siswa hlm. 98–100",
+          "objective": "Cerita + rantai.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3B-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "write-next-b",
+          "title": "Tulis Suku Berikutnya",
+          "bookReference": "Buku Siswa hlm. 97–100",
+          "objective": "Menulis lanjut.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3B-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "write-beda-b",
+          "title": "Tulis Beda Bilangan",
+          "bookReference": "Buku Siswa hlm. 97–98",
+          "objective": "Menulis beda.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3B-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "choose-jenis-b",
+          "title": "Pilih Jenis Bilangan",
+          "bookReference": "Buku Siswa hlm. 98",
+          "objective": "Membesar/mengecil.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3B-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "order-abstract-b",
+          "title": "Urutkan Suku Bilangan",
+          "bookReference": "Buku Siswa hlm. 96–99",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B3B-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-abstract-b",
+          "title": "Jodohkan Notasi Bilangan",
+          "bookReference": "Buku Siswa hlm. 97–100",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B3B-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-abstract-b",
+          "title": "Memori Notasi Bilangan",
+          "bookReference": "Buku Siswa hlm. 97",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B3B-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-b",
+          "title": "Benar atau Salah: Pola Bilangan",
+          "bookReference": "Buku Siswa hlm. 96–99",
+          "objective": "Menilai.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK4B3B-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-b",
+          "title": "Detektif Pola Bilangan",
+          "bookReference": "Buku Siswa hlm. 96–100",
+          "objective": "Petunjuk → suku.",
+          "mechanicDescription": "Empat soal.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B3B-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-b",
+          "title": "Peta Konsep Pola Bilangan",
+          "bookReference": "Buku Siswa hlm. 96–98",
+          "objective": "Mengisi kotak.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK4B3B-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-abstract-b",
+          "title": "Cerita Angka Pola Bilangan",
+          "bookReference": "Buku Siswa hlm. 98–100",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Definisi",
+            "isi": "Pola bilangan adalah susunan bilangan beraturan.",
+            "suara": "Ada aturan penyusunan."
+          },
+          {
+            "nama": "Beda",
+            "isi": "Hitung selisih suku berurutan; biasanya tetap.",
+            "suara": "Selisih tetap = beda."
+          },
+          {
+            "nama": "Jenis",
+            "isi": "Beda positif membesarkan; beda negatif mengecilkan.",
+            "suara": "Tanda beda menentukan arah."
+          },
+          {
+            "nama": "Cerita",
+            "isi": "Masalah telur, rak, kursi, TV diselesaikan dengan pola yang sama.",
+            "suara": "Cerita = deret dengan beda."
+          }
+        ],
+        "suara": "Empat poin pola bilangan.",
+        "caraMenyebutkan": "Definisi Beda Jenis Cerita",
+        "rumah": "Ayo Berlatih: kerjakan latihan 2 hlm. 99–100 (lanjutkan deret dan cerita).",
+        "refleksi": [
+          "Aku mencari beda.",
+          "Aku menentukan jenis.",
+          "Aku menulis suku berikutnya.",
+          "Aku menyelesaikan cerita pola."
+        ]
+      }
+    }
+  },
+  "practiceQuestions": []
+}
