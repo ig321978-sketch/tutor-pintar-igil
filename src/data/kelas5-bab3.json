@@ -1,0 +1,2777 @@
+{
+  "chapterId": "k5-mat-bab3",
+  "chapter_id": "k5-mat-bab3",
+  "phase_code": "FASE_C",
+  "grade": 5,
+  "subjectLabel": "MATEMATIKA - KELAS 5 SD",
+  "title": "BAB 3: BILANGAN PECAHAN",
+  "silabusElemen": "🌈 Fase C • Elemen Bilangan: Membandingkan, Mengurutkan, Penjumlahan, dan Pengurangan Pecahan (Kelas 5 SD/MI)",
+  "suaraPerangkatSaja": true,
+  "suaraLaju": 0.7,
+  "suaraNada": 1,
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Banding Pecahan)",
+      "fullTitle": "Sub-Bab A: Membandingkan dan Mengurutkan Pecahan",
+      "targetDescription": "Siswa membandingkan dan mengurutkan pecahan biasa serta campuran dengan menyamakan bentuk, memakai garis bilangan, dan strategi pembilang/penyebut sesuai Buku Siswa Kelas V Bab 3.",
+      "secondaryBg": "#FFEDD5",
+      "secondaryBorder": "#EA580C",
+      "secondaryText": "#7C2D12",
+      "silabus": {
+        "teksSuara": "Kita belajar membandingkan dan mengurutkan pecahan. Ingat pembilang dan penyebut. Ubah campuran menjadi biasa. Pakai garis bilangan. Bandingkan pembilang jika penyebut sama, atau penyebut jika pembilang sama. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa membandingkan dan mengurutkan bilangan pecahan.",
+        "referensi": "Buku Siswa Matematika Kelas V Bab 3 Sub-Bab A hlm. 68–75; number line fractions; equivalent fractions (Van de Walle)."
+      },
+      "stories": [
+        {
+          "id": "K5B3A-V1-1",
+          "titleHint": "Bagian keseluruhan",
+          "sceneType": "K5B3A-V1-1",
+          "voiceNarration": "Pecahan adalah bagian dari keseluruhan. Angka atas disebut pembilang. Angka bawah disebut penyebut. Contoh satu per dua."
+        },
+        {
+          "id": "K5B3A-V1-2",
+          "titleHint": "Bentuk pecahan",
+          "sceneType": "K5B3A-V1-2",
+          "voiceNarration": "Ada pecahan biasa. Ada pecahan campuran. Campuran punya bilangan bulat. Contoh dua tiga per empat."
+        },
+        {
+          "id": "K5B3A-V1-3",
+          "titleHint": "Jajanan pasar",
+          "sceneType": "K5B3A-V1-3",
+          "voiceNarration": "Empat potong makanan. Kamu makan dua. Itu dua per empat. Boleh disederhanakan."
+        },
+        {
+          "id": "K5B3A-V2-1",
+          "titleHint": "Tiga lompatan",
+          "sceneType": "K5B3A-V2-1",
+          "voiceNarration": "Dua tiga per empat meter. Tiga satu per dua meter. Tujuh per delapan meter. Mana yang terjauh?"
+        },
+        {
+          "id": "K5B3A-V2-2",
+          "titleHint": "Ubah ke biasa",
+          "sceneType": "K5B3A-V2-2",
+          "voiceNarration": "Dua tiga per empat jadi sebelas per empat. Tiga satu per dua jadi tujuh per dua. Tujuh per delapan tetap. Siap dibandingkan."
+        },
+        {
+          "id": "K5B3A-V2-3",
+          "titleHint": "Garis bilangan",
+          "sceneType": "K5B3A-V2-3",
+          "voiceNarration": "Letakkan di garis bilangan. Makin kanan makin besar. Terjauh tujuh per dua. Itu tiga satu per dua."
+        },
+        {
+          "id": "K5B3A-V3-1",
+          "titleHint": "Pembilang sama",
+          "sceneType": "K5B3A-V3-1",
+          "voiceNarration": "Satu per dua dan satu per lima. Pembilang sama. Penyebut kecil lebih besar. Jadi satu per dua lebih besar."
+        },
+        {
+          "id": "K5B3A-V3-2",
+          "titleHint": "Penyebut sama",
+          "sceneType": "K5B3A-V3-2",
+          "voiceNarration": "Tiga per delapan dan lima per delapan. Penyebut sama. Lihat pembilang. Lima lebih besar."
+        },
+        {
+          "id": "K5B3A-V3-3",
+          "titleHint": "Siap bermain",
+          "sceneType": "K5B3A-V3-3",
+          "voiceNarration": "Samakan bentuk dulu. Bandingkan dengan hati-hati. Urutkan dari kecil atau besar. Ayo bermain!"
+        }
+      ],
+      "videos": [
+        {
+          "id": "K5B3A-V1",
+          "judul": "Pembilang dan Penyebut",
+          "subjudul": "Dasar",
+          "adegan": [
+            {
+              "id": "K5B3A-V1-1",
+              "judul": "Bagian keseluruhan",
+              "ketukan": [
+                "Pecahan adalah bagian dari keseluruhan.",
+                "Angka atas disebut pembilang.",
+                "Angka bawah disebut penyebut.",
+                "Contoh satu per dua."
+              ],
+              "papan": [
+                "bagian",
+                "pembilang",
+                "penyebut",
+                "1/2"
+              ]
+            },
+            {
+              "id": "K5B3A-V1-2",
+              "judul": "Bentuk pecahan",
+              "ketukan": [
+                "Ada pecahan biasa.",
+                "Ada pecahan campuran.",
+                "Campuran punya bilangan bulat.",
+                "Contoh dua tiga per empat."
+              ],
+              "papan": [
+                "biasa",
+                "campuran",
+                "bulat",
+                "2 3/4"
+              ]
+            },
+            {
+              "id": "K5B3A-V1-3",
+              "judul": "Jajanan pasar",
+              "ketukan": [
+                "Empat potong makanan.",
+                "Kamu makan dua.",
+                "Itu dua per empat.",
+                "Boleh disederhanakan."
+              ],
+              "papan": [
+                "4 potong",
+                "makan 2",
+                "2/4",
+                "1/2"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B3A-V2",
+          "judul": "Lompat Jauh Yohana",
+          "subjudul": "Urut",
+          "adegan": [
+            {
+              "id": "K5B3A-V2-1",
+              "judul": "Tiga lompatan",
+              "ketukan": [
+                "Dua tiga per empat meter.",
+                "Tiga satu per dua meter.",
+                "Tujuh per delapan meter.",
+                "Mana yang terjauh?"
+              ],
+              "papan": [
+                "2 3/4",
+                "3 1/2",
+                "7/8",
+                "?"
+              ]
+            },
+            {
+              "id": "K5B3A-V2-2",
+              "judul": "Ubah ke biasa",
+              "ketukan": [
+                "Dua tiga per empat jadi sebelas per empat.",
+                "Tiga satu per dua jadi tujuh per dua.",
+                "Tujuh per delapan tetap.",
+                "Siap dibandingkan."
+              ],
+              "papan": [
+                "11/4",
+                "7/2",
+                "7/8",
+                "siap"
+              ]
+            },
+            {
+              "id": "K5B3A-V2-3",
+              "judul": "Garis bilangan",
+              "ketukan": [
+                "Letakkan di garis bilangan.",
+                "Makin kanan makin besar.",
+                "Terjauh tujuh per dua.",
+                "Itu tiga satu per dua."
+              ],
+              "papan": [
+                "garis",
+                "kanan besar",
+                "7/2",
+                "terjauh"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B3A-V3",
+          "judul": "Strategi Banding",
+          "subjudul": "Cara",
+          "adegan": [
+            {
+              "id": "K5B3A-V3-1",
+              "judul": "Pembilang sama",
+              "ketukan": [
+                "Satu per dua dan satu per lima.",
+                "Pembilang sama.",
+                "Penyebut kecil lebih besar.",
+                "Jadi satu per dua lebih besar."
+              ],
+              "papan": [
+                "1/2",
+                "1/5",
+                "penyebut",
+                "1/2 >"
+              ]
+            },
+            {
+              "id": "K5B3A-V3-2",
+              "judul": "Penyebut sama",
+              "ketukan": [
+                "Tiga per delapan dan lima per delapan.",
+                "Penyebut sama.",
+                "Lihat pembilang.",
+                "Lima lebih besar."
+              ],
+              "papan": [
+                "3/8",
+                "5/8",
+                "pembilang",
+                "5/8 >"
+              ]
+            },
+            {
+              "id": "K5B3A-V3-3",
+              "judul": "Siap bermain",
+              "ketukan": [
+                "Samakan bentuk dulu.",
+                "Bandingkan dengan hati-hati.",
+                "Urutkan dari kecil atau besar.",
+                "Ayo bermain!"
+              ],
+              "papan": [
+                "samakan",
+                "banding",
+                "urut",
+                "main"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Kenali p/q",
+          "stepDesc": "Pembilang & penyebut",
+          "icon": "📖",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Campuran?",
+          "stepDesc": "Ubah ke biasa",
+          "icon": "🔄",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Strategi",
+          "stepDesc": "Sama p atau sama q",
+          "icon": "⚖️",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Garis",
+          "stepDesc": "Letak nilai",
+          "icon": "📏",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Tanda",
+          "stepDesc": "< > =",
+          "icon": "≷",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Urut",
+          "stepDesc": "Naik/turun",
+          "icon": "📶",
+          "flowFrom": "5",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Pembilang",
+          "emoji": "⬆️",
+          "countNum": 1,
+          "countWord": "atas",
+          "voiceSentence": "Angka atas."
+        },
+        {
+          "fruitName": "Penyebut",
+          "emoji": "⬇️",
+          "countNum": 1,
+          "countWord": "bawah",
+          "voiceSentence": "Banyak bagian."
+        },
+        {
+          "fruitName": "1/2 > 1/5",
+          "emoji": "⚖️",
+          "countNum": 1,
+          "countWord": "lebih besar",
+          "voiceSentence": "Pembilang sama."
+        },
+        {
+          "fruitName": "2 3/4",
+          "emoji": "🔄",
+          "countNum": 11,
+          "countWord": "11/4",
+          "voiceSentence": "Ke biasa."
+        },
+        {
+          "fruitName": "3 1/2",
+          "emoji": "🔄",
+          "countNum": 7,
+          "countWord": "7/2",
+          "voiceSentence": "Ke biasa."
+        },
+        {
+          "fruitName": "Terjauh",
+          "emoji": "🏃",
+          "countNum": 1,
+          "countWord": "3 1/2",
+          "voiceSentence": "Lompat Yohana."
+        },
+        {
+          "fruitName": "Garis",
+          "emoji": "📏",
+          "countNum": 1,
+          "countWord": "kanan besar",
+          "voiceSentence": "Urut nilai."
+        },
+        {
+          "fruitName": "Sama q",
+          "emoji": "👀",
+          "countNum": 1,
+          "countWord": "lihat p",
+          "voiceSentence": "Strategi."
+        },
+        {
+          "fruitName": "Sama p",
+          "emoji": "👀",
+          "countNum": 1,
+          "countWord": "lihat q",
+          "voiceSentence": "Strategi."
+        },
+        {
+          "fruitName": "Siap B",
+          "emoji": "➡️",
+          "countNum": 1,
+          "countWord": "jumlah",
+          "voiceSentence": "Lanjut."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Bandingkan Pecahan",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih tanda."
+        },
+        {
+          "title": "Campuran ke Biasa",
+          "emoji": "🔄",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Arti Pecahan",
+          "emoji": "📖",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Pilah Besar/Kecil",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah."
+        },
+        {
+          "title": "Jodohkan Pecahan",
+          "emoji": "🔗",
+          "targetCount": 12,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Pecahan",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Pecahan",
+          "emoji": "👆",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "title": "Ketuk Semua Benar",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Lompat & Wingko",
+          "emoji": "🏃",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Urutkan Pecahan",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Urutkan."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram Banding",
+          "diagramType": "compare",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Baca tanda."
+        },
+        {
+          "title": "Diagram Campuran",
+          "diagramType": "mixed",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Ubah bentuk."
+        },
+        {
+          "title": "Jodohkan Diagram A",
+          "diagramType": "match",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Diagram A",
+          "diagramType": "mem",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Banding",
+          "diagramType": "table",
+          "numberA": 1,
+          "numberB": 3,
+          "caption": "Isi tabel."
+        },
+        {
+          "title": "Ketuk Semua Diagram A",
+          "diagramType": "select",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Ketuk semua."
+        },
+        {
+          "title": "Pilah Diagram A",
+          "diagramType": "sort",
+          "numberA": 1,
+          "numberB": 6,
+          "caption": "Pilah."
+        },
+        {
+          "title": "Pilih Pernyataan A",
+          "diagramType": "choose",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih."
+        },
+        {
+          "title": "Pilih Arti Diagram A",
+          "diagramType": "def",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Definisi."
+        },
+        {
+          "title": "Cerita Diagram A",
+          "diagramType": "story",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Cerita."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "≷",
+          "wordLarge": "TANDA",
+          "mathNotation": "banding",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "a b/c",
+          "wordLarge": "BIASA",
+          "mathNotation": "campuran",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "p/q",
+          "wordLarge": "DEFINISI",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "naik",
+          "wordLarge": "URUT",
+          "mathNotation": "nilai",
+          "voiceReadout": "Urutkan."
+        },
+        {
+          "symbolLarge": "p/q",
+          "wordLarge": "JODOH",
+          "mathNotation": "teks",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "p/q",
+          "wordLarge": "MEMORI",
+          "mathNotation": "notasi",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK5B3A-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "banding-pecahan",
+          "title": "Bandingkan Pecahan",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Membandingkan dua pecahan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih tanda."
+        },
+        {
+          "gameId": "subK5B3A-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "campuran-biasa",
+          "title": "Campuran ke Biasa",
+          "bookReference": "Buku Siswa hlm. 71–72",
+          "objective": "Mengubah bentuk.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "arti-pecahan",
+          "title": "Arti Pecahan",
+          "bookReference": "Buku Siswa hlm. 66–68",
+          "objective": "Definisi.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sort-banding",
+          "title": "Pilah Besar/Kecil",
+          "bookReference": "Buku Siswa hlm. 68–70",
+          "objective": "Memilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK5B3A-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "match-banding",
+          "title": "Jodohkan Pecahan",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Menjodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B3A-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memory-banding",
+          "title": "Memori Pecahan",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B3A-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-pecahan",
+          "title": "Ketuk Pecahan",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Mengetuk.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "gameId": "subK5B3A-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "tap-all-banding",
+          "title": "Ketuk Semua Benar",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK5B3A-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "story-banding",
+          "title": "Cerita Lompat & Wingko",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "order-pecahan",
+          "title": "Urutkan Pecahan",
+          "bookReference": "Buku Siswa hlm. 71–75",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK5B3A-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "diagram-banding",
+          "title": "Diagram Banding",
+          "bookReference": "Buku Siswa hlm. 68–70",
+          "objective": "Baca tanda.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "diagram-campuran",
+          "title": "Diagram Campuran",
+          "bookReference": "Buku Siswa hlm. 71–72",
+          "objective": "Ubah bentuk.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-diagram-a",
+          "title": "Jodohkan Diagram A",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B3A-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-diagram-a",
+          "title": "Memori Diagram A",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B3A-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "table-a",
+          "title": "Tabel Banding",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Isi tabel.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-pa",
+          "title": "Ketuk Semua Diagram A",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK5B3A-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-diagram-a",
+          "title": "Pilah Diagram A",
+          "bookReference": "Buku Siswa hlm. 68–70",
+          "objective": "Pilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK5B3A-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "choose-a",
+          "title": "Pilih Pernyataan A",
+          "bookReference": "Buku Siswa hlm. 66–75",
+          "objective": "Pilih.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "jenis-pa",
+          "title": "Pilih Arti Diagram A",
+          "bookReference": "Buku Siswa hlm. 66–68",
+          "objective": "Definisi.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "story-picture-a",
+          "title": "Cerita Diagram A",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "write-banding",
+          "title": "Tulis Tanda Banding",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Menulis tanda.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "write-campuran",
+          "title": "Tulis Bentuk Biasa",
+          "bookReference": "Buku Siswa hlm. 71–72",
+          "objective": "Menulis.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "choose-def-a",
+          "title": "Pilih Definisi A",
+          "bookReference": "Buku Siswa hlm. 66–68",
+          "objective": "Definisi.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "order-abstract-a",
+          "title": "Urutkan Abstrak A",
+          "bookReference": "Buku Siswa hlm. 71–75",
+          "objective": "Urut.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK5B3A-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-abstract-a",
+          "title": "Jodohkan Notasi A",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B3A-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-abstract-a",
+          "title": "Memori Notasi A",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B3A-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-a",
+          "title": "Benar atau Salah: Banding",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Menilai.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK5B3A-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-a",
+          "title": "Detektif Pecahan",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Petunjuk.",
+          "mechanicDescription": "Tiga soal.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3A-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-a",
+          "title": "Peta Konsep Banding",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Peta.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK5B3A-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-abstract-a",
+          "title": "Cerita Angka Banding",
+          "bookReference": "Buku Siswa hlm. 68–75",
+          "objective": "Cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Pembilang",
+            "isi": "Angka atas: berapa bagian diambil.",
+            "suara": "Itu pembilang."
+          },
+          {
+            "nama": "Penyebut",
+            "isi": "Angka bawah: banyak bagian sama besar.",
+            "suara": "Itu penyebut."
+          },
+          {
+            "nama": "Campuran",
+            "isi": "Ubah ke biasa: (bulat×penyebut)+pembilang.",
+            "suara": "Siap banding."
+          },
+          {
+            "nama": "Garis bilangan",
+            "isi": "Kanan lebih besar, kiri lebih kecil.",
+            "suara": "Urut dengan posisi."
+          }
+        ],
+        "suara": "Ingat: pembilang, penyebut, campuran ke biasa, dan garis bilangan.",
+        "caraMenyebutkan": "Kenali bentuk ubah campuran pilih strategi beri tanda/urut",
+        "rumah": "Ayo Mencoba di rumah: bandingkan 2/5 dan 3/7, lalu urutkan 1/2, 3/4, dan 5/8 dari terkecil.",
+        "refleksi": [
+          "Apa beda pembilang dan penyebut?",
+          "Bagaimana mengubah 2 3/4 menjadi pecahan biasa?",
+          "Mengapa 1/2 lebih besar dari 1/5?"
+        ]
+      }
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Jumlah Pecahan)",
+      "fullTitle": "Sub-Bab B: Penjumlahan Bilangan Pecahan",
+      "targetDescription": "Siswa menjumlahkan pecahan berpenyebut sama dan berbeda dengan menyamakan penyebut melalui KPK, termasuk konteks martabak, wingko, dan penghapus sesuai Buku Siswa Kelas V Bab 3.",
+      "secondaryBg": "#DBEAFE",
+      "secondaryBorder": "#2563EB",
+      "secondaryText": "#1E3A8A",
+      "silabus": {
+        "teksSuara": "Kita belajar penjumlahan pecahan. Penyebut harus sama. Jika belum sama, cari KPK lalu buat pecahan senilai. Jumlahkan pembilangnya. Hasil boleh disederhanakan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menjumlahkan bilangan pecahan berpenyebut sama dan berbeda.",
+        "referensi": "Buku Siswa Matematika Kelas V Bab 3 Sub-Bab B hlm. 76–90; adding fractions with LCD; area models."
+      },
+      "stories": [
+        {
+          "id": "K5B3B-V1-1",
+          "titleHint": "Penyebut sama",
+          "sceneType": "K5B3B-V1-1",
+          "voiceNarration": "Syarat utama: penyebut sama. Jika sudah sama, jumlahkan pembilang. Penyebut tetap. Contoh satu per delapan plus dua per delapan."
+        },
+        {
+          "id": "K5B3B-V1-2",
+          "titleHint": "Martabak Nisa",
+          "sceneType": "K5B3B-V1-2",
+          "voiceNarration": "Delapan rasa sama besar. Lukas satu bagian. Komang dua bagian. Jumlah tiga per delapan."
+        },
+        {
+          "id": "K5B3B-V1-3",
+          "titleHint": "Arsir gabung",
+          "sceneType": "K5B3B-V1-3",
+          "voiceNarration": "Arsir bagian Lukas. Arsir bagian Komang. Gabungkan arsiran. Terlihat tiga dari delapan."
+        },
+        {
+          "id": "K5B3B-V2-1",
+          "titleHint": "Wingko",
+          "sceneType": "K5B3B-V2-1",
+          "voiceNarration": "Lukas satu per dua. Komang satu per tiga. Penyebut beda. Perlu disamakan."
+        },
+        {
+          "id": "K5B3B-V2-2",
+          "titleHint": "Cari KPK",
+          "sceneType": "K5B3B-V2-2",
+          "voiceNarration": "KPK dua dan tiga adalah enam. Satu per dua jadi tiga per enam. Satu per tiga jadi dua per enam. Jumlah lima per enam."
+        },
+        {
+          "id": "K5B3B-V2-3",
+          "titleHint": "Sederhanakan",
+          "sceneType": "K5B3B-V2-3",
+          "voiceNarration": "Kadang hasil bisa diperkecil. Pakai FPB pembilang dan penyebut. Contoh lima per sepuluh jadi satu per dua. Ayo lanjut."
+        },
+        {
+          "id": "K5B3B-V3-1",
+          "titleHint": "Sepuluh penghapus",
+          "sceneType": "K5B3B-V3-1",
+          "voiceNarration": "Lukas punya sepuluh. Beri Asep dua. Beri Yohana tiga. Tulis sebagai pecahan."
+        },
+        {
+          "id": "K5B3B-V3-2",
+          "titleHint": "Jumlahkan",
+          "sceneType": "K5B3B-V3-2",
+          "voiceNarration": "Dua per sepuluh plus tiga per sepuluh. Pembilang dua plus tiga. Hasil lima per sepuluh. Boleh satu per dua."
+        },
+        {
+          "id": "K5B3B-V3-3",
+          "titleHint": "Siap bermain",
+          "sceneType": "K5B3B-V3-3",
+          "voiceNarration": "Ingat syarat penyebut. Pakai KPK jika perlu. Jumlahkan pembilang. Ayo bermain!"
+        }
+      ],
+      "videos": [
+        {
+          "id": "K5B3B-V1",
+          "judul": "Syarat Menjumlah",
+          "subjudul": "Aturan",
+          "adegan": [
+            {
+              "id": "K5B3B-V1-1",
+              "judul": "Penyebut sama",
+              "ketukan": [
+                "Syarat utama: penyebut sama.",
+                "Jika sudah sama, jumlahkan pembilang.",
+                "Penyebut tetap.",
+                "Contoh satu per delapan plus dua per delapan."
+              ],
+              "papan": [
+                "syarat",
+                "jumlah p",
+                "q tetap",
+                "3/8"
+              ]
+            },
+            {
+              "id": "K5B3B-V1-2",
+              "judul": "Martabak Nisa",
+              "ketukan": [
+                "Delapan rasa sama besar.",
+                "Lukas satu bagian.",
+                "Komang dua bagian.",
+                "Jumlah tiga per delapan."
+              ],
+              "papan": [
+                "8 rasa",
+                "1/8",
+                "2/8",
+                "3/8"
+              ]
+            },
+            {
+              "id": "K5B3B-V1-3",
+              "judul": "Arsir gabung",
+              "ketukan": [
+                "Arsir bagian Lukas.",
+                "Arsir bagian Komang.",
+                "Gabungkan arsiran.",
+                "Terlihat tiga dari delapan."
+              ],
+              "papan": [
+                "arsir",
+                "gabung",
+                "3 dari 8",
+                "jelas"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B3B-V2",
+          "judul": "Penyebut Berbeda",
+          "subjudul": "KPK",
+          "adegan": [
+            {
+              "id": "K5B3B-V2-1",
+              "judul": "Wingko",
+              "ketukan": [
+                "Lukas satu per dua.",
+                "Komang satu per tiga.",
+                "Penyebut beda.",
+                "Perlu disamakan."
+              ],
+              "papan": [
+                "1/2",
+                "1/3",
+                "beda",
+                "samakan"
+              ]
+            },
+            {
+              "id": "K5B3B-V2-2",
+              "judul": "Cari KPK",
+              "ketukan": [
+                "KPK dua dan tiga adalah enam.",
+                "Satu per dua jadi tiga per enam.",
+                "Satu per tiga jadi dua per enam.",
+                "Jumlah lima per enam."
+              ],
+              "papan": [
+                "KPK 6",
+                "3/6",
+                "2/6",
+                "5/6"
+              ]
+            },
+            {
+              "id": "K5B3B-V2-3",
+              "judul": "Sederhanakan",
+              "ketukan": [
+                "Kadang hasil bisa diperkecil.",
+                "Pakai FPB pembilang dan penyebut.",
+                "Contoh lima per sepuluh jadi satu per dua.",
+                "Ayo lanjut."
+              ],
+              "papan": [
+                "FPB",
+                "5/10",
+                "1/2",
+                "lanjut"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B3B-V3",
+          "judul": "Penghapus Lukas",
+          "subjudul": "Latihan",
+          "adegan": [
+            {
+              "id": "K5B3B-V3-1",
+              "judul": "Sepuluh penghapus",
+              "ketukan": [
+                "Lukas punya sepuluh.",
+                "Beri Asep dua.",
+                "Beri Yohana tiga.",
+                "Tulis sebagai pecahan."
+              ],
+              "papan": [
+                "10",
+                "2/10",
+                "3/10",
+                "pecahan"
+              ]
+            },
+            {
+              "id": "K5B3B-V3-2",
+              "judul": "Jumlahkan",
+              "ketukan": [
+                "Dua per sepuluh plus tiga per sepuluh.",
+                "Pembilang dua plus tiga.",
+                "Hasil lima per sepuluh.",
+                "Boleh satu per dua."
+              ],
+              "papan": [
+                "2/10",
+                "+3/10",
+                "5/10",
+                "1/2"
+              ]
+            },
+            {
+              "id": "K5B3B-V3-3",
+              "judul": "Siap bermain",
+              "ketukan": [
+                "Ingat syarat penyebut.",
+                "Pakai KPK jika perlu.",
+                "Jumlahkan pembilang.",
+                "Ayo bermain!"
+              ],
+              "papan": [
+                "syarat",
+                "KPK",
+                "jumlah p",
+                "main"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Cek penyebut",
+          "stepDesc": "Sama atau beda?",
+          "icon": "👀",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Jika beda",
+          "stepDesc": "Cari KPK",
+          "icon": "🎯",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Senilai",
+          "stepDesc": "Ubah kedua pecahan",
+          "icon": "🔄",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Jumlahkan p",
+          "stepDesc": "q tetap",
+          "icon": "➕",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Sederhanakan",
+          "stepDesc": "Pakai FPB",
+          "icon": "✨",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Cek cerita",
+          "stepDesc": "Masuk akal?",
+          "icon": "✅",
+          "flowFrom": "5",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Syarat",
+          "emoji": "✅",
+          "countNum": 1,
+          "countWord": "q sama",
+          "voiceSentence": "Wajib."
+        },
+        {
+          "fruitName": "1/8+2/8",
+          "emoji": "🥞",
+          "countNum": 3,
+          "countWord": "3/8",
+          "voiceSentence": "Martabak."
+        },
+        {
+          "fruitName": "1/2+1/3",
+          "emoji": "🍡",
+          "countNum": 5,
+          "countWord": "5/6",
+          "voiceSentence": "Wingko."
+        },
+        {
+          "fruitName": "KPK",
+          "emoji": "🎯",
+          "countNum": 1,
+          "countWord": "samakan q",
+          "voiceSentence": "Beda penyebut."
+        },
+        {
+          "fruitName": "2/10+3/10",
+          "emoji": "🧽",
+          "countNum": 5,
+          "countWord": "5/10",
+          "voiceSentence": "Penghapus."
+        },
+        {
+          "fruitName": "Sederhana",
+          "emoji": "✨",
+          "countNum": 1,
+          "countWord": "FPB",
+          "voiceSentence": "Perkecil."
+        },
+        {
+          "fruitName": "Senilai",
+          "emoji": "🔄",
+          "countNum": 1,
+          "countWord": "kali sama",
+          "voiceSentence": "Ubah bentuk."
+        },
+        {
+          "fruitName": "Model arsir",
+          "emoji": "🎨",
+          "countNum": 1,
+          "countWord": "gabung",
+          "voiceSentence": "Visual."
+        },
+        {
+          "fruitName": "Pembilang",
+          "emoji": "⬆️",
+          "countNum": 1,
+          "countWord": "dijumlah",
+          "voiceSentence": "Inti."
+        },
+        {
+          "fruitName": "Siap C",
+          "emoji": "➡️",
+          "countNum": 1,
+          "countWord": "kurang",
+          "voiceSentence": "Lanjut."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Jumlah Penyebut Sama",
+          "emoji": "➕",
+          "targetCount": 6,
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "title": "Jumlah Penyebut Beda",
+          "emoji": "🧮",
+          "targetCount": 6,
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "title": "Arti Penjumlahan",
+          "emoji": "📖",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Pilah Sama/Beda",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah."
+        },
+        {
+          "title": "Jodohkan Jumlah",
+          "emoji": "🔗",
+          "targetCount": 12,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Jumlah",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Hasil Jumlah",
+          "emoji": "👆",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "title": "Ketuk Semua Benar Jumlah",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Martabak & Wingko",
+          "emoji": "🥞",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Urutkan Hasil Jumlah",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Urutkan."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram Penyebut Sama",
+          "diagramType": "same",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Baca jumlah."
+        },
+        {
+          "title": "Diagram Penyebut Beda",
+          "diagramType": "diff",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Baca KPK."
+        },
+        {
+          "title": "Jodohkan Diagram B",
+          "diagramType": "match",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Diagram B",
+          "diagramType": "mem",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Jumlah",
+          "diagramType": "table",
+          "numberA": 1,
+          "numberB": 3,
+          "caption": "Isi tabel."
+        },
+        {
+          "title": "Ketuk Semua Diagram B",
+          "diagramType": "select",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Ketuk semua."
+        },
+        {
+          "title": "Pilah Diagram B",
+          "diagramType": "sort",
+          "numberA": 1,
+          "numberB": 6,
+          "caption": "Pilah."
+        },
+        {
+          "title": "Pilih Pernyataan B",
+          "diagramType": "choose",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih."
+        },
+        {
+          "title": "Pilih Arti Diagram B",
+          "diagramType": "def",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Definisi."
+        },
+        {
+          "title": "Cerita Diagram B",
+          "diagramType": "story",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Cerita."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "+",
+          "wordLarge": "SAMA",
+          "mathNotation": "p/q",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "KPK+",
+          "wordLarge": "BEDA",
+          "mathNotation": "p/q",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "Σ",
+          "wordLarge": "DEFINISI",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "naik",
+          "wordLarge": "URUT",
+          "mathNotation": "nilai",
+          "voiceReadout": "Urutkan."
+        },
+        {
+          "symbolLarge": "+",
+          "wordLarge": "JODOH",
+          "mathNotation": "teks",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "+",
+          "wordLarge": "MEMORI",
+          "mathNotation": "notasi",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK5B3B-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "jumlah-sama",
+          "title": "Jumlah Penyebut Sama",
+          "bookReference": "Buku Siswa hlm. 76–80",
+          "objective": "Menjumlahkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "gameId": "subK5B3B-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "jumlah-beda",
+          "title": "Jumlah Penyebut Beda",
+          "bookReference": "Buku Siswa hlm. 85–90",
+          "objective": "Pakai KPK.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "gameId": "subK5B3B-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "arti-jumlah",
+          "title": "Arti Penjumlahan",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Definisi & cara.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3B-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sort-jumlah",
+          "title": "Pilah Sama/Beda",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Memilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK5B3B-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "match-jumlah",
+          "title": "Jodohkan Jumlah",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Menjodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B3B-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memory-jumlah",
+          "title": "Memori Jumlah",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B3B-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-jumlah",
+          "title": "Ketuk Hasil Jumlah",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Mengetuk.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "gameId": "subK5B3B-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "tap-all-jumlah",
+          "title": "Ketuk Semua Benar Jumlah",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK5B3B-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "story-jumlah",
+          "title": "Cerita Martabak & Wingko",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3B-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "order-jumlah",
+          "title": "Urutkan Hasil Jumlah",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK5B3B-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "diagram-sama-b",
+          "title": "Diagram Penyebut Sama",
+          "bookReference": "Buku Siswa hlm. 76–80",
+          "objective": "Baca jumlah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3B-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "diagram-beda-b",
+          "title": "Diagram Penyebut Beda",
+          "bookReference": "Buku Siswa hlm. 85–90",
+          "objective": "Baca KPK.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3B-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-diagram-b",
+          "title": "Jodohkan Diagram B",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B3B-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-diagram-b",
+          "title": "Memori Diagram B",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B3B-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "table-b",
+          "title": "Tabel Jumlah",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Isi tabel.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3B-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-pb",
+          "title": "Ketuk Semua Diagram B",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK5B3B-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-diagram-b",
+          "title": "Pilah Diagram B",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Pilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK5B3B-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "choose-b",
+          "title": "Pilih Pernyataan B",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Pilih.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3B-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "jenis-pb",
+          "title": "Pilih Arti Diagram B",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Definisi.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3B-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "story-picture-b",
+          "title": "Cerita Diagram B",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3B-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "write-sama-b",
+          "title": "Tulis Jumlah Sama",
+          "bookReference": "Buku Siswa hlm. 76–80",
+          "objective": "Menulis.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3B-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "write-beda-b",
+          "title": "Tulis Jumlah Beda",
+          "bookReference": "Buku Siswa hlm. 85–90",
+          "objective": "Menulis.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3B-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "choose-def-b",
+          "title": "Pilih Definisi B",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Definisi.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3B-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "order-abstract-b",
+          "title": "Urutkan Abstrak B",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Urut.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK5B3B-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-abstract-b",
+          "title": "Jodohkan Notasi B",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B3B-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-abstract-b",
+          "title": "Memori Notasi B",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B3B-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-b",
+          "title": "Benar atau Salah: Jumlah",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Menilai.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK5B3B-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-b",
+          "title": "Detektif Jumlah",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Petunjuk.",
+          "mechanicDescription": "Tiga soal.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3B-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-b",
+          "title": "Peta Konsep Jumlah",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Peta.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK5B3B-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-abstract-b",
+          "title": "Cerita Angka Jumlah",
+          "bookReference": "Buku Siswa hlm. 76–90",
+          "objective": "Cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Syarat",
+            "isi": "Penyebut harus sama sebelum menjumlahkan.",
+            "suara": "Samakan dulu."
+          },
+          {
+            "nama": "KPK",
+            "isi": "Dipakai menyamakan penyebut berbeda.",
+            "suara": "Lalu pecahan senilai."
+          },
+          {
+            "nama": "Jumlahkan p",
+            "isi": "Pembilang dijumlah, penyebut tetap.",
+            "suara": "Itu aturannya."
+          },
+          {
+            "nama": "Sederhanakan",
+            "isi": "Bagi pembilang dan penyebut dengan FPB.",
+            "suara": "Hasil rapi."
+          }
+        ],
+        "suara": "Ingat: syarat penyebut sama, KPK, jumlahkan pembilang, sederhanakan.",
+        "caraMenyebutkan": "Cek penyebut KPK jika beda jumlahkan pembilang sederhanakan",
+        "rumah": "Ayo Mencoba di rumah: hitung 2/5 + 1/4 dan 3/8 + 1/8, lalu ceritakan langkahnya.",
+        "refleksi": [
+          "Mengapa penyebut harus sama?",
+          "Bagaimana menjumlahkan 1/2 dan 1/3?",
+          "Kapan hasil perlu disederhanakan?"
+        ]
+      }
+    },
+    "C": {
+      "id": "C",
+      "codeTitle": "Sub-Bab C (Kurang Pecahan)",
+      "fullTitle": "Sub-Bab C: Pengurangan Bilangan Pecahan",
+      "targetDescription": "Siswa mengurangkan pecahan berpenyebut sama dan berbeda dengan menyamakan penyebut melalui KPK, termasuk konteks melukis kertas dan pembagian apel sesuai Buku Siswa Kelas V Bab 3.",
+      "secondaryBg": "#FCE7F3",
+      "secondaryBorder": "#DB2777",
+      "secondaryText": "#9D174D",
+      "silabus": {
+        "teksSuara": "Kita belajar pengurangan pecahan. Penyebut harus sama. Jika belum, samakan dengan KPK. Kurangi pembilangnya. Hasil boleh disederhanakan. Kita bantu Lukas dan Yohana menghitung sisa kertas lukis. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa mengurangkan bilangan pecahan berpenyebut sama dan berbeda.",
+        "referensi": "Buku Siswa Matematika Kelas V Bab 3 Sub-Bab C hlm. 91–102; subtracting fractions with LCD; residual area models."
+      },
+      "stories": [
+        {
+          "id": "K5B3C-V1-1",
+          "titleHint": "Penyebut sama",
+          "sceneType": "K5B3C-V1-1",
+          "voiceNarration": "Syarat pengurangan: penyebut sama. Kurangi pembilang. Penyebut tetap. Contoh dua per tiga kurang satu per tiga."
+        },
+        {
+          "id": "K5B3C-V1-2",
+          "titleHint": "Lukas lukis",
+          "sceneType": "K5B3C-V1-2",
+          "voiceNarration": "Harus dua per tiga kertas. Sudah satu per tiga. Sisa satu per tiga. Belum selesai."
+        },
+        {
+          "id": "K5B3C-V1-3",
+          "titleHint": "Arsir sisa",
+          "sceneType": "K5B3C-V1-3",
+          "voiceNarration": "Arsir yang harus dilukis. Tandai yang sudah. Sisa terlihat jelas. Itu jawaban."
+        },
+        {
+          "id": "K5B3C-V2-1",
+          "titleHint": "Yohana lukis",
+          "sceneType": "K5B3C-V2-1",
+          "voiceNarration": "Harus dua per tiga. Sudah satu per dua. Penyebut beda. Samakan dulu."
+        },
+        {
+          "id": "K5B3C-V2-2",
+          "titleHint": "Ke penyebut 6",
+          "sceneType": "K5B3C-V2-2",
+          "voiceNarration": "Dua per tiga jadi empat per enam. Satu per dua jadi tiga per enam. Kurangi: satu per enam. Itu sisa Yohana."
+        },
+        {
+          "id": "K5B3C-V2-3",
+          "titleHint": "Apel Asep",
+          "sceneType": "K5B3C-V2-3",
+          "voiceNarration": "Delapan apel. Beri enam. Sisa dua dari delapan. Boleh satu per empat."
+        },
+        {
+          "id": "K5B3C-V3-1",
+          "titleHint": "Campuran",
+          "sceneType": "K5B3C-V3-1",
+          "voiceNarration": "Pengurangan campuran. Ubah ke biasa dulu. Atau samakan bentuk. Lalu kurangi."
+        },
+        {
+          "id": "K5B3C-V3-2",
+          "titleHint": "Cek masuk akal",
+          "sceneType": "K5B3C-V3-2",
+          "voiceNarration": "Hasil harus lebih kecil dari pecahan awal. Jika tidak, cek lagi. Sederhanakan bila bisa. Siap bermain!"
+        },
+        {
+          "id": "K5B3C-V3-3",
+          "titleHint": "Bab 3 siap",
+          "sceneType": "K5B3C-V3-3",
+          "voiceNarration": "Kita sudah banding. Sudah jumlah. Sudah kurang. Materi pecahan lengkap!"
+        }
+      ],
+      "videos": [
+        {
+          "id": "K5B3C-V1",
+          "judul": "Syarat Mengurangi",
+          "subjudul": "Aturan",
+          "adegan": [
+            {
+              "id": "K5B3C-V1-1",
+              "judul": "Penyebut sama",
+              "ketukan": [
+                "Syarat pengurangan: penyebut sama.",
+                "Kurangi pembilang.",
+                "Penyebut tetap.",
+                "Contoh dua per tiga kurang satu per tiga."
+              ],
+              "papan": [
+                "syarat",
+                "kurang p",
+                "q tetap",
+                "1/3"
+              ]
+            },
+            {
+              "id": "K5B3C-V1-2",
+              "judul": "Lukas lukis",
+              "ketukan": [
+                "Harus dua per tiga kertas.",
+                "Sudah satu per tiga.",
+                "Sisa satu per tiga.",
+                "Belum selesai."
+              ],
+              "papan": [
+                "2/3",
+                "1/3",
+                "sisa",
+                "1/3"
+              ]
+            },
+            {
+              "id": "K5B3C-V1-3",
+              "judul": "Arsir sisa",
+              "ketukan": [
+                "Arsir yang harus dilukis.",
+                "Tandai yang sudah.",
+                "Sisa terlihat jelas.",
+                "Itu jawaban."
+              ],
+              "papan": [
+                "arsir",
+                "sudah",
+                "sisa",
+                "jelas"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B3C-V2",
+          "judul": "Penyebut Berbeda",
+          "subjudul": "KPK",
+          "adegan": [
+            {
+              "id": "K5B3C-V2-1",
+              "judul": "Yohana lukis",
+              "ketukan": [
+                "Harus dua per tiga.",
+                "Sudah satu per dua.",
+                "Penyebut beda.",
+                "Samakan dulu."
+              ],
+              "papan": [
+                "2/3",
+                "1/2",
+                "beda",
+                "samakan"
+              ]
+            },
+            {
+              "id": "K5B3C-V2-2",
+              "judul": "Ke penyebut 6",
+              "ketukan": [
+                "Dua per tiga jadi empat per enam.",
+                "Satu per dua jadi tiga per enam.",
+                "Kurangi: satu per enam.",
+                "Itu sisa Yohana."
+              ],
+              "papan": [
+                "4/6",
+                "3/6",
+                "1/6",
+                "sisa"
+              ]
+            },
+            {
+              "id": "K5B3C-V2-3",
+              "judul": "Apel Asep",
+              "ketukan": [
+                "Delapan apel.",
+                "Beri enam.",
+                "Sisa dua dari delapan.",
+                "Boleh satu per empat."
+              ],
+              "papan": [
+                "8",
+                "beri 6",
+                "2/8",
+                "1/4"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B3C-V3",
+          "judul": "Campuran & Cek",
+          "subjudul": "Lanjut",
+          "adegan": [
+            {
+              "id": "K5B3C-V3-1",
+              "judul": "Campuran",
+              "ketukan": [
+                "Pengurangan campuran.",
+                "Ubah ke biasa dulu.",
+                "Atau samakan bentuk.",
+                "Lalu kurangi."
+              ],
+              "papan": [
+                "campuran",
+                "ke biasa",
+                "samakan",
+                "kurang"
+              ]
+            },
+            {
+              "id": "K5B3C-V3-2",
+              "judul": "Cek masuk akal",
+              "ketukan": [
+                "Hasil harus lebih kecil dari pecahan awal.",
+                "Jika tidak, cek lagi.",
+                "Sederhanakan bila bisa.",
+                "Siap bermain!"
+              ],
+              "papan": [
+                "cek",
+                "lebih kecil",
+                "sederhana",
+                "main"
+              ]
+            },
+            {
+              "id": "K5B3C-V3-3",
+              "judul": "Bab 3 siap",
+              "ketukan": [
+                "Kita sudah banding.",
+                "Sudah jumlah.",
+                "Sudah kurang.",
+                "Materi pecahan lengkap!"
+              ],
+              "papan": [
+                "banding",
+                "jumlah",
+                "kurang",
+                "selesai"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Cek penyebut",
+          "stepDesc": "Sama atau beda?",
+          "icon": "👀",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Jika beda",
+          "stepDesc": "Cari KPK",
+          "icon": "🎯",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Senilai",
+          "stepDesc": "Ubah kedua pecahan",
+          "icon": "🔄",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Kurangi p",
+          "stepDesc": "q tetap",
+          "icon": "➖",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Sederhanakan",
+          "stepDesc": "Pakai FPB",
+          "icon": "✨",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Cek sisa",
+          "stepDesc": "Masuk akal?",
+          "icon": "✅",
+          "flowFrom": "5",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Syarat",
+          "emoji": "✅",
+          "countNum": 1,
+          "countWord": "q sama",
+          "voiceSentence": "Wajib."
+        },
+        {
+          "fruitName": "2/3−1/3",
+          "emoji": "🎨",
+          "countNum": 1,
+          "countWord": "1/3",
+          "voiceSentence": "Lukas."
+        },
+        {
+          "fruitName": "2/3−1/2",
+          "emoji": "🖌️",
+          "countNum": 1,
+          "countWord": "1/6",
+          "voiceSentence": "Yohana."
+        },
+        {
+          "fruitName": "KPK",
+          "emoji": "🎯",
+          "countNum": 1,
+          "countWord": "samakan q",
+          "voiceSentence": "Beda penyebut."
+        },
+        {
+          "fruitName": "6/8−2/8",
+          "emoji": "🍎",
+          "countNum": 4,
+          "countWord": "4/8",
+          "voiceSentence": "Boleh 1/2."
+        },
+        {
+          "fruitName": "Sederhana",
+          "emoji": "✨",
+          "countNum": 1,
+          "countWord": "FPB",
+          "voiceSentence": "Perkecil."
+        },
+        {
+          "fruitName": "Sisa",
+          "emoji": "📉",
+          "countNum": 1,
+          "countWord": "awal−sudah",
+          "voiceSentence": "Cerita lukis."
+        },
+        {
+          "fruitName": "Campuran",
+          "emoji": "🔄",
+          "countNum": 1,
+          "countWord": "ke biasa",
+          "voiceSentence": "Aman."
+        },
+        {
+          "fruitName": "Cek",
+          "emoji": "✅",
+          "countNum": 1,
+          "countWord": "hasil < awal",
+          "voiceSentence": "Masuk akal."
+        },
+        {
+          "fruitName": "Bab 3",
+          "emoji": "🎉",
+          "countNum": 1,
+          "countWord": "A–C siap",
+          "voiceSentence": "Materi."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Kurang Penyebut Sama",
+          "emoji": "➖",
+          "targetCount": 6,
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "title": "Kurang Penyebut Beda",
+          "emoji": "🧮",
+          "targetCount": 6,
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "title": "Arti Pengurangan",
+          "emoji": "📖",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Pilah Sama/Beda Kurang",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah."
+        },
+        {
+          "title": "Jodohkan Kurang",
+          "emoji": "🔗",
+          "targetCount": 12,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Kurang",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Hasil Kurang",
+          "emoji": "👆",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "title": "Ketuk Semua Benar Kurang",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Lukis & Apel",
+          "emoji": "🎨",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Urutkan Hasil Kurang",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Urutkan."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram Kurang Sama",
+          "diagramType": "same",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Baca sisa."
+        },
+        {
+          "title": "Diagram Kurang Beda",
+          "diagramType": "diff",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Baca KPK."
+        },
+        {
+          "title": "Jodohkan Diagram C",
+          "diagramType": "match",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Diagram C",
+          "diagramType": "mem",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Kurang",
+          "diagramType": "table",
+          "numberA": 1,
+          "numberB": 3,
+          "caption": "Isi tabel."
+        },
+        {
+          "title": "Ketuk Semua Diagram C",
+          "diagramType": "select",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Ketuk semua."
+        },
+        {
+          "title": "Pilah Diagram C",
+          "diagramType": "sort",
+          "numberA": 1,
+          "numberB": 6,
+          "caption": "Pilah."
+        },
+        {
+          "title": "Pilih Pernyataan C",
+          "diagramType": "choose",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih."
+        },
+        {
+          "title": "Pilih Arti Diagram C",
+          "diagramType": "def",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Definisi."
+        },
+        {
+          "title": "Cerita Diagram C",
+          "diagramType": "story",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Cerita."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "−",
+          "wordLarge": "SAMA",
+          "mathNotation": "p/q",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "KPK−",
+          "wordLarge": "BEDA",
+          "mathNotation": "p/q",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "Δ",
+          "wordLarge": "DEFINISI",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "naik",
+          "wordLarge": "URUT",
+          "mathNotation": "nilai",
+          "voiceReadout": "Urutkan."
+        },
+        {
+          "symbolLarge": "−",
+          "wordLarge": "JODOH",
+          "mathNotation": "teks",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "−",
+          "wordLarge": "MEMORI",
+          "mathNotation": "notasi",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK5B3C-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "kurang-sama",
+          "title": "Kurang Penyebut Sama",
+          "bookReference": "Buku Siswa hlm. 91–95",
+          "objective": "Mengurangkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "gameId": "subK5B3C-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "kurang-beda",
+          "title": "Kurang Penyebut Beda",
+          "bookReference": "Buku Siswa hlm. 98–102",
+          "objective": "Pakai KPK.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "gameId": "subK5B3C-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "arti-kurang",
+          "title": "Arti Pengurangan",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Definisi & cara.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3C-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sort-kurang",
+          "title": "Pilah Sama/Beda Kurang",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Memilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK5B3C-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "match-kurang",
+          "title": "Jodohkan Kurang",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Menjodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B3C-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memory-kurang",
+          "title": "Memori Kurang",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B3C-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-kurang",
+          "title": "Ketuk Hasil Kurang",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Mengetuk.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "gameId": "subK5B3C-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "tap-all-kurang",
+          "title": "Ketuk Semua Benar Kurang",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK5B3C-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "story-kurang",
+          "title": "Cerita Lukis & Apel",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3C-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "order-kurang",
+          "title": "Urutkan Hasil Kurang",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK5B3C-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "diagram-sama-c",
+          "title": "Diagram Kurang Sama",
+          "bookReference": "Buku Siswa hlm. 91–95",
+          "objective": "Baca sisa.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3C-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "diagram-beda-c",
+          "title": "Diagram Kurang Beda",
+          "bookReference": "Buku Siswa hlm. 98–102",
+          "objective": "Baca KPK.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3C-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-diagram-c",
+          "title": "Jodohkan Diagram C",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B3C-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-diagram-c",
+          "title": "Memori Diagram C",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B3C-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "table-c",
+          "title": "Tabel Kurang",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Isi tabel.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3C-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-pc",
+          "title": "Ketuk Semua Diagram C",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK5B3C-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-diagram-c",
+          "title": "Pilah Diagram C",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Pilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK5B3C-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "choose-c",
+          "title": "Pilih Pernyataan C",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Pilih.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3C-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "jenis-pc",
+          "title": "Pilih Arti Diagram C",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Definisi.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3C-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "story-picture-c",
+          "title": "Cerita Diagram C",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3C-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "write-sama-c",
+          "title": "Tulis Kurang Sama",
+          "bookReference": "Buku Siswa hlm. 91–95",
+          "objective": "Menulis.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3C-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "write-beda-c",
+          "title": "Tulis Kurang Beda",
+          "bookReference": "Buku Siswa hlm. 98–102",
+          "objective": "Menulis.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3C-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "choose-def-c",
+          "title": "Pilih Definisi C",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Definisi.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3C-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "order-abstract-c",
+          "title": "Urutkan Abstrak C",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Urut.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK5B3C-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-abstract-c",
+          "title": "Jodohkan Notasi C",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B3C-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-abstract-c",
+          "title": "Memori Notasi C",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B3C-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-c",
+          "title": "Benar atau Salah: Kurang",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Menilai.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK5B3C-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-c",
+          "title": "Detektif Kurang",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Petunjuk.",
+          "mechanicDescription": "Tiga soal.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B3C-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-c",
+          "title": "Peta Konsep Kurang",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Peta.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK5B3C-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-abstract-c",
+          "title": "Cerita Angka Kurang",
+          "bookReference": "Buku Siswa hlm. 91–102",
+          "objective": "Cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Syarat",
+            "isi": "Penyebut harus sama sebelum mengurangkan.",
+            "suara": "Samakan dulu."
+          },
+          {
+            "nama": "KPK",
+            "isi": "Menyamakan penyebut berbeda.",
+            "suara": "Lalu kurangi."
+          },
+          {
+            "nama": "Kurangi p",
+            "isi": "Pembilang dikurangi, penyebut tetap.",
+            "suara": "Itu aturannya."
+          },
+          {
+            "nama": "Sisa",
+            "isi": "Yang belum dikerjakan = harus − sudah.",
+            "suara": "Cek masuk akal."
+          }
+        ],
+        "suara": "Ingat: syarat penyebut sama, KPK, kurangi pembilang, cek sisa.",
+        "caraMenyebutkan": "Cek penyebut KPK jika beda kurangi pembilang sederhanakan",
+        "rumah": "Ayo Mencoba di rumah: hitung 5/6 − 1/4 dan 3/4 − 1/4, lalu jelaskan sisa dengan gambar.",
+        "refleksi": [
+          "Apa beda langkah jumlah dan kurang?",
+          "Bagaimana menghitung 2/3 − 1/2?",
+          "Mengapa hasil pengurangan harus lebih kecil dari pecahan awal?"
+        ]
+      }
+    }
+  },
+  "practiceQuestions": []
+}
