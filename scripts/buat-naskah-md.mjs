@@ -208,8 +208,15 @@ KONFIG.k4b1 = {
   kelas: 4,
   bab: 1,
   judul: "Bilangan Cacah sampai 10.000",
-  buku: "Buku Siswa Matematika Kelas IV (Kemendikbudristek, Kurikulum Merdeka, Bab 1 hlm. 4–24) Sub-Bab A–C",
-  berkas: { A: "sub-a-membaca-menulis", B: "sub-b-nilai-tempat", C: "sub-c-membandingkan-mengurutkan" },
+  buku: "Buku Siswa Matematika Kelas IV (Kemendikbudristek, Kurikulum Merdeka, Bab 1 hlm. 4–37) Sub-Bab A–F",
+  berkas: {
+    A: "sub-a-membaca-menulis",
+    B: "sub-b-nilai-tempat",
+    C: "sub-c-membandingkan-mengurutkan",
+    D: "sub-d-komposisi-dekomposisi",
+    E: "sub-e-penjumlahan-sampai-1000",
+    F: "sub-f-pengurangan-sampai-1000",
+  },
   metodeLuar: {
     A: [
       "**Balok Dienes empat tingkat**: peti (1.000), dus (100), bungkus (10), benda (1) memperluas model Kelas 3 ke ribuan.",
@@ -234,6 +241,30 @@ KONFIG.k4b1 = {
       "**Gunung Semeru dan saudara**: 2.460, 3.676, 3.726 dari buku.",
       "**Tempat yang menentukan**: bila ribuan sama, lihat ratusan, lalu puluhan.",
       "**Detektif perbandingan**: petunjuk lebih/kurang menyisakan satu bilangan.",
+    ],
+    D: [
+      "**Komposisi / expanded form**: 6.348 = 6.000 + 300 + 40 + 8 disusun dari nilai tempat.",
+      "**Dekomposisi fleksibel**: satu bilangan bisa diurai lebih dari satu cara (mis. 3.000 + 35 vs 2.000 + 1.035).",
+      "**Cek balik komposisi**: jumlahkan semua suku uraian untuk memastikan sama dengan bilangan semula.",
+      "**Uang Helen (buku)**: komposisi nilai uang empat digit sebagai konteks nyata.",
+      "**Nol dalam uraian**: suku bernilai 0 tetap menjaga tempat saat disusun kembali.",
+      "**Kartu nilai tempat**: menjodohkan lambang dengan uraian dan sebaliknya.",
+    ],
+    E: [
+      "**Algoritma bersusun dari satuan**: 131 + 321 dan 189 + 245 dari buku, kanan ke kiri.",
+      "**Menyimpan (regrouping)**: 10 satuan = 1 puluhan; 10 puluhan = 1 ratusan.",
+      "**Cara panjang (expanded addition)**: jumlahkan tiap nilai tempat lalu gabung.",
+      "**Tiga suku**: latihan 898 + … dari buku untuk memperkuat menyimpan ratusan.",
+      "**Model koleksi + papan empat kolom**: visual CPA sebelum simbol murni.",
+      "**Pilah perlu/tidak menyimpan**: kesadaran strategi sebelum menghitung.",
+    ],
+    F: [
+      "**Algoritma bersusun dari satuan**: 265 − 132 dan 241 − 129 dari buku.",
+      "**Mengambil (borrowing)**: jika satuan kurang, ambil 1 puluhan = 10 satuan.",
+      "**Dua kali mengambil**: contoh 253 − 176 membutuhkan ambil di dua tempat.",
+      "**Cek balik**: hasil + pengurang = bilangan awal.",
+      "**Cara panjang pengurangan**: uraikan dulu, kurangi tiap tempat, lalu susun.",
+      "**Model hilang/tertinggal**: koleksi berkurang tampak sebelum angka murni.",
     ],
   },
 };

@@ -1041,3 +1041,389 @@ export const RONDE_SUSUNKATA_QC: { kata: string[]; pengecoh: string }[] = [
   { kata: ["2.460", "3.676", "3.726", "dari", "terkecil"], pengecoh: "terbesar" },
   { kata: ["tanda", "kurang", "dari", "ditulis", "<"], pengecoh: ">" },
 ];
+
+/* ====================================================================== */
+/* SUB-BAB D — komposisi & dekomposisi sampai 10.000                        */
+/* ====================================================================== */
+
+export const tiga = (n: number) => ({ r: Math.floor(n / 100) % 10, p: Math.floor(n / 10) % 10, s: n % 10 });
+export const gabung3 = (r: number, p: number, s: number) => r * 100 + p * 10 + s;
+export type Jml = [number, number];
+export type SoalJumlah = { a: number; b: number; benda: BendaId };
+export const satuanDari = (n: number) => n % 10;
+export const puluhanDari = (n: number) => Math.floor(n / 10) % 10;
+export const ratusanDari = (n: number) => Math.floor(n / 100) % 10;
+export const perluSimpan = (a: number, b: number): boolean => satuanDari(a) + satuanDari(b) >= 10;
+export const perluSimpanP = (a: number, b: number): boolean => {
+  const s = satuanDari(a) + satuanDari(b);
+  const p = puluhanDari(a) + puluhanDari(b) + (s >= 10 ? 1 : 0);
+  return s >= 10 || p >= 10;
+};
+export const cocokSimpan = (p: Jml, syarat: "simpan" | "tanpa"): boolean => (syarat === "simpan" ? perluSimpan(p[0], p[1]) : !perluSimpan(p[0], p[1]));
+export const perluAmbil = (a: number, b: number): boolean => satuanDari(a) < satuanDari(b);
+export const perluAmbilP = (a: number, b: number): boolean => {
+  const sKurang = satuanDari(a) < satuanDari(b);
+  const pA = puluhanDari(a) - (sKurang ? 1 : 0);
+  return sKurang || pA < puluhanDari(b);
+};
+export const cocokAmbil = (p: Jml, syarat: "ambil" | "tanpa"): boolean => (syarat === "ambil" ? perluAmbil(p[0], p[1]) : !perluAmbil(p[0], p[1]));
+export const opsiJumlah = (hasil: number, nomor: number): number[] => {
+  const salah = [hasil + 10, hasil - 10, hasil + 100, hasil - 1, hasil + 1].filter((x) => x > 0 && x !== hasil && x <= 999);
+  const semua = [hasil, salah[0], salah[1]];
+  return urutanTetap(3, 2, nomor).map((i) => semua[i]);
+};
+export const opsiSelisih = opsiJumlah;
+
+export type Komposisi = { n: number; benda?: BendaId };
+export const RONDE_KOMPOSISI_CD: Komposisi[][] = [
+  [{ n: 6348, benda: "jeruk" }, { n: 6482, benda: "jeruk" }],
+  [{ n: 6040, benda: "kue" }, { n: 6849, benda: "kue" }],
+  [{ n: 6035, benda: "kelereng" }, { n: 7020, benda: "kelereng" }],
+];
+export const RONDE_DEKOMPOSISI_CD: number[][] = [
+  [6348, 6849],
+  [6035, 7482],
+  [2001, 9999],
+];
+export const RONDE_PAPAN_CD: number[][] = [
+  [6348, 6482],
+  [6040, 6849],
+  [6035, 7020],
+];
+export const RONDE_TABEL_CD: number[][] = [
+  [6348, 6482, 6040],
+  [6849, 6035, 7020],
+  [2001, 7000, 9999],
+];
+export const RONDE_PASANG_CD: number[][] = [
+  [6348, 6482, 2150],
+  [6849, 6035, 7350],
+  [2001, 7020, 9999],
+];
+export const RONDE_MEMORI_CD: number[][] = [
+  [6000, 300, 40, 8],
+  [6000, 800, 40, 9],
+  [6000, 0, 30, 5],
+];
+export const RONDE_KETUK_CD: { item: number[]; tanya: number[] }[] = [
+  { item: [6348, 6482, 6035], tanya: [6348, 6035] },
+  { item: [6849, 7020, 2001], tanya: [6849, 2001] },
+  { item: [9999, 7000, 6040], tanya: [9999, 7000] },
+];
+export const RONDE_SEMUA_CD: RondeSemua[] = [
+  { syarat: "ribuan-lebih-5", angka: [6348, 2150, 9999, 4327], benda: "jeruk" },
+  { syarat: "ratusan-nol", angka: [6040, 6035, 7020, 3286], benda: "kue" },
+  { syarat: "angka-nol", angka: [6040, 6035, 2001, 6482], benda: "kelereng" },
+];
+export const RONDE_UANG_CD: { total: number; pecahan: { nilai: number; banyak: number }[]; benda: BendaId }[] = [
+  { total: 7300, pecahan: [{ nilai: 2000, banyak: 3 }, { nilai: 1000, banyak: 1 }, { nilai: 100, banyak: 3 }], benda: "jeruk" },
+  { total: 10000, pecahan: [{ nilai: 2000, banyak: 5 }], benda: "kue" },
+  { total: 5500, pecahan: [{ nilai: 2000, banyak: 2 }, { nilai: 1000, banyak: 1 }, { nilai: 500, banyak: 1 }], benda: "kelereng" },
+];
+export const RONDE_SUSUN_CD: number[][] = RONDE_PAPAN_CD;
+export const RONDE_URAI_CD: number[][] = RONDE_DEKOMPOSISI_CD;
+
+export const RONDE_KOMPOSISI_PD: number[][] = [
+  [6348, 6482],
+  [6849, 6035],
+  [2001, 9999],
+];
+export const RONDE_DEKOMPOSISI_PD = RONDE_KOMPOSISI_PD;
+export const RONDE_PAPAN_PD = RONDE_KOMPOSISI_PD;
+export const RONDE_TABEL_PD: number[][] = RONDE_TABEL_CD;
+export const RONDE_PASANG_PD = RONDE_PASANG_CD;
+export const RONDE_MEMORI_PD: number[][] = [
+  [6348, 6849, 6035, 7020],
+  [6482, 6040, 2001, 9999],
+  [7000, 9999, 6035, 2150],
+];
+export const RONDE_KETUK_PD = RONDE_KETUK_CD;
+export const RONDE_SEMUA_PD: RondeSemua[] = RONDE_SEMUA_CD;
+export const RONDE_SORTIR_PD: number[][] = [
+  [6348, 2150, 9999, 4327, 6040, 7000],
+  [6482, 6035, 3286, 7020, 2001, 9500],
+  [6849, 6040, 7350, 9999, 4128, 1001],
+];
+export const RONDE_KALIMAT_PD: number[] = [6348, 6035, 9999];
+
+export const RONDE_SUSUN_QD: number[][] = RONDE_KOMPOSISI_PD;
+export const RONDE_URAI_QD: number[][] = RONDE_DEKOMPOSISI_CD;
+export const RONDE_PAPAN_QD = RONDE_KOMPOSISI_PD;
+export const RONDE_PASANG_QD = RONDE_PASANG_CD;
+export const RONDE_MEMORI_QD = RONDE_MEMORI_PD;
+export const RONDE_TABEL_QD: TabelKata[] = [
+  { kepala: ["Bilangan", "Uraian"], baris: [{ label: "6.348", jawab: "6.000 + 300 + 40 + 8" }, { label: "6.040", jawab: "6.000 + 0 + 40 + 0" }, { label: "6.035", jawab: "6.000 + 0 + 30 + 5" }, { label: "7.000", jawab: "7.000 + 0 + 0 + 0" }], kartu: ["6.000 + 300 + 40 + 8", "6.000 + 0 + 40 + 0", "6.000 + 0 + 30 + 5", "7.000 + 0 + 0 + 0", "600 + 30 + 4 + 8"] },
+  { kepala: ["Bilangan", "Uraian"], baris: [{ label: "6.849", jawab: "6.000 + 800 + 40 + 9" }, { label: "2.001", jawab: "2.000 + 0 + 0 + 1" }, { label: "9.999", jawab: "9.000 + 900 + 90 + 9" }, { label: "7.020", jawab: "7.000 + 0 + 20 + 0" }], kartu: ["6.000 + 800 + 40 + 9", "2.000 + 0 + 0 + 1", "9.000 + 900 + 90 + 9", "7.000 + 0 + 20 + 0", "684 + 9"] },
+  { kepala: ["Bilangan", "Uraian"], baris: [{ label: "6.482", jawab: "6.000 + 400 + 80 + 2" }, { label: "1.025", jawab: "1.000 + 0 + 20 + 5" }, { label: "3.286", jawab: "3.000 + 200 + 80 + 6" }, { label: "10.000", jawab: "10 × 1.000" }], kartu: ["6.000 + 400 + 80 + 2", "1.000 + 0 + 20 + 5", "3.000 + 200 + 80 + 6", "10 × 1.000", "6482"] },
+];
+export const RONDE_BENARSALAH_QD: Pernyataan[][] = [
+  [
+    { teks: "6 ribuan + 3 ratusan + 4 puluhan + 8 satuan = 6.348.", benar: true, penjelasan: "6.000 + 300 + 40 + 8 = 6.348." },
+    { teks: "Komposisi dan dekomposisi adalah operasi yang saling membalik.", benar: true, penjelasan: "Menyusun dan menguraikan saling berkebalikan." },
+    { teks: "6.035 = 6.000 + 30 + 5, ratusannya 0.", benar: true, penjelasan: "Nol ratusan tetap ditulis di uraian lengkap." },
+    { teks: "Angka 6 di 6.348 selalu bernilai 6.", benar: false, penjelasan: "Di ribuan bernilai 6.000." },
+    { teks: "7.000 = 7 ribuan + 0 + 0 + 0.", benar: true, penjelasan: "Hanya tempat ribuan yang terisi." },
+  ],
+  [
+    { teks: "9.999 uraiannya 9.000 + 900 + 90 + 9.", benar: true, penjelasan: "Semua tempat terisi sembilan." },
+    { teks: "Dekomposisi 6.849 menghasilkan 6.000 + 800 + 40 + 9.", benar: true, penjelasan: "Sesuai Buku Siswa hlm. 26." },
+    { teks: "Uang 7.300 Helen tidak bisa diuraikan dari pecahan yang ada.", benar: false, penjelasan: "Buku meminta menguraikan 7.300 dari pecahan yang ada." },
+    { teks: "2.001 = 2 ribuan + 0 + 0 + 1 satuan.", benar: true, penjelasan: "Ratusan dan puluhan nol." },
+    { teks: "Menyusun digit tempat sama dengan menjumlahkan dua harga.", benar: false, penjelasan: "Komposisi = menyusun nilai tempat satu bilangan." },
+  ],
+];
+export const RONDE_DETEKTIF_QD: SoalDetektif[] = [
+  { klue: ["Ribuan saya 6", "Uraian saya 6.000 + 300 + 40 + 8"], jawab: 6348, opsi: [6348, 6482, 6035], salah: "Hanya 6.348 cocok." },
+  { klue: ["Satuan saya 5", "Ratusan saya 0"], jawab: 6035, opsi: [6035, 6040, 7020], salah: "6.035 = 6.000+0+30+5." },
+  { klue: ["Saya 9.999", "Semua digit saya 9"], jawab: 9999, opsi: [9999, 9000, 9990], salah: "9.999 semua digit 9." },
+  { klue: ["Saya 7 ribuan saja", "Puluhan dan satuan 0"], jawab: 7000, opsi: [7000, 7020, 7100], salah: "7.000." },
+];
+export const RONDE_SEMUA_QD: RondeSemua[] = RONDE_SEMUA_CD;
+export const PETA_KONSEP_QD: { pusat: string; kotak: { label: string; opsi: string[]; benar: number }[] }[] = [
+  { pusat: "Komposisi", kotak: [
+    { label: "Arti", opsi: ["menyusun dari nilai tempat", "mengurangi", "membagi"], benar: 0 },
+    { label: "6 rb + 3 rt + 4 pl + 8 st", opsi: ["6.348", "348", "6.438"], benar: 0 },
+    { label: "Alat", opsi: ["papan empat kolom", "garis saja", "acak"], benar: 0 },
+    { label: "Hasil", opsi: ["satu bilangan", "dua bilangan", "pecahan"], benar: 0 },
+  ]},
+  { pusat: "Dekomposisi", kotak: [
+    { label: "Arti", opsi: ["mengurai ke nilai tempat", "menjumlahkan", "mengurutkan"], benar: 0 },
+    { label: "6.849", opsi: ["6.000+800+40+9", "684+9", "6+849"], benar: 0 },
+    { label: "Nol", opsi: ["tetap ditulis di uraian", "dihapus saja", "diganti 1"], benar: 0 },
+    { label: "Kebalikan dari", opsi: ["komposisi", "pembagian", "pengurangan"], benar: 0 },
+  ]},
+];
+export const RONDE_SUSUNKATA_QD: { kata: string[]; pengecoh: string }[] = [
+  { kata: ["6.348", "sama", "dengan", "6.000", "+", "300", "+", "40", "+", "8"], pengecoh: "348" },
+  { kata: ["komposisi", "menyusun", "nilai", "tempat"], pengecoh: "menghapus" },
+  { kata: ["dekomposisi", "mengurai", "bilangan"], pengecoh: "mengacak" },
+  { kata: ["nol", "tetap", "menjaga", "tempat"], pengecoh: "diabaikan" },
+];
+
+/* ====================================================================== */
+/* SUB-BAB E — penjumlahan sampai 1.000                                     */
+/* ====================================================================== */
+
+export const RONDE_GABUNG_CE: SoalJumlah[][] = [
+  [{ a: 131, b: 321, benda: "jeruk" }, { a: 124, b: 411, benda: "jeruk" }],
+  [{ a: 189, b: 245, benda: "kue" }, { a: 333, b: 205, benda: "kue" }],
+  [{ a: 373, b: 208, benda: "kelereng" }, { a: 277, b: 146, benda: "kelereng" }],
+];
+export const RONDE_JUMLAH_CE: Jml[][] = [
+  [[131, 321], [189, 245]],
+  [[333, 205], [373, 208]],
+  [[277, 146], [627, 92]],
+];
+export const RONDE_SORTIR_CE: Jml[][] = [
+  [[131, 321], [189, 245], [100, 200], [333, 205], [50, 40], [373, 208]],
+  [[277, 146], [124, 411], [200, 300], [576, 148], [12, 5], [234, 279]],
+  [[429, 19], [821, 98], [700, 139], [111, 77], [30, 40], [612, 48]],
+];
+export const RONDE_PASANG_CE: Jml[][] = [
+  [[131, 321], [189, 245], [124, 411]],
+  [[333, 205], [373, 208], [277, 146]],
+  [[627, 92], [576, 148], [333, 519]],
+];
+export const RONDE_MEMORI_CE: Jml[][] = [
+  [[131, 321], [189, 245], [100, 200], [50, 50]],
+  [[333, 205], [373, 208], [277, 146], [400, 100]],
+  [[627, 92], [429, 19], [821, 98], [700, 139]],
+];
+export const RONDE_KETUK_CE: { item: Jml[]; tanya: number[] }[] = [
+  { item: [[131, 321], [189, 245], [100, 200]], tanya: [452, 434] },
+  { item: [[333, 205], [373, 208], [50, 40]], tanya: [538, 581] },
+  { item: [[277, 146], [627, 92], [12, 5]], tanya: [423, 719] },
+];
+export const RONDE_SEMUA_CE: { syarat: "simpan" | "tanpa"; pasangan: Jml[] }[] = [
+  { syarat: "simpan", pasangan: [[189, 245], [131, 321], [100, 200], [373, 208]] },
+  { syarat: "tanpa", pasangan: [[131, 321], [189, 245], [124, 411], [200, 300]] },
+  { syarat: "simpan", pasangan: [[277, 146], [576, 148], [50, 40], [627, 92]] },
+];
+export const RONDE_CERITA_CE: { a: number; b: number; c?: number; benda: BendaId; teks: string }[][] = [
+  [
+    { a: 328, b: 579, benda: "jeruk", teks: "Kebun A 328 buah, kebun B 579 buah. Berapa seluruhnya?" },
+    { a: 117, b: 105, c: 242, benda: "kelereng", teks: "Ikan lele 117, 105, dan 242. Berapa seluruhnya?" },
+  ],
+  [
+    { a: 121, b: 29, c: 98, benda: "kue", teks: "Siswa lomba 121 + 29 + 98. Berapa seluruhnya?" },
+    { a: 111, b: 77, c: 89, benda: "kue", teks: "Stiker Helen 111 + 77 + 89. Berapa seluruhnya?" },
+  ],
+  [
+    { a: 131, b: 321, benda: "jeruk", teks: "Pohon jeruk 131 di Jember dan 321 di Banyuwangi. Berapa seluruhnya?" },
+    { a: 189, b: 245, benda: "jeruk", teks: "Keranjang 189 dan 245 jeruk. Berapa seluruhnya?" },
+  ],
+];
+export const RONDE_PAPAN_CE: Jml[][] = RONDE_JUMLAH_CE;
+export const RONDE_URUT_CE: { angka: number[]; dari: "kecil" | "besar" }[] = [
+  { angka: [452, 434, 538], dari: "kecil" },
+  { angka: [581, 423, 719], dari: "besar" },
+  { angka: [898, 434, 452], dari: "kecil" },
+];
+
+export const RONDE_SUSUN_PE: Jml[][] = RONDE_JUMLAH_CE;
+export const RONDE_PAPAN_PE = RONDE_JUMLAH_CE;
+export const RONDE_JUMLAH_PE = RONDE_JUMLAH_CE;
+export const RONDE_PASANG_PE = RONDE_PASANG_CE;
+export const RONDE_MEMORI_PE = RONDE_MEMORI_CE;
+export const RONDE_TABEL_PE: { a: number; b: number }[][] = [
+  [{ a: 131, b: 321 }, { a: 189, b: 245 }, { a: 124, b: 411 }],
+  [{ a: 333, b: 205 }, { a: 373, b: 208 }, { a: 277, b: 146 }],
+  [{ a: 627, b: 92 }, { a: 576, b: 148 }, { a: 333, b: 519 }],
+];
+export const RONDE_SEMUA_PE = RONDE_SEMUA_CE;
+export const RONDE_SORTIR_PE = RONDE_SORTIR_CE;
+export const RONDE_URAI_PE: Jml[][] = RONDE_JUMLAH_CE;
+export const RONDE_LANGKAH_PE: Jml[][] = RONDE_JUMLAH_CE;
+
+export const RONDE_SUSUN_QE = RONDE_JUMLAH_CE;
+export const RONDE_JUMLAH_QE = RONDE_JUMLAH_CE;
+export const RONDE_PAPAN_QE = RONDE_JUMLAH_CE;
+export const RONDE_LANGKAH_QE = RONDE_JUMLAH_CE;
+export const RONDE_PASANG_QE = RONDE_PASANG_CE;
+export const RONDE_MEMORI_QE = RONDE_MEMORI_CE;
+export const RONDE_BENARSALAH_QE: Pernyataan[][] = [
+  [
+    { teks: "131 + 321 = 452 tanpa menyimpan.", benar: true, penjelasan: "Satuan 1+1=2, puluhan 3+2=5, ratusan 1+3=4." },
+    { teks: "189 + 245 perlu menyimpan.", benar: true, penjelasan: "9+5=14, simpan 1 ke puluhan." },
+    { teks: "Penjumlahan selalu dari kiri (ratusan) dulu.", benar: false, penjelasan: "Dari kanan: satuan → puluhan → ratusan." },
+    { teks: "124 + 411 + 363 = 898.", benar: true, penjelasan: "Contoh tiga bilangan di Buku Siswa." },
+    { teks: "Cara susun panjang dan pendek hasilnya berbeda.", benar: false, penjelasan: "Hasil sama; caranya yang berbeda." },
+  ],
+  [
+    { teks: "373 + 208 = 581.", benar: true, penjelasan: "3+8=11 simpan; 1+7+0=8; 3+2=5." },
+    { teks: "Bila satuan ≥ 10, simpan 1 puluhan.", benar: true, penjelasan: "Aturan menyimpan." },
+    { teks: "627 + 92 = 619.", benar: false, penjelasan: "627 + 92 = 719." },
+    { teks: "Menyimpan artinya menulis 1 di kolom berikutnya.", benar: true, penjelasan: "1 puluhan atau 1 ratusan." },
+    { teks: "898 adalah jumlah buku tiga SD Gebang.", benar: true, penjelasan: "124+411+363." },
+  ],
+];
+export const RONDE_DETEKTIF_QE: SoalDetektif[] = [
+  { klue: ["Saya hasil 131 + 321", "Saya tanpa menyimpan"], jawab: 452, opsi: [452, 434, 538], salah: "131+321=452." },
+  { klue: ["Saya hasil 189 + 245", "Ada penyimpanan"], jawab: 434, opsi: [434, 424, 444], salah: "189+245=434." },
+  { klue: ["Saya 898", "Jumlah tiga bilangan buku"], jawab: 898, opsi: [898, 8980, 889], salah: "124+411+363=898." },
+  { klue: ["Saya 328 + 579", "Kelapa sawit"], jawab: 907, opsi: [907, 897, 917], salah: "328+579=907." },
+];
+export const RONDE_CERITA_QE = RONDE_CERITA_CE;
+export const PETA_KONSEP_QE: { pusat: string; kotak: { label: string; opsi: string[]; benar: number }[] }[] = [
+  { pusat: "Penjumlahan", kotak: [
+    { label: "Mulai dari", opsi: ["satuan", "ratusan", "ribuan"], benar: 0 },
+    { label: "Satuan ≥ 10", opsi: ["simpan 1 puluhan", "hapus", "ulangi"], benar: 0 },
+    { label: "131 + 321", opsi: ["452", "442", "552"], benar: 0 },
+    { label: "Cara panjang", opsi: ["urai dulu", "tebak", "bagi"], benar: 0 },
+  ]},
+];
+export const jumlahCerita = (s: { a: number; b: number; c?: number }) => s.a + s.b + (s.c ?? 0);
+
+/* ====================================================================== */
+/* SUB-BAB F — pengurangan sampai 1.000                                     */
+/* ====================================================================== */
+
+export type SoalKurang = { a: number; b: number; benda: BendaId };
+export const RONDE_SISA_CF: SoalKurang[][] = [
+  [{ a: 265, b: 132, benda: "kue" }, { a: 241, b: 129, benda: "kue" }],
+  [{ a: 253, b: 176, benda: "jeruk" }, { a: 241, b: 175, benda: "jeruk" }],
+  [{ a: 633, b: 211, benda: "kelereng" }, { a: 879, b: 436, benda: "kelereng" }],
+];
+export const RONDE_SELISIH_CF: Jml[][] = [
+  [[265, 132], [241, 129]],
+  [[253, 176], [241, 175]],
+  [[633, 211], [522, 148]],
+];
+export const RONDE_SORTIR_CF: Jml[][] = [
+  [[265, 132], [241, 129], [500, 200], [253, 176], [80, 30], [241, 175]],
+  [[633, 211], [879, 436], [400, 100], [522, 148], [90, 40], [367, 289]],
+  [[573, 268], [422, 146], [300, 100], [700, 250], [55, 20], [900, 450]],
+];
+export const RONDE_PASANG_CF: Jml[][] = [
+  [[265, 132], [241, 129], [253, 176]],
+  [[241, 175], [633, 211], [879, 436]],
+  [[522, 148], [367, 289], [573, 268]],
+];
+export const RONDE_MEMORI_CF: Jml[][] = [
+  [[265, 132], [241, 129], [200, 100], [50, 20]],
+  [[253, 176], [241, 175], [633, 211], [400, 100]],
+  [[879, 436], [522, 148], [367, 289], [573, 268]],
+];
+export const RONDE_KETUK_CF: { item: Jml[]; tanya: number[] }[] = [
+  { item: [[265, 132], [241, 129], [200, 100]], tanya: [133, 112] },
+  { item: [[253, 176], [241, 175], [80, 30]], tanya: [77, 66] },
+  { item: [[633, 211], [879, 436], [90, 40]], tanya: [422, 443] },
+];
+export const RONDE_SEMUA_CF: { syarat: "ambil" | "tanpa"; pasangan: Jml[] }[] = [
+  { syarat: "ambil", pasangan: [[241, 129], [265, 132], [200, 100], [253, 176]] },
+  { syarat: "tanpa", pasangan: [[265, 132], [241, 129], [500, 200], [80, 30]] },
+  { syarat: "ambil", pasangan: [[241, 175], [253, 176], [90, 40], [367, 289]] },
+];
+export const RONDE_CERITA_CF: { a: number; b: number; benda: BendaId; teks: string }[][] = [
+  [
+    { a: 265, b: 132, benda: "kue", teks: "Buku 265, dipinjam 132. Berapa yang masih ada?" },
+    { a: 241, b: 129, benda: "kue", teks: "Ada 241, diambil 129. Berapa sisanya?" },
+  ],
+  [
+    { a: 253, b: 176, benda: "jeruk", teks: "253 dikurangi 176. Berapa hasilnya?" },
+    { a: 241, b: 175, benda: "jeruk", teks: "241 − 175. Berapa sisanya?" },
+  ],
+  [
+    { a: 633, b: 211, benda: "kelereng", teks: "633 − 211. Berapa?" },
+    { a: 879, b: 436, benda: "kelereng", teks: "879 − 436. Berapa?" },
+  ],
+];
+export const RONDE_PAPAN_CF = RONDE_SELISIH_CF;
+export const RONDE_URUT_CF: { angka: number[]; dari: "kecil" | "besar" }[] = [
+  { angka: [133, 112, 77], dari: "kecil" },
+  { angka: [66, 422, 443], dari: "besar" },
+  { angka: [305, 276, 77], dari: "kecil" },
+];
+
+export const RONDE_SUSUN_PF = RONDE_SELISIH_CF;
+export const RONDE_PAPAN_PF = RONDE_SELISIH_CF;
+export const RONDE_SELISIH_PF = RONDE_SELISIH_CF;
+export const RONDE_PASANG_PF = RONDE_PASANG_CF;
+export const RONDE_MEMORI_PF = RONDE_MEMORI_CF;
+export const RONDE_TABEL_PF: { a: number; b: number }[][] = [
+  [{ a: 265, b: 132 }, { a: 241, b: 129 }, { a: 253, b: 176 }],
+  [{ a: 241, b: 175 }, { a: 633, b: 211 }, { a: 879, b: 436 }],
+  [{ a: 522, b: 148 }, { a: 367, b: 289 }, { a: 573, b: 268 }],
+];
+export const RONDE_SEMUA_PF = RONDE_SEMUA_CF;
+export const RONDE_SORTIR_PF = RONDE_SORTIR_CF;
+export const RONDE_URAI_PF = RONDE_SELISIH_CF;
+export const RONDE_LANGKAH_PF = RONDE_SELISIH_CF;
+
+export const RONDE_SUSUN_QF = RONDE_SELISIH_CF;
+export const RONDE_SELISIH_QF = RONDE_SELISIH_CF;
+export const RONDE_PAPAN_QF = RONDE_SELISIH_CF;
+export const RONDE_LANGKAH_QF = RONDE_SELISIH_CF;
+export const RONDE_PASANG_QF = RONDE_PASANG_CF;
+export const RONDE_MEMORI_QF = RONDE_MEMORI_CF;
+export const RONDE_BENARSALAH_QF: Pernyataan[][] = [
+  [
+    { teks: "265 − 132 = 133 tanpa mengambil.", benar: true, penjelasan: "Setiap tempat cukup dikurangi." },
+    { teks: "241 − 129 perlu mengambil.", benar: true, penjelasan: "1 < 9, ambil 1 puluhan." },
+    { teks: "Pengurangan dikerjakan dari ratusan dulu.", benar: false, penjelasan: "Dari satuan (kanan) dulu." },
+    { teks: "253 − 176 = 77 dengan dua kali mengambil.", benar: true, penjelasan: "Contoh Buku Siswa hlm. 36." },
+    { teks: "Memeriksa pengurangan: hasil + pengurang = bilangan awal.", benar: true, penjelasan: "Operasi kebalikan." },
+  ],
+  [
+    { teks: "241 − 175 = 66.", benar: true, penjelasan: "Susun pendek dengan mengambil." },
+    { teks: "Bila satuan atas < satuan bawah, ambil 1 puluhan.", benar: true, penjelasan: "Aturan mengambil." },
+    { teks: "633 − 211 = 422.", benar: true, penjelasan: "Tanpa mengambil." },
+    { teks: "Mengambil sama dengan menyimpan pada penjumlahan.", benar: false, penjelasan: "Mengambil kebalikan dari menyimpan." },
+    { teks: "112 = 241 − 129.", benar: true, penjelasan: "Contoh satu kali mengambil." },
+  ],
+];
+export const RONDE_DETEKTIF_QF: SoalDetektif[] = [
+  { klue: ["Saya hasil 265 − 132", "Tanpa mengambil"], jawab: 133, opsi: [133, 112, 77], salah: "265−132=133." },
+  { klue: ["Saya hasil 241 − 129", "Ada pengambilan"], jawab: 112, opsi: [112, 122, 102], salah: "241−129=112." },
+  { klue: ["Saya 77", "Hasil 253 − 176"], jawab: 77, opsi: [77, 87, 67], salah: "253−176=77." },
+  { klue: ["Saya 66", "241 dikurangi 175"], jawab: 66, opsi: [66, 76, 56], salah: "241−175=66." },
+];
+export const RONDE_CERITA_QF = RONDE_CERITA_CF;
+export const PETA_KONSEP_QF: { pusat: string; kotak: { label: string; opsi: string[]; benar: number }[] }[] = [
+  { pusat: "Pengurangan", kotak: [
+    { label: "Mulai dari", opsi: ["satuan", "ratusan", "tengah"], benar: 0 },
+    { label: "Satuan tidak cukup", opsi: ["ambil 1 puluhan", "simpan", "hapus"], benar: 0 },
+    { label: "265 − 132", opsi: ["133", "123", "143"], benar: 0 },
+    { label: "Periksa", opsi: ["hasil + pengurang", "bagi dua", "acak"], benar: 0 },
+  ]},
+];

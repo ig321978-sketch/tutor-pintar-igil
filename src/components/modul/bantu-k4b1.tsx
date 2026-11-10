@@ -89,3 +89,67 @@ export function penjelasanBanding(a: number, b: number): string {
   if (t === "sama") return `${a} dan ${b} sama pada semua tempat, jadi ${a} sama dengan ${b}.`;
   return `Tempat ${t} yang menentukan: ${angkaTempat(a, t)} ${t} dan ${angkaTempat(b, t)} ${t}. Jadi ${a} ${kataRelasi(r)} ${b}.`;
 }
+
+export function TambahKoleksi({ a, b, benda, ukuran = 22 }: { a: number; b: number; benda: BendaId; ukuran?: number }) {
+  return (
+    <div className="flex w-full items-center justify-center gap-1.5">
+      <div className="flex flex-1 flex-col items-center gap-0.5 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+        <KoleksiDari n={a} benda={benda} ukuran={ukuran} />
+        <span className="text-xs font-black text-[#1C01A5]">{a}</span>
+      </div>
+      <span className="text-3xl font-black text-[#1C01A5]">+</span>
+      <div className="flex flex-1 flex-col items-center gap-0.5 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+        <KoleksiDari n={b} benda={benda} ukuran={ukuran} />
+        <span className="text-xs font-black text-[#1C01A5]">{b}</span>
+      </div>
+    </div>
+  );
+}
+
+export function TambahModel({ a, b, skala = 0.45 }: { a: number; b: number; skala?: number }) {
+  return (
+    <div className="flex w-full items-center justify-center gap-1.5">
+      <div className="flex flex-1 flex-col items-center gap-0.5 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+        <KartuModel n={a} skala={skala} />
+        <span className="text-xs font-black text-[#1C01A5]">{a}</span>
+      </div>
+      <span className="text-3xl font-black text-[#1C01A5]">+</span>
+      <div className="flex flex-1 flex-col items-center gap-0.5 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+        <KartuModel n={b} skala={skala} />
+        <span className="text-xs font-black text-[#1C01A5]">{b}</span>
+      </div>
+    </div>
+  );
+}
+
+export function KurangKoleksi({ a, b, benda, ukuran = 22 }: { a: number; b: number; benda: BendaId; ukuran?: number }) {
+  return (
+    <div className="flex w-full items-center justify-center gap-1.5">
+      <div className="flex flex-1 flex-col items-center gap-0.5 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+        <KoleksiDari n={a} benda={benda} ukuran={ukuran} />
+        <span className="text-xs font-black text-[#1C01A5]">{a}</span>
+      </div>
+      <span className="text-3xl font-black text-[#1C01A5]">−</span>
+      <div className="flex flex-1 flex-col items-center gap-0.5 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+        <KoleksiDari n={b} benda={benda} ukuran={ukuran} />
+        <span className="text-xs font-black text-[#1C01A5]">{b}</span>
+      </div>
+    </div>
+  );
+}
+
+export function KurangModel({ a, b, skala = 0.45 }: { a: number; b: number; skala?: number }) {
+  return (
+    <div className="flex w-full items-center justify-center gap-1.5">
+      <div className="flex flex-1 flex-col items-center gap-0.5 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+        <KartuModel n={a} skala={skala} />
+        <span className="text-xs font-black text-[#1C01A5]">{a}</span>
+      </div>
+      <span className="text-3xl font-black text-[#1C01A5]">−</span>
+      <div className="flex flex-1 flex-col items-center gap-0.5 rounded-2xl border-2 border-[#1C01A5]/30 bg-white px-1 py-1">
+        <KartuModel n={b} skala={skala} />
+        <span className="text-xs font-black text-[#1C01A5]">{b}</span>
+      </div>
+    </div>
+  );
+}

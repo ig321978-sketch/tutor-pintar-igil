@@ -5,7 +5,7 @@
   "grade": 4,
   "subjectLabel": "MATEMATIKA - KELAS 4 SD",
   "title": "BAB 1: BILANGAN CACAH SAMPAI 10.000",
-  "silabusElemen": "🌈 Fase B • Elemen Bilangan: Membaca, Menulis, Nilai Tempat, Membandingkan, dan Mengurutkan Bilangan Cacah sampai 10.000 (Kelas 4 SD/MI)",
+  "silabusElemen": "🌈 Fase B • Elemen Bilangan: Membaca–Menulis, Nilai Tempat, Banding–Urut, Komposisi–Dekomposisi sampai 10.000, serta Penjumlahan–Pengurangan sampai 1.000 (Kelas 4 SD/MI)",
   "suaraPerangkatSaja": true,
   "suaraLaju": 0.7,
   "suaraNada": 1,
@@ -2834,6 +2834,2814 @@
           "Aku membandingkan dari ribuan.",
           "Aku memakai tanda dengan benar.",
           "Aku bisa mengurutkan empat bilangan.",
+          "Aku menjelaskan langkahku."
+        ]
+      }
+    },
+    "D": {
+      "id": "D",
+      "codeTitle": "Sub-Bab D (Komposisi dan Dekomposisi)",
+      "fullTitle": "Sub-Bab D: Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000",
+      "targetDescription": "Siswa menyusun bilangan empat angka dari nilai tempat (komposisi) dan mengurai bilangan menjadi nilai tempat (dekomposisi), termasuk contoh uang Helen Rp7.300 dan Rp10.000.",
+      "secondaryBg": "#FCE7F3",
+      "secondaryBorder": "#DB2777",
+      "secondaryText": "#9D174D",
+      "silabus": {
+        "teksSuara": "Kita belajar komposisi dan dekomposisi bilangan sampai sepuluh ribu. Menyusun 6 ribuan + 3 ratusan + 4 puluhan + 8 satuan menjadi 6.348, lalu mengurai 6.849 menjadi 6.000 + 800 + 40 + 9. Nol tetap menjaga tempat seperti pada 6.035. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menyusun dan mengurai bilangan cacah sampai 10.000 menurut nilai tempat.",
+        "referensi": "Buku Siswa Matematika Kelas IV Bab 1 Sub-Bab D hlm. 24–28; expanded form / place-value composition."
+      },
+      "stories": [
+        {
+          "id": "K4B1D-V1-1",
+          "titleHint": "Empat angka tempat",
+          "sceneType": "K4B1D-V1-1",
+          "voiceNarration": "Angka 6 di ribuan, 3 di ratusan, 4 di puluhan, 8 di satuan. Nilainya 6.000, 300, 40, dan 8. Jumlahkan nilai tempatnya. Terbentuk bilangan 6.348."
+        },
+        {
+          "id": "K4B1D-V1-2",
+          "titleHint": "Latihan mengisi",
+          "sceneType": "K4B1D-V1-2",
+          "voiceNarration": "Isi titik-titik pada tabel ribuan sampai satuan. 6 4 8 2 menjadi enam ribu empat ratus delapan puluh dua. 6 0 4 0: ratusan dan satuan nol. Nol tetap ditulis agar tempatnya benar."
+        },
+        {
+          "id": "K4B1D-V1-3",
+          "titleHint": "Siap mengurai",
+          "sceneType": "K4B1D-V1-3",
+          "voiceNarration": "Komposisi menyusun dari bagian. Dekomposisi mengurai ke bagian. Keduanya saling membalik. Ayo lanjut mengurai bilangan."
+        },
+        {
+          "id": "K4B1D-V2-1",
+          "titleHint": "Buka 6.849",
+          "sceneType": "K4B1D-V2-1",
+          "voiceNarration": "Lihat bilangan 6.849. Tulis di papan empat kolom. Baca nilai tiap tempat. 6.000 + 800 + 40 + 9."
+        },
+        {
+          "id": "K4B1D-V2-2",
+          "titleHint": "6.035 dengan nol",
+          "sceneType": "K4B1D-V2-2",
+          "voiceNarration": "Bilangan 6.035 punya ratusan nol. Uraian: 6.000 + 0 + 30 + 5. Nol tidak dibuang. Nol menjaga tempat ratusan."
+        },
+        {
+          "id": "K4B1D-V2-3",
+          "titleHint": "Uang Helen",
+          "sceneType": "K4B1D-V2-3",
+          "voiceNarration": "Helen punya pecahan uang di warung. Slamet beli seharga 7.300. Uraikan 7.300 dari pecahan Helen. Uraikan juga 10.000."
+        },
+        {
+          "id": "K4B1D-V3-1",
+          "titleHint": "Dua arah sama",
+          "sceneType": "K4B1D-V3-1",
+          "voiceNarration": "Dari bagian ke bilangan: komposisi. Dari bilangan ke bagian: dekomposisi. Hasilnya harus saling cocok. Periksa dengan menjumlahkan uraian."
+        },
+        {
+          "id": "K4B1D-V3-2",
+          "titleHint": "Contoh 7.020",
+          "sceneType": "K4B1D-V3-2",
+          "voiceNarration": "7.020 = 7 ribuan + 0 + 2 puluhan + 0. Ditulis 7.000 + 0 + 20 + 0. Puluhan dua puluh. Satuan nol tidak dibaca."
+        },
+        {
+          "id": "K4B1D-V3-3",
+          "titleHint": "Siap bermain",
+          "sceneType": "K4B1D-V3-3",
+          "voiceNarration": "Kita sudah menyusun dan mengurai. Saatnya bermain di tahap benda, gambar, dan angka. Ingat: nol menjaga tempat. Ayo mulai."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K4B1D-V1",
+          "judul": "Menyusun 6.348",
+          "subjudul": "Komposisi",
+          "adegan": [
+            {
+              "id": "K4B1D-V1-1",
+              "judul": "Empat angka tempat",
+              "ketukan": [
+                "Angka 6 di ribuan, 3 di ratusan, 4 di puluhan, 8 di satuan.",
+                "Nilainya 6.000, 300, 40, dan 8.",
+                "Jumlahkan nilai tempatnya.",
+                "Terbentuk bilangan 6.348."
+              ],
+              "papan": [
+                "6 rb 3 rt 4 pl 8 st",
+                "6.000+300+40+8",
+                "jumlahkan",
+                "6.348"
+              ]
+            },
+            {
+              "id": "K4B1D-V1-2",
+              "judul": "Latihan mengisi",
+              "ketukan": [
+                "Isi titik-titik pada tabel ribuan sampai satuan.",
+                "6 4 8 2 menjadi enam ribu empat ratus delapan puluh dua.",
+                "6 0 4 0: ratusan dan satuan nol.",
+                "Nol tetap ditulis agar tempatnya benar."
+              ],
+              "papan": [
+                "tabel digit",
+                "6.482",
+                "6.040",
+                "nol menjaga"
+              ]
+            },
+            {
+              "id": "K4B1D-V1-3",
+              "judul": "Siap mengurai",
+              "ketukan": [
+                "Komposisi menyusun dari bagian.",
+                "Dekomposisi mengurai ke bagian.",
+                "Keduanya saling membalik.",
+                "Ayo lanjut mengurai bilangan."
+              ],
+              "papan": [
+                "komposisi",
+                "dekomposisi",
+                "saling balik",
+                "lanjut"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B1D-V2",
+          "judul": "Mengurai 6.849",
+          "subjudul": "Dekomposisi",
+          "adegan": [
+            {
+              "id": "K4B1D-V2-1",
+              "judul": "Buka 6.849",
+              "ketukan": [
+                "Lihat bilangan 6.849.",
+                "Tulis di papan empat kolom.",
+                "Baca nilai tiap tempat.",
+                "6.000 + 800 + 40 + 9."
+              ],
+              "papan": [
+                "6.849",
+                "papan",
+                "nilai tempat",
+                "uraian"
+              ]
+            },
+            {
+              "id": "K4B1D-V2-2",
+              "judul": "6.035 dengan nol",
+              "ketukan": [
+                "Bilangan 6.035 punya ratusan nol.",
+                "Uraian: 6.000 + 0 + 30 + 5.",
+                "Nol tidak dibuang.",
+                "Nol menjaga tempat ratusan."
+              ],
+              "papan": [
+                "6.035",
+                "0 ratusan",
+                "6.000+0+30+5",
+                "nol tetap"
+              ]
+            },
+            {
+              "id": "K4B1D-V2-3",
+              "judul": "Uang Helen",
+              "ketukan": [
+                "Helen punya pecahan uang di warung.",
+                "Slamet beli seharga 7.300.",
+                "Uraikan 7.300 dari pecahan Helen.",
+                "Uraikan juga 10.000."
+              ],
+              "papan": [
+                "warung",
+                "Rp7.300",
+                "pecahan",
+                "Rp10.000"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B1D-V3",
+          "judul": "Komposisi ↔ Dekomposisi",
+          "subjudul": "Dua arah",
+          "adegan": [
+            {
+              "id": "K4B1D-V3-1",
+              "judul": "Dua arah sama",
+              "ketukan": [
+                "Dari bagian ke bilangan: komposisi.",
+                "Dari bilangan ke bagian: dekomposisi.",
+                "Hasilnya harus saling cocok.",
+                "Periksa dengan menjumlahkan uraian."
+              ],
+              "papan": [
+                "bagian→bilangan",
+                "bilangan→bagian",
+                "cocok",
+                "periksa"
+              ]
+            },
+            {
+              "id": "K4B1D-V3-2",
+              "judul": "Contoh 7.020",
+              "ketukan": [
+                "7.020 = 7 ribuan + 0 + 2 puluhan + 0.",
+                "Ditulis 7.000 + 0 + 20 + 0.",
+                "Puluhan dua puluh.",
+                "Satuan nol tidak dibaca."
+              ],
+              "papan": [
+                "7.020",
+                "7 ribuan",
+                "20",
+                "satuan 0"
+              ]
+            },
+            {
+              "id": "K4B1D-V3-3",
+              "judul": "Siap bermain",
+              "ketukan": [
+                "Kita sudah menyusun dan mengurai.",
+                "Saatnya bermain di tahap benda, gambar, dan angka.",
+                "Ingat: nol menjaga tempat.",
+                "Ayo mulai."
+              ],
+              "papan": [
+                "siap",
+                "Concrete",
+                "Picture",
+                "Abstract"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Komposisi",
+          "stepDesc": "Menyusun bilangan dari nilai tempat.",
+          "icon": "🧩",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Nilai tempat",
+          "stepDesc": "Ribuan, ratusan, puluhan, satuan.",
+          "icon": "📍",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Jumlahkan nilai",
+          "stepDesc": "6.000+300+40+8=6.348.",
+          "icon": "➕",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Dekomposisi",
+          "stepDesc": "Mengurai bilangan ke nilai tempat.",
+          "icon": "🔓",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Nol menjaga",
+          "stepDesc": "0 tetap ditulis di uraian.",
+          "icon": "0️⃣",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Saling balik",
+          "stepDesc": "Susun dan urai saling memeriksa.",
+          "icon": "🔄",
+          "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Uang Helen",
+          "stepDesc": "Uraikan 7.300 dan 10.000.",
+          "icon": "💰",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Siap lanjut",
+          "stepDesc": "Lanjut penjumlahan Sub-Bab E.",
+          "icon": "✅",
+          "flowFrom": "7",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "KOMPOSISI",
+          "emoji": "🧩",
+          "countNum": 1,
+          "countWord": "susun",
+          "voiceSentence": "Komposisi artinya menyusun bilangan dari nilai tempat."
+        },
+        {
+          "fruitName": "6.348",
+          "emoji": "6️⃣",
+          "countNum": 6348,
+          "countWord": "enam ribu",
+          "voiceSentence": "Enam ribuan ditambah tiga ratusan, empat puluhan, delapan satuan."
+        },
+        {
+          "fruitName": "DEKOMPOSISI",
+          "emoji": "🔓",
+          "countNum": 2,
+          "countWord": "urai",
+          "voiceSentence": "Dekomposisi artinya mengurai bilangan ke nilai tempat."
+        },
+        {
+          "fruitName": "6.849",
+          "emoji": "8️⃣",
+          "countNum": 6849,
+          "countWord": "urai",
+          "voiceSentence": "Enam ribu delapan ratus empat puluh sembilan diurai 6.000 + 800 + 40 + 9."
+        },
+        {
+          "fruitName": "NOL",
+          "emoji": "0️⃣",
+          "countNum": 0,
+          "countWord": "jaga",
+          "voiceSentence": "Pada 6.035, nol ratusan tetap ditulis."
+        },
+        {
+          "fruitName": "7.020",
+          "emoji": "7️⃣",
+          "countNum": 7020,
+          "countWord": "tujuh ribu",
+          "voiceSentence": "Tujuh ribuan dan dua puluhan, ratusan serta satuan nol."
+        },
+        {
+          "fruitName": "9.999",
+          "emoji": "9️⃣",
+          "countNum": 9999,
+          "countWord": "penuh",
+          "voiceSentence": "Semua tempat terisi sembilan."
+        },
+        {
+          "fruitName": "UANG",
+          "emoji": "💰",
+          "countNum": 7300,
+          "countWord": "tujuh ribu",
+          "voiceSentence": "Uraikan tujuh ribu tiga ratus rupiah dari pecahan Helen."
+        },
+        {
+          "fruitName": "SALING BALIK",
+          "emoji": "🔄",
+          "countNum": 3,
+          "countWord": "periksa",
+          "voiceSentence": "Jumlahkan uraian untuk memeriksa dekomposisi."
+        },
+        {
+          "fruitName": "SIAP E",
+          "emoji": "✅",
+          "countNum": 4,
+          "countWord": "lanjut",
+          "voiceSentence": "Siap lanjut ke penjumlahan sampai seribu."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Susun dari Nilai Tempat",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Rakit dari nilai tempat."
+        },
+        {
+          "title": "Uraikan Kumpulan Empat Tempat",
+          "emoji": "🔓",
+          "targetCount": 6,
+          "voiceGuide": "Pilih uraian yang benar."
+        },
+        {
+          "title": "Papan Komposisi",
+          "emoji": "🗂️",
+          "targetCount": 6,
+          "voiceGuide": "Isi papan empat kolom."
+        },
+        {
+          "title": "Jodohkan Uraian dan Bilangan",
+          "emoji": "🔗",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk uraian, lalu bilangan."
+        },
+        {
+          "title": "Memori Nilai Tempat",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik dua kartu."
+        },
+        {
+          "title": "Ketuk Bilangan dari Uraian",
+          "emoji": "👆",
+          "targetCount": 6,
+          "voiceGuide": "Ketuk yang cocok."
+        },
+        {
+          "title": "Ketuk Semua Syarat Komposisi",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua yang cocok."
+        },
+        {
+          "title": "Uraikan Uang Helen",
+          "emoji": "💰",
+          "targetCount": 3,
+          "voiceGuide": "Pilih uraian pecahan."
+        },
+        {
+          "title": "Isi Tabel Komposisi",
+          "emoji": "📋",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk sel."
+        },
+        {
+          "title": "Pilah: Ada Nol atau Penuh",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah ke kotak."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Susun dari Blok",
+          "diagramType": "blocks-compose",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Membaca model menjadi bilangan."
+        },
+        {
+          "title": "Uraikan Model Blok",
+          "diagramType": "blocks-expand",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Memilih uraian dari model."
+        },
+        {
+          "title": "Papan dari Blok D",
+          "diagramType": "blocks-board",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Isi papan dari blok."
+        },
+        {
+          "title": "Tabel dari Blok D",
+          "diagramType": "blocks-table",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Isi tabel digit."
+        },
+        {
+          "title": "Jodohkan Blok dan Uraian",
+          "diagramType": "blocks-match",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Model dengan uraian."
+        },
+        {
+          "title": "Memori Blok dan Bilangan",
+          "diagramType": "blocks-memory",
+          "numberA": 4,
+          "numberB": 4,
+          "caption": "Memori model dan lambang."
+        },
+        {
+          "title": "Ketuk Blok dari Uraian",
+          "diagramType": "blocks-tap",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Ketuk model sesuai uraian."
+        },
+        {
+          "title": "Ketuk Semua Blok D",
+          "diagramType": "blocks-select",
+          "numberA": 4,
+          "numberB": 4,
+          "caption": "Syarit digit pada model."
+        },
+        {
+          "title": "Pilah Blok menurut Nol",
+          "diagramType": "blocks-sort",
+          "numberA": 4,
+          "numberB": 6,
+          "caption": "Ada nol / tanpa nol."
+        },
+        {
+          "title": "Lengkapi Kalimat Uraian",
+          "diagramType": "blocks-sentence",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Melengkapi kalimat uraian."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "6.348",
+          "wordLarge": "SUSUN",
+          "mathNotation": "urai → angka",
+          "voiceReadout": "Susun kartu."
+        },
+        {
+          "symbolLarge": "6.849",
+          "wordLarge": "URAI",
+          "mathNotation": "angka → uraian",
+          "voiceReadout": "Pilih uraian."
+        },
+        {
+          "symbolLarge": "6.035",
+          "wordLarge": "PAPAN",
+          "mathNotation": "urai → digit",
+          "voiceReadout": "Isi papan."
+        },
+        {
+          "symbolLarge": "7.020",
+          "wordLarge": "JODOH",
+          "mathNotation": "angka • uraian",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "2.001",
+          "wordLarge": "MEMORI",
+          "mathNotation": "angka • uraian",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "9.999",
+          "wordLarge": "TABEL",
+          "mathNotation": "bilangan • uraian",
+          "voiceReadout": "Isi kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "dua petunjuk",
+          "voiceReadout": "Pilih bilangan."
+        },
+        {
+          "symbolLarge": "✔✔",
+          "wordLarge": "SEMUA",
+          "mathNotation": "syarat",
+          "voiceReadout": "Ketuk semua."
+        },
+        {
+          "symbolLarge": "Aa",
+          "wordLarge": "KATA",
+          "mathNotation": "kalimat",
+          "voiceReadout": "Susun kata."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK4B1D-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "compose-place",
+          "title": "Susun dari Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 24–25 (6.348)",
+          "objective": "Menyusun bilangan dari ribuan–satuan.",
+          "mechanicDescription": "Tiga ronde, dua bilangan. Rakit peti sampai satuan.",
+          "voiceGuide": "Rakit dari nilai tempat."
+        },
+        {
+          "gameId": "subK4B1D-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "decompose-package",
+          "title": "Uraikan Kumpulan Empat Tempat",
+          "bookReference": "Buku Siswa hlm. 26–27 (6.849)",
+          "objective": "Mengurai kumpulan menjadi nilai tempat.",
+          "mechanicDescription": "Tiga ronde, dua soal. Pilih uraian.",
+          "voiceGuide": "Pilih uraian yang benar."
+        },
+        {
+          "gameId": "subK4B1D-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "board-compose",
+          "title": "Papan Komposisi",
+          "bookReference": "Buku Siswa hlm. 25",
+          "objective": "Mengisi papan dari uraian kata.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Isi papan empat kolom."
+        },
+        {
+          "gameId": "subK4B1D-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "match-compose",
+          "title": "Jodohkan Uraian dan Bilangan",
+          "bookReference": "Buku Siswa hlm. 25–27",
+          "objective": "Menjodohkan uraian dengan lambang.",
+          "mechanicDescription": "Tiga ronde, tiga pasangan.",
+          "voiceGuide": "Ketuk uraian, lalu bilangan."
+        },
+        {
+          "gameId": "subK4B1D-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "memory-compose",
+          "title": "Memori Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 25",
+          "objective": "Memori nilai 6.000, 300, 40, 8.",
+          "mechanicDescription": "Tiga ronde, empat pasang.",
+          "voiceGuide": "Balik dua kartu."
+        },
+        {
+          "gameId": "subK4B1D-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "tap-compose",
+          "title": "Ketuk Bilangan dari Uraian",
+          "bookReference": "Buku Siswa hlm. 25–27",
+          "objective": "Mendengar uraian lalu mengetuk bilangan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk yang cocok."
+        },
+        {
+          "gameId": "subK4B1D-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-all-compose",
+          "title": "Ketuk Semua Syarat Komposisi",
+          "bookReference": "Buku Siswa hlm. 27",
+          "objective": "Memilih bilangan sesuai syarat digit.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua yang cocok."
+        },
+        {
+          "gameId": "subK4B1D-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "money-compose",
+          "title": "Uraikan Uang Helen",
+          "bookReference": "Buku Siswa hlm. 28 (Rp7.300 dan Rp10.000)",
+          "objective": "Mengurai uang dari pecahan.",
+          "mechanicDescription": "Tiga soal uang.",
+          "voiceGuide": "Pilih uraian pecahan."
+        },
+        {
+          "gameId": "subK4B1D-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "fill-table-compose",
+          "title": "Isi Tabel Komposisi",
+          "bookReference": "Buku Siswa hlm. 25",
+          "objective": "Mengisi digit tabel dari bilangan.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Ketuk sel."
+        },
+        {
+          "gameId": "subK4B1D-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "sort-compose",
+          "title": "Pilah: Ada Nol atau Penuh",
+          "bookReference": "Buku Siswa hlm. 27 (6.035)",
+          "objective": "Memilah bilangan ada nol / penuh.",
+          "mechanicDescription": "Tiga ronde, enam bilangan.",
+          "voiceGuide": "Pilah ke kotak."
+        },
+        {
+          "gameId": "subK4B1D-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "compose-blocks",
+          "title": "Susun dari Blok",
+          "bookReference": "Buku Siswa hlm. 25–26",
+          "objective": "Membaca model menjadi bilangan.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Hitung blok."
+        },
+        {
+          "gameId": "subK4B1D-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "decompose-blocks",
+          "title": "Uraikan Model Blok",
+          "bookReference": "Buku Siswa hlm. 26–27",
+          "objective": "Memilih uraian dari model.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih uraian."
+        },
+        {
+          "gameId": "subK4B1D-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "board-blocks-d",
+          "title": "Papan dari Blok D",
+          "bookReference": "Buku Siswa hlm. 25",
+          "objective": "Isi papan dari blok.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "gameId": "subK4B1D-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "table-blocks-d",
+          "title": "Tabel dari Blok D",
+          "bookReference": "Buku Siswa hlm. 25",
+          "objective": "Isi tabel digit.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Ketuk sel."
+        },
+        {
+          "gameId": "subK4B1D-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "match-blocks-d",
+          "title": "Jodohkan Blok dan Uraian",
+          "bookReference": "Buku Siswa hlm. 26",
+          "objective": "Model dengan uraian.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B1D-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "memory-blocks-d",
+          "title": "Memori Blok dan Bilangan",
+          "bookReference": "Buku Siswa hlm. 25–27",
+          "objective": "Memori model dan lambang.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B1D-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "tap-blocks-d",
+          "title": "Ketuk Blok dari Uraian",
+          "bookReference": "Buku Siswa hlm. 26",
+          "objective": "Ketuk model sesuai uraian.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk model."
+        },
+        {
+          "gameId": "subK4B1D-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "tap-all-blocks-d",
+          "title": "Ketuk Semua Blok D",
+          "bookReference": "Buku Siswa hlm. 27",
+          "objective": "Syarit digit pada model.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B1D-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "sort-blocks-d",
+          "title": "Pilah Blok menurut Nol",
+          "bookReference": "Buku Siswa hlm. 27",
+          "objective": "Ada nol / tanpa nol.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B1D-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "sentence-blocks-d",
+          "title": "Lengkapi Kalimat Uraian",
+          "bookReference": "Buku Siswa hlm. 25–27",
+          "objective": "Melengkapi kalimat uraian.",
+          "mechanicDescription": "Tiga model.",
+          "voiceGuide": "Pilih isian."
+        },
+        {
+          "gameId": "subK4B1D-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "compose-cards",
+          "title": "Susun Empat Kartu dari Uraian",
+          "bookReference": "Buku Siswa hlm. 25",
+          "objective": "Menulis lambang dari uraian.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Susun kartu."
+        },
+        {
+          "gameId": "subK4B1D-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "choose-expand",
+          "title": "Pilih Uraian Angka",
+          "bookReference": "Buku Siswa hlm. 26–27",
+          "objective": "Memilih uraian benar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih uraian."
+        },
+        {
+          "gameId": "subK4B1D-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "board-abstract-d",
+          "title": "Tulis di Papan dari Uraian",
+          "bookReference": "Buku Siswa hlm. 25–27",
+          "objective": "Menulis dari uraian ke papan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "gameId": "subK4B1D-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "match-abstract-d",
+          "title": "Jodohkan Angka dan Uraian",
+          "bookReference": "Buku Siswa hlm. 25–27",
+          "objective": "Menjodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B1D-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "memory-abstract-d",
+          "title": "Memori Angka dan Uraian",
+          "bookReference": "Buku Siswa hlm. 26",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B1D-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "table-abstract-d",
+          "title": "Isi Tabel Uraian",
+          "bookReference": "Buku Siswa hlm. 27",
+          "objective": "Melengkapi tabel.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Isi kartu."
+        },
+        {
+          "gameId": "subK4B1D-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-d",
+          "title": "Benar atau Salah: Komposisi",
+          "bookReference": "Buku Siswa hlm. 24–28",
+          "objective": "Menilai pernyataan.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK4B1D-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-d",
+          "title": "Detektif Komposisi",
+          "bookReference": "Buku Siswa hlm. 25–28",
+          "objective": "Dua petunjuk → satu bilangan.",
+          "mechanicDescription": "Empat soal.",
+          "voiceGuide": "Pilih bilangan."
+        },
+        {
+          "gameId": "subK4B1D-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "select-all-d",
+          "title": "Ketuk Semua: Komposisi",
+          "bookReference": "Buku Siswa hlm. 27",
+          "objective": "Syarat digit.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B1D-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "build-sentence-d",
+          "title": "Susun Kata Komposisi",
+          "bookReference": "Buku Siswa hlm. 25–27",
+          "objective": "Menyusun kalimat.",
+          "mechanicDescription": "Empat kalimat.",
+          "voiceGuide": "Susun kata."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Komposisi",
+            "isi": "Susun nilai tempat menjadi satu bilangan.",
+            "suara": "Komposisi menyusun bilangan dari nilai tempat."
+          },
+          {
+            "nama": "Dekomposisi",
+            "isi": "Urai bilangan menjadi nilai tempat.",
+            "suara": "Dekomposisi mengurai bilangan ke nilai tempat."
+          },
+          {
+            "nama": "Nol",
+            "isi": "Nol tetap ditulis agar tempat benar.",
+            "suara": "Nol menjaga tempat yang kosong."
+          },
+          {
+            "nama": "Periksa",
+            "isi": "Jumlahkan uraian untuk memeriksa.",
+            "suara": "Jumlahkan semua nilai tempat untuk memeriksa."
+          }
+        ],
+        "suara": "Empat poin penting komposisi dan dekomposisi.",
+        "caraMenyebutkan": "baca digit tulis nilai jumlah/urai periksa",
+        "rumah": "Ayo Mencoba: uraikan empat harga di warung, lalu susun kembali.",
+        "refleksi": [
+          "Aku menyusun dari nilai tempat.",
+          "Aku mengurai bilangan.",
+          "Aku menjaga nol.",
+          "Aku memeriksa dengan menjumlahkan."
+        ]
+      }
+    },
+    "E": {
+      "id": "E",
+      "codeTitle": "Sub-Bab E (Penjumlahan sampai 1.000)",
+      "fullTitle": "Sub-Bab E: Penjumlahan Bilangan Cacah sampai 1.000",
+      "targetDescription": "Siswa menjumlahkan bilangan sampai 1.000 dengan cara susun panjang dan pendek, tanpa dan dengan menyimpan, termasuk tiga bilangan dan soal cerita buku.",
+      "secondaryBg": "#DCFCE7",
+      "secondaryBorder": "#16A34A",
+      "secondaryText": "#14532D",
+      "silabus": {
+        "teksSuara": "Kita belajar penjumlahan sampai seribu. Pohon jeruk Pak Toni 131 ditambah 321 sama dengan 452. Jeruk pedagang 189 ditambah 245 perlu menyimpan menjadi 434. Kita juga menjumlahkan tiga bilangan seperti 124 + 411 + 363 = 898. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menjumlahkan bilangan cacah sampai 1.000 dengan dan tanpa menyimpan.",
+        "referensi": "Buku Siswa Matematika Kelas IV Bab 1 Sub-Bab E hlm. 28–33; partial-sums dan standard algorithm."
+      },
+      "stories": [
+        {
+          "id": "K4B1E-V1-1",
+          "titleHint": "131 + 321",
+          "sceneType": "K4B1E-V1-1",
+          "voiceNarration": "Pak Toni punya 131 pohon di Jember. Dan 321 pohon di Banyuwangi. Jumlahkan dari satuan. Hasilnya 452 pohon."
+        },
+        {
+          "id": "K4B1E-V1-2",
+          "titleHint": "Susun panjang",
+          "sceneType": "K4B1E-V1-2",
+          "voiceNarration": "Urai 131 = 100 + 30 + 1. Urai 321 = 300 + 20 + 1. Jumlahkan tiap tempat. 400 + 50 + 2 = 452."
+        },
+        {
+          "id": "K4B1E-V1-3",
+          "titleHint": "Susun pendek",
+          "sceneType": "K4B1E-V1-3",
+          "voiceNarration": "Tulis bersusun ratusan puluhan satuan. 1+1=2, 3+2=5, 1+3=4. Tanpa menyimpan. Sama hasilnya 452."
+        },
+        {
+          "id": "K4B1E-V2-1",
+          "titleHint": "189 + 245",
+          "sceneType": "K4B1E-V2-1",
+          "voiceNarration": "Keranjang 189 dan 245 jeruk. 9 + 5 = 14, simpan 1 puluhan. 8 + 4 + 1 = 13, simpan 1 ratusan. 1 + 1 + 2 = 4. Hasil 434."
+        },
+        {
+          "id": "K4B1E-V2-2",
+          "titleHint": "Susun panjang simpan",
+          "sceneType": "K4B1E-V2-2",
+          "voiceNarration": "Urai lalu jumlahkan. 14 = 10 + 4, 120 = 100 + 20. Kelompokkan lagi. 400 + 30 + 4 = 434."
+        },
+        {
+          "id": "K4B1E-V2-3",
+          "titleHint": "Tiga bilangan",
+          "sceneType": "K4B1E-V2-3",
+          "voiceNarration": "Buku tiga SD: 124, 411, dan 363. Jumlahkan bertahap. Hasil 898 buku. Boleh dua-dua dulu."
+        },
+        {
+          "id": "K4B1E-V3-1",
+          "titleHint": "Kelapa dan lele",
+          "sceneType": "K4B1E-V3-1",
+          "voiceNarration": "Kebun 328 + 579 kelapa. Ikan lele 117 + 105 + 242. Hitung dengan teliti. Periksa menyimpan."
+        },
+        {
+          "id": "K4B1E-V3-2",
+          "titleHint": "Lomba dan stiker",
+          "sceneType": "K4B1E-V3-2",
+          "voiceNarration": "Siswa lomba 121 + 29 + 98. Stiker Helen 111 + 77 + 89. Jumlahkan dari satuan. Simpan bila perlu."
+        },
+        {
+          "id": "K4B1E-V3-3",
+          "titleHint": "Siap bermain",
+          "sceneType": "K4B1E-V3-3",
+          "voiceNarration": "Kita sudah menjumlahkan dengan dan tanpa menyimpan. Saatnya bermain. Ingat: mulai dari satuan. Ayo mulai."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K4B1E-V1",
+          "judul": "Jeruk Pak Toni",
+          "subjudul": "Tanpa menyimpan",
+          "adegan": [
+            {
+              "id": "K4B1E-V1-1",
+              "judul": "131 + 321",
+              "ketukan": [
+                "Pak Toni punya 131 pohon di Jember.",
+                "Dan 321 pohon di Banyuwangi.",
+                "Jumlahkan dari satuan.",
+                "Hasilnya 452 pohon."
+              ],
+              "papan": [
+                "131",
+                "321",
+                "satuan dulu",
+                "452"
+              ]
+            },
+            {
+              "id": "K4B1E-V1-2",
+              "judul": "Susun panjang",
+              "ketukan": [
+                "Urai 131 = 100 + 30 + 1.",
+                "Urai 321 = 300 + 20 + 1.",
+                "Jumlahkan tiap tempat.",
+                "400 + 50 + 2 = 452."
+              ],
+              "papan": [
+                "urai",
+                "kelompokkan",
+                "jumlahkan",
+                "452"
+              ]
+            },
+            {
+              "id": "K4B1E-V1-3",
+              "judul": "Susun pendek",
+              "ketukan": [
+                "Tulis bersusun ratusan puluhan satuan.",
+                "1+1=2, 3+2=5, 1+3=4.",
+                "Tanpa menyimpan.",
+                "Sama hasilnya 452."
+              ],
+              "papan": [
+                "bersusun",
+                "dari kanan",
+                "tanpa simpan",
+                "452"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B1E-V2",
+          "judul": "Jeruk Pedagang",
+          "subjudul": "Dengan menyimpan",
+          "adegan": [
+            {
+              "id": "K4B1E-V2-1",
+              "judul": "189 + 245",
+              "ketukan": [
+                "Keranjang 189 dan 245 jeruk.",
+                "9 + 5 = 14, simpan 1 puluhan.",
+                "8 + 4 + 1 = 13, simpan 1 ratusan.",
+                "1 + 1 + 2 = 4. Hasil 434."
+              ],
+              "papan": [
+                "189+245",
+                "simpan satuan",
+                "simpan puluhan",
+                "434"
+              ]
+            },
+            {
+              "id": "K4B1E-V2-2",
+              "judul": "Susun panjang simpan",
+              "ketukan": [
+                "Urai lalu jumlahkan.",
+                "14 = 10 + 4, 120 = 100 + 20.",
+                "Kelompokkan lagi.",
+                "400 + 30 + 4 = 434."
+              ],
+              "papan": [
+                "urai",
+                "14 dan 120",
+                "kelompok",
+                "434"
+              ]
+            },
+            {
+              "id": "K4B1E-V2-3",
+              "judul": "Tiga bilangan",
+              "ketukan": [
+                "Buku tiga SD: 124, 411, dan 363.",
+                "Jumlahkan bertahap.",
+                "Hasil 898 buku.",
+                "Boleh dua-dua dulu."
+              ],
+              "papan": [
+                "124+411+363",
+                "bertahap",
+                "898",
+                "dua-dua"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B1E-V3",
+          "judul": "Cerita Jumlah",
+          "subjudul": "Ayo berlatih",
+          "adegan": [
+            {
+              "id": "K4B1E-V3-1",
+              "judul": "Kelapa dan lele",
+              "ketukan": [
+                "Kebun 328 + 579 kelapa.",
+                "Ikan lele 117 + 105 + 242.",
+                "Hitung dengan teliti.",
+                "Periksa menyimpan."
+              ],
+              "papan": [
+                "328+579",
+                "117+105+242",
+                "teliti",
+                "periksa"
+              ]
+            },
+            {
+              "id": "K4B1E-V3-2",
+              "judul": "Lomba dan stiker",
+              "ketukan": [
+                "Siswa lomba 121 + 29 + 98.",
+                "Stiker Helen 111 + 77 + 89.",
+                "Jumlahkan dari satuan.",
+                "Simpan bila perlu."
+              ],
+              "papan": [
+                "lomba",
+                "stiker",
+                "dari satuan",
+                "simpan"
+              ]
+            },
+            {
+              "id": "K4B1E-V3-3",
+              "judul": "Siap bermain",
+              "ketukan": [
+                "Kita sudah menjumlahkan dengan dan tanpa menyimpan.",
+                "Saatnya bermain.",
+                "Ingat: mulai dari satuan.",
+                "Ayo mulai."
+              ],
+              "papan": [
+                "siap",
+                "Concrete",
+                "dari satuan",
+                "mulai"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Gabungkan",
+          "stepDesc": "Dua banyak digabung menjadi satu.",
+          "icon": "➕",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Dari kanan",
+          "stepDesc": "Satuan dulu, lalu puluhan, ratusan.",
+          "icon": "➡️",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Tanpa simpan",
+          "stepDesc": "131+321=452.",
+          "icon": "✅",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Menyimpan",
+          "stepDesc": "Bila ≥10, tulis sisa, simpan 1.",
+          "icon": "1️⃣",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. 189+245",
+          "stepDesc": "Hasil 434 dengan dua simpan.",
+          "icon": "🍊",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Susun panjang",
+          "stepDesc": "Urai dulu, lalu jumlahkan.",
+          "icon": "📜",
+          "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Tiga bilangan",
+          "stepDesc": "124+411+363=898.",
+          "icon": "3️⃣",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Siap F",
+          "stepDesc": "Lanjut pengurangan.",
+          "icon": "✅",
+          "flowFrom": "7",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "DARI SATUAN",
+          "emoji": "➡️",
+          "countNum": 1,
+          "countWord": "kanan",
+          "voiceSentence": "Penjumlahan dikerjakan dari kanan."
+        },
+        {
+          "fruitName": "452",
+          "emoji": "🌳",
+          "countNum": 452,
+          "countWord": "tanpa simpan",
+          "voiceSentence": "Seratus tiga puluh satu ditambah tiga ratus dua puluh satu."
+        },
+        {
+          "fruitName": "MENYIMPAN",
+          "emoji": "1️⃣",
+          "countNum": 10,
+          "countWord": "simpan",
+          "voiceSentence": "Bila jumlah tempat sepuluh atau lebih, simpan satu."
+        },
+        {
+          "fruitName": "434",
+          "emoji": "🍊",
+          "countNum": 434,
+          "countWord": "dengan simpan",
+          "voiceSentence": "Seratus delapan puluh sembilan ditambah dua ratus empat puluh lima."
+        },
+        {
+          "fruitName": "SUSUN PENDEK",
+          "emoji": "⬇️",
+          "countNum": 2,
+          "countWord": "bersusun",
+          "voiceSentence": "Tulis bersusun menurut nilai tempat."
+        },
+        {
+          "fruitName": "SUSUN PANJANG",
+          "emoji": "📜",
+          "countNum": 3,
+          "countWord": "urai",
+          "voiceSentence": "Urai dulu, lalu jumlahkan tiap tempat."
+        },
+        {
+          "fruitName": "898",
+          "emoji": "📚",
+          "countNum": 898,
+          "countWord": "tiga suku",
+          "voiceSentence": "Seratus dua puluh empat ditambah empat ratus sebelas ditambah tiga ratus enam puluh tiga."
+        },
+        {
+          "fruitName": "PERIKSA",
+          "emoji": "🔍",
+          "countNum": 4,
+          "countWord": "ulang",
+          "voiceSentence": "Hitung lagi dari satuan untuk memeriksa."
+        },
+        {
+          "fruitName": "CERITA",
+          "emoji": "📖",
+          "countNum": 5,
+          "countWord": "soal",
+          "voiceSentence": "Baca cerita, tulis model penjumlahan."
+        },
+        {
+          "fruitName": "SIAP F",
+          "emoji": "✅",
+          "countNum": 6,
+          "countWord": "lanjut",
+          "voiceSentence": "Siap lanjut ke pengurangan."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Gabungkan Kumpulan",
+          "emoji": "➕",
+          "targetCount": 6,
+          "voiceGuide": "Rakit jumlahnya."
+        },
+        {
+          "title": "Hitung Jumlah Kumpulan",
+          "emoji": "🔢",
+          "targetCount": 6,
+          "voiceGuide": "Pilih jumlah."
+        },
+        {
+          "title": "Pilah: Menyimpan atau Tidak",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah ke kotak."
+        },
+        {
+          "title": "Jodohkan Pasangan dan Jumlah",
+          "emoji": "🔗",
+          "targetCount": 9,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Penjumlahan",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Jumlah yang Diminta",
+          "emoji": "👆",
+          "targetCount": 6,
+          "voiceGuide": "Ketuk pasangan."
+        },
+        {
+          "title": "Ketuk Semua yang Menyimpan",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Penjumlahan",
+          "emoji": "📖",
+          "targetCount": 6,
+          "voiceGuide": "Pilih jumlah."
+        },
+        {
+          "title": "Papan Hasil Jumlah",
+          "emoji": "🗂️",
+          "targetCount": 6,
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "title": "Urutkan menurut Jumlah",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Urutkan."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Susun Pendek di Layar",
+          "diagramType": "column-add",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Memilih hasil cara susun."
+        },
+        {
+          "title": "Papan dari Model Jumlah",
+          "diagramType": "blocks-board",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Isi papan dari dua model."
+        },
+        {
+          "title": "Hitung Dua Model",
+          "diagramType": "blocks-sum",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Jumlahkan dua model blok."
+        },
+        {
+          "title": "Jodohkan Model dan Jumlah",
+          "diagramType": "blocks-match",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Model Jumlah",
+          "diagramType": "blocks-memory",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Hasil Penjumlahan",
+          "diagramType": "sum-table",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Isi hasil pada tabel."
+        },
+        {
+          "title": "Ketuk Semua Simpan (Blok)",
+          "diagramType": "blocks-select",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Syarat menyimpan pada model."
+        },
+        {
+          "title": "Pilah Model: Simpan/Tidak",
+          "diagramType": "blocks-sort",
+          "numberA": 3,
+          "numberB": 6,
+          "caption": "Pilah pasangan model."
+        },
+        {
+          "title": "Cara Susun Panjang",
+          "diagramType": "long-add",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Memilih langkah uraian benar."
+        },
+        {
+          "title": "Urutan Langkah Menjumlahkan",
+          "diagramType": "steps-add",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Mengurutkan langkah."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "434",
+          "wordLarge": "SUSUN",
+          "mathNotation": "a + b",
+          "voiceReadout": "Pilih hasil."
+        },
+        {
+          "symbolLarge": "452",
+          "wordLarge": "JUMLAH",
+          "mathNotation": "a + b = ?",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "581",
+          "wordLarge": "PAPAN",
+          "mathNotation": "hasil",
+          "voiceReadout": "Isi papan."
+        },
+        {
+          "symbolLarge": "1+",
+          "wordLarge": "LANGKAH",
+          "mathNotation": "simpan",
+          "voiceReadout": "Pilih langkah."
+        },
+        {
+          "symbolLarge": "719",
+          "wordLarge": "JODOH",
+          "mathNotation": "soal • hasil",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "898",
+          "wordLarge": "MEMORI",
+          "mathNotation": "soal • hasil",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih bilangan."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih jumlah."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK4B1E-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "join-packages",
+          "title": "Gabungkan Kumpulan",
+          "bookReference": "Buku Siswa hlm. 28–29 (131+321)",
+          "objective": "Merakit jumlah dua kumpulan.",
+          "mechanicDescription": "Tiga ronde. Penukaran otomatis.",
+          "voiceGuide": "Rakit jumlahnya."
+        },
+        {
+          "gameId": "subK4B1E-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "count-sum",
+          "title": "Hitung Jumlah Kumpulan",
+          "bookReference": "Buku Siswa hlm. 29–31",
+          "objective": "Memilih hasil penjumlahan.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih jumlah."
+        },
+        {
+          "gameId": "subK4B1E-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "sort-carry",
+          "title": "Pilah: Menyimpan atau Tidak",
+          "bookReference": "Buku Siswa hlm. 31 (189+245)",
+          "objective": "Memilah pasangan perlu simpan / tanpa.",
+          "mechanicDescription": "Tiga ronde, enam pasangan.",
+          "voiceGuide": "Pilah ke kotak."
+        },
+        {
+          "gameId": "subK4B1E-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "match-sum",
+          "title": "Jodohkan Pasangan dan Jumlah",
+          "bookReference": "Buku Siswa hlm. 29–32",
+          "objective": "Menjodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B1E-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "memory-sum",
+          "title": "Memori Penjumlahan",
+          "bookReference": "Buku Siswa hlm. 29–33",
+          "objective": "Memori soal dan hasil.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B1E-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "tap-sum",
+          "title": "Ketuk Jumlah yang Diminta",
+          "bookReference": "Buku Siswa hlm. 29–33",
+          "objective": "Mengetuk pasangan berjumlah tertentu.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk pasangan."
+        },
+        {
+          "gameId": "subK4B1E-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-all-carry",
+          "title": "Ketuk Semua yang Menyimpan",
+          "bookReference": "Buku Siswa hlm. 31",
+          "objective": "Memilih semua yang perlu simpan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B1E-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "story-add",
+          "title": "Cerita Penjumlahan",
+          "bookReference": "Buku Siswa hlm. 33 (kelapa, lele, lomba, stiker)",
+          "objective": "Menyelesaikan soal cerita.",
+          "mechanicDescription": "Tiga ronde, dua cerita.",
+          "voiceGuide": "Pilih jumlah."
+        },
+        {
+          "gameId": "subK4B1E-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "board-sum",
+          "title": "Papan Hasil Jumlah",
+          "bookReference": "Buku Siswa hlm. 29–32",
+          "objective": "Menulis hasil di papan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "gameId": "subK4B1E-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "order-sum",
+          "title": "Urutkan menurut Jumlah",
+          "bookReference": "Buku Siswa hlm. 32–33",
+          "objective": "Mengurutkan hasil.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B1E-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "column-add",
+          "title": "Susun Pendek di Layar",
+          "bookReference": "Buku Siswa hlm. 29–32",
+          "objective": "Memilih hasil cara susun.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "gameId": "subK4B1E-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "board-add-p",
+          "title": "Papan dari Model Jumlah",
+          "bookReference": "Buku Siswa hlm. 29",
+          "objective": "Isi papan dari dua model.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "gameId": "subK4B1E-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "count-models-add",
+          "title": "Hitung Dua Model",
+          "bookReference": "Buku Siswa hlm. 31",
+          "objective": "Jumlahkan dua model blok.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih jumlah."
+        },
+        {
+          "gameId": "subK4B1E-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "match-models-add",
+          "title": "Jodohkan Model dan Jumlah",
+          "bookReference": "Buku Siswa hlm. 31–32",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B1E-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "memory-models-add",
+          "title": "Memori Model Jumlah",
+          "bookReference": "Buku Siswa hlm. 31",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B1E-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "table-add",
+          "title": "Tabel Hasil Penjumlahan",
+          "bookReference": "Buku Siswa hlm. 32",
+          "objective": "Isi hasil pada tabel.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Isi hasil."
+        },
+        {
+          "gameId": "subK4B1E-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "tap-all-carry-p",
+          "title": "Ketuk Semua Simpan (Blok)",
+          "bookReference": "Buku Siswa hlm. 31",
+          "objective": "Syarat menyimpan pada model.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B1E-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "sort-carry-p",
+          "title": "Pilah Model: Simpan/Tidak",
+          "bookReference": "Buku Siswa hlm. 31",
+          "objective": "Pilah pasangan model.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B1E-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "long-form-add",
+          "title": "Cara Susun Panjang",
+          "bookReference": "Buku Siswa hlm. 29–31",
+          "objective": "Memilih langkah uraian benar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih uraian jumlah."
+        },
+        {
+          "gameId": "subK4B1E-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "steps-add",
+          "title": "Urutan Langkah Menjumlahkan",
+          "bookReference": "Buku Siswa hlm. 29–31",
+          "objective": "Mengurutkan langkah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan langkah."
+        },
+        {
+          "gameId": "subK4B1E-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "column-add-q",
+          "title": "Susun Pendek Angka",
+          "bookReference": "Buku Siswa hlm. 32",
+          "objective": "Hasil susun pendek.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "gameId": "subK4B1E-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "choose-sum",
+          "title": "Pilih Jumlah",
+          "bookReference": "Buku Siswa hlm. 32–33",
+          "objective": "Memilih hasil.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B1E-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "board-add-q",
+          "title": "Tulis Jumlah di Papan",
+          "bookReference": "Buku Siswa hlm. 32",
+          "objective": "Menulis hasil.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "gameId": "subK4B1E-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "steps-add-q",
+          "title": "Langkah Menyimpan",
+          "bookReference": "Buku Siswa hlm. 31",
+          "objective": "Memilih langkah benar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih langkah."
+        },
+        {
+          "gameId": "subK4B1E-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-add-q",
+          "title": "Jodohkan Soal dan Hasil",
+          "bookReference": "Buku Siswa hlm. 32",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B1E-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-add-q",
+          "title": "Memori Soal Jumlah",
+          "bookReference": "Buku Siswa hlm. 32–33",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B1E-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-e",
+          "title": "Benar atau Salah: Jumlah",
+          "bookReference": "Buku Siswa hlm. 28–33",
+          "objective": "Menilai pernyataan.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK4B1E-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-e",
+          "title": "Detektif Penjumlahan",
+          "bookReference": "Buku Siswa hlm. 33",
+          "objective": "Dua petunjuk → hasil.",
+          "mechanicDescription": "Empat soal.",
+          "voiceGuide": "Pilih bilangan."
+        },
+        {
+          "gameId": "subK4B1E-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-e",
+          "title": "Peta Konsep Penjumlahan",
+          "bookReference": "Buku Siswa hlm. 29–31",
+          "objective": "Mengisi kotak konsep.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK4B1E-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-add-q",
+          "title": "Cerita Angka Penjumlahan",
+          "bookReference": "Buku Siswa hlm. 33",
+          "objective": "Soal cerita tanpa gambar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih jumlah."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Dari satuan",
+            "isi": "Jumlahkan dari kanan ke kiri.",
+            "suara": "Mulai dari satuan, lalu puluhan, lalu ratusan."
+          },
+          {
+            "nama": "Menyimpan",
+            "isi": "Bila ≥10, simpan 1 ke kiri.",
+            "suara": "Simpan satu ke tempat di sebelah kiri."
+          },
+          {
+            "nama": "Dua cara",
+            "isi": "Susun panjang dan pendek hasilnya sama.",
+            "suara": "Dua cara, satu hasil."
+          },
+          {
+            "nama": "Tiga suku",
+            "isi": "Jumlahkan bertahap dua-dua.",
+            "suara": "Tiga bilangan boleh dijumlahkan dua-dua."
+          }
+        ],
+        "suara": "Empat poin penting penjumlahan sampai seribu.",
+        "caraMenyebutkan": "susun satuan simpan ratusan",
+        "rumah": "Ayo Mencoba: jumlahkan tiga harga di warung dengan cara susun pendek.",
+        "refleksi": [
+          "Aku mulai dari satuan.",
+          "Aku menyimpan dengan benar.",
+          "Aku memakai dua cara.",
+          "Aku memeriksa hasil."
+        ]
+      }
+    },
+    "F": {
+      "id": "F",
+      "codeTitle": "Sub-Bab F (Pengurangan sampai 1.000)",
+      "fullTitle": "Sub-Bab F: Pengurangan Bilangan Cacah sampai 1.000",
+      "targetDescription": "Siswa mengurangi bilangan sampai 1.000 dengan cara susun panjang dan pendek, tanpa dan dengan mengambil (satu atau dua kali), serta memeriksa dengan penjumlahan.",
+      "secondaryBg": "#DBEAFE",
+      "secondaryBorder": "#2563EB",
+      "secondaryText": "#1E3A8A",
+      "silabus": {
+        "teksSuara": "Kita belajar pengurangan sampai seribu. Buku 265 dikurangi 132 sisa 133 tanpa mengambil. Lalu 241 dikurangi 129 perlu mengambil menjadi 112. Ada juga dua kali mengambil seperti 253 dikurangi 176 sisa 77. Periksa: hasil ditambah pengurang kembali ke bilangan awal. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa mengurangi bilangan cacah sampai 1.000 dengan dan tanpa mengambil.",
+        "referensi": "Buku Siswa Matematika Kelas IV Bab 1 Sub-Bab F hlm. 34–37; decomposition subtraction dan standard algorithm."
+      },
+      "stories": [
+        {
+          "id": "K4B1F-V1-1",
+          "titleHint": "265 − 132",
+          "sceneType": "K4B1F-V1-1",
+          "voiceNarration": "Perpustakaan punya 265 buku. Dipinjam 132 buku. Kurangkan dari satuan. Sisa 133 buku."
+        },
+        {
+          "id": "K4B1F-V1-2",
+          "titleHint": "Susun panjang",
+          "sceneType": "K4B1F-V1-2",
+          "voiceNarration": "Urai 265 = 200 + 60 + 5. Urai 132 = 100 + 30 + 2. Kurangkan tiap tempat. 100 + 30 + 3 = 133."
+        },
+        {
+          "id": "K4B1F-V1-3",
+          "titleHint": "Susun pendek",
+          "sceneType": "K4B1F-V1-3",
+          "voiceNarration": "Tulis bersusun. 5−2=3, 6−3=3, 2−1=1. Tanpa mengambil. Hasil sama 133."
+        },
+        {
+          "id": "K4B1F-V2-1",
+          "titleHint": "241 − 129",
+          "sceneType": "K4B1F-V2-1",
+          "voiceNarration": "Satuan 1 lebih kecil dari 9. Ambil 1 puluhan menjadi 11. 11 − 9 = 2. Sisa akhirnya 112."
+        },
+        {
+          "id": "K4B1F-V2-2",
+          "titleHint": "Urai saat ambil",
+          "sceneType": "K4B1F-V2-2",
+          "voiceNarration": "40 diurai menjadi 30 + 10. 10 digabung ke satuan. Lalu kurangkan. Hasil 112."
+        },
+        {
+          "id": "K4B1F-V2-3",
+          "titleHint": "Dua kali ambil",
+          "sceneType": "K4B1F-V2-3",
+          "voiceNarration": "253 − 176. Ambil puluhan, lalu ambil ratusan. Hasil 77. Teliti tiap langkah."
+        },
+        {
+          "id": "K4B1F-V3-1",
+          "titleHint": "Periksa penjumlahan",
+          "sceneType": "K4B1F-V3-1",
+          "voiceNarration": "Hasil ditambah pengurang. Harus kembali ke bilangan awal. 112 + 129 = 241. Cara memeriksa yang kuat."
+        },
+        {
+          "id": "K4B1F-V3-2",
+          "titleHint": "Contoh 241 − 175",
+          "sceneType": "K4B1F-V3-2",
+          "voiceNarration": "Susun pendek dengan mengambil. Hasil 66. Periksa: 66 + 175 = 241. Benar."
+        },
+        {
+          "id": "K4B1F-V3-3",
+          "titleHint": "Siap bermain",
+          "sceneType": "K4B1F-V3-3",
+          "voiceNarration": "Kita sudah mengurangi dengan dan tanpa mengambil. Saatnya bermain. Ingat: ambil bila tidak cukup. Ayo mulai."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K4B1F-V1",
+          "judul": "Buku Dipinjam",
+          "subjudul": "Tanpa mengambil",
+          "adegan": [
+            {
+              "id": "K4B1F-V1-1",
+              "judul": "265 − 132",
+              "ketukan": [
+                "Perpustakaan punya 265 buku.",
+                "Dipinjam 132 buku.",
+                "Kurangkan dari satuan.",
+                "Sisa 133 buku."
+              ],
+              "papan": [
+                "265",
+                "132",
+                "dari satuan",
+                "133"
+              ]
+            },
+            {
+              "id": "K4B1F-V1-2",
+              "judul": "Susun panjang",
+              "ketukan": [
+                "Urai 265 = 200 + 60 + 5.",
+                "Urai 132 = 100 + 30 + 2.",
+                "Kurangkan tiap tempat.",
+                "100 + 30 + 3 = 133."
+              ],
+              "papan": [
+                "urai",
+                "kurangkan",
+                "tempat",
+                "133"
+              ]
+            },
+            {
+              "id": "K4B1F-V1-3",
+              "judul": "Susun pendek",
+              "ketukan": [
+                "Tulis bersusun.",
+                "5−2=3, 6−3=3, 2−1=1.",
+                "Tanpa mengambil.",
+                "Hasil sama 133."
+              ],
+              "papan": [
+                "bersusun",
+                "dari kanan",
+                "tanpa ambil",
+                "133"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B1F-V2",
+          "judul": "Mengambil Puluhan",
+          "subjudul": "Satu kali mengambil",
+          "adegan": [
+            {
+              "id": "K4B1F-V2-1",
+              "judul": "241 − 129",
+              "ketukan": [
+                "Satuan 1 lebih kecil dari 9.",
+                "Ambil 1 puluhan menjadi 11.",
+                "11 − 9 = 2.",
+                "Sisa akhirnya 112."
+              ],
+              "papan": [
+                "1<9",
+                "ambil puluhan",
+                "11−9=2",
+                "112"
+              ]
+            },
+            {
+              "id": "K4B1F-V2-2",
+              "judul": "Urai saat ambil",
+              "ketukan": [
+                "40 diurai menjadi 30 + 10.",
+                "10 digabung ke satuan.",
+                "Lalu kurangkan.",
+                "Hasil 112."
+              ],
+              "papan": [
+                "40→30+10",
+                "satuan 11",
+                "kurangkan",
+                "112"
+              ]
+            },
+            {
+              "id": "K4B1F-V2-3",
+              "judul": "Dua kali ambil",
+              "ketukan": [
+                "253 − 176.",
+                "Ambil puluhan, lalu ambil ratusan.",
+                "Hasil 77.",
+                "Teliti tiap langkah."
+              ],
+              "papan": [
+                "253−176",
+                "dua ambil",
+                "77",
+                "teliti"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B1F-V3",
+          "judul": "Periksa & Latihan",
+          "subjudul": "Operasi kebalikan",
+          "adegan": [
+            {
+              "id": "K4B1F-V3-1",
+              "judul": "Periksa penjumlahan",
+              "ketukan": [
+                "Hasil ditambah pengurang.",
+                "Harus kembali ke bilangan awal.",
+                "112 + 129 = 241.",
+                "Cara memeriksa yang kuat."
+              ],
+              "papan": [
+                "hasil + pengurang",
+                "bilangan awal",
+                "112+129",
+                "periksa"
+              ]
+            },
+            {
+              "id": "K4B1F-V3-2",
+              "judul": "Contoh 241 − 175",
+              "ketukan": [
+                "Susun pendek dengan mengambil.",
+                "Hasil 66.",
+                "Periksa: 66 + 175 = 241.",
+                "Benar."
+              ],
+              "papan": [
+                "241−175",
+                "66",
+                "periksa",
+                "benar"
+              ]
+            },
+            {
+              "id": "K4B1F-V3-3",
+              "judul": "Siap bermain",
+              "ketukan": [
+                "Kita sudah mengurangi dengan dan tanpa mengambil.",
+                "Saatnya bermain.",
+                "Ingat: ambil bila tidak cukup.",
+                "Ayo mulai."
+              ],
+              "papan": [
+                "siap",
+                "Concrete",
+                "ambil",
+                "mulai"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Kurangkan",
+          "stepDesc": "Cari sisa atau selisih.",
+          "icon": "➖",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Dari kanan",
+          "stepDesc": "Satuan dulu.",
+          "icon": "➡️",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Tanpa ambil",
+          "stepDesc": "265−132=133.",
+          "icon": "✅",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Mengambil",
+          "stepDesc": "Bila tidak cukup, ambil 1 dari kiri.",
+          "icon": "↩️",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. 241−129",
+          "stepDesc": "Hasil 112.",
+          "icon": "📚",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Dua kali",
+          "stepDesc": "253−176=77.",
+          "icon": "2️⃣",
+          "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Periksa",
+          "stepDesc": "Hasil + pengurang = awal.",
+          "icon": "🔍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Siap",
+          "stepDesc": "Lanjut bab berikutnya nanti.",
+          "icon": "✅",
+          "flowFrom": "7",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "DARI SATUAN",
+          "emoji": "➡️",
+          "countNum": 1,
+          "countWord": "kanan",
+          "voiceSentence": "Pengurangan dikerjakan dari kanan."
+        },
+        {
+          "fruitName": "133",
+          "emoji": "📚",
+          "countNum": 133,
+          "countWord": "tanpa ambil",
+          "voiceSentence": "Dua ratus enam puluh lima dikurangi seratus tiga puluh dua."
+        },
+        {
+          "fruitName": "MENGAMBIL",
+          "emoji": "↩️",
+          "countNum": 10,
+          "countWord": "ambil",
+          "voiceSentence": "Bila satuan tidak cukup, ambil satu puluhan."
+        },
+        {
+          "fruitName": "112",
+          "emoji": "1️⃣",
+          "countNum": 112,
+          "countWord": "satu ambil",
+          "voiceSentence": "Dua ratus empat puluh satu dikurangi seratus dua puluh sembilan."
+        },
+        {
+          "fruitName": "77",
+          "emoji": "2️⃣",
+          "countNum": 77,
+          "countWord": "dua ambil",
+          "voiceSentence": "Dua ratus lima puluh tiga dikurangi seratus tujuh puluh enam."
+        },
+        {
+          "fruitName": "SUSUN PENDEK",
+          "emoji": "⬇️",
+          "countNum": 2,
+          "countWord": "bersusun",
+          "voiceSentence": "Tulis bersusun menurut nilai tempat."
+        },
+        {
+          "fruitName": "SUSUN PANJANG",
+          "emoji": "📜",
+          "countNum": 3,
+          "countWord": "urai",
+          "voiceSentence": "Urai dulu, lalu kurangkan."
+        },
+        {
+          "fruitName": "PERIKSA",
+          "emoji": "🔍",
+          "countNum": 4,
+          "countWord": "kebalikan",
+          "voiceSentence": "Hasil ditambah pengurang harus sama dengan bilangan awal."
+        },
+        {
+          "fruitName": "66",
+          "emoji": "✅",
+          "countNum": 66,
+          "countWord": "contoh",
+          "voiceSentence": "Dua ratus empat puluh satu dikurangi seratus tujuh puluh lima."
+        },
+        {
+          "fruitName": "SIAP",
+          "emoji": "🎯",
+          "countNum": 5,
+          "countWord": "selesai",
+          "voiceSentence": "Sub-Bab F siap dimainkan."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Rakit Sisa Kumpulan",
+          "emoji": "➖",
+          "targetCount": 6,
+          "voiceGuide": "Rakit sisanya."
+        },
+        {
+          "title": "Hitung Sisa Kumpulan",
+          "emoji": "🔢",
+          "targetCount": 6,
+          "voiceGuide": "Pilih sisa."
+        },
+        {
+          "title": "Pilah: Mengambil atau Tidak",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah."
+        },
+        {
+          "title": "Jodohkan Pasangan dan Sisa",
+          "emoji": "🔗",
+          "targetCount": 9,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Pengurangan",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Sisa yang Diminta",
+          "emoji": "👆",
+          "targetCount": 6,
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "title": "Ketuk Semua yang Mengambil",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Pengurangan",
+          "emoji": "📖",
+          "targetCount": 6,
+          "voiceGuide": "Pilih sisa."
+        },
+        {
+          "title": "Papan Hasil Sisa",
+          "emoji": "🗂️",
+          "targetCount": 6,
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "title": "Urutkan menurut Sisa",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Urutkan."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Susun Pendek Pengurangan",
+          "diagramType": "column-sub",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Memilih hasil susun."
+        },
+        {
+          "title": "Papan dari Model Sisa",
+          "diagramType": "blocks-board",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Isi papan dari dua model."
+        },
+        {
+          "title": "Hitung Sisa Model",
+          "diagramType": "blocks-diff",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Kurangkan dua model."
+        },
+        {
+          "title": "Jodohkan Model dan Sisa",
+          "diagramType": "blocks-match",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Model Sisa",
+          "diagramType": "blocks-memory",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Hasil Pengurangan",
+          "diagramType": "diff-table",
+          "numberA": 3,
+          "numberB": 3,
+          "caption": "Isi sisa pada tabel."
+        },
+        {
+          "title": "Ketuk Semua Ambil (Blok)",
+          "diagramType": "blocks-select",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Syarat mengambil."
+        },
+        {
+          "title": "Pilah Model: Ambil/Tidak",
+          "diagramType": "blocks-sort",
+          "numberA": 3,
+          "numberB": 6,
+          "caption": "Pilah."
+        },
+        {
+          "title": "Cara Susun Panjang Kurang",
+          "diagramType": "long-sub",
+          "numberA": 3,
+          "numberB": 2,
+          "caption": "Memilih uraian kurang benar."
+        },
+        {
+          "title": "Urutan Langkah Mengurangi",
+          "diagramType": "steps-sub",
+          "numberA": 3,
+          "numberB": 4,
+          "caption": "Mengurutkan langkah."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "112",
+          "wordLarge": "SUSUN",
+          "mathNotation": "a − b",
+          "voiceReadout": "Pilih hasil."
+        },
+        {
+          "symbolLarge": "133",
+          "wordLarge": "SELISIH",
+          "mathNotation": "a − b = ?",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "77",
+          "wordLarge": "PAPAN",
+          "mathNotation": "hasil",
+          "voiceReadout": "Isi papan."
+        },
+        {
+          "symbolLarge": "−1",
+          "wordLarge": "LANGKAH",
+          "mathNotation": "ambil",
+          "voiceReadout": "Pilih langkah."
+        },
+        {
+          "symbolLarge": "66",
+          "wordLarge": "JODOH",
+          "mathNotation": "soal • sisa",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "422",
+          "wordLarge": "MEMORI",
+          "mathNotation": "soal • sisa",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih bilangan."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih sisa."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK4B1F-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "leave-packages",
+          "title": "Rakit Sisa Kumpulan",
+          "bookReference": "Buku Siswa hlm. 34–35 (265−132)",
+          "objective": "Merakit sisa setelah dikurangi.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Rakit sisanya."
+        },
+        {
+          "gameId": "subK4B1F-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "count-diff",
+          "title": "Hitung Sisa Kumpulan",
+          "bookReference": "Buku Siswa hlm. 34–36",
+          "objective": "Memilih hasil pengurangan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih sisa."
+        },
+        {
+          "gameId": "subK4B1F-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "sort-borrow",
+          "title": "Pilah: Mengambil atau Tidak",
+          "bookReference": "Buku Siswa hlm. 35–36",
+          "objective": "Memilah perlu ambil / tanpa.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B1F-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "match-diff",
+          "title": "Jodohkan Pasangan dan Sisa",
+          "bookReference": "Buku Siswa hlm. 34–37",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B1F-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "memory-diff",
+          "title": "Memori Pengurangan",
+          "bookReference": "Buku Siswa hlm. 34–37",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B1F-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "tap-diff",
+          "title": "Ketuk Sisa yang Diminta",
+          "bookReference": "Buku Siswa hlm. 34–37",
+          "objective": "Ketuk pasangan bersisa tertentu.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "gameId": "subK4B1F-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-all-borrow",
+          "title": "Ketuk Semua yang Mengambil",
+          "bookReference": "Buku Siswa hlm. 35–36",
+          "objective": "Memilih semua yang perlu ambil.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B1F-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "story-sub",
+          "title": "Cerita Pengurangan",
+          "bookReference": "Buku Siswa hlm. 34 (buku dipinjam)",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih sisa."
+        },
+        {
+          "gameId": "subK4B1F-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "board-diff",
+          "title": "Papan Hasil Sisa",
+          "bookReference": "Buku Siswa hlm. 35–37",
+          "objective": "Menulis sisa di papan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "gameId": "subK4B1F-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "order-diff",
+          "title": "Urutkan menurut Sisa",
+          "bookReference": "Buku Siswa hlm. 37",
+          "objective": "Mengurutkan sisa.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B1F-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "column-sub",
+          "title": "Susun Pendek Pengurangan",
+          "bookReference": "Buku Siswa hlm. 35–36",
+          "objective": "Memilih hasil susun.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "gameId": "subK4B1F-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "board-sub-p",
+          "title": "Papan dari Model Sisa",
+          "bookReference": "Buku Siswa hlm. 35",
+          "objective": "Isi papan dari dua model.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "gameId": "subK4B1F-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "count-models-sub",
+          "title": "Hitung Sisa Model",
+          "bookReference": "Buku Siswa hlm. 35–36",
+          "objective": "Kurangkan dua model.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih sisa."
+        },
+        {
+          "gameId": "subK4B1F-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "match-models-sub",
+          "title": "Jodohkan Model dan Sisa",
+          "bookReference": "Buku Siswa hlm. 36",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B1F-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "memory-models-sub",
+          "title": "Memori Model Sisa",
+          "bookReference": "Buku Siswa hlm. 36",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B1F-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "table-sub",
+          "title": "Tabel Hasil Pengurangan",
+          "bookReference": "Buku Siswa hlm. 37",
+          "objective": "Isi sisa pada tabel.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Isi sisa."
+        },
+        {
+          "gameId": "subK4B1F-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "tap-all-borrow-p",
+          "title": "Ketuk Semua Ambil (Blok)",
+          "bookReference": "Buku Siswa hlm. 35–36",
+          "objective": "Syarat mengambil.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B1F-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "sort-borrow-p",
+          "title": "Pilah Model: Ambil/Tidak",
+          "bookReference": "Buku Siswa hlm. 35–36",
+          "objective": "Pilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B1F-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "long-form-sub",
+          "title": "Cara Susun Panjang Kurang",
+          "bookReference": "Buku Siswa hlm. 35–36",
+          "objective": "Memilih uraian kurang benar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih uraian."
+        },
+        {
+          "gameId": "subK4B1F-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "steps-sub",
+          "title": "Urutan Langkah Mengurangi",
+          "bookReference": "Buku Siswa hlm. 35–36",
+          "objective": "Mengurutkan langkah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B1F-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "column-sub-q",
+          "title": "Susun Pendek Angka Kurang",
+          "bookReference": "Buku Siswa hlm. 36–37",
+          "objective": "Hasil susun pendek.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih hasil."
+        },
+        {
+          "gameId": "subK4B1F-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "choose-diff",
+          "title": "Pilih Selisih",
+          "bookReference": "Buku Siswa hlm. 37",
+          "objective": "Memilih hasil.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B1F-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "board-sub-q",
+          "title": "Tulis Sisa di Papan",
+          "bookReference": "Buku Siswa hlm. 37",
+          "objective": "Menulis hasil.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "gameId": "subK4B1F-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "steps-sub-q",
+          "title": "Langkah Mengambil",
+          "bookReference": "Buku Siswa hlm. 35–36",
+          "objective": "Memilih langkah benar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih langkah."
+        },
+        {
+          "gameId": "subK4B1F-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-sub-q",
+          "title": "Jodohkan Soal dan Sisa",
+          "bookReference": "Buku Siswa hlm. 37",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B1F-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-sub-q",
+          "title": "Memori Soal Kurang",
+          "bookReference": "Buku Siswa hlm. 37",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B1F-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-f",
+          "title": "Benar atau Salah: Kurang",
+          "bookReference": "Buku Siswa hlm. 34–37",
+          "objective": "Menilai pernyataan.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK4B1F-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-f",
+          "title": "Detektif Pengurangan",
+          "bookReference": "Buku Siswa hlm. 34–37",
+          "objective": "Dua petunjuk → sisa.",
+          "mechanicDescription": "Empat soal.",
+          "voiceGuide": "Pilih bilangan."
+        },
+        {
+          "gameId": "subK4B1F-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-f",
+          "title": "Peta Konsep Pengurangan",
+          "bookReference": "Buku Siswa hlm. 35–36",
+          "objective": "Mengisi kotak konsep.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK4B1F-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-sub-q",
+          "title": "Cerita Angka Pengurangan",
+          "bookReference": "Buku Siswa hlm. 34",
+          "objective": "Soal cerita tanpa gambar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih sisa."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Dari satuan",
+            "isi": "Kurangkan dari kanan ke kiri.",
+            "suara": "Mulai dari satuan."
+          },
+          {
+            "nama": "Mengambil",
+            "isi": "Bila tidak cukup, ambil 1 dari kiri.",
+            "suara": "Ambil satu dari tempat di sebelah kiri."
+          },
+          {
+            "nama": "Dua kali",
+            "isi": "Boleh mengambil puluhan lalu ratusan.",
+            "suara": "Kadang perlu mengambil dua kali."
+          },
+          {
+            "nama": "Periksa",
+            "isi": "Hasil + pengurang = bilangan awal.",
+            "suara": "Periksa dengan penjumlahan."
+          }
+        ],
+        "suara": "Empat poin penting pengurangan sampai seribu.",
+        "caraMenyebutkan": "susun satuan ambil periksa",
+        "rumah": "Ayo Mencoba: kerjakan empat soal pengurangan di buku, lalu periksa dengan penjumlahan.",
+        "refleksi": [
+          "Aku mulai dari satuan.",
+          "Aku mengambil dengan benar.",
+          "Aku memeriksa dengan penjumlahan.",
           "Aku menjelaskan langkahku."
         ]
       }

@@ -25,3 +25,27 @@ Daftar semua video cerita animasi HTML/SVG gratis (tanpa berkas video, tanpa API
 | K4B1C-V1 | Harga di Pasar | Membandingkan dua bilangan | Manggis dan apel; Bandingkan ribuan; Ribuan sama |
 | K4B1C-V2 | Tiga Tanda | Lebih, kurang, sama | Tanda lebih dari; Tanda kurang dari; Sama dengan |
 | K4B1C-V3 | Tinggi Gunung | Mengurutkan | Tiga gunung; Urutan naik; Latihan dan kartu |
+
+## Sub-Bab D: Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000
+
+| Video | Judul | Subjudul | Adegan |
+|---|---|---|---|
+| K4B1D-V1 | Menyusun 6.348 | Komposisi | Empat angka tempat; Latihan mengisi; Siap mengurai |
+| K4B1D-V2 | Mengurai 6.849 | Dekomposisi | Buka 6.849; 6.035 dengan nol; Uang Helen |
+| K4B1D-V3 | Komposisi ↔ Dekomposisi | Dua arah | Dua arah sama; Contoh 7.020; Siap bermain |
+
+## Sub-Bab E: Penjumlahan Bilangan Cacah sampai 1.000
+
+| Video | Judul | Subjudul | Adegan |
+|---|---|---|---|
+| K4B1E-V1 | Jeruk Pak Toni | Tanpa menyimpan | 131 + 321; Susun panjang; Susun pendek |
+| K4B1E-V2 | Jeruk Pedagang | Dengan menyimpan | 189 + 245; Susun panjang simpan; Tiga bilangan |
+| K4B1E-V3 | Cerita Jumlah | Ayo berlatih | Kelapa dan lele; Lomba dan stiker; Siap bermain |
+
+## Sub-Bab F: Pengurangan Bilangan Cacah sampai 1.000
+
+| Video | Judul | Subjudul | Adegan |
+|---|---|---|---|
+| K4B1F-V1 | Buku Dipinjam | Tanpa mengambil | 265 − 132; Susun panjang; Susun pendek |
+| K4B1F-V2 | Mengambil Puluhan | Satu kali mengambil | 241 − 129; Urai saat ambil; Dua kali ambil |
+| K4B1F-V3 | Periksa & Latihan | Operasi kebalikan | Periksa penjumlahan; Contoh 241 − 175; Siap bermain |

@@ -54,3 +54,46 @@ export function visualInfografisK4B1C(): React.ReactNode[] {
     <KotakPoster key="10" warna="#FEF9C3"><p className="text-center text-lg font-black">teliti tanda</p><Cap>dibalik = arti berubah</Cap></KotakPoster>,
   ];
 }
+
+export function visualInfografisK4B1D(): React.ReactNode[] {
+  return [
+    <KotakPoster key="1" warna="#FCE7F3"><p className="text-center text-xl font-black">komposisi</p><Cap>susun nilai tempat</Cap></KotakPoster>,
+    <KotakPoster key="2" warna="#EDE9FE"><p className="text-center text-2xl font-black">6.348</p><Cap>6rb+3rt+4pl+8st</Cap></KotakPoster>,
+    <KotakPoster key="3" warna="#DBEAFE"><p className="text-center text-xl font-black">dekomposisi</p><Cap>urai ke nilai tempat</Cap></KotakPoster>,
+    <KotakPoster key="4" warna="#DCFCE7"><p className="text-center text-sm font-black">{uraian(6849)}</p><Cap>6.849</Cap></KotakPoster>,
+    <KotakPoster key="5" warna="#FEF3C7"><p className="text-center text-xl font-black">6.035</p><Cap>nol ratusan tetap</Cap></KotakPoster>,
+    <KotakPoster key="6" warna="#FEE2E2"><p className="text-center text-xl font-black">7.020</p><Cap>7rb + 2pl</Cap></KotakPoster>,
+    <KotakPoster key="7" warna="#F5F3FF"><p className="text-center text-xl font-black">9.999</p><Cap>semua sembilan</Cap></KotakPoster>,
+    <KotakPoster key="8" warna="#FFF7ED"><p className="text-center text-lg font-black">7.300</p><Cap>uang Helen</Cap></KotakPoster>,
+    <KotakPoster key="9" warna="#ECFDF5"><p className="text-center text-lg font-black">saling balik</p><Cap>susun ↔ urai</Cap></KotakPoster>,
+    <KotakPoster key="10" warna="#FEF9C3"><p className="text-center text-lg font-black">siap E</p><Cap>lanjut penjumlahan</Cap></KotakPoster>,
+  ];
+}
+export function visualInfografisK4B1E(): React.ReactNode[] {
+  return [
+    <KotakPoster key="1" warna="#DCFCE7"><p className="text-center text-xl font-black">dari satuan</p><Cap>kanan → kiri</Cap></KotakPoster>,
+    <KotakPoster key="2" warna="#BBF7D0"><p className="text-center text-2xl font-black">452</p><Cap>131+321</Cap></KotakPoster>,
+    <KotakPoster key="3" warna="#FEF3C7"><p className="text-center text-xl font-black">menyimpan</p><Cap>≥10 → simpan 1</Cap></KotakPoster>,
+    <KotakPoster key="4" warna="#FDE68A"><p className="text-center text-2xl font-black">434</p><Cap>189+245</Cap></KotakPoster>,
+    <KotakPoster key="5" warna="#DBEAFE"><p className="text-center text-lg font-black">susun pendek</p><Cap>bersusun</Cap></KotakPoster>,
+    <KotakPoster key="6" warna="#E0E7FF"><p className="text-center text-lg font-black">susun panjang</p><Cap>urai dulu</Cap></KotakPoster>,
+    <KotakPoster key="7" warna="#F5F3FF"><p className="text-center text-2xl font-black">898</p><Cap>tiga bilangan</Cap></KotakPoster>,
+    <KotakPoster key="8" warna="#FEE2E2"><p className="text-center text-lg font-black">cerita</p><Cap>kelapa & lele</Cap></KotakPoster>,
+    <KotakPoster key="9" warna="#ECFDF5"><p className="text-center text-lg font-black">periksa</p><Cap>hitung lagi</Cap></KotakPoster>,
+    <KotakPoster key="10" warna="#FEF9C3"><p className="text-center text-lg font-black">siap F</p><Cap>lanjut pengurangan</Cap></KotakPoster>,
+  ];
+}
+export function visualInfografisK4B1F(): React.ReactNode[] {
+  return [
+    <KotakPoster key="1" warna="#DBEAFE"><p className="text-center text-xl font-black">dari satuan</p><Cap>kanan → kiri</Cap></KotakPoster>,
+    <KotakPoster key="2" warna="#BBF7D0"><p className="text-center text-2xl font-black">133</p><Cap>265−132</Cap></KotakPoster>,
+    <KotakPoster key="3" warna="#FECACA"><p className="text-center text-xl font-black">mengambil</p><Cap>bila tidak cukup</Cap></KotakPoster>,
+    <KotakPoster key="4" warna="#FEE2E2"><p className="text-center text-2xl font-black">112</p><Cap>241−129</Cap></KotakPoster>,
+    <KotakPoster key="5" warna="#FDE68A"><p className="text-center text-2xl font-black">77</p><Cap>253−176</Cap></KotakPoster>,
+    <KotakPoster key="6" warna="#E0E7FF"><p className="text-center text-lg font-black">satu / dua kali</p><Cap>ambil bertahap</Cap></KotakPoster>,
+    <KotakPoster key="7" warna="#DCFCE7"><p className="text-center text-lg font-black">periksa</p><Cap>hasil+pengurang</Cap></KotakPoster>,
+    <KotakPoster key="8" warna="#F5F3FF"><p className="text-center text-2xl font-black">66</p><Cap>241−175</Cap></KotakPoster>,
+    <KotakPoster key="9" warna="#FFF7ED"><p className="text-center text-lg font-black">susun pendek</p><Cap>bersusun</Cap></KotakPoster>,
+    <KotakPoster key="10" warna="#FEF9C3"><p className="text-center text-lg font-black">selesai F</p><Cap>siap bermain</Cap></KotakPoster>,
+  ];
+}
