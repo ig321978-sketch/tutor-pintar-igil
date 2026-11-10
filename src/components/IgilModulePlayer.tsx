@@ -1918,7 +1918,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                       </span>
                       <span className="leading-tight">
                         <span className="block text-[10px] font-black uppercase tracking-wider opacity-70">Sub-Bab {subId}</span>
-                        {sub.codeTitle.replace(/^Sub-Bab [A-D]\s*\(?/, "").replace(/\)$/, "")}
+                        {sub.codeTitle.replace(/^Sub-Bab [A-Z]\s*\(?/, "").replace(/\)$/, "")}
                       </span>
                       {isDone ? (
                         <span className="absolute -right-1 -top-2 text-xl" aria-label="selesai">
