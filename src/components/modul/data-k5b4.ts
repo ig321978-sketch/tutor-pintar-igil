@@ -50,30 +50,30 @@ export const ANGKA_BUKU = {
 // ========== A: Konsep Keliling ==========
 export const RONDE_HITUNG_CA: { sisi: number[]; hasil: number; pesan: string }[][] = [
   [
-    { sisi: [4, 4, 4, 4], hasil: 16, pesan: "Keliling = jumlah semua sisi." },
-    { sisi: [5, 3, 5, 3], hasil: 16, pesan: "5+3+5+3=16." },
+    { sisi: [4, 4, 4, 4], hasil: 16, pesan: "Path Length: jumlah sisi = panjang jalur luar." },
+    { sisi: [5, 3, 5, 3], hasil: 16, pesan: "Jalur PP: 5+3+5+3=16 (bukan luas 15)." },
   ],
   [
-    { sisi: [2, 2, 2, 2], hasil: 8, pesan: "Persegi sisi 2." },
-    { sisi: [6, 4, 6, 4], hasil: 20, pesan: "Persegi panjang." },
+    { sisi: [2, 2, 2, 2], hasil: 8, pesan: "Path Length persegi: 2+2+2+2=8." },
+    { sisi: [6, 4, 6, 4], hasil: 20, pesan: "Jalur 6+4+6+4=20; bandingkan dengan luas 24." },
   ],
   [
-    { sisi: [3, 4, 5], hasil: 12, pesan: "Jumlah tiga sisi." },
-    { sisi: [7, 7, 7, 7], hasil: 28, pesan: "4×7." },
+    { sisi: [3, 4, 5], hasil: 12, pesan: "Side Sum segitiga: 3+4+5=12." },
+    { sisi: [7, 7, 7, 7], hasil: 28, pesan: "Persegi: Path Length 4×7=28, bukan luas 49." },
   ],
 ];
 export const RONDE_ARTI_CA: { tanya: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
-    { tanya: "Keliling bangun datar adalah?", jawab: "jumlah panjang semua sisinya", opsi: ["jumlah panjang semua sisinya", "luas daerah dalamnya", "banyak sudut saja"], pesan: "Definisi buku." },
-    { tanya: "Menghitung keliling berguna untuk?", jawab: "panjang pagar/bingkai/batas luar", opsi: ["panjang pagar/bingkai/batas luar", "isi cairan saja", "warna cat dalam"], pesan: "Konteks Baluwarti, pagar, bingkai." },
+    { tanya: "Keliling bangun datar adalah?", jawab: "jumlah panjang semua sisinya", opsi: ["jumlah panjang semua sisinya", "luas daerah dalamnya", "banyak sudut saja"], pesan: "Path Length: jumlah panjang sisi = jalur tepi." },
+    { tanya: "Menghitung keliling berguna untuk?", jawab: "panjang pagar/bingkai/batas luar", opsi: ["panjang pagar/bingkai/batas luar", "isi cairan saja", "warna cat dalam"], pesan: "Fencing Context: pagar/bingkai butuh jalur luar." },
   ],
   [
-    { tanya: "Benteng Baluwarti dihitung kelilingnya karena?", jawab: "mengetahui panjang keseluruhan batas luar", opsi: ["mengetahui panjang keseluruhan batas luar", "menghitung luas lantai saja", "menghitung volume"], pesan: "Pemugaran benteng." },
-    { tanya: "Jika sisi-sisi diketahui, keliling dihitung dengan?", jawab: "menjumlahkan semua sisi", opsi: ["menjumlahkan semua sisi", "mengalikan luas", "membagi dua"], pesan: "Aturan dasar." },
+    { tanya: "Benteng Baluwarti dihitung kelilingnya karena?", jawab: "mengetahui panjang keseluruhan batas luar", opsi: ["mengetahui panjang keseluruhan batas luar", "menghitung luas lantai saja", "menghitung volume"], pesan: "Baluwarti: panjang dinding luar, bukan luas dalam." },
+    { tanya: "Jika sisi-sisi diketahui, keliling dihitung dengan?", jawab: "menjumlahkan semua sisi", opsi: ["menjumlahkan semua sisi", "mengalikan luas", "membagi dua"], pesan: "Side Sum / Path Length: jumlahkan semua sisi jalur." },
   ],
   [
-    { tanya: "Bingkai foto membutuhkan?", jawab: "keliling sebagai panjang kayu", opsi: ["keliling sebagai panjang kayu", "luas foto saja", "diagonal saja"], pesan: "Aplikasi." },
-    { tanya: "Pagar rumah mengelilingi?", jawab: "batas luar tanah/rumah", opsi: ["batas luar tanah/rumah", "hanya pintu", "atap"], pesan: "Konteks pagar." },
+    { tanya: "Bingkai foto membutuhkan?", jawab: "keliling sebagai panjang kayu", opsi: ["keliling sebagai panjang kayu", "luas foto saja", "diagonal saja"], pesan: "Fencing: panjang kayu bingkai = keliling." },
+    { tanya: "Pagar rumah mengelilingi?", jawab: "batas luar tanah/rumah", opsi: ["batas luar tanah/rumah", "hanya pintu", "atap"], pesan: "Fencing Context: pagar mengelilingi batas luar." },
   ],
 ];
 export const RONDE_SORTIR_CA: { id: string; label: string; bin: "ya" | "tidak" }[][] = [
@@ -123,16 +123,16 @@ export const RONDE_SEMUA_CA: { label: string; item: { id: string; label: string;
 ];
 export const RONDE_CERITA_CA: { teks: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
-    { teks: "Persegi sisi 4 cm. Keliling?", jawab: "16", opsi: ["16", "8", "12"], pesan: "4×4 atau 4+4+4+4." },
-    { teks: "Apa arti keliling bangun datar?", jawab: "jumlah panjang sisi", opsi: ["jumlah panjang sisi", "luas dalam", "banyak titik"], pesan: "Definisi." },
+    { teks: "Persegi sisi 4 cm. Keliling?", jawab: "16", opsi: ["16", "8", "12"], pesan: "Path Length: 4+4+4+4=16; 4×4 adalah luas." },
+    { teks: "Apa arti keliling bangun datar?", jawab: "jumlah panjang sisi", opsi: ["jumlah panjang sisi", "luas dalam", "banyak titik"], pesan: "Keliling = panjang jalur sisi luar." },
   ],
   [
-    { teks: "Untuk membuat bingkai foto, yang dihitung?", jawab: "keliling", opsi: ["keliling", "luas saja", "volume"], pesan: "Panjang kayu." },
-    { teks: "Persegi panjang 6 dan 4. Keliling?", jawab: "20", opsi: ["20", "24", "10"], pesan: "2(6+4)." },
+    { teks: "Untuk membuat bingkai foto, yang dihitung?", jawab: "keliling", opsi: ["keliling", "luas saja", "volume"], pesan: "Fencing/bingkai: hitung keliling, bukan luas foto." },
+    { teks: "Persegi panjang 6 dan 4. Keliling?", jawab: "20", opsi: ["20", "24", "10"], pesan: "Rectangle formula 2(6+4)=20 = jalur luar." },
   ],
   [
-    { teks: "Mengapa pemugaran benteng perlu keliling?", jawab: "tahu panjang batas luar", opsi: ["tahu panjang batas luar", "tahu isi benteng", "tahu tinggi menara"], pesan: "Baluwarti." },
-    { teks: "3+4+5 keliling?", jawab: "12", opsi: ["12", "15", "7"], pesan: "Jumlah sisi." },
+    { teks: "Mengapa pemugaran benteng perlu keliling?", jawab: "tahu panjang batas luar", opsi: ["tahu panjang batas luar", "tahu isi benteng", "tahu tinggi menara"], pesan: "Outer path benteng: panjang batas luar." },
+    { teks: "3+4+5 keliling?", jawab: "12", opsi: ["12", "15", "7"], pesan: "Side Sum: jumlahkan sisi jalur." },
   ],
 ];
 export const RONDE_URUT_CA: { angka: number[]; dari: "kecil" | "besar" }[] = [
@@ -149,16 +149,16 @@ export const RONDE_SEMUA_PA = RONDE_SEMUA_CA;
 export const RONDE_CERITA_PA = RONDE_CERITA_CA;
 export const RONDE_TABEL_PA: { baris: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
-    { baris: "4+4+4+4", jawab: "16", opsi: ["16", "8", "12"], pesan: "Keliling." },
-    { baris: "arti keliling", jawab: "jumlah sisi", opsi: ["jumlah sisi", "luas", "sudut"], pesan: "Definisi." },
+    { baris: "4+4+4+4", jawab: "16", opsi: ["16", "8", "12"], pesan: "Path Length: jumlah sisi jalur." },
+    { baris: "arti keliling", jawab: "jumlah sisi", opsi: ["jumlah sisi", "luas", "sudut"], pesan: "Keliling = panjang jalur sisi luar." },
   ],
   [
-    { baris: "5+3+5+3", jawab: "16", opsi: ["16", "15", "8"], pesan: "PP." },
-    { baris: "aplikasi", jawab: "pagar/bingkai", opsi: ["pagar/bingkai", "isi bak", "berat"], pesan: "Konteks." },
+    { baris: "5+3+5+3", jawab: "16", opsi: ["16", "15", "8"], pesan: "Jalur PP: jumlah empat sisi." },
+    { baris: "aplikasi", jawab: "pagar/bingkai", opsi: ["pagar/bingkai", "isi bak", "berat"], pesan: "Fencing: pagar/bingkai = keliling." },
   ],
   [
-    { baris: "2(6+4)", jawab: "20", opsi: ["20", "24", "10"], pesan: "Rumus." },
-    { baris: "bukan keliling", jawab: "luas", opsi: ["luas", "batas luar", "jumlah sisi"], pesan: "Beda." },
+    { baris: "2(6+4)", jawab: "20", opsi: ["20", "24", "10"], pesan: "Rumus = jalan pintas Path Length." },
+    { baris: "bukan keliling", jawab: "luas", opsi: ["luas", "batas luar", "jumlah sisi"], pesan: "Perimeter vs Area: luas ≠ keliling." },
   ],
 ];
 export const RONDE_BENARSALAH_QA: { teks: string; benar: boolean; penjelasan: string }[][] = [
@@ -192,30 +192,30 @@ export const RONDE_CERITA_QA = RONDE_CERITA_CA;
 // ========== B: Segitiga ==========
 export const RONDE_HITUNG_CB: { sisi: number[]; hasil: number; pesan: string }[][] = [
   [
-    { sisi: [5, 4, 7], hasil: 16, pesan: "5+4+7=16." },
-    { sisi: [5, 5, 5], hasil: 15, pesan: "Sama sisi: 3×5." },
+    { sisi: [5, 4, 7], hasil: 16, pesan: "Side Sum Path Length: 5+4+7=16." },
+    { sisi: [5, 5, 5], hasil: 15, pesan: "Equilateral shortcut: 3×5 karena ketiga sisi sama." },
   ],
   [
-    { sisi: [6, 6, 6], hasil: 18, pesan: "3×6=18." },
-    { sisi: [3, 4, 5], hasil: 12, pesan: "Segitiga siku-siku." },
+    { sisi: [6, 6, 6], hasil: 18, pesan: "Equilateral: 3×6=18 = jalur tiga sisi." },
+    { sisi: [3, 4, 5], hasil: 12, pesan: "Side Sum siku-siku: 3+4+5=12." },
   ],
   [
-    { sisi: [8, 5, 5], hasil: 18, pesan: "Sama kaki." },
-    { sisi: [7, 7, 7], hasil: 21, pesan: "3×7." },
+    { sisi: [8, 5, 5], hasil: 18, pesan: "Isosceles: dua kaki sama; tetap jumlahkan ketiga sisi." },
+    { sisi: [7, 7, 7], hasil: 21, pesan: "Equilateral shortcut: 3×7=21." },
   ],
 ];
 export const RONDE_RUMUS_CB: { tanya: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
-    { tanya: "Keliling segitiga sembarang?", jawab: "sisi1 + sisi2 + sisi3", opsi: ["sisi1 + sisi2 + sisi3", "3 × salah satu sisi saja selalu", "alas × tinggi"], pesan: "Jumlah tiga sisi." },
-    { tanya: "Keliling segitiga sama sisi?", jawab: "3 × panjang sisi", opsi: ["3 × panjang sisi", "2 × sisi", "sisi × sisi"], pesan: "Ketiga sisi sama." },
+    { tanya: "Keliling segitiga sembarang?", jawab: "sisi1 + sisi2 + sisi3", opsi: ["sisi1 + sisi2 + sisi3", "3 × salah satu sisi saja selalu", "alas × tinggi"], pesan: "Side Sum segitiga: 3+4+5=12." },
+    { tanya: "Keliling segitiga sama sisi?", jawab: "3 × panjang sisi", opsi: ["3 × panjang sisi", "2 × sisi", "sisi × sisi"], pesan: "Hanya bila ketiga sisi sama boleh 3×sisi." },
   ],
   [
-    { tanya: "Jika sisi 5 cm sama sisi, keliling?", jawab: "15 cm", opsi: ["15 cm", "10 cm", "25 cm"], pesan: "3×5." },
-    { tanya: "Tanda sisi sama pada gambar berarti?", jawab: "panjang sisi sama", opsi: ["panjang sisi sama", "sudut 90°", "luas sama"], pesan: "Buku." },
+    { tanya: "Jika sisi 5 cm sama sisi, keliling?", jawab: "15 cm", opsi: ["15 cm", "10 cm", "25 cm"], pesan: "Equilateral Path Length: 3×5." },
+    { tanya: "Tanda sisi sama pada gambar berarti?", jawab: "panjang sisi sama", opsi: ["panjang sisi sama", "sudut 90°", "luas sama"], pesan: "Sesuai buku: tanda sisi sama = panjang sama." },
   ],
   [
-    { tanya: "5+4+7 = ?", jawab: "16", opsi: ["16", "14", "20"], pesan: "Contoh buku." },
-    { tanya: "Sama sisi sisi 6 cm?", jawab: "18", opsi: ["18", "12", "36"], pesan: "3×6." },
+    { tanya: "5+4+7 = ?", jawab: "16", opsi: ["16", "14", "20"], pesan: "Side Sum contoh buku: 5+4+7=16." },
+    { tanya: "Sama sisi sisi 6 cm?", jawab: "18", opsi: ["18", "12", "36"], pesan: "Equilateral: 3×6=18." },
   ],
 ];
 export const RONDE_SORTIR_CB: { id: string; label: string; bin: "sama" | "bebas" }[][] = [
@@ -265,16 +265,16 @@ export const RONDE_SEMUA_CB: { label: string; item: { id: string; label: string;
 ];
 export const RONDE_CERITA_CB: { teks: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
-    { teks: "Segitiga sisi 5, 4, 7 cm. Keliling?", jawab: "16", opsi: ["16", "14", "20"], pesan: "Jumlah." },
-    { teks: "Sama sisi sisi 5 cm. Keliling?", jawab: "15", opsi: ["15", "10", "25"], pesan: "3×5." },
+    { teks: "Segitiga sisi 5, 4, 7 cm. Keliling?", jawab: "16", opsi: ["16", "14", "20"], pesan: "Side Sum: jumlahkan ketiga sisi jalur." },
+    { teks: "Sama sisi sisi 5 cm. Keliling?", jawab: "15", opsi: ["15", "10", "25"], pesan: "Equilateral Path Length: 3×5." },
   ],
   [
-    { teks: "Sama sisi sisi 6 cm?", jawab: "18", opsi: ["18", "12", "36"], pesan: "3×6." },
-    { teks: "Rumus keliling segitiga sama sisi?", jawab: "3 × sisi", opsi: ["3 × sisi", "2 × sisi", "sisi²"], pesan: "Buku." },
+    { teks: "Sama sisi sisi 6 cm?", jawab: "18", opsi: ["18", "12", "36"], pesan: "Equilateral: 3×6=18." },
+    { teks: "Rumus keliling segitiga sama sisi?", jawab: "3 × sisi", opsi: ["3 × sisi", "2 × sisi", "sisi²"], pesan: "Sesuai buku: tanda sisi sama = panjang sama." },
   ],
   [
-    { teks: "3+4+5 = ?", jawab: "12", opsi: ["12", "15", "7"], pesan: "Siku-siku." },
-    { teks: "Mengapa sama sisi boleh dikali 3?", jawab: "ketiga sisi sama panjang", opsi: ["ketiga sisi sama panjang", "karena ada 3 sudut saja", "karena luas"], pesan: "Alasan." },
+    { teks: "3+4+5 = ?", jawab: "12", opsi: ["12", "15", "7"], pesan: "Side Sum siku-siku: 3+4+5." },
+    { teks: "Mengapa sama sisi boleh dikali 3?", jawab: "ketiga sisi sama panjang", opsi: ["ketiga sisi sama panjang", "karena ada 3 sudut saja", "karena luas"], pesan: "Boleh ×3 hanya jika ketiga sisi sama panjang." },
   ],
 ];
 export const RONDE_URUT_CB: { angka: number[]; dari: "kecil" | "besar" }[] = [
@@ -291,16 +291,16 @@ export const RONDE_SEMUA_PB = RONDE_SEMUA_CB;
 export const RONDE_CERITA_PB = RONDE_CERITA_CB;
 export const RONDE_TABEL_PB: { baris: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
-    { baris: "5+4+7", jawab: "16", opsi: ["16", "14", "20"], pesan: "Jumlah." },
-    { baris: "3×5", jawab: "15", opsi: ["15", "10", "8"], pesan: "Sama sisi." },
+    { baris: "5+4+7", jawab: "16", opsi: ["16", "14", "20"], pesan: "Side Sum: jumlahkan ketiga sisi jalur." },
+    { baris: "3×5", jawab: "15", opsi: ["15", "10", "8"], pesan: "Equilateral shortcut bila sisi sama." },
   ],
   [
-    { baris: "3×6", jawab: "18", opsi: ["18", "12", "9"], pesan: "Sama sisi." },
-    { baris: "rumus sama sisi", jawab: "3×sisi", opsi: ["3×sisi", "2×sisi", "sisi+sisi"], pesan: "Rumus." },
+    { baris: "3×6", jawab: "18", opsi: ["18", "12", "9"], pesan: "Equilateral shortcut bila sisi sama." },
+    { baris: "rumus sama sisi", jawab: "3×sisi", opsi: ["3×sisi", "2×sisi", "sisi+sisi"], pesan: "Rumus = jalan pintas Path Length." },
   ],
   [
-    { baris: "3+4+5", jawab: "12", opsi: ["12", "15", "20"], pesan: "Sembarang." },
-    { baris: "banyak sisi", jawab: "3", opsi: ["3", "4", "5"], pesan: "Segitiga." },
+    { baris: "3+4+5", jawab: "12", opsi: ["12", "15", "20"], pesan: "Sembarang: jangan ×3; jumlahkan satu-satu." },
+    { baris: "banyak sisi", jawab: "3", opsi: ["3", "4", "5"], pesan: "Segitiga selalu punya 3 sisi pada jalur." },
   ],
 ];
 export const RONDE_BENARSALAH_QB: { teks: string; benar: boolean; penjelasan: string }[][] = [
@@ -334,30 +334,30 @@ export const RONDE_CERITA_QB = RONDE_CERITA_CB;
 // ========== C: Segi empat ==========
 export const RONDE_HITUNG_CC: { jenis: "pp" | "persegi"; a: number; b?: number; hasil: number; pesan: string }[][] = [
   [
-    { jenis: "pp", a: 5, b: 3, hasil: 16, pesan: "2(5+3)=16." },
-    { jenis: "persegi", a: 3, hasil: 12, pesan: "4×3=12." },
+    { jenis: "pp", a: 5, b: 3, hasil: 16, pesan: "Rectangle formula Path Length: 2(5+3)=16." },
+    { jenis: "persegi", a: 3, hasil: 12, pesan: "Square shortcut: 4×3=12." },
   ],
   [
-    { jenis: "pp", a: 4, b: 2, hasil: 12, pesan: "2(4+2)=12." },
-    { jenis: "persegi", a: 5, hasil: 20, pesan: "4×5." },
+    { jenis: "pp", a: 4, b: 2, hasil: 12, pesan: "Rectangle: 2(4+2)=12 = dua p + dua l." },
+    { jenis: "persegi", a: 5, hasil: 20, pesan: "Square Path Length: 4×5." },
   ],
   [
-    { jenis: "pp", a: 8, b: 4, hasil: 24, pesan: "2(8+4)=24." },
-    { jenis: "persegi", a: 6, hasil: 24, pesan: "4×6." },
+    { jenis: "pp", a: 8, b: 4, hasil: 24, pesan: "Rectangle: 2(8+4)=24; luas 32 beda soal." },
+    { jenis: "persegi", a: 6, hasil: 24, pesan: "Square: 4×6=24." },
   ],
 ];
 export const RONDE_RUMUS_CC: { tanya: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
-    { tanya: "Keliling persegi panjang?", jawab: "2 × (panjang + lebar)", opsi: ["2 × (panjang + lebar)", "panjang × lebar", "4 × panjang saja"], pesan: "Atau 2p+2l." },
-    { tanya: "Keliling persegi?", jawab: "4 × sisi", opsi: ["4 × sisi", "2 × sisi", "sisi × sisi"], pesan: "Empat sisi sama." },
+    { tanya: "Keliling persegi panjang?", jawab: "2 × (panjang + lebar)", opsi: ["2 × (panjang + lebar)", "panjang × lebar", "4 × panjang saja"], pesan: "Rectangle formula = 2(p+l) = 2p+2l." },
+    { tanya: "Keliling persegi?", jawab: "4 × sisi", opsi: ["4 × sisi", "2 × sisi", "sisi × sisi"], pesan: "Square: empat sisi sama → 4×sisi." },
   ],
   [
-    { tanya: "Pada PP, sisi berhadapan?", jawab: "sama panjang", opsi: ["sama panjang", "selalu berbeda", "selalu miring"], pesan: "Buku." },
-    { tanya: "PP 5 dan 3, keliling?", jawab: "16", opsi: ["16", "15", "8"], pesan: "2(5+3)." },
+    { tanya: "Pada PP, sisi berhadapan?", jawab: "sama panjang", opsi: ["sama panjang", "selalu berbeda", "selalu miring"], pesan: "Sesuai buku: tanda sisi sama = panjang sama." },
+    { tanya: "PP 5 dan 3, keliling?", jawab: "16", opsi: ["16", "15", "8"], pesan: "Rectangle Path Length: 2(5+3)=16." },
   ],
   [
-    { tanya: "Persegi sisi 3?", jawab: "12", opsi: ["12", "9", "6"], pesan: "4×3." },
-    { tanya: "Rumus lain PP?", jawab: "2p + 2l", opsi: ["2p + 2l", "p × l", "p + l saja"], pesan: "Setara." },
+    { tanya: "Persegi sisi 3?", jawab: "12", opsi: ["12", "9", "6"], pesan: "Square: 4×3=12, bukan luas 9." },
+    { tanya: "Rumus lain PP?", jawab: "2p + 2l", opsi: ["2p + 2l", "p × l", "p + l saja"], pesan: "2(p+l) setara Path Length empat sisi." },
   ],
 ];
 export const RONDE_SORTIR_CC: { id: string; label: string; bin: "pp" | "persegi" }[][] = [
@@ -407,16 +407,16 @@ export const RONDE_SEMUA_CC: { label: string; item: { id: string; label: string;
 ];
 export const RONDE_CERITA_CC: { teks: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
-    { teks: "PP panjang 5 cm lebar 3 cm. Keliling?", jawab: "16", opsi: ["16", "15", "8"], pesan: "2(5+3)." },
-    { teks: "Persegi sisi 3 cm?", jawab: "12", opsi: ["12", "9", "6"], pesan: "4×3." },
+    { teks: "PP panjang 5 cm lebar 3 cm. Keliling?", jawab: "16", opsi: ["16", "15", "8"], pesan: "Rectangle Path Length: 2(5+3)=16." },
+    { teks: "Persegi sisi 3 cm?", jawab: "12", opsi: ["12", "9", "6"], pesan: "Square: 4×3=12, bukan luas 9." },
   ],
   [
-    { teks: "Rumus keliling persegi panjang?", jawab: "2(p+l)", opsi: ["2(p+l)", "p×l", "4×p"], pesan: "Buku." },
-    { teks: "PP 4 dan 2. Keliling?", jawab: "12", opsi: ["12", "8", "6"], pesan: "2(4+2)." },
+    { teks: "Rumus keliling persegi panjang?", jawab: "2(p+l)", opsi: ["2(p+l)", "p×l", "4×p"], pesan: "Sesuai buku: tanda sisi sama = panjang sama." },
+    { teks: "PP 4 dan 2. Keliling?", jawab: "12", opsi: ["12", "8", "6"], pesan: "Rectangle: 2(4+2)=12." },
   ],
   [
-    { teks: "Persegi sisi 5?", jawab: "20", opsi: ["20", "25", "10"], pesan: "4×5." },
-    { teks: "Mengapa PP memakai 2(p+l)?", jawab: "ada 2 panjang dan 2 lebar", opsi: ["ada 2 panjang dan 2 lebar", "karena luas", "karena diagonal"], pesan: "Berhadapan." },
+    { teks: "Persegi sisi 5?", jawab: "20", opsi: ["20", "25", "10"], pesan: "Square Path Length: 4×5." },
+    { teks: "Mengapa PP memakai 2(p+l)?", jawab: "ada 2 panjang dan 2 lebar", opsi: ["ada 2 panjang dan 2 lebar", "karena luas", "karena diagonal"], pesan: "Dua p dan dua l karena sisi berhadapan sama." },
   ],
 ];
 export const RONDE_URUT_CC: { angka: number[]; dari: "kecil" | "besar" }[] = [
@@ -433,16 +433,16 @@ export const RONDE_SEMUA_PC = RONDE_SEMUA_CC;
 export const RONDE_CERITA_PC = RONDE_CERITA_CC;
 export const RONDE_TABEL_PC: { baris: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
-    { baris: "2(5+3)", jawab: "16", opsi: ["16", "15", "8"], pesan: "PP." },
-    { baris: "4×3", jawab: "12", opsi: ["12", "9", "6"], pesan: "Persegi." },
+    { baris: "2(5+3)", jawab: "16", opsi: ["16", "15", "8"], pesan: "Jalur PP: jumlah empat sisi." },
+    { baris: "4×3", jawab: "12", opsi: ["12", "9", "6"], pesan: "Square shortcut 4×sisi." },
   ],
   [
-    { baris: "rumus PP", jawab: "2(p+l)", opsi: ["2(p+l)", "p×l", "4×s"], pesan: "Rumus." },
-    { baris: "rumus persegi", jawab: "4×sisi", opsi: ["4×sisi", "2×sisi", "s²"], pesan: "Rumus." },
+    { baris: "rumus PP", jawab: "2(p+l)", opsi: ["2(p+l)", "p×l", "4×s"], pesan: "Rumus = jalan pintas Path Length." },
+    { baris: "rumus persegi", jawab: "4×sisi", opsi: ["4×sisi", "2×sisi", "s²"], pesan: "Rumus = jalan pintas Path Length." },
   ],
   [
-    { baris: "2(8+4)", jawab: "24", opsi: ["24", "32", "12"], pesan: "PP." },
-    { baris: "4×5", jawab: "20", opsi: ["20", "25", "10"], pesan: "Persegi." },
+    { baris: "2(8+4)", jawab: "24", opsi: ["24", "32", "12"], pesan: "Jalur PP: jumlah empat sisi." },
+    { baris: "4×5", jawab: "20", opsi: ["20", "25", "10"], pesan: "Square shortcut 4×sisi." },
   ],
 ];
 export const RONDE_BENARSALAH_QC: { teks: string; benar: boolean; penjelasan: string }[][] = [
@@ -476,29 +476,29 @@ export const RONDE_CERITA_QC = RONDE_CERITA_CC;
 // ========== D: Segi banyak ==========
 export const RONDE_HITUNG_CD: { n: number; sisi: number; hasil: number; pesan: string }[][] = [
   [
-    { n: 5, sisi: 3, hasil: 15, pesan: "Segi lima beraturan: 5×3." },
-    { n: 6, sisi: 4, hasil: 24, pesan: "Segi enam: 6×4." },
+    { n: 5, sisi: 3, hasil: 15, pesan: "Regular n-gon: 5×3 karena semua sisi sama." },
+    { n: 6, sisi: 4, hasil: 24, pesan: "Regular hexagon Path Length: 6×4." },
   ],
   [
-    { n: 5, sisi: 2, hasil: 10, pesan: "5×2." },
-    { n: 6, sisi: 3, hasil: 18, pesan: "6×3." },
+    { n: 5, sisi: 2, hasil: 10, pesan: "Regular pentagon: 5×2." },
+    { n: 6, sisi: 3, hasil: 18, pesan: "Regular hexagon: 6×3." },
   ],
   [
-    { n: 8, sisi: 2, hasil: 16, pesan: "Segi delapan: 8×2." },
-    { n: 4, sisi: 5, hasil: 20, pesan: "4×5 (persegi)." },
+    { n: 8, sisi: 2, hasil: 16, pesan: "Regular octagon: 8×2." },
+    { n: 4, sisi: 5, hasil: 20, pesan: "n=4 beraturan = persegi: 4×5." },
   ],
 ];
 export const RONDE_RUMUS_CD: { tanya: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
-    { tanya: "Keliling segi-n beraturan?", jawab: "n × panjang sisi", opsi: ["n × panjang sisi", "n + sisi", "n × n"], pesan: "Tabel buku." },
-    { tanya: "Jika sisi tidak sama panjang?", jawab: "jumlahkan semua sisi", opsi: ["jumlahkan semua sisi", "kali n saja", "ambil sisi terpanjang"], pesan: "Buku." },
+    { tanya: "Keliling segi-n beraturan?", jawab: "n × panjang sisi", opsi: ["n × panjang sisi", "n + sisi", "n × n"], pesan: "Regular: n×sisi; irregular: jumlahkan." },
+    { tanya: "Jika sisi tidak sama panjang?", jawab: "jumlahkan semua sisi", opsi: ["jumlahkan semua sisi", "kali n saja", "ambil sisi terpanjang"], pesan: "Sesuai buku: tanda sisi sama = panjang sama." },
   ],
   [
-    { tanya: "Segi lima beraturan sisi 3?", jawab: "15", opsi: ["15", "8", "12"], pesan: "5×3." },
-    { tanya: "Banyak sisi segi enam?", jawab: "6", opsi: ["6", "5", "8"], pesan: "Hexagon." },
+    { tanya: "Segi lima beraturan sisi 3?", jawab: "15", opsi: ["15", "8", "12"], pesan: "Regular: 5×3." },
+    { tanya: "Banyak sisi segi enam?", jawab: "6", opsi: ["6", "5", "8"], pesan: "Segi enam = 6 sisi pada jalur." },
   ],
   [
-    { tanya: "Segi enam sisi 4?", jawab: "24", opsi: ["24", "10", "16"], pesan: "6×4." },
+    { tanya: "Segi enam sisi 4?", jawab: "24", opsi: ["24", "10", "16"], pesan: "Regular: 6×4." },
     { tanya: "Tabel: 5 sisi beraturan →", jawab: "5 × sisi", opsi: ["5 × sisi", "4 × sisi", "sisi + 5"], pesan: "Rangkuman." },
   ],
 ];
@@ -549,16 +549,16 @@ export const RONDE_SEMUA_CD: { label: string; item: { id: string; label: string;
 ];
 export const RONDE_CERITA_CD: { teks: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
-    { teks: "Segi lima beraturan sisi 3 cm. Keliling?", jawab: "15", opsi: ["15", "8", "12"], pesan: "5×3." },
-    { teks: "Segi enam beraturan sisi 4 cm?", jawab: "24", opsi: ["24", "10", "16"], pesan: "6×4." },
+    { teks: "Segi lima beraturan sisi 3 cm. Keliling?", jawab: "15", opsi: ["15", "8", "12"], pesan: "Regular: 5×3." },
+    { teks: "Segi enam beraturan sisi 4 cm?", jawab: "24", opsi: ["24", "10", "16"], pesan: "Regular: 6×4." },
   ],
   [
-    { teks: "Rumus segi-n beraturan?", jawab: "n × sisi", opsi: ["n × sisi", "n + sisi", "2n"], pesan: "Tabel." },
-    { teks: "Sisi tidak sama panjang, cara?", jawab: "jumlahkan semua sisi", opsi: ["jumlahkan semua sisi", "kali n", "abaikan"], pesan: "Buku." },
+    { teks: "Rumus segi-n beraturan?", jawab: "n × sisi", opsi: ["n × sisi", "n + sisi", "2n"], pesan: "Beraturan → n×sisi (Path Length)." },
+    { teks: "Sisi tidak sama panjang, cara?", jawab: "jumlahkan semua sisi", opsi: ["jumlahkan semua sisi", "kali n", "abaikan"], pesan: "Sesuai buku: tanda sisi sama = panjang sama." },
   ],
   [
     { teks: "Segi delapan sisi 2 cm beraturan?", jawab: "16", opsi: ["16", "10", "8"], pesan: "8×2." },
-    { teks: "Banyak sisi segi lima?", jawab: "5", opsi: ["5", "6", "4"], pesan: "Pentagon." },
+    { teks: "Banyak sisi segi lima?", jawab: "5", opsi: ["5", "6", "4"], pesan: "Segi lima = 5 sisi." },
   ],
 ];
 export const RONDE_URUT_CD: { angka: number[]; dari: "kecil" | "besar" }[] = [
@@ -575,16 +575,16 @@ export const RONDE_SEMUA_PD = RONDE_SEMUA_CD;
 export const RONDE_CERITA_PD = RONDE_CERITA_CD;
 export const RONDE_TABEL_PD: { baris: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
-    { baris: "5×3", jawab: "15", opsi: ["15", "8", "12"], pesan: "Segi lima." },
-    { baris: "6×4", jawab: "24", opsi: ["24", "10", "16"], pesan: "Segi enam." },
+    { baris: "5×3", jawab: "15", opsi: ["15", "8", "12"], pesan: "Regular pentagon Path Length." },
+    { baris: "6×4", jawab: "24", opsi: ["24", "10", "16"], pesan: "Regular hexagon Path Length." },
   ],
   [
-    { baris: "rumus beraturan", jawab: "n×sisi", opsi: ["n×sisi", "n+sisi", "2n"], pesan: "Tabel." },
-    { baris: "sisi tak sama", jawab: "jumlah semua", opsi: ["jumlah semua", "kali n", "bagi 2"], pesan: "Cara." },
+    { baris: "rumus beraturan", jawab: "n×sisi", opsi: ["n×sisi", "n+sisi", "2n"], pesan: "Beraturan → n×sisi (Path Length)." },
+    { baris: "sisi tak sama", jawab: "jumlah semua", opsi: ["jumlah semua", "kali n", "bagi 2"], pesan: "Irregular: jumlah semua sisi, jangan ×n." },
   ],
   [
-    { baris: "8×2", jawab: "16", opsi: ["16", "10", "8"], pesan: "Segi 8." },
-    { baris: "banyak sisi segi 6", jawab: "6", opsi: ["6", "5", "8"], pesan: "Hexagon." },
+    { baris: "8×2", jawab: "16", opsi: ["16", "10", "8"], pesan: "Regular octagon: 8×sisi." },
+    { baris: "banyak sisi segi 6", jawab: "6", opsi: ["6", "5", "8"], pesan: "Segi enam = 6 sisi pada jalur." },
   ],
 ];
 export const RONDE_BENARSALAH_QD: { teks: string; benar: boolean; penjelasan: string }[][] = [
@@ -618,12 +618,12 @@ export const RONDE_CERITA_QD = RONDE_CERITA_CD;
 // ========== E: Bangun gabungan ==========
 export const RONDE_HITUNG_CE: { luar: number[]; hasil: number; pesan: string }[][] = [
   [
-    { luar: [4, 4, 4, 6, 4, 4, 4, 2, 4, 8, 6, 4], hasil: 54, pesan: "Contoh jumlah sisi luar denah (ilustrasi latihan)." },
-    { luar: [12, 6, 12, 6], hasil: 36, pesan: "Persegi panjang luar 12×6 → 2(12+6)=36." },
+    { luar: [4, 4, 4, 6, 4, 4, 4, 2, 4, 8, 6, 4], hasil: 54, pesan: "Outer Path Only: jumlah sisi terluar denah." },
+    { luar: [12, 6, 12, 6], hasil: 36, pesan: "Bounding rectangle: 2(12+6)=36." },
   ],
   [
-    { luar: [8, 4, 8, 4], hasil: 24, pesan: "PP 8×4." },
-    { luar: [4, 4, 4, 4], hasil: 16, pesan: "Persegi 4." },
+    { luar: [8, 4, 8, 4], hasil: 24, pesan: "Bounding/outer PP: 2(8+4)=24." },
+    { luar: [4, 4, 4, 4], hasil: 16, pesan: "Outer path persegi: 4×4=16." },
   ],
   [
     { luar: [10, 5, 10, 5], hasil: 30, pesan: "2(10+5)." },
@@ -636,7 +636,7 @@ export const RONDE_ARTI_CE: { tanya: string; jawab: string; opsi: string[]; pesa
     { tanya: "Sisi dalam yang bertemu dua ruang?", jawab: "tidak dihitung sebagai keliling luar", opsi: ["tidak dihitung sebagai keliling luar", "dihitung dua kali", "selalu dikali 2"], pesan: "Cara Asep/Komang." },
   ],
   [
-    { tanya: "Denah rumah adalah?", jawab: "gabungan beberapa bangun datar", opsi: ["gabungan beberapa bangun datar", "satu lingkaran saja", "hanya titik"], pesan: "Buku." },
+    { tanya: "Denah rumah adalah?", jawab: "gabungan beberapa bangun datar", opsi: ["gabungan beberapa bangun datar", "satu lingkaran saja", "hanya titik"], pesan: "Sesuai buku: tanda sisi sama = panjang sama." },
     { tanya: "Cara aman mencari keliling gabungan?", jawab: "jumlahkan panjang sisi-sisi luar", opsi: ["jumlahkan panjang sisi-sisi luar", "jumlahkan luas ruang", "kali jumlah kamar"], pesan: "Ukur sisi luar." },
   ],
   [
@@ -692,14 +692,14 @@ export const RONDE_SEMUA_CE: { label: string; item: { id: string; label: string;
 export const RONDE_CERITA_CE: { teks: string; jawab: string; opsi: string[]; pesan: string }[][] = [
   [
     { teks: "Keliling bangun gabungan menghitung bagian?", jawab: "batas luar", opsi: ["batas luar", "semua sekat dalam", "luas kamar"], pesan: "Denah." },
-    { teks: "Persegi panjang luar 12 m × 6 m. Keliling?", jawab: "36", opsi: ["36", "72", "18"], pesan: "2(12+6)." },
+    { teks: "Persegi panjang luar 12 m × 6 m. Keliling?", jawab: "36", opsi: ["36", "72", "18"], pesan: "Bounding rectangle: 2(12+6)=36." },
   ],
   [
     { teks: "Mengapa sekat dalam tidak dijumlah ke keliling luar?", jawab: "bukan batas luar", opsi: ["bukan batas luar", "karena pendek", "karena kayu"], pesan: "Aturan." },
     { teks: "PP 8×4 keliling?", jawab: "24", opsi: ["24", "32", "12"], pesan: "2(8+4)." },
   ],
   [
-    { teks: "Strategi Komang memakai?", jawab: "bungkus & kesamaan ukuran", opsi: ["bungkus & kesamaan ukuran", "acak saja", "hanya luas"], pesan: "Buku." },
+    { teks: "Strategi Komang memakai?", jawab: "bungkus & kesamaan ukuran", opsi: ["bungkus & kesamaan ukuran", "acak saja", "hanya luas"], pesan: "Sesuai buku: tanda sisi sama = panjang sama." },
     { teks: "2(10+5)=?", jawab: "30", opsi: ["30", "50", "15"], pesan: "Keliling PP." },
   ],
 ];
@@ -721,12 +721,12 @@ export const RONDE_TABEL_PE: { baris: string; jawab: string; opsi: string[]; pes
     { baris: "yang dihitung", jawab: "batas luar", opsi: ["batas luar", "sekat dalam", "luas"], pesan: "Aturan." },
   ],
   [
-    { baris: "2(8+4)", jawab: "24", opsi: ["24", "32", "12"], pesan: "PP." },
+    { baris: "2(8+4)", jawab: "24", opsi: ["24", "32", "12"], pesan: "Jalur PP: jumlah empat sisi." },
     { baris: "sekat dalam", jawab: "tidak dihitung luar", opsi: ["tidak dihitung luar", "dihitung 2×", "wajib"], pesan: "Aturan." },
   ],
   [
-    { baris: "2(10+5)", jawab: "30", opsi: ["30", "50", "15"], pesan: "PP." },
-    { baris: "denah rumah", jawab: "gabungan bangun", opsi: ["gabungan bangun", "satu titik", "lingkaran saja"], pesan: "Buku." },
+    { baris: "2(10+5)", jawab: "30", opsi: ["30", "50", "15"], pesan: "Jalur PP: jumlah empat sisi." },
+    { baris: "denah rumah", jawab: "gabungan bangun", opsi: ["gabungan bangun", "satu titik", "lingkaran saja"], pesan: "Sesuai buku: tanda sisi sama = panjang sama." },
   ],
 ];
 export const RONDE_BENARSALAH_QE: { teks: string; benar: boolean; penjelasan: string }[][] = [

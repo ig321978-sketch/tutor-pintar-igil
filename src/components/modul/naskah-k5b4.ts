@@ -1,7 +1,7 @@
 /**
- * Naskah murni Matematika Kelas 5 Bab 4 (Keliling Bangun Datar): Sub-Bab A–E.
- * Sumber: Buku Siswa Matematika Kelas V Kemendikbudristek Bab 4 hlm. 105–130.
- * Satu sumber: buat-k5-bab4.mjs → kelas5-bab4.json. Tanpa React/jaringan.
+ * Naskah Matematika Kelas 5 Bab 4 — rewrite mendalam.
+ * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
+ * Sumber buku: Kemendikbudristek Bab 4 hlm. 105–130.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
@@ -20,91 +20,89 @@ export const SUB_A54: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Konsep Keliling)",
   "fullTitle": "Sub-Bab A: Apakah Keliling Bangun Datar Itu?",
-  "targetDescription": "Siswa memahami arti keliling sebagai jumlah panjang semua sisi, mengaitkannya dengan konteks benteng, pagar, dan bingkai, serta menghitung keliling dari panjang sisi yang diketahui sesuai Buku Siswa Kelas V Bab 4.",
+  "targetDescription": "Siswa memahami keliling sebagai panjang jalur yang menelusuri seluruh batas luar bangun sampai kembali ke titik awal (path length), membedakannya dari luas, serta memakai konsep itu pada konteks pagar, bingkai, dan pemugaran Benteng Baluwarti sesuai Buku Siswa Kelas V Bab 4 Sub-Bab A.",
   "secondaryBg": "#FFEDD5",
   "secondaryBorder": "#EA580C",
   "secondaryText": "#7C2D12",
   "silabus": {
-    "teksSuara": "Kita belajar apa itu keliling. Keliling adalah jumlah panjang semua sisi bangun datar. Berguna untuk pagar, bingkai, dan batas benteng. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-    "cp": "Siswa menjelaskan dan menghitung keliling bangun datar.",
+    "teksSuara": "Kita belajar arti keliling. Bayangkan kamu berjalan mengelilingi tepi sebuah bangun: jarak yang kamu tempuh sampai kembali ke titik awal itulah keliling. Guru di banyak negara menyebutnya panjang jalur, atau path length. Kita pakai ide itu pada benteng, pagar, dan bingkai foto. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menjelaskan keliling sebagai panjang jalur batas luar, membedakannya dari luas, dan menghitung keliling dari panjang sisi yang diketahui.",
     "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 4: Keliling Bangun Datar, Sub-Bab A hlm. 107–114)."
   },
   "videos": [
     {
       "id": "K5B4A-V1",
-      "judul": "Apa Itu Keliling",
-      "subjudul": "Definisi",
+      "judul": "Berjalan Mengelilingi Batas",
+      "subjudul": "Path Length",
       "adegan": [
         {
           "id": "K5B4A-V1-1",
-          "judul": "Jumlah sisi",
+          "judul": "Titik awal",
           "ketukan": [
-            "Keliling adalah jumlah panjang sisi.",
-            "Kelilingi bangun dari luar.",
-            "Kembali ke titik awal.",
-            "Itu panjang jalur batas."
+            "Bayangkan sebuah persegi di halaman sekolah. Kamu berdiri di satu sudut.",
+            "Kamu berjalan menyusuri sisi pertama, lalu sisi kedua, ketiga, dan keempat.",
+            "Kamu berhenti lagi di sudut yang sama. Jarak tempuh seluruh perjalanan itu disebut keliling.",
+            "Jadi keliling bukan isi di dalam bangun, melainkan panjang jalur di tepi luarnya."
           ],
           "papan": [
-            "jumlah sisi",
-            "luar",
-            "titik awal",
-            "batas"
+            "sudut awal",
+            "empat sisi",
+            "kembali awal",
+            "jalur tepi"
           ]
         },
         {
           "id": "K5B4A-V1-2",
           "judul": "Bukan luas",
           "ketukan": [
-            "Luas mengisi dalam.",
-            "Keliling mengelilingi luar.",
-            "Jangan tertukar.",
-            "Ingat bedanya."
+            "Temanmu mungkin bilang: keliling sama dengan luas. Itu keliru.",
+            "Luas menjawab: berapa banyak daerah yang tertutup di dalam?",
+            "Keliling menjawab: berapa panjang jalur jika kita mengelilingi luar?",
+            "Satuannya juga beda cara dipikirkan: keliling memakai satuan panjang, luas memakai satuan daerah."
           ],
           "papan": [
-            "luas dalam",
-            "keliling luar",
-            "beda",
-            "ingat"
+            "jangan tertukar",
+            "luas = isi",
+            "keliling = jalur",
+            "satuan beda"
           ]
         },
         {
           "id": "K5B4A-V1-3",
-          "judul": "Contoh persegi",
+          "judul": "Contoh empat sisi 4",
           "ketukan": [
-            "Sisi empat, empat, empat, empat.",
-            "Jumlah enam belas.",
-            "Itu keliling.",
-            "Siap lanjut.",
-            "METODE LUAR. Keliling sebagai Panjang Jalur: Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal."
+            "Persegi sisi empat centi meter. Jalurmu: empat, lalu empat, lalu empat, lalu empat.",
+            "Jumlahkan: enam belas centi meter. Itulah panjang jalur keliling.",
+            "Kalau kamu hanya mengalikan empat kali empat, kamu sedang menghitung luas, bukan keliling.",
+            "METODE LUAR · Keliling sebagai Panjang Jalur: selalu bayangkan berjalan di tepi sampai kembali."
           ],
           "papan": [
             "4+4+4+4",
-            "16",
-            "keliling",
-            "lanjut",
-            "METODE LUAR · Keliling sebagai Panjang Jalur"
+            "K = 16 cm",
+            "bukan 4×4 luas",
+            "path length"
           ]
         }
       ]
     },
     {
       "id": "K5B4A-V2",
-      "judul": "Benteng dan Pagar",
-      "subjudul": "Konteks",
+      "judul": "Baluwarti, Pagar, Bingkai",
+      "subjudul": "Fencing Context",
       "adegan": [
         {
           "id": "K5B4A-V2-1",
-          "judul": "Baluwarti",
+          "judul": "Benteng Baluwarti",
           "ketukan": [
-            "Benteng mengelilingi kraton.",
-            "Pemugaran butuh panjang batas.",
-            "Itu keliling.",
-            "Bentuknya gabungan bangun."
+            "Di buku ada Benteng Baluwarti yang mengelilingi Kraton Yogyakarta.",
+            "Saat pemugaran, petugas perlu tahu panjang dinding terluar yang harus diperbaiki.",
+            "Yang mereka hitung adalah keliling: jalur batas luar, bukan luas tanah di dalam benteng.",
+            "Denah benteng tampak seperti gabungan bangun datar. Nanti di Sub-Bab E kita hitung gabungan."
           ],
           "papan": [
-            "benteng",
-            "batas",
-            "keliling",
+            "Baluwarti",
+            "panjang dinding",
+            "batas luar",
             "gabungan"
           ]
         },
@@ -112,91 +110,87 @@ export const SUB_A54: SubBabNaskah = {
           "id": "K5B4A-V2-2",
           "judul": "Pagar rumah",
           "ketukan": [
-            "Pagar mengelilingi tanah.",
-            "Panjang pagar adalah keliling.",
-            "Ukur sisi luar.",
-            "Jumlahkan."
+            "Ayah ingin memasang pagar mengelilingi tanah. Yang dibeli adalah panjang kayu atau kawat.",
+            "Panjang itu sama dengan keliling tanah: jumlah sisi luar tanah.",
+            "Kalau Ayah menghitung panjang kali lebar, dia justru mendapat luas tanah untuk rumput, bukan pagar.",
+            "Ingat konteks pagar: selalu jumlahkan jalur luar."
           ],
           "papan": [
-            "pagar",
-            "tanah",
-            "sisi luar",
-            "jumlah"
+            "beli panjang",
+            "K = pagar",
+            "bukan luas",
+            "fencing"
           ]
         },
         {
           "id": "K5B4A-V2-3",
           "judul": "Bingkai foto",
           "ketukan": [
-            "Bingkai mengelilingi foto.",
-            "Kayu yang dibutuhkan.",
-            "Sama dengan keliling.",
-            "Ayo hitung.",
-            "METODE LUAR. Konteks Pagar dan Bingkai: Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas."
+            "Ibu membuat bingkai foto. Kayu dibutuhkan untuk mengelilingi tepi foto.",
+            "Ukurlah keempat tepi, jumlahkan, itu panjang kayu. Itu keliling.",
+            "Daerah kertas foto di dalam bingkai adalah soal luas, bukan panjang kayu.",
+            "METODE LUAR · Konteks Pagar dan Bingkai: tanyakan dulu, apa yang diukur—jalur luar atau isi dalam?"
           ],
           "papan": [
             "bingkai",
-            "kayu",
-            "keliling",
-            "hitung",
-            "METODE LUAR · Konteks Pagar dan Bingkai"
+            "jumlah tepi",
+            "kertas = luas",
+            "fencing context"
           ]
         }
       ]
     },
     {
       "id": "K5B4A-V3",
-      "judul": "Cara Menghitung",
-      "subjudul": "Langkah",
+      "judul": "Cara Hitung dari Sisi",
+      "subjudul": "Langkah Path Length",
       "adegan": [
         {
           "id": "K5B4A-V3-1",
-          "judul": "Tulis sisi",
+          "judul": "Tulis semua sisi",
           "ketukan": [
-            "Tulis panjang tiap sisi.",
-            "Pastikan satuannya sama.",
-            "Jumlahkan semua.",
-            "Itu hasilnya."
+            "Tuliskan panjang setiap sisi yang membentuk jalur luar.",
+            "Samakan satuan: jangan mencampur centi meter dengan meter tanpa mengubah.",
+            "Jumlahkan semua sisi. Hasilnya panjang jalur keliling.",
+            "Cek: hasil harus lebih besar dari sisi terpanjang, karena kamu menempuh sisi lain juga."
           ],
           "papan": [
             "tulis sisi",
-            "satuan",
-            "jumlah",
-            "hasil"
+            "satuan sama",
+            "jumlahkan",
+            "cek masuk akal"
           ]
         },
         {
           "id": "K5B4A-V3-2",
-          "judul": "Cek",
+          "judul": "Latihan cepat",
           "ketukan": [
-            "Hitung lagi sekali.",
-            "Apakah masuk akal?",
-            "Lebih besar dari sisi terpanjang.",
-            "Siap bermain!"
+            "Persegi panjang sisi lima dan tiga: jalur lima, tiga, lima, tiga.",
+            "Jumlah enam belas. Sama dengan dua kali lima ditambah tiga.",
+            "Nanti di Sub-Bab C rumus itu dibahas. Dasarnya tetap path length.",
+            "Jangan lupa: lima kali tiga adalah luas lima belas, bukan keliling."
           ],
           "papan": [
-            "cek",
-            "masuk akal",
-            "> sisi max",
-            "main"
+            "5+3+5+3",
+            "16 = 2(5+3)",
+            "dasar sama",
+            "bukan luas 15"
           ]
         },
         {
           "id": "K5B4A-V3-3",
-          "judul": "Rumus nanti",
+          "judul": "Siap tahap berikutnya",
           "ketukan": [
-            "Nanti ada rumus khusus.",
-            "Segitiga, segi empat, segi banyak.",
-            "Dasarnya tetap jumlah sisi.",
-            "Ayo!",
-            "METODE LUAR. Bedakan Keliling dan Luas: Keliling mengelilingi luar; luas mengisi dalam. Jangan tertukar."
+            "Kamu sudah punya tiga bekal: jalur keliling, konteks pagar-bingkai, dan beda dengan luas.",
+            "Di peta pikiran dan permainan, kamu akan melatih memilah: ini keliling atau luas?",
+            "Setiap kali ragu, bayangkan berjalan di tepi. Itu kunci Path Length.",
+            "METODE LUAR · Bedakan Keliling dan Luas: luar dilalui, dalam diisi—dua pertanyaan berbeda."
           ],
           "papan": [
-            "rumus",
-            "bangun",
-            "dasar",
-            "ayo",
-            "METODE LUAR · Bedakan Keliling dan Luas"
+            "tiga bekal",
+            "latihan pilah",
+            "bayangkan jalan",
+            "perimeter vs area"
           ]
         }
       ]
@@ -205,160 +199,139 @@ export const SUB_A54: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Kenali sisi",
-      "stepDesc": "Ukur tiap sisi",
-      "icon": "📏",
+      "stepTitle": "1. Pertanyaan keliling",
+      "stepDesc": "Apa yang ditanya: panjang jalur luar atau isi dalam? Jika jalur luar, itu keliling.",
+      "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Satuan sama",
-      "stepDesc": "cm/m",
-      "icon": "📐",
+      "stepTitle": "2. Path Length",
+      "stepDesc": "Bayangkan berjalan mengelilingi tepi sampai kembali ke titik awal. Jarak tempuh = keliling.",
+      "icon": "🚶",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Jumlahkan",
-      "stepDesc": "Semua sisi",
-      "icon": "➕",
+      "stepTitle": "3. Tulis sisi luar",
+      "stepDesc": "Catat panjang setiap sisi pada jalur. Satuan harus sama.",
+      "icon": "✍️",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Hasil",
-      "stepDesc": "Keliling",
-      "icon": "⭕",
+      "stepTitle": "4. Jumlahkan",
+      "stepDesc": "Keliling = jumlah semua sisi pada jalur luar.",
+      "icon": "➕",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Cek",
-      "stepDesc": "Masuk akal?",
+      "stepTitle": "5. Cek masuk akal",
+      "stepDesc": "Hasil > sisi terpanjang. Bandingkan juga dengan konteks pagar atau bingkai.",
       "icon": "✅",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Pakai",
-      "stepDesc": "Pagar/bingkai",
-      "icon": "🏠",
+      "stepTitle": "6. Bukan luas",
+      "stepDesc": "Panjang × lebar atau sisi × sisi adalah luas. Jangan dipakai untuk pagar.",
+      "icon": "⚠️",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. METODE LUAR · Keliling sebagai Panjang Jalur",
-      "stepDesc": "Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal.",
-      "icon": "🌍",
+      "stepTitle": "7. Konteks nyata",
+      "stepDesc": "Baluwarti, pagar rumah, bingkai foto: semua butuh panjang jalur luar.",
+      "icon": "🏰",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. METODE LUAR · Konteks Pagar dan Bingkai",
-      "stepDesc": "Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas.",
-      "icon": "🌍",
+      "stepTitle": "8. Lanjut rumus",
+      "stepDesc": "Sub-Bab berikutnya memberi rumus cepat, tetapi dasarnya tetap path length.",
+      "icon": "➡️",
       "flowFrom": "7",
       "flowTo": "END"
     }
   ],
   "infografis": [
     {
-      "judul": "Arti",
-      "emoji": "⭕",
+      "judul": "Path Length",
+      "emoji": "🚶",
       "countNum": 1,
-      "countWord": "jumlah sisi",
-      "suara": "Batas luar."
+      "countWord": "jalur tepi",
+      "suara": "Keliling = panjang jalur mengelilingi luar sampai kembali."
     },
     {
-      "judul": "Contoh",
+      "judul": "Contoh 4+4+4+4",
       "emoji": "4️⃣",
       "countNum": 16,
-      "countWord": "4+4+4+4",
-      "suara": "Persegi."
+      "countWord": "16 cm",
+      "suara": "Persegi sisi 4: keliling 16, bukan luas 16."
     },
     {
-      "judul": "Bukan",
-      "emoji": "⬜",
+      "judul": "PP 5 dan 3",
+      "emoji": "▭",
+      "countNum": 16,
+      "countWord": "5+3+5+3",
+      "suara": "Jalur persegi panjang: dua panjang dan dua lebar."
+    },
+    {
+      "judul": "Bukan luas",
+      "emoji": "⚠️",
       "countNum": 1,
-      "countWord": "luas",
-      "suara": "Isi dalam."
+      "countWord": "p × l",
+      "suara": "Panjang kali lebar mengisi dalam, bukan mengelilingi."
     },
     {
       "judul": "Pagar",
       "emoji": "🏡",
       "countNum": 1,
-      "countWord": "batas tanah",
-      "suara": "Aplikasi."
+      "countWord": "fencing",
+      "suara": "Panjang pagar = keliling tanah."
     },
     {
       "judul": "Bingkai",
       "emoji": "🖼️",
       "countNum": 1,
-      "countWord": "panjang kayu",
-      "suara": "Aplikasi."
+      "countWord": "kayu tepi",
+      "suara": "Panjang kayu bingkai = keliling foto."
     },
     {
-      "judul": "Benteng",
+      "judul": "Baluwarti",
       "emoji": "🏰",
       "countNum": 1,
-      "countWord": "Baluwarti",
-      "suara": "Konteks."
-    },
-    {
-      "judul": "Cara",
-      "emoji": "➕",
-      "countNum": 1,
-      "countWord": "jumlahkan",
-      "suara": "Dasar."
+      "countWord": "batas benteng",
+      "suara": "Pemugaran butuh panjang dinding luar."
     },
     {
       "judul": "Satuan",
       "emoji": "📐",
       "countNum": 1,
       "countWord": "cm atau m",
-      "suara": "Sama."
+      "suara": "Semua sisi harus satu satuan sebelum dijumlah."
     },
     {
       "judul": "Cek",
       "emoji": "✅",
       "countNum": 1,
-      "countWord": "masuk akal",
-      "suara": "Validasi."
+      "countWord": "> sisi max",
+      "suara": "Hasil keliling lebih besar dari sisi terpanjang."
     },
     {
-      "judul": "Siap B",
-      "emoji": "➡️",
-      "countNum": 1,
-      "countWord": "segitiga",
-      "suara": "Lanjut."
-    },
-    {
-      "judul": "Keliling sebagai Panjang Jalur",
+      "judul": "Label metode",
       "emoji": "🌍",
       "countNum": 1,
-      "countWord": "METODE LUAR · Path Length",
-      "suara": "METODE LUAR. Keliling sebagai Panjang Jalur. Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal."
-    },
-    {
-      "judul": "Konteks Pagar dan Bingkai",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "METODE LUAR · Fencing Context",
-      "suara": "METODE LUAR. Konteks Pagar dan Bingkai. Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas."
-    },
-    {
-      "judul": "Bedakan Keliling dan Luas",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Perimeter vs Area",
-      "suara": "METODE LUAR. Bedakan Keliling dan Luas. Keliling mengelilingi luar; luas mengisi dalam. Jangan tertukar."
+      "countWord": "METODE LUAR",
+      "suara": "Path Length, Fencing Context, Perimeter vs Area."
     }
   ],
   "games": [
@@ -367,9 +340,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "hitung-a-c",
       "title": "Hitung Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Latihan topik. (METODE LUAR · Keliling sebagai Panjang Jalur)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Keliling sebagai Panjang Jalur. Mainkan.",
+      "objective": "Bayangkan berjalan di tepi bangun. Jumlahkan sisi jalur luar sampai kembali ke titik awal.",
+      "mechanicDescription": "Tiga ronde hitung. Tiap soal adalah Path Length: jumlahkan sisi, bukan kalikan luas.",
+      "voiceGuide": "Bayangkan berjalan di tepi. Pilih panjang jalur, bukan luas.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -378,9 +351,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "rumus-a-c",
       "title": "Arti Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Bayangkan berjalan di tepi bangun. Jumlahkan sisi jalur luar sampai kembali ke titik awal.",
+      "mechanicDescription": "Tiga ronde hitung. Tiap soal adalah Path Length: jumlahkan sisi, bukan kalikan luas.",
+      "voiceGuide": "Bayangkan berjalan di tepi. Pilih panjang jalur, bukan luas.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -389,9 +362,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "arti-a-c",
       "title": "Pilih Definisi",
       "bookReference": "hlm. 107–114",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Bayangkan berjalan di tepi bangun. Jumlahkan sisi jalur luar sampai kembali ke titik awal.",
+      "mechanicDescription": "Tiga ronde hitung. Tiap soal adalah Path Length: jumlahkan sisi, bukan kalikan luas.",
+      "voiceGuide": "Bayangkan berjalan di tepi. Pilih panjang jalur, bukan luas.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -400,9 +373,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "sortir-a-c",
       "title": "Pilah Ya/Tidak",
       "bookReference": "hlm. 107–114",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Bayangkan berjalan di tepi bangun. Jumlahkan sisi jalur luar sampai kembali ke titik awal.",
+      "mechanicDescription": "Tiga ronde hitung. Tiap soal adalah Path Length: jumlahkan sisi, bukan kalikan luas.",
+      "voiceGuide": "Bayangkan berjalan di tepi. Pilih panjang jalur, bukan luas.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -411,9 +384,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "jodoh-a-c",
       "title": "Jodohkan Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Bayangkan berjalan di tepi bangun. Jumlahkan sisi jalur luar sampai kembali ke titik awal. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde hitung. Tiap soal adalah Path Length: jumlahkan sisi, bukan kalikan luas.",
+      "voiceGuide": "Bayangkan berjalan di tepi. Pilih panjang jalur, bukan luas. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -422,9 +395,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "memori-a-c",
       "title": "Memori Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Bayangkan berjalan di tepi bangun. Jumlahkan sisi jalur luar sampai kembali ke titik awal. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde hitung. Tiap soal adalah Path Length: jumlahkan sisi, bukan kalikan luas.",
+      "voiceGuide": "Bayangkan berjalan di tepi. Pilih panjang jalur, bukan luas. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -433,9 +406,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "ketuk-a-c",
       "title": "Ketuk Hasil",
       "bookReference": "hlm. 107–114",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Bayangkan berjalan di tepi bangun. Jumlahkan sisi jalur luar sampai kembali ke titik awal. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde hitung. Tiap soal adalah Path Length: jumlahkan sisi, bukan kalikan luas.",
+      "voiceGuide": "Bayangkan berjalan di tepi. Pilih panjang jalur, bukan luas. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -444,9 +417,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "semua-a-c",
       "title": "Ketuk Semua Benar",
       "bookReference": "hlm. 107–114",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Bayangkan berjalan di tepi bangun. Jumlahkan sisi jalur luar sampai kembali ke titik awal. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde hitung. Tiap soal adalah Path Length: jumlahkan sisi, bukan kalikan luas.",
+      "voiceGuide": "Bayangkan berjalan di tepi. Pilih panjang jalur, bukan luas. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -455,9 +428,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "cerita-a-c",
       "title": "Cerita Pagar & Bingkai",
       "bookReference": "hlm. 107–114",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Bayangkan berjalan di tepi bangun. Jumlahkan sisi jalur luar sampai kembali ke titik awal. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde hitung. Tiap soal adalah Path Length: jumlahkan sisi, bukan kalikan luas.",
+      "voiceGuide": "Bayangkan berjalan di tepi. Pilih panjang jalur, bukan luas. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -466,9 +439,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "urut-a-c",
       "title": "Urutkan Hasil",
       "bookReference": "hlm. 107–114",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Bayangkan berjalan di tepi bangun. Jumlahkan sisi jalur luar sampai kembali ke titik awal. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde hitung. Tiap soal adalah Path Length: jumlahkan sisi, bukan kalikan luas.",
+      "voiceGuide": "Bayangkan berjalan di tepi. Pilih panjang jalur, bukan luas. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -477,9 +450,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "hitung-a-p",
       "title": "Diagram Hitung Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Baca diagram. (METODE LUAR · Keliling sebagai Panjang Jalur)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Keliling sebagai Panjang Jalur. Pilih.",
+      "objective": "Pilah soal pagar dan bingkai: yang dibutuhkan adalah panjang jalur luar.",
+      "mechanicDescription": "Tiga ronde arti. Fencing Context: tanya dulu—pagar/bingkai atau isi dalam?",
+      "voiceGuide": "Pagar dan bingkai butuh keliling. Luas untuk isi dalam.",
       "diagramType": "hitung",
       "numberA": 1,
       "numberB": 2
@@ -489,9 +462,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "rumus-a-p",
       "title": "Diagram Arti Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilah soal pagar dan bingkai: yang dibutuhkan adalah panjang jalur luar.",
+      "mechanicDescription": "Tiga ronde arti. Fencing Context: tanya dulu—pagar/bingkai atau isi dalam?",
+      "voiceGuide": "Pagar dan bingkai butuh keliling. Luas untuk isi dalam.",
       "diagramType": "rumus",
       "numberA": 1,
       "numberB": 2
@@ -501,9 +474,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "arti-a-p",
       "title": "Diagram Pilih Definisi",
       "bookReference": "hlm. 107–114",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilah soal pagar dan bingkai: yang dibutuhkan adalah panjang jalur luar.",
+      "mechanicDescription": "Tiga ronde arti. Fencing Context: tanya dulu—pagar/bingkai atau isi dalam?",
+      "voiceGuide": "Pagar dan bingkai butuh keliling. Luas untuk isi dalam.",
       "diagramType": "arti",
       "numberA": 1,
       "numberB": 2
@@ -513,9 +486,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "sortir-a-p",
       "title": "Diagram Pilah Ya/Tidak",
       "bookReference": "hlm. 107–114",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilah soal pagar dan bingkai: yang dibutuhkan adalah panjang jalur luar.",
+      "mechanicDescription": "Tiga ronde arti. Fencing Context: tanya dulu—pagar/bingkai atau isi dalam?",
+      "voiceGuide": "Pagar dan bingkai butuh keliling. Luas untuk isi dalam.",
       "diagramType": "sortir",
       "numberA": 1,
       "numberB": 2
@@ -525,9 +498,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "jodoh-a-p",
       "title": "Diagram Jodohkan Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilah soal pagar dan bingkai: yang dibutuhkan adalah panjang jalur luar. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde arti. Fencing Context: tanya dulu—pagar/bingkai atau isi dalam?",
+      "voiceGuide": "Pagar dan bingkai butuh keliling. Luas untuk isi dalam. Mainkan dengan teliti.",
       "diagramType": "jodoh",
       "numberA": 1,
       "numberB": 2
@@ -537,9 +510,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "memori-a-p",
       "title": "Diagram Memori Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilah soal pagar dan bingkai: yang dibutuhkan adalah panjang jalur luar. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde arti. Fencing Context: tanya dulu—pagar/bingkai atau isi dalam?",
+      "voiceGuide": "Pagar dan bingkai butuh keliling. Luas untuk isi dalam. Mainkan dengan teliti.",
       "diagramType": "memori",
       "numberA": 1,
       "numberB": 2
@@ -549,9 +522,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "ketuk-a-p",
       "title": "Diagram Ketuk Hasil",
       "bookReference": "hlm. 107–114",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilah soal pagar dan bingkai: yang dibutuhkan adalah panjang jalur luar. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde arti. Fencing Context: tanya dulu—pagar/bingkai atau isi dalam?",
+      "voiceGuide": "Pagar dan bingkai butuh keliling. Luas untuk isi dalam. Mainkan dengan teliti.",
       "diagramType": "ketuk",
       "numberA": 1,
       "numberB": 2
@@ -561,9 +534,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "semua-a-p",
       "title": "Diagram Ketuk Semua Benar",
       "bookReference": "hlm. 107–114",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilah soal pagar dan bingkai: yang dibutuhkan adalah panjang jalur luar. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde arti. Fencing Context: tanya dulu—pagar/bingkai atau isi dalam?",
+      "voiceGuide": "Pagar dan bingkai butuh keliling. Luas untuk isi dalam. Mainkan dengan teliti.",
       "diagramType": "semua",
       "numberA": 1,
       "numberB": 2
@@ -573,9 +546,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "cerita-a-p",
       "title": "Diagram Cerita Pagar & Bingkai",
       "bookReference": "hlm. 107–114",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilah soal pagar dan bingkai: yang dibutuhkan adalah panjang jalur luar. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde arti. Fencing Context: tanya dulu—pagar/bingkai atau isi dalam?",
+      "voiceGuide": "Pagar dan bingkai butuh keliling. Luas untuk isi dalam. Mainkan dengan teliti.",
       "diagramType": "cerita",
       "numberA": 1,
       "numberB": 2
@@ -585,9 +558,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "urut-a-p",
       "title": "Diagram Urutkan Hasil",
       "bookReference": "hlm. 107–114",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pilah soal pagar dan bingkai: yang dibutuhkan adalah panjang jalur luar. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde arti. Fencing Context: tanya dulu—pagar/bingkai atau isi dalam?",
+      "voiceGuide": "Pagar dan bingkai butuh keliling. Luas untuk isi dalam. Mainkan dengan teliti.",
       "diagramType": "urut",
       "numberA": 1,
       "numberB": 2
@@ -597,9 +570,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "hitung-a-a",
       "title": "Tulis Hitung Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Notasi. (METODE LUAR · Keliling sebagai Panjang Jalur)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Keliling sebagai Panjang Jalur. Pilih.",
+      "objective": "Bedakan keliling dan luas pada setiap pilihan.",
+      "mechanicDescription": "Tiga ronde pilah. Perimeter vs Area: luar dilalui, dalam diisi.",
+      "voiceGuide": "Keliling = jalur luar. Luas = isi dalam. Jangan tertukar.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -609,9 +582,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "rumus-a-a",
       "title": "Tulis Arti Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bedakan keliling dan luas pada setiap pilihan.",
+      "mechanicDescription": "Tiga ronde pilah. Perimeter vs Area: luar dilalui, dalam diisi.",
+      "voiceGuide": "Keliling = jalur luar. Luas = isi dalam. Jangan tertukar.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -621,9 +594,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "arti-a-a",
       "title": "Tulis Pilih Definisi",
       "bookReference": "hlm. 107–114",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bedakan keliling dan luas pada setiap pilihan.",
+      "mechanicDescription": "Tiga ronde pilah. Perimeter vs Area: luar dilalui, dalam diisi.",
+      "voiceGuide": "Keliling = jalur luar. Luas = isi dalam. Jangan tertukar.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -633,9 +606,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "sortir-a-a",
       "title": "Tulis Pilah Ya/Tidak",
       "bookReference": "hlm. 107–114",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bedakan keliling dan luas pada setiap pilihan.",
+      "mechanicDescription": "Tiga ronde pilah. Perimeter vs Area: luar dilalui, dalam diisi.",
+      "voiceGuide": "Keliling = jalur luar. Luas = isi dalam. Jangan tertukar.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -645,9 +618,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "jodoh-a-a",
       "title": "Tulis Jodohkan Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bedakan keliling dan luas pada setiap pilihan. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde pilah. Perimeter vs Area: luar dilalui, dalam diisi.",
+      "voiceGuide": "Keliling = jalur luar. Luas = isi dalam. Jangan tertukar. Mainkan dengan teliti.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -657,9 +630,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "memori-a-a",
       "title": "Tulis Memori Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bedakan keliling dan luas pada setiap pilihan. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde pilah. Perimeter vs Area: luar dilalui, dalam diisi.",
+      "voiceGuide": "Keliling = jalur luar. Luas = isi dalam. Jangan tertukar. Mainkan dengan teliti.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -669,9 +642,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "bs-a",
       "title": "Benar atau Salah",
       "bookReference": "hlm. 107–114",
-      "objective": "Menilai.",
-      "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "objective": "Bedakan keliling dan luas pada setiap pilihan. Latihan lanjutan.",
+      "mechanicDescription": "Dua ronde. Tiga ronde pilah. Perimeter vs Area: luar dilalui, dalam diisi.",
+      "voiceGuide": "Keliling = jalur luar. Luas = isi dalam. Jangan tertukar. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -681,9 +654,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "det-a",
       "title": "Detektif Keliling",
       "bookReference": "hlm. 107–114",
-      "objective": "Petunjuk.",
-      "mechanicDescription": "Tiga soal.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bedakan keliling dan luas pada setiap pilihan. Latihan lanjutan.",
+      "mechanicDescription": "Tiga soal. Tiga ronde pilah. Perimeter vs Area: luar dilalui, dalam diisi.",
+      "voiceGuide": "Keliling = jalur luar. Luas = isi dalam. Jangan tertukar. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -693,9 +666,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "peta-a",
       "title": "Peta Konsep",
       "bookReference": "hlm. 107–114",
-      "objective": "Peta.",
-      "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bedakan keliling dan luas pada setiap pilihan. Latihan lanjutan.",
+      "mechanicDescription": "Satu peta. Tiga ronde pilah. Perimeter vs Area: luar dilalui, dalam diisi.",
+      "voiceGuide": "Keliling = jalur luar. Luas = isi dalam. Jangan tertukar. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -705,9 +678,9 @@ export const SUB_A54: SubBabNaskah = {
       "gameType": "cerita-q-a",
       "title": "Cerita Angka",
       "bookReference": "hlm. 107–114",
-      "objective": "Cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bedakan keliling dan luas pada setiap pilihan. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde pilah. Perimeter vs Area: luar dilalui, dalam diisi.",
+      "voiceGuide": "Keliling = jalur luar. Luas = isi dalam. Jangan tertukar. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -715,49 +688,31 @@ export const SUB_A54: SubBabNaskah = {
   ],
   "poin": [
     {
-      "ikon": "⭕",
-      "nama": "Arti",
-      "isi": "Keliling = jumlah panjang semua sisi.",
-      "suara": "Batas luar."
+      "ikon": "🚶",
+      "nama": "Path Length",
+      "isi": "Keliling adalah panjang jalur di batas luar sampai kembali ke titik awal. Bayangkan berjalan mengelilingi bangun.",
+      "suara": "Panjang jalur tepi."
     },
     {
-      "ikon": "➕",
-      "nama": "Cara",
-      "isi": "Jumlahkan semua sisi dengan satuan sama.",
-      "suara": "Dasar."
+      "ikon": "🏡",
+      "nama": "Fencing Context",
+      "isi": "Pagar, bingkai, dan dinding benteng membutuhkan panjang jalur luar, bukan luas daerah dalam.",
+      "suara": "Konteks pagar dan bingkai."
     },
     {
-      "ikon": "🏠",
-      "nama": "Pakai",
-      "isi": "Pagar, bingkai, batas benteng.",
-      "suara": "Aplikasi."
-    },
-    {
-      "ikon": "⬜",
+      "ikon": "⚠️",
       "nama": "Bukan luas",
-      "isi": "Luas mengisi dalam, keliling mengelilingi luar.",
+      "isi": "Luas mengisi dalam. Rumus panjang kali lebar atau sisi kali sisi bukan keliling.",
       "suara": "Jangan tertukar."
     },
     {
-      "ikon": "🌍",
-      "nama": "Keliling sebagai Panjang Jalur",
-      "isi": "METODE LUAR · Path Length: Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal. (asal: Van de Walle / pengukuran).",
-      "suara": "METODE LUAR. Keliling sebagai Panjang Jalur. Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Konteks Pagar dan Bingkai",
-      "isi": "METODE LUAR · Fencing Context: Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas. (asal: Real-world measurement pedagogy).",
-      "suara": "METODE LUAR. Konteks Pagar dan Bingkai. Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Bedakan Keliling dan Luas",
-      "isi": "METODE LUAR · Perimeter vs Area: Keliling mengelilingi luar; luas mengisi dalam. Jangan tertukar. (asal: Common misconception research).",
-      "suara": "METODE LUAR. Bedakan Keliling dan Luas. Keliling mengelilingi luar; luas mengisi dalam. Jangan tertukar."
+      "ikon": "➕",
+      "nama": "Cara dasar",
+      "isi": "Tulis semua sisi luar, samakan satuan, jumlahkan, lalu cek apakah hasilnya masuk akal.",
+      "suara": "Jumlahkan sisi luar."
     }
   ],
-  "poinSuara": "Ingat: keliling jumlah sisi, bukan luas, dipakai pagar dan bingkai.",
+  "poinSuara": "Ingat tiga kunci: keliling adalah panjang jalur, dipakai untuk pagar dan bingkai, dan berbeda dari luas.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -779,11 +734,11 @@ export const SUB_A54: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: ukur keliling meja atau bingkai foto di rumahmu.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Keliling sebagai Panjang Jalur pada satu benda nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Apa beda keliling dan luas?",
-    "Mengapa pagar memakai keliling?",
-    "Bagaimana menghitung 4+4+4+4?"
+    "Bagaimana Keliling sebagai Panjang Jalur membantumu memahami soal?",
+    "Kapan kamu memakai Konteks Pagar dan Bingkai?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
@@ -804,7 +759,7 @@ export const SUB_A54: SubBabNaskah = {
       "nama": "Fencing Context",
       "namaId": "Konteks Pagar dan Bingkai",
       "asal": "Real-world measurement pedagogy",
-      "ringkas": "Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas.",
+      "ringkas": "Panjang pagar, bingkai, atau batas benteng memakai keliling, bukan luas daerah di dalamnya.",
       "tahap": [
         "Story",
         "Infografis",
@@ -816,8 +771,8 @@ export const SUB_A54: SubBabNaskah = {
       "label": "METODE LUAR",
       "nama": "Perimeter vs Area",
       "namaId": "Bedakan Keliling dan Luas",
-      "asal": "Common misconception research",
-      "ringkas": "Keliling mengelilingi luar; luas mengisi dalam. Jangan tertukar.",
+      "asal": "Misconception research",
+      "ringkas": "Keliling mengelilingi luar; luas mengisi dalam. Satuannya panjang, bukan daerah.",
       "tahap": [
         "Story",
         "Infografis",
@@ -831,159 +786,155 @@ export const SUB_B54: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Keliling Segitiga)",
   "fullTitle": "Sub-Bab B: Keliling Segitiga",
-  "targetDescription": "Siswa menghitung keliling segitiga sembarang dengan menjumlahkan tiga sisi dan keliling segitiga sama sisi dengan 3 × sisi sesuai Buku Siswa Kelas V Bab 4.",
+  "targetDescription": "Siswa menghitung keliling segitiga dengan menjumlahkan tiga sisi (side sum), memakai pintasan 3 × sisi pada segitiga sama sisi, serta mengukur dengan satuan yang sama sesuai Buku Siswa Kelas V Bab 4 Sub-Bab B.",
   "secondaryBg": "#DBEAFE",
   "secondaryBorder": "#2563EB",
   "secondaryText": "#1E3A8A",
   "silabus": {
-    "teksSuara": "Kita belajar keliling segitiga. Jumlahkan tiga sisi. Jika sama sisi, boleh dikali tiga. Contoh lima plus empat plus tujuh sama dengan enam belas. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-    "cp": "Siswa menentukan keliling segitiga.",
+    "teksSuara": "Kita belajar keliling segitiga. Tetap pakai Path Length: berjalan di tiga sisi sampai kembali. Untuk segitiga sembarang jumlahkan a plus b plus c. Jika sama sisi, tiga sisi sama sehingga boleh dikali tiga. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menentukan keliling segitiga sembarang dan segitiga sama sisi.",
     "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 4: Keliling Bangun Datar, Sub-Bab B hlm. 115–117)."
   },
   "videos": [
     {
       "id": "K5B4B-V1",
-      "judul": "Jumlah Tiga Sisi",
-      "subjudul": "Umum",
+      "judul": "Tiga Sisi, Satu Jalur",
+      "subjudul": "Side Sum",
       "adegan": [
         {
           "id": "K5B4B-V1-1",
-          "judul": "Segitiga",
+          "judul": "Segitiga punya tiga sisi",
           "ketukan": [
-            "Segitiga punya tiga sisi.",
-            "Kelilingnya jumlah ketiga sisi.",
-            "Contoh lima, empat, tujuh.",
-            "Hasil enam belas."
+            "Segitiga adalah bangun dengan tiga sisi. Jalur kelilingnya melewati ketiga sisi itu.",
+            "Tidak peduli siku-siku, sama kaki, atau sembarang: dasar hitungnya sama.",
+            "Keliling = sisi a ditambah sisi b ditambah sisi c.",
+            "Itu masih Path Length: kamu berjalan di a, lalu b, lalu c, lalu kembali."
           ],
           "papan": [
             "3 sisi",
+            "semua jenis",
             "a+b+c",
-            "5+4+7",
-            "16"
+            "path length"
           ]
         },
         {
           "id": "K5B4B-V1-2",
-          "judul": "Ukur",
+          "judul": "Contoh 5, 4, 7",
           "ketukan": [
-            "Ukur dengan penggaris.",
-            "Tulis tiap sisi.",
-            "Jumlahkan.",
-            "Sebutkan satuannya."
+            "Di buku ada segitiga sisi lima, empat, dan tujuh centi meter.",
+            "Jalurmu: lima, lalu empat, lalu tujuh.",
+            "Jumlahkan: lima plus empat empat belas, plus tujuh dua puluh satu? Tunggu: lima plus empat sama dengan sembilan, plus tujuh sama dengan enam belas.",
+            "Keliling enam belas centi meter. Bukan lima kali empat."
           ],
           "papan": [
-            "ukur",
-            "tulis",
-            "jumlah",
-            "cm"
+            "5, 4, 7",
+            "jalan 3 sisi",
+            "5+4+7=16",
+            "K=16 cm"
           ]
         },
         {
           "id": "K5B4B-V1-3",
-          "judul": "Rumus",
+          "judul": "Ukur dulu",
           "ketukan": [
-            "Secara umum.",
-            "Keliling sama dengan sisi satu plus dua plus tiga.",
-            "Berlaku untuk semua segitiga.",
-            "Ingat.",
-            "METODE LUAR. Jumlah Tiga Sisi: Keliling segitiga = sisi satu + sisi dua + sisi tiga."
+            "Jika sisi belum tertulis, ukur dengan penggaris. Jangan menebak.",
+            "Pastikan ketiga ukuran memakai satuan yang sama.",
+            "Baru jumlahkan. Ini metode Ukur Dulu Baru Jumlah.",
+            "METODE LUAR · Jumlah Tiga Sisi: a + b + c adalah Path Length pada segitiga."
           ],
           "papan": [
-            "umum",
-            "a+b+c",
-            "semua",
-            "ingat",
-            "METODE LUAR · Jumlah Tiga Sisi"
+            "ukur",
+            "satuan sama",
+            "ukur lalu jumlah",
+            "side sum"
           ]
         }
       ]
     },
     {
       "id": "K5B4B-V2",
-      "judul": "Sama Sisi",
-      "subjudul": "Rumus 3×",
+      "judul": "Sama Sisi: Kali Tiga",
+      "subjudul": "Equilateral Shortcut",
       "adegan": [
         {
           "id": "K5B4B-V2-1",
-          "judul": "Tiga sama",
+          "judul": "Tiga sisi sama",
           "ketukan": [
-            "Ketiga sisi sama panjang.",
-            "Ada tanda sisi sama.",
-            "Contoh sisi lima.",
-            "Keliling tiga kali lima."
+            "Pada segitiga sama sisi, ketiga sisi sama panjang. Biasanya ada tanda sisi sama.",
+            "Jika sisi lima, jalurmu: lima, lima, dan lima.",
+            "Menjumlah tiga kali lima sama dengan mengalikan tiga kali lima.",
+            "Hasil lima belas. Pintasan ini menghemat waktu, hasilnya sama dengan menjumlah."
           ],
           "papan": [
-            "sama",
-            "tanda",
-            "sisi 5",
+            "sama sisi",
+            "5+5+5",
+            "3×5",
             "15"
           ]
         },
         {
           "id": "K5B4B-V2-2",
-          "judul": "Mengapa dikali",
+          "judul": "Sisi enam",
           "ketukan": [
-            "Menjumlah tiga sisi sama.",
-            "Sama dengan dikali tiga.",
-            "Lebih cepat.",
-            "Hasil sama."
+            "Jika sisi enam centi meter, keliling tiga kali enam = delapan belas.",
+            "Jangan memakai rumus ini pada segitiga yang sisi-sisinya beda.",
+            "Sama kaki punya dua sisi sama, tetap jumlahkan tiga sisi; jangan otomatis kali tiga.",
+            "Pintasan hanya untuk ketiga sisi benar-benar sama."
           ],
           "papan": [
-            "jumlah=kali",
-            "3×",
-            "cepat",
-            "sama"
+            "3×6=18",
+            "cek dulu",
+            "sama kaki ≠ ×3",
+            "syarat ketat"
           ]
         },
         {
           "id": "K5B4B-V2-3",
-          "judul": "Sisi enam",
+          "judul": "Mengapa boleh dikali",
           "ketukan": [
-            "Jika sisi enam.",
-            "Tiga kali enam.",
-            "Delapan belas.",
-            "Ayo latihan.",
-            "METODE LUAR. Pintasan Segitiga Sama Sisi: Jika ketiga sisi sama, keliling = 3 × panjang sisi."
+            "Karena menjumlah s + s + s sama dengan 3 × s.",
+            "Ini masih Path Length, hanya ditulis lebih singkat.",
+            "Setelah hitung, cek: hasil harus tiga kali sisi, dan lebih besar dari satu sisi.",
+            "METODE LUAR · Pintasan Segitiga Sama Sisi: 3 × sisi, hanya jika ketiga sisi sama."
           ],
           "papan": [
-            "sisi 6",
-            "3×6",
-            "18",
-            "latihan",
-            "METODE LUAR · Pintasan Segitiga Sama Sisi"
+            "s+s+s",
+            "tetap jalur",
+            "cek",
+            "equilateral"
           ]
         }
       ]
     },
     {
       "id": "K5B4B-V3",
-      "judul": "Sama Kaki & Cek",
-      "subjudul": "Lanjut",
+      "judul": "Cek dan Siap",
+      "subjudul": "Measure Then Sum",
       "adegan": [
         {
           "id": "K5B4B-V3-1",
-          "judul": "Sama kaki",
+          "judul": "Sama kaki hati-hati",
           "ketukan": [
-            "Dua sisi sama.",
-            "Tetap jumlahkan tiga sisi.",
-            "Jangan salah rumus.",
-            "Cek dulu."
+            "Segitiga sama kaki: dua sisi sama, satu sisi berbeda.",
+            "Tetap ukur atau baca ketiga sisi, lalu jumlahkan.",
+            "Kesalahan umum: mengira sama kaki boleh langsung kali tiga.",
+            "Ingat: kali tiga hanya sama sisi."
           ],
           "papan": [
             "2 sama",
-            "a+b+c",
-            "cek",
-            "hati-hati"
+            "tetap a+b+c",
+            "salah kaprah",
+            "ingat syarat"
           ]
         },
         {
           "id": "K5B4B-V3-2",
           "judul": "Cek hasil",
           "ketukan": [
-            "Hasil harus lebih dari sisi terpanjang.",
-            "Satuan tetap.",
-            "Hitung ulang jika ragu.",
-            "Siap bermain!"
+            "Hasil keliling harus lebih besar dari sisi terpanjang.",
+            "Jika satuan centi meter, jawabannya juga centi meter.",
+            "Hitung ulang jika ragu: side sum tidak boleh melewatkan satu sisi.",
+            "Siap bermain dengan rumus a+b+c dan 3×s."
           ],
           "papan": [
             "cek",
@@ -994,20 +945,18 @@ export const SUB_B54: SubBabNaskah = {
         },
         {
           "id": "K5B4B-V3-3",
-          "judul": "Siap C",
+          "judul": "Jembatan ke segi empat",
           "ketukan": [
-            "Segitiga selesai.",
-            "Lanjut segi empat.",
-            "Ada persegi panjang dan persegi.",
-            "Ayo!",
-            "METODE LUAR. Ukur Dulu Baru Jumlah: Ukur tiap sisi dengan satuan sama, lalu jumlahkan."
+            "Segitiga selesai. Berikutnya segi empat: ada dua panjang dan dua lebar.",
+            "Dasarnya sama: Path Length di seluruh sisi luar.",
+            "Bekalmu: side sum, pintasan sama sisi, dan ukur dulu.",
+            "METODE LUAR · Ukur Dulu Baru Jumlah: akurat sebelum menjumlah."
           ],
           "papan": [
-            "selesai",
             "segi 4",
-            "PP & persegi",
-            "ayo",
-            "METODE LUAR · Ukur Dulu Baru Jumlah"
+            "dasar sama",
+            "bekal",
+            "measure then sum"
           ]
         }
       ]
@@ -1017,159 +966,138 @@ export const SUB_B54: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Kenali jenis",
-      "stepDesc": "Sembarang/sama sisi?",
+      "stepDesc": "Sembarang, sama kaki, atau sama sisi? Syarat rumus bergantung jenis.",
       "icon": "👀",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Ukur sisi",
-      "stepDesc": "a, b, c",
+      "stepTitle": "2. Ukur / baca sisi",
+      "stepDesc": "Catat a, b, c dengan satuan sama.",
       "icon": "📏",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Pilih rumus",
-      "stepDesc": "a+b+c atau 3s",
-      "icon": "🧮",
+      "stepTitle": "3. Side Sum",
+      "stepDesc": "Selalu aman: K = a + b + c.",
+      "icon": "➕",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Hitung",
-      "stepDesc": "Dapat keliling",
-      "icon": "➕",
+      "stepTitle": "4. Pintasan?",
+      "stepDesc": "Hanya jika a = b = c, boleh K = 3 × s.",
+      "icon": "✨",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Satuan",
-      "stepDesc": "cm",
-      "icon": "📐",
+      "stepTitle": "5. Hitung",
+      "stepDesc": "Jumlahkan atau kalikan sesuai pilihan yang sah.",
+      "icon": "🧮",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek",
-      "stepDesc": "Masuk akal?",
+      "stepDesc": "Hasil > sisi terpanjang; satuan tetap.",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. METODE LUAR · Jumlah Tiga Sisi",
-      "stepDesc": "Keliling segitiga = sisi satu + sisi dua + sisi tiga.",
-      "icon": "🌍",
+      "stepTitle": "7. Sama kaki",
+      "stepDesc": "Dua sisi sama tetap pakai a+b+c, bukan otomatis 3×s.",
+      "icon": "🦵",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. METODE LUAR · Pintasan Segitiga Sama Sisi",
-      "stepDesc": "Jika ketiga sisi sama, keliling = 3 × panjang sisi.",
-      "icon": "🌍",
+      "stepTitle": "8. Lanjut C",
+      "stepDesc": "Segi empat memakai Path Length yang sama dengan rumus 2(p+l).",
+      "icon": "➡️",
       "flowFrom": "7",
       "flowTo": "END"
     }
   ],
   "infografis": [
     {
-      "judul": "Umum",
+      "judul": "a+b+c",
       "emoji": "🔺",
       "countNum": 1,
-      "countWord": "a+b+c",
-      "suara": "Semua segitiga."
+      "countWord": "umum",
+      "suara": "Semua segitiga: jumlah tiga sisi."
     },
     {
       "judul": "5+4+7",
       "emoji": "➕",
       "countNum": 16,
       "countWord": "16 cm",
-      "suara": "Contoh."
+      "suara": "Contoh buku: keliling 16."
     },
     {
-      "judul": "Sama sisi",
+      "judul": "3×sisi",
       "emoji": "✨",
       "countNum": 1,
-      "countWord": "3×sisi",
-      "suara": "Cepat."
+      "countWord": "sama sisi",
+      "suara": "Pintasan hanya jika ketiga sisi sama."
     },
     {
       "judul": "3×5",
       "emoji": "5️⃣",
       "countNum": 15,
       "countWord": "15 cm",
-      "suara": "Contoh."
+      "suara": "Sama sisi sisi 5."
     },
     {
       "judul": "3×6",
       "emoji": "6️⃣",
       "countNum": 18,
       "countWord": "18 cm",
-      "suara": "Contoh."
+      "suara": "Sama sisi sisi 6."
     },
     {
-      "judul": "Tanda sama",
-      "emoji": "≡",
+      "judul": "Ukur dulu",
+      "emoji": "📏",
       "countNum": 1,
-      "countWord": "sisi sama",
-      "suara": "Gambar."
+      "countWord": "penggaris",
+      "suara": "Ukur tiap sisi sebelum jumlah."
     },
     {
       "judul": "3+4+5",
       "emoji": "📐",
       "countNum": 12,
       "countWord": "12 cm",
-      "suara": "Siku."
+      "suara": "Contoh lain side sum."
     },
     {
       "judul": "Sama kaki",
       "emoji": "🦵",
       "countNum": 1,
       "countWord": "tetap a+b+c",
-      "suara": "Hati-hati."
+      "suara": "Jangan langsung kali tiga."
     },
     {
       "judul": "Cek",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "> sisi max",
-      "suara": "Validasi."
+      "suara": "Validasi hasil."
     },
     {
-      "judul": "Siap C",
-      "emoji": "➡️",
+      "judul": "Path Length",
+      "emoji": "🚶",
       "countNum": 1,
-      "countWord": "segi 4",
-      "suara": "Lanjut."
-    },
-    {
-      "judul": "Jumlah Tiga Sisi",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "METODE LUAR · Side Sum",
-      "suara": "METODE LUAR. Jumlah Tiga Sisi. Keliling segitiga = sisi satu + sisi dua + sisi tiga."
-    },
-    {
-      "judul": "Pintasan Segitiga Sama Sisi",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "METODE LUAR · Equilateral Shortcut",
-      "suara": "METODE LUAR. Pintasan Segitiga Sama Sisi. Jika ketiga sisi sama, keliling = 3 × panjang sisi."
-    },
-    {
-      "judul": "Ukur Dulu Baru Jumlah",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Measure Then Sum",
-      "suara": "METODE LUAR. Ukur Dulu Baru Jumlah. Ukur tiap sisi dengan satuan sama, lalu jumlahkan."
+      "countWord": "3 sisi",
+      "suara": "Berjalan di tiga sisi."
     }
   ],
   "games": [
@@ -1178,9 +1106,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "hitung-b-c",
       "title": "Hitung Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Latihan topik. (METODE LUAR · Jumlah Tiga Sisi)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Jumlah Tiga Sisi. Mainkan.",
+      "objective": "Jumlahkan ketiga sisi segitiga sebagai Path Length.",
+      "mechanicDescription": "Tiga ronde. Side Sum: a+b+c. Jangan langsung kali tiga kecuali sama sisi.",
+      "voiceGuide": "Segitiga: jumlahkan ketiga sisi jalur.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1189,9 +1117,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "rumus-b-c",
       "title": "Rumus Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Jumlahkan ketiga sisi segitiga sebagai Path Length.",
+      "mechanicDescription": "Tiga ronde. Side Sum: a+b+c. Jangan langsung kali tiga kecuali sama sisi.",
+      "voiceGuide": "Segitiga: jumlahkan ketiga sisi jalur.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1200,9 +1128,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "arti-b-c",
       "title": "Arti Rumus",
       "bookReference": "hlm. 115–117",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Jumlahkan ketiga sisi segitiga sebagai Path Length.",
+      "mechanicDescription": "Tiga ronde. Side Sum: a+b+c. Jangan langsung kali tiga kecuali sama sisi.",
+      "voiceGuide": "Segitiga: jumlahkan ketiga sisi jalur.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1211,9 +1139,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "sortir-b-c",
       "title": "Pilah Sama/Bebas",
       "bookReference": "hlm. 115–117",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Jumlahkan ketiga sisi segitiga sebagai Path Length.",
+      "mechanicDescription": "Tiga ronde. Side Sum: a+b+c. Jangan langsung kali tiga kecuali sama sisi.",
+      "voiceGuide": "Segitiga: jumlahkan ketiga sisi jalur.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1222,9 +1150,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "jodoh-b-c",
       "title": "Jodohkan Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Jumlahkan ketiga sisi segitiga sebagai Path Length. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Side Sum: a+b+c. Jangan langsung kali tiga kecuali sama sisi.",
+      "voiceGuide": "Segitiga: jumlahkan ketiga sisi jalur. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1233,9 +1161,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "memori-b-c",
       "title": "Memori Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Jumlahkan ketiga sisi segitiga sebagai Path Length. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Side Sum: a+b+c. Jangan langsung kali tiga kecuali sama sisi.",
+      "voiceGuide": "Segitiga: jumlahkan ketiga sisi jalur. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1244,9 +1172,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "ketuk-b-c",
       "title": "Ketuk Hasil",
       "bookReference": "hlm. 115–117",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Jumlahkan ketiga sisi segitiga sebagai Path Length. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Side Sum: a+b+c. Jangan langsung kali tiga kecuali sama sisi.",
+      "voiceGuide": "Segitiga: jumlahkan ketiga sisi jalur. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1255,9 +1183,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "semua-b-c",
       "title": "Ketuk Semua Benar",
       "bookReference": "hlm. 115–117",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Jumlahkan ketiga sisi segitiga sebagai Path Length. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Side Sum: a+b+c. Jangan langsung kali tiga kecuali sama sisi.",
+      "voiceGuide": "Segitiga: jumlahkan ketiga sisi jalur. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1266,9 +1194,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "cerita-b-c",
       "title": "Cerita Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Jumlahkan ketiga sisi segitiga sebagai Path Length. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Side Sum: a+b+c. Jangan langsung kali tiga kecuali sama sisi.",
+      "voiceGuide": "Segitiga: jumlahkan ketiga sisi jalur. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1277,9 +1205,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "urut-b-c",
       "title": "Urutkan Hasil",
       "bookReference": "hlm. 115–117",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Jumlahkan ketiga sisi segitiga sebagai Path Length. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Side Sum: a+b+c. Jangan langsung kali tiga kecuali sama sisi.",
+      "voiceGuide": "Segitiga: jumlahkan ketiga sisi jalur. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1288,9 +1216,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "hitung-b-p",
       "title": "Diagram Hitung Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Baca diagram. (METODE LUAR · Jumlah Tiga Sisi)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Jumlah Tiga Sisi. Pilih.",
+      "objective": "Pakai jalan pintas 3×sisi hanya jika ketiga sisi sama.",
+      "mechanicDescription": "Tiga ronde rumus. Equilateral shortcut hanya bila sisi sama.",
+      "voiceGuide": "Sama sisi? Boleh tiga kali sisi. Kalau tidak, jumlahkan.",
       "diagramType": "hitung",
       "numberA": 1,
       "numberB": 2
@@ -1300,9 +1228,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "rumus-b-p",
       "title": "Diagram Rumus Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai jalan pintas 3×sisi hanya jika ketiga sisi sama.",
+      "mechanicDescription": "Tiga ronde rumus. Equilateral shortcut hanya bila sisi sama.",
+      "voiceGuide": "Sama sisi? Boleh tiga kali sisi. Kalau tidak, jumlahkan.",
       "diagramType": "rumus",
       "numberA": 1,
       "numberB": 2
@@ -1312,9 +1240,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "arti-b-p",
       "title": "Diagram Arti Rumus",
       "bookReference": "hlm. 115–117",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai jalan pintas 3×sisi hanya jika ketiga sisi sama.",
+      "mechanicDescription": "Tiga ronde rumus. Equilateral shortcut hanya bila sisi sama.",
+      "voiceGuide": "Sama sisi? Boleh tiga kali sisi. Kalau tidak, jumlahkan.",
       "diagramType": "arti",
       "numberA": 1,
       "numberB": 2
@@ -1324,9 +1252,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "sortir-b-p",
       "title": "Diagram Pilah Sama/Bebas",
       "bookReference": "hlm. 115–117",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai jalan pintas 3×sisi hanya jika ketiga sisi sama.",
+      "mechanicDescription": "Tiga ronde rumus. Equilateral shortcut hanya bila sisi sama.",
+      "voiceGuide": "Sama sisi? Boleh tiga kali sisi. Kalau tidak, jumlahkan.",
       "diagramType": "sortir",
       "numberA": 1,
       "numberB": 2
@@ -1336,9 +1264,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "jodoh-b-p",
       "title": "Diagram Jodohkan Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai jalan pintas 3×sisi hanya jika ketiga sisi sama. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde rumus. Equilateral shortcut hanya bila sisi sama.",
+      "voiceGuide": "Sama sisi? Boleh tiga kali sisi. Kalau tidak, jumlahkan. Mainkan dengan teliti.",
       "diagramType": "jodoh",
       "numberA": 1,
       "numberB": 2
@@ -1348,9 +1276,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "memori-b-p",
       "title": "Diagram Memori Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai jalan pintas 3×sisi hanya jika ketiga sisi sama. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde rumus. Equilateral shortcut hanya bila sisi sama.",
+      "voiceGuide": "Sama sisi? Boleh tiga kali sisi. Kalau tidak, jumlahkan. Mainkan dengan teliti.",
       "diagramType": "memori",
       "numberA": 1,
       "numberB": 2
@@ -1360,9 +1288,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "ketuk-b-p",
       "title": "Diagram Ketuk Hasil",
       "bookReference": "hlm. 115–117",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai jalan pintas 3×sisi hanya jika ketiga sisi sama. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde rumus. Equilateral shortcut hanya bila sisi sama.",
+      "voiceGuide": "Sama sisi? Boleh tiga kali sisi. Kalau tidak, jumlahkan. Mainkan dengan teliti.",
       "diagramType": "ketuk",
       "numberA": 1,
       "numberB": 2
@@ -1372,9 +1300,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "semua-b-p",
       "title": "Diagram Ketuk Semua Benar",
       "bookReference": "hlm. 115–117",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai jalan pintas 3×sisi hanya jika ketiga sisi sama. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde rumus. Equilateral shortcut hanya bila sisi sama.",
+      "voiceGuide": "Sama sisi? Boleh tiga kali sisi. Kalau tidak, jumlahkan. Mainkan dengan teliti.",
       "diagramType": "semua",
       "numberA": 1,
       "numberB": 2
@@ -1384,9 +1312,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "cerita-b-p",
       "title": "Diagram Cerita Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai jalan pintas 3×sisi hanya jika ketiga sisi sama. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde rumus. Equilateral shortcut hanya bila sisi sama.",
+      "voiceGuide": "Sama sisi? Boleh tiga kali sisi. Kalau tidak, jumlahkan. Mainkan dengan teliti.",
       "diagramType": "cerita",
       "numberA": 1,
       "numberB": 2
@@ -1396,9 +1324,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "urut-b-p",
       "title": "Diagram Urutkan Hasil",
       "bookReference": "hlm. 115–117",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Pakai jalan pintas 3×sisi hanya jika ketiga sisi sama. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde rumus. Equilateral shortcut hanya bila sisi sama.",
+      "voiceGuide": "Sama sisi? Boleh tiga kali sisi. Kalau tidak, jumlahkan. Mainkan dengan teliti.",
       "diagramType": "urut",
       "numberA": 1,
       "numberB": 2
@@ -1408,9 +1336,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "hitung-b-a",
       "title": "Tulis Hitung Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Notasi. (METODE LUAR · Jumlah Tiga Sisi)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Jumlah Tiga Sisi. Pilih.",
+      "objective": "Baca tanda sisi sama, lalu pilih cara hitung yang tepat.",
+      "mechanicDescription": "Tiga ronde. Tanda sisi sama = boleh 3×s; tanpa tanda = Side Sum.",
+      "voiceGuide": "Lihat tanda sisi. Lalu pilih jumlah atau kali tiga.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -1420,9 +1348,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "rumus-b-a",
       "title": "Tulis Rumus Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tanda sisi sama, lalu pilih cara hitung yang tepat.",
+      "mechanicDescription": "Tiga ronde. Tanda sisi sama = boleh 3×s; tanpa tanda = Side Sum.",
+      "voiceGuide": "Lihat tanda sisi. Lalu pilih jumlah atau kali tiga.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -1432,9 +1360,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "arti-b-a",
       "title": "Tulis Arti Rumus",
       "bookReference": "hlm. 115–117",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tanda sisi sama, lalu pilih cara hitung yang tepat.",
+      "mechanicDescription": "Tiga ronde. Tanda sisi sama = boleh 3×s; tanpa tanda = Side Sum.",
+      "voiceGuide": "Lihat tanda sisi. Lalu pilih jumlah atau kali tiga.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -1444,9 +1372,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "sortir-b-a",
       "title": "Tulis Pilah Sama/Bebas",
       "bookReference": "hlm. 115–117",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tanda sisi sama, lalu pilih cara hitung yang tepat.",
+      "mechanicDescription": "Tiga ronde. Tanda sisi sama = boleh 3×s; tanpa tanda = Side Sum.",
+      "voiceGuide": "Lihat tanda sisi. Lalu pilih jumlah atau kali tiga.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -1456,9 +1384,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "jodoh-b-a",
       "title": "Tulis Jodohkan Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tanda sisi sama, lalu pilih cara hitung yang tepat. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Tanda sisi sama = boleh 3×s; tanpa tanda = Side Sum.",
+      "voiceGuide": "Lihat tanda sisi. Lalu pilih jumlah atau kali tiga. Mainkan dengan teliti.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -1468,9 +1396,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "memori-b-a",
       "title": "Tulis Memori Segitiga",
       "bookReference": "hlm. 115–117",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tanda sisi sama, lalu pilih cara hitung yang tepat. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Tanda sisi sama = boleh 3×s; tanpa tanda = Side Sum.",
+      "voiceGuide": "Lihat tanda sisi. Lalu pilih jumlah atau kali tiga. Mainkan dengan teliti.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -1480,9 +1408,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "bs-b",
       "title": "Benar atau Salah",
       "bookReference": "hlm. 115–117",
-      "objective": "Menilai.",
-      "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "objective": "Baca tanda sisi sama, lalu pilih cara hitung yang tepat. Latihan lanjutan.",
+      "mechanicDescription": "Dua ronde. Tiga ronde. Tanda sisi sama = boleh 3×s; tanpa tanda = Side Sum.",
+      "voiceGuide": "Lihat tanda sisi. Lalu pilih jumlah atau kali tiga. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -1492,9 +1420,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "det-b",
       "title": "Detektif Keliling",
       "bookReference": "hlm. 115–117",
-      "objective": "Petunjuk.",
-      "mechanicDescription": "Tiga soal.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tanda sisi sama, lalu pilih cara hitung yang tepat. Latihan lanjutan.",
+      "mechanicDescription": "Tiga soal. Tiga ronde. Tanda sisi sama = boleh 3×s; tanpa tanda = Side Sum.",
+      "voiceGuide": "Lihat tanda sisi. Lalu pilih jumlah atau kali tiga. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -1504,9 +1432,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "peta-b",
       "title": "Peta Konsep",
       "bookReference": "hlm. 115–117",
-      "objective": "Peta.",
-      "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tanda sisi sama, lalu pilih cara hitung yang tepat. Latihan lanjutan.",
+      "mechanicDescription": "Satu peta. Tiga ronde. Tanda sisi sama = boleh 3×s; tanpa tanda = Side Sum.",
+      "voiceGuide": "Lihat tanda sisi. Lalu pilih jumlah atau kali tiga. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -1516,9 +1444,9 @@ export const SUB_B54: SubBabNaskah = {
       "gameType": "cerita-q-b",
       "title": "Cerita Angka",
       "bookReference": "hlm. 115–117",
-      "objective": "Cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tanda sisi sama, lalu pilih cara hitung yang tepat. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Tanda sisi sama = boleh 3×s; tanpa tanda = Side Sum.",
+      "voiceGuide": "Lihat tanda sisi. Lalu pilih jumlah atau kali tiga. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -1526,49 +1454,31 @@ export const SUB_B54: SubBabNaskah = {
   ],
   "poin": [
     {
-      "ikon": "🔺",
-      "nama": "Umum",
-      "isi": "Keliling segitiga = a+b+c.",
+      "ikon": "➕",
+      "nama": "Side Sum",
+      "isi": "Keliling segitiga = a + b + c. Ini Path Length pada tiga sisi.",
       "suara": "Jumlah tiga sisi."
     },
     {
       "ikon": "✨",
-      "nama": "Sama sisi",
-      "isi": "Keliling = 3 × sisi.",
-      "suara": "Lebih cepat."
+      "nama": "Pintasan sama sisi",
+      "isi": "Jika a = b = c, K = 3 × s. Hasil sama dengan menjumlah.",
+      "suara": "Tiga kali sisi."
     },
     {
       "ikon": "📏",
-      "nama": "Ukur",
-      "isi": "Pakai penggaris, satuan sama.",
-      "suara": "Akurat."
+      "nama": "Ukur dulu",
+      "isi": "Ukur dengan penggaris dan satuan sama sebelum menjumlah.",
+      "suara": "Akurat dulu."
     },
     {
-      "ikon": "✅",
-      "nama": "Cek",
-      "isi": "Hasil > sisi terpanjang.",
-      "suara": "Masuk akal."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Jumlah Tiga Sisi",
-      "isi": "METODE LUAR · Side Sum: Keliling segitiga = sisi satu + sisi dua + sisi tiga. (asal: Elementary geometry).",
-      "suara": "METODE LUAR. Jumlah Tiga Sisi. Keliling segitiga = sisi satu + sisi dua + sisi tiga."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Pintasan Segitiga Sama Sisi",
-      "isi": "METODE LUAR · Equilateral Shortcut: Jika ketiga sisi sama, keliling = 3 × panjang sisi. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Pintasan Segitiga Sama Sisi. Jika ketiga sisi sama, keliling = 3 × panjang sisi."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Ukur Dulu Baru Jumlah",
-      "isi": "METODE LUAR · Measure Then Sum: Ukur tiap sisi dengan satuan sama, lalu jumlahkan. (asal: Hands-on measurement).",
-      "suara": "METODE LUAR. Ukur Dulu Baru Jumlah. Ukur tiap sisi dengan satuan sama, lalu jumlahkan."
+      "ikon": "🦵",
+      "nama": "Sama kaki",
+      "isi": "Dua sisi sama belum tentu ketiga sama; tetap jumlahkan tiga sisi.",
+      "suara": "Jangan salah rumus."
     }
   ],
-  "poinSuara": "Ingat: a+b+c, atau 3×sisi jika sama sisi.",
+  "poinSuara": "Ingat: a plus b plus c selalu aman; tiga kali sisi hanya untuk sama sisi.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -1590,11 +1500,11 @@ export const SUB_B54: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: buat segitiga dari sedotan lalu hitung kelilingnya.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Jumlah Tiga Sisi pada satu benda nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Kapan boleh memakai 3×sisi?",
-    "Berapa keliling 5+4+7?",
-    "Mengapa satuan penting?"
+    "Bagaimana Jumlah Tiga Sisi membantumu memahami soal?",
+    "Kapan kamu memakai Pintasan Segitiga Sama Sisi?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
@@ -1602,7 +1512,7 @@ export const SUB_B54: SubBabNaskah = {
       "nama": "Side Sum",
       "namaId": "Jumlah Tiga Sisi",
       "asal": "Elementary geometry",
-      "ringkas": "Keliling segitiga = sisi satu + sisi dua + sisi tiga.",
+      "ringkas": "Keliling segitiga = sisi satu + sisi dua + sisi tiga; ini Path Length pada tiga sisi.",
       "tahap": [
         "Story",
         "Concrete",
@@ -1627,7 +1537,7 @@ export const SUB_B54: SubBabNaskah = {
       "nama": "Measure Then Sum",
       "namaId": "Ukur Dulu Baru Jumlah",
       "asal": "Hands-on measurement",
-      "ringkas": "Ukur tiap sisi dengan satuan sama, lalu jumlahkan.",
+      "ringkas": "Ukur tiap sisi dengan satuan sama, baru jumlahkan agar akurat.",
       "tahap": [
         "Concrete",
         "Infografis"
@@ -1640,183 +1550,177 @@ export const SUB_C54: SubBabNaskah = {
   "id": "C",
   "codeTitle": "Sub-Bab C (Keliling Segi Empat)",
   "fullTitle": "Sub-Bab C: Keliling Segi Empat",
-  "targetDescription": "Siswa menghitung keliling persegi panjang dengan 2(p+l) dan keliling persegi dengan 4×sisi, memahami sisi berhadapan sama panjang sesuai Buku Siswa Kelas V Bab 4.",
+  "targetDescription": "Siswa menghitung keliling persegi panjang dengan 2(p+l) dan persegi dengan 4×sisi, memahami sisi berhadapan sama, serta menolak miskonsepsi p×l sebagai keliling sesuai Buku Siswa Kelas V Bab 4 Sub-Bab C.",
   "secondaryBg": "#DCFCE7",
   "secondaryBorder": "#16A34A",
   "secondaryText": "#14532D",
   "silabus": {
-    "teksSuara": "Kita belajar keliling segi empat. Persegi panjang: dua kali panjang plus lebar. Persegi: empat kali sisi. Sisi berhadapan sama. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-    "cp": "Siswa menentukan keliling persegi panjang dan persegi.",
+    "teksSuara": "Kita belajar keliling segi empat. Path Length pada persegi panjang melewati dua panjang dan dua lebar, sehingga K sama dengan dua kali panjang plus lebar. Pada persegi, empat sisi sama, K sama dengan empat kali sisi. Jangan tertukar dengan luas. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menentukan keliling persegi panjang dan persegi, serta membedakannya dari luas.",
     "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 4: Keliling Bangun Datar, Sub-Bab C hlm. 118–121)."
   },
   "videos": [
     {
       "id": "K5B4C-V1",
-      "judul": "Persegi Panjang",
-      "subjudul": "2(p+l)",
+      "judul": "Persegi Panjang: 2(p+l)",
+      "subjudul": "Rectangle Formula",
       "adegan": [
         {
           "id": "K5B4C-V1-1",
           "judul": "Sisi berhadapan",
           "ketukan": [
-            "Panjang berhadapan sama.",
-            "Lebar berhadapan sama.",
-            "Ada dua panjang dan dua lebar.",
-            "Jumlahkan semuanya."
+            "Persegi panjang: panjang berhadapan sama, lebar berhadapan sama.",
+            "Jalur keliling: panjang, lebar, panjang, lebar.",
+            "Itu dua panjang dan dua lebar. Boleh ditulis 2p + 2l.",
+            "Atau dikelompokkan: dua kali jumlah panjang dan lebar, 2(p+l)."
           ],
           "papan": [
-            "p=p",
-            "l=l",
-            "2p 2l",
-            "jumlah"
+            "p=p, l=l",
+            "p+l+p+l",
+            "2p+2l",
+            "2(p+l)"
           ]
         },
         {
           "id": "K5B4C-V1-2",
-          "judul": "Rumus",
+          "judul": "Contoh 5 dan 3",
           "ketukan": [
-            "Keliling dua kali panjang plus lebar.",
-            "Atau dua p plus dua l.",
-            "Sama saja.",
-            "Contoh lima dan tiga."
+            "Panjang lima, lebar tiga. Jalur: 5 + 3 + 5 + 3.",
+            "Dua kali lima plus tiga: dua kali delapan sama dengan enam belas.",
+            "Cek dengan menjumlah sisi: hasil sama enam belas.",
+            "Path Length dan rumus 2(p+l) saling cocok."
           ],
           "papan": [
-            "2(p+l)",
-            "2p+2l",
-            "sama",
-            "5&3"
+            "5+3+5+3",
+            "2(5+3)=16",
+            "cek 16",
+            "rumus = jalur"
           ]
         },
         {
           "id": "K5B4C-V1-3",
-          "judul": "Hitung",
+          "judul": "Mengapa dikali dua",
           "ketukan": [
-            "Dua kali lima plus tiga.",
-            "Dua kali delapan.",
-            "Enam belas.",
-            "Itu keliling.",
-            "METODE LUAR. Rumus 2 kali Panjang Plus Lebar: Keliling persegi panjang = 2 × (panjang + lebar), karena sisi berhadapan sama."
+            "Karena ada dua pasang sisi sama. Mengelompokkan membuat hitung lebih cepat.",
+            "Tetap boleh menjumlah empat sisi satu-satu jika lebih nyaman.",
+            "Yang penting: kamu menghitung jalur luar, bukan daerah dalam.",
+            "METODE LUAR · Rumus 2(p+l): ringkasan Path Length pada persegi panjang."
           ],
           "papan": [
-            "2(5+3)",
-            "2×8",
-            "16",
-            "keliling",
-            "METODE LUAR · Rumus 2 kali Panjang Plus Lebar"
+            "dua pasang",
+            "boleh manual",
+            "tetap jalur",
+            "rectangle formula"
           ]
         }
       ]
     },
     {
       "id": "K5B4C-V2",
-      "judul": "Persegi",
-      "subjudul": "4×sisi",
+      "judul": "Persegi: 4×sisi",
+      "subjudul": "Square Shortcut",
       "adegan": [
         {
           "id": "K5B4C-V2-1",
-          "judul": "Empat sama",
+          "judul": "Empat sisi sama",
           "ketukan": [
-            "Keempat sisi sama.",
-            "Cukup kali empat.",
-            "Contoh sisi tiga.",
-            "Keliling dua belas."
+            "Persegi: keempat sisi sama panjang.",
+            "Jalur: s + s + s + s = 4 × s.",
+            "Sisi tiga: empat kali tiga = dua belas.",
+            "Sisi lima: empat kali lima = dua puluh."
           ],
           "papan": [
             "4 sama",
             "4×s",
-            "sisi 3",
-            "12"
+            "4×3=12",
+            "4×5=20"
           ]
         },
         {
           "id": "K5B4C-V2-2",
-          "judul": "Sisi lima",
+          "judul": "Hubungan dengan PP",
           "ketukan": [
-            "Sisi lima.",
-            "Empat kali lima.",
-            "Dua puluh.",
-            "Mudah."
+            "Jika pada persegi panjang panjang sama dengan lebar, itu persegi.",
+            "2(p+l) menjadi 2(s+s) = 2(2s) = 4s. Sama dengan pintasan persegi.",
+            "Jadi rumus persegi adalah kasus khusus persegi panjang.",
+            "Pilih rumus yang paling mudah, hasil harus sama."
           ],
           "papan": [
-            "sisi 5",
-            "4×5",
-            "20",
-            "mudah"
+            "p=l",
+            "2(p+l)=4s",
+            "kasus khusus",
+            "pilih mudah"
           ]
         },
         {
           "id": "K5B4C-V2-3",
-          "judul": "Banding PP",
+          "judul": "Jangan tertukar luas",
           "ketukan": [
-            "Jika panjang sama lebar.",
-            "Itu persegi.",
-            "Pakai 4×sisi.",
-            "Atau tetap 2(p+l).",
-            "METODE LUAR. Pintasan Empat Kali Sisi: Keliling persegi = 4 × sisi karena keempat sisi sama."
+            "Sisi kali sisi adalah luas persegi, bukan keliling.",
+            "Panjang kali lebar adalah luas persegi panjang.",
+            "Keliling selalu tentang jalur mengelilingi.",
+            "METODE LUAR · Pintasan Empat Kali Sisi: 4×s untuk persegi saja."
           ],
           "papan": [
-            "p=l",
-            "persegi",
-            "4×s",
-            "atau 2(p+l)",
-            "METODE LUAR · Pintasan Empat Kali Sisi"
+            "s×s luas",
+            "p×l luas",
+            "keliling jalur",
+            "square shortcut"
           ]
         }
       ]
     },
     {
       "id": "K5B4C-V3",
-      "judul": "Latihan Cepat",
-      "subjudul": "Cek",
+      "judul": "Latihan dan Peringatan",
+      "subjudul": "Not Area Product",
       "adegan": [
         {
           "id": "K5B4C-V3-1",
           "judul": "PP 4 dan 2",
           "ketukan": [
-            "Dua kali empat plus dua.",
-            "Dua belas.",
-            "Cek: empat plus dua plus empat plus dua.",
-            "Sama."
+            "Panjang empat, lebar dua. 2(4+2) = 2×6 = dua belas.",
+            "Cek: 4+2+4+2 = dua belas. Cocok.",
+            "Jika seseorang menjawab delapan, mungkin dia mengalikan 4×2. Itu luas.",
+            "Tolak jawaban yang memakai kali panjang dan lebar untuk keliling."
           ],
           "papan": [
-            "2(4+2)",
             "12",
             "cek",
-            "sama"
+            "salah 8",
+            "tolak p×l"
           ]
         },
         {
           "id": "K5B4C-V3-2",
-          "judul": "Jangan tertukar",
+          "judul": "Peringatan miskonsepsi",
           "ketukan": [
-            "Jangan kali panjang kali lebar.",
-            "Itu luas.",
-            "Keliling mengelilingi.",
-            "Ingat."
+            "Pertanyaan pagar atau bingkai: jawab dengan keliling.",
+            "Pertanyaan cat lantai atau luas kebun: jawab dengan luas.",
+            "Baca soal: apa yang diukur—jalur atau isi?",
+            "METODE LUAR · Bukan Panjang Kali Lebar: p×l bukan keliling."
           ],
           "papan": [
-            "bukan p×l",
-            "luas",
-            "keliling",
-            "ingat"
+            "pagar→K",
+            "cat→luas",
+            "baca soal",
+            "not area"
           ]
         },
         {
           "id": "K5B4C-V3-3",
-          "judul": "Siap D",
+          "judul": "Siap segi banyak",
           "ketukan": [
-            "Segi empat siap.",
-            "Lanjut segi banyak.",
-            "Segi lima dan enam.",
-            "Ayo!",
-            "METODE LUAR. Bukan Panjang Kali Lebar: Panjang × lebar adalah luas, bukan keliling."
+            "Segi empat siap. Berikutnya segi lima dan segi enam beraturan.",
+            "Polanya mirip: jika sisi sama, kali banyak sisi.",
+            "Dasarnya tetap Path Length.",
+            "Ayo lanjut dengan bekal 2(p+l) dan 4×s."
           ],
           "papan": [
-            "siap",
             "segi banyak",
-            "5 & 6",
-            "ayo",
-            "METODE LUAR · Bukan Panjang Kali Lebar"
+            "pola n×s",
+            "dasar",
+            "ayo"
           ]
         }
       ]
@@ -1825,160 +1729,139 @@ export const SUB_C54: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Kenali",
-      "stepDesc": "PP atau persegi?",
+      "stepTitle": "1. Kenali bangun",
+      "stepDesc": "Persegi panjang atau persegi?",
       "icon": "👀",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. PP",
-      "stepDesc": "2(p+l)",
+      "stepTitle": "2. PP: berhadapan sama",
+      "stepDesc": "Dua p dan dua l pada jalur luar.",
       "icon": "▭",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Persegi",
-      "stepDesc": "4×sisi",
-      "icon": "⬜",
+      "stepTitle": "3. Rumus 2(p+l)",
+      "stepDesc": "K = 2(p+l) = 2p+2l.",
+      "icon": "🧮",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Hitung",
-      "stepDesc": "Dapat K",
-      "icon": "🧮",
+      "stepTitle": "4. Persegi: 4×s",
+      "stepDesc": "Keempat sisi sama: K = 4×s.",
+      "icon": "⬜",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Cek",
-      "stepDesc": "Jumlah sisi?",
-      "icon": "✅",
+      "stepTitle": "5. Hitung",
+      "stepDesc": "Masukkan angka, dapat keliling.",
+      "icon": "➕",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Bukan luas",
-      "stepDesc": "Bukan p×l",
-      "icon": "⚠️",
+      "stepTitle": "6. Cek manual",
+      "stepDesc": "Boleh jumlahkan empat sisi untuk memastikan.",
+      "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. METODE LUAR · Rumus 2 kali Panjang Plus Lebar",
-      "stepDesc": "Keliling persegi panjang = 2 × (panjang + lebar), karena sisi berhadapan sama.",
-      "icon": "🌍",
+      "stepTitle": "7. Bukan p×l",
+      "stepDesc": "Kali panjang dan lebar = luas.",
+      "icon": "⚠️",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. METODE LUAR · Pintasan Empat Kali Sisi",
-      "stepDesc": "Keliling persegi = 4 × sisi karena keempat sisi sama.",
-      "icon": "🌍",
+      "stepTitle": "8. Lanjut D",
+      "stepDesc": "Segi banyak beraturan: n×sisi.",
+      "icon": "➡️",
       "flowFrom": "7",
       "flowTo": "END"
     }
   ],
   "infografis": [
     {
-      "judul": "PP",
+      "judul": "2(p+l)",
       "emoji": "▭",
       "countNum": 1,
-      "countWord": "2(p+l)",
-      "suara": "Rumus."
+      "countWord": "PP",
+      "suara": "Rumus persegi panjang."
     },
     {
-      "judul": "5&3",
+      "judul": "5 & 3",
       "emoji": "➕",
       "countNum": 16,
       "countWord": "16 cm",
-      "suara": "Contoh."
+      "suara": "2(5+3)=16."
     },
     {
       "judul": "2p+2l",
       "emoji": "=",
       "countNum": 1,
-      "countWord": "sama 2(p+l)",
-      "suara": "Setara."
+      "countWord": "setara",
+      "suara": "Sama dengan 2(p+l)."
     },
     {
-      "judul": "Persegi",
+      "judul": "4×sisi",
       "emoji": "⬜",
       "countNum": 1,
-      "countWord": "4×sisi",
-      "suara": "Rumus."
+      "countWord": "persegi",
+      "suara": "Rumus persegi."
     },
     {
       "judul": "sisi 3",
       "emoji": "3️⃣",
       "countNum": 12,
       "countWord": "12 cm",
-      "suara": "Contoh."
+      "suara": "4×3=12."
     },
     {
       "judul": "sisi 5",
       "emoji": "5️⃣",
       "countNum": 20,
       "countWord": "20 cm",
-      "suara": "Contoh."
+      "suara": "4×5=20."
     },
     {
       "judul": "Berhadapan",
       "emoji": "⇄",
       "countNum": 1,
-      "countWord": "sama panjang",
-      "suara": "PP."
+      "countWord": "sama",
+      "suara": "Sifat PP."
     },
     {
-      "judul": "Bukan",
+      "judul": "Bukan p×l",
       "emoji": "⚠️",
       "countNum": 1,
-      "countWord": "p×l",
-      "suara": "Itu luas."
+      "countWord": "itu luas",
+      "suara": "Miskonsepsi."
     },
     {
-      "judul": "PP 4&2",
+      "judul": "4 & 2",
       "emoji": "🔢",
       "countNum": 12,
       "countWord": "12 cm",
-      "suara": "Latihan."
+      "suara": "Latihan 2(4+2)."
     },
     {
-      "judul": "Siap D",
-      "emoji": "➡️",
+      "judul": "Path Length",
+      "emoji": "🚶",
       "countNum": 1,
-      "countWord": "segi banyak",
-      "suara": "Lanjut."
-    },
-    {
-      "judul": "Rumus 2 kali Panjang Plus Lebar",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "METODE LUAR · Rectangle Formula",
-      "suara": "METODE LUAR. Rumus 2 kali Panjang Plus Lebar. Keliling persegi panjang = 2 × (panjang + lebar), karena sisi berhadapan sama."
-    },
-    {
-      "judul": "Pintasan Empat Kali Sisi",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "METODE LUAR · Square Shortcut",
-      "suara": "METODE LUAR. Pintasan Empat Kali Sisi. Keliling persegi = 4 × sisi karena keempat sisi sama."
-    },
-    {
-      "judul": "Bukan Panjang Kali Lebar",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Not Area Product",
-      "suara": "METODE LUAR. Bukan Panjang Kali Lebar. Panjang × lebar adalah luas, bukan keliling."
+      "countWord": "4 sisi",
+      "suara": "Jalur empat sisi."
     }
   ],
   "games": [
@@ -1987,9 +1870,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "hitung-c-c",
       "title": "Hitung Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Latihan topik. (METODE LUAR · Rumus 2 kali Panjang Plus Lebar)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Rumus 2 kali Panjang Plus Lebar. Mainkan.",
+      "objective": "Hitung keliling PP dan persegi sebagai jalur empat sisi.",
+      "mechanicDescription": "Tiga ronde. Rectangle: 2(p+l). Square: 4×s. Bukan p×l atau s×s.",
+      "voiceGuide": "Persegi panjang dua kali p plus l. Persegi empat kali sisi.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1998,9 +1881,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "rumus-c-c",
       "title": "Rumus PP/Persegi",
       "bookReference": "hlm. 118–121",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung keliling PP dan persegi sebagai jalur empat sisi.",
+      "mechanicDescription": "Tiga ronde. Rectangle: 2(p+l). Square: 4×s. Bukan p×l atau s×s.",
+      "voiceGuide": "Persegi panjang dua kali p plus l. Persegi empat kali sisi.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2009,9 +1892,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "arti-c-c",
       "title": "Arti Rumus",
       "bookReference": "hlm. 118–121",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung keliling PP dan persegi sebagai jalur empat sisi.",
+      "mechanicDescription": "Tiga ronde. Rectangle: 2(p+l). Square: 4×s. Bukan p×l atau s×s.",
+      "voiceGuide": "Persegi panjang dua kali p plus l. Persegi empat kali sisi.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2020,9 +1903,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "sortir-c-c",
       "title": "Pilah PP/Persegi",
       "bookReference": "hlm. 118–121",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung keliling PP dan persegi sebagai jalur empat sisi.",
+      "mechanicDescription": "Tiga ronde. Rectangle: 2(p+l). Square: 4×s. Bukan p×l atau s×s.",
+      "voiceGuide": "Persegi panjang dua kali p plus l. Persegi empat kali sisi.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2031,9 +1914,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "jodoh-c-c",
       "title": "Jodohkan Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung keliling PP dan persegi sebagai jalur empat sisi. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Rectangle: 2(p+l). Square: 4×s. Bukan p×l atau s×s.",
+      "voiceGuide": "Persegi panjang dua kali p plus l. Persegi empat kali sisi. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2042,9 +1925,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "memori-c-c",
       "title": "Memori Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung keliling PP dan persegi sebagai jalur empat sisi. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Rectangle: 2(p+l). Square: 4×s. Bukan p×l atau s×s.",
+      "voiceGuide": "Persegi panjang dua kali p plus l. Persegi empat kali sisi. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2053,9 +1936,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "ketuk-c-c",
       "title": "Ketuk Hasil",
       "bookReference": "hlm. 118–121",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung keliling PP dan persegi sebagai jalur empat sisi. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Rectangle: 2(p+l). Square: 4×s. Bukan p×l atau s×s.",
+      "voiceGuide": "Persegi panjang dua kali p plus l. Persegi empat kali sisi. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2064,9 +1947,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "semua-c-c",
       "title": "Ketuk Semua Benar",
       "bookReference": "hlm. 118–121",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung keliling PP dan persegi sebagai jalur empat sisi. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Rectangle: 2(p+l). Square: 4×s. Bukan p×l atau s×s.",
+      "voiceGuide": "Persegi panjang dua kali p plus l. Persegi empat kali sisi. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2075,9 +1958,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "cerita-c-c",
       "title": "Cerita Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung keliling PP dan persegi sebagai jalur empat sisi. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Rectangle: 2(p+l). Square: 4×s. Bukan p×l atau s×s.",
+      "voiceGuide": "Persegi panjang dua kali p plus l. Persegi empat kali sisi. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2086,9 +1969,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "urut-c-c",
       "title": "Urutkan Hasil",
       "bookReference": "hlm. 118–121",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung keliling PP dan persegi sebagai jalur empat sisi. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Rectangle: 2(p+l). Square: 4×s. Bukan p×l atau s×s.",
+      "voiceGuide": "Persegi panjang dua kali p plus l. Persegi empat kali sisi. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2097,9 +1980,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "hitung-c-p",
       "title": "Diagram Hitung Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Baca diagram. (METODE LUAR · Rumus 2 kali Panjang Plus Lebar)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Rumus 2 kali Panjang Plus Lebar. Pilih.",
+      "objective": "Tolak rumus luas yang menyamar sebagai keliling.",
+      "mechanicDescription": "Tiga ronde. Not Area Product: p×l dan s×s adalah luas.",
+      "voiceGuide": "Kalau pilihan berupa kali panjang lebar, itu luas. Tolak.",
       "diagramType": "hitung",
       "numberA": 1,
       "numberB": 2
@@ -2109,9 +1992,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "rumus-c-p",
       "title": "Diagram Rumus PP/Persegi",
       "bookReference": "hlm. 118–121",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Tolak rumus luas yang menyamar sebagai keliling.",
+      "mechanicDescription": "Tiga ronde. Not Area Product: p×l dan s×s adalah luas.",
+      "voiceGuide": "Kalau pilihan berupa kali panjang lebar, itu luas. Tolak.",
       "diagramType": "rumus",
       "numberA": 1,
       "numberB": 2
@@ -2121,9 +2004,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "arti-c-p",
       "title": "Diagram Arti Rumus",
       "bookReference": "hlm. 118–121",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Tolak rumus luas yang menyamar sebagai keliling.",
+      "mechanicDescription": "Tiga ronde. Not Area Product: p×l dan s×s adalah luas.",
+      "voiceGuide": "Kalau pilihan berupa kali panjang lebar, itu luas. Tolak.",
       "diagramType": "arti",
       "numberA": 1,
       "numberB": 2
@@ -2133,9 +2016,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "sortir-c-p",
       "title": "Diagram Pilah PP/Persegi",
       "bookReference": "hlm. 118–121",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Tolak rumus luas yang menyamar sebagai keliling.",
+      "mechanicDescription": "Tiga ronde. Not Area Product: p×l dan s×s adalah luas.",
+      "voiceGuide": "Kalau pilihan berupa kali panjang lebar, itu luas. Tolak.",
       "diagramType": "sortir",
       "numberA": 1,
       "numberB": 2
@@ -2145,9 +2028,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "jodoh-c-p",
       "title": "Diagram Jodohkan Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Tolak rumus luas yang menyamar sebagai keliling. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Not Area Product: p×l dan s×s adalah luas.",
+      "voiceGuide": "Kalau pilihan berupa kali panjang lebar, itu luas. Tolak. Mainkan dengan teliti.",
       "diagramType": "jodoh",
       "numberA": 1,
       "numberB": 2
@@ -2157,9 +2040,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "memori-c-p",
       "title": "Diagram Memori Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Tolak rumus luas yang menyamar sebagai keliling. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Not Area Product: p×l dan s×s adalah luas.",
+      "voiceGuide": "Kalau pilihan berupa kali panjang lebar, itu luas. Tolak. Mainkan dengan teliti.",
       "diagramType": "memori",
       "numberA": 1,
       "numberB": 2
@@ -2169,9 +2052,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "ketuk-c-p",
       "title": "Diagram Ketuk Hasil",
       "bookReference": "hlm. 118–121",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Tolak rumus luas yang menyamar sebagai keliling. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Not Area Product: p×l dan s×s adalah luas.",
+      "voiceGuide": "Kalau pilihan berupa kali panjang lebar, itu luas. Tolak. Mainkan dengan teliti.",
       "diagramType": "ketuk",
       "numberA": 1,
       "numberB": 2
@@ -2181,9 +2064,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "semua-c-p",
       "title": "Diagram Ketuk Semua Benar",
       "bookReference": "hlm. 118–121",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Tolak rumus luas yang menyamar sebagai keliling. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Not Area Product: p×l dan s×s adalah luas.",
+      "voiceGuide": "Kalau pilihan berupa kali panjang lebar, itu luas. Tolak. Mainkan dengan teliti.",
       "diagramType": "semua",
       "numberA": 1,
       "numberB": 2
@@ -2193,9 +2076,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "cerita-c-p",
       "title": "Diagram Cerita Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Tolak rumus luas yang menyamar sebagai keliling. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Not Area Product: p×l dan s×s adalah luas.",
+      "voiceGuide": "Kalau pilihan berupa kali panjang lebar, itu luas. Tolak. Mainkan dengan teliti.",
       "diagramType": "cerita",
       "numberA": 1,
       "numberB": 2
@@ -2205,9 +2088,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "urut-c-p",
       "title": "Diagram Urutkan Hasil",
       "bookReference": "hlm. 118–121",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Tolak rumus luas yang menyamar sebagai keliling. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Not Area Product: p×l dan s×s adalah luas.",
+      "voiceGuide": "Kalau pilihan berupa kali panjang lebar, itu luas. Tolak. Mainkan dengan teliti.",
       "diagramType": "urut",
       "numberA": 1,
       "numberB": 2
@@ -2217,9 +2100,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "hitung-c-a",
       "title": "Tulis Hitung Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Notasi. (METODE LUAR · Rumus 2 kali Panjang Plus Lebar)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Rumus 2 kali Panjang Plus Lebar. Pilih.",
+      "objective": "Jelaskan mengapa 2(p+l) dan 4×s sama dengan Path Length.",
+      "mechanicDescription": "Tiga ronde cerita. Rumus = jalan pintas jumlah sisi berpasangan.",
+      "voiceGuide": "Rumus hanyalah jalan pintas Path Length.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -2229,9 +2112,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "rumus-c-a",
       "title": "Tulis Rumus PP/Persegi",
       "bookReference": "hlm. 118–121",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jelaskan mengapa 2(p+l) dan 4×s sama dengan Path Length.",
+      "mechanicDescription": "Tiga ronde cerita. Rumus = jalan pintas jumlah sisi berpasangan.",
+      "voiceGuide": "Rumus hanyalah jalan pintas Path Length.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -2241,9 +2124,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "arti-c-a",
       "title": "Tulis Arti Rumus",
       "bookReference": "hlm. 118–121",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jelaskan mengapa 2(p+l) dan 4×s sama dengan Path Length.",
+      "mechanicDescription": "Tiga ronde cerita. Rumus = jalan pintas jumlah sisi berpasangan.",
+      "voiceGuide": "Rumus hanyalah jalan pintas Path Length.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -2253,9 +2136,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "sortir-c-a",
       "title": "Tulis Pilah PP/Persegi",
       "bookReference": "hlm. 118–121",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jelaskan mengapa 2(p+l) dan 4×s sama dengan Path Length.",
+      "mechanicDescription": "Tiga ronde cerita. Rumus = jalan pintas jumlah sisi berpasangan.",
+      "voiceGuide": "Rumus hanyalah jalan pintas Path Length.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -2265,9 +2148,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "jodoh-c-a",
       "title": "Tulis Jodohkan Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jelaskan mengapa 2(p+l) dan 4×s sama dengan Path Length. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde cerita. Rumus = jalan pintas jumlah sisi berpasangan.",
+      "voiceGuide": "Rumus hanyalah jalan pintas Path Length. Mainkan dengan teliti.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -2277,9 +2160,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "memori-c-a",
       "title": "Tulis Memori Segi Empat",
       "bookReference": "hlm. 118–121",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jelaskan mengapa 2(p+l) dan 4×s sama dengan Path Length. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde cerita. Rumus = jalan pintas jumlah sisi berpasangan.",
+      "voiceGuide": "Rumus hanyalah jalan pintas Path Length. Mainkan dengan teliti.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -2289,9 +2172,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "bs-c",
       "title": "Benar atau Salah",
       "bookReference": "hlm. 118–121",
-      "objective": "Menilai.",
-      "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "objective": "Jelaskan mengapa 2(p+l) dan 4×s sama dengan Path Length. Latihan lanjutan.",
+      "mechanicDescription": "Dua ronde. Tiga ronde cerita. Rumus = jalan pintas jumlah sisi berpasangan.",
+      "voiceGuide": "Rumus hanyalah jalan pintas Path Length. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -2301,9 +2184,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "det-c",
       "title": "Detektif Keliling",
       "bookReference": "hlm. 118–121",
-      "objective": "Petunjuk.",
-      "mechanicDescription": "Tiga soal.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jelaskan mengapa 2(p+l) dan 4×s sama dengan Path Length. Latihan lanjutan.",
+      "mechanicDescription": "Tiga soal. Tiga ronde cerita. Rumus = jalan pintas jumlah sisi berpasangan.",
+      "voiceGuide": "Rumus hanyalah jalan pintas Path Length. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -2313,9 +2196,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "peta-c",
       "title": "Peta Konsep",
       "bookReference": "hlm. 118–121",
-      "objective": "Peta.",
-      "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jelaskan mengapa 2(p+l) dan 4×s sama dengan Path Length. Latihan lanjutan.",
+      "mechanicDescription": "Satu peta. Tiga ronde cerita. Rumus = jalan pintas jumlah sisi berpasangan.",
+      "voiceGuide": "Rumus hanyalah jalan pintas Path Length. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -2325,9 +2208,9 @@ export const SUB_C54: SubBabNaskah = {
       "gameType": "cerita-q-c",
       "title": "Cerita Angka",
       "bookReference": "hlm. 118–121",
-      "objective": "Cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jelaskan mengapa 2(p+l) dan 4×s sama dengan Path Length. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde cerita. Rumus = jalan pintas jumlah sisi berpasangan.",
+      "voiceGuide": "Rumus hanyalah jalan pintas Path Length. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -2336,48 +2219,30 @@ export const SUB_C54: SubBabNaskah = {
   "poin": [
     {
       "ikon": "▭",
-      "nama": "PP",
-      "isi": "Keliling = 2(p+l) = 2p+2l.",
-      "suara": "Berhadapan sama."
+      "nama": "2(p+l)",
+      "isi": "Keliling persegi panjang = 2(p+l) karena dua panjang dan dua lebar pada jalur.",
+      "suara": "Rumus PP."
     },
     {
       "ikon": "⬜",
-      "nama": "Persegi",
-      "isi": "Keliling = 4 × sisi.",
-      "suara": "Semua sisi sama."
+      "nama": "4×sisi",
+      "isi": "Keliling persegi = 4 × sisi. Sama dengan 2(s+s).",
+      "suara": "Rumus persegi."
     },
     {
       "ikon": "⚠️",
       "nama": "Bukan luas",
-      "isi": "p×l adalah luas, bukan keliling.",
+      "isi": "p × l atau s × s adalah luas, bukan keliling.",
       "suara": "Jangan tertukar."
     },
     {
-      "ikon": "✅",
-      "nama": "Cek",
-      "isi": "Boleh dijumlah manual empat sisi.",
-      "suara": "Hasil sama."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Rumus 2 kali Panjang Plus Lebar",
-      "isi": "METODE LUAR · Rectangle Formula: Keliling persegi panjang = 2 × (panjang + lebar), karena sisi berhadapan sama. (asal: Singapore Math / formula fluency).",
-      "suara": "METODE LUAR. Rumus 2 kali Panjang Plus Lebar. Keliling persegi panjang = 2 × (panjang + lebar), karena sisi berhadapan sama."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Pintasan Empat Kali Sisi",
-      "isi": "METODE LUAR · Square Shortcut: Keliling persegi = 4 × sisi karena keempat sisi sama. (asal: Elementary geometry).",
-      "suara": "METODE LUAR. Pintasan Empat Kali Sisi. Keliling persegi = 4 × sisi karena keempat sisi sama."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Bukan Panjang Kali Lebar",
-      "isi": "METODE LUAR · Not Area Product: Panjang × lebar adalah luas, bukan keliling. (asal: Misconception prevention).",
-      "suara": "METODE LUAR. Bukan Panjang Kali Lebar. Panjang × lebar adalah luas, bukan keliling."
+      "ikon": "🚶",
+      "nama": "Path Length",
+      "isi": "Rumus hanyalah cara cepat menulis perjalanan di empat sisi luar.",
+      "suara": "Dasar jalur."
     }
   ],
-  "poinSuara": "Ingat: 2(p+l) untuk PP, 4×sisi untuk persegi.",
+  "poinSuara": "Ingat: dua kali panjang plus lebar untuk PP, empat kali sisi untuk persegi, dan bukan panjang kali lebar.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -2399,11 +2264,11 @@ export const SUB_C54: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: ukur panjang dan lebar buku, hitung kelilingnya.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Rumus 2 kali Panjang Plus Lebar pada satu benda nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Apa rumus keliling PP?",
-    "Mengapa persegi memakai 4×sisi?",
-    "Apa beda keliling dan luas?"
+    "Bagaimana Rumus 2 kali Panjang Plus Lebar membantumu memahami soal?",
+    "Kapan kamu memakai Pintasan Empat Kali Sisi?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
@@ -2411,7 +2276,7 @@ export const SUB_C54: SubBabNaskah = {
       "nama": "Rectangle Formula",
       "namaId": "Rumus 2 kali Panjang Plus Lebar",
       "asal": "Singapore Math / formula fluency",
-      "ringkas": "Keliling persegi panjang = 2 × (panjang + lebar), karena sisi berhadapan sama.",
+      "ringkas": "K = 2(p+l) karena jalur punya dua panjang dan dua lebar.",
       "tahap": [
         "Story",
         "Mind",
@@ -2424,7 +2289,7 @@ export const SUB_C54: SubBabNaskah = {
       "nama": "Square Shortcut",
       "namaId": "Pintasan Empat Kali Sisi",
       "asal": "Elementary geometry",
-      "ringkas": "Keliling persegi = 4 × sisi karena keempat sisi sama.",
+      "ringkas": "K = 4 × sisi karena keempat sisi sama.",
       "tahap": [
         "Story",
         "Picture",
@@ -2436,10 +2301,11 @@ export const SUB_C54: SubBabNaskah = {
       "nama": "Not Area Product",
       "namaId": "Bukan Panjang Kali Lebar",
       "asal": "Misconception prevention",
-      "ringkas": "Panjang × lebar adalah luas, bukan keliling.",
+      "ringkas": "p × l adalah luas daerah, bukan panjang jalur keliling.",
       "tahap": [
         "Infografis",
-        "Abstract"
+        "Abstract",
+        "Story"
       ]
     }
   ]
@@ -2449,183 +2315,177 @@ export const SUB_D54: SubBabNaskah = {
   "id": "D",
   "codeTitle": "Sub-Bab D (Keliling Segi Banyak)",
   "fullTitle": "Sub-Bab D: Keliling Segi Banyak",
-  "targetDescription": "Siswa menghitung keliling segi-n beraturan dengan n×sisi (segi lima, segi enam, dan seterusnya) serta menjumlahkan semua sisi jika panjangnya tidak sama sesuai Buku Siswa Kelas V Bab 4.",
+  "targetDescription": "Siswa menghitung keliling segi-n beraturan dengan n×sisi dan menjumlahkan sisi satu-satu jika panjang sisi berbeda, memakai pola tabel banyak sisi sesuai Buku Siswa Kelas V Bab 4 Sub-Bab D.",
   "secondaryBg": "#FCE7F3",
   "secondaryBorder": "#DB2777",
   "secondaryText": "#9D174D",
   "silabus": {
-    "teksSuara": "Kita belajar keliling segi banyak. Jika beraturan, kali banyak sisi dengan panjang sisi. Segi lima kali lima. Segi enam kali enam. Jika sisi beda, jumlahkan semua. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar keliling segi banyak. Jika beraturan, semua sisi sama: keliling n kali sisi. Segi lima lima kali sisi, segi enam enam kali sisi. Jika sisi berbeda, kembali ke Path Length: jumlahkan semua sisi satu-satu. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menentukan keliling segi banyak beraturan dan tidak beraturan.",
     "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 4: Keliling Bangun Datar, Sub-Bab D hlm. 122–124)."
   },
   "videos": [
     {
       "id": "K5B4D-V1",
-      "judul": "Segi Lima",
+      "judul": "Segi Lima Beraturan",
       "subjudul": "5×sisi",
       "adegan": [
         {
           "id": "K5B4D-V1-1",
-          "judul": "Lima sisi",
+          "judul": "Lima sisi sama",
           "ketukan": [
-            "Segi lima punya lima sisi.",
-            "Jika sama panjang, beraturan.",
-            "Keliling lima kali sisi.",
-            "Contoh sisi tiga jadi lima belas."
+            "Segi lima beraturan punya lima sisi sama panjang.",
+            "Jalur keliling melewati lima sisi itu.",
+            "Jika sisi tiga, K = 5 × 3 = lima belas.",
+            "Ini Path Length yang diringkas jadi kali."
           ],
           "papan": [
-            "5 sisi",
-            "beraturan",
-            "5×s",
-            "15"
+            "5 sama",
+            "path 5",
+            "5×3=15",
+            "ringkas"
           ]
         },
         {
           "id": "K5B4D-V1-2",
-          "judul": "Hitung",
+          "judul": "Tabel buku",
           "ketukan": [
-            "Tulis lima kali tiga.",
-            "Hasil lima belas.",
-            "Satuan centi meter.",
-            "Benar."
+            "Di tabel buku: banyak sisi dikali panjang sisi.",
+            "Segi lima: lima kali sisi. Segi enam: enam kali sisi.",
+            "Pola muncul: segi-n beraturan memakai n × sisi.",
+            "METODE LUAR · Segi-n Beraturan: K = n × s."
           ],
           "papan": [
-            "5×3",
-            "15",
-            "cm",
-            "ok"
+            "tabel",
+            "5×s, 6×s",
+            "n×s",
+            "regular n-gon"
           ]
         },
         {
           "id": "K5B4D-V1-3",
-          "judul": "Tabel",
+          "judul": "Hitung sadar",
           "ketukan": [
-            "Di tabel buku.",
-            "Lima sisi: lima kali sisi.",
-            "Enam sisi: enam kali sisi.",
-            "Pola jelas.",
-            "METODE LUAR. Segi-n Beraturan n Kali Sisi: Jika semua sisi sama, keliling = banyak sisi × panjang satu sisi."
+            "Tulis dulu: berapa n? Berapa s? Lalu kali.",
+            "Sebutkan satuan. Contoh lima belas centi meter.",
+            "Cek: hasil harus n kali lebih besar dari satu sisi.",
+            "Siap ke segi enam."
           ],
           "papan": [
-            "tabel",
-            "5×s",
-            "6×s",
-            "pola",
-            "METODE LUAR · Segi-n Beraturan n Kali Sisi"
+            "n dan s",
+            "satuan",
+            "cek",
+            "lanjut"
           ]
         }
       ]
     },
     {
       "id": "K5B4D-V2",
-      "judul": "Segi Enam",
-      "subjudul": "6×sisi",
+      "judul": "Segi Enam dan Sisi Beda",
+      "subjudul": "6×sisi vs jumlah",
       "adegan": [
         {
           "id": "K5B4D-V2-1",
-          "judul": "Enam sisi",
+          "judul": "Segi enam",
           "ketukan": [
-            "Segi enam punya enam sisi.",
-            "Beraturan: kali enam.",
-            "Contoh sisi empat.",
-            "Hasil dua puluh empat."
+            "Segi enam beraturan: enam sisi sama.",
+            "Sisi empat: K = 6 × 4 = dua puluh empat.",
+            "Segi delapan sisi dua: K = 8 × 2 = enam belas.",
+            "Pola tabel tetap jalan."
           ],
           "papan": [
-            "6 sisi",
-            "6×s",
-            "sisi 4",
-            "24"
+            "6 sama",
+            "6×4=24",
+            "8×2=16",
+            "pola"
           ]
         },
         {
           "id": "K5B4D-V2-2",
-          "judul": "Lainnya",
+          "judul": "Sisi tidak sama",
           "ketukan": [
-            "Segi delapan kali delapan.",
-            "Segi-n kali n.",
-            "Asalkan sisi sama.",
-            "Itu kuncinya."
-          ],
-          "papan": [
-            "8×s",
-            "n×s",
-            "sisi sama",
-            "kunci"
-          ]
-        },
-        {
-          "id": "K5B4D-V2-3",
-          "judul": "Sisi beda",
-          "ketukan": [
-            "Jika sisi tidak sama.",
-            "Jangan langsung kali n.",
-            "Jumlahkan satu-satu.",
-            "Aman.",
-            "METODE LUAR. Sisi Beda Jumlah Satu-satu: Jika sisi tidak sama, jangan langsung kali n; jumlahkan semua sisi."
+            "Jika satu sisi berbeda, bangun tidak beraturan untuk rumus n×s.",
+            "Jangan memaksa kali n. Itu akan salah.",
+            "Kembali ke Path Length: jumlahkan setiap sisi yang tertulis.",
+            "METODE LUAR · Sisi Beda Jumlah Satu-satu: aman dan tepat."
           ],
           "papan": [
             "beda",
             "jangan ×n",
-            "jumlah",
-            "aman",
-            "METODE LUAR · Sisi Beda Jumlah Satu-satu"
+            "jumlah semua",
+            "irregular"
+          ]
+        },
+        {
+          "id": "K5B4D-V2-3",
+          "judul": "Cabang keputusan",
+          "ketukan": [
+            "Pertanyaan kunci: apakah semua sisi sama?",
+            "Ya: pakai n × s. Tidak: jumlahkan semua.",
+            "Keputusan ini mencegah kesalahan paling umum di segi banyak.",
+            "Siap ke bangun gabungan."
+          ],
+          "papan": [
+            "sama?",
+            "cabang",
+            "cegah salah",
+            "siap E"
           ]
         }
       ]
     },
     {
       "id": "K5B4D-V3",
-      "judul": "Rangkum",
-      "subjudul": "Aturan",
+      "judul": "Rangkum Pola",
+      "subjudul": "Table Pattern",
       "adegan": [
         {
           "id": "K5B4D-V3-1",
-          "judul": "Beraturan",
+          "judul": "Pola n×s",
           "ketukan": [
-            "Semua sisi sama.",
-            "Pakai n kali sisi.",
-            "Cepat dan tepat.",
-            "Ingat tabel."
+            "3 sisi → sering a+b+c atau 3s. 4 sisi → 2(p+l) atau 4s. 5 sisi → 5s.",
+            "Yang sama: Path Length di seluruh sisi luar.",
+            "Yang berbeda: cara menyingkat jika sisi sama.",
+            "METODE LUAR · Pola Tabel Banyak Sisi: generalisasi n×s."
           ],
           "papan": [
-            "sama",
-            "n×s",
-            "cepat",
-            "tabel"
+            "pola",
+            "sama dasar",
+            "singkat",
+            "table pattern"
           ]
         },
         {
           "id": "K5B4D-V3-2",
-          "judul": "Tidak beraturan",
+          "judul": "Latihan mental",
           "ketukan": [
-            "Sisi berbeda.",
-            "Jumlahkan semua sisi.",
-            "Ukur tiap sisi.",
-            "Siap bermain!"
+            "Segi lima sisi 2: sepuluh. Segi enam sisi 3: delapan belas.",
+            "Ucapkan: banyak sisi kali panjang sisi.",
+            "Jika ragu sisi sama atau tidak, lihat tanda di gambar atau ukur.",
+            "Ayo mainkan permainan segi banyak."
           ],
           "papan": [
-            "beda",
-            "jumlah",
-            "ukur",
+            "10 dan 18",
+            "ucap rumus",
+            "cek gambar",
             "main"
           ]
         },
         {
           "id": "K5B4D-V3-3",
-          "judul": "Siap E",
+          "judul": "Jembatan gabungan",
           "ketukan": [
-            "Segi banyak siap.",
-            "Lanjut bangun gabungan.",
-            "Denah rumah.",
-            "Ayo!",
-            "METODE LUAR. Pola Tabel Banyak Sisi: Segi lima 5×s, segi enam 6×s: pola n×s untuk segi-n beraturan."
+            "Bangun gabungan punya sisi luar dan sekat dalam.",
+            "Hanya sisi luar yang masuk keliling. Sekat dalam diabaikan.",
+            "Itu Path Length pada batas terluar denah.",
+            "Lanjut Sub-Bab E."
           ],
           "papan": [
-            "siap",
             "gabungan",
-            "denah",
-            "ayo",
-            "METODE LUAR · Pola Tabel Banyak Sisi"
+            "hanya luar",
+            "path luar",
+            "lanjut E"
           ]
         }
       ]
@@ -2634,32 +2494,32 @@ export const SUB_D54: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Hitung sisi",
-      "stepDesc": "Berapa n?",
+      "stepTitle": "1. Hitung n",
+      "stepDesc": "Berapa banyak sisi?",
       "icon": "🔢",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Sama?",
-      "stepDesc": "Beraturan?",
+      "stepTitle": "2. Sisi sama?",
+      "stepDesc": "Beraturan atau tidak?",
       "icon": "👀",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Ya",
-      "stepDesc": "n×sisi",
+      "stepTitle": "3. Ya: n×s",
+      "stepDesc": "K = n × sisi.",
       "icon": "✨",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Tidak",
-      "stepDesc": "Jumlah semua",
+      "stepTitle": "4. Tidak: jumlah",
+      "stepDesc": "Jumlahkan semua sisi satu-satu.",
       "icon": "➕",
       "flowFrom": "2",
       "flowTo": "5"
@@ -2667,7 +2527,7 @@ export const SUB_D54: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Hitung",
-      "stepDesc": "Dapat K",
+      "stepDesc": "Dapat keliling dengan satuan.",
       "icon": "🧮",
       "flowFrom": "3",
       "flowTo": "6"
@@ -2675,24 +2535,24 @@ export const SUB_D54: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek",
-      "stepDesc": "Masuk akal?",
+      "stepDesc": "Hasil masuk akal dibanding satu sisi.",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. METODE LUAR · Segi-n Beraturan n Kali Sisi",
-      "stepDesc": "Jika semua sisi sama, keliling = banyak sisi × panjang satu sisi.",
-      "icon": "🌍",
+      "stepTitle": "7. Pola tabel",
+      "stepDesc": "5→5s, 6→6s, 8→8s.",
+      "icon": "📋",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. METODE LUAR · Sisi Beda Jumlah Satu-satu",
-      "stepDesc": "Jika sisi tidak sama, jangan langsung kali n; jumlahkan semua sisi.",
-      "icon": "🌍",
+      "stepTitle": "8. Lanjut E",
+      "stepDesc": "Gabungan: hanya batas luar.",
+      "icon": "➡️",
       "flowFrom": "7",
       "flowTo": "END"
     }
@@ -2727,18 +2587,18 @@ export const SUB_D54: SubBabNaskah = {
       "suara": "Contoh."
     },
     {
-      "judul": "Umum",
+      "judul": "n×sisi",
       "emoji": "n",
       "countNum": 1,
-      "countWord": "n×sisi",
-      "suara": "Pola."
+      "countWord": "pola",
+      "suara": "General."
     },
     {
       "judul": "Sisi beda",
       "emoji": "⚠️",
       "countNum": 1,
       "countWord": "jumlah semua",
-      "suara": "Aman."
+      "suara": "Jangan ×n."
     },
     {
       "judul": "8×2",
@@ -2755,39 +2615,18 @@ export const SUB_D54: SubBabNaskah = {
       "suara": "Rangkum."
     },
     {
-      "judul": "Kunci",
+      "judul": "Cabang",
       "emoji": "🔑",
       "countNum": 1,
-      "countWord": "sama atau beda?",
-      "suara": "Cabang."
+      "countWord": "sama/beda?",
+      "suara": "Keputusan."
     },
     {
-      "judul": "Siap E",
-      "emoji": "➡️",
+      "judul": "Path Length",
+      "emoji": "🚶",
       "countNum": 1,
-      "countWord": "gabungan",
-      "suara": "Lanjut."
-    },
-    {
-      "judul": "Segi-n Beraturan n Kali Sisi",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "METODE LUAR · Regular n-gon",
-      "suara": "METODE LUAR. Segi-n Beraturan n Kali Sisi. Jika semua sisi sama, keliling = banyak sisi × panjang satu sisi."
-    },
-    {
-      "judul": "Sisi Beda Jumlah Satu-satu",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "METODE LUAR · Irregular Side Sum",
-      "suara": "METODE LUAR. Sisi Beda Jumlah Satu-satu. Jika sisi tidak sama, jangan langsung kali n; jumlahkan semua sisi."
-    },
-    {
-      "judul": "Pola Tabel Banyak Sisi",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Table Pattern",
-      "suara": "METODE LUAR. Pola Tabel Banyak Sisi. Segi lima 5×s, segi enam 6×s: pola n×s untuk segi-n beraturan."
+      "countWord": "n sisi",
+      "suara": "Jalur luar."
     }
   ],
   "games": [
@@ -2796,9 +2635,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "hitung-d-c",
       "title": "Hitung Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Latihan topik. (METODE LUAR · Segi-n Beraturan n Kali Sisi)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Segi-n Beraturan n Kali Sisi. Mainkan.",
+      "objective": "Untuk segi-n beraturan, kalikan banyak sisi dengan panjang satu sisi.",
+      "mechanicDescription": "Tiga ronde. Regular n-gon: n×sisi bila semua sisi sama.",
+      "voiceGuide": "Beraturan: banyak sisi kali panjang sisi.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2807,9 +2646,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "rumus-d-c",
       "title": "Rumus n×sisi",
       "bookReference": "hlm. 122–124",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Untuk segi-n beraturan, kalikan banyak sisi dengan panjang satu sisi.",
+      "mechanicDescription": "Tiga ronde. Regular n-gon: n×sisi bila semua sisi sama.",
+      "voiceGuide": "Beraturan: banyak sisi kali panjang sisi.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2818,9 +2657,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "arti-d-c",
       "title": "Arti Rumus",
       "bookReference": "hlm. 122–124",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Untuk segi-n beraturan, kalikan banyak sisi dengan panjang satu sisi.",
+      "mechanicDescription": "Tiga ronde. Regular n-gon: n×sisi bila semua sisi sama.",
+      "voiceGuide": "Beraturan: banyak sisi kali panjang sisi.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2829,9 +2668,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "sortir-d-c",
       "title": "Pilah Beraturan/Bebas",
       "bookReference": "hlm. 122–124",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Untuk segi-n beraturan, kalikan banyak sisi dengan panjang satu sisi.",
+      "mechanicDescription": "Tiga ronde. Regular n-gon: n×sisi bila semua sisi sama.",
+      "voiceGuide": "Beraturan: banyak sisi kali panjang sisi.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2840,9 +2679,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "jodoh-d-c",
       "title": "Jodohkan Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Untuk segi-n beraturan, kalikan banyak sisi dengan panjang satu sisi. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Regular n-gon: n×sisi bila semua sisi sama.",
+      "voiceGuide": "Beraturan: banyak sisi kali panjang sisi. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2851,9 +2690,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "memori-d-c",
       "title": "Memori Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Untuk segi-n beraturan, kalikan banyak sisi dengan panjang satu sisi. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Regular n-gon: n×sisi bila semua sisi sama.",
+      "voiceGuide": "Beraturan: banyak sisi kali panjang sisi. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2862,9 +2701,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "ketuk-d-c",
       "title": "Ketuk Hasil",
       "bookReference": "hlm. 122–124",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Untuk segi-n beraturan, kalikan banyak sisi dengan panjang satu sisi. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Regular n-gon: n×sisi bila semua sisi sama.",
+      "voiceGuide": "Beraturan: banyak sisi kali panjang sisi. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2873,9 +2712,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "semua-d-c",
       "title": "Ketuk Semua Benar",
       "bookReference": "hlm. 122–124",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Untuk segi-n beraturan, kalikan banyak sisi dengan panjang satu sisi. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Regular n-gon: n×sisi bila semua sisi sama.",
+      "voiceGuide": "Beraturan: banyak sisi kali panjang sisi. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2884,9 +2723,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "cerita-d-c",
       "title": "Cerita Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Untuk segi-n beraturan, kalikan banyak sisi dengan panjang satu sisi. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Regular n-gon: n×sisi bila semua sisi sama.",
+      "voiceGuide": "Beraturan: banyak sisi kali panjang sisi. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2895,9 +2734,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "urut-d-c",
       "title": "Urutkan Hasil",
       "bookReference": "hlm. 122–124",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Untuk segi-n beraturan, kalikan banyak sisi dengan panjang satu sisi. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Regular n-gon: n×sisi bila semua sisi sama.",
+      "voiceGuide": "Beraturan: banyak sisi kali panjang sisi. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2906,9 +2745,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "hitung-d-p",
       "title": "Diagram Hitung Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Baca diagram. (METODE LUAR · Segi-n Beraturan n Kali Sisi)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Segi-n Beraturan n Kali Sisi. Pilih.",
+      "objective": "Jika sisi tidak sama, jumlahkan satu per satu—jangan kali n.",
+      "mechanicDescription": "Tiga ronde. Irregular: Side Sum penuh, bukan n×sisi.",
+      "voiceGuide": "Sisi beda? Jumlahkan semua. Jangan kali n.",
       "diagramType": "hitung",
       "numberA": 1,
       "numberB": 2
@@ -2918,9 +2757,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "rumus-d-p",
       "title": "Diagram Rumus n×sisi",
       "bookReference": "hlm. 122–124",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jika sisi tidak sama, jumlahkan satu per satu—jangan kali n.",
+      "mechanicDescription": "Tiga ronde. Irregular: Side Sum penuh, bukan n×sisi.",
+      "voiceGuide": "Sisi beda? Jumlahkan semua. Jangan kali n.",
       "diagramType": "rumus",
       "numberA": 1,
       "numberB": 2
@@ -2930,9 +2769,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "arti-d-p",
       "title": "Diagram Arti Rumus",
       "bookReference": "hlm. 122–124",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jika sisi tidak sama, jumlahkan satu per satu—jangan kali n.",
+      "mechanicDescription": "Tiga ronde. Irregular: Side Sum penuh, bukan n×sisi.",
+      "voiceGuide": "Sisi beda? Jumlahkan semua. Jangan kali n.",
       "diagramType": "arti",
       "numberA": 1,
       "numberB": 2
@@ -2942,9 +2781,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "sortir-d-p",
       "title": "Diagram Pilah Beraturan/Bebas",
       "bookReference": "hlm. 122–124",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jika sisi tidak sama, jumlahkan satu per satu—jangan kali n.",
+      "mechanicDescription": "Tiga ronde. Irregular: Side Sum penuh, bukan n×sisi.",
+      "voiceGuide": "Sisi beda? Jumlahkan semua. Jangan kali n.",
       "diagramType": "sortir",
       "numberA": 1,
       "numberB": 2
@@ -2954,9 +2793,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "jodoh-d-p",
       "title": "Diagram Jodohkan Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jika sisi tidak sama, jumlahkan satu per satu—jangan kali n. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Irregular: Side Sum penuh, bukan n×sisi.",
+      "voiceGuide": "Sisi beda? Jumlahkan semua. Jangan kali n. Mainkan dengan teliti.",
       "diagramType": "jodoh",
       "numberA": 1,
       "numberB": 2
@@ -2966,9 +2805,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "memori-d-p",
       "title": "Diagram Memori Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jika sisi tidak sama, jumlahkan satu per satu—jangan kali n. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Irregular: Side Sum penuh, bukan n×sisi.",
+      "voiceGuide": "Sisi beda? Jumlahkan semua. Jangan kali n. Mainkan dengan teliti.",
       "diagramType": "memori",
       "numberA": 1,
       "numberB": 2
@@ -2978,9 +2817,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "ketuk-d-p",
       "title": "Diagram Ketuk Hasil",
       "bookReference": "hlm. 122–124",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jika sisi tidak sama, jumlahkan satu per satu—jangan kali n. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Irregular: Side Sum penuh, bukan n×sisi.",
+      "voiceGuide": "Sisi beda? Jumlahkan semua. Jangan kali n. Mainkan dengan teliti.",
       "diagramType": "ketuk",
       "numberA": 1,
       "numberB": 2
@@ -2990,9 +2829,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "semua-d-p",
       "title": "Diagram Ketuk Semua Benar",
       "bookReference": "hlm. 122–124",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jika sisi tidak sama, jumlahkan satu per satu—jangan kali n. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Irregular: Side Sum penuh, bukan n×sisi.",
+      "voiceGuide": "Sisi beda? Jumlahkan semua. Jangan kali n. Mainkan dengan teliti.",
       "diagramType": "semua",
       "numberA": 1,
       "numberB": 2
@@ -3002,9 +2841,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "cerita-d-p",
       "title": "Diagram Cerita Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jika sisi tidak sama, jumlahkan satu per satu—jangan kali n. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Irregular: Side Sum penuh, bukan n×sisi.",
+      "voiceGuide": "Sisi beda? Jumlahkan semua. Jangan kali n. Mainkan dengan teliti.",
       "diagramType": "cerita",
       "numberA": 1,
       "numberB": 2
@@ -3014,9 +2853,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "urut-d-p",
       "title": "Diagram Urutkan Hasil",
       "bookReference": "hlm. 122–124",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Jika sisi tidak sama, jumlahkan satu per satu—jangan kali n. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Irregular: Side Sum penuh, bukan n×sisi.",
+      "voiceGuide": "Sisi beda? Jumlahkan semua. Jangan kali n. Mainkan dengan teliti.",
       "diagramType": "urut",
       "numberA": 1,
       "numberB": 2
@@ -3026,9 +2865,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "hitung-d-a",
       "title": "Tulis Hitung Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Notasi. (METODE LUAR · Segi-n Beraturan n Kali Sisi)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Segi-n Beraturan n Kali Sisi. Pilih.",
+      "objective": "Baca tabel segi banyak: pilih n×sisi atau jumlah semua.",
+      "mechanicDescription": "Tiga ronde. Cek dulu: beraturan atau tidak?",
+      "voiceGuide": "Beraturan atau tidak? Itu menentukan cara hitung.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3038,9 +2877,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "rumus-d-a",
       "title": "Tulis Rumus n×sisi",
       "bookReference": "hlm. 122–124",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tabel segi banyak: pilih n×sisi atau jumlah semua.",
+      "mechanicDescription": "Tiga ronde. Cek dulu: beraturan atau tidak?",
+      "voiceGuide": "Beraturan atau tidak? Itu menentukan cara hitung.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3050,9 +2889,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "arti-d-a",
       "title": "Tulis Arti Rumus",
       "bookReference": "hlm. 122–124",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tabel segi banyak: pilih n×sisi atau jumlah semua.",
+      "mechanicDescription": "Tiga ronde. Cek dulu: beraturan atau tidak?",
+      "voiceGuide": "Beraturan atau tidak? Itu menentukan cara hitung.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3062,9 +2901,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "sortir-d-a",
       "title": "Tulis Pilah Beraturan/Bebas",
       "bookReference": "hlm. 122–124",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tabel segi banyak: pilih n×sisi atau jumlah semua.",
+      "mechanicDescription": "Tiga ronde. Cek dulu: beraturan atau tidak?",
+      "voiceGuide": "Beraturan atau tidak? Itu menentukan cara hitung.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3074,9 +2913,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "jodoh-d-a",
       "title": "Tulis Jodohkan Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tabel segi banyak: pilih n×sisi atau jumlah semua. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Cek dulu: beraturan atau tidak?",
+      "voiceGuide": "Beraturan atau tidak? Itu menentukan cara hitung. Mainkan dengan teliti.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3086,9 +2925,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "memori-d-a",
       "title": "Tulis Memori Segi Banyak",
       "bookReference": "hlm. 122–124",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tabel segi banyak: pilih n×sisi atau jumlah semua. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Cek dulu: beraturan atau tidak?",
+      "voiceGuide": "Beraturan atau tidak? Itu menentukan cara hitung. Mainkan dengan teliti.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3098,9 +2937,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "bs-d",
       "title": "Benar atau Salah",
       "bookReference": "hlm. 122–124",
-      "objective": "Menilai.",
-      "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "objective": "Baca tabel segi banyak: pilih n×sisi atau jumlah semua. Latihan lanjutan.",
+      "mechanicDescription": "Dua ronde. Tiga ronde. Cek dulu: beraturan atau tidak?",
+      "voiceGuide": "Beraturan atau tidak? Itu menentukan cara hitung. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -3110,9 +2949,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "det-d",
       "title": "Detektif Keliling",
       "bookReference": "hlm. 122–124",
-      "objective": "Petunjuk.",
-      "mechanicDescription": "Tiga soal.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tabel segi banyak: pilih n×sisi atau jumlah semua. Latihan lanjutan.",
+      "mechanicDescription": "Tiga soal. Tiga ronde. Cek dulu: beraturan atau tidak?",
+      "voiceGuide": "Beraturan atau tidak? Itu menentukan cara hitung. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -3122,9 +2961,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "peta-d",
       "title": "Peta Konsep",
       "bookReference": "hlm. 122–124",
-      "objective": "Peta.",
-      "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tabel segi banyak: pilih n×sisi atau jumlah semua. Latihan lanjutan.",
+      "mechanicDescription": "Satu peta. Tiga ronde. Cek dulu: beraturan atau tidak?",
+      "voiceGuide": "Beraturan atau tidak? Itu menentukan cara hitung. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -3134,9 +2973,9 @@ export const SUB_D54: SubBabNaskah = {
       "gameType": "cerita-q-d",
       "title": "Cerita Angka",
       "bookReference": "hlm. 122–124",
-      "objective": "Cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Baca tabel segi banyak: pilih n×sisi atau jumlah semua. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Cek dulu: beraturan atau tidak?",
+      "voiceGuide": "Beraturan atau tidak? Itu menentukan cara hitung. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -3145,48 +2984,30 @@ export const SUB_D54: SubBabNaskah = {
   "poin": [
     {
       "ikon": "✨",
-      "nama": "Beraturan",
-      "isi": "Keliling = n × sisi.",
-      "suara": "Semua sisi sama."
+      "nama": "n×sisi",
+      "isi": "Segi-n beraturan: K = n × sisi. Contoh segi lima sisi 3 → 15.",
+      "suara": "Beraturan."
     },
     {
       "ikon": "➕",
-      "nama": "Tidak sama",
-      "isi": "Jumlahkan semua sisi satu-satu.",
-      "suara": "Jangan ×n."
+      "nama": "Sisi beda",
+      "isi": "Jika sisi tidak sama, jumlahkan semua sisi. Jangan memaksa ×n.",
+      "suara": "Jumlah satu-satu."
     },
     {
-      "ikon": "⬠",
-      "nama": "Segi 5",
-      "isi": "5 × sisi. Contoh 5×3=15.",
-      "suara": "Pentagon."
+      "ikon": "📋",
+      "nama": "Pola tabel",
+      "isi": "5×s, 6×s, 8×s mengikuti pola n×s.",
+      "suara": "Generalisasi."
     },
     {
-      "ikon": "⬡",
-      "nama": "Segi 6",
-      "isi": "6 × sisi. Contoh 6×4=24.",
-      "suara": "Hexagon."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Segi-n Beraturan n Kali Sisi",
-      "isi": "METODE LUAR · Regular n-gon: Jika semua sisi sama, keliling = banyak sisi × panjang satu sisi. (asal: Polygon perimeter).",
-      "suara": "METODE LUAR. Segi-n Beraturan n Kali Sisi. Jika semua sisi sama, keliling = banyak sisi × panjang satu sisi."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Sisi Beda Jumlah Satu-satu",
-      "isi": "METODE LUAR · Irregular Side Sum: Jika sisi tidak sama, jangan langsung kali n; jumlahkan semua sisi. (asal: Flexible strategy).",
-      "suara": "METODE LUAR. Sisi Beda Jumlah Satu-satu. Jika sisi tidak sama, jangan langsung kali n; jumlahkan semua sisi."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Pola Tabel Banyak Sisi",
-      "isi": "METODE LUAR · Table Pattern: Segi lima 5×s, segi enam 6×s: pola n×s untuk segi-n beraturan. (asal: Pattern generalization).",
-      "suara": "METODE LUAR. Pola Tabel Banyak Sisi. Segi lima 5×s, segi enam 6×s: pola n×s untuk segi-n beraturan."
+      "ikon": "🔑",
+      "nama": "Cabang keputusan",
+      "isi": "Tanya dulu: semua sisi sama atau tidak?",
+      "suara": "Pilih rumus."
     }
   ],
-  "poinSuara": "Ingat: beraturan n×sisi; sisi beda jumlahkan semua.",
+  "poinSuara": "Ingat: beraturan n kali sisi; sisi beda jumlahkan semua.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -3208,11 +3029,11 @@ export const SUB_D54: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: gambar segi lima beraturan sisi 2 cm dan hitung kelilingnya.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Segi-n Beraturan n Kali Sisi pada satu benda nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Kapan memakai n×sisi?",
-    "Berapa keliling segi lima sisi 3?",
-    "Apa yang dilakukan jika sisi berbeda?"
+    "Bagaimana Segi-n Beraturan n Kali Sisi membantumu memahami soal?",
+    "Kapan kamu memakai Sisi Beda Jumlah Satu-satu?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
@@ -3220,7 +3041,7 @@ export const SUB_D54: SubBabNaskah = {
       "nama": "Regular n-gon",
       "namaId": "Segi-n Beraturan n Kali Sisi",
       "asal": "Polygon perimeter",
-      "ringkas": "Jika semua sisi sama, keliling = banyak sisi × panjang satu sisi.",
+      "ringkas": "Jika semua sisi sama, K = n × sisi.",
       "tahap": [
         "Story",
         "Mind",
@@ -3233,7 +3054,7 @@ export const SUB_D54: SubBabNaskah = {
       "nama": "Irregular Side Sum",
       "namaId": "Sisi Beda Jumlah Satu-satu",
       "asal": "Flexible strategy",
-      "ringkas": "Jika sisi tidak sama, jangan langsung kali n; jumlahkan semua sisi.",
+      "ringkas": "Jika sisi tidak sama, jangan ×n; jumlahkan semua sisi.",
       "tahap": [
         "Story",
         "Picture",
@@ -3245,7 +3066,7 @@ export const SUB_D54: SubBabNaskah = {
       "nama": "Table Pattern",
       "namaId": "Pola Tabel Banyak Sisi",
       "asal": "Pattern generalization",
-      "ringkas": "Segi lima 5×s, segi enam 6×s: pola n×s untuk segi-n beraturan.",
+      "ringkas": "Segi 5 → 5×s, segi 6 → 6×s: pola n×s.",
       "tahap": [
         "Infografis",
         "Abstract"
@@ -3258,183 +3079,177 @@ export const SUB_E54: SubBabNaskah = {
   "id": "E",
   "codeTitle": "Sub-Bab E (Bangun Gabungan)",
   "fullTitle": "Sub-Bab E: Keliling Bangun Gabungan",
-  "targetDescription": "Siswa menghitung keliling bangun gabungan pada denah dengan hanya menjumlahkan sisi-sisi batas luar, mengabaikan sekat dalam, serta memakai strategi kesamaan ukuran sesuai Buku Siswa Kelas V Bab 4.",
+  "targetDescription": "Siswa menghitung keliling bangun gabungan dengan hanya menjumlahkan sisi batas luar (outer path), mengabaikan sekat dalam, serta memakai strategi bungkus persegi panjang dan melengkapi sisi hilang sesuai Buku Siswa Kelas V Bab 4 Sub-Bab E.",
   "secondaryBg": "#EDE9FE",
   "secondaryBorder": "#7C3AED",
   "secondaryText": "#5B21B6",
   "silabus": {
-    "teksSuara": "Kita belajar keliling bangun gabungan. Hanya batas luar yang dihitung. Sekat dalam tidak ikut. Bisa ukur sisi luar satu-satu atau bungkus dengan persegi panjang besar. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-    "cp": "Siswa menentukan keliling bangun gabungan.",
+    "teksSuara": "Kita belajar keliling bangun gabungan pada denah. Path Length sekarang hanya di dinding terluar. Sekat dalam antar ruang tidak dihitung. Kadang kita membungkus denah dengan persegi panjang besar, atau mencari sisi hilang dulu. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menentukan keliling bangun gabungan dengan hanya menghitung batas luar.",
     "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 4: Keliling Bangun Datar, Sub-Bab E hlm. 125–130)."
   },
   "videos": [
     {
       "id": "K5B4E-V1",
-      "judul": "Batas Luar",
-      "subjudul": "Aturan",
+      "judul": "Denah: Hanya Luar",
+      "subjudul": "Outer Path Only",
       "adegan": [
         {
           "id": "K5B4E-V1-1",
           "judul": "Denah rumah",
           "ketukan": [
-            "Denah gabungan beberapa bangun.",
-            "Ada dapur, kamar, ruang tamu.",
-            "Kelilingnya dinding terluar.",
-            "Bukan sekat dalam."
+            "Denah sering gabungan dapur, kamar, dan ruang tamu.",
+            "Jika kita memasang pagar mengelilingi seluruh rumah, kita mengikuti dinding terluar.",
+            "Dinding antar ruang di dalam rumah tidak dibeli sebagai pagar luar.",
+            "Jadi keliling gabungan = Path Length hanya pada batas luar."
           ],
           "papan": [
             "denah",
-            "gabungan",
-            "terluar",
-            "bukan dalam"
+            "pagar luar",
+            "sekat dalam",
+            "outer path"
           ]
         },
         {
           "id": "K5B4E-V1-2",
-          "judul": "Sekat dalam",
+          "judul": "Abaikan sekat",
           "ketukan": [
-            "Sekat antar ruang.",
-            "Bukan batas luar.",
-            "Jangan dijumlah ke keliling luar.",
-            "Abaikan."
+            "Sekat dalam membagi luas, tetapi tidak menambah keliling luar.",
+            "Jika kamu menjumlah semua sisi termasuk sekat, hasilnya terlalu besar.",
+            "Tandai dulu sisi yang menghadap luar. Hanya itu yang dijumlah.",
+            "METODE LUAR · Hanya Batas Luar: abaikan sekat dalam."
           ],
           "papan": [
-            "sekat",
-            "dalam",
-            "jangan",
-            "abaikan"
+            "bukan luar",
+            "salah besar",
+            "tandai luar",
+            "outer only"
           ]
         },
         {
           "id": "K5B4E-V1-3",
           "judul": "Cara Asep",
           "ketukan": [
-            "Ukur sisi luar satu-satu.",
-            "Tulis panjangnya.",
-            "Jumlahkan.",
-            "Itu keliling.",
-            "METODE LUAR. Hanya Batas Luar: Keliling bangun gabungan hanya menjumlah sisi terluar; sekat dalam diabaikan."
+            "Satu cara: ukur atau baca setiap sisi luar satu-satu, lalu jumlahkan.",
+            "Ini paling langsung mengikuti Path Length.",
+            "Pastikan tidak ada sisi luar yang terlewat di sudut menonjol.",
+            "Siap pelajari cara bungkus."
           ],
           "papan": [
-            "ukur luar",
-            "tulis",
-            "jumlah",
-            "K",
-            "METODE LUAR · Hanya Batas Luar"
+            "cara Asep",
+            "langsung",
+            "jangan lewat",
+            "lanjut"
           ]
         }
       ]
     },
     {
       "id": "K5B4E-V2",
-      "judul": "Strategi Bungkus",
-      "subjudul": "Komang",
+      "judul": "Bungkus dan Sisi Hilang",
+      "subjudul": "Bounding + Missing",
       "adegan": [
         {
           "id": "K5B4E-V2-1",
-          "judul": "Bungkus",
+          "judul": "Strategi bungkus",
           "ketukan": [
-            "Bayangkan persegi panjang besar.",
-            "Meliputi seluruh denah.",
-            "Samakan ukuran sisi.",
-            "Temukan sisi yang hilang."
+            "Kadang denah bisa dibayangkan sebagai persegi panjang besar yang membungkusnya.",
+            "Jika luarnya dua belas dan enam, K = 2(12+6) = tiga puluh enam.",
+            "Cara ini cepat bila ukuran luar sudah jelas.",
+            "METODE LUAR · Strategi Bungkus Persegi Panjang: hitung PP besar."
           ],
           "papan": [
             "bungkus",
-            "PP besar",
-            "samakan",
-            "cari sisi"
+            "2(12+6)=36",
+            "cepat",
+            "bounding"
           ]
         },
         {
           "id": "K5B4E-V2-2",
-          "judul": "Contoh 12 dan 6",
+          "judul": "Sisi hilang",
           "ketukan": [
-            "Jika luar dua belas kali enam.",
-            "Keliling dua kali dua belas plus enam.",
-            "Tiga puluh enam.",
-            "Cepat."
+            "Sering ada sisi bertanda tanya. Lengkapi dulu sebelum menjumlah.",
+            "Pakai selisih panjang: sisi besar dikurangi bagian yang sudah diketahui.",
+            "Atau pakai kesamaan: sisi yang sejajar dan sama pada denah.",
+            "METODE LUAR · Lengkapi Sisi Hilang: jangan menjumlah sebelum lengkap."
           ],
           "papan": [
-            "12×6",
-            "2(12+6)",
-            "36",
-            "cepat"
+            "sisi ?",
+            "selisih",
+            "kesamaan",
+            "missing length"
           ]
         },
         {
           "id": "K5B4E-V2-3",
-          "judul": "Selisih",
+          "judul": "Latihan 8×4 dan sisi 4",
           "ketukan": [
-            "Sisi belum diketahui.",
-            "Pakai selisih panjang.",
-            "Atau kesamaan denah.",
-            "Lengkapi dulu.",
-            "METODE LUAR. Strategi Bungkus Persegi Panjang: Bayangkan persegi panjang besar yang membungkus denah, lalu hitung kelilingnya."
+            "PP luar delapan dan empat: K = 2(8+4) = dua puluh empat.",
+            "Persegi sisi empat: K = enam belas. Itu latihan pembanding.",
+            "Selalu tanya: apakah angka ini sisi luar atau sekat dalam?",
+            "Bab 4 A sampai E kini utuh: dari arti keliling sampai gabungan."
           ],
           "papan": [
-            "?",
-            "selisih",
-            "sama",
-            "lengkapi",
-            "METODE LUAR · Strategi Bungkus Persegi Panjang"
+            "24",
+            "16",
+            "tanya dulu",
+            "A–E"
           ]
         }
       ]
     },
     {
       "id": "K5B4E-V3",
-      "judul": "Cek & Tutup",
-      "subjudul": "Bab 4",
+      "judul": "Rangkum Bab 4",
+      "subjudul": "Path Length Final",
       "adegan": [
         {
           "id": "K5B4E-V3-1",
-          "judul": "Cek luar",
+          "judul": "Satu dasar",
           "ketukan": [
-            "Pastikan hanya sisi luar.",
-            "Tidak ada sekat dalam.",
-            "Satuan sama.",
-            "Hasil masuk akal."
+            "Dari segitiga sampai gabungan, dasarnya Path Length.",
+            "Rumus 3s, 2(p+l), 4s, n×s hanyalah jalan pintas bila sisi sama atau berpasangan.",
+            "Gabungan menambah aturan: abaikan sekat dalam.",
+            "Jika ragu, gambar panah mengelilingi luar."
           ],
           "papan": [
-            "hanya luar",
-            "tanpa dalam",
-            "satuan",
-            "cek"
+            "satu dasar",
+            "pintas",
+            "aturan ekstra",
+            "gambar panah"
           ]
         },
         {
           "id": "K5B4E-V3-2",
-          "judul": "Latihan",
+          "judul": "Cek akhir",
           "ketukan": [
-            "PP delapan kali empat.",
-            "Keliling dua puluh empat.",
-            "Persegi empat.",
-            "Enam belas."
+            "Cek 1: hanya sisi luar. Cek 2: satuan sama. Cek 3: hasil masuk akal.",
+            "Cek 4: bukan luas. Cek 5: sisi hilang sudah dilengkapi.",
+            "Dengan lima cek ini, keliling gabungan lebih aman.",
+            "Siap permainan denah."
           ],
           "papan": [
-            "8×4→24",
-            "sisi4→16",
-            "latihan",
-            "ok"
+            "3 cek",
+            "cek lagi",
+            "aman",
+            "main"
           ]
         },
         {
           "id": "K5B4E-V3-3",
-          "judul": "Bab 4 siap",
+          "judul": "Tutup materi",
           "ketukan": [
-            "Konsep, segitiga, segi empat.",
-            "Segi banyak, gabungan.",
-            "Materi keliling lengkap.",
-            "Hebat!",
-            "METODE LUAR. Lengkapi Sisi Hilang: Cari sisi belum diketahui dengan selisih atau kesamaan ukuran sebelum menjumlah."
+            "Kamu punya metode luar berlabel di Silabus, dan sudah memakainya di cerita.",
+            "Path Length, fencing, rumus, n×s, outer path: semuanya saling terkait.",
+            "Ulangi peta pikiran bila perlu, lalu selesaikan permainan Concrete sampai Abstract.",
+            "Hebat: Materi keliling Bab 4 siap diperdalam lewat bermain."
           ],
           "papan": [
-            "A–E",
-            "lengkap",
-            "keliling",
-            "hebat",
-            "METODE LUAR · Lengkapi Sisi Hilang"
+            "metode hidup",
+            "terkait",
+            "ulang",
+            "hebat"
           ]
         }
       ]
@@ -3444,7 +3259,7 @@ export const SUB_E54: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Lihat denah",
-      "stepDesc": "Gabungan apa?",
+      "stepDesc": "Gabungan ruang apa saja?",
       "icon": "🏠",
       "flowFrom": "START",
       "flowTo": "2"
@@ -3452,109 +3267,116 @@ export const SUB_E54: SubBabNaskah = {
     {
       "stepNumber": 2,
       "stepTitle": "2. Tandai luar",
-      "stepDesc": "Bukan sekat dalam",
+      "stepDesc": "Warnai atau garisbawahi hanya dinding terluar.",
       "icon": "⭕",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Lengkapi sisi",
-      "stepDesc": "Selisih/kesamaan",
-      "icon": "🔍",
+      "stepTitle": "3. Abaikan dalam",
+      "stepDesc": "Sekat antar ruang tidak masuk keliling luar.",
+      "icon": "🚫",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Jumlah luar",
-      "stepDesc": "atau bungkus PP",
-      "icon": "➕",
+      "stepTitle": "4. Lengkapi sisi ?",
+      "stepDesc": "Selisih atau kesamaan ukuran.",
+      "icon": "🔍",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Hasil K",
-      "stepDesc": "Keliling gabungan",
-      "icon": "📏",
+      "stepTitle": "5. Jumlah luar / bungkus",
+      "stepDesc": "Side sum luar atau 2(P+L) bungkus.",
+      "icon": "➕",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Cek",
-      "stepDesc": "Hanya luar?",
-      "icon": "✅",
+      "stepTitle": "6. Hasil K",
+      "stepDesc": "Keliling gabungan dengan satuan.",
+      "icon": "📏",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. METODE LUAR · Hanya Batas Luar",
-      "stepDesc": "Keliling bangun gabungan hanya menjumlah sisi terluar; sekat dalam diabaikan.",
-      "icon": "🌍",
+      "stepTitle": "7. Cek 5",
+      "stepDesc": "Luar saja, satuan, masuk akal, bukan luas, sisi lengkap.",
+      "icon": "✅",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. METODE LUAR · Strategi Bungkus Persegi Panjang",
-      "stepDesc": "Bayangkan persegi panjang besar yang membungkus denah, lalu hitung kelilingnya.",
-      "icon": "🌍",
+      "stepTitle": "8. Bab 4 utuh",
+      "stepDesc": "A–E: arti, segitiga, segi empat, segi banyak, gabungan.",
+      "icon": "🎉",
       "flowFrom": "7",
       "flowTo": "END"
     }
   ],
   "infografis": [
     {
-      "judul": "Aturan",
+      "judul": "Batas luar",
       "emoji": "⭕",
       "countNum": 1,
-      "countWord": "batas luar",
-      "suara": "Inti."
+      "countWord": "dihitung",
+      "suara": "Outer path."
     },
     {
-      "judul": "Abaikan",
+      "judul": "Sekat dalam",
       "emoji": "🚫",
       "countNum": 1,
-      "countWord": "sekat dalam",
-      "suara": "Bukan luar."
+      "countWord": "abaikan",
+      "suara": "Bukan keliling luar."
     },
     {
-      "judul": "Cara 1",
+      "judul": "Cara Asep",
       "emoji": "📏",
       "countNum": 1,
-      "countWord": "jumlah sisi luar",
-      "suara": "Asep."
+      "countWord": "jumlah luar",
+      "suara": "Side sum luar."
     },
     {
-      "judul": "Cara 2",
+      "judul": "Cara Komang",
       "emoji": "📦",
       "countNum": 1,
       "countWord": "bungkus PP",
-      "suara": "Komang."
+      "suara": "Bounding rectangle."
     },
     {
       "judul": "12×6",
       "emoji": "🔢",
       "countNum": 36,
-      "countWord": "36",
+      "countWord": "K=36",
       "suara": "2(12+6)."
     },
     {
       "judul": "8×4",
       "emoji": "▭",
       "countNum": 24,
-      "countWord": "24",
+      "countWord": "K=24",
       "suara": "Contoh."
     },
     {
-      "judul": "Persegi 4",
+      "judul": "Sisi 4",
       "emoji": "⬜",
       "countNum": 16,
-      "countWord": "16",
-      "suara": "Contoh."
+      "countWord": "K=16",
+      "suara": "Persegi."
+    },
+    {
+      "judul": "Sisi ?",
+      "emoji": "🔍",
+      "countNum": 1,
+      "countWord": "selisih/sama",
+      "suara": "Missing length."
     },
     {
       "judul": "Denah",
@@ -3564,39 +3386,11 @@ export const SUB_E54: SubBabNaskah = {
       "suara": "Konteks."
     },
     {
-      "judul": "Sisi ?",
-      "emoji": "🔍",
-      "countNum": 1,
-      "countWord": "selisih/sama",
-      "suara": "Lengkapi."
-    },
-    {
-      "judul": "Bab 4",
+      "judul": "Bab 4 A–E",
       "emoji": "🎉",
       "countNum": 1,
-      "countWord": "A–E siap",
-      "suara": "Materi."
-    },
-    {
-      "judul": "Hanya Batas Luar",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "METODE LUAR · Outer Path Only",
-      "suara": "METODE LUAR. Hanya Batas Luar. Keliling bangun gabungan hanya menjumlah sisi terluar; sekat dalam diabaikan."
-    },
-    {
-      "judul": "Strategi Bungkus Persegi Panjang",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "METODE LUAR · Bounding Rectangle",
-      "suara": "METODE LUAR. Strategi Bungkus Persegi Panjang. Bayangkan persegi panjang besar yang membungkus denah, lalu hitung kelilingnya."
-    },
-    {
-      "judul": "Lengkapi Sisi Hilang",
-      "emoji": "🌍",
-      "countNum": 3,
-      "countWord": "METODE LUAR · Missing Length",
-      "suara": "METODE LUAR. Lengkapi Sisi Hilang. Cari sisi belum diketahui dengan selisih atau kesamaan ukuran sebelum menjumlah."
+      "countWord": "siap",
+      "suara": "Materi utuh."
     }
   ],
   "games": [
@@ -3605,9 +3399,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "hitung-e-c",
       "title": "Hitung Gabungan",
       "bookReference": "hlm. 125–130",
-      "objective": "Latihan topik. (METODE LUAR · Hanya Batas Luar)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Hanya Batas Luar. Mainkan.",
+      "objective": "Hitung hanya dinding terluar denah; abaikan sekat dalam.",
+      "mechanicDescription": "Tiga ronde. Outer Path Only: sekat antar ruang tidak masuk keliling luar.",
+      "voiceGuide": "Hanya batas luar. Sekat dalam diabaikan.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -3616,9 +3410,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "rumus-e-c",
       "title": "Arti Batas Luar",
       "bookReference": "hlm. 125–130",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung hanya dinding terluar denah; abaikan sekat dalam.",
+      "mechanicDescription": "Tiga ronde. Outer Path Only: sekat antar ruang tidak masuk keliling luar.",
+      "voiceGuide": "Hanya batas luar. Sekat dalam diabaikan.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -3627,9 +3421,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "arti-e-c",
       "title": "Pilih Aturan",
       "bookReference": "hlm. 125–130",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung hanya dinding terluar denah; abaikan sekat dalam.",
+      "mechanicDescription": "Tiga ronde. Outer Path Only: sekat antar ruang tidak masuk keliling luar.",
+      "voiceGuide": "Hanya batas luar. Sekat dalam diabaikan.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -3638,9 +3432,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "sortir-e-c",
       "title": "Pilah Luar/Dalam",
       "bookReference": "hlm. 125–130",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung hanya dinding terluar denah; abaikan sekat dalam.",
+      "mechanicDescription": "Tiga ronde. Outer Path Only: sekat antar ruang tidak masuk keliling luar.",
+      "voiceGuide": "Hanya batas luar. Sekat dalam diabaikan.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -3649,9 +3443,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "jodoh-e-c",
       "title": "Jodohkan Gabungan",
       "bookReference": "hlm. 125–130",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung hanya dinding terluar denah; abaikan sekat dalam. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Outer Path Only: sekat antar ruang tidak masuk keliling luar.",
+      "voiceGuide": "Hanya batas luar. Sekat dalam diabaikan. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -3660,9 +3454,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "memori-e-c",
       "title": "Memori Gabungan",
       "bookReference": "hlm. 125–130",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung hanya dinding terluar denah; abaikan sekat dalam. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Outer Path Only: sekat antar ruang tidak masuk keliling luar.",
+      "voiceGuide": "Hanya batas luar. Sekat dalam diabaikan. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -3671,9 +3465,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "ketuk-e-c",
       "title": "Ketuk Hasil",
       "bookReference": "hlm. 125–130",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung hanya dinding terluar denah; abaikan sekat dalam. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Outer Path Only: sekat antar ruang tidak masuk keliling luar.",
+      "voiceGuide": "Hanya batas luar. Sekat dalam diabaikan. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -3682,9 +3476,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "semua-e-c",
       "title": "Ketuk Semua Benar",
       "bookReference": "hlm. 125–130",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung hanya dinding terluar denah; abaikan sekat dalam. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Outer Path Only: sekat antar ruang tidak masuk keliling luar.",
+      "voiceGuide": "Hanya batas luar. Sekat dalam diabaikan. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -3693,9 +3487,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "cerita-e-c",
       "title": "Cerita Denah",
       "bookReference": "hlm. 125–130",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung hanya dinding terluar denah; abaikan sekat dalam. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Outer Path Only: sekat antar ruang tidak masuk keliling luar.",
+      "voiceGuide": "Hanya batas luar. Sekat dalam diabaikan. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -3704,9 +3498,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "urut-e-c",
       "title": "Urutkan Hasil",
       "bookReference": "hlm. 125–130",
-      "objective": "Latihan topik.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Mainkan.",
+      "objective": "Hitung hanya dinding terluar denah; abaikan sekat dalam. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Outer Path Only: sekat antar ruang tidak masuk keliling luar.",
+      "voiceGuide": "Hanya batas luar. Sekat dalam diabaikan. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -3715,9 +3509,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "hitung-e-p",
       "title": "Diagram Hitung Gabungan",
       "bookReference": "hlm. 125–130",
-      "objective": "Baca diagram. (METODE LUAR · Hanya Batas Luar)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Hanya Batas Luar. Pilih.",
+      "objective": "Bungkus denah sebagai persegi panjang besar, lalu 2(P+L).",
+      "mechanicDescription": "Tiga ronde. Bounding Rectangle: strategi bungkus denah.",
+      "voiceGuide": "Boleh bungkus denah jadi persegi panjang besar.",
       "diagramType": "hitung",
       "numberA": 1,
       "numberB": 2
@@ -3727,9 +3521,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "rumus-e-p",
       "title": "Diagram Arti Batas Luar",
       "bookReference": "hlm. 125–130",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bungkus denah sebagai persegi panjang besar, lalu 2(P+L).",
+      "mechanicDescription": "Tiga ronde. Bounding Rectangle: strategi bungkus denah.",
+      "voiceGuide": "Boleh bungkus denah jadi persegi panjang besar.",
       "diagramType": "rumus",
       "numberA": 1,
       "numberB": 2
@@ -3739,9 +3533,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "arti-e-p",
       "title": "Diagram Pilih Aturan",
       "bookReference": "hlm. 125–130",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bungkus denah sebagai persegi panjang besar, lalu 2(P+L).",
+      "mechanicDescription": "Tiga ronde. Bounding Rectangle: strategi bungkus denah.",
+      "voiceGuide": "Boleh bungkus denah jadi persegi panjang besar.",
       "diagramType": "arti",
       "numberA": 1,
       "numberB": 2
@@ -3751,9 +3545,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "sortir-e-p",
       "title": "Diagram Pilah Luar/Dalam",
       "bookReference": "hlm. 125–130",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bungkus denah sebagai persegi panjang besar, lalu 2(P+L).",
+      "mechanicDescription": "Tiga ronde. Bounding Rectangle: strategi bungkus denah.",
+      "voiceGuide": "Boleh bungkus denah jadi persegi panjang besar.",
       "diagramType": "sortir",
       "numberA": 1,
       "numberB": 2
@@ -3763,9 +3557,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "jodoh-e-p",
       "title": "Diagram Jodohkan Gabungan",
       "bookReference": "hlm. 125–130",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bungkus denah sebagai persegi panjang besar, lalu 2(P+L). Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Bounding Rectangle: strategi bungkus denah.",
+      "voiceGuide": "Boleh bungkus denah jadi persegi panjang besar. Mainkan dengan teliti.",
       "diagramType": "jodoh",
       "numberA": 1,
       "numberB": 2
@@ -3775,9 +3569,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "memori-e-p",
       "title": "Diagram Memori Gabungan",
       "bookReference": "hlm. 125–130",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bungkus denah sebagai persegi panjang besar, lalu 2(P+L). Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Bounding Rectangle: strategi bungkus denah.",
+      "voiceGuide": "Boleh bungkus denah jadi persegi panjang besar. Mainkan dengan teliti.",
       "diagramType": "memori",
       "numberA": 1,
       "numberB": 2
@@ -3787,9 +3581,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "ketuk-e-p",
       "title": "Diagram Ketuk Hasil",
       "bookReference": "hlm. 125–130",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bungkus denah sebagai persegi panjang besar, lalu 2(P+L). Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Bounding Rectangle: strategi bungkus denah.",
+      "voiceGuide": "Boleh bungkus denah jadi persegi panjang besar. Mainkan dengan teliti.",
       "diagramType": "ketuk",
       "numberA": 1,
       "numberB": 2
@@ -3799,9 +3593,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "semua-e-p",
       "title": "Diagram Ketuk Semua Benar",
       "bookReference": "hlm. 125–130",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bungkus denah sebagai persegi panjang besar, lalu 2(P+L). Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Bounding Rectangle: strategi bungkus denah.",
+      "voiceGuide": "Boleh bungkus denah jadi persegi panjang besar. Mainkan dengan teliti.",
       "diagramType": "semua",
       "numberA": 1,
       "numberB": 2
@@ -3811,9 +3605,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "cerita-e-p",
       "title": "Diagram Cerita Denah",
       "bookReference": "hlm. 125–130",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bungkus denah sebagai persegi panjang besar, lalu 2(P+L). Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Bounding Rectangle: strategi bungkus denah.",
+      "voiceGuide": "Boleh bungkus denah jadi persegi panjang besar. Mainkan dengan teliti.",
       "diagramType": "cerita",
       "numberA": 1,
       "numberB": 2
@@ -3823,9 +3617,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "urut-e-p",
       "title": "Diagram Urutkan Hasil",
       "bookReference": "hlm. 125–130",
-      "objective": "Baca diagram.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Bungkus denah sebagai persegi panjang besar, lalu 2(P+L). Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Bounding Rectangle: strategi bungkus denah.",
+      "voiceGuide": "Boleh bungkus denah jadi persegi panjang besar. Mainkan dengan teliti.",
       "diagramType": "urut",
       "numberA": 1,
       "numberB": 2
@@ -3835,9 +3629,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "hitung-e-a",
       "title": "Tulis Hitung Gabungan",
       "bookReference": "hlm. 125–130",
-      "objective": "Notasi. (METODE LUAR · Hanya Batas Luar)",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "METODE LUAR · Hanya Batas Luar. Pilih.",
+      "objective": "Lengkapi sisi yang hilang sebelum menjumlah jalur luar.",
+      "mechanicDescription": "Tiga ronde. Missing Length: selisih atau kesamaan dulu.",
+      "voiceGuide": "Sisi tanda tanya? Lengkapi dulu, baru jumlahkan.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3847,9 +3641,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "rumus-e-a",
       "title": "Tulis Arti Batas Luar",
       "bookReference": "hlm. 125–130",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Lengkapi sisi yang hilang sebelum menjumlah jalur luar.",
+      "mechanicDescription": "Tiga ronde. Missing Length: selisih atau kesamaan dulu.",
+      "voiceGuide": "Sisi tanda tanya? Lengkapi dulu, baru jumlahkan.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3859,9 +3653,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "arti-e-a",
       "title": "Tulis Pilih Aturan",
       "bookReference": "hlm. 125–130",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Lengkapi sisi yang hilang sebelum menjumlah jalur luar.",
+      "mechanicDescription": "Tiga ronde. Missing Length: selisih atau kesamaan dulu.",
+      "voiceGuide": "Sisi tanda tanya? Lengkapi dulu, baru jumlahkan.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3871,9 +3665,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "sortir-e-a",
       "title": "Tulis Pilah Luar/Dalam",
       "bookReference": "hlm. 125–130",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Lengkapi sisi yang hilang sebelum menjumlah jalur luar.",
+      "mechanicDescription": "Tiga ronde. Missing Length: selisih atau kesamaan dulu.",
+      "voiceGuide": "Sisi tanda tanya? Lengkapi dulu, baru jumlahkan.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3883,9 +3677,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "jodoh-e-a",
       "title": "Tulis Jodohkan Gabungan",
       "bookReference": "hlm. 125–130",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Lengkapi sisi yang hilang sebelum menjumlah jalur luar. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Missing Length: selisih atau kesamaan dulu.",
+      "voiceGuide": "Sisi tanda tanya? Lengkapi dulu, baru jumlahkan. Mainkan dengan teliti.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3895,9 +3689,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "memori-e-a",
       "title": "Tulis Memori Gabungan",
       "bookReference": "hlm. 125–130",
-      "objective": "Notasi.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Lengkapi sisi yang hilang sebelum menjumlah jalur luar. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Missing Length: selisih atau kesamaan dulu.",
+      "voiceGuide": "Sisi tanda tanya? Lengkapi dulu, baru jumlahkan. Mainkan dengan teliti.",
       "symbolLarge": "K",
       "wordLarge": "KELILING",
       "mathNotation": "rumus"
@@ -3907,9 +3701,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "bs-e",
       "title": "Benar atau Salah",
       "bookReference": "hlm. 125–130",
-      "objective": "Menilai.",
-      "mechanicDescription": "Dua ronde.",
-      "voiceGuide": "Benar/salah.",
+      "objective": "Lengkapi sisi yang hilang sebelum menjumlah jalur luar. Latihan lanjutan.",
+      "mechanicDescription": "Dua ronde. Tiga ronde. Missing Length: selisih atau kesamaan dulu.",
+      "voiceGuide": "Sisi tanda tanya? Lengkapi dulu, baru jumlahkan. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -3919,9 +3713,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "det-e",
       "title": "Detektif Keliling",
       "bookReference": "hlm. 125–130",
-      "objective": "Petunjuk.",
-      "mechanicDescription": "Tiga soal.",
-      "voiceGuide": "Pilih.",
+      "objective": "Lengkapi sisi yang hilang sebelum menjumlah jalur luar. Latihan lanjutan.",
+      "mechanicDescription": "Tiga soal. Tiga ronde. Missing Length: selisih atau kesamaan dulu.",
+      "voiceGuide": "Sisi tanda tanya? Lengkapi dulu, baru jumlahkan. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -3931,9 +3725,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "peta-e",
       "title": "Peta Konsep",
       "bookReference": "hlm. 125–130",
-      "objective": "Peta.",
-      "mechanicDescription": "Satu peta.",
-      "voiceGuide": "Pilih.",
+      "objective": "Lengkapi sisi yang hilang sebelum menjumlah jalur luar. Latihan lanjutan.",
+      "mechanicDescription": "Satu peta. Tiga ronde. Missing Length: selisih atau kesamaan dulu.",
+      "voiceGuide": "Sisi tanda tanya? Lengkapi dulu, baru jumlahkan. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -3943,9 +3737,9 @@ export const SUB_E54: SubBabNaskah = {
       "gameType": "cerita-q-e",
       "title": "Cerita Angka",
       "bookReference": "hlm. 125–130",
-      "objective": "Cerita.",
-      "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "objective": "Lengkapi sisi yang hilang sebelum menjumlah jalur luar. Latihan lanjutan.",
+      "mechanicDescription": "Tiga ronde. Tiga ronde. Missing Length: selisih atau kesamaan dulu.",
+      "voiceGuide": "Sisi tanda tanya? Lengkapi dulu, baru jumlahkan. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -3954,48 +3748,30 @@ export const SUB_E54: SubBabNaskah = {
   "poin": [
     {
       "ikon": "⭕",
-      "nama": "Batas luar",
-      "isi": "Hanya sisi terluar yang dijumlah.",
-      "suara": "Itu keliling gabungan."
-    },
-    {
-      "ikon": "🚫",
-      "nama": "Sekat dalam",
-      "isi": "Tidak dihitung ke keliling luar.",
-      "suara": "Abaikan."
+      "nama": "Hanya luar",
+      "isi": "Keliling gabungan = jalur terluar. Sekat dalam tidak dihitung.",
+      "suara": "Outer path only."
     },
     {
       "ikon": "📦",
       "nama": "Bungkus",
-      "isi": "Boleh bungkus PP besar lalu hitung.",
-      "suara": "Strategi Komang."
+      "isi": "Boleh bungkus denah sebagai PP besar lalu pakai 2(P+L).",
+      "suara": "Bounding rectangle."
     },
     {
       "ikon": "🔍",
       "nama": "Sisi hilang",
-      "isi": "Cari dengan selisih atau kesamaan ukuran.",
-      "suara": "Lengkapi dulu."
+      "isi": "Lengkapi sisi ? dengan selisih atau kesamaan sebelum menjumlah.",
+      "suara": "Missing length."
     },
     {
-      "ikon": "🌍",
-      "nama": "Hanya Batas Luar",
-      "isi": "METODE LUAR · Outer Path Only: Keliling bangun gabungan hanya menjumlah sisi terluar; sekat dalam diabaikan. (asal: Composite figure pedagogy).",
-      "suara": "METODE LUAR. Hanya Batas Luar. Keliling bangun gabungan hanya menjumlah sisi terluar; sekat dalam diabaikan."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Strategi Bungkus Persegi Panjang",
-      "isi": "METODE LUAR · Bounding Rectangle: Bayangkan persegi panjang besar yang membungkus denah, lalu hitung kelilingnya. (asal: Problem-solving strategy).",
-      "suara": "METODE LUAR. Strategi Bungkus Persegi Panjang. Bayangkan persegi panjang besar yang membungkus denah, lalu hitung kelilingnya."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Lengkapi Sisi Hilang",
-      "isi": "METODE LUAR · Missing Length: Cari sisi belum diketahui dengan selisih atau kesamaan ukuran sebelum menjumlah. (asal: Van de Walle).",
-      "suara": "METODE LUAR. Lengkapi Sisi Hilang. Cari sisi belum diketahui dengan selisih atau kesamaan ukuran sebelum menjumlah."
+      "ikon": "🚶",
+      "nama": "Path Length akhir",
+      "isi": "Semua rumus bab ini kembali ke panjang jalur di batas yang benar.",
+      "suara": "Dasar utuh."
     }
   ],
-  "poinSuara": "Ingat: hanya batas luar, abaikan sekat dalam, boleh bungkus PP.",
+  "poinSuara": "Ingat: hanya batas luar, boleh bungkus PP, lengkapi sisi hilang dulu.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -4017,11 +3793,11 @@ export const SUB_E54: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: gambar denah sederhana dua persegi panjang berhimpit, hitung keliling luarnya.",
+  "rumah": "Ayo Mencoba di rumah: terapkan Hanya Batas Luar pada satu benda nyata, lalu ceritakan langkahmu.",
   "refleksi": [
-    "Mengapa sekat dalam tidak dihitung?",
-    "Apa strategi bungkus?",
-    "Berapa 2(12+6)?"
+    "Bagaimana Hanya Batas Luar membantumu memahami soal?",
+    "Kapan kamu memakai Strategi Bungkus Persegi Panjang?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
@@ -4029,7 +3805,7 @@ export const SUB_E54: SubBabNaskah = {
       "nama": "Outer Path Only",
       "namaId": "Hanya Batas Luar",
       "asal": "Composite figure pedagogy",
-      "ringkas": "Keliling bangun gabungan hanya menjumlah sisi terluar; sekat dalam diabaikan.",
+      "ringkas": "Keliling gabungan = jalur terluar; sekat dalam diabaikan.",
       "tahap": [
         "Story",
         "Mind",
@@ -4042,7 +3818,7 @@ export const SUB_E54: SubBabNaskah = {
       "nama": "Bounding Rectangle",
       "namaId": "Strategi Bungkus Persegi Panjang",
       "asal": "Problem-solving strategy",
-      "ringkas": "Bayangkan persegi panjang besar yang membungkus denah, lalu hitung kelilingnya.",
+      "ringkas": "Bungkus denah dengan PP besar lalu hitung kelilingnya bila cocok.",
       "tahap": [
         "Story",
         "Picture",

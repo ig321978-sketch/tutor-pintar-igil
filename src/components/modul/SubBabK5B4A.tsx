@@ -31,25 +31,25 @@ function K0(d: PropsLangkah) {
   return Kartu(d, 0, "k5b4a-hitung", "Hitung.", RONDE_HITUNG_CA.length, "Jawab semua dulu, ya.", (r, beres) => (
     <><IgilBicara pendek="Hitung" teks="Hitung keliling." /><PilihBertahap key={r} soal={RONDE_HITUNG_CA[r].map((s, i) => {
       const opsi = opsiAngka(s.hasil, r * 2 + i);
-      return { visual: <Numeral n={s.sisi.join("+")} kelas="text-base" />, tanya: "Keliling?", opsi, jawab: opsi.indexOf(String(s.hasil)), petunjuk: "Jumlahkan sisi.", pesan: s.pesan };
+      return { visual: <Numeral n={s.sisi.join("+")} kelas="text-base" />, tanya: "Keliling?", opsi, jawab: opsi.indexOf(String(s.hasil)), petunjuk: "Path Length: jumlahkan sisi jalur.", pesan: s.pesan };
     })} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function K1(d: PropsLangkah) {
   return Kartu(d, 1, "k5b4a-arti", "Arti.", RONDE_ARTI_CA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><IgilBicara pendek="Arti" teks="Pilih." /><PilihBertahap key={r} soal={RONDE_ARTI_CA[r].map((s) => ({ visual: <Numeral n="?" />, tanya: s.tanya, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Ingat rumus/definisi.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
+    <><IgilBicara pendek="Arti" teks="Pilih." /><PilihBertahap key={r} soal={RONDE_ARTI_CA[r].map((s) => ({ visual: <Numeral n="?" />, tanya: s.tanya, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Keliling = jalur luar, bukan luas.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function K2(d: PropsLangkah) {
   return Kartu(d, 2, "k5b4a-pilih", "Pilih.", RONDE_ARTI_CA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><IgilBicara pendek="Pilih" teks="Pilih jawaban." /><PilihBertahap key={r} soal={RONDE_ARTI_CA[r].map((s) => ({ visual: <Numeral n={s.tanya} kelas="text-sm" />, tanya: "Jawaban?", opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Baca.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
+    <><IgilBicara pendek="Pilih" teks="Pilih jawaban." /><PilihBertahap key={r} soal={RONDE_ARTI_CA[r].map((s) => ({ visual: <Numeral n={s.tanya} kelas="text-sm" />, tanya: "Jawaban?", opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Baca: jalur luar atau isi?", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function K3(d: PropsLangkah) {
   return Kartu(d, 3, "k5b4a-sortir", "Pilah.", RONDE_SORTIR_CA.length, "Pilah semua dulu, ya.", (r, beres) => (
     <><IgilBicara pendek="Pilah" teks={"Ya = terkait keliling; Tidak = bukan."} /><Sortir key={r} lebarItem={90} kolomBin={2} item={urutanKe(RONDE_SORTIR_CA[r].length, r).map((i) => {
       const s = RONDE_SORTIR_CA[r][i];
-      return { id: s.id, label: s.label, isi: <Numeral n={s.label} kelas="text-sm" />, bin: s.bin, petunjuk: "Pilah.", ucapan: s.label };
+      return { id: s.id, label: s.label, isi: <Numeral n={s.label} kelas="text-sm" />, bin: s.bin, petunjuk: "Pilah: jalur luar atau isi dalam?", ucapan: s.label };
     })} bin={BIN} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
@@ -68,7 +68,7 @@ function K5(d: PropsLangkah) {
 function K6(d: PropsLangkah) {
   return Kartu(d, 6, "k5b4a-ketuk", "Ketuk.", RONDE_KETUK_CA.length, "Jawab semua dulu, ya.", (r, beres) => {
     const ro = RONDE_KETUK_CA[r];
-    return (<><IgilBicara pendek="Ketuk" teks="Ketuk hasil yang diminta." /><KetukPilih key={r} kolom={3} item={ro.item.map((n, i) => ({ id: String(n), label: `P${HURUF[i]}`, isi: <Numeral n={n} /> }))} soal={ro.tanya.map((n) => ({ tanya: `Ketuk ${n}.`, jawab: String(n), petunjuk: "Cocokkan.", pesan: String(n) }))} onBeres={beres} pesanBeres="Selesai." /></>);
+    return (<><IgilBicara pendek="Ketuk" teks="Ketuk hasil yang diminta." /><KetukPilih key={r} kolom={3} item={ro.item.map((n, i) => ({ id: String(n), label: `P${HURUF[i]}`, isi: <Numeral n={n} /> }))} soal={ro.tanya.map((n) => ({ tanya: `Ketuk ${n}.`, jawab: String(n), petunjuk: "Cocokkan hasil jalur.", pesan: String(n) }))} onBeres={beres} pesanBeres="Selesai." /></>);
   });
 }
 function K7(d: PropsLangkah) {
@@ -79,7 +79,7 @@ function K7(d: PropsLangkah) {
 }
 function K8(d: PropsLangkah) {
   return Kartu(d, 8, "k5b4a-cerita", "Cerita.", RONDE_CERITA_CA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><IgilBicara pendek="Cerita" teks="Baca." /><PilihBertahap key={r} soal={RONDE_CERITA_CA[r].map((s) => ({ visual: <Numeral n="📏" />, tanya: s.teks, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Baca teliti.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
+    <><IgilBicara pendek="Cerita" teks="Baca." /><PilihBertahap key={r} soal={RONDE_CERITA_CA[r].map((s) => ({ visual: <Numeral n="📏" />, tanya: s.teks, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Fencing atau luas? Baca teliti.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function K9(d: PropsLangkah) {
@@ -94,13 +94,13 @@ function P0(d: PropsLangkah) {
   return Kartu(d, 10, "k5b4a-phitung", "Diagram hitung.", RONDE_HITUNG_PA.length, "Jawab semua dulu, ya.", (r, beres) => (
     <><CatatanTempel pendek="Hitung" teks="Keliling?" /><PilihBertahap key={r} soal={RONDE_HITUNG_PA[r].map((s, i) => {
       const opsi = opsiAngka(s.hasil, r * 2 + i);
-      return { visual: <Numeral n={s.sisi.join("+")} kelas="text-base" />, tanya: "Keliling?", opsi, jawab: opsi.indexOf(String(s.hasil)), petunjuk: "Jumlahkan sisi.", pesan: s.pesan };
+      return { visual: <Numeral n={s.sisi.join("+")} kelas="text-base" />, tanya: "Keliling?", opsi, jawab: opsi.indexOf(String(s.hasil)), petunjuk: "Path Length: jumlahkan sisi jalur.", pesan: s.pesan };
     })} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function P1(d: PropsLangkah) {
   return Kartu(d, 11, "k5b4a-parti", "Diagram arti.", RONDE_ARTI_PA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><CatatanTempel pendek="Arti" teks="Pilih." /><PilihBertahap key={r} soal={RONDE_ARTI_PA[r].map((s) => ({ visual: <Numeral n="?" />, tanya: s.tanya, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Definisi.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
+    <><CatatanTempel pendek="Arti" teks="Pilih." /><PilihBertahap key={r} soal={RONDE_ARTI_PA[r].map((s) => ({ visual: <Numeral n="?" />, tanya: s.tanya, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Definisi Path Length.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function P2(d: PropsLangkah) {
@@ -117,7 +117,7 @@ function P3(d: PropsLangkah) {
 }
 function P4(d: PropsLangkah) {
   return Kartu(d, 14, "k5b4a-pt", "Isi tabel.", RONDE_TABEL_PA.length, "Isi semua dulu, ya.", (r, beres) => (
-    <><CatatanTempel pendek="Tabel" teks="Isi." /><PilihBertahap key={r} soal={RONDE_TABEL_PA[r].map((s) => ({ visual: <Numeral n={s.baris} kelas="text-sm" />, tanya: "Jawaban?", opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Hitung.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
+    <><CatatanTempel pendek="Tabel" teks="Isi." /><PilihBertahap key={r} soal={RONDE_TABEL_PA[r].map((s) => ({ visual: <Numeral n={s.baris} kelas="text-sm" />, tanya: "Jawaban?", opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Jumlahkan sisi jalur.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function P5(d: PropsLangkah) {
@@ -130,41 +130,41 @@ function P6(d: PropsLangkah) {
   return Kartu(d, 16, "k5b4a-pl", "Pilah diagram.", RONDE_SORTIR_PA.length, "Pilah semua dulu, ya.", (r, beres) => (
     <><CatatanTempel pendek="Pilah" teks={"Ya = terkait keliling; Tidak = bukan."} /><Sortir key={r} lebarItem={90} kolomBin={2} item={urutanKe(RONDE_SORTIR_PA[r].length, r).map((i) => {
       const s = RONDE_SORTIR_PA[r][i];
-      return { id: s.id, label: s.label, isi: <Numeral n={s.label} kelas="text-sm" />, bin: s.bin, petunjuk: "Pilah.", ucapan: s.label };
+      return { id: s.id, label: s.label, isi: <Numeral n={s.label} kelas="text-sm" />, bin: s.bin, petunjuk: "Pilah: jalur luar atau isi dalam?", ucapan: s.label };
     })} bin={BIN} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function P7(d: PropsLangkah) {
   return Kartu(d, 17, "k5b4a-ppilih", "Pilih diagram.", RONDE_ARTI_PA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><CatatanTempel pendek="Pilih" teks="Pilih pernyataan." /><PilihBertahap key={r} soal={RONDE_ARTI_PA[r].map((s) => ({ visual: <Numeral n="?" />, tanya: s.tanya, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Definisi.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
+    <><CatatanTempel pendek="Pilih" teks="Pilih pernyataan." /><PilihBertahap key={r} soal={RONDE_ARTI_PA[r].map((s) => ({ visual: <Numeral n="?" />, tanya: s.tanya, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Definisi Path Length.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function P8(d: PropsLangkah) {
   return Kartu(d, 18, "k5b4a-parti2", "Arti diagram.", RONDE_ARTI_PA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><CatatanTempel pendek="Arti" teks="Pilih." /><PilihBertahap key={r} soal={RONDE_ARTI_PA[r].map((s) => ({ visual: <Numeral n={s.tanya} kelas="text-sm" />, tanya: "Jawaban?", opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Baca.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
+    <><CatatanTempel pendek="Arti" teks="Pilih." /><PilihBertahap key={r} soal={RONDE_ARTI_PA[r].map((s) => ({ visual: <Numeral n={s.tanya} kelas="text-sm" />, tanya: "Jawaban?", opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Baca: jalur luar atau isi?", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function P9(d: PropsLangkah) {
   return Kartu(d, 19, "k5b4a-pst", "Cerita diagram.", RONDE_CERITA_PA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><CatatanTempel pendek="Cerita" teks="Baca." /><PilihBertahap key={r} soal={RONDE_CERITA_PA[r].map((s) => ({ visual: <Numeral n="?" />, tanya: s.teks, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Baca teliti.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
+    <><CatatanTempel pendek="Cerita" teks="Baca." /><PilihBertahap key={r} soal={RONDE_CERITA_PA[r].map((s) => ({ visual: <Numeral n="?" />, tanya: s.teks, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Fencing atau luas? Baca teliti.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function Q0(d: PropsLangkah) {
   return Kartu(d, 20, "k5b4a-qhitung", "Tulis hitung.", RONDE_HITUNG_CA.length, "Jawab semua dulu, ya.", (r, beres) => (
     <><CatatanPensil pendek="Hitung" teks="Pilih hasil." /><PilihBertahap key={r} soal={RONDE_HITUNG_CA[r].map((s, i) => {
       const opsi = opsiAngka(s.hasil, r * 2 + i);
-      return { visual: <Numeral n={s.sisi.join("+")} kelas="text-base" />, tanya: "Keliling?", opsi, jawab: opsi.indexOf(String(s.hasil)), petunjuk: "Jumlahkan sisi.", pesan: s.pesan };
+      return { visual: <Numeral n={s.sisi.join("+")} kelas="text-base" />, tanya: "Keliling?", opsi, jawab: opsi.indexOf(String(s.hasil)), petunjuk: "Path Length: jumlahkan sisi jalur.", pesan: s.pesan };
     })} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function Q1(d: PropsLangkah) {
   return Kartu(d, 21, "k5b4a-qarti", "Tulis arti.", RONDE_ARTI_CA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><CatatanPensil pendek="Arti" teks="Pilih." /><PilihBertahap key={r} soal={RONDE_ARTI_CA[r].map((s) => ({ visual: <Numeral n="?" />, tanya: s.tanya, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Definisi.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
+    <><CatatanPensil pendek="Arti" teks="Pilih." /><PilihBertahap key={r} soal={RONDE_ARTI_CA[r].map((s) => ({ visual: <Numeral n="?" />, tanya: s.tanya, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Definisi Path Length.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function Q2(d: PropsLangkah) {
   return Kartu(d, 22, "k5b4a-qdef", "Definisi.", RONDE_ARTI_CA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><CatatanPensil pendek="Definisi" teks="Pilih." /><PilihBertahap key={r} soal={RONDE_ARTI_CA[r].map((s) => ({ visual: <Numeral n={s.tanya} kelas="text-sm" />, tanya: "Jawaban?", opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Baca.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
+    <><CatatanPensil pendek="Definisi" teks="Pilih." /><PilihBertahap key={r} soal={RONDE_ARTI_CA[r].map((s) => ({ visual: <Numeral n={s.tanya} kelas="text-sm" />, tanya: "Jawaban?", opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Baca: jalur luar atau isi?", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function Q3(d: PropsLangkah) {
@@ -205,7 +205,7 @@ function Q8(d: PropsLangkah) {
 }
 function Q9(d: PropsLangkah) {
   return Kartu(d, 29, "k5b4a-qc", "Cerita angka.", RONDE_CERITA_QA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><CatatanPensil pendek="Cerita" teks="Baca." /><PilihBertahap key={r} soal={RONDE_CERITA_QA[r].map((s) => ({ visual: <Numeral n="?" />, tanya: s.teks, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Baca teliti.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
+    <><CatatanPensil pendek="Cerita" teks="Baca." /><PilihBertahap key={r} soal={RONDE_CERITA_QA[r].map((s) => ({ visual: <Numeral n="?" />, tanya: s.teks, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Fencing atau luas? Baca teliti.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 
