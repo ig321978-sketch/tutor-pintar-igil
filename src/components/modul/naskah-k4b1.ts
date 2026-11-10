@@ -13,7 +13,7 @@ export const K4B1_META = {
   "grade": 4,
   "subjectLabel": "MATEMATIKA - KELAS 4 SD",
   "title": "BAB 1: BILANGAN CACAH SAMPAI 10.000",
-  "silabusElemen": "🌈 Fase B • Elemen Bilangan: Membaca–Menulis, Nilai Tempat, Banding–Urut, Komposisi–Dekomposisi sampai 10.000, serta Penjumlahan–Pengurangan sampai 1.000 (Kelas 4 SD/MI)",
+  "silabusElemen": "🌈 Fase B • Elemen Bilangan: Membaca–Menulis, Nilai Tempat, Banding–Urut, Komposisi–Dekomposisi sampai 10.000, serta Penjumlahan–Pengurangan sampai 1.000, Perkalian–Pembagian sampai 100, serta Faktor dan Kelipatan (Kelas 4 SD/MI)",
   "suaraLaju": 0.7,
   "suaraNada": 1
 } as const;
@@ -4398,5 +4398,2188 @@ export const SUB_F41: SubBabNaskah = {
   ]
 };
 
-export const SUB_BAB_K4B1: SubBabNaskah[] = [SUB_A41, SUB_B41, SUB_C41, SUB_D41, SUB_E41, SUB_F41];
+
+
+export const SUB_G41: SubBabNaskah = {
+  "id": "G",
+  "codeTitle": "Sub-Bab G (Perkalian sampai 100)",
+  "fullTitle": "Sub-Bab G: Perkalian Bilangan Cacah Sampai 100",
+  "targetDescription": "Siswa memahami perkalian sampai 100 sebagai penjumlahan berulang, memakai cara panjang (urai puluhan+satuan) dan cara bersusun pendek dengan atau tanpa menyimpan, serta menyelesaikan soal cerita (donat 12×4, kelereng 14×5, pensil 12×8).",
+  "secondaryBg": "#FEF3C7",
+  "secondaryBorder": "#D97706",
+  "secondaryText": "#78350F",
+  "silabus": {
+    "teksSuara": "Kita belajar perkalian sampai seratus. Dua belas kotak donat berisi empat donat sama dengan empat puluh delapan. Kita memakai cara panjang dan cara bersusun. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa melakukan operasi hitung bilangan cacah. Pada sub-bab ini fokus perkalian sampai 100.",
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab G hlm. 39–43); array model & algoritma bersusun."
+  },
+  "videos": [
+    {
+      "id": "K4B1G-V1",
+      "judul": "Donat 12 × 4",
+      "subjudul": "Array & penjumlahan berulang",
+      "adegan": [
+        {
+          "id": "K4B1G-V1-1",
+          "judul": "Kotak donat",
+          "ketukan": [
+            "Helen melihat 12 kotak donat.",
+            "Tiap kotak berisi 4 donat.",
+            "Jika dijumlahkan satu-satu lama sekali.",
+            "Ayo pakai perkalian."
+          ],
+          "papan": [
+            "12 kotak",
+            "isi 4",
+            "lama",
+            "×"
+          ]
+        },
+        {
+          "id": "K4B1G-V1-2",
+          "judul": "Jumlah berulang",
+          "ketukan": [
+            "4 ditambah 4 sebanyak 12 kali.",
+            "Hasilnya 48 donat.",
+            "Ditulis 12 kali 4 sama dengan 48.",
+            "Perkalian mempercepat hitungan."
+          ],
+          "papan": [
+            "4+4+…",
+            "48",
+            "12×4",
+            "cepat"
+          ]
+        },
+        {
+          "id": "K4B1G-V1-3",
+          "judul": "Siap cara panjang",
+          "ketukan": [
+            "Kita uraikan 12 menjadi 10 tambah 2.",
+            "Lalu kalikan masing-masing dengan 4.",
+            "40 tambah 8 sama dengan 48.",
+            "Itu namanya cara panjang."
+          ],
+          "papan": [
+            "10+2",
+            "×4",
+            "40+8",
+            "panjang"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K4B1G-V2",
+      "judul": "Kelereng 14 × 5",
+      "subjudul": "Bersusun dengan menyimpan",
+      "adegan": [
+        {
+          "id": "K4B1G-V2-1",
+          "judul": "14 tumpuk",
+          "ketukan": [
+            "Ada 14 tumpuk kelereng.",
+            "Tiap tumpuk berisi 5 butir.",
+            "Berapa seluruhnya?",
+            "Ayo bersusun."
+          ],
+          "papan": [
+            "14 tumpuk",
+            "isi 5",
+            "berapa?",
+            "bersusun"
+          ]
+        },
+        {
+          "id": "K4B1G-V2-2",
+          "judul": "Menyimpan",
+          "ketukan": [
+            "4 kali 5 sama dengan 20.",
+            "Tulis 0, simpan 2 ke puluhan.",
+            "1 kali 5 sama dengan 5, tambah 2 jadi 7.",
+            "Hasilnya 70."
+          ],
+          "papan": [
+            "4×5=20",
+            "simpan 2",
+            "5+2=7",
+            "70"
+          ]
+        },
+        {
+          "id": "K4B1G-V2-3",
+          "judul": "Cara panjang sama",
+          "ketukan": [
+            "14 sama dengan 10 tambah 4.",
+            "10 kali 5 sama dengan 50.",
+            "4 kali 5 sama dengan 20.",
+            "50 tambah 20 sama dengan 70."
+          ],
+          "papan": [
+            "10+4",
+            "50",
+            "20",
+            "70"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K4B1G-V3",
+      "judul": "Cerita Kali",
+      "subjudul": "Ayam, buku, kancing",
+      "adegan": [
+        {
+          "id": "K4B1G-V3-1",
+          "judul": "Ayam Asep",
+          "ketukan": [
+            "Asep punya 12 ayam.",
+            "Tiap ayam makan 3 mangkok sehari.",
+            "12 kali 3 sama dengan 36.",
+            "Itulah mangkok yang disiapkan."
+          ],
+          "papan": [
+            "12 ayam",
+            "×3",
+            "36",
+            "mangkok"
+          ]
+        },
+        {
+          "id": "K4B1G-V3-2",
+          "judul": "Rak buku",
+          "ketukan": [
+            "Dua rak berisi 45 buku.",
+            "2 kali 45 sama dengan 90.",
+            "Perpustakaan punya 90 buku.",
+            "Perkalian menjawab cerita."
+          ],
+          "papan": [
+            "2 rak",
+            "×45",
+            "90",
+            "buku"
+          ]
+        },
+        {
+          "id": "K4B1G-V3-3",
+          "judul": "Pensil koperasi",
+          "ketukan": [
+            "8 pak pensil, tiap pak 12 batang.",
+            "12 kali 8 sama dengan 96.",
+            "Ada yang perlu menyimpan.",
+            "Periksa lagi hasilmu."
+          ],
+          "papan": [
+            "8 pak",
+            "×12",
+            "96",
+            "periksa"
+          ]
+        }
+      ]
+    }
+  ],
+  "mindMaps": [
+    {
+      "stepNumber": 1,
+      "stepTitle": "1. Array",
+      "stepDesc": "Baris dan kolom benda menunjukkan perkalian.",
+      "icon": "🍩",
+      "flowFrom": "START",
+      "flowTo": "2"
+    },
+    {
+      "stepNumber": 2,
+      "stepTitle": "2. Berulang",
+      "stepDesc": "Perkalian = penjumlahan berulang.",
+      "icon": "➕",
+      "flowFrom": "1",
+      "flowTo": "3"
+    },
+    {
+      "stepNumber": 3,
+      "stepTitle": "3. Cara panjang",
+      "stepDesc": "Urai puluhan + satuan, kalikan, jumlahkan.",
+      "icon": "📜",
+      "flowFrom": "2",
+      "flowTo": "4"
+    },
+    {
+      "stepNumber": 4,
+      "stepTitle": "4. Bersusun",
+      "stepDesc": "Kalikan dari satuan ke puluhan.",
+      "icon": "⬇️",
+      "flowFrom": "3",
+      "flowTo": "5"
+    },
+    {
+      "stepNumber": 5,
+      "stepTitle": "5. Menyimpan",
+      "stepDesc": "Jika satuan × faktor ≥ 10, simpan ke puluhan.",
+      "icon": "1️⃣",
+      "flowFrom": "4",
+      "flowTo": "6"
+    },
+    {
+      "stepNumber": 6,
+      "stepTitle": "6. Contoh 14×5",
+      "stepDesc": "Hasil 70 dengan menyimpan.",
+      "icon": "7️⃣",
+      "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. Cerita",
+      "stepDesc": "Ayam, buku, kancing, kucing.",
+      "icon": "📖",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. Siap H",
+      "stepDesc": "Lanjut ke pembagian.",
+      "icon": "✅",
+      "flowFrom": "7",
+      "flowTo": "END"
+    }
+  ],
+  "infografis": [
+    {
+      "judul": "ARRAY",
+      "emoji": "🍩",
+      "countNum": 12,
+      "countWord": "12×4",
+      "suara": "Array 12 kotak berisi 4 donat."
+    },
+    {
+      "judul": "48",
+      "emoji": "🔢",
+      "countNum": 48,
+      "countWord": "hasil",
+      "suara": "12 × 4 = 48."
+    },
+    {
+      "judul": "PANJANG",
+      "emoji": "📜",
+      "countNum": 10,
+      "countWord": "10+2",
+      "suara": "Urai 12 = 10 + 2."
+    },
+    {
+      "judul": "40+8",
+      "emoji": "➕",
+      "countNum": 48,
+      "countWord": "jumlah",
+      "suara": "40 + 8 = 48."
+    },
+    {
+      "judul": "BERSUSUN",
+      "emoji": "⬇️",
+      "countNum": 14,
+      "countWord": "dari satuan",
+      "suara": "Kalikan satuan dulu."
+    },
+    {
+      "judul": "MENYIMPAN",
+      "emoji": "1️⃣",
+      "countNum": 20,
+      "countWord": "4×5",
+      "suara": "4 × 5 = 20, simpan 2."
+    },
+    {
+      "judul": "70",
+      "emoji": "🎯",
+      "countNum": 70,
+      "countWord": "14×5",
+      "suara": "Hasil kelereng 70."
+    },
+    {
+      "judul": "96",
+      "emoji": "✏️",
+      "countNum": 96,
+      "countWord": "12×8",
+      "suara": "Pensil koperasi 96."
+    },
+    {
+      "judul": "CERITA",
+      "emoji": "📖",
+      "countNum": 36,
+      "countWord": "12×3",
+      "suara": "Ayam Asep 36 mangkok."
+    },
+    {
+      "judul": "SIAP H",
+      "emoji": "✅",
+      "countNum": 1,
+      "countWord": "lanjut",
+      "suara": "Siap belajar pembagian."
+    }
+  ],
+  "games": [
+    {
+      "stage": "Concrete",
+      "gameType": "array-rakit",
+      "title": "Rakit Hasil Array",
+      "bookReference": "hlm. 39–40 (12×4 donat)",
+      "objective": "Merakit hasil perkalian dari array.",
+      "mechanicDescription": "Tiga ronde, dua soal.",
+      "voiceGuide": "Rakit hasil kalinya.",
+      "emoji": "🍩",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "array-hitung",
+      "title": "Hitung Array Donat",
+      "bookReference": "hlm. 39–40",
+      "objective": "Menghitung hasil dari array benda.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "emoji": "🔢",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "sort-kali",
+      "title": "Pilah: Menyimpan atau Tidak",
+      "bookReference": "hlm. 42 (14×5)",
+      "objective": "Memilah perkalian perlu simpan / tanpa.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilah ke kotak.",
+      "emoji": "🧺",
+      "targetCount": 18
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "match-kali",
+      "title": "Jodohkan Soal dan Hasil Kali",
+      "bookReference": "hlm. 40–42",
+      "objective": "Menjodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "emoji": "🔗",
+      "targetCount": 9
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "memory-kali",
+      "title": "Memori Perkalian",
+      "bookReference": "hlm. 40–43",
+      "objective": "Memori soal dan hasil.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "emoji": "🃏",
+      "targetCount": 12
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-kali",
+      "title": "Ketuk Hasil Kali",
+      "bookReference": "hlm. 40–43",
+      "objective": "Mengetuk pasangan berhasil tertentu.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk.",
+      "emoji": "👆",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-all-kali",
+      "title": "Ketuk Semua yang Menyimpan",
+      "bookReference": "hlm. 42",
+      "objective": "Memilih semua yang perlu simpan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "emoji": "✔️",
+      "targetCount": 3
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "story-kali",
+      "title": "Cerita Perkalian",
+      "bookReference": "hlm. 43 (ayam, buku, kancing, kucing)",
+      "objective": "Menyelesaikan soal cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "emoji": "📖",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "board-kali",
+      "title": "Papan Hasil Kali",
+      "bookReference": "hlm. 40–42",
+      "objective": "Menulis hasil di papan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Isi papan.",
+      "emoji": "🗂️",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "order-kali",
+      "title": "Urutkan Hasil Kali",
+      "bookReference": "hlm. 43",
+      "objective": "Mengurutkan hasil.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Urutkan.",
+      "emoji": "📶",
+      "targetCount": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "array-model",
+      "title": "Array Titik",
+      "bookReference": "hlm. 39–40",
+      "objective": "Membaca array titik menjadi hasil.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "diagramType": "dot-array",
+      "numberA": 4,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "long-kali",
+      "title": "Cara Panjang",
+      "bookReference": "hlm. 40–41",
+      "objective": "Memilih uraian (10+2)×4.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih uraian.",
+      "diagramType": "long-mul",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "column-kali",
+      "title": "Bersusun Pendek",
+      "bookReference": "hlm. 41–42",
+      "objective": "Memilih hasil bersusun.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "diagramType": "col-mul",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "match-model-kali",
+      "title": "Jodohkan Array dan Hasil",
+      "bookReference": "hlm. 40",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "diagramType": "array-match",
+      "numberA": 3,
+      "numberB": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "memory-model-kali",
+      "title": "Memori Array",
+      "bookReference": "hlm. 40–42",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "diagramType": "array-mem",
+      "numberA": 3,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "table-kali",
+      "title": "Tabel Hasil Kali",
+      "bookReference": "hlm. 42–43",
+      "objective": "Isi hasil tabel.",
+      "mechanicDescription": "Tiga tabel.",
+      "voiceGuide": "Isi hasil.",
+      "diagramType": "mul-table",
+      "numberA": 3,
+      "numberB": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "tap-all-kali-p",
+      "title": "Ketuk Semua Simpan (Model)",
+      "bookReference": "hlm. 42",
+      "objective": "Syarat menyimpan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "diagramType": "mul-select",
+      "numberA": 3,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "sort-kali-p",
+      "title": "Pilah Array Simpan/Tidak",
+      "bookReference": "hlm. 42",
+      "objective": "Pilah.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilah.",
+      "diagramType": "mul-sort",
+      "numberA": 3,
+      "numberB": 6
+    },
+    {
+      "stage": "Picture",
+      "gameType": "steps-kali",
+      "title": "Langkah Menyimpan Kali",
+      "bookReference": "hlm. 42",
+      "objective": "Pilih langkah benar.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih langkah.",
+      "diagramType": "mul-steps",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "repeat-add",
+      "title": "Penjumlahan Berulang",
+      "bookReference": "hlm. 39",
+      "objective": "Mengenali penjumlahan berulang.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih bentuk.",
+      "diagramType": "repeat-add",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "column-kali-q",
+      "title": "Bersusun Angka",
+      "bookReference": "hlm. 41–42",
+      "objective": "Hasil bersusun.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "symbolLarge": "48",
+      "wordLarge": "KALI",
+      "mathNotation": "a × b"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "choose-kali",
+      "title": "Pilih Hasil Kali",
+      "bookReference": "hlm. 43",
+      "objective": "Memilih hasil.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "70",
+      "wordLarge": "HASIL",
+      "mathNotation": "a × b = ?"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "board-kali-q",
+      "title": "Tulis Kali di Papan",
+      "bookReference": "hlm. 42",
+      "objective": "Menulis hasil.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Isi papan.",
+      "symbolLarge": "96",
+      "wordLarge": "PAPAN",
+      "mathNotation": "hasil"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "long-kali-q",
+      "title": "Uraian Panjang Angka",
+      "bookReference": "hlm. 40",
+      "objective": "Memilih uraian benar.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih uraian.",
+      "symbolLarge": "(10+2)×4",
+      "wordLarge": "PANJANG",
+      "mathNotation": "urai"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "match-kali-q",
+      "title": "Jodohkan Soal Kali",
+      "bookReference": "hlm. 42–43",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "symbolLarge": "84",
+      "wordLarge": "JODOH",
+      "mathNotation": "soal • hasil"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "memory-kali-q",
+      "title": "Memori Soal Kali",
+      "bookReference": "hlm. 43",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "symbolLarge": "90",
+      "wordLarge": "MEMORI",
+      "mathNotation": "soal • hasil"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "true-false-g",
+      "title": "Benar atau Salah: Kali",
+      "bookReference": "hlm. 39–43",
+      "objective": "Menilai pernyataan.",
+      "mechanicDescription": "Dua ronde.",
+      "voiceGuide": "Benar/salah.",
+      "symbolLarge": "✓ ✗",
+      "wordLarge": "BENAR SALAH",
+      "mathNotation": "alasan"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "detective-g",
+      "title": "Detektif Perkalian",
+      "bookReference": "hlm. 43",
+      "objective": "Petunjuk → hasil.",
+      "mechanicDescription": "Empat soal.",
+      "voiceGuide": "Pilih bilangan.",
+      "symbolLarge": "?",
+      "wordLarge": "DETEKTIF",
+      "mathNotation": "petunjuk"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "concept-g",
+      "title": "Peta Konsep Perkalian",
+      "bookReference": "hlm. 40–42",
+      "objective": "Mengisi kotak konsep.",
+      "mechanicDescription": "Satu peta.",
+      "voiceGuide": "Pilih opsi.",
+      "symbolLarge": "🗺️",
+      "wordLarge": "PETA",
+      "mathNotation": "konsep"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "story-kali-q",
+      "title": "Cerita Angka Kali",
+      "bookReference": "hlm. 43",
+      "objective": "Soal cerita tanpa gambar.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "symbolLarge": "📖",
+      "wordLarge": "CERITA",
+      "mathNotation": "teks"
+    }
+  ],
+  "poin": [
+    {
+      "ikon": "🧩",
+      "nama": "Berulang",
+      "isi": "Perkalian adalah penjumlahan berulang.",
+      "suara": "Perkalian mempercepat penjumlahan berulang."
+    },
+    {
+      "ikon": "🔢",
+      "nama": "Panjang",
+      "isi": "Urai puluhan dan satuan, lalu kalikan.",
+      "suara": "Cara panjang mengurai dulu."
+    },
+    {
+      "ikon": "➡️",
+      "nama": "Menyimpan",
+      "isi": "Jika hasil satuan ≥ 10, simpan ke puluhan.",
+      "suara": "Menyimpan menjaga nilai tempat."
+    },
+    {
+      "ikon": "🔍",
+      "nama": "Periksa",
+      "isi": "Bandingkan dengan cara panjang atau penjumlahan.",
+      "suara": "Periksa hasil dengan cara lain."
+    }
+  ],
+  "poinSuara": "Empat poin penting perkalian sampai 100.",
+  "cara": {
+    "suara": "Ikuti langkah-langkahnya.",
+    "potongan": [
+      {
+        "teks": "Berulang",
+        "warna": "#DDD6FE"
+      },
+      {
+        "teks": "Panjang",
+        "warna": "#BBF7D0"
+      },
+      {
+        "teks": "Menyimpan",
+        "warna": "#BFDBFE"
+      },
+      {
+        "teks": "Periksa",
+        "warna": "#FDE68A"
+      }
+    ]
+  },
+  "rumah": "Ayo Mencoba: kerjakan 12 × 8 cara bersusun di buku.",
+  "refleksi": [
+    "Aku memakai array.",
+    "Aku bisa cara panjang.",
+    "Aku menyimpan dengan benar.",
+    "Aku menyelesaikan cerita."
+  ]
+};
+
+export const SUB_H41: SubBabNaskah = {
+  "id": "H",
+  "codeTitle": "Sub-Bab H (Pembagian sampai 100)",
+  "fullTitle": "Sub-Bab H: Pembagian Bilangan Cacah Sampai 100",
+  "targetDescription": "Siswa membagi bilangan cacah sampai 100 secara sama banyak (permen 48 : 4), memakai pembagian bersusun dari puluhan ke satuan, mengenali sisa 0, dan menyelesaikan soal cerita.",
+  "secondaryBg": "#DBEAFE",
+  "secondaryBorder": "#2563EB",
+  "secondaryText": "#1E3A8A",
+  "silabus": {
+    "teksSuara": "Kita belajar pembagian sampai seratus. Empat puluh delapan permen dibagi empat anak. Kita memakai pembagian bersusun dari puluhan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa melakukan operasi hitung bilangan cacah. Pada sub-bab ini fokus pembagian sampai 100.",
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab H hlm. 44–47); fair sharing & long division."
+  },
+  "videos": [
+    {
+      "id": "K4B1H-V1",
+      "judul": "Permen Pak Wicak",
+      "subjudul": "Bagi sama banyak",
+      "adegan": [
+        {
+          "id": "K4B1H-V1-1",
+          "judul": "48 permen",
+          "ketukan": [
+            "Pak Wicak punya 48 permen.",
+            "Dibagi ke Andi, Azizah, Drio, dan Candra.",
+            "Empat anak mendapat bagian sama.",
+            "Berapa masing-masing?"
+          ],
+          "papan": [
+            "48",
+            "4 anak",
+            "sama banyak",
+            "berapa?"
+          ]
+        },
+        {
+          "id": "K4B1H-V1-2",
+          "judul": "Aktivitas wadah",
+          "ketukan": [
+            "Siapkan 4 wadah.",
+            "Masukkan permen bergiliran.",
+            "Tiap wadah mendapat 12.",
+            "Sisa nol, habis dibagi."
+          ],
+          "papan": [
+            "4 wadah",
+            "bergilir",
+            "12",
+            "sisa 0"
+          ]
+        },
+        {
+          "id": "K4B1H-V1-3",
+          "judul": "Tabel percobaan",
+          "ketukan": [
+            "Coba juga 2, 3, 6, atau 8 wadah.",
+            "Catat isi tiap wadah dan sisanya.",
+            "Beberapa pembagi habis, ada yang bersisa.",
+            "Pengamatan membantu memahami."
+          ],
+          "papan": [
+            "tabel",
+            "isi",
+            "sisa",
+            "paham"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K4B1H-V2",
+      "judul": "Bersusun 48 : 4",
+      "subjudul": "Dari puluhan ke satuan",
+      "adegan": [
+        {
+          "id": "K4B1H-V2-1",
+          "judul": "Mulai puluhan",
+          "ketukan": [
+            "Tulis 48 dibagi 4.",
+            "4 dibagi 4 sama dengan 1.",
+            "Letakkan 1 di hasil bagi puluhan.",
+            "Kurangkan, turunukan 8."
+          ],
+          "papan": [
+            "48:4",
+            "4:4=1",
+            "hasil 1…",
+            "turun 8"
+          ]
+        },
+        {
+          "id": "K4B1H-V2-2",
+          "judul": "Satuan",
+          "ketukan": [
+            "8 dibagi 4 sama dengan 2.",
+            "Letakkan 2 di satuan hasil bagi.",
+            "2 kali 4 sama dengan 8.",
+            "Sisa 0."
+          ],
+          "papan": [
+            "8:4=2",
+            "hasil 12",
+            "2×4=8",
+            "sisa 0"
+          ]
+        },
+        {
+          "id": "K4B1H-V2-3",
+          "judul": "Arti hasil",
+          "ketukan": [
+            "Hasil bagi 12.",
+            "Tiap anak 12 permen.",
+            "Periksa: 12 kali 4 sama dengan 48.",
+            "Pembagian kebalikan perkalian."
+          ],
+          "papan": [
+            "12",
+            "tiap anak",
+            "12×4",
+            "kebalikan"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K4B1H-V3",
+      "judul": "Cerita Bagi",
+      "subjudul": "Permen, alpukat, kue",
+      "adegan": [
+        {
+          "id": "K4B1H-V3-1",
+          "judul": "Tono dan Tini",
+          "ketukan": [
+            "36 permen dibagi 2 anak.",
+            "36 dibagi 2 sama dengan 18.",
+            "Tini mendapat 18.",
+            "Sama banyak."
+          ],
+          "papan": [
+            "36:2",
+            "18",
+            "Tini",
+            "sama"
+          ]
+        },
+        {
+          "id": "K4B1H-V3-2",
+          "judul": "Kotak kue",
+          "ketukan": [
+            "81 kue, tiap kotak 3 kue.",
+            "81 dibagi 3 sama dengan 27.",
+            "Ibu menyiapkan 27 kotak.",
+            "Habis dibagi."
+          ],
+          "papan": [
+            "81:3",
+            "27",
+            "kotak",
+            "habis"
+          ]
+        },
+        {
+          "id": "K4B1H-V3-3",
+          "judul": "Gantungan kunci",
+          "ketukan": [
+            "55 gantungan dibagi 5 teman.",
+            "55 dibagi 5 sama dengan 11.",
+            "Asep mendapat 11.",
+            "Periksa dengan perkalian."
+          ],
+          "papan": [
+            "55:5",
+            "11",
+            "Asep",
+            "periksa"
+          ]
+        }
+      ]
+    }
+  ],
+  "mindMaps": [
+    {
+      "stepNumber": 1,
+      "stepTitle": "1. Sama banyak",
+      "stepDesc": "Membagi koleksi ke kelompok sama.",
+      "icon": "🍬",
+      "flowFrom": "START",
+      "flowTo": "2"
+    },
+    {
+      "stepNumber": 2,
+      "stepTitle": "2. Wadah",
+      "stepDesc": "Aktivitas memasukkan bergiliran.",
+      "icon": "🥣",
+      "flowFrom": "1",
+      "flowTo": "3"
+    },
+    {
+      "stepNumber": 3,
+      "stepTitle": "3. Bersusun",
+      "stepDesc": "Mulai dari puluhan ke satuan.",
+      "icon": "⬇️",
+      "flowFrom": "2",
+      "flowTo": "4"
+    },
+    {
+      "stepNumber": 4,
+      "stepTitle": "4. Hasil bagi",
+      "stepDesc": "Angka di atas garis pembagian.",
+      "icon": "1️⃣",
+      "flowFrom": "3",
+      "flowTo": "5"
+    },
+    {
+      "stepNumber": 5,
+      "stepTitle": "5. Sisa 0",
+      "stepDesc": "Habis dibagi bila sisa nol.",
+      "icon": "0️⃣",
+      "flowFrom": "4",
+      "flowTo": "6"
+    },
+    {
+      "stepNumber": 6,
+      "stepTitle": "6. Periksa",
+      "stepDesc": "Hasil × pembagi = yang dibagi.",
+      "icon": "🔍",
+      "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. Cerita",
+      "stepDesc": "Permen, kue, telur, gantungan.",
+      "icon": "📖",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. Siap I",
+      "stepDesc": "Lanjut faktor dan kelipatan.",
+      "icon": "✅",
+      "flowFrom": "7",
+      "flowTo": "END"
+    }
+  ],
+  "infografis": [
+    {
+      "judul": "SAMA BANYAK",
+      "emoji": "🍬",
+      "countNum": 48,
+      "countWord": "bagi 4",
+      "suara": "48 permen untuk 4 anak."
+    },
+    {
+      "judul": "12",
+      "emoji": "🎯",
+      "countNum": 12,
+      "countWord": "hasil",
+      "suara": "48 : 4 = 12."
+    },
+    {
+      "judul": "PULUHAN DULU",
+      "emoji": "⬇️",
+      "countNum": 4,
+      "countWord": "4:4=1",
+      "suara": "Mulai dari nilai terbesar."
+    },
+    {
+      "judul": "SATUAN",
+      "emoji": "2️⃣",
+      "countNum": 8,
+      "countWord": "8:4=2",
+      "suara": "Lanjut ke satuan."
+    },
+    {
+      "judul": "SISA 0",
+      "emoji": "0️⃣",
+      "countNum": 0,
+      "countWord": "habis",
+      "suara": "Sisa nol berarti habis."
+    },
+    {
+      "judul": "PERIKSA",
+      "emoji": "🔍",
+      "countNum": 48,
+      "countWord": "12×4",
+      "suara": "12 × 4 = 48."
+    },
+    {
+      "judul": "36:2",
+      "emoji": "👫",
+      "countNum": 18,
+      "countWord": "Tini",
+      "suara": "Cerita Tono dan Tini."
+    },
+    {
+      "judul": "81:3",
+      "emoji": "🧁",
+      "countNum": 27,
+      "countWord": "kotak",
+      "suara": "81 kue jadi 27 kotak."
+    },
+    {
+      "judul": "55:5",
+      "emoji": "🔑",
+      "countNum": 11,
+      "countWord": "Asep",
+      "suara": "55 gantungan : 5."
+    },
+    {
+      "judul": "SIAP I",
+      "emoji": "✅",
+      "countNum": 1,
+      "countWord": "lanjut",
+      "suara": "Siap faktor dan kelipatan."
+    }
+  ],
+  "games": [
+    {
+      "stage": "Concrete",
+      "gameType": "bagi-koleksi",
+      "title": "Bagi ke Wadah",
+      "bookReference": "hlm. 44–45 (48 permen)",
+      "objective": "Membagi benda ke kelompok sama.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Rakit hasil bagi.",
+      "emoji": "🍬",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "hitung-bagi",
+      "title": "Hitung Hasil Bagi",
+      "bookReference": "hlm. 45–46",
+      "objective": "Memilih hasil pembagian.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "emoji": "🔢",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "sort-bagi",
+      "title": "Pilah: Habis atau Bersisa",
+      "bookReference": "hlm. 45",
+      "objective": "Memilah habis dibagi / bersisa.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilah.",
+      "emoji": "🧺",
+      "targetCount": 18
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "match-bagi",
+      "title": "Jodohkan Soal dan Hasil Bagi",
+      "bookReference": "hlm. 46–47",
+      "objective": "Menjodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "emoji": "🔗",
+      "targetCount": 9
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "memory-bagi",
+      "title": "Memori Pembagian",
+      "bookReference": "hlm. 46–47",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "emoji": "🃏",
+      "targetCount": 12
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-bagi",
+      "title": "Ketuk Hasil Bagi",
+      "bookReference": "hlm. 46–47",
+      "objective": "Mengetuk pasangan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk.",
+      "emoji": "👆",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-all-bagi",
+      "title": "Ketuk Semua yang Habis",
+      "bookReference": "hlm. 45",
+      "objective": "Memilih semua habis dibagi.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "emoji": "✔️",
+      "targetCount": 3
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "story-bagi",
+      "title": "Cerita Pembagian",
+      "bookReference": "hlm. 47",
+      "objective": "Soal cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "emoji": "📖",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "board-bagi",
+      "title": "Papan Hasil Bagi",
+      "bookReference": "hlm. 46",
+      "objective": "Menulis hasil.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Isi papan.",
+      "emoji": "🗂️",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "order-bagi",
+      "title": "Urutkan Hasil Bagi",
+      "bookReference": "hlm. 47",
+      "objective": "Mengurutkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Urutkan.",
+      "emoji": "📶",
+      "targetCount": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "group-model",
+      "title": "Model Kelompok Sama",
+      "bookReference": "hlm. 45",
+      "objective": "Membaca model bagi.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "diagramType": "group-div",
+      "numberA": 4,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "long-bagi",
+      "title": "Langkah Bersusun",
+      "bookReference": "hlm. 46",
+      "objective": "Memilih langkah benar.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih langkah.",
+      "diagramType": "long-div",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "column-bagi",
+      "title": "Bersusun di Layar",
+      "bookReference": "hlm. 46",
+      "objective": "Memilih hasil bersusun.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "diagramType": "col-div",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "match-model-bagi",
+      "title": "Jodohkan Model dan Hasil",
+      "bookReference": "hlm. 46",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "diagramType": "div-match",
+      "numberA": 3,
+      "numberB": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "memory-model-bagi",
+      "title": "Memori Model Bagi",
+      "bookReference": "hlm. 46",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "diagramType": "div-mem",
+      "numberA": 3,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "table-bagi",
+      "title": "Tabel Hasil Bagi",
+      "bookReference": "hlm. 45–47",
+      "objective": "Isi tabel.",
+      "mechanicDescription": "Tiga tabel.",
+      "voiceGuide": "Isi hasil.",
+      "diagramType": "div-table",
+      "numberA": 3,
+      "numberB": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "tap-all-bagi-p",
+      "title": "Ketuk Semua Habis (Model)",
+      "bookReference": "hlm. 45",
+      "objective": "Syarat habis.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "diagramType": "div-select",
+      "numberA": 3,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "sort-bagi-p",
+      "title": "Pilah Model Habis/Sisa",
+      "bookReference": "hlm. 45",
+      "objective": "Pilah.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilah.",
+      "diagramType": "div-sort",
+      "numberA": 3,
+      "numberB": 6
+    },
+    {
+      "stage": "Picture",
+      "gameType": "check-bagi",
+      "title": "Periksa dengan Kali",
+      "bookReference": "hlm. 46",
+      "objective": "Hasil × pembagi = yang dibagi.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih cek.",
+      "diagramType": "div-check",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "sisa-model",
+      "title": "Ada Sisa atau Tidak",
+      "bookReference": "hlm. 45",
+      "objective": "Mengenali sisa.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "div-rem",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "column-bagi-q",
+      "title": "Bersusun Angka Bagi",
+      "bookReference": "hlm. 46–47",
+      "objective": "Hasil bersusun.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "symbolLarge": "12",
+      "wordLarge": "BAGI",
+      "mathNotation": "a : b"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "choose-bagi",
+      "title": "Pilih Hasil Bagi",
+      "bookReference": "hlm. 47",
+      "objective": "Memilih hasil.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "32",
+      "wordLarge": "HASIL",
+      "mathNotation": "a : b = ?"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "board-bagi-q",
+      "title": "Tulis Bagi di Papan",
+      "bookReference": "hlm. 46",
+      "objective": "Menulis hasil.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Isi papan.",
+      "symbolLarge": "27",
+      "wordLarge": "PAPAN",
+      "mathNotation": "hasil"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "steps-bagi-q",
+      "title": "Langkah Puluhan ke Satuan",
+      "bookReference": "hlm. 46",
+      "objective": "Pilih langkah.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "4:4=1",
+      "wordLarge": "LANGKAH",
+      "mathNotation": "bersusun"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "match-bagi-q",
+      "title": "Jodohkan Soal Bagi",
+      "bookReference": "hlm. 47",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "symbolLarge": "16",
+      "wordLarge": "JODOH",
+      "mathNotation": "soal • hasil"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "memory-bagi-q",
+      "title": "Memori Soal Bagi",
+      "bookReference": "hlm. 47",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "symbolLarge": "11",
+      "wordLarge": "MEMORI",
+      "mathNotation": "soal • hasil"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "true-false-h",
+      "title": "Benar atau Salah: Bagi",
+      "bookReference": "hlm. 44–47",
+      "objective": "Menilai pernyataan.",
+      "mechanicDescription": "Dua ronde.",
+      "voiceGuide": "Benar/salah.",
+      "symbolLarge": "✓ ✗",
+      "wordLarge": "BENAR SALAH",
+      "mathNotation": "alasan"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "detective-h",
+      "title": "Detektif Pembagian",
+      "bookReference": "hlm. 47",
+      "objective": "Petunjuk → hasil.",
+      "mechanicDescription": "Empat soal.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "?",
+      "wordLarge": "DETEKTIF",
+      "mathNotation": "petunjuk"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "concept-h",
+      "title": "Peta Konsep Pembagian",
+      "bookReference": "hlm. 45–46",
+      "objective": "Mengisi kotak.",
+      "mechanicDescription": "Satu peta.",
+      "voiceGuide": "Pilih opsi.",
+      "symbolLarge": "🗺️",
+      "wordLarge": "PETA",
+      "mathNotation": "konsep"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "story-bagi-q",
+      "title": "Cerita Angka Bagi",
+      "bookReference": "hlm. 47",
+      "objective": "Soal cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "symbolLarge": "📖",
+      "wordLarge": "CERITA",
+      "mathNotation": "teks"
+    }
+  ],
+  "poin": [
+    {
+      "ikon": "🧩",
+      "nama": "Sama banyak",
+      "isi": "Pembagian membagi koleksi rata.",
+      "suara": "Bagagian adalah bagi sama banyak."
+    },
+    {
+      "ikon": "🔢",
+      "nama": "Dari puluhan",
+      "isi": "Bersusun mulai nilai tempat terbesar.",
+      "suara": "Mulai dari puluhan, lalu satuan."
+    },
+    {
+      "ikon": "➡️",
+      "nama": "Sisa",
+      "isi": "Sisa 0 berarti habis dibagi.",
+      "suara": "Sisa nol penting."
+    },
+    {
+      "ikon": "🔍",
+      "nama": "Periksa",
+      "isi": "Hasil kali pembagi harus kembali.",
+      "suara": "Periksa dengan perkalian."
+    }
+  ],
+  "poinSuara": "Empat poin penting pembagian sampai 100.",
+  "cara": {
+    "suara": "Ikuti langkah-langkahnya.",
+    "potongan": [
+      {
+        "teks": "Sama banyak",
+        "warna": "#DDD6FE"
+      },
+      {
+        "teks": "Dari puluhan",
+        "warna": "#BBF7D0"
+      },
+      {
+        "teks": "Sisa",
+        "warna": "#BFDBFE"
+      },
+      {
+        "teks": "Periksa",
+        "warna": "#FDE68A"
+      }
+    ]
+  },
+  "rumah": "Ayo Berlatih: kerjakan 96 : 3 cara bersusun.",
+  "refleksi": [
+    "Aku membagi sama banyak.",
+    "Aku bersusun dari puluhan.",
+    "Aku cek sisa nol.",
+    "Aku memeriksa dengan kali."
+  ]
+};
+
+export const SUB_I41: SubBabNaskah = {
+  "id": "I",
+  "codeTitle": "Sub-Bab I (Faktor dan Kelipatan)",
+  "fullTitle": "Sub-Bab I: Faktor dan Kelipatan",
+  "targetDescription": "Siswa menentukan faktor (pembagi habis) bilangan seperti 12, 20, 24, 48, memahami mengapa bilangan tertentu bukan faktor, serta menentukan kelipatan (hasil kali berulang) seperti kelipatan 2, 3, 5, dan 6.",
+  "secondaryBg": "#FCE7F3",
+  "secondaryBorder": "#DB2777",
+  "secondaryText": "#9D174D",
+  "silabus": {
+    "teksSuara": "Kita belajar faktor dan kelipatan. Faktor dua belas adalah satu, dua, tiga, empat, enam, dan dua belas. Kelipatan dua adalah dua, empat, enam, delapan, dan seterusnya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa memahami faktor dan kelipatan bilangan cacah.",
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab I hlm. 48–52); faktorisasi & skip counting."
+  },
+  "videos": [
+    {
+      "id": "K4B1I-V1",
+      "judul": "Faktor 12",
+      "subjudul": "Pensil Pak Guru",
+      "adegan": [
+        {
+          "id": "K4B1I-V1-1",
+          "judul": "12 pensil",
+          "ketukan": [
+            "Pak Guru punya 12 pensil.",
+            "Bisa dibagi ke 1, 2, 3, 4, atau 6 siswa.",
+            "Setiap kali habis tanpa sisa.",
+            "Pembagi itu disebut faktor."
+          ],
+          "papan": [
+            "12 pensil",
+            "bagi rata",
+            "sisa 0",
+            "faktor"
+          ]
+        },
+        {
+          "id": "K4B1I-V1-2",
+          "judul": "Daftar faktor",
+          "ketukan": [
+            "1 kali 12, 2 kali 6, 3 kali 4.",
+            "Juga 4 kali 3, 6 kali 2, 12 kali 1.",
+            "Faktor 12: 1, 2, 3, 4, 6, 12.",
+            "Semua pasangan hasil kalinya 12."
+          ],
+          "papan": [
+            "1×12",
+            "2×6",
+            "daftar",
+            "pasangan"
+          ]
+        },
+        {
+          "id": "K4B1I-V1-3",
+          "judul": "Bukan faktor",
+          "ketukan": [
+            "Apakah 5 faktor 12?",
+            "12 dibagi 5 sisanya 2.",
+            "Karena sisa bukan nol, 5 bukan faktor.",
+            "Ingat: faktor harus habis dibagi."
+          ],
+          "papan": [
+            "5?",
+            "sisa 2",
+            "bukan",
+            "habis"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K4B1I-V2",
+      "judul": "Kelipatan 2",
+      "subjudul": "Kelereng Karel",
+      "adegan": [
+        {
+          "id": "K4B1I-V2-1",
+          "judul": "Tiap hari +2",
+          "ketukan": [
+            "Karel membeli 2 kelereng tiap hari.",
+            "Hari ke-1: 2, hari ke-2: 4.",
+            "Hari ke-3: 6, hari ke-4: 8.",
+            "Itu kelipatan 2."
+          ],
+          "papan": [
+            "+2",
+            "2,4",
+            "6,8",
+            "kelipatan"
+          ]
+        },
+        {
+          "id": "K4B1I-V2-2",
+          "judul": "Penjumlahan berulang",
+          "ketukan": [
+            "8 sama dengan 2 tambah 2 tambah 2 tambah 2.",
+            "Atau 4 kali 2.",
+            "8 adalah kelipatan 2.",
+            "2, 4, 6, 8, 10, 12, 14."
+          ],
+          "papan": [
+            "2+2+…",
+            "4×2",
+            "8",
+            "deret"
+          ]
+        },
+        {
+          "id": "K4B1I-V2-3",
+          "judul": "Slamet +3",
+          "ketukan": [
+            "Slamet menambah 3 tiap hari.",
+            "3, 6, 9, 12, 15, 18, 21.",
+            "Itu kelipatan 3.",
+            "Lengkapi kotak kosongnya."
+          ],
+          "papan": [
+            "+3",
+            "3,6,9",
+            "kelipatan 3",
+            "lengkapi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K4B1I-V3",
+      "judul": "Latihan Faktor Kelipatan",
+      "subjudul": "24, 25, 5, 6",
+      "adegan": [
+        {
+          "id": "K4B1I-V3-1",
+          "judul": "Faktor 20",
+          "ketukan": [
+            "Faktor 20: 1, 2, 4, 5, 10, 20.",
+            "4 kali 5 sama dengan 20.",
+            "Semua habis membagi 20.",
+            "Tuliskan dengan teliti."
+          ],
+          "papan": [
+            "faktor 20",
+            "4×5",
+            "habis",
+            "teliti"
+          ]
+        },
+        {
+          "id": "K4B1I-V3-2",
+          "judul": "Kelipatan 5",
+          "ketukan": [
+            "Kelipatan 5 lebih dari 17 dan kurang dari 35.",
+            "Yaitu 20, 25, dan 30.",
+            "Lewati yang di luar rentang.",
+            "Baca soal dengan cermat."
+          ],
+          "papan": [
+            ">17 <35",
+            "20,25,30",
+            "rentang",
+            "cermat"
+          ]
+        },
+        {
+          "id": "K4B1I-V3-3",
+          "judul": "Kartu Andi",
+          "ketukan": [
+            "Andi beli 4 kartu tiap 2 hari.",
+            "Dalam 6 hari ada 3 kali beli.",
+            "3 kali 4 sama dengan 12 kartu.",
+            "Kelipatan membantu cerita."
+          ],
+          "papan": [
+            "4 / 2 hari",
+            "6 hari",
+            "12",
+            "cerita"
+          ]
+        }
+      ]
+    }
+  ],
+  "mindMaps": [
+    {
+      "stepNumber": 1,
+      "stepTitle": "1. Faktor",
+      "stepDesc": "Pembagi yang habis (sisa 0).",
+      "icon": "➗",
+      "flowFrom": "START",
+      "flowTo": "2"
+    },
+    {
+      "stepNumber": 2,
+      "stepTitle": "2. Pasangan",
+      "stepDesc": "f × pasangan = n.",
+      "icon": "🔗",
+      "flowFrom": "1",
+      "flowTo": "3"
+    },
+    {
+      "stepNumber": 3,
+      "stepTitle": "3. Bukan faktor",
+      "stepDesc": "Jika ada sisa, bukan faktor.",
+      "icon": "🚫",
+      "flowFrom": "2",
+      "flowTo": "4"
+    },
+    {
+      "stepNumber": 4,
+      "stepTitle": "4. Kelipatan",
+      "stepDesc": "Hasil kali berulang / skip counting.",
+      "icon": "📶",
+      "flowFrom": "3",
+      "flowTo": "5"
+    },
+    {
+      "stepNumber": 5,
+      "stepTitle": "5. Karel +2",
+      "stepDesc": "2, 4, 6, 8, … kelipatan 2.",
+      "icon": "🔵",
+      "flowFrom": "4",
+      "flowTo": "6"
+    },
+    {
+      "stepNumber": 6,
+      "stepTitle": "6. Rentang",
+      "stepDesc": "Kelipatan dalam batas soal.",
+      "icon": "📏",
+      "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. Cerita",
+      "stepDesc": "Beras 10 kg, kartu Andi, lampu.",
+      "icon": "📖",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. Bab selesai",
+      "stepDesc": "Siap uji kompetensi bab.",
+      "icon": "✅",
+      "flowFrom": "7",
+      "flowTo": "END"
+    }
+  ],
+  "infografis": [
+    {
+      "judul": "FAKTOR",
+      "emoji": "➗",
+      "countNum": 12,
+      "countWord": "pembagi",
+      "suara": "Faktor = pembagi habis."
+    },
+    {
+      "judul": "1–12",
+      "emoji": "📋",
+      "countNum": 6,
+      "countWord": "banyak",
+      "suara": "Faktor 12 ada 6 bilangan."
+    },
+    {
+      "judul": "BUKAN 5",
+      "emoji": "🚫",
+      "countNum": 5,
+      "countWord": "sisa 2",
+      "suara": "5 bukan faktor 12."
+    },
+    {
+      "judul": "FAKTOR 20",
+      "emoji": "2️⃣",
+      "countNum": 20,
+      "countWord": "1…20",
+      "suara": "1, 2, 4, 5, 10, 20."
+    },
+    {
+      "judul": "KELIPATAN",
+      "emoji": "📶",
+      "countNum": 2,
+      "countWord": "×1,×2,…",
+      "suara": "Hasil kali berulang."
+    },
+    {
+      "judul": "2,4,6,8",
+      "emoji": "🔵",
+      "countNum": 8,
+      "countWord": "hari-4",
+      "suara": "Kelipatan 2 Karel."
+    },
+    {
+      "judul": "3,6,9,…",
+      "emoji": "🟢",
+      "countNum": 3,
+      "countWord": "Slamet",
+      "suara": "Kelipatan 3."
+    },
+    {
+      "judul": "RENTANG",
+      "emoji": "📏",
+      "countNum": 5,
+      "countWord": "17–35",
+      "suara": "20, 25, 30."
+    },
+    {
+      "judul": "CERITA",
+      "emoji": "📖",
+      "countNum": 10,
+      "countWord": "beras",
+      "suara": "Faktor 10 = cara bagi beras."
+    },
+    {
+      "judul": "SELESAI",
+      "emoji": "✅",
+      "countNum": 1,
+      "countWord": "bab 1",
+      "suara": "Siap refleksi bab."
+    }
+  ],
+  "games": [
+    {
+      "stage": "Concrete",
+      "gameType": "faktor-koleksi",
+      "title": "Bagi Pensil Jadi Faktor",
+      "bookReference": "hlm. 48 (12 pensil)",
+      "objective": "Mengenali pasangan faktor dari benda.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih pasangan.",
+      "emoji": "✏️",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "daftar-faktor",
+      "title": "Pilih Daftar Faktor",
+      "bookReference": "hlm. 48–49",
+      "objective": "Memilih daftar faktor benar.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih daftar.",
+      "emoji": "📋",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "sort-faktor",
+      "title": "Pilah: Faktor atau Bukan",
+      "bookReference": "hlm. 49 (mengapa 5 bukan faktor 12)",
+      "objective": "Memilah kandidat.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilah.",
+      "emoji": "🧺",
+      "targetCount": 18
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "match-faktor",
+      "title": "Jodohkan Bilangan dan Faktor",
+      "bookReference": "hlm. 49–50",
+      "objective": "Menjodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "emoji": "🔗",
+      "targetCount": 9
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "memory-faktor",
+      "title": "Memori Faktor",
+      "bookReference": "hlm. 49",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "emoji": "🃏",
+      "targetCount": 12
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-faktor",
+      "title": "Ketuk Faktor yang Diminta",
+      "bookReference": "hlm. 48–49",
+      "objective": "Mengetuk faktor.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk.",
+      "emoji": "👆",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-all-faktor",
+      "title": "Ketuk Semua Faktor",
+      "bookReference": "hlm. 49",
+      "objective": "Memilih semua faktor.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "emoji": "✔️",
+      "targetCount": 3
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "kelipatan-cerita",
+      "title": "Cerita Kelipatan",
+      "bookReference": "hlm. 50–52 (Karel, Andi)",
+      "objective": "Soal cerita kelipatan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih bilangan.",
+      "emoji": "📖",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "isi-kelipatan",
+      "title": "Lengkapi Deret Kelipatan",
+      "bookReference": "hlm. 50–51",
+      "objective": "Mengisi bilangan hilang.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih bilangan.",
+      "emoji": "📶",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "order-kelipatan",
+      "title": "Urutkan Kelipatan",
+      "bookReference": "hlm. 51–52",
+      "objective": "Mengurutkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Urutkan.",
+      "emoji": "📶",
+      "targetCount": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "faktor-pasangan",
+      "title": "Pasangan Faktor Diagram",
+      "bookReference": "hlm. 48–49",
+      "objective": "Melengkapi f × ? = n.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih pasangan.",
+      "diagramType": "factor-pair",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "faktor-model",
+      "title": "Model Array Faktor",
+      "bookReference": "hlm. 48",
+      "objective": "Array baris×kolom = n.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "factor-array",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "match-faktor-p",
+      "title": "Jodohkan Model Faktor",
+      "bookReference": "hlm. 49",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "diagramType": "factor-match",
+      "numberA": 3,
+      "numberB": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "memory-faktor-p",
+      "title": "Memori Model Faktor",
+      "bookReference": "hlm. 49",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "diagramType": "factor-mem",
+      "numberA": 3,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "table-faktor",
+      "title": "Tabel Faktor",
+      "bookReference": "hlm. 49",
+      "objective": "Isi pasangan.",
+      "mechanicDescription": "Tiga tabel.",
+      "voiceGuide": "Isi.",
+      "diagramType": "factor-table",
+      "numberA": 3,
+      "numberB": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "tap-all-faktor-p",
+      "title": "Ketuk Semua Faktor (Label)",
+      "bookReference": "hlm. 49",
+      "objective": "Ketuk semua.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "diagramType": "factor-select",
+      "numberA": 3,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "sort-faktor-p",
+      "title": "Pilah Label Faktor",
+      "bookReference": "hlm. 49",
+      "objective": "Pilah.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilah.",
+      "diagramType": "factor-sort",
+      "numberA": 3,
+      "numberB": 6
+    },
+    {
+      "stage": "Picture",
+      "gameType": "deret-kelipatan",
+      "title": "Deret Kelipatan Gambar",
+      "bookReference": "hlm. 50–51",
+      "objective": "Lengkapi deret.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "mult-seq",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "hari-kelipatan",
+      "title": "Hari ke-n Karel",
+      "bookReference": "hlm. 50–51",
+      "objective": "Menghitung kelipatan hari.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "day-mult",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "bukan-faktor",
+      "title": "Mengapa Bukan Faktor",
+      "bookReference": "hlm. 49",
+      "objective": "Memilih alasan sisa ≠ 0.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih alasan.",
+      "diagramType": "why-not",
+      "numberA": 3,
+      "numberB": 2
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "pilih-faktor",
+      "title": "Pilih Daftar Faktor Angka",
+      "bookReference": "hlm. 49–50",
+      "objective": "Memilih daftar.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "1,2,3,4,6,12",
+      "wordLarge": "FAKTOR",
+      "mathNotation": "daftar"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "pilih-kelipatan",
+      "title": "Pilih Kelipatan",
+      "bookReference": "hlm. 51–52",
+      "objective": "Memilih bilangan kelipatan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "2,4,6,8",
+      "wordLarge": "KELIPATAN",
+      "mathNotation": "deret"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "board-faktor",
+      "title": "Banyak Faktor di Papan",
+      "bookReference": "hlm. 49",
+      "objective": "Menulis banyak faktor.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Isi papan.",
+      "symbolLarge": "6",
+      "wordLarge": "PAPAN",
+      "mathNotation": "banyak"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "isi-hilang",
+      "title": "Angka Hilang Kelipatan",
+      "bookReference": "hlm. 51",
+      "objective": "Melengkapi deret angka.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "…",
+      "wordLarge": "HILANG",
+      "mathNotation": "deret"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "match-faktor-q",
+      "title": "Jodohkan n dan Faktor",
+      "bookReference": "hlm. 49–50",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "symbolLarge": "20",
+      "wordLarge": "JODOH",
+      "mathNotation": "n • faktor"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "memory-faktor-q",
+      "title": "Memori n dan Faktor",
+      "bookReference": "hlm. 49",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "symbolLarge": "24",
+      "wordLarge": "MEMORI",
+      "mathNotation": "n • faktor"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "true-false-i",
+      "title": "Benar atau Salah: Faktor",
+      "bookReference": "hlm. 48–52",
+      "objective": "Menilai pernyataan.",
+      "mechanicDescription": "Dua ronde.",
+      "voiceGuide": "Benar/salah.",
+      "symbolLarge": "✓ ✗",
+      "wordLarge": "BENAR SALAH",
+      "mathNotation": "alasan"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "detective-i",
+      "title": "Detektif Faktor Kelipatan",
+      "bookReference": "hlm. 50–52",
+      "objective": "Petunjuk → bilangan.",
+      "mechanicDescription": "Empat soal.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "?",
+      "wordLarge": "DETEKTIF",
+      "mathNotation": "petunjuk"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "concept-i",
+      "title": "Peta Konsep Faktor Kelipatan",
+      "bookReference": "hlm. 48–51",
+      "objective": "Mengisi kotak.",
+      "mechanicDescription": "Satu peta.",
+      "voiceGuide": "Pilih opsi.",
+      "symbolLarge": "🗺️",
+      "wordLarge": "PETA",
+      "mathNotation": "konsep"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "story-faktor-q",
+      "title": "Cerita Angka Faktor",
+      "bookReference": "hlm. 50–52",
+      "objective": "Soal cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "📖",
+      "wordLarge": "CERITA",
+      "mathNotation": "teks"
+    }
+  ],
+  "poin": [
+    {
+      "ikon": "🧩",
+      "nama": "Faktor",
+      "isi": "Pembagi dengan sisa 0.",
+      "suara": "Faktor membagi habis."
+    },
+    {
+      "ikon": "🔢",
+      "nama": "Pasangan",
+      "isi": "Dua faktor dikalikan kembali ke n.",
+      "suara": "Pasangan faktor berharga."
+    },
+    {
+      "ikon": "➡️",
+      "nama": "Kelipatan",
+      "isi": "Hasil kali berulang bilangan.",
+      "suara": "Kelipatan adalah skip counting."
+    },
+    {
+      "ikon": "🔍",
+      "nama": "Cek sisa",
+      "isi": "Sisa bukan 0 berarti bukan faktor.",
+      "suara": "Cek sisa sebelum memutuskan."
+    }
+  ],
+  "poinSuara": "Empat poin penting faktor dan kelipatan.",
+  "cara": {
+    "suara": "Ikuti langkah-langkahnya.",
+    "potongan": [
+      {
+        "teks": "Faktor",
+        "warna": "#DDD6FE"
+      },
+      {
+        "teks": "Pasangan",
+        "warna": "#BBF7D0"
+      },
+      {
+        "teks": "Kelipatan",
+        "warna": "#BFDBFE"
+      },
+      {
+        "teks": "Cek sisa",
+        "warna": "#FDE68A"
+      }
+    ]
+  },
+  "rumah": "Ayo Berlatih: tulis semua faktor 24 dan kelipatan 6 kurang dari 40.",
+  "refleksi": [
+    "Aku daftar faktor lengkap.",
+    "Aku tolak yang bersisa.",
+    "Aku lanjutkan deret kelipatan.",
+    "Aku baca batas soal."
+  ]
+};
+
+export const SUB_BAB_K4B1: SubBabNaskah[] = [SUB_A41, SUB_B41, SUB_C41, SUB_D41, SUB_E41, SUB_F41, SUB_G41, SUB_H41, SUB_I41];
 export const semuaAdeganK4B1 = SUB_BAB_K4B1.flatMap((s) => s.videos.flatMap((v) => v.adegan));

@@ -1427,3 +1427,337 @@ export const PETA_KONSEP_QF: { pusat: string; kotak: { label: string; opsi: stri
     { label: "Periksa", opsi: ["hasil + pengurang", "bagi dua", "acak"], benar: 0 },
   ]},
 ];
+
+/* ====================================================================== */
+/* SUB-BAB G — perkalian sampai 100                                         */
+/* ====================================================================== */
+
+export type Kali = [number, number];
+export type SoalKali = { a: number; b: number; benda: BendaId };
+export const hasilKali = (a: number, b: number) => a * b;
+export const perluSimpanKali = (a: number, b: number) => {
+  const s = a % 10;
+  return s * b >= 10;
+};
+export const cocokSimpanKali = (p: Kali, syarat: "simpan" | "tanpa") =>
+  (syarat === "simpan") === perluSimpanKali(p[0], p[1]);
+export const opsiKali = (h: number, seed: number) => {
+  const o = [h, h + 2 + (seed % 3), Math.max(1, h - 4 - (seed % 2))];
+  return urutanTetap(3, 1, seed).map((i) => o[i]);
+};
+export const uraianKali = (a: number, b: number) => {
+  const pl = Math.floor(a / 10) * 10;
+  const st = a % 10;
+  return `(${pl} + ${st}) × ${b} = ${pl * b} + ${st * b} = ${a * b}`;
+};
+
+export const RONDE_ARRAY_CG: SoalKali[][] = [
+  [{ a: 12, b: 4, benda: "kue" }, { a: 11, b: 3, benda: "kue" }],
+  [{ a: 14, b: 5, benda: "kelereng" }, { a: 13, b: 4, benda: "kelereng" }],
+  [{ a: 12, b: 8, benda: "jeruk" }, { a: 15, b: 3, benda: "jeruk" }],
+];
+export const RONDE_KALI_CG: Kali[][] = [
+  [[12, 4], [14, 5]],
+  [[32, 3], [24, 2]],
+  [[37, 2], [12, 8]],
+];
+export const RONDE_SORTIR_CG: Kali[][] = [
+  [[12, 4], [14, 5], [11, 3], [13, 7], [10, 4], [15, 2]],
+  [[32, 3], [24, 2], [37, 2], [25, 4], [20, 3], [16, 5]],
+  [[48, 2], [23, 4], [12, 8], [30, 3], [19, 5], [22, 3]],
+];
+export const RONDE_PASANG_CG: Kali[][] = [
+  [[12, 4], [14, 5], [11, 3]],
+  [[32, 3], [24, 2], [37, 2]],
+  [[12, 8], [21, 4], [15, 6]],
+];
+export const RONDE_MEMORI_CG: Kali[][] = [
+  [[12, 4], [14, 5], [10, 5], [11, 3]],
+  [[32, 3], [24, 2], [20, 4], [13, 5]],
+  [[12, 8], [21, 4], [15, 3], [16, 2]],
+];
+export const RONDE_KETUK_CG: { item: Kali[]; tanya: number[] }[] = [
+  { item: [[12, 4], [14, 5], [11, 3]], tanya: [48, 70] },
+  { item: [[32, 3], [24, 2], [10, 5]], tanya: [96, 48] },
+  { item: [[12, 8], [21, 4], [15, 3]], tanya: [96, 84] },
+];
+export const RONDE_SEMUA_CG: { syarat: "simpan" | "tanpa"; pasangan: Kali[] }[] = [
+  { syarat: "simpan", pasangan: [[14, 5], [12, 4], [13, 7], [11, 3]] },
+  { syarat: "tanpa", pasangan: [[12, 4], [14, 5], [11, 2], [10, 4]] },
+  { syarat: "simpan", pasangan: [[37, 2], [24, 2], [19, 5], [20, 3]] },
+];
+export const RONDE_CERITA_CG: { a: number; b: number; benda: BendaId; teks: string }[][] = [
+  [
+    { a: 12, b: 3, benda: "kue", teks: "Asep punya 12 ayam, tiap ayam 3 mangkok sehari. Berapa mangkok?" },
+    { a: 2, b: 45, benda: "kue", teks: "Perpustakaan punya 2 rak, tiap rak 45 buku. Berapa seluruh buku?" },
+  ],
+  [
+    { a: 14, b: 7, benda: "jeruk", teks: "Ibu memasang kancing pada 14 baju, tiap baju 7 kancing. Berapa kancing?" },
+    { a: 21, b: 4, benda: "kelereng", teks: "Azizah punya 21 kucing. Berapa jumlah kaki seluruh kucing?" },
+  ],
+  [
+    { a: 13, b: 6, benda: "kue", teks: "SD Anggrek mengirim 13 siswa per tingkat, ada 6 tingkat. Berapa siswa?" },
+    { a: 12, b: 8, benda: "jeruk", teks: "Koperasi beli 8 pak pensil, tiap pak 12 batang. Berapa pensil?" },
+  ],
+];
+export const RONDE_PAPAN_CG: Kali[][] = RONDE_KALI_CG;
+export const RONDE_URUT_CG: { angka: number[]; dari: "kecil" | "besar" }[] = [
+  { angka: [48, 70, 33], dari: "kecil" },
+  { angka: [96, 48, 74], dari: "besar" },
+  { angka: [96, 84, 45], dari: "kecil" },
+];
+export const RONDE_KALI_PG: Kali[][] = RONDE_KALI_CG;
+export const RONDE_PASANG_PG: Kali[][] = RONDE_PASANG_CG;
+export const RONDE_MEMORI_PG: Kali[][] = RONDE_MEMORI_CG;
+export const RONDE_TABEL_PG: { a: number; b: number }[][] = [
+  [{ a: 12, b: 4 }, { a: 14, b: 5 }, { a: 11, b: 3 }],
+  [{ a: 32, b: 3 }, { a: 24, b: 2 }, { a: 37, b: 2 }],
+  [{ a: 12, b: 8 }, { a: 21, b: 4 }, { a: 15, b: 3 }],
+];
+export const RONDE_SEMUA_PG = RONDE_SEMUA_CG;
+export const RONDE_SORTIR_PG = RONDE_SORTIR_CG;
+export const RONDE_BENARSALAH_QG: { teks: string; benar: boolean; penjelasan: string }[][] = [
+  [
+    { teks: "12 × 4 = (10 + 2) × 4 = 40 + 8 = 48.", benar: true, penjelasan: "Cara panjang donat di buku." },
+    { teks: "14 × 5 tidak perlu menyimpan.", benar: false, penjelasan: "4 × 5 = 20, menyimpan 2 ke puluhan." },
+    { teks: "Perkalian adalah penjumlahan berulang.", benar: true, penjelasan: "12 kotak × 4 = 4 dijumlah 12 kali." },
+    { teks: "32 × 3 = 96.", benar: true, penjelasan: "30×3 + 2×3 = 90+6." },
+  ],
+  [
+    { teks: "Pada cara bersusun, mulai dari satuan.", benar: true, penjelasan: "Satuan dikalikan dulu." },
+    { teks: "12 × 8 = 86.", benar: false, penjelasan: "12 × 8 = 96." },
+    { teks: "21 × 4 = 84.", benar: true, penjelasan: "20×4 + 1×4 = 80+4." },
+    { teks: "Menyimpan terjadi jika hasil satuan ≥ 10.", benar: true, penjelasan: "Seperti 4×5=20." },
+  ],
+];
+export const RONDE_DETEKTIF_QG: { klue: string[]; jawab: number; opsi: number[]; salah: string }[] = [
+  { klue: ["Aku 12 × 4.", "Aku jumlah donat di buku."], jawab: 48, opsi: [48, 40, 52], salah: "12 kotak × 4 donat = 48." },
+  { klue: ["Aku 14 × 5.", "Aku hasil kelereng buku."], jawab: 70, opsi: [70, 60, 75], salah: "(10+4)×5 = 50+20 = 70." },
+  { klue: ["Aku 2 rak × 45 buku.", "Aku hasil perpustakaan."], jawab: 90, opsi: [90, 47, 85], salah: "2 × 45 = 90." },
+  { klue: ["Aku 21 × 4.", "Aku kaki kucing Azizah."], jawab: 84, opsi: [84, 25, 80], salah: "21 kucing × 4 kaki = 84." },
+];
+export const PETA_KONSEP_QG = [
+  { pusat: "Perkalian", kotak: [
+    { label: "Arti", opsi: ["penjumlahan berulang", "pengurangan", "membagi sama"], benar: 0 },
+    { label: "Cara panjang", opsi: ["urai puluhan+satuan", "acak saja", "kurangi dulu"], benar: 0 },
+    { label: "Menyimpan", opsi: ["bila satuan × faktor ≥ 10", "selalu", "tidak pernah"], benar: 0 },
+    { label: "12 × 4", opsi: ["48", "16", "8"], benar: 0 },
+  ]},
+];
+export const RONDE_CERITA_QG = RONDE_CERITA_CG;
+
+/* ====================================================================== */
+/* SUB-BAB H — pembagian sampai 100                                         */
+/* ====================================================================== */
+
+export type Bagi = [number, number];
+export const hasilBagi = (a: number, b: number) => a / b;
+export const habisBagi = (a: number, b: number) => a % b === 0;
+export const opsiBagi = (h: number, seed: number) => {
+  const o = [h, h + 1 + (seed % 2), Math.max(1, h - 1 - (seed % 2))];
+  return urutanTetap(3, 1, seed).map((i) => o[i]);
+};
+
+export const RONDE_BAGI_CH: SoalKali[][] = [
+  [{ a: 48, b: 4, benda: "kue" }, { a: 36, b: 2, benda: "kue" }],
+  [{ a: 24, b: 2, benda: "jeruk" }, { a: 96, b: 3, benda: "jeruk" }],
+  [{ a: 72, b: 3, benda: "kelereng" }, { a: 75, b: 5, benda: "kelereng" }],
+];
+export const RONDE_BAGI_HASIL_CH: Bagi[][] = [
+  [[48, 4], [36, 2]],
+  [[24, 2], [96, 3]],
+  [[72, 3], [75, 5]],
+];
+export const RONDE_SORTIR_CH: Bagi[][] = [
+  [[48, 4], [48, 5], [36, 2], [25, 4], [96, 3], [50, 4]],
+  [[24, 2], [24, 5], [72, 3], [40, 6], [75, 5], [45, 4]],
+  [[96, 6], [96, 5], [64, 4], [55, 5], [81, 3], [70, 4]],
+];
+export const RONDE_PASANG_CH: Bagi[][] = [
+  [[48, 4], [36, 2], [24, 2]],
+  [[96, 3], [72, 3], [75, 5]],
+  [[96, 6], [64, 4], [81, 3]],
+];
+export const RONDE_MEMORI_CH: Bagi[][] = [
+  [[48, 4], [36, 2], [24, 3], [20, 4]],
+  [[96, 3], [72, 3], [75, 5], [40, 5]],
+  [[96, 6], [64, 4], [81, 3], [55, 5]],
+];
+export const RONDE_KETUK_CH: { item: Bagi[]; tanya: number[] }[] = [
+  { item: [[48, 4], [36, 2], [24, 3]], tanya: [12, 18] },
+  { item: [[96, 3], [72, 3], [40, 5]], tanya: [32, 24] },
+  { item: [[96, 6], [64, 4], [81, 3]], tanya: [16, 27] },
+];
+export const RONDE_SEMUA_CH: { syarat: "habis" | "sisa"; pasangan: Bagi[] }[] = [
+  { syarat: "habis", pasangan: [[48, 4], [48, 5], [36, 2], [25, 4]] },
+  { syarat: "sisa", pasangan: [[48, 5], [36, 2], [25, 4], [96, 3]] },
+  { syarat: "habis", pasangan: [[72, 3], [75, 5], [50, 4], [64, 4]] },
+];
+export const cocokHabis = (p: Bagi, syarat: "habis" | "sisa") =>
+  (syarat === "habis") === habisBagi(p[0], p[1]);
+export const RONDE_CERITA_CH: { a: number; b: number; benda: BendaId; teks: string }[][] = [
+  [
+    { a: 36, b: 2, benda: "kue", teks: "Kaleng 36 permen dibagi Tono dan Tini sama banyak. Berapa Tini?" },
+    { a: 64, b: 4, benda: "jeruk", teks: "64 alpukat dibagi 4 orang sama rata. Berapa tiap orang?" },
+  ],
+  [
+    { a: 81, b: 3, benda: "kue", teks: "81 kue, tiap kotak 3 kue. Berapa kotak?" },
+    { a: 96, b: 8, benda: "kue", teks: "96 telur, tiap kotak 8. Berapa kotak?" },
+  ],
+  [
+    { a: 55, b: 5, benda: "kelereng", teks: "55 gantungan kunci dibagi 5 teman sama banyak. Berapa tiap orang?" },
+    { a: 48, b: 4, benda: "kue", teks: "48 permen dibagi 4 anak. Berapa tiap anak?" },
+  ],
+];
+export const RONDE_PAPAN_CH: Bagi[][] = RONDE_BAGI_HASIL_CH;
+export const RONDE_URUT_CH: { angka: number[]; dari: "kecil" | "besar" }[] = [
+  { angka: [12, 18, 8], dari: "kecil" },
+  { angka: [32, 24, 15], dari: "besar" },
+  { angka: [16, 27, 11], dari: "kecil" },
+];
+export const RONDE_BAGI_PH = RONDE_BAGI_HASIL_CH;
+export const RONDE_PASANG_PH = RONDE_PASANG_CH;
+export const RONDE_MEMORI_PH = RONDE_MEMORI_CH;
+export const RONDE_TABEL_PH: { a: number; b: number }[][] = [
+  [{ a: 48, b: 4 }, { a: 36, b: 2 }, { a: 24, b: 3 }],
+  [{ a: 96, b: 3 }, { a: 72, b: 3 }, { a: 75, b: 5 }],
+  [{ a: 96, b: 6 }, { a: 64, b: 4 }, { a: 81, b: 3 }],
+];
+export const RONDE_SEMUA_PH = RONDE_SEMUA_CH;
+export const RONDE_SORTIR_PH = RONDE_SORTIR_CH;
+export const RONDE_BENARSALAH_QH: { teks: string; benar: boolean; penjelasan: string }[][] = [
+  [
+    { teks: "48 : 4 = 12.", benar: true, penjelasan: "4 × 12 = 48." },
+    { teks: "Pembagian bersusun mulai dari satuan.", benar: false, penjelasan: "Mulai dari nilai tempat terbesar (puluhan)." },
+    { teks: "Jika sisa 0, pembagian habis.", benar: true, penjelasan: "Hasil bagi bilangan bulat." },
+    { teks: "96 : 3 = 32.", benar: true, penjelasan: "3 × 32 = 96." },
+  ],
+  [
+    { teks: "48 : 5 habis dibagi.", benar: false, penjelasan: "48 = 5×9 + 3, ada sisa." },
+    { teks: "Hasil bagi × pembagi = yang dibagi (jika habis).", benar: true, penjelasan: "Kebalikan perkalian." },
+    { teks: "81 : 3 = 27.", benar: true, penjelasan: "3 × 27 = 81." },
+    { teks: "Pada 48:4, hasil bagi 12.", benar: true, penjelasan: "Contoh permen Pak Wicak." },
+  ],
+];
+export const RONDE_DETEKTIF_QH: { klue: string[]; jawab: number; opsi: number[]; salah: string }[] = [
+  { klue: ["Aku 48 : 4.", "Aku permen tiap anak."], jawab: 12, opsi: [12, 16, 8], salah: "48 ÷ 4 = 12." },
+  { klue: ["Aku 96 : 3.", "Aku hasil bersusun buku."], jawab: 32, opsi: [32, 30, 36], salah: "96 ÷ 3 = 32." },
+  { klue: ["Aku 81 kue : 3 per kotak.", "Aku banyak kotak."], jawab: 27, opsi: [27, 24, 30], salah: "81 ÷ 3 = 27." },
+  { klue: ["Aku 55 : 5.", "Aku gantungan kunci tiap teman."], jawab: 11, opsi: [11, 10, 12], salah: "55 ÷ 5 = 11." },
+];
+export const PETA_KONSEP_QH = [
+  { pusat: "Pembagian", kotak: [
+    { label: "Arti", opsi: ["membagi sama banyak", "menjumlah berulang", "mengurutkan"], benar: 0 },
+    { label: "Mulai dari", opsi: ["puluhan dulu", "satuan dulu", "acak"], benar: 0 },
+    { label: "Sisa 0", opsi: ["habis dibagi", "salah", "perlu menyimpan"], benar: 0 },
+    { label: "48 : 4", opsi: ["12", "16", "8"], benar: 0 },
+  ]},
+];
+export const RONDE_CERITA_QH = RONDE_CERITA_CH;
+
+/* ====================================================================== */
+/* SUB-BAB I — faktor dan kelipatan                                         */
+/* ====================================================================== */
+
+export const faktorDari = (n: number): number[] => {
+  const f: number[] = [];
+  for (let i = 1; i <= n; i++) if (n % i === 0) f.push(i);
+  return f;
+};
+export const adalahFaktor = (n: number, f: number) => n % f === 0;
+export const kelipatan = (n: number, banyak: number) => Array.from({ length: banyak }, (_, i) => n * (i + 1));
+
+export const RONDE_FAKTOR_CI: { n: number; faktor: number[] }[][] = [
+  [{ n: 12, faktor: [1, 2, 3, 4, 6, 12] }, { n: 20, faktor: [1, 2, 4, 5, 10, 20] }],
+  [{ n: 24, faktor: [1, 2, 3, 4, 6, 8, 12, 24] }, { n: 25, faktor: [1, 5, 25] }],
+  [{ n: 48, faktor: [1, 2, 3, 4, 6, 8, 12, 16, 24, 48] }, { n: 52, faktor: [1, 2, 4, 13, 26, 52] }],
+];
+export const RONDE_SORTIR_CI: { n: number; kandidat: number[] }[] = [
+  { n: 12, kandidat: [1, 2, 3, 4, 5, 6] },
+  { n: 20, kandidat: [1, 2, 3, 4, 5, 10] },
+  { n: 24, kandidat: [2, 3, 5, 6, 8, 9] },
+];
+export const RONDE_PASANG_CI: { n: number; daftar: string }[][] = [
+  [{ n: 12, daftar: "1,2,3,4,6,12" }, { n: 20, daftar: "1,2,4,5,10,20" }, { n: 25, daftar: "1,5,25" }],
+  [{ n: 24, daftar: "1,2,3,4,6,8,12,24" }, { n: 48, daftar: "1,2,3,4,6,8,12,16,24,48" }, { n: 52, daftar: "1,2,4,13,26,52" }],
+  [{ n: 10, daftar: "1,2,5,10" }, { n: 16, daftar: "1,2,4,8,16" }, { n: 18, daftar: "1,2,3,6,9,18" }],
+];
+export const RONDE_MEMORI_CI: { n: number; daftar: string }[][] = RONDE_PASANG_CI;
+export const RONDE_KETUK_CI: { n: number; item: number[]; tanya: number[] }[] = [
+  { n: 12, item: [1, 2, 3, 4, 5, 6], tanya: [2, 4, 6] },
+  { n: 20, item: [1, 2, 3, 4, 5, 10], tanya: [4, 5, 10] },
+  { n: 24, item: [2, 3, 5, 6, 8, 9], tanya: [2, 6, 8] },
+];
+export const RONDE_SEMUA_CI: { n: number; item: number[] }[] = [
+  { n: 12, item: [1, 2, 3, 4, 5, 6, 7, 12] },
+  { n: 20, item: [1, 2, 3, 4, 5, 7, 10, 20] },
+  { n: 24, item: [1, 2, 3, 5, 6, 8, 9, 12] },
+];
+export const RONDE_KELIPATAN_CI: { n: number; deret: number[]; hilang: number }[][] = [
+  [{ n: 2, deret: [2, 4, 6, 8, 10, 12, 14], hilang: 8 }, { n: 3, deret: [3, 6, 9, 12, 15, 18, 21], hilang: 12 }],
+  [{ n: 5, deret: [5, 10, 15, 20, 25, 30, 35], hilang: 25 }, { n: 6, deret: [6, 12, 18, 24, 30, 36], hilang: 24 }],
+  [{ n: 4, deret: [4, 8, 12, 16, 20, 24], hilang: 16 }, { n: 3, deret: [3, 6, 9, 12, 15, 18, 21, 24, 27], hilang: 21 }],
+];
+export const RONDE_PAPAN_CI: { n: number; jawab: number }[][] = [
+  [{ n: 12, jawab: 6 }, { n: 20, jawab: 5 }],
+  [{ n: 24, jawab: 8 }, { n: 25, jawab: 3 }],
+  [{ n: 48, jawab: 10 }, { n: 52, jawab: 6 }],
+];
+export const RONDE_URUT_CI: { angka: number[]; dari: "kecil" | "besar" }[] = [
+  { angka: [2, 4, 6, 8], dari: "kecil" },
+  { angka: [15, 10, 20, 5], dari: "besar" },
+  { angka: [6, 12, 18, 24], dari: "kecil" },
+];
+export const RONDE_FAKTOR_PI = RONDE_FAKTOR_CI;
+export const RONDE_PASANG_PI = RONDE_PASANG_CI;
+export const RONDE_MEMORI_PI = RONDE_MEMORI_CI;
+export const RONDE_TABEL_PI: { n: number; f: number; pasangan: number }[][] = [
+  [{ n: 12, f: 2, pasangan: 6 }, { n: 12, f: 3, pasangan: 4 }, { n: 12, f: 4, pasangan: 3 }],
+  [{ n: 20, f: 2, pasangan: 10 }, { n: 20, f: 4, pasangan: 5 }, { n: 20, f: 5, pasangan: 4 }],
+  [{ n: 24, f: 3, pasangan: 8 }, { n: 24, f: 6, pasangan: 4 }, { n: 24, f: 8, pasangan: 3 }],
+];
+export const RONDE_SEMUA_PI = RONDE_SEMUA_CI;
+export const RONDE_SORTIR_PI = RONDE_SORTIR_CI;
+export const RONDE_KELIPATAN_PI = RONDE_KELIPATAN_CI;
+export const RONDE_BENARSALAH_QI: { teks: string; benar: boolean; penjelasan: string }[][] = [
+  [
+    { teks: "Faktor 12 adalah 1, 2, 3, 4, 6, dan 12.", benar: true, penjelasan: "Sesuai tabel pensil Pak Guru." },
+    { teks: "5 adalah faktor 12.", benar: false, penjelasan: "12 : 5 sisa 2, bukan 0." },
+    { teks: "2, 4, 6, 8 adalah kelipatan 2.", benar: true, penjelasan: "Karel menambah 2 kelereng tiap hari." },
+    { teks: "Kelipatan 3 kurang dari 15: 3, 6, 9, 12.", benar: true, penjelasan: "3×1 sampai 3×4." },
+  ],
+  [
+    { teks: "Setiap bilangan adalah faktor dirinya sendiri.", benar: true, penjelasan: "n : n = 1." },
+    { teks: "1 bukan faktor bilangan apa pun.", benar: false, penjelasan: "1 membagi semua bilangan cacah." },
+    { teks: "Kelipatan 5 antara 17 dan 35: 20, 25, 30.", benar: true, penjelasan: "Lebih dari 17 dan kurang dari 35." },
+    { teks: "8 adalah kelipatan 3.", benar: false, penjelasan: "8 bukan hasil 3 × bilangan bulat." },
+  ],
+];
+export const RONDE_DETEKTIF_QI: { klue: string[]; jawab: number; opsi: number[]; salah: string }[] = [
+  { klue: ["Aku faktor 12.", "Aku lebih dari 4 dan kurang dari 12."], jawab: 6, opsi: [6, 5, 8], salah: "Faktor 12 di antara itu hanya 6." },
+  { klue: ["Aku kelipatan 2.", "Aku hari ke-4 Karel."], jawab: 8, opsi: [8, 6, 10], salah: "2+2+2+2 = 8." },
+  { klue: ["Aku faktor 20.", "Aku ganjil selain 1."], jawab: 5, opsi: [5, 3, 7], salah: "Faktor ganjil 20: 1 dan 5." },
+  { klue: ["Aku kelipatan 6 kurang dari 40.", "Aku terbesar di opsi."], jawab: 36, opsi: [36, 30, 24], salah: "6×6 = 36 < 40." },
+];
+export const PETA_KONSEP_QI = [
+  { pusat: "Faktor & Kelipatan", kotak: [
+    { label: "Faktor", opsi: ["pembagi habis", "hasil kali berulang", "bilangan acak"], benar: 0 },
+    { label: "Kelipatan", opsi: ["hasil kali berulang", "sisa bagi", "pecahan"], benar: 0 },
+    { label: "Faktor 12", opsi: ["1,2,3,4,6,12", "1,2,5,10", "2,4,8"], benar: 0 },
+    { label: "Kelipatan 2", opsi: ["2,4,6,8,…", "1,3,5,7,…", "3,6,9,12"], benar: 0 },
+  ]},
+];
+export const RONDE_CERITA_QI: { teks: string; jawab: number; opsi: number[]; pesan: string }[][] = [
+  [
+    { teks: "Ibu Slamet membagi 10 kg beras sama berat. Berapa kemungkinan banyak orang? (pilih salah satu faktor 10 selain 1)", jawab: 5, opsi: [5, 3, 7], pesan: "Faktor 10: 1, 2, 5, 10. Selain 1 misalnya 5." },
+    { teks: "Andi beli 4 kartu tiap 2 hari. Setelah 6 hari berapa kartu?", jawab: 12, opsi: [12, 8, 16], pesan: "6 hari = 3 kali beli. 3 × 4 = 12." },
+  ],
+  [
+    { teks: "Kelipatan 4 lebih dari 7 dan kurang dari 25. Manakah?", jawab: 20, opsi: [20, 4, 28], pesan: "8, 12, 16, 20, 24." },
+    { teks: "Lampu merah berkedip tiap 2 menit. Dari 18.10, kedipan berikutnya di menit keberapa (dari 0)?", jawab: 2, opsi: [2, 3, 5], pesan: "Kelipatan 2 menit kemudian." },
+  ],
+  [
+    { teks: "Faktor 27 yang terbesar selain 27?", jawab: 9, opsi: [9, 7, 8], pesan: "Faktor 27: 1, 3, 9, 27." },
+    { teks: "Kelipatan 3 kurang dari 30 yang terbesar?", jawab: 27, opsi: [27, 30, 24], pesan: "3 × 9 = 27." },
+  ],
+];

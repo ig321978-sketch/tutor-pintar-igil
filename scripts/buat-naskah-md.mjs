@@ -208,7 +208,7 @@ KONFIG.k4b1 = {
   kelas: 4,
   bab: 1,
   judul: "Bilangan Cacah sampai 10.000",
-  buku: "Buku Siswa Matematika Kelas IV (Kemendikbudristek, Kurikulum Merdeka, Bab 1 hlm. 4–37) Sub-Bab A–F",
+  buku: "Buku Siswa Matematika Kelas IV (Kemendikbudristek, Kurikulum Merdeka, Bab 1 hlm. 4–52) Sub-Bab A–I",
   berkas: {
     A: "sub-a-membaca-menulis",
     B: "sub-b-nilai-tempat",
@@ -216,6 +216,9 @@ KONFIG.k4b1 = {
     D: "sub-d-komposisi-dekomposisi",
     E: "sub-e-penjumlahan-sampai-1000",
     F: "sub-f-pengurangan-sampai-1000",
+    G: "sub-g-perkalian-sampai-100",
+    H: "sub-h-pembagian-sampai-100",
+    I: "sub-i-faktor-dan-kelipatan",
   },
   metodeLuar: {
     A: [
@@ -265,6 +268,30 @@ KONFIG.k4b1 = {
       "**Cek balik**: hasil + pengurang = bilangan awal.",
       "**Cara panjang pengurangan**: uraikan dulu, kurangi tiap tempat, lalu susun.",
       "**Model hilang/tertinggal**: koleksi berkurang tampak sebelum angka murni.",
+    ],
+    G: [
+      "**Array model**: 12×4 donat sebagai penjumlahan berulang tampak.",
+      "**Cara panjang (distributive)**: (10+2)×4 = 40+8 = 48.",
+      "**Bersusun dengan menyimpan**: 14×5 → satuan 20, simpan 2.",
+      "**Cerita kontekstual buku**: ayam, rak buku, kancing, kaki kucing, pensil 12×8.",
+      "**Pilah perlu/tidak menyimpan**: kesadaran strategi sebelum menghitung.",
+      "**Periksa silang**: bandingkan hasil cara panjang dan bersusun.",
+    ],
+    H: [
+      "**Fair sharing**: 48 permen ke 4 wadah sama banyak.",
+      "**Pembagian bersusun dari puluhan**: 48:4 → 4:4=1, lalu 8:4=2.",
+      "**Sisa 0 = habis dibagi**: kriteria penting sebelum faktor.",
+      "**Cek balik perkalian**: hasil × pembagi = yang dibagi.",
+      "**Tabel percobaan wadah**: 2, 3, 4, 6, 8 wadah untuk 48 permen.",
+      "**Cerita buku**: Tono-Tini, alpukat, kotak kue, telur, gantungan kunci.",
+    ],
+    I: [
+      "**Faktor = pembagi habis (sisa 0)**: daftar 12, 20, 24, 48 dari buku.",
+      "**Pasangan faktor**: f × pasangan = n (1×12, 2×6, 3×4, …).",
+      "**Bukan faktor**: 5 bukan faktor 12 karena sisa 2.",
+      "**Kelipatan = skip counting / hasil kali berulang**: Karel +2, Slamet +3.",
+      "**Rentang kelipatan**: lebih dari … dan kurang dari … (soal 5 dan 4).",
+      "**Cerita aplikasi**: bagi beras 10 kg, kartu Andi tiap 2 hari, lampu 2 menit.",
     ],
   },
 };

@@ -49,3 +49,27 @@ Daftar semua video cerita animasi HTML/SVG gratis (tanpa berkas video, tanpa API
 | K4B1F-V1 | Buku Dipinjam | Tanpa mengambil | 265 − 132; Susun panjang; Susun pendek |
 | K4B1F-V2 | Mengambil Puluhan | Satu kali mengambil | 241 − 129; Urai saat ambil; Dua kali ambil |
 | K4B1F-V3 | Periksa & Latihan | Operasi kebalikan | Periksa penjumlahan; Contoh 241 − 175; Siap bermain |
+
+## Sub-Bab G: Perkalian Bilangan Cacah Sampai 100
+
+| Video | Judul | Subjudul | Adegan |
+|---|---|---|---|
+| K4B1G-V1 | Donat 12 × 4 | Array & penjumlahan berulang | Kotak donat; Jumlah berulang; Siap cara panjang |
+| K4B1G-V2 | Kelereng 14 × 5 | Bersusun dengan menyimpan | 14 tumpuk; Menyimpan; Cara panjang sama |
+| K4B1G-V3 | Cerita Kali | Ayam, buku, kancing | Ayam Asep; Rak buku; Pensil koperasi |
+
+## Sub-Bab H: Pembagian Bilangan Cacah Sampai 100
+
+| Video | Judul | Subjudul | Adegan |
+|---|---|---|---|
+| K4B1H-V1 | Permen Pak Wicak | Bagi sama banyak | 48 permen; Aktivitas wadah; Tabel percobaan |
+| K4B1H-V2 | Bersusun 48 : 4 | Dari puluhan ke satuan | Mulai puluhan; Satuan; Arti hasil |
+| K4B1H-V3 | Cerita Bagi | Permen, alpukat, kue | Tono dan Tini; Kotak kue; Gantungan kunci |
+
+## Sub-Bab I: Faktor dan Kelipatan
+
+| Video | Judul | Subjudul | Adegan |
+|---|---|---|---|
+| K4B1I-V1 | Faktor 12 | Pensil Pak Guru | 12 pensil; Daftar faktor; Bukan faktor |
+| K4B1I-V2 | Kelipatan 2 | Kelereng Karel | Tiap hari +2; Penjumlahan berulang; Slamet +3 |
+| K4B1I-V3 | Latihan Faktor Kelipatan | 24, 25, 5, 6 | Faktor 20; Kelipatan 5; Kartu Andi |

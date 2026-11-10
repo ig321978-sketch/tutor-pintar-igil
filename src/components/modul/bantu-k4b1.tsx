@@ -153,3 +153,52 @@ export function KurangModel({ a, b, skala = 0.45 }: { a: number; b: number; skal
     </div>
   );
 }
+
+/** Array perkalian: a kelompok berisi b benda, atau titik polos di tahap Picture. */
+export function ArrayKali({ a, b, benda = "kue", kecil = false, titik = false }: { a: number; b: number; benda?: BendaId; kecil?: boolean; titik?: boolean }) {
+  const baris = Math.min(a, kecil ? 6 : 12);
+  const kolom = Math.min(b, kecil ? 6 : 10);
+  const ukuran = kecil || titik ? 10 : 16;
+  return (
+    <div className="flex flex-col items-center gap-0.5" role="img" aria-label={`${a} × ${b}`}>
+      <div className="flex flex-col gap-0.5 rounded-xl border-2 border-[#1C01A5]/25 bg-white px-1.5 py-1">
+        {Array.from({ length: baris }, (_, i) => (
+          <div key={i} className="flex gap-0.5">
+            {Array.from({ length: kolom }, (_, j) =>
+              titik ? (
+                <span key={j} className="inline-block rounded-full bg-red-500" style={{ width: ukuran, height: ukuran }} />
+              ) : (
+                <span key={j} className="inline-flex items-center justify-center leading-none" style={{ width: ukuran, height: ukuran, fontSize: ukuran * 0.85 }}>
+                  {benda === "kelereng" ? "🔵" : benda === "jeruk" ? "🍊" : "🍪"}
+                </span>
+              ),
+            )}
+          </div>
+        ))}
+      </div>
+      <span className="text-[10px] font-black text-[#1C01A5]">{a} × {b}{a > baris || b > kolom ? " (cuplikan)" : ""}</span>
+    </div>
+  );
+}
+
+/** Model pembagian: total benda dibagi ke sejumlah kelompok. */
+export function BagiKelompok({ total, kelompok, benda = "kue", kecil = false }: { total: number; kelompok: number; benda?: BendaId; kecil?: boolean }) {
+  const isi = Math.floor(total / kelompok);
+  const tampil = Math.min(kelompok, kecil ? 4 : 6);
+  const ukuran = kecil ? 10 : 14;
+  const e = benda === "kelereng" ? "🔵" : benda === "jeruk" ? "🍊" : "🍪";
+  return (
+    <div className="flex flex-col items-center gap-1" role="img" aria-label={`${total} : ${kelompok}`}>
+      <div className="flex flex-wrap items-center justify-center gap-1">
+        {Array.from({ length: tampil }, (_, i) => (
+          <div key={i} className="flex flex-wrap gap-0.5 rounded-lg border-2 border-indigo-200 bg-indigo-50 px-1 py-0.5">
+            {Array.from({ length: Math.min(isi, kecil ? 6 : 12) }, (_, j) => (
+              <span key={j} style={{ fontSize: ukuran }}>{e}</span>
+            ))}
+          </div>
+        ))}
+      </div>
+      <span className="text-[10px] font-black text-[#1C01A5]">{total} : {kelompok}{kelompok > tampil ? " (cuplikan)" : ""}</span>
+    </div>
+  );
+}
