@@ -1,6 +1,6 @@
 /**
- * Naskah murni Matematika Kelas 5 Bab 2 (KPK dan FPB): Sub-Bab A–C.
- * Sumber: Buku Siswa Matematika Kelas V Kemendikbudristek Bab 2 hlm. 29–46.
+ * Naskah murni Matematika Kelas 5 Bab 2 (KPK dan FPB): Sub-Bab A–E.
+ * Sumber: Buku Siswa Matematika Kelas V Kemendikbudristek Bab 2 hlm. 29–61.
  * Satu sumber: buat-k5-bab2.mjs → kelas5-bab2.json. Tanpa React/jaringan.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
@@ -11,7 +11,7 @@ export const K5B2_META = {
   "grade": 5,
   "subjectLabel": "MATEMATIKA - KELAS 5 SD",
   "title": "BAB 2: KPK DAN FPB",
-  "silabusElemen": "🌈 Fase C • Elemen Bilangan: Kelipatan, Kelipatan Persekutuan (KPK), dan Faktor Bilangan (Kelas 5 SD/MI)",
+  "silabusElemen": "🌈 Fase C • Elemen Bilangan: Kelipatan, KPK, Faktor, FPB, serta Faktorisasi Prima (Kelas 5 SD/MI)",
   "suaraLaju": 0.7,
   "suaraNada": 1
 } as const;
@@ -2146,5 +2146,1425 @@ export const SUB_C52: SubBabNaskah = {
   ]
 };
 
-export const SUB_BAB_K5B2: SubBabNaskah[] = [SUB_A52, SUB_B52, SUB_C52];
+export const SUB_D52: SubBabNaskah = {
+  "id": "D",
+  "codeTitle": "Sub-Bab D (Faktor Persekutuan)",
+  "fullTitle": "Sub-Bab D: Faktor Persekutuan dan FPB",
+  "targetDescription": "Siswa menemukan faktor persekutuan dua bilangan atau lebih melalui model congklak, menentukan FPB, serta menerapkan FPB pada masalah bagi rata (vas bunga dan paket bingkisan) sesuai Buku Siswa Kelas V Bab 2.",
+  "secondaryBg": "#FCE7F3",
+  "secondaryBorder": "#DB2777",
+  "secondaryText": "#9D174D",
+  "silabus": {
+    "teksSuara": "Kita belajar faktor persekutuan. Irisan daftar faktor disebut faktor persekutuan. Yang terbesar disebut FPB. Kita memakai model congklak, lalu membagi mawar ke vas dan membuat paket bingkisan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menentukan faktor persekutuan dan FPB dua atau lebih bilangan.",
+    "referensi": "Buku Siswa Matematika Kelas V Bab 2 Sub-Bab D hlm. 46–52; listing common factors; GCD applications (equal sharing)."
+  },
+  "videos": [
+    {
+      "id": "K5B2D-V1",
+      "judul": "Congklak Faktor",
+      "subjudul": "Irisan",
+      "adegan": [
+        {
+          "id": "K5B2D-V1-1",
+          "judul": "Dua pemain",
+          "ketukan": [
+            "Pemain satu: faktor dua belas.",
+            "Pemain dua: faktor delapan belas.",
+            "Taruh biji di lubang faktor.",
+            "Lubang berisi dua biji adalah irisan."
+          ],
+          "papan": [
+            "faktor 12",
+            "faktor 18",
+            "biji",
+            "2 biji"
+          ]
+        },
+        {
+          "id": "K5B2D-V1-2",
+          "judul": "Hasil irisan",
+          "ketukan": [
+            "Lubang satu, dua, tiga, enam.",
+            "Itu faktor persekutuan.",
+            "Ambil yang terbesar.",
+            "Enam adalah FPB."
+          ],
+          "papan": [
+            "1,2,3,6",
+            "persekutuan",
+            "terbesar",
+            "FPB=6"
+          ]
+        },
+        {
+          "id": "K5B2D-V1-3",
+          "judul": "Definisi",
+          "ketukan": [
+            "Faktor yang sama disebut persekutuan.",
+            "Yang terbesar disebut FPB.",
+            "Berguna untuk membagi rata.",
+            "Tanpa sisa."
+          ],
+          "papan": [
+            "sama",
+            "FPB",
+            "bagi rata",
+            "tanpa sisa"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K5B2D-V2",
+      "judul": "Cara Menentukan FPB",
+      "subjudul": "Daftar faktor",
+      "adegan": [
+        {
+          "id": "K5B2D-V2-1",
+          "judul": "Tulis faktor",
+          "ketukan": [
+            "Tulis semua faktor A.",
+            "Tulis semua faktor B.",
+            "Tandai yang sama.",
+            "Pilih yang terbesar."
+          ],
+          "papan": [
+            "faktor A",
+            "faktor B",
+            "irisan",
+            "max"
+          ]
+        },
+        {
+          "id": "K5B2D-V2-2",
+          "judul": "Contoh 6 dan 12",
+          "ketukan": [
+            "Faktor enam: satu, dua, tiga, enam.",
+            "Faktor dua belas memuat semuanya.",
+            "Irisan sampai enam.",
+            "FPB-nya enam."
+          ],
+          "papan": [
+            "6",
+            "12",
+            "irisan",
+            "FPB=6"
+          ]
+        },
+        {
+          "id": "K5B2D-V2-3",
+          "judul": "FPB = 1",
+          "ketukan": [
+            "Kadang tidak ada prima sama.",
+            "Contoh lima belas dan dua delapan.",
+            "FPB-nya satu.",
+            "Tetap sah."
+          ],
+          "papan": [
+            "15",
+            "28",
+            "FPB=1",
+            "sah"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K5B2D-V3",
+      "judul": "Vas dan Paket",
+      "subjudul": "Aplikasi",
+      "adegan": [
+        {
+          "id": "K5B2D-V3-1",
+          "judul": "Mawar Ibu",
+          "ketukan": [
+            "Dua puluh empat merah.",
+            "Delapan belas putih.",
+            "Vas maksimal sama rata.",
+            "Pakai FPB enam."
+          ],
+          "papan": [
+            "24",
+            "18",
+            "FPB",
+            "6 vas"
+          ]
+        },
+        {
+          "id": "K5B2D-V3-2",
+          "judul": "Isi tiap vas",
+          "ketukan": [
+            "Merah dua puluh empat bagi enam.",
+            "Empat tangkai.",
+            "Putih delapan belas bagi enam.",
+            "Tiga tangkai."
+          ],
+          "papan": [
+            "24÷6",
+            "4",
+            "18÷6",
+            "3"
+          ]
+        },
+        {
+          "id": "K5B2D-V3-3",
+          "judul": "Paket Dania",
+          "ketukan": [
+            "Tiga puluh enam, empat delapan, dua empat.",
+            "FPB dua belas.",
+            "Dua belas paket.",
+            "Siap bermain!"
+          ],
+          "papan": [
+            "36,48,24",
+            "FPB 12",
+            "paket",
+            "main"
+          ]
+        }
+      ]
+    }
+  ],
+  "mindMaps": [
+    {
+      "stepNumber": 1,
+      "stepTitle": "1. Faktor A",
+      "stepDesc": "Daftar pembagi A",
+      "icon": "📋",
+      "flowFrom": "START",
+      "flowTo": "2"
+    },
+    {
+      "stepNumber": 2,
+      "stepTitle": "2. Faktor B",
+      "stepDesc": "Daftar pembagi B",
+      "icon": "📋",
+      "flowFrom": "1",
+      "flowTo": "3"
+    },
+    {
+      "stepNumber": 3,
+      "stepTitle": "3. Irisan",
+      "stepDesc": "Yang sama",
+      "icon": "🤝",
+      "flowFrom": "2",
+      "flowTo": "4"
+    },
+    {
+      "stepNumber": 4,
+      "stepTitle": "4. FPB",
+      "stepDesc": "Yang terbesar",
+      "icon": "🏆",
+      "flowFrom": "3",
+      "flowTo": "5"
+    },
+    {
+      "stepNumber": 5,
+      "stepTitle": "5. Bagi rata",
+      "stepDesc": "n ÷ FPB",
+      "icon": "🌸",
+      "flowFrom": "4",
+      "flowTo": "6"
+    },
+    {
+      "stepNumber": 6,
+      "stepTitle": "6. Cek",
+      "stepDesc": "Tanpa sisa?",
+      "icon": "✅",
+      "flowFrom": "5",
+      "flowTo": "END"
+    }
+  ],
+  "infografis": [
+    {
+      "judul": "Persekutuan",
+      "emoji": "🤝",
+      "countNum": 1,
+      "countWord": "irisan faktor",
+      "suara": "Faktor yang sama."
+    },
+    {
+      "judul": "FPB",
+      "emoji": "🏆",
+      "countNum": 1,
+      "countWord": "terbesar",
+      "suara": "Yang paling besar."
+    },
+    {
+      "judul": "12 & 18",
+      "emoji": "🎯",
+      "countNum": 6,
+      "countWord": "FPB=6",
+      "suara": "Contoh congklak."
+    },
+    {
+      "judul": "Congklak",
+      "emoji": "🥣",
+      "countNum": 1,
+      "countWord": "2 biji",
+      "suara": "Tandai irisan."
+    },
+    {
+      "judul": "24 & 18",
+      "emoji": "🌹",
+      "countNum": 6,
+      "countWord": "6 vas",
+      "suara": "Mawar Ibu."
+    },
+    {
+      "judul": "Isi vas",
+      "emoji": "🌸",
+      "countNum": 1,
+      "countWord": "4 dan 3",
+      "suara": "24÷6 dan 18÷6."
+    },
+    {
+      "judul": "36,48,24",
+      "emoji": "🎁",
+      "countNum": 12,
+      "countWord": "12 paket",
+      "suara": "Bingkisan."
+    },
+    {
+      "judul": "FPB=1",
+      "emoji": "1️⃣",
+      "countNum": 1,
+      "countWord": "15 & 28",
+      "suara": "Tanpa pasangan."
+    },
+    {
+      "judul": "Pakai",
+      "emoji": "📦",
+      "countNum": 1,
+      "countWord": "bagi rata",
+      "suara": "Tanpa sisa."
+    },
+    {
+      "judul": "Siap E",
+      "emoji": "➡️",
+      "countNum": 1,
+      "countWord": "prima",
+      "suara": "Lanjut faktorisasi."
+    }
+  ],
+  "games": [
+    {
+      "stage": "Concrete",
+      "gameType": "cek-persekutuan-f",
+      "title": "Cek Faktor Persekutuan",
+      "bookReference": "hlm. 46–49",
+      "objective": "Mengenali irisan faktor.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "emoji": "🤝",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "hitung-fpb",
+      "title": "Hitung FPB",
+      "bookReference": "hlm. 48–52",
+      "objective": "Menemukan FPB.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "emoji": "🏆",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "arti-fpb",
+      "title": "Arti FPB",
+      "bookReference": "hlm. 48–52",
+      "objective": "Definisi & pemakaian.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "emoji": "📖",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "sort-fpb",
+      "title": "Pilah Faktor Persekutuan",
+      "bookReference": "hlm. 46–49",
+      "objective": "Memilah.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilah.",
+      "emoji": "🧺",
+      "targetCount": 18
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "match-fpb",
+      "title": "Jodohkan FPB",
+      "bookReference": "hlm. 48–52",
+      "objective": "Menjodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "emoji": "🔗",
+      "targetCount": 12
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "memory-fpb",
+      "title": "Memori FPB",
+      "bookReference": "hlm. 48–52",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "emoji": "🃏",
+      "targetCount": 12
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-fpb",
+      "title": "Ketuk Faktor Sama",
+      "bookReference": "hlm. 46–49",
+      "objective": "Mengetuk.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk.",
+      "emoji": "👆",
+      "targetCount": 9
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-all-fpb",
+      "title": "Ketuk Semua Benar FPB",
+      "bookReference": "hlm. 46–52",
+      "objective": "Ketuk semua.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "emoji": "✔️",
+      "targetCount": 3
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "story-fpb",
+      "title": "Cerita Congklak dan Vas",
+      "bookReference": "hlm. 46–52",
+      "objective": "Soal cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "emoji": "🌸",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "order-fpb",
+      "title": "Urutkan Faktor Persekutuan",
+      "bookReference": "hlm. 48–49",
+      "objective": "Mengurutkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Urutkan.",
+      "emoji": "📶",
+      "targetCount": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "diagram-irisan-f",
+      "title": "Diagram Irisan Faktor",
+      "bookReference": "hlm. 48–49",
+      "objective": "Baca irisan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "venn",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "diagram-fpb",
+      "title": "Diagram FPB",
+      "bookReference": "hlm. 48–52",
+      "objective": "Baca FPB.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "gcd",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "match-diagram-d",
+      "title": "Jodohkan Diagram D",
+      "bookReference": "hlm. 46–52",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "diagramType": "match",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "memory-diagram-d",
+      "title": "Memori Diagram D",
+      "bookReference": "hlm. 46–52",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "diagramType": "mem",
+      "numberA": 1,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "table-d",
+      "title": "Tabel FPB",
+      "bookReference": "hlm. 48–52",
+      "objective": "Isi tabel.",
+      "mechanicDescription": "Tiga tabel.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "table",
+      "numberA": 1,
+      "numberB": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "tap-all-pd",
+      "title": "Ketuk Semua Diagram D",
+      "bookReference": "hlm. 46–52",
+      "objective": "Ketuk semua.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "diagramType": "select",
+      "numberA": 1,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "sort-diagram-d",
+      "title": "Pilah Diagram D",
+      "bookReference": "hlm. 46–49",
+      "objective": "Pilah.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilah.",
+      "diagramType": "sort",
+      "numberA": 1,
+      "numberB": 6
+    },
+    {
+      "stage": "Picture",
+      "gameType": "choose-d",
+      "title": "Pilih Pernyataan D",
+      "bookReference": "hlm. 46–52",
+      "objective": "Pilih.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "choose",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "jenis-pd",
+      "title": "Pilih Arti Diagram D",
+      "bookReference": "hlm. 48–52",
+      "objective": "Definisi.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "def",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "story-picture-d",
+      "title": "Cerita Diagram D",
+      "bookReference": "hlm. 46–52",
+      "objective": "Cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "story",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "write-cek-fp",
+      "title": "Tulis Cek Persekutuan",
+      "bookReference": "hlm. 46–49",
+      "objective": "Menulis.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "∈",
+      "wordLarge": "CEK",
+      "mathNotation": "irisan"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "write-fpb",
+      "title": "Tulis Hasil FPB",
+      "bookReference": "hlm. 48–52",
+      "objective": "Menulis FPB.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "FPB",
+      "wordLarge": "HASIL",
+      "mathNotation": "gcd"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "choose-def-d",
+      "title": "Pilih Definisi FPB",
+      "bookReference": "hlm. 48–52",
+      "objective": "Definisi.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "arti",
+      "wordLarge": "DEFINISI",
+      "mathNotation": "teks"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "order-abstract-d",
+      "title": "Urutkan Abstrak D",
+      "bookReference": "hlm. 48–49",
+      "objective": "Urut.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Urutkan.",
+      "symbolLarge": "naik",
+      "wordLarge": "URUT",
+      "mathNotation": "nilai"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "match-abstract-d",
+      "title": "Jodohkan Notasi D",
+      "bookReference": "hlm. 46–52",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "symbolLarge": "fpb",
+      "wordLarge": "JODOH",
+      "mathNotation": "teks"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "memory-abstract-d",
+      "title": "Memori Notasi D",
+      "bookReference": "hlm. 46–52",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "symbolLarge": "fpb",
+      "wordLarge": "MEMORI",
+      "mathNotation": "notasi"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "true-false-d",
+      "title": "Benar atau Salah: FPB",
+      "bookReference": "hlm. 46–52",
+      "objective": "Menilai.",
+      "mechanicDescription": "Dua ronde.",
+      "voiceGuide": "Benar/salah.",
+      "symbolLarge": "✓ ✗",
+      "wordLarge": "BENAR SALAH",
+      "mathNotation": "alasan"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "detective-d",
+      "title": "Detektif FPB",
+      "bookReference": "hlm. 46–52",
+      "objective": "Petunjuk.",
+      "mechanicDescription": "Tiga soal.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "?",
+      "wordLarge": "DETEKTIF",
+      "mathNotation": "petunjuk"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "concept-d",
+      "title": "Peta Konsep FPB",
+      "bookReference": "hlm. 46–52",
+      "objective": "Peta.",
+      "mechanicDescription": "Satu peta.",
+      "voiceGuide": "Pilih opsi.",
+      "symbolLarge": "🗺️",
+      "wordLarge": "PETA",
+      "mathNotation": "konsep"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "story-abstract-d",
+      "title": "Cerita Angka FPB",
+      "bookReference": "hlm. 46–52",
+      "objective": "Cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "📖",
+      "wordLarge": "CERITA",
+      "mathNotation": "teks"
+    }
+  ],
+  "poin": [
+    {
+      "ikon": "🤝",
+      "nama": "Persekutuan",
+      "isi": "Faktor yang sama dari dua bilangan atau lebih.",
+      "suara": "Itu faktor persekutuan."
+    },
+    {
+      "ikon": "🏆",
+      "nama": "FPB",
+      "isi": "Faktor persekutuan yang terbesar.",
+      "suara": "FPB adalah yang terbesar."
+    },
+    {
+      "ikon": "🥣",
+      "nama": "Congklak",
+      "isi": "Lubang berisi dua biji menandai irisan faktor.",
+      "suara": "Model konkret."
+    },
+    {
+      "ikon": "🌸",
+      "nama": "Bagi rata",
+      "isi": "Bagi tiap jenis dengan FPB untuk paket/vas maksimal.",
+      "suara": "Aplikasi FPB."
+    }
+  ],
+  "poinSuara": "Ingat: persekutuan, FPB, congklak, dan bagi rata.",
+  "cara": {
+    "suara": "Ikuti langkah-langkahnya.",
+    "potongan": [
+      {
+        "teks": "Daftar faktor",
+        "warna": "#FDE68A"
+      },
+      {
+        "teks": "tandai yang sama",
+        "warna": "#BBF7D0"
+      },
+      {
+        "teks": "ambil terbesar",
+        "warna": "#BFDBFE"
+      },
+      {
+        "teks": "bagi rata",
+        "warna": "#FCE7F3"
+      }
+    ]
+  },
+  "rumah": "Ayo Mencoba di rumah: cari FPB 16 dan 24, lalu ceritakan cara membagi dua jenis benda secara merata.",
+  "refleksi": [
+    "Apa beda faktor dan faktor persekutuan?",
+    "Bagaimana mencari FPB 12 dan 18?",
+    "Mengapa vas bunga memakai FPB?"
+  ]
+};
+
+export const SUB_E52: SubBabNaskah = {
+  "id": "E",
+  "codeTitle": "Sub-Bab E (Faktor Prima)",
+  "fullTitle": "Sub-Bab E: Menentukan KPK dan FPB dengan Faktor Prima",
+  "targetDescription": "Siswa mengenal bilangan prima (saringan Eratosthenes), membuat faktorisasi prima dengan pohon faktor, serta menentukan KPK dan FPB melalui faktorisasi prima dan pembagian berulang sesuai Buku Siswa Kelas V Bab 2.",
+  "secondaryBg": "#EDE9FE",
+  "secondaryBorder": "#7C3AED",
+  "secondaryText": "#5B21B6",
+  "silabus": {
+    "teksSuara": "Kita belajar bilangan prima dan faktorisasi prima. Dengan pohon faktor kita mengurai bilangan. FPB diambil dari prima berpasangan. KPK mengambil semua prima dengan pangkat terbesar. Ada juga cara pembagian berulang. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menentukan bilangan prima, faktorisasi prima, serta KPK dan FPB dengan faktorisasi prima.",
+    "referensi": "Buku Siswa Matematika Kelas V Bab 2 Sub-Bab E hlm. 53–59; Sieve of Eratosthenes; prime factorization trees; Euclidean continuous division."
+  },
+  "videos": [
+    {
+      "id": "K5B2E-V1",
+      "judul": "Bilangan Prima",
+      "subjudul": "Saringan",
+      "adegan": [
+        {
+          "id": "K5B2E-V1-1",
+          "judul": "Definisi",
+          "ketukan": [
+            "Prima hanya dibagi satu dan dirinya.",
+            "Satu bukan prima.",
+            "Dua adalah prima terkecil.",
+            "Lalu tiga, lima, tujuh."
+          ],
+          "papan": [
+            "1 & n",
+            "bukan 1",
+            "2",
+            "3,5,7"
+          ]
+        },
+        {
+          "id": "K5B2E-V1-2",
+          "judul": "Saringan Eratosthenes",
+          "ketukan": [
+            "Hapus satu.",
+            "Ambil dua, hapus kelipatannya.",
+            "Ambil tiga, hapus kelipatannya.",
+            "Sisa yang tidak terhapus adalah prima."
+          ],
+          "papan": [
+            "hapus 1",
+            "hapus ×2",
+            "hapus ×3",
+            "sisa prima"
+          ]
+        },
+        {
+          "id": "K5B2E-V1-3",
+          "judul": "Lanjut saring",
+          "ketukan": [
+            "Lanjut lima dan tujuh.",
+            "Sampai tidak ada yang bisa dihapus.",
+            "Daftar prima siap.",
+            "Dipakai di faktorisasi."
+          ],
+          "papan": [
+            "×5",
+            "×7",
+            "selesai",
+            "siap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K5B2E-V2",
+      "judul": "Pohon Faktor",
+      "subjudul": "Faktorisasi",
+      "adegan": [
+        {
+          "id": "K5B2E-V2-1",
+          "judul": "Contoh 12",
+          "ketukan": [
+            "Dua belas jadi dua kali enam.",
+            "Enam jadi dua kali tiga.",
+            "Semua prima: dua, dua, tiga.",
+            "Itu faktorisasi prima."
+          ],
+          "papan": [
+            "12",
+            "2×6",
+            "2×3",
+            "2×2×3"
+          ]
+        },
+        {
+          "id": "K5B2E-V2-2",
+          "judul": "Contoh 30",
+          "ketukan": [
+            "Tiga puluh jadi dua kali lima belas.",
+            "Lima belas jadi tiga kali lima.",
+            "Hasil dua kali tiga kali lima.",
+            "Pohon boleh berbeda bentuk."
+          ],
+          "papan": [
+            "30",
+            "2×15",
+            "3×5",
+            "2×3×5"
+          ]
+        },
+        {
+          "id": "K5B2E-V2-3",
+          "judul": "Lebih besar",
+          "ketukan": [
+            "Seratus sembilan enam: dua dua tujuh tujuh.",
+            "Tiga ratus: dua dua tiga lima lima.",
+            "Urai sampai prima semua.",
+            "Lalu siap KPK FPB."
+          ],
+          "papan": [
+            "196",
+            "300",
+            "urai",
+            "siap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K5B2E-V3",
+      "judul": "KPK dan FPB Prima",
+      "subjudul": "Pangkat",
+      "adegan": [
+        {
+          "id": "K5B2E-V3-1",
+          "judul": "FPB pasangan",
+          "ketukan": [
+            "Tulis faktorisasi tujuh dua dan seratus lima puluh.",
+            "Ambil prima yang berpasangan.",
+            "Dua kali tiga.",
+            "FPB enam."
+          ],
+          "papan": [
+            "72 & 150",
+            "pasangan",
+            "2×3",
+            "FPB=6"
+          ]
+        },
+        {
+          "id": "K5B2E-V3-2",
+          "judul": "KPK pangkat max",
+          "ketukan": [
+            "Ambil semua prima.",
+            "Pakai pangkat terbesar.",
+            "Dua pangkat tiga, tiga pangkat dua, lima pangkat dua.",
+            "KPK seribu delapan ratus."
+          ],
+          "papan": [
+            "semua prima",
+            "pangkat max",
+            "2³3²5²",
+            "1800"
+          ]
+        },
+        {
+          "id": "K5B2E-V3-3",
+          "judul": "Pembagian berulang",
+          "ketukan": [
+            "Bagi bersama dengan prima.",
+            "Kalikan semua pembagi untuk KPK.",
+            "Yang membagi keduanya untuk FPB.",
+            "Ayo bermain!"
+          ],
+          "papan": [
+            "bagi berulang",
+            "KPK",
+            "FPB",
+            "main"
+          ]
+        }
+      ]
+    }
+  ],
+  "mindMaps": [
+    {
+      "stepNumber": 1,
+      "stepTitle": "1. Cek prima",
+      "stepDesc": "Saringan / uji bagi",
+      "icon": "✨",
+      "flowFrom": "START",
+      "flowTo": "2"
+    },
+    {
+      "stepNumber": 2,
+      "stepTitle": "2. Pohon faktor",
+      "stepDesc": "Urai sampai prima",
+      "icon": "🌳",
+      "flowFrom": "1",
+      "flowTo": "3"
+    },
+    {
+      "stepNumber": 3,
+      "stepTitle": "3. Tulis",
+      "stepDesc": "Hasil kali prima",
+      "icon": "✍️",
+      "flowFrom": "2",
+      "flowTo": "4"
+    },
+    {
+      "stepNumber": 4,
+      "stepTitle": "4. FPB",
+      "stepDesc": "Pangkat terkecil",
+      "icon": "🏆",
+      "flowFrom": "3",
+      "flowTo": "5"
+    },
+    {
+      "stepNumber": 5,
+      "stepTitle": "5. KPK",
+      "stepDesc": "Pangkat terbesar",
+      "icon": "🎯",
+      "flowFrom": "4",
+      "flowTo": "6"
+    },
+    {
+      "stepNumber": 6,
+      "stepTitle": "6. Cek",
+      "stepDesc": "Banding cara daftar",
+      "icon": "✅",
+      "flowFrom": "5",
+      "flowTo": "END"
+    }
+  ],
+  "infografis": [
+    {
+      "judul": "Prima",
+      "emoji": "✨",
+      "countNum": 1,
+      "countWord": "1 & dirinya",
+      "suara": "Bukan bilangan 1."
+    },
+    {
+      "judul": "Saringan",
+      "emoji": "🔍",
+      "countNum": 1,
+      "countWord": "Eratosthenes",
+      "suara": "Hapus kelipatan."
+    },
+    {
+      "judul": "12",
+      "emoji": "🌳",
+      "countNum": 12,
+      "countWord": "2×2×3",
+      "suara": "Faktorisasi."
+    },
+    {
+      "judul": "30",
+      "emoji": "🌳",
+      "countNum": 30,
+      "countWord": "2×3×5",
+      "suara": "Contoh buku."
+    },
+    {
+      "judul": "FPB",
+      "emoji": "🏆",
+      "countNum": 6,
+      "countWord": "pasangan",
+      "suara": "Pangkat min."
+    },
+    {
+      "judul": "KPK",
+      "emoji": "🎯",
+      "countNum": 1800,
+      "countWord": "1.800",
+      "suara": "Pangkat max."
+    },
+    {
+      "judul": "196",
+      "emoji": "2️⃣",
+      "countNum": 196,
+      "countWord": "2²×7²",
+      "suara": "Pohon besar."
+    },
+    {
+      "judul": "300",
+      "emoji": "3️⃣",
+      "countNum": 300,
+      "countWord": "2²×3×5²",
+      "suara": "Pohon besar."
+    },
+    {
+      "judul": "Bagi berulang",
+      "emoji": "➗",
+      "countNum": 1,
+      "countWord": "cara lain",
+      "suara": "Pembagi prima."
+    },
+    {
+      "judul": "Bab 2 siap",
+      "emoji": "✅",
+      "countNum": 1,
+      "countWord": "A–E",
+      "suara": "Materi lengkap."
+    }
+  ],
+  "games": [
+    {
+      "stage": "Concrete",
+      "gameType": "cek-prima",
+      "title": "Cek Bilangan Prima",
+      "bookReference": "hlm. 53–54",
+      "objective": "Mengenali prima.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "emoji": "✨",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "faktorisasi",
+      "title": "Faktorisasi Prima",
+      "bookReference": "hlm. 55–56",
+      "objective": "Menulis hasil kali prima.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "emoji": "🌳",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "kpk-fpb-prima",
+      "title": "KPK & FPB via Prima",
+      "bookReference": "hlm. 56–59",
+      "objective": "Hitung lewat faktorisasi.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "emoji": "🧮",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "arti-prima",
+      "title": "Arti Prima & Cara",
+      "bookReference": "hlm. 53–59",
+      "objective": "Definisi & metode.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "emoji": "📖",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "sort-prima",
+      "title": "Pilah Prima",
+      "bookReference": "hlm. 53–54",
+      "objective": "Memilah.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilah.",
+      "emoji": "🧺",
+      "targetCount": 18
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "match-prima",
+      "title": "Jodohkan Prima/Faktorisasi",
+      "bookReference": "hlm. 53–59",
+      "objective": "Menjodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "emoji": "🔗",
+      "targetCount": 12
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "memory-prima",
+      "title": "Memori Prima",
+      "bookReference": "hlm. 53–59",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "emoji": "🃏",
+      "targetCount": 12
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-prima",
+      "title": "Ketuk Prima/Hasil",
+      "bookReference": "hlm. 53–59",
+      "objective": "Mengetuk.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk.",
+      "emoji": "👆",
+      "targetCount": 9
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-all-prima",
+      "title": "Ketuk Semua Benar Prima",
+      "bookReference": "hlm. 53–59",
+      "objective": "Ketuk semua.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "emoji": "✔️",
+      "targetCount": 3
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "story-prima",
+      "title": "Cerita Saringan & Pohon",
+      "bookReference": "hlm. 53–59",
+      "objective": "Soal cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "emoji": "🔍",
+      "targetCount": 6
+    },
+    {
+      "stage": "Picture",
+      "gameType": "diagram-saringan",
+      "title": "Diagram Saringan",
+      "bookReference": "hlm. 53–54",
+      "objective": "Baca saringan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "sieve",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "diagram-pohon",
+      "title": "Diagram Pohon Faktor",
+      "bookReference": "hlm. 55–56",
+      "objective": "Baca pohon.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "tree",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "diagram-kpkfpb",
+      "title": "Diagram KPK/FPB Prima",
+      "bookReference": "hlm. 56–59",
+      "objective": "Baca hasil.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "lcmgcd",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "match-diagram-e",
+      "title": "Jodohkan Diagram E",
+      "bookReference": "hlm. 53–59",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "diagramType": "match",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "memory-diagram-e",
+      "title": "Memori Diagram E",
+      "bookReference": "hlm. 53–59",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "diagramType": "mem",
+      "numberA": 1,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "table-e",
+      "title": "Tabel Prima & KPK/FPB",
+      "bookReference": "hlm. 53–59",
+      "objective": "Isi tabel.",
+      "mechanicDescription": "Tiga tabel.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "table",
+      "numberA": 1,
+      "numberB": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "tap-all-pe",
+      "title": "Ketuk Semua Diagram E",
+      "bookReference": "hlm. 53–59",
+      "objective": "Ketuk semua.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "diagramType": "select",
+      "numberA": 1,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "sort-diagram-e",
+      "title": "Pilah Diagram E",
+      "bookReference": "hlm. 53–54",
+      "objective": "Pilah.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilah.",
+      "diagramType": "sort",
+      "numberA": 1,
+      "numberB": 6
+    },
+    {
+      "stage": "Picture",
+      "gameType": "choose-e",
+      "title": "Pilih Pernyataan E",
+      "bookReference": "hlm. 53–59",
+      "objective": "Pilih.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "choose",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "story-picture-e",
+      "title": "Cerita Diagram E",
+      "bookReference": "hlm. 53–59",
+      "objective": "Cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "story",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "write-prima",
+      "title": "Tulis Cek Prima",
+      "bookReference": "hlm. 53–54",
+      "objective": "Menulis.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "p?",
+      "wordLarge": "PRIMA",
+      "mathNotation": "cek"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "write-fakt",
+      "title": "Tulis Faktorisasi",
+      "bookReference": "hlm. 55–56",
+      "objective": "Menulis uraian.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "2×3",
+      "wordLarge": "FAKTORISASI",
+      "mathNotation": "pohon"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "write-kpkfpb",
+      "title": "Tulis KPK/FPB Prima",
+      "bookReference": "hlm. 56–59",
+      "objective": "Menulis hasil.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "KPK/FPB",
+      "wordLarge": "HASIL",
+      "mathNotation": "prima"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "order-abstract-e",
+      "title": "Urutkan Abstrak E",
+      "bookReference": "hlm. 53–59",
+      "objective": "Urut.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Urutkan.",
+      "symbolLarge": "naik",
+      "wordLarge": "URUT",
+      "mathNotation": "nilai"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "match-abstract-e",
+      "title": "Jodohkan Notasi E",
+      "bookReference": "hlm. 53–59",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "symbolLarge": "p",
+      "wordLarge": "JODOH",
+      "mathNotation": "teks"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "memory-abstract-e",
+      "title": "Memori Notasi E",
+      "bookReference": "hlm. 53–59",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "symbolLarge": "prima",
+      "wordLarge": "MEMORI",
+      "mathNotation": "notasi"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "true-false-e",
+      "title": "Benar atau Salah: Prima",
+      "bookReference": "hlm. 53–59",
+      "objective": "Menilai.",
+      "mechanicDescription": "Dua ronde.",
+      "voiceGuide": "Benar/salah.",
+      "symbolLarge": "✓ ✗",
+      "wordLarge": "BENAR SALAH",
+      "mathNotation": "alasan"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "detective-e",
+      "title": "Detektif Prima",
+      "bookReference": "hlm. 53–59",
+      "objective": "Petunjuk.",
+      "mechanicDescription": "Tiga soal.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "?",
+      "wordLarge": "DETEKTIF",
+      "mathNotation": "petunjuk"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "concept-e",
+      "title": "Peta Konsep Prima",
+      "bookReference": "hlm. 53–59",
+      "objective": "Peta.",
+      "mechanicDescription": "Satu peta.",
+      "voiceGuide": "Pilih opsi.",
+      "symbolLarge": "🗺️",
+      "wordLarge": "PETA",
+      "mathNotation": "konsep"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "story-abstract-e",
+      "title": "Cerita Angka Prima",
+      "bookReference": "hlm. 53–59",
+      "objective": "Cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "📖",
+      "wordLarge": "CERITA",
+      "mathNotation": "teks"
+    }
+  ],
+  "poin": [
+    {
+      "ikon": "✨",
+      "nama": "Prima",
+      "isi": "Hanya dibagi satu dan dirinya; satu bukan prima.",
+      "suara": "Kenali bilangan prima."
+    },
+    {
+      "ikon": "🌳",
+      "nama": "Faktorisasi",
+      "isi": "Tulis bilangan sebagai hasil kali prima.",
+      "suara": "Pakai pohon faktor."
+    },
+    {
+      "ikon": "🏆",
+      "nama": "FPB prima",
+      "isi": "Ambil prima berpasangan (pangkat terkecil).",
+      "suara": "Itu FPB."
+    },
+    {
+      "ikon": "🎯",
+      "nama": "KPK prima",
+      "isi": "Ambil semua prima dengan pangkat terbesar.",
+      "suara": "Itu KPK."
+    }
+  ],
+  "poinSuara": "Ingat: prima, faktorisasi, FPB pangkat min, KPK pangkat max.",
+  "cara": {
+    "suara": "Ikuti langkah-langkahnya.",
+    "potongan": [
+      {
+        "teks": "Saring prima",
+        "warna": "#FDE68A"
+      },
+      {
+        "teks": "buat pohon",
+        "warna": "#BBF7D0"
+      },
+      {
+        "teks": "tulis faktorisasi",
+        "warna": "#BFDBFE"
+      },
+      {
+        "teks": "ambil min/max",
+        "warna": "#FCE7F3"
+      }
+    ]
+  },
+  "rumah": "Ayo Mencoba di rumah: buat pohon faktor 60 dan 90, lalu hitung KPK dan FPB-nya.",
+  "refleksi": [
+    "Mengapa 1 bukan bilangan prima?",
+    "Bagaimana mencari FPB dari faktorisasi prima?",
+    "Apa beda cara daftar dan cara prima?"
+  ]
+};
+
+export const SUB_BAB_K5B2: SubBabNaskah[] = [SUB_A52, SUB_B52, SUB_C52, SUB_D52, SUB_E52];
 export const semuaAdeganK5B2 = SUB_BAB_K5B2.flatMap((s) => s.videos.flatMap((v) => v.adegan));

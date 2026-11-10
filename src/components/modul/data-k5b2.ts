@@ -1,6 +1,6 @@
 /**
- * Data murni Matematika Kelas 5 Bab 2 (KPK dan FPB): Sub-Bab A–C.
- * Sumber: Buku Siswa Matematika Kelas V Kemendikbudristek Bab 2 hlm. 29–46.
+ * Data murni Matematika Kelas 5 Bab 2 (KPK dan FPB): Sub-Bab A–E.
+ * Sumber: Buku Siswa Matematika Kelas V Kemendikbudristek Bab 2 hlm. 29–61.
  * Tanpa React/jaringan. Uji: scripts/uji-statis-k5b2.mjs.
  */
 
@@ -508,3 +508,404 @@ export const PETA_KONSEP_QC = [{
   ],
 }];
 export const RONDE_CERITA_QC = RONDE_CERITA_CC;
+
+/** Angka contoh Sub-Bab D–E (faktor persekutuan / FPB & faktorisasi prima). */
+export const ANGKA_BUKU_DE = {
+  fpb1218: 6,
+  fpb612: 6,
+  mawarMerah: 24,
+  mawarPutih: 18,
+  fpbMawar: 6,
+  susu: 36,
+  lolipop: 48,
+  biskuit: 24,
+  fpbPaket: 12,
+  kpk72150: 1800,
+  fpb72150: 6,
+  fakt12: "2 × 2 × 3",
+  fakt30: "2 × 3 × 5",
+  fakt196: "2 × 2 × 7 × 7",
+  fakt300: "2 × 2 × 3 × 5 × 5",
+} as const;
+
+export const faktorPersekutuan = (a: number, b: number): number[] => {
+  const fb = new Set(faktor(b));
+  return faktor(a).filter((x) => fb.has(x));
+};
+
+export const adalahPrima = (n: number): boolean => {
+  if (n < 2) return false;
+  for (let i = 2; i * i <= n; i += 1) if (n % i === 0) return false;
+  return true;
+};
+
+export const faktorisasiPrima = (n: number): number[] => {
+  const hasil: number[] = [];
+  let x = n;
+  for (let p = 2; p * p <= x; p += 1) {
+    while (x % p === 0) {
+      hasil.push(p);
+      x = Math.floor(x / p);
+    }
+  }
+  if (x > 1) hasil.push(x);
+  return hasil;
+};
+
+export const teksFaktorisasi = (n: number): string => faktorisasiPrima(n).join(" × ");
+
+// ---- D: Faktor Persekutuan & FPB ----
+export const RONDE_PERSEKUTUAN_CD: { a: number; b: number; n: number; ya: boolean; pesan: string }[][] = [
+  [
+    { a: 12, b: 18, n: 6, ya: true, pesan: "6 faktor 12 dan 18." },
+    { a: 12, b: 18, n: 4, ya: false, pesan: "4 bukan faktor 18." },
+  ],
+  [
+    { a: 6, b: 12, n: 3, ya: true, pesan: "3 faktor keduanya." },
+    { a: 6, b: 12, n: 5, ya: false, pesan: "5 bukan faktor 6/12." },
+  ],
+  [
+    { a: 24, b: 18, n: 6, ya: true, pesan: "FPB mawar." },
+    { a: 24, b: 18, n: 8, ya: false, pesan: "8 bukan faktor 18." },
+  ],
+];
+
+export const RONDE_FPB_CD: { angka: number[]; hasil: number; pesan: string }[][] = [
+  [
+    { angka: [12, 18], hasil: 6, pesan: "FPB 12 dan 18 = 6." },
+    { angka: [6, 12], hasil: 6, pesan: "FPB 6 dan 12 = 6." },
+  ],
+  [
+    { angka: [24, 18], hasil: 6, pesan: "FPB mawar = 6." },
+    { angka: [36, 48, 24], hasil: 12, pesan: "FPB tiga bilangan paket = 12." },
+  ],
+  [
+    { angka: [15, 28], hasil: 1, pesan: "Tidak ada prima berpasangan → FPB 1." },
+    { angka: [8, 12], hasil: 4, pesan: "FPB 8 dan 12 = 4." },
+  ],
+];
+
+export const RONDE_CERITA_CD: { teks: string; jawab: string | number; opsi: (string | number)[]; pesan: string }[][] = [
+  [
+    { teks: "Faktor sama 12 dan 18: 1,2,3,6. FPB?", jawab: "6", opsi: ["6", "3", "12"], pesan: "Terbesar." },
+    { teks: "Dalam congklak faktor 12 & 18, lubang berisi 2 biji?", jawab: "1, 2, 3, 6", opsi: ["1, 2, 3, 6", "1, 2, 4, 8", "12 dan 18 saja"], pesan: "Irisan faktor." },
+  ],
+  [
+    { teks: "24 mawar merah, 18 putih. Vas maksimal sama rata?", jawab: "6", opsi: ["6", "8", "3"], pesan: "FPB 24 dan 18." },
+    { teks: "Tiap vas dari FPB 6: merah dan putih?", jawab: "4 dan 3", opsi: ["4 dan 3", "6 dan 6", "2 dan 2"], pesan: "24÷6=4, 18÷6=3." },
+  ],
+  [
+    { teks: "36 susu, 48 lolipop, 24 biskuit. Paket maksimal?", jawab: "12", opsi: ["12", "6", "24"], pesan: "FPB tiga bilangan." },
+    { teks: "Apa nama faktor yang sama terbesar?", jawab: "FPB", opsi: ["FPB", "KPK", "kelipatan"], pesan: "Faktor Persekutuan Terbesar." },
+  ],
+];
+
+export const RONDE_SORTIR_CD: { id: string; label: string; bin: "sama" | "beda" }[][] = [
+  [
+    { id: "a1", label: "1", bin: "sama" }, { id: "a2", label: "2", bin: "sama" }, { id: "a3", label: "4", bin: "beda" },
+    { id: "a4", label: "3", bin: "sama" }, { id: "a5", label: "6", bin: "sama" }, { id: "a6", label: "9", bin: "beda" },
+  ],
+  [
+    { id: "b1", label: "1", bin: "sama" }, { id: "b2", label: "2", bin: "sama" }, { id: "b3", label: "5", bin: "beda" },
+    { id: "b4", label: "3", bin: "sama" }, { id: "b5", label: "6", bin: "sama" }, { id: "b6", label: "8", bin: "beda" },
+  ],
+  [
+    { id: "c1", label: "1", bin: "sama" }, { id: "c2", label: "2", bin: "sama" }, { id: "c3", label: "5", bin: "beda" },
+    { id: "c4", label: "3", bin: "sama" }, { id: "c5", label: "6", bin: "sama" }, { id: "c6", label: "9", bin: "beda" },
+  ],
+];
+
+export const RONDE_PASANG_CD: { kiri: string; kanan: string }[][] = [
+  [
+    { kiri: "FPB 12 dan 18", kanan: "6" }, { kiri: "FPB 6 dan 12", kanan: "juga 6" },
+    { kiri: "faktor persekutuan 12 dan 18", kanan: "1,2,3,6" }, { kiri: "congklak 2 biji", kanan: "lubang irisan" },
+  ],
+  [
+    { kiri: "FPB 24 dan 18", kanan: "6 vas" }, { kiri: "24÷6 dan 18÷6", kanan: "4 dan 3" },
+    { kiri: "FPB 36,48,24", kanan: "12 paket" }, { kiri: "FPB 15 dan 28", kanan: "1" },
+  ],
+  [
+    { kiri: "arti FPB", kanan: "faktor persekutuan terbesar" }, { kiri: "FPB 8 dan 12", kanan: "4" },
+    { kiri: "bukan faktor persekutuan 12 dan 18", kanan: "angka 4" }, { kiri: "vas maksimal mawar", kanan: "enam vas" },
+  ],
+];
+export const RONDE_MEMORI_CD = RONDE_PASANG_CD;
+
+export const RONDE_KETUK_CD: { item: number[]; tanya: number[] }[] = [
+  { item: [1, 2, 3, 4, 6, 9], tanya: [1, 2, 3, 6] },
+  { item: [1, 2, 3, 5, 6, 8], tanya: [1, 2, 3, 6] },
+  { item: [1, 2, 3, 4, 6, 12], tanya: [1, 2, 3, 6] },
+];
+
+export const RONDE_SEMUA_CD: { label: string; item: { id: string; label: string; cocok: boolean }[] }[] = [
+  { label: "faktor persekutuan 12 dan 18", item: [
+    { id: "a", label: "1", cocok: true }, { id: "b", label: "2", cocok: true }, { id: "c", label: "4", cocok: false }, { id: "d", label: "6", cocok: true },
+  ]},
+  { label: "hasil FPB benar", item: [
+    { id: "a", label: "FPB(12,18)=6", cocok: true }, { id: "b", label: "FPB(24,18)=6", cocok: true }, { id: "c", label: "FPB(15,28)=5", cocok: false }, { id: "d", label: "FPB(8,12)=4", cocok: true },
+  ]},
+  { label: "bisa jadi jumlah vas (FPB 24 & 18)", item: [
+    { id: "a", label: "6", cocok: true }, { id: "b", label: "3", cocok: true }, { id: "c", label: "5", cocok: false }, { id: "d", label: "2", cocok: true },
+  ]},
+];
+
+export const RONDE_JENIS_CD: { tanya: string; jawab: string; opsi: string[]; pesan: string }[][] = [
+  [
+    { tanya: "Apa faktor persekutuan?", jawab: "faktor yang sama dari dua bilangan atau lebih", opsi: ["faktor yang sama dari dua bilangan atau lebih", "kelipatan terkecil", "bilangan prima saja"], pesan: "Irisan faktor." },
+    { tanya: "FPB artinya?", jawab: "faktor persekutuan terbesar", opsi: ["faktor persekutuan terbesar", "kelipatan persekutuan terkecil", "jumlah faktor"], pesan: "Definisi." },
+  ],
+  [
+    { tanya: "Dalam congklak faktor, lubang 2 biji menandai?", jawab: "faktor persekutuan", opsi: ["faktor persekutuan", "kelipatan", "bilangan prima"], pesan: "Irisan." },
+    { tanya: "Jika tidak ada faktor prima berpasangan, FPB?", jawab: "1", opsi: ["1", "0", "bilangan terbesar"], pesan: "Contoh 15 dan 28." },
+  ],
+  [
+    { tanya: "FPB dipakai untuk?", jawab: "membagi rata sebanyak mungkin tanpa sisa", opsi: ["membagi rata sebanyak mungkin tanpa sisa", "mencari jadwal bertemu", "mengurutkan saja"], pesan: "Vas/paket." },
+    { tanya: "FPB 36, 48, 24?", jawab: "12", opsi: ["12", "6", "24"], pesan: "Paket bingkisan." },
+  ],
+];
+
+export const RONDE_URUT_CD: { angka: number[]; dari: "kecil" | "besar" }[] = [
+  { angka: [1, 6, 2, 3], dari: "kecil" },
+  { angka: [12, 6, 4, 1], dari: "besar" },
+  { angka: [6, 1, 3, 2], dari: "kecil" },
+];
+
+export const RONDE_PERSEKUTUAN_PD = RONDE_PERSEKUTUAN_CD;
+export const RONDE_FPB_PD = RONDE_FPB_CD;
+export const RONDE_PASANG_PD = RONDE_PASANG_CD;
+export const RONDE_MEMORI_PD = RONDE_MEMORI_CD;
+export const RONDE_SORTIR_PD = RONDE_SORTIR_CD;
+export const RONDE_SEMUA_PD = RONDE_SEMUA_CD;
+export const RONDE_JENIS_PD = RONDE_JENIS_CD;
+export const RONDE_CERITA_PD = RONDE_CERITA_CD;
+
+export const RONDE_TABEL_PD: { baris: string; jawab: string; opsi: string[]; pesan: string }[][] = [
+  [
+    { baris: "FPB 12 & 18", jawab: "6", opsi: ["6", "3", "12"], pesan: "Terbesar irisan." },
+    { baris: "faktor persekutuan 12 & 18", jawab: "1,2,3,6", opsi: ["1,2,3,6", "1,2,4,8", "12,18"], pesan: "Irisan." },
+  ],
+  [
+    { baris: "vas dari 24 & 18", jawab: "6", opsi: ["6", "8", "9"], pesan: "FPB." },
+    { baris: "isi tiap vas", jawab: "4 merah, 3 putih", opsi: ["4 merah, 3 putih", "6 dan 6", "2 dan 1"], pesan: "Bagi FPB." },
+  ],
+  [
+    { baris: "FPB 36,48,24", jawab: "12", opsi: ["12", "6", "8"], pesan: "Tiga bilangan." },
+    { baris: "arti FPB", jawab: "faktor persekutuan terbesar", opsi: ["faktor persekutuan terbesar", "kelipatan terkecil", "selisih"], pesan: "Definisi." },
+  ],
+];
+
+export const RONDE_BENARSALAH_QD: { teks: string; benar: boolean; penjelasan: string }[][] = [
+  [
+    { teks: "Faktor persekutuan adalah faktor yang sama.", benar: true, penjelasan: "Benar." },
+    { teks: "FPB 12 dan 18 adalah 3.", benar: false, penjelasan: "FPB = 6." },
+    { teks: "Congklak dapat menandai faktor persekutuan.", benar: true, penjelasan: "Lubang berisi 2 biji." },
+  ],
+  [
+    { teks: "FPB dipakai membagi rata tanpa sisa.", benar: true, penjelasan: "Vas/paket." },
+    { teks: "FPB selalu lebih besar dari KPK.", benar: false, penjelasan: "FPB ≤ bilangan; KPK ≥ bilangan." },
+    { teks: "FPB 15 dan 28 adalah 1.", benar: true, penjelasan: "Tidak ada prima berpasangan." },
+  ],
+];
+
+export const RONDE_DETEKTIF_QD: { klue: string[]; jawab: string; opsi: string[]; salah: string }[] = [
+  { klue: ["faktor 12", "faktor 18", "sama terbesar"], jawab: "6", opsi: ["6", "3", "12"], salah: "Irisan lalu max." },
+  { klue: ["24 merah", "18 putih", "vas maksimal sama"], jawab: "6", opsi: ["6", "8", "4"], salah: "FPB." },
+  { klue: ["36, 48, 24", "paket maksimal"], jawab: "12", opsi: ["12", "6", "24"], salah: "FPB tiga bilangan." },
+];
+
+export const PETA_KONSEP_QD = [{
+  pusat: "FPB",
+  kotak: [
+    { label: "Arti", opsi: ["faktor persekutuan terbesar", "kelipatan terkecil", "jumlah"], benar: 0 },
+    { label: "Cara", opsi: ["irisan faktor lalu terbesar", "tambah saja", "acak"], benar: 0 },
+    { label: "Contoh 12 & 18", opsi: ["6", "36", "3"], benar: 0 },
+    { label: "Pakai", opsi: ["bagi rata / vas / paket", "jadwal bertemu", "hanya baca"], benar: 0 },
+  ],
+}];
+export const RONDE_CERITA_QD = RONDE_CERITA_CD;
+
+// ---- E: Prima, faktorisasi, KPK/FPB via prima ----
+export const RONDE_PRIMA_CE: { n: number; ya: boolean; pesan: string }[][] = [
+  [
+    { n: 2, ya: true, pesan: "Prima terkecil." },
+    { n: 1, ya: false, pesan: "1 bukan prima." },
+  ],
+  [
+    { n: 17, ya: true, pesan: "Hanya 1 dan 17." },
+    { n: 15, ya: false, pesan: "15 = 3×5." },
+  ],
+  [
+    { n: 29, ya: true, pesan: "Prima." },
+    { n: 49, ya: false, pesan: "49 = 7×7." },
+  ],
+];
+
+export const RONDE_FAKTORISASI_CE: { n: number; teks: string; pesan: string }[][] = [
+  [
+    { n: 12, teks: "2 × 2 × 3", pesan: "Pohon faktor 12." },
+    { n: 30, teks: "2 × 3 × 5", pesan: "Pohon faktor 30." },
+  ],
+  [
+    { n: 196, teks: "2 × 2 × 7 × 7", pesan: "196 = 2²×7²." },
+    { n: 300, teks: "2 × 2 × 3 × 5 × 5", pesan: "300 = 2²×3×5²." },
+  ],
+  [
+    { n: 60, teks: "2 × 2 × 3 × 5", pesan: "60 = 2²×3×5." },
+    { n: 96, teks: "2 × 2 × 2 × 2 × 2 × 3", pesan: "96 = 2⁵×3." },
+  ],
+];
+
+export const RONDE_KPKFPB_CE: { a: number; b: number; jenis: "KPK" | "FPB"; hasil: number; pesan: string }[][] = [
+  [
+    { a: 72, b: 150, jenis: "KPK", hasil: 1800, pesan: "Ambil semua prima (pangkat max)." },
+    { a: 72, b: 150, jenis: "FPB", hasil: 6, pesan: "Prima berpasangan: 2×3." },
+  ],
+  [
+    { a: 42, b: 60, jenis: "KPK", hasil: 420, pesan: "KPK 42 & 60." },
+    { a: 42, b: 60, jenis: "FPB", hasil: 6, pesan: "FPB 42 & 60." },
+  ],
+  [
+    { a: 27, b: 81, jenis: "KPK", hasil: 81, pesan: "81 = 3⁴." },
+    { a: 15, b: 28, jenis: "FPB", hasil: 1, pesan: "Tidak berpasangan." },
+  ],
+];
+
+export const RONDE_JENIS_CE: { tanya: string; jawab: string; opsi: string[]; pesan: string }[][] = [
+  [
+    { tanya: "Bilangan prima adalah?", jawab: "hanya dibagi 1 dan dirinya", opsi: ["hanya dibagi 1 dan dirinya", "semua ganjil", "kelipatan 2"], pesan: "Definisi." },
+    { tanya: "1 termasuk bilangan prima?", jawab: "tidak", opsi: ["tidak", "ya", "kadang"], pesan: "Buku: 1 bukan prima." },
+  ],
+  [
+    { tanya: "Saringan Eratosthenes dipakai untuk?", jawab: "menemukan bilangan prima", opsi: ["menemukan bilangan prima", "mencari KPK saja", "mengukur sudut"], pesan: "Hapus kelipatan." },
+    { tanya: "Faktorisasi prima artinya?", jawab: "tulis sebagai hasil kali bilangan prima", opsi: ["tulis sebagai hasil kali bilangan prima", "urutkan naik saja", "cari selisih"], pesan: "Pohon faktor." },
+  ],
+  [
+    { tanya: "FPB dari faktorisasi prima diambil dari?", jawab: "prima yang berpasangan (pangkat min)", opsi: ["prima yang berpasangan (pangkat min)", "semua prima tanpa pasangan", "jumlah digit"], pesan: "Irisan prima." },
+    { tanya: "KPK dari faktorisasi prima diambil dari?", jawab: "semua prima dengan pangkat terbesar", opsi: ["semua prima dengan pangkat terbesar", "hanya yang berpasangan", "selisih prima"], pesan: "Gabungan max." },
+  ],
+];
+
+export const RONDE_SORTIR_CE: { id: string; label: string; bin: "ya" | "tidak" }[][] = [
+  [
+    { id: "a1", label: "2", bin: "ya" }, { id: "a2", label: "3", bin: "ya" }, { id: "a3", label: "4", bin: "tidak" },
+    { id: "a4", label: "5", bin: "ya" }, { id: "a5", label: "9", bin: "tidak" }, { id: "a6", label: "7", bin: "ya" },
+  ],
+  [
+    { id: "b1", label: "11", bin: "ya" }, { id: "b2", label: "13", bin: "ya" }, { id: "b3", label: "15", bin: "tidak" },
+    { id: "b4", label: "17", bin: "ya" }, { id: "b5", label: "21", bin: "tidak" }, { id: "b6", label: "19", bin: "ya" },
+  ],
+  [
+    { id: "c1", label: "23", bin: "ya" }, { id: "c2", label: "29", bin: "ya" }, { id: "c3", label: "25", bin: "tidak" },
+    { id: "c4", label: "31", bin: "ya" }, { id: "c5", label: "27", bin: "tidak" }, { id: "c6", label: "37", bin: "ya" },
+  ],
+];
+
+export const RONDE_PASANG_CE: { kiri: string; kanan: string }[][] = [
+  [
+    { kiri: "12", kanan: "2 × 2 × 3" }, { kiri: "30", kanan: "2 × 3 × 5" },
+    { kiri: "KPK 72 & 150", kanan: "1.800" }, { kiri: "FPB 72 & 150", kanan: "6" },
+  ],
+  [
+    { kiri: "196", kanan: "2 × 2 × 7 × 7" }, { kiri: "300", kanan: "2 × 2 × 3 × 5 × 5" },
+    { kiri: "prima?", kanan: "2,3,5,7,…" }, { kiri: "bukan prima", kanan: "1" },
+  ],
+  [
+    { kiri: "cara KPK prima", kanan: "pangkat terbesar" }, { kiri: "cara FPB prima", kanan: "pangkat terkecil / pasangan" },
+    { kiri: "saringan", kanan: "Eratosthenes" }, { kiri: "pohon faktor", kanan: "faktorisasi prima" },
+  ],
+];
+export const RONDE_MEMORI_CE = RONDE_PASANG_CE;
+
+export const RONDE_KETUK_CE: { item: number[]; tanya: number[] }[] = [
+  { item: [1, 2, 3, 4, 5, 6], tanya: [2, 3, 5] },
+  { item: [11, 12, 13, 14, 15, 17], tanya: [11, 13, 17] },
+  { item: [6, 1800, 1, 12, 30], tanya: [6, 1800] },
+];
+
+export const RONDE_SEMUA_CE: { label: string; item: { id: string; label: string; cocok: boolean }[] }[] = [
+  { label: "bilangan prima", item: [
+    { id: "a", label: "2", cocok: true }, { id: "b", label: "9", cocok: false }, { id: "c", label: "11", cocok: true }, { id: "d", label: "17", cocok: true },
+  ]},
+  { label: "faktorisasi benar", item: [
+    { id: "a", label: "12=2×2×3", cocok: true }, { id: "b", label: "30=2×3×5", cocok: true }, { id: "c", label: "15=3×3×3", cocok: false }, { id: "d", label: "196=2×2×7×7", cocok: true },
+  ]},
+  { label: "pernyataan KPK/FPB benar", item: [
+    { id: "a", label: "KPK(72,150)=1800", cocok: true }, { id: "b", label: "FPB(72,150)=6", cocok: true }, { id: "c", label: "FPB(15,28)=5", cocok: false }, { id: "d", label: "1 bukan prima", cocok: true },
+  ]},
+];
+
+export const RONDE_CERITA_CE: { teks: string; jawab: string | number; opsi: (string | number)[]; pesan: string }[][] = [
+  [
+    { teks: "Faktorisasi prima 12?", jawab: "2 × 2 × 3", opsi: ["2 × 2 × 3", "2 × 6", "3 × 4"], pesan: "Pohon faktor." },
+    { teks: "KPK 72 dan 150 via prima?", jawab: "1.800", opsi: ["1.800", "6", "222"], pesan: "Pangkat max." },
+  ],
+  [
+    { teks: "FPB 72 dan 150 via prima?", jawab: "6", opsi: ["6", "1.800", "2"], pesan: "2×3." },
+    { teks: "Dalam saringan, setelah ambil 2 kita hapus?", jawab: "kelipatan 2 berikutnya", opsi: ["kelipatan 2 berikutnya", "semua ganjil", "hanya 1"], pesan: "Eratosthenes." },
+  ],
+  [
+    { teks: "Mengapa FPB 15 dan 28 = 1?", jawab: "tidak ada prima berpasangan", opsi: ["tidak ada prima berpasangan", "karena keduanya genap", "karena 15<28"], pesan: "3×5 vs 2×2×7." },
+    { teks: "Pembagian berulang: KPK = ?", jawab: "hasil kali semua pembagi prima", opsi: ["hasil kali semua pembagi prima", "hanya pembagi pertama", "selisih baris"], pesan: "Cara buku." },
+  ],
+];
+
+export const RONDE_URUT_CE: { angka: number[]; dari: "kecil" | "besar" }[] = [
+  { angka: [2, 11, 5, 3, 7], dari: "kecil" },
+  { angka: [1800, 6, 12, 30], dari: "besar" },
+  { angka: [2, 17, 13, 5], dari: "kecil" },
+];
+
+export const RONDE_PRIMA_PE = RONDE_PRIMA_CE;
+export const RONDE_FAKTORISASI_PE = RONDE_FAKTORISASI_CE;
+export const RONDE_KPKFPB_PE = RONDE_KPKFPB_CE;
+export const RONDE_PASANG_PE = RONDE_PASANG_CE;
+export const RONDE_MEMORI_PE = RONDE_MEMORI_CE;
+export const RONDE_SORTIR_PE = RONDE_SORTIR_CE;
+export const RONDE_SEMUA_PE = RONDE_SEMUA_CE;
+export const RONDE_JENIS_PE = RONDE_JENIS_CE;
+export const RONDE_CERITA_PE = RONDE_CERITA_CE;
+
+export const RONDE_TABEL_PE: { baris: string; jawab: string; opsi: string[]; pesan: string }[][] = [
+  [
+    { baris: "12 faktorisasi", jawab: "2 × 2 × 3", opsi: ["2 × 2 × 3", "2 × 6", "4 × 3"], pesan: "Prima." },
+    { baris: "KPK 72 & 150", jawab: "1.800", opsi: ["1.800", "6", "222"], pesan: "Max pangkat." },
+  ],
+  [
+    { baris: "FPB 72 & 150", jawab: "6", opsi: ["6", "1.800", "12"], pesan: "Min pangkat." },
+    { baris: "196 faktorisasi", jawab: "2 × 2 × 7 × 7", opsi: ["2 × 2 × 7 × 7", "14 × 14", "2 × 98"], pesan: "Pohon." },
+  ],
+  [
+    { baris: "1 prima?", jawab: "tidak", opsi: ["tidak", "ya", "kadang"], pesan: "Bukan prima." },
+    { baris: "arti saringan", jawab: "cari bilangan prima", opsi: ["cari bilangan prima", "cari KPK saja", "ukur panjang"], pesan: "Eratosthenes." },
+  ],
+];
+
+export const RONDE_BENARSALAH_QE: { teks: string; benar: boolean; penjelasan: string }[][] = [
+  [
+    { teks: "Bilangan prima hanya dibagi 1 dan dirinya.", benar: true, penjelasan: "Benar." },
+    { teks: "1 adalah bilangan prima.", benar: false, penjelasan: "Bukan." },
+    { teks: "Faktorisasi prima memakai pohon faktor.", benar: true, penjelasan: "Benar." },
+  ],
+  [
+    { teks: "KPK 72 dan 150 adalah 1.800.", benar: true, penjelasan: "Benar." },
+    { teks: "FPB diambil dari semua prima tanpa pasangan.", benar: false, penjelasan: "Dari yang berpasangan / pangkat min." },
+    { teks: "Pembagian berulang adalah cara lain mencari KPK/FPB.", benar: true, penjelasan: "Ada di buku." },
+  ],
+];
+
+export const RONDE_DETEKTIF_QE: { klue: string[]; jawab: string; opsi: string[]; salah: string }[] = [
+  { klue: ["pohon faktor", "12", "hanya prima"], jawab: "2 × 2 × 3", opsi: ["2 × 2 × 3", "3 × 4", "2 × 6"], salah: "Urai sampai prima." },
+  { klue: ["72 = 2³×3²", "150 = 2×3×5²", "cari FPB"], jawab: "6", opsi: ["6", "1.800", "2"], salah: "2¹×3¹." },
+  { klue: ["saringan", "hapus kelipatan", "sisa adalah"], jawab: "bilangan prima", opsi: ["bilangan prima", "kelipatan saja", "FPB"], salah: "Eratosthenes." },
+];
+
+export const PETA_KONSEP_QE = [{
+  pusat: "Prima & KPK/FPB",
+  kotak: [
+    { label: "Prima", opsi: ["1 dan dirinya saja", "semua ganjil", "kelipatan 10"], benar: 0 },
+    { label: "Faktorisasi", opsi: ["hasil kali prima", "urut saja", "tambah"], benar: 0 },
+    { label: "FPB prima", opsi: ["pangkat terkecil / pasangan", "semua prima", "jumlah"], benar: 0 },
+    { label: "KPK prima", opsi: ["pangkat terbesar", "hanya pasangan", "selisih"], benar: 0 },
+  ],
+}];
+export const RONDE_CERITA_QE = RONDE_CERITA_CE;
