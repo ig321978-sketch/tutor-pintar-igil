@@ -1,6 +1,6 @@
 /**
- * Naskah Kelas 2 Bab 2 — rewrite mendalam + ekspor tipe SubBabNaskah.
- * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
+ * Naskah — poles kerapatan setara K5B4.
+ * Metode luar dianyam ketukan per ketukan.
  */
 
 export type AdeganNaskah = {
@@ -103,12 +103,12 @@ export const SUB_A: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Berbagai Cara Penjumlahan)",
   "fullTitle": "Sub-Bab A: Berbagai Cara Melakukan Penjumlahan",
-  "targetDescription": "Siswa menjumlahkan bilangan sampai 20 dengan tiga cara, yaitu menghitung maju di jalur bilangan, penjumlahan bersusun dengan tabel nilai tempat, dan pasangan bilangan. Siswa memindahkan sepuluh satuan menjadi satu puluhan saat satuan berjumlah sepuluh, memeriksa bahwa semua cara memberi hasil yang sama, serta memilih cara yang paling mudah dan menjelaskan alasannya. Siswa memakai cara Menghitung Maju, Pasangan Bilangan, Balok Dienes dan Menyimpan.",
+  "targetDescription": "Siswa menjumlahkan bilangan sampai 20 dengan tiga cara, yaitu menghitung maju di jalur bilangan, penjumlahan bersusun dengan tabel nilai tempat, dan pasangan bilangan. Siswa memindahkan sepuluh satuan menjadi satu puluhan saat satuan berjumlah sepuluh, memeriksa bahwa semua cara memberi hasil yang sama, serta memilih cara yang paling mudah dan menjelaskan alasannya. Siswa memakai cara Menghitung Maju, Pasangan Bilangan, Balok Dienes dan Menyimpan. Siswa memakai cara Menghitung Maju, Pasangan Bilangan, Balok Dienes dan Menyimpan.",
   "secondaryBg": "#DBEAFE",
   "secondaryBorder": "#2563EB",
   "secondaryText": "#1E3A8A",
   "silabus": {
-    "teksSuara": "Kita belajar berbagai cara melakukan penjumlahan. Bukunya bernama Penjumlahan dan Pengurangan, bagian berbagai cara melakukan penjumlahan. Tika dan Kira memetik jambu air, lalu kita menjumlahkan jambu mereka dengan tiga cara: menghitung maju, penjumlahan bersusun, dan pasangan bilangan. Kita juga belajar memindahkan sepuluh satuan menjadi satu puluhan. Kita memakai cara dari luar buku: Menghitung Maju (Counting On); Pasangan Bilangan (Number Bond); Balok Dienes dan Menyimpan (Dienes / Regroup). Mulai dari bilangan lebih besar lalu maju. Pecah bilangan jadi pasangan yang mudah. Sepuluh satuan menjadi satu puluhan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar berbagai cara melakukan penjumlahan. Bukunya bernama Penjumlahan dan Pengurangan, bagian berbagai cara melakukan penjumlahan. Tika dan Kira memetik jambu air, lalu kita menjumlahkan jambu mereka dengan tiga cara: menghitung maju, penjumlahan bersusun, dan pasangan bilangan. Kita juga belajar memindahkan sepuluh satuan menjadi satu puluhan. Kita memakai cara: Menghitung Maju, Pasangan Bilangan, Balok Dienes dan Menyimpan. Mulai dari bilangan lebih besar lalu maju. Pecah bilangan jadi pasangan yang mudah. Sepuluh satuan menjadi satu puluhan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menjumlahkan bilangan cacah sampai 20 dengan menghitung maju, penjumlahan bersusun, dan pasangan bilangan, memindahkan sepuluh satuan menjadi satu puluhan, serta memilih cara yang paling mudah dan menjelaskan alasannya.",
     "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2 Sub-Bab A hlm. 37–47)."
   },
@@ -122,10 +122,10 @@ export const SUB_A: SubBabNaskah = {
           "id": "K2B2A-V1-1",
           "judul": "Pohon jambu di halaman Tika",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Di halaman rumah Tika, ada pohon jambu air. Mari kita pahami bersama.",
-            "Tika menyiram dan memupuk pohon jambunya dengan teratur. Mari kita pahami bersama.",
-            "Sekarang, pohon jambu air itu berbuah sangat lebat. Mari kita pahami bersama.",
-            "Ingat cara Menghitung Maju: Mulai dari bilangan lebih besar lalu maju."
+            "Bayangkan kamu sedang mempelajari Berbagai Cara Melakukan Penjumlahan. Di halaman rumah Tika, ada pohon jambu air.",
+            "Tika menyiram dan memupuk pohon jambunya dengan teratur.",
+            "Sekarang, pohon jambu air itu berbuah sangat lebat.",
+            "Ingat cara Menghitung Maju: Mulai dari bilangan lebih besar lalu maju. Ingat cara Menghitung Maju: Mulai dari bilangan lebih besar lalu maju."
           ],
           "papan": [
             "Pohon jambu air",
@@ -138,10 +138,10 @@ export const SUB_A: SubBabNaskah = {
           "id": "K2B2A-V1-2",
           "judul": "Tika dan Kira memetik",
           "ketukan": [
-            "Tika memetik 12 buah jambu air. Mari kita pahami bersama.",
-            "Kira memetik 6 lebih banyak dari jambu air milik Tika. Mari kita pahami bersama.",
-            "Mereka terlihat senang karena menyukai jambu air. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Counting On — Mulai dari bilangan lebih besar lalu maju."
+            "Tika memetik 12 buah jambu air.",
+            "Kira memetik 6 lebih banyak dari jambu air milik Tika.",
+            "Mereka terlihat senang karena menyukai jambu air.",
+            "Di sini kita memakai ide Counting On — Mulai dari bilangan lebih besar lalu maju. Di sini kita memakai Counting On. Mulai dari bilangan lebih besar lalu maju."
           ],
           "papan": [
             "Tika: 12 jambu",
@@ -154,18 +154,16 @@ export const SUB_A: SubBabNaskah = {
           "id": "K2B2A-V1-3",
           "judul": "Dua pertanyaan",
           "ketukan": [
-            "Ada dua pertanyaan di akhir cerita. Mari kita pahami bersama.",
-            "Berapa jumlah jambu air yang dipetik Tika dan Kira. Mari kita pahami bersama.",
-            "Berapa selisih banyak jambu air milik Tika dan Kira. Mari kita pahami bersama.",
-            "Sebelum menjawabnya, kita cari dulu banyak jambu air milik Kira. Mari kita pahami bersama.",
-            "Kira memetik 6 lebih banyak dari Tika, jadi kita jumlahkan 12 dan 6. Mari kita pahami bersama."
+            "Ada dua pertanyaan di akhir cerita.",
+            "Berapa jumlah jambu air yang dipetik Tika dan Kira.",
+            "Berapa selisih banyak jambu air milik Tika dan Kira.",
+            "Sebelum menjawabnya, kita cari dulu banyak jambu air milik Kira. METODE LUAR · Menghitung Maju: Mulai dari bilangan lebih besar lalu maju."
           ],
           "papan": [
             "Dua pertanyaan",
             "Berapa jumlahnya?",
             "Berapa selisihnya?",
-            "Cari milik Kira dulu",
-            "12 + 6 = ?"
+            "Cari milik Kira dulu"
           ]
         }
       ]
@@ -179,54 +177,48 @@ export const SUB_A: SubBabNaskah = {
           "id": "K2B2A-V2-1",
           "judul": "Cara 1: Menghitung maju",
           "ketukan": [
-            "Cara pertama adalah menghitung maju. Mari kita pahami bersama.",
-            "Kita ingin tahu hasil dari 12 ditambah 6. Mari kita pahami bersama.",
-            "Mula-mula kita berdiri di bilangan 12 pada jalur bilangan. Mari kita pahami bersama.",
-            "Lalu kita melompat 6 langkah ke depan: 13, 14, 15, 16, 17, 18. Mari kita pahami bersama.",
-            "Kita berhenti di 18, jadi 12 ditambah 6 sama dengan 18. Mari kita pahami bersama."
+            "Cara pertama adalah menghitung maju.",
+            "Kita ingin tahu hasil dari 12 ditambah 6.",
+            "Mula-mula kita berdiri di bilangan 12 pada jalur bilangan.",
+            "Lalu kita melompat 6 langkah ke depan: 13, 14, 15, 16, 17, 18. Ingat cara Pasangan Bilangan: Pecah bilangan jadi pasangan yang mudah."
           ],
           "papan": [
             "Cara 1: Hitung maju",
             "12 + 6 = ?",
             "Mulai dari 12",
-            "Lompat 6 langkah",
-            "12 + 6 = 18"
+            "Lompat 6 langkah"
           ]
         },
         {
           "id": "K2B2A-V2-2",
           "judul": "Cara 2: Penjumlahan bersusun",
           "ketukan": [
-            "Cara kedua adalah penjumlahan bersusun. Mari kita pahami bersama.",
-            "Bilangan 12 terdiri dari 1 puluhan dan 2 satuan. Mari kita pahami bersama.",
-            "Bilangan 6 hanya punya 6 satuan. Mari kita pahami bersama.",
-            "Langkah satu, susun bilangannya. Satuan harus lurus dengan satuan. Mari kita pahami bersama.",
-            "Langkah dua, jumlahkan satuan dengan satuan. 2 ditambah 6 sama dengan 8."
+            "Cara kedua adalah penjumlahan bersusun.",
+            "Bilangan 12 terdiri dari 1 puluhan dan 2 satuan.",
+            "Bilangan 6 hanya punya 6 satuan.",
+            "Langkah satu, susun bilangannya. Satuan harus lurus dengan satuan. Di sini kita memakai Number Bond. Pecah bilangan jadi pasangan yang mudah."
           ],
           "papan": [
             "Cara 2: Bersusun",
             "12 = 1 puluhan 2 satuan",
             "6 = 6 satuan",
-            "Langkah 1: susun",
-            "Langkah 2: 2 + 6 = 8"
+            "Langkah 1: susun"
           ]
         },
         {
           "id": "K2B2A-V2-3",
           "judul": "Cara 3: Pasangan bilangan",
           "ketukan": [
-            "Cara ketiga adalah pasangan bilangan. Mari kita pahami bersama.",
-            "Ingat pasangan bilangan. 12 dipisah menjadi 10 dan 2. Mari kita pahami bersama.",
+            "Cara ketiga adalah pasangan bilangan.",
+            "Ingat pasangan bilangan. 12 dipisah menjadi 10 dan 2.",
             "Sekarang jumlahkan bagian yang kecil dulu: 2 ditambah 6 sama dengan 8.",
-            "Lalu jumlahkan dengan sepuluhnya: 10 ditambah 8 sama dengan 18. Mari kita pahami bersama.",
-            "Jadi 12 ditambah 6 sama dengan 18. Mari kita pahami bersama."
+            "Lalu jumlahkan dengan sepuluhnya: 10 ditambah 8 sama dengan 18. METODE LUAR · Pasangan Bilangan: Pecah bilangan jadi pasangan yang mudah."
           ],
           "papan": [
             "Cara 3: Pasangan",
             "12 = 10 dan 2",
             "2 + 6 = 8",
-            "10 + 8 = 18",
-            "12 + 6 = 18"
+            "10 + 8 = 18"
           ]
         }
       ]
@@ -240,10 +232,10 @@ export const SUB_A: SubBabNaskah = {
           "id": "K2B2A-V3-1",
           "judul": "Kira memetik dua lagi",
           "ketukan": [
-            "Kira mempunyai 18 jambu air. Mari kita pahami bersama.",
-            "Kira memetik lagi 2 jambu air. Mari kita pahami bersama.",
-            "Berapa banyak jambu air milik Kira sekarang. Mari kita pahami bersama.",
-            "Ingat cara Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan."
+            "Kira mempunyai 18 jambu air.",
+            "Kira memetik lagi 2 jambu air.",
+            "Berapa banyak jambu air milik Kira sekarang.",
+            "Ingat cara Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan. Ingat cara Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan."
           ],
           "papan": [
             "Kira: 18 jambu",
@@ -256,25 +248,23 @@ export const SUB_A: SubBabNaskah = {
           "id": "K2B2A-V3-2",
           "judul": "Pasangan bilangan dan pindah",
           "ketukan": [
-            "Cara pertama memakai pasangan bilangan. 18 dipisah menjadi 10 dan 8. Mari kita pahami bersama.",
-            "Jumlahkan satuannya: 8 ditambah 2 sama dengan 10. Mari kita pahami bersama.",
-            "Lalu 10 ditambah 10 sama dengan 20. Mari kita pahami bersama.",
-            "Cara kedua memakai tabel nilai tempat. Satuannya 8 ditambah 2, hasilnya 10 satuan.",
-            "Ingat, 10 satuan sama dengan 1 puluhan. Mari kita pahami bersama."
+            "Cara pertama memakai pasangan bilangan. 18 dipisah menjadi 10 dan 8.",
+            "Jumlahkan satuannya: 8 ditambah 2 sama dengan 10.",
+            "Lalu 10 ditambah 10 sama dengan 20.",
+            "Cara kedua memakai tabel nilai tempat. Satuannya 8 ditambah 2, hasilnya 10 satuan. Di sini kita memakai Dienes / Regroup. Sepuluh satuan menjadi satu puluhan."
           ],
           "papan": [
             "18 = 10 dan 8",
             "8 + 2 = 10",
             "10 + 10 = 20",
-            "Satuan: 10",
-            "10 satuan = 1 puluhan"
+            "Satuan: 10"
           ]
         },
         {
           "id": "K2B2A-V3-3",
           "judul": "Ingat: pindah sepuluh",
           "ketukan": [
-            "Kalau satuan berjumlah 10, kita tukar menjadi 1 puluhan. Mari kita pahami bersama.",
+            "Kalau satuan berjumlah 10, kita tukar menjadi 1 puluhan.",
             "Angka satuan di jawaban menjadi 0, dan 1 puluhan pindah ke kolom puluhan.",
             "Ini juga berlaku pada 13 ditambah 7, dan 16 ditambah 4. Hasilnya sama-sama 20.",
             "METODE LUAR · Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan."
@@ -293,7 +283,7 @@ export const SUB_A: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Berbagai Cara Melakukan Penjumlahan. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Berbagai Cara Melakukan Penjumlahan?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -325,7 +315,7 @@ export const SUB_A: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -333,7 +323,7 @@ export const SUB_A: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -341,15 +331,15 @@ export const SUB_A: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -425,20 +415,6 @@ export const SUB_A: SubBabNaskah = {
       "countNum": 3,
       "countWord": "Tiga",
       "suara": "Tidak ada cara yang paling benar. Pilih yang paling mudah untukmu. Hitung maju bila bilangan kedua kecil. Bersusun bila kamu ingin rapi. Pasangan bilangan bila ada sepuluh yang bisa dibentuk. Lalu periksa dengan cara lain."
-    },
-    {
-      "judul": "Menghitung Maju",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Mulai dari bilangan lebih besar lalu maju."
-    },
-    {
-      "judul": "Pasangan Bilangan",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Pecah bilangan jadi pasangan yang mudah."
     }
   ],
   "games": [
@@ -448,7 +424,7 @@ export const SUB_A: SubBabNaskah = {
       "title": "Petik Jambu Air",
       "bookReference": "hlm. 39–40 (Panen Jambu Air; Cara 1: menghitung maju)",
       "objective": "Pakai Menghitung Maju: Mulai dari bilangan lebih besar lalu maju. Latihan: Menjumlahkan dengan menghitung maju benda nyata: mulai dari banyak awal, lalu menyebut bilangan berikutnya tiap benda bertambah..",
-      "mechanicDescription": "Tiga ronde (12 + 6, 14 + 3, dan 15 + 4). Keranjang sudah berisi jambu. Siswa mengetuk jambu di pohon satu per satu, tiap ketukan jambu masuk keranjang dan Suara Guru menyebut bilangan berikutnya. Setelah semua dipetik, siswa memilih jumlah seluruhnya. Terakhir ucapkan jumlahnya. Saat bermain, terapkan Counting On: Mulai dari bilangan lebih besar lalu maju.",
+      "mechanicDescription": "Tiga ronde (12 + 6, 14 + 3, dan 15 + 4). Keranjang sudah berisi jambu. Siswa mengetuk jambu di pohon satu per satu, tiap ketukan jambu masuk keranjang dan Suara Guru menyebut bilangan berikutnya. Setelah semua dipetik, siswa memilih jumlah seluruhnya. Terakhir ucapkan jumlahnya. Saat bermain, ingat Menghitung Maju: Mulai dari bilangan lebih besar lalu maju.",
       "voiceGuide": "Menghitung Maju. Mulai dari bilangan lebih besar lalu maju.",
       "emoji": "🍎",
       "targetCount": 19
@@ -459,7 +435,7 @@ export const SUB_A: SubBabNaskah = {
       "title": "Gabung Balok",
       "bookReference": "hlm. 41–42 (Cara 2: penjumlahan bersusun, tabel nilai tempat dengan balok)",
       "objective": "Pakai Menghitung Maju: Mulai dari bilangan lebih besar lalu maju. Latihan: Menjumlahkan satuan dengan satuan memakai balok Dienes, lalu membaca puluhan dan hasilnya..",
-      "mechanicDescription": "Tiga ronde (12 + 6, 13 + 5, dan 14 + 3). Papan nilai tempat sudah berisi bilangan pertama. Siswa menyeret kubus satuan milik Kira satu per satu ke kolom Satuan, lalu memilih banyak satuan, banyak puluhan, dan hasilnya. Terakhir ucapkan hasilnya. Saat bermain, terapkan Counting On: Mulai dari bilangan lebih besar lalu maju.",
+      "mechanicDescription": "Tiga ronde (12 + 6, 13 + 5, dan 14 + 3). Papan nilai tempat sudah berisi bilangan pertama. Siswa menyeret kubus satuan milik Kira satu per satu ke kolom Satuan, lalu memilih banyak satuan, banyak puluhan, dan hasilnya. Terakhir ucapkan hasilnya. Saat bermain, ingat Menghitung Maju: Mulai dari bilangan lebih besar lalu maju.",
       "voiceGuide": "Menghitung Maju. Mulai dari bilangan lebih besar lalu maju.",
       "emoji": "🧱",
       "targetCount": 17
@@ -470,7 +446,7 @@ export const SUB_A: SubBabNaskah = {
       "title": "Mesin Pindah Sepuluh",
       "bookReference": "hlm. 44 (18 + 2 = 20; 10 satuan = 1 puluhan, pindahkan ke kolom puluhan)",
       "objective": "Pakai Menghitung Maju: Mulai dari bilangan lebih besar lalu maju. Latihan: Menukar sepuluh satuan menjadi satu puluhan dan memindahkannya saat menjumlah..",
-      "mechanicDescription": "Tiga ronde (18 + 2, 13 + 7, dan 16 + 4). Siswa menambah kubus satuan satu per satu. Saat satuan genap sepuluh, tombol Pindah muncul, dan sepuluh kubus berubah menjadi satu batang puluhan. Lalu siswa memilih hasilnya. Terakhir ucapkan hasilnya. Saat bermain, terapkan Counting On: Mulai dari bilangan lebih besar lalu maju.",
+      "mechanicDescription": "Tiga ronde (18 + 2, 13 + 7, dan 16 + 4). Siswa menambah kubus satuan satu per satu. Saat satuan genap sepuluh, tombol Pindah muncul, dan sepuluh kubus berubah menjadi satu batang puluhan. Lalu siswa memilih hasilnya. Terakhir ucapkan hasilnya. Saat bermain, ingat Menghitung Maju: Mulai dari bilangan lebih besar lalu maju.",
       "voiceGuide": "Menghitung Maju. Mulai dari bilangan lebih besar lalu maju.",
       "emoji": "🔁",
       "targetCount": 20
@@ -481,7 +457,7 @@ export const SUB_A: SubBabNaskah = {
       "title": "Neraca Jambu",
       "bookReference": "hlm. 62 (Evaluasi nomor 9: 8 + 3 = 5 + ?), diperkaya dengan konsep kesetaraan",
       "objective": "Pakai Menghitung Maju: Mulai dari bilangan lebih besar lalu maju. Latihan: Memahami tanda sama dengan sebagai keseimbangan dan menemukan bagian yang hilang agar kedua sisi sama..",
-      "mechanicDescription": "Tiga ronde (8 + 3 = 5 + ?, 7 + 5 = 9 + ?, dan 6 + 9 = 10 + ?). Neraca miring ke sisi yang lebih berat. Siswa menambah atau mengurangi jambu di piring kanan sampai neraca seimbang, lalu menekan periksa. Terakhir ucapkan jumlah di tiap piring. Saat bermain, terapkan Counting On: Mulai dari bilangan lebih besar lalu maju.",
+      "mechanicDescription": "Tiga ronde (8 + 3 = 5 + ?, 7 + 5 = 9 + ?, dan 6 + 9 = 10 + ?). Neraca miring ke sisi yang lebih berat. Siswa menambah atau mengurangi jambu di piring kanan sampai neraca seimbang, lalu menekan periksa. Terakhir ucapkan jumlah di tiap piring. Saat bermain, ingat Menghitung Maju: Mulai dari bilangan lebih besar lalu maju.",
       "voiceGuide": "Menghitung Maju. Mulai dari bilangan lebih besar lalu maju.",
       "emoji": "⚖️",
       "targetCount": 15
@@ -491,9 +467,9 @@ export const SUB_A: SubBabNaskah = {
       "gameType": "hop-on-number-strip",
       "title": "Loncat di Jalur Bilangan",
       "bookReference": "hlm. 40 dan 45 (Cara 1: menghitung maju; Ayo Berlatih nomor 1: 10 + 6, 12 + 4, 15 + 4, 11 + 9, 13 + 6)",
-      "objective": "Menghitung maju di jalur bilangan dengan melompat sebanyak bilangan kedua.. Ingat Menghitung Maju.",
+      "objective": "Menghitung maju di jalur bilangan dengan melompat sebanyak bilangan kedua.. Ingat Menghitung Maju. (Menghitung Maju)",
       "mechanicDescription": "Tiga ronde (12 + 4, 15 + 4, dan 11 + 9). Jalur bilangan 10 sampai 20. Siswa mengetuk kotak berikutnya satu per satu sehingga busur lompatan tergambar, lalu menekan Berhenti. Banyak lompatan harus sama dengan bilangan kedua. Terakhir ucapkan hasilnya. Gunakan Menghitung Maju.",
-      "voiceGuide": "Menghitung Maju. Ketuk kotak berikutnya sebanyak bilangan kedua, lalu berhenti.",
+      "voiceGuide": "Menghitung Maju. Mainkan dengan teliti.",
       "diagramType": "number-strip-hops",
       "numberA": 20,
       "numberB": 9
@@ -503,9 +479,9 @@ export const SUB_A: SubBabNaskah = {
       "gameType": "vertical-addition-table",
       "title": "Susun ke Bawah",
       "bookReference": "hlm. 41–42 dan 46 (Cara 2: penjumlahan bersusun; Ayo Berlatih nomor 2: 14 + 3, 13 + 5, 13 + 7, 16 + 2)",
-      "objective": "Menjumlahkan dengan cara bersusun pada tabel nilai tempat: satuan dulu, lalu puluhan, dan memindahkan sepuluh satuan.. Ingat Menghitung Maju.",
+      "objective": "Menjumlahkan dengan cara bersusun pada tabel nilai tempat: satuan dulu, lalu puluhan, dan memindahkan sepuluh satuan.. Ingat Menghitung Maju. (Menghitung Maju)",
       "mechanicDescription": "Tiga ronde (14 + 3, 13 + 5, dan 13 + 7). Siswa meletakkan bilangan kedua di kolom yang tepat, menjumlahkan satuan, memindahkan sepuluh satuan bila perlu, lalu menjumlahkan puluhan. Angka soal biru, angka jawaban hijau, catatan pindah merah kecil. Gunakan Menghitung Maju.",
-      "voiceGuide": "Menghitung Maju. Susun, jumlahkan satuan dulu, lalu puluhan.",
+      "voiceGuide": "Menghitung Maju. Mainkan dengan teliti.",
       "diagramType": "place-value-vertical",
       "numberA": 20,
       "numberB": 7
@@ -515,9 +491,9 @@ export const SUB_A: SubBabNaskah = {
       "gameType": "fill-number-bond",
       "title": "Bagan Pasangan",
       "bookReference": "hlm. 43 dan 46–47 (Cara 3: pasangan bilangan; Ayo Berlatih nomor 3: 14 + 3, 12 + 3, 16 + 4, 11 + 7, 13 + 4)",
-      "objective": "Menjumlahkan dengan memisahkan bilangan pertama menjadi sepuluh dan satuannya pada bagan pasangan.. Ingat Menghitung Maju.",
+      "objective": "Menjumlahkan dengan memisahkan bilangan pertama menjadi sepuluh dan satuannya pada bagan pasangan.. Ingat Menghitung Maju. (Menghitung Maju)",
       "mechanicDescription": "Tiga ronde (14 + 3, 11 + 7, dan 16 + 4). Tiap ronde punya tiga langkah: memisah bilangan pertama, menjumlahkan satuan, lalu menjumlahkan dengan sepuluh. Siswa memilih bilangan yang tepat untuk tiap bagian bagan. Gunakan Menghitung Maju.",
-      "voiceGuide": "Menghitung Maju. Pisahkan jadi sepuluh dan satuan, lalu jumlahkan.",
+      "voiceGuide": "Menghitung Maju. Mainkan dengan teliti.",
       "diagramType": "number-bond-steps",
       "numberA": 16,
       "numberB": 4
@@ -527,9 +503,9 @@ export const SUB_A: SubBabNaskah = {
       "gameType": "match-method-to-steps",
       "title": "Jodohkan Cara dan Langkah",
       "bookReference": "hlm. 47 (Ayo Berlatih nomor 4: gunakan cara yang menurut kalian paling mudah: 12 + 5, 11 + 8, 15 + 3)",
-      "objective": "Mengenali langkah hitung tiap cara penjumlahan dalam bentuk lambang.. Ingat Menghitung Maju.",
+      "objective": "Mengenali langkah hitung tiap cara penjumlahan dalam bentuk lambang.. Ingat Menghitung Maju. (Menghitung Maju)",
       "mechanicDescription": "Tiga ronde (12 + 5, 11 + 8, dan 15 + 3). Tiap ronde punya tiga nama cara dan tiga rangkaian langkah. Siswa mengetuk nama cara lalu rangkaian langkah yang cocok. Ketiganya berakhir pada hasil yang sama. Gunakan Menghitung Maju.",
-      "voiceGuide": "Menghitung Maju. Ketuk nama cara, lalu langkah yang cocok.",
+      "voiceGuide": "Menghitung Maju. Mainkan dengan teliti.",
       "symbolLarge": "12 + 5 = 17",
       "wordLarge": "JODOHKAN CARA",
       "mathNotation": "maju • bersusun • pasangan"
@@ -539,9 +515,9 @@ export const SUB_A: SubBabNaskah = {
       "gameType": "memory-equal-sums",
       "title": "Kartu Kembar Hasil Sama",
       "bookReference": "hlm. 43–44 (hasil penjumlahan yang sama dengan cara berbeda: 12 + 6 dan 10 + 8)",
-      "objective": "Mengenali dua kalimat penjumlahan berbeda yang hasilnya sama.. Ingat Menghitung Maju.",
+      "objective": "Mengenali dua kalimat penjumlahan berbeda yang hasilnya sama.. Ingat Menghitung Maju. (Menghitung Maju)",
       "mechanicDescription": "Dua ronde, masing-masing delapan kartu. Siswa membuka dua kartu. Bila hasil kedua kalimat sama, kartu terkunci terbuka. Bila tidak, kartu menutup lagi. Semua pasangan harus ditemukan. Gunakan Menghitung Maju.",
-      "voiceGuide": "Menghitung Maju. Buka dua kartu yang hasilnya sama.",
+      "voiceGuide": "Menghitung Maju. Mainkan dengan teliti.",
       "symbolLarge": "12 + 6 = 10 + 8",
       "wordLarge": "KARTU KEMBAR",
       "mathNotation": "hasil sama, cara beda"
@@ -551,9 +527,9 @@ export const SUB_A: SubBabNaskah = {
       "gameType": "say-and-trace",
       "title": "Kanvas Guratan dan Suara",
       "bookReference": "hlm. 45 (Ayo Mencoba: dua kartu bilangan dijumlahkan dengan ketiga cara)",
-      "objective": "Membaca kalimat penjumlahan, mengucapkan hasilnya, dan menulis lambangnya.. Ingat Menghitung Maju.",
+      "objective": "Membaca kalimat penjumlahan, mengucapkan hasilnya, dan menulis lambangnya.. Ingat Menghitung Maju. (Menghitung Maju)",
       "mechanicDescription": "Dua ronde. Ronde 1 dua belas ditambah enam. Ronde 2 siswa memilih satu dari tiga kalimat (12 + 5, 14 + 4, 15 + 3). Siswa mengucapkan hasilnya lalu menggurat lambangnya di kanvas. Gunakan Menghitung Maju.",
-      "voiceGuide": "Menghitung Maju. Ucapkan hasilnya, lalu guratkan angkanya.",
+      "voiceGuide": "Menghitung Maju. Mainkan dengan teliti.",
       "symbolLarge": "18",
       "wordLarge": "KANVAS",
       "mathNotation": "12 + 6 = 18"
@@ -565,12 +541,6 @@ export const SUB_A: SubBabNaskah = {
       "nama": "Hitung maju",
       "isi": "12 + 6: 13, 14, 15, 16, 17, 18",
       "suara": "Menghitung maju. Mulai dari bilangan pertama, lalu melompat sebanyak bilangan kedua. Dua belas melompat enam kali sampai delapan belas."
-    },
-    {
-      "ikon": "📋",
-      "nama": "Bersusun",
-      "isi": "satuan dulu, lalu puluhan",
-      "suara": "Penjumlahan bersusun. Satuan lurus dengan satuan. Jumlahkan satuan dulu, lalu puluhan. Dua ditambah enam sama dengan delapan, puluhannya satu, hasilnya delapan belas."
     },
     {
       "ikon": "🌍",
@@ -613,11 +583,11 @@ export const SUB_A: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Menghitung Maju pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Menghitung Maju pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Menghitung Maju membantumu memahami soal?",
-    "Kapan kamu memakai Pasangan Bilangan?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Menghitung Maju membantumu?",
+    "Kapan memakai Pasangan Bilangan?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -661,12 +631,12 @@ export const SUB_B: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Berbagai Cara Pengurangan)",
   "fullTitle": "Sub-Bab B: Berbagai Cara Melakukan Pengurangan",
-  "targetDescription": "Siswa mencari selisih dengan memasangkan satu-satu, mengurangkan bilangan sampai 20 dengan tiga cara, yaitu menghitung mundur di jalur bilangan, pengurangan bersusun, dan pasangan bilangan. Siswa mengurai satu puluhan menjadi sepuluh satuan saat satuan tidak cukup, memeriksa hasil pengurangan dengan penjumlahan, serta memilih cara yang paling mudah dan menjelaskan alasannya. Siswa memakai cara Menghitung Naik, Mengambil, Meminjam.",
+  "targetDescription": "Siswa mencari selisih dengan memasangkan satu-satu, mengurangkan bilangan sampai 20 dengan tiga cara, yaitu menghitung mundur di jalur bilangan, pengurangan bersusun, dan pasangan bilangan. Siswa mengurai satu puluhan menjadi sepuluh satuan saat satuan tidak cukup, memeriksa hasil pengurangan dengan penjumlahan, serta memilih cara yang paling mudah dan menjelaskan alasannya. Siswa memakai cara Menghitung Naik, Mengambil, Meminjam. Siswa memakai cara Menghitung Naik, Mengambil, Meminjam.",
   "secondaryBg": "#FCE7F3",
   "secondaryBorder": "#DB2777",
   "secondaryText": "#831843",
   "silabus": {
-    "teksSuara": "Kita belajar berbagai cara melakukan pengurangan. Bukunya bernama Penjumlahan dan Pengurangan, bagian berbagai cara melakukan pengurangan. Kita mencari selisih jambu air Tika dan Kira dengan tiga cara: menghitung mundur, pengurangan bersusun, dan pasangan bilangan. Kita juga belajar mengurai satu puluhan menjadi sepuluh satuan, dan memeriksa hasil dengan penjumlahan. Kita memakai cara dari luar buku: Menghitung Naik (Counting Up); Mengambil (Take Away); Meminjam (Regroup Borrow). Naik dari yang dikurangi sampai bilangan awal. Ambil sebagian dari kumpulan. Buka satu puluhan jadi sepuluh satuan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar berbagai cara melakukan pengurangan. Bukunya bernama Penjumlahan dan Pengurangan, bagian berbagai cara melakukan pengurangan. Kita mencari selisih jambu air Tika dan Kira dengan tiga cara: menghitung mundur, pengurangan bersusun, dan pasangan bilangan. Kita juga belajar mengurai satu puluhan menjadi sepuluh satuan, dan memeriksa hasil dengan penjumlahan. Kita memakai cara: Menghitung Naik, Mengambil, Meminjam. Naik dari yang dikurangi sampai bilangan awal. Ambil sebagian dari kumpulan. Buka satu puluhan jadi sepuluh satuan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa mengurangkan bilangan cacah sampai 20 dengan menghitung mundur, pengurangan bersusun, dan pasangan bilangan, mengurai satu puluhan menjadi sepuluh satuan, memeriksa hasil dengan penjumlahan, serta memilih cara yang paling mudah dan menjelaskan alasannya.",
     "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2 Sub-Bab B)."
   },
@@ -680,28 +650,26 @@ export const SUB_B: SubBabNaskah = {
           "id": "K2B2B-V1-1",
           "judul": "Jambu Tika dan Kira",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Tika mempunyai 12 buah jambu air. Mari kita pahami bersama.",
-            "Kira mempunyai 18 buah jambu air. Mari kita pahami bersama.",
-            "Berapa selisih banyak jambu air Kira dan Tika. Mari kita pahami bersama.",
-            "Selisih adalah beda banyaknya dua kelompok. Kita cari dengan memasangkan jambu satu-satu.",
-            "Jambu Tika semuanya sudah punya pasangan. Jambu Kira yang tidak punya pasangan itulah selisihnya."
+            "Bayangkan kamu sedang mempelajari Berbagai Cara Melakukan Pengurangan. Tika mempunyai 12 buah jambu air.",
+            "Kira mempunyai 18 buah jambu air.",
+            "Berapa selisih banyak jambu air Kira dan Tika.",
+            "Selisih adalah beda banyaknya dua kelompok. Kita cari dengan memasangkan jambu satu-satu. Ingat cara Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal."
           ],
           "papan": [
             "Tika: 12 jambu",
             "Kira: 18 jambu",
             "Selisih = ?",
-            "Pasangkan satu-satu",
-            "Yang tersisa = selisih"
+            "Pasangkan satu-satu"
           ]
         },
         {
           "id": "K2B2B-V1-2",
           "judul": "Menemukan jawaban dengan mengurangkan",
           "ketukan": [
-            "Untuk menemukan jawabannya, kita kurangkan 18 dengan 12. Mari kita pahami bersama.",
-            "Bilangan yang besar dikurangi bilangan yang kecil. Mari kita pahami bersama.",
-            "Pengurangan bisa dilakukan dengan berbagai cara. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Counting Up — Naik dari yang dikurangi sampai bilangan awal."
+            "Untuk menemukan jawabannya, kita kurangkan 18 dengan 12.",
+            "Bilangan yang besar dikurangi bilangan yang kecil.",
+            "Pengurangan bisa dilakukan dengan berbagai cara.",
+            "Di sini kita memakai ide Counting Up — Naik dari yang dikurangi sampai bilangan awal. Di sini kita memakai Counting Up. Naik dari yang dikurangi sampai bilangan awal."
           ],
           "papan": [
             "18 − 12 = ?",
@@ -721,54 +689,48 @@ export const SUB_B: SubBabNaskah = {
           "id": "K2B2B-V2-1",
           "judul": "Cara 1: Menghitung mundur",
           "ketukan": [
-            "Cara pertama adalah menghitung mundur. Mari kita pahami bersama.",
-            "Kita ingin tahu hasil dari 18 dikurangi 12. Mari kita pahami bersama.",
-            "Mula-mula kita berdiri di bilangan 18. Mari kita pahami bersama.",
-            "Lalu kita melompat ke belakang sebanyak 12 lompatan: 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6.",
-            "Ingat cara Mengambil: Ambil sebagian dari kumpulan."
+            "Cara pertama adalah menghitung mundur.",
+            "Kita ingin tahu hasil dari 18 dikurangi 12.",
+            "Mula-mula kita berdiri di bilangan 18.",
+            "Lalu kita melompat ke belakang sebanyak 12 lompatan: 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6. Ingat cara Mengambil: Ambil sebagian dari kumpulan."
           ],
           "papan": [
             "Cara 1: Hitung mundur",
             "18 − 12 = ?",
             "Mulai dari 18",
-            "Lompat mundur 12 kali",
-            "18 − 12 = 6"
+            "Lompat mundur 12 kali"
           ]
         },
         {
           "id": "K2B2B-V2-2",
           "judul": "Cara 2: Pengurangan bersusun",
           "ketukan": [
-            "Cara kedua adalah pengurangan bersusun. Mari kita pahami bersama.",
-            "Tuliskan 18 di tabel nilai tempat: 1 puluhan dan 8 satuan. Mari kita pahami bersama.",
+            "Cara kedua adalah pengurangan bersusun.",
+            "Tuliskan 18 di tabel nilai tempat: 1 puluhan dan 8 satuan.",
             "Tuliskan 12 di bawahnya: 1 puluhan dan 2 satuan. Satuan lurus dengan satuan.",
-            "Kurangkan satuan dulu: 8 dikurangi 2 sama dengan 6. Mari kita pahami bersama.",
-            "Lalu kurangkan puluhan: 1 dikurangi 1 sama dengan 0. Mari kita pahami bersama."
+            "Kurangkan satuan dulu: 8 dikurangi 2 sama dengan 6. Di sini kita memakai Take Away. Ambil sebagian dari kumpulan."
           ],
           "papan": [
             "Cara 2: Bersusun",
             "18 = 1 puluhan 8 satuan",
             "12 = 1 puluhan 2 satuan",
-            "8 − 2 = 6",
-            "1 − 1 = 0"
+            "8 − 2 = 6"
           ]
         },
         {
           "id": "K2B2B-V2-3",
           "judul": "Cara 3: Pasangan bilangan",
           "ketukan": [
-            "Cara ketiga adalah pasangan bilangan. Mari kita pahami bersama.",
-            "18 adalah 10 dan 8. 12 adalah 10 dan 2. Mari kita pahami bersama.",
-            "Kurangkan puluhan dengan puluhan: 10 dikurangi 10 sama dengan 0. Mari kita pahami bersama.",
-            "Kurangkan satuan dengan satuan: 8 dikurangi 2 sama dengan 6. Mari kita pahami bersama.",
-            "Jadi 18 dikurangi 12 sama dengan 6. Mari kita pahami bersama."
+            "Cara ketiga adalah pasangan bilangan.",
+            "18 adalah 10 dan 8. 12 adalah 10 dan 2.",
+            "Kurangkan puluhan dengan puluhan: 10 dikurangi 10 sama dengan 0.",
+            "Kurangkan satuan dengan satuan: 8 dikurangi 2 sama dengan 6. METODE LUAR · Mengambil: Ambil sebagian dari kumpulan."
           ],
           "papan": [
             "Cara 3: Pasangan",
             "18 = 10 dan 8 • 12 = 10 dan 2",
             "10 − 10 = 0",
-            "8 − 2 = 6",
-            "18 − 12 = 6"
+            "8 − 2 = 6"
           ]
         }
       ]
@@ -782,10 +744,10 @@ export const SUB_B: SubBabNaskah = {
           "id": "K2B2B-V3-1",
           "judul": "Tika memberi jambu",
           "ketukan": [
-            "Tika memiliki 12 jambu air. Mari kita pahami bersama.",
-            "Tika memberikan 8 jambu air kepada Lili. Mari kita pahami bersama.",
-            "Berapakah sisa jambu air milik Tika. Mari kita pahami bersama.",
-            "Ingat cara Meminjam: Buka satu puluhan jadi sepuluh satuan."
+            "Tika memiliki 12 jambu air.",
+            "Tika memberikan 8 jambu air kepada Lili.",
+            "Berapakah sisa jambu air milik Tika.",
+            "Ingat cara Meminjam: Buka satu puluhan jadi sepuluh satuan. Ingat cara Meminjam: Buka satu puluhan jadi sepuluh satuan."
           ],
           "papan": [
             "Tika: 12 jambu",
@@ -798,27 +760,25 @@ export const SUB_B: SubBabNaskah = {
           "id": "K2B2B-V3-2",
           "judul": "Urai dan kurangi",
           "ketukan": [
-            "Satuan pada 12 hanya 2. 2 dikurangi 8 tidak cukup. Mari kita pahami bersama.",
-            "Kita urai 1 puluhan menjadi 10 satuan. Mari kita pahami bersama.",
-            "Sekarang ada 2 ditambah 10, yaitu 12 satuan. Mari kita pahami bersama.",
-            "Kurangkan 12 satuan dengan 8 satuan. Hasilnya 4 satuan. Mari kita pahami bersama.",
-            "Puluhan tinggal 0, karena 1 puluhan sudah diurai. Mari kita pahami bersama."
+            "Satuan pada 12 hanya 2. 2 dikurangi 8 tidak cukup.",
+            "Kita urai 1 puluhan menjadi 10 satuan.",
+            "Sekarang ada 2 ditambah 10, yaitu 12 satuan.",
+            "Kurangkan 12 satuan dengan 8 satuan. Hasilnya 4 satuan. Di sini kita memakai Regroup Borrow. Buka satu puluhan jadi sepuluh satuan."
           ],
           "papan": [
             "2 − 8 tidak cukup",
             "Urai 1 puluhan",
             "2 + 10 = 12 satuan",
-            "12 − 8 = 4",
-            "Puluhan: 0"
+            "12 − 8 = 4"
           ]
         },
         {
           "id": "K2B2B-V3-3",
           "judul": "Periksa dengan penjumlahan",
           "ketukan": [
-            "Kita bisa memeriksa hasil pengurangan dengan penjumlahan. Mari kita pahami bersama.",
-            "4 ditambah 8 sama dengan 12. Cocok dengan jambu air Tika semula. Mari kita pahami bersama.",
-            "Kalau tidak cocok, hitung ulang pelan-pelan. Mari kita pahami bersama.",
+            "Kita bisa memeriksa hasil pengurangan dengan penjumlahan.",
+            "4 ditambah 8 sama dengan 12. Cocok dengan jambu air Tika semula.",
+            "Kalau tidak cocok, hitung ulang pelan-pelan.",
             "METODE LUAR · Meminjam: Buka satu puluhan jadi sepuluh satuan."
           ],
           "papan": [
@@ -835,7 +795,7 @@ export const SUB_B: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Berbagai Cara Melakukan Pengurangan. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Berbagai Cara Melakukan Pengurangan?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -867,7 +827,7 @@ export const SUB_B: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -875,7 +835,7 @@ export const SUB_B: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -883,15 +843,15 @@ export const SUB_B: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -967,20 +927,6 @@ export const SUB_B: SubBabNaskah = {
       "countNum": 3,
       "countWord": "Tiga",
       "suara": "Pilih cara yang paling mudah untukmu. Hitung mundur bila bilangan yang dikurangkan kecil. Bersusun bila kamu ingin rapi. Pasangan bilangan bila kedua bilangan mudah dipisah. Tambah sampai pas bila kedua bilangan berdekatan. Lalu periksa dengan penjumlahan."
-    },
-    {
-      "judul": "Menghitung Naik",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Naik dari yang dikurangi sampai bilangan awal."
-    },
-    {
-      "judul": "Mengambil",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Ambil sebagian dari kumpulan."
     }
   ],
   "games": [
@@ -990,7 +936,7 @@ export const SUB_B: SubBabNaskah = {
       "title": "Beri Jambu ke Lili",
       "bookReference": "hlm. 49–50 (Tika memberikan jambu air kepada Lili); hlm. 52 (Ayo Berlatih nomor 1: 15 − 4, 19 − 8)",
       "objective": "Pakai Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal. Latihan: Mengurangkan dengan mengambil benda satu per satu sambil menghitung mundur..",
-      "mechanicDescription": "Tiga ronde (15 beri 4, 19 beri 8, dan 18 beri 6). Siswa menyeret atau mengetuk jambu dari keranjang Tika ke piring Lili satu per satu. Tiap jambu pergi, Suara Guru menyebut sisanya. Setelah cukup, siswa memilih sisa jambu. Terakhir ucapkan sisanya. Saat bermain, terapkan Counting Up: Naik dari yang dikurangi sampai bilangan awal.",
+      "mechanicDescription": "Tiga ronde (15 beri 4, 19 beri 8, dan 18 beri 6). Siswa menyeret atau mengetuk jambu dari keranjang Tika ke piring Lili satu per satu. Tiap jambu pergi, Suara Guru menyebut sisanya. Setelah cukup, siswa memilih sisa jambu. Terakhir ucapkan sisanya. Saat bermain, ingat Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal.",
       "voiceGuide": "Menghitung Naik. Naik dari yang dikurangi sampai bilangan awal.",
       "emoji": "🍎",
       "targetCount": 19
@@ -1001,7 +947,7 @@ export const SUB_B: SubBabNaskah = {
       "title": "Pasangkan Selisih",
       "bookReference": "hlm. 48 (Tika 12 jambu air, Kira 18 jambu air: berapa selisihnya?)",
       "objective": "Pakai Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal. Latihan: Mencari selisih dengan memasangkan dua kelompok benda satu-satu dan menghitung yang tidak berpasangan..",
-      "mechanicDescription": "Tiga ronde (18 dan 12, 15 dan 9, 17 dan 13). Siswa mengetuk jambu kelompok kecil agar berpasangan dengan jambu kelompok besar, atau menekan Pasangkan sepuluh bila kedua kelompok punya sepuluh. Jambu yang tidak berpasangan menyala. Lalu siswa memilih selisihnya. Saat bermain, terapkan Counting Up: Naik dari yang dikurangi sampai bilangan awal.",
+      "mechanicDescription": "Tiga ronde (18 dan 12, 15 dan 9, 17 dan 13). Siswa mengetuk jambu kelompok kecil agar berpasangan dengan jambu kelompok besar, atau menekan Pasangkan sepuluh bila kedua kelompok punya sepuluh. Jambu yang tidak berpasangan menyala. Lalu siswa memilih selisihnya. Saat bermain, ingat Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal.",
       "voiceGuide": "Menghitung Naik. Naik dari yang dikurangi sampai bilangan awal.",
       "emoji": "🔗",
       "targetCount": 18
@@ -1012,7 +958,7 @@ export const SUB_B: SubBabNaskah = {
       "title": "Urai Satu Puluhan",
       "bookReference": "hlm. 49–50 (Tika memberikan 8 jambu air; 2 dikurang 8 tidak cukup; urai 1 puluhan menjadi 10 satuan)",
       "objective": "Pakai Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal. Latihan: Mengurai satu puluhan menjadi sepuluh satuan saat satuan tidak cukup untuk dikurangi..",
-      "mechanicDescription": "Tiga ronde (12 − 8, 13 − 5, dan 16 − 4). Papan berisi batang puluhan dan kubus satuan. Siswa memberikan kubus kepada Lili satu per satu. Bila satuan tidak cukup, tombol Urai membuka satu batang menjadi sepuluh kubus. Lalu siswa memilih sisanya. Terakhir ucapkan sisanya. Saat bermain, terapkan Counting Up: Naik dari yang dikurangi sampai bilangan awal.",
+      "mechanicDescription": "Tiga ronde (12 − 8, 13 − 5, dan 16 − 4). Papan berisi batang puluhan dan kubus satuan. Siswa memberikan kubus kepada Lili satu per satu. Bila satuan tidak cukup, tombol Urai membuka satu batang menjadi sepuluh kubus. Lalu siswa memilih sisanya. Terakhir ucapkan sisanya. Saat bermain, ingat Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal.",
       "voiceGuide": "Menghitung Naik. Naik dari yang dikurangi sampai bilangan awal.",
       "emoji": "🧱",
       "targetCount": 16
@@ -1023,7 +969,7 @@ export const SUB_B: SubBabNaskah = {
       "title": "Tambah Sampai Pas",
       "bookReference": "hlm. 48 (selisih jambu Tika dan Kira), diperkaya metode menghitung maju untuk pengurangan",
       "objective": "Pakai Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal. Latihan: Menemukan selisih dengan menambah benda dari bilangan kecil sampai tepat sama dengan bilangan besar..",
-      "mechanicDescription": "Tiga ronde (12 ke 18, 9 ke 15, dan 14 ke 20). Keranjang kecil berisi jambu, keranjang besar menunjukkan bayangan target. Siswa menekan Tambah satu jambu sampai keranjang pas, lalu memilih berapa kali menambah. Banyak tambahan sama dengan selisih. Terakhir ucapkan selisihnya. Saat bermain, terapkan Counting Up: Naik dari yang dikurangi sampai bilangan awal.",
+      "mechanicDescription": "Tiga ronde (12 ke 18, 9 ke 15, dan 14 ke 20). Keranjang kecil berisi jambu, keranjang besar menunjukkan bayangan target. Siswa menekan Tambah satu jambu sampai keranjang pas, lalu memilih berapa kali menambah. Banyak tambahan sama dengan selisih. Terakhir ucapkan selisihnya. Saat bermain, ingat Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal.",
       "voiceGuide": "Menghitung Naik. Naik dari yang dikurangi sampai bilangan awal.",
       "emoji": "🛒",
       "targetCount": 20
@@ -1033,9 +979,9 @@ export const SUB_B: SubBabNaskah = {
       "gameType": "hop-back-on-number-strip",
       "title": "Loncat Mundur di Jalur Bilangan",
       "bookReference": "hlm. 48 dan 52 (Cara 1: menghitung mundur; Ayo Berlatih nomor 1: 12 − 6, 18 − 8, 15 − 4, 19 − 8, 20 − 6)",
-      "objective": "Menghitung mundur di jalur bilangan dengan melompat ke belakang sebanyak bilangan yang dikurangkan.. Ingat Menghitung Naik.",
+      "objective": "Menghitung mundur di jalur bilangan dengan melompat ke belakang sebanyak bilangan yang dikurangkan.. Ingat Menghitung Naik. (Menghitung Naik)",
       "mechanicDescription": "Tiga ronde (12 − 6, 15 − 4, dan 20 − 6). Jalur bilangan 5 sampai 20. Siswa mengetuk kotak sebelumnya satu per satu sehingga busur lompatan tergambar, lalu menekan Berhenti. Banyak lompatan harus sama dengan bilangan yang dikurangkan. Terakhir ucapkan hasilnya. Gunakan Menghitung Naik.",
-      "voiceGuide": "Menghitung Naik. Ketuk kotak sebelumnya sebanyak bilangan pengurang, lalu berhenti.",
+      "voiceGuide": "Menghitung Naik. Mainkan dengan teliti.",
       "diagramType": "number-strip-hops-back",
       "numberA": 20,
       "numberB": 6
@@ -1045,9 +991,9 @@ export const SUB_B: SubBabNaskah = {
       "gameType": "vertical-subtraction-table",
       "title": "Susun Kurang",
       "bookReference": "hlm. 49–50 dan 52 (Cara 2: pengurangan bersusun; Ayo Berlatih nomor 2: 14 − 3, 13 − 5, 13 − 7, 16 − 2)",
-      "objective": "Mengurangkan dengan cara bersusun pada tabel nilai tempat, termasuk mengurai satu puluhan.. Ingat Menghitung Naik.",
+      "objective": "Mengurangkan dengan cara bersusun pada tabel nilai tempat, termasuk mengurai satu puluhan.. Ingat Menghitung Naik. (Menghitung Naik)",
       "mechanicDescription": "Tiga ronde (14 − 3, 13 − 5, dan 13 − 7). Siswa meletakkan bilangan pengurang di kolom satuan, mengurai satu puluhan bila satuan tidak cukup, lalu mengurangkan satuan dan puluhan. Angka soal biru, angka jawaban hijau, catatan urai merah kecil. Gunakan Menghitung Naik.",
-      "voiceGuide": "Menghitung Naik. Susun, urai bila perlu, lalu kurangkan satuan dan puluhan.",
+      "voiceGuide": "Menghitung Naik. Mainkan dengan teliti.",
       "diagramType": "place-value-vertical-minus",
       "numberA": 14,
       "numberB": 7
@@ -1057,9 +1003,9 @@ export const SUB_B: SubBabNaskah = {
       "gameType": "fill-number-bond-minus",
       "title": "Bagan Pasangan Kurang",
       "bookReference": "hlm. 51 dan 53 (Cara 3: pasangan bilangan; Ayo Berlatih nomor 3: 19 − 15, 17 − 12, 16 − 12)",
-      "objective": "Mengurangkan dengan memisahkan kedua bilangan menjadi sepuluh dan satuannya.. Ingat Menghitung Naik.",
+      "objective": "Mengurangkan dengan memisahkan kedua bilangan menjadi sepuluh dan satuannya.. Ingat Menghitung Naik. (Menghitung Naik)",
       "mechanicDescription": "Tiga ronde (19 − 15, 17 − 12, dan 16 − 12). Tiap ronde punya lima langkah: memisah bilangan pertama, memisah bilangan kedua, mengurangkan sepuluh dengan sepuluh, mengurangkan satuan dengan satuan, lalu menuliskan hasilnya. Gunakan Menghitung Naik.",
-      "voiceGuide": "Menghitung Naik. Pisahkan kedua bilangan, kurangkan sepuluh dan satuannya.",
+      "voiceGuide": "Menghitung Naik. Mainkan dengan teliti.",
       "diagramType": "number-bond-minus-steps",
       "numberA": 19,
       "numberB": 15
@@ -1069,9 +1015,9 @@ export const SUB_B: SubBabNaskah = {
       "gameType": "sort-borrow-or-not",
       "title": "Perlu Urai atau Tidak?",
       "bookReference": "hlm. 49–50 (kapan satuan tidak cukup) dan hlm. 52–53 (Ayo Berlatih nomor 1 sampai 4)",
-      "objective": "Menentukan kalimat pengurangan yang cukup dikurangkan langsung dan yang perlu mengurai satu puluhan.. Ingat Menghitung Naik.",
+      "objective": "Menentukan kalimat pengurangan yang cukup dikurangkan langsung dan yang perlu mengurai satu puluhan.. Ingat Menghitung Naik. (Menghitung Naik)",
       "mechanicDescription": "Dua ronde, masing-masing lima kartu pengurangan (18 − 12, 15 − 4, 12 − 8, 13 − 5, 19 − 8; lalu 20 − 6, 17 − 5, 16 − 9, 14 − 3, 11 − 7). Siswa mengetuk kartu lalu kotak Langsung atau Urai dulu. Bandingkan satuan atas dengan satuan bawah. Gunakan Menghitung Naik.",
-      "voiceGuide": "Menghitung Naik. Bandingkan satuan atas dan bawah, lalu tentukan perlu urai atau tidak.",
+      "voiceGuide": "Menghitung Naik. Mainkan dengan teliti.",
       "symbolLarge": "12 − 8",
       "wordLarge": "PERLU URAI?",
       "mathNotation": "2 < 8, satuan tidak cukup"
@@ -1081,9 +1027,9 @@ export const SUB_B: SubBabNaskah = {
       "gameType": "fact-family-fill",
       "title": "Keluarga Bilangan",
       "bookReference": "hlm. 51 dan 53 (pengurangan dan penjumlahan berkaitan: 18 − 12 = 6), diperkaya keluarga fakta",
-      "objective": "Menuliskan empat kalimat tambah dan kurang dari satu keluarga tiga bilangan.. Ingat Menghitung Naik.",
+      "objective": "Menuliskan empat kalimat tambah dan kurang dari satu keluarga tiga bilangan.. Ingat Menghitung Naik. (Menghitung Naik)",
       "mechanicDescription": "Tiga ronde (6, 12, 18; 4, 9, 13; dan 8, 11, 19). Tiap ronde punya empat kalimat dengan satu bagian kosong. Siswa mengetuk bilangan keluarga yang tepat untuk mengisinya, lalu melihat segitiga keluarga lengkap. Gunakan Menghitung Naik.",
-      "voiceGuide": "Menghitung Naik. Isi bagian yang kosong dengan bilangan dari keluarga.",
+      "voiceGuide": "Menghitung Naik. Mainkan dengan teliti.",
       "symbolLarge": "6 + 12 = 18",
       "wordLarge": "KELUARGA BILANGAN",
       "mathNotation": "18 − 6 = 12 • 18 − 12 = 6"
@@ -1093,9 +1039,9 @@ export const SUB_B: SubBabNaskah = {
       "gameType": "clue-detective-minus",
       "title": "Detektif Pengurangan",
       "bookReference": "hlm. 48–53 (selisih dan sisa), diperkaya soal petunjuk bilangan misterius",
-      "objective": "Menemukan bilangan dari dua petunjuk yang memakai kata dikurangi, selisih, dan sisa.. Ingat Menghitung Naik.",
+      "objective": "Menemukan bilangan dari dua petunjuk yang memakai kata dikurangi, selisih, dan sisa.. Ingat Menghitung Naik. (Menghitung Naik)",
       "mechanicDescription": "Empat ronde, tiap ronde dua petunjuk. Siswa memilih bilangan yang cocok dengan semua petunjuk. Petunjuk dibacakan Suara Guru. Terakhir ucapkan bilangan itu. Gunakan Menghitung Naik.",
-      "voiceGuide": "Menghitung Naik. Baca petunjuk, lalu pilih bilangannya.",
+      "voiceGuide": "Menghitung Naik. Mainkan dengan teliti.",
       "symbolLarge": "? − 5 = 12",
       "wordLarge": "DETEKTIF",
       "mathNotation": "dua petunjuk, satu bilangan"
@@ -1107,12 +1053,6 @@ export const SUB_B: SubBabNaskah = {
       "nama": "Selisih",
       "isi": "pasangkan satu-satu, yang tersisa = selisih",
       "suara": "Selisih adalah beda banyaknya dua kelompok. Pasangkan benda satu-satu. Benda yang tidak berpasangan menunjukkan selisihnya. Delapan belas dan dua belas berselisih enam."
-    },
-    {
-      "ikon": "🐸",
-      "nama": "Hitung mundur",
-      "isi": "18 − 12: 17, 16, 15 ... 6",
-      "suara": "Menghitung mundur. Mulai dari bilangan pertama, lalu melompat ke belakang sebanyak bilangan kedua. Delapan belas mundur dua belas kali sampai enam."
     },
     {
       "ikon": "🌍",
@@ -1155,11 +1095,11 @@ export const SUB_B: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Menghitung Naik pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Menghitung Naik pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Menghitung Naik membantumu memahami soal?",
-    "Kapan kamu memakai Mengambil?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Menghitung Naik membantumu?",
+    "Kapan memakai Mengambil?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -1203,12 +1143,12 @@ export const SUB_C: SubBabNaskah = {
   "id": "C",
   "codeTitle": "Sub-Bab C (Soal Cerita)",
   "fullTitle": "Sub-Bab C: Soal Cerita Penjumlahan dan Pengurangan",
-  "targetDescription": "Siswa memahami kata lebihnya, kurangnya, selisih, dan jumlah pada soal cerita, menuliskan yang diketahui dan yang ditanya, memilih operasi penjumlahan atau pengurangan, menyelesaikan soal cerita dengan langkah berurutan, menuliskan kesimpulan, mencari bilangan awal, menjumlahkan tiga bilangan, serta membuat soal cerita sendiri. Siswa memakai cara Cerita Bagian–Utuh, Model Batang Cerita, Pilih Operasi.",
+  "targetDescription": "Siswa memahami kata lebihnya, kurangnya, selisih, dan jumlah pada soal cerita, menuliskan yang diketahui dan yang ditanya, memilih operasi penjumlahan atau pengurangan, menyelesaikan soal cerita dengan langkah berurutan, menuliskan kesimpulan, mencari bilangan awal, menjumlahkan tiga bilangan, serta membuat soal cerita sendiri. Siswa memakai cara Cerita Bagian–Utuh, Model Batang Cerita, Pilih Operasi. Siswa memakai cara Cerita Bagian–Utuh, Model Batang Cerita, Pilih Operasi.",
   "secondaryBg": "#DCFCE7",
   "secondaryBorder": "#16A34A",
   "secondaryText": "#14532D",
   "silabus": {
-    "teksSuara": "Kita belajar soal cerita penjumlahan dan pengurangan. Bukunya bernama Penjumlahan dan Pengurangan, bagian soal cerita. Kita mengenal empat kata kunci: lebihnya, kurangnya, selisih, dan jumlah. Kita menyelesaikan soal cerita dengan empat langkah berurutan: diketahui, ditanya, solusi, dan kesimpulan. Kita juga membuat soal cerita sendiri. Kita memakai cara dari luar buku: Cerita Bagian–Utuh (Part–Part–Whole Story); Model Batang Cerita (Bar Model Story); Pilih Operasi (Choose Operation). Cerita penjumlahan/pengurangan memakai bagian dan utuh. Gambar batang sebelum menulis kalimat. Tentukan + atau − dari makna cerita. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar soal cerita penjumlahan dan pengurangan. Bukunya bernama Penjumlahan dan Pengurangan, bagian soal cerita. Kita mengenal empat kata kunci: lebihnya, kurangnya, selisih, dan jumlah. Kita menyelesaikan soal cerita dengan empat langkah berurutan: diketahui, ditanya, solusi, dan kesimpulan. Kita juga membuat soal cerita sendiri. Kita memakai cara: Cerita Bagian–Utuh, Model Batang Cerita, Pilih Operasi. Cerita penjumlahan/pengurangan memakai bagian dan utuh. Gambar batang sebelum menulis kalimat. Tentukan + atau − dari makna cerita. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menyelesaikan soal cerita penjumlahan dan pengurangan bilangan sampai 20 dengan langkah berurutan (diketahui, ditanya, solusi, kesimpulan), memahami kata lebihnya, kurangnya, selisih, dan jumlah, menjumlahkan tiga bilangan, mencari bilangan awal, serta membuat soal cerita sendiri.",
     "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2 Sub-Bab C)."
   },
@@ -1222,28 +1162,26 @@ export const SUB_C: SubBabNaskah = {
           "id": "K2B2C-V1-1",
           "judul": "Burung hijau dan burung merah",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Ada burung hijau dan burung merah di dahan. Mari kita pahami bersama.",
-            "Burung hijau ada 4 ekor. Burung merah ada 5 ekor. Mari kita pahami bersama.",
+            "Bayangkan kamu sedang mempelajari Soal Cerita Penjumlahan dan Pengurangan. Ada burung hijau dan burung merah di dahan.",
+            "Burung hijau ada 4 ekor. Burung merah ada 5 ekor.",
             "Pasangkan burungnya satu-satu. Burung merah ada satu yang tidak berpasangan.",
-            "Banyak burung hijau 1 kurangnya dari banyak burung merah. Mari kita pahami bersama.",
-            "Banyak burung merah 1 lebihnya dari banyak burung hijau. Mari kita pahami bersama."
+            "Banyak burung hijau 1 kurangnya dari banyak burung merah. Ingat cara Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh."
           ],
           "papan": [
             "Burung di dahan",
             "Hijau 4 • Merah 5",
             "Pasangkan satu-satu",
-            "Hijau 1 kurangnya",
-            "Merah 1 lebihnya"
+            "Hijau 1 kurangnya"
           ]
         },
         {
           "id": "K2B2C-V1-2",
           "judul": "Empat kata kunci",
           "ketukan": [
-            "Ingat empat kata kunci ini: lebihnya, kurangnya, selisih, dan jumlah. Mari kita pahami bersama.",
-            "Jumlah berarti semua digabung, jadi kita menambah. Mari kita pahami bersama.",
+            "Ingat empat kata kunci ini: lebihnya, kurangnya, selisih, dan jumlah.",
+            "Jumlah berarti semua digabung, jadi kita menambah.",
             "Selisih berarti beda banyaknya, jadi bilangan besar dikurangi bilangan kecil.",
-            "Di sini kita memakai ide Part–Part–Whole Story — Cerita penjumlahan/pengurangan memakai bagian dan utuh."
+            "Di sini kita memakai ide Part–Part–Whole Story — Cerita penjumlahan/pengurangan memakai bagian dan utuh. Di sini kita memakai Part–Part–Whole Story. Cerita penjumlahan/pengurangan memakai bagian dan utuh."
           ],
           "papan": [
             "Empat kata kunci",
@@ -1263,10 +1201,10 @@ export const SUB_C: SubBabNaskah = {
           "id": "K2B2C-V2-1",
           "judul": "Donat di meja",
           "ketukan": [
-            "Tika mempunyai 12 donat. Mari kita pahami bersama.",
-            "Malosi mempunyai 5 kurangnya dari banyak donat milik Tika. Mari kita pahami bersama.",
-            "Pertanyaan a, berapa donat milik Malosi. Mari kita pahami bersama.",
-            "Ingat cara Model Batang Cerita: Gambar batang sebelum menulis kalimat."
+            "Tika mempunyai 12 donat.",
+            "Malosi mempunyai 5 kurangnya dari banyak donat milik Tika.",
+            "Pertanyaan a, berapa donat milik Malosi.",
+            "Ingat cara Model Batang Cerita: Gambar batang sebelum menulis kalimat. Ingat cara Model Batang Cerita: Gambar batang sebelum menulis kalimat."
           ],
           "papan": [
             "Tika: 12 donat",
@@ -1279,10 +1217,10 @@ export const SUB_C: SubBabNaskah = {
           "id": "K2B2C-V2-2",
           "judul": "Diketahui dan ditanya",
           "ketukan": [
-            "Langkah pertama, tulis apa yang diketahui. Mari kita pahami bersama.",
-            "Diketahui, Tika punya 12 donat. Malosi punya 5 kurangnya dari Tika. Mari kita pahami bersama.",
-            "Langkah kedua, tulis apa yang ditanya. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Bar Model Story — Gambar batang sebelum menulis kalimat."
+            "Langkah pertama, tulis apa yang diketahui.",
+            "Diketahui, Tika punya 12 donat. Malosi punya 5 kurangnya dari Tika.",
+            "Langkah kedua, tulis apa yang ditanya.",
+            "Di sini kita memakai ide Bar Model Story — Gambar batang sebelum menulis kalimat. Di sini kita memakai Bar Model Story. Gambar batang sebelum menulis kalimat."
           ],
           "papan": [
             "Langkah 1: Diketahui",
@@ -1296,8 +1234,8 @@ export const SUB_C: SubBabNaskah = {
           "judul": "Solusi dan kesimpulan",
           "ketukan": [
             "Langkah ketiga, solusi. Malosi punya 5 kurangnya, jadi kita kurangkan: 12 dikurangi 5 sama dengan 7.",
-            "Jadi, Malosi memiliki 7 donat. Mari kita pahami bersama.",
-            "Untuk jumlah, kita tambahkan: 7 ditambah 12 sama dengan 19. Mari kita pahami bersama.",
+            "Jadi, Malosi memiliki 7 donat.",
+            "Untuk jumlah, kita tambahkan: 7 ditambah 12 sama dengan 19.",
             "METODE LUAR · Model Batang Cerita: Gambar batang sebelum menulis kalimat."
           ],
           "papan": [
@@ -1318,44 +1256,40 @@ export const SUB_C: SubBabNaskah = {
           "id": "K2B2C-V3-1",
           "judul": "Keranjang jeruk Halim",
           "ketukan": [
-            "Halim mempunyai satu keranjang buah jeruk. Mari kita pahami bersama.",
+            "Halim mempunyai satu keranjang buah jeruk.",
             "Halim memberikan 4 jeruk kepada Lili. Sekarang jeruk Halim tersisa 12 buah.",
-            "Berapa banyak jeruk Halim sebelum diberikan kepada Lili. Mari kita pahami bersama.",
-            "Kita tulis: titik-titik dikurangi 4 sama dengan 12. Mari kita pahami bersama.",
-            "Untuk mencarinya, kita balik: 12 ditambah 4 sama dengan 16. Mari kita pahami bersama."
+            "Berapa banyak jeruk Halim sebelum diberikan kepada Lili.",
+            "Kita tulis: titik-titik dikurangi 4 sama dengan 12. Ingat cara Pilih Operasi: Tentukan + atau − dari makna cerita."
           ],
           "papan": [
             "Keranjang jeruk Halim",
             "Diberi 4 • Sisa 12",
             "Jeruk semula = ?",
-            "… − 4 = 12",
-            "12 + 4 = 16"
+            "… − 4 = 12"
           ]
         },
         {
           "id": "K2B2C-V3-2",
           "judul": "Boneka tiga sahabat",
           "ketukan": [
-            "Tika, Kira, dan Lili sedang bermain boneka. Mari kita pahami bersama.",
-            "Tika membawa 5 boneka. Kira membawa 7 boneka. Lili membawa 8 boneka. Mari kita pahami bersama.",
-            "Berapa jumlah semua boneka. Mari kita pahami bersama.",
-            "Jumlahkan dua dulu, boneka Tika dan Kira: 5 ditambah 7 sama dengan 12.",
-            "Lalu tambahkan boneka Lili: 12 ditambah 8 sama dengan 20. Mari kita pahami bersama."
+            "Tika, Kira, dan Lili sedang bermain boneka.",
+            "Tika membawa 5 boneka. Kira membawa 7 boneka. Lili membawa 8 boneka.",
+            "Berapa jumlah semua boneka.",
+            "Jumlahkan dua dulu, boneka Tika dan Kira: 5 ditambah 7 sama dengan 12. Di sini kita memakai Choose Operation. Tentukan + atau − dari makna cerita."
           ],
           "papan": [
             "Tiga sahabat",
             "Tika 5 • Kira 7 • Lili 8",
             "Jumlah semuanya?",
-            "5 + 7 = 12",
-            "12 + 8 = 20"
+            "5 + 7 = 12"
           ]
         },
         {
           "id": "K2B2C-V3-3",
           "judul": "Soal cerita buatan sendiri",
           "ketukan": [
-            "Sekarang giliranmu membuat soal cerita. Mari kita pahami bersama.",
-            "Pilih tokoh, benda, dan kata kunci. Lalu tulis bilangannya. Mari kita pahami bersama.",
+            "Sekarang giliranmu membuat soal cerita.",
+            "Pilih tokoh, benda, dan kata kunci. Lalu tulis bilangannya.",
             "Mintalah temanmu menyelesaikannya dengan diketahui, ditanya, solusi, dan kesimpulan.",
             "METODE LUAR · Pilih Operasi: Tentukan + atau − dari makna cerita."
           ],
@@ -1373,7 +1307,7 @@ export const SUB_C: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Soal Cerita Penjumlahan dan Pengurangan. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Soal Cerita Penjumlahan dan Pengurangan?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -1405,7 +1339,7 @@ export const SUB_C: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -1413,7 +1347,7 @@ export const SUB_C: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -1421,15 +1355,15 @@ export const SUB_C: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -1505,20 +1439,6 @@ export const SUB_C: SubBabNaskah = {
       "countNum": 5,
       "countWord": "Lima",
       "suara": "Tips detektif soal cerita, ada lima. Baca pelan-pelan. Tandai bilangan dan kata kuncinya. Gambar model batang atau jalur bilangan. Hitung dengan cara yang paling mudah. Periksa hasilnya, apakah masuk akal. Cara serupa dipakai anak di Amerika Serikat dengan nama CUBES."
-    },
-    {
-      "judul": "Cerita Bagian–Utuh",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Cerita penjumlahan/pengurangan memakai bagian dan utuh."
-    },
-    {
-      "judul": "Model Batang Cerita",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Gambar batang sebelum menulis kalimat."
     }
   ],
   "games": [
@@ -1528,7 +1448,7 @@ export const SUB_C: SubBabNaskah = {
       "title": "Burung Kata Kunci",
       "bookReference": "hlm. 54 (gambar burung hijau dan burung merah: lebihnya, kurangnya, selisih, jumlah)",
       "objective": "Pakai Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh. Latihan: Menghubungkan kata lebihnya, kurangnya, selisih, dan jumlah dengan benda yang dipasangkan..",
-      "mechanicDescription": "Tiga ronde (4 dan 5, 3 dan 7, 6 dan 9 burung). Burung hijau dan merah dipasangkan satu-satu. Tiap ronde ada empat pertanyaan: lebihnya, kurangnya, selisih, dan jumlah. Burung yang tidak berpasangan atau semua burung menyala sesuai kata kunci. Siswa memilih bilangannya. Saat bermain, terapkan Part–Part–Whole Story: Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
+      "mechanicDescription": "Tiga ronde (4 dan 5, 3 dan 7, 6 dan 9 burung). Burung hijau dan merah dipasangkan satu-satu. Tiap ronde ada empat pertanyaan: lebihnya, kurangnya, selisih, dan jumlah. Burung yang tidak berpasangan atau semua burung menyala sesuai kata kunci. Siswa memilih bilangannya. Saat bermain, ingat Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
       "voiceGuide": "Cerita Bagian–Utuh. Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
       "emoji": "🐦",
       "targetCount": 15
@@ -1539,7 +1459,7 @@ export const SUB_C: SubBabNaskah = {
       "title": "Meja Donat",
       "bookReference": "hlm. 54–55 (Contoh 1: Tika 12 donat, Malosi 5 kurangnya)",
       "objective": "Pakai Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh. Latihan: Membuat banyak benda yang lebih atau kurang dari benda lain, lalu mencari jumlah keduanya..",
-      "mechanicDescription": "Tiga ronde (12 dan 5 kurangnya, 8 dan 4 lebihnya, serta 11 dan 6 kurangnya). Siswa menyeret donat ke piring tokoh kedua sampai banyaknya tepat lebih atau kurang dari piring pertama, lalu menekan periksa. Setelah itu siswa memilih jumlah donat kedua tokoh. Terakhir ucapkan jumlahnya. Saat bermain, terapkan Part–Part–Whole Story: Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
+      "mechanicDescription": "Tiga ronde (12 dan 5 kurangnya, 8 dan 4 lebihnya, serta 11 dan 6 kurangnya). Siswa menyeret donat ke piring tokoh kedua sampai banyaknya tepat lebih atau kurang dari piring pertama, lalu menekan periksa. Setelah itu siswa memilih jumlah donat kedua tokoh. Terakhir ucapkan jumlahnya. Saat bermain, ingat Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
       "voiceGuide": "Cerita Bagian–Utuh. Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
       "emoji": "🍩",
       "targetCount": 20
@@ -1550,7 +1470,7 @@ export const SUB_C: SubBabNaskah = {
       "title": "Keranjang Jeruk Halim",
       "bookReference": "hlm. 55–56 (Contoh 2: Halim memberikan 4 jeruk, sisa 12; berapa jeruk semula?)",
       "objective": "Pakai Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh. Latihan: Mencari bilangan awal dengan mengembalikan benda yang diberikan..",
-      "mechanicDescription": "Tiga ronde (diberi 4 sisa 12, diberi 3 sisa 9, dan diberi 5 sisa 10). Siswa menyeret jeruk dari piring Lili kembali ke keranjang Halim satu per satu, lalu memilih banyak jeruk semula. Layar menunjukkan kalimat titik-titik dikurangi sebanyak yang diberikan sama dengan sisa. Terakhir ucapkan banyak jeruk semula. Saat bermain, terapkan Part–Part–Whole Story: Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
+      "mechanicDescription": "Tiga ronde (diberi 4 sisa 12, diberi 3 sisa 9, dan diberi 5 sisa 10). Siswa menyeret jeruk dari piring Lili kembali ke keranjang Halim satu per satu, lalu memilih banyak jeruk semula. Layar menunjukkan kalimat titik-titik dikurangi sebanyak yang diberikan sama dengan sisa. Terakhir ucapkan banyak jeruk semula. Saat bermain, ingat Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
       "voiceGuide": "Cerita Bagian–Utuh. Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
       "emoji": "🍊",
       "targetCount": 16
@@ -1561,7 +1481,7 @@ export const SUB_C: SubBabNaskah = {
       "title": "Boneka Tiga Sahabat",
       "bookReference": "hlm. 56 (Contoh 3: Tika 5, Kira 7, Lili 8 boneka; jumlah semua?) dan hlm. 57 (Ayo Berlatih nomor 2)",
       "objective": "Pakai Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh. Latihan: Menjumlahkan tiga kelompok benda dengan menggabungkan dua kelompok dulu, lalu kelompok ketiga..",
-      "mechanicDescription": "Tiga ronde (5, 7, 8; 4, 9, 6; serta 3, 8, 7 boneka). Siswa mengetuk dua kelompok untuk digabung, memilih jumlah keduanya, lalu menggabungkan dengan kelompok ketiga dan memilih jumlah semuanya. Ada petunjuk bila dua kelompok berjumlah sepuluh. Terakhir ucapkan jumlah semuanya. Saat bermain, terapkan Part–Part–Whole Story: Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
+      "mechanicDescription": "Tiga ronde (5, 7, 8; 4, 9, 6; serta 3, 8, 7 boneka). Siswa mengetuk dua kelompok untuk digabung, memilih jumlah keduanya, lalu menggabungkan dengan kelompok ketiga dan memilih jumlah semuanya. Ada petunjuk bila dua kelompok berjumlah sepuluh. Terakhir ucapkan jumlah semuanya. Saat bermain, ingat Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
       "voiceGuide": "Cerita Bagian–Utuh. Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
       "emoji": "🧸",
       "targetCount": 20
@@ -1571,9 +1491,9 @@ export const SUB_C: SubBabNaskah = {
       "gameType": "bar-model-story",
       "title": "Model Batang Cerita",
       "bookReference": "hlm. 54–55 (gambar burung dan Contoh 1), diperkaya model batang dari Singapura",
-      "objective": "Menggambarkan cerita dengan model batang untuk menemukan bilangan yang dicari dan jumlahnya.. Ingat Cerita Bagian–Utuh.",
+      "objective": "Menggambarkan cerita dengan model batang untuk menemukan bilangan yang dicari dan jumlahnya.. Ingat Cerita Bagian–Utuh. (Cerita Bagian–Utuh)",
       "mechanicDescription": "Tiga ronde (8 dan 3 lebihnya, 13 dan 6 kurangnya, serta 7 dan 5 lebihnya). Model batang dua tokoh digambar dengan bagian lebihnya atau kurangnya. Siswa memilih bilangan batang yang bertanda tanya, lalu memilih jumlah kedua batang. Gunakan Cerita Bagian–Utuh.",
-      "voiceGuide": "Cerita Bagian–Utuh. Lihat batangnya, lalu pilih bilangan yang bertanda tanya.",
+      "voiceGuide": "Cerita Bagian–Utuh. Mainkan dengan teliti.",
       "diagramType": "bar-model-compare",
       "numberA": 13,
       "numberB": 6
@@ -1583,9 +1503,9 @@ export const SUB_C: SubBabNaskah = {
       "gameType": "order-solution-flow",
       "title": "Susun Alur Penyelesaian",
       "bookReference": "hlm. 55–56 (Penyelesaian: diketahui, ditanya, solusi, kesimpulan)",
-      "objective": "Menyusun empat langkah penyelesaian soal cerita dengan urutan yang benar.. Ingat Cerita Bagian–Utuh.",
+      "objective": "Menyusun empat langkah penyelesaian soal cerita dengan urutan yang benar.. Ingat Cerita Bagian–Utuh. (Cerita Bagian–Utuh)",
       "mechanicDescription": "Tiga ronde (donat Tika dan Malosi, jeruk Halim, dan boneka tiga sahabat). Empat kartu langkah teracak. Siswa mengetuk kartu berurutan: diketahui, ditanya, solusi, kesimpulan. Kartu masuk ke diagram alur dengan panah. Gunakan Cerita Bagian–Utuh.",
-      "voiceGuide": "Cerita Bagian–Utuh. Ketuk kartu sesuai urutan: diketahui, ditanya, solusi, kesimpulan.",
+      "voiceGuide": "Cerita Bagian–Utuh. Mainkan dengan teliti.",
       "diagramType": "flow-four-steps",
       "numberA": 20,
       "numberB": 4
@@ -1595,9 +1515,9 @@ export const SUB_C: SubBabNaskah = {
       "gameType": "choose-direction-and-hop",
       "title": "Panah di Jalur Bilangan",
       "bookReference": "hlm. 54–58 (soal cerita lebihnya, kurangnya, dan sisa), diperkaya jalur bilangan kosong",
-      "objective": "Menentukan arah lompatan (maju atau mundur) dari kalimat cerita, lalu melompat dan membaca hasilnya.. Ingat Cerita Bagian–Utuh.",
+      "objective": "Menentukan arah lompatan (maju atau mundur) dari kalimat cerita, lalu melompat dan membaca hasilnya.. Ingat Cerita Bagian–Utuh. (Cerita Bagian–Utuh)",
       "mechanicDescription": "Tiga ronde (14 mendapat 5 lagi, 18 dimakan 6, dan 9 dengan 7 lebihnya). Siswa membaca cerita, memilih arah maju atau mundur, lalu mengetuk kotak jalur bilangan sebanyak lompatan dan menekan Berhenti. Terakhir ucapkan hasilnya. Gunakan Cerita Bagian–Utuh.",
-      "voiceGuide": "Cerita Bagian–Utuh. Pilih arah, lalu lompat di jalur bilangan.",
+      "voiceGuide": "Cerita Bagian–Utuh. Mainkan dengan teliti.",
       "diagramType": "number-strip-direction",
       "numberA": 20,
       "numberB": 7
@@ -1607,9 +1527,9 @@ export const SUB_C: SubBabNaskah = {
       "gameType": "sort-keyword-to-sign",
       "title": "Kata Kunci Jadi Tanda",
       "bookReference": "hlm. 54 (lebihnya, kurangnya, selisih, jumlah) dan hlm. 55–56 (memilih operasi pada solusi)",
-      "objective": "Menentukan tanda tambah atau kurang dari kalimat cerita pendek.. Ingat Cerita Bagian–Utuh.",
+      "objective": "Menentukan tanda tambah atau kurang dari kalimat cerita pendek.. Ingat Cerita Bagian–Utuh. (Cerita Bagian–Utuh)",
       "mechanicDescription": "Dua ronde, masing-masing empat kartu kalimat. Siswa mengetuk kartu lalu kotak tambah atau kotak kurang. Kata kunci pada kartu diberi warna. Kartu yang salah meluncur kembali disertai petunjuk. Gunakan Cerita Bagian–Utuh.",
-      "voiceGuide": "Cerita Bagian–Utuh. Ketuk kartu, lalu pilih tambah atau kurang.",
+      "voiceGuide": "Cerita Bagian–Utuh. Mainkan dengan teliti.",
       "symbolLarge": "+  −",
       "wordLarge": "KATA KUNCI",
       "mathNotation": "jumlah +  • selisih −"
@@ -1619,9 +1539,9 @@ export const SUB_C: SubBabNaskah = {
       "gameType": "report-four-steps",
       "title": "Laporan Detektif Cerita",
       "bookReference": "hlm. 57–58 (Ayo Berlatih nomor 1, 2, dan 3: diketahui, ditanya, solusi, jadi)",
-      "objective": "Mengisi laporan diketahui, ditanya, solusi, dan kesimpulan untuk satu soal cerita.. Ingat Cerita Bagian–Utuh.",
+      "objective": "Mengisi laporan diketahui, ditanya, solusi, dan kesimpulan untuk satu soal cerita.. Ingat Cerita Bagian–Utuh. (Cerita Bagian–Utuh)",
       "mechanicDescription": "Tiga ronde (selisih mainan, kupu-kupu di tiga tempat, dan kelereng Upe dan Halim). Tiap ronde ada empat langkah. Siswa memilih satu dari tiga jawaban untuk diketahui, ditanya, solusi, dan kesimpulan. Jawaban yang salah memuat jebakan kata lebihnya. Gunakan Cerita Bagian–Utuh.",
-      "voiceGuide": "Cerita Bagian–Utuh. Pilih jawaban untuk tiap langkah laporan.",
+      "voiceGuide": "Cerita Bagian–Utuh. Mainkan dengan teliti.",
       "symbolLarge": "11 − 3 = 8",
       "wordLarge": "LAPORAN DETEKTIF",
       "mathNotation": "diketahui • ditanya • solusi • jadi"
@@ -1631,9 +1551,9 @@ export const SUB_C: SubBabNaskah = {
       "gameType": "story-builder",
       "title": "Pencipta Soal Cerita",
       "bookReference": "hlm. 56 (Ayo Mencoba: buat soal cerita) dan hlm. 63 (Ayo Berkarya: buat satu soal cerita)",
-      "objective": "Menyusun soal cerita sendiri dengan tokoh, benda, kata kunci, dan bilangan, lalu menyelesaikannya.. Ingat Cerita Bagian–Utuh.",
+      "objective": "Menyusun soal cerita sendiri dengan tokoh, benda, kata kunci, dan bilangan, lalu menyelesaikannya.. Ingat Cerita Bagian–Utuh. (Cerita Bagian–Utuh)",
       "mechanicDescription": "Dua ronde. Ronde 1 soal penjumlahan dengan kata lebihnya. Ronde 2 soal pengurangan dengan kata kurangnya. Siswa memilih tokoh, benda, dan bilangan. Soal tersusun otomatis, lalu siswa memilih jawabannya. Batas: hasil tidak lebih dari 20 dan tidak kurang dari 0. Gunakan Cerita Bagian–Utuh.",
-      "voiceGuide": "Cerita Bagian–Utuh. Pilih tokoh, benda, dan bilangan, lalu selesaikan soalmu.",
+      "voiceGuide": "Cerita Bagian–Utuh. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "SOAL BUATANKU",
       "mathNotation": "tokoh • benda • kata kunci • bilangan"
@@ -1645,12 +1565,6 @@ export const SUB_C: SubBabNaskah = {
       "nama": "Empat kata kunci",
       "isi": "lebihnya • kurangnya • selisih • jumlah",
       "suara": "Empat kata kunci soal cerita adalah lebihnya, kurangnya, selisih, dan jumlah. Jumlah berarti menambah. Selisih berarti bilangan besar dikurangi bilangan kecil. Untuk lebihnya dan kurangnya, baca dulu siapa yang punya lebih banyak."
-    },
-    {
-      "ikon": "🪜",
-      "nama": "Empat langkah",
-      "isi": "diketahui, ditanya, solusi, kesimpulan",
-      "suara": "Selesaikan soal cerita dengan empat langkah berurutan. Diketahui, ditanya, solusi, dan kesimpulan."
     },
     {
       "ikon": "🌍",
@@ -1693,11 +1607,11 @@ export const SUB_C: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Cerita Bagian–Utuh pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Cerita Bagian–Utuh pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Cerita Bagian–Utuh membantumu memahami soal?",
-    "Kapan kamu memakai Model Batang Cerita?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Cerita Bagian–Utuh membantumu?",
+    "Kapan memakai Model Batang Cerita?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {

@@ -15,7 +15,7 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Menghitung, Membaca, Menulis)",
       "fullTitle": "Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan sampai 20",
-      "targetDescription": "Siswa menghitung banyak benda sampai 20 dengan korespondensi satu-satu dan strategi sepuluh dulu, membaca dan menulis lambang serta nama bilangan 11 sampai 20, menyatakan bilangan 11 sampai 20 sebagai sepuluh ditambah satuannya, mengenali letaknya pada garis bilangan, serta memperkirakan banyak benda lalu membuktikannya dengan menghitung. Memakai Hitung sampai 20, Sepuluh dan Satuan, Dua Bingkai Sepuluh.",
+      "targetDescription": "Siswa menghitung banyak benda sampai 20 dengan korespondensi satu-satu dan strategi sepuluh dulu, membaca dan menulis lambang serta nama bilangan 11 sampai 20, menyatakan bilangan 11 sampai 20 sebagai sepuluh ditambah satuannya, mengenali letaknya pada garis bilangan, serta memperkirakan banyak benda lalu membuktikannya dengan menghitung. Memakai Hitung sampai 20, Sepuluh dan Satuan, Dua Bingkai Sepuluh. Memakai Hitung sampai 20, Sepuluh dan Satuan, Dua Bingkai Sepuluh.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
@@ -24,37 +24,37 @@
           "id": "A5-S1",
           "titleHint": "Merapikan Mainan",
           "sceneType": "merapikan-mainan",
-          "voiceNarration": "Merapikan mainan! Halim dan Malosi selesai bermain kelereng. Mereka merapikan kelerengnya. Halim menghitung banyak kelereng: sembilan, sepuluh, sebelas, dan seterusnya. Lalu kelereng disimpan ke dalam stoples. Halim selalu ingat pesan Ibu: selesai bermain, rapikan mainanmu. Sekarang, berapa banyak kelereng Halim? Ayo kita bantu Halim menghitungnya. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh."
+          "voiceNarration": "Merapikan mainan! Halim dan Malosi selesai bermain kelereng. Mereka merapikan kelerengnya. Halim menghitung banyak kelereng: sembilan, sepuluh, sebelas, dan seterusnya. Lalu kelereng disimpan ke dalam stoples. Halim selalu ingat pesan Ibu: selesai bermain, rapikan mainanmu. Sekarang, berapa banyak kelereng Halim? Ayo kita bantu Halim menghitungnya. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A5-S2",
           "titleHint": "Sepuluh Dulu, Lalu Sisanya",
           "sceneType": "sepuluh-dulu",
-          "voiceNarration": "Igil punya cara menghitung yang rapi. Isi dulu kotak dengan sepuluh kelereng sampai penuh. Kotak yang penuh berisi sepuluh, kita tidak perlu menghitungnya lagi. Ada satu kelereng di luar kotak. Sepuluh ditambah satu menjadi sebelas. Jadi kelereng ini sebelas. Sebelas artinya sepuluh dan satu lagi. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa."
+          "voiceNarration": "Igil punya cara menghitung yang rapi. Isi dulu kotak dengan sepuluh kelereng sampai penuh. Kotak yang penuh berisi sepuluh, kita tidak perlu menghitungnya lagi. Ada satu kelereng di luar kotak. Sepuluh ditambah satu menjadi sebelas. Jadi kelereng ini sebelas. Sebelas artinya sepuluh dan satu lagi. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A5-S3",
           "titleHint": "Sampai Lima Belas",
           "sceneType": "sampai-lima-belas",
-          "voiceNarration": "Halim terus menghitung kelereng di luar kotak. Sebelas, dua belas, tiga belas, empat belas, lima belas. Kotak berisi sepuluh, di luar kotak ada lima. Sepuluh ditambah lima menjadi lima belas. Ternyata Halim mempunyai lima belas kelereng. Perhatikan nama bilangannya. Setelah sebelas dan dua belas, nama bilangan memakai kata belas: tiga belas, empat belas, lima belas. Belas berarti sepuluh dan beberapa lagi. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20."
+          "voiceNarration": "Halim terus menghitung kelereng di luar kotak. Sebelas, dua belas, tiga belas, empat belas, lima belas. Kotak berisi sepuluh, di luar kotak ada lima. Sepuluh ditambah lima menjadi lima belas. Ternyata Halim mempunyai lima belas kelereng. Perhatikan nama bilangannya. Setelah sebelas dan dua belas, nama bilangan memakai kata belas: tiga belas, empat belas, lima belas. Belas berarti sepuluh dan beberapa lagi. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A5-S4",
           "titleHint": "Dua Kotak Penuh, Dua Puluh",
           "sceneType": "dua-puluh",
-          "voiceNarration": "Bagaimana kalau kelerengnya lebih banyak? Enam belas, tujuh belas, delapan belas, sembilan belas. Kalau kelereng di luar kotak sudah sepuluh, isi satu kotak lagi sampai penuh. Dua kotak penuh berarti sepuluh ditambah sepuluh. Hasilnya dua puluh. Dua puluh adalah bilangan terbesar yang kita pelajari di bab ini. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh."
+          "voiceNarration": "Bagaimana kalau kelerengnya lebih banyak? Enam belas, tujuh belas, delapan belas, sembilan belas. Kalau kelereng di luar kotak sudah sepuluh, isi satu kotak lagi sampai penuh. Dua kotak penuh berarti sepuluh ditambah sepuluh. Hasilnya dua puluh. Dua puluh adalah bilangan terbesar yang kita pelajari di bab ini. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A5-S5",
           "titleHint": "Siapa Lebih Banyak?",
           "sceneType": "membandingkan-benda",
-          "voiceNarration": "Kira dan Wei mengambil benda di sekitar mereka, lebih dari sepuluh. Kira mengambil tiga belas, Wei mengambil lima belas. Mereka menghitung dan menulis hasilnya di buku. Lalu mereka membandingkan. Benda siapa yang lebih banyak? Bagaimana kamu tahu? Kita bisa membandingkan lewat sepuluh dan sisanya. Sepuluh sama, sisa Wei lima, sisa Kira tiga. Lima lebih banyak dari tiga, jadi benda Wei lebih banyak. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa."
+          "voiceNarration": "Kira dan Wei mengambil benda di sekitar mereka, lebih dari sepuluh. Kira mengambil tiga belas, Wei mengambil lima belas. Mereka menghitung dan menulis hasilnya di buku. Lalu mereka membandingkan. Benda siapa yang lebih banyak? Bagaimana kamu tahu? Kita bisa membandingkan lewat sepuluh dan sisanya. Sepuluh sama, sisa Wei lima, sisa Kira tiga. Lima lebih banyak dari tiga, jadi benda Wei lebih banyak. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A5-S6",
           "titleHint": "Tebak dan Buktikan",
           "sceneType": "tebak-dan-buktikan",
-          "voiceNarration": "Tika melihat stoples penuh kelereng. Berapa banyak isinya? Tebak dulu! Kita boleh menebak atau mengira-ngira banyak benda. Setelah itu, hitung kelerengnya untuk membuktikan tebakanmu. Tebakan yang meleset tidak apa-apa. Menebak lalu membuktikan melatih kemampuan berhitung. Pernahkah kamu salah menghitung? Biasanya karena ada yang terhitung dua kali, atau terlewat. Tandai setiap benda yang sudah kamu hitung. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20."
+          "voiceNarration": "Tika melihat stoples penuh kelereng. Berapa banyak isinya? Tebak dulu! Kita boleh menebak atau mengira-ngira banyak benda. Setelah itu, hitung kelerengnya untuk membuktikan tebakanmu. Tebakan yang meleset tidak apa-apa. Menebak lalu membuktikan melatih kemampuan berhitung. Pernahkah kamu salah menghitung? Biasanya karena ada yang terhitung dua kali, atau terlewat. Tandai setiap benda yang sudah kamu hitung. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Siap? Ketuk suara guru jika ingin mendengar lagi."
         }
       ],
       "mindMaps": [
@@ -68,24 +68,24 @@
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. Isi Sepuluh Dulu",
-          "stepDesc": "Kumpulkan sepuluh benda dalam satu kotak, bingkai sepuluh, atau satu lingkaran. Sepuluh yang penuh dianggap satu kelompok, jadi tidak perlu dihitung dari awal lagi. Cara ini mirip menggabung satuan menjadi satu puluhan.",
+          "stepTitle": "2. Count to 20",
+          "stepDesc": "Lanjut hitung melewati sepuluh.",
           "icon": "📦",
           "flowFrom": "Hitung satu per satu",
           "flowTo": "Kelompok sepuluh"
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Count to 20",
-          "stepDesc": "Lanjut hitung melewati sepuluh.",
+          "stepTitle": "3. Ten and Ones",
+          "stepDesc": "11–20 sebagai 10 + sisa.",
           "icon": "➕",
           "flowFrom": "Kelompok sepuluh",
           "flowTo": "Sepuluh ditambah sisa"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Ten and Ones",
-          "stepDesc": "11–20 sebagai 10 + sisa.",
+          "stepTitle": "4. Double Ten Frame",
+          "stepDesc": "Dua bingkai untuk bilangan 11–20.",
           "icon": "🗣️",
           "flowFrom": "Sepuluh ditambah sisa",
           "flowTo": "Lambang dan nama bilangan"
@@ -214,25 +214,25 @@
           "title": "Isi Kotak Sepuluh",
           "emoji": "📦",
           "targetCount": 18,
-          "voiceGuide": "Hitung sampai 20. Seret kelereng ke kotak sepuluh sampai penuh, lalu taruh sisanya di luar kotak. Ucapkan banyak kelereng seluruhnya."
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Seret kelereng ke kotak sepuluh sampai penuh, lalu taruh sisanya di luar kotak. Ucapkan banyak kelereng seluruhnya.. Lanjut hitung melewati sepuluh."
         },
         {
           "title": "Hitung Satu per Satu",
           "emoji": "🔢",
           "targetCount": 17,
-          "voiceGuide": "Sepuluh dan Satuan. Ketuk setiap benda satu kali sambil menyebut bilangannya. Bilangan terakhir adalah jumlah semuanya."
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Ketuk setiap benda satu kali sambil menyebut bilangannya. Bilangan terakhir adalah jumlah semuanya.. 11–20 sebagai 10 + sisa."
         },
         {
           "title": "Ikat Sepuluh Pensil",
           "emoji": "🎀",
           "targetCount": 19,
-          "voiceGuide": "Dua Bingkai Sepuluh. Pilih tepat sepuluh pensil lalu ikat. Hitung pensil yang tidak diikat. Ucapkan jumlah seluruhnya."
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Pilih tepat sepuluh pensil lalu ikat. Hitung pensil yang tidak diikat. Ucapkan jumlah seluruhnya.. Dua bingkai untuk bilangan 11–20."
         },
         {
           "title": "Tebak Isi Stoples",
           "emoji": "🫙",
           "targetCount": 15,
-          "voiceGuide": "Hitung sampai 20. Tebak banyak kelereng di stoples, lalu hitung untuk membuktikan. Ucapkan banyak kelereng sebenarnya."
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Tebak banyak kelereng di stoples, lalu hitung untuk membuktikan. Ucapkan banyak kelereng sebenarnya.. Lanjut hitung melewati sepuluh."
         }
       ],
       "pictorialSlides": [
@@ -241,21 +241,21 @@
           "diagramType": "double-ten-frame",
           "numberA": 10,
           "numberB": 9,
-          "caption": "Pakai Hitung sampai 20. Warnai bulatan merah di dua bingkai sepuluh sebanyak yang diminta. Bingkai pertama penuh, sisanya di bingkai kedua."
+          "caption": "Pakai Hitung sampai 20. Pakai Hitung sampai 20. Warnai bulatan merah di dua bingkai sepuluh sebanyak yang diminta. Bingkai pertama penuh, sisanya di bingkai kedua."
         },
         {
           "title": "Jodohkan Gambar dan Pasangan",
           "diagramType": "number-bond-match",
           "numberA": 10,
           "numberB": 8,
-          "caption": "Pakai Sepuluh dan Satuan. Jodohkan gambar dua bingkai dengan bagan pasangan bilangan yang cocok."
+          "caption": "Pakai Sepuluh dan Satuan. Pakai Sepuluh dan Satuan. Jodohkan gambar dua bingkai dengan bagan pasangan bilangan yang cocok."
         },
         {
           "title": "Loncat di Garis Bilangan",
           "diagramType": "number-line-hop",
           "numberA": 10,
           "numberB": 8,
-          "caption": "Pakai Dua Bingkai Sepuluh. Mulai dari sepuluh, melompat ke kanan satu langkah setiap kali sampai jumlah lompatan cukup."
+          "caption": "Pakai Dua Bingkai Sepuluh. Pakai Dua Bingkai Sepuluh. Mulai dari sepuluh, melompat ke kanan satu langkah setiap kali sampai jumlah lompatan cukup."
         }
       ],
       "abstractSlides": [
@@ -263,19 +263,19 @@
           "symbolLarge": "10 + 8 = 18",
           "wordLarge": "SEPULUH DITAMBAH",
           "mathNotation": "10 + 3 = 13 • 10 + 7 = 17 • 10 + 8 = 18",
-          "voiceReadout": "Hitung sampai 20. Sepuluh ditambah tiga menjadi tiga belas. Sepuluh ditambah tujuh menjadi tujuh belas. Sepuluh ditambah delapan menjadi delapan belas."
+          "voiceReadout": "Hitung sampai 20. Hitung sampai 20. Sepuluh ditambah tiga menjadi tiga belas. Sepuluh ditambah tujuh menjadi tujuh belas. Sepuluh ditambah delapan menjadi delapan belas.. Lanjut hitung melewati sepuluh."
         },
         {
           "symbolLarge": "Siapa aku?",
           "wordLarge": "DETEKTIF BILANGAN",
           "mathNotation": "setelah 14 → 15 • sebelum 20 → 19",
-          "voiceReadout": "Sepuluh dan Satuan. Baca petunjuk, lalu temukan bilangan misterius. Bilangan setelah empat belas adalah lima belas. Bilangan sebelum dua puluh adalah sembilan belas."
+          "voiceReadout": "Sepuluh dan Satuan. Sepuluh dan Satuan. Baca petunjuk, lalu temukan bilangan misterius. Bilangan setelah empat belas adalah lima belas. Bilangan sebelum dua puluh adalah sembilan belas.. 11–20 sebagai 10 + sisa."
         },
         {
           "symbolLarge": "12",
           "wordLarge": "DUA BELAS",
           "mathNotation": "12 = 10 + 2 • 15 = 10 + 5 • 20 = 10 + 10",
-          "voiceReadout": "Dua Bingkai Sepuluh. Baca nama bilangan, ucapkan, lalu guratkan lambangnya di kanvas. Dua belas ditulis dengan angka satu dan angka dua."
+          "voiceReadout": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Baca nama bilangan, ucapkan, lalu guratkan lambangnya di kanvas. Dua belas ditulis dengan angka satu dan angka dua.. Dua bingkai untuk bilangan 11–20."
         }
       ],
       "interactiveGames": [
@@ -286,9 +286,9 @@
           "gameType": "drag-fill-ten",
           "title": "Isi Kotak Sepuluh",
           "bookReference": "Buku Siswa hlm. 147–149",
-          "objective": "Pakai Hitung sampai 20. Menghitung banyak benda dengan strategi sepuluh dulu: mengisi kotak sepuluh sampai penuh, lalu menaruh sisanya di luar kotak.",
-          "mechanicDescription": "Tiga ronde (12, 15, dan 18 kelereng). Siswa menyeret kelereng ke kotak sepuluh sampai penuh, baru ke luar kotak, lalu melihat kalimat 10 + sisa = jumlah. Terakhir ucapkan banyak kelereng seluruhnya. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Seret kelereng ke kotak sepuluh sampai penuh, lalu taruh sisanya di luar."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Menghitung banyak benda dengan strategi sepuluh dulu: mengisi kotak sepuluh sampai penuh, lalu menaruh sisanya di luar kotak.",
+          "mechanicDescription": "Tiga ronde (12, 15, dan 18 kelereng). Siswa menyeret kelereng ke kotak sepuluh sampai penuh, baru ke luar kotak, lalu melihat kalimat 10 + sisa = jumlah. Terakhir ucapkan banyak kelereng seluruhnya. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Seret kelereng ke kotak sepuluh sampai penuh, lalu taruh sisanya di luar."
         },
         {
           "gameId": "subA5-game-2",
@@ -297,9 +297,9 @@
           "gameType": "tap-count",
           "title": "Hitung Satu per Satu",
           "bookReference": "Buku Siswa hlm. 148–149, 153",
-          "objective": "Pakai Sepuluh dan Satuan. Menghitung benda satu-satu tanpa terlewat dan tanpa terhitung dua kali; bilangan terakhir menyatakan jumlah.",
-          "mechanicDescription": "Tiga ronde (11 bola, 14 mobil, 17 apel). Siswa mengetuk benda satu kali, benda diberi angka, sepuluh pertama bertepi hijau, sisanya biru. Lalu memilih jumlah semuanya. Terakhir ucapkan jumlahnya. Terapkan Ten and Ones.",
-          "voiceGuide": "Sepuluh dan Satuan. Ketuk setiap benda satu kali sambil menyebut bilangannya."
+          "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Menghitung benda satu-satu tanpa terlewat dan tanpa terhitung dua kali; bilangan terakhir menyatakan jumlah.",
+          "mechanicDescription": "Tiga ronde (11 bola, 14 mobil, 17 apel). Siswa mengetuk benda satu kali, benda diberi angka, sepuluh pertama bertepi hijau, sisanya biru. Lalu memilih jumlah semuanya. Terakhir ucapkan jumlahnya. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Ketuk setiap benda satu kali sambil menyebut bilangannya."
         },
         {
           "gameId": "subA5-game-3",
@@ -308,9 +308,9 @@
           "gameType": "select-bundle",
           "title": "Ikat Sepuluh Pensil",
           "bookReference": "Buku Siswa hlm. 153 (Lingkari setiap 10 benda); pengayaan bundling Dienes dan Montessori",
-          "objective": "Pakai Dua Bingkai Sepuluh. Mengelompokkan tepat sepuluh benda menjadi satu ikat lalu menghitung sisanya.",
-          "mechanicDescription": "Tiga ronde (13, 16, dan 19 pensil). Siswa memilih tepat sepuluh pensil lalu menekan Ikat Sepuluh, kemudian memilih banyak pensil yang tidak diikat. Terakhir ucapkan jumlah seluruhnya. Terapkan Double Ten Frame.",
-          "voiceGuide": "Dua Bingkai Sepuluh. Pilih tepat sepuluh pensil, ikat, lalu hitung sisanya."
+          "objective": "Pakai Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Pakai Dua Bingkai Sepuluh. Mengelompokkan tepat sepuluh benda menjadi satu ikat lalu menghitung sisanya.",
+          "mechanicDescription": "Tiga ronde (13, 16, dan 19 pensil). Siswa memilih tepat sepuluh pensil lalu menekan Ikat Sepuluh, kemudian memilih banyak pensil yang tidak diikat. Terakhir ucapkan jumlah seluruhnya. Terapkan Double Ten Frame. Saat bermain, terapkan Double Ten Frame: Dua bingkai untuk bilangan 11–20.",
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Pilih tepat sepuluh pensil, ikat, lalu hitung sisanya."
         },
         {
           "gameId": "subA5-game-4",
@@ -319,9 +319,9 @@
           "gameType": "estimate-and-count",
           "title": "Tebak Isi Stoples",
           "bookReference": "Buku Siswa hlm. 156–158 (Memperkirakan Banyak Benda, Ayo Bermain)",
-          "objective": "Pakai Hitung sampai 20. Menebak banyak benda, membuktikan dengan menghitung, lalu membandingkan tebakan dengan hitungan.",
-          "mechanicDescription": "Tiga ronde (12, 17, dan 15 kelereng). Siswa mengatur tebakan dengan tombol plus dan minus, menghitung kelereng satu per satu, lalu melihat selisih tebakan dan hitungan. Terakhir ucapkan banyak kelereng sebenarnya. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Atur tebakanmu, lalu hitung kelereng untuk membuktikan."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Menebak banyak benda, membuktikan dengan menghitung, lalu membandingkan tebakan dengan hitungan.",
+          "mechanicDescription": "Tiga ronde (12, 17, dan 15 kelereng). Siswa mengatur tebakan dengan tombol plus dan minus, menghitung kelereng satu per satu, lalu melihat selisih tebakan dan hitungan. Terakhir ucapkan banyak kelereng sebenarnya. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Atur tebakanmu, lalu hitung kelereng untuk membuktikan."
         },
         {
           "gameId": "subA5-game-5",
@@ -330,9 +330,9 @@
           "gameType": "color-ten-frames",
           "title": "Warnai Dua Bingkai",
           "bookReference": "Buku Siswa hlm. 154 (nomor 4)",
-          "objective": "Pakai Sepuluh dan Satuan. Mewarnai bulatan pada dua bingkai sepuluh sebanyak yang diminta.",
-          "mechanicDescription": "Tiga ronde (13, 16, dan 19 bulatan). Siswa mengetuk kotak untuk mewarnai, lalu menekan Periksa. Setelah benar, sepuluh pertama berwarna merah dan sisanya biru. Terakhir ucapkan banyak bulatan yang diwarnai. Terapkan Ten and Ones.",
-          "voiceGuide": "Sepuluh dan Satuan. Ketuk kotak untuk mewarnai, lalu tekan Periksa."
+          "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Mewarnai bulatan pada dua bingkai sepuluh sebanyak yang diminta.",
+          "mechanicDescription": "Tiga ronde (13, 16, dan 19 bulatan). Siswa mengetuk kotak untuk mewarnai, lalu menekan Periksa. Setelah benar, sepuluh pertama berwarna merah dan sisanya biru. Terakhir ucapkan banyak bulatan yang diwarnai. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Ketuk kotak untuk mewarnai, lalu tekan Periksa."
         },
         {
           "gameId": "subA5-game-6",
@@ -341,9 +341,9 @@
           "gameType": "match-diagram",
           "title": "Jodohkan Gambar dan Pasangan",
           "bookReference": "Buku Siswa hlm. 152 (nomor 1: tarik garis, temukan pasangan)",
-          "objective": "Pakai Dua Bingkai Sepuluh. Menjodohkan gambar dua bingkai dengan bagan pasangan bilangan.",
-          "mechanicDescription": "Dua ronde, masing-masing tiga pasang. Siswa mengetuk gambar di kiri lalu bagan di kanan. Terakhir ucapkan bilangan terbesar pada ronde terakhir. Terapkan Double Ten Frame.",
-          "voiceGuide": "Dua Bingkai Sepuluh. Ketuk gambar dua bingkai lalu bagan pasangan yang cocok."
+          "objective": "Pakai Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Pakai Dua Bingkai Sepuluh. Menjodohkan gambar dua bingkai dengan bagan pasangan bilangan.",
+          "mechanicDescription": "Dua ronde, masing-masing tiga pasang. Siswa mengetuk gambar di kiri lalu bagan di kanan. Terakhir ucapkan bilangan terbesar pada ronde terakhir. Terapkan Double Ten Frame. Saat bermain, terapkan Double Ten Frame: Dua bingkai untuk bilangan 11–20.",
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Ketuk gambar dua bingkai lalu bagan pasangan yang cocok."
         },
         {
           "gameId": "subA5-game-7",
@@ -352,9 +352,9 @@
           "gameType": "number-line-hop",
           "title": "Loncat di Garis Bilangan",
           "bookReference": "Buku Siswa hlm. 148–150 (pasangan bilangan); pengayaan garis bilangan",
-          "objective": "Pakai Hitung sampai 20. Melompat dari 10 di garis bilangan sebanyak sisanya dan mendarat di bilangan yang tepat.",
-          "mechanicDescription": "Tiga ronde (3, 6, dan 8 lompatan dari 10). Siswa mengetuk bilangan berikutnya di sebelah kanan, satu langkah setiap lompatan. Terakhir ucapkan bilangan tempat mendarat. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Ketuk bilangan berikutnya di kanan, satu lompatan satu langkah."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Melompat dari 10 di garis bilangan sebanyak sisanya dan mendarat di bilangan yang tepat.",
+          "mechanicDescription": "Tiga ronde (3, 6, dan 8 lompatan dari 10). Siswa mengetuk bilangan berikutnya di sebelah kanan, satu langkah setiap lompatan. Terakhir ucapkan bilangan tempat mendarat. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Ketuk bilangan berikutnya di kanan, satu lompatan satu langkah."
         },
         {
           "gameId": "subA5-game-8",
@@ -363,9 +363,9 @@
           "gameType": "fill-equation",
           "title": "Isi Kalimat Bilangan",
           "bookReference": "Buku Siswa hlm. 155 (nomor 5 dan 6)",
-          "objective": "Pakai Sepuluh dan Satuan. Melengkapi kalimat 10 ditambah sekian menjadi sekian, termasuk kalimat yang bagian tengahnya hilang.",
-          "mechanicDescription": "Lima ronde. Dua kalimat kata, tiga persamaan, satu di antaranya mencari bagian yang hilang. Siswa mengetuk angka yang benar. Terakhir ucapkan hasilnya. Terapkan Ten and Ones.",
-          "voiceGuide": "Sepuluh dan Satuan. Ketuk angka yang melengkapi kalimat bilangan."
+          "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Melengkapi kalimat 10 ditambah sekian menjadi sekian, termasuk kalimat yang bagian tengahnya hilang.",
+          "mechanicDescription": "Lima ronde. Dua kalimat kata, tiga persamaan, satu di antaranya mencari bagian yang hilang. Siswa mengetuk angka yang benar. Terakhir ucapkan hasilnya. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Ketuk angka yang melengkapi kalimat bilangan."
         },
         {
           "gameId": "subA5-game-9",
@@ -374,9 +374,9 @@
           "gameType": "clue-detective",
           "title": "Detektif Bilangan Misterius",
           "bookReference": "Buku Siswa pengayaan (membaca dan menulis bilangan)",
-          "objective": "Pakai Dua Bingkai Sepuluh. Menalar bilangan dari petunjuk berupa urutan, nama, dan sepuluh ditambah satuan.",
-          "mechanicDescription": "Empat ronde dengan dua petunjuk tiap ronde. Siswa memilih bilangan yang cocok dengan semua petunjuk. Terakhir ucapkan bilangan itu. Terapkan Double Ten Frame.",
-          "voiceGuide": "Dua Bingkai Sepuluh. Baca petunjuk lalu pilih bilangan yang cocok."
+          "objective": "Pakai Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Pakai Dua Bingkai Sepuluh. Menalar bilangan dari petunjuk berupa urutan, nama, dan sepuluh ditambah satuan.",
+          "mechanicDescription": "Empat ronde dengan dua petunjuk tiap ronde. Siswa memilih bilangan yang cocok dengan semua petunjuk. Terakhir ucapkan bilangan itu. Terapkan Double Ten Frame. Saat bermain, terapkan Double Ten Frame: Dua bingkai untuk bilangan 11–20.",
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Baca petunjuk lalu pilih bilangan yang cocok."
         },
         {
           "gameId": "subA5-game-10",
@@ -385,9 +385,9 @@
           "gameType": "say-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa hlm. 148–150 (lambang dan nama bilangan)",
-          "objective": "Pakai Hitung sampai 20. Membaca nama bilangan, mengucapkannya, dan menulis lambangnya dengan dua angka.",
-          "mechanicDescription": "Dua ronde. Ronde 1 dua belas. Ronde 2 siswa memilih sendiri lima belas, tujuh belas, atau dua puluh. Siswa mengucapkan nama bilangan lalu menggurat lambangnya. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Baca nama bilangan, ucapkan, lalu guratkan lambangnya."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Membaca nama bilangan, mengucapkannya, dan menulis lambangnya dengan dua angka.",
+          "mechanicDescription": "Dua ronde. Ronde 1 dua belas. Ronde 2 siswa memilih sendiri lima belas, tujuh belas, atau dua puluh. Siswa mengucapkan nama bilangan lalu menggurat lambangnya. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Baca nama bilangan, ucapkan, lalu guratkan lambangnya."
         }
       ],
       "metodeLuar": [
@@ -431,7 +431,7 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Menghitung Maju dan Mundur)",
       "fullTitle": "Sub-Bab B: Menghitung Maju dan Mundur",
-      "targetDescription": "Siswa menghitung maju dari bilangan kecil ke besar dan menghitung mundur dari bilangan besar ke kecil dengan langkah yang sama pada bilangan sampai 20, menemukan bilangan yang hilang pada deret, menyebutkan bilangan sebelum, sesudah, dan di antara, melengkapi kisi bilangan 1 sampai 20, serta menunjukkan maju dan mundur pada garis bilangan. Memakai Hitung sampai 20, Sepuluh dan Satuan, Dua Bingkai Sepuluh.",
+      "targetDescription": "Siswa menghitung maju dari bilangan kecil ke besar dan menghitung mundur dari bilangan besar ke kecil dengan langkah yang sama pada bilangan sampai 20, menemukan bilangan yang hilang pada deret, menyebutkan bilangan sebelum, sesudah, dan di antara, melengkapi kisi bilangan 1 sampai 20, serta menunjukkan maju dan mundur pada garis bilangan. Memakai Hitung sampai 20, Sepuluh dan Satuan, Dua Bingkai Sepuluh. Memakai Hitung sampai 20, Sepuluh dan Satuan, Dua Bingkai Sepuluh.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#16A34A",
       "secondaryText": "#14532D",
@@ -440,31 +440,31 @@
           "id": "B5-S1",
           "titleHint": "Barisan Kelereng Halim",
           "sceneType": "barisan-kelereng",
-          "voiceNarration": "Barisan kelereng Halim! Halim menyusun kelerengnya berderet. Baris merah ada sepuluh, baris kuning sebelas, baris biru dua belas, baris hijau tiga belas, baris merah muda empat belas, dan baris ungu lima belas. Perhatikan, setiap baris lebih banyak satu kelereng daripada baris di bawahnya. Ingatkah kamu cara Halim menghitung kelerengnya? Halim menghitung satu per satu, dan bilangannya terus bertambah satu. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh."
+          "voiceNarration": "Barisan kelereng Halim! Halim menyusun kelerengnya berderet. Baris merah ada sepuluh, baris kuning sebelas, baris biru dua belas, baris hijau tiga belas, baris merah muda empat belas, dan baris ungu lima belas. Perhatikan, setiap baris lebih banyak satu kelereng daripada baris di bawahnya. Ingatkah kamu cara Halim menghitung kelerengnya? Halim menghitung satu per satu, dan bilangannya terus bertambah satu. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "B5-S2",
           "titleHint": "Menghitung Maju",
           "sceneType": "menghitung-maju",
-          "voiceNarration": "Malosi menaiki tangga bilangan. Dia mulai dari anak tangga sepuluh. Naik satu anak tangga, sebelas. Naik lagi, dua belas. Lalu tiga belas, empat belas, dan lima belas. Malosi menghitung maju. Menghitung maju artinya mulai dari bilangan kecil menuju bilangan besar, dan langkahnya sama, yaitu satu demi satu. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa."
+          "voiceNarration": "Malosi menaiki tangga bilangan. Dia mulai dari anak tangga sepuluh. Naik satu anak tangga, sebelas. Naik lagi, dua belas. Lalu tiga belas, empat belas, dan lima belas. Malosi menghitung maju. Menghitung maju artinya mulai dari bilangan kecil menuju bilangan besar, dan langkahnya sama, yaitu satu demi satu. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "B5-S3",
           "titleHint": "Menghitung Mundur",
           "sceneType": "menghitung-mundur",
-          "voiceNarration": "Sekarang Kira menuruni tangga yang sama. Dia mulai dari anak tangga lima belas. Turun satu anak tangga, empat belas. Turun lagi, tiga belas, dua belas, sebelas, dan sepuluh. Kira menghitung mundur. Menghitung mundur artinya mulai dari bilangan besar menuju bilangan kecil, dan langkahnya juga sama, yaitu satu demi satu. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20."
+          "voiceNarration": "Sekarang Kira menuruni tangga yang sama. Dia mulai dari anak tangga lima belas. Turun satu anak tangga, empat belas. Turun lagi, tiga belas, dua belas, sebelas, dan sepuluh. Kira menghitung mundur. Menghitung mundur artinya mulai dari bilangan besar menuju bilangan kecil, dan langkahnya juga sama, yaitu satu demi satu. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "B5-S4",
           "titleHint": "Ulat Bilangan yang Hilang",
           "sceneType": "ulat-bilangan",
-          "voiceNarration": "Wei bertemu ulat bilangan. Badan ulat bertuliskan sepuluh, sebelas, lalu ada satu bulatan yang kosong, dan tiga belas. Bilangan apa yang hilang? Wei menghitung maju dari sepuluh. Sepuluh, sebelas, dua belas, tiga belas. Bilangan yang hilang adalah dua belas, yaitu satu lebih dari sebelas dan satu kurang dari tiga belas. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh."
+          "voiceNarration": "Wei bertemu ulat bilangan. Badan ulat bertuliskan sepuluh, sebelas, lalu ada satu bulatan yang kosong, dan tiga belas. Bilangan apa yang hilang? Wei menghitung maju dari sepuluh. Sepuluh, sebelas, dua belas, tiga belas. Bilangan yang hilang adalah dua belas, yaitu satu lebih dari sebelas dan satu kurang dari tiga belas. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "B5-S5",
           "titleHint": "Kisi Bilangan 1 sampai 20",
           "sceneType": "kisi-bilangan",
-          "voiceNarration": "Tika dan Halim membuat kisi bilangan satu sampai dua puluh. Setiap baris berisi lima bilangan. Kalau kita membaca dari kiri ke kanan, kita menghitung maju. Kalau kita membaca dari kanan ke kiri, kita menghitung mundur. Beberapa kotak masih kosong. Ayo kita temukan bilangan yang hilang dengan menghitung maju atau mundur dari bilangan di sebelahnya. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa."
+          "voiceNarration": "Tika dan Halim membuat kisi bilangan satu sampai dua puluh. Setiap baris berisi lima bilangan. Kalau kita membaca dari kiri ke kanan, kita menghitung maju. Kalau kita membaca dari kanan ke kiri, kita menghitung mundur. Beberapa kotak masih kosong. Ayo kita temukan bilangan yang hilang dengan menghitung maju atau mundur dari bilangan di sebelahnya. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         }
       ],
       "mindMaps": [
@@ -478,24 +478,24 @@
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. Hitung Maju",
-          "stepDesc": "Mulai dari bilangan kecil, lalu naik ke bilangan yang lebih besar. Langkahnya sama, satu demi satu: sepuluh, sebelas, dua belas, tiga belas. Kamu boleh mulai dari bilangan mana saja, tidak harus dari satu atau sepuluh.",
+          "stepTitle": "2. Count to 20",
+          "stepDesc": "Lanjut hitung melewati sepuluh.",
           "icon": "⬆️",
           "flowFrom": "Satu lebih, satu kurang",
           "flowTo": "Hitung maju"
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Count to 20",
-          "stepDesc": "Lanjut hitung melewati sepuluh.",
+          "stepTitle": "3. Ten and Ones",
+          "stepDesc": "11–20 sebagai 10 + sisa.",
           "icon": "⬇️",
           "flowFrom": "Hitung maju",
           "flowTo": "Hitung mundur"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Ten and Ones",
-          "stepDesc": "11–20 sebagai 10 + sisa.",
+          "stepTitle": "4. Double Ten Frame",
+          "stepDesc": "Dua bingkai untuk bilangan 11–20.",
           "icon": "🔎",
           "flowFrom": "Hitung mundur",
           "flowTo": "Temukan yang hilang"
@@ -609,25 +609,25 @@
           "title": "Barisan Kelereng Halim",
           "emoji": "🔵",
           "targetCount": 18,
-          "voiceGuide": "Hitung sampai 20. Ambil kelereng dari nampan satu per satu untuk menghitung maju. Ambil kelereng paling ujung satu per satu untuk menghitung mundur. Ucapkan banyak kelereng di baris."
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Ambil kelereng dari nampan satu per satu untuk menghitung maju. Ambil kelereng paling ujung satu per satu untuk menghitung mundur. Ucapkan banyak kelereng di baris.. Lanjut hitung melewati sepuluh."
         },
         {
           "title": "Ulat Bilangan",
           "emoji": "🐛",
           "targetCount": 20,
-          "voiceGuide": "Sepuluh dan Satuan. Pilih kartu angka yang pas dan taruh di badan ulat yang kosong. Langkahnya sama. Ucapkan bilangan yang paling besar di badan ulat."
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Pilih kartu angka yang pas dan taruh di badan ulat yang kosong. Langkahnya sama. Ucapkan bilangan yang paling besar di badan ulat.. 11–20 sebagai 10 + sisa."
         },
         {
           "title": "Roket Hitung Mundur",
           "emoji": "🚀",
           "targetCount": 15,
-          "voiceGuide": "Dua Bingkai Sepuluh. Padamkan lampu berurutan, mulai dari bilangan paling besar, satu kurang setiap kali. Ucapkan bilangan lampu yang terakhir padam."
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Padamkan lampu berurutan, mulai dari bilangan paling besar, satu kurang setiap kali. Ucapkan bilangan lampu yang terakhir padam.. Dua bingkai untuk bilangan 11–20."
         },
         {
           "title": "Susun Es Krim",
           "emoji": "🍦",
           "targetCount": 16,
-          "voiceGuide": "Hitung sampai 20. Tukar tempat es krim sampai berurutan maju atau mundur. Ucapkan bilangan es krim yang paling kanan."
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Tukar tempat es krim sampai berurutan maju atau mundur. Ucapkan bilangan es krim yang paling kanan.. Lanjut hitung melewati sepuluh."
         }
       ],
       "pictorialSlides": [
@@ -636,21 +636,21 @@
           "diagramType": "number-line-fill",
           "numberA": 12,
           "numberB": 19,
-          "caption": "Pakai Hitung sampai 20. Isi bilangan yang hilang pada garis bilangan. Menghitung maju berjalan ke kanan, menghitung mundur berjalan ke kiri."
+          "caption": "Pakai Hitung sampai 20. Pakai Hitung sampai 20. Isi bilangan yang hilang pada garis bilangan. Menghitung maju berjalan ke kanan, menghitung mundur berjalan ke kiri."
         },
         {
           "title": "Kisi Dua Puluh",
           "diagramType": "grid-20",
           "numberA": 1,
           "numberB": 20,
-          "caption": "Pakai Sepuluh dan Satuan. Lengkapi kisi bilangan satu sampai dua puluh. Ke kanan berarti maju, ke kiri berarti mundur."
+          "caption": "Pakai Sepuluh dan Satuan. Pakai Sepuluh dan Satuan. Lengkapi kisi bilangan satu sampai dua puluh. Ke kanan berarti maju, ke kiri berarti mundur."
         },
         {
           "title": "Warnai Langkahnya",
           "diagramType": "circle-strip",
           "numberA": 20,
           "numberB": 14,
-          "caption": "Pakai Dua Bingkai Sepuluh. Mulai dari lingkaran bertanda bintang, lalu warnai satu lingkaran untuk setiap langkah maju atau mundur."
+          "caption": "Pakai Dua Bingkai Sepuluh. Pakai Dua Bingkai Sepuluh. Mulai dari lingkaran bertanda bintang, lalu warnai satu lingkaran untuk setiap langkah maju atau mundur."
         }
       ],
       "abstractSlides": [
@@ -658,19 +658,19 @@
           "symbolLarge": "13, 14, 15, ?",
           "wordLarge": "MESIN DERET",
           "mathNotation": "maju: 13, 14, 15, 16 • mundur: 18, 17, 16, 15",
-          "voiceReadout": "Hitung sampai 20. Lihat dua bilangan pertama pada deret. Kalau makin besar, deret itu maju. Kalau makin kecil, deret itu mundur. Lalu lanjutkan deretnya."
+          "voiceReadout": "Hitung sampai 20. Hitung sampai 20. Lihat dua bilangan pertama pada deret. Kalau makin besar, deret itu maju. Kalau makin kecil, deret itu mundur. Lalu lanjutkan deretnya.. Lanjut hitung melewati sepuluh."
         },
         {
           "symbolLarge": "14 ◀ 15 ▶ 16",
           "wordLarge": "TETANGGA BILANGAN",
           "mathNotation": "sebelum 15 → 14 • sesudah 15 → 16 • di antara 12 dan 14 → 13",
-          "voiceReadout": "Sepuluh dan Satuan. Bilangan sebelum lima belas adalah empat belas. Bilangan sesudah lima belas adalah enam belas. Tiga belas ada di antara dua belas dan empat belas."
+          "voiceReadout": "Sepuluh dan Satuan. Sepuluh dan Satuan. Bilangan sebelum lima belas adalah empat belas. Bilangan sesudah lima belas adalah enam belas. Tiga belas ada di antara dua belas dan empat belas.. 11–20 sebagai 10 + sisa."
         },
         {
           "symbolLarge": "10, 11, ?, 13",
           "wordLarge": "DUA BELAS",
           "mathNotation": "12 = satu lebih dari 11 • 12 = satu kurang dari 13",
-          "voiceReadout": "Dua Bingkai Sepuluh. Temukan bilangan yang hilang, ucapkan namanya, lalu guratkan lambangnya di kanvas. Dua belas ditulis dengan angka satu dan angka dua."
+          "voiceReadout": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Temukan bilangan yang hilang, ucapkan namanya, lalu guratkan lambangnya di kanvas. Dua belas ditulis dengan angka satu dan angka dua.. Dua bingkai untuk bilangan 11–20."
         }
       ],
       "interactiveGames": [
@@ -681,9 +681,9 @@
           "gameType": "add-remove-row",
           "title": "Barisan Kelereng Halim",
           "bookReference": "Buku Siswa hlm. 158 (Ingatkah kalian cara Halim menghitung kelerengnya?)",
-          "objective": "Pakai Hitung sampai 20. Menghitung maju dengan menambah satu kelereng setiap langkah dan menghitung mundur dengan mengambil satu kelereng setiap langkah.",
-          "mechanicDescription": "Tiga ronde (maju 10 ke 13, mundur 15 ke 12, maju 14 ke 18). Siswa mengambil kelereng dari nampan ke ujung baris, atau mengambil kelereng paling ujung, sambil menyebut bilangan. Terakhir ucapkan banyak kelereng di baris. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Ambil kelereng satu per satu dan sebut bilangan berikutnya."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Menghitung maju dengan menambah satu kelereng setiap langkah dan menghitung mundur dengan mengambil satu kelereng setiap langkah.",
+          "mechanicDescription": "Tiga ronde (maju 10 ke 13, mundur 15 ke 12, maju 14 ke 18). Siswa mengambil kelereng dari nampan ke ujung baris, atau mengambil kelereng paling ujung, sambil menyebut bilangan. Terakhir ucapkan banyak kelereng di baris. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Ambil kelereng satu per satu dan sebut bilangan berikutnya."
         },
         {
           "gameId": "subB5-game-2",
@@ -692,9 +692,9 @@
           "gameType": "place-missing-cards",
           "title": "Ulat Bilangan",
           "bookReference": "Buku Siswa hlm. 159 (Ayo Berlatih nomor 1)",
-          "objective": "Pakai Sepuluh dan Satuan. Melengkapi urutan bilangan pada badan ulat dengan kartu angka, maju dan mundur.",
-          "mechanicDescription": "Tiga ronde (10 11 _ 13, 15 14 _ _, 17 _ 19 _). Siswa memilih kartu angka lalu menaruhnya di badan ulat yang kosong, atau menyeretnya. Terakhir ucapkan bilangan terbesar di badan ulat. Terapkan Ten and Ones.",
-          "voiceGuide": "Sepuluh dan Satuan. Pilih kartu angka yang pas, lalu taruh di badan ulat yang kosong."
+          "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Melengkapi urutan bilangan pada badan ulat dengan kartu angka, maju dan mundur.",
+          "mechanicDescription": "Tiga ronde (10 11 _ 13, 15 14 _ _, 17 _ 19 _). Siswa memilih kartu angka lalu menaruhnya di badan ulat yang kosong, atau menyeretnya. Terakhir ucapkan bilangan terbesar di badan ulat. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Pilih kartu angka yang pas, lalu taruh di badan ulat yang kosong."
         },
         {
           "gameId": "subB5-game-3",
@@ -703,9 +703,9 @@
           "gameType": "sequential-countdown",
           "title": "Roket Hitung Mundur",
           "bookReference": "Buku Siswa hlm. 158-159 (menghitung mundur); pengayaan hitung mundur peluncuran roket",
-          "objective": "Pakai Dua Bingkai Sepuluh. Menghitung mundur berurutan dari bilangan terbesar, satu kurang setiap kali.",
-          "mechanicDescription": "Tiga ronde (12 ke 8, 17 ke 13, 19 ke 15). Siswa mengetuk lampu berurutan dari bilangan terbesar sambil menyebutnya, lalu roket meluncur. Terakhir ucapkan bilangan lampu yang terakhir padam. Terapkan Double Ten Frame.",
-          "voiceGuide": "Dua Bingkai Sepuluh. Padamkan lampu berurutan, mulai dari bilangan paling besar."
+          "objective": "Pakai Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Pakai Dua Bingkai Sepuluh. Menghitung mundur berurutan dari bilangan terbesar, satu kurang setiap kali.",
+          "mechanicDescription": "Tiga ronde (12 ke 8, 17 ke 13, 19 ke 15). Siswa mengetuk lampu berurutan dari bilangan terbesar sambil menyebutnya, lalu roket meluncur. Terakhir ucapkan bilangan lampu yang terakhir padam. Terapkan Double Ten Frame. Saat bermain, terapkan Double Ten Frame: Dua bingkai untuk bilangan 11–20.",
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Padamkan lampu berurutan, mulai dari bilangan paling besar."
         },
         {
           "gameId": "subB5-game-4",
@@ -714,9 +714,9 @@
           "gameType": "swap-to-order",
           "title": "Susun Es Krim",
           "bookReference": "Buku Siswa hlm. 160 (Ayo Berlatih nomor 2)",
-          "objective": "Pakai Hitung sampai 20. Mengurutkan bilangan maju (kecil ke besar) dan mundur (besar ke kecil) dengan menukar tempat.",
-          "mechanicDescription": "Tiga ronde (maju 15 sampai 19, mundur 14 sampai 10, mundur 20 sampai 16). Siswa mengetuk dua es krim untuk menukar tempat sampai berurutan. Terakhir ucapkan bilangan es krim paling kanan. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Ketuk dua es krim untuk bertukar tempat sampai berurutan."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Mengurutkan bilangan maju (kecil ke besar) dan mundur (besar ke kecil) dengan menukar tempat.",
+          "mechanicDescription": "Tiga ronde (maju 15 sampai 19, mundur 14 sampai 10, mundur 20 sampai 16). Siswa mengetuk dua es krim untuk menukar tempat sampai berurutan. Terakhir ucapkan bilangan es krim paling kanan. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Ketuk dua es krim untuk bertukar tempat sampai berurutan."
         },
         {
           "gameId": "subB5-game-5",
@@ -725,9 +725,9 @@
           "gameType": "fill-number-line",
           "title": "Isi Garis Bilangan",
           "bookReference": "Buku Siswa hlm. 159-160; pengayaan garis bilangan kosong",
-          "objective": "Pakai Sepuluh dan Satuan. Mengisi bilangan yang hilang pada garis bilangan sambil memahami arah maju ke kanan dan mundur ke kiri.",
-          "mechanicDescription": "Tiga ronde (10 sampai 16 maju, 14 sampai 18 mundur, 12 sampai 19 maju). Siswa mengetuk tanda tanya lalu memilih bilangan yang pas. Terakhir ucapkan bilangan yang paling kanan. Terapkan Ten and Ones.",
-          "voiceGuide": "Sepuluh dan Satuan. Ketuk tanda tanya, lalu pilih bilangan yang hilang."
+          "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Mengisi bilangan yang hilang pada garis bilangan sambil memahami arah maju ke kanan dan mundur ke kiri.",
+          "mechanicDescription": "Tiga ronde (10 sampai 16 maju, 14 sampai 18 mundur, 12 sampai 19 maju). Siswa mengetuk tanda tanya lalu memilih bilangan yang pas. Terakhir ucapkan bilangan yang paling kanan. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Ketuk tanda tanya, lalu pilih bilangan yang hilang."
         },
         {
           "gameId": "subB5-game-6",
@@ -736,9 +736,9 @@
           "gameType": "fill-grid-bank",
           "title": "Kisi Dua Puluh",
           "bookReference": "Buku Siswa hlm. 160 (Ayo Berlatih nomor 3)",
-          "objective": "Pakai Dua Bingkai Sepuluh. Melengkapi kisi bilangan 1 sampai 20 dari bank angka.",
-          "mechanicDescription": "Tiga ronde dengan 4, 6, dan 8 kotak kosong. Siswa mengetuk kotak kosong lalu bilangan di bank angka. Pada ronde terakhir satu kotak bersinar dan siswa mengucapkan bilangannya. Terapkan Double Ten Frame.",
-          "voiceGuide": "Dua Bingkai Sepuluh. Ketuk kotak kosong, lalu pilih bilangan dari bank angka."
+          "objective": "Pakai Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Pakai Dua Bingkai Sepuluh. Melengkapi kisi bilangan 1 sampai 20 dari bank angka.",
+          "mechanicDescription": "Tiga ronde dengan 4, 6, dan 8 kotak kosong. Siswa mengetuk kotak kosong lalu bilangan di bank angka. Pada ronde terakhir satu kotak bersinar dan siswa mengucapkan bilangannya. Terapkan Double Ten Frame. Saat bermain, terapkan Double Ten Frame: Dua bingkai untuk bilangan 11–20.",
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Ketuk kotak kosong, lalu pilih bilangan dari bank angka."
         },
         {
           "gameId": "subB5-game-7",
@@ -747,9 +747,9 @@
           "gameType": "color-path",
           "title": "Warnai Langkahnya",
           "bookReference": "Buku Siswa hlm. 159-160; pengayaan garis bilangan",
-          "objective": "Pakai Hitung sampai 20. Mewarnai lingkaran sebanyak langkah maju atau mundur dari titik mulai.",
-          "mechanicDescription": "Tiga ronde (maju 4 langkah dari 12, mundur 5 langkah dari 18, mundur 6 langkah dari 20). Siswa mewarnai lingkaran berurutan lalu menekan Periksa. Terakhir ucapkan bilangan tempat berhenti. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Warnai satu lingkaran untuk setiap langkah, lalu tekan Periksa."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Mewarnai lingkaran sebanyak langkah maju atau mundur dari titik mulai.",
+          "mechanicDescription": "Tiga ronde (maju 4 langkah dari 12, mundur 5 langkah dari 18, mundur 6 langkah dari 20). Siswa mewarnai lingkaran berurutan lalu menekan Periksa. Terakhir ucapkan bilangan tempat berhenti. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Warnai satu lingkaran untuk setiap langkah, lalu tekan Periksa."
         },
         {
           "gameId": "subB5-game-8",
@@ -758,9 +758,9 @@
           "gameType": "direction-and-continue",
           "title": "Mesin Deret",
           "bookReference": "Buku Siswa hlm. 159 (menghitung maju dan mundur)",
-          "objective": "Pakai Sepuluh dan Satuan. Menentukan arah deret (maju atau mundur) lalu melanjutkan deret dengan bilangan berikutnya.",
-          "mechanicDescription": "Lima ronde. Setiap ronde dua langkah: memilih maju atau mundur, lalu memilih bilangan yang melanjutkan deret. Terakhir ucapkan bilangan lanjutan. Terapkan Ten and Ones.",
-          "voiceGuide": "Sepuluh dan Satuan. Pilih maju atau mundur, lalu pilih bilangan berikutnya."
+          "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Menentukan arah deret (maju atau mundur) lalu melanjutkan deret dengan bilangan berikutnya.",
+          "mechanicDescription": "Lima ronde. Setiap ronde dua langkah: memilih maju atau mundur, lalu memilih bilangan yang melanjutkan deret. Terakhir ucapkan bilangan lanjutan. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Pilih maju atau mundur, lalu pilih bilangan berikutnya."
         },
         {
           "gameId": "subB5-game-9",
@@ -769,9 +769,9 @@
           "gameType": "neighbors",
           "title": "Tetangga Bilangan",
           "bookReference": "Buku Siswa pengayaan (satu lebih, satu kurang, sebelum, sesudah, di antara)",
-          "objective": "Pakai Dua Bingkai Sepuluh. Menemukan bilangan sebelum, sesudah, di antara, satu lebih, dan satu kurang.",
-          "mechanicDescription": "Lima ronde dengan tiga kotak bertetangga. Siswa memilih bilangan yang cocok dengan soal. Terakhir ucapkan bilangan itu. Terapkan Double Ten Frame.",
-          "voiceGuide": "Dua Bingkai Sepuluh. Baca soalnya, lalu pilih bilangan yang cocok."
+          "objective": "Pakai Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Pakai Dua Bingkai Sepuluh. Menemukan bilangan sebelum, sesudah, di antara, satu lebih, dan satu kurang.",
+          "mechanicDescription": "Lima ronde dengan tiga kotak bertetangga. Siswa memilih bilangan yang cocok dengan soal. Terakhir ucapkan bilangan itu. Terapkan Double Ten Frame. Saat bermain, terapkan Double Ten Frame: Dua bingkai untuk bilangan 11–20.",
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Baca soalnya, lalu pilih bilangan yang cocok."
         },
         {
           "gameId": "subB5-game-10",
@@ -780,9 +780,9 @@
           "gameType": "say-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa hlm. 159-160 (bilangan yang hilang pada deret)",
-          "objective": "Pakai Hitung sampai 20. Menemukan bilangan yang hilang, mengucapkan namanya, dan menulis lambangnya dengan dua angka.",
-          "mechanicDescription": "Dua ronde. Ronde 1 deret 10 11 _ 13. Ronde 2 siswa memilih satu dari tiga deret. Siswa mengucapkan bilangan yang hilang lalu menggurat lambangnya. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Temukan bilangan yang hilang, ucapkan, lalu guratkan lambangnya."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Menemukan bilangan yang hilang, mengucapkan namanya, dan menulis lambangnya dengan dua angka.",
+          "mechanicDescription": "Dua ronde. Ronde 1 deret 10 11 _ 13. Ronde 2 siswa memilih satu dari tiga deret. Siswa mengucapkan bilangan yang hilang lalu menggurat lambangnya. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Temukan bilangan yang hilang, ucapkan, lalu guratkan lambangnya."
         }
       ],
       "metodeLuar": [
@@ -826,7 +826,7 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Nilai Tempat)",
       "fullTitle": "Sub-Bab C: Nilai Tempat Puluhan dan Satuan",
-      "targetDescription": "Siswa menyatakan sepuluh benda yang digabungkan sebagai satu puluhan dan benda yang tersisa sebagai satuan, mengisi tabel nilai tempat puluhan dan satuan, membaca angka kiri sebagai puluhan dan angka kanan sebagai satuan, menulis kalimat nilai tempat bilangan 10 sampai 20, serta memahami bahwa angka yang sama dapat bernilai berbeda menurut tempatnya. Memakai Hitung sampai 20, Sepuluh dan Satuan, Dua Bingkai Sepuluh.",
+      "targetDescription": "Siswa menyatakan sepuluh benda yang digabungkan sebagai satu puluhan dan benda yang tersisa sebagai satuan, mengisi tabel nilai tempat puluhan dan satuan, membaca angka kiri sebagai puluhan dan angka kanan sebagai satuan, menulis kalimat nilai tempat bilangan 10 sampai 20, serta memahami bahwa angka yang sama dapat bernilai berbeda menurut tempatnya. Memakai Hitung sampai 20, Sepuluh dan Satuan, Dua Bingkai Sepuluh. Memakai Hitung sampai 20, Sepuluh dan Satuan, Dua Bingkai Sepuluh.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
@@ -835,37 +835,37 @@
           "id": "C5-S1",
           "titleHint": "Kantong Sepuluh Kelereng",
           "sceneType": "kantong-kelereng",
-          "voiceNarration": "Halim punya lima belas kelereng. Dapatkah kamu menemukan pasangan bilangan dari lima belas? Halim memasukkan sepuluh kelereng ke dalam satu kantong. Sepuluh kelereng yang digabungkan disebut satu puluhan. Masih ada lima kelereng di luar kantong. Satu kelereng disebut satu satuan, jadi lima kelereng adalah lima satuan. Nilai tempat lima belas adalah satu puluhan dan lima satuan. Sepuluh dan lima menjadi lima belas. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh."
+          "voiceNarration": "Halim punya lima belas kelereng. Dapatkah kamu menemukan pasangan bilangan dari lima belas? Halim memasukkan sepuluh kelereng ke dalam satu kantong. Sepuluh kelereng yang digabungkan disebut satu puluhan. Masih ada lima kelereng di luar kantong. Satu kelereng disebut satu satuan, jadi lima kelereng adalah lima satuan. Nilai tempat lima belas adalah satu puluhan dan lima satuan. Sepuluh dan lima menjadi lima belas. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "C5-S2",
           "titleHint": "Sepuluh Pensil Diikat",
           "sceneType": "ikat-pensil",
-          "voiceNarration": "Kira mengikat sepuluh pensil menjadi satu ikat. Satu ikat berisi sepuluh pensil, itulah satu puluhan. Kira masih punya tiga pensil yang tidak diikat. Tiga pensil itu adalah tiga satuan. Jadi satu puluhan dan tiga satuan sama dengan tiga belas. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa."
+          "voiceNarration": "Kira mengikat sepuluh pensil menjadi satu ikat. Satu ikat berisi sepuluh pensil, itulah satu puluhan. Kira masih punya tiga pensil yang tidak diikat. Tiga pensil itu adalah tiga satuan. Jadi satu puluhan dan tiga satuan sama dengan tiga belas. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "C5-S3",
           "titleHint": "Menara Sepuluh Balok",
           "sceneType": "menara-balok",
-          "voiceNarration": "Wei menyusun balok menjadi satu menara. Menara itu berisi sepuluh balok, jadi satu puluhan. Di sebelahnya ada empat balok lepas, jadi empat satuan. Satu puluhan dan empat satuan sama dengan empat belas. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20."
+          "voiceNarration": "Wei menyusun balok menjadi satu menara. Menara itu berisi sepuluh balok, jadi satu puluhan. Di sebelahnya ada empat balok lepas, jadi empat satuan. Satu puluhan dan empat satuan sama dengan empat belas. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "C5-S4",
           "titleHint": "Ayo Mencoba: Ikat Lidi",
           "sceneType": "ayo-mencoba-lidi",
-          "voiceNarration": "Ayo mencoba bersama Tika! Tika membawa lidi. Dia mengambil sepuluh lidi lalu mengikatnya. Dia menghitung lidi yang tidak diikat, ada dua. Tika menulis hasilnya di tabel: satu puluhan dan dua satuan sama dengan dua belas. Lalu dia menyampaikan hasilnya kepada temannya. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh."
+          "voiceNarration": "Ayo mencoba bersama Tika! Tika membawa lidi. Dia mengambil sepuluh lidi lalu mengikatnya. Dia menghitung lidi yang tidak diikat, ada dua. Tika menulis hasilnya di tabel: satu puluhan dan dua satuan sama dengan dua belas. Lalu dia menyampaikan hasilnya kepada temannya. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "C5-S5",
           "titleHint": "Papan Nilai Tempat",
           "sceneType": "papan-nilai-tempat",
-          "voiceNarration": "Ini papan nilai tempat. Papan ini punya dua kolom, puluhan dan satuan. Bilangan dua angka ditulis dengan dua angka. Angka di sebelah kiri menunjukkan banyak puluhan. Angka di sebelah kanan menunjukkan banyak satuan. Pada lima belas, angka satu di kiri berarti satu puluhan, dan angka lima di kanan berarti lima satuan. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa."
+          "voiceNarration": "Ini papan nilai tempat. Papan ini punya dua kolom, puluhan dan satuan. Bilangan dua angka ditulis dengan dua angka. Angka di sebelah kiri menunjukkan banyak puluhan. Angka di sebelah kanan menunjukkan banyak satuan. Pada lima belas, angka satu di kiri berarti satu puluhan, dan angka lima di kanan berarti lima satuan. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "C5-S6",
           "titleHint": "Angka Sama, Nilai Berbeda",
           "sceneType": "angka-sama-nilai-berbeda",
-          "voiceNarration": "Kira melihat bilangan sebelas. Ada dua angka satu, tetapi nilainya berbeda! Angka satu di sebelah kiri berada di tempat puluhan, jadi nilainya sepuluh. Angka satu di sebelah kanan berada di tempat satuan, jadi nilainya satu. Angka yang sama bisa punya nilai berbeda, tergantung tempatnya. Sepuluh dan satu menjadi sebelas. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20."
+          "voiceNarration": "Kira melihat bilangan sebelas. Ada dua angka satu, tetapi nilainya berbeda! Angka satu di sebelah kiri berada di tempat puluhan, jadi nilainya sepuluh. Angka satu di sebelah kanan berada di tempat satuan, jadi nilainya satu. Angka yang sama bisa punya nilai berbeda, tergantung tempatnya. Sepuluh dan satu menjadi sebelas. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Siap? Ketuk suara guru jika ingin mendengar lagi."
         }
       ],
       "mindMaps": [
@@ -879,24 +879,24 @@
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. Hitung Satuan",
-          "stepDesc": "Benda yang tidak ikut diikat berdiri sendiri. Satu benda disebut satu satuan. Hitung berapa banyak benda yang lepas itu. Banyaknya selalu kurang dari sepuluh.",
+          "stepTitle": "2. Count to 20",
+          "stepDesc": "Lanjut hitung melewati sepuluh.",
           "icon": "🔢",
           "flowFrom": "Satu puluhan",
           "flowTo": "Satuan"
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Count to 20",
-          "stepDesc": "Lanjut hitung melewati sepuluh.",
+          "stepTitle": "3. Ten and Ones",
+          "stepDesc": "11–20 sebagai 10 + sisa.",
           "icon": "📋",
           "flowFrom": "Satuan",
           "flowTo": "Tabel nilai tempat"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Ten and Ones",
-          "stepDesc": "11–20 sebagai 10 + sisa.",
+          "stepTitle": "4. Double Ten Frame",
+          "stepDesc": "Dua bingkai untuk bilangan 11–20.",
           "icon": "🔍",
           "flowFrom": "Tabel nilai tempat",
           "flowTo": "Membaca angka"
@@ -1025,25 +1025,25 @@
           "title": "Sortir ke Papan Nilai Tempat",
           "emoji": "🧺",
           "targetCount": 15,
-          "voiceGuide": "Hitung sampai 20. Seret ikatan sepuluh ke kolom puluhan dan benda lepas ke kolom satuan. Ucapkan banyak benda seluruhnya."
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Seret ikatan sepuluh ke kolom puluhan dan benda lepas ke kolom satuan. Ucapkan banyak benda seluruhnya.. Lanjut hitung melewati sepuluh."
         },
         {
           "title": "Tukar Sepuluh",
           "emoji": "🔁",
           "targetCount": 20,
-          "voiceGuide": "Sepuluh dan Satuan. Pilih sepuluh kubus satuan lalu tukar dengan satu batang puluhan. Ucapkan banyak kubus seluruhnya."
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Pilih sepuluh kubus satuan lalu tukar dengan satu batang puluhan. Ucapkan banyak kubus seluruhnya.. 11–20 sebagai 10 + sisa."
         },
         {
           "title": "Toko Pensil",
           "emoji": "✏️",
           "targetCount": 12,
-          "voiceGuide": "Dua Bingkai Sepuluh. Layani pesanan dengan kotak sepuluh pensil dan pensil satuan. Ucapkan banyak pensil seluruhnya."
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Layani pesanan dengan kotak sepuluh pensil dan pensil satuan. Ucapkan banyak pensil seluruhnya.. Dua bingkai untuk bilangan 11–20."
         },
         {
           "title": "Papan Kartu Angka",
           "emoji": "🃏",
           "targetCount": 18,
-          "voiceGuide": "Hitung sampai 20. Hitung ikatan dan benda lepas, lalu taruh kartu angka di kolom puluhan dan satuan. Ucapkan bilangannya."
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Hitung ikatan dan benda lepas, lalu taruh kartu angka di kolom puluhan dan satuan. Ucapkan bilangannya.. Lanjut hitung melewati sepuluh."
         }
       ],
       "pictorialSlides": [
@@ -1052,21 +1052,21 @@
           "diagramType": "vertical-ten-frames",
           "numberA": 10,
           "numberB": 6,
-          "caption": "Pakai Hitung sampai 20. Warnai satu bingkai penuh untuk satu puluhan dan lingkaran di bingkai satunya untuk satuan."
+          "caption": "Pakai Hitung sampai 20. Pakai Hitung sampai 20. Warnai satu bingkai penuh untuk satu puluhan dan lingkaran di bingkai satunya untuk satuan."
         },
         {
           "title": "Lingkari Puluhan",
           "diagramType": "dot-cluster-ring",
           "numberA": 10,
           "numberB": 7,
-          "caption": "Pakai Sepuluh dan Satuan. Lingkari tepat sepuluh titik sebagai satu puluhan, lalu hitung titik yang tidak dilingkari sebagai satuan."
+          "caption": "Pakai Sepuluh dan Satuan. Pakai Sepuluh dan Satuan. Lingkari tepat sepuluh titik sebagai satu puluhan, lalu hitung titik yang tidak dilingkari sebagai satuan."
         },
         {
           "title": "Pilih Tabel yang Cocok",
           "diagramType": "bar-diagram-table",
           "numberA": 10,
           "numberB": 9,
-          "caption": "Pakai Dua Bingkai Sepuluh. Hitung batang sepuluh dan kotak kecil pada diagram, lalu pilih tabel nilai tempat yang cocok."
+          "caption": "Pakai Dua Bingkai Sepuluh. Pakai Dua Bingkai Sepuluh. Hitung batang sepuluh dan kotak kecil pada diagram, lalu pilih tabel nilai tempat yang cocok."
         }
       ],
       "abstractSlides": [
@@ -1074,19 +1074,19 @@
           "symbolLarge": "1 | 5",
           "wordLarge": "MESIN DIGIT",
           "mathNotation": "1 puluhan dan 5 satuan = 15 • 2 puluhan dan 0 satuan = 20",
-          "voiceReadout": "Hitung sampai 20. Atur angka puluhan di kiri dan angka satuan di kanan sesuai soal. Satu puluhan dan lima satuan sama dengan lima belas."
+          "voiceReadout": "Hitung sampai 20. Hitung sampai 20. Atur angka puluhan di kiri dan angka satuan di kanan sesuai soal. Satu puluhan dan lima satuan sama dengan lima belas.. Lanjut hitung melewati sepuluh."
         },
         {
           "symbolLarge": "1 1",
           "wordLarge": "NILAI ANGKA",
           "mathNotation": "11: kiri = 10, kanan = 1 • 20: kiri = 20, kanan = 0",
-          "voiceReadout": "Sepuluh dan Satuan. Angka yang sama bisa punya nilai berbeda. Pada sebelas, angka satu di kiri bernilai sepuluh dan angka satu di kanan bernilai satu."
+          "voiceReadout": "Sepuluh dan Satuan. Sepuluh dan Satuan. Angka yang sama bisa punya nilai berbeda. Pada sebelas, angka satu di kiri bernilai sepuluh dan angka satu di kanan bernilai satu.. 11–20 sebagai 10 + sisa."
         },
         {
           "symbolLarge": "1 puluhan dan 4 satuan",
           "wordLarge": "EMPAT BELAS",
           "mathNotation": "14 = 10 + 4",
-          "voiceReadout": "Dua Bingkai Sepuluh. Baca nilai tempatnya, ucapkan bilangannya, lalu guratkan lambangnya di kanvas. Satu puluhan dan empat satuan sama dengan empat belas."
+          "voiceReadout": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Baca nilai tempatnya, ucapkan bilangannya, lalu guratkan lambangnya di kanvas. Satu puluhan dan empat satuan sama dengan empat belas.. Dua bingkai untuk bilangan 11–20."
         }
       ],
       "interactiveGames": [
@@ -1097,9 +1097,9 @@
           "gameType": "drag-sort-columns",
           "title": "Sortir ke Papan Nilai Tempat",
           "bookReference": "Buku Siswa hlm. 161–162 (10 kelereng dalam kantong, 10 pensil diikat, 10 balok disusun)",
-          "objective": "Pakai Hitung sampai 20. Memilah ikatan sepuluh sebagai satu puluhan dan benda lepas sebagai satuan ke papan nilai tempat.",
-          "mechanicDescription": "Tiga ronde (13 pensil, 14 balok, 15 kelereng). Siswa menyeret ikatan sepuluh ke kolom puluhan dan benda lepas ke kolom satuan, lalu membaca kalimat nilai tempat. Terakhir ucapkan banyak benda seluruhnya. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Seret ikatan sepuluh ke puluhan dan benda lepas ke satuan."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Memilah ikatan sepuluh sebagai satu puluhan dan benda lepas sebagai satuan ke papan nilai tempat.",
+          "mechanicDescription": "Tiga ronde (13 pensil, 14 balok, 15 kelereng). Siswa menyeret ikatan sepuluh ke kolom puluhan dan benda lepas ke kolom satuan, lalu membaca kalimat nilai tempat. Terakhir ucapkan banyak benda seluruhnya. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Seret ikatan sepuluh ke puluhan dan benda lepas ke satuan."
         },
         {
           "gameId": "subC5-game-2",
@@ -1108,9 +1108,9 @@
           "gameType": "trade-ten",
           "title": "Tukar Sepuluh",
           "bookReference": "Buku Siswa pengayaan Dienes dan Montessori (menukar sepuluh satuan dengan satu puluhan)",
-          "objective": "Pakai Sepuluh dan Satuan. Memahami bahwa sepuluh satuan digabung menjadi satu puluhan.",
-          "mechanicDescription": "Tiga ronde (12, 17, dan 20 kubus). Siswa memilih tepat sepuluh kubus lalu menukarnya dengan satu batang, sampai kubus tersisa kurang dari sepuluh. Terakhir ucapkan banyak kubus seluruhnya. Terapkan Ten and Ones.",
-          "voiceGuide": "Sepuluh dan Satuan. Pilih sepuluh kubus lalu tukar dengan satu batang."
+          "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Memahami bahwa sepuluh satuan digabung menjadi satu puluhan.",
+          "mechanicDescription": "Tiga ronde (12, 17, dan 20 kubus). Siswa memilih tepat sepuluh kubus lalu menukarnya dengan satu batang, sampai kubus tersisa kurang dari sepuluh. Terakhir ucapkan banyak kubus seluruhnya. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Pilih sepuluh kubus lalu tukar dengan satu batang."
         },
         {
           "gameId": "subC5-game-3",
@@ -1119,9 +1119,9 @@
           "gameType": "build-order",
           "title": "Toko Pensil",
           "bookReference": "Buku Siswa hlm. 162 (Ayo Mencoba: ambil 10 lalu ikat)",
-          "objective": "Pakai Dua Bingkai Sepuluh. Menyusun sejumlah benda dari kelompok sepuluh dan benda satuan menurut pesanan.",
-          "mechanicDescription": "Tiga ronde (1 puluhan dan 6 satuan, tujuh belas, dua belas). Siswa mengetuk kotak sepuluh pensil dan pensil satuan untuk mengisi keranjang, lalu mengirim pesanan. Terakhir ucapkan banyak pensil seluruhnya. Terapkan Double Ten Frame.",
-          "voiceGuide": "Dua Bingkai Sepuluh. Isi keranjang dengan kotak sepuluh dan pensil satuan."
+          "objective": "Pakai Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Pakai Dua Bingkai Sepuluh. Menyusun sejumlah benda dari kelompok sepuluh dan benda satuan menurut pesanan.",
+          "mechanicDescription": "Tiga ronde (1 puluhan dan 6 satuan, tujuh belas, dua belas). Siswa mengetuk kotak sepuluh pensil dan pensil satuan untuk mengisi keranjang, lalu mengirim pesanan. Terakhir ucapkan banyak pensil seluruhnya. Terapkan Double Ten Frame. Saat bermain, terapkan Double Ten Frame: Dua bingkai untuk bilangan 11–20.",
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Isi keranjang dengan kotak sepuluh dan pensil satuan."
         },
         {
           "gameId": "subC5-game-4",
@@ -1130,9 +1130,9 @@
           "gameType": "drag-digit-cards",
           "title": "Papan Kartu Angka",
           "bookReference": "Buku Siswa hlm. 163 (Ayo Berlatih nomor 1)",
-          "objective": "Pakai Hitung sampai 20. Menghitung ikatan sepuluh dan benda lepas lalu menuliskannya dengan kartu angka pada tabel nilai tempat.",
-          "mechanicDescription": "Tiga ronde (13 kelereng, 12 pensil, 18 balok). Siswa menyeret kartu angka ke kolom puluhan dan kolom satuan. Terakhir ucapkan bilangan yang ditunjukkan papan. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Taruh kartu angka yang tepat di kolom puluhan dan satuan."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Menghitung ikatan sepuluh dan benda lepas lalu menuliskannya dengan kartu angka pada tabel nilai tempat.",
+          "mechanicDescription": "Tiga ronde (13 kelereng, 12 pensil, 18 balok). Siswa menyeret kartu angka ke kolom puluhan dan kolom satuan. Terakhir ucapkan bilangan yang ditunjukkan papan. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Taruh kartu angka yang tepat di kolom puluhan dan satuan."
         },
         {
           "gameId": "subC5-game-5",
@@ -1141,9 +1141,9 @@
           "gameType": "color-vertical-frames",
           "title": "Warnai Puluhan dan Satuan",
           "bookReference": "Buku Siswa hlm. 164 (nomor 3: Tunjukkan 1 puluhan dan 3 satuan)",
-          "objective": "Pakai Sepuluh dan Satuan. Menunjukkan puluhan dan satuan dengan mewarnai bingkai sepuluh tegak.",
-          "mechanicDescription": "Tiga ronde (1 puluhan dan 3, 8, dan 6 satuan). Siswa mewarnai satu bingkai penuh dan lingkaran satuan di bingkai lain, lalu menekan Periksa. Terakhir ucapkan bilangan yang ditunjukkan. Terapkan Ten and Ones.",
-          "voiceGuide": "Sepuluh dan Satuan. Warnai satu bingkai penuh dan lingkaran satuan, lalu tekan Periksa."
+          "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Menunjukkan puluhan dan satuan dengan mewarnai bingkai sepuluh tegak.",
+          "mechanicDescription": "Tiga ronde (1 puluhan dan 3, 8, dan 6 satuan). Siswa mewarnai satu bingkai penuh dan lingkaran satuan di bingkai lain, lalu menekan Periksa. Terakhir ucapkan bilangan yang ditunjukkan. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Warnai satu bingkai penuh dan lingkaran satuan, lalu tekan Periksa."
         },
         {
           "gameId": "subC5-game-6",
@@ -1152,9 +1152,9 @@
           "gameType": "ring-ten-dots",
           "title": "Lingkari Puluhan",
           "bookReference": "Buku Siswa hlm. 164 (nomor 2: Warnai dan hitunglah); hlm. 153 (lingkari setiap 10 benda)",
-          "objective": "Pakai Dua Bingkai Sepuluh. Melingkari sepuluh titik sebagai satu puluhan dan menghitung sisanya sebagai satuan.",
-          "mechanicDescription": "Tiga ronde (13, 18, dan 17 titik). Siswa memilih tepat sepuluh titik lalu menekan Lingkari, kemudian memilih banyak titik di luar lingkaran. Terakhir ucapkan banyak titik seluruhnya. Terapkan Double Ten Frame.",
-          "voiceGuide": "Dua Bingkai Sepuluh. Pilih sepuluh titik, lingkari, lalu hitung sisanya."
+          "objective": "Pakai Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Pakai Dua Bingkai Sepuluh. Melingkari sepuluh titik sebagai satu puluhan dan menghitung sisanya sebagai satuan.",
+          "mechanicDescription": "Tiga ronde (13, 18, dan 17 titik). Siswa memilih tepat sepuluh titik lalu menekan Lingkari, kemudian memilih banyak titik di luar lingkaran. Terakhir ucapkan banyak titik seluruhnya. Terapkan Double Ten Frame. Saat bermain, terapkan Double Ten Frame: Dua bingkai untuk bilangan 11–20.",
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Pilih sepuluh titik, lingkari, lalu hitung sisanya."
         },
         {
           "gameId": "subC5-game-7",
@@ -1163,9 +1163,9 @@
           "gameType": "match-diagram-table",
           "title": "Pilih Tabel yang Cocok",
           "bookReference": "Buku Siswa hlm. 163 (nomor 1: isi tabel dari gambar)",
-          "objective": "Pakai Hitung sampai 20. Mencocokkan diagram batang dengan tabel nilai tempat, termasuk menghindari kolom yang tertukar.",
-          "mechanicDescription": "Empat ronde (14, 12, 16, dan 19). Siswa memilih satu dari tiga tabel yang cocok dengan diagram batang. Terakhir ucapkan bilangan yang ditunjukkan diagram. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Hitung batang dan kotak kecil, lalu pilih tabel yang cocok."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Mencocokkan diagram batang dengan tabel nilai tempat, termasuk menghindari kolom yang tertukar.",
+          "mechanicDescription": "Empat ronde (14, 12, 16, dan 19). Siswa memilih satu dari tiga tabel yang cocok dengan diagram batang. Terakhir ucapkan bilangan yang ditunjukkan diagram. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Hitung batang dan kotak kecil, lalu pilih tabel yang cocok."
         },
         {
           "gameId": "subC5-game-8",
@@ -1174,9 +1174,9 @@
           "gameType": "digit-machine",
           "title": "Mesin Digit",
           "bookReference": "Buku Siswa hlm. 161–163 (tabel nilai tempat); pengayaan kartu nilai tempat",
-          "objective": "Pakai Sepuluh dan Satuan. Mengubah soal nilai tempat dalam berbagai bentuk menjadi angka puluhan dan angka satuan.",
-          "mechanicDescription": "Lima ronde (lima belas, 10 + 8, sepuluh, dua puluh, 19). Siswa mengatur panah atas dan bawah pada kolom puluhan dan satuan lalu menekan Periksa. Terakhir ucapkan bilangannya. Terapkan Ten and Ones.",
-          "voiceGuide": "Sepuluh dan Satuan. Atur kolom puluhan dan satuan dengan panah, lalu tekan Periksa."
+          "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Mengubah soal nilai tempat dalam berbagai bentuk menjadi angka puluhan dan angka satuan.",
+          "mechanicDescription": "Lima ronde (lima belas, 10 + 8, sepuluh, dua puluh, 19). Siswa mengatur panah atas dan bawah pada kolom puluhan dan satuan lalu menekan Periksa. Terakhir ucapkan bilangannya. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Atur kolom puluhan dan satuan dengan panah, lalu tekan Periksa."
         },
         {
           "gameId": "subC5-game-9",
@@ -1185,9 +1185,9 @@
           "gameType": "digit-value-detective",
           "title": "Detektif Nilai Angka",
           "bookReference": "Buku Siswa pengayaan (nilai angka bergantung tempatnya)",
-          "objective": "Pakai Dua Bingkai Sepuluh. Menentukan nilai sebuah angka menurut tempatnya, misalnya angka 1 di kiri dan di kanan pada 11.",
-          "mechanicDescription": "Lima ronde dengan satu angka yang ditandai. Siswa memilih nilai angka itu. Terakhir ucapkan nilainya. Terapkan Double Ten Frame.",
-          "voiceGuide": "Dua Bingkai Sepuluh. Tentukan nilai angka yang ditandai menurut tempatnya."
+          "objective": "Pakai Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Pakai Dua Bingkai Sepuluh. Menentukan nilai sebuah angka menurut tempatnya, misalnya angka 1 di kiri dan di kanan pada 11.",
+          "mechanicDescription": "Lima ronde dengan satu angka yang ditandai. Siswa memilih nilai angka itu. Terakhir ucapkan nilainya. Terapkan Double Ten Frame. Saat bermain, terapkan Double Ten Frame: Dua bingkai untuk bilangan 11–20.",
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Tentukan nilai angka yang ditandai menurut tempatnya."
         },
         {
           "gameId": "subC5-game-10",
@@ -1196,9 +1196,9 @@
           "gameType": "say-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa hlm. 162 (tulis hasilnya: puluhan dan satuan = bilangan)",
-          "objective": "Pakai Hitung sampai 20. Membaca nilai tempat, mengucapkan bilangannya, dan menulis lambangnya dengan dua angka.",
-          "mechanicDescription": "Dua ronde. Ronde 1 satu puluhan dan empat satuan. Ronde 2 siswa memilih satu dari tiga nilai tempat. Siswa mengucapkan bilangannya lalu menggurat lambangnya. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Baca nilai tempat, ucapkan bilangannya, lalu guratkan lambangnya."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Membaca nilai tempat, mengucapkan bilangannya, dan menulis lambangnya dengan dua angka.",
+          "mechanicDescription": "Dua ronde. Ronde 1 satu puluhan dan empat satuan. Ronde 2 siswa memilih satu dari tiga nilai tempat. Siswa mengucapkan bilangannya lalu menggurat lambangnya. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Baca nilai tempat, ucapkan bilangannya, lalu guratkan lambangnya."
         }
       ],
       "metodeLuar": [
@@ -1242,7 +1242,7 @@
       "id": "D",
       "codeTitle": "Sub-Bab D (Membandingkan Bilangan)",
       "fullTitle": "Sub-Bab D: Membandingkan dan Mengurutkan Bilangan",
-      "targetDescription": "Siswa membandingkan banyak benda dan bilangan sampai 20 dengan kata lebih banyak, lebih sedikit, dan sama banyak, menentukan yang paling banyak dan paling sedikit di antara tiga kelompok, mengurutkan bilangan dari terkecil dan dari terbesar, serta membandingkan bilangan dengan puluhan dan satuan atau garis bilangan. Memakai Hitung sampai 20, Sepuluh dan Satuan, Dua Bingkai Sepuluh.",
+      "targetDescription": "Siswa membandingkan banyak benda dan bilangan sampai 20 dengan kata lebih banyak, lebih sedikit, dan sama banyak, menentukan yang paling banyak dan paling sedikit di antara tiga kelompok, mengurutkan bilangan dari terkecil dan dari terbesar, serta membandingkan bilangan dengan puluhan dan satuan atau garis bilangan. Memakai Hitung sampai 20, Sepuluh dan Satuan, Dua Bingkai Sepuluh. Memakai Hitung sampai 20, Sepuluh dan Satuan, Dua Bingkai Sepuluh.",
       "secondaryBg": "#FCE7F3",
       "secondaryBorder": "#DB2777",
       "secondaryText": "#831843",
@@ -1251,37 +1251,37 @@
           "id": "D5-S1",
           "titleHint": "Kelereng Halim dan Upe",
           "sceneType": "dua-kelompok-kelereng",
-          "voiceNarration": "Halim memiliki lima belas kelereng. Upe memiliki sebelas kelereng. Kelereng siapa yang lebih banyak? Kelereng siapa yang lebih sedikit? Bagaimana kita tahu? Kita hitung dulu. Lima belas lebih banyak dari sebelas, dan sebelas lebih sedikit dari lima belas. Jadi kelereng Halim lebih banyak dari kelereng Upe, dan kelereng Upe lebih sedikit dari kelereng Halim. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh."
+          "voiceNarration": "Halim memiliki lima belas kelereng. Upe memiliki sebelas kelereng. Kelereng siapa yang lebih banyak? Kelereng siapa yang lebih sedikit? Bagaimana kita tahu? Kita hitung dulu. Lima belas lebih banyak dari sebelas, dan sebelas lebih sedikit dari lima belas. Jadi kelereng Halim lebih banyak dari kelereng Upe, dan kelereng Upe lebih sedikit dari kelereng Halim. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "D5-S2",
           "titleHint": "Pasangkan Satu-Satu",
           "sceneType": "pasangkan-satu-satu",
-          "voiceNarration": "Ada cara lain untuk membandingkan, yaitu memasangkan satu-satu. Setiap benda di kelompok pertama dipasangkan dengan satu benda di kelompok kedua. Benda yang tidak punya pasangan adalah sisanya. Kelompok yang masih punya sisa adalah kelompok yang lebih banyak. Di gambar ini, titik merah masih punya sisa tiga, jadi titik merah lebih banyak tiga daripada titik biru. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa."
+          "voiceNarration": "Ada cara lain untuk membandingkan, yaitu memasangkan satu-satu. Setiap benda di kelompok pertama dipasangkan dengan satu benda di kelompok kedua. Benda yang tidak punya pasangan adalah sisanya. Kelompok yang masih punya sisa adalah kelompok yang lebih banyak. Di gambar ini, titik merah masih punya sisa tiga, jadi titik merah lebih banyak tiga daripada titik biru. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "D5-S3",
           "titleHint": "Jeruk Kira, Tika, dan Wei",
           "sceneType": "tiga-kelompok-jeruk",
-          "voiceNarration": "Kira mempunyai sepuluh jeruk. Tika mempunyai empat belas jeruk. Wei mempunyai dua belas jeruk. Jeruk siapa yang paling banyak? Jeruk siapa yang paling sedikit? Tika mempunyai jeruk paling banyak. Kira mempunyai jeruk paling sedikit. Kalau ada tiga kelompok atau lebih, kita memakai kata paling banyak dan paling sedikit. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20."
+          "voiceNarration": "Kira mempunyai sepuluh jeruk. Tika mempunyai empat belas jeruk. Wei mempunyai dua belas jeruk. Jeruk siapa yang paling banyak? Jeruk siapa yang paling sedikit? Tika mempunyai jeruk paling banyak. Kira mempunyai jeruk paling sedikit. Kalau ada tiga kelompok atau lebih, kita memakai kata paling banyak dan paling sedikit. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "D5-S4",
           "titleHint": "Baris Bilangan Berurutan",
           "sceneType": "baris-bilangan",
-          "voiceNarration": "Bilangan sepuluh, empat belas, dan dua belas dapat kita urutkan. Urutan dari bilangan terkecil adalah sepuluh, dua belas, empat belas. Urutan dari bilangan terbesar adalah empat belas, dua belas, sepuluh. Ayo berbaris seperti angka-angka ini! Dari kiri ke kanan, bilangannya makin besar. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh."
+          "voiceNarration": "Bilangan sepuluh, empat belas, dan dua belas dapat kita urutkan. Urutan dari bilangan terkecil adalah sepuluh, dua belas, empat belas. Urutan dari bilangan terbesar adalah empat belas, dua belas, sepuluh. Ayo berbaris seperti angka-angka ini! Dari kiri ke kanan, bilangannya makin besar. Kita memakai cara Hitung sampai 20: Lanjut hitung melewati sepuluh. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "D5-S5",
           "titleHint": "Ayo Berkarya: Dua Stoples",
           "sceneType": "dua-stoples",
-          "voiceNarration": "Ayo berkarya! Ada dua stoples kelereng. Stoples A berisi tiga belas kelereng, yaitu satu puluhan dan tiga satuan. Stoples B berisi enam belas kelereng, yaitu satu puluhan dan enam satuan. Kita bandingkan. Puluhannya sama, jadi kita lihat satuannya. Tiga lebih sedikit dari enam. Jadi kelereng di stoples A lebih sedikit dari stoples B. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa."
+          "voiceNarration": "Ayo berkarya! Ada dua stoples kelereng. Stoples A berisi tiga belas kelereng, yaitu satu puluhan dan tiga satuan. Stoples B berisi enam belas kelereng, yaitu satu puluhan dan enam satuan. Kita bandingkan. Puluhannya sama, jadi kita lihat satuannya. Tiga lebih sedikit dari enam. Jadi kelereng di stoples A lebih sedikit dari stoples B. Kita memakai cara Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "D5-S6",
           "titleHint": "Bandingkan di Garis Bilangan",
           "sceneType": "garis-bilangan-banding",
-          "voiceNarration": "Garis bilangan juga membantu kita membandingkan. Di garis bilangan, bilangan yang berada lebih ke kanan lebih besar. Lima belas berada di sebelah kanan sebelas, jadi lima belas lebih besar dari sebelas. Dan sebelas berada di sebelah kiri lima belas, jadi sebelas lebih kecil dari lima belas. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20."
+          "voiceNarration": "Garis bilangan juga membantu kita membandingkan. Di garis bilangan, bilangan yang berada lebih ke kanan lebih besar. Lima belas berada di sebelah kanan sebelas, jadi lima belas lebih besar dari sebelas. Dan sebelas berada di sebelah kiri lima belas, jadi sebelas lebih kecil dari lima belas. Kita memakai cara Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Siap? Ketuk suara guru jika ingin mendengar lagi."
         }
       ],
       "mindMaps": [
@@ -1295,24 +1295,24 @@
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. Pasangkan Satu-Satu",
-          "stepDesc": "Pasangkan satu benda dari kelompok pertama dengan satu benda dari kelompok kedua. Kelompok yang masih punya benda tanpa pasangan adalah kelompok yang lebih banyak. Banyak sisanya menunjukkan berapa lebihnya.",
+          "stepTitle": "2. Count to 20",
+          "stepDesc": "Lanjut hitung melewati sepuluh.",
           "icon": "🔗",
           "flowFrom": "Hitung masing-masing",
           "flowTo": "Pasangkan satu-satu"
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Count to 20",
-          "stepDesc": "Lanjut hitung melewati sepuluh.",
+          "stepTitle": "3. Ten and Ones",
+          "stepDesc": "11–20 sebagai 10 + sisa.",
           "icon": "⚖️",
           "flowFrom": "Pasangkan satu-satu",
           "flowTo": "Lebih banyak, lebih sedikit"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Ten and Ones",
-          "stepDesc": "11–20 sebagai 10 + sisa.",
+          "stepTitle": "4. Double Ten Frame",
+          "stepDesc": "Dua bingkai untuk bilangan 11–20.",
           "icon": "🏆",
           "flowFrom": "Lebih banyak, lebih sedikit",
           "flowTo": "Paling banyak, paling sedikit"
@@ -1441,25 +1441,25 @@
           "title": "Pasangkan Kelereng",
           "emoji": "🔗",
           "targetCount": 16,
-          "voiceGuide": "Hitung sampai 20. Ketuk kelereng untuk memasangkannya satu-satu dengan kelereng kelompok lain. Pilih kelompok yang lebih banyak dan berapa lebihnya. Ucapkan banyak kelereng pada kelompok yang lebih banyak."
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Ketuk kelereng untuk memasangkannya satu-satu dengan kelereng kelompok lain. Pilih kelompok yang lebih banyak dan berapa lebihnya. Ucapkan banyak kelereng pada kelompok yang lebih banyak.. Lanjut hitung melewati sepuluh."
         },
         {
           "title": "Susun Keranjang Jeruk",
           "emoji": "🍊",
           "targetCount": 19,
-          "voiceGuide": "Sepuluh dan Satuan. Hitung jeruk di setiap keranjang, lalu seret keranjang ke urutan dari paling sedikit atau paling banyak. Ucapkan banyak jeruk pada keranjang yang paling banyak."
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Hitung jeruk di setiap keranjang, lalu seret keranjang ke urutan dari paling sedikit atau paling banyak. Ucapkan banyak jeruk pada keranjang yang paling banyak.. 11–20 sebagai 10 + sisa."
         },
         {
           "title": "Timbangan Kelereng",
           "emoji": "⚖️",
           "targetCount": 13,
-          "voiceGuide": "Dua Bingkai Sepuluh. Tambah atau kurangi kelereng di pan kiri sampai lebih banyak, sama banyak, atau lebih sedikit dari pan kanan. Ucapkan banyak kelereng di pan kanan."
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Tambah atau kurangi kelereng di pan kiri sampai lebih banyak, sama banyak, atau lebih sedikit dari pan kanan. Ucapkan banyak kelereng di pan kanan.. Dua bingkai untuk bilangan 11–20."
         },
         {
           "title": "Pasang Kartu Kata",
           "emoji": "🃏",
           "targetCount": 18,
-          "voiceGuide": "Hitung sampai 20. Seret kartu lebih banyak, lebih sedikit, paling banyak, atau paling sedikit ke kelompok yang tepat. Ucapkan banyak benda pada kelompok yang paling banyak."
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Seret kartu lebih banyak, lebih sedikit, paling banyak, atau paling sedikit ke kelompok yang tepat. Ucapkan banyak benda pada kelompok yang paling banyak.. Lanjut hitung melewati sepuluh."
         }
       ],
       "pictorialSlides": [
@@ -1468,21 +1468,21 @@
           "diagramType": "ten-frame-compare",
           "numberA": 13,
           "numberB": 16,
-          "caption": "Pakai Hitung sampai 20. Hitung titik pada gambar A dan gambar B, lalu lengkapi kalimat dengan kata banyak atau sedikit."
+          "caption": "Pakai Hitung sampai 20. Pakai Hitung sampai 20. Hitung titik pada gambar A dan gambar B, lalu lengkapi kalimat dengan kata banyak atau sedikit."
         },
         {
           "title": "Gambar Mana?",
           "diagramType": "ten-frame-three",
           "numberA": 10,
           "numberB": 18,
-          "caption": "Pakai Sepuluh dan Satuan. Pilih gambar bingkai sepuluh yang titiknya paling banyak dan yang paling sedikit."
+          "caption": "Pakai Sepuluh dan Satuan. Pakai Sepuluh dan Satuan. Pilih gambar bingkai sepuluh yang titiknya paling banyak dan yang paling sedikit."
         },
         {
           "title": "Letakkan di Garis Bilangan",
           "diagramType": "number-line-place",
           "numberA": 10,
           "numberB": 17,
-          "caption": "Pakai Dua Bingkai Sepuluh. Taruh tiga bilangan pada garis bilangan, lalu cari bilangan yang terbesar di sebelah paling kanan."
+          "caption": "Pakai Dua Bingkai Sepuluh. Pakai Dua Bingkai Sepuluh. Taruh tiga bilangan pada garis bilangan, lalu cari bilangan yang terbesar di sebelah paling kanan."
         }
       ],
       "abstractSlides": [
@@ -1490,19 +1490,19 @@
           "symbolLarge": "15 > 11",
           "wordLarge": "TANDA PEMBANDING",
           "mathNotation": "15 > 11 • 11 < 15 • 12 = 12",
-          "voiceReadout": "Hitung sampai 20. Bandingkan dua bilangan lalu pilih tanda yang tepat. Lima belas lebih dari sebelas. Sebelas kurang dari lima belas. Dua belas sama dengan dua belas."
+          "voiceReadout": "Hitung sampai 20. Hitung sampai 20. Bandingkan dua bilangan lalu pilih tanda yang tepat. Lima belas lebih dari sebelas. Sebelas kurang dari lima belas. Dua belas sama dengan dua belas.. Lanjut hitung melewati sepuluh."
         },
         {
           "symbolLarge": "10, 12, 14",
           "wordLarge": "URUTKAN BILANGAN",
           "mathNotation": "terkecil: 10, 12, 14 • terbesar: 14, 12, 10",
-          "voiceReadout": "Sepuluh dan Satuan. Urutkan bilangan dari yang terkecil atau dari yang terbesar. Dari terkecil: sepuluh, dua belas, empat belas."
+          "voiceReadout": "Sepuluh dan Satuan. Sepuluh dan Satuan. Urutkan bilangan dari yang terkecil atau dari yang terbesar. Dari terkecil: sepuluh, dua belas, empat belas.. 11–20 sebagai 10 + sisa."
         },
         {
           "symbolLarge": "13 ? 17",
           "wordLarge": "BILANGAN LEBIH BESAR",
           "mathNotation": "13 < 17 • 17 lebih besar dari 13",
-          "voiceReadout": "Dua Bingkai Sepuluh. Bandingkan dua bilangan, ucapkan bilangan yang lebih besar, lalu guratkan lambangnya di kanvas. Tujuh belas lebih besar dari tiga belas."
+          "voiceReadout": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Bandingkan dua bilangan, ucapkan bilangan yang lebih besar, lalu guratkan lambangnya di kanvas. Tujuh belas lebih besar dari tiga belas.. Dua bingkai untuk bilangan 11–20."
         }
       ],
       "interactiveGames": [
@@ -1513,9 +1513,9 @@
           "gameType": "pair-by-tapping",
           "title": "Pasangkan Kelereng",
           "bookReference": "Buku Siswa hlm. 165 (Halim 15 kelereng, Upe 11 kelereng); pengayaan korespondensi satu-satu",
-          "objective": "Pakai Hitung sampai 20. Membandingkan dua kelompok dengan memasangkan satu-satu; kelompok yang punya sisa lebih banyak dan sisanya menunjukkan lebihnya.",
-          "mechanicDescription": "Tiga ronde (15 dan 11, 8 dan 12, 16 dan 13). Siswa mengetuk kelereng untuk memasangkannya, memilih kelompok yang lebih banyak, lalu memilih banyak sisa. Terakhir ucapkan banyak kelereng pada kelompok yang lebih banyak. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Ketuk kelereng untuk memasangkan, lalu pilih yang lebih banyak."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Membandingkan dua kelompok dengan memasangkan satu-satu; kelompok yang punya sisa lebih banyak dan sisanya menunjukkan lebihnya.",
+          "mechanicDescription": "Tiga ronde (15 dan 11, 8 dan 12, 16 dan 13). Siswa mengetuk kelereng untuk memasangkannya, memilih kelompok yang lebih banyak, lalu memilih banyak sisa. Terakhir ucapkan banyak kelereng pada kelompok yang lebih banyak. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Ketuk kelereng untuk memasangkan, lalu pilih yang lebih banyak."
         },
         {
           "gameId": "subD5-game-2",
@@ -1524,9 +1524,9 @@
           "gameType": "drag-order-baskets",
           "title": "Susun Keranjang Jeruk",
           "bookReference": "Buku Siswa hlm. 166 (jeruk Kira, Tika, dan Wei)",
-          "objective": "Pakai Sepuluh dan Satuan. Menentukan yang paling banyak, di tengah, dan paling sedikit di antara tiga kelompok, lalu mengurutkannya.",
-          "mechanicDescription": "Tiga ronde (10, 14, 12 dari paling sedikit; 11, 18, 13 dari paling banyak; 15, 12, 19 dari paling sedikit). Siswa menghitung jeruk lalu menyeret keranjang ke tempat urutan. Terakhir ucapkan banyak jeruk pada keranjang yang paling banyak. Terapkan Ten and Ones.",
-          "voiceGuide": "Sepuluh dan Satuan. Seret keranjang ke tempat urutan yang tepat."
+          "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Menentukan yang paling banyak, di tengah, dan paling sedikit di antara tiga kelompok, lalu mengurutkannya.",
+          "mechanicDescription": "Tiga ronde (10, 14, 12 dari paling sedikit; 11, 18, 13 dari paling banyak; 15, 12, 19 dari paling sedikit). Siswa menghitung jeruk lalu menyeret keranjang ke tempat urutan. Terakhir ucapkan banyak jeruk pada keranjang yang paling banyak. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Seret keranjang ke tempat urutan yang tepat."
         },
         {
           "gameId": "subD5-game-3",
@@ -1535,9 +1535,9 @@
           "gameType": "balance-goal",
           "title": "Timbangan Kelereng",
           "bookReference": "Buku Siswa pengayaan (timbangan: lebih banyak, sama banyak, lebih sedikit)",
-          "objective": "Pakai Dua Bingkai Sepuluh. Memahami lebih banyak, sama banyak, dan lebih sedikit lewat keseimbangan timbangan.",
-          "mechanicDescription": "Tiga ronde dengan tujuan lebih banyak, sama banyak, dan lebih sedikit dari pan kanan (12, 14, dan 13 kelereng). Siswa menambah atau mengurangi kelereng di pan kiri lalu menekan periksa. Terakhir ucapkan banyak kelereng di pan kanan. Terapkan Double Ten Frame.",
-          "voiceGuide": "Dua Bingkai Sepuluh. Tambah atau kurangi kelereng sampai tujuan tercapai."
+          "objective": "Pakai Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Pakai Dua Bingkai Sepuluh. Memahami lebih banyak, sama banyak, dan lebih sedikit lewat keseimbangan timbangan.",
+          "mechanicDescription": "Tiga ronde dengan tujuan lebih banyak, sama banyak, dan lebih sedikit dari pan kanan (12, 14, dan 13 kelereng). Siswa menambah atau mengurangi kelereng di pan kiri lalu menekan periksa. Terakhir ucapkan banyak kelereng di pan kanan. Terapkan Double Ten Frame. Saat bermain, terapkan Double Ten Frame: Dua bingkai untuk bilangan 11–20.",
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Tambah atau kurangi kelereng sampai tujuan tercapai."
         },
         {
           "gameId": "subD5-game-4",
@@ -1546,9 +1546,9 @@
           "gameType": "drag-word-cards",
           "title": "Pasang Kartu Kata",
           "bookReference": "Buku Siswa hlm. 165–166 (kata lebih banyak, lebih sedikit, paling banyak, paling sedikit)",
-          "objective": "Pakai Hitung sampai 20. Memakai kata pembanding yang tepat untuk kelompok benda.",
-          "mechanicDescription": "Tiga ronde (15 dan 11 kupu-kupu, 9 dan 13 mobil, 12, 18, dan 10 apel). Siswa menghitung lalu menyeret kartu kata ke kelompok yang tepat. Terakhir ucapkan banyak apel pada kelompok yang paling banyak. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Seret kartu kata ke kelompok yang tepat."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Memakai kata pembanding yang tepat untuk kelompok benda.",
+          "mechanicDescription": "Tiga ronde (15 dan 11 kupu-kupu, 9 dan 13 mobil, 12, 18, dan 10 apel). Siswa menghitung lalu menyeret kartu kata ke kelompok yang tepat. Terakhir ucapkan banyak apel pada kelompok yang paling banyak. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Seret kartu kata ke kelompok yang tepat."
         },
         {
           "gameId": "subD5-game-5",
@@ -1557,9 +1557,9 @@
           "gameType": "complete-sentence",
           "title": "Lengkapi Kalimat",
           "bookReference": "Buku Siswa hlm. 167 (Ayo Berlatih nomor 2); hlm. 172 (Evaluasi nomor 6)",
-          "objective": "Pakai Sepuluh dan Satuan. Melengkapi kalimat perbandingan dengan kata banyak atau sedikit berdasarkan diagram bingkai sepuluh.",
-          "mechanicDescription": "Empat ronde (15 dan 11, 12 dan 17, 14 dan 10, 13 dan 16). Siswa memilih kata banyak atau sedikit pada dua kalimat. Terakhir ucapkan banyak titik pada gambar yang lebih banyak. Terapkan Ten and Ones.",
-          "voiceGuide": "Sepuluh dan Satuan. Pilih banyak atau sedikit untuk melengkapi kedua kalimat."
+          "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Melengkapi kalimat perbandingan dengan kata banyak atau sedikit berdasarkan diagram bingkai sepuluh.",
+          "mechanicDescription": "Empat ronde (15 dan 11, 12 dan 17, 14 dan 10, 13 dan 16). Siswa memilih kata banyak atau sedikit pada dua kalimat. Terakhir ucapkan banyak titik pada gambar yang lebih banyak. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Pilih banyak atau sedikit untuk melengkapi kedua kalimat."
         },
         {
           "gameId": "subD5-game-6",
@@ -1568,9 +1568,9 @@
           "gameType": "pick-picture",
           "title": "Gambar Mana?",
           "bookReference": "Buku Siswa hlm. 168 (Ayo Berlatih nomor 3)",
-          "objective": "Pakai Dua Bingkai Sepuluh. Menentukan gambar dengan titik paling banyak dan paling sedikit di antara tiga bingkai sepuluh.",
-          "mechanicDescription": "Tiga ronde (17, 11, 14; 13, 19, 12; 15, 10, 18). Siswa memilih gambar yang paling banyak lalu yang paling sedikit. Terakhir ucapkan banyak titik pada gambar yang paling banyak. Terapkan Double Ten Frame.",
-          "voiceGuide": "Dua Bingkai Sepuluh. Hitung titik, lalu pilih gambar yang paling banyak dan paling sedikit."
+          "objective": "Pakai Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Pakai Dua Bingkai Sepuluh. Menentukan gambar dengan titik paling banyak dan paling sedikit di antara tiga bingkai sepuluh.",
+          "mechanicDescription": "Tiga ronde (17, 11, 14; 13, 19, 12; 15, 10, 18). Siswa memilih gambar yang paling banyak lalu yang paling sedikit. Terakhir ucapkan banyak titik pada gambar yang paling banyak. Terapkan Double Ten Frame. Saat bermain, terapkan Double Ten Frame: Dua bingkai untuk bilangan 11–20.",
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Hitung titik, lalu pilih gambar yang paling banyak dan paling sedikit."
         },
         {
           "gameId": "subD5-game-7",
@@ -1579,9 +1579,9 @@
           "gameType": "place-on-number-line",
           "title": "Letakkan di Garis Bilangan",
           "bookReference": "Buku Siswa hlm. 168–169 dan 172 (mengurutkan bilangan); pengayaan garis bilangan",
-          "objective": "Pakai Hitung sampai 20. Menaruh bilangan pada garis bilangan dan mengenali bahwa bilangan terbesar ada di kanan.",
-          "mechanicDescription": "Tiga ronde (13, 11, 18; 15, 19, 12; 14, 10, 17). Siswa memilih kartu bilangan lalu mengetuk tempatnya pada garis, kemudian mengetuk bendera bilangan terbesar. Terakhir ucapkan bilangan terbesar. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Taruh bilangan di garis, lalu ketuk yang terbesar."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Menaruh bilangan pada garis bilangan dan mengenali bahwa bilangan terbesar ada di kanan.",
+          "mechanicDescription": "Tiga ronde (13, 11, 18; 15, 19, 12; 14, 10, 17). Siswa memilih kartu bilangan lalu mengetuk tempatnya pada garis, kemudian mengetuk bendera bilangan terbesar. Terakhir ucapkan bilangan terbesar. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Taruh bilangan di garis, lalu ketuk yang terbesar."
         },
         {
           "gameId": "subD5-game-8",
@@ -1590,9 +1590,9 @@
           "gameType": "compare-symbol",
           "title": "Tanda Pembanding",
           "bookReference": "Buku Siswa hlm. 165 (15 lebih banyak dari 11); pengayaan tanda lebih dari, kurang dari, sama dengan",
-          "objective": "Pakai Sepuluh dan Satuan. Membandingkan dua bilangan dengan puluhan dan satuan lalu memilih tanda yang tepat.",
-          "mechanicDescription": "Lima ronde (15 dan 11, 12 dan 17, 14 dan 14, 10 dan 13, 19 dan 16). Siswa memilih lebih dari, kurang dari, atau sama dengan. Terakhir ucapkan bilangan yang lebih besar. Terapkan Ten and Ones.",
-          "voiceGuide": "Sepuluh dan Satuan. Pilih tanda yang tepat untuk dua bilangan."
+          "objective": "Pakai Sepuluh dan Satuan: 11–20 sebagai 10 + sisa. Pakai Sepuluh dan Satuan. Membandingkan dua bilangan dengan puluhan dan satuan lalu memilih tanda yang tepat.",
+          "mechanicDescription": "Lima ronde (15 dan 11, 12 dan 17, 14 dan 14, 10 dan 13, 19 dan 16). Siswa memilih lebih dari, kurang dari, atau sama dengan. Terakhir ucapkan bilangan yang lebih besar. Terapkan Ten and Ones. Saat bermain, terapkan Ten and Ones: 11–20 sebagai 10 + sisa.",
+          "voiceGuide": "Sepuluh dan Satuan. Sepuluh dan Satuan. Pilih tanda yang tepat untuk dua bilangan."
         },
         {
           "gameId": "subD5-game-9",
@@ -1601,9 +1601,9 @@
           "gameType": "order-numbers",
           "title": "Urutkan Bilangan",
           "bookReference": "Buku Siswa hlm. 168–169 (Ayo Berlatih nomor 4 dan 5); hlm. 172 (Evaluasi nomor 7)",
-          "objective": "Pakai Dua Bingkai Sepuluh. Mengurutkan tiga bilangan dari yang terkecil dan dari yang terbesar.",
-          "mechanicDescription": "Empat ronde (13, 11, 18 dari terkecil; 14, 11, 10 dari terbesar; 18, 10, 13 dari terkecil; 16, 12, 19 dari terbesar). Siswa mengetuk bilangan satu per satu menurut urutan. Terakhir ucapkan bilangan yang terbesar. Terapkan Double Ten Frame.",
-          "voiceGuide": "Dua Bingkai Sepuluh. Ketuk bilangan menurut urutan yang diminta."
+          "objective": "Pakai Dua Bingkai Sepuluh: Dua bingkai untuk bilangan 11–20. Pakai Dua Bingkai Sepuluh. Mengurutkan tiga bilangan dari yang terkecil dan dari yang terbesar.",
+          "mechanicDescription": "Empat ronde (13, 11, 18 dari terkecil; 14, 11, 10 dari terbesar; 18, 10, 13 dari terkecil; 16, 12, 19 dari terbesar). Siswa mengetuk bilangan satu per satu menurut urutan. Terakhir ucapkan bilangan yang terbesar. Terapkan Double Ten Frame. Saat bermain, terapkan Double Ten Frame: Dua bingkai untuk bilangan 11–20.",
+          "voiceGuide": "Dua Bingkai Sepuluh. Dua Bingkai Sepuluh. Ketuk bilangan menurut urutan yang diminta."
         },
         {
           "gameId": "subD5-game-10",
@@ -1612,9 +1612,9 @@
           "gameType": "say-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa hlm. 169 (Ayo Mencoba: pilih tiga bilangan; bilangan yang paling besar)",
-          "objective": "Pakai Hitung sampai 20. Membandingkan dua bilangan, mengucapkan yang lebih besar, dan menulis lambangnya dengan dua angka.",
-          "mechanicDescription": "Dua ronde. Ronde 1 bandingkan 13 dan 17. Ronde 2 siswa memilih satu dari tiga pasangan bilangan. Siswa mengucapkan bilangan yang lebih besar lalu menggurat lambangnya. Terapkan Count to 20.",
-          "voiceGuide": "Hitung sampai 20. Bandingkan, ucapkan yang lebih besar, lalu guratkan lambangnya."
+          "objective": "Pakai Hitung sampai 20: Lanjut hitung melewati sepuluh. Pakai Hitung sampai 20. Membandingkan dua bilangan, mengucapkan yang lebih besar, dan menulis lambangnya dengan dua angka.",
+          "mechanicDescription": "Dua ronde. Ronde 1 bandingkan 13 dan 17. Ronde 2 siswa memilih satu dari tiga pasangan bilangan. Siswa mengucapkan bilangan yang lebih besar lalu menggurat lambangnya. Terapkan Count to 20. Saat bermain, terapkan Count to 20: Lanjut hitung melewati sepuluh.",
+          "voiceGuide": "Hitung sampai 20. Hitung sampai 20. Bandingkan, ucapkan yang lebih besar, lalu guratkan lambangnya."
         }
       ],
       "metodeLuar": [

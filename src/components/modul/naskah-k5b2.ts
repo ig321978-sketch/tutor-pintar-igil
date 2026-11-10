@@ -1,6 +1,6 @@
 /**
- * Naskah — rewrite mendalam.
- * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
+ * Naskah — rewrite mendalam setara K5B4.
+ * Kelas 5 Bab 2 KPK–FPB — ketukan per ketukan.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
@@ -19,177 +19,177 @@ export const SUB_A52: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Kelipatan)",
   "fullTitle": "Sub-Bab A: Kelipatan",
-  "targetDescription": "Siswa memahami arti kelipatan, mengenal barisan kelipatan melalui permainan tepuk bilangan, serta menandai kelipatan pada tabel sesuai Buku Siswa Kelas V Bab 2. Siswa memakai cara Lompat Hitung, Tabel Seratus, Cek Habis Dibagi.",
+  "targetDescription": "Siswa memahami kelipatan sebagai hasil lompat hitung bilangan sama besar, memeriksa habis dibagi, dan memakai tabel seratus sesuai Buku Siswa Kelas V Bab 2 Sub-Bab A.",
   "secondaryBg": "#FFEDD5",
   "secondaryBorder": "#EA580C",
   "secondaryText": "#7C2D12",
   "silabus": {
-    "teksSuara": "Kita belajar kelipatan. Kelipatan adalah hasil kali suatu bilangan dengan bilangan bulat positif. Kita bermain tepuk bilangan dan mewarnai tabel. Nol kali bilangan tidak dihitung sebagai kelipatan di buku ini. Kita memakai cara dari luar buku: Lompat Hitung (Skip Counting); Tabel Seratus (Hundred Chart); Cek Habis Dibagi (Divisibility Check). Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, … Tandai kelipatan pada tabel seratus untuk melihat pola. Angka adalah kelipatan jika habis dibagi bilangan itu. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-    "cp": "Siswa menentukan bilangan kelipatan suatu bilangan.",
-    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2: KPK dan FPB, Sub-Bab A)."
+    "teksSuara": "Kita belajar kelipatan. Bayangkan melompat di garis bilangan dengan jarak sama: 3, 6, 9, 12. Itu kelipatan tiga. Kita cek juga apakah suatu bilangan habis dibagi, dan menandai di tabel seratus. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menentukan kelipatan suatu bilangan dan memeriksa keterbagian.",
+    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2 Sub-Bab A)."
   },
   "videos": [
     {
       "id": "K5B2A-V1",
-      "judul": "Apa Itu Kelipatan",
-      "subjudul": "Skip Counting",
+      "judul": "Lompat dengan Jarak Sama",
+      "subjudul": "Lompat Hitung",
       "adegan": [
         {
           "id": "K5B2A-V1-1",
-          "judul": "Hasil kali",
+          "judul": "Garis bilangan",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Ambil bilangan tiga. Mari kita pahami bersama.",
-            "Kalikan satu, dua, tiga, dan seterusnya. Mari kita pahami bersama.",
-            "Hasilnya tiga, enam, sembilan. Mari kita pahami bersama.",
-            "Ingat cara Lompat Hitung: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …"
+            "Bayangkan garis bilangan. Kamu berdiri di nol, lalu melompat tiga langkah: tiga, enam, sembilan, dua belas.",
+            "Setiap pendaratan adalah kelipatan tiga.",
+            "Jarak lompat selalu sama. Itu inti lompat hitung.",
+            "METODE LUAR · Lompat Hitung: kelipatan = hasil lompat berulang."
           ],
           "papan": [
-            "×1",
-            "×2",
-            "×3",
-            "kelipatan"
+            "0→3→6→9",
+            "kelipatan 3",
+            "jarak sama",
+            "skip count"
           ]
         },
         {
           "id": "K5B2A-V1-2",
-          "judul": "Bukan nol",
+          "judul": "Bukan asal loncat",
           "ketukan": [
-            "Nol dikali tiga hasilnya nol. Mari kita pahami bersama.",
-            "Di buku ini nol tidak dihitung. Mari kita pahami bersama.",
-            "Kita mulai dari satu kali. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Skip Counting — Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …"
+            "Kalau lompatannya 3, 5, 8, jaraknya tidak sama. Itu bukan kelipatan satu bilangan.",
+            "Kelipatan empat: empat, delapan, dua belas, enam belas.",
+            "Kamu bisa mulai dari bilangan itu sendiri sebagai kelipatan pertama.",
+            "Nol kali juga kelipatan, tapi di SD kita fokus kelipatan positif yang biasa dipakai."
           ],
           "papan": [
-            "0×3",
-            "tidak",
-            "mulai 1×",
-            "aturan"
+            "bukan",
+            "4,8,12,16",
+            "n×1=n",
+            "fokus +"
           ]
         },
         {
           "id": "K5B2A-V1-3",
-          "judul": "Cek cepat",
+          "judul": "Habis dibagi",
           "ketukan": [
-            "Bagaimana mengecek. Mari kita pahami bersama.",
-            "Bagi bilangan itu. Mari kita pahami bersama.",
-            "Jika habis tanpa sisa, ya. Mari kita pahami bersama.",
-            "METODE LUAR · Lompat Hitung: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …"
+            "Apakah dua belas kelipatan tiga? Ya, karena dua belas dibagi tiga sisa nol.",
+            "Apakah sepuluh kelipatan tiga? Tidak, karena ada sisa.",
+            "Jadi cek habis dibagi adalah cara cepat memastikan kelipatan.",
+            "METODE LUAR · Cek Habis Dibagi: sisa nol berarti ya."
           ],
           "papan": [
-            "bagi",
-            "habis?",
-            "ya",
-            "bukan"
+            "12÷3=4",
+            "10÷3 sisa",
+            "cek sisa",
+            "sisa 0"
           ]
         }
       ]
     },
     {
       "id": "K5B2A-V2",
-      "judul": "Latihan: Tabel Seratus",
-      "subjudul": "Hundred Chart",
+      "judul": "Tabel Seratus Berbicara",
+      "subjudul": "Tabel Seratus",
       "adegan": [
         {
           "id": "K5B2A-V2-1",
-          "judul": "Aturan tepuk",
+          "judul": "Tandai",
           "ketukan": [
-            "Duduk melingkar. Mari kita pahami bersama.",
-            "Sebut bilangan berurutan. Mari kita pahami bersama.",
-            "Pada kelipatan tiga, bertepuk. Mari kita pahami bersama.",
-            "Ingat cara Tabel Seratus: Tandai kelipatan pada tabel seratus untuk melihat pola."
+            "Buka tabel seratus. Warnai semua kelipatan lima: lima, sepuluh, lima belas, sampai seratus.",
+            "Kamu melihat pola kolom atau baris yang berulang.",
+            "Pola itu membantu mengingat tanpa menghafal daftar panjang.",
+            "METODE LUAR · Tabel Seratus: pola visual kelipatan."
           ],
           "papan": [
-            "lingkaran",
-            "sebut",
-            "tepuk",
-            "fokus"
+            "warna 5",
+            "pola",
+            "ingat pola",
+            "chart"
           ]
         },
         {
           "id": "K5B2A-V2-2",
-          "judul": "Contoh tiga",
+          "judul": "Banding dua kelipatan",
           "ketukan": [
-            "Tiga, enam, sembilan. Mari kita pahami bersama.",
-            "Itu saatnya tepuk. Mari kita pahami bersama.",
-            "Empat dan lima biasa disebut. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Hundred Chart — Tandai kelipatan pada tabel seratus untuk melihat pola."
+            "Warnai kelipatan dua dengan warna lain. Beberapa kotak kena dua warna.",
+            "Kotak yang kena dua warna adalah kelipatan keduanya — nanti dipakai untuk KPK.",
+            "Untuk Sub-Bab A, cukup kenali daftar kelipatan satu bilangan dulu.",
+            "Latihan menandai membuat jari dan mata bekerja bersama."
           ],
           "papan": [
-            "tepuk",
-            "tabel",
-            "tabel",
-            "tabel"
+            "ganda",
+            "calon KPK",
+            "fokus satu",
+            "CPA"
           ]
         },
         {
           "id": "K5B2A-V2-3",
-          "judul": "Ganti bilangan",
+          "judul": "Siap main",
           "ketukan": [
-            "Bisa kelipatan tujuh. Mari kita pahami bersama.",
-            "Bisa kelipatan sembilan. Mari kita pahami bersama.",
-            "Aturannya sama. Mari kita pahami bersama.",
-            "METODE LUAR · Tabel Seratus: Tandai kelipatan pada tabel seratus untuk melihat pola."
+            "Bekalmu: lompat hitung, cek sisa nol, dan pola di tabel seratus.",
+            "Di permainan, kamu akan memilih bilangan yang termasuk kelipatan.",
+            "Jika ragu, lompat di garis atau bagi dan lihat sisa.",
+            "Ayo bermain!"
           ],
           "papan": [
-            "sama",
-            "seru",
-            "tabel",
-            "tabel"
+            "3 bekal",
+            "main",
+            "cara cek",
+            "ayo"
           ]
         }
       ]
     },
     {
       "id": "K5B2A-V3",
-      "judul": "Siap pakai Divisibility Check",
-      "subjudul": "Divisibility Check",
+      "judul": "Dari Daftar ke Keputusan",
+      "subjudul": "Cek Habis Dibagi",
       "adegan": [
         {
           "id": "K5B2A-V3-1",
-          "judul": "Tabel satu sampai lima puluh",
+          "judul": "Buat daftar",
           "ketukan": [
-            "Salin tabel. Mari kita pahami bersama.",
-            "Cari kelipatan tiga. Mari kita pahami bersama.",
-            "Warnai bilangannya. Mari kita pahami bersama.",
-            "Ingat cara Cek Habis Dibagi: Angka adalah kelipatan jika habis dibagi bilangan itu."
+            "Diminta kelipatan enam kurang dari empat puluh. Lompat: 6, 12, 18, 24, 30, 36.",
+            "Berhenti sebelum empat puluh. Empat puluh dua sudah lewat batas.",
+            "Daftar ini siap dipakai menjawab soal pilihan.",
+            "Jangan loncat angka di tengah daftar."
           ],
           "papan": [
-            "tabel",
-            "cari",
-            "warnai",
-            "pola"
+            "daftar",
+            "batas",
+            "siap",
+            "rapi"
           ]
         },
         {
           "id": "K5B2A-V3-2",
-          "judul": "Latihan tujuh dan sembilan",
+          "judul": "Soal cek",
           "ketukan": [
-            "Ulang untuk tujuh. Mari kita pahami bersama.",
-            "Ulang untuk sembilan. Mari kita pahami bersama.",
-            "Tulis lima kelipatan enam. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Divisibility Check — Angka adalah kelipatan jika habis dibagi bilangan itu."
+            "Apakah 28 kelipatan 7? Dua puluh delapan bagi tujuh = empat, sisa nol. Ya.",
+            "Apakah 26 kelipatan 4? Dua puluh enam bagi empat sisa dua. Tidak.",
+            "Ucapkan: bagi, lihat sisa. Itu kebiasaan baik.",
+            "METODE LUAR · Cek Habis Dibagi memperkuat lompat hitung."
           ],
           "papan": [
-            "langkah 1",
-            "langkah 2",
-            "langkah 3",
-            "langkah 4"
+            "28÷7",
+            "26÷4",
+            "kebiasaan",
+            "padu"
           ]
         },
         {
           "id": "K5B2A-V3-3",
-          "judul": "Siap bermain",
+          "judul": "Jembatan ke KPK",
           "ketukan": [
-            "Definisi sudah jelas. Mari kita pahami bersama.",
-            "Tepuk dan tabel sudah siap. Mari kita pahami bersama.",
-            "Ayo ke permainan. Mari kita pahami bersama.",
-            "METODE LUAR · Cek Habis Dibagi: Angka adalah kelipatan jika habis dibagi bilangan itu."
+            "Nanti dua daftar kelipatan akan dicari irisan untuk KPK.",
+            "Dasarnya tetap lompat hitung yang kamu kuasai hari ini.",
+            "Simpan cara tabel seratus untuk melihat irisan secara visual.",
+            "Siap Sub-Bab B."
           ],
           "papan": [
-            "arti",
-            "latihan",
-            "main",
-            "semangat"
+            "jembatan",
+            "dasar",
+            "visual",
+            "lanjut B"
           ]
         }
       ]
@@ -198,64 +198,64 @@ export const SUB_A52: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Kelipatan. Apa yang ditanyakan?",
+      "stepTitle": "1. Pilih bilangan",
+      "stepDesc": "Kelipatan bilangan berapa?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Skip Counting",
-      "stepDesc": "Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
-      "icon": "🧭",
+      "stepTitle": "2. Lompat hitung",
+      "stepDesc": "Lompat jarak sama dari 0.",
+      "icon": "🦘",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Hundred Chart",
-      "stepDesc": "Tandai kelipatan pada tabel seratus untuk melihat pola.",
-      "icon": "🛠️",
+      "stepTitle": "3. Buat daftar",
+      "stepDesc": "Tulis kelipatan berurutan.",
+      "icon": "📝",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Divisibility Check",
-      "stepDesc": "Angka adalah kelipatan jika habis dibagi bilangan itu.",
-      "icon": "✨",
+      "stepTitle": "4. Cek sisa",
+      "stepDesc": "Bagi: sisa 0 = ya.",
+      "icon": "➗",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
-      "icon": "✏️",
+      "stepTitle": "5. Tabel seratus",
+      "stepDesc": "Tandai pola bila perlu.",
+      "icon": "▦",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepTitle": "6. Putuskan",
+      "stepDesc": "Termasuk kelipatan atau tidak?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
-      "icon": "💬",
+      "stepTitle": "7. Cek masuk akal",
+      "stepDesc": "Apakah lompatannya konsisten?",
+      "icon": "🔍",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latihan Concrete–Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -263,88 +263,74 @@ export const SUB_A52: SubBabNaskah = {
   ],
   "infografis": [
     {
-      "judul": "Arti",
-      "emoji": "📖",
-      "countNum": 1,
-      "countWord": "hasil kali",
-      "suara": "Kelipatan = hasil kali bilangan."
-    },
-    {
-      "judul": "Contoh 3",
-      "emoji": "3️⃣",
+      "judul": "Lompat 3",
+      "emoji": "🦘",
       "countNum": 3,
-      "countWord": "3,6,9,…",
-      "suara": "Kelipatan tiga."
+      "countWord": "3,6,9",
+      "suara": "Kelipatan 3."
     },
     {
-      "judul": "Cek",
+      "judul": "Lompat 4",
+      "emoji": "🦘",
+      "countNum": 4,
+      "countWord": "4,8,12",
+      "suara": "Kelipatan 4."
+    },
+    {
+      "judul": "Sisa 0",
+      "emoji": "✅",
+      "countNum": 0,
+      "countWord": "ya",
+      "suara": "Habis dibagi."
+    },
+    {
+      "judul": "Ada sisa",
+      "emoji": "🚫",
+      "countNum": 1,
+      "countWord": "tidak",
+      "suara": "Bukan kelipatan."
+    },
+    {
+      "judul": "Tabel 100",
+      "emoji": "▦",
+      "countNum": 100,
+      "countWord": "pola",
+      "suara": "Tandai."
+    },
+    {
+      "judul": "12÷3",
+      "emoji": "➗",
+      "countNum": 4,
+      "countWord": "ya",
+      "suara": "12 kelipatan 3."
+    },
+    {
+      "judul": "10÷3",
       "emoji": "➗",
       "countNum": 1,
-      "countWord": "bagi habis",
-      "suara": "Tanpa sisa berarti ya."
+      "countWord": "sisa",
+      "suara": "Bukan."
     },
     {
-      "judul": "Bukan 0",
-      "emoji": "0️⃣",
-      "countNum": 0,
-      "countWord": "kecuali",
-      "suara": "0×n tidak dihitung."
-    },
-    {
-      "judul": "Tepuk",
-      "emoji": "👏",
-      "countNum": 1,
-      "countWord": "permainan",
-      "suara": "Tepuk pada kelipatan."
-    },
-    {
-      "judul": "Tabel",
-      "emoji": "▦",
-      "countNum": 50,
-      "countWord": "1–50",
-      "suara": "Warnai kelipatan."
-    },
-    {
-      "judul": "7",
-      "emoji": "7️⃣",
-      "countNum": 7,
-      "countWord": "7,14,21,…",
-      "suara": "Contoh kelipatan tujuh."
-    },
-    {
-      "judul": "9",
-      "emoji": "9️⃣",
-      "countNum": 9,
-      "countWord": "9,18,27,…",
-      "suara": "Contoh kelipatan sembilan."
+      "judul": "Daftar <40",
+      "emoji": "📋",
+      "countNum": 6,
+      "countWord": "kel.6",
+      "suara": "6…36."
     },
     {
       "judul": "Pola",
-      "emoji": "📶",
+      "emoji": "👀",
       "countNum": 1,
-      "countWord": "tambah n",
-      "suara": "Barisan naik tetap."
+      "countWord": "lihat",
+      "suara": "Kolom/baris."
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
-      "countWord": "persekutuan",
-      "suara": "Lanjut kelipatan persekutuan."
-    },
-    {
-      "judul": "Lompat Hitung",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …"
-    },
-    {
-      "judul": "Tabel Seratus",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Tandai kelipatan pada tabel seratus untuk melihat pola."
+      "countWord": "KPK",
+      "suara": "Irisan."
     }
   ],
   "games": [
@@ -353,9 +339,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "cek-kelipatan",
       "title": "Cek Kelipatan",
       "bookReference": "hlm. 33–37",
-      "objective": "Pakai Lompat Hitung: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, … Latihan: Mengenali kelipatan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Skip Counting: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
-      "voiceGuide": "Lompat Hitung. Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
+      "objective": "Pilih hasil lompat berjarak sama. .",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Lompat Hitung: Jarak lompat tetap.",
+      "voiceGuide": "Lompat Hitung. Jarak lompat tetap.",
       "emoji": "👏",
       "targetCount": 6
     },
@@ -364,9 +350,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "lanjut-barisan",
       "title": "Lanjutkan Barisan",
       "bookReference": "hlm. 33–37",
-      "objective": "Pakai Lompat Hitung: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, … Latihan: Melanjutkan kelipatan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Skip Counting: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
-      "voiceGuide": "Lompat Hitung. Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
+      "objective": "Pilih hasil lompat berjarak sama. .",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Lompat Hitung: Jarak lompat tetap.",
+      "voiceGuide": "Lompat Hitung. Jarak lompat tetap.",
       "emoji": "📶",
       "targetCount": 6
     },
@@ -375,9 +361,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "arti-kelipatan",
       "title": "Arti Kelipatan",
       "bookReference": "hlm. 35",
-      "objective": "Pakai Lompat Hitung: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, … Latihan: Memahami definisi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Skip Counting: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
-      "voiceGuide": "Lompat Hitung. Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
+      "objective": "Pilih hasil lompat berjarak sama. .",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Lompat Hitung: Jarak lompat tetap.",
+      "voiceGuide": "Lompat Hitung. Jarak lompat tetap.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -386,9 +372,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "sort-kelipatan",
       "title": "Pilah Kelipatan",
       "bookReference": "hlm. 35–37",
-      "objective": "Pakai Lompat Hitung: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, … Latihan: Memilah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Skip Counting: Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
-      "voiceGuide": "Lompat Hitung. Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
+      "objective": "Pilih hasil lompat berjarak sama. .",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Lompat Hitung: Jarak lompat tetap.",
+      "voiceGuide": "Lompat Hitung. Jarak lompat tetap.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -397,9 +383,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "match-kelipatan",
       "title": "Jodohkan Kelipatan",
       "bookReference": "hlm. 33–37",
-      "objective": "Menjodohkan.. Ingat Lompat Hitung.",
+      "objective": "Menjodohkan.. Ingat Lompat Hitung. (Lompat Hitung)",
       "mechanicDescription": "Tiga ronde. Gunakan Lompat Hitung.",
-      "voiceGuide": "Lompat Hitung. Jodohkan.",
+      "voiceGuide": "Lompat Hitung. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -408,9 +394,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "memory-kelipatan",
       "title": "Memori Kelipatan",
       "bookReference": "hlm. 33–37",
-      "objective": "Memori.. Ingat Lompat Hitung.",
+      "objective": "Memori.. Ingat Lompat Hitung. (Lompat Hitung)",
       "mechanicDescription": "Tiga ronde. Gunakan Lompat Hitung.",
-      "voiceGuide": "Lompat Hitung. Balik kartu.",
+      "voiceGuide": "Lompat Hitung. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -419,9 +405,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "tap-kelipatan",
       "title": "Ketuk Kelipatan",
       "bookReference": "hlm. 33–37",
-      "objective": "Mengetuk.. Ingat Lompat Hitung.",
+      "objective": "Mengetuk.. Ingat Lompat Hitung. (Lompat Hitung)",
       "mechanicDescription": "Tiga ronde. Gunakan Lompat Hitung.",
-      "voiceGuide": "Lompat Hitung. Ketuk.",
+      "voiceGuide": "Lompat Hitung. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -430,9 +416,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "tap-all-kelipatan",
       "title": "Ketuk Semua Kelipatan",
       "bookReference": "hlm. 35–37",
-      "objective": "Ketuk semua.. Ingat Lompat Hitung.",
+      "objective": "Ketuk semua.. Ingat Lompat Hitung. (Lompat Hitung)",
       "mechanicDescription": "Tiga ronde. Gunakan Lompat Hitung.",
-      "voiceGuide": "Lompat Hitung. Ketuk semua.",
+      "voiceGuide": "Lompat Hitung. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -441,9 +427,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "story-tepuk",
       "title": "Cerita Tepuk Bilangan",
       "bookReference": "hlm. 33–37",
-      "objective": "Soal cerita.. Ingat Lompat Hitung.",
+      "objective": "Soal cerita.. Ingat Lompat Hitung. (Lompat Hitung)",
       "mechanicDescription": "Tiga ronde. Gunakan Lompat Hitung.",
-      "voiceGuide": "Lompat Hitung. Pilih.",
+      "voiceGuide": "Lompat Hitung. Mainkan dengan teliti.",
       "emoji": "👏",
       "targetCount": 6
     },
@@ -452,9 +438,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "order-kelipatan",
       "title": "Urutkan Kelipatan",
       "bookReference": "hlm. 35–37",
-      "objective": "Mengurutkan.. Ingat Lompat Hitung.",
+      "objective": "Mengurutkan.. Ingat Lompat Hitung. (Lompat Hitung)",
       "mechanicDescription": "Tiga ronde. Gunakan Lompat Hitung.",
-      "voiceGuide": "Lompat Hitung. Urutkan.",
+      "voiceGuide": "Lompat Hitung. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -463,9 +449,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "tabel-kelipatan",
       "title": "Tabel Kelipatan",
       "bookReference": "hlm. 35–37",
-      "objective": "Pakai Tabel Seratus: Tandai kelipatan pada tabel seratus untuk melihat pola. Latihan: Baca tabel..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Hundred Chart: Tandai kelipatan pada tabel seratus untuk melihat pola.",
-      "voiceGuide": "Tabel Seratus. Tandai kelipatan pada tabel seratus untuk melihat pola.",
+      "objective": "Pakai pola tabel. Latihan: Baca tabel..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Tabel Seratus: Tandai kelipatan.",
+      "voiceGuide": "Tabel Seratus. Tandai kelipatan.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -475,9 +461,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "diagram-lanjut",
       "title": "Diagram Barisan",
       "bookReference": "hlm. 33–37",
-      "objective": "Pakai Tabel Seratus: Tandai kelipatan pada tabel seratus untuk melihat pola. Latihan: Lanjut barisan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Hundred Chart: Tandai kelipatan pada tabel seratus untuk melihat pola.",
-      "voiceGuide": "Tabel Seratus. Tandai kelipatan pada tabel seratus untuk melihat pola.",
+      "objective": "Pakai pola tabel. Latihan: Lanjut barisan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Tabel Seratus: Tandai kelipatan.",
+      "voiceGuide": "Tabel Seratus. Tandai kelipatan.",
       "diagramType": "seq",
       "numberA": 1,
       "numberB": 2
@@ -487,9 +473,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "match-diagram-a",
       "title": "Jodohkan Diagram A",
       "bookReference": "hlm. 33–37",
-      "objective": "Pakai Tabel Seratus: Tandai kelipatan pada tabel seratus untuk melihat pola. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Hundred Chart: Tandai kelipatan pada tabel seratus untuk melihat pola.",
-      "voiceGuide": "Tabel Seratus. Tandai kelipatan pada tabel seratus untuk melihat pola.",
+      "objective": "Pakai pola tabel. Latihan: Jodohkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Tabel Seratus: Tandai kelipatan.",
+      "voiceGuide": "Tabel Seratus. Tandai kelipatan.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -499,9 +485,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "memory-diagram-a",
       "title": "Memori Diagram A",
       "bookReference": "hlm. 33–37",
-      "objective": "Pakai Tabel Seratus: Tandai kelipatan pada tabel seratus untuk melihat pola. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Hundred Chart: Tandai kelipatan pada tabel seratus untuk melihat pola.",
-      "voiceGuide": "Tabel Seratus. Tandai kelipatan pada tabel seratus untuk melihat pola.",
+      "objective": "Pakai pola tabel. Latihan: Memori..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Tabel Seratus: Tandai kelipatan.",
+      "voiceGuide": "Tabel Seratus. Tandai kelipatan.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -511,9 +497,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "table-a",
       "title": "Tabel Cek Kelipatan",
       "bookReference": "hlm. 35–37",
-      "objective": "Isi tabel.. Ingat Tabel Seratus.",
+      "objective": "Isi tabel.. Ingat Tabel Seratus. (Tabel Seratus)",
       "mechanicDescription": "Tiga tabel. Gunakan Tabel Seratus.",
-      "voiceGuide": "Tabel Seratus. Pilih.",
+      "voiceGuide": "Tabel Seratus. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -523,9 +509,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "tap-all-pa",
       "title": "Ketuk Semua Diagram A",
       "bookReference": "hlm. 35–37",
-      "objective": "Ketuk semua.. Ingat Tabel Seratus.",
+      "objective": "Ketuk semua.. Ingat Tabel Seratus. (Tabel Seratus)",
       "mechanicDescription": "Tiga ronde. Gunakan Tabel Seratus.",
-      "voiceGuide": "Tabel Seratus. Ketuk semua.",
+      "voiceGuide": "Tabel Seratus. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -535,9 +521,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "sort-diagram-a",
       "title": "Pilah Diagram A",
       "bookReference": "hlm. 35–37",
-      "objective": "Pilah.. Ingat Tabel Seratus.",
+      "objective": "Pilah.. Ingat Tabel Seratus. (Tabel Seratus)",
       "mechanicDescription": "Tiga ronde. Gunakan Tabel Seratus.",
-      "voiceGuide": "Tabel Seratus. Pilah.",
+      "voiceGuide": "Tabel Seratus. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -547,9 +533,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "choose-a",
       "title": "Pilih Pernyataan A",
       "bookReference": "hlm. 33–37",
-      "objective": "Pilih.. Ingat Tabel Seratus.",
+      "objective": "Pilih.. Ingat Tabel Seratus. (Tabel Seratus)",
       "mechanicDescription": "Tiga ronde. Gunakan Tabel Seratus.",
-      "voiceGuide": "Tabel Seratus. Pilih.",
+      "voiceGuide": "Tabel Seratus. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -559,9 +545,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "jenis-pa",
       "title": "Pilih Arti Diagram",
       "bookReference": "hlm. 35",
-      "objective": "Definisi.. Ingat Tabel Seratus.",
+      "objective": "Definisi.. Ingat Tabel Seratus. (Tabel Seratus)",
       "mechanicDescription": "Tiga ronde. Gunakan Tabel Seratus.",
-      "voiceGuide": "Tabel Seratus. Pilih.",
+      "voiceGuide": "Tabel Seratus. Mainkan dengan teliti.",
       "diagramType": "def",
       "numberA": 1,
       "numberB": 2
@@ -571,9 +557,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "story-picture-a",
       "title": "Cerita Diagram A",
       "bookReference": "hlm. 33–37",
-      "objective": "Cerita.. Ingat Tabel Seratus.",
+      "objective": "Cerita.. Ingat Tabel Seratus. (Tabel Seratus)",
       "mechanicDescription": "Tiga ronde. Gunakan Tabel Seratus.",
-      "voiceGuide": "Tabel Seratus. Pilih.",
+      "voiceGuide": "Tabel Seratus. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -583,9 +569,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "write-cek",
       "title": "Tulis Cek Kelipatan",
       "bookReference": "hlm. 35–37",
-      "objective": "Pakai Cek Habis Dibagi: Angka adalah kelipatan jika habis dibagi bilangan itu. Latihan: Menulis..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Divisibility Check: Angka adalah kelipatan jika habis dibagi bilangan itu.",
-      "voiceGuide": "Cek Habis Dibagi. Angka adalah kelipatan jika habis dibagi bilangan itu.",
+      "objective": "Bagi dan lihat sisa. Latihan: Menulis..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Cek Habis Dibagi: Sisa nol = ya.",
+      "voiceGuide": "Cek Habis Dibagi. Sisa nol = ya.",
       "symbolLarge": "3×n",
       "wordLarge": "CEK",
       "mathNotation": "kelipatan"
@@ -595,9 +581,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "write-lanjut",
       "title": "Tulis Lanjutan",
       "bookReference": "hlm. 33–37",
-      "objective": "Pakai Cek Habis Dibagi: Angka adalah kelipatan jika habis dibagi bilangan itu. Latihan: Menulis lanjut..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Divisibility Check: Angka adalah kelipatan jika habis dibagi bilangan itu.",
-      "voiceGuide": "Cek Habis Dibagi. Angka adalah kelipatan jika habis dibagi bilangan itu.",
+      "objective": "Bagi dan lihat sisa. Latihan: Menulis lanjut..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Cek Habis Dibagi: Sisa nol = ya.",
+      "voiceGuide": "Cek Habis Dibagi. Sisa nol = ya.",
       "symbolLarge": "+n",
       "wordLarge": "LANJUT",
       "mathNotation": "barisan"
@@ -607,9 +593,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "choose-def-a",
       "title": "Pilih Definisi",
       "bookReference": "hlm. 35",
-      "objective": "Pakai Cek Habis Dibagi: Angka adalah kelipatan jika habis dibagi bilangan itu. Latihan: Definisi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Divisibility Check: Angka adalah kelipatan jika habis dibagi bilangan itu.",
-      "voiceGuide": "Cek Habis Dibagi. Angka adalah kelipatan jika habis dibagi bilangan itu.",
+      "objective": "Bagi dan lihat sisa. Latihan: Definisi..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Cek Habis Dibagi: Sisa nol = ya.",
+      "voiceGuide": "Cek Habis Dibagi. Sisa nol = ya.",
       "symbolLarge": "arti",
       "wordLarge": "DEFINISI",
       "mathNotation": "teks"
@@ -619,9 +605,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "order-abstract-a",
       "title": "Urutkan Abstrak A",
       "bookReference": "hlm. 35–37",
-      "objective": "Pakai Cek Habis Dibagi: Angka adalah kelipatan jika habis dibagi bilangan itu. Latihan: Urut..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Divisibility Check: Angka adalah kelipatan jika habis dibagi bilangan itu.",
-      "voiceGuide": "Cek Habis Dibagi. Angka adalah kelipatan jika habis dibagi bilangan itu.",
+      "objective": "Bagi dan lihat sisa. Latihan: Urut..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Cek Habis Dibagi: Sisa nol = ya.",
+      "voiceGuide": "Cek Habis Dibagi. Sisa nol = ya.",
       "symbolLarge": "naik",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -631,9 +617,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "match-abstract-a",
       "title": "Jodohkan Notasi A",
       "bookReference": "hlm. 33–37",
-      "objective": "Jodohkan.. Ingat Cek Habis Dibagi.",
+      "objective": "Jodohkan.. Ingat Cek Habis Dibagi. (Cek Habis Dibagi)",
       "mechanicDescription": "Tiga ronde. Gunakan Cek Habis Dibagi.",
-      "voiceGuide": "Cek Habis Dibagi. Jodohkan.",
+      "voiceGuide": "Cek Habis Dibagi. Mainkan dengan teliti.",
       "symbolLarge": "×",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -643,9 +629,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "memory-abstract-a",
       "title": "Memori Notasi A",
       "bookReference": "hlm. 33–37",
-      "objective": "Memori.. Ingat Cek Habis Dibagi.",
+      "objective": "Memori.. Ingat Cek Habis Dibagi. (Cek Habis Dibagi)",
       "mechanicDescription": "Tiga ronde. Gunakan Cek Habis Dibagi.",
-      "voiceGuide": "Cek Habis Dibagi. Balik kartu.",
+      "voiceGuide": "Cek Habis Dibagi. Mainkan dengan teliti.",
       "symbolLarge": "kel",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -655,9 +641,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "true-false-a",
       "title": "Benar atau Salah: Kelipatan",
       "bookReference": "hlm. 33–37",
-      "objective": "Menilai.. Ingat Cek Habis Dibagi.",
+      "objective": "Menilai.. Ingat Cek Habis Dibagi. (Cek Habis Dibagi)",
       "mechanicDescription": "Dua ronde. Gunakan Cek Habis Dibagi.",
-      "voiceGuide": "Cek Habis Dibagi. Benar/salah.",
+      "voiceGuide": "Cek Habis Dibagi. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -667,9 +653,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "detective-a",
       "title": "Detektif Kelipatan",
       "bookReference": "hlm. 33–37",
-      "objective": "Petunjuk.. Ingat Cek Habis Dibagi.",
+      "objective": "Petunjuk.. Ingat Cek Habis Dibagi. (Cek Habis Dibagi)",
       "mechanicDescription": "Tiga soal. Gunakan Cek Habis Dibagi.",
-      "voiceGuide": "Cek Habis Dibagi. Pilih.",
+      "voiceGuide": "Cek Habis Dibagi. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -679,9 +665,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "concept-a",
       "title": "Peta Konsep Kelipatan",
       "bookReference": "hlm. 33–37",
-      "objective": "Peta.. Ingat Cek Habis Dibagi.",
+      "objective": "Peta.. Ingat Cek Habis Dibagi. (Cek Habis Dibagi)",
       "mechanicDescription": "Satu peta. Gunakan Cek Habis Dibagi.",
-      "voiceGuide": "Cek Habis Dibagi. Pilih opsi.",
+      "voiceGuide": "Cek Habis Dibagi. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -691,9 +677,9 @@ export const SUB_A52: SubBabNaskah = {
       "gameType": "story-abstract-a",
       "title": "Cerita Angka Kelipatan",
       "bookReference": "hlm. 33–37",
-      "objective": "Cerita.. Ingat Cek Habis Dibagi.",
+      "objective": "Cerita.. Ingat Cek Habis Dibagi. (Cek Habis Dibagi)",
       "mechanicDescription": "Tiga ronde. Gunakan Cek Habis Dibagi.",
-      "voiceGuide": "Cek Habis Dibagi. Pilih.",
+      "voiceGuide": "Cek Habis Dibagi. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -701,37 +687,31 @@ export const SUB_A52: SubBabNaskah = {
   ],
   "poin": [
     {
-      "ikon": "✖️",
-      "nama": "Kelipatan",
-      "isi": "Hasil kali bilangan dengan bilangan bulat positif.",
-      "suara": "Kelipatan adalah hasil kali."
+      "ikon": "🦘",
+      "nama": "Lompat hitung",
+      "isi": "Kelipatan = pendaratan lompat berjarak sama.",
+      "suara": "Skip counting."
     },
     {
-      "ikon": "👏",
-      "nama": "Tepuk",
-      "isi": "Bertepuk saat bilangan kelipatan yang dipilih.",
-      "suara": "Tepuk pada kelipatan."
+      "ikon": "➗",
+      "nama": "Sisa nol",
+      "isi": "Habis dibagi berarti termasuk kelipatan.",
+      "suara": "Cek sisa."
     },
     {
-      "ikon": "🌍",
-      "nama": "Lompat Hitung",
-      "isi": "Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
-      "suara": "Lompat Hitung. Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …"
+      "ikon": "▦",
+      "nama": "Tabel seratus",
+      "isi": "Pola visual membantu mengingat daftar.",
+      "suara": "Hundred chart."
     },
     {
-      "ikon": "🌍",
-      "nama": "Tabel Seratus",
-      "isi": "Tandai kelipatan pada tabel seratus untuk melihat pola.",
-      "suara": "Tabel Seratus. Tandai kelipatan pada tabel seratus untuk melihat pola."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Cek Habis Dibagi",
-      "isi": "Angka adalah kelipatan jika habis dibagi bilangan itu.",
-      "suara": "Cek Habis Dibagi. Angka adalah kelipatan jika habis dibagi bilangan itu."
+      "ikon": "📝",
+      "nama": "Daftar rapi",
+      "isi": "Tulis berurutan, hormati batas soal.",
+      "suara": "Daftar."
     }
   ],
-  "poinSuara": "Ingat: Lompat Hitung, Tabel Seratus, Cek Habis Dibagi.",
+  "poinSuara": "Lompat hitung, cek sisa nol, dan pola tabel seratus.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -753,46 +733,47 @@ export const SUB_A52: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Lompat Hitung pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Lompat Hitung pada satu soal di rumah.",
   "refleksi": [
-    "Bagaimana Lompat Hitung membantumu memahami soal?",
-    "Kapan kamu memakai Tabel Seratus?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Lompat Hitung membantumu?",
+    "Kapan memakai Tabel Seratus?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
       "label": "METODE LUAR",
       "nama": "Skip Counting",
       "namaId": "Lompat Hitung",
-      "asal": "Van de Walle",
-      "ringkas": "Kelipatan didapat dengan melompat tetap: 3, 6, 9, 12, …",
+      "asal": "Number sense / Singapore",
+      "ringkas": "Kelipatan didapat dengan melompat jarak sama di garis bilangan atau hitungan.",
       "tahap": [
         "Story",
-        "Concrete",
-        "Picture"
+        "Mind",
+        "Concrete"
       ]
     },
     {
       "label": "METODE LUAR",
       "nama": "Hundred Chart",
       "namaId": "Tabel Seratus",
-      "asal": "Van de Walle",
-      "ringkas": "Tandai kelipatan pada tabel seratus untuk melihat pola.",
+      "asal": "Elementary number sense",
+      "ringkas": "Tandai kelipatan pada tabel 1–100 untuk melihat pola.",
       "tahap": [
-        "Mind",
-        "Infografis",
-        "Picture"
+        "Story",
+        "Picture",
+        "Infografis"
       ]
     },
     {
       "label": "METODE LUAR",
       "nama": "Divisibility Check",
       "namaId": "Cek Habis Dibagi",
-      "asal": "Number sense",
-      "ringkas": "Angka adalah kelipatan jika habis dibagi bilangan itu.",
+      "asal": "Number theory intro",
+      "ringkas": "Bilangan A kelipatan B jika A habis dibagi B (sisa 0).",
       "tahap": [
-        "Concrete",
-        "Abstract"
+        "Story",
+        "Abstract",
+        "Concrete"
       ]
     }
   ]
@@ -802,177 +783,177 @@ export const SUB_B52: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Kelipatan Persekutuan)",
   "fullTitle": "Sub-Bab B: Kelipatan Persekutuan dan KPK",
-  "targetDescription": "Siswa menemukan kelipatan persekutuan dua bilangan atau lebih, menentukan KPK dengan daftar kelipatan, serta menerapkan KPK pada jadwal latihan bersama sesuai Buku Siswa Kelas V Bab 2. Siswa memakai cara Daftar Kelipatan Bersama, KPK dari Faktor Prima, Diagram Faktor.",
+  "targetDescription": "Siswa menentukan kelipatan persekutuan dan KPK dari dua bilangan dengan daftar bersama dan pengantar faktor prima sesuai Buku Siswa Kelas V Bab 2 Sub-Bab B.",
   "secondaryBg": "#DBEAFE",
   "secondaryBorder": "#2563EB",
   "secondaryText": "#1E3A8A",
   "silabus": {
-    "teksSuara": "Kita belajar kelipatan persekutuan. Irisan daftar kelipatan dua bilangan disebut kelipatan persekutuan. Yang terkecil disebut KPK. KPK membantu mencari jadwal bertemu berikutnya, seperti latihan renang Nisa dan Yohana. Kita memakai cara dari luar buku: Daftar Kelipatan Bersama (LCM Listing); KPK dari Faktor Prima (Prime Factor KPK); Diagram Faktor (Venn Factors). Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK. Ambil faktor prima dengan pangkat tertinggi, lalu kalikan. Gabungan himpunan faktor prima membantu menemukan KPK. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-    "cp": "Siswa menentukan kelipatan persekutuan dan KPK dua atau lebih bilangan.",
-    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2: KPK dan FPB, Sub-Bab B)."
+    "teksSuara": "Kita mencari bilangan yang menjadi kelipatan dua bilangan sekaligus. Itu kelipatan persekutuan. Yang terkecil disebut KPK. Buat dua daftar, cari irisan, ambil yang terkecil. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menentukan kelipatan persekutuan dan KPK dua bilangan.",
+    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2 Sub-Bab B)."
   },
   "videos": [
     {
       "id": "K5B2B-V1",
-      "judul": "Kelipatan Persekutuan",
-      "subjudul": "LCM Listing",
+      "judul": "Irisan Dua Daftar",
+      "subjudul": "Daftar Kelipatan Bersama",
       "adegan": [
         {
           "id": "K5B2B-V1-1",
-          "judul": "Tepuk 2 dan 3",
+          "judul": "Soal",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Kelipatan dua: tepuk tangan. Mari kita pahami bersama.",
-            "Kelipatan tiga: ucap hore. Mari kita pahami bersama.",
-            "Jika keduanya, tepuk dan hore. Mari kita pahami bersama.",
-            "Ingat cara Daftar Kelipatan Bersama: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK."
+            "Cari bilangan yang kelipatan 4 dan sekaligus kelipatan 6.",
+            "Buat daftar kelipatan 4: 4, 8, 12, 16, 20, 24, …",
+            "Buat daftar kelipatan 6: 6, 12, 18, 24, …",
+            "Yang muncul di keduanya: 12, 24, … Itu kelipatan persekutuan."
           ],
           "papan": [
-            "tepuk",
-            "hore",
-            "keduanya",
+            "4 dan 6",
+            "daftar 4",
+            "daftar 6",
             "irisan"
           ]
         },
         {
           "id": "K5B2B-V1-2",
-          "judul": "Contoh enam",
+          "judul": "Ambil terkecil",
           "ketukan": [
-            "Enam, dua belas, delapan belas. Mari kita pahami bersama.",
-            "Semua kelipatan dua dan tiga. Mari kita pahami bersama.",
-            "Itu kelipatan persekutuan. Mari kita pahami bersama.",
-            "Di sini kita memakai ide LCM Listing — Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK."
+            "Dari irisan, yang terkecil adalah 12. Itulah KPK 4 dan 6.",
+            "METODE LUAR · Daftar Kelipatan Bersama: irisan dulu, baru pilih terkecil.",
+            "Jangan mengambil bilangan yang hanya ada di satu daftar.",
+            "Cek: 12÷4=3 dan 12÷6=2, keduanya habis."
           ],
           "papan": [
-            "12",
-            "18",
-            "sama",
-            "daftar"
+            "KPK=12",
+            "cara",
+            "jangan",
+            "cek"
           ]
         },
         {
           "id": "K5B2B-V1-3",
-          "judul": "Yang terkecil",
+          "judul": "Visual tabel",
           "ketukan": [
-            "Dari daftar yang sama. Mari kita pahami bersama.",
-            "Ambil yang paling kecil. Mari kita pahami bersama.",
-            "Itu KPK. Mari kita pahami bersama.",
-            "METODE LUAR · Daftar Kelipatan Bersama: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK."
+            "Di tabel seratus, kotak yang ditandai dua warna adalah calon KPK.",
+            "Yang paling kecil di antara itu adalah KPK.",
+            "Visual memperkuat daftar tertulis.",
+            "Siap contoh lain."
           ],
           "papan": [
-            "daftar",
+            "dua warna",
             "terkecil",
-            "KPK",
-            "nama"
+            "padu",
+            "lanjut"
           ]
         }
       ]
     },
     {
       "id": "K5B2B-V2",
-      "judul": "Latihan: KPK dari Faktor Prima",
-      "subjudul": "Prime Factor KPK",
+      "judul": "Arti KPK",
+      "subjudul": "KPK dari Irisan",
       "adegan": [
         {
           "id": "K5B2B-V2-1",
-          "judul": "Contoh 4 dan 5",
+          "judul": "Cerita lampu",
           "ketukan": [
-            "Tulis kelipatan empat. Mari kita pahami bersama.",
-            "Tulis kelipatan lima. Mari kita pahami bersama.",
-            "Tandai yang sama. Mari kita pahami bersama.",
-            "Ingat cara KPK dari Faktor Prima: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan."
+            "Lampu A menyala tiap 4 hari, lampu B tiap 6 hari. Kapan menyala bersama pertama kali?",
+            "Itu soal KPK: pertemuan pertama kelipatan keduanya.",
+            "Jawaban 12 hari.",
+            "KPK menjawab 'kapan bersama pertama kali'."
           ],
           "papan": [
-            "4,…",
-            "5,…",
-            "sama",
-            "20"
+            "cerita",
+            "arti",
+            "12 hari",
+            "makna"
           ]
         },
         {
           "id": "K5B2B-V2-2",
-          "judul": "Langkah umum",
+          "judul": "Bukan FPB",
           "ketukan": [
-            "Buat dua daftar. Mari kita pahami bersama.",
-            "Cari irisan. Mari kita pahami bersama.",
-            "Pilih terkecil. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Prime Factor KPK — Ambil faktor prima dengan pangkat tertinggi, lalu kalikan."
+            "Jangan tertukar dengan FPB. FPB mencari pembagi terbesar bersama.",
+            "KPK mencari kelipatan terkecil bersama.",
+            "Satu memakai daftar kelipatan, satu memakai daftar faktor.",
+            "METODE LUAR · KPK dari Irisan: selalu irisan kelipatan."
           ],
           "papan": [
-            "daftar",
-            "irisan",
-            "min",
-            "KPK"
+            "bukan FPB",
+            "KPK",
+            "beda alat",
+            "ingat"
           ]
         },
         {
           "id": "K5B2B-V2-3",
-          "judul": "Tiga bilangan",
+          "judul": "Pratinjau prima",
           "ketukan": [
-            "Bisa tiga bilangan. Mari kita pahami bersama.",
-            "Misal tiga, empat, lima. Mari kita pahami bersama.",
-            "KPK-nya enam puluh. Mari kita pahami bersama.",
-            "METODE LUAR · KPK dari Faktor Prima: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan."
+            "Nanti di Sub-Bab E, KPK dihitung dari faktor prima.",
+            "Dasar konsepnya sama: kelipatan terkecil bersama.",
+            "Hari ini kuasai cara daftar sampai lancar.",
+            "Ayo main menentukan KPK."
           ],
           "papan": [
-            "60",
-            "kpk",
-            "kpk",
-            "kpk"
+            "pratinjau",
+            "sama konsep",
+            "latihan",
+            "main"
           ]
         }
       ]
     },
     {
       "id": "K5B2B-V3",
-      "judul": "Siap pakai Venn Factors",
-      "subjudul": "Venn Factors",
+      "judul": "Latihan Cepat KPK",
+      "subjudul": "KPK dari Faktor Prima",
       "adegan": [
         {
           "id": "K5B2B-V3-1",
-          "judul": "Nisa dan Yohana",
+          "judul": "3 dan 5",
           "ketukan": [
-            "Nisa tiap tiga hari. Mari kita pahami bersama.",
-            "Yohana tiap empat hari. Mari kita pahami bersama.",
-            "KPK dua belas hari. Mari kita pahami bersama.",
-            "Ingat cara Diagram Faktor: Gabungan himpunan faktor prima membantu menemukan KPK."
+            "Kelipatan 3: 3, 6, 9, 12, 15, …",
+            "Kelipatan 5: 5, 10, 15, …",
+            "Irisan pertama 15. KPK=15.",
+            "Karena 3 dan 5 saling prima, KPK=hasil kali. Itu tip nanti."
           ],
           "papan": [
-            "3 hari",
-            "4 hari",
-            "KPK 12",
-            "bertemu"
+            "d3",
+            "d5",
+            "15",
+            "tip"
           ]
         },
         {
           "id": "K5B2B-V3-2",
-          "judul": "Tanggal",
+          "judul": "Cek kesalahan",
           "ketukan": [
-            "Mulai tiga Agustus. Mari kita pahami bersama.",
-            "Tambah dua belas hari. Mari kita pahami bersama.",
-            "Hasilnya lima belas Agustus. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Venn Factors — Gabungan himpunan faktor prima membantu menemukan KPK."
+            "Kesalahan: mengalikan selalu. Untuk 4 dan 6, 4×6=24, padahal KPK=12.",
+            "Selalu cek irisan, jangan otomatis kali.",
+            "Kesalahan lain: mengambil FPB sebagai KPK.",
+            "Ulangi definisi sebelum menjawab."
           ],
           "papan": [
-            "3 Agu",
-            "+12",
-            "15 Agu",
-            "terdekat"
+            "salah kali",
+            "cek irisan",
+            "tertukar",
+            "definisi"
           ]
         },
         {
           "id": "K5B2B-V3-3",
-          "judul": "Siap bermain",
+          "judul": "Siap C",
           "ketukan": [
-            "Irisan sudah jelas. Mari kita pahami bersama.",
-            "KPK dan jadwal siap. Mari kita pahami bersama.",
-            "Ayo ke permainan. Mari kita pahami bersama.",
-            "METODE LUAR · Diagram Faktor: Gabungan himpunan faktor prima membantu menemukan KPK."
+            "KPK siap. Berikutnya kita bahas faktor.",
+            "Faktor adalah kebalikan arah dari kelipatan.",
+            "Simpan daftar irisan sebagai senjata utama.",
+            "Mainkan permainan KPK!"
           ],
           "papan": [
-            "irisan",
-            "KPK",
-            "main",
-            "semangat"
+            "lanjut C",
+            "kebalikan",
+            "senjata",
+            "main"
           ]
         }
       ]
@@ -981,64 +962,64 @@ export const SUB_B52: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Kelipatan Persekutuan dan KPK. Apa yang ditanyakan?",
+      "stepTitle": "1. Dua bilangan",
+      "stepDesc": "KPK dari a dan b?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. LCM Listing",
-      "stepDesc": "Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
-      "icon": "🧭",
+      "stepTitle": "2. Daftar a",
+      "stepDesc": "Kelipatan a berurutan.",
+      "icon": "📋",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Prime Factor KPK",
-      "stepDesc": "Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
-      "icon": "🛠️",
+      "stepTitle": "3. Daftar b",
+      "stepDesc": "Kelipatan b berurutan.",
+      "icon": "📋",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Venn Factors",
-      "stepDesc": "Gabungan himpunan faktor prima membantu menemukan KPK.",
-      "icon": "✨",
+      "stepTitle": "4. Irisan",
+      "stepDesc": "Angka yang muncul di keduanya.",
+      "icon": "⋂",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
-      "icon": "✏️",
+      "stepTitle": "5. Terkecil",
+      "stepDesc": "Itu KPK.",
+      "icon": "⭐",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
-      "icon": "✅",
+      "stepTitle": "6. Cek bagi",
+      "stepDesc": "KPK habis dibagi a dan b?",
+      "icon": "➗",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
-      "icon": "💬",
+      "stepTitle": "7. Bukan FPB",
+      "stepDesc": "Jangan tertukar arti.",
+      "icon": "🚫",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latihan KPK.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -1046,88 +1027,74 @@ export const SUB_B52: SubBabNaskah = {
   ],
   "infografis": [
     {
-      "judul": "Persekutuan",
-      "emoji": "🤝",
-      "countNum": 1,
-      "countWord": "irisan",
-      "suara": "Kelipatan yang sama."
+      "judul": "Daftar 4",
+      "emoji": "📋",
+      "countNum": 4,
+      "countWord": "4,8,12",
+      "suara": "Kel.4"
+    },
+    {
+      "judul": "Daftar 6",
+      "emoji": "📋",
+      "countNum": 6,
+      "countWord": "6,12,24",
+      "suara": "Kel.6"
+    },
+    {
+      "judul": "Irisan",
+      "emoji": "⋂",
+      "countNum": 12,
+      "countWord": "12,24",
+      "suara": "Bersama"
     },
     {
       "judul": "KPK",
-      "emoji": "🎯",
-      "countNum": 1,
-      "countWord": "terkecil",
-      "suara": "Yang paling kecil."
-    },
-    {
-      "judul": "4 & 5",
-      "emoji": "🔢",
-      "countNum": 20,
-      "countWord": "KPK=20",
-      "suara": "Contoh buku."
-    },
-    {
-      "judul": "2 & 3",
-      "emoji": "👏",
-      "countNum": 6,
-      "countWord": "KPK=6",
-      "suara": "Tepuk dan hore."
-    },
-    {
-      "judul": "3 & 4",
-      "emoji": "🏊",
+      "emoji": "⭐",
       "countNum": 12,
-      "countWord": "renang",
-      "suara": "Nisa dan Yohana."
+      "countWord": "terkecil",
+      "suara": "KPK=12"
     },
     {
-      "judul": "Tanggal",
-      "emoji": "📅",
+      "judul": "Cerita",
+      "emoji": "💡",
+      "countNum": 12,
+      "countWord": "hari",
+      "suara": "Nyala bersama"
+    },
+    {
+      "judul": "Bukan 24",
+      "emoji": "🚫",
+      "countNum": 24,
+      "countWord": "bukan min",
+      "suara": "4×6 salah"
+    },
+    {
+      "judul": "3&5",
+      "emoji": "⭐",
       "countNum": 15,
-      "countWord": "15 Agustus",
-      "suara": "3 + 12 hari."
+      "countWord": "KPK",
+      "suara": "15"
     },
     {
-      "judul": "Cara",
-      "emoji": "📋",
+      "judul": "Cek",
+      "emoji": "➗",
+      "countNum": 0,
+      "countWord": "sisa",
+      "suara": "Habis"
+    },
+    {
+      "judul": "Tabel",
+      "emoji": "▦",
       "countNum": 1,
-      "countWord": "daftar",
-      "suara": "Tulis lalu tandai."
-    },
-    {
-      "judul": "3 bilangan",
-      "emoji": "3️⃣",
-      "countNum": 60,
-      "countWord": "3,4,5",
-      "suara": "KPK=60."
-    },
-    {
-      "judul": "Pakai",
-      "emoji": "🕒",
-      "countNum": 1,
-      "countWord": "jadwal",
-      "suara": "Waktu bertemu lagi."
+      "countWord": "dua warna",
+      "suara": "Visual"
     },
     {
       "judul": "Siap C",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "faktor",
-      "suara": "Lanjut faktor."
-    },
-    {
-      "judul": "Daftar Kelipatan Bersama",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK."
-    },
-    {
-      "judul": "KPK dari Faktor Prima",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Ambil faktor prima dengan pangkat tertinggi, lalu kalikan."
+      "suara": "Lanjut"
     }
   ],
   "games": [
@@ -1136,9 +1103,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "cek-persekutuan",
       "title": "Cek Kelipatan Persekutuan",
       "bookReference": "hlm. 38–40",
-      "objective": "Pakai Daftar Kelipatan Bersama: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK. Latihan: Mengenali irisan kelipatan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan LCM Listing: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
-      "voiceGuide": "Daftar Kelipatan Bersama. Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
+      "objective": "Cari irisan dua daftar. Latihan: Mengenali irisan kelipatan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Daftar Kelipatan Bersama: Yang muncul di keduanya.",
+      "voiceGuide": "Daftar Kelipatan Bersama. Yang muncul di keduanya.",
       "emoji": "🤝",
       "targetCount": 6
     },
@@ -1147,9 +1114,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "hitung-kpk",
       "title": "Hitung KPK",
       "bookReference": "hlm. 40–42",
-      "objective": "Pakai Daftar Kelipatan Bersama: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK. Latihan: Menemukan KPK..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan LCM Listing: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
-      "voiceGuide": "Daftar Kelipatan Bersama. Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
+      "objective": "Cari irisan dua daftar. Latihan: Menemukan KPK..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Daftar Kelipatan Bersama: Yang muncul di keduanya.",
+      "voiceGuide": "Daftar Kelipatan Bersama. Yang muncul di keduanya.",
       "emoji": "🎯",
       "targetCount": 6
     },
@@ -1158,9 +1125,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "jadwal-kpk",
       "title": "Jadwal dengan KPK",
       "bookReference": "hlm. 41–42",
-      "objective": "Pakai Daftar Kelipatan Bersama: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK. Latihan: Soal jadwal..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan LCM Listing: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
-      "voiceGuide": "Daftar Kelipatan Bersama. Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
+      "objective": "Cari irisan dua daftar. Latihan: Soal jadwal..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Daftar Kelipatan Bersama: Yang muncul di keduanya.",
+      "voiceGuide": "Daftar Kelipatan Bersama. Yang muncul di keduanya.",
       "emoji": "📅",
       "targetCount": 6
     },
@@ -1169,9 +1136,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "sort-persekutuan",
       "title": "Pilah Persekutuan",
       "bookReference": "hlm. 38–40",
-      "objective": "Pakai Daftar Kelipatan Bersama: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK. Latihan: Memilah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan LCM Listing: Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
-      "voiceGuide": "Daftar Kelipatan Bersama. Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
+      "objective": "Cari irisan dua daftar. Latihan: Memilah..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Daftar Kelipatan Bersama: Yang muncul di keduanya.",
+      "voiceGuide": "Daftar Kelipatan Bersama. Yang muncul di keduanya.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -1180,9 +1147,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "match-kpk",
       "title": "Jodohkan KPK",
       "bookReference": "hlm. 40–42",
-      "objective": "Menjodohkan.. Ingat Daftar Kelipatan Bersama.",
+      "objective": "Menjodohkan.. Ingat Daftar Kelipatan Bersama. (Daftar Kelipatan Bersama)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Kelipatan Bersama.",
-      "voiceGuide": "Daftar Kelipatan Bersama. Jodohkan.",
+      "voiceGuide": "Daftar Kelipatan Bersama. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -1191,9 +1158,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "memory-kpk",
       "title": "Memori KPK",
       "bookReference": "hlm. 40–42",
-      "objective": "Memori.. Ingat Daftar Kelipatan Bersama.",
+      "objective": "Memori.. Ingat Daftar Kelipatan Bersama. (Daftar Kelipatan Bersama)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Kelipatan Bersama.",
-      "voiceGuide": "Daftar Kelipatan Bersama. Balik kartu.",
+      "voiceGuide": "Daftar Kelipatan Bersama. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1202,9 +1169,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "tap-persekutuan",
       "title": "Ketuk Persekutuan",
       "bookReference": "hlm. 38–40",
-      "objective": "Mengetuk.. Ingat Daftar Kelipatan Bersama.",
+      "objective": "Mengetuk.. Ingat Daftar Kelipatan Bersama. (Daftar Kelipatan Bersama)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Kelipatan Bersama.",
-      "voiceGuide": "Daftar Kelipatan Bersama. Ketuk.",
+      "voiceGuide": "Daftar Kelipatan Bersama. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -1213,9 +1180,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "tap-all-kpk",
       "title": "Ketuk Semua Benar KPK",
       "bookReference": "hlm. 38–42",
-      "objective": "Ketuk semua.. Ingat Daftar Kelipatan Bersama.",
+      "objective": "Ketuk semua.. Ingat Daftar Kelipatan Bersama. (Daftar Kelipatan Bersama)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Kelipatan Bersama.",
-      "voiceGuide": "Daftar Kelipatan Bersama. Ketuk semua.",
+      "voiceGuide": "Daftar Kelipatan Bersama. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -1224,9 +1191,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "story-renang",
       "title": "Cerita Latihan Renang",
       "bookReference": "hlm. 31–42",
-      "objective": "Soal cerita.. Ingat Daftar Kelipatan Bersama.",
+      "objective": "Soal cerita.. Ingat Daftar Kelipatan Bersama. (Daftar Kelipatan Bersama)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Kelipatan Bersama.",
-      "voiceGuide": "Daftar Kelipatan Bersama. Pilih.",
+      "voiceGuide": "Daftar Kelipatan Bersama. Mainkan dengan teliti.",
       "emoji": "🏊",
       "targetCount": 6
     },
@@ -1235,9 +1202,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "order-kpk",
       "title": "Urutkan Hasil KPK",
       "bookReference": "hlm. 40–42",
-      "objective": "Mengurutkan.. Ingat Daftar Kelipatan Bersama.",
+      "objective": "Mengurutkan.. Ingat Daftar Kelipatan Bersama. (Daftar Kelipatan Bersama)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Kelipatan Bersama.",
-      "voiceGuide": "Daftar Kelipatan Bersama. Urutkan.",
+      "voiceGuide": "Daftar Kelipatan Bersama. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -1246,9 +1213,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "diagram-persekutuan",
       "title": "Diagram Persekutuan",
       "bookReference": "hlm. 38–40",
-      "objective": "Pakai KPK dari Faktor Prima: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan. Latihan: Baca irisan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Prime Factor KPK: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
-      "voiceGuide": "KPK dari Faktor Prima. Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
+      "objective": "Ambil irisan terkecil. Latihan: Baca irisan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat KPK dari Irisan: Itu KPK.",
+      "voiceGuide": "KPK dari Irisan. Itu KPK.",
       "diagramType": "venn",
       "numberA": 1,
       "numberB": 2
@@ -1258,9 +1225,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "diagram-kpk",
       "title": "Diagram KPK",
       "bookReference": "hlm. 40–42",
-      "objective": "Pakai KPK dari Faktor Prima: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan. Latihan: Baca KPK..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Prime Factor KPK: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
-      "voiceGuide": "KPK dari Faktor Prima. Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
+      "objective": "Ambil irisan terkecil. Latihan: Baca KPK..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat KPK dari Irisan: Itu KPK.",
+      "voiceGuide": "KPK dari Irisan. Itu KPK.",
       "diagramType": "lcm",
       "numberA": 1,
       "numberB": 2
@@ -1270,9 +1237,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "match-diagram-b",
       "title": "Jodohkan Diagram B",
       "bookReference": "hlm. 38–42",
-      "objective": "Pakai KPK dari Faktor Prima: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Prime Factor KPK: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
-      "voiceGuide": "KPK dari Faktor Prima. Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
+      "objective": "Ambil irisan terkecil. Latihan: Jodohkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat KPK dari Irisan: Itu KPK.",
+      "voiceGuide": "KPK dari Irisan. Itu KPK.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -1282,9 +1249,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "memory-diagram-b",
       "title": "Memori Diagram B",
       "bookReference": "hlm. 38–42",
-      "objective": "Pakai KPK dari Faktor Prima: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Prime Factor KPK: Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
-      "voiceGuide": "KPK dari Faktor Prima. Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
+      "objective": "Ambil irisan terkecil. Latihan: Memori..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat KPK dari Irisan: Itu KPK.",
+      "voiceGuide": "KPK dari Irisan. Itu KPK.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -1294,9 +1261,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "table-b",
       "title": "Tabel KPK",
       "bookReference": "hlm. 40–42",
-      "objective": "Isi tabel.. Ingat KPK dari Faktor Prima.",
+      "objective": "Isi tabel.. Ingat KPK dari Faktor Prima. (KPK dari Irisan)",
       "mechanicDescription": "Tiga tabel. Gunakan KPK dari Faktor Prima.",
-      "voiceGuide": "KPK dari Faktor Prima. Pilih.",
+      "voiceGuide": "KPK dari Irisan. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -1306,9 +1273,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "tap-all-pb",
       "title": "Ketuk Semua Diagram B",
       "bookReference": "hlm. 38–42",
-      "objective": "Ketuk semua.. Ingat KPK dari Faktor Prima.",
+      "objective": "Ketuk semua.. Ingat KPK dari Faktor Prima. (KPK dari Irisan)",
       "mechanicDescription": "Tiga ronde. Gunakan KPK dari Faktor Prima.",
-      "voiceGuide": "KPK dari Faktor Prima. Ketuk semua.",
+      "voiceGuide": "KPK dari Irisan. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -1318,9 +1285,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "sort-diagram-b",
       "title": "Pilah Diagram B",
       "bookReference": "hlm. 38–40",
-      "objective": "Pilah.. Ingat KPK dari Faktor Prima.",
+      "objective": "Pilah.. Ingat KPK dari Faktor Prima. (KPK dari Irisan)",
       "mechanicDescription": "Tiga ronde. Gunakan KPK dari Faktor Prima.",
-      "voiceGuide": "KPK dari Faktor Prima. Pilah.",
+      "voiceGuide": "KPK dari Irisan. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -1330,9 +1297,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "jadwal-pb",
       "title": "Diagram Jadwal",
       "bookReference": "hlm. 41–42",
-      "objective": "Jadwal.. Ingat KPK dari Faktor Prima.",
+      "objective": "Jadwal.. Ingat KPK dari Faktor Prima. (KPK dari Irisan)",
       "mechanicDescription": "Tiga ronde. Gunakan KPK dari Faktor Prima.",
-      "voiceGuide": "KPK dari Faktor Prima. Pilih.",
+      "voiceGuide": "KPK dari Irisan. Mainkan dengan teliti.",
       "diagramType": "cal",
       "numberA": 1,
       "numberB": 2
@@ -1342,9 +1309,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "choose-b",
       "title": "Pilih Pernyataan B",
       "bookReference": "hlm. 38–42",
-      "objective": "Pilih.. Ingat KPK dari Faktor Prima.",
+      "objective": "Pilih.. Ingat KPK dari Faktor Prima. (KPK dari Irisan)",
       "mechanicDescription": "Tiga ronde. Gunakan KPK dari Faktor Prima.",
-      "voiceGuide": "KPK dari Faktor Prima. Pilih.",
+      "voiceGuide": "KPK dari Irisan. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -1354,9 +1321,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "story-picture-b",
       "title": "Cerita Diagram B",
       "bookReference": "hlm. 31–42",
-      "objective": "Cerita.. Ingat KPK dari Faktor Prima.",
+      "objective": "Cerita.. Ingat KPK dari Faktor Prima. (KPK dari Irisan)",
       "mechanicDescription": "Tiga ronde. Gunakan KPK dari Faktor Prima.",
-      "voiceGuide": "KPK dari Faktor Prima. Pilih.",
+      "voiceGuide": "KPK dari Irisan. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -1366,9 +1333,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "write-persekutuan",
       "title": "Tulis Cek Persekutuan",
       "bookReference": "hlm. 38–40",
-      "objective": "Pakai Diagram Faktor: Gabungan himpunan faktor prima membantu menemukan KPK. Latihan: Menulis..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Venn Factors: Gabungan himpunan faktor prima membantu menemukan KPK.",
-      "voiceGuide": "Diagram Faktor. Gabungan himpunan faktor prima membantu menemukan KPK.",
+      "objective": "Ingat pratinjau prima. Latihan: Menulis..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat KPK dari Faktor Prima: Dasarnya tetap irisan.",
+      "voiceGuide": "KPK dari Faktor Prima. Dasarnya tetap irisan.",
       "symbolLarge": "6∈",
       "wordLarge": "IRISAN",
       "mathNotation": "cek"
@@ -1378,9 +1345,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "write-kpk",
       "title": "Tulis Hasil KPK",
       "bookReference": "hlm. 40–42",
-      "objective": "Pakai Diagram Faktor: Gabungan himpunan faktor prima membantu menemukan KPK. Latihan: Menulis KPK..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Venn Factors: Gabungan himpunan faktor prima membantu menemukan KPK.",
-      "voiceGuide": "Diagram Faktor. Gabungan himpunan faktor prima membantu menemukan KPK.",
+      "objective": "Ingat pratinjau prima. Latihan: Menulis KPK..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat KPK dari Faktor Prima: Dasarnya tetap irisan.",
+      "voiceGuide": "KPK dari Faktor Prima. Dasarnya tetap irisan.",
       "symbolLarge": "KPK",
       "wordLarge": "HASIL",
       "mathNotation": "lcm"
@@ -1390,9 +1357,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "write-jadwal",
       "title": "Tulis Jadwal KPK",
       "bookReference": "hlm. 41–42",
-      "objective": "Pakai Diagram Faktor: Gabungan himpunan faktor prima membantu menemukan KPK. Latihan: Menulis jadwal..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Venn Factors: Gabungan himpunan faktor prima membantu menemukan KPK.",
-      "voiceGuide": "Diagram Faktor. Gabungan himpunan faktor prima membantu menemukan KPK.",
+      "objective": "Ingat pratinjau prima. Latihan: Menulis jadwal..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat KPK dari Faktor Prima: Dasarnya tetap irisan.",
+      "voiceGuide": "KPK dari Faktor Prima. Dasarnya tetap irisan.",
       "symbolLarge": "tgl",
       "wordLarge": "JADWAL",
       "mathNotation": "hari"
@@ -1402,9 +1369,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "order-abstract-b",
       "title": "Urutkan Abstrak B",
       "bookReference": "hlm. 40–42",
-      "objective": "Pakai Diagram Faktor: Gabungan himpunan faktor prima membantu menemukan KPK. Latihan: Urut..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Venn Factors: Gabungan himpunan faktor prima membantu menemukan KPK.",
-      "voiceGuide": "Diagram Faktor. Gabungan himpunan faktor prima membantu menemukan KPK.",
+      "objective": "Ingat pratinjau prima. Latihan: Urut..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat KPK dari Faktor Prima: Dasarnya tetap irisan.",
+      "voiceGuide": "KPK dari Faktor Prima. Dasarnya tetap irisan.",
       "symbolLarge": "naik",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -1414,9 +1381,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "match-abstract-b",
       "title": "Jodohkan Notasi B",
       "bookReference": "hlm. 38–42",
-      "objective": "Jodohkan.. Ingat Diagram Faktor.",
+      "objective": "Jodohkan.. Ingat Diagram Faktor. (KPK dari Faktor Prima)",
       "mechanicDescription": "Tiga ronde. Gunakan Diagram Faktor.",
-      "voiceGuide": "Diagram Faktor. Jodohkan.",
+      "voiceGuide": "KPK dari Faktor Prima. Mainkan dengan teliti.",
       "symbolLarge": "KPK",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -1426,9 +1393,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "memory-abstract-b",
       "title": "Memori Notasi B",
       "bookReference": "hlm. 38–42",
-      "objective": "Memori.. Ingat Diagram Faktor.",
+      "objective": "Memori.. Ingat Diagram Faktor. (KPK dari Faktor Prima)",
       "mechanicDescription": "Tiga ronde. Gunakan Diagram Faktor.",
-      "voiceGuide": "Diagram Faktor. Balik kartu.",
+      "voiceGuide": "KPK dari Faktor Prima. Mainkan dengan teliti.",
       "symbolLarge": "kpk",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -1438,9 +1405,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "true-false-b",
       "title": "Benar atau Salah: KPK",
       "bookReference": "hlm. 38–42",
-      "objective": "Menilai.. Ingat Diagram Faktor.",
+      "objective": "Menilai.. Ingat Diagram Faktor. (KPK dari Faktor Prima)",
       "mechanicDescription": "Dua ronde. Gunakan Diagram Faktor.",
-      "voiceGuide": "Diagram Faktor. Benar/salah.",
+      "voiceGuide": "KPK dari Faktor Prima. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -1450,9 +1417,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "detective-b",
       "title": "Detektif KPK",
       "bookReference": "hlm. 31–42",
-      "objective": "Petunjuk.. Ingat Diagram Faktor.",
+      "objective": "Petunjuk.. Ingat Diagram Faktor. (KPK dari Faktor Prima)",
       "mechanicDescription": "Tiga soal. Gunakan Diagram Faktor.",
-      "voiceGuide": "Diagram Faktor. Pilih.",
+      "voiceGuide": "KPK dari Faktor Prima. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -1462,9 +1429,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "concept-b",
       "title": "Peta Konsep KPK",
       "bookReference": "hlm. 38–42",
-      "objective": "Peta.. Ingat Diagram Faktor.",
+      "objective": "Peta.. Ingat Diagram Faktor. (KPK dari Faktor Prima)",
       "mechanicDescription": "Satu peta. Gunakan Diagram Faktor.",
-      "voiceGuide": "Diagram Faktor. Pilih opsi.",
+      "voiceGuide": "KPK dari Faktor Prima. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -1474,9 +1441,9 @@ export const SUB_B52: SubBabNaskah = {
       "gameType": "story-abstract-b",
       "title": "Cerita Angka KPK",
       "bookReference": "hlm. 31–42",
-      "objective": "Cerita.. Ingat Diagram Faktor.",
+      "objective": "Cerita.. Ingat Diagram Faktor. (KPK dari Faktor Prima)",
       "mechanicDescription": "Tiga ronde. Gunakan Diagram Faktor.",
-      "voiceGuide": "Diagram Faktor. Pilih.",
+      "voiceGuide": "KPK dari Faktor Prima. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -1484,37 +1451,31 @@ export const SUB_B52: SubBabNaskah = {
   ],
   "poin": [
     {
-      "ikon": "🤝",
-      "nama": "Persekutuan",
-      "isi": "Kelipatan yang sama dari dua bilangan atau lebih.",
-      "suara": "Itu kelipatan persekutuan."
+      "ikon": "⋂",
+      "nama": "Irisan daftar",
+      "isi": "Kelipatan persekutuan = irisan dua daftar.",
+      "suara": "Irisan."
     },
     {
-      "ikon": "🎯",
+      "ikon": "⭐",
       "nama": "KPK",
-      "isi": "Kelipatan persekutuan yang terkecil.",
-      "suara": "KPK adalah yang terkecil."
+      "isi": "KPK = kelipatan persekutuan terkecil.",
+      "suara": "Terkecil."
     },
     {
-      "ikon": "🌍",
-      "nama": "Daftar Kelipatan Bersama",
-      "isi": "Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
-      "suara": "Daftar Kelipatan Bersama. Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK."
+      "ikon": "🚫",
+      "nama": "Jangan auto-kali",
+      "isi": "Perkalian tidak selalu KPK.",
+      "suara": "Bukan selalu a×b."
     },
     {
-      "ikon": "🌍",
-      "nama": "KPK dari Faktor Prima",
-      "isi": "Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
-      "suara": "KPK dari Faktor Prima. Ambil faktor prima dengan pangkat tertinggi, lalu kalikan."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Diagram Faktor",
-      "isi": "Gabungan himpunan faktor prima membantu menemukan KPK.",
-      "suara": "Diagram Faktor. Gabungan himpunan faktor prima membantu menemukan KPK."
+      "ikon": "➗",
+      "nama": "Cek",
+      "isi": "KPK harus habis dibagi kedua bilangan.",
+      "suara": "Cek bagi."
     }
   ],
-  "poinSuara": "Ingat: Daftar Kelipatan Bersama, KPK dari Faktor Prima, Diagram Faktor.",
+  "poinSuara": "Irisan dua daftar kelipatan, ambil yang terkecil, lalu cek.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -1536,46 +1497,46 @@ export const SUB_B52: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Daftar Kelipatan Bersama pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Daftar Kelipatan Bersama pada satu soal di rumah.",
   "refleksi": [
-    "Bagaimana Daftar Kelipatan Bersama membantumu memahami soal?",
-    "Kapan kamu memakai KPK dari Faktor Prima?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Daftar Kelipatan Bersama membantumu?",
+    "Kapan memakai KPK dari Irisan?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
       "label": "METODE LUAR",
-      "nama": "LCM Listing",
+      "nama": "Common Multiples List",
       "namaId": "Daftar Kelipatan Bersama",
-      "asal": "Elementary number theory pedagogy",
-      "ringkas": "Tuliskan kelipatan dua bilangan, cari yang sama terkecil = KPK.",
+      "asal": "Singapore / US textbooks",
+      "ringkas": "Buat dua daftar kelipatan, cari bilangan yang muncul di keduanya.",
       "tahap": [
         "Story",
         "Concrete",
-        "Abstract"
-      ]
-    },
-    {
-      "label": "METODE LUAR",
-      "nama": "Prime Factor KPK",
-      "namaId": "KPK dari Faktor Prima",
-      "asal": "Prime factorization method",
-      "ringkas": "Ambil faktor prima dengan pangkat tertinggi, lalu kalikan.",
-      "tahap": [
-        "Mind",
-        "Picture",
-        "Abstract"
-      ]
-    },
-    {
-      "label": "METODE LUAR",
-      "nama": "Venn Factors",
-      "namaId": "Diagram Faktor",
-      "asal": "Visual LCM/GCF",
-      "ringkas": "Gabungan himpunan faktor prima membantu menemukan KPK.",
-      "tahap": [
-        "Infografis",
         "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "LCM Concept",
+      "namaId": "KPK dari Irisan",
+      "asal": "Number sense",
+      "ringkas": "KPK adalah kelipatan persekutuan yang terkecil positif.",
+      "tahap": [
+        "Story",
+        "Mind",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Prime Factor Preview",
+      "namaId": "KPK dari Faktor Prima",
+      "asal": "Prime factorization intro",
+      "ringkas": "Nanti KPK juga bisa dari faktor prima; hari ini kuasai daftar dulu.",
+      "tahap": [
+        "Story",
+        "Infografis"
       ]
     }
   ]
@@ -1585,177 +1546,177 @@ export const SUB_C52: SubBabNaskah = {
   "id": "C",
   "codeTitle": "Sub-Bab C (Faktor)",
   "fullTitle": "Sub-Bab C: Faktor",
-  "targetDescription": "Siswa menemukan faktor bilangan melalui pembagian habis dan model kertas berpetak, serta memahami pasangan faktor sesuai Buku Siswa Kelas V Bab 2. Siswa memakai cara Pasangan Faktor, Daftar Pembagi, Model Susunan Persegi Panjang.",
+  "targetDescription": "Siswa menentukan faktor suatu bilangan dengan pasangan faktor, diagram faktor, dan model susunan persegi panjang sesuai Buku Siswa Kelas V Bab 2 Sub-Bab C.",
   "secondaryBg": "#DCFCE7",
   "secondaryBorder": "#16A34A",
   "secondaryText": "#14532D",
   "silabus": {
-    "teksSuara": "Kita belajar faktor. Faktor adalah bilangan yang membagi habis tanpa sisa. Kita memotong kertas berpetak tanpa sisa dan menemukan pasangan faktor. Satu dan bilangan itu sendiri selalu menjadi faktor. Kita memakai cara dari luar buku: Pasangan Faktor (Factor Pairs); Daftar Pembagi (Divisor List); Model Susunan Persegi Panjang (Array Model). Faktor datang berpasangan yang dikalikan jadi bilangan itu. Urutkan semua pembagi dari kecil ke besar. Susunan baris×kolom menunjukkan pasangan faktor. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-    "cp": "Siswa menentukan faktor-faktor suatu bilangan.",
-    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2: KPK dan FPB, Sub-Bab C)."
+    "teksSuara": "Kita belajar faktor. Faktor adalah bilangan yang membagi habis. Cari berpasangan: 1 dengan n, 2 dengan hasil baginya, sampai pasangan bertemu. Susunan persegi panjang juga menunjukkan faktor. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menentukan faktor suatu bilangan.",
+    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2 Sub-Bab C)."
   },
   "videos": [
     {
       "id": "K5B2C-V1",
-      "judul": "Apa Itu Faktor",
-      "subjudul": "Factor Pairs",
+      "judul": "Pasangan yang Membagi Habis",
+      "subjudul": "Pasangan Faktor",
       "adegan": [
         {
           "id": "K5B2C-V1-1",
-          "judul": "Bagi tanpa sisa",
+          "judul": "Arti faktor",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Ambil dua belas. Mari kita pahami bersama.",
-            "Bagi dengan empat. Mari kita pahami bersama.",
-            "Hasil tiga tanpa sisa. Mari kita pahami bersama.",
-            "Ingat cara Pasangan Faktor: Faktor datang berpasangan yang dikalikan jadi bilangan itu."
+            "Faktor 12 adalah bilangan yang membagi 12 habis: 1, 2, 3, 4, 6, 12.",
+            "1 berpasangan dengan 12 karena 1×12=12.",
+            "2 berpasangan dengan 6. 3 berpasangan dengan 4.",
+            "METODE LUAR · Pasangan Faktor: berhenti saat pasangan bertemu di tengah."
           ],
           "papan": [
-            "12",
-            "÷4",
-            "habis",
-            "faktor"
+            "faktor 12",
+            "1↔12",
+            "2↔6,3↔4",
+            "bertemu"
           ]
         },
         {
           "id": "K5B2C-V1-2",
-          "judul": "Daftar faktor 12",
+          "judul": "Cara sistematis",
           "ketukan": [
-            "Satu, dua, tiga, empat. Mari kita pahami bersama.",
-            "Enam dan dua belas. Mari kita pahami bersama.",
-            "Itu semua faktor dua belas. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Factor Pairs — Faktor datang berpasangan yang dikalikan jadi bilangan itu."
+            "Mulai dari 1 naik. Uji: apakah membagi habis?",
+            "Jika ya, tulis pasangannya hasil bagi.",
+            "Berhenti ketika faktor berikutnya sudah lewat akar atau sudah muncul sebagai pasangan.",
+            "Jangan lupa 1 dan bilangan itu sendiri selalu faktor."
           ],
           "papan": [
-            "1–4",
-            "6,12",
-            "lengkap",
-            "bukan 5"
+            "dari 1",
+            "tulis pasangan",
+            "berhenti",
+            "1 dan n"
           ]
         },
         {
           "id": "K5B2C-V1-3",
-          "judul": "Selalu ada",
+          "judul": "Bukan kelipatan",
           "ketukan": [
-            "Satu selalu faktor. Mari kita pahami bersama.",
-            "Bilangan itu sendiri juga. Mari kita pahami bersama.",
-            "Cari yang di tengah. Mari kita pahami bersama.",
-            "METODE LUAR · Pasangan Faktor: Faktor datang berpasangan yang dikalikan jadi bilangan itu."
+            "Faktor membagi habis ke dalam. Kelipatan melompat keluar.",
+            "12 adalah kelipatan 3, dan 3 adalah faktor 12. Hubungan kebalikan.",
+            "Jangan mencampur daftar faktor dengan daftar kelipatan.",
+            "Siap melihat diagram."
           ],
           "papan": [
-            "tengah",
-            "daftar",
-            "pasangan",
-            "pasangan"
+            "beda arah",
+            "kebalikan",
+            "jangan campur",
+            "lanjut"
           ]
         }
       ]
     },
     {
       "id": "K5B2C-V2",
-      "judul": "Latihan: Daftar Pembagi",
-      "subjudul": "Divisor List",
+      "judul": "Pelangi Faktor",
+      "subjudul": "Diagram Faktor",
       "adegan": [
         {
           "id": "K5B2C-V2-1",
-          "judul": "Potong 12 petak",
+          "judul": "Gambar",
           "ketukan": [
-            "Panjang dua belas petak. Mari kita pahami bersama.",
-            "Potong sama panjang. Mari kita pahami bersama.",
-            "Tidak boleh ada sisa. Mari kita pahami bersama.",
-            "Ingat cara Daftar Pembagi: Urutkan semua pembagi dari kecil ke besar."
+            "Tulis 12 di tengah. Hubungkan 1—12, 2—6, 3—4 seperti pelangi.",
+            "Semua ujung pelangi adalah faktor lengkap.",
+            "METODE LUAR · Diagram Faktor: tidak ada faktor yang terlewat jika pasangan lengkap.",
+            "Untuk 18: 1—18, 2—9, 3—6."
           ],
           "papan": [
-            "12 petak",
-            "sama",
-            "tanpa sisa",
-            "faktor"
+            "pelangi",
+            "lengkap",
+            "cek",
+            "contoh 18"
           ]
         },
         {
           "id": "K5B2C-V2-2",
-          "judul": "Contoh panjang 3",
+          "judul": "Susunan",
           "ketukan": [
-            "Panjang tiap bagian tiga. Mari kita pahami bersama.",
-            "Dapat empat potong. Mari kita pahami bersama.",
-            "Tiga dan empat saling terkait. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Divisor List — Urutkan semua pembagi dari kecil ke besar."
+            "Buat persegi panjang dari 12 kotak: 1×12, 2×6, 3×4.",
+            "Ukuran baris dan kolom itulah faktornya.",
+            "METODE LUAR · Model Susunan: melihat faktor dengan mata.",
+            "Anak yang suka gambar biasanya lebih ingat cara ini."
           ],
           "papan": [
-            "panjang 3",
-            "4 potong",
-            "3 & 4",
-            "faktor"
+            "array",
+            "baris kolom",
+            "lihat",
+            "gaya"
           ]
         },
         {
           "id": "K5B2C-V2-3",
-          "judul": "Faktor 18",
+          "judul": "Siap D",
           "ketukan": [
-            "Ulang untuk delapan belas. Mari kita pahami bersama.",
-            "Temukan semua pembagi. Mari kita pahami bersama.",
-            "Isi lingkaran faktor. Mari kita pahami bersama.",
-            "METODE LUAR · Daftar Pembagi: Urutkan semua pembagi dari kecil ke besar."
+            "Faktor satu bilangan siap. Berikutnya faktor persekutuan dan FPB.",
+            "Kamu akan membandingkan dua daftar faktor.",
+            "Simpan cara pasangan dan pelangi.",
+            "Ayo main menentukan faktor!"
           ],
           "papan": [
-            "18",
-            "pembagi",
-            "lingkaran",
-            "urut"
+            "lanjut D",
+            "dua daftar",
+            "senjata",
+            "main"
           ]
         }
       ]
     },
     {
       "id": "K5B2C-V3",
-      "judul": "Siap pakai Array Model",
-      "subjudul": "Array Model",
+      "judul": "Latihan Faktor",
+      "subjudul": "Model Susunan Persegi Panjang",
       "adegan": [
         {
           "id": "K5B2C-V3-1",
-          "judul": "Saling berpasangan",
+          "judul": "Bilangan 16",
           "ketukan": [
-            "Satu dengan delapan belas. Mari kita pahami bersama.",
-            "Dua dengan sembilan. Mari kita pahami bersama.",
-            "Tiga dengan enam. Mari kita pahami bersama.",
-            "Ingat cara Model Susunan Persegi Panjang: Susunan baris×kolom menunjukkan pasangan faktor."
+            "Pasangan 16: 1×16, 2×8, 4×4. Faktor: 1, 2, 4, 8, 16.",
+            "4×4 adalah persegi — tetap dihitung.",
+            "Cek: semua membagi 16 habis.",
+            "Rapihkan dari kecil ke besar."
           ],
           "papan": [
-            "1↔18",
-            "2↔9",
-            "3↔6",
-            "× = 18"
+            "faktor 16",
+            "persegi",
+            "cek",
+            "urut"
           ]
         },
         {
           "id": "K5B2C-V3-2",
-          "judul": "Cara ingat",
+          "judul": "Kesalahan umum",
           "ketukan": [
-            "Jika tahu satu faktor. Mari kita pahami bersama.",
-            "Bagi bilangan utamanya. Mari kita pahami bersama.",
-            "Dapat pasangannya. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Array Model — Susunan baris×kolom menunjukkan pasangan faktor."
+            "Kesalahan: menulis kelipatan sebagai faktor.",
+            "Kesalahan: lupa 1 atau bilangan itu sendiri.",
+            "Kesalahan: mengulang pasangan dua kali tanpa perlu.",
+            "Cek ulang dengan pembagian."
           ],
           "papan": [
-            "tahu satu",
-            "bagi",
-            "pasangan",
-            "cepat"
+            "salah",
+            "lupa",
+            "ulang",
+            "bagi ulang"
           ]
         },
         {
           "id": "K5B2C-V3-3",
-          "judul": "Siap bermain",
+          "judul": "Tutup C",
           "ketukan": [
-            "Definisi sudah jelas. Mari kita pahami bersama.",
-            "Petak dan pasangan siap. Mari kita pahami bersama.",
-            "Ayo ke permainan. Mari kita pahami bersama.",
-            "METODE LUAR · Model Susunan Persegi Panjang: Susunan baris×kolom menunjukkan pasangan faktor."
+            "Faktor = pembagi habis = pasangan kali.",
+            "Diagram dan susunan membantu tidak ada yang terlewat.",
+            "Siap mencari faktor bersama.",
+            "Mainkan!"
           ],
           "papan": [
-            "arti",
-            "model",
-            "main",
-            "semangat"
+            "rangkum",
+            "bantu",
+            "siap",
+            "main"
           ]
         }
       ]
@@ -1764,64 +1725,64 @@ export const SUB_C52: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Faktor. Apa yang ditanyakan?",
+      "stepTitle": "1. Bilangan n",
+      "stepDesc": "Faktor dari berapa?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Factor Pairs",
-      "stepDesc": "Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
-      "icon": "🧭",
+      "stepTitle": "2. Mulai 1",
+      "stepDesc": "Uji pembagi dari kecil.",
+      "icon": "1️⃣",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Divisor List",
-      "stepDesc": "Urutkan semua pembagi dari kecil ke besar.",
-      "icon": "🛠️",
+      "stepTitle": "3. Pasangan",
+      "stepDesc": "Tulis hasil baginya.",
+      "icon": "🔗",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Array Model",
-      "stepDesc": "Susunan baris×kolom menunjukkan pasangan faktor.",
-      "icon": "✨",
+      "stepTitle": "4. Pelangi",
+      "stepDesc": "Gambar pasangan.",
+      "icon": "🌈",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
-      "icon": "✏️",
+      "stepTitle": "5. Susunan",
+      "stepDesc": "Baris×kolom = n.",
+      "icon": "▦",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
-      "icon": "✅",
+      "stepTitle": "6. Daftar urut",
+      "stepDesc": "Dari kecil ke besar.",
+      "icon": "📋",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
-      "icon": "💬",
+      "stepTitle": "7. Cek bagi",
+      "stepDesc": "Semua habis membagi n?",
+      "icon": "✅",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latihan faktor.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -1829,88 +1790,74 @@ export const SUB_C52: SubBabNaskah = {
   ],
   "infografis": [
     {
-      "judul": "Arti",
+      "judul": "Faktor",
       "emoji": "➗",
       "countNum": 1,
-      "countWord": "pembagi habis",
-      "suara": "Faktor membagi tanpa sisa."
+      "countWord": "bagi habis",
+      "suara": "Arti"
+    },
+    {
+      "judul": "1↔n",
+      "emoji": "🔗",
+      "countNum": 1,
+      "countWord": "pasangan",
+      "suara": "Selalu"
     },
     {
       "judul": "12",
-      "emoji": "📐",
+      "emoji": "🌈",
+      "countNum": 6,
+      "countWord": "1..12",
+      "suara": "Faktor"
+    },
+    {
+      "judul": "3×4",
+      "emoji": "▦",
       "countNum": 12,
-      "countWord": "1,2,3,4,6,12",
-      "suara": "Faktor dua belas."
+      "countWord": "susunan",
+      "suara": "Array"
     },
     {
-      "judul": "18",
-      "emoji": "🟢",
-      "countNum": 18,
-      "countWord": "1,2,3,6,9,18",
-      "suara": "Faktor delapan belas."
-    },
-    {
-      "judul": "Pasangan",
-      "emoji": "🔗",
-      "countNum": 1,
-      "countWord": "a×b=n",
-      "suara": "Saling berpasangan."
-    },
-    {
-      "judul": "Petak",
-      "emoji": "📏",
-      "countNum": 1,
-      "countWord": "tanpa sisa",
-      "suara": "Model konkret."
-    },
-    {
-      "judul": "1 dan n",
-      "emoji": "1️⃣",
-      "countNum": 1,
-      "countWord": "selalu",
-      "suara": "Selalu menjadi faktor."
-    },
-    {
-      "judul": "Bukan",
-      "emoji": "🚫",
+      "judul": "16",
+      "emoji": "📋",
       "countNum": 5,
-      "countWord": "sisa",
-      "suara": "Ada sisa = bukan faktor."
+      "countWord": "1,2,4,8,16",
+      "suara": "Daftar"
     },
     {
-      "judul": "24",
-      "emoji": "📘",
-      "countNum": 24,
-      "countWord": "memuat 8",
-      "suara": "Contoh latihan."
+      "judul": "Bukan kel.",
+      "emoji": "🚫",
+      "countNum": 1,
+      "countWord": "beda",
+      "suara": "Arah beda"
+    },
+    {
+      "judul": "Lupa 1",
+      "emoji": "⚠️",
+      "countNum": 1,
+      "countWord": "jangan",
+      "suara": "Selalu ada"
     },
     {
       "judul": "Urut",
       "emoji": "📶",
       "countNum": 1,
-      "countWord": "kecil→besar",
-      "suara": "Tulis terurut."
+      "countWord": "kecil→",
+      "suara": "Rapi"
     },
     {
-      "judul": "Bab 2 A–C",
+      "judul": "Cek",
       "emoji": "✅",
-      "countNum": 1,
-      "countWord": "siap",
-      "suara": "Kelipatan, KPK, faktor."
+      "countNum": 0,
+      "countWord": "sisa",
+      "suara": "Habis"
     },
     {
-      "judul": "Pasangan Faktor",
-      "emoji": "🌍",
+      "judul": "Siap D",
+      "emoji": "➡️",
       "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Faktor datang berpasangan yang dikalikan jadi bilangan itu."
-    },
-    {
-      "judul": "Daftar Pembagi",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Urutkan semua pembagi dari kecil ke besar."
+      "countWord": "FPB",
+      "suara": "Lanjut"
     }
   ],
   "games": [
@@ -1919,9 +1866,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "cek-faktor",
       "title": "Cek Faktor",
       "bookReference": "hlm. 43–46",
-      "objective": "Pakai Pasangan Faktor: Faktor datang berpasangan yang dikalikan jadi bilangan itu. Latihan: Mengenali faktor..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Factor Pairs: Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
-      "voiceGuide": "Pasangan Faktor. Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
+      "objective": "Cari pasangan kali. Latihan: Mengenali faktor..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pasangan Faktor: Hasil kali = n.",
+      "voiceGuide": "Pasangan Faktor. Hasil kali = n.",
       "emoji": "➗",
       "targetCount": 6
     },
@@ -1930,9 +1877,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "pasangan-faktor",
       "title": "Pasangan Faktor",
       "bookReference": "hlm. 45",
-      "objective": "Pakai Pasangan Faktor: Faktor datang berpasangan yang dikalikan jadi bilangan itu. Latihan: Pasangan hasil kali..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Factor Pairs: Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
-      "voiceGuide": "Pasangan Faktor. Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
+      "objective": "Cari pasangan kali. Latihan: Pasangan hasil kali..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pasangan Faktor: Hasil kali = n.",
+      "voiceGuide": "Pasangan Faktor. Hasil kali = n.",
       "emoji": "🔗",
       "targetCount": 6
     },
@@ -1941,9 +1888,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "arti-faktor",
       "title": "Arti Faktor",
       "bookReference": "hlm. 44–45",
-      "objective": "Pakai Pasangan Faktor: Faktor datang berpasangan yang dikalikan jadi bilangan itu. Latihan: Definisi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Factor Pairs: Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
-      "voiceGuide": "Pasangan Faktor. Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
+      "objective": "Cari pasangan kali. Latihan: Definisi..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pasangan Faktor: Hasil kali = n.",
+      "voiceGuide": "Pasangan Faktor. Hasil kali = n.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -1952,9 +1899,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "sort-faktor",
       "title": "Pilah Faktor",
       "bookReference": "hlm. 43–46",
-      "objective": "Pakai Pasangan Faktor: Faktor datang berpasangan yang dikalikan jadi bilangan itu. Latihan: Memilah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Factor Pairs: Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
-      "voiceGuide": "Pasangan Faktor. Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
+      "objective": "Cari pasangan kali. Latihan: Memilah..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pasangan Faktor: Hasil kali = n.",
+      "voiceGuide": "Pasangan Faktor. Hasil kali = n.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -1963,9 +1910,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "match-faktor",
       "title": "Jodohkan Faktor",
       "bookReference": "hlm. 43–46",
-      "objective": "Menjodohkan.. Ingat Pasangan Faktor.",
+      "objective": "Menjodohkan.. Ingat Pasangan Faktor. (Pasangan Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Pasangan Faktor.",
-      "voiceGuide": "Pasangan Faktor. Jodohkan.",
+      "voiceGuide": "Pasangan Faktor. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -1974,9 +1921,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "memory-faktor",
       "title": "Memori Faktor",
       "bookReference": "hlm. 43–46",
-      "objective": "Memori.. Ingat Pasangan Faktor.",
+      "objective": "Memori.. Ingat Pasangan Faktor. (Pasangan Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Pasangan Faktor.",
-      "voiceGuide": "Pasangan Faktor. Balik kartu.",
+      "voiceGuide": "Pasangan Faktor. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1985,9 +1932,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "tap-faktor",
       "title": "Ketuk Faktor",
       "bookReference": "hlm. 43–46",
-      "objective": "Mengetuk.. Ingat Pasangan Faktor.",
+      "objective": "Mengetuk.. Ingat Pasangan Faktor. (Pasangan Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Pasangan Faktor.",
-      "voiceGuide": "Pasangan Faktor. Ketuk.",
+      "voiceGuide": "Pasangan Faktor. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -1996,9 +1943,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "tap-all-faktor",
       "title": "Ketuk Semua Faktor",
       "bookReference": "hlm. 43–46",
-      "objective": "Ketuk semua.. Ingat Pasangan Faktor.",
+      "objective": "Ketuk semua.. Ingat Pasangan Faktor. (Pasangan Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Pasangan Faktor.",
-      "voiceGuide": "Pasangan Faktor. Ketuk semua.",
+      "voiceGuide": "Pasangan Faktor. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -2007,9 +1954,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "story-petak",
       "title": "Cerita Kertas Berpetak",
       "bookReference": "hlm. 43–46",
-      "objective": "Soal cerita.. Ingat Pasangan Faktor.",
+      "objective": "Soal cerita.. Ingat Pasangan Faktor. (Pasangan Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Pasangan Faktor.",
-      "voiceGuide": "Pasangan Faktor. Pilih.",
+      "voiceGuide": "Pasangan Faktor. Mainkan dengan teliti.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -2018,9 +1965,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "order-faktor",
       "title": "Urutkan Faktor",
       "bookReference": "hlm. 45–46",
-      "objective": "Mengurutkan.. Ingat Pasangan Faktor.",
+      "objective": "Mengurutkan.. Ingat Pasangan Faktor. (Pasangan Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Pasangan Faktor.",
-      "voiceGuide": "Pasangan Faktor. Urutkan.",
+      "voiceGuide": "Pasangan Faktor. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -2029,9 +1976,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "diagram-bagi",
       "title": "Diagram Bagi Petak",
       "bookReference": "hlm. 43–44",
-      "objective": "Pakai Daftar Pembagi: Urutkan semua pembagi dari kecil ke besar. Latihan: Baca potongan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Divisor List: Urutkan semua pembagi dari kecil ke besar.",
-      "voiceGuide": "Daftar Pembagi. Urutkan semua pembagi dari kecil ke besar.",
+      "objective": "Lengkapkan pelangi. Latihan: Baca potongan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Diagram Faktor: Jangan ada yang terlewat.",
+      "voiceGuide": "Diagram Faktor. Jangan ada yang terlewat.",
       "diagramType": "grid",
       "numberA": 1,
       "numberB": 2
@@ -2041,9 +1988,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "diagram-pasangan",
       "title": "Diagram Pasangan",
       "bookReference": "hlm. 45",
-      "objective": "Pakai Daftar Pembagi: Urutkan semua pembagi dari kecil ke besar. Latihan: Pasangan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Divisor List: Urutkan semua pembagi dari kecil ke besar.",
-      "voiceGuide": "Daftar Pembagi. Urutkan semua pembagi dari kecil ke besar.",
+      "objective": "Lengkapkan pelangi. Latihan: Pasangan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Diagram Faktor: Jangan ada yang terlewat.",
+      "voiceGuide": "Diagram Faktor. Jangan ada yang terlewat.",
       "diagramType": "pair",
       "numberA": 1,
       "numberB": 2
@@ -2053,9 +2000,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "match-diagram-c",
       "title": "Jodohkan Diagram C",
       "bookReference": "hlm. 43–46",
-      "objective": "Pakai Daftar Pembagi: Urutkan semua pembagi dari kecil ke besar. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Divisor List: Urutkan semua pembagi dari kecil ke besar.",
-      "voiceGuide": "Daftar Pembagi. Urutkan semua pembagi dari kecil ke besar.",
+      "objective": "Lengkapkan pelangi. Latihan: Jodohkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Diagram Faktor: Jangan ada yang terlewat.",
+      "voiceGuide": "Diagram Faktor. Jangan ada yang terlewat.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -2065,9 +2012,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "memory-diagram-c",
       "title": "Memori Diagram C",
       "bookReference": "hlm. 43–46",
-      "objective": "Pakai Daftar Pembagi: Urutkan semua pembagi dari kecil ke besar. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Divisor List: Urutkan semua pembagi dari kecil ke besar.",
-      "voiceGuide": "Daftar Pembagi. Urutkan semua pembagi dari kecil ke besar.",
+      "objective": "Lengkapkan pelangi. Latihan: Memori..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Diagram Faktor: Jangan ada yang terlewat.",
+      "voiceGuide": "Diagram Faktor. Jangan ada yang terlewat.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -2077,9 +2024,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "table-c",
       "title": "Tabel Faktor",
       "bookReference": "hlm. 44–46",
-      "objective": "Isi tabel.. Ingat Daftar Pembagi.",
+      "objective": "Isi tabel.. Ingat Daftar Pembagi. (Diagram Faktor)",
       "mechanicDescription": "Tiga tabel. Gunakan Daftar Pembagi.",
-      "voiceGuide": "Daftar Pembagi. Pilih.",
+      "voiceGuide": "Diagram Faktor. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -2089,9 +2036,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "tap-all-pc",
       "title": "Ketuk Semua Diagram C",
       "bookReference": "hlm. 43–46",
-      "objective": "Ketuk semua.. Ingat Daftar Pembagi.",
+      "objective": "Ketuk semua.. Ingat Daftar Pembagi. (Diagram Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Pembagi.",
-      "voiceGuide": "Daftar Pembagi. Ketuk semua.",
+      "voiceGuide": "Diagram Faktor. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -2101,9 +2048,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "sort-diagram-c",
       "title": "Pilah Diagram C",
       "bookReference": "hlm. 43–46",
-      "objective": "Pilah.. Ingat Daftar Pembagi.",
+      "objective": "Pilah.. Ingat Daftar Pembagi. (Diagram Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Pembagi.",
-      "voiceGuide": "Daftar Pembagi. Pilah.",
+      "voiceGuide": "Diagram Faktor. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -2113,9 +2060,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "choose-c",
       "title": "Pilih Pernyataan C",
       "bookReference": "hlm. 43–46",
-      "objective": "Pilih.. Ingat Daftar Pembagi.",
+      "objective": "Pilih.. Ingat Daftar Pembagi. (Diagram Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Pembagi.",
-      "voiceGuide": "Daftar Pembagi. Pilih.",
+      "voiceGuide": "Diagram Faktor. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -2125,9 +2072,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "jenis-pc",
       "title": "Pilih Arti Diagram C",
       "bookReference": "hlm. 44–45",
-      "objective": "Definisi.. Ingat Daftar Pembagi.",
+      "objective": "Definisi.. Ingat Daftar Pembagi. (Diagram Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Pembagi.",
-      "voiceGuide": "Daftar Pembagi. Pilih.",
+      "voiceGuide": "Diagram Faktor. Mainkan dengan teliti.",
       "diagramType": "def",
       "numberA": 1,
       "numberB": 2
@@ -2137,9 +2084,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "story-picture-c",
       "title": "Cerita Diagram C",
       "bookReference": "hlm. 43–46",
-      "objective": "Cerita.. Ingat Daftar Pembagi.",
+      "objective": "Cerita.. Ingat Daftar Pembagi. (Diagram Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Pembagi.",
-      "voiceGuide": "Daftar Pembagi. Pilih.",
+      "voiceGuide": "Diagram Faktor. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -2149,9 +2096,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "write-cek-f",
       "title": "Tulis Cek Faktor",
       "bookReference": "hlm. 43–46",
-      "objective": "Pakai Model Susunan Persegi Panjang: Susunan baris×kolom menunjukkan pasangan faktor. Latihan: Menulis..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Array Model: Susunan baris×kolom menunjukkan pasangan faktor.",
-      "voiceGuide": "Model Susunan Persegi Panjang. Susunan baris×kolom menunjukkan pasangan faktor.",
+      "objective": "Lihat baris×kolom. Latihan: Menulis..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Susunan Persegi Panjang: Itu faktor.",
+      "voiceGuide": "Model Susunan Persegi Panjang. Itu faktor.",
       "symbolLarge": "n|d",
       "wordLarge": "CEK",
       "mathNotation": "faktor"
@@ -2161,9 +2108,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "write-pasangan",
       "title": "Tulis Pasangan",
       "bookReference": "hlm. 45",
-      "objective": "Pakai Model Susunan Persegi Panjang: Susunan baris×kolom menunjukkan pasangan faktor. Latihan: Menulis pasangan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Array Model: Susunan baris×kolom menunjukkan pasangan faktor.",
-      "voiceGuide": "Model Susunan Persegi Panjang. Susunan baris×kolom menunjukkan pasangan faktor.",
+      "objective": "Lihat baris×kolom. Latihan: Menulis pasangan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Susunan Persegi Panjang: Itu faktor.",
+      "voiceGuide": "Model Susunan Persegi Panjang. Itu faktor.",
       "symbolLarge": "a×b",
       "wordLarge": "PASANGAN",
       "mathNotation": "kali"
@@ -2173,9 +2120,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "choose-def-c",
       "title": "Pilih Definisi Faktor",
       "bookReference": "hlm. 44–45",
-      "objective": "Pakai Model Susunan Persegi Panjang: Susunan baris×kolom menunjukkan pasangan faktor. Latihan: Definisi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Array Model: Susunan baris×kolom menunjukkan pasangan faktor.",
-      "voiceGuide": "Model Susunan Persegi Panjang. Susunan baris×kolom menunjukkan pasangan faktor.",
+      "objective": "Lihat baris×kolom. Latihan: Definisi..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Susunan Persegi Panjang: Itu faktor.",
+      "voiceGuide": "Model Susunan Persegi Panjang. Itu faktor.",
       "symbolLarge": "arti",
       "wordLarge": "DEFINISI",
       "mathNotation": "teks"
@@ -2185,9 +2132,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "order-abstract-c",
       "title": "Urutkan Abstrak C",
       "bookReference": "hlm. 45–46",
-      "objective": "Pakai Model Susunan Persegi Panjang: Susunan baris×kolom menunjukkan pasangan faktor. Latihan: Urut..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Array Model: Susunan baris×kolom menunjukkan pasangan faktor.",
-      "voiceGuide": "Model Susunan Persegi Panjang. Susunan baris×kolom menunjukkan pasangan faktor.",
+      "objective": "Lihat baris×kolom. Latihan: Urut..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Susunan Persegi Panjang: Itu faktor.",
+      "voiceGuide": "Model Susunan Persegi Panjang. Itu faktor.",
       "symbolLarge": "naik",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -2197,9 +2144,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "match-abstract-c",
       "title": "Jodohkan Notasi C",
       "bookReference": "hlm. 43–46",
-      "objective": "Jodohkan.. Ingat Model Susunan Persegi Panjang.",
+      "objective": "Jodohkan.. Ingat Model Susunan Persegi Panjang. (Model Susunan Persegi Panjang)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Susunan Persegi Panjang.",
-      "voiceGuide": "Model Susunan Persegi Panjang. Jodohkan.",
+      "voiceGuide": "Model Susunan Persegi Panjang. Mainkan dengan teliti.",
       "symbolLarge": "f",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -2209,9 +2156,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "memory-abstract-c",
       "title": "Memori Notasi C",
       "bookReference": "hlm. 43–46",
-      "objective": "Memori.. Ingat Model Susunan Persegi Panjang.",
+      "objective": "Memori.. Ingat Model Susunan Persegi Panjang. (Model Susunan Persegi Panjang)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Susunan Persegi Panjang.",
-      "voiceGuide": "Model Susunan Persegi Panjang. Balik kartu.",
+      "voiceGuide": "Model Susunan Persegi Panjang. Mainkan dengan teliti.",
       "symbolLarge": "fak",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -2221,9 +2168,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "true-false-c",
       "title": "Benar atau Salah: Faktor",
       "bookReference": "hlm. 43–46",
-      "objective": "Menilai.. Ingat Model Susunan Persegi Panjang.",
+      "objective": "Menilai.. Ingat Model Susunan Persegi Panjang. (Model Susunan Persegi Panjang)",
       "mechanicDescription": "Dua ronde. Gunakan Model Susunan Persegi Panjang.",
-      "voiceGuide": "Model Susunan Persegi Panjang. Benar/salah.",
+      "voiceGuide": "Model Susunan Persegi Panjang. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -2233,9 +2180,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "detective-c",
       "title": "Detektif Faktor",
       "bookReference": "hlm. 43–46",
-      "objective": "Petunjuk.. Ingat Model Susunan Persegi Panjang.",
+      "objective": "Petunjuk.. Ingat Model Susunan Persegi Panjang. (Model Susunan Persegi Panjang)",
       "mechanicDescription": "Tiga soal. Gunakan Model Susunan Persegi Panjang.",
-      "voiceGuide": "Model Susunan Persegi Panjang. Pilih.",
+      "voiceGuide": "Model Susunan Persegi Panjang. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -2245,9 +2192,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "concept-c",
       "title": "Peta Konsep Faktor",
       "bookReference": "hlm. 43–46",
-      "objective": "Peta.. Ingat Model Susunan Persegi Panjang.",
+      "objective": "Peta.. Ingat Model Susunan Persegi Panjang. (Model Susunan Persegi Panjang)",
       "mechanicDescription": "Satu peta. Gunakan Model Susunan Persegi Panjang.",
-      "voiceGuide": "Model Susunan Persegi Panjang. Pilih opsi.",
+      "voiceGuide": "Model Susunan Persegi Panjang. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -2257,9 +2204,9 @@ export const SUB_C52: SubBabNaskah = {
       "gameType": "story-abstract-c",
       "title": "Cerita Angka Faktor",
       "bookReference": "hlm. 43–46",
-      "objective": "Cerita.. Ingat Model Susunan Persegi Panjang.",
+      "objective": "Cerita.. Ingat Model Susunan Persegi Panjang. (Model Susunan Persegi Panjang)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Susunan Persegi Panjang.",
-      "voiceGuide": "Model Susunan Persegi Panjang. Pilih.",
+      "voiceGuide": "Model Susunan Persegi Panjang. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -2267,37 +2214,31 @@ export const SUB_C52: SubBabNaskah = {
   ],
   "poin": [
     {
-      "ikon": "➗",
-      "nama": "Faktor",
-      "isi": "Bilangan yang membagi habis tanpa sisa.",
-      "suara": "Faktor adalah pembagi habis."
+      "ikon": "🔗",
+      "nama": "Pasangan",
+      "isi": "Faktor datang berpasangan hasil kali n.",
+      "suara": "Pasangan."
     },
     {
-      "ikon": "📏",
-      "nama": "Model petak",
-      "isi": "Potong sama panjang tanpa sisa.",
-      "suara": "Panjang bagian = faktor."
+      "ikon": "🌈",
+      "nama": "Diagram",
+      "isi": "Pelangi pasangan mencegah ada yang terlewat.",
+      "suara": "Diagram."
     },
     {
-      "ikon": "🌍",
-      "nama": "Pasangan Faktor",
-      "isi": "Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
-      "suara": "Pasangan Faktor. Faktor datang berpasangan yang dikalikan jadi bilangan itu."
+      "ikon": "▦",
+      "nama": "Susunan",
+      "isi": "Baris dan kolom array = faktor.",
+      "suara": "Array."
     },
     {
-      "ikon": "🌍",
-      "nama": "Daftar Pembagi",
-      "isi": "Urutkan semua pembagi dari kecil ke besar.",
-      "suara": "Daftar Pembagi. Urutkan semua pembagi dari kecil ke besar."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Model Susunan Persegi Panjang",
-      "isi": "Susunan baris×kolom menunjukkan pasangan faktor.",
-      "suara": "Model Susunan Persegi Panjang. Susunan baris×kolom menunjukkan pasangan faktor."
+      "ikon": "🚫",
+      "nama": "Bukan kelipatan",
+      "isi": "Faktor membagi ke dalam, bukan lompat keluar.",
+      "suara": "Beda arah."
     }
   ],
-  "poinSuara": "Ingat: Pasangan Faktor, Daftar Pembagi, Model Susunan Persegi Panjang.",
+  "poinSuara": "Cari pasangan faktor, gambar pelangi, cek dengan susunan.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -2319,45 +2260,47 @@ export const SUB_C52: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Pasangan Faktor pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Pasangan Faktor pada satu soal di rumah.",
   "refleksi": [
-    "Bagaimana Pasangan Faktor membantumu memahami soal?",
-    "Kapan kamu memakai Daftar Pembagi?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Pasangan Faktor membantumu?",
+    "Kapan memakai Diagram Faktor?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
       "label": "METODE LUAR",
       "nama": "Factor Pairs",
       "namaId": "Pasangan Faktor",
-      "asal": "Array model",
-      "ringkas": "Faktor datang berpasangan yang dikalikan jadi bilangan itu.",
+      "asal": "Array / area model",
+      "ringkas": "Faktor datang berpasangan yang hasil kalinya bilangan itu.",
       "tahap": [
         "Story",
-        "Concrete",
-        "Picture"
-      ]
-    },
-    {
-      "label": "METODE LUAR",
-      "nama": "Divisor List",
-      "namaId": "Daftar Pembagi",
-      "asal": "Number sense",
-      "ringkas": "Urutkan semua pembagi dari kecil ke besar.",
-      "tahap": [
         "Concrete",
         "Abstract"
       ]
     },
     {
       "label": "METODE LUAR",
+      "nama": "Factor Rainbow",
+      "namaId": "Diagram Faktor",
+      "asal": "Visual organizers",
+      "ringkas": "Gambar pelangi pasangan faktor dari kecil ke besar.",
+      "tahap": [
+        "Story",
+        "Picture",
+        "Infografis"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
       "nama": "Array Model",
       "namaId": "Model Susunan Persegi Panjang",
-      "asal": "Van de Walle",
-      "ringkas": "Susunan baris×kolom menunjukkan pasangan faktor.",
+      "asal": "Area model",
+      "ringkas": "Baris×kolom yang membentuk n menunjukkan faktor.",
       "tahap": [
-        "Infografis",
-        "Picture"
+        "Story",
+        "Mind",
+        "Concrete"
       ]
     }
   ]
@@ -2367,176 +2310,176 @@ export const SUB_D52: SubBabNaskah = {
   "id": "D",
   "codeTitle": "Sub-Bab D (Faktor Persekutuan)",
   "fullTitle": "Sub-Bab D: Faktor Persekutuan dan FPB",
-  "targetDescription": "Siswa menemukan faktor persekutuan dua bilangan atau lebih melalui model congklak, menentukan FPB, serta menerapkan FPB pada masalah bagi rata (vas bunga dan paket bingkisan) sesuai Buku Siswa Kelas V Bab 2. Siswa memakai cara Daftar Faktor Persekutuan, FPB dari Faktor Prima, Ide Selisih / Sisa.",
+  "targetDescription": "Siswa menentukan faktor persekutuan dan FPB dua bilangan dengan daftar faktor bersama serta pengantar ide selisih sesuai Buku Siswa Kelas V Bab 2 Sub-Bab D.",
   "secondaryBg": "#FCE7F3",
   "secondaryBorder": "#DB2777",
   "secondaryText": "#9D174D",
   "silabus": {
-    "teksSuara": "Kita belajar faktor persekutuan. Irisan daftar faktor disebut faktor persekutuan. Yang terbesar disebut FPB. Kita memakai model congklak, lalu membagi mawar ke vas dan membuat paket bingkisan. Kita memakai cara dari luar buku: Daftar Faktor Persekutuan (GCF Listing); FPB dari Faktor Prima (Prime Factor FPB); Ide Selisih / Sisa (Euclid Idea). Faktor yang sama terbesar = FPB. Ambil faktor prima yang sama dengan pangkat terendah. FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-    "cp": "Siswa menentukan faktor persekutuan dan FPB dua atau lebih bilangan.",
-    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2: KPK dan FPB, Sub-Bab D)."
+    "teksSuara": "Kita mencari faktor yang sama dari dua bilangan. Irisannya disebut faktor persekutuan. Yang terbesar adalah FPB. Buat dua daftar faktor, cari irisan, ambil yang terbesar. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menentukan faktor persekutuan dan FPB dua bilangan.",
+    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2 Sub-Bab D)."
   },
   "videos": [
     {
       "id": "K5B2D-V1",
-      "judul": "Congklak Faktor",
-      "subjudul": "GCF Listing",
+      "judul": "Irisan Faktor",
+      "subjudul": "Daftar Faktor Persekutuan",
       "adegan": [
         {
           "id": "K5B2D-V1-1",
-          "judul": "Dua pemain",
+          "judul": "Contoh 12 dan 18",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Pemain satu: faktor dua belas. Mari kita pahami bersama.",
-            "Pemain dua: faktor delapan belas. Mari kita pahami bersama.",
-            "Taruh biji di lubang faktor. Mari kita pahami bersama.",
-            "Ingat cara Daftar Faktor Persekutuan: Faktor yang sama terbesar = FPB."
+            "Faktor 12: 1, 2, 3, 4, 6, 12.",
+            "Faktor 18: 1, 2, 3, 6, 9, 18.",
+            "Irisan: 1, 2, 3, 6. Itu faktor persekutuan.",
+            "METODE LUAR · Daftar Faktor Persekutuan: irisan dua daftar faktor."
           ],
           "papan": [
-            "faktor 12",
-            "faktor 18",
-            "biji",
-            "2 biji"
+            "f12",
+            "f18",
+            "irisan",
+            "cara"
           ]
         },
         {
           "id": "K5B2D-V1-2",
-          "judul": "Hasil irisan",
+          "judul": "Ambil terbesar",
           "ketukan": [
-            "Lubang satu, dua, tiga, enam. Mari kita pahami bersama.",
-            "Itu faktor persekutuan. Mari kita pahami bersama.",
-            "Ambil yang terbesar. Mari kita pahami bersama.",
-            "Di sini kita memakai ide GCF Listing — Faktor yang sama terbesar = FPB."
+            "Dari irisan, yang terbesar 6. FPB 12 dan 18 = 6.",
+            "Cek: 12÷6=2, 18÷6=3, keduanya habis.",
+            "METODE LUAR · FPB dari Irisan: selalu yang terbesar di irisan.",
+            "Jangan mengambil KPK di sini."
           ],
           "papan": [
-            "1,2,3,6",
-            "persekutuan",
+            "FPB=6",
+            "cek",
             "terbesar",
-            "FPB=6"
+            "bukan KPK"
           ]
         },
         {
           "id": "K5B2D-V1-3",
-          "judul": "Definisi",
+          "judul": "Cerita",
           "ketukan": [
-            "Faktor yang sama disebut persekutuan. Mari kita pahami bersama.",
-            "Yang terbesar disebut FPB. Mari kita pahami bersama.",
-            "Berguna untuk membagi rata. Mari kita pahami bersama.",
-            "METODE LUAR · Daftar Faktor Persekutuan: Faktor yang sama terbesar = FPB."
+            "Mau membagi 12 kue dan 18 kue ke kotak sama besar tanpa sisa. Ukuran kotak terbesar?",
+            "Itu FPB: pembagi terbesar bersama.",
+            "Jawaban 6.",
+            "FPB menjawab 'ukuran bersama terbesar'."
           ],
           "papan": [
-            "sama",
-            "FPB",
-            "bagi rata",
-            "tanpa sisa"
+            "cerita",
+            "arti",
+            "6",
+            "makna"
           ]
         }
       ]
     },
     {
       "id": "K5B2D-V2",
-      "judul": "Latihan: FPB dari Faktor Prima",
-      "subjudul": "Prime Factor FPB",
+      "judul": "Beda dengan KPK",
+      "subjudul": "FPB dari Irisan",
       "adegan": [
         {
           "id": "K5B2D-V2-1",
-          "judul": "Tulis faktor",
+          "judul": "Dua arah",
           "ketukan": [
-            "Tulis semua faktor A. Mari kita pahami bersama.",
-            "Tulis semua faktor B. Mari kita pahami bersama.",
-            "Tandai yang sama. Mari kita pahami bersama.",
-            "Ingat cara FPB dari Faktor Prima: Ambil faktor prima yang sama dengan pangkat terendah."
+            "KPK memakai daftar kelipatan, ambil terkecil.",
+            "FPB memakai daftar faktor, ambil terbesar.",
+            "Alat dan pilihan ekstremnya berlawanan.",
+            "Tulis beda ini di kepala sebelum soal campur."
           ],
           "papan": [
-            "faktor A",
-            "faktor B",
-            "irisan",
-            "max"
+            "KPK",
+            "FPB",
+            "berlawanan",
+            "ingat"
           ]
         },
         {
           "id": "K5B2D-V2-2",
-          "judul": "Contoh 6 dan 12",
+          "judul": "Pratinjau sisa",
           "ketukan": [
-            "Faktor enam: satu, dua, tiga, enam. Mari kita pahami bersama.",
-            "Faktor dua belas memuat semuanya. Mari kita pahami bersama.",
-            "Irisan sampai enam. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Prime Factor FPB — Ambil faktor prima yang sama dengan pangkat terendah."
+            "Ada cara FPB dengan selisih atau sisa bagi — ide Euclid.",
+            "Untuk 12 dan 18: 18−12=6, dan 6 membagi keduanya.",
+            "METODE LUAR · Ide Selisih / Sisa: pengantar; daftar tetap wajib dikuasai.",
+            "Di Sub-Bab E kita padukan dengan faktor prima."
           ],
           "papan": [
-            "12",
-            "irisan",
-            "FPB=6",
-            "fpb"
+            "Euclid",
+            "selisih",
+            "pratinjau",
+            "lanjut E"
           ]
         },
         {
           "id": "K5B2D-V2-3",
-          "judul": "FPB = 1",
+          "judul": "Siap main",
           "ketukan": [
-            "Kadang tidak ada prima sama. Mari kita pahami bersama.",
-            "Contoh lima belas dan dua delapan. Mari kita pahami bersama.",
-            "FPB-nya satu. Mari kita pahami bersama.",
-            "METODE LUAR · FPB dari Faktor Prima: Ambil faktor prima yang sama dengan pangkat terendah."
+            "Bekal: dua daftar faktor, irisan, ambil terbesar.",
+            "Cek selalu dengan pembagian.",
+            "Jangan tertukar dengan KPK.",
+            "Ayo bermain FPB!"
           ],
           "papan": [
-            "15",
-            "28",
-            "FPB=1",
-            "sah"
+            "bekal",
+            "cek",
+            "waspada",
+            "main"
           ]
         }
       ]
     },
     {
       "id": "K5B2D-V3",
-      "judul": "Siap pakai Euclid Idea",
-      "subjudul": "Euclid Idea",
+      "judul": "Latihan FPB",
+      "subjudul": "Ide Selisih / Sisa",
       "adegan": [
         {
           "id": "K5B2D-V3-1",
-          "judul": "Mawar Ibu",
+          "judul": "8 dan 12",
           "ketukan": [
-            "Dua puluh empat merah. Mari kita pahami bersama.",
-            "Delapan belas putih. Mari kita pahami bersama.",
-            "Vas maksimal sama rata. Mari kita pahami bersama.",
-            "Ingat cara Ide Selisih / Sisa: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai."
+            "Faktor 8: 1, 2, 4, 8. Faktor 12: 1, 2, 3, 4, 6, 12.",
+            "Irisan: 1, 2, 4. FPB=4.",
+            "Cek: 8÷4 dan 12÷4 habis.",
+            "Benar."
           ],
           "papan": [
-            "24",
-            "18",
-            "FPB",
-            "6 vas"
+            "daftar",
+            "FPB=4",
+            "cek",
+            "ok"
           ]
         },
         {
           "id": "K5B2D-V3-2",
-          "judul": "Isi tiap vas",
+          "judul": "Kesalahan",
           "ketukan": [
-            "Merah dua puluh empat bagi enam. Mari kita pahami bersama.",
-            "Empat tangkai. Mari kita pahami bersama.",
-            "Putih delapan belas bagi enam. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Euclid Idea — FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai."
+            "Kesalahan: mengambil 1 selalu sebagai jawaban akhir — 1 memang faktor, tapi bukan selalu terbesar.",
+            "Kesalahan: menulis KPK sebagai FPB.",
+            "Kesalahan: daftar faktor tidak lengkap.",
+            "Lengkapi pasangan faktor dulu."
           ],
           "papan": [
-            "24÷6",
-            "18÷6",
-            "ide",
-            "ide"
+            "bukan hanya 1",
+            "tertukar",
+            "kurang",
+            "lengkapi"
           ]
         },
         {
           "id": "K5B2D-V3-3",
-          "judul": "Paket Dania",
+          "judul": "Siap E",
           "ketukan": [
-            "Tiga puluh enam, empat delapan, dua empat. Mari kita pahami bersama.",
-            "FPB dua belas. Mari kita pahami bersama.",
-            "Dua belas paket. Mari kita pahami bersama.",
-            "METODE LUAR · Ide Selisih / Sisa: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai."
+            "FPB dan KPK siap di tingkat daftar.",
+            "Sub-Bab E: faktor prima sebagai jalan pintas.",
+            "Konsep irisan tidak hilang.",
+            "Mainkan!"
           ],
           "papan": [
-            "36,48,24",
-            "FPB 12",
-            "paket",
+            "siap",
+            "E",
+            "tetap",
             "main"
           ]
         }
@@ -2546,64 +2489,64 @@ export const SUB_D52: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Faktor Persekutuan dan FPB. Apa yang ditanyakan?",
+      "stepTitle": "1. Dua bilangan",
+      "stepDesc": "FPB a dan b?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. GCF Listing",
-      "stepDesc": "Faktor yang sama terbesar = FPB.",
-      "icon": "🧭",
+      "stepTitle": "2. Faktor a",
+      "stepDesc": "Daftar faktor a.",
+      "icon": "📋",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Prime Factor FPB",
-      "stepDesc": "Ambil faktor prima yang sama dengan pangkat terendah.",
-      "icon": "🛠️",
+      "stepTitle": "3. Faktor b",
+      "stepDesc": "Daftar faktor b.",
+      "icon": "📋",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. Euclid Idea",
-      "stepDesc": "FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai.",
-      "icon": "✨",
+      "stepTitle": "4. Irisan",
+      "stepDesc": "Faktor yang sama.",
+      "icon": "⋂",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
-      "icon": "✏️",
+      "stepTitle": "5. Terbesar",
+      "stepDesc": "Itu FPB.",
+      "icon": "⭐",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
-      "icon": "✅",
+      "stepTitle": "6. Cek bagi",
+      "stepDesc": "Keduanya habis dibagi FPB?",
+      "icon": "➗",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
-      "icon": "💬",
+      "stepTitle": "7. Bukan KPK",
+      "stepDesc": "Jangan tertukar.",
+      "icon": "🚫",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latihan FPB.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -2611,88 +2554,74 @@ export const SUB_D52: SubBabNaskah = {
   ],
   "infografis": [
     {
-      "judul": "Persekutuan",
-      "emoji": "🤝",
-      "countNum": 1,
-      "countWord": "irisan faktor",
-      "suara": "Faktor yang sama."
+      "judul": "f12",
+      "emoji": "📋",
+      "countNum": 6,
+      "countWord": "1..12",
+      "suara": "Faktor"
+    },
+    {
+      "judul": "f18",
+      "emoji": "📋",
+      "countNum": 6,
+      "countWord": "1..18",
+      "suara": "Faktor"
+    },
+    {
+      "judul": "Irisan",
+      "emoji": "⋂",
+      "countNum": 4,
+      "countWord": "1,2,3,6",
+      "suara": "Sama"
     },
     {
       "judul": "FPB",
-      "emoji": "🏆",
-      "countNum": 1,
+      "emoji": "⭐",
+      "countNum": 6,
       "countWord": "terbesar",
-      "suara": "Yang paling besar."
+      "suara": "FPB=6"
     },
     {
-      "judul": "12 & 18",
-      "emoji": "🎯",
+      "judul": "Cerita kue",
+      "emoji": "🍰",
       "countNum": 6,
-      "countWord": "FPB=6",
-      "suara": "Contoh congklak."
+      "countWord": "kotak",
+      "suara": "Bagi rata"
     },
     {
-      "judul": "Congklak",
-      "emoji": "🥣",
+      "judul": "≠ KPK",
+      "emoji": "🚫",
       "countNum": 1,
-      "countWord": "2 biji",
-      "suara": "Tandai irisan."
+      "countWord": "beda",
+      "suara": "Arah beda"
     },
     {
-      "judul": "24 & 18",
-      "emoji": "🌹",
+      "judul": "8&12",
+      "emoji": "⭐",
+      "countNum": 4,
+      "countWord": "FPB",
+      "suara": "4"
+    },
+    {
+      "judul": "Selisih",
+      "emoji": "➖",
       "countNum": 6,
-      "countWord": "6 vas",
-      "suara": "Mawar Ibu."
+      "countWord": "ide",
+      "suara": "Euclid"
     },
     {
-      "judul": "Isi vas",
-      "emoji": "🌸",
-      "countNum": 1,
-      "countWord": "4 dan 3",
-      "suara": "24÷6 dan 18÷6."
-    },
-    {
-      "judul": "36,48,24",
-      "emoji": "🎁",
-      "countNum": 12,
-      "countWord": "12 paket",
-      "suara": "Bingkisan."
-    },
-    {
-      "judul": "FPB=1",
-      "emoji": "1️⃣",
-      "countNum": 1,
-      "countWord": "15 & 28",
-      "suara": "Tanpa pasangan."
-    },
-    {
-      "judul": "Pakai",
-      "emoji": "📦",
-      "countNum": 1,
-      "countWord": "bagi rata",
-      "suara": "Tanpa sisa."
+      "judul": "Cek",
+      "emoji": "➗",
+      "countNum": 0,
+      "countWord": "sisa",
+      "suara": "Habis"
     },
     {
       "judul": "Siap E",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "prima",
-      "suara": "Lanjut faktorisasi."
-    },
-    {
-      "judul": "Daftar Faktor Persekutuan",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Faktor yang sama terbesar = FPB."
-    },
-    {
-      "judul": "FPB dari Faktor Prima",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Ambil faktor prima yang sama dengan pangkat terendah."
+      "suara": "Lanjut"
     }
   ],
   "games": [
@@ -2701,9 +2630,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "cek-persekutuan-f",
       "title": "Cek Faktor Persekutuan",
       "bookReference": "hlm. 46–49",
-      "objective": "Pakai Daftar Faktor Persekutuan: Faktor yang sama terbesar = FPB. Latihan: Mengenali irisan faktor..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan GCF Listing: Faktor yang sama terbesar = FPB.",
-      "voiceGuide": "Daftar Faktor Persekutuan. Faktor yang sama terbesar = FPB.",
+      "objective": "Cari irisan faktor. Latihan: Mengenali irisan faktor..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Daftar Faktor Persekutuan: Yang sama di kedua daftar.",
+      "voiceGuide": "Daftar Faktor Persekutuan. Yang sama di kedua daftar.",
       "emoji": "🤝",
       "targetCount": 6
     },
@@ -2712,9 +2641,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "hitung-fpb",
       "title": "Hitung FPB",
       "bookReference": "hlm. 48–52",
-      "objective": "Pakai Daftar Faktor Persekutuan: Faktor yang sama terbesar = FPB. Latihan: Menemukan FPB..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan GCF Listing: Faktor yang sama terbesar = FPB.",
-      "voiceGuide": "Daftar Faktor Persekutuan. Faktor yang sama terbesar = FPB.",
+      "objective": "Cari irisan faktor. Latihan: Menemukan FPB..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Daftar Faktor Persekutuan: Yang sama di kedua daftar.",
+      "voiceGuide": "Daftar Faktor Persekutuan. Yang sama di kedua daftar.",
       "emoji": "🏆",
       "targetCount": 6
     },
@@ -2723,9 +2652,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "arti-fpb",
       "title": "Arti FPB",
       "bookReference": "hlm. 48–52",
-      "objective": "Pakai Daftar Faktor Persekutuan: Faktor yang sama terbesar = FPB. Latihan: Definisi & pemakaian..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan GCF Listing: Faktor yang sama terbesar = FPB.",
-      "voiceGuide": "Daftar Faktor Persekutuan. Faktor yang sama terbesar = FPB.",
+      "objective": "Cari irisan faktor. Latihan: Definisi & pemakaian..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Daftar Faktor Persekutuan: Yang sama di kedua daftar.",
+      "voiceGuide": "Daftar Faktor Persekutuan. Yang sama di kedua daftar.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -2734,9 +2663,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "sort-fpb",
       "title": "Pilah Faktor Persekutuan",
       "bookReference": "hlm. 46–49",
-      "objective": "Pakai Daftar Faktor Persekutuan: Faktor yang sama terbesar = FPB. Latihan: Memilah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan GCF Listing: Faktor yang sama terbesar = FPB.",
-      "voiceGuide": "Daftar Faktor Persekutuan. Faktor yang sama terbesar = FPB.",
+      "objective": "Cari irisan faktor. Latihan: Memilah..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Daftar Faktor Persekutuan: Yang sama di kedua daftar.",
+      "voiceGuide": "Daftar Faktor Persekutuan. Yang sama di kedua daftar.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -2745,9 +2674,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "match-fpb",
       "title": "Jodohkan FPB",
       "bookReference": "hlm. 48–52",
-      "objective": "Menjodohkan.. Ingat Daftar Faktor Persekutuan.",
+      "objective": "Menjodohkan.. Ingat Daftar Faktor Persekutuan. (Daftar Faktor Persekutuan)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Faktor Persekutuan.",
-      "voiceGuide": "Daftar Faktor Persekutuan. Jodohkan.",
+      "voiceGuide": "Daftar Faktor Persekutuan. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -2756,9 +2685,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "memory-fpb",
       "title": "Memori FPB",
       "bookReference": "hlm. 48–52",
-      "objective": "Memori.. Ingat Daftar Faktor Persekutuan.",
+      "objective": "Memori.. Ingat Daftar Faktor Persekutuan. (Daftar Faktor Persekutuan)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Faktor Persekutuan.",
-      "voiceGuide": "Daftar Faktor Persekutuan. Balik kartu.",
+      "voiceGuide": "Daftar Faktor Persekutuan. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -2767,9 +2696,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "tap-fpb",
       "title": "Ketuk Faktor Sama",
       "bookReference": "hlm. 46–49",
-      "objective": "Mengetuk.. Ingat Daftar Faktor Persekutuan.",
+      "objective": "Mengetuk.. Ingat Daftar Faktor Persekutuan. (Daftar Faktor Persekutuan)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Faktor Persekutuan.",
-      "voiceGuide": "Daftar Faktor Persekutuan. Ketuk.",
+      "voiceGuide": "Daftar Faktor Persekutuan. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -2778,9 +2707,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "tap-all-fpb",
       "title": "Ketuk Semua Benar FPB",
       "bookReference": "hlm. 46–52",
-      "objective": "Ketuk semua.. Ingat Daftar Faktor Persekutuan.",
+      "objective": "Ketuk semua.. Ingat Daftar Faktor Persekutuan. (Daftar Faktor Persekutuan)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Faktor Persekutuan.",
-      "voiceGuide": "Daftar Faktor Persekutuan. Ketuk semua.",
+      "voiceGuide": "Daftar Faktor Persekutuan. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -2789,9 +2718,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "story-fpb",
       "title": "Cerita Congklak dan Vas",
       "bookReference": "hlm. 46–52",
-      "objective": "Soal cerita.. Ingat Daftar Faktor Persekutuan.",
+      "objective": "Soal cerita.. Ingat Daftar Faktor Persekutuan. (Daftar Faktor Persekutuan)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Faktor Persekutuan.",
-      "voiceGuide": "Daftar Faktor Persekutuan. Pilih.",
+      "voiceGuide": "Daftar Faktor Persekutuan. Mainkan dengan teliti.",
       "emoji": "🌸",
       "targetCount": 6
     },
@@ -2800,9 +2729,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "order-fpb",
       "title": "Urutkan Faktor Persekutuan",
       "bookReference": "hlm. 48–49",
-      "objective": "Mengurutkan.. Ingat Daftar Faktor Persekutuan.",
+      "objective": "Mengurutkan.. Ingat Daftar Faktor Persekutuan. (Daftar Faktor Persekutuan)",
       "mechanicDescription": "Tiga ronde. Gunakan Daftar Faktor Persekutuan.",
-      "voiceGuide": "Daftar Faktor Persekutuan. Urutkan.",
+      "voiceGuide": "Daftar Faktor Persekutuan. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -2811,9 +2740,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "diagram-irisan-f",
       "title": "Diagram Irisan Faktor",
       "bookReference": "hlm. 48–49",
-      "objective": "Pakai FPB dari Faktor Prima: Ambil faktor prima yang sama dengan pangkat terendah. Latihan: Baca irisan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Prime Factor FPB: Ambil faktor prima yang sama dengan pangkat terendah.",
-      "voiceGuide": "FPB dari Faktor Prima. Ambil faktor prima yang sama dengan pangkat terendah.",
+      "objective": "Ambil irisan terbesar. Latihan: Baca irisan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat FPB dari Irisan: Itu FPB.",
+      "voiceGuide": "FPB dari Irisan. Itu FPB.",
       "diagramType": "venn",
       "numberA": 1,
       "numberB": 2
@@ -2823,9 +2752,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "diagram-fpb",
       "title": "Diagram FPB",
       "bookReference": "hlm. 48–52",
-      "objective": "Pakai FPB dari Faktor Prima: Ambil faktor prima yang sama dengan pangkat terendah. Latihan: Baca FPB..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Prime Factor FPB: Ambil faktor prima yang sama dengan pangkat terendah.",
-      "voiceGuide": "FPB dari Faktor Prima. Ambil faktor prima yang sama dengan pangkat terendah.",
+      "objective": "Ambil irisan terbesar. Latihan: Baca FPB..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat FPB dari Irisan: Itu FPB.",
+      "voiceGuide": "FPB dari Irisan. Itu FPB.",
       "diagramType": "gcd",
       "numberA": 1,
       "numberB": 2
@@ -2835,9 +2764,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "match-diagram-d",
       "title": "Jodohkan Diagram D",
       "bookReference": "hlm. 46–52",
-      "objective": "Pakai FPB dari Faktor Prima: Ambil faktor prima yang sama dengan pangkat terendah. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Prime Factor FPB: Ambil faktor prima yang sama dengan pangkat terendah.",
-      "voiceGuide": "FPB dari Faktor Prima. Ambil faktor prima yang sama dengan pangkat terendah.",
+      "objective": "Ambil irisan terbesar. Latihan: Jodohkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat FPB dari Irisan: Itu FPB.",
+      "voiceGuide": "FPB dari Irisan. Itu FPB.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -2847,9 +2776,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "memory-diagram-d",
       "title": "Memori Diagram D",
       "bookReference": "hlm. 46–52",
-      "objective": "Pakai FPB dari Faktor Prima: Ambil faktor prima yang sama dengan pangkat terendah. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Prime Factor FPB: Ambil faktor prima yang sama dengan pangkat terendah.",
-      "voiceGuide": "FPB dari Faktor Prima. Ambil faktor prima yang sama dengan pangkat terendah.",
+      "objective": "Ambil irisan terbesar. Latihan: Memori..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat FPB dari Irisan: Itu FPB.",
+      "voiceGuide": "FPB dari Irisan. Itu FPB.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -2859,9 +2788,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "table-d",
       "title": "Tabel FPB",
       "bookReference": "hlm. 48–52",
-      "objective": "Isi tabel.. Ingat FPB dari Faktor Prima.",
+      "objective": "Isi tabel.. Ingat FPB dari Faktor Prima. (FPB dari Irisan)",
       "mechanicDescription": "Tiga tabel. Gunakan FPB dari Faktor Prima.",
-      "voiceGuide": "FPB dari Faktor Prima. Pilih.",
+      "voiceGuide": "FPB dari Irisan. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -2871,9 +2800,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "tap-all-pd",
       "title": "Ketuk Semua Diagram D",
       "bookReference": "hlm. 46–52",
-      "objective": "Ketuk semua.. Ingat FPB dari Faktor Prima.",
+      "objective": "Ketuk semua.. Ingat FPB dari Faktor Prima. (FPB dari Irisan)",
       "mechanicDescription": "Tiga ronde. Gunakan FPB dari Faktor Prima.",
-      "voiceGuide": "FPB dari Faktor Prima. Ketuk semua.",
+      "voiceGuide": "FPB dari Irisan. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -2883,9 +2812,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "sort-diagram-d",
       "title": "Pilah Diagram D",
       "bookReference": "hlm. 46–49",
-      "objective": "Pilah.. Ingat FPB dari Faktor Prima.",
+      "objective": "Pilah.. Ingat FPB dari Faktor Prima. (FPB dari Irisan)",
       "mechanicDescription": "Tiga ronde. Gunakan FPB dari Faktor Prima.",
-      "voiceGuide": "FPB dari Faktor Prima. Pilah.",
+      "voiceGuide": "FPB dari Irisan. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -2895,9 +2824,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "choose-d",
       "title": "Pilih Pernyataan D",
       "bookReference": "hlm. 46–52",
-      "objective": "Pilih.. Ingat FPB dari Faktor Prima.",
+      "objective": "Pilih.. Ingat FPB dari Faktor Prima. (FPB dari Irisan)",
       "mechanicDescription": "Tiga ronde. Gunakan FPB dari Faktor Prima.",
-      "voiceGuide": "FPB dari Faktor Prima. Pilih.",
+      "voiceGuide": "FPB dari Irisan. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -2907,9 +2836,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "jenis-pd",
       "title": "Pilih Arti Diagram D",
       "bookReference": "hlm. 48–52",
-      "objective": "Definisi.. Ingat FPB dari Faktor Prima.",
+      "objective": "Definisi.. Ingat FPB dari Faktor Prima. (FPB dari Irisan)",
       "mechanicDescription": "Tiga ronde. Gunakan FPB dari Faktor Prima.",
-      "voiceGuide": "FPB dari Faktor Prima. Pilih.",
+      "voiceGuide": "FPB dari Irisan. Mainkan dengan teliti.",
       "diagramType": "def",
       "numberA": 1,
       "numberB": 2
@@ -2919,9 +2848,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "story-picture-d",
       "title": "Cerita Diagram D",
       "bookReference": "hlm. 46–52",
-      "objective": "Cerita.. Ingat FPB dari Faktor Prima.",
+      "objective": "Cerita.. Ingat FPB dari Faktor Prima. (FPB dari Irisan)",
       "mechanicDescription": "Tiga ronde. Gunakan FPB dari Faktor Prima.",
-      "voiceGuide": "FPB dari Faktor Prima. Pilih.",
+      "voiceGuide": "FPB dari Irisan. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -2931,9 +2860,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "write-cek-fp",
       "title": "Tulis Cek Persekutuan",
       "bookReference": "hlm. 46–49",
-      "objective": "Pakai Ide Selisih / Sisa: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai. Latihan: Menulis..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Euclid Idea: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai.",
-      "voiceGuide": "Ide Selisih / Sisa. FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai.",
+      "objective": "Kenali pratinjau Euclid. Latihan: Menulis..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Ide Selisih / Sisa: Daftar tetap utama.",
+      "voiceGuide": "Ide Selisih / Sisa. Daftar tetap utama.",
       "symbolLarge": "∈",
       "wordLarge": "CEK",
       "mathNotation": "irisan"
@@ -2943,9 +2872,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "write-fpb",
       "title": "Tulis Hasil FPB",
       "bookReference": "hlm. 48–52",
-      "objective": "Pakai Ide Selisih / Sisa: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai. Latihan: Menulis FPB..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Euclid Idea: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai.",
-      "voiceGuide": "Ide Selisih / Sisa. FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai.",
+      "objective": "Kenali pratinjau Euclid. Latihan: Menulis FPB..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Ide Selisih / Sisa: Daftar tetap utama.",
+      "voiceGuide": "Ide Selisih / Sisa. Daftar tetap utama.",
       "symbolLarge": "FPB",
       "wordLarge": "HASIL",
       "mathNotation": "gcd"
@@ -2955,9 +2884,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "choose-def-d",
       "title": "Pilih Definisi FPB",
       "bookReference": "hlm. 48–52",
-      "objective": "Pakai Ide Selisih / Sisa: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai. Latihan: Definisi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Euclid Idea: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai.",
-      "voiceGuide": "Ide Selisih / Sisa. FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai.",
+      "objective": "Kenali pratinjau Euclid. Latihan: Definisi..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Ide Selisih / Sisa: Daftar tetap utama.",
+      "voiceGuide": "Ide Selisih / Sisa. Daftar tetap utama.",
       "symbolLarge": "arti",
       "wordLarge": "DEFINISI",
       "mathNotation": "teks"
@@ -2967,9 +2896,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "order-abstract-d",
       "title": "Urutkan Abstrak D",
       "bookReference": "hlm. 48–49",
-      "objective": "Pakai Ide Selisih / Sisa: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai. Latihan: Urut..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Euclid Idea: FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai.",
-      "voiceGuide": "Ide Selisih / Sisa. FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai.",
+      "objective": "Kenali pratinjau Euclid. Latihan: Urut..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Ide Selisih / Sisa: Daftar tetap utama.",
+      "voiceGuide": "Ide Selisih / Sisa. Daftar tetap utama.",
       "symbolLarge": "naik",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -2979,9 +2908,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "match-abstract-d",
       "title": "Jodohkan Notasi D",
       "bookReference": "hlm. 46–52",
-      "objective": "Jodohkan.. Ingat Ide Selisih / Sisa.",
+      "objective": "Jodohkan.. Ingat Ide Selisih / Sisa. (Ide Selisih / Sisa)",
       "mechanicDescription": "Tiga ronde. Gunakan Ide Selisih / Sisa.",
-      "voiceGuide": "Ide Selisih / Sisa. Jodohkan.",
+      "voiceGuide": "Ide Selisih / Sisa. Mainkan dengan teliti.",
       "symbolLarge": "fpb",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -2991,9 +2920,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "memory-abstract-d",
       "title": "Memori Notasi D",
       "bookReference": "hlm. 46–52",
-      "objective": "Memori.. Ingat Ide Selisih / Sisa.",
+      "objective": "Memori.. Ingat Ide Selisih / Sisa. (Ide Selisih / Sisa)",
       "mechanicDescription": "Tiga ronde. Gunakan Ide Selisih / Sisa.",
-      "voiceGuide": "Ide Selisih / Sisa. Balik kartu.",
+      "voiceGuide": "Ide Selisih / Sisa. Mainkan dengan teliti.",
       "symbolLarge": "fpb",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -3003,9 +2932,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "true-false-d",
       "title": "Benar atau Salah: FPB",
       "bookReference": "hlm. 46–52",
-      "objective": "Menilai.. Ingat Ide Selisih / Sisa.",
+      "objective": "Menilai.. Ingat Ide Selisih / Sisa. (Ide Selisih / Sisa)",
       "mechanicDescription": "Dua ronde. Gunakan Ide Selisih / Sisa.",
-      "voiceGuide": "Ide Selisih / Sisa. Benar/salah.",
+      "voiceGuide": "Ide Selisih / Sisa. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -3015,9 +2944,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "detective-d",
       "title": "Detektif FPB",
       "bookReference": "hlm. 46–52",
-      "objective": "Petunjuk.. Ingat Ide Selisih / Sisa.",
+      "objective": "Petunjuk.. Ingat Ide Selisih / Sisa. (Ide Selisih / Sisa)",
       "mechanicDescription": "Tiga soal. Gunakan Ide Selisih / Sisa.",
-      "voiceGuide": "Ide Selisih / Sisa. Pilih.",
+      "voiceGuide": "Ide Selisih / Sisa. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -3027,9 +2956,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "concept-d",
       "title": "Peta Konsep FPB",
       "bookReference": "hlm. 46–52",
-      "objective": "Peta.. Ingat Ide Selisih / Sisa.",
+      "objective": "Peta.. Ingat Ide Selisih / Sisa. (Ide Selisih / Sisa)",
       "mechanicDescription": "Satu peta. Gunakan Ide Selisih / Sisa.",
-      "voiceGuide": "Ide Selisih / Sisa. Pilih opsi.",
+      "voiceGuide": "Ide Selisih / Sisa. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -3039,9 +2968,9 @@ export const SUB_D52: SubBabNaskah = {
       "gameType": "story-abstract-d",
       "title": "Cerita Angka FPB",
       "bookReference": "hlm. 46–52",
-      "objective": "Cerita.. Ingat Ide Selisih / Sisa.",
+      "objective": "Cerita.. Ingat Ide Selisih / Sisa. (Ide Selisih / Sisa)",
       "mechanicDescription": "Tiga ronde. Gunakan Ide Selisih / Sisa.",
-      "voiceGuide": "Ide Selisih / Sisa. Pilih.",
+      "voiceGuide": "Ide Selisih / Sisa. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -3049,37 +2978,31 @@ export const SUB_D52: SubBabNaskah = {
   ],
   "poin": [
     {
-      "ikon": "🤝",
-      "nama": "Persekutuan",
-      "isi": "Faktor yang sama dari dua bilangan atau lebih.",
-      "suara": "Itu faktor persekutuan."
+      "ikon": "⋂",
+      "nama": "Irisan faktor",
+      "isi": "Faktor persekutuan = irisan daftar faktor.",
+      "suara": "Irisan."
     },
     {
-      "ikon": "🏆",
+      "ikon": "⭐",
       "nama": "FPB",
-      "isi": "Faktor persekutuan yang terbesar.",
-      "suara": "FPB adalah yang terbesar."
+      "isi": "FPB = faktor persekutuan terbesar.",
+      "suara": "Terbesar."
     },
     {
-      "ikon": "🌍",
-      "nama": "Daftar Faktor Persekutuan",
-      "isi": "Faktor yang sama terbesar = FPB.",
-      "suara": "Daftar Faktor Persekutuan. Faktor yang sama terbesar = FPB."
+      "ikon": "🚫",
+      "nama": "Bukan KPK",
+      "isi": "KPK dari kelipatan; FPB dari faktor.",
+      "suara": "Jangan tertukar."
     },
     {
-      "ikon": "🌍",
-      "nama": "FPB dari Faktor Prima",
-      "isi": "Ambil faktor prima yang sama dengan pangkat terendah.",
-      "suara": "FPB dari Faktor Prima. Ambil faktor prima yang sama dengan pangkat terendah."
-    },
-    {
-      "ikon": "🌍",
-      "nama": "Ide Selisih / Sisa",
-      "isi": "FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai.",
-      "suara": "Ide Selisih / Sisa. FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai."
+      "ikon": "➗",
+      "nama": "Cek",
+      "isi": "FPB harus membagi habis keduanya.",
+      "suara": "Cek bagi."
     }
   ],
-  "poinSuara": "Ingat: Daftar Faktor Persekutuan, FPB dari Faktor Prima, Ide Selisih / Sisa.",
+  "poinSuara": "Irisan faktor, ambil terbesar, cek pembagian, jangan tertukar KPK.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -3101,46 +3024,46 @@ export const SUB_D52: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Daftar Faktor Persekutuan pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Daftar Faktor Persekutuan pada satu soal di rumah.",
   "refleksi": [
-    "Bagaimana Daftar Faktor Persekutuan membantumu memahami soal?",
-    "Kapan kamu memakai FPB dari Faktor Prima?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Daftar Faktor Persekutuan membantumu?",
+    "Kapan memakai FPB dari Irisan?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
       "label": "METODE LUAR",
-      "nama": "GCF Listing",
+      "nama": "Common Factors List",
       "namaId": "Daftar Faktor Persekutuan",
-      "asal": "Elementary number theory pedagogy",
-      "ringkas": "Faktor yang sama terbesar = FPB.",
+      "asal": "Singapore / US",
+      "ringkas": "Irisan dua daftar faktor = faktor persekutuan.",
       "tahap": [
         "Story",
         "Concrete",
-        "Abstract"
+        "Picture"
       ]
     },
     {
       "label": "METODE LUAR",
-      "nama": "Prime Factor FPB",
-      "namaId": "FPB dari Faktor Prima",
-      "asal": "Prime factorization method",
-      "ringkas": "Ambil faktor prima yang sama dengan pangkat terendah.",
+      "nama": "GCF Concept",
+      "namaId": "FPB dari Irisan",
+      "asal": "Number sense",
+      "ringkas": "FPB adalah faktor persekutuan terbesar.",
       "tahap": [
+        "Story",
         "Mind",
-        "Picture",
         "Abstract"
       ]
     },
     {
       "label": "METODE LUAR",
-      "nama": "Euclid Idea",
+      "nama": "Euclid Preview",
       "namaId": "Ide Selisih / Sisa",
-      "asal": "Euclidean algorithm (disederhanakan)",
-      "ringkas": "FPB tidak berubah jika diganti selisih atau sisa pembagian yang sesuai.",
+      "asal": "Euclidean algorithm intro",
+      "ringkas": "FPB terkait sisa pembagian; hari ini kuasai daftar dulu.",
       "tahap": [
-        "Infografis",
-        "Abstract"
+        "Story",
+        "Infografis"
       ]
     }
   ]
@@ -3150,177 +3073,177 @@ export const SUB_E52: SubBabNaskah = {
   "id": "E",
   "codeTitle": "Sub-Bab E (Faktor Prima)",
   "fullTitle": "Sub-Bab E: Menentukan KPK dan FPB dengan Faktor Prima",
-  "targetDescription": "Siswa mengenal bilangan prima (saringan Eratosthenes), membuat faktorisasi prima dengan pohon faktor, serta menentukan KPK dan FPB melalui faktorisasi prima dan pembagian berulang sesuai Buku Siswa Kelas V Bab 2. Siswa memakai cara Pohon Faktor, Ide Ayakan Prima, Jembatan KPK dan FPB.",
+  "targetDescription": "Siswa menentukan KPK dan FPB dengan faktorisasi prima, pohon faktor, dan jembatan hubungan KPK–FPB sesuai Buku Siswa Kelas V Bab 2 Sub-Bab E.",
   "secondaryBg": "#EDE9FE",
   "secondaryBorder": "#7C3AED",
   "secondaryText": "#5B21B6",
   "silabus": {
-    "teksSuara": "Kita belajar bilangan prima dan faktorisasi prima. Dengan pohon faktor kita mengurai bilangan. FPB diambil dari prima berpasangan. KPK mengambil semua prima dengan pangkat terbesar. Ada juga cara pembagian berulang. Kita memakai cara dari luar buku: Pohon Faktor (Factor Tree); Ide Ayakan Prima (Sieve Idea); Jembatan KPK dan FPB (KPK FPB Bridge). Urai bilangan jadi faktor sampai semua prima. Prima hanya punya faktor 1 dan dirinya. Faktorisasi prima dipakai bersama untuk KPK dan FPB. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-    "cp": "Siswa menentukan bilangan prima, faktorisasi prima, serta KPK dan FPB dengan faktorisasi prima.",
-    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2: KPK dan FPB, Sub-Bab E)."
+    "teksSuara": "Kita memecah bilangan jadi faktor prima dengan pohon faktor. FPB memakai pangkat terkecil yang sama. KPK memakai pangkat terbesar tiap prima. Ini jalan pintas dari daftar panjang. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menentukan KPK dan FPB dengan faktor prima.",
+    "referensi": "Buku Siswa Matematika Kelas V Kemendikbudristek (Bab 2 Sub-Bab E)."
   },
   "videos": [
     {
       "id": "K5B2E-V1",
-      "judul": "Bilangan Prima",
-      "subjudul": "Factor Tree",
+      "judul": "Pohon sampai Prima",
+      "subjudul": "Pohon Faktor",
       "adegan": [
         {
           "id": "K5B2E-V1-1",
-          "judul": "Definisi",
+          "judul": "Urai 12",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Prima hanya dibagi satu dan dirinya. Mari kita pahami bersama.",
-            "Satu bukan prima. Mari kita pahami bersama.",
-            "Dua adalah prima terkecil. Mari kita pahami bersama.",
-            "Ingat cara Pohon Faktor: Urai bilangan jadi faktor sampai semua prima."
+            "12 = 2×6, lalu 6 = 2×3. Daun: 2, 2, 3. Semua prima.",
+            "Tulis 12 = 2² × 3.",
+            "METODE LUAR · Pohon Faktor: berhenti hanya di bilangan prima.",
+            "Urai 18: 18=2×9=2×3×3=2×3²."
           ],
           "papan": [
-            "1 & n",
-            "bukan 1",
-            "3,5,7",
-            "pohon"
+            "pohon 12",
+            "2²×3",
+            "prima",
+            "pohon 18"
           ]
         },
         {
           "id": "K5B2E-V1-2",
-          "judul": "Saringan Eratosthenes",
+          "judul": "FPB dari prima",
           "ketukan": [
-            "Hapus satu. Mari kita pahami bersama.",
-            "Ambil dua, hapus kelipatannya. Mari kita pahami bersama.",
-            "Ambil tiga, hapus kelipatannya. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Factor Tree — Urai bilangan jadi faktor sampai semua prima."
+            "12=2²×3 dan 18=2×3². Prima yang sama: 2 dan 3.",
+            "Ambil pangkat terkecil: 2¹ dan 3¹. FPB=2×3=6.",
+            "METODE LUAR · Ide Ayakan Prima: FPB = hasil kali prima dengan pangkat min.",
+            "Cocok dengan cara daftar tadi."
           ],
           "papan": [
-            "hapus 1",
-            "hapus ×2",
-            "hapus ×3",
-            "sisa prima"
+            "sama",
+            "min → 6",
+            "aturan FPB",
+            "konsisten"
           ]
         },
         {
           "id": "K5B2E-V1-3",
-          "judul": "Lanjut saring",
+          "judul": "KPK dari prima",
           "ketukan": [
-            "Lanjut lima dan tujuh. Mari kita pahami bersama.",
-            "Sampai tidak ada yang bisa dihapus. Mari kita pahami bersama.",
-            "Daftar prima siap. Mari kita pahami bersama.",
-            "METODE LUAR · Pohon Faktor: Urai bilangan jadi faktor sampai semua prima."
+            "Ambil pangkat terbesar tiap prima yang muncul: 2² dan 3².",
+            "KPK=4×9=36? Tunggu: 2²×3²=4×9=36. Tapi KPK 12 dan 18 seharusnya 36? 12=2²×3, 18=2×3² → 2²×3²=36. Ya.",
+            "Cek: 36÷12=3, 36÷18=2.",
+            "Sama dengan irisan kelipatan jika daftar cukup panjang."
           ],
           "papan": [
-            "×5",
-            "×7",
-            "selesai",
-            "siap"
+            "max",
+            "KPK=36",
+            "cek",
+            "sama hasil"
           ]
         }
       ]
     },
     {
       "id": "K5B2E-V2",
-      "judul": "Latihan: Ide Ayakan Prima",
-      "subjudul": "Sieve Idea",
+      "judul": "Aturan Min dan Max",
+      "subjudul": "Ide Ayakan Prima",
       "adegan": [
         {
           "id": "K5B2E-V2-1",
-          "judul": "Contoh 12",
+          "judul": "Ringkas aturan",
           "ketukan": [
-            "Dua belas jadi dua kali enam. Mari kita pahami bersama.",
-            "Enam jadi dua kali tiga. Mari kita pahami bersama.",
-            "Semua prima: dua, dua, tiga. Mari kita pahami bersama.",
-            "Ingat cara Ide Ayakan Prima: Prima hanya punya faktor 1 dan dirinya."
+            "FPB: irisan prima, pangkat paling kecil.",
+            "KPK: seluruh prima yang muncul, pangkat paling besar.",
+            "Jangan tertukar min dan max.",
+            "Latihan mengucapkan aturan sebelum menghitung."
           ],
           "papan": [
-            "12",
-            "2×6",
-            "2×3",
-            "2×2×3"
+            "FPB=min",
+            "KPK=max",
+            "jangan",
+            "ucap"
           ]
         },
         {
           "id": "K5B2E-V2-2",
-          "judul": "Contoh 30",
+          "judul": "Jembatan cek",
           "ketukan": [
-            "Tiga puluh jadi dua kali lima belas. Mari kita pahami bersama.",
-            "Lima belas jadi tiga kali lima. Mari kita pahami bersama.",
-            "Hasil dua kali tiga kali lima. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Sieve Idea — Prima hanya punya faktor 1 dan dirinya."
+            "Untuk dua bilangan a dan b: FPB×KPK = a×b.",
+            "Contoh: 6×36=216 dan 12×18=216. Cocok!",
+            "METODE LUAR · Jembatan KPK dan FPB: dipakai untuk memeriksa hasil.",
+            "Jika tidak cocok, ada yang salah di uraian atau pangkat."
           ],
           "papan": [
-            "30",
-            "2×15",
-            "3×5",
-            "2×3×5"
+            "jembatan",
+            "cek 216",
+            "cek",
+            "debug"
           ]
         },
         {
           "id": "K5B2E-V2-3",
-          "judul": "Lebih besar",
+          "judul": "Kapan pakai mana",
           "ketukan": [
-            "Seratus sembilan enam: dua dua tujuh tujuh. Mari kita pahami bersama.",
-            "Tiga ratus: dua dua tiga lima lima. Mari kita pahami bersama.",
-            "Urai sampai prima semua. Mari kita pahami bersama.",
-            "METODE LUAR · Ide Ayakan Prima: Prima hanya punya faktor 1 dan dirinya."
+            "Daftar lebih mudah untuk bilangan kecil.",
+            "Faktor prima lebih cepat untuk bilangan besar.",
+            "Keduanya harus memberi jawaban sama.",
+            "Pilih alat yang paling kamu kuasai dulu, lalu kuasai keduanya."
           ],
           "papan": [
-            "196",
-            "300",
-            "urai",
-            "siap"
+            "daftar",
+            "prima",
+            "sama",
+            "strategi"
           ]
         }
       ]
     },
     {
       "id": "K5B2E-V3",
-      "judul": "Siap pakai KPK FPB Bridge",
-      "subjudul": "KPK FPB Bridge",
+      "judul": "Rangkum Bab 2",
+      "subjudul": "Jembatan KPK dan FPB",
       "adegan": [
         {
           "id": "K5B2E-V3-1",
-          "judul": "FPB pasangan",
+          "judul": "Peta bab",
           "ketukan": [
-            "Tulis faktorisasi tujuh dua dan seratus lima puluh. Mari kita pahami bersama.",
-            "Ambil prima yang berpasangan. Mari kita pahami bersama.",
-            "Dua kali tiga. Mari kita pahami bersama.",
-            "Ingat cara Jembatan KPK dan FPB: Faktorisasi prima dipakai bersama untuk KPK dan FPB."
+            "A: kelipatan. B: KPK daftar. C: faktor. D: FPB daftar. E: prima.",
+            "Satu keluarga konsep: bagi habis dan lompat sama.",
+            "Salah arti KPK/FPB adalah musuh utama — lawan dengan definisi.",
+            "Pohon faktor adalah alat baru yang kuat."
           ],
           "papan": [
-            "72 & 150",
-            "pasangan",
-            "2×3",
-            "FPB=6"
+            "peta",
+            "keluarga",
+            "waspada",
+            "alat"
           ]
         },
         {
           "id": "K5B2E-V3-2",
-          "judul": "KPK pangkat max",
+          "judul": "Cek akhir",
           "ketukan": [
-            "Ambil semua prima. Mari kita pahami bersama.",
-            "Pakai pangkat terbesar. Mari kita pahami bersama.",
-            "Dua pangkat tiga, tiga pangkat dua, lima pangkat dua. Mari kita pahami bersama.",
-            "Di sini kita memakai ide KPK FPB Bridge — Faktorisasi prima dipakai bersama untuk KPK dan FPB."
+            "Cek 1: uraian prima benar? Cek 2: min/max benar?",
+            "Cek 3: FPB×KPK = a×b?",
+            "Cek 4: hasil masuk akal dibanding a dan b?",
+            "Dengan empat cek, jawaban lebih aman."
           ],
           "papan": [
-            "semua prima",
-            "pangkat max",
-            "2³3²5²",
-            "1800"
+            "2 cek",
+            "cek jembatan",
+            "masuk akal",
+            "aman"
           ]
         },
         {
           "id": "K5B2E-V3-3",
-          "judul": "Pembagian berulang",
+          "judul": "Tutup",
           "ketukan": [
-            "Bagi bersama dengan prima. Mari kita pahami bersama.",
-            "Kalikan semua pembagi untuk KPK. Mari kita pahami bersama.",
-            "Yang membagi keduanya untuk FPB. Mari kita pahami bersama.",
-            "METODE LUAR · Jembatan KPK dan FPB: Faktorisasi prima dipakai bersama untuk KPK dan FPB."
+            "Metode luar sudah hidup di cerita, bukan hanya label silabus.",
+            "Ulangi peta pikiran bila perlu.",
+            "Selesaikan permainan Concrete sampai Abstract.",
+            "Hebat: Bab 2 KPK–FPB siap dikuasai."
           ],
           "papan": [
-            "bagi berulang",
-            "KPK",
-            "FPB",
-            "main"
+            "hidup",
+            "ulang",
+            "CPA",
+            "hebat"
           ]
         }
       ]
@@ -3329,153 +3252,139 @@ export const SUB_E52: SubBabNaskah = {
   "mindMaps": [
     {
       "stepNumber": 1,
-      "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Menentukan KPK dan FPB dengan Faktor Prima. Apa yang ditanyakan?",
-      "icon": "❓",
+      "stepTitle": "1. Urai pohon",
+      "stepDesc": "Pecah sampai prima.",
+      "icon": "🌳",
       "flowFrom": "START",
       "flowTo": "2"
     },
     {
       "stepNumber": 2,
-      "stepTitle": "2. Factor Tree",
-      "stepDesc": "Urai bilangan jadi faktor sampai semua prima.",
-      "icon": "🧭",
+      "stepTitle": "2. Tulis pangkat",
+      "stepDesc": "n = p^a × q^b …",
+      "icon": "✍️",
       "flowFrom": "1",
       "flowTo": "3"
     },
     {
       "stepNumber": 3,
-      "stepTitle": "3. Sieve Idea",
-      "stepDesc": "Prima hanya punya faktor 1 dan dirinya.",
-      "icon": "🛠️",
+      "stepTitle": "3. FPB = min",
+      "stepDesc": "Pangkat terkecil yang sama.",
+      "icon": "⬇️",
       "flowFrom": "2",
       "flowTo": "4"
     },
     {
       "stepNumber": 4,
-      "stepTitle": "4. KPK FPB Bridge",
-      "stepDesc": "Faktorisasi prima dipakai bersama untuk KPK dan FPB.",
-      "icon": "✨",
+      "stepTitle": "4. KPK = max",
+      "stepDesc": "Pangkat terbesar tiap prima.",
+      "icon": "⬆️",
       "flowFrom": "3",
       "flowTo": "5"
     },
     {
       "stepNumber": 5,
-      "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
-      "icon": "✏️",
+      "stepTitle": "5. Hitung",
+      "stepDesc": "Kalikan hasil aturan.",
+      "icon": "🔢",
       "flowFrom": "4",
       "flowTo": "6"
     },
     {
       "stepNumber": 6,
-      "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
-      "icon": "✅",
+      "stepTitle": "6. Jembatan",
+      "stepDesc": "FPB×KPK = a×b?",
+      "icon": "🌉",
       "flowFrom": "5",
       "flowTo": "7"
     },
     {
       "stepNumber": 7,
-      "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
-      "icon": "💬",
+      "stepTitle": "7. Cek masuk akal",
+      "stepDesc": "Bandingkan dengan a dan b.",
+      "icon": "✅",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
-      "icon": "🎮",
+      "stepTitle": "8. Bab 2 utuh",
+      "stepDesc": "Kelipatan–faktor–prima.",
+      "icon": "🎉",
       "flowFrom": "7",
       "flowTo": "END"
     }
   ],
   "infografis": [
     {
-      "judul": "Prima",
-      "emoji": "✨",
+      "judul": "Pohon",
+      "emoji": "🌳",
       "countNum": 1,
-      "countWord": "1 & dirinya",
-      "suara": "Bukan bilangan 1."
-    },
-    {
-      "judul": "Saringan",
-      "emoji": "🔍",
-      "countNum": 1,
-      "countWord": "Eratosthenes",
-      "suara": "Hapus kelipatan."
+      "countWord": "ke prima",
+      "suara": "Urai"
     },
     {
       "judul": "12",
-      "emoji": "🌳",
-      "countNum": 12,
-      "countWord": "2×2×3",
-      "suara": "Faktorisasi."
-    },
-    {
-      "judul": "30",
-      "emoji": "🌳",
-      "countNum": 30,
-      "countWord": "2×3×5",
-      "suara": "Contoh buku."
-    },
-    {
-      "judul": "FPB",
-      "emoji": "🏆",
-      "countNum": 6,
-      "countWord": "pasangan",
-      "suara": "Pangkat min."
-    },
-    {
-      "judul": "KPK",
-      "emoji": "🎯",
-      "countNum": 1800,
-      "countWord": "1.800",
-      "suara": "Pangkat max."
-    },
-    {
-      "judul": "196",
-      "emoji": "2️⃣",
-      "countNum": 196,
-      "countWord": "2²×7²",
-      "suara": "Pohon besar."
-    },
-    {
-      "judul": "300",
-      "emoji": "3️⃣",
-      "countNum": 300,
-      "countWord": "2²×3×5²",
-      "suara": "Pohon besar."
-    },
-    {
-      "judul": "Bagi berulang",
-      "emoji": "➗",
+      "emoji": "🔢",
       "countNum": 1,
-      "countWord": "cara lain",
-      "suara": "Pembagi prima."
+      "countWord": "2²×3",
+      "suara": "Uraian"
     },
     {
-      "judul": "Bab 2 siap",
+      "judul": "18",
+      "emoji": "🔢",
+      "countNum": 1,
+      "countWord": "2×3²",
+      "suara": "Uraian"
+    },
+    {
+      "judul": "FPB min",
+      "emoji": "⬇️",
+      "countNum": 6,
+      "countWord": "2×3",
+      "suara": "FPB"
+    },
+    {
+      "judul": "KPK max",
+      "emoji": "⬆️",
+      "countNum": 36,
+      "countWord": "2²×3²",
+      "suara": "KPK"
+    },
+    {
+      "judul": "Jembatan",
+      "emoji": "🌉",
+      "countNum": 216,
+      "countWord": "6×36",
+      "suara": "Cek"
+    },
+    {
+      "judul": "Min≠Max",
+      "emoji": "🚫",
+      "countNum": 1,
+      "countWord": "jangan",
+      "suara": "Tertukar"
+    },
+    {
+      "judul": "Prima",
+      "emoji": "⭐",
+      "countNum": 1,
+      "countWord": "daun",
+      "suara": "Hanya prima"
+    },
+    {
+      "judul": "Daftar=Prima",
       "emoji": "✅",
       "countNum": 1,
-      "countWord": "A–E",
-      "suara": "Materi lengkap."
+      "countWord": "sama",
+      "suara": "Hasil sama"
     },
     {
-      "judul": "Pohon Faktor",
-      "emoji": "🌍",
+      "judul": "Bab 2",
+      "emoji": "🎉",
       "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Urai bilangan jadi faktor sampai semua prima."
-    },
-    {
-      "judul": "Ide Ayakan Prima",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Prima hanya punya faktor 1 dan dirinya."
+      "countWord": "siap",
+      "suara": "Utuh"
     }
   ],
   "games": [
@@ -3484,9 +3393,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "cek-prima",
       "title": "Cek Bilangan Prima",
       "bookReference": "hlm. 53–54",
-      "objective": "Pakai Pohon Faktor: Urai bilangan jadi faktor sampai semua prima. Latihan: Mengenali prima..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Factor Tree: Urai bilangan jadi faktor sampai semua prima.",
-      "voiceGuide": "Pohon Faktor. Urai bilangan jadi faktor sampai semua prima.",
+      "objective": "Urai sampai prima. Latihan: Mengenali prima..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pohon Faktor: Daun harus prima.",
+      "voiceGuide": "Pohon Faktor. Daun harus prima.",
       "emoji": "✨",
       "targetCount": 6
     },
@@ -3495,9 +3404,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "faktorisasi",
       "title": "Faktorisasi Prima",
       "bookReference": "hlm. 55–56",
-      "objective": "Pakai Pohon Faktor: Urai bilangan jadi faktor sampai semua prima. Latihan: Menulis hasil kali prima..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Factor Tree: Urai bilangan jadi faktor sampai semua prima.",
-      "voiceGuide": "Pohon Faktor. Urai bilangan jadi faktor sampai semua prima.",
+      "objective": "Urai sampai prima. Latihan: Menulis hasil kali prima..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pohon Faktor: Daun harus prima.",
+      "voiceGuide": "Pohon Faktor. Daun harus prima.",
       "emoji": "🌳",
       "targetCount": 6
     },
@@ -3506,9 +3415,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "kpk-fpb-prima",
       "title": "KPK & FPB via Prima",
       "bookReference": "hlm. 56–59",
-      "objective": "Pakai Pohon Faktor: Urai bilangan jadi faktor sampai semua prima. Latihan: Hitung lewat faktorisasi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Factor Tree: Urai bilangan jadi faktor sampai semua prima.",
-      "voiceGuide": "Pohon Faktor. Urai bilangan jadi faktor sampai semua prima.",
+      "objective": "Urai sampai prima. Latihan: Hitung lewat faktorisasi..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pohon Faktor: Daun harus prima.",
+      "voiceGuide": "Pohon Faktor. Daun harus prima.",
       "emoji": "🧮",
       "targetCount": 6
     },
@@ -3517,9 +3426,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "arti-prima",
       "title": "Arti Prima & Cara",
       "bookReference": "hlm. 53–59",
-      "objective": "Pakai Pohon Faktor: Urai bilangan jadi faktor sampai semua prima. Latihan: Definisi & metode..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Factor Tree: Urai bilangan jadi faktor sampai semua prima.",
-      "voiceGuide": "Pohon Faktor. Urai bilangan jadi faktor sampai semua prima.",
+      "objective": "Urai sampai prima. Latihan: Definisi & metode..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pohon Faktor: Daun harus prima.",
+      "voiceGuide": "Pohon Faktor. Daun harus prima.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -3528,9 +3437,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "sort-prima",
       "title": "Pilah Prima",
       "bookReference": "hlm. 53–54",
-      "objective": "Memilah.. Ingat Pohon Faktor.",
+      "objective": "Memilah.. Ingat Pohon Faktor. (Pohon Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Pohon Faktor.",
-      "voiceGuide": "Pohon Faktor. Pilah.",
+      "voiceGuide": "Pohon Faktor. Mainkan dengan teliti.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -3539,9 +3448,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "match-prima",
       "title": "Jodohkan Prima/Faktorisasi",
       "bookReference": "hlm. 53–59",
-      "objective": "Menjodohkan.. Ingat Pohon Faktor.",
+      "objective": "Menjodohkan.. Ingat Pohon Faktor. (Pohon Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Pohon Faktor.",
-      "voiceGuide": "Pohon Faktor. Jodohkan.",
+      "voiceGuide": "Pohon Faktor. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -3550,9 +3459,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "memory-prima",
       "title": "Memori Prima",
       "bookReference": "hlm. 53–59",
-      "objective": "Memori.. Ingat Pohon Faktor.",
+      "objective": "Memori.. Ingat Pohon Faktor. (Pohon Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Pohon Faktor.",
-      "voiceGuide": "Pohon Faktor. Balik kartu.",
+      "voiceGuide": "Pohon Faktor. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -3561,9 +3470,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "tap-prima",
       "title": "Ketuk Prima/Hasil",
       "bookReference": "hlm. 53–59",
-      "objective": "Mengetuk.. Ingat Pohon Faktor.",
+      "objective": "Mengetuk.. Ingat Pohon Faktor. (Pohon Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Pohon Faktor.",
-      "voiceGuide": "Pohon Faktor. Ketuk.",
+      "voiceGuide": "Pohon Faktor. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -3572,9 +3481,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "tap-all-prima",
       "title": "Ketuk Semua Benar Prima",
       "bookReference": "hlm. 53–59",
-      "objective": "Ketuk semua.. Ingat Pohon Faktor.",
+      "objective": "Ketuk semua.. Ingat Pohon Faktor. (Pohon Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Pohon Faktor.",
-      "voiceGuide": "Pohon Faktor. Ketuk semua.",
+      "voiceGuide": "Pohon Faktor. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -3583,9 +3492,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "story-prima",
       "title": "Cerita Saringan & Pohon",
       "bookReference": "hlm. 53–59",
-      "objective": "Soal cerita.. Ingat Pohon Faktor.",
+      "objective": "Soal cerita.. Ingat Pohon Faktor. (Pohon Faktor)",
       "mechanicDescription": "Tiga ronde. Gunakan Pohon Faktor.",
-      "voiceGuide": "Pohon Faktor. Pilih.",
+      "voiceGuide": "Pohon Faktor. Mainkan dengan teliti.",
       "emoji": "🔍",
       "targetCount": 6
     },
@@ -3594,9 +3503,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "diagram-saringan",
       "title": "Diagram Saringan",
       "bookReference": "hlm. 53–54",
-      "objective": "Pakai Ide Ayakan Prima: Prima hanya punya faktor 1 dan dirinya. Latihan: Baca saringan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Sieve Idea: Prima hanya punya faktor 1 dan dirinya.",
-      "voiceGuide": "Ide Ayakan Prima. Prima hanya punya faktor 1 dan dirinya.",
+      "objective": "FPB min, KPK max. Latihan: Baca saringan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Ide Ayakan Prima: Jangan tertukar.",
+      "voiceGuide": "Ide Ayakan Prima. Jangan tertukar.",
       "diagramType": "sieve",
       "numberA": 1,
       "numberB": 2
@@ -3606,9 +3515,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "diagram-pohon",
       "title": "Diagram Pohon Faktor",
       "bookReference": "hlm. 55–56",
-      "objective": "Pakai Ide Ayakan Prima: Prima hanya punya faktor 1 dan dirinya. Latihan: Baca pohon..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Sieve Idea: Prima hanya punya faktor 1 dan dirinya.",
-      "voiceGuide": "Ide Ayakan Prima. Prima hanya punya faktor 1 dan dirinya.",
+      "objective": "FPB min, KPK max. Latihan: Baca pohon..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Ide Ayakan Prima: Jangan tertukar.",
+      "voiceGuide": "Ide Ayakan Prima. Jangan tertukar.",
       "diagramType": "tree",
       "numberA": 1,
       "numberB": 2
@@ -3618,9 +3527,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "diagram-kpkfpb",
       "title": "Diagram KPK/FPB Prima",
       "bookReference": "hlm. 56–59",
-      "objective": "Pakai Ide Ayakan Prima: Prima hanya punya faktor 1 dan dirinya. Latihan: Baca hasil..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Sieve Idea: Prima hanya punya faktor 1 dan dirinya.",
-      "voiceGuide": "Ide Ayakan Prima. Prima hanya punya faktor 1 dan dirinya.",
+      "objective": "FPB min, KPK max. Latihan: Baca hasil..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Ide Ayakan Prima: Jangan tertukar.",
+      "voiceGuide": "Ide Ayakan Prima. Jangan tertukar.",
       "diagramType": "lcmgcd",
       "numberA": 1,
       "numberB": 2
@@ -3630,9 +3539,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "match-diagram-e",
       "title": "Jodohkan Diagram E",
       "bookReference": "hlm. 53–59",
-      "objective": "Pakai Ide Ayakan Prima: Prima hanya punya faktor 1 dan dirinya. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Sieve Idea: Prima hanya punya faktor 1 dan dirinya.",
-      "voiceGuide": "Ide Ayakan Prima. Prima hanya punya faktor 1 dan dirinya.",
+      "objective": "FPB min, KPK max. Latihan: Jodohkan..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Ide Ayakan Prima: Jangan tertukar.",
+      "voiceGuide": "Ide Ayakan Prima. Jangan tertukar.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 2
@@ -3642,9 +3551,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "memory-diagram-e",
       "title": "Memori Diagram E",
       "bookReference": "hlm. 53–59",
-      "objective": "Memori.. Ingat Ide Ayakan Prima.",
+      "objective": "Memori.. Ingat Ide Ayakan Prima. (Ide Ayakan Prima)",
       "mechanicDescription": "Tiga ronde. Gunakan Ide Ayakan Prima.",
-      "voiceGuide": "Ide Ayakan Prima. Balik kartu.",
+      "voiceGuide": "Ide Ayakan Prima. Mainkan dengan teliti.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -3654,9 +3563,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "table-e",
       "title": "Tabel Prima & KPK/FPB",
       "bookReference": "hlm. 53–59",
-      "objective": "Isi tabel.. Ingat Ide Ayakan Prima.",
+      "objective": "Isi tabel.. Ingat Ide Ayakan Prima. (Ide Ayakan Prima)",
       "mechanicDescription": "Tiga tabel. Gunakan Ide Ayakan Prima.",
-      "voiceGuide": "Ide Ayakan Prima. Pilih.",
+      "voiceGuide": "Ide Ayakan Prima. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -3666,9 +3575,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "tap-all-pe",
       "title": "Ketuk Semua Diagram E",
       "bookReference": "hlm. 53–59",
-      "objective": "Ketuk semua.. Ingat Ide Ayakan Prima.",
+      "objective": "Ketuk semua.. Ingat Ide Ayakan Prima. (Ide Ayakan Prima)",
       "mechanicDescription": "Tiga ronde. Gunakan Ide Ayakan Prima.",
-      "voiceGuide": "Ide Ayakan Prima. Ketuk semua.",
+      "voiceGuide": "Ide Ayakan Prima. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -3678,9 +3587,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "sort-diagram-e",
       "title": "Pilah Diagram E",
       "bookReference": "hlm. 53–54",
-      "objective": "Pilah.. Ingat Ide Ayakan Prima.",
+      "objective": "Pilah.. Ingat Ide Ayakan Prima. (Ide Ayakan Prima)",
       "mechanicDescription": "Tiga ronde. Gunakan Ide Ayakan Prima.",
-      "voiceGuide": "Ide Ayakan Prima. Pilah.",
+      "voiceGuide": "Ide Ayakan Prima. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -3690,9 +3599,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "choose-e",
       "title": "Pilih Pernyataan E",
       "bookReference": "hlm. 53–59",
-      "objective": "Pilih.. Ingat Ide Ayakan Prima.",
+      "objective": "Pilih.. Ingat Ide Ayakan Prima. (Ide Ayakan Prima)",
       "mechanicDescription": "Tiga ronde. Gunakan Ide Ayakan Prima.",
-      "voiceGuide": "Ide Ayakan Prima. Pilih.",
+      "voiceGuide": "Ide Ayakan Prima. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -3702,9 +3611,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "story-picture-e",
       "title": "Cerita Diagram E",
       "bookReference": "hlm. 53–59",
-      "objective": "Cerita.. Ingat Ide Ayakan Prima.",
+      "objective": "Cerita.. Ingat Ide Ayakan Prima. (Ide Ayakan Prima)",
       "mechanicDescription": "Tiga ronde. Gunakan Ide Ayakan Prima.",
-      "voiceGuide": "Ide Ayakan Prima. Pilih.",
+      "voiceGuide": "Ide Ayakan Prima. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -3714,9 +3623,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "write-prima",
       "title": "Tulis Cek Prima",
       "bookReference": "hlm. 53–54",
-      "objective": "Pakai Jembatan KPK dan FPB: Faktorisasi prima dipakai bersama untuk KPK dan FPB. Latihan: Menulis..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan KPK FPB Bridge: Faktorisasi prima dipakai bersama untuk KPK dan FPB.",
-      "voiceGuide": "Jembatan KPK dan FPB. Faktorisasi prima dipakai bersama untuk KPK dan FPB.",
+      "objective": "Cek FPB×KPK = a×b. Latihan: Menulis..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jembatan KPK dan FPB: Cocokkan hasil.",
+      "voiceGuide": "Jembatan KPK dan FPB. Cocokkan hasil.",
       "symbolLarge": "p?",
       "wordLarge": "PRIMA",
       "mathNotation": "cek"
@@ -3726,9 +3635,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "write-fakt",
       "title": "Tulis Faktorisasi",
       "bookReference": "hlm. 55–56",
-      "objective": "Pakai Jembatan KPK dan FPB: Faktorisasi prima dipakai bersama untuk KPK dan FPB. Latihan: Menulis uraian..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan KPK FPB Bridge: Faktorisasi prima dipakai bersama untuk KPK dan FPB.",
-      "voiceGuide": "Jembatan KPK dan FPB. Faktorisasi prima dipakai bersama untuk KPK dan FPB.",
+      "objective": "Cek FPB×KPK = a×b. Latihan: Menulis uraian..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jembatan KPK dan FPB: Cocokkan hasil.",
+      "voiceGuide": "Jembatan KPK dan FPB. Cocokkan hasil.",
       "symbolLarge": "2×3",
       "wordLarge": "FAKTORISASI",
       "mathNotation": "pohon"
@@ -3738,9 +3647,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "write-kpkfpb",
       "title": "Tulis KPK/FPB Prima",
       "bookReference": "hlm. 56–59",
-      "objective": "Pakai Jembatan KPK dan FPB: Faktorisasi prima dipakai bersama untuk KPK dan FPB. Latihan: Menulis hasil..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan KPK FPB Bridge: Faktorisasi prima dipakai bersama untuk KPK dan FPB.",
-      "voiceGuide": "Jembatan KPK dan FPB. Faktorisasi prima dipakai bersama untuk KPK dan FPB.",
+      "objective": "Cek FPB×KPK = a×b. Latihan: Menulis hasil..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jembatan KPK dan FPB: Cocokkan hasil.",
+      "voiceGuide": "Jembatan KPK dan FPB. Cocokkan hasil.",
       "symbolLarge": "KPK/FPB",
       "wordLarge": "HASIL",
       "mathNotation": "prima"
@@ -3750,9 +3659,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "order-abstract-e",
       "title": "Urutkan Abstrak E",
       "bookReference": "hlm. 53–59",
-      "objective": "Pakai Jembatan KPK dan FPB: Faktorisasi prima dipakai bersama untuk KPK dan FPB. Latihan: Urut..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan KPK FPB Bridge: Faktorisasi prima dipakai bersama untuk KPK dan FPB.",
-      "voiceGuide": "Jembatan KPK dan FPB. Faktorisasi prima dipakai bersama untuk KPK dan FPB.",
+      "objective": "Cek FPB×KPK = a×b. Latihan: Urut..",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jembatan KPK dan FPB: Cocokkan hasil.",
+      "voiceGuide": "Jembatan KPK dan FPB. Cocokkan hasil.",
       "symbolLarge": "naik",
       "wordLarge": "URUT",
       "mathNotation": "nilai"
@@ -3762,9 +3671,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "match-abstract-e",
       "title": "Jodohkan Notasi E",
       "bookReference": "hlm. 53–59",
-      "objective": "Jodohkan.. Ingat Jembatan KPK dan FPB.",
+      "objective": "Jodohkan.. Ingat Jembatan KPK dan FPB. (Jembatan KPK dan FPB)",
       "mechanicDescription": "Tiga ronde. Gunakan Jembatan KPK dan FPB.",
-      "voiceGuide": "Jembatan KPK dan FPB. Jodohkan.",
+      "voiceGuide": "Jembatan KPK dan FPB. Mainkan dengan teliti.",
       "symbolLarge": "p",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -3774,9 +3683,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "memory-abstract-e",
       "title": "Memori Notasi E",
       "bookReference": "hlm. 53–59",
-      "objective": "Memori.. Ingat Jembatan KPK dan FPB.",
+      "objective": "Memori.. Ingat Jembatan KPK dan FPB. (Jembatan KPK dan FPB)",
       "mechanicDescription": "Tiga ronde. Gunakan Jembatan KPK dan FPB.",
-      "voiceGuide": "Jembatan KPK dan FPB. Balik kartu.",
+      "voiceGuide": "Jembatan KPK dan FPB. Mainkan dengan teliti.",
       "symbolLarge": "prima",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -3786,9 +3695,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "true-false-e",
       "title": "Benar atau Salah: Prima",
       "bookReference": "hlm. 53–59",
-      "objective": "Menilai.. Ingat Jembatan KPK dan FPB.",
+      "objective": "Menilai.. Ingat Jembatan KPK dan FPB. (Jembatan KPK dan FPB)",
       "mechanicDescription": "Dua ronde. Gunakan Jembatan KPK dan FPB.",
-      "voiceGuide": "Jembatan KPK dan FPB. Benar/salah.",
+      "voiceGuide": "Jembatan KPK dan FPB. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -3798,9 +3707,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "detective-e",
       "title": "Detektif Prima",
       "bookReference": "hlm. 53–59",
-      "objective": "Petunjuk.. Ingat Jembatan KPK dan FPB.",
+      "objective": "Petunjuk.. Ingat Jembatan KPK dan FPB. (Jembatan KPK dan FPB)",
       "mechanicDescription": "Tiga soal. Gunakan Jembatan KPK dan FPB.",
-      "voiceGuide": "Jembatan KPK dan FPB. Pilih.",
+      "voiceGuide": "Jembatan KPK dan FPB. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -3810,9 +3719,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "concept-e",
       "title": "Peta Konsep Prima",
       "bookReference": "hlm. 53–59",
-      "objective": "Peta.. Ingat Jembatan KPK dan FPB.",
+      "objective": "Peta.. Ingat Jembatan KPK dan FPB. (Jembatan KPK dan FPB)",
       "mechanicDescription": "Satu peta. Gunakan Jembatan KPK dan FPB.",
-      "voiceGuide": "Jembatan KPK dan FPB. Pilih opsi.",
+      "voiceGuide": "Jembatan KPK dan FPB. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -3822,9 +3731,9 @@ export const SUB_E52: SubBabNaskah = {
       "gameType": "story-abstract-e",
       "title": "Cerita Angka Prima",
       "bookReference": "hlm. 53–59",
-      "objective": "Cerita.. Ingat Jembatan KPK dan FPB.",
+      "objective": "Cerita.. Ingat Jembatan KPK dan FPB. (Jembatan KPK dan FPB)",
       "mechanicDescription": "Tiga ronde. Gunakan Jembatan KPK dan FPB.",
-      "voiceGuide": "Jembatan KPK dan FPB. Pilih.",
+      "voiceGuide": "Jembatan KPK dan FPB. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -3832,37 +3741,31 @@ export const SUB_E52: SubBabNaskah = {
   ],
   "poin": [
     {
-      "ikon": "✨",
-      "nama": "Prima",
-      "isi": "Hanya dibagi satu dan dirinya; satu bukan prima.",
-      "suara": "Kenali bilangan prima."
-    },
-    {
       "ikon": "🌳",
-      "nama": "Faktorisasi",
-      "isi": "Tulis bilangan sebagai hasil kali prima.",
-      "suara": "Pakai pohon faktor."
+      "nama": "Pohon faktor",
+      "isi": "Urai sampai semua daun prima.",
+      "suara": "Pohon."
     },
     {
-      "ikon": "🌍",
-      "nama": "Pohon Faktor",
-      "isi": "Urai bilangan jadi faktor sampai semua prima.",
-      "suara": "Pohon Faktor. Urai bilangan jadi faktor sampai semua prima."
+      "ikon": "⬇️",
+      "nama": "FPB = min",
+      "isi": "Pangkat terkecil prima bersama.",
+      "suara": "Min."
     },
     {
-      "ikon": "🌍",
-      "nama": "Ide Ayakan Prima",
-      "isi": "Prima hanya punya faktor 1 dan dirinya.",
-      "suara": "Ide Ayakan Prima. Prima hanya punya faktor 1 dan dirinya."
+      "ikon": "⬆️",
+      "nama": "KPK = max",
+      "isi": "Pangkat terbesar tiap prima.",
+      "suara": "Max."
     },
     {
-      "ikon": "🌍",
-      "nama": "Jembatan KPK dan FPB",
-      "isi": "Faktorisasi prima dipakai bersama untuk KPK dan FPB.",
-      "suara": "Jembatan KPK dan FPB. Faktorisasi prima dipakai bersama untuk KPK dan FPB."
+      "ikon": "🌉",
+      "nama": "Jembatan",
+      "isi": "FPB×KPK = a×b untuk dua bilangan.",
+      "suara": "Cek."
     }
   ],
-  "poinSuara": "Ingat: Pohon Faktor, Ide Ayakan Prima, Jembatan KPK dan FPB.",
+  "poinSuara": "Pohon ke prima, FPB pangkat min, KPK pangkat max, cek jembatan.",
   "cara": {
     "suara": "Ikuti langkah-langkahnya.",
     "potongan": [
@@ -3884,19 +3787,19 @@ export const SUB_E52: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Pohon Faktor pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Pohon Faktor pada satu soal di rumah.",
   "refleksi": [
-    "Bagaimana Pohon Faktor membantumu memahami soal?",
-    "Kapan kamu memakai Ide Ayakan Prima?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Pohon Faktor membantumu?",
+    "Kapan memakai Ide Ayakan Prima?",
+    "Apa bedanya dengan hanya menghafal rumus?"
   ],
   "metodeLuar": [
     {
       "label": "METODE LUAR",
       "nama": "Factor Tree",
       "namaId": "Pohon Faktor",
-      "asal": "Prime factorization pedagogy",
-      "ringkas": "Urai bilangan jadi faktor sampai semua prima.",
+      "asal": "Prime factorization",
+      "ringkas": "Urai bilangan sampai semua daunnya bilangan prima.",
       "tahap": [
         "Story",
         "Concrete",
@@ -3905,24 +3808,25 @@ export const SUB_E52: SubBabNaskah = {
     },
     {
       "label": "METODE LUAR",
-      "nama": "Sieve Idea",
+      "nama": "Prime Exponent Rules",
       "namaId": "Ide Ayakan Prima",
-      "asal": "Sieve of Eratosthenes (disederhanakan)",
-      "ringkas": "Prima hanya punya faktor 1 dan dirinya.",
+      "asal": "LCM/GCF algorithms",
+      "ringkas": "FPB: pangkat min. KPK: pangkat max tiap prima.",
       "tahap": [
+        "Story",
         "Mind",
-        "Infografis",
         "Abstract"
       ]
     },
     {
       "label": "METODE LUAR",
-      "nama": "KPK FPB Bridge",
+      "nama": "LCM-GCF Bridge",
       "namaId": "Jembatan KPK dan FPB",
-      "asal": "Number theory relation",
-      "ringkas": "Faktorisasi prima dipakai bersama untuk KPK dan FPB.",
+      "asal": "Number relations",
+      "ringkas": "Untuk dua bilangan, FPB×KPK = hasil kali keduanya (cek berguna).",
       "tahap": [
-        "Picture",
+        "Story",
+        "Infografis",
         "Abstract"
       ]
     }

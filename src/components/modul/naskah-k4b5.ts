@@ -1,6 +1,6 @@
 /**
- * Naskah — rewrite mendalam.
- * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
+ * Naskah — poles kerapatan setara K5B4.
+ * Metode luar dianyam ketukan per ketukan.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
@@ -19,12 +19,12 @@ export const SUB_A45: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Ciri-Ciri Bangun Datar)",
   "fullTitle": "Sub-Bab A: Ciri-Ciri Bangun Datar",
-  "targetDescription": "Siswa mengenal segi banyak, membedakan beraturan/tak beraturan, mengelompokkan segitiga (sisi & sudut), serta menyebutkan ciri segiempat (persegi, persegi panjang, jajargenjang, belah ketupat, layang-layang, trapesium) sesuai Buku Siswa Kelas IV Bab 5. Siswa memakai cara van Hiele Visual–Analisis, Pilah Ciri, Papan Paku.",
+  "targetDescription": "Siswa mengenal segi banyak, membedakan beraturan/tak beraturan, mengelompokkan segitiga (sisi & sudut), serta menyebutkan ciri segiempat (persegi, persegi panjang, jajargenjang, belah ketupat, layang-layang, trapesium) sesuai Buku Siswa Kelas IV Bab 5. Siswa memakai cara van Hiele Visual–Analisis, Pilah Ciri, Papan Paku. Siswa memakai cara van Hiele Visual–Analisis, Pilah Ciri, Papan Paku.",
   "secondaryBg": "#FFEDD5",
   "secondaryBorder": "#EA580C",
   "secondaryText": "#7C2D12",
   "silabus": {
-    "teksSuara": "Kita belajar ciri-ciri bangun datar. Segi banyak adalah kurva tertutup paling sedikit tiga ruas garis. Ada yang beraturan dan tak beraturan. Segitiga dikelompokkan menurut sisi dan sudut. Segiempat punya banyak keluarga: persegi, persegi panjang, dan lainnya. Kita memakai cara dari luar buku: van Hiele Visual–Analisis (van Hiele Level 0-1); Pilah Ciri (Attribute Sort); Papan Paku (Geoboard). Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Kelompokkan menurut sisi, sudut, atau sejajar. Bentuk karet di paku untuk menguji ciri. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar ciri-ciri bangun datar. Segi banyak adalah kurva tertutup paling sedikit tiga ruas garis. Ada yang beraturan dan tak beraturan. Segitiga dikelompokkan menurut sisi dan sudut. Segiempat punya banyak keluarga: persegi, persegi panjang, dan lainnya. Kita memakai cara: van Hiele Visual–Analisis, Pilah Ciri, Papan Paku. Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Kelompokkan menurut sisi, sudut, atau sejajar. Bentuk karet di paku untuk menguji ciri. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menjelaskan ciri-ciri bangun datar segi banyak, segitiga, dan segiempat.",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 5 Sub-Bab A)."
   },
@@ -38,10 +38,10 @@ export const SUB_A45: SubBabNaskah = {
           "id": "K4B5A-V1-1",
           "judul": "Bukan sembarang gambar",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Lihat garis yang tertutup. Mari kita pahami bersama.",
-            "Paling sedikit tiga ruas lurus. Mari kita pahami bersama.",
-            "Itulah segi banyak. Mari kita pahami bersama.",
-            "Ingat cara van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut."
+            "Bayangkan kamu sedang mempelajari Ciri-Ciri Bangun Datar. Lihat garis yang tertutup.",
+            "Paling sedikit tiga ruas lurus.",
+            "Itulah segi banyak.",
+            "Ingat cara van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Ingat cara van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut."
           ],
           "papan": [
             "tertutup",
@@ -54,10 +54,10 @@ export const SUB_A45: SubBabNaskah = {
           "id": "K4B5A-V1-2",
           "judul": "Nama mengikuti sisi",
           "ketukan": [
-            "Tiga sisi: segitiga. Mari kita pahami bersama.",
-            "Empat sisi: segiempat. Mari kita pahami bersama.",
-            "Lima sisi: segilima. Mari kita pahami bersama.",
-            "Di sini kita memakai ide van Hiele Level 0-1 — Mulai kenali bentuk, lalu sebut ciri sisi dan sudut."
+            "Tiga sisi: segitiga.",
+            "Empat sisi: segiempat.",
+            "Lima sisi: segilima.",
+            "Di sini kita memakai ide van Hiele Level 0-1 — Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Di sini kita memakai van Hiele Level 0-1. Mulai kenali bentuk, lalu sebut ciri sisi dan sudut."
           ],
           "papan": [
             "langkah 1",
@@ -70,9 +70,9 @@ export const SUB_A45: SubBabNaskah = {
           "id": "K4B5A-V1-3",
           "judul": "Beraturan",
           "ketukan": [
-            "Semua sisi sama panjang. Mari kita pahami bersama.",
-            "Semua sudut sama besar. Mari kita pahami bersama.",
-            "Itu segi banyak beraturan. Mari kita pahami bersama.",
+            "Semua sisi sama panjang.",
+            "Semua sudut sama besar.",
+            "Itu segi banyak beraturan.",
             "METODE LUAR · van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut."
           ],
           "papan": [
@@ -93,10 +93,10 @@ export const SUB_A45: SubBabNaskah = {
           "id": "K4B5A-V2-1",
           "judul": "Menurut sisi",
           "ketukan": [
-            "Sama sisi: ketiga sisi sama. Mari kita pahami bersama.",
-            "Sama kaki: dua sisi sama. Mari kita pahami bersama.",
-            "Sembarang: semua sisi beda. Mari kita pahami bersama.",
-            "Ingat cara Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar."
+            "Sama sisi: ketiga sisi sama.",
+            "Sama kaki: dua sisi sama.",
+            "Sembarang: semua sisi beda.",
+            "Ingat cara Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar. Ingat cara Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar."
           ],
           "papan": [
             "sama sisi",
@@ -109,10 +109,10 @@ export const SUB_A45: SubBabNaskah = {
           "id": "K4B5A-V2-2",
           "judul": "Menurut sudut",
           "ketukan": [
-            "Lancip: semua sudut lancip. Mari kita pahami bersama.",
-            "Siku-siku: ada sudut sembilan puluh. Mari kita pahami bersama.",
-            "Tumpul: ada sudut lebih dari sembilan puluh. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Attribute Sort — Kelompokkan menurut sisi, sudut, atau sejajar."
+            "Lancip: semua sudut lancip.",
+            "Siku-siku: ada sudut sembilan puluh.",
+            "Tumpul: ada sudut lebih dari sembilan puluh.",
+            "Di sini kita memakai ide Attribute Sort — Kelompokkan menurut sisi, sudut, atau sejajar. Di sini kita memakai Attribute Sort. Kelompokkan menurut sisi, sudut, atau sejajar."
           ],
           "papan": [
             "lancip",
@@ -125,9 +125,9 @@ export const SUB_A45: SubBabNaskah = {
           "id": "K4B5A-V2-3",
           "judul": "Contoh buku",
           "ketukan": [
-            "Segitiga KLM siku di K. Mari kita pahami bersama.",
-            "Segitiga PQR tumpul di P. Mari kita pahami bersama.",
-            "Ciri membantu memberi nama. Mari kita pahami bersama.",
+            "Segitiga KLM siku di K.",
+            "Segitiga PQR tumpul di P.",
+            "Ciri membantu memberi nama.",
             "METODE LUAR · Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar."
           ],
           "papan": [
@@ -148,10 +148,10 @@ export const SUB_A45: SubBabNaskah = {
           "id": "K4B5A-V3-1",
           "judul": "Persegi & persegi panjang",
           "ketukan": [
-            "Persegi: semua sisi sama, semua siku. Mari kita pahami bersama.",
-            "Persegi panjang: siku semua,. Mari kita pahami bersama.",
-            "sisi berhadapan sama. Mari kita pahami bersama.",
-            "Ingat cara Papan Paku: Bentuk karet di paku untuk menguji ciri."
+            "Persegi: semua sisi sama, semua siku.",
+            "Persegi panjang: siku semua,.",
+            "sisi berhadapan sama.",
+            "Ingat cara Papan Paku: Bentuk karet di paku untuk menguji ciri. Ingat cara Papan Paku: Bentuk karet di paku untuk menguji ciri."
           ],
           "papan": [
             "persegi",
@@ -164,10 +164,10 @@ export const SUB_A45: SubBabNaskah = {
           "id": "K4B5A-V3-2",
           "judul": "Jajargenjang & belah ketupat",
           "ketukan": [
-            "Jajargenjang: dua pasang sejajar. Mari kita pahami bersama.",
-            "Belah ketupat: semua sisi sama. Mari kita pahami bersama.",
-            "Layang-layang: sisi berdekatan sama. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Geoboard — Bentuk karet di paku untuk menguji ciri."
+            "Jajargenjang: dua pasang sejajar.",
+            "Belah ketupat: semua sisi sama.",
+            "Layang-layang: sisi berdekatan sama.",
+            "Di sini kita memakai ide Geoboard — Bentuk karet di paku untuk menguji ciri. Di sini kita memakai Geoboard. Bentuk karet di paku untuk menguji ciri."
           ],
           "papan": [
             "jajargenjang",
@@ -180,9 +180,9 @@ export const SUB_A45: SubBabNaskah = {
           "id": "K4B5A-V3-3",
           "judul": "Siap berlatih",
           "ketukan": [
-            "Ciri membedakan bangun. Mari kita pahami bersama.",
-            "Hitung sisi dan sudut. Mari kita pahami bersama.",
-            "Pilah beraturan. Mari kita pahami bersama.",
+            "Ciri membedakan bangun.",
+            "Hitung sisi dan sudut.",
+            "Pilah beraturan.",
             "METODE LUAR · Papan Paku: Bentuk karet di paku untuk menguji ciri."
           ],
           "papan": [
@@ -199,7 +199,7 @@ export const SUB_A45: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Ciri-Ciri Bangun Datar. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Ciri-Ciri Bangun Datar?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -231,7 +231,7 @@ export const SUB_A45: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -239,7 +239,7 @@ export const SUB_A45: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -247,15 +247,15 @@ export const SUB_A45: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -331,20 +331,6 @@ export const SUB_A45: SubBabNaskah = {
       "countNum": 1,
       "countWord": "susun",
       "suara": "Berikutnya komposisi dan dekomposisi."
-    },
-    {
-      "judul": "van Hiele Visual–Analisis",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Mulai kenali bentuk, lalu sebut ciri sisi dan sudut."
-    },
-    {
-      "judul": "Pilah Ciri",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Kelompokkan menurut sisi, sudut, atau sejajar."
     }
   ],
   "games": [
@@ -354,7 +340,7 @@ export const SUB_A45: SubBabNaskah = {
       "title": "Hitung Sisi dan Sudut",
       "bookReference": "hlm. 144–145",
       "objective": "Pakai van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Latihan: Menghitung sisi/sudut..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan van Hiele Level 0-1: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
       "voiceGuide": "van Hiele Visual–Analisis. Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
       "emoji": "🔺",
       "targetCount": 6
@@ -365,7 +351,7 @@ export const SUB_A45: SubBabNaskah = {
       "title": "Pilih Jenis Bangun",
       "bookReference": "hlm. 145–160",
       "objective": "Pakai van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Latihan: Mengenali jenis..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan van Hiele Level 0-1: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
       "voiceGuide": "van Hiele Visual–Analisis. Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
       "emoji": "📐",
       "targetCount": 6
@@ -376,7 +362,7 @@ export const SUB_A45: SubBabNaskah = {
       "title": "Beraturan atau Tidak",
       "bookReference": "hlm. 145–147",
       "objective": "Pakai van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Latihan: Membedakan beraturan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan van Hiele Level 0-1: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
       "voiceGuide": "van Hiele Visual–Analisis. Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
       "emoji": "✅",
       "targetCount": 6
@@ -387,7 +373,7 @@ export const SUB_A45: SubBabNaskah = {
       "title": "Pilah Beraturan/Tak",
       "bookReference": "hlm. 145–147",
       "objective": "Pakai van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Latihan: Memilah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan van Hiele Level 0-1: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
       "voiceGuide": "van Hiele Visual–Analisis. Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
       "emoji": "🧺",
       "targetCount": 18
@@ -397,9 +383,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "match-ciri",
       "title": "Jodohkan Ciri Bangun",
       "bookReference": "hlm. 148–162",
-      "objective": "Menjodohkan.. Ingat van Hiele Visual–Analisis.",
+      "objective": "Menjodohkan.. Ingat van Hiele Visual–Analisis. (van Hiele Visual–Analisis)",
       "mechanicDescription": "Tiga ronde. Gunakan van Hiele Visual–Analisis.",
-      "voiceGuide": "van Hiele Visual–Analisis. Jodohkan.",
+      "voiceGuide": "van Hiele Visual–Analisis. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -408,9 +394,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "memory-ciri",
       "title": "Memori Ciri Bangun",
       "bookReference": "hlm. 148–160",
-      "objective": "Memori.. Ingat van Hiele Visual–Analisis.",
+      "objective": "Memori.. Ingat van Hiele Visual–Analisis. (van Hiele Visual–Analisis)",
       "mechanicDescription": "Tiga ronde. Gunakan van Hiele Visual–Analisis.",
-      "voiceGuide": "van Hiele Visual–Analisis. Balik kartu.",
+      "voiceGuide": "van Hiele Visual–Analisis. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -419,9 +405,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "tap-bangun",
       "title": "Ketuk Bangun Diminta",
       "bookReference": "hlm. 146–161",
-      "objective": "Mengetuk.. Ingat van Hiele Visual–Analisis.",
+      "objective": "Mengetuk.. Ingat van Hiele Visual–Analisis. (van Hiele Visual–Analisis)",
       "mechanicDescription": "Tiga ronde. Gunakan van Hiele Visual–Analisis.",
-      "voiceGuide": "van Hiele Visual–Analisis. Ketuk.",
+      "voiceGuide": "van Hiele Visual–Analisis. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -430,9 +416,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "tap-all-ciri",
       "title": "Ketuk Semua Sesuai Ciri",
       "bookReference": "hlm. 145–160",
-      "objective": "Ketuk semua.. Ingat van Hiele Visual–Analisis.",
+      "objective": "Ketuk semua.. Ingat van Hiele Visual–Analisis. (van Hiele Visual–Analisis)",
       "mechanicDescription": "Tiga ronde. Gunakan van Hiele Visual–Analisis.",
-      "voiceGuide": "van Hiele Visual–Analisis. Ketuk semua.",
+      "voiceGuide": "van Hiele Visual–Analisis. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -441,9 +427,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "story-ciri",
       "title": "Cerita Rambu dan Meja",
       "bookReference": "hlm. 147–160",
-      "objective": "Soal cerita.. Ingat van Hiele Visual–Analisis.",
+      "objective": "Soal cerita.. Ingat van Hiele Visual–Analisis. (van Hiele Visual–Analisis)",
       "mechanicDescription": "Tiga ronde. Gunakan van Hiele Visual–Analisis.",
-      "voiceGuide": "van Hiele Visual–Analisis. Pilih.",
+      "voiceGuide": "van Hiele Visual–Analisis. Mainkan dengan teliti.",
       "emoji": "🚦",
       "targetCount": 6
     },
@@ -452,9 +438,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "order-sisi",
       "title": "Urutkan Banyak Sisi",
       "bookReference": "hlm. 144–145",
-      "objective": "Mengurutkan.. Ingat van Hiele Visual–Analisis.",
+      "objective": "Mengurutkan.. Ingat van Hiele Visual–Analisis. (van Hiele Visual–Analisis)",
       "mechanicDescription": "Tiga ronde. Gunakan van Hiele Visual–Analisis.",
-      "voiceGuide": "van Hiele Visual–Analisis. Urutkan.",
+      "voiceGuide": "van Hiele Visual–Analisis. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -464,7 +450,7 @@ export const SUB_A45: SubBabNaskah = {
       "title": "Diagram Hitung Sisi",
       "bookReference": "hlm. 145",
       "objective": "Pakai Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar. Latihan: Baca diagram..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Attribute Sort: Kelompokkan menurut sisi, sudut, atau sejajar.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar.",
       "voiceGuide": "Pilah Ciri. Kelompokkan menurut sisi, sudut, atau sejajar.",
       "diagramType": "sides",
       "numberA": 3,
@@ -476,7 +462,7 @@ export const SUB_A45: SubBabNaskah = {
       "title": "Diagram Jenis Sudut",
       "bookReference": "hlm. 155–157",
       "objective": "Pakai Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar. Latihan: Lancip/siku/tumpul..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Attribute Sort: Kelompokkan menurut sisi, sudut, atau sejajar.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar.",
       "voiceGuide": "Pilah Ciri. Kelompokkan menurut sisi, sudut, atau sejajar.",
       "diagramType": "angle",
       "numberA": 1,
@@ -488,7 +474,7 @@ export const SUB_A45: SubBabNaskah = {
       "title": "Jodohkan Diagram Bangun",
       "bookReference": "hlm. 148–162",
       "objective": "Pakai Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Attribute Sort: Kelompokkan menurut sisi, sudut, atau sejajar.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar.",
       "voiceGuide": "Pilah Ciri. Kelompokkan menurut sisi, sudut, atau sejajar.",
       "diagramType": "match",
       "numberA": 1,
@@ -500,7 +486,7 @@ export const SUB_A45: SubBabNaskah = {
       "title": "Memori Diagram Bangun",
       "bookReference": "hlm. 145–160",
       "objective": "Pakai Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Attribute Sort: Kelompokkan menurut sisi, sudut, atau sejajar.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar.",
       "voiceGuide": "Pilah Ciri. Kelompokkan menurut sisi, sudut, atau sejajar.",
       "diagramType": "mem",
       "numberA": 1,
@@ -511,9 +497,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "table-a",
       "title": "Tabel Sisi–Sudut",
       "bookReference": "hlm. 144–145",
-      "objective": "Isi tabel.. Ingat Pilah Ciri.",
+      "objective": "Isi tabel.. Ingat Pilah Ciri. (Pilah Ciri)",
       "mechanicDescription": "Tiga tabel. Gunakan Pilah Ciri.",
-      "voiceGuide": "Pilah Ciri. Pilih.",
+      "voiceGuide": "Pilah Ciri. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -523,9 +509,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "tap-all-a",
       "title": "Ketuk Semua Diagram",
       "bookReference": "hlm. 145–160",
-      "objective": "Ketuk semua.. Ingat Pilah Ciri.",
+      "objective": "Ketuk semua.. Ingat Pilah Ciri. (Pilah Ciri)",
       "mechanicDescription": "Tiga ronde. Gunakan Pilah Ciri.",
-      "voiceGuide": "Pilah Ciri. Ketuk semua.",
+      "voiceGuide": "Pilah Ciri. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -535,9 +521,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "sort-diagram-a",
       "title": "Pilah Diagram Beraturan",
       "bookReference": "hlm. 145–147",
-      "objective": "Pilah.. Ingat Pilah Ciri.",
+      "objective": "Pilah.. Ingat Pilah Ciri. (Pilah Ciri)",
       "mechanicDescription": "Tiga ronde. Gunakan Pilah Ciri.",
-      "voiceGuide": "Pilah Ciri. Pilah.",
+      "voiceGuide": "Pilah Ciri. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -547,9 +533,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "segiempat",
       "title": "Ciri Segiempat",
       "bookReference": "hlm. 158–162",
-      "objective": "Pilih ciri.. Ingat Pilah Ciri.",
+      "objective": "Pilih ciri.. Ingat Pilah Ciri. (Pilah Ciri)",
       "mechanicDescription": "Tiga ronde. Gunakan Pilah Ciri.",
-      "voiceGuide": "Pilah Ciri. Pilih.",
+      "voiceGuide": "Pilah Ciri. Mainkan dengan teliti.",
       "diagramType": "quad",
       "numberA": 1,
       "numberB": 2
@@ -559,9 +545,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "choose-bangun",
       "title": "Pilih Bangun Cocok",
       "bookReference": "hlm. 146–161",
-      "objective": "Pilih bangun.. Ingat Pilah Ciri.",
+      "objective": "Pilih bangun.. Ingat Pilah Ciri. (Pilah Ciri)",
       "mechanicDescription": "Tiga ronde. Gunakan Pilah Ciri.",
-      "voiceGuide": "Pilah Ciri. Pilih.",
+      "voiceGuide": "Pilah Ciri. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -571,9 +557,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "story-picture-a",
       "title": "Cerita Diagram Bangun",
       "bookReference": "hlm. 147–162",
-      "objective": "Cerita + gambar.. Ingat Pilah Ciri.",
+      "objective": "Cerita + gambar.. Ingat Pilah Ciri. (Pilah Ciri)",
       "mechanicDescription": "Tiga ronde. Gunakan Pilah Ciri.",
-      "voiceGuide": "Pilah Ciri. Pilih.",
+      "voiceGuide": "Pilah Ciri. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -584,7 +570,7 @@ export const SUB_A45: SubBabNaskah = {
       "title": "Tulis Nama Bangun",
       "bookReference": "hlm. 145–160",
       "objective": "Pakai Papan Paku: Bentuk karet di paku untuk menguji ciri. Latihan: Menulis nama..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Geoboard: Bentuk karet di paku untuk menguji ciri.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Papan Paku: Bentuk karet di paku untuk menguji ciri.",
       "voiceGuide": "Papan Paku. Bentuk karet di paku untuk menguji ciri.",
       "symbolLarge": "△",
       "wordLarge": "NAMA",
@@ -596,7 +582,7 @@ export const SUB_A45: SubBabNaskah = {
       "title": "Tulis Jumlah Sisi/Sudut",
       "bookReference": "hlm. 144–145",
       "objective": "Pakai Papan Paku: Bentuk karet di paku untuk menguji ciri. Latihan: Menulis angka..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Geoboard: Bentuk karet di paku untuk menguji ciri.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Papan Paku: Bentuk karet di paku untuk menguji ciri.",
       "voiceGuide": "Papan Paku. Bentuk karet di paku untuk menguji ciri.",
       "symbolLarge": "3/4/5",
       "wordLarge": "JUMLAH",
@@ -608,7 +594,7 @@ export const SUB_A45: SubBabNaskah = {
       "title": "Pilih Klasifikasi",
       "bookReference": "hlm. 145–157",
       "objective": "Pakai Papan Paku: Bentuk karet di paku untuk menguji ciri. Latihan: Beraturan/sudut..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Geoboard: Bentuk karet di paku untuk menguji ciri.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Papan Paku: Bentuk karet di paku untuk menguji ciri.",
       "voiceGuide": "Papan Paku. Bentuk karet di paku untuk menguji ciri.",
       "symbolLarge": "beraturan",
       "wordLarge": "JENIS",
@@ -620,7 +606,7 @@ export const SUB_A45: SubBabNaskah = {
       "title": "Urutkan Banyak Sisi",
       "bookReference": "hlm. 144–145",
       "objective": "Pakai Papan Paku: Bentuk karet di paku untuk menguji ciri. Latihan: Mengurutkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Geoboard: Bentuk karet di paku untuk menguji ciri.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Papan Paku: Bentuk karet di paku untuk menguji ciri.",
       "voiceGuide": "Papan Paku. Bentuk karet di paku untuk menguji ciri.",
       "symbolLarge": "3<4<5",
       "wordLarge": "URUT",
@@ -631,9 +617,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "match-abstract-a",
       "title": "Jodohkan Notasi Ciri",
       "bookReference": "hlm. 148–162",
-      "objective": "Jodohkan.. Ingat Papan Paku.",
+      "objective": "Jodohkan.. Ingat Papan Paku. (Papan Paku)",
       "mechanicDescription": "Tiga ronde. Gunakan Papan Paku.",
-      "voiceGuide": "Papan Paku. Jodohkan.",
+      "voiceGuide": "Papan Paku. Mainkan dengan teliti.",
       "symbolLarge": "3 sisi",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -643,9 +629,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "memory-abstract-a",
       "title": "Memori Notasi Ciri",
       "bookReference": "hlm. 145–160",
-      "objective": "Memori.. Ingat Papan Paku.",
+      "objective": "Memori.. Ingat Papan Paku. (Papan Paku)",
       "mechanicDescription": "Tiga ronde. Gunakan Papan Paku.",
-      "voiceGuide": "Papan Paku. Balik kartu.",
+      "voiceGuide": "Papan Paku. Mainkan dengan teliti.",
       "symbolLarge": "persegi",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -655,9 +641,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "true-false-a",
       "title": "Benar atau Salah: Ciri",
       "bookReference": "hlm. 142–162",
-      "objective": "Menilai.. Ingat Papan Paku.",
+      "objective": "Menilai.. Ingat Papan Paku. (Papan Paku)",
       "mechanicDescription": "Dua ronde. Gunakan Papan Paku.",
-      "voiceGuide": "Papan Paku. Benar/salah.",
+      "voiceGuide": "Papan Paku. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -667,9 +653,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "detective-a",
       "title": "Detektif Bangun Datar",
       "bookReference": "hlm. 145–162",
-      "objective": "Petunjuk → bangun.. Ingat Papan Paku.",
+      "objective": "Petunjuk → bangun.. Ingat Papan Paku. (Papan Paku)",
       "mechanicDescription": "Empat soal. Gunakan Papan Paku.",
-      "voiceGuide": "Papan Paku. Pilih.",
+      "voiceGuide": "Papan Paku. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -679,9 +665,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "concept-a",
       "title": "Peta Konsep Bangun",
       "bookReference": "hlm. 141–160",
-      "objective": "Mengisi kotak.. Ingat Papan Paku.",
+      "objective": "Mengisi kotak.. Ingat Papan Paku. (Papan Paku)",
       "mechanicDescription": "Satu peta. Gunakan Papan Paku.",
-      "voiceGuide": "Papan Paku. Pilih opsi.",
+      "voiceGuide": "Papan Paku. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -691,9 +677,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "story-abstract-a",
       "title": "Cerita Angka Ciri",
       "bookReference": "hlm. 147–162",
-      "objective": "Soal cerita.. Ingat Papan Paku.",
+      "objective": "Soal cerita.. Ingat Papan Paku. (Papan Paku)",
       "mechanicDescription": "Tiga ronde. Gunakan Papan Paku.",
-      "voiceGuide": "Papan Paku. Pilih.",
+      "voiceGuide": "Papan Paku. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -705,12 +691,6 @@ export const SUB_A45: SubBabNaskah = {
       "nama": "Segi banyak",
       "isi": "Kurva tertutup dibatasi ≥3 ruas garis. Nama mengikuti banyak sisi.",
       "suara": "Segi banyak paling sedikit tiga sisi."
-    },
-    {
-      "ikon": "✅",
-      "nama": "Beraturan",
-      "isi": "Semua sisi sama dan semua sudut sama.",
-      "suara": "Beraturan berarti sisi dan sudut sama."
     },
     {
       "ikon": "🌍",
@@ -753,11 +733,11 @@ export const SUB_A45: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan van Hiele Visual–Analisis pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan van Hiele Visual–Analisis pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana van Hiele Visual–Analisis membantumu memahami soal?",
-    "Kapan kamu memakai Pilah Ciri?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana van Hiele Visual–Analisis membantumu?",
+    "Kapan memakai Pilah Ciri?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -801,12 +781,12 @@ export const SUB_B45: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Komposisi dan Dekomposisi)",
   "fullTitle": "Sub-Bab B: Komposisi dan Dekomposisi Bangun Datar",
-  "targetDescription": "Siswa menyusun (komposisi) dan menguraikan (dekomposisi) bangun datar dengan banyak cara, misalnya persegi ↔ 2 segitiga, segienam → 6 segitiga, serta konteks peta/tangram sesuai Buku Siswa Kelas IV Bab 5. Siswa memakai cara Susun Bangun, Urai Bangun, Tangram.",
+  "targetDescription": "Siswa menyusun (komposisi) dan menguraikan (dekomposisi) bangun datar dengan banyak cara, misalnya persegi ↔ 2 segitiga, segienam → 6 segitiga, serta konteks peta/tangram sesuai Buku Siswa Kelas IV Bab 5. Siswa memakai cara Susun Bangun, Urai Bangun, Tangram. Siswa memakai cara Susun Bangun, Urai Bangun, Tangram.",
   "secondaryBg": "#DBEAFE",
   "secondaryBorder": "#2563EB",
   "secondaryText": "#1E3A8A",
   "silabus": {
-    "teksSuara": "Kita belajar komposisi dan dekomposisi bangun datar. Menyusun bagian menjadi utuh disebut komposisi. Mengurai utuh menjadi bagian disebut dekomposisi. Satu bangun bisa disusun atau diurai dengan banyak cara. Kita memakai cara dari luar buku: Susun Bangun (Compose Shapes); Urai Bangun (Decompose Shapes); Tangram (Tangram). Gabungkan bangun sederhana jadi bangun baru. Pecah bangun kompleks jadi bagian dikenal. Tujuh keping menyusun banyak siluet. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar komposisi dan dekomposisi bangun datar. Menyusun bagian menjadi utuh disebut komposisi. Mengurai utuh menjadi bagian disebut dekomposisi. Satu bangun bisa disusun atau diurai dengan banyak cara. Kita memakai cara: Susun Bangun, Urai Bangun, Tangram. Gabungkan bangun sederhana jadi bangun baru. Pecah bangun kompleks jadi bagian dikenal. Tujuh keping menyusun banyak siluet. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa melakukan komposisi dan dekomposisi bangun datar.",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 5 Sub-Bab B)."
   },
@@ -820,10 +800,10 @@ export const SUB_B45: SubBabNaskah = {
           "id": "K4B5B-V1-1",
           "judul": "Susun",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Ambil beberapa bangun kecil. Mari kita pahami bersama.",
-            "Susun tanpa celah. Mari kita pahami bersama.",
-            "Jadi satu bangun baru. Mari kita pahami bersama.",
-            "Ingat cara Susun Bangun: Gabungkan bangun sederhana jadi bangun baru."
+            "Bayangkan kamu sedang mempelajari Komposisi dan Dekomposisi Bangun Datar. Ambil beberapa bangun kecil.",
+            "Susun tanpa celah.",
+            "Jadi satu bangun baru.",
+            "Ingat cara Susun Bangun: Gabungkan bangun sederhana jadi bangun baru. Ingat cara Susun Bangun: Gabungkan bangun sederhana jadi bangun baru."
           ],
           "papan": [
             "bagian",
@@ -836,10 +816,10 @@ export const SUB_B45: SubBabNaskah = {
           "id": "K4B5B-V1-2",
           "judul": "Contoh",
           "ketukan": [
-            "Dua segitiga jadi persegi. Mari kita pahami bersama.",
-            "Atau jadi persegi panjang. Mari kita pahami bersama.",
-            "Tiga segitiga jadi trapesium. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Compose Shapes — Gabungkan bangun sederhana jadi bangun baru."
+            "Dua segitiga jadi persegi.",
+            "Atau jadi persegi panjang.",
+            "Tiga segitiga jadi trapesium.",
+            "Di sini kita memakai ide Compose Shapes — Gabungkan bangun sederhana jadi bangun baru. Di sini kita memakai Compose Shapes. Gabungkan bangun sederhana jadi bangun baru."
           ],
           "papan": [
             "2△→□",
@@ -852,9 +832,9 @@ export const SUB_B45: SubBabNaskah = {
           "id": "K4B5B-V1-3",
           "judul": "Rumah",
           "ketukan": [
-            "Persegi sebagai badan. Mari kita pahami bersama.",
-            "Dua segitiga sebagai atap. Mari kita pahami bersama.",
-            "Itu menyusun rumah. Mari kita pahami bersama.",
+            "Persegi sebagai badan.",
+            "Dua segitiga sebagai atap.",
+            "Itu menyusun rumah.",
             "METODE LUAR · Susun Bangun: Gabungkan bangun sederhana jadi bangun baru."
           ],
           "papan": [
@@ -875,10 +855,10 @@ export const SUB_B45: SubBabNaskah = {
           "id": "K4B5B-V2-1",
           "judul": "Urai",
           "ketukan": [
-            "Ambil satu bangun utuh. Mari kita pahami bersama.",
-            "Iris atau uraikan. Mari kita pahami bersama.",
-            "Jadi beberapa bangun. Mari kita pahami bersama.",
-            "Ingat cara Urai Bangun: Pecah bangun kompleks jadi bagian dikenal."
+            "Ambil satu bangun utuh.",
+            "Iris atau uraikan.",
+            "Jadi beberapa bangun.",
+            "Ingat cara Urai Bangun: Pecah bangun kompleks jadi bagian dikenal. Ingat cara Urai Bangun: Pecah bangun kompleks jadi bagian dikenal."
           ],
           "papan": [
             "utuh",
@@ -891,10 +871,10 @@ export const SUB_B45: SubBabNaskah = {
           "id": "K4B5B-V2-2",
           "judul": "Contoh buku",
           "ketukan": [
-            "Persegi diiris diagonal. Mari kita pahami bersama.",
-            "Hasil dua segitiga. Mari kita pahami bersama.",
-            "Segienam jadi enam segitiga. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Decompose Shapes — Pecah bangun kompleks jadi bagian dikenal."
+            "Persegi diiris diagonal.",
+            "Hasil dua segitiga.",
+            "Segienam jadi enam segitiga.",
+            "Di sini kita memakai ide Decompose Shapes — Pecah bangun kompleks jadi bagian dikenal. Di sini kita memakai Decompose Shapes. Pecah bangun kompleks jadi bagian dikenal."
           ],
           "papan": [
             "diagonal",
@@ -907,9 +887,9 @@ export const SUB_B45: SubBabNaskah = {
           "id": "K4B5B-V2-3",
           "judul": "Peta",
           "ketukan": [
-            "Peta bisa diurai jadi bangun. Mari kita pahami bersama.",
-            "Latihan mengamati bentuk. Mari kita pahami bersama.",
-            "Lalu disusun kembali. Mari kita pahami bersama.",
+            "Peta bisa diurai jadi bangun.",
+            "Latihan mengamati bentuk.",
+            "Lalu disusun kembali.",
             "METODE LUAR · Urai Bangun: Pecah bangun kompleks jadi bagian dikenal."
           ],
           "papan": [
@@ -930,10 +910,10 @@ export const SUB_B45: SubBabNaskah = {
           "id": "K4B5B-V3-1",
           "judul": "Tidak hanya satu",
           "ketukan": [
-            "Satu bangun bisa diurai beda cara. Mari kita pahami bersama.",
-            "Satu target bisa disusun beda cara. Mari kita pahami bersama.",
-            "Buku menekankan kreativitas. Mari kita pahami bersama.",
-            "Ingat cara Tangram: Tujuh keping menyusun banyak siluet."
+            "Satu bangun bisa diurai beda cara.",
+            "Satu target bisa disusun beda cara.",
+            "Buku menekankan kreativitas.",
+            "Ingat cara Tangram: Tujuh keping menyusun banyak siluet. Ingat cara Tangram: Tujuh keping menyusun banyak siluet."
           ],
           "papan": [
             "banyak cara",
@@ -946,10 +926,10 @@ export const SUB_B45: SubBabNaskah = {
           "id": "K4B5B-V3-2",
           "judul": "Cek hasil",
           "ketukan": [
-            "Pastikan tanpa celah. Mari kita pahami bersama.",
-            "Tanpa tumpang tindih. Mari kita pahami bersama.",
-            "Bagian menutup utuh. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Tangram — Tujuh keping menyusun banyak siluet."
+            "Pastikan tanpa celah.",
+            "Tanpa tumpang tindih.",
+            "Bagian menutup utuh.",
+            "Di sini kita memakai ide Tangram — Tujuh keping menyusun banyak siluet. Di sini kita memakai Tangram. Tujuh keping menyusun banyak siluet."
           ],
           "papan": [
             "tanpa celah",
@@ -962,9 +942,9 @@ export const SUB_B45: SubBabNaskah = {
           "id": "K4B5B-V3-3",
           "judul": "Siap main",
           "ketukan": [
-            "Kamu siap menyusun. Mari kita pahami bersama.",
-            "Dan mengurai. Mari kita pahami bersama.",
-            "Pilih komposisi atau dekomposisi. Mari kita pahami bersama.",
+            "Kamu siap menyusun.",
+            "Dan mengurai.",
+            "Pilih komposisi atau dekomposisi.",
             "METODE LUAR · Tangram: Tujuh keping menyusun banyak siluet."
           ],
           "papan": [
@@ -981,7 +961,7 @@ export const SUB_B45: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Komposisi dan Dekomposisi Bangun Datar. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Komposisi dan Dekomposisi Bangun Datar?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -1013,7 +993,7 @@ export const SUB_B45: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -1021,7 +1001,7 @@ export const SUB_B45: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -1029,15 +1009,15 @@ export const SUB_B45: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -1113,20 +1093,6 @@ export const SUB_B45: SubBabNaskah = {
       "countNum": 1,
       "countWord": "Materi",
       "suara": "Ciri dan komposisi lengkap untuk Materi."
-    },
-    {
-      "judul": "Susun Bangun",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Gabungkan bangun sederhana jadi bangun baru."
-    },
-    {
-      "judul": "Urai Bangun",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Pecah bangun kompleks jadi bagian dikenal."
     }
   ],
   "games": [
@@ -1136,7 +1102,7 @@ export const SUB_B45: SubBabNaskah = {
       "title": "Baca Resep Susun/Urai",
       "bookReference": "hlm. 167–173",
       "objective": "Pakai Susun Bangun: Gabungkan bangun sederhana jadi bangun baru. Latihan: Membaca komposisi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compose Shapes: Gabungkan bangun sederhana jadi bangun baru.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Susun Bangun: Gabungkan bangun sederhana jadi bangun baru.",
       "voiceGuide": "Susun Bangun. Gabungkan bangun sederhana jadi bangun baru.",
       "emoji": "🧩",
       "targetCount": 6
@@ -1147,7 +1113,7 @@ export const SUB_B45: SubBabNaskah = {
       "title": "Komposisi atau Dekomposisi",
       "bookReference": "hlm. 167–170",
       "objective": "Pakai Susun Bangun: Gabungkan bangun sederhana jadi bangun baru. Latihan: Membedakan aksi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compose Shapes: Gabungkan bangun sederhana jadi bangun baru.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Susun Bangun: Gabungkan bangun sederhana jadi bangun baru.",
       "voiceGuide": "Susun Bangun. Gabungkan bangun sederhana jadi bangun baru.",
       "emoji": "🔀",
       "targetCount": 6
@@ -1158,7 +1124,7 @@ export const SUB_B45: SubBabNaskah = {
       "title": "Hasil Penyusunan",
       "bookReference": "hlm. 167–169",
       "objective": "Pakai Susun Bangun: Gabungkan bangun sederhana jadi bangun baru. Latihan: Menebak hasil..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compose Shapes: Gabungkan bangun sederhana jadi bangun baru.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Susun Bangun: Gabungkan bangun sederhana jadi bangun baru.",
       "voiceGuide": "Susun Bangun. Gabungkan bangun sederhana jadi bangun baru.",
       "emoji": "🏠",
       "targetCount": 6
@@ -1169,7 +1135,7 @@ export const SUB_B45: SubBabNaskah = {
       "title": "Pilah Susun/Urai",
       "bookReference": "hlm. 167–173",
       "objective": "Pakai Susun Bangun: Gabungkan bangun sederhana jadi bangun baru. Latihan: Memilah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compose Shapes: Gabungkan bangun sederhana jadi bangun baru.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Susun Bangun: Gabungkan bangun sederhana jadi bangun baru.",
       "voiceGuide": "Susun Bangun. Gabungkan bangun sederhana jadi bangun baru.",
       "emoji": "🧺",
       "targetCount": 18
@@ -1179,9 +1145,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "match-resep",
       "title": "Jodohkan Resep Bangun",
       "bookReference": "hlm. 167–173",
-      "objective": "Menjodohkan.. Ingat Susun Bangun.",
+      "objective": "Menjodohkan.. Ingat Susun Bangun. (Susun Bangun)",
       "mechanicDescription": "Tiga ronde. Gunakan Susun Bangun.",
-      "voiceGuide": "Susun Bangun. Jodohkan.",
+      "voiceGuide": "Susun Bangun. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -1190,9 +1156,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "memory-resep",
       "title": "Memori Komposisi",
       "bookReference": "hlm. 167–171",
-      "objective": "Memori.. Ingat Susun Bangun.",
+      "objective": "Memori.. Ingat Susun Bangun. (Susun Bangun)",
       "mechanicDescription": "Tiga ronde. Gunakan Susun Bangun.",
-      "voiceGuide": "Susun Bangun. Balik kartu.",
+      "voiceGuide": "Susun Bangun. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1201,9 +1167,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "tap-resep",
       "title": "Ketuk Resep Diminta",
       "bookReference": "hlm. 168–173",
-      "objective": "Mengetuk.. Ingat Susun Bangun.",
+      "objective": "Mengetuk.. Ingat Susun Bangun. (Susun Bangun)",
       "mechanicDescription": "Tiga ronde. Gunakan Susun Bangun.",
-      "voiceGuide": "Susun Bangun. Ketuk.",
+      "voiceGuide": "Susun Bangun. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -1212,9 +1178,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "tap-all-aksi",
       "title": "Ketuk Semua Jenis Aksi",
       "bookReference": "hlm. 167–170",
-      "objective": "Ketuk semua.. Ingat Susun Bangun.",
+      "objective": "Ketuk semua.. Ingat Susun Bangun. (Susun Bangun)",
       "mechanicDescription": "Tiga ronde. Gunakan Susun Bangun.",
-      "voiceGuide": "Susun Bangun. Ketuk semua.",
+      "voiceGuide": "Susun Bangun. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -1223,9 +1189,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "story-komp",
       "title": "Cerita Potong dan Susun",
       "bookReference": "hlm. 167–173",
-      "objective": "Soal cerita.. Ingat Susun Bangun.",
+      "objective": "Soal cerita.. Ingat Susun Bangun. (Susun Bangun)",
       "mechanicDescription": "Tiga ronde. Gunakan Susun Bangun.",
-      "voiceGuide": "Susun Bangun. Pilih.",
+      "voiceGuide": "Susun Bangun. Mainkan dengan teliti.",
       "emoji": "✂️",
       "targetCount": 6
     },
@@ -1234,9 +1200,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "order-bagian",
       "title": "Urutkan Banyak Bagian",
       "bookReference": "hlm. 168–173",
-      "objective": "Mengurutkan.. Ingat Susun Bangun.",
+      "objective": "Mengurutkan.. Ingat Susun Bangun. (Susun Bangun)",
       "mechanicDescription": "Tiga ronde. Gunakan Susun Bangun.",
-      "voiceGuide": "Susun Bangun. Urutkan.",
+      "voiceGuide": "Susun Bangun. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -1246,7 +1212,7 @@ export const SUB_B45: SubBabNaskah = {
       "title": "Diagram Menyusun",
       "bookReference": "hlm. 167–169",
       "objective": "Pakai Urai Bangun: Pecah bangun kompleks jadi bagian dikenal. Latihan: Baca susunan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decompose Shapes: Pecah bangun kompleks jadi bagian dikenal.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Urai Bangun: Pecah bangun kompleks jadi bagian dikenal.",
       "voiceGuide": "Urai Bangun. Pecah bangun kompleks jadi bagian dikenal.",
       "diagramType": "compose",
       "numberA": 2,
@@ -1258,7 +1224,7 @@ export const SUB_B45: SubBabNaskah = {
       "title": "Diagram Mengurai",
       "bookReference": "hlm. 170–173",
       "objective": "Pakai Urai Bangun: Pecah bangun kompleks jadi bagian dikenal. Latihan: Baca uraian..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decompose Shapes: Pecah bangun kompleks jadi bagian dikenal.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Urai Bangun: Pecah bangun kompleks jadi bagian dikenal.",
       "voiceGuide": "Urai Bangun. Pecah bangun kompleks jadi bagian dikenal.",
       "diagramType": "decompose",
       "numberA": 1,
@@ -1270,7 +1236,7 @@ export const SUB_B45: SubBabNaskah = {
       "title": "Jodohkan Diagram Resep",
       "bookReference": "hlm. 167–173",
       "objective": "Pakai Urai Bangun: Pecah bangun kompleks jadi bagian dikenal. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decompose Shapes: Pecah bangun kompleks jadi bagian dikenal.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Urai Bangun: Pecah bangun kompleks jadi bagian dikenal.",
       "voiceGuide": "Urai Bangun. Pecah bangun kompleks jadi bagian dikenal.",
       "diagramType": "match",
       "numberA": 1,
@@ -1282,7 +1248,7 @@ export const SUB_B45: SubBabNaskah = {
       "title": "Memori Diagram Resep",
       "bookReference": "hlm. 168–171",
       "objective": "Pakai Urai Bangun: Pecah bangun kompleks jadi bagian dikenal. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decompose Shapes: Pecah bangun kompleks jadi bagian dikenal.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Urai Bangun: Pecah bangun kompleks jadi bagian dikenal.",
       "voiceGuide": "Urai Bangun. Pecah bangun kompleks jadi bagian dikenal.",
       "diagramType": "mem",
       "numberA": 1,
@@ -1293,9 +1259,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "table-b",
       "title": "Tabel Bagian → Hasil",
       "bookReference": "hlm. 167–173",
-      "objective": "Isi tabel.. Ingat Urai Bangun.",
+      "objective": "Isi tabel.. Ingat Urai Bangun. (Urai Bangun)",
       "mechanicDescription": "Tiga tabel. Gunakan Urai Bangun.",
-      "voiceGuide": "Urai Bangun. Pilih.",
+      "voiceGuide": "Urai Bangun. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -1305,9 +1271,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "tap-all-b",
       "title": "Ketuk Semua Diagram Aksi",
       "bookReference": "hlm. 167–170",
-      "objective": "Ketuk semua.. Ingat Urai Bangun.",
+      "objective": "Ketuk semua.. Ingat Urai Bangun. (Urai Bangun)",
       "mechanicDescription": "Tiga ronde. Gunakan Urai Bangun.",
-      "voiceGuide": "Urai Bangun. Ketuk semua.",
+      "voiceGuide": "Urai Bangun. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -1317,9 +1283,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "sort-diagram-b",
       "title": "Pilah Diagram Aksi",
       "bookReference": "hlm. 167–173",
-      "objective": "Pilah.. Ingat Urai Bangun.",
+      "objective": "Pilah.. Ingat Urai Bangun. (Urai Bangun)",
       "mechanicDescription": "Tiga ronde. Gunakan Urai Bangun.",
-      "voiceGuide": "Urai Bangun. Pilah.",
+      "voiceGuide": "Urai Bangun. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -1329,9 +1295,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "banyak-cara",
       "title": "Banyak Cara Urai/Susun",
       "bookReference": "hlm. 173–175",
-      "objective": "Pilih pernyataan.. Ingat Urai Bangun.",
+      "objective": "Pilih pernyataan.. Ingat Urai Bangun. (Urai Bangun)",
       "mechanicDescription": "Tiga ronde. Gunakan Urai Bangun.",
-      "voiceGuide": "Urai Bangun. Pilih.",
+      "voiceGuide": "Urai Bangun. Mainkan dengan teliti.",
       "diagramType": "ways",
       "numberA": 1,
       "numberB": 2
@@ -1341,9 +1307,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "choose-hasil",
       "title": "Pilih Hasil Cocok",
       "bookReference": "hlm. 168–173",
-      "objective": "Pilih hasil.. Ingat Urai Bangun.",
+      "objective": "Pilih hasil.. Ingat Urai Bangun. (Urai Bangun)",
       "mechanicDescription": "Tiga ronde. Gunakan Urai Bangun.",
-      "voiceGuide": "Urai Bangun. Pilih.",
+      "voiceGuide": "Urai Bangun. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -1353,9 +1319,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "story-picture-b",
       "title": "Cerita Diagram Resep",
       "bookReference": "hlm. 167–175",
-      "objective": "Cerita + gambar.. Ingat Urai Bangun.",
+      "objective": "Cerita + gambar.. Ingat Urai Bangun. (Urai Bangun)",
       "mechanicDescription": "Tiga ronde. Gunakan Urai Bangun.",
-      "voiceGuide": "Urai Bangun. Pilih.",
+      "voiceGuide": "Urai Bangun. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -1366,7 +1332,7 @@ export const SUB_B45: SubBabNaskah = {
       "title": "Tulis Komposisi/Dekomposisi",
       "bookReference": "hlm. 167–170",
       "objective": "Pakai Tangram: Tujuh keping menyusun banyak siluet. Latihan: Menulis istilah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Tangram: Tujuh keping menyusun banyak siluet.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Tangram: Tujuh keping menyusun banyak siluet.",
       "voiceGuide": "Tangram. Tujuh keping menyusun banyak siluet.",
       "symbolLarge": "↔",
       "wordLarge": "AKSI",
@@ -1378,7 +1344,7 @@ export const SUB_B45: SubBabNaskah = {
       "title": "Tulis Hasil Urai/Susun",
       "bookReference": "hlm. 168–173",
       "objective": "Pakai Tangram: Tujuh keping menyusun banyak siluet. Latihan: Menulis hasil..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Tangram: Tujuh keping menyusun banyak siluet.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Tangram: Tujuh keping menyusun banyak siluet.",
       "voiceGuide": "Tangram. Tujuh keping menyusun banyak siluet.",
       "symbolLarge": "2△",
       "wordLarge": "HASIL",
@@ -1390,7 +1356,7 @@ export const SUB_B45: SubBabNaskah = {
       "title": "Pilih Jenis Aksi",
       "bookReference": "hlm. 167–170",
       "objective": "Pakai Tangram: Tujuh keping menyusun banyak siluet. Latihan: Klasifikasi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Tangram: Tujuh keping menyusun banyak siluet.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Tangram: Tujuh keping menyusun banyak siluet.",
       "voiceGuide": "Tangram. Tujuh keping menyusun banyak siluet.",
       "symbolLarge": "komposisi",
       "wordLarge": "JENIS",
@@ -1402,7 +1368,7 @@ export const SUB_B45: SubBabNaskah = {
       "title": "Urutkan Banyak Bagian",
       "bookReference": "hlm. 168–173",
       "objective": "Pakai Tangram: Tujuh keping menyusun banyak siluet. Latihan: Mengurutkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Tangram: Tujuh keping menyusun banyak siluet.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Tangram: Tujuh keping menyusun banyak siluet.",
       "voiceGuide": "Tangram. Tujuh keping menyusun banyak siluet.",
       "symbolLarge": "2<3<6",
       "wordLarge": "URUT",
@@ -1413,9 +1379,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "match-abstract-b",
       "title": "Jodohkan Notasi Resep",
       "bookReference": "hlm. 167–173",
-      "objective": "Jodohkan.. Ingat Tangram.",
+      "objective": "Jodohkan.. Ingat Tangram. (Tangram)",
       "mechanicDescription": "Tiga ronde. Gunakan Tangram.",
-      "voiceGuide": "Tangram. Jodohkan.",
+      "voiceGuide": "Tangram. Mainkan dengan teliti.",
       "symbolLarge": "□→2△",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -1425,9 +1391,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "memory-abstract-b",
       "title": "Memori Notasi Resep",
       "bookReference": "hlm. 168–171",
-      "objective": "Memori.. Ingat Tangram.",
+      "objective": "Memori.. Ingat Tangram. (Tangram)",
       "mechanicDescription": "Tiga ronde. Gunakan Tangram.",
-      "voiceGuide": "Tangram. Balik kartu.",
+      "voiceGuide": "Tangram. Mainkan dengan teliti.",
       "symbolLarge": "urai",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -1437,9 +1403,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "true-false-b",
       "title": "Benar atau Salah: Resep",
       "bookReference": "hlm. 167–175",
-      "objective": "Menilai.. Ingat Tangram.",
+      "objective": "Menilai.. Ingat Tangram. (Tangram)",
       "mechanicDescription": "Dua ronde. Gunakan Tangram.",
-      "voiceGuide": "Tangram. Benar/salah.",
+      "voiceGuide": "Tangram. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -1449,9 +1415,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "detective-b",
       "title": "Detektif Komposisi",
       "bookReference": "hlm. 167–175",
-      "objective": "Petunjuk → jawaban.. Ingat Tangram.",
+      "objective": "Petunjuk → jawaban.. Ingat Tangram. (Tangram)",
       "mechanicDescription": "Empat soal. Gunakan Tangram.",
-      "voiceGuide": "Tangram. Pilih.",
+      "voiceGuide": "Tangram. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -1461,9 +1427,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "concept-b",
       "title": "Peta Konsep Komposisi",
       "bookReference": "hlm. 167–173",
-      "objective": "Mengisi kotak.. Ingat Tangram.",
+      "objective": "Mengisi kotak.. Ingat Tangram. (Tangram)",
       "mechanicDescription": "Satu peta. Gunakan Tangram.",
-      "voiceGuide": "Tangram. Pilih opsi.",
+      "voiceGuide": "Tangram. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -1473,9 +1439,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "story-abstract-b",
       "title": "Cerita Angka Resep",
       "bookReference": "hlm. 167–175",
-      "objective": "Soal cerita.. Ingat Tangram.",
+      "objective": "Soal cerita.. Ingat Tangram. (Tangram)",
       "mechanicDescription": "Tiga ronde. Gunakan Tangram.",
-      "voiceGuide": "Tangram. Pilih.",
+      "voiceGuide": "Tangram. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -1487,12 +1453,6 @@ export const SUB_B45: SubBabNaskah = {
       "nama": "Komposisi",
       "isi": "Menyusun beberapa bangun menjadi satu bangun baru.",
       "suara": "Komposisi artinya menyusun."
-    },
-    {
-      "ikon": "✂️",
-      "nama": "Dekomposisi",
-      "isi": "Mengurai satu bangun menjadi beberapa bangun.",
-      "suara": "Dekomposisi artinya mengurai."
     },
     {
       "ikon": "🌍",
@@ -1535,11 +1495,11 @@ export const SUB_B45: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Susun Bangun pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Susun Bangun pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Susun Bangun membantumu memahami soal?",
-    "Kapan kamu memakai Urai Bangun?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Susun Bangun membantumu?",
+    "Kapan memakai Urai Bangun?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {

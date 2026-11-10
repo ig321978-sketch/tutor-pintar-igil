@@ -1,6 +1,6 @@
 /**
- * Naskah — rewrite mendalam.
- * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
+ * Naskah — poles kerapatan setara K5B4.
+ * Metode luar dianyam ketukan per ketukan.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
@@ -19,12 +19,12 @@ export const SUB_A46: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Piktogram)",
   "fullTitle": "Sub-Bab A: Piktogram",
-  "targetDescription": "Siswa menyajikan dan menafsirkan data dalam piktogram (diagram gambar), termasuk skala 1 dan skala lebih dari 1, menentukan paling banyak/sedikit serta jumlah keseluruhan sesuai Buku Siswa Kelas IV Bab 6. Siswa memakai cara Kunci Piktogram, Turus Kategori, Baca Lalu Banding.",
+  "targetDescription": "Siswa menyajikan dan menafsirkan data dalam piktogram (diagram gambar), termasuk skala 1 dan skala lebih dari 1, menentukan paling banyak/sedikit serta jumlah keseluruhan sesuai Buku Siswa Kelas IV Bab 6. Siswa memakai cara Kunci Piktogram, Turus Kategori, Baca Lalu Banding. Siswa memakai cara Kunci Piktogram, Turus Kategori, Baca Lalu Banding.",
   "secondaryBg": "#FFEDD5",
   "secondaryBorder": "#EA580C",
   "secondaryText": "#7C2D12",
   "silabus": {
-    "teksSuara": "Kita belajar piktogram. Piktogram adalah diagram yang memakai gambar untuk menyatakan banyak tiap kategori. Kadang satu gambar berarti satu benda, kadang satu gambar berarti beberapa. Kita baca dengan menghitung gambar lalu mengalikan skala. Kita memakai cara dari luar buku: Kunci Piktogram (Pictograph Key); Turus Kategori (Categorical Tally); Baca Lalu Banding (Read then Compare). Satu gambar bisa mewakili lebih dari satu benda. Hitung frekuensi tiap kategori dengan turus. Bandingkan tinggi/banyak simbol antar kategori. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar piktogram. Piktogram adalah diagram yang memakai gambar untuk menyatakan banyak tiap kategori. Kadang satu gambar berarti satu benda, kadang satu gambar berarti beberapa. Kita baca dengan menghitung gambar lalu mengalikan skala. Kita memakai cara: Kunci Piktogram, Turus Kategori, Baca Lalu Banding. Satu gambar bisa mewakili lebih dari satu benda. Hitung frekuensi tiap kategori dengan turus. Bandingkan tinggi/banyak simbol antar kategori. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menampilkan dan menafsirkan data dalam bentuk diagram gambar (piktogram).",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 6 Sub-Bab A)."
   },
@@ -38,10 +38,10 @@ export const SUB_A46: SubBabNaskah = {
           "id": "K4B6A-V1-1",
           "judul": "Data butuh gambar",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Ada banyak benda di kelas. Mari kita pahami bersama.",
-            "Kita ingin menyajikannya rapi. Mari kita pahami bersama.",
-            "Pakai gambar yang mewakili banyak. Mari kita pahami bersama.",
-            "Ingat cara Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda."
+            "Bayangkan kamu sedang mempelajari Piktogram. Ada banyak benda di kelas.",
+            "Kita ingin menyajikannya rapi.",
+            "Pakai gambar yang mewakili banyak.",
+            "Ingat cara Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda. Ingat cara Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda."
           ],
           "papan": [
             "data",
@@ -54,10 +54,10 @@ export const SUB_A46: SubBabNaskah = {
           "id": "K4B6A-V1-2",
           "judul": "Satu gambar satu arti",
           "ketukan": [
-            "Setiap gambar harus sama. Mari kita pahami bersama.",
-            "Satu gambar bisa berarti satu benda. Mari kita pahami bersama.",
-            "Atau satu gambar berarti beberapa. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Pictograph Key — Satu gambar bisa mewakili lebih dari satu benda."
+            "Setiap gambar harus sama.",
+            "Satu gambar bisa berarti satu benda.",
+            "Atau satu gambar berarti beberapa.",
+            "Di sini kita memakai ide Pictograph Key — Satu gambar bisa mewakili lebih dari satu benda. Di sini kita memakai Pictograph Key. Satu gambar bisa mewakili lebih dari satu benda."
           ],
           "papan": [
             "gambar sama",
@@ -70,9 +70,9 @@ export const SUB_A46: SubBabNaskah = {
           "id": "K4B6A-V1-3",
           "judul": "Baca paling banyak",
           "ketukan": [
-            "Hitung gambar tiap baris. Mari kita pahami bersama.",
-            "Kalikan dengan skala. Mari kita pahami bersama.",
-            "Bandingkan hasilnya. Mari kita pahami bersama.",
+            "Hitung gambar tiap baris.",
+            "Kalikan dengan skala.",
+            "Bandingkan hasilnya.",
             "METODE LUAR · Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda."
           ],
           "papan": [
@@ -93,10 +93,10 @@ export const SUB_A46: SubBabNaskah = {
           "id": "K4B6A-V2-1",
           "judul": "Skala satu",
           "ketukan": [
-            "Satu gambar sama dengan satu siswa. Mari kita pahami bersama.",
-            "Empat gambar sama dengan empat siswa. Mari kita pahami bersama.",
-            "Mudah dihitung. Mari kita pahami bersama.",
-            "Ingat cara Turus Kategori: Hitung frekuensi tiap kategori dengan turus."
+            "Satu gambar sama dengan satu siswa.",
+            "Empat gambar sama dengan empat siswa.",
+            "Mudah dihitung.",
+            "Ingat cara Turus Kategori: Hitung frekuensi tiap kategori dengan turus. Ingat cara Turus Kategori: Hitung frekuensi tiap kategori dengan turus."
           ],
           "papan": [
             "1 = 1",
@@ -109,10 +109,10 @@ export const SUB_A46: SubBabNaskah = {
           "id": "K4B6A-V2-2",
           "judul": "Skala empat",
           "ketukan": [
-            "Satu gambar bisa sama dengan empat siswa. Mari kita pahami bersama.",
-            "Tiga gambar menjadi dua belas. Mari kita pahami bersama.",
-            "Hemat ruang gambar. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Categorical Tally — Hitung frekuensi tiap kategori dengan turus."
+            "Satu gambar bisa sama dengan empat siswa.",
+            "Tiga gambar menjadi dua belas.",
+            "Hemat ruang gambar.",
+            "Di sini kita memakai ide Categorical Tally — Hitung frekuensi tiap kategori dengan turus. Di sini kita memakai Categorical Tally. Hitung frekuensi tiap kategori dengan turus."
           ],
           "papan": [
             "1 = 4",
@@ -125,9 +125,9 @@ export const SUB_A46: SubBabNaskah = {
           "id": "K4B6A-V2-3",
           "judul": "Jangan lupa skala",
           "ketukan": [
-            "Tanpa skala, gambar membingungkan. Mari kita pahami bersama.",
-            "Selalu baca baris keterangan. Mari kita pahami bersama.",
-            "Nilai = gambar dikali skala. Mari kita pahami bersama.",
+            "Tanpa skala, gambar membingungkan.",
+            "Selalu baca baris keterangan.",
+            "Nilai = gambar dikali skala.",
             "METODE LUAR · Turus Kategori: Hitung frekuensi tiap kategori dengan turus."
           ],
           "papan": [
@@ -148,10 +148,10 @@ export const SUB_A46: SubBabNaskah = {
           "id": "K4B6A-V3-1",
           "judul": "Mainan Karel",
           "ketukan": [
-            "Mobil enam, robot empat. Mari kita pahami bersama.",
-            "Pesawat tiga, puzzle satu. Mari kita pahami bersama.",
-            "Kelereng sembilan. Mari kita pahami bersama.",
-            "Ingat cara Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori."
+            "Mobil enam, robot empat.",
+            "Pesawat tiga, puzzle satu.",
+            "Kelereng sembilan.",
+            "Ingat cara Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori. Ingat cara Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori."
           ],
           "papan": [
             "6 4 3 1",
@@ -164,10 +164,10 @@ export const SUB_A46: SubBabNaskah = {
           "id": "K4B6A-V3-2",
           "judul": "Warna kesukaan",
           "ketukan": [
-            "Ungu empat, kuning dua. Mari kita pahami bersama.",
-            "Hitam satu, merah lima. Mari kita pahami bersama.",
-            "Total dua belas siswa. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Read then Compare — Bandingkan tinggi/banyak simbol antar kategori."
+            "Ungu empat, kuning dua.",
+            "Hitam satu, merah lima.",
+            "Total dua belas siswa.",
+            "Di sini kita memakai ide Read then Compare — Bandingkan tinggi/banyak simbol antar kategori. Di sini kita memakai Read then Compare. Bandingkan tinggi/banyak simbol antar kategori."
           ],
           "papan": [
             "4 2 1 5",
@@ -180,9 +180,9 @@ export const SUB_A46: SubBabNaskah = {
           "id": "K4B6A-V3-3",
           "judul": "Siap bermain",
           "ketukan": [
-            "Kita sudah paham piktogram. Mari kita pahami bersama.",
-            "Saatnya menghitung dan membandingkan. Mari kita pahami bersama.",
-            "Ayo ke permainan. Mari kita pahami bersama.",
+            "Kita sudah paham piktogram.",
+            "Saatnya menghitung dan membandingkan.",
+            "Ayo ke permainan.",
             "METODE LUAR · Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori."
           ],
           "papan": [
@@ -199,7 +199,7 @@ export const SUB_A46: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Piktogram. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Piktogram?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -231,7 +231,7 @@ export const SUB_A46: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -239,7 +239,7 @@ export const SUB_A46: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -247,15 +247,15 @@ export const SUB_A46: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -331,20 +331,6 @@ export const SUB_A46: SubBabNaskah = {
       "countNum": 1,
       "countWord": "lanjut batang",
       "suara": "Berikutnya diagram batang."
-    },
-    {
-      "judul": "Kunci Piktogram",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Satu gambar bisa mewakili lebih dari satu benda."
-    },
-    {
-      "judul": "Turus Kategori",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Hitung frekuensi tiap kategori dengan turus."
     }
   ],
   "games": [
@@ -354,7 +340,7 @@ export const SUB_A46: SubBabNaskah = {
       "title": "Hitung Gambar Piktogram",
       "bookReference": "hlm. 180–184",
       "objective": "Pakai Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda. Latihan: Menghitung nilai dari banyak gambar..",
-      "mechanicDescription": "Tiga ronde data buku. Saat bermain, terapkan Pictograph Key: Satu gambar bisa mewakili lebih dari satu benda.",
+      "mechanicDescription": "Tiga ronde data buku. Saat bermain, ingat Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda.",
       "voiceGuide": "Kunci Piktogram. Satu gambar bisa mewakili lebih dari satu benda.",
       "emoji": "🔵",
       "targetCount": 6
@@ -365,7 +351,7 @@ export const SUB_A46: SubBabNaskah = {
       "title": "Pilih Jenis Diagram",
       "bookReference": "hlm. 184",
       "objective": "Pakai Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda. Latihan: Mengenali piktogram..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Pictograph Key: Satu gambar bisa mewakili lebih dari satu benda.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda.",
       "voiceGuide": "Kunci Piktogram. Satu gambar bisa mewakili lebih dari satu benda.",
       "emoji": "📊",
       "targetCount": 6
@@ -376,7 +362,7 @@ export const SUB_A46: SubBabNaskah = {
       "title": "Baca Skala Simbol",
       "bookReference": "hlm. 182–186",
       "objective": "Pakai Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda. Latihan: Mengalikan gambar × skala..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Pictograph Key: Satu gambar bisa mewakili lebih dari satu benda.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda.",
       "voiceGuide": "Kunci Piktogram. Satu gambar bisa mewakili lebih dari satu benda.",
       "emoji": "✖️",
       "targetCount": 6
@@ -387,7 +373,7 @@ export const SUB_A46: SubBabNaskah = {
       "title": "Pilah Piktogram/Bukan",
       "bookReference": "hlm. 184",
       "objective": "Pakai Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda. Latihan: Memilah bentuk penyajian..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Pictograph Key: Satu gambar bisa mewakili lebih dari satu benda.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda.",
       "voiceGuide": "Kunci Piktogram. Satu gambar bisa mewakili lebih dari satu benda.",
       "emoji": "🧺",
       "targetCount": 18
@@ -397,9 +383,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "match-data",
       "title": "Jodohkan Data Piktogram",
       "bookReference": "hlm. 181–186",
-      "objective": "Menjodohkan fakta data.. Ingat Kunci Piktogram.",
+      "objective": "Menjodohkan fakta data.. Ingat Kunci Piktogram. (Kunci Piktogram)",
       "mechanicDescription": "Tiga ronde. Gunakan Kunci Piktogram.",
-      "voiceGuide": "Kunci Piktogram. Jodohkan.",
+      "voiceGuide": "Kunci Piktogram. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -408,9 +394,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "memory-data",
       "title": "Memori Data Gambar",
       "bookReference": "hlm. 181–184",
-      "objective": "Memori pasangan data.. Ingat Kunci Piktogram.",
+      "objective": "Memori pasangan data.. Ingat Kunci Piktogram. (Kunci Piktogram)",
       "mechanicDescription": "Tiga ronde. Gunakan Kunci Piktogram.",
-      "voiceGuide": "Kunci Piktogram. Balik kartu.",
+      "voiceGuide": "Kunci Piktogram. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -419,9 +405,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "tap-kategori",
       "title": "Ketuk Kategori Diminta",
       "bookReference": "hlm. 180–184",
-      "objective": "Mengetuk baris data.. Ingat Kunci Piktogram.",
+      "objective": "Mengetuk baris data.. Ingat Kunci Piktogram. (Kunci Piktogram)",
       "mechanicDescription": "Tiga ronde. Gunakan Kunci Piktogram.",
-      "voiceGuide": "Kunci Piktogram. Ketuk.",
+      "voiceGuide": "Kunci Piktogram. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -430,9 +416,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "tap-all-nilai",
       "title": "Ketuk Semua Sesuai Nilai",
       "bookReference": "hlm. 181–184",
-      "objective": "Ketuk semua yang cocok.. Ingat Kunci Piktogram.",
+      "objective": "Ketuk semua yang cocok.. Ingat Kunci Piktogram. (Kunci Piktogram)",
       "mechanicDescription": "Tiga ronde. Gunakan Kunci Piktogram.",
-      "voiceGuide": "Kunci Piktogram. Ketuk semua.",
+      "voiceGuide": "Kunci Piktogram. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -441,9 +427,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "story-pikto",
       "title": "Cerita Mainan dan Warna",
       "bookReference": "hlm. 181–184",
-      "objective": "Soal cerita data.. Ingat Kunci Piktogram.",
+      "objective": "Soal cerita data.. Ingat Kunci Piktogram. (Kunci Piktogram)",
       "mechanicDescription": "Tiga ronde. Gunakan Kunci Piktogram.",
-      "voiceGuide": "Kunci Piktogram. Pilih.",
+      "voiceGuide": "Kunci Piktogram. Mainkan dengan teliti.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -452,9 +438,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "order-nilai",
       "title": "Urutkan Nilai Data",
       "bookReference": "hlm. 181–185",
-      "objective": "Mengurutkan banyak.. Ingat Kunci Piktogram.",
+      "objective": "Mengurutkan banyak.. Ingat Kunci Piktogram. (Kunci Piktogram)",
       "mechanicDescription": "Tiga ronde. Gunakan Kunci Piktogram.",
-      "voiceGuide": "Kunci Piktogram. Urutkan.",
+      "voiceGuide": "Kunci Piktogram. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -464,7 +450,7 @@ export const SUB_A46: SubBabNaskah = {
       "title": "Diagram Hitung Simbol",
       "bookReference": "hlm. 180–184",
       "objective": "Pakai Turus Kategori: Hitung frekuensi tiap kategori dengan turus. Latihan: Baca diagram gambar..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Categorical Tally: Hitung frekuensi tiap kategori dengan turus.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Turus Kategori: Hitung frekuensi tiap kategori dengan turus.",
       "voiceGuide": "Turus Kategori. Hitung frekuensi tiap kategori dengan turus.",
       "diagramType": "picto",
       "numberA": 1,
@@ -476,7 +462,7 @@ export const SUB_A46: SubBabNaskah = {
       "title": "Diagram Skala n",
       "bookReference": "hlm. 182–186",
       "objective": "Pakai Turus Kategori: Hitung frekuensi tiap kategori dengan turus. Latihan: Skala lebih dari 1..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Categorical Tally: Hitung frekuensi tiap kategori dengan turus.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Turus Kategori: Hitung frekuensi tiap kategori dengan turus.",
       "voiceGuide": "Turus Kategori. Hitung frekuensi tiap kategori dengan turus.",
       "diagramType": "scale",
       "numberA": 4,
@@ -488,7 +474,7 @@ export const SUB_A46: SubBabNaskah = {
       "title": "Jodohkan Diagram Data",
       "bookReference": "hlm. 181–186",
       "objective": "Pakai Turus Kategori: Hitung frekuensi tiap kategori dengan turus. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Categorical Tally: Hitung frekuensi tiap kategori dengan turus.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Turus Kategori: Hitung frekuensi tiap kategori dengan turus.",
       "voiceGuide": "Turus Kategori. Hitung frekuensi tiap kategori dengan turus.",
       "diagramType": "match",
       "numberA": 1,
@@ -500,7 +486,7 @@ export const SUB_A46: SubBabNaskah = {
       "title": "Memori Diagram Data",
       "bookReference": "hlm. 181–184",
       "objective": "Pakai Turus Kategori: Hitung frekuensi tiap kategori dengan turus. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Categorical Tally: Hitung frekuensi tiap kategori dengan turus.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Turus Kategori: Hitung frekuensi tiap kategori dengan turus.",
       "voiceGuide": "Turus Kategori. Hitung frekuensi tiap kategori dengan turus.",
       "diagramType": "mem",
       "numberA": 1,
@@ -511,9 +497,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "table-a",
       "title": "Tabel Kategori–Nilai",
       "bookReference": "hlm. 180–185",
-      "objective": "Isi tabel.. Ingat Turus Kategori.",
+      "objective": "Isi tabel.. Ingat Turus Kategori. (Turus Kategori)",
       "mechanicDescription": "Tiga tabel. Gunakan Turus Kategori.",
-      "voiceGuide": "Turus Kategori. Pilih.",
+      "voiceGuide": "Turus Kategori. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -523,9 +509,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "tap-all-a",
       "title": "Ketuk Semua Diagram",
       "bookReference": "hlm. 181–184",
-      "objective": "Ketuk semua.. Ingat Turus Kategori.",
+      "objective": "Ketuk semua.. Ingat Turus Kategori. (Turus Kategori)",
       "mechanicDescription": "Tiga ronde. Gunakan Turus Kategori.",
-      "voiceGuide": "Turus Kategori. Ketuk semua.",
+      "voiceGuide": "Turus Kategori. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -535,9 +521,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "sort-diagram-a",
       "title": "Pilah Diagram Gambar",
       "bookReference": "hlm. 184",
-      "objective": "Pilah.. Ingat Turus Kategori.",
+      "objective": "Pilah.. Ingat Turus Kategori. (Turus Kategori)",
       "mechanicDescription": "Tiga ronde. Gunakan Turus Kategori.",
-      "voiceGuide": "Turus Kategori. Pilah.",
+      "voiceGuide": "Turus Kategori. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -547,9 +533,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "banding-a",
       "title": "Bandingkan Paling Banyak",
       "bookReference": "hlm. 180–185",
-      "objective": "Pilih ekstrem.. Ingat Turus Kategori.",
+      "objective": "Pilih ekstrem.. Ingat Turus Kategori. (Turus Kategori)",
       "mechanicDescription": "Tiga ronde. Gunakan Turus Kategori.",
-      "voiceGuide": "Turus Kategori. Pilih.",
+      "voiceGuide": "Turus Kategori. Mainkan dengan teliti.",
       "diagramType": "max",
       "numberA": 1,
       "numberB": 2
@@ -559,9 +545,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "choose-a",
       "title": "Pilih Bacaan Cocok",
       "bookReference": "hlm. 181–186",
-      "objective": "Pilih pernyataan.. Ingat Turus Kategori.",
+      "objective": "Pilih pernyataan.. Ingat Turus Kategori. (Turus Kategori)",
       "mechanicDescription": "Tiga ronde. Gunakan Turus Kategori.",
-      "voiceGuide": "Turus Kategori. Pilih.",
+      "voiceGuide": "Turus Kategori. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -571,9 +557,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "story-picture-a",
       "title": "Cerita Diagram Gambar",
       "bookReference": "hlm. 181–186",
-      "objective": "Cerita + diagram.. Ingat Turus Kategori.",
+      "objective": "Cerita + diagram.. Ingat Turus Kategori. (Turus Kategori)",
       "mechanicDescription": "Tiga ronde. Gunakan Turus Kategori.",
-      "voiceGuide": "Turus Kategori. Pilih.",
+      "voiceGuide": "Turus Kategori. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -584,7 +570,7 @@ export const SUB_A46: SubBabNaskah = {
       "title": "Tulis Istilah Piktogram",
       "bookReference": "hlm. 184",
       "objective": "Pakai Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori. Latihan: Menulis istilah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Read then Compare: Bandingkan tinggi/banyak simbol antar kategori.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori.",
       "voiceGuide": "Baca Lalu Banding. Bandingkan tinggi/banyak simbol antar kategori.",
       "symbolLarge": "📊",
       "wordLarge": "PIKTOGRAM",
@@ -596,7 +582,7 @@ export const SUB_A46: SubBabNaskah = {
       "title": "Tulis Nilai dari Simbol",
       "bookReference": "hlm. 182–186",
       "objective": "Pakai Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori. Latihan: Menulis angka..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Read then Compare: Bandingkan tinggi/banyak simbol antar kategori.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori.",
       "voiceGuide": "Baca Lalu Banding. Bandingkan tinggi/banyak simbol antar kategori.",
       "symbolLarge": "n×s",
       "wordLarge": "NILAI",
@@ -608,7 +594,7 @@ export const SUB_A46: SubBabNaskah = {
       "title": "Pilih Klasifikasi Data",
       "bookReference": "hlm. 184",
       "objective": "Pakai Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori. Latihan: Piktogram atau bukan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Read then Compare: Bandingkan tinggi/banyak simbol antar kategori.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori.",
       "voiceGuide": "Baca Lalu Banding. Bandingkan tinggi/banyak simbol antar kategori.",
       "symbolLarge": "gambar",
       "wordLarge": "JENIS",
@@ -620,7 +606,7 @@ export const SUB_A46: SubBabNaskah = {
       "title": "Urutkan Nilai Abstrak",
       "bookReference": "hlm. 181–185",
       "objective": "Pakai Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori. Latihan: Mengurutkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Read then Compare: Bandingkan tinggi/banyak simbol antar kategori.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori.",
       "voiceGuide": "Baca Lalu Banding. Bandingkan tinggi/banyak simbol antar kategori.",
       "symbolLarge": "9>6>1",
       "wordLarge": "URUT",
@@ -631,9 +617,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "match-abstract-a",
       "title": "Jodohkan Notasi Data",
       "bookReference": "hlm. 181–186",
-      "objective": "Jodohkan.. Ingat Baca Lalu Banding.",
+      "objective": "Jodohkan.. Ingat Baca Lalu Banding. (Baca Lalu Banding)",
       "mechanicDescription": "Tiga ronde. Gunakan Baca Lalu Banding.",
-      "voiceGuide": "Baca Lalu Banding. Jodohkan.",
+      "voiceGuide": "Baca Lalu Banding. Mainkan dengan teliti.",
       "symbolLarge": "★=4",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -643,9 +629,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "memory-abstract-a",
       "title": "Memori Notasi Data",
       "bookReference": "hlm. 181–184",
-      "objective": "Memori.. Ingat Baca Lalu Banding.",
+      "objective": "Memori.. Ingat Baca Lalu Banding. (Baca Lalu Banding)",
       "mechanicDescription": "Tiga ronde. Gunakan Baca Lalu Banding.",
-      "voiceGuide": "Baca Lalu Banding. Balik kartu.",
+      "voiceGuide": "Baca Lalu Banding. Mainkan dengan teliti.",
       "symbolLarge": "total",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -655,9 +641,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "true-false-a",
       "title": "Benar atau Salah: Piktogram",
       "bookReference": "hlm. 180–186",
-      "objective": "Menilai.. Ingat Baca Lalu Banding.",
+      "objective": "Menilai.. Ingat Baca Lalu Banding. (Baca Lalu Banding)",
       "mechanicDescription": "Dua ronde. Gunakan Baca Lalu Banding.",
-      "voiceGuide": "Baca Lalu Banding. Benar/salah.",
+      "voiceGuide": "Baca Lalu Banding. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -667,9 +653,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "detective-a",
       "title": "Detektif Piktogram",
       "bookReference": "hlm. 181–186",
-      "objective": "Petunjuk → jawaban.. Ingat Baca Lalu Banding.",
+      "objective": "Petunjuk → jawaban.. Ingat Baca Lalu Banding. (Baca Lalu Banding)",
       "mechanicDescription": "Tiga soal. Gunakan Baca Lalu Banding.",
-      "voiceGuide": "Baca Lalu Banding. Pilih.",
+      "voiceGuide": "Baca Lalu Banding. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -679,9 +665,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "concept-a",
       "title": "Peta Konsep Piktogram",
       "bookReference": "hlm. 178–184",
-      "objective": "Mengisi kotak.. Ingat Baca Lalu Banding.",
+      "objective": "Mengisi kotak.. Ingat Baca Lalu Banding. (Baca Lalu Banding)",
       "mechanicDescription": "Satu peta. Gunakan Baca Lalu Banding.",
-      "voiceGuide": "Baca Lalu Banding. Pilih opsi.",
+      "voiceGuide": "Baca Lalu Banding. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -691,9 +677,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "story-abstract-a",
       "title": "Cerita Angka Data",
       "bookReference": "hlm. 181–186",
-      "objective": "Soal cerita.. Ingat Baca Lalu Banding.",
+      "objective": "Soal cerita.. Ingat Baca Lalu Banding. (Baca Lalu Banding)",
       "mechanicDescription": "Tiga ronde. Gunakan Baca Lalu Banding.",
-      "voiceGuide": "Baca Lalu Banding. Pilih.",
+      "voiceGuide": "Baca Lalu Banding. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -705,12 +691,6 @@ export const SUB_A46: SubBabNaskah = {
       "nama": "Piktogram",
       "isi": "Diagram yang memakai gambar untuk menyatakan banyak tiap kategori.",
       "suara": "Piktogram adalah diagram gambar."
-    },
-    {
-      "ikon": "✖️",
-      "nama": "Skala",
-      "isi": "Satu gambar dapat mewakili 1 atau n data; selalu baca keterangan.",
-      "suara": "Baca skala sebelum menghitung."
     },
     {
       "ikon": "🌍",
@@ -753,11 +733,11 @@ export const SUB_A46: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Kunci Piktogram pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Kunci Piktogram pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Kunci Piktogram membantumu memahami soal?",
-    "Kapan kamu memakai Turus Kategori?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Kunci Piktogram membantumu?",
+    "Kapan memakai Turus Kategori?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -801,12 +781,12 @@ export const SUB_B46: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Diagram Batang)",
   "fullTitle": "Sub-Bab B: Diagram Batang",
-  "targetDescription": "Siswa menyajikan dan menafsirkan data dalam diagram batang tegak maupun mendatar, membaca sumbu, membandingkan tinggi/panjang batang, serta menentukan paling banyak/sedikit dan jumlah sesuai Buku Siswa Kelas IV Bab 6. Siswa memakai cara Skala Batang, Label Sumbu, Banding Batang.",
+  "targetDescription": "Siswa menyajikan dan menafsirkan data dalam diagram batang tegak maupun mendatar, membaca sumbu, membandingkan tinggi/panjang batang, serta menentukan paling banyak/sedikit dan jumlah sesuai Buku Siswa Kelas IV Bab 6. Siswa memakai cara Skala Batang, Label Sumbu, Banding Batang. Siswa memakai cara Skala Batang, Label Sumbu, Banding Batang.",
   "secondaryBg": "#DBEAFE",
   "secondaryBorder": "#2563EB",
   "secondaryText": "#1E3A8A",
   "silabus": {
-    "teksSuara": "Kita belajar diagram batang. Diagram batang memakai batang persegi panjang untuk menunjukkan banyak tiap kategori. Ada yang tegak dan ada yang mendatar. Sumbu membantu kita membaca nilai. Kita memakai cara dari luar buku: Skala Batang (Bar Scale); Label Sumbu (Axis Labels); Banding Batang (Compare Bars). Baca nilai dari tinggi batang dan skala sumbu. Sumbu harus bertuliskan apa yang diukur. Batang lebih tinggi = nilai lebih besar. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar diagram batang. Diagram batang memakai batang persegi panjang untuk menunjukkan banyak tiap kategori. Ada yang tegak dan ada yang mendatar. Sumbu membantu kita membaca nilai. Kita memakai cara: Skala Batang, Label Sumbu, Banding Batang. Baca nilai dari tinggi batang dan skala sumbu. Sumbu harus bertuliskan apa yang diukur. Batang lebih tinggi = nilai lebih besar. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menampilkan dan menafsirkan data dalam bentuk diagram batang.",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 6 Sub-Bab B)."
   },
@@ -820,10 +800,10 @@ export const SUB_B46: SubBabNaskah = {
           "id": "K4B6B-V1-1",
           "judul": "Bukan hanya gambar",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Data juga bisa digambar batang. Mari kita pahami bersama.",
-            "Batang berbentuk persegi panjang. Mari kita pahami bersama.",
-            "Tinggi atau panjang menunjukkan nilai. Mari kita pahami bersama.",
-            "Ingat cara Skala Batang: Baca nilai dari tinggi batang dan skala sumbu."
+            "Bayangkan kamu sedang mempelajari Diagram Batang. Data juga bisa digambar batang.",
+            "Batang berbentuk persegi panjang.",
+            "Tinggi atau panjang menunjukkan nilai.",
+            "Ingat cara Skala Batang: Baca nilai dari tinggi batang dan skala sumbu. Ingat cara Skala Batang: Baca nilai dari tinggi batang dan skala sumbu."
           ],
           "papan": [
             "batang",
@@ -836,10 +816,10 @@ export const SUB_B46: SubBabNaskah = {
           "id": "K4B6B-V1-2",
           "judul": "Dua sumbu",
           "ketukan": [
-            "Ada sumbu tegak. Mari kita pahami bersama.",
-            "Ada sumbu datar. Mari kita pahami bersama.",
-            "Satu untuk banyak. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Bar Scale — Baca nilai dari tinggi batang dan skala sumbu."
+            "Ada sumbu tegak.",
+            "Ada sumbu datar.",
+            "Satu untuk banyak.",
+            "Di sini kita memakai ide Bar Scale — Baca nilai dari tinggi batang dan skala sumbu. Di sini kita memakai Bar Scale. Baca nilai dari tinggi batang dan skala sumbu."
           ],
           "papan": [
             "tegak",
@@ -852,9 +832,9 @@ export const SUB_B46: SubBabNaskah = {
           "id": "K4B6B-V1-3",
           "judul": "Tegak atau mendatar",
           "ketukan": [
-            "Batang bisa naik ke atas. Mari kita pahami bersama.",
-            "Atau memanjang ke samping. Mari kita pahami bersama.",
-            "Artinya sama. Mari kita pahami bersama.",
+            "Batang bisa naik ke atas.",
+            "Atau memanjang ke samping.",
+            "Artinya sama.",
             "METODE LUAR · Skala Batang: Baca nilai dari tinggi batang dan skala sumbu."
           ],
           "papan": [
@@ -875,10 +855,10 @@ export const SUB_B46: SubBabNaskah = {
           "id": "K4B6B-V2-1",
           "judul": "Lihat tinggi",
           "ketukan": [
-            "Pada batang tegak, lihat tingginya. Mari kita pahami bersama.",
-            "Samakan dengan skala sumbu. Mari kita pahami bersama.",
-            "Itulah nilai kategori. Mari kita pahami bersama.",
-            "Ingat cara Label Sumbu: Sumbu harus bertuliskan apa yang diukur."
+            "Pada batang tegak, lihat tingginya.",
+            "Samakan dengan skala sumbu.",
+            "Itulah nilai kategori.",
+            "Ingat cara Label Sumbu: Sumbu harus bertuliskan apa yang diukur. Ingat cara Label Sumbu: Sumbu harus bertuliskan apa yang diukur."
           ],
           "papan": [
             "tinggi",
@@ -891,10 +871,10 @@ export const SUB_B46: SubBabNaskah = {
           "id": "K4B6B-V2-2",
           "judul": "Lihat panjang",
           "ketukan": [
-            "Pada batang mendatar, lihat panjangnya. Mari kita pahami bersama.",
-            "Panjang mewakili banyak. Mari kita pahami bersama.",
-            "Cara membacanya sama. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Axis Labels — Sumbu harus bertuliskan apa yang diukur."
+            "Pada batang mendatar, lihat panjangnya.",
+            "Panjang mewakili banyak.",
+            "Cara membacanya sama.",
+            "Di sini kita memakai ide Axis Labels — Sumbu harus bertuliskan apa yang diukur. Di sini kita memakai Axis Labels. Sumbu harus bertuliskan apa yang diukur."
           ],
           "papan": [
             "panjang",
@@ -907,9 +887,9 @@ export const SUB_B46: SubBabNaskah = {
           "id": "K4B6B-V2-3",
           "judul": "Total dari batang",
           "ketukan": [
-            "Jumlahkan nilai tiap batang. Mari kita pahami bersama.",
-            "Itu total keseluruhan. Mari kita pahami bersama.",
-            "Bisa juga hitung selisih. Mari kita pahami bersama.",
+            "Jumlahkan nilai tiap batang.",
+            "Itu total keseluruhan.",
+            "Bisa juga hitung selisih.",
             "METODE LUAR · Label Sumbu: Sumbu harus bertuliskan apa yang diukur."
           ],
           "papan": [
@@ -930,10 +910,10 @@ export const SUB_B46: SubBabNaskah = {
           "id": "K4B6B-V3-1",
           "judul": "Ke sekolah",
           "ketukan": [
-            "Ada jalan kaki, sepeda, motor. Mari kita pahami bersama.",
-            "Ada juga becak atau lainnya. Mari kita pahami bersama.",
-            "Batang tertinggi paling banyak dipakai. Mari kita pahami bersama.",
-            "Ingat cara Banding Batang: Batang lebih tinggi = nilai lebih besar."
+            "Ada jalan kaki, sepeda, motor.",
+            "Ada juga becak atau lainnya.",
+            "Batang tertinggi paling banyak dipakai.",
+            "Ingat cara Banding Batang: Batang lebih tinggi = nilai lebih besar. Ingat cara Banding Batang: Batang lebih tinggi = nilai lebih besar."
           ],
           "papan": [
             "jalan kaki",
@@ -946,10 +926,10 @@ export const SUB_B46: SubBabNaskah = {
           "id": "K4B6B-V3-2",
           "judul": "Lomba dan bunga",
           "ketukan": [
-            "Data lomba memakai batang tegak. Mari kita pahami bersama.",
-            "Data bunga bisa batang mendatar. Mari kita pahami bersama.",
-            "Keduanya diagram batang. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Compare Bars — Batang lebih tinggi = nilai lebih besar."
+            "Data lomba memakai batang tegak.",
+            "Data bunga bisa batang mendatar.",
+            "Keduanya diagram batang.",
+            "Di sini kita memakai ide Compare Bars — Batang lebih tinggi = nilai lebih besar. Di sini kita memakai Compare Bars. Batang lebih tinggi = nilai lebih besar."
           ],
           "papan": [
             "lomba",
@@ -962,9 +942,9 @@ export const SUB_B46: SubBabNaskah = {
           "id": "K4B6B-V3-3",
           "judul": "Siap bermain",
           "ketukan": [
-            "Kita sudah paham batang. Mari kita pahami bersama.",
-            "Saatnya membaca sumbu dan nilai. Mari kita pahami bersama.",
-            "Ayo ke permainan. Mari kita pahami bersama.",
+            "Kita sudah paham batang.",
+            "Saatnya membaca sumbu dan nilai.",
+            "Ayo ke permainan.",
             "METODE LUAR · Banding Batang: Batang lebih tinggi = nilai lebih besar."
           ],
           "papan": [
@@ -981,7 +961,7 @@ export const SUB_B46: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Diagram Batang. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Diagram Batang?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -1013,7 +993,7 @@ export const SUB_B46: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -1021,7 +1001,7 @@ export const SUB_B46: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -1029,15 +1009,15 @@ export const SUB_B46: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -1113,20 +1093,6 @@ export const SUB_B46: SubBabNaskah = {
       "countNum": 1,
       "countWord": "A+B",
       "suara": "Piktogram dan batang siap."
-    },
-    {
-      "judul": "Skala Batang",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Baca nilai dari tinggi batang dan skala sumbu."
-    },
-    {
-      "judul": "Label Sumbu",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Sumbu harus bertuliskan apa yang diukur."
     }
   ],
   "games": [
@@ -1136,7 +1102,7 @@ export const SUB_B46: SubBabNaskah = {
       "title": "Baca Tinggi Batang",
       "bookReference": "hlm. 187–191",
       "objective": "Pakai Skala Batang: Baca nilai dari tinggi batang dan skala sumbu. Latihan: Membaca nilai batang..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Bar Scale: Baca nilai dari tinggi batang dan skala sumbu.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Skala Batang: Baca nilai dari tinggi batang dan skala sumbu.",
       "voiceGuide": "Skala Batang. Baca nilai dari tinggi batang dan skala sumbu.",
       "emoji": "📏",
       "targetCount": 6
@@ -1147,7 +1113,7 @@ export const SUB_B46: SubBabNaskah = {
       "title": "Tegak atau Mendatar",
       "bookReference": "hlm. 188–191",
       "objective": "Pakai Skala Batang: Baca nilai dari tinggi batang dan skala sumbu. Latihan: Membedakan arah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Bar Scale: Baca nilai dari tinggi batang dan skala sumbu.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Skala Batang: Baca nilai dari tinggi batang dan skala sumbu.",
       "voiceGuide": "Skala Batang. Baca nilai dari tinggi batang dan skala sumbu.",
       "emoji": "↕️",
       "targetCount": 6
@@ -1158,7 +1124,7 @@ export const SUB_B46: SubBabNaskah = {
       "title": "Sumbu Tegak dan Datar",
       "bookReference": "hlm. 187–190",
       "objective": "Pakai Skala Batang: Baca nilai dari tinggi batang dan skala sumbu. Latihan: Mengenali sumbu..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Bar Scale: Baca nilai dari tinggi batang dan skala sumbu.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Skala Batang: Baca nilai dari tinggi batang dan skala sumbu.",
       "voiceGuide": "Skala Batang. Baca nilai dari tinggi batang dan skala sumbu.",
       "emoji": "➕",
       "targetCount": 6
@@ -1169,7 +1135,7 @@ export const SUB_B46: SubBabNaskah = {
       "title": "Pilah Batang Tegak/Mendatar",
       "bookReference": "hlm. 188–191",
       "objective": "Pakai Skala Batang: Baca nilai dari tinggi batang dan skala sumbu. Latihan: Memilah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Bar Scale: Baca nilai dari tinggi batang dan skala sumbu.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Skala Batang: Baca nilai dari tinggi batang dan skala sumbu.",
       "voiceGuide": "Skala Batang. Baca nilai dari tinggi batang dan skala sumbu.",
       "emoji": "🧺",
       "targetCount": 18
@@ -1179,9 +1145,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "match-batang",
       "title": "Jodohkan Fakta Batang",
       "bookReference": "hlm. 189–192",
-      "objective": "Menjodohkan.. Ingat Skala Batang.",
+      "objective": "Menjodohkan.. Ingat Skala Batang. (Skala Batang)",
       "mechanicDescription": "Tiga ronde. Gunakan Skala Batang.",
-      "voiceGuide": "Skala Batang. Jodohkan.",
+      "voiceGuide": "Skala Batang. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -1190,9 +1156,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "memory-batang",
       "title": "Memori Diagram Batang",
       "bookReference": "hlm. 189–192",
-      "objective": "Memori.. Ingat Skala Batang.",
+      "objective": "Memori.. Ingat Skala Batang. (Skala Batang)",
       "mechanicDescription": "Tiga ronde. Gunakan Skala Batang.",
-      "voiceGuide": "Skala Batang. Balik kartu.",
+      "voiceGuide": "Skala Batang. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1201,9 +1167,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "tap-batang",
       "title": "Ketuk Batang Diminta",
       "bookReference": "hlm. 189–193",
-      "objective": "Mengetuk batang.. Ingat Skala Batang.",
+      "objective": "Mengetuk batang.. Ingat Skala Batang. (Skala Batang)",
       "mechanicDescription": "Tiga ronde. Gunakan Skala Batang.",
-      "voiceGuide": "Skala Batang. Ketuk.",
+      "voiceGuide": "Skala Batang. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -1212,9 +1178,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "tap-all-arah",
       "title": "Ketuk Semua Arah Batang",
       "bookReference": "hlm. 188–191",
-      "objective": "Ketuk semua.. Ingat Skala Batang.",
+      "objective": "Ketuk semua.. Ingat Skala Batang. (Skala Batang)",
       "mechanicDescription": "Tiga ronde. Gunakan Skala Batang.",
-      "voiceGuide": "Skala Batang. Ketuk semua.",
+      "voiceGuide": "Skala Batang. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -1223,9 +1189,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "story-batang",
       "title": "Cerita Transport dan Lomba",
       "bookReference": "hlm. 189–193",
-      "objective": "Soal cerita.. Ingat Skala Batang.",
+      "objective": "Soal cerita.. Ingat Skala Batang. (Skala Batang)",
       "mechanicDescription": "Tiga ronde. Gunakan Skala Batang.",
-      "voiceGuide": "Skala Batang. Pilih.",
+      "voiceGuide": "Skala Batang. Mainkan dengan teliti.",
       "emoji": "🚌",
       "targetCount": 6
     },
@@ -1234,9 +1200,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "order-batang",
       "title": "Urutkan Tinggi Batang",
       "bookReference": "hlm. 189–192",
-      "objective": "Mengurutkan nilai.. Ingat Skala Batang.",
+      "objective": "Mengurutkan nilai.. Ingat Skala Batang. (Skala Batang)",
       "mechanicDescription": "Tiga ronde. Gunakan Skala Batang.",
-      "voiceGuide": "Skala Batang. Urutkan.",
+      "voiceGuide": "Skala Batang. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -1246,7 +1212,7 @@ export const SUB_B46: SubBabNaskah = {
       "title": "Diagram Batang Tegak",
       "bookReference": "hlm. 188–189",
       "objective": "Pakai Label Sumbu: Sumbu harus bertuliskan apa yang diukur. Latihan: Baca tinggi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Axis Labels: Sumbu harus bertuliskan apa yang diukur.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Label Sumbu: Sumbu harus bertuliskan apa yang diukur.",
       "voiceGuide": "Label Sumbu. Sumbu harus bertuliskan apa yang diukur.",
       "diagramType": "bar-v",
       "numberA": 1,
@@ -1258,7 +1224,7 @@ export const SUB_B46: SubBabNaskah = {
       "title": "Diagram Batang Mendatar",
       "bookReference": "hlm. 190–192",
       "objective": "Pakai Label Sumbu: Sumbu harus bertuliskan apa yang diukur. Latihan: Baca panjang..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Axis Labels: Sumbu harus bertuliskan apa yang diukur.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Label Sumbu: Sumbu harus bertuliskan apa yang diukur.",
       "voiceGuide": "Label Sumbu. Sumbu harus bertuliskan apa yang diukur.",
       "diagramType": "bar-h",
       "numberA": 1,
@@ -1270,7 +1236,7 @@ export const SUB_B46: SubBabNaskah = {
       "title": "Jodohkan Diagram Batang",
       "bookReference": "hlm. 189–192",
       "objective": "Pakai Label Sumbu: Sumbu harus bertuliskan apa yang diukur. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Axis Labels: Sumbu harus bertuliskan apa yang diukur.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Label Sumbu: Sumbu harus bertuliskan apa yang diukur.",
       "voiceGuide": "Label Sumbu. Sumbu harus bertuliskan apa yang diukur.",
       "diagramType": "match",
       "numberA": 1,
@@ -1282,7 +1248,7 @@ export const SUB_B46: SubBabNaskah = {
       "title": "Memori Diagram Batang",
       "bookReference": "hlm. 189–192",
       "objective": "Pakai Label Sumbu: Sumbu harus bertuliskan apa yang diukur. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Axis Labels: Sumbu harus bertuliskan apa yang diukur.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Label Sumbu: Sumbu harus bertuliskan apa yang diukur.",
       "voiceGuide": "Label Sumbu. Sumbu harus bertuliskan apa yang diukur.",
       "diagramType": "mem",
       "numberA": 1,
@@ -1293,9 +1259,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "table-b",
       "title": "Tabel Sumbu–Arti",
       "bookReference": "hlm. 187–191",
-      "objective": "Isi tabel.. Ingat Label Sumbu.",
+      "objective": "Isi tabel.. Ingat Label Sumbu. (Label Sumbu)",
       "mechanicDescription": "Tiga tabel. Gunakan Label Sumbu.",
-      "voiceGuide": "Label Sumbu. Pilih.",
+      "voiceGuide": "Label Sumbu. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -1305,9 +1271,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "tap-all-b",
       "title": "Ketuk Semua Diagram Arah",
       "bookReference": "hlm. 188–191",
-      "objective": "Ketuk semua.. Ingat Label Sumbu.",
+      "objective": "Ketuk semua.. Ingat Label Sumbu. (Label Sumbu)",
       "mechanicDescription": "Tiga ronde. Gunakan Label Sumbu.",
-      "voiceGuide": "Label Sumbu. Ketuk semua.",
+      "voiceGuide": "Label Sumbu. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -1317,9 +1283,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "sort-diagram-b",
       "title": "Pilah Diagram Arah",
       "bookReference": "hlm. 188–191",
-      "objective": "Pilah.. Ingat Label Sumbu.",
+      "objective": "Pilah.. Ingat Label Sumbu. (Label Sumbu)",
       "mechanicDescription": "Tiga ronde. Gunakan Label Sumbu.",
-      "voiceGuide": "Label Sumbu. Pilah.",
+      "voiceGuide": "Label Sumbu. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -1329,9 +1295,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "banding-b",
       "title": "Bandingkan Batang",
       "bookReference": "hlm. 189–193",
-      "objective": "Pilih ekstrem.. Ingat Label Sumbu.",
+      "objective": "Pilih ekstrem.. Ingat Label Sumbu. (Label Sumbu)",
       "mechanicDescription": "Tiga ronde. Gunakan Label Sumbu.",
-      "voiceGuide": "Label Sumbu. Pilih.",
+      "voiceGuide": "Label Sumbu. Mainkan dengan teliti.",
       "diagramType": "compare",
       "numberA": 1,
       "numberB": 2
@@ -1341,9 +1307,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "choose-b",
       "title": "Pilih Bacaan Batang",
       "bookReference": "hlm. 189–193",
-      "objective": "Pilih pernyataan.. Ingat Label Sumbu.",
+      "objective": "Pilih pernyataan.. Ingat Label Sumbu. (Label Sumbu)",
       "mechanicDescription": "Tiga ronde. Gunakan Label Sumbu.",
-      "voiceGuide": "Label Sumbu. Pilih.",
+      "voiceGuide": "Label Sumbu. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -1353,9 +1319,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "story-picture-b",
       "title": "Cerita Diagram Batang",
       "bookReference": "hlm. 189–193",
-      "objective": "Cerita + diagram.. Ingat Label Sumbu.",
+      "objective": "Cerita + diagram.. Ingat Label Sumbu. (Label Sumbu)",
       "mechanicDescription": "Tiga ronde. Gunakan Label Sumbu.",
-      "voiceGuide": "Label Sumbu. Pilih.",
+      "voiceGuide": "Label Sumbu. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -1366,7 +1332,7 @@ export const SUB_B46: SubBabNaskah = {
       "title": "Tulis Istilah Batang",
       "bookReference": "hlm. 188–191",
       "objective": "Pakai Banding Batang: Batang lebih tinggi = nilai lebih besar. Latihan: Menulis istilah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compare Bars: Batang lebih tinggi = nilai lebih besar.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Banding Batang: Batang lebih tinggi = nilai lebih besar.",
       "voiceGuide": "Banding Batang. Batang lebih tinggi = nilai lebih besar.",
       "symbolLarge": "▮",
       "wordLarge": "BATANG",
@@ -1378,7 +1344,7 @@ export const SUB_B46: SubBabNaskah = {
       "title": "Tulis Nilai Batang",
       "bookReference": "hlm. 189–192",
       "objective": "Pakai Banding Batang: Batang lebih tinggi = nilai lebih besar. Latihan: Menulis angka..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compare Bars: Batang lebih tinggi = nilai lebih besar.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Banding Batang: Batang lebih tinggi = nilai lebih besar.",
       "voiceGuide": "Banding Batang. Batang lebih tinggi = nilai lebih besar.",
       "symbolLarge": "h",
       "wordLarge": "NILAI",
@@ -1390,7 +1356,7 @@ export const SUB_B46: SubBabNaskah = {
       "title": "Pilih Arah Batang",
       "bookReference": "hlm. 188–191",
       "objective": "Pakai Banding Batang: Batang lebih tinggi = nilai lebih besar. Latihan: Tegak/mendatar..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compare Bars: Batang lebih tinggi = nilai lebih besar.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Banding Batang: Batang lebih tinggi = nilai lebih besar.",
       "voiceGuide": "Banding Batang. Batang lebih tinggi = nilai lebih besar.",
       "symbolLarge": "↕️",
       "wordLarge": "ARAH",
@@ -1402,7 +1368,7 @@ export const SUB_B46: SubBabNaskah = {
       "title": "Urutkan Nilai Batang",
       "bookReference": "hlm. 189–192",
       "objective": "Pakai Banding Batang: Batang lebih tinggi = nilai lebih besar. Latihan: Mengurutkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compare Bars: Batang lebih tinggi = nilai lebih besar.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Banding Batang: Batang lebih tinggi = nilai lebih besar.",
       "voiceGuide": "Banding Batang. Batang lebih tinggi = nilai lebih besar.",
       "symbolLarge": "14>10>5",
       "wordLarge": "URUT",
@@ -1413,9 +1379,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "match-abstract-b",
       "title": "Jodohkan Notasi Batang",
       "bookReference": "hlm. 187–192",
-      "objective": "Jodohkan.. Ingat Banding Batang.",
+      "objective": "Jodohkan.. Ingat Banding Batang. (Banding Batang)",
       "mechanicDescription": "Tiga ronde. Gunakan Banding Batang.",
-      "voiceGuide": "Banding Batang. Jodohkan.",
+      "voiceGuide": "Banding Batang. Mainkan dengan teliti.",
       "symbolLarge": "Y=banyak",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -1425,9 +1391,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "memory-abstract-b",
       "title": "Memori Notasi Batang",
       "bookReference": "hlm. 187–192",
-      "objective": "Memori.. Ingat Banding Batang.",
+      "objective": "Memori.. Ingat Banding Batang. (Banding Batang)",
       "mechanicDescription": "Tiga ronde. Gunakan Banding Batang.",
-      "voiceGuide": "Banding Batang. Balik kartu.",
+      "voiceGuide": "Banding Batang. Mainkan dengan teliti.",
       "symbolLarge": "sumbu",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -1437,9 +1403,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "true-false-b",
       "title": "Benar atau Salah: Batang",
       "bookReference": "hlm. 187–193",
-      "objective": "Menilai.. Ingat Banding Batang.",
+      "objective": "Menilai.. Ingat Banding Batang. (Banding Batang)",
       "mechanicDescription": "Dua ronde. Gunakan Banding Batang.",
-      "voiceGuide": "Banding Batang. Benar/salah.",
+      "voiceGuide": "Banding Batang. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -1449,9 +1415,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "detective-b",
       "title": "Detektif Diagram Batang",
       "bookReference": "hlm. 189–193",
-      "objective": "Petunjuk → jawaban.. Ingat Banding Batang.",
+      "objective": "Petunjuk → jawaban.. Ingat Banding Batang. (Banding Batang)",
       "mechanicDescription": "Tiga soal. Gunakan Banding Batang.",
-      "voiceGuide": "Banding Batang. Pilih.",
+      "voiceGuide": "Banding Batang. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -1461,9 +1427,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "concept-b",
       "title": "Peta Konsep Batang",
       "bookReference": "hlm. 178–191",
-      "objective": "Mengisi kotak.. Ingat Banding Batang.",
+      "objective": "Mengisi kotak.. Ingat Banding Batang. (Banding Batang)",
       "mechanicDescription": "Satu peta. Gunakan Banding Batang.",
-      "voiceGuide": "Banding Batang. Pilih opsi.",
+      "voiceGuide": "Banding Batang. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -1473,9 +1439,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "story-abstract-b",
       "title": "Cerita Angka Batang",
       "bookReference": "hlm. 189–193",
-      "objective": "Soal cerita.. Ingat Banding Batang.",
+      "objective": "Soal cerita.. Ingat Banding Batang. (Banding Batang)",
       "mechanicDescription": "Tiga ronde. Gunakan Banding Batang.",
-      "voiceGuide": "Banding Batang. Pilih.",
+      "voiceGuide": "Banding Batang. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -1487,12 +1453,6 @@ export const SUB_B46: SubBabNaskah = {
       "nama": "Diagram batang",
       "isi": "Diagram memakai batang persegi panjang untuk menunjukkan banyak kategori.",
       "suara": "Diagram batang memakai batang."
-    },
-    {
-      "ikon": "➕",
-      "nama": "Sumbu",
-      "isi": "Sumbu tegak dan datar memuat nilai dan nama kategori.",
-      "suara": "Baca kedua sumbu."
     },
     {
       "ikon": "🌍",
@@ -1535,11 +1495,11 @@ export const SUB_B46: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Skala Batang pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Skala Batang pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Skala Batang membantumu memahami soal?",
-    "Kapan kamu memakai Label Sumbu?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Skala Batang membantumu?",
+    "Kapan memakai Label Sumbu?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {

@@ -1,6 +1,6 @@
 /**
- * Naskah — rewrite mendalam.
- * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
+ * Naskah — poles kerapatan setara K5B4.
+ * Metode luar dianyam ketukan per ketukan.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
@@ -19,12 +19,12 @@ export const SUB_A42: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Pecahan Pembilang Satu)",
   "fullTitle": "Sub-Bab A: Pecahan dengan Pembilang Satu",
-  "targetDescription": "Siswa menyatakan pecahan dengan pembilang satu (1/n) dari daerah arsir, membandingkan dan mengurutkan pecahan unit (1/2 > 1/4, 1/10 < 1/5), serta menyelesaikan cerita pizza dan perbandingan berat Tiara. Siswa memakai cara Pecahan Satuan, Model Daerah, Pecahan di Garis.",
+  "targetDescription": "Siswa menyatakan pecahan dengan pembilang satu (1/n) dari daerah arsir, membandingkan dan mengurutkan pecahan unit (1/2 > 1/4, 1/10 < 1/5), serta menyelesaikan cerita pizza dan perbandingan berat Tiara. Siswa memakai cara Pecahan Satuan, Model Daerah, Pecahan di Garis. Siswa memakai cara Pecahan Satuan, Model Daerah, Pecahan di Garis.",
   "secondaryBg": "#FEF3C7",
   "secondaryBorder": "#D97706",
   "secondaryText": "#78350F",
   "silabus": {
-    "teksSuara": "Kita belajar pecahan dengan pembilang satu. Pizza dipotong empat sama besar, tiap anak mendapat seperempat. Makin besar penyebut, makin kecil pecahan unit. Kita memakai cara dari luar buku: Pecahan Satuan (Unit Fraction); Model Daerah (Area Model); Pecahan di Garis (Number Line Unit). Pembilang 1 berarti satu bagian dari penyebut bagian sama. Arsir satu bagian dari keseluruhan. 1/n terletak antara 0 dan 1. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar pecahan dengan pembilang satu. Pizza dipotong empat sama besar, tiap anak mendapat seperempat. Makin besar penyebut, makin kecil pecahan unit. Kita memakai cara: Pecahan Satuan, Model Daerah, Pecahan di Garis. Pembilang 1 berarti satu bagian dari penyebut bagian sama. Arsir satu bagian dari keseluruhan. 1/n terletak antara 0 dan 1. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa membandingkan dan mengurutkan pecahan dengan pembilang satu.",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab A)."
   },
@@ -38,10 +38,10 @@ export const SUB_A42: SubBabNaskah = {
           "id": "K4B2A-V1-1",
           "judul": "Potong pizza",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Ibu Guru membawa sebuah pizza. Mari kita pahami bersama.",
-            "Pizza dipotong menjadi 4 bagian sama besar. Mari kita pahami bersama.",
-            "Empat siswa mendapat nilai tertinggi. Mari kita pahami bersama.",
-            "Ingat cara Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama."
+            "Bayangkan kamu sedang mempelajari Pecahan dengan Pembilang Satu. Ibu Guru membawa sebuah pizza.",
+            "Pizza dipotong menjadi 4 bagian sama besar.",
+            "Empat siswa mendapat nilai tertinggi.",
+            "Ingat cara Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama. Ingat cara Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama."
           ],
           "papan": [
             "pizza",
@@ -54,10 +54,10 @@ export const SUB_A42: SubBabNaskah = {
           "id": "K4B2A-V1-2",
           "judul": "Seperempat",
           "ketukan": [
-            "Tiap anak mendapat 1 dari 4 bagian. Mari kita pahami bersama.",
-            "Ditulis pecahan satu per empat. Mari kita pahami bersama.",
-            "Pembilang 1, penyebut 4. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Unit Fraction — Pembilang 1 berarti satu bagian dari penyebut bagian sama."
+            "Tiap anak mendapat 1 dari 4 bagian.",
+            "Ditulis pecahan satu per empat.",
+            "Pembilang 1, penyebut 4.",
+            "Di sini kita memakai ide Unit Fraction — Pembilang 1 berarti satu bagian dari penyebut bagian sama. Di sini kita memakai Unit Fraction. Pembilang 1 berarti satu bagian dari penyebut bagian sama."
           ],
           "papan": [
             "1 dari 4",
@@ -70,9 +70,9 @@ export const SUB_A42: SubBabNaskah = {
           "id": "K4B2A-V1-3",
           "judul": "Baca gambar",
           "ketukan": [
-            "Lihat daerah yang diarsir. Mari kita pahami bersama.",
-            "Hitung seluruh bagian sama besar. Mari kita pahami bersama.",
-            "Hitung bagian yang diarsir. Mari kita pahami bersama.",
+            "Lihat daerah yang diarsir.",
+            "Hitung seluruh bagian sama besar.",
+            "Hitung bagian yang diarsir.",
             "METODE LUAR · Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama."
           ],
           "papan": [
@@ -93,10 +93,10 @@ export const SUB_A42: SubBabNaskah = {
           "id": "K4B2A-V2-1",
           "judul": "Dua gambar",
           "ketukan": [
-            "Lihat dua daerah arsir. Mari kita pahami bersama.",
-            "Satu menunjukkan setengah. Mari kita pahami bersama.",
-            "Satu menunjukkan seperempat. Mari kita pahami bersama.",
-            "Ingat cara Model Daerah: Arsir satu bagian dari keseluruhan."
+            "Lihat dua daerah arsir.",
+            "Satu menunjukkan setengah.",
+            "Satu menunjukkan seperempat.",
+            "Ingat cara Model Daerah: Arsir satu bagian dari keseluruhan. Ingat cara Model Daerah: Arsir satu bagian dari keseluruhan."
           ],
           "papan": [
             "dua gambar",
@@ -109,10 +109,10 @@ export const SUB_A42: SubBabNaskah = {
           "id": "K4B2A-V2-2",
           "judul": "Kesimpulan",
           "ketukan": [
-            "Daerah arsir 1/2 lebih besar. Mari kita pahami bersama.",
-            "Jadi 1/2 lebih dari 1/4. Mari kita pahami bersama.",
-            "Ditulis 1/2 > 1/4. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Area Model — Arsir satu bagian dari keseluruhan."
+            "Daerah arsir 1/2 lebih besar.",
+            "Jadi 1/2 lebih dari 1/4.",
+            "Ditulis 1/2 > 1/4.",
+            "Di sini kita memakai ide Area Model — Arsir satu bagian dari keseluruhan. Di sini kita memakai Area Model. Arsir satu bagian dari keseluruhan."
           ],
           "papan": [
             "1/2 besar",
@@ -125,9 +125,9 @@ export const SUB_A42: SubBabNaskah = {
           "id": "K4B2A-V2-3",
           "judul": "1/10 dan 1/5",
           "ketukan": [
-            "Sekarang 1/10 dan 1/5. Mari kita pahami bersama.",
-            "Daerah 1/10 lebih kecil. Mari kita pahami bersama.",
-            "Jadi 1/10 kurang dari 1/5. Mari kita pahami bersama.",
+            "Sekarang 1/10 dan 1/5.",
+            "Daerah 1/10 lebih kecil.",
+            "Jadi 1/10 kurang dari 1/5.",
             "METODE LUAR · Model Daerah: Arsir satu bagian dari keseluruhan."
           ],
           "papan": [
@@ -148,10 +148,10 @@ export const SUB_A42: SubBabNaskah = {
           "id": "K4B2A-V3-1",
           "judul": "Dua bahan",
           "ketukan": [
-            "Tiara punya bawang putih 1/2 kg. Mari kita pahami bersama.",
-            "Gula pasirnya 1/4 kg. Mari kita pahami bersama.",
-            "Mana yang lebih berat. Mari kita pahami bersama.",
-            "Ingat cara Pecahan di Garis: 1/n terletak antara 0 dan 1."
+            "Tiara punya bawang putih 1/2 kg.",
+            "Gula pasirnya 1/4 kg.",
+            "Mana yang lebih berat.",
+            "Ingat cara Pecahan di Garis: 1/n terletak antara 0 dan 1. Ingat cara Pecahan di Garis: 1/n terletak antara 0 dan 1."
           ],
           "papan": [
             "bawang 1/2",
@@ -164,10 +164,10 @@ export const SUB_A42: SubBabNaskah = {
           "id": "K4B2A-V3-2",
           "judul": "Jawaban",
           "ketukan": [
-            "1/2 lebih dari 1/4. Mari kita pahami bersama.",
-            "Bawang lebih berat. Mari kita pahami bersama.",
-            "Pecahan unit membantu cerita. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Number Line Unit — 1/n terletak antara 0 dan 1."
+            "1/2 lebih dari 1/4.",
+            "Bawang lebih berat.",
+            "Pecahan unit membantu cerita.",
+            "Di sini kita memakai ide Number Line Unit — 1/n terletak antara 0 dan 1. Di sini kita memakai Number Line Unit. 1/n terletak antara 0 dan 1."
           ],
           "papan": [
             "1/2 > 1/4",
@@ -180,9 +180,9 @@ export const SUB_A42: SubBabNaskah = {
           "id": "K4B2A-V3-3",
           "judul": "Ingat aturan",
           "ketukan": [
-            "Pembilang tetap satu. Mari kita pahami bersama.",
-            "Penyebut menyatakan banyak bagian. Mari kita pahami bersama.",
-            "Semakin banyak bagian, tiap bagian semakin kecil. Mari kita pahami bersama.",
+            "Pembilang tetap satu.",
+            "Penyebut menyatakan banyak bagian.",
+            "Semakin banyak bagian, tiap bagian semakin kecil.",
             "METODE LUAR · Pecahan di Garis: 1/n terletak antara 0 dan 1."
           ],
           "papan": [
@@ -199,7 +199,7 @@ export const SUB_A42: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Pecahan dengan Pembilang Satu. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Pecahan dengan Pembilang Satu?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -231,7 +231,7 @@ export const SUB_A42: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -239,7 +239,7 @@ export const SUB_A42: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -247,15 +247,15 @@ export const SUB_A42: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -331,20 +331,6 @@ export const SUB_A42: SubBabNaskah = {
       "countNum": 1,
       "countWord": "lanjut",
       "suara": "Penyebut sama."
-    },
-    {
-      "judul": "Pecahan Satuan",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Pembilang 1 berarti satu bagian dari penyebut bagian sama."
-    },
-    {
-      "judul": "Model Daerah",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Arsir satu bagian dari keseluruhan."
     }
   ],
   "games": [
@@ -354,7 +340,7 @@ export const SUB_A42: SubBabNaskah = {
       "title": "Potong Pizza Sama Besar",
       "bookReference": "hlm. 58–59 (pizza 1/4)",
       "objective": "Pakai Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama. Latihan: Mengenal 1 dari n bagian..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Unit Fraction: Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
       "voiceGuide": "Pecahan Satuan. Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
       "emoji": "🍕",
       "targetCount": 6
@@ -365,7 +351,7 @@ export const SUB_A42: SubBabNaskah = {
       "title": "Baca Daerah Arsir",
       "bookReference": "hlm. 59–60",
       "objective": "Pakai Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama. Latihan: Menulis pecahan dari gambar..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Unit Fraction: Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
       "voiceGuide": "Pecahan Satuan. Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
       "emoji": "🖍️",
       "targetCount": 6
@@ -376,7 +362,7 @@ export const SUB_A42: SubBabNaskah = {
       "title": "Bandingkan Unit Fraction",
       "bookReference": "hlm. 60–61 (1/2 vs 1/4)",
       "objective": "Pakai Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama. Latihan: Membandingkan pecahan pembilang satu..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Unit Fraction: Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
       "voiceGuide": "Pecahan Satuan. Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
       "emoji": "⚖️",
       "targetCount": 6
@@ -387,7 +373,7 @@ export const SUB_A42: SubBabNaskah = {
       "title": "Pilah: Lebih Besar/Kecil dari Acuan",
       "bookReference": "hlm. 61–62",
       "objective": "Pakai Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama. Latihan: Memilah menurut nilai..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Unit Fraction: Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
       "voiceGuide": "Pecahan Satuan. Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
       "emoji": "🧺",
       "targetCount": 18
@@ -397,9 +383,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "match-unit",
       "title": "Jodohkan Gambar dan 1/n",
       "bookReference": "hlm. 59–60",
-      "objective": "Menjodohkan.. Ingat Pecahan Satuan.",
+      "objective": "Menjodohkan.. Ingat Pecahan Satuan. (Pecahan Satuan)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan Satuan.",
-      "voiceGuide": "Pecahan Satuan. Jodohkan.",
+      "voiceGuide": "Pecahan Satuan. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 9
     },
@@ -408,9 +394,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "memory-unit",
       "title": "Memori Pecahan Unit",
       "bookReference": "hlm. 59–61",
-      "objective": "Memori.. Ingat Pecahan Satuan.",
+      "objective": "Memori.. Ingat Pecahan Satuan. (Pecahan Satuan)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan Satuan.",
-      "voiceGuide": "Pecahan Satuan. Balik kartu.",
+      "voiceGuide": "Pecahan Satuan. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -419,9 +405,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "tap-unit",
       "title": "Ketuk Pecahan yang Diminta",
       "bookReference": "hlm. 60–62",
-      "objective": "Mengetuk.. Ingat Pecahan Satuan.",
+      "objective": "Mengetuk.. Ingat Pecahan Satuan. (Pecahan Satuan)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan Satuan.",
-      "voiceGuide": "Pecahan Satuan. Ketuk.",
+      "voiceGuide": "Pecahan Satuan. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 6
     },
@@ -430,9 +416,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "tap-all-unit",
       "title": "Ketuk Semua Lebih Besar/Kecil",
       "bookReference": "hlm. 61",
-      "objective": "Ketuk semua sesuai syarat.. Ingat Pecahan Satuan.",
+      "objective": "Ketuk semua sesuai syarat.. Ingat Pecahan Satuan. (Pecahan Satuan)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan Satuan.",
-      "voiceGuide": "Pecahan Satuan. Ketuk semua.",
+      "voiceGuide": "Pecahan Satuan. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -441,9 +427,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "story-unit",
       "title": "Cerita Pizza dan Tiara",
       "bookReference": "hlm. 58 & 63",
-      "objective": "Soal cerita.. Ingat Pecahan Satuan.",
+      "objective": "Soal cerita.. Ingat Pecahan Satuan. (Pecahan Satuan)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan Satuan.",
-      "voiceGuide": "Pecahan Satuan. Pilih jawaban.",
+      "voiceGuide": "Pecahan Satuan. Mainkan dengan teliti.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -452,9 +438,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "order-unit",
       "title": "Urutkan Pecahan Unit",
       "bookReference": "hlm. 61–62",
-      "objective": "Mengurutkan.. Ingat Pecahan Satuan.",
+      "objective": "Mengurutkan.. Ingat Pecahan Satuan. (Pecahan Satuan)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan Satuan.",
-      "voiceGuide": "Pecahan Satuan. Urutkan.",
+      "voiceGuide": "Pecahan Satuan. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -464,7 +450,7 @@ export const SUB_A42: SubBabNaskah = {
       "title": "Baca Lingkaran Arsir",
       "bookReference": "hlm. 59–60",
       "objective": "Pakai Model Daerah: Arsir satu bagian dari keseluruhan. Latihan: Membaca diagram lingkaran..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Area Model: Arsir satu bagian dari keseluruhan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Daerah: Arsir satu bagian dari keseluruhan.",
       "voiceGuide": "Model Daerah. Arsir satu bagian dari keseluruhan.",
       "diagramType": "circle",
       "numberA": 1,
@@ -476,7 +462,7 @@ export const SUB_A42: SubBabNaskah = {
       "title": "Banding Batang Unit",
       "bookReference": "hlm. 60–61",
       "objective": "Pakai Model Daerah: Arsir satu bagian dari keseluruhan. Latihan: Membandingkan batang..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Area Model: Arsir satu bagian dari keseluruhan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Daerah: Arsir satu bagian dari keseluruhan.",
       "voiceGuide": "Model Daerah. Arsir satu bagian dari keseluruhan.",
       "diagramType": "bar",
       "numberA": 1,
@@ -488,7 +474,7 @@ export const SUB_A42: SubBabNaskah = {
       "title": "Jodohkan Diagram Unit",
       "bookReference": "hlm. 59–61",
       "objective": "Pakai Model Daerah: Arsir satu bagian dari keseluruhan. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Area Model: Arsir satu bagian dari keseluruhan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Daerah: Arsir satu bagian dari keseluruhan.",
       "voiceGuide": "Model Daerah. Arsir satu bagian dari keseluruhan.",
       "diagramType": "match",
       "numberA": 1,
@@ -500,7 +486,7 @@ export const SUB_A42: SubBabNaskah = {
       "title": "Memori Diagram Unit",
       "bookReference": "hlm. 60",
       "objective": "Pakai Model Daerah: Arsir satu bagian dari keseluruhan. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Area Model: Arsir satu bagian dari keseluruhan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Daerah: Arsir satu bagian dari keseluruhan.",
       "voiceGuide": "Model Daerah. Arsir satu bagian dari keseluruhan.",
       "diagramType": "mem",
       "numberA": 1,
@@ -511,9 +497,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "table-unit",
       "title": "Tabel Gambar → Pecahan",
       "bookReference": "hlm. 59–60",
-      "objective": "Isi tabel.. Ingat Model Daerah.",
+      "objective": "Isi tabel.. Ingat Model Daerah. (Model Daerah)",
       "mechanicDescription": "Tiga tabel. Gunakan Model Daerah.",
-      "voiceGuide": "Model Daerah. Pilih teks.",
+      "voiceGuide": "Model Daerah. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -523,9 +509,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "tap-all-diagram",
       "title": "Ketuk Semua Syarat Diagram",
       "bookReference": "hlm. 61",
-      "objective": "Ketuk semua.. Ingat Model Daerah.",
+      "objective": "Ketuk semua.. Ingat Model Daerah. (Model Daerah)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Daerah.",
-      "voiceGuide": "Model Daerah. Ketuk semua.",
+      "voiceGuide": "Model Daerah. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -535,9 +521,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "sort-diagram",
       "title": "Pilah Diagram Unit",
       "bookReference": "hlm. 61–62",
-      "objective": "Pilah.. Ingat Model Daerah.",
+      "objective": "Pilah.. Ingat Model Daerah. (Model Daerah)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Daerah.",
-      "voiceGuide": "Model Daerah. Pilah.",
+      "voiceGuide": "Model Daerah. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -547,9 +533,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "denom-effect",
       "title": "Pengaruh Penyebut",
       "bookReference": "hlm. 61",
-      "objective": "Penyebut besar → nilai kecil.. Ingat Model Daerah.",
+      "objective": "Penyebut besar → nilai kecil.. Ingat Model Daerah. (Model Daerah)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Daerah.",
-      "voiceGuide": "Model Daerah. Pilih.",
+      "voiceGuide": "Model Daerah. Mainkan dengan teliti.",
       "diagramType": "denom",
       "numberA": 1,
       "numberB": 2
@@ -559,9 +545,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "shade-choose",
       "title": "Pilih Gambar yang Cocok",
       "bookReference": "hlm. 59–60",
-      "objective": "Pilih diagram benar.. Ingat Model Daerah.",
+      "objective": "Pilih diagram benar.. Ingat Model Daerah. (Model Daerah)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Daerah.",
-      "voiceGuide": "Model Daerah. Pilih.",
+      "voiceGuide": "Model Daerah. Mainkan dengan teliti.",
       "diagramType": "shade",
       "numberA": 1,
       "numberB": 2
@@ -571,9 +557,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "story-picture",
       "title": "Cerita dengan Diagram",
       "bookReference": "hlm. 58–63",
-      "objective": "Cerita + gambar.. Ingat Model Daerah.",
+      "objective": "Cerita + gambar.. Ingat Model Daerah. (Model Daerah)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Daerah.",
-      "voiceGuide": "Model Daerah. Pilih.",
+      "voiceGuide": "Model Daerah. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -584,7 +570,7 @@ export const SUB_A42: SubBabNaskah = {
       "title": "Tulis 1/n",
       "bookReference": "hlm. 59",
       "objective": "Pakai Pecahan di Garis: 1/n terletak antara 0 dan 1. Latihan: Menulis notasi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Number Line Unit: 1/n terletak antara 0 dan 1.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan di Garis: 1/n terletak antara 0 dan 1.",
       "voiceGuide": "Pecahan di Garis. 1/n terletak antara 0 dan 1.",
       "symbolLarge": "1/4",
       "wordLarge": "UNIT",
@@ -596,7 +582,7 @@ export const SUB_A42: SubBabNaskah = {
       "title": "Isi > atau <",
       "bookReference": "hlm. 62",
       "objective": "Pakai Pecahan di Garis: 1/n terletak antara 0 dan 1. Latihan: Mengisi tanda..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Number Line Unit: 1/n terletak antara 0 dan 1.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan di Garis: 1/n terletak antara 0 dan 1.",
       "voiceGuide": "Pecahan di Garis. 1/n terletak antara 0 dan 1.",
       "symbolLarge": ">",
       "wordLarge": "BANDING",
@@ -608,7 +594,7 @@ export const SUB_A42: SubBabNaskah = {
       "title": "Pilih Pecahan Unit",
       "bookReference": "hlm. 59–62",
       "objective": "Pakai Pecahan di Garis: 1/n terletak antara 0 dan 1. Latihan: Memilih..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Number Line Unit: 1/n terletak antara 0 dan 1.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan di Garis: 1/n terletak antara 0 dan 1.",
       "voiceGuide": "Pecahan di Garis. 1/n terletak antara 0 dan 1.",
       "symbolLarge": "1/2",
       "wordLarge": "PILIH",
@@ -620,7 +606,7 @@ export const SUB_A42: SubBabNaskah = {
       "title": "Urutkan Notasi Unit",
       "bookReference": "hlm. 61–62",
       "objective": "Pakai Pecahan di Garis: 1/n terletak antara 0 dan 1. Latihan: Mengurutkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Number Line Unit: 1/n terletak antara 0 dan 1.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan di Garis: 1/n terletak antara 0 dan 1.",
       "voiceGuide": "Pecahan di Garis. 1/n terletak antara 0 dan 1.",
       "symbolLarge": "1/2>1/4",
       "wordLarge": "URUT",
@@ -631,9 +617,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "match-abstract",
       "title": "Jodohkan Teks Unit",
       "bookReference": "hlm. 59–61",
-      "objective": "Jodohkan.. Ingat Pecahan di Garis.",
+      "objective": "Jodohkan.. Ingat Pecahan di Garis. (Pecahan di Garis)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan di Garis.",
-      "voiceGuide": "Pecahan di Garis. Jodohkan.",
+      "voiceGuide": "Pecahan di Garis. Mainkan dengan teliti.",
       "symbolLarge": "1/5",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -643,9 +629,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "memory-abstract",
       "title": "Memori Notasi Unit",
       "bookReference": "hlm. 60",
-      "objective": "Memori.. Ingat Pecahan di Garis.",
+      "objective": "Memori.. Ingat Pecahan di Garis. (Pecahan di Garis)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan di Garis.",
-      "voiceGuide": "Pecahan di Garis. Balik kartu.",
+      "voiceGuide": "Pecahan di Garis. Mainkan dengan teliti.",
       "symbolLarge": "1/8",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -655,9 +641,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "true-false-a",
       "title": "Benar atau Salah: Unit",
       "bookReference": "hlm. 57–62",
-      "objective": "Menilai.. Ingat Pecahan di Garis.",
+      "objective": "Menilai.. Ingat Pecahan di Garis. (Pecahan di Garis)",
       "mechanicDescription": "Dua ronde. Gunakan Pecahan di Garis.",
-      "voiceGuide": "Pecahan di Garis. Benar/salah.",
+      "voiceGuide": "Pecahan di Garis. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -667,9 +653,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "detective-a",
       "title": "Detektif Pembilang Satu",
       "bookReference": "hlm. 58–63",
-      "objective": "Petunjuk → pecahan.. Ingat Pecahan di Garis.",
+      "objective": "Petunjuk → pecahan.. Ingat Pecahan di Garis. (Pecahan di Garis)",
       "mechanicDescription": "Empat soal. Gunakan Pecahan di Garis.",
-      "voiceGuide": "Pecahan di Garis. Pilih.",
+      "voiceGuide": "Pecahan di Garis. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -679,9 +665,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "concept-a",
       "title": "Peta Konsep Unit",
       "bookReference": "hlm. 57–61",
-      "objective": "Mengisi kotak.. Ingat Pecahan di Garis.",
+      "objective": "Mengisi kotak.. Ingat Pecahan di Garis. (Pecahan di Garis)",
       "mechanicDescription": "Satu peta. Gunakan Pecahan di Garis.",
-      "voiceGuide": "Pecahan di Garis. Pilih opsi.",
+      "voiceGuide": "Pecahan di Garis. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -691,9 +677,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "story-abstract",
       "title": "Cerita Angka Unit",
       "bookReference": "hlm. 58–63",
-      "objective": "Soal cerita.. Ingat Pecahan di Garis.",
+      "objective": "Soal cerita.. Ingat Pecahan di Garis. (Pecahan di Garis)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan di Garis.",
-      "voiceGuide": "Pecahan di Garis. Pilih.",
+      "voiceGuide": "Pecahan di Garis. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -705,12 +691,6 @@ export const SUB_A42: SubBabNaskah = {
       "nama": "Unit",
       "isi": "Pecahan pembilang satu berbentuk 1/n.",
       "suara": "Pembilang satu berarti satu bagian."
-    },
-    {
-      "ikon": "➗",
-      "nama": "Arsir",
-      "isi": "Baca pecahan dari daerah yang diarsir.",
-      "suara": "Hitung bagian diarsir per seluruh."
     },
     {
       "ikon": "🌍",
@@ -753,11 +733,11 @@ export const SUB_A42: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Pecahan Satuan pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Pecahan Satuan pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Pecahan Satuan membantumu memahami soal?",
-    "Kapan kamu memakai Model Daerah?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Pecahan Satuan membantumu?",
+    "Kapan memakai Model Daerah?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -801,12 +781,12 @@ export const SUB_B42: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Penyebut Sama)",
   "fullTitle": "Sub-Bab B: Pecahan dengan Penyebut Sama",
-  "targetDescription": "Siswa membandingkan dan mengurutkan pecahan berpenyebut sama dengan melihat pembilang (1/3 < 2/3, 2/10 > 1/10), serta menyelesaikan cerita tongkat Asep 3/6 dan Azizah 2/6. Siswa memakai cara Penyebut Sama, Banding Pembilang, Batang Pecahan.",
+  "targetDescription": "Siswa membandingkan dan mengurutkan pecahan berpenyebut sama dengan melihat pembilang (1/3 < 2/3, 2/10 > 1/10), serta menyelesaikan cerita tongkat Asep 3/6 dan Azizah 2/6. Siswa memakai cara Penyebut Sama, Banding Pembilang, Batang Pecahan. Siswa memakai cara Penyebut Sama, Banding Pembilang, Batang Pecahan.",
   "secondaryBg": "#DBEAFE",
   "secondaryBorder": "#2563EB",
   "secondaryText": "#1E3A8A",
   "silabus": {
-    "teksSuara": "Kita belajar pecahan dengan penyebut sama. Jika penyebut sama, bandingkan pembilangnya. Satu per tiga kurang dari dua per tiga. Kita memakai cara dari luar buku: Penyebut Sama (Same Denominator); Banding Pembilang (Compare Numerators); Batang Pecahan (Fraction Bars). Banding/jumlah lebih mudah jika penyebut sama. Penyebut sama: pembilang lebih besar = pecahan lebih besar. Batang sama panjang memudahkan banding. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar pecahan dengan penyebut sama. Jika penyebut sama, bandingkan pembilangnya. Satu per tiga kurang dari dua per tiga. Kita memakai cara: Penyebut Sama, Banding Pembilang, Batang Pecahan. Banding/jumlah lebih mudah jika penyebut sama. Penyebut sama: pembilang lebih besar = pecahan lebih besar. Batang sama panjang memudahkan banding. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa membandingkan dan mengurutkan pecahan dengan penyebut sama.",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab B)."
   },
@@ -820,10 +800,10 @@ export const SUB_B42: SubBabNaskah = {
           "id": "K4B2B-V1-1",
           "judul": "Dua arsir",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Lihat dua daerah arsir. Mari kita pahami bersama.",
-            "Keduanya dibagi tiga sama besar. Mari kita pahami bersama.",
-            "Satu mengarsir 1 bagian. Mari kita pahami bersama.",
-            "Ingat cara Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama."
+            "Bayangkan kamu sedang mempelajari Pecahan dengan Penyebut Sama. Lihat dua daerah arsir.",
+            "Keduanya dibagi tiga sama besar.",
+            "Satu mengarsir 1 bagian.",
+            "Ingat cara Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama. Ingat cara Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama."
           ],
           "papan": [
             "bagi 3",
@@ -836,10 +816,10 @@ export const SUB_B42: SubBabNaskah = {
           "id": "K4B2B-V1-2",
           "judul": "Kesimpulan",
           "ketukan": [
-            "Daerah 1/3 lebih kecil. Mari kita pahami bersama.",
-            "Jadi 1/3 kurang dari 2/3. Mari kita pahami bersama.",
-            "Ditulis 1/3 < 2/3. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Same Denominator — Banding/jumlah lebih mudah jika penyebut sama."
+            "Daerah 1/3 lebih kecil.",
+            "Jadi 1/3 kurang dari 2/3.",
+            "Ditulis 1/3 < 2/3.",
+            "Di sini kita memakai ide Same Denominator — Banding/jumlah lebih mudah jika penyebut sama. Di sini kita memakai Same Denominator. Banding/jumlah lebih mudah jika penyebut sama."
           ],
           "papan": [
             "1/3 kecil",
@@ -852,9 +832,9 @@ export const SUB_B42: SubBabNaskah = {
           "id": "K4B2B-V1-3",
           "judul": "2/10 dan 1/10",
           "ketukan": [
-            "Sekarang penyebut 10. Mari kita pahami bersama.",
-            "2 bagian dibanding 1 bagian. Mari kita pahami bersama.",
-            "2/10 lebih dari 1/10. Mari kita pahami bersama.",
+            "Sekarang penyebut 10.",
+            "2 bagian dibanding 1 bagian.",
+            "2/10 lebih dari 1/10.",
             "METODE LUAR · Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama."
           ],
           "papan": [
@@ -875,10 +855,10 @@ export const SUB_B42: SubBabNaskah = {
           "id": "K4B2B-V2-1",
           "judul": "Dua tongkat",
           "ketukan": [
-            "Asep punya tongkat 3/6 meter. Mari kita pahami bersama.",
-            "Azizah punya 2/6 meter. Mari kita pahami bersama.",
-            "Penyebut sama: per enam. Mari kita pahami bersama.",
-            "Ingat cara Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar."
+            "Asep punya tongkat 3/6 meter.",
+            "Azizah punya 2/6 meter.",
+            "Penyebut sama: per enam.",
+            "Ingat cara Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar. Ingat cara Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar."
           ],
           "papan": [
             "3/6",
@@ -891,10 +871,10 @@ export const SUB_B42: SubBabNaskah = {
           "id": "K4B2B-V2-2",
           "judul": "Jawaban",
           "ketukan": [
-            "3 lebih besar dari 2. Mari kita pahami bersama.",
-            "Tongkat Asep lebih panjang. Mari kita pahami bersama.",
-            "3/6 > 2/6. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Compare Numerators — Penyebut sama: pembilang lebih besar = pecahan lebih besar."
+            "3 lebih besar dari 2.",
+            "Tongkat Asep lebih panjang.",
+            "3/6 > 2/6.",
+            "Di sini kita memakai ide Compare Numerators — Penyebut sama: pembilang lebih besar = pecahan lebih besar. Di sini kita memakai Compare Numerators. Penyebut sama: pembilang lebih besar = pecahan lebih besar."
           ],
           "papan": [
             "3 > 2",
@@ -907,9 +887,9 @@ export const SUB_B42: SubBabNaskah = {
           "id": "K4B2B-V2-3",
           "judul": "Latihan tanda",
           "ketukan": [
-            "Isi titik-titik dengan > atau <. Mari kita pahami bersama.",
-            "Pastikan penyebut sama dulu. Mari kita pahami bersama.",
-            "Lalu bandingkan pembilang. Mari kita pahami bersama.",
+            "Isi titik-titik dengan > atau <.",
+            "Pastikan penyebut sama dulu.",
+            "Lalu bandingkan pembilang.",
             "METODE LUAR · Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar."
           ],
           "papan": [
@@ -930,10 +910,10 @@ export const SUB_B42: SubBabNaskah = {
           "id": "K4B2B-V3-1",
           "judul": "Satu keluarga",
           "ketukan": [
-            "Kumpulkan pecahan berpenyebut sama. Mari kita pahami bersama.",
-            "Misal penyebut 5. Mari kita pahami bersama.",
-            "1/5, 2/5, 3/5, 4/5. Mari kita pahami bersama.",
-            "Ingat cara Batang Pecahan: Batang sama panjang memudahkan banding."
+            "Kumpulkan pecahan berpenyebut sama.",
+            "Misal penyebut 5.",
+            "1/5, 2/5, 3/5, 4/5.",
+            "Ingat cara Batang Pecahan: Batang sama panjang memudahkan banding. Ingat cara Batang Pecahan: Batang sama panjang memudahkan banding."
           ],
           "papan": [
             "penyebut 5",
@@ -946,10 +926,10 @@ export const SUB_B42: SubBabNaskah = {
           "id": "K4B2B-V3-2",
           "judul": "Cara cepat",
           "ketukan": [
-            "Cukup urutkan pembilangnya. Mari kita pahami bersama.",
-            "1, lalu 2, lalu 3, lalu 4. Mari kita pahami bersama.",
-            "Nilai pecahan ikut membesar. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Fraction Bars — Batang sama panjang memudahkan banding."
+            "Cukup urutkan pembilangnya.",
+            "1, lalu 2, lalu 3, lalu 4.",
+            "Nilai pecahan ikut membesar.",
+            "Di sini kita memakai ide Fraction Bars — Batang sama panjang memudahkan banding. Di sini kita memakai Fraction Bars. Batang sama panjang memudahkan banding."
           ],
           "papan": [
             "urut pembilang",
@@ -962,9 +942,9 @@ export const SUB_B42: SubBabNaskah = {
           "id": "K4B2B-V3-3",
           "judul": "Siap C",
           "ketukan": [
-            "Kadang bentuk berbeda tapi nilai sama. Mari kita pahami bersama.",
-            "Itu namanya pecahan senilai. Mari kita pahami bersama.",
-            "Contoh 2/6 dan 1/3. Mari kita pahami bersama.",
+            "Kadang bentuk berbeda tapi nilai sama.",
+            "Itu namanya pecahan senilai.",
+            "Contoh 2/6 dan 1/3.",
             "METODE LUAR · Batang Pecahan: Batang sama panjang memudahkan banding."
           ],
           "papan": [
@@ -981,7 +961,7 @@ export const SUB_B42: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Pecahan dengan Penyebut Sama. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Pecahan dengan Penyebut Sama?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -1013,7 +993,7 @@ export const SUB_B42: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -1021,7 +1001,7 @@ export const SUB_B42: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -1029,15 +1009,15 @@ export const SUB_B42: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -1113,20 +1093,6 @@ export const SUB_B42: SubBabNaskah = {
       "countNum": 1,
       "countWord": "lanjut",
       "suara": "Pecahan senilai."
-    },
-    {
-      "judul": "Penyebut Sama",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Banding/jumlah lebih mudah jika penyebut sama."
-    },
-    {
-      "judul": "Banding Pembilang",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Penyebut sama: pembilang lebih besar = pecahan lebih besar."
     }
   ],
   "games": [
@@ -1136,7 +1102,7 @@ export const SUB_B42: SubBabNaskah = {
       "title": "Baca Pecahan Penyebut Sama",
       "bookReference": "hlm. 63–64",
       "objective": "Pakai Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama. Latihan: Membaca p/q..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Same Denominator: Banding/jumlah lebih mudah jika penyebut sama.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama.",
       "voiceGuide": "Penyebut Sama. Banding/jumlah lebih mudah jika penyebut sama.",
       "emoji": "🧱",
       "targetCount": 6
@@ -1147,7 +1113,7 @@ export const SUB_B42: SubBabNaskah = {
       "title": "Bandingkan Penyebut Sama",
       "bookReference": "hlm. 63–64 (1/3 vs 2/3)",
       "objective": "Pakai Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama. Latihan: Membandingkan pembilang..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Same Denominator: Banding/jumlah lebih mudah jika penyebut sama.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama.",
       "voiceGuide": "Penyebut Sama. Banding/jumlah lebih mudah jika penyebut sama.",
       "emoji": "⚖️",
       "targetCount": 6
@@ -1158,7 +1124,7 @@ export const SUB_B42: SubBabNaskah = {
       "title": "Pilah menurut Pembilang",
       "bookReference": "hlm. 64–65",
       "objective": "Pakai Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama. Latihan: Memilah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Same Denominator: Banding/jumlah lebih mudah jika penyebut sama.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama.",
       "voiceGuide": "Penyebut Sama. Banding/jumlah lebih mudah jika penyebut sama.",
       "emoji": "🧺",
       "targetCount": 18
@@ -1169,7 +1135,7 @@ export const SUB_B42: SubBabNaskah = {
       "title": "Jodohkan Gambar dan p/q",
       "bookReference": "hlm. 63–65",
       "objective": "Pakai Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama. Latihan: Menjodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Same Denominator: Banding/jumlah lebih mudah jika penyebut sama.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama.",
       "voiceGuide": "Penyebut Sama. Banding/jumlah lebih mudah jika penyebut sama.",
       "emoji": "🔗",
       "targetCount": 9
@@ -1179,9 +1145,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "memory-sama",
       "title": "Memori Penyebut Sama",
       "bookReference": "hlm. 64",
-      "objective": "Memori.. Ingat Penyebut Sama.",
+      "objective": "Memori.. Ingat Penyebut Sama. (Penyebut Sama)",
       "mechanicDescription": "Tiga ronde. Gunakan Penyebut Sama.",
-      "voiceGuide": "Penyebut Sama. Balik kartu.",
+      "voiceGuide": "Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1190,9 +1156,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "tap-sama",
       "title": "Ketuk Pecahan Diminta",
       "bookReference": "hlm. 64–65",
-      "objective": "Mengetuk.. Ingat Penyebut Sama.",
+      "objective": "Mengetuk.. Ingat Penyebut Sama. (Penyebut Sama)",
       "mechanicDescription": "Tiga ronde. Gunakan Penyebut Sama.",
-      "voiceGuide": "Penyebut Sama. Ketuk.",
+      "voiceGuide": "Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 6
     },
@@ -1201,9 +1167,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "tap-all-sama",
       "title": "Ketuk Semua Pembilang ≥",
       "bookReference": "hlm. 65",
-      "objective": "Ketuk semua.. Ingat Penyebut Sama.",
+      "objective": "Ketuk semua.. Ingat Penyebut Sama. (Penyebut Sama)",
       "mechanicDescription": "Tiga ronde. Gunakan Penyebut Sama.",
-      "voiceGuide": "Penyebut Sama. Ketuk semua.",
+      "voiceGuide": "Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -1212,9 +1178,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "story-sama",
       "title": "Cerita Tongkat Asep",
       "bookReference": "hlm. 65",
-      "objective": "Soal cerita.. Ingat Penyebut Sama.",
+      "objective": "Soal cerita.. Ingat Penyebut Sama. (Penyebut Sama)",
       "mechanicDescription": "Tiga ronde. Gunakan Penyebut Sama.",
-      "voiceGuide": "Penyebut Sama. Pilih.",
+      "voiceGuide": "Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -1223,9 +1189,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "sign-sama",
       "title": "Isi Tanda > <",
       "bookReference": "hlm. 64–65",
-      "objective": "Mengisi tanda.. Ingat Penyebut Sama.",
+      "objective": "Mengisi tanda.. Ingat Penyebut Sama. (Penyebut Sama)",
       "mechanicDescription": "Tiga ronde. Gunakan Penyebut Sama.",
-      "voiceGuide": "Penyebut Sama. Pilih tanda.",
+      "voiceGuide": "Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "✏️",
       "targetCount": 6
     },
@@ -1234,9 +1200,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "order-sama",
       "title": "Urutkan Penyebut Sama",
       "bookReference": "hlm. 65",
-      "objective": "Mengurutkan.. Ingat Penyebut Sama.",
+      "objective": "Mengurutkan.. Ingat Penyebut Sama. (Penyebut Sama)",
       "mechanicDescription": "Tiga ronde. Gunakan Penyebut Sama.",
-      "voiceGuide": "Penyebut Sama. Urutkan.",
+      "voiceGuide": "Penyebut Sama. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -1246,7 +1212,7 @@ export const SUB_B42: SubBabNaskah = {
       "title": "Batang Penyebut Sama",
       "bookReference": "hlm. 63–64",
       "objective": "Pakai Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar. Latihan: Membaca batang..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compare Numerators: Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
       "voiceGuide": "Banding Pembilang. Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
       "diagramType": "bar",
       "numberA": 2,
@@ -1258,7 +1224,7 @@ export const SUB_B42: SubBabNaskah = {
       "title": "Lingkaran Penyebut Sama",
       "bookReference": "hlm. 63",
       "objective": "Pakai Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar. Latihan: Membaca lingkaran..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compare Numerators: Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
       "voiceGuide": "Banding Pembilang. Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
       "diagramType": "circle",
       "numberA": 2,
@@ -1270,7 +1236,7 @@ export const SUB_B42: SubBabNaskah = {
       "title": "Jodohkan Diagram B",
       "bookReference": "hlm. 64",
       "objective": "Pakai Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compare Numerators: Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
       "voiceGuide": "Banding Pembilang. Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
       "diagramType": "match",
       "numberA": 2,
@@ -1282,7 +1248,7 @@ export const SUB_B42: SubBabNaskah = {
       "title": "Memori Diagram B",
       "bookReference": "hlm. 64",
       "objective": "Pakai Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Compare Numerators: Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
       "voiceGuide": "Banding Pembilang. Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
       "diagramType": "mem",
       "numberA": 2,
@@ -1293,9 +1259,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "table-b",
       "title": "Tabel Gambar → Pecahan B",
       "bookReference": "hlm. 64",
-      "objective": "Isi tabel.. Ingat Banding Pembilang.",
+      "objective": "Isi tabel.. Ingat Banding Pembilang. (Banding Pembilang)",
       "mechanicDescription": "Tiga tabel. Gunakan Banding Pembilang.",
-      "voiceGuide": "Banding Pembilang. Pilih.",
+      "voiceGuide": "Banding Pembilang. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 2,
       "numberB": 3
@@ -1305,9 +1271,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "tap-all-b",
       "title": "Ketuk Semua Syarat B",
       "bookReference": "hlm. 65",
-      "objective": "Ketuk semua.. Ingat Banding Pembilang.",
+      "objective": "Ketuk semua.. Ingat Banding Pembilang. (Banding Pembilang)",
       "mechanicDescription": "Tiga ronde. Gunakan Banding Pembilang.",
-      "voiceGuide": "Banding Pembilang. Ketuk semua.",
+      "voiceGuide": "Banding Pembilang. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 2,
       "numberB": 4
@@ -1317,9 +1283,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "sort-diagram-b",
       "title": "Pilah Diagram B",
       "bookReference": "hlm. 65",
-      "objective": "Pilah.. Ingat Banding Pembilang.",
+      "objective": "Pilah.. Ingat Banding Pembilang. (Banding Pembilang)",
       "mechanicDescription": "Tiga ronde. Gunakan Banding Pembilang.",
-      "voiceGuide": "Banding Pembilang. Pilah.",
+      "voiceGuide": "Banding Pembilang. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 2,
       "numberB": 6
@@ -1329,9 +1295,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "rule-b",
       "title": "Aturan Pembilang",
       "bookReference": "hlm. 63",
-      "objective": "Pilih aturan benar.. Ingat Banding Pembilang.",
+      "objective": "Pilih aturan benar.. Ingat Banding Pembilang. (Banding Pembilang)",
       "mechanicDescription": "Tiga ronde. Gunakan Banding Pembilang.",
-      "voiceGuide": "Banding Pembilang. Pilih.",
+      "voiceGuide": "Banding Pembilang. Mainkan dengan teliti.",
       "diagramType": "rule",
       "numberA": 2,
       "numberB": 2
@@ -1341,9 +1307,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "compare-picture-b",
       "title": "Banding Gambar B",
       "bookReference": "hlm. 63–64",
-      "objective": "Pilih relasi.. Ingat Banding Pembilang.",
+      "objective": "Pilih relasi.. Ingat Banding Pembilang. (Banding Pembilang)",
       "mechanicDescription": "Tiga ronde. Gunakan Banding Pembilang.",
-      "voiceGuide": "Banding Pembilang. Pilih.",
+      "voiceGuide": "Banding Pembilang. Mainkan dengan teliti.",
       "diagramType": "cmp",
       "numberA": 2,
       "numberB": 2
@@ -1353,9 +1319,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "story-picture-b",
       "title": "Cerita Diagram B",
       "bookReference": "hlm. 65",
-      "objective": "Cerita.. Ingat Banding Pembilang.",
+      "objective": "Cerita.. Ingat Banding Pembilang. (Banding Pembilang)",
       "mechanicDescription": "Tiga ronde. Gunakan Banding Pembilang.",
-      "voiceGuide": "Banding Pembilang. Pilih.",
+      "voiceGuide": "Banding Pembilang. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 2,
       "numberB": 2
@@ -1366,7 +1332,7 @@ export const SUB_B42: SubBabNaskah = {
       "title": "Tulis p/q",
       "bookReference": "hlm. 63–65",
       "objective": "Pakai Batang Pecahan: Batang sama panjang memudahkan banding. Latihan: Menulis notasi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Fraction Bars: Batang sama panjang memudahkan banding.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Batang Pecahan: Batang sama panjang memudahkan banding.",
       "voiceGuide": "Batang Pecahan. Batang sama panjang memudahkan banding.",
       "symbolLarge": "2/3",
       "wordLarge": "SAMA",
@@ -1378,7 +1344,7 @@ export const SUB_B42: SubBabNaskah = {
       "title": "Tanda > < Angka",
       "bookReference": "hlm. 65",
       "objective": "Pakai Batang Pecahan: Batang sama panjang memudahkan banding. Latihan: Mengisi tanda..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Fraction Bars: Batang sama panjang memudahkan banding.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Batang Pecahan: Batang sama panjang memudahkan banding.",
       "voiceGuide": "Batang Pecahan. Batang sama panjang memudahkan banding.",
       "symbolLarge": "<",
       "wordLarge": "TANDA",
@@ -1390,7 +1356,7 @@ export const SUB_B42: SubBabNaskah = {
       "title": "Pilih Hasil Banding",
       "bookReference": "hlm. 65",
       "objective": "Pakai Batang Pecahan: Batang sama panjang memudahkan banding. Latihan: Memilih..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Fraction Bars: Batang sama panjang memudahkan banding.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Batang Pecahan: Batang sama panjang memudahkan banding.",
       "voiceGuide": "Batang Pecahan. Batang sama panjang memudahkan banding.",
       "symbolLarge": "2/3",
       "wordLarge": "PILIH",
@@ -1402,7 +1368,7 @@ export const SUB_B42: SubBabNaskah = {
       "title": "Urutkan Notasi B",
       "bookReference": "hlm. 65",
       "objective": "Pakai Batang Pecahan: Batang sama panjang memudahkan banding. Latihan: Mengurutkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Fraction Bars: Batang sama panjang memudahkan banding.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Batang Pecahan: Batang sama panjang memudahkan banding.",
       "voiceGuide": "Batang Pecahan. Batang sama panjang memudahkan banding.",
       "symbolLarge": "1/5<2/5",
       "wordLarge": "URUT",
@@ -1413,9 +1379,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "match-b",
       "title": "Jodohkan Teks B",
       "bookReference": "hlm. 64–65",
-      "objective": "Jodohkan.. Ingat Batang Pecahan.",
+      "objective": "Jodohkan.. Ingat Batang Pecahan. (Batang Pecahan)",
       "mechanicDescription": "Tiga ronde. Gunakan Batang Pecahan.",
-      "voiceGuide": "Batang Pecahan. Jodohkan.",
+      "voiceGuide": "Batang Pecahan. Mainkan dengan teliti.",
       "symbolLarge": "3/6",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -1425,9 +1391,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "memory-b",
       "title": "Memori Notasi B",
       "bookReference": "hlm. 65",
-      "objective": "Memori.. Ingat Batang Pecahan.",
+      "objective": "Memori.. Ingat Batang Pecahan. (Batang Pecahan)",
       "mechanicDescription": "Tiga ronde. Gunakan Batang Pecahan.",
-      "voiceGuide": "Batang Pecahan. Balik kartu.",
+      "voiceGuide": "Batang Pecahan. Mainkan dengan teliti.",
       "symbolLarge": "2/10",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -1437,9 +1403,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "true-false-b",
       "title": "Benar atau Salah: B",
       "bookReference": "hlm. 63–65",
-      "objective": "Menilai.. Ingat Batang Pecahan.",
+      "objective": "Menilai.. Ingat Batang Pecahan. (Batang Pecahan)",
       "mechanicDescription": "Dua ronde. Gunakan Batang Pecahan.",
-      "voiceGuide": "Batang Pecahan. Benar/salah.",
+      "voiceGuide": "Batang Pecahan. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -1449,9 +1415,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "detective-b",
       "title": "Detektif Penyebut Sama",
       "bookReference": "hlm. 63–65",
-      "objective": "Petunjuk.. Ingat Batang Pecahan.",
+      "objective": "Petunjuk.. Ingat Batang Pecahan. (Batang Pecahan)",
       "mechanicDescription": "Empat soal. Gunakan Batang Pecahan.",
-      "voiceGuide": "Batang Pecahan. Pilih.",
+      "voiceGuide": "Batang Pecahan. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -1461,9 +1427,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "concept-b",
       "title": "Peta Konsep B",
       "bookReference": "hlm. 63–64",
-      "objective": "Mengisi kotak.. Ingat Batang Pecahan.",
+      "objective": "Mengisi kotak.. Ingat Batang Pecahan. (Batang Pecahan)",
       "mechanicDescription": "Satu peta. Gunakan Batang Pecahan.",
-      "voiceGuide": "Batang Pecahan. Pilih.",
+      "voiceGuide": "Batang Pecahan. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -1473,9 +1439,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "story-b",
       "title": "Cerita Angka B",
       "bookReference": "hlm. 65",
-      "objective": "Soal cerita.. Ingat Batang Pecahan.",
+      "objective": "Soal cerita.. Ingat Batang Pecahan. (Batang Pecahan)",
       "mechanicDescription": "Tiga ronde. Gunakan Batang Pecahan.",
-      "voiceGuide": "Batang Pecahan. Pilih.",
+      "voiceGuide": "Batang Pecahan. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -1487,12 +1453,6 @@ export const SUB_B42: SubBabNaskah = {
       "nama": "Sama q",
       "isi": "Penyebut sama artinya potongan sama besar.",
       "suara": "Bandingkan pembilangnya."
-    },
-    {
-      "ikon": "➗",
-      "nama": "Pembilang",
-      "isi": "Pembilang lebih besar → pecahan lebih besar.",
-      "suara": "2/3 lebih dari 1/3."
     },
     {
       "ikon": "🌍",
@@ -1535,11 +1495,11 @@ export const SUB_B42: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Penyebut Sama pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Penyebut Sama pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Penyebut Sama membantumu memahami soal?",
-    "Kapan kamu memakai Banding Pembilang?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Penyebut Sama membantumu?",
+    "Kapan memakai Banding Pembilang?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -1583,12 +1543,12 @@ export const SUB_C42: SubBabNaskah = {
   "id": "C",
   "codeTitle": "Sub-Bab C (Pecahan Senilai)",
   "fullTitle": "Sub-Bab C: Pecahan Senilai",
-  "targetDescription": "Siswa mengenali pecahan senilai (2/6 = 1/3) melalui model coklat dan lipat kertas, serta menghasilkan senilai dengan mengalikan atau membagi pembilang dan penyebut dengan bilangan sama. Siswa memakai cara Pecahan Senilai, Kali dengan Bentuk Satu, Sederhanakan.",
+  "targetDescription": "Siswa mengenali pecahan senilai (2/6 = 1/3) melalui model coklat dan lipat kertas, serta menghasilkan senilai dengan mengalikan atau membagi pembilang dan penyebut dengan bilangan sama. Siswa memakai cara Pecahan Senilai, Kali dengan Bentuk Satu, Sederhanakan. Siswa memakai cara Pecahan Senilai, Kali dengan Bentuk Satu, Sederhanakan.",
   "secondaryBg": "#FCE7F3",
   "secondaryBorder": "#DB2777",
   "secondaryText": "#9D174D",
   "silabus": {
-    "teksSuara": "Kita belajar pecahan senilai. Dua per enam sama dengan satu per tiga. Kalikan atau bagi pembilang dan penyebut dengan bilangan yang sama. Kita memakai cara dari luar buku: Pecahan Senilai (Equivalent Fractions); Kali dengan Bentuk Satu (Multiply Identity); Sederhanakan (Simplify). Senilai menunjuk bagian sama dengan tulisan beda. Kali pembilang dan penyebut dengan bilangan sama. Bagi pembilang dan penyebut dengan FPB. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar pecahan senilai. Dua per enam sama dengan satu per tiga. Kalikan atau bagi pembilang dan penyebut dengan bilangan yang sama. Kita memakai cara: Pecahan Senilai, Kali dengan Bentuk Satu, Sederhanakan. Senilai menunjuk bagian sama dengan tulisan beda. Kali pembilang dan penyebut dengan bilangan sama. Bagi pembilang dan penyebut dengan FPB. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa mengenali pecahan senilai setelah mengamati gambar dan simbol.",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab C)."
   },
@@ -1602,10 +1562,10 @@ export const SUB_C42: SubBabNaskah = {
           "id": "K4B2C-V1-1",
           "judul": "Dua batang",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Ibu Guru punya 2 batang coklat. Mari kita pahami bersama.",
-            "Coklat pertama dibagi 6, Putu mendapat 2/6. Mari kita pahami bersama.",
-            "Coklat kedua dibagi 3, Putu mendapat 1/3. Mari kita pahami bersama.",
-            "Ingat cara Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda."
+            "Bayangkan kamu sedang mempelajari Pecahan Senilai. Ibu Guru punya 2 batang coklat.",
+            "Coklat pertama dibagi 6, Putu mendapat 2/6.",
+            "Coklat kedua dibagi 3, Putu mendapat 1/3.",
+            "Ingat cara Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda. Ingat cara Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda."
           ],
           "papan": [
             "2 coklat",
@@ -1618,10 +1578,10 @@ export const SUB_C42: SubBabNaskah = {
           "id": "K4B2C-V1-2",
           "judul": "Gambar membuktikan",
           "ketukan": [
-            "Lihat daerah coklat Putu. Mari kita pahami bersama.",
-            "2 dari 6 sama luas dengan 1 dari 3. Mari kita pahami bersama.",
-            "Jadi 2/6 = 1/3. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Equivalent Fractions — Senilai menunjuk bagian sama dengan tulisan beda."
+            "Lihat daerah coklat Putu.",
+            "2 dari 6 sama luas dengan 1 dari 3.",
+            "Jadi 2/6 = 1/3.",
+            "Di sini kita memakai ide Equivalent Fractions — Senilai menunjuk bagian sama dengan tulisan beda. Di sini kita memakai Equivalent Fractions. Senilai menunjuk bagian sama dengan tulisan beda."
           ],
           "papan": [
             "luas sama",
@@ -1634,9 +1594,9 @@ export const SUB_C42: SubBabNaskah = {
           "id": "K4B2C-V1-3",
           "judul": "Lipat kertas",
           "ketukan": [
-            "Lipat kertas jadi 4, warnai 1 → 1/4. Mari kita pahami bersama.",
-            "Lipat kertas lain jadi 16, warnai 4 → 4/16. Mari kita pahami bersama.",
-            "Daerah warnanya sama besar. Mari kita pahami bersama.",
+            "Lipat kertas jadi 4, warnai 1 → 1/4.",
+            "Lipat kertas lain jadi 16, warnai 4 → 4/16.",
+            "Daerah warnanya sama besar.",
             "METODE LUAR · Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda."
           ],
           "papan": [
@@ -1657,10 +1617,10 @@ export const SUB_C42: SubBabNaskah = {
           "id": "K4B2C-V2-1",
           "judul": "Kalikan",
           "ketukan": [
-            "Ambil 1/3. Mari kita pahami bersama.",
-            "Kalikan pembilang dan penyebut dengan 2. Mari kita pahami bersama.",
-            "Dapat 2/6. Mari kita pahami bersama.",
-            "Ingat cara Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama."
+            "Ambil 1/3.",
+            "Kalikan pembilang dan penyebut dengan 2.",
+            "Dapat 2/6.",
+            "Ingat cara Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama. Ingat cara Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama."
           ],
           "papan": [
             "1/3",
@@ -1673,10 +1633,10 @@ export const SUB_C42: SubBabNaskah = {
           "id": "K4B2C-V2-2",
           "judul": "Bagi",
           "ketukan": [
-            "Ambil 2/6. Mari kita pahami bersama.",
-            "Bagi pembilang dan penyebut dengan 2. Mari kita pahami bersama.",
-            "Dapat 1/3. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Multiply Identity — Kali pembilang dan penyebut dengan bilangan sama."
+            "Ambil 2/6.",
+            "Bagi pembilang dan penyebut dengan 2.",
+            "Dapat 1/3.",
+            "Di sini kita memakai ide Multiply Identity — Kali pembilang dan penyebut dengan bilangan sama. Di sini kita memakai Multiply Identity. Kali pembilang dan penyebut dengan bilangan sama."
           ],
           "papan": [
             "2/6",
@@ -1689,9 +1649,9 @@ export const SUB_C42: SubBabNaskah = {
           "id": "K4B2C-V2-3",
           "judul": "Ingat",
           "ketukan": [
-            "Jangan hanya ubah pembilang. Mari kita pahami bersama.",
-            "Jangan hanya ubah penyebut. Mari kita pahami bersama.",
-            "Ubah keduanya dengan bilangan sama. Mari kita pahami bersama.",
+            "Jangan hanya ubah pembilang.",
+            "Jangan hanya ubah penyebut.",
+            "Ubah keduanya dengan bilangan sama.",
             "METODE LUAR · Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama."
           ],
           "papan": [
@@ -1712,10 +1672,10 @@ export const SUB_C42: SubBabNaskah = {
           "id": "K4B2C-V3-1",
           "judul": "Baca arsir",
           "ketukan": [
-            "Lihat dua gambar diarsir. Mari kita pahami bersama.",
-            "Tulis pecahan masing-masing. Mari kita pahami bersama.",
-            "Apakah nilainya sama. Mari kita pahami bersama.",
-            "Ingat cara Sederhanakan: Bagi pembilang dan penyebut dengan FPB."
+            "Lihat dua gambar diarsir.",
+            "Tulis pecahan masing-masing.",
+            "Apakah nilainya sama.",
+            "Ingat cara Sederhanakan: Bagi pembilang dan penyebut dengan FPB. Ingat cara Sederhanakan: Bagi pembilang dan penyebut dengan FPB."
           ],
           "papan": [
             "dua gambar",
@@ -1728,10 +1688,10 @@ export const SUB_C42: SubBabNaskah = {
           "id": "K4B2C-V3-2",
           "judul": "Buat tiga gambar",
           "ketukan": [
-            "Buat tiga gambar pecahan senilai. Mari kita pahami bersama.",
-            "Misal 1/2, 2/4, dan 3/6. Mari kita pahami bersama.",
-            "Semua bernilai setengah. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Simplify — Bagi pembilang dan penyebut dengan FPB."
+            "Buat tiga gambar pecahan senilai.",
+            "Misal 1/2, 2/4, dan 3/6.",
+            "Semua bernilai setengah.",
+            "Di sini kita memakai ide Simplify — Bagi pembilang dan penyebut dengan FPB. Di sini kita memakai Simplify. Bagi pembilang dan penyebut dengan FPB."
           ],
           "papan": [
             "tiga gambar",
@@ -1744,9 +1704,9 @@ export const SUB_C42: SubBabNaskah = {
           "id": "K4B2C-V3-3",
           "judul": "Siap desimal",
           "ketukan": [
-            "Pecahan biasa sudah dikuasai. Mari kita pahami bersama.",
-            "Berikutnya pecahan desimal. Mari kita pahami bersama.",
-            "Persepuluhan dan perseratusan. Mari kita pahami bersama.",
+            "Pecahan biasa sudah dikuasai.",
+            "Berikutnya pecahan desimal.",
+            "Persepuluhan dan perseratusan.",
             "METODE LUAR · Sederhanakan: Bagi pembilang dan penyebut dengan FPB."
           ],
           "papan": [
@@ -1763,7 +1723,7 @@ export const SUB_C42: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Pecahan Senilai. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Pecahan Senilai?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -1795,7 +1755,7 @@ export const SUB_C42: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -1803,7 +1763,7 @@ export const SUB_C42: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -1811,15 +1771,15 @@ export const SUB_C42: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -1895,20 +1855,6 @@ export const SUB_C42: SubBabNaskah = {
       "countNum": 1,
       "countWord": "desimal",
       "suara": "Sub-Bab berikutnya."
-    },
-    {
-      "judul": "Pecahan Senilai",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Senilai menunjuk bagian sama dengan tulisan beda."
-    },
-    {
-      "judul": "Kali dengan Bentuk Satu",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Kali pembilang dan penyebut dengan bilangan sama."
     }
   ],
   "games": [
@@ -1918,7 +1864,7 @@ export const SUB_C42: SubBabNaskah = {
       "title": "Coklat Putu 2/6 = 1/3",
       "bookReference": "hlm. 67–68",
       "objective": "Pakai Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda. Latihan: Mengenal senilai dari benda..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Equivalent Fractions: Senilai menunjuk bagian sama dengan tulisan beda.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda.",
       "voiceGuide": "Pecahan Senilai. Senilai menunjuk bagian sama dengan tulisan beda.",
       "emoji": "🍫",
       "targetCount": 6
@@ -1929,7 +1875,7 @@ export const SUB_C42: SubBabNaskah = {
       "title": "Kalikan Jadi Senilai",
       "bookReference": "hlm. 69",
       "objective": "Pakai Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda. Latihan: ×k pada pembilang & penyebut..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Equivalent Fractions: Senilai menunjuk bagian sama dengan tulisan beda.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda.",
       "voiceGuide": "Pecahan Senilai. Senilai menunjuk bagian sama dengan tulisan beda.",
       "emoji": "✖️",
       "targetCount": 6
@@ -1940,7 +1886,7 @@ export const SUB_C42: SubBabNaskah = {
       "title": "Bagi Jadi Senilai",
       "bookReference": "hlm. 69",
       "objective": "Pakai Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda. Latihan: :k pada pembilang & penyebut..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Equivalent Fractions: Senilai menunjuk bagian sama dengan tulisan beda.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda.",
       "voiceGuide": "Pecahan Senilai. Senilai menunjuk bagian sama dengan tulisan beda.",
       "emoji": "➗",
       "targetCount": 6
@@ -1951,7 +1897,7 @@ export const SUB_C42: SubBabNaskah = {
       "title": "Pilah: Senilai atau Tidak",
       "bookReference": "hlm. 67–69",
       "objective": "Pakai Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda. Latihan: Memilah pasangan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Equivalent Fractions: Senilai menunjuk bagian sama dengan tulisan beda.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda.",
       "voiceGuide": "Pecahan Senilai. Senilai menunjuk bagian sama dengan tulisan beda.",
       "emoji": "🧺",
       "targetCount": 18
@@ -1961,9 +1907,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "match-senilai",
       "title": "Jodohkan Pasangan Senilai",
       "bookReference": "hlm. 68–70",
-      "objective": "Menjodohkan.. Ingat Pecahan Senilai.",
+      "objective": "Menjodohkan.. Ingat Pecahan Senilai. (Pecahan Senilai)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan Senilai.",
-      "voiceGuide": "Pecahan Senilai. Jodohkan.",
+      "voiceGuide": "Pecahan Senilai. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 9
     },
@@ -1972,9 +1918,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "memory-senilai",
       "title": "Memori Senilai",
       "bookReference": "hlm. 68–69",
-      "objective": "Memori.. Ingat Pecahan Senilai.",
+      "objective": "Memori.. Ingat Pecahan Senilai. (Pecahan Senilai)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan Senilai.",
-      "voiceGuide": "Pecahan Senilai. Balik kartu.",
+      "voiceGuide": "Pecahan Senilai. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1983,9 +1929,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "tap-senilai",
       "title": "Ketuk yang Senilai Acuan",
       "bookReference": "hlm. 69–70",
-      "objective": "Mengetuk.. Ingat Pecahan Senilai.",
+      "objective": "Mengetuk.. Ingat Pecahan Senilai. (Pecahan Senilai)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan Senilai.",
-      "voiceGuide": "Pecahan Senilai. Ketuk.",
+      "voiceGuide": "Pecahan Senilai. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 6
     },
@@ -1994,9 +1940,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "tap-all-senilai",
       "title": "Ketuk Semua Senilai",
       "bookReference": "hlm. 69",
-      "objective": "Ketuk semua.. Ingat Pecahan Senilai.",
+      "objective": "Ketuk semua.. Ingat Pecahan Senilai. (Pecahan Senilai)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan Senilai.",
-      "voiceGuide": "Pecahan Senilai. Ketuk semua.",
+      "voiceGuide": "Pecahan Senilai. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -2005,9 +1951,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "story-senilai",
       "title": "Cerita Lipat Kertas & Coklat",
       "bookReference": "hlm. 66–68",
-      "objective": "Soal cerita.. Ingat Pecahan Senilai.",
+      "objective": "Soal cerita.. Ingat Pecahan Senilai. (Pecahan Senilai)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan Senilai.",
-      "voiceGuide": "Pecahan Senilai. Pilih.",
+      "voiceGuide": "Pecahan Senilai. Mainkan dengan teliti.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -2016,9 +1962,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "order-nilai",
       "title": "Urutkan menurut Nilai",
       "bookReference": "hlm. 70",
-      "objective": "Mengurutkan.. Ingat Pecahan Senilai.",
+      "objective": "Mengurutkan.. Ingat Pecahan Senilai. (Pecahan Senilai)",
       "mechanicDescription": "Tiga ronde. Gunakan Pecahan Senilai.",
-      "voiceGuide": "Pecahan Senilai. Urutkan.",
+      "voiceGuide": "Pecahan Senilai. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -2028,7 +1974,7 @@ export const SUB_C42: SubBabNaskah = {
       "title": "Kotak Senilai",
       "bookReference": "hlm. 66–67",
       "objective": "Pakai Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama. Latihan: Membaca grid arsir..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Multiply Identity: Kali pembilang dan penyebut dengan bilangan sama.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama.",
       "voiceGuide": "Kali dengan Bentuk Satu. Kali pembilang dan penyebut dengan bilangan sama.",
       "diagramType": "grid",
       "numberA": 1,
@@ -2040,7 +1986,7 @@ export const SUB_C42: SubBabNaskah = {
       "title": "Batang Senilai",
       "bookReference": "hlm. 68",
       "objective": "Pakai Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama. Latihan: Membandingkan batang..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Multiply Identity: Kali pembilang dan penyebut dengan bilangan sama.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama.",
       "voiceGuide": "Kali dengan Bentuk Satu. Kali pembilang dan penyebut dengan bilangan sama.",
       "diagramType": "bar",
       "numberA": 2,
@@ -2052,7 +1998,7 @@ export const SUB_C42: SubBabNaskah = {
       "title": "×k pada Diagram",
       "bookReference": "hlm. 69",
       "objective": "Pakai Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama. Latihan: Pilih hasil kali..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Multiply Identity: Kali pembilang dan penyebut dengan bilangan sama.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama.",
       "voiceGuide": "Kali dengan Bentuk Satu. Kali pembilang dan penyebut dengan bilangan sama.",
       "diagramType": "mul",
       "numberA": 1,
@@ -2064,7 +2010,7 @@ export const SUB_C42: SubBabNaskah = {
       "title": ":k pada Diagram",
       "bookReference": "hlm. 69",
       "objective": "Pakai Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama. Latihan: Pilih hasil bagi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Multiply Identity: Kali pembilang dan penyebut dengan bilangan sama.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama.",
       "voiceGuide": "Kali dengan Bentuk Satu. Kali pembilang dan penyebut dengan bilangan sama.",
       "diagramType": "div",
       "numberA": 2,
@@ -2075,9 +2021,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "match-picture-c",
       "title": "Jodohkan Diagram Senilai",
       "bookReference": "hlm. 68–70",
-      "objective": "Jodohkan.. Ingat Kali dengan Bentuk Satu.",
+      "objective": "Jodohkan.. Ingat Kali dengan Bentuk Satu. (Kali dengan Bentuk Satu)",
       "mechanicDescription": "Tiga ronde. Gunakan Kali dengan Bentuk Satu.",
-      "voiceGuide": "Kali dengan Bentuk Satu. Jodohkan.",
+      "voiceGuide": "Kali dengan Bentuk Satu. Mainkan dengan teliti.",
       "diagramType": "match",
       "numberA": 1,
       "numberB": 3
@@ -2087,9 +2033,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "memory-picture-c",
       "title": "Memori Diagram Senilai",
       "bookReference": "hlm. 68",
-      "objective": "Memori.. Ingat Kali dengan Bentuk Satu.",
+      "objective": "Memori.. Ingat Kali dengan Bentuk Satu. (Kali dengan Bentuk Satu)",
       "mechanicDescription": "Tiga ronde. Gunakan Kali dengan Bentuk Satu.",
-      "voiceGuide": "Kali dengan Bentuk Satu. Balik kartu.",
+      "voiceGuide": "Kali dengan Bentuk Satu. Mainkan dengan teliti.",
       "diagramType": "mem",
       "numberA": 1,
       "numberB": 4
@@ -2099,9 +2045,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "table-c",
       "title": "Tabel ×k Senilai",
       "bookReference": "hlm. 69",
-      "objective": "Isi hasil.. Ingat Kali dengan Bentuk Satu.",
+      "objective": "Isi hasil.. Ingat Kali dengan Bentuk Satu. (Kali dengan Bentuk Satu)",
       "mechanicDescription": "Tiga tabel. Gunakan Kali dengan Bentuk Satu.",
-      "voiceGuide": "Kali dengan Bentuk Satu. Pilih.",
+      "voiceGuide": "Kali dengan Bentuk Satu. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -2111,9 +2057,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "tap-all-c",
       "title": "Ketuk Semua Senilai Diagram",
       "bookReference": "hlm. 69",
-      "objective": "Ketuk semua.. Ingat Kali dengan Bentuk Satu.",
+      "objective": "Ketuk semua.. Ingat Kali dengan Bentuk Satu. (Kali dengan Bentuk Satu)",
       "mechanicDescription": "Tiga ronde. Gunakan Kali dengan Bentuk Satu.",
-      "voiceGuide": "Kali dengan Bentuk Satu. Ketuk semua.",
+      "voiceGuide": "Kali dengan Bentuk Satu. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -2123,9 +2069,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "sort-picture-c",
       "title": "Pilah Diagram Senilai",
       "bookReference": "hlm. 67–69",
-      "objective": "Pilah.. Ingat Kali dengan Bentuk Satu.",
+      "objective": "Pilah.. Ingat Kali dengan Bentuk Satu. (Kali dengan Bentuk Satu)",
       "mechanicDescription": "Tiga ronde. Gunakan Kali dengan Bentuk Satu.",
-      "voiceGuide": "Kali dengan Bentuk Satu. Pilah.",
+      "voiceGuide": "Kali dengan Bentuk Satu. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -2135,9 +2081,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "rule-c",
       "title": "Dua Cara Senilai",
       "bookReference": "hlm. 69",
-      "objective": "Pilih cara benar.. Ingat Kali dengan Bentuk Satu.",
+      "objective": "Pilih cara benar.. Ingat Kali dengan Bentuk Satu. (Kali dengan Bentuk Satu)",
       "mechanicDescription": "Tiga ronde. Gunakan Kali dengan Bentuk Satu.",
-      "voiceGuide": "Kali dengan Bentuk Satu. Pilih.",
+      "voiceGuide": "Kali dengan Bentuk Satu. Mainkan dengan teliti.",
       "diagramType": "rule",
       "numberA": 1,
       "numberB": 2
@@ -2148,7 +2094,7 @@ export const SUB_C42: SubBabNaskah = {
       "title": "Apakah Senilai?",
       "bookReference": "hlm. 68–70",
       "objective": "Pakai Sederhanakan: Bagi pembilang dan penyebut dengan FPB. Latihan: Menilai kesamaan nilai..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Simplify: Bagi pembilang dan penyebut dengan FPB.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Sederhanakan: Bagi pembilang dan penyebut dengan FPB.",
       "voiceGuide": "Sederhanakan. Bagi pembilang dan penyebut dengan FPB.",
       "symbolLarge": "=",
       "wordLarge": "SENILAI",
@@ -2160,7 +2106,7 @@ export const SUB_C42: SubBabNaskah = {
       "title": "Hitung ×k",
       "bookReference": "hlm. 69",
       "objective": "Pakai Sederhanakan: Bagi pembilang dan penyebut dengan FPB. Latihan: Mengalikan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Simplify: Bagi pembilang dan penyebut dengan FPB.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Sederhanakan: Bagi pembilang dan penyebut dengan FPB.",
       "voiceGuide": "Sederhanakan. Bagi pembilang dan penyebut dengan FPB.",
       "symbolLarge": "×2",
       "wordLarge": "KALI",
@@ -2172,7 +2118,7 @@ export const SUB_C42: SubBabNaskah = {
       "title": "Hitung :k",
       "bookReference": "hlm. 69",
       "objective": "Pakai Sederhanakan: Bagi pembilang dan penyebut dengan FPB. Latihan: Membagi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Simplify: Bagi pembilang dan penyebut dengan FPB.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Sederhanakan: Bagi pembilang dan penyebut dengan FPB.",
       "voiceGuide": "Sederhanakan. Bagi pembilang dan penyebut dengan FPB.",
       "symbolLarge": "÷2",
       "wordLarge": "BAGI",
@@ -2184,7 +2130,7 @@ export const SUB_C42: SubBabNaskah = {
       "title": "Pilih Bentuk Senilai",
       "bookReference": "hlm. 69–70",
       "objective": "Pakai Sederhanakan: Bagi pembilang dan penyebut dengan FPB. Latihan: Memilih..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Simplify: Bagi pembilang dan penyebut dengan FPB.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Sederhanakan: Bagi pembilang dan penyebut dengan FPB.",
       "voiceGuide": "Sederhanakan. Bagi pembilang dan penyebut dengan FPB.",
       "symbolLarge": "2/6",
       "wordLarge": "PILIH",
@@ -2195,9 +2141,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "match-c",
       "title": "Jodohkan Bentuk Senilai",
       "bookReference": "hlm. 68–70",
-      "objective": "Jodohkan.. Ingat Sederhanakan.",
+      "objective": "Jodohkan.. Ingat Sederhanakan. (Sederhanakan)",
       "mechanicDescription": "Tiga ronde. Gunakan Sederhanakan.",
-      "voiceGuide": "Sederhanakan. Jodohkan.",
+      "voiceGuide": "Sederhanakan. Mainkan dengan teliti.",
       "symbolLarge": "1/3",
       "wordLarge": "JODOH",
       "mathNotation": "pasangan"
@@ -2207,9 +2153,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "memory-c",
       "title": "Memori Bentuk Senilai",
       "bookReference": "hlm. 69",
-      "objective": "Memori.. Ingat Sederhanakan.",
+      "objective": "Memori.. Ingat Sederhanakan. (Sederhanakan)",
       "mechanicDescription": "Tiga ronde. Gunakan Sederhanakan.",
-      "voiceGuide": "Sederhanakan. Balik kartu.",
+      "voiceGuide": "Sederhanakan. Mainkan dengan teliti.",
       "symbolLarge": "1/2",
       "wordLarge": "MEMORI",
       "mathNotation": "pasangan"
@@ -2219,9 +2165,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "true-false-c",
       "title": "Benar atau Salah: Senilai",
       "bookReference": "hlm. 66–70",
-      "objective": "Menilai.. Ingat Sederhanakan.",
+      "objective": "Menilai.. Ingat Sederhanakan. (Sederhanakan)",
       "mechanicDescription": "Dua ronde. Gunakan Sederhanakan.",
-      "voiceGuide": "Sederhanakan. Benar/salah.",
+      "voiceGuide": "Sederhanakan. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -2231,9 +2177,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "detective-c",
       "title": "Detektif Senilai",
       "bookReference": "hlm. 67–70",
-      "objective": "Petunjuk.. Ingat Sederhanakan.",
+      "objective": "Petunjuk.. Ingat Sederhanakan. (Sederhanakan)",
       "mechanicDescription": "Empat soal. Gunakan Sederhanakan.",
-      "voiceGuide": "Sederhanakan. Pilih.",
+      "voiceGuide": "Sederhanakan. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -2243,9 +2189,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "concept-c",
       "title": "Peta Konsep Senilai",
       "bookReference": "hlm. 69",
-      "objective": "Mengisi kotak.. Ingat Sederhanakan.",
+      "objective": "Mengisi kotak.. Ingat Sederhanakan. (Sederhanakan)",
       "mechanicDescription": "Satu peta. Gunakan Sederhanakan.",
-      "voiceGuide": "Sederhanakan. Pilih.",
+      "voiceGuide": "Sederhanakan. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -2255,9 +2201,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "story-c",
       "title": "Cerita Angka Senilai",
       "bookReference": "hlm. 66–68",
-      "objective": "Soal cerita.. Ingat Sederhanakan.",
+      "objective": "Soal cerita.. Ingat Sederhanakan. (Sederhanakan)",
       "mechanicDescription": "Tiga ronde. Gunakan Sederhanakan.",
-      "voiceGuide": "Sederhanakan. Pilih.",
+      "voiceGuide": "Sederhanakan. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -2269,12 +2215,6 @@ export const SUB_C42: SubBabNaskah = {
       "nama": "Senilai",
       "isi": "Bentuk berbeda boleh, nilai harus sama.",
       "suara": "2/6 sama dengan 1/3."
-    },
-    {
-      "ikon": "➗",
-      "nama": "×k",
-      "isi": "Kalikan pembilang dan penyebut dengan bilangan sama.",
-      "suara": "1/3 ×2 menjadi 2/6."
     },
     {
       "ikon": "🌍",
@@ -2317,11 +2257,11 @@ export const SUB_C42: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Pecahan Senilai pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Pecahan Senilai pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Pecahan Senilai membantumu memahami soal?",
-    "Kapan kamu memakai Kali dengan Bentuk Satu?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Pecahan Senilai membantumu?",
+    "Kapan memakai Kali dengan Bentuk Satu?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -2365,12 +2305,12 @@ export const SUB_D42: SubBabNaskah = {
   "id": "D",
   "codeTitle": "Sub-Bab D (Desimal Persepuluhan & Perseratusan)",
   "fullTitle": "Sub-Bab D: Pecahan Desimal Persepuluhan dan Perseratusan",
-  "targetDescription": "Siswa mengubah pecahan biasa persepuluhan (penyebut 10) dan perseratusan (penyebut 100) menjadi pecahan desimal (0,1; 0,01; 0,25), serta membaca aturan satu/dua angka di belakang koma. Siswa memakai cara Desimal Persepuluhan Perseratusan, Kisi Desimal, Jembatan Pecahan–Desimal.",
+  "targetDescription": "Siswa mengubah pecahan biasa persepuluhan (penyebut 10) dan perseratusan (penyebut 100) menjadi pecahan desimal (0,1; 0,01; 0,25), serta membaca aturan satu/dua angka di belakang koma. Siswa memakai cara Desimal Persepuluhan Perseratusan, Kisi Desimal, Jembatan Pecahan–Desimal. Siswa memakai cara Desimal Persepuluhan Perseratusan, Kisi Desimal, Jembatan Pecahan–Desimal.",
   "secondaryBg": "#ECFDF5",
   "secondaryBorder": "#059669",
   "secondaryText": "#064E3B",
   "silabus": {
-    "teksSuara": "Kita belajar pecahan desimal. Satu dari sepuluh roti sama dengan nol koma satu. Satu dari seratus biskuit sama dengan nol koma nol satu. Satu angka di belakang koma berarti penyebut sepuluh. Dua angka berarti penyebut seratus. Kita memakai cara dari luar buku: Desimal Persepuluhan Perseratusan (Decimal Tenths Hundredths); Kisi Desimal (Decimal Grid); Jembatan Pecahan–Desimal (Fraction–Decimal Link). Digit setelah koma = persepuluhan dan perseratusan. Kisi 10×10 menunjukkan perseratusan. 0,3 = 3/10; 0,25 = 25/100. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar pecahan desimal. Satu dari sepuluh roti sama dengan nol koma satu. Satu dari seratus biskuit sama dengan nol koma nol satu. Satu angka di belakang koma berarti penyebut sepuluh. Dua angka berarti penyebut seratus. Kita memakai cara: Desimal Persepuluhan Perseratusan, Kisi Desimal, Jembatan Pecahan–Desimal. Digit setelah koma = persepuluhan dan perseratusan. Kisi 10×10 menunjukkan perseratusan. 0,3 = 3/10; 0,25 = 25/100. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menyatakan pecahan desimal persepuluhan dan perseratusan serta mengubah pecahan biasa menjadi desimal.",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab D)."
   },
@@ -2384,10 +2324,10 @@ export const SUB_D42: SubBabNaskah = {
           "id": "K4B2D-V1-1",
           "judul": "Sepuluh roti",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Ibu menyiapkan sepuluh roti. Mari kita pahami bersama.",
-            "Satu roti dilapisi selai coklat. Mari kita pahami bersama.",
-            "Berapa bagian yang berlapis. Mari kita pahami bersama.",
-            "Ingat cara Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan."
+            "Bayangkan kamu sedang mempelajari Pecahan Desimal Persepuluhan dan Perseratusan. Ibu menyiapkan sepuluh roti.",
+            "Satu roti dilapisi selai coklat.",
+            "Berapa bagian yang berlapis.",
+            "Ingat cara Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan. Ingat cara Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan."
           ],
           "papan": [
             "10 roti",
@@ -2400,10 +2340,10 @@ export const SUB_D42: SubBabNaskah = {
           "id": "K4B2D-V1-2",
           "judul": "Jadi desimal",
           "ketukan": [
-            "Satu per sepuluh ditulis desimal. Mari kita pahami bersama.",
-            "Hasilnya nol koma satu. Mari kita pahami bersama.",
-            "Satu angka di belakang koma. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Decimal Tenths Hundredths — Digit setelah koma = persepuluhan dan perseratusan."
+            "Satu per sepuluh ditulis desimal.",
+            "Hasilnya nol koma satu.",
+            "Satu angka di belakang koma.",
+            "Di sini kita memakai ide Decimal Tenths Hundredths — Digit setelah koma = persepuluhan dan perseratusan. Di sini kita memakai Decimal Tenths Hundredths. Digit setelah koma = persepuluhan dan perseratusan."
           ],
           "papan": [
             "1/10",
@@ -2416,9 +2356,9 @@ export const SUB_D42: SubBabNaskah = {
           "id": "K4B2D-V1-3",
           "judul": "Tiga per sepuluh",
           "ketukan": [
-            "Tiga roti berlapis. Mari kita pahami bersama.",
-            "Tiga per sepuluh. Mari kita pahami bersama.",
-            "Ditulis nol koma tiga. Mari kita pahami bersama.",
+            "Tiga roti berlapis.",
+            "Tiga per sepuluh.",
+            "Ditulis nol koma tiga.",
             "METODE LUAR · Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan."
           ],
           "papan": [
@@ -2439,10 +2379,10 @@ export const SUB_D42: SubBabNaskah = {
           "id": "K4B2D-V2-1",
           "judul": "Seratus biskuit",
           "ketukan": [
-            "Ada seratus biskuit. Mari kita pahami bersama.",
-            "Satu biskuit berlapis selai. Mari kita pahami bersama.",
-            "Bentuk pecahannya. Mari kita pahami bersama.",
-            "Ingat cara Kisi Desimal: Kisi 10×10 menunjukkan perseratusan."
+            "Ada seratus biskuit.",
+            "Satu biskuit berlapis selai.",
+            "Bentuk pecahannya.",
+            "Ingat cara Kisi Desimal: Kisi 10×10 menunjukkan perseratusan. Ingat cara Kisi Desimal: Kisi 10×10 menunjukkan perseratusan."
           ],
           "papan": [
             "100 biskuit",
@@ -2455,10 +2395,10 @@ export const SUB_D42: SubBabNaskah = {
           "id": "K4B2D-V2-2",
           "judul": "Nol koma nol satu",
           "ketukan": [
-            "Satu per seratus jadi desimal. Mari kita pahami bersama.",
-            "Nol koma nol satu. Mari kita pahami bersama.",
-            "Dua angka di belakang koma. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Decimal Grid — Kisi 10×10 menunjukkan perseratusan."
+            "Satu per seratus jadi desimal.",
+            "Nol koma nol satu.",
+            "Dua angka di belakang koma.",
+            "Di sini kita memakai ide Decimal Grid — Kisi 10×10 menunjukkan perseratusan. Di sini kita memakai Decimal Grid. Kisi 10×10 menunjukkan perseratusan."
           ],
           "papan": [
             "1/100",
@@ -2471,9 +2411,9 @@ export const SUB_D42: SubBabNaskah = {
           "id": "K4B2D-V2-3",
           "judul": "Tujuh per seratus",
           "ketukan": [
-            "Tujuh per seratus. Mari kita pahami bersama.",
-            "Ditulis nol koma nol tujuh. Mari kita pahami bersama.",
-            "Dua puluh lima per seratus jadi nol koma dua lima. Mari kita pahami bersama.",
+            "Tujuh per seratus.",
+            "Ditulis nol koma nol tujuh.",
+            "Dua puluh lima per seratus jadi nol koma dua lima.",
             "METODE LUAR · Kisi Desimal: Kisi 10×10 menunjukkan perseratusan."
           ],
           "papan": [
@@ -2494,10 +2434,10 @@ export const SUB_D42: SubBabNaskah = {
           "id": "K4B2D-V3-1",
           "judul": "Satu digit",
           "ketukan": [
-            "Lihat di belakang koma. Mari kita pahami bersama.",
-            "Ada satu angka. Mari kita pahami bersama.",
-            "Penyebutnya sepuluh. Mari kita pahami bersama.",
-            "Ingat cara Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100."
+            "Lihat di belakang koma.",
+            "Ada satu angka.",
+            "Penyebutnya sepuluh.",
+            "Ingat cara Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100. Ingat cara Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100."
           ],
           "papan": [
             "1 digit",
@@ -2510,10 +2450,10 @@ export const SUB_D42: SubBabNaskah = {
           "id": "K4B2D-V3-2",
           "judul": "Dua digit",
           "ketukan": [
-            "Ada dua angka di belakang koma. Mari kita pahami bersama.",
-            "Penyebutnya seratus. Mari kita pahami bersama.",
-            "Contoh: nol koma nol tujuh. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Fraction–Decimal Link — 0,3 = 3/10; 0,25 = 25/100."
+            "Ada dua angka di belakang koma.",
+            "Penyebutnya seratus.",
+            "Contoh: nol koma nol tujuh.",
+            "Di sini kita memakai ide Fraction–Decimal Link — 0,3 = 3/10; 0,25 = 25/100. Di sini kita memakai Fraction–Decimal Link. 0,3 = 3/10; 0,25 = 25/100."
           ],
           "papan": [
             "2 digit",
@@ -2526,9 +2466,9 @@ export const SUB_D42: SubBabNaskah = {
           "id": "K4B2D-V3-3",
           "judul": "Latihan ubah",
           "ketukan": [
-            "Ubah pecahan biasa ke desimal. Mari kita pahami bersama.",
-            "Lima per sepuluh jadi nol koma lima. Mari kita pahami bersama.",
-            "Sembilan per sepuluh jadi nol koma sembilan. Mari kita pahami bersama.",
+            "Ubah pecahan biasa ke desimal.",
+            "Lima per sepuluh jadi nol koma lima.",
+            "Sembilan per sepuluh jadi nol koma sembilan.",
             "METODE LUAR · Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100."
           ],
           "papan": [
@@ -2545,7 +2485,7 @@ export const SUB_D42: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Pecahan Desimal Persepuluhan dan Perseratusan. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Pecahan Desimal Persepuluhan dan Perseratusan?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -2577,7 +2517,7 @@ export const SUB_D42: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -2585,7 +2525,7 @@ export const SUB_D42: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -2593,15 +2533,15 @@ export const SUB_D42: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -2677,20 +2617,6 @@ export const SUB_D42: SubBabNaskah = {
       "countNum": 1,
       "countWord": "lanjut",
       "suara": "Menuju persen."
-    },
-    {
-      "judul": "Desimal Persepuluhan Perseratusan",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Digit setelah koma = persepuluhan dan perseratusan."
-    },
-    {
-      "judul": "Kisi Desimal",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Kisi 10×10 menunjukkan perseratusan."
     }
   ],
   "games": [
@@ -2700,7 +2626,7 @@ export const SUB_D42: SubBabNaskah = {
       "title": "Roti Sepuluh Bagian",
       "bookReference": "hlm. 71–72 (roti 1/10)",
       "objective": "Pakai Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan. Latihan: Mengenal 1/10 = 0,1..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decimal Tenths Hundredths: Digit setelah koma = persepuluhan dan perseratusan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan.",
       "voiceGuide": "Desimal Persepuluhan Perseratusan. Digit setelah koma = persepuluhan dan perseratusan.",
       "emoji": "🍞",
       "targetCount": 6
@@ -2711,7 +2637,7 @@ export const SUB_D42: SubBabNaskah = {
       "title": "Biskuit Seratus",
       "bookReference": "hlm. 72 (1/100)",
       "objective": "Pakai Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan. Latihan: Mengenal 1/100 = 0,01..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decimal Tenths Hundredths: Digit setelah koma = persepuluhan dan perseratusan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan.",
       "voiceGuide": "Desimal Persepuluhan Perseratusan. Digit setelah koma = persepuluhan dan perseratusan.",
       "emoji": "🍪",
       "targetCount": 6
@@ -2722,7 +2648,7 @@ export const SUB_D42: SubBabNaskah = {
       "title": "Ubah Persepuluhan",
       "bookReference": "hlm. 72–74",
       "objective": "Pakai Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan. Latihan: p/10 → 0,p..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decimal Tenths Hundredths: Digit setelah koma = persepuluhan dan perseratusan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan.",
       "voiceGuide": "Desimal Persepuluhan Perseratusan. Digit setelah koma = persepuluhan dan perseratusan.",
       "emoji": "🔟",
       "targetCount": 6
@@ -2733,7 +2659,7 @@ export const SUB_D42: SubBabNaskah = {
       "title": "Ubah Perseratusan",
       "bookReference": "hlm. 72–75",
       "objective": "Pakai Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan. Latihan: p/100 → 0,pp..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decimal Tenths Hundredths: Digit setelah koma = persepuluhan dan perseratusan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan.",
       "voiceGuide": "Desimal Persepuluhan Perseratusan. Digit setelah koma = persepuluhan dan perseratusan.",
       "emoji": "💯",
       "targetCount": 6
@@ -2743,9 +2669,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "sort-jenis",
       "title": "Pilah Persepuluhan/Perseratusan",
       "bookReference": "hlm. 73",
-      "objective": "Memilah jenis.. Ingat Desimal Persepuluhan Perseratusan.",
+      "objective": "Memilah jenis.. Ingat Desimal Persepuluhan Perseratusan. (Desimal Persepuluhan Perseratusan)",
       "mechanicDescription": "Tiga ronde. Gunakan Desimal Persepuluhan Perseratusan.",
-      "voiceGuide": "Desimal Persepuluhan Perseratusan. Pilah.",
+      "voiceGuide": "Desimal Persepuluhan Perseratusan. Mainkan dengan teliti.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -2754,9 +2680,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "match-des",
       "title": "Jodohkan Pecahan–Desimal",
       "bookReference": "hlm. 72–74",
-      "objective": "Menjodohkan.. Ingat Desimal Persepuluhan Perseratusan.",
+      "objective": "Menjodohkan.. Ingat Desimal Persepuluhan Perseratusan. (Desimal Persepuluhan Perseratusan)",
       "mechanicDescription": "Tiga ronde. Gunakan Desimal Persepuluhan Perseratusan.",
-      "voiceGuide": "Desimal Persepuluhan Perseratusan. Jodohkan.",
+      "voiceGuide": "Desimal Persepuluhan Perseratusan. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -2765,9 +2691,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "memory-des",
       "title": "Memori Desimal",
       "bookReference": "hlm. 72–74",
-      "objective": "Memori.. Ingat Desimal Persepuluhan Perseratusan.",
+      "objective": "Memori.. Ingat Desimal Persepuluhan Perseratusan. (Desimal Persepuluhan Perseratusan)",
       "mechanicDescription": "Tiga ronde. Gunakan Desimal Persepuluhan Perseratusan.",
-      "voiceGuide": "Desimal Persepuluhan Perseratusan. Balik kartu.",
+      "voiceGuide": "Desimal Persepuluhan Perseratusan. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -2776,9 +2702,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "tap-des",
       "title": "Ketuk Desimal Diminta",
       "bookReference": "hlm. 73–74",
-      "objective": "Mengetuk.. Ingat Desimal Persepuluhan Perseratusan.",
+      "objective": "Mengetuk.. Ingat Desimal Persepuluhan Perseratusan. (Desimal Persepuluhan Perseratusan)",
       "mechanicDescription": "Tiga ronde. Gunakan Desimal Persepuluhan Perseratusan.",
-      "voiceGuide": "Desimal Persepuluhan Perseratusan. Ketuk.",
+      "voiceGuide": "Desimal Persepuluhan Perseratusan. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -2787,9 +2713,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "tap-all-des",
       "title": "Ketuk Semua Jenis",
       "bookReference": "hlm. 73",
-      "objective": "Ketuk semua.. Ingat Desimal Persepuluhan Perseratusan.",
+      "objective": "Ketuk semua.. Ingat Desimal Persepuluhan Perseratusan. (Desimal Persepuluhan Perseratusan)",
       "mechanicDescription": "Tiga ronde. Gunakan Desimal Persepuluhan Perseratusan.",
-      "voiceGuide": "Desimal Persepuluhan Perseratusan. Ketuk semua.",
+      "voiceGuide": "Desimal Persepuluhan Perseratusan. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -2798,9 +2724,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "story-des",
       "title": "Cerita Roti dan Biskuit",
       "bookReference": "hlm. 71–73",
-      "objective": "Soal cerita.. Ingat Desimal Persepuluhan Perseratusan.",
+      "objective": "Soal cerita.. Ingat Desimal Persepuluhan Perseratusan. (Desimal Persepuluhan Perseratusan)",
       "mechanicDescription": "Tiga ronde. Gunakan Desimal Persepuluhan Perseratusan.",
-      "voiceGuide": "Desimal Persepuluhan Perseratusan. Pilih.",
+      "voiceGuide": "Desimal Persepuluhan Perseratusan. Mainkan dengan teliti.",
       "emoji": "📖",
       "targetCount": 6
     },
@@ -2810,7 +2736,7 @@ export const SUB_D42: SubBabNaskah = {
       "title": "Batang Sepuluh",
       "bookReference": "hlm. 71–72",
       "objective": "Pakai Kisi Desimal: Kisi 10×10 menunjukkan perseratusan. Latihan: Baca batang /10..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decimal Grid: Kisi 10×10 menunjukkan perseratusan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kisi Desimal: Kisi 10×10 menunjukkan perseratusan.",
       "voiceGuide": "Kisi Desimal. Kisi 10×10 menunjukkan perseratusan.",
       "diagramType": "bar10",
       "numberA": 1,
@@ -2822,7 +2748,7 @@ export const SUB_D42: SubBabNaskah = {
       "title": "Kotak Seratus",
       "bookReference": "hlm. 72–73",
       "objective": "Pakai Kisi Desimal: Kisi 10×10 menunjukkan perseratusan. Latihan: Baca grid /100..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decimal Grid: Kisi 10×10 menunjukkan perseratusan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kisi Desimal: Kisi 10×10 menunjukkan perseratusan.",
       "voiceGuide": "Kisi Desimal. Kisi 10×10 menunjukkan perseratusan.",
       "diagramType": "grid",
       "numberA": 1,
@@ -2834,7 +2760,7 @@ export const SUB_D42: SubBabNaskah = {
       "title": "Jodohkan Diagram Desimal",
       "bookReference": "hlm. 72–74",
       "objective": "Pakai Kisi Desimal: Kisi 10×10 menunjukkan perseratusan. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decimal Grid: Kisi 10×10 menunjukkan perseratusan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kisi Desimal: Kisi 10×10 menunjukkan perseratusan.",
       "voiceGuide": "Kisi Desimal. Kisi 10×10 menunjukkan perseratusan.",
       "diagramType": "match",
       "numberA": 1,
@@ -2846,7 +2772,7 @@ export const SUB_D42: SubBabNaskah = {
       "title": "Memori Diagram Desimal",
       "bookReference": "hlm. 73",
       "objective": "Pakai Kisi Desimal: Kisi 10×10 menunjukkan perseratusan. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decimal Grid: Kisi 10×10 menunjukkan perseratusan.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kisi Desimal: Kisi 10×10 menunjukkan perseratusan.",
       "voiceGuide": "Kisi Desimal. Kisi 10×10 menunjukkan perseratusan.",
       "diagramType": "mem",
       "numberA": 1,
@@ -2857,9 +2783,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "table-d",
       "title": "Tabel Pecahan → Desimal",
       "bookReference": "hlm. 74–75",
-      "objective": "Isi tabel.. Ingat Kisi Desimal.",
+      "objective": "Isi tabel.. Ingat Kisi Desimal. (Kisi Desimal)",
       "mechanicDescription": "Tiga tabel. Gunakan Kisi Desimal.",
-      "voiceGuide": "Kisi Desimal. Pilih.",
+      "voiceGuide": "Kisi Desimal. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -2869,9 +2795,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "tap-all-d",
       "title": "Ketuk Semua Jenis Diagram",
       "bookReference": "hlm. 73",
-      "objective": "Ketuk semua.. Ingat Kisi Desimal.",
+      "objective": "Ketuk semua.. Ingat Kisi Desimal. (Kisi Desimal)",
       "mechanicDescription": "Tiga ronde. Gunakan Kisi Desimal.",
-      "voiceGuide": "Kisi Desimal. Ketuk semua.",
+      "voiceGuide": "Kisi Desimal. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -2881,9 +2807,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "sort-diagram-d",
       "title": "Pilah Diagram Desimal",
       "bookReference": "hlm. 73",
-      "objective": "Pilah.. Ingat Kisi Desimal.",
+      "objective": "Pilah.. Ingat Kisi Desimal. (Kisi Desimal)",
       "mechanicDescription": "Tiga ronde. Gunakan Kisi Desimal.",
-      "voiceGuide": "Kisi Desimal. Pilah.",
+      "voiceGuide": "Kisi Desimal. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -2893,9 +2819,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "digit-rule",
       "title": "Aturan Digit Koma",
       "bookReference": "hlm. 73",
-      "objective": "1 digit→10, 2 digit→100.. Ingat Kisi Desimal.",
+      "objective": "1 digit→10, 2 digit→100.. Ingat Kisi Desimal. (Kisi Desimal)",
       "mechanicDescription": "Tiga ronde. Gunakan Kisi Desimal.",
-      "voiceGuide": "Kisi Desimal. Pilih.",
+      "voiceGuide": "Kisi Desimal. Mainkan dengan teliti.",
       "diagramType": "rule",
       "numberA": 1,
       "numberB": 2
@@ -2905,9 +2831,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "choose-des",
       "title": "Pilih Desimal Cocok",
       "bookReference": "hlm. 72–74",
-      "objective": "Pilih desimal.. Ingat Kisi Desimal.",
+      "objective": "Pilih desimal.. Ingat Kisi Desimal. (Kisi Desimal)",
       "mechanicDescription": "Tiga ronde. Gunakan Kisi Desimal.",
-      "voiceGuide": "Kisi Desimal. Pilih.",
+      "voiceGuide": "Kisi Desimal. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -2917,9 +2843,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "story-picture-d",
       "title": "Cerita Diagram Desimal",
       "bookReference": "hlm. 71–74",
-      "objective": "Cerita + gambar.. Ingat Kisi Desimal.",
+      "objective": "Cerita + gambar.. Ingat Kisi Desimal. (Kisi Desimal)",
       "mechanicDescription": "Tiga ronde. Gunakan Kisi Desimal.",
-      "voiceGuide": "Kisi Desimal. Pilih.",
+      "voiceGuide": "Kisi Desimal. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -2930,7 +2856,7 @@ export const SUB_D42: SubBabNaskah = {
       "title": "Tulis 0,p",
       "bookReference": "hlm. 72–74",
       "objective": "Pakai Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100. Latihan: Menulis persepuluhan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Fraction–Decimal Link: 0,3 = 3/10; 0,25 = 25/100.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100.",
       "voiceGuide": "Jembatan Pecahan–Desimal. 0,3 = 3/10; 0,25 = 25/100.",
       "symbolLarge": "0,1",
       "wordLarge": "PERSEPULUHAN",
@@ -2942,7 +2868,7 @@ export const SUB_D42: SubBabNaskah = {
       "title": "Tulis 0,pp",
       "bookReference": "hlm. 72–75",
       "objective": "Pakai Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100. Latihan: Menulis perseratusan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Fraction–Decimal Link: 0,3 = 3/10; 0,25 = 25/100.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100.",
       "voiceGuide": "Jembatan Pecahan–Desimal. 0,3 = 3/10; 0,25 = 25/100.",
       "symbolLarge": "0,01",
       "wordLarge": "PERSERATUSAN",
@@ -2954,7 +2880,7 @@ export const SUB_D42: SubBabNaskah = {
       "title": "Pilih Bentuk Desimal",
       "bookReference": "hlm. 73–74",
       "objective": "Pakai Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100. Latihan: Memilih..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Fraction–Decimal Link: 0,3 = 3/10; 0,25 = 25/100.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100.",
       "voiceGuide": "Jembatan Pecahan–Desimal. 0,3 = 3/10; 0,25 = 25/100.",
       "symbolLarge": "0,25",
       "wordLarge": "PILIH",
@@ -2966,7 +2892,7 @@ export const SUB_D42: SubBabNaskah = {
       "title": "Urutkan Desimal",
       "bookReference": "hlm. 74",
       "objective": "Pakai Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100. Latihan: Mengurutkan nilai..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Fraction–Decimal Link: 0,3 = 3/10; 0,25 = 25/100.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100.",
       "voiceGuide": "Jembatan Pecahan–Desimal. 0,3 = 3/10; 0,25 = 25/100.",
       "symbolLarge": "0,01<0,1",
       "wordLarge": "URUT",
@@ -2977,9 +2903,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "match-abstract-d",
       "title": "Jodohkan Notasi Desimal",
       "bookReference": "hlm. 72–74",
-      "objective": "Jodohkan.. Ingat Jembatan Pecahan–Desimal.",
+      "objective": "Jodohkan.. Ingat Jembatan Pecahan–Desimal. (Jembatan Pecahan–Desimal)",
       "mechanicDescription": "Tiga ronde. Gunakan Jembatan Pecahan–Desimal.",
-      "voiceGuide": "Jembatan Pecahan–Desimal. Jodohkan.",
+      "voiceGuide": "Jembatan Pecahan–Desimal. Mainkan dengan teliti.",
       "symbolLarge": "1/10",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -2989,9 +2915,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "memory-abstract-d",
       "title": "Memori Notasi Desimal",
       "bookReference": "hlm. 73",
-      "objective": "Memori.. Ingat Jembatan Pecahan–Desimal.",
+      "objective": "Memori.. Ingat Jembatan Pecahan–Desimal. (Jembatan Pecahan–Desimal)",
       "mechanicDescription": "Tiga ronde. Gunakan Jembatan Pecahan–Desimal.",
-      "voiceGuide": "Jembatan Pecahan–Desimal. Balik kartu.",
+      "voiceGuide": "Jembatan Pecahan–Desimal. Mainkan dengan teliti.",
       "symbolLarge": "0,07",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -3001,9 +2927,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "true-false-d",
       "title": "Benar atau Salah: Desimal",
       "bookReference": "hlm. 71–74",
-      "objective": "Menilai.. Ingat Jembatan Pecahan–Desimal.",
+      "objective": "Menilai.. Ingat Jembatan Pecahan–Desimal. (Jembatan Pecahan–Desimal)",
       "mechanicDescription": "Dua ronde. Gunakan Jembatan Pecahan–Desimal.",
-      "voiceGuide": "Jembatan Pecahan–Desimal. Benar/salah.",
+      "voiceGuide": "Jembatan Pecahan–Desimal. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -3013,9 +2939,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "detective-d",
       "title": "Detektif Desimal",
       "bookReference": "hlm. 71–74",
-      "objective": "Petunjuk → desimal.. Ingat Jembatan Pecahan–Desimal.",
+      "objective": "Petunjuk → desimal.. Ingat Jembatan Pecahan–Desimal. (Jembatan Pecahan–Desimal)",
       "mechanicDescription": "Empat soal. Gunakan Jembatan Pecahan–Desimal.",
-      "voiceGuide": "Jembatan Pecahan–Desimal. Pilih.",
+      "voiceGuide": "Jembatan Pecahan–Desimal. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -3025,9 +2951,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "concept-d",
       "title": "Peta Konsep Desimal",
       "bookReference": "hlm. 71–73",
-      "objective": "Mengisi kotak.. Ingat Jembatan Pecahan–Desimal.",
+      "objective": "Mengisi kotak.. Ingat Jembatan Pecahan–Desimal. (Jembatan Pecahan–Desimal)",
       "mechanicDescription": "Satu peta. Gunakan Jembatan Pecahan–Desimal.",
-      "voiceGuide": "Jembatan Pecahan–Desimal. Pilih opsi.",
+      "voiceGuide": "Jembatan Pecahan–Desimal. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -3037,9 +2963,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "story-abstract-d",
       "title": "Cerita Angka Desimal",
       "bookReference": "hlm. 71–74",
-      "objective": "Soal cerita.. Ingat Jembatan Pecahan–Desimal.",
+      "objective": "Soal cerita.. Ingat Jembatan Pecahan–Desimal. (Jembatan Pecahan–Desimal)",
       "mechanicDescription": "Tiga ronde. Gunakan Jembatan Pecahan–Desimal.",
-      "voiceGuide": "Jembatan Pecahan–Desimal. Pilih.",
+      "voiceGuide": "Jembatan Pecahan–Desimal. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -3051,12 +2977,6 @@ export const SUB_D42: SubBabNaskah = {
       "nama": "Persepuluhan",
       "isi": "Satu digit di belakang koma → penyebut 10 (contoh 1/10 = 0,1).",
       "suara": "Satu digit berarti persepuluhan."
-    },
-    {
-      "ikon": "💯",
-      "nama": "Perseratusan",
-      "isi": "Dua digit di belakang koma → penyebut 100 (contoh 1/100 = 0,01).",
-      "suara": "Dua digit berarti perseratusan."
     },
     {
       "ikon": "🌍",
@@ -3099,11 +3019,11 @@ export const SUB_D42: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Desimal Persepuluhan Perseratusan pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Desimal Persepuluhan Perseratusan pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Desimal Persepuluhan Perseratusan membantumu memahami soal?",
-    "Kapan kamu memakai Kisi Desimal?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Desimal Persepuluhan Perseratusan membantumu?",
+    "Kapan memakai Kisi Desimal?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -3147,12 +3067,12 @@ export const SUB_E42: SubBabNaskah = {
   "id": "E",
   "codeTitle": "Sub-Bab E (Desimal Perseratusan & Persen)",
   "fullTitle": "Sub-Bab E: Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen",
-  "targetDescription": "Siswa mengubah desimal perseratusan menjadi persen (0,75 = 75%) dengan cara biasa (via pecahan /100) maupun cara langsung (×100% / geser koma dua kali), serta mengubah balik persen ke desimal dan menyelesaikan cerita persen. Siswa memakai cara Persen sebagai Perseratusan, Kisi Seratus Persen, Jembatan Desimal–Persen.",
+  "targetDescription": "Siswa mengubah desimal perseratusan menjadi persen (0,75 = 75%) dengan cara biasa (via pecahan /100) maupun cara langsung (×100% / geser koma dua kali), serta mengubah balik persen ke desimal dan menyelesaikan cerita persen. Siswa memakai cara Persen sebagai Perseratusan, Kisi Seratus Persen, Jembatan Desimal–Persen. Siswa memakai cara Persen sebagai Perseratusan, Kisi Seratus Persen, Jembatan Desimal–Persen.",
   "secondaryBg": "#FEF3C7",
   "secondaryBorder": "#D97706",
   "secondaryText": "#78350F",
   "silabus": {
-    "teksSuara": "Kita menghubungkan desimal perseratusan dengan persen. Nol koma tujuh lima sama dengan tujuh puluh lima per seratus sama dengan tujuh puluh lima persen. Boleh pakai cara biasa atau langsung kali seratus persen. Geser koma dua kali ke kanan. Kita memakai cara dari luar buku: Persen sebagai Perseratusan (Percent as Hundredths); Kisi Seratus Persen (Hundred Grid Percent); Jembatan Desimal–Persen (Decimal–Percent Link). Persen artinya per seratus. Satu kotak dari 100 = 1%. 0,25 = 25%. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita menghubungkan desimal perseratusan dengan persen. Nol koma tujuh lima sama dengan tujuh puluh lima per seratus sama dengan tujuh puluh lima persen. Boleh pakai cara biasa atau langsung kali seratus persen. Geser koma dua kali ke kanan. Kita memakai cara: Persen sebagai Perseratusan, Kisi Seratus Persen, Jembatan Desimal–Persen. Persen artinya per seratus. Satu kotak dari 100 = 1%. 0,25 = 25%. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa mengubah pecahan desimal perseratusan menjadi persen dan sebaliknya, serta memakai persen dalam cerita.",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab E)."
   },
@@ -3166,10 +3086,10 @@ export const SUB_E42: SubBabNaskah = {
           "id": "K4B2E-V1-1",
           "judul": "Diskon di toko",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Saat belanja sering ada diskon persen. Mari kita pahami bersama.",
-            "Persen ditulis dengan tanda persen. Mari kita pahami bersama.",
-            "Artinya per seratus. Mari kita pahami bersama.",
-            "Ingat cara Persen sebagai Perseratusan: Persen artinya per seratus."
+            "Bayangkan kamu sedang mempelajari Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen. Saat belanja sering ada diskon persen.",
+            "Persen ditulis dengan tanda persen.",
+            "Artinya per seratus.",
+            "Ingat cara Persen sebagai Perseratusan: Persen artinya per seratus. Ingat cara Persen sebagai Perseratusan: Persen artinya per seratus."
           ],
           "papan": [
             "diskon",
@@ -3182,10 +3102,10 @@ export const SUB_E42: SubBabNaskah = {
           "id": "K4B2E-V1-2",
           "judul": "Dari desimal",
           "ketukan": [
-            "Contoh: nol koma tujuh lima. Mari kita pahami bersama.",
-            "Ubah jadi tujuh puluh lima per seratus. Mari kita pahami bersama.",
-            "Lalu tulis tujuh puluh lima persen. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Percent as Hundredths — Persen artinya per seratus."
+            "Contoh: nol koma tujuh lima.",
+            "Ubah jadi tujuh puluh lima per seratus.",
+            "Lalu tulis tujuh puluh lima persen.",
+            "Di sini kita memakai ide Percent as Hundredths — Persen artinya per seratus. Di sini kita memakai Percent as Hundredths. Persen artinya per seratus."
           ],
           "papan": [
             "0,75",
@@ -3198,9 +3118,9 @@ export const SUB_E42: SubBabNaskah = {
           "id": "K4B2E-V1-3",
           "judul": "Dua cara",
           "ketukan": [
-            "Cara biasa: lewat pecahan dulu. Mari kita pahami bersama.",
-            "Cara langsung: kali seratus persen. Mari kita pahami bersama.",
-            "Hasilnya sama. Mari kita pahami bersama.",
+            "Cara biasa: lewat pecahan dulu.",
+            "Cara langsung: kali seratus persen.",
+            "Hasilnya sama.",
             "METODE LUAR · Persen sebagai Perseratusan: Persen artinya per seratus."
           ],
           "papan": [
@@ -3221,10 +3141,10 @@ export const SUB_E42: SubBabNaskah = {
           "id": "K4B2E-V2-1",
           "judul": "Kali seratus",
           "ketukan": [
-            "Ambil nol koma tiga enam. Mari kita pahami bersama.",
-            "Kalikan seratus persen. Mari kita pahami bersama.",
-            "Hasil tiga puluh enam persen. Mari kita pahami bersama.",
-            "Ingat cara Kisi Seratus Persen: Satu kotak dari 100 = 1%."
+            "Ambil nol koma tiga enam.",
+            "Kalikan seratus persen.",
+            "Hasil tiga puluh enam persen.",
+            "Ingat cara Kisi Seratus Persen: Satu kotak dari 100 = 1%. Ingat cara Kisi Seratus Persen: Satu kotak dari 100 = 1%."
           ],
           "papan": [
             "0,36",
@@ -3237,10 +3157,10 @@ export const SUB_E42: SubBabNaskah = {
           "id": "K4B2E-V2-2",
           "judul": "Geser koma",
           "ketukan": [
-            "Tips buku: geser koma dua kali ke kanan. Mari kita pahami bersama.",
-            "Nol koma dua lima jadi dua puluh lima. Mari kita pahami bersama.",
-            "Tambahkan tanda persen. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Hundred Grid Percent — Satu kotak dari 100 = 1%."
+            "Tips buku: geser koma dua kali ke kanan.",
+            "Nol koma dua lima jadi dua puluh lima.",
+            "Tambahkan tanda persen.",
+            "Di sini kita memakai ide Hundred Grid Percent — Satu kotak dari 100 = 1%. Di sini kita memakai Hundred Grid Percent. Satu kotak dari 100 = 1%."
           ],
           "papan": [
             "geser 2×",
@@ -3253,9 +3173,9 @@ export const SUB_E42: SubBabNaskah = {
           "id": "K4B2E-V2-3",
           "judul": "Lebih dari 100%",
           "ketukan": [
-            "Dua koma empat enam. Mari kita pahami bersama.",
-            "Kali seratus persen. Mari kita pahami bersama.",
-            "Hasil dua ratus empat puluh enam persen. Mari kita pahami bersama.",
+            "Dua koma empat enam.",
+            "Kali seratus persen.",
+            "Hasil dua ratus empat puluh enam persen.",
             "METODE LUAR · Kisi Seratus Persen: Satu kotak dari 100 = 1%."
           ],
           "papan": [
@@ -3276,10 +3196,10 @@ export const SUB_E42: SubBabNaskah = {
           "id": "K4B2E-V3-1",
           "judul": "Olahraga",
           "ketukan": [
-            "Lima puluh siswa di kelas. Mari kita pahami bersama.",
-            "Dua puluh ikut olahraga. Mari kita pahami bersama.",
-            "Ubah ke penyebut seratus. Mari kita pahami bersama.",
-            "Ingat cara Jembatan Desimal–Persen: 0,25 = 25%."
+            "Lima puluh siswa di kelas.",
+            "Dua puluh ikut olahraga.",
+            "Ubah ke penyebut seratus.",
+            "Ingat cara Jembatan Desimal–Persen: 0,25 = 25%. Ingat cara Jembatan Desimal–Persen: 0,25 = 25%."
           ],
           "papan": [
             "50 siswa",
@@ -3292,10 +3212,10 @@ export const SUB_E42: SubBabNaskah = {
           "id": "K4B2E-V3-2",
           "judul": "Balik ke desimal",
           "ketukan": [
-            "Delapan belas persen. Mari kita pahami bersama.",
-            "Bagi seratus. Mari kita pahami bersama.",
-            "Hasil nol koma satu delapan. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Decimal–Percent Link — 0,25 = 25%."
+            "Delapan belas persen.",
+            "Bagi seratus.",
+            "Hasil nol koma satu delapan.",
+            "Di sini kita memakai ide Decimal–Percent Link — 0,25 = 25%. Di sini kita memakai Decimal–Percent Link. 0,25 = 25%."
           ],
           "papan": [
             "18%",
@@ -3308,9 +3228,9 @@ export const SUB_E42: SubBabNaskah = {
           "id": "K4B2E-V3-3",
           "judul": "Latihan siap",
           "ketukan": [
-            "Ubah desimal ke persen. Mari kita pahami bersama.",
-            "Ubah persen ke desimal. Mari kita pahami bersama.",
-            "Selesaikan cerita persen. Mari kita pahami bersama.",
+            "Ubah desimal ke persen.",
+            "Ubah persen ke desimal.",
+            "Selesaikan cerita persen.",
             "METODE LUAR · Jembatan Desimal–Persen: 0,25 = 25%."
           ],
           "papan": [
@@ -3327,7 +3247,7 @@ export const SUB_E42: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -3359,7 +3279,7 @@ export const SUB_E42: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -3367,7 +3287,7 @@ export const SUB_E42: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -3375,15 +3295,15 @@ export const SUB_E42: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -3459,20 +3379,6 @@ export const SUB_E42: SubBabNaskah = {
       "countNum": 1,
       "countWord": "tips",
       "suara": "Desimal ×100%."
-    },
-    {
-      "judul": "Persen sebagai Perseratusan",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Persen artinya per seratus."
-    },
-    {
-      "judul": "Kisi Seratus Persen",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Satu kotak dari 100 = 1%."
     }
   ],
   "games": [
@@ -3482,7 +3388,7 @@ export const SUB_E42: SubBabNaskah = {
       "title": "Desimal Jadi Persen",
       "bookReference": "hlm. 76–78 (0,75→75%)",
       "objective": "Pakai Persen sebagai Perseratusan: Persen artinya per seratus. Latihan: 0,pp → persen..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Percent as Hundredths: Persen artinya per seratus.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Persen sebagai Perseratusan: Persen artinya per seratus.",
       "voiceGuide": "Persen sebagai Perseratusan. Persen artinya per seratus.",
       "emoji": "％",
       "targetCount": 6
@@ -3493,7 +3399,7 @@ export const SUB_E42: SubBabNaskah = {
       "title": "Persen Lebih dari 100",
       "bookReference": "hlm. 78–79 (2,46→246%)",
       "objective": "Pakai Persen sebagai Perseratusan: Persen artinya per seratus. Latihan: Desimal >1 jadi persen..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Percent as Hundredths: Persen artinya per seratus.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Persen sebagai Perseratusan: Persen artinya per seratus.",
       "voiceGuide": "Persen sebagai Perseratusan. Persen artinya per seratus.",
       "emoji": "📈",
       "targetCount": 6
@@ -3504,7 +3410,7 @@ export const SUB_E42: SubBabNaskah = {
       "title": "Persen Jadi Desimal",
       "bookReference": "hlm. 82",
       "objective": "Pakai Persen sebagai Perseratusan: Persen artinya per seratus. Latihan: % → 0,pp..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Percent as Hundredths: Persen artinya per seratus.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Persen sebagai Perseratusan: Persen artinya per seratus.",
       "voiceGuide": "Persen sebagai Perseratusan. Persen artinya per seratus.",
       "emoji": "↩️",
       "targetCount": 6
@@ -3515,7 +3421,7 @@ export const SUB_E42: SubBabNaskah = {
       "title": "Cara Langsung ×100%",
       "bookReference": "hlm. 80–81",
       "objective": "Pakai Persen sebagai Perseratusan: Persen artinya per seratus. Latihan: Kalikan 100%..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Percent as Hundredths: Persen artinya per seratus.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Persen sebagai Perseratusan: Persen artinya per seratus.",
       "voiceGuide": "Persen sebagai Perseratusan. Persen artinya per seratus.",
       "emoji": "⚡",
       "targetCount": 6
@@ -3525,9 +3431,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "sort-persen",
       "title": "Pilah Persen/Desimal",
       "bookReference": "hlm. 76–80",
-      "objective": "Memilah bentuk.. Ingat Persen sebagai Perseratusan.",
+      "objective": "Memilah bentuk.. Ingat Persen sebagai Perseratusan. (Persen sebagai Perseratusan)",
       "mechanicDescription": "Tiga ronde. Gunakan Persen sebagai Perseratusan.",
-      "voiceGuide": "Persen sebagai Perseratusan. Pilah.",
+      "voiceGuide": "Persen sebagai Perseratusan. Mainkan dengan teliti.",
       "emoji": "🧺",
       "targetCount": 18
     },
@@ -3536,9 +3442,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "match-persen",
       "title": "Jodohkan Desimal–Persen",
       "bookReference": "hlm. 78–82",
-      "objective": "Menjodohkan.. Ingat Persen sebagai Perseratusan.",
+      "objective": "Menjodohkan.. Ingat Persen sebagai Perseratusan. (Persen sebagai Perseratusan)",
       "mechanicDescription": "Tiga ronde. Gunakan Persen sebagai Perseratusan.",
-      "voiceGuide": "Persen sebagai Perseratusan. Jodohkan.",
+      "voiceGuide": "Persen sebagai Perseratusan. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -3547,9 +3453,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "memory-persen",
       "title": "Memori Persen",
       "bookReference": "hlm. 78–81",
-      "objective": "Memori.. Ingat Persen sebagai Perseratusan.",
+      "objective": "Memori.. Ingat Persen sebagai Perseratusan. (Persen sebagai Perseratusan)",
       "mechanicDescription": "Tiga ronde. Gunakan Persen sebagai Perseratusan.",
-      "voiceGuide": "Persen sebagai Perseratusan. Balik kartu.",
+      "voiceGuide": "Persen sebagai Perseratusan. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -3558,9 +3464,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "tap-persen",
       "title": "Ketuk Persen Diminta",
       "bookReference": "hlm. 78–82",
-      "objective": "Mengetuk.. Ingat Persen sebagai Perseratusan.",
+      "objective": "Mengetuk.. Ingat Persen sebagai Perseratusan. (Persen sebagai Perseratusan)",
       "mechanicDescription": "Tiga ronde. Gunakan Persen sebagai Perseratusan.",
-      "voiceGuide": "Persen sebagai Perseratusan. Ketuk.",
+      "voiceGuide": "Persen sebagai Perseratusan. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -3569,9 +3475,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "tap-all-persen",
       "title": "Ketuk Semua Syarat Persen",
       "bookReference": "hlm. 79–82",
-      "objective": "Ketuk semua.. Ingat Persen sebagai Perseratusan.",
+      "objective": "Ketuk semua.. Ingat Persen sebagai Perseratusan. (Persen sebagai Perseratusan)",
       "mechanicDescription": "Tiga ronde. Gunakan Persen sebagai Perseratusan.",
-      "voiceGuide": "Persen sebagai Perseratusan. Ketuk semua.",
+      "voiceGuide": "Persen sebagai Perseratusan. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -3580,9 +3486,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "story-persen",
       "title": "Cerita Diskon dan Kelas",
       "bookReference": "hlm. 75 & 79",
-      "objective": "Soal cerita.. Ingat Persen sebagai Perseratusan.",
+      "objective": "Soal cerita.. Ingat Persen sebagai Perseratusan. (Persen sebagai Perseratusan)",
       "mechanicDescription": "Tiga ronde. Gunakan Persen sebagai Perseratusan.",
-      "voiceGuide": "Persen sebagai Perseratusan. Pilih.",
+      "voiceGuide": "Persen sebagai Perseratusan. Mainkan dengan teliti.",
       "emoji": "🛒",
       "targetCount": 6
     },
@@ -3592,7 +3498,7 @@ export const SUB_E42: SubBabNaskah = {
       "title": "Batang ke Persen",
       "bookReference": "hlm. 76–78",
       "objective": "Pakai Kisi Seratus Persen: Satu kotak dari 100 = 1%. Latihan: Baca lalu ubah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Hundred Grid Percent: Satu kotak dari 100 = 1%.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kisi Seratus Persen: Satu kotak dari 100 = 1%.",
       "voiceGuide": "Kisi Seratus Persen. Satu kotak dari 100 = 1%.",
       "diagramType": "bar",
       "numberA": 75,
@@ -3604,7 +3510,7 @@ export const SUB_E42: SubBabNaskah = {
       "title": "Kotak Seratus ke Persen",
       "bookReference": "hlm. 76–78",
       "objective": "Pakai Kisi Seratus Persen: Satu kotak dari 100 = 1%. Latihan: Grid → %..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Hundred Grid Percent: Satu kotak dari 100 = 1%.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kisi Seratus Persen: Satu kotak dari 100 = 1%.",
       "voiceGuide": "Kisi Seratus Persen. Satu kotak dari 100 = 1%.",
       "diagramType": "grid",
       "numberA": 35,
@@ -3616,7 +3522,7 @@ export const SUB_E42: SubBabNaskah = {
       "title": "Jodohkan Diagram Persen",
       "bookReference": "hlm. 78–82",
       "objective": "Pakai Kisi Seratus Persen: Satu kotak dari 100 = 1%. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Hundred Grid Percent: Satu kotak dari 100 = 1%.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kisi Seratus Persen: Satu kotak dari 100 = 1%.",
       "voiceGuide": "Kisi Seratus Persen. Satu kotak dari 100 = 1%.",
       "diagramType": "match",
       "numberA": 1,
@@ -3628,7 +3534,7 @@ export const SUB_E42: SubBabNaskah = {
       "title": "Memori Diagram Persen",
       "bookReference": "hlm. 80",
       "objective": "Pakai Kisi Seratus Persen: Satu kotak dari 100 = 1%. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Hundred Grid Percent: Satu kotak dari 100 = 1%.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Kisi Seratus Persen: Satu kotak dari 100 = 1%.",
       "voiceGuide": "Kisi Seratus Persen. Satu kotak dari 100 = 1%.",
       "diagramType": "mem",
       "numberA": 1,
@@ -3639,9 +3545,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "table-e",
       "title": "Tabel Desimal → Persen",
       "bookReference": "hlm. 78–82",
-      "objective": "Isi tabel.. Ingat Kisi Seratus Persen.",
+      "objective": "Isi tabel.. Ingat Kisi Seratus Persen. (Kisi Seratus Persen)",
       "mechanicDescription": "Tiga tabel. Gunakan Kisi Seratus Persen.",
-      "voiceGuide": "Kisi Seratus Persen. Pilih.",
+      "voiceGuide": "Kisi Seratus Persen. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -3651,9 +3557,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "tap-all-e",
       "title": "Ketuk Semua Diagram Persen",
       "bookReference": "hlm. 79",
-      "objective": "Ketuk semua.. Ingat Kisi Seratus Persen.",
+      "objective": "Ketuk semua.. Ingat Kisi Seratus Persen. (Kisi Seratus Persen)",
       "mechanicDescription": "Tiga ronde. Gunakan Kisi Seratus Persen.",
-      "voiceGuide": "Kisi Seratus Persen. Ketuk semua.",
+      "voiceGuide": "Kisi Seratus Persen. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -3663,9 +3569,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "sort-diagram-e",
       "title": "Pilah Bentuk Persen",
       "bookReference": "hlm. 80",
-      "objective": "Pilah.. Ingat Kisi Seratus Persen.",
+      "objective": "Pilah.. Ingat Kisi Seratus Persen. (Kisi Seratus Persen)",
       "mechanicDescription": "Tiga ronde. Gunakan Kisi Seratus Persen.",
-      "voiceGuide": "Kisi Seratus Persen. Pilah.",
+      "voiceGuide": "Kisi Seratus Persen. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -3675,9 +3581,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "geser-koma",
       "title": "Geser Koma Dua Kali",
       "bookReference": "hlm. 82",
-      "objective": "Tips geser koma.. Ingat Kisi Seratus Persen.",
+      "objective": "Tips geser koma.. Ingat Kisi Seratus Persen. (Kisi Seratus Persen)",
       "mechanicDescription": "Tiga ronde. Gunakan Kisi Seratus Persen.",
-      "voiceGuide": "Kisi Seratus Persen. Pilih.",
+      "voiceGuide": "Kisi Seratus Persen. Mainkan dengan teliti.",
       "diagramType": "shift",
       "numberA": 1,
       "numberB": 2
@@ -3687,9 +3593,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "choose-persen",
       "title": "Pilih Persen Cocok",
       "bookReference": "hlm. 78–81",
-      "objective": "Pilih persen.. Ingat Kisi Seratus Persen.",
+      "objective": "Pilih persen.. Ingat Kisi Seratus Persen. (Kisi Seratus Persen)",
       "mechanicDescription": "Tiga ronde. Gunakan Kisi Seratus Persen.",
-      "voiceGuide": "Kisi Seratus Persen. Pilih.",
+      "voiceGuide": "Kisi Seratus Persen. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 1,
       "numberB": 2
@@ -3699,9 +3605,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "story-picture-e",
       "title": "Cerita Diagram Persen",
       "bookReference": "hlm. 75–79",
-      "objective": "Cerita + gambar.. Ingat Kisi Seratus Persen.",
+      "objective": "Cerita + gambar.. Ingat Kisi Seratus Persen. (Kisi Seratus Persen)",
       "mechanicDescription": "Tiga ronde. Gunakan Kisi Seratus Persen.",
-      "voiceGuide": "Kisi Seratus Persen. Pilih.",
+      "voiceGuide": "Kisi Seratus Persen. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -3712,7 +3618,7 @@ export const SUB_E42: SubBabNaskah = {
       "title": "Tulis …%",
       "bookReference": "hlm. 78–81",
       "objective": "Pakai Jembatan Desimal–Persen: 0,25 = 25%. Latihan: Menulis persen..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decimal–Percent Link: 0,25 = 25%.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jembatan Desimal–Persen: 0,25 = 25%.",
       "voiceGuide": "Jembatan Desimal–Persen. 0,25 = 25%.",
       "symbolLarge": "75%",
       "wordLarge": "PERSEN",
@@ -3724,7 +3630,7 @@ export const SUB_E42: SubBabNaskah = {
       "title": "Tulis Desimal dari %",
       "bookReference": "hlm. 82",
       "objective": "Pakai Jembatan Desimal–Persen: 0,25 = 25%. Latihan: Menulis desimal..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decimal–Percent Link: 0,25 = 25%.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jembatan Desimal–Persen: 0,25 = 25%.",
       "voiceGuide": "Jembatan Desimal–Persen. 0,25 = 25%.",
       "symbolLarge": "0,18",
       "wordLarge": "BALIK",
@@ -3736,7 +3642,7 @@ export const SUB_E42: SubBabNaskah = {
       "title": "Pilih Hasil Persen",
       "bookReference": "hlm. 78–82",
       "objective": "Pakai Jembatan Desimal–Persen: 0,25 = 25%. Latihan: Memilih..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decimal–Percent Link: 0,25 = 25%.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jembatan Desimal–Persen: 0,25 = 25%.",
       "voiceGuide": "Jembatan Desimal–Persen. 0,25 = 25%.",
       "symbolLarge": "36%",
       "wordLarge": "PILIH",
@@ -3748,7 +3654,7 @@ export const SUB_E42: SubBabNaskah = {
       "title": "Urutkan Persen/Desimal",
       "bookReference": "hlm. 79–82",
       "objective": "Pakai Jembatan Desimal–Persen: 0,25 = 25%. Latihan: Mengurutkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Decimal–Percent Link: 0,25 = 25%.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Jembatan Desimal–Persen: 0,25 = 25%.",
       "voiceGuide": "Jembatan Desimal–Persen. 0,25 = 25%.",
       "symbolLarge": "5%<75%",
       "wordLarge": "URUT",
@@ -3759,9 +3665,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "match-abstract-e",
       "title": "Jodohkan Notasi Persen",
       "bookReference": "hlm. 78–82",
-      "objective": "Jodohkan.. Ingat Jembatan Desimal–Persen.",
+      "objective": "Jodohkan.. Ingat Jembatan Desimal–Persen. (Jembatan Desimal–Persen)",
       "mechanicDescription": "Tiga ronde. Gunakan Jembatan Desimal–Persen.",
-      "voiceGuide": "Jembatan Desimal–Persen. Jodohkan.",
+      "voiceGuide": "Jembatan Desimal–Persen. Mainkan dengan teliti.",
       "symbolLarge": "0,35↔35%",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -3771,9 +3677,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "memory-abstract-e",
       "title": "Memori Notasi Persen",
       "bookReference": "hlm. 80",
-      "objective": "Memori.. Ingat Jembatan Desimal–Persen.",
+      "objective": "Memori.. Ingat Jembatan Desimal–Persen. (Jembatan Desimal–Persen)",
       "mechanicDescription": "Tiga ronde. Gunakan Jembatan Desimal–Persen.",
-      "voiceGuide": "Jembatan Desimal–Persen. Balik kartu.",
+      "voiceGuide": "Jembatan Desimal–Persen. Mainkan dengan teliti.",
       "symbolLarge": "25%",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -3783,9 +3689,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "true-false-e",
       "title": "Benar atau Salah: Persen",
       "bookReference": "hlm. 75–82",
-      "objective": "Menilai.. Ingat Jembatan Desimal–Persen.",
+      "objective": "Menilai.. Ingat Jembatan Desimal–Persen. (Jembatan Desimal–Persen)",
       "mechanicDescription": "Dua ronde. Gunakan Jembatan Desimal–Persen.",
-      "voiceGuide": "Jembatan Desimal–Persen. Benar/salah.",
+      "voiceGuide": "Jembatan Desimal–Persen. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -3795,9 +3701,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "detective-e",
       "title": "Detektif Persen",
       "bookReference": "hlm. 75–82",
-      "objective": "Petunjuk → persen.. Ingat Jembatan Desimal–Persen.",
+      "objective": "Petunjuk → persen.. Ingat Jembatan Desimal–Persen. (Jembatan Desimal–Persen)",
       "mechanicDescription": "Empat soal. Gunakan Jembatan Desimal–Persen.",
-      "voiceGuide": "Jembatan Desimal–Persen. Pilih.",
+      "voiceGuide": "Jembatan Desimal–Persen. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -3807,9 +3713,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "concept-e",
       "title": "Peta Konsep Persen",
       "bookReference": "hlm. 76–81",
-      "objective": "Mengisi kotak.. Ingat Jembatan Desimal–Persen.",
+      "objective": "Mengisi kotak.. Ingat Jembatan Desimal–Persen. (Jembatan Desimal–Persen)",
       "mechanicDescription": "Satu peta. Gunakan Jembatan Desimal–Persen.",
-      "voiceGuide": "Jembatan Desimal–Persen. Pilih opsi.",
+      "voiceGuide": "Jembatan Desimal–Persen. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -3819,9 +3725,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "story-abstract-e",
       "title": "Cerita Angka Persen",
       "bookReference": "hlm. 75–82",
-      "objective": "Soal cerita.. Ingat Jembatan Desimal–Persen.",
+      "objective": "Soal cerita.. Ingat Jembatan Desimal–Persen. (Jembatan Desimal–Persen)",
       "mechanicDescription": "Tiga ronde. Gunakan Jembatan Desimal–Persen.",
-      "voiceGuide": "Jembatan Desimal–Persen. Pilih.",
+      "voiceGuide": "Jembatan Desimal–Persen. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -3833,12 +3739,6 @@ export const SUB_E42: SubBabNaskah = {
       "nama": "Arti %",
       "isi": "Persen adalah bentuk lain pecahan berpenyebut 100.",
       "suara": "Persen artinya per seratus."
-    },
-    {
-      "ikon": "🧮",
-      "nama": "Cara biasa",
-      "isi": "Desimal → pecahan /100 → tulis %.",
-      "suara": "Lewat pecahan dulu."
     },
     {
       "ikon": "🌍",
@@ -3881,11 +3781,11 @@ export const SUB_E42: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Persen sebagai Perseratusan pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Persen sebagai Perseratusan pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Persen sebagai Perseratusan membantumu memahami soal?",
-    "Kapan kamu memakai Kisi Seratus Persen?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Persen sebagai Perseratusan membantumu?",
+    "Kapan memakai Kisi Seratus Persen?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {

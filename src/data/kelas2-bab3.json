@@ -19,12 +19,12 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Bangun Datar)",
       "fullTitle": "Sub-Bab A: Bangun Datar",
-      "targetDescription": "Siswa mengelompokkan bangun datar menjadi segi banyak (dibatasi sisi atau garis lurus) dan bentuk lengkung (dibatasi kurva), menghitung banyak sisi untuk menamai segitiga, segi empat, segi lima, dan segi enam, menemukan bentuk-bentuk itu di sekitar, serta membedakan lingkaran dari bentuk lengkung lainnya lewat percobaan mencetak dan memutar. Siswa memakai cara van Hiele Visual, Pilah Ciri, Papan Paku.",
+      "targetDescription": "Siswa mengelompokkan bangun datar menjadi segi banyak (dibatasi sisi atau garis lurus) dan bentuk lengkung (dibatasi kurva), menghitung banyak sisi untuk menamai segitiga, segi empat, segi lima, dan segi enam, menemukan bentuk-bentuk itu di sekitar, serta membedakan lingkaran dari bentuk lengkung lainnya lewat percobaan mencetak dan memutar. Siswa memakai cara van Hiele Visual, Pilah Ciri, Papan Paku. Siswa memakai cara van Hiele Visual, Pilah Ciri, Papan Paku.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
       "silabus": {
-        "teksSuara": "Kita belajar bangun datar. Bukunya bernama Bentuk di Sekitar Kita, bagian bangun datar. Upe menemukan sarang lebah yang permukaannya berbentuk segi enam. Kita mengelompokkan bangun datar menjadi segi banyak dan bentuk lengkung, menghitung sisi untuk menamai segitiga, segi empat, segi lima, dan segi enam, lalu mengenal lingkaran. Kita memakai cara dari luar buku: van Hiele Visual (van Hiele Visual); Pilah Ciri (Attribute Sort); Papan Paku (Geoboard). Kenali bangun dari bentuknya. Pilah menurut sisi atau sudut. Bentuk bangun dengan karet. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "teksSuara": "Kita belajar bangun datar. Bukunya bernama Bentuk di Sekitar Kita, bagian bangun datar. Upe menemukan sarang lebah yang permukaannya berbentuk segi enam. Kita mengelompokkan bangun datar menjadi segi banyak dan bentuk lengkung, menghitung sisi untuk menamai segitiga, segi empat, segi lima, dan segi enam, lalu mengenal lingkaran. Kita memakai cara: van Hiele Visual, Pilah Ciri, Papan Paku. Kenali bangun dari bentuknya. Pilah menurut sisi atau sudut. Bentuk bangun dengan karet. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa mengelompokkan bangun datar menjadi segi banyak dan bentuk lengkung, menamai segi banyak berdasarkan banyak sisinya (segitiga, segi empat, segi lima, segi enam), menemukan bentuk tersebut di lingkungan sekitar, serta membedakan lingkaran dari bentuk lengkung lainnya.",
         "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 3 Sub-Bab A)."
       },
@@ -68,55 +68,55 @@
           "id": "K2B3A-V1-1",
           "titleHint": "Paman membawa madu",
           "sceneType": "K2B3A-V1-1",
-          "voiceNarration": "Bayangkan situasi nyata di kelas atau di rumah. Hari ini, Paman berkunjung ke rumah Upe. Mari kita pahami bersama. Paman datang membawa madu dan sarangnya. Mari kita pahami bersama. Ini adalah kali pertama Upe melihat sarang lebah. Mari kita pahami bersama. Ingat cara van Hiele Visual: Kenali bangun dari bentuknya."
+          "voiceNarration": "Bayangkan kamu sedang mempelajari Bangun Datar. Hari ini, Paman berkunjung ke rumah Upe. Paman datang membawa madu dan sarangnya. Ini adalah kali pertama Upe melihat sarang lebah. Ingat cara van Hiele Visual: Kenali bangun dari bentuknya. Ingat cara van Hiele Visual: Kenali bangun dari bentuknya."
         },
         {
           "id": "K2B3A-V1-2",
           "titleHint": "Permukaan segi enam",
           "sceneType": "K2B3A-V1-2",
-          "voiceNarration": "Permukaan sarang lebah adalah bangun datar yang mempunyai enam sisi. Mari kita pahami bersama. Upe tidak sabar untuk mencoba memakannya. Mari kita pahami bersama. Kata Paman, madu mempunyai banyak manfaat untuk tubuh kita. Mari kita pahami bersama. Di sini kita memakai ide van Hiele Visual — Kenali bangun dari bentuknya."
+          "voiceNarration": "Permukaan sarang lebah adalah bangun datar yang mempunyai enam sisi. Upe tidak sabar untuk mencoba memakannya. Kata Paman, madu mempunyai banyak manfaat untuk tubuh kita. Di sini kita memakai ide van Hiele Visual — Kenali bangun dari bentuknya. Di sini kita memakai van Hiele Visual. Kenali bangun dari bentuknya."
         },
         {
           "id": "K2B3A-V1-3",
           "titleHint": "Ayo cari bentuk",
           "sceneType": "K2B3A-V1-3",
-          "voiceNarration": "Sekarang, amati benda-benda di sekitarmu. Mari kita pahami bersama. Apakah kamu menemukan benda yang mempunyai enam sisi. Mari kita pahami bersama. Di sub-bab ini, kita belajar mengenal berbagai bangun datar. Mari kita pahami bersama. METODE LUAR · van Hiele Visual: Kenali bangun dari bentuknya."
+          "voiceNarration": "Sekarang, amati benda-benda di sekitarmu. Apakah kamu menemukan benda yang mempunyai enam sisi. Di sub-bab ini, kita belajar mengenal berbagai bangun datar. METODE LUAR · van Hiele Visual: Kenali bangun dari bentuknya."
         },
         {
           "id": "K2B3A-V2-1",
           "titleHint": "Tiga bentuk dasar",
           "sceneType": "K2B3A-V2-1",
-          "voiceNarration": "Di kelas satu, kita sudah mempelajari tiga bentuk dasar. Mari kita pahami bersama. Ada segitiga, segi empat, dan bentuk lengkung. Mari kita pahami bersama. Ketiganya dinamakan bangun datar. Mari kita pahami bersama. Ingat cara Pilah Ciri: Pilah menurut sisi atau sudut."
+          "voiceNarration": "Di kelas satu, kita sudah mempelajari tiga bentuk dasar. Ada segitiga, segi empat, dan bentuk lengkung. Ketiganya dinamakan bangun datar. Ingat cara Pilah Ciri: Pilah menurut sisi atau sudut. Ingat cara Pilah Ciri: Pilah menurut sisi atau sudut."
         },
         {
           "id": "K2B3A-V2-2",
           "titleHint": "Garis lurus dan sisi",
           "sceneType": "K2B3A-V2-2",
-          "voiceNarration": "Beberapa bangun datar dibatasi oleh garis lurus. Mari kita pahami bersama. Garis lurus pada bangun datar dinamakan sisi. Mari kita pahami bersama. Bangun datar yang dibatasi oleh beberapa sisi dinamakan segi banyak. Mari kita pahami bersama. Di sini kita memakai ide Attribute Sort — Pilah menurut sisi atau sudut."
+          "voiceNarration": "Beberapa bangun datar dibatasi oleh garis lurus. Garis lurus pada bangun datar dinamakan sisi. Bangun datar yang dibatasi oleh beberapa sisi dinamakan segi banyak. Di sini kita memakai ide Attribute Sort — Pilah menurut sisi atau sudut. Di sini kita memakai Attribute Sort. Pilah menurut sisi atau sudut."
         },
         {
           "id": "K2B3A-V2-3",
           "titleHint": "Kurva dan bentuk lengkung",
           "sceneType": "K2B3A-V2-3",
-          "voiceNarration": "Beberapa bangun datar dibatasi oleh kurva, atau garis lengkung. Mari kita pahami bersama. Bangun datar yang dibatasi oleh kurva dinamakan bentuk lengkung. Mari kita pahami bersama. Contohnya lingkaran, bentuk telur, dan bentuk hati. Mari kita pahami bersama. METODE LUAR · Pilah Ciri: Pilah menurut sisi atau sudut."
+          "voiceNarration": "Beberapa bangun datar dibatasi oleh kurva, atau garis lengkung. Bangun datar yang dibatasi oleh kurva dinamakan bentuk lengkung. Contohnya lingkaran, bentuk telur, dan bentuk hati. METODE LUAR · Pilah Ciri: Pilah menurut sisi atau sudut."
         },
         {
           "id": "K2B3A-V3-1",
           "titleHint": "Hitung sisinya",
           "sceneType": "K2B3A-V3-1",
-          "voiceNarration": "Banyak sisi pada segi banyak memengaruhi namanya. Mari kita pahami bersama. Segitiga adalah segi banyak yang memiliki tiga sisi. Mari kita pahami bersama. Segi empat adalah segi banyak yang memiliki empat sisi. Mari kita pahami bersama. Ingat cara Papan Paku: Bentuk bangun dengan karet."
+          "voiceNarration": "Banyak sisi pada segi banyak memengaruhi namanya. Segitiga adalah segi banyak yang memiliki tiga sisi. Segi empat adalah segi banyak yang memiliki empat sisi. Ingat cara Papan Paku: Bentuk bangun dengan karet. Ingat cara Papan Paku: Bentuk bangun dengan karet."
         },
         {
           "id": "K2B3A-V3-2",
           "titleHint": "Segi lima dan segi enam",
           "sceneType": "K2B3A-V3-2",
-          "voiceNarration": "Segi banyak yang mempunyai lima sisi dinamakan segi lima. Mari kita pahami bersama. Segi banyak yang mempunyai enam sisi dinamakan segi enam. Mari kita pahami bersama. Ada segi lima pada bunga morning glory. Mari kita pahami bersama. Ada segi enam pada sarang lebah. Mari kita pahami bersama. Di sini kita memakai ide Geoboard — Bentuk bangun dengan karet."
+          "voiceNarration": "Segi banyak yang mempunyai lima sisi dinamakan segi lima. Segi banyak yang mempunyai enam sisi dinamakan segi enam. Ada segi lima pada bunga morning glory. Ada segi enam pada sarang lebah. Di sini kita memakai Geoboard. Bentuk bangun dengan karet."
         },
         {
           "id": "K2B3A-V3-3",
           "titleHint": "Lingkaran",
           "sceneType": "K2B3A-V3-3",
-          "voiceNarration": "Sekarang kita mencoba dengan uang logam. Mari kita pahami bersama. Letakkan uang logam di atas kertas, lalu cetak tepinya. Mari kita pahami bersama. Putar uang logam di atas cetakannya. Bentuknya selalu pas, ke arah mana pun. METODE LUAR · Papan Paku: Bentuk bangun dengan karet."
+          "voiceNarration": "Sekarang kita mencoba dengan uang logam. Letakkan uang logam di atas kertas, lalu cetak tepinya. Putar uang logam di atas cetakannya. Bentuknya selalu pas, ke arah mana pun. METODE LUAR · Papan Paku: Bentuk bangun dengan karet."
         }
       ],
       "videos": [
@@ -129,10 +129,10 @@
               "id": "K2B3A-V1-1",
               "judul": "Paman membawa madu",
               "ketukan": [
-                "Bayangkan situasi nyata di kelas atau di rumah. Hari ini, Paman berkunjung ke rumah Upe. Mari kita pahami bersama.",
-                "Paman datang membawa madu dan sarangnya. Mari kita pahami bersama.",
-                "Ini adalah kali pertama Upe melihat sarang lebah. Mari kita pahami bersama.",
-                "Ingat cara van Hiele Visual: Kenali bangun dari bentuknya."
+                "Bayangkan kamu sedang mempelajari Bangun Datar. Hari ini, Paman berkunjung ke rumah Upe.",
+                "Paman datang membawa madu dan sarangnya.",
+                "Ini adalah kali pertama Upe melihat sarang lebah.",
+                "Ingat cara van Hiele Visual: Kenali bangun dari bentuknya. Ingat cara van Hiele Visual: Kenali bangun dari bentuknya."
               ],
               "papan": [
                 "Paman datang!",
@@ -145,10 +145,10 @@
               "id": "K2B3A-V1-2",
               "judul": "Permukaan segi enam",
               "ketukan": [
-                "Permukaan sarang lebah adalah bangun datar yang mempunyai enam sisi. Mari kita pahami bersama.",
-                "Upe tidak sabar untuk mencoba memakannya. Mari kita pahami bersama.",
-                "Kata Paman, madu mempunyai banyak manfaat untuk tubuh kita. Mari kita pahami bersama.",
-                "Di sini kita memakai ide van Hiele Visual — Kenali bangun dari bentuknya."
+                "Permukaan sarang lebah adalah bangun datar yang mempunyai enam sisi.",
+                "Upe tidak sabar untuk mencoba memakannya.",
+                "Kata Paman, madu mempunyai banyak manfaat untuk tubuh kita.",
+                "Di sini kita memakai ide van Hiele Visual — Kenali bangun dari bentuknya. Di sini kita memakai van Hiele Visual. Kenali bangun dari bentuknya."
               ],
               "papan": [
                 "Enam sisi",
@@ -161,9 +161,9 @@
               "id": "K2B3A-V1-3",
               "judul": "Ayo cari bentuk",
               "ketukan": [
-                "Sekarang, amati benda-benda di sekitarmu. Mari kita pahami bersama.",
-                "Apakah kamu menemukan benda yang mempunyai enam sisi. Mari kita pahami bersama.",
-                "Di sub-bab ini, kita belajar mengenal berbagai bangun datar. Mari kita pahami bersama.",
+                "Sekarang, amati benda-benda di sekitarmu.",
+                "Apakah kamu menemukan benda yang mempunyai enam sisi.",
+                "Di sub-bab ini, kita belajar mengenal berbagai bangun datar.",
                 "METODE LUAR · van Hiele Visual: Kenali bangun dari bentuknya."
               ],
               "papan": [
@@ -184,10 +184,10 @@
               "id": "K2B3A-V2-1",
               "judul": "Tiga bentuk dasar",
               "ketukan": [
-                "Di kelas satu, kita sudah mempelajari tiga bentuk dasar. Mari kita pahami bersama.",
-                "Ada segitiga, segi empat, dan bentuk lengkung. Mari kita pahami bersama.",
-                "Ketiganya dinamakan bangun datar. Mari kita pahami bersama.",
-                "Ingat cara Pilah Ciri: Pilah menurut sisi atau sudut."
+                "Di kelas satu, kita sudah mempelajari tiga bentuk dasar.",
+                "Ada segitiga, segi empat, dan bentuk lengkung.",
+                "Ketiganya dinamakan bangun datar.",
+                "Ingat cara Pilah Ciri: Pilah menurut sisi atau sudut. Ingat cara Pilah Ciri: Pilah menurut sisi atau sudut."
               ],
               "papan": [
                 "Tiga bentuk dasar",
@@ -200,10 +200,10 @@
               "id": "K2B3A-V2-2",
               "judul": "Garis lurus dan sisi",
               "ketukan": [
-                "Beberapa bangun datar dibatasi oleh garis lurus. Mari kita pahami bersama.",
-                "Garis lurus pada bangun datar dinamakan sisi. Mari kita pahami bersama.",
-                "Bangun datar yang dibatasi oleh beberapa sisi dinamakan segi banyak. Mari kita pahami bersama.",
-                "Di sini kita memakai ide Attribute Sort — Pilah menurut sisi atau sudut."
+                "Beberapa bangun datar dibatasi oleh garis lurus.",
+                "Garis lurus pada bangun datar dinamakan sisi.",
+                "Bangun datar yang dibatasi oleh beberapa sisi dinamakan segi banyak.",
+                "Di sini kita memakai ide Attribute Sort — Pilah menurut sisi atau sudut. Di sini kita memakai Attribute Sort. Pilah menurut sisi atau sudut."
               ],
               "papan": [
                 "Dibatasi garis lurus",
@@ -216,9 +216,9 @@
               "id": "K2B3A-V2-3",
               "judul": "Kurva dan bentuk lengkung",
               "ketukan": [
-                "Beberapa bangun datar dibatasi oleh kurva, atau garis lengkung. Mari kita pahami bersama.",
-                "Bangun datar yang dibatasi oleh kurva dinamakan bentuk lengkung. Mari kita pahami bersama.",
-                "Contohnya lingkaran, bentuk telur, dan bentuk hati. Mari kita pahami bersama.",
+                "Beberapa bangun datar dibatasi oleh kurva, atau garis lengkung.",
+                "Bangun datar yang dibatasi oleh kurva dinamakan bentuk lengkung.",
+                "Contohnya lingkaran, bentuk telur, dan bentuk hati.",
                 "METODE LUAR · Pilah Ciri: Pilah menurut sisi atau sudut."
               ],
               "papan": [
@@ -239,10 +239,10 @@
               "id": "K2B3A-V3-1",
               "judul": "Hitung sisinya",
               "ketukan": [
-                "Banyak sisi pada segi banyak memengaruhi namanya. Mari kita pahami bersama.",
-                "Segitiga adalah segi banyak yang memiliki tiga sisi. Mari kita pahami bersama.",
-                "Segi empat adalah segi banyak yang memiliki empat sisi. Mari kita pahami bersama.",
-                "Ingat cara Papan Paku: Bentuk bangun dengan karet."
+                "Banyak sisi pada segi banyak memengaruhi namanya.",
+                "Segitiga adalah segi banyak yang memiliki tiga sisi.",
+                "Segi empat adalah segi banyak yang memiliki empat sisi.",
+                "Ingat cara Papan Paku: Bentuk bangun dengan karet. Ingat cara Papan Paku: Bentuk bangun dengan karet."
               ],
               "papan": [
                 "Banyak sisi = nama",
@@ -255,26 +255,24 @@
               "id": "K2B3A-V3-2",
               "judul": "Segi lima dan segi enam",
               "ketukan": [
-                "Segi banyak yang mempunyai lima sisi dinamakan segi lima. Mari kita pahami bersama.",
-                "Segi banyak yang mempunyai enam sisi dinamakan segi enam. Mari kita pahami bersama.",
-                "Ada segi lima pada bunga morning glory. Mari kita pahami bersama.",
-                "Ada segi enam pada sarang lebah. Mari kita pahami bersama.",
-                "Di sini kita memakai ide Geoboard — Bentuk bangun dengan karet."
+                "Segi banyak yang mempunyai lima sisi dinamakan segi lima.",
+                "Segi banyak yang mempunyai enam sisi dinamakan segi enam.",
+                "Ada segi lima pada bunga morning glory.",
+                "Ada segi enam pada sarang lebah. Di sini kita memakai Geoboard. Bentuk bangun dengan karet."
               ],
               "papan": [
                 "Segi lima: 5 sisi",
                 "Segi enam: 6 sisi",
                 "Bunga morning glory",
-                "Sarang lebah",
-                "Cari di sekitar"
+                "Sarang lebah"
               ]
             },
             {
               "id": "K2B3A-V3-3",
               "judul": "Lingkaran",
               "ketukan": [
-                "Sekarang kita mencoba dengan uang logam. Mari kita pahami bersama.",
-                "Letakkan uang logam di atas kertas, lalu cetak tepinya. Mari kita pahami bersama.",
+                "Sekarang kita mencoba dengan uang logam.",
+                "Letakkan uang logam di atas kertas, lalu cetak tepinya.",
                 "Putar uang logam di atas cetakannya. Bentuknya selalu pas, ke arah mana pun.",
                 "METODE LUAR · Papan Paku: Bentuk bangun dengan karet."
               ],
@@ -292,7 +290,7 @@
         {
           "stepNumber": 1,
           "stepTitle": "1. Pahami soal",
-          "stepDesc": "Baca soal Bangun Datar. Apa yang ditanyakan?",
+          "stepDesc": "Apa yang ditanyakan pada Bangun Datar?",
           "icon": "❓",
           "flowFrom": "START",
           "flowTo": "2"
@@ -324,7 +322,7 @@
         {
           "stepNumber": 5,
           "stepTitle": "5. Kerjakan",
-          "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+          "stepDesc": "Terapkan cara itu pada angka atau gambar.",
           "icon": "✏️",
           "flowFrom": "4",
           "flowTo": "6"
@@ -332,7 +330,7 @@
         {
           "stepNumber": 6,
           "stepTitle": "6. Cek masuk akal",
-          "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+          "stepDesc": "Apakah hasilnya masuk akal?",
           "icon": "✅",
           "flowFrom": "5",
           "flowTo": "7"
@@ -340,15 +338,15 @@
         {
           "stepNumber": 7,
           "stepTitle": "7. Simpulkan",
-          "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+          "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
           "icon": "💬",
           "flowFrom": "6",
           "flowTo": "8"
         },
         {
           "stepNumber": 8,
-          "stepTitle": "8. Lanjut main",
-          "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+          "stepTitle": "8. Main",
+          "stepDesc": "Latih di Concrete sampai Abstract.",
           "icon": "🎮",
           "flowFrom": "7",
           "flowTo": "END"
@@ -424,20 +422,6 @@
           "countNum": 3,
           "countWord": "Tiga",
           "voiceSentence": "Tiga pertanyaan detektif bentuk. Satu, dibatasi garis lurus atau garis lengkung. Dua, kalau garis lurus, berapa sisinya. Tiga, kalau garis lengkung, apakah pas bila diputar. Dengan tiga pertanyaan ini kita bisa mengenali bangun datar apa pun."
-        },
-        {
-          "fruitName": "van Hiele Visual",
-          "emoji": "🌍",
-          "countNum": 1,
-          "countWord": "ingat",
-          "voiceSentence": "Kenali bangun dari bentuknya."
-        },
-        {
-          "fruitName": "Pilah Ciri",
-          "emoji": "🌍",
-          "countNum": 2,
-          "countWord": "ingat",
-          "voiceSentence": "Pilah menurut sisi atau sudut."
         }
       ],
       "concreteSlides": [
@@ -472,21 +456,21 @@
           "diagramType": "polygon-edge-marking",
           "numberA": 6,
           "numberB": 4,
-          "caption": "Menghitung sisi segi banyak dengan menandai tiap sisi satu kali, lalu menamai bentuknya.. Ingat van Hiele Visual."
+          "caption": "Menghitung sisi segi banyak dengan menandai tiap sisi satu kali, lalu menamai bentuknya.. Ingat van Hiele Visual. (van Hiele Visual)"
         },
         {
           "title": "Tarik Garis Bangun dan Ciri",
           "diagramType": "match-lines",
           "numberA": 5,
           "numberB": 5,
-          "caption": "Menghubungkan bangun datar dengan ciri-cirinya, yaitu banyak sisi atau satu kurva.. Ingat van Hiele Visual."
+          "caption": "Menghubungkan bangun datar dengan ciri-cirinya, yaitu banyak sisi atau satu kurva.. Ingat van Hiele Visual. (van Hiele Visual)"
         },
         {
           "title": "Warnai Bentuk",
           "diagramType": "color-shapes",
           "numberA": 8,
           "numberB": 4,
-          "caption": "Mewarnai hanya bangun datar yang memenuhi aturan: segi empat, lingkaran, segi lima, atau semua segi banyak.. Ingat van Hiele Visual."
+          "caption": "Mewarnai hanya bangun datar yang memenuhi aturan: segi empat, lingkaran, segi lima, atau semua segi banyak.. Ingat van Hiele Visual. (van Hiele Visual)"
         }
       ],
       "abstractSlides": [
@@ -494,19 +478,19 @@
           "symbolLarge": "3 • 4 • 5 • 6",
           "wordLarge": "ISI TABEL",
           "mathNotation": "sisi dan nama",
-          "voiceReadout": "van Hiele Visual. Ketuk baris tabel, lalu pilih kartu yang tepat."
+          "voiceReadout": "van Hiele Visual. Mainkan dengan teliti."
         },
         {
           "symbolLarge": "5 sisi",
           "wordLarge": "DETEKTIF",
           "mathNotation": "dua petunjuk, satu nama",
-          "voiceReadout": "van Hiele Visual. Baca kedua petunjuk, lalu pilih namanya."
+          "voiceReadout": "van Hiele Visual. Mainkan dengan teliti."
         },
         {
           "symbolLarge": "segi banyak",
           "wordLarge": "PETA KONSEP",
           "mathNotation": "definisi • ciri • contoh",
-          "voiceReadout": "van Hiele Visual. Pilih kartu yang tepat untuk kotak yang menyala."
+          "voiceReadout": "van Hiele Visual. Mainkan dengan teliti."
         }
       ],
       "interactiveGames": [
@@ -518,7 +502,7 @@
           "title": "Pilah Benda di Meja",
           "bookReference": "Buku Siswa hlm. 68–70 (mengelompokkan bangun datar; Ayo Mencoba 1: segi banyak dan bentuk lengkung)",
           "objective": "Pakai van Hiele Visual: Kenali bangun dari bentuknya. Latihan: Mengelompokkan benda berbentuk datar menjadi segi banyak dan bentuk lengkung menurut tepinya..",
-          "mechanicDescription": "Dua ronde, masing-masing enam benda (jendela, bendera, ubin sarang lebah, rumah burung, rambu STOP, piring, koin, cermin lonjong, balon hati, dan lainnya). Siswa menyeret atau mengetuk benda ke kotak Segi banyak atau kotak Bentuk lengkung. Benda yang salah kembali disertai petunjuk tepinya. Saat bermain, terapkan van Hiele Visual: Kenali bangun dari bentuknya.",
+          "mechanicDescription": "Dua ronde, masing-masing enam benda (jendela, bendera, ubin sarang lebah, rumah burung, rambu STOP, piring, koin, cermin lonjong, balon hati, dan lainnya). Siswa menyeret atau mengetuk benda ke kotak Segi banyak atau kotak Bentuk lengkung. Benda yang salah kembali disertai petunjuk tepinya. Saat bermain, ingat van Hiele Visual: Kenali bangun dari bentuknya.",
           "voiceGuide": "van Hiele Visual. Kenali bangun dari bentuknya."
         },
         {
@@ -529,7 +513,7 @@
           "title": "Papan Paku dan Karet Gelang",
           "bookReference": "Buku Siswa hlm. 72–73 (banyak sisi menentukan nama: segitiga, segi empat, segi lima, segi enam); papan paku Gattegno",
           "objective": "Pakai van Hiele Visual: Kenali bangun dari bentuknya. Latihan: Membentuk segi banyak dengan karet gelang di papan paku dan menghitung sisinya..",
-          "mechanicDescription": "Empat ronde (segitiga, segi empat, segi lima, segi enam). Siswa mengetuk paku satu per satu untuk merentangkan karet, lalu mengetuk paku pertama untuk menutup bentuk. Bentuk harus tertutup, tidak bersilangan, dan banyak sisinya sama dengan yang diminta. Saat bermain, terapkan van Hiele Visual: Kenali bangun dari bentuknya.",
+          "mechanicDescription": "Empat ronde (segitiga, segi empat, segi lima, segi enam). Siswa mengetuk paku satu per satu untuk merentangkan karet, lalu mengetuk paku pertama untuk menutup bentuk. Bentuk harus tertutup, tidak bersilangan, dan banyak sisinya sama dengan yang diminta. Saat bermain, ingat van Hiele Visual: Kenali bangun dari bentuknya.",
           "voiceGuide": "van Hiele Visual. Kenali bangun dari bentuknya."
         },
         {
@@ -540,7 +524,7 @@
           "title": "Cetak dan Putar",
           "bookReference": "Buku Siswa hlm. 76 (Ayo Mencoba 3 nomor 2: cetak uang logam lalu putar di atas cetakannya)",
           "objective": "Pakai van Hiele Visual: Kenali bangun dari bentuknya. Latihan: Menemukan sendiri bahwa lingkaran selalu pas bila diputar, sedangkan bentuk lengkung lain tidak..",
-          "mechanicDescription": "Empat ronde (uang logam, tutup botol, telur lonjong, dan balon hati). Siswa menekan Cetak, memutar benda dengan tombol putar, melihat apakah benda selalu menutup cetakannya, lalu memilih lingkaran atau bukan lingkaran. Saat bermain, terapkan van Hiele Visual: Kenali bangun dari bentuknya.",
+          "mechanicDescription": "Empat ronde (uang logam, tutup botol, telur lonjong, dan balon hati). Siswa menekan Cetak, memutar benda dengan tombol putar, melihat apakah benda selalu menutup cetakannya, lalu memilih lingkaran atau bukan lingkaran. Saat bermain, ingat van Hiele Visual: Kenali bangun dari bentuknya.",
           "voiceGuide": "van Hiele Visual. Kenali bangun dari bentuknya."
         },
         {
@@ -551,7 +535,7 @@
           "title": "Cari Bentuk di Sekitar",
           "bookReference": "Buku Siswa hlm. 66–67 dan 73 (Sarang Lebah; Tahukah Kalian: segi lima dan segi enam di sekitar kita)",
           "objective": "Pakai van Hiele Visual: Kenali bangun dari bentuknya. Latihan: Menemukan benda di sekitar yang berbentuk segitiga, segi empat, segi lima, atau segi enam dengan menghitung sisinya..",
-          "mechanicDescription": "Empat ronde, tiap ronde delapan benda (jam dinding, teh celup, rumah burung, ubin lantai, sarang lebah, jendela, piring, dan lainnya). Siswa mengetuk semua benda yang punya sisi sebanyak yang diminta. Benda yang salah memberi petunjuk banyak sisinya. Saat bermain, terapkan van Hiele Visual: Kenali bangun dari bentuknya.",
+          "mechanicDescription": "Empat ronde, tiap ronde delapan benda (jam dinding, teh celup, rumah burung, ubin lantai, sarang lebah, jendela, piring, dan lainnya). Siswa mengetuk semua benda yang punya sisi sebanyak yang diminta. Benda yang salah memberi petunjuk banyak sisinya. Saat bermain, ingat van Hiele Visual: Kenali bangun dari bentuknya.",
           "voiceGuide": "van Hiele Visual. Kenali bangun dari bentuknya."
         },
         {
@@ -561,9 +545,9 @@
           "gameType": "tap-and-count-sides",
           "title": "Tandai Setiap Sisi",
           "bookReference": "Buku Siswa hlm. 72 dan 74–77 (menghitung sisi; Ayo Berlatih nomor 1 dan 2)",
-          "objective": "Menghitung sisi segi banyak dengan menandai tiap sisi satu kali, lalu menamai bentuknya.. Ingat van Hiele Visual.",
+          "objective": "Menghitung sisi segi banyak dengan menandai tiap sisi satu kali, lalu menamai bentuknya.. Ingat van Hiele Visual. (van Hiele Visual)",
           "mechanicDescription": "Empat ronde (segitiga, segi empat miring, segi lima, segi enam). Siswa mengetuk tiap sisi sehingga sisi berwarna dan bernomor, lalu memilih banyak sisi dan nama bentuk. Setiap sisi hanya bisa ditandai satu kali. Gunakan van Hiele Visual.",
-          "voiceGuide": "van Hiele Visual. Ketuk setiap sisi satu kali, lalu pilih banyak sisi dan namanya."
+          "voiceGuide": "van Hiele Visual. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3A-game-6",
@@ -572,9 +556,9 @@
           "gameType": "match-lines-shape-feature",
           "title": "Tarik Garis Bangun dan Ciri",
           "bookReference": "Buku Siswa hlm. 77–79 (Ayo Berlatih nomor 3 dan 4: hubungkan bangun datar dengan ciri-ciri dan namanya)",
-          "objective": "Menghubungkan bangun datar dengan ciri-cirinya, yaitu banyak sisi atau satu kurva.. Ingat van Hiele Visual.",
+          "objective": "Menghubungkan bangun datar dengan ciri-cirinya, yaitu banyak sisi atau satu kurva.. Ingat van Hiele Visual. (van Hiele Visual)",
           "mechanicDescription": "Dua ronde, tiap ronde lima bangun di kiri dan lima ciri di kanan. Siswa mengetuk bangun lalu ciri yang cocok, dan garis penghubung tergambar. Garis yang salah tidak tergambar dan diberi petunjuk. Gunakan van Hiele Visual.",
-          "voiceGuide": "van Hiele Visual. Ketuk bangunnya, lalu ketuk cirinya, sampai semua terhubung."
+          "voiceGuide": "van Hiele Visual. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3A-game-7",
@@ -583,9 +567,9 @@
           "gameType": "color-by-rule",
           "title": "Warnai Bentuk",
           "bookReference": "Buku Siswa hlm. 79–80 (Ayo Berlatih nomor 5 dan 6: warnai segi empat, warnai lingkaran)",
-          "objective": "Mewarnai hanya bangun datar yang memenuhi aturan: segi empat, lingkaran, segi lima, atau semua segi banyak.. Ingat van Hiele Visual.",
+          "objective": "Mewarnai hanya bangun datar yang memenuhi aturan: segi empat, lingkaran, segi lima, atau semua segi banyak.. Ingat van Hiele Visual. (van Hiele Visual)",
           "mechanicDescription": "Empat ronde (segi empat biru, lingkaran hijau, segi lima merah, semua segi banyak kuning). Siswa mengetuk bentuk untuk mewarnainya, mengetuk lagi untuk menghapus warna, lalu menekan periksa. Jawaban salah dijelaskan bentuk mana yang keliru. Gunakan van Hiele Visual.",
-          "voiceGuide": "van Hiele Visual. Warnai hanya bentuk yang sesuai aturan, lalu periksa."
+          "voiceGuide": "van Hiele Visual. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3A-game-8",
@@ -594,9 +578,9 @@
           "gameType": "fill-table-sides-names",
           "title": "Isi Tabel Ciri",
           "bookReference": "Buku Siswa hlm. 72–73 dan 77 (banyak sisi dan nama; Ayo Berlatih nomor 2: tulis ciri-ciri tiap bangun datar)",
-          "objective": "Menuliskan hubungan antara nama segi banyak dan banyak sisinya, dua arah.. Ingat van Hiele Visual.",
+          "objective": "Menuliskan hubungan antara nama segi banyak dan banyak sisinya, dua arah.. Ingat van Hiele Visual. (van Hiele Visual)",
           "mechanicDescription": "Dua ronde. Ronde 1: tulis banyak sisi untuk segitiga, segi empat, segi lima, dan segi enam. Ronde 2: tulis nama dari 3, 5, 6, 4, 8, dan 7 sisi. Siswa mengetuk baris, lalu mengetuk kartu jawaban yang tepat. Gunakan van Hiele Visual.",
-          "voiceGuide": "van Hiele Visual. Ketuk baris tabel, lalu pilih kartu yang tepat."
+          "voiceGuide": "van Hiele Visual. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3A-game-9",
@@ -605,9 +589,9 @@
           "gameType": "clue-detective-shapes",
           "title": "Detektif Bentuk Misterius",
           "bookReference": "Buku Siswa hlm. 69–76 (garis lurus, kurva, sisi, segi banyak, bentuk lengkung, lingkaran)",
-          "objective": "Menemukan nama bangun datar dari dua petunjuk tertulis.. Ingat van Hiele Visual.",
+          "objective": "Menemukan nama bangun datar dari dua petunjuk tertulis.. Ingat van Hiele Visual. (van Hiele Visual)",
           "mechanicDescription": "Empat ronde, tiap ronde dua petunjuk dan tiga pilihan nama. Siswa memilih nama yang cocok dengan kedua petunjuk. Petunjuk dibacakan Suara Guru. Gunakan van Hiele Visual.",
-          "voiceGuide": "van Hiele Visual. Baca kedua petunjuk, lalu pilih namanya."
+          "voiceGuide": "van Hiele Visual. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3A-game-10",
@@ -616,9 +600,9 @@
           "gameType": "concept-map-fill",
           "title": "Peta Konsep Bangun Datar",
           "bookReference": "Buku Siswa hlm. 80 (Coba Pikirkan: isilah diagram segi banyak)",
-          "objective": "Melengkapi peta konsep dengan definisi, ciri, dan contoh segi banyak dan bentuk lengkung.. Ingat van Hiele Visual.",
+          "objective": "Melengkapi peta konsep dengan definisi, ciri, dan contoh segi banyak dan bentuk lengkung.. Ingat van Hiele Visual. (van Hiele Visual)",
           "mechanicDescription": "Dua peta konsep, satu untuk segi banyak dan satu untuk bentuk lengkung. Tiap peta punya empat kotak: definisi, dua ciri, dan contoh. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan van Hiele Visual.",
-          "voiceGuide": "van Hiele Visual. Pilih kartu yang tepat untuk kotak yang menyala."
+          "voiceGuide": "van Hiele Visual. Mainkan dengan teliti."
         }
       ],
       "poinPenting": {
@@ -627,11 +611,6 @@
             "nama": "Segi banyak",
             "isi": "dibatasi sisi atau garis lurus",
             "suara": "Segi banyak adalah bangun datar yang dibatasi oleh beberapa sisi atau garis lurus. Contohnya segitiga, segi empat, segi lima, dan segi enam."
-          },
-          {
-            "nama": "Bentuk lengkung",
-            "isi": "dibatasi kurva atau garis lengkung",
-            "suara": "Bentuk lengkung adalah bangun datar yang dibatasi oleh kurva atau garis lengkung. Contohnya lingkaran, bentuk telur, dan bentuk hati."
           },
           {
             "nama": "van Hiele Visual",
@@ -651,11 +630,11 @@
         ],
         "suara": "Ingat: van Hiele Visual, Pilah Ciri, Papan Paku.",
         "caraMenyebutkan": "Sarang lebah berbentuk segi enam karena punya 6 sisi",
-        "rumah": "Ayo Mencoba di rumah: terapkan van Hiele Visual pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+        "rumah": "Ayo Mencoba: terapkan van Hiele Visual pada satu soal nyata di rumah.",
         "refleksi": [
-          "Bagaimana van Hiele Visual membantumu memahami soal?",
-          "Kapan kamu memakai Pilah Ciri?",
-          "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+          "Bagaimana van Hiele Visual membantumu?",
+          "Kapan memakai Pilah Ciri?",
+          "Apa bedanya dengan hanya menghafal tanpa arti?"
         ]
       }
     },
@@ -663,12 +642,12 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Mengurai dan Menyusun)",
       "fullTitle": "Sub-Bab B: Mengurai dan Menyusun Bangun Datar",
-      "targetDescription": "Siswa mengurai satu bangun datar menjadi beberapa bentuk baru dengan menarik garis, menyusun beberapa bangun datar menjadi satu bentuk, menjelaskan bahwa cara mengurai dan menyusun memengaruhi hasilnya, menghitung jenis keping hasil uraian, menemukan pola banyak segitiga pada segi banyak, serta bermain tangram. Siswa memakai cara Susun Bangun, Urai Bangun, Tangram.",
+      "targetDescription": "Siswa mengurai satu bangun datar menjadi beberapa bentuk baru dengan menarik garis, menyusun beberapa bangun datar menjadi satu bentuk, menjelaskan bahwa cara mengurai dan menyusun memengaruhi hasilnya, menghitung jenis keping hasil uraian, menemukan pola banyak segitiga pada segi banyak, serta bermain tangram. Siswa memakai cara Susun Bangun, Urai Bangun, Tangram. Siswa memakai cara Susun Bangun, Urai Bangun, Tangram.",
       "secondaryBg": "#FCE7F3",
       "secondaryBorder": "#DB2777",
       "secondaryText": "#831843",
       "silabus": {
-        "teksSuara": "Kita belajar mengurai dan menyusun bangun datar. Bukunya bernama Bentuk di Sekitar Kita, bagian mengurai dan menyusun. Kita mengurai satu bangun datar menjadi beberapa bentuk baru, dan menyusun beberapa bangun datar menjadi satu bentuk. Cara yang kita pakai memengaruhi hasilnya. Kita juga bermain tangram. Kita memakai cara dari luar buku: Susun Bangun (Compose); Urai Bangun (Decompose); Tangram (Tangram). Gabung bangun kecil jadi besar. Pecah bangun menjadi bagian. Tujuh keping banyak siluet. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "teksSuara": "Kita belajar mengurai dan menyusun bangun datar. Bukunya bernama Bentuk di Sekitar Kita, bagian mengurai dan menyusun. Kita mengurai satu bangun datar menjadi beberapa bentuk baru, dan menyusun beberapa bangun datar menjadi satu bentuk. Cara yang kita pakai memengaruhi hasilnya. Kita juga bermain tangram. Kita memakai cara: Susun Bangun, Urai Bangun, Tangram. Gabung bangun kecil jadi besar. Pecah bangun menjadi bagian. Tujuh keping banyak siluet. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa mengurai satu bangun datar menjadi beberapa bangun datar, menyusun beberapa bangun datar menjadi satu bentuk, menjelaskan bahwa cara yang dipakai memengaruhi hasil, serta membuat bentuk kreatif dengan tangram.",
         "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 3 Sub-Bab B)."
       },
@@ -713,55 +692,55 @@
           "id": "K2B3B-V1-1",
           "titleHint": "Satu bangun, banyak bagian",
           "sceneType": "K2B3B-V1-1",
-          "voiceNarration": "Bayangkan situasi nyata di kelas atau di rumah. Sekarang kita belajar mengurai sebuah bangun datar. Mari kita pahami bersama. Mengurai artinya membagi satu bangun menjadi beberapa bentuk yang lebih kecil. Kita bisa menarik garis untuk menguraikannya. Mari kita pahami bersama. Ingat cara Susun Bangun: Gabung bangun kecil jadi besar."
+          "voiceNarration": "Bayangkan kamu sedang mempelajari Mengurai dan Menyusun Bangun Datar. Sekarang kita belajar mengurai sebuah bangun datar. Mengurai artinya membagi satu bangun menjadi beberapa bentuk yang lebih kecil. Kita bisa menarik garis untuk menguraikannya. Ingat cara Susun Bangun: Gabung bangun kecil jadi besar. Ingat cara Susun Bangun: Gabung bangun kecil jadi besar."
         },
         {
           "id": "K2B3B-V1-2",
           "titleHint": "Dua segitiga dan satu segi empat",
           "sceneType": "K2B3B-V1-2",
-          "voiceNarration": "Kita urai bangun ini dengan menarik dua garis. Mari kita pahami bersama. Hasilnya dua segitiga dan satu segi empat. Mari kita pahami bersama. Kita juga bisa menguraikan bangun yang sama dengan cara lain. Mari kita pahami bersama. Di sini kita memakai ide Compose — Gabung bangun kecil jadi besar."
+          "voiceNarration": "Kita urai bangun ini dengan menarik dua garis. Hasilnya dua segitiga dan satu segi empat. Kita juga bisa menguraikan bangun yang sama dengan cara lain. Di sini kita memakai ide Compose — Gabung bangun kecil jadi besar. Di sini kita memakai Compose. Gabung bangun kecil jadi besar."
         },
         {
           "id": "K2B3B-V1-3",
           "titleHint": "Cara memengaruhi hasil",
           "sceneType": "K2B3B-V1-3",
-          "voiceNarration": "Ketika mengurai sebuah bangun datar, kita dapat memakai beberapa cara. Cara yang kita pakai akan memengaruhi hasilnya. Mari kita pahami bersama. Sebuah persegi bisa diurai dengan garis miring menjadi dua segitiga. Mari kita pahami bersama. METODE LUAR · Susun Bangun: Gabung bangun kecil jadi besar."
+          "voiceNarration": "Ketika mengurai sebuah bangun datar, kita dapat memakai beberapa cara. Cara yang kita pakai akan memengaruhi hasilnya. Sebuah persegi bisa diurai dengan garis miring menjadi dua segitiga. METODE LUAR · Susun Bangun: Gabung bangun kecil jadi besar."
         },
         {
           "id": "K2B3B-V2-1",
           "titleHint": "Beberapa bangun jadi satu",
           "sceneType": "K2B3B-V2-1",
-          "voiceNarration": "Sekarang kita belajar menyusun bangun datar. Mari kita pahami bersama. Menyusun artinya menggabungkan beberapa bangun datar menjadi satu bentuk baru. Ada dua segitiga dan satu segi empat. Mari kita pahami bersama. Ingat cara Urai Bangun: Pecah bangun menjadi bagian."
+          "voiceNarration": "Sekarang kita belajar menyusun bangun datar. Menyusun artinya menggabungkan beberapa bangun datar menjadi satu bentuk baru. Ada dua segitiga dan satu segi empat. Ingat cara Urai Bangun: Pecah bangun menjadi bagian. Ingat cara Urai Bangun: Pecah bangun menjadi bagian."
         },
         {
           "id": "K2B3B-V2-2",
           "titleHint": "Dua segitiga dan satu segi empat",
           "sceneType": "K2B3B-V2-2",
-          "voiceNarration": "Kita susun dua segitiga di kiri dan kanan segi empat. Mari kita pahami bersama. Hasilnya sebuah segi enam yang memanjang. Mari kita pahami bersama. Kita bisa menyusunnya dengan cara lain. Mari kita pahami bersama. Di sini kita memakai ide Decompose — Pecah bangun menjadi bagian."
+          "voiceNarration": "Kita susun dua segitiga di kiri dan kanan segi empat. Hasilnya sebuah segi enam yang memanjang. Kita bisa menyusunnya dengan cara lain. Di sini kita memakai ide Decompose — Pecah bangun menjadi bagian. Di sini kita memakai Decompose. Pecah bangun menjadi bagian."
         },
         {
           "id": "K2B3B-V2-3",
           "titleHint": "Cara memengaruhi hasil",
           "sceneType": "K2B3B-V2-3",
-          "voiceNarration": "Ketika menyusun bangun datar, kita dapat menemukan beberapa bentuk yang berbeda. Cara kita menyusunnya akan memengaruhi hasilnya. Mari kita pahami bersama. Dua segitiga siku-siku yang sama bisa disusun menjadi sebuah persegi. Mari kita pahami bersama. METODE LUAR · Urai Bangun: Pecah bangun menjadi bagian."
+          "voiceNarration": "Ketika menyusun bangun datar, kita dapat menemukan beberapa bentuk yang berbeda. Cara kita menyusunnya akan memengaruhi hasilnya. Dua segitiga siku-siku yang sama bisa disusun menjadi sebuah persegi. METODE LUAR · Urai Bangun: Pecah bangun menjadi bagian."
         },
         {
           "id": "K2B3B-V3-1",
           "titleHint": "Mengenal tangram",
           "sceneType": "K2B3B-V3-1",
-          "voiceNarration": "Tangram adalah permainan menyusun bangun datar. Mari kita pahami bersama. Satu persegi besar dipotong menjadi tujuh keping. Mari kita pahami bersama. Ada lima segitiga, satu persegi, dan satu segi empat miring. Mari kita pahami bersama. Ingat cara Tangram: Tujuh keping banyak siluet."
+          "voiceNarration": "Tangram adalah permainan menyusun bangun datar. Satu persegi besar dipotong menjadi tujuh keping. Ada lima segitiga, satu persegi, dan satu segi empat miring. Ingat cara Tangram: Tujuh keping banyak siluet. Ingat cara Tangram: Tujuh keping banyak siluet."
         },
         {
           "id": "K2B3B-V3-2",
           "titleHint": "Aturan main",
           "sceneType": "K2B3B-V3-2",
-          "voiceNarration": "Aturan tangram, pakai semua keping. Mari kita pahami bersama. Keping tidak boleh bertumpuk. Mari kita pahami bersama. Keping harus saling menempel pada sisinya. Mari kita pahami bersama. Di sini kita memakai ide Tangram — Tujuh keping banyak siluet."
+          "voiceNarration": "Aturan tangram, pakai semua keping. Keping tidak boleh bertumpuk. Keping harus saling menempel pada sisinya. Di sini kita memakai ide Tangram — Tujuh keping banyak siluet. Di sini kita memakai Tangram. Tujuh keping banyak siluet."
         },
         {
           "id": "K2B3B-V3-3",
           "titleHint": "Mengurai dan menyusun berkaitan",
           "sceneType": "K2B3B-V3-3",
-          "voiceNarration": "Mengurai dan menyusun adalah dua kegiatan yang saling berlawanan. Mari kita pahami bersama. Persegi besar diurai menjadi tujuh keping. Mari kita pahami bersama. Tujuh keping disusun kembali menjadi persegi besar. Mari kita pahami bersama. METODE LUAR · Tangram: Tujuh keping banyak siluet."
+          "voiceNarration": "Mengurai dan menyusun adalah dua kegiatan yang saling berlawanan. Persegi besar diurai menjadi tujuh keping. Tujuh keping disusun kembali menjadi persegi besar. METODE LUAR · Tangram: Tujuh keping banyak siluet."
         }
       ],
       "videos": [
@@ -774,10 +753,10 @@
               "id": "K2B3B-V1-1",
               "judul": "Satu bangun, banyak bagian",
               "ketukan": [
-                "Bayangkan situasi nyata di kelas atau di rumah. Sekarang kita belajar mengurai sebuah bangun datar. Mari kita pahami bersama.",
+                "Bayangkan kamu sedang mempelajari Mengurai dan Menyusun Bangun Datar. Sekarang kita belajar mengurai sebuah bangun datar.",
                 "Mengurai artinya membagi satu bangun menjadi beberapa bentuk yang lebih kecil.",
-                "Kita bisa menarik garis untuk menguraikannya. Mari kita pahami bersama.",
-                "Ingat cara Susun Bangun: Gabung bangun kecil jadi besar."
+                "Kita bisa menarik garis untuk menguraikannya.",
+                "Ingat cara Susun Bangun: Gabung bangun kecil jadi besar. Ingat cara Susun Bangun: Gabung bangun kecil jadi besar."
               ],
               "papan": [
                 "Mengurai bangun",
@@ -790,10 +769,10 @@
               "id": "K2B3B-V1-2",
               "judul": "Dua segitiga dan satu segi empat",
               "ketukan": [
-                "Kita urai bangun ini dengan menarik dua garis. Mari kita pahami bersama.",
-                "Hasilnya dua segitiga dan satu segi empat. Mari kita pahami bersama.",
-                "Kita juga bisa menguraikan bangun yang sama dengan cara lain. Mari kita pahami bersama.",
-                "Di sini kita memakai ide Compose — Gabung bangun kecil jadi besar."
+                "Kita urai bangun ini dengan menarik dua garis.",
+                "Hasilnya dua segitiga dan satu segi empat.",
+                "Kita juga bisa menguraikan bangun yang sama dengan cara lain.",
+                "Di sini kita memakai ide Compose — Gabung bangun kecil jadi besar. Di sini kita memakai Compose. Gabung bangun kecil jadi besar."
               ],
               "papan": [
                 "Tarik dua garis",
@@ -807,8 +786,8 @@
               "judul": "Cara memengaruhi hasil",
               "ketukan": [
                 "Ketika mengurai sebuah bangun datar, kita dapat memakai beberapa cara.",
-                "Cara yang kita pakai akan memengaruhi hasilnya. Mari kita pahami bersama.",
-                "Sebuah persegi bisa diurai dengan garis miring menjadi dua segitiga. Mari kita pahami bersama.",
+                "Cara yang kita pakai akan memengaruhi hasilnya.",
+                "Sebuah persegi bisa diurai dengan garis miring menjadi dua segitiga.",
                 "METODE LUAR · Susun Bangun: Gabung bangun kecil jadi besar."
               ],
               "papan": [
@@ -829,10 +808,10 @@
               "id": "K2B3B-V2-1",
               "judul": "Beberapa bangun jadi satu",
               "ketukan": [
-                "Sekarang kita belajar menyusun bangun datar. Mari kita pahami bersama.",
+                "Sekarang kita belajar menyusun bangun datar.",
                 "Menyusun artinya menggabungkan beberapa bangun datar menjadi satu bentuk baru.",
-                "Ada dua segitiga dan satu segi empat. Mari kita pahami bersama.",
-                "Ingat cara Urai Bangun: Pecah bangun menjadi bagian."
+                "Ada dua segitiga dan satu segi empat.",
+                "Ingat cara Urai Bangun: Pecah bangun menjadi bagian. Ingat cara Urai Bangun: Pecah bangun menjadi bagian."
               ],
               "papan": [
                 "Menyusun bangun",
@@ -845,10 +824,10 @@
               "id": "K2B3B-V2-2",
               "judul": "Dua segitiga dan satu segi empat",
               "ketukan": [
-                "Kita susun dua segitiga di kiri dan kanan segi empat. Mari kita pahami bersama.",
-                "Hasilnya sebuah segi enam yang memanjang. Mari kita pahami bersama.",
-                "Kita bisa menyusunnya dengan cara lain. Mari kita pahami bersama.",
-                "Di sini kita memakai ide Decompose — Pecah bangun menjadi bagian."
+                "Kita susun dua segitiga di kiri dan kanan segi empat.",
+                "Hasilnya sebuah segi enam yang memanjang.",
+                "Kita bisa menyusunnya dengan cara lain.",
+                "Di sini kita memakai ide Decompose — Pecah bangun menjadi bagian. Di sini kita memakai Decompose. Pecah bangun menjadi bagian."
               ],
               "papan": [
                 "Segitiga kiri dan kanan",
@@ -862,8 +841,8 @@
               "judul": "Cara memengaruhi hasil",
               "ketukan": [
                 "Ketika menyusun bangun datar, kita dapat menemukan beberapa bentuk yang berbeda.",
-                "Cara kita menyusunnya akan memengaruhi hasilnya. Mari kita pahami bersama.",
-                "Dua segitiga siku-siku yang sama bisa disusun menjadi sebuah persegi. Mari kita pahami bersama.",
+                "Cara kita menyusunnya akan memengaruhi hasilnya.",
+                "Dua segitiga siku-siku yang sama bisa disusun menjadi sebuah persegi.",
                 "METODE LUAR · Urai Bangun: Pecah bangun menjadi bagian."
               ],
               "papan": [
@@ -884,10 +863,10 @@
               "id": "K2B3B-V3-1",
               "judul": "Mengenal tangram",
               "ketukan": [
-                "Tangram adalah permainan menyusun bangun datar. Mari kita pahami bersama.",
-                "Satu persegi besar dipotong menjadi tujuh keping. Mari kita pahami bersama.",
-                "Ada lima segitiga, satu persegi, dan satu segi empat miring. Mari kita pahami bersama.",
-                "Ingat cara Tangram: Tujuh keping banyak siluet."
+                "Tangram adalah permainan menyusun bangun datar.",
+                "Satu persegi besar dipotong menjadi tujuh keping.",
+                "Ada lima segitiga, satu persegi, dan satu segi empat miring.",
+                "Ingat cara Tangram: Tujuh keping banyak siluet. Ingat cara Tangram: Tujuh keping banyak siluet."
               ],
               "papan": [
                 "Permainan tangram",
@@ -900,10 +879,10 @@
               "id": "K2B3B-V3-2",
               "judul": "Aturan main",
               "ketukan": [
-                "Aturan tangram, pakai semua keping. Mari kita pahami bersama.",
-                "Keping tidak boleh bertumpuk. Mari kita pahami bersama.",
-                "Keping harus saling menempel pada sisinya. Mari kita pahami bersama.",
-                "Di sini kita memakai ide Tangram — Tujuh keping banyak siluet."
+                "Aturan tangram, pakai semua keping.",
+                "Keping tidak boleh bertumpuk.",
+                "Keping harus saling menempel pada sisinya.",
+                "Di sini kita memakai ide Tangram — Tujuh keping banyak siluet. Di sini kita memakai Tangram. Tujuh keping banyak siluet."
               ],
               "papan": [
                 "Pakai semua keping",
@@ -916,9 +895,9 @@
               "id": "K2B3B-V3-3",
               "judul": "Mengurai dan menyusun berkaitan",
               "ketukan": [
-                "Mengurai dan menyusun adalah dua kegiatan yang saling berlawanan. Mari kita pahami bersama.",
-                "Persegi besar diurai menjadi tujuh keping. Mari kita pahami bersama.",
-                "Tujuh keping disusun kembali menjadi persegi besar. Mari kita pahami bersama.",
+                "Mengurai dan menyusun adalah dua kegiatan yang saling berlawanan.",
+                "Persegi besar diurai menjadi tujuh keping.",
+                "Tujuh keping disusun kembali menjadi persegi besar.",
                 "METODE LUAR · Tangram: Tujuh keping banyak siluet."
               ],
               "papan": [
@@ -935,7 +914,7 @@
         {
           "stepNumber": 1,
           "stepTitle": "1. Pahami soal",
-          "stepDesc": "Baca soal Mengurai dan Menyusun Bangun Datar. Apa yang ditanyakan?",
+          "stepDesc": "Apa yang ditanyakan pada Mengurai dan Menyusun Bangun Datar?",
           "icon": "❓",
           "flowFrom": "START",
           "flowTo": "2"
@@ -967,7 +946,7 @@
         {
           "stepNumber": 5,
           "stepTitle": "5. Kerjakan",
-          "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+          "stepDesc": "Terapkan cara itu pada angka atau gambar.",
           "icon": "✏️",
           "flowFrom": "4",
           "flowTo": "6"
@@ -975,7 +954,7 @@
         {
           "stepNumber": 6,
           "stepTitle": "6. Cek masuk akal",
-          "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+          "stepDesc": "Apakah hasilnya masuk akal?",
           "icon": "✅",
           "flowFrom": "5",
           "flowTo": "7"
@@ -983,15 +962,15 @@
         {
           "stepNumber": 7,
           "stepTitle": "7. Simpulkan",
-          "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+          "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
           "icon": "💬",
           "flowFrom": "6",
           "flowTo": "8"
         },
         {
           "stepNumber": 8,
-          "stepTitle": "8. Lanjut main",
-          "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+          "stepTitle": "8. Main",
+          "stepDesc": "Latih di Concrete sampai Abstract.",
           "icon": "🎮",
           "flowFrom": "7",
           "flowTo": "END"
@@ -1067,20 +1046,6 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Aturan menyusun: pakai semua keping, jangan bertumpuk, sisi harus menempel, dan boleh diputar atau dibalik. Tips: mulai dari keping yang paling besar, lalu isi bagian yang tersisa dengan keping yang lebih kecil."
-        },
-        {
-          "fruitName": "Susun Bangun",
-          "emoji": "🌍",
-          "countNum": 1,
-          "countWord": "ingat",
-          "voiceSentence": "Gabung bangun kecil jadi besar."
-        },
-        {
-          "fruitName": "Urai Bangun",
-          "emoji": "🌍",
-          "countNum": 2,
-          "countWord": "ingat",
-          "voiceSentence": "Pecah bangun menjadi bagian."
         }
       ],
       "concreteSlides": [
@@ -1115,21 +1080,21 @@
           "diagramType": "draw-lines-on-polygon",
           "numberA": 6,
           "numberB": 4,
-          "caption": "Menarik garis pada bangun datar supaya terurai menjadi keping yang diminta.. Ingat Susun Bangun."
+          "caption": "Menarik garis pada bangun datar supaya terurai menjadi keping yang diminta.. Ingat Susun Bangun. (Susun Bangun)"
         },
         {
           "title": "Hasil Susunan yang Mungkin",
           "diagramType": "select-composites",
           "numberA": 3,
           "numberB": 4,
-          "caption": "Memilih semua bentuk yang bisa dibuat dari keping-keping yang diberikan.. Ingat Susun Bangun."
+          "caption": "Memilih semua bentuk yang bisa dibuat dari keping-keping yang diberikan.. Ingat Susun Bangun. (Susun Bangun)"
         },
         {
           "title": "Hitung Keping",
           "diagramType": "count-pieces",
           "numberA": 5,
           "numberB": 4,
-          "caption": "Menghitung banyak segitiga dan segi empat dari diagram bangun yang sudah diurai.. Ingat Susun Bangun."
+          "caption": "Menghitung banyak segitiga dan segi empat dari diagram bangun yang sudah diurai.. Ingat Susun Bangun. (Susun Bangun)"
         }
       ],
       "abstractSlides": [
@@ -1137,19 +1102,19 @@
           "symbolLarge": "1 → 2",
           "wordLarge": "KALIMAT URAIAN",
           "mathNotation": "mengurai dan menyusun",
-          "voiceReadout": "Susun Bangun. Pilih kartu yang tepat untuk bagian kosong kalimat."
+          "voiceReadout": "Susun Bangun. Mainkan dengan teliti."
         },
         {
           "symbolLarge": "1 → ? • ? → 1",
           "wordLarge": "URAI ATAU SUSUN",
           "mathNotation": "mengurai • menyusun",
-          "voiceReadout": "Susun Bangun. Satu menjadi banyak berarti mengurai. Banyak menjadi satu berarti menyusun."
+          "voiceReadout": "Susun Bangun. Mainkan dengan teliti."
         },
         {
           "symbolLarge": "n − 2",
           "wordLarge": "POLA SEGITIGA",
           "mathNotation": "dari pojok: n − 2 • dari tengah: n",
-          "voiceReadout": "Susun Bangun. Ketuk baris tabel, lalu pilih banyak segitiganya."
+          "voiceReadout": "Susun Bangun. Mainkan dengan teliti."
         }
       ],
       "interactiveGames": [
@@ -1161,7 +1126,7 @@
           "title": "Gunting Kertas",
           "bookReference": "Buku Siswa hlm. 81–82 (mengurai bangun datar; contoh persegi diurai menjadi dua segitiga atau dua segi empat)",
           "objective": "Pakai Susun Bangun: Gabung bangun kecil jadi besar. Latihan: Mengurai kertas dengan menggunting sepanjang garis putus-putus dan menamai keping hasilnya..",
-          "mechanicDescription": "Empat ronde (persegi menjadi 2 segitiga, persegi menjadi 2 segi empat, persegi panjang menjadi 2 segitiga, dan persegi panjang menjadi 2 segitiga dan 1 segi empat). Siswa mengetuk garis putus-putus untuk menggunting. Keping terpisah dan diberi nama. Bila hasilnya belum sesuai, kertas bisa disatukan lagi. Saat bermain, terapkan Compose: Gabung bangun kecil jadi besar.",
+          "mechanicDescription": "Empat ronde (persegi menjadi 2 segitiga, persegi menjadi 2 segi empat, persegi panjang menjadi 2 segitiga, dan persegi panjang menjadi 2 segitiga dan 1 segi empat). Siswa mengetuk garis putus-putus untuk menggunting. Keping terpisah dan diberi nama. Bila hasilnya belum sesuai, kertas bisa disatukan lagi. Saat bermain, ingat Susun Bangun: Gabung bangun kecil jadi besar.",
           "voiceGuide": "Susun Bangun. Gabung bangun kecil jadi besar."
         },
         {
@@ -1172,7 +1137,7 @@
           "title": "Susun Keping di Papan",
           "bookReference": "Buku Siswa hlm. 83–84 (menyusun bangun datar; dua segitiga dan satu segi empat)",
           "objective": "Pakai Susun Bangun: Gabung bangun kecil jadi besar. Latihan: Menyusun keping bangun datar menjadi bentuk yang diminta dengan menyeretnya ke bayangan..",
-          "mechanicDescription": "Empat ronde (persegi dari 2 segitiga, rumah, perahu, dan pohon cemara). Keping ada di nampan, bayangan bentuk ada di papan. Siswa menyeret keping ke tempat yang sesuai bentuknya, atau mengetuk keping lalu mengetuk tempatnya. Tempat yang salah ditolak disertai petunjuk. Saat bermain, terapkan Compose: Gabung bangun kecil jadi besar.",
+          "mechanicDescription": "Empat ronde (persegi dari 2 segitiga, rumah, perahu, dan pohon cemara). Keping ada di nampan, bayangan bentuk ada di papan. Siswa menyeret keping ke tempat yang sesuai bentuknya, atau mengetuk keping lalu mengetuk tempatnya. Tempat yang salah ditolak disertai petunjuk. Saat bermain, ingat Susun Bangun: Gabung bangun kecil jadi besar.",
           "voiceGuide": "Susun Bangun. Gabung bangun kecil jadi besar."
         },
         {
@@ -1183,7 +1148,7 @@
           "title": "Bongkar Bangunan Mainan",
           "bookReference": "Buku Siswa hlm. 81–85 (mengurai bangun datar menjadi bentuk baru, lalu menyebut hasilnya)",
           "objective": "Pakai Susun Bangun: Gabung bangun kecil jadi besar. Latihan: Membongkar bangunan mainan menjadi kepingnya dan menghitung banyak segitiga dan segi empat..",
-          "mechanicDescription": "Tiga ronde (rumah, perahu, pohon cemara). Siswa mengetuk tiap keping sehingga keping terlepas dari bangunan. Setelah semua terlepas, siswa mengatur banyak segitiga dan banyak segi empat, lalu menekan periksa. Saat bermain, terapkan Compose: Gabung bangun kecil jadi besar.",
+          "mechanicDescription": "Tiga ronde (rumah, perahu, pohon cemara). Siswa mengetuk tiap keping sehingga keping terlepas dari bangunan. Setelah semua terlepas, siswa mengatur banyak segitiga dan banyak segi empat, lalu menekan periksa. Saat bermain, ingat Susun Bangun: Gabung bangun kecil jadi besar.",
           "voiceGuide": "Susun Bangun. Gabung bangun kecil jadi besar."
         },
         {
@@ -1194,7 +1159,7 @@
           "title": "Dua Segitiga, Tiga Bentuk",
           "bookReference": "Buku Siswa hlm. 84 (Ayo Mencoba 2: susun dua segitiga dengan cara berbeda) dan hlm. 83",
           "objective": "Pakai Susun Bangun: Gabung bangun kecil jadi besar. Latihan: Menemukan tiga bentuk berbeda dari dua segitiga siku-siku yang sama dengan menempelkan sisi yang berbeda..",
-          "mechanicDescription": "Satu ronde penjelajahan. Siswa menekan tiga tombol tempel: sisi miring, sisi pendek menghadap, dan sisi pendek berlawanan. Tiap tombol menampilkan bentuk hasil. Siswa menamai tiap hasil dari tiga pilihan sampai ketiganya ditemukan. Saat bermain, terapkan Compose: Gabung bangun kecil jadi besar.",
+          "mechanicDescription": "Satu ronde penjelajahan. Siswa menekan tiga tombol tempel: sisi miring, sisi pendek menghadap, dan sisi pendek berlawanan. Tiap tombol menampilkan bentuk hasil. Siswa menamai tiap hasil dari tiga pilihan sampai ketiganya ditemukan. Saat bermain, ingat Susun Bangun: Gabung bangun kecil jadi besar.",
           "voiceGuide": "Susun Bangun. Gabung bangun kecil jadi besar."
         },
         {
@@ -1204,9 +1169,9 @@
           "gameType": "draw-dividing-lines",
           "title": "Garis Pengurai",
           "bookReference": "Buku Siswa hlm. 87–89 (Ayo Berlatih nomor 4 dan 5; Coba Pikirkan: buat garis agar menjadi 3, 5, atau 6 segitiga dan 2 segitiga 2 segi empat)",
-          "objective": "Menarik garis pada bangun datar supaya terurai menjadi keping yang diminta.. Ingat Susun Bangun.",
+          "objective": "Menarik garis pada bangun datar supaya terurai menjadi keping yang diminta.. Ingat Susun Bangun. (Susun Bangun)",
           "mechanicDescription": "Empat ronde (belah ketupat menjadi 3 segitiga, segi lima menjadi 5 segitiga, segi enam menjadi 6 segitiga, dan persegi panjang menjadi 2 segitiga dan 2 segi empat). Siswa mengetuk dua titik untuk menarik garis. Garis yang bersilangan ditolak. Layar menghitung keping hasil, lalu siswa menekan periksa. Gunakan Susun Bangun.",
-          "voiceGuide": "Susun Bangun. Ketuk dua titik untuk menarik garis, lalu periksa hasilnya."
+          "voiceGuide": "Susun Bangun. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3B-game-6",
@@ -1215,9 +1180,9 @@
           "gameType": "select-possible-composites",
           "title": "Hasil Susunan yang Mungkin",
           "bookReference": "Buku Siswa hlm. 83–85 (menyusun bangun datar; Ayo Berlatih nomor 2: tarik garis hasil susunan)",
-          "objective": "Memilih semua bentuk yang bisa dibuat dari keping-keping yang diberikan.. Ingat Susun Bangun.",
+          "objective": "Memilih semua bentuk yang bisa dibuat dari keping-keping yang diberikan.. Ingat Susun Bangun. (Susun Bangun)",
           "mechanicDescription": "Tiga ronde (dua segitiga siku-siku, satu persegi dan satu segitiga, serta dua segitiga dan satu segi empat). Tiap ronde ada empat bentuk. Siswa memilih semua bentuk yang bisa disusun dari keping, lalu menekan periksa. Bentuk yang tidak mungkin punya luas berbeda dari jumlah keping. Gunakan Susun Bangun.",
-          "voiceGuide": "Susun Bangun. Pilih semua bentuk yang bisa disusun dari kepingnya."
+          "voiceGuide": "Susun Bangun. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3B-game-7",
@@ -1226,9 +1191,9 @@
           "gameType": "count-pieces-from-diagram",
           "title": "Hitung Keping",
           "bookReference": "Buku Siswa hlm. 81 dan 86–88 (mengurai bangun datar; hasil uraian)",
-          "objective": "Menghitung banyak segitiga dan segi empat dari diagram bangun yang sudah diurai.. Ingat Susun Bangun.",
+          "objective": "Menghitung banyak segitiga dan segi empat dari diagram bangun yang sudah diurai.. Ingat Susun Bangun. (Susun Bangun)",
           "mechanicDescription": "Empat ronde (persegi dengan satu diagonal, persegi panjang dengan dua garis, segi enam dengan tiga garis dari titik tengah, dan segi lima dengan lima garis dari titik tengah). Siswa mengatur banyak segitiga dan segi empat dengan tombol tambah dan kurang, lalu menekan periksa. Gunakan Susun Bangun.",
-          "voiceGuide": "Susun Bangun. Hitung segitiga dan segi empat pada diagram, lalu periksa."
+          "voiceGuide": "Susun Bangun. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3B-game-8",
@@ -1237,9 +1202,9 @@
           "gameType": "fill-sentence-blanks",
           "title": "Isi Kalimat Uraian",
           "bookReference": "Buku Siswa hlm. 81–84 (kalimat: kita dapat mengurai bangun menjadi 2 segitiga dan 1 segi empat)",
-          "objective": "Melengkapi kalimat tentang hasil mengurai dan menyusun dengan angka dan nama bentuk yang tepat.. Ingat Susun Bangun.",
+          "objective": "Melengkapi kalimat tentang hasil mengurai dan menyusun dengan angka dan nama bentuk yang tepat.. Ingat Susun Bangun. (Susun Bangun)",
           "mechanicDescription": "Dua ronde, tiap ronde tiga kalimat dengan bagian kosong. Contoh: persegi diurai dengan garis miring menjadi ... segitiga. Siswa memilih satu dari tiga kartu untuk tiap bagian kosong. Gunakan Susun Bangun.",
-          "voiceGuide": "Susun Bangun. Pilih kartu yang tepat untuk bagian kosong kalimat."
+          "voiceGuide": "Susun Bangun. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3B-game-9",
@@ -1248,9 +1213,9 @@
           "gameType": "sort-statements-two-bins",
           "title": "Mengurai atau Menyusun?",
           "bookReference": "Buku Siswa hlm. 81–85 (mengurai: satu menjadi banyak; menyusun: banyak menjadi satu)",
-          "objective": "Menentukan kalimat yang menggambarkan kegiatan mengurai dan kalimat yang menggambarkan kegiatan menyusun.. Ingat Susun Bangun.",
+          "objective": "Menentukan kalimat yang menggambarkan kegiatan mengurai dan kalimat yang menggambarkan kegiatan menyusun.. Ingat Susun Bangun. (Susun Bangun)",
           "mechanicDescription": "Dua ronde, masing-masing empat kalimat. Siswa menyeret atau mengetuk kalimat ke kotak Mengurai (satu menjadi banyak) atau kotak Menyusun (banyak menjadi satu). Kalimat yang salah kembali disertai penjelasan. Gunakan Susun Bangun.",
-          "voiceGuide": "Susun Bangun. Satu menjadi banyak berarti mengurai. Banyak menjadi satu berarti menyusun."
+          "voiceGuide": "Susun Bangun. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3B-game-10",
@@ -1259,9 +1224,9 @@
           "gameType": "pattern-table-triangles",
           "title": "Tabel Pola Segitiga",
           "bookReference": "Buku Siswa hlm. 89 (Coba Pikirkan nomor 2 sampai 4: 3, 5, dan 6 segitiga), diperkaya pola triangulasi",
-          "objective": "Menemukan pola banyak segitiga pada segi banyak: banyak sisi dikurangi dua dari satu pojok, dan sama dengan banyak sisi dari titik tengah.. Ingat Susun Bangun.",
+          "objective": "Menemukan pola banyak segitiga pada segi banyak: banyak sisi dikurangi dua dari satu pojok, dan sama dengan banyak sisi dari titik tengah.. Ingat Susun Bangun. (Susun Bangun)",
           "mechanicDescription": "Dua ronde. Ronde 1: garis dari satu pojok untuk segitiga, segi empat, segi lima, dan segi enam. Ronde 2: garis dari titik tengah. Siswa mengetuk baris tabel, lalu memilih kartu angka yang tepat. Gunakan Susun Bangun.",
-          "voiceGuide": "Susun Bangun. Ketuk baris tabel, lalu pilih banyak segitiganya."
+          "voiceGuide": "Susun Bangun. Mainkan dengan teliti."
         }
       ],
       "poinPenting": {
@@ -1270,11 +1235,6 @@
             "nama": "Mengurai",
             "isi": "satu bangun menjadi beberapa bentuk",
             "suara": "Mengurai berarti membagi satu bangun datar menjadi beberapa bentuk yang lebih kecil dengan menarik garis."
-          },
-          {
-            "nama": "Menyusun",
-            "isi": "beberapa bangun menjadi satu bentuk",
-            "suara": "Menyusun berarti menggabungkan beberapa bangun datar menjadi satu bentuk baru. Keping harus menempel pada sisinya dan tidak boleh bertumpuk."
           },
           {
             "nama": "Susun Bangun",
@@ -1294,11 +1254,11 @@
         ],
         "suara": "Ingat: Susun Bangun, Urai Bangun, Tangram.",
         "caraMenyebutkan": "Persegi diurai menjadi 2 segitiga",
-        "rumah": "Ayo Mencoba di rumah: terapkan Susun Bangun pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+        "rumah": "Ayo Mencoba: terapkan Susun Bangun pada satu soal nyata di rumah.",
         "refleksi": [
-          "Bagaimana Susun Bangun membantumu memahami soal?",
-          "Kapan kamu memakai Urai Bangun?",
-          "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+          "Bagaimana Susun Bangun membantumu?",
+          "Kapan memakai Urai Bangun?",
+          "Apa bedanya dengan hanya menghafal tanpa arti?"
         ]
       }
     },
@@ -1306,12 +1266,12 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Bangun Ruang)",
       "fullTitle": "Sub-Bab C: Bangun Ruang",
-      "targetDescription": "Siswa membedakan bangun datar dan bangun ruang, menjelaskan bahwa bangun ruang punya ruang di dalam yang dapat diisi, mengelompokkan bangun ruang menurut permukaan datar atau lengkung lewat percobaan menggelindingkan, menamai kubus, balok, tabung, kerucut, dan bola menurut cirinya, serta menemukan benda berbentuk bangun ruang di sekitar. Siswa memakai cara Cetak Permukaan, Tas Misteri, Ciri Bangun Ruang.",
+      "targetDescription": "Siswa membedakan bangun datar dan bangun ruang, menjelaskan bahwa bangun ruang punya ruang di dalam yang dapat diisi, mengelompokkan bangun ruang menurut permukaan datar atau lengkung lewat percobaan menggelindingkan, menamai kubus, balok, tabung, kerucut, dan bola menurut cirinya, serta menemukan benda berbentuk bangun ruang di sekitar. Siswa memakai cara Cetak Permukaan, Tas Misteri, Ciri Bangun Ruang. Siswa memakai cara Cetak Permukaan, Tas Misteri, Ciri Bangun Ruang.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#16A34A",
       "secondaryText": "#14532D",
       "silabus": {
-        "teksSuara": "Kita belajar bangun ruang. Bukunya bernama Bentuk di Sekitar Kita, bagian bangun ruang. Kita membedakan bangun datar dan bangun ruang, mencoba menggelindingkan benda untuk mengenal permukaan datar dan lengkung, lalu menamai kubus, balok, tabung, kerucut, dan bola. Kita memakai cara dari luar buku: Cetak Permukaan (Face Print); Tas Misteri (Mystery Bag); Ciri Bangun Ruang (3D Attributes). Tekan permukaan bangun ruang jadi bangun datar. Kenali bangun ruang dengan meraba. Sebut sisi, rusuk, titik sudut. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "teksSuara": "Kita belajar bangun ruang. Bukunya bernama Bentuk di Sekitar Kita, bagian bangun ruang. Kita membedakan bangun datar dan bangun ruang, mencoba menggelindingkan benda untuk mengenal permukaan datar dan lengkung, lalu menamai kubus, balok, tabung, kerucut, dan bola. Kita memakai cara: Cetak Permukaan, Tas Misteri, Ciri Bangun Ruang. Tekan permukaan bangun ruang jadi bangun datar. Kenali bangun ruang dengan meraba. Sebut sisi, rusuk, titik sudut. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa membedakan bangun datar dan bangun ruang, mengelompokkan bangun ruang berdasarkan permukaan datar atau lengkung, serta menamai kubus, balok, tabung, kerucut, dan bola sesuai ciri-cirinya.",
         "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 3 Sub-Bab C)."
       },
@@ -1355,55 +1315,55 @@
           "id": "K2B3C-V1-1",
           "titleHint": "Benda di sekitar kita",
           "sceneType": "K2B3C-V1-1",
-          "voiceNarration": "Bayangkan situasi nyata di kelas atau di rumah. Amati benda-benda di sekitar kita. Mari kita pahami bersama. Ada topi ulang tahun, kubus warna-warni, botol minum, dan bola. Mari kita pahami bersama. Ada juga bentuk segitiga, segi empat, dan lingkaran yang tipis. Mari kita pahami bersama. Ingat cara Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar."
+          "voiceNarration": "Bayangkan kamu sedang mempelajari Bangun Ruang. Amati benda-benda di sekitar kita. Ada topi ulang tahun, kubus warna-warni, botol minum, dan bola. Ada juga bentuk segitiga, segi empat, dan lingkaran yang tipis. Ingat cara Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar. Ingat cara Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar."
         },
         {
           "id": "K2B3C-V1-2",
           "titleHint": "Bangun datar",
           "sceneType": "K2B3C-V1-2",
-          "voiceNarration": "Bentuk benda dibedakan menjadi bangun datar dan bangun ruang. Mari kita pahami bersama. Bangun datar hanya mempunyai satu permukaan. Mari kita pahami bersama. Contohnya lingkaran, segi empat, dan segitiga. Mari kita pahami bersama. Di sini kita memakai ide Face Print — Tekan permukaan bangun ruang jadi bangun datar."
+          "voiceNarration": "Bentuk benda dibedakan menjadi bangun datar dan bangun ruang. Bangun datar hanya mempunyai satu permukaan. Contohnya lingkaran, segi empat, dan segitiga. Di sini kita memakai ide Face Print — Tekan permukaan bangun ruang jadi bangun datar. Di sini kita memakai Face Print. Tekan permukaan bangun ruang jadi bangun datar."
         },
         {
           "id": "K2B3C-V1-3",
           "titleHint": "Bangun ruang",
           "sceneType": "K2B3C-V1-3",
-          "voiceNarration": "Bangun ruang punya ruang di dalamnya, jadi dapat diisi. Mari kita pahami bersama. Contohnya kotak, kubus, topi, dan botol. Mari kita pahami bersama. Kotak, kubus, dan botol punya beberapa permukaan. Mari kita pahami bersama. METODE LUAR · Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar."
+          "voiceNarration": "Bangun ruang punya ruang di dalamnya, jadi dapat diisi. Contohnya kotak, kubus, topi, dan botol. Kotak, kubus, dan botol punya beberapa permukaan. METODE LUAR · Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar."
         },
         {
           "id": "K2B3C-V2-1",
           "titleHint": "Gelindingkan benda",
           "sceneType": "K2B3C-V2-1",
-          "voiceNarration": "Ambil kerucut, kubus, botol, kotak, dan bola. Mari kita pahami bersama. Coba gelindingkan benda-benda tersebut. Mari kita pahami bersama. Bola dan botol mudah menggelinding. Mari kita pahami bersama. Ingat cara Tas Misteri: Kenali bangun ruang dengan meraba."
+          "voiceNarration": "Ambil kerucut, kubus, botol, kotak, dan bola. Coba gelindingkan benda-benda tersebut. Bola dan botol mudah menggelinding. Ingat cara Tas Misteri: Kenali bangun ruang dengan meraba. Ingat cara Tas Misteri: Kenali bangun ruang dengan meraba."
         },
         {
           "id": "K2B3C-V2-2",
           "titleHint": "Permukaan lengkung dan datar",
           "sceneType": "K2B3C-V2-2",
-          "voiceNarration": "Bangun ruang dibedakan berdasarkan permukaannya. Mari kita pahami bersama. Ada yang permukaannya lengkung sehingga mudah menggelinding. Mari kita pahami bersama. Contohnya tabung, kerucut, dan bola. Mari kita pahami bersama. Di sini kita memakai ide Mystery Bag — Kenali bangun ruang dengan meraba."
+          "voiceNarration": "Bangun ruang dibedakan berdasarkan permukaannya. Ada yang permukaannya lengkung sehingga mudah menggelinding. Contohnya tabung, kerucut, dan bola. Di sini kita memakai ide Mystery Bag — Kenali bangun ruang dengan meraba. Di sini kita memakai Mystery Bag. Kenali bangun ruang dengan meraba."
         },
         {
           "id": "K2B3C-V2-3",
           "titleHint": "Mengapa?",
           "sceneType": "K2B3C-V2-3",
-          "voiceNarration": "Permukaan lengkung bisa berguling terus. Mari kita pahami bersama. Permukaan datar menahan benda supaya diam. Mari kita pahami bersama. Karena itu kita menumpuk kotak, dan menggelindingkan bola. Mari kita pahami bersama. METODE LUAR · Tas Misteri: Kenali bangun ruang dengan meraba."
+          "voiceNarration": "Permukaan lengkung bisa berguling terus. Permukaan datar menahan benda supaya diam. Karena itu kita menumpuk kotak, dan menggelindingkan bola. METODE LUAR · Tas Misteri: Kenali bangun ruang dengan meraba."
         },
         {
           "id": "K2B3C-V3-1",
           "titleHint": "Kubus dan balok",
           "sceneType": "K2B3C-V3-1",
-          "voiceNarration": "Ada lima nama bangun ruang: kubus, balok, tabung, kerucut, dan bola. Mari kita pahami bersama. Kubus dan balok adalah bangun ruang dengan permukaan datar. Mari kita pahami bersama. Kubus mempunyai permukaan berbentuk segi empat yang sama ukurannya. Mari kita pahami bersama. Ingat cara Ciri Bangun Ruang: Sebut sisi, rusuk, titik sudut."
+          "voiceNarration": "Ada lima nama bangun ruang: kubus, balok, tabung, kerucut, dan bola. Kubus dan balok adalah bangun ruang dengan permukaan datar. Kubus mempunyai permukaan berbentuk segi empat yang sama ukurannya. Ingat cara Ciri Bangun Ruang: Sebut sisi, rusuk, titik sudut. Ingat cara Ciri Bangun Ruang: Sebut sisi, rusuk, titik sudut."
         },
         {
           "id": "K2B3C-V3-2",
           "titleHint": "Tabung, kerucut, dan bola",
           "sceneType": "K2B3C-V3-2",
-          "voiceNarration": "Tabung seperti kaleng atau botol. Mari kita pahami bersama. Kerucut seperti topi ulang tahun atau kerucut es krim. Mari kita pahami bersama. Bola seperti bola sepak dan kelereng. Mari kita pahami bersama. Di sini kita memakai ide 3D Attributes — Sebut sisi, rusuk, titik sudut."
+          "voiceNarration": "Tabung seperti kaleng atau botol. Kerucut seperti topi ulang tahun atau kerucut es krim. Bola seperti bola sepak dan kelereng. Di sini kita memakai ide 3D Attributes — Sebut sisi, rusuk, titik sudut. Di sini kita memakai 3D Attributes. Sebut sisi, rusuk, titik sudut."
         },
         {
           "id": "K2B3C-V3-3",
           "titleHint": "Cari bangun ruang",
           "sceneType": "K2B3C-V3-3",
-          "voiceNarration": "Sekarang amati benda-benda di sekitarmu. Mari kita pahami bersama. Temukan benda yang berbentuk bangun ruang. Mari kita pahami bersama. Kelompokkan: kubus, balok, tabung, kerucut, atau bola. Mari kita pahami bersama. METODE LUAR · Ciri Bangun Ruang: Sebut sisi, rusuk, titik sudut."
+          "voiceNarration": "Sekarang amati benda-benda di sekitarmu. Temukan benda yang berbentuk bangun ruang. Kelompokkan: kubus, balok, tabung, kerucut, atau bola. METODE LUAR · Ciri Bangun Ruang: Sebut sisi, rusuk, titik sudut."
         }
       ],
       "videos": [
@@ -1416,10 +1376,10 @@
               "id": "K2B3C-V1-1",
               "judul": "Benda di sekitar kita",
               "ketukan": [
-                "Bayangkan situasi nyata di kelas atau di rumah. Amati benda-benda di sekitar kita. Mari kita pahami bersama.",
-                "Ada topi ulang tahun, kubus warna-warni, botol minum, dan bola. Mari kita pahami bersama.",
-                "Ada juga bentuk segitiga, segi empat, dan lingkaran yang tipis. Mari kita pahami bersama.",
-                "Ingat cara Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar."
+                "Bayangkan kamu sedang mempelajari Bangun Ruang. Amati benda-benda di sekitar kita.",
+                "Ada topi ulang tahun, kubus warna-warni, botol minum, dan bola.",
+                "Ada juga bentuk segitiga, segi empat, dan lingkaran yang tipis.",
+                "Ingat cara Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar. Ingat cara Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar."
               ],
               "papan": [
                 "Amati benda",
@@ -1432,10 +1392,10 @@
               "id": "K2B3C-V1-2",
               "judul": "Bangun datar",
               "ketukan": [
-                "Bentuk benda dibedakan menjadi bangun datar dan bangun ruang. Mari kita pahami bersama.",
-                "Bangun datar hanya mempunyai satu permukaan. Mari kita pahami bersama.",
-                "Contohnya lingkaran, segi empat, dan segitiga. Mari kita pahami bersama.",
-                "Di sini kita memakai ide Face Print — Tekan permukaan bangun ruang jadi bangun datar."
+                "Bentuk benda dibedakan menjadi bangun datar dan bangun ruang.",
+                "Bangun datar hanya mempunyai satu permukaan.",
+                "Contohnya lingkaran, segi empat, dan segitiga.",
+                "Di sini kita memakai ide Face Print — Tekan permukaan bangun ruang jadi bangun datar. Di sini kita memakai Face Print. Tekan permukaan bangun ruang jadi bangun datar."
               ],
               "papan": [
                 "Datar dan ruang",
@@ -1448,9 +1408,9 @@
               "id": "K2B3C-V1-3",
               "judul": "Bangun ruang",
               "ketukan": [
-                "Bangun ruang punya ruang di dalamnya, jadi dapat diisi. Mari kita pahami bersama.",
-                "Contohnya kotak, kubus, topi, dan botol. Mari kita pahami bersama.",
-                "Kotak, kubus, dan botol punya beberapa permukaan. Mari kita pahami bersama.",
+                "Bangun ruang punya ruang di dalamnya, jadi dapat diisi.",
+                "Contohnya kotak, kubus, topi, dan botol.",
+                "Kotak, kubus, dan botol punya beberapa permukaan.",
                 "METODE LUAR · Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar."
               ],
               "papan": [
@@ -1471,10 +1431,10 @@
               "id": "K2B3C-V2-1",
               "judul": "Gelindingkan benda",
               "ketukan": [
-                "Ambil kerucut, kubus, botol, kotak, dan bola. Mari kita pahami bersama.",
-                "Coba gelindingkan benda-benda tersebut. Mari kita pahami bersama.",
-                "Bola dan botol mudah menggelinding. Mari kita pahami bersama.",
-                "Ingat cara Tas Misteri: Kenali bangun ruang dengan meraba."
+                "Ambil kerucut, kubus, botol, kotak, dan bola.",
+                "Coba gelindingkan benda-benda tersebut.",
+                "Bola dan botol mudah menggelinding.",
+                "Ingat cara Tas Misteri: Kenali bangun ruang dengan meraba. Ingat cara Tas Misteri: Kenali bangun ruang dengan meraba."
               ],
               "papan": [
                 "Ambil lima benda",
@@ -1487,10 +1447,10 @@
               "id": "K2B3C-V2-2",
               "judul": "Permukaan lengkung dan datar",
               "ketukan": [
-                "Bangun ruang dibedakan berdasarkan permukaannya. Mari kita pahami bersama.",
-                "Ada yang permukaannya lengkung sehingga mudah menggelinding. Mari kita pahami bersama.",
-                "Contohnya tabung, kerucut, dan bola. Mari kita pahami bersama.",
-                "Di sini kita memakai ide Mystery Bag — Kenali bangun ruang dengan meraba."
+                "Bangun ruang dibedakan berdasarkan permukaannya.",
+                "Ada yang permukaannya lengkung sehingga mudah menggelinding.",
+                "Contohnya tabung, kerucut, dan bola.",
+                "Di sini kita memakai ide Mystery Bag — Kenali bangun ruang dengan meraba. Di sini kita memakai Mystery Bag. Kenali bangun ruang dengan meraba."
               ],
               "papan": [
                 "Lihat permukaannya",
@@ -1503,9 +1463,9 @@
               "id": "K2B3C-V2-3",
               "judul": "Mengapa?",
               "ketukan": [
-                "Permukaan lengkung bisa berguling terus. Mari kita pahami bersama.",
-                "Permukaan datar menahan benda supaya diam. Mari kita pahami bersama.",
-                "Karena itu kita menumpuk kotak, dan menggelindingkan bola. Mari kita pahami bersama.",
+                "Permukaan lengkung bisa berguling terus.",
+                "Permukaan datar menahan benda supaya diam.",
+                "Karena itu kita menumpuk kotak, dan menggelindingkan bola.",
                 "METODE LUAR · Tas Misteri: Kenali bangun ruang dengan meraba."
               ],
               "papan": [
@@ -1526,10 +1486,10 @@
               "id": "K2B3C-V3-1",
               "judul": "Kubus dan balok",
               "ketukan": [
-                "Ada lima nama bangun ruang: kubus, balok, tabung, kerucut, dan bola. Mari kita pahami bersama.",
-                "Kubus dan balok adalah bangun ruang dengan permukaan datar. Mari kita pahami bersama.",
-                "Kubus mempunyai permukaan berbentuk segi empat yang sama ukurannya. Mari kita pahami bersama.",
-                "Ingat cara Ciri Bangun Ruang: Sebut sisi, rusuk, titik sudut."
+                "Ada lima nama bangun ruang: kubus, balok, tabung, kerucut, dan bola.",
+                "Kubus dan balok adalah bangun ruang dengan permukaan datar.",
+                "Kubus mempunyai permukaan berbentuk segi empat yang sama ukurannya.",
+                "Ingat cara Ciri Bangun Ruang: Sebut sisi, rusuk, titik sudut. Ingat cara Ciri Bangun Ruang: Sebut sisi, rusuk, titik sudut."
               ],
               "papan": [
                 "Lima bangun ruang",
@@ -1542,10 +1502,10 @@
               "id": "K2B3C-V3-2",
               "judul": "Tabung, kerucut, dan bola",
               "ketukan": [
-                "Tabung seperti kaleng atau botol. Mari kita pahami bersama.",
-                "Kerucut seperti topi ulang tahun atau kerucut es krim. Mari kita pahami bersama.",
-                "Bola seperti bola sepak dan kelereng. Mari kita pahami bersama.",
-                "Di sini kita memakai ide 3D Attributes — Sebut sisi, rusuk, titik sudut."
+                "Tabung seperti kaleng atau botol.",
+                "Kerucut seperti topi ulang tahun atau kerucut es krim.",
+                "Bola seperti bola sepak dan kelereng.",
+                "Di sini kita memakai ide 3D Attributes — Sebut sisi, rusuk, titik sudut. Di sini kita memakai 3D Attributes. Sebut sisi, rusuk, titik sudut."
               ],
               "papan": [
                 "Tabung: kaleng",
@@ -1558,9 +1518,9 @@
               "id": "K2B3C-V3-3",
               "judul": "Cari bangun ruang",
               "ketukan": [
-                "Sekarang amati benda-benda di sekitarmu. Mari kita pahami bersama.",
-                "Temukan benda yang berbentuk bangun ruang. Mari kita pahami bersama.",
-                "Kelompokkan: kubus, balok, tabung, kerucut, atau bola. Mari kita pahami bersama.",
+                "Sekarang amati benda-benda di sekitarmu.",
+                "Temukan benda yang berbentuk bangun ruang.",
+                "Kelompokkan: kubus, balok, tabung, kerucut, atau bola.",
                 "METODE LUAR · Ciri Bangun Ruang: Sebut sisi, rusuk, titik sudut."
               ],
               "papan": [
@@ -1577,7 +1537,7 @@
         {
           "stepNumber": 1,
           "stepTitle": "1. Pahami soal",
-          "stepDesc": "Baca soal Bangun Ruang. Apa yang ditanyakan?",
+          "stepDesc": "Apa yang ditanyakan pada Bangun Ruang?",
           "icon": "❓",
           "flowFrom": "START",
           "flowTo": "2"
@@ -1609,7 +1569,7 @@
         {
           "stepNumber": 5,
           "stepTitle": "5. Kerjakan",
-          "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+          "stepDesc": "Terapkan cara itu pada angka atau gambar.",
           "icon": "✏️",
           "flowFrom": "4",
           "flowTo": "6"
@@ -1617,7 +1577,7 @@
         {
           "stepNumber": 6,
           "stepTitle": "6. Cek masuk akal",
-          "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+          "stepDesc": "Apakah hasilnya masuk akal?",
           "icon": "✅",
           "flowFrom": "5",
           "flowTo": "7"
@@ -1625,15 +1585,15 @@
         {
           "stepNumber": 7,
           "stepTitle": "7. Simpulkan",
-          "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+          "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
           "icon": "💬",
           "flowFrom": "6",
           "flowTo": "8"
         },
         {
           "stepNumber": 8,
-          "stepTitle": "8. Lanjut main",
-          "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+          "stepTitle": "8. Main",
+          "stepDesc": "Latih di Concrete sampai Abstract.",
           "icon": "🎮",
           "flowFrom": "7",
           "flowTo": "END"
@@ -1709,20 +1669,6 @@
           "countNum": 5,
           "countWord": "Lima",
           "voiceSentence": "Permukaan bangun ruang bisa dicetak. Permukaan kubus menghasilkan segi empat yang sama sisinya. Permukaan balok menghasilkan segi empat yang berbeda sisinya. Alas tabung dan alas kerucut menghasilkan lingkaran. Bola tidak punya permukaan datar untuk dicetak."
-        },
-        {
-          "fruitName": "Cetak Permukaan",
-          "emoji": "🌍",
-          "countNum": 1,
-          "countWord": "ingat",
-          "voiceSentence": "Tekan permukaan bangun ruang jadi bangun datar."
-        },
-        {
-          "fruitName": "Tas Misteri",
-          "emoji": "🌍",
-          "countNum": 2,
-          "countWord": "ingat",
-          "voiceSentence": "Kenali bangun ruang dengan meraba."
         }
       ],
       "concreteSlides": [
@@ -1757,21 +1703,21 @@
           "diagramType": "view-silhouette",
           "numberA": 4,
           "numberB": 3,
-          "caption": "Menentukan bangun datar yang tampak bila bangun ruang dilihat dari atas atau dari samping.. Ingat Cetak Permukaan."
+          "caption": "Menentukan bangun datar yang tampak bila bangun ruang dilihat dari atas atau dari samping.. Ingat Cetak Permukaan. (Cetak Permukaan)"
         },
         {
           "title": "Tabel Permukaan",
           "diagramType": "surface-table",
           "numberA": 5,
           "numberB": 3,
-          "caption": "Mengisi tabel permukaan datar, permukaan lengkung, dan menggelinding untuk lima bangun ruang.. Ingat Cetak Permukaan."
+          "caption": "Mengisi tabel permukaan datar, permukaan lengkung, dan menggelinding untuk lima bangun ruang.. Ingat Cetak Permukaan. (Cetak Permukaan)"
         },
         {
           "title": "Beri Nama Bangun Ruang",
           "diagramType": "name-tags",
           "numberA": 5,
           "numberB": 2,
-          "caption": "Memberi nama pada gambar bangun ruang dengan menyeret label nama.. Ingat Cetak Permukaan."
+          "caption": "Memberi nama pada gambar bangun ruang dengan menyeret label nama.. Ingat Cetak Permukaan. (Cetak Permukaan)"
         }
       ],
       "abstractSlides": [
@@ -1779,19 +1725,19 @@
           "symbolLarge": "✔ ✘",
           "wordLarge": "BENAR SALAH",
           "mathNotation": "ciri bangun ruang",
-          "voiceReadout": "Cetak Permukaan. Baca pernyataannya, lalu tekan Benar atau Salah."
+          "voiceReadout": "Cetak Permukaan. Mainkan dengan teliti."
         },
         {
           "symbolLarge": "datar, segi empat",
           "wordLarge": "DETEKTIF",
           "mathNotation": "dua petunjuk, satu bangun ruang",
-          "voiceReadout": "Cetak Permukaan. Baca kedua petunjuk, lalu pilih namanya."
+          "voiceReadout": "Cetak Permukaan. Mainkan dengan teliti."
         },
         {
           "symbolLarge": "A + B",
           "wordLarge": "SUSUN KALIMAT",
           "mathNotation": "kata demi kata",
-          "voiceReadout": "Cetak Permukaan. Ketuk kartu kata berurutan sampai kalimatnya benar."
+          "voiceReadout": "Cetak Permukaan. Mainkan dengan teliti."
         }
       ],
       "interactiveGames": [
@@ -1803,7 +1749,7 @@
           "title": "Lereng Gelinding",
           "bookReference": "Buku Siswa hlm. 91 (Ayo Mencoba 1: gelindingkan benda-benda; benda mana yang dapat menggelinding?)",
           "objective": "Pakai Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar. Latihan: Mencoba menggelindingkan benda nyata dan menyimpulkan bahwa permukaan lengkung mudah menggelinding..",
-          "mechanicDescription": "Dua ronde, masing-masing lima benda (topi ulang tahun, dadu, botol, kardus, bola; lalu kaleng, kelereng, kotak pensil, kerucut es krim, kotak hadiah). Siswa mengetuk benda untuk melepasnya di lereng, melihat yang menggelinding dan yang diam, lalu memilih semua benda yang menggelinding dan alasannya. Saat bermain, terapkan Face Print: Tekan permukaan bangun ruang jadi bangun datar.",
+          "mechanicDescription": "Dua ronde, masing-masing lima benda (topi ulang tahun, dadu, botol, kardus, bola; lalu kaleng, kelereng, kotak pensil, kerucut es krim, kotak hadiah). Siswa mengetuk benda untuk melepasnya di lereng, melihat yang menggelinding dan yang diam, lalu memilih semua benda yang menggelinding dan alasannya. Saat bermain, ingat Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar.",
           "voiceGuide": "Cetak Permukaan. Tekan permukaan bangun ruang jadi bangun datar."
         },
         {
@@ -1814,7 +1760,7 @@
           "title": "Tas Misteri",
           "bookReference": "Buku Siswa hlm. 91–92 (bangun ruang dibedakan berdasarkan permukaannya), diperkaya tas misteri Montessori",
           "objective": "Pakai Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar. Latihan: Menebak nama bangun ruang dari ciri-ciri yang dirasakan tanpa melihat bendanya..",
-          "mechanicDescription": "Tiga ronde (kubus, kerucut, bola). Benda tersembunyi di dalam tas. Siswa menekan tombol Raba untuk membuka petunjuk satu per satu, lalu menebak nama bangun ruang dari lima pilihan. Semakin sedikit petunjuk yang dipakai, semakin banyak bintang. Saat bermain, terapkan Face Print: Tekan permukaan bangun ruang jadi bangun datar.",
+          "mechanicDescription": "Tiga ronde (kubus, kerucut, bola). Benda tersembunyi di dalam tas. Siswa menekan tombol Raba untuk membuka petunjuk satu per satu, lalu menebak nama bangun ruang dari lima pilihan. Semakin sedikit petunjuk yang dipakai, semakin banyak bintang. Saat bermain, ingat Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar.",
           "voiceGuide": "Cetak Permukaan. Tekan permukaan bangun ruang jadi bangun datar."
         },
         {
@@ -1825,7 +1771,7 @@
           "title": "Cetak dan Tebak",
           "bookReference": "Buku Siswa hlm. 90–92 (bangun datar dan bangun ruang; kubus dan balok berpermukaan segi empat), diperkaya cetak permukaan",
           "objective": "Pakai Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar. Latihan: Mencetak permukaan benda dan menyebut bangun datar hasil cetakannya..",
-          "mechanicDescription": "Empat ronde (dadu, kardus, kaleng, topi ulang tahun). Siswa memilih permukaan benda yang rata untuk dicetak. Permukaan lengkung tidak menghasilkan cetakan yang rapi. Setelah cetakan muncul, siswa memilih bangun datar hasilnya: segi empat sama sisi, segi empat beda sisi, atau lingkaran. Saat bermain, terapkan Face Print: Tekan permukaan bangun ruang jadi bangun datar.",
+          "mechanicDescription": "Empat ronde (dadu, kardus, kaleng, topi ulang tahun). Siswa memilih permukaan benda yang rata untuk dicetak. Permukaan lengkung tidak menghasilkan cetakan yang rapi. Setelah cetakan muncul, siswa memilih bangun datar hasilnya: segi empat sama sisi, segi empat beda sisi, atau lingkaran. Saat bermain, ingat Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar.",
           "voiceGuide": "Cetak Permukaan. Tekan permukaan bangun ruang jadi bangun datar."
         },
         {
@@ -1836,7 +1782,7 @@
           "title": "Pilah Rak Mainan",
           "bookReference": "Buku Siswa hlm. 92 (Ayo Mencoba 2: temukan benda berbentuk bangun ruang dan kelompokkan dalam tabel)",
           "objective": "Pakai Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar. Latihan: Mengelompokkan benda nyata menurut nama bangun ruangnya: kubus, balok, tabung, kerucut, atau bola..",
-          "mechanicDescription": "Dua ronde, masing-masing lima benda (dadu, kardus, kaleng, topi, bola; lalu kotak hadiah, kotak pensil, botol, kerucut es krim, kelereng). Siswa menyeret atau mengetuk benda ke salah satu dari lima rak bernama. Benda yang salah kembali disertai ciri bendanya. Saat bermain, terapkan Face Print: Tekan permukaan bangun ruang jadi bangun datar.",
+          "mechanicDescription": "Dua ronde, masing-masing lima benda (dadu, kardus, kaleng, topi, bola; lalu kotak hadiah, kotak pensil, botol, kerucut es krim, kelereng). Siswa menyeret atau mengetuk benda ke salah satu dari lima rak bernama. Benda yang salah kembali disertai ciri bendanya. Saat bermain, ingat Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar.",
           "voiceGuide": "Cetak Permukaan. Tekan permukaan bangun ruang jadi bangun datar."
         },
         {
@@ -1846,9 +1792,9 @@
           "gameType": "match-silhouette-view",
           "title": "Bayangan Bangun Ruang",
           "bookReference": "Buku Siswa hlm. 90–92 (hubungan bangun datar dan bangun ruang), diperkaya pandangan atas dan samping",
-          "objective": "Menentukan bangun datar yang tampak bila bangun ruang dilihat dari atas atau dari samping.. Ingat Cetak Permukaan.",
+          "objective": "Menentukan bangun datar yang tampak bila bangun ruang dilihat dari atas atau dari samping.. Ingat Cetak Permukaan. (Cetak Permukaan)",
           "mechanicDescription": "Empat ronde (kubus dari atas, kerucut dari samping, tabung dari atas, balok dari samping). Model bangun ruang digambar bersama arah pandangnya. Siswa memilih satu dari tiga bayangan bangun datar yang sesuai. Gunakan Cetak Permukaan.",
-          "voiceGuide": "Cetak Permukaan. Lihat arah pandangnya, lalu pilih bayangan yang tepat."
+          "voiceGuide": "Cetak Permukaan. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3C-game-6",
@@ -1857,9 +1803,9 @@
           "gameType": "table-surface-checkboxes",
           "title": "Tabel Permukaan",
           "bookReference": "Buku Siswa hlm. 91–93 (Ayo Berlatih nomor 1: kelompokkan benda menurut permukaan datar dan permukaan lengkung)",
-          "objective": "Mengisi tabel permukaan datar, permukaan lengkung, dan menggelinding untuk lima bangun ruang.. Ingat Cetak Permukaan.",
+          "objective": "Mengisi tabel permukaan datar, permukaan lengkung, dan menggelinding untuk lima bangun ruang.. Ingat Cetak Permukaan. (Cetak Permukaan)",
           "mechanicDescription": "Satu tabel dengan lima baris (kubus, balok, tabung, kerucut, bola) dan tiga kolom: permukaan datar, permukaan lengkung, dan menggelinding. Siswa mengetuk kotak yang benar pada tiap baris, lalu menekan periksa. Jawaban yang keliru dijelaskan per baris. Gunakan Cetak Permukaan.",
-          "voiceGuide": "Cetak Permukaan. Centang kotak yang benar pada tiap baris, lalu periksa."
+          "voiceGuide": "Cetak Permukaan. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3C-game-7",
@@ -1868,9 +1814,9 @@
           "gameType": "drag-name-tags",
           "title": "Beri Nama Bangun Ruang",
           "bookReference": "Buku Siswa hlm. 93 dan 98 (Ayo Berlatih nomor 2: tulis nama bangun ruang; Evaluasi nomor 6)",
-          "objective": "Memberi nama pada gambar bangun ruang dengan menyeret label nama.. Ingat Cetak Permukaan.",
+          "objective": "Memberi nama pada gambar bangun ruang dengan menyeret label nama.. Ingat Cetak Permukaan. (Cetak Permukaan)",
           "mechanicDescription": "Dua ronde, masing-masing lima model bangun ruang dengan urutan berbeda. Siswa menyeret label Kubus, Balok, Tabung, Kerucut, dan Bola ke model yang sesuai, atau mengetuk label lalu mengetuk model. Label yang salah ditolak disertai ciri modelnya. Gunakan Cetak Permukaan.",
-          "voiceGuide": "Cetak Permukaan. Seret label nama ke model bangun ruang yang sesuai."
+          "voiceGuide": "Cetak Permukaan. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3C-game-8",
@@ -1879,9 +1825,9 @@
           "gameType": "true-false-statements",
           "title": "Benar atau Salah?",
           "bookReference": "Buku Siswa hlm. 90–92 (ciri-ciri bangun datar, bangun ruang, kubus, dan balok)",
-          "objective": "Menilai kebenaran pernyataan tentang bangun datar, bangun ruang, dan ciri kelima bangun ruang.. Ingat Cetak Permukaan.",
+          "objective": "Menilai kebenaran pernyataan tentang bangun datar, bangun ruang, dan ciri kelima bangun ruang.. Ingat Cetak Permukaan. (Cetak Permukaan)",
           "mechanicDescription": "Dua ronde, masing-masing lima pernyataan. Siswa menekan Benar atau Salah. Jawaban yang keliru dijelaskan alasannya. Gunakan Cetak Permukaan.",
-          "voiceGuide": "Cetak Permukaan. Baca pernyataannya, lalu tekan Benar atau Salah."
+          "voiceGuide": "Cetak Permukaan. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3C-game-9",
@@ -1890,9 +1836,9 @@
           "gameType": "clue-detective-solids",
           "title": "Detektif Bangun Ruang",
           "bookReference": "Buku Siswa hlm. 91–92 (ciri permukaan, nama bangun ruang)",
-          "objective": "Menemukan nama bangun ruang dari dua petunjuk tertulis.. Ingat Cetak Permukaan.",
+          "objective": "Menemukan nama bangun ruang dari dua petunjuk tertulis.. Ingat Cetak Permukaan. (Cetak Permukaan)",
           "mechanicDescription": "Empat ronde, tiap ronde dua petunjuk dan tiga pilihan nama bangun ruang. Siswa memilih nama yang cocok dengan kedua petunjuk. Petunjuk dibacakan Suara Guru. Gunakan Cetak Permukaan.",
-          "voiceGuide": "Cetak Permukaan. Baca kedua petunjuk, lalu pilih namanya."
+          "voiceGuide": "Cetak Permukaan. Mainkan dengan teliti."
         },
         {
           "gameId": "subK2B3C-game-10",
@@ -1901,9 +1847,9 @@
           "gameType": "build-sentence-from-tiles",
           "title": "Susun Kalimat",
           "bookReference": "Buku Siswa hlm. 90–92 (kalimat definisi: bangun ruang dapat diisi; kubus dan balok punya permukaan datar)",
-          "objective": "Menyusun kalimat ciri bangun ruang dari kartu kata dengan urutan yang benar.. Ingat Cetak Permukaan.",
+          "objective": "Menyusun kalimat ciri bangun ruang dari kartu kata dengan urutan yang benar.. Ingat Cetak Permukaan. (Cetak Permukaan)",
           "mechanicDescription": "Tiga ronde, tiap ronde satu kalimat dari kartu kata yang teracak, dengan satu kartu pengecoh. Siswa mengetuk kartu kata berurutan untuk menyusun kalimat, bisa mengurungkan satu kartu, lalu menekan periksa. Gunakan Cetak Permukaan.",
-          "voiceGuide": "Cetak Permukaan. Ketuk kartu kata berurutan sampai kalimatnya benar."
+          "voiceGuide": "Cetak Permukaan. Mainkan dengan teliti."
         }
       ],
       "poinPenting": {
@@ -1912,11 +1858,6 @@
             "nama": "Datar atau ruang",
             "isi": "bisa diisi = bangun ruang",
             "suara": "Bangun datar hanya punya satu permukaan dan tidak bisa diisi. Bangun ruang punya ruang di dalamnya, jadi dapat diisi."
-          },
-          {
-            "nama": "Permukaan",
-            "isi": "datar: kubus, balok • lengkung: tabung, kerucut, bola",
-            "suara": "Kubus dan balok punya permukaan datar. Tabung, kerucut, dan bola punya permukaan lengkung, jadi mudah menggelinding."
           },
           {
             "nama": "Cetak Permukaan",
@@ -1936,11 +1877,11 @@
         ],
         "suara": "Ingat: Cetak Permukaan, Tas Misteri, Ciri Bangun Ruang.",
         "caraMenyebutkan": "Dadu berbentuk kubus karena permukaannya segi empat sama",
-        "rumah": "Ayo Mencoba di rumah: terapkan Cetak Permukaan pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+        "rumah": "Ayo Mencoba: terapkan Cetak Permukaan pada satu soal nyata di rumah.",
         "refleksi": [
-          "Bagaimana Cetak Permukaan membantumu memahami soal?",
-          "Kapan kamu memakai Tas Misteri?",
-          "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+          "Bagaimana Cetak Permukaan membantumu?",
+          "Kapan memakai Tas Misteri?",
+          "Apa bedanya dengan hanya menghafal tanpa arti?"
         ]
       }
     }

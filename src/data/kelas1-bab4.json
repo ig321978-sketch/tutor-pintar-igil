@@ -15,7 +15,7 @@
       "id": "A",
       "codeTitle": "Sub-Bab A (Mendeskripsikan Bentuk)",
       "fullTitle": "Sub-Bab A: Mendeskripsikan Benda Berdasarkan Bentuk",
-      "targetDescription": "Siswa mengenali dan menyebutkan tiga bentuk benda (bentuk lengkung, segitiga, dan segi empat), mendeskripsikan benda dengan menghitung sisi lurus dan sudutnya, mengelompokkan benda yang bentuknya sama, serta menyadari bahwa bentuk tidak berubah karena posisi atau ukuran. Memakai Kenali Bentuk, Pilah Ciri, Bentuk di Sekitar.",
+      "targetDescription": "Siswa mengenali dan menyebutkan tiga bentuk benda (bentuk lengkung, segitiga, dan segi empat), mendeskripsikan benda dengan menghitung sisi lurus dan sudutnya, mengelompokkan benda yang bentuknya sama, serta menyadari bahwa bentuk tidak berubah karena posisi atau ukuran. Memakai Kenali Bentuk, Pilah Ciri, Bentuk di Sekitar. Memakai Kenali Bentuk, Pilah Ciri, Bentuk di Sekitar.",
       "secondaryBg": "#DBEAFE",
       "secondaryBorder": "#2563EB",
       "secondaryText": "#1E3A8A",
@@ -24,37 +24,37 @@
           "id": "A4-S1",
           "titleHint": "Piknik Bersama",
           "sceneType": "piknik-bersama",
-          "voiceNarration": "Piknik bersama! Kira, Upe, Wei, Halim, Malosi, dan Tika berpiknik di taman. Setiap teman membawa makanan. Ada donat yang bulat. Ada irisan semangka yang runcing. Ada kue lapis yang berpojok empat. Bentuk apa saja yang kamu temukan? Dapatkah kamu mengelompokkannya? Kita memakai cara Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya."
+          "voiceNarration": "Piknik bersama! Kira, Upe, Wei, Halim, Malosi, dan Tika berpiknik di taman. Setiap teman membawa makanan. Ada donat yang bulat. Ada irisan semangka yang runcing. Ada kue lapis yang berpojok empat. Bentuk apa saja yang kamu temukan? Dapatkah kamu mengelompokkannya? Kita memakai cara Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A4-S2",
           "titleHint": "Tiga Bentuk di Papan",
           "sceneType": "papan-tiga-bentuk",
-          "voiceNarration": "Igil menggambar tiga bentuk di papan. Bentuk pertama bernama bentuk lengkung. Tepinya melengkung dan tidak punya sudut. Bentuk kedua bernama segitiga. Punya tiga sisi lurus dan tiga sudut. Bentuk ketiga bernama segi empat. Punya empat sisi lurus dan empat sudut. Semua benda di sekitar kita bisa kita kelompokkan dengan tiga bentuk ini. Kita memakai cara Pilah Ciri: Pilah menurut sisi lengkung/lurus."
+          "voiceNarration": "Igil menggambar tiga bentuk di papan. Bentuk pertama bernama bentuk lengkung. Tepinya melengkung dan tidak punya sudut. Bentuk kedua bernama segitiga. Punya tiga sisi lurus dan tiga sudut. Bentuk ketiga bernama segi empat. Punya empat sisi lurus dan empat sudut. Semua benda di sekitar kita bisa kita kelompokkan dengan tiga bentuk ini. Kita memakai cara Pilah Ciri: Pilah menurut sisi lengkung/lurus. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A4-S3",
           "titleHint": "Benda Bentuk Lengkung",
           "sceneType": "benda-lengkung",
-          "voiceNarration": "Lihat meja makan Tika! Jam dinding, piring, donat, melon, dan telur. Semuanya punya tepi yang melengkung. Kita tidak menemukan ujung yang runcing, dan tidak ada sudut. Benda seperti ini berbentuk lengkung. Ada yang bulat, ada juga yang lonjong seperti telur. Keduanya tetap bentuk lengkung. Kita memakai cara Bentuk di Sekitar: Cari bentuk pada benda sehari-hari."
+          "voiceNarration": "Lihat meja makan Tika! Jam dinding, piring, donat, melon, dan telur. Semuanya punya tepi yang melengkung. Kita tidak menemukan ujung yang runcing, dan tidak ada sudut. Benda seperti ini berbentuk lengkung. Ada yang bulat, ada juga yang lonjong seperti telur. Keduanya tetap bentuk lengkung. Kita memakai cara Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A4-S4",
           "titleHint": "Benda Bentuk Segitiga",
           "sceneType": "benda-segitiga",
-          "voiceNarration": "Halim menemukan benda berbentuk segitiga. Ada tenda, irisan semangka, kue risol, penggaris segitiga, dan kue lupis. Ujung-ujungnya runcing. Hitung sisinya: satu, dua, tiga. Hitung sudutnya: satu, dua, tiga. Segitiga punya tiga sisi lurus dan tiga sudut. Kita memakai cara Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya."
+          "voiceNarration": "Halim menemukan benda berbentuk segitiga. Ada tenda, irisan semangka, kue risol, penggaris segitiga, dan kue lupis. Ujung-ujungnya runcing. Hitung sisinya: satu, dua, tiga. Hitung sudutnya: satu, dua, tiga. Segitiga punya tiga sisi lurus dan tiga sudut. Kita memakai cara Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A4-S5",
           "titleHint": "Benda Bentuk Segi Empat",
           "sceneType": "benda-segi-empat",
-          "voiceNarration": "Wei mencari benda di dalam rumah. Jendela, pintu, bingkai foto, bendera, kue lapis, dan buku. Semuanya berbentuk segi empat. Hitung sisinya: satu, dua, tiga, empat. Hitung sudutnya: satu, dua, tiga, empat. Segi empat punya empat sisi lurus dan empat sudut. Kita memakai cara Pilah Ciri: Pilah menurut sisi lengkung/lurus."
+          "voiceNarration": "Wei mencari benda di dalam rumah. Jendela, pintu, bingkai foto, bendera, kue lapis, dan buku. Semuanya berbentuk segi empat. Hitung sisinya: satu, dua, tiga, empat. Hitung sudutnya: satu, dua, tiga, empat. Segi empat punya empat sisi lurus dan empat sudut. Kita memakai cara Pilah Ciri: Pilah menurut sisi lengkung/lurus. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "A4-S6",
           "titleHint": "Ayo Bermain Bentuk",
           "sceneType": "bermain-bentuk-tubuh",
-          "voiceNarration": "Ayo bermain! Bentuk apa yang bisa dibuat dengan tubuh kita? Tiga teman berdiri melingkar membuat bentuk lengkung. Dua teman membuat atap dengan lengan membentuk segitiga. Satu teman membuat bingkai dengan jari membentuk segi empat. Sekarang giliranmu: buat bentuk dengan teman-temanmu, lalu tebak bentuk apa itu. Kita memakai cara Bentuk di Sekitar: Cari bentuk pada benda sehari-hari."
+          "voiceNarration": "Ayo bermain! Bentuk apa yang bisa dibuat dengan tubuh kita? Tiga teman berdiri melingkar membuat bentuk lengkung. Dua teman membuat atap dengan lengan membentuk segitiga. Satu teman membuat bingkai dengan jari membentuk segi empat. Sekarang giliranmu: buat bentuk dengan teman-temanmu, lalu tebak bentuk apa itu. Kita memakai cara Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Siap? Ketuk suara guru jika ingin mendengar lagi."
         }
       ],
       "mindMaps": [
@@ -68,24 +68,24 @@
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. Rasakan Tepinya",
-          "stepDesc": "Telusuri tepi benda dengan jari. Kalau jarimu mengikuti garis yang melengkung terus, itu bentuk lengkung. Kalau jarimu berjalan lurus lalu berbelok di sudut, itu bentuk bersisi lurus.",
+          "stepTitle": "2. van Hiele Visual",
+          "stepDesc": "Kenali lingkaran, segitiga, segi empat dari wujudnya.",
           "icon": "☝️",
           "flowFrom": "Garis tepi benda",
           "flowTo": "Lurus atau melengkung"
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. van Hiele Visual",
-          "stepDesc": "Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "stepTitle": "3. Attribute Sort",
+          "stepDesc": "Pilah menurut sisi lengkung/lurus.",
           "icon": "🔢",
           "flowFrom": "Lurus atau melengkung",
           "flowTo": "Banyak sisi dan sudut"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Attribute Sort",
-          "stepDesc": "Pilah menurut sisi lengkung/lurus.",
+          "stepTitle": "4. Shape in Environment",
+          "stepDesc": "Cari bentuk pada benda sehari-hari.",
           "icon": "🏷️",
           "flowFrom": "Banyak sisi dan sudut",
           "flowTo": "Nama bentuk"
@@ -207,25 +207,25 @@
           "title": "Keranjang Tiga Bentuk",
           "emoji": "🧺",
           "targetCount": 3,
-          "voiceGuide": "Kenali Bentuk. Seret setiap benda ke keranjang yang bentuknya sama. Lalu ucapkan banyak benda di keranjang lengkung."
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Seret setiap benda ke keranjang yang bentuknya sama. Lalu ucapkan banyak benda di keranjang lengkung.. Kenali lingkaran, segitiga, segi empat dari wujudnya."
         },
         {
           "title": "Berburu Bentuk di Kamar",
           "emoji": "🔎",
           "targetCount": 4,
-          "voiceGuide": "Pilah Ciri. Ketuk semua benda yang bentuknya sama dengan yang diminta. Ucapkan banyak benda segi empat yang ketemu."
+          "voiceGuide": "Pilah Ciri. Pilah Ciri. Ketuk semua benda yang bentuknya sama dengan yang diminta. Ucapkan banyak benda segi empat yang ketemu.. Pilah menurut sisi lengkung/lurus."
         },
         {
           "title": "Bayangan Siapa Ini?",
           "emoji": "❓",
           "targetCount": 0,
-          "voiceGuide": "Bentuk di Sekitar. Lihat garis tepi bayangan benda, lalu pilih nama bentuknya."
+          "voiceGuide": "Bentuk di Sekitar. Bentuk di Sekitar. Lihat garis tepi bayangan benda, lalu pilih nama bentuknya.. Cari bentuk pada benda sehari-hari."
         },
         {
           "title": "Papan Paku dan Karet Gelang",
           "emoji": "📌",
           "targetCount": 4,
-          "voiceGuide": "Kenali Bentuk. Bentangkan karet gelang di paku sampai membentuk segitiga dan segi empat. Ucapkan banyak sudut segi empat."
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Bentangkan karet gelang di paku sampai membentuk segitiga dan segi empat. Ucapkan banyak sudut segi empat.. Kenali lingkaran, segitiga, segi empat dari wujudnya."
         }
       ],
       "pictorialSlides": [
@@ -234,21 +234,21 @@
           "diagramType": "shape-diagram",
           "numberA": 3,
           "numberB": 3,
-          "caption": "Pakai Kenali Bentuk. Warnai bentuk polos menurut namanya. Kuning lengkung, merah muda segitiga, hijau segi empat."
+          "caption": "Pakai Kenali Bentuk. Pakai Kenali Bentuk. Warnai bentuk polos menurut namanya. Kuning lengkung, merah muda segitiga, hijau segi empat."
         },
         {
           "title": "Tabel Tally Bentuk",
           "diagramType": "shape-tally",
           "numberA": 9,
           "numberB": 0,
-          "caption": "Pakai Pilah Ciri. Hitung bentuk, lalu catat dengan goresan tally di tabel."
+          "caption": "Pakai Pilah Ciri. Pakai Pilah Ciri. Hitung bentuk, lalu catat dengan goresan tally di tabel."
         },
         {
           "title": "Hubungkan Garis Putus-putus",
           "diagramType": "shape-dotted",
           "numberA": 3,
           "numberB": 0,
-          "caption": "Pakai Bentuk di Sekitar. Sambung garis putus-putus sampai bentuknya utuh, lalu sebut namanya."
+          "caption": "Pakai Bentuk di Sekitar. Pakai Bentuk di Sekitar. Sambung garis putus-putus sampai bentuknya utuh, lalu sebut namanya."
         }
       ],
       "abstractSlides": [
@@ -256,19 +256,19 @@
           "symbolLarge": "3 sisi • 3 sudut",
           "wordLarge": "SEGITIGA",
           "mathNotation": "lengkung 0 • segitiga 3 • segi empat 4",
-          "voiceReadout": "Kenali Bentuk. Segitiga: tiga sisi lurus, tiga sudut. Segi empat: empat sisi lurus, empat sudut. Bentuk lengkung: nol sisi lurus, nol sudut."
+          "voiceReadout": "Kenali Bentuk. Kenali Bentuk. Segitiga: tiga sisi lurus, tiga sudut. Segi empat: empat sisi lurus, empat sudut. Bentuk lengkung: nol sisi lurus, nol sudut.. Kenali lingkaran, segitiga, segi empat dari wujudnya."
         },
         {
           "symbolLarge": "Siapa aku?",
           "wordLarge": "DETEKTIF BENTUK",
           "mathNotation": "banyak sudut = banyak sisi",
-          "voiceReadout": "Pilah Ciri. Baca petunjuk, lalu sebut nama bentuk. Pada bentuk bersisi lurus, banyak sudut sama dengan banyak sisi."
+          "voiceReadout": "Pilah Ciri. Pilah Ciri. Baca petunjuk, lalu sebut nama bentuk. Pada bentuk bersisi lurus, banyak sudut sama dengan banyak sisi.. Pilah menurut sisi lengkung/lurus."
         },
         {
           "symbolLarge": "3",
           "wordLarge": "TIGA SUDUT",
           "mathNotation": "segitiga → 3 • segi empat → 4 • lengkung → 0",
-          "voiceReadout": "Bentuk di Sekitar. Ucapkan banyak sudut bentuk pilihanmu, lalu guratkan angkanya di kanvas."
+          "voiceReadout": "Bentuk di Sekitar. Bentuk di Sekitar. Ucapkan banyak sudut bentuk pilihanmu, lalu guratkan angkanya di kanvas.. Cari bentuk pada benda sehari-hari."
         }
       ],
       "interactiveGames": [
@@ -279,9 +279,9 @@
           "gameType": "drag-sort",
           "title": "Keranjang Tiga Bentuk",
           "bookReference": "Buku Siswa hlm. 117–119",
-          "objective": "Pakai Kenali Bentuk. Mengelompokkan benda nyata berdasarkan bentuk lengkung, segitiga, dan segi empat.",
-          "mechanicDescription": "Dua ronde (6 dan 9 benda). Siswa menyeret benda ke keranjang yang bentuknya sama, lalu mengucapkan banyak benda di keranjang lengkung. Terapkan van Hiele Visual.",
-          "voiceGuide": "Kenali Bentuk. Seret benda ke keranjang yang bentuknya sama. Ucapkan banyak benda di keranjang lengkung."
+          "objective": "Pakai Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Pakai Kenali Bentuk. Mengelompokkan benda nyata berdasarkan bentuk lengkung, segitiga, dan segi empat.",
+          "mechanicDescription": "Dua ronde (6 dan 9 benda). Siswa menyeret benda ke keranjang yang bentuknya sama, lalu mengucapkan banyak benda di keranjang lengkung. Terapkan van Hiele Visual. Saat bermain, terapkan van Hiele Visual: Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Seret benda ke keranjang yang bentuknya sama. Ucapkan banyak benda di keranjang lengkung."
         },
         {
           "gameId": "subA4-game-2",
@@ -290,9 +290,9 @@
           "gameType": "find-and-tap",
           "title": "Berburu Bentuk di Kamar",
           "bookReference": "Buku Siswa hlm. 119, 122 (Ayo Mencoba)",
-          "objective": "Pakai Pilah Ciri. Mencari benda berbentuk tertentu di dalam kamar.",
-          "mechanicDescription": "Tiga ronde: lengkung, segitiga, segi empat. Siswa mengetuk semua benda yang cocok lalu mengucapkan banyak benda segi empat. Terapkan Attribute Sort.",
-          "voiceGuide": "Pilah Ciri. Ketuk semua benda yang bentuknya sama dengan yang diminta."
+          "objective": "Pakai Pilah Ciri: Pilah menurut sisi lengkung/lurus. Pakai Pilah Ciri. Mencari benda berbentuk tertentu di dalam kamar.",
+          "mechanicDescription": "Tiga ronde: lengkung, segitiga, segi empat. Siswa mengetuk semua benda yang cocok lalu mengucapkan banyak benda segi empat. Terapkan Attribute Sort. Saat bermain, terapkan Attribute Sort: Pilah menurut sisi lengkung/lurus.",
+          "voiceGuide": "Pilah Ciri. Pilah Ciri. Ketuk semua benda yang bentuknya sama dengan yang diminta."
         },
         {
           "gameId": "subA4-game-3",
@@ -301,9 +301,9 @@
           "gameType": "silhouette-guess",
           "title": "Bayangan Siapa Ini?",
           "bookReference": "Buku Siswa hlm. 117–119",
-          "objective": "Pakai Bentuk di Sekitar. Mengenali bentuk dari garis tepi bayangan benda.",
-          "mechanicDescription": "Empat ronde. Siswa memilih nama bentuk dari bayangan hitam sebuah benda, lalu benda muncul berwarna. Terapkan Shape in Environment.",
-          "voiceGuide": "Bentuk di Sekitar. Lihat garis tepi bayangan, lalu pilih nama bentuknya."
+          "objective": "Pakai Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Pakai Bentuk di Sekitar. Mengenali bentuk dari garis tepi bayangan benda.",
+          "mechanicDescription": "Empat ronde. Siswa memilih nama bentuk dari bayangan hitam sebuah benda, lalu benda muncul berwarna. Terapkan Shape in Environment. Saat bermain, terapkan Shape in Environment: Cari bentuk pada benda sehari-hari.",
+          "voiceGuide": "Bentuk di Sekitar. Bentuk di Sekitar. Lihat garis tepi bayangan, lalu pilih nama bentuknya."
         },
         {
           "gameId": "subA4-game-4",
@@ -312,9 +312,9 @@
           "gameType": "geoboard",
           "title": "Papan Paku dan Karet Gelang",
           "bookReference": "Buku Siswa hlm. 120 (Ayo Bermain)",
-          "objective": "Pakai Kenali Bentuk. Membentuk segitiga dan segi empat dengan karet gelang di papan paku.",
-          "mechanicDescription": "Dua ronde. Siswa mengetuk 3 paku untuk segitiga dan 4 paku untuk segi empat. Karet harus membentuk bentuk tertutup tanpa bersilang. Terakhir ucapkan banyak sudut segi empat. Terapkan van Hiele Visual.",
-          "voiceGuide": "Kenali Bentuk. Ketuk paku berurutan sampai karet membentuk bentuk yang diminta."
+          "objective": "Pakai Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Pakai Kenali Bentuk. Membentuk segitiga dan segi empat dengan karet gelang di papan paku.",
+          "mechanicDescription": "Dua ronde. Siswa mengetuk 3 paku untuk segitiga dan 4 paku untuk segi empat. Karet harus membentuk bentuk tertutup tanpa bersilang. Terakhir ucapkan banyak sudut segi empat. Terapkan van Hiele Visual. Saat bermain, terapkan van Hiele Visual: Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Ketuk paku berurutan sampai karet membentuk bentuk yang diminta."
         },
         {
           "gameId": "subA4-game-5",
@@ -323,9 +323,9 @@
           "gameType": "coloring",
           "title": "Warnai Menurut Nama",
           "bookReference": "Buku Siswa hlm. 121–122",
-          "objective": "Pakai Pilah Ciri. Mewarnai bentuk polos menurut nama bentuknya, termasuk bentuk miring dan terbalik.",
-          "mechanicDescription": "Dua ronde (6 dan 10 bentuk). Siswa memilih krayon menurut nama bentuk lalu mengetuk bentuk. Terakhir ucapkan banyak segitiga merah muda. Terapkan Attribute Sort.",
-          "voiceGuide": "Pilah Ciri. Pilih krayon lalu warnai bentuk yang cocok."
+          "objective": "Pakai Pilah Ciri: Pilah menurut sisi lengkung/lurus. Pakai Pilah Ciri. Mewarnai bentuk polos menurut nama bentuknya, termasuk bentuk miring dan terbalik.",
+          "mechanicDescription": "Dua ronde (6 dan 10 bentuk). Siswa memilih krayon menurut nama bentuk lalu mengetuk bentuk. Terakhir ucapkan banyak segitiga merah muda. Terapkan Attribute Sort. Saat bermain, terapkan Attribute Sort: Pilah menurut sisi lengkung/lurus.",
+          "voiceGuide": "Pilah Ciri. Pilah Ciri. Pilih krayon lalu warnai bentuk yang cocok."
         },
         {
           "gameId": "subA4-game-6",
@@ -334,9 +334,9 @@
           "gameType": "tally-table",
           "title": "Tabel Tally Bentuk",
           "bookReference": "Buku Siswa hlm. 122",
-          "objective": "Pakai Bentuk di Sekitar. Menghitung bentuk dan mencatatnya dengan goresan tally.",
-          "mechanicDescription": "Dua ronde. Siswa menandai bentuk sambil menghitung, lalu membuat goresan tally di tabel sampai pas. Terakhir ucapkan jumlah semua bentuk. Terapkan Shape in Environment.",
-          "voiceGuide": "Bentuk di Sekitar. Hitung bentuk lalu catat dengan goresan tally."
+          "objective": "Pakai Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Pakai Bentuk di Sekitar. Menghitung bentuk dan mencatatnya dengan goresan tally.",
+          "mechanicDescription": "Dua ronde. Siswa menandai bentuk sambil menghitung, lalu membuat goresan tally di tabel sampai pas. Terakhir ucapkan jumlah semua bentuk. Terapkan Shape in Environment. Saat bermain, terapkan Shape in Environment: Cari bentuk pada benda sehari-hari.",
+          "voiceGuide": "Bentuk di Sekitar. Bentuk di Sekitar. Hitung bentuk lalu catat dengan goresan tally."
         },
         {
           "gameId": "subA4-game-7",
@@ -345,9 +345,9 @@
           "gameType": "connect-dotted",
           "title": "Hubungkan Garis Putus-putus",
           "bookReference": "Buku Siswa hlm. 121 (nomor 3)",
-          "objective": "Pakai Kenali Bentuk. Menyambung garis putus-putus menjadi bentuk utuh dan menyebut namanya.",
-          "mechanicDescription": "Tiga ronde: lengkung, segi empat, segitiga. Siswa mengetuk setiap garis putus-putus lalu memilih nama. Terakhir ucapkan banyak garis lurus pada segitiga. Terapkan van Hiele Visual.",
-          "voiceGuide": "Kenali Bentuk. Sambung garisnya lalu pilih nama bentuknya."
+          "objective": "Pakai Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Pakai Kenali Bentuk. Menyambung garis putus-putus menjadi bentuk utuh dan menyebut namanya.",
+          "mechanicDescription": "Tiga ronde: lengkung, segi empat, segitiga. Siswa mengetuk setiap garis putus-putus lalu memilih nama. Terakhir ucapkan banyak garis lurus pada segitiga. Terapkan van Hiele Visual. Saat bermain, terapkan van Hiele Visual: Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Sambung garisnya lalu pilih nama bentuknya."
         },
         {
           "gameId": "subA4-game-8",
@@ -356,9 +356,9 @@
           "gameType": "match-words",
           "title": "Kartu Ciri-ciri",
           "bookReference": "Buku Siswa hlm. 122–123",
-          "objective": "Pakai Pilah Ciri. Menjodohkan kartu ciri (sisi dan sudut) dengan nama bentuk.",
-          "mechanicDescription": "Empat ronde. Tiga ronde memilih nama dari kartu ciri, satu ronde memilih kartu ciri dari nama. Terakhir ucapkan banyak sisi lurus bentuk lengkung. Terapkan Attribute Sort.",
-          "voiceGuide": "Pilah Ciri. Jodohkan kartu ciri dengan nama bentuk."
+          "objective": "Pakai Pilah Ciri: Pilah menurut sisi lengkung/lurus. Pakai Pilah Ciri. Menjodohkan kartu ciri (sisi dan sudut) dengan nama bentuk.",
+          "mechanicDescription": "Empat ronde. Tiga ronde memilih nama dari kartu ciri, satu ronde memilih kartu ciri dari nama. Terakhir ucapkan banyak sisi lurus bentuk lengkung. Terapkan Attribute Sort. Saat bermain, terapkan Attribute Sort: Pilah menurut sisi lengkung/lurus.",
+          "voiceGuide": "Pilah Ciri. Pilah Ciri. Jodohkan kartu ciri dengan nama bentuk."
         },
         {
           "gameId": "subA4-game-9",
@@ -367,9 +367,9 @@
           "gameType": "clue-detective",
           "title": "Detektif Bentuk Misterius",
           "bookReference": "Buku Siswa pengayaan (Van Hiele tingkat 1)",
-          "objective": "Pakai Bentuk di Sekitar. Menalar nama bentuk dari petunjuk ciri berupa kata dan angka.",
-          "mechanicDescription": "Empat ronde dengan satu sampai tiga petunjuk. Terakhir ucapkan banyak sudut bentuk itu. Terapkan Shape in Environment.",
-          "voiceGuide": "Bentuk di Sekitar. Baca petunjuk lalu pilih nama bentuk."
+          "objective": "Pakai Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Pakai Bentuk di Sekitar. Menalar nama bentuk dari petunjuk ciri berupa kata dan angka.",
+          "mechanicDescription": "Empat ronde dengan satu sampai tiga petunjuk. Terakhir ucapkan banyak sudut bentuk itu. Terapkan Shape in Environment. Saat bermain, terapkan Shape in Environment: Cari bentuk pada benda sehari-hari.",
+          "voiceGuide": "Bentuk di Sekitar. Bentuk di Sekitar. Baca petunjuk lalu pilih nama bentuk."
         },
         {
           "gameId": "subA4-game-10",
@@ -378,9 +378,9 @@
           "gameType": "say-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa hlm. 123 (Ayo Mencoba)",
-          "objective": "Pakai Kenali Bentuk. Menyebut dan menulis banyak sudut sebuah bentuk.",
-          "mechanicDescription": "Dua ronde. Ronde 1 segitiga. Ronde 2 siswa memilih sendiri satu bentuk. Siswa mengucapkan banyak sudut lalu menggurat angkanya. Terapkan van Hiele Visual.",
-          "voiceGuide": "Kenali Bentuk. Ucapkan banyak sudut, lalu guratkan angkanya."
+          "objective": "Pakai Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Pakai Kenali Bentuk. Menyebut dan menulis banyak sudut sebuah bentuk.",
+          "mechanicDescription": "Dua ronde. Ronde 1 segitiga. Ronde 2 siswa memilih sendiri satu bentuk. Siswa mengucapkan banyak sudut lalu menggurat angkanya. Terapkan van Hiele Visual. Saat bermain, terapkan van Hiele Visual: Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Ucapkan banyak sudut, lalu guratkan angkanya."
         }
       ],
       "metodeLuar": [
@@ -423,7 +423,7 @@
       "id": "B",
       "codeTitle": "Sub-Bab B (Mengelompokkan Benda)",
       "fullTitle": "Sub-Bab B: Mengelompokkan Benda",
-      "targetDescription": "Siswa mengelompokkan benda menurut satu aturan (bentuk, warna, atau ukuran), memeriksa apakah setiap benda cocok dengan aturan, memberi nama kelompok, menghitung banyak anggota setiap kelompok, serta menyadari bahwa benda yang sama bisa masuk kelompok berbeda jika aturannya diganti. Memakai Kenali Bentuk, Pilah Ciri, Bentuk di Sekitar.",
+      "targetDescription": "Siswa mengelompokkan benda menurut satu aturan (bentuk, warna, atau ukuran), memeriksa apakah setiap benda cocok dengan aturan, memberi nama kelompok, menghitung banyak anggota setiap kelompok, serta menyadari bahwa benda yang sama bisa masuk kelompok berbeda jika aturannya diganti. Memakai Kenali Bentuk, Pilah Ciri, Bentuk di Sekitar. Memakai Kenali Bentuk, Pilah Ciri, Bentuk di Sekitar.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#16A34A",
       "secondaryText": "#14532D",
@@ -432,37 +432,37 @@
           "id": "B4-S1",
           "titleHint": "Kue di Meja",
           "sceneType": "meja-kue-tradisional",
-          "voiceNarration": "Ibu menyiapkan kue tradisional di meja. Ada kue cucur yang cokelat dan bulat. Ada kue risol yang cokelat dan runcing. Ada kue talam yang hijau. Ada kue lapis hijau yang bertingkat. Ada bolu cokelat yang berpojok empat. Dan ada kue lupis yang hijau berbentuk segitiga. Igil bertanya, apakah ada yang sama? Ayo kita kelompokkan. Mengelompokkan artinya mengumpulkan benda yang punya ciri sama. Bagaimana kamu mengelompokkannya? Jelaskan alasanmu. Kita memakai cara Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya."
+          "voiceNarration": "Ibu menyiapkan kue tradisional di meja. Ada kue cucur yang cokelat dan bulat. Ada kue risol yang cokelat dan runcing. Ada kue talam yang hijau. Ada kue lapis hijau yang bertingkat. Ada bolu cokelat yang berpojok empat. Dan ada kue lupis yang hijau berbentuk segitiga. Igil bertanya, apakah ada yang sama? Ayo kita kelompokkan. Mengelompokkan artinya mengumpulkan benda yang punya ciri sama. Bagaimana kamu mengelompokkannya? Jelaskan alasanmu. Kita memakai cara Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "B4-S2",
           "titleHint": "Kelompok Menurut Bentuk",
           "sceneType": "kelompok-menurut-bentuk",
-          "voiceNarration": "Kira dan Upe mengelompokkan kue menurut bentuknya. Di nampan pertama ada kue cucur dan kue talam. Tepi keduanya melengkung, jadi mereka bentuk lengkung. Di nampan kedua ada kue risol dan kue lupis. Keduanya berbentuk segitiga. Di nampan ketiga ada kue lapis hijau dan bolu cokelat. Keduanya berbentuk segi empat. Lihat, ada dua kue di setiap nampan. Satu aturan, yaitu bentuk, membuat tiga kelompok. Kita memakai cara Pilah Ciri: Pilah menurut sisi lengkung/lurus."
+          "voiceNarration": "Kira dan Upe mengelompokkan kue menurut bentuknya. Di nampan pertama ada kue cucur dan kue talam. Tepi keduanya melengkung, jadi mereka bentuk lengkung. Di nampan kedua ada kue risol dan kue lupis. Keduanya berbentuk segitiga. Di nampan ketiga ada kue lapis hijau dan bolu cokelat. Keduanya berbentuk segi empat. Lihat, ada dua kue di setiap nampan. Satu aturan, yaitu bentuk, membuat tiga kelompok. Kita memakai cara Pilah Ciri: Pilah menurut sisi lengkung/lurus. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "B4-S3",
           "titleHint": "Kelompok Menurut Warna",
           "sceneType": "kelompok-menurut-warna",
-          "voiceNarration": "Sekarang Wei dan Tika mengelompokkan kue yang sama, tetapi dengan aturan lain, yaitu warna. Nampan pertama untuk warna cokelat: kue cucur, kue risol, dan bolu cokelat. Nampan kedua untuk warna hijau: kue talam, kue lapis hijau, dan kue lupis. Kue yang sama bisa masuk kelompok yang berbeda kalau aturannya berbeda. Menurut bentuk, kue talam masuk kelompok lengkung. Menurut warna, kue talam masuk kelompok hijau. Ada tiga kue cokelat dan tiga kue hijau. Kita memakai cara Bentuk di Sekitar: Cari bentuk pada benda sehari-hari."
+          "voiceNarration": "Sekarang Wei dan Tika mengelompokkan kue yang sama, tetapi dengan aturan lain, yaitu warna. Nampan pertama untuk warna cokelat: kue cucur, kue risol, dan bolu cokelat. Nampan kedua untuk warna hijau: kue talam, kue lapis hijau, dan kue lupis. Kue yang sama bisa masuk kelompok yang berbeda kalau aturannya berbeda. Menurut bentuk, kue talam masuk kelompok lengkung. Menurut warna, kue talam masuk kelompok hijau. Ada tiga kue cokelat dan tiga kue hijau. Kita memakai cara Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "B4-S4",
           "titleHint": "Buah Besar dan Kecil",
           "sceneType": "buah-besar-kecil",
-          "voiceNarration": "Malosi dan Halim membawa buah ke meja. Ada semangka, melon, anggur, dan sawo. Semangka dan melon ukurannya besar. Anggur dan sawo ukurannya kecil. Selain menurut bentuk dan warna, benda juga bisa dikelompokkan menurut ukuran. Ada kelompok besar dan kelompok kecil. Semua buah ini bentuknya lengkung, tetapi ukurannya tidak sama. Besar dan kecil dibandingkan dengan benda lain yang ada di dekatnya. Kita memakai cara Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya."
+          "voiceNarration": "Malosi dan Halim membawa buah ke meja. Ada semangka, melon, anggur, dan sawo. Semangka dan melon ukurannya besar. Anggur dan sawo ukurannya kecil. Selain menurut bentuk dan warna, benda juga bisa dikelompokkan menurut ukuran. Ada kelompok besar dan kelompok kecil. Semua buah ini bentuknya lengkung, tetapi ukurannya tidak sama. Besar dan kecil dibandingkan dengan benda lain yang ada di dekatnya. Kita memakai cara Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "B4-S5",
           "titleHint": "Kotak Mainan Tika",
           "sceneType": "kotak-mainan-tiga-ciri",
-          "voiceNarration": "Tika punya kotak mainan. Isinya bola merah yang besar, kotak hadiah biru, topi pesta hijau, dan bola kuning yang kecil. Igil berkata, setiap benda punya tiga ciri. Ciri pertama adalah bentuk. Ciri kedua adalah warna. Ciri ketiga adalah ukuran. Kita boleh memilih satu ciri untuk dijadikan aturan. Sebelum mulai, putuskan dulu aturannya. Lalu periksa setiap benda: cocok dengan aturan, atau tidak? Kita memakai cara Pilah Ciri: Pilah menurut sisi lengkung/lurus."
+          "voiceNarration": "Tika punya kotak mainan. Isinya bola merah yang besar, kotak hadiah biru, topi pesta hijau, dan bola kuning yang kecil. Igil berkata, setiap benda punya tiga ciri. Ciri pertama adalah bentuk. Ciri kedua adalah warna. Ciri ketiga adalah ukuran. Kita boleh memilih satu ciri untuk dijadikan aturan. Sebelum mulai, putuskan dulu aturannya. Lalu periksa setiap benda: cocok dengan aturan, atau tidak? Kita memakai cara Pilah Ciri: Pilah menurut sisi lengkung/lurus. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "B4-S6",
           "titleHint": "Merapikan Kamar Kira",
           "sceneType": "merapikan-mainan",
-          "voiceNarration": "Kamar Kira berantakan. Kira merapikan mainannya dengan satu aturan, yaitu warna. Rak pertama untuk mainan merah. Rak kedua untuk mainan kuning. Rak ketiga untuk mainan biru. Sekarang kamar Kira rapi, dan mainan mudah dicari. Lain kali, Kira bisa merapikan menurut bentuk atau menurut ukuran. Mengelompokkan membantu kita merapikan, mencari, dan menghitung benda dengan cepat. Ayo kelompokkan benda di sekitarmu. Kita memakai cara Bentuk di Sekitar: Cari bentuk pada benda sehari-hari."
+          "voiceNarration": "Kamar Kira berantakan. Kira merapikan mainannya dengan satu aturan, yaitu warna. Rak pertama untuk mainan merah. Rak kedua untuk mainan kuning. Rak ketiga untuk mainan biru. Sekarang kamar Kira rapi, dan mainan mudah dicari. Lain kali, Kira bisa merapikan menurut bentuk atau menurut ukuran. Mengelompokkan membantu kita merapikan, mencari, dan menghitung benda dengan cepat. Ayo kelompokkan benda di sekitarmu. Kita memakai cara Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Siap? Ketuk suara guru jika ingin mendengar lagi."
         }
       ],
       "mindMaps": [
@@ -476,24 +476,24 @@
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. Pilih Satu Aturan",
-          "stepDesc": "Pilih satu ciri untuk dijadikan aturan. Aturannya bisa bentuk, warna, atau ukuran. Pakai satu aturan saja dalam satu kali mengelompokkan. Kalau aturannya dicampur, kelompoknya jadi membingungkan.",
+          "stepTitle": "2. van Hiele Visual",
+          "stepDesc": "Kenali lingkaran, segitiga, segi empat dari wujudnya.",
           "icon": "📏",
           "flowFrom": "Ciri yang sama",
           "flowTo": "Satu aturan"
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. van Hiele Visual",
-          "stepDesc": "Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "stepTitle": "3. Attribute Sort",
+          "stepDesc": "Pilah menurut sisi lengkung/lurus.",
           "icon": "🔍",
           "flowFrom": "Satu aturan",
           "flowTo": "Cocok atau tidak"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Attribute Sort",
-          "stepDesc": "Pilah menurut sisi lengkung/lurus.",
+          "stepTitle": "4. Shape in Environment",
+          "stepDesc": "Cari bentuk pada benda sehari-hari.",
           "icon": "🧺",
           "flowFrom": "Cocok atau tidak",
           "flowTo": "Kelompok"
@@ -622,25 +622,25 @@
           "title": "Nampan Kue dan Mainan",
           "emoji": "🧺",
           "targetCount": 3,
-          "voiceGuide": "Kenali Bentuk. Seret setiap benda ke nampan yang warnanya sama. Lalu ucapkan banyak mainan di nampan merah."
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Seret setiap benda ke nampan yang warnanya sama. Lalu ucapkan banyak mainan di nampan merah.. Kenali lingkaran, segitiga, segi empat dari wujudnya."
         },
         {
           "title": "Tangkap Buah Besar dan Kecil",
           "emoji": "🍉",
           "targetCount": 4,
-          "voiceGuide": "Pilah Ciri. Bandingkan buah dengan kotak putus-putus, lalu masukkan ke keranjang besar atau kecil. Ucapkan banyak buah di keranjang kecil."
+          "voiceGuide": "Pilah Ciri. Pilah Ciri. Bandingkan buah dengan kotak putus-putus, lalu masukkan ke keranjang besar atau kecil. Ucapkan banyak buah di keranjang kecil.. Pilah menurut sisi lengkung/lurus."
         },
         {
           "title": "Tebak Aturan Rahasia",
           "emoji": "🕵️",
           "targetCount": 4,
-          "voiceGuide": "Bentuk di Sekitar. Lihat benda yang masuk dan yang tidak masuk kelompok. Tebak aturannya: bentuk, warna, atau ukuran."
+          "voiceGuide": "Bentuk di Sekitar. Bentuk di Sekitar. Lihat benda yang masuk dan yang tidak masuk kelompok. Tebak aturannya: bentuk, warna, atau ukuran.. Cari bentuk pada benda sehari-hari."
         },
         {
           "title": "Lemari Dua Aturan",
           "emoji": "🗄️",
           "targetCount": 2,
-          "voiceGuide": "Kenali Bentuk. Letakkan setiap mainan di kotak yang cocok dengan warna dan bentuknya. Ucapkan banyak mainan berwarna hijau."
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Letakkan setiap mainan di kotak yang cocok dengan warna dan bentuknya. Ucapkan banyak mainan berwarna hijau.. Kenali lingkaran, segitiga, segi empat dari wujudnya."
         }
       ],
       "pictorialSlides": [
@@ -649,21 +649,21 @@
           "diagramType": "shape-select",
           "numberA": 4,
           "numberB": 0,
-          "caption": "Pakai Kenali Bentuk. Ketuk semua bentuk polos yang cocok dengan aturan warna, bentuk, atau ukuran."
+          "caption": "Pakai Kenali Bentuk. Pakai Kenali Bentuk. Ketuk semua bentuk polos yang cocok dengan aturan warna, bentuk, atau ukuran."
         },
         {
           "title": "Tabel Hitung Kelompok",
           "diagramType": "count-table",
           "numberA": 9,
           "numberB": 0,
-          "caption": "Pakai Pilah Ciri. Hitung bentuk menurut warnanya, lalu isi tabel banyaknya."
+          "caption": "Pakai Pilah Ciri. Pakai Pilah Ciri. Hitung bentuk menurut warnanya, lalu isi tabel banyaknya."
         },
         {
           "title": "Cari yang Beda",
           "diagramType": "odd-one-out",
           "numberA": 4,
           "numberB": 1,
-          "caption": "Pakai Bentuk di Sekitar. Dari empat bentuk, tiga punya ciri sama. Ketuk satu yang berbeda."
+          "caption": "Pakai Bentuk di Sekitar. Pakai Bentuk di Sekitar. Dari empat bentuk, tiga punya ciri sama. Ketuk satu yang berbeda."
         }
       ],
       "abstractSlides": [
@@ -671,19 +671,19 @@
           "symbolLarge": "bentuk • warna • ukuran",
           "wordLarge": "KALIMAT KELOMPOK",
           "mathNotation": "kue risol + kue lupis → bentuk",
-          "voiceReadout": "Kenali Bentuk. Lengkapi kalimat tentang kelompok dengan kata bentuk, warna, atau ukuran."
+          "voiceReadout": "Kenali Bentuk. Kenali Bentuk. Lengkapi kalimat tentang kelompok dengan kata bentuk, warna, atau ukuran.. Kenali lingkaran, segitiga, segi empat dari wujudnya."
         },
         {
           "symbolLarge": "3 + 2 = 5",
           "wordLarge": "KANTONG ANGKA",
           "mathNotation": "2 + 3 + 4 = 9",
-          "voiceReadout": "Pilah Ciri. Jumlahkan banyak benda dari semua kelompok, lalu ketuk angka jawabannya."
+          "voiceReadout": "Pilah Ciri. Pilah Ciri. Jumlahkan banyak benda dari semua kelompok, lalu ketuk angka jawabannya.. Pilah menurut sisi lengkung/lurus."
         },
         {
           "symbolLarge": "3",
           "wordLarge": "TIGA KUE COKELAT",
           "mathNotation": "cokelat 3 • besar 2 • kecil 2",
-          "voiceReadout": "Bentuk di Sekitar. Ucapkan banyak anggota sebuah kelompok, lalu guratkan angkanya di kanvas."
+          "voiceReadout": "Bentuk di Sekitar. Bentuk di Sekitar. Ucapkan banyak anggota sebuah kelompok, lalu guratkan angkanya di kanvas.. Cari bentuk pada benda sehari-hari."
         }
       ],
       "interactiveGames": [
@@ -694,9 +694,9 @@
           "gameType": "drag-sort",
           "title": "Nampan Kue dan Mainan",
           "bookReference": "Buku Siswa hlm. 127–128",
-          "objective": "Pakai Kenali Bentuk. Mengelompokkan kue dan mainan nyata menurut warna.",
-          "mechanicDescription": "Dua ronde (6 kue ke 2 nampan, 6 mainan ke 3 nampan). Siswa menyeret atau mengetuk benda ke nampan yang warnanya sama, lalu mengucapkan banyak mainan di nampan merah. Terapkan van Hiele Visual.",
-          "voiceGuide": "Kenali Bentuk. Seret benda ke nampan yang warnanya sama. Ucapkan banyak mainan di nampan merah."
+          "objective": "Pakai Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Pakai Kenali Bentuk. Mengelompokkan kue dan mainan nyata menurut warna.",
+          "mechanicDescription": "Dua ronde (6 kue ke 2 nampan, 6 mainan ke 3 nampan). Siswa menyeret atau mengetuk benda ke nampan yang warnanya sama, lalu mengucapkan banyak mainan di nampan merah. Terapkan van Hiele Visual. Saat bermain, terapkan van Hiele Visual: Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Seret benda ke nampan yang warnanya sama. Ucapkan banyak mainan di nampan merah."
         },
         {
           "gameId": "subB4-game-2",
@@ -705,9 +705,9 @@
           "gameType": "one-by-one-sort",
           "title": "Tangkap Buah Besar dan Kecil",
           "bookReference": "Buku Siswa hlm. 129 (Ayo Mencoba)",
-          "objective": "Pakai Pilah Ciri. Mengelompokkan buah menurut ukuran dengan membandingkan terhadap kotak pembanding.",
-          "mechanicDescription": "Satu ronde, tujuh buah datang satu per satu. Siswa memilih keranjang besar atau kecil, lalu mengucapkan banyak buah di keranjang kecil. Terapkan Attribute Sort.",
-          "voiceGuide": "Pilah Ciri. Bandingkan buah dengan kotak putus-putus, lalu pilih keranjang besar atau kecil."
+          "objective": "Pakai Pilah Ciri: Pilah menurut sisi lengkung/lurus. Pakai Pilah Ciri. Mengelompokkan buah menurut ukuran dengan membandingkan terhadap kotak pembanding.",
+          "mechanicDescription": "Satu ronde, tujuh buah datang satu per satu. Siswa memilih keranjang besar atau kecil, lalu mengucapkan banyak buah di keranjang kecil. Terapkan Attribute Sort. Saat bermain, terapkan Attribute Sort: Pilah menurut sisi lengkung/lurus.",
+          "voiceGuide": "Pilah Ciri. Pilah Ciri. Bandingkan buah dengan kotak putus-putus, lalu pilih keranjang besar atau kecil."
         },
         {
           "gameId": "subB4-game-3",
@@ -716,9 +716,9 @@
           "gameType": "rule-guess",
           "title": "Tebak Aturan Rahasia",
           "bookReference": "Buku Siswa hlm. 128–129",
-          "objective": "Pakai Bentuk di Sekitar. Menemukan aturan sebuah kelompok dari contoh benda yang masuk dan yang tidak masuk.",
-          "mechanicDescription": "Tiga ronde: aturan warna, bentuk, lalu ukuran. Siswa memilih aturan. Terakhir ucapkan banyak benda yang masuk kelompok. Terapkan Shape in Environment.",
-          "voiceGuide": "Bentuk di Sekitar. Lihat kotak hijau dan merah, lalu pilih aturan rahasianya."
+          "objective": "Pakai Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Pakai Bentuk di Sekitar. Menemukan aturan sebuah kelompok dari contoh benda yang masuk dan yang tidak masuk.",
+          "mechanicDescription": "Tiga ronde: aturan warna, bentuk, lalu ukuran. Siswa memilih aturan. Terakhir ucapkan banyak benda yang masuk kelompok. Terapkan Shape in Environment. Saat bermain, terapkan Shape in Environment: Cari bentuk pada benda sehari-hari.",
+          "voiceGuide": "Bentuk di Sekitar. Bentuk di Sekitar. Lihat kotak hijau dan merah, lalu pilih aturan rahasianya."
         },
         {
           "gameId": "subB4-game-4",
@@ -727,9 +727,9 @@
           "gameType": "grid-sort",
           "title": "Lemari Dua Aturan",
           "bookReference": "Buku Siswa pengayaan (klasifikasi dua ciri)",
-          "objective": "Pakai Kenali Bentuk. Menempatkan benda pada tabel dua ciri: warna dan bentuk.",
-          "mechanicDescription": "Dua ronde. Empat mainan masing-masing punya satu kotak lemari yang cocok dengan warna dan bentuknya. Terakhir ucapkan banyak mainan berwarna hijau. Terapkan van Hiele Visual.",
-          "voiceGuide": "Kenali Bentuk. Letakkan mainan di kotak yang cocok dengan dua cirinya."
+          "objective": "Pakai Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Pakai Kenali Bentuk. Menempatkan benda pada tabel dua ciri: warna dan bentuk.",
+          "mechanicDescription": "Dua ronde. Empat mainan masing-masing punya satu kotak lemari yang cocok dengan warna dan bentuknya. Terakhir ucapkan banyak mainan berwarna hijau. Terapkan van Hiele Visual. Saat bermain, terapkan van Hiele Visual: Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Letakkan mainan di kotak yang cocok dengan dua cirinya."
         },
         {
           "gameId": "subB4-game-5",
@@ -738,9 +738,9 @@
           "gameType": "tap-select",
           "title": "Ketuk Semua yang Sama",
           "bookReference": "Buku Siswa hlm. 128–129",
-          "objective": "Pakai Pilah Ciri. Menandai semua bentuk polos yang cocok dengan aturan warna, bentuk, atau ukuran.",
-          "mechanicDescription": "Tiga ronde, masing-masing delapan bentuk. Siswa mengetuk bentuk yang cocok. Terakhir ucapkan banyak bentuk kecil yang ditandai. Terapkan Attribute Sort.",
-          "voiceGuide": "Pilah Ciri. Baca aturannya lalu ketuk semua bentuk yang cocok."
+          "objective": "Pakai Pilah Ciri: Pilah menurut sisi lengkung/lurus. Pakai Pilah Ciri. Menandai semua bentuk polos yang cocok dengan aturan warna, bentuk, atau ukuran.",
+          "mechanicDescription": "Tiga ronde, masing-masing delapan bentuk. Siswa mengetuk bentuk yang cocok. Terakhir ucapkan banyak bentuk kecil yang ditandai. Terapkan Attribute Sort. Saat bermain, terapkan Attribute Sort: Pilah menurut sisi lengkung/lurus.",
+          "voiceGuide": "Pilah Ciri. Pilah Ciri. Baca aturannya lalu ketuk semua bentuk yang cocok."
         },
         {
           "gameId": "subB4-game-6",
@@ -749,9 +749,9 @@
           "gameType": "count-table",
           "title": "Tabel Hitung Kelompok",
           "bookReference": "Buku Siswa hlm. 127–133",
-          "objective": "Pakai Bentuk di Sekitar. Menghitung bentuk menurut warna dan mengisi tabel banyaknya.",
-          "mechanicDescription": "Dua ronde (6 dan 9 bentuk). Siswa mengisi tabel dengan tombol plus dan minus lalu menekan Periksa. Terakhir ucapkan banyak semua bentuk. Terapkan Shape in Environment.",
-          "voiceGuide": "Bentuk di Sekitar. Hitung bentuk tiap warna lalu isi tabel."
+          "objective": "Pakai Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Pakai Bentuk di Sekitar. Menghitung bentuk menurut warna dan mengisi tabel banyaknya.",
+          "mechanicDescription": "Dua ronde (6 dan 9 bentuk). Siswa mengisi tabel dengan tombol plus dan minus lalu menekan Periksa. Terakhir ucapkan banyak semua bentuk. Terapkan Shape in Environment. Saat bermain, terapkan Shape in Environment: Cari bentuk pada benda sehari-hari.",
+          "voiceGuide": "Bentuk di Sekitar. Bentuk di Sekitar. Hitung bentuk tiap warna lalu isi tabel."
         },
         {
           "gameId": "subB4-game-7",
@@ -760,9 +760,9 @@
           "gameType": "odd-one-out",
           "title": "Cari yang Beda",
           "bookReference": "Buku Siswa pengayaan (penalaran klasifikasi)",
-          "objective": "Pakai Kenali Bentuk. Menemukan satu bentuk yang berbeda pada satu ciri yang disebutkan.",
-          "mechanicDescription": "Empat ronde dengan empat bentuk polos. Tiga bentuk punya ciri yang sama menurut aturan yang tertulis, satu berbeda. Terapkan van Hiele Visual.",
-          "voiceGuide": "Kenali Bentuk. Ketuk bentuk yang berbeda menurut aturan yang tertulis."
+          "objective": "Pakai Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Pakai Kenali Bentuk. Menemukan satu bentuk yang berbeda pada satu ciri yang disebutkan.",
+          "mechanicDescription": "Empat ronde dengan empat bentuk polos. Tiga bentuk punya ciri yang sama menurut aturan yang tertulis, satu berbeda. Terapkan van Hiele Visual. Saat bermain, terapkan van Hiele Visual: Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Ketuk bentuk yang berbeda menurut aturan yang tertulis."
         },
         {
           "gameId": "subB4-game-8",
@@ -771,9 +771,9 @@
           "gameType": "fill-sentence",
           "title": "Lengkapi Kalimat Kelompok",
           "bookReference": "Buku Siswa hlm. 128–129",
-          "objective": "Pakai Pilah Ciri. Melengkapi kalimat tentang kelompok dengan kata bentuk, warna, atau ukuran.",
-          "mechanicDescription": "Empat ronde. Siswa memilih kata yang melengkapi kalimat. Terakhir ucapkan banyak kue berwarna cokelat. Terapkan Attribute Sort.",
-          "voiceGuide": "Pilah Ciri. Pilih kata yang melengkapi kalimat kelompok."
+          "objective": "Pakai Pilah Ciri: Pilah menurut sisi lengkung/lurus. Pakai Pilah Ciri. Melengkapi kalimat tentang kelompok dengan kata bentuk, warna, atau ukuran.",
+          "mechanicDescription": "Empat ronde. Siswa memilih kata yang melengkapi kalimat. Terakhir ucapkan banyak kue berwarna cokelat. Terapkan Attribute Sort. Saat bermain, terapkan Attribute Sort: Pilah menurut sisi lengkung/lurus.",
+          "voiceGuide": "Pilah Ciri. Pilah Ciri. Pilih kata yang melengkapi kalimat kelompok."
         },
         {
           "gameId": "subB4-game-9",
@@ -782,9 +782,9 @@
           "gameType": "number-keypad",
           "title": "Kantong Angka",
           "bookReference": "Buku Siswa hlm. 127–133",
-          "objective": "Pakai Bentuk di Sekitar. Menjumlahkan banyak anggota dua atau tiga kelompok.",
-          "mechanicDescription": "Tiga ronde cerita angka (3+2, 4+3, 2+3+4). Siswa mengetuk angka jawaban. Terakhir ucapkan banyak benda di kelompok topi. Terapkan Shape in Environment.",
-          "voiceGuide": "Bentuk di Sekitar. Jumlahkan semua kelompok lalu ketuk angkanya."
+          "objective": "Pakai Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Pakai Bentuk di Sekitar. Menjumlahkan banyak anggota dua atau tiga kelompok.",
+          "mechanicDescription": "Tiga ronde cerita angka (3+2, 4+3, 2+3+4). Siswa mengetuk angka jawaban. Terakhir ucapkan banyak benda di kelompok topi. Terapkan Shape in Environment. Saat bermain, terapkan Shape in Environment: Cari bentuk pada benda sehari-hari.",
+          "voiceGuide": "Bentuk di Sekitar. Bentuk di Sekitar. Jumlahkan semua kelompok lalu ketuk angkanya."
         },
         {
           "gameId": "subB4-game-10",
@@ -793,9 +793,9 @@
           "gameType": "say-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa hlm. 127–133 (Ayo Mencoba)",
-          "objective": "Pakai Kenali Bentuk. Menyebut dan menulis banyak anggota sebuah kelompok.",
-          "mechanicDescription": "Dua ronde. Ronde 1 kue hijau. Ronde 2 siswa memilih sendiri satu kelompok. Siswa mengucapkan banyak anggota lalu menggurat angkanya. Terapkan van Hiele Visual.",
-          "voiceGuide": "Kenali Bentuk. Ucapkan banyak anggota kelompok, lalu guratkan angkanya."
+          "objective": "Pakai Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Pakai Kenali Bentuk. Menyebut dan menulis banyak anggota sebuah kelompok.",
+          "mechanicDescription": "Dua ronde. Ronde 1 kue hijau. Ronde 2 siswa memilih sendiri satu kelompok. Siswa mengucapkan banyak anggota lalu menggurat angkanya. Terapkan van Hiele Visual. Saat bermain, terapkan van Hiele Visual: Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Ucapkan banyak anggota kelompok, lalu guratkan angkanya."
         }
       ],
       "metodeLuar": [
@@ -838,7 +838,7 @@
       "id": "C",
       "codeTitle": "Sub-Bab C (Menyusun dan Mengurai Bentuk)",
       "fullTitle": "Sub-Bab C: Menyusun dan Mengurai Bentuk Bangun",
-      "targetDescription": "Siswa menggabungkan dua atau lebih bangun datar menjadi bangun baru, menguraikan bangun gabungan menjadi bagian-bagiannya, menyebutkan jenis dan banyak bagian penyusun (misalnya kereta: 5 segi empat, 1 segitiga, 3 bentuk lengkung), serta menghitung banyak keping dan lidi dengan penjumlahan dan pengurangan sederhana. Memakai Kenali Bentuk, Pilah Ciri, Bentuk di Sekitar.",
+      "targetDescription": "Siswa menggabungkan dua atau lebih bangun datar menjadi bangun baru, menguraikan bangun gabungan menjadi bagian-bagiannya, menyebutkan jenis dan banyak bagian penyusun (misalnya kereta: 5 segi empat, 1 segitiga, 3 bentuk lengkung), serta menghitung banyak keping dan lidi dengan penjumlahan dan pengurangan sederhana. Memakai Kenali Bentuk, Pilah Ciri, Bentuk di Sekitar. Memakai Kenali Bentuk, Pilah Ciri, Bentuk di Sekitar.",
       "secondaryBg": "#FEF3C7",
       "secondaryBorder": "#D97706",
       "secondaryText": "#78350F",
@@ -847,37 +847,37 @@
           "id": "C4-S1",
           "titleHint": "Dua Segitiga Kertas",
           "sceneType": "dua-segitiga-di-meja",
-          "voiceNarration": "Upe dan Wei punya dua kertas berbentuk segitiga yang sama besar. Satu berwarna merah dan satu berwarna biru. Upe berkata, kalau digabung, kertas ini akan menjadi segitiga. Wei berkata, kalau digabung, kertas ini akan menjadi segi empat. Siapa yang benar? Igil mengajak kita mencoba. Gabungkan dua segitiga yang sama. Bentuk apa yang kamu temukan? Kita memakai cara Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya."
+          "voiceNarration": "Upe dan Wei punya dua kertas berbentuk segitiga yang sama besar. Satu berwarna merah dan satu berwarna biru. Upe berkata, kalau digabung, kertas ini akan menjadi segitiga. Wei berkata, kalau digabung, kertas ini akan menjadi segi empat. Siapa yang benar? Igil mengajak kita mencoba. Gabungkan dua segitiga yang sama. Bentuk apa yang kamu temukan? Kita memakai cara Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "C4-S2",
           "titleHint": "Dua Cara Menggabung",
           "sceneType": "dua-cara-menggabungkan",
-          "voiceNarration": "Ternyata Upe dan Wei sama-sama benar! Kalau dua segitiga yang sama besar dirapatkan pada sisi yang tegak, hasilnya segitiga yang lebih besar. Kalau dirapatkan pada sisi yang miring, hasilnya segi empat. Dua segitiga yang sama bisa menjadi bangun yang berbeda, tergantung cara kita menggabungkannya. Menggabungkan beberapa bentuk menjadi bangun baru disebut menyusun. Kita memakai cara Pilah Ciri: Pilah menurut sisi lengkung/lurus."
+          "voiceNarration": "Ternyata Upe dan Wei sama-sama benar! Kalau dua segitiga yang sama besar dirapatkan pada sisi yang tegak, hasilnya segitiga yang lebih besar. Kalau dirapatkan pada sisi yang miring, hasilnya segi empat. Dua segitiga yang sama bisa menjadi bangun yang berbeda, tergantung cara kita menggabungkannya. Menggabungkan beberapa bentuk menjadi bangun baru disebut menyusun. Kita memakai cara Pilah Ciri: Pilah menurut sisi lengkung/lurus. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "C4-S3",
           "titleHint": "Bangun yang Baru",
           "sceneType": "bangun-datar-digabung",
-          "voiceNarration": "Bukan hanya segitiga yang bisa digabung. Potongan biru yang sudut bawahnya terpotong dapat digabung dengan segitiga merah kecil, dan menjadi segi empat yang utuh. Bentuk bulat yang tinggal tiga perempat dapat digabung dengan potongan seperempat, dan menjadi bulat penuh. Dua bangun datar dapat digabungkan. Hasilnya adalah bangun baru. Kita memakai cara Bentuk di Sekitar: Cari bentuk pada benda sehari-hari."
+          "voiceNarration": "Bukan hanya segitiga yang bisa digabung. Potongan biru yang sudut bawahnya terpotong dapat digabung dengan segitiga merah kecil, dan menjadi segi empat yang utuh. Bentuk bulat yang tinggal tiga perempat dapat digabung dengan potongan seperempat, dan menjadi bulat penuh. Dua bangun datar dapat digabungkan. Hasilnya adalah bangun baru. Kita memakai cara Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "C4-S4",
           "titleHint": "Kereta dari Balok",
           "sceneType": "kereta-dari-bentuk",
-          "voiceNarration": "Halim punya kereta mainan dari balok kayu. Ayo amati bentuk bangun pada kereta itu. Cerobongnya segi empat. Mesinnya segi empat. Kabin merah dan jendelanya juga segi empat, dan gerbong biru yang panjang segi empat juga. Jadi segi empat ada lima. Moncong keretanya segitiga, ada satu. Rodanya bentuk lengkung, ada tiga. Kereta ini disusun dari lima segi empat, satu segitiga, dan tiga bentuk lengkung. Kita memakai cara Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya."
+          "voiceNarration": "Halim punya kereta mainan dari balok kayu. Ayo amati bentuk bangun pada kereta itu. Cerobongnya segi empat. Mesinnya segi empat. Kabin merah dan jendelanya juga segi empat, dan gerbong biru yang panjang segi empat juga. Jadi segi empat ada lima. Moncong keretanya segitiga, ada satu. Rodanya bentuk lengkung, ada tiga. Kereta ini disusun dari lima segi empat, satu segitiga, dan tiga bentuk lengkung. Kita memakai cara Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "C4-S5",
           "titleHint": "Mengurai Rumah Mainan",
           "sceneType": "mengurai-rumah",
-          "voiceNarration": "Setelah menyusun, kita juga bisa mengurai. Mengurai artinya memisahkan sebuah bangun menjadi bagian-bagiannya. Malosi menguraikan rumah mainan. Atapnya segitiga. Dindingnya segi empat. Pintunya segi empat, dan jendelanya juga segi empat. Kalau bagian-bagian itu disusun lagi, rumahnya kembali utuh. Menyusun dan mengurai seperti dua arah yang saling berlawanan. Kita memakai cara Pilah Ciri: Pilah menurut sisi lengkung/lurus."
+          "voiceNarration": "Setelah menyusun, kita juga bisa mengurai. Mengurai artinya memisahkan sebuah bangun menjadi bagian-bagiannya. Malosi menguraikan rumah mainan. Atapnya segitiga. Dindingnya segi empat. Pintunya segi empat, dan jendelanya juga segi empat. Kalau bagian-bagian itu disusun lagi, rumahnya kembali utuh. Menyusun dan mengurai seperti dua arah yang saling berlawanan. Kita memakai cara Pilah Ciri: Pilah menurut sisi lengkung/lurus. Coba ulangi cara itu sendiri sebelum lanjut ke adegan berikutnya. Siap? Ketuk suara guru jika ingin mendengar lagi."
         },
         {
           "id": "C4-S6",
           "titleHint": "Rumah dari Lidi",
           "sceneType": "bermain-lidi",
-          "voiceNarration": "Ayo bermain! Tika, Kira, dan Halim menyiapkan lidi yang sama panjang. Mereka menyusunnya menjadi bentuk yang mereka suka. Tiga lidi bisa menjadi segitiga. Empat lidi bisa menjadi segi empat. Lalu Halim membuat rumah. Segi empat untuk dindingnya, dan dua lidi lagi untuk atapnya. Jadi rumah itu memakai enam lidi. Kamu juga boleh membuat bentuk yang kamu suka. Kita memakai cara Bentuk di Sekitar: Cari bentuk pada benda sehari-hari."
+          "voiceNarration": "Ayo bermain! Tika, Kira, dan Halim menyiapkan lidi yang sama panjang. Mereka menyusunnya menjadi bentuk yang mereka suka. Tiga lidi bisa menjadi segitiga. Empat lidi bisa menjadi segi empat. Lalu Halim membuat rumah. Segi empat untuk dindingnya, dan dua lidi lagi untuk atapnya. Jadi rumah itu memakai enam lidi. Kamu juga boleh membuat bentuk yang kamu suka. Kita memakai cara Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Siap? Ketuk suara guru jika ingin mendengar lagi."
         }
       ],
       "mindMaps": [
@@ -891,24 +891,24 @@
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. Kenali Tiap Bentuk",
-          "stepDesc": "Sebutkan nama setiap bagian. Apakah bagian ini segi empat, segitiga, atau bentuk lengkung? Ingat ciri-cirinya: segi empat punya empat sisi lurus, segitiga punya tiga sisi lurus, dan bentuk lengkung tidak punya sisi lurus.",
+          "stepTitle": "2. van Hiele Visual",
+          "stepDesc": "Kenali lingkaran, segitiga, segi empat dari wujudnya.",
           "icon": "🔎",
           "flowFrom": "Bagian-bagiannya",
           "flowTo": "Jenis tiap bentuk"
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. van Hiele Visual",
-          "stepDesc": "Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "stepTitle": "3. Attribute Sort",
+          "stepDesc": "Pilah menurut sisi lengkung/lurus.",
           "icon": "🧩",
           "flowFrom": "Jenis tiap bentuk",
           "flowTo": "Bangun baru"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Attribute Sort",
-          "stepDesc": "Pilah menurut sisi lengkung/lurus.",
+          "stepTitle": "4. Shape in Environment",
+          "stepDesc": "Cari bentuk pada benda sehari-hari.",
           "icon": "🏷️",
           "flowFrom": "Bangun baru",
           "flowTo": "Nama bangun baru"
@@ -1037,25 +1037,25 @@
           "title": "Gabung Dua Keping Kertas",
           "emoji": "🧩",
           "targetCount": 2,
-          "voiceGuide": "Kenali Bentuk. Seret keping kertas ke papan yang membuat bentuk sesuai target. Kertas boleh diputar dan dibalik. Ucapkan berapa keping kertas yang kamu gabungkan."
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Seret keping kertas ke papan yang membuat bentuk sesuai target. Kertas boleh diputar dan dibalik. Ucapkan berapa keping kertas yang kamu gabungkan.. Kenali lingkaran, segitiga, segi empat dari wujudnya."
         },
         {
           "title": "Pas atau Tidak?",
           "emoji": "🍞",
           "targetCount": 3,
-          "voiceGuide": "Pilah Ciri. Lihat bangun yang kurang satu potongan, lalu pilih potongan yang pas. Ucapkan berapa sisi lurus pada atap segitiga."
+          "voiceGuide": "Pilah Ciri. Pilah Ciri. Lihat bangun yang kurang satu potongan, lalu pilih potongan yang pas. Ucapkan berapa sisi lurus pada atap segitiga.. Pilah menurut sisi lengkung/lurus."
         },
         {
           "title": "Bangun Kereta Balok",
           "emoji": "🚂",
           "targetCount": 5,
-          "voiceGuide": "Bentuk di Sekitar. Seret setiap balok ke bayangannya di papan kereta. Setelah kereta jadi, ucapkan berapa balok segi empat pada kereta."
+          "voiceGuide": "Bentuk di Sekitar. Bentuk di Sekitar. Seret setiap balok ke bayangannya di papan kereta. Setelah kereta jadi, ucapkan berapa balok segi empat pada kereta.. Cari bentuk pada benda sehari-hari."
         },
         {
           "title": "Susun Lidi",
           "emoji": "🪵",
           "targetCount": 6,
-          "voiceGuide": "Kenali Bentuk. Susun segitiga, segi empat, lalu rumah dari lidi yang sama panjang. Ketuk garis putus-putus untuk meletakkan lidi. Ucapkan berapa lidi untuk rumah."
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Susun segitiga, segi empat, lalu rumah dari lidi yang sama panjang. Ketuk garis putus-putus untuk meletakkan lidi. Ucapkan berapa lidi untuk rumah.. Kenali lingkaran, segitiga, segi empat dari wujudnya."
         }
       ],
       "pictorialSlides": [
@@ -1064,21 +1064,21 @@
           "diagramType": "cut-line",
           "numberA": 4,
           "numberB": 0,
-          "caption": "Pakai Kenali Bentuk. Pilih bangun polos yang garis potongnya tepat untuk menguraikannya menjadi bagian yang diminta."
+          "caption": "Pakai Kenali Bentuk. Pakai Kenali Bentuk. Pilih bangun polos yang garis potongnya tepat untuk menguraikannya menjadi bagian yang diminta."
         },
         {
           "title": "Jodohkan Keping dan Bangun",
           "diagramType": "match-compose",
           "numberA": 6,
           "numberB": 0,
-          "caption": "Pakai Pilah Ciri. Jodohkan sepasang keping polos dengan bangun gabungannya, lalu hitung semua keping."
+          "caption": "Pakai Pilah Ciri. Pakai Pilah Ciri. Jodohkan sepasang keping polos dengan bangun gabungannya, lalu hitung semua keping."
         },
         {
           "title": "Tunjuk dan Hitung",
           "diagramType": "tap-count",
           "numberA": 7,
           "numberB": 0,
-          "caption": "Pakai Bentuk di Sekitar. Tunjuk semua bagian dengan jenis bentuk yang sama pada bangun gabungan, lalu hitung semua bagian."
+          "caption": "Pakai Bentuk di Sekitar. Pakai Bentuk di Sekitar. Tunjuk semua bagian dengan jenis bentuk yang sama pada bangun gabungan, lalu hitung semua bagian."
         }
       ],
       "abstractSlides": [
@@ -1086,19 +1086,19 @@
           "symbolLarge": "benar • salah",
           "wordLarge": "BENAR ATAU SALAH",
           "mathNotation": "5 + 1 + 3 = 9",
-          "voiceReadout": "Kenali Bentuk. Dengarkan kalimat tentang menyusun dan mengurai, lalu ketuk Benar atau Salah."
+          "voiceReadout": "Kenali Bentuk. Kenali Bentuk. Dengarkan kalimat tentang menyusun dan mengurai, lalu ketuk Benar atau Salah.. Kenali lingkaran, segitiga, segi empat dari wujudnya."
         },
         {
           "symbolLarge": "3 + 3 = 6",
           "wordLarge": "HITUNG KEPING",
           "mathNotation": "8 − 3 = 5",
-          "voiceReadout": "Pilah Ciri. Baca cerita keping dan lidi, lalu ketuk angka hasil menyusun atau mengurai."
+          "voiceReadout": "Pilah Ciri. Pilah Ciri. Baca cerita keping dan lidi, lalu ketuk angka hasil menyusun atau mengurai.. Pilah menurut sisi lengkung/lurus."
         },
         {
           "symbolLarge": "4",
           "wordLarge": "EMPAT LIDI",
           "mathNotation": "segitiga 3 • segi empat 4 • rumah 6",
-          "voiceReadout": "Bentuk di Sekitar. Ucapkan banyak lidi, lalu guratkan angkanya di kanvas."
+          "voiceReadout": "Bentuk di Sekitar. Bentuk di Sekitar. Ucapkan banyak lidi, lalu guratkan angkanya di kanvas.. Cari bentuk pada benda sehari-hari."
         }
       ],
       "interactiveGames": [
@@ -1109,9 +1109,9 @@
           "gameType": "drag-compose",
           "title": "Gabung Dua Keping Kertas",
           "bookReference": "Buku Siswa hlm. 134–135",
-          "objective": "Pakai Kenali Bentuk. Menyusun dua keping kertas nyata menjadi bangun baru sesuai target.",
-          "mechanicDescription": "Tiga ronde: dua segitiga menjadi segitiga besar, dua segitiga menjadi persegi panjang, dua persegi menjadi persegi panjang. Siswa menyeret keping ke papan (boleh diputar dan dibalik). Terakhir ucapkan banyak keping kertas yang digabung. Terapkan van Hiele Visual.",
-          "voiceGuide": "Kenali Bentuk. Seret keping ke papan sampai bentuknya sesuai target."
+          "objective": "Pakai Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Pakai Kenali Bentuk. Menyusun dua keping kertas nyata menjadi bangun baru sesuai target.",
+          "mechanicDescription": "Tiga ronde: dua segitiga menjadi segitiga besar, dua segitiga menjadi persegi panjang, dua persegi menjadi persegi panjang. Siswa menyeret keping ke papan (boleh diputar dan dibalik). Terakhir ucapkan banyak keping kertas yang digabung. Terapkan van Hiele Visual. Saat bermain, terapkan van Hiele Visual: Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Seret keping ke papan sampai bentuknya sesuai target."
         },
         {
           "gameId": "subC4-game-2",
@@ -1120,9 +1120,9 @@
           "gameType": "choose-piece",
           "title": "Pas atau Tidak?",
           "bookReference": "Buku Siswa hlm. 135–136",
-          "objective": "Pakai Pilah Ciri. Memilih potongan yang pas, sama bentuk dan sama besar, untuk melengkapi bangun yang kurang satu bagian.",
-          "mechanicDescription": "Empat ronde (roti, bolu, keju, rumah kardus). Siswa memilih satu dari beberapa potongan. Terakhir ucapkan banyak sisi lurus pada atap segitiga. Terapkan Attribute Sort.",
-          "voiceGuide": "Pilah Ciri. Pilih potongan yang pas bentuk dan besarnya."
+          "objective": "Pakai Pilah Ciri: Pilah menurut sisi lengkung/lurus. Pakai Pilah Ciri. Memilih potongan yang pas, sama bentuk dan sama besar, untuk melengkapi bangun yang kurang satu bagian.",
+          "mechanicDescription": "Empat ronde (roti, bolu, keju, rumah kardus). Siswa memilih satu dari beberapa potongan. Terakhir ucapkan banyak sisi lurus pada atap segitiga. Terapkan Attribute Sort. Saat bermain, terapkan Attribute Sort: Pilah menurut sisi lengkung/lurus.",
+          "voiceGuide": "Pilah Ciri. Pilah Ciri. Pilih potongan yang pas bentuk dan besarnya."
         },
         {
           "gameId": "subC4-game-3",
@@ -1131,9 +1131,9 @@
           "gameType": "drag-silhouette",
           "title": "Bangun Kereta Balok",
           "bookReference": "Buku Siswa hlm. 136–137",
-          "objective": "Pakai Bentuk di Sekitar. Menyusun kereta dari sembilan balok dengan mencocokkan bentuk dan besar pada bayangan.",
-          "mechanicDescription": "Satu ronde dengan sembilan balok (5 segi empat, 1 segitiga, 3 lengkung). Siswa menyeret balok ke bayangan yang sama. Terakhir ucapkan banyak balok segi empat. Terapkan Shape in Environment.",
-          "voiceGuide": "Bentuk di Sekitar. Seret balok ke bayangannya di papan kereta."
+          "objective": "Pakai Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Pakai Bentuk di Sekitar. Menyusun kereta dari sembilan balok dengan mencocokkan bentuk dan besar pada bayangan.",
+          "mechanicDescription": "Satu ronde dengan sembilan balok (5 segi empat, 1 segitiga, 3 lengkung). Siswa menyeret balok ke bayangan yang sama. Terakhir ucapkan banyak balok segi empat. Terapkan Shape in Environment. Saat bermain, terapkan Shape in Environment: Cari bentuk pada benda sehari-hari.",
+          "voiceGuide": "Bentuk di Sekitar. Bentuk di Sekitar. Seret balok ke bayangannya di papan kereta."
         },
         {
           "gameId": "subC4-game-4",
@@ -1142,9 +1142,9 @@
           "gameType": "tap-build",
           "title": "Susun Lidi",
           "bookReference": "Buku Siswa hlm. 138 (pengayaan lidi)",
-          "objective": "Pakai Kenali Bentuk. Menyusun segitiga, segi empat, dan rumah dari lidi yang sama panjang sambil menghitung lidi.",
-          "mechanicDescription": "Tiga ronde. Siswa mengetuk garis putus-putus untuk meletakkan lidi. Rumah memakai 6 lidi karena dasar atap sama dengan sisi atas dinding. Terakhir ucapkan banyak lidi rumah. Terapkan van Hiele Visual.",
-          "voiceGuide": "Kenali Bentuk. Ketuk garis putus-putus untuk meletakkan lidi."
+          "objective": "Pakai Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Pakai Kenali Bentuk. Menyusun segitiga, segi empat, dan rumah dari lidi yang sama panjang sambil menghitung lidi.",
+          "mechanicDescription": "Tiga ronde. Siswa mengetuk garis putus-putus untuk meletakkan lidi. Rumah memakai 6 lidi karena dasar atap sama dengan sisi atas dinding. Terakhir ucapkan banyak lidi rumah. Terapkan van Hiele Visual. Saat bermain, terapkan van Hiele Visual: Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Ketuk garis putus-putus untuk meletakkan lidi."
         },
         {
           "gameId": "subC4-game-5",
@@ -1153,9 +1153,9 @@
           "gameType": "cut-line",
           "title": "Garis Potong",
           "bookReference": "Buku Siswa hlm. 134–135",
-          "objective": "Pakai Pilah Ciri. Memilih garis potong yang tepat untuk menguraikan bangun polos menjadi bagian yang diminta.",
-          "mechanicDescription": "Tiga ronde: dua segitiga, dua persegi panjang yang sama, empat persegi kecil. Siswa memilih bangun dengan garis putus-putus yang tepat. Terakhir ucapkan banyak bagian yang dihasilkan. Terapkan Attribute Sort.",
-          "voiceGuide": "Pilah Ciri. Pilih bangun yang garis potongnya tepat."
+          "objective": "Pakai Pilah Ciri: Pilah menurut sisi lengkung/lurus. Pakai Pilah Ciri. Memilih garis potong yang tepat untuk menguraikan bangun polos menjadi bagian yang diminta.",
+          "mechanicDescription": "Tiga ronde: dua segitiga, dua persegi panjang yang sama, empat persegi kecil. Siswa memilih bangun dengan garis putus-putus yang tepat. Terakhir ucapkan banyak bagian yang dihasilkan. Terapkan Attribute Sort. Saat bermain, terapkan Attribute Sort: Pilah menurut sisi lengkung/lurus.",
+          "voiceGuide": "Pilah Ciri. Pilah Ciri. Pilih bangun yang garis potongnya tepat."
         },
         {
           "gameId": "subC4-game-6",
@@ -1164,9 +1164,9 @@
           "gameType": "match-compose",
           "title": "Jodohkan Keping dan Bangun",
           "bookReference": "Buku Siswa hlm. 134–135",
-          "objective": "Pakai Bentuk di Sekitar. Menjodohkan pasangan keping polos dengan bangun gabungan hasilnya.",
-          "mechanicDescription": "Tiga pasang keping dijodohkan dengan bangun gabungan. Siswa mengetuk keping di kolom kiri lalu bangun di kolom kanan. Terakhir ucapkan banyak keping di kolom kiri. Terapkan Shape in Environment.",
-          "voiceGuide": "Bentuk di Sekitar. Ketuk sepasang keping lalu bangun gabungannya."
+          "objective": "Pakai Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Pakai Bentuk di Sekitar. Menjodohkan pasangan keping polos dengan bangun gabungan hasilnya.",
+          "mechanicDescription": "Tiga pasang keping dijodohkan dengan bangun gabungan. Siswa mengetuk keping di kolom kiri lalu bangun di kolom kanan. Terakhir ucapkan banyak keping di kolom kiri. Terapkan Shape in Environment. Saat bermain, terapkan Shape in Environment: Cari bentuk pada benda sehari-hari.",
+          "voiceGuide": "Bentuk di Sekitar. Bentuk di Sekitar. Ketuk sepasang keping lalu bangun gabungannya."
         },
         {
           "gameId": "subC4-game-7",
@@ -1175,9 +1175,9 @@
           "gameType": "tap-count",
           "title": "Tunjuk dan Hitung",
           "bookReference": "Buku Siswa hlm. 136–137",
-          "objective": "Pakai Kenali Bentuk. Mengenali jenis bentuk penyusun pada bangun gabungan polos dan menghitung banyak bagiannya.",
-          "mechanicDescription": "Dua bangun gabungan. Untuk tiap bangun siswa mengetuk semua bagian segi empat, segitiga, dan bentuk lengkung. Terakhir ucapkan banyak bagian semuanya. Terapkan van Hiele Visual.",
-          "voiceGuide": "Kenali Bentuk. Pilih jenis bentuk lalu ketuk semua bagian yang jenisnya sama."
+          "objective": "Pakai Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Pakai Kenali Bentuk. Mengenali jenis bentuk penyusun pada bangun gabungan polos dan menghitung banyak bagiannya.",
+          "mechanicDescription": "Dua bangun gabungan. Untuk tiap bangun siswa mengetuk semua bagian segi empat, segitiga, dan bentuk lengkung. Terakhir ucapkan banyak bagian semuanya. Terapkan van Hiele Visual. Saat bermain, terapkan van Hiele Visual: Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Pilih jenis bentuk lalu ketuk semua bagian yang jenisnya sama."
         },
         {
           "gameId": "subC4-game-8",
@@ -1186,9 +1186,9 @@
           "gameType": "true-false",
           "title": "Benar atau Salah",
           "bookReference": "Buku Siswa hlm. 134–139",
-          "objective": "Pakai Pilah Ciri. Menilai kebenaran kalimat tentang menyusun dan mengurai.",
-          "mechanicDescription": "Lima kalimat. Siswa mengetuk Benar atau Salah dan mendengar alasannya. Terakhir ucapkan banyak bagian kereta semuanya. Terapkan Attribute Sort.",
-          "voiceGuide": "Pilah Ciri. Ketuk Benar atau Salah."
+          "objective": "Pakai Pilah Ciri: Pilah menurut sisi lengkung/lurus. Pakai Pilah Ciri. Menilai kebenaran kalimat tentang menyusun dan mengurai.",
+          "mechanicDescription": "Lima kalimat. Siswa mengetuk Benar atau Salah dan mendengar alasannya. Terakhir ucapkan banyak bagian kereta semuanya. Terapkan Attribute Sort. Saat bermain, terapkan Attribute Sort: Pilah menurut sisi lengkung/lurus.",
+          "voiceGuide": "Pilah Ciri. Pilah Ciri. Ketuk Benar atau Salah."
         },
         {
           "gameId": "subC4-game-9",
@@ -1197,9 +1197,9 @@
           "gameType": "number-keypad",
           "title": "Hitung Keping",
           "bookReference": "Buku Siswa hlm. 138–139",
-          "objective": "Pakai Bentuk di Sekitar. Menghitung hasil menyusun (penjumlahan) dan mengurai (pengurangan) keping dan lidi.",
-          "mechanicDescription": "Tiga cerita angka (3+3, 8−3, 3+4). Siswa mengetuk angka jawaban. Terakhir ucapkan banyak lidi semuanya. Terapkan Shape in Environment.",
-          "voiceGuide": "Bentuk di Sekitar. Ketuk angka hasil menyusun atau mengurai."
+          "objective": "Pakai Bentuk di Sekitar: Cari bentuk pada benda sehari-hari. Pakai Bentuk di Sekitar. Menghitung hasil menyusun (penjumlahan) dan mengurai (pengurangan) keping dan lidi.",
+          "mechanicDescription": "Tiga cerita angka (3+3, 8−3, 3+4). Siswa mengetuk angka jawaban. Terakhir ucapkan banyak lidi semuanya. Terapkan Shape in Environment. Saat bermain, terapkan Shape in Environment: Cari bentuk pada benda sehari-hari.",
+          "voiceGuide": "Bentuk di Sekitar. Bentuk di Sekitar. Ketuk angka hasil menyusun atau mengurai."
         },
         {
           "gameId": "subC4-game-10",
@@ -1208,9 +1208,9 @@
           "gameType": "say-and-trace",
           "title": "Kanvas Guratan dan Suara",
           "bookReference": "Buku Siswa hlm. 138–139 (Ayo Mencoba)",
-          "objective": "Pakai Kenali Bentuk. Menyebut dan menulis banyak lidi atau bagian pada bangun yang disusun.",
-          "mechanicDescription": "Dua ronde. Ronde 1 lidi untuk segi empat. Ronde 2 siswa memilih sendiri satu hitungan. Siswa mengucapkan banyaknya lalu menggurat angkanya. Terapkan van Hiele Visual.",
-          "voiceGuide": "Kenali Bentuk. Ucapkan banyaknya, lalu guratkan angkanya."
+          "objective": "Pakai Kenali Bentuk: Kenali lingkaran, segitiga, segi empat dari wujudnya. Pakai Kenali Bentuk. Menyebut dan menulis banyak lidi atau bagian pada bangun yang disusun.",
+          "mechanicDescription": "Dua ronde. Ronde 1 lidi untuk segi empat. Ronde 2 siswa memilih sendiri satu hitungan. Siswa mengucapkan banyaknya lalu menggurat angkanya. Terapkan van Hiele Visual. Saat bermain, terapkan van Hiele Visual: Kenali lingkaran, segitiga, segi empat dari wujudnya.",
+          "voiceGuide": "Kenali Bentuk. Kenali Bentuk. Ucapkan banyaknya, lalu guratkan angkanya."
         }
       ],
       "metodeLuar": [

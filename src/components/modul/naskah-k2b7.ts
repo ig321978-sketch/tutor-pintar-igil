@@ -1,6 +1,6 @@
 /**
- * Naskah — rewrite mendalam.
- * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
+ * Naskah — poles kerapatan setara K5B4.
+ * Metode luar dianyam ketukan per ketukan.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
@@ -19,12 +19,12 @@ export const SUB_A7: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Menghitung, Membaca, Menulis Bilangan)",
   "fullTitle": "Sub-Bab A: Menghitung, Membaca, dan Menulis Bilangan sampai 100",
-  "targetDescription": "Siswa menghitung puluhan sampai seratus (sepuluh satuan sama dengan satu puluhan), menghitung puluhan dan satuan dengan nilai tempat dan pasangan bilangan, membaca dan menulis bilangan sampai 100 dengan lambang dan nama bilangan, serta memperkirakan banyak benda lalu membuktikannya dengan mengelompokkan setiap sepuluh. Siswa memakai cara Hitung sampai 100, Puluhan dan Satuan, Tabel Seratus.",
+  "targetDescription": "Siswa menghitung puluhan sampai seratus (sepuluh satuan sama dengan satu puluhan), menghitung puluhan dan satuan dengan nilai tempat dan pasangan bilangan, membaca dan menulis bilangan sampai 100 dengan lambang dan nama bilangan, serta memperkirakan banyak benda lalu membuktikannya dengan mengelompokkan setiap sepuluh. Siswa memakai cara Hitung sampai 100, Puluhan dan Satuan, Tabel Seratus. Siswa memakai cara Hitung sampai 100, Puluhan dan Satuan, Tabel Seratus.",
   "secondaryBg": "#FEF9C3",
   "secondaryBorder": "#CA8A04",
   "secondaryText": "#713F12",
   "silabus": {
-    "teksSuara": "Kita belajar membilang sampai seratus. Di semester satu kita sudah belajar bilangan sampai lima puluh, dan kali ini kita melanjutkan sampai seratus. Kita menghitung kue cubit Pak Ahmad dalam bungkus berisi sepuluh, yaitu puluhan. Kita menghitung puluhan dan satuan pada rambutan Halim dan kelereng ayah Malosi, lalu membaca dan menulis bilangannya. Kita juga belajar memperkirakan banyak benda, menebak dulu, lalu membuktikan dengan mengelompokkan setiap sepuluh. Kita memakai cara dari luar buku: Hitung sampai 100 (Count to 100); Puluhan dan Satuan (Tens and Ones); Tabel Seratus (Hundred Chart). Lanjut hitung dengan pola puluhan. Baca 45 sebagai 4 puluhan 5 satuan. Lihat pola angka di tabel 1–100. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar membilang sampai seratus. Di semester satu kita sudah belajar bilangan sampai lima puluh, dan kali ini kita melanjutkan sampai seratus. Kita menghitung kue cubit Pak Ahmad dalam bungkus berisi sepuluh, yaitu puluhan. Kita menghitung puluhan dan satuan pada rambutan Halim dan kelereng ayah Malosi, lalu membaca dan menulis bilangannya. Kita juga belajar memperkirakan banyak benda, menebak dulu, lalu membuktikan dengan mengelompokkan setiap sepuluh. Kita memakai cara: Hitung sampai 100, Puluhan dan Satuan, Tabel Seratus. Lanjut hitung dengan pola puluhan. Baca 45 sebagai 4 puluhan 5 satuan. Lihat pola angka di tabel 1–100. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menghitung banyak benda sampai 100 dengan mengelompokkan puluhan dan satuan, membaca dan menulis bilangan sampai 100 dengan lambang dan nama bilangan, memperkirakan banyak benda, serta menyampaikan hasilnya dengan percaya diri.",
     "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 7 Sub-Bab A)."
   },
@@ -38,10 +38,10 @@ export const SUB_A7: SubBabNaskah = {
           "id": "K2B7A-V1-1",
           "judul": "Penjual kue cubit",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Pak Ahmad adalah seorang penjual kue cubit. Mari kita pahami bersama.",
+            "Bayangkan kamu sedang mempelajari Menghitung, Membaca, dan Menulis Bilangan sampai 100. Pak Ahmad adalah seorang penjual kue cubit.",
             "Kue cubit adalah kue tradisional dari Betawi. Kue ini ditaburi cokelat sehingga rasanya manis.",
             "Kue cubit Pak Ahmad sudah dikemas dalam pembungkus yang ramah lingkungan. Setiap bungkus berisi sepuluh kue cubit.",
-            "Ingat cara Hitung sampai 100: Lanjut hitung dengan pola puluhan."
+            "Ingat cara Hitung sampai 100: Lanjut hitung dengan pola puluhan. Ingat cara Hitung sampai 100: Lanjut hitung dengan pola puluhan."
           ],
           "papan": [
             "Penjual kue cubit",
@@ -54,10 +54,10 @@ export const SUB_A7: SubBabNaskah = {
           "id": "K2B7A-V1-2",
           "judul": "Satu bungkus, satu puluhan",
           "ketukan": [
-            "Sepuluh kue cubit dimasukkan dalam satu pembungkus. Mari kita pahami bersama.",
+            "Sepuluh kue cubit dimasukkan dalam satu pembungkus.",
             "Sepuluh satuan sama dengan satu puluhan. Satu bungkus adalah satu puluhan.",
-            "Lima bungkus berarti lima puluhan, yaitu lima puluh. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Count to 100 — Lanjut hitung dengan pola puluhan."
+            "Lima bungkus berarti lima puluhan, yaitu lima puluh.",
+            "Di sini kita memakai ide Count to 100 — Lanjut hitung dengan pola puluhan. Di sini kita memakai Count to 100. Lanjut hitung dengan pola puluhan."
           ],
           "papan": [
             "10 kue: 1 bungkus",
@@ -70,9 +70,9 @@ export const SUB_A7: SubBabNaskah = {
           "id": "K2B7A-V1-3",
           "judul": "Sampai seratus",
           "ketukan": [
-            "Tujuh bungkus berarti tujuh puluhan, yaitu tujuh puluh. Mari kita pahami bersama.",
-            "Delapan bungkus berarti delapan puluhan, yaitu delapan puluh. Mari kita pahami bersama.",
-            "Sembilan bungkus berarti sembilan puluhan, yaitu sembilan puluh. Mari kita pahami bersama.",
+            "Tujuh bungkus berarti tujuh puluhan, yaitu tujuh puluh.",
+            "Delapan bungkus berarti delapan puluhan, yaitu delapan puluh.",
+            "Sembilan bungkus berarti sembilan puluhan, yaitu sembilan puluh.",
             "METODE LUAR · Hitung sampai 100: Lanjut hitung dengan pola puluhan."
           ],
           "papan": [
@@ -96,7 +96,7 @@ export const SUB_A7: SubBabNaskah = {
             "Pohon rambutan di rumah Halim sedang berbuah. Hari ini Halim memanen buah rambutannya.",
             "Halim memasukkan rambutan ke dalam keranjang. Setiap keranjang berisi sepuluh rambutan, jadi satu keranjang adalah satu puluhan.",
             "Halim mempunyai lima keranjang penuh dan tiga rambutan lepas. Itu lima puluhan dan tiga satuan.",
-            "Ingat cara Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan."
+            "Ingat cara Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan. Ingat cara Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan."
           ],
           "papan": [
             "Panen rambutan",
@@ -112,7 +112,7 @@ export const SUB_A7: SubBabNaskah = {
             "Malosi membantu ayahnya berjualan mainan. Ia memasukkan kelereng ke dalam kantong plastik.",
             "Setiap kantong berisi sepuluh kelereng. Satu kantong adalah satu puluhan.",
             "Ayah Malosi mempunyai enam kantong penuh dan tujuh kelereng lepas, jadi enam puluhan dan tujuh satuan.",
-            "Di sini kita memakai ide Tens and Ones — Baca 45 sebagai 4 puluhan 5 satuan."
+            "Di sini kita memakai ide Tens and Ones — Baca 45 sebagai 4 puluhan 5 satuan. Di sini kita memakai Tens and Ones. Baca 45 sebagai 4 puluhan 5 satuan."
           ],
           "papan": [
             "Membantu ayah",
@@ -149,9 +149,9 @@ export const SUB_A7: SubBabNaskah = {
           "judul": "Menebak banyak ikan",
           "ketukan": [
             "Kira dan Malosi melihat banyak ikan hias di kolam. Mereka diminta menebak banyaknya.",
-            "Kira menebak ada lima puluh ikan. Malosi menebak ada enam puluh ikan. Mari kita pahami bersama.",
+            "Kira menebak ada lima puluh ikan. Malosi menebak ada enam puluh ikan.",
             "Menebak boleh keliru. Menebak melatih kita memperkirakan banyak benda sebelum menghitung.",
-            "Ingat cara Tabel Seratus: Lihat pola angka di tabel 1–100."
+            "Ingat cara Tabel Seratus: Lihat pola angka di tabel 1–100. Ingat cara Tabel Seratus: Lihat pola angka di tabel 1–100."
           ],
           "papan": [
             "Ikan hias di kolam",
@@ -166,8 +166,8 @@ export const SUB_A7: SubBabNaskah = {
           "ketukan": [
             "Ayo kita buktikan dengan menghitung. Kita mengelompokkan setiap sepuluh ikan.",
             "Satu kelompok berisi sepuluh ikan, jadi satu kelompok adalah satu puluhan.",
-            "Ada enam kelompok dan dua ikan sisa. Itu enam puluhan dan dua satuan. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Hundred Chart — Lihat pola angka di tabel 1–100."
+            "Ada enam kelompok dan dua ikan sisa. Itu enam puluhan dan dua satuan.",
+            "Di sini kita memakai ide Hundred Chart — Lihat pola angka di tabel 1–100. Di sini kita memakai Hundred Chart. Lihat pola angka di tabel 1–100."
           ],
           "papan": [
             "Kelompokkan sepuluh",
@@ -182,7 +182,7 @@ export const SUB_A7: SubBabNaskah = {
           "ketukan": [
             "Tebakan Kira lima puluh. Tebakan Malosi enam puluh. Banyak ikan sebenarnya enam puluh dua.",
             "Lima puluh berbeda dua belas dari enam puluh dua. Enam puluh berbeda dua dari enam puluh dua.",
-            "Tebakan Malosi lebih dekat dengan banyak ikan yang sebenarnya. Mari kita pahami bersama.",
+            "Tebakan Malosi lebih dekat dengan banyak ikan yang sebenarnya.",
             "METODE LUAR · Tabel Seratus: Lihat pola angka di tabel 1–100."
           ],
           "papan": [
@@ -199,7 +199,7 @@ export const SUB_A7: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Menghitung, Membaca, dan Menulis Bilangan sampai 100. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Menghitung, Membaca, dan Menulis Bilangan sampai 100?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -231,7 +231,7 @@ export const SUB_A7: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -239,7 +239,7 @@ export const SUB_A7: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -247,15 +247,15 @@ export const SUB_A7: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -331,20 +331,6 @@ export const SUB_A7: SubBabNaskah = {
       "countNum": 2,
       "countWord": "Dua",
       "suara": "Banyak ikan enam puluh dua. Tebakan enam puluh berbeda dua, tebakan lima puluh berbeda dua belas. Tebakan yang selisihnya lebih kecil lebih dekat."
-    },
-    {
-      "judul": "Hitung sampai 100",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Lanjut hitung dengan pola puluhan."
-    },
-    {
-      "judul": "COUNT TO 100",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "Hitung",
-      "suara": "Hitung sampai 100. Lanjut hitung dengan pola puluhan."
     }
   ],
   "games": [
@@ -354,7 +340,7 @@ export const SUB_A7: SubBabNaskah = {
       "title": "Isi Bungkus Sepuluh",
       "bookReference": "hlm. 194–195 (10 kue cubit dimasukkan dalam 1 pembungkus; 10 satuan = 1 puluhan)",
       "objective": "Pakai Hitung sampai 100: Lanjut hitung dengan pola puluhan. Latihan: Mengisi satu wadah dengan sepuluh benda dan memahami bahwa sepuluh satuan sama dengan satu puluhan..",
-      "mechanicDescription": "Tiga ronde: kue cubit dalam bungkus, kelereng dalam kantong, rambutan dalam keranjang. Siswa menekan tombol tambah satu per satu sampai wadah berisi sepuluh. Wadah yang penuh berubah hijau dan Suara Guru menyebut satu puluhan. Saat bermain, terapkan Count to 100: Lanjut hitung dengan pola puluhan.",
+      "mechanicDescription": "Tiga ronde: kue cubit dalam bungkus, kelereng dalam kantong, rambutan dalam keranjang. Siswa menekan tombol tambah satu per satu sampai wadah berisi sepuluh. Wadah yang penuh berubah hijau dan Suara Guru menyebut satu puluhan. Saat bermain, ingat Hitung sampai 100: Lanjut hitung dengan pola puluhan.",
       "voiceGuide": "Hitung sampai 100. Lanjut hitung dengan pola puluhan.",
       "emoji": "📦",
       "targetCount": 3
@@ -365,7 +351,7 @@ export const SUB_A7: SubBabNaskah = {
       "title": "Hitung Bungkus",
       "bookReference": "hlm. 195–197 (lima bungkus: 5 puluhan = 50, sampai 10 puluhan = 100)",
       "objective": "Pakai Hitung sampai 100: Lanjut hitung dengan pola puluhan. Latihan: Menghitung banyak benda dari banyak wadah penuh berisi sepuluh..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua gambar wadah penuh (5 sampai 10 wadah). Siswa memilih banyak benda seluruhnya dari tiga pilihan kelipatan sepuluh. Kunci dihitung dari banyak wadah kali sepuluh. Saat bermain, terapkan Count to 100: Lanjut hitung dengan pola puluhan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua gambar wadah penuh (5 sampai 10 wadah). Siswa memilih banyak benda seluruhnya dari tiga pilihan kelipatan sepuluh. Kunci dihitung dari banyak wadah kali sepuluh. Saat bermain, ingat Hitung sampai 100: Lanjut hitung dengan pola puluhan.",
       "voiceGuide": "Hitung sampai 100. Lanjut hitung dengan pola puluhan.",
       "emoji": "🛍️",
       "targetCount": 6
@@ -376,7 +362,7 @@ export const SUB_A7: SubBabNaskah = {
       "title": "Jodohkan Bungkus dan Bilangan",
       "bookReference": "hlm. 195–197 dan 206 (hubungkan dengan bilangan yang tepat)",
       "objective": "Pakai Hitung sampai 100: Lanjut hitung dengan pola puluhan. Latihan: Menjodohkan banyak wadah penuh dengan lambang bilangannya..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar wadah (dua sampai sepuluh wadah) dan tiga lambang bilangan seperti 50 dan 70. Siswa mengetuk gambar lalu lambang yang cocok. Pasangan benar terkunci. Saat bermain, terapkan Count to 100: Lanjut hitung dengan pola puluhan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga gambar wadah (dua sampai sepuluh wadah) dan tiga lambang bilangan seperti 50 dan 70. Siswa mengetuk gambar lalu lambang yang cocok. Pasangan benar terkunci. Saat bermain, ingat Hitung sampai 100: Lanjut hitung dengan pola puluhan.",
       "voiceGuide": "Hitung sampai 100. Lanjut hitung dengan pola puluhan.",
       "emoji": "🔗",
       "targetCount": 9
@@ -387,7 +373,7 @@ export const SUB_A7: SubBabNaskah = {
       "title": "Rakit Bilangan",
       "bookReference": "hlm. 198–199 (rambutan Halim dan kelereng ayah Malosi: puluhan dan satuan)",
       "objective": "Pakai Hitung sampai 100: Lanjut hitung dengan pola puluhan. Latihan: Merakit sebuah bilangan dari wadah penuh dan benda lepas..",
-      "mechanicDescription": "Empat ronde: 53 rambutan, 67 kelereng, 74 kue cubit, 82 jeruk. Siswa menekan tambah wadah penuh (sepuluh) dan tambah benda lepas sampai banyaknya sama dengan bilangan. Sepuluh benda lepas otomatis masuk satu wadah. Saat bermain, terapkan Count to 100: Lanjut hitung dengan pola puluhan.",
+      "mechanicDescription": "Empat ronde: 53 rambutan, 67 kelereng, 74 kue cubit, 82 jeruk. Siswa menekan tambah wadah penuh (sepuluh) dan tambah benda lepas sampai banyaknya sama dengan bilangan. Sepuluh benda lepas otomatis masuk satu wadah. Saat bermain, ingat Hitung sampai 100: Lanjut hitung dengan pola puluhan.",
       "voiceGuide": "Hitung sampai 100. Lanjut hitung dengan pola puluhan.",
       "emoji": "🧺",
       "targetCount": 4
@@ -397,9 +383,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "tie-bundles-of-ten",
       "title": "Ikat Sepuluh",
       "bookReference": "hlm. 200–202 dan 214 (Ayo Mencoba: ikat setiap 10 lidi)",
-      "objective": "Mengikat benda lepas sepuluh-sepuluh lalu menghitung seluruhnya.. Ingat Hitung sampai 100.",
+      "objective": "Mengikat benda lepas sepuluh-sepuluh lalu menghitung seluruhnya.. Ingat Hitung sampai 100. (Hitung sampai 100)",
       "mechanicDescription": "Tiga ronde: 23 lidi, 37 kelereng, 46 pensil warna. Siswa menekan Ikat sepuluh sampai tidak bisa lagi, lalu memilih banyak benda seluruhnya dari tiga pilihan. Gunakan Hitung sampai 100.",
-      "voiceGuide": "Hitung sampai 100. Ikat setiap sepuluh, lalu hitung semuanya.",
+      "voiceGuide": "Hitung sampai 100. Mainkan dengan teliti.",
       "emoji": "🎀",
       "targetCount": 3
     },
@@ -408,9 +394,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "guess-then-count",
       "title": "Tebak dan Hitung",
       "bookReference": "hlm. 200–201 dan 207 (tebak banyak ikan lalu hitung)",
-      "objective": "Memperkirakan banyak benda lalu membuktikannya dengan mengelompokkan sepuluh-sepuluh.. Ingat Hitung sampai 100.",
+      "objective": "Memperkirakan banyak benda lalu membuktikannya dengan mengelompokkan sepuluh-sepuluh.. Ingat Hitung sampai 100. (Hitung sampai 100)",
       "mechanicDescription": "Tiga ronde: 62 ikan, 38 jeruk, 85 anggur. Siswa menebak dulu dengan memilih satu dari tiga tebakan (tidak ada yang salah). Benda lalu dikelompokkan sepuluh-sepuluh, dan siswa memilih banyak sebenarnya. Suara Guru menyebut selisih tebakan. Gunakan Hitung sampai 100.",
-      "voiceGuide": "Hitung sampai 100. Tebak dulu, lalu hitung per sepuluh.",
+      "voiceGuide": "Hitung sampai 100. Mainkan dengan teliti.",
       "emoji": "🐠",
       "targetCount": 3
     },
@@ -419,9 +405,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "memory-collection-numeral",
       "title": "Memori Banyak Benda",
       "bookReference": "hlm. 198–199 (nilai tempat dan pasangan bilangan)",
-      "objective": "Mencocokkan kumpulan benda dengan lambang bilangannya.. Ingat Hitung sampai 100.",
+      "objective": "Mencocokkan kumpulan benda dengan lambang bilangannya.. Ingat Hitung sampai 100. (Hitung sampai 100)",
       "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): gambar kumpulan benda berisi wadah penuh dan benda lepas, dan lambang bilangannya. Siswa membalik dua kartu. Gunakan Hitung sampai 100.",
-      "voiceGuide": "Hitung sampai 100. Balik dua kartu, cari benda dan bilangannya.",
+      "voiceGuide": "Hitung sampai 100. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -430,9 +416,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "order-collections",
       "title": "Urutkan Banyak Benda",
       "bookReference": "hlm. 214 dan 222 (urutkan bilangan dari yang paling kecil)",
-      "objective": "Mengurutkan kumpulan benda dari yang paling sedikit atau paling banyak.. Ingat Hitung sampai 100.",
+      "objective": "Mengurutkan kumpulan benda dari yang paling sedikit atau paling banyak.. Ingat Hitung sampai 100. (Hitung sampai 100)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga atau empat keranjang bertanda huruf. Siswa mengetuk keranjang satu per satu menurut urutan banyaknya (dua ronde dari paling sedikit, satu dari paling banyak). Letak jawaban berpindah. Gunakan Hitung sampai 100.",
-      "voiceGuide": "Hitung sampai 100. Ketuk keranjang menurut banyaknya.",
+      "voiceGuide": "Hitung sampai 100. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -441,9 +427,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "sort-collections-fifty",
       "title": "Pilah: Kurang atau Lebih dari 50",
       "bookReference": "hlm. 192 (semester satu sampai 50, kali ini sampai 100)",
-      "objective": "Memilah kumpulan benda menurut kurang dari 50 atau lebih dari 50.. Ingat Hitung sampai 100.",
+      "objective": "Memilah kumpulan benda menurut kurang dari 50 atau lebih dari 50.. Ingat Hitung sampai 100. (Hitung sampai 100)",
       "mechanicDescription": "Tiga ronde, tiap ronde enam kumpulan benda. Siswa menyeret atau mengetuk kumpulan ke kotak Kurang dari 50 atau Lebih dari 50. Kunci dihitung dari banyak puluhan. Gunakan Hitung sampai 100.",
-      "voiceGuide": "Hitung sampai 100. Pilah kumpulan ke kotak yang tepat.",
+      "voiceGuide": "Hitung sampai 100. Mainkan dengan teliti.",
       "emoji": "🗂️",
       "targetCount": 3
     },
@@ -452,9 +438,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "find-bag-by-number",
       "title": "Kantong Misterius",
       "bookReference": "hlm. 198–199 (banyak kelereng milik ayah Malosi)",
-      "objective": "Menemukan kumpulan benda yang banyaknya sama dengan sebuah bilangan.. Ingat Hitung sampai 100.",
+      "objective": "Menemukan kumpulan benda yang banyaknya sama dengan sebuah bilangan.. Ingat Hitung sampai 100. (Hitung sampai 100)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca bilangan, misalnya 67, lalu mengetuk satu dari empat kumpulan benda yang banyaknya 67. Pengecoh: bilangan dengan angka tertukar (76) dan selisih satu atau sepuluh. Gunakan Hitung sampai 100.",
-      "voiceGuide": "Hitung sampai 100. Ketuk kumpulan yang banyaknya sama.",
+      "voiceGuide": "Hitung sampai 100. Mainkan dengan teliti.",
       "emoji": "🎒",
       "targetCount": 6
     },
@@ -464,7 +450,7 @@ export const SUB_A7: SubBabNaskah = {
       "title": "Hitung Batang Puluhan",
       "bookReference": "hlm. 195–197 (menghitung puluhan sampai 100)",
       "objective": "Pakai Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan. Latihan: Menghitung banyak puluhan dari model batang..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar menampilkan beberapa batang sepuluh kotak. Siswa mengatur penghitung sampai sama dengan banyak batang, lalu menekan Periksa. Saat bermain, terapkan Tens and Ones: Baca 45 sebagai 4 puluhan 5 satuan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar menampilkan beberapa batang sepuluh kotak. Siswa mengatur penghitung sampai sama dengan banyak batang, lalu menekan Periksa. Saat bermain, ingat Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan.",
       "voiceGuide": "Puluhan dan Satuan. Baca 45 sebagai 4 puluhan 5 satuan.",
       "diagramType": "tens-model",
       "numberA": 3,
@@ -476,7 +462,7 @@ export const SUB_A7: SubBabNaskah = {
       "title": "Cari Model Bilangan",
       "bookReference": "hlm. 198–199 (puluhan dan satuan pada nilai tempat)",
       "objective": "Pakai Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan. Latihan: Menemukan model batang dan kotak yang sama dengan sebuah bilangan..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca bilangan, lalu mengetuk satu dari empat model batang puluhan dan kotak satuan. Pengecoh memuat angka tertukar dan selisih satu. Saat bermain, terapkan Tens and Ones: Baca 45 sebagai 4 puluhan 5 satuan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca bilangan, lalu mengetuk satu dari empat model batang puluhan dan kotak satuan. Pengecoh memuat angka tertukar dan selisih satu. Saat bermain, ingat Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan.",
       "voiceGuide": "Puluhan dan Satuan. Baca 45 sebagai 4 puluhan 5 satuan.",
       "diagramType": "base-ten-model",
       "numberA": 3,
@@ -488,7 +474,7 @@ export const SUB_A7: SubBabNaskah = {
       "title": "Isi Papan Nilai Tempat",
       "bookReference": "hlm. 198–199 dan 204–205 (puluhan dan satuan, lalu tulis bilangannya)",
       "objective": "Pakai Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan. Latihan: Menuliskan bilangan pada papan nilai tempat dari model batang dan kotak..",
-      "mechanicDescription": "Empat soal. Gambar model menampilkan batang puluhan dan kotak satuan. Siswa mengatur angka puluhan dan angka satuan pada papan, lalu menekan Periksa. Saat bermain, terapkan Tens and Ones: Baca 45 sebagai 4 puluhan 5 satuan.",
+      "mechanicDescription": "Empat soal. Gambar model menampilkan batang puluhan dan kotak satuan. Siswa mengatur angka puluhan dan angka satuan pada papan, lalu menekan Periksa. Saat bermain, ingat Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan.",
       "voiceGuide": "Puluhan dan Satuan. Baca 45 sebagai 4 puluhan 5 satuan.",
       "diagramType": "place-value-board",
       "numberA": 4,
@@ -500,7 +486,7 @@ export const SUB_A7: SubBabNaskah = {
       "title": "Jodohkan Model dan Bilangan",
       "bookReference": "hlm. 206 (hubungkan dengan bilangan yang tepat)",
       "objective": "Pakai Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan. Latihan: Menjodohkan model batang dan kotak dengan lambang bilangannya..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga model dan tiga lambang bilangan. Siswa mengetuk model lalu lambang yang cocok. Saat bermain, terapkan Tens and Ones: Baca 45 sebagai 4 puluhan 5 satuan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga model dan tiga lambang bilangan. Siswa mengetuk model lalu lambang yang cocok. Saat bermain, ingat Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan.",
       "voiceGuide": "Puluhan dan Satuan. Baca 45 sebagai 4 puluhan 5 satuan.",
       "diagramType": "base-ten-match",
       "numberA": 3,
@@ -511,9 +497,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "number-bond-fill",
       "title": "Pasangan Bilangan",
       "bookReference": "hlm. 198–199 (cara 2: pasangan bilangan, 53 = 50 + 3)",
-      "objective": "Melengkapi bagan pasangan bilangan.. Ingat Puluhan dan Satuan.",
+      "objective": "Melengkapi bagan pasangan bilangan.. Ingat Puluhan dan Satuan. (Puluhan dan Satuan)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua bagan. Satu bagian tersembunyi: bila total 67 dan satu bagian 60, bagian lain 7. Siswa memilih satu dari tiga pilihan angka. Gunakan Puluhan dan Satuan.",
-      "voiceGuide": "Puluhan dan Satuan. Lengkapi bagian yang hilang.",
+      "voiceGuide": "Puluhan dan Satuan. Mainkan dengan teliti.",
       "diagramType": "number-bond",
       "numberA": 3,
       "numberB": 2
@@ -523,9 +509,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "tens-number-line",
       "title": "Garis Puluhan",
       "bookReference": "hlm. 195–197 (menghitung puluhan dengan melompat sepuluh-sepuluh)",
-      "objective": "Melompat sepuluh-sepuluh pada garis puluhan.. Ingat Puluhan dan Satuan.",
+      "objective": "Melompat sepuluh-sepuluh pada garis puluhan.. Ingat Puluhan dan Satuan. (Puluhan dan Satuan)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga soal pada garis 0, 10, 20, sampai 100. Siswa membaca mulai dan banyak lompatan, misalnya mulai 30 lompat 4 puluhan, lalu mengetuk bilangan pendaratan. Gunakan Puluhan dan Satuan.",
-      "voiceGuide": "Puluhan dan Satuan. Lompat sepuluh-sepuluh, lalu ketuk tempat mendarat.",
+      "voiceGuide": "Puluhan dan Satuan. Mainkan dengan teliti.",
       "diagramType": "tens-line",
       "numberA": 3,
       "numberB": 3
@@ -535,9 +521,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "complete-hundred-chart",
       "title": "Lengkapi Tabel Seratus",
       "bookReference": "hlm. 209 (urutan bilangan 51 sampai 100 dengan kotak kosong)",
-      "objective": "Melengkapi bilangan yang hilang pada tabel 51 sampai 100.. Ingat Puluhan dan Satuan.",
+      "objective": "Melengkapi bilangan yang hilang pada tabel 51 sampai 100.. Ingat Puluhan dan Satuan. (Puluhan dan Satuan)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat atau lima kotak kosong pada tabel sepuluh kolom. Kotak yang menyala menunggu jawaban, dan siswa memilih satu dari tiga angka. Petunjuk menyebut bilangan tetangga. Gunakan Puluhan dan Satuan.",
-      "voiceGuide": "Puluhan dan Satuan. Isi kotak yang menyala dengan bilangan yang tepat.",
+      "voiceGuide": "Puluhan dan Satuan. Mainkan dengan teliti.",
       "diagramType": "hundred-chart",
       "numberA": 3,
       "numberB": 4
@@ -547,9 +533,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "order-models",
       "title": "Urutkan Model",
       "bookReference": "hlm. 214 dan 222 (mengurutkan bilangan)",
-      "objective": "Mengurutkan model batang dan kotak dari yang terkecil atau terbesar.. Ingat Puluhan dan Satuan.",
+      "objective": "Mengurutkan model batang dan kotak dari yang terkecil atau terbesar.. Ingat Puluhan dan Satuan. (Puluhan dan Satuan)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga atau empat model. Siswa mengetuk model satu per satu menurut urutan banyaknya. Letak jawaban berpindah. Gunakan Puluhan dan Satuan.",
-      "voiceGuide": "Puluhan dan Satuan. Ketuk model menurut urutannya.",
+      "voiceGuide": "Puluhan dan Satuan. Mainkan dengan teliti.",
       "diagramType": "base-ten-order",
       "numberA": 3,
       "numberB": 4
@@ -559,9 +545,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "sort-models-by-tens",
       "title": "Pilah Model menurut Puluhan",
       "bookReference": "hlm. 198–199 (banyak puluhan menentukan besar bilangan)",
-      "objective": "Memilah model menurut banyak puluhannya.. Ingat Puluhan dan Satuan.",
+      "objective": "Memilah model menurut banyak puluhannya.. Ingat Puluhan dan Satuan. (Puluhan dan Satuan)",
       "mechanicDescription": "Tiga ronde, tiap ronde enam model dan tiga kotak berlabel banyak puluhan (misalnya 3, 5, dan 7). Siswa menyeret atau mengetuk model ke kotak yang tepat. Tiap kotak menerima dua model. Gunakan Puluhan dan Satuan.",
-      "voiceGuide": "Puluhan dan Satuan. Pilah model menurut banyak puluhannya.",
+      "voiceGuide": "Puluhan dan Satuan. Mainkan dengan teliti.",
       "diagramType": "base-ten-sort",
       "numberA": 3,
       "numberB": 6
@@ -571,9 +557,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "guess-dots-then-count",
       "title": "Tebak Banyak Titik",
       "bookReference": "hlm. 200–201 (tebak lalu hitung)",
-      "objective": "Memperkirakan banyak titik lalu menghitungnya dengan kelompok sepuluh.. Ingat Puluhan dan Satuan.",
+      "objective": "Memperkirakan banyak titik lalu menghitungnya dengan kelompok sepuluh.. Ingat Puluhan dan Satuan. (Puluhan dan Satuan)",
       "mechanicDescription": "Tiga ronde: 47, 33, dan 76 titik. Siswa menebak dulu satu dari tiga tebakan, lalu titik dikelompokkan sepuluh-sepuluh dan siswa memilih banyak sebenarnya. Gunakan Puluhan dan Satuan.",
-      "voiceGuide": "Puluhan dan Satuan. Tebak dulu, lalu hitung per sepuluh.",
+      "voiceGuide": "Puluhan dan Satuan. Mainkan dengan teliti.",
       "diagramType": "dot-estimate",
       "numberA": 3,
       "numberB": 1
@@ -584,7 +570,7 @@ export const SUB_A7: SubBabNaskah = {
       "title": "Jodohkan Puluhan, Satuan, dan Bilangan",
       "bookReference": "hlm. 206 nomor 3 (hubungkan dengan bilangan yang tepat)",
       "objective": "Pakai Tabel Seratus: Lihat pola angka di tabel 1–100. Latihan: Menjodohkan kalimat puluhan dan satuan dengan lambang bilangan..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga pasangan, misalnya 9 puluhan dan 2 satuan dengan 92. Siswa mengetuk kalimat, lalu lambang bilangan yang cocok. Saat bermain, terapkan Hundred Chart: Lihat pola angka di tabel 1–100.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga pasangan, misalnya 9 puluhan dan 2 satuan dengan 92. Siswa mengetuk kalimat, lalu lambang bilangan yang cocok. Saat bermain, ingat Tabel Seratus: Lihat pola angka di tabel 1–100.",
       "voiceGuide": "Tabel Seratus. Lihat pola angka di tabel 1–100.",
       "symbolLarge": "92",
       "wordLarge": "9 PULUHAN 2 SATUAN",
@@ -596,7 +582,7 @@ export const SUB_A7: SubBabNaskah = {
       "title": "Lengkapi Kalimat Puluhan dan Satuan",
       "bookReference": "hlm. 198–199 dan 204–205 (puluhan dan satuan sama dengan bilangan)",
       "objective": "Pakai Tabel Seratus: Lihat pola angka di tabel 1–100. Latihan: Melengkapi kalimat puluhan dan satuan dengan bilangan yang tepat..",
-      "mechanicDescription": "Dua ronde, tiap ronde tiga kalimat, misalnya 6 puluhan dan 7 satuan sama dengan ... Siswa memilih satu dari tiga bilangan. Pengecoh memuat angka tertukar. Saat bermain, terapkan Hundred Chart: Lihat pola angka di tabel 1–100.",
+      "mechanicDescription": "Dua ronde, tiap ronde tiga kalimat, misalnya 6 puluhan dan 7 satuan sama dengan ... Siswa memilih satu dari tiga bilangan. Pengecoh memuat angka tertukar. Saat bermain, ingat Tabel Seratus: Lihat pola angka di tabel 1–100.",
       "voiceGuide": "Tabel Seratus. Lihat pola angka di tabel 1–100.",
       "symbolLarge": "6 7 = 67",
       "wordLarge": "PULUHAN SATUAN",
@@ -608,7 +594,7 @@ export const SUB_A7: SubBabNaskah = {
       "title": "Susun Nama dan Kalimat Bilangan",
       "bookReference": "hlm. 195–197 dan 208 (nama bilangan; tulis lambang bilangan)",
       "objective": "Pakai Tabel Seratus: Lihat pola angka di tabel 1–100. Latihan: Menyusun kata menjadi kalimat tentang nama dan lambang bilangan..",
-      "mechanicDescription": "Empat kalimat. Kartu kata diketuk berurutan. Satu kartu pengecoh tidak dipakai. Kalimat yang benar dibacakan. Saat bermain, terapkan Hundred Chart: Lihat pola angka di tabel 1–100.",
+      "mechanicDescription": "Empat kalimat. Kartu kata diketuk berurutan. Satu kartu pengecoh tidak dipakai. Kalimat yang benar dibacakan. Saat bermain, ingat Tabel Seratus: Lihat pola angka di tabel 1–100.",
       "voiceGuide": "Tabel Seratus. Lihat pola angka di tabel 1–100.",
       "symbolLarge": "Aa",
       "wordLarge": "SUSUN KATA",
@@ -620,7 +606,7 @@ export const SUB_A7: SubBabNaskah = {
       "title": "Isi Tabel Puluhan dan Satuan",
       "bookReference": "hlm. 204–205 dan 219–220 (puluhan dan satuan sama dengan)",
       "objective": "Pakai Tabel Seratus: Lihat pola angka di tabel 1–100. Latihan: Mengisi tabel puluhan dan satuan dari lambang bilangan..",
-      "mechanicDescription": "Dua ronde dengan tabel berisi empat baris, misalnya bilangan 53 dengan 5 puluhan dan 3 satuan. Siswa mengetuk baris, lalu mengetuk kartu yang tepat. Saat bermain, terapkan Hundred Chart: Lihat pola angka di tabel 1–100.",
+      "mechanicDescription": "Dua ronde dengan tabel berisi empat baris, misalnya bilangan 53 dengan 5 puluhan dan 3 satuan. Siswa mengetuk baris, lalu mengetuk kartu yang tepat. Saat bermain, ingat Tabel Seratus: Lihat pola angka di tabel 1–100.",
       "voiceGuide": "Tabel Seratus. Lihat pola angka di tabel 1–100.",
       "symbolLarge": "53",
       "wordLarge": "TABEL",
@@ -631,9 +617,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "true-false-numbers",
       "title": "Benar atau Salah: Bilangan",
       "bookReference": "hlm. 194–209 (puluhan, satuan, nama bilangan)",
-      "objective": "Menilai pernyataan tentang puluhan, satuan, dan nama bilangan.. Ingat Tabel Seratus.",
+      "objective": "Menilai pernyataan tentang puluhan, satuan, dan nama bilangan.. Ingat Tabel Seratus. (Tabel Seratus)",
       "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Pernyataan dihitung dari bilangan, dan tiap jawaban diberi penjelasan singkat. Gunakan Tabel Seratus.",
-      "voiceGuide": "Tabel Seratus. Baca pernyataan, lalu pilih benar atau salah.",
+      "voiceGuide": "Tabel Seratus. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "periksa dengan alasan"
@@ -643,9 +629,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "choose-numeral-from-name",
       "title": "Tulis Lambang dari Nama",
       "bookReference": "hlm. 208 nomor 5 dan 221 nomor 3 (tulis lambang bilangan sesuai dengan nama bilangannya)",
-      "objective": "Memilih lambang bilangan yang sesuai dengan nama bilangan.. Ingat Tabel Seratus.",
+      "objective": "Memilih lambang bilangan yang sesuai dengan nama bilangan.. Ingat Tabel Seratus. (Tabel Seratus)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya enam puluh dua. Siswa memilih satu dari tiga lambang. Pengecoh memuat angka tertukar (26) dan selisih satu. Gunakan Tabel Seratus.",
-      "voiceGuide": "Tabel Seratus. Baca nama bilangan, lalu pilih lambangnya.",
+      "voiceGuide": "Tabel Seratus. Mainkan dengan teliti.",
       "symbolLarge": "62",
       "wordLarge": "ENAM PULUH DUA",
       "mathNotation": "nama bilangan • lambang bilangan"
@@ -655,9 +641,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "riddle-number-clues",
       "title": "Detektif Bilangan",
       "bookReference": "hlm. 217 (aku adalah bilangan) dan 223 (buatlah pertanyaan untuk menunjukkan satu bilangan)",
-      "objective": "Menemukan sebuah bilangan dari dua atau tiga petunjuk.. Ingat Tabel Seratus.",
+      "objective": "Menemukan sebuah bilangan dari dua atau tiga petunjuk.. Ingat Tabel Seratus. (Tabel Seratus)",
       "mechanicDescription": "Empat soal. Siswa membaca petunjuk seperti puluhanku 7 dan satuanku 3, lalu memilih satu dari tiga bilangan. Hanya satu bilangan yang cocok dengan semua petunjuk. Gunakan Tabel Seratus.",
-      "voiceGuide": "Tabel Seratus. Baca semua petunjuk, lalu pilih bilangannya.",
+      "voiceGuide": "Tabel Seratus. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "dua petunjuk, satu jawaban"
@@ -667,9 +653,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "concept-map-fill",
       "title": "Peta Konsep Bilangan",
       "bookReference": "hlm. 192 (peta konsep: menghitung, membaca, dan menulis bilangan)",
-      "objective": "Melengkapi peta konsep puluhan dan satuan serta membaca dan menulis bilangan.. Ingat Tabel Seratus.",
+      "objective": "Melengkapi peta konsep puluhan dan satuan serta membaca dan menulis bilangan.. Ingat Tabel Seratus. (Tabel Seratus)",
       "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan Tabel Seratus.",
-      "voiceGuide": "Tabel Seratus. Pilih kartu yang tepat untuk kotak yang menyala.",
+      "voiceGuide": "Tabel Seratus. Mainkan dengan teliti.",
       "symbolLarge": "⇄",
       "wordLarge": "PETA KONSEP",
       "mathNotation": "puluhan • satuan • bilangan"
@@ -679,9 +665,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "order-numerals",
       "title": "Urutkan Bilangan",
       "bookReference": "hlm. 214 dan 222 (urutkan bilangan dari yang paling kecil)",
-      "objective": "Mengurutkan lambang bilangan dari yang paling kecil atau paling besar.. Ingat Tabel Seratus.",
+      "objective": "Mengurutkan lambang bilangan dari yang paling kecil atau paling besar.. Ingat Tabel Seratus. (Tabel Seratus)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat atau lima bilangan, misalnya 62, 26, 71, 17. Siswa mengetuk bilangan satu per satu menurut urutan. Letak jawaban berpindah. Gunakan Tabel Seratus.",
-      "voiceGuide": "Tabel Seratus. Ketuk bilangan menurut urutannya.",
+      "voiceGuide": "Tabel Seratus. Mainkan dengan teliti.",
       "symbolLarge": "17 < 26",
       "wordLarge": "URUTKAN",
       "mathNotation": "bandingkan puluhan dulu"
@@ -691,9 +677,9 @@ export const SUB_A7: SubBabNaskah = {
       "gameType": "select-all-number-trait",
       "title": "Ketuk Semua yang Cocok",
       "bookReference": "hlm. 198–199 dan 212–213 (puluhan dan satuan menentukan besar bilangan)",
-      "objective": "Memilih semua bilangan yang memiliki ciri tertentu.. Ingat Tabel Seratus.",
+      "objective": "Memilih semua bilangan yang memiliki ciri tertentu.. Ingat Tabel Seratus. (Tabel Seratus)",
       "mechanicDescription": "Tiga ronde, tiap ronde enam bilangan dan satu ciri: punya 6 puluhan, satuannya 5, atau lebih besar dari 70. Siswa mengetuk semua yang cocok, lalu menekan Periksa. Gunakan Tabel Seratus.",
-      "voiceGuide": "Tabel Seratus. Ketuk semua yang cocok, lalu periksa.",
+      "voiceGuide": "Tabel Seratus. Mainkan dengan teliti.",
       "symbolLarge": "✔✔",
       "wordLarge": "SEMUA COCOK",
       "mathNotation": "boleh lebih dari satu"
@@ -705,12 +691,6 @@ export const SUB_A7: SubBabNaskah = {
       "nama": "Sepuluh satuan, satu puluhan",
       "isi": "10 satuan = 1 puluhan",
       "suara": "Sepuluh satuan sama dengan satu puluhan. Satu bungkus berisi sepuluh kue cubit adalah satu puluhan."
-    },
-    {
-      "ikon": "🔟",
-      "nama": "Puluhan sampai seratus",
-      "isi": "10, 20, 30, sampai 100",
-      "suara": "Menghitung puluhan melompat sepuluh-sepuluh sampai sepuluh puluhan, yaitu seratus."
     },
     {
       "ikon": "🌍",
@@ -753,11 +733,11 @@ export const SUB_A7: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Hitung sampai 100 pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Hitung sampai 100 pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Hitung sampai 100 membantumu memahami soal?",
-    "Kapan kamu memakai Puluhan dan Satuan?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Hitung sampai 100 membantumu?",
+    "Kapan memakai Puluhan dan Satuan?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -801,12 +781,12 @@ export const SUB_B7: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Membandingkan Bilangan)",
   "fullTitle": "Sub-Bab B: Membandingkan Bilangan",
-  "targetDescription": "Siswa menentukan bilangan yang lebih dari atau kurang dari bilangan lain dengan menghitung maju dan mundur pada garis bilangan, membandingkan dua bilangan dengan melihat banyak puluhan lebih dulu lalu satuannya, memakai kata lebih besar dari, lebih kecil dari, dan sama dengan, serta mengurutkan tiga bilangan atau lebih dari yang paling kecil atau paling besar. Siswa memakai cara Banding Puluhan Dulu, Garis Bilangan 100, Tanda Banding.",
+  "targetDescription": "Siswa menentukan bilangan yang lebih dari atau kurang dari bilangan lain dengan menghitung maju dan mundur pada garis bilangan, membandingkan dua bilangan dengan melihat banyak puluhan lebih dulu lalu satuannya, memakai kata lebih besar dari, lebih kecil dari, dan sama dengan, serta mengurutkan tiga bilangan atau lebih dari yang paling kecil atau paling besar. Siswa memakai cara Banding Puluhan Dulu, Garis Bilangan 100, Tanda Banding. Siswa memakai cara Banding Puluhan Dulu, Garis Bilangan 100, Tanda Banding.",
   "secondaryBg": "#DBEAFE",
   "secondaryBorder": "#2563EB",
   "secondaryText": "#1E3A8A",
   "silabus": {
-    "teksSuara": "Kita belajar membandingkan bilangan. Kita menghitung maju dan mundur seperti kupu-kupu dan capung untuk mencari bilangan yang lebih dari dan kurang dari. Lalu kita membandingkan kelereng Halim dan Malosi dengan melihat banyak puluhan lebih dulu, dan satuannya bila puluhannya sama. Kita memakai kata lebih besar dari, lebih kecil dari, dan sama dengan, lalu mengurutkan bilangan dari yang paling kecil. Kita memakai cara dari luar buku: Banding Puluhan Dulu (Compare Tens First); Garis Bilangan 100 (Number Line to 100); Tanda Banding (Symbols < > =). Puluhan menentukan siapa lebih besar. Posisi menunjukkan urutan. Pakai <, >, = dengan tepat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar membandingkan bilangan. Kita menghitung maju dan mundur seperti kupu-kupu dan capung untuk mencari bilangan yang lebih dari dan kurang dari. Lalu kita membandingkan kelereng Halim dan Malosi dengan melihat banyak puluhan lebih dulu, dan satuannya bila puluhannya sama. Kita memakai kata lebih besar dari, lebih kecil dari, dan sama dengan, lalu mengurutkan bilangan dari yang paling kecil. Kita memakai cara: Banding Puluhan Dulu, Garis Bilangan 100, Tanda Banding. Puluhan menentukan siapa lebih besar. Posisi menunjukkan urutan. Pakai <, >, = dengan tepat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa membandingkan dua bilangan sampai 100 dengan memperhatikan puluhan dan satuan, menentukan bilangan yang lebih dari dan kurang dari bilangan lain, mengurutkan bilangan, serta menyampaikan alasannya dengan percaya diri.",
     "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 7 Sub-Bab B)."
   },
@@ -820,10 +800,10 @@ export const SUB_B7: SubBabNaskah = {
           "id": "K2B7B-V1-1",
           "judul": "Kupu-kupu di bilangan 58",
           "ketukan": [
-            "Lihat garis angka ini. Kupu-kupu berada di antara bilangan lima puluh tujuh dan lima puluh sembilan.",
-            "Jadi kupu-kupu berada di bilangan lima puluh delapan. Mari kita pahami bersama.",
+            "Bayangkan kamu sedang mempelajari Membandingkan Bilangan. Lihat garis angka ini. Kupu-kupu berada di antara bilangan lima puluh tujuh dan lima puluh sembilan.",
+            "Jadi kupu-kupu berada di bilangan lima puluh delapan.",
             "Kupu-kupu maju dua langkah ke depan. Kita menghitung maju: lima puluh sembilan, enam puluh.",
-            "Ingat cara Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar."
+            "Ingat cara Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar. Ingat cara Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar."
           ],
           "papan": [
             "Antara 57 dan 59",
@@ -837,9 +817,9 @@ export const SUB_B7: SubBabNaskah = {
           "judul": "Capung di bilangan 75",
           "ketukan": [
             "Sekarang amati capung. Capung berada di antara bilangan tujuh puluh empat dan tujuh puluh enam.",
-            "Jadi capung berada di bilangan tujuh puluh lima. Mari kita pahami bersama.",
+            "Jadi capung berada di bilangan tujuh puluh lima.",
             "Capung mundur tiga langkah ke belakang. Kita menghitung mundur: tujuh puluh empat, tujuh puluh tiga, tujuh puluh dua.",
-            "Di sini kita memakai ide Compare Tens First — Puluhan menentukan siapa lebih besar."
+            "Di sini kita memakai ide Compare Tens First — Puluhan menentukan siapa lebih besar. Di sini kita memakai Compare Tens First. Puluhan menentukan siapa lebih besar."
           ],
           "papan": [
             "Antara 74 dan 76",
@@ -852,7 +832,7 @@ export const SUB_B7: SubBabNaskah = {
           "id": "K2B7B-V1-3",
           "judul": "Lebih dari dan kurang dari",
           "ketukan": [
-            "Lebihnya berarti maju, dan kurangnya berarti mundur. Mari kita pahami bersama.",
+            "Lebihnya berarti maju, dan kurangnya berarti mundur.",
             "Aku adalah bilangan. Aku dua lebihnya dari bilangan tujuh puluh enam. Aku adalah tujuh puluh delapan.",
             "Aku adalah bilangan. Aku satu kurangnya dari bilangan enam puluh tujuh. Aku adalah enam puluh enam.",
             "METODE LUAR · Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar."
@@ -878,7 +858,7 @@ export const SUB_B7: SubBabNaskah = {
             "Halim mempunyai lima puluh enam butir kelereng. Malosi memiliki enam puluh lima butir kelereng.",
             "Kelereng siapa yang lebih banyak? Kita masukkan kelereng ke dalam kantong, setiap kantong berisi sepuluh kelereng.",
             "Bilangan lima puluh enam mempunyai lima puluhan dan enam satuan. Bilangan enam puluh lima mempunyai enam puluhan dan lima satuan.",
-            "Ingat cara Garis Bilangan 100: Posisi menunjukkan urutan."
+            "Ingat cara Garis Bilangan 100: Posisi menunjukkan urutan. Ingat cara Garis Bilangan 100: Posisi menunjukkan urutan."
           ],
           "papan": [
             "Halim 56, Malosi 65",
@@ -891,10 +871,10 @@ export const SUB_B7: SubBabNaskah = {
           "id": "K2B7B-V2-2",
           "judul": "Puluhan yang sama",
           "ketukan": [
-            "Sekarang bandingkan bilangan lima puluh empat dan lima puluh delapan. Mari kita pahami bersama.",
+            "Sekarang bandingkan bilangan lima puluh empat dan lima puluh delapan.",
             "Keduanya mempunyai lima puluhan. Karena puluhannya sama, kita lihat satuannya.",
             "Lima puluh empat mempunyai empat satuan, dan lima puluh delapan mempunyai delapan satuan.",
-            "Di sini kita memakai ide Number Line to 100 — Posisi menunjukkan urutan."
+            "Di sini kita memakai ide Number Line to 100 — Posisi menunjukkan urutan. Di sini kita memakai Number Line to 100. Posisi menunjukkan urutan."
           ],
           "papan": [
             "Banding 54 dan 58",
@@ -933,7 +913,7 @@ export const SUB_B7: SubBabNaskah = {
             "Amati tiga bilangan ini: tujuh puluh enam, delapan puluh tiga, dan lima puluh tujuh.",
             "Bilangan tujuh puluh enam mempunyai tujuh puluhan dan enam satuan. Delapan puluh tiga mempunyai delapan puluhan dan tiga satuan. Lima puluh tujuh mempunyai lima puluhan dan tujuh satuan.",
             "Yang puluhannya paling banyak adalah delapan puluh tiga. Jadi delapan puluh tiga paling besar.",
-            "Ingat cara Tanda Banding: Pakai <, >, = dengan tepat."
+            "Ingat cara Tanda Banding: Pakai <, >, = dengan tepat. Ingat cara Tanda Banding: Pakai <, >, = dengan tepat."
           ],
           "papan": [
             "76, 83, dan 57",
@@ -946,10 +926,10 @@ export const SUB_B7: SubBabNaskah = {
           "id": "K2B7B-V3-2",
           "judul": "Dari yang paling kecil",
           "ketukan": [
-            "Sekarang urutkan bilangan dari yang paling kecil. Mari kita pahami bersama.",
-            "Pertama lima puluh tujuh, karena puluhannya paling sedikit. Mari kita pahami bersama.",
-            "Kedua tujuh puluh enam, lalu ketiga delapan puluh tiga. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Symbols < > = — Pakai <, >, = dengan tepat."
+            "Sekarang urutkan bilangan dari yang paling kecil.",
+            "Pertama lima puluh tujuh, karena puluhannya paling sedikit.",
+            "Kedua tujuh puluh enam, lalu ketiga delapan puluh tiga.",
+            "Di sini kita memakai ide Symbols < > = — Pakai <, >, = dengan tepat. Di sini kita memakai Symbols < > =. Pakai <, >, = dengan tepat."
           ],
           "papan": [
             "Urutkan dari terkecil",
@@ -981,7 +961,7 @@ export const SUB_B7: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Membandingkan Bilangan. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Membandingkan Bilangan?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -1013,7 +993,7 @@ export const SUB_B7: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -1021,7 +1001,7 @@ export const SUB_B7: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -1029,15 +1009,15 @@ export const SUB_B7: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -1113,20 +1093,6 @@ export const SUB_B7: SubBabNaskah = {
       "countNum": 3,
       "countWord": "Tiga",
       "suara": "Kira berkata, jika aku tambahkan empat pada puluhan dan tiga pada satuan, hasilnya lima puluh lima. Kita mundur, dan bilangan Kira adalah dua belas."
-    },
-    {
-      "judul": "Banding Puluhan Dulu",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Puluhan menentukan siapa lebih besar."
-    },
-    {
-      "judul": "Garis Bilangan 100",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Posisi menunjukkan urutan."
     }
   ],
   "games": [
@@ -1136,7 +1102,7 @@ export const SUB_B7: SubBabNaskah = {
       "title": "Maju dan Mundur",
       "bookReference": "hlm. 209–210 (kupu-kupu maju dua langkah, capung mundur tiga langkah)",
       "objective": "Pakai Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar. Latihan: Menentukan bilangan yang lebih dari atau kurang dari dengan menghitung maju dan mundur..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya kupu-kupu di 58 maju dua langkah, capung di 75 mundur tiga langkah. Siswa menekan Maju atau Mundur satu langkah demi satu langkah pada garis angka. Bila melewati perintah, tekan Ulang. Saat bermain, terapkan Compare Tens First: Puluhan menentukan siapa lebih besar.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya kupu-kupu di 58 maju dua langkah, capung di 75 mundur tiga langkah. Siswa menekan Maju atau Mundur satu langkah demi satu langkah pada garis angka. Bila melewati perintah, tekan Ulang. Saat bermain, ingat Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar.",
       "voiceGuide": "Banding Puluhan Dulu. Puluhan menentukan siapa lebih besar.",
       "emoji": "🦋",
       "targetCount": 6
@@ -1147,7 +1113,7 @@ export const SUB_B7: SubBabNaskah = {
       "title": "Di Mana Aku?",
       "bookReference": "hlm. 209–210 (kupu-kupu berada di antara 57 dan 59)",
       "objective": "Pakai Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar. Latihan: Menemukan bilangan yang berada di antara dua bilangan..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga soal, misalnya aku berada di antara 74 dan 76. Siswa mengetuk bilangan itu pada garis angka. Letak jawaban berpindah di garis. Saat bermain, terapkan Compare Tens First: Puluhan menentukan siapa lebih besar.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga soal, misalnya aku berada di antara 74 dan 76. Siswa mengetuk bilangan itu pada garis angka. Letak jawaban berpindah di garis. Saat bermain, ingat Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar.",
       "voiceGuide": "Banding Puluhan Dulu. Puluhan menentukan siapa lebih besar.",
       "emoji": "📍",
       "targetCount": 9
@@ -1158,7 +1124,7 @@ export const SUB_B7: SubBabNaskah = {
       "title": "Siapa Lebih Banyak?",
       "bookReference": "hlm. 211–212 (kelereng Halim dan Malosi)",
       "objective": "Pakai Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar. Latihan: Membandingkan banyak benda milik dua anak..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua anak punya kumpulan kelereng berisi kantong penuh dan kelereng lepas, misalnya Halim 56 dan Malosi 65. Siswa memilih siapa yang lebih banyak atau sama banyak. Saat bermain, terapkan Compare Tens First: Puluhan menentukan siapa lebih besar.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua anak punya kumpulan kelereng berisi kantong penuh dan kelereng lepas, misalnya Halim 56 dan Malosi 65. Siswa memilih siapa yang lebih banyak atau sama banyak. Saat bermain, ingat Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar.",
       "voiceGuide": "Banding Puluhan Dulu. Puluhan menentukan siapa lebih besar.",
       "emoji": "⚖️",
       "targetCount": 6
@@ -1169,7 +1135,7 @@ export const SUB_B7: SubBabNaskah = {
       "title": "Ketuk yang Paling Banyak dan Paling Sedikit",
       "bookReference": "hlm. 214 (bilangan yang paling besar dan paling kecil)",
       "objective": "Pakai Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar. Latihan: Menemukan kumpulan benda yang paling banyak dan paling sedikit..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga kumpulan benda dan dua pertanyaan: paling banyak, lalu paling sedikit. Siswa mengetuk kumpulannya. Letak kunci berpindah. Saat bermain, terapkan Compare Tens First: Puluhan menentukan siapa lebih besar.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga kumpulan benda dan dua pertanyaan: paling banyak, lalu paling sedikit. Siswa mengetuk kumpulannya. Letak kunci berpindah. Saat bermain, ingat Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar.",
       "voiceGuide": "Banding Puluhan Dulu. Puluhan menentukan siapa lebih besar.",
       "emoji": "🏆",
       "targetCount": 6
@@ -1179,9 +1145,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "two-cards-biggest-smallest",
       "title": "Susun Dua Kartu",
       "bookReference": "hlm. 215 (Ayo Mencoba: kartu bilangan 1–9 dan papan nilai tempat)",
-      "objective": "Menyusun dua kartu angka menjadi bilangan terbesar atau terkecil.. Ingat Banding Puluhan Dulu.",
+      "objective": "Menyusun dua kartu angka menjadi bilangan terbesar atau terkecil.. Ingat Banding Puluhan Dulu. (Banding Puluhan Dulu)",
       "mechanicDescription": "Empat ronde: kartu 3 dan 7, 5 dan 2, 8 dan 6, 4 dan 9. Siswa mengetuk kartu lalu mengetuk tempat puluhan atau satuan. Susunan yang salah diberi petunjuk dan kartu kembali. Gunakan Banding Puluhan Dulu.",
-      "voiceGuide": "Banding Puluhan Dulu. Ketuk kartu, lalu ketuk tempatnya.",
+      "voiceGuide": "Banding Puluhan Dulu. Mainkan dengan teliti.",
       "emoji": "🔢",
       "targetCount": 4
     },
@@ -1190,9 +1156,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "order-three-collections",
       "title": "Urutkan Tiga Kantong",
       "bookReference": "hlm. 214 (urutkan tiga bilangan dari yang paling kecil)",
-      "objective": "Mengurutkan tiga kumpulan benda dari yang paling sedikit atau paling banyak.. Ingat Banding Puluhan Dulu.",
+      "objective": "Mengurutkan tiga kumpulan benda dari yang paling sedikit atau paling banyak.. Ingat Banding Puluhan Dulu. (Banding Puluhan Dulu)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga kantong bertanda huruf, misalnya 76, 83, dan 57. Siswa mengetuk kantong satu per satu menurut urutan banyaknya. Gunakan Banding Puluhan Dulu.",
-      "voiceGuide": "Banding Puluhan Dulu. Ketuk kantong menurut urutan banyaknya.",
+      "voiceGuide": "Banding Puluhan Dulu. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -1201,9 +1167,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "match-pair-relation",
       "title": "Jodohkan Kiri dan Kanan",
       "bookReference": "hlm. 212–213 (membandingkan dua bilangan)",
-      "objective": "Menjodohkan dua kumpulan benda dengan pernyataan perbandingannya.. Ingat Banding Puluhan Dulu.",
+      "objective": "Menjodohkan dua kumpulan benda dengan pernyataan perbandingannya.. Ingat Banding Puluhan Dulu. (Banding Puluhan Dulu)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga pasang kumpulan benda dan tiga pernyataan: kiri lebih banyak, sama banyak, dan kanan lebih banyak. Siswa mengetuk pasangan, lalu pernyataan yang cocok. Gunakan Banding Puluhan Dulu.",
-      "voiceGuide": "Banding Puluhan Dulu. Ketuk pasangan, lalu ketuk pernyataannya.",
+      "voiceGuide": "Banding Puluhan Dulu. Mainkan dengan teliti.",
       "emoji": "↔️",
       "targetCount": 9
     },
@@ -1212,9 +1178,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "memory-compare-numbers",
       "title": "Memori Banyak Benda",
       "bookReference": "hlm. 212–213 (bilangan dan puluhan satuannya)",
-      "objective": "Mencocokkan kumpulan benda dengan lambang bilangannya.. Ingat Banding Puluhan Dulu.",
+      "objective": "Mencocokkan kumpulan benda dengan lambang bilangannya.. Ingat Banding Puluhan Dulu. (Banding Puluhan Dulu)",
       "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): kumpulan benda dan lambang bilangannya. Siswa membalik dua kartu. Gunakan Banding Puluhan Dulu.",
-      "voiceGuide": "Banding Puluhan Dulu. Balik dua kartu, cari benda dan bilangannya.",
+      "voiceGuide": "Banding Puluhan Dulu. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1223,9 +1189,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "sort-more-less-reference",
       "title": "Pilah: Lebih atau Kurang dari Acuan",
       "bookReference": "hlm. 216 (lingkari bilangan yang lebih besar)",
-      "objective": "Memilah kumpulan benda yang lebih banyak dan yang lebih sedikit dari sebuah acuan.. Ingat Banding Puluhan Dulu.",
+      "objective": "Memilah kumpulan benda yang lebih banyak dan yang lebih sedikit dari sebuah acuan.. Ingat Banding Puluhan Dulu. (Banding Puluhan Dulu)",
       "mechanicDescription": "Tiga ronde, tiap ronde satu bilangan acuan (60, 75, 40) dan enam kumpulan benda. Siswa menyeret atau mengetuk kumpulan ke kotak Lebih dari acuan atau Kurang dari acuan. Gunakan Banding Puluhan Dulu.",
-      "voiceGuide": "Banding Puluhan Dulu. Pilah kumpulan ke kotak yang tepat.",
+      "voiceGuide": "Banding Puluhan Dulu. Mainkan dengan teliti.",
       "emoji": "🗂️",
       "targetCount": 3
     },
@@ -1234,9 +1200,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "select-all-more-than",
       "title": "Ketuk Semua yang Memenuhi",
       "bookReference": "hlm. 216–217 (bilangan yang lebih besar atau lebih kecil)",
-      "objective": "Memilih semua kumpulan benda yang lebih banyak atau lebih sedikit dari sebuah acuan.. Ingat Banding Puluhan Dulu.",
+      "objective": "Memilih semua kumpulan benda yang lebih banyak atau lebih sedikit dari sebuah acuan.. Ingat Banding Puluhan Dulu. (Banding Puluhan Dulu)",
       "mechanicDescription": "Tiga ronde, tiap ronde enam kumpulan benda dan satu perintah, misalnya lebih dari 65. Siswa mengetuk semua yang memenuhi, lalu menekan Periksa. Gunakan Banding Puluhan Dulu.",
-      "voiceGuide": "Banding Puluhan Dulu. Ketuk semua yang memenuhi, lalu periksa.",
+      "voiceGuide": "Banding Puluhan Dulu. Mainkan dengan teliti.",
       "emoji": "✅",
       "targetCount": 3
     },
@@ -1246,7 +1212,7 @@ export const SUB_B7: SubBabNaskah = {
       "title": "Garis Bilangan: Antara, Lebih, Kurang",
       "bookReference": "hlm. 209–210 (di antara, lebih dari, dan kurang dari pada garis bilangan)",
       "objective": "Pakai Garis Bilangan 100: Posisi menunjukkan urutan. Latihan: Menemukan bilangan di antara, yang lebihnya, dan yang kurangnya pada garis bilangan..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga soal: di antara dua bilangan, sekian lebihnya, dan sekian kurangnya. Siswa mengetuk bilangan yang tepat pada garis bilangan. Saat bermain, terapkan Number Line to 100: Posisi menunjukkan urutan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga soal: di antara dua bilangan, sekian lebihnya, dan sekian kurangnya. Siswa mengetuk bilangan yang tepat pada garis bilangan. Saat bermain, ingat Garis Bilangan 100: Posisi menunjukkan urutan.",
       "voiceGuide": "Garis Bilangan 100. Posisi menunjukkan urutan.",
       "diagramType": "number-line",
       "numberA": 3,
@@ -1258,7 +1224,7 @@ export const SUB_B7: SubBabNaskah = {
       "title": "Bandingkan Dua Papan",
       "bookReference": "hlm. 212–213 (bandingkan puluhan lalu satuan)",
       "objective": "Pakai Garis Bilangan 100: Posisi menunjukkan urutan. Latihan: Membandingkan dua bilangan pada dua papan nilai tempat..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua papan nilai tempat A dan B ditampilkan, dan siswa memilih papan yang lebih besar atau sama besar. Saat bermain, terapkan Number Line to 100: Posisi menunjukkan urutan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua papan nilai tempat A dan B ditampilkan, dan siswa memilih papan yang lebih besar atau sama besar. Saat bermain, ingat Garis Bilangan 100: Posisi menunjukkan urutan.",
       "voiceGuide": "Garis Bilangan 100. Posisi menunjukkan urutan.",
       "diagramType": "place-value-compare",
       "numberA": 3,
@@ -1270,7 +1236,7 @@ export const SUB_B7: SubBabNaskah = {
       "title": "Urutkan Papan",
       "bookReference": "hlm. 214 dan 222 (urutkan bilangan)",
       "objective": "Pakai Garis Bilangan 100: Posisi menunjukkan urutan. Latihan: Mengurutkan papan nilai tempat dari bilangan terkecil atau terbesar..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga atau empat papan. Siswa mengetuk papan satu per satu menurut urutan. Saat bermain, terapkan Number Line to 100: Posisi menunjukkan urutan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga atau empat papan. Siswa mengetuk papan satu per satu menurut urutan. Saat bermain, ingat Garis Bilangan 100: Posisi menunjukkan urutan.",
       "voiceGuide": "Garis Bilangan 100. Posisi menunjukkan urutan.",
       "diagramType": "board-order",
       "numberA": 3,
@@ -1282,7 +1248,7 @@ export const SUB_B7: SubBabNaskah = {
       "title": "Ketuk Model Terbesar dan Terkecil",
       "bookReference": "hlm. 214 (bilangan paling besar dan paling kecil)",
       "objective": "Pakai Garis Bilangan 100: Posisi menunjukkan urutan. Latihan: Menemukan model batang dan kotak yang paling besar dan paling kecil..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga model dan dua pertanyaan: terbesar, lalu terkecil. Siswa mengetuk modelnya. Saat bermain, terapkan Number Line to 100: Posisi menunjukkan urutan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga model dan dua pertanyaan: terbesar, lalu terkecil. Siswa mengetuk modelnya. Saat bermain, ingat Garis Bilangan 100: Posisi menunjukkan urutan.",
       "voiceGuide": "Garis Bilangan 100. Posisi menunjukkan urutan.",
       "diagramType": "model-pick",
       "numberA": 3,
@@ -1293,9 +1259,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "sort-models-reference",
       "title": "Pilah Model terhadap Acuan",
       "bookReference": "hlm. 216 (lebih besar dan lebih kecil dari sebuah bilangan)",
-      "objective": "Memilah model menurut lebih besar atau lebih kecil dari bilangan acuan.. Ingat Garis Bilangan 100.",
+      "objective": "Memilah model menurut lebih besar atau lebih kecil dari bilangan acuan.. Ingat Garis Bilangan 100. (Garis Bilangan 100)",
       "mechanicDescription": "Tiga ronde, tiap ronde bilangan acuan (50, 30, 80) dan enam model. Siswa menyeret atau mengetuk model ke kotak yang tepat. Gunakan Garis Bilangan 100.",
-      "voiceGuide": "Garis Bilangan 100. Pilah model ke kotak yang tepat.",
+      "voiceGuide": "Garis Bilangan 100. Mainkan dengan teliti.",
       "diagramType": "model-sort",
       "numberA": 3,
       "numberB": 6
@@ -1305,9 +1271,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "match-boards-symbol",
       "title": "Jodohkan Papan dan Tanda",
       "bookReference": "hlm. 212–213 (lebih besar, lebih kecil, sama dengan)",
-      "objective": "Menjodohkan dua papan dengan tanda perbandingan yang tepat.. Ingat Garis Bilangan 100.",
+      "objective": "Menjodohkan dua papan dengan tanda perbandingan yang tepat.. Ingat Garis Bilangan 100. (Garis Bilangan 100)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga pasang papan dan tiga kartu tanda lebih besar, lebih kecil, dan sama dengan. Siswa mengetuk pasangan papan lalu kartu tandanya. Gunakan Garis Bilangan 100.",
-      "voiceGuide": "Garis Bilangan 100. Ketuk pasangan papan, lalu ketuk tandanya.",
+      "voiceGuide": "Garis Bilangan 100. Mainkan dengan teliti.",
       "diagramType": "symbol-match",
       "numberA": 3,
       "numberB": 3
@@ -1317,9 +1283,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "hundred-chart-neighbors",
       "title": "Tetangga di Tabel Seratus",
       "bookReference": "hlm. 209 (tabel bilangan 51 sampai 100)",
-      "objective": "Menemukan bilangan yang hilang pada tabel seratus dari bilangan tetangganya.. Ingat Garis Bilangan 100.",
+      "objective": "Menemukan bilangan yang hilang pada tabel seratus dari bilangan tetangganya.. Ingat Garis Bilangan 100. (Garis Bilangan 100)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat atau lima kotak kosong pada tabel sepuluh kolom. Siswa memilih satu dari tiga angka untuk kotak yang menyala. Gunakan Garis Bilangan 100.",
-      "voiceGuide": "Garis Bilangan 100. Isi kotak yang menyala dengan bilangan yang tepat.",
+      "voiceGuide": "Garis Bilangan 100. Mainkan dengan teliti.",
       "diagramType": "hundred-chart",
       "numberA": 3,
       "numberB": 4
@@ -1329,9 +1295,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "step-on-diagram-line",
       "title": "Langkah pada Garis Diagram",
       "bookReference": "hlm. 210 (maju dua langkah, mundur tiga langkah)",
-      "objective": "Maju dan mundur satu langkah pada garis bilangan diagram.. Ingat Garis Bilangan 100.",
+      "objective": "Maju dan mundur satu langkah pada garis bilangan diagram.. Ingat Garis Bilangan 100. (Garis Bilangan 100)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bulatan penanda berada di sebuah bilangan, dan siswa menekan Maju atau Mundur sesuai perintah. Gunakan Garis Bilangan 100.",
-      "voiceGuide": "Garis Bilangan 100. Maju atau mundur sesuai perintah.",
+      "voiceGuide": "Garis Bilangan 100. Mainkan dengan teliti.",
       "diagramType": "step-line",
       "numberA": 3,
       "numberB": 2
@@ -1341,9 +1307,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "memory-boards-numerals",
       "title": "Memori Papan dan Bilangan",
       "bookReference": "hlm. 212–213 (bilangan dan puluhan satuannya)",
-      "objective": "Mencocokkan papan nilai tempat dengan lambang bilangannya.. Ingat Garis Bilangan 100.",
+      "objective": "Mencocokkan papan nilai tempat dengan lambang bilangannya.. Ingat Garis Bilangan 100. (Garis Bilangan 100)",
       "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): papan nilai tempat dan lambang bilangannya. Gunakan Garis Bilangan 100.",
-      "voiceGuide": "Garis Bilangan 100. Balik dua kartu, cari papan dan bilangannya.",
+      "voiceGuide": "Garis Bilangan 100. Mainkan dengan teliti.",
       "diagramType": "board-memory",
       "numberA": 3,
       "numberB": 4
@@ -1353,9 +1319,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "select-all-models-reference",
       "title": "Ketuk Semua Model terhadap Acuan",
       "bookReference": "hlm. 216–217 (bilangan yang lebih besar atau lebih kecil)",
-      "objective": "Memilih semua model yang lebih besar atau lebih kecil dari sebuah acuan.. Ingat Garis Bilangan 100.",
+      "objective": "Memilih semua model yang lebih besar atau lebih kecil dari sebuah acuan.. Ingat Garis Bilangan 100. (Garis Bilangan 100)",
       "mechanicDescription": "Tiga ronde, tiap ronde enam model dan satu perintah, misalnya lebih besar dari 60. Siswa mengetuk semua yang memenuhi, lalu menekan Periksa. Gunakan Garis Bilangan 100.",
-      "voiceGuide": "Garis Bilangan 100. Ketuk semua model yang memenuhi, lalu periksa.",
+      "voiceGuide": "Garis Bilangan 100. Mainkan dengan teliti.",
       "diagramType": "model-select",
       "numberA": 3,
       "numberB": 6
@@ -1366,7 +1332,7 @@ export const SUB_B7: SubBabNaskah = {
       "title": "Lengkapi Kalimat Banding",
       "bookReference": "hlm. 212–213 (bilangan 65 lebih besar dari bilangan 56)",
       "objective": "Pakai Tanda Banding: Pakai <, >, = dengan tepat. Latihan: Melengkapi kalimat perbandingan dua bilangan dengan kata yang tepat..",
-      "mechanicDescription": "Dua ronde, tiap ronde tiga kalimat, misalnya bilangan 58 ... bilangan 54. Siswa memilih lebih besar dari, lebih kecil dari, atau sama dengan. Kalimat lengkap dibacakan. Saat bermain, terapkan Symbols < > =: Pakai <, >, = dengan tepat.",
+      "mechanicDescription": "Dua ronde, tiap ronde tiga kalimat, misalnya bilangan 58 ... bilangan 54. Siswa memilih lebih besar dari, lebih kecil dari, atau sama dengan. Kalimat lengkap dibacakan. Saat bermain, ingat Tanda Banding: Pakai <, >, = dengan tepat.",
       "voiceGuide": "Tanda Banding. Pakai <, >, = dengan tepat.",
       "symbolLarge": ">  <  =",
       "wordLarge": "LEBIH BESAR DARI",
@@ -1378,7 +1344,7 @@ export const SUB_B7: SubBabNaskah = {
       "title": "Benar atau Salah: Perbandingan",
       "bookReference": "hlm. 209–217 (membandingkan dan lebih dari, kurang dari)",
       "objective": "Pakai Tanda Banding: Pakai <, >, = dengan tepat. Latihan: Menilai pernyataan tentang perbandingan, lebihnya, dan kurangnya..",
-      "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Pernyataan dihitung dari bilangan, dan tiap jawaban diberi penjelasan singkat. Saat bermain, terapkan Symbols < > =: Pakai <, >, = dengan tepat.",
+      "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Pernyataan dihitung dari bilangan, dan tiap jawaban diberi penjelasan singkat. Saat bermain, ingat Tanda Banding: Pakai <, >, = dengan tepat.",
       "voiceGuide": "Tanda Banding. Pakai <, >, = dengan tepat.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
@@ -1390,7 +1356,7 @@ export const SUB_B7: SubBabNaskah = {
       "title": "Susun Kalimat Banding",
       "bookReference": "hlm. 209–213 (kalimat perbandingan dan menghitung maju mundur)",
       "objective": "Pakai Tanda Banding: Pakai <, >, = dengan tepat. Latihan: Menyusun kata menjadi kalimat tentang perbandingan dan langkah maju atau mundur..",
-      "mechanicDescription": "Empat kalimat. Kartu kata diketuk berurutan. Satu kartu pengecoh tidak dipakai. Kalimat yang benar dibacakan. Saat bermain, terapkan Symbols < > =: Pakai <, >, = dengan tepat.",
+      "mechanicDescription": "Empat kalimat. Kartu kata diketuk berurutan. Satu kartu pengecoh tidak dipakai. Kalimat yang benar dibacakan. Saat bermain, ingat Tanda Banding: Pakai <, >, = dengan tepat.",
       "voiceGuide": "Tanda Banding. Pakai <, >, = dengan tepat.",
       "symbolLarge": "Aa",
       "wordLarge": "SUSUN KATA",
@@ -1402,7 +1368,7 @@ export const SUB_B7: SubBabNaskah = {
       "title": "Aku Adalah Bilangan",
       "bookReference": "hlm. 217 nomor 4 dan 5 (aku dua lebihnya dari 76; aku satu kurangnya dari 67)",
       "objective": "Pakai Tanda Banding: Pakai <, >, = dengan tepat. Latihan: Menemukan bilangan dari petunjuk lebihnya atau kurangnya..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya aku dua lebihnya dari bilangan 76. Siswa memilih satu dari tiga bilangan. Saat bermain, terapkan Symbols < > =: Pakai <, >, = dengan tepat.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya aku dua lebihnya dari bilangan 76. Siswa memilih satu dari tiga bilangan. Saat bermain, ingat Tanda Banding: Pakai <, >, = dengan tepat.",
       "voiceGuide": "Tanda Banding. Pakai <, >, = dengan tepat.",
       "symbolLarge": "76 + 2",
       "wordLarge": "AKU BILANGAN APA?",
@@ -1413,9 +1379,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "fill-more-less-table",
       "title": "Tabel Lebihnya dan Kurangnya",
       "bookReference": "hlm. 209–210 (2 lebihnya dari 58; 3 kurangnya dari 75)",
-      "objective": "Mengisi tabel bilangan yang sekian lebihnya atau kurangnya.. Ingat Tanda Banding.",
+      "objective": "Mengisi tabel bilangan yang sekian lebihnya atau kurangnya.. Ingat Tanda Banding. (Tanda Banding)",
       "mechanicDescription": "Dua ronde dengan tabel berisi empat baris: 2 lebihnya dari bilangan dan 3 kurangnya dari bilangan. Siswa mengetuk baris, lalu mengetuk kartu angka. Gunakan Tanda Banding.",
-      "voiceGuide": "Tanda Banding. Isi tabel dengan kartu angka.",
+      "voiceGuide": "Tanda Banding. Mainkan dengan teliti.",
       "symbolLarge": "58 → 60",
       "wordLarge": "TABEL",
       "mathNotation": "lebihnya • kurangnya"
@@ -1425,9 +1391,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "write-two-digits",
       "title": "Tulis Dua Angka",
       "bookReference": "hlm. 208 dan 217 (tulis lambang bilangan)",
-      "objective": "Menuliskan bilangan hasil lebihnya atau kurangnya pada papan dua angka.. Ingat Tanda Banding.",
+      "objective": "Menuliskan bilangan hasil lebihnya atau kurangnya pada papan dua angka.. Ingat Tanda Banding. (Tanda Banding)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya satu kurangnya dari 80. Siswa mengatur angka puluhan dan angka satuan, lalu menekan Periksa. Gunakan Tanda Banding.",
-      "voiceGuide": "Tanda Banding. Atur angka puluhan dan satuan, lalu periksa.",
+      "voiceGuide": "Tanda Banding. Mainkan dengan teliti.",
       "symbolLarge": "7 9",
       "wordLarge": "TULIS BILANGAN",
       "mathNotation": "puluhan • satuan"
@@ -1437,9 +1403,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "riddle-number-clues-compare",
       "title": "Detektif Bilangan Besar Kecil",
       "bookReference": "hlm. 217 (aku adalah bilangan) dan 223 (buatlah pertanyaan untuk menunjukkan satu bilangan)",
-      "objective": "Menemukan bilangan dari petunjuk lebih besar, lebih kecil, puluhan, dan satuan.. Ingat Tanda Banding.",
+      "objective": "Menemukan bilangan dari petunjuk lebih besar, lebih kecil, puluhan, dan satuan.. Ingat Tanda Banding. (Tanda Banding)",
       "mechanicDescription": "Empat soal. Siswa membaca tiga petunjuk, misalnya aku lebih besar dari 65, lebih kecil dari 70, dan satuanku 8, lalu memilih satu dari tiga bilangan. Gunakan Tanda Banding.",
-      "voiceGuide": "Tanda Banding. Baca semua petunjuk, lalu pilih bilangannya.",
+      "voiceGuide": "Tanda Banding. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "tiga petunjuk, satu jawaban"
@@ -1449,9 +1415,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "concept-map-fill",
       "title": "Peta Konsep Banding",
       "bookReference": "hlm. 192 (peta konsep: membandingkan bilangan; lebih dari dan kurang dari)",
-      "objective": "Melengkapi peta konsep membandingkan dua bilangan serta lebih dari dan kurang dari.. Ingat Tanda Banding.",
+      "objective": "Melengkapi peta konsep membandingkan dua bilangan serta lebih dari dan kurang dari.. Ingat Tanda Banding. (Tanda Banding)",
       "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan Tanda Banding.",
-      "voiceGuide": "Tanda Banding. Pilih kartu yang tepat untuk kotak yang menyala.",
+      "voiceGuide": "Tanda Banding. Mainkan dengan teliti.",
       "symbolLarge": "⇄",
       "wordLarge": "PETA KONSEP",
       "mathNotation": "banding • lebih • kurang"
@@ -1461,9 +1427,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "order-numerals",
       "title": "Urutkan Lima Bilangan",
       "bookReference": "hlm. 214 dan 222 nomor 5 (urutkan bilangan mulai dari yang paling kecil)",
-      "objective": "Mengurutkan empat atau lima bilangan dari yang paling kecil atau paling besar.. Ingat Tanda Banding.",
+      "objective": "Mengurutkan empat atau lima bilangan dari yang paling kecil atau paling besar.. Ingat Tanda Banding. (Tanda Banding)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat atau lima bilangan, misalnya 65, 71, 56, 79, 60. Siswa mengetuk bilangan satu per satu menurut urutan. Gunakan Tanda Banding.",
-      "voiceGuide": "Tanda Banding. Ketuk bilangan menurut urutannya.",
+      "voiceGuide": "Tanda Banding. Mainkan dengan teliti.",
       "symbolLarge": "56 < 60",
       "wordLarge": "URUTKAN",
       "mathNotation": "bandingkan puluhan dulu"
@@ -1473,9 +1439,9 @@ export const SUB_B7: SubBabNaskah = {
       "gameType": "select-all-compare-reference",
       "title": "Ketuk Semua terhadap Acuan",
       "bookReference": "hlm. 216–217 (lingkari bilangan yang lebih besar)",
-      "objective": "Memilih semua bilangan yang lebih besar atau lebih kecil dari sebuah acuan.. Ingat Tanda Banding.",
+      "objective": "Memilih semua bilangan yang lebih besar atau lebih kecil dari sebuah acuan.. Ingat Tanda Banding. (Tanda Banding)",
       "mechanicDescription": "Tiga ronde, tiap ronde enam bilangan dan satu perintah, misalnya lebih besar dari 55. Siswa mengetuk semua yang memenuhi, lalu menekan Periksa. Gunakan Tanda Banding.",
-      "voiceGuide": "Tanda Banding. Ketuk semua yang memenuhi, lalu periksa.",
+      "voiceGuide": "Tanda Banding. Mainkan dengan teliti.",
       "symbolLarge": "✔✔",
       "wordLarge": "SEMUA BENAR",
       "mathNotation": "boleh lebih dari satu"
@@ -1487,12 +1453,6 @@ export const SUB_B7: SubBabNaskah = {
       "nama": "Garis bilangan",
       "isi": "kanan lebih besar, kiri lebih kecil",
       "suara": "Pada garis bilangan, bilangan di sebelah kanan lebih besar dan bilangan di sebelah kiri lebih kecil."
-    },
-    {
-      "ikon": "↔️",
-      "nama": "Lebihnya dan kurangnya",
-      "isi": "maju untuk lebih, mundur untuk kurang",
-      "suara": "Menghitung maju untuk mencari lebihnya, dan menghitung mundur untuk mencari kurangnya."
     },
     {
       "ikon": "🌍",
@@ -1535,11 +1495,11 @@ export const SUB_B7: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Banding Puluhan Dulu pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Banding Puluhan Dulu pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Banding Puluhan Dulu membantumu memahami soal?",
-    "Kapan kamu memakai Garis Bilangan 100?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Banding Puluhan Dulu membantumu?",
+    "Kapan memakai Garis Bilangan 100?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {

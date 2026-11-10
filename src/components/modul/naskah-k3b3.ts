@@ -1,6 +1,6 @@
 /**
- * Naskah — rewrite mendalam.
- * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
+ * Naskah — poles kerapatan setara K5B4.
+ * Metode luar dianyam ketukan per ketukan.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
@@ -19,12 +19,12 @@ export const SUB_A33: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Pengukuran Panjang dengan Satuan Baku)",
   "fullTitle": "Sub-Bab A: Pengukuran Panjang dengan Satuan Baku",
-  "targetDescription": "Siswa mengenal alat ukur panjang (penggaris, meteran gulung, pengukur tinggi badan) dan satuan baku panjang (sentimeter dan meter), mengukur panjang benda dengan menempatkan ujung benda di angka nol, membaca panjang dari angka di ujung yang lain, serta memilih alat ukur yang tepat untuk benda pendek dan benda panjang. Siswa memakai cara Ulangi Satuan, Titik Nol Penggaris, Perkiraan Lalu Ukur.",
+  "targetDescription": "Siswa mengenal alat ukur panjang (penggaris, meteran gulung, pengukur tinggi badan) dan satuan baku panjang (sentimeter dan meter), mengukur panjang benda dengan menempatkan ujung benda di angka nol, membaca panjang dari angka di ujung yang lain, serta memilih alat ukur yang tepat untuk benda pendek dan benda panjang. Siswa memakai cara Ulangi Satuan, Titik Nol Penggaris, Perkiraan Lalu Ukur. Siswa memakai cara Ulangi Satuan, Titik Nol Penggaris, Perkiraan Lalu Ukur.",
   "secondaryBg": "#E0E7FF",
   "secondaryBorder": "#4F46E5",
   "secondaryText": "#312E81",
   "silabus": {
-    "teksSuara": "Kita belajar mengukur panjang dengan satuan baku. Di posyandu, tinggi badan bayi diukur dengan alat ukur. Kita mengenal penggaris, meteran, dan satuan baku sentimeter dan meter. Kita belajar meletakkan ujung benda di angka nol, lalu membaca angka di ujung yang lain. Kita juga memilih alat ukur yang tepat untuk benda pendek dan benda panjang. Kita memakai cara dari luar buku: Ulangi Satuan (Iterate Unit); Titik Nol Penggaris (Zero Point); Perkiraan Lalu Ukur (Estimate then Measure). Panjang diukur dengan mengulang satuan baku. Mulai dari 0, bukan ujung penggaris yang rusak. Perkirakan dulu, baru ukur tepat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar mengukur panjang dengan satuan baku. Di posyandu, tinggi badan bayi diukur dengan alat ukur. Kita mengenal penggaris, meteran, dan satuan baku sentimeter dan meter. Kita belajar meletakkan ujung benda di angka nol, lalu membaca angka di ujung yang lain. Kita juga memilih alat ukur yang tepat untuk benda pendek dan benda panjang. Kita memakai cara: Ulangi Satuan, Titik Nol Penggaris, Perkiraan Lalu Ukur. Panjang diukur dengan mengulang satuan baku. Mulai dari 0, bukan ujung penggaris yang rusak. Perkirakan dulu, baru ukur tepat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menyelesaikan masalah yang berkaitan dengan panjang dan berat benda dengan satuan baku. Pada sub-bab ini siswa mengukur panjang benda dengan penggaris dan meteran serta memilih alat ukur yang tepat.",
     "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3 Sub-Bab A)."
   },
@@ -38,10 +38,10 @@ export const SUB_A33: SubBabNaskah = {
           "id": "K3B3A-V1-1",
           "judul": "Ke posyandu",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Posyandu memberikan layanan kesehatan bagi masyarakat. Mari kita pahami bersama.",
-            "Di posyandu, tinggi badan dan berat badan bayi diukur. Mari kita pahami bersama.",
-            "Alat apa yang dipakai untuk mengukur tinggi badan. Mari kita pahami bersama.",
-            "Ingat cara Ulangi Satuan: Panjang diukur dengan mengulang satuan baku."
+            "Bayangkan kamu sedang mempelajari Pengukuran Panjang dengan Satuan Baku. Posyandu memberikan layanan kesehatan bagi masyarakat.",
+            "Di posyandu, tinggi badan dan berat badan bayi diukur.",
+            "Alat apa yang dipakai untuk mengukur tinggi badan.",
+            "Ingat cara Ulangi Satuan: Panjang diukur dengan mengulang satuan baku. Ingat cara Ulangi Satuan: Panjang diukur dengan mengulang satuan baku."
           ],
           "papan": [
             "Posyandu",
@@ -54,10 +54,10 @@ export const SUB_A33: SubBabNaskah = {
           "id": "K3B3A-V1-2",
           "judul": "Satuan tidak baku",
           "ketukan": [
-            "Panjang meja dapat diukur dengan jengkal tangan atau pensil. Mari kita pahami bersama.",
-            "Jengkal tangan setiap orang berbeda-beda. Mari kita pahami bersama.",
-            "Hasil ukur dengan benda tidak baku bisa berbeda. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Iterate Unit — Panjang diukur dengan mengulang satuan baku."
+            "Panjang meja dapat diukur dengan jengkal tangan atau pensil.",
+            "Jengkal tangan setiap orang berbeda-beda.",
+            "Hasil ukur dengan benda tidak baku bisa berbeda.",
+            "Di sini kita memakai ide Iterate Unit — Panjang diukur dengan mengulang satuan baku. Di sini kita memakai Iterate Unit. Panjang diukur dengan mengulang satuan baku."
           ],
           "papan": [
             "Jengkal dan pensil",
@@ -70,9 +70,9 @@ export const SUB_A33: SubBabNaskah = {
           "id": "K3B3A-V1-3",
           "judul": "Satuan baku panjang",
           "ketukan": [
-            "Satuan baku panjang adalah sentimeter dan meter. Mari kita pahami bersama.",
-            "Sentimeter ditulis cm dan meter ditulis m. Mari kita pahami bersama.",
-            "Penggaris memakai satuan sentimeter. Mari kita pahami bersama.",
+            "Satuan baku panjang adalah sentimeter dan meter.",
+            "Sentimeter ditulis cm dan meter ditulis m.",
+            "Penggaris memakai satuan sentimeter.",
             "METODE LUAR · Ulangi Satuan: Panjang diukur dengan mengulang satuan baku."
           ],
           "papan": [
@@ -93,10 +93,10 @@ export const SUB_A33: SubBabNaskah = {
           "id": "K3B3A-V2-1",
           "judul": "Siapkan alat",
           "ketukan": [
-            "Siapkan pensil, buku, kotak pensil, dan penggaris. Mari kita pahami bersama.",
-            "Letakkan benda-benda itu di atas meja. Mari kita pahami bersama.",
-            "Penggaris adalah alat ukur dan alat bantu menggambar garis lurus. Mari kita pahami bersama.",
-            "Ingat cara Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak."
+            "Siapkan pensil, buku, kotak pensil, dan penggaris.",
+            "Letakkan benda-benda itu di atas meja.",
+            "Penggaris adalah alat ukur dan alat bantu menggambar garis lurus.",
+            "Ingat cara Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak. Ingat cara Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak."
           ],
           "papan": [
             "Pensil, buku, kotak pensil",
@@ -109,10 +109,10 @@ export const SUB_A33: SubBabNaskah = {
           "id": "K3B3A-V2-2",
           "judul": "Mulai dari nol",
           "ketukan": [
-            "Letakkan ujung penggaris pada salah satu ujung benda. Mari kita pahami bersama.",
-            "Pastikan ujung benda tepat di angka 0 sentimeter. Mari kita pahami bersama.",
-            "Perhatikan ujung benda yang lain berada di angka berapa. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Zero Point — Mulai dari 0, bukan ujung penggaris yang rusak."
+            "Letakkan ujung penggaris pada salah satu ujung benda.",
+            "Pastikan ujung benda tepat di angka 0 sentimeter.",
+            "Perhatikan ujung benda yang lain berada di angka berapa.",
+            "Di sini kita memakai ide Zero Point — Mulai dari 0, bukan ujung penggaris yang rusak. Di sini kita memakai Zero Point. Mulai dari 0, bukan ujung penggaris yang rusak."
           ],
           "papan": [
             "Ujung penggaris di ujung benda",
@@ -125,9 +125,9 @@ export const SUB_A33: SubBabNaskah = {
           "id": "K3B3A-V2-3",
           "judul": "Tulis hasilnya",
           "ketukan": [
-            "Misalnya ujung pensil yang lain berada di angka 15. Mari kita pahami bersama.",
-            "Panjang pensil adalah 15 sentimeter. Mari kita pahami bersama.",
-            "Tulis hasilnya dengan satuan baku, yaitu 15 cm. Mari kita pahami bersama.",
+            "Misalnya ujung pensil yang lain berada di angka 15.",
+            "Panjang pensil adalah 15 sentimeter.",
+            "Tulis hasilnya dengan satuan baku, yaitu 15 cm.",
             "METODE LUAR · Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak."
           ],
           "papan": [
@@ -148,10 +148,10 @@ export const SUB_A33: SubBabNaskah = {
           "id": "K3B3A-V3-1",
           "judul": "Benda panjang",
           "ketukan": [
-            "Meteran dipakai untuk benda yang lebih panjang dari penggaris. Mari kita pahami bersama.",
-            "Contohnya televisi, meja, pintu, dan papan tulis. Mari kita pahami bersama.",
-            "Alat ukur apa yang tepat untuk mengukur pintu. Mari kita pahami bersama.",
-            "Ingat cara Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat."
+            "Meteran dipakai untuk benda yang lebih panjang dari penggaris.",
+            "Contohnya televisi, meja, pintu, dan papan tulis.",
+            "Alat ukur apa yang tepat untuk mengukur pintu.",
+            "Ingat cara Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat. Ingat cara Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat."
           ],
           "papan": [
             "Meteran untuk benda panjang",
@@ -164,10 +164,10 @@ export const SUB_A33: SubBabNaskah = {
           "id": "K3B3A-V3-2",
           "judul": "Cara memakai meteran",
           "ketukan": [
-            "Cara memakai meteran sama dengan cara memakai penggaris. Mari kita pahami bersama.",
-            "Mulailah dari angka 0. Mari kita pahami bersama.",
-            "Meteran memakai satuan meter dan sentimeter. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Estimate then Measure — Perkirakan dulu, baru ukur tepat."
+            "Cara memakai meteran sama dengan cara memakai penggaris.",
+            "Mulailah dari angka 0.",
+            "Meteran memakai satuan meter dan sentimeter.",
+            "Di sini kita memakai ide Estimate then Measure — Perkirakan dulu, baru ukur tepat. Di sini kita memakai Estimate then Measure. Perkirakan dulu, baru ukur tepat."
           ],
           "papan": [
             "Sama dengan penggaris",
@@ -180,9 +180,9 @@ export const SUB_A33: SubBabNaskah = {
           "id": "K3B3A-V3-3",
           "judul": "Memilih alat",
           "ketukan": [
-            "Benda pendek seperti pensil diukur dengan penggaris. Mari kita pahami bersama.",
-            "Benda panjang seperti lemari diukur dengan meteran. Mari kita pahami bersama.",
-            "Tinggi badan diukur dengan pengukur tinggi badan atau meteran. Mari kita pahami bersama.",
+            "Benda pendek seperti pensil diukur dengan penggaris.",
+            "Benda panjang seperti lemari diukur dengan meteran.",
+            "Tinggi badan diukur dengan pengukur tinggi badan atau meteran.",
             "METODE LUAR · Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat."
           ],
           "papan": [
@@ -199,7 +199,7 @@ export const SUB_A33: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Pengukuran Panjang dengan Satuan Baku. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Pengukuran Panjang dengan Satuan Baku?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -231,7 +231,7 @@ export const SUB_A33: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -239,7 +239,7 @@ export const SUB_A33: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -247,15 +247,15 @@ export const SUB_A33: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -331,20 +331,6 @@ export const SUB_A33: SubBabNaskah = {
       "countNum": 4,
       "countWord": "Empat",
       "suara": "Empat langkah. Satu, pilih alat ukur yang tepat. Dua, letakkan ujung benda di angka nol. Tiga, baca angka di ujung yang lain. Empat, tulis hasilnya dengan satuan."
-    },
-    {
-      "judul": "Ulangi Satuan",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Panjang diukur dengan mengulang satuan baku."
-    },
-    {
-      "judul": "Titik Nol Penggaris",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Mulai dari 0, bukan ujung penggaris yang rusak."
     }
   ],
   "games": [
@@ -354,7 +340,7 @@ export const SUB_A33: SubBabNaskah = {
       "title": "Geser ke Angka Nol",
       "bookReference": "hlm. 107 (Aktivitas 1, langkah 4 dan 5)",
       "objective": "Pakai Ulangi Satuan: Panjang diukur dengan mengulang satuan baku. Latihan: Menggeser benda sampai ujung kirinya tepat di angka 0 pada penggaris, lalu membaca panjangnya..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda nyata di atas penggaris mulai dari angka selain nol. Siswa menekan geser kiri atau kanan sampai ujung benda di angka 0, lalu memilih panjang benda dari tiga pilihan. Saat bermain, terapkan Iterate Unit: Panjang diukur dengan mengulang satuan baku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda nyata di atas penggaris mulai dari angka selain nol. Siswa menekan geser kiri atau kanan sampai ujung benda di angka 0, lalu memilih panjang benda dari tiga pilihan. Saat bermain, ingat Ulangi Satuan: Panjang diukur dengan mengulang satuan baku.",
       "voiceGuide": "Ulangi Satuan. Panjang diukur dengan mengulang satuan baku.",
       "emoji": "📏",
       "targetCount": 6
@@ -365,7 +351,7 @@ export const SUB_A33: SubBabNaskah = {
       "title": "Baca Panjang Benda",
       "bookReference": "hlm. 107–108 (Aktivitas 1: tabel panjang benda)",
       "objective": "Pakai Ulangi Satuan: Panjang diukur dengan mengulang satuan baku. Latihan: Membaca panjang benda yang sudah dimulai dari angka 0 pada penggaris..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda nyata di atas penggaris ditampilkan. Siswa memilih satu dari tiga panjang. Pengecoh salah satu sentimeter. Saat bermain, terapkan Iterate Unit: Panjang diukur dengan mengulang satuan baku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda nyata di atas penggaris ditampilkan. Siswa memilih satu dari tiga panjang. Pengecoh salah satu sentimeter. Saat bermain, ingat Ulangi Satuan: Panjang diukur dengan mengulang satuan baku.",
       "voiceGuide": "Ulangi Satuan. Panjang diukur dengan mengulang satuan baku.",
       "emoji": "🔍",
       "targetCount": 6
@@ -376,7 +362,7 @@ export const SUB_A33: SubBabNaskah = {
       "title": "Ketuk Ujung Benda",
       "bookReference": "hlm. 107 (angka di ujung benda yang lain)",
       "objective": "Pakai Ulangi Satuan: Panjang diukur dengan mengulang satuan baku. Latihan: Mengetuk angka pada garis penggaris tempat ujung benda yang lain berhenti..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda nyata di atas penggaris dimulai dari 0 dan panjangnya paling banyak 10 cm. Siswa mengetuk angka di ujung benda. Saat bermain, terapkan Iterate Unit: Panjang diukur dengan mengulang satuan baku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda nyata di atas penggaris dimulai dari 0 dan panjangnya paling banyak 10 cm. Siswa mengetuk angka di ujung benda. Saat bermain, ingat Ulangi Satuan: Panjang diukur dengan mengulang satuan baku.",
       "voiceGuide": "Ulangi Satuan. Panjang diukur dengan mengulang satuan baku.",
       "emoji": "👆",
       "targetCount": 6
@@ -387,7 +373,7 @@ export const SUB_A33: SubBabNaskah = {
       "title": "Pilih Alat Ukur",
       "bookReference": "hlm. 115–117 (penggaris atau meteran)",
       "objective": "Pakai Ulangi Satuan: Panjang diukur dengan mengulang satuan baku. Latihan: Memilih alat ukur yang tepat untuk benda sehari-hari..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua benda sehari-hari. Siswa memilih satu dari tiga alat ukur: penggaris, meteran, atau timbangan. Saat bermain, terapkan Iterate Unit: Panjang diukur dengan mengulang satuan baku.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua benda sehari-hari. Siswa memilih satu dari tiga alat ukur: penggaris, meteran, atau timbangan. Saat bermain, ingat Ulangi Satuan: Panjang diukur dengan mengulang satuan baku.",
       "voiceGuide": "Ulangi Satuan. Panjang diukur dengan mengulang satuan baku.",
       "emoji": "📐",
       "targetCount": 6
@@ -397,9 +383,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "match-object-length",
       "title": "Jodohkan Benda dan Panjang",
       "bookReference": "hlm. 111 (Ayo Berlatih 1: panjang benda dengan satuan baku)",
-      "objective": "Menjodohkan benda di atas penggaris dengan panjangnya.. Ingat Ulangi Satuan.",
+      "objective": "Menjodohkan benda di atas penggaris dengan panjangnya.. Ingat Ulangi Satuan. (Ulangi Satuan)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga panjang. Siswa mengetuk benda, lalu mengetuk panjang yang cocok. Gunakan Ulangi Satuan.",
-      "voiceGuide": "Ulangi Satuan. Ketuk benda, lalu ketuk panjangnya.",
+      "voiceGuide": "Ulangi Satuan. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 9
     },
@@ -408,9 +394,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "memory-object-length",
       "title": "Memori Benda dan Panjang",
       "bookReference": "hlm. 111 (Ayo Berlatih 1)",
-      "objective": "Mencocokkan benda di atas penggaris dengan panjangnya lewat permainan memori.. Ingat Ulangi Satuan.",
+      "objective": "Mencocokkan benda di atas penggaris dengan panjangnya lewat permainan memori.. Ingat Ulangi Satuan. (Ulangi Satuan)",
       "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Gunakan Ulangi Satuan.",
-      "voiceGuide": "Ulangi Satuan. Balik dua kartu, cari benda dan panjangnya.",
+      "voiceGuide": "Ulangi Satuan. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -419,9 +405,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "tap-object-length",
       "title": "Ketuk Benda dengan Panjang",
       "bookReference": "hlm. 111 (Ayo Berlatih 1)",
-      "objective": "Menemukan benda yang panjangnya sama dengan bilangan yang diminta.. Ingat Ulangi Satuan.",
+      "objective": "Menemukan benda yang panjangnya sama dengan bilangan yang diminta.. Ingat Ulangi Satuan. (Ulangi Satuan)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan dua pertanyaan. Siswa mengetuk benda yang panjangnya sama dengan bilangan yang disebut. Gunakan Ulangi Satuan.",
-      "voiceGuide": "Ulangi Satuan. Ketuk benda dengan panjang itu.",
+      "voiceGuide": "Ulangi Satuan. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 6
     },
@@ -430,9 +416,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "tap-all-tool",
       "title": "Ketuk Semua yang Tepat dengan Alat",
       "bookReference": "hlm. 113–114 dan 117 (centang benda yang tepat diukur)",
-      "objective": "Menemukan semua benda yang tepat diukur dengan penggaris atau meteran.. Ingat Ulangi Satuan.",
+      "objective": "Menemukan semua benda yang tepat diukur dengan penggaris atau meteran.. Ingat Ulangi Satuan. (Ulangi Satuan)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat benda dan satu perintah. Siswa mengetuk semua benda yang cocok dengan alat yang disebut, lalu menekan Periksa. Gunakan Ulangi Satuan.",
-      "voiceGuide": "Ulangi Satuan. Ketuk semua yang cocok, lalu periksa.",
+      "voiceGuide": "Ulangi Satuan. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -441,9 +427,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "board-length",
       "title": "Papan Panjang Benda",
       "bookReference": "hlm. 111 (Ayo Berlatih 1)",
-      "objective": "Menulis panjang benda pada papan puluhan dan satuan.. Ingat Ulangi Satuan.",
+      "objective": "Menulis panjang benda pada papan puluhan dan satuan.. Ingat Ulangi Satuan. (Ulangi Satuan)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca panjang benda pada penggaris, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa. Gunakan Ulangi Satuan.",
-      "voiceGuide": "Ulangi Satuan. Isi papan dengan panjangnya.",
+      "voiceGuide": "Ulangi Satuan. Mainkan dengan teliti.",
       "emoji": "🗂️",
       "targetCount": 6
     },
@@ -452,9 +438,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "order-length",
       "title": "Urutkan Benda menurut Panjang",
       "bookReference": "hlm. 118 (Ayo Berlatih 3: urutkan tinggi tanaman)",
-      "objective": "Mengurutkan tiga benda menurut panjangnya.. Ingat Ulangi Satuan.",
+      "objective": "Mengurutkan tiga benda menurut panjangnya.. Ingat Ulangi Satuan. (Ulangi Satuan)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga benda di atas penggaris bertanda huruf. Siswa mengetuk benda satu per satu dari yang terpendek atau terpanjang. Gunakan Ulangi Satuan.",
-      "voiceGuide": "Ulangi Satuan. Ketuk benda menurut panjangnya.",
+      "voiceGuide": "Ulangi Satuan. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 9
     },
@@ -464,7 +450,7 @@ export const SUB_A33: SubBabNaskah = {
       "title": "Geser Batang ke Nol",
       "bookReference": "hlm. 107 (Aktivitas 1, langkah 4 dan 5)",
       "objective": "Pakai Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak. Latihan: Menggeser batang polos sampai ujung kirinya tepat di angka 0, lalu membaca panjangnya..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Batang polos di atas penggaris mulai dari angka selain nol. Siswa menekan geser kiri atau kanan sampai ujung batang di angka 0, lalu memilih panjang batang. Saat bermain, terapkan Zero Point: Mulai dari 0, bukan ujung penggaris yang rusak.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Batang polos di atas penggaris mulai dari angka selain nol. Siswa menekan geser kiri atau kanan sampai ujung batang di angka 0, lalu memilih panjang batang. Saat bermain, ingat Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak.",
       "voiceGuide": "Titik Nol Penggaris. Mulai dari 0, bukan ujung penggaris yang rusak.",
       "diagramType": "bar-shift",
       "numberA": 3,
@@ -476,7 +462,7 @@ export const SUB_A33: SubBabNaskah = {
       "title": "Baca Panjang Batang",
       "bookReference": "hlm. 107–108 (membaca panjang pada penggaris)",
       "objective": "Pakai Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak. Latihan: Membaca panjang batang yang dimulai dari angka 0 pada penggaris..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa memilih satu dari tiga panjang. Pengecoh salah satu sentimeter. Saat bermain, terapkan Zero Point: Mulai dari 0, bukan ujung penggaris yang rusak.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa memilih satu dari tiga panjang. Pengecoh salah satu sentimeter. Saat bermain, ingat Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak.",
       "voiceGuide": "Titik Nol Penggaris. Mulai dari 0, bukan ujung penggaris yang rusak.",
       "diagramType": "bar-read",
       "numberA": 3,
@@ -488,7 +474,7 @@ export const SUB_A33: SubBabNaskah = {
       "title": "Ketuk Ujung Batang",
       "bookReference": "hlm. 107 (angka di ujung yang lain)",
       "objective": "Pakai Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak. Latihan: Mengetuk angka pada garis penggaris tempat ujung batang berhenti..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Batang polos dimulai dari 0 dan panjangnya paling banyak 10 cm. Siswa mengetuk angka di ujung batang. Saat bermain, terapkan Zero Point: Mulai dari 0, bukan ujung penggaris yang rusak.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Batang polos dimulai dari 0 dan panjangnya paling banyak 10 cm. Siswa mengetuk angka di ujung batang. Saat bermain, ingat Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak.",
       "voiceGuide": "Titik Nol Penggaris. Mulai dari 0, bukan ujung penggaris yang rusak.",
       "diagramType": "bar-tap",
       "numberA": 3,
@@ -500,7 +486,7 @@ export const SUB_A33: SubBabNaskah = {
       "title": "Jodohkan Batang dan Panjang",
       "bookReference": "hlm. 111 (Ayo Berlatih 1)",
       "objective": "Pakai Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak. Latihan: Menjodohkan batang pada penggaris dengan panjangnya..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga batang dan tiga panjang. Siswa mengetuk batang, lalu mengetuk panjang yang cocok. Saat bermain, terapkan Zero Point: Mulai dari 0, bukan ujung penggaris yang rusak.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga batang dan tiga panjang. Siswa mengetuk batang, lalu mengetuk panjang yang cocok. Saat bermain, ingat Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak.",
       "voiceGuide": "Titik Nol Penggaris. Mulai dari 0, bukan ujung penggaris yang rusak.",
       "diagramType": "bar-match",
       "numberA": 3,
@@ -511,9 +497,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "memory-bar-length",
       "title": "Memori Batang dan Panjang",
       "bookReference": "hlm. 111 (Ayo Berlatih 1)",
-      "objective": "Mencocokkan batang pada penggaris dengan panjangnya lewat permainan memori.. Ingat Titik Nol Penggaris.",
+      "objective": "Mencocokkan batang pada penggaris dengan panjangnya lewat permainan memori.. Ingat Titik Nol Penggaris. (Titik Nol Penggaris)",
       "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Gunakan Titik Nol Penggaris.",
-      "voiceGuide": "Titik Nol Penggaris. Balik dua kartu, cari batang dan panjangnya.",
+      "voiceGuide": "Titik Nol Penggaris. Mainkan dengan teliti.",
       "diagramType": "bar-memory",
       "numberA": 3,
       "numberB": 4
@@ -523,9 +509,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "sort-length-tool",
       "title": "Pilah Panjang: Penggaris atau Meteran",
       "bookReference": "hlm. 115–117 (penggaris atau meteran)",
-      "objective": "Memilah ukuran panjang menjadi yang cocok diukur dengan penggaris dan yang cocok dengan meteran.. Ingat Titik Nol Penggaris.",
+      "objective": "Memilah ukuran panjang menjadi yang cocok diukur dengan penggaris dan yang cocok dengan meteran.. Ingat Titik Nol Penggaris. (Titik Nol Penggaris)",
       "mechanicDescription": "Tiga ronde, tiap ronde enam ukuran (cm atau m) dan dua kotak. Panjang sampai 30 cm cocok dengan penggaris, selebihnya meteran. Siswa menyeret atau mengetuk ukuran ke kotak yang tepat. Gunakan Titik Nol Penggaris.",
-      "voiceGuide": "Titik Nol Penggaris. Pilah ukuran ke kotak yang tepat.",
+      "voiceGuide": "Titik Nol Penggaris. Mainkan dengan teliti.",
       "diagramType": "length-sort",
       "numberA": 3,
       "numberB": 6
@@ -535,9 +521,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "tap-all-bar-compare",
       "title": "Ketuk Semua Batang Lebih atau Kurang",
       "bookReference": "hlm. 118 (Ayo Berlatih 3: paling pendek dan paling tinggi)",
-      "objective": "Menemukan semua batang yang lebih atau kurang panjang dari bilangan acuan.. Ingat Titik Nol Penggaris.",
+      "objective": "Menemukan semua batang yang lebih atau kurang panjang dari bilangan acuan.. Ingat Titik Nol Penggaris. (Titik Nol Penggaris)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat batang dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa. Gunakan Titik Nol Penggaris.",
-      "voiceGuide": "Titik Nol Penggaris. Ketuk semua yang cocok, lalu periksa.",
+      "voiceGuide": "Titik Nol Penggaris. Mainkan dengan teliti.",
       "diagramType": "bar-select",
       "numberA": 3,
       "numberB": 4
@@ -547,9 +533,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "order-measure-steps",
       "title": "Urutkan Langkah Mengukur",
       "bookReference": "hlm. 107 (Aktivitas 1: langkah mengukur)",
-      "objective": "Mengurutkan langkah mengukur panjang benda dengan penggaris atau meteran.. Ingat Titik Nol Penggaris.",
+      "objective": "Mengurutkan langkah mengukur panjang benda dengan penggaris atau meteran.. Ingat Titik Nol Penggaris. (Titik Nol Penggaris)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah. Gunakan Titik Nol Penggaris.",
-      "voiceGuide": "Titik Nol Penggaris. Ketuk langkah menurut urutannya.",
+      "voiceGuide": "Titik Nol Penggaris. Mainkan dengan teliti.",
       "diagramType": "steps-order",
       "numberA": 3,
       "numberB": 4
@@ -559,9 +545,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "board-bar-length",
       "title": "Papan Panjang Batang",
       "bookReference": "hlm. 111 (Ayo Berlatih 1)",
-      "objective": "Menulis panjang batang pada papan puluhan dan satuan.. Ingat Titik Nol Penggaris.",
+      "objective": "Menulis panjang batang pada papan puluhan dan satuan.. Ingat Titik Nol Penggaris. (Titik Nol Penggaris)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca panjang batang pada penggaris, lalu mengatur angka puluhan dan satuan pada papan dan menekan Periksa. Gunakan Titik Nol Penggaris.",
-      "voiceGuide": "Titik Nol Penggaris. Isi papan dengan panjangnya.",
+      "voiceGuide": "Titik Nol Penggaris. Mainkan dengan teliti.",
       "diagramType": "bar-board",
       "numberA": 3,
       "numberB": 2
@@ -571,9 +557,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "bar-difference",
       "title": "Selisih Dua Batang",
       "bookReference": "hlm. 118 (Ayo Berlatih 3: urutkan dan bandingkan)",
-      "objective": "Menghitung selisih panjang dua batang yang sama-sama dimulai dari angka 0.. Ingat Titik Nol Penggaris.",
+      "objective": "Menghitung selisih panjang dua batang yang sama-sama dimulai dari angka 0.. Ingat Titik Nol Penggaris. (Titik Nol Penggaris)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua batang pada satu penggaris ditampilkan. Siswa memilih satu dari tiga selisih panjang. Gunakan Titik Nol Penggaris.",
-      "voiceGuide": "Titik Nol Penggaris. Pilih selisih panjang kedua batang.",
+      "voiceGuide": "Titik Nol Penggaris. Mainkan dengan teliti.",
       "diagramType": "bar-compare",
       "numberA": 3,
       "numberB": 2
@@ -584,7 +570,7 @@ export const SUB_A33: SubBabNaskah = {
       "title": "Pilih Satuan Baku",
       "bookReference": "hlm. 108 dan 115 (satuan baku sentimeter dan meter)",
       "objective": "Pakai Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat. Latihan: Memilih satuan baku yang tepat untuk mengukur panjang suatu benda..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca benda yang diukur, lalu memilih satu dari tiga satuan. Saat bermain, terapkan Estimate then Measure: Perkirakan dulu, baru ukur tepat.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca benda yang diukur, lalu memilih satu dari tiga satuan. Saat bermain, ingat Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat.",
       "voiceGuide": "Perkiraan Lalu Ukur. Perkirakan dulu, baru ukur tepat.",
       "symbolLarge": "cm m",
       "wordLarge": "SATUAN",
@@ -596,7 +582,7 @@ export const SUB_A33: SubBabNaskah = {
       "title": "Alat Ukur yang Tepat",
       "bookReference": "hlm. 109–110 dan 121–122 (nama alat ukur dan satuan)",
       "objective": "Pakai Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat. Latihan: Memilih alat ukur yang tepat untuk mengukur suatu bagian atau benda..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca benda yang diukur, lalu memilih satu dari tiga alat ukur. Saat bermain, terapkan Estimate then Measure: Perkirakan dulu, baru ukur tepat.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca benda yang diukur, lalu memilih satu dari tiga alat ukur. Saat bermain, ingat Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat.",
       "voiceGuide": "Perkiraan Lalu Ukur. Perkirakan dulu, baru ukur tepat.",
       "symbolLarge": "📏",
       "wordLarge": "ALAT UKUR",
@@ -608,7 +594,7 @@ export const SUB_A33: SubBabNaskah = {
       "title": "Lengkapi Kalimat Pengukuran",
       "bookReference": "hlm. 107–110 (cara mengukur dan satuan baku)",
       "objective": "Pakai Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat. Latihan: Melengkapi kalimat tentang cara mengukur dan alat ukur panjang..",
-      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya satuan baku pada penggaris adalah ... Siswa memilih satu dari tiga kata. Saat bermain, terapkan Estimate then Measure: Perkirakan dulu, baru ukur tepat.",
+      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya satuan baku pada penggaris adalah ... Siswa memilih satu dari tiga kata. Saat bermain, ingat Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat.",
       "voiceGuide": "Perkiraan Lalu Ukur. Perkirakan dulu, baru ukur tepat.",
       "symbolLarge": "…",
       "wordLarge": "LENGKAPI",
@@ -620,7 +606,7 @@ export const SUB_A33: SubBabNaskah = {
       "title": "Jodohkan Benda dan Alat Ukur",
       "bookReference": "hlm. 109–111 dan 121–122 (bagian yang diukur dan nama alat ukur)",
       "objective": "Pakai Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat. Latihan: Menjodohkan benda atau bagian yang diukur dengan alat ukurnya..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga alat ukur. Siswa mengetuk benda, lalu mengetuk alat ukur yang cocok. Saat bermain, terapkan Estimate then Measure: Perkirakan dulu, baru ukur tepat.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga alat ukur. Siswa mengetuk benda, lalu mengetuk alat ukur yang cocok. Saat bermain, ingat Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat.",
       "voiceGuide": "Perkiraan Lalu Ukur. Perkirakan dulu, baru ukur tepat.",
       "symbolLarge": "= ?",
       "wordLarge": "JODOHKAN",
@@ -631,9 +617,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "memory-size",
       "title": "Memori Benda dan Ukuran Wajar",
       "bookReference": "hlm. 111–122 (memperkirakan panjang)",
-      "objective": "Mencocokkan benda dengan ukuran panjang yang wajar lewat permainan memori.. Ingat Perkiraan Lalu Ukur.",
+      "objective": "Mencocokkan benda dengan ukuran panjang yang wajar lewat permainan memori.. Ingat Perkiraan Lalu Ukur. (Perkiraan Lalu Ukur)",
       "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): benda dan ukurannya. Siswa membalik dua kartu dan mencari pasangannya. Gunakan Perkiraan Lalu Ukur.",
-      "voiceGuide": "Perkiraan Lalu Ukur. Balik dua kartu, cari benda dan ukurannya.",
+      "voiceGuide": "Perkiraan Lalu Ukur. Mainkan dengan teliti.",
       "symbolLarge": "cm",
       "wordLarge": "MEMORI",
       "mathNotation": "benda • ukuran"
@@ -643,9 +629,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "true-false-length",
       "title": "Benar atau Salah: Pengukuran Panjang",
       "bookReference": "hlm. 105–119 (penggaris, meteran, dan satuan baku)",
-      "objective": "Menilai pernyataan tentang pengukuran panjang dengan penggaris dan meteran.. Ingat Perkiraan Lalu Ukur.",
+      "objective": "Menilai pernyataan tentang pengukuran panjang dengan penggaris dan meteran.. Ingat Perkiraan Lalu Ukur. (Perkiraan Lalu Ukur)",
       "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan. Gunakan Perkiraan Lalu Ukur.",
-      "voiceGuide": "Perkiraan Lalu Ukur. Baca pernyataan, lalu pilih benar atau salah.",
+      "voiceGuide": "Perkiraan Lalu Ukur. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "periksa dengan alasan"
@@ -655,9 +641,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "detective-length",
       "title": "Detektif Pengukuran",
       "bookReference": "hlm. 107–118 (membaca dan menghitung panjang)",
-      "objective": "Menemukan bilangan panjang dari dua petunjuk.. Ingat Perkiraan Lalu Ukur.",
+      "objective": "Menemukan bilangan panjang dari dua petunjuk.. Ingat Perkiraan Lalu Ukur. (Perkiraan Lalu Ukur)",
       "mechanicDescription": "Empat soal. Siswa membaca petunjuk tentang angka pada penggaris dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok. Gunakan Perkiraan Lalu Ukur.",
-      "voiceGuide": "Perkiraan Lalu Ukur. Baca petunjuk, lalu pilih bilangannya.",
+      "voiceGuide": "Perkiraan Lalu Ukur. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "dua petunjuk, satu jawaban"
@@ -667,9 +653,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "concept-map-length",
       "title": "Peta Konsep Pengukuran Panjang",
       "bookReference": "hlm. 104 (peta konsep Bab 3)",
-      "objective": "Melengkapi peta konsep alat ukur panjang dan cara mengukur.. Ingat Perkiraan Lalu Ukur.",
+      "objective": "Melengkapi peta konsep alat ukur panjang dan cara mengukur.. Ingat Perkiraan Lalu Ukur. (Perkiraan Lalu Ukur)",
       "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan Perkiraan Lalu Ukur.",
-      "voiceGuide": "Perkiraan Lalu Ukur. Pilih kartu yang tepat untuk kotak yang menyala.",
+      "voiceGuide": "Perkiraan Lalu Ukur. Mainkan dengan teliti.",
       "symbolLarge": "⇄",
       "wordLarge": "PETA KONSEP",
       "mathNotation": "alat • satuan • cara"
@@ -679,9 +665,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "story-length",
       "title": "Soal Cerita Pengukuran",
       "bookReference": "hlm. 118 (Ayo Berlatih 3: tinggi tanaman dan perbandingan panjang)",
-      "objective": "Menyelesaikan soal cerita tentang selisih dan jumlah panjang dalam sentimeter.. Ingat Perkiraan Lalu Ukur.",
+      "objective": "Menyelesaikan soal cerita tentang selisih dan jumlah panjang dalam sentimeter.. Ingat Perkiraan Lalu Ukur. (Perkiraan Lalu Ukur)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga hasil dalam sentimeter. Gunakan Perkiraan Lalu Ukur.",
-      "voiceGuide": "Perkiraan Lalu Ukur. Baca cerita, lalu pilih hasilnya.",
+      "voiceGuide": "Perkiraan Lalu Ukur. Mainkan dengan teliti.",
       "symbolLarge": "cm",
       "wordLarge": "CERITA",
       "mathNotation": "selisih • jumlah"
@@ -691,9 +677,9 @@ export const SUB_A33: SubBabNaskah = {
       "gameType": "sentence-length",
       "title": "Susun Kata Pengukuran",
       "bookReference": "hlm. 105–119 (pengertian pengukuran panjang)",
-      "objective": "Menyusun kalimat tentang pengukuran panjang dari kartu kata.. Ingat Perkiraan Lalu Ukur.",
+      "objective": "Menyusun kalimat tentang pengukuran panjang dari kartu kata.. Ingat Perkiraan Lalu Ukur. (Perkiraan Lalu Ukur)",
       "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh. Gunakan Perkiraan Lalu Ukur.",
-      "voiceGuide": "Perkiraan Lalu Ukur. Susun kartu kata menjadi kalimat.",
+      "voiceGuide": "Perkiraan Lalu Ukur. Mainkan dengan teliti.",
       "symbolLarge": "…",
       "wordLarge": "SUSUN KATA",
       "mathNotation": "kalimat pengukuran"
@@ -705,12 +691,6 @@ export const SUB_A33: SubBabNaskah = {
       "nama": "Satuan baku panjang",
       "isi": "sentimeter (cm) dan meter (m)",
       "suara": "Satuan baku panjang adalah sentimeter dan meter. Satuan baku sama untuk semua orang."
-    },
-    {
-      "ikon": "0️⃣",
-      "nama": "Mulai dari nol",
-      "isi": "ujung benda di angka 0",
-      "suara": "Letakkan ujung benda tepat di angka nol pada penggaris atau meteran."
     },
     {
       "ikon": "🌍",
@@ -753,11 +733,11 @@ export const SUB_A33: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Ulangi Satuan pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Ulangi Satuan pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Ulangi Satuan membantumu memahami soal?",
-    "Kapan kamu memakai Titik Nol Penggaris?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Ulangi Satuan membantumu?",
+    "Kapan memakai Titik Nol Penggaris?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -801,12 +781,12 @@ export const SUB_B33: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Hubungan Antarsatuan Baku Panjang)",
   "fullTitle": "Sub-Bab B: Hubungan Antarsatuan Baku Panjang",
-  "targetDescription": "Siswa memahami bahwa 100 sentimeter sama dengan 1 meter, mengubah meter ke sentimeter dengan mengalikan 100 dan sentimeter ke meter dengan membagi 100, menulis ukuran dengan meter dan sentimeter bersama, serta menjumlahkan dan mengurangkan ukuran panjang pada soal cerita. Siswa memakai cara Konversi Satuan Panjang, Kuantitas Sama Satuan Beda, Tabel Konversi.",
+  "targetDescription": "Siswa memahami bahwa 100 sentimeter sama dengan 1 meter, mengubah meter ke sentimeter dengan mengalikan 100 dan sentimeter ke meter dengan membagi 100, menulis ukuran dengan meter dan sentimeter bersama, serta menjumlahkan dan mengurangkan ukuran panjang pada soal cerita. Siswa memakai cara Konversi Satuan Panjang, Kuantitas Sama Satuan Beda, Tabel Konversi. Siswa memakai cara Konversi Satuan Panjang, Kuantitas Sama Satuan Beda, Tabel Konversi.",
   "secondaryBg": "#FCE7F3",
   "secondaryBorder": "#DB2777",
   "secondaryText": "#831843",
   "silabus": {
-    "teksSuara": "Kita belajar hubungan antarsatuan baku panjang. Meteran memakai satuan meter dan sentimeter. Seratus sentimeter sama dengan satu meter. Kita belajar mengubah meter ke sentimeter dan sebaliknya, menulis ukuran dengan meter dan sentimeter bersama, serta menjumlahkan dan mengurangkan ukuran panjang. Kita memakai cara dari luar buku: Konversi Satuan Panjang (Unit Conversion); Kuantitas Sama Satuan Beda (Same Quantity Different Unit); Tabel Konversi (Conversion Table). 1 m = 100 cm; 1 km = 1000 m. 120 cm = 1 m 20 cm. Pakai tabel untuk pindah satuan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar hubungan antarsatuan baku panjang. Meteran memakai satuan meter dan sentimeter. Seratus sentimeter sama dengan satu meter. Kita belajar mengubah meter ke sentimeter dan sebaliknya, menulis ukuran dengan meter dan sentimeter bersama, serta menjumlahkan dan mengurangkan ukuran panjang. Kita memakai cara: Konversi Satuan Panjang, Kuantitas Sama Satuan Beda, Tabel Konversi. 1 m = 100 cm; 1 km = 1000 m. 120 cm = 1 m 20 cm. Pakai tabel untuk pindah satuan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menyelesaikan masalah yang berkaitan dengan panjang dan berat benda dengan satuan baku. Pada sub-bab ini siswa menghubungkan sentimeter dan meter serta menghitung ukuran panjang gabungan.",
     "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3 Sub-Bab B)."
   },
@@ -820,10 +800,10 @@ export const SUB_B33: SubBabNaskah = {
           "id": "K3B3B-V1-1",
           "judul": "Memakai meteran",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Pak Guru menjelaskan cara menggunakan meteran. Mari kita pahami bersama.",
-            "Cara menggunakan meteran sama dengan cara menggunakan penggaris. Mari kita pahami bersama.",
-            "Mulailah dari angka 0. Mari kita pahami bersama.",
-            "Ingat cara Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m."
+            "Bayangkan kamu sedang mempelajari Hubungan Antarsatuan Baku Panjang. Pak Guru menjelaskan cara menggunakan meteran.",
+            "Cara menggunakan meteran sama dengan cara menggunakan penggaris.",
+            "Mulailah dari angka 0.",
+            "Ingat cara Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m. Ingat cara Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m."
           ],
           "papan": [
             "Cara memakai meteran",
@@ -836,10 +816,10 @@ export const SUB_B33: SubBabNaskah = {
           "id": "K3B3B-V1-2",
           "judul": "Seratus sentimeter",
           "ketukan": [
-            "Perhatikan meteran dari angka 0 sampai angka 100. Mari kita pahami bersama.",
-            "Pada gambar, 100 sentimeter sama dengan 1 meter. Mari kita pahami bersama.",
-            "Ditulis 100 cm = 1 m atau 1 m = 100 cm. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Unit Conversion — 1 m = 100 cm; 1 km = 1000 m."
+            "Perhatikan meteran dari angka 0 sampai angka 100.",
+            "Pada gambar, 100 sentimeter sama dengan 1 meter.",
+            "Ditulis 100 cm = 1 m atau 1 m = 100 cm.",
+            "Di sini kita memakai ide Unit Conversion — 1 m = 100 cm; 1 km = 1000 m. Di sini kita memakai Unit Conversion. 1 m = 100 cm; 1 km = 1000 m."
           ],
           "papan": [
             "Meteran 0 sampai 100",
@@ -852,9 +832,9 @@ export const SUB_B33: SubBabNaskah = {
           "id": "K3B3B-V1-3",
           "judul": "Panjang pintu",
           "ketukan": [
-            "Bapak Meutia mengukur pintu dengan meteran. Mari kita pahami bersama.",
-            "Ujung pintu menunjukkan bilangan 200 sentimeter. Mari kita pahami bersama.",
-            "Seratus sentimeter sama dengan satu meter. Mari kita pahami bersama.",
+            "Bapak Meutia mengukur pintu dengan meteran.",
+            "Ujung pintu menunjukkan bilangan 200 sentimeter.",
+            "Seratus sentimeter sama dengan satu meter.",
             "METODE LUAR · Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m."
           ],
           "papan": [
@@ -875,10 +855,10 @@ export const SUB_B33: SubBabNaskah = {
           "id": "K3B3B-V2-1",
           "judul": "Dari meter ke sentimeter",
           "ketukan": [
-            "Satu meter sama dengan seratus sentimeter. Mari kita pahami bersama.",
-            "Untuk mengubah meter ke sentimeter, kalikan dengan 100. Mari kita pahami bersama.",
-            "Misalnya 3 m = 3 × 100 cm = 300 cm. Mari kita pahami bersama.",
-            "Ingat cara Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm."
+            "Satu meter sama dengan seratus sentimeter.",
+            "Untuk mengubah meter ke sentimeter, kalikan dengan 100.",
+            "Misalnya 3 m = 3 × 100 cm = 300 cm.",
+            "Ingat cara Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm. Ingat cara Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm."
           ],
           "papan": [
             "1 m = 100 cm",
@@ -891,10 +871,10 @@ export const SUB_B33: SubBabNaskah = {
           "id": "K3B3B-V2-2",
           "judul": "Dari sentimeter ke meter",
           "ketukan": [
-            "Untuk mengubah sentimeter ke meter, bagilah dengan 100. Mari kita pahami bersama.",
-            "Misalnya 700 cm dibagi 100 sama dengan 7 m. Mari kita pahami bersama.",
-            "Dan 900 cm sama dengan 9 m. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Same Quantity Different Unit — 120 cm = 1 m 20 cm."
+            "Untuk mengubah sentimeter ke meter, bagilah dengan 100.",
+            "Misalnya 700 cm dibagi 100 sama dengan 7 m.",
+            "Dan 900 cm sama dengan 9 m.",
+            "Di sini kita memakai ide Same Quantity Different Unit — 120 cm = 1 m 20 cm. Di sini kita memakai Same Quantity Different Unit. 120 cm = 1 m 20 cm."
           ],
           "papan": [
             "Cm ke meter: bagi 100",
@@ -907,9 +887,9 @@ export const SUB_B33: SubBabNaskah = {
           "id": "K3B3B-V2-3",
           "judul": "Meter dan sentimeter",
           "ketukan": [
-            "Tinggi badan Azizah adalah 1 m 17 cm. Mari kita pahami bersama.",
-            "1 m sama dengan 100 cm, jadi 100 + 17 = 117 cm. Mari kita pahami bersama.",
-            "Tinggi badan Eri 115 cm, jadi ditulis 1 m 15 cm. Mari kita pahami bersama.",
+            "Tinggi badan Azizah adalah 1 m 17 cm.",
+            "1 m sama dengan 100 cm, jadi 100 + 17 = 117 cm.",
+            "Tinggi badan Eri 115 cm, jadi ditulis 1 m 15 cm.",
             "METODE LUAR · Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm."
           ],
           "papan": [
@@ -930,10 +910,10 @@ export const SUB_B33: SubBabNaskah = {
           "id": "K3B3B-V3-1",
           "judul": "Menyambung pita",
           "ketukan": [
-            "Meutia menyambung dua utas pita. Mari kita pahami bersama.",
-            "Pita pertama panjangnya 4 m 37 cm. Mari kita pahami bersama.",
-            "Pita kedua panjangnya 7 m 43 cm. Mari kita pahami bersama.",
-            "Ingat cara Tabel Konversi: Pakai tabel untuk pindah satuan."
+            "Meutia menyambung dua utas pita.",
+            "Pita pertama panjangnya 4 m 37 cm.",
+            "Pita kedua panjangnya 7 m 43 cm.",
+            "Ingat cara Tabel Konversi: Pakai tabel untuk pindah satuan. Ingat cara Tabel Konversi: Pakai tabel untuk pindah satuan."
           ],
           "papan": [
             "Meutia menyambung pita",
@@ -946,10 +926,10 @@ export const SUB_B33: SubBabNaskah = {
           "id": "K3B3B-V3-2",
           "judul": "Jumlahkan",
           "ketukan": [
-            "Jumlahkan meter dengan meter: 4 + 7 = 11 m. Mari kita pahami bersama.",
-            "Jumlahkan sentimeter dengan sentimeter: 37 + 43 = 80 cm. Mari kita pahami bersama.",
-            "Panjang pita setelah disambung adalah 11 m 80 cm. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Conversion Table — Pakai tabel untuk pindah satuan."
+            "Jumlahkan meter dengan meter: 4 + 7 = 11 m.",
+            "Jumlahkan sentimeter dengan sentimeter: 37 + 43 = 80 cm.",
+            "Panjang pita setelah disambung adalah 11 m 80 cm.",
+            "Di sini kita memakai ide Conversion Table — Pakai tabel untuk pindah satuan. Di sini kita memakai Conversion Table. Pakai tabel untuk pindah satuan."
           ],
           "papan": [
             "4 m + 7 m = 11 m",
@@ -962,9 +942,9 @@ export const SUB_B33: SubBabNaskah = {
           "id": "K3B3B-V3-3",
           "judul": "Kain katun",
           "ketukan": [
-            "Penjaga toko punya kain katun 75 m 80 cm. Mari kita pahami bersama.",
-            "Ia menjual 38 m 45 cm kain itu. Mari kita pahami bersama.",
-            "Kurangkan: 75 m 80 cm dikurangi 38 m 45 cm. Mari kita pahami bersama.",
+            "Penjaga toko punya kain katun 75 m 80 cm.",
+            "Ia menjual 38 m 45 cm kain itu.",
+            "Kurangkan: 75 m 80 cm dikurangi 38 m 45 cm.",
             "METODE LUAR · Tabel Konversi: Pakai tabel untuk pindah satuan."
           ],
           "papan": [
@@ -981,7 +961,7 @@ export const SUB_B33: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Hubungan Antarsatuan Baku Panjang. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Hubungan Antarsatuan Baku Panjang?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -1013,7 +993,7 @@ export const SUB_B33: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -1021,7 +1001,7 @@ export const SUB_B33: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -1029,15 +1009,15 @@ export const SUB_B33: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -1113,20 +1093,6 @@ export const SUB_B33: SubBabNaskah = {
       "countNum": 4,
       "countWord": "Empat",
       "suara": "Empat langkah. Satu, ingat satu meter sama dengan seratus sentimeter. Dua, meter ke sentimeter kalikan seratus. Tiga, sentimeter ke meter bagi seratus. Empat, periksa dengan cara sebaliknya."
-    },
-    {
-      "judul": "Konversi Satuan Panjang",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "1 m = 100 cm; 1 km = 1000 m."
-    },
-    {
-      "judul": "Kuantitas Sama Satuan Beda",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "120 cm = 1 m 20 cm."
     }
   ],
   "games": [
@@ -1136,7 +1102,7 @@ export const SUB_B33: SubBabNaskah = {
       "title": "Rakit Panjang Pita",
       "bookReference": "hlm. 120–121 (100 cm = 1 m)",
       "objective": "Pakai Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m. Latihan: Merakit pita dari potongan 1 meter, 10 sentimeter, dan 1 sentimeter sampai sepanjang yang diminta..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca panjang pita dalam sentimeter, lalu merakitnya dengan tombol tambah dan kurang. Sepuluh potongan kecil otomatis ditukar potongan yang lebih besar. Saat bermain, terapkan Unit Conversion: 1 m = 100 cm; 1 km = 1000 m.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca panjang pita dalam sentimeter, lalu merakitnya dengan tombol tambah dan kurang. Sepuluh potongan kecil otomatis ditukar potongan yang lebih besar. Saat bermain, ingat Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m.",
       "voiceGuide": "Konversi Satuan Panjang. 1 m = 100 cm; 1 km = 1000 m.",
       "emoji": "🎀",
       "targetCount": 6
@@ -1147,7 +1113,7 @@ export const SUB_B33: SubBabNaskah = {
       "title": "Hitung Panjang dalam Sentimeter",
       "bookReference": "hlm. 120–121 (meter dan sentimeter)",
       "objective": "Pakai Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m. Latihan: Menghitung panjang pita dalam sentimeter dari potongan meter, sepuluh sentimeter, dan sentimeter..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar pita ditampilkan. Siswa memilih satu dari tiga panjang. Pengecoh lebih atau kurang sepuluh. Saat bermain, terapkan Unit Conversion: 1 m = 100 cm; 1 km = 1000 m.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar pita ditampilkan. Siswa memilih satu dari tiga panjang. Pengecoh lebih atau kurang sepuluh. Saat bermain, ingat Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m.",
       "voiceGuide": "Konversi Satuan Panjang. 1 m = 100 cm; 1 km = 1000 m.",
       "emoji": "🔢",
       "targetCount": 6
@@ -1158,7 +1124,7 @@ export const SUB_B33: SubBabNaskah = {
       "title": "Ubah Meter ke Sentimeter",
       "bookReference": "hlm. 121 (3 m = ... cm)",
       "objective": "Pakai Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m. Latihan: Mengubah ukuran meter ke sentimeter dengan gambar pita..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar pita berpotongan satu meter ditampilkan. Siswa memilih satu dari tiga hasil. Pengecoh lupa mengalikan 100. Saat bermain, terapkan Unit Conversion: 1 m = 100 cm; 1 km = 1000 m.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar pita berpotongan satu meter ditampilkan. Siswa memilih satu dari tiga hasil. Pengecoh lupa mengalikan 100. Saat bermain, ingat Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m.",
       "voiceGuide": "Konversi Satuan Panjang. 1 m = 100 cm; 1 km = 1000 m.",
       "emoji": "✖️",
       "targetCount": 6
@@ -1169,7 +1135,7 @@ export const SUB_B33: SubBabNaskah = {
       "title": "Ubah Sentimeter ke Meter",
       "bookReference": "hlm. 121 (900 cm = ... m)",
       "objective": "Pakai Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m. Latihan: Mengubah ukuran sentimeter ke meter dengan gambar pita..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar pita ditampilkan. Siswa memilih satu dari tiga hasil. Pengecoh salah membagi. Saat bermain, terapkan Unit Conversion: 1 m = 100 cm; 1 km = 1000 m.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar pita ditampilkan. Siswa memilih satu dari tiga hasil. Pengecoh salah membagi. Saat bermain, ingat Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m.",
       "voiceGuide": "Konversi Satuan Panjang. 1 m = 100 cm; 1 km = 1000 m.",
       "emoji": "➗",
       "targetCount": 6
@@ -1179,9 +1145,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "match-ribbon-length",
       "title": "Jodohkan Pita dan Panjang",
       "bookReference": "hlm. 120–122 (ukuran panjang)",
-      "objective": "Menjodohkan gambar pita dengan panjangnya dalam sentimeter.. Ingat Konversi Satuan Panjang.",
+      "objective": "Menjodohkan gambar pita dengan panjangnya dalam sentimeter.. Ingat Konversi Satuan Panjang. (Konversi Satuan Panjang)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga pita dan tiga panjang. Siswa mengetuk pita, lalu mengetuk panjang yang cocok. Gunakan Konversi Satuan Panjang.",
-      "voiceGuide": "Konversi Satuan Panjang. Ketuk pita, lalu ketuk panjangnya.",
+      "voiceGuide": "Konversi Satuan Panjang. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 9
     },
@@ -1190,9 +1156,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "memory-ribbon-length",
       "title": "Memori Pita dan Panjang",
       "bookReference": "hlm. 120–122 (ukuran panjang)",
-      "objective": "Mencocokkan gambar pita dengan panjangnya lewat permainan memori.. Ingat Konversi Satuan Panjang.",
+      "objective": "Mencocokkan gambar pita dengan panjangnya lewat permainan memori.. Ingat Konversi Satuan Panjang. (Konversi Satuan Panjang)",
       "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Gunakan Konversi Satuan Panjang.",
-      "voiceGuide": "Konversi Satuan Panjang. Balik dua kartu, cari pita dan panjangnya.",
+      "voiceGuide": "Konversi Satuan Panjang. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1201,9 +1167,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "tap-ribbon-length",
       "title": "Ketuk Pita dengan Panjang",
       "bookReference": "hlm. 122 (tinggi badan dalam meter dan sentimeter)",
-      "objective": "Menemukan pita yang panjangnya sama dengan ukuran yang diminta, ditulis dengan meter dan sentimeter.. Ingat Konversi Satuan Panjang.",
+      "objective": "Menemukan pita yang panjangnya sama dengan ukuran yang diminta, ditulis dengan meter dan sentimeter.. Ingat Konversi Satuan Panjang. (Konversi Satuan Panjang)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga pita dan dua pertanyaan. Siswa mengetuk pita yang panjangnya sama dengan ukuran yang disebut. Gunakan Konversi Satuan Panjang.",
-      "voiceGuide": "Konversi Satuan Panjang. Ketuk pita dengan panjang itu.",
+      "voiceGuide": "Konversi Satuan Panjang. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 6
     },
@@ -1212,9 +1178,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "tap-all-equal",
       "title": "Ketuk Semua yang Sama Panjang",
       "bookReference": "hlm. 120–122 (satu ukuran ditulis dengan beberapa cara)",
-      "objective": "Menemukan semua ukuran yang sama panjang dengan ukuran acuan, walau ditulis berbeda.. Ingat Konversi Satuan Panjang.",
+      "objective": "Menemukan semua ukuran yang sama panjang dengan ukuran acuan, walau ditulis berbeda.. Ingat Konversi Satuan Panjang. (Konversi Satuan Panjang)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat pita dan satu perintah. Siswa mengetuk semua yang sama panjang dengan acuan, lalu menekan Periksa. Gunakan Konversi Satuan Panjang.",
-      "voiceGuide": "Konversi Satuan Panjang. Ketuk semua yang sama, lalu periksa.",
+      "voiceGuide": "Konversi Satuan Panjang. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -1223,9 +1189,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "board-cm",
       "title": "Papan Sentimeter",
       "bookReference": "hlm. 122 (tabel tinggi badan dalam sentimeter)",
-      "objective": "Mengubah meter dan sentimeter menjadi sentimeter pada papan ratusan, puluhan, dan satuan.. Ingat Konversi Satuan Panjang.",
+      "objective": "Mengubah meter dan sentimeter menjadi sentimeter pada papan ratusan, puluhan, dan satuan.. Ingat Konversi Satuan Panjang. (Konversi Satuan Panjang)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar pita ditampilkan. Siswa mengatur angka ratusan, puluhan, dan satuan pada papan dan menekan Periksa. Gunakan Konversi Satuan Panjang.",
-      "voiceGuide": "Konversi Satuan Panjang. Isi papan dengan sentimeternya.",
+      "voiceGuide": "Konversi Satuan Panjang. Mainkan dengan teliti.",
       "emoji": "🗂️",
       "targetCount": 6
     },
@@ -1234,9 +1200,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "order-ribbon",
       "title": "Urutkan Pita menurut Panjang",
       "bookReference": "hlm. 122 (urutkan tinggi badan)",
-      "objective": "Mengurutkan tiga pita menurut panjangnya.. Ingat Konversi Satuan Panjang.",
+      "objective": "Mengurutkan tiga pita menurut panjangnya.. Ingat Konversi Satuan Panjang. (Konversi Satuan Panjang)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga pita bertanda huruf. Siswa mengetuk pita satu per satu dari yang terpendek atau terpanjang. Gunakan Konversi Satuan Panjang.",
-      "voiceGuide": "Konversi Satuan Panjang. Ketuk pita menurut panjangnya.",
+      "voiceGuide": "Konversi Satuan Panjang. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 9
     },
@@ -1246,7 +1212,7 @@ export const SUB_B33: SubBabNaskah = {
       "title": "Hitung Garis Meteran",
       "bookReference": "hlm. 120 (meteran 100 cm = 1 m)",
       "objective": "Pakai Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm. Latihan: Menghitung panjang batang pada garis meteran dalam sentimeter..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Garis meteran bertanda tiap 50 cm dan batang berwarna ditampilkan. Siswa memilih satu dari tiga panjang. Saat bermain, terapkan Same Quantity Different Unit: 120 cm = 1 m 20 cm.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Garis meteran bertanda tiap 50 cm dan batang berwarna ditampilkan. Siswa memilih satu dari tiga panjang. Saat bermain, ingat Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm.",
       "voiceGuide": "Kuantitas Sama Satuan Beda. 120 cm = 1 m 20 cm.",
       "diagramType": "meter-count",
       "numberA": 3,
@@ -1258,7 +1224,7 @@ export const SUB_B33: SubBabNaskah = {
       "title": "Lengkapi Kalimat Ubah Satuan",
       "bookReference": "hlm. 121 (ubahlah satuan sentimeter ke dalam satuan meter)",
       "objective": "Pakai Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm. Latihan: Melengkapi kalimat yang mengubah sentimeter menjadi meter dan sentimeter..",
-      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya 117 cm = 100 cm + ... cm. Siswa memilih satu dari tiga angka untuk bagian kosong. Saat bermain, terapkan Same Quantity Different Unit: 120 cm = 1 m 20 cm.",
+      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya 117 cm = 100 cm + ... cm. Siswa memilih satu dari tiga angka untuk bagian kosong. Saat bermain, ingat Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm.",
       "voiceGuide": "Kuantitas Sama Satuan Beda. 120 cm = 1 m 20 cm.",
       "diagramType": "convert-sentence",
       "numberA": 3,
@@ -1270,7 +1236,7 @@ export const SUB_B33: SubBabNaskah = {
       "title": "Jodohkan Garis dan Ukuran",
       "bookReference": "hlm. 120–122 (ukuran panjang)",
       "objective": "Pakai Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm. Latihan: Menjodohkan garis meteran dengan ukuran yang ditulis dengan meter dan sentimeter..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga garis dan tiga ukuran. Siswa mengetuk garis, lalu mengetuk ukuran yang cocok. Saat bermain, terapkan Same Quantity Different Unit: 120 cm = 1 m 20 cm.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga garis dan tiga ukuran. Siswa mengetuk garis, lalu mengetuk ukuran yang cocok. Saat bermain, ingat Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm.",
       "voiceGuide": "Kuantitas Sama Satuan Beda. 120 cm = 1 m 20 cm.",
       "diagramType": "meter-match",
       "numberA": 3,
@@ -1282,7 +1248,7 @@ export const SUB_B33: SubBabNaskah = {
       "title": "Memori Garis dan Ukuran",
       "bookReference": "hlm. 120–122 (ukuran panjang)",
       "objective": "Pakai Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm. Latihan: Mencocokkan garis meteran dengan ukurannya lewat permainan memori..",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Saat bermain, terapkan Same Quantity Different Unit: 120 cm = 1 m 20 cm.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Saat bermain, ingat Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm.",
       "voiceGuide": "Kuantitas Sama Satuan Beda. 120 cm = 1 m 20 cm.",
       "diagramType": "meter-memory",
       "numberA": 3,
@@ -1293,9 +1259,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "fill-height-table",
       "title": "Isi Tabel Ubah Ukuran",
       "bookReference": "hlm. 122 (tabel tinggi badan Azizah dan teman-temannya)",
-      "objective": "Melengkapi tabel ukuran panjang dalam meter dan sentimeter.. Ingat Kuantitas Sama Satuan Beda.",
+      "objective": "Melengkapi tabel ukuran panjang dalam meter dan sentimeter.. Ingat Kuantitas Sama Satuan Beda. (Kuantitas Sama Satuan Beda)",
       "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu ukuran yang tepat. Ada satu kartu pengecoh. Gunakan Kuantitas Sama Satuan Beda.",
-      "voiceGuide": "Kuantitas Sama Satuan Beda. Isi tabel dengan kartu ukuran.",
+      "voiceGuide": "Kuantitas Sama Satuan Beda. Mainkan dengan teliti.",
       "diagramType": "size-table",
       "numberA": 3,
       "numberB": 4
@@ -1305,9 +1271,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "tap-all-equal-size",
       "title": "Ketuk Semua Ukuran yang Sama",
       "bookReference": "hlm. 120–122 (satu ukuran ditulis dengan beberapa cara)",
-      "objective": "Menemukan semua ukuran yang sama dengan ukuran acuan, walau ditulis berbeda.. Ingat Kuantitas Sama Satuan Beda.",
+      "objective": "Menemukan semua ukuran yang sama dengan ukuran acuan, walau ditulis berbeda.. Ingat Kuantitas Sama Satuan Beda. (Kuantitas Sama Satuan Beda)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat ukuran dan satu perintah. Siswa mengetuk semua yang sama dengan acuan, lalu menekan Periksa. Gunakan Kuantitas Sama Satuan Beda.",
-      "voiceGuide": "Kuantitas Sama Satuan Beda. Ketuk semua yang sama, lalu periksa.",
+      "voiceGuide": "Kuantitas Sama Satuan Beda. Mainkan dengan teliti.",
       "diagramType": "size-select",
       "numberA": 3,
       "numberB": 4
@@ -1317,9 +1283,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "sort-whole-meter",
       "title": "Pilah Ukuran: Pas Meter atau Bersisa",
       "bookReference": "hlm. 121–122 (meter dan sentimeter)",
-      "objective": "Memilah ukuran sentimeter menjadi yang pas dalam meter dan yang masih bersisa sentimeter.. Ingat Kuantitas Sama Satuan Beda.",
+      "objective": "Memilah ukuran sentimeter menjadi yang pas dalam meter dan yang masih bersisa sentimeter.. Ingat Kuantitas Sama Satuan Beda. (Kuantitas Sama Satuan Beda)",
       "mechanicDescription": "Tiga ronde, tiap ronde enam ukuran dan dua kotak. Ukuran yang habis dibagi 100 pas dalam meter. Siswa menyeret atau mengetuk ukuran ke kotak yang tepat. Gunakan Kuantitas Sama Satuan Beda.",
-      "voiceGuide": "Kuantitas Sama Satuan Beda. Pilah ukuran ke kotak yang tepat.",
+      "voiceGuide": "Kuantitas Sama Satuan Beda. Mainkan dengan teliti.",
       "diagramType": "size-sort",
       "numberA": 3,
       "numberB": 6
@@ -1329,9 +1295,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "order-convert-steps",
       "title": "Urutkan Langkah Mengubah Satuan",
       "bookReference": "hlm. 121 (mengubah satuan dan menjumlahkan ukuran)",
-      "objective": "Mengurutkan langkah mengubah satuan panjang dan menjumlahkan ukuran.. Ingat Kuantitas Sama Satuan Beda.",
+      "objective": "Mengurutkan langkah mengubah satuan panjang dan menjumlahkan ukuran.. Ingat Kuantitas Sama Satuan Beda. (Kuantitas Sama Satuan Beda)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah. Gunakan Kuantitas Sama Satuan Beda.",
-      "voiceGuide": "Kuantitas Sama Satuan Beda. Ketuk langkah menurut urutannya.",
+      "voiceGuide": "Kuantitas Sama Satuan Beda. Mainkan dengan teliti.",
       "diagramType": "steps-order",
       "numberA": 3,
       "numberB": 4
@@ -1341,9 +1307,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "board-line-cm",
       "title": "Papan Sentimeter dari Garis",
       "bookReference": "hlm. 120 (meteran 0 sampai 200 cm)",
-      "objective": "Menulis panjang batang pada garis meteran dalam sentimeter pada papan.. Ingat Kuantitas Sama Satuan Beda.",
+      "objective": "Menulis panjang batang pada garis meteran dalam sentimeter pada papan.. Ingat Kuantitas Sama Satuan Beda. (Kuantitas Sama Satuan Beda)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca garis meteran, lalu mengatur angka ratusan, puluhan, dan satuan pada papan dan menekan Periksa. Gunakan Kuantitas Sama Satuan Beda.",
-      "voiceGuide": "Kuantitas Sama Satuan Beda. Isi papan dengan sentimeternya.",
+      "voiceGuide": "Kuantitas Sama Satuan Beda. Mainkan dengan teliti.",
       "diagramType": "meter-board",
       "numberA": 3,
       "numberB": 2
@@ -1353,9 +1319,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "join-two-ribbons",
       "title": "Sambung Dua Garis",
       "bookReference": "hlm. 123 (menyambung dua utas pita)",
-      "objective": "Menghitung panjang dua batang yang disambung pada garis meteran.. Ingat Kuantitas Sama Satuan Beda.",
+      "objective": "Menghitung panjang dua batang yang disambung pada garis meteran.. Ingat Kuantitas Sama Satuan Beda. (Kuantitas Sama Satuan Beda)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua batang yang disambung pada garis meteran ditampilkan. Siswa memilih satu dari tiga panjang gabungan. Gunakan Kuantitas Sama Satuan Beda.",
-      "voiceGuide": "Kuantitas Sama Satuan Beda. Pilih panjang setelah disambung.",
+      "voiceGuide": "Kuantitas Sama Satuan Beda. Mainkan dengan teliti.",
       "diagramType": "meter-join",
       "numberA": 3,
       "numberB": 2
@@ -1366,7 +1332,7 @@ export const SUB_B33: SubBabNaskah = {
       "title": "Ubah Meter ke Sentimeter: Lambang",
       "bookReference": "hlm. 121 (4 m = ... cm)",
       "objective": "Pakai Tabel Konversi: Pakai tabel untuk pindah satuan. Latihan: Mengubah meter ke sentimeter dan memilih hasilnya dari tiga pilihan..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 4 m = ... cm. Pengecoh lupa mengalikan 100 atau mengalikan 1.000. Saat bermain, terapkan Conversion Table: Pakai tabel untuk pindah satuan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 4 m = ... cm. Pengecoh lupa mengalikan 100 atau mengalikan 1.000. Saat bermain, ingat Tabel Konversi: Pakai tabel untuk pindah satuan.",
       "voiceGuide": "Tabel Konversi. Pakai tabel untuk pindah satuan.",
       "symbolLarge": "4 m",
       "wordLarge": "METER KE CM",
@@ -1378,7 +1344,7 @@ export const SUB_B33: SubBabNaskah = {
       "title": "Ubah Sentimeter ke Meter dan Sentimeter",
       "bookReference": "hlm. 122 (tabel tinggi badan: Eri 115 cm = 1 m 15 cm)",
       "objective": "Pakai Tabel Konversi: Pakai tabel untuk pindah satuan. Latihan: Menulis ukuran sentimeter sebagai meter dan sentimeter..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 135 cm = ... m ... cm. Pengecoh salah menaruh angka. Saat bermain, terapkan Conversion Table: Pakai tabel untuk pindah satuan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 135 cm = ... m ... cm. Pengecoh salah menaruh angka. Saat bermain, ingat Tabel Konversi: Pakai tabel untuk pindah satuan.",
       "voiceGuide": "Tabel Konversi. Pakai tabel untuk pindah satuan.",
       "symbolLarge": "135 cm",
       "wordLarge": "M DAN CM",
@@ -1390,7 +1356,7 @@ export const SUB_B33: SubBabNaskah = {
       "title": "Papan Ubah Satuan",
       "bookReference": "hlm. 122 (tinggi badan dalam sentimeter)",
       "objective": "Pakai Tabel Konversi: Pakai tabel untuk pindah satuan. Latihan: Mengubah meter dan sentimeter menjadi sentimeter pada papan..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 2 m 40 cm = ... cm. Siswa mengatur angka ratusan, puluhan, dan satuan lalu menekan Periksa. Saat bermain, terapkan Conversion Table: Pakai tabel untuk pindah satuan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 2 m 40 cm = ... cm. Siswa mengatur angka ratusan, puluhan, dan satuan lalu menekan Periksa. Saat bermain, ingat Tabel Konversi: Pakai tabel untuk pindah satuan.",
       "voiceGuide": "Tabel Konversi. Pakai tabel untuk pindah satuan.",
       "symbolLarge": "…",
       "wordLarge": "PAPAN",
@@ -1402,7 +1368,7 @@ export const SUB_B33: SubBabNaskah = {
       "title": "Jodohkan Ukuran",
       "bookReference": "hlm. 121–122 (ubah meter dan sentimeter)",
       "objective": "Pakai Tabel Konversi: Pakai tabel untuk pindah satuan. Latihan: Menjodohkan ukuran meter dengan ukuran sentimeter yang sama..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga ukuran dan tiga pasangannya. Siswa mengetuk ukuran, lalu mengetuk pasangannya. Saat bermain, terapkan Conversion Table: Pakai tabel untuk pindah satuan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga ukuran dan tiga pasangannya. Siswa mengetuk ukuran, lalu mengetuk pasangannya. Saat bermain, ingat Tabel Konversi: Pakai tabel untuk pindah satuan.",
       "voiceGuide": "Tabel Konversi. Pakai tabel untuk pindah satuan.",
       "symbolLarge": "= ?",
       "wordLarge": "JODOHKAN",
@@ -1413,9 +1379,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "memory-size-b",
       "title": "Memori Ukuran",
       "bookReference": "hlm. 121–122 (ukuran yang sama)",
-      "objective": "Mencocokkan dua cara menulis ukuran yang sama lewat permainan memori.. Ingat Tabel Konversi.",
+      "objective": "Mencocokkan dua cara menulis ukuran yang sama lewat permainan memori.. Ingat Tabel Konversi. (Tabel Konversi)",
       "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Gunakan Tabel Konversi.",
-      "voiceGuide": "Tabel Konversi. Balik dua kartu, cari ukuran yang sama.",
+      "voiceGuide": "Tabel Konversi. Mainkan dengan teliti.",
       "symbolLarge": "m cm",
       "wordLarge": "MEMORI",
       "mathNotation": "ukuran yang sama"
@@ -1425,9 +1391,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "true-false-meter",
       "title": "Benar atau Salah: Meter dan Sentimeter",
       "bookReference": "hlm. 120–123 (hubungan meter dan sentimeter)",
-      "objective": "Menilai pernyataan tentang hubungan meter dan sentimeter serta ukuran gabungan.. Ingat Tabel Konversi.",
+      "objective": "Menilai pernyataan tentang hubungan meter dan sentimeter serta ukuran gabungan.. Ingat Tabel Konversi. (Tabel Konversi)",
       "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan. Gunakan Tabel Konversi.",
-      "voiceGuide": "Tabel Konversi. Baca pernyataan, lalu pilih benar atau salah.",
+      "voiceGuide": "Tabel Konversi. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "periksa dengan alasan"
@@ -1437,9 +1403,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "detective-meter",
       "title": "Detektif Satuan Panjang",
       "bookReference": "hlm. 120–122 (ubah satuan panjang)",
-      "objective": "Menemukan bilangan hasil perubahan satuan dari dua petunjuk.. Ingat Tabel Konversi.",
+      "objective": "Menemukan bilangan hasil perubahan satuan dari dua petunjuk.. Ingat Tabel Konversi. (Tabel Konversi)",
       "mechanicDescription": "Empat soal. Siswa membaca petunjuk tentang perubahan satuan dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok. Gunakan Tabel Konversi.",
-      "voiceGuide": "Tabel Konversi. Baca petunjuk, lalu pilih bilangannya.",
+      "voiceGuide": "Tabel Konversi. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "dua petunjuk, satu jawaban"
@@ -1449,9 +1415,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "concept-map-meter",
       "title": "Peta Konsep Satuan Panjang",
       "bookReference": "hlm. 104 (peta konsep Bab 3)",
-      "objective": "Melengkapi peta konsep hubungan meter dan sentimeter serta ukuran gabungan.. Ingat Tabel Konversi.",
+      "objective": "Melengkapi peta konsep hubungan meter dan sentimeter serta ukuran gabungan.. Ingat Tabel Konversi. (Tabel Konversi)",
       "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan Tabel Konversi.",
-      "voiceGuide": "Tabel Konversi. Pilih kartu yang tepat untuk kotak yang menyala.",
+      "voiceGuide": "Tabel Konversi. Mainkan dengan teliti.",
       "symbolLarge": "⇄",
       "wordLarge": "PETA KONSEP",
       "mathNotation": "m • cm • gabungan"
@@ -1461,9 +1427,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "story-meter",
       "title": "Soal Cerita Satuan Panjang",
       "bookReference": "hlm. 123 (menyambung pita, kain katun, dan kebun jagung)",
-      "objective": "Menyelesaikan soal cerita yang menjumlahkan, mengurangkan, atau mengubah ukuran panjang.. Ingat Tabel Konversi.",
+      "objective": "Menyelesaikan soal cerita yang menjumlahkan, mengurangkan, atau mengubah ukuran panjang.. Ingat Tabel Konversi. (Tabel Konversi)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga hasil. Pengecoh lupa menyimpan atau salah mengubah. Gunakan Tabel Konversi.",
-      "voiceGuide": "Tabel Konversi. Baca cerita, lalu pilih hasilnya.",
+      "voiceGuide": "Tabel Konversi. Mainkan dengan teliti.",
       "symbolLarge": "m cm",
       "wordLarge": "CERITA",
       "mathNotation": "jumlah • selisih • ubah"
@@ -1473,9 +1439,9 @@ export const SUB_B33: SubBabNaskah = {
       "gameType": "sentence-meter",
       "title": "Susun Kata Satuan Panjang",
       "bookReference": "hlm. 120–122 (hubungan meter dan sentimeter)",
-      "objective": "Menyusun kalimat tentang hubungan meter dan sentimeter dari kartu kata.. Ingat Tabel Konversi.",
+      "objective": "Menyusun kalimat tentang hubungan meter dan sentimeter dari kartu kata.. Ingat Tabel Konversi. (Tabel Konversi)",
       "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh. Gunakan Tabel Konversi.",
-      "voiceGuide": "Tabel Konversi. Susun kartu kata menjadi kalimat.",
+      "voiceGuide": "Tabel Konversi. Mainkan dengan teliti.",
       "symbolLarge": "…",
       "wordLarge": "SUSUN KATA",
       "mathNotation": "kalimat satuan panjang"
@@ -1487,12 +1453,6 @@ export const SUB_B33: SubBabNaskah = {
       "nama": "Meter dan sentimeter",
       "isi": "1 m = 100 cm",
       "suara": "Satu meter sama dengan seratus sentimeter. Dua meter sama dengan dua ratus sentimeter."
-    },
-    {
-      "ikon": "✖️",
-      "nama": "Meter ke sentimeter",
-      "isi": "3 m = 3 × 100 cm = 300 cm",
-      "suara": "Untuk mengubah meter ke sentimeter, kalikan dengan seratus."
     },
     {
       "ikon": "🌍",
@@ -1535,11 +1495,11 @@ export const SUB_B33: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Konversi Satuan Panjang pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Konversi Satuan Panjang pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Konversi Satuan Panjang membantumu memahami soal?",
-    "Kapan kamu memakai Kuantitas Sama Satuan Beda?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Konversi Satuan Panjang membantumu?",
+    "Kapan memakai Kuantitas Sama Satuan Beda?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -1583,12 +1543,12 @@ export const SUB_C33: SubBabNaskah = {
   "id": "C",
   "codeTitle": "Sub-Bab C (Pengukuran Berat dengan Satuan Baku)",
   "fullTitle": "Sub-Bab C: Pengukuran Berat dengan Satuan Baku",
-  "targetDescription": "Siswa mengenal timbangan sebagai alat ukur berat (timbangan digital, timbangan duduk, timbangan kodok, dan timbangan badan), mengenal satuan baku berat gram dan kilogram, menimbang dengan memulai dari angka nol, membaca berat pada layar dan jarum, serta memilih timbangan dan satuan yang tepat untuk benda ringan dan benda berat. Siswa memakai cara Neraca, Satuan Berat Baku, Perkiraan Berat.",
+  "targetDescription": "Siswa mengenal timbangan sebagai alat ukur berat (timbangan digital, timbangan duduk, timbangan kodok, dan timbangan badan), mengenal satuan baku berat gram dan kilogram, menimbang dengan memulai dari angka nol, membaca berat pada layar dan jarum, serta memilih timbangan dan satuan yang tepat untuk benda ringan dan benda berat. Siswa memakai cara Neraca, Satuan Berat Baku, Perkiraan Berat. Siswa memakai cara Neraca, Satuan Berat Baku, Perkiraan Berat.",
   "secondaryBg": "#DCFCE7",
   "secondaryBorder": "#16A34A",
   "secondaryText": "#14532D",
   "silabus": {
-    "teksSuara": "Kita belajar mengukur berat dengan satuan baku. Kita mengenal timbangan sebagai alat ukur berat, dan satuan baku gram dan kilogram. Kita belajar menimbang dari angka nol, membaca berat pada layar dan jarum, serta memilih timbangan yang tepat. Kita memakai cara dari luar buku: Neraca (Balance Scale); Satuan Berat Baku (Standard Mass Units); Perkiraan Berat (Estimate Mass). Bandingkan berat dengan anak timbangan. Gram dan kilogram. Bandingkan dengan benda acuan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar mengukur berat dengan satuan baku. Kita mengenal timbangan sebagai alat ukur berat, dan satuan baku gram dan kilogram. Kita belajar menimbang dari angka nol, membaca berat pada layar dan jarum, serta memilih timbangan yang tepat. Kita memakai cara: Neraca, Satuan Berat Baku, Perkiraan Berat. Bandingkan berat dengan anak timbangan. Gram dan kilogram. Bandingkan dengan benda acuan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menyelesaikan masalah yang berkaitan dengan panjang dan berat benda dengan satuan baku. Pada sub-bab ini siswa menimbang benda dengan berbagai timbangan dan memilih satuan gram atau kilogram.",
     "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3 Sub-Bab C)."
   },
@@ -1602,10 +1562,10 @@ export const SUB_C33: SubBabNaskah = {
           "id": "K3B3C-V1-1",
           "judul": "Keluarkan isi tas",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Satu kelompok beranggotakan tiga sampai lima orang. Mari kita pahami bersama.",
-            "Keluarkan barang-barang dari tas dan letakkan di atas meja. Mari kita pahami bersama.",
-            "Siapkan timbangan digital sebagai alat ukur. Mari kita pahami bersama.",
-            "Ingat cara Neraca: Bandingkan berat dengan anak timbangan."
+            "Bayangkan kamu sedang mempelajari Pengukuran Berat dengan Satuan Baku. Satu kelompok beranggotakan tiga sampai lima orang.",
+            "Keluarkan barang-barang dari tas dan letakkan di atas meja.",
+            "Siapkan timbangan digital sebagai alat ukur.",
+            "Ingat cara Neraca: Bandingkan berat dengan anak timbangan. Ingat cara Neraca: Bandingkan berat dengan anak timbangan."
           ],
           "papan": [
             "Kelompok 3 sampai 5 orang",
@@ -1618,10 +1578,10 @@ export const SUB_C33: SubBabNaskah = {
           "id": "K3B3C-V1-2",
           "judul": "Timbang barangnya",
           "ketukan": [
-            "Letakkan satu barang di atas timbangan digital. Mari kita pahami bersama.",
-            "Lihat angka yang muncul pada layar timbangan. Mari kita pahami bersama.",
-            "Angka itu adalah berat barang. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Balance Scale — Bandingkan berat dengan anak timbangan."
+            "Letakkan satu barang di atas timbangan digital.",
+            "Lihat angka yang muncul pada layar timbangan.",
+            "Angka itu adalah berat barang.",
+            "Di sini kita memakai ide Balance Scale — Bandingkan berat dengan anak timbangan. Di sini kita memakai Balance Scale. Bandingkan berat dengan anak timbangan."
           ],
           "papan": [
             "Barang di atas timbangan",
@@ -1634,9 +1594,9 @@ export const SUB_C33: SubBabNaskah = {
           "id": "K3B3C-V1-3",
           "judul": "Satuan berat",
           "ketukan": [
-            "Setelah semua barang ditimbang, presentasikan hasilnya. Mari kita pahami bersama.",
-            "Satuan apa yang dipakai pada timbangan. Mari kita pahami bersama.",
-            "Satuan baku berat adalah gram dan kilogram. Mari kita pahami bersama.",
+            "Setelah semua barang ditimbang, presentasikan hasilnya.",
+            "Satuan apa yang dipakai pada timbangan.",
+            "Satuan baku berat adalah gram dan kilogram.",
             "METODE LUAR · Neraca: Bandingkan berat dengan anak timbangan."
           ],
           "papan": [
@@ -1657,10 +1617,10 @@ export const SUB_C33: SubBabNaskah = {
           "id": "K3B3C-V2-1",
           "judul": "Ke pasar",
           "ketukan": [
-            "Meutia pergi ke pasar untuk berbelanja. Mari kita pahami bersama.",
-            "Penjual menimbang barang dagangannya dengan timbangan. Mari kita pahami bersama.",
-            "Timbangan apa yang dipakai penjual di pasar. Mari kita pahami bersama.",
-            "Ingat cara Satuan Berat Baku: Gram dan kilogram."
+            "Meutia pergi ke pasar untuk berbelanja.",
+            "Penjual menimbang barang dagangannya dengan timbangan.",
+            "Timbangan apa yang dipakai penjual di pasar.",
+            "Ingat cara Satuan Berat Baku: Gram dan kilogram. Ingat cara Satuan Berat Baku: Gram dan kilogram."
           ],
           "papan": [
             "Meutia ke pasar",
@@ -1673,10 +1633,10 @@ export const SUB_C33: SubBabNaskah = {
           "id": "K3B3C-V2-2",
           "judul": "Nama dan satuan",
           "ketukan": [
-            "Timbangan kodok memakai bandul sebagai ukuran berat. Mari kita pahami bersama.",
-            "Timbangan duduk memakai jarum yang menunjuk angka. Mari kita pahami bersama.",
-            "Timbangan digital menampilkan angka pada layar. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Standard Mass Units — Gram dan kilogram."
+            "Timbangan kodok memakai bandul sebagai ukuran berat.",
+            "Timbangan duduk memakai jarum yang menunjuk angka.",
+            "Timbangan digital menampilkan angka pada layar.",
+            "Di sini kita memakai ide Standard Mass Units — Gram dan kilogram. Di sini kita memakai Standard Mass Units. Gram dan kilogram."
           ],
           "papan": [
             "Kodok: bandul",
@@ -1689,9 +1649,9 @@ export const SUB_C33: SubBabNaskah = {
           "id": "K3B3C-V2-3",
           "judul": "Gram atau kilogram",
           "ketukan": [
-            "Gram dipakai untuk benda yang ringan. Mari kita pahami bersama.",
-            "Contohnya tepung, gula pasir, pensil, dan buku. Mari kita pahami bersama.",
-            "Kilogram dipakai untuk benda yang lebih berat. Mari kita pahami bersama.",
+            "Gram dipakai untuk benda yang ringan.",
+            "Contohnya tepung, gula pasir, pensil, dan buku.",
+            "Kilogram dipakai untuk benda yang lebih berat.",
             "METODE LUAR · Satuan Berat Baku: Gram dan kilogram."
           ],
           "papan": [
@@ -1712,10 +1672,10 @@ export const SUB_C33: SubBabNaskah = {
           "id": "K3B3C-V3-1",
           "judul": "Menimbang bahan",
           "ketukan": [
-            "Meutia membantu ibunya membuat kue. Mari kita pahami bersama.",
-            "Bahan kue yang ditimbang adalah gula, tepung, dan telur. Mari kita pahami bersama.",
-            "Gula menunjukkan 1.000 gram dan tepung 1.250 gram. Mari kita pahami bersama.",
-            "Ingat cara Perkiraan Berat: Bandingkan dengan benda acuan."
+            "Meutia membantu ibunya membuat kue.",
+            "Bahan kue yang ditimbang adalah gula, tepung, dan telur.",
+            "Gula menunjukkan 1.000 gram dan tepung 1.250 gram.",
+            "Ingat cara Perkiraan Berat: Bandingkan dengan benda acuan. Ingat cara Perkiraan Berat: Bandingkan dengan benda acuan."
           ],
           "papan": [
             "Meutia membuat kue",
@@ -1728,10 +1688,10 @@ export const SUB_C33: SubBabNaskah = {
           "id": "K3B3C-V3-2",
           "judul": "Mulai dari nol",
           "ketukan": [
-            "Sebelum menimbang, lihat angka awal pada timbangan. Mari kita pahami bersama.",
-            "Jarum atau layar harus menunjukkan angka 0. Mari kita pahami bersama.",
-            "Bila tidak dimulai dari nol, hasilnya keliru. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Estimate Mass — Bandingkan dengan benda acuan."
+            "Sebelum menimbang, lihat angka awal pada timbangan.",
+            "Jarum atau layar harus menunjukkan angka 0.",
+            "Bila tidak dimulai dari nol, hasilnya keliru.",
+            "Di sini kita memakai ide Estimate Mass — Bandingkan dengan benda acuan. Di sini kita memakai Estimate Mass. Bandingkan dengan benda acuan."
           ],
           "papan": [
             "Lihat angka awal",
@@ -1744,9 +1704,9 @@ export const SUB_C33: SubBabNaskah = {
           "id": "K3B3C-V3-3",
           "judul": "Stroberi tambahan",
           "ketukan": [
-            "Timbangan pertama menunjukkan stroberi 100 gram. Mari kita pahami bersama.",
-            "Timbangan kedua menunjukkan stroberi 500 gram. Mari kita pahami bersama.",
-            "Berat stroberi tambahan adalah 500 dikurangi 100. Mari kita pahami bersama.",
+            "Timbangan pertama menunjukkan stroberi 100 gram.",
+            "Timbangan kedua menunjukkan stroberi 500 gram.",
+            "Berat stroberi tambahan adalah 500 dikurangi 100.",
             "METODE LUAR · Perkiraan Berat: Bandingkan dengan benda acuan."
           ],
           "papan": [
@@ -1763,7 +1723,7 @@ export const SUB_C33: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Pengukuran Berat dengan Satuan Baku. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Pengukuran Berat dengan Satuan Baku?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -1795,7 +1755,7 @@ export const SUB_C33: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -1803,7 +1763,7 @@ export const SUB_C33: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -1811,15 +1771,15 @@ export const SUB_C33: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -1895,20 +1855,6 @@ export const SUB_C33: SubBabNaskah = {
       "countNum": 4,
       "countWord": "Empat",
       "suara": "Empat langkah. Satu, pastikan angka awal nol. Dua, letakkan benda. Tiga, baca angkanya. Empat, tulis hasilnya dengan satuan."
-    },
-    {
-      "judul": "Neraca",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Bandingkan berat dengan anak timbangan."
-    },
-    {
-      "judul": "Satuan Berat Baku",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Gram dan kilogram."
     }
   ],
   "games": [
@@ -1918,7 +1864,7 @@ export const SUB_C33: SubBabNaskah = {
       "title": "Baca Timbangan Digital",
       "bookReference": "hlm. 124–125 dan 133 (Aktivitas 2 dan Ayo Berlatih 1)",
       "objective": "Pakai Neraca: Bandingkan berat dengan anak timbangan. Latihan: Membaca berat benda pada layar timbangan digital dalam gram..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda ditampilkan di atas timbangan digital. Siswa membaca angka pada layar lalu memilih satu dari tiga berat. Saat bermain, terapkan Balance Scale: Bandingkan berat dengan anak timbangan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda ditampilkan di atas timbangan digital. Siswa membaca angka pada layar lalu memilih satu dari tiga berat. Saat bermain, ingat Neraca: Bandingkan berat dengan anak timbangan.",
       "voiceGuide": "Neraca. Bandingkan berat dengan anak timbangan.",
       "emoji": "⚖️",
       "targetCount": 6
@@ -1929,7 +1875,7 @@ export const SUB_C33: SubBabNaskah = {
       "title": "Timbangan yang Siap",
       "bookReference": "hlm. 133 (Buku Panduan Guru: menimbang harus dimulai dari angka 0)",
       "objective": "Pakai Neraca: Bandingkan berat dengan anak timbangan. Latihan: Menemukan timbangan yang jarumnya tepat di angka 0 sebelum menimbang..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga timbangan duduk dan satu perintah. Siswa mengetuk timbangan yang jarumnya tepat di angka 0. Saat bermain, terapkan Balance Scale: Bandingkan berat dengan anak timbangan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga timbangan duduk dan satu perintah. Siswa mengetuk timbangan yang jarumnya tepat di angka 0. Saat bermain, ingat Neraca: Bandingkan berat dengan anak timbangan.",
       "voiceGuide": "Neraca. Bandingkan berat dengan anak timbangan.",
       "emoji": "0️⃣",
       "targetCount": 3
@@ -1940,7 +1886,7 @@ export const SUB_C33: SubBabNaskah = {
       "title": "Baca Timbangan Jarum",
       "bookReference": "hlm. 125–126 (timbangan duduk untuk buah)",
       "objective": "Pakai Neraca: Bandingkan berat dengan anak timbangan. Latihan: Membaca berat buah pada timbangan duduk dari angka yang ditunjuk jarum..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Buah ditampilkan di atas timbangan duduk. Siswa membaca angka yang ditunjuk jarum, lalu memilih satu dari tiga berat. Saat bermain, terapkan Balance Scale: Bandingkan berat dengan anak timbangan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Buah ditampilkan di atas timbangan duduk. Siswa membaca angka yang ditunjuk jarum, lalu memilih satu dari tiga berat. Saat bermain, ingat Neraca: Bandingkan berat dengan anak timbangan.",
       "voiceGuide": "Neraca. Bandingkan berat dengan anak timbangan.",
       "emoji": "🍉",
       "targetCount": 6
@@ -1951,7 +1897,7 @@ export const SUB_C33: SubBabNaskah = {
       "title": "Pilih Timbangan",
       "bookReference": "hlm. 130–131 (timbangan yang tepat untuk sayuran dan buah)",
       "objective": "Pakai Neraca: Bandingkan berat dengan anak timbangan. Latihan: Memilih timbangan yang tepat untuk menimbang suatu benda..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua benda. Siswa memilih satu dari tiga timbangan: digital, duduk, atau badan. Saat bermain, terapkan Balance Scale: Bandingkan berat dengan anak timbangan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua benda. Siswa memilih satu dari tiga timbangan: digital, duduk, atau badan. Saat bermain, ingat Neraca: Bandingkan berat dengan anak timbangan.",
       "voiceGuide": "Neraca. Bandingkan berat dengan anak timbangan.",
       "emoji": "🛒",
       "targetCount": 6
@@ -1961,9 +1907,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "match-object-scale",
       "title": "Jodohkan Benda dan Timbangan",
       "bookReference": "hlm. 126–127 (menghubungkan penjual dan alat ukur)",
-      "objective": "Menjodohkan benda dengan timbangan yang tepat untuk menimbangnya.. Ingat Neraca.",
+      "objective": "Menjodohkan benda dengan timbangan yang tepat untuk menimbangnya.. Ingat Neraca. (Neraca)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga timbangan. Siswa mengetuk benda, lalu mengetuk timbangan yang cocok. Gunakan Neraca.",
-      "voiceGuide": "Neraca. Ketuk benda, lalu ketuk timbangannya.",
+      "voiceGuide": "Neraca. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 9
     },
@@ -1972,9 +1918,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "memory-scale-weight",
       "title": "Memori Timbangan dan Berat",
       "bookReference": "hlm. 133 (berat bahan kue pada timbangan digital)",
-      "objective": "Mencocokkan timbangan digital dengan berat yang ditunjukkan layarnya lewat permainan memori.. Ingat Neraca.",
+      "objective": "Mencocokkan timbangan digital dengan berat yang ditunjukkan layarnya lewat permainan memori.. Ingat Neraca. (Neraca)",
       "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Gunakan Neraca.",
-      "voiceGuide": "Neraca. Balik dua kartu, cari timbangan dan beratnya.",
+      "voiceGuide": "Neraca. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1983,9 +1929,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "tap-scale-weight",
       "title": "Ketuk Timbangan dengan Berat",
       "bookReference": "hlm. 133 (gula, tepung, dan telur)",
-      "objective": "Menemukan timbangan yang menunjukkan berat yang diminta.. Ingat Neraca.",
+      "objective": "Menemukan timbangan yang menunjukkan berat yang diminta.. Ingat Neraca. (Neraca)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga timbangan dan dua pertanyaan. Siswa mengetuk timbangan yang beratnya sama dengan bilangan yang disebut. Gunakan Neraca.",
-      "voiceGuide": "Neraca. Ketuk timbangan dengan berat itu.",
+      "voiceGuide": "Neraca. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 6
     },
@@ -1994,9 +1940,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "tap-all-unit",
       "title": "Ketuk Semua yang Memakai Satuan Tertentu",
       "bookReference": "hlm. 125 (gram untuk benda ringan, kilogram untuk benda berat)",
-      "objective": "Menemukan semua benda yang ditimbang dengan satuan gram atau kilogram.. Ingat Neraca.",
+      "objective": "Menemukan semua benda yang ditimbang dengan satuan gram atau kilogram.. Ingat Neraca. (Neraca)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat benda dan satu perintah. Siswa mengetuk semua benda yang cocok dengan satuan yang disebut, lalu menekan Periksa. Gunakan Neraca.",
-      "voiceGuide": "Neraca. Ketuk semua yang cocok, lalu periksa.",
+      "voiceGuide": "Neraca. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -2005,9 +1951,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "board-grams",
       "title": "Papan Berat dalam Gram",
       "bookReference": "hlm. 133 (Ayo Berlatih 1)",
-      "objective": "Menulis berat pada timbangan digital dengan angka ratusan, puluhan, dan satuan.. Ingat Neraca.",
+      "objective": "Menulis berat pada timbangan digital dengan angka ratusan, puluhan, dan satuan.. Ingat Neraca. (Neraca)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca layar timbangan, lalu mengatur angka ratusan, puluhan, dan satuan pada papan dan menekan Periksa. Gunakan Neraca.",
-      "voiceGuide": "Neraca. Isi papan dengan beratnya.",
+      "voiceGuide": "Neraca. Mainkan dengan teliti.",
       "emoji": "🗂️",
       "targetCount": 6
     },
@@ -2016,9 +1962,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "order-weight",
       "title": "Urutkan Benda menurut Berat",
       "bookReference": "hlm. 134 (Ayo Berlatih 2: berat teringan dan terberat)",
-      "objective": "Mengurutkan tiga benda menurut berat pada timbangan digital.. Ingat Neraca.",
+      "objective": "Mengurutkan tiga benda menurut berat pada timbangan digital.. Ingat Neraca. (Neraca)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga timbangan bertanda huruf. Siswa mengetuk timbangan satu per satu dari yang teringan atau terberat. Gunakan Neraca.",
-      "voiceGuide": "Neraca. Ketuk benda menurut beratnya.",
+      "voiceGuide": "Neraca. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 9
     },
@@ -2028,7 +1974,7 @@ export const SUB_C33: SubBabNaskah = {
       "title": "Baca Jarum dalam Kilogram",
       "bookReference": "hlm. 125–126 (timbangan duduk)",
       "objective": "Pakai Satuan Berat Baku: Gram dan kilogram. Latihan: Membaca berat dalam kilogram dari jarum yang tepat di satu angka..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Jarum timbangan polos ditampilkan. Siswa memilih satu dari tiga berat dalam kilogram. Saat bermain, terapkan Standard Mass Units: Gram dan kilogram.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Jarum timbangan polos ditampilkan. Siswa memilih satu dari tiga berat dalam kilogram. Saat bermain, ingat Satuan Berat Baku: Gram dan kilogram.",
       "voiceGuide": "Satuan Berat Baku. Gram dan kilogram.",
       "diagramType": "dial-read",
       "numberA": 3,
@@ -2040,7 +1986,7 @@ export const SUB_C33: SubBabNaskah = {
       "title": "Baca Layar Timbangan",
       "bookReference": "hlm. 133 (angka pada layar timbangan digital)",
       "objective": "Pakai Satuan Berat Baku: Gram dan kilogram. Latihan: Membaca berat dalam gram dari layar timbangan polos..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Layar timbangan ditampilkan. Siswa memilih satu dari tiga berat dalam gram. Saat bermain, terapkan Standard Mass Units: Gram dan kilogram.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Layar timbangan ditampilkan. Siswa memilih satu dari tiga berat dalam gram. Saat bermain, ingat Satuan Berat Baku: Gram dan kilogram.",
       "voiceGuide": "Satuan Berat Baku. Gram dan kilogram.",
       "diagramType": "lcd-read",
       "numberA": 3,
@@ -2052,7 +1998,7 @@ export const SUB_C33: SubBabNaskah = {
       "title": "Jodohkan Jarum dan Berat",
       "bookReference": "hlm. 125–126 (membaca timbangan duduk)",
       "objective": "Pakai Satuan Berat Baku: Gram dan kilogram. Latihan: Menjodohkan jarum timbangan dengan berat dalam kilogram..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga jarum dan tiga berat. Siswa mengetuk jarum, lalu mengetuk berat yang cocok. Saat bermain, terapkan Standard Mass Units: Gram dan kilogram.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga jarum dan tiga berat. Siswa mengetuk jarum, lalu mengetuk berat yang cocok. Saat bermain, ingat Satuan Berat Baku: Gram dan kilogram.",
       "voiceGuide": "Satuan Berat Baku. Gram dan kilogram.",
       "diagramType": "dial-match",
       "numberA": 3,
@@ -2064,7 +2010,7 @@ export const SUB_C33: SubBabNaskah = {
       "title": "Memori Layar dan Berat",
       "bookReference": "hlm. 133 (angka pada layar timbangan digital)",
       "objective": "Pakai Satuan Berat Baku: Gram dan kilogram. Latihan: Mencocokkan layar timbangan dengan beratnya lewat permainan memori..",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Saat bermain, terapkan Standard Mass Units: Gram dan kilogram.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Saat bermain, ingat Satuan Berat Baku: Gram dan kilogram.",
       "voiceGuide": "Satuan Berat Baku. Gram dan kilogram.",
       "diagramType": "lcd-memory",
       "numberA": 3,
@@ -2075,9 +2021,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "tap-all-ready",
       "title": "Ketuk Semua Jarum yang Siap",
       "bookReference": "hlm. 133 (Buku Panduan Guru: mulai dari angka 0)",
-      "objective": "Menemukan semua timbangan yang jarumnya sudah tepat di angka 0.. Ingat Satuan Berat Baku.",
+      "objective": "Menemukan semua timbangan yang jarumnya sudah tepat di angka 0.. Ingat Satuan Berat Baku. (Satuan Berat Baku)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat jarum dan satu perintah. Siswa mengetuk semua jarum di angka 0, lalu menekan Periksa. Gunakan Satuan Berat Baku.",
-      "voiceGuide": "Satuan Berat Baku. Ketuk semua jarum di nol, lalu periksa.",
+      "voiceGuide": "Satuan Berat Baku. Mainkan dengan teliti.",
       "diagramType": "dial-select",
       "numberA": 3,
       "numberB": 4
@@ -2087,9 +2033,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "sort-unit-weight",
       "title": "Pilah Berat: Gram atau Kilogram",
       "bookReference": "hlm. 125 (gram untuk benda ringan, kilogram untuk benda berat)",
-      "objective": "Memilah nama benda menjadi yang ditimbang dengan gram dan yang ditimbang dengan kilogram.. Ingat Satuan Berat Baku.",
+      "objective": "Memilah nama benda menjadi yang ditimbang dengan gram dan yang ditimbang dengan kilogram.. Ingat Satuan Berat Baku. (Satuan Berat Baku)",
       "mechanicDescription": "Tiga ronde, tiap ronde enam nama benda dan dua kotak. Siswa menyeret atau mengetuk nama benda ke kotak yang tepat. Gunakan Satuan Berat Baku.",
-      "voiceGuide": "Satuan Berat Baku. Pilah benda ke kotak yang tepat.",
+      "voiceGuide": "Satuan Berat Baku. Mainkan dengan teliti.",
       "diagramType": "unit-sort",
       "numberA": 3,
       "numberB": 6
@@ -2099,9 +2045,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "tap-all-lcd-compare",
       "title": "Ketuk Semua Layar Lebih atau Kurang",
       "bookReference": "hlm. 129 (membandingkan berat dua timbangan)",
-      "objective": "Menemukan semua layar yang menunjukkan berat lebih atau kurang dari bilangan acuan.. Ingat Satuan Berat Baku.",
+      "objective": "Menemukan semua layar yang menunjukkan berat lebih atau kurang dari bilangan acuan.. Ingat Satuan Berat Baku. (Satuan Berat Baku)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat layar dan satu perintah. Siswa mengetuk semua yang cocok, lalu menekan Periksa. Gunakan Satuan Berat Baku.",
-      "voiceGuide": "Satuan Berat Baku. Ketuk semua yang cocok, lalu periksa.",
+      "voiceGuide": "Satuan Berat Baku. Mainkan dengan teliti.",
       "diagramType": "lcd-select",
       "numberA": 3,
       "numberB": 4
@@ -2111,9 +2057,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "order-weigh-steps",
       "title": "Urutkan Langkah Menimbang",
       "bookReference": "hlm. 124 (Aktivitas 2: cara menimbang)",
-      "objective": "Mengurutkan langkah menimbang dengan timbangan digital, timbangan duduk, dan timbangan badan.. Ingat Satuan Berat Baku.",
+      "objective": "Mengurutkan langkah menimbang dengan timbangan digital, timbangan duduk, dan timbangan badan.. Ingat Satuan Berat Baku. (Satuan Berat Baku)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah. Gunakan Satuan Berat Baku.",
-      "voiceGuide": "Satuan Berat Baku. Ketuk langkah menurut urutannya.",
+      "voiceGuide": "Satuan Berat Baku. Mainkan dengan teliti.",
       "diagramType": "steps-order",
       "numberA": 3,
       "numberB": 4
@@ -2123,9 +2069,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "board-lcd",
       "title": "Papan dari Layar",
       "bookReference": "hlm. 133 (Ayo Berlatih 1)",
-      "objective": "Menulis berat pada layar timbangan dengan angka ratusan, puluhan, dan satuan.. Ingat Satuan Berat Baku.",
+      "objective": "Menulis berat pada layar timbangan dengan angka ratusan, puluhan, dan satuan.. Ingat Satuan Berat Baku. (Satuan Berat Baku)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca layar, lalu mengatur angka ratusan, puluhan, dan satuan pada papan dan menekan Periksa. Gunakan Satuan Berat Baku.",
-      "voiceGuide": "Satuan Berat Baku. Isi papan dengan beratnya.",
+      "voiceGuide": "Satuan Berat Baku. Mainkan dengan teliti.",
       "diagramType": "lcd-board",
       "numberA": 3,
       "numberB": 2
@@ -2135,9 +2081,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "difference-lcd",
       "title": "Selisih Dua Layar",
       "bookReference": "hlm. 129 (Ayo Berlatih 2: berat stroberi tambahan)",
-      "objective": "Menghitung selisih berat dari dua layar timbangan.. Ingat Satuan Berat Baku.",
+      "objective": "Menghitung selisih berat dari dua layar timbangan.. Ingat Satuan Berat Baku. (Satuan Berat Baku)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua layar ditampilkan. Siswa memilih satu dari tiga selisih berat dalam gram. Gunakan Satuan Berat Baku.",
-      "voiceGuide": "Satuan Berat Baku. Pilih selisih berat kedua layar.",
+      "voiceGuide": "Satuan Berat Baku. Mainkan dengan teliti.",
       "diagramType": "lcd-compare",
       "numberA": 3,
       "numberB": 2
@@ -2148,7 +2094,7 @@ export const SUB_C33: SubBabNaskah = {
       "title": "Pilih Satuan Berat",
       "bookReference": "hlm. 125 dan 128–129 (satuan baku berat)",
       "objective": "Pakai Perkiraan Berat: Bandingkan dengan benda acuan. Latihan: Memilih satuan baku yang tepat untuk berat suatu benda..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca benda yang ditimbang, lalu memilih satu dari tiga satuan. Saat bermain, terapkan Estimate Mass: Bandingkan dengan benda acuan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca benda yang ditimbang, lalu memilih satu dari tiga satuan. Saat bermain, ingat Perkiraan Berat: Bandingkan dengan benda acuan.",
       "voiceGuide": "Perkiraan Berat. Bandingkan dengan benda acuan.",
       "symbolLarge": "g kg",
       "wordLarge": "SATUAN",
@@ -2160,7 +2106,7 @@ export const SUB_C33: SubBabNaskah = {
       "title": "Timbangan yang Tepat",
       "bookReference": "hlm. 126–131 (memilih timbangan)",
       "objective": "Pakai Perkiraan Berat: Bandingkan dengan benda acuan. Latihan: Memilih timbangan yang tepat untuk menimbang suatu benda..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca benda yang ditimbang, lalu memilih satu dari tiga alat ukur. Saat bermain, terapkan Estimate Mass: Bandingkan dengan benda acuan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca benda yang ditimbang, lalu memilih satu dari tiga alat ukur. Saat bermain, ingat Perkiraan Berat: Bandingkan dengan benda acuan.",
       "voiceGuide": "Perkiraan Berat. Bandingkan dengan benda acuan.",
       "symbolLarge": "⚖️",
       "wordLarge": "TIMBANGAN",
@@ -2172,7 +2118,7 @@ export const SUB_C33: SubBabNaskah = {
       "title": "Lengkapi Kalimat Pengukuran Berat",
       "bookReference": "hlm. 124–129 (alat ukur, satuan baku, dan cara menimbang)",
       "objective": "Pakai Perkiraan Berat: Bandingkan dengan benda acuan. Latihan: Melengkapi kalimat tentang alat ukur berat, satuan baku, dan cara menimbang..",
-      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya satuan baku berat adalah gram dan ... Siswa memilih satu dari tiga kata. Saat bermain, terapkan Estimate Mass: Bandingkan dengan benda acuan.",
+      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya satuan baku berat adalah gram dan ... Siswa memilih satu dari tiga kata. Saat bermain, ingat Perkiraan Berat: Bandingkan dengan benda acuan.",
       "voiceGuide": "Perkiraan Berat. Bandingkan dengan benda acuan.",
       "symbolLarge": "…",
       "wordLarge": "LENGKAPI",
@@ -2184,7 +2130,7 @@ export const SUB_C33: SubBabNaskah = {
       "title": "Jodohkan Berat dan Timbangan",
       "bookReference": "hlm. 126–127 dan 131–132 (benda dan timbangannya)",
       "objective": "Pakai Perkiraan Berat: Bandingkan dengan benda acuan. Latihan: Menjodohkan benda yang ditimbang dengan timbangan yang tepat..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga timbangan. Siswa mengetuk benda, lalu mengetuk timbangan yang cocok. Saat bermain, terapkan Estimate Mass: Bandingkan dengan benda acuan.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga benda dan tiga timbangan. Siswa mengetuk benda, lalu mengetuk timbangan yang cocok. Saat bermain, ingat Perkiraan Berat: Bandingkan dengan benda acuan.",
       "voiceGuide": "Perkiraan Berat. Bandingkan dengan benda acuan.",
       "symbolLarge": "= ?",
       "wordLarge": "JODOHKAN",
@@ -2195,9 +2141,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "memory-weight-size",
       "title": "Memori Benda dan Berat Wajar",
       "bookReference": "hlm. 125 dan 128 (perkiraan berat benda)",
-      "objective": "Mencocokkan benda dengan berat yang wajar lewat permainan memori.. Ingat Perkiraan Berat.",
+      "objective": "Mencocokkan benda dengan berat yang wajar lewat permainan memori.. Ingat Perkiraan Berat. (Perkiraan Berat)",
       "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang): benda dan beratnya. Siswa membalik dua kartu dan mencari pasangannya. Gunakan Perkiraan Berat.",
-      "voiceGuide": "Perkiraan Berat. Balik dua kartu, cari benda dan beratnya.",
+      "voiceGuide": "Perkiraan Berat. Mainkan dengan teliti.",
       "symbolLarge": "kg",
       "wordLarge": "MEMORI",
       "mathNotation": "benda • berat"
@@ -2207,9 +2153,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "true-false-weight",
       "title": "Benar atau Salah: Pengukuran Berat",
       "bookReference": "hlm. 124–129 (timbangan dan satuan baku berat)",
-      "objective": "Menilai pernyataan tentang timbangan, satuan baku, dan cara menimbang.. Ingat Perkiraan Berat.",
+      "objective": "Menilai pernyataan tentang timbangan, satuan baku, dan cara menimbang.. Ingat Perkiraan Berat. (Perkiraan Berat)",
       "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan. Gunakan Perkiraan Berat.",
-      "voiceGuide": "Perkiraan Berat. Baca pernyataan, lalu pilih benar atau salah.",
+      "voiceGuide": "Perkiraan Berat. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "periksa dengan alasan"
@@ -2219,9 +2165,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "detective-weight",
       "title": "Detektif Pengukuran Berat",
       "bookReference": "hlm. 129 dan 133 (membaca dan menghitung berat)",
-      "objective": "Menemukan bilangan berat dari dua petunjuk.. Ingat Perkiraan Berat.",
+      "objective": "Menemukan bilangan berat dari dua petunjuk.. Ingat Perkiraan Berat. (Perkiraan Berat)",
       "mechanicDescription": "Empat soal. Siswa membaca petunjuk tentang berat dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok. Gunakan Perkiraan Berat.",
-      "voiceGuide": "Perkiraan Berat. Baca petunjuk, lalu pilih bilangannya.",
+      "voiceGuide": "Perkiraan Berat. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "dua petunjuk, satu jawaban"
@@ -2231,9 +2177,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "concept-map-weight",
       "title": "Peta Konsep Pengukuran Berat",
       "bookReference": "hlm. 104 (peta konsep Bab 3)",
-      "objective": "Melengkapi peta konsep alat ukur berat dan cara menimbang.. Ingat Perkiraan Berat.",
+      "objective": "Melengkapi peta konsep alat ukur berat dan cara menimbang.. Ingat Perkiraan Berat. (Perkiraan Berat)",
       "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan Perkiraan Berat.",
-      "voiceGuide": "Perkiraan Berat. Pilih kartu yang tepat untuk kotak yang menyala.",
+      "voiceGuide": "Perkiraan Berat. Mainkan dengan teliti.",
       "symbolLarge": "⇄",
       "wordLarge": "PETA KONSEP",
       "mathNotation": "alat • satuan • cara"
@@ -2243,9 +2189,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "story-weight",
       "title": "Soal Cerita Berat",
       "bookReference": "hlm. 129 dan 133 (bahan kue dan stroberi)",
-      "objective": "Menyelesaikan soal cerita yang menjumlahkan atau mengurangkan berat dalam gram.. Ingat Perkiraan Berat.",
+      "objective": "Menyelesaikan soal cerita yang menjumlahkan atau mengurangkan berat dalam gram.. Ingat Perkiraan Berat. (Perkiraan Berat)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga hasil dalam gram. Gunakan Perkiraan Berat.",
-      "voiceGuide": "Perkiraan Berat. Baca cerita, lalu pilih hasilnya.",
+      "voiceGuide": "Perkiraan Berat. Mainkan dengan teliti.",
       "symbolLarge": "g",
       "wordLarge": "CERITA",
       "mathNotation": "jumlah • selisih"
@@ -2255,9 +2201,9 @@ export const SUB_C33: SubBabNaskah = {
       "gameType": "sentence-weight",
       "title": "Susun Kata Pengukuran Berat",
       "bookReference": "hlm. 124–129 (pengukuran berat)",
-      "objective": "Menyusun kalimat tentang pengukuran berat dari kartu kata.. Ingat Perkiraan Berat.",
+      "objective": "Menyusun kalimat tentang pengukuran berat dari kartu kata.. Ingat Perkiraan Berat. (Perkiraan Berat)",
       "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh. Gunakan Perkiraan Berat.",
-      "voiceGuide": "Perkiraan Berat. Susun kartu kata menjadi kalimat.",
+      "voiceGuide": "Perkiraan Berat. Mainkan dengan teliti.",
       "symbolLarge": "…",
       "wordLarge": "SUSUN KATA",
       "mathNotation": "kalimat pengukuran berat"
@@ -2269,12 +2215,6 @@ export const SUB_C33: SubBabNaskah = {
       "nama": "Timbangan",
       "isi": "alat ukur berat",
       "suara": "Timbangan adalah alat untuk mengukur berat benda."
-    },
-    {
-      "ikon": "📐",
-      "nama": "Satuan baku berat",
-      "isi": "gram (g) dan kilogram (kg)",
-      "suara": "Satuan baku berat adalah gram dan kilogram. Satuan baku sama untuk semua orang."
     },
     {
       "ikon": "🌍",
@@ -2317,11 +2257,11 @@ export const SUB_C33: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Neraca pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Neraca pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Neraca membantumu memahami soal?",
-    "Kapan kamu memakai Satuan Berat Baku?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Neraca membantumu?",
+    "Kapan memakai Satuan Berat Baku?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -2364,12 +2304,12 @@ export const SUB_D33: SubBabNaskah = {
   "id": "D",
   "codeTitle": "Sub-Bab D (Hubungan Antarsatuan Baku Berat)",
   "fullTitle": "Sub-Bab D: Hubungan Antarsatuan Baku Berat",
-  "targetDescription": "Siswa mengenal timbangan kodok dan bandul (1/2 ons, 1 ons, 2 ons, 1/2 kg, 1 kg), memahami 1 kg = 1.000 g = 10 ons dan 1 ons = 100 g, mengubah kilogram ke gram dengan mengalikan 1.000 dan gram ke kilogram dengan membagi 1.000 (misalnya 1.753 g = 1 kg 753 g), serta menjumlahkan dan mengurangkan berat pada soal cerita. Siswa memakai cara Konversi Berat, Satuan Campuran, Tabel Konversi Berat.",
+  "targetDescription": "Siswa mengenal timbangan kodok dan bandul (1/2 ons, 1 ons, 2 ons, 1/2 kg, 1 kg), memahami 1 kg = 1.000 g = 10 ons dan 1 ons = 100 g, mengubah kilogram ke gram dengan mengalikan 1.000 dan gram ke kilogram dengan membagi 1.000 (misalnya 1.753 g = 1 kg 753 g), serta menjumlahkan dan mengurangkan berat pada soal cerita. Siswa memakai cara Konversi Berat, Satuan Campuran, Tabel Konversi Berat. Siswa memakai cara Konversi Berat, Satuan Campuran, Tabel Konversi Berat.",
   "secondaryBg": "#FEF3C7",
   "secondaryBorder": "#D97706",
   "secondaryText": "#78350F",
   "silabus": {
-    "teksSuara": "Kita belajar hubungan antarsatuan baku berat. Pedagang di pasar memakai timbangan kodok dengan bandul. Satu kilogram sama dengan seribu gram dan sama dengan sepuluh ons. Satu ons sama dengan seratus gram. Kita belajar mengubah kilogram ke gram dan gram ke kilogram, serta menjumlahkan dan mengurangkan berat. Kita memakai cara dari luar buku: Konversi Berat (Mass Conversion); Satuan Campuran (Mixed Units); Tabel Konversi Berat (Conversion Table Mass). 1 kg = 1000 g. 1 kg 200 g = 1200 g. Pakai tabel g–kg. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar hubungan antarsatuan baku berat. Pedagang di pasar memakai timbangan kodok dengan bandul. Satu kilogram sama dengan seribu gram dan sama dengan sepuluh ons. Satu ons sama dengan seratus gram. Kita belajar mengubah kilogram ke gram dan gram ke kilogram, serta menjumlahkan dan mengurangkan berat. Kita memakai cara: Konversi Berat, Satuan Campuran, Tabel Konversi Berat. 1 kg = 1000 g. 1 kg 200 g = 1200 g. Pakai tabel g–kg. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menyelesaikan masalah yang berkaitan dengan panjang dan berat benda dengan satuan baku. Pada sub-bab ini siswa menghubungkan kilogram, ons, dan gram serta menghitung berat gabungan.",
     "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3 Sub-Bab D)."
   },
@@ -2383,10 +2323,10 @@ export const SUB_D33: SubBabNaskah = {
           "id": "K3B3D-V1-1",
           "judul": "Di pasar",
           "ketukan": [
-            "Pedagang di pasar menimbang dagangannya dengan timbangan kodok.",
-            "Timbangan kodok dilengkapi bandul sebagai ukuran berat. Mari kita pahami bersama.",
-            "Bandul diletakkan di sisi yang lain dari timbangan. Mari kita pahami bersama.",
-            "Ingat cara Konversi Berat: 1 kg = 1000 g."
+            "Bayangkan kamu sedang mempelajari Hubungan Antarsatuan Baku Berat. Pedagang di pasar menimbang dagangannya dengan timbangan kodok.",
+            "Timbangan kodok dilengkapi bandul sebagai ukuran berat.",
+            "Bandul diletakkan di sisi yang lain dari timbangan.",
+            "Ingat cara Konversi Berat: 1 kg = 1000 g. Ingat cara Konversi Berat: 1 kg = 1000 g."
           ],
           "papan": [
             "Pedagang di pasar",
@@ -2399,10 +2339,10 @@ export const SUB_D33: SubBabNaskah = {
           "id": "K3B3D-V1-2",
           "judul": "Jenis bandul",
           "ketukan": [
-            "Jenis bandul pada timbangan kodok ada lima. Mari kita pahami bersama.",
-            "Yaitu setengah ons, satu ons, dan dua ons. Mari kita pahami bersama.",
-            "Lalu ada bandul setengah kilogram dan satu kilogram. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Mass Conversion — 1 kg = 1000 g."
+            "Jenis bandul pada timbangan kodok ada lima.",
+            "Yaitu setengah ons, satu ons, dan dua ons.",
+            "Lalu ada bandul setengah kilogram dan satu kilogram.",
+            "Di sini kita memakai ide Mass Conversion — 1 kg = 1000 g. Di sini kita memakai Mass Conversion. 1 kg = 1000 g."
           ],
           "papan": [
             "Ada lima jenis bandul",
@@ -2415,9 +2355,9 @@ export const SUB_D33: SubBabNaskah = {
           "id": "K3B3D-V1-3",
           "judul": "Telur dua timbangan",
           "ketukan": [
-            "Berat telur pada timbangan kodok adalah 1 kilogram. Mari kita pahami bersama.",
-            "Berat telur yang sama pada timbangan digital 1.000 gram. Mari kita pahami bersama.",
-            "Jumlah telurnya sama, jadi beratnya sama. Mari kita pahami bersama.",
+            "Berat telur pada timbangan kodok adalah 1 kilogram.",
+            "Berat telur yang sama pada timbangan digital 1.000 gram.",
+            "Jumlah telurnya sama, jadi beratnya sama.",
             "METODE LUAR · Konversi Berat: 1 kg = 1000 g."
           ],
           "papan": [
@@ -2438,10 +2378,10 @@ export const SUB_D33: SubBabNaskah = {
           "id": "K3B3D-V2-1",
           "judul": "Kilogram dan ons",
           "ketukan": [
-            "Satu kilogram sama dengan sepuluh ons. Mari kita pahami bersama.",
-            "Karena itu bandul satu kilogram sama dengan sepuluh bandul satu ons. Mari kita pahami bersama.",
-            "Setengah kilogram sama dengan lima ons. Mari kita pahami bersama.",
-            "Ingat cara Satuan Campuran: 1 kg 200 g = 1200 g."
+            "Satu kilogram sama dengan sepuluh ons.",
+            "Karena itu bandul satu kilogram sama dengan sepuluh bandul satu ons.",
+            "Setengah kilogram sama dengan lima ons.",
+            "Ingat cara Satuan Campuran: 1 kg 200 g = 1200 g. Ingat cara Satuan Campuran: 1 kg 200 g = 1200 g."
           ],
           "papan": [
             "1 kg = 10 ons",
@@ -2454,10 +2394,10 @@ export const SUB_D33: SubBabNaskah = {
           "id": "K3B3D-V2-2",
           "judul": "Ons dan gram",
           "ketukan": [
-            "Satu ons sama dengan seratus gram. Mari kita pahami bersama.",
-            "Dua ons sama dengan dua ratus gram. Mari kita pahami bersama.",
-            "Setengah ons sama dengan lima puluh gram. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Mixed Units — 1 kg 200 g = 1200 g."
+            "Satu ons sama dengan seratus gram.",
+            "Dua ons sama dengan dua ratus gram.",
+            "Setengah ons sama dengan lima puluh gram.",
+            "Di sini kita memakai ide Mixed Units — 1 kg 200 g = 1200 g. Di sini kita memakai Mixed Units. 1 kg 200 g = 1200 g."
           ],
           "papan": [
             "1 ons = 100 g",
@@ -2470,9 +2410,9 @@ export const SUB_D33: SubBabNaskah = {
           "id": "K3B3D-V2-3",
           "judul": "Kilogram ke gram",
           "ketukan": [
-            "Untuk mengubah kilogram ke gram, kalikan dengan 1.000. Mari kita pahami bersama.",
-            "Misalnya 3 kg sama dengan 3 × 1.000 gram. Mari kita pahami bersama.",
-            "Hasilnya adalah 3.000 gram. Mari kita pahami bersama.",
+            "Untuk mengubah kilogram ke gram, kalikan dengan 1.000.",
+            "Misalnya 3 kg sama dengan 3 × 1.000 gram.",
+            "Hasilnya adalah 3.000 gram.",
             "METODE LUAR · Satuan Campuran: 1 kg 200 g = 1200 g."
           ],
           "papan": [
@@ -2493,10 +2433,10 @@ export const SUB_D33: SubBabNaskah = {
           "id": "K3B3D-V3-1",
           "judul": "Tepung Meutia",
           "ketukan": [
-            "Meutia membantu ibu menimbang tepung untuk membuat kue. Mari kita pahami bersama.",
-            "Timbangan digital menunjukkan 1.753 gram. Mari kita pahami bersama.",
-            "Kita ubah menjadi kilogram dan gram. Mari kita pahami bersama.",
-            "Ingat cara Tabel Konversi Berat: Pakai tabel g–kg."
+            "Meutia membantu ibu menimbang tepung untuk membuat kue.",
+            "Timbangan digital menunjukkan 1.753 gram.",
+            "Kita ubah menjadi kilogram dan gram.",
+            "Ingat cara Tabel Konversi Berat: Pakai tabel g–kg. Ingat cara Tabel Konversi Berat: Pakai tabel g–kg."
           ],
           "papan": [
             "Meutia menimbang tepung",
@@ -2509,10 +2449,10 @@ export const SUB_D33: SubBabNaskah = {
           "id": "K3B3D-V3-2",
           "judul": "Pecah gramnya",
           "ketukan": [
-            "1.753 gram sama dengan 1.000 gram ditambah 753 gram. Mari kita pahami bersama.",
-            "1.000 gram sama dengan 1 kilogram. Mari kita pahami bersama.",
-            "Jadi 1.753 gram sama dengan 1 kg 753 gram. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Conversion Table Mass — Pakai tabel g–kg."
+            "1.753 gram sama dengan 1.000 gram ditambah 753 gram.",
+            "1.000 gram sama dengan 1 kilogram.",
+            "Jadi 1.753 gram sama dengan 1 kg 753 gram.",
+            "Di sini kita memakai ide Conversion Table Mass — Pakai tabel g–kg. Di sini kita memakai Conversion Table Mass. Pakai tabel g–kg."
           ],
           "papan": [
             "1.753 = 1.000 + 753",
@@ -2525,9 +2465,9 @@ export const SUB_D33: SubBabNaskah = {
           "id": "K3B3D-V3-3",
           "judul": "Mangga dan jeruk",
           "ketukan": [
-            "Meutia memanen mangga 8.000 gram dan menjual 4 kilogram. Mari kita pahami bersama.",
-            "8.000 gram sama dengan 8 kilogram. Mari kita pahami bersama.",
-            "Sisa mangga adalah 8 dikurangi 4, yaitu 4 kilogram. Mari kita pahami bersama.",
+            "Meutia memanen mangga 8.000 gram dan menjual 4 kilogram.",
+            "8.000 gram sama dengan 8 kilogram.",
+            "Sisa mangga adalah 8 dikurangi 4, yaitu 4 kilogram.",
             "METODE LUAR · Tabel Konversi Berat: Pakai tabel g–kg."
           ],
           "papan": [
@@ -2544,7 +2484,7 @@ export const SUB_D33: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Hubungan Antarsatuan Baku Berat. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Hubungan Antarsatuan Baku Berat?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -2576,7 +2516,7 @@ export const SUB_D33: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -2584,7 +2524,7 @@ export const SUB_D33: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -2592,15 +2532,15 @@ export const SUB_D33: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -2676,20 +2616,6 @@ export const SUB_D33: SubBabNaskah = {
       "countNum": 4,
       "countWord": "Empat",
       "suara": "Empat langkah. Satu, ingat satu kilogram sama dengan seribu gram. Dua, kilogram ke gram kalikan seribu. Tiga, gram ke kilogram bagi seribu. Empat, periksa dengan cara sebaliknya."
-    },
-    {
-      "judul": "Konversi Berat",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "1 kg = 1000 g."
-    },
-    {
-      "judul": "Satuan Campuran",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "1 kg 200 g = 1200 g."
     }
   ],
   "games": [
@@ -2699,7 +2625,7 @@ export const SUB_D33: SubBabNaskah = {
       "title": "Rakit Berat dengan Bandul",
       "bookReference": "hlm. 135–136 (jenis bandul timbangan kodok)",
       "objective": "Pakai Konversi Berat: 1 kg = 1000 g. Latihan: Merakit berat yang diminta dari bandul 1/2 ons, 1 ons, 2 ons, 1/2 kg, dan 1 kg..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca berat yang diminta, lalu menambah atau mengurangi bandul sampai layar menunjukkan berat itu. Banyak jalan yang benar. Saat bermain, terapkan Mass Conversion: 1 kg = 1000 g.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca berat yang diminta, lalu menambah atau mengurangi bandul sampai layar menunjukkan berat itu. Banyak jalan yang benar. Saat bermain, ingat Konversi Berat: 1 kg = 1000 g.",
       "voiceGuide": "Konversi Berat. 1 kg = 1000 g.",
       "emoji": "🏋️",
       "targetCount": 6
@@ -2710,7 +2636,7 @@ export const SUB_D33: SubBabNaskah = {
       "title": "Hitung Berat Bandul",
       "bookReference": "hlm. 135 (bandul timbangan kodok)",
       "objective": "Pakai Konversi Berat: 1 kg = 1000 g. Latihan: Menghitung berat sekumpulan bandul dalam gram..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Kumpulan bandul ditampilkan. Siswa memilih satu dari tiga berat. Pengecoh lebih atau kurang lima puluh gram. Saat bermain, terapkan Mass Conversion: 1 kg = 1000 g.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Kumpulan bandul ditampilkan. Siswa memilih satu dari tiga berat. Pengecoh lebih atau kurang lima puluh gram. Saat bermain, ingat Konversi Berat: 1 kg = 1000 g.",
       "voiceGuide": "Konversi Berat. 1 kg = 1000 g.",
       "emoji": "🔢",
       "targetCount": 6
@@ -2721,7 +2647,7 @@ export const SUB_D33: SubBabNaskah = {
       "title": "Ubah Kilogram ke Gram",
       "bookReference": "hlm. 136 dan 139 (1 kg = 1.000 g, Ayo Berlatih 1)",
       "objective": "Pakai Konversi Berat: 1 kg = 1000 g. Latihan: Mengubah kilogram ke gram dengan gambar bandul satu kilogram..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bandul satu kilogram ditampilkan. Siswa memilih satu dari tiga hasil dalam gram. Pengecoh lupa mengalikan 1.000. Saat bermain, terapkan Mass Conversion: 1 kg = 1000 g.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bandul satu kilogram ditampilkan. Siswa memilih satu dari tiga hasil dalam gram. Pengecoh lupa mengalikan 1.000. Saat bermain, ingat Konversi Berat: 1 kg = 1000 g.",
       "voiceGuide": "Konversi Berat. 1 kg = 1000 g.",
       "emoji": "✖️",
       "targetCount": 6
@@ -2732,7 +2658,7 @@ export const SUB_D33: SubBabNaskah = {
       "title": "Ubah Gram ke Kilogram",
       "bookReference": "hlm. 137 dan 139 (mengubah gram ke kilogram)",
       "objective": "Pakai Konversi Berat: 1 kg = 1000 g. Latihan: Mengubah gram ke kilogram dengan gambar bandul satu kilogram..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bandul satu kilogram ditampilkan. Siswa memilih satu dari tiga hasil dalam kilogram. Saat bermain, terapkan Mass Conversion: 1 kg = 1000 g.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bandul satu kilogram ditampilkan. Siswa memilih satu dari tiga hasil dalam kilogram. Saat bermain, ingat Konversi Berat: 1 kg = 1000 g.",
       "voiceGuide": "Konversi Berat. 1 kg = 1000 g.",
       "emoji": "➗",
       "targetCount": 6
@@ -2742,9 +2668,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "match-bandul",
       "title": "Jodohkan Bandul dan Berat",
       "bookReference": "hlm. 135–136 (jumlah bandul yang digunakan)",
-      "objective": "Menjodohkan kumpulan bandul dengan beratnya dalam gram.. Ingat Konversi Berat.",
+      "objective": "Menjodohkan kumpulan bandul dengan beratnya dalam gram.. Ingat Konversi Berat. (Konversi Berat)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga kumpulan bandul dan tiga berat. Siswa mengetuk kumpulan bandul, lalu mengetuk berat yang cocok. Gunakan Konversi Berat.",
-      "voiceGuide": "Konversi Berat. Ketuk bandul, lalu ketuk beratnya.",
+      "voiceGuide": "Konversi Berat. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 9
     },
@@ -2753,9 +2679,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "memory-bandul",
       "title": "Memori Bandul dan Berat",
       "bookReference": "hlm. 135–136 (jumlah bandul yang digunakan)",
-      "objective": "Mencocokkan kumpulan bandul dengan beratnya lewat permainan memori.. Ingat Konversi Berat.",
+      "objective": "Mencocokkan kumpulan bandul dengan beratnya lewat permainan memori.. Ingat Konversi Berat. (Konversi Berat)",
       "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Gunakan Konversi Berat.",
-      "voiceGuide": "Konversi Berat. Balik dua kartu, cari bandul dan beratnya.",
+      "voiceGuide": "Konversi Berat. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -2764,9 +2690,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "tap-bandul",
       "title": "Ketuk Bandul dengan Berat",
       "bookReference": "hlm. 135–136 (jumlah bandul yang digunakan)",
-      "objective": "Menemukan kumpulan bandul yang beratnya sama dengan bilangan yang diminta.. Ingat Konversi Berat.",
+      "objective": "Menemukan kumpulan bandul yang beratnya sama dengan bilangan yang diminta.. Ingat Konversi Berat. (Konversi Berat)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga kumpulan bandul dan dua pertanyaan. Siswa mengetuk kumpulan yang beratnya sama dengan bilangan yang disebut. Gunakan Konversi Berat.",
-      "voiceGuide": "Konversi Berat. Ketuk bandul dengan berat itu.",
+      "voiceGuide": "Konversi Berat. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 6
     },
@@ -2775,9 +2701,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "tap-all-same-weight",
       "title": "Ketuk Semua yang Sama Berat",
       "bookReference": "hlm. 136 (1 kg = 10 ons = 1.000 g)",
-      "objective": "Menemukan semua kumpulan bandul yang beratnya sama dengan berat acuan.. Ingat Konversi Berat.",
+      "objective": "Menemukan semua kumpulan bandul yang beratnya sama dengan berat acuan.. Ingat Konversi Berat. (Konversi Berat)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat kumpulan bandul dan satu perintah. Siswa mengetuk semua yang sama beratnya dengan acuan, lalu menekan Periksa. Gunakan Konversi Berat.",
-      "voiceGuide": "Konversi Berat. Ketuk semua yang sama, lalu periksa.",
+      "voiceGuide": "Konversi Berat. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -2786,9 +2712,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "ons-to-gram",
       "title": "Ubah Ons ke Gram",
       "bookReference": "hlm. 136 (1 ons = 100 g)",
-      "objective": "Mengubah ons ke gram pada papan ratusan, puluhan, dan satuan.. Ingat Konversi Berat.",
+      "objective": "Mengubah ons ke gram pada papan ratusan, puluhan, dan satuan.. Ingat Konversi Berat. (Konversi Berat)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bandul satu ons ditampilkan. Siswa mengatur angka ratusan, puluhan, dan satuan pada papan dan menekan Periksa. Gunakan Konversi Berat.",
-      "voiceGuide": "Konversi Berat. Isi papan dengan gramnya.",
+      "voiceGuide": "Konversi Berat. Mainkan dengan teliti.",
       "emoji": "🗂️",
       "targetCount": 6
     },
@@ -2797,9 +2723,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "order-bandul",
       "title": "Urutkan Bandul menurut Berat",
       "bookReference": "hlm. 135–136 (jenis bandul)",
-      "objective": "Mengurutkan tiga kumpulan bandul menurut beratnya.. Ingat Konversi Berat.",
+      "objective": "Mengurutkan tiga kumpulan bandul menurut beratnya.. Ingat Konversi Berat. (Konversi Berat)",
       "mechanicDescription": "Tiga ronde, tiap ronde tiga kumpulan bandul bertanda huruf. Siswa mengetuk kumpulan satu per satu dari yang teringan atau terberat. Gunakan Konversi Berat.",
-      "voiceGuide": "Konversi Berat. Ketuk bandul menurut beratnya.",
+      "voiceGuide": "Konversi Berat. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 9
     },
@@ -2809,7 +2735,7 @@ export const SUB_D33: SubBabNaskah = {
       "title": "Hitung Garis Berat",
       "bookReference": "hlm. 136–139 (kilogram dan gram)",
       "objective": "Pakai Satuan Campuran: 1 kg 200 g = 1200 g. Latihan: Menghitung berat batang pada garis berat dalam gram..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Garis berat bertanda tiap 500 g dan batang berwarna ditampilkan. Siswa memilih satu dari tiga berat. Saat bermain, terapkan Mixed Units: 1 kg 200 g = 1200 g.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Garis berat bertanda tiap 500 g dan batang berwarna ditampilkan. Siswa memilih satu dari tiga berat. Saat bermain, ingat Satuan Campuran: 1 kg 200 g = 1200 g.",
       "voiceGuide": "Satuan Campuran. 1 kg 200 g = 1200 g.",
       "diagramType": "weight-count",
       "numberA": 3,
@@ -2821,7 +2747,7 @@ export const SUB_D33: SubBabNaskah = {
       "title": "Lengkapi Kalimat Ubah Berat",
       "bookReference": "hlm. 137 (1.753 gram dan mengubah gram ke kilogram)",
       "objective": "Pakai Satuan Campuran: 1 kg 200 g = 1200 g. Latihan: Melengkapi kalimat yang mengubah gram menjadi kilogram dan gram..",
-      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya 1.250 g = 1.000 g + ... g. Siswa memilih satu dari tiga angka untuk bagian kosong. Saat bermain, terapkan Mixed Units: 1 kg 200 g = 1200 g.",
+      "mechanicDescription": "Tiga soal, tiap soal tiga kalimat, misalnya 1.250 g = 1.000 g + ... g. Siswa memilih satu dari tiga angka untuk bagian kosong. Saat bermain, ingat Satuan Campuran: 1 kg 200 g = 1200 g.",
       "voiceGuide": "Satuan Campuran. 1 kg 200 g = 1200 g.",
       "diagramType": "weight-sentence",
       "numberA": 3,
@@ -2833,7 +2759,7 @@ export const SUB_D33: SubBabNaskah = {
       "title": "Jodohkan Garis dan Berat",
       "bookReference": "hlm. 136–139 (kilogram dan gram)",
       "objective": "Pakai Satuan Campuran: 1 kg 200 g = 1200 g. Latihan: Menjodohkan garis berat dengan beratnya dalam kilogram dan gram..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga garis dan tiga berat. Siswa mengetuk garis, lalu mengetuk berat yang cocok. Saat bermain, terapkan Mixed Units: 1 kg 200 g = 1200 g.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga garis dan tiga berat. Siswa mengetuk garis, lalu mengetuk berat yang cocok. Saat bermain, ingat Satuan Campuran: 1 kg 200 g = 1200 g.",
       "voiceGuide": "Satuan Campuran. 1 kg 200 g = 1200 g.",
       "diagramType": "weight-match",
       "numberA": 3,
@@ -2845,7 +2771,7 @@ export const SUB_D33: SubBabNaskah = {
       "title": "Memori Garis dan Berat",
       "bookReference": "hlm. 136–139 (kilogram dan gram)",
       "objective": "Pakai Satuan Campuran: 1 kg 200 g = 1200 g. Latihan: Mencocokkan garis berat dengan beratnya lewat permainan memori..",
-      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Saat bermain, terapkan Mixed Units: 1 kg 200 g = 1200 g.",
+      "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Saat bermain, ingat Satuan Campuran: 1 kg 200 g = 1200 g.",
       "voiceGuide": "Satuan Campuran. 1 kg 200 g = 1200 g.",
       "diagramType": "weight-memory",
       "numberA": 3,
@@ -2856,9 +2782,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "fill-weight-table",
       "title": "Isi Tabel Ubah Berat",
       "bookReference": "hlm. 139 (Ayo Berlatih 1: lengkapi ukuran berat)",
-      "objective": "Melengkapi tabel berat dalam kilogram, gram, dan ons.. Ingat Satuan Campuran.",
+      "objective": "Melengkapi tabel berat dalam kilogram, gram, dan ons.. Ingat Satuan Campuran. (Satuan Campuran)",
       "mechanicDescription": "Tiga tabel dengan empat baris. Siswa mengetuk baris, lalu mengetuk kartu berat yang tepat. Ada satu kartu pengecoh. Gunakan Satuan Campuran.",
-      "voiceGuide": "Satuan Campuran. Isi tabel dengan kartu berat.",
+      "voiceGuide": "Satuan Campuran. Mainkan dengan teliti.",
       "diagramType": "weight-table",
       "numberA": 3,
       "numberB": 4
@@ -2868,9 +2794,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "tap-all-same-weight-line",
       "title": "Ketuk Semua Berat yang Sama",
       "bookReference": "hlm. 136–139 (satu berat ditulis dengan beberapa cara)",
-      "objective": "Menemukan semua garis berat yang sama dengan berat acuan, walau ditulis berbeda.. Ingat Satuan Campuran.",
+      "objective": "Menemukan semua garis berat yang sama dengan berat acuan, walau ditulis berbeda.. Ingat Satuan Campuran. (Satuan Campuran)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat garis dan satu perintah. Siswa mengetuk semua yang sama dengan acuan, lalu menekan Periksa. Gunakan Satuan Campuran.",
-      "voiceGuide": "Satuan Campuran. Ketuk semua yang sama, lalu periksa.",
+      "voiceGuide": "Satuan Campuran. Mainkan dengan teliti.",
       "diagramType": "weight-select",
       "numberA": 3,
       "numberB": 4
@@ -2880,9 +2806,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "sort-whole-kg",
       "title": "Pilah Berat: Pas Kilogram atau Bersisa",
       "bookReference": "hlm. 137 dan 139 (gram dan kilogram)",
-      "objective": "Memilah berat dalam gram menjadi yang pas dalam kilogram dan yang masih bersisa gram.. Ingat Satuan Campuran.",
+      "objective": "Memilah berat dalam gram menjadi yang pas dalam kilogram dan yang masih bersisa gram.. Ingat Satuan Campuran. (Satuan Campuran)",
       "mechanicDescription": "Tiga ronde, tiap ronde enam berat dan dua kotak. Berat yang habis dibagi 1.000 pas dalam kilogram. Siswa menyeret atau mengetuk berat ke kotak yang tepat. Gunakan Satuan Campuran.",
-      "voiceGuide": "Satuan Campuran. Pilah berat ke kotak yang tepat.",
+      "voiceGuide": "Satuan Campuran. Mainkan dengan teliti.",
       "diagramType": "weight-sort",
       "numberA": 3,
       "numberB": 6
@@ -2892,9 +2818,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "order-convert-weight-steps",
       "title": "Urutkan Langkah Mengubah Berat",
       "bookReference": "hlm. 137 dan 139 (mengubah satuan berat)",
-      "objective": "Mengurutkan langkah mengubah satuan berat.. Ingat Satuan Campuran.",
+      "objective": "Mengurutkan langkah mengubah satuan berat.. Ingat Satuan Campuran. (Satuan Campuran)",
       "mechanicDescription": "Tiga ronde, tiap ronde empat langkah. Siswa mengetuk langkah satu per satu menurut urutan yang benar. Letak jawaban berpindah. Gunakan Satuan Campuran.",
-      "voiceGuide": "Satuan Campuran. Ketuk langkah menurut urutannya.",
+      "voiceGuide": "Satuan Campuran. Mainkan dengan teliti.",
       "diagramType": "steps-order",
       "numberA": 3,
       "numberB": 4
@@ -2904,9 +2830,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "difference-weight-line",
       "title": "Selisih Dua Garis Berat",
       "bookReference": "hlm. 139 (Ayo Berlatih 2: sisa mangga)",
-      "objective": "Menghitung selisih berat dari dua batang pada garis berat.. Ingat Satuan Campuran.",
+      "objective": "Menghitung selisih berat dari dua batang pada garis berat.. Ingat Satuan Campuran. (Satuan Campuran)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua batang pada satu garis ditampilkan. Siswa memilih satu dari tiga selisih berat. Gunakan Satuan Campuran.",
-      "voiceGuide": "Satuan Campuran. Pilih selisih berat kedua batang.",
+      "voiceGuide": "Satuan Campuran. Mainkan dengan teliti.",
       "diagramType": "weight-compare",
       "numberA": 3,
       "numberB": 2
@@ -2916,9 +2842,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "join-weight-lines",
       "title": "Sambung Dua Garis Berat",
       "bookReference": "hlm. 140 (Ayo Berlatih 3: dua kantong jeruk)",
-      "objective": "Menghitung berat dua batang yang disambung pada garis berat.. Ingat Satuan Campuran.",
+      "objective": "Menghitung berat dua batang yang disambung pada garis berat.. Ingat Satuan Campuran. (Satuan Campuran)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua batang yang disambung ditampilkan. Siswa memilih satu dari tiga berat gabungan. Gunakan Satuan Campuran.",
-      "voiceGuide": "Satuan Campuran. Pilih berat setelah disambung.",
+      "voiceGuide": "Satuan Campuran. Mainkan dengan teliti.",
       "diagramType": "weight-join",
       "numberA": 3,
       "numberB": 2
@@ -2929,7 +2855,7 @@ export const SUB_D33: SubBabNaskah = {
       "title": "Ubah Kilogram ke Gram: Lambang",
       "bookReference": "hlm. 139 (20 kg = ... gram)",
       "objective": "Pakai Tabel Konversi Berat: Pakai tabel g–kg. Latihan: Mengubah kilogram ke gram dan memilih hasilnya dari tiga pilihan..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 4 kg = ... g. Pengecoh lupa mengalikan 1.000 atau mengalikan 10.000. Saat bermain, terapkan Conversion Table Mass: Pakai tabel g–kg.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 4 kg = ... g. Pengecoh lupa mengalikan 1.000 atau mengalikan 10.000. Saat bermain, ingat Tabel Konversi Berat: Pakai tabel g–kg.",
       "voiceGuide": "Tabel Konversi Berat. Pakai tabel g–kg.",
       "symbolLarge": "4 kg",
       "wordLarge": "KG KE G",
@@ -2941,7 +2867,7 @@ export const SUB_D33: SubBabNaskah = {
       "title": "Ubah Gram ke Kilogram dan Gram",
       "bookReference": "hlm. 137 dan 139 (1.753 gram dan 1.200 gram)",
       "objective": "Pakai Tabel Konversi Berat: Pakai tabel g–kg. Latihan: Menulis berat gram sebagai kilogram dan gram..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 1.200 g = ... kg ... g. Pengecoh salah tambah atau kurang seratus gram. Saat bermain, terapkan Conversion Table Mass: Pakai tabel g–kg.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 1.200 g = ... kg ... g. Pengecoh salah tambah atau kurang seratus gram. Saat bermain, ingat Tabel Konversi Berat: Pakai tabel g–kg.",
       "voiceGuide": "Tabel Konversi Berat. Pakai tabel g–kg.",
       "symbolLarge": "1.200 g",
       "wordLarge": "KG DAN G",
@@ -2953,7 +2879,7 @@ export const SUB_D33: SubBabNaskah = {
       "title": "Ubah Kilogram, Ons, dan Gram",
       "bookReference": "hlm. 136 (1 kg = 10 ons, 1 ons = 100 g)",
       "objective": "Pakai Tabel Konversi Berat: Pakai tabel g–kg. Latihan: Mengubah antara kilogram, ons, dan gram..",
-      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 3 ons = ... g. Siswa memilih satu dari tiga hasil. Saat bermain, terapkan Conversion Table Mass: Pakai tabel g–kg.",
+      "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 3 ons = ... g. Siswa memilih satu dari tiga hasil. Saat bermain, ingat Tabel Konversi Berat: Pakai tabel g–kg.",
       "voiceGuide": "Tabel Konversi Berat. Pakai tabel g–kg.",
       "symbolLarge": "ons",
       "wordLarge": "KG ONS G",
@@ -2965,7 +2891,7 @@ export const SUB_D33: SubBabNaskah = {
       "title": "Jodohkan Berat",
       "bookReference": "hlm. 139 (Ayo Berlatih 1: lengkapi ukuran berat)",
       "objective": "Pakai Tabel Konversi Berat: Pakai tabel g–kg. Latihan: Menjodohkan dua cara menulis berat yang sama..",
-      "mechanicDescription": "Tiga ronde, tiap ronde tiga ukuran dan tiga pasangannya. Siswa mengetuk ukuran, lalu mengetuk pasangannya. Saat bermain, terapkan Conversion Table Mass: Pakai tabel g–kg.",
+      "mechanicDescription": "Tiga ronde, tiap ronde tiga ukuran dan tiga pasangannya. Siswa mengetuk ukuran, lalu mengetuk pasangannya. Saat bermain, ingat Tabel Konversi Berat: Pakai tabel g–kg.",
       "voiceGuide": "Tabel Konversi Berat. Pakai tabel g–kg.",
       "symbolLarge": "= ?",
       "wordLarge": "JODOHKAN",
@@ -2976,9 +2902,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "memory-weight",
       "title": "Memori Berat",
       "bookReference": "hlm. 136 dan 139 (ukuran berat yang sama)",
-      "objective": "Mencocokkan dua cara menulis berat yang sama lewat permainan memori.. Ingat Tabel Konversi Berat.",
+      "objective": "Mencocokkan dua cara menulis berat yang sama lewat permainan memori.. Ingat Tabel Konversi Berat. (Tabel Konversi Berat)",
       "mechanicDescription": "Tiga ronde, tiap ronde delapan kartu tertutup (empat pasang). Siswa membalik dua kartu dan mencari pasangannya. Gunakan Tabel Konversi Berat.",
-      "voiceGuide": "Tabel Konversi Berat. Balik dua kartu, cari berat yang sama.",
+      "voiceGuide": "Tabel Konversi Berat. Mainkan dengan teliti.",
       "symbolLarge": "kg g",
       "wordLarge": "MEMORI",
       "mathNotation": "berat yang sama"
@@ -2988,9 +2914,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "true-false-unit-weight",
       "title": "Benar atau Salah: Kilogram dan Gram",
       "bookReference": "hlm. 136–140 (hubungan satuan berat)",
-      "objective": "Menilai pernyataan tentang hubungan kilogram, ons, dan gram.. Ingat Tabel Konversi Berat.",
+      "objective": "Menilai pernyataan tentang hubungan kilogram, ons, dan gram.. Ingat Tabel Konversi Berat. (Tabel Konversi Berat)",
       "mechanicDescription": "Dua ronde, tiap ronde lima pernyataan. Siswa memilih Benar atau Salah. Tiap jawaban diberi penjelasan. Gunakan Tabel Konversi Berat.",
-      "voiceGuide": "Tabel Konversi Berat. Baca pernyataan, lalu pilih benar atau salah.",
+      "voiceGuide": "Tabel Konversi Berat. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "periksa dengan alasan"
@@ -3000,9 +2926,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "detective-unit-weight",
       "title": "Detektif Satuan Berat",
       "bookReference": "hlm. 136–139 (ubah satuan berat)",
-      "objective": "Menemukan bilangan hasil perubahan satuan berat dari dua petunjuk.. Ingat Tabel Konversi Berat.",
+      "objective": "Menemukan bilangan hasil perubahan satuan berat dari dua petunjuk.. Ingat Tabel Konversi Berat. (Tabel Konversi Berat)",
       "mechanicDescription": "Empat soal. Siswa membaca petunjuk tentang perubahan satuan dan satu ciri bilangan, lalu memilih satu dari tiga bilangan. Hanya satu yang cocok. Gunakan Tabel Konversi Berat.",
-      "voiceGuide": "Tabel Konversi Berat. Baca petunjuk, lalu pilih bilangannya.",
+      "voiceGuide": "Tabel Konversi Berat. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "dua petunjuk, satu jawaban"
@@ -3012,9 +2938,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "concept-map-unit-weight",
       "title": "Peta Konsep Satuan Berat",
       "bookReference": "hlm. 104 (peta konsep Bab 3)",
-      "objective": "Melengkapi peta konsep hubungan kilogram, ons, dan gram.. Ingat Tabel Konversi Berat.",
+      "objective": "Melengkapi peta konsep hubungan kilogram, ons, dan gram.. Ingat Tabel Konversi Berat. (Tabel Konversi Berat)",
       "mechanicDescription": "Dua peta konsep, tiap peta empat kotak. Siswa memilih kartu yang tepat untuk kotak yang menyala. Gunakan Tabel Konversi Berat.",
-      "voiceGuide": "Tabel Konversi Berat. Pilih kartu yang tepat untuk kotak yang menyala.",
+      "voiceGuide": "Tabel Konversi Berat. Mainkan dengan teliti.",
       "symbolLarge": "⇄",
       "wordLarge": "PETA KONSEP",
       "mathNotation": "kg • ons • g"
@@ -3024,9 +2950,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "story-unit-weight",
       "title": "Soal Cerita Satuan Berat",
       "bookReference": "hlm. 139–140 (Ayo Berlatih 2 dan 3: mangga dan jeruk)",
-      "objective": "Menyelesaikan soal cerita yang menjumlahkan, mengurangkan, atau mengubah berat.. Ingat Tabel Konversi Berat.",
+      "objective": "Menyelesaikan soal cerita yang menjumlahkan, mengurangkan, atau mengubah berat.. Ingat Tabel Konversi Berat. (Tabel Konversi Berat)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua cerita. Siswa membaca cerita lalu memilih satu dari tiga hasil dalam kilogram dan gram. Pengecoh salah seratus gram. Gunakan Tabel Konversi Berat.",
-      "voiceGuide": "Tabel Konversi Berat. Baca cerita, lalu pilih hasilnya.",
+      "voiceGuide": "Tabel Konversi Berat. Mainkan dengan teliti.",
       "symbolLarge": "kg g",
       "wordLarge": "CERITA",
       "mathNotation": "jumlah • selisih • ubah"
@@ -3036,9 +2962,9 @@ export const SUB_D33: SubBabNaskah = {
       "gameType": "sentence-unit-weight",
       "title": "Susun Kata Satuan Berat",
       "bookReference": "hlm. 136–139 (hubungan satuan berat)",
-      "objective": "Menyusun kalimat tentang hubungan satuan berat dari kartu kata.. Ingat Tabel Konversi Berat.",
+      "objective": "Menyusun kalimat tentang hubungan satuan berat dari kartu kata.. Ingat Tabel Konversi Berat. (Tabel Konversi Berat)",
       "mechanicDescription": "Empat kalimat. Siswa mengetuk kartu kata satu per satu menurut urutan kalimat yang benar. Ada satu kartu pengecoh. Gunakan Tabel Konversi Berat.",
-      "voiceGuide": "Tabel Konversi Berat. Susun kartu kata menjadi kalimat.",
+      "voiceGuide": "Tabel Konversi Berat. Mainkan dengan teliti.",
       "symbolLarge": "…",
       "wordLarge": "SUSUN KATA",
       "mathNotation": "kalimat satuan berat"
@@ -3050,12 +2976,6 @@ export const SUB_D33: SubBabNaskah = {
       "nama": "Kilogram dan gram",
       "isi": "1 kg = 1.000 g",
       "suara": "Satu kilogram sama dengan seribu gram. Dua kilogram sama dengan dua ribu gram."
-    },
-    {
-      "ikon": "🔟",
-      "nama": "Kilogram dan ons",
-      "isi": "1 kg = 10 ons",
-      "suara": "Satu kilogram sama dengan sepuluh ons. Setengah kilogram sama dengan lima ons."
     },
     {
       "ikon": "🌍",
@@ -3098,11 +3018,11 @@ export const SUB_D33: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Konversi Berat pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Konversi Berat pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Konversi Berat membantumu memahami soal?",
-    "Kapan kamu memakai Satuan Campuran?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Konversi Berat membantumu?",
+    "Kapan memakai Satuan Campuran?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {

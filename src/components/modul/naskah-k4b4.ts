@@ -1,6 +1,6 @@
 /**
- * Naskah — rewrite mendalam.
- * Metode luar dianyam ke Story, peta, infografis, poin, dan meta permainan.
+ * Naskah — poles kerapatan setara K5B4.
+ * Metode luar dianyam ketukan per ketukan.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
 
@@ -19,12 +19,12 @@ export const SUB_A44: SubBabNaskah = {
   "id": "A",
   "codeTitle": "Sub-Bab A (Pengukuran Luas)",
   "fullTitle": "Sub-Bab A: Pengukuran Luas",
-  "targetDescription": "Siswa mengukur dan menduga luas dengan satuan tidak baku (uang kertas, origami, buku) dan satuan baku (cm², m²), menghitung persegi satuan, serta mengonversi 1 m² = 10.000 cm² sesuai Buku Siswa Kelas IV Bab 4. Siswa memakai cara Luas sebagai Menutupi, Luas Susunan, Tak Baku ke Baku.",
+  "targetDescription": "Siswa mengukur dan menduga luas dengan satuan tidak baku (uang kertas, origami, buku) dan satuan baku (cm², m²), menghitung persegi satuan, serta mengonversi 1 m² = 10.000 cm² sesuai Buku Siswa Kelas IV Bab 4. Siswa memakai cara Luas sebagai Menutupi, Luas Susunan, Tak Baku ke Baku. Siswa memakai cara Luas sebagai Menutupi, Luas Susunan, Tak Baku ke Baku.",
   "secondaryBg": "#FFEDD5",
   "secondaryBorder": "#EA580C",
   "secondaryText": "#7C2D12",
   "silabus": {
-    "teksSuara": "Kita belajar pengukuran luas. Helen menutup meja dengan uang kertas tanpa celah. Itu satuan tidak baku. Lalu kita pakai persegi satu sentimeter dan satu meter sebagai satuan baku. Satu meter persegi sama dengan sepuluh ribu sentimeter persegi. Kita memakai cara dari luar buku: Luas sebagai Menutupi (Area as Covering); Luas Susunan (Array Area); Tak Baku ke Baku (Nonstandard then Standard). Luas = banyak satuan persegi yang menutupi daerah. Panjang × lebar untuk persegi panjang. Mulai satuan tak baku, lalu cm²/m². Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar pengukuran luas. Helen menutup meja dengan uang kertas tanpa celah. Itu satuan tidak baku. Lalu kita pakai persegi satu sentimeter dan satu meter sebagai satuan baku. Satu meter persegi sama dengan sepuluh ribu sentimeter persegi. Kita memakai cara: Luas sebagai Menutupi, Luas Susunan, Tak Baku ke Baku. Luas = banyak satuan persegi yang menutupi daerah. Panjang × lebar untuk persegi panjang. Mulai satuan tak baku, lalu cm²/m². Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa mengukur dan menduga luas dengan satuan baku dan tidak baku.",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 4 Sub-Bab A)."
   },
@@ -38,10 +38,10 @@ export const SUB_A44: SubBabNaskah = {
           "id": "K4B4A-V1-1",
           "judul": "Meja beda ukuran",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Helen melihat meja lipat kecil. Mari kita pahami bersama.",
-            "Meja guru lebih luas. Mari kita pahami bersama.",
-            "Bagaimana mengukur luasnya. Mari kita pahami bersama.",
-            "Ingat cara Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah."
+            "Bayangkan kamu sedang mempelajari Pengukuran Luas. Helen melihat meja lipat kecil.",
+            "Meja guru lebih luas.",
+            "Bagaimana mengukur luasnya.",
+            "Ingat cara Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah. Ingat cara Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah."
           ],
           "papan": [
             "meja kecil",
@@ -54,10 +54,10 @@ export const SUB_A44: SubBabNaskah = {
           "id": "K4B4A-V1-2",
           "judul": "Tutup tanpa celah",
           "ketukan": [
-            "Uang kertas disusun rapat. Mari kita pahami bersama.",
-            "Tanpa celah dan tanpa tumpang tindih. Mari kita pahami bersama.",
-            "Satu uang kertas = satu satuan luas. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Area as Covering — Luas = banyak satuan persegi yang menutupi daerah."
+            "Uang kertas disusun rapat.",
+            "Tanpa celah dan tanpa tumpang tindih.",
+            "Satu uang kertas = satu satuan luas.",
+            "Di sini kita memakai ide Area as Covering — Luas = banyak satuan persegi yang menutupi daerah. Di sini kita memakai Area as Covering. Luas = banyak satuan persegi yang menutupi daerah."
           ],
           "papan": [
             "rapat",
@@ -70,9 +70,9 @@ export const SUB_A44: SubBabNaskah = {
           "id": "K4B4A-V1-3",
           "judul": "Kesimpulan",
           "ketukan": [
-            "Origami, buku, atau kartu juga boleh. Mari kita pahami bersama.",
-            "Banyaknya bisa berbeda. Mari kita pahami bersama.",
-            "Karena ukuran bendanya beda. Mari kita pahami bersama.",
+            "Origami, buku, atau kartu juga boleh.",
+            "Banyaknya bisa berbeda.",
+            "Karena ukuran bendanya beda.",
             "METODE LUAR · Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah."
           ],
           "papan": [
@@ -93,10 +93,10 @@ export const SUB_A44: SubBabNaskah = {
           "id": "K4B4A-V2-1",
           "judul": "Persegi 1 cm",
           "ketukan": [
-            "Ambil persegi sisi satu sentimeter. Mari kita pahami bersama.",
-            "Luasnya satu sentimeter persegi. Mari kita pahami bersama.",
-            "Ditulis satu cm persegi. Mari kita pahami bersama.",
-            "Ingat cara Luas Susunan: Panjang × lebar untuk persegi panjang."
+            "Ambil persegi sisi satu sentimeter.",
+            "Luasnya satu sentimeter persegi.",
+            "Ditulis satu cm persegi.",
+            "Ingat cara Luas Susunan: Panjang × lebar untuk persegi panjang. Ingat cara Luas Susunan: Panjang × lebar untuk persegi panjang."
           ],
           "papan": [
             "1 cm",
@@ -109,10 +109,10 @@ export const SUB_A44: SubBabNaskah = {
           "id": "K4B4A-V2-2",
           "judul": "Persegi 1 m",
           "ketukan": [
-            "Untuk lapangan yang besar,. Mari kita pahami bersama.",
-            "pakai persegi sisi satu meter. Mari kita pahami bersama.",
-            "Luasnya satu meter persegi. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Array Area — Panjang × lebar untuk persegi panjang."
+            "Untuk lapangan yang besar,.",
+            "pakai persegi sisi satu meter.",
+            "Luasnya satu meter persegi.",
+            "Di sini kita memakai ide Array Area — Panjang × lebar untuk persegi panjang. Di sini kita memakai Array Area. Panjang × lebar untuk persegi panjang."
           ],
           "papan": [
             "1 m",
@@ -125,9 +125,9 @@ export const SUB_A44: SubBabNaskah = {
           "id": "K4B4A-V2-3",
           "judul": "Hitung kisi",
           "ketukan": [
-            "Gambar diarsir dihitung selnya. Mari kita pahami bersama.",
-            "Tiap sel satu cm persegi. Mari kita pahami bersama.",
-            "Contoh buku: tiga belas cm persegi. Mari kita pahami bersama.",
+            "Gambar diarsir dihitung selnya.",
+            "Tiap sel satu cm persegi.",
+            "Contoh buku: tiga belas cm persegi.",
             "METODE LUAR · Luas Susunan: Panjang × lebar untuk persegi panjang."
           ],
           "papan": [
@@ -148,10 +148,10 @@ export const SUB_A44: SubBabNaskah = {
           "id": "K4B4A-V3-1",
           "judul": "1 m = 100 cm",
           "ketukan": [
-            "Satu meter sama dengan seratus cm. Mari kita pahami bersama.",
-            "Untuk luas, kalikan panjang dan lebar. Mari kita pahami bersama.",
-            "Seratus kali seratus. Mari kita pahami bersama.",
-            "Ingat cara Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m²."
+            "Satu meter sama dengan seratus cm.",
+            "Untuk luas, kalikan panjang dan lebar.",
+            "Seratus kali seratus.",
+            "Ingat cara Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m². Ingat cara Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m²."
           ],
           "papan": [
             "100 cm",
@@ -165,9 +165,9 @@ export const SUB_A44: SubBabNaskah = {
           "judul": "Rumus baku",
           "ketukan": [
             "Perhatikan ini: Jadi satu meter persegi. Itu bagian penting dari Pengukuran Luas.",
-            "sama dengan sepuluh ribu cm persegi. Mari kita pahami bersama.",
-            "Ingat angka ini. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Nonstandard then Standard — Mulai satuan tak baku, lalu cm²/m²."
+            "sama dengan sepuluh ribu cm persegi.",
+            "Ingat angka ini.",
+            "Di sini kita memakai ide Nonstandard then Standard — Mulai satuan tak baku, lalu cm²/m². Di sini kita memakai Nonstandard then Standard. Mulai satuan tak baku, lalu cm²/m²."
           ],
           "papan": [
             "1 m²",
@@ -180,9 +180,9 @@ export const SUB_A44: SubBabNaskah = {
           "id": "K4B4A-V3-3",
           "judul": "Siap berlatih",
           "ketukan": [
-            "Kamu sudah siap mengukur luas. Mari kita pahami bersama.",
-            "Pilih satuan yang cocok. Mari kita pahami bersama.",
-            "Hitung persegi satuan. Mari kita pahami bersama.",
+            "Kamu sudah siap mengukur luas.",
+            "Pilih satuan yang cocok.",
+            "Hitung persegi satuan.",
             "METODE LUAR · Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m²."
           ],
           "papan": [
@@ -199,7 +199,7 @@ export const SUB_A44: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Pengukuran Luas. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Pengukuran Luas?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -231,7 +231,7 @@ export const SUB_A44: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -239,7 +239,7 @@ export const SUB_A44: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -247,15 +247,15 @@ export const SUB_A44: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -331,20 +331,6 @@ export const SUB_A44: SubBabNaskah = {
       "countNum": 1,
       "countWord": "volume",
       "suara": "Berikutnya kita belajar volume."
-    },
-    {
-      "judul": "Luas sebagai Menutupi",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Luas = banyak satuan persegi yang menutupi daerah."
-    },
-    {
-      "judul": "Luas Susunan",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Panjang × lebar untuk persegi panjang."
     }
   ],
   "games": [
@@ -354,7 +340,7 @@ export const SUB_A44: SubBabNaskah = {
       "title": "Hitung Persegi Satuan",
       "bookReference": "hlm. 114–115",
       "objective": "Pakai Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah. Latihan: Menghitung luas kisi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Area as Covering: Luas = banyak satuan persegi yang menutupi daerah.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah.",
       "voiceGuide": "Luas sebagai Menutupi. Luas = banyak satuan persegi yang menutupi daerah.",
       "emoji": "🟧",
       "targetCount": 6
@@ -365,7 +351,7 @@ export const SUB_A44: SubBabNaskah = {
       "title": "Pilih Satuan Luas",
       "bookReference": "hlm. 116–117",
       "objective": "Pakai Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah. Latihan: Membedakan baku/tidak baku..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Area as Covering: Luas = banyak satuan persegi yang menutupi daerah.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah.",
       "voiceGuide": "Luas sebagai Menutupi. Luas = banyak satuan persegi yang menutupi daerah.",
       "emoji": "📏",
       "targetCount": 6
@@ -376,7 +362,7 @@ export const SUB_A44: SubBabNaskah = {
       "title": "Konversi cm² dan m²",
       "bookReference": "hlm. 117",
       "objective": "Pakai Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah. Latihan: 1 m² = 10.000 cm²..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Area as Covering: Luas = banyak satuan persegi yang menutupi daerah.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah.",
       "voiceGuide": "Luas sebagai Menutupi. Luas = banyak satuan persegi yang menutupi daerah.",
       "emoji": "🔄",
       "targetCount": 6
@@ -387,7 +373,7 @@ export const SUB_A44: SubBabNaskah = {
       "title": "Pilah Baku/Tidak Baku",
       "bookReference": "hlm. 105–116",
       "objective": "Pakai Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah. Latihan: Memilah satuan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Area as Covering: Luas = banyak satuan persegi yang menutupi daerah.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah.",
       "voiceGuide": "Luas sebagai Menutupi. Luas = banyak satuan persegi yang menutupi daerah.",
       "emoji": "🧺",
       "targetCount": 18
@@ -397,9 +383,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "match-luas",
       "title": "Jodohkan Konsep Luas",
       "bookReference": "hlm. 116–120",
-      "objective": "Menjodohkan.. Ingat Luas sebagai Menutupi.",
+      "objective": "Menjodohkan.. Ingat Luas sebagai Menutupi. (Luas sebagai Menutupi)",
       "mechanicDescription": "Tiga ronde. Gunakan Luas sebagai Menutupi.",
-      "voiceGuide": "Luas sebagai Menutupi. Jodohkan.",
+      "voiceGuide": "Luas sebagai Menutupi. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -408,9 +394,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "memory-luas",
       "title": "Memori Luas",
       "bookReference": "hlm. 116–118",
-      "objective": "Memori.. Ingat Luas sebagai Menutupi.",
+      "objective": "Memori.. Ingat Luas sebagai Menutupi. (Luas sebagai Menutupi)",
       "mechanicDescription": "Tiga ronde. Gunakan Luas sebagai Menutupi.",
-      "voiceGuide": "Luas sebagai Menutupi. Balik kartu.",
+      "voiceGuide": "Luas sebagai Menutupi. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -419,9 +405,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "tap-luas",
       "title": "Ketuk Bangun Luas",
       "bookReference": "hlm. 115–119",
-      "objective": "Mengetuk.. Ingat Luas sebagai Menutupi.",
+      "objective": "Mengetuk.. Ingat Luas sebagai Menutupi. (Luas sebagai Menutupi)",
       "mechanicDescription": "Tiga ronde. Gunakan Luas sebagai Menutupi.",
-      "voiceGuide": "Luas sebagai Menutupi. Ketuk.",
+      "voiceGuide": "Luas sebagai Menutupi. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -430,9 +416,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "tap-all-luas",
       "title": "Ketuk Semua Jenis Satuan",
       "bookReference": "hlm. 116",
-      "objective": "Ketuk semua.. Ingat Luas sebagai Menutupi.",
+      "objective": "Ketuk semua.. Ingat Luas sebagai Menutupi. (Luas sebagai Menutupi)",
       "mechanicDescription": "Tiga ronde. Gunakan Luas sebagai Menutupi.",
-      "voiceGuide": "Luas sebagai Menutupi. Ketuk semua.",
+      "voiceGuide": "Luas sebagai Menutupi. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -441,9 +427,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "story-luas",
       "title": "Cerita Meja Helen",
       "bookReference": "hlm. 107–114",
-      "objective": "Soal cerita.. Ingat Luas sebagai Menutupi.",
+      "objective": "Soal cerita.. Ingat Luas sebagai Menutupi. (Luas sebagai Menutupi)",
       "mechanicDescription": "Tiga ronde. Gunakan Luas sebagai Menutupi.",
-      "voiceGuide": "Luas sebagai Menutupi. Pilih.",
+      "voiceGuide": "Luas sebagai Menutupi. Mainkan dengan teliti.",
       "emoji": "🪑",
       "targetCount": 6
     },
@@ -452,9 +438,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "order-luas",
       "title": "Urutkan Nilai Luas",
       "bookReference": "hlm. 115–119",
-      "objective": "Mengurutkan.. Ingat Luas sebagai Menutupi.",
+      "objective": "Mengurutkan.. Ingat Luas sebagai Menutupi. (Luas sebagai Menutupi)",
       "mechanicDescription": "Tiga ronde. Gunakan Luas sebagai Menutupi.",
-      "voiceGuide": "Luas sebagai Menutupi. Urutkan.",
+      "voiceGuide": "Luas sebagai Menutupi. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -464,7 +450,7 @@ export const SUB_A44: SubBabNaskah = {
       "title": "Diagram Kisi Membesar",
       "bookReference": "hlm. 115",
       "objective": "Pakai Luas Susunan: Panjang × lebar untuk persegi panjang. Latihan: Baca kisi..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Array Area: Panjang × lebar untuk persegi panjang.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Luas Susunan: Panjang × lebar untuk persegi panjang.",
       "voiceGuide": "Luas Susunan. Panjang × lebar untuk persegi panjang.",
       "diagramType": "grid",
       "numberA": 4,
@@ -476,7 +462,7 @@ export const SUB_A44: SubBabNaskah = {
       "title": "Luas Sama Bentuk Beda",
       "bookReference": "hlm. 118",
       "objective": "Pakai Luas Susunan: Panjang × lebar untuk persegi panjang. Latihan: 13 cm² dua bentuk..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Array Area: Panjang × lebar untuk persegi panjang.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Luas Susunan: Panjang × lebar untuk persegi panjang.",
       "voiceGuide": "Luas Susunan. Panjang × lebar untuk persegi panjang.",
       "diagramType": "same",
       "numberA": 13,
@@ -488,7 +474,7 @@ export const SUB_A44: SubBabNaskah = {
       "title": "Jodohkan Diagram Luas",
       "bookReference": "hlm. 116–120",
       "objective": "Pakai Luas Susunan: Panjang × lebar untuk persegi panjang. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Array Area: Panjang × lebar untuk persegi panjang.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Luas Susunan: Panjang × lebar untuk persegi panjang.",
       "voiceGuide": "Luas Susunan. Panjang × lebar untuk persegi panjang.",
       "diagramType": "match",
       "numberA": 1,
@@ -500,7 +486,7 @@ export const SUB_A44: SubBabNaskah = {
       "title": "Memori Diagram Luas",
       "bookReference": "hlm. 117",
       "objective": "Pakai Luas Susunan: Panjang × lebar untuk persegi panjang. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Array Area: Panjang × lebar untuk persegi panjang.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Luas Susunan: Panjang × lebar untuk persegi panjang.",
       "voiceGuide": "Luas Susunan. Panjang × lebar untuk persegi panjang.",
       "diagramType": "mem",
       "numberA": 1,
@@ -511,9 +497,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "table-a",
       "title": "Tabel Satuan Luas",
       "bookReference": "hlm. 117–120",
-      "objective": "Isi tabel.. Ingat Luas Susunan.",
+      "objective": "Isi tabel.. Ingat Luas Susunan. (Luas Susunan)",
       "mechanicDescription": "Tiga tabel. Gunakan Luas Susunan.",
-      "voiceGuide": "Luas Susunan. Pilih.",
+      "voiceGuide": "Luas Susunan. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -523,9 +509,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "tap-all-a",
       "title": "Ketuk Semua Diagram Luas",
       "bookReference": "hlm. 116",
-      "objective": "Ketuk semua.. Ingat Luas Susunan.",
+      "objective": "Ketuk semua.. Ingat Luas Susunan. (Luas Susunan)",
       "mechanicDescription": "Tiga ronde. Gunakan Luas Susunan.",
-      "voiceGuide": "Luas Susunan. Ketuk semua.",
+      "voiceGuide": "Luas Susunan. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -535,9 +521,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "sort-diagram-a",
       "title": "Pilah Diagram Satuan",
       "bookReference": "hlm. 116",
-      "objective": "Pilah.. Ingat Luas Susunan.",
+      "objective": "Pilah.. Ingat Luas Susunan. (Luas Susunan)",
       "mechanicDescription": "Tiga ronde. Gunakan Luas Susunan.",
-      "voiceGuide": "Luas Susunan. Pilah.",
+      "voiceGuide": "Luas Susunan. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -547,9 +533,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "konversi-visual",
       "title": "Konversi Visual m²↔cm²",
       "bookReference": "hlm. 117",
-      "objective": "Pilih konversi.. Ingat Luas Susunan.",
+      "objective": "Pilih konversi.. Ingat Luas Susunan. (Luas Susunan)",
       "mechanicDescription": "Tiga ronde. Gunakan Luas Susunan.",
-      "voiceGuide": "Luas Susunan. Pilih.",
+      "voiceGuide": "Luas Susunan. Mainkan dengan teliti.",
       "diagramType": "conv",
       "numberA": 1,
       "numberB": 10000
@@ -559,9 +545,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "choose-luas",
       "title": "Pilih Luas Cocok",
       "bookReference": "hlm. 118–119",
-      "objective": "Pilih luas.. Ingat Luas Susunan.",
+      "objective": "Pilih luas.. Ingat Luas Susunan. (Luas Susunan)",
       "mechanicDescription": "Tiga ronde. Gunakan Luas Susunan.",
-      "voiceGuide": "Luas Susunan. Pilih.",
+      "voiceGuide": "Luas Susunan. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 9,
       "numberB": 13
@@ -571,9 +557,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "story-picture-a",
       "title": "Cerita Diagram Luas",
       "bookReference": "hlm. 107–119",
-      "objective": "Cerita + gambar.. Ingat Luas Susunan.",
+      "objective": "Cerita + gambar.. Ingat Luas Susunan. (Luas Susunan)",
       "mechanicDescription": "Tiga ronde. Gunakan Luas Susunan.",
-      "voiceGuide": "Luas Susunan. Pilih.",
+      "voiceGuide": "Luas Susunan. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -584,7 +570,7 @@ export const SUB_A44: SubBabNaskah = {
       "title": "Tulis … cm² / m²",
       "bookReference": "hlm. 116–118",
       "objective": "Pakai Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m². Latihan: Menulis satuan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Nonstandard then Standard: Mulai satuan tak baku, lalu cm²/m².",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m².",
       "voiceGuide": "Tak Baku ke Baku. Mulai satuan tak baku, lalu cm²/m².",
       "symbolLarge": "cm²",
       "wordLarge": "LUAS",
@@ -596,7 +582,7 @@ export const SUB_A44: SubBabNaskah = {
       "title": "Tulis Hasil Konversi",
       "bookReference": "hlm. 117",
       "objective": "Pakai Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m². Latihan: Menulis 10.000..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Nonstandard then Standard: Mulai satuan tak baku, lalu cm²/m².",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m².",
       "voiceGuide": "Tak Baku ke Baku. Mulai satuan tak baku, lalu cm²/m².",
       "symbolLarge": "10000",
       "wordLarge": "KONVERSI",
@@ -608,7 +594,7 @@ export const SUB_A44: SubBabNaskah = {
       "title": "Pilih Jenis Satuan",
       "bookReference": "hlm. 105–116",
       "objective": "Pakai Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m². Latihan: Baku/tidak baku..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Nonstandard then Standard: Mulai satuan tak baku, lalu cm²/m².",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m².",
       "voiceGuide": "Tak Baku ke Baku. Mulai satuan tak baku, lalu cm²/m².",
       "symbolLarge": "baku",
       "wordLarge": "JENIS",
@@ -620,7 +606,7 @@ export const SUB_A44: SubBabNaskah = {
       "title": "Urutkan Notasi Luas",
       "bookReference": "hlm. 118–119",
       "objective": "Pakai Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m². Latihan: Mengurutkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Nonstandard then Standard: Mulai satuan tak baku, lalu cm²/m².",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m².",
       "voiceGuide": "Tak Baku ke Baku. Mulai satuan tak baku, lalu cm²/m².",
       "symbolLarge": "4<13",
       "wordLarge": "URUT",
@@ -631,9 +617,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "match-abstract-a",
       "title": "Jodohkan Notasi Luas",
       "bookReference": "hlm. 116–120",
-      "objective": "Jodohkan.. Ingat Tak Baku ke Baku.",
+      "objective": "Jodohkan.. Ingat Tak Baku ke Baku. (Tak Baku ke Baku)",
       "mechanicDescription": "Tiga ronde. Gunakan Tak Baku ke Baku.",
-      "voiceGuide": "Tak Baku ke Baku. Jodohkan.",
+      "voiceGuide": "Tak Baku ke Baku. Mainkan dengan teliti.",
       "symbolLarge": "1cm²",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -643,9 +629,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "memory-abstract-a",
       "title": "Memori Notasi Luas",
       "bookReference": "hlm. 117",
-      "objective": "Memori.. Ingat Tak Baku ke Baku.",
+      "objective": "Memori.. Ingat Tak Baku ke Baku. (Tak Baku ke Baku)",
       "mechanicDescription": "Tiga ronde. Gunakan Tak Baku ke Baku.",
-      "voiceGuide": "Tak Baku ke Baku. Balik kartu.",
+      "voiceGuide": "Tak Baku ke Baku. Mainkan dengan teliti.",
       "symbolLarge": "m²",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -655,9 +641,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "true-false-a",
       "title": "Benar atau Salah: Luas",
       "bookReference": "hlm. 105–118",
-      "objective": "Menilai.. Ingat Tak Baku ke Baku.",
+      "objective": "Menilai.. Ingat Tak Baku ke Baku. (Tak Baku ke Baku)",
       "mechanicDescription": "Dua ronde. Gunakan Tak Baku ke Baku.",
-      "voiceGuide": "Tak Baku ke Baku. Benar/salah.",
+      "voiceGuide": "Tak Baku ke Baku. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -667,9 +653,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "detective-a",
       "title": "Detektif Luas",
       "bookReference": "hlm. 107–118",
-      "objective": "Petunjuk → jawaban.. Ingat Tak Baku ke Baku.",
+      "objective": "Petunjuk → jawaban.. Ingat Tak Baku ke Baku. (Tak Baku ke Baku)",
       "mechanicDescription": "Empat soal. Gunakan Tak Baku ke Baku.",
-      "voiceGuide": "Tak Baku ke Baku. Pilih.",
+      "voiceGuide": "Tak Baku ke Baku. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -679,9 +665,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "concept-a",
       "title": "Peta Konsep Luas",
       "bookReference": "hlm. 105–117",
-      "objective": "Mengisi kotak.. Ingat Tak Baku ke Baku.",
+      "objective": "Mengisi kotak.. Ingat Tak Baku ke Baku. (Tak Baku ke Baku)",
       "mechanicDescription": "Satu peta. Gunakan Tak Baku ke Baku.",
-      "voiceGuide": "Tak Baku ke Baku. Pilih opsi.",
+      "voiceGuide": "Tak Baku ke Baku. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -691,9 +677,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "story-abstract-a",
       "title": "Cerita Angka Luas",
       "bookReference": "hlm. 107–119",
-      "objective": "Soal cerita.. Ingat Tak Baku ke Baku.",
+      "objective": "Soal cerita.. Ingat Tak Baku ke Baku. (Tak Baku ke Baku)",
       "mechanicDescription": "Tiga ronde. Gunakan Tak Baku ke Baku.",
-      "voiceGuide": "Tak Baku ke Baku. Pilih.",
+      "voiceGuide": "Tak Baku ke Baku. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -705,12 +691,6 @@ export const SUB_A44: SubBabNaskah = {
       "nama": "Tutup tanpa celah",
       "isi": "Luas = menutup permukaan tanpa celah dengan satuan yang sama.",
       "suara": "Luas berarti menutup permukaan tanpa celah."
-    },
-    {
-      "ikon": "📏",
-      "nama": "Baku cm² dan m²",
-      "isi": "Persegi 1 cm × 1 cm = 1 cm². Persegi 1 m × 1 m = 1 m².",
-      "suara": "Sentimeter persegi dan meter persegi adalah satuan baku."
     },
     {
       "ikon": "🌍",
@@ -753,11 +733,11 @@ export const SUB_A44: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Luas sebagai Menutupi pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Luas sebagai Menutupi pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Luas sebagai Menutupi membantumu memahami soal?",
-    "Kapan kamu memakai Luas Susunan?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Luas sebagai Menutupi membantumu?",
+    "Kapan memakai Luas Susunan?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
@@ -801,12 +781,12 @@ export const SUB_B44: SubBabNaskah = {
   "id": "B",
   "codeTitle": "Sub-Bab B (Pengukuran Volume)",
   "fullTitle": "Sub-Bab B: Pengukuran Volume",
-  "targetDescription": "Siswa mengukur dan menduga volume dengan satuan tidak baku (gelas, botol sabun) dan satuan baku (ml, liter, cm³, m³), mengonversi 1 l = 1.000 ml dan 1 cm³ = 1 ml, serta menghitung kubus satuan sesuai Buku Siswa Kelas IV Bab 4. Siswa memakai cara Volume sebagai Mengisi, Model Lapisan, Ide Pemindahan Air.",
+  "targetDescription": "Siswa mengukur dan menduga volume dengan satuan tidak baku (gelas, botol sabun) dan satuan baku (ml, liter, cm³, m³), mengonversi 1 l = 1.000 ml dan 1 cm³ = 1 ml, serta menghitung kubus satuan sesuai Buku Siswa Kelas IV Bab 4. Siswa memakai cara Volume sebagai Mengisi, Model Lapisan, Ide Pemindahan Air. Siswa memakai cara Volume sebagai Mengisi, Model Lapisan, Ide Pemindahan Air.",
   "secondaryBg": "#DBEAFE",
   "secondaryBorder": "#2563EB",
   "secondaryText": "#1E3A8A",
   "silabus": {
-    "teksSuara": "Kita belajar pengukuran volume. Botol sabun A sama dengan empat botol B, atau sepuluh botol C. Lalu satuan baku: mililiter, liter, sentimeter kubik, dan meter kubik. Satu liter sama dengan seribu mililiter. Satu cm kubik sama dengan satu mililiter. Kita memakai cara dari luar buku: Volume sebagai Mengisi (Volume as Filling); Model Lapisan (Layer Model); Ide Pemindahan Air (Displacement Idea). Volume = banyak satuan kubus yang mengisi ruang. Volume = luas alas × tinggi. Benda yang dicelup menaikkan muka air. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "teksSuara": "Kita belajar pengukuran volume. Botol sabun A sama dengan empat botol B, atau sepuluh botol C. Lalu satuan baku: mililiter, liter, sentimeter kubik, dan meter kubik. Satu liter sama dengan seribu mililiter. Satu cm kubik sama dengan satu mililiter. Kita memakai cara: Volume sebagai Mengisi, Model Lapisan, Ide Pemindahan Air. Volume = banyak satuan kubus yang mengisi ruang. Volume = luas alas × tinggi. Benda yang dicelup menaikkan muka air. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa mengukur dan menduga volume dengan satuan baku dan tidak baku.",
     "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 4 Sub-Bab B)."
   },
@@ -820,10 +800,10 @@ export const SUB_B44: SubBabNaskah = {
           "id": "K4B4B-V1-1",
           "judul": "Tiga botol",
           "ketukan": [
-            "Bayangkan situasi nyata di kelas atau di rumah. Ibu Helen punya tiga botol sabun. Mari kita pahami bersama.",
-            "Botol A, B, dan C. Mari kita pahami bersama.",
-            "Ukurannya berbeda. Mari kita pahami bersama.",
-            "Ingat cara Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang."
+            "Bayangkan kamu sedang mempelajari Pengukuran Volume. Ibu Helen punya tiga botol sabun.",
+            "Botol A, B, dan C.",
+            "Ukurannya berbeda.",
+            "Ingat cara Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang. Ingat cara Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang."
           ],
           "papan": [
             "A B C",
@@ -836,10 +816,10 @@ export const SUB_B44: SubBabNaskah = {
           "id": "K4B4B-V1-2",
           "judul": "A = 4B",
           "ketukan": [
-            "Isi A dari botol B. Mari kita pahami bersama.",
-            "Butuh empat botol B. Mari kita pahami bersama.",
-            "Jadi A sama dengan empat B. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Volume as Filling — Volume = banyak satuan kubus yang mengisi ruang."
+            "Isi A dari botol B.",
+            "Butuh empat botol B.",
+            "Jadi A sama dengan empat B.",
+            "Di sini kita memakai ide Volume as Filling — Volume = banyak satuan kubus yang mengisi ruang. Di sini kita memakai Volume as Filling. Volume = banyak satuan kubus yang mengisi ruang."
           ],
           "papan": [
             "= 4B",
@@ -852,9 +832,9 @@ export const SUB_B44: SubBabNaskah = {
           "id": "K4B4B-V1-3",
           "judul": "A = 10C",
           "ketukan": [
-            "Isi A dari botol C. Mari kita pahami bersama.",
-            "Butuh sepuluh botol C. Mari kita pahami bersama.",
-            "A sama dengan sepuluh C. Mari kita pahami bersama.",
+            "Isi A dari botol C.",
+            "Butuh sepuluh botol C.",
+            "A sama dengan sepuluh C.",
             "METODE LUAR · Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang."
           ],
           "papan": [
@@ -875,10 +855,10 @@ export const SUB_B44: SubBabNaskah = {
           "id": "K4B4B-V2-1",
           "judul": "Contoh kecil",
           "ketukan": [
-            "Sendok berisi lima mililiter. Mari kita pahami bersama.",
-            "Cangkir dua ratus empat puluh ml. Mari kita pahami bersama.",
-            "Botol minuman tiga ratus tiga puluh ml. Mari kita pahami bersama.",
-            "Ingat cara Model Lapisan: Volume = luas alas × tinggi."
+            "Sendok berisi lima mililiter.",
+            "Cangkir dua ratus empat puluh ml.",
+            "Botol minuman tiga ratus tiga puluh ml.",
+            "Ingat cara Model Lapisan: Volume = luas alas × tinggi. Ingat cara Model Lapisan: Volume = luas alas × tinggi."
           ],
           "papan": [
             "5 ml",
@@ -891,10 +871,10 @@ export const SUB_B44: SubBabNaskah = {
           "id": "K4B4B-V2-2",
           "judul": "1.000 ml = 1 l",
           "ketukan": [
-            "Susu UHT satu ribu ml. Mari kita pahami bersama.",
-            "Itu sama dengan satu liter. Mari kita pahami bersama.",
-            "Satu liter sama seribu ml. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Layer Model — Volume = luas alas × tinggi."
+            "Susu UHT satu ribu ml.",
+            "Itu sama dengan satu liter.",
+            "Satu liter sama seribu ml.",
+            "Di sini kita memakai ide Layer Model — Volume = luas alas × tinggi. Di sini kita memakai Layer Model. Volume = luas alas × tinggi."
           ],
           "papan": [
             "1000 ml",
@@ -907,9 +887,9 @@ export const SUB_B44: SubBabNaskah = {
           "id": "K4B4B-V2-3",
           "judul": "Sanitizer",
           "ketukan": [
-            "Botol besar diisi ke botol kecil. Mari kita pahami bersama.",
-            "Habis menjadi delapan botol kecil. Mari kita pahami bersama.",
-            "Volume besar = delapan satuan kecil. Mari kita pahami bersama.",
+            "Botol besar diisi ke botol kecil.",
+            "Habis menjadi delapan botol kecil.",
+            "Volume besar = delapan satuan kecil.",
             "METODE LUAR · Model Lapisan: Volume = luas alas × tinggi."
           ],
           "papan": [
@@ -930,10 +910,10 @@ export const SUB_B44: SubBabNaskah = {
           "id": "K4B4B-V3-1",
           "judul": "Dadu pejal",
           "ketukan": [
-            "Dadu bukan cairan. Mari kita pahami bersama.",
-            "Pakai sentimeter kubik. Mari kita pahami bersama.",
-            "Kubus sisi satu cm = satu cm kubik. Mari kita pahami bersama.",
-            "Ingat cara Ide Pemindahan Air: Benda yang dicelup menaikkan muka air."
+            "Dadu bukan cairan.",
+            "Pakai sentimeter kubik.",
+            "Kubus sisi satu cm = satu cm kubik.",
+            "Ingat cara Ide Pemindahan Air: Benda yang dicelup menaikkan muka air. Ingat cara Ide Pemindahan Air: Benda yang dicelup menaikkan muka air."
           ],
           "papan": [
             "dadu",
@@ -946,10 +926,10 @@ export const SUB_B44: SubBabNaskah = {
           "id": "K4B4B-V3-2",
           "judul": "Hitung kubus",
           "ketukan": [
-            "Susun kubus satuan. Mari kita pahami bersama.",
-            "Hitung banyaknya kubus. Mari kita pahami bersama.",
-            "Contoh buku: dua puluh empat cm kubik. Mari kita pahami bersama.",
-            "Di sini kita memakai ide Displacement Idea — Benda yang dicelup menaikkan muka air."
+            "Susun kubus satuan.",
+            "Hitung banyaknya kubus.",
+            "Contoh buku: dua puluh empat cm kubik.",
+            "Di sini kita memakai ide Displacement Idea — Benda yang dicelup menaikkan muka air. Di sini kita memakai Displacement Idea. Benda yang dicelup menaikkan muka air."
           ],
           "papan": [
             "susun",
@@ -962,9 +942,9 @@ export const SUB_B44: SubBabNaskah = {
           "id": "K4B4B-V3-3",
           "judul": "m³ besar",
           "ketukan": [
-            "Untuk bak mandi yang besar,. Mari kita pahami bersama.",
-            "pakai meter kubik. Mari kita pahami bersama.",
-            "Satu m kubik = seribu liter. Mari kita pahami bersama.",
+            "Untuk bak mandi yang besar,.",
+            "pakai meter kubik.",
+            "Satu m kubik = seribu liter.",
             "METODE LUAR · Ide Pemindahan Air: Benda yang dicelup menaikkan muka air."
           ],
           "papan": [
@@ -981,7 +961,7 @@ export const SUB_B44: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Baca soal Pengukuran Volume. Apa yang ditanyakan?",
+      "stepDesc": "Apa yang ditanyakan pada Pengukuran Volume?",
       "icon": "❓",
       "flowFrom": "START",
       "flowTo": "2"
@@ -1013,7 +993,7 @@ export const SUB_B44: SubBabNaskah = {
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar soal.",
+      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
       "icon": "✏️",
       "flowFrom": "4",
       "flowTo": "6"
@@ -1021,7 +1001,7 @@ export const SUB_B44: SubBabNaskah = {
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal? Bandingkan dengan perkiraan.",
+      "stepDesc": "Apakah hasilnya masuk akal?",
       "icon": "✅",
       "flowFrom": "5",
       "flowTo": "7"
@@ -1029,15 +1009,15 @@ export const SUB_B44: SubBabNaskah = {
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Ulangi ide utamanya dengan kalimatmu sendiri.",
+      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
       "icon": "💬",
       "flowFrom": "6",
       "flowTo": "8"
     },
     {
       "stepNumber": 8,
-      "stepTitle": "8. Lanjut main",
-      "stepDesc": "Siap melatih di permainan Concrete sampai Abstract.",
+      "stepTitle": "8. Main",
+      "stepDesc": "Latih di Concrete sampai Abstract.",
       "icon": "🎮",
       "flowFrom": "7",
       "flowTo": "END"
@@ -1113,20 +1093,6 @@ export const SUB_B44: SubBabNaskah = {
       "countNum": 1,
       "countWord": "luas+volume",
       "suara": "Luas dan volume sudah lengkap untuk Materi."
-    },
-    {
-      "judul": "Volume sebagai Mengisi",
-      "emoji": "🌍",
-      "countNum": 1,
-      "countWord": "ingat",
-      "suara": "Volume = banyak satuan kubus yang mengisi ruang."
-    },
-    {
-      "judul": "Model Lapisan",
-      "emoji": "🌍",
-      "countNum": 2,
-      "countWord": "ingat",
-      "suara": "Volume = luas alas × tinggi."
     }
   ],
   "games": [
@@ -1136,7 +1102,7 @@ export const SUB_B44: SubBabNaskah = {
       "title": "Hitung Kubus Satuan",
       "bookReference": "hlm. 135–136",
       "objective": "Pakai Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang. Latihan: Menghitung volume..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Volume as Filling: Volume = banyak satuan kubus yang mengisi ruang.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang.",
       "voiceGuide": "Volume sebagai Mengisi. Volume = banyak satuan kubus yang mengisi ruang.",
       "emoji": "🧊",
       "targetCount": 6
@@ -1147,7 +1113,7 @@ export const SUB_B44: SubBabNaskah = {
       "title": "Pilih Satuan Volume",
       "bookReference": "hlm. 124–134",
       "objective": "Pakai Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang. Latihan: Baku/tidak baku..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Volume as Filling: Volume = banyak satuan kubus yang mengisi ruang.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang.",
       "voiceGuide": "Volume sebagai Mengisi. Volume = banyak satuan kubus yang mengisi ruang.",
       "emoji": "🧴",
       "targetCount": 6
@@ -1158,7 +1124,7 @@ export const SUB_B44: SubBabNaskah = {
       "title": "Konversi ml, l, cm³",
       "bookReference": "hlm. 129–135",
       "objective": "Pakai Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang. Latihan: 1 l = 1.000 ml..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Volume as Filling: Volume = banyak satuan kubus yang mengisi ruang.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang.",
       "voiceGuide": "Volume sebagai Mengisi. Volume = banyak satuan kubus yang mengisi ruang.",
       "emoji": "🔄",
       "targetCount": 6
@@ -1169,7 +1135,7 @@ export const SUB_B44: SubBabNaskah = {
       "title": "Pilah Baku/Tidak Baku Volume",
       "bookReference": "hlm. 122–134",
       "objective": "Pakai Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang. Latihan: Memilah..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Volume as Filling: Volume = banyak satuan kubus yang mengisi ruang.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang.",
       "voiceGuide": "Volume sebagai Mengisi. Volume = banyak satuan kubus yang mengisi ruang.",
       "emoji": "🧺",
       "targetCount": 18
@@ -1179,9 +1145,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "match-vol",
       "title": "Jodohkan Konsep Volume",
       "bookReference": "hlm. 124–135",
-      "objective": "Menjodohkan.. Ingat Volume sebagai Mengisi.",
+      "objective": "Menjodohkan.. Ingat Volume sebagai Mengisi. (Volume sebagai Mengisi)",
       "mechanicDescription": "Tiga ronde. Gunakan Volume sebagai Mengisi.",
-      "voiceGuide": "Volume sebagai Mengisi. Jodohkan.",
+      "voiceGuide": "Volume sebagai Mengisi. Mainkan dengan teliti.",
       "emoji": "🔗",
       "targetCount": 12
     },
@@ -1190,9 +1156,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "memory-vol",
       "title": "Memori Volume",
       "bookReference": "hlm. 124–131",
-      "objective": "Memori.. Ingat Volume sebagai Mengisi.",
+      "objective": "Memori.. Ingat Volume sebagai Mengisi. (Volume sebagai Mengisi)",
       "mechanicDescription": "Tiga ronde. Gunakan Volume sebagai Mengisi.",
-      "voiceGuide": "Volume sebagai Mengisi. Balik kartu.",
+      "voiceGuide": "Volume sebagai Mengisi. Mainkan dengan teliti.",
       "emoji": "🃏",
       "targetCount": 12
     },
@@ -1201,9 +1167,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "tap-vol",
       "title": "Ketuk Bangun Volume",
       "bookReference": "hlm. 135–136",
-      "objective": "Mengetuk.. Ingat Volume sebagai Mengisi.",
+      "objective": "Mengetuk.. Ingat Volume sebagai Mengisi. (Volume sebagai Mengisi)",
       "mechanicDescription": "Tiga ronde. Gunakan Volume sebagai Mengisi.",
-      "voiceGuide": "Volume sebagai Mengisi. Ketuk.",
+      "voiceGuide": "Volume sebagai Mengisi. Mainkan dengan teliti.",
       "emoji": "👆",
       "targetCount": 9
     },
@@ -1212,9 +1178,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "tap-all-vol",
       "title": "Ketuk Semua Jenis Volume",
       "bookReference": "hlm. 125–134",
-      "objective": "Ketuk semua.. Ingat Volume sebagai Mengisi.",
+      "objective": "Ketuk semua.. Ingat Volume sebagai Mengisi. (Volume sebagai Mengisi)",
       "mechanicDescription": "Tiga ronde. Gunakan Volume sebagai Mengisi.",
-      "voiceGuide": "Volume sebagai Mengisi. Ketuk semua.",
+      "voiceGuide": "Volume sebagai Mengisi. Mainkan dengan teliti.",
       "emoji": "✔️",
       "targetCount": 3
     },
@@ -1223,9 +1189,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "story-vol",
       "title": "Cerita Botol Sabun Helen",
       "bookReference": "hlm. 123–126",
-      "objective": "Soal cerita.. Ingat Volume sebagai Mengisi.",
+      "objective": "Soal cerita.. Ingat Volume sebagai Mengisi. (Volume sebagai Mengisi)",
       "mechanicDescription": "Tiga ronde. Gunakan Volume sebagai Mengisi.",
-      "voiceGuide": "Volume sebagai Mengisi. Pilih.",
+      "voiceGuide": "Volume sebagai Mengisi. Mainkan dengan teliti.",
       "emoji": "🧴",
       "targetCount": 6
     },
@@ -1234,9 +1200,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "order-vol",
       "title": "Urutkan Nilai Volume",
       "bookReference": "hlm. 130–136",
-      "objective": "Mengurutkan.. Ingat Volume sebagai Mengisi.",
+      "objective": "Mengurutkan.. Ingat Volume sebagai Mengisi. (Volume sebagai Mengisi)",
       "mechanicDescription": "Tiga ronde. Gunakan Volume sebagai Mengisi.",
-      "voiceGuide": "Volume sebagai Mengisi. Urutkan.",
+      "voiceGuide": "Volume sebagai Mengisi. Mainkan dengan teliti.",
       "emoji": "📶",
       "targetCount": 3
     },
@@ -1246,7 +1212,7 @@ export const SUB_B44: SubBabNaskah = {
       "title": "Diagram Kubus Membesar",
       "bookReference": "hlm. 135",
       "objective": "Pakai Model Lapisan: Volume = luas alas × tinggi. Latihan: Baca kubus..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Layer Model: Volume = luas alas × tinggi.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Lapisan: Volume = luas alas × tinggi.",
       "voiceGuide": "Model Lapisan. Volume = luas alas × tinggi.",
       "diagramType": "cube",
       "numberA": 4,
@@ -1258,7 +1224,7 @@ export const SUB_B44: SubBabNaskah = {
       "title": "Diagram Cairan ml/l",
       "bookReference": "hlm. 129–131",
       "objective": "Pakai Model Lapisan: Volume = luas alas × tinggi. Latihan: Baca cairan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Layer Model: Volume = luas alas × tinggi.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Lapisan: Volume = luas alas × tinggi.",
       "voiceGuide": "Model Lapisan. Volume = luas alas × tinggi.",
       "diagramType": "liquid",
       "numberA": 5,
@@ -1270,7 +1236,7 @@ export const SUB_B44: SubBabNaskah = {
       "title": "Jodohkan Diagram Volume",
       "bookReference": "hlm. 124–135",
       "objective": "Pakai Model Lapisan: Volume = luas alas × tinggi. Latihan: Jodohkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Layer Model: Volume = luas alas × tinggi.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Lapisan: Volume = luas alas × tinggi.",
       "voiceGuide": "Model Lapisan. Volume = luas alas × tinggi.",
       "diagramType": "match",
       "numberA": 1,
@@ -1282,7 +1248,7 @@ export const SUB_B44: SubBabNaskah = {
       "title": "Memori Diagram Volume",
       "bookReference": "hlm. 130",
       "objective": "Pakai Model Lapisan: Volume = luas alas × tinggi. Latihan: Memori..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Layer Model: Volume = luas alas × tinggi.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Model Lapisan: Volume = luas alas × tinggi.",
       "voiceGuide": "Model Lapisan. Volume = luas alas × tinggi.",
       "diagramType": "mem",
       "numberA": 1,
@@ -1293,9 +1259,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "table-b",
       "title": "Tabel Satuan Volume",
       "bookReference": "hlm. 131–135",
-      "objective": "Isi tabel.. Ingat Model Lapisan.",
+      "objective": "Isi tabel.. Ingat Model Lapisan. (Model Lapisan)",
       "mechanicDescription": "Tiga tabel. Gunakan Model Lapisan.",
-      "voiceGuide": "Model Lapisan. Pilih.",
+      "voiceGuide": "Model Lapisan. Mainkan dengan teliti.",
       "diagramType": "table",
       "numberA": 1,
       "numberB": 3
@@ -1305,9 +1271,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "tap-all-b",
       "title": "Ketuk Semua Diagram Volume",
       "bookReference": "hlm. 125",
-      "objective": "Ketuk semua.. Ingat Model Lapisan.",
+      "objective": "Ketuk semua.. Ingat Model Lapisan. (Model Lapisan)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Lapisan.",
-      "voiceGuide": "Model Lapisan. Ketuk semua.",
+      "voiceGuide": "Model Lapisan. Mainkan dengan teliti.",
       "diagramType": "select",
       "numberA": 1,
       "numberB": 4
@@ -1317,9 +1283,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "sort-diagram-b",
       "title": "Pilah Diagram Volume",
       "bookReference": "hlm. 125–134",
-      "objective": "Pilah.. Ingat Model Lapisan.",
+      "objective": "Pilah.. Ingat Model Lapisan. (Model Lapisan)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Lapisan.",
-      "voiceGuide": "Model Lapisan. Pilah.",
+      "voiceGuide": "Model Lapisan. Mainkan dengan teliti.",
       "diagramType": "sort",
       "numberA": 1,
       "numberB": 6
@@ -1329,9 +1295,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "konversi-visual-b",
       "title": "Konversi Visual ml↔l",
       "bookReference": "hlm. 131",
-      "objective": "Pilih konversi.. Ingat Model Lapisan.",
+      "objective": "Pilih konversi.. Ingat Model Lapisan. (Model Lapisan)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Lapisan.",
-      "voiceGuide": "Model Lapisan. Pilih.",
+      "voiceGuide": "Model Lapisan. Mainkan dengan teliti.",
       "diagramType": "conv",
       "numberA": 1000,
       "numberB": 1
@@ -1341,9 +1307,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "choose-vol",
       "title": "Pilih Volume Cocok",
       "bookReference": "hlm. 135–136",
-      "objective": "Pilih volume.. Ingat Model Lapisan.",
+      "objective": "Pilih volume.. Ingat Model Lapisan. (Model Lapisan)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Lapisan.",
-      "voiceGuide": "Model Lapisan. Pilih.",
+      "voiceGuide": "Model Lapisan. Mainkan dengan teliti.",
       "diagramType": "choose",
       "numberA": 9,
       "numberB": 24
@@ -1353,9 +1319,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "story-picture-b",
       "title": "Cerita Diagram Volume",
       "bookReference": "hlm. 123–136",
-      "objective": "Cerita + gambar.. Ingat Model Lapisan.",
+      "objective": "Cerita + gambar.. Ingat Model Lapisan. (Model Lapisan)",
       "mechanicDescription": "Tiga ronde. Gunakan Model Lapisan.",
-      "voiceGuide": "Model Lapisan. Pilih.",
+      "voiceGuide": "Model Lapisan. Mainkan dengan teliti.",
       "diagramType": "story",
       "numberA": 1,
       "numberB": 2
@@ -1366,7 +1332,7 @@ export const SUB_B44: SubBabNaskah = {
       "title": "Tulis … ml / l / cm³",
       "bookReference": "hlm. 129–134",
       "objective": "Pakai Ide Pemindahan Air: Benda yang dicelup menaikkan muka air. Latihan: Menulis satuan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Displacement Idea: Benda yang dicelup menaikkan muka air.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Ide Pemindahan Air: Benda yang dicelup menaikkan muka air.",
       "voiceGuide": "Ide Pemindahan Air. Benda yang dicelup menaikkan muka air.",
       "symbolLarge": "ml",
       "wordLarge": "VOLUME",
@@ -1378,7 +1344,7 @@ export const SUB_B44: SubBabNaskah = {
       "title": "Tulis Hasil Konversi Volume",
       "bookReference": "hlm. 131–135",
       "objective": "Pakai Ide Pemindahan Air: Benda yang dicelup menaikkan muka air. Latihan: Menulis 1.000..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Displacement Idea: Benda yang dicelup menaikkan muka air.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Ide Pemindahan Air: Benda yang dicelup menaikkan muka air.",
       "voiceGuide": "Ide Pemindahan Air. Benda yang dicelup menaikkan muka air.",
       "symbolLarge": "1000",
       "wordLarge": "KONVERSI",
@@ -1390,7 +1356,7 @@ export const SUB_B44: SubBabNaskah = {
       "title": "Pilih Jenis Satuan Volume",
       "bookReference": "hlm. 122–134",
       "objective": "Pakai Ide Pemindahan Air: Benda yang dicelup menaikkan muka air. Latihan: Baku/tidak baku..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Displacement Idea: Benda yang dicelup menaikkan muka air.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Ide Pemindahan Air: Benda yang dicelup menaikkan muka air.",
       "voiceGuide": "Ide Pemindahan Air. Benda yang dicelup menaikkan muka air.",
       "symbolLarge": "baku",
       "wordLarge": "JENIS",
@@ -1402,7 +1368,7 @@ export const SUB_B44: SubBabNaskah = {
       "title": "Urutkan Notasi Volume",
       "bookReference": "hlm. 130–136",
       "objective": "Pakai Ide Pemindahan Air: Benda yang dicelup menaikkan muka air. Latihan: Mengurutkan..",
-      "mechanicDescription": "Tiga ronde. Saat bermain, terapkan Displacement Idea: Benda yang dicelup menaikkan muka air.",
+      "mechanicDescription": "Tiga ronde. Saat bermain, ingat Ide Pemindahan Air: Benda yang dicelup menaikkan muka air.",
       "voiceGuide": "Ide Pemindahan Air. Benda yang dicelup menaikkan muka air.",
       "symbolLarge": "5<330",
       "wordLarge": "URUT",
@@ -1413,9 +1379,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "match-abstract-b",
       "title": "Jodohkan Notasi Volume",
       "bookReference": "hlm. 124–135",
-      "objective": "Jodohkan.. Ingat Ide Pemindahan Air.",
+      "objective": "Jodohkan.. Ingat Ide Pemindahan Air. (Ide Pemindahan Air)",
       "mechanicDescription": "Tiga ronde. Gunakan Ide Pemindahan Air.",
-      "voiceGuide": "Ide Pemindahan Air. Jodohkan.",
+      "voiceGuide": "Ide Pemindahan Air. Mainkan dengan teliti.",
       "symbolLarge": "1l",
       "wordLarge": "JODOH",
       "mathNotation": "teks"
@@ -1425,9 +1391,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "memory-abstract-b",
       "title": "Memori Notasi Volume",
       "bookReference": "hlm. 131",
-      "objective": "Memori.. Ingat Ide Pemindahan Air.",
+      "objective": "Memori.. Ingat Ide Pemindahan Air. (Ide Pemindahan Air)",
       "mechanicDescription": "Tiga ronde. Gunakan Ide Pemindahan Air.",
-      "voiceGuide": "Ide Pemindahan Air. Balik kartu.",
+      "voiceGuide": "Ide Pemindahan Air. Mainkan dengan teliti.",
       "symbolLarge": "cm³",
       "wordLarge": "MEMORI",
       "mathNotation": "notasi"
@@ -1437,9 +1403,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "true-false-b",
       "title": "Benar atau Salah: Volume",
       "bookReference": "hlm. 122–135",
-      "objective": "Menilai.. Ingat Ide Pemindahan Air.",
+      "objective": "Menilai.. Ingat Ide Pemindahan Air. (Ide Pemindahan Air)",
       "mechanicDescription": "Dua ronde. Gunakan Ide Pemindahan Air.",
-      "voiceGuide": "Ide Pemindahan Air. Benar/salah.",
+      "voiceGuide": "Ide Pemindahan Air. Mainkan dengan teliti.",
       "symbolLarge": "✓ ✗",
       "wordLarge": "BENAR SALAH",
       "mathNotation": "alasan"
@@ -1449,9 +1415,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "detective-b",
       "title": "Detektif Volume",
       "bookReference": "hlm. 123–136",
-      "objective": "Petunjuk → jawaban.. Ingat Ide Pemindahan Air.",
+      "objective": "Petunjuk → jawaban.. Ingat Ide Pemindahan Air. (Ide Pemindahan Air)",
       "mechanicDescription": "Empat soal. Gunakan Ide Pemindahan Air.",
-      "voiceGuide": "Ide Pemindahan Air. Pilih.",
+      "voiceGuide": "Ide Pemindahan Air. Mainkan dengan teliti.",
       "symbolLarge": "?",
       "wordLarge": "DETEKTIF",
       "mathNotation": "petunjuk"
@@ -1461,9 +1427,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "concept-b",
       "title": "Peta Konsep Volume",
       "bookReference": "hlm. 122–135",
-      "objective": "Mengisi kotak.. Ingat Ide Pemindahan Air.",
+      "objective": "Mengisi kotak.. Ingat Ide Pemindahan Air. (Ide Pemindahan Air)",
       "mechanicDescription": "Satu peta. Gunakan Ide Pemindahan Air.",
-      "voiceGuide": "Ide Pemindahan Air. Pilih opsi.",
+      "voiceGuide": "Ide Pemindahan Air. Mainkan dengan teliti.",
       "symbolLarge": "🗺️",
       "wordLarge": "PETA",
       "mathNotation": "konsep"
@@ -1473,9 +1439,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "story-abstract-b",
       "title": "Cerita Angka Volume",
       "bookReference": "hlm. 123–136",
-      "objective": "Soal cerita.. Ingat Ide Pemindahan Air.",
+      "objective": "Soal cerita.. Ingat Ide Pemindahan Air. (Ide Pemindahan Air)",
       "mechanicDescription": "Tiga ronde. Gunakan Ide Pemindahan Air.",
-      "voiceGuide": "Ide Pemindahan Air. Pilih.",
+      "voiceGuide": "Ide Pemindahan Air. Mainkan dengan teliti.",
       "symbolLarge": "📖",
       "wordLarge": "CERITA",
       "mathNotation": "teks"
@@ -1487,12 +1453,6 @@ export const SUB_B44: SubBabNaskah = {
       "nama": "Isi ruang",
       "isi": "Volume = isi ruang atau kapasitas wadah.",
       "suara": "Volume mengukur isi."
-    },
-    {
-      "ikon": "🧊",
-      "nama": "Tidak baku vs baku",
-      "isi": "Botol/gelas = tidak baku. ml, l, cm³, m³ = baku.",
-      "suara": "Pilih satuan yang tepat."
     },
     {
       "ikon": "🌍",
@@ -1535,11 +1495,11 @@ export const SUB_B44: SubBabNaskah = {
       }
     ]
   },
-  "rumah": "Ayo Mencoba di rumah: terapkan Volume sebagai Mengisi pada satu benda atau soal nyata, lalu ceritakan langkahmu.",
+  "rumah": "Ayo Mencoba: terapkan Volume sebagai Mengisi pada satu soal nyata di rumah.",
   "refleksi": [
-    "Bagaimana Volume sebagai Mengisi membantumu memahami soal?",
-    "Kapan kamu memakai Model Lapisan?",
-    "Apa bedanya dengan hanya menghafal rumus atau langkah tanpa arti?"
+    "Bagaimana Volume sebagai Mengisi membantumu?",
+    "Kapan memakai Model Lapisan?",
+    "Apa bedanya dengan hanya menghafal tanpa arti?"
   ],
   "metodeLuar": [
     {
