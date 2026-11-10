@@ -325,3 +325,412 @@ export const PETA_KONSEP_QC = [
   ]},
 ];
 export const RONDE_CERITA_QC = RONDE_CERITA_CC;
+
+/* ===== D: desimal persepuluhan & perseratusan ===== */
+export type PasanganDes = { pec: Pec; des: string; jenis: "persepuluhan" | "perseratusan" };
+export const teksDes = (s: string) => s;
+export const pecKeDes = (x: Pec): string => {
+  if (x.q === 10) return `0,${x.p}`;
+  if (x.q === 100) return x.p < 10 ? `0,0${x.p}` : `0,${String(x.p).padStart(2, "0")}`;
+  const v = x.p / x.q;
+  return v.toFixed(x.q === 10 ? 1 : 2).replace(".", ",");
+};
+export const opsiDes = (benar: string, seed: number): string[] => {
+  const n = Number(benar.replace(",", "."));
+  const pengecoh = [
+    (n + 0.1).toFixed(benar.includes("0,0") || benar.length >= 4 ? 2 : 1).replace(".", ","),
+    Math.max(0.01, n - 0.1).toFixed(benar.includes("0,0") || benar.length >= 4 ? 2 : 1).replace(".", ","),
+  ];
+  if (pengecoh[0] === benar) pengecoh[0] = (n + 0.2).toFixed(2).replace(".", ",");
+  if (pengecoh[1] === benar) pengecoh[1] = (n + 0.3).toFixed(2).replace(".", ",");
+  return urutanTetap(3, 1, seed).map((i) => [benar, pengecoh[0], pengecoh[1]][i]);
+};
+export const opsiPersen = (benar: string, seed: number): string[] => {
+  const n = Number(benar.replace("%", ""));
+  const o = [`${n}%`, `${n + 10}%`, `${Math.max(1, n - 5)}%`];
+  return urutanTetap(3, 1, seed).map((i) => o[i]);
+};
+export const desKePersen = (des: string): string => {
+  const n = Number(des.replace(",", "."));
+  return `${Math.round(n * 100)}%`;
+};
+export const persenKeDes = (persen: string): string => {
+  const n = Number(persen.replace("%", ""));
+  const v = n / 100;
+  return v < 1 ? v.toFixed(2).replace(".", ",") : v.toFixed(2).replace(".", ",");
+};
+
+export const RONDE_UBAH_CD: PasanganDes[][] = [
+  [
+    { pec: { p: 1, q: 10 }, des: "0,1", jenis: "persepuluhan" },
+    { pec: { p: 3, q: 10 }, des: "0,3", jenis: "persepuluhan" },
+  ],
+  [
+    { pec: { p: 5, q: 10 }, des: "0,5", jenis: "persepuluhan" },
+    { pec: { p: 9, q: 10 }, des: "0,9", jenis: "persepuluhan" },
+  ],
+  [
+    { pec: { p: 4, q: 10 }, des: "0,4", jenis: "persepuluhan" },
+    { pec: { p: 7, q: 10 }, des: "0,7", jenis: "persepuluhan" },
+  ],
+];
+export const RONDE_UBAH100_CD: PasanganDes[][] = [
+  [
+    { pec: { p: 1, q: 100 }, des: "0,01", jenis: "perseratusan" },
+    { pec: { p: 7, q: 100 }, des: "0,07", jenis: "perseratusan" },
+  ],
+  [
+    { pec: { p: 25, q: 100 }, des: "0,25", jenis: "perseratusan" },
+    { pec: { p: 15, q: 100 }, des: "0,15", jenis: "perseratusan" },
+  ],
+  [
+    { pec: { p: 62, q: 100 }, des: "0,62", jenis: "perseratusan" },
+    { pec: { p: 81, q: 100 }, des: "0,81", jenis: "perseratusan" },
+  ],
+];
+export const RONDE_PASANG_CD: { pec: Pec; des: string }[][] = [
+  [
+    { pec: { p: 1, q: 10 }, des: "0,1" },
+    { pec: { p: 3, q: 10 }, des: "0,3" },
+    { pec: { p: 1, q: 100 }, des: "0,01" },
+    { pec: { p: 25, q: 100 }, des: "0,25" },
+  ],
+  [
+    { pec: { p: 5, q: 10 }, des: "0,5" },
+    { pec: { p: 7, q: 100 }, des: "0,07" },
+    { pec: { p: 9, q: 10 }, des: "0,9" },
+    { pec: { p: 15, q: 100 }, des: "0,15" },
+  ],
+  [
+    { pec: { p: 4, q: 10 }, des: "0,4" },
+    { pec: { p: 62, q: 100 }, des: "0,62" },
+    { pec: { p: 7, q: 10 }, des: "0,7" },
+    { pec: { p: 81, q: 100 }, des: "0,81" },
+  ],
+];
+export const RONDE_MEMORI_CD = RONDE_PASANG_CD;
+export const RONDE_SORTIR_CD: PasanganDes[][] = [
+  [
+    { pec: { p: 1, q: 10 }, des: "0,1", jenis: "persepuluhan" },
+    { pec: { p: 3, q: 10 }, des: "0,3", jenis: "persepuluhan" },
+    { pec: { p: 1, q: 100 }, des: "0,01", jenis: "perseratusan" },
+    { pec: { p: 25, q: 100 }, des: "0,25", jenis: "perseratusan" },
+    { pec: { p: 5, q: 10 }, des: "0,5", jenis: "persepuluhan" },
+    { pec: { p: 7, q: 100 }, des: "0,07", jenis: "perseratusan" },
+  ],
+  [
+    { pec: { p: 9, q: 10 }, des: "0,9", jenis: "persepuluhan" },
+    { pec: { p: 15, q: 100 }, des: "0,15", jenis: "perseratusan" },
+    { pec: { p: 4, q: 10 }, des: "0,4", jenis: "persepuluhan" },
+    { pec: { p: 62, q: 100 }, des: "0,62", jenis: "perseratusan" },
+    { pec: { p: 7, q: 10 }, des: "0,7", jenis: "persepuluhan" },
+    { pec: { p: 81, q: 100 }, des: "0,81", jenis: "perseratusan" },
+  ],
+  [
+    { pec: { p: 2, q: 10 }, des: "0,2", jenis: "persepuluhan" },
+    { pec: { p: 8, q: 100 }, des: "0,08", jenis: "perseratusan" },
+    { pec: { p: 6, q: 10 }, des: "0,6", jenis: "persepuluhan" },
+    { pec: { p: 36, q: 100 }, des: "0,36", jenis: "perseratusan" },
+    { pec: { p: 8, q: 10 }, des: "0,8", jenis: "persepuluhan" },
+    { pec: { p: 99, q: 100 }, des: "0,99", jenis: "perseratusan" },
+  ],
+];
+export const RONDE_KETUK_CD: { item: PasanganDes[]; tanya: string[] }[] = [
+  {
+    item: [
+      { pec: { p: 1, q: 10 }, des: "0,1", jenis: "persepuluhan" },
+      { pec: { p: 3, q: 10 }, des: "0,3", jenis: "persepuluhan" },
+      { pec: { p: 1, q: 100 }, des: "0,01", jenis: "perseratusan" },
+      { pec: { p: 25, q: 100 }, des: "0,25", jenis: "perseratusan" },
+      { pec: { p: 5, q: 10 }, des: "0,5", jenis: "persepuluhan" },
+      { pec: { p: 7, q: 100 }, des: "0,07", jenis: "perseratusan" },
+    ],
+    tanya: ["0,1", "0,01", "0,25"],
+  },
+  {
+    item: [
+      { pec: { p: 9, q: 10 }, des: "0,9", jenis: "persepuluhan" },
+      { pec: { p: 15, q: 100 }, des: "0,15", jenis: "perseratusan" },
+      { pec: { p: 4, q: 10 }, des: "0,4", jenis: "persepuluhan" },
+      { pec: { p: 62, q: 100 }, des: "0,62", jenis: "perseratusan" },
+      { pec: { p: 7, q: 10 }, des: "0,7", jenis: "persepuluhan" },
+      { pec: { p: 81, q: 100 }, des: "0,81", jenis: "perseratusan" },
+    ],
+    tanya: ["0,9", "0,15", "0,81"],
+  },
+  {
+    item: [
+      { pec: { p: 2, q: 10 }, des: "0,2", jenis: "persepuluhan" },
+      { pec: { p: 8, q: 100 }, des: "0,08", jenis: "perseratusan" },
+      { pec: { p: 6, q: 10 }, des: "0,6", jenis: "persepuluhan" },
+      { pec: { p: 36, q: 100 }, des: "0,36", jenis: "perseratusan" },
+      { pec: { p: 8, q: 10 }, des: "0,8", jenis: "persepuluhan" },
+      { pec: { p: 99, q: 100 }, des: "0,99", jenis: "perseratusan" },
+    ],
+    tanya: ["0,2", "0,08", "0,99"],
+  },
+];
+export const RONDE_SEMUA_CD: { jenis: "persepuluhan" | "perseratusan"; item: PasanganDes[] }[] = [
+  {
+    jenis: "persepuluhan",
+    item: [
+      { pec: { p: 1, q: 10 }, des: "0,1", jenis: "persepuluhan" },
+      { pec: { p: 3, q: 10 }, des: "0,3", jenis: "persepuluhan" },
+      { pec: { p: 1, q: 100 }, des: "0,01", jenis: "perseratusan" },
+      { pec: { p: 25, q: 100 }, des: "0,25", jenis: "perseratusan" },
+      { pec: { p: 5, q: 10 }, des: "0,5", jenis: "persepuluhan" },
+      { pec: { p: 7, q: 100 }, des: "0,07", jenis: "perseratusan" },
+    ],
+  },
+  {
+    jenis: "perseratusan",
+    item: [
+      { pec: { p: 9, q: 10 }, des: "0,9", jenis: "persepuluhan" },
+      { pec: { p: 15, q: 100 }, des: "0,15", jenis: "perseratusan" },
+      { pec: { p: 4, q: 10 }, des: "0,4", jenis: "persepuluhan" },
+      { pec: { p: 62, q: 100 }, des: "0,62", jenis: "perseratusan" },
+      { pec: { p: 7, q: 10 }, des: "0,7", jenis: "persepuluhan" },
+      { pec: { p: 81, q: 100 }, des: "0,81", jenis: "perseratusan" },
+    ],
+  },
+  {
+    jenis: "persepuluhan",
+    item: [
+      { pec: { p: 2, q: 10 }, des: "0,2", jenis: "persepuluhan" },
+      { pec: { p: 8, q: 100 }, des: "0,08", jenis: "perseratusan" },
+      { pec: { p: 6, q: 10 }, des: "0,6", jenis: "persepuluhan" },
+      { pec: { p: 36, q: 100 }, des: "0,36", jenis: "perseratusan" },
+      { pec: { p: 8, q: 10 }, des: "0,8", jenis: "persepuluhan" },
+      { pec: { p: 99, q: 100 }, des: "0,99", jenis: "perseratusan" },
+    ],
+  },
+];
+export const cocokJenisDes = (x: PasanganDes, jenis: "persepuluhan" | "perseratusan") => x.jenis === jenis;
+export const RONDE_CERITA_CD: { teks: string; jawab: string; opsi: string[]; pesan: string }[][] = [
+  [
+    { teks: "1 dari 10 roti berlapis selai. Bentuk desimalnya?", jawab: "0,1", opsi: ["0,1", "0,01", "1,0"], pesan: "1/10 = 0,1." },
+    { teks: "3 dari 10 bagian. Desimal?", jawab: "0,3", opsi: ["0,3", "0,03", "3,0"], pesan: "3/10 = 0,3." },
+  ],
+  [
+    { teks: "1 dari 100 biskuit. Desimal?", jawab: "0,01", opsi: ["0,01", "0,1", "1,00"], pesan: "1/100 = 0,01." },
+    { teks: "7/100 ditulis desimal?", jawab: "0,07", opsi: ["0,07", "0,7", "7,00"], pesan: "7/100 = 0,07." },
+  ],
+  [
+    { teks: "Satu angka di belakang koma berarti penyebut?", jawab: "10", opsi: ["10", "100", "1"], pesan: "Persepuluhan → penyebut 10." },
+    { teks: "Dua angka di belakang koma berarti penyebut?", jawab: "100", opsi: ["100", "10", "1000"], pesan: "Perseratusan → penyebut 100." },
+  ],
+];
+export const RONDE_URUT_CD: { angka: string[]; dari: "kecil" | "besar" }[] = [
+  { angka: ["0,1", "0,3", "0,01", "0,25"], dari: "kecil" },
+  { angka: ["0,9", "0,15", "0,4", "0,07"], dari: "besar" },
+  { angka: ["0,5", "0,05", "0,8", "0,25"], dari: "kecil" },
+];
+export const nilaiDes = (s: string) => Number(s.replace(",", "."));
+
+export const RONDE_UBAH_PD = RONDE_UBAH_CD;
+export const RONDE_UBAH100_PD = RONDE_UBAH100_CD;
+export const RONDE_PASANG_PD = RONDE_PASANG_CD;
+export const RONDE_MEMORI_PD = RONDE_MEMORI_CD;
+export const RONDE_SORTIR_PD = RONDE_SORTIR_CD;
+export const RONDE_KETUK_PD = RONDE_KETUK_CD;
+export const RONDE_SEMUA_PD = RONDE_SEMUA_CD;
+export const RONDE_TABEL_PD = RONDE_PASANG_CD;
+export const RONDE_BENARSALAH_QD: { teks: string; benar: boolean; penjelasan: string }[][] = [
+  [
+    { teks: "1/10 = 0,1.", benar: true, penjelasan: "Satu angka di belakang koma = persepuluhan." },
+    { teks: "1/100 = 0,1.", benar: false, penjelasan: "1/100 = 0,01." },
+    { teks: "Dua angka di belakang koma berarti penyebut 100.", benar: true, penjelasan: "Perseratusan." },
+    { teks: "25/100 = 0,25.", benar: true, penjelasan: "Contoh buku." },
+  ],
+  [
+    { teks: "7/100 = 0,7.", benar: false, penjelasan: "7/100 = 0,07." },
+    { teks: "3/10 = 0,3.", benar: true, penjelasan: "Persepuluhan." },
+    { teks: "0,01 lebih kecil dari 0,1.", benar: true, penjelasan: "Perseratusan lebih kecil dari persepuluhan yang sama digit." },
+    { teks: "Penyebut 10 → satu digit di belakang koma.", benar: true, penjelasan: "Aturan buku." },
+  ],
+];
+export const RONDE_DETEKTIF_QD: { klue: string[]; jawab: string; opsi: string[]; salah: string }[] = [
+  { klue: ["Aku 1 dari 10 roti.", "Aku punya satu angka di belakang koma."], jawab: "0,1", opsi: ["0,1", "0,01", "1,0"], salah: "1/10 = 0,1." },
+  { klue: ["Aku 1 dari 100 biskuit.", "Aku 0,0…"], jawab: "0,01", opsi: ["0,01", "0,1", "0,10"], salah: "1/100 = 0,01." },
+  { klue: ["Aku 25 dari 100.", "Aku seperempat."], jawab: "0,25", opsi: ["0,25", "0,025", "2,5"], salah: "25/100 = 0,25." },
+  { klue: ["Penyebutku 10.", "Digitku di belakang koma: satu."], jawab: "persepuluhan", opsi: ["persepuluhan", "perseratusan", "persen"], salah: "Satu digit → persepuluhan." },
+];
+export const PETA_KONSEP_QD = [
+  {
+    pusat: "Desimal",
+    kotak: [
+      { label: "Persepuluhan", opsi: ["penyebut 10 / 1 digit", "penyebut 100 / 2 digit", "persen"], benar: 0 },
+      { label: "Perseratusan", opsi: ["penyebut 100 / 2 digit", "penyebut 10", "penyebut 1000"], benar: 0 },
+      { label: "1/10", opsi: ["0,1", "0,01", "1,0"], benar: 0 },
+      { label: "1/100", opsi: ["0,01", "0,1", "1,00"], benar: 0 },
+    ],
+  },
+];
+export const RONDE_CERITA_QD = RONDE_CERITA_CD;
+
+/* ===== E: desimal perseratusan ↔ persen ===== */
+export type PasanganPersen = { des: string; pec: Pec; persen: string };
+export const RONDE_DES_PERS_CE: PasanganPersen[][] = [
+  [
+    { des: "0,35", pec: { p: 35, q: 100 }, persen: "35%" },
+    { des: "0,75", pec: { p: 75, q: 100 }, persen: "75%" },
+  ],
+  [
+    { des: "0,25", pec: { p: 25, q: 100 }, persen: "25%" },
+    { des: "0,36", pec: { p: 36, q: 100 }, persen: "36%" },
+  ],
+  [
+    { des: "0,12", pec: { p: 12, q: 100 }, persen: "12%" },
+    { des: "0,05", pec: { p: 5, q: 100 }, persen: "5%" },
+  ],
+];
+export const RONDE_BESAR_CE: PasanganPersen[][] = [
+  [
+    { des: "2,46", pec: { p: 246, q: 100 }, persen: "246%" },
+    { des: "1,15", pec: { p: 115, q: 100 }, persen: "115%" },
+  ],
+  [
+    { des: "5,62", pec: { p: 562, q: 100 }, persen: "562%" },
+    { des: "1,38", pec: { p: 138, q: 100 }, persen: "138%" },
+  ],
+  [
+    { des: "10,55", pec: { p: 1055, q: 100 }, persen: "1055%" },
+    { des: "2,36", pec: { p: 236, q: 100 }, persen: "236%" },
+  ],
+];
+export const RONDE_BALIK_CE: { persen: string; des: string }[][] = [
+  [
+    { persen: "18%", des: "0,18" },
+    { persen: "65%", des: "0,65" },
+  ],
+  [
+    { persen: "35%", des: "0,35" },
+    { persen: "56%", des: "0,56" },
+  ],
+  [
+    { persen: "123%", des: "1,23" },
+    { persen: "125%", des: "1,25" },
+  ],
+];
+export const RONDE_PASANG_CE: { des: string; persen: string }[][] = [
+  [
+    { des: "0,35", persen: "35%" },
+    { des: "0,75", persen: "75%" },
+    { des: "0,25", persen: "25%" },
+    { des: "0,12", persen: "12%" },
+  ],
+  [
+    { des: "0,36", persen: "36%" },
+    { des: "0,05", persen: "5%" },
+    { des: "1,15", persen: "115%" },
+    { des: "0,65", persen: "65%" },
+  ],
+  [
+    { des: "2,46", persen: "246%" },
+    { des: "0,18", persen: "18%" },
+    { des: "1,38", persen: "138%" },
+    { des: "0,56", persen: "56%" },
+  ],
+];
+export const RONDE_MEMORI_CE = RONDE_PASANG_CE;
+export const RONDE_SORTIR_CE: { teks: string; jenis: "persen" | "desimal" }[][] = [
+  [
+    { teks: "35%", jenis: "persen" },
+    { teks: "0,35", jenis: "desimal" },
+    { teks: "75%", jenis: "persen" },
+    { teks: "0,25", jenis: "desimal" },
+    { teks: "12%", jenis: "persen" },
+    { teks: "0,05", jenis: "desimal" },
+  ],
+  [
+    { teks: "246%", jenis: "persen" },
+    { teks: "2,46", jenis: "desimal" },
+    { teks: "18%", jenis: "persen" },
+    { teks: "0,18", jenis: "desimal" },
+    { teks: "115%", jenis: "persen" },
+    { teks: "1,15", jenis: "desimal" },
+  ],
+  [
+    { teks: "5%", jenis: "persen" },
+    { teks: "0,65", jenis: "desimal" },
+    { teks: "56%", jenis: "persen" },
+    { teks: "1,23", jenis: "desimal" },
+    { teks: "125%", jenis: "persen" },
+    { teks: "0,36", jenis: "desimal" },
+  ],
+];
+export const RONDE_KETUK_CE: { item: string[]; tanya: string[] }[] = [
+  { item: ["35%", "75%", "25%", "12%", "5%", "36%"], tanya: ["35%", "12%", "5%"] },
+  { item: ["0,35", "0,75", "0,25", "0,12", "0,05", "0,36"], tanya: ["0,75", "0,05", "0,36"] },
+  { item: ["246%", "115%", "18%", "65%", "125%", "56%"], tanya: ["246%", "18%", "125%"] },
+];
+export const RONDE_SEMUA_CE: { syarat: "kurang100" | "lebih100"; item: string[] }[] = [
+  { syarat: "kurang100", item: ["35%", "75%", "125%", "12%", "246%", "5%"] },
+  { syarat: "lebih100", item: ["115%", "65%", "246%", "18%", "125%", "56%"] },
+  { syarat: "kurang100", item: ["25%", "138%", "36%", "562%", "12%", "99%"] },
+];
+export const cocokPersenSyarat = (teks: string, syarat: "kurang100" | "lebih100") => {
+  const n = Number(teks.replace("%", ""));
+  return syarat === "kurang100" ? n < 100 : n > 100;
+};
+export const RONDE_CERITA_CE: { teks: string; jawab: string; opsi: string[]; pesan: string }[][] = [
+  [
+    { teks: "0,75 diubah ke persen?", jawab: "75%", opsi: ["75%", "7,5%", "750%"], pesan: "0,75 × 100% = 75%." },
+    { teks: "0,35 = … %", jawab: "35%", opsi: ["35%", "3,5%", "350%"], pesan: "Cara langsung ×100%." },
+  ],
+  [
+    { teks: "20 dari 50 siswa olahraga. Berapa persen?", jawab: "40%", opsi: ["40%", "20%", "50%"], pesan: "20/50 = 40/100 = 40%." },
+    { teks: "30 dari 100 siswa ikut lomba. Persen?", jawab: "30%", opsi: ["30%", "3%", "70%"], pesan: "30/100 = 30%." },
+  ],
+  [
+    { teks: "6 benar dari 10 soal. Persen?", jawab: "60%", opsi: ["60%", "6%", "40%"], pesan: "6/10 = 60/100 = 60%." },
+    { teks: "Cara langsung: geser koma desimal … kali ke kanan.", jawab: "2", opsi: ["2", "1", "3"], pesan: "Geser dua kali ke kanan." },
+  ],
+];
+export const RONDE_URUT_CE: { angka: string[]; dari: "kecil" | "besar" }[] = [
+  { angka: ["12%", "35%", "75%", "115%"], dari: "kecil" },
+  { angka: ["246%", "125%", "65%", "5%"], dari: "besar" },
+  { angka: ["0,05", "0,25", "0,75", "1,15"], dari: "kecil" },
+];
+
+export const RONDE_DES_PERS_PE = RONDE_DES_PERS_CE;
+export const RONDE_BESAR_PE = RONDE_BESAR_CE;
+export const RONDE_BALIK_PE = RONDE_BALIK_CE;
+export const RONDE_PASANG_PE = RONDE_PASANG_CE;
+export const RONDE_MEMORI_PE = RONDE_MEMORI_CE;
+export const RONDE_SORTIR_PE = RONDE_SORTIR_CE;
+export const RONDE_KETUK_PE = RONDE_KETUK_CE;
+export const RONDE_SEMUA_PE = RONDE_SEMUA_CE;
+export const RONDE_TABEL_PE = RONDE_DES_PERS_CE;
+export const RONDE_BENARSALAH_QE: { teks: string; benar: boolean; penjelasan: string }[][] = [
+  [
+    { teks: "0,75 = 75/100 = 75%.", benar: true, penjelasan: "Cara biasa buku." },
+    { teks: "Persen selalu penyebut 10.", benar: false, penjelasan: "Persen = per seratus." },
+    { teks: "Boleh langsung × 100% untuk desimal perseratusan.", benar: true, penjelasan: "Cara langsung." },
+    { teks: "2,46 = 246%.", benar: true, penjelasan: "Contoh buku." },
+  ],
+  [
+    { teks: "Geser koma dua kali ke kanan mengubah ke persen.", benar: true, penjelasan: "Tips buku." },
+    { teks: "18% = 0,18.", benar: true, penjelasan: "Balik: bagi 100." },
+    { teks: "20/50 = 20%.", benar: false, penjelasan: "20/50 = 40%." },
+    { teks: "5% artinya 5/100.", benar: true, penjelasan: "Definisi persen." },
+  ],
+];
+export const RONDE_DETEKTIF_QE: { klue: string[]; jawab: string; opsi: string[]; salah: string }[] = [
+  { klue: ["Aku 0,75.", "Aku jadi persen dengan ×100%."], jawab: "75%", opsi: ["75%", "7,5%", "750%"], salah: "0,75 × 100% = 75%." },
+  { klue: ["20 siswa olahraga dari 50.", "Samakan penyebut 100."], jawab: "40%", opsi: ["40%", "20%", "50%"], salah: "×2 → 40/100." },
+  { klue: ["Aku simbol %.", "Aku pecahan berpenyebut 100."], jawab: "persen", opsi: ["persen", "persepuluhan", "desimal saja"], salah: "% = per seratus." },
+  { klue: ["Aku 18%.", "Ubah ke desimal perseratusan."], jawab: "0,18", opsi: ["0,18", "1,8", "18"], salah: "Bagi 100 → 0,18." },
+];
+export const PETA_KONSEP_QE = [
+  {
+    pusat: "Persen",
+    kotak: [
+      { label: "Arti %", opsi: ["per seratus", "per sepuluh", "per seribu"], benar: 0 },
+      { label: "Cara langsung", opsi: ["× 100%", "× 10%", "÷ 100"], benar: 0 },
+      { label: "0,36", opsi: ["36%", "3,6%", "360%"], benar: 0 },
+      { label: "Geser koma", opsi: ["dua kali ke kanan", "satu kali", "ke kiri"], benar: 0 },
+    ],
+  },
+];
+export const RONDE_CERITA_QE = RONDE_CERITA_CE;

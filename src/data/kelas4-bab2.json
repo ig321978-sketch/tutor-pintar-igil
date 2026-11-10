@@ -2822,6 +2822,1878 @@
           "Aku membuktikan dengan gambar."
         ]
       }
+    },
+    "D": {
+      "id": "D",
+      "codeTitle": "Sub-Bab D (Desimal Persepuluhan & Perseratusan)",
+      "fullTitle": "Sub-Bab D: Pecahan Desimal Persepuluhan dan Perseratusan",
+      "targetDescription": "Siswa mengubah pecahan biasa persepuluhan (penyebut 10) dan perseratusan (penyebut 100) menjadi pecahan desimal (0,1; 0,01; 0,25), serta membaca aturan satu/dua angka di belakang koma.",
+      "secondaryBg": "#ECFDF5",
+      "secondaryBorder": "#059669",
+      "secondaryText": "#064E3B",
+      "silabus": {
+        "teksSuara": "Kita belajar pecahan desimal. Satu dari sepuluh roti sama dengan nol koma satu. Satu dari seratus biskuit sama dengan nol koma nol satu. Satu angka di belakang koma berarti penyebut sepuluh. Dua angka berarti penyebut seratus. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menyatakan pecahan desimal persepuluhan dan perseratusan serta mengubah pecahan biasa menjadi desimal.",
+        "referensi": "Buku Siswa Matematika Kelas IV Bab 2 Sub-Bab D hlm. 71–74; place-value decimal model."
+      },
+      "stories": [
+        {
+          "id": "K4B2D-V1-1",
+          "titleHint": "Sepuluh roti",
+          "sceneType": "K4B2D-V1-1",
+          "voiceNarration": "Ibu menyiapkan sepuluh roti. Satu roti dilapisi selai coklat. Berapa bagian yang berlapis? Satu dari sepuluh."
+        },
+        {
+          "id": "K4B2D-V1-2",
+          "titleHint": "Jadi desimal",
+          "sceneType": "K4B2D-V1-2",
+          "voiceNarration": "Satu per sepuluh ditulis desimal. Hasilnya nol koma satu. Satu angka di belakang koma. Itulah persepuluhan."
+        },
+        {
+          "id": "K4B2D-V1-3",
+          "titleHint": "Tiga per sepuluh",
+          "sceneType": "K4B2D-V1-3",
+          "voiceNarration": "Tiga roti berlapis. Tiga per sepuluh. Ditulis nol koma tiga. Masih persepuluhan."
+        },
+        {
+          "id": "K4B2D-V2-1",
+          "titleHint": "Seratus biskuit",
+          "sceneType": "K4B2D-V2-1",
+          "voiceNarration": "Ada seratus biskuit. Satu biskuit berlapis selai. Bentuk pecahannya? Satu per seratus."
+        },
+        {
+          "id": "K4B2D-V2-2",
+          "titleHint": "Nol koma nol satu",
+          "sceneType": "K4B2D-V2-2",
+          "voiceNarration": "Satu per seratus jadi desimal. Nol koma nol satu. Dua angka di belakang koma. Itulah perseratusan."
+        },
+        {
+          "id": "K4B2D-V2-3",
+          "titleHint": "Tujuh per seratus",
+          "sceneType": "K4B2D-V2-3",
+          "voiceNarration": "Tujuh per seratus. Ditulis nol koma nol tujuh. Dua puluh lima per seratus jadi nol koma dua lima. Paham desimal."
+        },
+        {
+          "id": "K4B2D-V3-1",
+          "titleHint": "Satu digit",
+          "sceneType": "K4B2D-V3-1",
+          "voiceNarration": "Lihat di belakang koma. Ada satu angka. Penyebutnya sepuluh. Contoh: nol koma satu."
+        },
+        {
+          "id": "K4B2D-V3-2",
+          "titleHint": "Dua digit",
+          "sceneType": "K4B2D-V3-2",
+          "voiceNarration": "Ada dua angka di belakang koma. Penyebutnya seratus. Contoh: nol koma nol tujuh. Atau nol koma dua lima."
+        },
+        {
+          "id": "K4B2D-V3-3",
+          "titleHint": "Latihan ubah",
+          "sceneType": "K4B2D-V3-3",
+          "voiceNarration": "Ubah pecahan biasa ke desimal. Lima per sepuluh jadi nol koma lima. Sembilan per sepuluh jadi nol koma sembilan. Siap berlatih."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K4B2D-V1",
+          "judul": "Roti Sepuluh",
+          "subjudul": "1/10 = 0,1",
+          "adegan": [
+            {
+              "id": "K4B2D-V1-1",
+              "judul": "Sepuluh roti",
+              "ketukan": [
+                "Ibu menyiapkan sepuluh roti.",
+                "Satu roti dilapisi selai coklat.",
+                "Berapa bagian yang berlapis?",
+                "Satu dari sepuluh."
+              ],
+              "papan": [
+                "10 roti",
+                "1 berlapis",
+                "bagian?",
+                "1/10"
+              ]
+            },
+            {
+              "id": "K4B2D-V1-2",
+              "judul": "Jadi desimal",
+              "ketukan": [
+                "Satu per sepuluh ditulis desimal.",
+                "Hasilnya nol koma satu.",
+                "Satu angka di belakang koma.",
+                "Itulah persepuluhan."
+              ],
+              "papan": [
+                "1/10",
+                "0,1",
+                "1 digit",
+                "persepuluhan"
+              ]
+            },
+            {
+              "id": "K4B2D-V1-3",
+              "judul": "Tiga per sepuluh",
+              "ketukan": [
+                "Tiga roti berlapis.",
+                "Tiga per sepuluh.",
+                "Ditulis nol koma tiga.",
+                "Masih persepuluhan."
+              ],
+              "papan": [
+                "3/10",
+                "0,3",
+                "desimal",
+                "OK"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B2D-V2",
+          "judul": "Biskuit Seratus",
+          "subjudul": "1/100 = 0,01",
+          "adegan": [
+            {
+              "id": "K4B2D-V2-1",
+              "judul": "Seratus biskuit",
+              "ketukan": [
+                "Ada seratus biskuit.",
+                "Satu biskuit berlapis selai.",
+                "Bentuk pecahannya?",
+                "Satu per seratus."
+              ],
+              "papan": [
+                "100 biskuit",
+                "1 berlapis",
+                "pecahan?",
+                "1/100"
+              ]
+            },
+            {
+              "id": "K4B2D-V2-2",
+              "judul": "Nol koma nol satu",
+              "ketukan": [
+                "Satu per seratus jadi desimal.",
+                "Nol koma nol satu.",
+                "Dua angka di belakang koma.",
+                "Itulah perseratusan."
+              ],
+              "papan": [
+                "1/100",
+                "0,01",
+                "2 digit",
+                "perseratusan"
+              ]
+            },
+            {
+              "id": "K4B2D-V2-3",
+              "judul": "Tujuh per seratus",
+              "ketukan": [
+                "Tujuh per seratus.",
+                "Ditulis nol koma nol tujuh.",
+                "Dua puluh lima per seratus jadi nol koma dua lima.",
+                "Paham desimal."
+              ],
+              "papan": [
+                "7/100",
+                "0,07",
+                "25/100",
+                "0,25"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B2D-V3",
+          "judul": "Aturan Digit Koma",
+          "subjudul": "1 digit → 10, 2 digit → 100",
+          "adegan": [
+            {
+              "id": "K4B2D-V3-1",
+              "judul": "Satu digit",
+              "ketukan": [
+                "Lihat di belakang koma.",
+                "Ada satu angka.",
+                "Penyebutnya sepuluh.",
+                "Contoh: nol koma satu."
+              ],
+              "papan": [
+                "1 digit",
+                "penyebut 10",
+                "contoh",
+                "0,1"
+              ]
+            },
+            {
+              "id": "K4B2D-V3-2",
+              "judul": "Dua digit",
+              "ketukan": [
+                "Ada dua angka di belakang koma.",
+                "Penyebutnya seratus.",
+                "Contoh: nol koma nol tujuh.",
+                "Atau nol koma dua lima."
+              ],
+              "papan": [
+                "2 digit",
+                "penyebut 100",
+                "0,07",
+                "0,25"
+              ]
+            },
+            {
+              "id": "K4B2D-V3-3",
+              "judul": "Latihan ubah",
+              "ketukan": [
+                "Ubah pecahan biasa ke desimal.",
+                "Lima per sepuluh jadi nol koma lima.",
+                "Sembilan per sepuluh jadi nol koma sembilan.",
+                "Siap berlatih."
+              ],
+              "papan": [
+                "5/10",
+                "0,5",
+                "9/10",
+                "0,9"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Roti /10",
+          "stepDesc": "Bagian dari 10.",
+          "icon": "🍞",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. 1/10=0,1",
+          "stepDesc": "Persepuluhan.",
+          "icon": "🔟",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Biskuit /100",
+          "stepDesc": "Bagian dari 100.",
+          "icon": "🍪",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. 1/100=0,01",
+          "stepDesc": "Perseratusan.",
+          "icon": "💯",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. 1 digit",
+          "stepDesc": "Penyebut 10.",
+          "icon": "1️⃣",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. 2 digit",
+          "stepDesc": "Penyebut 100.",
+          "icon": "2️⃣",
+          "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Ubah",
+          "stepDesc": "p/q → desimal.",
+          "icon": "✏️",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Siap E",
+          "stepDesc": "Lanjut persen.",
+          "icon": "➡️",
+          "flowFrom": "7",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "1/10",
+          "emoji": "🍞",
+          "countNum": 10,
+          "countWord": "roti",
+          "voiceSentence": "Satu per sepuluh."
+        },
+        {
+          "fruitName": "0,1",
+          "emoji": "🔟",
+          "countNum": 1,
+          "countWord": "digit",
+          "voiceSentence": "Persepuluhan."
+        },
+        {
+          "fruitName": "1/100",
+          "emoji": "🍪",
+          "countNum": 100,
+          "countWord": "biskuit",
+          "voiceSentence": "Satu per seratus."
+        },
+        {
+          "fruitName": "0,01",
+          "emoji": "💯",
+          "countNum": 2,
+          "countWord": "digit",
+          "voiceSentence": "Perseratusan."
+        },
+        {
+          "fruitName": "0,3",
+          "emoji": "✏️",
+          "countNum": 3,
+          "countWord": "contoh",
+          "voiceSentence": "Tiga per sepuluh."
+        },
+        {
+          "fruitName": "0,07",
+          "emoji": "📗",
+          "countNum": 7,
+          "countWord": "contoh",
+          "voiceSentence": "Tujuh per seratus."
+        },
+        {
+          "fruitName": "0,25",
+          "emoji": "🟧",
+          "countNum": 25,
+          "countWord": "seperempat",
+          "voiceSentence": "Dua puluh lima per seratus."
+        },
+        {
+          "fruitName": "ATURAN",
+          "emoji": "📜",
+          "countNum": 1,
+          "countWord": "koma",
+          "voiceSentence": "Digit = petunjuk penyebut."
+        },
+        {
+          "fruitName": "UBAH",
+          "emoji": "🔁",
+          "countNum": 1,
+          "countWord": "bentuk",
+          "voiceSentence": "Biasa ke desimal."
+        },
+        {
+          "fruitName": "SIAP E",
+          "emoji": "✅",
+          "countNum": 1,
+          "countWord": "lanjut",
+          "voiceSentence": "Menuju persen."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Roti Sepuluh Bagian",
+          "emoji": "🍞",
+          "targetCount": 6,
+          "voiceGuide": "Pilih desimal."
+        },
+        {
+          "title": "Biskuit Seratus",
+          "emoji": "🍪",
+          "targetCount": 6,
+          "voiceGuide": "Pilih desimal."
+        },
+        {
+          "title": "Ubah Persepuluhan",
+          "emoji": "🔟",
+          "targetCount": 6,
+          "voiceGuide": "Pilih desimal."
+        },
+        {
+          "title": "Ubah Perseratusan",
+          "emoji": "💯",
+          "targetCount": 6,
+          "voiceGuide": "Pilih desimal."
+        },
+        {
+          "title": "Pilah Persepuluhan/Perseratusan",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah."
+        },
+        {
+          "title": "Jodohkan Pecahan–Desimal",
+          "emoji": "🔗",
+          "targetCount": 12,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Desimal",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Desimal Diminta",
+          "emoji": "👆",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "title": "Ketuk Semua Jenis",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Roti dan Biskuit",
+          "emoji": "📖",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Batang Sepuluh",
+          "diagramType": "bar10",
+          "numberA": 1,
+          "numberB": 10,
+          "caption": "Baca batang /10."
+        },
+        {
+          "title": "Kotak Seratus",
+          "diagramType": "grid",
+          "numberA": 1,
+          "numberB": 100,
+          "caption": "Baca grid /100."
+        },
+        {
+          "title": "Jodohkan Diagram Desimal",
+          "diagramType": "match",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Diagram Desimal",
+          "diagramType": "mem",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Pecahan → Desimal",
+          "diagramType": "table",
+          "numberA": 1,
+          "numberB": 3,
+          "caption": "Isi tabel."
+        },
+        {
+          "title": "Ketuk Semua Jenis Diagram",
+          "diagramType": "select",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Ketuk semua."
+        },
+        {
+          "title": "Pilah Diagram Desimal",
+          "diagramType": "sort",
+          "numberA": 1,
+          "numberB": 6,
+          "caption": "Pilah."
+        },
+        {
+          "title": "Aturan Digit Koma",
+          "diagramType": "rule",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "1 digit→10, 2 digit→100."
+        },
+        {
+          "title": "Pilih Desimal Cocok",
+          "diagramType": "choose",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih desimal."
+        },
+        {
+          "title": "Cerita Diagram Desimal",
+          "diagramType": "story",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Cerita + gambar."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "0,1",
+          "wordLarge": "PERSEPULUHAN",
+          "mathNotation": "p/10",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "0,01",
+          "wordLarge": "PERSERATUSAN",
+          "mathNotation": "p/100",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "0,25",
+          "wordLarge": "PILIH",
+          "mathNotation": "desimal",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "0,01<0,1",
+          "wordLarge": "URUT",
+          "mathNotation": "nilai",
+          "voiceReadout": "Urutkan."
+        },
+        {
+          "symbolLarge": "1/10",
+          "wordLarge": "JODOH",
+          "mathNotation": "teks",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "0,07",
+          "wordLarge": "MEMORI",
+          "mathNotation": "notasi",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK4B2D-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "roti-10",
+          "title": "Roti Sepuluh Bagian",
+          "bookReference": "Buku Siswa hlm. 71–72 (roti 1/10)",
+          "objective": "Mengenal 1/10 = 0,1.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih desimal."
+        },
+        {
+          "gameId": "subK4B2D-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "biskuit-100",
+          "title": "Biskuit Seratus",
+          "bookReference": "Buku Siswa hlm. 72 (1/100)",
+          "objective": "Mengenal 1/100 = 0,01.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih desimal."
+        },
+        {
+          "gameId": "subK4B2D-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "ubah-10",
+          "title": "Ubah Persepuluhan",
+          "bookReference": "Buku Siswa hlm. 72–74",
+          "objective": "p/10 → 0,p.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih desimal."
+        },
+        {
+          "gameId": "subK4B2D-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "ubah-100",
+          "title": "Ubah Perseratusan",
+          "bookReference": "Buku Siswa hlm. 72–75",
+          "objective": "p/100 → 0,pp.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih desimal."
+        },
+        {
+          "gameId": "subK4B2D-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "sort-jenis",
+          "title": "Pilah Persepuluhan/Perseratusan",
+          "bookReference": "Buku Siswa hlm. 73",
+          "objective": "Memilah jenis.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B2D-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "match-des",
+          "title": "Jodohkan Pecahan–Desimal",
+          "bookReference": "Buku Siswa hlm. 72–74",
+          "objective": "Menjodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B2D-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "memory-des",
+          "title": "Memori Desimal",
+          "bookReference": "Buku Siswa hlm. 72–74",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B2D-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "tap-des",
+          "title": "Ketuk Desimal Diminta",
+          "bookReference": "Buku Siswa hlm. 73–74",
+          "objective": "Mengetuk.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "gameId": "subK4B2D-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "tap-all-des",
+          "title": "Ketuk Semua Jenis",
+          "bookReference": "Buku Siswa hlm. 73",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B2D-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "story-des",
+          "title": "Cerita Roti dan Biskuit",
+          "bookReference": "Buku Siswa hlm. 71–73",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2D-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "bar-10",
+          "title": "Batang Sepuluh",
+          "bookReference": "Buku Siswa hlm. 71–72",
+          "objective": "Baca batang /10.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2D-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "grid-100",
+          "title": "Kotak Seratus",
+          "bookReference": "Buku Siswa hlm. 72–73",
+          "objective": "Baca grid /100.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2D-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-diagram-d",
+          "title": "Jodohkan Diagram Desimal",
+          "bookReference": "Buku Siswa hlm. 72–74",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B2D-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-diagram-d",
+          "title": "Memori Diagram Desimal",
+          "bookReference": "Buku Siswa hlm. 73",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B2D-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "table-d",
+          "title": "Tabel Pecahan → Desimal",
+          "bookReference": "Buku Siswa hlm. 74–75",
+          "objective": "Isi tabel.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2D-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-d",
+          "title": "Ketuk Semua Jenis Diagram",
+          "bookReference": "Buku Siswa hlm. 73",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B2D-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-diagram-d",
+          "title": "Pilah Diagram Desimal",
+          "bookReference": "Buku Siswa hlm. 73",
+          "objective": "Pilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B2D-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "digit-rule",
+          "title": "Aturan Digit Koma",
+          "bookReference": "Buku Siswa hlm. 73",
+          "objective": "1 digit→10, 2 digit→100.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2D-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "choose-des",
+          "title": "Pilih Desimal Cocok",
+          "bookReference": "Buku Siswa hlm. 72–74",
+          "objective": "Pilih desimal.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2D-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "story-picture-d",
+          "title": "Cerita Diagram Desimal",
+          "bookReference": "Buku Siswa hlm. 71–74",
+          "objective": "Cerita + gambar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2D-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "write-des10",
+          "title": "Tulis 0,p",
+          "bookReference": "Buku Siswa hlm. 72–74",
+          "objective": "Menulis persepuluhan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2D-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "write-des100",
+          "title": "Tulis 0,pp",
+          "bookReference": "Buku Siswa hlm. 72–75",
+          "objective": "Menulis perseratusan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2D-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "choose-des-a",
+          "title": "Pilih Bentuk Desimal",
+          "bookReference": "Buku Siswa hlm. 73–74",
+          "objective": "Memilih.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2D-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "order-des",
+          "title": "Urutkan Desimal",
+          "bookReference": "Buku Siswa hlm. 74",
+          "objective": "Mengurutkan nilai.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B2D-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-abstract-d",
+          "title": "Jodohkan Notasi Desimal",
+          "bookReference": "Buku Siswa hlm. 72–74",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B2D-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-abstract-d",
+          "title": "Memori Notasi Desimal",
+          "bookReference": "Buku Siswa hlm. 73",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B2D-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-d",
+          "title": "Benar atau Salah: Desimal",
+          "bookReference": "Buku Siswa hlm. 71–74",
+          "objective": "Menilai.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK4B2D-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-d",
+          "title": "Detektif Desimal",
+          "bookReference": "Buku Siswa hlm. 71–74",
+          "objective": "Petunjuk → desimal.",
+          "mechanicDescription": "Empat soal.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2D-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-d",
+          "title": "Peta Konsep Desimal",
+          "bookReference": "Buku Siswa hlm. 71–73",
+          "objective": "Mengisi kotak.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK4B2D-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-abstract-d",
+          "title": "Cerita Angka Desimal",
+          "bookReference": "Buku Siswa hlm. 71–74",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Persepuluhan",
+            "isi": "Satu digit di belakang koma → penyebut 10 (contoh 1/10 = 0,1).",
+            "suara": "Satu digit berarti persepuluhan."
+          },
+          {
+            "nama": "Perseratusan",
+            "isi": "Dua digit di belakang koma → penyebut 100 (contoh 1/100 = 0,01).",
+            "suara": "Dua digit berarti perseratusan."
+          },
+          {
+            "nama": "Ubah",
+            "isi": "Tulis pembilang di belakang koma sesuai banyak digit.",
+            "suara": "Salin pembilang ke belakang koma."
+          },
+          {
+            "nama": "Cerita",
+            "isi": "Roti dan biskuit membantu membayangkan bagian.",
+            "suara": "Benda nyata memudahkan desimal."
+          }
+        ],
+        "suara": "Empat poin pecahan desimal.",
+        "caraMenyebutkan": "Persepuluhan Perseratusan Ubah Cerita",
+        "rumah": "Ayo Berlatih: ubah 5/10, 9/10, 15/100, 81/100 ke desimal.",
+        "refleksi": [
+          "Aku menulis 0,p.",
+          "Aku menulis 0,pp.",
+          "Aku bedakan jenis.",
+          "Aku ubah dari pecahan biasa."
+        ]
+      }
+    },
+    "E": {
+      "id": "E",
+      "codeTitle": "Sub-Bab E (Desimal Perseratusan & Persen)",
+      "fullTitle": "Sub-Bab E: Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen",
+      "targetDescription": "Siswa mengubah desimal perseratusan menjadi persen (0,75 = 75%) dengan cara biasa (via pecahan /100) maupun cara langsung (×100% / geser koma dua kali), serta mengubah balik persen ke desimal dan menyelesaikan cerita persen.",
+      "secondaryBg": "#FEF3C7",
+      "secondaryBorder": "#D97706",
+      "secondaryText": "#78350F",
+      "silabus": {
+        "teksSuara": "Kita menghubungkan desimal perseratusan dengan persen. Nol koma tujuh lima sama dengan tujuh puluh lima per seratus sama dengan tujuh puluh lima persen. Boleh pakai cara biasa atau langsung kali seratus persen. Geser koma dua kali ke kanan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa mengubah pecahan desimal perseratusan menjadi persen dan sebaliknya, serta memakai persen dalam cerita.",
+        "referensi": "Buku Siswa Matematika Kelas IV Bab 2 Sub-Bab E hlm. 75–82; percent as hundredths."
+      },
+      "stories": [
+        {
+          "id": "K4B2E-V1-1",
+          "titleHint": "Diskon di toko",
+          "sceneType": "K4B2E-V1-1",
+          "voiceNarration": "Saat belanja sering ada diskon persen. Persen ditulis dengan tanda persen. Artinya per seratus. Lima persen sama dengan lima per seratus."
+        },
+        {
+          "id": "K4B2E-V1-2",
+          "titleHint": "Dari desimal",
+          "sceneType": "K4B2E-V1-2",
+          "voiceNarration": "Contoh: nol koma tujuh lima. Ubah jadi tujuh puluh lima per seratus. Lalu tulis tujuh puluh lima persen. Itulah hubungan desimal dan persen."
+        },
+        {
+          "id": "K4B2E-V1-3",
+          "titleHint": "Dua cara",
+          "sceneType": "K4B2E-V1-3",
+          "voiceNarration": "Cara biasa: lewat pecahan dulu. Cara langsung: kali seratus persen. Hasilnya sama. Pilih cara yang kamu suka."
+        },
+        {
+          "id": "K4B2E-V2-1",
+          "titleHint": "Kali seratus",
+          "sceneType": "K4B2E-V2-1",
+          "voiceNarration": "Ambil nol koma tiga enam. Kalikan seratus persen. Hasil tiga puluh enam persen. Cepat dan ringkas."
+        },
+        {
+          "id": "K4B2E-V2-2",
+          "titleHint": "Geser koma",
+          "sceneType": "K4B2E-V2-2",
+          "voiceNarration": "Tips buku: geser koma dua kali ke kanan. Nol koma dua lima jadi dua puluh lima. Tambahkan tanda persen. Selesai."
+        },
+        {
+          "id": "K4B2E-V2-3",
+          "titleHint": "Lebih dari 100%",
+          "sceneType": "K4B2E-V2-3",
+          "voiceNarration": "Dua koma empat enam. Kali seratus persen. Hasil dua ratus empat puluh enam persen. Persen boleh lebih dari seratus."
+        },
+        {
+          "id": "K4B2E-V3-1",
+          "titleHint": "Olahraga",
+          "sceneType": "K4B2E-V3-1",
+          "voiceNarration": "Lima puluh siswa di kelas. Dua puluh ikut olahraga. Ubah ke penyebut seratus. Jadi empat puluh persen."
+        },
+        {
+          "id": "K4B2E-V3-2",
+          "titleHint": "Balik ke desimal",
+          "sceneType": "K4B2E-V3-2",
+          "voiceNarration": "Delapan belas persen. Bagi seratus. Hasil nol koma satu delapan. Persen kembali jadi desimal."
+        },
+        {
+          "id": "K4B2E-V3-3",
+          "titleHint": "Latihan siap",
+          "sceneType": "K4B2E-V3-3",
+          "voiceNarration": "Ubah desimal ke persen. Ubah persen ke desimal. Selesaikan cerita persen. Siap berlatih."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K4B2E-V1",
+          "judul": "Apa Itu Persen?",
+          "subjudul": "% = per seratus",
+          "adegan": [
+            {
+              "id": "K4B2E-V1-1",
+              "judul": "Diskon di toko",
+              "ketukan": [
+                "Saat belanja sering ada diskon persen.",
+                "Persen ditulis dengan tanda persen.",
+                "Artinya per seratus.",
+                "Lima persen sama dengan lima per seratus."
+              ],
+              "papan": [
+                "diskon",
+                "%",
+                "per 100",
+                "5%=5/100"
+              ]
+            },
+            {
+              "id": "K4B2E-V1-2",
+              "judul": "Dari desimal",
+              "ketukan": [
+                "Contoh: nol koma tujuh lima.",
+                "Ubah jadi tujuh puluh lima per seratus.",
+                "Lalu tulis tujuh puluh lima persen.",
+                "Itulah hubungan desimal dan persen."
+              ],
+              "papan": [
+                "0,75",
+                "75/100",
+                "75%",
+                "hubungan"
+              ]
+            },
+            {
+              "id": "K4B2E-V1-3",
+              "judul": "Dua cara",
+              "ketukan": [
+                "Cara biasa: lewat pecahan dulu.",
+                "Cara langsung: kali seratus persen.",
+                "Hasilnya sama.",
+                "Pilih cara yang kamu suka."
+              ],
+              "papan": [
+                "cara biasa",
+                "cara langsung",
+                "sama",
+                "pilih"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B2E-V2",
+          "judul": "Cara Langsung",
+          "subjudul": "×100% dan geser koma",
+          "adegan": [
+            {
+              "id": "K4B2E-V2-1",
+              "judul": "Kali seratus",
+              "ketukan": [
+                "Ambil nol koma tiga enam.",
+                "Kalikan seratus persen.",
+                "Hasil tiga puluh enam persen.",
+                "Cepat dan ringkas."
+              ],
+              "papan": [
+                "0,36",
+                "×100%",
+                "36%",
+                "cepat"
+              ]
+            },
+            {
+              "id": "K4B2E-V2-2",
+              "judul": "Geser koma",
+              "ketukan": [
+                "Tips buku: geser koma dua kali ke kanan.",
+                "Nol koma dua lima jadi dua puluh lima.",
+                "Tambahkan tanda persen.",
+                "Selesai."
+              ],
+              "papan": [
+                "geser 2×",
+                "0,25",
+                "25",
+                "25%"
+              ]
+            },
+            {
+              "id": "K4B2E-V2-3",
+              "judul": "Lebih dari 100%",
+              "ketukan": [
+                "Dua koma empat enam.",
+                "Kali seratus persen.",
+                "Hasil dua ratus empat puluh enam persen.",
+                "Persen boleh lebih dari seratus."
+              ],
+              "papan": [
+                "2,46",
+                "×100%",
+                "246%",
+                ">100%"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B2E-V3",
+          "judul": "Cerita Kelas",
+          "subjudul": "20/50 = 40%",
+          "adegan": [
+            {
+              "id": "K4B2E-V3-1",
+              "judul": "Olahraga",
+              "ketukan": [
+                "Lima puluh siswa di kelas.",
+                "Dua puluh ikut olahraga.",
+                "Ubah ke penyebut seratus.",
+                "Jadi empat puluh persen."
+              ],
+              "papan": [
+                "50 siswa",
+                "20 olahraga",
+                "×2",
+                "40%"
+              ]
+            },
+            {
+              "id": "K4B2E-V3-2",
+              "judul": "Balik ke desimal",
+              "ketukan": [
+                "Delapan belas persen.",
+                "Bagi seratus.",
+                "Hasil nol koma satu delapan.",
+                "Persen kembali jadi desimal."
+              ],
+              "papan": [
+                "18%",
+                "÷100",
+                "0,18",
+                "balik"
+              ]
+            },
+            {
+              "id": "K4B2E-V3-3",
+              "judul": "Latihan siap",
+              "ketukan": [
+                "Ubah desimal ke persen.",
+                "Ubah persen ke desimal.",
+                "Selesaikan cerita persen.",
+                "Siap berlatih."
+              ],
+              "papan": [
+                "des→%",
+                "%→des",
+                "cerita",
+                "siap"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Arti %",
+          "stepDesc": "Per seratus.",
+          "icon": "％",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. 0,75",
+          "stepDesc": "Contoh desimal.",
+          "icon": "🧮",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. 75/100",
+          "stepDesc": "Pecahan biasa.",
+          "icon": "💯",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. 75%",
+          "stepDesc": "Bentuk persen.",
+          "icon": "✅",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. ×100%",
+          "stepDesc": "Cara langsung.",
+          "icon": "⚡",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Geser 2×",
+          "stepDesc": "Tips koma.",
+          "icon": "➡️➡️",
+          "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Cerita",
+          "stepDesc": "20/50=40%.",
+          "icon": "🏫",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Balik",
+          "stepDesc": "% → desimal.",
+          "icon": "↩️",
+          "flowFrom": "7",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "%",
+          "emoji": "％",
+          "countNum": 100,
+          "countWord": "per",
+          "voiceSentence": "Per seratus."
+        },
+        {
+          "fruitName": "0,75",
+          "emoji": "🧮",
+          "countNum": 75,
+          "countWord": "desimal",
+          "voiceSentence": "Contoh buku."
+        },
+        {
+          "fruitName": "75/100",
+          "emoji": "💯",
+          "countNum": 75,
+          "countWord": "pecahan",
+          "voiceSentence": "Langkah biasa."
+        },
+        {
+          "fruitName": "75%",
+          "emoji": "✅",
+          "countNum": 75,
+          "countWord": "persen",
+          "voiceSentence": "Hasil akhir."
+        },
+        {
+          "fruitName": "×100%",
+          "emoji": "⚡",
+          "countNum": 100,
+          "countWord": "langsung",
+          "voiceSentence": "Cara cepat."
+        },
+        {
+          "fruitName": "GESER",
+          "emoji": "➡️",
+          "countNum": 2,
+          "countWord": "kanan",
+          "voiceSentence": "Dua kali ke kanan."
+        },
+        {
+          "fruitName": "246%",
+          "emoji": "📈",
+          "countNum": 246,
+          "countWord": "besar",
+          "voiceSentence": "Boleh >100%."
+        },
+        {
+          "fruitName": "40%",
+          "emoji": "🏫",
+          "countNum": 40,
+          "countWord": "cerita",
+          "voiceSentence": "20/50 siswa."
+        },
+        {
+          "fruitName": "0,18",
+          "emoji": "↩️",
+          "countNum": 18,
+          "countWord": "balik",
+          "voiceSentence": "18% → desimal."
+        },
+        {
+          "fruitName": "INGAT",
+          "emoji": "📜",
+          "countNum": 1,
+          "countWord": "tips",
+          "voiceSentence": "Desimal ×100%."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Desimal Jadi Persen",
+          "emoji": "％",
+          "targetCount": 6,
+          "voiceGuide": "Pilih persen."
+        },
+        {
+          "title": "Persen Lebih dari 100",
+          "emoji": "📈",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Persen Jadi Desimal",
+          "emoji": "↩️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih desimal."
+        },
+        {
+          "title": "Cara Langsung ×100%",
+          "emoji": "⚡",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Pilah Persen/Desimal",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah."
+        },
+        {
+          "title": "Jodohkan Desimal–Persen",
+          "emoji": "🔗",
+          "targetCount": 12,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Persen",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Persen Diminta",
+          "emoji": "👆",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "title": "Ketuk Semua Syarat Persen",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Diskon dan Kelas",
+          "emoji": "🛒",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Batang ke Persen",
+          "diagramType": "bar",
+          "numberA": 75,
+          "numberB": 100,
+          "caption": "Baca lalu ubah."
+        },
+        {
+          "title": "Kotak Seratus ke Persen",
+          "diagramType": "grid",
+          "numberA": 35,
+          "numberB": 100,
+          "caption": "Grid → %."
+        },
+        {
+          "title": "Jodohkan Diagram Persen",
+          "diagramType": "match",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Diagram Persen",
+          "diagramType": "mem",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Desimal → Persen",
+          "diagramType": "table",
+          "numberA": 1,
+          "numberB": 3,
+          "caption": "Isi tabel."
+        },
+        {
+          "title": "Ketuk Semua Diagram Persen",
+          "diagramType": "select",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Ketuk semua."
+        },
+        {
+          "title": "Pilah Bentuk Persen",
+          "diagramType": "sort",
+          "numberA": 1,
+          "numberB": 6,
+          "caption": "Pilah."
+        },
+        {
+          "title": "Geser Koma Dua Kali",
+          "diagramType": "shift",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Tips geser koma."
+        },
+        {
+          "title": "Pilih Persen Cocok",
+          "diagramType": "choose",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih persen."
+        },
+        {
+          "title": "Cerita Diagram Persen",
+          "diagramType": "story",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Cerita + gambar."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "75%",
+          "wordLarge": "PERSEN",
+          "mathNotation": "0,pp→%",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "0,18",
+          "wordLarge": "BALIK",
+          "mathNotation": "%→0,pp",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "36%",
+          "wordLarge": "PILIH",
+          "mathNotation": "hasil",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "5%<75%",
+          "wordLarge": "URUT",
+          "mathNotation": "nilai",
+          "voiceReadout": "Urutkan."
+        },
+        {
+          "symbolLarge": "0,35↔35%",
+          "wordLarge": "JODOH",
+          "mathNotation": "teks",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "25%",
+          "wordLarge": "MEMORI",
+          "mathNotation": "notasi",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK4B2E-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "des-ke-persen",
+          "title": "Desimal Jadi Persen",
+          "bookReference": "Buku Siswa hlm. 76–78 (0,75→75%)",
+          "objective": "0,pp → persen.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih persen."
+        },
+        {
+          "gameId": "subK4B2E-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "besar-persen",
+          "title": "Persen Lebih dari 100",
+          "bookReference": "Buku Siswa hlm. 78–79 (2,46→246%)",
+          "objective": "Desimal >1 jadi persen.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "balik-persen",
+          "title": "Persen Jadi Desimal",
+          "bookReference": "Buku Siswa hlm. 82",
+          "objective": "% → 0,pp.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih desimal."
+        },
+        {
+          "gameId": "subK4B2E-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "cara-langsung",
+          "title": "Cara Langsung ×100%",
+          "bookReference": "Buku Siswa hlm. 80–81",
+          "objective": "Kalikan 100%.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "sort-persen",
+          "title": "Pilah Persen/Desimal",
+          "bookReference": "Buku Siswa hlm. 76–80",
+          "objective": "Memilah bentuk.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B2E-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "match-persen",
+          "title": "Jodohkan Desimal–Persen",
+          "bookReference": "Buku Siswa hlm. 78–82",
+          "objective": "Menjodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B2E-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "memory-persen",
+          "title": "Memori Persen",
+          "bookReference": "Buku Siswa hlm. 78–81",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B2E-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "tap-persen",
+          "title": "Ketuk Persen Diminta",
+          "bookReference": "Buku Siswa hlm. 78–82",
+          "objective": "Mengetuk.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "gameId": "subK4B2E-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "tap-all-persen",
+          "title": "Ketuk Semua Syarat Persen",
+          "bookReference": "Buku Siswa hlm. 79–82",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B2E-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "story-persen",
+          "title": "Cerita Diskon dan Kelas",
+          "bookReference": "Buku Siswa hlm. 75 & 79",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "bar-persen",
+          "title": "Batang ke Persen",
+          "bookReference": "Buku Siswa hlm. 76–78",
+          "objective": "Baca lalu ubah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "grid-persen",
+          "title": "Kotak Seratus ke Persen",
+          "bookReference": "Buku Siswa hlm. 76–78",
+          "objective": "Grid → %.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-diagram-e",
+          "title": "Jodohkan Diagram Persen",
+          "bookReference": "Buku Siswa hlm. 78–82",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B2E-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-diagram-e",
+          "title": "Memori Diagram Persen",
+          "bookReference": "Buku Siswa hlm. 80",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B2E-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "table-e",
+          "title": "Tabel Desimal → Persen",
+          "bookReference": "Buku Siswa hlm. 78–82",
+          "objective": "Isi tabel.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-e",
+          "title": "Ketuk Semua Diagram Persen",
+          "bookReference": "Buku Siswa hlm. 79",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B2E-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-diagram-e",
+          "title": "Pilah Bentuk Persen",
+          "bookReference": "Buku Siswa hlm. 80",
+          "objective": "Pilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK4B2E-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "geser-koma",
+          "title": "Geser Koma Dua Kali",
+          "bookReference": "Buku Siswa hlm. 82",
+          "objective": "Tips geser koma.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "choose-persen",
+          "title": "Pilih Persen Cocok",
+          "bookReference": "Buku Siswa hlm. 78–81",
+          "objective": "Pilih persen.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "story-picture-e",
+          "title": "Cerita Diagram Persen",
+          "bookReference": "Buku Siswa hlm. 75–79",
+          "objective": "Cerita + gambar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "write-persen",
+          "title": "Tulis …%",
+          "bookReference": "Buku Siswa hlm. 78–81",
+          "objective": "Menulis persen.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "write-balik",
+          "title": "Tulis Desimal dari %",
+          "bookReference": "Buku Siswa hlm. 82",
+          "objective": "Menulis desimal.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "choose-persen-a",
+          "title": "Pilih Hasil Persen",
+          "bookReference": "Buku Siswa hlm. 78–82",
+          "objective": "Memilih.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "order-persen",
+          "title": "Urutkan Persen/Desimal",
+          "bookReference": "Buku Siswa hlm. 79–82",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK4B2E-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-abstract-e",
+          "title": "Jodohkan Notasi Persen",
+          "bookReference": "Buku Siswa hlm. 78–82",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK4B2E-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-abstract-e",
+          "title": "Memori Notasi Persen",
+          "bookReference": "Buku Siswa hlm. 80",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK4B2E-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-e",
+          "title": "Benar atau Salah: Persen",
+          "bookReference": "Buku Siswa hlm. 75–82",
+          "objective": "Menilai.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK4B2E-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-e",
+          "title": "Detektif Persen",
+          "bookReference": "Buku Siswa hlm. 75–82",
+          "objective": "Petunjuk → persen.",
+          "mechanicDescription": "Empat soal.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK4B2E-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-e",
+          "title": "Peta Konsep Persen",
+          "bookReference": "Buku Siswa hlm. 76–81",
+          "objective": "Mengisi kotak.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK4B2E-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-abstract-e",
+          "title": "Cerita Angka Persen",
+          "bookReference": "Buku Siswa hlm. 75–82",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Arti %",
+            "isi": "Persen adalah bentuk lain pecahan berpenyebut 100.",
+            "suara": "Persen artinya per seratus."
+          },
+          {
+            "nama": "Cara biasa",
+            "isi": "Desimal → pecahan /100 → tulis %.",
+            "suara": "Lewat pecahan dulu."
+          },
+          {
+            "nama": "Cara langsung",
+            "isi": "Kalikan desimal dengan 100% atau geser koma dua kali ke kanan.",
+            "suara": "Langsung kali seratus persen."
+          },
+          {
+            "nama": "Cerita",
+            "isi": "Samakan penyebut 100 untuk menemukan persen, misalnya 20/50 = 40%.",
+            "suara": "Cerita kelas memakai persen."
+          }
+        ],
+        "suara": "Empat poin konsep persen.",
+        "caraMenyebutkan": "Arti % Cara biasa Cara langsung Cerita",
+        "rumah": "Ayo Berlatih: ubah 0,12; 1,15; 5,62 ke persen dan 18%; 65%; 123% ke desimal.",
+        "refleksi": [
+          "Aku paham arti %.",
+          "Aku pakai dua cara.",
+          "Aku bisa balik ke desimal.",
+          "Aku selesaikan cerita persen."
+        ]
+      }
     }
   },
   "practiceQuestions": []
