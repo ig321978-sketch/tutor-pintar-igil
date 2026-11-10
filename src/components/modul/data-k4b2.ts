@@ -337,13 +337,15 @@ export const pecKeDes = (x: Pec): string => {
 };
 export const opsiDes = (benar: string, seed: number): string[] => {
   const n = Number(benar.replace(",", "."));
-  const pengecoh = [
-    (n + 0.1).toFixed(benar.includes("0,0") || benar.length >= 4 ? 2 : 1).replace(".", ","),
-    Math.max(0.01, n - 0.1).toFixed(benar.includes("0,0") || benar.length >= 4 ? 2 : 1).replace(".", ","),
-  ];
-  if (pengecoh[0] === benar) pengecoh[0] = (n + 0.2).toFixed(2).replace(".", ",");
-  if (pengecoh[1] === benar) pengecoh[1] = (n + 0.3).toFixed(2).replace(".", ",");
-  return urutanTetap(3, 1, seed).map((i) => [benar, pengecoh[0], pengecoh[1]][i]);
+  const digits = Math.max(1, (benar.split(",")[1] ?? "0").length);
+  const step = digits === 1 ? 0.1 : 0.01;
+  const fmt = (x: number) => x.toFixed(digits).replace(".", ",");
+  let a = Number((n + step).toFixed(digits));
+  let b = Number((n - step).toFixed(digits));
+  if (b <= 0) b = Number((n + 2 * step).toFixed(digits));
+  if (Math.abs(a - n) < 1e-9) a = Number((n + 2 * step).toFixed(digits));
+  if (Math.abs(b - n) < 1e-9 || Math.abs(b - a) < 1e-9) b = Number((n + 3 * step).toFixed(digits));
+  return urutanTetap(3, 1, seed).map((i) => [benar, fmt(a), fmt(b)][i]);
 };
 export const opsiPersen = (benar: string, seed: number): string[] => {
   const n = Number(benar.replace("%", ""));
