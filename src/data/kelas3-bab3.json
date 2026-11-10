@@ -26,8 +26,44 @@
       "silabus": {
         "teksSuara": "Kita belajar mengukur panjang dengan satuan baku. Di posyandu, tinggi badan bayi diukur dengan alat ukur. Kita mengenal penggaris, meteran, dan satuan baku sentimeter dan meter. Kita belajar meletakkan ujung benda di angka nol, lalu membaca angka di ujung yang lain. Kita juga memilih alat ukur yang tepat untuk benda pendek dan benda panjang. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menyelesaikan masalah yang berkaitan dengan panjang dan berat benda dengan satuan baku. Pada sub-bab ini siswa mengukur panjang benda dengan penggaris dan meteran serta memilih alat ukur yang tepat.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3: Pengukuran Panjang dan Berat, Sub-Bab A hlm. 105–119) dan Buku Panduan Guru Bab 3 Topik A."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3 Sub-Bab A)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Iterate Unit",
+          "namaId": "Ulangi Satuan",
+          "asal": "Measurement",
+          "ringkas": "Panjang diukur dengan mengulang satuan baku.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Zero Point",
+          "namaId": "Titik Nol Penggaris",
+          "asal": "Ruler skills",
+          "ringkas": "Mulai dari 0, bukan ujung penggaris yang rusak.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Estimate then Measure",
+          "namaId": "Perkiraan Lalu Ukur",
+          "asal": "Measurement sense",
+          "ringkas": "Perkirakan dulu, baru ukur tepat.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B3A-V1-1",
@@ -45,7 +81,7 @@
           "id": "K3B3A-V1-3",
           "titleHint": "Satuan baku panjang",
           "sceneType": "K3B3A-V1-3",
-          "voiceNarration": "Satuan baku panjang adalah sentimeter dan meter. Sentimeter ditulis cm dan meter ditulis m. Penggaris memakai satuan sentimeter. Meteran memakai satuan meter dan sentimeter."
+          "voiceNarration": "Satuan baku panjang adalah sentimeter dan meter. Sentimeter ditulis cm dan meter ditulis m. Penggaris memakai satuan sentimeter. Meteran memakai satuan meter dan sentimeter. METODE LUAR. Ulangi Satuan: Panjang diukur dengan mengulang satuan baku."
         },
         {
           "id": "K3B3A-V2-1",
@@ -63,7 +99,7 @@
           "id": "K3B3A-V2-3",
           "titleHint": "Tulis hasilnya",
           "sceneType": "K3B3A-V2-3",
-          "voiceNarration": "Misalnya ujung pensil yang lain berada di angka 15. Panjang pensil adalah 15 sentimeter. Tulis hasilnya dengan satuan baku, yaitu 15 cm. Satuan panjang pada penggaris adalah sentimeter."
+          "voiceNarration": "Misalnya ujung pensil yang lain berada di angka 15. Panjang pensil adalah 15 sentimeter. Tulis hasilnya dengan satuan baku, yaitu 15 cm. Satuan panjang pada penggaris adalah sentimeter. METODE LUAR. Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak."
         },
         {
           "id": "K3B3A-V3-1",
@@ -81,7 +117,7 @@
           "id": "K3B3A-V3-3",
           "titleHint": "Memilih alat",
           "sceneType": "K3B3A-V3-3",
-          "voiceNarration": "Benda pendek seperti pensil diukur dengan penggaris. Benda panjang seperti lemari diukur dengan meteran. Tinggi badan diukur dengan pengukur tinggi badan atau meteran. Pilih alat ukur yang tepat supaya hasilnya mudah dibaca."
+          "voiceNarration": "Benda pendek seperti pensil diukur dengan penggaris. Benda panjang seperti lemari diukur dengan meteran. Tinggi badan diukur dengan pengukur tinggi badan atau meteran. Pilih alat ukur yang tepat supaya hasilnya mudah dibaca. METODE LUAR. Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat."
         }
       ],
       "videos": [
@@ -129,13 +165,15 @@
                 "Satuan baku panjang adalah sentimeter dan meter.",
                 "Sentimeter ditulis cm dan meter ditulis m.",
                 "Penggaris memakai satuan sentimeter.",
-                "Meteran memakai satuan meter dan sentimeter."
+                "Meteran memakai satuan meter dan sentimeter.",
+                "METODE LUAR. Ulangi Satuan: Panjang diukur dengan mengulang satuan baku."
               ],
               "papan": [
                 "Sentimeter dan meter",
                 "cm dan m",
                 "Penggaris: cm",
-                "Meteran: m dan cm"
+                "Meteran: m dan cm",
+                "METODE LUAR · Ulangi Satuan"
               ]
             }
           ]
@@ -184,13 +222,15 @@
                 "Misalnya ujung pensil yang lain berada di angka 15.",
                 "Panjang pensil adalah 15 sentimeter.",
                 "Tulis hasilnya dengan satuan baku, yaitu 15 cm.",
-                "Satuan panjang pada penggaris adalah sentimeter."
+                "Satuan panjang pada penggaris adalah sentimeter.",
+                "METODE LUAR. Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak."
               ],
               "papan": [
                 "Ujung lain di angka 15",
                 "Panjang pensil 15 cm",
                 "Tulis: 15 cm",
-                "Satuan: sentimeter"
+                "Satuan: sentimeter",
+                "METODE LUAR · Titik Nol Penggaris"
               ]
             }
           ]
@@ -239,13 +279,15 @@
                 "Benda pendek seperti pensil diukur dengan penggaris.",
                 "Benda panjang seperti lemari diukur dengan meteran.",
                 "Tinggi badan diukur dengan pengukur tinggi badan atau meteran.",
-                "Pilih alat ukur yang tepat supaya hasilnya mudah dibaca."
+                "Pilih alat ukur yang tepat supaya hasilnya mudah dibaca.",
+                "METODE LUAR. Perkiraan Lalu Ukur: Perkirakan dulu, baru ukur tepat."
               ],
               "papan": [
                 "Pensil: penggaris",
                 "Lemari: meteran",
                 "Tinggi badan: meteran",
-                "Pilih alat yang tepat"
+                "Pilih alat yang tepat",
+                "METODE LUAR · Perkiraan Lalu Ukur"
               ]
             }
           ]
@@ -314,7 +356,23 @@
           "stepDesc": "Memperkirakan ukuran membantu kita memilih satuan. Panjang pensil sekitar 15 cm, buku tulis sekitar 30 cm, dan tinggi pintu sekitar 2 m. Panjang lapangan dan jalan lebih tepat ditulis dengan meter. Bila hasil terlalu aneh, misalnya pensil 15 m, periksa lagi satuannya. Dua panjang dapat dibandingkan dengan melihat selisihnya.",
           "icon": "🧭",
           "flowFrom": "Ukuran yang wajar",
-          "flowTo": "Siap mengukur panjang dengan satuan baku"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Ulangi Satuan",
+          "stepDesc": "Panjang diukur dengan mengulang satuan baku.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Titik Nol Penggaris",
+          "stepDesc": "Mulai dari 0, bukan ujung penggaris yang rusak.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -387,6 +445,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, pilih alat ukur yang tepat. Dua, letakkan ujung benda di angka nol. Tiga, baca angka di ujung yang lain. Empat, tulis hasilnya dengan satuan."
+        },
+        {
+          "fruitName": "Ulangi Satuan",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Iterate Unit",
+          "voiceSentence": "METODE LUAR. Ulangi Satuan. Panjang diukur dengan mengulang satuan baku."
+        },
+        {
+          "fruitName": "Titik Nol Penggaris",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Zero Point",
+          "voiceSentence": "METODE LUAR. Titik Nol Penggaris. Mulai dari 0, bukan ujung penggaris yang rusak."
+        },
+        {
+          "fruitName": "Perkiraan Lalu Ukur",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Estimate then Measure",
+          "voiceSentence": "METODE LUAR. Perkiraan Lalu Ukur. Perkirakan dulu, baru ukur tepat."
         }
       ],
       "concreteSlides": [
@@ -394,7 +473,7 @@
           "title": "Geser ke Angka Nol",
           "emoji": "📏",
           "targetCount": 6,
-          "voiceGuide": "Geser benda ke angka nol, lalu baca panjangnya."
+          "voiceGuide": "METODE LUAR · Ulangi Satuan. Geser benda ke angka nol, lalu baca panjangnya."
         },
         {
           "title": "Baca Panjang Benda",
@@ -457,7 +536,7 @@
           "diagramType": "bar-shift",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Menggeser batang polos sampai ujung kirinya tepat di angka 0, lalu membaca panjangnya."
+          "caption": "Menggeser batang polos sampai ujung kirinya tepat di angka 0, lalu membaca panjangnya. (METODE LUAR · Ulangi Satuan)"
         },
         {
           "title": "Baca Panjang Batang",
@@ -528,7 +607,7 @@
           "symbolLarge": "cm m",
           "wordLarge": "SATUAN",
           "mathNotation": "sentimeter • meter",
-          "voiceReadout": "Pilih satuan baku yang tepat."
+          "voiceReadout": "METODE LUAR · Ulangi Satuan. Pilih satuan baku yang tepat."
         },
         {
           "symbolLarge": "📏",
@@ -593,9 +672,9 @@
           "gameType": "shift-to-zero",
           "title": "Geser ke Angka Nol",
           "bookReference": "Buku Siswa hlm. 107 (Aktivitas 1, langkah 4 dan 5)",
-          "objective": "Menggeser benda sampai ujung kirinya tepat di angka 0 pada penggaris, lalu membaca panjangnya.",
+          "objective": "Menggeser benda sampai ujung kirinya tepat di angka 0 pada penggaris, lalu membaca panjangnya. (METODE LUAR · Ulangi Satuan)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda nyata di atas penggaris mulai dari angka selain nol. Siswa menekan geser kiri atau kanan sampai ujung benda di angka 0, lalu memilih panjang benda dari tiga pilihan.",
-          "voiceGuide": "Geser benda ke angka nol, lalu baca panjangnya."
+          "voiceGuide": "METODE LUAR · Ulangi Satuan. Geser benda ke angka nol, lalu baca panjangnya."
         },
         {
           "gameId": "subK3B3A-game-2",
@@ -703,9 +782,9 @@
           "gameType": "shift-bar-zero",
           "title": "Geser Batang ke Nol",
           "bookReference": "Buku Siswa hlm. 107 (Aktivitas 1, langkah 4 dan 5)",
-          "objective": "Menggeser batang polos sampai ujung kirinya tepat di angka 0, lalu membaca panjangnya.",
+          "objective": "Menggeser batang polos sampai ujung kirinya tepat di angka 0, lalu membaca panjangnya. (METODE LUAR · Ulangi Satuan)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Batang polos di atas penggaris mulai dari angka selain nol. Siswa menekan geser kiri atau kanan sampai ujung batang di angka 0, lalu memilih panjang batang.",
-          "voiceGuide": "Geser batang ke angka nol, lalu baca panjangnya."
+          "voiceGuide": "METODE LUAR · Ulangi Satuan. Geser batang ke angka nol, lalu baca panjangnya."
         },
         {
           "gameId": "subK3B3A-game-12",
@@ -813,9 +892,9 @@
           "gameType": "choose-unit",
           "title": "Pilih Satuan Baku",
           "bookReference": "Buku Siswa hlm. 108 dan 115 (satuan baku sentimeter dan meter)",
-          "objective": "Memilih satuan baku yang tepat untuk mengukur panjang suatu benda.",
+          "objective": "Memilih satuan baku yang tepat untuk mengukur panjang suatu benda. (METODE LUAR · Ulangi Satuan)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca benda yang diukur, lalu memilih satu dari tiga satuan.",
-          "voiceGuide": "Pilih satuan baku yang tepat."
+          "voiceGuide": "METODE LUAR · Ulangi Satuan. Pilih satuan baku yang tepat."
         },
         {
           "gameId": "subK3B3A-game-22",
@@ -943,6 +1022,21 @@
             "nama": "Meteran",
             "isi": "untuk benda panjang",
             "suara": "Meteran dipakai untuk benda yang lebih panjang dari penggaris dan memakai satuan meter dan sentimeter."
+          },
+          {
+            "nama": "Ulangi Satuan",
+            "isi": "METODE LUAR · Iterate Unit: Panjang diukur dengan mengulang satuan baku. (asal: Measurement).",
+            "suara": "METODE LUAR. Ulangi Satuan. Panjang diukur dengan mengulang satuan baku."
+          },
+          {
+            "nama": "Titik Nol Penggaris",
+            "isi": "METODE LUAR · Zero Point: Mulai dari 0, bukan ujung penggaris yang rusak. (asal: Ruler skills).",
+            "suara": "METODE LUAR. Titik Nol Penggaris. Mulai dari 0, bukan ujung penggaris yang rusak."
+          },
+          {
+            "nama": "Perkiraan Lalu Ukur",
+            "isi": "METODE LUAR · Estimate then Measure: Perkirakan dulu, baru ukur tepat. (asal: Measurement sense).",
+            "suara": "METODE LUAR. Perkiraan Lalu Ukur. Perkirakan dulu, baru ukur tepat."
           }
         ],
         "suara": "Ingat selalu! Satuan baku panjang adalah sentimeter dan meter. Letakkan ujung benda tepat di angka nol, lalu baca angka di ujung yang lain. Penggaris dipakai untuk benda pendek. Meteran dipakai untuk benda yang lebih panjang dari penggaris.",
@@ -967,8 +1061,44 @@
       "silabus": {
         "teksSuara": "Kita belajar hubungan antarsatuan baku panjang. Meteran memakai satuan meter dan sentimeter. Seratus sentimeter sama dengan satu meter. Kita belajar mengubah meter ke sentimeter dan sebaliknya, menulis ukuran dengan meter dan sentimeter bersama, serta menjumlahkan dan mengurangkan ukuran panjang. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menyelesaikan masalah yang berkaitan dengan panjang dan berat benda dengan satuan baku. Pada sub-bab ini siswa menghubungkan sentimeter dan meter serta menghitung ukuran panjang gabungan.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3: Pengukuran Panjang dan Berat, Sub-Bab B hlm. 119–123) dan Buku Panduan Guru Bab 3 Topik B."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3 Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Unit Conversion",
+          "namaId": "Konversi Satuan Panjang",
+          "asal": "SI relationships",
+          "ringkas": "1 m = 100 cm; 1 km = 1000 m.",
+          "tahap": [
+            "Story",
+            "Abstract",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Same Quantity Different Unit",
+          "namaId": "Kuantitas Sama Satuan Beda",
+          "asal": "Measurement",
+          "ringkas": "120 cm = 1 m 20 cm.",
+          "tahap": [
+            "Picture",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Conversion Table",
+          "namaId": "Tabel Konversi",
+          "asal": "Reference table",
+          "ringkas": "Pakai tabel untuk pindah satuan.",
+          "tahap": [
+            "Infografis",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B3B-V1-1",
@@ -986,7 +1116,7 @@
           "id": "K3B3B-V1-3",
           "titleHint": "Panjang pintu",
           "sceneType": "K3B3B-V1-3",
-          "voiceNarration": "Bapak Meutia mengukur pintu dengan meteran. Ujung pintu menunjukkan bilangan 200 sentimeter. Seratus sentimeter sama dengan satu meter. Jadi, 200 cm sama dengan 2 m."
+          "voiceNarration": "Bapak Meutia mengukur pintu dengan meteran. Ujung pintu menunjukkan bilangan 200 sentimeter. Seratus sentimeter sama dengan satu meter. Jadi, 200 cm sama dengan 2 m. METODE LUAR. Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m."
         },
         {
           "id": "K3B3B-V2-1",
@@ -1004,7 +1134,7 @@
           "id": "K3B3B-V2-3",
           "titleHint": "Meter dan sentimeter",
           "sceneType": "K3B3B-V2-3",
-          "voiceNarration": "Tinggi badan Azizah adalah 1 m 17 cm. 1 m sama dengan 100 cm, jadi 100 + 17 = 117 cm. Tinggi badan Eri 115 cm, jadi ditulis 1 m 15 cm. Ukuran panjang dapat ditulis dengan meter dan sentimeter."
+          "voiceNarration": "Tinggi badan Azizah adalah 1 m 17 cm. 1 m sama dengan 100 cm, jadi 100 + 17 = 117 cm. Tinggi badan Eri 115 cm, jadi ditulis 1 m 15 cm. Ukuran panjang dapat ditulis dengan meter dan sentimeter. METODE LUAR. Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm."
         },
         {
           "id": "K3B3B-V3-1",
@@ -1022,7 +1152,7 @@
           "id": "K3B3B-V3-3",
           "titleHint": "Kain katun",
           "sceneType": "K3B3B-V3-3",
-          "voiceNarration": "Penjaga toko punya kain katun 75 m 80 cm. Ia menjual 38 m 45 cm kain itu. Kurangkan: 75 m 80 cm dikurangi 38 m 45 cm. Sisa kain adalah 37 m 35 cm."
+          "voiceNarration": "Penjaga toko punya kain katun 75 m 80 cm. Ia menjual 38 m 45 cm kain itu. Kurangkan: 75 m 80 cm dikurangi 38 m 45 cm. Sisa kain adalah 37 m 35 cm. METODE LUAR. Tabel Konversi: Pakai tabel untuk pindah satuan."
         }
       ],
       "videos": [
@@ -1070,13 +1200,15 @@
                 "Bapak Meutia mengukur pintu dengan meteran.",
                 "Ujung pintu menunjukkan bilangan 200 sentimeter.",
                 "Seratus sentimeter sama dengan satu meter.",
-                "Jadi, 200 cm sama dengan 2 m."
+                "Jadi, 200 cm sama dengan 2 m.",
+                "METODE LUAR. Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m."
               ],
               "papan": [
                 "Pintu diukur meteran",
                 "Menunjukkan 200 cm",
                 "100 cm = 1 m",
-                "200 cm = 2 m"
+                "200 cm = 2 m",
+                "METODE LUAR · Konversi Satuan Panjang"
               ]
             }
           ]
@@ -1125,13 +1257,15 @@
                 "Tinggi badan Azizah adalah 1 m 17 cm.",
                 "1 m sama dengan 100 cm, jadi 100 + 17 = 117 cm.",
                 "Tinggi badan Eri 115 cm, jadi ditulis 1 m 15 cm.",
-                "Ukuran panjang dapat ditulis dengan meter dan sentimeter."
+                "Ukuran panjang dapat ditulis dengan meter dan sentimeter.",
+                "METODE LUAR. Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm."
               ],
               "papan": [
                 "Azizah 1 m 17 cm",
                 "100 + 17 = 117 cm",
                 "Eri 115 cm = 1 m 15 cm",
-                "Meter dan sentimeter"
+                "Meter dan sentimeter",
+                "METODE LUAR · Kuantitas Sama Satuan Beda"
               ]
             }
           ]
@@ -1180,13 +1314,15 @@
                 "Penjaga toko punya kain katun 75 m 80 cm.",
                 "Ia menjual 38 m 45 cm kain itu.",
                 "Kurangkan: 75 m 80 cm dikurangi 38 m 45 cm.",
-                "Sisa kain adalah 37 m 35 cm."
+                "Sisa kain adalah 37 m 35 cm.",
+                "METODE LUAR. Tabel Konversi: Pakai tabel untuk pindah satuan."
               ],
               "papan": [
                 "Kain 75 m 80 cm",
                 "Terjual 38 m 45 cm",
                 "Dikurangkan",
-                "Sisa 37 m 35 cm"
+                "Sisa 37 m 35 cm",
+                "METODE LUAR · Tabel Konversi"
               ]
             }
           ]
@@ -1255,7 +1391,23 @@
           "stepDesc": "Untuk membandingkan dua ukuran, ubah keduanya ke satuan yang sama, misalnya sentimeter. Pada tabel tinggi badan, terpendek adalah Fatim dengan 100 cm, dan yang lebih tinggi dari Azizah (117 cm) adalah Ubay (120 cm) dan Sanam (130 cm). Lalu urutkan nama dari yang tertinggi hingga yang terendah.",
           "icon": "⚖️",
           "flowFrom": "Membandingkan ukuran panjang",
-          "flowTo": "Siap mengubah satuan panjang"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Konversi Satuan Panjang",
+          "stepDesc": "1 m = 100 cm; 1 km = 1000 m.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Kuantitas Sama Satuan Beda",
+          "stepDesc": "120 cm = 1 m 20 cm.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -1328,6 +1480,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, ingat satu meter sama dengan seratus sentimeter. Dua, meter ke sentimeter kalikan seratus. Tiga, sentimeter ke meter bagi seratus. Empat, periksa dengan cara sebaliknya."
+        },
+        {
+          "fruitName": "Konversi Satuan Panjang",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Unit Conversion",
+          "voiceSentence": "METODE LUAR. Konversi Satuan Panjang. 1 m = 100 cm; 1 km = 1000 m."
+        },
+        {
+          "fruitName": "Kuantitas Sama Satuan Beda",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Same Quantity Different Unit",
+          "voiceSentence": "METODE LUAR. Kuantitas Sama Satuan Beda. 120 cm = 1 m 20 cm."
+        },
+        {
+          "fruitName": "Tabel Konversi",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Conversion Table",
+          "voiceSentence": "METODE LUAR. Tabel Konversi. Pakai tabel untuk pindah satuan."
         }
       ],
       "concreteSlides": [
@@ -1335,7 +1508,7 @@
           "title": "Rakit Panjang Pita",
           "emoji": "🎀",
           "targetCount": 6,
-          "voiceGuide": "Rakit pita sepanjang yang diminta."
+          "voiceGuide": "METODE LUAR · Konversi Satuan Panjang. Rakit pita sepanjang yang diminta."
         },
         {
           "title": "Hitung Panjang dalam Sentimeter",
@@ -1398,7 +1571,7 @@
           "diagramType": "meter-count",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Menghitung panjang batang pada garis meteran dalam sentimeter."
+          "caption": "Menghitung panjang batang pada garis meteran dalam sentimeter. (METODE LUAR · Konversi Satuan Panjang)"
         },
         {
           "title": "Lengkapi Kalimat Ubah Satuan",
@@ -1469,7 +1642,7 @@
           "symbolLarge": "4 m",
           "wordLarge": "METER KE CM",
           "mathNotation": "kali 100",
-          "voiceReadout": "Pilih hasil perubahan meter ke sentimeter."
+          "voiceReadout": "METODE LUAR · Konversi Satuan Panjang. Pilih hasil perubahan meter ke sentimeter."
         },
         {
           "symbolLarge": "135 cm",
@@ -1534,9 +1707,9 @@
           "gameType": "build-ribbon",
           "title": "Rakit Panjang Pita",
           "bookReference": "Buku Siswa hlm. 120–121 (100 cm = 1 m)",
-          "objective": "Merakit pita dari potongan 1 meter, 10 sentimeter, dan 1 sentimeter sampai sepanjang yang diminta.",
+          "objective": "Merakit pita dari potongan 1 meter, 10 sentimeter, dan 1 sentimeter sampai sepanjang yang diminta. (METODE LUAR · Konversi Satuan Panjang)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca panjang pita dalam sentimeter, lalu merakitnya dengan tombol tambah dan kurang. Sepuluh potongan kecil otomatis ditukar potongan yang lebih besar.",
-          "voiceGuide": "Rakit pita sepanjang yang diminta."
+          "voiceGuide": "METODE LUAR · Konversi Satuan Panjang. Rakit pita sepanjang yang diminta."
         },
         {
           "gameId": "subK3B3B-game-2",
@@ -1644,9 +1817,9 @@
           "gameType": "count-meter-line",
           "title": "Hitung Garis Meteran",
           "bookReference": "Buku Siswa hlm. 120 (meteran 100 cm = 1 m)",
-          "objective": "Menghitung panjang batang pada garis meteran dalam sentimeter.",
+          "objective": "Menghitung panjang batang pada garis meteran dalam sentimeter. (METODE LUAR · Konversi Satuan Panjang)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Garis meteran bertanda tiap 50 cm dan batang berwarna ditampilkan. Siswa memilih satu dari tiga panjang.",
-          "voiceGuide": "Hitung panjang batang pada garis."
+          "voiceGuide": "METODE LUAR · Konversi Satuan Panjang. Hitung panjang batang pada garis."
         },
         {
           "gameId": "subK3B3B-game-12",
@@ -1754,9 +1927,9 @@
           "gameType": "meter-to-cm-abstract",
           "title": "Ubah Meter ke Sentimeter: Lambang",
           "bookReference": "Buku Siswa hlm. 121 (4 m = ... cm)",
-          "objective": "Mengubah meter ke sentimeter dan memilih hasilnya dari tiga pilihan.",
+          "objective": "Mengubah meter ke sentimeter dan memilih hasilnya dari tiga pilihan. (METODE LUAR · Konversi Satuan Panjang)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 4 m = ... cm. Pengecoh lupa mengalikan 100 atau mengalikan 1.000.",
-          "voiceGuide": "Pilih hasil perubahan meter ke sentimeter."
+          "voiceGuide": "METODE LUAR · Konversi Satuan Panjang. Pilih hasil perubahan meter ke sentimeter."
         },
         {
           "gameId": "subK3B3B-game-22",
@@ -1884,6 +2057,21 @@
             "nama": "Jumlahkan satuan sama",
             "isi": "4 m 37 cm + 7 m 43 cm = 11 m 80 cm",
             "suara": "Jumlahkan meter dengan meter dan sentimeter dengan sentimeter. Lalu tulis hasilnya."
+          },
+          {
+            "nama": "Konversi Satuan Panjang",
+            "isi": "METODE LUAR · Unit Conversion: 1 m = 100 cm; 1 km = 1000 m. (asal: SI relationships).",
+            "suara": "METODE LUAR. Konversi Satuan Panjang. 1 m = 100 cm; 1 km = 1000 m."
+          },
+          {
+            "nama": "Kuantitas Sama Satuan Beda",
+            "isi": "METODE LUAR · Same Quantity Different Unit: 120 cm = 1 m 20 cm. (asal: Measurement).",
+            "suara": "METODE LUAR. Kuantitas Sama Satuan Beda. 120 cm = 1 m 20 cm."
+          },
+          {
+            "nama": "Tabel Konversi",
+            "isi": "METODE LUAR · Conversion Table: Pakai tabel untuk pindah satuan. (asal: Reference table).",
+            "suara": "METODE LUAR. Tabel Konversi. Pakai tabel untuk pindah satuan."
           }
         ],
         "suara": "Ingat selalu! Satu meter sama dengan seratus sentimeter. Untuk mengubah meter ke sentimeter, kalikan dengan seratus. Untuk mengubah sentimeter ke meter, bagi dengan seratus. Saat menjumlahkan atau mengurangkan, hitung satuan yang sama bersama-sama.",
@@ -1908,8 +2096,43 @@
       "silabus": {
         "teksSuara": "Kita belajar mengukur berat dengan satuan baku. Kita mengenal timbangan sebagai alat ukur berat, dan satuan baku gram dan kilogram. Kita belajar menimbang dari angka nol, membaca berat pada layar dan jarum, serta memilih timbangan yang tepat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menyelesaikan masalah yang berkaitan dengan panjang dan berat benda dengan satuan baku. Pada sub-bab ini siswa menimbang benda dengan berbagai timbangan dan memilih satuan gram atau kilogram.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3: Pengukuran Panjang dan Berat, Sub-Bab C hlm. 124–134) dan Buku Panduan Guru Bab 3 Topik C."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3 Sub-Bab C)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Balance Scale",
+          "namaId": "Neraca",
+          "asal": "Mass measurement",
+          "ringkas": "Bandingkan berat dengan anak timbangan.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Standard Mass Units",
+          "namaId": "Satuan Berat Baku",
+          "asal": "SI mass",
+          "ringkas": "Gram dan kilogram.",
+          "tahap": [
+            "Picture",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Estimate Mass",
+          "namaId": "Perkiraan Berat",
+          "asal": "Measurement sense",
+          "ringkas": "Bandingkan dengan benda acuan.",
+          "tahap": [
+            "Mind",
+            "Infografis"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B3C-V1-1",
@@ -1927,7 +2150,7 @@
           "id": "K3B3C-V1-3",
           "titleHint": "Satuan berat",
           "sceneType": "K3B3C-V1-3",
-          "voiceNarration": "Setelah semua barang ditimbang, presentasikan hasilnya. Satuan apa yang dipakai pada timbangan? Satuan baku berat adalah gram dan kilogram. Gram ditulis g dan kilogram ditulis kg."
+          "voiceNarration": "Setelah semua barang ditimbang, presentasikan hasilnya. Satuan apa yang dipakai pada timbangan? Satuan baku berat adalah gram dan kilogram. Gram ditulis g dan kilogram ditulis kg. METODE LUAR. Neraca: Bandingkan berat dengan anak timbangan."
         },
         {
           "id": "K3B3C-V2-1",
@@ -1945,7 +2168,7 @@
           "id": "K3B3C-V2-3",
           "titleHint": "Gram atau kilogram",
           "sceneType": "K3B3C-V2-3",
-          "voiceNarration": "Gram dipakai untuk benda yang ringan. Contohnya tepung, gula pasir, pensil, dan buku. Kilogram dipakai untuk benda yang lebih berat. Contohnya berat badan, karung beras, dan buah."
+          "voiceNarration": "Gram dipakai untuk benda yang ringan. Contohnya tepung, gula pasir, pensil, dan buku. Kilogram dipakai untuk benda yang lebih berat. Contohnya berat badan, karung beras, dan buah. METODE LUAR. Satuan Berat Baku: Gram dan kilogram."
         },
         {
           "id": "K3B3C-V3-1",
@@ -1963,7 +2186,7 @@
           "id": "K3B3C-V3-3",
           "titleHint": "Stroberi tambahan",
           "sceneType": "K3B3C-V3-3",
-          "voiceNarration": "Timbangan pertama menunjukkan stroberi 100 gram. Timbangan kedua menunjukkan stroberi 500 gram. Berat stroberi tambahan adalah 500 dikurangi 100. Jadi stroberi tambahan beratnya 400 gram."
+          "voiceNarration": "Timbangan pertama menunjukkan stroberi 100 gram. Timbangan kedua menunjukkan stroberi 500 gram. Berat stroberi tambahan adalah 500 dikurangi 100. Jadi stroberi tambahan beratnya 400 gram. METODE LUAR. Perkiraan Berat: Bandingkan dengan benda acuan."
         }
       ],
       "videos": [
@@ -2011,13 +2234,15 @@
                 "Setelah semua barang ditimbang, presentasikan hasilnya.",
                 "Satuan apa yang dipakai pada timbangan?",
                 "Satuan baku berat adalah gram dan kilogram.",
-                "Gram ditulis g dan kilogram ditulis kg."
+                "Gram ditulis g dan kilogram ditulis kg.",
+                "METODE LUAR. Neraca: Bandingkan berat dengan anak timbangan."
               ],
               "papan": [
                 "Presentasikan hasilnya",
                 "Satuan pada timbangan?",
                 "Gram dan kilogram",
-                "g dan kg"
+                "g dan kg",
+                "METODE LUAR · Neraca"
               ]
             }
           ]
@@ -2066,13 +2291,15 @@
                 "Gram dipakai untuk benda yang ringan.",
                 "Contohnya tepung, gula pasir, pensil, dan buku.",
                 "Kilogram dipakai untuk benda yang lebih berat.",
-                "Contohnya berat badan, karung beras, dan buah."
+                "Contohnya berat badan, karung beras, dan buah.",
+                "METODE LUAR. Satuan Berat Baku: Gram dan kilogram."
               ],
               "papan": [
                 "Gram: benda ringan",
                 "Tepung, gula, pensil, buku",
                 "Kilogram: benda berat",
-                "Berat badan, beras, buah"
+                "Berat badan, beras, buah",
+                "METODE LUAR · Satuan Berat Baku"
               ]
             }
           ]
@@ -2121,13 +2348,15 @@
                 "Timbangan pertama menunjukkan stroberi 100 gram.",
                 "Timbangan kedua menunjukkan stroberi 500 gram.",
                 "Berat stroberi tambahan adalah 500 dikurangi 100.",
-                "Jadi stroberi tambahan beratnya 400 gram."
+                "Jadi stroberi tambahan beratnya 400 gram.",
+                "METODE LUAR. Perkiraan Berat: Bandingkan dengan benda acuan."
               ],
               "papan": [
                 "Pertama: 100 g",
                 "Kedua: 500 g",
                 "500 − 100",
-                "Tambahan: 400 g"
+                "Tambahan: 400 g",
+                "METODE LUAR · Perkiraan Berat"
               ]
             }
           ]
@@ -2196,7 +2425,23 @@
           "stepDesc": "Kesalahan yang sering terjadi adalah menimbang tanpa mulai dari angka 0. Sebelum menimbang, pastikan jarum atau layar tepat di angka 0. Lalu letakkan benda, tunggu angka diam, baca beratnya, dan tulis dengan satuan. Pada Ayo Berlatih, gula 1.000 gram, tepung 1.250 gram, dan telur 250 gram.",
           "icon": "0️⃣",
           "flowFrom": "Menimbang dari angka nol",
-          "flowTo": "Siap menimbang dengan satuan baku"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Neraca",
+          "stepDesc": "Bandingkan berat dengan anak timbangan.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Satuan Berat Baku",
+          "stepDesc": "Gram dan kilogram.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -2269,6 +2514,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, pastikan angka awal nol. Dua, letakkan benda. Tiga, baca angkanya. Empat, tulis hasilnya dengan satuan."
+        },
+        {
+          "fruitName": "Neraca",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Balance Scale",
+          "voiceSentence": "METODE LUAR. Neraca. Bandingkan berat dengan anak timbangan."
+        },
+        {
+          "fruitName": "Satuan Berat Baku",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Standard Mass Units",
+          "voiceSentence": "METODE LUAR. Satuan Berat Baku. Gram dan kilogram."
+        },
+        {
+          "fruitName": "Perkiraan Berat",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Estimate Mass",
+          "voiceSentence": "METODE LUAR. Perkiraan Berat. Bandingkan dengan benda acuan."
         }
       ],
       "concreteSlides": [
@@ -2276,7 +2542,7 @@
           "title": "Baca Timbangan Digital",
           "emoji": "⚖️",
           "targetCount": 6,
-          "voiceGuide": "Baca angka pada layar timbangan."
+          "voiceGuide": "METODE LUAR · Neraca. Baca angka pada layar timbangan."
         },
         {
           "title": "Timbangan yang Siap",
@@ -2339,7 +2605,7 @@
           "diagramType": "dial-read",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Membaca berat dalam kilogram dari jarum yang tepat di satu angka."
+          "caption": "Membaca berat dalam kilogram dari jarum yang tepat di satu angka. (METODE LUAR · Neraca)"
         },
         {
           "title": "Baca Layar Timbangan",
@@ -2410,7 +2676,7 @@
           "symbolLarge": "g kg",
           "wordLarge": "SATUAN",
           "mathNotation": "gram • kilogram",
-          "voiceReadout": "Pilih satuan baku yang tepat."
+          "voiceReadout": "METODE LUAR · Neraca. Pilih satuan baku yang tepat."
         },
         {
           "symbolLarge": "⚖️",
@@ -2475,9 +2741,9 @@
           "gameType": "read-digital",
           "title": "Baca Timbangan Digital",
           "bookReference": "Buku Siswa hlm. 124–125 dan 133 (Aktivitas 2 dan Ayo Berlatih 1)",
-          "objective": "Membaca berat benda pada layar timbangan digital dalam gram.",
+          "objective": "Membaca berat benda pada layar timbangan digital dalam gram. (METODE LUAR · Neraca)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda ditampilkan di atas timbangan digital. Siswa membaca angka pada layar lalu memilih satu dari tiga berat.",
-          "voiceGuide": "Baca angka pada layar timbangan."
+          "voiceGuide": "METODE LUAR · Neraca. Baca angka pada layar timbangan."
         },
         {
           "gameId": "subK3B3C-game-2",
@@ -2585,9 +2851,9 @@
           "gameType": "read-dial-kg",
           "title": "Baca Jarum dalam Kilogram",
           "bookReference": "Buku Siswa hlm. 125–126 (timbangan duduk)",
-          "objective": "Membaca berat dalam kilogram dari jarum yang tepat di satu angka.",
+          "objective": "Membaca berat dalam kilogram dari jarum yang tepat di satu angka. (METODE LUAR · Neraca)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Jarum timbangan polos ditampilkan. Siswa memilih satu dari tiga berat dalam kilogram.",
-          "voiceGuide": "Baca angka yang ditunjuk jarum."
+          "voiceGuide": "METODE LUAR · Neraca. Baca angka yang ditunjuk jarum."
         },
         {
           "gameId": "subK3B3C-game-12",
@@ -2695,9 +2961,9 @@
           "gameType": "choose-unit-weight",
           "title": "Pilih Satuan Berat",
           "bookReference": "Buku Siswa hlm. 125 dan 128–129 (satuan baku berat)",
-          "objective": "Memilih satuan baku yang tepat untuk berat suatu benda.",
+          "objective": "Memilih satuan baku yang tepat untuk berat suatu benda. (METODE LUAR · Neraca)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca benda yang ditimbang, lalu memilih satu dari tiga satuan.",
-          "voiceGuide": "Pilih satuan baku yang tepat."
+          "voiceGuide": "METODE LUAR · Neraca. Pilih satuan baku yang tepat."
         },
         {
           "gameId": "subK3B3C-game-22",
@@ -2825,6 +3091,21 @@
             "nama": "Mulai dari nol",
             "isi": "jarum atau layar di angka 0",
             "suara": "Sebelum menimbang, jarum atau layar harus tepat di angka nol."
+          },
+          {
+            "nama": "Neraca",
+            "isi": "METODE LUAR · Balance Scale: Bandingkan berat dengan anak timbangan. (asal: Mass measurement).",
+            "suara": "METODE LUAR. Neraca. Bandingkan berat dengan anak timbangan."
+          },
+          {
+            "nama": "Satuan Berat Baku",
+            "isi": "METODE LUAR · Standard Mass Units: Gram dan kilogram. (asal: SI mass).",
+            "suara": "METODE LUAR. Satuan Berat Baku. Gram dan kilogram."
+          },
+          {
+            "nama": "Perkiraan Berat",
+            "isi": "METODE LUAR · Estimate Mass: Bandingkan dengan benda acuan. (asal: Measurement sense).",
+            "suara": "METODE LUAR. Perkiraan Berat. Bandingkan dengan benda acuan."
           }
         ],
         "suara": "Ingat selalu! Timbangan adalah alat ukur berat. Satuan baku berat adalah gram dan kilogram. Gram untuk benda yang ringan, kilogram untuk benda yang lebih berat. Sebelum menimbang, pastikan jarum atau layar tepat di angka nol.",
@@ -2849,8 +3130,44 @@
       "silabus": {
         "teksSuara": "Kita belajar hubungan antarsatuan baku berat. Pedagang di pasar memakai timbangan kodok dengan bandul. Satu kilogram sama dengan seribu gram dan sama dengan sepuluh ons. Satu ons sama dengan seratus gram. Kita belajar mengubah kilogram ke gram dan gram ke kilogram, serta menjumlahkan dan mengurangkan berat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menyelesaikan masalah yang berkaitan dengan panjang dan berat benda dengan satuan baku. Pada sub-bab ini siswa menghubungkan kilogram, ons, dan gram serta menghitung berat gabungan.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3: Pengukuran Panjang dan Berat, Sub-Bab D hlm. 135–140) dan Buku Panduan Guru Bab 3 Topik D."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 3 Sub-Bab D)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Mass Conversion",
+          "namaId": "Konversi Berat",
+          "asal": "SI relationships",
+          "ringkas": "1 kg = 1000 g.",
+          "tahap": [
+            "Story",
+            "Abstract",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Mixed Units",
+          "namaId": "Satuan Campuran",
+          "asal": "Measurement",
+          "ringkas": "1 kg 200 g = 1200 g.",
+          "tahap": [
+            "Picture",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Conversion Table Mass",
+          "namaId": "Tabel Konversi Berat",
+          "asal": "Reference table",
+          "ringkas": "Pakai tabel g–kg.",
+          "tahap": [
+            "Infografis",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B3D-V1-1",
@@ -2868,7 +3185,7 @@
           "id": "K3B3D-V1-3",
           "titleHint": "Telur dua timbangan",
           "sceneType": "K3B3D-V1-3",
-          "voiceNarration": "Berat telur pada timbangan kodok adalah 1 kilogram. Berat telur yang sama pada timbangan digital 1.000 gram. Jumlah telurnya sama, jadi beratnya sama. Berarti 1 kilogram sama dengan 1.000 gram."
+          "voiceNarration": "Berat telur pada timbangan kodok adalah 1 kilogram. Berat telur yang sama pada timbangan digital 1.000 gram. Jumlah telurnya sama, jadi beratnya sama. Berarti 1 kilogram sama dengan 1.000 gram. METODE LUAR. Konversi Berat: 1 kg = 1000 g."
         },
         {
           "id": "K3B3D-V2-1",
@@ -2886,7 +3203,7 @@
           "id": "K3B3D-V2-3",
           "titleHint": "Kilogram ke gram",
           "sceneType": "K3B3D-V2-3",
-          "voiceNarration": "Untuk mengubah kilogram ke gram, kalikan dengan 1.000. Misalnya 3 kg sama dengan 3 × 1.000 gram. Hasilnya adalah 3.000 gram. Dan 20 kg sama dengan 20.000 gram."
+          "voiceNarration": "Untuk mengubah kilogram ke gram, kalikan dengan 1.000. Misalnya 3 kg sama dengan 3 × 1.000 gram. Hasilnya adalah 3.000 gram. Dan 20 kg sama dengan 20.000 gram. METODE LUAR. Satuan Campuran: 1 kg 200 g = 1200 g."
         },
         {
           "id": "K3B3D-V3-1",
@@ -2904,7 +3221,7 @@
           "id": "K3B3D-V3-3",
           "titleHint": "Mangga dan jeruk",
           "sceneType": "K3B3D-V3-3",
-          "voiceNarration": "Meutia memanen mangga 8.000 gram dan menjual 4 kilogram. 8.000 gram sama dengan 8 kilogram. Sisa mangga adalah 8 dikurangi 4, yaitu 4 kilogram. Dua kantong jeruk 500 gram jadi 1.000 gram, yaitu 1 kg."
+          "voiceNarration": "Meutia memanen mangga 8.000 gram dan menjual 4 kilogram. 8.000 gram sama dengan 8 kilogram. Sisa mangga adalah 8 dikurangi 4, yaitu 4 kilogram. Dua kantong jeruk 500 gram jadi 1.000 gram, yaitu 1 kg. METODE LUAR. Tabel Konversi Berat: Pakai tabel g–kg."
         }
       ],
       "videos": [
@@ -2952,13 +3269,15 @@
                 "Berat telur pada timbangan kodok adalah 1 kilogram.",
                 "Berat telur yang sama pada timbangan digital 1.000 gram.",
                 "Jumlah telurnya sama, jadi beratnya sama.",
-                "Berarti 1 kilogram sama dengan 1.000 gram."
+                "Berarti 1 kilogram sama dengan 1.000 gram.",
+                "METODE LUAR. Konversi Berat: 1 kg = 1000 g."
               ],
               "papan": [
                 "Kodok: 1 kg",
                 "Digital: 1.000 g",
                 "Berat telur sama",
-                "1 kg = 1.000 g"
+                "1 kg = 1.000 g",
+                "METODE LUAR · Konversi Berat"
               ]
             }
           ]
@@ -3007,13 +3326,15 @@
                 "Untuk mengubah kilogram ke gram, kalikan dengan 1.000.",
                 "Misalnya 3 kg sama dengan 3 × 1.000 gram.",
                 "Hasilnya adalah 3.000 gram.",
-                "Dan 20 kg sama dengan 20.000 gram."
+                "Dan 20 kg sama dengan 20.000 gram.",
+                "METODE LUAR. Satuan Campuran: 1 kg 200 g = 1200 g."
               ],
               "papan": [
                 "kg ke g: kali 1.000",
                 "3 kg = 3 × 1.000 g",
                 "= 3.000 g",
-                "20 kg = 20.000 g"
+                "20 kg = 20.000 g",
+                "METODE LUAR · Satuan Campuran"
               ]
             }
           ]
@@ -3062,13 +3383,15 @@
                 "Meutia memanen mangga 8.000 gram dan menjual 4 kilogram.",
                 "8.000 gram sama dengan 8 kilogram.",
                 "Sisa mangga adalah 8 dikurangi 4, yaitu 4 kilogram.",
-                "Dua kantong jeruk 500 gram jadi 1.000 gram, yaitu 1 kg."
+                "Dua kantong jeruk 500 gram jadi 1.000 gram, yaitu 1 kg.",
+                "METODE LUAR. Tabel Konversi Berat: Pakai tabel g–kg."
               ],
               "papan": [
                 "Mangga 8.000 g",
                 "8.000 g = 8 kg",
                 "8 − 4 = 4 kg",
-                "500 g + 500 g = 1 kg"
+                "500 g + 500 g = 1 kg",
+                "METODE LUAR · Tabel Konversi Berat"
               ]
             }
           ]
@@ -3137,7 +3460,23 @@
           "stepDesc": "Untuk mengubah gram ke kilogram, ambil tiap 1.000 gram sebagai 1 kilogram. Tepung Meutia 1.753 gram = 1.000 gram + 753 gram = 1 kg 753 gram. Begitu pula 1.200 gram = 1 kg 200 gram dan 3.000 gram = 3 kg. Berat juga dapat dijumlahkan dan dikurangkan setelah satuannya sama.",
           "icon": "➗",
           "flowFrom": "Gram ke kilogram",
-          "flowTo": "Siap mengubah satuan berat"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Konversi Berat",
+          "stepDesc": "1 kg = 1000 g.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Satuan Campuran",
+          "stepDesc": "1 kg 200 g = 1200 g.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -3210,6 +3549,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, ingat satu kilogram sama dengan seribu gram. Dua, kilogram ke gram kalikan seribu. Tiga, gram ke kilogram bagi seribu. Empat, periksa dengan cara sebaliknya."
+        },
+        {
+          "fruitName": "Konversi Berat",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Mass Conversion",
+          "voiceSentence": "METODE LUAR. Konversi Berat. 1 kg = 1000 g."
+        },
+        {
+          "fruitName": "Satuan Campuran",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Mixed Units",
+          "voiceSentence": "METODE LUAR. Satuan Campuran. 1 kg 200 g = 1200 g."
+        },
+        {
+          "fruitName": "Tabel Konversi Berat",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Conversion Table Mass",
+          "voiceSentence": "METODE LUAR. Tabel Konversi Berat. Pakai tabel g–kg."
         }
       ],
       "concreteSlides": [
@@ -3217,7 +3577,7 @@
           "title": "Rakit Berat dengan Bandul",
           "emoji": "🏋️",
           "targetCount": 6,
-          "voiceGuide": "Rakit berat dengan bandul."
+          "voiceGuide": "METODE LUAR · Konversi Berat. Rakit berat dengan bandul."
         },
         {
           "title": "Hitung Berat Bandul",
@@ -3280,7 +3640,7 @@
           "diagramType": "weight-count",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Menghitung berat batang pada garis berat dalam gram."
+          "caption": "Menghitung berat batang pada garis berat dalam gram. (METODE LUAR · Konversi Berat)"
         },
         {
           "title": "Lengkapi Kalimat Ubah Berat",
@@ -3351,7 +3711,7 @@
           "symbolLarge": "4 kg",
           "wordLarge": "KG KE G",
           "mathNotation": "kali 1.000",
-          "voiceReadout": "Pilih hasil perubahan kilogram ke gram."
+          "voiceReadout": "METODE LUAR · Konversi Berat. Pilih hasil perubahan kilogram ke gram."
         },
         {
           "symbolLarge": "1.200 g",
@@ -3416,9 +3776,9 @@
           "gameType": "build-bandul",
           "title": "Rakit Berat dengan Bandul",
           "bookReference": "Buku Siswa hlm. 135–136 (jenis bandul timbangan kodok)",
-          "objective": "Merakit berat yang diminta dari bandul 1/2 ons, 1 ons, 2 ons, 1/2 kg, dan 1 kg.",
+          "objective": "Merakit berat yang diminta dari bandul 1/2 ons, 1 ons, 2 ons, 1/2 kg, dan 1 kg. (METODE LUAR · Konversi Berat)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca berat yang diminta, lalu menambah atau mengurangi bandul sampai layar menunjukkan berat itu. Banyak jalan yang benar.",
-          "voiceGuide": "Rakit berat dengan bandul."
+          "voiceGuide": "METODE LUAR · Konversi Berat. Rakit berat dengan bandul."
         },
         {
           "gameId": "subK3B3D-game-2",
@@ -3526,9 +3886,9 @@
           "gameType": "count-weight-line",
           "title": "Hitung Garis Berat",
           "bookReference": "Buku Siswa hlm. 136–139 (kilogram dan gram)",
-          "objective": "Menghitung berat batang pada garis berat dalam gram.",
+          "objective": "Menghitung berat batang pada garis berat dalam gram. (METODE LUAR · Konversi Berat)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Garis berat bertanda tiap 500 g dan batang berwarna ditampilkan. Siswa memilih satu dari tiga berat.",
-          "voiceGuide": "Hitung berat batang pada garis."
+          "voiceGuide": "METODE LUAR · Konversi Berat. Hitung berat batang pada garis."
         },
         {
           "gameId": "subK3B3D-game-12",
@@ -3636,9 +3996,9 @@
           "gameType": "kg-to-g-abstract",
           "title": "Ubah Kilogram ke Gram: Lambang",
           "bookReference": "Buku Siswa hlm. 139 (20 kg = ... gram)",
-          "objective": "Mengubah kilogram ke gram dan memilih hasilnya dari tiga pilihan.",
+          "objective": "Mengubah kilogram ke gram dan memilih hasilnya dari tiga pilihan. (METODE LUAR · Konversi Berat)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 4 kg = ... g. Pengecoh lupa mengalikan 1.000 atau mengalikan 10.000.",
-          "voiceGuide": "Pilih hasil perubahan kilogram ke gram."
+          "voiceGuide": "METODE LUAR · Konversi Berat. Pilih hasil perubahan kilogram ke gram."
         },
         {
           "gameId": "subK3B3D-game-22",
@@ -3766,6 +4126,21 @@
             "nama": "Gram ke kilogram",
             "isi": "1.753 g = 1 kg 753 g",
             "suara": "Untuk mengubah gram ke kilogram, ambil tiap seribu gram sebagai satu kilogram. Seribu tujuh ratus lima puluh tiga gram sama dengan satu kilogram tujuh ratus lima puluh tiga gram."
+          },
+          {
+            "nama": "Konversi Berat",
+            "isi": "METODE LUAR · Mass Conversion: 1 kg = 1000 g. (asal: SI relationships).",
+            "suara": "METODE LUAR. Konversi Berat. 1 kg = 1000 g."
+          },
+          {
+            "nama": "Satuan Campuran",
+            "isi": "METODE LUAR · Mixed Units: 1 kg 200 g = 1200 g. (asal: Measurement).",
+            "suara": "METODE LUAR. Satuan Campuran. 1 kg 200 g = 1200 g."
+          },
+          {
+            "nama": "Tabel Konversi Berat",
+            "isi": "METODE LUAR · Conversion Table Mass: Pakai tabel g–kg. (asal: Reference table).",
+            "suara": "METODE LUAR. Tabel Konversi Berat. Pakai tabel g–kg."
           }
         ],
         "suara": "Ingat selalu! Satu kilogram sama dengan seribu gram dan sama dengan sepuluh ons. Satu ons sama dengan seratus gram. Untuk mengubah kilogram ke gram, kalikan dengan seribu. Untuk mengubah gram ke kilogram, ambil tiap seribu gram sebagai satu kilogram.",

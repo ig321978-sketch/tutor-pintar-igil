@@ -26,8 +26,44 @@
       "silabus": {
         "teksSuara": "Kita belajar kalimat Matematika yang berkaitan dengan penjumlahan. Galih punya sejumlah kelereng di rumah. Ia membeli lima kelereng lagi, dan jumlahnya menjadi tujuh belas. Berapa kelereng yang disimpan di rumah? Kita menulis kalimat Matematikanya dan mencari bilangan yang belum diketahui dengan mengurangkan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menyelesaikan masalah yang berkaitan dengan kalimat Matematika berbentuk penjumlahan dan pengurangan bilangan cacah sampai 100. Pada sub-bab ini siswa mengisi nilai yang belum diketahui pada kalimat penjumlahan.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 2: Kalimat Matematika, Sub-Bab A hlm. 77–86) dan Buku Panduan Guru Bab 2 Topik A."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 2 Sub-Bab A)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Part–Part–Whole",
+          "namaId": "Bagian–Bagian–Utuh",
+          "asal": "Singapore Math",
+          "ringkas": "Dua bagian membentuk keseluruhan pada penjumlahan.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Bar Model",
+          "namaId": "Model Batang",
+          "asal": "Singapore bar model",
+          "ringkas": "Gambar batang untuk kalimat matematika.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Story to Equation",
+          "namaId": "Cerita ke Kalimat",
+          "asal": "Word-problem pedagogy",
+          "ringkas": "Ubah cerita jadi + dan =.",
+          "tahap": [
+            "Infografis",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B2A-V1-1",
@@ -45,7 +81,7 @@
           "id": "K3B2A-V1-3",
           "titleHint": "Kalimat Matematika",
           "sceneType": "K3B2A-V1-3",
-          "voiceNarration": "Bentuk penjumlahan seperti … + 5 = 17 disebut kalimat Matematika. Bilangan yang belum diketahui itulah yang akan kita cari. Kita akan belajar caranya selangkah demi selangkah. Mulailah dari tabel kelereng dan bentuk penjumlahannya."
+          "voiceNarration": "Bentuk penjumlahan seperti … + 5 = 17 disebut kalimat Matematika. Bilangan yang belum diketahui itulah yang akan kita cari. Kita akan belajar caranya selangkah demi selangkah. Mulailah dari tabel kelereng dan bentuk penjumlahannya. METODE LUAR. Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan."
         },
         {
           "id": "K3B2A-V2-1",
@@ -63,7 +99,7 @@
           "id": "K3B2A-V2-3",
           "titleHint": "Bagan jumlah",
           "sceneType": "K3B2A-V2-3",
-          "voiceNarration": "Gambar bagan: seluruh kelereng 50, bagian Galih 30, bagian Andi belum diketahui. Untuk mencari bagian Andi, kurangi jumlah semua dengan bagian Galih. Kita hitung 50 − 30 = 20. Jadi, kelereng Andi ada 20 butir."
+          "voiceNarration": "Gambar bagan: seluruh kelereng 50, bagian Galih 30, bagian Andi belum diketahui. Untuk mencari bagian Andi, kurangi jumlah semua dengan bagian Galih. Kita hitung 50 − 30 = 20. Jadi, kelereng Andi ada 20 butir. METODE LUAR. Model Batang: Gambar batang untuk kalimat matematika."
         },
         {
           "id": "K3B2A-V3-1",
@@ -81,7 +117,7 @@
           "id": "K3B2A-V3-3",
           "titleHint": "Contoh ketiga",
           "sceneType": "K3B2A-V3-3",
-          "voiceNarration": "Contoh ketiga: … + 16 = 54. Bilangan yang belum diketahui ada di depan. Kurangkan: 54 − 16 = 38. Jadi, 38 + 16 sama dengan 54."
+          "voiceNarration": "Contoh ketiga: … + 16 = 54. Bilangan yang belum diketahui ada di depan. Kurangkan: 54 − 16 = 38. Jadi, 38 + 16 sama dengan 54. METODE LUAR. Cerita ke Kalimat: Ubah cerita jadi + dan =."
         }
       ],
       "videos": [
@@ -129,13 +165,15 @@
                 "Bentuk penjumlahan seperti … + 5 = 17 disebut kalimat Matematika.",
                 "Bilangan yang belum diketahui itulah yang akan kita cari.",
                 "Kita akan belajar caranya selangkah demi selangkah.",
-                "Mulailah dari tabel kelereng dan bentuk penjumlahannya."
+                "Mulailah dari tabel kelereng dan bentuk penjumlahannya.",
+                "METODE LUAR. Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan."
               ],
               "papan": [
                 "… + 5 = 17",
                 "Cari bilangan yang belum diketahui",
                 "Belajar selangkah demi selangkah",
-                "Mulai dari tabel kelereng"
+                "Mulai dari tabel kelereng",
+                "METODE LUAR · Bagian–Bagian–Utuh"
               ]
             }
           ]
@@ -184,13 +222,15 @@
                 "Gambar bagan: seluruh kelereng 50, bagian Galih 30, bagian Andi belum diketahui.",
                 "Untuk mencari bagian Andi, kurangi jumlah semua dengan bagian Galih.",
                 "Kita hitung 50 − 30 = 20.",
-                "Jadi, kelereng Andi ada 20 butir."
+                "Jadi, kelereng Andi ada 20 butir.",
+                "METODE LUAR. Model Batang: Gambar batang untuk kalimat matematika."
               ],
               "papan": [
                 "Bagan: 50 = 30 + ?",
                 "Jumlah dikurangi bagian",
                 "50 − 30 = 20",
-                "Andi 20 butir"
+                "Andi 20 butir",
+                "METODE LUAR · Model Batang"
               ]
             }
           ]
@@ -239,13 +279,15 @@
                 "Contoh ketiga: … + 16 = 54.",
                 "Bilangan yang belum diketahui ada di depan.",
                 "Kurangkan: 54 − 16 = 38.",
-                "Jadi, 38 + 16 sama dengan 54."
+                "Jadi, 38 + 16 sama dengan 54.",
+                "METODE LUAR. Cerita ke Kalimat: Ubah cerita jadi + dan =."
               ],
               "papan": [
                 "… + 16 = 54",
                 "Belum diketahui di depan",
                 "54 − 16 = 38",
-                "38 + 16 = 54"
+                "38 + 16 = 54",
+                "METODE LUAR · Cerita ke Kalimat"
               ]
             }
           ]
@@ -314,7 +356,23 @@
           "stepDesc": "Pada Ayo Berpikir, perpustakaan punya 100 buku. Banyak buku yang dipinjam dan banyak buku yang tersisa bisa bermacam-macam asal jumlahnya 100, misalnya 60 + 40, 75 + 25, atau 55 + 45. Pada Latihan 1 nomor 5 ada 95 tiket yang terjual, dan siswa menuliskan lima kemungkinan penonton laki-laki dan perempuan.",
           "icon": "🔀",
           "flowFrom": "Banyak kemungkinan",
-          "flowTo": "Siap menyelesaikan kalimat penjumlahan"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Bagian–Bagian–Utuh",
+          "stepDesc": "Dua bagian membentuk keseluruhan pada penjumlahan.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Model Batang",
+          "stepDesc": "Gambar batang untuk kalimat matematika.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -387,6 +445,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, baca kalimat Matematikanya. Dua, lihat bilangan yang diketahui. Tiga, kurangkan jumlah dengan bilangan itu. Empat, periksa dengan menjumlahkan."
+        },
+        {
+          "fruitName": "Bagian–Bagian–Utuh",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Part–Part–Whole",
+          "voiceSentence": "METODE LUAR. Bagian–Bagian–Utuh. Dua bagian membentuk keseluruhan pada penjumlahan."
+        },
+        {
+          "fruitName": "Model Batang",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Bar Model",
+          "voiceSentence": "METODE LUAR. Model Batang. Gambar batang untuk kalimat matematika."
+        },
+        {
+          "fruitName": "Cerita ke Kalimat",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Story to Equation",
+          "voiceSentence": "METODE LUAR. Cerita ke Kalimat. Ubah cerita jadi + dan =."
         }
       ],
       "concreteSlides": [
@@ -394,7 +473,7 @@
           "title": "Rakit yang Belum Diketahui",
           "emoji": "🧺",
           "targetCount": 6,
-          "voiceGuide": "Rakit kumpulan yang belum diketahui."
+          "voiceGuide": "METODE LUAR · Bagian–Bagian–Utuh. Rakit kumpulan yang belum diketahui."
         },
         {
           "title": "Hitung yang Belum Diketahui",
@@ -457,7 +536,7 @@
           "diagramType": "bar-count",
           "numberA": 2,
           "numberB": 3,
-          "caption": "Menghitung nilai yang belum diketahui dari bagan bagian dan keseluruhan."
+          "caption": "Menghitung nilai yang belum diketahui dari bagan bagian dan keseluruhan. (METODE LUAR · Bagian–Bagian–Utuh)"
         },
         {
           "title": "Lengkapi Kalimat dari Bagan",
@@ -528,7 +607,7 @@
           "symbolLarge": "?",
           "wordLarge": "ISI NILAI",
           "mathNotation": "nilai yang belum diketahui",
-          "voiceReadout": "Pilih nilai yang belum diketahui."
+          "voiceReadout": "METODE LUAR · Bagian–Bagian–Utuh. Pilih nilai yang belum diketahui."
         },
         {
           "symbolLarge": "…",
@@ -593,9 +672,9 @@
           "gameType": "build-unknown",
           "title": "Rakit yang Belum Diketahui",
           "bookReference": "Buku Siswa hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-          "objective": "Merakit kumpulan benda yang belum diketahui pada kalimat Matematika penjumlahan, termasuk menukar sepuluh benda menjadi satu bungkus.",
+          "objective": "Merakit kumpulan benda yang belum diketahui pada kalimat Matematika penjumlahan, termasuk menukar sepuluh benda menjadi satu bungkus. (METODE LUAR · Bagian–Bagian–Utuh)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca cerita dan melihat gambar kumpulan yang diketahui, lalu merakit kumpulan yang belum diketahui dengan tombol tambah dan kurang. Sepuluh benda otomatis ditukar satu bungkus.",
-          "voiceGuide": "Rakit kumpulan yang belum diketahui."
+          "voiceGuide": "METODE LUAR · Bagian–Bagian–Utuh. Rakit kumpulan yang belum diketahui."
         },
         {
           "gameId": "subK3B2A-game-2",
@@ -703,9 +782,9 @@
           "gameType": "count-bar",
           "title": "Hitung Bagan",
           "bookReference": "Buku Siswa hlm. 79–82 (Aktivitas 1: kelereng Galih dan Andi)",
-          "objective": "Menghitung nilai yang belum diketahui dari bagan bagian dan keseluruhan.",
+          "objective": "Menghitung nilai yang belum diketahui dari bagan bagian dan keseluruhan. (METODE LUAR · Bagian–Bagian–Utuh)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bagan batang menampilkan keseluruhan dan dua bagian, salah satunya bertanda tanya. Siswa memilih satu dari tiga nilai.",
-          "voiceGuide": "Pilih nilai pada bagan."
+          "voiceGuide": "METODE LUAR · Bagian–Bagian–Utuh. Pilih nilai pada bagan."
         },
         {
           "gameId": "subK3B2A-game-12",
@@ -813,9 +892,9 @@
           "gameType": "fill-unknown",
           "title": "Isi Nilai yang Belum Diketahui",
           "bookReference": "Buku Siswa hlm. 83 (Contoh: 8 + … = 19, 23 + … = 45, … + 16 = 54)",
-          "objective": "Mencari nilai yang belum diketahui pada kalimat Matematika penjumlahan dan memilihnya dari tiga pilihan.",
+          "objective": "Mencari nilai yang belum diketahui pada kalimat Matematika penjumlahan dan memilihnya dari tiga pilihan. (METODE LUAR · Bagian–Bagian–Utuh)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 8 + … = 19 dan … + 16 = 54. Pengecoh salah sepuluh atau salah satu.",
-          "voiceGuide": "Pilih nilai yang belum diketahui."
+          "voiceGuide": "METODE LUAR · Bagian–Bagian–Utuh. Pilih nilai yang belum diketahui."
         },
         {
           "gameId": "subK3B2A-game-22",
@@ -943,6 +1022,21 @@
             "nama": "Banyak kemungkinan",
             "isi": "60 + 40, 75 + 25",
             "suara": "Bila hanya jumlah yang diketahui, ada banyak pasangan bilangan yang mungkin."
+          },
+          {
+            "nama": "Bagian–Bagian–Utuh",
+            "isi": "METODE LUAR · Part–Part–Whole: Dua bagian membentuk keseluruhan pada penjumlahan. (asal: Singapore Math).",
+            "suara": "METODE LUAR. Bagian–Bagian–Utuh. Dua bagian membentuk keseluruhan pada penjumlahan."
+          },
+          {
+            "nama": "Model Batang",
+            "isi": "METODE LUAR · Bar Model: Gambar batang untuk kalimat matematika. (asal: Singapore bar model).",
+            "suara": "METODE LUAR. Model Batang. Gambar batang untuk kalimat matematika."
+          },
+          {
+            "nama": "Cerita ke Kalimat",
+            "isi": "METODE LUAR · Story to Equation: Ubah cerita jadi + dan =. (asal: Word-problem pedagogy).",
+            "suara": "METODE LUAR. Cerita ke Kalimat. Ubah cerita jadi + dan =."
           }
         ],
         "suara": "Ingat selalu! Kalimat Matematika penjumlahan memuat titik-titik untuk bilangan yang belum diketahui. Untuk mencarinya, kurangi jumlah dengan bilangan yang diketahui. Lalu periksa dengan menjumlahkan. Bila hanya jumlah yang diketahui, ada banyak kemungkinan pasangan bilangan.",
@@ -967,8 +1061,43 @@
       "silabus": {
         "teksSuara": "Kita belajar kalimat Matematika yang berkaitan dengan pengurangan. Pak Slamet punya delapan puluh ekor ayam. Sebagian ayam dijual dan tersisa empat puluh lima ekor. Berapa ayam yang dijual? Kita juga mencari banyak ayam mula-mula bila ayam yang dijual dan sisanya diketahui. Kita memakai mengurangkan dan menjumlahkan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menyelesaikan masalah yang berkaitan dengan kalimat Matematika berbentuk penjumlahan dan pengurangan bilangan cacah sampai 100. Pada sub-bab ini siswa mengisi nilai yang belum diketahui pada kalimat pengurangan.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 2: Kalimat Matematika, Sub-Bab B hlm. 87–98) dan Buku Panduan Guru Bab 2 Topik B."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 2 Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Take Away",
+          "namaId": "Mengambil",
+          "asal": "Subtraction meanings",
+          "ringkas": "Kurangi berarti mengambil sebagian.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Comparison Difference",
+          "namaId": "Selisih Banding",
+          "asal": "Van de Walle",
+          "ringkas": "Berapa lebih banyak/sedikit.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Bar Model Subtract",
+          "namaId": "Model Batang Kurang",
+          "asal": "Singapore bar model",
+          "ringkas": "Batang utuh dikurangi bagian.",
+          "tahap": [
+            "Infografis",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B2B-V1-1",
@@ -986,7 +1115,7 @@
           "id": "K3B2B-V1-3",
           "titleHint": "Cara mencari",
           "sceneType": "K3B2B-V1-3",
-          "voiceNarration": "Pada 3 − … = 1, kita kurangi 3 dengan 1 sama dengan 2. Jadi, 3 − 2 sama dengan 1. Pada … − 6 = 3, kita tambahkan 3 dan 6 sama dengan 9. Jadi, 9 − 6 sama dengan 3."
+          "voiceNarration": "Pada 3 − … = 1, kita kurangi 3 dengan 1 sama dengan 2. Jadi, 3 − 2 sama dengan 1. Pada … − 6 = 3, kita tambahkan 3 dan 6 sama dengan 9. Jadi, 9 − 6 sama dengan 3. METODE LUAR. Mengambil: Kurangi berarti mengambil sebagian."
         },
         {
           "id": "K3B2B-V2-1",
@@ -1004,7 +1133,7 @@
           "id": "K3B2B-V2-3",
           "titleHint": "Bagan",
           "sceneType": "K3B2B-V2-3",
-          "voiceNarration": "Bagan: seluruh ayam 80, sisa 45, dan yang dijual belum diketahui. Untuk mencari ayam yang dijual, kurangi ayam mula-mula dengan sisa ayam. Kita hitung 80 − 45 = 35. Jadi, ayam yang dijual ada 35 ekor."
+          "voiceNarration": "Bagan: seluruh ayam 80, sisa 45, dan yang dijual belum diketahui. Untuk mencari ayam yang dijual, kurangi ayam mula-mula dengan sisa ayam. Kita hitung 80 − 45 = 35. Jadi, ayam yang dijual ada 35 ekor. METODE LUAR. Selisih Banding: Berapa lebih banyak/sedikit."
         },
         {
           "id": "K3B2B-V3-1",
@@ -1022,7 +1151,7 @@
           "id": "K3B2B-V3-3",
           "titleHint": "Bagan",
           "sceneType": "K3B2B-V3-3",
-          "voiceNarration": "Bagan: ayam yang dijual 45 dan sisa 27 membentuk ayam mula-mula. Untuk mencari ayam mula-mula, tambahkan ayam yang dijual dan sisa ayam. Kita hitung 45 + 27 = 72. Jadi, ayam mula-mula ada 72 ekor."
+          "voiceNarration": "Bagan: ayam yang dijual 45 dan sisa 27 membentuk ayam mula-mula. Untuk mencari ayam mula-mula, tambahkan ayam yang dijual dan sisa ayam. Kita hitung 45 + 27 = 72. Jadi, ayam mula-mula ada 72 ekor. METODE LUAR. Model Batang Kurang: Batang utuh dikurangi bagian."
         }
       ],
       "videos": [
@@ -1070,13 +1199,15 @@
                 "Pada 3 − … = 1, kita kurangi 3 dengan 1 sama dengan 2.",
                 "Jadi, 3 − 2 sama dengan 1.",
                 "Pada … − 6 = 3, kita tambahkan 3 dan 6 sama dengan 9.",
-                "Jadi, 9 − 6 sama dengan 3."
+                "Jadi, 9 − 6 sama dengan 3.",
+                "METODE LUAR. Mengambil: Kurangi berarti mengambil sebagian."
               ],
               "papan": [
                 "3 − 1 = 2",
                 "3 − 2 = 1",
                 "3 + 6 = 9",
-                "9 − 6 = 3"
+                "9 − 6 = 3",
+                "METODE LUAR · Mengambil"
               ]
             }
           ]
@@ -1125,13 +1256,15 @@
                 "Bagan: seluruh ayam 80, sisa 45, dan yang dijual belum diketahui.",
                 "Untuk mencari ayam yang dijual, kurangi ayam mula-mula dengan sisa ayam.",
                 "Kita hitung 80 − 45 = 35.",
-                "Jadi, ayam yang dijual ada 35 ekor."
+                "Jadi, ayam yang dijual ada 35 ekor.",
+                "METODE LUAR. Selisih Banding: Berapa lebih banyak/sedikit."
               ],
               "papan": [
                 "Bagan: 80 = ? + 45",
                 "Mula-mula dikurangi sisa",
                 "80 − 45 = 35",
-                "Dijual 35 ekor"
+                "Dijual 35 ekor",
+                "METODE LUAR · Selisih Banding"
               ]
             }
           ]
@@ -1180,13 +1313,15 @@
                 "Bagan: ayam yang dijual 45 dan sisa 27 membentuk ayam mula-mula.",
                 "Untuk mencari ayam mula-mula, tambahkan ayam yang dijual dan sisa ayam.",
                 "Kita hitung 45 + 27 = 72.",
-                "Jadi, ayam mula-mula ada 72 ekor."
+                "Jadi, ayam mula-mula ada 72 ekor.",
+                "METODE LUAR. Model Batang Kurang: Batang utuh dikurangi bagian."
               ],
               "papan": [
                 "Bagan: ? = 45 + 27",
                 "Dijual ditambah sisa",
                 "45 + 27 = 72",
-                "Mula-mula 72 ekor"
+                "Mula-mula 72 ekor",
+                "METODE LUAR · Model Batang Kurang"
               ]
             }
           ]
@@ -1255,7 +1390,23 @@
           "stepDesc": "Pada Ayo Berpikir, pedagang menjual telur di pasar. Banyak telur mula-mula adalah 100. Banyak telur yang terjual dan banyak sisa telur bisa bermacam-macam asal jumlahnya 100, misalnya 45 dan 55. Pada Latihan 2 nomor 6, toko elektronik punya 40 televisi dan siswa menuliskan lima kemungkinan banyak televisi yang terjual dan sisanya.",
           "icon": "🔀",
           "flowFrom": "Banyak kemungkinan",
-          "flowTo": "Siap menyelesaikan kalimat pengurangan"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Mengambil",
+          "stepDesc": "Kurangi berarti mengambil sebagian.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Selisih Banding",
+          "stepDesc": "Berapa lebih banyak/sedikit.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -1328,6 +1479,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, baca kalimat Matematikanya. Dua, lihat bilangan yang diketahui. Tiga, kurangkan atau tambahkan sesuai letak titik-titik. Empat, periksa dengan mengurangkan lagi."
+        },
+        {
+          "fruitName": "Mengambil",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Take Away",
+          "voiceSentence": "METODE LUAR. Mengambil. Kurangi berarti mengambil sebagian."
+        },
+        {
+          "fruitName": "Selisih Banding",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Comparison Difference",
+          "voiceSentence": "METODE LUAR. Selisih Banding. Berapa lebih banyak/sedikit."
+        },
+        {
+          "fruitName": "Model Batang Kurang",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Bar Model Subtract",
+          "voiceSentence": "METODE LUAR. Model Batang Kurang. Batang utuh dikurangi bagian."
         }
       ],
       "concreteSlides": [
@@ -1335,7 +1507,7 @@
           "title": "Rakit yang Belum Diketahui",
           "emoji": "🧺",
           "targetCount": 6,
-          "voiceGuide": "Rakit kumpulan yang belum diketahui."
+          "voiceGuide": "METODE LUAR · Mengambil. Rakit kumpulan yang belum diketahui."
         },
         {
           "title": "Hitung yang Belum Diketahui",
@@ -1398,7 +1570,7 @@
           "diagramType": "bar-count",
           "numberA": 2,
           "numberB": 3,
-          "caption": "Menghitung nilai yang belum diketahui dari bagan bagian dan keseluruhan."
+          "caption": "Menghitung nilai yang belum diketahui dari bagan bagian dan keseluruhan. (METODE LUAR · Mengambil)"
         },
         {
           "title": "Lengkapi Kalimat dari Bagan",
@@ -1469,7 +1641,7 @@
           "symbolLarge": "?",
           "wordLarge": "ISI NILAI",
           "mathNotation": "nilai yang belum diketahui",
-          "voiceReadout": "Pilih nilai yang belum diketahui."
+          "voiceReadout": "METODE LUAR · Mengambil. Pilih nilai yang belum diketahui."
         },
         {
           "symbolLarge": "…",
@@ -1534,9 +1706,9 @@
           "gameType": "build-unknown",
           "title": "Rakit yang Belum Diketahui",
           "bookReference": "Buku Siswa hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-          "objective": "Merakit kumpulan benda yang belum diketahui pada kalimat Matematika pengurangan, termasuk menukar sepuluh benda menjadi satu bungkus.",
+          "objective": "Merakit kumpulan benda yang belum diketahui pada kalimat Matematika pengurangan, termasuk menukar sepuluh benda menjadi satu bungkus. (METODE LUAR · Mengambil)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca cerita dan melihat gambar kumpulan yang diketahui, lalu merakit kumpulan yang belum diketahui dengan tombol tambah dan kurang. Sepuluh benda otomatis ditukar satu bungkus.",
-          "voiceGuide": "Rakit kumpulan yang belum diketahui."
+          "voiceGuide": "METODE LUAR · Mengambil. Rakit kumpulan yang belum diketahui."
         },
         {
           "gameId": "subK3B2B-game-2",
@@ -1644,9 +1816,9 @@
           "gameType": "count-bar",
           "title": "Hitung Bagan",
           "bookReference": "Buku Siswa hlm. 88–90 (Aktivitas 2: permen dua anak dan ayam Pak Slamet)",
-          "objective": "Menghitung nilai yang belum diketahui dari bagan bagian dan keseluruhan.",
+          "objective": "Menghitung nilai yang belum diketahui dari bagan bagian dan keseluruhan. (METODE LUAR · Mengambil)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Bagan batang menampilkan keseluruhan dan dua bagian, salah satunya bertanda tanya. Siswa memilih satu dari tiga nilai.",
-          "voiceGuide": "Pilih nilai pada bagan."
+          "voiceGuide": "METODE LUAR · Mengambil. Pilih nilai pada bagan."
         },
         {
           "gameId": "subK3B2B-game-12",
@@ -1754,9 +1926,9 @@
           "gameType": "fill-unknown",
           "title": "Isi Nilai yang Belum Diketahui",
           "bookReference": "Buku Siswa hlm. 92 dan 95 (Contoh: 32 − … = 15 dan … − 12 = 26)",
-          "objective": "Mencari nilai yang belum diketahui pada kalimat Matematika pengurangan dan memilihnya dari tiga pilihan.",
+          "objective": "Mencari nilai yang belum diketahui pada kalimat Matematika pengurangan dan memilihnya dari tiga pilihan. (METODE LUAR · Mengambil)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 80 − … = 45 dan … − 45 = 27. Pengecoh salah sepuluh atau salah satu.",
-          "voiceGuide": "Pilih nilai yang belum diketahui."
+          "voiceGuide": "METODE LUAR · Mengambil. Pilih nilai yang belum diketahui."
         },
         {
           "gameId": "subK3B2B-game-22",
@@ -1884,6 +2056,21 @@
             "nama": "Banyak kemungkinan",
             "isi": "45 + 55, 60 + 40",
             "suara": "Bila hanya bilangan awal yang diketahui, ada banyak pasangan terjual dan sisa yang mungkin."
+          },
+          {
+            "nama": "Mengambil",
+            "isi": "METODE LUAR · Take Away: Kurangi berarti mengambil sebagian. (asal: Subtraction meanings).",
+            "suara": "METODE LUAR. Mengambil. Kurangi berarti mengambil sebagian."
+          },
+          {
+            "nama": "Selisih Banding",
+            "isi": "METODE LUAR · Comparison Difference: Berapa lebih banyak/sedikit. (asal: Van de Walle).",
+            "suara": "METODE LUAR. Selisih Banding. Berapa lebih banyak/sedikit."
+          },
+          {
+            "nama": "Model Batang Kurang",
+            "isi": "METODE LUAR · Bar Model Subtract: Batang utuh dikurangi bagian. (asal: Singapore bar model).",
+            "suara": "METODE LUAR. Model Batang Kurang. Batang utuh dikurangi bagian."
           }
         ],
         "suara": "Ingat selalu! Pada kalimat Matematika pengurangan, bilangan awal dikurangi bilangan yang dikurangkan sama dengan sisa. Bila bilangan yang dikurangkan belum diketahui, kurangi bilangan awal dengan sisa. Bila bilangan awal belum diketahui, tambahkan bilangan yang dikurangkan dengan sisa. Lalu periksa.",

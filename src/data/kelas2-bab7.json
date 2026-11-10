@@ -26,8 +26,44 @@
       "silabus": {
         "teksSuara": "Kita belajar membilang sampai seratus. Di semester satu kita sudah belajar bilangan sampai lima puluh, dan kali ini kita melanjutkan sampai seratus. Kita menghitung kue cubit Pak Ahmad dalam bungkus berisi sepuluh, yaitu puluhan. Kita menghitung puluhan dan satuan pada rambutan Halim dan kelereng ayah Malosi, lalu membaca dan menulis bilangannya. Kita juga belajar memperkirakan banyak benda, menebak dulu, lalu membuktikan dengan mengelompokkan setiap sepuluh. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menghitung banyak benda sampai 100 dengan mengelompokkan puluhan dan satuan, membaca dan menulis bilangan sampai 100 dengan lambang dan nama bilangan, memperkirakan banyak benda, serta menyampaikan hasilnya dengan percaya diri.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 7: Ayo Membilang sampai dengan 100, Sub-Bab A hlm. 192–209)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 7 Sub-Bab A)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Count to 100",
+          "namaId": "Hitung sampai 100",
+          "asal": "Counting",
+          "ringkas": "Lanjut hitung dengan pola puluhan.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Tens and Ones",
+          "namaId": "Puluhan dan Satuan",
+          "asal": "Place value",
+          "ringkas": "Baca 45 sebagai 4 puluhan 5 satuan.",
+          "tahap": [
+            "Picture",
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Hundred Chart",
+          "namaId": "Tabel Seratus",
+          "asal": "Van de Walle",
+          "ringkas": "Lihat pola angka di tabel 1–100.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B7A-V1-1",
@@ -45,7 +81,7 @@
           "id": "K2B7A-V1-3",
           "titleHint": "Sampai seratus",
           "sceneType": "K2B7A-V1-3",
-          "voiceNarration": "Tujuh bungkus berarti tujuh puluhan, yaitu tujuh puluh. Delapan bungkus berarti delapan puluhan, yaitu delapan puluh. Sembilan bungkus berarti sembilan puluhan, yaitu sembilan puluh. Sepuluh bungkus berarti sepuluh puluhan, yaitu seratus. Jadi Pak Ahmad mempunyai seratus kue cubit."
+          "voiceNarration": "Tujuh bungkus berarti tujuh puluhan, yaitu tujuh puluh. Delapan bungkus berarti delapan puluhan, yaitu delapan puluh. Sembilan bungkus berarti sembilan puluhan, yaitu sembilan puluh. Sepuluh bungkus berarti sepuluh puluhan, yaitu seratus. Jadi Pak Ahmad mempunyai seratus kue cubit. METODE LUAR. Hitung sampai 100: Lanjut hitung dengan pola puluhan."
         },
         {
           "id": "K2B7A-V2-1",
@@ -63,7 +99,7 @@
           "id": "K2B7A-V2-3",
           "titleHint": "Dua cara menulis",
           "sceneType": "K2B7A-V2-3",
-          "voiceNarration": "Ada dua cara menentukan banyak benda. Cara pertama memakai nilai tempat: puluhan di kiri dan satuan di kanan. Lima puluhan dan tiga satuan ditulis dengan angka lima di tempat puluhan dan angka tiga di tempat satuan. Cara kedua memakai pasangan bilangan: lima puluh tiga terdiri dari lima puluh dan tiga. Kita membaca dari puluhan dulu: lima puluh tiga. Angka di tempat puluhan bernilai sepuluh kali lipat angka satuan."
+          "voiceNarration": "Ada dua cara menentukan banyak benda. Cara pertama memakai nilai tempat: puluhan di kiri dan satuan di kanan. Lima puluhan dan tiga satuan ditulis dengan angka lima di tempat puluhan dan angka tiga di tempat satuan. Cara kedua memakai pasangan bilangan: lima puluh tiga terdiri dari lima puluh dan tiga. Kita membaca dari puluhan dulu: lima puluh tiga. Angka di tempat puluhan bernilai sepuluh kali lipat angka satuan. METODE LUAR. Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan."
         },
         {
           "id": "K2B7A-V3-1",
@@ -81,7 +117,7 @@
           "id": "K2B7A-V3-3",
           "titleHint": "Tebakan siapa yang dekat?",
           "sceneType": "K2B7A-V3-3",
-          "voiceNarration": "Tebakan Kira lima puluh. Tebakan Malosi enam puluh. Banyak ikan sebenarnya enam puluh dua. Lima puluh berbeda dua belas dari enam puluh dua. Enam puluh berbeda dua dari enam puluh dua. Tebakan Malosi lebih dekat dengan banyak ikan yang sebenarnya. Menebak dengan membayangkan kelompok sepuluh membuat tebakan kita makin dekat."
+          "voiceNarration": "Tebakan Kira lima puluh. Tebakan Malosi enam puluh. Banyak ikan sebenarnya enam puluh dua. Lima puluh berbeda dua belas dari enam puluh dua. Enam puluh berbeda dua dari enam puluh dua. Tebakan Malosi lebih dekat dengan banyak ikan yang sebenarnya. Menebak dengan membayangkan kelompok sepuluh membuat tebakan kita makin dekat. METODE LUAR. Tabel Seratus: Lihat pola angka di tabel 1–100."
         }
       ],
       "videos": [
@@ -129,13 +165,15 @@
                 "Tujuh bungkus berarti tujuh puluhan, yaitu tujuh puluh.",
                 "Delapan bungkus berarti delapan puluhan, yaitu delapan puluh.",
                 "Sembilan bungkus berarti sembilan puluhan, yaitu sembilan puluh.",
-                "Sepuluh bungkus berarti sepuluh puluhan, yaitu seratus. Jadi Pak Ahmad mempunyai seratus kue cubit."
+                "Sepuluh bungkus berarti sepuluh puluhan, yaitu seratus. Jadi Pak Ahmad mempunyai seratus kue cubit.",
+                "METODE LUAR. Hitung sampai 100: Lanjut hitung dengan pola puluhan."
               ],
               "papan": [
                 "7 puluhan = 70",
                 "8 puluhan = 80",
                 "9 puluhan = 90",
-                "10 puluhan = 100"
+                "10 puluhan = 100",
+                "METODE LUAR · Hitung sampai 100"
               ]
             }
           ]
@@ -184,13 +222,15 @@
                 "Ada dua cara menentukan banyak benda. Cara pertama memakai nilai tempat: puluhan di kiri dan satuan di kanan.",
                 "Lima puluhan dan tiga satuan ditulis dengan angka lima di tempat puluhan dan angka tiga di tempat satuan.",
                 "Cara kedua memakai pasangan bilangan: lima puluh tiga terdiri dari lima puluh dan tiga.",
-                "Kita membaca dari puluhan dulu: lima puluh tiga. Angka di tempat puluhan bernilai sepuluh kali lipat angka satuan."
+                "Kita membaca dari puluhan dulu: lima puluh tiga. Angka di tempat puluhan bernilai sepuluh kali lipat angka satuan.",
+                "METODE LUAR. Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan."
               ],
               "papan": [
                 "Dua cara",
                 "Nilai tempat: 5 | 3",
                 "Pasangan: 50 dan 3",
-                "Baca puluhan dulu"
+                "Baca puluhan dulu",
+                "METODE LUAR · Puluhan dan Satuan"
               ]
             }
           ]
@@ -237,13 +277,15 @@
                 "Tebakan Kira lima puluh. Tebakan Malosi enam puluh. Banyak ikan sebenarnya enam puluh dua.",
                 "Lima puluh berbeda dua belas dari enam puluh dua. Enam puluh berbeda dua dari enam puluh dua.",
                 "Tebakan Malosi lebih dekat dengan banyak ikan yang sebenarnya.",
-                "Menebak dengan membayangkan kelompok sepuluh membuat tebakan kita makin dekat."
+                "Menebak dengan membayangkan kelompok sepuluh membuat tebakan kita makin dekat.",
+                "METODE LUAR. Tabel Seratus: Lihat pola angka di tabel 1–100."
               ],
               "papan": [
                 "Sebenarnya 62 ikan",
                 "Selisih 12 dan 2",
                 "Malosi lebih dekat",
-                "Bayangkan kelompok 10"
+                "Bayangkan kelompok 10",
+                "METODE LUAR · Tabel Seratus"
               ]
             }
           ]
@@ -312,7 +354,15 @@
           "stepDesc": "Bilangan sampai seratus dapat disusun dalam tabel sepuluh kolom. Bilangan di kolom yang sama selalu berselisih sepuluh. Turun satu baris berarti tambah sepuluh, dan naik satu baris berarti kurang sepuluh. Bilangan di sebelah kanan selalu satu lebihnya, dan bilangan di sebelah kiri selalu satu kurangnya. Bila ada kotak yang kosong, kita bisa menemukannya dari tetangganya.",
           "icon": "🔢",
           "flowFrom": "Tabel seratus",
-          "flowTo": "Siap menghitung sampai seratus"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Hitung sampai 100",
+          "stepDesc": "Lanjut hitung dengan pola puluhan.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
         }
       ],
       "infografisData": [
@@ -385,6 +435,13 @@
           "countNum": 2,
           "countWord": "Dua",
           "voiceSentence": "Banyak ikan enam puluh dua. Tebakan enam puluh berbeda dua, tebakan lima puluh berbeda dua belas. Tebakan yang selisihnya lebih kecil lebih dekat."
+        },
+        {
+          "fruitName": "Hitung sampai 100",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Count to 100",
+          "voiceSentence": "METODE LUAR. Hitung sampai 100. Lanjut hitung dengan pola puluhan."
         }
       ],
       "concreteSlides": [
@@ -392,7 +449,7 @@
           "title": "Isi Bungkus Sepuluh",
           "emoji": "📦",
           "targetCount": 3,
-          "voiceGuide": "Masukkan benda satu per satu sampai sepuluh."
+          "voiceGuide": "METODE LUAR · Hitung sampai 100. Masukkan benda satu per satu sampai sepuluh."
         },
         {
           "title": "Hitung Bungkus",
@@ -455,7 +512,7 @@
           "diagramType": "tens-model",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Menghitung banyak puluhan dari model batang."
+          "caption": "Menghitung banyak puluhan dari model batang. (METODE LUAR · Hitung sampai 100)"
         },
         {
           "title": "Cari Model Bilangan",
@@ -526,7 +583,7 @@
           "symbolLarge": "92",
           "wordLarge": "9 PULUHAN 2 SATUAN",
           "mathNotation": "puluhan • satuan • bilangan",
-          "voiceReadout": "Ketuk kalimat, lalu ketuk bilangannya."
+          "voiceReadout": "METODE LUAR · Hitung sampai 100. Ketuk kalimat, lalu ketuk bilangannya."
         },
         {
           "symbolLarge": "6 7 = 67",
@@ -591,9 +648,9 @@
           "gameType": "fill-pack-of-ten",
           "title": "Isi Bungkus Sepuluh",
           "bookReference": "Buku Siswa hlm. 194–195 (10 kue cubit dimasukkan dalam 1 pembungkus; 10 satuan = 1 puluhan)",
-          "objective": "Mengisi satu wadah dengan sepuluh benda dan memahami bahwa sepuluh satuan sama dengan satu puluhan.",
+          "objective": "Mengisi satu wadah dengan sepuluh benda dan memahami bahwa sepuluh satuan sama dengan satu puluhan. (METODE LUAR · Hitung sampai 100)",
           "mechanicDescription": "Tiga ronde: kue cubit dalam bungkus, kelereng dalam kantong, rambutan dalam keranjang. Siswa menekan tombol tambah satu per satu sampai wadah berisi sepuluh. Wadah yang penuh berubah hijau dan Suara Guru menyebut satu puluhan.",
-          "voiceGuide": "Masukkan benda satu per satu sampai sepuluh."
+          "voiceGuide": "METODE LUAR · Hitung sampai 100. Masukkan benda satu per satu sampai sepuluh."
         },
         {
           "gameId": "subK2B7A-game-2",
@@ -701,9 +758,9 @@
           "gameType": "count-ten-bars",
           "title": "Hitung Batang Puluhan",
           "bookReference": "Buku Siswa hlm. 195–197 (menghitung puluhan sampai 100)",
-          "objective": "Menghitung banyak puluhan dari model batang.",
+          "objective": "Menghitung banyak puluhan dari model batang. (METODE LUAR · Hitung sampai 100)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar menampilkan beberapa batang sepuluh kotak. Siswa mengatur penghitung sampai sama dengan banyak batang, lalu menekan Periksa.",
-          "voiceGuide": "Hitung batangnya, lalu tulis banyak puluhan."
+          "voiceGuide": "METODE LUAR · Hitung sampai 100. Hitung batangnya, lalu tulis banyak puluhan."
         },
         {
           "gameId": "subK2B7A-game-12",
@@ -811,9 +868,9 @@
           "gameType": "match-words-numerals",
           "title": "Jodohkan Puluhan, Satuan, dan Bilangan",
           "bookReference": "Buku Siswa hlm. 206 nomor 3 (hubungkan dengan bilangan yang tepat)",
-          "objective": "Menjodohkan kalimat puluhan dan satuan dengan lambang bilangan.",
+          "objective": "Menjodohkan kalimat puluhan dan satuan dengan lambang bilangan. (METODE LUAR · Hitung sampai 100)",
           "mechanicDescription": "Tiga ronde, tiap ronde tiga pasangan, misalnya 9 puluhan dan 2 satuan dengan 92. Siswa mengetuk kalimat, lalu lambang bilangan yang cocok.",
-          "voiceGuide": "Ketuk kalimat, lalu ketuk bilangannya."
+          "voiceGuide": "METODE LUAR · Hitung sampai 100. Ketuk kalimat, lalu ketuk bilangannya."
         },
         {
           "gameId": "subK2B7A-game-22",
@@ -941,6 +998,21 @@
             "nama": "Memperkirakan",
             "isi": "tebak, lalu kelompokkan sepuluh",
             "suara": "Menebak banyak benda boleh keliru. Kita membuktikannya dengan mengelompokkan setiap sepuluh benda."
+          },
+          {
+            "nama": "Hitung sampai 100",
+            "isi": "METODE LUAR · Count to 100: Lanjut hitung dengan pola puluhan. (asal: Counting).",
+            "suara": "METODE LUAR. Hitung sampai 100. Lanjut hitung dengan pola puluhan."
+          },
+          {
+            "nama": "Puluhan dan Satuan",
+            "isi": "METODE LUAR · Tens and Ones: Baca 45 sebagai 4 puluhan 5 satuan. (asal: Place value).",
+            "suara": "METODE LUAR. Puluhan dan Satuan. Baca 45 sebagai 4 puluhan 5 satuan."
+          },
+          {
+            "nama": "Tabel Seratus",
+            "isi": "METODE LUAR · Hundred Chart: Lihat pola angka di tabel 1–100. (asal: Van de Walle).",
+            "suara": "METODE LUAR. Tabel Seratus. Lihat pola angka di tabel 1–100."
           }
         ],
         "suara": "Ingat selalu! Sepuluh satuan sama dengan satu puluhan, dan sepuluh puluhan sama dengan seratus. Banyak benda terdiri dari puluhan dan satuan, misalnya lima puluhan dan tiga satuan sama dengan lima puluh tiga. Angka di kiri adalah puluhan dan angka di kanan adalah satuan. Kita boleh menebak banyak benda, lalu membuktikannya dengan mengelompokkan setiap sepuluh.",
@@ -965,8 +1037,44 @@
       "silabus": {
         "teksSuara": "Kita belajar membandingkan bilangan. Kita menghitung maju dan mundur seperti kupu-kupu dan capung untuk mencari bilangan yang lebih dari dan kurang dari. Lalu kita membandingkan kelereng Halim dan Malosi dengan melihat banyak puluhan lebih dulu, dan satuannya bila puluhannya sama. Kita memakai kata lebih besar dari, lebih kecil dari, dan sama dengan, lalu mengurutkan bilangan dari yang paling kecil. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa membandingkan dua bilangan sampai 100 dengan memperhatikan puluhan dan satuan, menentukan bilangan yang lebih dari dan kurang dari bilangan lain, mengurutkan bilangan, serta menyampaikan alasannya dengan percaya diri.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 7: Ayo Membilang sampai dengan 100, Sub-Bab B hlm. 209–224)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 7 Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Compare Tens First",
+          "namaId": "Banding Puluhan Dulu",
+          "asal": "Place value compare",
+          "ringkas": "Puluhan menentukan siapa lebih besar.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Number Line to 100",
+          "namaId": "Garis Bilangan 100",
+          "asal": "Number line",
+          "ringkas": "Posisi menunjukkan urutan.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Symbols < > =",
+          "namaId": "Tanda Banding",
+          "asal": "Notation",
+          "ringkas": "Pakai <, >, = dengan tepat.",
+          "tahap": [
+            "Infografis",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B7B-V1-1",
@@ -984,7 +1092,7 @@
           "id": "K2B7B-V1-3",
           "titleHint": "Lebih dari dan kurang dari",
           "sceneType": "K2B7B-V1-3",
-          "voiceNarration": "Lebihnya berarti maju, dan kurangnya berarti mundur. Aku adalah bilangan. Aku dua lebihnya dari bilangan tujuh puluh enam. Aku adalah tujuh puluh delapan. Aku adalah bilangan. Aku satu kurangnya dari bilangan enam puluh tujuh. Aku adalah enam puluh enam. Garis bilangan membantu kita melompat maju dan mundur dengan teliti."
+          "voiceNarration": "Lebihnya berarti maju, dan kurangnya berarti mundur. Aku adalah bilangan. Aku dua lebihnya dari bilangan tujuh puluh enam. Aku adalah tujuh puluh delapan. Aku adalah bilangan. Aku satu kurangnya dari bilangan enam puluh tujuh. Aku adalah enam puluh enam. Garis bilangan membantu kita melompat maju dan mundur dengan teliti. METODE LUAR. Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar."
         },
         {
           "id": "K2B7B-V2-1",
@@ -1002,7 +1110,7 @@
           "id": "K2B7B-V2-3",
           "titleHint": "Kata perbandingan",
           "sceneType": "K2B7B-V2-3",
-          "voiceNarration": "Ada tiga kata untuk membandingkan dua bilangan: lebih besar dari, lebih kecil dari, dan sama dengan. Enam puluh lima lebih besar dari lima puluh enam. Lima puluh enam lebih kecil dari enam puluh lima. Dua bilangan yang puluhan dan satuannya sama, adalah bilangan yang sama dengan. Kita juga dapat memakai tanda. Tanda itu selalu terbuka ke arah bilangan yang lebih besar."
+          "voiceNarration": "Ada tiga kata untuk membandingkan dua bilangan: lebih besar dari, lebih kecil dari, dan sama dengan. Enam puluh lima lebih besar dari lima puluh enam. Lima puluh enam lebih kecil dari enam puluh lima. Dua bilangan yang puluhan dan satuannya sama, adalah bilangan yang sama dengan. Kita juga dapat memakai tanda. Tanda itu selalu terbuka ke arah bilangan yang lebih besar. METODE LUAR. Garis Bilangan 100: Posisi menunjukkan urutan."
         },
         {
           "id": "K2B7B-V3-1",
@@ -1020,7 +1128,7 @@
           "id": "K2B7B-V3-3",
           "titleHint": "Teka-teki Kira",
           "sceneType": "K2B7B-V3-3",
-          "voiceNarration": "Kira menuliskan satu bilangan. Kira berkata, jika aku tambahkan empat pada puluhan dan tiga pada satuan, hasilnya adalah lima puluh lima. Kita mundur dulu. Lima puluh lima adalah lima puluhan dan lima satuan. Empat puluhan kita kurangi dari lima puluhan, tinggal satu puluhan. Tiga satuan kita kurangi dari lima satuan, tinggal dua satuan. Jadi bilangan yang ditulis Kira adalah satu puluhan dan dua satuan, yaitu dua belas."
+          "voiceNarration": "Kira menuliskan satu bilangan. Kira berkata, jika aku tambahkan empat pada puluhan dan tiga pada satuan, hasilnya adalah lima puluh lima. Kita mundur dulu. Lima puluh lima adalah lima puluhan dan lima satuan. Empat puluhan kita kurangi dari lima puluhan, tinggal satu puluhan. Tiga satuan kita kurangi dari lima satuan, tinggal dua satuan. Jadi bilangan yang ditulis Kira adalah satu puluhan dan dua satuan, yaitu dua belas. METODE LUAR. Tanda Banding: Pakai <, >, = dengan tepat."
         }
       ],
       "videos": [
@@ -1068,13 +1176,15 @@
                 "Lebihnya berarti maju, dan kurangnya berarti mundur.",
                 "Aku adalah bilangan. Aku dua lebihnya dari bilangan tujuh puluh enam. Aku adalah tujuh puluh delapan.",
                 "Aku adalah bilangan. Aku satu kurangnya dari bilangan enam puluh tujuh. Aku adalah enam puluh enam.",
-                "Garis bilangan membantu kita melompat maju dan mundur dengan teliti."
+                "Garis bilangan membantu kita melompat maju dan mundur dengan teliti.",
+                "METODE LUAR. Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar."
               ],
               "papan": [
                 "Lebih: maju, kurang: mundur",
                 "2 lebihnya dari 76: 78",
                 "1 kurangnya dari 67: 66",
-                "Garis bilangan membantu"
+                "Garis bilangan membantu",
+                "METODE LUAR · Banding Puluhan Dulu"
               ]
             }
           ]
@@ -1123,13 +1233,15 @@
                 "Ada tiga kata untuk membandingkan dua bilangan: lebih besar dari, lebih kecil dari, dan sama dengan.",
                 "Enam puluh lima lebih besar dari lima puluh enam. Lima puluh enam lebih kecil dari enam puluh lima.",
                 "Dua bilangan yang puluhan dan satuannya sama, adalah bilangan yang sama dengan.",
-                "Kita juga dapat memakai tanda. Tanda itu selalu terbuka ke arah bilangan yang lebih besar."
+                "Kita juga dapat memakai tanda. Tanda itu selalu terbuka ke arah bilangan yang lebih besar.",
+                "METODE LUAR. Garis Bilangan 100: Posisi menunjukkan urutan."
               ],
               "papan": [
                 "Tiga kata banding",
                 "65 lebih besar dari 56",
                 "Sama: sama dengan",
-                "Tanda: > < ="
+                "Tanda: > < =",
+                "METODE LUAR · Garis Bilangan 100"
               ]
             }
           ]
@@ -1178,13 +1290,15 @@
                 "Kira menuliskan satu bilangan. Kira berkata, jika aku tambahkan empat pada puluhan dan tiga pada satuan, hasilnya adalah lima puluh lima.",
                 "Kita mundur dulu. Lima puluh lima adalah lima puluhan dan lima satuan.",
                 "Empat puluhan kita kurangi dari lima puluhan, tinggal satu puluhan. Tiga satuan kita kurangi dari lima satuan, tinggal dua satuan.",
-                "Jadi bilangan yang ditulis Kira adalah satu puluhan dan dua satuan, yaitu dua belas."
+                "Jadi bilangan yang ditulis Kira adalah satu puluhan dan dua satuan, yaitu dua belas.",
+                "METODE LUAR. Tanda Banding: Pakai <, >, = dengan tepat."
               ],
               "papan": [
                 "Teka-teki Kira",
                 "55: 5 puluhan, 5 satuan",
                 "Kurangi 4 puluhan, 3 satuan",
-                "Bilangan Kira: 12"
+                "Bilangan Kira: 12",
+                "METODE LUAR · Tanda Banding"
               ]
             }
           ]
@@ -1253,7 +1367,23 @@
           "stepDesc": "Kita dapat membuat dan memecahkan teka-teki bilangan. Aku adalah bilangan, aku dua lebihnya dari tujuh puluh enam, jadi aku tujuh puluh delapan. Aku satu kurangnya dari enam puluh tujuh, jadi aku enam puluh enam. Untuk teka-teki Kira, kita mundur dari hasil: lima puluh lima dikurangi empat puluhan dan tiga satuan menjadi dua belas. Membuat teka-teki sendiri melatih kita berpikir teliti.",
           "icon": "🧠",
           "flowFrom": "Teka-teki bilangan",
-          "flowTo": "Siap membandingkan"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Banding Puluhan Dulu",
+          "stepDesc": "Puluhan menentukan siapa lebih besar.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Garis Bilangan 100",
+          "stepDesc": "Posisi menunjukkan urutan.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -1326,6 +1456,27 @@
           "countNum": 3,
           "countWord": "Tiga",
           "voiceSentence": "Kira berkata, jika aku tambahkan empat pada puluhan dan tiga pada satuan, hasilnya lima puluh lima. Kita mundur, dan bilangan Kira adalah dua belas."
+        },
+        {
+          "fruitName": "Banding Puluhan Dulu",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Compare Tens First",
+          "voiceSentence": "METODE LUAR. Banding Puluhan Dulu. Puluhan menentukan siapa lebih besar."
+        },
+        {
+          "fruitName": "Garis Bilangan 100",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Number Line to 100",
+          "voiceSentence": "METODE LUAR. Garis Bilangan 100. Posisi menunjukkan urutan."
+        },
+        {
+          "fruitName": "Tanda Banding",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Symbols < > =",
+          "voiceSentence": "METODE LUAR. Tanda Banding. Pakai <, >, = dengan tepat."
         }
       ],
       "concreteSlides": [
@@ -1333,7 +1484,7 @@
           "title": "Maju dan Mundur",
           "emoji": "🦋",
           "targetCount": 6,
-          "voiceGuide": "Maju atau mundur sesuai perintah."
+          "voiceGuide": "METODE LUAR · Banding Puluhan Dulu. Maju atau mundur sesuai perintah."
         },
         {
           "title": "Di Mana Aku?",
@@ -1396,7 +1547,7 @@
           "diagramType": "number-line",
           "numberA": 3,
           "numberB": 3,
-          "caption": "Menemukan bilangan di antara, yang lebihnya, dan yang kurangnya pada garis bilangan."
+          "caption": "Menemukan bilangan di antara, yang lebihnya, dan yang kurangnya pada garis bilangan. (METODE LUAR · Banding Puluhan Dulu)"
         },
         {
           "title": "Bandingkan Dua Papan",
@@ -1467,7 +1618,7 @@
           "symbolLarge": ">  <  =",
           "wordLarge": "LEBIH BESAR DARI",
           "mathNotation": "lebih besar • lebih kecil • sama dengan",
-          "voiceReadout": "Pilih kata yang tepat untuk bagian kosong."
+          "voiceReadout": "METODE LUAR · Banding Puluhan Dulu. Pilih kata yang tepat untuk bagian kosong."
         },
         {
           "symbolLarge": "✓ ✗",
@@ -1532,9 +1683,9 @@
           "gameType": "step-forward-backward",
           "title": "Maju dan Mundur",
           "bookReference": "Buku Siswa hlm. 209–210 (kupu-kupu maju dua langkah, capung mundur tiga langkah)",
-          "objective": "Menentukan bilangan yang lebih dari atau kurang dari dengan menghitung maju dan mundur.",
+          "objective": "Menentukan bilangan yang lebih dari atau kurang dari dengan menghitung maju dan mundur. (METODE LUAR · Banding Puluhan Dulu)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya kupu-kupu di 58 maju dua langkah, capung di 75 mundur tiga langkah. Siswa menekan Maju atau Mundur satu langkah demi satu langkah pada garis angka. Bila melewati perintah, tekan Ulang.",
-          "voiceGuide": "Maju atau mundur sesuai perintah."
+          "voiceGuide": "METODE LUAR · Banding Puluhan Dulu. Maju atau mundur sesuai perintah."
         },
         {
           "gameId": "subK2B7B-game-2",
@@ -1642,9 +1793,9 @@
           "gameType": "number-line-between-more-less",
           "title": "Garis Bilangan: Antara, Lebih, Kurang",
           "bookReference": "Buku Siswa hlm. 209–210 (di antara, lebih dari, dan kurang dari pada garis bilangan)",
-          "objective": "Menemukan bilangan di antara, yang lebihnya, dan yang kurangnya pada garis bilangan.",
+          "objective": "Menemukan bilangan di antara, yang lebihnya, dan yang kurangnya pada garis bilangan. (METODE LUAR · Banding Puluhan Dulu)",
           "mechanicDescription": "Tiga ronde, tiap ronde tiga soal: di antara dua bilangan, sekian lebihnya, dan sekian kurangnya. Siswa mengetuk bilangan yang tepat pada garis bilangan.",
-          "voiceGuide": "Ketuk bilangan yang diminta pada garis."
+          "voiceGuide": "METODE LUAR · Banding Puluhan Dulu. Ketuk bilangan yang diminta pada garis."
         },
         {
           "gameId": "subK2B7B-game-12",
@@ -1752,9 +1903,9 @@
           "gameType": "complete-compare-sentences",
           "title": "Lengkapi Kalimat Banding",
           "bookReference": "Buku Siswa hlm. 212–213 (bilangan 65 lebih besar dari bilangan 56)",
-          "objective": "Melengkapi kalimat perbandingan dua bilangan dengan kata yang tepat.",
+          "objective": "Melengkapi kalimat perbandingan dua bilangan dengan kata yang tepat. (METODE LUAR · Banding Puluhan Dulu)",
           "mechanicDescription": "Dua ronde, tiap ronde tiga kalimat, misalnya bilangan 58 ... bilangan 54. Siswa memilih lebih besar dari, lebih kecil dari, atau sama dengan. Kalimat lengkap dibacakan.",
-          "voiceGuide": "Pilih kata yang tepat untuk bagian kosong."
+          "voiceGuide": "METODE LUAR · Banding Puluhan Dulu. Pilih kata yang tepat untuk bagian kosong."
         },
         {
           "gameId": "subK2B7B-game-22",
@@ -1882,6 +2033,21 @@
             "nama": "Mengurutkan bilangan",
             "isi": "dari yang paling kecil",
             "suara": "Untuk mengurutkan bilangan, bandingkan puluhannya. Puluhan paling sedikit adalah bilangan paling kecil."
+          },
+          {
+            "nama": "Banding Puluhan Dulu",
+            "isi": "METODE LUAR · Compare Tens First: Puluhan menentukan siapa lebih besar. (asal: Place value compare).",
+            "suara": "METODE LUAR. Banding Puluhan Dulu. Puluhan menentukan siapa lebih besar."
+          },
+          {
+            "nama": "Garis Bilangan 100",
+            "isi": "METODE LUAR · Number Line to 100: Posisi menunjukkan urutan. (asal: Number line).",
+            "suara": "METODE LUAR. Garis Bilangan 100. Posisi menunjukkan urutan."
+          },
+          {
+            "nama": "Tanda Banding",
+            "isi": "METODE LUAR · Symbols < > =: Pakai <, >, = dengan tepat. (asal: Notation).",
+            "suara": "METODE LUAR. Tanda Banding. Pakai <, >, = dengan tepat."
           }
         ],
         "suara": "Ingat selalu! Pada garis bilangan, bilangan di kanan lebih besar. Menghitung maju mencari lebihnya dan menghitung mundur mencari kurangnya. Untuk membandingkan dua bilangan, lihat puluhannya lebih dulu, lalu satuannya bila puluhannya sama. Kita memakai kata lebih besar dari, lebih kecil dari, dan sama dengan, lalu mengurutkan bilangan dari yang paling kecil.",

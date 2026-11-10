@@ -26,8 +26,44 @@
       "silabus": {
         "teksSuara": "Kita belajar sisi pada bangun datar. Kita mengingat titik dan garis, lalu mengenal sinar garis, garis, ruas garis, dan kurva. Kita mengukur ruas garis dengan penggaris dalam sentimeter dan milimeter, lalu mengenal sisi sebagai ruas garis pembatas bangun datar. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menggambar dan menjelaskan unsur-unsur bangun datar. Pada sub-bab ini siswa mengenal ruas garis, mengukur panjangnya, dan mengenal sisi bangun datar.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 4: Unsur-Unsur Bangun Datar, Sub-Bab A hlm. 146–153) dan Buku Panduan Guru Bab 4 Topik A."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 4 Sub-Bab A)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Side Attributes",
+          "namaId": "Ciri Sisi",
+          "asal": "van Hiele",
+          "ringkas": "Hitung dan banding panjang sisi.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Geoboard Sides",
+          "namaId": "Sisi di Papan Paku",
+          "asal": "Gattegno",
+          "ringkas": "Bentuk sisi dengan karet.",
+          "tahap": [
+            "Mind",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Polygon Naming",
+          "namaId": "Nama Segi-n",
+          "asal": "Geometry vocabulary",
+          "ringkas": "Banyak sisi menentukan nama.",
+          "tahap": [
+            "Infografis",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B4A-V1-1",
@@ -45,7 +81,7 @@
           "id": "K3B4A-V1-3",
           "titleHint": "Ruas garis",
           "sceneType": "K3B4A-V1-3",
-          "voiceNarration": "Ruas garis KL memiliki dua titik ujung. Ruas garis memiliki panjang tertentu atau tetap. Ruas garis ditulis dengan dua huruf, yaitu KL. Panjang ruas garis dapat diukur dengan penggaris."
+          "voiceNarration": "Ruas garis KL memiliki dua titik ujung. Ruas garis memiliki panjang tertentu atau tetap. Ruas garis ditulis dengan dua huruf, yaitu KL. Panjang ruas garis dapat diukur dengan penggaris. METODE LUAR. Ciri Sisi: Hitung dan banding panjang sisi."
         },
         {
           "id": "K3B4A-V2-1",
@@ -63,7 +99,7 @@
           "id": "K3B4A-V2-3",
           "titleHint": "Bukan kurva",
           "sceneType": "K3B4A-V2-3",
-          "voiceNarration": "Perhatikan gambar yang tampak melengkung ini. Ternyata gambar itu gabungan empat ruas garis. Ruas garisnya adalah PK, KL, LM, dan MQ. Gabungan ruas garis bukan garis lengkung."
+          "voiceNarration": "Perhatikan gambar yang tampak melengkung ini. Ternyata gambar itu gabungan empat ruas garis. Ruas garisnya adalah PK, KL, LM, dan MQ. Gabungan ruas garis bukan garis lengkung. METODE LUAR. Sisi di Papan Paku: Bentuk sisi dengan karet."
         },
         {
           "id": "K3B4A-V3-1",
@@ -81,7 +117,7 @@
           "id": "K3B4A-V3-3",
           "titleHint": "Ruas garis dan sisi",
           "sceneType": "K3B4A-V3-3",
-          "voiceNarration": "Segitiga EFG dibatasi tiga ruas garis: EF, FG, dan EG. Ruas garis pembatas bangun datar dinamakan sisi. Jadi segitiga memiliki tiga sisi. Bangun segiempat memiliki empat sisi."
+          "voiceNarration": "Segitiga EFG dibatasi tiga ruas garis: EF, FG, dan EG. Ruas garis pembatas bangun datar dinamakan sisi. Jadi segitiga memiliki tiga sisi. Bangun segiempat memiliki empat sisi. METODE LUAR. Nama Segi-n: Banyak sisi menentukan nama."
         }
       ],
       "videos": [
@@ -129,13 +165,15 @@
                 "Ruas garis KL memiliki dua titik ujung.",
                 "Ruas garis memiliki panjang tertentu atau tetap.",
                 "Ruas garis ditulis dengan dua huruf, yaitu KL.",
-                "Panjang ruas garis dapat diukur dengan penggaris."
+                "Panjang ruas garis dapat diukur dengan penggaris.",
+                "METODE LUAR. Ciri Sisi: Hitung dan banding panjang sisi."
               ],
               "papan": [
                 "Ruas garis KL",
                 "Panjang tetap",
                 "Ditulis KL",
-                "Diukur dengan penggaris"
+                "Diukur dengan penggaris",
+                "METODE LUAR · Ciri Sisi"
               ]
             }
           ]
@@ -184,13 +222,15 @@
                 "Perhatikan gambar yang tampak melengkung ini.",
                 "Ternyata gambar itu gabungan empat ruas garis.",
                 "Ruas garisnya adalah PK, KL, LM, dan MQ.",
-                "Gabungan ruas garis bukan garis lengkung."
+                "Gabungan ruas garis bukan garis lengkung.",
+                "METODE LUAR. Sisi di Papan Paku: Bentuk sisi dengan karet."
               ],
               "papan": [
                 "Tampak melengkung",
                 "Gabungan empat ruas",
                 "PK, KL, LM, MQ",
-                "Bukan garis lengkung"
+                "Bukan garis lengkung",
+                "METODE LUAR · Sisi di Papan Paku"
               ]
             }
           ]
@@ -239,13 +279,15 @@
                 "Segitiga EFG dibatasi tiga ruas garis: EF, FG, dan EG.",
                 "Ruas garis pembatas bangun datar dinamakan sisi.",
                 "Jadi segitiga memiliki tiga sisi.",
-                "Bangun segiempat memiliki empat sisi."
+                "Bangun segiempat memiliki empat sisi.",
+                "METODE LUAR. Nama Segi-n: Banyak sisi menentukan nama."
               ],
               "papan": [
                 "Segitiga EFG",
                 "Ruas garis = sisi",
                 "Segitiga: 3 sisi",
-                "Segiempat: 4 sisi"
+                "Segiempat: 4 sisi",
+                "METODE LUAR · Nama Segi-n"
               ]
             }
           ]
@@ -314,7 +356,23 @@
           "stepDesc": "Segitiga EFG dibatasi oleh ruas garis EF, FG, dan EG. Ruas garis yang menjadi batas bangun datar dinamakan sisi. Jadi segitiga memiliki tiga sisi. Bangun GHIJ dibatasi ruas garis GH, HI, IJ, dan GJ, jadi memiliki empat sisi. Setiap sisi punya panjang yang dapat diukur dengan penggaris.",
           "icon": "🔺",
           "flowFrom": "Sisi bangun datar",
-          "flowTo": "Siap mengenal sisi bangun datar"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Ciri Sisi",
+          "stepDesc": "Hitung dan banding panjang sisi.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Sisi di Papan Paku",
+          "stepDesc": "Bentuk sisi dengan karet.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -387,6 +445,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, letakkan angka nol di titik awal. Dua, lihat angka di titik akhir. Tiga, baca sentimeter dan milimeternya. Empat, tulis hasilnya dengan satuan."
+        },
+        {
+          "fruitName": "Ciri Sisi",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Side Attributes",
+          "voiceSentence": "METODE LUAR. Ciri Sisi. Hitung dan banding panjang sisi."
+        },
+        {
+          "fruitName": "Sisi di Papan Paku",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Geoboard Sides",
+          "voiceSentence": "METODE LUAR. Sisi di Papan Paku. Bentuk sisi dengan karet."
+        },
+        {
+          "fruitName": "Nama Segi-n",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Polygon Naming",
+          "voiceSentence": "METODE LUAR. Nama Segi-n. Banyak sisi menentukan nama."
         }
       ],
       "concreteSlides": [
@@ -394,7 +473,7 @@
           "title": "Hitung Sisi Benda",
           "emoji": "📖",
           "targetCount": 6,
-          "voiceGuide": "Hitung banyak sisi pada benda."
+          "voiceGuide": "METODE LUAR · Ciri Sisi. Hitung banyak sisi pada benda."
         },
         {
           "title": "Bendanya Mirip Apa?",
@@ -457,7 +536,7 @@
           "diagramType": "line-kind",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Menentukan jenis garis dari gambarnya: sinar garis, garis, ruas garis, atau kurva."
+          "caption": "Menentukan jenis garis dari gambarnya: sinar garis, garis, ruas garis, atau kurva. (METODE LUAR · Ciri Sisi)"
         },
         {
           "title": "Baca Ruas Garis pada Penggaris",
@@ -528,7 +607,7 @@
           "symbolLarge": "AB",
           "wordLarge": "NAMA",
           "mathNotation": "sinar • garis • ruas",
-          "voiceReadout": "Pilih nama yang tepat."
+          "voiceReadout": "METODE LUAR · Ciri Sisi. Pilih nama yang tepat."
         },
         {
           "symbolLarge": "…",
@@ -593,9 +672,9 @@
           "gameType": "count-sides-object",
           "title": "Hitung Sisi Benda",
           "bookReference": "Buku Siswa hlm. 145 dan 153 (benda yang menyerupai bangun datar)",
-          "objective": "Menghitung banyak sisi lurus pada benda sehari-hari.",
+          "objective": "Menghitung banyak sisi lurus pada benda sehari-hari. (METODE LUAR · Ciri Sisi)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda ditampilkan, lalu siswa memilih satu dari tiga banyak sisi. Pengecoh lebih satu atau kurang satu.",
-          "voiceGuide": "Hitung banyak sisi pada benda."
+          "voiceGuide": "METODE LUAR · Ciri Sisi. Hitung banyak sisi pada benda."
         },
         {
           "gameId": "subK3B4A-game-2",
@@ -703,9 +782,9 @@
           "gameType": "line-kind",
           "title": "Garis, Sinar, atau Ruas Garis",
           "bookReference": "Buku Siswa hlm. 146–147 (sinar garis, garis, ruas garis, kurva)",
-          "objective": "Menentukan jenis garis dari gambarnya: sinar garis, garis, ruas garis, atau kurva.",
+          "objective": "Menentukan jenis garis dari gambarnya: sinar garis, garis, ruas garis, atau kurva. (METODE LUAR · Ciri Sisi)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar garis berhuruf ditampilkan. Siswa memilih satu dari tiga nama.",
-          "voiceGuide": "Pilih nama garis pada gambar."
+          "voiceGuide": "METODE LUAR · Ciri Sisi. Pilih nama garis pada gambar."
         },
         {
           "gameId": "subK3B4A-game-12",
@@ -813,9 +892,9 @@
           "gameType": "name-line-text",
           "title": "Nama Garis dan Bagian Bangun Datar",
           "bookReference": "Buku Siswa hlm. 146–153 (sinar garis, ruas garis, kurva, sisi)",
-          "objective": "Memilih nama garis atau bagian bangun datar dari uraiannya.",
+          "objective": "Memilih nama garis atau bagian bangun datar dari uraiannya. (METODE LUAR · Ciri Sisi)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca uraian, lalu memilih satu dari tiga nama.",
-          "voiceGuide": "Pilih nama yang tepat."
+          "voiceGuide": "METODE LUAR · Ciri Sisi. Pilih nama yang tepat."
         },
         {
           "gameId": "subK3B4A-game-22",
@@ -943,6 +1022,21 @@
             "nama": "Sisi",
             "isi": "ruas garis pembatas bangun",
             "suara": "Ruas garis yang menjadi batas bangun datar dinamakan sisi. Segitiga punya tiga sisi."
+          },
+          {
+            "nama": "Ciri Sisi",
+            "isi": "METODE LUAR · Side Attributes: Hitung dan banding panjang sisi. (asal: van Hiele).",
+            "suara": "METODE LUAR. Ciri Sisi. Hitung dan banding panjang sisi."
+          },
+          {
+            "nama": "Sisi di Papan Paku",
+            "isi": "METODE LUAR · Geoboard Sides: Bentuk sisi dengan karet. (asal: Gattegno).",
+            "suara": "METODE LUAR. Sisi di Papan Paku. Bentuk sisi dengan karet."
+          },
+          {
+            "nama": "Nama Segi-n",
+            "isi": "METODE LUAR · Polygon Naming: Banyak sisi menentukan nama. (asal: Geometry vocabulary).",
+            "suara": "METODE LUAR. Nama Segi-n. Banyak sisi menentukan nama."
           }
         ],
         "suara": "Ingat selalu! Sinar garis hanya dapat diperpanjang ke satu sisi, garis ke kedua sisi, dan ruas garis punya panjang tetap. Satu sentimeter sama dengan sepuluh milimeter. Ruas garis pembatas bangun datar dinamakan sisi.",
@@ -967,8 +1061,44 @@
       "silabus": {
         "teksSuara": "Kita belajar sudut pada bidang datar. Kita membandingkan sudut dengan strip sudut dan membentuk sudut siku-siku dari kertas lipat. Kita mengukur sudut dengan satuan tidak baku, lalu dengan busur derajat, dan menggambar sudut. Terakhir kita mengelompokkan sudut menjadi lancip, siku-siku, tumpul, lurus, dan refleks. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menggambar dan menjelaskan unsur-unsur bangun datar. Pada sub-bab ini siswa mengenal sudut, membandingkan dan mengukurnya dengan busur derajat, menggambar sudut, dan membedakan jenis-jenis sudut.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 4: Unsur-Unsur Bangun Datar, Sub-Bab B hlm. 154–173) dan Buku Panduan Guru Bab 4 Topik B."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 4 Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Angle as Turn",
+          "namaId": "Sudut sebagai Putaran",
+          "asal": "Angle pedagogy",
+          "ringkas": "Sudut mengukur besar putaran.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Right Angle Benchmark",
+          "namaId": "Acuan Siku-siku",
+          "asal": "Van de Walle",
+          "ringkas": "Bandingkan dengan sudut siku-siku.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Corner Sort",
+          "namaId": "Pilah Sudut",
+          "asal": "Attribute sort",
+          "ringkas": "Lebih besar/kecil dari siku-siku.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B4B-V1-1",
@@ -986,7 +1116,7 @@
           "id": "K3B4B-V1-3",
           "titleHint": "Sudut siku-siku",
           "sceneType": "K3B4B-V1-3",
-          "voiceNarration": "Lipat selembar kertas, lalu lipat sekali lagi dengan rapi. Pojok kertas lipat itu adalah sudut istimewa. Sudut istimewa itu dinamakan sudut siku-siku. Bandingkan sudut lain dengan pojok kertas lipat."
+          "voiceNarration": "Lipat selembar kertas, lalu lipat sekali lagi dengan rapi. Pojok kertas lipat itu adalah sudut istimewa. Sudut istimewa itu dinamakan sudut siku-siku. Bandingkan sudut lain dengan pojok kertas lipat. METODE LUAR. Sudut sebagai Putaran: Sudut mengukur besar putaran."
         },
         {
           "id": "K3B4B-V2-1",
@@ -1004,7 +1134,7 @@
           "id": "K3B4B-V2-3",
           "titleHint": "Satu derajat",
           "sceneType": "K3B4B-V2-3",
-          "voiceNarration": "Satu putaran penuh dibagi menjadi 360 bagian sama besar. Satu bagian itu besarnya satu derajat, ditulis 1°. Kaki OA dan OB yang berimpit berukuran 0°. Memutar OB sedikit demi sedikit membuat sudut membesar."
+          "voiceNarration": "Satu putaran penuh dibagi menjadi 360 bagian sama besar. Satu bagian itu besarnya satu derajat, ditulis 1°. Kaki OA dan OB yang berimpit berukuran 0°. Memutar OB sedikit demi sedikit membuat sudut membesar. METODE LUAR. Acuan Siku-siku: Bandingkan dengan sudut siku-siku."
         },
         {
           "id": "K3B4B-V3-1",
@@ -1022,7 +1152,7 @@
           "id": "K3B4B-V3-3",
           "titleHint": "Sudut refleks",
           "sceneType": "K3B4B-V3-3",
-          "voiceNarration": "Sudut yang lebih dari 180° dan kurang dari 360° disebut sudut refleks. Sudut refleks 300° berpasangan dengan sudut lancip 60°. Ukuran keduanya bila dijumlahkan sama dengan 360°. Jadi 360° dikurangi sudut refleks memberi sudut pasangannya."
+          "voiceNarration": "Sudut yang lebih dari 180° dan kurang dari 360° disebut sudut refleks. Sudut refleks 300° berpasangan dengan sudut lancip 60°. Ukuran keduanya bila dijumlahkan sama dengan 360°. Jadi 360° dikurangi sudut refleks memberi sudut pasangannya. METODE LUAR. Pilah Sudut: Lebih besar/kecil dari siku-siku."
         }
       ],
       "videos": [
@@ -1070,13 +1200,15 @@
                 "Lipat selembar kertas, lalu lipat sekali lagi dengan rapi.",
                 "Pojok kertas lipat itu adalah sudut istimewa.",
                 "Sudut istimewa itu dinamakan sudut siku-siku.",
-                "Bandingkan sudut lain dengan pojok kertas lipat."
+                "Bandingkan sudut lain dengan pojok kertas lipat.",
+                "METODE LUAR. Sudut sebagai Putaran: Sudut mengukur besar putaran."
               ],
               "papan": [
                 "Lipat kertas dua kali",
                 "Pojok kertas lipat",
                 "Sudut siku-siku",
-                "Lebih kecil atau lebih besar"
+                "Lebih kecil atau lebih besar",
+                "METODE LUAR · Sudut sebagai Putaran"
               ]
             }
           ]
@@ -1125,13 +1257,15 @@
                 "Satu putaran penuh dibagi menjadi 360 bagian sama besar.",
                 "Satu bagian itu besarnya satu derajat, ditulis 1°.",
                 "Kaki OA dan OB yang berimpit berukuran 0°.",
-                "Memutar OB sedikit demi sedikit membuat sudut membesar."
+                "Memutar OB sedikit demi sedikit membuat sudut membesar.",
+                "METODE LUAR. Acuan Siku-siku: Bandingkan dengan sudut siku-siku."
               ],
               "papan": [
                 "360 bagian sama besar",
                 "Satu bagian = 1°",
                 "Berimpit = 0°",
-                "Diputar: makin besar"
+                "Diputar: makin besar",
+                "METODE LUAR · Acuan Siku-siku"
               ]
             }
           ]
@@ -1180,13 +1314,15 @@
                 "Sudut yang lebih dari 180° dan kurang dari 360° disebut sudut refleks.",
                 "Sudut refleks 300° berpasangan dengan sudut lancip 60°.",
                 "Ukuran keduanya bila dijumlahkan sama dengan 360°.",
-                "Jadi 360° dikurangi sudut refleks memberi sudut pasangannya."
+                "Jadi 360° dikurangi sudut refleks memberi sudut pasangannya.",
+                "METODE LUAR. Pilah Sudut: Lebih besar/kecil dari siku-siku."
               ],
               "papan": [
                 "Refleks: 180° sampai 360°",
                 "300° dan 60°",
                 "Jumlahnya 360°",
-                "360° dikurangi refleks"
+                "360° dikurangi refleks",
+                "METODE LUAR · Pilah Sudut"
               ]
             }
           ]
@@ -1255,7 +1391,23 @@
           "stepDesc": "Sudut yang ukurannya lebih dari 180° dan kurang dari 360° disebut sudut refleks. Busur derajat mengukur sudut sampai 180°, jadi sudut refleks dicari lewat sudut lancip atau tumpul yang bersesuaian. Ukuran sudut refleks sama dengan 360° dikurangi ukuran sudut bersesuaian itu. Contohnya sudut refleks 300° berpasangan dengan sudut lancip 60°, dan sudut tumpul 130° berpasangan dengan sudut refleks 230°.",
           "icon": "🔄",
           "flowFrom": "Sudut refleks",
-          "flowTo": "Siap mengenal garis tegak lurus"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Sudut sebagai Putaran",
+          "stepDesc": "Sudut mengukur besar putaran.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Acuan Siku-siku",
+          "stepDesc": "Bandingkan dengan sudut siku-siku.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -1328,6 +1480,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, letakkan titik tengah busur derajat di titik sudut. Dua, sejajarkan kaki pertama dengan garis nol. Tiga, lihat kaki kedua. Empat, baca derajatnya."
+        },
+        {
+          "fruitName": "Sudut sebagai Putaran",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Angle as Turn",
+          "voiceSentence": "METODE LUAR. Sudut sebagai Putaran. Sudut mengukur besar putaran."
+        },
+        {
+          "fruitName": "Acuan Siku-siku",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Right Angle Benchmark",
+          "voiceSentence": "METODE LUAR. Acuan Siku-siku. Bandingkan dengan sudut siku-siku."
+        },
+        {
+          "fruitName": "Pilah Sudut",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Corner Sort",
+          "voiceSentence": "METODE LUAR. Pilah Sudut. Lebih besar/kecil dari siku-siku."
         }
       ],
       "concreteSlides": [
@@ -1335,7 +1508,7 @@
           "title": "Strip Sudut: Lebih Besar atau Lebih Kecil",
           "emoji": "📎",
           "targetCount": 6,
-          "voiceGuide": "Putar strip sampai sudutnya lebih besar atau lebih kecil."
+          "voiceGuide": "METODE LUAR · Sudut sebagai Putaran. Putar strip sampai sudutnya lebih besar atau lebih kecil."
         },
         {
           "title": "Bentuk Sudut Siku-siku",
@@ -1398,7 +1571,7 @@
           "diagramType": "protractor-read",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Membaca ukuran sudut dari busur derajat dengan skala luar atau skala dalam."
+          "caption": "Membaca ukuran sudut dari busur derajat dengan skala luar atau skala dalam. (METODE LUAR · Sudut sebagai Putaran)"
         },
         {
           "title": "Jenis Sudut dari Gambar",
@@ -1469,7 +1642,7 @@
           "symbolLarge": "∠AOB",
           "wordLarge": "NAMA",
           "mathNotation": "titik sudut • kaki • derajat",
-          "voiceReadout": "Pilih nama yang tepat."
+          "voiceReadout": "METODE LUAR · Sudut sebagai Putaran. Pilih nama yang tepat."
         },
         {
           "symbolLarge": "…",
@@ -1534,9 +1707,9 @@
           "gameType": "strip-bigger-smaller",
           "title": "Strip Sudut: Lebih Besar atau Lebih Kecil",
           "bookReference": "Buku Siswa hlm. 155–156 (Aktivitas 2: membandingkan sudut)",
-          "objective": "Memutar strip sudut agar lebih besar atau lebih kecil dari sudut acuan.",
+          "objective": "Memutar strip sudut agar lebih besar atau lebih kecil dari sudut acuan. (METODE LUAR · Sudut sebagai Putaran)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Sepasang strip karton digabung pengait. Siswa memutar satu strip dengan tombol atau penggeser sampai sudutnya lebih besar atau lebih kecil dari garis putus acuan, lalu menekan Periksa.",
-          "voiceGuide": "Putar strip sampai sudutnya lebih besar atau lebih kecil."
+          "voiceGuide": "METODE LUAR · Sudut sebagai Putaran. Putar strip sampai sudutnya lebih besar atau lebih kecil."
         },
         {
           "gameId": "subK3B4B-game-2",
@@ -1644,9 +1817,9 @@
           "gameType": "read-protractor",
           "title": "Baca Busur Derajat",
           "bookReference": "Buku Siswa hlm. 165–166 dan 170 (Ayo Berlatih 1: besar sudut pada busur derajat)",
-          "objective": "Membaca ukuran sudut dari busur derajat dengan skala luar atau skala dalam.",
+          "objective": "Membaca ukuran sudut dari busur derajat dengan skala luar atau skala dalam. (METODE LUAR · Sudut sebagai Putaran)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Busur derajat dan dua kaki sudut ditampilkan. Siswa memilih satu dari tiga ukuran sudut. Pengecoh memuat bacaan dari skala yang salah.",
-          "voiceGuide": "Baca ukuran sudut pada busur derajat."
+          "voiceGuide": "METODE LUAR · Sudut sebagai Putaran. Baca ukuran sudut pada busur derajat."
         },
         {
           "gameId": "subK3B4B-game-12",
@@ -1754,9 +1927,9 @@
           "gameType": "name-angle-part-text",
           "title": "Nama Bagian Sudut dan Alatnya",
           "bookReference": "Buku Siswa hlm. 163–166 (titik sudut, kaki, busur derajat)",
-          "objective": "Memilih nama bagian sudut, alat ukur, dan satuannya dari uraian.",
+          "objective": "Memilih nama bagian sudut, alat ukur, dan satuannya dari uraian. (METODE LUAR · Sudut sebagai Putaran)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca uraian, lalu memilih satu dari tiga nama.",
-          "voiceGuide": "Pilih nama yang tepat."
+          "voiceGuide": "METODE LUAR · Sudut sebagai Putaran. Pilih nama yang tepat."
         },
         {
           "gameId": "subK3B4B-game-22",
@@ -1884,6 +2057,21 @@
             "nama": "Busur derajat",
             "isi": "titik tengah di titik sudut",
             "suara": "Busur derajat mengukur sudut dalam derajat. Titik tengahnya di titik sudut dan garis nolnya di kaki pertama."
+          },
+          {
+            "nama": "Sudut sebagai Putaran",
+            "isi": "METODE LUAR · Angle as Turn: Sudut mengukur besar putaran. (asal: Angle pedagogy).",
+            "suara": "METODE LUAR. Sudut sebagai Putaran. Sudut mengukur besar putaran."
+          },
+          {
+            "nama": "Acuan Siku-siku",
+            "isi": "METODE LUAR · Right Angle Benchmark: Bandingkan dengan sudut siku-siku. (asal: Van de Walle).",
+            "suara": "METODE LUAR. Acuan Siku-siku. Bandingkan dengan sudut siku-siku."
+          },
+          {
+            "nama": "Pilah Sudut",
+            "isi": "METODE LUAR · Corner Sort: Lebih besar/kecil dari siku-siku. (asal: Attribute sort).",
+            "suara": "METODE LUAR. Pilah Sudut. Lebih besar/kecil dari siku-siku."
           }
         ],
         "suara": "Ingat selalu! Sudut siku-siku tepat sembilan puluh derajat. Sudut lancip kurang dari sembilan puluh derajat, dan sudut tumpul lebih dari sembilan puluh derajat. Sudut lurus seratus delapan puluh derajat, dan sudut refleks lebih dari itu. Sudut diukur dengan busur derajat.",
@@ -1908,8 +2096,44 @@
       "silabus": {
         "teksSuara": "Kita belajar garis tegak lurus dan garis sejajar. Kita memeriksa garis tegak lurus dengan kertas yang dilipat, dan memeriksa garis sejajar dengan menghitung petak pada kertas berpetak. Kita juga mengenal lambang tegak lurus dan lambang sejajar, lalu mengenal ciri segitiga, persegi panjang, persegi, segilima, dan lingkaran. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menggambar dan menjelaskan unsur-unsur bangun datar. Pada sub-bab ini siswa mengenal garis tegak lurus dan garis sejajar, serta ciri bangun datar sederhana dari sisi dan sudutnya.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 4: Unsur-Unsur Bangun Datar, Sub-Bab C hlm. 173–194) dan Buku Panduan Guru Bab 4 Topik C."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 4 Sub-Bab C)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Perpendicular",
+          "namaId": "Tegak Lurus",
+          "asal": "Geometry",
+          "ringkas": "Dua garis bertemu membentuk siku-siku.",
+          "tahap": [
+            "Story",
+            "Picture",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Parallel",
+          "namaId": "Sejajar",
+          "asal": "Geometry",
+          "ringkas": "Jarak tetap, tidak bertemu.",
+          "tahap": [
+            "Mind",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Real-World Lines",
+          "namaId": "Garis di Lingkungan",
+          "asal": "Contextual geometry",
+          "ringkas": "Cari contoh di kelas dan jalan.",
+          "tahap": [
+            "Infografis",
+            "Story"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B4C-V1-1",
@@ -1927,7 +2151,7 @@
           "id": "K3B4C-V1-3",
           "titleHint": "Kertas lipat",
           "sceneType": "K3B4C-V1-3",
-          "voiceNarration": "Selembar kertas yang dilipat dua kali menghasilkan sudut siku-siku. Pojok kertas lipat dapat memeriksa garis tegak lurus. Letakkan pojok kertas pada pertemuan dua garis. Bila kedua garis pas dengan pojok kertas, garis itu tegak lurus."
+          "voiceNarration": "Selembar kertas yang dilipat dua kali menghasilkan sudut siku-siku. Pojok kertas lipat dapat memeriksa garis tegak lurus. Letakkan pojok kertas pada pertemuan dua garis. Bila kedua garis pas dengan pojok kertas, garis itu tegak lurus. METODE LUAR. Tegak Lurus: Dua garis bertemu membentuk siku-siku."
         },
         {
           "id": "K3B4C-V2-1",
@@ -1945,7 +2169,7 @@
           "id": "K3B4C-V2-3",
           "titleHint": "Bukan sejajar",
           "sceneType": "K3B4C-V2-3",
-          "voiceNarration": "Pada gambar ini jarak di ujung kiri dua petak. Jarak di ujung kanan empat petak. Jaraknya berbeda, jadi garis ini bukan garis sejajar. Garis yang bukan sejajar akan bertemu bila diperpanjang."
+          "voiceNarration": "Pada gambar ini jarak di ujung kiri dua petak. Jarak di ujung kanan empat petak. Jaraknya berbeda, jadi garis ini bukan garis sejajar. Garis yang bukan sejajar akan bertemu bila diperpanjang. METODE LUAR. Sejajar: Jarak tetap, tidak bertemu."
         },
         {
           "id": "K3B4C-V3-1",
@@ -1963,7 +2187,7 @@
           "id": "K3B4C-V3-3",
           "titleHint": "Lingkaran dan segilima",
           "sceneType": "K3B4C-V3-3",
-          "voiceNarration": "Lingkaran dibatasi oleh garis lengkung. Lingkaran tidak memiliki sudut. Segilima dibatasi lima ruas garis dan memiliki lima sudut. Bangun datar dapat dikenali dari sisi dan sudutnya."
+          "voiceNarration": "Lingkaran dibatasi oleh garis lengkung. Lingkaran tidak memiliki sudut. Segilima dibatasi lima ruas garis dan memiliki lima sudut. Bangun datar dapat dikenali dari sisi dan sudutnya. METODE LUAR. Garis di Lingkungan: Cari contoh di kelas dan jalan."
         }
       ],
       "videos": [
@@ -2011,13 +2235,15 @@
                 "Selembar kertas yang dilipat dua kali menghasilkan sudut siku-siku.",
                 "Pojok kertas lipat dapat memeriksa garis tegak lurus.",
                 "Letakkan pojok kertas pada pertemuan dua garis.",
-                "Bila kedua garis pas dengan pojok kertas, garis itu tegak lurus."
+                "Bila kedua garis pas dengan pojok kertas, garis itu tegak lurus.",
+                "METODE LUAR. Tegak Lurus: Dua garis bertemu membentuk siku-siku."
               ],
               "papan": [
                 "Kertas dilipat dua kali",
                 "Pojok kertas lipat",
                 "Letakkan di pertemuan garis",
-                "Pas: tegak lurus"
+                "Pas: tegak lurus",
+                "METODE LUAR · Tegak Lurus"
               ]
             }
           ]
@@ -2066,13 +2292,15 @@
                 "Pada gambar ini jarak di ujung kiri dua petak.",
                 "Jarak di ujung kanan empat petak.",
                 "Jaraknya berbeda, jadi garis ini bukan garis sejajar.",
-                "Garis yang bukan sejajar akan bertemu bila diperpanjang."
+                "Garis yang bukan sejajar akan bertemu bila diperpanjang.",
+                "METODE LUAR. Sejajar: Jarak tetap, tidak bertemu."
               ],
               "papan": [
                 "Kiri: 2 petak",
                 "Kanan: 4 petak",
                 "Jarak berbeda",
-                "Bukan garis sejajar"
+                "Bukan garis sejajar",
+                "METODE LUAR · Sejajar"
               ]
             }
           ]
@@ -2121,13 +2349,15 @@
                 "Lingkaran dibatasi oleh garis lengkung.",
                 "Lingkaran tidak memiliki sudut.",
                 "Segilima dibatasi lima ruas garis dan memiliki lima sudut.",
-                "Bangun datar dapat dikenali dari sisi dan sudutnya."
+                "Bangun datar dapat dikenali dari sisi dan sudutnya.",
+                "METODE LUAR. Garis di Lingkungan: Cari contoh di kelas dan jalan."
               ],
               "papan": [
                 "Garis lengkung",
                 "Tanpa sudut",
                 "Segilima: 5 sisi",
-                "Kenali dari sisi dan sudut"
+                "Kenali dari sisi dan sudut",
+                "METODE LUAR · Garis di Lingkungan"
               ]
             }
           ]
@@ -2269,6 +2499,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, lipat kertas dua kali. Dua, letakkan pojok kertas di pertemuan garis. Tiga, lihat apakah garis pas dengan pojok. Empat, pas berarti tegak lurus."
+        },
+        {
+          "fruitName": "Tegak Lurus",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Perpendicular",
+          "voiceSentence": "METODE LUAR. Tegak Lurus. Dua garis bertemu membentuk siku-siku."
+        },
+        {
+          "fruitName": "Sejajar",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Parallel",
+          "voiceSentence": "METODE LUAR. Sejajar. Jarak tetap, tidak bertemu."
+        },
+        {
+          "fruitName": "Garis di Lingkungan",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Real-World Lines",
+          "voiceSentence": "METODE LUAR. Garis di Lingkungan. Cari contoh di kelas dan jalan."
         }
       ],
       "concreteSlides": [
@@ -2276,7 +2527,7 @@
           "title": "Dua Garis pada Benda",
           "emoji": "🏠",
           "targetCount": 6,
-          "voiceGuide": "Pilih hubungan dua garis berwarna."
+          "voiceGuide": "METODE LUAR · Tegak Lurus. Pilih hubungan dua garis berwarna."
         },
         {
           "title": "Ketuk Semua Benda dengan Garis Tertentu",
@@ -2339,7 +2590,7 @@
           "diagramType": "grid-pair",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Menentukan hubungan pasangan garis pada kertas berpetak: sejajar, tegak lurus, atau bukan keduanya."
+          "caption": "Menentukan hubungan pasangan garis pada kertas berpetak: sejajar, tegak lurus, atau bukan keduanya. (METODE LUAR · Tegak Lurus)"
         },
         {
           "title": "Periksa Jarak Petak",
@@ -2410,7 +2661,7 @@
           "symbolLarge": "⊥ //",
           "wordLarge": "ISTILAH",
           "mathNotation": "tegak lurus • sejajar",
-          "voiceReadout": "Pilih istilah yang tepat."
+          "voiceReadout": "METODE LUAR · Tegak Lurus. Pilih istilah yang tepat."
         },
         {
           "symbolLarge": "…",
@@ -2475,9 +2726,9 @@
           "gameType": "benda-lines-kind",
           "title": "Dua Garis pada Benda",
           "bookReference": "Buku Siswa hlm. 174–176 (garis tegak lurus dan sejajar di sekitar kita)",
-          "objective": "Menentukan hubungan dua garis berwarna pada gambar benda: sejajar, tegak lurus, atau bukan keduanya.",
+          "objective": "Menentukan hubungan dua garis berwarna pada gambar benda: sejajar, tegak lurus, atau bukan keduanya. (METODE LUAR · Tegak Lurus)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Benda seperti tangga, pagar, rumah, jendela, rel, dan tiang bendera ditampilkan dengan dua garis berwarna. Siswa memilih satu dari tiga hubungan.",
-          "voiceGuide": "Pilih hubungan dua garis berwarna."
+          "voiceGuide": "METODE LUAR · Tegak Lurus. Pilih hubungan dua garis berwarna."
         },
         {
           "gameId": "subK3B4C-game-2",
@@ -2585,9 +2836,9 @@
           "gameType": "pair-kind-grid",
           "title": "Jenis Pasangan Garis",
           "bookReference": "Buku Siswa hlm. 174–176 dan 180 (garis tegak lurus pada kertas berpetak)",
-          "objective": "Menentukan hubungan pasangan garis pada kertas berpetak: sejajar, tegak lurus, atau bukan keduanya.",
+          "objective": "Menentukan hubungan pasangan garis pada kertas berpetak: sejajar, tegak lurus, atau bukan keduanya. (METODE LUAR · Tegak Lurus)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Pasangan garis merah dan biru pada kertas berpetak ditampilkan. Siswa memilih satu dari tiga hubungan.",
-          "voiceGuide": "Pilih hubungan pasangan garis."
+          "voiceGuide": "METODE LUAR · Tegak Lurus. Pilih hubungan pasangan garis."
         },
         {
           "gameId": "subK3B4C-game-12",
@@ -2695,9 +2946,9 @@
           "gameType": "name-line-term",
           "title": "Istilah Garis",
           "bookReference": "Buku Siswa hlm. 174–185 (garis tegak lurus dan sejajar)",
-          "objective": "Memilih istilah garis yang tepat dari uraiannya.",
+          "objective": "Memilih istilah garis yang tepat dari uraiannya. (METODE LUAR · Tegak Lurus)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca uraian, lalu memilih satu dari tiga istilah.",
-          "voiceGuide": "Pilih istilah yang tepat."
+          "voiceGuide": "METODE LUAR · Tegak Lurus. Pilih istilah yang tepat."
         },
         {
           "gameId": "subK3B4C-game-22",
@@ -2825,6 +3076,21 @@
             "nama": "Persegi dan persegi panjang",
             "isi": "4 sisi dan 4 sudut siku-siku",
             "suara": "Persegi panjang memiliki empat sisi dan empat sudut siku-siku. Persegi memiliki empat sisi yang sama panjang."
+          },
+          {
+            "nama": "Tegak Lurus",
+            "isi": "METODE LUAR · Perpendicular: Dua garis bertemu membentuk siku-siku. (asal: Geometry).",
+            "suara": "METODE LUAR. Tegak Lurus. Dua garis bertemu membentuk siku-siku."
+          },
+          {
+            "nama": "Sejajar",
+            "isi": "METODE LUAR · Parallel: Jarak tetap, tidak bertemu. (asal: Geometry).",
+            "suara": "METODE LUAR. Sejajar. Jarak tetap, tidak bertemu."
+          },
+          {
+            "nama": "Garis di Lingkungan",
+            "isi": "METODE LUAR · Real-World Lines: Cari contoh di kelas dan jalan. (asal: Contextual geometry).",
+            "suara": "METODE LUAR. Garis di Lingkungan. Cari contoh di kelas dan jalan."
           }
         ],
         "suara": "Ingat selalu! Garis tegak lurus bertemu pada sudut siku-siku, ditulis dengan lambang ⊥. Garis sejajar jaraknya selalu sama dan tidak pernah bertemu, ditulis dengan lambang //. Segitiga punya tiga sisi, persegi dan persegi panjang punya empat sisi, dan lingkaran dibatasi garis lengkung.",

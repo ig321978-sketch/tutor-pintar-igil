@@ -26,8 +26,44 @@
       "silabus": {
         "teksSuara": "Kita belajar berat. Enam sekawan piket membersihkan kelas, dan mereka mengangkat benda yang berat dan benda yang ringan. Kita membandingkan berat dua benda dengan timbangan jungkat-jungkit, gantungan baju, dan kedua tangan. Kita memakai kata lebih berat, lebih ringan, sama berat, paling berat, dan paling ringan. Kita juga mengukur berat boneka dengan bola tenis dan kelereng, lalu belajar bahwa hasil ukur bergantung pada alat ukur. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa membandingkan berat benda secara langsung dengan kata lebih berat, lebih ringan, sama berat, paling berat, dan paling ringan, mengurutkan benda menurut beratnya, mengukur berat benda dengan satuan tidak baku, serta menyampaikan hasilnya dengan percaya diri.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 6: Pengukuran, Sub-Bab A hlm. 158–177)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 6 Sub-Bab A)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Compare Mass",
+          "namaId": "Banding Berat",
+          "asal": "Measurement",
+          "ringkas": "Mana yang lebih berat dengan neraca/pegang.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Nonstandard Mass",
+          "namaId": "Satuan Tak Baku Berat",
+          "asal": "Measurement progression",
+          "ringkas": "Pakai benda acuan sebelum satuan baku.",
+          "tahap": [
+            "Mind",
+            "Infografis"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Heavier Lighter",
+          "namaId": "Lebih Berat Lebih Ringan",
+          "asal": "Comparative language",
+          "ringkas": "Bahasa banding untuk berat.",
+          "tahap": [
+            "Abstract",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B6A-V1-1",
@@ -45,7 +81,7 @@
           "id": "K2B6A-V1-3",
           "titleHint": "Bercerita dengan kata berat",
           "sceneType": "K2B6A-V1-3",
-          "voiceNarration": "Kita ceritakan benda-benda itu dengan kata lebih berat, paling berat, dan paling ringan. Meja lebih berat dari kursi. Kursi lebih berat dari kemoceng. Jadi meja paling berat, dan kemoceng paling ringan. Benda yang besar belum tentu paling berat. Karena itu kita perlu membandingkan dengan cara yang tepat."
+          "voiceNarration": "Kita ceritakan benda-benda itu dengan kata lebih berat, paling berat, dan paling ringan. Meja lebih berat dari kursi. Kursi lebih berat dari kemoceng. Jadi meja paling berat, dan kemoceng paling ringan. Benda yang besar belum tentu paling berat. Karena itu kita perlu membandingkan dengan cara yang tepat. METODE LUAR. Banding Berat: Mana yang lebih berat dengan neraca/pegang."
         },
         {
           "id": "K2B6A-V2-1",
@@ -63,7 +99,7 @@
           "id": "K2B6A-V2-3",
           "titleHint": "Paling berat, paling ringan",
           "sceneType": "K2B6A-V2-3",
-          "voiceNarration": "Ada empat buah: semangka, apel Malang, jeruk Medan, dan anggur. Semangka lebih berat dari apel, dan apel lebih berat dari anggur. Jadi semangka paling berat di antara ketiganya. Anggur lebih ringan dari apel, dan lebih ringan dari semangka. Jadi anggur paling ringan."
+          "voiceNarration": "Ada empat buah: semangka, apel Malang, jeruk Medan, dan anggur. Semangka lebih berat dari apel, dan apel lebih berat dari anggur. Jadi semangka paling berat di antara ketiganya. Anggur lebih ringan dari apel, dan lebih ringan dari semangka. Jadi anggur paling ringan. METODE LUAR. Satuan Tak Baku Berat: Pakai benda acuan sebelum satuan baku."
         },
         {
           "id": "K2B6A-V3-1",
@@ -81,7 +117,7 @@
           "id": "K2B6A-V3-3",
           "titleHint": "Alat ukur yang berbeda",
           "sceneType": "K2B6A-V3-3",
-          "voiceNarration": "Tika mengukur boneka itu lagi memakai kelereng. Ternyata berat satu boneka sama dengan sepuluh kelereng. Berat boneka adalah empat bola tenis, dan juga sepuluh kelereng. Hasil pengukuran bisa berbeda-beda, karena bergantung pada benda yang kita pakai sebagai alat ukur."
+          "voiceNarration": "Tika mengukur boneka itu lagi memakai kelereng. Ternyata berat satu boneka sama dengan sepuluh kelereng. Berat boneka adalah empat bola tenis, dan juga sepuluh kelereng. Hasil pengukuran bisa berbeda-beda, karena bergantung pada benda yang kita pakai sebagai alat ukur. METODE LUAR. Lebih Berat Lebih Ringan: Bahasa banding untuk berat."
         }
       ],
       "videos": [
@@ -129,13 +165,15 @@
                 "Kita ceritakan benda-benda itu dengan kata lebih berat, paling berat, dan paling ringan.",
                 "Meja lebih berat dari kursi. Kursi lebih berat dari kemoceng.",
                 "Jadi meja paling berat, dan kemoceng paling ringan.",
-                "Benda yang besar belum tentu paling berat. Karena itu kita perlu membandingkan dengan cara yang tepat."
+                "Benda yang besar belum tentu paling berat. Karena itu kita perlu membandingkan dengan cara yang tepat.",
+                "METODE LUAR. Banding Berat: Mana yang lebih berat dengan neraca/pegang."
               ],
               "papan": [
                 "Kata berat",
                 "Meja, kursi, kemoceng",
                 "Meja paling berat",
-                "Besar belum tentu berat"
+                "Besar belum tentu berat",
+                "METODE LUAR · Banding Berat"
               ]
             }
           ]
@@ -184,13 +222,15 @@
                 "Ada empat buah: semangka, apel Malang, jeruk Medan, dan anggur.",
                 "Semangka lebih berat dari apel, dan apel lebih berat dari anggur.",
                 "Jadi semangka paling berat di antara ketiganya.",
-                "Anggur lebih ringan dari apel, dan lebih ringan dari semangka. Jadi anggur paling ringan."
+                "Anggur lebih ringan dari apel, dan lebih ringan dari semangka. Jadi anggur paling ringan.",
+                "METODE LUAR. Satuan Tak Baku Berat: Pakai benda acuan sebelum satuan baku."
               ],
               "papan": [
                 "Empat buah",
                 "Semangka, apel, anggur",
                 "Semangka paling berat",
-                "Anggur paling ringan"
+                "Anggur paling ringan",
+                "METODE LUAR · Satuan Tak Baku Berat"
               ]
             }
           ]
@@ -239,13 +279,15 @@
                 "Tika mengukur boneka itu lagi memakai kelereng.",
                 "Ternyata berat satu boneka sama dengan sepuluh kelereng.",
                 "Berat boneka adalah empat bola tenis, dan juga sepuluh kelereng.",
-                "Hasil pengukuran bisa berbeda-beda, karena bergantung pada benda yang kita pakai sebagai alat ukur."
+                "Hasil pengukuran bisa berbeda-beda, karena bergantung pada benda yang kita pakai sebagai alat ukur.",
+                "METODE LUAR. Lebih Berat Lebih Ringan: Bahasa banding untuk berat."
               ],
               "papan": [
                 "Pakai kelereng",
                 "10 kelereng",
                 "4 bola tenis atau 10 kelereng",
-                "Bergantung alat ukur"
+                "Bergantung alat ukur",
+                "METODE LUAR · Lebih Berat Lebih Ringan"
               ]
             }
           ]
@@ -314,7 +356,23 @@
           "stepDesc": "Berat satu boneka sama dengan empat bola tenis, dan juga sama dengan sepuluh kelereng. Bonekanya sama, tetapi hasilnya berbeda, karena kelereng lebih ringan daripada bola tenis. Satuan yang lebih ringan memerlukan jumlah yang lebih banyak. Kita juga dapat menyusun rantai perbandingan: satu pepaya sama dengan dua mangga, dan satu mangga sama dengan dua manggis, jadi satu pepaya sama dengan empat manggis.",
           "icon": "🧸",
           "flowFrom": "Hasil bergantung alat ukur",
-          "flowTo": "Siap menimbang"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Banding Berat",
+          "stepDesc": "Mana yang lebih berat dengan neraca/pegang.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Satuan Tak Baku Berat",
+          "stepDesc": "Pakai benda acuan sebelum satuan baku.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -387,6 +445,27 @@
           "countNum": 3,
           "countWord": "Tiga",
           "voiceSentence": "Satu pepaya sama dengan dua mangga. Satu mangga sama dengan dua manggis. Jadi satu pepaya sama dengan empat manggis."
+        },
+        {
+          "fruitName": "Banding Berat",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Compare Mass",
+          "voiceSentence": "METODE LUAR. Banding Berat. Mana yang lebih berat dengan neraca/pegang."
+        },
+        {
+          "fruitName": "Satuan Tak Baku Berat",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Nonstandard Mass",
+          "voiceSentence": "METODE LUAR. Satuan Tak Baku Berat. Pakai benda acuan sebelum satuan baku."
+        },
+        {
+          "fruitName": "Lebih Berat Lebih Ringan",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Heavier Lighter",
+          "voiceSentence": "METODE LUAR. Lebih Berat Lebih Ringan. Bahasa banding untuk berat."
         }
       ],
       "concreteSlides": [
@@ -394,7 +473,7 @@
           "title": "Angkat dengan Dua Tangan",
           "emoji": "🤲",
           "targetCount": 12,
-          "voiceGuide": "Angkat kedua benda, lalu pilih yang lebih berat."
+          "voiceGuide": "METODE LUAR · Banding Berat. Angkat kedua benda, lalu pilih yang lebih berat."
         },
         {
           "title": "Jungkat-Jungkit",
@@ -457,7 +536,7 @@
           "diagramType": "balance-blocks",
           "numberA": 3,
           "numberB": 3,
-          "caption": "Membaca kemiringan neraca yang memuat balok berhuruf."
+          "caption": "Membaca kemiringan neraca yang memuat balok berhuruf. (METODE LUAR · Banding Berat)"
         },
         {
           "title": "Urutan dari Beberapa Neraca",
@@ -528,7 +607,7 @@
           "symbolLarge": "> < =",
           "wordLarge": "LEBIH BERAT",
           "mathNotation": "lebih berat • lebih ringan • sama berat",
-          "voiceReadout": "Pilih kata yang tepat untuk bagian kosong."
+          "voiceReadout": "METODE LUAR · Banding Berat. Pilih kata yang tepat untuk bagian kosong."
         },
         {
           "symbolLarge": "✓ ✗",
@@ -593,9 +672,9 @@
           "gameType": "lift-two-hands-compare",
           "title": "Angkat dengan Dua Tangan",
           "bookReference": "Buku Siswa hlm. 160–162 (membandingkan dengan kedua tangan; Ayo Mencoba nomor 1 sampai 4)",
-          "objective": "Merasakan dan menentukan benda yang lebih berat, lebih ringan, atau sama berat dengan kedua tangan.",
+          "objective": "Merasakan dan menentukan benda yang lebih berat, lebih ringan, atau sama berat dengan kedua tangan. (METODE LUAR · Banding Berat)",
           "mechanicDescription": "Empat ronde, tiap ronde tiga pasang benda, misalnya semangka dan apel, jeruk dan anggur, buku dan pensil. Siswa menekan Angkat dua-duanya, melihat tangan yang memegang benda lebih berat turun lebih rendah, lalu memilih satu dari tiga pernyataan. Dua pasang sama berat. Kunci dihitung dari tabel berat benda.",
-          "voiceGuide": "Angkat kedua benda, lalu pilih yang lebih berat."
+          "voiceGuide": "METODE LUAR · Banding Berat. Angkat kedua benda, lalu pilih yang lebih berat."
         },
         {
           "gameId": "subK2B6A-game-2",
@@ -703,9 +782,9 @@
           "gameType": "read-balance-diagram",
           "title": "Baca Neraca Balok",
           "bookReference": "Buku Siswa hlm. 158–160 (posisi benda yang lebih berat lebih bawah)",
-          "objective": "Membaca kemiringan neraca yang memuat balok berhuruf.",
+          "objective": "Membaca kemiringan neraca yang memuat balok berhuruf. (METODE LUAR · Banding Berat)",
           "mechanicDescription": "Tiga ronde, tiap ronde tiga neraca dengan balok A, B, C, D, E, F tanpa gambar benda. Siswa membaca sisi yang turun, lalu memilih pernyataan yang tepat. Sebagian neraca seimbang. Kunci dihitung dari bobot balok.",
-          "voiceGuide": "Lihat sisi yang turun, lalu pilih pernyataannya."
+          "voiceGuide": "METODE LUAR · Banding Berat. Lihat sisi yang turun, lalu pilih pernyataannya."
         },
         {
           "gameId": "subK2B6A-game-12",
@@ -813,9 +892,9 @@
           "gameType": "complete-weight-sentences",
           "title": "Lengkapi Kalimat Berat",
           "bookReference": "Buku Siswa hlm. 162–163 dan 166–167 (lengkapi kalimat dengan lebih berat, lebih ringan, sama berat)",
-          "objective": "Melengkapi kalimat perbandingan berat dengan kata yang tepat.",
+          "objective": "Melengkapi kalimat perbandingan berat dengan kata yang tepat. (METODE LUAR · Banding Berat)",
           "mechanicDescription": "Dua ronde, tiap ronde tiga kalimat, misalnya semangka ... apel. Siswa memilih satu dari tiga kata hubungan. Kalimat yang lengkap dibacakan Suara Guru.",
-          "voiceGuide": "Pilih kata yang tepat untuk bagian kosong."
+          "voiceGuide": "METODE LUAR · Banding Berat. Pilih kata yang tepat untuk bagian kosong."
         },
         {
           "gameId": "subK2B6A-game-22",
@@ -943,6 +1022,21 @@
             "nama": "Hasil bergantung alat ukur",
             "isi": "satuan lebih ringan, hitungan lebih banyak",
             "suara": "Satu boneka sama dengan empat bola tenis, dan juga sepuluh kelereng. Hasil pengukuran bergantung pada alat ukur yang dipakai."
+          },
+          {
+            "nama": "Banding Berat",
+            "isi": "METODE LUAR · Compare Mass: Mana yang lebih berat dengan neraca/pegang. (asal: Measurement).",
+            "suara": "METODE LUAR. Banding Berat. Mana yang lebih berat dengan neraca/pegang."
+          },
+          {
+            "nama": "Satuan Tak Baku Berat",
+            "isi": "METODE LUAR · Nonstandard Mass: Pakai benda acuan sebelum satuan baku. (asal: Measurement progression).",
+            "suara": "METODE LUAR. Satuan Tak Baku Berat. Pakai benda acuan sebelum satuan baku."
+          },
+          {
+            "nama": "Lebih Berat Lebih Ringan",
+            "isi": "METODE LUAR · Heavier Lighter: Bahasa banding untuk berat. (asal: Comparative language).",
+            "suara": "METODE LUAR. Lebih Berat Lebih Ringan. Bahasa banding untuk berat."
           }
         ],
         "suara": "Ingat selalu! Kita membandingkan berat dengan jungkat-jungkit, gantungan baju, atau kedua tangan. Benda yang lebih berat berada lebih bawah. Kita memakai kata lebih berat, lebih ringan, sama berat, paling berat, dan paling ringan. Berat juga dapat diukur dengan satuan tidak baku, dan hasilnya bergantung pada alat ukur.",
@@ -967,8 +1061,44 @@
       "silabus": {
         "teksSuara": "Kita belajar waktu. Jam membantu kita mengetahui waktu sehari-hari. Kita belajar membaca jam analog, yaitu jarum pendek menunjukkan jam dan jarum panjang menunjukkan menit. Kita juga mengenal jam digital. Kita mengikuti kegiatan Tika dari pagi sampai malam, lalu membandingkan kegiatan yang lebih lama dan yang lebih sebentar, seperti berolahraga dan mandi. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa membaca jam tepat pada jam analog, mengenal jam digital, menunjukkan kegiatan menurut pagi, siang, sore, dan malam, mengurutkan kegiatan, serta membandingkan lama kegiatan dengan kata lebih lama dan lebih sebentar.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 6: Pengukuran, Sub-Bab B hlm. 178–190)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 6 Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Clock Reading",
+          "namaId": "Membaca Jam",
+          "asal": "Time pedagogy",
+          "ringkas": "Jarum pendek jam, jarum panjang menit.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Duration Sense",
+          "namaId": "Lama Kegiatan",
+          "asal": "Time sense",
+          "ringkas": "Perkirakan lama suatu kegiatan.",
+          "tahap": [
+            "Mind",
+            "Infografis"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Day Sequence",
+          "namaId": "Urutan Waktu Sehari",
+          "asal": "Temporal order",
+          "ringkas": "Pagi–siang–sore–malam.",
+          "tahap": [
+            "Abstract",
+            "Story"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B6B-V1-1",
@@ -986,7 +1116,7 @@
           "id": "K2B6B-V1-3",
           "titleHint": "Membaca pukul tepat",
           "sceneType": "K2B6B-V1-3",
-          "voiceNarration": "Kalau jarum panjang di angka dua belas, kita membaca jam dari jarum pendek. Jarum pendek di angka enam, berarti pukul enam. Jarum pendek di angka tujuh, berarti pukul tujuh. Jarum pendek dan jarum panjang sama-sama di angka dua belas, berarti pukul dua belas tepat."
+          "voiceNarration": "Kalau jarum panjang di angka dua belas, kita membaca jam dari jarum pendek. Jarum pendek di angka enam, berarti pukul enam. Jarum pendek di angka tujuh, berarti pukul tujuh. Jarum pendek dan jarum panjang sama-sama di angka dua belas, berarti pukul dua belas tepat. METODE LUAR. Membaca Jam: Jarum pendek jam, jarum panjang menit."
         },
         {
           "id": "K2B6B-V2-1",
@@ -1004,7 +1134,7 @@
           "id": "K2B6B-V2-3",
           "titleHint": "Malam hari",
           "sceneType": "K2B6B-V2-3",
-          "voiceNarration": "Tika tidur sejak pukul sembilan malam. Malam hari langit gelap, dan kita beristirahat. Satu hari terdiri dari pagi, siang, sore, dan malam. Setiap kegiatan punya waktu yang tepat."
+          "voiceNarration": "Tika tidur sejak pukul sembilan malam. Malam hari langit gelap, dan kita beristirahat. Satu hari terdiri dari pagi, siang, sore, dan malam. Setiap kegiatan punya waktu yang tepat. METODE LUAR. Lama Kegiatan: Perkirakan lama suatu kegiatan."
         },
         {
           "id": "K2B6B-V3-1",
@@ -1022,7 +1152,7 @@
           "id": "K2B6B-V3-3",
           "titleHint": "Membandingkan waktu",
           "sceneType": "K2B6B-V3-3",
-          "voiceNarration": "Kita dapat membandingkan waktu dua kegiatan. Kita memakai kata lebih lama dan lebih sebentar. Tidur malam lebih lama dari menyikat gigi. Mencuci tangan lebih sebentar dari bermain bola."
+          "voiceNarration": "Kita dapat membandingkan waktu dua kegiatan. Kita memakai kata lebih lama dan lebih sebentar. Tidur malam lebih lama dari menyikat gigi. Mencuci tangan lebih sebentar dari bermain bola. METODE LUAR. Urutan Waktu Sehari: Pagi–siang–sore–malam."
         }
       ],
       "videos": [
@@ -1068,13 +1198,15 @@
                 "Kalau jarum panjang di angka dua belas, kita membaca jam dari jarum pendek.",
                 "Jarum pendek di angka enam, berarti pukul enam.",
                 "Jarum pendek di angka tujuh, berarti pukul tujuh.",
-                "Jarum pendek dan jarum panjang sama-sama di angka dua belas, berarti pukul dua belas tepat."
+                "Jarum pendek dan jarum panjang sama-sama di angka dua belas, berarti pukul dua belas tepat.",
+                "METODE LUAR. Membaca Jam: Jarum pendek jam, jarum panjang menit."
               ],
               "papan": [
                 "Panjang di angka 12",
                 "Pukul 6",
                 "Pukul 7",
-                "Pukul 12 tepat"
+                "Pukul 12 tepat",
+                "METODE LUAR · Membaca Jam"
               ]
             }
           ]
@@ -1121,13 +1253,15 @@
                 "Tika tidur sejak pukul sembilan malam.",
                 "Malam hari langit gelap, dan kita beristirahat.",
                 "Satu hari terdiri dari pagi, siang, sore, dan malam.",
-                "Setiap kegiatan punya waktu yang tepat."
+                "Setiap kegiatan punya waktu yang tepat.",
+                "METODE LUAR. Lama Kegiatan: Perkirakan lama suatu kegiatan."
               ],
               "papan": [
                 "Tidur pukul 9",
                 "Langit gelap",
                 "Pagi, siang, sore, malam",
-                "Waktu yang tepat"
+                "Waktu yang tepat",
+                "METODE LUAR · Lama Kegiatan"
               ]
             }
           ]
@@ -1176,13 +1310,15 @@
                 "Kita dapat membandingkan waktu dua kegiatan.",
                 "Kita memakai kata lebih lama dan lebih sebentar.",
                 "Tidur malam lebih lama dari menyikat gigi.",
-                "Mencuci tangan lebih sebentar dari bermain bola."
+                "Mencuci tangan lebih sebentar dari bermain bola.",
+                "METODE LUAR. Urutan Waktu Sehari: Pagi–siang–sore–malam."
               ],
               "papan": [
                 "Bandingkan waktu",
                 "Lebih lama, lebih sebentar",
                 "Tidur lebih lama",
-                "Cuci tangan sebentar"
+                "Cuci tangan sebentar",
+                "METODE LUAR · Urutan Waktu Sehari"
               ]
             }
           ]
@@ -1251,7 +1387,23 @@
           "stepDesc": "Kita dapat menyusun satu hari dengan jadwal yang rapi. Tuliskan satu kegiatan untuk pagi, siang, sore, dan malam, lengkap dengan jamnya. Untuk menghitung lama sebuah kegiatan, hitung berapa jam jarum pendek bergerak dari mulai sampai selesai. Dari pukul enam sampai pukul tujuh, jarum pendek bergerak satu jam. Jadwal yang rapi membantu kita belajar, bermain, dan beristirahat dengan seimbang.",
           "icon": "🗓️",
           "flowFrom": "Menyusun hariku",
-          "flowTo": "Siap membaca waktu"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Membaca Jam",
+          "stepDesc": "Jarum pendek jam, jarum panjang menit.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Lama Kegiatan",
+          "stepDesc": "Perkirakan lama suatu kegiatan.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -1324,6 +1476,27 @@
           "countNum": 2,
           "countWord": "Dua",
           "voiceSentence": "Dari pukul enam sampai pukul tujuh, jarum pendek bergerak satu jam. Kira berolahraga selama satu jam."
+        },
+        {
+          "fruitName": "Membaca Jam",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Clock Reading",
+          "voiceSentence": "METODE LUAR. Membaca Jam. Jarum pendek jam, jarum panjang menit."
+        },
+        {
+          "fruitName": "Lama Kegiatan",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Duration Sense",
+          "voiceSentence": "METODE LUAR. Lama Kegiatan. Perkirakan lama suatu kegiatan."
+        },
+        {
+          "fruitName": "Urutan Waktu Sehari",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Day Sequence",
+          "voiceSentence": "METODE LUAR. Urutan Waktu Sehari. Pagi–siang–sore–malam."
         }
       ],
       "concreteSlides": [
@@ -1331,7 +1504,7 @@
           "title": "Pukul Berapa?",
           "emoji": "⏰",
           "targetCount": 12,
-          "voiceGuide": "Lihat jarum pendek, lalu pilih pukulnya."
+          "voiceGuide": "METODE LUAR · Membaca Jam. Lihat jarum pendek, lalu pilih pukulnya."
         },
         {
           "title": "Putar Jarum Jam",
@@ -1394,7 +1567,7 @@
           "diagramType": "clock-to-digital",
           "numberA": 3,
           "numberB": 3,
-          "caption": "Menuliskan pukul tepat pada diagram jam dalam bentuk jam digital."
+          "caption": "Menuliskan pukul tepat pada diagram jam dalam bentuk jam digital. (METODE LUAR · Membaca Jam)"
         },
         {
           "title": "Gambar Jarum Jam",
@@ -1465,7 +1638,7 @@
           "symbolLarge": "06.00",
           "wordLarge": "PAGI SIANG",
           "mathNotation": "pagi • siang • sore • malam",
-          "voiceReadout": "Pilih kata yang tepat untuk bagian kosong."
+          "voiceReadout": "METODE LUAR · Membaca Jam. Pilih kata yang tepat untuk bagian kosong."
         },
         {
           "symbolLarge": "✓ ✗",
@@ -1530,9 +1703,9 @@
           "gameType": "read-clock-concrete",
           "title": "Pukul Berapa?",
           "bookReference": "Buku Siswa hlm. 178 dan 183 (Halim bangun tidur; tulis waktu yang sesuai dengan kegiatan)",
-          "objective": "Membaca pukul tepat pada model jam dinding.",
+          "objective": "Membaca pukul tepat pada model jam dinding. (METODE LUAR · Membaca Jam)",
           "mechanicDescription": "Empat ronde, tiap ronde tiga jam dinding berbeda, misalnya pukul enam, tujuh, dan dua belas. Siswa memilih pukul yang tepat dari tiga pilihan. Pilihan lain berupa jam sebelum dan sesudahnya, sehingga siswa harus melihat jarum pendek dengan teliti.",
-          "voiceGuide": "Lihat jarum pendek, lalu pilih pukulnya."
+          "voiceGuide": "METODE LUAR · Membaca Jam. Lihat jarum pendek, lalu pilih pukulnya."
         },
         {
           "gameId": "subK2B6B-game-2",
@@ -1640,9 +1813,9 @@
           "gameType": "read-digital-from-diagram",
           "title": "Baca Jam Digital dari Gambar",
           "bookReference": "Buku Siswa hlm. 178 (jam analog dan jam digital)",
-          "objective": "Menuliskan pukul tepat pada diagram jam dalam bentuk jam digital.",
+          "objective": "Menuliskan pukul tepat pada diagram jam dalam bentuk jam digital. (METODE LUAR · Membaca Jam)",
           "mechanicDescription": "Tiga ronde, tiap ronde tiga diagram jam. Siswa memilih jam digital yang sama, misalnya nol enam titik nol nol. Dua pilihan lain berupa jam sebelum dan sesudahnya.",
-          "voiceGuide": "Lihat jarum, lalu pilih jam digitalnya."
+          "voiceGuide": "METODE LUAR · Membaca Jam. Lihat jarum, lalu pilih jam digitalnya."
         },
         {
           "gameId": "subK2B6B-game-12",
@@ -1750,9 +1923,9 @@
           "gameType": "complete-time-sentences",
           "title": "Lengkapi Kalimat Waktu",
           "bookReference": "Buku Siswa hlm. 179–183 (kegiatan Tika; Olahraga Minggu)",
-          "objective": "Melengkapi kalimat waktu dengan bagian hari atau kata lebih lama dan lebih sebentar.",
+          "objective": "Melengkapi kalimat waktu dengan bagian hari atau kata lebih lama dan lebih sebentar. (METODE LUAR · Membaca Jam)",
           "mechanicDescription": "Dua ronde, tiap ronde tiga kalimat, misalnya Tika sarapan pukul 6 ... Siswa memilih satu dari tiga kata. Kalimat yang lengkap dibacakan Suara Guru.",
-          "voiceGuide": "Pilih kata yang tepat untuk bagian kosong."
+          "voiceGuide": "METODE LUAR · Membaca Jam. Pilih kata yang tepat untuk bagian kosong."
         },
         {
           "gameId": "subK2B6B-game-22",
@@ -1880,6 +2053,21 @@
             "nama": "Lebih lama, lebih sebentar",
             "isi": "bandingkan lama dua kegiatan",
             "suara": "Kita membandingkan lama dua kegiatan dengan kata lebih lama dan lebih sebentar. Berolahraga lebih lama dari mandi."
+          },
+          {
+            "nama": "Membaca Jam",
+            "isi": "METODE LUAR · Clock Reading: Jarum pendek jam, jarum panjang menit. (asal: Time pedagogy).",
+            "suara": "METODE LUAR. Membaca Jam. Jarum pendek jam, jarum panjang menit."
+          },
+          {
+            "nama": "Lama Kegiatan",
+            "isi": "METODE LUAR · Duration Sense: Perkirakan lama suatu kegiatan. (asal: Time sense).",
+            "suara": "METODE LUAR. Lama Kegiatan. Perkirakan lama suatu kegiatan."
+          },
+          {
+            "nama": "Urutan Waktu Sehari",
+            "isi": "METODE LUAR · Day Sequence: Pagi–siang–sore–malam. (asal: Temporal order).",
+            "suara": "METODE LUAR. Urutan Waktu Sehari. Pagi–siang–sore–malam."
           }
         ],
         "suara": "Ingat selalu! Jarum pendek menunjukkan jam dan jarum panjang menunjukkan menit. Pukul tepat bila jarum panjang di angka dua belas. Jam digital menulis waktu dengan angka. Satu hari terdiri dari pagi, siang, sore, dan malam, dan kita membandingkan kegiatan dengan kata lebih lama dan lebih sebentar.",

@@ -26,8 +26,44 @@
       "silabus": {
         "teksSuara": "Kita belajar pecahan. Bukunya bernama Pecahan, bagian setengah dari benda utuh. Kira membagi martabak manis dengan Tika secara adil, jadi martabaknya harus dipotong menjadi dua bagian yang sama besar. Setiap bagian dinamakan setengah. Kita juga melipat kertas dan memeriksa gambar mana yang menunjukkan setengah. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menunjukkan setengah dari benda utuh dengan membagi benda menjadi dua bagian sama besar, menemukan contoh setengah di sekitar, menjelaskan bahwa bagian yang tidak sama besar bukan setengah, serta menyampaikan pendapat dengan percaya diri.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 5: Pecahan, Sub-Bab A hlm. 125–134)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 5 Sub-Bab A)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Halving Whole",
+          "namaId": "Setengah Benda Utuh",
+          "asal": "Early fractions",
+          "ringkas": "Bagi benda menjadi dua bagian sama.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Equal Parts",
+          "namaId": "Bagian Sama",
+          "asal": "Fraction foundation",
+          "ringkas": "Setengah hanya jika bagian sama besar.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Fold Test",
+          "namaId": "Uji Lipat",
+          "asal": "Paper folding",
+          "ringkas": "Lipat membuktikan dua bagian sama.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B5A-V1-1",
@@ -45,7 +81,7 @@
           "id": "K2B5A-V1-3",
           "titleHint": "Bagaimana memotongnya?",
           "sceneType": "K2B5A-V1-3",
-          "voiceNarration": "Bagaimana cara kita membagi martabak agar potongannya sama besar? Kalau potongannya tidak sama besar, salah satu teman akan mendapat lebih sedikit. Karena itu, kita perlu memotong tepat di tengah martabak."
+          "voiceNarration": "Bagaimana cara kita membagi martabak agar potongannya sama besar? Kalau potongannya tidak sama besar, salah satu teman akan mendapat lebih sedikit. Karena itu, kita perlu memotong tepat di tengah martabak. METODE LUAR. Setengah Benda Utuh: Bagi benda menjadi dua bagian sama."
         },
         {
           "id": "K2B5A-V2-1",
@@ -63,7 +99,7 @@
           "id": "K2B5A-V2-3",
           "titleHint": "Ayo melipat kertas",
           "sceneType": "K2B5A-V2-3",
-          "voiceNarration": "Ambil selembar kertas berbentuk persegi. Lipat kertas itu menjadi dua bagian sama besar. Kamu bisa melipatnya tegak, mendatar, atau miring dari pojok ke pojok. Setiap cara menghasilkan setengah. Bentuknya bisa persegi panjang atau segitiga."
+          "voiceNarration": "Ambil selembar kertas berbentuk persegi. Lipat kertas itu menjadi dua bagian sama besar. Kamu bisa melipatnya tegak, mendatar, atau miring dari pojok ke pojok. Setiap cara menghasilkan setengah. Bentuknya bisa persegi panjang atau segitiga. METODE LUAR. Bagian Sama: Setengah hanya jika bagian sama besar."
         },
         {
           "id": "K2B5A-V3-1",
@@ -81,7 +117,7 @@
           "id": "K2B5A-V3-3",
           "titleHint": "Gambar A dan gambar B",
           "sceneType": "K2B5A-V3-3",
-          "voiceNarration": "Perhatikan dua gambar segi empat ini. Gambar A dipotong menjadi dua bagian sama besar, jadi gambar A menunjukkan setengah. Gambar B dipotong tidak sama besar, jadi gambar B bukan setengah. Untuk menunjukkan setengah, satu benda harus dipotong menjadi dua yang sama besar."
+          "voiceNarration": "Perhatikan dua gambar segi empat ini. Gambar A dipotong menjadi dua bagian sama besar, jadi gambar A menunjukkan setengah. Gambar B dipotong tidak sama besar, jadi gambar B bukan setengah. Untuk menunjukkan setengah, satu benda harus dipotong menjadi dua yang sama besar. METODE LUAR. Uji Lipat: Lipat membuktikan dua bagian sama."
         }
       ],
       "videos": [
@@ -126,12 +162,14 @@
               "ketukan": [
                 "Bagaimana cara kita membagi martabak agar potongannya sama besar?",
                 "Kalau potongannya tidak sama besar, salah satu teman akan mendapat lebih sedikit.",
-                "Karena itu, kita perlu memotong tepat di tengah martabak."
+                "Karena itu, kita perlu memotong tepat di tengah martabak.",
+                "METODE LUAR. Setengah Benda Utuh: Bagi benda menjadi dua bagian sama."
               ],
               "papan": [
                 "Sama besar?",
                 "Tidak sama besar",
-                "Potong di tengah"
+                "Potong di tengah",
+                "METODE LUAR · Setengah Benda Utuh"
               ]
             }
           ]
@@ -182,13 +220,15 @@
                 "Ambil selembar kertas berbentuk persegi.",
                 "Lipat kertas itu menjadi dua bagian sama besar.",
                 "Kamu bisa melipatnya tegak, mendatar, atau miring dari pojok ke pojok.",
-                "Setiap cara menghasilkan setengah. Bentuknya bisa persegi panjang atau segitiga."
+                "Setiap cara menghasilkan setengah. Bentuknya bisa persegi panjang atau segitiga.",
+                "METODE LUAR. Bagian Sama: Setengah hanya jika bagian sama besar."
               ],
               "papan": [
                 "Kertas persegi",
                 "Lipat sama besar",
                 "Banyak cara melipat",
-                "Setengah bagian"
+                "Setengah bagian",
+                "METODE LUAR · Bagian Sama"
               ]
             }
           ]
@@ -233,13 +273,15 @@
                 "Perhatikan dua gambar segi empat ini.",
                 "Gambar A dipotong menjadi dua bagian sama besar, jadi gambar A menunjukkan setengah.",
                 "Gambar B dipotong tidak sama besar, jadi gambar B bukan setengah.",
-                "Untuk menunjukkan setengah, satu benda harus dipotong menjadi dua yang sama besar."
+                "Untuk menunjukkan setengah, satu benda harus dipotong menjadi dua yang sama besar.",
+                "METODE LUAR. Uji Lipat: Lipat membuktikan dua bagian sama."
               ],
               "papan": [
                 "Gambar A dan B",
                 "A: setengah",
                 "B: bukan setengah",
-                "Dua yang sama besar"
+                "Dua yang sama besar",
+                "METODE LUAR · Uji Lipat"
               ]
             }
           ]
@@ -308,7 +350,15 @@
           "stepDesc": "Saat melihat gambar atau benda yang katanya setengah, ajukan tiga pertanyaan. Satu, apakah benda utuh itu dibagi menjadi dua bagian? Dua, apakah kedua bagian sama besar? Tiga, apakah satu bagian itu yang sedang ditunjukkan? Kalau ketiganya iya, itulah setengah.",
           "icon": "🔍",
           "flowFrom": "Setengah dalam keseharian",
-          "flowTo": "Siap menemukan setengah"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Setengah Benda Utuh",
+          "stepDesc": "Bagi benda menjadi dua bagian sama.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
         }
       ],
       "infografisData": [
@@ -381,6 +431,27 @@
           "countNum": 2,
           "countWord": "Dua",
           "voiceSentence": "Dua setengah disatukan kembali menjadi satu benda utuh. Setengah ditambah setengah sama dengan satu utuh. Setengah ditulis dengan lambang setengah."
+        },
+        {
+          "fruitName": "Setengah Benda Utuh",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Halving Whole",
+          "voiceSentence": "METODE LUAR. Setengah Benda Utuh. Bagi benda menjadi dua bagian sama."
+        },
+        {
+          "fruitName": "Bagian Sama",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Equal Parts",
+          "voiceSentence": "METODE LUAR. Bagian Sama. Setengah hanya jika bagian sama besar."
+        },
+        {
+          "fruitName": "Uji Lipat",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Fold Test",
+          "voiceSentence": "METODE LUAR. Uji Lipat. Lipat membuktikan dua bagian sama."
         }
       ],
       "concreteSlides": [
@@ -388,7 +459,7 @@
           "title": "Potongan yang Adil",
           "emoji": "🥞",
           "targetCount": 4,
-          "voiceGuide": "Ketuk semua potongan yang membagi menjadi dua sama besar."
+          "voiceGuide": "METODE LUAR · Setengah Benda Utuh. Ketuk semua potongan yang membagi menjadi dua sama besar."
         },
         {
           "title": "Lipat Kertas",
@@ -460,9 +531,9 @@
           "gameType": "choose-fair-cuts",
           "title": "Potongan yang Adil",
           "bookReference": "Buku Siswa hlm. 127–128 (Berbagi Sama Banyak; memotong satu martabak utuh menjadi dua bagian sama besar)",
-          "objective": "Memilih cara memotong benda nyata yang menghasilkan dua bagian sama besar dan menolak yang tidak sama besar.",
+          "objective": "Memilih cara memotong benda nyata yang menghasilkan dua bagian sama besar dan menolak yang tidak sama besar. (METODE LUAR · Setengah Benda Utuh)",
           "mechanicDescription": "Empat ronde (martabak, kue bolu, roti, pizza). Tiap ronde menampilkan enam gambar benda dengan garis potong berbeda. Siswa mengetuk semua potongan yang adil, yaitu yang membagi benda menjadi dua bagian sama besar, lalu menekan Periksa. Luas bagian dihitung oleh program sehingga potongan yang nyaris tengah pun diperiksa dengan teliti.",
-          "voiceGuide": "Ketuk semua potongan yang membagi menjadi dua sama besar."
+          "voiceGuide": "METODE LUAR · Setengah Benda Utuh. Ketuk semua potongan yang membagi menjadi dua sama besar."
         },
         {
           "gameId": "subK2B5A-game-2",
@@ -590,6 +661,21 @@
             "nama": "Dua setengah",
             "isi": "dua setengah sama dengan satu utuh",
             "suara": "Dua setengah disatukan menjadi satu utuh. Setengah ditulis dengan lambang setengah."
+          },
+          {
+            "nama": "Setengah Benda Utuh",
+            "isi": "METODE LUAR · Halving Whole: Bagi benda menjadi dua bagian sama. (asal: Early fractions).",
+            "suara": "METODE LUAR. Setengah Benda Utuh. Bagi benda menjadi dua bagian sama."
+          },
+          {
+            "nama": "Bagian Sama",
+            "isi": "METODE LUAR · Equal Parts: Setengah hanya jika bagian sama besar. (asal: Fraction foundation).",
+            "suara": "METODE LUAR. Bagian Sama. Setengah hanya jika bagian sama besar."
+          },
+          {
+            "nama": "Uji Lipat",
+            "isi": "METODE LUAR · Fold Test: Lipat membuktikan dua bagian sama. (asal: Paper folding).",
+            "suara": "METODE LUAR. Uji Lipat. Lipat membuktikan dua bagian sama."
           }
         ],
         "suara": "Ingat selalu! Setengah adalah satu dari dua bagian yang sama besar. Kalau dua bagian tidak sama besar, itu bukan setengah. Kertas persegi dapat dilipat menjadi setengah dengan empat cara, dan lingkaran dibagi lewat titik tengahnya. Dua setengah disatukan menjadi satu utuh.",
@@ -614,8 +700,44 @@
       "silabus": {
         "teksSuara": "Kita belajar setengah dari kumpulan benda. Malosi mempunyai empat kelereng dan ingin memberi setengahnya kepada Upe. Kita membagi kelereng menjadi dua kelompok yang sama banyak, satu untuk Upe dan satu untuk Malosi. Kita juga memeriksa kelompok yang bukan setengah dan mencari pola. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menunjukkan setengah dari sekumpulan benda dengan membagi benda menjadi dua kelompok sama banyak, membedakan kelompok yang menunjukkan setengah dari yang bukan, serta menjelaskan cara menemukan hasilnya.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 5: Pecahan, Sub-Bab B hlm. 135–141)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 5 Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Half of Set",
+          "namaId": "Setengah Kumpulan",
+          "asal": "Set fractions",
+          "ringkas": "Ambil setengah dari banyak benda.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Fair Share Set",
+          "namaId": "Bagi Rata Kumpulan",
+          "asal": "Division link",
+          "ringkas": "Bagi dua kelompok sama banyak.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Even Check",
+          "namaId": "Cek Genap",
+          "asal": "Number sense",
+          "ringkas": "Kumpulan genap mudah dibagi dua.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B5B-V1-1",
@@ -633,7 +755,7 @@
           "id": "K2B5B-V1-3",
           "titleHint": "Jadi, setengahnya",
           "sceneType": "K2B5B-V1-3",
-          "voiceNarration": "Kita dapat menemukan setengah dari sekumpulan benda. Kita mengelompokkan benda-benda itu menjadi dua bagian sama banyak. Jadi, setengah dari 4 kelereng adalah 2 kelereng."
+          "voiceNarration": "Kita dapat menemukan setengah dari sekumpulan benda. Kita mengelompokkan benda-benda itu menjadi dua bagian sama banyak. Jadi, setengah dari 4 kelereng adalah 2 kelereng. METODE LUAR. Setengah Kumpulan: Ambil setengah dari banyak benda."
         },
         {
           "id": "K2B5B-V2-1",
@@ -651,7 +773,7 @@
           "id": "K2B5B-V2-3",
           "titleHint": "Bukan setengah",
           "sceneType": "K2B5B-V2-3",
-          "voiceNarration": "Sekarang, kita membagi 6 ikan menjadi dua kelompok, tetapi tidak sama banyak. Satu kelompok berisi 4 ikan dan satu kelompok berisi 2 ikan. Itu tidak dapat dikatakan setengah dari 6 ikan. Setengah selalu berarti dua kelompok yang sama banyak."
+          "voiceNarration": "Sekarang, kita membagi 6 ikan menjadi dua kelompok, tetapi tidak sama banyak. Satu kelompok berisi 4 ikan dan satu kelompok berisi 2 ikan. Itu tidak dapat dikatakan setengah dari 6 ikan. Setengah selalu berarti dua kelompok yang sama banyak. METODE LUAR. Bagi Rata Kumpulan: Bagi dua kelompok sama banyak."
         },
         {
           "id": "K2B5B-V3-1",
@@ -669,7 +791,7 @@
           "id": "K2B5B-V3-3",
           "titleHint": "Kalau banyaknya ganjil",
           "sceneType": "K2B5B-V3-3",
-          "voiceNarration": "Bagaimana kalau ada 5 kelereng? Kita bagi satu untuk Upe dan satu untuk Malosi sampai habis. Tersisa satu kelereng, jadi 5 tidak bisa dibagi dua sama banyak. Kalau kelerengnya tidak boleh dipecah, 5 kelereng tidak punya setengah."
+          "voiceNarration": "Bagaimana kalau ada 5 kelereng? Kita bagi satu untuk Upe dan satu untuk Malosi sampai habis. Tersisa satu kelereng, jadi 5 tidak bisa dibagi dua sama banyak. Kalau kelerengnya tidak boleh dipecah, 5 kelereng tidak punya setengah. METODE LUAR. Cek Genap: Kumpulan genap mudah dibagi dua."
         }
       ],
       "videos": [
@@ -716,12 +838,14 @@
               "ketukan": [
                 "Kita dapat menemukan setengah dari sekumpulan benda.",
                 "Kita mengelompokkan benda-benda itu menjadi dua bagian sama banyak.",
-                "Jadi, setengah dari 4 kelereng adalah 2 kelereng."
+                "Jadi, setengah dari 4 kelereng adalah 2 kelereng.",
+                "METODE LUAR. Setengah Kumpulan: Ambil setengah dari banyak benda."
               ],
               "papan": [
                 "Setengah kumpulan",
                 "Dua kelompok sama banyak",
-                "Setengah dari 4 = 2"
+                "Setengah dari 4 = 2",
+                "METODE LUAR · Setengah Kumpulan"
               ]
             }
           ]
@@ -766,13 +890,15 @@
                 "Sekarang, kita membagi 6 ikan menjadi dua kelompok, tetapi tidak sama banyak.",
                 "Satu kelompok berisi 4 ikan dan satu kelompok berisi 2 ikan.",
                 "Itu tidak dapat dikatakan setengah dari 6 ikan.",
-                "Setengah selalu berarti dua kelompok yang sama banyak."
+                "Setengah selalu berarti dua kelompok yang sama banyak.",
+                "METODE LUAR. Bagi Rata Kumpulan: Bagi dua kelompok sama banyak."
               ],
               "papan": [
                 "Tidak sama banyak",
                 "4 ikan dan 2 ikan",
                 "Bukan setengah",
-                "Harus sama banyak"
+                "Harus sama banyak",
+                "METODE LUAR · Bagi Rata Kumpulan"
               ]
             }
           ]
@@ -819,13 +945,15 @@
                 "Bagaimana kalau ada 5 kelereng?",
                 "Kita bagi satu untuk Upe dan satu untuk Malosi sampai habis.",
                 "Tersisa satu kelereng, jadi 5 tidak bisa dibagi dua sama banyak.",
-                "Kalau kelerengnya tidak boleh dipecah, 5 kelereng tidak punya setengah."
+                "Kalau kelerengnya tidak boleh dipecah, 5 kelereng tidak punya setengah.",
+                "METODE LUAR. Cek Genap: Kumpulan genap mudah dibagi dua."
               ],
               "papan": [
                 "Ada 5 kelereng",
                 "Bagi bergantian",
                 "Tersisa satu",
-                "5 tak bisa dibagi dua"
+                "5 tak bisa dibagi dua",
+                "METODE LUAR · Cek Genap"
               ]
             }
           ]
@@ -894,7 +1022,23 @@
           "stepDesc": "Untuk memeriksa hasil, gabungkan kembali kedua kelompok. Dua kelompok yang masing-masing 3 ikan digabung menjadi 6 ikan, sama dengan jumlah semula. Kalau hasil gabungannya sama dengan jumlah semula dan kedua kelompok sama banyak, setengahnya sudah benar.",
           "icon": "➕",
           "flowFrom": "Memeriksa dengan menggabung",
-          "flowTo": "Siap berbagi dengan adil"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Setengah Kumpulan",
+          "stepDesc": "Ambil setengah dari banyak benda.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Bagi Rata Kumpulan",
+          "stepDesc": "Bagi dua kelompok sama banyak.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -967,6 +1111,27 @@
           "countNum": 2,
           "countWord": "Dua",
           "voiceSentence": "Untuk memeriksa, gabungkan kedua kelompok. Dua kelompok berisi tiga ikan digabung menjadi enam ikan, sama dengan jumlah semula. Itu tandanya setengahnya benar."
+        },
+        {
+          "fruitName": "Setengah Kumpulan",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Half of Set",
+          "voiceSentence": "METODE LUAR. Setengah Kumpulan. Ambil setengah dari banyak benda."
+        },
+        {
+          "fruitName": "Bagi Rata Kumpulan",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Fair Share Set",
+          "voiceSentence": "METODE LUAR. Bagi Rata Kumpulan. Bagi dua kelompok sama banyak."
+        },
+        {
+          "fruitName": "Cek Genap",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Even Check",
+          "voiceSentence": "METODE LUAR. Cek Genap. Kumpulan genap mudah dibagi dua."
         }
       ],
       "concreteSlides": [
@@ -974,7 +1139,7 @@
           "title": "Bagi Kelereng Malosi dan Upe",
           "emoji": "🔵",
           "targetCount": 4,
-          "voiceGuide": "Bagi kelereng satu untuk Upe, satu untuk Malosi, sampai sama banyak."
+          "voiceGuide": "METODE LUAR · Setengah Kumpulan. Bagi kelereng satu untuk Upe, satu untuk Malosi, sampai sama banyak."
         },
         {
           "title": "Neraca Setengah",
@@ -1046,9 +1211,9 @@
           "gameType": "share-marbles-two-bowls",
           "title": "Bagi Kelereng Malosi dan Upe",
           "bookReference": "Buku Siswa hlm. 135–136 (Malosi dan Upe bermain kelereng; setengah dari 4 kelereng adalah 2 kelereng)",
-          "objective": "Membagi sekumpulan kelereng ke dua mangkuk sampai sama banyak, lalu menyebut setengah dari seluruh kelereng.",
+          "objective": "Membagi sekumpulan kelereng ke dua mangkuk sampai sama banyak, lalu menyebut setengah dari seluruh kelereng. (METODE LUAR · Setengah Kumpulan)",
           "mechanicDescription": "Empat ronde (4, 6, 8, dan 10 kelereng). Siswa menyeret atau mengetuk kelereng dari meja ke mangkuk Upe atau mangkuk Malosi, dan mengetuk kelereng di mangkuk untuk mengembalikannya. Bila meja kosong dan kedua mangkuk sama banyak, siswa memilih banyak kelereng setengahnya. Bila belum sama, layar memberi petunjuk untuk memindahkan.",
-          "voiceGuide": "Bagi kelereng satu untuk Upe, satu untuk Malosi, sampai sama banyak."
+          "voiceGuide": "METODE LUAR · Setengah Kumpulan. Bagi kelereng satu untuk Upe, satu untuk Malosi, sampai sama banyak."
         },
         {
           "gameId": "subK2B5B-game-2",
@@ -1176,6 +1341,21 @@
             "nama": "Ganjil menyisakan satu",
             "isi": "5 tidak bisa dibagi dua sama banyak",
             "suara": "Lima kelereng dibagi dua menyisakan satu kelereng. Karena itu lima tidak bisa dibagi dua sama banyak tanpa memecah kelereng."
+          },
+          {
+            "nama": "Setengah Kumpulan",
+            "isi": "METODE LUAR · Half of Set: Ambil setengah dari banyak benda. (asal: Set fractions).",
+            "suara": "METODE LUAR. Setengah Kumpulan. Ambil setengah dari banyak benda."
+          },
+          {
+            "nama": "Bagi Rata Kumpulan",
+            "isi": "METODE LUAR · Fair Share Set: Bagi dua kelompok sama banyak. (asal: Division link).",
+            "suara": "METODE LUAR. Bagi Rata Kumpulan. Bagi dua kelompok sama banyak."
+          },
+          {
+            "nama": "Cek Genap",
+            "isi": "METODE LUAR · Even Check: Kumpulan genap mudah dibagi dua. (asal: Number sense).",
+            "suara": "METODE LUAR. Cek Genap. Kumpulan genap mudah dibagi dua."
           }
         ],
         "suara": "Ingat selalu! Setengah dari sekumpulan benda adalah satu dari dua kelompok yang sama banyak. Bagi benda bergantian sampai habis, lalu hitung. Kalau kelompok tidak sama banyak, itu bukan setengah. Setengah dari empat adalah dua, dari enam tiga, dari delapan empat, dan dari sepuluh lima.",
@@ -1200,8 +1380,44 @@
       "silabus": {
         "teksSuara": "Kita belajar seperempat dari benda utuh. Kira ingin memakan martabak bersama Malosi, Upe, dan Tika, jadi martabak dipotong menjadi empat bagian yang sama besar. Setiap bagian dinamakan seperempat. Kita memotong dua kali, melipat kertas, dan menghubungkan utuh, setengah, dan seperempat. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menunjukkan seperempat dari benda utuh dengan membagi benda menjadi empat bagian sama besar, menemukan seperempat di sekitar, menghubungkan utuh, setengah, dan seperempat, serta membuat karya dari potongan setengah dan seperempat.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 5: Pecahan, Sub-Bab C hlm. 142–154)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 5 Sub-Bab C)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Quartering",
+          "namaId": "Seperempat",
+          "asal": "Early fractions",
+          "ringkas": "Bagi menjadi empat bagian sama.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Half of Half",
+          "namaId": "Setengah dari Setengah",
+          "asal": "Fraction relation",
+          "ringkas": "Seperempat = setengah dari setengah.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Fold Twice",
+          "namaId": "Lipat Dua Kali",
+          "asal": "Paper folding",
+          "ringkas": "Lipat dua kali menghasilkan seperempat.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B5C-V1-1",
@@ -1219,7 +1435,7 @@
           "id": "K2B5C-V1-3",
           "titleHint": "Seperempat",
           "sceneType": "K2B5C-V1-3",
-          "voiceNarration": "Kita memotong satu martabak utuh menjadi empat bagian sama besar. Setiap hasil potongannya bernilai seperempat. Setiap sahabat mendapat seperempat martabak."
+          "voiceNarration": "Kita memotong satu martabak utuh menjadi empat bagian sama besar. Setiap hasil potongannya bernilai seperempat. Setiap sahabat mendapat seperempat martabak. METODE LUAR. Seperempat: Bagi menjadi empat bagian sama."
         },
         {
           "id": "K2B5C-V2-1",
@@ -1237,7 +1453,7 @@
           "id": "K2B5C-V2-3",
           "titleHint": "Seperempat di sekitar",
           "sceneType": "K2B5C-V2-3",
-          "voiceNarration": "Kita dapat menemukan seperempat benda di sekitar kita. Ada seperempat apel, seperempat puding, dan seperempat kue bolu. Dua seperempat disatukan menjadi satu setengah. Empat seperempat disatukan menjadi satu utuh."
+          "voiceNarration": "Kita dapat menemukan seperempat benda di sekitar kita. Ada seperempat apel, seperempat puding, dan seperempat kue bolu. Dua seperempat disatukan menjadi satu setengah. Empat seperempat disatukan menjadi satu utuh. METODE LUAR. Setengah dari Setengah: Seperempat = setengah dari setengah."
         },
         {
           "id": "K2B5C-V3-1",
@@ -1255,7 +1471,7 @@
           "id": "K2B5C-V3-3",
           "titleHint": "Ayo Berkarya",
           "sceneType": "K2B5C-V3-3",
-          "voiceNarration": "Ambil empat lembar kertas berbentuk lingkaran. Lipat satu lingkaran menjadi setengah dan potong. Lipat tiga lingkaran, masing-masing menjadi seperempat, dan potong. Susun potongannya menjadi bentuk yang menarik, misalnya ikan, lalu warnai."
+          "voiceNarration": "Ambil empat lembar kertas berbentuk lingkaran. Lipat satu lingkaran menjadi setengah dan potong. Lipat tiga lingkaran, masing-masing menjadi seperempat, dan potong. Susun potongannya menjadi bentuk yang menarik, misalnya ikan, lalu warnai. METODE LUAR. Lipat Dua Kali: Lipat dua kali menghasilkan seperempat."
         }
       ],
       "videos": [
@@ -1300,12 +1516,14 @@
               "ketukan": [
                 "Kita memotong satu martabak utuh menjadi empat bagian sama besar.",
                 "Setiap hasil potongannya bernilai seperempat.",
-                "Setiap sahabat mendapat seperempat martabak."
+                "Setiap sahabat mendapat seperempat martabak.",
+                "METODE LUAR. Seperempat: Bagi menjadi empat bagian sama."
               ],
               "papan": [
                 "Satu jadi empat",
                 "Bernilai seperempat",
-                "Tiap sahabat seperempat"
+                "Tiap sahabat seperempat",
+                "METODE LUAR · Seperempat"
               ]
             }
           ]
@@ -1352,13 +1570,15 @@
                 "Kita dapat menemukan seperempat benda di sekitar kita.",
                 "Ada seperempat apel, seperempat puding, dan seperempat kue bolu.",
                 "Dua seperempat disatukan menjadi satu setengah.",
-                "Empat seperempat disatukan menjadi satu utuh."
+                "Empat seperempat disatukan menjadi satu utuh.",
+                "METODE LUAR. Setengah dari Setengah: Seperempat = setengah dari setengah."
               ],
               "papan": [
                 "Seperempat di sekitar",
                 "Apel, puding, bolu",
                 "2 seperempat = setengah",
-                "4 seperempat = utuh"
+                "4 seperempat = utuh",
+                "METODE LUAR · Setengah dari Setengah"
               ]
             }
           ]
@@ -1405,13 +1625,15 @@
                 "Ambil empat lembar kertas berbentuk lingkaran.",
                 "Lipat satu lingkaran menjadi setengah dan potong.",
                 "Lipat tiga lingkaran, masing-masing menjadi seperempat, dan potong.",
-                "Susun potongannya menjadi bentuk yang menarik, misalnya ikan, lalu warnai."
+                "Susun potongannya menjadi bentuk yang menarik, misalnya ikan, lalu warnai.",
+                "METODE LUAR. Lipat Dua Kali: Lipat dua kali menghasilkan seperempat."
               ],
               "papan": [
                 "Empat lingkaran",
                 "Satu jadi setengah",
                 "Tiga jadi seperempat",
-                "Susun jadi ikan"
+                "Susun jadi ikan",
+                "METODE LUAR · Lipat Dua Kali"
               ]
             }
           ]
@@ -1480,7 +1702,15 @@
           "stepDesc": "Saat melihat gambar yang katanya seperempat, ajukan tiga pertanyaan. Satu, apakah benda dibagi menjadi empat bagian? Dua, apakah keempat bagian sama besar? Tiga, apakah yang ditunjukkan satu bagian itu? Kalau ketiganya iya, itulah seperempat.",
           "icon": "✅",
           "flowFrom": "Tiga pertanyaan pemeriksa",
-          "flowTo": "Siap menemukan seperempat"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Setengah dari Setengah",
+          "stepDesc": "Seperempat = setengah dari setengah.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -1553,6 +1783,27 @@
           "countNum": 3,
           "countWord": "Tiga",
           "voiceSentence": "Tiga pertanyaan pemeriksa seperempat. Satu, apakah dibagi menjadi empat bagian. Dua, apakah keempat bagian sama besar. Tiga, apakah yang ditunjukkan satu bagian itu."
+        },
+        {
+          "fruitName": "Seperempat",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Quartering",
+          "voiceSentence": "METODE LUAR. Seperempat. Bagi menjadi empat bagian sama."
+        },
+        {
+          "fruitName": "Setengah dari Setengah",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Half of Half",
+          "voiceSentence": "METODE LUAR. Setengah dari Setengah. Seperempat = setengah dari setengah."
+        },
+        {
+          "fruitName": "Lipat Dua Kali",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Fold Twice",
+          "voiceSentence": "METODE LUAR. Lipat Dua Kali. Lipat dua kali menghasilkan seperempat."
         }
       ],
       "concreteSlides": [
@@ -1560,7 +1811,7 @@
           "title": "Empat Potongan yang Adil",
           "emoji": "🥞",
           "targetCount": 3,
-          "voiceGuide": "Ketuk semua pola yang membagi menjadi empat sama besar."
+          "voiceGuide": "METODE LUAR · Seperempat. Ketuk semua pola yang membagi menjadi empat sama besar."
         },
         {
           "title": "Lipat Dua Kali",
@@ -1632,9 +1883,9 @@
           "gameType": "choose-fair-four-cuts",
           "title": "Empat Potongan yang Adil",
           "bookReference": "Buku Siswa hlm. 142–143 (Kira membagi martabak menjadi 4 bagian sama besar; setiap hasil potongan bernilai seperempat)",
-          "objective": "Memilih cara memotong benda nyata yang menghasilkan empat bagian sama besar dan menolak yang tidak sama besar.",
+          "objective": "Memilih cara memotong benda nyata yang menghasilkan empat bagian sama besar dan menolak yang tidak sama besar. (METODE LUAR · Seperempat)",
           "mechanicDescription": "Tiga ronde (martabak, kue bolu, roti, dan puding). Tiap ronde menampilkan enam gambar benda dengan pola garis potong berbeda. Siswa mengetuk semua pola yang membagi benda menjadi empat bagian sama besar, lalu menekan Periksa. Luas tiap bagian dihitung oleh program.",
-          "voiceGuide": "Ketuk semua pola yang membagi menjadi empat sama besar."
+          "voiceGuide": "METODE LUAR · Seperempat. Ketuk semua pola yang membagi menjadi empat sama besar."
         },
         {
           "gameId": "subK2B5C-game-2",
@@ -1762,6 +2013,16 @@
             "nama": "Melipat jadi empat",
             "isi": "lipat dua kali, bagian sama besar",
             "suara": "Kertas dilipat dua kali menjadi empat bagian sama besar. Bentuk bagiannya bisa berbeda, tetapi keempatnya selalu sama besar."
+          },
+          {
+            "nama": "Setengah dari Setengah",
+            "isi": "METODE LUAR · Half of Half: Seperempat = setengah dari setengah. (asal: Fraction relation).",
+            "suara": "METODE LUAR. Setengah dari Setengah. Seperempat = setengah dari setengah."
+          },
+          {
+            "nama": "Lipat Dua Kali",
+            "isi": "METODE LUAR · Fold Twice: Lipat dua kali menghasilkan seperempat. (asal: Paper folding).",
+            "suara": "METODE LUAR. Lipat Dua Kali. Lipat dua kali menghasilkan seperempat."
           }
         ],
         "suara": "Ingat selalu! Seperempat adalah satu dari empat bagian yang sama besar. Untuk mendapatkannya, potong atau lipat dua kali. Dua seperempat sama dengan satu setengah, dan empat seperempat sama dengan satu utuh. Kalau keempat bagian tidak sama besar, itu bukan seperempat.",

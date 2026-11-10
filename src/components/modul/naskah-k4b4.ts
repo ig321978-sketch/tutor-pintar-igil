@@ -27,7 +27,7 @@ export const SUB_A44: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar pengukuran luas. Helen menutup meja dengan uang kertas tanpa celah. Itu satuan tidak baku. Lalu kita pakai persegi satu sentimeter dan satu meter sebagai satuan baku. Satu meter persegi sama dengan sepuluh ribu sentimeter persegi. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa mengukur dan menduga luas dengan satuan baku dan tidak baku.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 4 Sub-Bab A hlm. 105–121; area with non-standard & standard units; van Hiele informal measurement."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 4 Sub-Bab A)."
   },
   "videos": [
     {
@@ -74,13 +74,15 @@ export const SUB_A44: SubBabNaskah = {
             "Origami, buku, atau kartu juga boleh.",
             "Banyaknya bisa berbeda.",
             "Karena ukuran bendanya beda.",
-            "Itulah satuan tidak baku."
+            "Itulah satuan tidak baku.",
+            "METODE LUAR. Luas sebagai Menutupi: Luas = banyak satuan persegi yang menutupi daerah."
           ],
           "papan": [
             "origami",
             "beda banyak",
             "beda ukuran",
-            "tidak baku"
+            "tidak baku",
+            "METODE LUAR · Luas sebagai Menutupi"
           ]
         }
       ]
@@ -129,13 +131,15 @@ export const SUB_A44: SubBabNaskah = {
             "Gambar diarsir dihitung selnya.",
             "Tiap sel satu cm persegi.",
             "Contoh buku: tiga belas cm persegi.",
-            "Bentuk boleh berbeda."
+            "Bentuk boleh berbeda.",
+            "METODE LUAR. Luas Susunan: Panjang × lebar untuk persegi panjang."
           ],
           "papan": [
             "hitung sel",
             "1 cm²",
             "13 cm²",
-            "bentuk beda"
+            "bentuk beda",
+            "METODE LUAR · Luas Susunan"
           ]
         }
       ]
@@ -184,13 +188,15 @@ export const SUB_A44: SubBabNaskah = {
             "Kamu sudah siap mengukur luas.",
             "Pilih satuan yang cocok.",
             "Hitung persegi satuan.",
-            "Ayo ke permainan."
+            "Ayo ke permainan.",
+            "METODE LUAR. Tak Baku ke Baku: Mulai satuan tak baku, lalu cm²/m²."
           ],
           "papan": [
             "siap",
             "pilih satuan",
             "hitung",
-            "main"
+            "main",
+            "METODE LUAR · Tak Baku ke Baku"
           ]
         }
       ]
@@ -243,6 +249,22 @@ export const SUB_A44: SubBabNaskah = {
       "stepDesc": "Bentuk beda, luas bisa sama",
       "icon": "🧩",
       "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. METODE LUAR · Luas sebagai Menutupi",
+      "stepDesc": "Luas = banyak satuan persegi yang menutupi daerah.",
+      "icon": "🌍",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. METODE LUAR · Luas Susunan",
+      "stepDesc": "Panjang × lebar untuk persegi panjang.",
+      "icon": "🌍",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -316,6 +338,27 @@ export const SUB_A44: SubBabNaskah = {
       "countNum": 1,
       "countWord": "volume",
       "suara": "Berikutnya kita belajar volume."
+    },
+    {
+      "judul": "Luas sebagai Menutupi",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Area as Covering",
+      "suara": "METODE LUAR. Luas sebagai Menutupi. Luas = banyak satuan persegi yang menutupi daerah."
+    },
+    {
+      "judul": "Luas Susunan",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Array Area",
+      "suara": "METODE LUAR. Luas Susunan. Panjang × lebar untuk persegi panjang."
+    },
+    {
+      "judul": "Tak Baku ke Baku",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Nonstandard then Standard",
+      "suara": "METODE LUAR. Tak Baku ke Baku. Mulai satuan tak baku, lalu cm²/m²."
     }
   ],
   "games": [
@@ -324,9 +367,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "hitung-kisi",
       "title": "Hitung Persegi Satuan",
       "bookReference": "hlm. 114–115",
-      "objective": "Menghitung luas kisi.",
+      "objective": "Menghitung luas kisi. (METODE LUAR · Luas sebagai Menutupi)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih luas.",
+      "voiceGuide": "METODE LUAR · Luas sebagai Menutupi. Pilih luas.",
       "emoji": "🟧",
       "targetCount": 6
     },
@@ -434,9 +477,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "kisi-besar",
       "title": "Diagram Kisi Membesar",
       "bookReference": "hlm. 115",
-      "objective": "Baca kisi.",
+      "objective": "Baca kisi. (METODE LUAR · Luas sebagai Menutupi)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Luas sebagai Menutupi. Pilih.",
       "diagramType": "grid",
       "numberA": 4,
       "numberB": 6
@@ -554,9 +597,9 @@ export const SUB_A44: SubBabNaskah = {
       "gameType": "write-luas",
       "title": "Tulis … cm² / m²",
       "bookReference": "hlm. 116–118",
-      "objective": "Menulis satuan.",
+      "objective": "Menulis satuan. (METODE LUAR · Luas sebagai Menutupi)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Luas sebagai Menutupi. Pilih.",
       "symbolLarge": "cm²",
       "wordLarge": "LUAS",
       "mathNotation": "satuan"
@@ -694,6 +737,24 @@ export const SUB_A44: SubBabNaskah = {
       "nama": "Bentuk boleh beda",
       "isi": "Dua bangun berbeda bentuk bisa punya luas sama, misalnya 13 cm².",
       "suara": "Bentuk berbeda boleh luasnya sama."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Luas sebagai Menutupi",
+      "isi": "METODE LUAR · Area as Covering: Luas = banyak satuan persegi yang menutupi daerah. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Luas sebagai Menutupi. Luas = banyak satuan persegi yang menutupi daerah."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Luas Susunan",
+      "isi": "METODE LUAR · Array Area: Panjang × lebar untuk persegi panjang. (asal: Array model).",
+      "suara": "METODE LUAR. Luas Susunan. Panjang × lebar untuk persegi panjang."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Tak Baku ke Baku",
+      "isi": "METODE LUAR · Nonstandard then Standard: Mulai satuan tak baku, lalu cm²/m². (asal: Measurement progression).",
+      "suara": "METODE LUAR. Tak Baku ke Baku. Mulai satuan tak baku, lalu cm²/m²."
     }
   ],
   "poinSuara": "Ingat empat kunci luas.",
@@ -723,6 +784,42 @@ export const SUB_A44: SubBabNaskah = {
     "Kapan memakai cm² dan kapan m²?",
     "Mengapa bentuk berbeda bisa punya luas sama?",
     "Apa bedanya satuan baku dan tidak baku?"
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Area as Covering",
+      "namaId": "Luas sebagai Menutupi",
+      "asal": "Van de Walle",
+      "ringkas": "Luas = banyak satuan persegi yang menutupi daerah.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Array Area",
+      "namaId": "Luas Susunan",
+      "asal": "Array model",
+      "ringkas": "Panjang × lebar untuk persegi panjang.",
+      "tahap": [
+        "Mind",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Nonstandard then Standard",
+      "namaId": "Tak Baku ke Baku",
+      "asal": "Measurement progression",
+      "ringkas": "Mulai satuan tak baku, lalu cm²/m².",
+      "tahap": [
+        "Infografis",
+        "Concrete"
+      ]
+    }
   ]
 };
 
@@ -737,7 +834,7 @@ export const SUB_B44: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar pengukuran volume. Botol sabun A sama dengan empat botol B, atau sepuluh botol C. Lalu satuan baku: mililiter, liter, sentimeter kubik, dan meter kubik. Satu liter sama dengan seribu mililiter. Satu cm kubik sama dengan satu mililiter. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa mengukur dan menduga volume dengan satuan baku dan tidak baku.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 4 Sub-Bab B hlm. 122–138; capacity & cubic units; conservation of volume."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 4 Sub-Bab B)."
   },
   "videos": [
     {
@@ -784,13 +881,15 @@ export const SUB_B44: SubBabNaskah = {
             "Isi A dari botol C.",
             "Butuh sepuluh botol C.",
             "A sama dengan sepuluh C.",
-            "Karena C lebih kecil dari B."
+            "Karena C lebih kecil dari B.",
+            "METODE LUAR. Volume sebagai Mengisi: Volume = banyak satuan kubus yang mengisi ruang."
           ],
           "papan": [
             "A",
             "= 10C",
             "C kecil",
-            "beda satuan"
+            "beda satuan",
+            "METODE LUAR · Volume sebagai Mengisi"
           ]
         }
       ]
@@ -839,13 +938,15 @@ export const SUB_B44: SubBabNaskah = {
             "Botol besar diisi ke botol kecil.",
             "Habis menjadi delapan botol kecil.",
             "Volume besar = delapan satuan kecil.",
-            "Latihan satuan tidak baku."
+            "Latihan satuan tidak baku.",
+            "METODE LUAR. Model Lapisan: Volume = luas alas × tinggi."
           ],
           "papan": [
             "botol besar",
             "8 kecil",
             "8 satuan",
-            "latihan"
+            "latihan",
+            "METODE LUAR · Model Lapisan"
           ]
         }
       ]
@@ -894,13 +995,15 @@ export const SUB_B44: SubBabNaskah = {
             "Untuk bak mandi yang besar,",
             "pakai meter kubik.",
             "Satu m kubik = seribu liter.",
-            "Siap berlatih volume."
+            "Siap berlatih volume.",
+            "METODE LUAR. Ide Pemindahan Air: Benda yang dicelup menaikkan muka air."
           ],
           "papan": [
             "m³",
             "besar",
             "1000 l",
-            "siap"
+            "siap",
+            "METODE LUAR · Ide Pemindahan Air"
           ]
         }
       ]
@@ -953,6 +1056,22 @@ export const SUB_B44: SubBabNaskah = {
       "stepDesc": "Jumlah kubus satuan",
       "icon": "🔢",
       "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. METODE LUAR · Volume sebagai Mengisi",
+      "stepDesc": "Volume = banyak satuan kubus yang mengisi ruang.",
+      "icon": "🌍",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. METODE LUAR · Model Lapisan",
+      "stepDesc": "Volume = luas alas × tinggi.",
+      "icon": "🌍",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -1026,6 +1145,27 @@ export const SUB_B44: SubBabNaskah = {
       "countNum": 1,
       "countWord": "luas+volume",
       "suara": "Luas dan volume sudah lengkap untuk Materi."
+    },
+    {
+      "judul": "Volume sebagai Mengisi",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Volume as Filling",
+      "suara": "METODE LUAR. Volume sebagai Mengisi. Volume = banyak satuan kubus yang mengisi ruang."
+    },
+    {
+      "judul": "Model Lapisan",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Layer Model",
+      "suara": "METODE LUAR. Model Lapisan. Volume = luas alas × tinggi."
+    },
+    {
+      "judul": "Ide Pemindahan Air",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Displacement Idea",
+      "suara": "METODE LUAR. Ide Pemindahan Air. Benda yang dicelup menaikkan muka air."
     }
   ],
   "games": [
@@ -1034,9 +1174,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "hitung-kubus",
       "title": "Hitung Kubus Satuan",
       "bookReference": "hlm. 135–136",
-      "objective": "Menghitung volume.",
+      "objective": "Menghitung volume. (METODE LUAR · Volume sebagai Mengisi)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih volume.",
+      "voiceGuide": "METODE LUAR · Volume sebagai Mengisi. Pilih volume.",
       "emoji": "🧊",
       "targetCount": 6
     },
@@ -1144,9 +1284,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "kubus-besar",
       "title": "Diagram Kubus Membesar",
       "bookReference": "hlm. 135",
-      "objective": "Baca kubus.",
+      "objective": "Baca kubus. (METODE LUAR · Volume sebagai Mengisi)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Volume sebagai Mengisi. Pilih.",
       "diagramType": "cube",
       "numberA": 4,
       "numberB": 8
@@ -1264,9 +1404,9 @@ export const SUB_B44: SubBabNaskah = {
       "gameType": "write-vol",
       "title": "Tulis … ml / l / cm³",
       "bookReference": "hlm. 129–134",
-      "objective": "Menulis satuan.",
+      "objective": "Menulis satuan. (METODE LUAR · Volume sebagai Mengisi)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Volume sebagai Mengisi. Pilih.",
       "symbolLarge": "ml",
       "wordLarge": "VOLUME",
       "mathNotation": "satuan"
@@ -1404,6 +1544,24 @@ export const SUB_B44: SubBabNaskah = {
       "nama": "Hitung kubus",
       "isi": "Volume pejal dihitung dari banyak kubus satuan.",
       "suara": "Hitung kubus satu-satu."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Volume sebagai Mengisi",
+      "isi": "METODE LUAR · Volume as Filling: Volume = banyak satuan kubus yang mengisi ruang. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Volume sebagai Mengisi. Volume = banyak satuan kubus yang mengisi ruang."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Model Lapisan",
+      "isi": "METODE LUAR · Layer Model: Volume = luas alas × tinggi. (asal: 3D arrays).",
+      "suara": "METODE LUAR. Model Lapisan. Volume = luas alas × tinggi."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Ide Pemindahan Air",
+      "isi": "METODE LUAR · Displacement Idea: Benda yang dicelup menaikkan muka air. (asal: Informal volume).",
+      "suara": "METODE LUAR. Ide Pemindahan Air. Benda yang dicelup menaikkan muka air."
     }
   ],
   "poinSuara": "Ingat empat kunci volume.",
@@ -1433,6 +1591,42 @@ export const SUB_B44: SubBabNaskah = {
     "Kapan memakai ml dan kapan cm³?",
     "Mengapa A = 4B dan A = 10C bisa benar bersamaan?",
     "Apa bedanya volume cairan dan volume pejal?"
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Volume as Filling",
+      "namaId": "Volume sebagai Mengisi",
+      "asal": "Van de Walle",
+      "ringkas": "Volume = banyak satuan kubus yang mengisi ruang.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Layer Model",
+      "namaId": "Model Lapisan",
+      "asal": "3D arrays",
+      "ringkas": "Volume = luas alas × tinggi.",
+      "tahap": [
+        "Mind",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Displacement Idea",
+      "namaId": "Ide Pemindahan Air",
+      "asal": "Informal volume",
+      "ringkas": "Benda yang dicelup menaikkan muka air.",
+      "tahap": [
+        "Infografis",
+        "Concrete"
+      ]
+    }
   ]
 };
 

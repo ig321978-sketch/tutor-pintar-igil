@@ -26,8 +26,43 @@
       "silabus": {
         "teksSuara": "Kita belajar bangun datar. Bukunya bernama Bentuk di Sekitar Kita, bagian bangun datar. Upe menemukan sarang lebah yang permukaannya berbentuk segi enam. Kita mengelompokkan bangun datar menjadi segi banyak dan bentuk lengkung, menghitung sisi untuk menamai segitiga, segi empat, segi lima, dan segi enam, lalu mengenal lingkaran. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa mengelompokkan bangun datar menjadi segi banyak dan bentuk lengkung, menamai segi banyak berdasarkan banyak sisinya (segitiga, segi empat, segi lima, segi enam), menemukan bentuk tersebut di lingkungan sekitar, serta membedakan lingkaran dari bentuk lengkung lainnya.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 3: Bentuk di Sekitar Kita, Sub-Bab A hlm. 65–80)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 3 Sub-Bab A)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "van Hiele Visual",
+          "namaId": "van Hiele Visual",
+          "asal": "van Hiele",
+          "ringkas": "Kenali bangun dari bentuknya.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Attribute Sort",
+          "namaId": "Pilah Ciri",
+          "asal": "Attribute blocks",
+          "ringkas": "Pilah menurut sisi atau sudut.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Geoboard",
+          "namaId": "Papan Paku",
+          "asal": "Gattegno",
+          "ringkas": "Bentuk bangun dengan karet.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B3A-V1-1",
@@ -45,7 +80,7 @@
           "id": "K2B3A-V1-3",
           "titleHint": "Ayo cari bentuk",
           "sceneType": "K2B3A-V1-3",
-          "voiceNarration": "Sekarang, amati benda-benda di sekitarmu. Apakah kamu menemukan benda yang mempunyai enam sisi? Di sub-bab ini, kita belajar mengenal berbagai bangun datar."
+          "voiceNarration": "Sekarang, amati benda-benda di sekitarmu. Apakah kamu menemukan benda yang mempunyai enam sisi? Di sub-bab ini, kita belajar mengenal berbagai bangun datar. METODE LUAR. van Hiele Visual: Kenali bangun dari bentuknya."
         },
         {
           "id": "K2B3A-V2-1",
@@ -63,7 +98,7 @@
           "id": "K2B3A-V2-3",
           "titleHint": "Kurva dan bentuk lengkung",
           "sceneType": "K2B3A-V2-3",
-          "voiceNarration": "Beberapa bangun datar dibatasi oleh kurva, atau garis lengkung. Bangun datar yang dibatasi oleh kurva dinamakan bentuk lengkung. Contohnya lingkaran, bentuk telur, dan bentuk hati. Jadi, lihat tepinya. Garis lurus berarti segi banyak. Garis lengkung berarti bentuk lengkung."
+          "voiceNarration": "Beberapa bangun datar dibatasi oleh kurva, atau garis lengkung. Bangun datar yang dibatasi oleh kurva dinamakan bentuk lengkung. Contohnya lingkaran, bentuk telur, dan bentuk hati. Jadi, lihat tepinya. Garis lurus berarti segi banyak. Garis lengkung berarti bentuk lengkung. METODE LUAR. Pilah Ciri: Pilah menurut sisi atau sudut."
         },
         {
           "id": "K2B3A-V3-1",
@@ -81,7 +116,7 @@
           "id": "K2B3A-V3-3",
           "titleHint": "Lingkaran",
           "sceneType": "K2B3A-V3-3",
-          "voiceNarration": "Sekarang kita mencoba dengan uang logam. Letakkan uang logam di atas kertas, lalu cetak tepinya. Putar uang logam di atas cetakannya. Bentuknya selalu pas, ke arah mana pun. Uang logam adalah contoh lingkaran. Lingkaran adalah bentuk lengkung yang terlihat bulat sempurna."
+          "voiceNarration": "Sekarang kita mencoba dengan uang logam. Letakkan uang logam di atas kertas, lalu cetak tepinya. Putar uang logam di atas cetakannya. Bentuknya selalu pas, ke arah mana pun. Uang logam adalah contoh lingkaran. Lingkaran adalah bentuk lengkung yang terlihat bulat sempurna. METODE LUAR. Papan Paku: Bentuk bangun dengan karet."
         }
       ],
       "videos": [
@@ -128,12 +163,14 @@
               "ketukan": [
                 "Sekarang, amati benda-benda di sekitarmu.",
                 "Apakah kamu menemukan benda yang mempunyai enam sisi?",
-                "Di sub-bab ini, kita belajar mengenal berbagai bangun datar."
+                "Di sub-bab ini, kita belajar mengenal berbagai bangun datar.",
+                "METODE LUAR. van Hiele Visual: Kenali bangun dari bentuknya."
               ],
               "papan": [
                 "Amati sekitarmu",
                 "Ada 6 sisi?",
-                "Belajar bangun datar"
+                "Belajar bangun datar",
+                "METODE LUAR · van Hiele Visual"
               ]
             }
           ]
@@ -182,13 +219,15 @@
                 "Beberapa bangun datar dibatasi oleh kurva, atau garis lengkung.",
                 "Bangun datar yang dibatasi oleh kurva dinamakan bentuk lengkung.",
                 "Contohnya lingkaran, bentuk telur, dan bentuk hati.",
-                "Jadi, lihat tepinya. Garis lurus berarti segi banyak. Garis lengkung berarti bentuk lengkung."
+                "Jadi, lihat tepinya. Garis lurus berarti segi banyak. Garis lengkung berarti bentuk lengkung.",
+                "METODE LUAR. Pilah Ciri: Pilah menurut sisi atau sudut."
               ],
               "papan": [
                 "Dibatasi kurva",
                 "Bentuk lengkung",
                 "Lingkaran • telur • hati",
-                "Lihat tepinya!"
+                "Lihat tepinya!",
+                "METODE LUAR · Pilah Ciri"
               ]
             }
           ]
@@ -239,13 +278,15 @@
                 "Sekarang kita mencoba dengan uang logam.",
                 "Letakkan uang logam di atas kertas, lalu cetak tepinya.",
                 "Putar uang logam di atas cetakannya. Bentuknya selalu pas, ke arah mana pun.",
-                "Uang logam adalah contoh lingkaran. Lingkaran adalah bentuk lengkung yang terlihat bulat sempurna."
+                "Uang logam adalah contoh lingkaran. Lingkaran adalah bentuk lengkung yang terlihat bulat sempurna.",
+                "METODE LUAR. Papan Paku: Bentuk bangun dengan karet."
               ],
               "papan": [
                 "Uang logam",
                 "Cetak tepinya",
                 "Selalu pas!",
-                "Lingkaran: bulat sempurna"
+                "Lingkaran: bulat sempurna",
+                "METODE LUAR · Papan Paku"
               ]
             }
           ]
@@ -314,7 +355,23 @@
           "stepDesc": "Saat bertemu bangun datar baru, ajukan tiga pertanyaan. Satu, dibatasi oleh apa, garis lurus atau garis lengkung? Dua, kalau garis lurus, berapa sisinya? Tiga, kalau garis lengkung, apakah pas bila diputar? Tiga pertanyaan ini adalah cara kerja detektif bentuk, dan mengikuti tahap berpikir geometri dari mengenali, menggolongkan, sampai menjelaskan ciri.",
           "icon": "🕵️",
           "flowFrom": "Tiga pertanyaan",
-          "flowTo": "Bangun datar siap dikenali"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · van Hiele Visual",
+          "stepDesc": "Kenali bangun dari bentuknya.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Pilah Ciri",
+          "stepDesc": "Pilah menurut sisi atau sudut.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -387,6 +444,27 @@
           "countNum": 3,
           "countWord": "Tiga",
           "voiceSentence": "Tiga pertanyaan detektif bentuk. Satu, dibatasi garis lurus atau garis lengkung. Dua, kalau garis lurus, berapa sisinya. Tiga, kalau garis lengkung, apakah pas bila diputar. Dengan tiga pertanyaan ini kita bisa mengenali bangun datar apa pun."
+        },
+        {
+          "fruitName": "van Hiele Visual",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · van Hiele Visual",
+          "voiceSentence": "METODE LUAR. van Hiele Visual. Kenali bangun dari bentuknya."
+        },
+        {
+          "fruitName": "Pilah Ciri",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Attribute Sort",
+          "voiceSentence": "METODE LUAR. Pilah Ciri. Pilah menurut sisi atau sudut."
+        },
+        {
+          "fruitName": "Papan Paku",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Geoboard",
+          "voiceSentence": "METODE LUAR. Papan Paku. Bentuk bangun dengan karet."
         }
       ],
       "concreteSlides": [
@@ -394,7 +472,7 @@
           "title": "Pilah Benda di Meja",
           "emoji": "🪟",
           "targetCount": 12,
-          "voiceGuide": "Seret benda ke kotak yang sesuai dengan tepinya."
+          "voiceGuide": "METODE LUAR · van Hiele Visual. Seret benda ke kotak yang sesuai dengan tepinya."
         },
         {
           "title": "Papan Paku dan Karet Gelang",
@@ -466,9 +544,9 @@
           "gameType": "sort-flat-objects",
           "title": "Pilah Benda di Meja",
           "bookReference": "Buku Siswa hlm. 68–70 (mengelompokkan bangun datar; Ayo Mencoba 1: segi banyak dan bentuk lengkung)",
-          "objective": "Mengelompokkan benda berbentuk datar menjadi segi banyak dan bentuk lengkung menurut tepinya.",
+          "objective": "Mengelompokkan benda berbentuk datar menjadi segi banyak dan bentuk lengkung menurut tepinya. (METODE LUAR · van Hiele Visual)",
           "mechanicDescription": "Dua ronde, masing-masing enam benda (jendela, bendera, ubin sarang lebah, rumah burung, rambu STOP, piring, koin, cermin lonjong, balon hati, dan lainnya). Siswa menyeret atau mengetuk benda ke kotak Segi banyak atau kotak Bentuk lengkung. Benda yang salah kembali disertai petunjuk tepinya.",
-          "voiceGuide": "Seret benda ke kotak yang sesuai dengan tepinya."
+          "voiceGuide": "METODE LUAR · van Hiele Visual. Seret benda ke kotak yang sesuai dengan tepinya."
         },
         {
           "gameId": "subK2B3A-game-2",
@@ -596,6 +674,21 @@
             "nama": "Tiga pertanyaan",
             "isi": "garis lurus? berapa sisi? pas diputar?",
             "suara": "Tiga pertanyaan detektif bentuk. Dibatasi garis lurus atau lengkung. Berapa sisinya. Pas atau tidak bila diputar."
+          },
+          {
+            "nama": "van Hiele Visual",
+            "isi": "METODE LUAR · van Hiele Visual: Kenali bangun dari bentuknya. (asal: van Hiele).",
+            "suara": "METODE LUAR. van Hiele Visual. Kenali bangun dari bentuknya."
+          },
+          {
+            "nama": "Pilah Ciri",
+            "isi": "METODE LUAR · Attribute Sort: Pilah menurut sisi atau sudut. (asal: Attribute blocks).",
+            "suara": "METODE LUAR. Pilah Ciri. Pilah menurut sisi atau sudut."
+          },
+          {
+            "nama": "Papan Paku",
+            "isi": "METODE LUAR · Geoboard: Bentuk bangun dengan karet. (asal: Gattegno).",
+            "suara": "METODE LUAR. Papan Paku. Bentuk bangun dengan karet."
           }
         ],
         "suara": "Ingat selalu! Bangun datar yang dibatasi garis lurus disebut segi banyak, dan garis lurusnya disebut sisi. Bangun datar yang dibatasi garis lengkung disebut bentuk lengkung. Banyak sisi menentukan nama: tiga segitiga, empat segi empat, lima segi lima, enam segi enam. Lingkaran bulat sempurna dan selalu pas bila diputar.",
@@ -620,8 +713,44 @@
       "silabus": {
         "teksSuara": "Kita belajar mengurai dan menyusun bangun datar. Bukunya bernama Bentuk di Sekitar Kita, bagian mengurai dan menyusun. Kita mengurai satu bangun datar menjadi beberapa bentuk baru, dan menyusun beberapa bangun datar menjadi satu bentuk. Cara yang kita pakai memengaruhi hasilnya. Kita juga bermain tangram. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa mengurai satu bangun datar menjadi beberapa bangun datar, menyusun beberapa bangun datar menjadi satu bentuk, menjelaskan bahwa cara yang dipakai memengaruhi hasil, serta membuat bentuk kreatif dengan tangram.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 3: Bentuk di Sekitar Kita, Sub-Bab B hlm. 81–89 dan Ayo Berkarya hlm. 99)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 3 Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Compose",
+          "namaId": "Susun Bangun",
+          "asal": "Tangram",
+          "ringkas": "Gabung bangun kecil jadi besar.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Decompose",
+          "namaId": "Urai Bangun",
+          "asal": "Spatial reasoning",
+          "ringkas": "Pecah bangun menjadi bagian.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Tangram",
+          "namaId": "Tangram",
+          "asal": "Puzzle pedagogy",
+          "ringkas": "Tujuh keping banyak siluet.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B3B-V1-1",
@@ -639,7 +768,7 @@
           "id": "K2B3B-V1-3",
           "titleHint": "Cara memengaruhi hasil",
           "sceneType": "K2B3B-V1-3",
-          "voiceNarration": "Ketika mengurai sebuah bangun datar, kita dapat memakai beberapa cara. Cara yang kita pakai akan memengaruhi hasilnya. Sebuah persegi bisa diurai dengan garis miring menjadi dua segitiga. Persegi yang sama bisa diurai dengan garis lurus di tengah menjadi dua segi empat."
+          "voiceNarration": "Ketika mengurai sebuah bangun datar, kita dapat memakai beberapa cara. Cara yang kita pakai akan memengaruhi hasilnya. Sebuah persegi bisa diurai dengan garis miring menjadi dua segitiga. Persegi yang sama bisa diurai dengan garis lurus di tengah menjadi dua segi empat. METODE LUAR. Susun Bangun: Gabung bangun kecil jadi besar."
         },
         {
           "id": "K2B3B-V2-1",
@@ -657,7 +786,7 @@
           "id": "K2B3B-V2-3",
           "titleHint": "Cara memengaruhi hasil",
           "sceneType": "K2B3B-V2-3",
-          "voiceNarration": "Ketika menyusun bangun datar, kita dapat menemukan beberapa bentuk yang berbeda. Cara kita menyusunnya akan memengaruhi hasilnya. Dua segitiga siku-siku yang sama bisa disusun menjadi sebuah persegi. Dua segitiga yang sama juga bisa disusun menjadi sebuah segitiga yang lebih besar."
+          "voiceNarration": "Ketika menyusun bangun datar, kita dapat menemukan beberapa bentuk yang berbeda. Cara kita menyusunnya akan memengaruhi hasilnya. Dua segitiga siku-siku yang sama bisa disusun menjadi sebuah persegi. Dua segitiga yang sama juga bisa disusun menjadi sebuah segitiga yang lebih besar. METODE LUAR. Urai Bangun: Pecah bangun menjadi bagian."
         },
         {
           "id": "K2B3B-V3-1",
@@ -675,7 +804,7 @@
           "id": "K2B3B-V3-3",
           "titleHint": "Mengurai dan menyusun berkaitan",
           "sceneType": "K2B3B-V3-3",
-          "voiceNarration": "Mengurai dan menyusun adalah dua kegiatan yang saling berlawanan. Persegi besar diurai menjadi tujuh keping. Tujuh keping disusun kembali menjadi persegi besar. Banyak keping tetap tujuh, apa pun bentuk hasil susunannya."
+          "voiceNarration": "Mengurai dan menyusun adalah dua kegiatan yang saling berlawanan. Persegi besar diurai menjadi tujuh keping. Tujuh keping disusun kembali menjadi persegi besar. Banyak keping tetap tujuh, apa pun bentuk hasil susunannya. METODE LUAR. Tangram: Tujuh keping banyak siluet."
         }
       ],
       "videos": [
@@ -723,13 +852,15 @@
                 "Ketika mengurai sebuah bangun datar, kita dapat memakai beberapa cara.",
                 "Cara yang kita pakai akan memengaruhi hasilnya.",
                 "Sebuah persegi bisa diurai dengan garis miring menjadi dua segitiga.",
-                "Persegi yang sama bisa diurai dengan garis lurus di tengah menjadi dua segi empat."
+                "Persegi yang sama bisa diurai dengan garis lurus di tengah menjadi dua segi empat.",
+                "METODE LUAR. Susun Bangun: Gabung bangun kecil jadi besar."
               ],
               "papan": [
                 "Banyak cara",
                 "Cara memengaruhi hasil",
                 "Persegi → 2 segitiga",
-                "Persegi → 2 segi empat"
+                "Persegi → 2 segi empat",
+                "METODE LUAR · Susun Bangun"
               ]
             }
           ]
@@ -778,13 +909,15 @@
                 "Ketika menyusun bangun datar, kita dapat menemukan beberapa bentuk yang berbeda.",
                 "Cara kita menyusunnya akan memengaruhi hasilnya.",
                 "Dua segitiga siku-siku yang sama bisa disusun menjadi sebuah persegi.",
-                "Dua segitiga yang sama juga bisa disusun menjadi sebuah segitiga yang lebih besar."
+                "Dua segitiga yang sama juga bisa disusun menjadi sebuah segitiga yang lebih besar.",
+                "METODE LUAR. Urai Bangun: Pecah bangun menjadi bagian."
               ],
               "papan": [
                 "Hasil berbeda-beda",
                 "Cara memengaruhi hasil",
                 "2 segitiga → persegi",
-                "2 segitiga → segitiga besar"
+                "2 segitiga → segitiga besar",
+                "METODE LUAR · Urai Bangun"
               ]
             }
           ]
@@ -833,13 +966,15 @@
                 "Mengurai dan menyusun adalah dua kegiatan yang saling berlawanan.",
                 "Persegi besar diurai menjadi tujuh keping.",
                 "Tujuh keping disusun kembali menjadi persegi besar.",
-                "Banyak keping tetap tujuh, apa pun bentuk hasil susunannya."
+                "Banyak keping tetap tujuh, apa pun bentuk hasil susunannya.",
+                "METODE LUAR. Tangram: Tujuh keping banyak siluet."
               ],
               "papan": [
                 "Saling berlawanan",
                 "Mengurai: 1 → 7",
                 "Menyusun: 7 → 1",
-                "Tetap 7 keping"
+                "Tetap 7 keping",
+                "METODE LUAR · Tangram"
               ]
             }
           ]
@@ -908,7 +1043,23 @@
           "stepDesc": "Tangram membantu kita berlatih mengurai dan menyusun. Satu persegi besar dipotong menjadi tujuh keping, lalu disusun lagi menjadi rumah, perahu, kucing, atau bentuk kreasimu. Di banyak sekolah di dunia, anak memakai pola blok untuk latihan serupa. Berlatih menyusun bentuk melatih mata untuk melihat bagian di dalam sebuah bangun.",
           "icon": "🧠",
           "flowFrom": "Tangram dan pola blok",
-          "flowTo": "Mengurai dan menyusun siap dipakai"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Susun Bangun",
+          "stepDesc": "Gabung bangun kecil jadi besar.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Urai Bangun",
+          "stepDesc": "Pecah bangun menjadi bagian.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -981,6 +1132,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Aturan menyusun: pakai semua keping, jangan bertumpuk, sisi harus menempel, dan boleh diputar atau dibalik. Tips: mulai dari keping yang paling besar, lalu isi bagian yang tersisa dengan keping yang lebih kecil."
+        },
+        {
+          "fruitName": "Susun Bangun",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Compose",
+          "voiceSentence": "METODE LUAR. Susun Bangun. Gabung bangun kecil jadi besar."
+        },
+        {
+          "fruitName": "Urai Bangun",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Decompose",
+          "voiceSentence": "METODE LUAR. Urai Bangun. Pecah bangun menjadi bagian."
+        },
+        {
+          "fruitName": "Tangram",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Tangram",
+          "voiceSentence": "METODE LUAR. Tangram. Tujuh keping banyak siluet."
         }
       ],
       "concreteSlides": [
@@ -988,7 +1160,7 @@
           "title": "Gunting Kertas",
           "emoji": "✂️",
           "targetCount": 4,
-          "voiceGuide": "Ketuk garis putus-putus untuk menggunting, lalu lihat kepingnya."
+          "voiceGuide": "METODE LUAR · Susun Bangun. Ketuk garis putus-putus untuk menggunting, lalu lihat kepingnya."
         },
         {
           "title": "Susun Keping di Papan",
@@ -1060,9 +1232,9 @@
           "gameType": "cut-paper-along-lines",
           "title": "Gunting Kertas",
           "bookReference": "Buku Siswa hlm. 81–82 (mengurai bangun datar; contoh persegi diurai menjadi dua segitiga atau dua segi empat)",
-          "objective": "Mengurai kertas dengan menggunting sepanjang garis putus-putus dan menamai keping hasilnya.",
+          "objective": "Mengurai kertas dengan menggunting sepanjang garis putus-putus dan menamai keping hasilnya. (METODE LUAR · Susun Bangun)",
           "mechanicDescription": "Empat ronde (persegi menjadi 2 segitiga, persegi menjadi 2 segi empat, persegi panjang menjadi 2 segitiga, dan persegi panjang menjadi 2 segitiga dan 1 segi empat). Siswa mengetuk garis putus-putus untuk menggunting. Keping terpisah dan diberi nama. Bila hasilnya belum sesuai, kertas bisa disatukan lagi.",
-          "voiceGuide": "Ketuk garis putus-putus untuk menggunting, lalu lihat kepingnya."
+          "voiceGuide": "METODE LUAR · Susun Bangun. Ketuk garis putus-putus untuk menggunting, lalu lihat kepingnya."
         },
         {
           "gameId": "subK2B3B-game-2",
@@ -1190,6 +1362,16 @@
             "nama": "Tangram",
             "isi": "7 keping, pakai semuanya",
             "suara": "Tangram terdiri dari tujuh keping. Pakai semua keping, jangan bertumpuk, dan sisi harus menempel."
+          },
+          {
+            "nama": "Susun Bangun",
+            "isi": "METODE LUAR · Compose: Gabung bangun kecil jadi besar. (asal: Tangram).",
+            "suara": "METODE LUAR. Susun Bangun. Gabung bangun kecil jadi besar."
+          },
+          {
+            "nama": "Urai Bangun",
+            "isi": "METODE LUAR · Decompose: Pecah bangun menjadi bagian. (asal: Spatial reasoning).",
+            "suara": "METODE LUAR. Urai Bangun. Pecah bangun menjadi bagian."
           }
         ],
         "suara": "Ingat selalu! Mengurai berarti satu bangun menjadi beberapa bentuk. Menyusun berarti beberapa bangun menjadi satu bentuk. Cara yang dipakai memengaruhi hasilnya. Dari satu pojok, banyak segitiga sama dengan banyak sisi dikurangi dua. Dari titik tengah, banyak segitiga sama dengan banyak sisi. Pada tangram, pakai semua keping dan jangan bertumpuk.",
@@ -1214,8 +1396,43 @@
       "silabus": {
         "teksSuara": "Kita belajar bangun ruang. Bukunya bernama Bentuk di Sekitar Kita, bagian bangun ruang. Kita membedakan bangun datar dan bangun ruang, mencoba menggelindingkan benda untuk mengenal permukaan datar dan lengkung, lalu menamai kubus, balok, tabung, kerucut, dan bola. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa membedakan bangun datar dan bangun ruang, mengelompokkan bangun ruang berdasarkan permukaan datar atau lengkung, serta menamai kubus, balok, tabung, kerucut, dan bola sesuai ciri-cirinya.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 3: Bentuk di Sekitar Kita, Sub-Bab C hlm. 90–94)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 3 Sub-Bab C)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Face Print",
+          "namaId": "Cetak Permukaan",
+          "asal": "Montessori",
+          "ringkas": "Tekan permukaan bangun ruang jadi bangun datar.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Mystery Bag",
+          "namaId": "Tas Misteri",
+          "asal": "Montessori",
+          "ringkas": "Kenali bangun ruang dengan meraba.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "3D Attributes",
+          "namaId": "Ciri Bangun Ruang",
+          "asal": "van Hiele",
+          "ringkas": "Sebut sisi, rusuk, titik sudut.",
+          "tahap": [
+            "Infografis",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B3C-V1-1",
@@ -1233,7 +1450,7 @@
           "id": "K2B3C-V1-3",
           "titleHint": "Bangun ruang",
           "sceneType": "K2B3C-V1-3",
-          "voiceNarration": "Bangun ruang punya ruang di dalamnya, jadi dapat diisi. Contohnya kotak, kubus, topi, dan botol. Kotak, kubus, dan botol punya beberapa permukaan. Jadi, kalau benda itu bisa diisi, benda itu adalah bangun ruang."
+          "voiceNarration": "Bangun ruang punya ruang di dalamnya, jadi dapat diisi. Contohnya kotak, kubus, topi, dan botol. Kotak, kubus, dan botol punya beberapa permukaan. Jadi, kalau benda itu bisa diisi, benda itu adalah bangun ruang. METODE LUAR. Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar."
         },
         {
           "id": "K2B3C-V2-1",
@@ -1251,7 +1468,7 @@
           "id": "K2B3C-V2-3",
           "titleHint": "Mengapa?",
           "sceneType": "K2B3C-V2-3",
-          "voiceNarration": "Permukaan lengkung bisa berguling terus. Permukaan datar menahan benda supaya diam. Karena itu kita menumpuk kotak, dan menggelindingkan bola. Temukan benda di sekitarmu yang permukaannya datar dan lengkung."
+          "voiceNarration": "Permukaan lengkung bisa berguling terus. Permukaan datar menahan benda supaya diam. Karena itu kita menumpuk kotak, dan menggelindingkan bola. Temukan benda di sekitarmu yang permukaannya datar dan lengkung. METODE LUAR. Tas Misteri: Kenali bangun ruang dengan meraba."
         },
         {
           "id": "K2B3C-V3-1",
@@ -1269,7 +1486,7 @@
           "id": "K2B3C-V3-3",
           "titleHint": "Cari bangun ruang",
           "sceneType": "K2B3C-V3-3",
-          "voiceNarration": "Sekarang amati benda-benda di sekitarmu. Temukan benda yang berbentuk bangun ruang. Kelompokkan: kubus, balok, tabung, kerucut, atau bola. Tulis hasilnya dalam tabel."
+          "voiceNarration": "Sekarang amati benda-benda di sekitarmu. Temukan benda yang berbentuk bangun ruang. Kelompokkan: kubus, balok, tabung, kerucut, atau bola. Tulis hasilnya dalam tabel. METODE LUAR. Ciri Bangun Ruang: Sebut sisi, rusuk, titik sudut."
         }
       ],
       "videos": [
@@ -1317,13 +1534,15 @@
                 "Bangun ruang punya ruang di dalamnya, jadi dapat diisi.",
                 "Contohnya kotak, kubus, topi, dan botol.",
                 "Kotak, kubus, dan botol punya beberapa permukaan.",
-                "Jadi, kalau benda itu bisa diisi, benda itu adalah bangun ruang."
+                "Jadi, kalau benda itu bisa diisi, benda itu adalah bangun ruang.",
+                "METODE LUAR. Cetak Permukaan: Tekan permukaan bangun ruang jadi bangun datar."
               ],
               "papan": [
                 "Ada ruang di dalam",
                 "Kotak • kubus • topi • botol",
                 "Banyak permukaan",
-                "Bisa diisi = bangun ruang"
+                "Bisa diisi = bangun ruang",
+                "METODE LUAR · Cetak Permukaan"
               ]
             }
           ]
@@ -1372,13 +1591,15 @@
                 "Permukaan lengkung bisa berguling terus.",
                 "Permukaan datar menahan benda supaya diam.",
                 "Karena itu kita menumpuk kotak, dan menggelindingkan bola.",
-                "Temukan benda di sekitarmu yang permukaannya datar dan lengkung."
+                "Temukan benda di sekitarmu yang permukaannya datar dan lengkung.",
+                "METODE LUAR. Tas Misteri: Kenali bangun ruang dengan meraba."
               ],
               "papan": [
                 "Lengkung berguling",
                 "Datar menahan",
                 "Kotak ditumpuk",
-                "Cari di sekitarmu"
+                "Cari di sekitarmu",
+                "METODE LUAR · Tas Misteri"
               ]
             }
           ]
@@ -1427,13 +1648,15 @@
                 "Sekarang amati benda-benda di sekitarmu.",
                 "Temukan benda yang berbentuk bangun ruang.",
                 "Kelompokkan: kubus, balok, tabung, kerucut, atau bola.",
-                "Tulis hasilnya dalam tabel."
+                "Tulis hasilnya dalam tabel.",
+                "METODE LUAR. Ciri Bangun Ruang: Sebut sisi, rusuk, titik sudut."
               ],
               "papan": [
                 "Amati sekitarmu",
                 "Temukan bangun ruang",
                 "Kelompokkan",
-                "Tulis di tabel"
+                "Tulis di tabel",
+                "METODE LUAR · Ciri Bangun Ruang"
               ]
             }
           ]
@@ -1502,7 +1725,23 @@
           "stepDesc": "Berkelilinglah di rumah atau sekolah, seperti jalan-jalan matematika. Temukan benda berbentuk kubus, balok, tabung, kerucut, dan bola. Kelompokkan dan tulis di tabel. Permainan tas misteri juga seru: raba benda di dalam tas, lalu tebak namanya dari ciri-cirinya tanpa melihat.",
           "icon": "🧭",
           "flowFrom": "Cari dan namai",
-          "flowTo": "Bangun ruang siap dikenali"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Cetak Permukaan",
+          "stepDesc": "Tekan permukaan bangun ruang jadi bangun datar.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Tas Misteri",
+          "stepDesc": "Kenali bangun ruang dengan meraba.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -1575,6 +1814,27 @@
           "countNum": 5,
           "countWord": "Lima",
           "voiceSentence": "Permukaan bangun ruang bisa dicetak. Permukaan kubus menghasilkan segi empat yang sama sisinya. Permukaan balok menghasilkan segi empat yang berbeda sisinya. Alas tabung dan alas kerucut menghasilkan lingkaran. Bola tidak punya permukaan datar untuk dicetak."
+        },
+        {
+          "fruitName": "Cetak Permukaan",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Face Print",
+          "voiceSentence": "METODE LUAR. Cetak Permukaan. Tekan permukaan bangun ruang jadi bangun datar."
+        },
+        {
+          "fruitName": "Tas Misteri",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Mystery Bag",
+          "voiceSentence": "METODE LUAR. Tas Misteri. Kenali bangun ruang dengan meraba."
+        },
+        {
+          "fruitName": "Ciri Bangun Ruang",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · 3D Attributes",
+          "voiceSentence": "METODE LUAR. Ciri Bangun Ruang. Sebut sisi, rusuk, titik sudut."
         }
       ],
       "concreteSlides": [
@@ -1582,7 +1842,7 @@
           "title": "Lereng Gelinding",
           "emoji": "⚽",
           "targetCount": 10,
-          "voiceGuide": "Lepas tiap benda di lereng, lalu pilih yang menggelinding."
+          "voiceGuide": "METODE LUAR · Cetak Permukaan. Lepas tiap benda di lereng, lalu pilih yang menggelinding."
         },
         {
           "title": "Tas Misteri",
@@ -1654,9 +1914,9 @@
           "gameType": "predict-and-roll",
           "title": "Lereng Gelinding",
           "bookReference": "Buku Siswa hlm. 91 (Ayo Mencoba 1: gelindingkan benda-benda; benda mana yang dapat menggelinding?)",
-          "objective": "Mencoba menggelindingkan benda nyata dan menyimpulkan bahwa permukaan lengkung mudah menggelinding.",
+          "objective": "Mencoba menggelindingkan benda nyata dan menyimpulkan bahwa permukaan lengkung mudah menggelinding. (METODE LUAR · Cetak Permukaan)",
           "mechanicDescription": "Dua ronde, masing-masing lima benda (topi ulang tahun, dadu, botol, kardus, bola; lalu kaleng, kelereng, kotak pensil, kerucut es krim, kotak hadiah). Siswa mengetuk benda untuk melepasnya di lereng, melihat yang menggelinding dan yang diam, lalu memilih semua benda yang menggelinding dan alasannya.",
-          "voiceGuide": "Lepas tiap benda di lereng, lalu pilih yang menggelinding."
+          "voiceGuide": "METODE LUAR · Cetak Permukaan. Lepas tiap benda di lereng, lalu pilih yang menggelinding."
         },
         {
           "gameId": "subK2B3C-game-2",
@@ -1784,6 +2044,21 @@
             "nama": "Cetak permukaan",
             "isi": "kubus → segi empat • kaleng → lingkaran",
             "suara": "Permukaan bangun ruang bisa dicetak. Kubus menghasilkan segi empat, dan alas kaleng menghasilkan lingkaran."
+          },
+          {
+            "nama": "Cetak Permukaan",
+            "isi": "METODE LUAR · Face Print: Tekan permukaan bangun ruang jadi bangun datar. (asal: Montessori).",
+            "suara": "METODE LUAR. Cetak Permukaan. Tekan permukaan bangun ruang jadi bangun datar."
+          },
+          {
+            "nama": "Tas Misteri",
+            "isi": "METODE LUAR · Mystery Bag: Kenali bangun ruang dengan meraba. (asal: Montessori).",
+            "suara": "METODE LUAR. Tas Misteri. Kenali bangun ruang dengan meraba."
+          },
+          {
+            "nama": "Ciri Bangun Ruang",
+            "isi": "METODE LUAR · 3D Attributes: Sebut sisi, rusuk, titik sudut. (asal: van Hiele).",
+            "suara": "METODE LUAR. Ciri Bangun Ruang. Sebut sisi, rusuk, titik sudut."
           }
         ],
         "suara": "Ingat selalu! Bangun datar hanya punya satu permukaan dan tidak bisa diisi. Bangun ruang bisa diisi. Kubus dan balok punya permukaan datar. Tabung, kerucut, dan bola punya permukaan lengkung dan mudah menggelinding. Kubus punya segi empat yang sama ukurannya, balok punya segi empat yang berbeda ukurannya.",

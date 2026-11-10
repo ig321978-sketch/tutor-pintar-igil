@@ -27,7 +27,7 @@ export const SUB_A45: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar ciri-ciri bangun datar. Segi banyak adalah kurva tertutup paling sedikit tiga ruas garis. Ada yang beraturan dan tak beraturan. Segitiga dikelompokkan menurut sisi dan sudut. Segiempat punya banyak keluarga: persegi, persegi panjang, dan lainnya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menjelaskan ciri-ciri bangun datar segi banyak, segitiga, dan segiempat.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 5 Sub-Bab A hlm. 142–165; van Hiele level 0–1; property-based classification."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 5 Sub-Bab A)."
   },
   "videos": [
     {
@@ -74,13 +74,15 @@ export const SUB_A45: SubBabNaskah = {
             "Semua sisi sama panjang.",
             "Semua sudut sama besar.",
             "Itu segi banyak beraturan.",
-            "Jika tidak, tak beraturan."
+            "Jika tidak, tak beraturan.",
+            "METODE LUAR. van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut."
           ],
           "papan": [
             "sisi sama",
             "sudut sama",
             "beraturan",
-            "tak"
+            "tak",
+            "METODE LUAR · van Hiele Visual–Analisis"
           ]
         }
       ]
@@ -129,13 +131,15 @@ export const SUB_A45: SubBabNaskah = {
             "Segitiga KLM siku di K.",
             "Segitiga PQR tumpul di P.",
             "Ciri membantu memberi nama.",
-            "Siap kenali segiempat."
+            "Siap kenali segiempat.",
+            "METODE LUAR. Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar."
           ],
           "papan": [
             "KLM",
             "PQR",
             "ciri",
-            "lanjut"
+            "lanjut",
+            "METODE LUAR · Pilah Ciri"
           ]
         }
       ]
@@ -184,13 +188,15 @@ export const SUB_A45: SubBabNaskah = {
             "Ciri membedakan bangun.",
             "Hitung sisi dan sudut.",
             "Pilah beraturan.",
-            "Ayo ke permainan."
+            "Ayo ke permainan.",
+            "METODE LUAR. Papan Paku: Bentuk karet di paku untuk menguji ciri."
           ],
           "papan": [
             "ciri",
             "hitung",
             "pilah",
-            "main"
+            "main",
+            "METODE LUAR · Papan Paku"
           ]
         }
       ]
@@ -243,6 +249,22 @@ export const SUB_A45: SubBabNaskah = {
       "stepDesc": "Mis. lingkaran",
       "icon": "⭕",
       "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. METODE LUAR · van Hiele Visual–Analisis",
+      "stepDesc": "Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
+      "icon": "🌍",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. METODE LUAR · Pilah Ciri",
+      "stepDesc": "Kelompokkan menurut sisi, sudut, atau sejajar.",
+      "icon": "🌍",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -316,6 +338,27 @@ export const SUB_A45: SubBabNaskah = {
       "countNum": 1,
       "countWord": "susun",
       "suara": "Berikutnya komposisi dan dekomposisi."
+    },
+    {
+      "judul": "van Hiele Visual–Analisis",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · van Hiele Level 0-1",
+      "suara": "METODE LUAR. van Hiele Visual–Analisis. Mulai kenali bentuk, lalu sebut ciri sisi dan sudut."
+    },
+    {
+      "judul": "Pilah Ciri",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Attribute Sort",
+      "suara": "METODE LUAR. Pilah Ciri. Kelompokkan menurut sisi, sudut, atau sejajar."
+    },
+    {
+      "judul": "Papan Paku",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Geoboard",
+      "suara": "METODE LUAR. Papan Paku. Bentuk karet di paku untuk menguji ciri."
     }
   ],
   "games": [
@@ -324,9 +367,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "hitung-sisi",
       "title": "Hitung Sisi dan Sudut",
       "bookReference": "hlm. 144–145",
-      "objective": "Menghitung sisi/sudut.",
+      "objective": "Menghitung sisi/sudut. (METODE LUAR · van Hiele Visual–Analisis)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih angka.",
+      "voiceGuide": "METODE LUAR · van Hiele Visual–Analisis. Pilih angka.",
       "emoji": "🔺",
       "targetCount": 6
     },
@@ -434,9 +477,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "gambar-sisi",
       "title": "Diagram Hitung Sisi",
       "bookReference": "hlm. 145",
-      "objective": "Baca diagram.",
+      "objective": "Baca diagram. (METODE LUAR · van Hiele Visual–Analisis)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · van Hiele Visual–Analisis. Pilih.",
       "diagramType": "sides",
       "numberA": 3,
       "numberB": 4
@@ -554,9 +597,9 @@ export const SUB_A45: SubBabNaskah = {
       "gameType": "write-nama",
       "title": "Tulis Nama Bangun",
       "bookReference": "hlm. 145–160",
-      "objective": "Menulis nama.",
+      "objective": "Menulis nama. (METODE LUAR · van Hiele Visual–Analisis)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · van Hiele Visual–Analisis. Pilih.",
       "symbolLarge": "△",
       "wordLarge": "NAMA",
       "mathNotation": "jenis"
@@ -694,6 +737,24 @@ export const SUB_A45: SubBabNaskah = {
       "nama": "Segiempat",
       "isi": "Persegi, persegi panjang, jajargenjang, belah ketupat, layang-layang, trapesium punya ciri berbeda.",
       "suara": "Tiap segiempat punya ciri khas."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "van Hiele Visual–Analisis",
+      "isi": "METODE LUAR · van Hiele Level 0-1: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. (asal: van Hiele).",
+      "suara": "METODE LUAR. van Hiele Visual–Analisis. Mulai kenali bentuk, lalu sebut ciri sisi dan sudut."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Pilah Ciri",
+      "isi": "METODE LUAR · Attribute Sort: Kelompokkan menurut sisi, sudut, atau sejajar. (asal: Attribute blocks).",
+      "suara": "METODE LUAR. Pilah Ciri. Kelompokkan menurut sisi, sudut, atau sejajar."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Papan Paku",
+      "isi": "METODE LUAR · Geoboard: Bentuk karet di paku untuk menguji ciri. (asal: Gattegno geoboard).",
+      "suara": "METODE LUAR. Papan Paku. Bentuk karet di paku untuk menguji ciri."
     }
   ],
   "poinSuara": "Ingat empat kunci ciri bangun.",
@@ -723,6 +784,42 @@ export const SUB_A45: SubBabNaskah = {
     "Apa beda persegi dan belah ketupat?",
     "Mengapa lingkaran bukan segi banyak?",
     "Bisakah segitiga tumpul sekaligus siku-siku?"
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "van Hiele Level 0-1",
+      "namaId": "van Hiele Visual–Analisis",
+      "asal": "van Hiele",
+      "ringkas": "Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
+      "tahap": [
+        "Story",
+        "Mind",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Attribute Sort",
+      "namaId": "Pilah Ciri",
+      "asal": "Attribute blocks",
+      "ringkas": "Kelompokkan menurut sisi, sudut, atau sejajar.",
+      "tahap": [
+        "Concrete",
+        "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Geoboard",
+      "namaId": "Papan Paku",
+      "asal": "Gattegno geoboard",
+      "ringkas": "Bentuk karet di paku untuk menguji ciri.",
+      "tahap": [
+        "Infografis",
+        "Concrete"
+      ]
+    }
   ]
 };
 
@@ -737,7 +834,7 @@ export const SUB_B45: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar komposisi dan dekomposisi bangun datar. Menyusun bagian menjadi utuh disebut komposisi. Mengurai utuh menjadi bagian disebut dekomposisi. Satu bangun bisa disusun atau diurai dengan banyak cara. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa melakukan komposisi dan dekomposisi bangun datar.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 5 Sub-Bab B hlm. 166–176; composition/decomposition; tangram spatial reasoning."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 5 Sub-Bab B)."
   },
   "videos": [
     {
@@ -784,13 +881,15 @@ export const SUB_B45: SubBabNaskah = {
             "Persegi sebagai badan.",
             "Dua segitiga sebagai atap.",
             "Itu menyusun rumah.",
-            "Kreatif dan teliti."
+            "Kreatif dan teliti.",
+            "METODE LUAR. Susun Bangun: Gabungkan bangun sederhana jadi bangun baru."
           ],
           "papan": [
             "persegi",
             "atap",
             "rumah",
-            "kreatif"
+            "kreatif",
+            "METODE LUAR · Susun Bangun"
           ]
         }
       ]
@@ -839,13 +938,15 @@ export const SUB_B45: SubBabNaskah = {
             "Peta bisa diurai jadi bangun.",
             "Latihan mengamati bentuk.",
             "Lalu disusun kembali.",
-            "Itu latihan spasial."
+            "Itu latihan spasial.",
+            "METODE LUAR. Urai Bangun: Pecah bangun kompleks jadi bagian dikenal."
           ],
           "papan": [
             "peta",
             "urai",
             "susun lagi",
-            "spasial"
+            "spasial",
+            "METODE LUAR · Urai Bangun"
           ]
         }
       ]
@@ -894,13 +995,15 @@ export const SUB_B45: SubBabNaskah = {
             "Kamu siap menyusun.",
             "Dan mengurai.",
             "Pilih komposisi atau dekomposisi.",
-            "Ayo bermain."
+            "Ayo bermain.",
+            "METODE LUAR. Tangram: Tujuh keping menyusun banyak siluet."
           ],
           "papan": [
             "susun",
             "urai",
             "pilih",
-            "main"
+            "main",
+            "METODE LUAR · Tangram"
           ]
         }
       ]
@@ -953,6 +1056,22 @@ export const SUB_B45: SubBabNaskah = {
       "stepDesc": "Peta & tangram",
       "icon": "🗺️",
       "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. METODE LUAR · Susun Bangun",
+      "stepDesc": "Gabungkan bangun sederhana jadi bangun baru.",
+      "icon": "🌍",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. METODE LUAR · Urai Bangun",
+      "stepDesc": "Pecah bangun kompleks jadi bagian dikenal.",
+      "icon": "🌍",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -1026,6 +1145,27 @@ export const SUB_B45: SubBabNaskah = {
       "countNum": 1,
       "countWord": "Materi",
       "suara": "Ciri dan komposisi lengkap untuk Materi."
+    },
+    {
+      "judul": "Susun Bangun",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Compose Shapes",
+      "suara": "METODE LUAR. Susun Bangun. Gabungkan bangun sederhana jadi bangun baru."
+    },
+    {
+      "judul": "Urai Bangun",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Decompose Shapes",
+      "suara": "METODE LUAR. Urai Bangun. Pecah bangun kompleks jadi bagian dikenal."
+    },
+    {
+      "judul": "Tangram",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Tangram",
+      "suara": "METODE LUAR. Tangram. Tujuh keping menyusun banyak siluet."
     }
   ],
   "games": [
@@ -1034,9 +1174,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "baca-resep",
       "title": "Baca Resep Susun/Urai",
       "bookReference": "hlm. 167–173",
-      "objective": "Membaca komposisi.",
+      "objective": "Membaca komposisi. (METODE LUAR · Susun Bangun)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Susun Bangun. Pilih.",
       "emoji": "🧩",
       "targetCount": 6
     },
@@ -1144,9 +1284,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "diagram-susun",
       "title": "Diagram Menyusun",
       "bookReference": "hlm. 167–169",
-      "objective": "Baca susunan.",
+      "objective": "Baca susunan. (METODE LUAR · Susun Bangun)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Susun Bangun. Pilih.",
       "diagramType": "compose",
       "numberA": 2,
       "numberB": 1
@@ -1264,9 +1404,9 @@ export const SUB_B45: SubBabNaskah = {
       "gameType": "write-aksi",
       "title": "Tulis Komposisi/Dekomposisi",
       "bookReference": "hlm. 167–170",
-      "objective": "Menulis istilah.",
+      "objective": "Menulis istilah. (METODE LUAR · Susun Bangun)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Susun Bangun. Pilih.",
       "symbolLarge": "↔",
       "wordLarge": "AKSI",
       "mathNotation": "istilah"
@@ -1404,6 +1544,24 @@ export const SUB_B45: SubBabNaskah = {
       "nama": "Banyak cara",
       "isi": "Satu bangun boleh disusun/diurai dengan cara berbeda.",
       "suara": "Kreativitas diizinkan."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Susun Bangun",
+      "isi": "METODE LUAR · Compose Shapes: Gabungkan bangun sederhana jadi bangun baru. (asal: Tangram / composition).",
+      "suara": "METODE LUAR. Susun Bangun. Gabungkan bangun sederhana jadi bangun baru."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Urai Bangun",
+      "isi": "METODE LUAR · Decompose Shapes: Pecah bangun kompleks jadi bagian dikenal. (asal: Spatial reasoning).",
+      "suara": "METODE LUAR. Urai Bangun. Pecah bangun kompleks jadi bagian dikenal."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Tangram",
+      "isi": "METODE LUAR · Tangram: Tujuh keping menyusun banyak siluet. (asal: Chinese puzzle pedagogy).",
+      "suara": "METODE LUAR. Tangram. Tujuh keping menyusun banyak siluet."
     }
   ],
   "poinSuara": "Ingat empat kunci komposisi.",
@@ -1433,6 +1591,42 @@ export const SUB_B45: SubBabNaskah = {
     "Apa beda komposisi dan dekomposisi?",
     "Mengapa luas total tetap saat mengurai?",
     "Sebut satu cara mengurai segienam."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Compose Shapes",
+      "namaId": "Susun Bangun",
+      "asal": "Tangram / composition",
+      "ringkas": "Gabungkan bangun sederhana jadi bangun baru.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Decompose Shapes",
+      "namaId": "Urai Bangun",
+      "asal": "Spatial reasoning",
+      "ringkas": "Pecah bangun kompleks jadi bagian dikenal.",
+      "tahap": [
+        "Mind",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Tangram",
+      "namaId": "Tangram",
+      "asal": "Chinese puzzle pedagogy",
+      "ringkas": "Tujuh keping menyusun banyak siluet.",
+      "tahap": [
+        "Infografis",
+        "Concrete"
+      ]
+    }
   ]
 };
 

@@ -1,11 +1,4 @@
-/**
- * Naskah murni Matematika Kelas 4 Bab 1 (Bilangan Cacah sampai 10.000): Sub-Bab A–F
- * (membaca & menulis, nilai tempat, membandingkan & mengurutkan, komposisi & dekomposisi,
- * penjumlahan sampai 1.000, pengurangan sampai 1.000). Sumber: Buku Siswa Matematika Kelas IV
- * Kemendikbudristek Bab 1 hlm. 4–37, diperkaya Dienes, expanded form, regrouping/borrowing.
- * Satu sumber: buat-k4-bab1.mjs → kelas4-bab1.json. Tanpa React/jaringan. Uji: scripts/uji-data-k4b1.mjs.
- */
-import type { GameNaskah, SubBabNaskah } from "./naskah-k2b2";
+import type { SubBabNaskah } from "./naskah-k2b2";
 
 export const K4B1_META = {
   "chapterId": "k4-mat-bab1",
@@ -29,7 +22,7 @@ export const SUB_A41: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar membaca dan menulis bilangan cacah sampai sepuluh ribu. Helen melihat harga minuman enam ribu tujuh ratus lima puluh rupiah di minimarket, jarak rumah tiga ribu dua ratus delapan puluh enam meter, dan tinggi Gunung Semeru tiga ribu enam ratus tujuh puluh enam meter. Kita memakai kartu angka dan papan ribuan, ratusan, puluhan, satuan. Nol tidak dibaca, tetapi menjaga tempat saat menulis. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa membaca, menulis, membandingkan, dan mengurutkan bilangan cacah sampai 10.000. Pada sub-bab ini fokus membaca dan menulis.",
-    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab A hlm. 4–11) dan metode Dienes empat tingkat (peti–dus–bungkus–benda)."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab A hlm. 4–11)."
   },
   "videos": [
     {
@@ -76,13 +69,15 @@ export const SUB_A41: SubBabNaskah = {
             "Satuan dibaca angkanya saja.",
             "Puluhan ditambah kata puluh, ratusan ditambah ratus, ribuan ditambah ribu.",
             "Baca dari kiri ke kanan.",
-            "Jika ada nol, tempat itu tidak dibaca."
+            "Jika ada nol, tempat itu tidak dibaca.",
+            "METODE LUAR. Balok Dienes Empat Tingkat: Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan."
           ],
           "papan": [
             "Satuan: angka",
             "Puluh, ratus, ribu",
             "Dari kiri",
-            "Nol tidak dibaca"
+            "Nol tidak dibaca",
+            "METODE LUAR · Balok Dienes Empat Tingkat"
           ]
         }
       ]
@@ -131,13 +126,15 @@ export const SUB_A41: SubBabNaskah = {
             "Bilangan 1.025: ribuannya 1 dibaca seribu.",
             "Ratusannya 0, tidak ditulis dalam bacaan.",
             "Puluhan 2 dan satuan 5: dua puluh lima.",
-            "Jadi dibaca seribu dua puluh lima."
+            "Jadi dibaca seribu dua puluh lima.",
+            "METODE LUAR. Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya."
           ],
           "papan": [
             "1.025",
             "Seribu",
             "Nol ratusan dilewati",
-            "Seribu dua puluh lima"
+            "Seribu dua puluh lima",
+            "METODE LUAR · Papan Nilai Tempat"
           ]
         }
       ]
@@ -186,13 +183,15 @@ export const SUB_A41: SubBabNaskah = {
             "Kita sudah bisa membaca dan menulis bilangan empat angka.",
             "Berikutnya kita pelajari nilai tiap tempat angka.",
             "Angka 2 pada 2.150 bernilai dua ribu, bukan dua.",
-            "Siap lanjut ke Sub-Bab B."
+            "Siap lanjut ke Sub-Bab B.",
+            "METODE LUAR. Nol Penjaga Tempat: Nol tidak dibaca keras, tetapi menjaga tempat digit."
           ],
           "papan": [
             "Membaca-menulis siap",
             "Nilai tempat",
             "2 bernilai 2.000",
-            "Lanjut Sub-Bab B"
+            "Lanjut Sub-Bab B",
+            "METODE LUAR · Nol Penjaga Tempat"
           ]
         }
       ]
@@ -261,6 +260,22 @@ export const SUB_A41: SubBabNaskah = {
       "stepDesc": "Siap membaca menulis pada bilangan sampai 10.000.",
       "icon": "✅",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Balok Dienes Empat Tingkat",
+      "stepDesc": "Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Papan Nilai Tempat",
+      "stepDesc": "Setiap digit punya nilai menurut tempatnya.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -334,6 +349,27 @@ export const SUB_A41: SubBabNaskah = {
       "countNum": 10000,
       "countWord": "sepuluh ribu",
       "suara": "Batas bab ini adalah sepuluh ribu."
+    },
+    {
+      "judul": "Balok Dienes Empat Tingkat",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Dienes Blocks",
+      "suara": "METODE LUAR. Balok Dienes Empat Tingkat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan."
+    },
+    {
+      "judul": "Papan Nilai Tempat",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Place-Value Chart",
+      "suara": "METODE LUAR. Papan Nilai Tempat. Setiap digit punya nilai menurut tempatnya."
+    },
+    {
+      "judul": "Nol Penjaga Tempat",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Zero as Placeholder",
+      "suara": "METODE LUAR. Nol Penjaga Tempat. Nol tidak dibaca keras, tetapi menjaga tempat digit."
     }
   ],
   "games": [
@@ -342,9 +378,9 @@ export const SUB_A41: SubBabNaskah = {
       "gameType": "build-with-exchange",
       "title": "Rakit Peti dan Dus",
       "bookReference": "hlm. 4–6 (kartu bilangan; 10 dus = 1 peti)",
-      "objective": "Merakit bilangan empat angka dengan peti, dus, bungkus, dan benda lepas.",
+      "objective": "Merakit bilangan empat angka dengan peti, dus, bungkus, dan benda lepas. (METODE LUAR · Balok Dienes Empat Tingkat)",
       "mechanicDescription": "Tiga ronde, tiap ronde dua bilangan. Penukaran sepuluh otomatis. Tekan Periksa.",
-      "voiceGuide": "Rakit bilangannya, lalu periksa.",
+      "voiceGuide": "METODE LUAR · Balok Dienes Empat Tingkat. Rakit bilangannya, lalu periksa.",
       "emoji": "📦",
       "targetCount": 6
     },
@@ -452,9 +488,9 @@ export const SUB_A41: SubBabNaskah = {
       "gameType": "count-blocks",
       "title": "Hitung Blok Empat Tempat",
       "bookReference": "hlm. 6",
-      "objective": "Membaca model blok menjadi lambang.",
+      "objective": "Membaca model blok menjadi lambang. (METODE LUAR · Balok Dienes Empat Tingkat)",
       "mechanicDescription": "Tiga ronde, dua soal.",
-      "voiceGuide": "Hitung blok.",
+      "voiceGuide": "METODE LUAR · Balok Dienes Empat Tingkat. Hitung blok.",
       "diagramType": "blocks-count",
       "numberA": 4,
       "numberB": 2
@@ -572,9 +608,9 @@ export const SUB_A41: SubBabNaskah = {
       "gameType": "compose-four-cards",
       "title": "Susun Empat Kartu",
       "bookReference": "hlm. 5–8 (kartu bilangan)",
-      "objective": "Menulis lambang dari kata dengan empat kartu.",
+      "objective": "Menulis lambang dari kata dengan empat kartu. (METODE LUAR · Balok Dienes Empat Tingkat)",
       "mechanicDescription": "Tiga ronde, dua soal.",
-      "voiceGuide": "Susun kartu menjadi bilangan.",
+      "voiceGuide": "METODE LUAR · Balok Dienes Empat Tingkat. Susun kartu menjadi bilangan.",
       "symbolLarge": "3.286",
       "wordLarge": "SUSUN KARTU",
       "mathNotation": "kata → angka"
@@ -718,6 +754,24 @@ export const SUB_A41: SubBabNaskah = {
       "nama": "10 dus = 1 peti",
       "isi": "1.000 satuan",
       "suara": "Sepuluh dus sama dengan satu peti atau seribu."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Balok Dienes Empat Tingkat",
+      "isi": "METODE LUAR · Dienes Blocks: Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan. (asal: Zoltan Dienes).",
+      "suara": "METODE LUAR. Balok Dienes Empat Tingkat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Papan Nilai Tempat",
+      "isi": "METODE LUAR · Place-Value Chart: Setiap digit punya nilai menurut tempatnya. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Papan Nilai Tempat. Setiap digit punya nilai menurut tempatnya."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Nol Penjaga Tempat",
+      "isi": "METODE LUAR · Zero as Placeholder: Nol tidak dibaca keras, tetapi menjaga tempat digit. (asal: Place-value pedagogy).",
+      "suara": "METODE LUAR. Nol Penjaga Tempat. Nol tidak dibaca keras, tetapi menjaga tempat digit."
     }
   ],
   "poinSuara": "Ingat! Empat tempat: ribuan, ratusan, puluhan, satuan. Baca dari kiri. Nol tidak dibaca. Ribuan 1 dibaca seribu. Sepuluh dus sama dengan satu peti.",
@@ -748,6 +802,43 @@ export const SUB_A41: SubBabNaskah = {
     "Aku dapat menulis lambangnya dari kata.",
     "Aku teliti saat ada nol.",
     "Aku berani menjelaskan kepada teman."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Dienes Blocks",
+      "namaId": "Balok Dienes Empat Tingkat",
+      "asal": "Zoltan Dienes",
+      "ringkas": "Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Place-Value Chart",
+      "namaId": "Papan Nilai Tempat",
+      "asal": "Van de Walle",
+      "ringkas": "Setiap digit punya nilai menurut tempatnya.",
+      "tahap": [
+        "Mind",
+        "Abstract",
+        "Infografis"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Zero as Placeholder",
+      "namaId": "Nol Penjaga Tempat",
+      "asal": "Place-value pedagogy",
+      "ringkas": "Nol tidak dibaca keras, tetapi menjaga tempat digit.",
+      "tahap": [
+        "Story",
+        "Abstract"
+      ]
+    }
   ]
 };
 
@@ -762,7 +853,7 @@ export const SUB_B41: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar nilai tempat. Empat kardus: ribuan, ratusan, puluhan, satuan. Pada 2.150, angka 2 bernilai dua ribu, angka 1 bernilai seratus, angka 5 bernilai lima puluh, angka 0 bernilai nol di satuan. Kita mengurai bilangan dan mengisi tabel digit. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menentukan nilai tempat bilangan cacah sampai 10.000.",
-    "referensi": "Buku Siswa Matematika Kelas IV (Bab 1 Sub-Bab B hlm. 12–16), aktivitas empat kardus, dan expanded form."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab B)."
   },
   "videos": [
     {
@@ -809,13 +900,15 @@ export const SUB_B41: SubBabNaskah = {
             "2.150 dibaca dua ribu seratus lima puluh.",
             "Angka 2 di ribuan, 1 di ratusan, 5 di puluhan, 0 di satuan.",
             "Nilainya: 2.000, 100, 50, dan 0.",
-            "Itulah nilai tempat."
+            "Itulah nilai tempat.",
+            "METODE LUAR. Nilai Tempat: Nilai digit = digit × nilai tempatnya."
           ],
           "papan": [
             "2.150",
             "Tempat digit",
             "Nilai 2000+100+50+0",
-            "Nilai tempat"
+            "Nilai tempat",
+            "METODE LUAR · Nilai Tempat"
           ]
         }
       ]
@@ -864,13 +957,15 @@ export const SUB_B41: SubBabNaskah = {
             "Pada 8.463, angka 6 ada di puluhan, nilainya 60.",
             "Pada 4.675, angka 6 di ratusan, nilainya 600.",
             "Tempat mengubah nilai angka yang sama.",
-            "Latih dengan teliti."
+            "Latih dengan teliti.",
+            "METODE LUAR. Tukar Sepuluh: Sepuluh benda sama dengan satu bungkus; begitu seterusnya ke atas."
           ],
           "papan": [
             "8.463 → 60",
             "4.675 → 600",
             "Tempat mengubah nilai",
-            "Latihan"
+            "Latihan",
+            "METODE LUAR · Tukar Sepuluh"
           ]
         }
       ]
@@ -919,13 +1014,15 @@ export const SUB_B41: SubBabNaskah = {
             "Nilai tempat siap dipakai untuk membandingkan.",
             "Kita bandingkan ribuan dulu.",
             "Bila sama, lanjut ratusan, puluhan, satuan.",
-            "Lanjut ke Sub-Bab C."
+            "Lanjut ke Sub-Bab C.",
+            "METODE LUAR. Bentuk Uraian: Tulis bilangan sebagai jumlah nilai tempat."
           ],
           "papan": [
             "Nilai tempat siap",
             "Ribuan dulu",
             "Lanjut tempat kanan",
-            "Sub-Bab C"
+            "Sub-Bab C",
+            "METODE LUAR · Bentuk Uraian"
           ]
         }
       ]
@@ -994,6 +1091,22 @@ export const SUB_B41: SubBabNaskah = {
       "stepDesc": "Siap nilai tempat pada bilangan sampai 10.000.",
       "icon": "✅",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Nilai Tempat",
+      "stepDesc": "Nilai digit = digit × nilai tempatnya.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Tukar Sepuluh",
+      "stepDesc": "Sepuluh benda sama dengan satu bungkus; begitu seterusnya ke atas.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -1067,6 +1180,27 @@ export const SUB_B41: SubBabNaskah = {
       "countNum": 1,
       "countWord": "lanjut Sub-Bab C",
       "suara": "Nilai tempat dipakai untuk membandingkan."
+    },
+    {
+      "judul": "Nilai Tempat",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Place Value",
+      "suara": "METODE LUAR. Nilai Tempat. Nilai digit = digit × nilai tempatnya."
+    },
+    {
+      "judul": "Tukar Sepuluh",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Dienes Trade",
+      "suara": "METODE LUAR. Tukar Sepuluh. Sepuluh benda sama dengan satu bungkus; begitu seterusnya ke atas."
+    },
+    {
+      "judul": "Bentuk Uraian",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Expanded Form",
+      "suara": "METODE LUAR. Bentuk Uraian. Tulis bilangan sebagai jumlah nilai tempat."
     }
   ],
   "games": [
@@ -1075,9 +1209,9 @@ export const SUB_B41: SubBabNaskah = {
       "gameType": "value-from-package",
       "title": "Nilai Tempat dari Kumpulan",
       "bookReference": "hlm. 12–14 (2.150)",
-      "objective": "Menentukan nilai tempat angka pada kumpulan.",
+      "objective": "Menentukan nilai tempat angka pada kumpulan. (METODE LUAR · Nilai Tempat)",
       "mechanicDescription": "Tiga ronde, dua soal.",
-      "voiceGuide": "Pilih nilai tempatnya.",
+      "voiceGuide": "METODE LUAR · Nilai Tempat. Pilih nilai tempatnya.",
       "emoji": "📍",
       "targetCount": 6
     },
@@ -1185,9 +1319,9 @@ export const SUB_B41: SubBabNaskah = {
       "gameType": "value-from-blocks",
       "title": "Nilai Tempat dari Blok",
       "bookReference": "hlm. 14",
-      "objective": "Nilai digit dari model.",
+      "objective": "Nilai digit dari model. (METODE LUAR · Nilai Tempat)",
       "mechanicDescription": "Tiga ronde, dua soal.",
-      "voiceGuide": "Pilih nilai.",
+      "voiceGuide": "METODE LUAR · Nilai Tempat. Pilih nilai.",
       "diagramType": "blocks-value",
       "numberA": 4,
       "numberB": 2
@@ -1305,9 +1439,9 @@ export const SUB_B41: SubBabNaskah = {
       "gameType": "compose-board-b",
       "title": "Susun di Papan Nilai Tempat",
       "bookReference": "hlm. 14",
-      "objective": "Menyusun dari instruksi digit.",
+      "objective": "Menyusun dari instruksi digit. (METODE LUAR · Nilai Tempat)",
       "mechanicDescription": "Tiga ronde, dua soal.",
-      "voiceGuide": "Isi papan.",
+      "voiceGuide": "METODE LUAR · Nilai Tempat. Isi papan.",
       "symbolLarge": "2.150",
       "wordLarge": "PAPAN",
       "mathNotation": "digit → bilangan"
@@ -1451,6 +1585,24 @@ export const SUB_B41: SubBabNaskah = {
       "nama": "Nol menjaga tempat",
       "isi": "satuan 0 tetap ada",
       "suara": "Nol menjaga tempat yang kosong."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Nilai Tempat",
+      "isi": "METODE LUAR · Place Value: Nilai digit = digit × nilai tempatnya. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Nilai Tempat. Nilai digit = digit × nilai tempatnya."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Tukar Sepuluh",
+      "isi": "METODE LUAR · Dienes Trade: Sepuluh benda sama dengan satu bungkus; begitu seterusnya ke atas. (asal: Dienes).",
+      "suara": "METODE LUAR. Tukar Sepuluh. Sepuluh benda sama dengan satu bungkus; begitu seterusnya ke atas."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Bentuk Uraian",
+      "isi": "METODE LUAR · Expanded Form: Tulis bilangan sebagai jumlah nilai tempat. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Bentuk Uraian. Tulis bilangan sebagai jumlah nilai tempat."
     }
   ],
   "poinSuara": "Tempat menentukan nilai. Uraikan bilangan. Tabel diisi digit. Angka sama bisa bernilai beda. Nol menjaga tempat.",
@@ -1481,6 +1633,42 @@ export const SUB_B41: SubBabNaskah = {
     "Aku bisa mengurai bilangan empat angka.",
     "Aku teliti mengisi tabel digit.",
     "Aku siap membandingkan dengan nilai tempat."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Place Value",
+      "namaId": "Nilai Tempat",
+      "asal": "Van de Walle",
+      "ringkas": "Nilai digit = digit × nilai tempatnya.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Dienes Trade",
+      "namaId": "Tukar Sepuluh",
+      "asal": "Dienes",
+      "ringkas": "Sepuluh benda sama dengan satu bungkus; begitu seterusnya ke atas.",
+      "tahap": [
+        "Concrete",
+        "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Expanded Form",
+      "namaId": "Bentuk Uraian",
+      "asal": "Van de Walle",
+      "ringkas": "Tulis bilangan sebagai jumlah nilai tempat.",
+      "tahap": [
+        "Mind",
+        "Abstract"
+      ]
+    }
   ]
 };
 
@@ -1495,7 +1683,7 @@ export const SUB_C41: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita membandingkan harga manggis tujuh ribu lima ratus dan bengkoang delapan ribu tujuh ratus lima puluh. Bandingkan ribuan dulu. Bila sama, lanjut ratusan, puluhan, satuan. Kita mengurutkan tinggi gunung dari terkecil. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa membandingkan dan mengurutkan bilangan cacah sampai 10.000.",
-    "referensi": "Buku Siswa Matematika Kelas IV (Bab 1 Sub-Bab C hlm. 16–24) dan strategi place-value comparison."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab C)."
   },
   "videos": [
     {
@@ -1542,13 +1730,15 @@ export const SUB_C41: SubBabNaskah = {
             "4.352 dan 4.365. Ribuan sama, ratusan sama.",
             "Lihat puluhan: 5 dan 6.",
             "Lima kurang dari enam, jadi 4.352 < 4.365.",
-            "Bila puluhan sama, lihat satuan."
+            "Bila puluhan sama, lihat satuan.",
+            "METODE LUAR. Banding dari Kiri: Bandingkan dari nilai tempat terbesar."
           ],
           "papan": [
             "Ribuan & ratusan sama",
             "Puluhan 5 < 6",
             "4.352 < 4.365",
-            "Lanjut satuan bila perlu"
+            "Lanjut satuan bila perlu",
+            "METODE LUAR · Banding dari Kiri"
           ]
         }
       ]
@@ -1597,13 +1787,15 @@ export const SUB_C41: SubBabNaskah = {
             "4.352 dan 4.352. Semua tempat sama.",
             "Ditulis 4.352 = 4.352.",
             "8.765 = 8.765.",
-            "Sama dengan berarti tidak ada yang lebih besar."
+            "Sama dengan berarti tidak ada yang lebih besar.",
+            "METODE LUAR. Urutan Garis Bilangan: Lebih kanan berarti lebih besar."
           ],
           "papan": [
             "Semua tempat sama",
             "= sama dengan",
             "8.765 = 8.765",
-            "Tidak ada yang unggul"
+            "Tidak ada yang unggul",
+            "METODE LUAR · Urutan Garis Bilangan"
           ]
         }
       ]
@@ -1652,13 +1844,15 @@ export const SUB_C41: SubBabNaskah = {
             "Urutkan 7.570, 5.240, 3.041, 9.941.",
             "Dari digit 1,5,9,2 susun bilangan terbesar 9.521.",
             "Membandingkan dan mengurutkan memakai langkah yang sama.",
-            "Sub-Bab A sampai C siap!"
+            "Sub-Bab A sampai C siap!",
+            "METODE LUAR. Mengurutkan Himpunan: Urut naik atau turun dengan membandingkan berpasangan."
           ],
           "papan": [
             "Urutkan empat bilangan",
             "Digit 1 5 9 2",
             "9.521 terbesar",
-            "Bab 1 A–C siap"
+            "Bab 1 A–C siap",
+            "METODE LUAR · Mengurutkan Himpunan"
           ]
         }
       ]
@@ -1727,6 +1921,22 @@ export const SUB_C41: SubBabNaskah = {
       "stepDesc": "Siap banding urut pada bilangan sampai 10.000.",
       "icon": "✅",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Banding dari Kiri",
+      "stepDesc": "Bandingkan dari nilai tempat terbesar.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Urutan Garis Bilangan",
+      "stepDesc": "Lebih kanan berarti lebih besar.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -1800,6 +2010,27 @@ export const SUB_C41: SubBabNaskah = {
       "countNum": 1,
       "countWord": "tanda dibalik arti berubah",
       "suara": "Baca tanda dengan teliti."
+    },
+    {
+      "judul": "Banding dari Kiri",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Compare Leftmost",
+      "suara": "METODE LUAR. Banding dari Kiri. Bandingkan dari nilai tempat terbesar."
+    },
+    {
+      "judul": "Urutan Garis Bilangan",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Number Line Order",
+      "suara": "METODE LUAR. Urutan Garis Bilangan. Lebih kanan berarti lebih besar."
+    },
+    {
+      "judul": "Mengurutkan Himpunan",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Ordering Sets",
+      "suara": "METODE LUAR. Mengurutkan Himpunan. Urut naik atau turun dengan membandingkan berpasangan."
     }
   ],
   "games": [
@@ -1808,9 +2039,9 @@ export const SUB_C41: SubBabNaskah = {
       "gameType": "compare-collections",
       "title": "Bandingkan Kumpulan Harga",
       "bookReference": "hlm. 16–18 (7.500 dan 8.750)",
-      "objective": "Menentukan kumpulan mana lebih banyak.",
+      "objective": "Menentukan kumpulan mana lebih banyak. (METODE LUAR · Banding dari Kiri)",
       "mechanicDescription": "Tiga ronde, dua soal.",
-      "voiceGuide": "Bandingkan dua kumpulan.",
+      "voiceGuide": "METODE LUAR · Banding dari Kiri. Bandingkan dua kumpulan.",
       "emoji": "⚖️",
       "targetCount": 6
     },
@@ -1918,9 +2149,9 @@ export const SUB_C41: SubBabNaskah = {
       "gameType": "compare-blocks",
       "title": "Bandingkan Blok",
       "bookReference": "hlm. 18–20",
-      "objective": "Model mana lebih besar.",
+      "objective": "Model mana lebih besar. (METODE LUAR · Banding dari Kiri)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Bandingkan model.",
+      "voiceGuide": "METODE LUAR · Banding dari Kiri. Bandingkan model.",
       "diagramType": "blocks-compare",
       "numberA": 4,
       "numberB": 2
@@ -2038,9 +2269,9 @@ export const SUB_C41: SubBabNaskah = {
       "gameType": "compare-numerals",
       "title": "Bandingkan Lambang",
       "bookReference": "hlm. 20–21",
-      "objective": "Pilih tanda dua lambang.",
+      "objective": "Pilih tanda dua lambang. (METODE LUAR · Banding dari Kiri)",
       "mechanicDescription": "Tiga ronde, dua soal.",
-      "voiceGuide": "Pilih tanda.",
+      "voiceGuide": "METODE LUAR · Banding dari Kiri. Pilih tanda.",
       "symbolLarge": "8.750 ○ 7.500",
       "wordLarge": "BANDINGKAN",
       "mathNotation": "> < ="
@@ -2184,6 +2415,24 @@ export const SUB_C41: SubBabNaskah = {
       "nama": "Susun digit",
       "isi": "terbesar 9.521 dari 1,5,9,2",
       "suara": "Digit besar di kiri untuk bilangan terbesar."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Banding dari Kiri",
+      "isi": "METODE LUAR · Compare Leftmost: Bandingkan dari nilai tempat terbesar. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Banding dari Kiri. Bandingkan dari nilai tempat terbesar."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Urutan Garis Bilangan",
+      "isi": "METODE LUAR · Number Line Order: Lebih kanan berarti lebih besar. (asal: Number line).",
+      "suara": "METODE LUAR. Urutan Garis Bilangan. Lebih kanan berarti lebih besar."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Mengurutkan Himpunan",
+      "isi": "METODE LUAR · Ordering Sets: Urut naik atau turun dengan membandingkan berpasangan. (asal: Number sense).",
+      "suara": "METODE LUAR. Mengurutkan Himpunan. Urut naik atau turun dengan membandingkan berpasangan."
     }
   ],
   "poinSuara": "Bandingkan dari ribuan. Pakai tanda kurang dari, lebih dari, atau sama dengan. Urutkan naik atau turun. Tempat pertama yang berbeda menentukan.",
@@ -2214,6 +2463,42 @@ export const SUB_C41: SubBabNaskah = {
     "Aku memakai tanda dengan benar.",
     "Aku bisa mengurutkan empat bilangan.",
     "Aku menjelaskan langkahku."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Compare Leftmost",
+      "namaId": "Banding dari Kiri",
+      "asal": "Van de Walle",
+      "ringkas": "Bandingkan dari nilai tempat terbesar.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Number Line Order",
+      "namaId": "Urutan Garis Bilangan",
+      "asal": "Number line",
+      "ringkas": "Lebih kanan berarti lebih besar.",
+      "tahap": [
+        "Picture",
+        "Mind"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Ordering Sets",
+      "namaId": "Mengurutkan Himpunan",
+      "asal": "Number sense",
+      "ringkas": "Urut naik atau turun dengan membandingkan berpasangan.",
+      "tahap": [
+        "Infografis",
+        "Abstract"
+      ]
+    }
   ]
 };
 
@@ -2228,7 +2513,7 @@ export const SUB_D41: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar komposisi dan dekomposisi bilangan sampai sepuluh ribu. Menyusun 6 ribuan + 3 ratusan + 4 puluhan + 8 satuan menjadi 6.348, lalu mengurai 6.849 menjadi 6.000 + 800 + 40 + 9. Nol tetap menjaga tempat seperti pada 6.035. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menyusun dan mengurai bilangan cacah sampai 10.000 menurut nilai tempat.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 1 Sub-Bab D hlm. 24–28; expanded form / place-value composition."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab D)."
   },
   "videos": [
     {
@@ -2275,13 +2560,15 @@ export const SUB_D41: SubBabNaskah = {
             "Komposisi menyusun dari bagian.",
             "Dekomposisi mengurai ke bagian.",
             "Keduanya saling membalik.",
-            "Ayo lanjut mengurai bilangan."
+            "Ayo lanjut mengurai bilangan.",
+            "METODE LUAR. Komposisi Bilangan: Susun bilangan dari bagian nilai tempat."
           ],
           "papan": [
             "komposisi",
             "dekomposisi",
             "saling balik",
-            "lanjut"
+            "lanjut",
+            "METODE LUAR · Komposisi Bilangan"
           ]
         }
       ]
@@ -2330,13 +2617,15 @@ export const SUB_D41: SubBabNaskah = {
             "Helen punya pecahan uang di warung.",
             "Slamet beli seharga 7.300.",
             "Uraikan 7.300 dari pecahan Helen.",
-            "Uraikan juga 10.000."
+            "Uraikan juga 10.000.",
+            "METODE LUAR. Dekomposisi Bilangan: Urai bilangan menjadi bagian yang lebih kecil."
           ],
           "papan": [
             "warung",
             "Rp7.300",
             "pecahan",
-            "Rp10.000"
+            "Rp10.000",
+            "METODE LUAR · Dekomposisi Bilangan"
           ]
         }
       ]
@@ -2385,13 +2674,15 @@ export const SUB_D41: SubBabNaskah = {
             "Kita sudah menyusun dan mengurai.",
             "Saatnya bermain di tahap benda, gambar, dan angka.",
             "Ingat: nol menjaga tempat.",
-            "Ayo mulai."
+            "Ayo mulai.",
+            "METODE LUAR. Pengelompokan Fleksibel: Satu ratusan bisa jadi sepuluh puluhan."
           ],
           "papan": [
             "siap",
             "Concrete",
             "Picture",
-            "Abstract"
+            "Abstract",
+            "METODE LUAR · Pengelompokan Fleksibel"
           ]
         }
       ]
@@ -2460,6 +2751,22 @@ export const SUB_D41: SubBabNaskah = {
       "stepDesc": "Lanjut penjumlahan Sub-Bab E.",
       "icon": "✅",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Komposisi Bilangan",
+      "stepDesc": "Susun bilangan dari bagian nilai tempat.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Dekomposisi Bilangan",
+      "stepDesc": "Urai bilangan menjadi bagian yang lebih kecil.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -2533,6 +2840,27 @@ export const SUB_D41: SubBabNaskah = {
       "countNum": 4,
       "countWord": "lanjut",
       "suara": "Siap lanjut ke penjumlahan sampai seribu."
+    },
+    {
+      "judul": "Komposisi Bilangan",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Composition",
+      "suara": "METODE LUAR. Komposisi Bilangan. Susun bilangan dari bagian nilai tempat."
+    },
+    {
+      "judul": "Dekomposisi Bilangan",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Decomposition",
+      "suara": "METODE LUAR. Dekomposisi Bilangan. Urai bilangan menjadi bagian yang lebih kecil."
+    },
+    {
+      "judul": "Pengelompokan Fleksibel",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Flexible Grouping",
+      "suara": "METODE LUAR. Pengelompokan Fleksibel. Satu ratusan bisa jadi sepuluh puluhan."
     }
   ],
   "games": [
@@ -2541,9 +2869,9 @@ export const SUB_D41: SubBabNaskah = {
       "gameType": "compose-place",
       "title": "Susun dari Nilai Tempat",
       "bookReference": "hlm. 24–25 (6.348)",
-      "objective": "Menyusun bilangan dari ribuan–satuan.",
+      "objective": "Menyusun bilangan dari ribuan–satuan. (METODE LUAR · Komposisi Bilangan)",
       "mechanicDescription": "Tiga ronde, dua bilangan. Rakit peti sampai satuan.",
-      "voiceGuide": "Rakit dari nilai tempat.",
+      "voiceGuide": "METODE LUAR · Komposisi Bilangan. Rakit dari nilai tempat.",
       "emoji": "🧩",
       "targetCount": 6
     },
@@ -2651,9 +2979,9 @@ export const SUB_D41: SubBabNaskah = {
       "gameType": "compose-blocks",
       "title": "Susun dari Blok",
       "bookReference": "hlm. 25–26",
-      "objective": "Membaca model menjadi bilangan.",
+      "objective": "Membaca model menjadi bilangan. (METODE LUAR · Komposisi Bilangan)",
       "mechanicDescription": "Tiga ronde, dua soal.",
-      "voiceGuide": "Hitung blok.",
+      "voiceGuide": "METODE LUAR · Komposisi Bilangan. Hitung blok.",
       "diagramType": "blocks-compose",
       "numberA": 4,
       "numberB": 2
@@ -2771,9 +3099,9 @@ export const SUB_D41: SubBabNaskah = {
       "gameType": "compose-cards",
       "title": "Susun Empat Kartu dari Uraian",
       "bookReference": "hlm. 25",
-      "objective": "Menulis lambang dari uraian.",
+      "objective": "Menulis lambang dari uraian. (METODE LUAR · Komposisi Bilangan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Susun kartu.",
+      "voiceGuide": "METODE LUAR · Komposisi Bilangan. Susun kartu.",
       "symbolLarge": "6.348",
       "wordLarge": "SUSUN",
       "mathNotation": "urai → angka"
@@ -2911,6 +3239,24 @@ export const SUB_D41: SubBabNaskah = {
       "nama": "Periksa",
       "isi": "Jumlahkan uraian untuk memeriksa.",
       "suara": "Jumlahkan semua nilai tempat untuk memeriksa."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Komposisi Bilangan",
+      "isi": "METODE LUAR · Composition: Susun bilangan dari bagian nilai tempat. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Komposisi Bilangan. Susun bilangan dari bagian nilai tempat."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Dekomposisi Bilangan",
+      "isi": "METODE LUAR · Decomposition: Urai bilangan menjadi bagian yang lebih kecil. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Dekomposisi Bilangan. Urai bilangan menjadi bagian yang lebih kecil."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Pengelompokan Fleksibel",
+      "isi": "METODE LUAR · Flexible Grouping: Satu ratusan bisa jadi sepuluh puluhan. (asal: Base-ten flexibility).",
+      "suara": "METODE LUAR. Pengelompokan Fleksibel. Satu ratusan bisa jadi sepuluh puluhan."
     }
   ],
   "poinSuara": "Empat poin penting komposisi dan dekomposisi.",
@@ -2941,6 +3287,42 @@ export const SUB_D41: SubBabNaskah = {
     "Aku mengurai bilangan.",
     "Aku menjaga nol.",
     "Aku memeriksa dengan menjumlahkan."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Composition",
+      "namaId": "Komposisi Bilangan",
+      "asal": "Van de Walle",
+      "ringkas": "Susun bilangan dari bagian nilai tempat.",
+      "tahap": [
+        "Story",
+        "Concrete"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Decomposition",
+      "namaId": "Dekomposisi Bilangan",
+      "asal": "Van de Walle",
+      "ringkas": "Urai bilangan menjadi bagian yang lebih kecil.",
+      "tahap": [
+        "Mind",
+        "Picture",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Flexible Grouping",
+      "namaId": "Pengelompokan Fleksibel",
+      "asal": "Base-ten flexibility",
+      "ringkas": "Satu ratusan bisa jadi sepuluh puluhan.",
+      "tahap": [
+        "Infografis",
+        "Concrete"
+      ]
+    }
   ]
 };
 
@@ -2955,7 +3337,7 @@ export const SUB_E41: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar penjumlahan sampai seribu. Pohon jeruk Pak Toni 131 ditambah 321 sama dengan 452. Jeruk pedagang 189 ditambah 245 perlu menyimpan menjadi 434. Kita juga menjumlahkan tiga bilangan seperti 124 + 411 + 363 = 898. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menjumlahkan bilangan cacah sampai 1.000 dengan dan tanpa menyimpan.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 1 Sub-Bab E hlm. 28–33; partial-sums dan standard algorithm."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab E)."
   },
   "videos": [
     {
@@ -3002,13 +3384,15 @@ export const SUB_E41: SubBabNaskah = {
             "Tulis bersusun ratusan puluhan satuan.",
             "1+1=2, 3+2=5, 1+3=4.",
             "Tanpa menyimpan.",
-            "Sama hasilnya 452."
+            "Sama hasilnya 452.",
+            "METODE LUAR. Penjumlahan Bersusun: Jumlahkan dari satuan, simpan jika perlu."
           ],
           "papan": [
             "bersusun",
             "dari kanan",
             "tanpa simpan",
-            "452"
+            "452",
+            "METODE LUAR · Penjumlahan Bersusun"
           ]
         }
       ]
@@ -3057,13 +3441,15 @@ export const SUB_E41: SubBabNaskah = {
             "Buku tiga SD: 124, 411, dan 363.",
             "Jumlahkan bertahap.",
             "Hasil 898 buku.",
-            "Boleh dua-dua dulu."
+            "Boleh dua-dua dulu.",
+            "METODE LUAR. Menyimpan: Sepuluh satuan menjadi satu puluhan."
           ],
           "papan": [
             "124+411+363",
             "bertahap",
             "898",
-            "dua-dua"
+            "dua-dua",
+            "METODE LUAR · Menyimpan"
           ]
         }
       ]
@@ -3112,13 +3498,15 @@ export const SUB_E41: SubBabNaskah = {
             "Kita sudah menjumlahkan dengan dan tanpa menyimpan.",
             "Saatnya bermain.",
             "Ingat: mulai dari satuan.",
-            "Ayo mulai."
+            "Ayo mulai.",
+            "METODE LUAR. Menghitung Maju: Mulai dari bilangan lebih besar lalu maju."
           ],
           "papan": [
             "siap",
             "Concrete",
             "dari satuan",
-            "mulai"
+            "mulai",
+            "METODE LUAR · Menghitung Maju"
           ]
         }
       ]
@@ -3187,7 +3575,15 @@ export const SUB_E41: SubBabNaskah = {
       "stepDesc": "Lanjut pengurangan.",
       "icon": "✅",
       "flowFrom": "7",
-      "flowTo": "END"
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Penjumlahan Bersusun",
+      "stepDesc": "Jumlahkan dari satuan, simpan jika perlu.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
     }
   ],
   "infografis": [
@@ -3260,6 +3656,27 @@ export const SUB_E41: SubBabNaskah = {
       "countNum": 6,
       "countWord": "lanjut",
       "suara": "Siap lanjut ke pengurangan."
+    },
+    {
+      "judul": "Penjumlahan Bersusun",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Standard Addition",
+      "suara": "METODE LUAR. Penjumlahan Bersusun. Jumlahkan dari satuan, simpan jika perlu."
+    },
+    {
+      "judul": "Menyimpan",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Regrouping",
+      "suara": "METODE LUAR. Menyimpan. Sepuluh satuan menjadi satu puluhan."
+    },
+    {
+      "judul": "Menghitung Maju",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Counting On",
+      "suara": "METODE LUAR. Menghitung Maju. Mulai dari bilangan lebih besar lalu maju."
     }
   ],
   "games": [
@@ -3268,9 +3685,9 @@ export const SUB_E41: SubBabNaskah = {
       "gameType": "join-packages",
       "title": "Gabungkan Kumpulan",
       "bookReference": "hlm. 28–29 (131+321)",
-      "objective": "Merakit jumlah dua kumpulan.",
+      "objective": "Merakit jumlah dua kumpulan. (METODE LUAR · Penjumlahan Bersusun)",
       "mechanicDescription": "Tiga ronde. Penukaran otomatis.",
-      "voiceGuide": "Rakit jumlahnya.",
+      "voiceGuide": "METODE LUAR · Penjumlahan Bersusun. Rakit jumlahnya.",
       "emoji": "➕",
       "targetCount": 6
     },
@@ -3378,9 +3795,9 @@ export const SUB_E41: SubBabNaskah = {
       "gameType": "column-add",
       "title": "Susun Pendek di Layar",
       "bookReference": "hlm. 29–32",
-      "objective": "Memilih hasil cara susun.",
+      "objective": "Memilih hasil cara susun. (METODE LUAR · Penjumlahan Bersusun)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih hasil.",
+      "voiceGuide": "METODE LUAR · Penjumlahan Bersusun. Pilih hasil.",
       "diagramType": "column-add",
       "numberA": 3,
       "numberB": 2
@@ -3498,9 +3915,9 @@ export const SUB_E41: SubBabNaskah = {
       "gameType": "column-add-q",
       "title": "Susun Pendek Angka",
       "bookReference": "hlm. 32",
-      "objective": "Hasil susun pendek.",
+      "objective": "Hasil susun pendek. (METODE LUAR · Penjumlahan Bersusun)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih hasil.",
+      "voiceGuide": "METODE LUAR · Penjumlahan Bersusun. Pilih hasil.",
       "symbolLarge": "434",
       "wordLarge": "SUSUN",
       "mathNotation": "a + b"
@@ -3638,6 +4055,18 @@ export const SUB_E41: SubBabNaskah = {
       "nama": "Tiga suku",
       "isi": "Jumlahkan bertahap dua-dua.",
       "suara": "Tiga bilangan boleh dijumlahkan dua-dua."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Penjumlahan Bersusun",
+      "isi": "METODE LUAR · Standard Addition: Jumlahkan dari satuan, simpan jika perlu. (asal: Elementary algorithms).",
+      "suara": "METODE LUAR. Penjumlahan Bersusun. Jumlahkan dari satuan, simpan jika perlu."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Menghitung Maju",
+      "isi": "METODE LUAR · Counting On: Mulai dari bilangan lebih besar lalu maju. (asal: Singapore / counting on).",
+      "suara": "METODE LUAR. Menghitung Maju. Mulai dari bilangan lebih besar lalu maju."
     }
   ],
   "poinSuara": "Empat poin penting penjumlahan sampai seribu.",
@@ -3668,6 +4097,42 @@ export const SUB_E41: SubBabNaskah = {
     "Aku menyimpan dengan benar.",
     "Aku memakai dua cara.",
     "Aku memeriksa hasil."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Standard Addition",
+      "namaId": "Penjumlahan Bersusun",
+      "asal": "Elementary algorithms",
+      "ringkas": "Jumlahkan dari satuan, simpan jika perlu.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Regrouping",
+      "namaId": "Menyimpan",
+      "asal": "Base-ten regrouping",
+      "ringkas": "Sepuluh satuan menjadi satu puluhan.",
+      "tahap": [
+        "Picture",
+        "Mind"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Counting On",
+      "namaId": "Menghitung Maju",
+      "asal": "Singapore / counting on",
+      "ringkas": "Mulai dari bilangan lebih besar lalu maju.",
+      "tahap": [
+        "Concrete",
+        "Infografis"
+      ]
+    }
   ]
 };
 
@@ -3682,7 +4147,7 @@ export const SUB_F41: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar pengurangan sampai seribu. Buku 265 dikurangi 132 sisa 133 tanpa mengambil. Lalu 241 dikurangi 129 perlu mengambil menjadi 112. Ada juga dua kali mengambil seperti 253 dikurangi 176 sisa 77. Periksa: hasil ditambah pengurang kembali ke bilangan awal. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa mengurangi bilangan cacah sampai 1.000 dengan dan tanpa mengambil.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 1 Sub-Bab F hlm. 34–37; decomposition subtraction dan standard algorithm."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab F)."
   },
   "videos": [
     {
@@ -3729,13 +4194,15 @@ export const SUB_F41: SubBabNaskah = {
             "Tulis bersusun.",
             "5−2=3, 6−3=3, 2−1=1.",
             "Tanpa mengambil.",
-            "Hasil sama 133."
+            "Hasil sama 133.",
+            "METODE LUAR. Pengurangan Bersusun: Kurangi dari satuan, pinjam jika perlu."
           ],
           "papan": [
             "bersusun",
             "dari kanan",
             "tanpa ambil",
-            "133"
+            "133",
+            "METODE LUAR · Pengurangan Bersusun"
           ]
         }
       ]
@@ -3784,13 +4251,15 @@ export const SUB_F41: SubBabNaskah = {
             "253 − 176.",
             "Ambil puluhan, lalu ambil ratusan.",
             "Hasil 77.",
-            "Teliti tiap langkah."
+            "Teliti tiap langkah.",
+            "METODE LUAR. Meminjam: Satu puluhan dibuka menjadi sepuluh satuan."
           ],
           "papan": [
             "253−176",
             "dua ambil",
             "77",
-            "teliti"
+            "teliti",
+            "METODE LUAR · Meminjam"
           ]
         }
       ]
@@ -3839,13 +4308,15 @@ export const SUB_F41: SubBabNaskah = {
             "Kita sudah mengurangi dengan dan tanpa mengambil.",
             "Saatnya bermain.",
             "Ingat: ambil bila tidak cukup.",
-            "Ayo mulai."
+            "Ayo mulai.",
+            "METODE LUAR. Menghitung Naik: Hitung naik dari yang dikurangi sampai bilangan awal."
           ],
           "papan": [
             "siap",
             "Concrete",
             "ambil",
-            "mulai"
+            "mulai",
+            "METODE LUAR · Menghitung Naik"
           ]
         }
       ]
@@ -3914,6 +4385,22 @@ export const SUB_F41: SubBabNaskah = {
       "stepDesc": "Lanjut bab berikutnya nanti.",
       "icon": "✅",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Pengurangan Bersusun",
+      "stepDesc": "Kurangi dari satuan, pinjam jika perlu.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Meminjam",
+      "stepDesc": "Satu puluhan dibuka menjadi sepuluh satuan.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -3987,6 +4474,27 @@ export const SUB_F41: SubBabNaskah = {
       "countNum": 5,
       "countWord": "selesai",
       "suara": "Sub-Bab F siap dimainkan."
+    },
+    {
+      "judul": "Pengurangan Bersusun",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Standard Subtraction",
+      "suara": "METODE LUAR. Pengurangan Bersusun. Kurangi dari satuan, pinjam jika perlu."
+    },
+    {
+      "judul": "Meminjam",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Borrowing",
+      "suara": "METODE LUAR. Meminjam. Satu puluhan dibuka menjadi sepuluh satuan."
+    },
+    {
+      "judul": "Menghitung Naik",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Counting Up",
+      "suara": "METODE LUAR. Menghitung Naik. Hitung naik dari yang dikurangi sampai bilangan awal."
     }
   ],
   "games": [
@@ -3995,9 +4503,9 @@ export const SUB_F41: SubBabNaskah = {
       "gameType": "leave-packages",
       "title": "Rakit Sisa Kumpulan",
       "bookReference": "hlm. 34–35 (265−132)",
-      "objective": "Merakit sisa setelah dikurangi.",
+      "objective": "Merakit sisa setelah dikurangi. (METODE LUAR · Pengurangan Bersusun)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Rakit sisanya.",
+      "voiceGuide": "METODE LUAR · Pengurangan Bersusun. Rakit sisanya.",
       "emoji": "➖",
       "targetCount": 6
     },
@@ -4105,9 +4613,9 @@ export const SUB_F41: SubBabNaskah = {
       "gameType": "column-sub",
       "title": "Susun Pendek Pengurangan",
       "bookReference": "hlm. 35–36",
-      "objective": "Memilih hasil susun.",
+      "objective": "Memilih hasil susun. (METODE LUAR · Pengurangan Bersusun)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih hasil.",
+      "voiceGuide": "METODE LUAR · Pengurangan Bersusun. Pilih hasil.",
       "diagramType": "column-sub",
       "numberA": 3,
       "numberB": 2
@@ -4225,9 +4733,9 @@ export const SUB_F41: SubBabNaskah = {
       "gameType": "column-sub-q",
       "title": "Susun Pendek Angka Kurang",
       "bookReference": "hlm. 36–37",
-      "objective": "Hasil susun pendek.",
+      "objective": "Hasil susun pendek. (METODE LUAR · Pengurangan Bersusun)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih hasil.",
+      "voiceGuide": "METODE LUAR · Pengurangan Bersusun. Pilih hasil.",
       "symbolLarge": "112",
       "wordLarge": "SUSUN",
       "mathNotation": "a − b"
@@ -4365,6 +4873,24 @@ export const SUB_F41: SubBabNaskah = {
       "nama": "Periksa",
       "isi": "Hasil + pengurang = bilangan awal.",
       "suara": "Periksa dengan penjumlahan."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Pengurangan Bersusun",
+      "isi": "METODE LUAR · Standard Subtraction: Kurangi dari satuan, pinjam jika perlu. (asal: Elementary algorithms).",
+      "suara": "METODE LUAR. Pengurangan Bersusun. Kurangi dari satuan, pinjam jika perlu."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Meminjam",
+      "isi": "METODE LUAR · Borrowing: Satu puluhan dibuka menjadi sepuluh satuan. (asal: Base-ten regrouping).",
+      "suara": "METODE LUAR. Meminjam. Satu puluhan dibuka menjadi sepuluh satuan."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Menghitung Naik",
+      "isi": "METODE LUAR · Counting Up: Hitung naik dari yang dikurangi sampai bilangan awal. (asal: Counting up).",
+      "suara": "METODE LUAR. Menghitung Naik. Hitung naik dari yang dikurangi sampai bilangan awal."
     }
   ],
   "poinSuara": "Empat poin penting pengurangan sampai seribu.",
@@ -4395,10 +4921,44 @@ export const SUB_F41: SubBabNaskah = {
     "Aku mengambil dengan benar.",
     "Aku memeriksa dengan penjumlahan.",
     "Aku menjelaskan langkahku."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Standard Subtraction",
+      "namaId": "Pengurangan Bersusun",
+      "asal": "Elementary algorithms",
+      "ringkas": "Kurangi dari satuan, pinjam jika perlu.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Borrowing",
+      "namaId": "Meminjam",
+      "asal": "Base-ten regrouping",
+      "ringkas": "Satu puluhan dibuka menjadi sepuluh satuan.",
+      "tahap": [
+        "Picture",
+        "Mind"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Counting Up",
+      "namaId": "Menghitung Naik",
+      "asal": "Counting up",
+      "ringkas": "Hitung naik dari yang dikurangi sampai bilangan awal.",
+      "tahap": [
+        "Concrete",
+        "Infografis"
+      ]
+    }
   ]
 };
-
-
 
 export const SUB_G41: SubBabNaskah = {
   "id": "G",
@@ -4411,7 +4971,7 @@ export const SUB_G41: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar perkalian sampai seratus. Dua belas kotak donat berisi empat donat sama dengan empat puluh delapan. Kita memakai cara panjang dan cara bersusun. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa melakukan operasi hitung bilangan cacah. Pada sub-bab ini fokus perkalian sampai 100.",
-    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab G hlm. 39–43); array model & algoritma bersusun."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab G)."
   },
   "videos": [
     {
@@ -4458,13 +5018,15 @@ export const SUB_G41: SubBabNaskah = {
             "Kita uraikan 12 menjadi 10 tambah 2.",
             "Lalu kalikan masing-masing dengan 4.",
             "40 tambah 8 sama dengan 48.",
-            "Itu namanya cara panjang."
+            "Itu namanya cara panjang.",
+            "METODE LUAR. Kelompok Sama Banyak: Perkalian adalah penjumlahan berulang kelompok sama."
           ],
           "papan": [
             "10+2",
             "×4",
             "40+8",
-            "panjang"
+            "panjang",
+            "METODE LUAR · Kelompok Sama Banyak"
           ]
         }
       ]
@@ -4513,13 +5075,15 @@ export const SUB_G41: SubBabNaskah = {
             "14 sama dengan 10 tambah 4.",
             "10 kali 5 sama dengan 50.",
             "4 kali 5 sama dengan 20.",
-            "50 tambah 20 sama dengan 70."
+            "50 tambah 20 sama dengan 70.",
+            "METODE LUAR. Model Susunan: Baris × kolom menunjukkan hasil kali."
           ],
           "papan": [
             "10+4",
             "50",
             "20",
-            "70"
+            "70",
+            "METODE LUAR · Model Susunan"
           ]
         }
       ]
@@ -4568,13 +5132,15 @@ export const SUB_G41: SubBabNaskah = {
             "8 pak pensil, tiap pak 12 batang.",
             "12 kali 8 sama dengan 96.",
             "Ada yang perlu menyimpan.",
-            "Periksa lagi hasilmu."
+            "Periksa lagi hasilmu.",
+            "METODE LUAR. Kefasihan Tabel Kali: Latihan fakta kali sampai 100."
           ],
           "papan": [
             "8 pak",
             "×12",
             "96",
-            "periksa"
+            "periksa",
+            "METODE LUAR · Kefasihan Tabel Kali"
           ]
         }
       ]
@@ -4643,6 +5209,22 @@ export const SUB_G41: SubBabNaskah = {
       "stepDesc": "Lanjut ke pembagian.",
       "icon": "✅",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Kelompok Sama Banyak",
+      "stepDesc": "Perkalian adalah penjumlahan berulang kelompok sama.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Model Susunan",
+      "stepDesc": "Baris × kolom menunjukkan hasil kali.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -4716,6 +5298,27 @@ export const SUB_G41: SubBabNaskah = {
       "countNum": 1,
       "countWord": "lanjut",
       "suara": "Siap belajar pembagian."
+    },
+    {
+      "judul": "Kelompok Sama Banyak",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Equal Groups",
+      "suara": "METODE LUAR. Kelompok Sama Banyak. Perkalian adalah penjumlahan berulang kelompok sama."
+    },
+    {
+      "judul": "Model Susunan",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Array Model",
+      "suara": "METODE LUAR. Model Susunan. Baris × kolom menunjukkan hasil kali."
+    },
+    {
+      "judul": "Kefasihan Tabel Kali",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Times Table Fluency",
+      "suara": "METODE LUAR. Kefasihan Tabel Kali. Latihan fakta kali sampai 100."
     }
   ],
   "games": [
@@ -4724,9 +5327,9 @@ export const SUB_G41: SubBabNaskah = {
       "gameType": "array-rakit",
       "title": "Rakit Hasil Array",
       "bookReference": "hlm. 39–40 (12×4 donat)",
-      "objective": "Merakit hasil perkalian dari array.",
+      "objective": "Merakit hasil perkalian dari array. (METODE LUAR · Kelompok Sama Banyak)",
       "mechanicDescription": "Tiga ronde, dua soal.",
-      "voiceGuide": "Rakit hasil kalinya.",
+      "voiceGuide": "METODE LUAR · Kelompok Sama Banyak. Rakit hasil kalinya.",
       "emoji": "🍩",
       "targetCount": 6
     },
@@ -4834,9 +5437,9 @@ export const SUB_G41: SubBabNaskah = {
       "gameType": "array-model",
       "title": "Array Titik",
       "bookReference": "hlm. 39–40",
-      "objective": "Membaca array titik menjadi hasil.",
+      "objective": "Membaca array titik menjadi hasil. (METODE LUAR · Kelompok Sama Banyak)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih hasil.",
+      "voiceGuide": "METODE LUAR · Kelompok Sama Banyak. Pilih hasil.",
       "diagramType": "dot-array",
       "numberA": 4,
       "numberB": 2
@@ -4954,9 +5557,9 @@ export const SUB_G41: SubBabNaskah = {
       "gameType": "column-kali-q",
       "title": "Bersusun Angka",
       "bookReference": "hlm. 41–42",
-      "objective": "Hasil bersusun.",
+      "objective": "Hasil bersusun. (METODE LUAR · Kelompok Sama Banyak)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih hasil.",
+      "voiceGuide": "METODE LUAR · Kelompok Sama Banyak. Pilih hasil.",
       "symbolLarge": "48",
       "wordLarge": "KALI",
       "mathNotation": "a × b"
@@ -5094,6 +5697,24 @@ export const SUB_G41: SubBabNaskah = {
       "nama": "Periksa",
       "isi": "Bandingkan dengan cara panjang atau penjumlahan.",
       "suara": "Periksa hasil dengan cara lain."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Kelompok Sama Banyak",
+      "isi": "METODE LUAR · Equal Groups: Perkalian adalah penjumlahan berulang kelompok sama. (asal: Multiplication pedagogy).",
+      "suara": "METODE LUAR. Kelompok Sama Banyak. Perkalian adalah penjumlahan berulang kelompok sama."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Model Susunan",
+      "isi": "METODE LUAR · Array Model: Baris × kolom menunjukkan hasil kali. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Model Susunan. Baris × kolom menunjukkan hasil kali."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Kefasihan Tabel Kali",
+      "isi": "METODE LUAR · Times Table Fluency: Latihan fakta kali sampai 100. (asal: Basic facts).",
+      "suara": "METODE LUAR. Kefasihan Tabel Kali. Latihan fakta kali sampai 100."
     }
   ],
   "poinSuara": "Empat poin penting perkalian sampai 100.",
@@ -5124,6 +5745,41 @@ export const SUB_G41: SubBabNaskah = {
     "Aku bisa cara panjang.",
     "Aku menyimpan dengan benar.",
     "Aku menyelesaikan cerita."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Equal Groups",
+      "namaId": "Kelompok Sama Banyak",
+      "asal": "Multiplication pedagogy",
+      "ringkas": "Perkalian adalah penjumlahan berulang kelompok sama.",
+      "tahap": [
+        "Story",
+        "Concrete"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Array Model",
+      "namaId": "Model Susunan",
+      "asal": "Van de Walle",
+      "ringkas": "Baris × kolom menunjukkan hasil kali.",
+      "tahap": [
+        "Picture",
+        "Mind"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Times Table Fluency",
+      "namaId": "Kefasihan Tabel Kali",
+      "asal": "Basic facts",
+      "ringkas": "Latihan fakta kali sampai 100.",
+      "tahap": [
+        "Abstract",
+        "Infografis"
+      ]
+    }
   ]
 };
 
@@ -5138,7 +5794,7 @@ export const SUB_H41: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar pembagian sampai seratus. Empat puluh delapan permen dibagi empat anak. Kita memakai pembagian bersusun dari puluhan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa melakukan operasi hitung bilangan cacah. Pada sub-bab ini fokus pembagian sampai 100.",
-    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab H hlm. 44–47); fair sharing & long division."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab H)."
   },
   "videos": [
     {
@@ -5185,13 +5841,15 @@ export const SUB_H41: SubBabNaskah = {
             "Coba juga 2, 3, 6, atau 8 wadah.",
             "Catat isi tiap wadah dan sisanya.",
             "Beberapa pembagi habis, ada yang bersisa.",
-            "Pengamatan membantu memahami."
+            "Pengamatan membantu memahami.",
+            "METODE LUAR. Bagi Rata: Pembagian membagi benda ke kelompok sama banyak."
           ],
           "papan": [
             "tabel",
             "isi",
             "sisa",
-            "paham"
+            "paham",
+            "METODE LUAR · Bagi Rata"
           ]
         }
       ]
@@ -5240,13 +5898,15 @@ export const SUB_H41: SubBabNaskah = {
             "Hasil bagi 12.",
             "Tiap anak 12 permen.",
             "Periksa: 12 kali 4 sama dengan 48.",
-            "Pembagian kebalikan perkalian."
+            "Pembagian kebalikan perkalian.",
+            "METODE LUAR. Bagi Ukur: Berapa kelompok terbentuk jika tiap kelompok berisi n."
           ],
           "papan": [
             "12",
             "tiap anak",
             "12×4",
-            "kebalikan"
+            "kebalikan",
+            "METODE LUAR · Bagi Ukur"
           ]
         }
       ]
@@ -5295,13 +5955,15 @@ export const SUB_H41: SubBabNaskah = {
             "55 gantungan dibagi 5 teman.",
             "55 dibagi 5 sama dengan 11.",
             "Asep mendapat 11.",
-            "Periksa dengan perkalian."
+            "Periksa dengan perkalian.",
+            "METODE LUAR. Kebalikan Kali: Pembagian dan perkalian saling berkebalikan."
           ],
           "papan": [
             "55:5",
             "11",
             "Asep",
-            "periksa"
+            "periksa",
+            "METODE LUAR · Kebalikan Kali"
           ]
         }
       ]
@@ -5370,6 +6032,22 @@ export const SUB_H41: SubBabNaskah = {
       "stepDesc": "Lanjut faktor dan kelipatan.",
       "icon": "✅",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Bagi Rata",
+      "stepDesc": "Pembagian membagi benda ke kelompok sama banyak.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Bagi Ukur",
+      "stepDesc": "Berapa kelompok terbentuk jika tiap kelompok berisi n.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -5443,6 +6121,27 @@ export const SUB_H41: SubBabNaskah = {
       "countNum": 1,
       "countWord": "lanjut",
       "suara": "Siap faktor dan kelipatan."
+    },
+    {
+      "judul": "Bagi Rata",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Fair Share",
+      "suara": "METODE LUAR. Bagi Rata. Pembagian membagi benda ke kelompok sama banyak."
+    },
+    {
+      "judul": "Bagi Ukur",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Measurement Division",
+      "suara": "METODE LUAR. Bagi Ukur. Berapa kelompok terbentuk jika tiap kelompok berisi n."
+    },
+    {
+      "judul": "Kebalikan Kali",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Inverse of Multiply",
+      "suara": "METODE LUAR. Kebalikan Kali. Pembagian dan perkalian saling berkebalikan."
     }
   ],
   "games": [
@@ -5451,9 +6150,9 @@ export const SUB_H41: SubBabNaskah = {
       "gameType": "bagi-koleksi",
       "title": "Bagi ke Wadah",
       "bookReference": "hlm. 44–45 (48 permen)",
-      "objective": "Membagi benda ke kelompok sama.",
+      "objective": "Membagi benda ke kelompok sama. (METODE LUAR · Bagi Rata)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Rakit hasil bagi.",
+      "voiceGuide": "METODE LUAR · Bagi Rata. Rakit hasil bagi.",
       "emoji": "🍬",
       "targetCount": 6
     },
@@ -5561,9 +6260,9 @@ export const SUB_H41: SubBabNaskah = {
       "gameType": "group-model",
       "title": "Model Kelompok Sama",
       "bookReference": "hlm. 45",
-      "objective": "Membaca model bagi.",
+      "objective": "Membaca model bagi. (METODE LUAR · Bagi Rata)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih hasil.",
+      "voiceGuide": "METODE LUAR · Bagi Rata. Pilih hasil.",
       "diagramType": "group-div",
       "numberA": 4,
       "numberB": 2
@@ -5681,9 +6380,9 @@ export const SUB_H41: SubBabNaskah = {
       "gameType": "column-bagi-q",
       "title": "Bersusun Angka Bagi",
       "bookReference": "hlm. 46–47",
-      "objective": "Hasil bersusun.",
+      "objective": "Hasil bersusun. (METODE LUAR · Bagi Rata)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih hasil.",
+      "voiceGuide": "METODE LUAR · Bagi Rata. Pilih hasil.",
       "symbolLarge": "12",
       "wordLarge": "BAGI",
       "mathNotation": "a : b"
@@ -5821,6 +6520,24 @@ export const SUB_H41: SubBabNaskah = {
       "nama": "Periksa",
       "isi": "Hasil kali pembagi harus kembali.",
       "suara": "Periksa dengan perkalian."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Bagi Rata",
+      "isi": "METODE LUAR · Fair Share: Pembagian membagi benda ke kelompok sama banyak. (asal: Division pedagogy).",
+      "suara": "METODE LUAR. Bagi Rata. Pembagian membagi benda ke kelompok sama banyak."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Bagi Ukur",
+      "isi": "METODE LUAR · Measurement Division: Berapa kelompok terbentuk jika tiap kelompok berisi n. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Bagi Ukur. Berapa kelompok terbentuk jika tiap kelompok berisi n."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Kebalikan Kali",
+      "isi": "METODE LUAR · Inverse of Multiply: Pembagian dan perkalian saling berkebalikan. (asal: Fact family).",
+      "suara": "METODE LUAR. Kebalikan Kali. Pembagian dan perkalian saling berkebalikan."
     }
   ],
   "poinSuara": "Empat poin penting pembagian sampai 100.",
@@ -5851,6 +6568,41 @@ export const SUB_H41: SubBabNaskah = {
     "Aku bersusun dari puluhan.",
     "Aku cek sisa nol.",
     "Aku memeriksa dengan kali."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Fair Share",
+      "namaId": "Bagi Rata",
+      "asal": "Division pedagogy",
+      "ringkas": "Pembagian membagi benda ke kelompok sama banyak.",
+      "tahap": [
+        "Story",
+        "Concrete"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Measurement Division",
+      "namaId": "Bagi Ukur",
+      "asal": "Van de Walle",
+      "ringkas": "Berapa kelompok terbentuk jika tiap kelompok berisi n.",
+      "tahap": [
+        "Picture",
+        "Mind"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Inverse of Multiply",
+      "namaId": "Kebalikan Kali",
+      "asal": "Fact family",
+      "ringkas": "Pembagian dan perkalian saling berkebalikan.",
+      "tahap": [
+        "Abstract",
+        "Infografis"
+      ]
+    }
   ]
 };
 
@@ -5865,7 +6617,7 @@ export const SUB_I41: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar faktor dan kelipatan. Faktor dua belas adalah satu, dua, tiga, empat, enam, dan dua belas. Kelipatan dua adalah dua, empat, enam, delapan, dan seterusnya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa memahami faktor dan kelipatan bilangan cacah.",
-    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab I hlm. 48–52); faktorisasi & skip counting."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab I)."
   },
   "videos": [
     {
@@ -5912,13 +6664,15 @@ export const SUB_I41: SubBabNaskah = {
             "Apakah 5 faktor 12?",
             "12 dibagi 5 sisanya 2.",
             "Karena sisa bukan nol, 5 bukan faktor.",
-            "Ingat: faktor harus habis dibagi."
+            "Ingat: faktor harus habis dibagi.",
+            "METODE LUAR. Pasangan Faktor: Faktor datang berpasangan hasil kali bilangan itu."
           ],
           "papan": [
             "5?",
             "sisa 2",
             "bukan",
-            "habis"
+            "habis",
+            "METODE LUAR · Pasangan Faktor"
           ]
         }
       ]
@@ -5967,13 +6721,15 @@ export const SUB_I41: SubBabNaskah = {
             "Slamet menambah 3 tiap hari.",
             "3, 6, 9, 12, 15, 18, 21.",
             "Itu kelipatan 3.",
-            "Lengkapi kotak kosongnya."
+            "Lengkapi kotak kosongnya.",
+            "METODE LUAR. Kelipatan Lompat Hitung: Kelipatan = hasil lompat tetap."
           ],
           "papan": [
             "+3",
             "3,6,9",
             "kelipatan 3",
-            "lengkapi"
+            "lengkapi",
+            "METODE LUAR · Kelipatan Lompat Hitung"
           ]
         }
       ]
@@ -6022,13 +6778,15 @@ export const SUB_I41: SubBabNaskah = {
             "Andi beli 4 kartu tiap 2 hari.",
             "Dalam 6 hari ada 3 kali beli.",
             "3 kali 4 sama dengan 12 kartu.",
-            "Kelipatan membantu cerita."
+            "Kelipatan membantu cerita.",
+            "METODE LUAR. Keterbagian: Faktor membagi habis bilangan."
           ],
           "papan": [
             "4 / 2 hari",
             "6 hari",
             "12",
-            "cerita"
+            "cerita",
+            "METODE LUAR · Keterbagian"
           ]
         }
       ]
@@ -6097,6 +6855,22 @@ export const SUB_I41: SubBabNaskah = {
       "stepDesc": "Siap uji kompetensi bab.",
       "icon": "✅",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Pasangan Faktor",
+      "stepDesc": "Faktor datang berpasangan hasil kali bilangan itu.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Kelipatan Lompat Hitung",
+      "stepDesc": "Kelipatan = hasil lompat tetap.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -6170,6 +6944,27 @@ export const SUB_I41: SubBabNaskah = {
       "countNum": 1,
       "countWord": "bab 1",
       "suara": "Siap refleksi bab."
+    },
+    {
+      "judul": "Pasangan Faktor",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Factor Pairs",
+      "suara": "METODE LUAR. Pasangan Faktor. Faktor datang berpasangan hasil kali bilangan itu."
+    },
+    {
+      "judul": "Kelipatan Lompat Hitung",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Skip Counting Multiples",
+      "suara": "METODE LUAR. Kelipatan Lompat Hitung. Kelipatan = hasil lompat tetap."
+    },
+    {
+      "judul": "Keterbagian",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Divisibility",
+      "suara": "METODE LUAR. Keterbagian. Faktor membagi habis bilangan."
     }
   ],
   "games": [
@@ -6178,9 +6973,9 @@ export const SUB_I41: SubBabNaskah = {
       "gameType": "faktor-koleksi",
       "title": "Bagi Pensil Jadi Faktor",
       "bookReference": "hlm. 48 (12 pensil)",
-      "objective": "Mengenali pasangan faktor dari benda.",
+      "objective": "Mengenali pasangan faktor dari benda. (METODE LUAR · Pasangan Faktor)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih pasangan.",
+      "voiceGuide": "METODE LUAR · Pasangan Faktor. Pilih pasangan.",
       "emoji": "✏️",
       "targetCount": 6
     },
@@ -6288,9 +7083,9 @@ export const SUB_I41: SubBabNaskah = {
       "gameType": "faktor-pasangan",
       "title": "Pasangan Faktor Diagram",
       "bookReference": "hlm. 48–49",
-      "objective": "Melengkapi f × ? = n.",
+      "objective": "Melengkapi f × ? = n. (METODE LUAR · Pasangan Faktor)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih pasangan.",
+      "voiceGuide": "METODE LUAR · Pasangan Faktor. Pilih pasangan.",
       "diagramType": "factor-pair",
       "numberA": 3,
       "numberB": 2
@@ -6408,9 +7203,9 @@ export const SUB_I41: SubBabNaskah = {
       "gameType": "pilih-faktor",
       "title": "Pilih Daftar Faktor Angka",
       "bookReference": "hlm. 49–50",
-      "objective": "Memilih daftar.",
+      "objective": "Memilih daftar. (METODE LUAR · Pasangan Faktor)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Pasangan Faktor. Pilih.",
       "symbolLarge": "1,2,3,4,6,12",
       "wordLarge": "FAKTOR",
       "mathNotation": "daftar"
@@ -6548,6 +7343,24 @@ export const SUB_I41: SubBabNaskah = {
       "nama": "Cek sisa",
       "isi": "Sisa bukan 0 berarti bukan faktor.",
       "suara": "Cek sisa sebelum memutuskan."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Pasangan Faktor",
+      "isi": "METODE LUAR · Factor Pairs: Faktor datang berpasangan hasil kali bilangan itu. (asal: Array model).",
+      "suara": "METODE LUAR. Pasangan Faktor. Faktor datang berpasangan hasil kali bilangan itu."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Kelipatan Lompat Hitung",
+      "isi": "METODE LUAR · Skip Counting Multiples: Kelipatan = hasil lompat tetap. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Kelipatan Lompat Hitung. Kelipatan = hasil lompat tetap."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Keterbagian",
+      "isi": "METODE LUAR · Divisibility: Faktor membagi habis bilangan. (asal: Number sense).",
+      "suara": "METODE LUAR. Keterbagian. Faktor membagi habis bilangan."
     }
   ],
   "poinSuara": "Empat poin penting faktor dan kelipatan.",
@@ -6578,6 +7391,42 @@ export const SUB_I41: SubBabNaskah = {
     "Aku tolak yang bersisa.",
     "Aku lanjutkan deret kelipatan.",
     "Aku baca batas soal."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Factor Pairs",
+      "namaId": "Pasangan Faktor",
+      "asal": "Array model",
+      "ringkas": "Faktor datang berpasangan hasil kali bilangan itu.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Skip Counting Multiples",
+      "namaId": "Kelipatan Lompat Hitung",
+      "asal": "Van de Walle",
+      "ringkas": "Kelipatan = hasil lompat tetap.",
+      "tahap": [
+        "Mind",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Divisibility",
+      "namaId": "Keterbagian",
+      "asal": "Number sense",
+      "ringkas": "Faktor membagi habis bilangan.",
+      "tahap": [
+        "Infografis",
+        "Abstract"
+      ]
+    }
   ]
 };
 

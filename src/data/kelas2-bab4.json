@@ -26,8 +26,44 @@
       "silabus": {
         "teksSuara": "Kita belajar posisi benda. Kira dan teman-temannya membantu Paman memanen padi di sawah, dan kita menceritakan di mana setiap orang dan benda berada. Kita memakai enam kata posisi: atas, bawah, depan, belakang, kanan, dan kiri. Kita juga belajar bahwa kanan dan kiri pada gambar mengikuti posisi kita yang melihat gambar. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menggunakan kata atas, bawah, depan, belakang, kanan, dan kiri untuk menjelaskan posisi benda terhadap benda lain, menentukan kanan dan kiri sesuai arah pandang pembaca, serta menyampaikan pendapat dengan percaya diri.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 4: Posisi Benda dan Pola di Sekitar Kita, Sub-Bab A hlm. 101–113)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 4 Sub-Bab A)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Spatial Language",
+          "namaId": "Bahasa Posisi",
+          "asal": "Spatial vocabulary",
+          "ringkas": "Kiri, kanan, depan, belakang, atas, bawah.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Map View",
+          "namaId": "Tampak Peta",
+          "asal": "Spatial reasoning",
+          "ringkas": "Lihat posisi dari atas.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Landmark Reference",
+          "namaId": "Acuan Patokan",
+          "asal": "Orientation",
+          "ringkas": "Sebut posisi relatif terhadap patokan.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B4A-V1-1",
@@ -45,7 +81,7 @@
           "id": "K2B4A-V1-3",
           "titleHint": "Siapa di sebelah mana?",
           "sceneType": "K2B4A-V1-3",
-          "voiceNarration": "Enam sekawan berdiri berderet di sawah. Dari kiri ke kanan: Upe, Lili, Halim, Kira, Malosi, dan Tika. Siapakah yang di sebelah kanan Lili? Yang di sebelah kanan Lili adalah Halim. Siapakah yang di sebelah kiri Malosi? Yang di sebelah kiri Malosi adalah Kira. Hewan apa yang sedang terbang di atas padi? Burung terbang di atas padi."
+          "voiceNarration": "Enam sekawan berdiri berderet di sawah. Dari kiri ke kanan: Upe, Lili, Halim, Kira, Malosi, dan Tika. Siapakah yang di sebelah kanan Lili? Yang di sebelah kanan Lili adalah Halim. Siapakah yang di sebelah kiri Malosi? Yang di sebelah kiri Malosi adalah Kira. Hewan apa yang sedang terbang di atas padi? Burung terbang di atas padi. METODE LUAR. Bahasa Posisi: Kiri, kanan, depan, belakang, atas, bawah."
         },
         {
           "id": "K2B4A-V2-1",
@@ -63,7 +99,7 @@
           "id": "K2B4A-V2-3",
           "titleHint": "Kata yang berlawanan",
           "sceneType": "K2B4A-V2-3",
-          "voiceNarration": "Atas berlawanan dengan bawah. Depan berlawanan dengan belakang. Kanan berlawanan dengan kiri. Kalau bola di atas meja, berarti meja di bawah bola."
+          "voiceNarration": "Atas berlawanan dengan bawah. Depan berlawanan dengan belakang. Kanan berlawanan dengan kiri. Kalau bola di atas meja, berarti meja di bawah bola. METODE LUAR. Tampak Peta: Lihat posisi dari atas."
         },
         {
           "id": "K2B4A-V3-1",
@@ -81,7 +117,7 @@
           "id": "K2B4A-V3-3",
           "titleHint": "Ayo bermain petunjuk",
           "sceneType": "K2B4A-V3-3",
-          "voiceNarration": "Ayo bermain dalam kelompok tiga orang. Siswa pertama membaca petunjuk. Siswa kedua memindahkan benda sesuai petunjuk, dan siswa ketiga menebak posisi akhir benda. Ambil buku, taruh di atas meja, pindahkan ke sebelah kanan meja, lalu pindahkan ke bawah meja. Di manakah buku sekarang?"
+          "voiceNarration": "Ayo bermain dalam kelompok tiga orang. Siswa pertama membaca petunjuk. Siswa kedua memindahkan benda sesuai petunjuk, dan siswa ketiga menebak posisi akhir benda. Ambil buku, taruh di atas meja, pindahkan ke sebelah kanan meja, lalu pindahkan ke bawah meja. Di manakah buku sekarang? METODE LUAR. Acuan Patokan: Sebut posisi relatif terhadap patokan."
         }
       ],
       "videos": [
@@ -127,13 +163,15 @@
                 "Enam sekawan berdiri berderet di sawah. Dari kiri ke kanan: Upe, Lili, Halim, Kira, Malosi, dan Tika.",
                 "Siapakah yang di sebelah kanan Lili? Yang di sebelah kanan Lili adalah Halim.",
                 "Siapakah yang di sebelah kiri Malosi? Yang di sebelah kiri Malosi adalah Kira.",
-                "Hewan apa yang sedang terbang di atas padi? Burung terbang di atas padi."
+                "Hewan apa yang sedang terbang di atas padi? Burung terbang di atas padi.",
+                "METODE LUAR. Bahasa Posisi: Kiri, kanan, depan, belakang, atas, bawah."
               ],
               "papan": [
                 "Berderet di sawah",
                 "Kanan Lili: Halim",
                 "Kiri Malosi: Kira",
-                "Di atas padi: burung"
+                "Di atas padi: burung",
+                "METODE LUAR · Bahasa Posisi"
               ]
             }
           ]
@@ -178,13 +216,15 @@
                 "Atas berlawanan dengan bawah.",
                 "Depan berlawanan dengan belakang.",
                 "Kanan berlawanan dengan kiri.",
-                "Kalau bola di atas meja, berarti meja di bawah bola."
+                "Kalau bola di atas meja, berarti meja di bawah bola.",
+                "METODE LUAR. Tampak Peta: Lihat posisi dari atas."
               ],
               "papan": [
                 "Atas lawan bawah",
                 "Depan lawan belakang",
                 "Kanan lawan kiri",
-                "Bola atas, meja bawah"
+                "Bola atas, meja bawah",
+                "METODE LUAR · Tampak Peta"
               ]
             }
           ]
@@ -231,13 +271,15 @@
                 "Ayo bermain dalam kelompok tiga orang.",
                 "Siswa pertama membaca petunjuk.",
                 "Siswa kedua memindahkan benda sesuai petunjuk, dan siswa ketiga menebak posisi akhir benda.",
-                "Ambil buku, taruh di atas meja, pindahkan ke sebelah kanan meja, lalu pindahkan ke bawah meja. Di manakah buku sekarang?"
+                "Ambil buku, taruh di atas meja, pindahkan ke sebelah kanan meja, lalu pindahkan ke bawah meja. Di manakah buku sekarang?",
+                "METODE LUAR. Acuan Patokan: Sebut posisi relatif terhadap patokan."
               ],
               "papan": [
                 "Main bertiga",
                 "Siswa 1 membaca",
                 "Siswa 2 memindahkan",
-                "Buku di bawah meja"
+                "Buku di bawah meja",
+                "METODE LUAR · Acuan Patokan"
               ]
             }
           ]
@@ -306,7 +348,23 @@
           "stepDesc": "Satu petunjuk posisi sering belum cukup untuk menebak sebuah benda. Aku di atas ikan, bisa jadi banyak benda. Tetapi bila ditambah, aku di sebelah kanan jam, hanya satu benda yang cocok. Menebak dengan menggabungkan petunjuk melatih kita berpikir teliti dan sabar.",
           "icon": "🔍",
           "flowFrom": "Gabung petunjuk",
-          "flowTo": "Siap bercerita posisi"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Bahasa Posisi",
+          "stepDesc": "Kiri, kanan, depan, belakang, atas, bawah.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Tampak Peta",
+          "stepDesc": "Lihat posisi dari atas.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -379,6 +437,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Buku diambil, ditaruh di atas meja, dipindah ke sebelah kanan meja, lalu dipindah ke bawah meja. Posisi buku sekarang adalah di bawah meja."
+        },
+        {
+          "fruitName": "Bahasa Posisi",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Spatial Language",
+          "voiceSentence": "METODE LUAR. Bahasa Posisi. Kiri, kanan, depan, belakang, atas, bawah."
+        },
+        {
+          "fruitName": "Tampak Peta",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Map View",
+          "voiceSentence": "METODE LUAR. Tampak Peta. Lihat posisi dari atas."
+        },
+        {
+          "fruitName": "Acuan Patokan",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Landmark Reference",
+          "voiceSentence": "METODE LUAR. Acuan Patokan. Sebut posisi relatif terhadap patokan."
         }
       ],
       "concreteSlides": [
@@ -386,7 +465,7 @@
           "title": "Taruh di Tempatnya",
           "emoji": "📦",
           "targetCount": 4,
-          "voiceGuide": "Seret benda ke posisi yang diminta."
+          "voiceGuide": "METODE LUAR · Bahasa Posisi. Seret benda ke posisi yang diminta."
         },
         {
           "title": "Pindahkan Benda Sesuai Petunjuk",
@@ -458,9 +537,9 @@
           "gameType": "place-object-by-position",
           "title": "Taruh di Tempatnya",
           "bookReference": "Buku Siswa hlm. 104–106 (posisi benda atas, bawah, depan, belakang, kanan, kiri; Ayo Mencoba: menemukan benda di sekitar)",
-          "objective": "Menaruh benda pada posisi yang diminta terhadap benda acuan.",
+          "objective": "Menaruh benda pada posisi yang diminta terhadap benda acuan. (METODE LUAR · Bahasa Posisi)",
           "mechanicDescription": "Empat ronde (kotak, meja, kursi, pohon). Tiap ronde punya tiga atau empat petunjuk, misalnya taruh bola di atas kotak. Siswa menyeret benda ke salah satu dari enam tempat di sekitar benda acuan, atau mengetuk benda lalu mengetuk tempatnya. Tempat yang salah memberi petunjuk. Tempat yang benar membuat kalimat lengkapnya dibacakan.",
-          "voiceGuide": "Seret benda ke posisi yang diminta."
+          "voiceGuide": "METODE LUAR · Bahasa Posisi. Seret benda ke posisi yang diminta."
         },
         {
           "gameId": "subK2B4A-game-2",
@@ -588,6 +667,21 @@
             "nama": "Gabung petunjuk",
             "isi": "dua petunjuk membawa ke satu benda",
             "suara": "Satu petunjuk belum tentu cukup. Gabungkan dua atau tiga petunjuk posisi supaya hanya satu benda yang cocok."
+          },
+          {
+            "nama": "Bahasa Posisi",
+            "isi": "METODE LUAR · Spatial Language: Kiri, kanan, depan, belakang, atas, bawah. (asal: Spatial vocabulary).",
+            "suara": "METODE LUAR. Bahasa Posisi. Kiri, kanan, depan, belakang, atas, bawah."
+          },
+          {
+            "nama": "Tampak Peta",
+            "isi": "METODE LUAR · Map View: Lihat posisi dari atas. (asal: Spatial reasoning).",
+            "suara": "METODE LUAR. Tampak Peta. Lihat posisi dari atas."
+          },
+          {
+            "nama": "Acuan Patokan",
+            "isi": "METODE LUAR · Landmark Reference: Sebut posisi relatif terhadap patokan. (asal: Orientation).",
+            "suara": "METODE LUAR. Acuan Patokan. Sebut posisi relatif terhadap patokan."
           }
         ],
         "suara": "Ingat selalu! Ada enam kata posisi: atas, bawah, depan, belakang, kanan, dan kiri. Posisi selalu dilihat terhadap benda acuan. Kanan dan kiri pada gambar sesuai dengan posisi pembaca. Kata posisi berpasangan dengan lawannya, dan beberapa petunjuk dapat digabung untuk menebak benda.",
@@ -612,8 +706,44 @@
       "silabus": {
         "teksSuara": "Kita belajar pola. Pola adalah hal yang berulang dan teratur. Kita menemukan pola pada barisan enam sekawan, pada taplak meja, kaus, gerakan, dan suara tepuk tangan. Kita juga belajar melanjutkan pola, mengisi bagian yang hilang, dan membuat pola sendiri. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa mengenali, meniru, dan melanjutkan pola sederhana berupa bentuk, warna, gerakan, dan suara, membuat pola sendiri, serta menyampaikan pendapat dengan percaya diri.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 4: Posisi Benda dan Pola di Sekitar Kita, Sub-Bab B hlm. 114–124)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 4 Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Repeating Pattern",
+          "namaId": "Pola Berulang",
+          "asal": "Pattern",
+          "ringkas": "Unit pola menentukan lanjutannya.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "AB / ABC Patterns",
+          "namaId": "Pola AB dan ABC",
+          "asal": "Early algebra",
+          "ringkas": "Kenali jenis unit pola.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Create Pattern",
+          "namaId": "Buat Pola",
+          "asal": "Constructivism",
+          "ringkas": "Siswa membuat pola sendiri.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B4B-V1-1",
@@ -631,7 +761,7 @@
           "id": "K2B4B-V1-3",
           "titleHint": "Mencari pola",
           "sceneType": "K2B4B-V1-3",
-          "voiceNarration": "Dapatkah kalian menemukan hal yang berulang pada gambar? Pada barisan ini ada pola jenis kelamin, dan ada juga pola gerakan. Pola apa lagi yang dapat kalian temukan pada gambar?"
+          "voiceNarration": "Dapatkah kalian menemukan hal yang berulang pada gambar? Pada barisan ini ada pola jenis kelamin, dan ada juga pola gerakan. Pola apa lagi yang dapat kalian temukan pada gambar? METODE LUAR. Pola Berulang: Unit pola menentukan lanjutannya."
         },
         {
           "id": "K2B4B-V2-1",
@@ -649,7 +779,7 @@
           "id": "K2B4B-V2-3",
           "titleHint": "Pola atau bukan?",
           "sceneType": "K2B4B-V2-3",
-          "voiceNarration": "Tidak semua barisan benda adalah pola. Pola harus berulang dan teratur. Lingkaran, segitiga, lingkaran, segitiga, lingkaran, segitiga adalah pola. Lingkaran, segitiga, segitiga, lingkaran, segitiga, lingkaran bukan pola, karena kelompoknya tidak berulang dengan teratur."
+          "voiceNarration": "Tidak semua barisan benda adalah pola. Pola harus berulang dan teratur. Lingkaran, segitiga, lingkaran, segitiga, lingkaran, segitiga adalah pola. Lingkaran, segitiga, segitiga, lingkaran, segitiga, lingkaran bukan pola, karena kelompoknya tidak berulang dengan teratur. METODE LUAR. Pola AB dan ABC: Kenali jenis unit pola."
         },
         {
           "id": "K2B4B-V3-1",
@@ -667,7 +797,7 @@
           "id": "K2B4B-V3-3",
           "titleHint": "Pola di sekitar kita",
           "sceneType": "K2B4B-V3-3",
-          "voiceNarration": "Amati benda-benda di sekitar kita dan temukan pola warna dan pola bentuk. Tulis hasilnya pada tabel, lalu ceritakan kepada temanmu. Dalam kelompok, buatlah pola gerakan dan pola suara. Presentasikan hasilnya di depan kelas."
+          "voiceNarration": "Amati benda-benda di sekitar kita dan temukan pola warna dan pola bentuk. Tulis hasilnya pada tabel, lalu ceritakan kepada temanmu. Dalam kelompok, buatlah pola gerakan dan pola suara. Presentasikan hasilnya di depan kelas. METODE LUAR. Buat Pola: Siswa membuat pola sendiri."
         }
       ],
       "videos": [
@@ -712,12 +842,14 @@
               "ketukan": [
                 "Dapatkah kalian menemukan hal yang berulang pada gambar?",
                 "Pada barisan ini ada pola jenis kelamin, dan ada juga pola gerakan.",
-                "Pola apa lagi yang dapat kalian temukan pada gambar?"
+                "Pola apa lagi yang dapat kalian temukan pada gambar?",
+                "METODE LUAR. Pola Berulang: Unit pola menentukan lanjutannya."
               ],
               "papan": [
                 "Cari yang berulang",
                 "Jenis kelamin dan gerakan",
-                "Pola apa lagi?"
+                "Pola apa lagi?",
+                "METODE LUAR · Pola Berulang"
               ]
             }
           ]
@@ -762,13 +894,15 @@
                 "Tidak semua barisan benda adalah pola.",
                 "Pola harus berulang dan teratur.",
                 "Lingkaran, segitiga, lingkaran, segitiga, lingkaran, segitiga adalah pola.",
-                "Lingkaran, segitiga, segitiga, lingkaran, segitiga, lingkaran bukan pola, karena kelompoknya tidak berulang dengan teratur."
+                "Lingkaran, segitiga, segitiga, lingkaran, segitiga, lingkaran bukan pola, karena kelompoknya tidak berulang dengan teratur.",
+                "METODE LUAR. Pola AB dan ABC: Kenali jenis unit pola."
               ],
               "papan": [
                 "Tidak semua pola",
                 "Berulang dan teratur",
                 "Lingkaran, segitiga: pola",
-                "Acak: bukan pola"
+                "Acak: bukan pola",
+                "METODE LUAR · Pola AB dan ABC"
               ]
             }
           ]
@@ -813,13 +947,15 @@
                 "Amati benda-benda di sekitar kita dan temukan pola warna dan pola bentuk.",
                 "Tulis hasilnya pada tabel, lalu ceritakan kepada temanmu.",
                 "Dalam kelompok, buatlah pola gerakan dan pola suara.",
-                "Presentasikan hasilnya di depan kelas."
+                "Presentasikan hasilnya di depan kelas.",
+                "METODE LUAR. Buat Pola: Siswa membuat pola sendiri."
               ],
               "papan": [
                 "Amati sekitar",
                 "Tulis di tabel",
                 "Buat pola kelompok",
-                "Presentasikan"
+                "Presentasikan",
+                "METODE LUAR · Buat Pola"
               ]
             }
           ]
@@ -888,7 +1024,23 @@
           "stepDesc": "Kita dapat membuat pola sendiri dengan memilih satuan, lalu mengulangnya. Pola yang baik punya paling sedikit dua unsur berbeda dan berulang teratur. Barisan yang semuanya sama, atau yang kelompoknya selalu berganti, bukan pola. Periksa polamu dengan bertanya: apakah kelompok ini berulang?",
           "icon": "✨",
           "flowFrom": "Membuat pola",
-          "flowTo": "Siap menemukan pola"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Pola Berulang",
+          "stepDesc": "Unit pola menentukan lanjutannya.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Pola AB dan ABC",
+          "stepDesc": "Kenali jenis unit pola.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -961,6 +1113,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Pola ada di sekitar kita: pola warna pada kaus, pola bentuk pada taplak, pola gerakan pada senam, dan pola suara pada tepuk tangan."
+        },
+        {
+          "fruitName": "Pola Berulang",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Repeating Pattern",
+          "voiceSentence": "METODE LUAR. Pola Berulang. Unit pola menentukan lanjutannya."
+        },
+        {
+          "fruitName": "Pola AB dan ABC",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · AB / ABC Patterns",
+          "voiceSentence": "METODE LUAR. Pola AB dan ABC. Kenali jenis unit pola."
+        },
+        {
+          "fruitName": "Buat Pola",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Create Pattern",
+          "voiceSentence": "METODE LUAR. Buat Pola. Siswa membuat pola sendiri."
         }
       ],
       "concreteSlides": [
@@ -968,7 +1141,7 @@
           "title": "Rangkai Manik-Manik",
           "emoji": "📿",
           "targetCount": 4,
-          "voiceGuide": "Pilih warna manik berikutnya."
+          "voiceGuide": "METODE LUAR · Pola Berulang. Pilih warna manik berikutnya."
         },
         {
           "title": "Atur Barisan Sahabat",
@@ -1040,9 +1213,9 @@
           "gameType": "continue-bead-pattern",
           "title": "Rangkai Manik-Manik",
           "bookReference": "Buku Siswa hlm. 116 (pola warna: merah, biru, merah, biru) dan hlm. 114 (hal yang berulang dan teratur)",
-          "objective": "Melanjutkan untaian manik berpola warna dengan memilih warna manik berikutnya.",
+          "objective": "Melanjutkan untaian manik berpola warna dengan memilih warna manik berikutnya. (METODE LUAR · Pola Berulang)",
           "mechanicDescription": "Empat ronde (dua warna, dua warna berselang dua, tiga warna, dua kelompok dua warna). Untaian menampilkan manik berpola, diikuti tiga atau empat tempat kosong. Siswa mengetuk warna manik yang tepat untuk tempat kosong berikutnya. Warna yang salah memberi petunjuk tentang satuan pola.",
-          "voiceGuide": "Pilih warna manik berikutnya."
+          "voiceGuide": "METODE LUAR · Pola Berulang. Pilih warna manik berikutnya."
         },
         {
           "gameId": "subK2B4B-game-2",
@@ -1170,6 +1343,21 @@
             "nama": "Membuat pola",
             "isi": "pilih satuan, ulang teratur",
             "suara": "Untuk membuat pola, pilih satuan dengan paling sedikit dua unsur berbeda, lalu ulangi secara teratur."
+          },
+          {
+            "nama": "Pola Berulang",
+            "isi": "METODE LUAR · Repeating Pattern: Unit pola menentukan lanjutannya. (asal: Pattern).",
+            "suara": "METODE LUAR. Pola Berulang. Unit pola menentukan lanjutannya."
+          },
+          {
+            "nama": "Pola AB dan ABC",
+            "isi": "METODE LUAR · AB / ABC Patterns: Kenali jenis unit pola. (asal: Early algebra).",
+            "suara": "METODE LUAR. Pola AB dan ABC. Kenali jenis unit pola."
+          },
+          {
+            "nama": "Buat Pola",
+            "isi": "METODE LUAR · Create Pattern: Siswa membuat pola sendiri. (asal: Constructivism).",
+            "suara": "METODE LUAR. Buat Pola. Siswa membuat pola sendiri."
           }
         ],
         "suara": "Ingat selalu! Pola adalah hal yang berulang dan teratur. Kelompok terkecil yang berulang disebut satuan pola. Ada pola bentuk, pola warna, pola gerakan, dan pola suara. Untuk melanjutkan pola, cari satuannya dan ulangi urutan yang sama.",

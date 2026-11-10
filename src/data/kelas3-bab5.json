@@ -26,8 +26,44 @@
       "silabus": {
         "teksSuara": "Kita belajar mengurutkan dan membandingkan data. Ibu guru membagikan nilai ulangan Matematika. Kita mengurutkan nilai dari yang terkecil, mencari nilai terbesar, menghitung jangkauan, dan menghitung berapa siswa mendapat nilai sembilan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa mengurutkan data, menentukan data terkecil dan terbesar, serta menghitung jangkauan data. Pada sub-bab ini siswa juga mencacah banyak kemunculan nilai dengan turus.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 5: Penyajian Data dalam Tabel, Sub-Bab A hlm. 198–200) dan Buku Panduan Guru Bab 5 Topik A."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 5 Sub-Bab A)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Compare Data",
+          "namaId": "Banding Data",
+          "asal": "Data literacy",
+          "ringkas": "Bandingkan banyaknya antar kategori.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Order Data",
+          "namaId": "Urut Data",
+          "asal": "Data literacy",
+          "ringkas": "Urutkan dari terbanyak/tersedikit.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Tally First",
+          "namaId": "Turus Dulu",
+          "asal": "Tally marks",
+          "ringkas": "Kumpulkan dengan turus sebelum banding.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B5A-V1-1",
@@ -45,7 +81,7 @@
           "id": "K3B5A-V1-3",
           "titleHint": "Data perlu diurutkan",
           "sceneType": "K3B5A-V1-3",
-          "voiceNarration": "Untuk menjawabnya, data perlu disusun rapi. Kita mengurutkan data dari yang terkecil. Lalu kita bandingkan data terbesar dan terkecil. Itulah awal belajar penyajian data."
+          "voiceNarration": "Untuk menjawabnya, data perlu disusun rapi. Kita mengurutkan data dari yang terkecil. Lalu kita bandingkan data terbesar dan terkecil. Itulah awal belajar penyajian data. METODE LUAR. Banding Data: Bandingkan banyaknya antar kategori."
         },
         {
           "id": "K3B5A-V2-1",
@@ -63,7 +99,7 @@
           "id": "K3B5A-V2-3",
           "titleHint": "Jangkauan",
           "sceneType": "K3B5A-V2-3",
-          "voiceNarration": "Selisih nilai data terbesar dan terkecil disebut jangkauan. Jangkauan sama dengan data terbesar dikurangi data terkecil. Jangkauan membantu kita melihat seberapa jauh data menyebar. Mari hitung jangkauan dari data kelompok."
+          "voiceNarration": "Selisih nilai data terbesar dan terkecil disebut jangkauan. Jangkauan sama dengan data terbesar dikurangi data terkecil. Jangkauan membantu kita melihat seberapa jauh data menyebar. Mari hitung jangkauan dari data kelompok. METODE LUAR. Urut Data: Urutkan dari terbanyak/tersedikit."
         },
         {
           "id": "K3B5A-V3-1",
@@ -81,7 +117,7 @@
           "id": "K3B5A-V3-3",
           "titleHint": "Berapa siswa bernilai sembilan",
           "sceneType": "K3B5A-V3-3",
-          "voiceNarration": "Berapa siswa yang memiliki nilai sembilan? Ada lima siswa, Pak. Berapa banyak siswa yang mendapatkan nilai sepuluh? Ada dua siswa. Data sudah siap disajikan dalam tabel."
+          "voiceNarration": "Berapa siswa yang memiliki nilai sembilan? Ada lima siswa, Pak. Berapa banyak siswa yang mendapatkan nilai sepuluh? Ada dua siswa. Data sudah siap disajikan dalam tabel. METODE LUAR. Turus Dulu: Kumpulkan dengan turus sebelum banding."
         }
       ],
       "videos": [
@@ -129,13 +165,15 @@
                 "Untuk menjawabnya, data perlu disusun rapi.",
                 "Kita mengurutkan data dari yang terkecil.",
                 "Lalu kita bandingkan data terbesar dan terkecil.",
-                "Itulah awal belajar penyajian data."
+                "Itulah awal belajar penyajian data.",
+                "METODE LUAR. Banding Data: Bandingkan banyaknya antar kategori."
               ],
               "papan": [
                 "Data disusun rapi",
                 "Urutkan dari terkecil",
                 "Bandingkan terbesar dan terkecil",
-                "Awal belajar data"
+                "Awal belajar data",
+                "METODE LUAR · Banding Data"
               ]
             }
           ]
@@ -184,13 +222,15 @@
                 "Selisih nilai data terbesar dan terkecil disebut jangkauan.",
                 "Jangkauan sama dengan data terbesar dikurangi data terkecil.",
                 "Jangkauan membantu kita melihat seberapa jauh data menyebar.",
-                "Mari hitung jangkauan dari data kelompok."
+                "Mari hitung jangkauan dari data kelompok.",
+                "METODE LUAR. Urut Data: Urutkan dari terbanyak/tersedikit."
               ],
               "papan": [
                 "Selisih disebut jangkauan",
                 "Terbesar dikurangi terkecil",
                 "Melihat seberapa jauh data",
-                "Hitung jangkauan kelompok"
+                "Hitung jangkauan kelompok",
+                "METODE LUAR · Urut Data"
               ]
             }
           ]
@@ -239,13 +279,15 @@
                 "Berapa siswa yang memiliki nilai sembilan?",
                 "Ada lima siswa, Pak.",
                 "Berapa banyak siswa yang mendapatkan nilai sepuluh?",
-                "Ada dua siswa. Data sudah siap disajikan dalam tabel."
+                "Ada dua siswa. Data sudah siap disajikan dalam tabel.",
+                "METODE LUAR. Turus Dulu: Kumpulkan dengan turus sebelum banding."
               ],
               "papan": [
                 "Berapa siswa bernilai 9?",
                 "Ada 5 siswa",
                 "Berapa siswa bernilai 10?",
-                "Ada 2 siswa, siap ke tabel"
+                "Ada 2 siswa, siap ke tabel",
+                "METODE LUAR · Turus Dulu"
               ]
             }
           ]
@@ -314,7 +356,23 @@
           "stepDesc": "Setelah diurutkan dan dicacah, data siap disajikan dalam tabel bertiga kolom: nilai, turus, dan banyak.",
           "icon": "📋",
           "flowFrom": "Siap ke tabel",
-          "flowTo": "Tabel"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Banding Data",
+          "stepDesc": "Bandingkan banyaknya antar kategori.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Urut Data",
+          "stepDesc": "Urutkan dari terbanyak/tersedikit.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -387,6 +445,27 @@
           "countNum": 3,
           "countWord": "kolom",
           "voiceSentence": "Tabel nilai memiliki kolom nilai, turus, dan banyak."
+        },
+        {
+          "fruitName": "Banding Data",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Compare Data",
+          "voiceSentence": "METODE LUAR. Banding Data. Bandingkan banyaknya antar kategori."
+        },
+        {
+          "fruitName": "Urut Data",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Order Data",
+          "voiceSentence": "METODE LUAR. Urut Data. Urutkan dari terbanyak/tersedikit."
+        },
+        {
+          "fruitName": "Turus Dulu",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Tally First",
+          "voiceSentence": "METODE LUAR. Turus Dulu. Kumpulkan dengan turus sebelum banding."
         }
       ],
       "concreteSlides": [
@@ -394,7 +473,7 @@
           "title": "Urutkan Anak menurut Banyak Benda",
           "emoji": "🍎",
           "targetCount": 9,
-          "voiceGuide": "Ketuk anak menurut banyak bendanya."
+          "voiceGuide": "METODE LUAR · Banding Data. Ketuk anak menurut banyak bendanya."
         },
         {
           "title": "Ketuk yang Paling Banyak atau Paling Sedikit",
@@ -457,7 +536,7 @@
           "diagramType": "tally-read",
           "numberA": 2,
           "numberB": 2,
-          "caption": "Membaca banyak data dari gambar turus kelompok lima."
+          "caption": "Membaca banyak data dari gambar turus kelompok lima. (METODE LUAR · Banding Data)"
         },
         {
           "title": "Urutkan Turus",
@@ -528,7 +607,7 @@
           "symbolLarge": "1 2 3",
           "wordLarge": "URUTKAN",
           "mathNotation": "dari terkecil atau terbesar",
-          "voiceReadout": "Ketuk bilangan menurut urutannya."
+          "voiceReadout": "METODE LUAR · Banding Data. Ketuk bilangan menurut urutannya."
         },
         {
           "symbolLarge": "min max",
@@ -593,9 +672,9 @@
           "gameType": "order-children-objects",
           "title": "Urutkan Anak menurut Banyak Benda",
           "bookReference": "Buku Siswa hlm. 198–199 (Aktivitas 1: mengurutkan data)",
-          "objective": "Mengurutkan anak dari yang banyak bendanya paling kecil atau paling besar.",
+          "objective": "Mengurutkan anak dari yang banyak bendanya paling kecil atau paling besar. (METODE LUAR · Banding Data)",
           "mechanicDescription": "Tiga ronde, tiap ronde tiga anak dengan tumpukan benda. Siswa mengetuk anak satu per satu menurut urutan yang diminta.",
-          "voiceGuide": "Ketuk anak menurut banyak bendanya."
+          "voiceGuide": "METODE LUAR · Banding Data. Ketuk anak menurut banyak bendanya."
         },
         {
           "gameId": "subK3B5A-game-2",
@@ -703,9 +782,9 @@
           "gameType": "read-tally",
           "title": "Baca Turus",
           "bookReference": "Buku Siswa hlm. 198 (mengingat turus Kelas 2)",
-          "objective": "Membaca banyak data dari gambar turus kelompok lima.",
+          "objective": "Membaca banyak data dari gambar turus kelompok lima. (METODE LUAR · Banding Data)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa menghitung garis turus lalu memilih bilangannya.",
-          "voiceGuide": "Hitung garis turus, lalu pilih bilangannya."
+          "voiceGuide": "METODE LUAR · Banding Data. Hitung garis turus, lalu pilih bilangannya."
         },
         {
           "gameId": "subK3B5A-game-12",
@@ -813,9 +892,9 @@
           "gameType": "order-values",
           "title": "Urutkan Nilai Data",
           "bookReference": "Buku Siswa hlm. 200 (mengurutkan dari terkecil)",
-          "objective": "Mengurutkan bilangan data dari terkecil ke terbesar atau sebaliknya.",
+          "objective": "Mengurutkan bilangan data dari terkecil ke terbesar atau sebaliknya. (METODE LUAR · Banding Data)",
           "mechanicDescription": "Tiga ronde, tiap ronde empat atau lima bilangan. Siswa mengetuk bilangan satu per satu menurut urutan.",
-          "voiceGuide": "Ketuk bilangan menurut urutannya."
+          "voiceGuide": "METODE LUAR · Banding Data. Ketuk bilangan menurut urutannya."
         },
         {
           "gameId": "subK3B5A-game-22",
@@ -943,6 +1022,21 @@
             "nama": "Banyak nilai",
             "isi": "Banyak kemunculan sebuah nilai dihitung dengan turus lalu ditulis angkanya",
             "suara": "Hitung berapa kali nilai itu muncul, lalu tulis banyaknya."
+          },
+          {
+            "nama": "Banding Data",
+            "isi": "METODE LUAR · Compare Data: Bandingkan banyaknya antar kategori. (asal: Data literacy).",
+            "suara": "METODE LUAR. Banding Data. Bandingkan banyaknya antar kategori."
+          },
+          {
+            "nama": "Urut Data",
+            "isi": "METODE LUAR · Order Data: Urutkan dari terbanyak/tersedikit. (asal: Data literacy).",
+            "suara": "METODE LUAR. Urut Data. Urutkan dari terbanyak/tersedikit."
+          },
+          {
+            "nama": "Turus Dulu",
+            "isi": "METODE LUAR · Tally First: Kumpulkan dengan turus sebelum banding. (asal: Tally marks).",
+            "suara": "METODE LUAR. Turus Dulu. Kumpulkan dengan turus sebelum banding."
           }
         ],
         "suara": "Ingat lima poin penting: mengurutkan data, data terkecil dan terbesar, jangkauan, turus, dan banyak nilai.",
@@ -967,8 +1061,44 @@
       "silabus": {
         "teksSuara": "Kita belajar menyajikan data dalam bentuk tabel. Lidi disusun menjadi turus kelompok lima. Manik dan huruf pada kata STATISTIKA dicacah dengan turus, lalu ditulis pada tabel nilai, turus, dan banyak. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menyajikan data dalam bentuk tabel dengan turus kelompok lima dan kolom banyak. Pada sub-bab ini siswa membaca tabel untuk membandingkan data.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 5: Penyajian Data dalam Tabel, Sub-Bab B hlm. 201–208) dan Buku Panduan Guru Bab 5 Topik B."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 5 Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Table Display",
+          "namaId": "Sajian Tabel",
+          "asal": "Data representation",
+          "ringkas": "Tabel memuat kategori dan frekuensi.",
+          "tahap": [
+            "Story",
+            "Picture",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Header Clarity",
+          "namaId": "Judul Kolom Jelas",
+          "asal": "Table literacy",
+          "ringkas": "Setiap kolom harus berlabel.",
+          "tahap": [
+            "Mind",
+            "Infografis"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Read Cells",
+          "namaId": "Baca Sel Tabel",
+          "asal": "Data reading",
+          "ringkas": "Temukan nilai di perpotongan baris-kolom.",
+          "tahap": [
+            "Concrete",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B5B-V1-1",
@@ -986,7 +1116,7 @@
           "id": "K3B5B-V1-3",
           "titleHint": "Lebih dari lima",
           "sceneType": "K3B5B-V1-3",
-          "voiceNarration": "Ulangi kelompok lima, lalu tambahkan lidi di sebelahnya. Dua kelompok lima sama dengan sepuluh data. Dua kelompok lima ditambah tiga sama dengan tiga belas. Turus membuat pencacahan data lebih cepat."
+          "voiceNarration": "Ulangi kelompok lima, lalu tambahkan lidi di sebelahnya. Dua kelompok lima sama dengan sepuluh data. Dua kelompok lima ditambah tiga sama dengan tiga belas. Turus membuat pencacahan data lebih cepat. METODE LUAR. Sajian Tabel: Tabel memuat kategori dan frekuensi."
         },
         {
           "id": "K3B5B-V2-1",
@@ -1004,7 +1134,7 @@
           "id": "K3B5B-V2-3",
           "titleHint": "Siapa paling banyak",
           "sceneType": "K3B5B-V2-3",
-          "voiceNarration": "Siapa anggota dengan manik merah paling banyak? Siapa yang paling sedikit? Tabel membantu kita menjawab dengan cepat. Tanpa menghitung ulang semua manik dari awal."
+          "voiceNarration": "Siapa anggota dengan manik merah paling banyak? Siapa yang paling sedikit? Tabel membantu kita menjawab dengan cepat. Tanpa menghitung ulang semua manik dari awal. METODE LUAR. Judul Kolom Jelas: Setiap kolom harus berlabel."
         },
         {
           "id": "K3B5B-V3-1",
@@ -1022,7 +1152,7 @@
           "id": "K3B5B-V3-3",
           "titleHint": "Baca tabel nilai",
           "sceneType": "K3B5B-V3-3",
-          "voiceNarration": "Cara yang sama dipakai pada tabel nilai ulangan. Nilai diurutkan, lalu ditulis turus dan banyaknya. Kita bisa menjawab: berapa siswa bernilai lebih dari tujuh? Tabel membuat data rapi dan mudah dibandingkan."
+          "voiceNarration": "Cara yang sama dipakai pada tabel nilai ulangan. Nilai diurutkan, lalu ditulis turus dan banyaknya. Kita bisa menjawab: berapa siswa bernilai lebih dari tujuh? Tabel membuat data rapi dan mudah dibandingkan. METODE LUAR. Baca Sel Tabel: Temukan nilai di perpotongan baris-kolom."
         }
       ],
       "videos": [
@@ -1070,13 +1200,15 @@
                 "Ulangi kelompok lima, lalu tambahkan lidi di sebelahnya.",
                 "Dua kelompok lima sama dengan sepuluh data.",
                 "Dua kelompok lima ditambah tiga sama dengan tiga belas.",
-                "Turus membuat pencacahan data lebih cepat."
+                "Turus membuat pencacahan data lebih cepat.",
+                "METODE LUAR. Sajian Tabel: Tabel memuat kategori dan frekuensi."
               ],
               "papan": [
                 "Ulangi kelompok lima",
                 "Dua kelompok = 10",
                 "10 + 3 = 13",
-                "Pencacahan lebih cepat"
+                "Pencacahan lebih cepat",
+                "METODE LUAR · Sajian Tabel"
               ]
             }
           ]
@@ -1125,13 +1257,15 @@
                 "Siapa anggota dengan manik merah paling banyak?",
                 "Siapa yang paling sedikit?",
                 "Tabel membantu kita menjawab dengan cepat.",
-                "Tanpa menghitung ulang semua manik dari awal."
+                "Tanpa menghitung ulang semua manik dari awal.",
+                "METODE LUAR. Judul Kolom Jelas: Setiap kolom harus berlabel."
               ],
               "papan": [
                 "Manik merah paling banyak?",
                 "Paling sedikit?",
                 "Tabel menjawab cepat",
-                "Tanpa hitung ulang"
+                "Tanpa hitung ulang",
+                "METODE LUAR · Judul Kolom Jelas"
               ]
             }
           ]
@@ -1180,13 +1314,15 @@
                 "Cara yang sama dipakai pada tabel nilai ulangan.",
                 "Nilai diurutkan, lalu ditulis turus dan banyaknya.",
                 "Kita bisa menjawab: berapa siswa bernilai lebih dari tujuh?",
-                "Tabel membuat data rapi dan mudah dibandingkan."
+                "Tabel membuat data rapi dan mudah dibandingkan.",
+                "METODE LUAR. Baca Sel Tabel: Temukan nilai di perpotongan baris-kolom."
               ],
               "papan": [
                 "Sama pada tabel nilai",
                 "Urutkan, turus, banyak",
                 "Lebih dari tujuh berapa?",
-                "Data rapi dan mudah"
+                "Data rapi dan mudah",
+                "METODE LUAR · Baca Sel Tabel"
               ]
             }
           ]
@@ -1255,7 +1391,23 @@
           "stepDesc": "Tabel membuat data rapi, mudah dibandingkan, dan siap dilaporkan ke kelas.",
           "icon": "✅",
           "flowFrom": "Data rapi",
-          "flowTo": "Selesai"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Sajian Tabel",
+          "stepDesc": "Tabel memuat kategori dan frekuensi.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Judul Kolom Jelas",
+          "stepDesc": "Setiap kolom harus berlabel.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -1328,6 +1480,27 @@
           "countNum": 1,
           "countWord": "rapi",
           "voiceSentence": "Tabel membuat data rapi dan mudah dibandingkan."
+        },
+        {
+          "fruitName": "Sajian Tabel",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Table Display",
+          "voiceSentence": "METODE LUAR. Sajian Tabel. Tabel memuat kategori dan frekuensi."
+        },
+        {
+          "fruitName": "Judul Kolom Jelas",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Header Clarity",
+          "voiceSentence": "METODE LUAR. Judul Kolom Jelas. Setiap kolom harus berlabel."
+        },
+        {
+          "fruitName": "Baca Sel Tabel",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Read Cells",
+          "voiceSentence": "METODE LUAR. Baca Sel Tabel. Temukan nilai di perpotongan baris-kolom."
         }
       ],
       "concreteSlides": [
@@ -1335,7 +1508,7 @@
           "title": "Hitung Kelompok Lima",
           "emoji": "🍎",
           "targetCount": 6,
-          "voiceGuide": "Hitung kelompok lima dan sisanya."
+          "voiceGuide": "METODE LUAR · Sajian Tabel. Hitung kelompok lima dan sisanya."
         },
         {
           "title": "Hitung Lidi",
@@ -1398,7 +1571,7 @@
           "diagramType": "tally-number",
           "numberA": 2,
           "numberB": 2,
-          "caption": "Membaca banyak data dari gambar turus kelompok lima."
+          "caption": "Membaca banyak data dari gambar turus kelompok lima. (METODE LUAR · Sajian Tabel)"
         },
         {
           "title": "Ketuk Turus yang Tepat",
@@ -1469,7 +1642,7 @@
           "symbolLarge": "f",
           "wordLarge": "TABEL NILAI",
           "mathNotation": "frekuensi nilai",
-          "voiceReadout": "Pilih nilai terbanyak atau banyak siswa pada nilai itu."
+          "voiceReadout": "METODE LUAR · Sajian Tabel. Pilih nilai terbanyak atau banyak siswa pada nilai itu."
         },
         {
           "symbolLarge": ">",
@@ -1534,9 +1707,9 @@
           "gameType": "count-groups-of-five",
           "title": "Hitung Kelompok Lima",
           "bookReference": "Buku Siswa hlm. 201–202 (Aktivitas 2: turus kelompok lima)",
-          "objective": "Menghitung banyak benda yang dikelompokkan lima-lima.",
+          "objective": "Menghitung banyak benda yang dikelompokkan lima-lima. (METODE LUAR · Sajian Tabel)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa menghitung kelompok lima dan sisanya lalu memilih hasilnya.",
-          "voiceGuide": "Hitung kelompok lima dan sisanya."
+          "voiceGuide": "METODE LUAR · Sajian Tabel. Hitung kelompok lima dan sisanya."
         },
         {
           "gameId": "subK3B5B-game-2",
@@ -1644,9 +1817,9 @@
           "gameType": "tally-to-number",
           "title": "Turus ke Angka",
           "bookReference": "Buku Siswa hlm. 201–202 (turus kelompok lima)",
-          "objective": "Membaca banyak data dari gambar turus kelompok lima.",
+          "objective": "Membaca banyak data dari gambar turus kelompok lima. (METODE LUAR · Sajian Tabel)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa menghitung turus lalu memilih bilangannya.",
-          "voiceGuide": "Hitung turus kelompok lima, lalu pilih bilangannya."
+          "voiceGuide": "METODE LUAR · Sajian Tabel. Hitung turus kelompok lima, lalu pilih bilangannya."
         },
         {
           "gameId": "subK3B5B-game-12",
@@ -1754,9 +1927,9 @@
           "gameType": "read-value-table",
           "title": "Baca Tabel Nilai (Angka)",
           "bookReference": "Buku Siswa hlm. 207–208 (tabel nilai)",
-          "objective": "Menemukan nilai yang paling banyak muncul atau banyak siswa pada nilai tertentu.",
+          "objective": "Menemukan nilai yang paling banyak muncul atau banyak siswa pada nilai tertentu. (METODE LUAR · Sajian Tabel)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca data lalu memilih jawabannya.",
-          "voiceGuide": "Pilih nilai terbanyak atau banyak siswa pada nilai itu."
+          "voiceGuide": "METODE LUAR · Sajian Tabel. Pilih nilai terbanyak atau banyak siswa pada nilai itu."
         },
         {
           "gameId": "subK3B5B-game-22",
@@ -1884,6 +2057,21 @@
             "nama": "Urutkan dulu",
             "isi": "Sebelum membuat tabel, data diurutkan dari yang terkecil",
             "suara": "Urutkan data agar tabel rapi."
+          },
+          {
+            "nama": "Sajian Tabel",
+            "isi": "METODE LUAR · Table Display: Tabel memuat kategori dan frekuensi. (asal: Data representation).",
+            "suara": "METODE LUAR. Sajian Tabel. Tabel memuat kategori dan frekuensi."
+          },
+          {
+            "nama": "Judul Kolom Jelas",
+            "isi": "METODE LUAR · Header Clarity: Setiap kolom harus berlabel. (asal: Table literacy).",
+            "suara": "METODE LUAR. Judul Kolom Jelas. Setiap kolom harus berlabel."
+          },
+          {
+            "nama": "Baca Sel Tabel",
+            "isi": "METODE LUAR · Read Cells: Temukan nilai di perpotongan baris-kolom. (asal: Data reading).",
+            "suara": "METODE LUAR. Baca Sel Tabel. Temukan nilai di perpotongan baris-kolom."
           }
         ],
         "suara": "Ingat lima poin penting: turus kelompok lima, tabel tiga kolom, dari benda ke tabel, membaca tabel, dan urutkan dulu.",

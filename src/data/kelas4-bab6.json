@@ -26,8 +26,44 @@
       "silabus": {
         "teksSuara": "Kita belajar piktogram. Piktogram adalah diagram yang memakai gambar untuk menyatakan banyak tiap kategori. Kadang satu gambar berarti satu benda, kadang satu gambar berarti beberapa. Kita baca dengan menghitung gambar lalu mengalikan skala. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menampilkan dan menafsirkan data dalam bentuk diagram gambar (piktogram).",
-        "referensi": "Buku Siswa Matematika Kelas IV Bab 6 Sub-Bab A hlm. 179–186; pictorial representation; scale in pictographs (van de Walle)."
+        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 6 Sub-Bab A)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Pictograph Key",
+          "namaId": "Kunci Piktogram",
+          "asal": "Data literacy",
+          "ringkas": "Satu gambar bisa mewakili lebih dari satu benda.",
+          "tahap": [
+            "Story",
+            "Infografis",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Categorical Tally",
+          "namaId": "Turus Kategori",
+          "asal": "Tally marks",
+          "ringkas": "Hitung frekuensi tiap kategori dengan turus.",
+          "tahap": [
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Read then Compare",
+          "namaId": "Baca Lalu Banding",
+          "asal": "Graph reading",
+          "ringkas": "Bandingkan tinggi/banyak simbol antar kategori.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K4B6A-V1-1",
@@ -45,7 +81,7 @@
           "id": "K4B6A-V1-3",
           "titleHint": "Baca paling banyak",
           "sceneType": "K4B6A-V1-3",
-          "voiceNarration": "Hitung gambar tiap baris. Kalikan dengan skala. Bandingkan hasilnya. Itu paling banyak atau sedikit."
+          "voiceNarration": "Hitung gambar tiap baris. Kalikan dengan skala. Bandingkan hasilnya. Itu paling banyak atau sedikit. METODE LUAR. Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda."
         },
         {
           "id": "K4B6A-V2-1",
@@ -63,7 +99,7 @@
           "id": "K4B6A-V2-3",
           "titleHint": "Jangan lupa skala",
           "sceneType": "K4B6A-V2-3",
-          "voiceNarration": "Tanpa skala, gambar membingungkan. Selalu baca baris keterangan. Nilai = gambar dikali skala. Latih sampai mahir."
+          "voiceNarration": "Tanpa skala, gambar membingungkan. Selalu baca baris keterangan. Nilai = gambar dikali skala. Latih sampai mahir. METODE LUAR. Turus Kategori: Hitung frekuensi tiap kategori dengan turus."
         },
         {
           "id": "K4B6A-V3-1",
@@ -81,7 +117,7 @@
           "id": "K4B6A-V3-3",
           "titleHint": "Siap bermain",
           "sceneType": "K4B6A-V3-3",
-          "voiceNarration": "Kita sudah paham piktogram. Saatnya menghitung dan membandingkan. Ayo ke permainan. Semangat!"
+          "voiceNarration": "Kita sudah paham piktogram. Saatnya menghitung dan membandingkan. Ayo ke permainan. Semangat! METODE LUAR. Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori."
         }
       ],
       "videos": [
@@ -129,13 +165,15 @@
                 "Hitung gambar tiap baris.",
                 "Kalikan dengan skala.",
                 "Bandingkan hasilnya.",
-                "Itu paling banyak atau sedikit."
+                "Itu paling banyak atau sedikit.",
+                "METODE LUAR. Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda."
               ],
               "papan": [
                 "hitung",
                 "× skala",
                 "banding",
-                "ekstrem"
+                "ekstrem",
+                "METODE LUAR · Kunci Piktogram"
               ]
             }
           ]
@@ -184,13 +222,15 @@
                 "Tanpa skala, gambar membingungkan.",
                 "Selalu baca baris keterangan.",
                 "Nilai = gambar dikali skala.",
-                "Latih sampai mahir."
+                "Latih sampai mahir.",
+                "METODE LUAR. Turus Kategori: Hitung frekuensi tiap kategori dengan turus."
               ],
               "papan": [
                 "wajib skala",
                 "keterangan",
                 "nilai",
-                "latihan"
+                "latihan",
+                "METODE LUAR · Turus Kategori"
               ]
             }
           ]
@@ -239,13 +279,15 @@
                 "Kita sudah paham piktogram.",
                 "Saatnya menghitung dan membandingkan.",
                 "Ayo ke permainan.",
-                "Semangat!"
+                "Semangat!",
+                "METODE LUAR. Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori."
               ],
               "papan": [
                 "paham",
                 "hitung",
                 "main",
-                "semangat"
+                "semangat",
+                "METODE LUAR · Baca Lalu Banding"
               ]
             }
           ]
@@ -298,6 +340,22 @@
           "stepDesc": "Paling banyak, sedikit, total",
           "icon": "💡",
           "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Kunci Piktogram",
+          "stepDesc": "Satu gambar bisa mewakili lebih dari satu benda.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Turus Kategori",
+          "stepDesc": "Hitung frekuensi tiap kategori dengan turus.",
+          "icon": "🌍",
+          "flowFrom": "7",
           "flowTo": "END"
         }
       ],
@@ -371,6 +429,27 @@
           "countNum": 1,
           "countWord": "lanjut batang",
           "voiceSentence": "Berikutnya diagram batang."
+        },
+        {
+          "fruitName": "Kunci Piktogram",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Pictograph Key",
+          "voiceSentence": "METODE LUAR. Kunci Piktogram. Satu gambar bisa mewakili lebih dari satu benda."
+        },
+        {
+          "fruitName": "Turus Kategori",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Categorical Tally",
+          "voiceSentence": "METODE LUAR. Turus Kategori. Hitung frekuensi tiap kategori dengan turus."
+        },
+        {
+          "fruitName": "Baca Lalu Banding",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Read then Compare",
+          "voiceSentence": "METODE LUAR. Baca Lalu Banding. Bandingkan tinggi/banyak simbol antar kategori."
         }
       ],
       "concreteSlides": [
@@ -378,7 +457,7 @@
           "title": "Hitung Gambar Piktogram",
           "emoji": "🔵",
           "targetCount": 6,
-          "voiceGuide": "Hitung gambar."
+          "voiceGuide": "METODE LUAR · Kunci Piktogram. Hitung gambar."
         },
         {
           "title": "Pilih Jenis Diagram",
@@ -441,7 +520,7 @@
           "diagramType": "picto",
           "numberA": 1,
           "numberB": 4,
-          "caption": "Baca diagram gambar."
+          "caption": "Baca diagram gambar. (METODE LUAR · Kunci Piktogram)"
         },
         {
           "title": "Diagram Skala n",
@@ -512,7 +591,7 @@
           "symbolLarge": "📊",
           "wordLarge": "PIKTOGRAM",
           "mathNotation": "definisi",
-          "voiceReadout": "Pilih."
+          "voiceReadout": "METODE LUAR · Kunci Piktogram. Pilih."
         },
         {
           "symbolLarge": "n×s",
@@ -577,9 +656,9 @@
           "gameType": "hitung-gambar",
           "title": "Hitung Gambar Piktogram",
           "bookReference": "Buku Siswa hlm. 180–184",
-          "objective": "Menghitung nilai dari banyak gambar.",
+          "objective": "Menghitung nilai dari banyak gambar. (METODE LUAR · Kunci Piktogram)",
           "mechanicDescription": "Tiga ronde data buku.",
-          "voiceGuide": "Hitung gambar."
+          "voiceGuide": "METODE LUAR · Kunci Piktogram. Hitung gambar."
         },
         {
           "gameId": "subK4B6A-game-2",
@@ -687,9 +766,9 @@
           "gameType": "diagram-hitung",
           "title": "Diagram Hitung Simbol",
           "bookReference": "Buku Siswa hlm. 180–184",
-          "objective": "Baca diagram gambar.",
+          "objective": "Baca diagram gambar. (METODE LUAR · Kunci Piktogram)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Kunci Piktogram. Pilih."
         },
         {
           "gameId": "subK4B6A-game-12",
@@ -797,9 +876,9 @@
           "gameType": "write-istilah",
           "title": "Tulis Istilah Piktogram",
           "bookReference": "Buku Siswa hlm. 184",
-          "objective": "Menulis istilah.",
+          "objective": "Menulis istilah. (METODE LUAR · Kunci Piktogram)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Kunci Piktogram. Pilih."
         },
         {
           "gameId": "subK4B6A-game-22",
@@ -922,6 +1001,21 @@
             "nama": "Total",
             "isi": "Jumlah keseluruhan = jumlah semua nilai kategori.",
             "suara": "Total adalah jumlah semua."
+          },
+          {
+            "nama": "Kunci Piktogram",
+            "isi": "METODE LUAR · Pictograph Key: Satu gambar bisa mewakili lebih dari satu benda. (asal: Data literacy).",
+            "suara": "METODE LUAR. Kunci Piktogram. Satu gambar bisa mewakili lebih dari satu benda."
+          },
+          {
+            "nama": "Turus Kategori",
+            "isi": "METODE LUAR · Categorical Tally: Hitung frekuensi tiap kategori dengan turus. (asal: Tally marks).",
+            "suara": "METODE LUAR. Turus Kategori. Hitung frekuensi tiap kategori dengan turus."
+          },
+          {
+            "nama": "Baca Lalu Banding",
+            "isi": "METODE LUAR · Read then Compare: Bandingkan tinggi/banyak simbol antar kategori. (asal: Graph reading).",
+            "suara": "METODE LUAR. Baca Lalu Banding. Bandingkan tinggi/banyak simbol antar kategori."
           }
         ],
         "suara": "Ingat empat kunci piktogram: definisi, skala, cara baca, dan total.",
@@ -945,8 +1039,44 @@
       "silabus": {
         "teksSuara": "Kita belajar diagram batang. Diagram batang memakai batang persegi panjang untuk menunjukkan banyak tiap kategori. Ada yang tegak dan ada yang mendatar. Sumbu membantu kita membaca nilai. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menampilkan dan menafsirkan data dalam bentuk diagram batang.",
-        "referensi": "Buku Siswa Matematika Kelas IV Bab 6 Sub-Bab B hlm. 187–194; bar graphs; axis reading; dual orientation."
+        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 6 Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Bar Scale",
+          "namaId": "Skala Batang",
+          "asal": "Bar graph pedagogy",
+          "ringkas": "Baca nilai dari tinggi batang dan skala sumbu.",
+          "tahap": [
+            "Story",
+            "Picture",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Axis Labels",
+          "namaId": "Label Sumbu",
+          "asal": "Data display",
+          "ringkas": "Sumbu harus bertuliskan apa yang diukur.",
+          "tahap": [
+            "Mind",
+            "Infografis"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Compare Bars",
+          "namaId": "Banding Batang",
+          "asal": "Comparative reading",
+          "ringkas": "Batang lebih tinggi = nilai lebih besar.",
+          "tahap": [
+            "Concrete",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K4B6B-V1-1",
@@ -964,7 +1094,7 @@
           "id": "K4B6B-V1-3",
           "titleHint": "Tegak atau mendatar",
           "sceneType": "K4B6B-V1-3",
-          "voiceNarration": "Batang bisa naik ke atas. Atau memanjang ke samping. Artinya sama. Hanya arah berbeda."
+          "voiceNarration": "Batang bisa naik ke atas. Atau memanjang ke samping. Artinya sama. Hanya arah berbeda. METODE LUAR. Skala Batang: Baca nilai dari tinggi batang dan skala sumbu."
         },
         {
           "id": "K4B6B-V2-1",
@@ -982,7 +1112,7 @@
           "id": "K4B6B-V2-3",
           "titleHint": "Total dari batang",
           "sceneType": "K4B6B-V2-3",
-          "voiceNarration": "Jumlahkan nilai tiap batang. Itu total keseluruhan. Bisa juga hitung selisih. Latih dengan data transportasi."
+          "voiceNarration": "Jumlahkan nilai tiap batang. Itu total keseluruhan. Bisa juga hitung selisih. Latih dengan data transportasi. METODE LUAR. Label Sumbu: Sumbu harus bertuliskan apa yang diukur."
         },
         {
           "id": "K4B6B-V3-1",
@@ -1000,7 +1130,7 @@
           "id": "K4B6B-V3-3",
           "titleHint": "Siap bermain",
           "sceneType": "K4B6B-V3-3",
-          "voiceNarration": "Kita sudah paham batang. Saatnya membaca sumbu dan nilai. Ayo ke permainan. Semangat!"
+          "voiceNarration": "Kita sudah paham batang. Saatnya membaca sumbu dan nilai. Ayo ke permainan. Semangat! METODE LUAR. Banding Batang: Batang lebih tinggi = nilai lebih besar."
         }
       ],
       "videos": [
@@ -1048,13 +1178,15 @@
                 "Batang bisa naik ke atas.",
                 "Atau memanjang ke samping.",
                 "Artinya sama.",
-                "Hanya arah berbeda."
+                "Hanya arah berbeda.",
+                "METODE LUAR. Skala Batang: Baca nilai dari tinggi batang dan skala sumbu."
               ],
               "papan": [
                 "tegak",
                 "mendatar",
                 "sama arti",
-                "beda arah"
+                "beda arah",
+                "METODE LUAR · Skala Batang"
               ]
             }
           ]
@@ -1103,13 +1235,15 @@
                 "Jumlahkan nilai tiap batang.",
                 "Itu total keseluruhan.",
                 "Bisa juga hitung selisih.",
-                "Latih dengan data transportasi."
+                "Latih dengan data transportasi.",
+                "METODE LUAR. Label Sumbu: Sumbu harus bertuliskan apa yang diukur."
               ],
               "papan": [
                 "jumlah",
                 "total",
                 "selisih",
-                "latihan"
+                "latihan",
+                "METODE LUAR · Label Sumbu"
               ]
             }
           ]
@@ -1158,13 +1292,15 @@
                 "Kita sudah paham batang.",
                 "Saatnya membaca sumbu dan nilai.",
                 "Ayo ke permainan.",
-                "Semangat!"
+                "Semangat!",
+                "METODE LUAR. Banding Batang: Batang lebih tinggi = nilai lebih besar."
               ],
               "papan": [
                 "paham",
                 "sumbu",
                 "main",
-                "semangat"
+                "semangat",
+                "METODE LUAR · Banding Batang"
               ]
             }
           ]
@@ -1217,6 +1353,22 @@
           "stepDesc": "Paling banyak, sedikit, total, selisih",
           "icon": "💡",
           "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. METODE LUAR · Skala Batang",
+          "stepDesc": "Baca nilai dari tinggi batang dan skala sumbu.",
+          "icon": "🌍",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. METODE LUAR · Label Sumbu",
+          "stepDesc": "Sumbu harus bertuliskan apa yang diukur.",
+          "icon": "🌍",
+          "flowFrom": "7",
           "flowTo": "END"
         }
       ],
@@ -1290,6 +1442,27 @@
           "countNum": 1,
           "countWord": "A+B",
           "voiceSentence": "Piktogram dan batang siap."
+        },
+        {
+          "fruitName": "Skala Batang",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Bar Scale",
+          "voiceSentence": "METODE LUAR. Skala Batang. Baca nilai dari tinggi batang dan skala sumbu."
+        },
+        {
+          "fruitName": "Label Sumbu",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Axis Labels",
+          "voiceSentence": "METODE LUAR. Label Sumbu. Sumbu harus bertuliskan apa yang diukur."
+        },
+        {
+          "fruitName": "Banding Batang",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Compare Bars",
+          "voiceSentence": "METODE LUAR. Banding Batang. Batang lebih tinggi = nilai lebih besar."
         }
       ],
       "concreteSlides": [
@@ -1297,7 +1470,7 @@
           "title": "Baca Tinggi Batang",
           "emoji": "📏",
           "targetCount": 6,
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Skala Batang. Pilih."
         },
         {
           "title": "Tegak atau Mendatar",
@@ -1360,7 +1533,7 @@
           "diagramType": "bar-v",
           "numberA": 1,
           "numberB": 2,
-          "caption": "Baca tinggi."
+          "caption": "Baca tinggi. (METODE LUAR · Skala Batang)"
         },
         {
           "title": "Diagram Batang Mendatar",
@@ -1431,7 +1604,7 @@
           "symbolLarge": "▮",
           "wordLarge": "BATANG",
           "mathNotation": "definisi",
-          "voiceReadout": "Pilih."
+          "voiceReadout": "METODE LUAR · Skala Batang. Pilih."
         },
         {
           "symbolLarge": "h",
@@ -1496,9 +1669,9 @@
           "gameType": "baca-batang",
           "title": "Baca Tinggi Batang",
           "bookReference": "Buku Siswa hlm. 187–191",
-          "objective": "Membaca nilai batang.",
+          "objective": "Membaca nilai batang. (METODE LUAR · Skala Batang)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Skala Batang. Pilih."
         },
         {
           "gameId": "subK4B6B-game-2",
@@ -1606,9 +1779,9 @@
           "gameType": "diagram-tegak",
           "title": "Diagram Batang Tegak",
           "bookReference": "Buku Siswa hlm. 188–189",
-          "objective": "Baca tinggi.",
+          "objective": "Baca tinggi. (METODE LUAR · Skala Batang)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Skala Batang. Pilih."
         },
         {
           "gameId": "subK4B6B-game-12",
@@ -1716,9 +1889,9 @@
           "gameType": "write-istilah-b",
           "title": "Tulis Istilah Batang",
           "bookReference": "Buku Siswa hlm. 188–191",
-          "objective": "Menulis istilah.",
+          "objective": "Menulis istilah. (METODE LUAR · Skala Batang)",
           "mechanicDescription": "Tiga ronde.",
-          "voiceGuide": "Pilih."
+          "voiceGuide": "METODE LUAR · Skala Batang. Pilih."
         },
         {
           "gameId": "subK4B6B-game-22",
@@ -1841,6 +2014,21 @@
             "nama": "Membaca",
             "isi": "Samakan ujung batang dengan skala untuk mendapat nilai.",
             "suara": "Samakan dengan skala."
+          },
+          {
+            "nama": "Skala Batang",
+            "isi": "METODE LUAR · Bar Scale: Baca nilai dari tinggi batang dan skala sumbu. (asal: Bar graph pedagogy).",
+            "suara": "METODE LUAR. Skala Batang. Baca nilai dari tinggi batang dan skala sumbu."
+          },
+          {
+            "nama": "Label Sumbu",
+            "isi": "METODE LUAR · Axis Labels: Sumbu harus bertuliskan apa yang diukur. (asal: Data display).",
+            "suara": "METODE LUAR. Label Sumbu. Sumbu harus bertuliskan apa yang diukur."
+          },
+          {
+            "nama": "Banding Batang",
+            "isi": "METODE LUAR · Compare Bars: Batang lebih tinggi = nilai lebih besar. (asal: Comparative reading).",
+            "suara": "METODE LUAR. Banding Batang. Batang lebih tinggi = nilai lebih besar."
           }
         ],
         "suara": "Ingat empat kunci batang: definisi, sumbu, dua arah, dan cara baca.",

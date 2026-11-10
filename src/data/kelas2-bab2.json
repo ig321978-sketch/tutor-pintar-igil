@@ -26,8 +26,44 @@
       "silabus": {
         "teksSuara": "Kita belajar berbagai cara melakukan penjumlahan. Bukunya bernama Penjumlahan dan Pengurangan, bagian berbagai cara melakukan penjumlahan. Tika dan Kira memetik jambu air, lalu kita menjumlahkan jambu mereka dengan tiga cara: menghitung maju, penjumlahan bersusun, dan pasangan bilangan. Kita juga belajar memindahkan sepuluh satuan menjadi satu puluhan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menjumlahkan bilangan cacah sampai 20 dengan menghitung maju, penjumlahan bersusun, dan pasangan bilangan, memindahkan sepuluh satuan menjadi satu puluhan, serta memilih cara yang paling mudah dan menjelaskan alasannya.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2: Penjumlahan dan Pengurangan, Sub-Bab A hlm. 37–47)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2 Sub-Bab A hlm. 37–47)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting On",
+          "namaId": "Menghitung Maju",
+          "asal": "Counting on",
+          "ringkas": "Mulai dari bilangan lebih besar lalu maju.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Number Bond",
+          "namaId": "Pasangan Bilangan",
+          "asal": "Singapore Math",
+          "ringkas": "Pecah bilangan jadi pasangan yang mudah.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Dienes / Regroup",
+          "namaId": "Balok Dienes dan Menyimpan",
+          "asal": "Dienes / Montessori",
+          "ringkas": "Sepuluh satuan menjadi satu puluhan.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B2A-V1-1",
@@ -45,7 +81,7 @@
           "id": "K2B2A-V1-3",
           "titleHint": "Dua pertanyaan",
           "sceneType": "K2B2A-V1-3",
-          "voiceNarration": "Ada dua pertanyaan di akhir cerita. Berapa jumlah jambu air yang dipetik Tika dan Kira? Berapa selisih banyak jambu air milik Tika dan Kira? Sebelum menjawabnya, kita cari dulu banyak jambu air milik Kira. Kira memetik 6 lebih banyak dari Tika, jadi kita jumlahkan 12 dan 6. Penjumlahan bisa dilakukan dengan berbagai cara. Ayo kita lihat caranya!"
+          "voiceNarration": "Ada dua pertanyaan di akhir cerita. Berapa jumlah jambu air yang dipetik Tika dan Kira? Berapa selisih banyak jambu air milik Tika dan Kira? Sebelum menjawabnya, kita cari dulu banyak jambu air milik Kira. Kira memetik 6 lebih banyak dari Tika, jadi kita jumlahkan 12 dan 6. Penjumlahan bisa dilakukan dengan berbagai cara. Ayo kita lihat caranya! METODE LUAR. Menghitung Maju: Mulai dari bilangan lebih besar lalu maju."
         },
         {
           "id": "K2B2A-V2-1",
@@ -63,7 +99,7 @@
           "id": "K2B2A-V2-3",
           "titleHint": "Cara 3: Pasangan bilangan",
           "sceneType": "K2B2A-V2-3",
-          "voiceNarration": "Cara ketiga adalah pasangan bilangan. Ingat pasangan bilangan. 12 dipisah menjadi 10 dan 2. Sekarang jumlahkan bagian yang kecil dulu: 2 ditambah 6 sama dengan 8. Lalu jumlahkan dengan sepuluhnya: 10 ditambah 8 sama dengan 18. Jadi 12 ditambah 6 sama dengan 18. Tiga cara berbeda, hasilnya sama, yaitu 18. Pilih cara yang paling mudah untukmu!"
+          "voiceNarration": "Cara ketiga adalah pasangan bilangan. Ingat pasangan bilangan. 12 dipisah menjadi 10 dan 2. Sekarang jumlahkan bagian yang kecil dulu: 2 ditambah 6 sama dengan 8. Lalu jumlahkan dengan sepuluhnya: 10 ditambah 8 sama dengan 18. Jadi 12 ditambah 6 sama dengan 18. Tiga cara berbeda, hasilnya sama, yaitu 18. Pilih cara yang paling mudah untukmu! METODE LUAR. Pasangan Bilangan: Pecah bilangan jadi pasangan yang mudah."
         },
         {
           "id": "K2B2A-V3-1",
@@ -81,7 +117,7 @@
           "id": "K2B2A-V3-3",
           "titleHint": "Ingat: pindah sepuluh",
           "sceneType": "K2B2A-V3-3",
-          "voiceNarration": "Kalau satuan berjumlah 10, kita tukar menjadi 1 puluhan. Angka satuan di jawaban menjadi 0, dan 1 puluhan pindah ke kolom puluhan. Ini juga berlaku pada 13 ditambah 7, dan 16 ditambah 4. Hasilnya sama-sama 20."
+          "voiceNarration": "Kalau satuan berjumlah 10, kita tukar menjadi 1 puluhan. Angka satuan di jawaban menjadi 0, dan 1 puluhan pindah ke kolom puluhan. Ini juga berlaku pada 13 ditambah 7, dan 16 ditambah 4. Hasilnya sama-sama 20. METODE LUAR. Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan."
         }
       ],
       "videos": [
@@ -132,7 +168,8 @@
                 "Sebelum menjawabnya, kita cari dulu banyak jambu air milik Kira.",
                 "Kira memetik 6 lebih banyak dari Tika, jadi kita jumlahkan 12 dan 6.",
                 "Penjumlahan bisa dilakukan dengan berbagai cara.",
-                "Ayo kita lihat caranya!"
+                "Ayo kita lihat caranya!",
+                "METODE LUAR. Menghitung Maju: Mulai dari bilangan lebih besar lalu maju."
               ],
               "papan": [
                 "Dua pertanyaan",
@@ -141,7 +178,8 @@
                 "Cari milik Kira dulu",
                 "12 + 6 = ?",
                 "Berbagai cara",
-                "Ayo lihat caranya!"
+                "Ayo lihat caranya!",
+                "METODE LUAR · Menghitung Maju"
               ]
             }
           ]
@@ -202,7 +240,8 @@
                 "Sekarang jumlahkan bagian yang kecil dulu: 2 ditambah 6 sama dengan 8.",
                 "Lalu jumlahkan dengan sepuluhnya: 10 ditambah 8 sama dengan 18.",
                 "Jadi 12 ditambah 6 sama dengan 18.",
-                "Tiga cara berbeda, hasilnya sama, yaitu 18. Pilih cara yang paling mudah untukmu!"
+                "Tiga cara berbeda, hasilnya sama, yaitu 18. Pilih cara yang paling mudah untukmu!",
+                "METODE LUAR. Pasangan Bilangan: Pecah bilangan jadi pasangan yang mudah."
               ],
               "papan": [
                 "Cara 3: Pasangan",
@@ -210,7 +249,8 @@
                 "2 + 6 = 8",
                 "10 + 8 = 18",
                 "12 + 6 = 18",
-                "Tiga cara, hasil sama"
+                "Tiga cara, hasil sama",
+                "METODE LUAR · Pasangan Bilangan"
               ]
             }
           ]
@@ -266,12 +306,14 @@
               "ketukan": [
                 "Kalau satuan berjumlah 10, kita tukar menjadi 1 puluhan.",
                 "Angka satuan di jawaban menjadi 0, dan 1 puluhan pindah ke kolom puluhan.",
-                "Ini juga berlaku pada 13 ditambah 7, dan 16 ditambah 4. Hasilnya sama-sama 20."
+                "Ini juga berlaku pada 13 ditambah 7, dan 16 ditambah 4. Hasilnya sama-sama 20.",
+                "METODE LUAR. Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan."
               ],
               "papan": [
                 "10 satuan jadi 1 puluhan",
                 "Satuan 0, puluhan +1",
-                "13 + 7 = 20 • 16 + 4 = 20"
+                "13 + 7 = 20 • 16 + 4 = 20",
+                "METODE LUAR · Balok Dienes dan Menyimpan"
               ]
             }
           ]
@@ -413,6 +455,27 @@
           "countNum": 3,
           "countWord": "Tiga",
           "voiceSentence": "Tidak ada cara yang paling benar. Pilih yang paling mudah untukmu. Hitung maju bila bilangan kedua kecil. Bersusun bila kamu ingin rapi. Pasangan bilangan bila ada sepuluh yang bisa dibentuk. Lalu periksa dengan cara lain."
+        },
+        {
+          "fruitName": "Menghitung Maju",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Counting On",
+          "voiceSentence": "METODE LUAR. Menghitung Maju. Mulai dari bilangan lebih besar lalu maju."
+        },
+        {
+          "fruitName": "Pasangan Bilangan",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Number Bond",
+          "voiceSentence": "METODE LUAR. Pasangan Bilangan. Pecah bilangan jadi pasangan yang mudah."
+        },
+        {
+          "fruitName": "Balok Dienes dan Menyimpan",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Dienes / Regroup",
+          "voiceSentence": "METODE LUAR. Balok Dienes dan Menyimpan. Sepuluh satuan menjadi satu puluhan."
         }
       ],
       "concreteSlides": [
@@ -420,7 +483,7 @@
           "title": "Petik Jambu Air",
           "emoji": "🍎",
           "targetCount": 19,
-          "voiceGuide": "Ketuk jambu di pohon, hitung maju, lalu pilih jumlahnya."
+          "voiceGuide": "METODE LUAR · Menghitung Maju. Ketuk jambu di pohon, hitung maju, lalu pilih jumlahnya."
         },
         {
           "title": "Gabung Balok",
@@ -492,9 +555,9 @@
           "gameType": "tap-to-count-on",
           "title": "Petik Jambu Air",
           "bookReference": "Buku Siswa hlm. 39–40 (Panen Jambu Air; Cara 1: menghitung maju)",
-          "objective": "Menjumlahkan dengan menghitung maju benda nyata: mulai dari banyak awal, lalu menyebut bilangan berikutnya tiap benda bertambah.",
+          "objective": "Menjumlahkan dengan menghitung maju benda nyata: mulai dari banyak awal, lalu menyebut bilangan berikutnya tiap benda bertambah. (METODE LUAR · Menghitung Maju)",
           "mechanicDescription": "Tiga ronde (12 + 6, 14 + 3, dan 15 + 4). Keranjang sudah berisi jambu. Siswa mengetuk jambu di pohon satu per satu, tiap ketukan jambu masuk keranjang dan Suara Guru menyebut bilangan berikutnya. Setelah semua dipetik, siswa memilih jumlah seluruhnya. Terakhir ucapkan jumlahnya.",
-          "voiceGuide": "Ketuk jambu di pohon, hitung maju, lalu pilih jumlahnya."
+          "voiceGuide": "METODE LUAR · Menghitung Maju. Ketuk jambu di pohon, hitung maju, lalu pilih jumlahnya."
         },
         {
           "gameId": "subK2B2A-game-2",
@@ -622,6 +685,21 @@
             "nama": "Pilih cara termudah",
             "isi": "hasilnya selalu sama",
             "suara": "Semua cara memberi hasil yang sama. Pilih cara yang paling mudah untukmu, lalu periksa dengan cara lain."
+          },
+          {
+            "nama": "Menghitung Maju",
+            "isi": "METODE LUAR · Counting On: Mulai dari bilangan lebih besar lalu maju. (asal: Counting on).",
+            "suara": "METODE LUAR. Menghitung Maju. Mulai dari bilangan lebih besar lalu maju."
+          },
+          {
+            "nama": "Pasangan Bilangan",
+            "isi": "METODE LUAR · Number Bond: Pecah bilangan jadi pasangan yang mudah. (asal: Singapore Math).",
+            "suara": "METODE LUAR. Pasangan Bilangan. Pecah bilangan jadi pasangan yang mudah."
+          },
+          {
+            "nama": "Balok Dienes dan Menyimpan",
+            "isi": "METODE LUAR · Dienes / Regroup: Sepuluh satuan menjadi satu puluhan. (asal: Dienes / Montessori).",
+            "suara": "METODE LUAR. Balok Dienes dan Menyimpan. Sepuluh satuan menjadi satu puluhan."
           }
         ],
         "suara": "Ingat selalu! Penjumlahan bisa dilakukan dengan menghitung maju, bersusun, atau pasangan bilangan. Ketiganya memberi hasil yang sama. Jumlahkan satuan dulu. Kalau satuan berjumlah sepuluh, tukar menjadi satu puluhan dan pindahkan ke kolom puluhan. Pilih cara yang paling mudah untukmu.",
@@ -646,8 +724,44 @@
       "silabus": {
         "teksSuara": "Kita belajar berbagai cara melakukan pengurangan. Bukunya bernama Penjumlahan dan Pengurangan, bagian berbagai cara melakukan pengurangan. Kita mencari selisih jambu air Tika dan Kira dengan tiga cara: menghitung mundur, pengurangan bersusun, dan pasangan bilangan. Kita juga belajar mengurai satu puluhan menjadi sepuluh satuan, dan memeriksa hasil dengan penjumlahan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa mengurangkan bilangan cacah sampai 20 dengan menghitung mundur, pengurangan bersusun, dan pasangan bilangan, mengurai satu puluhan menjadi sepuluh satuan, memeriksa hasil dengan penjumlahan, serta memilih cara yang paling mudah dan menjelaskan alasannya.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2: Penjumlahan dan Pengurangan, Sub-Bab B hlm. 48–53)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2 Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting Up",
+          "namaId": "Menghitung Naik",
+          "asal": "Counting up",
+          "ringkas": "Naik dari yang dikurangi sampai bilangan awal.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Take Away",
+          "namaId": "Mengambil",
+          "asal": "Subtraction",
+          "ringkas": "Ambil sebagian dari kumpulan.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Regroup Borrow",
+          "namaId": "Meminjam",
+          "asal": "Base-ten",
+          "ringkas": "Buka satu puluhan jadi sepuluh satuan.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B2B-V1-1",
@@ -659,7 +773,7 @@
           "id": "K2B2B-V1-2",
           "titleHint": "Menemukan jawaban dengan mengurangkan",
           "sceneType": "K2B2B-V1-2",
-          "voiceNarration": "Untuk menemukan jawabannya, kita kurangkan 18 dengan 12. Bilangan yang besar dikurangi bilangan yang kecil. Pengurangan bisa dilakukan dengan berbagai cara. Ayo kita lihat tiga caranya."
+          "voiceNarration": "Untuk menemukan jawabannya, kita kurangkan 18 dengan 12. Bilangan yang besar dikurangi bilangan yang kecil. Pengurangan bisa dilakukan dengan berbagai cara. Ayo kita lihat tiga caranya. METODE LUAR. Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal."
         },
         {
           "id": "K2B2B-V2-1",
@@ -677,7 +791,7 @@
           "id": "K2B2B-V2-3",
           "titleHint": "Cara 3: Pasangan bilangan",
           "sceneType": "K2B2B-V2-3",
-          "voiceNarration": "Cara ketiga adalah pasangan bilangan. 18 adalah 10 dan 8. 12 adalah 10 dan 2. Kurangkan puluhan dengan puluhan: 10 dikurangi 10 sama dengan 0. Kurangkan satuan dengan satuan: 8 dikurangi 2 sama dengan 6. Jadi 18 dikurangi 12 sama dengan 6. Selisih jambu air Kira dan Tika adalah 6 buah."
+          "voiceNarration": "Cara ketiga adalah pasangan bilangan. 18 adalah 10 dan 8. 12 adalah 10 dan 2. Kurangkan puluhan dengan puluhan: 10 dikurangi 10 sama dengan 0. Kurangkan satuan dengan satuan: 8 dikurangi 2 sama dengan 6. Jadi 18 dikurangi 12 sama dengan 6. Selisih jambu air Kira dan Tika adalah 6 buah. METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
         },
         {
           "id": "K2B2B-V3-1",
@@ -695,7 +809,7 @@
           "id": "K2B2B-V3-3",
           "titleHint": "Periksa dengan penjumlahan",
           "sceneType": "K2B2B-V3-3",
-          "voiceNarration": "Kita bisa memeriksa hasil pengurangan dengan penjumlahan. 4 ditambah 8 sama dengan 12. Cocok dengan jambu air Tika semula! Kalau tidak cocok, hitung ulang pelan-pelan."
+          "voiceNarration": "Kita bisa memeriksa hasil pengurangan dengan penjumlahan. 4 ditambah 8 sama dengan 12. Cocok dengan jambu air Tika semula! Kalau tidak cocok, hitung ulang pelan-pelan. METODE LUAR. Meminjam: Buka satu puluhan jadi sepuluh satuan."
         }
       ],
       "videos": [
@@ -731,13 +845,15 @@
                 "Untuk menemukan jawabannya, kita kurangkan 18 dengan 12.",
                 "Bilangan yang besar dikurangi bilangan yang kecil.",
                 "Pengurangan bisa dilakukan dengan berbagai cara.",
-                "Ayo kita lihat tiga caranya."
+                "Ayo kita lihat tiga caranya.",
+                "METODE LUAR. Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal."
               ],
               "papan": [
                 "18 − 12 = ?",
                 "Besar dikurangi kecil",
                 "Berbagai cara",
-                "Tiga cara"
+                "Tiga cara",
+                "METODE LUAR · Menghitung Naik"
               ]
             }
           ]
@@ -794,7 +910,8 @@
                 "Kurangkan puluhan dengan puluhan: 10 dikurangi 10 sama dengan 0.",
                 "Kurangkan satuan dengan satuan: 8 dikurangi 2 sama dengan 6.",
                 "Jadi 18 dikurangi 12 sama dengan 6.",
-                "Selisih jambu air Kira dan Tika adalah 6 buah."
+                "Selisih jambu air Kira dan Tika adalah 6 buah.",
+                "METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
               ],
               "papan": [
                 "Cara 3: Pasangan",
@@ -802,7 +919,8 @@
                 "10 − 10 = 0",
                 "8 − 2 = 6",
                 "18 − 12 = 6",
-                "Selisih: 6 jambu"
+                "Selisih: 6 jambu",
+                "METODE LUAR · Mengambil"
               ]
             }
           ]
@@ -854,12 +972,14 @@
               "ketukan": [
                 "Kita bisa memeriksa hasil pengurangan dengan penjumlahan.",
                 "4 ditambah 8 sama dengan 12. Cocok dengan jambu air Tika semula!",
-                "Kalau tidak cocok, hitung ulang pelan-pelan."
+                "Kalau tidak cocok, hitung ulang pelan-pelan.",
+                "METODE LUAR. Meminjam: Buka satu puluhan jadi sepuluh satuan."
               ],
               "papan": [
                 "Periksa dengan tambah",
                 "4 + 8 = 12 ✔",
-                "Tidak cocok? Hitung ulang"
+                "Tidak cocok? Hitung ulang",
+                "METODE LUAR · Meminjam"
               ]
             }
           ]
@@ -928,7 +1048,23 @@
           "stepDesc": "Ada cara pengurangan lain yang dipakai pedagang saat memberi kembalian, yaitu menghitung maju dari bilangan kecil sampai bilangan besar. Untuk 18 dikurangi 12, mulai dari 12 lalu tambah satu demi satu sampai 18. Tambahannya 6, jadi selisihnya 6. Pilih cara yang paling mudah untukmu, dan jelaskan alasannya.",
           "icon": "🛒",
           "flowFrom": "Tambah sampai pas",
-          "flowTo": "Pengurangan siap dipakai"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Menghitung Naik",
+          "stepDesc": "Naik dari yang dikurangi sampai bilangan awal.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Mengambil",
+          "stepDesc": "Ambil sebagian dari kumpulan.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -1001,6 +1137,27 @@
           "countNum": 3,
           "countWord": "Tiga",
           "voiceSentence": "Pilih cara yang paling mudah untukmu. Hitung mundur bila bilangan yang dikurangkan kecil. Bersusun bila kamu ingin rapi. Pasangan bilangan bila kedua bilangan mudah dipisah. Tambah sampai pas bila kedua bilangan berdekatan. Lalu periksa dengan penjumlahan."
+        },
+        {
+          "fruitName": "Menghitung Naik",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Counting Up",
+          "voiceSentence": "METODE LUAR. Menghitung Naik. Naik dari yang dikurangi sampai bilangan awal."
+        },
+        {
+          "fruitName": "Mengambil",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Take Away",
+          "voiceSentence": "METODE LUAR. Mengambil. Ambil sebagian dari kumpulan."
+        },
+        {
+          "fruitName": "Meminjam",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Regroup Borrow",
+          "voiceSentence": "METODE LUAR. Meminjam. Buka satu puluhan jadi sepuluh satuan."
         }
       ],
       "concreteSlides": [
@@ -1008,7 +1165,7 @@
           "title": "Beri Jambu ke Lili",
           "emoji": "🍎",
           "targetCount": 19,
-          "voiceGuide": "Seret jambu ke piring Lili, hitung mundur, lalu pilih sisanya."
+          "voiceGuide": "METODE LUAR · Menghitung Naik. Seret jambu ke piring Lili, hitung mundur, lalu pilih sisanya."
         },
         {
           "title": "Pasangkan Selisih",
@@ -1080,9 +1237,9 @@
           "gameType": "drag-take-away",
           "title": "Beri Jambu ke Lili",
           "bookReference": "Buku Siswa hlm. 49–50 (Tika memberikan jambu air kepada Lili); hlm. 52 (Ayo Berlatih nomor 1: 15 − 4, 19 − 8)",
-          "objective": "Mengurangkan dengan mengambil benda satu per satu sambil menghitung mundur.",
+          "objective": "Mengurangkan dengan mengambil benda satu per satu sambil menghitung mundur. (METODE LUAR · Menghitung Naik)",
           "mechanicDescription": "Tiga ronde (15 beri 4, 19 beri 8, dan 18 beri 6). Siswa menyeret atau mengetuk jambu dari keranjang Tika ke piring Lili satu per satu. Tiap jambu pergi, Suara Guru menyebut sisanya. Setelah cukup, siswa memilih sisa jambu. Terakhir ucapkan sisanya.",
-          "voiceGuide": "Seret jambu ke piring Lili, hitung mundur, lalu pilih sisanya."
+          "voiceGuide": "METODE LUAR · Menghitung Naik. Seret jambu ke piring Lili, hitung mundur, lalu pilih sisanya."
         },
         {
           "gameId": "subK2B2B-game-2",
@@ -1210,6 +1367,21 @@
             "nama": "Periksa dengan tambah",
             "isi": "4 + 8 = 12, cocok",
             "suara": "Periksa hasil pengurangan dengan penjumlahan. Kalau dua belas dikurangi delapan sama dengan empat, maka empat ditambah delapan harus sama dengan dua belas."
+          },
+          {
+            "nama": "Menghitung Naik",
+            "isi": "METODE LUAR · Counting Up: Naik dari yang dikurangi sampai bilangan awal. (asal: Counting up).",
+            "suara": "METODE LUAR. Menghitung Naik. Naik dari yang dikurangi sampai bilangan awal."
+          },
+          {
+            "nama": "Mengambil",
+            "isi": "METODE LUAR · Take Away: Ambil sebagian dari kumpulan. (asal: Subtraction).",
+            "suara": "METODE LUAR. Mengambil. Ambil sebagian dari kumpulan."
+          },
+          {
+            "nama": "Meminjam",
+            "isi": "METODE LUAR · Regroup Borrow: Buka satu puluhan jadi sepuluh satuan. (asal: Base-ten).",
+            "suara": "METODE LUAR. Meminjam. Buka satu puluhan jadi sepuluh satuan."
           }
         ],
         "suara": "Ingat selalu! Selisih dicari dengan memasangkan satu-satu atau mengurangkan bilangan besar dengan bilangan kecil. Pengurangan bisa dilakukan dengan menghitung mundur, bersusun, atau pasangan bilangan. Kalau satuan tidak cukup, urai satu puluhan menjadi sepuluh satuan. Periksa hasilnya dengan penjumlahan.",
@@ -1234,8 +1406,43 @@
       "silabus": {
         "teksSuara": "Kita belajar soal cerita penjumlahan dan pengurangan. Bukunya bernama Penjumlahan dan Pengurangan, bagian soal cerita. Kita mengenal empat kata kunci: lebihnya, kurangnya, selisih, dan jumlah. Kita menyelesaikan soal cerita dengan empat langkah berurutan: diketahui, ditanya, solusi, dan kesimpulan. Kita juga membuat soal cerita sendiri. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa menyelesaikan soal cerita penjumlahan dan pengurangan bilangan sampai 20 dengan langkah berurutan (diketahui, ditanya, solusi, kesimpulan), memahami kata lebihnya, kurangnya, selisih, dan jumlah, menjumlahkan tiga bilangan, mencari bilangan awal, serta membuat soal cerita sendiri.",
-        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2: Penjumlahan dan Pengurangan, Sub-Bab C hlm. 54–58 dan Ayo Berkarya hlm. 63)."
+        "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2 Sub-Bab C)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Part–Part–Whole Story",
+          "namaId": "Cerita Bagian–Utuh",
+          "asal": "Singapore Math",
+          "ringkas": "Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
+          "tahap": [
+            "Story",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Bar Model Story",
+          "namaId": "Model Batang Cerita",
+          "asal": "Singapore bar model",
+          "ringkas": "Gambar batang sebelum menulis kalimat.",
+          "tahap": [
+            "Picture",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Choose Operation",
+          "namaId": "Pilih Operasi",
+          "asal": "Word-problem pedagogy",
+          "ringkas": "Tentukan + atau − dari makna cerita.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K2B2C-V1-1",
@@ -1247,7 +1454,7 @@
           "id": "K2B2C-V1-2",
           "titleHint": "Empat kata kunci",
           "sceneType": "K2B2C-V1-2",
-          "voiceNarration": "Ingat empat kata kunci ini: lebihnya, kurangnya, selisih, dan jumlah. Jumlah berarti semua digabung, jadi kita menambah. Selisih berarti beda banyaknya, jadi bilangan besar dikurangi bilangan kecil. Lebihnya dan kurangnya membandingkan dua orang. Baca dulu siapa yang punya lebih banyak."
+          "voiceNarration": "Ingat empat kata kunci ini: lebihnya, kurangnya, selisih, dan jumlah. Jumlah berarti semua digabung, jadi kita menambah. Selisih berarti beda banyaknya, jadi bilangan besar dikurangi bilangan kecil. Lebihnya dan kurangnya membandingkan dua orang. Baca dulu siapa yang punya lebih banyak. METODE LUAR. Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh."
         },
         {
           "id": "K2B2C-V2-1",
@@ -1265,7 +1472,7 @@
           "id": "K2B2C-V2-3",
           "titleHint": "Solusi dan kesimpulan",
           "sceneType": "K2B2C-V2-3",
-          "voiceNarration": "Langkah ketiga, solusi. Malosi punya 5 kurangnya, jadi kita kurangkan: 12 dikurangi 5 sama dengan 7. Jadi, Malosi memiliki 7 donat. Untuk jumlah, kita tambahkan: 7 ditambah 12 sama dengan 19. Langkah keempat, kesimpulan. Jumlah donat milik Tika dan Malosi adalah 19 donat."
+          "voiceNarration": "Langkah ketiga, solusi. Malosi punya 5 kurangnya, jadi kita kurangkan: 12 dikurangi 5 sama dengan 7. Jadi, Malosi memiliki 7 donat. Untuk jumlah, kita tambahkan: 7 ditambah 12 sama dengan 19. Langkah keempat, kesimpulan. Jumlah donat milik Tika dan Malosi adalah 19 donat. METODE LUAR. Model Batang Cerita: Gambar batang sebelum menulis kalimat."
         },
         {
           "id": "K2B2C-V3-1",
@@ -1283,7 +1490,7 @@
           "id": "K2B2C-V3-3",
           "titleHint": "Soal cerita buatan sendiri",
           "sceneType": "K2B2C-V3-3",
-          "voiceNarration": "Sekarang giliranmu membuat soal cerita! Pilih tokoh, benda, dan kata kunci. Lalu tulis bilangannya. Mintalah temanmu menyelesaikannya dengan diketahui, ditanya, solusi, dan kesimpulan. Soal cerita yang baik punya pertanyaan yang jelas dan bisa dijawab."
+          "voiceNarration": "Sekarang giliranmu membuat soal cerita! Pilih tokoh, benda, dan kata kunci. Lalu tulis bilangannya. Mintalah temanmu menyelesaikannya dengan diketahui, ditanya, solusi, dan kesimpulan. Soal cerita yang baik punya pertanyaan yang jelas dan bisa dijawab. METODE LUAR. Pilih Operasi: Tentukan + atau − dari makna cerita."
         }
       ],
       "videos": [
@@ -1321,13 +1528,15 @@
                 "Ingat empat kata kunci ini: lebihnya, kurangnya, selisih, dan jumlah.",
                 "Jumlah berarti semua digabung, jadi kita menambah.",
                 "Selisih berarti beda banyaknya, jadi bilangan besar dikurangi bilangan kecil.",
-                "Lebihnya dan kurangnya membandingkan dua orang. Baca dulu siapa yang punya lebih banyak."
+                "Lebihnya dan kurangnya membandingkan dua orang. Baca dulu siapa yang punya lebih banyak.",
+                "METODE LUAR. Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh."
               ],
               "papan": [
                 "Empat kata kunci",
                 "Jumlah: tambah",
                 "Selisih: kurang",
-                "Siapa yang lebih banyak?"
+                "Siapa yang lebih banyak?",
+                "METODE LUAR · Cerita Bagian–Utuh"
               ]
             }
           ]
@@ -1376,13 +1585,15 @@
                 "Langkah ketiga, solusi. Malosi punya 5 kurangnya, jadi kita kurangkan: 12 dikurangi 5 sama dengan 7.",
                 "Jadi, Malosi memiliki 7 donat.",
                 "Untuk jumlah, kita tambahkan: 7 ditambah 12 sama dengan 19.",
-                "Langkah keempat, kesimpulan. Jumlah donat milik Tika dan Malosi adalah 19 donat."
+                "Langkah keempat, kesimpulan. Jumlah donat milik Tika dan Malosi adalah 19 donat.",
+                "METODE LUAR. Model Batang Cerita: Gambar batang sebelum menulis kalimat."
               ],
               "papan": [
                 "Solusi: 12 − 5 = 7",
                 "Malosi: 7 donat",
                 "Jumlah: 7 + 12 = 19",
-                "Jadi, 19 donat"
+                "Jadi, 19 donat",
+                "METODE LUAR · Model Batang Cerita"
               ]
             }
           ]
@@ -1439,13 +1650,15 @@
                 "Sekarang giliranmu membuat soal cerita!",
                 "Pilih tokoh, benda, dan kata kunci. Lalu tulis bilangannya.",
                 "Mintalah temanmu menyelesaikannya dengan diketahui, ditanya, solusi, dan kesimpulan.",
-                "Soal cerita yang baik punya pertanyaan yang jelas dan bisa dijawab."
+                "Soal cerita yang baik punya pertanyaan yang jelas dan bisa dijawab.",
+                "METODE LUAR. Pilih Operasi: Tentukan + atau − dari makna cerita."
               ],
               "papan": [
                 "Giliranmu!",
                 "Tokoh • Benda • Kata kunci",
                 "Tukar dengan teman",
-                "Pertanyaan jelas"
+                "Pertanyaan jelas",
+                "METODE LUAR · Pilih Operasi"
               ]
             }
           ]
@@ -1514,7 +1727,23 @@
           "stepDesc": "Gambarlah masalahnya dengan model batang, cara yang dipakai di Singapura. Batang panjang untuk bilangan yang lebih banyak, batang pendek untuk yang lebih sedikit, dan bagian yang tersisa adalah selisihnya. Untuk menjumlahkan tiga bilangan, jumlahkan dua dulu, lalu tambahkan yang ketiga. Cari dulu dua bilangan yang berjumlah sepuluh supaya lebih mudah.",
           "icon": "📏",
           "flowFrom": "Tiga bilangan",
-          "flowTo": "Soal cerita siap dipakai"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Cerita Bagian–Utuh",
+          "stepDesc": "Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Model Batang Cerita",
+          "stepDesc": "Gambar batang sebelum menulis kalimat.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -1587,6 +1816,27 @@
           "countNum": 5,
           "countWord": "Lima",
           "voiceSentence": "Tips detektif soal cerita, ada lima. Baca pelan-pelan. Tandai bilangan dan kata kuncinya. Gambar model batang atau jalur bilangan. Hitung dengan cara yang paling mudah. Periksa hasilnya, apakah masuk akal. Cara serupa dipakai anak di Amerika Serikat dengan nama CUBES."
+        },
+        {
+          "fruitName": "Cerita Bagian–Utuh",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Part–Part–Whole Story",
+          "voiceSentence": "METODE LUAR. Cerita Bagian–Utuh. Cerita penjumlahan/pengurangan memakai bagian dan utuh."
+        },
+        {
+          "fruitName": "Model Batang Cerita",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Bar Model Story",
+          "voiceSentence": "METODE LUAR. Model Batang Cerita. Gambar batang sebelum menulis kalimat."
+        },
+        {
+          "fruitName": "Pilih Operasi",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Choose Operation",
+          "voiceSentence": "METODE LUAR. Pilih Operasi. Tentukan + atau − dari makna cerita."
         }
       ],
       "concreteSlides": [
@@ -1594,7 +1844,7 @@
           "title": "Burung Kata Kunci",
           "emoji": "🐦",
           "targetCount": 15,
-          "voiceGuide": "Lihat burung yang menyala, lalu pilih bilangannya."
+          "voiceGuide": "METODE LUAR · Cerita Bagian–Utuh. Lihat burung yang menyala, lalu pilih bilangannya."
         },
         {
           "title": "Meja Donat",
@@ -1666,9 +1916,9 @@
           "gameType": "keyword-on-objects",
           "title": "Burung Kata Kunci",
           "bookReference": "Buku Siswa hlm. 54 (gambar burung hijau dan burung merah: lebihnya, kurangnya, selisih, jumlah)",
-          "objective": "Menghubungkan kata lebihnya, kurangnya, selisih, dan jumlah dengan benda yang dipasangkan.",
+          "objective": "Menghubungkan kata lebihnya, kurangnya, selisih, dan jumlah dengan benda yang dipasangkan. (METODE LUAR · Cerita Bagian–Utuh)",
           "mechanicDescription": "Tiga ronde (4 dan 5, 3 dan 7, 6 dan 9 burung). Burung hijau dan merah dipasangkan satu-satu. Tiap ronde ada empat pertanyaan: lebihnya, kurangnya, selisih, dan jumlah. Burung yang tidak berpasangan atau semua burung menyala sesuai kata kunci. Siswa memilih bilangannya.",
-          "voiceGuide": "Lihat burung yang menyala, lalu pilih bilangannya."
+          "voiceGuide": "METODE LUAR · Cerita Bagian–Utuh. Lihat burung yang menyala, lalu pilih bilangannya."
         },
         {
           "gameId": "subK2B2C-game-2",
@@ -1796,6 +2046,21 @@
             "nama": "Model batang",
             "isi": "gambar soalnya supaya jelas",
             "suara": "Gambarlah soal dengan model batang. Batang panjang untuk yang lebih banyak, batang pendek untuk yang lebih sedikit. Bagian yang tersisa adalah selisihnya."
+          },
+          {
+            "nama": "Cerita Bagian–Utuh",
+            "isi": "METODE LUAR · Part–Part–Whole Story: Cerita penjumlahan/pengurangan memakai bagian dan utuh. (asal: Singapore Math).",
+            "suara": "METODE LUAR. Cerita Bagian–Utuh. Cerita penjumlahan/pengurangan memakai bagian dan utuh."
+          },
+          {
+            "nama": "Model Batang Cerita",
+            "isi": "METODE LUAR · Bar Model Story: Gambar batang sebelum menulis kalimat. (asal: Singapore bar model).",
+            "suara": "METODE LUAR. Model Batang Cerita. Gambar batang sebelum menulis kalimat."
+          },
+          {
+            "nama": "Pilih Operasi",
+            "isi": "METODE LUAR · Choose Operation: Tentukan + atau − dari makna cerita. (asal: Word-problem pedagogy).",
+            "suara": "METODE LUAR. Pilih Operasi. Tentukan + atau − dari makna cerita."
           }
         ],
         "suara": "Ingat selalu! Baca soal cerita pelan-pelan. Cari kata kunci: lebihnya, kurangnya, selisih, dan jumlah. Tulis diketahui, ditanya, solusi, dan kesimpulan secara berurutan. Untuk mencari bilangan awal, balikkan kejadiannya. Periksa apakah jawabanmu masuk akal.",

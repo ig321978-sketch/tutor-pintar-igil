@@ -26,8 +26,44 @@
       "silabus": {
         "teksSuara": "Kita belajar bilangan dan lambang bilangan cacah sampai seribu. Alfa membawa tongkat Pramuka sepanjang seratus enam puluh sentimeter, Meutia berjalan enam ratus tujuh puluh satu meter ke sekolah, dan Alen berjalan lima ratus tujuh puluh dua meter ke taman kota. Kita belajar bahwa sepuluh satuan adalah satu puluhan dan sepuluh puluhan adalah satu ratusan, lalu membaca dan menulis bilangan tiga angka dengan papan ratusan, puluhan, dan satuan. Kita juga berhati-hati dengan angka nol. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa membaca, menulis, dan membandingkan bilangan cacah sampai 1.000. Pada sub-bab ini siswa membaca dan menulis bilangan cacah sampai 1.000 serta memahami satuan, puluhan, dan ratusan.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1: Bilangan Cacah sampai 1.000, Sub-Bab A hlm. 3–17) dan Buku Panduan Guru Bab 1 Topik A."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1 Sub-Bab A)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Dienes Blocks",
+          "namaId": "Balok Dienes",
+          "asal": "Zoltan Dienes",
+          "ringkas": "Satuan–puluhan–ratusan untuk bilangan sampai 1.000.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Picture"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Place-Value Chart",
+          "namaId": "Tabel Nilai Tempat",
+          "asal": "Van de Walle",
+          "ringkas": "Baca dan tulis menurut ratusan, puluhan, satuan.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Number Names",
+          "namaId": "Nama Bilangan",
+          "asal": "Naming pedagogy",
+          "ringkas": "Ucapkan bilangan sesuai aturan bahasa Indonesia.",
+          "tahap": [
+            "Infografis",
+            "Story"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B1A-V1-1",
@@ -45,7 +81,7 @@
           "id": "K3B1A-V1-3",
           "titleHint": "Tongkat 160 sentimeter",
           "sceneType": "K3B1A-V1-3",
-          "voiceNarration": "Panjang tongkat Alfa adalah seratus enam puluh sentimeter, ditulis 160. Kita taruh di papan nilai tempat. Ratusan satu, puluhan enam, satuan nol. Kita baca ratusan lebih dulu, yaitu seratus. Lalu puluhan, yaitu enam puluh. Satuannya nol, jadi tidak dibaca. Bilangan 160 dibaca seratus enam puluh."
+          "voiceNarration": "Panjang tongkat Alfa adalah seratus enam puluh sentimeter, ditulis 160. Kita taruh di papan nilai tempat. Ratusan satu, puluhan enam, satuan nol. Kita baca ratusan lebih dulu, yaitu seratus. Lalu puluhan, yaitu enam puluh. Satuannya nol, jadi tidak dibaca. Bilangan 160 dibaca seratus enam puluh. METODE LUAR. Balok Dienes: Satuan–puluhan–ratusan untuk bilangan sampai 1.000."
         },
         {
           "id": "K3B1A-V2-1",
@@ -63,7 +99,7 @@
           "id": "K3B1A-V2-3",
           "titleHint": "Bilangan dengan angka nol",
           "sceneType": "K3B1A-V2-3",
-          "voiceNarration": "Perhatikan bilangan 703. Puluhannya nol, jadi tidak ada puluhan yang dibaca. 703 dibaca tujuh ratus tiga. Tidak dibaca tujuh ratus nol tiga. Bilangan 900 dibaca sembilan ratus, sebab puluhan dan satuannya nol. Bilangan 634 dibaca enam ratus tiga puluh empat."
+          "voiceNarration": "Perhatikan bilangan 703. Puluhannya nol, jadi tidak ada puluhan yang dibaca. 703 dibaca tujuh ratus tiga. Tidak dibaca tujuh ratus nol tiga. Bilangan 900 dibaca sembilan ratus, sebab puluhan dan satuannya nol. Bilangan 634 dibaca enam ratus tiga puluh empat. METODE LUAR. Tabel Nilai Tempat: Baca dan tulis menurut ratusan, puluhan, satuan."
         },
         {
           "id": "K3B1A-V3-1",
@@ -81,7 +117,7 @@
           "id": "K3B1A-V3-3",
           "titleHint": "Nol penjaga tempat",
           "sceneType": "K3B1A-V3-3",
-          "voiceNarration": "Bagaimana menulis empat ratus lima? Tidak ada puluhan, jadi puluhannya nol. Kita tulis 4 di ratusan, 0 di puluhan, dan 5 di satuan, yaitu 405. Kalau nolnya dihilangkan menjadi 45, dan nilainya berubah jauh. Nol menjaga tempat puluhan supaya angka lain tetap berada di tempatnya."
+          "voiceNarration": "Bagaimana menulis empat ratus lima? Tidak ada puluhan, jadi puluhannya nol. Kita tulis 4 di ratusan, 0 di puluhan, dan 5 di satuan, yaitu 405. Kalau nolnya dihilangkan menjadi 45, dan nilainya berubah jauh. Nol menjaga tempat puluhan supaya angka lain tetap berada di tempatnya. METODE LUAR. Nama Bilangan: Ucapkan bilangan sesuai aturan bahasa Indonesia."
         }
       ],
       "videos": [
@@ -129,13 +165,15 @@
                 "Panjang tongkat Alfa adalah seratus enam puluh sentimeter, ditulis 160.",
                 "Kita taruh di papan nilai tempat. Ratusan satu, puluhan enam, satuan nol.",
                 "Kita baca ratusan lebih dulu, yaitu seratus. Lalu puluhan, yaitu enam puluh.",
-                "Satuannya nol, jadi tidak dibaca. Bilangan 160 dibaca seratus enam puluh."
+                "Satuannya nol, jadi tidak dibaca. Bilangan 160 dibaca seratus enam puluh.",
+                "METODE LUAR. Balok Dienes: Satuan–puluhan–ratusan untuk bilangan sampai 1.000."
               ],
               "papan": [
                 "Tongkat 160 cm",
                 "1 ratusan, 6 puluhan, 0 satuan",
                 "Seratus + enam puluh",
-                "Nol tidak dibaca"
+                "Nol tidak dibaca",
+                "METODE LUAR · Balok Dienes"
               ]
             }
           ]
@@ -184,13 +222,15 @@
                 "Perhatikan bilangan 703. Puluhannya nol, jadi tidak ada puluhan yang dibaca.",
                 "703 dibaca tujuh ratus tiga. Tidak dibaca tujuh ratus nol tiga.",
                 "Bilangan 900 dibaca sembilan ratus, sebab puluhan dan satuannya nol.",
-                "Bilangan 634 dibaca enam ratus tiga puluh empat."
+                "Bilangan 634 dibaca enam ratus tiga puluh empat.",
+                "METODE LUAR. Tabel Nilai Tempat: Baca dan tulis menurut ratusan, puluhan, satuan."
               ],
               "papan": [
                 "703",
                 "Tujuh ratus tiga",
                 "900 = sembilan ratus",
-                "634"
+                "634",
+                "METODE LUAR · Tabel Nilai Tempat"
               ]
             }
           ]
@@ -239,13 +279,15 @@
                 "Bagaimana menulis empat ratus lima? Tidak ada puluhan, jadi puluhannya nol.",
                 "Kita tulis 4 di ratusan, 0 di puluhan, dan 5 di satuan, yaitu 405.",
                 "Kalau nolnya dihilangkan menjadi 45, dan nilainya berubah jauh.",
-                "Nol menjaga tempat puluhan supaya angka lain tetap berada di tempatnya."
+                "Nol menjaga tempat puluhan supaya angka lain tetap berada di tempatnya.",
+                "METODE LUAR. Nama Bilangan: Ucapkan bilangan sesuai aturan bahasa Indonesia."
               ],
               "papan": [
                 "Empat ratus lima",
                 "4, nol, dan 5",
                 "Tanpa nol: 45",
-                "Nol penjaga tempat"
+                "Nol penjaga tempat",
+                "METODE LUAR · Nama Bilangan"
               ]
             }
           ]
@@ -314,7 +356,23 @@
           "stepDesc": "Bilangan tiga angka ada di mana-mana. Jarak rumah ke sekolah 671 meter, panjang tongkat 160 sentimeter, tinggi badan 127 sentimeter, kecepatan kereta 220 kilometer per jam, atau nomor antrean. Membaca dan menulisnya dengan benar membantu kita bercerita tentang ukuran dan banyak benda. Selalu mulai dari kiri: ratusan, puluhan, lalu satuan.",
           "icon": "📏",
           "flowFrom": "Bilangan di sekitar kita",
-          "flowTo": "Siap membaca dan menulis"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Balok Dienes",
+          "stepDesc": "Satuan–puluhan–ratusan untuk bilangan sampai 1.000.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Tabel Nilai Tempat",
+          "stepDesc": "Baca dan tulis menurut ratusan, puluhan, satuan.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -387,6 +445,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, cari tempat tiap angka. Dua, baca ratusan, puluhan, lalu satuan. Tiga, lewati angka nol. Empat, saat menulis, isi tempat yang kosong dengan nol."
+        },
+        {
+          "fruitName": "Balok Dienes",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Dienes Blocks",
+          "voiceSentence": "METODE LUAR. Balok Dienes. Satuan–puluhan–ratusan untuk bilangan sampai 1.000."
+        },
+        {
+          "fruitName": "Tabel Nilai Tempat",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Place-Value Chart",
+          "voiceSentence": "METODE LUAR. Tabel Nilai Tempat. Baca dan tulis menurut ratusan, puluhan, satuan."
+        },
+        {
+          "fruitName": "Nama Bilangan",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Number Names",
+          "voiceSentence": "METODE LUAR. Nama Bilangan. Ucapkan bilangan sesuai aturan bahasa Indonesia."
         }
       ],
       "concreteSlides": [
@@ -394,7 +473,7 @@
           "title": "Rakit Kemasan",
           "emoji": "📦",
           "targetCount": 6,
-          "voiceGuide": "Rakit bilangannya, lalu periksa."
+          "voiceGuide": "METODE LUAR · Balok Dienes. Rakit bilangannya, lalu periksa."
         },
         {
           "title": "Hitung Kemasan",
@@ -457,7 +536,7 @@
           "diagramType": "blocks-count",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Membaca model blok menjadi lambang bilangan."
+          "caption": "Membaca model blok menjadi lambang bilangan. (METODE LUAR · Balok Dienes)"
         },
         {
           "title": "Papan dari Blok",
@@ -528,7 +607,7 @@
           "symbolLarge": "759",
           "wordLarge": "SUSUN KARTU",
           "mathNotation": "kata → angka",
-          "voiceReadout": "Susun kartu menjadi bilangan."
+          "voiceReadout": "METODE LUAR · Balok Dienes. Susun kartu menjadi bilangan."
         },
         {
           "symbolLarge": "671",
@@ -593,9 +672,9 @@
           "gameType": "build-with-exchange",
           "title": "Rakit Kemasan",
           "bookReference": "Buku Siswa hlm. 5–7 (10 satuan menjadi 1 puluhan, 10 puluhan menjadi 1 ratusan)",
-          "objective": "Merakit bilangan tiga angka dengan dus, bungkus, dan benda lepas, serta menukar sepuluh kemasan menjadi satu kemasan lebih besar.",
+          "objective": "Merakit bilangan tiga angka dengan dus, bungkus, dan benda lepas, serta menukar sepuluh kemasan menjadi satu kemasan lebih besar. (METODE LUAR · Balok Dienes)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua bilangan yang dibacakan dengan kata. Siswa menekan tambah atau kurang pada dus, bungkus, dan benda lepas. Sepuluh benda otomatis ditukar menjadi satu bungkus, dan sepuluh bungkus menjadi satu dus. Siswa menekan Periksa.",
-          "voiceGuide": "Rakit bilangannya, lalu periksa."
+          "voiceGuide": "METODE LUAR · Balok Dienes. Rakit bilangannya, lalu periksa."
         },
         {
           "gameId": "subK3B1A-game-2",
@@ -703,9 +782,9 @@
           "gameType": "count-blocks",
           "title": "Hitung Blok",
           "bookReference": "Buku Siswa hlm. 6–7 (banyak ratusan, puluhan, satuan pada model)",
-          "objective": "Membaca model blok menjadi lambang bilangan.",
+          "objective": "Membaca model blok menjadi lambang bilangan. (METODE LUAR · Balok Dienes)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Gambar menampilkan blok ratusan, batang puluhan, dan kotak satuan. Siswa memilih satu dari tiga bilangan.",
-          "voiceGuide": "Hitung blok, lalu pilih bilangannya."
+          "voiceGuide": "METODE LUAR · Balok Dienes. Hitung blok, lalu pilih bilangannya."
         },
         {
           "gameId": "subK3B1A-game-12",
@@ -813,9 +892,9 @@
           "gameType": "compose-three-cards",
           "title": "Susun Tiga Kartu",
           "bookReference": "Buku Siswa hlm. 7–8 dan 12 (kartu bilangan; Ayo Berpikir)",
-          "objective": "Menulis lambang bilangan dari kata bilangan dengan menyusun tiga kartu angka.",
+          "objective": "Menulis lambang bilangan dari kata bilangan dengan menyusun tiga kartu angka. (METODE LUAR · Balok Dienes)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca kata bilangan, lalu mengetuk kartu angka dan mengetuk tempat ratusan, puluhan, atau satuan. Diperiksa otomatis.",
-          "voiceGuide": "Susun kartu menjadi bilangan."
+          "voiceGuide": "METODE LUAR · Balok Dienes. Susun kartu menjadi bilangan."
         },
         {
           "gameId": "subK3B1A-game-22",
@@ -943,6 +1022,21 @@
             "nama": "Nol menjaga tempat",
             "isi": "empat ratus lima ditulis 405",
             "suara": "Saat menulis, nol menjaga tempat yang kosong. Empat ratus lima ditulis 405, bukan 45."
+          },
+          {
+            "nama": "Balok Dienes",
+            "isi": "METODE LUAR · Dienes Blocks: Satuan–puluhan–ratusan untuk bilangan sampai 1.000. (asal: Zoltan Dienes).",
+            "suara": "METODE LUAR. Balok Dienes. Satuan–puluhan–ratusan untuk bilangan sampai 1.000."
+          },
+          {
+            "nama": "Tabel Nilai Tempat",
+            "isi": "METODE LUAR · Place-Value Chart: Baca dan tulis menurut ratusan, puluhan, satuan. (asal: Van de Walle).",
+            "suara": "METODE LUAR. Tabel Nilai Tempat. Baca dan tulis menurut ratusan, puluhan, satuan."
+          },
+          {
+            "nama": "Nama Bilangan",
+            "isi": "METODE LUAR · Number Names: Ucapkan bilangan sesuai aturan bahasa Indonesia. (asal: Naming pedagogy).",
+            "suara": "METODE LUAR. Nama Bilangan. Ucapkan bilangan sesuai aturan bahasa Indonesia."
           }
         ],
         "suara": "Ingat selalu! Sepuluh satuan sama dengan satu puluhan, dan sepuluh puluhan sama dengan satu ratusan. Bilangan tiga angka punya tiga tempat, yaitu ratusan, puluhan, dan satuan. Satu ratusan dibaca seratus. Angka nol tidak dibaca, tetapi saat menulis, nol menjaga tempat yang kosong.",
@@ -967,8 +1061,44 @@
       "silabus": {
         "teksSuara": "Kita belajar nilai tempat bilangan cacah sampai seribu. Guru mengukur tinggi badan seorang siswa, seratus dua puluh tujuh sentimeter, lalu kita mencari tempat dan nilai tiap angka. Kita memakai tiga kaleng ratusan, puluhan, dan satuan serta kartu angka untuk menyusun bilangan. Kita belajar menyusun bilangan dan mengurai bilangan, misalnya dua ratus lima puluh satu sama dengan dua ratus tambah lima puluh tambah satu. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa membaca, menulis, dan membandingkan bilangan cacah sampai 1.000. Pada sub-bab ini siswa menentukan dan menggunakan nilai tempat bilangan cacah sampai 1.000.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1: Bilangan Cacah sampai 1.000, Sub-Bab B hlm. 18–24) dan Buku Panduan Guru Bab 1 Topik B."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1 Sub-Bab B)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Place Value",
+          "namaId": "Nilai Tempat",
+          "asal": "Van de Walle",
+          "ringkas": "Nilai digit bergantung tempatnya.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Montessori Cards",
+          "namaId": "Kartu Angka Montessori",
+          "asal": "Montessori",
+          "ringkas": "Kartu 1000/100/10/1 menyusun bilangan.",
+          "tahap": [
+            "Picture",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Expanded Form",
+          "namaId": "Bentuk Uraian",
+          "asal": "Van de Walle",
+          "ringkas": "300+40+5 = 345.",
+          "tahap": [
+            "Mind",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B1B-V1-1",
@@ -986,7 +1116,7 @@
           "id": "K3B1B-V1-3",
           "titleHint": "Angka sama, nilai beda",
           "sceneType": "K3B1B-V1-3",
-          "voiceNarration": "Perhatikan angka 6 pada tiga bilangan, yaitu 600, 60, dan 6. Pada 600, angka 6 ada di tempat ratusan dan bernilai 600. Pada 60, angka 6 ada di tempat puluhan dan bernilai 60. Pada 6, angka 6 ada di tempat satuan dan bernilai 6. Tempat sebuah angka menentukan nilainya."
+          "voiceNarration": "Perhatikan angka 6 pada tiga bilangan, yaitu 600, 60, dan 6. Pada 600, angka 6 ada di tempat ratusan dan bernilai 600. Pada 60, angka 6 ada di tempat puluhan dan bernilai 60. Pada 6, angka 6 ada di tempat satuan dan bernilai 6. Tempat sebuah angka menentukan nilainya. METODE LUAR. Nilai Tempat: Nilai digit bergantung tempatnya."
         },
         {
           "id": "K3B1B-V2-1",
@@ -1004,7 +1134,7 @@
           "id": "K3B1B-V2-3",
           "titleHint": "Nilai tiap kartu",
           "sceneType": "K3B1B-V2-3",
-          "voiceNarration": "Kartu 2 di kaleng ratusan bernilai dua ratus. Kartu 1 di kaleng puluhan bernilai sepuluh. Kartu 9 di kaleng satuan bernilai sembilan. Dua ratus tambah sepuluh tambah sembilan sama dengan 219."
+          "voiceNarration": "Kartu 2 di kaleng ratusan bernilai dua ratus. Kartu 1 di kaleng puluhan bernilai sepuluh. Kartu 9 di kaleng satuan bernilai sembilan. Dua ratus tambah sepuluh tambah sembilan sama dengan 219. METODE LUAR. Kartu Angka Montessori: Kartu 1000/100/10/1 menyusun bilangan."
         },
         {
           "id": "K3B1B-V3-1",
@@ -1022,7 +1152,7 @@
           "id": "K3B1B-V3-3",
           "titleHint": "Isi tabel dengan teliti",
           "sceneType": "K3B1B-V3-3",
-          "voiceNarration": "Hati-hati saat mengisi tabel nilai tempat. Untuk 987, tabel diisi angka: 9 di ratusan, 8 di puluhan, dan 7 di satuan. Jangan menulis 900, 80, dan 7 di dalam tabel. Itu adalah nilainya, bukan angkanya. Nilai dipakai saat mengurai, yaitu 900 tambah 80 tambah 7."
+          "voiceNarration": "Hati-hati saat mengisi tabel nilai tempat. Untuk 987, tabel diisi angka: 9 di ratusan, 8 di puluhan, dan 7 di satuan. Jangan menulis 900, 80, dan 7 di dalam tabel. Itu adalah nilainya, bukan angkanya. Nilai dipakai saat mengurai, yaitu 900 tambah 80 tambah 7. METODE LUAR. Bentuk Uraian: 300+40+5 = 345."
         }
       ],
       "videos": [
@@ -1070,13 +1200,15 @@
                 "Perhatikan angka 6 pada tiga bilangan, yaitu 600, 60, dan 6.",
                 "Pada 600, angka 6 ada di tempat ratusan dan bernilai 600.",
                 "Pada 60, angka 6 ada di tempat puluhan dan bernilai 60.",
-                "Pada 6, angka 6 ada di tempat satuan dan bernilai 6. Tempat sebuah angka menentukan nilainya."
+                "Pada 6, angka 6 ada di tempat satuan dan bernilai 6. Tempat sebuah angka menentukan nilainya.",
+                "METODE LUAR. Nilai Tempat: Nilai digit bergantung tempatnya."
               ],
               "papan": [
                 "Angka 6 di tiga tempat",
                 "Ratusan: 600",
                 "Puluhan: 60",
-                "Satuan: 6"
+                "Satuan: 6",
+                "METODE LUAR · Nilai Tempat"
               ]
             }
           ]
@@ -1125,13 +1257,15 @@
                 "Kartu 2 di kaleng ratusan bernilai dua ratus.",
                 "Kartu 1 di kaleng puluhan bernilai sepuluh.",
                 "Kartu 9 di kaleng satuan bernilai sembilan.",
-                "Dua ratus tambah sepuluh tambah sembilan sama dengan 219."
+                "Dua ratus tambah sepuluh tambah sembilan sama dengan 219.",
+                "METODE LUAR. Kartu Angka Montessori: Kartu 1000/100/10/1 menyusun bilangan."
               ],
               "papan": [
                 "2 ratusan = 200",
                 "1 puluhan = 10",
                 "9 satuan = 9",
-                "200 + 10 + 9 = 219"
+                "200 + 10 + 9 = 219",
+                "METODE LUAR · Kartu Angka Montessori"
               ]
             }
           ]
@@ -1180,13 +1314,15 @@
                 "Hati-hati saat mengisi tabel nilai tempat.",
                 "Untuk 987, tabel diisi angka: 9 di ratusan, 8 di puluhan, dan 7 di satuan.",
                 "Jangan menulis 900, 80, dan 7 di dalam tabel. Itu adalah nilainya, bukan angkanya.",
-                "Nilai dipakai saat mengurai, yaitu 900 tambah 80 tambah 7."
+                "Nilai dipakai saat mengurai, yaitu 900 tambah 80 tambah 7.",
+                "METODE LUAR. Bentuk Uraian: 300+40+5 = 345."
               ],
               "papan": [
                 "Isi tabel dengan teliti",
                 "987: 9, 8, 7",
                 "Angka bukan nilai",
-                "900 + 80 + 7"
+                "900 + 80 + 7",
+                "METODE LUAR · Bentuk Uraian"
               ]
             }
           ]
@@ -1255,7 +1391,15 @@
           "stepDesc": "Tabel nilai tempat diisi dengan angka tiap tempat, bukan dengan nilainya. Untuk 987, isilah 9, 8, dan 7. Nilainya, yaitu 900, 80, dan 7, dipakai saat mengurai. Mencampur angka dengan nilai adalah kesalahan yang sering terjadi, jadi periksa lagi sebelum menjawab.",
           "icon": "📊",
           "flowFrom": "Teliti memakai tabel",
-          "flowTo": "Siap menentukan nilai tempat"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Kartu Angka Montessori",
+          "stepDesc": "Kartu 1000/100/10/1 menyusun bilangan.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -1328,6 +1472,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, tulis bilangan pada papan tiga tempat. Dua, lihat tempat tiap angka. Tiga, kalikan angka dengan seratus, sepuluh, atau satu. Empat, jumlahkan bila ingin mengecek."
+        },
+        {
+          "fruitName": "Nilai Tempat",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Place Value",
+          "voiceSentence": "METODE LUAR. Nilai Tempat. Nilai digit bergantung tempatnya."
+        },
+        {
+          "fruitName": "Kartu Angka Montessori",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Montessori Cards",
+          "voiceSentence": "METODE LUAR. Kartu Angka Montessori. Kartu 1000/100/10/1 menyusun bilangan."
+        },
+        {
+          "fruitName": "Bentuk Uraian",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Expanded Form",
+          "voiceSentence": "METODE LUAR. Bentuk Uraian. 300+40+5 = 345."
         }
       ],
       "concreteSlides": [
@@ -1335,7 +1500,7 @@
           "title": "Tiga Kaleng",
           "emoji": "🥫",
           "targetCount": 6,
-          "voiceGuide": "Susun kartu pada tiga kaleng."
+          "voiceGuide": "METODE LUAR · Nilai Tempat. Susun kartu pada tiga kaleng."
         },
         {
           "title": "Nilai Satu Kemasan",
@@ -1398,7 +1563,7 @@
           "diagramType": "value-table",
           "numberA": 3,
           "numberB": 3,
-          "caption": "Mengisi nilai ratusan, puluhan, dan satuan pada tabel dari bilangan."
+          "caption": "Mengisi nilai ratusan, puluhan, dan satuan pada tabel dari bilangan. (METODE LUAR · Nilai Tempat)"
         },
         {
           "title": "Nilai Angka pada Blok",
@@ -1469,7 +1634,7 @@
           "symbolLarge": "723",
           "wordLarge": "SUSUN KARTU",
           "mathNotation": "ratusan • puluhan • satuan",
-          "voiceReadout": "Susun kartu menjadi bilangan."
+          "voiceReadout": "METODE LUAR · Nilai Tempat. Susun kartu menjadi bilangan."
         },
         {
           "symbolLarge": "981",
@@ -1534,9 +1699,9 @@
           "gameType": "three-cans-cards",
           "title": "Tiga Kaleng",
           "bookReference": "Buku Siswa hlm. 19–20 (Aktivitas 2: Menentukan Nilai Tempat)",
-          "objective": "Menyusun tiga kartu angka pada kaleng ratusan, puluhan, dan satuan menjadi bilangan yang diminta.",
+          "objective": "Menyusun tiga kartu angka pada kaleng ratusan, puluhan, dan satuan menjadi bilangan yang diminta. (METODE LUAR · Nilai Tempat)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa mengetuk kartu angka, lalu mengetuk kaleng ratusan, puluhan, atau satuan. Diperiksa otomatis saat tiga kaleng terisi.",
-          "voiceGuide": "Susun kartu pada tiga kaleng."
+          "voiceGuide": "METODE LUAR · Nilai Tempat. Susun kartu pada tiga kaleng."
         },
         {
           "gameId": "subK3B1B-game-2",
@@ -1644,9 +1809,9 @@
           "gameType": "block-value-table",
           "title": "Isi Tabel Nilai",
           "bookReference": "Buku Siswa hlm. 21–23 (nilai tempat tiap angka)",
-          "objective": "Mengisi nilai ratusan, puluhan, dan satuan pada tabel dari bilangan.",
+          "objective": "Mengisi nilai ratusan, puluhan, dan satuan pada tabel dari bilangan. (METODE LUAR · Nilai Tempat)",
           "mechanicDescription": "Tiga tabel dengan tiga baris. Siswa mengetuk sel untuk memutar nilainya (200, 50, 1), lalu menekan Periksa.",
-          "voiceGuide": "Ketuk sel sampai nilainya tepat."
+          "voiceGuide": "METODE LUAR · Nilai Tempat. Ketuk sel sampai nilainya tepat."
         },
         {
           "gameId": "subK3B1B-game-12",
@@ -1754,9 +1919,9 @@
           "gameType": "compose-from-decomposition",
           "title": "Susun Tiga Kartu dari Uraian",
           "bookReference": "Buku Siswa hlm. 19–21 (menyusun bilangan dari angka tiap tempat)",
-          "objective": "Menyusun tiga kartu angka menjadi bilangan dari ratusan, puluhan, dan satuan.",
+          "objective": "Menyusun tiga kartu angka menjadi bilangan dari ratusan, puluhan, dan satuan. (METODE LUAR · Nilai Tempat)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca bilangan yang diminta lalu mengetuk kartu angka dan tempat. Diperiksa otomatis.",
-          "voiceGuide": "Susun kartu menjadi bilangan."
+          "voiceGuide": "METODE LUAR · Nilai Tempat. Susun kartu menjadi bilangan."
         },
         {
           "gameId": "subK3B1B-game-22",
@@ -1884,6 +2049,21 @@
             "nama": "Tabel diisi dengan angka",
             "isi": "987: 9, 8, 7",
             "suara": "Tabel nilai tempat diisi dengan angka, bukan dengan nilainya. Untuk 987, isilah 9, 8, dan 7."
+          },
+          {
+            "nama": "Nilai Tempat",
+            "isi": "METODE LUAR · Place Value: Nilai digit bergantung tempatnya. (asal: Van de Walle).",
+            "suara": "METODE LUAR. Nilai Tempat. Nilai digit bergantung tempatnya."
+          },
+          {
+            "nama": "Kartu Angka Montessori",
+            "isi": "METODE LUAR · Montessori Cards: Kartu 1000/100/10/1 menyusun bilangan. (asal: Montessori).",
+            "suara": "METODE LUAR. Kartu Angka Montessori. Kartu 1000/100/10/1 menyusun bilangan."
+          },
+          {
+            "nama": "Bentuk Uraian",
+            "isi": "METODE LUAR · Expanded Form: 300+40+5 = 345. (asal: Van de Walle).",
+            "suara": "METODE LUAR. Bentuk Uraian. 300+40+5 = 345."
           }
         ],
         "suara": "Ingat selalu! Setiap angka pada bilangan tiga angka menempati satu tempat: ratusan, puluhan, atau satuan. Tempat menentukan nilai, jadi angka lima di puluhan bernilai lima puluh. Menyusun bilangan adalah menjumlahkan, dan mengurai bilangan adalah menguraikan. Tabel nilai tempat diisi dengan angka, bukan nilai.",
@@ -1908,8 +2088,44 @@
       "silabus": {
         "teksSuara": "Kita belajar membandingkan dan mengurutkan bilangan cacah sampai seribu. Alen dan Galih berjalan ke sekolah dengan jarak yang berbeda, Alfa, Galih, dan Andi menghitung kelereng mereka, dan kita menyusun bilangan dari yang terkecil sampai yang terbesar. Kita memakai nilai tempat: mulai dari ratusan, lalu puluhan, lalu satuan. Kita menulis hasilnya dengan tanda kurang dari, lebih dari, dan sama dengan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa membaca, menulis, dan membandingkan bilangan cacah sampai 1.000. Pada sub-bab ini siswa membandingkan dua bilangan dengan nilai tempat serta mengurutkan beberapa bilangan.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1: Bilangan Cacah sampai 1.000, Sub-Bab C hlm. 24–34) dan Buku Panduan Guru Bab 1 Topik C."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1 Sub-Bab C)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Compare Placewise",
+          "namaId": "Banding per Tempat",
+          "asal": "Van de Walle",
+          "ringkas": "Mulai dari ratusan.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Number Line",
+          "namaId": "Garis Bilangan Ratusan",
+          "asal": "Number line",
+          "ringkas": "Posisi menentukan besar-kecil.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Ordering",
+          "namaId": "Mengurutkan",
+          "asal": "Number sense",
+          "ringkas": "Urut naik/turun dengan banding berulang.",
+          "tahap": [
+            "Infografis",
+            "Abstract"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B1C-V1-1",
@@ -1927,7 +2143,7 @@
           "id": "K3B1C-V1-3",
           "titleHint": "Lebih dari",
           "sceneType": "K3B1C-V1-3",
-          "voiceNarration": "Sekarang bandingkan 583 dan 529. Ratusannya sama, yaitu 5. Karena ratusan sama, kita lihat tempat puluhan. Bilangan 583 punya 8 puluhan, bilangan 529 punya 2 puluhan. Delapan puluh lebih dari dua puluh, jadi 583 > 529."
+          "voiceNarration": "Sekarang bandingkan 583 dan 529. Ratusannya sama, yaitu 5. Karena ratusan sama, kita lihat tempat puluhan. Bilangan 583 punya 8 puluhan, bilangan 529 punya 2 puluhan. Delapan puluh lebih dari dua puluh, jadi 583 > 529. METODE LUAR. Banding per Tempat: Mulai dari ratusan."
         },
         {
           "id": "K3B1C-V2-1",
@@ -1945,7 +2161,7 @@
           "id": "K3B1C-V2-3",
           "titleHint": "Tiga langkah membandingkan",
           "sceneType": "K3B1C-V2-3",
-          "voiceNarration": "Ada tiga langkah membandingkan dua bilangan tiga angka. Langkah pertama, bandingkan ratusan. Bila berbeda, selesai. Langkah kedua, bila ratusan sama, bandingkan puluhan. Langkah ketiga, bila puluhan juga sama, bandingkan satuan."
+          "voiceNarration": "Ada tiga langkah membandingkan dua bilangan tiga angka. Langkah pertama, bandingkan ratusan. Bila berbeda, selesai. Langkah kedua, bila ratusan sama, bandingkan puluhan. Langkah ketiga, bila puluhan juga sama, bandingkan satuan. METODE LUAR. Garis Bilangan Ratusan: Posisi menentukan besar-kecil."
         },
         {
           "id": "K3B1C-V3-1",
@@ -1963,7 +2179,7 @@
           "id": "K3B1C-V3-3",
           "titleHint": "Dua arah urutan",
           "sceneType": "K3B1C-V3-3",
-          "voiceNarration": "Urutan dari terkecil ke terbesar kita sebut urutan naik. Contohnya 639, 709, 720. Urutan dari terbesar ke terkecil kita sebut urutan turun. Contohnya 720, 709, 639. Urutan turun adalah kebalikan urutan naik."
+          "voiceNarration": "Urutan dari terkecil ke terbesar kita sebut urutan naik. Contohnya 639, 709, 720. Urutan dari terbesar ke terkecil kita sebut urutan turun. Contohnya 720, 709, 639. Urutan turun adalah kebalikan urutan naik. METODE LUAR. Mengurutkan: Urut naik/turun dengan banding berulang."
         }
       ],
       "videos": [
@@ -2011,13 +2227,15 @@
                 "Sekarang bandingkan 583 dan 529. Ratusannya sama, yaitu 5.",
                 "Karena ratusan sama, kita lihat tempat puluhan.",
                 "Bilangan 583 punya 8 puluhan, bilangan 529 punya 2 puluhan.",
-                "Delapan puluh lebih dari dua puluh, jadi 583 > 529."
+                "Delapan puluh lebih dari dua puluh, jadi 583 > 529.",
+                "METODE LUAR. Banding per Tempat: Mulai dari ratusan."
               ],
               "papan": [
                 "583 dan 529",
                 "Ratusan sama",
                 "8 puluhan, 2 puluhan",
-                "583 > 529"
+                "583 > 529",
+                "METODE LUAR · Banding per Tempat"
               ]
             }
           ]
@@ -2066,13 +2284,15 @@
                 "Ada tiga langkah membandingkan dua bilangan tiga angka.",
                 "Langkah pertama, bandingkan ratusan. Bila berbeda, selesai.",
                 "Langkah kedua, bila ratusan sama, bandingkan puluhan.",
-                "Langkah ketiga, bila puluhan juga sama, bandingkan satuan."
+                "Langkah ketiga, bila puluhan juga sama, bandingkan satuan.",
+                "METODE LUAR. Garis Bilangan Ratusan: Posisi menentukan besar-kecil."
               ],
               "papan": [
                 "Tiga langkah",
                 "1. Ratusan",
                 "2. Puluhan",
-                "3. Satuan"
+                "3. Satuan",
+                "METODE LUAR · Garis Bilangan Ratusan"
               ]
             }
           ]
@@ -2121,13 +2341,15 @@
                 "Urutan dari terkecil ke terbesar kita sebut urutan naik.",
                 "Contohnya 639, 709, 720.",
                 "Urutan dari terbesar ke terkecil kita sebut urutan turun.",
-                "Contohnya 720, 709, 639. Urutan turun adalah kebalikan urutan naik."
+                "Contohnya 720, 709, 639. Urutan turun adalah kebalikan urutan naik.",
+                "METODE LUAR. Mengurutkan: Urut naik/turun dengan banding berulang."
               ],
               "papan": [
                 "Dua arah urutan",
                 "Naik: 639, 709, 720",
                 "Turun: dari terbesar",
-                "720, 709, 639"
+                "720, 709, 639",
+                "METODE LUAR · Mengurutkan"
               ]
             }
           ]
@@ -2196,7 +2418,23 @@
           "stepDesc": "Kita membandingkan bilangan setiap hari: jarak rumah ke sekolah, banyak kelereng, tinggi badan, atau nomor antrean. Alfa 138 kelereng, Galih 103, dan Andi 183, sehingga Andi paling banyak dan Galih paling sedikit. Meutia 498 meter, Alfa 490 meter, dan Galih 508 meter, sehingga rumah Alfa paling dekat dan rumah Galih paling jauh.",
           "icon": "🏫",
           "flowFrom": "Perbandingan di sekitar kita",
-          "flowTo": "Siap membandingkan dan mengurutkan"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Banding per Tempat",
+          "stepDesc": "Mulai dari ratusan.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Garis Bilangan Ratusan",
+          "stepDesc": "Posisi menentukan besar-kecil.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -2269,6 +2507,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, tulis bilangan pada papan nilai tempat. Dua, bandingkan ratusan. Tiga, bila sama, bandingkan puluhan lalu satuan. Empat, tulis hasilnya dengan tanda."
+        },
+        {
+          "fruitName": "Banding per Tempat",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Compare Placewise",
+          "voiceSentence": "METODE LUAR. Banding per Tempat. Mulai dari ratusan."
+        },
+        {
+          "fruitName": "Garis Bilangan Ratusan",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Number Line",
+          "voiceSentence": "METODE LUAR. Garis Bilangan Ratusan. Posisi menentukan besar-kecil."
+        },
+        {
+          "fruitName": "Mengurutkan",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Ordering",
+          "voiceSentence": "METODE LUAR. Mengurutkan. Urut naik/turun dengan banding berulang."
         }
       ],
       "concreteSlides": [
@@ -2276,7 +2535,7 @@
           "title": "Bandingkan Kumpulan",
           "emoji": "⚖️",
           "targetCount": 6,
-          "voiceGuide": "Bandingkan dua kumpulan."
+          "voiceGuide": "METODE LUAR · Banding per Tempat. Bandingkan dua kumpulan."
         },
         {
           "title": "Tanda untuk Kumpulan",
@@ -2339,7 +2598,7 @@
           "diagramType": "blocks-compare",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Menentukan model blok mana yang lebih banyak atau apakah sama."
+          "caption": "Menentukan model blok mana yang lebih banyak atau apakah sama. (METODE LUAR · Banding per Tempat)"
         },
         {
           "title": "Tanda untuk Blok",
@@ -2410,7 +2669,7 @@
           "symbolLarge": "378 ○ 345",
           "wordLarge": "BANDINGKAN",
           "mathNotation": "> • < • =",
-          "voiceReadout": "Pilih tanda untuk dua bilangan."
+          "voiceReadout": "METODE LUAR · Banding per Tempat. Pilih tanda untuk dua bilangan."
         },
         {
           "symbolLarge": "537 ○ 590",
@@ -2475,9 +2734,9 @@
           "gameType": "compare-collections",
           "title": "Bandingkan Kumpulan",
           "bookReference": "Buku Siswa hlm. 24–25 (jarak rumah Alen dan Galih ke sekolah)",
-          "objective": "Menentukan kumpulan benda mana yang lebih banyak, atau apakah sama banyak.",
+          "objective": "Menentukan kumpulan benda mana yang lebih banyak, atau apakah sama banyak. (METODE LUAR · Banding per Tempat)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua kumpulan dus, bungkus, dan benda lepas ditampilkan berdampingan. Siswa memilih satu dari tiga jawaban: A lebih banyak, B lebih banyak, atau sama banyak.",
-          "voiceGuide": "Bandingkan dua kumpulan."
+          "voiceGuide": "METODE LUAR · Banding per Tempat. Bandingkan dua kumpulan."
         },
         {
           "gameId": "subK3B1C-game-2",
@@ -2585,9 +2844,9 @@
           "gameType": "compare-blocks",
           "title": "Bandingkan Blok",
           "bookReference": "Buku Siswa hlm. 25–26 (membandingkan dengan nilai tempat)",
-          "objective": "Menentukan model blok mana yang lebih banyak atau apakah sama.",
+          "objective": "Menentukan model blok mana yang lebih banyak atau apakah sama. (METODE LUAR · Banding per Tempat)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Dua model blok ditampilkan, lalu siswa memilih A lebih banyak, B lebih banyak, atau sama banyak.",
-          "voiceGuide": "Bandingkan dua model."
+          "voiceGuide": "METODE LUAR · Banding per Tempat. Bandingkan dua model."
         },
         {
           "gameId": "subK3B1C-game-12",
@@ -2695,9 +2954,9 @@
           "gameType": "compare-numerals",
           "title": "Bandingkan Lambang",
           "bookReference": "Buku Siswa hlm. 32 (isilah titik-titik dengan tanda >, <, atau =)",
-          "objective": "Memilih tanda yang tepat untuk dua lambang bilangan.",
+          "objective": "Memilih tanda yang tepat untuk dua lambang bilangan. (METODE LUAR · Banding per Tempat)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal (378 dan 345, 189 dan 206, dan seterusnya). Siswa memilih lebih dari, kurang dari, atau sama dengan.",
-          "voiceGuide": "Pilih tanda untuk dua bilangan."
+          "voiceGuide": "METODE LUAR · Banding per Tempat. Pilih tanda untuk dua bilangan."
         },
         {
           "gameId": "subK3B1C-game-22",
@@ -2825,6 +3084,16 @@
             "nama": "Teliti membaca tanda",
             "isi": "tanda dibalik, arti berubah",
             "suara": "Bila tanda dibalik, artinya berubah. Baca tanda dengan teliti."
+          },
+          {
+            "nama": "Banding per Tempat",
+            "isi": "METODE LUAR · Compare Placewise: Mulai dari ratusan. (asal: Van de Walle).",
+            "suara": "METODE LUAR. Banding per Tempat. Mulai dari ratusan."
+          },
+          {
+            "nama": "Garis Bilangan Ratusan",
+            "isi": "METODE LUAR · Number Line: Posisi menentukan besar-kecil. (asal: Number line).",
+            "suara": "METODE LUAR. Garis Bilangan Ratusan. Posisi menentukan besar-kecil."
           }
         ],
         "suara": "Ingat selalu! Membandingkan bilangan tiga angka dimulai dari ratusan, lalu puluhan, lalu satuan. Hasilnya ditulis dengan tanda kurang dari, lebih dari, atau sama dengan. Mengurutkan berarti menyusun bilangan dari terkecil ke terbesar atau sebaliknya.",
@@ -2849,8 +3118,44 @@
       "silabus": {
         "teksSuara": "Kita belajar penjumlahan bilangan cacah sampai seratus. Di perpustakaan ada dua puluh tiga buku Matematika dan enam belas buku Bahasa Indonesia, lalu ada empat puluh delapan siswa laki-laki dan enam belas siswa perempuan yang mengikuti upacara. Kita belajar cara susun pendek dan cara susun panjang, tanpa menyimpan dan dengan menyimpan. Kita juga menyelesaikan soal cerita. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa melakukan operasi penjumlahan dan pengurangan bilangan cacah sampai 100. Pada sub-bab ini siswa menjumlahkan dua bilangan cacah sampai 100 dengan susun pendek dan susun panjang, tanpa dan dengan menyimpan.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1: Bilangan Cacah sampai 1.000, Sub-Bab D hlm. 34–45) dan Buku Panduan Guru Bab 1 Topik D."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1 Sub-Bab D)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Standard Addition",
+          "namaId": "Penjumlahan Bersusun",
+          "asal": "Algorithms",
+          "ringkas": "Dari satuan, simpan jika perlu.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Number Bond",
+          "namaId": "Pasangan Bilangan",
+          "asal": "Singapore Math",
+          "ringkas": "Pecah bilangan untuk mudah dijumlah.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting On",
+          "namaId": "Menghitung Maju",
+          "asal": "Counting on",
+          "ringkas": "Mulai dari yang lebih besar.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B1D-V1-1",
@@ -2868,7 +3173,7 @@
           "id": "K3B1D-V1-3",
           "titleHint": "Susun pendek",
           "sceneType": "K3B1D-V1-3",
-          "voiceNarration": "Cara susun pendek: susun bilangan, puluhan lurus dengan puluhan dan satuan lurus dengan satuan. Langkah satu, susun. Langkah dua, jumlahkan satuan, 3 + 6 = 9. Langkah tiga, jumlahkan puluhan, 2 + 1 = 3. Jadi, 23 + 16 = 39. Ada 39 buku di rak perpustakaan."
+          "voiceNarration": "Cara susun pendek: susun bilangan, puluhan lurus dengan puluhan dan satuan lurus dengan satuan. Langkah satu, susun. Langkah dua, jumlahkan satuan, 3 + 6 = 9. Langkah tiga, jumlahkan puluhan, 2 + 1 = 3. Jadi, 23 + 16 = 39. Ada 39 buku di rak perpustakaan. METODE LUAR. Penjumlahan Bersusun: Dari satuan, simpan jika perlu."
         },
         {
           "id": "K3B1D-V2-1",
@@ -2886,7 +3191,7 @@
           "id": "K3B1D-V2-3",
           "titleHint": "Puluhan dan hasil",
           "sceneType": "K3B1D-V2-3",
-          "voiceNarration": "Sekarang jumlahkan puluhan: 1 simpanan, ditambah 4, ditambah 1. Satu ditambah empat ditambah satu sama dengan 6. Jadi, 48 ditambah 16 sama dengan 64. Ada 64 siswa yang mengikuti upacara di alun-alun kota."
+          "voiceNarration": "Sekarang jumlahkan puluhan: 1 simpanan, ditambah 4, ditambah 1. Satu ditambah empat ditambah satu sama dengan 6. Jadi, 48 ditambah 16 sama dengan 64. Ada 64 siswa yang mengikuti upacara di alun-alun kota. METODE LUAR. Pasangan Bilangan: Pecah bilangan untuk mudah dijumlah."
         },
         {
           "id": "K3B1D-V3-1",
@@ -2904,7 +3209,7 @@
           "id": "K3B1D-V3-3",
           "titleHint": "Pilih cara yang mudah",
           "sceneType": "K3B1D-V3-3",
-          "voiceNarration": "Kita boleh memilih cara yang menurut kita paling mudah. Cara susun pendek cepat untuk bilangan yang dijumlahkan satu per satu. Cara susun panjang membantu kita melihat nilai puluhan dan satuan. Apa pun caranya, hasilnya sama, yaitu 83."
+          "voiceNarration": "Kita boleh memilih cara yang menurut kita paling mudah. Cara susun pendek cepat untuk bilangan yang dijumlahkan satu per satu. Cara susun panjang membantu kita melihat nilai puluhan dan satuan. Apa pun caranya, hasilnya sama, yaitu 83. METODE LUAR. Menghitung Maju: Mulai dari yang lebih besar."
         }
       ],
       "videos": [
@@ -2952,13 +3257,15 @@
                 "Cara susun pendek: susun bilangan, puluhan lurus dengan puluhan dan satuan lurus dengan satuan.",
                 "Langkah satu, susun. Langkah dua, jumlahkan satuan, 3 + 6 = 9.",
                 "Langkah tiga, jumlahkan puluhan, 2 + 1 = 3.",
-                "Jadi, 23 + 16 = 39. Ada 39 buku di rak perpustakaan."
+                "Jadi, 23 + 16 = 39. Ada 39 buku di rak perpustakaan.",
+                "METODE LUAR. Penjumlahan Bersusun: Dari satuan, simpan jika perlu."
               ],
               "papan": [
                 "Susun pendek",
                 "Satuan: 3 + 6 = 9",
                 "Puluhan: 2 + 1 = 3",
-                "23 + 16 = 39"
+                "23 + 16 = 39",
+                "METODE LUAR · Penjumlahan Bersusun"
               ]
             }
           ]
@@ -3007,13 +3314,15 @@
                 "Sekarang jumlahkan puluhan: 1 simpanan, ditambah 4, ditambah 1.",
                 "Satu ditambah empat ditambah satu sama dengan 6.",
                 "Jadi, 48 ditambah 16 sama dengan 64.",
-                "Ada 64 siswa yang mengikuti upacara di alun-alun kota."
+                "Ada 64 siswa yang mengikuti upacara di alun-alun kota.",
+                "METODE LUAR. Pasangan Bilangan: Pecah bilangan untuk mudah dijumlah."
               ],
               "papan": [
                 "Puluhan: 1 + 4 + 1",
                 "= 6 puluhan",
                 "48 + 16 = 64",
-                "64 siswa"
+                "64 siswa",
+                "METODE LUAR · Pasangan Bilangan"
               ]
             }
           ]
@@ -3062,13 +3371,15 @@
                 "Kita boleh memilih cara yang menurut kita paling mudah.",
                 "Cara susun pendek cepat untuk bilangan yang dijumlahkan satu per satu.",
                 "Cara susun panjang membantu kita melihat nilai puluhan dan satuan.",
-                "Apa pun caranya, hasilnya sama, yaitu 83."
+                "Apa pun caranya, hasilnya sama, yaitu 83.",
+                "METODE LUAR. Menghitung Maju: Mulai dari yang lebih besar."
               ],
               "papan": [
                 "Pilih cara yang mudah",
                 "Susun pendek: cepat",
                 "Susun panjang: jelas",
-                "Hasil sama: 83"
+                "Hasil sama: 83",
+                "METODE LUAR · Menghitung Maju"
               ]
             }
           ]
@@ -3137,7 +3448,23 @@
           "stepDesc": "Soal cerita memakai kata seperti jumlah seluruhnya, semuanya, dan ditambah. Andi membeli 25 buku dan 36 pensil, jadi jumlah barang 25 ditambah 36 sama dengan 61. Pak Adi punya 15 kambing, 10 sapi, dan 12 domba, jadi 15 ditambah 10 ditambah 12 sama dengan 37. Tulis kalimat matematikanya, hitung, lalu jawab dengan satuan yang tepat.",
           "icon": "📖",
           "flowFrom": "Soal cerita penjumlahan",
-          "flowTo": "Siap menjumlahkan sampai 100"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Penjumlahan Bersusun",
+          "stepDesc": "Dari satuan, simpan jika perlu.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Pasangan Bilangan",
+          "stepDesc": "Pecah bilangan untuk mudah dijumlah.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -3210,6 +3537,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, susun lurus. Dua, jumlahkan satuan dan simpan bila perlu. Tiga, jumlahkan puluhan. Empat, periksa dengan cara yang lain."
+        },
+        {
+          "fruitName": "Penjumlahan Bersusun",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Standard Addition",
+          "voiceSentence": "METODE LUAR. Penjumlahan Bersusun. Dari satuan, simpan jika perlu."
+        },
+        {
+          "fruitName": "Pasangan Bilangan",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Number Bond",
+          "voiceSentence": "METODE LUAR. Pasangan Bilangan. Pecah bilangan untuk mudah dijumlah."
+        },
+        {
+          "fruitName": "Menghitung Maju",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Counting On",
+          "voiceSentence": "METODE LUAR. Menghitung Maju. Mulai dari yang lebih besar."
         }
       ],
       "concreteSlides": [
@@ -3217,7 +3565,7 @@
           "title": "Gabungkan Kumpulan",
           "emoji": "🧺",
           "targetCount": 6,
-          "voiceGuide": "Rakit jumlah dua kumpulan."
+          "voiceGuide": "METODE LUAR · Penjumlahan Bersusun. Rakit jumlah dua kumpulan."
         },
         {
           "title": "Hitung Gabungan",
@@ -3280,7 +3628,7 @@
           "diagramType": "add-vertical",
           "numberA": 3,
           "numberB": 1,
-          "caption": "Menjumlahkan dua bilangan dengan cara susun pendek langkah demi langkah."
+          "caption": "Menjumlahkan dua bilangan dengan cara susun pendek langkah demi langkah. (METODE LUAR · Penjumlahan Bersusun)"
         },
         {
           "title": "Papan Hasil Susun",
@@ -3351,7 +3699,7 @@
           "symbolLarge": "34+25",
           "wordLarge": "SUSUN KE BAWAH",
           "mathNotation": "satuan • puluhan",
-          "voiceReadout": "Susun, jumlahkan satuan, lalu puluhan."
+          "voiceReadout": "METODE LUAR · Penjumlahan Bersusun. Susun, jumlahkan satuan, lalu puluhan."
         },
         {
           "symbolLarge": "31+51",
@@ -3416,9 +3764,9 @@
           "gameType": "combine-collections",
           "title": "Gabungkan Kumpulan",
           "bookReference": "Buku Siswa hlm. 35–37 (penjumlahan dengan tabel nilai tempat)",
-          "objective": "Menggabungkan dua kumpulan dengan bungkus dan benda lepas, termasuk menukar sepuluh benda menjadi satu bungkus.",
+          "objective": "Menggabungkan dua kumpulan dengan bungkus dan benda lepas, termasuk menukar sepuluh benda menjadi satu bungkus. (METODE LUAR · Penjumlahan Bersusun)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca dua banyak yang digabung lalu merakit jumlahnya dengan tombol tambah dan kurang. Sepuluh benda otomatis ditukar menjadi satu bungkus.",
-          "voiceGuide": "Rakit jumlah dua kumpulan."
+          "voiceGuide": "METODE LUAR · Penjumlahan Bersusun. Rakit jumlah dua kumpulan."
         },
         {
           "gameId": "subK3B1D-game-2",
@@ -3526,9 +3874,9 @@
           "gameType": "add-vertical",
           "title": "Susun ke Bawah",
           "bookReference": "Buku Siswa hlm. 36 dan 39 (langkah 1, 2, dan 3 cara susun pendek)",
-          "objective": "Menjumlahkan dua bilangan dengan cara susun pendek langkah demi langkah.",
+          "objective": "Menjumlahkan dua bilangan dengan cara susun pendek langkah demi langkah. (METODE LUAR · Penjumlahan Bersusun)",
           "mechanicDescription": "Tiga ronde, tiap ronde satu soal (23 + 16, 48 + 16, 54 + 29). Siswa menaruh bilangan pada kolom satuan, menjumlahkan satuan, menyimpan bila perlu, lalu menjumlahkan puluhan.",
-          "voiceGuide": "Susun, jumlahkan satuan, lalu puluhan."
+          "voiceGuide": "METODE LUAR · Penjumlahan Bersusun. Susun, jumlahkan satuan, lalu puluhan."
         },
         {
           "gameId": "subK3B1D-game-12",
@@ -3636,9 +3984,9 @@
           "gameType": "add-vertical-abstract",
           "title": "Susun ke Bawah: Lambang",
           "bookReference": "Buku Siswa hlm. 43 (Ayo Berlatih 2: cara susun pendek)",
-          "objective": "Menjumlahkan dua bilangan dengan susun pendek, termasuk menyimpan.",
+          "objective": "Menjumlahkan dua bilangan dengan susun pendek, termasuk menyimpan. (METODE LUAR · Penjumlahan Bersusun)",
           "mechanicDescription": "Tiga ronde, tiap ronde satu soal (34 + 25, 46 + 38, 57 + 26). Siswa menyusun, menjumlahkan satuan, menyimpan bila perlu, lalu menjumlahkan puluhan.",
-          "voiceGuide": "Susun, jumlahkan satuan, lalu puluhan."
+          "voiceGuide": "METODE LUAR · Penjumlahan Bersusun. Susun, jumlahkan satuan, lalu puluhan."
         },
         {
           "gameId": "subK3B1D-game-22",
@@ -3766,6 +4114,21 @@
             "nama": "Periksa",
             "isi": "hitung dengan cara lain",
             "suara": "Periksa jawabanmu dengan menghitung memakai cara yang lain. Hasilnya harus sama."
+          },
+          {
+            "nama": "Penjumlahan Bersusun",
+            "isi": "METODE LUAR · Standard Addition: Dari satuan, simpan jika perlu. (asal: Algorithms).",
+            "suara": "METODE LUAR. Penjumlahan Bersusun. Dari satuan, simpan jika perlu."
+          },
+          {
+            "nama": "Pasangan Bilangan",
+            "isi": "METODE LUAR · Number Bond: Pecah bilangan untuk mudah dijumlah. (asal: Singapore Math).",
+            "suara": "METODE LUAR. Pasangan Bilangan. Pecah bilangan untuk mudah dijumlah."
+          },
+          {
+            "nama": "Menghitung Maju",
+            "isi": "METODE LUAR · Counting On: Mulai dari yang lebih besar. (asal: Counting on).",
+            "suara": "METODE LUAR. Menghitung Maju. Mulai dari yang lebih besar."
           }
         ],
         "suara": "Ingat selalu! Pada penjumlahan bersusun, puluhan lurus dengan puluhan dan satuan lurus dengan satuan. Jumlahkan satuan lebih dulu, lalu puluhan. Bila satuan berjumlah sepuluh atau lebih, simpan satu puluhan. Susun panjang dan susun pendek memberi hasil yang sama.",
@@ -3790,8 +4153,44 @@
       "silabus": {
         "teksSuara": "Kita belajar pengurangan bilangan cacah sampai seratus. Galih punya dua puluh lima permen dan Alfa mengambil dua belas permen. Pak Bandi punya empat puluh lima buku tulis dan siswa membeli sembilan belas buku tulis. Kita belajar cara susun pendek dan cara susun panjang, tanpa mengambil dan dengan mengambil satu puluhan. Kita juga memeriksa hasil dengan penjumlahan dan menyelesaikan soal cerita. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa melakukan operasi penjumlahan dan pengurangan bilangan cacah sampai 100. Pada sub-bab ini siswa mengurangkan dua bilangan cacah sampai 100 dengan susun pendek dan susun panjang, tanpa dan dengan mengambil satu puluhan.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1: Bilangan Cacah sampai 1.000, Sub-Bab E hlm. 46–57) dan Buku Panduan Guru Bab 1 Topik E."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1 Sub-Bab E)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Standard Subtraction",
+          "namaId": "Pengurangan Bersusun",
+          "asal": "Algorithms",
+          "ringkas": "Dari satuan, pinjam jika perlu.",
+          "tahap": [
+            "Story",
+            "Concrete",
+            "Abstract"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Counting Up",
+          "namaId": "Menghitung Naik",
+          "asal": "Counting up",
+          "ringkas": "Naik dari yang dikurangi.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Regrouping",
+          "namaId": "Meminjam",
+          "asal": "Base-ten",
+          "ringkas": "Buka puluhan jadi sepuluh satuan.",
+          "tahap": [
+            "Infografis",
+            "Concrete"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B1E-V1-1",
@@ -3809,7 +4208,7 @@
           "id": "K3B1E-V1-3",
           "titleHint": "Susun pendek",
           "sceneType": "K3B1E-V1-3",
-          "voiceNarration": "Cara susun pendek: susun bilangan, puluhan lurus dengan puluhan dan satuan lurus dengan satuan. Langkah satu, susun. Langkah dua, kurangkan satuan, 5 − 2 = 3. Langkah tiga, kurangkan puluhan, 2 − 1 = 1. Jadi, 25 − 12 = 13. Sisa permen Galih ada 13."
+          "voiceNarration": "Cara susun pendek: susun bilangan, puluhan lurus dengan puluhan dan satuan lurus dengan satuan. Langkah satu, susun. Langkah dua, kurangkan satuan, 5 − 2 = 3. Langkah tiga, kurangkan puluhan, 2 − 1 = 1. Jadi, 25 − 12 = 13. Sisa permen Galih ada 13. METODE LUAR. Pengurangan Bersusun: Dari satuan, pinjam jika perlu."
         },
         {
           "id": "K3B1E-V2-1",
@@ -3827,7 +4226,7 @@
           "id": "K3B1E-V2-3",
           "titleHint": "Puluhan dan hasil",
           "sceneType": "K3B1E-V2-3",
-          "voiceNarration": "Sekarang kurangkan puluhan. Karena 1 puluhan sudah diambil, puluhan tinggal 3. Tiga dikurangi satu sama dengan 2. Jadi, 45 dikurangi 19 sama dengan 26. Ada 26 buku tulis yang tersisa di toko Pak Bandi."
+          "voiceNarration": "Sekarang kurangkan puluhan. Karena 1 puluhan sudah diambil, puluhan tinggal 3. Tiga dikurangi satu sama dengan 2. Jadi, 45 dikurangi 19 sama dengan 26. Ada 26 buku tulis yang tersisa di toko Pak Bandi. METODE LUAR. Menghitung Naik: Naik dari yang dikurangi."
         },
         {
           "id": "K3B1E-V3-1",
@@ -3845,7 +4244,7 @@
           "id": "K3B1E-V3-3",
           "titleHint": "Periksa dengan penjumlahan",
           "sceneType": "K3B1E-V3-3",
-          "voiceNarration": "Pengurangan dan penjumlahan saling berkaitan. Bila 45 dikurangi 19 sama dengan 26, maka 26 ditambah 19 harus sama dengan 45. Kita hitung, 26 ditambah 19 sama dengan 45. Jadi, hasilnya benar. Gunakan cara ini untuk memeriksa pekerjaanmu."
+          "voiceNarration": "Pengurangan dan penjumlahan saling berkaitan. Bila 45 dikurangi 19 sama dengan 26, maka 26 ditambah 19 harus sama dengan 45. Kita hitung, 26 ditambah 19 sama dengan 45. Jadi, hasilnya benar. Gunakan cara ini untuk memeriksa pekerjaanmu. METODE LUAR. Meminjam: Buka puluhan jadi sepuluh satuan."
         }
       ],
       "videos": [
@@ -3893,13 +4292,15 @@
                 "Cara susun pendek: susun bilangan, puluhan lurus dengan puluhan dan satuan lurus dengan satuan.",
                 "Langkah satu, susun. Langkah dua, kurangkan satuan, 5 − 2 = 3.",
                 "Langkah tiga, kurangkan puluhan, 2 − 1 = 1.",
-                "Jadi, 25 − 12 = 13. Sisa permen Galih ada 13."
+                "Jadi, 25 − 12 = 13. Sisa permen Galih ada 13.",
+                "METODE LUAR. Pengurangan Bersusun: Dari satuan, pinjam jika perlu."
               ],
               "papan": [
                 "Susun pendek",
                 "Satuan: 5 − 2 = 3",
                 "Puluhan: 2 − 1 = 1",
-                "25 − 12 = 13"
+                "25 − 12 = 13",
+                "METODE LUAR · Pengurangan Bersusun"
               ]
             }
           ]
@@ -3948,13 +4349,15 @@
                 "Sekarang kurangkan puluhan. Karena 1 puluhan sudah diambil, puluhan tinggal 3.",
                 "Tiga dikurangi satu sama dengan 2.",
                 "Jadi, 45 dikurangi 19 sama dengan 26.",
-                "Ada 26 buku tulis yang tersisa di toko Pak Bandi."
+                "Ada 26 buku tulis yang tersisa di toko Pak Bandi.",
+                "METODE LUAR. Menghitung Naik: Naik dari yang dikurangi."
               ],
               "papan": [
                 "Puluhan: 3 − 1 = 2",
                 "2 puluhan, 6 satuan",
                 "45 − 19 = 26",
-                "26 buku tulis"
+                "26 buku tulis",
+                "METODE LUAR · Menghitung Naik"
               ]
             }
           ]
@@ -4003,13 +4406,15 @@
                 "Pengurangan dan penjumlahan saling berkaitan.",
                 "Bila 45 dikurangi 19 sama dengan 26, maka 26 ditambah 19 harus sama dengan 45.",
                 "Kita hitung, 26 ditambah 19 sama dengan 45. Jadi, hasilnya benar.",
-                "Gunakan cara ini untuk memeriksa pekerjaanmu."
+                "Gunakan cara ini untuk memeriksa pekerjaanmu.",
+                "METODE LUAR. Meminjam: Buka puluhan jadi sepuluh satuan."
               ],
               "papan": [
                 "Saling berkaitan",
                 "26 + 19 = 45",
                 "Hasil benar",
-                "Periksa pekerjaanmu"
+                "Periksa pekerjaanmu",
+                "METODE LUAR · Meminjam"
               ]
             }
           ]
@@ -4078,7 +4483,23 @@
           "stepDesc": "Soal cerita memakai kata seperti sisa, selisih, diambil, dan dibeli. Bia punya 19 stiker mobil dan Aldo punya 8 stiker robot, jadi selisihnya 19 dikurangi 8 sama dengan 11. Pak Doni punya 23 ikan gurami dan 42 ikan nila, jadi selisihnya 42 dikurangi 23 sama dengan 19. Tulis kalimat matematikanya, hitung, lalu jawab dengan satuan yang tepat.",
           "icon": "📖",
           "flowFrom": "Soal cerita pengurangan",
-          "flowTo": "Siap mengurangkan sampai 100"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Pengurangan Bersusun",
+          "stepDesc": "Dari satuan, pinjam jika perlu.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Menghitung Naik",
+          "stepDesc": "Naik dari yang dikurangi.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -4151,6 +4572,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, susun lurus. Dua, kurangkan satuan, ambil satu puluhan bila perlu. Tiga, kurangkan puluhan. Empat, periksa dengan penjumlahan."
+        },
+        {
+          "fruitName": "Pengurangan Bersusun",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Standard Subtraction",
+          "voiceSentence": "METODE LUAR. Pengurangan Bersusun. Dari satuan, pinjam jika perlu."
+        },
+        {
+          "fruitName": "Menghitung Naik",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Counting Up",
+          "voiceSentence": "METODE LUAR. Menghitung Naik. Naik dari yang dikurangi."
+        },
+        {
+          "fruitName": "Meminjam",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Regrouping",
+          "voiceSentence": "METODE LUAR. Meminjam. Buka puluhan jadi sepuluh satuan."
         }
       ],
       "concreteSlides": [
@@ -4158,7 +4600,7 @@
           "title": "Rakit Sisa",
           "emoji": "🧺",
           "targetCount": 6,
-          "voiceGuide": "Rakit sisa benda setelah diambil."
+          "voiceGuide": "METODE LUAR · Pengurangan Bersusun. Rakit sisa benda setelah diambil."
         },
         {
           "title": "Hitung Sisa",
@@ -4221,7 +4663,7 @@
           "diagramType": "subtract-vertical",
           "numberA": 3,
           "numberB": 1,
-          "caption": "Mengurangkan dua bilangan dengan cara susun pendek langkah demi langkah, termasuk mengambil satu puluhan."
+          "caption": "Mengurangkan dua bilangan dengan cara susun pendek langkah demi langkah, termasuk mengambil satu puluhan. (METODE LUAR · Pengurangan Bersusun)"
         },
         {
           "title": "Papan Hasil Pengurangan",
@@ -4292,7 +4734,7 @@
           "symbolLarge": "57−23",
           "wordLarge": "SUSUN KE BAWAH",
           "mathNotation": "satuan • puluhan",
-          "voiceReadout": "Susun, kurangkan satuan, lalu puluhan."
+          "voiceReadout": "METODE LUAR · Pengurangan Bersusun. Susun, kurangkan satuan, lalu puluhan."
         },
         {
           "symbolLarge": "42−36",
@@ -4357,9 +4799,9 @@
           "gameType": "build-remaining",
           "title": "Rakit Sisa",
           "bookReference": "Buku Siswa hlm. 46–48 (25 permen diambil 12)",
-          "objective": "Merakit sisa benda setelah sebuah kumpulan diambil sebanyak tertentu, termasuk menukar satu bungkus menjadi sepuluh benda.",
+          "objective": "Merakit sisa benda setelah sebuah kumpulan diambil sebanyak tertentu, termasuk menukar satu bungkus menjadi sepuluh benda. (METODE LUAR · Pengurangan Bersusun)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca ada berapa benda dan berapa yang diambil, lalu merakit sisanya dengan tombol tambah dan kurang. Sepuluh benda otomatis ditukar satu bungkus.",
-          "voiceGuide": "Rakit sisa benda setelah diambil."
+          "voiceGuide": "METODE LUAR · Pengurangan Bersusun. Rakit sisa benda setelah diambil."
         },
         {
           "gameId": "subK3B1E-game-2",
@@ -4467,9 +4909,9 @@
           "gameType": "subtract-vertical",
           "title": "Susun Kurang ke Bawah",
           "bookReference": "Buku Siswa hlm. 47–48 dan 50–51 (langkah 1, 2, dan 3 cara susun pendek)",
-          "objective": "Mengurangkan dua bilangan dengan cara susun pendek langkah demi langkah, termasuk mengambil satu puluhan.",
+          "objective": "Mengurangkan dua bilangan dengan cara susun pendek langkah demi langkah, termasuk mengambil satu puluhan. (METODE LUAR · Pengurangan Bersusun)",
           "mechanicDescription": "Tiga ronde, tiap ronde satu soal (25 − 12, 45 − 19, 60 − 35). Siswa menaruh bilangan pada kolom satuan, mengurangkan satuan, mengambil satu puluhan bila perlu, lalu mengurangkan puluhan.",
-          "voiceGuide": "Susun, kurangkan satuan, lalu puluhan."
+          "voiceGuide": "METODE LUAR · Pengurangan Bersusun. Susun, kurangkan satuan, lalu puluhan."
         },
         {
           "gameId": "subK3B1E-game-12",
@@ -4577,9 +5019,9 @@
           "gameType": "subtract-vertical-abstract",
           "title": "Susun Kurang ke Bawah: Lambang",
           "bookReference": "Buku Siswa hlm. 57 (Ayo Berlatih 2: cara susun pendek)",
-          "objective": "Mengurangkan dua bilangan dengan susun pendek, termasuk mengambil satu puluhan.",
+          "objective": "Mengurangkan dua bilangan dengan susun pendek, termasuk mengambil satu puluhan. (METODE LUAR · Pengurangan Bersusun)",
           "mechanicDescription": "Tiga ronde, tiap ronde satu soal (57 − 23, 84 − 39, 72 − 46). Siswa menyusun, mengurangkan satuan, mengambil satu puluhan bila perlu, lalu mengurangkan puluhan.",
-          "voiceGuide": "Susun, kurangkan satuan, lalu puluhan."
+          "voiceGuide": "METODE LUAR · Pengurangan Bersusun. Susun, kurangkan satuan, lalu puluhan."
         },
         {
           "gameId": "subK3B1E-game-22",
@@ -4707,6 +5149,21 @@
             "nama": "Periksa",
             "isi": "26 + 19 = 45",
             "suara": "Periksa pengurangan dengan penjumlahan. Hasil ditambah bilangan pengurang harus sama dengan bilangan awal."
+          },
+          {
+            "nama": "Pengurangan Bersusun",
+            "isi": "METODE LUAR · Standard Subtraction: Dari satuan, pinjam jika perlu. (asal: Algorithms).",
+            "suara": "METODE LUAR. Pengurangan Bersusun. Dari satuan, pinjam jika perlu."
+          },
+          {
+            "nama": "Menghitung Naik",
+            "isi": "METODE LUAR · Counting Up: Naik dari yang dikurangi. (asal: Counting up).",
+            "suara": "METODE LUAR. Menghitung Naik. Naik dari yang dikurangi."
+          },
+          {
+            "nama": "Meminjam",
+            "isi": "METODE LUAR · Regrouping: Buka puluhan jadi sepuluh satuan. (asal: Base-ten).",
+            "suara": "METODE LUAR. Meminjam. Buka puluhan jadi sepuluh satuan."
           }
         ],
         "suara": "Ingat selalu! Pada pengurangan bersusun, puluhan lurus dengan puluhan dan satuan lurus dengan satuan. Kurangkan satuan lebih dulu, lalu puluhan. Bila satuan di atas lebih kecil, ambil satu puluhan. Periksa hasilnya dengan penjumlahan.",
@@ -4731,8 +5188,43 @@
       "silabus": {
         "teksSuara": "Kita belajar perkalian bilangan cacah sampai seratus. Ada lima kelompok pensil, tiap kelompok berisi dua pensil. Ada empat kelompok bunga melati, tiap kelompok berisi lima bunga. Perkalian adalah penjumlahan berulang dari kelompok yang sama banyak. Kita juga belajar bahwa lima kali enam sama dengan enam kali lima, dan menyelesaikan soal cerita. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa melakukan operasi perkalian dan pembagian bilangan cacah sampai 100. Pada sub-bab ini siswa memahami perkalian sebagai penjumlahan berulang, menulis perkalian, menghitung hasilnya, dan menyelesaikan soal cerita perkalian.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1: Bilangan Cacah sampai 1.000, Sub-Bab F hlm. 58–63) dan Buku Panduan Guru Bab 1 Topik F."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1 Sub-Bab F)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Equal Groups",
+          "namaId": "Kelompok Sama",
+          "asal": "Multiplication",
+          "ringkas": "Penjumlahan berulang.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Array",
+          "namaId": "Susunan Baris Kolom",
+          "asal": "Van de Walle",
+          "ringkas": "Baris × kolom.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Skip Counting",
+          "namaId": "Lompat Hitung",
+          "asal": "Basic facts",
+          "ringkas": "2, 4, 6, … untuk kali 2.",
+          "tahap": [
+            "Abstract",
+            "Infografis"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B1F-V1-1",
@@ -4750,7 +5242,7 @@
           "id": "K3B1F-V1-3",
           "titleHint": "Membaca perkalian",
           "sceneType": "K3B1F-V1-3",
-          "voiceNarration": "Pada 4 × 5, bilangan 4 adalah banyak kelompok. Bilangan 5 adalah isi tiap kelompok. Perkalian adalah penjumlahan berulang dari bilangan yang sama. Banyak kelompok dikali isi tiap kelompok sama dengan jumlah seluruhnya."
+          "voiceNarration": "Pada 4 × 5, bilangan 4 adalah banyak kelompok. Bilangan 5 adalah isi tiap kelompok. Perkalian adalah penjumlahan berulang dari bilangan yang sama. Banyak kelompok dikali isi tiap kelompok sama dengan jumlah seluruhnya. METODE LUAR. Kelompok Sama: Penjumlahan berulang."
         },
         {
           "id": "K3B1F-V2-1",
@@ -4768,7 +5260,7 @@
           "id": "K3B1F-V2-3",
           "titleHint": "Tukar tempat",
           "sceneType": "K3B1F-V2-3",
-          "voiceNarration": "5 × 6 sama dengan 30, dan 6 × 5 juga sama dengan 30. Jadi, 5 × 6 sama dengan 6 × 5. Bilangan pada perkalian boleh ditukar tempatnya. Hasilnya tetap sama besar."
+          "voiceNarration": "5 × 6 sama dengan 30, dan 6 × 5 juga sama dengan 30. Jadi, 5 × 6 sama dengan 6 × 5. Bilangan pada perkalian boleh ditukar tempatnya. Hasilnya tetap sama besar. METODE LUAR. Susunan Baris Kolom: Baris × kolom."
         },
         {
           "id": "K3B1F-V3-1",
@@ -4786,7 +5278,7 @@
           "id": "K3B1F-V3-3",
           "titleHint": "Ulangi dengan 4 gelas",
           "sceneType": "K3B1F-V3-3",
-          "voiceNarration": "Ulangi dengan 4 gelas, dan tiap gelas berisi 7 kerikil. Jumlahkan: 7 + 7 + 7 + 7 = 28. Ditulis dengan perkalian 4 × 7 = 28. Aktivitas ini menunjukkan bahwa perkalian adalah penjumlahan berulang."
+          "voiceNarration": "Ulangi dengan 4 gelas, dan tiap gelas berisi 7 kerikil. Jumlahkan: 7 + 7 + 7 + 7 = 28. Ditulis dengan perkalian 4 × 7 = 28. Aktivitas ini menunjukkan bahwa perkalian adalah penjumlahan berulang. METODE LUAR. Lompat Hitung: 2, 4, 6, … untuk kali 2."
         }
       ],
       "videos": [
@@ -4834,13 +5326,15 @@
                 "Pada 4 × 5, bilangan 4 adalah banyak kelompok.",
                 "Bilangan 5 adalah isi tiap kelompok.",
                 "Perkalian adalah penjumlahan berulang dari bilangan yang sama.",
-                "Banyak kelompok dikali isi tiap kelompok sama dengan jumlah seluruhnya."
+                "Banyak kelompok dikali isi tiap kelompok sama dengan jumlah seluruhnya.",
+                "METODE LUAR. Kelompok Sama: Penjumlahan berulang."
               ],
               "papan": [
                 "Banyak kelompok",
                 "Isi tiap kelompok",
                 "Penjumlahan berulang",
-                "kelompok × isi = jumlah"
+                "kelompok × isi = jumlah",
+                "METODE LUAR · Kelompok Sama"
               ]
             }
           ]
@@ -4889,13 +5383,15 @@
                 "5 × 6 sama dengan 30, dan 6 × 5 juga sama dengan 30.",
                 "Jadi, 5 × 6 sama dengan 6 × 5.",
                 "Bilangan pada perkalian boleh ditukar tempatnya.",
-                "Hasilnya tetap sama besar."
+                "Hasilnya tetap sama besar.",
+                "METODE LUAR. Susunan Baris Kolom: Baris × kolom."
               ],
               "papan": [
                 "5 × 6 = 30",
                 "6 × 5 = 30",
                 "5 × 6 = 6 × 5",
-                "Boleh ditukar"
+                "Boleh ditukar",
+                "METODE LUAR · Susunan Baris Kolom"
               ]
             }
           ]
@@ -4944,13 +5440,15 @@
                 "Ulangi dengan 4 gelas, dan tiap gelas berisi 7 kerikil.",
                 "Jumlahkan: 7 + 7 + 7 + 7 = 28.",
                 "Ditulis dengan perkalian 4 × 7 = 28.",
-                "Aktivitas ini menunjukkan bahwa perkalian adalah penjumlahan berulang."
+                "Aktivitas ini menunjukkan bahwa perkalian adalah penjumlahan berulang.",
+                "METODE LUAR. Lompat Hitung: 2, 4, 6, … untuk kali 2."
               ],
               "papan": [
                 "4 gelas, tiap gelas 7",
                 "7 + 7 + 7 + 7",
                 "4 × 7 = 28",
-                "Penjumlahan berulang"
+                "Penjumlahan berulang",
+                "METODE LUAR · Lompat Hitung"
               ]
             }
           ]
@@ -5019,7 +5517,23 @@
           "stepDesc": "Soal cerita perkalian menyebut banyak kelompok dan isi tiap kelompok. SD Pelangi punya 6 kelas dan tiap kelas punya 2 papan tulis, jadi 6 × 2 = 12 papan tulis. Guru membentuk 6 kelompok dan tiap kelompok beranggotakan 5 siswa, jadi 6 × 5 = 30 siswa. Tulis kalimat perkaliannya, hitung, lalu jawab dengan satuan yang tepat.",
           "icon": "📖",
           "flowFrom": "Soal cerita perkalian",
-          "flowTo": "Siap mengalikan sampai 100"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Kelompok Sama",
+          "stepDesc": "Penjumlahan berulang.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Susunan Baris Kolom",
+          "stepDesc": "Baris × kolom.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -5092,6 +5606,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, cari banyak kelompok. Dua, cari isi tiap kelompok. Tiga, tulis perkalian atau penjumlahan berulang. Empat, hitung hasilnya."
+        },
+        {
+          "fruitName": "Kelompok Sama",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Equal Groups",
+          "voiceSentence": "METODE LUAR. Kelompok Sama. Penjumlahan berulang."
+        },
+        {
+          "fruitName": "Susunan Baris Kolom",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Array",
+          "voiceSentence": "METODE LUAR. Susunan Baris Kolom. Baris × kolom."
+        },
+        {
+          "fruitName": "Lompat Hitung",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Skip Counting",
+          "voiceSentence": "METODE LUAR. Lompat Hitung. 2, 4, 6, … untuk kali 2."
         }
       ],
       "concreteSlides": [
@@ -5099,7 +5634,7 @@
           "title": "Rakit Kelompok",
           "emoji": "🍽️",
           "targetCount": 6,
-          "voiceGuide": "Tambah piring sampai jumlahnya tepat."
+          "voiceGuide": "METODE LUAR · Kelompok Sama. Tambah piring sampai jumlahnya tepat."
         },
         {
           "title": "Hitung Kelompok",
@@ -5162,7 +5697,7 @@
           "diagramType": "dot-groups",
           "numberA": 5,
           "numberB": 2,
-          "caption": "Menghitung jumlah titik pada beberapa kotak yang sama banyak."
+          "caption": "Menghitung jumlah titik pada beberapa kotak yang sama banyak. (METODE LUAR · Kelompok Sama)"
         },
         {
           "title": "Lengkapi Kalimat Perkalian",
@@ -5233,7 +5768,7 @@
           "symbolLarge": "7×5",
           "wordLarge": "KALI",
           "mathNotation": "penjumlahan berulang",
-          "voiceReadout": "Pilih hasil penjumlahan berulang."
+          "voiceReadout": "METODE LUAR · Kelompok Sama. Pilih hasil penjumlahan berulang."
         },
         {
           "symbolLarge": "3×4",
@@ -5298,9 +5833,9 @@
           "gameType": "build-groups",
           "title": "Rakit Kelompok",
           "bookReference": "Buku Siswa hlm. 58–60 (5 kelompok pensil; 4 kelompok melati)",
-          "objective": "Menambah kelompok yang isinya sama sampai jumlah seluruhnya sama dengan yang diminta.",
+          "objective": "Menambah kelompok yang isinya sama sampai jumlah seluruhnya sama dengan yang diminta. (METODE LUAR · Kelompok Sama)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa membaca isi tiap piring dan jumlah yang diminta, lalu menambah atau mengurangi piring. Kalimat penjumlahan berulang ikut bertambah panjang.",
-          "voiceGuide": "Tambah piring sampai jumlahnya tepat."
+          "voiceGuide": "METODE LUAR · Kelompok Sama. Tambah piring sampai jumlahnya tepat."
         },
         {
           "gameId": "subK3B1F-game-2",
@@ -5408,9 +5943,9 @@
           "gameType": "count-dot-groups",
           "title": "Hitung Titik Berkelompok",
           "bookReference": "Buku Siswa hlm. 58–59 (menghitung kelompok yang sama banyak)",
-          "objective": "Menghitung jumlah titik pada beberapa kotak yang sama banyak.",
+          "objective": "Menghitung jumlah titik pada beberapa kotak yang sama banyak. (METODE LUAR · Kelompok Sama)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Kotak-kotak berisi titik polos ditampilkan. Siswa memilih satu dari tiga jumlah titik.",
-          "voiceGuide": "Hitung jumlah titik."
+          "voiceGuide": "METODE LUAR · Kelompok Sama. Hitung jumlah titik."
         },
         {
           "gameId": "subK3B1F-game-12",
@@ -5518,9 +6053,9 @@
           "gameType": "repeated-to-product",
           "title": "Dari Penjumlahan ke Perkalian",
           "bookReference": "Buku Siswa hlm. 63 (Ayo Berlatih 2: isilah titik-titik dengan pilihan jawaban)",
-          "objective": "Menyatakan penjumlahan berulang sebagai perkalian dan menghitung hasilnya.",
+          "objective": "Menyatakan penjumlahan berulang sebagai perkalian dan menghitung hasilnya. (METODE LUAR · Kelompok Sama)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal, misalnya 5 + 5 + 5 + 5 + 5 + 5 + 5 = ... Siswa memilih satu dari tiga hasil.",
-          "voiceGuide": "Pilih hasil penjumlahan berulang."
+          "voiceGuide": "METODE LUAR · Kelompok Sama. Pilih hasil penjumlahan berulang."
         },
         {
           "gameId": "subK3B1F-game-22",
@@ -5648,6 +6183,21 @@
             "nama": "Periksa",
             "isi": "jumlahkan berulang atau loncat",
             "suara": "Periksa hasil kali dengan penjumlahan berulang atau dengan loncatan pada garis bilangan."
+          },
+          {
+            "nama": "Kelompok Sama",
+            "isi": "METODE LUAR · Equal Groups: Penjumlahan berulang. (asal: Multiplication).",
+            "suara": "METODE LUAR. Kelompok Sama. Penjumlahan berulang."
+          },
+          {
+            "nama": "Susunan Baris Kolom",
+            "isi": "METODE LUAR · Array: Baris × kolom. (asal: Van de Walle).",
+            "suara": "METODE LUAR. Susunan Baris Kolom. Baris × kolom."
+          },
+          {
+            "nama": "Lompat Hitung",
+            "isi": "METODE LUAR · Skip Counting: 2, 4, 6, … untuk kali 2. (asal: Basic facts).",
+            "suara": "METODE LUAR. Lompat Hitung. 2, 4, 6, … untuk kali 2."
           }
         ],
         "suara": "Ingat selalu! Perkalian adalah penjumlahan berulang dari kelompok yang sama banyak. Bilangan pertama adalah banyak kelompok dan bilangan kedua adalah isi tiap kelompok. Bilangan pada perkalian boleh ditukar tempatnya, misalnya lima kali enam sama dengan enam kali lima.",
@@ -5672,8 +6222,43 @@
       "silabus": {
         "teksSuara": "Kita belajar pembagian bilangan cacah sampai seratus. Ibu punya dua belas biskuit dan membaginya sama banyak. Ketua kelompok punya lima belas manik-manik dan membagikannya kepada tiga anggota. Pembagian adalah pengurangan berulang sampai habis. Kita juga belajar bahwa pembagian dan perkalian saling berkaitan, lalu menyelesaikan soal cerita. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
         "cp": "Siswa melakukan operasi perkalian dan pembagian bilangan cacah sampai 100. Pada sub-bab ini siswa memahami pembagian sebagai pengurangan berulang, menulis pembagian, menghitung hasilnya, menghubungkannya dengan perkalian, dan menyelesaikan soal cerita pembagian.",
-        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1: Bilangan Cacah sampai 1.000, Sub-Bab G hlm. 64–71) dan Buku Panduan Guru Bab 1 Topik G."
+        "referensi": "Buku Siswa Matematika Kelas III Kemendikbudristek (Bab 1 Sub-Bab G)."
       },
+      "metodeLuar": [
+        {
+          "label": "METODE LUAR",
+          "nama": "Fair Share",
+          "namaId": "Bagi Rata",
+          "asal": "Division",
+          "ringkas": "Bagi ke kelompok sama.",
+          "tahap": [
+            "Story",
+            "Concrete"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Repeated Subtraction",
+          "namaId": "Kurang Berulang",
+          "asal": "Division strategies",
+          "ringkas": "Kurangi berulang sampai habis.",
+          "tahap": [
+            "Picture",
+            "Mind"
+          ]
+        },
+        {
+          "label": "METODE LUAR",
+          "nama": "Fact Family",
+          "namaId": "Keluarga Fakta",
+          "asal": "Inverse operations",
+          "ringkas": "Kali dan bagi saling terkait.",
+          "tahap": [
+            "Abstract",
+            "Infografis"
+          ]
+        }
+      ],
       "stories": [
         {
           "id": "K3B1G-V1-1",
@@ -5691,7 +6276,7 @@
           "id": "K3B1G-V1-3",
           "titleHint": "Tulis pembagian",
           "sceneType": "K3B1G-V1-3",
-          "voiceNarration": "Dapat ditulis 12 − 2 − 2 − 2 − 2 − 2 − 2 = 0. Pengurangan berulang sampai tidak ada sisa disebut pembagian. Bentuk pembagiannya ditulis 12 : 2 = 6. Tanda titik dua dibaca dibagi. Jadi, 12 dibagi 2 sama dengan 6."
+          "voiceNarration": "Dapat ditulis 12 − 2 − 2 − 2 − 2 − 2 − 2 = 0. Pengurangan berulang sampai tidak ada sisa disebut pembagian. Bentuk pembagiannya ditulis 12 : 2 = 6. Tanda titik dua dibaca dibagi. Jadi, 12 dibagi 2 sama dengan 6. METODE LUAR. Bagi Rata: Bagi ke kelompok sama."
         },
         {
           "id": "K3B1G-V2-1",
@@ -5709,7 +6294,7 @@
           "id": "K3B1G-V2-3",
           "titleHint": "Tulis pembagian",
           "sceneType": "K3B1G-V2-3",
-          "voiceNarration": "Dapat ditulis 15 − 3 − 3 − 3 − 3 − 3 = 0. Bentuk pembagiannya ditulis 15 : 3 = 5. Ada bilangan 3 sebanyak 5. Aktivitas 5 yang kita lakukan adalah proses pembagian."
+          "voiceNarration": "Dapat ditulis 15 − 3 − 3 − 3 − 3 − 3 = 0. Bentuk pembagiannya ditulis 15 : 3 = 5. Ada bilangan 3 sebanyak 5. Aktivitas 5 yang kita lakukan adalah proses pembagian. METODE LUAR. Kurang Berulang: Kurangi berulang sampai habis."
         },
         {
           "id": "K3B1G-V3-1",
@@ -5727,7 +6312,7 @@
           "id": "K3B1G-V3-3",
           "titleHint": "Contoh lain",
           "sceneType": "K3B1G-V3-3",
-          "voiceNarration": "28 : 7 = 4, karena 28 − 7 − 7 − 7 − 7 = 0. Periksa dengan perkalian: 4 × 7 = 28. Pembagian dengan 1: 5 : 1 = 5. Dibagi bilangan yang sama: 6 : 6 = 1. Pembagian dan perkalian saling menguatkan hasilnya."
+          "voiceNarration": "28 : 7 = 4, karena 28 − 7 − 7 − 7 − 7 = 0. Periksa dengan perkalian: 4 × 7 = 28. Pembagian dengan 1: 5 : 1 = 5. Dibagi bilangan yang sama: 6 : 6 = 1. Pembagian dan perkalian saling menguatkan hasilnya. METODE LUAR. Keluarga Fakta: Kali dan bagi saling terkait."
         }
       ],
       "videos": [
@@ -5775,13 +6360,15 @@
                 "Dapat ditulis 12 − 2 − 2 − 2 − 2 − 2 − 2 = 0.",
                 "Pengurangan berulang sampai tidak ada sisa disebut pembagian.",
                 "Bentuk pembagiannya ditulis 12 : 2 = 6.",
-                "Tanda titik dua dibaca dibagi. Jadi, 12 dibagi 2 sama dengan 6."
+                "Tanda titik dua dibaca dibagi. Jadi, 12 dibagi 2 sama dengan 6.",
+                "METODE LUAR. Bagi Rata: Bagi ke kelompok sama."
               ],
               "papan": [
                 "12 − 2 − 2 − 2 − 2 − 2 − 2 = 0",
                 "Pembagian",
                 "12 : 2 = 6",
-                "Dibaca: 12 dibagi 2"
+                "Dibaca: 12 dibagi 2",
+                "METODE LUAR · Bagi Rata"
               ]
             }
           ]
@@ -5830,13 +6417,15 @@
                 "Dapat ditulis 15 − 3 − 3 − 3 − 3 − 3 = 0.",
                 "Bentuk pembagiannya ditulis 15 : 3 = 5.",
                 "Ada bilangan 3 sebanyak 5.",
-                "Aktivitas 5 yang kita lakukan adalah proses pembagian."
+                "Aktivitas 5 yang kita lakukan adalah proses pembagian.",
+                "METODE LUAR. Kurang Berulang: Kurangi berulang sampai habis."
               ],
               "papan": [
                 "15 − 3 − 3 − 3 − 3 − 3 = 0",
                 "15 : 3 = 5",
                 "Ada bilangan 3 sebanyak 5",
-                "Proses pembagian"
+                "Proses pembagian",
+                "METODE LUAR · Kurang Berulang"
               ]
             }
           ]
@@ -5885,13 +6474,15 @@
                 "28 : 7 = 4, karena 28 − 7 − 7 − 7 − 7 = 0.",
                 "Periksa dengan perkalian: 4 × 7 = 28.",
                 "Pembagian dengan 1: 5 : 1 = 5. Dibagi bilangan yang sama: 6 : 6 = 1.",
-                "Pembagian dan perkalian saling menguatkan hasilnya."
+                "Pembagian dan perkalian saling menguatkan hasilnya.",
+                "METODE LUAR. Keluarga Fakta: Kali dan bagi saling terkait."
               ],
               "papan": [
                 "28 : 7 = 4",
                 "4 × 7 = 28",
                 "5 : 1 = 5 dan 6 : 6 = 1",
-                "Saling menguatkan"
+                "Saling menguatkan",
+                "METODE LUAR · Keluarga Fakta"
               ]
             }
           ]
@@ -5960,7 +6551,23 @@
           "stepDesc": "Soal cerita pembagian memakai kata seperti dibagi sama banyak, setiap, dan masing-masing. Ayah memasukkan 24 telur ke dalam 3 kotak sama banyak, jadi 24 : 3 = 8 telur tiap kotak. Kakak membagikan 36 apel kepada 6 teman, jadi 36 : 6 = 6 apel tiap teman. Tulis kalimat pembagiannya, hitung, lalu jawab dengan satuan yang tepat.",
           "icon": "📖",
           "flowFrom": "Soal cerita pembagian",
-          "flowTo": "Siap membagi sampai 100"
+          "flowTo": "9"
+        },
+        {
+          "stepNumber": 9,
+          "stepTitle": "9. METODE LUAR · Bagi Rata",
+          "stepDesc": "Bagi ke kelompok sama.",
+          "icon": "🌍",
+          "flowFrom": "8",
+          "flowTo": "10"
+        },
+        {
+          "stepNumber": 10,
+          "stepTitle": "10. METODE LUAR · Kurang Berulang",
+          "stepDesc": "Kurangi berulang sampai habis.",
+          "icon": "🌍",
+          "flowFrom": "9",
+          "flowTo": "END"
         }
       ],
       "infografisData": [
@@ -6033,6 +6640,27 @@
           "countNum": 4,
           "countWord": "Empat",
           "voiceSentence": "Empat langkah. Satu, cari bilangan yang dibagi. Dua, cari pembagi. Tiga, kurangkan berulang atau ingat perkalian. Empat, periksa dengan perkalian."
+        },
+        {
+          "fruitName": "Bagi Rata",
+          "emoji": "🌍",
+          "countNum": 1,
+          "countWord": "METODE LUAR · Fair Share",
+          "voiceSentence": "METODE LUAR. Bagi Rata. Bagi ke kelompok sama."
+        },
+        {
+          "fruitName": "Kurang Berulang",
+          "emoji": "🌍",
+          "countNum": 2,
+          "countWord": "METODE LUAR · Repeated Subtraction",
+          "voiceSentence": "METODE LUAR. Kurang Berulang. Kurangi berulang sampai habis."
+        },
+        {
+          "fruitName": "Keluarga Fakta",
+          "emoji": "🌍",
+          "countNum": 3,
+          "countWord": "METODE LUAR · Fact Family",
+          "voiceSentence": "METODE LUAR. Keluarga Fakta. Kali dan bagi saling terkait."
         }
       ],
       "concreteSlides": [
@@ -6040,7 +6668,7 @@
           "title": "Bagikan Bergiliran",
           "emoji": "🍽️",
           "targetCount": 6,
-          "voiceGuide": "Bagikan satu putaran sampai tumpukan habis."
+          "voiceGuide": "METODE LUAR · Bagi Rata. Bagikan satu putaran sampai tumpukan habis."
         },
         {
           "title": "Hitung Bagian",
@@ -6103,7 +6731,7 @@
           "diagramType": "share-dots",
           "numberA": 3,
           "numberB": 2,
-          "caption": "Membagi sejumlah titik sama banyak ke beberapa kotak dan menentukan isi tiap kotak."
+          "caption": "Membagi sejumlah titik sama banyak ke beberapa kotak dan menentukan isi tiap kotak. (METODE LUAR · Bagi Rata)"
         },
         {
           "title": "Lengkapi Kalimat Pembagian",
@@ -6174,7 +6802,7 @@
           "symbolLarge": "16:4",
           "wordLarge": "KURANG BERULANG",
           "mathNotation": "bagi • kurang • nol",
-          "voiceReadout": "Pilih pengurangan berulangnya."
+          "voiceReadout": "METODE LUAR · Bagi Rata. Pilih pengurangan berulangnya."
         },
         {
           "symbolLarge": "21:3",
@@ -6239,9 +6867,9 @@
           "gameType": "share-in-turns",
           "title": "Bagikan Bergiliran",
           "bookReference": "Buku Siswa hlm. 66–68 (Aktivitas 5: ketua membagikan satu manik-manik)",
-          "objective": "Membagikan benda satu putaran demi satu putaran kepada piring sampai tumpukan habis, lalu melihat berapa tiap piring.",
+          "objective": "Membagikan benda satu putaran demi satu putaran kepada piring sampai tumpukan habis, lalu melihat berapa tiap piring. (METODE LUAR · Bagi Rata)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Siswa menekan Bagikan satu putaran, tiap piring mendapat satu benda. Kalimat pengurangan berulang bertambah panjang sampai tumpukan habis.",
-          "voiceGuide": "Bagikan satu putaran sampai tumpukan habis."
+          "voiceGuide": "METODE LUAR · Bagi Rata. Bagikan satu putaran sampai tumpukan habis."
         },
         {
           "gameId": "subK3B1G-game-2",
@@ -6349,9 +6977,9 @@
           "gameType": "share-dots",
           "title": "Bagi Titik",
           "bookReference": "Buku Siswa hlm. 64–65 (membagi sama banyak)",
-          "objective": "Membagi sejumlah titik sama banyak ke beberapa kotak dan menentukan isi tiap kotak.",
+          "objective": "Membagi sejumlah titik sama banyak ke beberapa kotak dan menentukan isi tiap kotak. (METODE LUAR · Bagi Rata)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal. Sebuah kotak berisi banyak titik dan beberapa kotak kosong ditampilkan. Siswa memilih satu dari tiga hasil bagi.",
-          "voiceGuide": "Pilih banyak titik tiap kotak."
+          "voiceGuide": "METODE LUAR · Bagi Rata. Pilih banyak titik tiap kotak."
         },
         {
           "gameId": "subK3B1G-game-12",
@@ -6459,9 +7087,9 @@
           "gameType": "repeated-subtraction-abstract",
           "title": "Tulis Pengurangan Berulang: Lambang",
           "bookReference": "Buku Siswa hlm. 70 (Ayo Berlatih 1: tulislah pembagian sebagai pengurangan berulang)",
-          "objective": "Menyatakan pembagian sebagai pengurangan berulang sampai nol.",
+          "objective": "Menyatakan pembagian sebagai pengurangan berulang sampai nol. (METODE LUAR · Bagi Rata)",
           "mechanicDescription": "Tiga ronde, tiap ronde dua soal (4 : 1, 10 : 10, 16 : 4, 35 : 5, 9 : 1, dan seterusnya). Siswa memilih satu dari tiga kalimat pengurangan berulang.",
-          "voiceGuide": "Pilih pengurangan berulangnya."
+          "voiceGuide": "METODE LUAR · Bagi Rata. Pilih pengurangan berulangnya."
         },
         {
           "gameId": "subK3B1G-game-22",
@@ -6589,6 +7217,21 @@
             "nama": "Dibagi 1 dan sama",
             "isi": "5 : 1 = 5 dan 6 : 6 = 1",
             "suara": "Bilangan dibagi satu hasilnya bilangan itu sendiri. Bilangan dibagi bilangan yang sama hasilnya satu."
+          },
+          {
+            "nama": "Bagi Rata",
+            "isi": "METODE LUAR · Fair Share: Bagi ke kelompok sama. (asal: Division).",
+            "suara": "METODE LUAR. Bagi Rata. Bagi ke kelompok sama."
+          },
+          {
+            "nama": "Kurang Berulang",
+            "isi": "METODE LUAR · Repeated Subtraction: Kurangi berulang sampai habis. (asal: Division strategies).",
+            "suara": "METODE LUAR. Kurang Berulang. Kurangi berulang sampai habis."
+          },
+          {
+            "nama": "Keluarga Fakta",
+            "isi": "METODE LUAR · Fact Family: Kali dan bagi saling terkait. (asal: Inverse operations).",
+            "suara": "METODE LUAR. Keluarga Fakta. Kali dan bagi saling terkait."
           }
         ],
         "suara": "Ingat selalu! Pembagian adalah pengurangan berulang sampai habis, atau membagi sama banyak. Hasil bagi dikali pembagi sama dengan bilangan yang dibagi. Bilangan dibagi satu hasilnya bilangan itu sendiri, dan bilangan dibagi bilangan yang sama hasilnya satu.",

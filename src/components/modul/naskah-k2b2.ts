@@ -94,69 +94,71 @@ export type SubBabNaskah = {
 };
 
 export const K2B2_META = {
-  chapterId: "k2-mat-bab2",
-  phaseCode: "FASE_A",
-  grade: 2,
-  subjectLabel: "MATEMATIKA - KELAS 2 SD",
-  title: "BAB 2: PENJUMLAHAN DAN PENGURANGAN",
-  silabusElemen: "🌈 Fase A • Elemen Bilangan (Kelas 2 SD/MI)",
-  /** Suara Guru: Web Speech API perangkat saja. Laju 0,70 dan nada 1 (permintaan pemilik). */
-  suaraLaju: 0.7,
-  suaraNada: 1,
+  "chapterId": "k2-mat-bab2",
+  "phaseCode": "FASE_A",
+  "grade": 2,
+  "subjectLabel": "MATEMATIKA - KELAS 2 SD",
+  "title": "BAB 2: PENJUMLAHAN DAN PENGURANGAN",
+  "silabusElemen": "🌈 Fase A • Elemen Bilangan (Kelas 2 SD/MI)",
+  "suaraLaju": 0.7,
+  "suaraNada": 1
 } as const;
 
-const SUARA_AKHIR_SILABUS = "Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.";
-
-/* ====================================================================== */
-/* SUB-BAB A. Berbagai cara melakukan penjumlahan                          */
-/* ====================================================================== */
-
 export const SUB_A: SubBabNaskah = {
-  id: "A",
-  codeTitle: "Sub-Bab A (Berbagai Cara Penjumlahan)",
-  fullTitle: "Sub-Bab A: Berbagai Cara Melakukan Penjumlahan",
-  targetDescription:
-    "Siswa menjumlahkan bilangan sampai 20 dengan tiga cara, yaitu menghitung maju di jalur bilangan, penjumlahan bersusun dengan tabel nilai tempat, dan pasangan bilangan. Siswa memindahkan sepuluh satuan menjadi satu puluhan saat satuan berjumlah sepuluh, memeriksa bahwa semua cara memberi hasil yang sama, serta memilih cara yang paling mudah dan menjelaskan alasannya.",
-  secondaryBg: "#DBEAFE",
-  secondaryBorder: "#2563EB",
-  secondaryText: "#1E3A8A",
-  silabus: {
-    teksSuara: `Kita belajar berbagai cara melakukan penjumlahan. Bukunya bernama Penjumlahan dan Pengurangan, bagian berbagai cara melakukan penjumlahan. Tika dan Kira memetik jambu air, lalu kita menjumlahkan jambu mereka dengan tiga cara: menghitung maju, penjumlahan bersusun, dan pasangan bilangan. Kita juga belajar memindahkan sepuluh satuan menjadi satu puluhan. ${SUARA_AKHIR_SILABUS}`,
-    cp: "Siswa menjumlahkan bilangan cacah sampai 20 dengan menghitung maju, penjumlahan bersusun, dan pasangan bilangan, memindahkan sepuluh satuan menjadi satu puluhan, serta memilih cara yang paling mudah dan menjelaskan alasannya.",
-    referensi: "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2: Penjumlahan dan Pengurangan, Sub-Bab A hlm. 37–47).",
+  "id": "A",
+  "codeTitle": "Sub-Bab A (Berbagai Cara Penjumlahan)",
+  "fullTitle": "Sub-Bab A: Berbagai Cara Melakukan Penjumlahan",
+  "targetDescription": "Siswa menjumlahkan bilangan sampai 20 dengan tiga cara, yaitu menghitung maju di jalur bilangan, penjumlahan bersusun dengan tabel nilai tempat, dan pasangan bilangan. Siswa memindahkan sepuluh satuan menjadi satu puluhan saat satuan berjumlah sepuluh, memeriksa bahwa semua cara memberi hasil yang sama, serta memilih cara yang paling mudah dan menjelaskan alasannya.",
+  "secondaryBg": "#DBEAFE",
+  "secondaryBorder": "#2563EB",
+  "secondaryText": "#1E3A8A",
+  "silabus": {
+    "teksSuara": "Kita belajar berbagai cara melakukan penjumlahan. Bukunya bernama Penjumlahan dan Pengurangan, bagian berbagai cara melakukan penjumlahan. Tika dan Kira memetik jambu air, lalu kita menjumlahkan jambu mereka dengan tiga cara: menghitung maju, penjumlahan bersusun, dan pasangan bilangan. Kita juga belajar memindahkan sepuluh satuan menjadi satu puluhan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menjumlahkan bilangan cacah sampai 20 dengan menghitung maju, penjumlahan bersusun, dan pasangan bilangan, memindahkan sepuluh satuan menjadi satu puluhan, serta memilih cara yang paling mudah dan menjelaskan alasannya.",
+    "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2 Sub-Bab A hlm. 37–47)."
   },
-  videos: [
+  "videos": [
     {
-      id: "K2B2A-V1",
-      judul: "Panen Jambu Air",
-      subjudul: "Cerita Tika dan Kira",
-      adegan: [
+      "id": "K2B2A-V1",
+      "judul": "Panen Jambu Air",
+      "subjudul": "Cerita Tika dan Kira",
+      "adegan": [
         {
-          id: "K2B2A-V1-1",
-          judul: "Pohon jambu di halaman Tika",
-          ketukan: [
+          "id": "K2B2A-V1-1",
+          "judul": "Pohon jambu di halaman Tika",
+          "ketukan": [
             "Di halaman rumah Tika, ada pohon jambu air.",
             "Tika menyiram dan memupuk pohon jambunya dengan teratur.",
             "Sekarang, pohon jambu air itu berbuah sangat lebat.",
-            "Tika mengajak Kira untuk memetik buah jambu air.",
+            "Tika mengajak Kira untuk memetik buah jambu air."
           ],
-          papan: ["Pohon jambu air", "Disiram dan dipupuk", "Buahnya lebat!", "Ayo petik, Kira!"],
+          "papan": [
+            "Pohon jambu air",
+            "Disiram dan dipupuk",
+            "Buahnya lebat!",
+            "Ayo petik, Kira!"
+          ]
         },
         {
-          id: "K2B2A-V1-2",
-          judul: "Tika dan Kira memetik",
-          ketukan: [
+          "id": "K2B2A-V1-2",
+          "judul": "Tika dan Kira memetik",
+          "ketukan": [
             "Tika memetik 12 buah jambu air.",
             "Kira memetik 6 lebih banyak dari jambu air milik Tika.",
             "Mereka terlihat senang karena menyukai jambu air.",
-            "Kata Kira, jambu air milik Tika berasa manis, dan vitamin pada jambu air juga baik untuk tubuh kita.",
+            "Kata Kira, jambu air milik Tika berasa manis, dan vitamin pada jambu air juga baik untuk tubuh kita."
           ],
-          papan: ["Tika: 12 jambu", "Kira: 6 lebih banyak", "Senang sekali!", "Manis dan sehat"],
+          "papan": [
+            "Tika: 12 jambu",
+            "Kira: 6 lebih banyak",
+            "Senang sekali!",
+            "Manis dan sehat"
+          ]
         },
         {
-          id: "K2B2A-V1-3",
-          judul: "Dua pertanyaan",
-          ketukan: [
+          "id": "K2B2A-V1-3",
+          "judul": "Dua pertanyaan",
+          "ketukan": [
             "Ada dua pertanyaan di akhir cerita.",
             "Berapa jumlah jambu air yang dipetik Tika dan Kira?",
             "Berapa selisih banyak jambu air milik Tika dan Kira?",
@@ -164,78 +166,117 @@ export const SUB_A: SubBabNaskah = {
             "Kira memetik 6 lebih banyak dari Tika, jadi kita jumlahkan 12 dan 6.",
             "Penjumlahan bisa dilakukan dengan berbagai cara.",
             "Ayo kita lihat caranya!",
+            "METODE LUAR. Menghitung Maju: Mulai dari bilangan lebih besar lalu maju."
           ],
-          papan: ["Dua pertanyaan", "Berapa jumlahnya?", "Berapa selisihnya?", "Cari milik Kira dulu", "12 + 6 = ?", "Berbagai cara", "Ayo lihat caranya!"],
-        },
-      ],
+          "papan": [
+            "Dua pertanyaan",
+            "Berapa jumlahnya?",
+            "Berapa selisihnya?",
+            "Cari milik Kira dulu",
+            "12 + 6 = ?",
+            "Berbagai cara",
+            "Ayo lihat caranya!",
+            "METODE LUAR · Menghitung Maju"
+          ]
+        }
+      ]
     },
     {
-      id: "K2B2A-V2",
-      judul: "Tiga Cara Menjumlahkan 12 + 6",
-      subjudul: "Maju, bersusun, dan pasangan bilangan",
-      adegan: [
+      "id": "K2B2A-V2",
+      "judul": "Tiga Cara Menjumlahkan 12 + 6",
+      "subjudul": "Maju, bersusun, dan pasangan bilangan",
+      "adegan": [
         {
-          id: "K2B2A-V2-1",
-          judul: "Cara 1: Menghitung maju",
-          ketukan: [
+          "id": "K2B2A-V2-1",
+          "judul": "Cara 1: Menghitung maju",
+          "ketukan": [
             "Cara pertama adalah menghitung maju.",
             "Kita ingin tahu hasil dari 12 ditambah 6.",
             "Mula-mula kita berdiri di bilangan 12 pada jalur bilangan.",
             "Lalu kita melompat 6 langkah ke depan: 13, 14, 15, 16, 17, 18.",
             "Kita berhenti di 18, jadi 12 ditambah 6 sama dengan 18.",
-            "Banyak jambu air yang dipetik Kira adalah 18 buah.",
+            "Banyak jambu air yang dipetik Kira adalah 18 buah."
           ],
-          papan: ["Cara 1: Hitung maju", "12 + 6 = ?", "Mulai dari 12", "Lompat 6 langkah", "12 + 6 = 18", "Kira: 18 jambu"],
+          "papan": [
+            "Cara 1: Hitung maju",
+            "12 + 6 = ?",
+            "Mulai dari 12",
+            "Lompat 6 langkah",
+            "12 + 6 = 18",
+            "Kira: 18 jambu"
+          ]
         },
         {
-          id: "K2B2A-V2-2",
-          judul: "Cara 2: Penjumlahan bersusun",
-          ketukan: [
+          "id": "K2B2A-V2-2",
+          "judul": "Cara 2: Penjumlahan bersusun",
+          "ketukan": [
             "Cara kedua adalah penjumlahan bersusun.",
             "Bilangan 12 terdiri dari 1 puluhan dan 2 satuan.",
             "Bilangan 6 hanya punya 6 satuan.",
             "Langkah satu, susun bilangannya. Satuan harus lurus dengan satuan.",
             "Langkah dua, jumlahkan satuan dengan satuan. 2 ditambah 6 sama dengan 8.",
             "Langkah tiga, jumlahkan puluhan dengan puluhan. Hanya ada 1 puluhan, jadi puluhannya 1.",
-            "Hasilnya 1 puluhan dan 8 satuan, yaitu 18.",
+            "Hasilnya 1 puluhan dan 8 satuan, yaitu 18."
           ],
-          papan: ["Cara 2: Bersusun", "12 = 1 puluhan 2 satuan", "6 = 6 satuan", "Langkah 1: susun", "Langkah 2: 2 + 6 = 8", "Langkah 3: puluhan 1", "Hasil: 18"],
+          "papan": [
+            "Cara 2: Bersusun",
+            "12 = 1 puluhan 2 satuan",
+            "6 = 6 satuan",
+            "Langkah 1: susun",
+            "Langkah 2: 2 + 6 = 8",
+            "Langkah 3: puluhan 1",
+            "Hasil: 18"
+          ]
         },
         {
-          id: "K2B2A-V2-3",
-          judul: "Cara 3: Pasangan bilangan",
-          ketukan: [
+          "id": "K2B2A-V2-3",
+          "judul": "Cara 3: Pasangan bilangan",
+          "ketukan": [
             "Cara ketiga adalah pasangan bilangan.",
             "Ingat pasangan bilangan. 12 dipisah menjadi 10 dan 2.",
             "Sekarang jumlahkan bagian yang kecil dulu: 2 ditambah 6 sama dengan 8.",
             "Lalu jumlahkan dengan sepuluhnya: 10 ditambah 8 sama dengan 18.",
             "Jadi 12 ditambah 6 sama dengan 18.",
             "Tiga cara berbeda, hasilnya sama, yaitu 18. Pilih cara yang paling mudah untukmu!",
+            "METODE LUAR. Pasangan Bilangan: Pecah bilangan jadi pasangan yang mudah."
           ],
-          papan: ["Cara 3: Pasangan", "12 = 10 dan 2", "2 + 6 = 8", "10 + 8 = 18", "12 + 6 = 18", "Tiga cara, hasil sama"],
-        },
-      ],
+          "papan": [
+            "Cara 3: Pasangan",
+            "12 = 10 dan 2",
+            "2 + 6 = 8",
+            "10 + 8 = 18",
+            "12 + 6 = 18",
+            "Tiga cara, hasil sama",
+            "METODE LUAR · Pasangan Bilangan"
+          ]
+        }
+      ]
     },
     {
-      id: "K2B2A-V3",
-      judul: "Sepuluh Satuan Pindah ke Puluhan",
-      subjudul: "18 ditambah 2",
-      adegan: [
+      "id": "K2B2A-V3",
+      "judul": "Sepuluh Satuan Pindah ke Puluhan",
+      "subjudul": "18 ditambah 2",
+      "adegan": [
         {
-          id: "K2B2A-V3-1",
-          judul: "Kira memetik dua lagi",
-          ketukan: [
+          "id": "K2B2A-V3-1",
+          "judul": "Kira memetik dua lagi",
+          "ketukan": [
             "Kira mempunyai 18 jambu air.",
             "Kira memetik lagi 2 jambu air.",
             "Berapa banyak jambu air milik Kira sekarang?",
-            "Bagaimana cara kita menghitungnya?",
+            "Bagaimana cara kita menghitungnya?"
           ],
-          papan: ["Kira: 18 jambu", "Petik 2 lagi", "18 + 2 = ?", "Bagaimana caranya?"],
+          "papan": [
+            "Kira: 18 jambu",
+            "Petik 2 lagi",
+            "18 + 2 = ?",
+            "Bagaimana caranya?"
+          ]
         },
         {
-          id: "K2B2A-V3-2",
-          judul: "Pasangan bilangan dan pindah",
-          ketukan: [
+          "id": "K2B2A-V3-2",
+          "judul": "Pasangan bilangan dan pindah",
+          "ketukan": [
             "Cara pertama memakai pasangan bilangan. 18 dipisah menjadi 10 dan 8.",
             "Jumlahkan satuannya: 8 ditambah 2 sama dengan 10.",
             "Lalu 10 ditambah 10 sama dengan 20.",
@@ -243,1308 +284,1619 @@ export const SUB_A: SubBabNaskah = {
             "Ingat, 10 satuan sama dengan 1 puluhan.",
             "Sepuluh satuan itu kita pindahkan ke kolom puluhan.",
             "Sekarang puluhan menjadi 1 ditambah 1, yaitu 2 puluhan, dan satuannya 0.",
-            "Jadi 18 ditambah 2 sama dengan 20.",
+            "Jadi 18 ditambah 2 sama dengan 20."
           ],
-          papan: ["18 = 10 dan 8", "8 + 2 = 10", "10 + 10 = 20", "Satuan: 10", "10 satuan = 1 puluhan", "Pindah ke puluhan!", "1 + 1 = 2 puluhan", "18 + 2 = 20"],
+          "papan": [
+            "18 = 10 dan 8",
+            "8 + 2 = 10",
+            "10 + 10 = 20",
+            "Satuan: 10",
+            "10 satuan = 1 puluhan",
+            "Pindah ke puluhan!",
+            "1 + 1 = 2 puluhan",
+            "18 + 2 = 20"
+          ]
         },
         {
-          id: "K2B2A-V3-3",
-          judul: "Ingat: pindah sepuluh",
-          ketukan: [
+          "id": "K2B2A-V3-3",
+          "judul": "Ingat: pindah sepuluh",
+          "ketukan": [
             "Kalau satuan berjumlah 10, kita tukar menjadi 1 puluhan.",
             "Angka satuan di jawaban menjadi 0, dan 1 puluhan pindah ke kolom puluhan.",
             "Ini juga berlaku pada 13 ditambah 7, dan 16 ditambah 4. Hasilnya sama-sama 20.",
+            "METODE LUAR. Balok Dienes dan Menyimpan: Sepuluh satuan menjadi satu puluhan."
           ],
-          papan: ["10 satuan jadi 1 puluhan", "Satuan 0, puluhan +1", "13 + 7 = 20 • 16 + 4 = 20"],
-        },
-      ],
-    },
+          "papan": [
+            "10 satuan jadi 1 puluhan",
+            "Satuan 0, puluhan +1",
+            "13 + 7 = 20 • 16 + 4 = 20",
+            "METODE LUAR · Balok Dienes dan Menyimpan"
+          ]
+        }
+      ]
+    }
   ],
-  mindMaps: [
+  "mindMaps": [
     {
-      stepNumber: 1,
-      stepTitle: "1. Kapan Kita Menjumlahkan?",
-      stepDesc:
-        "Kita menjumlahkan saat benda bertambah atau saat dua kelompok digabung. Dalam cerita, Tika memetik 12 jambu air dan Kira memetik 6 lebih banyak. Banyak jambu air Kira adalah 12 ditambah 6. Tanda tambah menggabungkan, dan tanda sama dengan menunjukkan hasilnya.",
-      icon: "🧺",
-      flowFrom: "Cerita penjumlahan",
-      flowTo: "Hitung maju",
+      "stepNumber": 1,
+      "stepTitle": "1. Kapan Kita Menjumlahkan?",
+      "stepDesc": "Kita menjumlahkan saat benda bertambah atau saat dua kelompok digabung. Dalam cerita, Tika memetik 12 jambu air dan Kira memetik 6 lebih banyak. Banyak jambu air Kira adalah 12 ditambah 6. Tanda tambah menggabungkan, dan tanda sama dengan menunjukkan hasilnya.",
+      "icon": "🧺",
+      "flowFrom": "Cerita penjumlahan",
+      "flowTo": "Hitung maju"
     },
     {
-      stepNumber: 2,
-      stepTitle: "2. Cara 1: Menghitung Maju",
-      stepDesc:
-        "Berdirilah di bilangan pertama pada jalur bilangan, lalu melompat ke depan sebanyak bilangan kedua. Dari 12 melompat 6 langkah: 13, 14, 15, 16, 17, 18. Tempat kita berhenti adalah hasilnya. Tips dari banyak negara: mulailah dari bilangan yang lebih besar, karena lompatannya jadi lebih sedikit. Metode ini disebut menghitung maju, atau counting on.",
-      icon: "🐸",
-      flowFrom: "Hitung maju",
-      flowTo: "Bersusun",
+      "stepNumber": 2,
+      "stepTitle": "2. Cara 1: Menghitung Maju",
+      "stepDesc": "Berdirilah di bilangan pertama pada jalur bilangan, lalu melompat ke depan sebanyak bilangan kedua. Dari 12 melompat 6 langkah: 13, 14, 15, 16, 17, 18. Tempat kita berhenti adalah hasilnya. Tips dari banyak negara: mulailah dari bilangan yang lebih besar, karena lompatannya jadi lebih sedikit. Metode ini disebut menghitung maju, atau counting on.",
+      "icon": "🐸",
+      "flowFrom": "Hitung maju",
+      "flowTo": "Bersusun"
     },
     {
-      stepNumber: 3,
-      stepTitle: "3. Cara 2: Penjumlahan Bersusun",
-      stepDesc:
-        "Tulis bilangan ke bawah. Satuan lurus dengan satuan, puluhan lurus dengan puluhan. Jumlahkan satuan dulu, baru puluhan. Pada 12 ditambah 6, satuan 2 ditambah 6 sama dengan 8, dan puluhannya hanya 1. Hasilnya 1 puluhan dan 8 satuan, yaitu 18. Mulai dari satuan membuat kita siap memindahkan puluhan bila perlu.",
-      icon: "📋",
-      flowFrom: "Bersusun",
-      flowTo: "Pasangan bilangan",
+      "stepNumber": 3,
+      "stepTitle": "3. Cara 2: Penjumlahan Bersusun",
+      "stepDesc": "Tulis bilangan ke bawah. Satuan lurus dengan satuan, puluhan lurus dengan puluhan. Jumlahkan satuan dulu, baru puluhan. Pada 12 ditambah 6, satuan 2 ditambah 6 sama dengan 8, dan puluhannya hanya 1. Hasilnya 1 puluhan dan 8 satuan, yaitu 18. Mulai dari satuan membuat kita siap memindahkan puluhan bila perlu.",
+      "icon": "📋",
+      "flowFrom": "Bersusun",
+      "flowTo": "Pasangan bilangan"
     },
     {
-      stepNumber: 4,
-      stepTitle: "4. Cara 3: Pasangan Bilangan",
-      stepDesc:
-        "Pisahkan bilangan menjadi puluhan dan satuannya. 12 dipisah menjadi 10 dan 2. Jumlahkan bagian yang kecil: 2 ditambah 6 sama dengan 8. Lalu jumlahkan dengan sepuluh: 10 ditambah 8 sama dengan 18. Di Singapura, pasangan bilangan disebut number bond dan menjadi dasar menghitung di dalam kepala.",
-      icon: "🌿",
-      flowFrom: "Pasangan bilangan",
-      flowTo: "Pindah sepuluh",
+      "stepNumber": 4,
+      "stepTitle": "4. Cara 3: Pasangan Bilangan",
+      "stepDesc": "Pisahkan bilangan menjadi puluhan dan satuannya. 12 dipisah menjadi 10 dan 2. Jumlahkan bagian yang kecil: 2 ditambah 6 sama dengan 8. Lalu jumlahkan dengan sepuluh: 10 ditambah 8 sama dengan 18. Di Singapura, pasangan bilangan disebut number bond dan menjadi dasar menghitung di dalam kepala.",
+      "icon": "🌿",
+      "flowFrom": "Pasangan bilangan",
+      "flowTo": "Pindah sepuluh"
     },
     {
-      stepNumber: 5,
-      stepTitle: "5. Pindah Sepuluh Satuan",
-      stepDesc:
-        "Kalau satuan berjumlah 10, tukar sepuluh satuan menjadi satu puluhan dan pindahkan ke kolom puluhan. Pada 18 ditambah 2, satuannya 8 ditambah 2 sama dengan 10. Satuan menjadi 0 dan puluhan menjadi 1 ditambah 1, yaitu 2. Hasilnya 20. Maria Montessori memakai manik emas untuk menunjukkan pertukaran sepuluh menjadi satu ini.",
-      icon: "🔁",
-      flowFrom: "Pindah sepuluh",
-      flowTo: "Sahabat sepuluh",
+      "stepNumber": 5,
+      "stepTitle": "5. Pindah Sepuluh Satuan",
+      "stepDesc": "Kalau satuan berjumlah 10, tukar sepuluh satuan menjadi satu puluhan dan pindahkan ke kolom puluhan. Pada 18 ditambah 2, satuannya 8 ditambah 2 sama dengan 10. Satuan menjadi 0 dan puluhan menjadi 1 ditambah 1, yaitu 2. Hasilnya 20. Maria Montessori memakai manik emas untuk menunjukkan pertukaran sepuluh menjadi satu ini.",
+      "icon": "🔁",
+      "flowFrom": "Pindah sepuluh",
+      "flowTo": "Sahabat sepuluh"
     },
     {
-      stepNumber: 6,
-      stepTitle: "6. Sahabat Sepuluh",
-      stepDesc:
-        "Pasangan bilangan yang jumlahnya sepuluh disebut sahabat sepuluh: 1 dan 9, 2 dan 8, 3 dan 7, 4 dan 6, serta 5 dan 5. Kalau hafal sahabat sepuluh, menjumlahkan jadi cepat. Pada 18 ditambah 2, delapan bersahabat dengan dua menjadi sepuluh, jadi hasilnya 20. Guru di Jepang menyebutnya metode buah ceri, atau sakurambo: pecah bilangan kedua agar bilangan pertama menjadi sepuluh.",
-      icon: "🤝",
-      flowFrom: "Sahabat sepuluh",
-      flowTo: "Urutan boleh ditukar",
+      "stepNumber": 6,
+      "stepTitle": "6. Sahabat Sepuluh",
+      "stepDesc": "Pasangan bilangan yang jumlahnya sepuluh disebut sahabat sepuluh: 1 dan 9, 2 dan 8, 3 dan 7, 4 dan 6, serta 5 dan 5. Kalau hafal sahabat sepuluh, menjumlahkan jadi cepat. Pada 18 ditambah 2, delapan bersahabat dengan dua menjadi sepuluh, jadi hasilnya 20. Guru di Jepang menyebutnya metode buah ceri, atau sakurambo: pecah bilangan kedua agar bilangan pertama menjadi sepuluh.",
+      "icon": "🤝",
+      "flowFrom": "Sahabat sepuluh",
+      "flowTo": "Urutan boleh ditukar"
     },
     {
-      stepNumber: 7,
-      stepTitle: "7. Urutan Boleh Ditukar",
-      stepDesc:
-        "Dalam penjumlahan, urutan boleh ditukar. 12 ditambah 6 hasilnya sama dengan 6 ditambah 12, yaitu 18. Karena itu, saat menghitung maju, mulailah dari bilangan yang lebih besar supaya lompatanmu sedikit. Kebiasaan ini juga bisa dipakai untuk memeriksa jawabanmu.",
-      icon: "🔄",
-      flowFrom: "Urutan boleh ditukar",
-      flowTo: "Pilih dan periksa",
+      "stepNumber": 7,
+      "stepTitle": "7. Urutan Boleh Ditukar",
+      "stepDesc": "Dalam penjumlahan, urutan boleh ditukar. 12 ditambah 6 hasilnya sama dengan 6 ditambah 12, yaitu 18. Karena itu, saat menghitung maju, mulailah dari bilangan yang lebih besar supaya lompatanmu sedikit. Kebiasaan ini juga bisa dipakai untuk memeriksa jawabanmu.",
+      "icon": "🔄",
+      "flowFrom": "Urutan boleh ditukar",
+      "flowTo": "Pilih dan periksa"
     },
     {
-      stepNumber: 8,
-      stepTitle: "8. Pilih dan Periksa",
-      stepDesc:
-        "Tiga cara memberi hasil yang sama, jadi pilih cara yang paling mudah untukmu. Hitung maju enak bila bilangan kedua kecil. Bersusun enak bila kita ingin rapi. Pasangan bilangan enak bila ada sepuluh yang bisa dibentuk. Setelah selesai, periksa dengan cara lain, lalu ceritakan alasanmu dengan percaya diri.",
-      icon: "✅",
-      flowFrom: "Pilih dan periksa",
-      flowTo: "Penjumlahan siap dipakai",
-    },
+      "stepNumber": 8,
+      "stepTitle": "8. Pilih dan Periksa",
+      "stepDesc": "Tiga cara memberi hasil yang sama, jadi pilih cara yang paling mudah untukmu. Hitung maju enak bila bilangan kedua kecil. Bersusun enak bila kita ingin rapi. Pasangan bilangan enak bila ada sepuluh yang bisa dibentuk. Setelah selesai, periksa dengan cara lain, lalu ceritakan alasanmu dengan percaya diri.",
+      "icon": "✅",
+      "flowFrom": "Pilih dan periksa",
+      "flowTo": "Penjumlahan siap dipakai"
+    }
   ],
-  infografis: [
+  "infografis": [
     {
-      judul: "Jambu Air Tika dan Kira",
-      emoji: "🍎",
-      countNum: 18,
-      countWord: "Delapan belas",
-      suara:
-        "Tika memetik 12 buah jambu air. Kira memetik 6 lebih banyak dari Tika. Untuk mencari banyak jambu air Kira, kita jumlahkan 12 dan 6. Hasilnya 18. Jadi Kira memetik 18 buah jambu air.",
+      "judul": "Jambu Air Tika dan Kira",
+      "emoji": "🍎",
+      "countNum": 18,
+      "countWord": "Delapan belas",
+      "suara": "Tika memetik 12 buah jambu air. Kira memetik 6 lebih banyak dari Tika. Untuk mencari banyak jambu air Kira, kita jumlahkan 12 dan 6. Hasilnya 18. Jadi Kira memetik 18 buah jambu air."
     },
     {
-      judul: "Cara 1: Menghitung Maju",
-      emoji: "🐸",
-      countNum: 18,
-      countWord: "Delapan belas",
-      suara:
-        "Dari bilangan 12, kita melompat 6 langkah ke depan di jalur bilangan. Hitung lompatannya: 13, 14, 15, 16, 17, 18. Kita berhenti di 18. Jadi dua belas ditambah enam sama dengan delapan belas. Menghitung maju cocok dipakai saat bilangan yang ditambahkan kecil.",
+      "judul": "Cara 1: Menghitung Maju",
+      "emoji": "🐸",
+      "countNum": 18,
+      "countWord": "Delapan belas",
+      "suara": "Dari bilangan 12, kita melompat 6 langkah ke depan di jalur bilangan. Hitung lompatannya: 13, 14, 15, 16, 17, 18. Kita berhenti di 18. Jadi dua belas ditambah enam sama dengan delapan belas. Menghitung maju cocok dipakai saat bilangan yang ditambahkan kecil."
     },
     {
-      judul: "Cara 2: Penjumlahan Bersusun",
-      emoji: "📋",
-      countNum: 18,
-      countWord: "Delapan belas",
-      suara:
-        "Langkah satu, susun bilangan. Satuan lurus dengan satuan. Langkah dua, jumlahkan satuan dengan satuan: dua ditambah enam sama dengan delapan. Langkah tiga, jumlahkan puluhan dengan puluhan: hanya ada satu puluhan. Hasilnya satu puluhan dan delapan satuan, yaitu delapan belas.",
+      "judul": "Cara 2: Penjumlahan Bersusun",
+      "emoji": "📋",
+      "countNum": 18,
+      "countWord": "Delapan belas",
+      "suara": "Langkah satu, susun bilangan. Satuan lurus dengan satuan. Langkah dua, jumlahkan satuan dengan satuan: dua ditambah enam sama dengan delapan. Langkah tiga, jumlahkan puluhan dengan puluhan: hanya ada satu puluhan. Hasilnya satu puluhan dan delapan satuan, yaitu delapan belas."
     },
     {
-      judul: "Cara 3: Pasangan Bilangan",
-      emoji: "🌿",
-      countNum: 18,
-      countWord: "Delapan belas",
-      suara:
-        "Pisahkan dua belas menjadi sepuluh dan dua. Jumlahkan dua dan enam, hasilnya delapan. Lalu jumlahkan sepuluh dan delapan, hasilnya delapan belas. Bagan pasangan bilangan membantu kita melihat bagian-bagiannya.",
+      "judul": "Cara 3: Pasangan Bilangan",
+      "emoji": "🌿",
+      "countNum": 18,
+      "countWord": "Delapan belas",
+      "suara": "Pisahkan dua belas menjadi sepuluh dan dua. Jumlahkan dua dan enam, hasilnya delapan. Lalu jumlahkan sepuluh dan delapan, hasilnya delapan belas. Bagan pasangan bilangan membantu kita melihat bagian-bagiannya."
     },
     {
-      judul: "Tiga Cara, Satu Hasil",
-      emoji: "⚖️",
-      countNum: 18,
-      countWord: "Delapan belas",
-      suara:
-        "Menghitung maju: dari dua belas melompat enam kali sampai delapan belas. Bersusun: dua ditambah enam sama dengan delapan, puluhannya satu, hasilnya delapan belas. Pasangan bilangan: dua ditambah enam sama dengan delapan, sepuluh ditambah delapan sama dengan delapan belas. Ketiga cara menghasilkan bilangan yang sama.",
+      "judul": "Tiga Cara, Satu Hasil",
+      "emoji": "⚖️",
+      "countNum": 18,
+      "countWord": "Delapan belas",
+      "suara": "Menghitung maju: dari dua belas melompat enam kali sampai delapan belas. Bersusun: dua ditambah enam sama dengan delapan, puluhannya satu, hasilnya delapan belas. Pasangan bilangan: dua ditambah enam sama dengan delapan, sepuluh ditambah delapan sama dengan delapan belas. Ketiga cara menghasilkan bilangan yang sama."
     },
     {
-      judul: "Sepuluh Satuan = Satu Puluhan",
-      emoji: "🔟",
-      countNum: 10,
-      countWord: "Sepuluh",
-      suara:
-        "Sepuluh kubus satuan bisa disusun menjadi satu batang puluhan. Sebaliknya, satu batang puluhan bisa dibuka menjadi sepuluh kubus satuan. Nilainya sama, yaitu sepuluh. Alat ini disebut balok Dienes, dibuat oleh Zoltan Dienes dan dipakai guru di banyak negara.",
+      "judul": "Sepuluh Satuan = Satu Puluhan",
+      "emoji": "🔟",
+      "countNum": 10,
+      "countWord": "Sepuluh",
+      "suara": "Sepuluh kubus satuan bisa disusun menjadi satu batang puluhan. Sebaliknya, satu batang puluhan bisa dibuka menjadi sepuluh kubus satuan. Nilainya sama, yaitu sepuluh. Alat ini disebut balok Dienes, dibuat oleh Zoltan Dienes dan dipakai guru di banyak negara."
     },
     {
-      judul: "Pindah ke Kolom Puluhan: 18 + 2",
-      emoji: "🔁",
-      countNum: 20,
-      countWord: "Dua puluh",
-      suara:
-        "Kira punya delapan belas jambu air dan memetik lagi dua. Satuan: delapan ditambah dua sama dengan sepuluh. Sepuluh satuan sama dengan satu puluhan, kita pindahkan ke kolom puluhan. Satuan menjadi nol. Puluhan menjadi satu ditambah satu, yaitu dua. Hasilnya dua puluh.",
+      "judul": "Pindah ke Kolom Puluhan: 18 + 2",
+      "emoji": "🔁",
+      "countNum": 20,
+      "countWord": "Dua puluh",
+      "suara": "Kira punya delapan belas jambu air dan memetik lagi dua. Satuan: delapan ditambah dua sama dengan sepuluh. Sepuluh satuan sama dengan satu puluhan, kita pindahkan ke kolom puluhan. Satuan menjadi nol. Puluhan menjadi satu ditambah satu, yaitu dua. Hasilnya dua puluh."
     },
     {
-      judul: "Sahabat Sepuluh",
-      emoji: "🤝",
-      countNum: 10,
-      countWord: "Sepuluh",
-      suara:
-        "Sahabat sepuluh adalah pasangan bilangan yang jumlahnya sepuluh: satu dan sembilan, dua dan delapan, tiga dan tujuh, empat dan enam, lima dan lima. Hafalkan sahabat sepuluh, supaya penjumlahan terasa mudah.",
+      "judul": "Sahabat Sepuluh",
+      "emoji": "🤝",
+      "countNum": 10,
+      "countWord": "Sepuluh",
+      "suara": "Sahabat sepuluh adalah pasangan bilangan yang jumlahnya sepuluh: satu dan sembilan, dua dan delapan, tiga dan tujuh, empat dan enam, lima dan lima. Hafalkan sahabat sepuluh, supaya penjumlahan terasa mudah."
     },
     {
-      judul: "Urutan Boleh Ditukar",
-      emoji: "🔄",
-      countNum: 18,
-      countWord: "Delapan belas",
-      suara:
-        "Dua belas ditambah enam sama dengan enam ditambah dua belas, yaitu delapan belas. Saat menghitung maju, mulailah dari bilangan yang lebih besar supaya lompatanmu lebih sedikit.",
+      "judul": "Urutan Boleh Ditukar",
+      "emoji": "🔄",
+      "countNum": 18,
+      "countWord": "Delapan belas",
+      "suara": "Dua belas ditambah enam sama dengan enam ditambah dua belas, yaitu delapan belas. Saat menghitung maju, mulailah dari bilangan yang lebih besar supaya lompatanmu lebih sedikit."
     },
     {
-      judul: "Pilih Cara yang Paling Mudah",
-      emoji: "🧭",
-      countNum: 3,
-      countWord: "Tiga",
-      suara:
-        "Tidak ada cara yang paling benar. Pilih yang paling mudah untukmu. Hitung maju bila bilangan kedua kecil. Bersusun bila kamu ingin rapi. Pasangan bilangan bila ada sepuluh yang bisa dibentuk. Lalu periksa dengan cara lain.",
+      "judul": "Pilih Cara yang Paling Mudah",
+      "emoji": "🧭",
+      "countNum": 3,
+      "countWord": "Tiga",
+      "suara": "Tidak ada cara yang paling benar. Pilih yang paling mudah untukmu. Hitung maju bila bilangan kedua kecil. Bersusun bila kamu ingin rapi. Pasangan bilangan bila ada sepuluh yang bisa dibentuk. Lalu periksa dengan cara lain."
     },
+    {
+      "judul": "Menghitung Maju",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Counting On",
+      "suara": "METODE LUAR. Menghitung Maju. Mulai dari bilangan lebih besar lalu maju."
+    },
+    {
+      "judul": "Pasangan Bilangan",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Number Bond",
+      "suara": "METODE LUAR. Pasangan Bilangan. Pecah bilangan jadi pasangan yang mudah."
+    },
+    {
+      "judul": "Balok Dienes dan Menyimpan",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Dienes / Regroup",
+      "suara": "METODE LUAR. Balok Dienes dan Menyimpan. Sepuluh satuan menjadi satu puluhan."
+    }
   ],
-  games: [
+  "games": [
     {
-      stage: "Concrete",
-      gameType: "tap-to-count-on",
-      title: "Petik Jambu Air",
-      bookReference: "hlm. 39–40 (Panen Jambu Air; Cara 1: menghitung maju)",
-      objective: "Menjumlahkan dengan menghitung maju benda nyata: mulai dari banyak awal, lalu menyebut bilangan berikutnya tiap benda bertambah.",
-      mechanicDescription:
-        "Tiga ronde (12 + 6, 14 + 3, dan 15 + 4). Keranjang sudah berisi jambu. Siswa mengetuk jambu di pohon satu per satu, tiap ketukan jambu masuk keranjang dan Suara Guru menyebut bilangan berikutnya. Setelah semua dipetik, siswa memilih jumlah seluruhnya. Terakhir ucapkan jumlahnya.",
-      voiceGuide: "Ketuk jambu di pohon, hitung maju, lalu pilih jumlahnya.",
-      emoji: "🍎",
-      targetCount: 19,
+      "stage": "Concrete",
+      "gameType": "tap-to-count-on",
+      "title": "Petik Jambu Air",
+      "bookReference": "hlm. 39–40 (Panen Jambu Air; Cara 1: menghitung maju)",
+      "objective": "Menjumlahkan dengan menghitung maju benda nyata: mulai dari banyak awal, lalu menyebut bilangan berikutnya tiap benda bertambah. (METODE LUAR · Menghitung Maju)",
+      "mechanicDescription": "Tiga ronde (12 + 6, 14 + 3, dan 15 + 4). Keranjang sudah berisi jambu. Siswa mengetuk jambu di pohon satu per satu, tiap ketukan jambu masuk keranjang dan Suara Guru menyebut bilangan berikutnya. Setelah semua dipetik, siswa memilih jumlah seluruhnya. Terakhir ucapkan jumlahnya.",
+      "voiceGuide": "METODE LUAR · Menghitung Maju. Ketuk jambu di pohon, hitung maju, lalu pilih jumlahnya.",
+      "emoji": "🍎",
+      "targetCount": 19
     },
     {
-      stage: "Concrete",
-      gameType: "drag-ones-to-column",
-      title: "Gabung Balok",
-      bookReference: "hlm. 41–42 (Cara 2: penjumlahan bersusun, tabel nilai tempat dengan balok)",
-      objective: "Menjumlahkan satuan dengan satuan memakai balok Dienes, lalu membaca puluhan dan hasilnya.",
-      mechanicDescription:
-        "Tiga ronde (12 + 6, 13 + 5, dan 14 + 3). Papan nilai tempat sudah berisi bilangan pertama. Siswa menyeret kubus satuan milik Kira satu per satu ke kolom Satuan, lalu memilih banyak satuan, banyak puluhan, dan hasilnya. Terakhir ucapkan hasilnya.",
-      voiceGuide: "Seret kubus ke kolom Satuan, lalu isi satuan dan puluhan.",
-      emoji: "🧱",
-      targetCount: 17,
+      "stage": "Concrete",
+      "gameType": "drag-ones-to-column",
+      "title": "Gabung Balok",
+      "bookReference": "hlm. 41–42 (Cara 2: penjumlahan bersusun, tabel nilai tempat dengan balok)",
+      "objective": "Menjumlahkan satuan dengan satuan memakai balok Dienes, lalu membaca puluhan dan hasilnya.",
+      "mechanicDescription": "Tiga ronde (12 + 6, 13 + 5, dan 14 + 3). Papan nilai tempat sudah berisi bilangan pertama. Siswa menyeret kubus satuan milik Kira satu per satu ke kolom Satuan, lalu memilih banyak satuan, banyak puluhan, dan hasilnya. Terakhir ucapkan hasilnya.",
+      "voiceGuide": "Seret kubus ke kolom Satuan, lalu isi satuan dan puluhan.",
+      "emoji": "🧱",
+      "targetCount": 17
     },
     {
-      stage: "Concrete",
-      gameType: "regroup-ten-ones",
-      title: "Mesin Pindah Sepuluh",
-      bookReference: "hlm. 44 (18 + 2 = 20; 10 satuan = 1 puluhan, pindahkan ke kolom puluhan)",
-      objective: "Menukar sepuluh satuan menjadi satu puluhan dan memindahkannya saat menjumlah.",
-      mechanicDescription:
-        "Tiga ronde (18 + 2, 13 + 7, dan 16 + 4). Siswa menambah kubus satuan satu per satu. Saat satuan genap sepuluh, tombol Pindah muncul, dan sepuluh kubus berubah menjadi satu batang puluhan. Lalu siswa memilih hasilnya. Terakhir ucapkan hasilnya.",
-      voiceGuide: "Tambah kubus, lalu pindahkan sepuluh satuan jadi satu puluhan.",
-      emoji: "🔁",
-      targetCount: 20,
+      "stage": "Concrete",
+      "gameType": "regroup-ten-ones",
+      "title": "Mesin Pindah Sepuluh",
+      "bookReference": "hlm. 44 (18 + 2 = 20; 10 satuan = 1 puluhan, pindahkan ke kolom puluhan)",
+      "objective": "Menukar sepuluh satuan menjadi satu puluhan dan memindahkannya saat menjumlah.",
+      "mechanicDescription": "Tiga ronde (18 + 2, 13 + 7, dan 16 + 4). Siswa menambah kubus satuan satu per satu. Saat satuan genap sepuluh, tombol Pindah muncul, dan sepuluh kubus berubah menjadi satu batang puluhan. Lalu siswa memilih hasilnya. Terakhir ucapkan hasilnya.",
+      "voiceGuide": "Tambah kubus, lalu pindahkan sepuluh satuan jadi satu puluhan.",
+      "emoji": "🔁",
+      "targetCount": 20
     },
     {
-      stage: "Concrete",
-      gameType: "balance-equal-sums",
-      title: "Neraca Jambu",
-      bookReference: "hlm. 62 (Evaluasi nomor 9: 8 + 3 = 5 + ?), diperkaya dengan konsep kesetaraan",
-      objective: "Memahami tanda sama dengan sebagai keseimbangan dan menemukan bagian yang hilang agar kedua sisi sama.",
-      mechanicDescription:
-        "Tiga ronde (8 + 3 = 5 + ?, 7 + 5 = 9 + ?, dan 6 + 9 = 10 + ?). Neraca miring ke sisi yang lebih berat. Siswa menambah atau mengurangi jambu di piring kanan sampai neraca seimbang, lalu menekan periksa. Terakhir ucapkan jumlah di tiap piring.",
-      voiceGuide: "Atur jambu di piring kanan sampai neraca seimbang.",
-      emoji: "⚖️",
-      targetCount: 15,
+      "stage": "Concrete",
+      "gameType": "balance-equal-sums",
+      "title": "Neraca Jambu",
+      "bookReference": "hlm. 62 (Evaluasi nomor 9: 8 + 3 = 5 + ?), diperkaya dengan konsep kesetaraan",
+      "objective": "Memahami tanda sama dengan sebagai keseimbangan dan menemukan bagian yang hilang agar kedua sisi sama.",
+      "mechanicDescription": "Tiga ronde (8 + 3 = 5 + ?, 7 + 5 = 9 + ?, dan 6 + 9 = 10 + ?). Neraca miring ke sisi yang lebih berat. Siswa menambah atau mengurangi jambu di piring kanan sampai neraca seimbang, lalu menekan periksa. Terakhir ucapkan jumlah di tiap piring.",
+      "voiceGuide": "Atur jambu di piring kanan sampai neraca seimbang.",
+      "emoji": "⚖️",
+      "targetCount": 15
     },
     {
-      stage: "Picture",
-      gameType: "hop-on-number-strip",
-      title: "Loncat di Jalur Bilangan",
-      bookReference: "hlm. 40 dan 45 (Cara 1: menghitung maju; Ayo Berlatih nomor 1: 10 + 6, 12 + 4, 15 + 4, 11 + 9, 13 + 6)",
-      objective: "Menghitung maju di jalur bilangan dengan melompat sebanyak bilangan kedua.",
-      mechanicDescription:
-        "Tiga ronde (12 + 4, 15 + 4, dan 11 + 9). Jalur bilangan 10 sampai 20. Siswa mengetuk kotak berikutnya satu per satu sehingga busur lompatan tergambar, lalu menekan Berhenti. Banyak lompatan harus sama dengan bilangan kedua. Terakhir ucapkan hasilnya.",
-      voiceGuide: "Ketuk kotak berikutnya sebanyak bilangan kedua, lalu berhenti.",
-      diagramType: "number-strip-hops",
-      numberA: 20,
-      numberB: 9,
+      "stage": "Picture",
+      "gameType": "hop-on-number-strip",
+      "title": "Loncat di Jalur Bilangan",
+      "bookReference": "hlm. 40 dan 45 (Cara 1: menghitung maju; Ayo Berlatih nomor 1: 10 + 6, 12 + 4, 15 + 4, 11 + 9, 13 + 6)",
+      "objective": "Menghitung maju di jalur bilangan dengan melompat sebanyak bilangan kedua.",
+      "mechanicDescription": "Tiga ronde (12 + 4, 15 + 4, dan 11 + 9). Jalur bilangan 10 sampai 20. Siswa mengetuk kotak berikutnya satu per satu sehingga busur lompatan tergambar, lalu menekan Berhenti. Banyak lompatan harus sama dengan bilangan kedua. Terakhir ucapkan hasilnya.",
+      "voiceGuide": "Ketuk kotak berikutnya sebanyak bilangan kedua, lalu berhenti.",
+      "diagramType": "number-strip-hops",
+      "numberA": 20,
+      "numberB": 9
     },
     {
-      stage: "Picture",
-      gameType: "vertical-addition-table",
-      title: "Susun ke Bawah",
-      bookReference: "hlm. 41–42 dan 46 (Cara 2: penjumlahan bersusun; Ayo Berlatih nomor 2: 14 + 3, 13 + 5, 13 + 7, 16 + 2)",
-      objective: "Menjumlahkan dengan cara bersusun pada tabel nilai tempat: satuan dulu, lalu puluhan, dan memindahkan sepuluh satuan.",
-      mechanicDescription:
-        "Tiga ronde (14 + 3, 13 + 5, dan 13 + 7). Siswa meletakkan bilangan kedua di kolom yang tepat, menjumlahkan satuan, memindahkan sepuluh satuan bila perlu, lalu menjumlahkan puluhan. Angka soal biru, angka jawaban hijau, catatan pindah merah kecil.",
-      voiceGuide: "Susun, jumlahkan satuan dulu, lalu puluhan.",
-      diagramType: "place-value-vertical",
-      numberA: 20,
-      numberB: 7,
+      "stage": "Picture",
+      "gameType": "vertical-addition-table",
+      "title": "Susun ke Bawah",
+      "bookReference": "hlm. 41–42 dan 46 (Cara 2: penjumlahan bersusun; Ayo Berlatih nomor 2: 14 + 3, 13 + 5, 13 + 7, 16 + 2)",
+      "objective": "Menjumlahkan dengan cara bersusun pada tabel nilai tempat: satuan dulu, lalu puluhan, dan memindahkan sepuluh satuan.",
+      "mechanicDescription": "Tiga ronde (14 + 3, 13 + 5, dan 13 + 7). Siswa meletakkan bilangan kedua di kolom yang tepat, menjumlahkan satuan, memindahkan sepuluh satuan bila perlu, lalu menjumlahkan puluhan. Angka soal biru, angka jawaban hijau, catatan pindah merah kecil.",
+      "voiceGuide": "Susun, jumlahkan satuan dulu, lalu puluhan.",
+      "diagramType": "place-value-vertical",
+      "numberA": 20,
+      "numberB": 7
     },
     {
-      stage: "Picture",
-      gameType: "fill-number-bond",
-      title: "Bagan Pasangan",
-      bookReference: "hlm. 43 dan 46–47 (Cara 3: pasangan bilangan; Ayo Berlatih nomor 3: 14 + 3, 12 + 3, 16 + 4, 11 + 7, 13 + 4)",
-      objective: "Menjumlahkan dengan memisahkan bilangan pertama menjadi sepuluh dan satuannya pada bagan pasangan.",
-      mechanicDescription:
-        "Tiga ronde (14 + 3, 11 + 7, dan 16 + 4). Tiap ronde punya tiga langkah: memisah bilangan pertama, menjumlahkan satuan, lalu menjumlahkan dengan sepuluh. Siswa memilih bilangan yang tepat untuk tiap bagian bagan.",
-      voiceGuide: "Pisahkan jadi sepuluh dan satuan, lalu jumlahkan.",
-      diagramType: "number-bond-steps",
-      numberA: 16,
-      numberB: 4,
+      "stage": "Picture",
+      "gameType": "fill-number-bond",
+      "title": "Bagan Pasangan",
+      "bookReference": "hlm. 43 dan 46–47 (Cara 3: pasangan bilangan; Ayo Berlatih nomor 3: 14 + 3, 12 + 3, 16 + 4, 11 + 7, 13 + 4)",
+      "objective": "Menjumlahkan dengan memisahkan bilangan pertama menjadi sepuluh dan satuannya pada bagan pasangan.",
+      "mechanicDescription": "Tiga ronde (14 + 3, 11 + 7, dan 16 + 4). Tiap ronde punya tiga langkah: memisah bilangan pertama, menjumlahkan satuan, lalu menjumlahkan dengan sepuluh. Siswa memilih bilangan yang tepat untuk tiap bagian bagan.",
+      "voiceGuide": "Pisahkan jadi sepuluh dan satuan, lalu jumlahkan.",
+      "diagramType": "number-bond-steps",
+      "numberA": 16,
+      "numberB": 4
     },
     {
-      stage: "Abstract",
-      gameType: "match-method-to-steps",
-      title: "Jodohkan Cara dan Langkah",
-      bookReference: "hlm. 47 (Ayo Berlatih nomor 4: gunakan cara yang menurut kalian paling mudah: 12 + 5, 11 + 8, 15 + 3)",
-      objective: "Mengenali langkah hitung tiap cara penjumlahan dalam bentuk lambang.",
-      mechanicDescription:
-        "Tiga ronde (12 + 5, 11 + 8, dan 15 + 3). Tiap ronde punya tiga nama cara dan tiga rangkaian langkah. Siswa mengetuk nama cara lalu rangkaian langkah yang cocok. Ketiganya berakhir pada hasil yang sama.",
-      voiceGuide: "Ketuk nama cara, lalu langkah yang cocok.",
-      symbolLarge: "12 + 5 = 17",
-      wordLarge: "JODOHKAN CARA",
-      mathNotation: "maju • bersusun • pasangan",
+      "stage": "Abstract",
+      "gameType": "match-method-to-steps",
+      "title": "Jodohkan Cara dan Langkah",
+      "bookReference": "hlm. 47 (Ayo Berlatih nomor 4: gunakan cara yang menurut kalian paling mudah: 12 + 5, 11 + 8, 15 + 3)",
+      "objective": "Mengenali langkah hitung tiap cara penjumlahan dalam bentuk lambang.",
+      "mechanicDescription": "Tiga ronde (12 + 5, 11 + 8, dan 15 + 3). Tiap ronde punya tiga nama cara dan tiga rangkaian langkah. Siswa mengetuk nama cara lalu rangkaian langkah yang cocok. Ketiganya berakhir pada hasil yang sama.",
+      "voiceGuide": "Ketuk nama cara, lalu langkah yang cocok.",
+      "symbolLarge": "12 + 5 = 17",
+      "wordLarge": "JODOHKAN CARA",
+      "mathNotation": "maju • bersusun • pasangan"
     },
     {
-      stage: "Abstract",
-      gameType: "memory-equal-sums",
-      title: "Kartu Kembar Hasil Sama",
-      bookReference: "hlm. 43–44 (hasil penjumlahan yang sama dengan cara berbeda: 12 + 6 dan 10 + 8)",
-      objective: "Mengenali dua kalimat penjumlahan berbeda yang hasilnya sama.",
-      mechanicDescription:
-        "Dua ronde, masing-masing delapan kartu. Siswa membuka dua kartu. Bila hasil kedua kalimat sama, kartu terkunci terbuka. Bila tidak, kartu menutup lagi. Semua pasangan harus ditemukan.",
-      voiceGuide: "Buka dua kartu yang hasilnya sama.",
-      symbolLarge: "12 + 6 = 10 + 8",
-      wordLarge: "KARTU KEMBAR",
-      mathNotation: "hasil sama, cara beda",
+      "stage": "Abstract",
+      "gameType": "memory-equal-sums",
+      "title": "Kartu Kembar Hasil Sama",
+      "bookReference": "hlm. 43–44 (hasil penjumlahan yang sama dengan cara berbeda: 12 + 6 dan 10 + 8)",
+      "objective": "Mengenali dua kalimat penjumlahan berbeda yang hasilnya sama.",
+      "mechanicDescription": "Dua ronde, masing-masing delapan kartu. Siswa membuka dua kartu. Bila hasil kedua kalimat sama, kartu terkunci terbuka. Bila tidak, kartu menutup lagi. Semua pasangan harus ditemukan.",
+      "voiceGuide": "Buka dua kartu yang hasilnya sama.",
+      "symbolLarge": "12 + 6 = 10 + 8",
+      "wordLarge": "KARTU KEMBAR",
+      "mathNotation": "hasil sama, cara beda"
     },
     {
-      stage: "Abstract",
-      gameType: "say-and-trace",
-      title: "Kanvas Guratan dan Suara",
-      bookReference: "hlm. 45 (Ayo Mencoba: dua kartu bilangan dijumlahkan dengan ketiga cara)",
-      objective: "Membaca kalimat penjumlahan, mengucapkan hasilnya, dan menulis lambangnya.",
-      mechanicDescription:
-        "Dua ronde. Ronde 1 dua belas ditambah enam. Ronde 2 siswa memilih satu dari tiga kalimat (12 + 5, 14 + 4, 15 + 3). Siswa mengucapkan hasilnya lalu menggurat lambangnya di kanvas.",
-      voiceGuide: "Ucapkan hasilnya, lalu guratkan angkanya.",
-      symbolLarge: "18",
-      wordLarge: "KANVAS",
-      mathNotation: "12 + 6 = 18",
-    },
+      "stage": "Abstract",
+      "gameType": "say-and-trace",
+      "title": "Kanvas Guratan dan Suara",
+      "bookReference": "hlm. 45 (Ayo Mencoba: dua kartu bilangan dijumlahkan dengan ketiga cara)",
+      "objective": "Membaca kalimat penjumlahan, mengucapkan hasilnya, dan menulis lambangnya.",
+      "mechanicDescription": "Dua ronde. Ronde 1 dua belas ditambah enam. Ronde 2 siswa memilih satu dari tiga kalimat (12 + 5, 14 + 4, 15 + 3). Siswa mengucapkan hasilnya lalu menggurat lambangnya di kanvas.",
+      "voiceGuide": "Ucapkan hasilnya, lalu guratkan angkanya.",
+      "symbolLarge": "18",
+      "wordLarge": "KANVAS",
+      "mathNotation": "12 + 6 = 18"
+    }
   ],
-  poin: [
+  "poin": [
     {
-      ikon: "🐸",
-      nama: "Hitung maju",
-      isi: "12 + 6: 13, 14, 15, 16, 17, 18",
-      suara: "Menghitung maju. Mulai dari bilangan pertama, lalu melompat sebanyak bilangan kedua. Dua belas melompat enam kali sampai delapan belas.",
+      "ikon": "🐸",
+      "nama": "Hitung maju",
+      "isi": "12 + 6: 13, 14, 15, 16, 17, 18",
+      "suara": "Menghitung maju. Mulai dari bilangan pertama, lalu melompat sebanyak bilangan kedua. Dua belas melompat enam kali sampai delapan belas."
     },
     {
-      ikon: "📋",
-      nama: "Bersusun",
-      isi: "satuan dulu, lalu puluhan",
-      suara: "Penjumlahan bersusun. Satuan lurus dengan satuan. Jumlahkan satuan dulu, lalu puluhan. Dua ditambah enam sama dengan delapan, puluhannya satu, hasilnya delapan belas.",
+      "ikon": "📋",
+      "nama": "Bersusun",
+      "isi": "satuan dulu, lalu puluhan",
+      "suara": "Penjumlahan bersusun. Satuan lurus dengan satuan. Jumlahkan satuan dulu, lalu puluhan. Dua ditambah enam sama dengan delapan, puluhannya satu, hasilnya delapan belas."
     },
     {
-      ikon: "🌿",
-      nama: "Pasangan bilangan",
-      isi: "12 = 10 + 2, lalu 2 + 6 = 8, 10 + 8 = 18",
-      suara: "Pasangan bilangan. Pisahkan dua belas menjadi sepuluh dan dua. Dua ditambah enam sama dengan delapan. Sepuluh ditambah delapan sama dengan delapan belas.",
+      "ikon": "🌿",
+      "nama": "Pasangan bilangan",
+      "isi": "12 = 10 + 2, lalu 2 + 6 = 8, 10 + 8 = 18",
+      "suara": "Pasangan bilangan. Pisahkan dua belas menjadi sepuluh dan dua. Dua ditambah enam sama dengan delapan. Sepuluh ditambah delapan sama dengan delapan belas."
     },
     {
-      ikon: "🔁",
-      nama: "Pindah sepuluh",
-      isi: "10 satuan = 1 puluhan",
-      suara: "Kalau satuan berjumlah sepuluh, tukar menjadi satu puluhan dan pindahkan ke kolom puluhan. Delapan belas ditambah dua sama dengan dua puluh.",
+      "ikon": "🔁",
+      "nama": "Pindah sepuluh",
+      "isi": "10 satuan = 1 puluhan",
+      "suara": "Kalau satuan berjumlah sepuluh, tukar menjadi satu puluhan dan pindahkan ke kolom puluhan. Delapan belas ditambah dua sama dengan dua puluh."
     },
     {
-      ikon: "🧭",
-      nama: "Pilih cara termudah",
-      isi: "hasilnya selalu sama",
-      suara: "Semua cara memberi hasil yang sama. Pilih cara yang paling mudah untukmu, lalu periksa dengan cara lain.",
+      "ikon": "🧭",
+      "nama": "Pilih cara termudah",
+      "isi": "hasilnya selalu sama",
+      "suara": "Semua cara memberi hasil yang sama. Pilih cara yang paling mudah untukmu, lalu periksa dengan cara lain."
     },
+    {
+      "ikon": "🌍",
+      "nama": "Menghitung Maju",
+      "isi": "METODE LUAR · Counting On: Mulai dari bilangan lebih besar lalu maju. (asal: Counting on).",
+      "suara": "METODE LUAR. Menghitung Maju. Mulai dari bilangan lebih besar lalu maju."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Pasangan Bilangan",
+      "isi": "METODE LUAR · Number Bond: Pecah bilangan jadi pasangan yang mudah. (asal: Singapore Math).",
+      "suara": "METODE LUAR. Pasangan Bilangan. Pecah bilangan jadi pasangan yang mudah."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Balok Dienes dan Menyimpan",
+      "isi": "METODE LUAR · Dienes / Regroup: Sepuluh satuan menjadi satu puluhan. (asal: Dienes / Montessori).",
+      "suara": "METODE LUAR. Balok Dienes dan Menyimpan. Sepuluh satuan menjadi satu puluhan."
+    }
   ],
-  poinSuara:
-    "Ingat selalu! Penjumlahan bisa dilakukan dengan menghitung maju, bersusun, atau pasangan bilangan. Ketiganya memberi hasil yang sama. Jumlahkan satuan dulu. Kalau satuan berjumlah sepuluh, tukar menjadi satu puluhan dan pindahkan ke kolom puluhan. Pilih cara yang paling mudah untukmu.",
-  cara: {
-    suara: "Cara menyebutkan hasil penjumlahan. Banyak jambu air yang dipetik Kira adalah delapan belas.",
-    potongan: [
-      { teks: "Banyak jambu air yang dipetik Kira", warna: "#FFFFFF" },
-      { teks: "adalah", warna: "#FFFFFF" },
-      { teks: "18", warna: "#FFE566" },
-      { teks: "delapan belas", warna: "#7FCB96" },
-    ],
+  "poinSuara": "Ingat selalu! Penjumlahan bisa dilakukan dengan menghitung maju, bersusun, atau pasangan bilangan. Ketiganya memberi hasil yang sama. Jumlahkan satuan dulu. Kalau satuan berjumlah sepuluh, tukar menjadi satu puluhan dan pindahkan ke kolom puluhan. Pilih cara yang paling mudah untukmu.",
+  "cara": {
+    "suara": "Cara menyebutkan hasil penjumlahan. Banyak jambu air yang dipetik Kira adalah delapan belas.",
+    "potongan": [
+      {
+        "teks": "Banyak jambu air yang dipetik Kira",
+        "warna": "#FFFFFF"
+      },
+      {
+        "teks": "adalah",
+        "warna": "#FFFFFF"
+      },
+      {
+        "teks": "18",
+        "warna": "#FFE566"
+      },
+      {
+        "teks": "delapan belas",
+        "warna": "#7FCB96"
+      }
+    ]
   },
-  rumah:
-    "Ayo Mencoba di rumah: siapkan dua kelompok benda, misalnya sendok dan tutup botol, banyaknya kurang dari dua puluh. Jumlahkan dengan tiga cara: menghitung maju, bersusun, dan pasangan bilangan. Ceritakan cara yang paling mudah untukmu kepada keluargamu.",
-  refleksi: [
+  "rumah": "Ayo Mencoba di rumah: siapkan dua kelompok benda, misalnya sendok dan tutup botol, banyaknya kurang dari dua puluh. Jumlahkan dengan tiga cara: menghitung maju, bersusun, dan pasangan bilangan. Ceritakan cara yang paling mudah untukmu kepada keluargamu.",
+  "refleksi": [
     "Aku bisa menjumlahkan dengan menghitung maju.",
     "Aku bisa melakukan penjumlahan bersusun.",
     "Aku bisa menjumlahkan dengan pasangan bilangan.",
-    "Aku belajar dengan senang hati.",
+    "Aku belajar dengan senang hati."
   ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Counting On",
+      "namaId": "Menghitung Maju",
+      "asal": "Counting on",
+      "ringkas": "Mulai dari bilangan lebih besar lalu maju.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Number Bond",
+      "namaId": "Pasangan Bilangan",
+      "asal": "Singapore Math",
+      "ringkas": "Pecah bilangan jadi pasangan yang mudah.",
+      "tahap": [
+        "Picture",
+        "Mind"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Dienes / Regroup",
+      "namaId": "Balok Dienes dan Menyimpan",
+      "asal": "Dienes / Montessori",
+      "ringkas": "Sepuluh satuan menjadi satu puluhan.",
+      "tahap": [
+        "Infografis",
+        "Concrete"
+      ]
+    }
+  ]
 };
 
-/* ====================================================================== */
-/* SUB-BAB B. Berbagai cara melakukan pengurangan                          */
-/* ====================================================================== */
-
 export const SUB_B: SubBabNaskah = {
-  id: "B",
-  codeTitle: "Sub-Bab B (Berbagai Cara Pengurangan)",
-  fullTitle: "Sub-Bab B: Berbagai Cara Melakukan Pengurangan",
-  targetDescription:
-    "Siswa mencari selisih dengan memasangkan satu-satu, mengurangkan bilangan sampai 20 dengan tiga cara, yaitu menghitung mundur di jalur bilangan, pengurangan bersusun, dan pasangan bilangan. Siswa mengurai satu puluhan menjadi sepuluh satuan saat satuan tidak cukup, memeriksa hasil pengurangan dengan penjumlahan, serta memilih cara yang paling mudah dan menjelaskan alasannya.",
-  secondaryBg: "#FCE7F3",
-  secondaryBorder: "#DB2777",
-  secondaryText: "#831843",
-  silabus: {
-    teksSuara: `Kita belajar berbagai cara melakukan pengurangan. Bukunya bernama Penjumlahan dan Pengurangan, bagian berbagai cara melakukan pengurangan. Kita mencari selisih jambu air Tika dan Kira dengan tiga cara: menghitung mundur, pengurangan bersusun, dan pasangan bilangan. Kita juga belajar mengurai satu puluhan menjadi sepuluh satuan, dan memeriksa hasil dengan penjumlahan. ${SUARA_AKHIR_SILABUS}`,
-    cp: "Siswa mengurangkan bilangan cacah sampai 20 dengan menghitung mundur, pengurangan bersusun, dan pasangan bilangan, mengurai satu puluhan menjadi sepuluh satuan, memeriksa hasil dengan penjumlahan, serta memilih cara yang paling mudah dan menjelaskan alasannya.",
-    referensi: "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2: Penjumlahan dan Pengurangan, Sub-Bab B hlm. 48–53).",
+  "id": "B",
+  "codeTitle": "Sub-Bab B (Berbagai Cara Pengurangan)",
+  "fullTitle": "Sub-Bab B: Berbagai Cara Melakukan Pengurangan",
+  "targetDescription": "Siswa mencari selisih dengan memasangkan satu-satu, mengurangkan bilangan sampai 20 dengan tiga cara, yaitu menghitung mundur di jalur bilangan, pengurangan bersusun, dan pasangan bilangan. Siswa mengurai satu puluhan menjadi sepuluh satuan saat satuan tidak cukup, memeriksa hasil pengurangan dengan penjumlahan, serta memilih cara yang paling mudah dan menjelaskan alasannya.",
+  "secondaryBg": "#FCE7F3",
+  "secondaryBorder": "#DB2777",
+  "secondaryText": "#831843",
+  "silabus": {
+    "teksSuara": "Kita belajar berbagai cara melakukan pengurangan. Bukunya bernama Penjumlahan dan Pengurangan, bagian berbagai cara melakukan pengurangan. Kita mencari selisih jambu air Tika dan Kira dengan tiga cara: menghitung mundur, pengurangan bersusun, dan pasangan bilangan. Kita juga belajar mengurai satu puluhan menjadi sepuluh satuan, dan memeriksa hasil dengan penjumlahan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa mengurangkan bilangan cacah sampai 20 dengan menghitung mundur, pengurangan bersusun, dan pasangan bilangan, mengurai satu puluhan menjadi sepuluh satuan, memeriksa hasil dengan penjumlahan, serta memilih cara yang paling mudah dan menjelaskan alasannya.",
+    "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2 Sub-Bab B)."
   },
-  videos: [
+  "videos": [
     {
-      id: "K2B2B-V1",
-      judul: "Selisih Jambu Air",
-      subjudul: "Jambu Tika dan Kira dipasangkan",
-      adegan: [
+      "id": "K2B2B-V1",
+      "judul": "Selisih Jambu Air",
+      "subjudul": "Jambu Tika dan Kira dipasangkan",
+      "adegan": [
         {
-          id: "K2B2B-V1-1",
-          judul: "Jambu Tika dan Kira",
-          ketukan: [
+          "id": "K2B2B-V1-1",
+          "judul": "Jambu Tika dan Kira",
+          "ketukan": [
             "Tika mempunyai 12 buah jambu air.",
             "Kira mempunyai 18 buah jambu air.",
             "Berapa selisih banyak jambu air Kira dan Tika?",
             "Selisih adalah beda banyaknya dua kelompok. Kita cari dengan memasangkan jambu satu-satu.",
             "Jambu Tika semuanya sudah punya pasangan. Jambu Kira yang tidak punya pasangan itulah selisihnya.",
-            "Ada 6 jambu Kira yang tidak berpasangan, jadi selisihnya 6.",
+            "Ada 6 jambu Kira yang tidak berpasangan, jadi selisihnya 6."
           ],
-          papan: ["Tika: 12 jambu", "Kira: 18 jambu", "Selisih = ?", "Pasangkan satu-satu", "Yang tersisa = selisih", "Selisih: 6"],
+          "papan": [
+            "Tika: 12 jambu",
+            "Kira: 18 jambu",
+            "Selisih = ?",
+            "Pasangkan satu-satu",
+            "Yang tersisa = selisih",
+            "Selisih: 6"
+          ]
         },
         {
-          id: "K2B2B-V1-2",
-          judul: "Menemukan jawaban dengan mengurangkan",
-          ketukan: [
+          "id": "K2B2B-V1-2",
+          "judul": "Menemukan jawaban dengan mengurangkan",
+          "ketukan": [
             "Untuk menemukan jawabannya, kita kurangkan 18 dengan 12.",
             "Bilangan yang besar dikurangi bilangan yang kecil.",
             "Pengurangan bisa dilakukan dengan berbagai cara.",
             "Ayo kita lihat tiga caranya.",
+            "METODE LUAR. Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal."
           ],
-          papan: ["18 − 12 = ?", "Besar dikurangi kecil", "Berbagai cara", "Tiga cara"],
-        },
-      ],
+          "papan": [
+            "18 − 12 = ?",
+            "Besar dikurangi kecil",
+            "Berbagai cara",
+            "Tiga cara",
+            "METODE LUAR · Menghitung Naik"
+          ]
+        }
+      ]
     },
     {
-      id: "K2B2B-V2",
-      judul: "Tiga Cara Mengurangkan 18 − 12",
-      subjudul: "Mundur, bersusun, dan pasangan bilangan",
-      adegan: [
+      "id": "K2B2B-V2",
+      "judul": "Tiga Cara Mengurangkan 18 − 12",
+      "subjudul": "Mundur, bersusun, dan pasangan bilangan",
+      "adegan": [
         {
-          id: "K2B2B-V2-1",
-          judul: "Cara 1: Menghitung mundur",
-          ketukan: [
+          "id": "K2B2B-V2-1",
+          "judul": "Cara 1: Menghitung mundur",
+          "ketukan": [
             "Cara pertama adalah menghitung mundur.",
             "Kita ingin tahu hasil dari 18 dikurangi 12.",
             "Mula-mula kita berdiri di bilangan 18.",
             "Lalu kita melompat ke belakang sebanyak 12 lompatan: 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6.",
-            "Kita berhenti di 6, jadi 18 dikurangi 12 sama dengan 6.",
+            "Kita berhenti di 6, jadi 18 dikurangi 12 sama dengan 6."
           ],
-          papan: ["Cara 1: Hitung mundur", "18 − 12 = ?", "Mulai dari 18", "Lompat mundur 12 kali", "18 − 12 = 6"],
+          "papan": [
+            "Cara 1: Hitung mundur",
+            "18 − 12 = ?",
+            "Mulai dari 18",
+            "Lompat mundur 12 kali",
+            "18 − 12 = 6"
+          ]
         },
         {
-          id: "K2B2B-V2-2",
-          judul: "Cara 2: Pengurangan bersusun",
-          ketukan: [
+          "id": "K2B2B-V2-2",
+          "judul": "Cara 2: Pengurangan bersusun",
+          "ketukan": [
             "Cara kedua adalah pengurangan bersusun.",
             "Tuliskan 18 di tabel nilai tempat: 1 puluhan dan 8 satuan.",
             "Tuliskan 12 di bawahnya: 1 puluhan dan 2 satuan. Satuan lurus dengan satuan.",
             "Kurangkan satuan dulu: 8 dikurangi 2 sama dengan 6.",
             "Lalu kurangkan puluhan: 1 dikurangi 1 sama dengan 0.",
-            "Hasilnya 0 puluhan dan 6 satuan, yaitu 6.",
+            "Hasilnya 0 puluhan dan 6 satuan, yaitu 6."
           ],
-          papan: ["Cara 2: Bersusun", "18 = 1 puluhan 8 satuan", "12 = 1 puluhan 2 satuan", "8 − 2 = 6", "1 − 1 = 0", "Hasil: 6"],
+          "papan": [
+            "Cara 2: Bersusun",
+            "18 = 1 puluhan 8 satuan",
+            "12 = 1 puluhan 2 satuan",
+            "8 − 2 = 6",
+            "1 − 1 = 0",
+            "Hasil: 6"
+          ]
         },
         {
-          id: "K2B2B-V2-3",
-          judul: "Cara 3: Pasangan bilangan",
-          ketukan: [
+          "id": "K2B2B-V2-3",
+          "judul": "Cara 3: Pasangan bilangan",
+          "ketukan": [
             "Cara ketiga adalah pasangan bilangan.",
             "18 adalah 10 dan 8. 12 adalah 10 dan 2.",
             "Kurangkan puluhan dengan puluhan: 10 dikurangi 10 sama dengan 0.",
             "Kurangkan satuan dengan satuan: 8 dikurangi 2 sama dengan 6.",
             "Jadi 18 dikurangi 12 sama dengan 6.",
             "Selisih jambu air Kira dan Tika adalah 6 buah.",
+            "METODE LUAR. Mengambil: Ambil sebagian dari kumpulan."
           ],
-          papan: ["Cara 3: Pasangan", "18 = 10 dan 8 • 12 = 10 dan 2", "10 − 10 = 0", "8 − 2 = 6", "18 − 12 = 6", "Selisih: 6 jambu"],
-        },
-      ],
+          "papan": [
+            "Cara 3: Pasangan",
+            "18 = 10 dan 8 • 12 = 10 dan 2",
+            "10 − 10 = 0",
+            "8 − 2 = 6",
+            "18 − 12 = 6",
+            "Selisih: 6 jambu",
+            "METODE LUAR · Mengambil"
+          ]
+        }
+      ]
     },
     {
-      id: "K2B2B-V3",
-      judul: "Urai Satu Puluhan: 12 − 8",
-      subjudul: "Saat satuan tidak cukup",
-      adegan: [
+      "id": "K2B2B-V3",
+      "judul": "Urai Satu Puluhan: 12 − 8",
+      "subjudul": "Saat satuan tidak cukup",
+      "adegan": [
         {
-          id: "K2B2B-V3-1",
-          judul: "Tika memberi jambu",
-          ketukan: [
+          "id": "K2B2B-V3-1",
+          "judul": "Tika memberi jambu",
+          "ketukan": [
             "Tika memiliki 12 jambu air.",
             "Tika memberikan 8 jambu air kepada Lili.",
             "Berapakah sisa jambu air milik Tika?",
-            "Kita tulis 12 dikurangi 8, dengan 12 di atas.",
+            "Kita tulis 12 dikurangi 8, dengan 12 di atas."
           ],
-          papan: ["Tika: 12 jambu", "Diberi ke Lili: 8", "Sisa = ?", "12 − 8 = ?"],
+          "papan": [
+            "Tika: 12 jambu",
+            "Diberi ke Lili: 8",
+            "Sisa = ?",
+            "12 − 8 = ?"
+          ]
         },
         {
-          id: "K2B2B-V3-2",
-          judul: "Urai dan kurangi",
-          ketukan: [
+          "id": "K2B2B-V3-2",
+          "judul": "Urai dan kurangi",
+          "ketukan": [
             "Satuan pada 12 hanya 2. 2 dikurangi 8 tidak cukup.",
             "Kita urai 1 puluhan menjadi 10 satuan.",
             "Sekarang ada 2 ditambah 10, yaitu 12 satuan.",
             "Kurangkan 12 satuan dengan 8 satuan. Hasilnya 4 satuan.",
             "Puluhan tinggal 0, karena 1 puluhan sudah diurai.",
-            "Jadi sisa jambu air Tika adalah 4 buah.",
+            "Jadi sisa jambu air Tika adalah 4 buah."
           ],
-          papan: ["2 − 8 tidak cukup", "Urai 1 puluhan", "2 + 10 = 12 satuan", "12 − 8 = 4", "Puluhan: 0", "Sisa: 4"],
+          "papan": [
+            "2 − 8 tidak cukup",
+            "Urai 1 puluhan",
+            "2 + 10 = 12 satuan",
+            "12 − 8 = 4",
+            "Puluhan: 0",
+            "Sisa: 4"
+          ]
         },
         {
-          id: "K2B2B-V3-3",
-          judul: "Periksa dengan penjumlahan",
-          ketukan: [
+          "id": "K2B2B-V3-3",
+          "judul": "Periksa dengan penjumlahan",
+          "ketukan": [
             "Kita bisa memeriksa hasil pengurangan dengan penjumlahan.",
             "4 ditambah 8 sama dengan 12. Cocok dengan jambu air Tika semula!",
             "Kalau tidak cocok, hitung ulang pelan-pelan.",
+            "METODE LUAR. Meminjam: Buka satu puluhan jadi sepuluh satuan."
           ],
-          papan: ["Periksa dengan tambah", "4 + 8 = 12 ✔", "Tidak cocok? Hitung ulang"],
-        },
-      ],
-    },
+          "papan": [
+            "Periksa dengan tambah",
+            "4 + 8 = 12 ✔",
+            "Tidak cocok? Hitung ulang",
+            "METODE LUAR · Meminjam"
+          ]
+        }
+      ]
+    }
   ],
-  mindMaps: [
+  "mindMaps": [
     {
-      stepNumber: 1,
-      stepTitle: "1. Kapan Kita Mengurangi?",
-      stepDesc:
-        "Kita mengurangi saat benda berkurang atau diberikan, dan saat kita mencari selisih dua kelompok. Tika punya 12 jambu air dan Kira punya 18. Kalau dipasangkan satu-satu, jambu Kira yang tidak berpasangan adalah selisihnya. Selisih dicari dengan mengurangkan bilangan besar dengan bilangan kecil: 18 dikurangi 12.",
-      icon: "🍎",
-      flowFrom: "Cerita pengurangan",
-      flowTo: "Hitung mundur",
+      "stepNumber": 1,
+      "stepTitle": "1. Kapan Kita Mengurangi?",
+      "stepDesc": "Kita mengurangi saat benda berkurang atau diberikan, dan saat kita mencari selisih dua kelompok. Tika punya 12 jambu air dan Kira punya 18. Kalau dipasangkan satu-satu, jambu Kira yang tidak berpasangan adalah selisihnya. Selisih dicari dengan mengurangkan bilangan besar dengan bilangan kecil: 18 dikurangi 12.",
+      "icon": "🍎",
+      "flowFrom": "Cerita pengurangan",
+      "flowTo": "Hitung mundur"
     },
     {
-      stepNumber: 2,
-      stepTitle: "2. Cara 1: Menghitung Mundur",
-      stepDesc:
-        "Berdirilah di bilangan pertama, lalu melompat ke belakang sebanyak bilangan kedua. Dari 18 melompat mundur 12 kali sampai ke 6. Tempat kita berhenti adalah hasilnya. Menghitung mundur enak bila bilangan yang dikurangkan kecil. Kalau bilangannya besar, lompatan jadi banyak dan mudah salah hitung.",
-      icon: "🐸",
-      flowFrom: "Hitung mundur",
-      flowTo: "Bersusun",
+      "stepNumber": 2,
+      "stepTitle": "2. Cara 1: Menghitung Mundur",
+      "stepDesc": "Berdirilah di bilangan pertama, lalu melompat ke belakang sebanyak bilangan kedua. Dari 18 melompat mundur 12 kali sampai ke 6. Tempat kita berhenti adalah hasilnya. Menghitung mundur enak bila bilangan yang dikurangkan kecil. Kalau bilangannya besar, lompatan jadi banyak dan mudah salah hitung.",
+      "icon": "🐸",
+      "flowFrom": "Hitung mundur",
+      "flowTo": "Bersusun"
     },
     {
-      stepNumber: 3,
-      stepTitle: "3. Cara 2: Pengurangan Bersusun",
-      stepDesc:
-        "Tulis bilangan yang besar di atas dan bilangan yang kecil di bawahnya. Satuan lurus dengan satuan. Kurangkan satuan dulu, lalu puluhan. Pada 18 dikurangi 12, satuan 8 dikurangi 2 sama dengan 6, dan puluhan 1 dikurangi 1 sama dengan 0. Hasilnya 6.",
-      icon: "📋",
-      flowFrom: "Bersusun",
-      flowTo: "Pasangan bilangan",
+      "stepNumber": 3,
+      "stepTitle": "3. Cara 2: Pengurangan Bersusun",
+      "stepDesc": "Tulis bilangan yang besar di atas dan bilangan yang kecil di bawahnya. Satuan lurus dengan satuan. Kurangkan satuan dulu, lalu puluhan. Pada 18 dikurangi 12, satuan 8 dikurangi 2 sama dengan 6, dan puluhan 1 dikurangi 1 sama dengan 0. Hasilnya 6.",
+      "icon": "📋",
+      "flowFrom": "Bersusun",
+      "flowTo": "Pasangan bilangan"
     },
     {
-      stepNumber: 4,
-      stepTitle: "4. Cara 3: Pasangan Bilangan",
-      stepDesc:
-        "Pisahkan kedua bilangan menjadi puluhan dan satuan. 18 adalah 10 dan 8. 12 adalah 10 dan 2. Kurangkan puluhan dengan puluhan: 10 dikurangi 10 sama dengan 0. Kurangkan satuan dengan satuan: 8 dikurangi 2 sama dengan 6. Gabungkan hasilnya: 0 ditambah 6 sama dengan 6.",
-      icon: "🌿",
-      flowFrom: "Pasangan bilangan",
-      flowTo: "Urai puluhan",
+      "stepNumber": 4,
+      "stepTitle": "4. Cara 3: Pasangan Bilangan",
+      "stepDesc": "Pisahkan kedua bilangan menjadi puluhan dan satuan. 18 adalah 10 dan 8. 12 adalah 10 dan 2. Kurangkan puluhan dengan puluhan: 10 dikurangi 10 sama dengan 0. Kurangkan satuan dengan satuan: 8 dikurangi 2 sama dengan 6. Gabungkan hasilnya: 0 ditambah 6 sama dengan 6.",
+      "icon": "🌿",
+      "flowFrom": "Pasangan bilangan",
+      "flowTo": "Urai puluhan"
     },
     {
-      stepNumber: 5,
-      stepTitle: "5. Urai Satu Puluhan",
-      stepDesc:
-        "Kalau satuan di atas lebih kecil daripada satuan di bawah, satuan tidak cukup. Kita urai 1 puluhan menjadi 10 satuan. Pada 12 dikurangi 8, satuan 2 ditambah 10 menjadi 12 satuan. Lalu 12 satuan dikurangi 8 satuan sama dengan 4 satuan. Puluhan tinggal 0, jadi hasilnya 4. Mengurai ini sering disebut meminjam.",
-      icon: "🧱",
-      flowFrom: "Urai puluhan",
-      flowTo: "Kapan perlu urai",
+      "stepNumber": 5,
+      "stepTitle": "5. Urai Satu Puluhan",
+      "stepDesc": "Kalau satuan di atas lebih kecil daripada satuan di bawah, satuan tidak cukup. Kita urai 1 puluhan menjadi 10 satuan. Pada 12 dikurangi 8, satuan 2 ditambah 10 menjadi 12 satuan. Lalu 12 satuan dikurangi 8 satuan sama dengan 4 satuan. Puluhan tinggal 0, jadi hasilnya 4. Mengurai ini sering disebut meminjam.",
+      "icon": "🧱",
+      "flowFrom": "Urai puluhan",
+      "flowTo": "Kapan perlu urai"
     },
     {
-      stepNumber: 6,
-      stepTitle: "6. Kapan Perlu Urai?",
-      stepDesc:
-        "Bandingkan satuan di atas dengan satuan di bawah. Kalau satuan atas lebih besar atau sama, kurangkan langsung. Kalau satuan atas lebih kecil, urai satu puluhan dulu. Contohnya 20 dikurangi 6. Satuan 0 lebih kecil dari 6, jadi 1 puluhan diurai menjadi 10 satuan, dan 10 dikurangi 6 sama dengan 4, ditambah 1 puluhan yang tersisa menjadi 14.",
-      icon: "🤔",
-      flowFrom: "Kapan perlu urai",
-      flowTo: "Periksa dengan tambah",
+      "stepNumber": 6,
+      "stepTitle": "6. Kapan Perlu Urai?",
+      "stepDesc": "Bandingkan satuan di atas dengan satuan di bawah. Kalau satuan atas lebih besar atau sama, kurangkan langsung. Kalau satuan atas lebih kecil, urai satu puluhan dulu. Contohnya 20 dikurangi 6. Satuan 0 lebih kecil dari 6, jadi 1 puluhan diurai menjadi 10 satuan, dan 10 dikurangi 6 sama dengan 4, ditambah 1 puluhan yang tersisa menjadi 14.",
+      "icon": "🤔",
+      "flowFrom": "Kapan perlu urai",
+      "flowTo": "Periksa dengan tambah"
     },
     {
-      stepNumber: 7,
-      stepTitle: "7. Periksa dengan Penjumlahan",
-      stepDesc:
-        "Penjumlahan dan pengurangan berkeluarga. Kalau 18 dikurangi 12 sama dengan 6, maka 6 ditambah 12 harus sama dengan 18. Pemeriksaan ini menangkap kesalahan hitung. Keluarga bilangan 6, 12, dan 18 punya empat kalimat: 6 ditambah 12, 12 ditambah 6, 18 dikurangi 6, dan 18 dikurangi 12.",
-      icon: "🔗",
-      flowFrom: "Periksa dengan tambah",
-      flowTo: "Tambah sampai pas",
+      "stepNumber": 7,
+      "stepTitle": "7. Periksa dengan Penjumlahan",
+      "stepDesc": "Penjumlahan dan pengurangan berkeluarga. Kalau 18 dikurangi 12 sama dengan 6, maka 6 ditambah 12 harus sama dengan 18. Pemeriksaan ini menangkap kesalahan hitung. Keluarga bilangan 6, 12, dan 18 punya empat kalimat: 6 ditambah 12, 12 ditambah 6, 18 dikurangi 6, dan 18 dikurangi 12.",
+      "icon": "🔗",
+      "flowFrom": "Periksa dengan tambah",
+      "flowTo": "Tambah sampai pas"
     },
     {
-      stepNumber: 8,
-      stepTitle: "8. Tambah Sampai Pas",
-      stepDesc:
-        "Ada cara pengurangan lain yang dipakai pedagang saat memberi kembalian, yaitu menghitung maju dari bilangan kecil sampai bilangan besar. Untuk 18 dikurangi 12, mulai dari 12 lalu tambah satu demi satu sampai 18. Tambahannya 6, jadi selisihnya 6. Pilih cara yang paling mudah untukmu, dan jelaskan alasannya.",
-      icon: "🛒",
-      flowFrom: "Tambah sampai pas",
-      flowTo: "Pengurangan siap dipakai",
+      "stepNumber": 8,
+      "stepTitle": "8. Tambah Sampai Pas",
+      "stepDesc": "Ada cara pengurangan lain yang dipakai pedagang saat memberi kembalian, yaitu menghitung maju dari bilangan kecil sampai bilangan besar. Untuk 18 dikurangi 12, mulai dari 12 lalu tambah satu demi satu sampai 18. Tambahannya 6, jadi selisihnya 6. Pilih cara yang paling mudah untukmu, dan jelaskan alasannya.",
+      "icon": "🛒",
+      "flowFrom": "Tambah sampai pas",
+      "flowTo": "9"
     },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Menghitung Naik",
+      "stepDesc": "Naik dari yang dikurangi sampai bilangan awal.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Mengambil",
+      "stepDesc": "Ambil sebagian dari kumpulan.",
+      "icon": "🌍",
+      "flowFrom": "9",
+      "flowTo": "END"
+    }
   ],
-  infografis: [
+  "infografis": [
     {
-      judul: "Selisih Jambu Air Tika dan Kira",
-      emoji: "🍎",
-      countNum: 6,
-      countWord: "Enam",
-      suara:
-        "Tika punya dua belas jambu air. Kira punya delapan belas jambu air. Kita pasangkan jambunya satu-satu. Jambu Kira yang tidak berpasangan ada enam. Jadi selisih jambu air Kira dan Tika adalah enam. Selisih dicari dengan pengurangan: delapan belas dikurangi dua belas.",
+      "judul": "Selisih Jambu Air Tika dan Kira",
+      "emoji": "🍎",
+      "countNum": 6,
+      "countWord": "Enam",
+      "suara": "Tika punya dua belas jambu air. Kira punya delapan belas jambu air. Kita pasangkan jambunya satu-satu. Jambu Kira yang tidak berpasangan ada enam. Jadi selisih jambu air Kira dan Tika adalah enam. Selisih dicari dengan pengurangan: delapan belas dikurangi dua belas."
     },
     {
-      judul: "Cara 1: Menghitung Mundur",
-      emoji: "🐸",
-      countNum: 6,
-      countWord: "Enam",
-      suara:
-        "Dari bilangan delapan belas, kita melompat ke belakang sebanyak dua belas lompatan: tujuh belas, enam belas, lima belas, dan seterusnya sampai enam. Kita berhenti di enam. Jadi delapan belas dikurangi dua belas sama dengan enam.",
+      "judul": "Cara 1: Menghitung Mundur",
+      "emoji": "🐸",
+      "countNum": 6,
+      "countWord": "Enam",
+      "suara": "Dari bilangan delapan belas, kita melompat ke belakang sebanyak dua belas lompatan: tujuh belas, enam belas, lima belas, dan seterusnya sampai enam. Kita berhenti di enam. Jadi delapan belas dikurangi dua belas sama dengan enam."
     },
     {
-      judul: "Cara 2: Pengurangan Bersusun",
-      emoji: "📋",
-      countNum: 6,
-      countWord: "Enam",
-      suara:
-        "Tuliskan delapan belas di atas, dua belas di bawahnya. Satuan lurus dengan satuan. Kurangkan satuan: delapan dikurangi dua sama dengan enam. Kurangkan puluhan: satu dikurangi satu sama dengan nol. Hasilnya enam.",
+      "judul": "Cara 2: Pengurangan Bersusun",
+      "emoji": "📋",
+      "countNum": 6,
+      "countWord": "Enam",
+      "suara": "Tuliskan delapan belas di atas, dua belas di bawahnya. Satuan lurus dengan satuan. Kurangkan satuan: delapan dikurangi dua sama dengan enam. Kurangkan puluhan: satu dikurangi satu sama dengan nol. Hasilnya enam."
     },
     {
-      judul: "Cara 3: Pasangan Bilangan",
-      emoji: "🌿",
-      countNum: 6,
-      countWord: "Enam",
-      suara:
-        "Delapan belas adalah sepuluh dan delapan. Dua belas adalah sepuluh dan dua. Sepuluh dikurangi sepuluh sama dengan nol. Delapan dikurangi dua sama dengan enam. Jadi delapan belas dikurangi dua belas sama dengan enam.",
+      "judul": "Cara 3: Pasangan Bilangan",
+      "emoji": "🌿",
+      "countNum": 6,
+      "countWord": "Enam",
+      "suara": "Delapan belas adalah sepuluh dan delapan. Dua belas adalah sepuluh dan dua. Sepuluh dikurangi sepuluh sama dengan nol. Delapan dikurangi dua sama dengan enam. Jadi delapan belas dikurangi dua belas sama dengan enam."
     },
     {
-      judul: "Tiga Cara, Satu Hasil",
-      emoji: "⚖️",
-      countNum: 6,
-      countWord: "Enam",
-      suara:
-        "Menghitung mundur dari delapan belas sebanyak dua belas kali sampai enam. Bersusun: delapan dikurangi dua sama dengan enam, satu dikurangi satu sama dengan nol. Pasangan bilangan: sepuluh dikurangi sepuluh sama dengan nol, delapan dikurangi dua sama dengan enam. Ketiganya sama, yaitu enam.",
+      "judul": "Tiga Cara, Satu Hasil",
+      "emoji": "⚖️",
+      "countNum": 6,
+      "countWord": "Enam",
+      "suara": "Menghitung mundur dari delapan belas sebanyak dua belas kali sampai enam. Bersusun: delapan dikurangi dua sama dengan enam, satu dikurangi satu sama dengan nol. Pasangan bilangan: sepuluh dikurangi sepuluh sama dengan nol, delapan dikurangi dua sama dengan enam. Ketiganya sama, yaitu enam."
     },
     {
-      judul: "Urai Satu Puluhan: 12 − 8",
-      emoji: "🧱",
-      countNum: 4,
-      countWord: "Empat",
-      suara:
-        "Tika punya dua belas jambu air dan memberikan delapan kepada Lili. Satuan dua dikurangi delapan tidak cukup. Kita urai satu puluhan menjadi sepuluh satuan. Sekarang ada dua belas satuan. Dua belas satuan dikurangi delapan satuan sama dengan empat satuan. Puluhan tinggal nol. Sisanya empat.",
+      "judul": "Urai Satu Puluhan: 12 − 8",
+      "emoji": "🧱",
+      "countNum": 4,
+      "countWord": "Empat",
+      "suara": "Tika punya dua belas jambu air dan memberikan delapan kepada Lili. Satuan dua dikurangi delapan tidak cukup. Kita urai satu puluhan menjadi sepuluh satuan. Sekarang ada dua belas satuan. Dua belas satuan dikurangi delapan satuan sama dengan empat satuan. Puluhan tinggal nol. Sisanya empat."
     },
     {
-      judul: "Kapan Harus Diurai?",
-      emoji: "🤔",
-      countNum: 14,
-      countWord: "Empat belas",
-      suara:
-        "Lihat satuan di atas dan satuan di bawah. Kalau satuan atas lebih besar atau sama, langsung kurangkan, seperti delapan belas dikurangi dua belas. Kalau satuan atas lebih kecil, urai dulu satu puluhan, seperti dua belas dikurangi delapan. Dua puluh dikurangi enam juga perlu diurai, hasilnya empat belas.",
+      "judul": "Kapan Harus Diurai?",
+      "emoji": "🤔",
+      "countNum": 14,
+      "countWord": "Empat belas",
+      "suara": "Lihat satuan di atas dan satuan di bawah. Kalau satuan atas lebih besar atau sama, langsung kurangkan, seperti delapan belas dikurangi dua belas. Kalau satuan atas lebih kecil, urai dulu satu puluhan, seperti dua belas dikurangi delapan. Dua puluh dikurangi enam juga perlu diurai, hasilnya empat belas."
     },
     {
-      judul: "Keluarga Bilangan 6, 12, 18",
-      emoji: "🔗",
-      countNum: 18,
-      countWord: "Delapan belas",
-      suara:
-        "Enam, dua belas, dan delapan belas berkeluarga. Enam ditambah dua belas sama dengan delapan belas. Dua belas ditambah enam sama dengan delapan belas. Delapan belas dikurangi enam sama dengan dua belas. Delapan belas dikurangi dua belas sama dengan enam. Gunakan penjumlahan untuk memeriksa pengurangan.",
+      "judul": "Keluarga Bilangan 6, 12, 18",
+      "emoji": "🔗",
+      "countNum": 18,
+      "countWord": "Delapan belas",
+      "suara": "Enam, dua belas, dan delapan belas berkeluarga. Enam ditambah dua belas sama dengan delapan belas. Dua belas ditambah enam sama dengan delapan belas. Delapan belas dikurangi enam sama dengan dua belas. Delapan belas dikurangi dua belas sama dengan enam. Gunakan penjumlahan untuk memeriksa pengurangan."
     },
     {
-      judul: "Tambah Sampai Pas",
-      emoji: "🛒",
-      countNum: 6,
-      countWord: "Enam",
-      suara:
-        "Pedagang memberi kembalian dengan menghitung maju. Untuk delapan belas dikurangi dua belas, mulai dari dua belas lalu tambah satu demi satu sampai delapan belas. Ada enam tambahan. Jadi selisihnya enam. Cara ini membantu bila kedua bilangan berdekatan.",
+      "judul": "Tambah Sampai Pas",
+      "emoji": "🛒",
+      "countNum": 6,
+      "countWord": "Enam",
+      "suara": "Pedagang memberi kembalian dengan menghitung maju. Untuk delapan belas dikurangi dua belas, mulai dari dua belas lalu tambah satu demi satu sampai delapan belas. Ada enam tambahan. Jadi selisihnya enam. Cara ini membantu bila kedua bilangan berdekatan."
     },
     {
-      judul: "Pilih Cara yang Paling Mudah",
-      emoji: "🧭",
-      countNum: 3,
-      countWord: "Tiga",
-      suara:
-        "Pilih cara yang paling mudah untukmu. Hitung mundur bila bilangan yang dikurangkan kecil. Bersusun bila kamu ingin rapi. Pasangan bilangan bila kedua bilangan mudah dipisah. Tambah sampai pas bila kedua bilangan berdekatan. Lalu periksa dengan penjumlahan.",
+      "judul": "Pilih Cara yang Paling Mudah",
+      "emoji": "🧭",
+      "countNum": 3,
+      "countWord": "Tiga",
+      "suara": "Pilih cara yang paling mudah untukmu. Hitung mundur bila bilangan yang dikurangkan kecil. Bersusun bila kamu ingin rapi. Pasangan bilangan bila kedua bilangan mudah dipisah. Tambah sampai pas bila kedua bilangan berdekatan. Lalu periksa dengan penjumlahan."
     },
+    {
+      "judul": "Menghitung Naik",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Counting Up",
+      "suara": "METODE LUAR. Menghitung Naik. Naik dari yang dikurangi sampai bilangan awal."
+    },
+    {
+      "judul": "Mengambil",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Take Away",
+      "suara": "METODE LUAR. Mengambil. Ambil sebagian dari kumpulan."
+    },
+    {
+      "judul": "Meminjam",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Regroup Borrow",
+      "suara": "METODE LUAR. Meminjam. Buka satu puluhan jadi sepuluh satuan."
+    }
   ],
-  games: [
+  "games": [
     {
-      stage: "Concrete",
-      gameType: "drag-take-away",
-      title: "Beri Jambu ke Lili",
-      bookReference: "hlm. 49–50 (Tika memberikan jambu air kepada Lili); hlm. 52 (Ayo Berlatih nomor 1: 15 − 4, 19 − 8)",
-      objective: "Mengurangkan dengan mengambil benda satu per satu sambil menghitung mundur.",
-      mechanicDescription:
-        "Tiga ronde (15 beri 4, 19 beri 8, dan 18 beri 6). Siswa menyeret atau mengetuk jambu dari keranjang Tika ke piring Lili satu per satu. Tiap jambu pergi, Suara Guru menyebut sisanya. Setelah cukup, siswa memilih sisa jambu. Terakhir ucapkan sisanya.",
-      voiceGuide: "Seret jambu ke piring Lili, hitung mundur, lalu pilih sisanya.",
-      emoji: "🍎",
-      targetCount: 19,
+      "stage": "Concrete",
+      "gameType": "drag-take-away",
+      "title": "Beri Jambu ke Lili",
+      "bookReference": "hlm. 49–50 (Tika memberikan jambu air kepada Lili); hlm. 52 (Ayo Berlatih nomor 1: 15 − 4, 19 − 8)",
+      "objective": "Mengurangkan dengan mengambil benda satu per satu sambil menghitung mundur. (METODE LUAR · Menghitung Naik)",
+      "mechanicDescription": "Tiga ronde (15 beri 4, 19 beri 8, dan 18 beri 6). Siswa menyeret atau mengetuk jambu dari keranjang Tika ke piring Lili satu per satu. Tiap jambu pergi, Suara Guru menyebut sisanya. Setelah cukup, siswa memilih sisa jambu. Terakhir ucapkan sisanya.",
+      "voiceGuide": "METODE LUAR · Menghitung Naik. Seret jambu ke piring Lili, hitung mundur, lalu pilih sisanya.",
+      "emoji": "🍎",
+      "targetCount": 19
     },
     {
-      stage: "Concrete",
-      gameType: "pair-to-find-difference",
-      title: "Pasangkan Selisih",
-      bookReference: "hlm. 48 (Tika 12 jambu air, Kira 18 jambu air: berapa selisihnya?)",
-      objective: "Mencari selisih dengan memasangkan dua kelompok benda satu-satu dan menghitung yang tidak berpasangan.",
-      mechanicDescription:
-        "Tiga ronde (18 dan 12, 15 dan 9, 17 dan 13). Siswa mengetuk jambu kelompok kecil agar berpasangan dengan jambu kelompok besar, atau menekan Pasangkan sepuluh bila kedua kelompok punya sepuluh. Jambu yang tidak berpasangan menyala. Lalu siswa memilih selisihnya.",
-      voiceGuide: "Pasangkan jambu satu-satu, lalu hitung yang tidak berpasangan.",
-      emoji: "🔗",
-      targetCount: 18,
+      "stage": "Concrete",
+      "gameType": "pair-to-find-difference",
+      "title": "Pasangkan Selisih",
+      "bookReference": "hlm. 48 (Tika 12 jambu air, Kira 18 jambu air: berapa selisihnya?)",
+      "objective": "Mencari selisih dengan memasangkan dua kelompok benda satu-satu dan menghitung yang tidak berpasangan.",
+      "mechanicDescription": "Tiga ronde (18 dan 12, 15 dan 9, 17 dan 13). Siswa mengetuk jambu kelompok kecil agar berpasangan dengan jambu kelompok besar, atau menekan Pasangkan sepuluh bila kedua kelompok punya sepuluh. Jambu yang tidak berpasangan menyala. Lalu siswa memilih selisihnya.",
+      "voiceGuide": "Pasangkan jambu satu-satu, lalu hitung yang tidak berpasangan.",
+      "emoji": "🔗",
+      "targetCount": 18
     },
     {
-      stage: "Concrete",
-      gameType: "regroup-borrow",
-      title: "Urai Satu Puluhan",
-      bookReference: "hlm. 49–50 (Tika memberikan 8 jambu air; 2 dikurang 8 tidak cukup; urai 1 puluhan menjadi 10 satuan)",
-      objective: "Mengurai satu puluhan menjadi sepuluh satuan saat satuan tidak cukup untuk dikurangi.",
-      mechanicDescription:
-        "Tiga ronde (12 − 8, 13 − 5, dan 16 − 4). Papan berisi batang puluhan dan kubus satuan. Siswa memberikan kubus kepada Lili satu per satu. Bila satuan tidak cukup, tombol Urai membuka satu batang menjadi sepuluh kubus. Lalu siswa memilih sisanya. Terakhir ucapkan sisanya.",
-      voiceGuide: "Beri kubus ke Lili, urai satu puluhan bila satuan tidak cukup.",
-      emoji: "🧱",
-      targetCount: 16,
+      "stage": "Concrete",
+      "gameType": "regroup-borrow",
+      "title": "Urai Satu Puluhan",
+      "bookReference": "hlm. 49–50 (Tika memberikan 8 jambu air; 2 dikurang 8 tidak cukup; urai 1 puluhan menjadi 10 satuan)",
+      "objective": "Mengurai satu puluhan menjadi sepuluh satuan saat satuan tidak cukup untuk dikurangi.",
+      "mechanicDescription": "Tiga ronde (12 − 8, 13 − 5, dan 16 − 4). Papan berisi batang puluhan dan kubus satuan. Siswa memberikan kubus kepada Lili satu per satu. Bila satuan tidak cukup, tombol Urai membuka satu batang menjadi sepuluh kubus. Lalu siswa memilih sisanya. Terakhir ucapkan sisanya.",
+      "voiceGuide": "Beri kubus ke Lili, urai satu puluhan bila satuan tidak cukup.",
+      "emoji": "🧱",
+      "targetCount": 16
     },
     {
-      stage: "Concrete",
-      gameType: "count-up-to-target",
-      title: "Tambah Sampai Pas",
-      bookReference: "hlm. 48 (selisih jambu Tika dan Kira), diperkaya metode menghitung maju untuk pengurangan",
-      objective: "Menemukan selisih dengan menambah benda dari bilangan kecil sampai tepat sama dengan bilangan besar.",
-      mechanicDescription:
-        "Tiga ronde (12 ke 18, 9 ke 15, dan 14 ke 20). Keranjang kecil berisi jambu, keranjang besar menunjukkan bayangan target. Siswa menekan Tambah satu jambu sampai keranjang pas, lalu memilih berapa kali menambah. Banyak tambahan sama dengan selisih. Terakhir ucapkan selisihnya.",
-      voiceGuide: "Tambah jambu satu per satu sampai keranjang pas.",
-      emoji: "🛒",
-      targetCount: 20,
+      "stage": "Concrete",
+      "gameType": "count-up-to-target",
+      "title": "Tambah Sampai Pas",
+      "bookReference": "hlm. 48 (selisih jambu Tika dan Kira), diperkaya metode menghitung maju untuk pengurangan",
+      "objective": "Menemukan selisih dengan menambah benda dari bilangan kecil sampai tepat sama dengan bilangan besar.",
+      "mechanicDescription": "Tiga ronde (12 ke 18, 9 ke 15, dan 14 ke 20). Keranjang kecil berisi jambu, keranjang besar menunjukkan bayangan target. Siswa menekan Tambah satu jambu sampai keranjang pas, lalu memilih berapa kali menambah. Banyak tambahan sama dengan selisih. Terakhir ucapkan selisihnya.",
+      "voiceGuide": "Tambah jambu satu per satu sampai keranjang pas.",
+      "emoji": "🛒",
+      "targetCount": 20
     },
     {
-      stage: "Picture",
-      gameType: "hop-back-on-number-strip",
-      title: "Loncat Mundur di Jalur Bilangan",
-      bookReference: "hlm. 48 dan 52 (Cara 1: menghitung mundur; Ayo Berlatih nomor 1: 12 − 6, 18 − 8, 15 − 4, 19 − 8, 20 − 6)",
-      objective: "Menghitung mundur di jalur bilangan dengan melompat ke belakang sebanyak bilangan yang dikurangkan.",
-      mechanicDescription:
-        "Tiga ronde (12 − 6, 15 − 4, dan 20 − 6). Jalur bilangan 5 sampai 20. Siswa mengetuk kotak sebelumnya satu per satu sehingga busur lompatan tergambar, lalu menekan Berhenti. Banyak lompatan harus sama dengan bilangan yang dikurangkan. Terakhir ucapkan hasilnya.",
-      voiceGuide: "Ketuk kotak sebelumnya sebanyak bilangan pengurang, lalu berhenti.",
-      diagramType: "number-strip-hops-back",
-      numberA: 20,
-      numberB: 6,
+      "stage": "Picture",
+      "gameType": "hop-back-on-number-strip",
+      "title": "Loncat Mundur di Jalur Bilangan",
+      "bookReference": "hlm. 48 dan 52 (Cara 1: menghitung mundur; Ayo Berlatih nomor 1: 12 − 6, 18 − 8, 15 − 4, 19 − 8, 20 − 6)",
+      "objective": "Menghitung mundur di jalur bilangan dengan melompat ke belakang sebanyak bilangan yang dikurangkan.",
+      "mechanicDescription": "Tiga ronde (12 − 6, 15 − 4, dan 20 − 6). Jalur bilangan 5 sampai 20. Siswa mengetuk kotak sebelumnya satu per satu sehingga busur lompatan tergambar, lalu menekan Berhenti. Banyak lompatan harus sama dengan bilangan yang dikurangkan. Terakhir ucapkan hasilnya.",
+      "voiceGuide": "Ketuk kotak sebelumnya sebanyak bilangan pengurang, lalu berhenti.",
+      "diagramType": "number-strip-hops-back",
+      "numberA": 20,
+      "numberB": 6
     },
     {
-      stage: "Picture",
-      gameType: "vertical-subtraction-table",
-      title: "Susun Kurang",
-      bookReference: "hlm. 49–50 dan 52 (Cara 2: pengurangan bersusun; Ayo Berlatih nomor 2: 14 − 3, 13 − 5, 13 − 7, 16 − 2)",
-      objective: "Mengurangkan dengan cara bersusun pada tabel nilai tempat, termasuk mengurai satu puluhan.",
-      mechanicDescription:
-        "Tiga ronde (14 − 3, 13 − 5, dan 13 − 7). Siswa meletakkan bilangan pengurang di kolom satuan, mengurai satu puluhan bila satuan tidak cukup, lalu mengurangkan satuan dan puluhan. Angka soal biru, angka jawaban hijau, catatan urai merah kecil.",
-      voiceGuide: "Susun, urai bila perlu, lalu kurangkan satuan dan puluhan.",
-      diagramType: "place-value-vertical-minus",
-      numberA: 14,
-      numberB: 7,
+      "stage": "Picture",
+      "gameType": "vertical-subtraction-table",
+      "title": "Susun Kurang",
+      "bookReference": "hlm. 49–50 dan 52 (Cara 2: pengurangan bersusun; Ayo Berlatih nomor 2: 14 − 3, 13 − 5, 13 − 7, 16 − 2)",
+      "objective": "Mengurangkan dengan cara bersusun pada tabel nilai tempat, termasuk mengurai satu puluhan.",
+      "mechanicDescription": "Tiga ronde (14 − 3, 13 − 5, dan 13 − 7). Siswa meletakkan bilangan pengurang di kolom satuan, mengurai satu puluhan bila satuan tidak cukup, lalu mengurangkan satuan dan puluhan. Angka soal biru, angka jawaban hijau, catatan urai merah kecil.",
+      "voiceGuide": "Susun, urai bila perlu, lalu kurangkan satuan dan puluhan.",
+      "diagramType": "place-value-vertical-minus",
+      "numberA": 14,
+      "numberB": 7
     },
     {
-      stage: "Picture",
-      gameType: "fill-number-bond-minus",
-      title: "Bagan Pasangan Kurang",
-      bookReference: "hlm. 51 dan 53 (Cara 3: pasangan bilangan; Ayo Berlatih nomor 3: 19 − 15, 17 − 12, 16 − 12)",
-      objective: "Mengurangkan dengan memisahkan kedua bilangan menjadi sepuluh dan satuannya.",
-      mechanicDescription:
-        "Tiga ronde (19 − 15, 17 − 12, dan 16 − 12). Tiap ronde punya lima langkah: memisah bilangan pertama, memisah bilangan kedua, mengurangkan sepuluh dengan sepuluh, mengurangkan satuan dengan satuan, lalu menuliskan hasilnya.",
-      voiceGuide: "Pisahkan kedua bilangan, kurangkan sepuluh dan satuannya.",
-      diagramType: "number-bond-minus-steps",
-      numberA: 19,
-      numberB: 15,
+      "stage": "Picture",
+      "gameType": "fill-number-bond-minus",
+      "title": "Bagan Pasangan Kurang",
+      "bookReference": "hlm. 51 dan 53 (Cara 3: pasangan bilangan; Ayo Berlatih nomor 3: 19 − 15, 17 − 12, 16 − 12)",
+      "objective": "Mengurangkan dengan memisahkan kedua bilangan menjadi sepuluh dan satuannya.",
+      "mechanicDescription": "Tiga ronde (19 − 15, 17 − 12, dan 16 − 12). Tiap ronde punya lima langkah: memisah bilangan pertama, memisah bilangan kedua, mengurangkan sepuluh dengan sepuluh, mengurangkan satuan dengan satuan, lalu menuliskan hasilnya.",
+      "voiceGuide": "Pisahkan kedua bilangan, kurangkan sepuluh dan satuannya.",
+      "diagramType": "number-bond-minus-steps",
+      "numberA": 19,
+      "numberB": 15
     },
     {
-      stage: "Abstract",
-      gameType: "sort-borrow-or-not",
-      title: "Perlu Urai atau Tidak?",
-      bookReference: "hlm. 49–50 (kapan satuan tidak cukup) dan hlm. 52–53 (Ayo Berlatih nomor 1 sampai 4)",
-      objective: "Menentukan kalimat pengurangan yang cukup dikurangkan langsung dan yang perlu mengurai satu puluhan.",
-      mechanicDescription:
-        "Dua ronde, masing-masing lima kartu pengurangan (18 − 12, 15 − 4, 12 − 8, 13 − 5, 19 − 8; lalu 20 − 6, 17 − 5, 16 − 9, 14 − 3, 11 − 7). Siswa mengetuk kartu lalu kotak Langsung atau Urai dulu. Bandingkan satuan atas dengan satuan bawah.",
-      voiceGuide: "Bandingkan satuan atas dan bawah, lalu tentukan perlu urai atau tidak.",
-      symbolLarge: "12 − 8",
-      wordLarge: "PERLU URAI?",
-      mathNotation: "2 < 8, satuan tidak cukup",
+      "stage": "Abstract",
+      "gameType": "sort-borrow-or-not",
+      "title": "Perlu Urai atau Tidak?",
+      "bookReference": "hlm. 49–50 (kapan satuan tidak cukup) dan hlm. 52–53 (Ayo Berlatih nomor 1 sampai 4)",
+      "objective": "Menentukan kalimat pengurangan yang cukup dikurangkan langsung dan yang perlu mengurai satu puluhan.",
+      "mechanicDescription": "Dua ronde, masing-masing lima kartu pengurangan (18 − 12, 15 − 4, 12 − 8, 13 − 5, 19 − 8; lalu 20 − 6, 17 − 5, 16 − 9, 14 − 3, 11 − 7). Siswa mengetuk kartu lalu kotak Langsung atau Urai dulu. Bandingkan satuan atas dengan satuan bawah.",
+      "voiceGuide": "Bandingkan satuan atas dan bawah, lalu tentukan perlu urai atau tidak.",
+      "symbolLarge": "12 − 8",
+      "wordLarge": "PERLU URAI?",
+      "mathNotation": "2 < 8, satuan tidak cukup"
     },
     {
-      stage: "Abstract",
-      gameType: "fact-family-fill",
-      title: "Keluarga Bilangan",
-      bookReference: "hlm. 51 dan 53 (pengurangan dan penjumlahan berkaitan: 18 − 12 = 6), diperkaya keluarga fakta",
-      objective: "Menuliskan empat kalimat tambah dan kurang dari satu keluarga tiga bilangan.",
-      mechanicDescription:
-        "Tiga ronde (6, 12, 18; 4, 9, 13; dan 8, 11, 19). Tiap ronde punya empat kalimat dengan satu bagian kosong. Siswa mengetuk bilangan keluarga yang tepat untuk mengisinya, lalu melihat segitiga keluarga lengkap.",
-      voiceGuide: "Isi bagian yang kosong dengan bilangan dari keluarga.",
-      symbolLarge: "6 + 12 = 18",
-      wordLarge: "KELUARGA BILANGAN",
-      mathNotation: "18 − 6 = 12 • 18 − 12 = 6",
+      "stage": "Abstract",
+      "gameType": "fact-family-fill",
+      "title": "Keluarga Bilangan",
+      "bookReference": "hlm. 51 dan 53 (pengurangan dan penjumlahan berkaitan: 18 − 12 = 6), diperkaya keluarga fakta",
+      "objective": "Menuliskan empat kalimat tambah dan kurang dari satu keluarga tiga bilangan.",
+      "mechanicDescription": "Tiga ronde (6, 12, 18; 4, 9, 13; dan 8, 11, 19). Tiap ronde punya empat kalimat dengan satu bagian kosong. Siswa mengetuk bilangan keluarga yang tepat untuk mengisinya, lalu melihat segitiga keluarga lengkap.",
+      "voiceGuide": "Isi bagian yang kosong dengan bilangan dari keluarga.",
+      "symbolLarge": "6 + 12 = 18",
+      "wordLarge": "KELUARGA BILANGAN",
+      "mathNotation": "18 − 6 = 12 • 18 − 12 = 6"
     },
     {
-      stage: "Abstract",
-      gameType: "clue-detective-minus",
-      title: "Detektif Pengurangan",
-      bookReference: "hlm. 48–53 (selisih dan sisa), diperkaya soal petunjuk bilangan misterius",
-      objective: "Menemukan bilangan dari dua petunjuk yang memakai kata dikurangi, selisih, dan sisa.",
-      mechanicDescription:
-        "Empat ronde, tiap ronde dua petunjuk. Siswa memilih bilangan yang cocok dengan semua petunjuk. Petunjuk dibacakan Suara Guru. Terakhir ucapkan bilangan itu.",
-      voiceGuide: "Baca petunjuk, lalu pilih bilangannya.",
-      symbolLarge: "? − 5 = 12",
-      wordLarge: "DETEKTIF",
-      mathNotation: "dua petunjuk, satu bilangan",
-    },
+      "stage": "Abstract",
+      "gameType": "clue-detective-minus",
+      "title": "Detektif Pengurangan",
+      "bookReference": "hlm. 48–53 (selisih dan sisa), diperkaya soal petunjuk bilangan misterius",
+      "objective": "Menemukan bilangan dari dua petunjuk yang memakai kata dikurangi, selisih, dan sisa.",
+      "mechanicDescription": "Empat ronde, tiap ronde dua petunjuk. Siswa memilih bilangan yang cocok dengan semua petunjuk. Petunjuk dibacakan Suara Guru. Terakhir ucapkan bilangan itu.",
+      "voiceGuide": "Baca petunjuk, lalu pilih bilangannya.",
+      "symbolLarge": "? − 5 = 12",
+      "wordLarge": "DETEKTIF",
+      "mathNotation": "dua petunjuk, satu bilangan"
+    }
   ],
-  poin: [
+  "poin": [
     {
-      ikon: "🔗",
-      nama: "Selisih",
-      isi: "pasangkan satu-satu, yang tersisa = selisih",
-      suara: "Selisih adalah beda banyaknya dua kelompok. Pasangkan benda satu-satu. Benda yang tidak berpasangan menunjukkan selisihnya. Delapan belas dan dua belas berselisih enam.",
+      "ikon": "🔗",
+      "nama": "Selisih",
+      "isi": "pasangkan satu-satu, yang tersisa = selisih",
+      "suara": "Selisih adalah beda banyaknya dua kelompok. Pasangkan benda satu-satu. Benda yang tidak berpasangan menunjukkan selisihnya. Delapan belas dan dua belas berselisih enam."
     },
     {
-      ikon: "🐸",
-      nama: "Hitung mundur",
-      isi: "18 − 12: 17, 16, 15 ... 6",
-      suara: "Menghitung mundur. Mulai dari bilangan pertama, lalu melompat ke belakang sebanyak bilangan kedua. Delapan belas mundur dua belas kali sampai enam.",
+      "ikon": "🐸",
+      "nama": "Hitung mundur",
+      "isi": "18 − 12: 17, 16, 15 ... 6",
+      "suara": "Menghitung mundur. Mulai dari bilangan pertama, lalu melompat ke belakang sebanyak bilangan kedua. Delapan belas mundur dua belas kali sampai enam."
     },
     {
-      ikon: "📋",
-      nama: "Bersusun",
-      isi: "satuan dulu, lalu puluhan",
-      suara: "Pengurangan bersusun. Bilangan besar di atas. Kurangkan satuan dulu, lalu puluhan. Delapan dikurangi dua sama dengan enam. Satu dikurangi satu sama dengan nol. Hasilnya enam.",
+      "ikon": "📋",
+      "nama": "Bersusun",
+      "isi": "satuan dulu, lalu puluhan",
+      "suara": "Pengurangan bersusun. Bilangan besar di atas. Kurangkan satuan dulu, lalu puluhan. Delapan dikurangi dua sama dengan enam. Satu dikurangi satu sama dengan nol. Hasilnya enam."
     },
     {
-      ikon: "🧱",
-      nama: "Urai satu puluhan",
-      isi: "1 puluhan = 10 satuan",
-      suara: "Kalau satuan tidak cukup, urai satu puluhan menjadi sepuluh satuan. Dua belas dikurangi delapan: dua ditambah sepuluh sama dengan dua belas satuan, dikurangi delapan sama dengan empat.",
+      "ikon": "🧱",
+      "nama": "Urai satu puluhan",
+      "isi": "1 puluhan = 10 satuan",
+      "suara": "Kalau satuan tidak cukup, urai satu puluhan menjadi sepuluh satuan. Dua belas dikurangi delapan: dua ditambah sepuluh sama dengan dua belas satuan, dikurangi delapan sama dengan empat."
     },
     {
-      ikon: "🔗",
-      nama: "Periksa dengan tambah",
-      isi: "4 + 8 = 12, cocok",
-      suara: "Periksa hasil pengurangan dengan penjumlahan. Kalau dua belas dikurangi delapan sama dengan empat, maka empat ditambah delapan harus sama dengan dua belas.",
+      "ikon": "🔗",
+      "nama": "Periksa dengan tambah",
+      "isi": "4 + 8 = 12, cocok",
+      "suara": "Periksa hasil pengurangan dengan penjumlahan. Kalau dua belas dikurangi delapan sama dengan empat, maka empat ditambah delapan harus sama dengan dua belas."
     },
+    {
+      "ikon": "🌍",
+      "nama": "Menghitung Naik",
+      "isi": "METODE LUAR · Counting Up: Naik dari yang dikurangi sampai bilangan awal. (asal: Counting up).",
+      "suara": "METODE LUAR. Menghitung Naik. Naik dari yang dikurangi sampai bilangan awal."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Mengambil",
+      "isi": "METODE LUAR · Take Away: Ambil sebagian dari kumpulan. (asal: Subtraction).",
+      "suara": "METODE LUAR. Mengambil. Ambil sebagian dari kumpulan."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Meminjam",
+      "isi": "METODE LUAR · Regroup Borrow: Buka satu puluhan jadi sepuluh satuan. (asal: Base-ten).",
+      "suara": "METODE LUAR. Meminjam. Buka satu puluhan jadi sepuluh satuan."
+    }
   ],
-  poinSuara:
-    "Ingat selalu! Selisih dicari dengan memasangkan satu-satu atau mengurangkan bilangan besar dengan bilangan kecil. Pengurangan bisa dilakukan dengan menghitung mundur, bersusun, atau pasangan bilangan. Kalau satuan tidak cukup, urai satu puluhan menjadi sepuluh satuan. Periksa hasilnya dengan penjumlahan.",
-  cara: {
-    suara: "Cara menyebutkan hasil pengurangan. Selisih banyak jambu air Kira dan Tika adalah enam.",
-    potongan: [
-      { teks: "Selisih jambu air Kira dan Tika", warna: "#FFFFFF" },
-      { teks: "adalah", warna: "#FFFFFF" },
-      { teks: "6", warna: "#FFE566" },
-      { teks: "enam", warna: "#7FCB96" },
-    ],
+  "poinSuara": "Ingat selalu! Selisih dicari dengan memasangkan satu-satu atau mengurangkan bilangan besar dengan bilangan kecil. Pengurangan bisa dilakukan dengan menghitung mundur, bersusun, atau pasangan bilangan. Kalau satuan tidak cukup, urai satu puluhan menjadi sepuluh satuan. Periksa hasilnya dengan penjumlahan.",
+  "cara": {
+    "suara": "Cara menyebutkan hasil pengurangan. Selisih banyak jambu air Kira dan Tika adalah enam.",
+    "potongan": [
+      {
+        "teks": "Selisih jambu air Kira dan Tika",
+        "warna": "#FFFFFF"
+      },
+      {
+        "teks": "adalah",
+        "warna": "#FFFFFF"
+      },
+      {
+        "teks": "6",
+        "warna": "#FFE566"
+      },
+      {
+        "teks": "enam",
+        "warna": "#7FCB96"
+      }
+    ]
   },
-  rumah:
-    "Ayo Mencoba di rumah: siapkan dua kelompok benda, misalnya sendok dan garpu. Cari selisihnya dengan memasangkan satu-satu, lalu tuliskan pengurangannya. Periksa dengan penjumlahan, dan ceritakan hasilnya kepada keluargamu.",
-  refleksi: [
+  "rumah": "Ayo Mencoba di rumah: siapkan dua kelompok benda, misalnya sendok dan garpu. Cari selisihnya dengan memasangkan satu-satu, lalu tuliskan pengurangannya. Periksa dengan penjumlahan, dan ceritakan hasilnya kepada keluargamu.",
+  "refleksi": [
     "Aku bisa melakukan pengurangan dengan menghitung mundur.",
     "Aku bisa melakukan pengurangan bersusun, termasuk mengurai satu puluhan.",
     "Aku bisa mengurangkan dengan pasangan bilangan.",
-    "Aku belajar dengan tertib.",
+    "Aku belajar dengan tertib."
   ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Counting Up",
+      "namaId": "Menghitung Naik",
+      "asal": "Counting up",
+      "ringkas": "Naik dari yang dikurangi sampai bilangan awal.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Take Away",
+      "namaId": "Mengambil",
+      "asal": "Subtraction",
+      "ringkas": "Ambil sebagian dari kumpulan.",
+      "tahap": [
+        "Picture",
+        "Mind"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Regroup Borrow",
+      "namaId": "Meminjam",
+      "asal": "Base-ten",
+      "ringkas": "Buka satu puluhan jadi sepuluh satuan.",
+      "tahap": [
+        "Infografis",
+        "Concrete"
+      ]
+    }
+  ]
 };
 
-/* ====================================================================== */
-/* SUB-BAB C. Soal cerita penjumlahan dan pengurangan                      */
-/* ====================================================================== */
-
 export const SUB_C: SubBabNaskah = {
-  id: "C",
-  codeTitle: "Sub-Bab C (Soal Cerita)",
-  fullTitle: "Sub-Bab C: Soal Cerita Penjumlahan dan Pengurangan",
-  targetDescription:
-    "Siswa memahami kata lebihnya, kurangnya, selisih, dan jumlah pada soal cerita, menuliskan yang diketahui dan yang ditanya, memilih operasi penjumlahan atau pengurangan, menyelesaikan soal cerita dengan langkah berurutan, menuliskan kesimpulan, mencari bilangan awal, menjumlahkan tiga bilangan, serta membuat soal cerita sendiri.",
-  secondaryBg: "#DCFCE7",
-  secondaryBorder: "#16A34A",
-  secondaryText: "#14532D",
-  silabus: {
-    teksSuara: `Kita belajar soal cerita penjumlahan dan pengurangan. Bukunya bernama Penjumlahan dan Pengurangan, bagian soal cerita. Kita mengenal empat kata kunci: lebihnya, kurangnya, selisih, dan jumlah. Kita menyelesaikan soal cerita dengan empat langkah berurutan: diketahui, ditanya, solusi, dan kesimpulan. Kita juga membuat soal cerita sendiri. ${SUARA_AKHIR_SILABUS}`,
-    cp: "Siswa menyelesaikan soal cerita penjumlahan dan pengurangan bilangan sampai 20 dengan langkah berurutan (diketahui, ditanya, solusi, kesimpulan), memahami kata lebihnya, kurangnya, selisih, dan jumlah, menjumlahkan tiga bilangan, mencari bilangan awal, serta membuat soal cerita sendiri.",
-    referensi: "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2: Penjumlahan dan Pengurangan, Sub-Bab C hlm. 54–58 dan Ayo Berkarya hlm. 63).",
+  "id": "C",
+  "codeTitle": "Sub-Bab C (Soal Cerita)",
+  "fullTitle": "Sub-Bab C: Soal Cerita Penjumlahan dan Pengurangan",
+  "targetDescription": "Siswa memahami kata lebihnya, kurangnya, selisih, dan jumlah pada soal cerita, menuliskan yang diketahui dan yang ditanya, memilih operasi penjumlahan atau pengurangan, menyelesaikan soal cerita dengan langkah berurutan, menuliskan kesimpulan, mencari bilangan awal, menjumlahkan tiga bilangan, serta membuat soal cerita sendiri.",
+  "secondaryBg": "#DCFCE7",
+  "secondaryBorder": "#16A34A",
+  "secondaryText": "#14532D",
+  "silabus": {
+    "teksSuara": "Kita belajar soal cerita penjumlahan dan pengurangan. Bukunya bernama Penjumlahan dan Pengurangan, bagian soal cerita. Kita mengenal empat kata kunci: lebihnya, kurangnya, selisih, dan jumlah. Kita menyelesaikan soal cerita dengan empat langkah berurutan: diketahui, ditanya, solusi, dan kesimpulan. Kita juga membuat soal cerita sendiri. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa menyelesaikan soal cerita penjumlahan dan pengurangan bilangan sampai 20 dengan langkah berurutan (diketahui, ditanya, solusi, kesimpulan), memahami kata lebihnya, kurangnya, selisih, dan jumlah, menjumlahkan tiga bilangan, mencari bilangan awal, serta membuat soal cerita sendiri.",
+    "referensi": "Buku Siswa Matematika Kelas II Kemendikbudristek (Bab 2 Sub-Bab C)."
   },
-  videos: [
+  "videos": [
     {
-      id: "K2B2C-V1",
-      judul: "Kata Kunci Soal Cerita",
-      subjudul: "Burung hijau dan burung merah",
-      adegan: [
+      "id": "K2B2C-V1",
+      "judul": "Kata Kunci Soal Cerita",
+      "subjudul": "Burung hijau dan burung merah",
+      "adegan": [
         {
-          id: "K2B2C-V1-1",
-          judul: "Burung hijau dan burung merah",
-          ketukan: [
+          "id": "K2B2C-V1-1",
+          "judul": "Burung hijau dan burung merah",
+          "ketukan": [
             "Ada burung hijau dan burung merah di dahan.",
             "Burung hijau ada 4 ekor. Burung merah ada 5 ekor.",
             "Pasangkan burungnya satu-satu. Burung merah ada satu yang tidak berpasangan.",
             "Banyak burung hijau 1 kurangnya dari banyak burung merah.",
             "Banyak burung merah 1 lebihnya dari banyak burung hijau.",
             "Selisih burung hijau dan burung merah adalah 1.",
-            "Jumlah burung hijau dan burung merah adalah 9.",
+            "Jumlah burung hijau dan burung merah adalah 9."
           ],
-          papan: ["Burung di dahan", "Hijau 4 • Merah 5", "Pasangkan satu-satu", "Hijau 1 kurangnya", "Merah 1 lebihnya", "Selisih: 1", "Jumlah: 9"],
+          "papan": [
+            "Burung di dahan",
+            "Hijau 4 • Merah 5",
+            "Pasangkan satu-satu",
+            "Hijau 1 kurangnya",
+            "Merah 1 lebihnya",
+            "Selisih: 1",
+            "Jumlah: 9"
+          ]
         },
         {
-          id: "K2B2C-V1-2",
-          judul: "Empat kata kunci",
-          ketukan: [
+          "id": "K2B2C-V1-2",
+          "judul": "Empat kata kunci",
+          "ketukan": [
             "Ingat empat kata kunci ini: lebihnya, kurangnya, selisih, dan jumlah.",
             "Jumlah berarti semua digabung, jadi kita menambah.",
             "Selisih berarti beda banyaknya, jadi bilangan besar dikurangi bilangan kecil.",
             "Lebihnya dan kurangnya membandingkan dua orang. Baca dulu siapa yang punya lebih banyak.",
+            "METODE LUAR. Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh."
           ],
-          papan: ["Empat kata kunci", "Jumlah: tambah", "Selisih: kurang", "Siapa yang lebih banyak?"],
-        },
-      ],
+          "papan": [
+            "Empat kata kunci",
+            "Jumlah: tambah",
+            "Selisih: kurang",
+            "Siapa yang lebih banyak?",
+            "METODE LUAR · Cerita Bagian–Utuh"
+          ]
+        }
+      ]
     },
     {
-      id: "K2B2C-V2",
-      judul: "Donat Tika dan Malosi",
-      subjudul: "Diketahui, ditanya, solusi, kesimpulan",
-      adegan: [
+      "id": "K2B2C-V2",
+      "judul": "Donat Tika dan Malosi",
+      "subjudul": "Diketahui, ditanya, solusi, kesimpulan",
+      "adegan": [
         {
-          id: "K2B2C-V2-1",
-          judul: "Donat di meja",
-          ketukan: [
+          "id": "K2B2C-V2-1",
+          "judul": "Donat di meja",
+          "ketukan": [
             "Tika mempunyai 12 donat.",
             "Malosi mempunyai 5 kurangnya dari banyak donat milik Tika.",
             "Pertanyaan a, berapa donat milik Malosi?",
-            "Pertanyaan b, berapa jumlah donat milik Tika dan Malosi?",
+            "Pertanyaan b, berapa jumlah donat milik Tika dan Malosi?"
           ],
-          papan: ["Tika: 12 donat", "Malosi: 5 kurangnya", "a. Donat Malosi?", "b. Jumlah donat?"],
+          "papan": [
+            "Tika: 12 donat",
+            "Malosi: 5 kurangnya",
+            "a. Donat Malosi?",
+            "b. Jumlah donat?"
+          ]
         },
         {
-          id: "K2B2C-V2-2",
-          judul: "Diketahui dan ditanya",
-          ketukan: [
+          "id": "K2B2C-V2-2",
+          "judul": "Diketahui dan ditanya",
+          "ketukan": [
             "Langkah pertama, tulis apa yang diketahui.",
             "Diketahui, Tika punya 12 donat. Malosi punya 5 kurangnya dari Tika.",
             "Langkah kedua, tulis apa yang ditanya.",
-            "Ditanya, banyak donat Malosi, dan jumlah donat Tika dan Malosi.",
+            "Ditanya, banyak donat Malosi, dan jumlah donat Tika dan Malosi."
           ],
-          papan: ["Langkah 1: Diketahui", "Tika 12 • Malosi −5", "Langkah 2: Ditanya", "Donat Malosi? Jumlah?"],
+          "papan": [
+            "Langkah 1: Diketahui",
+            "Tika 12 • Malosi −5",
+            "Langkah 2: Ditanya",
+            "Donat Malosi? Jumlah?"
+          ]
         },
         {
-          id: "K2B2C-V2-3",
-          judul: "Solusi dan kesimpulan",
-          ketukan: [
+          "id": "K2B2C-V2-3",
+          "judul": "Solusi dan kesimpulan",
+          "ketukan": [
             "Langkah ketiga, solusi. Malosi punya 5 kurangnya, jadi kita kurangkan: 12 dikurangi 5 sama dengan 7.",
             "Jadi, Malosi memiliki 7 donat.",
             "Untuk jumlah, kita tambahkan: 7 ditambah 12 sama dengan 19.",
             "Langkah keempat, kesimpulan. Jumlah donat milik Tika dan Malosi adalah 19 donat.",
+            "METODE LUAR. Model Batang Cerita: Gambar batang sebelum menulis kalimat."
           ],
-          papan: ["Solusi: 12 − 5 = 7", "Malosi: 7 donat", "Jumlah: 7 + 12 = 19", "Jadi, 19 donat"],
-        },
-      ],
+          "papan": [
+            "Solusi: 12 − 5 = 7",
+            "Malosi: 7 donat",
+            "Jumlah: 7 + 12 = 19",
+            "Jadi, 19 donat",
+            "METODE LUAR · Model Batang Cerita"
+          ]
+        }
+      ]
     },
     {
-      id: "K2B2C-V3",
-      judul: "Jeruk Halim dan Boneka Tiga Sahabat",
-      subjudul: "Bilangan awal dan tiga bilangan",
-      adegan: [
+      "id": "K2B2C-V3",
+      "judul": "Jeruk Halim dan Boneka Tiga Sahabat",
+      "subjudul": "Bilangan awal dan tiga bilangan",
+      "adegan": [
         {
-          id: "K2B2C-V3-1",
-          judul: "Keranjang jeruk Halim",
-          ketukan: [
+          "id": "K2B2C-V3-1",
+          "judul": "Keranjang jeruk Halim",
+          "ketukan": [
             "Halim mempunyai satu keranjang buah jeruk.",
             "Halim memberikan 4 jeruk kepada Lili. Sekarang jeruk Halim tersisa 12 buah.",
             "Berapa banyak jeruk Halim sebelum diberikan kepada Lili?",
             "Kita tulis: titik-titik dikurangi 4 sama dengan 12.",
             "Untuk mencarinya, kita balik: 12 ditambah 4 sama dengan 16.",
-            "Jadi banyak jeruk Halim sebelumnya adalah 16 buah.",
+            "Jadi banyak jeruk Halim sebelumnya adalah 16 buah."
           ],
-          papan: ["Keranjang jeruk Halim", "Diberi 4 • Sisa 12", "Jeruk semula = ?", "… − 4 = 12", "12 + 4 = 16", "Semula: 16 jeruk"],
+          "papan": [
+            "Keranjang jeruk Halim",
+            "Diberi 4 • Sisa 12",
+            "Jeruk semula = ?",
+            "… − 4 = 12",
+            "12 + 4 = 16",
+            "Semula: 16 jeruk"
+          ]
         },
         {
-          id: "K2B2C-V3-2",
-          judul: "Boneka tiga sahabat",
-          ketukan: [
+          "id": "K2B2C-V3-2",
+          "judul": "Boneka tiga sahabat",
+          "ketukan": [
             "Tika, Kira, dan Lili sedang bermain boneka.",
             "Tika membawa 5 boneka. Kira membawa 7 boneka. Lili membawa 8 boneka.",
             "Berapa jumlah semua boneka?",
             "Jumlahkan dua dulu, boneka Tika dan Kira: 5 ditambah 7 sama dengan 12.",
             "Lalu tambahkan boneka Lili: 12 ditambah 8 sama dengan 20.",
-            "Jadi jumlah semua boneka adalah 20 buah.",
+            "Jadi jumlah semua boneka adalah 20 buah."
           ],
-          papan: ["Tiga sahabat", "Tika 5 • Kira 7 • Lili 8", "Jumlah semuanya?", "5 + 7 = 12", "12 + 8 = 20", "Jumlah: 20 boneka"],
+          "papan": [
+            "Tiga sahabat",
+            "Tika 5 • Kira 7 • Lili 8",
+            "Jumlah semuanya?",
+            "5 + 7 = 12",
+            "12 + 8 = 20",
+            "Jumlah: 20 boneka"
+          ]
         },
         {
-          id: "K2B2C-V3-3",
-          judul: "Soal cerita buatan sendiri",
-          ketukan: [
+          "id": "K2B2C-V3-3",
+          "judul": "Soal cerita buatan sendiri",
+          "ketukan": [
             "Sekarang giliranmu membuat soal cerita!",
             "Pilih tokoh, benda, dan kata kunci. Lalu tulis bilangannya.",
             "Mintalah temanmu menyelesaikannya dengan diketahui, ditanya, solusi, dan kesimpulan.",
             "Soal cerita yang baik punya pertanyaan yang jelas dan bisa dijawab.",
+            "METODE LUAR. Pilih Operasi: Tentukan + atau − dari makna cerita."
           ],
-          papan: ["Giliranmu!", "Tokoh • Benda • Kata kunci", "Tukar dengan teman", "Pertanyaan jelas"],
-        },
-      ],
-    },
+          "papan": [
+            "Giliranmu!",
+            "Tokoh • Benda • Kata kunci",
+            "Tukar dengan teman",
+            "Pertanyaan jelas",
+            "METODE LUAR · Pilih Operasi"
+          ]
+        }
+      ]
+    }
   ],
-  mindMaps: [
+  "mindMaps": [
     {
-      stepNumber: 1,
-      stepTitle: "1. Baca dan Bayangkan",
-      stepDesc:
-        "Bacalah soal cerita dua kali. Pertama untuk tahu ceritanya, kedua untuk mencari bilangannya. Lalu ceritakan ulang dengan kata-katamu sendiri dan bayangkan kejadiannya. Siapa tokohnya, bendanya apa, dan apa yang terjadi? Anak yang membayangkan cerita lebih jarang salah memilih tanda.",
-      icon: "📖",
-      flowFrom: "Soal cerita",
-      flowTo: "Kata kunci",
+      "stepNumber": 1,
+      "stepTitle": "1. Baca dan Bayangkan",
+      "stepDesc": "Bacalah soal cerita dua kali. Pertama untuk tahu ceritanya, kedua untuk mencari bilangannya. Lalu ceritakan ulang dengan kata-katamu sendiri dan bayangkan kejadiannya. Siapa tokohnya, bendanya apa, dan apa yang terjadi? Anak yang membayangkan cerita lebih jarang salah memilih tanda.",
+      "icon": "📖",
+      "flowFrom": "Soal cerita",
+      "flowTo": "Kata kunci"
     },
     {
-      stepNumber: 2,
-      stepTitle: "2. Empat Kata Kunci",
-      stepDesc:
-        "Ingat empat kata: lebihnya, kurangnya, selisih, dan jumlah. Jumlah berarti digabung, jadi menambah. Selisih berarti beda banyaknya, jadi bilangan besar dikurangi bilangan kecil. Lebihnya dan kurangnya membandingkan dua orang. Tanyakan: siapa yang punya lebih banyak, dan bilangan siapa yang sudah diketahui?",
-      icon: "🔑",
-      flowFrom: "Kata kunci",
-      flowTo: "Diketahui",
+      "stepNumber": 2,
+      "stepTitle": "2. Empat Kata Kunci",
+      "stepDesc": "Ingat empat kata: lebihnya, kurangnya, selisih, dan jumlah. Jumlah berarti digabung, jadi menambah. Selisih berarti beda banyaknya, jadi bilangan besar dikurangi bilangan kecil. Lebihnya dan kurangnya membandingkan dua orang. Tanyakan: siapa yang punya lebih banyak, dan bilangan siapa yang sudah diketahui?",
+      "icon": "🔑",
+      "flowFrom": "Kata kunci",
+      "flowTo": "Diketahui"
     },
     {
-      stepNumber: 3,
-      stepTitle: "3. Diketahui",
-      stepDesc:
-        "Tuliskan semua yang sudah kita ketahui dari cerita beserta bendanya. Contohnya, Tika mempunyai 12 donat, dan Malosi mempunyai 5 kurangnya dari donat Tika. Jangan menulis yang ditanyakan di bagian ini. Menulis diketahui membantu kita memilah bilangan yang penting.",
-      icon: "📝",
-      flowFrom: "Diketahui",
-      flowTo: "Ditanya",
+      "stepNumber": 3,
+      "stepTitle": "3. Diketahui",
+      "stepDesc": "Tuliskan semua yang sudah kita ketahui dari cerita beserta bendanya. Contohnya, Tika mempunyai 12 donat, dan Malosi mempunyai 5 kurangnya dari donat Tika. Jangan menulis yang ditanyakan di bagian ini. Menulis diketahui membantu kita memilah bilangan yang penting.",
+      "icon": "📝",
+      "flowFrom": "Diketahui",
+      "flowTo": "Ditanya"
     },
     {
-      stepNumber: 4,
-      stepTitle: "4. Ditanya",
-      stepDesc:
-        "Tuliskan pertanyaan yang harus dijawab, dalam kalimat yang jelas. Contohnya, berapa banyak donat milik Malosi, dan berapa jumlah donat Tika dan Malosi? Satu soal bisa punya lebih dari satu pertanyaan. Kerjakan pertanyaan satu per satu, sesuai urutannya.",
-      icon: "❓",
-      flowFrom: "Ditanya",
-      flowTo: "Solusi",
+      "stepNumber": 4,
+      "stepTitle": "4. Ditanya",
+      "stepDesc": "Tuliskan pertanyaan yang harus dijawab, dalam kalimat yang jelas. Contohnya, berapa banyak donat milik Malosi, dan berapa jumlah donat Tika dan Malosi? Satu soal bisa punya lebih dari satu pertanyaan. Kerjakan pertanyaan satu per satu, sesuai urutannya.",
+      "icon": "❓",
+      "flowFrom": "Ditanya",
+      "flowTo": "Solusi"
     },
     {
-      stepNumber: 5,
-      stepTitle: "5. Solusi: Pilih Operasi",
-      stepDesc:
-        "Pilih tanda yang cocok dengan ceritanya. Malosi punya 5 kurangnya dari Tika, jadi donat Malosi adalah 12 dikurangi 5 sama dengan 7. Untuk jumlah, kita tambahkan 7 ditambah 12 sama dengan 19. Pakai cara berhitung yang paling mudah: menghitung maju atau mundur, bersusun, atau pasangan bilangan.",
-      icon: "🧮",
-      flowFrom: "Solusi",
-      flowTo: "Kesimpulan",
+      "stepNumber": 5,
+      "stepTitle": "5. Solusi: Pilih Operasi",
+      "stepDesc": "Pilih tanda yang cocok dengan ceritanya. Malosi punya 5 kurangnya dari Tika, jadi donat Malosi adalah 12 dikurangi 5 sama dengan 7. Untuk jumlah, kita tambahkan 7 ditambah 12 sama dengan 19. Pakai cara berhitung yang paling mudah: menghitung maju atau mundur, bersusun, atau pasangan bilangan.",
+      "icon": "🧮",
+      "flowFrom": "Solusi",
+      "flowTo": "Kesimpulan"
     },
     {
-      stepNumber: 6,
-      stepTitle: "6. Kesimpulan",
-      stepDesc:
-        "Tutup jawabanmu dengan kalimat kesimpulan yang diawali kata jadi, lalu sebutkan hasilnya beserta bendanya. Contohnya, jadi jumlah donat milik Tika dan Malosi adalah 19 donat. Jangan lupa satuan bendanya. Kesimpulan menjawab pertanyaan dalam bentuk kalimat utuh.",
-      icon: "🏁",
-      flowFrom: "Kesimpulan",
-      flowTo: "Bilangan awal",
+      "stepNumber": 6,
+      "stepTitle": "6. Kesimpulan",
+      "stepDesc": "Tutup jawabanmu dengan kalimat kesimpulan yang diawali kata jadi, lalu sebutkan hasilnya beserta bendanya. Contohnya, jadi jumlah donat milik Tika dan Malosi adalah 19 donat. Jangan lupa satuan bendanya. Kesimpulan menjawab pertanyaan dalam bentuk kalimat utuh.",
+      "icon": "🏁",
+      "flowFrom": "Kesimpulan",
+      "flowTo": "Bilangan awal"
     },
     {
-      stepNumber: 7,
-      stepTitle: "7. Mencari Bilangan Awal",
-      stepDesc:
-        "Kadang yang ditanyakan adalah banyak benda sebelum sesuatu terjadi. Halim memberikan 4 jeruk, sisanya 12. Kita tulis titik-titik dikurangi 4 sama dengan 12. Untuk mencari bilangan awalnya, balik operasinya: 12 ditambah 4 sama dengan 16. Periksa dengan mengurangkan lagi: 16 dikurangi 4 sama dengan 12.",
-      icon: "🔙",
-      flowFrom: "Bilangan awal",
-      flowTo: "Tiga bilangan",
+      "stepNumber": 7,
+      "stepTitle": "7. Mencari Bilangan Awal",
+      "stepDesc": "Kadang yang ditanyakan adalah banyak benda sebelum sesuatu terjadi. Halim memberikan 4 jeruk, sisanya 12. Kita tulis titik-titik dikurangi 4 sama dengan 12. Untuk mencari bilangan awalnya, balik operasinya: 12 ditambah 4 sama dengan 16. Periksa dengan mengurangkan lagi: 16 dikurangi 4 sama dengan 12.",
+      "icon": "🔙",
+      "flowFrom": "Bilangan awal",
+      "flowTo": "Tiga bilangan"
     },
     {
-      stepNumber: 8,
-      stepTitle: "8. Model Batang dan Tiga Bilangan",
-      stepDesc:
-        "Gambarlah masalahnya dengan model batang, cara yang dipakai di Singapura. Batang panjang untuk bilangan yang lebih banyak, batang pendek untuk yang lebih sedikit, dan bagian yang tersisa adalah selisihnya. Untuk menjumlahkan tiga bilangan, jumlahkan dua dulu, lalu tambahkan yang ketiga. Cari dulu dua bilangan yang berjumlah sepuluh supaya lebih mudah.",
-      icon: "📏",
-      flowFrom: "Tiga bilangan",
-      flowTo: "Soal cerita siap dipakai",
+      "stepNumber": 8,
+      "stepTitle": "8. Model Batang dan Tiga Bilangan",
+      "stepDesc": "Gambarlah masalahnya dengan model batang, cara yang dipakai di Singapura. Batang panjang untuk bilangan yang lebih banyak, batang pendek untuk yang lebih sedikit, dan bagian yang tersisa adalah selisihnya. Untuk menjumlahkan tiga bilangan, jumlahkan dua dulu, lalu tambahkan yang ketiga. Cari dulu dua bilangan yang berjumlah sepuluh supaya lebih mudah.",
+      "icon": "📏",
+      "flowFrom": "Tiga bilangan",
+      "flowTo": "9"
     },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Cerita Bagian–Utuh",
+      "stepDesc": "Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Model Batang Cerita",
+      "stepDesc": "Gambar batang sebelum menulis kalimat.",
+      "icon": "🌍",
+      "flowFrom": "9",
+      "flowTo": "END"
+    }
   ],
-  infografis: [
+  "infografis": [
     {
-      judul: "Burung Hijau dan Burung Merah",
-      emoji: "🐦",
-      countNum: 9,
-      countWord: "Sembilan",
-      suara:
-        "Burung hijau ada empat ekor dan burung merah ada lima ekor. Banyak burung hijau satu kurangnya dari burung merah. Banyak burung merah satu lebihnya dari burung hijau. Selisihnya satu. Jumlah burung hijau dan merah adalah sembilan.",
+      "judul": "Burung Hijau dan Burung Merah",
+      "emoji": "🐦",
+      "countNum": 9,
+      "countWord": "Sembilan",
+      "suara": "Burung hijau ada empat ekor dan burung merah ada lima ekor. Banyak burung hijau satu kurangnya dari burung merah. Banyak burung merah satu lebihnya dari burung hijau. Selisihnya satu. Jumlah burung hijau dan merah adalah sembilan."
     },
     {
-      judul: "Empat Kata Kunci",
-      emoji: "🔑",
-      countNum: 4,
-      countWord: "Empat",
-      suara:
-        "Empat kata kunci soal cerita. Lebihnya berarti ada yang punya lebih banyak. Kurangnya berarti ada yang punya lebih sedikit. Kedua kata ini membandingkan dua orang, jadi lihat dulu siapa yang dicari. Kalau yang dicari punya lebih banyak, kita menambah. Kalau yang dicari punya lebih sedikit, kita mengurangi. Selisih adalah beda banyaknya, bilangan besar dikurangi bilangan kecil. Jumlah berarti semua digabung, kita menambah.",
+      "judul": "Empat Kata Kunci",
+      "emoji": "🔑",
+      "countNum": 4,
+      "countWord": "Empat",
+      "suara": "Empat kata kunci soal cerita. Lebihnya berarti ada yang punya lebih banyak. Kurangnya berarti ada yang punya lebih sedikit. Kedua kata ini membandingkan dua orang, jadi lihat dulu siapa yang dicari. Kalau yang dicari punya lebih banyak, kita menambah. Kalau yang dicari punya lebih sedikit, kita mengurangi. Selisih adalah beda banyaknya, bilangan besar dikurangi bilangan kecil. Jumlah berarti semua digabung, kita menambah."
     },
     {
-      judul: "Empat Langkah Menyelesaikan",
-      emoji: "🪜",
-      countNum: 4,
-      countWord: "Empat",
-      suara:
-        "Selesaikan soal cerita dengan empat langkah berurutan. Satu, diketahui, apa yang sudah kita tahu. Dua, ditanya, apa yang harus dicari. Tiga, solusi, hitungan dengan tanda yang cocok. Empat, kesimpulan, kalimat jawaban yang diawali kata jadi.",
+      "judul": "Empat Langkah Menyelesaikan",
+      "emoji": "🪜",
+      "countNum": 4,
+      "countWord": "Empat",
+      "suara": "Selesaikan soal cerita dengan empat langkah berurutan. Satu, diketahui, apa yang sudah kita tahu. Dua, ditanya, apa yang harus dicari. Tiga, solusi, hitungan dengan tanda yang cocok. Empat, kesimpulan, kalimat jawaban yang diawali kata jadi."
     },
     {
-      judul: "Contoh 1: Donat Tika dan Malosi",
-      emoji: "🍩",
-      countNum: 19,
-      countWord: "Sembilan belas",
-      suara:
-        "Tika punya dua belas donat. Malosi punya lima kurangnya dari donat Tika. Donat Malosi adalah dua belas dikurangi lima sama dengan tujuh. Jumlah donat Tika dan Malosi adalah tujuh ditambah dua belas sama dengan sembilan belas. Jadi jumlah donat Tika dan Malosi adalah sembilan belas donat.",
+      "judul": "Contoh 1: Donat Tika dan Malosi",
+      "emoji": "🍩",
+      "countNum": 19,
+      "countWord": "Sembilan belas",
+      "suara": "Tika punya dua belas donat. Malosi punya lima kurangnya dari donat Tika. Donat Malosi adalah dua belas dikurangi lima sama dengan tujuh. Jumlah donat Tika dan Malosi adalah tujuh ditambah dua belas sama dengan sembilan belas. Jadi jumlah donat Tika dan Malosi adalah sembilan belas donat."
     },
     {
-      judul: "Contoh 2: Jeruk Halim",
-      emoji: "🍊",
-      countNum: 16,
-      countWord: "Enam belas",
-      suara:
-        "Halim memberikan empat jeruk kepada Lili. Sisa jeruk Halim dua belas. Titik-titik dikurangi empat sama dengan dua belas. Untuk mencari bilangan awal, kita balik menjadi dua belas ditambah empat sama dengan enam belas. Jadi jeruk Halim sebelumnya adalah enam belas buah.",
+      "judul": "Contoh 2: Jeruk Halim",
+      "emoji": "🍊",
+      "countNum": 16,
+      "countWord": "Enam belas",
+      "suara": "Halim memberikan empat jeruk kepada Lili. Sisa jeruk Halim dua belas. Titik-titik dikurangi empat sama dengan dua belas. Untuk mencari bilangan awal, kita balik menjadi dua belas ditambah empat sama dengan enam belas. Jadi jeruk Halim sebelumnya adalah enam belas buah."
     },
     {
-      judul: "Contoh 3: Boneka Tiga Sahabat",
-      emoji: "🧸",
-      countNum: 20,
-      countWord: "Dua puluh",
-      suara:
-        "Tika membawa lima boneka, Kira tujuh, dan Lili delapan. Jumlahkan dua dulu: lima ditambah tujuh sama dengan dua belas. Lalu dua belas ditambah delapan sama dengan dua puluh. Jadi jumlah semua boneka adalah dua puluh buah.",
+      "judul": "Contoh 3: Boneka Tiga Sahabat",
+      "emoji": "🧸",
+      "countNum": 20,
+      "countWord": "Dua puluh",
+      "suara": "Tika membawa lima boneka, Kira tujuh, dan Lili delapan. Jumlahkan dua dulu: lima ditambah tujuh sama dengan dua belas. Lalu dua belas ditambah delapan sama dengan dua puluh. Jadi jumlah semua boneka adalah dua puluh buah."
     },
     {
-      judul: "Model Batang",
-      emoji: "📏",
-      countNum: 19,
-      countWord: "Sembilan belas",
-      suara:
-        "Model batang membantu kita melihat soal. Batang Tika panjang, dua belas. Batang Malosi lebih pendek, tujuh, karena lima kurangnya. Bagian yang tersisa, lima, adalah selisihnya. Kalau kedua batang digabung, jumlahnya sembilan belas.",
+      "judul": "Model Batang",
+      "emoji": "📏",
+      "countNum": 19,
+      "countWord": "Sembilan belas",
+      "suara": "Model batang membantu kita melihat soal. Batang Tika panjang, dua belas. Batang Malosi lebih pendek, tujuh, karena lima kurangnya. Bagian yang tersisa, lima, adalah selisihnya. Kalau kedua batang digabung, jumlahnya sembilan belas."
     },
     {
-      judul: "Tambah atau Kurang?",
-      emoji: "➕",
-      countNum: 2,
-      countWord: "Dua",
-      suara:
-        "Kapan menambah? Saat kata jumlah, semua, digabung, memetik lagi, atau mendapat lagi. Kapan mengurangi? Saat kata selisih, sisa, diberikan, dimakan, atau hilang. Untuk lebihnya dan kurangnya, baca dulu siapa yang punya lebih banyak. Kalau bilangan yang dicari lebih banyak, kita menambah. Kalau lebih sedikit, kita mengurangi.",
+      "judul": "Tambah atau Kurang?",
+      "emoji": "➕",
+      "countNum": 2,
+      "countWord": "Dua",
+      "suara": "Kapan menambah? Saat kata jumlah, semua, digabung, memetik lagi, atau mendapat lagi. Kapan mengurangi? Saat kata selisih, sisa, diberikan, dimakan, atau hilang. Untuk lebihnya dan kurangnya, baca dulu siapa yang punya lebih banyak. Kalau bilangan yang dicari lebih banyak, kita menambah. Kalau lebih sedikit, kita mengurangi."
     },
     {
-      judul: "Mencari Bilangan Awal",
-      emoji: "🔙",
-      countNum: 16,
-      countWord: "Enam belas",
-      suara:
-        "Untuk mencari bilangan awal, balikkan kejadiannya. Kalau ada yang diberikan, kita kembalikan dengan menambah. Kalau ada yang bertambah, kita kembalikan dengan mengurangi. Sisa dua belas, diberikan empat, maka awalnya dua belas ditambah empat sama dengan enam belas.",
+      "judul": "Mencari Bilangan Awal",
+      "emoji": "🔙",
+      "countNum": 16,
+      "countWord": "Enam belas",
+      "suara": "Untuk mencari bilangan awal, balikkan kejadiannya. Kalau ada yang diberikan, kita kembalikan dengan menambah. Kalau ada yang bertambah, kita kembalikan dengan mengurangi. Sisa dua belas, diberikan empat, maka awalnya dua belas ditambah empat sama dengan enam belas."
     },
     {
-      judul: "Tips Detektif Soal Cerita",
-      emoji: "🕵️",
-      countNum: 5,
-      countWord: "Lima",
-      suara:
-        "Tips detektif soal cerita, ada lima. Baca pelan-pelan. Tandai bilangan dan kata kuncinya. Gambar model batang atau jalur bilangan. Hitung dengan cara yang paling mudah. Periksa hasilnya, apakah masuk akal. Cara serupa dipakai anak di Amerika Serikat dengan nama CUBES.",
+      "judul": "Tips Detektif Soal Cerita",
+      "emoji": "🕵️",
+      "countNum": 5,
+      "countWord": "Lima",
+      "suara": "Tips detektif soal cerita, ada lima. Baca pelan-pelan. Tandai bilangan dan kata kuncinya. Gambar model batang atau jalur bilangan. Hitung dengan cara yang paling mudah. Periksa hasilnya, apakah masuk akal. Cara serupa dipakai anak di Amerika Serikat dengan nama CUBES."
     },
+    {
+      "judul": "Cerita Bagian–Utuh",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Part–Part–Whole Story",
+      "suara": "METODE LUAR. Cerita Bagian–Utuh. Cerita penjumlahan/pengurangan memakai bagian dan utuh."
+    },
+    {
+      "judul": "Model Batang Cerita",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Bar Model Story",
+      "suara": "METODE LUAR. Model Batang Cerita. Gambar batang sebelum menulis kalimat."
+    },
+    {
+      "judul": "Pilih Operasi",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Choose Operation",
+      "suara": "METODE LUAR. Pilih Operasi. Tentukan + atau − dari makna cerita."
+    }
   ],
-  games: [
+  "games": [
     {
-      stage: "Concrete",
-      gameType: "keyword-on-objects",
-      title: "Burung Kata Kunci",
-      bookReference: "hlm. 54 (gambar burung hijau dan burung merah: lebihnya, kurangnya, selisih, jumlah)",
-      objective: "Menghubungkan kata lebihnya, kurangnya, selisih, dan jumlah dengan benda yang dipasangkan.",
-      mechanicDescription:
-        "Tiga ronde (4 dan 5, 3 dan 7, 6 dan 9 burung). Burung hijau dan merah dipasangkan satu-satu. Tiap ronde ada empat pertanyaan: lebihnya, kurangnya, selisih, dan jumlah. Burung yang tidak berpasangan atau semua burung menyala sesuai kata kunci. Siswa memilih bilangannya.",
-      voiceGuide: "Lihat burung yang menyala, lalu pilih bilangannya.",
-      emoji: "🐦",
-      targetCount: 15,
+      "stage": "Concrete",
+      "gameType": "keyword-on-objects",
+      "title": "Burung Kata Kunci",
+      "bookReference": "hlm. 54 (gambar burung hijau dan burung merah: lebihnya, kurangnya, selisih, jumlah)",
+      "objective": "Menghubungkan kata lebihnya, kurangnya, selisih, dan jumlah dengan benda yang dipasangkan. (METODE LUAR · Cerita Bagian–Utuh)",
+      "mechanicDescription": "Tiga ronde (4 dan 5, 3 dan 7, 6 dan 9 burung). Burung hijau dan merah dipasangkan satu-satu. Tiap ronde ada empat pertanyaan: lebihnya, kurangnya, selisih, dan jumlah. Burung yang tidak berpasangan atau semua burung menyala sesuai kata kunci. Siswa memilih bilangannya.",
+      "voiceGuide": "METODE LUAR · Cerita Bagian–Utuh. Lihat burung yang menyala, lalu pilih bilangannya.",
+      "emoji": "🐦",
+      "targetCount": 15
     },
     {
-      stage: "Concrete",
-      gameType: "drag-to-make-fewer-or-more",
-      title: "Meja Donat",
-      bookReference: "hlm. 54–55 (Contoh 1: Tika 12 donat, Malosi 5 kurangnya)",
-      objective: "Membuat banyak benda yang lebih atau kurang dari benda lain, lalu mencari jumlah keduanya.",
-      mechanicDescription:
-        "Tiga ronde (12 dan 5 kurangnya, 8 dan 4 lebihnya, serta 11 dan 6 kurangnya). Siswa menyeret donat ke piring tokoh kedua sampai banyaknya tepat lebih atau kurang dari piring pertama, lalu menekan periksa. Setelah itu siswa memilih jumlah donat kedua tokoh. Terakhir ucapkan jumlahnya.",
-      voiceGuide: "Seret donat sampai banyaknya tepat, lalu cari jumlahnya.",
-      emoji: "🍩",
-      targetCount: 20,
+      "stage": "Concrete",
+      "gameType": "drag-to-make-fewer-or-more",
+      "title": "Meja Donat",
+      "bookReference": "hlm. 54–55 (Contoh 1: Tika 12 donat, Malosi 5 kurangnya)",
+      "objective": "Membuat banyak benda yang lebih atau kurang dari benda lain, lalu mencari jumlah keduanya.",
+      "mechanicDescription": "Tiga ronde (12 dan 5 kurangnya, 8 dan 4 lebihnya, serta 11 dan 6 kurangnya). Siswa menyeret donat ke piring tokoh kedua sampai banyaknya tepat lebih atau kurang dari piring pertama, lalu menekan periksa. Setelah itu siswa memilih jumlah donat kedua tokoh. Terakhir ucapkan jumlahnya.",
+      "voiceGuide": "Seret donat sampai banyaknya tepat, lalu cari jumlahnya.",
+      "emoji": "🍩",
+      "targetCount": 20
     },
     {
-      stage: "Concrete",
-      gameType: "undo-to-find-start",
-      title: "Keranjang Jeruk Halim",
-      bookReference: "hlm. 55–56 (Contoh 2: Halim memberikan 4 jeruk, sisa 12; berapa jeruk semula?)",
-      objective: "Mencari bilangan awal dengan mengembalikan benda yang diberikan.",
-      mechanicDescription:
-        "Tiga ronde (diberi 4 sisa 12, diberi 3 sisa 9, dan diberi 5 sisa 10). Siswa menyeret jeruk dari piring Lili kembali ke keranjang Halim satu per satu, lalu memilih banyak jeruk semula. Layar menunjukkan kalimat titik-titik dikurangi sebanyak yang diberikan sama dengan sisa. Terakhir ucapkan banyak jeruk semula.",
-      voiceGuide: "Kembalikan jeruk ke keranjang, lalu hitung jeruk semula.",
-      emoji: "🍊",
-      targetCount: 16,
+      "stage": "Concrete",
+      "gameType": "undo-to-find-start",
+      "title": "Keranjang Jeruk Halim",
+      "bookReference": "hlm. 55–56 (Contoh 2: Halim memberikan 4 jeruk, sisa 12; berapa jeruk semula?)",
+      "objective": "Mencari bilangan awal dengan mengembalikan benda yang diberikan.",
+      "mechanicDescription": "Tiga ronde (diberi 4 sisa 12, diberi 3 sisa 9, dan diberi 5 sisa 10). Siswa menyeret jeruk dari piring Lili kembali ke keranjang Halim satu per satu, lalu memilih banyak jeruk semula. Layar menunjukkan kalimat titik-titik dikurangi sebanyak yang diberikan sama dengan sisa. Terakhir ucapkan banyak jeruk semula.",
+      "voiceGuide": "Kembalikan jeruk ke keranjang, lalu hitung jeruk semula.",
+      "emoji": "🍊",
+      "targetCount": 16
     },
     {
-      stage: "Concrete",
-      gameType: "merge-three-groups",
-      title: "Boneka Tiga Sahabat",
-      bookReference: "hlm. 56 (Contoh 3: Tika 5, Kira 7, Lili 8 boneka; jumlah semua?) dan hlm. 57 (Ayo Berlatih nomor 2)",
-      objective: "Menjumlahkan tiga kelompok benda dengan menggabungkan dua kelompok dulu, lalu kelompok ketiga.",
-      mechanicDescription:
-        "Tiga ronde (5, 7, 8; 4, 9, 6; serta 3, 8, 7 boneka). Siswa mengetuk dua kelompok untuk digabung, memilih jumlah keduanya, lalu menggabungkan dengan kelompok ketiga dan memilih jumlah semuanya. Ada petunjuk bila dua kelompok berjumlah sepuluh. Terakhir ucapkan jumlah semuanya.",
-      voiceGuide: "Gabungkan dua kelompok dulu, lalu kelompok ketiga.",
-      emoji: "🧸",
-      targetCount: 20,
+      "stage": "Concrete",
+      "gameType": "merge-three-groups",
+      "title": "Boneka Tiga Sahabat",
+      "bookReference": "hlm. 56 (Contoh 3: Tika 5, Kira 7, Lili 8 boneka; jumlah semua?) dan hlm. 57 (Ayo Berlatih nomor 2)",
+      "objective": "Menjumlahkan tiga kelompok benda dengan menggabungkan dua kelompok dulu, lalu kelompok ketiga.",
+      "mechanicDescription": "Tiga ronde (5, 7, 8; 4, 9, 6; serta 3, 8, 7 boneka). Siswa mengetuk dua kelompok untuk digabung, memilih jumlah keduanya, lalu menggabungkan dengan kelompok ketiga dan memilih jumlah semuanya. Ada petunjuk bila dua kelompok berjumlah sepuluh. Terakhir ucapkan jumlah semuanya.",
+      "voiceGuide": "Gabungkan dua kelompok dulu, lalu kelompok ketiga.",
+      "emoji": "🧸",
+      "targetCount": 20
     },
     {
-      stage: "Picture",
-      gameType: "bar-model-story",
-      title: "Model Batang Cerita",
-      bookReference: "hlm. 54–55 (gambar burung dan Contoh 1), diperkaya model batang dari Singapura",
-      objective: "Menggambarkan cerita dengan model batang untuk menemukan bilangan yang dicari dan jumlahnya.",
-      mechanicDescription:
-        "Tiga ronde (8 dan 3 lebihnya, 13 dan 6 kurangnya, serta 7 dan 5 lebihnya). Model batang dua tokoh digambar dengan bagian lebihnya atau kurangnya. Siswa memilih bilangan batang yang bertanda tanya, lalu memilih jumlah kedua batang.",
-      voiceGuide: "Lihat batangnya, lalu pilih bilangan yang bertanda tanya.",
-      diagramType: "bar-model-compare",
-      numberA: 13,
-      numberB: 6,
+      "stage": "Picture",
+      "gameType": "bar-model-story",
+      "title": "Model Batang Cerita",
+      "bookReference": "hlm. 54–55 (gambar burung dan Contoh 1), diperkaya model batang dari Singapura",
+      "objective": "Menggambarkan cerita dengan model batang untuk menemukan bilangan yang dicari dan jumlahnya.",
+      "mechanicDescription": "Tiga ronde (8 dan 3 lebihnya, 13 dan 6 kurangnya, serta 7 dan 5 lebihnya). Model batang dua tokoh digambar dengan bagian lebihnya atau kurangnya. Siswa memilih bilangan batang yang bertanda tanya, lalu memilih jumlah kedua batang.",
+      "voiceGuide": "Lihat batangnya, lalu pilih bilangan yang bertanda tanya.",
+      "diagramType": "bar-model-compare",
+      "numberA": 13,
+      "numberB": 6
     },
     {
-      stage: "Picture",
-      gameType: "order-solution-flow",
-      title: "Susun Alur Penyelesaian",
-      bookReference: "hlm. 55–56 (Penyelesaian: diketahui, ditanya, solusi, kesimpulan)",
-      objective: "Menyusun empat langkah penyelesaian soal cerita dengan urutan yang benar.",
-      mechanicDescription:
-        "Tiga ronde (donat Tika dan Malosi, jeruk Halim, dan boneka tiga sahabat). Empat kartu langkah teracak. Siswa mengetuk kartu berurutan: diketahui, ditanya, solusi, kesimpulan. Kartu masuk ke diagram alur dengan panah.",
-      voiceGuide: "Ketuk kartu sesuai urutan: diketahui, ditanya, solusi, kesimpulan.",
-      diagramType: "flow-four-steps",
-      numberA: 20,
-      numberB: 4,
+      "stage": "Picture",
+      "gameType": "order-solution-flow",
+      "title": "Susun Alur Penyelesaian",
+      "bookReference": "hlm. 55–56 (Penyelesaian: diketahui, ditanya, solusi, kesimpulan)",
+      "objective": "Menyusun empat langkah penyelesaian soal cerita dengan urutan yang benar.",
+      "mechanicDescription": "Tiga ronde (donat Tika dan Malosi, jeruk Halim, dan boneka tiga sahabat). Empat kartu langkah teracak. Siswa mengetuk kartu berurutan: diketahui, ditanya, solusi, kesimpulan. Kartu masuk ke diagram alur dengan panah.",
+      "voiceGuide": "Ketuk kartu sesuai urutan: diketahui, ditanya, solusi, kesimpulan.",
+      "diagramType": "flow-four-steps",
+      "numberA": 20,
+      "numberB": 4
     },
     {
-      stage: "Picture",
-      gameType: "choose-direction-and-hop",
-      title: "Panah di Jalur Bilangan",
-      bookReference: "hlm. 54–58 (soal cerita lebihnya, kurangnya, dan sisa), diperkaya jalur bilangan kosong",
-      objective: "Menentukan arah lompatan (maju atau mundur) dari kalimat cerita, lalu melompat dan membaca hasilnya.",
-      mechanicDescription:
-        "Tiga ronde (14 mendapat 5 lagi, 18 dimakan 6, dan 9 dengan 7 lebihnya). Siswa membaca cerita, memilih arah maju atau mundur, lalu mengetuk kotak jalur bilangan sebanyak lompatan dan menekan Berhenti. Terakhir ucapkan hasilnya.",
-      voiceGuide: "Pilih arah, lalu lompat di jalur bilangan.",
-      diagramType: "number-strip-direction",
-      numberA: 20,
-      numberB: 7,
+      "stage": "Picture",
+      "gameType": "choose-direction-and-hop",
+      "title": "Panah di Jalur Bilangan",
+      "bookReference": "hlm. 54–58 (soal cerita lebihnya, kurangnya, dan sisa), diperkaya jalur bilangan kosong",
+      "objective": "Menentukan arah lompatan (maju atau mundur) dari kalimat cerita, lalu melompat dan membaca hasilnya.",
+      "mechanicDescription": "Tiga ronde (14 mendapat 5 lagi, 18 dimakan 6, dan 9 dengan 7 lebihnya). Siswa membaca cerita, memilih arah maju atau mundur, lalu mengetuk kotak jalur bilangan sebanyak lompatan dan menekan Berhenti. Terakhir ucapkan hasilnya.",
+      "voiceGuide": "Pilih arah, lalu lompat di jalur bilangan.",
+      "diagramType": "number-strip-direction",
+      "numberA": 20,
+      "numberB": 7
     },
     {
-      stage: "Abstract",
-      gameType: "sort-keyword-to-sign",
-      title: "Kata Kunci Jadi Tanda",
-      bookReference: "hlm. 54 (lebihnya, kurangnya, selisih, jumlah) dan hlm. 55–56 (memilih operasi pada solusi)",
-      objective: "Menentukan tanda tambah atau kurang dari kalimat cerita pendek.",
-      mechanicDescription:
-        "Dua ronde, masing-masing empat kartu kalimat. Siswa mengetuk kartu lalu kotak tambah atau kotak kurang. Kata kunci pada kartu diberi warna. Kartu yang salah meluncur kembali disertai petunjuk.",
-      voiceGuide: "Ketuk kartu, lalu pilih tambah atau kurang.",
-      symbolLarge: "+  −",
-      wordLarge: "KATA KUNCI",
-      mathNotation: "jumlah +  • selisih −",
+      "stage": "Abstract",
+      "gameType": "sort-keyword-to-sign",
+      "title": "Kata Kunci Jadi Tanda",
+      "bookReference": "hlm. 54 (lebihnya, kurangnya, selisih, jumlah) dan hlm. 55–56 (memilih operasi pada solusi)",
+      "objective": "Menentukan tanda tambah atau kurang dari kalimat cerita pendek.",
+      "mechanicDescription": "Dua ronde, masing-masing empat kartu kalimat. Siswa mengetuk kartu lalu kotak tambah atau kotak kurang. Kata kunci pada kartu diberi warna. Kartu yang salah meluncur kembali disertai petunjuk.",
+      "voiceGuide": "Ketuk kartu, lalu pilih tambah atau kurang.",
+      "symbolLarge": "+  −",
+      "wordLarge": "KATA KUNCI",
+      "mathNotation": "jumlah +  • selisih −"
     },
     {
-      stage: "Abstract",
-      gameType: "report-four-steps",
-      title: "Laporan Detektif Cerita",
-      bookReference: "hlm. 57–58 (Ayo Berlatih nomor 1, 2, dan 3: diketahui, ditanya, solusi, jadi)",
-      objective: "Mengisi laporan diketahui, ditanya, solusi, dan kesimpulan untuk satu soal cerita.",
-      mechanicDescription:
-        "Tiga ronde (selisih mainan, kupu-kupu di tiga tempat, dan kelereng Upe dan Halim). Tiap ronde ada empat langkah. Siswa memilih satu dari tiga jawaban untuk diketahui, ditanya, solusi, dan kesimpulan. Jawaban yang salah memuat jebakan kata lebihnya.",
-      voiceGuide: "Pilih jawaban untuk tiap langkah laporan.",
-      symbolLarge: "11 − 3 = 8",
-      wordLarge: "LAPORAN DETEKTIF",
-      mathNotation: "diketahui • ditanya • solusi • jadi",
+      "stage": "Abstract",
+      "gameType": "report-four-steps",
+      "title": "Laporan Detektif Cerita",
+      "bookReference": "hlm. 57–58 (Ayo Berlatih nomor 1, 2, dan 3: diketahui, ditanya, solusi, jadi)",
+      "objective": "Mengisi laporan diketahui, ditanya, solusi, dan kesimpulan untuk satu soal cerita.",
+      "mechanicDescription": "Tiga ronde (selisih mainan, kupu-kupu di tiga tempat, dan kelereng Upe dan Halim). Tiap ronde ada empat langkah. Siswa memilih satu dari tiga jawaban untuk diketahui, ditanya, solusi, dan kesimpulan. Jawaban yang salah memuat jebakan kata lebihnya.",
+      "voiceGuide": "Pilih jawaban untuk tiap langkah laporan.",
+      "symbolLarge": "11 − 3 = 8",
+      "wordLarge": "LAPORAN DETEKTIF",
+      "mathNotation": "diketahui • ditanya • solusi • jadi"
     },
     {
-      stage: "Abstract",
-      gameType: "story-builder",
-      title: "Pencipta Soal Cerita",
-      bookReference: "hlm. 56 (Ayo Mencoba: buat soal cerita) dan hlm. 63 (Ayo Berkarya: buat satu soal cerita)",
-      objective: "Menyusun soal cerita sendiri dengan tokoh, benda, kata kunci, dan bilangan, lalu menyelesaikannya.",
-      mechanicDescription:
-        "Dua ronde. Ronde 1 soal penjumlahan dengan kata lebihnya. Ronde 2 soal pengurangan dengan kata kurangnya. Siswa memilih tokoh, benda, dan bilangan. Soal tersusun otomatis, lalu siswa memilih jawabannya. Batas: hasil tidak lebih dari 20 dan tidak kurang dari 0.",
-      voiceGuide: "Pilih tokoh, benda, dan bilangan, lalu selesaikan soalmu.",
-      symbolLarge: "?",
-      wordLarge: "SOAL BUATANKU",
-      mathNotation: "tokoh • benda • kata kunci • bilangan",
-    },
+      "stage": "Abstract",
+      "gameType": "story-builder",
+      "title": "Pencipta Soal Cerita",
+      "bookReference": "hlm. 56 (Ayo Mencoba: buat soal cerita) dan hlm. 63 (Ayo Berkarya: buat satu soal cerita)",
+      "objective": "Menyusun soal cerita sendiri dengan tokoh, benda, kata kunci, dan bilangan, lalu menyelesaikannya.",
+      "mechanicDescription": "Dua ronde. Ronde 1 soal penjumlahan dengan kata lebihnya. Ronde 2 soal pengurangan dengan kata kurangnya. Siswa memilih tokoh, benda, dan bilangan. Soal tersusun otomatis, lalu siswa memilih jawabannya. Batas: hasil tidak lebih dari 20 dan tidak kurang dari 0.",
+      "voiceGuide": "Pilih tokoh, benda, dan bilangan, lalu selesaikan soalmu.",
+      "symbolLarge": "?",
+      "wordLarge": "SOAL BUATANKU",
+      "mathNotation": "tokoh • benda • kata kunci • bilangan"
+    }
   ],
-  poin: [
+  "poin": [
     {
-      ikon: "🔑",
-      nama: "Empat kata kunci",
-      isi: "lebihnya • kurangnya • selisih • jumlah",
-      suara: "Empat kata kunci soal cerita adalah lebihnya, kurangnya, selisih, dan jumlah. Jumlah berarti menambah. Selisih berarti bilangan besar dikurangi bilangan kecil. Untuk lebihnya dan kurangnya, baca dulu siapa yang punya lebih banyak.",
+      "ikon": "🔑",
+      "nama": "Empat kata kunci",
+      "isi": "lebihnya • kurangnya • selisih • jumlah",
+      "suara": "Empat kata kunci soal cerita adalah lebihnya, kurangnya, selisih, dan jumlah. Jumlah berarti menambah. Selisih berarti bilangan besar dikurangi bilangan kecil. Untuk lebihnya dan kurangnya, baca dulu siapa yang punya lebih banyak."
     },
     {
-      ikon: "🪜",
-      nama: "Empat langkah",
-      isi: "diketahui, ditanya, solusi, kesimpulan",
-      suara: "Selesaikan soal cerita dengan empat langkah berurutan. Diketahui, ditanya, solusi, dan kesimpulan.",
+      "ikon": "🪜",
+      "nama": "Empat langkah",
+      "isi": "diketahui, ditanya, solusi, kesimpulan",
+      "suara": "Selesaikan soal cerita dengan empat langkah berurutan. Diketahui, ditanya, solusi, dan kesimpulan."
     },
     {
-      ikon: "🔙",
-      nama: "Bilangan awal",
-      isi: "… − 4 = 12, maka 12 + 4 = 16",
-      suara: "Untuk mencari bilangan awal, balikkan kejadiannya. Titik-titik dikurangi empat sama dengan dua belas, jadi dua belas ditambah empat sama dengan enam belas.",
+      "ikon": "🔙",
+      "nama": "Bilangan awal",
+      "isi": "… − 4 = 12, maka 12 + 4 = 16",
+      "suara": "Untuk mencari bilangan awal, balikkan kejadiannya. Titik-titik dikurangi empat sama dengan dua belas, jadi dua belas ditambah empat sama dengan enam belas."
     },
     {
-      ikon: "➕",
-      nama: "Tiga bilangan",
-      isi: "5 + 7 = 12, lalu 12 + 8 = 20",
-      suara: "Menjumlahkan tiga bilangan. Jumlahkan dua dulu, lalu tambahkan bilangan ketiga. Lima ditambah tujuh sama dengan dua belas. Dua belas ditambah delapan sama dengan dua puluh.",
+      "ikon": "➕",
+      "nama": "Tiga bilangan",
+      "isi": "5 + 7 = 12, lalu 12 + 8 = 20",
+      "suara": "Menjumlahkan tiga bilangan. Jumlahkan dua dulu, lalu tambahkan bilangan ketiga. Lima ditambah tujuh sama dengan dua belas. Dua belas ditambah delapan sama dengan dua puluh."
     },
     {
-      ikon: "📏",
-      nama: "Model batang",
-      isi: "gambar soalnya supaya jelas",
-      suara: "Gambarlah soal dengan model batang. Batang panjang untuk yang lebih banyak, batang pendek untuk yang lebih sedikit. Bagian yang tersisa adalah selisihnya.",
+      "ikon": "📏",
+      "nama": "Model batang",
+      "isi": "gambar soalnya supaya jelas",
+      "suara": "Gambarlah soal dengan model batang. Batang panjang untuk yang lebih banyak, batang pendek untuk yang lebih sedikit. Bagian yang tersisa adalah selisihnya."
     },
+    {
+      "ikon": "🌍",
+      "nama": "Cerita Bagian–Utuh",
+      "isi": "METODE LUAR · Part–Part–Whole Story: Cerita penjumlahan/pengurangan memakai bagian dan utuh. (asal: Singapore Math).",
+      "suara": "METODE LUAR. Cerita Bagian–Utuh. Cerita penjumlahan/pengurangan memakai bagian dan utuh."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Model Batang Cerita",
+      "isi": "METODE LUAR · Bar Model Story: Gambar batang sebelum menulis kalimat. (asal: Singapore bar model).",
+      "suara": "METODE LUAR. Model Batang Cerita. Gambar batang sebelum menulis kalimat."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Pilih Operasi",
+      "isi": "METODE LUAR · Choose Operation: Tentukan + atau − dari makna cerita. (asal: Word-problem pedagogy).",
+      "suara": "METODE LUAR. Pilih Operasi. Tentukan + atau − dari makna cerita."
+    }
   ],
-  poinSuara:
-    "Ingat selalu! Baca soal cerita pelan-pelan. Cari kata kunci: lebihnya, kurangnya, selisih, dan jumlah. Tulis diketahui, ditanya, solusi, dan kesimpulan secara berurutan. Untuk mencari bilangan awal, balikkan kejadiannya. Periksa apakah jawabanmu masuk akal.",
-  cara: {
-    suara: "Cara menulis kesimpulan. Jadi, jumlah donat milik Tika dan Malosi adalah sembilan belas donat.",
-    potongan: [
-      { teks: "Jadi, jumlah donat Tika dan Malosi", warna: "#FFFFFF" },
-      { teks: "adalah", warna: "#FFFFFF" },
-      { teks: "19", warna: "#FFE566" },
-      { teks: "donat", warna: "#7FCB96" },
-    ],
+  "poinSuara": "Ingat selalu! Baca soal cerita pelan-pelan. Cari kata kunci: lebihnya, kurangnya, selisih, dan jumlah. Tulis diketahui, ditanya, solusi, dan kesimpulan secara berurutan. Untuk mencari bilangan awal, balikkan kejadiannya. Periksa apakah jawabanmu masuk akal.",
+  "cara": {
+    "suara": "Cara menulis kesimpulan. Jadi, jumlah donat milik Tika dan Malosi adalah sembilan belas donat.",
+    "potongan": [
+      {
+        "teks": "Jadi, jumlah donat Tika dan Malosi",
+        "warna": "#FFFFFF"
+      },
+      {
+        "teks": "adalah",
+        "warna": "#FFFFFF"
+      },
+      {
+        "teks": "19",
+        "warna": "#FFE566"
+      },
+      {
+        "teks": "donat",
+        "warna": "#7FCB96"
+      }
+    ]
   },
-  rumah:
-    "Ayo Mencoba di rumah: buatlah satu soal cerita penjumlahan atau pengurangan tentang benda di rumahmu. Mintalah anggota keluarga menyelesaikannya dengan menulis diketahui, ditanya, solusi, dan kesimpulan. Lalu tukar peran.",
-  refleksi: [
+  "rumah": "Ayo Mencoba di rumah: buatlah satu soal cerita penjumlahan atau pengurangan tentang benda di rumahmu. Mintalah anggota keluarga menyelesaikannya dengan menulis diketahui, ditanya, solusi, dan kesimpulan. Lalu tukar peran.",
+  "refleksi": [
     "Aku bisa melakukan penjumlahan.",
     "Aku bisa melakukan pengurangan.",
     "Aku bisa mengerjakan soal cerita dengan langkah yang berurutan.",
-    "Aku menyampaikan pendapat dengan percaya diri.",
+    "Aku menyampaikan pendapat dengan percaya diri."
   ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Part–Part–Whole Story",
+      "namaId": "Cerita Bagian–Utuh",
+      "asal": "Singapore Math",
+      "ringkas": "Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
+      "tahap": [
+        "Story",
+        "Mind"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Bar Model Story",
+      "namaId": "Model Batang Cerita",
+      "asal": "Singapore bar model",
+      "ringkas": "Gambar batang sebelum menulis kalimat.",
+      "tahap": [
+        "Picture",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Choose Operation",
+      "namaId": "Pilih Operasi",
+      "asal": "Word-problem pedagogy",
+      "ringkas": "Tentukan + atau − dari makna cerita.",
+      "tahap": [
+        "Infografis",
+        "Concrete"
+      ]
+    }
+  ]
 };
 
 export const SUB_BAB_K2B2: SubBabNaskah[] = [SUB_A, SUB_B, SUB_C];
-
-/** Semua kalimat video dipecah jadi ketukan. Papan judul harus sama banyaknya. Dipakai uji dan pembangkit. */
-export const semuaAdegan = (): AdeganNaskah[] => SUB_BAB_K2B2.flatMap((s) => s.videos.flatMap((v) => v.adegan));

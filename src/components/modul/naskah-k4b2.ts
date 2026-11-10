@@ -1,9 +1,4 @@
-/**
- * Naskah murni Matematika Kelas 4 Bab 2 (Pecahan): Sub-Bab A–E.
- * Sumber: Buku Siswa Matematika Kelas IV Kemendikbudristek Bab 2 hlm. 57–70.
- * Satu sumber: buat-k4-bab2.mjs → kelas4-bab2.json. Tanpa React/jaringan.
- */
-import type { GameNaskah, SubBabNaskah } from "./naskah-k2b2";
+import type { SubBabNaskah } from "./naskah-k2b2";
 
 export const K4B2_META = {
   "chapterId": "k4-mat-bab2",
@@ -27,7 +22,7 @@ export const SUB_A42: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar pecahan dengan pembilang satu. Pizza dipotong empat sama besar, tiap anak mendapat seperempat. Makin besar penyebut, makin kecil pecahan unit. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa membandingkan dan mengurutkan pecahan dengan pembilang satu.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 2 Sub-Bab A hlm. 57–62; unit fraction & area model."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab A)."
   },
   "videos": [
     {
@@ -74,13 +69,15 @@ export const SUB_A42: SubBabNaskah = {
             "Lihat daerah yang diarsir.",
             "Hitung seluruh bagian sama besar.",
             "Hitung bagian yang diarsir.",
-            "Tulis sebagai pecahan."
+            "Tulis sebagai pecahan.",
+            "METODE LUAR. Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama."
           ],
           "papan": [
             "arsir",
             "seluruh",
             "diarsir",
-            "pecahan"
+            "pecahan",
+            "METODE LUAR · Pecahan Satuan"
           ]
         }
       ]
@@ -129,13 +126,15 @@ export const SUB_A42: SubBabNaskah = {
             "Sekarang 1/10 dan 1/5.",
             "Daerah 1/10 lebih kecil.",
             "Jadi 1/10 kurang dari 1/5.",
-            "Ditulis 1/10 < 1/5."
+            "Ditulis 1/10 < 1/5.",
+            "METODE LUAR. Model Daerah: Arsir satu bagian dari keseluruhan."
           ],
           "papan": [
             "1/10",
             "1/5",
             "<",
-            "1/10 < 1/5"
+            "1/10 < 1/5",
+            "METODE LUAR · Model Daerah"
           ]
         }
       ]
@@ -184,13 +183,15 @@ export const SUB_A42: SubBabNaskah = {
             "Pembilang tetap satu.",
             "Penyebut menyatakan banyak bagian.",
             "Semakin banyak bagian, tiap bagian semakin kecil.",
-            "Siap lanjut penyebut sama."
+            "Siap lanjut penyebut sama.",
+            "METODE LUAR. Pecahan di Garis: 1/n terletak antara 0 dan 1."
           ],
           "papan": [
             "pembilang 1",
             "penyebut",
             "bagian kecil",
-            "siap B"
+            "siap B",
+            "METODE LUAR · Pecahan di Garis"
           ]
         }
       ]
@@ -259,6 +260,22 @@ export const SUB_A42: SubBabNaskah = {
       "stepDesc": "Lanjut penyebut sama.",
       "icon": "➡️",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Pecahan Satuan",
+      "stepDesc": "Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Model Daerah",
+      "stepDesc": "Arsir satu bagian dari keseluruhan.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -332,6 +349,27 @@ export const SUB_A42: SubBabNaskah = {
       "countNum": 1,
       "countWord": "lanjut",
       "suara": "Penyebut sama."
+    },
+    {
+      "judul": "Pecahan Satuan",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Unit Fraction",
+      "suara": "METODE LUAR. Pecahan Satuan. Pembilang 1 berarti satu bagian dari penyebut bagian sama."
+    },
+    {
+      "judul": "Model Daerah",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Area Model",
+      "suara": "METODE LUAR. Model Daerah. Arsir satu bagian dari keseluruhan."
+    },
+    {
+      "judul": "Pecahan di Garis",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Number Line Unit",
+      "suara": "METODE LUAR. Pecahan di Garis. 1/n terletak antara 0 dan 1."
     }
   ],
   "games": [
@@ -340,9 +378,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "pizza-bagi",
       "title": "Potong Pizza Sama Besar",
       "bookReference": "hlm. 58–59 (pizza 1/4)",
-      "objective": "Mengenal 1 dari n bagian.",
+      "objective": "Mengenal 1 dari n bagian. (METODE LUAR · Pecahan Satuan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih pecahan.",
+      "voiceGuide": "METODE LUAR · Pecahan Satuan. Pilih pecahan.",
       "emoji": "🍕",
       "targetCount": 6
     },
@@ -450,9 +488,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "circle-read",
       "title": "Baca Lingkaran Arsir",
       "bookReference": "hlm. 59–60",
-      "objective": "Membaca diagram lingkaran.",
+      "objective": "Membaca diagram lingkaran. (METODE LUAR · Pecahan Satuan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih pecahan.",
+      "voiceGuide": "METODE LUAR · Pecahan Satuan. Pilih pecahan.",
       "diagramType": "circle",
       "numberA": 1,
       "numberB": 4
@@ -570,9 +608,9 @@ export const SUB_A42: SubBabNaskah = {
       "gameType": "write-unit",
       "title": "Tulis 1/n",
       "bookReference": "hlm. 59",
-      "objective": "Menulis notasi.",
+      "objective": "Menulis notasi. (METODE LUAR · Pecahan Satuan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih notasi.",
+      "voiceGuide": "METODE LUAR · Pecahan Satuan. Pilih notasi.",
       "symbolLarge": "1/4",
       "wordLarge": "UNIT",
       "mathNotation": "1/n"
@@ -710,6 +748,24 @@ export const SUB_A42: SubBabNaskah = {
       "nama": "Cerita",
       "isi": "Pakai pecahan untuk membandingkan ukuran.",
       "suara": "Bawang 1/2 lebih berat dari gula 1/4."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Pecahan Satuan",
+      "isi": "METODE LUAR · Unit Fraction: Pembilang 1 berarti satu bagian dari penyebut bagian sama. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Pecahan Satuan. Pembilang 1 berarti satu bagian dari penyebut bagian sama."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Model Daerah",
+      "isi": "METODE LUAR · Area Model: Arsir satu bagian dari keseluruhan. (asal: Fraction area model).",
+      "suara": "METODE LUAR. Model Daerah. Arsir satu bagian dari keseluruhan."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Pecahan di Garis",
+      "isi": "METODE LUAR · Number Line Unit: 1/n terletak antara 0 dan 1. (asal: Number line fractions).",
+      "suara": "METODE LUAR. Pecahan di Garis. 1/n terletak antara 0 dan 1."
     }
   ],
   "poinSuara": "Empat poin pecahan pembilang satu.",
@@ -740,6 +796,42 @@ export const SUB_A42: SubBabNaskah = {
     "Aku membaca arsir.",
     "Aku membandingkan unit.",
     "Aku menyelesaikan cerita."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Unit Fraction",
+      "namaId": "Pecahan Satuan",
+      "asal": "Van de Walle",
+      "ringkas": "Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Area Model",
+      "namaId": "Model Daerah",
+      "asal": "Fraction area model",
+      "ringkas": "Arsir satu bagian dari keseluruhan.",
+      "tahap": [
+        "Infografis",
+        "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Number Line Unit",
+      "namaId": "Pecahan di Garis",
+      "asal": "Number line fractions",
+      "ringkas": "1/n terletak antara 0 dan 1.",
+      "tahap": [
+        "Mind",
+        "Abstract"
+      ]
+    }
   ]
 };
 
@@ -754,7 +846,7 @@ export const SUB_B42: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar pecahan dengan penyebut sama. Jika penyebut sama, bandingkan pembilangnya. Satu per tiga kurang dari dua per tiga. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa membandingkan dan mengurutkan pecahan dengan penyebut sama.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 2 Sub-Bab B hlm. 63–65; common denominator comparison."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab B)."
   },
   "videos": [
     {
@@ -801,13 +893,15 @@ export const SUB_B42: SubBabNaskah = {
             "Sekarang penyebut 10.",
             "2 bagian dibanding 1 bagian.",
             "2/10 lebih dari 1/10.",
-            "Aturan sama: lihat pembilang."
+            "Aturan sama: lihat pembilang.",
+            "METODE LUAR. Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama."
           ],
           "papan": [
             "penyebut 10",
             "2 vs 1",
             ">",
-            "aturan"
+            "aturan",
+            "METODE LUAR · Penyebut Sama"
           ]
         }
       ]
@@ -856,13 +950,15 @@ export const SUB_B42: SubBabNaskah = {
             "Isi titik-titik dengan > atau <.",
             "Pastikan penyebut sama dulu.",
             "Lalu bandingkan pembilang.",
-            "Ayo kerjakan dengan teliti."
+            "Ayo kerjakan dengan teliti.",
+            "METODE LUAR. Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar."
           ],
           "papan": [
             "> atau <",
             "cek penyebut",
             "cek pembilang",
-            "teliti"
+            "teliti",
+            "METODE LUAR · Banding Pembilang"
           ]
         }
       ]
@@ -911,13 +1007,15 @@ export const SUB_B42: SubBabNaskah = {
             "Kadang bentuk berbeda tapi nilai sama.",
             "Itu namanya pecahan senilai.",
             "Contoh 2/6 dan 1/3.",
-            "Siap Sub-Bab C."
+            "Siap Sub-Bab C.",
+            "METODE LUAR. Batang Pecahan: Batang sama panjang memudahkan banding."
           ],
           "papan": [
             "bentuk beda",
             "nilai sama",
             "2/6=1/3",
-            "siap C"
+            "siap C",
+            "METODE LUAR · Batang Pecahan"
           ]
         }
       ]
@@ -986,6 +1084,22 @@ export const SUB_B42: SubBabNaskah = {
       "stepDesc": "Lanjut pecahan senilai.",
       "icon": "➡️",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Penyebut Sama",
+      "stepDesc": "Banding/jumlah lebih mudah jika penyebut sama.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Banding Pembilang",
+      "stepDesc": "Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -1059,6 +1173,27 @@ export const SUB_B42: SubBabNaskah = {
       "countNum": 1,
       "countWord": "lanjut",
       "suara": "Pecahan senilai."
+    },
+    {
+      "judul": "Penyebut Sama",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Same Denominator",
+      "suara": "METODE LUAR. Penyebut Sama. Banding/jumlah lebih mudah jika penyebut sama."
+    },
+    {
+      "judul": "Banding Pembilang",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Compare Numerators",
+      "suara": "METODE LUAR. Banding Pembilang. Penyebut sama: pembilang lebih besar = pecahan lebih besar."
+    },
+    {
+      "judul": "Batang Pecahan",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Fraction Bars",
+      "suara": "METODE LUAR. Batang Pecahan. Batang sama panjang memudahkan banding."
     }
   ],
   "games": [
@@ -1067,9 +1202,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "baca-sama",
       "title": "Baca Pecahan Penyebut Sama",
       "bookReference": "hlm. 63–64",
-      "objective": "Membaca p/q.",
+      "objective": "Membaca p/q. (METODE LUAR · Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih pecahan.",
+      "voiceGuide": "METODE LUAR · Penyebut Sama. Pilih pecahan.",
       "emoji": "🧱",
       "targetCount": 6
     },
@@ -1177,9 +1312,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "bar-sama",
       "title": "Batang Penyebut Sama",
       "bookReference": "hlm. 63–64",
-      "objective": "Membaca batang.",
+      "objective": "Membaca batang. (METODE LUAR · Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Penyebut Sama. Pilih.",
       "diagramType": "bar",
       "numberA": 2,
       "numberB": 3
@@ -1297,9 +1432,9 @@ export const SUB_B42: SubBabNaskah = {
       "gameType": "write-b",
       "title": "Tulis p/q",
       "bookReference": "hlm. 63–65",
-      "objective": "Menulis notasi.",
+      "objective": "Menulis notasi. (METODE LUAR · Penyebut Sama)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Penyebut Sama. Pilih.",
       "symbolLarge": "2/3",
       "wordLarge": "SAMA",
       "mathNotation": "p/q"
@@ -1437,6 +1572,24 @@ export const SUB_B42: SubBabNaskah = {
       "nama": "Cerita",
       "isi": "Tongkat Asep 3/6 lebih panjang.",
       "suara": "3/6 > 2/6."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Penyebut Sama",
+      "isi": "METODE LUAR · Same Denominator: Banding/jumlah lebih mudah jika penyebut sama. (asal: Singapore Math).",
+      "suara": "METODE LUAR. Penyebut Sama. Banding/jumlah lebih mudah jika penyebut sama."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Banding Pembilang",
+      "isi": "METODE LUAR · Compare Numerators: Penyebut sama: pembilang lebih besar = pecahan lebih besar. (asal: Fraction comparison).",
+      "suara": "METODE LUAR. Banding Pembilang. Penyebut sama: pembilang lebih besar = pecahan lebih besar."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Batang Pecahan",
+      "isi": "METODE LUAR · Fraction Bars: Batang sama panjang memudahkan banding. (asal: Manipulative pedagogy).",
+      "suara": "METODE LUAR. Batang Pecahan. Batang sama panjang memudahkan banding."
     }
   ],
   "poinSuara": "Empat poin pecahan penyebut sama.",
@@ -1467,6 +1620,42 @@ export const SUB_B42: SubBabNaskah = {
     "Aku banding pembilang.",
     "Aku isi tanda benar.",
     "Aku selesaikan cerita."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Same Denominator",
+      "namaId": "Penyebut Sama",
+      "asal": "Singapore Math",
+      "ringkas": "Banding/jumlah lebih mudah jika penyebut sama.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Compare Numerators",
+      "namaId": "Banding Pembilang",
+      "asal": "Fraction comparison",
+      "ringkas": "Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
+      "tahap": [
+        "Picture",
+        "Mind"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Fraction Bars",
+      "namaId": "Batang Pecahan",
+      "asal": "Manipulative pedagogy",
+      "ringkas": "Batang sama panjang memudahkan banding.",
+      "tahap": [
+        "Infografis",
+        "Concrete"
+      ]
+    }
   ]
 };
 
@@ -1481,7 +1670,7 @@ export const SUB_C42: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar pecahan senilai. Dua per enam sama dengan satu per tiga. Kalikan atau bagi pembilang dan penyebut dengan bilangan yang sama. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa mengenali pecahan senilai setelah mengamati gambar dan simbol.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 2 Sub-Bab C hlm. 66–70; equivalent fractions."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab C)."
   },
   "videos": [
     {
@@ -1528,13 +1717,15 @@ export const SUB_C42: SubBabNaskah = {
             "Lipat kertas jadi 4, warnai 1 → 1/4.",
             "Lipat kertas lain jadi 16, warnai 4 → 4/16.",
             "Daerah warnanya sama besar.",
-            "1/4 senilai 4/16."
+            "1/4 senilai 4/16.",
+            "METODE LUAR. Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda."
           ],
           "papan": [
             "1/4",
             "4/16",
             "sama besar",
-            "senilai"
+            "senilai",
+            "METODE LUAR · Pecahan Senilai"
           ]
         }
       ]
@@ -1583,13 +1774,15 @@ export const SUB_C42: SubBabNaskah = {
             "Jangan hanya ubah pembilang.",
             "Jangan hanya ubah penyebut.",
             "Ubah keduanya dengan bilangan sama.",
-            "Itulah kunci senilai."
+            "Itulah kunci senilai.",
+            "METODE LUAR. Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama."
           ],
           "papan": [
             "bukan salah satu",
             "keduanya",
             "bilangan sama",
-            "kunci"
+            "kunci",
+            "METODE LUAR · Kali dengan Bentuk Satu"
           ]
         }
       ]
@@ -1638,13 +1831,15 @@ export const SUB_C42: SubBabNaskah = {
             "Pecahan biasa sudah dikuasai.",
             "Berikutnya pecahan desimal.",
             "Persepuluhan dan perseratusan.",
-            "Simpan dulu untuk Sub-Bab D."
+            "Simpan dulu untuk Sub-Bab D.",
+            "METODE LUAR. Sederhanakan: Bagi pembilang dan penyebut dengan FPB."
           ],
           "papan": [
             "biasa ok",
             "desimal",
             "1/10",
-            "nanti D"
+            "nanti D",
+            "METODE LUAR · Sederhanakan"
           ]
         }
       ]
@@ -1713,6 +1908,22 @@ export const SUB_C42: SubBabNaskah = {
       "stepDesc": "Siap pecahan desimal.",
       "icon": "➡️",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Pecahan Senilai",
+      "stepDesc": "Senilai menunjuk bagian sama dengan tulisan beda.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Kali dengan Bentuk Satu",
+      "stepDesc": "Kali pembilang dan penyebut dengan bilangan sama.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -1786,6 +1997,27 @@ export const SUB_C42: SubBabNaskah = {
       "countNum": 1,
       "countWord": "desimal",
       "suara": "Sub-Bab berikutnya."
+    },
+    {
+      "judul": "Pecahan Senilai",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Equivalent Fractions",
+      "suara": "METODE LUAR. Pecahan Senilai. Senilai menunjuk bagian sama dengan tulisan beda."
+    },
+    {
+      "judul": "Kali dengan Bentuk Satu",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Multiply Identity",
+      "suara": "METODE LUAR. Kali dengan Bentuk Satu. Kali pembilang dan penyebut dengan bilangan sama."
+    },
+    {
+      "judul": "Sederhanakan",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Simplify",
+      "suara": "METODE LUAR. Sederhanakan. Bagi pembilang dan penyebut dengan FPB."
     }
   ],
   "games": [
@@ -1794,9 +2026,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "coklat-senilai",
       "title": "Coklat Putu 2/6 = 1/3",
       "bookReference": "hlm. 67–68",
-      "objective": "Mengenal senilai dari benda.",
+      "objective": "Mengenal senilai dari benda. (METODE LUAR · Pecahan Senilai)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih sama/beda.",
+      "voiceGuide": "METODE LUAR · Pecahan Senilai. Pilih sama/beda.",
       "emoji": "🍫",
       "targetCount": 6
     },
@@ -1904,9 +2136,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "grid-senilai",
       "title": "Kotak Senilai",
       "bookReference": "hlm. 66–67",
-      "objective": "Membaca grid arsir.",
+      "objective": "Membaca grid arsir. (METODE LUAR · Pecahan Senilai)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih sama/beda.",
+      "voiceGuide": "METODE LUAR · Pecahan Senilai. Pilih sama/beda.",
       "diagramType": "grid",
       "numberA": 1,
       "numberB": 3
@@ -2024,9 +2256,9 @@ export const SUB_C42: SubBabNaskah = {
       "gameType": "check-equal",
       "title": "Apakah Senilai?",
       "bookReference": "hlm. 68–70",
-      "objective": "Menilai kesamaan nilai.",
+      "objective": "Menilai kesamaan nilai. (METODE LUAR · Pecahan Senilai)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih sama/beda.",
+      "voiceGuide": "METODE LUAR · Pecahan Senilai. Pilih sama/beda.",
       "symbolLarge": "=",
       "wordLarge": "SENILAI",
       "mathNotation": "a/b = c/d"
@@ -2164,6 +2396,24 @@ export const SUB_C42: SubBabNaskah = {
       "nama": "Bukti",
       "isi": "Daerah arsir sama luas menandai senilai.",
       "suara": "Coklat dan kertas lipat."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Pecahan Senilai",
+      "isi": "METODE LUAR · Equivalent Fractions: Senilai menunjuk bagian sama dengan tulisan beda. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Pecahan Senilai. Senilai menunjuk bagian sama dengan tulisan beda."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Kali dengan Bentuk Satu",
+      "isi": "METODE LUAR · Multiply Identity: Kali pembilang dan penyebut dengan bilangan sama. (asal: Fraction equivalence).",
+      "suara": "METODE LUAR. Kali dengan Bentuk Satu. Kali pembilang dan penyebut dengan bilangan sama."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Sederhanakan",
+      "isi": "METODE LUAR · Simplify: Bagi pembilang dan penyebut dengan FPB. (asal: GCF simplification).",
+      "suara": "METODE LUAR. Sederhanakan. Bagi pembilang dan penyebut dengan FPB."
     }
   ],
   "poinSuara": "Empat poin pecahan senilai.",
@@ -2194,6 +2444,42 @@ export const SUB_C42: SubBabNaskah = {
     "Aku bisa mengalikan.",
     "Aku bisa membagi.",
     "Aku membuktikan dengan gambar."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Equivalent Fractions",
+      "namaId": "Pecahan Senilai",
+      "asal": "Van de Walle",
+      "ringkas": "Senilai menunjuk bagian sama dengan tulisan beda.",
+      "tahap": [
+        "Story",
+        "Mind",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Multiply Identity",
+      "namaId": "Kali dengan Bentuk Satu",
+      "asal": "Fraction equivalence",
+      "ringkas": "Kali pembilang dan penyebut dengan bilangan sama.",
+      "tahap": [
+        "Concrete",
+        "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Simplify",
+      "namaId": "Sederhanakan",
+      "asal": "GCF simplification",
+      "ringkas": "Bagi pembilang dan penyebut dengan FPB.",
+      "tahap": [
+        "Infografis",
+        "Abstract"
+      ]
+    }
   ]
 };
 
@@ -2208,7 +2494,7 @@ export const SUB_D42: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar pecahan desimal. Satu dari sepuluh roti sama dengan nol koma satu. Satu dari seratus biskuit sama dengan nol koma nol satu. Satu angka di belakang koma berarti penyebut sepuluh. Dua angka berarti penyebut seratus. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menyatakan pecahan desimal persepuluhan dan perseratusan serta mengubah pecahan biasa menjadi desimal.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 2 Sub-Bab D hlm. 71–74; place-value decimal model."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab D)."
   },
   "videos": [
     {
@@ -2255,13 +2541,15 @@ export const SUB_D42: SubBabNaskah = {
             "Tiga roti berlapis.",
             "Tiga per sepuluh.",
             "Ditulis nol koma tiga.",
-            "Masih persepuluhan."
+            "Masih persepuluhan.",
+            "METODE LUAR. Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan."
           ],
           "papan": [
             "3/10",
             "0,3",
             "desimal",
-            "OK"
+            "OK",
+            "METODE LUAR · Desimal Persepuluhan Perseratusan"
           ]
         }
       ]
@@ -2310,13 +2598,15 @@ export const SUB_D42: SubBabNaskah = {
             "Tujuh per seratus.",
             "Ditulis nol koma nol tujuh.",
             "Dua puluh lima per seratus jadi nol koma dua lima.",
-            "Paham desimal."
+            "Paham desimal.",
+            "METODE LUAR. Kisi Desimal: Kisi 10×10 menunjukkan perseratusan."
           ],
           "papan": [
             "7/100",
             "0,07",
             "25/100",
-            "0,25"
+            "0,25",
+            "METODE LUAR · Kisi Desimal"
           ]
         }
       ]
@@ -2365,13 +2655,15 @@ export const SUB_D42: SubBabNaskah = {
             "Ubah pecahan biasa ke desimal.",
             "Lima per sepuluh jadi nol koma lima.",
             "Sembilan per sepuluh jadi nol koma sembilan.",
-            "Siap berlatih."
+            "Siap berlatih.",
+            "METODE LUAR. Jembatan Pecahan–Desimal: 0,3 = 3/10; 0,25 = 25/100."
           ],
           "papan": [
             "5/10",
             "0,5",
             "9/10",
-            "0,9"
+            "0,9",
+            "METODE LUAR · Jembatan Pecahan–Desimal"
           ]
         }
       ]
@@ -2440,6 +2732,22 @@ export const SUB_D42: SubBabNaskah = {
       "stepDesc": "Lanjut persen.",
       "icon": "➡️",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Desimal Persepuluhan Perseratusan",
+      "stepDesc": "Digit setelah koma = persepuluhan dan perseratusan.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Kisi Desimal",
+      "stepDesc": "Kisi 10×10 menunjukkan perseratusan.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -2513,6 +2821,27 @@ export const SUB_D42: SubBabNaskah = {
       "countNum": 1,
       "countWord": "lanjut",
       "suara": "Menuju persen."
+    },
+    {
+      "judul": "Desimal Persepuluhan Perseratusan",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Decimal Tenths Hundredths",
+      "suara": "METODE LUAR. Desimal Persepuluhan Perseratusan. Digit setelah koma = persepuluhan dan perseratusan."
+    },
+    {
+      "judul": "Kisi Desimal",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Decimal Grid",
+      "suara": "METODE LUAR. Kisi Desimal. Kisi 10×10 menunjukkan perseratusan."
+    },
+    {
+      "judul": "Jembatan Pecahan–Desimal",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Fraction–Decimal Link",
+      "suara": "METODE LUAR. Jembatan Pecahan–Desimal. 0,3 = 3/10; 0,25 = 25/100."
     }
   ],
   "games": [
@@ -2521,9 +2850,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "roti-10",
       "title": "Roti Sepuluh Bagian",
       "bookReference": "hlm. 71–72 (roti 1/10)",
-      "objective": "Mengenal 1/10 = 0,1.",
+      "objective": "Mengenal 1/10 = 0,1. (METODE LUAR · Desimal Persepuluhan Perseratusan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih desimal.",
+      "voiceGuide": "METODE LUAR · Desimal Persepuluhan Perseratusan. Pilih desimal.",
       "emoji": "🍞",
       "targetCount": 6
     },
@@ -2631,9 +2960,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "bar-10",
       "title": "Batang Sepuluh",
       "bookReference": "hlm. 71–72",
-      "objective": "Baca batang /10.",
+      "objective": "Baca batang /10. (METODE LUAR · Desimal Persepuluhan Perseratusan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Desimal Persepuluhan Perseratusan. Pilih.",
       "diagramType": "bar10",
       "numberA": 1,
       "numberB": 10
@@ -2751,9 +3080,9 @@ export const SUB_D42: SubBabNaskah = {
       "gameType": "write-des10",
       "title": "Tulis 0,p",
       "bookReference": "hlm. 72–74",
-      "objective": "Menulis persepuluhan.",
+      "objective": "Menulis persepuluhan. (METODE LUAR · Desimal Persepuluhan Perseratusan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Desimal Persepuluhan Perseratusan. Pilih.",
       "symbolLarge": "0,1",
       "wordLarge": "PERSEPULUHAN",
       "mathNotation": "p/10"
@@ -2891,6 +3220,24 @@ export const SUB_D42: SubBabNaskah = {
       "nama": "Cerita",
       "isi": "Roti dan biskuit membantu membayangkan bagian.",
       "suara": "Benda nyata memudahkan desimal."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Desimal Persepuluhan Perseratusan",
+      "isi": "METODE LUAR · Decimal Tenths Hundredths: Digit setelah koma = persepuluhan dan perseratusan. (asal: Place-value decimals).",
+      "suara": "METODE LUAR. Desimal Persepuluhan Perseratusan. Digit setelah koma = persepuluhan dan perseratusan."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Kisi Desimal",
+      "isi": "METODE LUAR · Decimal Grid: Kisi 10×10 menunjukkan perseratusan. (asal: Base-ten grid).",
+      "suara": "METODE LUAR. Kisi Desimal. Kisi 10×10 menunjukkan perseratusan."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Jembatan Pecahan–Desimal",
+      "isi": "METODE LUAR · Fraction–Decimal Link: 0,3 = 3/10; 0,25 = 25/100. (asal: Van de Walle).",
+      "suara": "METODE LUAR. Jembatan Pecahan–Desimal. 0,3 = 3/10; 0,25 = 25/100."
     }
   ],
   "poinSuara": "Empat poin pecahan desimal.",
@@ -2921,6 +3268,42 @@ export const SUB_D42: SubBabNaskah = {
     "Aku menulis 0,pp.",
     "Aku bedakan jenis.",
     "Aku ubah dari pecahan biasa."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Decimal Tenths Hundredths",
+      "namaId": "Desimal Persepuluhan Perseratusan",
+      "asal": "Place-value decimals",
+      "ringkas": "Digit setelah koma = persepuluhan dan perseratusan.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Decimal Grid",
+      "namaId": "Kisi Desimal",
+      "asal": "Base-ten grid",
+      "ringkas": "Kisi 10×10 menunjukkan perseratusan.",
+      "tahap": [
+        "Picture",
+        "Infografis"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Fraction–Decimal Link",
+      "namaId": "Jembatan Pecahan–Desimal",
+      "asal": "Van de Walle",
+      "ringkas": "0,3 = 3/10; 0,25 = 25/100.",
+      "tahap": [
+        "Mind",
+        "Abstract"
+      ]
+    }
   ]
 };
 
@@ -2935,7 +3318,7 @@ export const SUB_E42: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita menghubungkan desimal perseratusan dengan persen. Nol koma tujuh lima sama dengan tujuh puluh lima per seratus sama dengan tujuh puluh lima persen. Boleh pakai cara biasa atau langsung kali seratus persen. Geser koma dua kali ke kanan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa mengubah pecahan desimal perseratusan menjadi persen dan sebaliknya, serta memakai persen dalam cerita.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 2 Sub-Bab E hlm. 75–82; percent as hundredths."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 2 Sub-Bab E)."
   },
   "videos": [
     {
@@ -2982,13 +3365,15 @@ export const SUB_E42: SubBabNaskah = {
             "Cara biasa: lewat pecahan dulu.",
             "Cara langsung: kali seratus persen.",
             "Hasilnya sama.",
-            "Pilih cara yang kamu suka."
+            "Pilih cara yang kamu suka.",
+            "METODE LUAR. Persen sebagai Perseratusan: Persen artinya per seratus."
           ],
           "papan": [
             "cara biasa",
             "cara langsung",
             "sama",
-            "pilih"
+            "pilih",
+            "METODE LUAR · Persen sebagai Perseratusan"
           ]
         }
       ]
@@ -3037,13 +3422,15 @@ export const SUB_E42: SubBabNaskah = {
             "Dua koma empat enam.",
             "Kali seratus persen.",
             "Hasil dua ratus empat puluh enam persen.",
-            "Persen boleh lebih dari seratus."
+            "Persen boleh lebih dari seratus.",
+            "METODE LUAR. Kisi Seratus Persen: Satu kotak dari 100 = 1%."
           ],
           "papan": [
             "2,46",
             "×100%",
             "246%",
-            ">100%"
+            ">100%",
+            "METODE LUAR · Kisi Seratus Persen"
           ]
         }
       ]
@@ -3092,13 +3479,15 @@ export const SUB_E42: SubBabNaskah = {
             "Ubah desimal ke persen.",
             "Ubah persen ke desimal.",
             "Selesaikan cerita persen.",
-            "Siap berlatih."
+            "Siap berlatih.",
+            "METODE LUAR. Jembatan Desimal–Persen: 0,25 = 25%."
           ],
           "papan": [
             "des→%",
             "%→des",
             "cerita",
-            "siap"
+            "siap",
+            "METODE LUAR · Jembatan Desimal–Persen"
           ]
         }
       ]
@@ -3167,6 +3556,22 @@ export const SUB_E42: SubBabNaskah = {
       "stepDesc": "% → desimal.",
       "icon": "↩️",
       "flowFrom": "7",
+      "flowTo": "9"
+    },
+    {
+      "stepNumber": 9,
+      "stepTitle": "9. METODE LUAR · Persen sebagai Perseratusan",
+      "stepDesc": "Persen artinya per seratus.",
+      "icon": "🌍",
+      "flowFrom": "8",
+      "flowTo": "10"
+    },
+    {
+      "stepNumber": 10,
+      "stepTitle": "10. METODE LUAR · Kisi Seratus Persen",
+      "stepDesc": "Satu kotak dari 100 = 1%.",
+      "icon": "🌍",
+      "flowFrom": "9",
       "flowTo": "END"
     }
   ],
@@ -3240,6 +3645,27 @@ export const SUB_E42: SubBabNaskah = {
       "countNum": 1,
       "countWord": "tips",
       "suara": "Desimal ×100%."
+    },
+    {
+      "judul": "Persen sebagai Perseratusan",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Percent as Hundredths",
+      "suara": "METODE LUAR. Persen sebagai Perseratusan. Persen artinya per seratus."
+    },
+    {
+      "judul": "Kisi Seratus Persen",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Hundred Grid Percent",
+      "suara": "METODE LUAR. Kisi Seratus Persen. Satu kotak dari 100 = 1%."
+    },
+    {
+      "judul": "Jembatan Desimal–Persen",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Decimal–Percent Link",
+      "suara": "METODE LUAR. Jembatan Desimal–Persen. 0,25 = 25%."
     }
   ],
   "games": [
@@ -3248,9 +3674,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "des-ke-persen",
       "title": "Desimal Jadi Persen",
       "bookReference": "hlm. 76–78 (0,75→75%)",
-      "objective": "0,pp → persen.",
+      "objective": "0,pp → persen. (METODE LUAR · Persen sebagai Perseratusan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih persen.",
+      "voiceGuide": "METODE LUAR · Persen sebagai Perseratusan. Pilih persen.",
       "emoji": "％",
       "targetCount": 6
     },
@@ -3358,9 +3784,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "bar-persen",
       "title": "Batang ke Persen",
       "bookReference": "hlm. 76–78",
-      "objective": "Baca lalu ubah.",
+      "objective": "Baca lalu ubah. (METODE LUAR · Persen sebagai Perseratusan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Persen sebagai Perseratusan. Pilih.",
       "diagramType": "bar",
       "numberA": 75,
       "numberB": 100
@@ -3478,9 +3904,9 @@ export const SUB_E42: SubBabNaskah = {
       "gameType": "write-persen",
       "title": "Tulis …%",
       "bookReference": "hlm. 78–81",
-      "objective": "Menulis persen.",
+      "objective": "Menulis persen. (METODE LUAR · Persen sebagai Perseratusan)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Persen sebagai Perseratusan. Pilih.",
       "symbolLarge": "75%",
       "wordLarge": "PERSEN",
       "mathNotation": "0,pp→%"
@@ -3618,6 +4044,24 @@ export const SUB_E42: SubBabNaskah = {
       "nama": "Cerita",
       "isi": "Samakan penyebut 100 untuk menemukan persen, misalnya 20/50 = 40%.",
       "suara": "Cerita kelas memakai persen."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Persen sebagai Perseratusan",
+      "isi": "METODE LUAR · Percent as Hundredths: Persen artinya per seratus. (asal: Percent pedagogy).",
+      "suara": "METODE LUAR. Persen sebagai Perseratusan. Persen artinya per seratus."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Kisi Seratus Persen",
+      "isi": "METODE LUAR · Hundred Grid Percent: Satu kotak dari 100 = 1%. (asal: Visual percent).",
+      "suara": "METODE LUAR. Kisi Seratus Persen. Satu kotak dari 100 = 1%."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Jembatan Desimal–Persen",
+      "isi": "METODE LUAR · Decimal–Percent Link: 0,25 = 25%. (asal: Number relationships).",
+      "suara": "METODE LUAR. Jembatan Desimal–Persen. 0,25 = 25%."
     }
   ],
   "poinSuara": "Empat poin konsep persen.",
@@ -3648,6 +4092,42 @@ export const SUB_E42: SubBabNaskah = {
     "Aku pakai dua cara.",
     "Aku bisa balik ke desimal.",
     "Aku selesaikan cerita persen."
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Percent as Hundredths",
+      "namaId": "Persen sebagai Perseratusan",
+      "asal": "Percent pedagogy",
+      "ringkas": "Persen artinya per seratus.",
+      "tahap": [
+        "Story",
+        "Concrete",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Hundred Grid Percent",
+      "namaId": "Kisi Seratus Persen",
+      "asal": "Visual percent",
+      "ringkas": "Satu kotak dari 100 = 1%.",
+      "tahap": [
+        "Picture",
+        "Infografis"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Decimal–Percent Link",
+      "namaId": "Jembatan Desimal–Persen",
+      "asal": "Number relationships",
+      "ringkas": "0,25 = 25%.",
+      "tahap": [
+        "Mind",
+        "Abstract"
+      ]
+    }
   ]
 };
 

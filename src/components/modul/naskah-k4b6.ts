@@ -27,7 +27,7 @@ export const SUB_A46: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar piktogram. Piktogram adalah diagram yang memakai gambar untuk menyatakan banyak tiap kategori. Kadang satu gambar berarti satu benda, kadang satu gambar berarti beberapa. Kita baca dengan menghitung gambar lalu mengalikan skala. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menampilkan dan menafsirkan data dalam bentuk diagram gambar (piktogram).",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 6 Sub-Bab A hlm. 179–186; pictorial representation; scale in pictographs (van de Walle)."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 6 Sub-Bab A)."
   },
   "videos": [
     {
@@ -74,13 +74,15 @@ export const SUB_A46: SubBabNaskah = {
             "Hitung gambar tiap baris.",
             "Kalikan dengan skala.",
             "Bandingkan hasilnya.",
-            "Itu paling banyak atau sedikit."
+            "Itu paling banyak atau sedikit.",
+            "METODE LUAR. Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda."
           ],
           "papan": [
             "hitung",
             "× skala",
             "banding",
-            "ekstrem"
+            "ekstrem",
+            "METODE LUAR · Kunci Piktogram"
           ]
         }
       ]
@@ -129,13 +131,15 @@ export const SUB_A46: SubBabNaskah = {
             "Tanpa skala, gambar membingungkan.",
             "Selalu baca baris keterangan.",
             "Nilai = gambar dikali skala.",
-            "Latih sampai mahir."
+            "Latih sampai mahir.",
+            "METODE LUAR. Turus Kategori: Hitung frekuensi tiap kategori dengan turus."
           ],
           "papan": [
             "wajib skala",
             "keterangan",
             "nilai",
-            "latihan"
+            "latihan",
+            "METODE LUAR · Turus Kategori"
           ]
         }
       ]
@@ -184,13 +188,15 @@ export const SUB_A46: SubBabNaskah = {
             "Kita sudah paham piktogram.",
             "Saatnya menghitung dan membandingkan.",
             "Ayo ke permainan.",
-            "Semangat!"
+            "Semangat!",
+            "METODE LUAR. Baca Lalu Banding: Bandingkan tinggi/banyak simbol antar kategori."
           ],
           "papan": [
             "paham",
             "hitung",
             "main",
-            "semangat"
+            "semangat",
+            "METODE LUAR · Baca Lalu Banding"
           ]
         }
       ]
@@ -243,6 +249,22 @@ export const SUB_A46: SubBabNaskah = {
       "stepDesc": "Paling banyak, sedikit, total",
       "icon": "💡",
       "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. METODE LUAR · Kunci Piktogram",
+      "stepDesc": "Satu gambar bisa mewakili lebih dari satu benda.",
+      "icon": "🌍",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. METODE LUAR · Turus Kategori",
+      "stepDesc": "Hitung frekuensi tiap kategori dengan turus.",
+      "icon": "🌍",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -316,6 +338,27 @@ export const SUB_A46: SubBabNaskah = {
       "countNum": 1,
       "countWord": "lanjut batang",
       "suara": "Berikutnya diagram batang."
+    },
+    {
+      "judul": "Kunci Piktogram",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Pictograph Key",
+      "suara": "METODE LUAR. Kunci Piktogram. Satu gambar bisa mewakili lebih dari satu benda."
+    },
+    {
+      "judul": "Turus Kategori",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Categorical Tally",
+      "suara": "METODE LUAR. Turus Kategori. Hitung frekuensi tiap kategori dengan turus."
+    },
+    {
+      "judul": "Baca Lalu Banding",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Read then Compare",
+      "suara": "METODE LUAR. Baca Lalu Banding. Bandingkan tinggi/banyak simbol antar kategori."
     }
   ],
   "games": [
@@ -324,9 +367,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "hitung-gambar",
       "title": "Hitung Gambar Piktogram",
       "bookReference": "hlm. 180–184",
-      "objective": "Menghitung nilai dari banyak gambar.",
+      "objective": "Menghitung nilai dari banyak gambar. (METODE LUAR · Kunci Piktogram)",
       "mechanicDescription": "Tiga ronde data buku.",
-      "voiceGuide": "Hitung gambar.",
+      "voiceGuide": "METODE LUAR · Kunci Piktogram. Hitung gambar.",
       "emoji": "🔵",
       "targetCount": 6
     },
@@ -434,9 +477,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "diagram-hitung",
       "title": "Diagram Hitung Simbol",
       "bookReference": "hlm. 180–184",
-      "objective": "Baca diagram gambar.",
+      "objective": "Baca diagram gambar. (METODE LUAR · Kunci Piktogram)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Kunci Piktogram. Pilih.",
       "diagramType": "picto",
       "numberA": 1,
       "numberB": 4
@@ -554,9 +597,9 @@ export const SUB_A46: SubBabNaskah = {
       "gameType": "write-istilah",
       "title": "Tulis Istilah Piktogram",
       "bookReference": "hlm. 184",
-      "objective": "Menulis istilah.",
+      "objective": "Menulis istilah. (METODE LUAR · Kunci Piktogram)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Kunci Piktogram. Pilih.",
       "symbolLarge": "📊",
       "wordLarge": "PIKTOGRAM",
       "mathNotation": "definisi"
@@ -694,6 +737,24 @@ export const SUB_A46: SubBabNaskah = {
       "nama": "Total",
       "isi": "Jumlah keseluruhan = jumlah semua nilai kategori.",
       "suara": "Total adalah jumlah semua."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Kunci Piktogram",
+      "isi": "METODE LUAR · Pictograph Key: Satu gambar bisa mewakili lebih dari satu benda. (asal: Data literacy).",
+      "suara": "METODE LUAR. Kunci Piktogram. Satu gambar bisa mewakili lebih dari satu benda."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Turus Kategori",
+      "isi": "METODE LUAR · Categorical Tally: Hitung frekuensi tiap kategori dengan turus. (asal: Tally marks).",
+      "suara": "METODE LUAR. Turus Kategori. Hitung frekuensi tiap kategori dengan turus."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Baca Lalu Banding",
+      "isi": "METODE LUAR · Read then Compare: Bandingkan tinggi/banyak simbol antar kategori. (asal: Graph reading).",
+      "suara": "METODE LUAR. Baca Lalu Banding. Bandingkan tinggi/banyak simbol antar kategori."
     }
   ],
   "poinSuara": "Ingat empat kunci piktogram: definisi, skala, cara baca, dan total.",
@@ -723,6 +784,42 @@ export const SUB_A46: SubBabNaskah = {
     "Mengapa skala harus ditulis jelas?",
     "Apa beda piktogram skala 1 dan skala 4?",
     "Bagaimana mencari total dari piktogram?"
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Pictograph Key",
+      "namaId": "Kunci Piktogram",
+      "asal": "Data literacy",
+      "ringkas": "Satu gambar bisa mewakili lebih dari satu benda.",
+      "tahap": [
+        "Story",
+        "Infografis",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Categorical Tally",
+      "namaId": "Turus Kategori",
+      "asal": "Tally marks",
+      "ringkas": "Hitung frekuensi tiap kategori dengan turus.",
+      "tahap": [
+        "Concrete",
+        "Picture"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Read then Compare",
+      "namaId": "Baca Lalu Banding",
+      "asal": "Graph reading",
+      "ringkas": "Bandingkan tinggi/banyak simbol antar kategori.",
+      "tahap": [
+        "Mind",
+        "Abstract"
+      ]
+    }
   ]
 };
 
@@ -737,7 +834,7 @@ export const SUB_B46: SubBabNaskah = {
   "silabus": {
     "teksSuara": "Kita belajar diagram batang. Diagram batang memakai batang persegi panjang untuk menunjukkan banyak tiap kategori. Ada yang tegak dan ada yang mendatar. Sumbu membantu kita membaca nilai. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
     "cp": "Siswa menampilkan dan menafsirkan data dalam bentuk diagram batang.",
-    "referensi": "Buku Siswa Matematika Kelas IV Bab 6 Sub-Bab B hlm. 187–194; bar graphs; axis reading; dual orientation."
+    "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 6 Sub-Bab B)."
   },
   "videos": [
     {
@@ -784,13 +881,15 @@ export const SUB_B46: SubBabNaskah = {
             "Batang bisa naik ke atas.",
             "Atau memanjang ke samping.",
             "Artinya sama.",
-            "Hanya arah berbeda."
+            "Hanya arah berbeda.",
+            "METODE LUAR. Skala Batang: Baca nilai dari tinggi batang dan skala sumbu."
           ],
           "papan": [
             "tegak",
             "mendatar",
             "sama arti",
-            "beda arah"
+            "beda arah",
+            "METODE LUAR · Skala Batang"
           ]
         }
       ]
@@ -839,13 +938,15 @@ export const SUB_B46: SubBabNaskah = {
             "Jumlahkan nilai tiap batang.",
             "Itu total keseluruhan.",
             "Bisa juga hitung selisih.",
-            "Latih dengan data transportasi."
+            "Latih dengan data transportasi.",
+            "METODE LUAR. Label Sumbu: Sumbu harus bertuliskan apa yang diukur."
           ],
           "papan": [
             "jumlah",
             "total",
             "selisih",
-            "latihan"
+            "latihan",
+            "METODE LUAR · Label Sumbu"
           ]
         }
       ]
@@ -894,13 +995,15 @@ export const SUB_B46: SubBabNaskah = {
             "Kita sudah paham batang.",
             "Saatnya membaca sumbu dan nilai.",
             "Ayo ke permainan.",
-            "Semangat!"
+            "Semangat!",
+            "METODE LUAR. Banding Batang: Batang lebih tinggi = nilai lebih besar."
           ],
           "papan": [
             "paham",
             "sumbu",
             "main",
-            "semangat"
+            "semangat",
+            "METODE LUAR · Banding Batang"
           ]
         }
       ]
@@ -953,6 +1056,22 @@ export const SUB_B46: SubBabNaskah = {
       "stepDesc": "Paling banyak, sedikit, total, selisih",
       "icon": "💡",
       "flowFrom": "5",
+      "flowTo": "7"
+    },
+    {
+      "stepNumber": 7,
+      "stepTitle": "7. METODE LUAR · Skala Batang",
+      "stepDesc": "Baca nilai dari tinggi batang dan skala sumbu.",
+      "icon": "🌍",
+      "flowFrom": "6",
+      "flowTo": "8"
+    },
+    {
+      "stepNumber": 8,
+      "stepTitle": "8. METODE LUAR · Label Sumbu",
+      "stepDesc": "Sumbu harus bertuliskan apa yang diukur.",
+      "icon": "🌍",
+      "flowFrom": "7",
       "flowTo": "END"
     }
   ],
@@ -1026,6 +1145,27 @@ export const SUB_B46: SubBabNaskah = {
       "countNum": 1,
       "countWord": "A+B",
       "suara": "Piktogram dan batang siap."
+    },
+    {
+      "judul": "Skala Batang",
+      "emoji": "🌍",
+      "countNum": 1,
+      "countWord": "METODE LUAR · Bar Scale",
+      "suara": "METODE LUAR. Skala Batang. Baca nilai dari tinggi batang dan skala sumbu."
+    },
+    {
+      "judul": "Label Sumbu",
+      "emoji": "🌍",
+      "countNum": 2,
+      "countWord": "METODE LUAR · Axis Labels",
+      "suara": "METODE LUAR. Label Sumbu. Sumbu harus bertuliskan apa yang diukur."
+    },
+    {
+      "judul": "Banding Batang",
+      "emoji": "🌍",
+      "countNum": 3,
+      "countWord": "METODE LUAR · Compare Bars",
+      "suara": "METODE LUAR. Banding Batang. Batang lebih tinggi = nilai lebih besar."
     }
   ],
   "games": [
@@ -1034,9 +1174,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "baca-batang",
       "title": "Baca Tinggi Batang",
       "bookReference": "hlm. 187–191",
-      "objective": "Membaca nilai batang.",
+      "objective": "Membaca nilai batang. (METODE LUAR · Skala Batang)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Skala Batang. Pilih.",
       "emoji": "📏",
       "targetCount": 6
     },
@@ -1144,9 +1284,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "diagram-tegak",
       "title": "Diagram Batang Tegak",
       "bookReference": "hlm. 188–189",
-      "objective": "Baca tinggi.",
+      "objective": "Baca tinggi. (METODE LUAR · Skala Batang)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Skala Batang. Pilih.",
       "diagramType": "bar-v",
       "numberA": 1,
       "numberB": 2
@@ -1264,9 +1404,9 @@ export const SUB_B46: SubBabNaskah = {
       "gameType": "write-istilah-b",
       "title": "Tulis Istilah Batang",
       "bookReference": "hlm. 188–191",
-      "objective": "Menulis istilah.",
+      "objective": "Menulis istilah. (METODE LUAR · Skala Batang)",
       "mechanicDescription": "Tiga ronde.",
-      "voiceGuide": "Pilih.",
+      "voiceGuide": "METODE LUAR · Skala Batang. Pilih.",
       "symbolLarge": "▮",
       "wordLarge": "BATANG",
       "mathNotation": "definisi"
@@ -1404,6 +1544,24 @@ export const SUB_B46: SubBabNaskah = {
       "nama": "Membaca",
       "isi": "Samakan ujung batang dengan skala untuk mendapat nilai.",
       "suara": "Samakan dengan skala."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Skala Batang",
+      "isi": "METODE LUAR · Bar Scale: Baca nilai dari tinggi batang dan skala sumbu. (asal: Bar graph pedagogy).",
+      "suara": "METODE LUAR. Skala Batang. Baca nilai dari tinggi batang dan skala sumbu."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Label Sumbu",
+      "isi": "METODE LUAR · Axis Labels: Sumbu harus bertuliskan apa yang diukur. (asal: Data display).",
+      "suara": "METODE LUAR. Label Sumbu. Sumbu harus bertuliskan apa yang diukur."
+    },
+    {
+      "ikon": "🌍",
+      "nama": "Banding Batang",
+      "isi": "METODE LUAR · Compare Bars: Batang lebih tinggi = nilai lebih besar. (asal: Comparative reading).",
+      "suara": "METODE LUAR. Banding Batang. Batang lebih tinggi = nilai lebih besar."
     }
   ],
   "poinSuara": "Ingat empat kunci batang: definisi, sumbu, dua arah, dan cara baca.",
@@ -1433,6 +1591,42 @@ export const SUB_B46: SubBabNaskah = {
     "Apa beda batang tegak dan mendatar?",
     "Mengapa skala sumbu harus teratur?",
     "Bagaimana mencari selisih dua batang?"
+  ],
+  "metodeLuar": [
+    {
+      "label": "METODE LUAR",
+      "nama": "Bar Scale",
+      "namaId": "Skala Batang",
+      "asal": "Bar graph pedagogy",
+      "ringkas": "Baca nilai dari tinggi batang dan skala sumbu.",
+      "tahap": [
+        "Story",
+        "Picture",
+        "Abstract"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Axis Labels",
+      "namaId": "Label Sumbu",
+      "asal": "Data display",
+      "ringkas": "Sumbu harus bertuliskan apa yang diukur.",
+      "tahap": [
+        "Mind",
+        "Infografis"
+      ]
+    },
+    {
+      "label": "METODE LUAR",
+      "nama": "Compare Bars",
+      "namaId": "Banding Batang",
+      "asal": "Comparative reading",
+      "ringkas": "Batang lebih tinggi = nilai lebih besar.",
+      "tahap": [
+        "Concrete",
+        "Abstract"
+      ]
+    }
   ]
 };
 
