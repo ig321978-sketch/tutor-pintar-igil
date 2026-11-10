@@ -28,7 +28,7 @@ export function InfografisK4B2BKomponen({ speakGuru }: { speakGuru: (teks: strin
 
 const soalPec = (benar: Pec, visual: React.ReactNode, nomor: number, tanya = "Pecahan berapakah ini?"): SoalBertahap => {
   const o = opsiPec(benar, nomor);
-  return { visual, tanya, opsi: o.map(teksPec), jawab: o.findIndex((x) => teksPec(x) === teksPec(benar)), petunjuk: "Hitung bagian diarsir.", pesan: `Jawaban ${teksPec(benar)}.`, angka: true };
+  return { visual, tanya, opsi: o.map(teksPec), jawab: o.findIndex((x) => teksPec(x) === teksPec(benar)), petunjuk: "Hitung bagian diarsir.", pesan: `Jawaban ${teksPec(benar)}.` };
 };
 const BIN = [
   { id: "besar", label: "Pembilang ≥ 3", warna: "#BBF7D0" },
