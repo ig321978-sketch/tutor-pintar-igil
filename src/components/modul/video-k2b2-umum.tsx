@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { BIRU, EMAS, KUNING, Latar } from "./CeritaBandingB";
+import { BIRU, EMAS, KUNING } from "./CeritaBandingB";
 import { VideoCerita, type AdeganVideo, type PropsAdegan } from "./video-cerita";
 import type { AdeganNaskah, VideoNaskah } from "./naskah-k2b2";
 
