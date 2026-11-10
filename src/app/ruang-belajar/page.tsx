@@ -42,6 +42,7 @@ import {
   JUDUL_MTK_5_BAB8,
   JUDUL_MTK_5_BAB9,
   JUDUL_MTK_6_BAB1,
+  JUDUL_MTK_6_BAB2,
   JUDUL_MTK_6_BAB3,
   OPSI_LAINNYA,
   daftarMapelUntukKelas,
@@ -293,6 +294,7 @@ export default function RuangBelajarPage() {
               : kelas === "6 SD"
                 ? {
                     [JUDUL_MTK_6_BAB1]: "/ruang-belajar/mtk-6-bab1",
+                    [JUDUL_MTK_6_BAB2]: "/ruang-belajar/mtk-6-bab2",
                     [JUDUL_MTK_6_BAB3]: "/ruang-belajar/mtk-6-bab3",
                   }
                 : {};
