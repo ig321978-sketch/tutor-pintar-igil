@@ -31,29 +31,40 @@ type PropsDaftar = {
 };
 
 /**
- * Daftar video cerita. Tidak ada video yang berjalan sendiri. Siswa mengetuk Putar pada satu video, video itu
- * langsung berjalan dan video lain berhenti. Di desktop kartu disusun 3 kolom kiri–tengah–kanan (satu layar),
- * pemutar ringkas di dalam kartu agar kanvas tidak melebar vertikal.
+ * Daftar video cerita. Selalu menyamping seperti slide (kiri → kanan), tidak pernah bertumpuk vertikal.
+ * Di layar lebar ketiga kartu muat sekali pandang; di layar sempit digeser horizontal.
+ * Hanya satu video yang diputar; pemutar ringkas di dalam kartunya.
  */
 export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
   const [aktif, setAktif] = useState<string | null>(null);
   const [ditonton, setDitonton] = useState<string[]>([]);
-  const kolom = videos.length <= 1 ? "md:grid-cols-1" : videos.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3";
+  const banyak = videos.length;
+  const lebarKartu =
+    banyak <= 1
+      ? "w-full max-w-xl shrink-0"
+      : banyak === 2
+        ? "w-[min(82vw,20rem)] shrink-0 snap-start lg:w-auto lg:min-w-0 lg:flex-1 lg:snap-align-none"
+        : "w-[min(82vw,17.5rem)] shrink-0 snap-start lg:w-auto lg:min-w-0 lg:flex-1 lg:snap-align-none";
 
   return (
     <div className="space-y-3">
       <p className="rounded-2xl border-4 border-[#1C01A5] bg-[#FFF7CC] px-3 py-2 text-center text-sm font-black leading-snug text-[#1C01A5]">
-        🎬 Ada {videos.length} video cerita. Ketuk ▶ Putar pada video yang ingin kamu tonton. Hanya satu video yang berjalan pada satu waktu.
+        🎬 Ada {banyak} video cerita. Susunan menyamping seperti slide — geser kiri/kanan bila perlu. Ketuk ▶ Putar; hanya satu video yang berjalan.
       </p>
 
-      <div className={`grid grid-cols-1 items-start gap-3 ${kolom}`}>
+      <div
+        className="flex w-full flex-nowrap items-start gap-3 overflow-x-auto pb-2 [scrollbar-color:#FFE566_#1C01A5] [scrollbar-width:thin] snap-x snap-mandatory"
+        role="list"
+        aria-label="Daftar video cerita menyamping"
+      >
         {videos.map((v, i) => {
           const sedang = aktif === v.naskah.id;
           const adeganPoster = v.adegan[v.poster.a] ?? v.adegan[0];
           return (
             <article
               key={v.naskah.id}
-              className={`min-w-0 overflow-hidden rounded-3xl border-4 bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)] ${sedang ? "border-amber-400 ring-2 ring-amber-200" : "border-[#1C01A5]"}`}
+              role="listitem"
+              className={`${lebarKartu} overflow-hidden rounded-3xl border-4 bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)] ${sedang ? "border-amber-400 ring-2 ring-amber-200" : "border-[#1C01A5]"}`}
             >
               {sedang ? (
                 <div className="space-y-2 p-1.5">
@@ -92,7 +103,7 @@ export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
                   </div>
                   <div className="flex flex-col gap-2 px-2.5 py-2 md:px-3">
                     <div className="min-w-0">
-                      <p className="text-[10px] font-black uppercase tracking-wide text-[#1C01A5]/60">Video {i + 1} dari {videos.length}</p>
+                      <p className="text-[10px] font-black uppercase tracking-wide text-[#1C01A5]/60">Video {i + 1} dari {banyak}</p>
                       <h4 className="text-sm font-black leading-tight text-[#1C01A5] md:text-base">{v.naskah.judul}</h4>
                       <p className="text-[10px] font-bold text-[#1C01A5]/70">{v.naskah.subjudul} • {v.adegan.length} adegan</p>
                     </div>
@@ -112,8 +123,8 @@ export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
       </div>
 
       <p className="text-center text-xs font-black text-[#1C01A5]/70">
-        Sudah ditonton: {ditonton.length} dari {videos.length}
-        {ditonton.length === videos.length ? " ⭐ Hebat!" : ""}
+        Sudah ditonton: {ditonton.length} dari {banyak}
+        {ditonton.length === banyak ? " ⭐ Hebat!" : ""}
       </p>
     </div>
   );
