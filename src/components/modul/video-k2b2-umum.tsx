@@ -33,15 +33,13 @@ type PropsDaftar = {
 /**
  * Daftar video cerita. Tidak ada video yang berjalan sendiri. Siswa mengetuk Putar pada satu video, video itu
  * langsung berjalan dan video lain berhenti. Mengetuk Putar pada video lain menggantikan yang sedang berjalan.
- * Poster disusun horizontal di layar lebar agar tidak melebar vertikal.
+ * Di desktop poster disusun horizontal (lebar kartu dibatasi) agar tidak melebar vertikal.
  */
 export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
   const [aktif, setAktif] = useState<string | null>(null);
   const [ditonton, setDitonton] = useState<string[]>([]);
-  const videoAktif = videos.find((v) => v.naskah.id === aktif);
+  const videoAktif = videos.find((v) => v.naskah.id === aktif) ?? null;
   const indeksAktif = videoAktif ? videos.indexOf(videoAktif) : -1;
-  const kolom =
-    videos.length <= 1 ? "grid-cols-1" : videos.length === 2 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
 
   return (
     <div className="space-y-3">
@@ -57,7 +55,10 @@ export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
             adegan={videoAktif.adegan}
             speakGuru={speakGuru}
             mulaiLangsung
-            onSelesai={() => setDitonton((d) => (d.includes(videoAktif.naskah.id) ? d : [...d, videoAktif.naskah.id]))}
+            onSelesai={() => {
+              const id = videoAktif.naskah.id;
+              setDitonton((d) => (d.includes(id) ? d : [...d, id]));
+            }}
           />
           <button
             type="button"
@@ -69,18 +70,20 @@ export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
         </div>
       ) : null}
 
-      <div className={`grid ${kolom} gap-3`}>
+      <div className="flex flex-col gap-3 md:flex-row md:items-stretch md:gap-3 md:overflow-x-auto md:pb-1">
         {videos.map((v, i) => {
           const sedang = aktif === v.naskah.id;
+          const adeganPoster = v.adegan[v.poster.a] ?? v.adegan[0];
+          if (!adeganPoster) return null;
           return (
             <article
               key={v.naskah.id}
-              className={`overflow-hidden rounded-3xl border-4 bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)] ${sedang ? "border-amber-400 ring-4 ring-amber-200" : "border-[#1C01A5]"}`}
+              className={`w-full shrink-0 overflow-hidden rounded-3xl border-4 bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)] md:w-[min(100%,19.5rem)] ${sedang ? "border-amber-400 ring-4 ring-amber-200" : "border-[#1C01A5]"}`}
             >
-              <div className="relative aspect-[300/208] bg-[#DFF1FF]">
-                <svg viewBox="0 0 300 208" className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+              <div className="relative bg-[#DFF1FF]">
+                <svg viewBox="0 0 300 208" className="pointer-events-none block h-auto w-full" aria-hidden="true">
                   <Latar />
-                  {v.adegan[v.poster.a].render({ k: v.poster.k, t: 0 })}
+                  {adeganPoster.render({ k: v.poster.k, t: 0 })}
                 </svg>
                 {sedang ? (
                   <div className="absolute inset-0 flex items-center justify-center bg-[#1C01A5]/45">
@@ -91,17 +94,17 @@ export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
                     type="button"
                     onClick={() => setAktif(v.naskah.id)}
                     aria-label={`Putar video ${i + 1}: ${v.naskah.judul}`}
-                    className="absolute inset-0 flex items-end justify-end bg-transparent p-2 transition hover:bg-[#1C01A5]/10 sm:p-3"
+                    className="absolute inset-0 flex items-end justify-end bg-transparent p-3 transition hover:bg-[#1C01A5]/10"
                   >
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full border-4 border-[#FFE566] bg-[#1C01A5] text-xl text-[#FFE566] shadow-lg sm:h-14 sm:w-14 sm:text-2xl">▶</span>
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-[#FFE566] bg-[#1C01A5] text-xl text-[#FFE566] shadow-lg">▶</span>
                   </button>
                 )}
               </div>
-              <div className="flex flex-col gap-2 px-3 py-2 sm:min-h-[5.5rem]">
+              <div className="flex flex-col gap-2 px-3 py-2">
                 <div className="min-w-0">
-                  <p className="text-[10px] font-black uppercase tracking-wide text-[#1C01A5]/60 sm:text-xs">Video {i + 1} dari {videos.length}</p>
-                  <h4 className="text-base font-black leading-tight text-[#1C01A5] sm:text-lg">{v.naskah.judul}</h4>
-                  <p className="text-[10px] font-bold text-[#1C01A5]/70 sm:text-xs">{v.naskah.subjudul} • {v.adegan.length} adegan</p>
+                  <p className="text-[10px] font-black uppercase tracking-wide text-[#1C01A5]/60">Video {i + 1} dari {videos.length}</p>
+                  <h4 className="text-base font-black leading-tight text-[#1C01A5]">{v.naskah.judul}</h4>
+                  <p className="text-[10px] font-bold text-[#1C01A5]/70">{v.naskah.subjudul} • {v.adegan.length} adegan</p>
                 </div>
                 <button
                   type="button"
