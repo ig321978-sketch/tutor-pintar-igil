@@ -92,7 +92,7 @@ function K9(d: PropsLangkah) {
 }
 function P0(d: PropsLangkah) {
   return Kartu(d, 10, "k6b1c-phitung", "Diagram hitung.", RONDE_HITUNG_PC.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><CatatanTempel pendek="Hitung" teks="Sudut?" /><PilihBertahap key={r} soal={RONDE_HITUNG_PC[r].map((s, i) => {
+    <><CatatanTempel pendek="Hitung" teks="Hasil?" /><PilihBertahap key={r} soal={RONDE_HITUNG_PC[r].map((s, i) => {
       const opsi = opsiAngka(s.hasil, r * 2 + i);
       return { visual: <Numeral n={String(s.derajat)} kelas="text-base" />, tanya: "Nilai / kode?", opsi, jawab: opsi.indexOf(String(s.hasil)), petunjuk: "Ingat persepuluhan dan perseratusan.", pesan: s.pesan };
     })} onBeres={beres} pesanBeres="Selesai." /></>

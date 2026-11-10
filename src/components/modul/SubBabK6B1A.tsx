@@ -92,7 +92,7 @@ function K9(d: PropsLangkah) {
 }
 function P0(d: PropsLangkah) {
   return Kartu(d, 10, "k6b1a-phitung", "Diagram hitung.", RONDE_HITUNG_PA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><CatatanTempel pendek="Hitung" teks="Sudut?" /><PilihBertahap key={r} soal={RONDE_HITUNG_PA[r].map((s, i) => {
+    <><CatatanTempel pendek="Hitung" teks="Hasil?" /><PilihBertahap key={r} soal={RONDE_HITUNG_PA[r].map((s, i) => {
       const opsi = opsiAngka(s.hasil, r * 2 + i);
       return { visual: <Numeral n={s.label} kelas="text-sm" />, tanya: "Hasil?", opsi, jawab: opsi.indexOf(String(s.hasil)), petunjuk: "Ingat asli × pecahan atau pecahan × asli.", pesan: s.pesan };
     })} onBeres={beres} pesanBeres="Selesai." /></>
