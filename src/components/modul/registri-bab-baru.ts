@@ -25,4 +25,5 @@ export const MUAT_BAB_BARU: Partial<Record<BabBaru, () => Promise<{ default: Pak
   "mtk-5-bab7": () => import("./paket-k5b7"),
   "mtk-5-bab8": () => import("./paket-k5b8"),
   "mtk-5-bab9": () => import("./paket-k5b9"),
+  "mtk-6-bab1": () => import("./paket-k6b1"),
 };

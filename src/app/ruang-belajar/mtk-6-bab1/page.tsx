@@ -1,21 +1,5 @@
-"use client";
-
-import { useState } from "react";
-import { KuisMateriProvider } from "@/components/KuisMateriContext";
-import NaskahMtk6Bab1 from "@/components/NaskahMtk6Bab1";
+import PemutarBabBaru from "@/components/PemutarBabBaru";
 
 export default function HalamanMtk6Bab1() {
-  const [selesai, setSelesai] = useState<string[]>([]);
-  return (
-    <main className="mx-auto max-w-3xl px-4 py-6">
-      <KuisMateriProvider
-        selesai={selesai}
-        onBenar={(id) =>
-          setSelesai((daftar) => (daftar.includes(id) ? daftar : [...daftar, id]))
-        }
-      >
-        <NaskahMtk6Bab1 />
-      </KuisMateriProvider>
-    </main>
-  );
+  return <PemutarBabBaru bab="mtk-6-bab1" />;
 }
