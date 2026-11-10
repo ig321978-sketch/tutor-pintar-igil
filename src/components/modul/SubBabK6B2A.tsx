@@ -29,7 +29,7 @@ export function InfografisK6B2AKomponen({ speakGuru }: { speakGuru: (teks: strin
 
 function K0(d: PropsLangkah) {
   return Kartu(d, 0, "k6b2a-hitung", "Hitung.", RONDE_HITUNG_CA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><IgilBicara pendek="Hitung" teks="Hitung pecahan." /><PilihBertahap key={r} soal={RONDE_HITUNG_CA[r].map((s, i) => {
+    <><IgilBicara pendek="Hitung" teks="Hitung rasio." /><PilihBertahap key={r} soal={RONDE_HITUNG_CA[r].map((s, i) => {
       const opsi = opsiAngka(s.hasil, r * 2 + i);
       return { visual: <Numeral n={s.label} kelas="text-sm" />, tanya: "Hasil?", opsi, jawab: opsi.indexOf(String(s.hasil)), petunjuk: "Ingat a:b, sederhanakan, arah penting.", pesan: s.pesan };
     })} onBeres={beres} pesanBeres="Selesai." /></>
@@ -217,8 +217,8 @@ export function ConcreteK6B2A(props: Umum) {
   return <TahapPermainan umum={props} tahap={4} pita={{ ikon: "📐", nama: "CONCRETE", cara: "Banding & rasio!", warna: "#C2410C" }} kartu={KARTU_CONCRETE} teksAkhir="LANJUTKAN KE PICTURE ⬇️" />;
 }
 export function PictureK6B2A(props: Umum) {
-  return <TahapPermainan umum={props} tahap={5} pita={{ ikon: "🖍️", nama: "PICTURE", cara: "Diagram pecahan", warna: "#B45309" }} kartu={KARTU_PICTURE} teksAkhir="LANJUTKAN KE ABSTRACT ⬇️" labelKartu="Kartu" />;
+  return <TahapPermainan umum={props} tahap={5} pita={{ ikon: "🖍️", nama: "PICTURE", cara: "Diagram rasio", warna: "#B45309" }} kartu={KARTU_PICTURE} teksAkhir="LANJUTKAN KE ABSTRACT ⬇️" labelKartu="Kartu" />;
 }
 export function AbstractK6B2A(props: Umum) {
-  return <TahapPermainan umum={props} tahap={6} pita={{ ikon: "✏️", nama: "ABSTRACT", cara: "Notasi pecahan", warna: "#1C01A5" }} kartu={KARTU_ABSTRACT} teksAkhir="LANJUTKAN KE POIN PENTING ⬇️" labelKartu="Langkah" poin={(selesai) => <PoinK2B2 s={SUB_A62} speakGuru={props.speakGuru} onSelesai={selesai} teksSelesai="SELESAIKAN SUB-BAB A ➡️" />} />;
+  return <TahapPermainan umum={props} tahap={6} pita={{ ikon: "✏️", nama: "ABSTRACT", cara: "Notasi rasio", warna: "#1C01A5" }} kartu={KARTU_ABSTRACT} teksAkhir="LANJUTKAN KE POIN PENTING ⬇️" labelKartu="Langkah" poin={(selesai) => <PoinK2B2 s={SUB_A62} speakGuru={props.speakGuru} onSelesai={selesai} teksSelesai="SELESAIKAN SUB-BAB A ➡️" />} />;
 }
