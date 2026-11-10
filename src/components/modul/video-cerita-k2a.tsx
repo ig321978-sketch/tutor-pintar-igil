@@ -7,13 +7,14 @@ import { CERITA_K2A, LokerRak, TasG } from "./gambar-hitung-k2a";
 import { Label } from "./gambar-nilai-k2b";
 import { Tokoh } from "./gambar-maju-mundur-c";
 import { JalurKotak } from "./gambar-banding-k2c";
-import { Gerak, kalimatDari, Lompat, Muncul, Papan, Sorot, tumbuh, VideoCerita, type AdeganVideo, type PropsAdegan } from "./video-cerita";
+import { Gerak, kalimatDari, Lompat, Muncul, Papan, Sorot, tumbuh, type AdeganVideo, type PropsAdegan } from "./video-cerita";
+import { DaftarVideoCerita } from "./daftar-video-cerita";
 
 /* ------------------------------------------------------------------------ */
 /* Video cerita Kelas 2 Bab 1 Sub-Bab A: Menghitung, Membaca, dan Menulis      */
 /* Bilangan sampai dengan 50. Naskah = CERITA_K2A (satu sumber dengan modul).  */
-/* Animasi SVG gratis, diputar di perangkat siswa. Naskah: naskah/            */
-/* mtk-2-bab1-video-cerita.md                                                  */
+/* Tiga video (enam adegan) dibuka lewat DaftarVideoCerita: kartu menyamping  */
+/* + pop-up Putar. Animasi SVG gratis. Naskah: naskah/mtk-2-bab1-video-cerita.md */
 /* ------------------------------------------------------------------------ */
 
 const BIRU_TAS = "#3B82F6";
@@ -532,6 +533,25 @@ export const ADEGAN_VIDEO_K2A: AdeganVideo[] = CERITA_K2A.map((c, i) => ({
   minimal: i === 1 ? { 0: 4.2, 2: 4, 3: 4, 7: 4.4 } : i === 2 ? { 2: 3.4, 3: 3.4, 4: 2.4 } : i === 5 ? { 1: 7, 2: 7 } : undefined,
 }));
 
+/** Tiga video muka: dua adegan per kartu, pola sama modul lain (slide + pop-up). */
+export const VIDEO_SIAP_K2A = [
+  {
+    naskah: { id: "k2a-v1", judul: "Loker Baru", subjudul: "Loker dan tas bergantian · 2 adegan" },
+    adegan: ADEGAN_VIDEO_K2A.slice(0, 2),
+    poster: { a: 0, k: 3 },
+  },
+  {
+    naskah: { id: "k2a-v2", judul: "Menghitung 26 Tas", subjudul: "Hitung dan kelompok sepuluh · 2 adegan" },
+    adegan: ADEGAN_VIDEO_K2A.slice(2, 4),
+    poster: { a: 0, k: 5 },
+  },
+  {
+    naskah: { id: "k2a-v3", judul: "Sepuluh dan Jalur", subjudul: "10 + 10 + 6 · maju mundur · 2 adegan" },
+    adegan: ADEGAN_VIDEO_K2A.slice(4, 6),
+    poster: { a: 0, k: 3 },
+  },
+];
+
 export function VideoHitungK2A({ speakGuru }: { speakGuru: (teks: string, selesai?: () => void) => void }) {
-  return <VideoCerita judul="Loker Baru Kelas Malosi" subjudul="Menghitung bilangan sampai 50" adegan={ADEGAN_VIDEO_K2A} speakGuru={speakGuru} />;
+  return <DaftarVideoCerita videos={VIDEO_SIAP_K2A} speakGuru={speakGuru} />;
 }

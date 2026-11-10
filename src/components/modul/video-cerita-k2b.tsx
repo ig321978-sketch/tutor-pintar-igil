@@ -5,12 +5,13 @@ import { BIRU, EMAS, HIJAU, KUNING } from "./CeritaBandingB";
 import { Lencana } from "./gambar-cara-b2";
 import { Tokoh } from "./gambar-maju-mundur-c";
 import { BatangG, CERITA_K2B, KubusG, Label, Satuan, TabelMini } from "./gambar-nilai-k2b";
-import { Gerak, kalimatDari, Lompat, Muncul, Papan, Sorot, tumbuh, VideoCerita, type AdeganVideo, type PropsAdegan } from "./video-cerita";
+import { Gerak, kalimatDari, Lompat, Muncul, Papan, Sorot, tumbuh, type AdeganVideo, type PropsAdegan } from "./video-cerita";
+import { DaftarVideoCerita } from "./daftar-video-cerita";
 
 /* ------------------------------------------------------------------------ */
 /* Video cerita Kelas 2 Bab 1 Sub-Bab B: Nilai Tempat (puluhan dan satuan).   */
-/* Naskah = CERITA_K2B (satu sumber dengan modul). Animasi SVG gratis,         */
-/* diputar di perangkat siswa. Naskah: naskah/mtk-2-bab1-video-cerita.md       */
+/* Naskah = CERITA_K2B. Tiga video (enam adegan) lewat DaftarVideoCerita.     */
+/* Naskah: naskah/mtk-2-bab1-video-cerita.md                                  */
 /* ------------------------------------------------------------------------ */
 
 const RAMBUT_GELAP = "#1F2937";
@@ -476,6 +477,24 @@ export const ADEGAN_VIDEO_K2B: AdeganVideo[] = CERITA_K2B.map((c, i) => ({
             : undefined,
 }));
 
+export const VIDEO_SIAP_K2B = [
+  {
+    naskah: { id: "k2b-v1", judul: "Balok Malosi", subjudul: "Main balok · satu puluhan · 2 adegan" },
+    adegan: ADEGAN_VIDEO_K2B.slice(0, 2),
+    poster: { a: 1, k: 4 },
+  },
+  {
+    naskah: { id: "k2b-v2", judul: "Dua Puluhan", subjudul: "Tabel nilai tempat · cara 1 · 2 adegan" },
+    adegan: ADEGAN_VIDEO_K2B.slice(2, 4),
+    poster: { a: 0, k: 4 },
+  },
+  {
+    naskah: { id: "k2b-v3", judul: "Tiga Cara Menulis", subjudul: "Cara 2 dan cara 3 · 2 adegan" },
+    adegan: ADEGAN_VIDEO_K2B.slice(4, 6),
+    poster: { a: 1, k: 6 },
+  },
+];
+
 export function VideoNilaiK2B({ speakGuru }: { speakGuru: (teks: string, selesai?: () => void) => void }) {
-  return <VideoCerita judul="Balok Malosi" subjudul="Nilai tempat: puluhan dan satuan" adegan={ADEGAN_VIDEO_K2B} speakGuru={speakGuru} />;
+  return <DaftarVideoCerita videos={VIDEO_SIAP_K2B} speakGuru={speakGuru} />;
 }

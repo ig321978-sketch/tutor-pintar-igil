@@ -6,7 +6,7 @@ import { Latar } from "./CeritaBandingB";
 import { VideoCerita, type AdeganVideo } from "./video-cerita";
 
 /** Penanda build: pastikan chunk Vercel memuat UI pop-up slide terbaru. */
-export const IGIL_DAFTAR_VIDEO_UI = "popup-slide-v2";
+export const IGIL_DAFTAR_VIDEO_UI = "popup-slide-v3-k2b1";
 
 export type VideoSiapDaftar = {
   naskah: { id: string; judul: string; subjudul: string };

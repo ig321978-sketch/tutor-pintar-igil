@@ -50,7 +50,7 @@ Status: aktif untuk Sub-Bab A, B, dan C. Slide `BukuCerita` lama diganti video a
 ## Berkas
 
 - Mesin: `src/components/modul/video-cerita.tsx`
-- Adegan: `video-cerita-k2a.tsx`, `video-cerita-k2b.tsx`, `video-cerita-k2c.tsx` (di `src/components/modul/`). Masing-masing mengekspor `ADEGAN_VIDEO_K2*` dan komponen `VideoHitungK2A`, `VideoNilaiK2B`, `VideoBandingK2C`.
+- Adegan: `video-cerita-k2a.tsx`, `video-cerita-k2b.tsx`, `video-cerita-k2c.tsx` (di `src/components/modul/`). Masing-masing mengekspor `ADEGAN_VIDEO_K2*` (6 adegan), `VIDEO_SIAP_K2*` (3 kartu muka: 2 adegan per video), dan komponen `VideoHitungK2A`, `VideoNilaiK2B`, `VideoBandingK2C` yang memakai `DaftarVideoCerita` (slide menyamping + pop-up Putar), sama seperti modul lain.
 - Pemasangan: `MODUL_SUBBAB` di `src/components/IgilModulePlayer.tsx`, kunci `mtk-2-bab1-A`, `-B`, `-C`, bidang `Cerita`.
 - Gambar bersama yang diekspor dari berkas slide lama: `LokerRak` (kini punya `nomorSampai`), `TasG`, `Permen`, `KelompokPermen`, `CincinSepuluh`, `Stoples`, `JalurKotak`, `KartuAngka`, `jarakPermen`.
 - Uji: `scripts/uji-video-cerita.mjs`.

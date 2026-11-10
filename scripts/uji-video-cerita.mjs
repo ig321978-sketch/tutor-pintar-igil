@@ -43,6 +43,8 @@ for (const s of SET) {
 
   cek(`${s.kode}: ADEGAN_VIDEO_K2${s.kode} dibuat dari CERITA_K2${s.kode}`, video.includes(`CERITA_K2${s.kode}.map(`));
   cek(`${s.kode}: komponen ${s.komponen} diekspor`, video.includes(`export function ${s.komponen}(`));
+  cek(`${s.kode}: muka memakai DaftarVideoCerita`, /DaftarVideoCerita/.test(video) && new RegExp(`return <DaftarVideoCerita videos=\\{VIDEO_SIAP_K2${s.kode}\\}`).test(video));
+  cek(`${s.kode}: tiga video muka (slice 0-2, 2-4, 4-6)`, /slice\(0,\s*2\)/.test(video) && /slice\(2,\s*4\)/.test(video) && /slice\(4,\s*6\)/.test(video));
   cek(`${s.kode}: komponen ${s.komponen} dipasang di MODUL_SUBBAB`, new RegExp(`"mtk-2-bab1-${s.kode}":\\s*\\{\\s*Cerita: ${s.komponen}\\b`).test(pemutar));
   cek(`${s.kode}: pemutar mengimpor ${s.komponen}`, pemutar.includes(`import { ${s.komponen} } from "@/components/modul/video-cerita-k2${s.kode.toLowerCase()}"`));
   cek(`${s.kode}: tanpa jaringan atau layanan suara`, !/fetch\(|\/api\/|elevenlabs|XMLHttpRequest/i.test(video));

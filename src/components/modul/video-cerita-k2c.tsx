@@ -6,12 +6,13 @@ import { Lencana } from "./gambar-cara-b2";
 import { CERITA_K2C, CincinSepuluh, JalurKotak, KartuAngka, KelompokPermen, jarakPermen, Stoples } from "./gambar-banding-k2c";
 import { Tokoh } from "./gambar-maju-mundur-c";
 import { BatangG, KubusG, Label, TabelMini } from "./gambar-nilai-k2b";
-import { kalimatDari, Lompat, Muncul, Papan, Sorot, tumbuh, VideoCerita, type AdeganVideo, type PropsAdegan } from "./video-cerita";
+import { kalimatDari, Lompat, Muncul, Papan, Sorot, tumbuh, type AdeganVideo, type PropsAdegan } from "./video-cerita";
+import { DaftarVideoCerita } from "./daftar-video-cerita";
 
 /* ------------------------------------------------------------------------ */
 /* Video cerita Kelas 2 Bab 1 Sub-Bab C: Membandingkan Dua Bilangan atau       */
-/* Lebih. Naskah = CERITA_K2C (satu sumber dengan modul). Animasi SVG gratis,  */
-/* diputar di perangkat siswa. Naskah: naskah/mtk-2-bab1-video-cerita.md       */
+/* Lebih. Naskah = CERITA_K2C. Tiga video (enam adegan) lewat DaftarVideoCerita. */
+/* Naskah: naskah/mtk-2-bab1-video-cerita.md                                  */
 /* ------------------------------------------------------------------------ */
 
 const RAMBUT_GELAP = "#1F2937";
@@ -526,6 +527,24 @@ export const ADEGAN_VIDEO_K2C: AdeganVideo[] = CERITA_K2C.map((c, i) => ({
   minimal: i === 1 ? { 1: 2.6, 2: 3, 3: 4.6 } : i === 2 ? { 2: 4.4, 3: 3.4 } : i === 3 ? { 5: 3.4, 6: 3.4 } : undefined,
 }));
 
+export const VIDEO_SIAP_K2C = [
+  {
+    naskah: { id: "k2c-v1", judul: "Stoples Permen Kira", subjudul: "Tebak dan hitung · 2 adegan" },
+    adegan: ADEGAN_VIDEO_K2C.slice(0, 2),
+    poster: { a: 1, k: 3 },
+  },
+  {
+    naskah: { id: "k2c-v2", judul: "Tebakan Lebih Dekat", subjudul: "Kira dan Tika · 2 adegan" },
+    adegan: ADEGAN_VIDEO_K2C.slice(2, 4),
+    poster: { a: 0, k: 4 },
+  },
+  {
+    naskah: { id: "k2c-v3", judul: "Banding dan Urut", subjudul: "Puluhan dulu · urutkan kartu · 2 adegan" },
+    adegan: ADEGAN_VIDEO_K2C.slice(4, 6),
+    poster: { a: 1, k: 5 },
+  },
+];
+
 export function VideoBandingK2C({ speakGuru }: { speakGuru: (teks: string, selesai?: () => void) => void }) {
-  return <VideoCerita judul="Permen Ulang Tahun Kira" subjudul="Membandingkan dua bilangan" adegan={ADEGAN_VIDEO_K2C} speakGuru={speakGuru} />;
+  return <DaftarVideoCerita videos={VIDEO_SIAP_K2C} speakGuru={speakGuru} />;
 }
