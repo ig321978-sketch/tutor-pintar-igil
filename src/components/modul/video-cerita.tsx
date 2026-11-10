@@ -42,13 +42,15 @@ export function kalimatDari(teks: string): string[] {
 export const tumbuh = (t: number, dari: number, ke: number, laju: number) => Math.min(ke, dari + Math.floor(t * laju));
 
 /** Label putih berbingkai di bagian atas gambar, dipusatkan. Ganti `teks` untuk memunculkannya lagi. */
-export function Papan({ teks, y = 6, ukuran = 13 }: { teks: string; y?: number; ukuran?: number }) {
-  const w = Math.max(96, Math.min(288, teks.length * ukuran * 0.62 + 26));
+export function Papan({ teks, y = 6, ukuran = 13 }: { teks?: string | null; y?: number; ukuran?: number }) {
+  const isi = typeof teks === "string" ? teks : "";
+  if (!isi) return null;
+  const w = Math.max(96, Math.min(288, isi.length * ukuran * 0.62 + 26));
   return (
-    <g key={teks} className="vc-pop" style={{ ["--dy" as string]: "-12px" }}>
+    <g key={isi} className="vc-pop" style={{ ["--dy" as string]: "-12px" }}>
       <rect x={150 - w / 2} y={y} width={w} height="26" rx="11" fill="#FFFFFF" stroke={BIRU} strokeWidth="3" />
       <text x="150" y={y + 18.5} textAnchor="middle" fontSize={ukuran} fontWeight="900" fill={BIRU}>
-        {teks}
+        {isi}
       </text>
     </g>
   );

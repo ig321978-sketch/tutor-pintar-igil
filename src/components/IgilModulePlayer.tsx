@@ -1024,7 +1024,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const [activeSubBab, setActiveSubBab] = useState<SubBabId>("A");
   const [angkaMainan, setAngkaMainan] = useState<Record<string, number>>({});
   const angkaMainanRef = useRef<Record<string, number>>({});
-  const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(6); // 1=Story .. 6=Abstract; semua tahap terbuka
+  // Mulai dari Story saja agar Materi tidak memasang 6 tahap + puluhan permainan sekaligus (OOM di HP/webview).
+  const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(1); // 1=Story .. 6=Abstract
   const [concreteCounter, setConcreteCounter] = useState<number>(3);
 
   // Ref untuk auto-scroll mulus saat tombol floating-end LANJUTKAN diklik

@@ -33,7 +33,7 @@ type PropsDaftar = {
 /**
  * Daftar video cerita. Tidak ada video yang berjalan sendiri. Siswa mengetuk Putar pada satu video, video itu
  * langsung berjalan dan video lain berhenti. Mengetuk Putar pada video lain menggantikan yang sedang berjalan.
- * Di desktop poster disusun horizontal (lebar kartu dibatasi) agar tidak melebar vertikal.
+ * Poster ringan (tanpa adegan SVG penuh) disusun horizontal di desktop agar hemat memori dan tidak melebar vertikal.
  */
 export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
   const [aktif, setAktif] = useState<string | null>(null);
@@ -73,17 +73,22 @@ export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
       <div className="flex flex-col gap-3 md:flex-row md:items-stretch md:gap-3 md:overflow-x-auto md:pb-1">
         {videos.map((v, i) => {
           const sedang = aktif === v.naskah.id;
-          const adeganPoster = v.adegan[v.poster.a] ?? v.adegan[0];
-          if (!adeganPoster) return null;
           return (
             <article
               key={v.naskah.id}
               className={`w-full shrink-0 overflow-hidden rounded-3xl border-4 bg-white shadow-[0_5px_0_rgba(28,1,165,0.22)] md:w-[min(100%,19.5rem)] ${sedang ? "border-amber-400 ring-4 ring-amber-200" : "border-[#1C01A5]"}`}
             >
               <div className="relative bg-[#DFF1FF]">
-                <svg viewBox="0 0 300 208" className="pointer-events-none block h-auto w-full" aria-hidden="true">
-                  <Latar />
-                  {adeganPoster.render({ k: v.poster.k, t: 0 })}
+                <svg viewBox="0 0 300 120" className="pointer-events-none block h-auto w-full" aria-hidden="true">
+                  <rect x="0" y="0" width="300" height="120" fill="#DFF1FF" />
+                  <circle cx="250" cy="28" r="18" fill={KUNING} stroke={BIRU} strokeWidth="3" />
+                  <rect x="40" y="28" width="220" height="64" rx="18" fill="#FFFFFF" stroke={BIRU} strokeWidth="4" />
+                  <text x="150" y="58" textAnchor="middle" fontSize="28" fontWeight="900" fill={BIRU}>
+                    🎬 {i + 1}
+                  </text>
+                  <text x="150" y="78" textAnchor="middle" fontSize="12" fontWeight="800" fill={BIRU}>
+                    {v.naskah.subjudul}
+                  </text>
                 </svg>
                 {sedang ? (
                   <div className="absolute inset-0 flex items-center justify-center bg-[#1C01A5]/45">
