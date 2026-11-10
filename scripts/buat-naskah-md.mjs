@@ -204,6 +204,40 @@ KONFIG.k3b5 = {
   },
 };
 
+KONFIG.k4b1 = {
+  kelas: 4,
+  bab: 1,
+  judul: "Bilangan Cacah sampai 10.000",
+  buku: "Buku Siswa Matematika Kelas IV (Kemendikbudristek, Kurikulum Merdeka, Bab 1 hlm. 4–24) Sub-Bab A–C",
+  berkas: { A: "sub-a-membaca-menulis", B: "sub-b-nilai-tempat", C: "sub-c-membandingkan-mengurutkan" },
+  metodeLuar: {
+    A: [
+      "**Balok Dienes empat tingkat**: peti (1.000), dus (100), bungkus (10), benda (1) memperluas model Kelas 3 ke ribuan.",
+      "**Papan nilai tempat empat kolom berwarna**: ribuan ungu, ratusan hijau, puluhan biru, satuan merah.",
+      "**Kartu angka empat digit**: menyusun lambang bilangan dengan empat kartu pada empat tempat.",
+      "**Miskonsepsi nol di tengah**: 7.003, 1.025, 6.570 dilatih agar nol menjaga tempat tanpa dibaca.",
+      "**Penukaran sepuluh dus = satu peti**: aturan ribuan tampak langsung saat merakit.",
+      "**Contoh kontekstual buku**: harga minimarket 6.750, jarak 3.286 m, tinggi Gunung Semeru 3.676 m.",
+    ],
+    B: [
+      "**Expanded form empat suku**: 2.150 = 2.000 + 100 + 50 + 0.",
+      "**Angka vs nilai tempat**: 2 di ribuan bernilai 2.000, bukan 2.",
+      "**Tabel nilai tempat**: mengisi nilai tiap kolom dari model blok.",
+      "**Detektif nilai tempat**: petunjuk nilai menyisakan satu bilangan.",
+      "**Garis bilangan nilai**: mengetuk nilai angka pada garis skala ribuan.",
+      "**Uraian kata**: dari uraian ke lambang dan sebaliknya.",
+    ],
+    C: [
+      "**Bandingkan dari kiri (ribuan dulu)**: aturan place-value comparison standar.",
+      "**Tanda mulut buaya**: > dan < menghadap bilangan lebih besar.",
+      "**Urut naik/turun empat bilangan**: memilih terkecil berulang.",
+      "**Gunung Semeru dan saudara**: 2.460, 3.676, 3.726 dari buku.",
+      "**Tempat yang menentukan**: bila ribuan sama, lihat ratusan, lalu puluhan.",
+      "**Detektif perbandingan**: petunjuk lebih/kurang menyisakan satu bilangan.",
+    ],
+  },
+};
+
 const kode = process.argv[2];
 if (!kode || !KONFIG[kode]) {
   console.error(`Pakai: node --no-warnings scripts/buat-naskah-md.mjs <${Object.keys(KONFIG).join("|")}>`);

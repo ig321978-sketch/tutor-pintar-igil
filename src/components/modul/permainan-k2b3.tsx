@@ -29,7 +29,7 @@ export type BinSortir = { id: string; label: string; warna: string; ikon?: strin
  * Pilah benda atau kalimat ke kotak yang tepat. Seret ke kotak, atau ketuk benda lalu ketuk kotak (papan ketik: Enter).
  * Benda yang salah kembali dan petunjuknya dibacakan.
  */
-export function Sortir({ item, bin, onBeres, kolomBin = 2, kartuTeks = false, gaya = "kertas", pesanBeres, lebarItem = 78 }: { item: ItemSortir[]; bin: BinSortir[]; onBeres: () => void; kolomBin?: 2 | 3; kartuTeks?: boolean; gaya?: "kayu" | "kertas"; pesanBeres: string; lebarItem?: number }) {
+export function Sortir({ item, bin, onBeres, kolomBin = 2, kartuTeks = false, gaya = "kertas", pesanBeres, lebarItem = 78 }: { item: ItemSortir[]; bin: BinSortir[]; onBeres: () => void; kolomBin?: 2 | 3 | 4; kartuTeks?: boolean; gaya?: "kayu" | "kertas"; pesanBeres: string; lebarItem?: number }) {
   const ucap = useContext(SuaraCtx);
   const [tempat, setTempat] = useState<Record<string, string>>({});
   const [dipilih, setDipilih] = useState<string | null>(null);
@@ -85,7 +85,7 @@ export function Sortir({ item, bin, onBeres, kolomBin = 2, kartuTeks = false, ga
           ))}
           {beres ? <span className="text-base font-black text-[#14532D]">Semua sudah masuk kotak</span> : null}
         </div>
-        <div className={`grid gap-2 ${kolomBin === 3 ? "grid-cols-3" : "grid-cols-2"}`}>
+        <div className={`grid gap-2 ${kolomBin === 4 ? "grid-cols-2 sm:grid-cols-4" : kolomBin === 3 ? "grid-cols-3" : "grid-cols-2"}`}>
           {bin.map((b) => {
             const isiBin = item.filter((i) => tempat[i.id] === b.id);
             return (

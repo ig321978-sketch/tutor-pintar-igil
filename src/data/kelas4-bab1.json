@@ -1,0 +1,2843 @@
+{
+  "chapterId": "k4-mat-bab1",
+  "chapter_id": "k4-mat-bab1",
+  "phase_code": "FASE_B",
+  "grade": 4,
+  "subjectLabel": "MATEMATIKA - KELAS 4 SD",
+  "title": "BAB 1: BILANGAN CACAH SAMPAI 10.000",
+  "silabusElemen": "🌈 Fase B • Elemen Bilangan: Membaca, Menulis, Nilai Tempat, Membandingkan, dan Mengurutkan Bilangan Cacah sampai 10.000 (Kelas 4 SD/MI)",
+  "suaraPerangkatSaja": true,
+  "suaraLaju": 0.7,
+  "suaraNada": 1,
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Membaca dan Menulis Bilangan)",
+      "fullTitle": "Sub-Bab A: Membaca dan Menulis Bilangan Cacah sampai 10.000",
+      "targetDescription": "Siswa membaca dan menulis bilangan cacah empat angka sampai 10.000, termasuk bilangan dengan nol (7.003, 1.025, 6.570), memakai papan ribuan–satuan, serta memahami 10 dus = 1 peti (1.000).",
+      "secondaryBg": "#DCFCE7",
+      "secondaryBorder": "#16A34A",
+      "secondaryText": "#14532D",
+      "silabus": {
+        "teksSuara": "Kita belajar membaca dan menulis bilangan cacah sampai sepuluh ribu. Helen melihat harga minuman enam ribu tujuh ratus lima puluh rupiah di minimarket, jarak rumah tiga ribu dua ratus delapan puluh enam meter, dan tinggi Gunung Semeru tiga ribu enam ratus tujuh puluh enam meter. Kita memakai kartu angka dan papan ribuan, ratusan, puluhan, satuan. Nol tidak dibaca, tetapi menjaga tempat saat menulis. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa membaca, menulis, membandingkan, dan mengurutkan bilangan cacah sampai 10.000. Pada sub-bab ini fokus membaca dan menulis.",
+        "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab A hlm. 4–11) dan metode Dienes empat tingkat (peti–dus–bungkus–benda)."
+      },
+      "stories": [
+        {
+          "id": "K4B1A-V1-1",
+          "titleHint": "Belanja bersama Ibu",
+          "sceneType": "K4B1A-V1-1",
+          "voiceNarration": "Helen mengantar Ibu ke minimarket untuk membeli bahan kue. Helen meminta minuman seharga enam ribu tujuh ratus lima puluh rupiah. Di rak makanan banyak label harga empat angka. Kita akan belajar membaca bilangan empat angka."
+        },
+        {
+          "id": "K4B1A-V1-2",
+          "titleHint": "Jarak 3.286 meter",
+          "sceneType": "K4B1A-V1-2",
+          "voiceNarration": "Dari minimarket ke rumah Helen berjarak tiga ribu dua ratus delapan puluh enam meter. Ambil kartu angka 3, 2, 8, dan 6. Taruh di papan: ribuan 3, ratusan 2, puluhan 8, satuan 6. Dibaca: tiga ribu dua ratus delapan puluh enam."
+        },
+        {
+          "id": "K4B1A-V1-3",
+          "titleHint": "Aturan membaca",
+          "sceneType": "K4B1A-V1-3",
+          "voiceNarration": "Satuan dibaca angkanya saja. Puluhan ditambah kata puluh, ratusan ditambah ratus, ribuan ditambah ribu. Baca dari kiri ke kanan. Jika ada nol, tempat itu tidak dibaca."
+        },
+        {
+          "id": "K4B1A-V2-1",
+          "titleHint": "Tinggi Mahameru",
+          "sceneType": "K4B1A-V2-1",
+          "voiceNarration": "Gunung Semeru adalah gunung tertinggi di Pulau Jawa. Puncak Mahameru tingginya tiga ribu enam ratus tujuh puluh enam meter. Bagaimana menulis lambang bilangan itu? Dengar katanya, lalu tulis angkanya."
+        },
+        {
+          "id": "K4B1A-V2-2",
+          "titleHint": "Menulis 3.254",
+          "sceneType": "K4B1A-V2-2",
+          "voiceNarration": "Tiga ribu dua ratus lima puluh empat. Ribuan tiga, tulis 3. Ratusan dua, tulis 2. Puluhan lima, tulis 5. Satuan empat, tulis 4. Hasilnya 3.254."
+        },
+        {
+          "id": "K4B1A-V2-3",
+          "titleHint": "Seribu, bukan satu ribu",
+          "sceneType": "K4B1A-V2-3",
+          "voiceNarration": "Bilangan 1.025: ribuannya 1 dibaca seribu. Ratusannya 0, tidak ditulis dalam bacaan. Puluhan 2 dan satuan 5: dua puluh lima. Jadi dibaca seribu dua puluh lima."
+        },
+        {
+          "id": "K4B1A-V3-1",
+          "titleHint": "Slamet belanja",
+          "sceneType": "K4B1A-V3-1",
+          "voiceNarration": "Slamet membeli makanan ringan seharga tujuh ribu tiga ratus lima puluh rupiah. Uangnya sembilan ribu lima ratus rupiah. Kembalian dua ribu seratus lima puluh rupiah. Ayo baca ketiga bilangan itu."
+        },
+        {
+          "id": "K4B1A-V3-2",
+          "titleHint": "Jodohkan bacaan",
+          "sceneType": "K4B1A-V3-2",
+          "voiceNarration": "2.903 dibaca dua ribu sembilan ratus tiga. 6.002 dibaca enam ribu dua. 9.045 dibaca sembilan ribu empat puluh lima. 2.145 dibaca dua ribu seratus empat puluh lima."
+        },
+        {
+          "id": "K4B1A-V3-3",
+          "titleHint": "Siap ke nilai tempat",
+          "sceneType": "K4B1A-V3-3",
+          "voiceNarration": "Kita sudah bisa membaca dan menulis bilangan empat angka. Berikutnya kita pelajari nilai tiap tempat angka. Angka 2 pada 2.150 bernilai dua ribu, bukan dua. Siap lanjut ke Sub-Bab B."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K4B1A-V1",
+          "judul": "Helen di Minimarket",
+          "subjudul": "Harga empat angka",
+          "adegan": [
+            {
+              "id": "K4B1A-V1-1",
+              "judul": "Belanja bersama Ibu",
+              "ketukan": [
+                "Helen mengantar Ibu ke minimarket untuk membeli bahan kue.",
+                "Helen meminta minuman seharga enam ribu tujuh ratus lima puluh rupiah.",
+                "Di rak makanan banyak label harga empat angka.",
+                "Kita akan belajar membaca bilangan empat angka."
+              ],
+              "papan": [
+                "Minimarket",
+                "Rp6.750,00",
+                "Banyak label harga",
+                "Bilangan empat angka"
+              ]
+            },
+            {
+              "id": "K4B1A-V1-2",
+              "judul": "Jarak 3.286 meter",
+              "ketukan": [
+                "Dari minimarket ke rumah Helen berjarak tiga ribu dua ratus delapan puluh enam meter.",
+                "Ambil kartu angka 3, 2, 8, dan 6.",
+                "Taruh di papan: ribuan 3, ratusan 2, puluhan 8, satuan 6.",
+                "Dibaca: tiga ribu dua ratus delapan puluh enam."
+              ],
+              "papan": [
+                "3.286 meter",
+                "Kartu 3 2 8 6",
+                "Papan empat tempat",
+                "Tiga ribu dua ratus delapan puluh enam"
+              ]
+            },
+            {
+              "id": "K4B1A-V1-3",
+              "judul": "Aturan membaca",
+              "ketukan": [
+                "Satuan dibaca angkanya saja.",
+                "Puluhan ditambah kata puluh, ratusan ditambah ratus, ribuan ditambah ribu.",
+                "Baca dari kiri ke kanan.",
+                "Jika ada nol, tempat itu tidak dibaca."
+              ],
+              "papan": [
+                "Satuan: angka",
+                "Puluh, ratus, ribu",
+                "Dari kiri",
+                "Nol tidak dibaca"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B1A-V2",
+          "judul": "Gunung Semeru",
+          "subjudul": "Menulis dari kata",
+          "adegan": [
+            {
+              "id": "K4B1A-V2-1",
+              "judul": "Tinggi Mahameru",
+              "ketukan": [
+                "Gunung Semeru adalah gunung tertinggi di Pulau Jawa.",
+                "Puncak Mahameru tingginya tiga ribu enam ratus tujuh puluh enam meter.",
+                "Bagaimana menulis lambang bilangan itu?",
+                "Dengar katanya, lalu tulis angkanya."
+              ],
+              "papan": [
+                "Gunung Semeru",
+                "Tiga ribu enam ratus tujuh puluh enam",
+                "Menulis lambang",
+                "Dengar lalu tulis"
+              ]
+            },
+            {
+              "id": "K4B1A-V2-2",
+              "judul": "Menulis 3.254",
+              "ketukan": [
+                "Tiga ribu dua ratus lima puluh empat.",
+                "Ribuan tiga, tulis 3. Ratusan dua, tulis 2.",
+                "Puluhan lima, tulis 5. Satuan empat, tulis 4.",
+                "Hasilnya 3.254."
+              ],
+              "papan": [
+                "Tiga ribu…",
+                "Ribuan 3, ratusan 2",
+                "Puluhan 5, satuan 4",
+                "3.254"
+              ]
+            },
+            {
+              "id": "K4B1A-V2-3",
+              "judul": "Seribu, bukan satu ribu",
+              "ketukan": [
+                "Bilangan 1.025: ribuannya 1 dibaca seribu.",
+                "Ratusannya 0, tidak ditulis dalam bacaan.",
+                "Puluhan 2 dan satuan 5: dua puluh lima.",
+                "Jadi dibaca seribu dua puluh lima."
+              ],
+              "papan": [
+                "1.025",
+                "Seribu",
+                "Nol ratusan dilewati",
+                "Seribu dua puluh lima"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B1A-V3",
+          "judul": "Harga di Warung",
+          "subjudul": "Latihan membaca",
+          "adegan": [
+            {
+              "id": "K4B1A-V3-1",
+              "judul": "Slamet belanja",
+              "ketukan": [
+                "Slamet membeli makanan ringan seharga tujuh ribu tiga ratus lima puluh rupiah.",
+                "Uangnya sembilan ribu lima ratus rupiah.",
+                "Kembalian dua ribu seratus lima puluh rupiah.",
+                "Ayo baca ketiga bilangan itu."
+              ],
+              "papan": [
+                "Rp7.350",
+                "Rp9.500",
+                "Rp2.150",
+                "Baca ketiga"
+              ]
+            },
+            {
+              "id": "K4B1A-V3-2",
+              "judul": "Jodohkan bacaan",
+              "ketukan": [
+                "2.903 dibaca dua ribu sembilan ratus tiga.",
+                "6.002 dibaca enam ribu dua.",
+                "9.045 dibaca sembilan ribu empat puluh lima.",
+                "2.145 dibaca dua ribu seratus empat puluh lima."
+              ],
+              "papan": [
+                "2.903",
+                "6.002",
+                "9.045",
+                "2.145"
+              ]
+            },
+            {
+              "id": "K4B1A-V3-3",
+              "judul": "Siap ke nilai tempat",
+              "ketukan": [
+                "Kita sudah bisa membaca dan menulis bilangan empat angka.",
+                "Berikutnya kita pelajari nilai tiap tempat angka.",
+                "Angka 2 pada 2.150 bernilai dua ribu, bukan dua.",
+                "Siap lanjut ke Sub-Bab B."
+              ],
+              "papan": [
+                "Membaca-menulis siap",
+                "Nilai tempat",
+                "2 bernilai 2.000",
+                "Lanjut Sub-Bab B"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Empat angka",
+          "stepDesc": "Empat angka pada bilangan sampai 10.000.",
+          "icon": "4️⃣",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Ribuan",
+          "stepDesc": "Ribuan pada bilangan sampai 10.000.",
+          "icon": "🟣",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Cara membaca",
+          "stepDesc": "Cara membaca pada bilangan sampai 10.000.",
+          "icon": "🗣️",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Angka nol",
+          "stepDesc": "Angka nol pada bilangan sampai 10.000.",
+          "icon": "⭕",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Menulis lambang",
+          "stepDesc": "Menulis lambang pada bilangan sampai 10.000.",
+          "icon": "✍️",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Kartu angka",
+          "stepDesc": "Kartu angka pada bilangan sampai 10.000.",
+          "icon": "🃏",
+          "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Harga di minimarket",
+          "stepDesc": "Harga di minimarket pada bilangan sampai 10.000.",
+          "icon": "🏪",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Siap membaca menulis",
+          "stepDesc": "Siap membaca menulis pada bilangan sampai 10.000.",
+          "icon": "✅",
+          "flowFrom": "7",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "RIBUAN",
+          "emoji": "🟣",
+          "countNum": 1000,
+          "countWord": "satu peti / seribu",
+          "voiceSentence": "Tempat paling kiri pada bilangan empat angka adalah ribuan. Satu peti sama dengan seribu."
+        },
+        {
+          "fruitName": "RATUSAN",
+          "emoji": "🟢",
+          "countNum": 100,
+          "countWord": "satu dus / seratus",
+          "voiceSentence": "Di kanan ribuan ada ratusan. Satu dus sama dengan seratus."
+        },
+        {
+          "fruitName": "PULUHAN",
+          "emoji": "🔵",
+          "countNum": 10,
+          "countWord": "satu bungkus / sepuluh",
+          "voiceSentence": "Puluhan memakai kata puluh. Sepuluh satuan sama dengan satu puluhan."
+        },
+        {
+          "fruitName": "SATUAN",
+          "emoji": "🔴",
+          "countNum": 1,
+          "countWord": "benda lepas",
+          "voiceSentence": "Satuan dibaca angkanya saja."
+        },
+        {
+          "fruitName": "BACA DARI KIRI",
+          "emoji": "⬅️",
+          "countNum": 3286,
+          "countWord": "tiga ribu dua ratus delapan puluh enam",
+          "voiceSentence": "Baca dari ribuan ke satuan. Contoh 3.286."
+        },
+        {
+          "fruitName": "NOL TIDAK DIBACA",
+          "emoji": "⭕",
+          "countNum": 7003,
+          "countWord": "tujuh ribu tiga",
+          "voiceSentence": "7.003 dibaca tujuh ribu tiga. Nol tidak dibaca."
+        },
+        {
+          "fruitName": "SERIBU",
+          "emoji": "1️⃣",
+          "countNum": 1025,
+          "countWord": "seribu dua puluh lima",
+          "voiceSentence": "Ribuan 1 dibaca seribu, bukan satu ribu."
+        },
+        {
+          "fruitName": "NOL MENJAGA TEMPAT",
+          "emoji": "✍️",
+          "countNum": 405,
+          "countWord": "saat menulis tetap ditulis",
+          "voiceSentence": "Saat menulis, nol menjaga tempat yang kosong."
+        },
+        {
+          "fruitName": "SEPULUH DUS = SATU PETI",
+          "emoji": "🔄",
+          "countNum": 10,
+          "countWord": "penukaran",
+          "voiceSentence": "Sepuluh dus ditukar menjadi satu peti."
+        },
+        {
+          "fruitName": "SAMPAI 10.000",
+          "emoji": "🔟",
+          "countNum": 10000,
+          "countWord": "sepuluh ribu",
+          "voiceSentence": "Batas bab ini adalah sepuluh ribu."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Rakit Peti dan Dus",
+          "emoji": "📦",
+          "targetCount": 6,
+          "voiceGuide": "Rakit bilangannya, lalu periksa."
+        },
+        {
+          "title": "Hitung Kemasan Empat Tingkat",
+          "emoji": "🔢",
+          "targetCount": 6,
+          "voiceGuide": "Hitung kemasannya."
+        },
+        {
+          "title": "Pilah Peti, Dus, Bungkus, Satuan",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah ke kotak nilainya."
+        },
+        {
+          "title": "Jodohkan Kemasan dan Bilangan",
+          "emoji": "🔗",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk kumpulan, lalu bilangannya."
+        },
+        {
+          "title": "Memori Kemasan dan Bilangan",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik dua kartu."
+        },
+        {
+          "title": "Ketuk Kumpulan yang Dibaca",
+          "emoji": "👆",
+          "targetCount": 6,
+          "voiceGuide": "Ketuk yang sesuai bacaan."
+        },
+        {
+          "title": "Ketuk Semua yang Cocok",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua yang cocok."
+        },
+        {
+          "title": "Baca Kumpulan",
+          "emoji": "🗣️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih cara membaca."
+        },
+        {
+          "title": "Papan dari Kumpulan",
+          "emoji": "🗂️",
+          "targetCount": 6,
+          "voiceGuide": "Isi papan dari kumpulan."
+        },
+        {
+          "title": "Tukar Kemasan sampai Peti",
+          "emoji": "🔄",
+          "targetCount": 6,
+          "voiceGuide": "Pilih hasil penukaran."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Hitung Blok Empat Tempat",
+          "diagramType": "blocks-count",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Membaca model blok menjadi lambang."
+        },
+        {
+          "title": "Papan dari Blok",
+          "diagramType": "blocks-board",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Mengisi papan dari model blok."
+        },
+        {
+          "title": "Isi Tabel Blok",
+          "diagramType": "blocks-table",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Mengisi digit pada tabel dari model."
+        },
+        {
+          "title": "Jodohkan Blok dan Bilangan",
+          "diagramType": "blocks-match",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Menjodohkan model dengan lambang."
+        },
+        {
+          "title": "Memori Blok dan Kata",
+          "diagramType": "blocks-memory",
+          "numberA": 4,
+          "numberB": 4,
+          "caption": "Mencocokkan model dengan kata."
+        },
+        {
+          "title": "Ketuk Blok yang Dibaca",
+          "diagramType": "blocks-tap",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Mengetuk model sesuai bacaan."
+        },
+        {
+          "title": "Garis Bilangan Ribuan",
+          "diagramType": "number-line",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Menemukan bilangan pada garis."
+        },
+        {
+          "title": "Ketuk Semua Blok",
+          "diagramType": "blocks-select",
+          "numberA": 4,
+          "numberB": 4,
+          "caption": "Memilih model sesuai syarat digit."
+        },
+        {
+          "title": "Pilah Blok: Ada Nol atau Tidak",
+          "diagramType": "blocks-sort",
+          "numberA": 4,
+          "numberB": 6,
+          "caption": "Memilah model ada nol / tanpa nol."
+        },
+        {
+          "title": "Lengkapi Kalimat Blok",
+          "diagramType": "blocks-sentence",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Melengkapi kalimat tentang digit tempat."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "3.286",
+          "wordLarge": "SUSUN KARTU",
+          "mathNotation": "kata → angka",
+          "voiceReadout": "Susun kartu menjadi bilangan."
+        },
+        {
+          "symbolLarge": "3.286",
+          "wordLarge": "BACA",
+          "mathNotation": "angka → kata",
+          "voiceReadout": "Pilih cara membaca."
+        },
+        {
+          "symbolLarge": "3.254",
+          "wordLarge": "TULIS",
+          "mathNotation": "kata → angka",
+          "voiceReadout": "Tulis di papan."
+        },
+        {
+          "symbolLarge": "2.903",
+          "wordLarge": "JODOHKAN",
+          "mathNotation": "angka • kata",
+          "voiceReadout": "Ketuk angka, lalu kata."
+        },
+        {
+          "symbolLarge": "3.050",
+          "wordLarge": "MEMORI",
+          "mathNotation": "angka • kata",
+          "voiceReadout": "Balik dua kartu."
+        },
+        {
+          "symbolLarge": "7.350",
+          "wordLarge": "TABEL",
+          "mathNotation": "bilangan • dibaca",
+          "voiceReadout": "Isi dengan kartu bacaan."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar atau salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "dua petunjuk",
+          "voiceReadout": "Baca petunjuk, pilih bilangan."
+        },
+        {
+          "symbolLarge": "✔✔",
+          "wordLarge": "SEMUA COCOK",
+          "mathNotation": "syarat digit",
+          "voiceReadout": "Ketuk semua yang cocok."
+        },
+        {
+          "symbolLarge": "Aa",
+          "wordLarge": "SUSUN KATA",
+          "mathNotation": "kalimat",
+          "voiceReadout": "Susun kartu kata."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK4B1A-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "build-with-exchange",
+          "title": "Rakit Peti dan Dus",
+          "bookReference": "Buku Siswa hlm. 4–6 (kartu bilangan; 10 dus = 1 peti)",
+          "objective": "Merakit bilangan empat angka dengan peti, dus, bungkus, dan benda lepas.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua bilangan. Penukaran sepuluh otomatis. Tekan Periksa.",
+          "voiceGuide": "Rakit bilangannya, lalu periksa."
+        },
+        {
+          "gameId": "subK4B1A-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "count-packages",
+          "title": "Hitung Kemasan Empat Tingkat",
+          "bookReference": "Buku Siswa hlm. 5–6 (membaca 3.286)",
+          "objective": "Menghitung peti, dus, bungkus, dan benda lalu memilih lambangnya.",
+          "mechanicDescription": "Tiga ronde, dua soal. Pilih satu dari tiga bilangan.",
+          "voiceGuide": "Hitung kemasannya."
+        },
+        {
+          "gameId": "subK4B1A-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "sort-packages",
+          "title": "Pilah Peti, Dus, Bungkus, Satuan",
+          "bookReference": "Buku Siswa hlm. 5–6 (ribuan sampai satuan)",
+          "objective": "Memilah kemasan menurut nilainya.",
+          "mechanicDescription": "Tiga ronde, enam kelompok ke empat kotak.",
+          "voiceGuide": "Pilah ke kotak nilainya."
+        },
+        {
+          "gameId": "subK4B1A-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "match-package-number",
+          "title": "Jodohkan Kemasan dan Bilangan",
+          "bookReference": "Buku Siswa hlm. 6 (nama bilangan 3.286)",
+          "objective": "Menjodohkan kumpulan dengan lambang.",
+          "mechanicDescription": "Tiga ronde, tiga pasangan.",
+          "voiceGuide": "Ketuk kumpulan, lalu bilangannya."
+        },
+        {
+          "gameId": "subK4B1A-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "memory-package-number",
+          "title": "Memori Kemasan dan Bilangan",
+          "bookReference": "Buku Siswa hlm. 6–11",
+          "objective": "Mencocokkan kumpulan dan lambang lewat memori.",
+          "mechanicDescription": "Tiga ronde, empat pasang.",
+          "voiceGuide": "Balik dua kartu."
+        },
+        {
+          "gameId": "subK4B1A-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "tap-read-package",
+          "title": "Ketuk Kumpulan yang Dibaca",
+          "bookReference": "Buku Siswa hlm. 6 (cara membaca)",
+          "objective": "Mendengar kata bilangan lalu mengetuk kumpulan.",
+          "mechanicDescription": "Tiga ronde, tiga kumpulan mirip.",
+          "voiceGuide": "Ketuk yang sesuai bacaan."
+        },
+        {
+          "gameId": "subK4B1A-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-all-packages",
+          "title": "Ketuk Semua yang Cocok",
+          "bookReference": "Buku Siswa hlm. 9–11 (nol pada tempat)",
+          "objective": "Menemukan semua kumpulan dengan syarat digit.",
+          "mechanicDescription": "Tiga ronde, empat kumpulan.",
+          "voiceGuide": "Ketuk semua yang cocok."
+        },
+        {
+          "gameId": "subK4B1A-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "read-package-words",
+          "title": "Baca Kumpulan",
+          "bookReference": "Buku Siswa hlm. 6–9 (3.286, 7.003, 1.025)",
+          "objective": "Memilih cara membaca yang benar.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih cara membaca."
+        },
+        {
+          "gameId": "subK4B1A-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "board-from-package",
+          "title": "Papan dari Kumpulan",
+          "bookReference": "Buku Siswa hlm. 6 (tabel Ribuan–Satuan)",
+          "objective": "Mengisi papan empat kolom dari kumpulan.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Isi papan dari kumpulan."
+        },
+        {
+          "gameId": "subK4B1A-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "exchange-packages",
+          "title": "Tukar Kemasan sampai Peti",
+          "bookReference": "Buku Siswa hlm. 5–6 (10→1)",
+          "objective": "Memahami penukaran sampai peti 1.000.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih hasil penukaran."
+        },
+        {
+          "gameId": "subK4B1A-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "count-blocks",
+          "title": "Hitung Blok Empat Tempat",
+          "bookReference": "Buku Siswa hlm. 6",
+          "objective": "Membaca model blok menjadi lambang.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Hitung blok."
+        },
+        {
+          "gameId": "subK4B1A-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "board-from-blocks",
+          "title": "Papan dari Blok",
+          "bookReference": "Buku Siswa hlm. 6 dan 14",
+          "objective": "Mengisi papan dari model blok.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Isi papan dari blok."
+        },
+        {
+          "gameId": "subK4B1A-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "fill-block-table",
+          "title": "Isi Tabel Blok",
+          "bookReference": "Buku Siswa hlm. 16 (tabel nilai tempat)",
+          "objective": "Mengisi digit pada tabel dari model.",
+          "mechanicDescription": "Tiga tabel, tiga baris.",
+          "voiceGuide": "Ketuk sel tabel."
+        },
+        {
+          "gameId": "subK4B1A-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "match-block-number",
+          "title": "Jodohkan Blok dan Bilangan",
+          "bookReference": "Buku Siswa hlm. 6",
+          "objective": "Menjodohkan model dengan lambang.",
+          "mechanicDescription": "Tiga ronde, tiga pasangan.",
+          "voiceGuide": "Ketuk model, lalu bilangan."
+        },
+        {
+          "gameId": "subK4B1A-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "memory-block-word",
+          "title": "Memori Blok dan Kata",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Mencocokkan model dengan kata.",
+          "mechanicDescription": "Tiga ronde, empat pasang.",
+          "voiceGuide": "Balik dua kartu."
+        },
+        {
+          "gameId": "subK4B1A-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-block-read",
+          "title": "Ketuk Blok yang Dibaca",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Mengetuk model sesuai bacaan.",
+          "mechanicDescription": "Tiga ronde, dua pertanyaan.",
+          "voiceGuide": "Ketuk blok yang dibaca."
+        },
+        {
+          "gameId": "subK4B1A-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "number-line-read",
+          "title": "Garis Bilangan Ribuan",
+          "bookReference": "Buku Siswa hlm. 4–11",
+          "objective": "Menemukan bilangan pada garis.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Ketuk bilangan pada garis."
+        },
+        {
+          "gameId": "subK4B1A-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "tap-all-blocks",
+          "title": "Ketuk Semua Blok",
+          "bookReference": "Buku Siswa hlm. 9–11",
+          "objective": "Memilih model sesuai syarat digit.",
+          "mechanicDescription": "Tiga ronde, empat model.",
+          "voiceGuide": "Ketuk semua yang cocok."
+        },
+        {
+          "gameId": "subK4B1A-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "sort-zero-blocks",
+          "title": "Pilah Blok: Ada Nol atau Tidak",
+          "bookReference": "Buku Siswa hlm. 6–9 (nol tidak dibaca)",
+          "objective": "Memilah model ada nol / tanpa nol.",
+          "mechanicDescription": "Tiga ronde, enam model.",
+          "voiceGuide": "Pilah ke kotak."
+        },
+        {
+          "gameId": "subK4B1A-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "complete-block-sentence",
+          "title": "Lengkapi Kalimat Blok",
+          "bookReference": "Buku Siswa hlm. 6–14",
+          "objective": "Melengkapi kalimat tentang digit tempat.",
+          "mechanicDescription": "Tiga model, tiga kalimat.",
+          "voiceGuide": "Pilih angka untuk kosong."
+        },
+        {
+          "gameId": "subK4B1A-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "compose-four-cards",
+          "title": "Susun Empat Kartu",
+          "bookReference": "Buku Siswa hlm. 5–8 (kartu bilangan)",
+          "objective": "Menulis lambang dari kata dengan empat kartu.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Susun kartu menjadi bilangan."
+        },
+        {
+          "gameId": "subK4B1A-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "read-number-choice",
+          "title": "Baca Bilangan Empat Angka",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Memilih cara membaca yang benar.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih cara membaca."
+        },
+        {
+          "gameId": "subK4B1A-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "write-on-board",
+          "title": "Tulis Lambang di Papan",
+          "bookReference": "Buku Siswa hlm. 7–9 (menulis 3.254)",
+          "objective": "Menulis dari kata ke papan empat kolom.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Tulis di papan."
+        },
+        {
+          "gameId": "subK4B1A-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "match-number-word",
+          "title": "Jodohkan Angka dan Kata",
+          "bookReference": "Buku Siswa hlm. 11 (hubungkan)",
+          "objective": "Menjodohkan lambang dan bacaan.",
+          "mechanicDescription": "Tiga ronde, tiga pasang.",
+          "voiceGuide": "Ketuk angka, lalu kata."
+        },
+        {
+          "gameId": "subK4B1A-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "memory-number-word",
+          "title": "Memori Angka dan Kata",
+          "bookReference": "Buku Siswa hlm. 11",
+          "objective": "Memori lambang dan kata.",
+          "mechanicDescription": "Tiga ronde, empat pasang.",
+          "voiceGuide": "Balik dua kartu."
+        },
+        {
+          "gameId": "subK4B1A-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "fill-reading-table",
+          "title": "Isi Tabel Cara Membaca",
+          "bookReference": "Buku Siswa hlm. 11",
+          "objective": "Melengkapi tabel bacaan.",
+          "mechanicDescription": "Tiga tabel, empat baris.",
+          "voiceGuide": "Isi dengan kartu bacaan."
+        },
+        {
+          "gameId": "subK4B1A-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-reading",
+          "title": "Benar atau Salah: Membaca",
+          "bookReference": "Buku Siswa hlm. 4–11",
+          "objective": "Menilai pernyataan membaca/menulis.",
+          "mechanicDescription": "Dua ronde, lima pernyataan.",
+          "voiceGuide": "Benar atau salah."
+        },
+        {
+          "gameId": "subK4B1A-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-number",
+          "title": "Detektif Bilangan Empat Angka",
+          "bookReference": "Buku Siswa hlm. 8–11",
+          "objective": "Menemukan bilangan dari dua petunjuk.",
+          "mechanicDescription": "Empat soal.",
+          "voiceGuide": "Baca petunjuk, pilih bilangan."
+        },
+        {
+          "gameId": "subK4B1A-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "select-all-numbers",
+          "title": "Ketuk Semua yang Cocok: Angka",
+          "bookReference": "Buku Siswa hlm. 9–11",
+          "objective": "Memilih bilangan sesuai syarat digit.",
+          "mechanicDescription": "Tiga ronde, empat bilangan.",
+          "voiceGuide": "Ketuk semua yang cocok."
+        },
+        {
+          "gameId": "subK4B1A-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "build-number-sentence",
+          "title": "Susun Kata Bilangan",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Menyusun kalimat tentang bilangan.",
+          "mechanicDescription": "Empat kalimat.",
+          "voiceGuide": "Susun kartu kata."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Empat tempat",
+            "isi": "ribuan, ratusan, puluhan, satuan",
+            "suara": "Bilangan empat angka punya empat tempat dari kiri: ribuan, ratusan, puluhan, dan satuan."
+          },
+          {
+            "nama": "Baca dari kiri",
+            "isi": "3.286 = tiga ribu dua ratus delapan puluh enam",
+            "suara": "Baca dari ribuan. 3.286 dibaca tiga ribu dua ratus delapan puluh enam."
+          },
+          {
+            "nama": "Nol tidak dibaca",
+            "isi": "7.003 = tujuh ribu tiga",
+            "suara": "Nol tidak dibaca. 7.003 dibaca tujuh ribu tiga."
+          },
+          {
+            "nama": "Seribu",
+            "isi": "1.025 = seribu dua puluh lima",
+            "suara": "Ribuan 1 dibaca seribu."
+          },
+          {
+            "nama": "10 dus = 1 peti",
+            "isi": "1.000 satuan",
+            "suara": "Sepuluh dus sama dengan satu peti atau seribu."
+          }
+        ],
+        "suara": "Ingat! Empat tempat: ribuan, ratusan, puluhan, satuan. Baca dari kiri. Nol tidak dibaca. Ribuan 1 dibaca seribu. Sepuluh dus sama dengan satu peti.",
+        "caraMenyebutkan": "ribuan ratusan puluhan lewati nol",
+        "rumah": "Ayo Mencoba di rumah: catat lima harga empat angka di warung atau struk belanja. Tulis lambangnya, tandai ribuan–satuan dengan empat warna, lalu bacakan.",
+        "refleksi": [
+          "Aku dapat membaca bilangan empat angka.",
+          "Aku dapat menulis lambangnya dari kata.",
+          "Aku teliti saat ada nol.",
+          "Aku berani menjelaskan kepada teman."
+        ]
+      }
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Nilai Tempat)",
+      "fullTitle": "Sub-Bab B: Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai 10.000",
+      "targetDescription": "Siswa menentukan tempat dan nilai setiap angka pada bilangan empat angka (pada 2.150, angka 2 bernilai 2.000), menyusun dan mengurai bilangan, serta mengisi tabel digit ribuan–satuan.",
+      "secondaryBg": "#DBEAFE",
+      "secondaryBorder": "#2563EB",
+      "secondaryText": "#1E3A8A",
+      "silabus": {
+        "teksSuara": "Kita belajar nilai tempat. Empat kardus: ribuan, ratusan, puluhan, satuan. Pada 2.150, angka 2 bernilai dua ribu, angka 1 bernilai seratus, angka 5 bernilai lima puluh, angka 0 bernilai nol di satuan. Kita mengurai bilangan dan mengisi tabel digit. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa menentukan nilai tempat bilangan cacah sampai 10.000.",
+        "referensi": "Buku Siswa Matematika Kelas IV (Bab 1 Sub-Bab B hlm. 12–16), aktivitas empat kardus, dan expanded form."
+      },
+      "stories": [
+        {
+          "id": "K4B1B-V1-1",
+          "titleHint": "Siapkan kardus",
+          "sceneType": "K4B1B-V1-1",
+          "voiceNarration": "Siapkan empat kardus berlabel ribuan, ratusan, puluhan, dan satuan. Warnai biru, oranye, hijau, dan merah. Susun dari kiri ke kanan. Masukkan kartu angka 0 sampai 9 ke tiap kardus."
+        },
+        {
+          "id": "K4B1B-V1-2",
+          "titleHint": "Ambil satu dari tiap kardus",
+          "sceneType": "K4B1B-V1-2",
+          "voiceNarration": "Ambil satu kartu dari tiap kardus. Susun menjadi bilangan empat angka. Sebut tempat tiap angka. Lalu sebut bilangan utuhnya."
+        },
+        {
+          "id": "K4B1B-V1-3",
+          "titleHint": "Contoh 2.150",
+          "sceneType": "K4B1B-V1-3",
+          "voiceNarration": "2.150 dibaca dua ribu seratus lima puluh. Angka 2 di ribuan, 1 di ratusan, 5 di puluhan, 0 di satuan. Nilainya: 2.000, 100, 50, dan 0. Itulah nilai tempat."
+        },
+        {
+          "id": "K4B1B-V2-1",
+          "titleHint": "Uraikan",
+          "sceneType": "K4B1B-V2-1",
+          "voiceNarration": "Mengurai berarti menulis nilai tiap tempat. 2.150 = 2.000 + 100 + 50 + 0. 7.350 = 7.000 + 300 + 50 + 0. Angka nol tetap ditulis pada uraian agar tempatnya jelas."
+        },
+        {
+          "id": "K4B1B-V2-2",
+          "titleHint": "Tabel digit",
+          "sceneType": "K4B1B-V2-2",
+          "voiceNarration": "Pada tabel, kita menulis digitnya, bukan nilai penuh. Untuk 7.812 tulis 7 | 8 | 1 | 2. Jangan menulis 7000 di kolom ribuan. Digit dan nilai jangan tertukar."
+        },
+        {
+          "id": "K4B1B-V2-3",
+          "titleHint": "Angka 6 di mana",
+          "sceneType": "K4B1B-V2-3",
+          "voiceNarration": "Pada 8.463, angka 6 ada di puluhan, nilainya 60. Pada 4.675, angka 6 di ratusan, nilainya 600. Tempat mengubah nilai angka yang sama. Latih dengan teliti."
+        },
+        {
+          "id": "K4B1B-V3-1",
+          "titleHint": "Harga kue",
+          "sceneType": "K4B1B-V3-1",
+          "voiceNarration": "Azizah menjual kue. Slamet membeli seharga 7.350. Uangnya 9.500. Kembalian 2.150. Tentukan nilai tempat tiap harga. Ribuan menentukan besar uang paling kuat."
+        },
+        {
+          "id": "K4B1B-V3-2",
+          "titleHint": "Lengkapi tabel",
+          "sceneType": "K4B1B-V3-2",
+          "voiceNarration": "Salin tabel: 6.192, 2.910, 4.128, 9.217. Isi digit ribuan, ratusan, puluhan, satuan. Contoh 6.192: 6, 1, 9, 2. Periksa lagi sebelum selesai."
+        },
+        {
+          "id": "K4B1B-V3-3",
+          "titleHint": "Siap membandingkan",
+          "sceneType": "K4B1B-V3-3",
+          "voiceNarration": "Nilai tempat siap dipakai untuk membandingkan. Kita bandingkan ribuan dulu. Bila sama, lanjut ratusan, puluhan, satuan. Lanjut ke Sub-Bab C."
+        }
+      ],
+      "videos": [
+        {
+          "id": "K4B1B-V1",
+          "judul": "Empat Kardus",
+          "subjudul": "Aktivitas nilai tempat",
+          "adegan": [
+            {
+              "id": "K4B1B-V1-1",
+              "judul": "Siapkan kardus",
+              "ketukan": [
+                "Siapkan empat kardus berlabel ribuan, ratusan, puluhan, dan satuan.",
+                "Warnai biru, oranye, hijau, dan merah.",
+                "Susun dari kiri ke kanan.",
+                "Masukkan kartu angka 0 sampai 9 ke tiap kardus."
+              ],
+              "papan": [
+                "Empat kardus",
+                "Empat warna",
+                "Kiri ke kanan",
+                "Kartu 0–9"
+              ]
+            },
+            {
+              "id": "K4B1B-V1-2",
+              "judul": "Ambil satu dari tiap kardus",
+              "ketukan": [
+                "Ambil satu kartu dari tiap kardus.",
+                "Susun menjadi bilangan empat angka.",
+                "Sebut tempat tiap angka.",
+                "Lalu sebut bilangan utuhnya."
+              ],
+              "papan": [
+                "Satu kartu per kardus",
+                "Susun empat angka",
+                "Sebut tempatnya",
+                "Sebut bilangannya"
+              ]
+            },
+            {
+              "id": "K4B1B-V1-3",
+              "judul": "Contoh 2.150",
+              "ketukan": [
+                "2.150 dibaca dua ribu seratus lima puluh.",
+                "Angka 2 di ribuan, 1 di ratusan, 5 di puluhan, 0 di satuan.",
+                "Nilainya: 2.000, 100, 50, dan 0.",
+                "Itulah nilai tempat."
+              ],
+              "papan": [
+                "2.150",
+                "Tempat digit",
+                "Nilai 2000+100+50+0",
+                "Nilai tempat"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B1B-V2",
+          "judul": "Uraian dan Tabel",
+          "subjudul": "Dari digit ke nilai",
+          "adegan": [
+            {
+              "id": "K4B1B-V2-1",
+              "judul": "Uraikan",
+              "ketukan": [
+                "Mengurai berarti menulis nilai tiap tempat.",
+                "2.150 = 2.000 + 100 + 50 + 0.",
+                "7.350 = 7.000 + 300 + 50 + 0.",
+                "Angka nol tetap ditulis pada uraian agar tempatnya jelas."
+              ],
+              "papan": [
+                "Uraian",
+                "2.150",
+                "7.350",
+                "Nol tetap ada"
+              ]
+            },
+            {
+              "id": "K4B1B-V2-2",
+              "judul": "Tabel digit",
+              "ketukan": [
+                "Pada tabel, kita menulis digitnya, bukan nilai penuh.",
+                "Untuk 7.812 tulis 7 | 8 | 1 | 2.",
+                "Jangan menulis 7000 di kolom ribuan.",
+                "Digit dan nilai jangan tertukar."
+              ],
+              "papan": [
+                "Tabel digit",
+                "7 8 1 2",
+                "Bukan 7000",
+                "Digit ≠ nilai"
+              ]
+            },
+            {
+              "id": "K4B1B-V2-3",
+              "judul": "Angka 6 di mana",
+              "ketukan": [
+                "Pada 8.463, angka 6 ada di puluhan, nilainya 60.",
+                "Pada 4.675, angka 6 di ratusan, nilainya 600.",
+                "Tempat mengubah nilai angka yang sama.",
+                "Latih dengan teliti."
+              ],
+              "papan": [
+                "8.463 → 60",
+                "4.675 → 600",
+                "Tempat mengubah nilai",
+                "Latihan"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B1B-V3",
+          "judul": "Struk Belanja",
+          "subjudul": "Nilai tempat pada harga",
+          "adegan": [
+            {
+              "id": "K4B1B-V3-1",
+              "judul": "Harga kue",
+              "ketukan": [
+                "Azizah menjual kue. Slamet membeli seharga 7.350.",
+                "Uangnya 9.500. Kembalian 2.150.",
+                "Tentukan nilai tempat tiap harga.",
+                "Ribuan menentukan besar uang paling kuat."
+              ],
+              "papan": [
+                "7.350",
+                "9.500",
+                "2.150",
+                "Nilai tempat"
+              ]
+            },
+            {
+              "id": "K4B1B-V3-2",
+              "judul": "Lengkapi tabel",
+              "ketukan": [
+                "Salin tabel: 6.192, 2.910, 4.128, 9.217.",
+                "Isi digit ribuan, ratusan, puluhan, satuan.",
+                "Contoh 6.192: 6, 1, 9, 2.",
+                "Periksa lagi sebelum selesai."
+              ],
+              "papan": [
+                "Tabel buku",
+                "Isi digit",
+                "6.192 → 6 1 9 2",
+                "Periksa"
+              ]
+            },
+            {
+              "id": "K4B1B-V3-3",
+              "judul": "Siap membandingkan",
+              "ketukan": [
+                "Nilai tempat siap dipakai untuk membandingkan.",
+                "Kita bandingkan ribuan dulu.",
+                "Bila sama, lanjut ratusan, puluhan, satuan.",
+                "Lanjut ke Sub-Bab C."
+              ],
+              "papan": [
+                "Nilai tempat siap",
+                "Ribuan dulu",
+                "Lanjut tempat kanan",
+                "Sub-Bab C"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Nilai tempat",
+          "stepDesc": "Nilai tempat pada bilangan sampai 10.000.",
+          "icon": "📍",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Empat kardus",
+          "stepDesc": "Empat kardus pada bilangan sampai 10.000.",
+          "icon": "📦",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Digit dan nilai",
+          "stepDesc": "Digit dan nilai pada bilangan sampai 10.000.",
+          "icon": "🔢",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Uraian",
+          "stepDesc": "Uraian pada bilangan sampai 10.000.",
+          "icon": "🔓",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Tabel digit",
+          "stepDesc": "Tabel digit pada bilangan sampai 10.000.",
+          "icon": "📋",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Angka nol",
+          "stepDesc": "Angka nol pada bilangan sampai 10.000.",
+          "icon": "⭕",
+          "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Harga struk",
+          "stepDesc": "Harga struk pada bilangan sampai 10.000.",
+          "icon": "🧾",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Siap nilai tempat",
+          "stepDesc": "Siap nilai tempat pada bilangan sampai 10.000.",
+          "icon": "✅",
+          "flowFrom": "7",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "DIGIT ≠ NILAI",
+          "emoji": "⚖️",
+          "countNum": 2,
+          "countWord": "digit 2 bisa bernilai 2.000",
+          "voiceSentence": "Digit adalah angka yang tertulis. Nilainya bergantung pada tempat."
+        },
+        {
+          "fruitName": "RIBUAN ×1000",
+          "emoji": "🟣",
+          "countNum": 2000,
+          "countWord": "2 di ribuan = 2.000",
+          "voiceSentence": "Angka di ribuan dikali seribu."
+        },
+        {
+          "fruitName": "RATUSAN ×100",
+          "emoji": "🟢",
+          "countNum": 100,
+          "countWord": "1 di ratusan = 100",
+          "voiceSentence": "Angka di ratusan dikali seratus."
+        },
+        {
+          "fruitName": "PULUHAN ×10",
+          "emoji": "🔵",
+          "countNum": 50,
+          "countWord": "5 di puluhan = 50",
+          "voiceSentence": "Angka di puluhan dikali sepuluh."
+        },
+        {
+          "fruitName": "SATUAN ×1",
+          "emoji": "🔴",
+          "countNum": 0,
+          "countWord": "0 di satuan = 0",
+          "voiceSentence": "Angka di satuan dikali satu."
+        },
+        {
+          "fruitName": "URAIAN",
+          "emoji": "🔓",
+          "countNum": 2150,
+          "countWord": "2000+100+50+0",
+          "voiceSentence": "Uraian menulis nilai tiap tempat."
+        },
+        {
+          "fruitName": "TABEL DIGIT",
+          "emoji": "📋",
+          "countNum": 7812,
+          "countWord": "7|8|1|2",
+          "voiceSentence": "Tabel diisi digit, bukan nilai penuh."
+        },
+        {
+          "fruitName": "EMPAT KARDUS",
+          "emoji": "📦",
+          "countNum": 4,
+          "countWord": "aktivitas buku",
+          "voiceSentence": "Empat kardus membantu menyusun bilangan."
+        },
+        {
+          "fruitName": "TEMPAT MENGUBAH NILAI",
+          "emoji": "6️⃣",
+          "countNum": 60,
+          "countWord": "6 di puluhan = 60",
+          "voiceSentence": "Angka sama, tempat beda, nilai beda."
+        },
+        {
+          "fruitName": "SIAP BANDING",
+          "emoji": "➡️",
+          "countNum": 1,
+          "countWord": "lanjut Sub-Bab C",
+          "voiceSentence": "Nilai tempat dipakai untuk membandingkan."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Nilai Tempat dari Kumpulan",
+          "emoji": "📍",
+          "targetCount": 6,
+          "voiceGuide": "Pilih nilai tempatnya."
+        },
+        {
+          "title": "Susun dari Peti sampai Satuan",
+          "emoji": "🧩",
+          "targetCount": 6,
+          "voiceGuide": "Susun di papan."
+        },
+        {
+          "title": "Uraikan Kumpulan",
+          "emoji": "🔓",
+          "targetCount": 6,
+          "voiceGuide": "Pilih uraian."
+        },
+        {
+          "title": "Isi Tabel dari Kumpulan",
+          "emoji": "📋",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk sel."
+        },
+        {
+          "title": "Jodohkan Digit dan Nilainya",
+          "emoji": "🔗",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk digit, lalu nilai."
+        },
+        {
+          "title": "Memori Nilai Tempat",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik dua kartu."
+        },
+        {
+          "title": "Ketuk Tempat Angka",
+          "emoji": "👆",
+          "targetCount": 6,
+          "voiceGuide": "Ketuk tempatnya."
+        },
+        {
+          "title": "Ketuk Semua Syarat Nilai",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua yang cocok."
+        },
+        {
+          "title": "Papan Nilai dari Cerita Harga",
+          "emoji": "🗂️",
+          "targetCount": 6,
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "title": "Di Mana Angka Enam",
+          "emoji": "6️⃣",
+          "targetCount": 6,
+          "voiceGuide": "Pilih nilai tempat 6."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Nilai Tempat dari Blok",
+          "diagramType": "blocks-value",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Nilai digit dari model."
+        },
+        {
+          "title": "Papan dari Blok B",
+          "diagramType": "blocks-board",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Isi papan dari blok."
+        },
+        {
+          "title": "Isi Tabel Nilai Tempat",
+          "diagramType": "place-table",
+          "numberA": 4,
+          "numberB": 4,
+          "caption": "Lengkapi tabel 6.192 dst."
+        },
+        {
+          "title": "Jodohkan Blok dan Uraian",
+          "diagramType": "blocks-expand",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Model dengan uraian."
+        },
+        {
+          "title": "Memori Uraian",
+          "diagramType": "expand-memory",
+          "numberA": 4,
+          "numberB": 4,
+          "caption": "Memori bilangan dan uraian."
+        },
+        {
+          "title": "Pilih Uraian",
+          "diagramType": "expand-choice",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Memilih uraian benar."
+        },
+        {
+          "title": "Ketuk Semua Blok B",
+          "diagramType": "blocks-select",
+          "numberA": 4,
+          "numberB": 4,
+          "caption": "Syarat digit pada model."
+        },
+        {
+          "title": "Pilah menurut Ribuan",
+          "diagramType": "blocks-sort",
+          "numberA": 4,
+          "numberB": 6,
+          "caption": "Memilah menurut digit ribuan."
+        },
+        {
+          "title": "Lengkapi Kalimat Nilai Tempat",
+          "diagramType": "place-sentence",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Kalimat tentang nilai digit."
+        },
+        {
+          "title": "Ketuk Chip Nilai",
+          "diagramType": "value-chips",
+          "numberA": 4,
+          "numberB": 4,
+          "caption": "Mengetuk chip 2000/100/50/0."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "2.150",
+          "wordLarge": "PAPAN",
+          "mathNotation": "digit → bilangan",
+          "voiceReadout": "Isi papan."
+        },
+        {
+          "symbolLarge": "2→2000",
+          "wordLarge": "NILAI",
+          "mathNotation": "digit × bobot",
+          "voiceReadout": "Pilih nilai."
+        },
+        {
+          "symbolLarge": "7.350",
+          "wordLarge": "TULIS",
+          "mathNotation": "kata → digit",
+          "voiceReadout": "Tulis di papan."
+        },
+        {
+          "symbolLarge": "7→7000",
+          "wordLarge": "JODOHKAN",
+          "mathNotation": "digit • nilai",
+          "voiceReadout": "Ketuk digit, lalu nilai."
+        },
+        {
+          "symbolLarge": "9000",
+          "wordLarge": "MEMORI",
+          "mathNotation": "nilai",
+          "voiceReadout": "Balik dua kartu."
+        },
+        {
+          "symbolLarge": "6.192",
+          "wordLarge": "TABEL",
+          "mathNotation": "R P S",
+          "voiceReadout": "Isi digit."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar atau salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih bilangan."
+        },
+        {
+          "symbolLarge": "✔✔",
+          "wordLarge": "SEMUA",
+          "mathNotation": "syarat",
+          "voiceReadout": "Ketuk semua."
+        },
+        {
+          "symbolLarge": "Aa",
+          "wordLarge": "SUSUN KATA",
+          "mathNotation": "kalimat",
+          "voiceReadout": "Susun kata."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK4B1B-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "value-from-package",
+          "title": "Nilai Tempat dari Kumpulan",
+          "bookReference": "Buku Siswa hlm. 12–14 (2.150)",
+          "objective": "Menentukan nilai tempat angka pada kumpulan.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih nilai tempatnya."
+        },
+        {
+          "gameId": "subK4B1B-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "compose-from-parts",
+          "title": "Susun dari Peti sampai Satuan",
+          "bookReference": "Buku Siswa hlm. 13–14",
+          "objective": "Menyusun bilangan dari digit tempat.",
+          "mechanicDescription": "Tiga ronde, dua soal di papan.",
+          "voiceGuide": "Susun di papan."
+        },
+        {
+          "gameId": "subK4B1B-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "expand-package",
+          "title": "Uraikan Kumpulan",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Mengurai menjadi 2000+100+50+0.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih uraian."
+        },
+        {
+          "gameId": "subK4B1B-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "fill-place-table-c",
+          "title": "Isi Tabel dari Kumpulan",
+          "bookReference": "Buku Siswa hlm. 14–16",
+          "objective": "Mengisi digit tabel dari kumpulan.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Ketuk sel."
+        },
+        {
+          "gameId": "subK4B1B-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "match-digit-value-c",
+          "title": "Jodohkan Digit dan Nilainya",
+          "bookReference": "Buku Siswa hlm. 14 (angka 2 bernilai 2.000)",
+          "objective": "Menjodohkan digit tempat dengan nilainya.",
+          "mechanicDescription": "Tiga ronde, tiga pasangan.",
+          "voiceGuide": "Ketuk digit, lalu nilai."
+        },
+        {
+          "gameId": "subK4B1B-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memory-value-c",
+          "title": "Memori Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Memori nilai tempat.",
+          "mechanicDescription": "Tiga ronde, empat pasang.",
+          "voiceGuide": "Balik dua kartu."
+        },
+        {
+          "gameId": "subK4B1B-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-place-c",
+          "title": "Ketuk Tempat Angka",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Mengetuk tempat digit tertentu.",
+          "mechanicDescription": "Tiga ronde, dua pertanyaan.",
+          "voiceGuide": "Ketuk tempatnya."
+        },
+        {
+          "gameId": "subK4B1B-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "tap-all-value-c",
+          "title": "Ketuk Semua Syarat Nilai",
+          "bookReference": "Buku Siswa hlm. 15",
+          "objective": "Memilih kumpulan sesuai syarat.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua yang cocok."
+        },
+        {
+          "gameId": "subK4B1B-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "board-value-c",
+          "title": "Papan Nilai dari Cerita Harga",
+          "bookReference": "Buku Siswa hlm. 15 (struk 7.350)",
+          "objective": "Mengisi papan dari harga.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "gameId": "subK4B1B-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "digit-six-c",
+          "title": "Di Mana Angka Enam",
+          "bookReference": "Buku Siswa hlm. 15 (nilai tempat angka 6)",
+          "objective": "Menemukan nilai tempat angka 6.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih nilai tempat 6."
+        },
+        {
+          "gameId": "subK4B1B-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "value-from-blocks",
+          "title": "Nilai Tempat dari Blok",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Nilai digit dari model.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih nilai."
+        },
+        {
+          "gameId": "subK4B1B-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "board-from-blocks-b",
+          "title": "Papan dari Blok B",
+          "bookReference": "Buku Siswa hlm. 14–16",
+          "objective": "Isi papan dari blok.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "gameId": "subK4B1B-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "fill-table-b",
+          "title": "Isi Tabel Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 16",
+          "objective": "Lengkapi tabel 6.192 dst.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Ketuk sel."
+        },
+        {
+          "gameId": "subK4B1B-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "match-blocks-value",
+          "title": "Jodohkan Blok dan Uraian",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Model dengan uraian.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk model, lalu uraian."
+        },
+        {
+          "gameId": "subK4B1B-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "memory-expand",
+          "title": "Memori Uraian",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Memori bilangan dan uraian.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik dua kartu."
+        },
+        {
+          "gameId": "subK4B1B-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "expand-choice",
+          "title": "Pilih Uraian",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Memilih uraian benar.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih uraian."
+        },
+        {
+          "gameId": "subK4B1B-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "tap-all-blocks-b",
+          "title": "Ketuk Semua Blok B",
+          "bookReference": "Buku Siswa hlm. 15",
+          "objective": "Syarat digit pada model.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B1B-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "sort-thousands",
+          "title": "Pilah menurut Ribuan",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Memilah menurut digit ribuan.",
+          "mechanicDescription": "Tiga ronde, enam model.",
+          "voiceGuide": "Pilah ke kotak."
+        },
+        {
+          "gameId": "subK4B1B-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "sentence-place",
+          "title": "Lengkapi Kalimat Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 14–15",
+          "objective": "Kalimat tentang nilai digit.",
+          "mechanicDescription": "Tiga bilangan, tiga kalimat.",
+          "voiceGuide": "Pilih isian."
+        },
+        {
+          "gameId": "subK4B1B-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "tap-value-chips",
+          "title": "Ketuk Chip Nilai",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Mengetuk chip 2000/100/50/0.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk nilai yang diminta."
+        },
+        {
+          "gameId": "subK4B1B-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "compose-board-b",
+          "title": "Susun di Papan Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Menyusun dari instruksi digit.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Isi papan."
+        },
+        {
+          "gameId": "subK4B1B-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "value-of-digit",
+          "title": "Nilai Angka pada Tempat",
+          "bookReference": "Buku Siswa hlm. 14–15",
+          "objective": "Memilih nilai tempat sebuah digit.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih nilai."
+        },
+        {
+          "gameId": "subK4B1B-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "write-place-board",
+          "title": "Tulis dari Kata ke Papan",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Kata bilangan ke papan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Tulis di papan."
+        },
+        {
+          "gameId": "subK4B1B-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "match-digit-value",
+          "title": "Jodohkan Digit dan Nilai",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Digit tempat dengan nilai.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk digit, lalu nilai."
+        },
+        {
+          "gameId": "subK4B1B-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "memory-digit-value",
+          "title": "Memori Digit dan Nilai",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Memori nilai tempat.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik dua kartu."
+        },
+        {
+          "gameId": "subK4B1B-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "fill-place-table-q",
+          "title": "Isi Tabel Digit",
+          "bookReference": "Buku Siswa hlm. 16",
+          "objective": "Lengkapi tabel lambang→digit.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Isi digit."
+        },
+        {
+          "gameId": "subK4B1B-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-place",
+          "title": "Benar atau Salah: Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 12–16",
+          "objective": "Menilai pernyataan nilai tempat.",
+          "mechanicDescription": "Dua ronde, lima.",
+          "voiceGuide": "Benar atau salah."
+        },
+        {
+          "gameId": "subK4B1B-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-place",
+          "title": "Detektif Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 14–16",
+          "objective": "Petunjuk nilai tempat.",
+          "mechanicDescription": "Empat soal.",
+          "voiceGuide": "Pilih bilangan."
+        },
+        {
+          "gameId": "subK4B1B-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "select-all-place",
+          "title": "Ketuk Semua Syarat Tempat",
+          "bookReference": "Buku Siswa hlm. 15",
+          "objective": "Syarat digit.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B1B-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "build-place-sentence",
+          "title": "Susun Kata Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 14",
+          "objective": "Kalimat nilai tempat.",
+          "mechanicDescription": "Empat kalimat.",
+          "voiceGuide": "Susun kata."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Tempat menentukan nilai",
+            "isi": "2 pada 2.150 = 2.000",
+            "suara": "Tempat menentukan nilai. Angka 2 pada 2.150 bernilai dua ribu."
+          },
+          {
+            "nama": "Uraian",
+            "isi": "2000 + 100 + 50 + 0",
+            "suara": "Uraian menulis nilai tiap tempat."
+          },
+          {
+            "nama": "Tabel digit",
+            "isi": "tulis angkanya, bukan 7000",
+            "suara": "Tabel nilai tempat diisi digit."
+          },
+          {
+            "nama": "Angka sama, nilai bisa beda",
+            "isi": "6 bisa 60 atau 600",
+            "suara": "Angka sama di tempat beda nilainya beda."
+          },
+          {
+            "nama": "Nol menjaga tempat",
+            "isi": "satuan 0 tetap ada",
+            "suara": "Nol menjaga tempat yang kosong."
+          }
+        ],
+        "suara": "Tempat menentukan nilai. Uraikan bilangan. Tabel diisi digit. Angka sama bisa bernilai beda. Nol menjaga tempat.",
+        "caraMenyebutkan": "tulis digit × bobot jumlahkan cek ulang",
+        "rumah": "Ayo Mencoba: ambil empat digit dari nomor rumah atau plat. Susun bilangan, tulis tabel digit, dan uraikannya.",
+        "refleksi": [
+          "Aku tahu bedanya digit dan nilai.",
+          "Aku bisa mengurai bilangan empat angka.",
+          "Aku teliti mengisi tabel digit.",
+          "Aku siap membandingkan dengan nilai tempat."
+        ]
+      }
+    },
+    "C": {
+      "id": "C",
+      "codeTitle": "Sub-Bab C (Membandingkan dan Mengurutkan)",
+      "fullTitle": "Sub-Bab C: Membandingkan dan Mengurutkan Bilangan Cacah sampai 10.000",
+      "targetDescription": "Siswa membandingkan dua bilangan empat angka mulai dari ribuan, menulis < > =, dan mengurutkan bilangan (contoh tinggi gunung 2.460, 3.676, 3.726).",
+      "secondaryBg": "#FEF3C7",
+      "secondaryBorder": "#D97706",
+      "secondaryText": "#78350F",
+      "silabus": {
+        "teksSuara": "Kita membandingkan harga manggis tujuh ribu lima ratus dan bengkoang delapan ribu tujuh ratus lima puluh. Bandingkan ribuan dulu. Bila sama, lanjut ratusan, puluhan, satuan. Kita mengurutkan tinggi gunung dari terkecil. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa membandingkan dan mengurutkan bilangan cacah sampai 10.000.",
+        "referensi": "Buku Siswa Matematika Kelas IV (Bab 1 Sub-Bab C hlm. 16–24) dan strategi place-value comparison."
+      },
+      "stories": [
+        {
+          "id": "K4B1C-V1-1",
+          "titleHint": "Manggis dan apel",
+          "sceneType": "K4B1C-V1-1",
+          "voiceNarration": "Ibu Slamet membeli manggis seharga tujuh ribu lima ratus rupiah. Apel seperempat kilogram enam ribu tujuh ratus lima puluh rupiah. Di kios lain bengkoang delapan ribu tujuh ratus lima puluh. Kios mana lebih mahal?"
+        },
+        {
+          "id": "K4B1C-V1-2",
+          "titleHint": "Bandingkan ribuan",
+          "sceneType": "K4B1C-V1-2",
+          "voiceNarration": "8.750 dan 7.500. Ribuan: 8 dan 7. Delapan lebih dari tujuh. Jadi 8.750 lebih dari 7.500. Ditulis 8.750 > 7.500."
+        },
+        {
+          "id": "K4B1C-V1-3",
+          "titleHint": "Ribuan sama",
+          "sceneType": "K4B1C-V1-3",
+          "voiceNarration": "4.352 dan 4.365. Ribuan sama, ratusan sama. Lihat puluhan: 5 dan 6. Lima kurang dari enam, jadi 4.352 < 4.365. Bila puluhan sama, lihat satuan."
+        },
+        {
+          "id": "K4B1C-V2-1",
+          "titleHint": "Tanda lebih dari",
+          "sceneType": "K4B1C-V2-1",
+          "voiceNarration": "Mulut tanda terbuka ke bilangan yang lebih besar. 8.750 > 7.500 dibaca delapan ribu tujuh ratus lima puluh lebih dari tujuh ribu lima ratus. Latihan: 5.734 dan 4.312. Ribuan 5 > 4, jadi 5.734 > 4.312."
+        },
+        {
+          "id": "K4B1C-V2-2",
+          "titleHint": "Tanda kurang dari",
+          "sceneType": "K4B1C-V2-2",
+          "voiceNarration": "4.352 < 4.355 karena satuan 2 < 5. Semua tempat kiri sama, satuan yang menentukan. 1.001 < 1.002. 7.654 < 7.777."
+        },
+        {
+          "id": "K4B1C-V2-3",
+          "titleHint": "Sama dengan",
+          "sceneType": "K4B1C-V2-3",
+          "voiceNarration": "4.352 dan 4.352. Semua tempat sama. Ditulis 4.352 = 4.352. 8.765 = 8.765. Sama dengan berarti tidak ada yang lebih besar."
+        },
+        {
+          "id": "K4B1C-V3-1",
+          "titleHint": "Tiga gunung",
+          "sceneType": "K4B1C-V3-1",
+          "voiceNarration": "Sinabung, Semeru, dan Rinjani tingginya berbeda. Angkanya 2.460, 3.676, dan 3.726. Mana yang tertinggi? Mana terendah? Kita urutkan dengan nilai tempat."
+        },
+        {
+          "id": "K4B1C-V3-2",
+          "titleHint": "Urutan naik",
+          "sceneType": "K4B1C-V3-2",
+          "voiceNarration": "Ribuan: 2 kurang dari 3, jadi 2.460 paling kecil. Antara 3.676 dan 3.726, ratusan 6 < 7. Urutan naik: 2.460, 3.676, 3.726. Semeru 3.676 di tengah."
+        },
+        {
+          "id": "K4B1C-V3-3",
+          "titleHint": "Latihan dan kartu",
+          "sceneType": "K4B1C-V3-3",
+          "voiceNarration": "Urutkan 7.570, 5.240, 3.041, 9.941. Dari digit 1,5,9,2 susun bilangan terbesar 9.521. Membandingkan dan mengurutkan memakai langkah yang sama. Sub-Bab A sampai C siap!"
+        }
+      ],
+      "videos": [
+        {
+          "id": "K4B1C-V1",
+          "judul": "Harga di Pasar",
+          "subjudul": "Membandingkan dua bilangan",
+          "adegan": [
+            {
+              "id": "K4B1C-V1-1",
+              "judul": "Manggis dan apel",
+              "ketukan": [
+                "Ibu Slamet membeli manggis seharga tujuh ribu lima ratus rupiah.",
+                "Apel seperempat kilogram enam ribu tujuh ratus lima puluh rupiah.",
+                "Di kios lain bengkoang delapan ribu tujuh ratus lima puluh.",
+                "Kios mana lebih mahal?"
+              ],
+              "papan": [
+                "Rp7.500 manggis",
+                "Rp6.750 apel",
+                "Rp8.750 bengkoang",
+                "Mana lebih mahal?"
+              ]
+            },
+            {
+              "id": "K4B1C-V1-2",
+              "judul": "Bandingkan ribuan",
+              "ketukan": [
+                "8.750 dan 7.500. Ribuan: 8 dan 7.",
+                "Delapan lebih dari tujuh.",
+                "Jadi 8.750 lebih dari 7.500.",
+                "Ditulis 8.750 > 7.500."
+              ],
+              "papan": [
+                "Ribuan 8 dan 7",
+                "8 > 7",
+                "8.750 > 7.500",
+                "Tanda lebih dari"
+              ]
+            },
+            {
+              "id": "K4B1C-V1-3",
+              "judul": "Ribuan sama",
+              "ketukan": [
+                "4.352 dan 4.365. Ribuan sama, ratusan sama.",
+                "Lihat puluhan: 5 dan 6.",
+                "Lima kurang dari enam, jadi 4.352 < 4.365.",
+                "Bila puluhan sama, lihat satuan."
+              ],
+              "papan": [
+                "Ribuan & ratusan sama",
+                "Puluhan 5 < 6",
+                "4.352 < 4.365",
+                "Lanjut satuan bila perlu"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B1C-V2",
+          "judul": "Tiga Tanda",
+          "subjudul": "Lebih, kurang, sama",
+          "adegan": [
+            {
+              "id": "K4B1C-V2-1",
+              "judul": "Tanda lebih dari",
+              "ketukan": [
+                "Mulut tanda terbuka ke bilangan yang lebih besar.",
+                "8.750 > 7.500 dibaca delapan ribu tujuh ratus lima puluh lebih dari tujuh ribu lima ratus.",
+                "Latihan: 5.734 dan 4.312.",
+                "Ribuan 5 > 4, jadi 5.734 > 4.312."
+              ],
+              "papan": [
+                "> lebih dari",
+                "Contoh harga",
+                "5.734 dan 4.312",
+                "5.734 > 4.312"
+              ]
+            },
+            {
+              "id": "K4B1C-V2-2",
+              "judul": "Tanda kurang dari",
+              "ketukan": [
+                "4.352 < 4.355 karena satuan 2 < 5.",
+                "Semua tempat kiri sama, satuan yang menentukan.",
+                "1.001 < 1.002.",
+                "7.654 < 7.777."
+              ],
+              "papan": [
+                "< kurang dari",
+                "Satuan menentukan",
+                "1.001 < 1.002",
+                "7.654 < 7.777"
+              ]
+            },
+            {
+              "id": "K4B1C-V2-3",
+              "judul": "Sama dengan",
+              "ketukan": [
+                "4.352 dan 4.352. Semua tempat sama.",
+                "Ditulis 4.352 = 4.352.",
+                "8.765 = 8.765.",
+                "Sama dengan berarti tidak ada yang lebih besar."
+              ],
+              "papan": [
+                "Semua tempat sama",
+                "= sama dengan",
+                "8.765 = 8.765",
+                "Tidak ada yang unggul"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K4B1C-V3",
+          "judul": "Tinggi Gunung",
+          "subjudul": "Mengurutkan",
+          "adegan": [
+            {
+              "id": "K4B1C-V3-1",
+              "judul": "Tiga gunung",
+              "ketukan": [
+                "Sinabung, Semeru, dan Rinjani tingginya berbeda.",
+                "Angkanya 2.460, 3.676, dan 3.726.",
+                "Mana yang tertinggi? Mana terendah?",
+                "Kita urutkan dengan nilai tempat."
+              ],
+              "papan": [
+                "Tiga gunung",
+                "2.460, 3.676, 3.726",
+                "Tertinggi?",
+                "Pakai nilai tempat"
+              ]
+            },
+            {
+              "id": "K4B1C-V3-2",
+              "judul": "Urutan naik",
+              "ketukan": [
+                "Ribuan: 2 kurang dari 3, jadi 2.460 paling kecil.",
+                "Antara 3.676 dan 3.726, ratusan 6 < 7.",
+                "Urutan naik: 2.460, 3.676, 3.726.",
+                "Semeru 3.676 di tengah."
+              ],
+              "papan": [
+                "2.460 terkecil",
+                "3.676 < 3.726",
+                "Urutan naik",
+                "Siap"
+              ]
+            },
+            {
+              "id": "K4B1C-V3-3",
+              "judul": "Latihan dan kartu",
+              "ketukan": [
+                "Urutkan 7.570, 5.240, 3.041, 9.941.",
+                "Dari digit 1,5,9,2 susun bilangan terbesar 9.521.",
+                "Membandingkan dan mengurutkan memakai langkah yang sama.",
+                "Sub-Bab A sampai C siap!"
+              ],
+              "papan": [
+                "Urutkan empat bilangan",
+                "Digit 1 5 9 2",
+                "9.521 terbesar",
+                "Bab 1 A–C siap"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Bandingkan ribuan",
+          "stepDesc": "Bandingkan ribuan pada bilangan sampai 10.000.",
+          "icon": "🟣",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Lanjut ratusan",
+          "stepDesc": "Lanjut ratusan pada bilangan sampai 10.000.",
+          "icon": "🟢",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Tanda < > =",
+          "stepDesc": "Tanda < > = pada bilangan sampai 10.000.",
+          "icon": "🐊",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Urutkan naik",
+          "stepDesc": "Urutkan naik pada bilangan sampai 10.000.",
+          "icon": "📶",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Gunung Semeru",
+          "stepDesc": "Gunung Semeru pada bilangan sampai 10.000.",
+          "icon": "🌋",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Kartu digit",
+          "stepDesc": "Kartu digit pada bilangan sampai 10.000.",
+          "icon": "🃏",
+          "flowFrom": "5",
+          "flowTo": "7"
+        },
+        {
+          "stepNumber": 7,
+          "stepTitle": "7. Bilangan terbesar",
+          "stepDesc": "Bilangan terbesar pada bilangan sampai 10.000.",
+          "icon": "9️⃣",
+          "flowFrom": "6",
+          "flowTo": "8"
+        },
+        {
+          "stepNumber": 8,
+          "stepTitle": "8. Siap banding urut",
+          "stepDesc": "Siap banding urut pada bilangan sampai 10.000.",
+          "icon": "✅",
+          "flowFrom": "7",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "RIBUAN DULU",
+          "emoji": "🟣",
+          "countNum": 1,
+          "countWord": "langkah pertama",
+          "voiceSentence": "Membandingkan dimulai dari ribuan."
+        },
+        {
+          "fruitName": "LANJUT KE KANAN",
+          "emoji": "➡️",
+          "countNum": 2,
+          "countWord": "ratusan → puluhan → satuan",
+          "voiceSentence": "Bila sama, lanjut ke tempat di kanan."
+        },
+        {
+          "fruitName": "LEBIH DARI",
+          "emoji": ">",
+          "countNum": 8750,
+          "countWord": "8.750 > 7.500",
+          "voiceSentence": "Tanda lebih dari terbuka ke bilangan besar."
+        },
+        {
+          "fruitName": "KURANG DARI",
+          "emoji": "<",
+          "countNum": 4352,
+          "countWord": "4.352 < 4.365",
+          "voiceSentence": "Tanda kurang dari."
+        },
+        {
+          "fruitName": "SAMA DENGAN",
+          "emoji": "=",
+          "countNum": 4352,
+          "countWord": "4.352 = 4.352",
+          "voiceSentence": "Semua tempat sama."
+        },
+        {
+          "fruitName": "URUTAN NAIK",
+          "emoji": "📶",
+          "countNum": 2460,
+          "countWord": "2.460 → 3.676 → 3.726",
+          "voiceSentence": "Dari terkecil ke terbesar."
+        },
+        {
+          "fruitName": "URUTAN TURUN",
+          "emoji": "📉",
+          "countNum": 3726,
+          "countWord": "dari terbesar",
+          "voiceSentence": "Dari terbesar ke terkecil."
+        },
+        {
+          "fruitName": "TEMPAT PENENTU",
+          "emoji": "🔍",
+          "countNum": 1,
+          "countWord": "tempat pertama yang berbeda",
+          "voiceSentence": "Tempat pertama yang berbeda menentukan hasil."
+        },
+        {
+          "fruitName": "KARTU DIGIT",
+          "emoji": "🃏",
+          "countNum": 9521,
+          "countWord": "1,5,9,2 → terbesar 9.521",
+          "voiceSentence": "Susun digit dari besar untuk bilangan terbesar."
+        },
+        {
+          "fruitName": "TELITI TANDA",
+          "emoji": "⚠️",
+          "countNum": 1,
+          "countWord": "tanda dibalik arti berubah",
+          "voiceSentence": "Baca tanda dengan teliti."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Bandingkan Kumpulan Harga",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Bandingkan dua kumpulan."
+        },
+        {
+          "title": "Tanda untuk Kumpulan",
+          "emoji": "🐊",
+          "targetCount": 6,
+          "voiceGuide": "Pilih tanda."
+        },
+        {
+          "title": "Urutkan Kumpulan Gunung",
+          "emoji": "📶",
+          "targetCount": 12,
+          "voiceGuide": "Ketuk menurut urutan."
+        },
+        {
+          "title": "Paling Banyak, Paling Sedikit",
+          "emoji": "🏆",
+          "targetCount": 6,
+          "voiceGuide": "Ketuk yang diminta."
+        },
+        {
+          "title": "Jodohkan Pasangan dan Tanda",
+          "emoji": "🔗",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk pasangan, lalu tanda."
+        },
+        {
+          "title": "Taruh di Urutan",
+          "emoji": "📥",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk kumpulan, lalu tempat."
+        },
+        {
+          "title": "Ketuk Semua yang Lebih/Kurang",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Ribuan Sama, Lihat Berikutnya",
+          "emoji": "🔍",
+          "targetCount": 6,
+          "voiceGuide": "Lihat ratusan lalu puluhan."
+        },
+        {
+          "title": "Di Antara Dua Kumpulan",
+          "emoji": "↔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk yang di antara."
+        },
+        {
+          "title": "Cerita Harga dan Gunung",
+          "emoji": "🧒",
+          "targetCount": 6,
+          "voiceGuide": "Pilih nama."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Bandingkan Blok",
+          "diagramType": "blocks-compare",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Model mana lebih besar."
+        },
+        {
+          "title": "Tanda untuk Blok",
+          "diagramType": "blocks-sign",
+          "numberA": 4,
+          "numberB": 2,
+          "caption": "Pilih tanda dua model."
+        },
+        {
+          "title": "Isi Tabel Tanda",
+          "diagramType": "sign-table",
+          "numberA": 4,
+          "numberB": 4,
+          "caption": "Isi tanda pada tabel."
+        },
+        {
+          "title": "Urutkan Blok",
+          "diagramType": "blocks-order",
+          "numberA": 4,
+          "numberB": 4,
+          "caption": "Urutkan model."
+        },
+        {
+          "title": "Jodohkan Pasangan Blok dan Tanda",
+          "diagramType": "blocks-sign-match",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Pasangan model + tanda."
+        },
+        {
+          "title": "Paling pada Blok",
+          "diagramType": "blocks-most-least",
+          "numberA": 4,
+          "numberB": 4,
+          "caption": "Paling banyak/sedikit model."
+        },
+        {
+          "title": "Ketuk Semua Blok Lebih/Kurang",
+          "diagramType": "blocks-select",
+          "numberA": 4,
+          "numberB": 4,
+          "caption": "Semua model vs acuan."
+        },
+        {
+          "title": "Pilah Blok: Ribuan Kecil/Besar",
+          "diagramType": "blocks-sort",
+          "numberA": 4,
+          "numberB": 6,
+          "caption": "Pilah menurut ribuan."
+        },
+        {
+          "title": "Lengkapi Kalimat Perbandingan",
+          "diagramType": "compare-sentence",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Kalimat ribuan/ratusan."
+        },
+        {
+          "title": "Taruh Blok di Urutan",
+          "diagramType": "blocks-slot",
+          "numberA": 4,
+          "numberB": 3,
+          "caption": "Terkecil–tengah–terbesar."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "8.750 ○ 7.500",
+          "wordLarge": "BANDINGKAN",
+          "mathNotation": "> < =",
+          "voiceReadout": "Pilih tanda."
+        },
+        {
+          "symbolLarge": "4.435 ○ 3.345",
+          "wordLarge": "TABEL",
+          "mathNotation": "tanda",
+          "voiceReadout": "Isi kartu tanda."
+        },
+        {
+          "symbolLarge": "4.352 • 4.365",
+          "wordLarge": "TEMPAT",
+          "mathNotation": "ribuan…",
+          "voiceReadout": "Pilih tempat."
+        },
+        {
+          "symbolLarge": "↑",
+          "wordLarge": "URUTKAN",
+          "mathNotation": "naik/turun",
+          "voiceReadout": "Ketuk menurut urutan."
+        },
+        {
+          "symbolLarge": "8.750 ? 7.500",
+          "wordLarge": "JODOHKAN",
+          "mathNotation": "kata",
+          "voiceReadout": "Ketuk pasangan, lalu kata."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar atau salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih bilangan."
+        },
+        {
+          "symbolLarge": "✔✔",
+          "wordLarge": "SEMUA",
+          "mathNotation": "lebih/kurang",
+          "voiceReadout": "Ketuk semua."
+        },
+        {
+          "symbolLarge": "⇄",
+          "wordLarge": "PETA KONSEP",
+          "mathNotation": "langkah",
+          "voiceReadout": "Pilih kartu kotak."
+        },
+        {
+          "symbolLarge": "Aa",
+          "wordLarge": "SUSUN KATA",
+          "mathNotation": "kalimat",
+          "voiceReadout": "Susun kata."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK4B1C-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "compare-collections",
+          "title": "Bandingkan Kumpulan Harga",
+          "bookReference": "Buku Siswa hlm. 16–18 (7.500 dan 8.750)",
+          "objective": "Menentukan kumpulan mana lebih banyak.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Bandingkan dua kumpulan."
+        },
+        {
+          "gameId": "subK4B1C-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "sign-collections",
+          "title": "Tanda untuk Kumpulan",
+          "bookReference": "Buku Siswa hlm. 18–20 (< > =)",
+          "objective": "Memilih tanda untuk dua kumpulan.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih tanda."
+        },
+        {
+          "gameId": "subK4B1C-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "order-collections",
+          "title": "Urutkan Kumpulan Gunung",
+          "bookReference": "Buku Siswa hlm. 21–23 (2.460, 3.676, 3.726)",
+          "objective": "Mengurutkan empat kumpulan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk menurut urutan."
+        },
+        {
+          "gameId": "subK4B1C-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "most-least-collection",
+          "title": "Paling Banyak, Paling Sedikit",
+          "bookReference": "Buku Siswa hlm. 21–23",
+          "objective": "Menemukan paling banyak/sedikit.",
+          "mechanicDescription": "Tiga ronde, dua tanya.",
+          "voiceGuide": "Ketuk yang diminta."
+        },
+        {
+          "gameId": "subK4B1C-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "match-collection-sign",
+          "title": "Jodohkan Pasangan dan Tanda",
+          "bookReference": "Buku Siswa hlm. 18–20",
+          "objective": "Pasangan kumpulan dengan tanda.",
+          "mechanicDescription": "Tiga ronde, tiga pasangan.",
+          "voiceGuide": "Ketuk pasangan, lalu tanda."
+        },
+        {
+          "gameId": "subK4B1C-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "slot-collection-order",
+          "title": "Taruh di Urutan",
+          "bookReference": "Buku Siswa hlm. 22–23",
+          "objective": "Taruh ke terkecil–tengah–terbesar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk kumpulan, lalu tempat."
+        },
+        {
+          "gameId": "subK4B1C-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-all-more-collection",
+          "title": "Ketuk Semua yang Lebih/Kurang",
+          "bookReference": "Buku Siswa hlm. 17–20",
+          "objective": "Semua yang lebih/kurang dari acuan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B1C-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "same-thousands-collection",
+          "title": "Ribuan Sama, Lihat Berikutnya",
+          "bookReference": "Buku Siswa hlm. 19 (4.352 dan 4.365)",
+          "objective": "Membandingkan saat ribuan sama.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Lihat ratusan lalu puluhan."
+        },
+        {
+          "gameId": "subK4B1C-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "between-collection",
+          "title": "Di Antara Dua Kumpulan",
+          "bookReference": "Buku Siswa hlm. 22–23",
+          "objective": "Kumpulan di antara dua batas.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk yang di antara."
+        },
+        {
+          "gameId": "subK4B1C-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "story-prices",
+          "title": "Cerita Harga dan Gunung",
+          "bookReference": "Buku Siswa hlm. 16–23",
+          "objective": "Cerita tiga objek, paling banyak/sedikit.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih nama."
+        },
+        {
+          "gameId": "subK4B1C-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "compare-blocks",
+          "title": "Bandingkan Blok",
+          "bookReference": "Buku Siswa hlm. 18–20",
+          "objective": "Model mana lebih besar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Bandingkan model."
+        },
+        {
+          "gameId": "subK4B1C-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "sign-blocks",
+          "title": "Tanda untuk Blok",
+          "bookReference": "Buku Siswa hlm. 18–20",
+          "objective": "Pilih tanda dua model.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih tanda."
+        },
+        {
+          "gameId": "subK4B1C-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "sign-table",
+          "title": "Isi Tabel Tanda",
+          "bookReference": "Buku Siswa hlm. 20–21",
+          "objective": "Isi tanda pada tabel.",
+          "mechanicDescription": "Tiga tabel, empat baris.",
+          "voiceGuide": "Isi kartu tanda."
+        },
+        {
+          "gameId": "subK4B1C-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "order-blocks",
+          "title": "Urutkan Blok",
+          "bookReference": "Buku Siswa hlm. 22–23",
+          "objective": "Urutkan model.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk menurut urutan."
+        },
+        {
+          "gameId": "subK4B1C-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "match-blocks-sign",
+          "title": "Jodohkan Pasangan Blok dan Tanda",
+          "bookReference": "Buku Siswa hlm. 18–20",
+          "objective": "Pasangan model + tanda.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk pasangan, lalu tanda."
+        },
+        {
+          "gameId": "subK4B1C-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "most-least-blocks",
+          "title": "Paling pada Blok",
+          "bookReference": "Buku Siswa hlm. 21–23",
+          "objective": "Paling banyak/sedikit model.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk model."
+        },
+        {
+          "gameId": "subK4B1C-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "tap-all-more-blocks",
+          "title": "Ketuk Semua Blok Lebih/Kurang",
+          "bookReference": "Buku Siswa hlm. 17–20",
+          "objective": "Semua model vs acuan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B1C-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "sort-thousands-blocks",
+          "title": "Pilah Blok: Ribuan Kecil/Besar",
+          "bookReference": "Buku Siswa hlm. 18",
+          "objective": "Pilah menurut ribuan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah ke kotak."
+        },
+        {
+          "gameId": "subK4B1C-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "complete-compare-sentence",
+          "title": "Lengkapi Kalimat Perbandingan",
+          "bookReference": "Buku Siswa hlm. 18–20",
+          "objective": "Kalimat ribuan/ratusan.",
+          "mechanicDescription": "Tiga pasangan.",
+          "voiceGuide": "Pilih isian."
+        },
+        {
+          "gameId": "subK4B1C-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "slot-blocks-order",
+          "title": "Taruh Blok di Urutan",
+          "bookReference": "Buku Siswa hlm. 22–23",
+          "objective": "Terkecil–tengah–terbesar.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk model, lalu tempat."
+        },
+        {
+          "gameId": "subK4B1C-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "compare-numerals",
+          "title": "Bandingkan Lambang",
+          "bookReference": "Buku Siswa hlm. 20–21",
+          "objective": "Pilih tanda dua lambang.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Pilih tanda."
+        },
+        {
+          "gameId": "subK4B1C-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "fill-sign-table-abstract",
+          "title": "Isi Tabel Perbandingan",
+          "bookReference": "Buku Siswa hlm. 20–21",
+          "objective": "Tabel tanda.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Isi kartu tanda."
+        },
+        {
+          "gameId": "subK4B1C-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "deciding-place",
+          "title": "Tempat yang Menentukan",
+          "bookReference": "Buku Siswa hlm. 18–20",
+          "objective": "Tempat pertama yang berbeda.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih tempat."
+        },
+        {
+          "gameId": "subK4B1C-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "order-numerals",
+          "title": "Urutkan Lambang",
+          "bookReference": "Buku Siswa hlm. 22–24",
+          "objective": "Urutkan empat bilangan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk menurut urutan."
+        },
+        {
+          "gameId": "subK4B1C-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-pair-word",
+          "title": "Jodohkan Pasangan dan Kata",
+          "bookReference": "Buku Siswa hlm. 18–20",
+          "objective": "Pasangan dengan lebih/kurang/sama.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk pasangan, lalu kata."
+        },
+        {
+          "gameId": "subK4B1C-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "true-false-compare",
+          "title": "Benar atau Salah: Perbandingan",
+          "bookReference": "Buku Siswa hlm. 16–24",
+          "objective": "Pernyataan banding/urut.",
+          "mechanicDescription": "Dua ronde, lima.",
+          "voiceGuide": "Benar atau salah."
+        },
+        {
+          "gameId": "subK4B1C-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "detective-compare",
+          "title": "Detektif Perbandingan",
+          "bookReference": "Buku Siswa hlm. 22–24",
+          "objective": "Petunjuk lebih/kurang.",
+          "mechanicDescription": "Empat soal.",
+          "voiceGuide": "Pilih bilangan."
+        },
+        {
+          "gameId": "subK4B1C-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "select-all-compare",
+          "title": "Ketuk Semua Lebih/Kurang: Angka",
+          "bookReference": "Buku Siswa hlm. 17–20",
+          "objective": "Semua vs acuan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK4B1C-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-map-compare",
+          "title": "Peta Konsep Membandingkan",
+          "bookReference": "Buku Siswa hlm. 3 dan 16–23",
+          "objective": "Lengkapi peta konsep.",
+          "mechanicDescription": "Dua peta, empat kotak.",
+          "voiceGuide": "Pilih kartu kotak."
+        },
+        {
+          "gameId": "subK4B1C-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "build-compare-sentence",
+          "title": "Susun Kata Perbandingan",
+          "bookReference": "Buku Siswa hlm. 18–20",
+          "objective": "Kalimat perbandingan.",
+          "mechanicDescription": "Empat kalimat.",
+          "voiceGuide": "Susun kata."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Mulai dari ribuan",
+            "isi": "lalu ratusan, puluhan, satuan",
+            "suara": "Bandingkan dari ribuan, lalu ke kanan."
+          },
+          {
+            "nama": "Tiga tanda",
+            "isi": "< > =",
+            "suara": "Kurang dari, lebih dari, sama dengan."
+          },
+          {
+            "nama": "Mengurutkan",
+            "isi": "2.460, 3.676, 3.726",
+            "suara": "Urutan naik tinggi gunung."
+          },
+          {
+            "nama": "Tempat penentu",
+            "isi": "tempat pertama yang berbeda",
+            "suara": "Tempat pertama yang berbeda menentukan."
+          },
+          {
+            "nama": "Susun digit",
+            "isi": "terbesar 9.521 dari 1,5,9,2",
+            "suara": "Digit besar di kiri untuk bilangan terbesar."
+          }
+        ],
+        "suara": "Bandingkan dari ribuan. Pakai tanda kurang dari, lebih dari, atau sama dengan. Urutkan naik atau turun. Tempat pertama yang berbeda menentukan.",
+        "caraMenyebutkan": "ribuan dulu lalu ratusan lalu puluhan tulis tanda",
+        "rumah": "Ayo Mencoba: catat empat harga di warung, bandingkan berpasangan dengan tanda, lalu urutkan dari termurah.",
+        "refleksi": [
+          "Aku membandingkan dari ribuan.",
+          "Aku memakai tanda dengan benar.",
+          "Aku bisa mengurutkan empat bilangan.",
+          "Aku menjelaskan langkahku."
+        ]
+      }
+    }
+  },
+  "practiceQuestions": []
+}
