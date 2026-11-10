@@ -298,8 +298,8 @@ export function VideoCerita({
         </p>
       </div>
 
-      <div className="relative overflow-hidden rounded-[1.4rem] border-4 border-[#1C01A5] bg-[#DFF1FF]">
-        <svg viewBox="0 0 300 208" className={`block h-auto w-full ${jeda ? "vc-jeda" : ""}`} role="img" aria-label={`Animasi cerita: ${ad.judul}`}>
+      <div className="relative mx-auto aspect-[300/208] w-full max-w-2xl overflow-hidden rounded-[1.4rem] border-4 border-[#1C01A5] bg-[#DFF1FF]">
+        <svg viewBox="0 0 300 208" className={`pointer-events-none absolute inset-0 h-full w-full ${jeda ? "vc-jeda" : ""}`} role="img" aria-label={`Animasi cerita: ${ad.judul}`} preserveAspectRatio="xMidYMid meet">
           <Latar />
           <g key={ad.id} className="vc-masuk">
             {ad.render({ k: pos.k, t })}
