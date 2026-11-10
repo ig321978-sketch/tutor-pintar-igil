@@ -61,7 +61,9 @@ import { AbstractK2B3A, ConcreteK2B3A, InfografisK2B3AKomponen, PictureK2B3A } f
 import { AbstractK2B3B, ConcreteK2B3B, InfografisK2B3BKomponen, PictureK2B3B } from "@/components/modul/SubBabK2B3B";
 import { AbstractK2B3C, ConcreteK2B3C, InfografisK2B3CKomponen, PictureK2B3C } from "@/components/modul/SubBabK2B3C";
 import { PETA_PIKIRAN_K2B2A, PETA_PIKIRAN_K2B2B, PETA_PIKIRAN_K2B2C } from "@/components/modul/kit-k2b2";
+import { IGIL_DAFTAR_VIDEO_UI } from "@/components/modul/daftar-video-cerita";
 import { VideoPenjumlahanK2B2A } from "@/components/modul/video-k2b2a";
+void IGIL_DAFTAR_VIDEO_UI;
 import { VideoPenguranganK2B2B } from "@/components/modul/video-k2b2b";
 import { VideoSoalCeritaK2B2C } from "@/components/modul/video-k2b2c";
 import { AbstractK2B2A, ConcreteK2B2A, InfografisK2B2AKomponen, PictureK2B2A } from "@/components/modul/SubBabK2B2A";
