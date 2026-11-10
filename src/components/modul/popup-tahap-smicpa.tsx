@@ -4,7 +4,7 @@ import React, { forwardRef, useEffect, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 /** Penanda build UI pop-up tahap SMICPA. */
-export const IGIL_POPUP_TAHAP_UI = "popup-tahap-smicpa-v1";
+export const IGIL_POPUP_TAHAP_UI = "popup-tahap-smicpa-v2-hp-turun";
 
 type Props = {
   nomor: number;
@@ -97,7 +97,7 @@ export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUp
   return (
     <div
       ref={ref}
-      className="w-[min(82vw,16.5rem)] shrink-0 snap-start lg:w-auto lg:min-w-0 lg:flex-1"
+      className="w-full shrink-0 snap-start md:w-[min(42vw,16.5rem)] lg:w-auto lg:min-w-0 lg:flex-1"
       data-igil-tahap-ui={IGIL_POPUP_TAHAP_UI}
     >
       <article

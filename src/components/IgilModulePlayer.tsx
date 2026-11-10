@@ -2004,9 +2004,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           {/* SLIDED COMPONENT 1: STORY (3 GAMBAR DOODLE BERWARNA • TANPA TEKS) */}
           {/* --------------------------------------------------------------- */}
           <p className="rounded-2xl border-4 border-[#1C01A5] bg-[#FFF7CC] px-3 py-2 text-center text-sm font-black leading-snug text-[#1C01A5]">
-            📚 Enam tahap SMICPA disusun menyamping. Ketuk ▶ Buka — isinya muncul di layar pop-up agar terlihat penuh di desktop.
+            📚 Enam tahap SMICPA: di HP disusun menurun, di desktop menyamping. Ketuk ▶ Buka — isinya muncul di layar pop-up.
           </p>
-          <div className="flex w-full flex-nowrap items-stretch gap-3 overflow-x-auto pb-2 [scrollbar-color:#FFE566_#1C01A5] [scrollbar-width:thin] snap-x snap-mandatory">
+          <div className="flex w-full flex-col items-stretch gap-3 md:flex-row md:flex-nowrap md:items-stretch md:gap-3 md:overflow-x-auto md:pb-2 md:[scrollbar-color:#FFE566_#1C01A5] md:[scrollbar-width:thin] md:snap-x md:snap-mandatory">
           <PopUpTahapSmicpa
             nomor={1}
             judul="Story"
