@@ -61,9 +61,8 @@ import { AbstractK2B3A, ConcreteK2B3A, InfografisK2B3AKomponen, PictureK2B3A } f
 import { AbstractK2B3B, ConcreteK2B3B, InfografisK2B3BKomponen, PictureK2B3B } from "@/components/modul/SubBabK2B3B";
 import { AbstractK2B3C, ConcreteK2B3C, InfografisK2B3CKomponen, PictureK2B3C } from "@/components/modul/SubBabK2B3C";
 import { PETA_PIKIRAN_K2B2A, PETA_PIKIRAN_K2B2B, PETA_PIKIRAN_K2B2C } from "@/components/modul/kit-k2b2";
-import { IGIL_DAFTAR_VIDEO_UI } from "@/components/modul/daftar-video-cerita";
+import { PopUpTahapSmicpa } from "@/components/modul/popup-tahap-smicpa";
 import { VideoPenjumlahanK2B2A } from "@/components/modul/video-k2b2a";
-void IGIL_DAFTAR_VIDEO_UI;
 import { VideoPenguranganK2B2B } from "@/components/modul/video-k2b2b";
 import { VideoSoalCeritaK2B2C } from "@/components/modul/video-k2b2c";
 import { AbstractK2B2A, ConcreteK2B2A, InfografisK2B2AKomponen, PictureK2B2A } from "@/components/modul/SubBabK2B2A";
@@ -1026,8 +1025,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const [activeSubBab, setActiveSubBab] = useState<SubBabId>("A");
   const [angkaMainan, setAngkaMainan] = useState<Record<string, number>>({});
   const angkaMainanRef = useRef<Record<string, number>>({});
-  // Mulai dari Story saja agar Materi tidak memasang 6 tahap + puluhan permainan sekaligus (OOM di HP/webview).
+  // Mulai dari Story saja; isi tahap hanya dipasang di pop-up saat dibuka (hemat memori + layar desktop).
   const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(1); // 1=Story .. 6=Abstract
+  const [popupTahap, setPopupTahap] = useState<number | null>(null);
   const [concreteCounter, setConcreteCounter] = useState<number>(3);
 
   // Ref untuk auto-scroll mulus saat tombol floating-end LANJUTKAN diklik
@@ -1361,15 +1361,18 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
 
   const handleUnlockNextSmicpa = (
     nextStageNumber: number,
-    targetRef: React.RefObject<HTMLDivElement | null>,
+    _targetRef: React.RefObject<HTMLDivElement | null>,
     voiceAnnouncement: string
   ) => {
     setUnlockedSmicpaStage((prev) => Math.max(prev, nextStageNumber));
+    setPopupTahap(nextStageNumber);
     speakGuru(voiceAnnouncement);
-    setTimeout(() => {
-      targetRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 120);
   };
+
+  useEffect(() => {
+    setUnlockedSmicpaStage(1);
+    setPopupTahap(null);
+  }, [activeSubBab]);
 
   const handleCompleteCurrentSubBab = () => {
     if (!completedSubBabs.includes(activeSubBab)) {
@@ -2000,14 +2003,25 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 1: STORY (3 GAMBAR DOODLE BERWARNA • TANPA TEKS) */}
           {/* --------------------------------------------------------------- */}
-          {suaraSeragam ? <InfoSuaraGuru /> : null}
-          <div className="space-y-3 border-b-2 border-slate-200 pb-6">
-            <div className="flex items-center justify-between">
-              <span className="px-3 py-1 rounded-full bg-[#FEE2E2] text-[#991B1B] font-black text-xs">
-                Tahap 1: Story
-              </span>
-            </div>
-
+          <p className="rounded-2xl border-4 border-[#1C01A5] bg-[#FFF7CC] px-3 py-2 text-center text-sm font-black leading-snug text-[#1C01A5]">
+            📚 Enam tahap SMICPA disusun menyamping. Ketuk ▶ Buka — isinya muncul di layar pop-up agar terlihat penuh di desktop.
+          </p>
+          <div className="flex w-full flex-nowrap items-stretch gap-3 overflow-x-auto pb-2 [scrollbar-color:#FFE566_#1C01A5] [scrollbar-width:thin] snap-x snap-mandatory">
+          <PopUpTahapSmicpa
+            nomor={1}
+            judul="Story"
+            ringkas="Cerita dan video"
+            emoji="📖"
+            badgeClass="bg-[#FEE2E2] text-[#991B1B]"
+            terbuka={unlockedSmicpaStage >= 1}
+            buka={popupTahap === 1}
+            onBuka={() => setPopupTahap(1)}
+            onTutup={() => setPopupTahap(null)}
+          >
+            {popupTahap === 1 ? (
+            <>
+            {suaraSeragam ? <InfoSuaraGuru /> : null}
+            <div className="space-y-3">
             {modulBaru ? (
               <modulBaru.Cerita speakGuru={speakGuru} />
             ) : subA8 ? (
@@ -2102,19 +2116,28 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                 LANJUTKAN KE MIND-MAPPING ⬇️
               </button>
             </div>
-          </div>
+            </div>
+            </>
+            ) : null}
+          </PopUpTahapSmicpa>
 
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 2: MIND-MAPPING (3 SLIDE DIAGRAM ALUR METODE)  */}
           {/* --------------------------------------------------------------- */}
-          {unlockedSmicpaStage >= 2 && (
-            <div ref={mindMapRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#FEF3C7] text-[#92400E] font-black text-xs">
-                  Tahap 2: Mind-Map
-                </span>
-              </div>
-
+          <PopUpTahapSmicpa
+            ref={mindMapRef}
+            nomor={2}
+            judul="Mind-Map"
+            ringkas="Peta pikiran"
+            emoji="🗺️"
+            badgeClass="bg-[#FEF3C7] text-[#92400E]"
+            terbuka={unlockedSmicpaStage >= 2}
+            buka={popupTahap === 2}
+            onBuka={() => setPopupTahap(2)}
+            onTutup={() => setPopupTahap(null)}
+          >
+            {popupTahap === 2 ? (
+            <div className="space-y-3">
               {modulBaru ? (
                 <PetaPikiranB
                   langkah={modulBaru.peta}
@@ -2332,19 +2355,26 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                 </button>
               </div>
             </div>
-          )}
+            ) : null}
+          </PopUpTahapSmicpa>
 
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 3: INFOGRAFIS (3 SLIDE TABEL RINGKASAN DATA)   */}
           {/* --------------------------------------------------------------- */}
-          {unlockedSmicpaStage >= 3 && (
-            <div ref={infografisRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#DCFCE7] text-[#166534] font-black text-xs">
-                  Tahap 3: Infografis
-                </span>
-              </div>
-
+          <PopUpTahapSmicpa
+            ref={infografisRef}
+            nomor={3}
+            judul="Infografis"
+            ringkas="Tabel ringkasan"
+            emoji="📊"
+            badgeClass="bg-[#DCFCE7] text-[#166534]"
+            terbuka={unlockedSmicpaStage >= 3}
+            buka={popupTahap === 3}
+            onBuka={() => setPopupTahap(3)}
+            onTutup={() => setPopupTahap(null)}
+          >
+            {popupTahap === 3 ? (
+            <div className="space-y-3">
               {modulBaru ? (
                 <modulBaru.Infografis speakGuru={speakGuru} />
               ) : subC2 ? (
@@ -2507,19 +2537,26 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                 </button>
               </div>
             </div>
-          )}
+            ) : null}
+          </PopUpTahapSmicpa>
 
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 4: CONCRETE (3 SLIDE BENDA NYATA + KANVAS)     */}
           {/* --------------------------------------------------------------- */}
-          {unlockedSmicpaStage >= 4 && (
-            <div ref={concreteRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#DBEAFE] text-[#1E3A8A] font-black text-xs">
-                  Tahap 4: Concrete
-                </span>
-              </div>
-
+          <PopUpTahapSmicpa
+            ref={concreteRef}
+            nomor={4}
+            judul="Concrete"
+            ringkas="Benda nyata"
+            emoji="🧱"
+            badgeClass="bg-[#DBEAFE] text-[#1E3A8A]"
+            terbuka={unlockedSmicpaStage >= 4}
+            buka={popupTahap === 4}
+            onBuka={() => setPopupTahap(4)}
+            onTutup={() => setPopupTahap(null)}
+          >
+            {popupTahap === 4 ? (
+            <div className="space-y-3">
               {modulBaru ? (
                 <modulBaru.Concrete
                   speakGuru={speakGuru}
@@ -2950,19 +2987,26 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               </div>
               ) : null}
             </div>
-          )}
+            ) : null}
+          </PopUpTahapSmicpa>
 
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 5: PICTURE (DIAGRAM MAINAN + KANVAS)          */}
           {/* --------------------------------------------------------------- */}
-          {unlockedSmicpaStage >= 5 && (
-            <div ref={pictorialRef} className="space-y-3 border-b-2 border-slate-200 pb-6 pt-2">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#FEF3C7] text-[#92400E] font-black text-xs">
-                  Tahap 5: Picture
-                </span>
-              </div>
-
+          <PopUpTahapSmicpa
+            ref={pictorialRef}
+            nomor={5}
+            judul="Picture"
+            ringkas="Diagram gambar"
+            emoji="🖼️"
+            badgeClass="bg-[#FEF3C7] text-[#92400E]"
+            terbuka={unlockedSmicpaStage >= 5}
+            buka={popupTahap === 5}
+            onBuka={() => setPopupTahap(5)}
+            onTutup={() => setPopupTahap(null)}
+          >
+            {popupTahap === 5 ? (
+            <div className="space-y-3">
               {modulBaru ? (
                 <modulBaru.Picture
                   speakGuru={speakGuru}
@@ -3413,19 +3457,26 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               </>
               )}
             </div>
-          )}
+            ) : null}
+          </PopUpTahapSmicpa>
 
           {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 6: ABSTRACT (3 SLIDE ANGKA & SIMBOL MURNI)     */}
           {/* --------------------------------------------------------------- */}
-          {unlockedSmicpaStage >= 6 && (
-            <div ref={abstractRef} className="space-y-4 pt-2 pb-6">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] font-black text-xs">
-                  Tahap 6: Abstract
-                </span>
-              </div>
-
+          <PopUpTahapSmicpa
+            ref={abstractRef}
+            nomor={6}
+            judul="Abstract"
+            ringkas="Angka dan simbol"
+            emoji="🔢"
+            badgeClass="bg-[#1C01A5] text-[#FFE566]"
+            terbuka={unlockedSmicpaStage >= 6}
+            buka={popupTahap === 6}
+            onBuka={() => setPopupTahap(6)}
+            onTutup={() => setPopupTahap(null)}
+          >
+            {popupTahap === 6 ? (
+            <div className="space-y-4">
               {modulBaru ? (
                 <modulBaru.Abstract
                   speakGuru={speakGuru}
@@ -3661,34 +3712,48 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               </div>
               )}
 
-              {/* Tombol KEMBALI (untuk Sub-Bab B, C, D) & LANJUTKAN ke Sub-Bab Berikutnya */}
-              <div ref={selesaiBabRef} className="flex items-center justify-between pt-4 border-t-2 border-slate-200">
-                {activeSubBab !== "A" ? (
-                  <button
-                    type="button"
-                    onClick={handlePrevSubBab}
-                    className="px-6 py-3 rounded-2xl bg-slate-200 text-[#334155] font-black text-xs md:text-sm"
-                  >
-                    ⬅️ KEMBALI KE SUB-BAB SEBELUMNYA
-                  </button>
-                ) : (
-                  <div />
-                )}
+              <button
+                type="button"
+                onClick={() => {
+                  setPopupTahap(null);
+                  setTimeout(() => selesaiBabRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }), 80);
+                }}
+                className="mt-4 w-full rounded-2xl border-2 border-[#FFE566] bg-[#1C01A5] px-6 py-2.5 text-sm font-black text-[#FFE566]"
+              >
+                ✅ SELESAI ABSTRACT — TUTUP & LANJUT
+              </button>
+            </div>
+            ) : null}
+          </PopUpTahapSmicpa>
+          </div>
 
+          {unlockedSmicpaStage >= 6 ? (
+            <div ref={selesaiBabRef} className="mt-4 flex items-center justify-between rounded-3xl border-4 border-[#1C01A5] bg-white p-4 shadow-[0_5px_0_rgba(28,1,165,0.22)]">
+              {activeSubBab !== "A" ? (
                 <button
                   type="button"
-                  onClick={handleCompleteCurrentSubBab}
-                  className="px-8 py-3.5 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs md:text-sm shadow-lg"
+                  onClick={handlePrevSubBab}
+                  className="px-6 py-3 rounded-2xl bg-slate-200 text-[#334155] font-black text-xs md:text-sm"
                 >
-                  {activeSubBab !== daftarSubTersedia[daftarSubTersedia.length - 1]
-                    ? `SELESAIKAN SUB-BAB ${activeSubBab} & LANJUTKAN ➡️`
-                    : adaBab2
-                      ? "SELESAIKAN MATERI & LANJUT KE LATIHAN ➡️"
-                      : "SELESAIKAN MATERI & LANJUT KE SIMULASI ➡️"}
+                  ⬅️ KEMBALI KE SUB-BAB SEBELUMNYA
                 </button>
-              </div>
+              ) : (
+                <div />
+              )}
+
+              <button
+                type="button"
+                onClick={handleCompleteCurrentSubBab}
+                className="px-8 py-3.5 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs md:text-sm shadow-lg"
+              >
+                {activeSubBab !== daftarSubTersedia[daftarSubTersedia.length - 1]
+                  ? `SELESAIKAN SUB-BAB ${activeSubBab} & LANJUTKAN ➡️`
+                  : adaBab2
+                    ? "SELESAIKAN MATERI & LANJUT KE LATIHAN ➡️"
+                    : "SELESAIKAN MATERI & LANJUT KE SIMULASI ➡️"}
+              </button>
             </div>
-          )}
+          ) : null}
           </>
           )}
         </section>
