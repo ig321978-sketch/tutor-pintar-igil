@@ -11,7 +11,7 @@ export const K4B2_META = {
   "grade": 4,
   "subjectLabel": "MATEMATIKA - KELAS 4 SD",
   "title": "BAB 2: PECAHAN",
-  "silabusElemen": "🌈 Fase B • Elemen Bilangan: Pecahan Pembilang Satu, Penyebut Sama, dan Pecahan Senilai (Kelas 4 SD/MI)",
+  "silabusElemen": "🌈 Fase B • Elemen Bilangan: Pecahan (Pembilang Satu, Penyebut Sama, Senilai, Desimal Persepuluhan–Perseratusan, dan Persen) (Kelas 4 SD/MI)",
   "suaraLaju": 0.7,
   "suaraNada": 1
 } as const;
