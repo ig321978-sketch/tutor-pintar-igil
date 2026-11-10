@@ -1,5 +1,5 @@
-import Bab3KubusBalokModule from "@/components/modules/Bab3KubusBalokModule";
+import PemutarBabBaru from "@/components/PemutarBabBaru";
 
 export default function HalamanMtk6Bab3() {
-  return <Bab3KubusBalokModule />;
+  return <PemutarBabBaru bab="mtk-6-bab3" />;
 }
