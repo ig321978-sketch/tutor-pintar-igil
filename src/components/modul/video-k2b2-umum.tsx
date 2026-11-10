@@ -118,7 +118,7 @@ export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
       : null;
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3" data-igil-video-ui="popup-slide-v1">
       <p className="rounded-2xl border-4 border-[#1C01A5] bg-[#FFF7CC] px-3 py-2 text-center text-sm font-black leading-snug text-[#1C01A5]">
         🎬 Ada {banyak} video cerita. Susunan menyamping seperti slide. Ketuk ▶ Putar — video muncul di layar pop-up agar terlihat penuh.
       </p>
