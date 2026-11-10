@@ -1,6 +1,6 @@
 /**
- * Data murni Matematika Kelas 5 Bab 1 (Bilangan Cacah sampai 100.000): Sub-Bab A–B.
- * Sumber: Buku Siswa Matematika Kelas V Kemendikbudristek Bab 1 hlm. 1–14.
+ * Data murni Matematika Kelas 5 Bab 1 (Bilangan Cacah sampai 100.000): Sub-Bab A–D.
+ * Sumber: Buku Siswa Matematika Kelas V Kemendikbudristek Bab 1 hlm. 1–25.
  * Tempat: puluh ribuan–satuan. Tanpa React/jaringan. Uji: scripts/uji-data-k5b1.mjs.
  */
 
@@ -467,3 +467,434 @@ export const PETA_KONSEP_QB = [
   },
 ];
 export const RONDE_CERITA_QB = RONDE_CERITA_CB;
+
+/** Angka contoh Sub-Bab C–D (komposisi & operasi). Tanpa konteks tukar. */
+export const ANGKA_BUKU_CD = {
+  asep: 38600,
+  lukas: 63500,
+  komang: 45600,
+  nisaIbu: 57500,
+  nisaAyah: 22000,
+  nisaJumlah: 79500,
+  ayam: 32500,
+  plencing: 13250,
+  bayarMakan: 45750,
+  uangLukas: 47900,
+  sisaLukas: 2150,
+  angpau: 5000,
+  angpauJumlah: 60000,
+  bagiOrtu: 64000,
+  bagiAnak: 16000,
+  mangga: 23500,
+  jeruk: 17000,
+  kelengkeng: 34000,
+  naga: 15000,
+  alpukat: 32000,
+} as const;
+
+export type Pecahan = { pr: number; rb: number; r: number; p?: number; s?: number };
+export const jumlahPecahan = (p: Pecahan) =>
+  (p.pr || 0) * 10000 + (p.rb || 0) * 1000 + (p.r || 0) * 100 + (p.p || 0) * 10 + (p.s || 0);
+
+// ---- Sub-Bab C: Komposisi & Dekomposisi ----
+export const RONDE_KOMPOS_CC: { pecahan: Pecahan; total: number; pesan: string }[][] = [
+  [
+    { pecahan: { pr: 3, rb: 8, r: 6 }, total: 38600, pesan: "3×10.000 + 8×1.000 + 6×100 = 38.600" },
+    { pecahan: { pr: 6, rb: 3, r: 5 }, total: 63500, pesan: "6×10.000 + 3×1.000 + 5×100 = 63.500" },
+  ],
+  [
+    { pecahan: { pr: 4, rb: 5, r: 6 }, total: 45600, pesan: "4×10.000 + 5×1.000 + 6×100 = 45.600" },
+    { pecahan: { pr: 2, rb: 7, r: 0 }, total: 27000, pesan: "2×10.000 + 7×1.000 = 27.000" },
+  ],
+  [
+    { pecahan: { pr: 5, rb: 15, r: 16 }, total: 66600, pesan: "5×10.000 + 15×1.000 + 16×100 = 66.600" },
+    { pecahan: { pr: 1, rb: 2, r: 3, p: 4, s: 5 }, total: 12345, pesan: "1×10.000 + 2×1.000 + 3×100 + 4×10 + 5 = 12.345" },
+  ],
+];
+
+export const RONDE_DEKOM_CC: { n: number; uraian: string; pesan: string }[][] = [
+  [
+    { n: 38600, uraian: "30.000 + 8.000 + 600", pesan: "Bentuk panjang Asep." },
+    { n: 63500, uraian: "60.000 + 3.000 + 500", pesan: "Bentuk panjang Lukas." },
+  ],
+  [
+    { n: 45600, uraian: "40.000 + 5.000 + 600", pesan: "Bentuk panjang Komang." },
+    { n: 57500, uraian: "50.000 + 7.000 + 500", pesan: "Uraian uang Ibu." },
+  ],
+  [
+    { n: 22000, uraian: "20.000 + 2.000", pesan: "Uraian uang Ayah." },
+    { n: 14500, uraian: "10.000 + 4.000 + 500", pesan: "Uraian 14.500." },
+  ],
+];
+
+export const RONDE_CARA_CC: { total: number; tanya: string; jawab: string; opsi: string[]; pesan: string }[][] = [
+  [
+    { total: 45600, tanya: "Cara 1: 4×10.000 + 5×1.000 + 6×100. Benar?", jawab: "benar", opsi: ["benar", "salah", "kurang data"], pesan: "Jumlahnya 45.600." },
+    { total: 45600, tanya: "Cara 2: 3×10.000 + 15×1.000 + 6×100. Hasil?", jawab: "45.600", opsi: ["45.600", "36.600", "51.600"], pesan: "3×10rb + 15×1rb + 6×100." },
+  ],
+  [
+    { total: 45600, tanya: "Cara 3: 2×10.000 + 25×1.000 + 6×100. Hasil?", jawab: "45.600", opsi: ["45.600", "27.600", "55.600"], pesan: "Komposisi fleksibel." },
+    { total: 45600, tanya: "Cara 4: 45×1.000 + 6×100. Hasil?", jawab: "45.600", opsi: ["45.600", "4.560", "51.000"], pesan: "Tanpa pecahan 10rb tetap sah." },
+  ],
+  [
+    { total: 38600, tanya: "Apakah 2×10.000 + 18×1.000 + 6×100 = 38.600?", jawab: "ya", opsi: ["ya", "tidak", "tidak cukup"], pesan: "2×10rb + 18×1rb + 6×100." },
+    { total: 63500, tanya: "Apakah 63×1.000 + 5×100 = 63.500?", jawab: "ya", opsi: ["ya", "tidak", "hanya 63.000"], pesan: "63 ribu + 500." },
+  ],
+];
+
+export const RONDE_SORTIR_CC: { id: string; label: string; bin: "sama" | "beda" }[][] = [
+  [
+    { id: "c1", label: "3×10rb+8×1rb+6×100", bin: "sama" },
+    { id: "c2", label: "2×10rb+18×1rb+6×100", bin: "sama" },
+    { id: "c3", label: "4×10rb+8×1rb+6×100", bin: "beda" },
+    { id: "c4", label: "38×1rb+6×100", bin: "sama" },
+    { id: "c5", label: "30.000+8.000+500", bin: "beda" },
+    { id: "c6", label: "30.000+8.000+600", bin: "sama" },
+  ],
+  [
+    { id: "d1", label: "6×10rb+3×1rb+5×100", bin: "sama" },
+    { id: "d2", label: "5×10rb+13×1rb+5×100", bin: "sama" },
+    { id: "d3", label: "63×1rb+5×100", bin: "sama" },
+    { id: "d4", label: "60.000+3.000+400", bin: "beda" },
+    { id: "d5", label: "7×10rb+3×1rb+5×100", bin: "beda" },
+    { id: "d6", label: "60.000+3.000+500", bin: "sama" },
+  ],
+  [
+    { id: "e1", label: "4×10rb+5×1rb+6×100", bin: "sama" },
+    { id: "e2", label: "45×1rb+6×100", bin: "sama" },
+    { id: "e3", label: "5×10rb+15×1rb+16×100", bin: "beda" },
+    { id: "e4", label: "40.000+5.000+600", bin: "sama" },
+    { id: "e5", label: "3×10rb+15×1rb+6×100", bin: "sama" },
+    { id: "e6", label: "40.000+6.000+600", bin: "beda" },
+  ],
+];
+
+export const RONDE_PASANG_CC: { kiri: string; kanan: string }[][] = [
+  [
+    { kiri: "3×10rb + 8×1rb + 6×100", kanan: "38.600" },
+    { kiri: "6×10rb + 3×1rb + 5×100", kanan: "63.500" },
+    { kiri: "4×10rb + 5×1rb + 6×100", kanan: "45.600" },
+    { kiri: "5×10rb + 7×1rb + 5×100", kanan: "57.500" },
+  ],
+  [
+    { kiri: "30.000 + 8.000 + 600", kanan: "38.600" },
+    { kiri: "60.000 + 3.000 + 500", kanan: "63.500" },
+    { kiri: "40.000 + 5.000 + 600", kanan: "45.600" },
+    { kiri: "20.000 + 2.000", kanan: "22.000" },
+  ],
+  [
+    { kiri: "45×1.000 + 6×100", kanan: "45.600" },
+    { kiri: "38×1.000 + 6×100", kanan: "38.600" },
+    { kiri: "63×1.000 + 5×100", kanan: "63.500" },
+    { kiri: "57×1.000 + 5×100", kanan: "57.500" },
+  ],
+];
+export const RONDE_MEMORI_CC = RONDE_PASANG_CC;
+
+export const RONDE_KETUK_CC: { item: number[]; tanya: number[] }[] = [
+  { item: [38600, 63500, 45600, 57500], tanya: [38600, 63500] },
+  { item: [45600, 22000, 79500, 14500], tanya: [45600, 22000] },
+  { item: [38600, 45600, 63500, 27000], tanya: [45600, 63500] },
+];
+
+export const RONDE_SEMUA_CC: { label: string; item: { id: string; label: string; cocok: boolean }[] }[] = [
+  {
+    label: "hasilnya 38.600",
+    item: [
+      { id: "a", label: "3×10rb+8×1rb+6×100", cocok: true },
+      { id: "b", label: "2×10rb+18×1rb+6×100", cocok: true },
+      { id: "c", label: "4×10rb+8×1rb+6×100", cocok: false },
+      { id: "d", label: "38×1rb+6×100", cocok: true },
+    ],
+  },
+  {
+    label: "hasilnya 45.600",
+    item: [
+      { id: "a", label: "4×10rb+5×1rb+6×100", cocok: true },
+      { id: "b", label: "3×10rb+15×1rb+6×100", cocok: true },
+      { id: "c", label: "5×10rb+5×1rb+6×100", cocok: false },
+      { id: "d", label: "45×1rb+6×100", cocok: true },
+    ],
+  },
+  {
+    label: "hasilnya 63.500",
+    item: [
+      { id: "a", label: "6×10rb+3×1rb+5×100", cocok: true },
+      { id: "b", label: "60.000+3.000+500", cocok: true },
+      { id: "c", label: "60.000+3.000+400", cocok: false },
+      { id: "d", label: "63×1rb+5×100", cocok: true },
+    ],
+  },
+];
+
+export const RONDE_CERITA_CC: { teks: string; jawab: string | number; opsi: (string | number)[]; pesan: string }[][] = [
+  [
+    { teks: "Asep: 3 lembar 10rb, 8 lembar 1rb, 6 keping 100. Total?", jawab: "38.600", opsi: ["38.600", "36.800", "48.600"], pesan: "30.000+8.000+600." },
+    { teks: "Lukas: 6 lembar 10rb, 3 lembar 1rb, 5 keping 100. Total?", jawab: "63.500", opsi: ["63.500", "36.500", "65.300"], pesan: "60.000+3.000+500." },
+  ],
+  [
+    { teks: "Komang butuh 45.600. Apakah 4×10rb + 5×1rb + 6×100 cukup?", jawab: "ya, pas", opsi: ["ya, pas", "kurang", "lebih"], pesan: "Jumlah tepat 45.600." },
+    { teks: "Uraian 57.500 bentuk panjang?", jawab: "50.000 + 7.000 + 500", opsi: ["50.000 + 7.000 + 500", "5.000 + 700 + 50", "57 + 500"], pesan: "Nilai tempat." },
+  ],
+  [
+    { teks: "5×10rb + 15×1rb + 16×100 = ?", jawab: "66.600", opsi: ["66.600", "56.600", "51.600"], pesan: "50.000+15.000+1.600." },
+    { teks: "Mana komposisi lain untuk 38.600?", jawab: "38×1rb + 6×100", opsi: ["38×1rb + 6×100", "3×10rb + 6×100", "8×10rb + 3×1rb"], pesan: "38 ribu + 600." },
+  ],
+];
+
+export const RONDE_URUT_CC: { angka: number[]; dari: "kecil" | "besar" }[] = [
+  { angka: [38600, 63500, 45600], dari: "kecil" },
+  { angka: [57500, 22000, 79500], dari: "besar" },
+  { angka: [14500, 45600, 38600, 27000], dari: "kecil" },
+];
+
+export const RONDE_KOMPOS_PC = RONDE_KOMPOS_CC;
+export const RONDE_DEKOM_PC = RONDE_DEKOM_CC;
+export const RONDE_PASANG_PC = RONDE_PASANG_CC;
+export const RONDE_MEMORI_PC = RONDE_MEMORI_CC;
+export const RONDE_SORTIR_PC = RONDE_SORTIR_CC;
+export const RONDE_SEMUA_PC = RONDE_SEMUA_CC;
+export const RONDE_CARA_PC = RONDE_CARA_CC;
+
+export const RONDE_TABEL_PC: { baris: string; jawab: string; opsi: string[]; pesan: string }[][] = [
+  [
+    { baris: "3×10rb + 8×1rb + 6×100", jawab: "38.600", opsi: ["38.600", "36.800", "48.600"], pesan: "Komposisi Asep." },
+    { baris: "uraian 63.500", jawab: "60.000 + 3.000 + 500", opsi: ["60.000 + 3.000 + 500", "6.000 + 300 + 50", "63 + 500"], pesan: "Dekomposisi." },
+  ],
+  [
+    { baris: "4×10rb + 5×1rb + 6×100", jawab: "45.600", opsi: ["45.600", "54.600", "46.500"], pesan: "Komposisi standar." },
+    { baris: "45×1rb + 6×100", jawab: "45.600", opsi: ["45.600", "4.560", "51.000"], pesan: "Cara lain." },
+  ],
+  [
+    { baris: "5×10rb + 15×1rb + 16×100", jawab: "66.600", opsi: ["66.600", "56.600", "51.600"], pesan: "Melebihi 9 tetap dijumlah." },
+    { baris: "bentuk panjang 22.000", jawab: "20.000 + 2.000", opsi: ["20.000 + 2.000", "2.000 + 200", "22 + 000"], pesan: "PR dan RB." },
+  ],
+];
+
+export const RONDE_BENARSALAH_QC: { teks: string; benar: boolean; penjelasan: string }[][] = [
+  [
+    { teks: "Komposisi bilangan boleh memakai pecahan yang digitnya lebih dari 9.", benar: true, penjelasan: "Lalu dijumlahkan." },
+    { teks: "3×10.000 + 8×1.000 + 6×100 = 36.800.", benar: false, penjelasan: "Hasilnya 38.600." },
+    { teks: "Dekomposisi menulis bilangan sebagai jumlah nilai tempat.", benar: true, penjelasan: "Bentuk panjang." },
+  ],
+  [
+    { teks: "45.600 hanya punya satu cara komposisi.", benar: false, penjelasan: "Banyak cara setara." },
+    { teks: "60.000 + 3.000 + 500 adalah dekomposisi 63.500.", benar: true, penjelasan: "Benar." },
+    { teks: "Tanpa pecahan 10rb, bilangan lima angka tidak bisa dibentuk.", benar: false, penjelasan: "Bisa pakai banyak 1rb." },
+  ],
+];
+
+export const RONDE_DETEKTIF_QC: { klue: string[]; jawab: string; opsi: string[]; salah: string }[] = [
+  { klue: ["3 lembar 10rb", "8 lembar 1rb", "6 keping 100"], jawab: "38.600", opsi: ["38.600", "36.800", "48.600"], salah: "Jumlahkan nilai pecahan." },
+  { klue: ["total 45.600", "cara tanpa 10rb", "hanya 1rb dan 100"], jawab: "45×1rb + 6×100", opsi: ["45×1rb + 6×100", "4×10rb saja", "456×100"], salah: "45 ribu + 600." },
+  { klue: ["6×10rb", "3×1rb", "5×100"], jawab: "63.500", opsi: ["63.500", "36.500", "65.300"], salah: "60.000+3.000+500." },
+];
+
+export const PETA_KONSEP_QC = [
+  {
+    pusat: "Komposisi-Dekomposisi",
+    kotak: [
+      { label: "Komposisi", opsi: ["menyusun dari pecahan", "membandingkan", "membagi"], benar: 0 },
+      { label: "Dekomposisi", opsi: ["menguraikan nilai tempat", "mengurutkan", "mengurangi"], benar: 0 },
+      { label: "Fleksibel", opsi: ["banyak cara setara", "hanya satu cara", "harus digit ≤9"], benar: 0 },
+      { label: "Bentuk panjang", opsi: ["jumlah nilai tempat", "hanya kata", "tanpa angka"], benar: 0 },
+    ],
+  },
+];
+export const RONDE_CERITA_QC = RONDE_CERITA_CC;
+
+// ---- Sub-Bab D: Operasi + − × ÷ ----
+export const RONDE_TAMBAH_CD: { a: number; b: number; hasil: number; pesan: string }[][] = [
+  [
+    { a: 57500, b: 22000, hasil: 79500, pesan: "57.500 + 22.000 = 79.500" },
+    { a: 32500, b: 13250, hasil: 45750, pesan: "32.500 + 13.250 = 45.750" },
+  ],
+  [
+    { a: 23500, b: 17000, hasil: 40500, pesan: "Mangga + jeruk." },
+    { a: 15000, b: 34000, hasil: 49000, pesan: "Naga + kelengkeng." },
+  ],
+  [
+    { a: 38600, b: 14500, hasil: 53100, pesan: "38.600 + 14.500." },
+    { a: 45600, b: 22000, hasil: 67600, pesan: "45.600 + 22.000." },
+  ],
+];
+
+export const RONDE_KURANG_CD: { a: number; b: number; hasil: number; pesan: string }[][] = [
+  [
+    { a: 47900, b: 45750, hasil: 2150, pesan: "47.900 − 45.750 = 2.150" },
+    { a: 100000, b: 47000, hasil: 53000, pesan: "100.000 − 47.000." },
+  ],
+  [
+    { a: 34000, b: 30000, hasil: 4000, pesan: "Kelengkeng − 2 naga." },
+    { a: 79500, b: 57500, hasil: 22000, pesan: "Balik penjumlahan Nisa." },
+  ],
+  [
+    { a: 63500, b: 38600, hasil: 24900, pesan: "63.500 − 38.600." },
+    { a: 45600, b: 14500, hasil: 31100, pesan: "45.600 − 14.500." },
+  ],
+];
+
+export const RONDE_KALI_CD: { a: number; b: number; hasil: number; pesan: string }[][] = [
+  [
+    { a: 12, b: 5000, hasil: 60000, pesan: "12 × 5.000 = 60.000" },
+    { a: 2, b: 23500, hasil: 47000, pesan: "2 bungkus mangga." },
+  ],
+  [
+    { a: 2, b: 15000, hasil: 30000, pesan: "2 bungkus naga." },
+    { a: 3, b: 17000, hasil: 51000, pesan: "3 bungkus jeruk." },
+  ],
+  [
+    { a: 4, b: 16000, hasil: 64000, pesan: "Balik pembagian." },
+    { a: 5, b: 12000, hasil: 60000, pesan: "5 × 12.000." },
+  ],
+];
+
+export const RONDE_BAGI_CD: { a: number; b: number; hasil: number; pesan: string }[][] = [
+  [
+    { a: 64000, b: 4, hasil: 16000, pesan: "64.000 ÷ 4 = 16.000" },
+    { a: 60000, b: 12, hasil: 5000, pesan: "60.000 ÷ 12 = 5.000" },
+  ],
+  [
+    { a: 100000, b: 2, hasil: 50000, pesan: "100.000 ÷ 2." },
+    { a: 51000, b: 3, hasil: 17000, pesan: "51.000 ÷ 3." },
+  ],
+  [
+    { a: 30000, b: 2, hasil: 15000, pesan: "30.000 ÷ 2." },
+    { a: 48000, b: 4, hasil: 12000, pesan: "48.000 ÷ 4." },
+  ],
+];
+
+export const RONDE_PASANG_CD: { kiri: string; kanan: string }[][] = [
+  [
+    { kiri: "57.500 + 22.000", kanan: "79.500" },
+    { kiri: "32.500 + 13.250", kanan: "45.750" },
+    { kiri: "47.900 − 45.750", kanan: "2.150" },
+    { kiri: "12 × 5.000", kanan: "60.000" },
+  ],
+  [
+    { kiri: "64.000 ÷ 4", kanan: "16.000" },
+    { kiri: "2 × 23.500", kanan: "47.000" },
+    { kiri: "15.000 + 34.000", kanan: "49.000" },
+    { kiri: "100.000 − 47.000", kanan: "53.000" },
+  ],
+  [
+    { kiri: "3 × 17.000", kanan: "51.000" },
+    { kiri: "34.000 − 30.000", kanan: "4.000" },
+    { kiri: "2 × 15.000", kanan: "30.000" },
+    { kiri: "100.000 ÷ 2", kanan: "50.000" },
+  ],
+];
+export const RONDE_MEMORI_CD = RONDE_PASANG_CD;
+
+export const RONDE_KETUK_CD: { item: number[]; tanya: number[] }[] = [
+  { item: [79500, 45750, 2150, 60000], tanya: [79500, 2150] },
+  { item: [16000, 47000, 49000, 53000], tanya: [16000, 47000] },
+  { item: [51000, 4000, 30000, 50000], tanya: [4000, 50000] },
+];
+
+export const RONDE_SEMUA_CD: { label: string; item: { id: string; label: string; cocok: boolean }[] }[] = [
+  {
+    label: "hasil penjumlahan benar",
+    item: [
+      { id: "a", label: "57.500+22.000=79.500", cocok: true },
+      { id: "b", label: "32.500+13.250=45.750", cocok: true },
+      { id: "c", label: "23.500+17.000=41.500", cocok: false },
+      { id: "d", label: "15.000+34.000=49.000", cocok: true },
+    ],
+  },
+  {
+    label: "hasil pengurangan benar",
+    item: [
+      { id: "a", label: "47.900−45.750=2.150", cocok: true },
+      { id: "b", label: "34.000−30.000=4.000", cocok: true },
+      { id: "c", label: "100.000−47.000=43.000", cocok: false },
+      { id: "d", label: "79.500−57.500=22.000", cocok: true },
+    ],
+  },
+  {
+    label: "hasil kali/bagi benar",
+    item: [
+      { id: "a", label: "12×5.000=60.000", cocok: true },
+      { id: "b", label: "64.000÷4=16.000", cocok: true },
+      { id: "c", label: "2×23.500=46.000", cocok: false },
+      { id: "d", label: "100.000÷2=50.000", cocok: true },
+    ],
+  },
+];
+
+export const RONDE_CERITA_CD: { teks: string; jawab: string | number; opsi: (string | number)[]; pesan: string }[][] = [
+  [
+    { teks: "Ibu 57.500 dan Ayah 22.000 untuk bakti sosial. Jumlah?", jawab: "79.500", opsi: ["79.500", "75.900", "35.500"], pesan: "Jumlahkan nilai tempat." },
+    { teks: "Ayam 32.500 + plencing 13.250. Bayar?", jawab: "45.750", opsi: ["45.750", "45.250", "19.250"], pesan: "32.500+13.250." },
+  ],
+  [
+    { teks: "Uang 47.900, bayar 45.750. Sisa?", jawab: "2.150", opsi: ["2.150", "1.250", "92.650"], pesan: "Pengurangan." },
+    { teks: "12 angpau × 5.000. Total?", jawab: "60.000", opsi: ["60.000", "17.000", "5.012"], pesan: "12×5.000." },
+  ],
+  [
+    { teks: "64.000 dibagi 4 anak. Tiap anak?", jawab: "16.000", opsi: ["16.000", "60.000", "4.000"], pesan: "64.000÷4." },
+    { teks: "2 mangga 23.500 dan 1 jeruk 17.000. Bayar?", jawab: "64.000", opsi: ["64.000", "47.000", "40.500"], pesan: "2×23.500+17.000=64.000." },
+  ],
+];
+
+export const RONDE_URUT_CD: { angka: number[]; dari: "kecil" | "besar" }[] = [
+  { angka: [2150, 45750, 79500, 60000], dari: "kecil" },
+  { angka: [16000, 47000, 49000, 53000], dari: "besar" },
+  { angka: [4000, 30000, 51000, 50000], dari: "kecil" },
+];
+
+export const RONDE_TAMBAH_PD = RONDE_TAMBAH_CD;
+export const RONDE_KURANG_PD = RONDE_KURANG_CD;
+export const RONDE_KALI_PD = RONDE_KALI_CD;
+export const RONDE_BAGI_PD = RONDE_BAGI_CD;
+export const RONDE_PASANG_PD = RONDE_PASANG_CD;
+export const RONDE_MEMORI_PD = RONDE_MEMORI_CD;
+export const RONDE_SEMUA_PD = RONDE_SEMUA_CD;
+export const RONDE_CERITA_PD = RONDE_CERITA_CD;
+
+export const RONDE_TABEL_PD: { baris: string; jawab: string; opsi: string[]; pesan: string }[][] = [
+  [
+    { baris: "57.500 + 22.000", jawab: "79.500", opsi: ["79.500", "75.900", "35.500"], pesan: "Susun tempat." },
+    { baris: "47.900 − 45.750", jawab: "2.150", opsi: ["2.150", "1.250", "93.650"], pesan: "Pengurangan." },
+  ],
+  [
+    { baris: "12 × 5.000", jawab: "60.000", opsi: ["60.000", "17.000", "50.000"], pesan: "Pecah 10× dan 2×." },
+    { baris: "64.000 ÷ 4", jawab: "16.000", opsi: ["16.000", "60.000", "4"], pesan: "Bagi rata." },
+  ],
+  [
+    { baris: "2×23.500 + 17.000", jawab: "64.000", opsi: ["64.000", "47.000", "40.500"], pesan: "Campur operasi." },
+    { baris: "15.000 + 34.000", jawab: "49.000", opsi: ["49.000", "19.000", "44.000"], pesan: "Murah + mahal." },
+  ],
+];
+
+export const RONDE_BENARSALAH_QD: { teks: string; benar: boolean; penjelasan: string }[][] = [
+  [
+    { teks: "57.500 + 22.000 = 79.500.", benar: true, penjelasan: "Benar." },
+    { teks: "47.900 − 45.750 = 1.250.", benar: false, penjelasan: "Sisanya 2.150." },
+    { teks: "Penjumlahan bisa disusun menurut nilai tempat.", benar: true, penjelasan: "Cara Yohana/Lukas." },
+  ],
+  [
+    { teks: "12 × 5.000 = 60.000.", benar: true, penjelasan: "10×5.000 + 2×5.000." },
+    { teks: "64.000 ÷ 4 = 14.000.", benar: false, penjelasan: "Hasilnya 16.000." },
+    { teks: "Perkalian dan pembagian saling berkebalikan.", benar: true, penjelasan: "4×16.000=64.000." },
+  ],
+];
+
+export const RONDE_DETEKTIF_QD: { klue: string[]; jawab: string; opsi: string[]; salah: string }[] = [
+  { klue: ["Ibu 57.500", "Ayah 22.000", "bakti sosial"], jawab: "79.500", opsi: ["79.500", "35.500", "75.900"], salah: "Jumlahkan." },
+  { klue: ["12 angpau", "tiap 5.000"], jawab: "60.000", opsi: ["60.000", "17.000", "5.012"], salah: "Kalikan." },
+  { klue: ["uang 47.900", "bayar 45.750", "cari sisa"], jawab: "2.150", opsi: ["2.150", "1.250", "93.650"], salah: "Kurangkan." },
+];
+
+export const PETA_KONSEP_QD = [
+  {
+    pusat: "Operasi sampai 100.000",
+    kotak: [
+      { label: "+", opsi: ["jumlahkan nilai tempat", "cari selisih", "bagi rata"], benar: 0 },
+      { label: "−", opsi: ["cari selisih/sisa", "gandakan", "susun naik"], benar: 0 },
+      { label: "×", opsi: ["penjumlahan berulang / pecah faktor", "bagi sama", "banding"], benar: 0 },
+      { label: "÷", opsi: ["bagi rata / kebalikan kali", "tambah terus", "urutkan"], benar: 0 },
+    ],
+  },
+];
+export const RONDE_CERITA_QD = RONDE_CERITA_CD;

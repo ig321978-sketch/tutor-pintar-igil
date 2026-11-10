@@ -1,6 +1,6 @@
 /**
- * Naskah murni Matematika Kelas 5 Bab 1 (Bilangan Cacah sampai 100.000): Sub-Bab A–B.
- * Sumber: Buku Siswa Matematika Kelas V Kemendikbudristek Bab 1 hlm. 1–14.
+ * Naskah murni Matematika Kelas 5 Bab 1 (Bilangan Cacah sampai 100.000): Sub-Bab A–D.
+ * Sumber: Buku Siswa Matematika Kelas V Kemendikbudristek Bab 1 hlm. 1–25.
  * Satu sumber: buat-k5-bab1.mjs → kelas5-bab1.json. Tanpa React/jaringan.
  */
 import type { SubBabNaskah } from "./naskah-k2b2";
@@ -11,7 +11,7 @@ export const K5B1_META = {
   "grade": 5,
   "subjectLabel": "MATEMATIKA - KELAS 5 SD",
   "title": "BAB 1: BILANGAN CACAH SAMPAI 100.000",
-  "silabusElemen": "🌈 Fase C • Elemen Bilangan: Membaca–Menulis, Nilai Tempat, serta Membandingkan–Mengurutkan Bilangan Cacah sampai 100.000 (Kelas 5 SD/MI)",
+  "silabusElemen": "🌈 Fase C • Elemen Bilangan: Membaca–Menulis, Nilai Tempat, Membandingkan–Mengurutkan, Komposisi–Dekomposisi, serta Operasi Hitung Bilangan Cacah sampai 100.000 (Kelas 5 SD/MI)",
   "suaraLaju": 0.7,
   "suaraNada": 1
 } as const;
@@ -1436,5 +1436,1425 @@ export const SUB_B51: SubBabNaskah = {
   ]
 };
 
-export const SUB_BAB_K5B1: SubBabNaskah[] = [SUB_A51, SUB_B51];
+export const SUB_C51: SubBabNaskah = {
+  "id": "C",
+  "codeTitle": "Sub-Bab C (Komposisi dan Dekomposisi)",
+  "fullTitle": "Sub-Bab C: Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000",
+  "targetDescription": "Siswa menyusun bilangan dari pecahan nilai tempat (komposisi) dan menguraikannya ke bentuk panjang (dekomposisi), termasuk banyak cara setara seperti contoh Asep, Lukas, dan Komang pada Buku Siswa Kelas V Bab 1.",
+  "secondaryBg": "#DCFCE7",
+  "secondaryBorder": "#16A34A",
+  "secondaryText": "#14532D",
+  "silabus": {
+    "teksSuara": "Kita belajar menyusun dan menguraikan bilangan sampai seratus ribu. Pecahan sepuluh ribuan, seribuan, dan seratusan digabung menjadi satu bilangan. Satu bilangan juga bisa diuraikan menjadi jumlah nilai tempat. Banyak cara boleh, asalkan jumlahnya sama. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa melakukan komposisi dan dekomposisi bilangan cacah sampai 100.000.",
+    "referensi": "Buku Siswa Matematika Kelas V Bab 1 Sub-Bab C hlm. 15–17; expanded form; flexible place-value composition (Van de Walle)."
+  },
+  "videos": [
+    {
+      "id": "K5B1C-V1",
+      "judul": "Susun dari Pecahan",
+      "subjudul": "Komposisi",
+      "adegan": [
+        {
+          "id": "K5B1C-V1-1",
+          "judul": "Uang Asep",
+          "ketukan": [
+            "Tiga lembar sepuluh ribuan.",
+            "Delapan lembar seribuan.",
+            "Enam keping seratusan.",
+            "Jumlahkan nilainya."
+          ],
+          "papan": [
+            "3×10rb",
+            "8×1rb",
+            "6×100",
+            "jumlah"
+          ]
+        },
+        {
+          "id": "K5B1C-V1-2",
+          "judul": "Hasil 38.600",
+          "ketukan": [
+            "Tiga puluh ribu.",
+            "Tambah delapan ribu.",
+            "Tambah enam ratus.",
+            "Jadi tiga delapan titik enam nol nol."
+          ],
+          "papan": [
+            "30.000",
+            "+8.000",
+            "+600",
+            "38.600"
+          ]
+        },
+        {
+          "id": "K5B1C-V1-3",
+          "judul": "Uang Lukas",
+          "ketukan": [
+            "Enam lembar sepuluh ribuan.",
+            "Tiga lembar seribuan.",
+            "Lima keping seratusan.",
+            "Hasil enam tiga titik lima nol nol."
+          ],
+          "papan": [
+            "6×10rb",
+            "3×1rb",
+            "5×100",
+            "63.500"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K5B1C-V2",
+      "judul": "Uraikan Bentuk Panjang",
+      "subjudul": "Dekomposisi",
+      "adegan": [
+        {
+          "id": "K5B1C-V2-1",
+          "judul": "Buka nilai tempat",
+          "ketukan": [
+            "Ambil bilangan utuh.",
+            "Pisahkan tiap tempat.",
+            "Tulis jumlah nilai.",
+            "Itu bentuk panjang."
+          ],
+          "papan": [
+            "bilangan",
+            "pisah",
+            "nilai",
+            "panjang"
+          ]
+        },
+        {
+          "id": "K5B1C-V2-2",
+          "judul": "Contoh 45.600",
+          "ketukan": [
+            "Empat puluh lima ribu enam ratus.",
+            "Empat puluh ribu.",
+            "Lima ribu.",
+            "Enam ratus."
+          ],
+          "papan": [
+            "45.600",
+            "40.000",
+            "5.000",
+            "600"
+          ]
+        },
+        {
+          "id": "K5B1C-V2-3",
+          "judul": "Saling berkebalikan",
+          "ketukan": [
+            "Komposisi menyusun.",
+            "Dekomposisi menguraikan.",
+            "Keduanya saling cek.",
+            "Jumlah harus sama."
+          ],
+          "papan": [
+            "susun",
+            "urai",
+            "cek",
+            "sama"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K5B1C-V3",
+      "judul": "Banyak Cara Setara",
+      "subjudul": "Fleksibel",
+      "adegan": [
+        {
+          "id": "K5B1C-V3-1",
+          "judul": "Komang 45.600",
+          "ketukan": [
+            "Komang butuh empat lima titik enam nol nol.",
+            "Boleh empat kali sepuluh ribu.",
+            "Atau empat puluh lima kali seribu.",
+            "Asalkan total sama."
+          ],
+          "papan": [
+            "45.600",
+            "4×10rb",
+            "45×1rb",
+            "setara"
+          ]
+        },
+        {
+          "id": "K5B1C-V3-2",
+          "judul": "Digit boleh lebih 9",
+          "ketukan": [
+            "Lima belas lembar seribu.",
+            "Enam belas keping seratus.",
+            "Digit sementara boleh besar.",
+            "Lalu dijumlahkan."
+          ],
+          "papan": [
+            "15×1rb",
+            "16×100",
+            "boleh",
+            "jumlah"
+          ]
+        },
+        {
+          "id": "K5B1C-V3-3",
+          "judul": "Siap bermain",
+          "ketukan": [
+            "Komposisi sudah jelas.",
+            "Dekomposisi sudah jelas.",
+            "Ayo ke permainan.",
+            "Semangat!"
+          ],
+          "papan": [
+            "susun",
+            "urai",
+            "main",
+            "semangat"
+          ]
+        }
+      ]
+    }
+  ],
+  "mindMaps": [
+    {
+      "stepNumber": 1,
+      "stepTitle": "1. Pecahan",
+      "stepDesc": "Siapkan nilai tempat",
+      "icon": "💵",
+      "flowFrom": "START",
+      "flowTo": "2"
+    },
+    {
+      "stepNumber": 2,
+      "stepTitle": "2. Komposisi",
+      "stepDesc": "Jumlahkan pecahan",
+      "icon": "🧩",
+      "flowFrom": "1",
+      "flowTo": "3"
+    },
+    {
+      "stepNumber": 3,
+      "stepTitle": "3. Total",
+      "stepDesc": "Dapat bilangan utuh",
+      "icon": "🔢",
+      "flowFrom": "2",
+      "flowTo": "4"
+    },
+    {
+      "stepNumber": 4,
+      "stepTitle": "4. Dekomposisi",
+      "stepDesc": "Uraikan ke bentuk panjang",
+      "icon": "📜",
+      "flowFrom": "3",
+      "flowTo": "5"
+    },
+    {
+      "stepNumber": 5,
+      "stepTitle": "5. Cara lain",
+      "stepDesc": "Cari komposisi setara",
+      "icon": "🔄",
+      "flowFrom": "4",
+      "flowTo": "6"
+    },
+    {
+      "stepNumber": 6,
+      "stepTitle": "6. Cek",
+      "stepDesc": "Jumlah harus sama",
+      "icon": "✅",
+      "flowFrom": "5",
+      "flowTo": "END"
+    }
+  ],
+  "infografis": [
+    {
+      "judul": "Komposisi",
+      "emoji": "🧩",
+      "countNum": 1,
+      "countWord": "susun",
+      "suara": "Susun pecahan menjadi bilangan."
+    },
+    {
+      "judul": "Dekomposisi",
+      "emoji": "📜",
+      "countNum": 1,
+      "countWord": "urai",
+      "suara": "Uraikan ke nilai tempat."
+    },
+    {
+      "judul": "38.600",
+      "emoji": "👦",
+      "countNum": 38600,
+      "countWord": "Asep",
+      "suara": "Contoh uang Asep."
+    },
+    {
+      "judul": "63.500",
+      "emoji": "🧑",
+      "countNum": 63500,
+      "countWord": "Lukas",
+      "suara": "Contoh uang Lukas."
+    },
+    {
+      "judul": "45.600",
+      "emoji": "🎒",
+      "countNum": 45600,
+      "countWord": "Komang",
+      "suara": "Banyak cara bayar."
+    },
+    {
+      "judul": "Bentuk panjang",
+      "emoji": "➕",
+      "countNum": 1,
+      "countWord": "nilai+nilai",
+      "suara": "Jumlah nilai tempat."
+    },
+    {
+      "judul": "Fleksibel",
+      "emoji": "🔄",
+      "countNum": 1,
+      "countWord": "banyak cara",
+      "suara": "Cara setara diperbolehkan."
+    },
+    {
+      "judul": "Digit >9",
+      "emoji": "📈",
+      "countNum": 1,
+      "countWord": "sementara",
+      "suara": "Boleh lalu dijumlah."
+    },
+    {
+      "judul": "Cek total",
+      "emoji": "✅",
+      "countNum": 1,
+      "countWord": "sama",
+      "suara": "Semua cara harus sama."
+    },
+    {
+      "judul": "Siap Sub-Bab D",
+      "emoji": "➡️",
+      "countNum": 1,
+      "countWord": "operasi",
+      "suara": "Lanjut hitung + − × ÷."
+    }
+  ],
+  "games": [
+    {
+      "stage": "Concrete",
+      "gameType": "komposisi-pecahan",
+      "title": "Susun dari Pecahan",
+      "bookReference": "hlm. 15–16",
+      "objective": "Menyusun total dari pecahan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih total.",
+      "emoji": "🧩",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "dekomposisi-panjang",
+      "title": "Uraikan Bentuk Panjang",
+      "bookReference": "hlm. 16–17",
+      "objective": "Menulis jumlah nilai tempat.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih uraian.",
+      "emoji": "📜",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "banyak-cara",
+      "title": "Banyak Cara Komposisi",
+      "bookReference": "hlm. 16–17",
+      "objective": "Mengenali cara setara.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "emoji": "🔄",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "sort-komposisi",
+      "title": "Pilah Sama/Beda Total",
+      "bookReference": "hlm. 15–17",
+      "objective": "Memilah komposisi.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilah.",
+      "emoji": "🧺",
+      "targetCount": 18
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "match-komposisi",
+      "title": "Jodohkan Pecahan–Total",
+      "bookReference": "hlm. 15–17",
+      "objective": "Menjodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "emoji": "🔗",
+      "targetCount": 12
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "memory-komposisi",
+      "title": "Memori Komposisi",
+      "bookReference": "hlm. 15–17",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "emoji": "🃏",
+      "targetCount": 12
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-komposisi",
+      "title": "Ketuk Hasil Komposisi",
+      "bookReference": "hlm. 15–17",
+      "objective": "Mengetuk.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk.",
+      "emoji": "👆",
+      "targetCount": 9
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-all-komposisi",
+      "title": "Ketuk Semua Setara",
+      "bookReference": "hlm. 16–17",
+      "objective": "Ketuk semua.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "emoji": "✔️",
+      "targetCount": 3
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "story-komposisi",
+      "title": "Cerita Asep Lukas Komang",
+      "bookReference": "hlm. 15–17",
+      "objective": "Soal cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "emoji": "📖",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "order-komposisi",
+      "title": "Urutkan Hasil Susunan",
+      "bookReference": "hlm. 15–17",
+      "objective": "Mengurutkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Urutkan.",
+      "emoji": "📶",
+      "targetCount": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "papan-komposisi",
+      "title": "Papan Susun Pecahan",
+      "bookReference": "hlm. 16",
+      "objective": "Baca papan tempat.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "board",
+      "numberA": 1,
+      "numberB": 5
+    },
+    {
+      "stage": "Picture",
+      "gameType": "diagram-dekom",
+      "title": "Diagram Bentuk Panjang",
+      "bookReference": "hlm. 16–17",
+      "objective": "Baca uraian.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "expand",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "match-diagram-c",
+      "title": "Jodohkan Diagram Komposisi",
+      "bookReference": "hlm. 15–17",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "diagramType": "match",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "memory-diagram-c",
+      "title": "Memori Diagram Komposisi",
+      "bookReference": "hlm. 15–17",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "diagramType": "mem",
+      "numberA": 1,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "table-c",
+      "title": "Tabel Komposisi",
+      "bookReference": "hlm. 16–17",
+      "objective": "Isi tabel.",
+      "mechanicDescription": "Tiga tabel.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "table",
+      "numberA": 1,
+      "numberB": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "tap-all-pc",
+      "title": "Ketuk Semua Diagram C",
+      "bookReference": "hlm. 15–17",
+      "objective": "Ketuk semua.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "diagramType": "select",
+      "numberA": 1,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "sort-diagram-c",
+      "title": "Pilah Diagram Setara",
+      "bookReference": "hlm. 15–17",
+      "objective": "Pilah.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilah.",
+      "diagramType": "sort",
+      "numberA": 1,
+      "numberB": 6
+    },
+    {
+      "stage": "Picture",
+      "gameType": "cara-fleksibel",
+      "title": "Model Cara Fleksibel",
+      "bookReference": "hlm. 16–17",
+      "objective": "Cara setara.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "flex",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "choose-c",
+      "title": "Pilih Pernyataan Komposisi",
+      "bookReference": "hlm. 15–17",
+      "objective": "Pilih pernyataan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "choose",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "story-picture-c",
+      "title": "Cerita Diagram Komposisi",
+      "bookReference": "hlm. 15–17",
+      "objective": "Cerita + diagram.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "story",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "write-total",
+      "title": "Tulis Total Komposisi",
+      "bookReference": "hlm. 15–16",
+      "objective": "Menulis total.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "38.600",
+      "wordLarge": "TOTAL",
+      "mathNotation": "jumlah"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "write-uraian",
+      "title": "Tulis Bentuk Panjang",
+      "bookReference": "hlm. 16–17",
+      "objective": "Menulis uraian.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "30k+8k+600",
+      "wordLarge": "URAIAN",
+      "mathNotation": "panjang"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "choose-cara",
+      "title": "Pilih Cara Setara",
+      "bookReference": "hlm. 16–17",
+      "objective": "Cara fleksibel.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "cara2",
+      "wordLarge": "CARA",
+      "mathNotation": "setara"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "order-abstract-c",
+      "title": "Urutkan Hasil Abstrak",
+      "bookReference": "hlm. 15–17",
+      "objective": "Mengurutkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Urutkan.",
+      "symbolLarge": "naik",
+      "wordLarge": "URUT",
+      "mathNotation": "nilai"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "match-abstract-c",
+      "title": "Jodohkan Notasi Komposisi",
+      "bookReference": "hlm. 15–17",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "symbolLarge": "pecahan",
+      "wordLarge": "JODOH",
+      "mathNotation": "teks"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "memory-abstract-c",
+      "title": "Memori Notasi Komposisi",
+      "bookReference": "hlm. 15–17",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "symbolLarge": "setara",
+      "wordLarge": "MEMORI",
+      "mathNotation": "notasi"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "true-false-c",
+      "title": "Benar atau Salah: Komposisi",
+      "bookReference": "hlm. 15–17",
+      "objective": "Menilai.",
+      "mechanicDescription": "Dua ronde.",
+      "voiceGuide": "Benar/salah.",
+      "symbolLarge": "✓ ✗",
+      "wordLarge": "BENAR SALAH",
+      "mathNotation": "alasan"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "detective-c",
+      "title": "Detektif Komposisi",
+      "bookReference": "hlm. 15–17",
+      "objective": "Petunjuk → bilangan.",
+      "mechanicDescription": "Tiga soal.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "?",
+      "wordLarge": "DETEKTIF",
+      "mathNotation": "petunjuk"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "concept-c",
+      "title": "Peta Konsep Komposisi",
+      "bookReference": "hlm. 15–17",
+      "objective": "Mengisi kotak.",
+      "mechanicDescription": "Satu peta.",
+      "voiceGuide": "Pilih opsi.",
+      "symbolLarge": "🗺️",
+      "wordLarge": "PETA",
+      "mathNotation": "konsep"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "story-abstract-c",
+      "title": "Cerita Angka Komposisi",
+      "bookReference": "hlm. 15–17",
+      "objective": "Soal cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "📖",
+      "wordLarge": "CERITA",
+      "mathNotation": "teks"
+    }
+  ],
+  "poin": [
+    {
+      "ikon": "🧩",
+      "nama": "Komposisi",
+      "isi": "Menyusun bilangan dari pecahan nilai tempat.",
+      "suara": "Komposisi artinya menyusun."
+    },
+    {
+      "ikon": "📜",
+      "nama": "Dekomposisi",
+      "isi": "Menguraikan bilangan menjadi jumlah nilai tempat.",
+      "suara": "Dekomposisi artinya menguraikan."
+    },
+    {
+      "ikon": "🔄",
+      "nama": "Fleksibel",
+      "isi": "Satu bilangan punya banyak cara komposisi setara.",
+      "suara": "Banyak cara asalkan total sama."
+    },
+    {
+      "ikon": "➕",
+      "nama": "Bentuk panjang",
+      "isi": "Tulis sebagai jumlah 10.000, 1.000, 100, 10, dan 1.",
+      "suara": "Itu bentuk panjang."
+    }
+  ],
+  "poinSuara": "Ingat: susun, uraikan, dan cek totalnya sama.",
+  "cara": {
+    "suara": "Ikuti langkah-langkahnya.",
+    "potongan": [
+      {
+        "teks": "Pecahan",
+        "warna": "#FDE68A"
+      },
+      {
+        "teks": "jumlahkan",
+        "warna": "#BBF7D0"
+      },
+      {
+        "teks": "urai",
+        "warna": "#BFDBFE"
+      },
+      {
+        "teks": "cek sama",
+        "warna": "#FCE7F3"
+      }
+    ]
+  },
+  "rumah": "Ayo Mencoba di rumah: susun ulang satu bilangan dengan dua cara berbeda, lalu uraikan bentuk panjangnya.",
+  "refleksi": [
+    "Apa beda komposisi dan dekomposisi?",
+    "Mengapa satu bilangan bisa punya banyak cara susun?",
+    "Bagaimana menuliskan 45.600 dalam bentuk panjang?"
+  ]
+};
+
+export const SUB_D51: SubBabNaskah = {
+  "id": "D",
+  "codeTitle": "Sub-Bab D (Operasi Hitung)",
+  "fullTitle": "Sub-Bab D: Operasi Hitung pada Bilangan Cacah Sampai 100.000",
+  "targetDescription": "Siswa menjumlahkan, mengurangi, mengalikan, dan membagi bilangan cacah sampai 100.000 dengan strategi nilai tempat, susun pendek/panjang, serta soal cerita konteks bakti sosial, angpau, dan toko buah sesuai Buku Siswa Kelas V Bab 1.",
+  "secondaryBg": "#FEF3C7",
+  "secondaryBorder": "#D97706",
+  "secondaryText": "#78350F",
+  "silabus": {
+    "teksSuara": "Kita belajar empat operasi pada bilangan sampai seratus ribu. Penjumlahan dan pengurangan disusun menurut nilai tempat. Perkalian bisa dipecah faktor. Pembagian membagi rata. Kita pakai cerita bakti sosial, angpau, dan toko buah. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+    "cp": "Siswa melakukan operasi hitung bilangan cacah sampai 100.000.",
+    "referensi": "Buku Siswa Matematika Kelas V Bab 1 Sub-Bab D hlm. 17–25; partial products; place-value addition/subtraction; equal groups division."
+  },
+  "videos": [
+    {
+      "id": "K5B1D-V1",
+      "judul": "Jumlah dan Kurang",
+      "subjudul": "+ dan −",
+      "adegan": [
+        {
+          "id": "K5B1D-V1-1",
+          "judul": "Bakti sosial Nisa",
+          "ketukan": [
+            "Ibu memberi lima tujuh titik lima nol nol.",
+            "Ayah memberi dua dua titik nol nol nol.",
+            "Jumlahkan menurut tempat.",
+            "Hasil tujuh sembilan titik lima nol nol."
+          ],
+          "papan": [
+            "57.500",
+            "+22.000",
+            "tempat",
+            "79.500"
+          ]
+        },
+        {
+          "id": "K5B1D-V1-2",
+          "judul": "Susun pendek",
+          "ketukan": [
+            "Tulis sejajar kolom.",
+            "Puluh ribuan dengan puluh ribuan.",
+            "Jumlahkan tiap kolom.",
+            "Bawa simpanan jika perlu."
+          ],
+          "papan": [
+            "sejajar",
+            "kolom",
+            "jumlah",
+            "simpan"
+          ]
+        },
+        {
+          "id": "K5B1D-V1-3",
+          "judul": "Sisa di warung",
+          "ketukan": [
+            "Uang empat tujuh titik sembilan nol nol.",
+            "Bayar empat lima titik tujuh lima nol.",
+            "Kurangkan.",
+            "Sisa dua titik satu lima nol."
+          ],
+          "papan": [
+            "47.900",
+            "−45.750",
+            "kurang",
+            "2.150"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K5B1D-V2",
+      "judul": "Kali dan Bagi",
+      "subjudul": "× dan ÷",
+      "adegan": [
+        {
+          "id": "K5B1D-V2-1",
+          "judul": "Dua belas angpau",
+          "ketukan": [
+            "Dua belas amplop.",
+            "Tiap amplop lima ribu.",
+            "Sepuluh kali lima ribu lima puluh ribu.",
+            "Dua kali lima ribu sepuluh ribu. Total enam puluh ribu."
+          ],
+          "papan": [
+            "12",
+            "×5.000",
+            "pecah",
+            "60.000"
+          ]
+        },
+        {
+          "id": "K5B1D-V2-2",
+          "judul": "Bagi empat anak",
+          "ketukan": [
+            "Enam empat ribu.",
+            "Bagi empat anak.",
+            "Sama rata.",
+            "Tiap anak enam belas ribu."
+          ],
+          "papan": [
+            "64.000",
+            "÷4",
+            "rata",
+            "16.000"
+          ]
+        },
+        {
+          "id": "K5B1D-V2-3",
+          "judul": "Kebalikan",
+          "ketukan": [
+            "Kali dan bagi berkebalikan.",
+            "Empat kali enam belas ribu.",
+            "Kembali enam empat ribu.",
+            "Cek hasil dengan kebalikan."
+          ],
+          "papan": [
+            "× ↔ ÷",
+            "4×16rb",
+            "64rb",
+            "cek"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "K5B1D-V3",
+      "judul": "Cerita Toko Buah",
+      "subjudul": "Campur operasi",
+      "adegan": [
+        {
+          "id": "K5B1D-V3-1",
+          "judul": "Harga buah",
+          "ketukan": [
+            "Mangga dua tiga titik lima nol nol.",
+            "Jeruk tujuh belas ribu.",
+            "Naga lima belas ribu.",
+            "Kelengkeng tiga empat ribu."
+          ],
+          "papan": [
+            "mangga",
+            "jeruk",
+            "naga",
+            "kelengkeng"
+          ]
+        },
+        {
+          "id": "K5B1D-V3-2",
+          "judul": "Belanja Yohana",
+          "ketukan": [
+            "Dua mangga dan satu jeruk.",
+            "Dua kali dua tiga titik lima.",
+            "Tambah tujuh belas ribu.",
+            "Total enam empat ribu."
+          ],
+          "papan": [
+            "2 mangga",
+            "+jeruk",
+            "hitung",
+            "64.000"
+          ]
+        },
+        {
+          "id": "K5B1D-V3-3",
+          "judul": "Siap bermain",
+          "ketukan": [
+            "Empat operasi sudah siap.",
+            "Strategi tempat sudah jelas.",
+            "Ayo ke permainan.",
+            "Semangat!"
+          ],
+          "papan": [
+            "+ − × ÷",
+            "tempat",
+            "main",
+            "semangat"
+          ]
+        }
+      ]
+    }
+  ],
+  "mindMaps": [
+    {
+      "stepNumber": 1,
+      "stepTitle": "1. Baca soal",
+      "stepDesc": "Tentukan operasi",
+      "icon": "📖",
+      "flowFrom": "START",
+      "flowTo": "2"
+    },
+    {
+      "stepNumber": 2,
+      "stepTitle": "2. Susun tempat",
+      "stepDesc": "Sejajarkan kolom",
+      "icon": "🏛️",
+      "flowFrom": "1",
+      "flowTo": "3"
+    },
+    {
+      "stepNumber": 3,
+      "stepTitle": "3. + / −",
+      "stepDesc": "Jumlah atau selisih",
+      "icon": "➕",
+      "flowFrom": "2",
+      "flowTo": "4"
+    },
+    {
+      "stepNumber": 4,
+      "stepTitle": "4. × / ÷",
+      "stepDesc": "Gandakan atau bagi rata",
+      "icon": "✖️",
+      "flowFrom": "3",
+      "flowTo": "5"
+    },
+    {
+      "stepNumber": 5,
+      "stepTitle": "5. Cek",
+      "stepDesc": "Perkirakan / kebalikan",
+      "icon": "✅",
+      "flowFrom": "4",
+      "flowTo": "6"
+    },
+    {
+      "stepNumber": 6,
+      "stepTitle": "6. Cerita",
+      "stepDesc": "Terapkan ke konteks",
+      "icon": "🛒",
+      "flowFrom": "5",
+      "flowTo": "END"
+    }
+  ],
+  "infografis": [
+    {
+      "judul": "+",
+      "emoji": "➕",
+      "countNum": 1,
+      "countWord": "jumlah",
+      "suara": "Jumlahkan nilai tempat."
+    },
+    {
+      "judul": "−",
+      "emoji": "➖",
+      "countNum": 1,
+      "countWord": "selisih",
+      "suara": "Cari sisa atau selisih."
+    },
+    {
+      "judul": "×",
+      "emoji": "✖️",
+      "countNum": 1,
+      "countWord": "kali",
+      "suara": "Pecah faktor bila perlu."
+    },
+    {
+      "judul": "÷",
+      "emoji": "➗",
+      "countNum": 1,
+      "countWord": "bagi",
+      "suara": "Bagi rata sama banyak."
+    },
+    {
+      "judul": "79.500",
+      "emoji": "🤝",
+      "countNum": 79500,
+      "countWord": "bakti",
+      "suara": "57.500 + 22.000."
+    },
+    {
+      "judul": "2.150",
+      "emoji": "🍗",
+      "countNum": 2150,
+      "countWord": "sisa",
+      "suara": "47.900 − 45.750."
+    },
+    {
+      "judul": "60.000",
+      "emoji": "🧧",
+      "countNum": 60000,
+      "countWord": "angpau",
+      "suara": "12 × 5.000."
+    },
+    {
+      "judul": "16.000",
+      "emoji": "👧",
+      "countNum": 16000,
+      "countWord": "bagi",
+      "suara": "64.000 ÷ 4."
+    },
+    {
+      "judul": "Susun kolom",
+      "emoji": "📐",
+      "countNum": 1,
+      "countWord": "sejajar",
+      "suara": "Tempat harus sejajar."
+    },
+    {
+      "judul": "Bab 1 siap",
+      "emoji": "✅",
+      "countNum": 1,
+      "countWord": "A–D",
+      "suara": "Materi Bab 1 lengkap."
+    }
+  ],
+  "games": [
+    {
+      "stage": "Concrete",
+      "gameType": "penjumlahan-5digit",
+      "title": "Penjumlahan Lima Angka",
+      "bookReference": "hlm. 17–19",
+      "objective": "Menjumlahkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "emoji": "➕",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "pengurangan-5digit",
+      "title": "Pengurangan Lima Angka",
+      "bookReference": "hlm. 19–20",
+      "objective": "Mengurangi.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih sisa.",
+      "emoji": "➖",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "perkalian-besar",
+      "title": "Perkalian sampai 100.000",
+      "bookReference": "hlm. 21–23",
+      "objective": "Mengalikan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "emoji": "✖️",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "pembagian-besar",
+      "title": "Pembagian sampai 100.000",
+      "bookReference": "hlm. 22–23",
+      "objective": "Membagi.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih hasil.",
+      "emoji": "➗",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "match-operasi",
+      "title": "Jodohkan Operasi–Hasil",
+      "bookReference": "hlm. 17–24",
+      "objective": "Menjodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "emoji": "🔗",
+      "targetCount": 12
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "memory-operasi",
+      "title": "Memori Operasi",
+      "bookReference": "hlm. 17–24",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "emoji": "🃏",
+      "targetCount": 12
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-hasil",
+      "title": "Ketuk Hasil Operasi",
+      "bookReference": "hlm. 17–24",
+      "objective": "Mengetuk.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk.",
+      "emoji": "👆",
+      "targetCount": 9
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "tap-all-operasi",
+      "title": "Ketuk Semua Benar",
+      "bookReference": "hlm. 17–24",
+      "objective": "Ketuk semua.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "emoji": "✔️",
+      "targetCount": 3
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "story-operasi",
+      "title": "Cerita Bakti dan Toko Buah",
+      "bookReference": "hlm. 17–25",
+      "objective": "Soal cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "emoji": "🛒",
+      "targetCount": 6
+    },
+    {
+      "stage": "Concrete",
+      "gameType": "order-hasil",
+      "title": "Urutkan Hasil Hitung",
+      "bookReference": "hlm. 17–25",
+      "objective": "Mengurutkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Urutkan.",
+      "emoji": "📶",
+      "targetCount": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "diagram-tambah",
+      "title": "Diagram Penjumlahan",
+      "bookReference": "hlm. 18–19",
+      "objective": "Baca jumlah.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "add",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "diagram-kurang",
+      "title": "Diagram Pengurangan",
+      "bookReference": "hlm. 19–20",
+      "objective": "Baca selisih.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "sub",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "diagram-kali",
+      "title": "Diagram Perkalian",
+      "bookReference": "hlm. 21–23",
+      "objective": "Baca hasil kali.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "mul",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "diagram-bagi",
+      "title": "Diagram Pembagian",
+      "bookReference": "hlm. 22–23",
+      "objective": "Baca hasil bagi.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "div",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "match-diagram-d",
+      "title": "Jodohkan Diagram Operasi",
+      "bookReference": "hlm. 17–24",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "diagramType": "match",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "memory-diagram-d",
+      "title": "Memori Diagram Operasi",
+      "bookReference": "hlm. 17–24",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "diagramType": "mem",
+      "numberA": 1,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "table-d",
+      "title": "Tabel Operasi",
+      "bookReference": "hlm. 17–25",
+      "objective": "Isi tabel.",
+      "mechanicDescription": "Tiga tabel.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "table",
+      "numberA": 1,
+      "numberB": 3
+    },
+    {
+      "stage": "Picture",
+      "gameType": "tap-all-pd",
+      "title": "Ketuk Semua Diagram D",
+      "bookReference": "hlm. 17–24",
+      "objective": "Ketuk semua.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Ketuk semua.",
+      "diagramType": "select",
+      "numberA": 1,
+      "numberB": 4
+    },
+    {
+      "stage": "Picture",
+      "gameType": "choose-d",
+      "title": "Pilih Kalimat Operasi",
+      "bookReference": "hlm. 17–25",
+      "objective": "Pilih pernyataan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "choose",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Picture",
+      "gameType": "story-picture-d",
+      "title": "Cerita Diagram Operasi",
+      "bookReference": "hlm. 17–25",
+      "objective": "Cerita + diagram.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "diagramType": "story",
+      "numberA": 1,
+      "numberB": 2
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "write-jumlah",
+      "title": "Tulis Hasil Penjumlahan",
+      "bookReference": "hlm. 17–19",
+      "objective": "Menulis jumlah.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "79.500",
+      "wordLarge": "JUMLAH",
+      "mathNotation": "+"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "write-sisa",
+      "title": "Tulis Hasil Pengurangan",
+      "bookReference": "hlm. 19–20",
+      "objective": "Menulis sisa.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "2.150",
+      "wordLarge": "SISA",
+      "mathNotation": "-"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "write-kali",
+      "title": "Tulis Hasil Perkalian",
+      "bookReference": "hlm. 21–23",
+      "objective": "Menulis hasil kali.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "60.000",
+      "wordLarge": "KALI",
+      "mathNotation": "x"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "write-bagi",
+      "title": "Tulis Hasil Pembagian",
+      "bookReference": "hlm. 22–23",
+      "objective": "Menulis hasil bagi.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "16.000",
+      "wordLarge": "BAGI",
+      "mathNotation": ":"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "match-abstract-d",
+      "title": "Jodohkan Notasi Operasi",
+      "bookReference": "hlm. 17–24",
+      "objective": "Jodohkan.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Jodohkan.",
+      "symbolLarge": "a+b",
+      "wordLarge": "JODOH",
+      "mathNotation": "teks"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "memory-abstract-d",
+      "title": "Memori Notasi Operasi",
+      "bookReference": "hlm. 17–24",
+      "objective": "Memori.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Balik kartu.",
+      "symbolLarge": "hasil",
+      "wordLarge": "MEMORI",
+      "mathNotation": "notasi"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "true-false-d",
+      "title": "Benar atau Salah: Operasi",
+      "bookReference": "hlm. 17–25",
+      "objective": "Menilai.",
+      "mechanicDescription": "Dua ronde.",
+      "voiceGuide": "Benar/salah.",
+      "symbolLarge": "✓ ✗",
+      "wordLarge": "BENAR SALAH",
+      "mathNotation": "alasan"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "detective-d",
+      "title": "Detektif Operasi",
+      "bookReference": "hlm. 17–25",
+      "objective": "Petunjuk → hasil.",
+      "mechanicDescription": "Tiga soal.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "?",
+      "wordLarge": "DETEKTIF",
+      "mathNotation": "petunjuk"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "concept-d",
+      "title": "Peta Konsep Operasi",
+      "bookReference": "hlm. 17–25",
+      "objective": "Mengisi kotak.",
+      "mechanicDescription": "Satu peta.",
+      "voiceGuide": "Pilih opsi.",
+      "symbolLarge": "🗺️",
+      "wordLarge": "PETA",
+      "mathNotation": "konsep"
+    },
+    {
+      "stage": "Abstract",
+      "gameType": "story-abstract-d",
+      "title": "Cerita Angka Operasi",
+      "bookReference": "hlm. 17–25",
+      "objective": "Soal cerita.",
+      "mechanicDescription": "Tiga ronde.",
+      "voiceGuide": "Pilih.",
+      "symbolLarge": "📖",
+      "wordLarge": "CERITA",
+      "mathNotation": "teks"
+    }
+  ],
+  "poin": [
+    {
+      "ikon": "➕",
+      "nama": "Penjumlahan",
+      "isi": "Jumlahkan menurut nilai tempat, sejajarkan kolom.",
+      "suara": "Jumlahkan per tempat."
+    },
+    {
+      "ikon": "➖",
+      "nama": "Pengurangan",
+      "isi": "Kurangkan untuk mencari sisa atau selisih.",
+      "suara": "Kurangkan dengan teliti."
+    },
+    {
+      "ikon": "✖️",
+      "nama": "Perkalian",
+      "isi": "Boleh dipecah faktor, lalu jumlahkan hasil bagian.",
+      "suara": "Pecah faktor bila membantu."
+    },
+    {
+      "ikon": "➗",
+      "nama": "Pembagian",
+      "isi": "Bagi rata; cek dengan perkalian kebalikan.",
+      "suara": "Bagi rata lalu cek."
+    }
+  ],
+  "poinSuara": "Ingat empat operasi: tambah, kurang, kali, bagi.",
+  "cara": {
+    "suara": "Ikuti langkah-langkahnya.",
+    "potongan": [
+      {
+        "teks": "Baca",
+        "warna": "#FDE68A"
+      },
+      {
+        "teks": "susun",
+        "warna": "#BBF7D0"
+      },
+      {
+        "teks": "hitung",
+        "warna": "#BFDBFE"
+      },
+      {
+        "teks": "cek",
+        "warna": "#FCE7F3"
+      }
+    ]
+  },
+  "rumah": "Ayo Mencoba di rumah: buat satu soal cerita penjumlahan dan satu soal pembagian memakai bilangan sampai seratus ribu.",
+  "refleksi": [
+    "Kapan memakai penjumlahan dan kapan pengurangan?",
+    "Bagaimana memecah 12 × 5.000 agar lebih mudah?",
+    "Mengapa pembagian dicek dengan perkalian?"
+  ]
+};
+
+export const SUB_BAB_K5B1: SubBabNaskah[] = [SUB_A51, SUB_B51, SUB_C51, SUB_D51];
 export const semuaAdeganK5B1 = SUB_BAB_K5B1.flatMap((s) => s.videos.flatMap((v) => v.adegan));
