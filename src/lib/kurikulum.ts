@@ -982,6 +982,7 @@ export const JUDUL_MTK_5_BAB9 = "Bab 9: Bilangan Cacah Sampai 1.000.000";
 export const JUDUL_MTK_6_BAB1 = "Bab 1: Pecahan dan Desimal";
 export const JUDUL_MTK_6_BAB2 = "Bab 2: Rasio";
 export const JUDUL_MTK_6_BAB3 = "Bab 3: Kubus dan Balok";
+export const JUDUL_MTK_6_BAB4 = "Bab 4: Peluang";
 
 const BAB_TERPASANG: Record<string, Record<string, string[]>> = {
   "1 SD": {
@@ -1000,7 +1001,7 @@ const BAB_TERPASANG: Record<string, Record<string, string[]>> = {
     Matematika: [JUDUL_MTK_5_BAB1, JUDUL_MTK_5_BAB2, JUDUL_MTK_5_BAB3, JUDUL_MTK_5_BAB4, JUDUL_MTK_5_BAB5, JUDUL_MTK_5_BAB6, JUDUL_MTK_5_BAB7, JUDUL_MTK_5_BAB8, JUDUL_MTK_5_BAB9],
   },
   "6 SD": {
-    Matematika: [JUDUL_MTK_6_BAB1, JUDUL_MTK_6_BAB2, JUDUL_MTK_6_BAB3],
+    Matematika: [JUDUL_MTK_6_BAB1, JUDUL_MTK_6_BAB2, JUDUL_MTK_6_BAB3, JUDUL_MTK_6_BAB4],
   },
 };
 

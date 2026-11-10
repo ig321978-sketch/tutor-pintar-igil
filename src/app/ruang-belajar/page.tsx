@@ -44,6 +44,7 @@ import {
   JUDUL_MTK_6_BAB1,
   JUDUL_MTK_6_BAB2,
   JUDUL_MTK_6_BAB3,
+  JUDUL_MTK_6_BAB4,
   OPSI_LAINNYA,
   daftarMapelUntukKelas,
   labelJenjangKelas,
@@ -296,6 +297,7 @@ export default function RuangBelajarPage() {
                     [JUDUL_MTK_6_BAB1]: "/ruang-belajar/mtk-6-bab1",
                     [JUDUL_MTK_6_BAB2]: "/ruang-belajar/mtk-6-bab2",
                     [JUDUL_MTK_6_BAB3]: "/ruang-belajar/mtk-6-bab3",
+                    [JUDUL_MTK_6_BAB4]: "/ruang-belajar/mtk-6-bab4",
                   }
                 : {};
     // Bab Matematika Kelas 3 sampai 6 yang sudah dipasang di registri-bab-baru: jalurnya dibaca dari judul "Bab N: ...".
