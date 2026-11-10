@@ -1,0 +1,1858 @@
+{
+  "chapterId": "k5-mat-bab1",
+  "chapter_id": "k5-mat-bab1",
+  "phase_code": "FASE_C",
+  "grade": 5,
+  "subjectLabel": "MATEMATIKA - KELAS 5 SD",
+  "title": "BAB 1: BILANGAN CACAH SAMPAI 100.000",
+  "silabusElemen": "🌈 Fase C • Elemen Bilangan: Membaca–Menulis, Nilai Tempat, serta Membandingkan–Mengurutkan Bilangan Cacah sampai 100.000 (Kelas 5 SD/MI)",
+  "suaraPerangkatSaja": true,
+  "suaraLaju": 0.7,
+  "suaraNada": 1,
+  "tokens": {
+    "practice": 30,
+    "exam": 70,
+    "practicum": 50
+  },
+  "subBabs": {
+    "A": {
+      "id": "A",
+      "codeTitle": "Sub-Bab A (Membaca, Menulis, Nilai Tempat)",
+      "fullTitle": "Sub-Bab A: Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya",
+      "targetDescription": "Siswa membaca dan menulis bilangan cacah sampai 100.000 serta menentukan digit dan nilai pada tempat puluh ribuan, ribuan, ratusan, puluhan, dan satuan sesuai Buku Siswa Kelas V Bab 1.",
+      "secondaryBg": "#FFEDD5",
+      "secondaryBorder": "#EA580C",
+      "secondaryText": "#7C2D12",
+      "silabus": {
+        "teksSuara": "Kita belajar bilangan cacah sampai seratus ribu. Kita membaca lambang, menulis dari kata, dan mengisi papan puluh ribuan sampai satuan. Nol tetap ditulis agar tempat tidak bergeser. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa membaca, menuliskan, dan menentukan nilai tempat bilangan cacah sampai 100.000.",
+        "referensi": "Buku Siswa Matematika Kelas V Bab 1 Sub-Bab A hlm. 4–9; place-value chart; Dienes multi-base blocks (extended to ten-thousands)."
+      },
+      "stories": [
+        {
+          "id": "K5B1A-V1-1",
+          "titleHint": "Lebih dari empat angka",
+          "sceneType": "K5B1A-V1-1",
+          "voiceNarration": "Di kelas empat kita sampai sepuluh ribu. Sekarang ada puluh ribuan. Lima tempat: PR, RB, R, P, S. Paling kiri adalah puluh ribuan."
+        },
+        {
+          "id": "K5B1A-V1-2",
+          "titleHint": "Contoh empat belas ribu",
+          "sceneType": "K5B1A-V1-2",
+          "voiceNarration": "Empat belas ribu lima ratus. Ditulis satu empat titik lima nol nol. Satu di puluh ribuan. Empat di ribuan."
+        },
+        {
+          "id": "K5B1A-V1-3",
+          "titleHint": "Nol menjaga tempat",
+          "sceneType": "K5B1A-V1-3",
+          "voiceNarration": "Puluhan dan satuan bernilai nol. Nol tetap ditulis. Tanpa nol, tempat bergeser. Ingat selalu isi kolom."
+        },
+        {
+          "id": "K5B1A-V2-1",
+          "titleHint": "Enam puluh enam ribu",
+          "sceneType": "K5B1A-V2-1",
+          "voiceNarration": "Lihat enam enam lima nol nol. Baca puluh ribuan dan ribuan dulu. Enam puluh enam ribu. Lalu lima ratus."
+        },
+        {
+          "id": "K5B1A-V2-2",
+          "titleHint": "Penduduk dan data",
+          "sceneType": "K5B1A-V2-2",
+          "voiceNarration": "Angka besar sering muncul di data. Dua puluh enam ribu sembilan ratus tiga puluh dua. Latih membaca perlahan. Pisahkan ribuan dengan titik."
+        },
+        {
+          "id": "K5B1A-V2-3",
+          "titleHint": "Nilai digit tujuh",
+          "sceneType": "K5B1A-V2-3",
+          "voiceNarration": "Pada delapan tujuh sembilan delapan enam. Digit tujuh ada di ribuan. Nilainya tujuh ribu. Bukan tujuh puluh ribu."
+        },
+        {
+          "id": "K5B1A-V3-1",
+          "titleHint": "Dengar kata, isi kolom",
+          "sceneType": "K5B1A-V3-1",
+          "voiceNarration": "Dengar empat belas ribu lima ratus. Isi puluh ribuan satu. Isi ribuan empat. Isi ratusan lima, lalu nol nol."
+        },
+        {
+          "id": "K5B1A-V3-2",
+          "titleHint": "Jangan lupa nol",
+          "sceneType": "K5B1A-V3-2",
+          "voiceNarration": "Jika tidak ada puluhan, tulis nol. Jika tidak ada satuan, tulis nol. Kolom harus lengkap. Hasilnya empat belas ribu lima ratus."
+        },
+        {
+          "id": "K5B1A-V3-3",
+          "titleHint": "Siap bermain",
+          "sceneType": "K5B1A-V3-3",
+          "voiceNarration": "Kita sudah bisa baca dan tulis. Nilai tempat sudah jelas. Ayo ke permainan. Semangat!"
+        }
+      ],
+      "videos": [
+        {
+          "id": "K5B1A-V1",
+          "judul": "Lima Tempat Baru",
+          "subjudul": "Puluh ribuan",
+          "adegan": [
+            {
+              "id": "K5B1A-V1-1",
+              "judul": "Lebih dari empat angka",
+              "ketukan": [
+                "Di kelas empat kita sampai sepuluh ribu.",
+                "Sekarang ada puluh ribuan.",
+                "Lima tempat: PR, RB, R, P, S.",
+                "Paling kiri adalah puluh ribuan."
+              ],
+              "papan": [
+                "4 angka",
+                "puluh ribuan",
+                "5 tempat",
+                "dari kiri"
+              ]
+            },
+            {
+              "id": "K5B1A-V1-2",
+              "judul": "Contoh empat belas ribu",
+              "ketukan": [
+                "Empat belas ribu lima ratus.",
+                "Ditulis satu empat titik lima nol nol.",
+                "Satu di puluh ribuan.",
+                "Empat di ribuan."
+              ],
+              "papan": [
+                "14.500",
+                "PR=1",
+                "RB=4",
+                "R=5"
+              ]
+            },
+            {
+              "id": "K5B1A-V1-3",
+              "judul": "Nol menjaga tempat",
+              "ketukan": [
+                "Puluhan dan satuan bernilai nol.",
+                "Nol tetap ditulis.",
+                "Tanpa nol, tempat bergeser.",
+                "Ingat selalu isi kolom."
+              ],
+              "papan": [
+                "nol",
+                "tetap tulis",
+                "jangan geser",
+                "isi kolom"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B1A-V2",
+          "judul": "Membaca Lima Angka",
+          "subjudul": "Dari kiri",
+          "adegan": [
+            {
+              "id": "K5B1A-V2-1",
+              "judul": "Enam puluh enam ribu",
+              "ketukan": [
+                "Lihat enam enam lima nol nol.",
+                "Baca puluh ribuan dan ribuan dulu.",
+                "Enam puluh enam ribu.",
+                "Lalu lima ratus."
+              ],
+              "papan": [
+                "66.500",
+                "66 ribu",
+                "lima ratus",
+                "gabung"
+              ]
+            },
+            {
+              "id": "K5B1A-V2-2",
+              "judul": "Penduduk dan data",
+              "ketukan": [
+                "Angka besar sering muncul di data.",
+                "Dua puluh enam ribu sembilan ratus tiga puluh dua.",
+                "Latih membaca perlahan.",
+                "Pisahkan ribuan dengan titik."
+              ],
+              "papan": [
+                "26.932",
+                "titik",
+                "perlahan",
+                "latihan"
+              ]
+            },
+            {
+              "id": "K5B1A-V2-3",
+              "judul": "Nilai digit tujuh",
+              "ketukan": [
+                "Pada delapan tujuh sembilan delapan enam.",
+                "Digit tujuh ada di ribuan.",
+                "Nilainya tujuh ribu.",
+                "Bukan tujuh puluh ribu."
+              ],
+              "papan": [
+                "87.986",
+                "digit 7",
+                "ribuan",
+                "7.000"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B1A-V3",
+          "judul": "Menulis dari Kata",
+          "subjudul": "Isi papan",
+          "adegan": [
+            {
+              "id": "K5B1A-V3-1",
+              "judul": "Dengar kata, isi kolom",
+              "ketukan": [
+                "Dengar empat belas ribu lima ratus.",
+                "Isi puluh ribuan satu.",
+                "Isi ribuan empat.",
+                "Isi ratusan lima, lalu nol nol."
+              ],
+              "papan": [
+                "dengar",
+                "PR",
+                "RB",
+                "R P S"
+              ]
+            },
+            {
+              "id": "K5B1A-V3-2",
+              "judul": "Jangan lupa nol",
+              "ketukan": [
+                "Jika tidak ada puluhan, tulis nol.",
+                "Jika tidak ada satuan, tulis nol.",
+                "Kolom harus lengkap.",
+                "Hasilnya empat belas ribu lima ratus."
+              ],
+              "papan": [
+                "nol P",
+                "nol S",
+                "lengkap",
+                "14.500"
+              ]
+            },
+            {
+              "id": "K5B1A-V3-3",
+              "judul": "Siap bermain",
+              "ketukan": [
+                "Kita sudah bisa baca dan tulis.",
+                "Nilai tempat sudah jelas.",
+                "Ayo ke permainan.",
+                "Semangat!"
+              ],
+              "papan": [
+                "baca",
+                "tulis",
+                "main",
+                "semangat"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Bilangan cacah",
+          "stepDesc": "0, 1, 2, … sampai 100.000",
+          "icon": "🔢",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Lima tempat",
+          "stepDesc": "PR, RB, R, P, S",
+          "icon": "🏛️",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Membaca",
+          "stepDesc": "Dari kiri, gabungkan kata",
+          "icon": "📢",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Menulis",
+          "stepDesc": "Isi tiap kolom dari kata",
+          "icon": "✍️",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Nilai digit",
+          "stepDesc": "Digit × nilai tempat",
+          "icon": "✖️",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Peran nol",
+          "stepDesc": "Menjaga agar tempat tidak bergeser",
+          "icon": "0️⃣",
+          "flowFrom": "5",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Puluh ribuan",
+          "emoji": "🔟",
+          "countNum": 10000,
+          "countWord": "10.000",
+          "voiceSentence": "Satu di puluh ribuan bernilai sepuluh ribu."
+        },
+        {
+          "fruitName": "Ribuan",
+          "emoji": "1️⃣",
+          "countNum": 1000,
+          "countWord": "1.000",
+          "voiceSentence": "Satu di ribuan bernilai seribu."
+        },
+        {
+          "fruitName": "Ratusan",
+          "emoji": "💯",
+          "countNum": 100,
+          "countWord": "100",
+          "voiceSentence": "Satu di ratusan bernilai seratus."
+        },
+        {
+          "fruitName": "Puluhan",
+          "emoji": "🔟",
+          "countNum": 10,
+          "countWord": "10",
+          "voiceSentence": "Satu di puluhan bernilai sepuluh."
+        },
+        {
+          "fruitName": "Satuan",
+          "emoji": "1️⃣",
+          "countNum": 1,
+          "countWord": "1",
+          "voiceSentence": "Satu di satuan bernilai satu."
+        },
+        {
+          "fruitName": "14.500",
+          "emoji": "📘",
+          "countNum": 14500,
+          "countWord": "contoh buku",
+          "voiceSentence": "Empat belas ribu lima ratus."
+        },
+        {
+          "fruitName": "66.500",
+          "emoji": "💊",
+          "countNum": 66500,
+          "countWord": "contoh baca",
+          "voiceSentence": "Enam puluh enam ribu lima ratus."
+        },
+        {
+          "fruitName": "Nol",
+          "emoji": "0️⃣",
+          "countNum": 0,
+          "countWord": "penjaga",
+          "voiceSentence": "Nol menjaga nilai tempat."
+        },
+        {
+          "fruitName": "Titik",
+          "emoji": "·",
+          "countNum": 1,
+          "countWord": "pemisah",
+          "voiceSentence": "Titik memisahkan ribuan."
+        },
+        {
+          "fruitName": "Siap B",
+          "emoji": "⚖️",
+          "countNum": 1,
+          "countWord": "banding",
+          "voiceSentence": "Berikutnya banding dan urut."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Baca Bilangan Lima Angka",
+          "emoji": "📢",
+          "targetCount": 6,
+          "voiceGuide": "Pilih kata."
+        },
+        {
+          "title": "Tulis dari Kata Bilangan",
+          "emoji": "✍️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih lambang."
+        },
+        {
+          "title": "Tentukan Nilai Tempat",
+          "emoji": "🏛️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Pilah Lima/Empat Angka",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah."
+        },
+        {
+          "title": "Jodohkan Lambang–Kata",
+          "emoji": "🔗",
+          "targetCount": 12,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Lambang–Kata",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Bilangan Diminta",
+          "emoji": "👆",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "title": "Ketuk Semua Sesuai Ciri",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Buku dan Penduduk",
+          "emoji": "📖",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Urutkan Bilangan Baca",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Urutkan."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Papan Baca Bilangan",
+          "diagramType": "board",
+          "numberA": 1,
+          "numberB": 5,
+          "caption": "Baca papan tempat."
+        },
+        {
+          "title": "Papan Nilai Tempat",
+          "diagramType": "place",
+          "numberA": 1,
+          "numberB": 5,
+          "caption": "Digit per kolom."
+        },
+        {
+          "title": "Jodohkan Diagram Tempat",
+          "diagramType": "match",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Diagram Tempat",
+          "diagramType": "mem",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Tempat–Nilai",
+          "diagramType": "table",
+          "numberA": 1,
+          "numberB": 3,
+          "caption": "Isi tabel."
+        },
+        {
+          "title": "Ketuk Semua Diagram",
+          "diagramType": "select",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Ketuk semua."
+        },
+        {
+          "title": "Pilah Diagram Panjang",
+          "diagramType": "sort",
+          "numberA": 1,
+          "numberB": 6,
+          "caption": "Pilah."
+        },
+        {
+          "title": "Model Blok Tempat",
+          "diagramType": "blocks",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Baca model."
+        },
+        {
+          "title": "Pilih Bacaan Cocok",
+          "diagramType": "choose",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih pernyataan."
+        },
+        {
+          "title": "Cerita Diagram Tempat",
+          "diagramType": "story",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Cerita + papan."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "Aa",
+          "wordLarge": "KATA",
+          "mathNotation": "baca",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "14.500",
+          "wordLarge": "LAMBANG",
+          "mathNotation": "tulis",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "PR",
+          "wordLarge": "TEMPAT",
+          "mathNotation": "nilai",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "14k<26k",
+          "wordLarge": "URUT",
+          "mathNotation": "nilai",
+          "voiceReadout": "Urutkan."
+        },
+        {
+          "symbolLarge": "7→rb",
+          "wordLarge": "JODOH",
+          "mathNotation": "teks",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "nol",
+          "wordLarge": "MEMORI",
+          "mathNotation": "notasi",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK5B1A-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "baca-lima",
+          "title": "Baca Bilangan Lima Angka",
+          "bookReference": "Buku Siswa hlm. 7–9",
+          "objective": "Membaca lambang → kata.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih kata."
+        },
+        {
+          "gameId": "subK5B1A-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "tulis-lima",
+          "title": "Tulis dari Kata Bilangan",
+          "bookReference": "Buku Siswa hlm. 5–6",
+          "objective": "Menulis lambang dari kata.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih lambang."
+        },
+        {
+          "gameId": "subK5B1A-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "nilai-tempat",
+          "title": "Tentukan Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Digit & nilai tempat.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1A-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sort-digit",
+          "title": "Pilah Lima/Empat Angka",
+          "bookReference": "Buku Siswa hlm. 4–7",
+          "objective": "Memilah panjang bilangan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK5B1A-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "match-baca",
+          "title": "Jodohkan Lambang–Kata",
+          "bookReference": "Buku Siswa hlm. 8–9",
+          "objective": "Menjodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B1A-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memory-baca",
+          "title": "Memori Lambang–Kata",
+          "bookReference": "Buku Siswa hlm. 7–9",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B1A-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-bilangan",
+          "title": "Ketuk Bilangan Diminta",
+          "bookReference": "Buku Siswa hlm. 7–9",
+          "objective": "Mengetuk.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "gameId": "subK5B1A-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "tap-all-ciri",
+          "title": "Ketuk Semua Sesuai Ciri",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK5B1A-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "story-baca",
+          "title": "Cerita Buku dan Penduduk",
+          "bookReference": "Buku Siswa hlm. 5–8",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1A-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "order-nilai",
+          "title": "Urutkan Bilangan Baca",
+          "bookReference": "Buku Siswa hlm. 7–9",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK5B1A-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "papan-baca",
+          "title": "Papan Baca Bilangan",
+          "bookReference": "Buku Siswa hlm. 6–7",
+          "objective": "Baca papan tempat.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1A-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "papan-tempat",
+          "title": "Papan Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Digit per kolom.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1A-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-diagram-a",
+          "title": "Jodohkan Diagram Tempat",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B1A-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-diagram-a",
+          "title": "Memori Diagram Tempat",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B1A-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "table-a",
+          "title": "Tabel Tempat–Nilai",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Isi tabel.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1A-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-a",
+          "title": "Ketuk Semua Diagram",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK5B1A-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-diagram-a",
+          "title": "Pilah Diagram Panjang",
+          "bookReference": "Buku Siswa hlm. 4–7",
+          "objective": "Pilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK5B1A-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "model-blok",
+          "title": "Model Blok Tempat",
+          "bookReference": "Buku Siswa hlm. 6",
+          "objective": "Baca model.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1A-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "choose-a",
+          "title": "Pilih Bacaan Cocok",
+          "bookReference": "Buku Siswa hlm. 7–9",
+          "objective": "Pilih pernyataan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1A-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "story-picture-a",
+          "title": "Cerita Diagram Tempat",
+          "bookReference": "Buku Siswa hlm. 5–9",
+          "objective": "Cerita + papan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1A-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "write-kata",
+          "title": "Tulis Kata Bilangan",
+          "bookReference": "Buku Siswa hlm. 7–9",
+          "objective": "Menulis kata.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1A-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "write-lambang",
+          "title": "Tulis Lambang Bilangan",
+          "bookReference": "Buku Siswa hlm. 5–6",
+          "objective": "Menulis angka.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1A-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "choose-tempat",
+          "title": "Pilih Nama Tempat",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "PR/RB/R/P/S.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1A-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "order-abstract-a",
+          "title": "Urutkan Lambang",
+          "bookReference": "Buku Siswa hlm. 7–9",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK5B1A-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-abstract-a",
+          "title": "Jodohkan Notasi Tempat",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B1A-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-abstract-a",
+          "title": "Memori Notasi Tempat",
+          "bookReference": "Buku Siswa hlm. 6–9",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B1A-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-a",
+          "title": "Benar atau Salah: Tempat",
+          "bookReference": "Buku Siswa hlm. 4–9",
+          "objective": "Menilai.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK5B1A-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-a",
+          "title": "Detektif Bilangan Lima",
+          "bookReference": "Buku Siswa hlm. 5–9",
+          "objective": "Petunjuk → bilangan.",
+          "mechanicDescription": "Tiga soal.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1A-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-a",
+          "title": "Peta Konsep Nilai Tempat",
+          "bookReference": "Buku Siswa hlm. 2–9",
+          "objective": "Mengisi kotak.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK5B1A-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-abstract-a",
+          "title": "Cerita Angka Tempat",
+          "bookReference": "Buku Siswa hlm. 5–9",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Lima tempat",
+            "isi": "Puluh ribuan, ribuan, ratusan, puluhan, satuan.",
+            "suara": "Ada lima tempat nilai."
+          },
+          {
+            "nama": "Membaca",
+            "isi": "Baca dari kiri, gabungkan kata puluh ribuan dan ribuan dulu.",
+            "suara": "Baca dari kiri."
+          },
+          {
+            "nama": "Menulis",
+            "isi": "Isi setiap kolom tempat sesuai kata bilangan.",
+            "suara": "Isi kolom satu per satu."
+          },
+          {
+            "nama": "Nol",
+            "isi": "Nol tetap ditulis agar tempat tidak bergeser.",
+            "suara": "Nol menjaga tempat."
+          }
+        ],
+        "suara": "Ingat empat kunci: lima tempat, baca dari kiri, tulis per kolom, dan nol penjaga.",
+        "caraMenyebutkan": "Gambar papan 5 kolom Isi dari kiri Tulis nol jika kosong Baca & cek",
+        "rumah": "Ayo Mencoba di rumah: catat 3 bilangan lima angka dari koran atau papan skor, tulis di papan PR–S, dan baca keras-keras.",
+        "refleksi": [
+          "Mengapa nol tetap ditulis?",
+          "Apa beda nilai digit 7 di ribuan dan di puluh ribuan?",
+          "Bagaimana menulis 'empat puluh ribu tiga ratus lima puluh'?"
+        ]
+      }
+    },
+    "B": {
+      "id": "B",
+      "codeTitle": "Sub-Bab B (Membandingkan dan Mengurutkan)",
+      "fullTitle": "Sub-Bab B: Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000",
+      "targetDescription": "Siswa membandingkan bilangan sampai 100.000 dengan strategi nilai tempat dari kiri, memakai tanda > < =, serta mengurutkan menaik dan menurun sesuai Buku Siswa Kelas V Bab 1.",
+      "secondaryBg": "#DBEAFE",
+      "secondaryBorder": "#2563EB",
+      "secondaryText": "#1E3A8A",
+      "silabus": {
+        "teksSuara": "Kita belajar membandingkan dan mengurutkan bilangan sampai seratus ribu. Mulai dari puluh ribuan. Jika sama, lanjut ke ribuan, dan seterusnya. Kita memakai tanda lebih besar, lebih kecil, atau sama dengan. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
+        "cp": "Siswa membandingkan dan mengurutkan bilangan cacah sampai 100.000.",
+        "referensi": "Buku Siswa Matematika Kelas V Bab 1 Sub-Bab B hlm. 10–15; place-value comparison algorithm; number line ordering."
+      },
+      "stories": [
+        {
+          "id": "K5B1B-V1-1",
+          "titleHint": "Dua bilangan",
+          "sceneType": "K5B1B-V1-1",
+          "voiceNarration": "Lihat dua bilangan lima angka. Mulai dari puluh ribuan. Yang digitnya lebih besar, bilangannya lebih besar. Jika sama, lanjut ke kanan."
+        },
+        {
+          "id": "K5B1B-V1-2",
+          "titleHint": "Contoh dakon",
+          "sceneType": "K5B1B-V1-2",
+          "voiceNarration": "Lima enam ribu dan tujuh lima ribu. Puluh ribuan lima versus tujuh. Tujuh lebih besar. Jadi tujuh lima ribu lebih besar."
+        },
+        {
+          "id": "K5B1B-V1-3",
+          "titleHint": "Jika PR sama",
+          "sceneType": "K5B1B-V1-3",
+          "voiceNarration": "Lima enam dan lima tujuh. Puluh ribuan sama. Bandingkan ribuan. Tujuh lebih besar dari enam."
+        },
+        {
+          "id": "K5B1B-V2-1",
+          "titleHint": "Tiga tanda",
+          "sceneType": "K5B1B-V2-1",
+          "voiceNarration": "Lebih besar memakai tanda ini. Lebih kecil memakai tanda itu. Sama memakai sama dengan. Latih sampai otomatis."
+        },
+        {
+          "id": "K5B1B-V2-2",
+          "titleHint": "Urut naik",
+          "sceneType": "K5B1B-V2-2",
+          "voiceNarration": "Dari yang paling kecil. Ke yang paling besar. Itu urutan menaik. Berguna memilih yang termurah."
+        },
+        {
+          "id": "K5B1B-V2-3",
+          "titleHint": "Urut turun",
+          "sceneType": "K5B1B-V2-3",
+          "voiceNarration": "Dari yang paling besar. Ke yang paling kecil. Itu urutan menurun. Berguna mencari yang terbesar."
+        },
+        {
+          "id": "K5B1B-V3-1",
+          "titleHint": "Empat harga",
+          "sceneType": "K5B1B-V3-1",
+          "voiceNarration": "Ada empat bilangan dakon. Cari yang terkecil. Cari yang terbesar. Lalu urutkan semua."
+        },
+        {
+          "id": "K5B1B-V3-2",
+          "titleHint": "Pola seribu",
+          "sceneType": "K5B1B-V3-2",
+          "voiceNarration": "Lima belas ribu lima ratus. Enam belas ribu lima ratus. Naik seribu tiap langkah. Pola membantu mengisi."
+        },
+        {
+          "id": "K5B1B-V3-3",
+          "titleHint": "Siap bermain",
+          "sceneType": "K5B1B-V3-3",
+          "voiceNarration": "Strategi banding sudah siap. Tanda dan urutan sudah jelas. Ayo ke permainan. Semangat!"
+        }
+      ],
+      "videos": [
+        {
+          "id": "K5B1B-V1",
+          "judul": "Banding dari Kiri",
+          "subjudul": "Puluh ribuan dulu",
+          "adegan": [
+            {
+              "id": "K5B1B-V1-1",
+              "judul": "Dua bilangan",
+              "ketukan": [
+                "Lihat dua bilangan lima angka.",
+                "Mulai dari puluh ribuan.",
+                "Yang digitnya lebih besar, bilangannya lebih besar.",
+                "Jika sama, lanjut ke kanan."
+              ],
+              "papan": [
+                "dua bilangan",
+                "PR dulu",
+                "lebih besar",
+                "lanjut kanan"
+              ]
+            },
+            {
+              "id": "K5B1B-V1-2",
+              "judul": "Contoh dakon",
+              "ketukan": [
+                "Lima enam ribu dan tujuh lima ribu.",
+                "Puluh ribuan lima versus tujuh.",
+                "Tujuh lebih besar.",
+                "Jadi tujuh lima ribu lebih besar."
+              ],
+              "papan": [
+                "56rb",
+                "75rb",
+                "PR 7",
+                "lebih besar"
+              ]
+            },
+            {
+              "id": "K5B1B-V1-3",
+              "judul": "Jika PR sama",
+              "ketukan": [
+                "Lima enam dan lima tujuh.",
+                "Puluh ribuan sama.",
+                "Bandingkan ribuan.",
+                "Tujuh lebih besar dari enam."
+              ],
+              "papan": [
+                "PR sama",
+                "cek RB",
+                "7>6",
+                "keputusan"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B1B-V2",
+          "judul": "Tanda dan Urutan",
+          "subjudul": "> < =",
+          "adegan": [
+            {
+              "id": "K5B1B-V2-1",
+              "judul": "Tiga tanda",
+              "ketukan": [
+                "Lebih besar memakai tanda ini.",
+                "Lebih kecil memakai tanda itu.",
+                "Sama memakai sama dengan.",
+                "Latih sampai otomatis."
+              ],
+              "papan": [
+                ">",
+                "<",
+                "=",
+                "latihan"
+              ]
+            },
+            {
+              "id": "K5B1B-V2-2",
+              "judul": "Urut naik",
+              "ketukan": [
+                "Dari yang paling kecil.",
+                "Ke yang paling besar.",
+                "Itu urutan menaik.",
+                "Berguna memilih yang termurah."
+              ],
+              "papan": [
+                "kecil",
+                "besar",
+                "menaik",
+                "termurah"
+              ]
+            },
+            {
+              "id": "K5B1B-V2-3",
+              "judul": "Urut turun",
+              "ketukan": [
+                "Dari yang paling besar.",
+                "Ke yang paling kecil.",
+                "Itu urutan menurun.",
+                "Berguna mencari yang terbesar."
+              ],
+              "papan": [
+                "besar",
+                "kecil",
+                "menurun",
+                "terbesar"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "K5B1B-V3",
+          "judul": "Latihan Dakon",
+          "subjudul": "Empat bilangan",
+          "adegan": [
+            {
+              "id": "K5B1B-V3-1",
+              "judul": "Empat harga",
+              "ketukan": [
+                "Ada empat bilangan dakon.",
+                "Cari yang terkecil.",
+                "Cari yang terbesar.",
+                "Lalu urutkan semua."
+              ],
+              "papan": [
+                "empat",
+                "terkecil",
+                "terbesar",
+                "urut"
+              ]
+            },
+            {
+              "id": "K5B1B-V3-2",
+              "judul": "Pola seribu",
+              "ketukan": [
+                "Lima belas ribu lima ratus.",
+                "Enam belas ribu lima ratus.",
+                "Naik seribu tiap langkah.",
+                "Pola membantu mengisi."
+              ],
+              "papan": [
+                "15.500",
+                "16.500",
+                "+1000",
+                "pola"
+              ]
+            },
+            {
+              "id": "K5B1B-V3-3",
+              "judul": "Siap bermain",
+              "ketukan": [
+                "Strategi banding sudah siap.",
+                "Tanda dan urutan sudah jelas.",
+                "Ayo ke permainan.",
+                "Semangat!"
+              ],
+              "papan": [
+                "strategi",
+                "tanda",
+                "main",
+                "semangat"
+              ]
+            }
+          ]
+        }
+      ],
+      "mindMaps": [
+        {
+          "stepNumber": 1,
+          "stepTitle": "1. Dua bilangan",
+          "stepDesc": "Siapkan lambang sejajar",
+          "icon": "🔢",
+          "flowFrom": "START",
+          "flowTo": "2"
+        },
+        {
+          "stepNumber": 2,
+          "stepTitle": "2. Mulai PR",
+          "stepDesc": "Bandingkan puluh ribuan",
+          "icon": "⬅️",
+          "flowFrom": "1",
+          "flowTo": "3"
+        },
+        {
+          "stepNumber": 3,
+          "stepTitle": "3. Jika sama",
+          "stepDesc": "Lanjut RB → R → P → S",
+          "icon": "➡️",
+          "flowFrom": "2",
+          "flowTo": "4"
+        },
+        {
+          "stepNumber": 4,
+          "stepTitle": "4. Tanda",
+          "stepDesc": "Tuliskan > < atau =",
+          "icon": "⚖️",
+          "flowFrom": "3",
+          "flowTo": "5"
+        },
+        {
+          "stepNumber": 5,
+          "stepTitle": "5. Urut naik",
+          "stepDesc": "Kecil ke besar",
+          "icon": "📶",
+          "flowFrom": "4",
+          "flowTo": "6"
+        },
+        {
+          "stepNumber": 6,
+          "stepTitle": "6. Urut turun",
+          "stepDesc": "Besar ke kecil",
+          "icon": "📉",
+          "flowFrom": "5",
+          "flowTo": "END"
+        }
+      ],
+      "infografisData": [
+        {
+          "fruitName": "Mulai kiri",
+          "emoji": "⬅️",
+          "countNum": 1,
+          "countWord": "PR dulu",
+          "voiceSentence": "Bandingkan puluh ribuan lebih dulu."
+        },
+        {
+          "fruitName": "Lanjut",
+          "emoji": "➡️",
+          "countNum": 1,
+          "countWord": "RB berikutnya",
+          "voiceSentence": "Jika sama, cek ribuan."
+        },
+        {
+          "fruitName": ">",
+          "emoji": "🔼",
+          "countNum": 1,
+          "countWord": "lebih besar",
+          "voiceSentence": "Tanda lebih besar."
+        },
+        {
+          "fruitName": "<",
+          "emoji": "🔽",
+          "countNum": 1,
+          "countWord": "lebih kecil",
+          "voiceSentence": "Tanda lebih kecil."
+        },
+        {
+          "fruitName": "=",
+          "emoji": "🟰",
+          "countNum": 1,
+          "countWord": "sama",
+          "voiceSentence": "Semua digit sama."
+        },
+        {
+          "fruitName": "56.560",
+          "emoji": "🎲",
+          "countNum": 56560,
+          "countWord": "dakon kecil",
+          "voiceSentence": "Contoh bilangan lebih kecil."
+        },
+        {
+          "fruitName": "75.360",
+          "emoji": "🏆",
+          "countNum": 75360,
+          "countWord": "dakon besar",
+          "voiceSentence": "Contoh bilangan lebih besar."
+        },
+        {
+          "fruitName": "Menaik",
+          "emoji": "📶",
+          "countNum": 1,
+          "countWord": "kecil→besar",
+          "voiceSentence": "Urutan dari kecil."
+        },
+        {
+          "fruitName": "Menurun",
+          "emoji": "📉",
+          "countNum": 1,
+          "countWord": "besar→kecil",
+          "voiceSentence": "Urutan dari besar."
+        },
+        {
+          "fruitName": "Bab 1 A–B",
+          "emoji": "✅",
+          "countNum": 1,
+          "countWord": "siap",
+          "voiceSentence": "Baca-tempat dan banding siap."
+        }
+      ],
+      "concreteSlides": [
+        {
+          "title": "Isi Tanda Banding",
+          "emoji": "⚖️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih tanda."
+        },
+        {
+          "title": "Strategi dari Kiri",
+          "emoji": "⬅️",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Paling Besar/Kecil",
+          "emoji": "🏆",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Pilah Besar/Kecil",
+          "emoji": "🧺",
+          "targetCount": 18,
+          "voiceGuide": "Pilah."
+        },
+        {
+          "title": "Jodohkan Hasil Banding",
+          "emoji": "🔗",
+          "targetCount": 12,
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "title": "Memori Banding",
+          "emoji": "🃏",
+          "targetCount": 12,
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "title": "Ketuk Bilangan Banding",
+          "emoji": "👆",
+          "targetCount": 9,
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "title": "Ketuk Semua Sesuai Batas",
+          "emoji": "✔️",
+          "targetCount": 3,
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "title": "Cerita Dakon dan Urutan",
+          "emoji": "🎲",
+          "targetCount": 6,
+          "voiceGuide": "Pilih."
+        },
+        {
+          "title": "Urutkan Naik/Turun",
+          "emoji": "📶",
+          "targetCount": 3,
+          "voiceGuide": "Urutkan."
+        }
+      ],
+      "pictorialSlides": [
+        {
+          "title": "Diagram Banding",
+          "diagramType": "cmp",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Baca tanda."
+        },
+        {
+          "title": "Diagram Urutan",
+          "diagramType": "ord",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Baca urutan."
+        },
+        {
+          "title": "Jodohkan Diagram Banding",
+          "diagramType": "match",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Jodohkan."
+        },
+        {
+          "title": "Memori Diagram Banding",
+          "diagramType": "mem",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Memori."
+        },
+        {
+          "title": "Tabel Banding",
+          "diagramType": "table",
+          "numberA": 1,
+          "numberB": 3,
+          "caption": "Isi tabel."
+        },
+        {
+          "title": "Ketuk Semua Diagram",
+          "diagramType": "select",
+          "numberA": 1,
+          "numberB": 4,
+          "caption": "Ketuk semua."
+        },
+        {
+          "title": "Pilah Diagram Ukuran",
+          "diagramType": "sort",
+          "numberA": 1,
+          "numberB": 6,
+          "caption": "Pilah."
+        },
+        {
+          "title": "Papan Banding Tempat",
+          "diagramType": "board",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Banding kolom."
+        },
+        {
+          "title": "Pilih Strategi Cocok",
+          "diagramType": "choose",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Pilih pernyataan."
+        },
+        {
+          "title": "Cerita Diagram Banding",
+          "diagramType": "story",
+          "numberA": 1,
+          "numberB": 2,
+          "caption": "Cerita + diagram."
+        }
+      ],
+      "abstractSlides": [
+        {
+          "symbolLarge": "><=",
+          "wordLarge": "TANDA",
+          "mathNotation": "banding",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "min/max",
+          "wordLarge": "EKSTREEM",
+          "mathNotation": "urut",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "PR→RB",
+          "wordLarge": "STRATEGI",
+          "mathNotation": "kiri",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "naik",
+          "wordLarge": "URUT",
+          "mathNotation": "nilai",
+          "voiceReadout": "Urutkan."
+        },
+        {
+          "symbolLarge": "a?b",
+          "wordLarge": "JODOH",
+          "mathNotation": "teks",
+          "voiceReadout": "Jodohkan."
+        },
+        {
+          "symbolLarge": "urut",
+          "wordLarge": "MEMORI",
+          "mathNotation": "notasi",
+          "voiceReadout": "Balik kartu."
+        },
+        {
+          "symbolLarge": "✓ ✗",
+          "wordLarge": "BENAR SALAH",
+          "mathNotation": "alasan",
+          "voiceReadout": "Benar/salah."
+        },
+        {
+          "symbolLarge": "?",
+          "wordLarge": "DETEKTIF",
+          "mathNotation": "petunjuk",
+          "voiceReadout": "Pilih."
+        },
+        {
+          "symbolLarge": "🗺️",
+          "wordLarge": "PETA",
+          "mathNotation": "konsep",
+          "voiceReadout": "Pilih opsi."
+        },
+        {
+          "symbolLarge": "📖",
+          "wordLarge": "CERITA",
+          "mathNotation": "teks",
+          "voiceReadout": "Pilih."
+        }
+      ],
+      "interactiveGames": [
+        {
+          "gameId": "subK5B1B-game-1",
+          "gameNumber": 1,
+          "stage": "Concrete",
+          "gameType": "banding-tanda",
+          "title": "Isi Tanda Banding",
+          "bookReference": "Buku Siswa hlm. 14–15",
+          "objective": ">, <, =.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih tanda."
+        },
+        {
+          "gameId": "subK5B1B-game-2",
+          "gameNumber": 2,
+          "stage": "Concrete",
+          "gameType": "strategi-banding",
+          "title": "Strategi dari Kiri",
+          "bookReference": "Buku Siswa hlm. 11–13",
+          "objective": "Mulai puluh ribuan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-3",
+          "gameNumber": 3,
+          "stage": "Concrete",
+          "gameType": "pilih-ekstrem",
+          "title": "Paling Besar/Kecil",
+          "bookReference": "Buku Siswa hlm. 10–13",
+          "objective": "Cari ekstrem.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-4",
+          "gameNumber": 4,
+          "stage": "Concrete",
+          "gameType": "sort-ukuran",
+          "title": "Pilah Besar/Kecil",
+          "bookReference": "Buku Siswa hlm. 10–13",
+          "objective": "Memilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK5B1B-game-5",
+          "gameNumber": 5,
+          "stage": "Concrete",
+          "gameType": "match-banding",
+          "title": "Jodohkan Hasil Banding",
+          "bookReference": "Buku Siswa hlm. 14–15",
+          "objective": "Menjodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B1B-game-6",
+          "gameNumber": 6,
+          "stage": "Concrete",
+          "gameType": "memory-banding",
+          "title": "Memori Banding",
+          "bookReference": "Buku Siswa hlm. 14–15",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B1B-game-7",
+          "gameNumber": 7,
+          "stage": "Concrete",
+          "gameType": "tap-bilangan-b",
+          "title": "Ketuk Bilangan Banding",
+          "bookReference": "Buku Siswa hlm. 10–14",
+          "objective": "Mengetuk.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk."
+        },
+        {
+          "gameId": "subK5B1B-game-8",
+          "gameNumber": 8,
+          "stage": "Concrete",
+          "gameType": "tap-all-b",
+          "title": "Ketuk Semua Sesuai Batas",
+          "bookReference": "Buku Siswa hlm. 10–14",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK5B1B-game-9",
+          "gameNumber": 9,
+          "stage": "Concrete",
+          "gameType": "story-dakon",
+          "title": "Cerita Dakon dan Urutan",
+          "bookReference": "Buku Siswa hlm. 10–13",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-10",
+          "gameNumber": 10,
+          "stage": "Concrete",
+          "gameType": "order-banding",
+          "title": "Urutkan Naik/Turun",
+          "bookReference": "Buku Siswa hlm. 13–15",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK5B1B-game-11",
+          "gameNumber": 11,
+          "stage": "Picture",
+          "gameType": "diagram-banding",
+          "title": "Diagram Banding",
+          "bookReference": "Buku Siswa hlm. 14–15",
+          "objective": "Baca tanda.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-12",
+          "gameNumber": 12,
+          "stage": "Picture",
+          "gameType": "diagram-urut",
+          "title": "Diagram Urutan",
+          "bookReference": "Buku Siswa hlm. 13",
+          "objective": "Baca urutan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-13",
+          "gameNumber": 13,
+          "stage": "Picture",
+          "gameType": "match-diagram-b",
+          "title": "Jodohkan Diagram Banding",
+          "bookReference": "Buku Siswa hlm. 14–15",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B1B-game-14",
+          "gameNumber": 14,
+          "stage": "Picture",
+          "gameType": "memory-diagram-b",
+          "title": "Memori Diagram Banding",
+          "bookReference": "Buku Siswa hlm. 14–15",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B1B-game-15",
+          "gameNumber": 15,
+          "stage": "Picture",
+          "gameType": "table-b",
+          "title": "Tabel Banding",
+          "bookReference": "Buku Siswa hlm. 14–15",
+          "objective": "Isi tabel.",
+          "mechanicDescription": "Tiga tabel.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-16",
+          "gameNumber": 16,
+          "stage": "Picture",
+          "gameType": "tap-all-pb",
+          "title": "Ketuk Semua Diagram",
+          "bookReference": "Buku Siswa hlm. 10–14",
+          "objective": "Ketuk semua.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Ketuk semua."
+        },
+        {
+          "gameId": "subK5B1B-game-17",
+          "gameNumber": 17,
+          "stage": "Picture",
+          "gameType": "sort-diagram-b",
+          "title": "Pilah Diagram Ukuran",
+          "bookReference": "Buku Siswa hlm. 10–13",
+          "objective": "Pilah.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilah."
+        },
+        {
+          "gameId": "subK5B1B-game-18",
+          "gameNumber": 18,
+          "stage": "Picture",
+          "gameType": "papan-banding",
+          "title": "Papan Banding Tempat",
+          "bookReference": "Buku Siswa hlm. 11–12",
+          "objective": "Banding kolom.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-19",
+          "gameNumber": 19,
+          "stage": "Picture",
+          "gameType": "choose-b",
+          "title": "Pilih Strategi Cocok",
+          "bookReference": "Buku Siswa hlm. 11–14",
+          "objective": "Pilih pernyataan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-20",
+          "gameNumber": 20,
+          "stage": "Picture",
+          "gameType": "story-picture-b",
+          "title": "Cerita Diagram Banding",
+          "bookReference": "Buku Siswa hlm. 10–15",
+          "objective": "Cerita + diagram.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-21",
+          "gameNumber": 21,
+          "stage": "Abstract",
+          "gameType": "write-tanda",
+          "title": "Tulis Tanda Banding",
+          "bookReference": "Buku Siswa hlm. 15",
+          "objective": "Menulis > < =.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-22",
+          "gameNumber": 22,
+          "stage": "Abstract",
+          "gameType": "write-ekstrem",
+          "title": "Tulis Bilangan Ekstrem",
+          "bookReference": "Buku Siswa hlm. 13",
+          "objective": "Menulis ekstrem.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-23",
+          "gameNumber": 23,
+          "stage": "Abstract",
+          "gameType": "choose-strategi",
+          "title": "Pilih Langkah Banding",
+          "bookReference": "Buku Siswa hlm. 11–13",
+          "objective": "Strategi tempat.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-24",
+          "gameNumber": 24,
+          "stage": "Abstract",
+          "gameType": "order-abstract-b",
+          "title": "Urutkan Abstrak",
+          "bookReference": "Buku Siswa hlm. 13–15",
+          "objective": "Mengurutkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Urutkan."
+        },
+        {
+          "gameId": "subK5B1B-game-25",
+          "gameNumber": 25,
+          "stage": "Abstract",
+          "gameType": "match-abstract-b",
+          "title": "Jodohkan Notasi Banding",
+          "bookReference": "Buku Siswa hlm. 14–15",
+          "objective": "Jodohkan.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Jodohkan."
+        },
+        {
+          "gameId": "subK5B1B-game-26",
+          "gameNumber": 26,
+          "stage": "Abstract",
+          "gameType": "memory-abstract-b",
+          "title": "Memori Notasi Banding",
+          "bookReference": "Buku Siswa hlm. 14–15",
+          "objective": "Memori.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Balik kartu."
+        },
+        {
+          "gameId": "subK5B1B-game-27",
+          "gameNumber": 27,
+          "stage": "Abstract",
+          "gameType": "true-false-b",
+          "title": "Benar atau Salah: Banding",
+          "bookReference": "Buku Siswa hlm. 10–15",
+          "objective": "Menilai.",
+          "mechanicDescription": "Dua ronde.",
+          "voiceGuide": "Benar/salah."
+        },
+        {
+          "gameId": "subK5B1B-game-28",
+          "gameNumber": 28,
+          "stage": "Abstract",
+          "gameType": "detective-b",
+          "title": "Detektif Banding Urut",
+          "bookReference": "Buku Siswa hlm. 10–15",
+          "objective": "Petunjuk → jawaban.",
+          "mechanicDescription": "Tiga soal.",
+          "voiceGuide": "Pilih."
+        },
+        {
+          "gameId": "subK5B1B-game-29",
+          "gameNumber": 29,
+          "stage": "Abstract",
+          "gameType": "concept-b",
+          "title": "Peta Konsep Banding",
+          "bookReference": "Buku Siswa hlm. 2–14",
+          "objective": "Mengisi kotak.",
+          "mechanicDescription": "Satu peta.",
+          "voiceGuide": "Pilih opsi."
+        },
+        {
+          "gameId": "subK5B1B-game-30",
+          "gameNumber": 30,
+          "stage": "Abstract",
+          "gameType": "story-abstract-b",
+          "title": "Cerita Angka Banding",
+          "bookReference": "Buku Siswa hlm. 10–15",
+          "objective": "Soal cerita.",
+          "mechanicDescription": "Tiga ronde.",
+          "voiceGuide": "Pilih."
+        }
+      ],
+      "poinPenting": {
+        "poin": [
+          {
+            "nama": "Dari kiri",
+            "isi": "Bandingkan mulai puluh ribuan, lalu tempat berikutnya.",
+            "suara": "Mulai dari puluh ribuan."
+          },
+          {
+            "nama": "Tanda",
+            "isi": "Gunakan > , < , atau = sesuai hasil banding.",
+            "suara": "Pilih tanda yang tepat."
+          },
+          {
+            "nama": "Urut naik",
+            "isi": "Susun dari bilangan terkecil ke terbesar.",
+            "suara": "Kecil ke besar."
+          },
+          {
+            "nama": "Urut turun",
+            "isi": "Susun dari bilangan terbesar ke terkecil.",
+            "suara": "Besar ke kecil."
+          }
+        ],
+        "suara": "Ingat empat kunci banding: dari kiri, tanda, urut naik, dan urut turun.",
+        "caraMenyebutkan": "Sejajarkan digit Banding PR→S Tulis tanda Urutkan jika diminta",
+        "rumah": "Ayo Mencoba di rumah: tulis 4 bilangan lima angka, bandingkan berpasangan dengan tanda, lalu urutkan naik dan turun.",
+        "refleksi": [
+          "Mengapa banding dimulai dari puluh ribuan?",
+          "Kapan hasil banding menjadi sama dengan?",
+          "Apa beda urut naik dan urut turun?"
+        ]
+      }
+    }
+  },
+  "practiceQuestions": []
+}
