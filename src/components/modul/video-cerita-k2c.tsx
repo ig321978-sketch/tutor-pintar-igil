@@ -529,17 +529,17 @@ export const ADEGAN_VIDEO_K2C: AdeganVideo[] = CERITA_K2C.map((c, i) => ({
 
 export const VIDEO_SIAP_K2C = [
   {
-    naskah: { id: "k2c-v1", judul: "Stoples Permen Kira", subjudul: "Tebak dan hitung · 2 adegan" },
+    naskah: { id: "k2c-v1", judul: "Stoples Permen Kira", subjudul: "Tebak dan hitung" },
     adegan: ADEGAN_VIDEO_K2C.slice(0, 2),
     poster: { a: 1, k: 3 },
   },
   {
-    naskah: { id: "k2c-v2", judul: "Tebakan Lebih Dekat", subjudul: "Kira dan Tika · 2 adegan" },
+    naskah: { id: "k2c-v2", judul: "Tebakan Lebih Dekat", subjudul: "Kira dan Tika" },
     adegan: ADEGAN_VIDEO_K2C.slice(2, 4),
     poster: { a: 0, k: 4 },
   },
   {
-    naskah: { id: "k2c-v3", judul: "Banding dan Urut", subjudul: "Puluhan dulu · urutkan kartu · 2 adegan" },
+    naskah: { id: "k2c-v3", judul: "Banding dan Urut", subjudul: "Puluhan dulu · urutkan kartu" },
     adegan: ADEGAN_VIDEO_K2C.slice(4, 6),
     poster: { a: 1, k: 5 },
   },

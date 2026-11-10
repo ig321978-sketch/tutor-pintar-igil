@@ -479,17 +479,17 @@ export const ADEGAN_VIDEO_K2B: AdeganVideo[] = CERITA_K2B.map((c, i) => ({
 
 export const VIDEO_SIAP_K2B = [
   {
-    naskah: { id: "k2b-v1", judul: "Balok Malosi", subjudul: "Main balok · satu puluhan · 2 adegan" },
+    naskah: { id: "k2b-v1", judul: "Balok Malosi", subjudul: "Main balok · satu puluhan" },
     adegan: ADEGAN_VIDEO_K2B.slice(0, 2),
     poster: { a: 1, k: 4 },
   },
   {
-    naskah: { id: "k2b-v2", judul: "Dua Puluhan", subjudul: "Tabel nilai tempat · cara 1 · 2 adegan" },
+    naskah: { id: "k2b-v2", judul: "Dua Puluhan", subjudul: "Tabel nilai tempat · cara 1" },
     adegan: ADEGAN_VIDEO_K2B.slice(2, 4),
     poster: { a: 0, k: 4 },
   },
   {
-    naskah: { id: "k2b-v3", judul: "Tiga Cara Menulis", subjudul: "Cara 2 dan cara 3 · 2 adegan" },
+    naskah: { id: "k2b-v3", judul: "Tiga Cara Menulis", subjudul: "Cara 2 dan cara 3" },
     adegan: ADEGAN_VIDEO_K2B.slice(4, 6),
     poster: { a: 1, k: 6 },
   },

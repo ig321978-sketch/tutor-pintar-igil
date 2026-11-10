@@ -536,17 +536,17 @@ export const ADEGAN_VIDEO_K2A: AdeganVideo[] = CERITA_K2A.map((c, i) => ({
 /** Tiga video muka: dua adegan per kartu, pola sama modul lain (slide + pop-up). */
 export const VIDEO_SIAP_K2A = [
   {
-    naskah: { id: "k2a-v1", judul: "Loker Baru", subjudul: "Loker dan tas bergantian · 2 adegan" },
+    naskah: { id: "k2a-v1", judul: "Loker Baru", subjudul: "Loker dan tas bergantian" },
     adegan: ADEGAN_VIDEO_K2A.slice(0, 2),
     poster: { a: 0, k: 3 },
   },
   {
-    naskah: { id: "k2a-v2", judul: "Menghitung 26 Tas", subjudul: "Hitung dan kelompok sepuluh · 2 adegan" },
+    naskah: { id: "k2a-v2", judul: "Menghitung 26 Tas", subjudul: "Hitung dan kelompok sepuluh" },
     adegan: ADEGAN_VIDEO_K2A.slice(2, 4),
     poster: { a: 0, k: 5 },
   },
   {
-    naskah: { id: "k2a-v3", judul: "Sepuluh dan Jalur", subjudul: "10 + 10 + 6 · maju mundur · 2 adegan" },
+    naskah: { id: "k2a-v3", judul: "Sepuluh dan Jalur", subjudul: "10 + 10 + 6 · maju mundur" },
     adegan: ADEGAN_VIDEO_K2A.slice(4, 6),
     poster: { a: 0, k: 3 },
   },
