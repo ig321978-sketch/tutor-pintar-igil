@@ -42,7 +42,7 @@ for (const [kode, kom] of [["A", "VideoPenjumlahanK2B2A"], ["B", "VideoPengurang
   cek(`pemutar: sub-bab ${kode} memakai Infografis, Concrete, Picture, Abstract bab 2`, new RegExp(`"mtk-2-bab2-${kode}":[^\\n]*Infografis: InfografisK2B2${kode}Komponen[^\\n]*Concrete: ConcreteK2B2${kode}[^\\n]*Picture: PictureK2B2${kode}[^\\n]*Abstract: AbstractK2B2${kode}`).test(pemutar));
   cek(`pemutar: sub-bab ${kode} menampilkan uraian peta pikiran`, new RegExp(`"mtk-2-bab2-${kode}":[^\\n]*uraianPeta: true`).test(pemutar));
 }
-cek("pemutar: bab 2 tidak punya tab Simulasi", !/"mtk-2-bab2":\s*Simulasi/.test(pemutar));
+cek("pemutar: bab 2 punya tab Simulasi (SimulasiK2Bab2)", /"mtk-2-bab2":\s*SimulasiK2Bab2/.test(pemutar));
 cek("pemutar: kartu 'sedang disiapkan' untuk Latihan dan Ujian tanpa soal", /soalSiap/.test(pemutar) && /bab ini sedang disiapkan/.test(pemutar));
 cek("pemutar: Latihan dan Ujian hanya jalan bila soalSiap", /activeMainTab === "latihan" && materiSelesai && soalSiap/.test(pemutar) && /activeMainTab === "ujian" && materiSelesai && soalSiap/.test(pemutar));
 
@@ -78,7 +78,7 @@ cek("JSON: tanpa examQuestions dan examPackages", !("examQuestions" in json) && 
 cek("JSON: tanpa kunci jawaban", !/"correct_index"|"correctAnswer"|"explanation"/.test(JSON.stringify(json)));
 cek("JSON: tanpa data simulasi", !/simulasi/i.test(JSON.stringify(json)));
 cek("seed server tidak dibuat untuk bab tanpa soal", !fs.existsSync("supabase/seed/02_kelas2_bab2_keys.sql"));
-cek("pemutar: SIMULASI_BAB tidak memuat bab 2", !/SIMULASI_BAB[\s\S]{0,400}"mtk-2-bab2"/.test(pemutar.slice(pemutar.indexOf("const SIMULASI_BAB"), pemutar.indexOf("const SIMULASI_BAB") + 600)));
+cek("pemutar: SIMULASI_BAB memuat bab 2", /"mtk-2-bab2":\s*SimulasiK2Bab2/.test(pemutar.slice(pemutar.indexOf("const SIMULASI_BAB"), pemutar.indexOf("const SIMULASI_BAB") + 900)));
 
 /* ---- Batas Concrete dan Picture ---- */
 const emojiBenda = /[\u{1F34E}\u{1F34A}\u{1F369}\u{1F9F8}\u{1F426}]/u;
