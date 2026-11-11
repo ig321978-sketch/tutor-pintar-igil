@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Muncul, Lompat } from "./video-cerita";
 import {
   BandingSvg,
   BangunKeliling,
@@ -17,12 +16,11 @@ import {
   SudutSvg,
   SusunSvg,
   HIJAU,
-  MERAH,
 } from "./video-visual-kit";
-import { BIRU } from "./CeritaBandingB";
+import { visualK5B4 } from "./video-visual-k5b4";
 
 /** Koreografi visual video Story Kelas 5 (k5b1a … k5b9c). */
-export function visualK5(kode: string, v: number, a: number, k: number): React.ReactNode {
+export function visualK5(kode: string, v: number, a: number, k: number, t = 0): React.ReactNode {
   const bab = kode.slice(0, 4);
   const sub = kode.slice(4);
 
@@ -67,81 +65,8 @@ export function visualK5(kode: string, v: number, a: number, k: number): React.R
     );
   }
 
-  /* ---- K5B4 Keliling: fokus visual, bukan teks ---- */
-  if (bab === "k5b4") {
-    if (sub === "a") {
-      // Konsep keliling: jalur mengelilingi
-      if (v === 0) {
-        return (
-          <>
-            <BangunKeliling k={k} sisi={[4, 4, 4, 4]} w={110} h={110} x={95} y={45} />
-            {k >= 1 && k < 4 ? (
-              <Muncul>
-                <LabelSvg x={95} y={165} w={110} teks="bukan luas" ukuran={12} warna={MERAH} />
-              </Muncul>
-            ) : null}
-          </>
-        );
-      }
-      if (v === 1) {
-        // Baluwarti / pagar / bingkai
-        return (
-          <>
-            <BangunKeliling k={Math.min(4, k + 1)} sisi={[8, 5, 8, 5]} w={130} h={70} x={85} y={55} />
-            {k >= 2 ? (
-              <Lompat>
-                <text x="150" y="175" textAnchor="middle" fontSize="13" fontWeight="900" fill={BIRU}>
-                  {a === 0 ? "benteng" : a === 1 ? "pagar" : "bingkai"}
-                </text>
-              </Lompat>
-            ) : null}
-          </>
-        );
-      }
-      return (
-        <>
-          <BangunKeliling k={k} sisi={[6, 4, 6, 4]} w={140} h={70} x={80} y={50} />
-          {k >= 3 ? (
-            <Muncul>
-              <LabelSvg x={95} y={165} w={110} teks="6+4+6+4=20" ukuran={13} warna={HIJAU} />
-            </Muncul>
-          ) : null}
-        </>
-      );
-    }
-    if (sub === "b") {
-      // Segitiga
-      return <SegitigaKeliling k={k} sisi={[5, 4, 7]} />;
-    }
-    if (sub === "c") {
-      return <BangunKeliling k={k} sisi={[7, 3, 7, 3]} w={150} h={65} x={75} y={55} />;
-    }
-    if (sub === "d") {
-      // Segi banyak: segi lima sederhana
-      const pts = "150,45 210,85 190,150 110,150 90,85";
-      return (
-        <>
-          <polygon points={pts} fill="#DBEAFE" stroke={BIRU} strokeWidth="3" opacity={0.5} />
-          {k >= 0 ? <polyline points="150,45 210,85" fill="none" stroke={k === 0 ? "#F0AB00" : BIRU} strokeWidth="4" /> : null}
-          {k >= 1 ? <polyline points="210,85 190,150" fill="none" stroke={k === 1 ? "#F0AB00" : BIRU} strokeWidth="4" /> : null}
-          {k >= 2 ? <polyline points="190,150 110,150 90,85 150,45" fill="none" stroke={BIRU} strokeWidth="4" /> : null}
-          {k >= 3 ? (
-            <Muncul>
-              <LabelSvg x={100} y={165} w={100} teks="jumlah sisi" ukuran={12} warna={HIJAU} />
-            </Muncul>
-          ) : null}
-        </>
-      );
-    }
-    // sub e: gabungan
-    return (
-      <>
-        <BangunKeliling x={40} y={55} w={90} h={90} k={Math.min(4, k)} sisi={[3, 3, 3, 3]} />
-        <BangunKeliling x={150} y={75} w={100} h={70} k={Math.min(4, k)} sisi={[5, 2, 5, 2]} />
-        {k >= 3 ? <LabelSvg x={90} y={165} w={120} teks="batas luar saja" ukuran={11} /> : null}
-      </>
-    );
-  }
+  /* ---- K5B4 Keliling: koreografi per ketukan + waktu suara ---- */
+  if (bab === "k5b4") return visualK5B4(sub, v, a, k, t);
 
   /* ---- K5B5 Luas ---- */
   if (bab === "k5b5") {

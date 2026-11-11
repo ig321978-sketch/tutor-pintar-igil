@@ -218,7 +218,7 @@ export function VideoCerita({
       const minimal = Math.max((ad.minimal?.[s.k] ?? 1.2) * 1000, dasar);
       const batas = kalimat.length * 150 + 6000;
       const suaraBeres = !adaSuara || s.suaraBeres || s.ms > batas;
-      if (ad.waktu && s.ms % 120 === 0) setT(s.ms / 1000);
+      if (ad.waktu) setT(s.ms / 1000);
       const terakhir = s.k === ad.ketukan.length - 1;
       if (s.ms >= minimal + (terakhir ? 700 : 0) && suaraBeres) {
         if (!terakhir) ke(s.a, s.k + 1);

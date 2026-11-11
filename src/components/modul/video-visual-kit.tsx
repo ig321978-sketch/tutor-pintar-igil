@@ -56,6 +56,29 @@ export function PapanDigit({
   );
 }
 
+/**
+ * Jumlah sisi yang menyala selama satu ketukan suara.
+ * `jeda` = detik antar sisi; selaras laju bicara lambat (~0,7).
+ */
+export function nyalaDariWaktu(t: number, total: number, jeda = 1.6): number {
+  if (t < 0.12) return 0;
+  return Math.min(total, Math.floor((t - 0.12) / jeda) + 1);
+}
+
+/** Posisi titik di keliling persegi panjang; `progres` 0→1 mengelilingi sekali. */
+export function titikKeliling(x: number, y: number, w: number, h: number, progres: number): { x: number; y: number } {
+  const p = ((progres % 1) + 1) % 1;
+  const kel = 2 * (w + h);
+  let s = p * kel;
+  if (s <= w) return { x: x + s, y };
+  s -= w;
+  if (s <= h) return { x: x + w, y: y + s };
+  s -= h;
+  if (s <= w) return { x: x + w - s, y: y + h };
+  s -= w;
+  return { x, y: y + h - s };
+}
+
 /** Persegi / persegi panjang dengan sisi yang menyala berurutan (keliling). */
 export function BangunKeliling({
   x = 90,
@@ -63,30 +86,59 @@ export function BangunKeliling({
   w = 120,
   h = 90,
   k = 0,
+  nyala,
   label = true,
   sisi = [4, 4, 4, 4],
+  isi = false,
+  isiOpacity = 0.45,
+  outlineSaja = false,
+  tampilJumlah = true,
+  jalan,
 }: {
   x?: number;
   y?: number;
   w?: number;
   h?: number;
+  /** Indeks sisi terakhir yang menyala (0-based). Diabaikan bila `nyala` diisi. */
   k?: number;
+  /** Berapa sisi sudah menyala (0…4). */
+  nyala?: number;
   label?: boolean;
   sisi?: [number, number, number, number] | number[];
+  /** Isi dalam (untuk membedakan luas). */
+  isi?: boolean;
+  isiOpacity?: number;
+  /** Hanya kerangka tipis sebelum sisi menyala. */
+  outlineSaja?: boolean;
+  tampilJumlah?: boolean;
+  /** Progres 0…1 titik pejalan di tepi. */
+  jalan?: number;
 }) {
+  const hitung = nyala ?? Math.min(4, Math.max(0, k + 1));
   const garis = [
     { x1: x, y1: y, x2: x + w, y2: y, lx: x + w / 2, ly: y - 10, n: sisi[0] },
     { x1: x + w, y1: y, x2: x + w, y2: y + h, lx: x + w + 14, ly: y + h / 2, n: sisi[1] },
     { x1: x + w, y1: y + h, x2: x, y2: y + h, lx: x + w / 2, ly: y + h + 18, n: sisi[2] },
     { x1: x, y1: y + h, x2: x, y2: y, lx: x - 14, ly: y + h / 2, n: sisi[3] },
   ];
+  const pos = jalan != null ? titikKeliling(x, y, w, h, jalan) : null;
   return (
     <g>
-      <rect x={x} y={y} width={w} height={h} fill="#DBEAFE" stroke={BIRU} strokeWidth="2.5" opacity={0.45} />
+      <rect
+        x={x}
+        y={y}
+        width={w}
+        height={h}
+        fill={isi ? "#86EFAC" : outlineSaja ? "none" : "#DBEAFE"}
+        stroke={BIRU}
+        strokeWidth={outlineSaja ? 2 : 2.5}
+        opacity={isi ? isiOpacity : outlineSaja ? 1 : 0.45}
+        strokeDasharray={outlineSaja && hitung === 0 ? "6 4" : undefined}
+      />
       {garis.map((g, i) =>
-        k >= i ? (
-          <g key={i} className={k === i ? "vc-denyut" : undefined}>
-            <line x1={g.x1} y1={g.y1} x2={g.x2} y2={g.y2} stroke={k === i ? EMAS : BIRU} strokeWidth={k === i ? 5 : 3.5} strokeLinecap="round" />
+        hitung > i ? (
+          <g key={i} className={hitung === i + 1 ? "vc-denyut" : undefined}>
+            <line x1={g.x1} y1={g.y1} x2={g.x2} y2={g.y2} stroke={hitung === i + 1 ? EMAS : BIRU} strokeWidth={hitung === i + 1 ? 5 : 3.5} strokeLinecap="round" />
             {label ? (
               <text x={g.lx} y={g.ly} textAnchor="middle" fontSize="13" fontWeight="900" fill={MERAH}>
                 {g.n}
@@ -95,7 +147,12 @@ export function BangunKeliling({
           </g>
         ) : null,
       )}
-      {k >= 4 ? (
+      {pos ? (
+        <g className="vc-lompat">
+          <circle cx={pos.x} cy={pos.y} r="7" fill={EMAS} stroke={BIRU} strokeWidth="2.2" />
+        </g>
+      ) : null}
+      {tampilJumlah && hitung >= 4 ? (
         <Muncul>
           <LabelSvg x={x + w / 2 - 55} y={y + h / 2 - 10} w={110} teks={`K=${sisi.reduce((a, b) => a + b, 0)}`} ukuran={14} warna={HIJAU} />
         </Muncul>
@@ -107,14 +164,21 @@ export function BangunKeliling({
 /** Segitiga keliling: sisi menyala berurutan. */
 export function SegitigaKeliling({
   k = 0,
+  nyala,
   sisi = [5, 4, 7],
+  tandaSama = false,
+  tampilJumlah = true,
 }: {
   k?: number;
+  nyala?: number;
   sisi?: [number, number, number] | number[];
+  tandaSama?: boolean;
+  tampilJumlah?: boolean;
 }) {
   const A = { x: 150, y: 48 };
   const B = { x: 70, y: 155 };
   const C = { x: 230, y: 155 };
+  const hitung = nyala ?? Math.min(3, Math.max(0, k + 1));
   const garis = [
     { a: A, b: B, lx: 95, ly: 95, n: sisi[0] },
     { a: B, b: C, lx: 150, ly: 172, n: sisi[1] },
@@ -124,16 +188,21 @@ export function SegitigaKeliling({
     <g>
       <polygon points={`${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}`} fill="#FEF3C7" stroke={BIRU} strokeWidth="2" opacity={0.5} />
       {garis.map((g, i) =>
-        k >= i ? (
-          <g key={i}>
-            <line x1={g.a.x} y1={g.a.y} x2={g.b.x} y2={g.b.y} stroke={k === i ? EMAS : BIRU} strokeWidth={k === i ? 5 : 3.5} strokeLinecap="round" />
+        hitung > i ? (
+          <g key={i} className={hitung === i + 1 ? "vc-denyut" : undefined}>
+            <line x1={g.a.x} y1={g.a.y} x2={g.b.x} y2={g.b.y} stroke={hitung === i + 1 ? EMAS : BIRU} strokeWidth={hitung === i + 1 ? 5 : 3.5} strokeLinecap="round" />
             <text x={g.lx} y={g.ly} textAnchor="middle" fontSize="13" fontWeight="900" fill={MERAH}>
               {g.n}
             </text>
+            {tandaSama ? (
+              <text x={(g.a.x + g.b.x) / 2} y={(g.a.y + g.b.y) / 2 - 8} textAnchor="middle" fontSize="11" fontWeight="900" fill={HIJAU}>
+                ‖
+              </text>
+            ) : null}
           </g>
         ) : null,
       )}
-      {k >= 3 ? (
+      {tampilJumlah && hitung >= 3 ? (
         <Muncul>
           <LabelSvg x={115} y={110} w={70} teks={`K=${sisi[0] + sisi[1] + sisi[2]}`} ukuran={13} warna={HIJAU} />
         </Muncul>
