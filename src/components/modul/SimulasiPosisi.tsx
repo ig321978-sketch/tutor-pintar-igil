@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { CobaIni, KARTU, TOMBOL_BIASA } from "./simulasi-bersama";
 import { Pengatur } from "./komponen-lab";
@@ -15,6 +15,7 @@ import {
   ubahTinggi,
   ucapanPosisi,
 } from "./lab-posisi-bab7";
+import type { KeadaanPosisi } from "./misi-bab7";
 
 /* ------------------------------------------------------------------------ */
 /* Tinggi dan Rendah (Bab 7, Sub-Bab A), metode PhET.                         */
@@ -27,9 +28,14 @@ const TINGGI_SVG = 190;
 const DASAR = 176;
 const LANGKAH = 15;
 
-export default function SimulasiPosisi({ speakGuru }: { speakGuru: (t: string) => void }) {
+export default function SimulasiPosisi({ speakGuru, onKeadaan }: { speakGuru: (t: string) => void; onKeadaan?: (k: KeadaanPosisi) => void }) {
   const [tinggi, setTinggi] = useState<number[]>(TINGGI_AWAL);
   const [dipilih, setDipilih] = useState<number[]>([]);
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  useEffect(() => {
+    lapor.current?.({ alat: "posisi", tinggi, dipilih });
+  }, [tinggi, dipilih]);
   const reset = () => {
     setTinggi(TINGGI_AWAL);
     setDipilih([]);

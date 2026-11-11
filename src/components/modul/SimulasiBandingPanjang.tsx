@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { Cek, CobaIni, KARTU, TOMBOL_BIASA } from "./simulasi-bersama";
 import { Pengatur } from "./komponen-lab";
@@ -20,6 +20,7 @@ import {
   urutanTampil,
   type Gaya,
 } from "./lab-banding-panjang-bab7";
+import type { KeadaanBanding } from "./misi-bab7";
 
 /* ------------------------------------------------------------------------ */
 /* Laboratorium Bandingkan Panjang (Bab 7), metode PhET.                      */
@@ -58,6 +59,7 @@ export default function SimulasiBandingPanjang({
   gaya = GAYA_BAWAAN,
   awal = PANJANG_AWAL,
   judul,
+  onKeadaan,
 }: {
   speakGuru: (t: string) => void;
   tampil?: TampilPanjang[];
@@ -65,12 +67,19 @@ export default function SimulasiBandingPanjang({
   gaya?: Gaya;
   awal?: number[];
   judul?: string;
+  /** Melapor keadaan ke papan misi (bila ada). */
+  onKeadaan?: (k: KeadaanBanding) => void;
 }) {
   const awalPas = awal.slice(0, jumlah);
   const [panjang, setPanjang] = useState<number[]>(awalPas);
   const [sejajar, setSejajar] = useState(false);
   const [urut, setUrut] = useState(false);
   const [dipilih, setDipilih] = useState<number[]>([]);
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  useEffect(() => {
+    lapor.current?.({ alat: "banding", panjang, sejajar, urut, dipilih, satuan: gaya.satuan, angka: gaya.angka });
+  }, [panjang, sejajar, urut, dipilih, gaya.satuan, gaya.angka]);
 
   const ada = (k: TampilPanjang) => tampil.includes(k);
   const urutan = urutanTampil(panjang, ada("urut") && urut);

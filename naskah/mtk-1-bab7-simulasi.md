@@ -28,17 +28,22 @@ Sub-Bab A hanya membandingkan dengan mata. Karena itu semua alat A **tanpa angka
   - Ada Reset semua. Tabel "Pita yang sama, satuan berbeda" tetap menunjukkan alat berbeda, hasil berbeda.
 - **`SimulasiSkenario`** (`SKENARIO_BAB7`) dipakai apa adanya. Tokoh Kak Dewi diganti ke 🎁 karena emoji seniman sebelumnya memakai urutan ZWJ yang lebih baru dari Emoji 12.
 
-## Misi tiap simulasi
+## Pola hibrida: simulasi bertahap, misi, tantangan bebas
 
-| Simulasi | Misi |
-| --- | --- |
-| A, Bandingkan Dua Pita | Ketuk kedua pita. Lihat siapa yang lebih panjang dan siapa yang lebih pendek. |
-| A, Paling Panjang dan Urutan | Tekan plus pada satu pensil. Lihat siapa yang paling panjang dan siapa yang paling pendek. |
-| A, Tinggi dan Rendah | Tekan plus pada kupu-kupu kuning sampai lebih tinggi dari merah. Lihat siapa yang paling tinggi. |
-| B, Meja Ukur | Tebak dulu panjang pita. Lalu letakkan stik satu per satu sampai pas di ujung pita. Lihat selisih tebakanmu. |
-| B, Bandingkan Hasil Ukur | Ketuk pensil Merah dan pensil Biru. Lihat berapa kotak bedanya. |
-| B, Pita untuk Kado | Tekan Ayo mengukur! Lalu bantu Kak Dewi memilih pita. |
+Sejak pola hibrida, Bab 7 memakai **satu laboratorium yang bertambah alatnya**, bukan satu alat per simulasi.
 
+- **Sub-Bab A** memakai **Lab Panjang tahap A**: tab Bandingkan (pensil, tanpa angka, ada Sejajarkan, Urutkan, dan ketuk dua pensil) dan tab Tinggi dan Rendah (kupu-kupu).
+- **Sub-Bab B** (sub-bab akhir) memakai **Lab Panjang tahap B** = semua alat A + tab Meja Ukur, dan Bandingkan kini memakai angka kotak. Ini **simulasi pencapaian misi** bab ini, disusul skenario Pita untuk Kado.
+- Gerbang LANJUTKAN mengikuti **misi wajib** (`src/components/modul/misi-bab7.ts`). Anak boleh menekan **Lewati misi** setelah menyentuh simulasinya sekali. **Tantangan bebas** tidak menahan siapa pun. Misi yang sudah tercapai tidak dicabut.
+- Alat melapor lewat `onKeadaan`, papan misi (`PapanMisi.tsx`) dan jalur ringkas yang menempel menampilkan kemajuan. Logika murni: `misi-simulasi.ts` dan `misi-bab7.ts`, diuji di `scripts/uji-lab-kelas1.mjs`.
+- Tebakan awal Meja Ukur sengaja 5 (hasil benar: balok 3, stik 4, klip 6) agar misi "tebak tepat" tidak tercapai kebetulan.
+
+| Sub-Bab | Misi wajib | Tantangan bebas |
+| --- | --- | --- |
+| A | Ketuk dua pensil; nyalakan Sejajarkan; dua pensil sama panjang; urutkan dari terpendek; kupu-kupu kuning lebih tinggi dari merah | Pensil Hijau paling panjang sendirian; kupu-kupu kuning paling tinggi |
+| B | Ukur dengan stik sampai pas; tebak tepat; coba satu cara salah; ukur dengan klip sampai pas; pensil Hijau lebih panjang 2 kotak dari Merah | Sejajarkan lalu urutkan (ingat Sub-Bab A); ukur dengan balok sampai pas |
+
+Skenario Pita untuk Kado: Tekan Ayo mengukur! Lalu bantu Kak Dewi memilih pita.
 ## Mind-Map dan Infografis
 
 Tiap sub-bab: satu peta (pusat, 4 cabang, 8 kartu) dan satu infografis (3 panel). Isinya hanya merangkum yang diajarkan sub-bab itu, dengan cerita dari buku (pohon pisang A sampai D, pensil warna, kupu-kupu, meja diukur dengan sedotan dan jengkal, buku diukur dengan stik es krim dan koin, pensil di kertas berpetak, jarak aman).

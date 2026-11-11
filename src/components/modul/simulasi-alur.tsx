@@ -1,8 +1,27 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { TOMBOL_BIASA, TOMBOL_UTAMA } from "./simulasi-bersama";
+import PapanMisi from "./PapanMisi";
+import { bolehLanjut, bolehLewati, hitungMisi, wajibSelesai, type MisiTampil } from "./misi-simulasi";
+
+/** Jalur sempit yang menempel di atas layar saat anak menggulir laboratorium, agar kemajuan misi tetap terlihat. */
+function RingkasMisi({ daftar, tercapai }: { daftar: MisiTampil[]; tercapai: ReadonlySet<string> }) {
+  const h = hitungMisi(daftar, tercapai);
+  const selesai = h.wajibTercapai === h.wajibTotal;
+  return (
+    <div
+      role="status"
+      className={`sticky top-0 z-10 rounded-2xl border-4 px-3 py-1 text-center text-sm font-black shadow ${
+        selesai ? "border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]" : "border-[#F0AB00] bg-[#FFF7CC] text-[#1C01A5]"
+      }`}
+    >
+      {selesai ? "✅ Misi wajib selesai" : `🎯 Misi ${h.wajibTercapai} dari ${h.wajibTotal}`}
+      {h.bebasTotal > 0 ? ` • ⭐ Tantangan ${h.bebasTercapai} dari ${h.bebasTotal}` : ""}
+    </div>
+  );
+}
 
 /* ------------------------------------------------------------------------ */
 /* Alur tab Simulasi, dipakai semua bab. Satu simulasi per layar, tombol      */
@@ -11,6 +30,10 @@ import { TOMBOL_BIASA, TOMBOL_UTAMA } from "./simulasi-bersama";
 /*    (PhET, lab). Tombol suara tidak dihitung.                               */
 /*  - mode "tuntas": simulasi memanggil tuntas() sendiri saat mencapai keadaan */
 /*    akhir (mesin keadaan sampai Selesai, skenario sampai adegan Akhir).     */
+/*  - misiDaftar (pola hibrida): papan misi dan tantangan bebas. Simulasi      */
+/*    melapor lewat capai(id). Lanjut aktif bila semua misi wajib tercapai,   */
+/*    atau anak memilih "lewati misi" setelah menyentuh simulasinya. Misi    */
+/*    yang sudah tercapai tidak dicabut lagi.                                  */
 /* ------------------------------------------------------------------------ */
 
 export type LangkahSim = {
@@ -26,7 +49,9 @@ export type LangkahSim = {
    */
   misi?: string;
   mode: "sentuh" | "tuntas";
-  render: (api: { speakGuru: (t: string) => void; tuntas: () => void }) => React.ReactNode;
+  /** Papan misi (wajib dan tantangan bebas). Bila ada, gerbang lanjut mengikuti misi, bukan hanya sentuhan. */
+  misiDaftar?: MisiTampil[];
+  render: (api: { speakGuru: (t: string) => void; tuntas: () => void; capai: (id: string) => void; tercapai: ReadonlySet<string> }) => React.ReactNode;
 };
 
 const KOLOM: Record<number, string> = { 1: "sm:grid-cols-1", 2: "sm:grid-cols-2", 3: "sm:grid-cols-3", 4: "sm:grid-cols-4" };
@@ -56,11 +81,36 @@ export default function SimulasiAlur({
   const akar = useRef<HTMLElement | null>(null);
   const [ke, setKe] = useState(0);
   const [dimainkan, setDimainkan] = useState<boolean[]>(() => langkah.map(() => false));
+  const [tercapaiPer, setTercapaiPer] = useState<ReadonlySet<string>[]>(() => langkah.map(() => new Set<string>()));
+  const [dilewati, setDilewati] = useState<boolean[]>(() => langkah.map(() => false));
+  const dipuji = useRef<boolean[]>(langkah.map(() => false));
   const ini = langkah[ke];
-  const siap = dimainkan[ke];
   const terakhir = ke === jumlah - 1;
 
+  const statusGerbang = (i: number) => {
+    const daftar = langkah[i].misiDaftar ?? [];
+    return { adaMisi: daftar.length > 0, wajibSelesai: wajibSelesai(daftar, tercapaiPer[i]), dilewati: dilewati[i], disentuh: dimainkan[i] };
+  };
+  const siapDi = (i: number) => bolehLanjut(statusGerbang(i));
+  const siap = siapDi(ke);
+  const adaMisi = statusGerbang(ke).adaMisi;
+
   const tuntas = (i: number) => setDimainkan((prev) => (prev[i] ? prev : prev.map((x, k) => (k === i ? true : x))));
+  const capai = (i: number, id: string) =>
+    setTercapaiPer((prev) => (prev[i].has(id) ? prev : prev.map((s, k) => (k === i ? new Set([...s, id]) : s))));
+
+  /** Pujian sekali saja saat semua misi wajib tercapai. Suara berbunyi karena misi dicapai lewat ketukan anak. */
+  useEffect(() => {
+    langkah.forEach((l, i) => {
+      const daftar = l.misiDaftar ?? [];
+      if (daftar.length === 0 || dipuji.current[i]) return;
+      if (wajibSelesai(daftar, tercapaiPer[i])) {
+        dipuji.current[i] = true;
+        if (i === ke) speakGuru("Hebat! Semua misi wajib sudah tercapai. Kamu boleh lanjut, atau coba tantangan bebas.");
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tercapaiPer]);
 
   /** Menyentuh benda, tombol, atau kotak centang di dalam simulasi dihitung "dimainkan". Tombol suara tidak dihitung. */
   const tandai = (e: React.SyntheticEvent) => {
@@ -117,13 +167,13 @@ export default function SimulasiAlur({
             className={`min-w-0 rounded-2xl border-4 px-3 py-1.5 font-black ${
               i === ke
                 ? "border-[#F0AB00] bg-[#1C01A5] text-[#FFE566]"
-                : dimainkan[i]
+                : siapDi(i)
                   ? "border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]"
                   : "border-[#1C01A5]/30 bg-white text-[#1C01A5]/60"
             }`}
           >
             <span className="block text-sm leading-tight">
-              {dimainkan[i] && i !== ke ? "✔ " : ""}Simulasi {i + 1} dari {jumlah}
+              {siapDi(i) && i !== ke ? "✔ " : ""}Simulasi {i + 1} dari {jumlah}
             </span>
             <span className="block text-[10px] uppercase leading-tight tracking-wide opacity-80">
               {s.metode} • {s.sub}
@@ -150,7 +200,9 @@ export default function SimulasiAlur({
               <TombolSuaraGuru kecil label="Dengarkan misi" onClick={() => speakGuru(`Misi: ${s.misi}`)} />
             </div>
           ) : null}
-          {s.render({ speakGuru, tuntas: () => tuntas(i) })}
+          {s.misiDaftar && s.misiDaftar.length > 0 ? <PapanMisi daftar={s.misiDaftar} tercapai={tercapaiPer[i]} speakGuru={speakGuru} /> : null}
+          {s.misiDaftar && s.misiDaftar.length > 0 ? <RingkasMisi daftar={s.misiDaftar} tercapai={tercapaiPer[i]} /> : null}
+          {s.render({ speakGuru, tuntas: () => tuntas(i), capai: (id) => capai(i, id), tercapai: tercapaiPer[i] })}
         </div>
       ))}
 
@@ -168,9 +220,14 @@ export default function SimulasiAlur({
           </button>
           {siap ? null : (
             <p role="status" className="text-xs font-black text-[#1C01A5]/80">
-              {ini.petunjuk}
+              {adaMisi ? "Selesaikan misi wajib, atau lewati misi setelah mencoba." : ini.petunjuk}
             </p>
           )}
+          {bolehLewati(statusGerbang(ke)) ? (
+            <button type="button" onClick={() => setDilewati((prev) => prev.map((x, k) => (k === ke ? true : x)))} className={`${TOMBOL_BIASA} text-sm`}>
+              Lewati misi
+            </button>
+          ) : null}
         </div>
       </div>
     </section>

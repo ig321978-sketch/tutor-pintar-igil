@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { Cek, CobaIni, KARTU, Pilihan, TOMBOL_BIASA } from "./simulasi-bersama";
 import { Pengatur } from "./komponen-lab";
 import { MAKS_SATUAN, PANJANG_BENDA, SATUAN, hasilBenar, kalimatTebak, satuanDari, susun, tabelHasil, ucapanUkur, type IdSatuan, type Susunan } from "./lab-ukur-bab7";
+import type { KeadaanUkur } from "./misi-bab7";
 
 /* ------------------------------------------------------------------------ */
 /* Simulasi 1 (Bab 7): Meja Ukur, metode laboratorium virtual 2D.             */
@@ -16,13 +17,19 @@ const SKALA = 24;
 const X0 = 26;
 
 const AWAL: Susunan = { id: "stik", n: 0, dariTengah: false, celah: false, tumpuk: false, campur: false };
-const TEBAKAN_AWAL = 3;
+/** Bukan 3, 4, atau 6: hasil benar ketiga satuan (balok 3, stik 4, klip 6) harus ditemukan anak, bukan kebetulan. */
+const TEBAKAN_AWAL = 5;
 
-export default function SimulasiMejaUkur({ speakGuru }: { speakGuru: (t: string) => void }) {
+export default function SimulasiMejaUkur({ speakGuru, onKeadaan }: { speakGuru: (t: string) => void; onKeadaan?: (k: KeadaanUkur) => void }) {
   const [s, setS] = useState<Susunan>(AWAL);
   const [tebak, setTebak] = useState(TEBAKAN_AWAL);
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
   const sat = satuanDari(s.id);
   const h = susun(s);
+  useEffect(() => {
+    lapor.current?.({ alat: "ukur", id: s.id, n: s.n, status: h.status, tebak });
+  }, [s.id, s.n, h.status, tebak]);
   const gaya =
     h.status === "tepat"
       ? "border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]"

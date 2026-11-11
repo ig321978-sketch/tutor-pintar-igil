@@ -20,6 +20,8 @@ import * as J6 from "../src/components/modul/mesin-jembatan-bab6.ts";
 import * as U7 from "../src/components/modul/lab-ukur-bab7.ts";
 import * as D7 from "../src/components/modul/lab-banding-panjang-bab7.ts";
 import * as Q7 from "../src/components/modul/lab-posisi-bab7.ts";
+import * as M0 from "../src/components/modul/misi-simulasi.ts";
+import * as M7 from "../src/components/modul/misi-bab7.ts";
 let gagal = 0;
 let lulus = 0;
 const cek = (kondisi, pesan) => {
@@ -1075,5 +1077,91 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   cek(true, "campur alat ukur diperiksa untuk semua satuan dan jumlah");
   cek(/Tebakanmu 3 stik/.test(U7.ucapanUkur({ id: "stik", n: 4, dariTengah: false, celah: false, tumpuk: false }, 3)) && !/Tebakanmu/.test(U7.ucapanUkur({ id: "stik", n: 4, dariTengah: false, celah: false, tumpuk: false })), "ucapan ukur memuat tebakan bila diminta");
   cek(!/Tebakanmu/.test(U7.ucapanUkur({ id: "stik", n: 2, dariTengah: false, celah: false, tumpuk: false }, 3)), "ucapan belum pas tidak memuat tebakan");
-}console.log(`Lulus ${lulus}, gagal ${gagal}`);
+}
+
+/* ---------------- Misi dan tantangan bebas (pola hibrida) ---------------- */
+{
+  const kosong = new Set();
+  const U = (id, n, status, tebak) => ({ alat: "ukur", id, n, status, tebak });
+  const Bd = (o) => ({ alat: "banding", panjang: [5, 8, 3, 6], sejajar: false, urut: false, dipilih: [], satuan: "stik", angka: false, ...o });
+  const BdB = (o) => Bd({ panjang: [5, 9, 3, 6], satuan: "kotak", angka: true, ...o });
+  const Ps = (o) => ({ alat: "posisi", tinggi: [3, 6, 9], dipilih: [], ...o });
+
+  // Keadaan awal tiap alat tidak boleh langsung memenuhi misi apa pun.
+  for (const sub of ["A", "B"]) {
+    const daftar = M7.daftarMisiBab7(sub);
+    const awal = [Bd({}), BdB({}), Ps({}), U("stik", 0, "kurang", 5), U("klip", 0, "kurang", 5)];
+    for (const k of awal) cek(M0.misiBaru(daftar, k, kosong).length === 0, `bab7 ${sub}: keadaan awal ${k.alat}/${k.satuan ?? k.id ?? ""} tidak memenuhi misi`);
+    cek(daftar.filter((m) => m.wajib).length >= 4, `bab7 ${sub}: minimal 4 misi wajib`);
+    cek(daftar.some((m) => !m.wajib), `bab7 ${sub}: ada tantangan bebas`);
+    cek(new Set(daftar.map((m) => m.id)).size === daftar.length, `bab7 ${sub}: id misi unik`);
+  }
+  cek(M7.daftarMisiBab7("A") === M7.MISI_A && M7.daftarMisiBab7("B") === M7.MISI_B, "bab7: daftarMisi per sub-bab");
+
+  const ada = (sub, k, id) => M0.misiBaru(M7.daftarMisiBab7(sub), k, kosong).includes(id);
+  // Sub-Bab A
+  cek(ada("A", Bd({ dipilih: [0, 1] }), "a-dua"), "A: dua pensil dipilih");
+  cek(!ada("A", Bd({ dipilih: [0] }), "a-dua"), "A: satu pensil belum cukup");
+  cek(ada("A", Bd({ sejajar: true }), "a-sejajar"), "A: sejajar");
+  cek(ada("A", Bd({ panjang: [5, 5, 3, 6] }), "a-sama"), "A: dua sama panjang");
+  cek(ada("A", Bd({ urut: true }), "a-urut"), "A: urut");
+  cek(ada("A", Ps({ tinggi: [7, 6, 9] }), "a-kupu"), "A: kuning lebih tinggi dari merah");
+  cek(!ada("A", Ps({ tinggi: [6, 6, 9] }), "a-kupu"), "A: sama tinggi belum cukup");
+  cek(ada("A", Bd({ panjang: [5, 8, 9, 6] }), "a-hijau"), "A: hijau paling panjang sendirian");
+  cek(!ada("A", Bd({ panjang: [5, 9, 9, 6] }), "a-hijau"), "A: hijau kembar dengan biru bukan tantangan");
+  cek(ada("A", Ps({ tinggi: [10, 6, 9] }), "a-puncak"), "A: kuning paling tinggi sendirian");
+  cek(!ada("A", Ps({ tinggi: [9, 6, 9] }), "a-puncak"), "A: kuning kembar di puncak bukan tantangan");
+  // Sub-Bab B
+  cek(ada("B", U("stik", 4, "tepat", 5), "b-stik"), "B: stik tepat");
+  cek(!ada("B", U("balok", 3, "tepat", 5), "b-stik"), "B: balok bukan misi stik");
+  cek(!ada("B", U("stik", 3, "kurang", 5), "b-stik"), "B: stik kurang belum");
+  cek(ada("B", U("stik", 4, "tepat", 4), "b-tebak"), "B: tebakan sama dengan hasil");
+  cek(!ada("B", U("stik", 4, "tepat", 5), "b-tebak"), "B: tebakan beda tidak lulus");
+  cek(ada("B", U("stik", 4, "salah-cara", 4), "b-salah"), "B: cara salah dicoba");
+  cek(ada("B", U("klip", 6, "tepat", 5), "b-klip"), "B: klip tepat");
+  cek(ada("B", U("balok", 3, "tepat", 5), "b-balok"), "B: balok tepat");
+  cek(ada("B", BdB({ panjang: [5, 9, 7, 6] }), "b-kotak"), "B: hijau 2 kotak lebih panjang dari merah");
+  cek(!ada("B", BdB({ panjang: [5, 9, 6, 6] }), "b-kotak"), "B: selisih 1 belum");
+  cek(!ada("B", Bd({ panjang: [5, 9, 7, 6] }), "b-kotak"), "B: pensil tanpa angka belum cukup");
+  cek(ada("B", BdB({ sejajar: true, urut: true }), "b-ingat"), "B: sejajar dan urut");
+  cek(!ada("B", BdB({ sejajar: true }), "b-ingat"), "B: hanya sejajar belum");
+  // Hasil benar ketiga satuan dan tebakan awal tidak kebetulan.
+  cek(["balok", "stik", "klip"].every((id) => U7.hasilBenar(id) !== 5), "tebakan awal 5 tidak sama dengan hasil benar satuan mana pun");
+  for (const id of ["balok", "stik", "klip"]) {
+    const n = U7.hasilBenar(id);
+    const st = U7.susun({ id, n, dariTengah: false, celah: false, tumpuk: false, campur: false }).status;
+    cek(st === "tepat", `ukur ${id} ${n} berstatus tepat`);
+  }
+  cek(M7.puncakTunggal([1, 3, 2]) === 1 && M7.puncakTunggal([3, 3, 2]) === -1, "puncakTunggal");
+
+  // misiBaru: tidak mengulang yang sudah tercatat, dan tidak mencabut.
+  const dA = M7.daftarMisiBab7("A");
+  const k1 = Bd({ sejajar: true, urut: true });
+  const b1 = M0.misiBaru(dA, k1, kosong);
+  sama(b1.sort(), ["a-sejajar", "a-urut"].sort(), "misiBaru memuat yang baru");
+  cek(M0.misiBaru(dA, k1, new Set(b1)).length === 0, "misiBaru idempoten");
+
+  // Gerbang
+  const tamp = dA.map(({ id, teks, wajib }) => ({ id, teks, wajib }));
+  const wajibIds = tamp.filter((m) => m.wajib).map((m) => m.id);
+  cek(!M0.wajibSelesai(tamp, kosong), "wajibSelesai: awal belum");
+  cek(!M0.wajibSelesai(tamp, new Set(wajibIds.slice(1))), "wajibSelesai: kurang satu belum");
+  cek(M0.wajibSelesai(tamp, new Set(wajibIds)), "wajibSelesai: semua wajib");
+  cek(M0.wajibSelesai([], kosong), "wajibSelesai: tanpa misi dianggap selesai");
+  const h = M0.hitungMisi(tamp, new Set([wajibIds[0], "a-hijau"]));
+  sama([h.wajibTercapai, h.wajibTotal, h.bebasTercapai, h.bebasTotal], [1, wajibIds.length, 1, tamp.length - wajibIds.length], "hitungMisi");
+  const G = (adaMisi, wajibSelesai, dilewati, disentuh) => ({ adaMisi, wajibSelesai, dilewati, disentuh });
+  cek(M0.bolehLanjut(G(false, false, false, true)) && !M0.bolehLanjut(G(false, false, false, false)), "bolehLanjut tanpa misi = disentuh");
+  cek(!M0.bolehLanjut(G(true, false, false, true)), "bolehLanjut: misi belum, belum dilewati");
+  cek(M0.bolehLanjut(G(true, true, false, true)), "bolehLanjut: wajib selesai");
+  cek(M0.bolehLanjut(G(true, false, true, true)), "bolehLanjut: dilewati setelah disentuh");
+  cek(!M0.bolehLanjut(G(true, false, true, false)), "bolehLanjut: dilewati tanpa menyentuh tidak cukup");
+  cek(M0.bolehLewati(G(true, false, false, true)), "bolehLewati: muncul setelah disentuh");
+  cek(!M0.bolehLewati(G(true, false, false, false)), "bolehLewati: belum disentuh");
+  cek(!M0.bolehLewati(G(true, true, false, true)) && !M0.bolehLewati(G(true, false, true, true)) && !M0.bolehLewati(G(false, false, false, true)), "bolehLewati: tidak muncul saat sudah selesai, sudah dilewati, atau tanpa misi");
+  const u0 = M0.ucapanMisi(tamp, kosong);
+  cek(u0.startsWith("Misi wajib 0 dari ") && u0.includes(tamp[0].teks), "ucapanMisi: awal menyebut misi berikutnya");
+  cek(M0.ucapanMisi(tamp, new Set(wajibIds)).startsWith("Hebat!"), "ucapanMisi: selesai memuji");
+}
+console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);
