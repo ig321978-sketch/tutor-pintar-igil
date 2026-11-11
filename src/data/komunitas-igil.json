@@ -1,0 +1,205 @@
+{
+  "header": {
+    "badge": "Komunitas Sekolah",
+    "title": "Komunitas IGIL",
+    "subtitle": "Sekolah yang siswanya belajar bersama di IGIL, dengan perankingan beasiswa berjenjang dan Partner Guru."
+  },
+  "aturan": {
+    "ambangSekolah": 100,
+    "jenjang": [
+      {
+        "id": "sekolah",
+        "nama": "Per-sekolah",
+        "syarat": "Minimal 100 siswa berlangganan di sekolah yang sama",
+        "ikon": "🏫"
+      },
+      {
+        "id": "kecamatan",
+        "nama": "Per-kecamatan",
+        "syarat": "Sekolah belum mencapai 100 pelanggan → digabung per kecamatan",
+        "ikon": "🗺️"
+      },
+      {
+        "id": "kabupaten",
+        "nama": "Per-kabupaten/kota",
+        "syarat": "Jika kecamatan belum cukup padat → naik ke kabupaten/kota",
+        "ikon": "🏙️"
+      },
+      {
+        "id": "provinsi",
+        "nama": "Per-provinsi",
+        "syarat": "Jika kabupaten/kota belum cukup padat → naik ke provinsi",
+        "ikon": "🌄"
+      },
+      {
+        "id": "nasional",
+        "nama": "Nasional",
+        "syarat": "Lapisan terakhir bila jenjang daerah di atasnya belum terbentuk",
+        "ikon": "🇮🇩"
+      }
+    ],
+    "catatanFase": "Kolam beasiswa tetap terpisah per fase (FASE A, B, C). Jenjang wilayah hanya mengatur arena perankingan di dalam fase masing-masing."
+  },
+  "partner": {
+    "judul": "Partner IGIL",
+    "ringkas": "Guru dari sekolah komunitas yang membimbing siswa IGIL seminggu sekali.",
+    "durasiPerKelasMenit": 10,
+    "contohKelas": 6,
+    "honorMingguan": 100000,
+    "honorBulanan": 400000,
+    "isiBimbingan": [
+      "Bahas singkat materi IGIL pada bab yang ditargetkan minggu depan",
+      "Siapkan siswa agar siap meraih nilai maksimal di Latihan dan Ujian",
+      "Tanpa mengganti aplikasi: bimbingan melengkapi belajar mandiri di IGIL"
+    ]
+  },
+  "filterWilayah": ["Semua", "Jawa Barat", "DKI Jakarta", "Jawa Tengah", "Sulawesi Selatan"],
+  "sekolah": [
+    {
+      "id": "sdn-cempaka-putih-01",
+      "nama": "SDN Cempaka Putih 01",
+      "kota": "Jakarta Pusat",
+      "kecamatan": "Cempaka Putih",
+      "kabupaten": "Jakarta Pusat",
+      "provinsi": "DKI Jakarta",
+      "pelanggan": 128,
+      "faseAktif": ["FASE_A", "FASE_B"],
+      "jenjangRanking": "sekolah",
+      "capaian": {
+        "poinBulanIni": 18450,
+        "babSelesaiBulanIni": 312,
+        "ujianSempurna": 86,
+        "praktikumTerkirim": 41
+      },
+      "partner": {
+        "nama": "Bu Rina Wulandari, S.Pd.",
+        "mapel": "Guru Kelas",
+        "jadwal": "Setiap Sabtu · 09.00–10.00 WIB"
+      },
+      "siswaUnggulan": [
+        { "nama": "Kirana D.", "kelas": "Kelas 2 SD", "fase": "FASE_A", "poin": 450 },
+        { "nama": "Raka P.", "kelas": "Kelas 4 SD", "fase": "FASE_B", "poin": 420 },
+        { "nama": "Salsa N.", "kelas": "Kelas 1 SD", "fase": "FASE_A", "poin": 400 }
+      ]
+    },
+    {
+      "id": "sdn-bojonggede-03",
+      "nama": "SDN Bojonggede 03",
+      "kota": "Kab. Bogor",
+      "kecamatan": "Bojonggede",
+      "kabupaten": "Kabupaten Bogor",
+      "provinsi": "Jawa Barat",
+      "pelanggan": 104,
+      "faseAktif": ["FASE_A", "FASE_B", "FASE_C"],
+      "jenjangRanking": "sekolah",
+      "capaian": {
+        "poinBulanIni": 15220,
+        "babSelesaiBulanIni": 268,
+        "ujianSempurna": 71,
+        "praktikumTerkirim": 33
+      },
+      "partner": {
+        "nama": "Pak Andi Saputra, S.Pd.",
+        "mapel": "Guru Matematika",
+        "jadwal": "Setiap Jumat · 14.00–15.00 WIB"
+      },
+      "siswaUnggulan": [
+        { "nama": "Naufal A.", "kelas": "Kelas 5 SD", "fase": "FASE_C", "poin": 450 },
+        { "nama": "Maya L.", "kelas": "Kelas 3 SD", "fase": "FASE_B", "poin": 380 },
+        { "nama": "Dimas R.", "kelas": "Kelas 2 SD", "fase": "FASE_A", "poin": 350 }
+      ]
+    },
+    {
+      "id": "sd-muhammadiyah-ungaran",
+      "nama": "SD Muhammadiyah Ungaran",
+      "kota": "Kab. Semarang",
+      "kecamatan": "Ungaran Barat",
+      "kabupaten": "Kabupaten Semarang",
+      "provinsi": "Jawa Tengah",
+      "pelanggan": 67,
+      "faseAktif": ["FASE_A", "FASE_B"],
+      "jenjangRanking": "kecamatan",
+      "capaian": {
+        "poinBulanIni": 8910,
+        "babSelesaiBulanIni": 154,
+        "ujianSempurna": 39,
+        "praktikumTerkirim": 18
+      },
+      "partner": null,
+      "siswaUnggulan": [
+        { "nama": "Alya F.", "kelas": "Kelas 4 SD", "fase": "FASE_B", "poin": 370 },
+        { "nama": "Bima S.", "kelas": "Kelas 1 SD", "fase": "FASE_A", "poin": 300 }
+      ]
+    },
+    {
+      "id": "sdn-tamalanrea-05",
+      "nama": "SDN Tamalanrea 05",
+      "kota": "Makassar",
+      "kecamatan": "Tamalanrea",
+      "kabupaten": "Kota Makassar",
+      "provinsi": "Sulawesi Selatan",
+      "pelanggan": 42,
+      "faseAktif": ["FASE_A"],
+      "jenjangRanking": "kabupaten",
+      "capaian": {
+        "poinBulanIni": 5120,
+        "babSelesaiBulanIni": 96,
+        "ujianSempurna": 22,
+        "praktikumTerkirim": 9
+      },
+      "partner": null,
+      "siswaUnggulan": [
+        { "nama": "Fajar H.", "kelas": "Kelas 2 SD", "fase": "FASE_A", "poin": 280 },
+        { "nama": "Nisa K.", "kelas": "Kelas 1 SD", "fase": "FASE_A", "poin": 250 }
+      ]
+    },
+    {
+      "id": "sdn-ciputat-timur-02",
+      "nama": "SDN Ciputat Timur 02",
+      "kota": "Tangerang Selatan",
+      "kecamatan": "Ciputat Timur",
+      "kabupaten": "Kota Tangerang Selatan",
+      "provinsi": "Banten",
+      "pelanggan": 23,
+      "faseAktif": ["FASE_B"],
+      "jenjangRanking": "provinsi",
+      "capaian": {
+        "poinBulanIni": 2680,
+        "babSelesaiBulanIni": 48,
+        "ujianSempurna": 11,
+        "praktikumTerkirim": 4
+      },
+      "partner": null,
+      "siswaUnggulan": [
+        { "nama": "Reza M.", "kelas": "Kelas 3 SD", "fase": "FASE_B", "poin": 210 }
+      ]
+    },
+    {
+      "id": "sdn-menteng-03",
+      "nama": "SDN Menteng 03",
+      "kota": "Jakarta Pusat",
+      "kecamatan": "Menteng",
+      "kabupaten": "Jakarta Pusat",
+      "provinsi": "DKI Jakarta",
+      "pelanggan": 112,
+      "faseAktif": ["FASE_A", "FASE_B", "FASE_C"],
+      "jenjangRanking": "sekolah",
+      "capaian": {
+        "poinBulanIni": 16780,
+        "babSelesaiBulanIni": 291,
+        "ujianSempurna": 79,
+        "praktikumTerkirim": 37
+      },
+      "partner": {
+        "nama": "Bu Sari Indah, M.Pd.",
+        "mapel": "Guru Kelas",
+        "jadwal": "Setiap Kamis · 15.00–16.00 WIB"
+      },
+      "siswaUnggulan": [
+        { "nama": "Putri A.", "kelas": "Kelas 6 SD", "fase": "FASE_C", "poin": 450 },
+        { "nama": "Gilang T.", "kelas": "Kelas 4 SD", "fase": "FASE_B", "poin": 410 },
+        { "nama": "Hana Z.", "kelas": "Kelas 2 SD", "fase": "FASE_A", "poin": 390 }
+      ]
+    }
+  ]
+}
