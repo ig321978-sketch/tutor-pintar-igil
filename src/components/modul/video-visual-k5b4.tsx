@@ -8,7 +8,6 @@ import {
   BangunLuas,
   LabelSvg,
   SegitigaKeliling,
-  nyalaDariWaktu,
   HIJAU,
   MERAH,
   ORANYE,
@@ -17,7 +16,36 @@ import {
 /**
  * Koreografi visual Story K5B4 — satu adegan visual unik per (sub,v,a,k),
  * progres dalam ketukan memakai `t` agar seirama kecepatan Suara Guru.
+ * Jejak kuning = jarak keliling yang sudah dilalui (bukan sorot garis sisi).
  */
+
+/** Progres kontinyu 0→1 untuk jejak jarak; `detik` ≈ lama ketukan suara. */
+function progresDari(t: number, detik = 6.8) {
+  return Math.min(1, Math.max(0, (t - 0.1) / detik));
+}
+
+/** Jejak kuning di polyline luar: panjang yang sudah dilalui (pathLength=1). */
+function JejakLuar({ points, progres, tebal = 6 }: { points: string; progres: number; tebal?: number }) {
+  const p = Math.max(0, Math.min(1, progres));
+  return (
+    <g>
+      <polyline points={points} fill="none" stroke={BIRU} strokeWidth="2.2" strokeLinejoin="round" opacity={0.45} />
+      {p > 0.001 ? (
+        <polyline
+          points={points}
+          fill="none"
+          stroke={EMAS}
+          strokeWidth={tebal}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          pathLength={1}
+          strokeDasharray={1}
+          strokeDashoffset={1 - p}
+        />
+      ) : null}
+    </g>
+  );
+}
 
 function silang(x: number, y: number, s = 18) {
   return (
@@ -54,20 +82,17 @@ function visualA(v: number, a: number, k: number, t: number): React.ReactNode {
         );
       }
       if (k === 1) {
-        const n = nyalaDariWaktu(t, 4, 1.7);
-        const jalan = Math.min(0.98, t / 7);
         return (
           <BangunKeliling
             x={95}
             y={50}
             w={110}
             h={110}
-            nyala={n}
             sisi={[4, 4, 4, 4]}
             label={false}
             tampilJumlah={false}
             outlineSaja
-            jalan={jalan}
+            jalan={progresDari(t, 7)}
           />
         );
       }
@@ -124,11 +149,11 @@ function visualA(v: number, a: number, k: number, t: number): React.ReactNode {
         );
       }
       if (k === 2) {
-        const n = nyalaDariWaktu(t, 4, 1.5);
+        const p = progresDari(t, 6.5);
         return (
           <>
-            <BangunKeliling x={95} y={48} w={110} h={110} nyala={n} outlineSaja label={false} tampilJumlah={false} sisi={[4, 4, 4, 4]} jalan={Math.min(0.95, t / 6.5)} />
-            <Muncul aktif={n >= 2}>
+            <BangunKeliling x={95} y={48} w={110} h={110} outlineSaja label={false} tampilJumlah={false} sisi={[4, 4, 4, 4]} jalan={p} />
+            <Muncul aktif={p >= 0.35}>
               <LabelSvg x={90} y={168} w={120} teks="keliling = jalur" ukuran={12} warna={ORANYE} />
             </Muncul>
           </>
@@ -149,8 +174,7 @@ function visualA(v: number, a: number, k: number, t: number): React.ReactNode {
 
     // a === 2: Contoh 4+4+4+4
     if (k === 0) {
-      const n = nyalaDariWaktu(t, 4, 1.5);
-      return <BangunKeliling x={95} y={48} w={110} h={110} nyala={n} sisi={[4, 4, 4, 4]} tampilJumlah={false} jalan={Math.min(0.95, t / 6.5)} />;
+      return <BangunKeliling x={95} y={48} w={110} h={110} sisi={[4, 4, 4, 4]} tampilJumlah={false} jalan={progresDari(t, 6.5)} />;
     }
     if (k === 1) {
       return (
@@ -175,7 +199,7 @@ function visualA(v: number, a: number, k: number, t: number): React.ReactNode {
     }
     return (
       <>
-        <BangunKeliling x={95} y={50} w={110} h={100} nyala={4} sisi={[4, 4, 4, 4]} jalan={Math.min(1, 0.3 + t / 8)} />
+        <BangunKeliling x={95} y={50} w={110} h={100} sisi={[4, 4, 4, 4]} jalan={progresDari(t, 7)} />
         <Muncul>
           <LabelSvg x={80} y={168} w={140} teks="path length" ukuran={13} warna={HIJAU} />
         </Muncul>
@@ -187,12 +211,6 @@ function visualA(v: number, a: number, k: number, t: number): React.ReactNode {
   if (v === 1) {
     if (a === 0) {
       // Benteng
-      const dinding = [
-        [40, 60, 220, 60],
-        [220, 60, 220, 150],
-        [220, 150, 40, 150],
-        [40, 150, 40, 60],
-      ] as const;
       if (k === 0) {
         return (
           <>
@@ -206,16 +224,12 @@ function visualA(v: number, a: number, k: number, t: number): React.ReactNode {
         );
       }
       if (k === 1) {
-        const n = nyalaDariWaktu(t, 4, 1.6);
+        const p = progresDari(t, 6.5);
         return (
           <>
-            <rect x="50" y="70" width="200" height="70" fill="#FEF3C7" stroke={BIRU} strokeWidth="1.5" opacity={0.5} />
-            {dinding.map((d, i) =>
-              n > i ? (
-                <line key={i} x1={d[0]} y1={d[1]} x2={d[2]} y2={d[3]} stroke={n === i + 1 ? EMAS : BIRU} strokeWidth={n === i + 1 ? 6 : 4} strokeLinecap="round" />
-              ) : null,
-            )}
-            <Muncul aktif={n >= 2}>
+            <rect x="50" y="70" width="200" height="70" fill="#FEF3C7" stroke={BIRU} strokeWidth="1.5" opacity={0.45} />
+            <BangunKeliling x={40} y={55} w={180} h={100} outlineSaja label={false} tampilJumlah={false} sisi={[1, 1, 1, 1]} jalan={p} />
+            <Muncul aktif={p >= 0.35}>
               <LabelSvg x={80} y={165} w={140} teks="panjang dinding" ukuran={12} warna={ORANYE} />
             </Muncul>
           </>
@@ -260,8 +274,7 @@ function visualA(v: number, a: number, k: number, t: number): React.ReactNode {
         );
       }
       if (k === 1) {
-        const n = nyalaDariWaktu(t, 4, 1.5);
-        return <BangunKeliling x={70} y={55} w={160} h={90} nyala={n} sisi={[8, 5, 8, 5]} tampilJumlah={n >= 4} jalan={Math.min(0.95, t / 6.5)} />;
+        return <BangunKeliling x={70} y={55} w={160} h={90}  sisi={[8, 5, 8, 5]} tampilJumlah={progresDari(t, 6.5) >= 0.98} jalan={progresDari(t, 6.5)} />;
       }
       if (k === 2) {
         return (
@@ -300,8 +313,7 @@ function visualA(v: number, a: number, k: number, t: number): React.ReactNode {
       );
     }
     if (k === 1) {
-      const n = nyalaDariWaktu(t, 4, 1.5);
-      return <BangunKeliling x={70} y={50} w={160} h={100} nyala={n} sisi={[12, 8, 12, 8]} tampilJumlah={n >= 4} />;
+      return <BangunKeliling x={70} y={50} w={160} h={100} jalan={progresDari(t, 6.0)} sisi={[12, 8, 12, 8]} tampilJumlah={progresDari(t, 6.0) >= 0.98} />;
     }
     if (k === 2) {
       return (
@@ -327,8 +339,7 @@ function visualA(v: number, a: number, k: number, t: number): React.ReactNode {
   /* V3: Cara hitung dari sisi */
   if (a === 0) {
     if (k === 0) {
-      const n = nyalaDariWaktu(t, 4, 1.4);
-      return <BangunKeliling x={80} y={50} w={140} h={80} nyala={n} sisi={[6, 4, 6, 4]} tampilJumlah={false} />;
+      return <BangunKeliling x={80} y={50} w={140} h={80} jalan={progresDari(t, 5.6)} sisi={[6, 4, 6, 4]} tampilJumlah={false} />;
     }
     if (k === 1) {
       return (
@@ -363,8 +374,7 @@ function visualA(v: number, a: number, k: number, t: number): React.ReactNode {
 
   if (a === 1) {
     if (k === 0) {
-      const n = nyalaDariWaktu(t, 4, 1.5);
-      return <BangunKeliling x={70} y={50} w={160} h={80} nyala={n} sisi={[5, 3, 5, 3]} tampilJumlah={false} />;
+      return <BangunKeliling x={70} y={50} w={160} h={80} jalan={progresDari(t, 6.0)} sisi={[5, 3, 5, 3]} tampilJumlah={false} />;
     }
     if (k === 1) {
       return (
@@ -404,7 +414,7 @@ function visualA(v: number, a: number, k: number, t: number): React.ReactNode {
         <LabelSvg x={20} y={55} w={80} teks="1. jalur" ukuran={12} warna={ORANYE} />
         <LabelSvg x={110} y={55} w={80} teks="2. pagar" ukuran={12} warna={HIJAU} />
         <LabelSvg x={200} y={55} w={80} teks="3. ≠ luas" ukuran={12} warna={MERAH} />
-        <BangunKeliling x={95} y={95} w={110} h={60} nyala={Math.min(4, nyalaDariWaktu(t, 4, 1.2))} label={false} tampilJumlah={false} sisi={[1, 1, 1, 1]} outlineSaja />
+        <BangunKeliling x={95} y={95} w={110} h={60} jalan={progresDari(t, 4.8)} label={false} tampilJumlah={false} sisi={[1, 1, 1, 1]} outlineSaja />
       </>
     );
   }
@@ -424,18 +434,7 @@ function visualA(v: number, a: number, k: number, t: number): React.ReactNode {
   }
   if (k === 2) {
     return (
-      <BangunKeliling
-        x={95}
-        y={50}
-        w={110}
-        h={100}
-        nyala={nyalaDariWaktu(t, 4, 1.5)}
-        label={false}
-        tampilJumlah={false}
-        sisi={[1, 1, 1, 1]}
-        outlineSaja
-        jalan={Math.min(0.98, t / 7)}
-      />
+      <BangunKeliling x={95} y={50} w={110} h={100} jalan={progresDari(t, 6.0)} label={false} tampilJumlah={false} sisi={[1, 1, 1, 1]} outlineSaja />
     );
   }
   return (
@@ -452,8 +451,7 @@ function visualB(v: number, a: number, k: number, t: number): React.ReactNode {
   if (v === 0) {
     if (a === 0) {
       if (k === 0) {
-        const n = nyalaDariWaktu(t, 3, 1.8);
-        return <SegitigaKeliling nyala={n} sisi={[5, 4, 7]} tampilJumlah={false} />;
+        return <SegitigaKeliling jalan={progresDari(t, 5.4)} sisi={[5, 4, 7]} tampilJumlah={false} />;
       }
       if (k === 1) {
         return (
@@ -475,14 +473,12 @@ function visualB(v: number, a: number, k: number, t: number): React.ReactNode {
           </>
         );
       }
-      const n = nyalaDariWaktu(t, 3, 1.7);
-      return <SegitigaKeliling nyala={n} sisi={[5, 4, 7]} tampilJumlah={n >= 3} />;
+      return <SegitigaKeliling jalan={progresDari(t, 5.1)} sisi={[5, 4, 7]} tampilJumlah={progresDari(t, 5.1) >= 0.98} />;
     }
     if (a === 1) {
       if (k === 0) return <SegitigaKeliling nyala={0} sisi={[5, 4, 7]} tampilJumlah={false} />;
       if (k === 1) {
-        const n = nyalaDariWaktu(t, 3, 1.8);
-        return <SegitigaKeliling nyala={n} sisi={[5, 4, 7]} tampilJumlah={false} />;
+        return <SegitigaKeliling jalan={progresDari(t, 5.4)} sisi={[5, 4, 7]} tampilJumlah={false} />;
       }
       if (k === 2) {
         const tahap = Math.min(3, Math.floor(t / 2) + 1);
@@ -522,8 +518,7 @@ function visualB(v: number, a: number, k: number, t: number): React.ReactNode {
       );
     }
     if (k === 1) {
-      const n = nyalaDariWaktu(t, 3, 1.6);
-      return <SegitigaKeliling nyala={n} sisi={[3, 4, 5]} tampilJumlah={false} />;
+      return <SegitigaKeliling jalan={progresDari(t, 4.8)} sisi={[3, 4, 5]} tampilJumlah={false} />;
     }
     if (k === 2) {
       return (
@@ -550,8 +545,7 @@ function visualB(v: number, a: number, k: number, t: number): React.ReactNode {
     if (a === 0) {
       if (k === 0) return <SegitigaKeliling nyala={3} sisi={[5, 5, 5]} tandaSama tampilJumlah={false} />;
       if (k === 1) {
-        const n = nyalaDariWaktu(t, 3, 1.6);
-        return <SegitigaKeliling nyala={n} sisi={[5, 5, 5]} tandaSama tampilJumlah={false} />;
+        return <SegitigaKeliling jalan={progresDari(t, 4.8)} sisi={[5, 5, 5]} tandaSama tampilJumlah={false} />;
       }
       if (k === 2) {
         return (
@@ -618,8 +612,7 @@ function visualB(v: number, a: number, k: number, t: number): React.ReactNode {
       );
     }
     if (k === 1) {
-      const n = nyalaDariWaktu(t, 3, 1.6);
-      return <SegitigaKeliling nyala={n} sisi={[4, 4, 4]} tandaSama tampilJumlah={n >= 3} />;
+      return <SegitigaKeliling jalan={progresDari(t, 4.8)} sisi={[4, 4, 4]} tandaSama tampilJumlah={progresDari(t, 4.8) >= 0.98} />;
     }
     if (k === 2) {
       return (
@@ -645,8 +638,7 @@ function visualB(v: number, a: number, k: number, t: number): React.ReactNode {
   if (a === 0) {
     if (k === 0) return <SegitigaKeliling nyala={3} sisi={[6, 6, 4]} tampilJumlah={false} />;
     if (k === 1) {
-      const n = nyalaDariWaktu(t, 3, 1.5);
-      return <SegitigaKeliling nyala={n} sisi={[6, 6, 4]} tampilJumlah={n >= 3} />;
+      return <SegitigaKeliling jalan={progresDari(t, 4.5)} sisi={[6, 6, 4]} tampilJumlah={progresDari(t, 4.5) >= 0.98} />;
     }
     if (k === 2) {
       return (
@@ -690,8 +682,7 @@ function visualB(v: number, a: number, k: number, t: number): React.ReactNode {
       );
     }
     if (k === 2) {
-      const n = nyalaDariWaktu(t, 3, 1.5);
-      return <SegitigaKeliling nyala={n} sisi={[5, 4, 7]} />;
+      return <SegitigaKeliling jalan={progresDari(t, 4.5)} sisi={[5, 4, 7]} />;
     }
     return (
       <>
@@ -713,7 +704,7 @@ function visualB(v: number, a: number, k: number, t: number): React.ReactNode {
     );
   }
   if (k === 1) {
-    return <BangunKeliling x={80} y={50} w={140} h={90} nyala={nyalaDariWaktu(t, 4, 1.5)} sisi={[5, 3, 5, 3]} outlineSaja label={false} tampilJumlah={false} />;
+    return <BangunKeliling x={80} y={50} w={140} h={90} jalan={progresDari(t, 6.0)} sisi={[5, 3, 5, 3]} outlineSaja label={false} tampilJumlah={false} />;
   }
   if (k === 2) {
     return (
@@ -740,8 +731,7 @@ function visualC(v: number, a: number, k: number, t: number): React.ReactNode {
     if (a === 0) {
       if (k === 0) return <BangunKeliling x={70} y={50} w={160} h={80} nyala={0} outlineSaja sisi={[5, 3, 5, 3]} tampilJumlah={false} />;
       if (k === 1) {
-        const n = nyalaDariWaktu(t, 4, 1.5);
-        return <BangunKeliling x={70} y={50} w={160} h={80} nyala={n} sisi={[5, 3, 5, 3]} tampilJumlah={false} />;
+        return <BangunKeliling x={70} y={50} w={160} h={80} jalan={progresDari(t, 6.0)} sisi={[5, 3, 5, 3]} tampilJumlah={false} />;
       }
       if (k === 2) {
         return (
@@ -764,8 +754,7 @@ function visualC(v: number, a: number, k: number, t: number): React.ReactNode {
     }
     if (a === 1) {
       if (k === 0) {
-        const n = nyalaDariWaktu(t, 4, 1.5);
-        return <BangunKeliling x={70} y={50} w={160} h={80} nyala={n} sisi={[5, 3, 5, 3]} tampilJumlah={false} />;
+        return <BangunKeliling x={70} y={50} w={160} h={80} jalan={progresDari(t, 6.0)} sisi={[5, 3, 5, 3]} tampilJumlah={false} />;
       }
       if (k === 1) {
         return (
@@ -807,8 +796,7 @@ function visualC(v: number, a: number, k: number, t: number): React.ReactNode {
       );
     }
     if (k === 1) {
-      const n = nyalaDariWaktu(t, 4, 1.4);
-      return <BangunKeliling x={70} y={50} w={160} h={80} nyala={n} sisi={[5, 3, 5, 3]} />;
+      return <BangunKeliling x={70} y={50} w={160} h={80} jalan={progresDari(t, 5.6)} sisi={[5, 3, 5, 3]} />;
     }
     if (k === 2) {
       return (
@@ -835,11 +823,10 @@ function visualC(v: number, a: number, k: number, t: number): React.ReactNode {
     if (a === 0) {
       if (k === 0) return <BangunKeliling x={95} y={45} w={110} h={110} nyala={0} outlineSaja sisi={[3, 3, 3, 3]} tampilJumlah={false} />;
       if (k === 1) {
-        const n = nyalaDariWaktu(t, 4, 1.4);
         return (
           <>
-            <BangunKeliling x={95} y={45} w={110} h={110} nyala={n} sisi={[3, 3, 3, 3]} tampilJumlah={false} />
-            <Muncul aktif={n >= 3}>
+            <BangunKeliling x={95} y={45} w={110} h={110} jalan={progresDari(t, 5.6)} sisi={[3, 3, 3, 3]} tampilJumlah={false} />
+            <Muncul aktif={progresDari(t, 5.6) >= 0.75}>
               <LabelSvg x={90} y={170} w={120} teks="4 × s" ukuran={14} warna={HIJAU} />
             </Muncul>
           </>
@@ -928,7 +915,7 @@ function visualC(v: number, a: number, k: number, t: number): React.ReactNode {
       );
     }
     if (k === 2) {
-      return <BangunKeliling x={80} y={50} w={140} h={90} nyala={nyalaDariWaktu(t, 4, 1.5)} sisi={[5, 3, 5, 3]} outlineSaja label={false} tampilJumlah={false} jalan={Math.min(0.95, t / 6.5)} />;
+      return <BangunKeliling x={80} y={50} w={140} h={90} jalan={progresDari(t, 6.0)} sisi={[5, 3, 5, 3]} outlineSaja label={false} tampilJumlah={false} />;
     }
     return (
       <>
@@ -1036,18 +1023,29 @@ function visualC(v: number, a: number, k: number, t: number): React.ReactNode {
     );
   }
   if (k === 1) {
+    const p = progresDari(t, 6);
     const pts = segiN(150, 100, 55, 5);
-    const n = nyalaDariWaktu(t, 5, 1.2);
     return (
       <>
         <polygon points={pts} fill="#DBEAFE" stroke={BIRU} strokeWidth="2" opacity={0.45} />
-        {n >= 1 ? <LabelSvg x={90} y={165} w={120} teks="segi banyak…" ukuran={12} /> : null}
+        <polyline
+          points={`${pts} ${pts.split(" ")[0]}`}
+          fill="none"
+          stroke={EMAS}
+          strokeWidth="6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          pathLength={1}
+          strokeDasharray={1}
+          strokeDashoffset={1 - p}
+        />
+        {p >= 0.2 ? <LabelSvg x={90} y={165} w={120} teks="segi banyak…" ukuran={12} /> : null}
       </>
     );
   }
   if (k === 2) {
     return (
-      <BangunKeliling x={80} y={50} w={140} h={90} nyala={nyalaDariWaktu(t, 4, 1.4)} sisi={[5, 3, 5, 3]} outlineSaja label={false} tampilJumlah={false} jalan={Math.min(0.95, t / 6)} />
+      <BangunKeliling x={80} y={50} w={140} h={90} jalan={progresDari(t, 5.6)} sisi={[5, 3, 5, 3]} outlineSaja label={false} tampilJumlah={false} />
     );
   }
   return (
@@ -1060,25 +1058,39 @@ function visualC(v: number, a: number, k: number, t: number): React.ReactNode {
 }
 
 function visualD(v: number, a: number, k: number, t: number): React.ReactNode {
-  const segi = (n: number, sisiLabel: number, nyala: number) => {
+  /** `progres` 0→1 = jarak keliling yang sudah dilalui (jejak kuning). */
+  const segi = (n: number, sisiLabel: number, progres: number) => {
     const pts = segiN(150, 95, 58, n);
     const verts = pts.split(" ").map((p) => {
       const [x, y] = p.split(",").map(Number);
       return { x, y };
     });
+    const closed = `${pts} ${verts[0].x},${verts[0].y}`;
+    const p = Math.max(0, Math.min(1, progres));
+    const sisiSelesai = Math.floor(p * n + 0.001);
     return (
       <g>
         <polygon points={pts} fill="#DBEAFE" stroke={BIRU} strokeWidth="2" opacity={0.4} />
-        {verts.map((p, i) => {
-          if (nyala <= i) return null;
+        {p > 0.001 ? (
+          <polyline
+            points={closed}
+            fill="none"
+            stroke={EMAS}
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            pathLength={1}
+            strokeDasharray={1}
+            strokeDashoffset={1 - p}
+          />
+        ) : null}
+        {verts.map((pt, i) => {
+          if (sisiSelesai <= i) return null;
           const q = verts[(i + 1) % n];
           return (
-            <g key={i}>
-              <line x1={p.x} y1={p.y} x2={q.x} y2={q.y} stroke={nyala === i + 1 ? EMAS : BIRU} strokeWidth={nyala === i + 1 ? 5 : 3.5} strokeLinecap="round" />
-              <text x={(p.x + q.x) / 2} y={(p.y + q.y) / 2 - 6} textAnchor="middle" fontSize="12" fontWeight="900" fill={MERAH}>
-                {sisiLabel}
-              </text>
-            </g>
+            <text key={i} x={(pt.x + q.x) / 2} y={(pt.y + q.y) / 2 - 6} textAnchor="middle" fontSize="12" fontWeight="900" fill={MERAH}>
+              {sisiLabel}
+            </text>
           );
         })}
       </g>
@@ -1088,7 +1100,7 @@ function visualD(v: number, a: number, k: number, t: number): React.ReactNode {
   if (v === 0) {
     if (a === 0) {
       if (k === 0) return segi(5, 3, 0);
-      if (k === 1) return segi(5, 3, nyalaDariWaktu(t, 5, 1.3));
+      if (k === 1) return segi(5, 3, progresDari(t, 6.5));
       if (k === 2) {
         return (
           <>
@@ -1114,14 +1126,14 @@ function visualD(v: number, a: number, k: number, t: number): React.ReactNode {
           <>
             <LabelSvg x={40} y={50} w={100} teks="n × s" ukuran={14} />
             <LabelSvg x={160} y={50} w={100} teks="tabel" ukuran={14} />
-            {segi(5, 2, Math.min(5, nyalaDariWaktu(t, 5, 1.2)))}
+            {segi(5, 2, progresDari(t, 6.0))}
           </>
         );
       }
       if (k === 1) {
         return (
           <>
-            {t < 2.5 ? segi(5, 3, 5) : segi(6, 3, nyalaDariWaktu(t - 2.5, 6, 1.0))}
+            {t < 2.5 ? segi(5, 3, 5) : segi(6, 3, progresDari(t - 2.5, 6.0))}
             <Muncul>
               <LabelSvg x={70} y={165} w={160} teks={t < 2.5 ? "5 × sisi" : "6 × sisi"} ukuran={13} warna={HIJAU} />
             </Muncul>
@@ -1177,7 +1189,7 @@ function visualD(v: number, a: number, k: number, t: number): React.ReactNode {
         </>
       );
     }
-    return segi(6, 4, nyalaDariWaktu(t, 6, 1.1));
+    return segi(6, 4, progresDari(t, 6.6));
   }
 
   if (v === 1) {
@@ -1196,7 +1208,7 @@ function visualD(v: number, a: number, k: number, t: number): React.ReactNode {
       if (k === 2) {
         return (
           <>
-            {segi(8, 2, nyalaDariWaktu(t, 8, 0.9))}
+            {segi(8, 2, progresDari(t, 7.2))}
             <Muncul aktif={t > 3}>
               <LabelSvg x={75} y={165} w={150} teks="8×2 = 16" ukuran={14} warna={HIJAU} />
             </Muncul>
@@ -1228,11 +1240,10 @@ function visualD(v: number, a: number, k: number, t: number): React.ReactNode {
         );
       }
       if (k === 2) {
-        const n = nyalaDariWaktu(t, 5, 1.3);
         return (
           <>
-            {segi(5, 3, n)}
-            <Muncul aktif={n >= 4}>
+            {segi(5, 3, progresDari(t, 6.5))}
+            <Muncul aktif={progresDari(t, 6.5) >= 0.8}>
               <LabelSvg x={70} y={165} w={160} teks="jumlah satu-satu" ukuran={12} warna={HIJAU} />
             </Muncul>
           </>
@@ -1303,7 +1314,7 @@ function visualD(v: number, a: number, k: number, t: number): React.ReactNode {
     }
     if (k === 1) {
       return (
-        <BangunKeliling x={80} y={50} w={140} h={90} nyala={nyalaDariWaktu(t, 4, 1.4)} sisi={[5, 3, 5, 3]} outlineSaja label={false} tampilJumlah={false} jalan={Math.min(0.95, t / 6)} />
+        <BangunKeliling x={80} y={50} w={140} h={90} jalan={progresDari(t, 5.6)} sisi={[5, 3, 5, 3]} outlineSaja label={false} tampilJumlah={false} />
       );
     }
     if (k === 2) {
@@ -1391,17 +1402,11 @@ function visualD(v: number, a: number, k: number, t: number): React.ReactNode {
     );
   }
   if (k === 2) {
-    const n = nyalaDariWaktu(t, 4, 1.5);
+    const p = progresDari(t, 6);
     return (
       <>
-        <polyline
-          points="40,55 140,55 140,85 250,85 250,145 40,145 40,55"
-          fill="none"
-          stroke={BIRU}
-          strokeWidth="3"
-          strokeDasharray={n < 4 ? "6 4" : undefined}
-        />
-        <Muncul aktif={n >= 2}>
+        <JejakLuar points="40,55 140,55 140,85 250,85 250,145 40,145 40,55" progres={p} />
+        <Muncul aktif={p >= 0.5}>
           <LabelSvg x={70} y={165} w={160} teks="path length luar" ukuran={12} warna={ORANYE} />
         </Muncul>
       </>
@@ -1441,12 +1446,11 @@ function visualE(v: number, a: number, k: number, t: number): React.ReactNode {
         );
       }
       if (k === 1) {
-        const n = nyalaDariWaktu(t, 6, 1.2);
         return (
           <>
             {denah}
-            <polyline points={luar} fill="none" stroke={n >= 1 ? EMAS : BIRU} strokeWidth="5" strokeLinejoin="round" opacity={Math.min(1, n / 3)} />
-            <Muncul aktif={n >= 2}>
+            <polyline points={luar} fill="none" stroke={EMAS} strokeWidth="5" strokeLinejoin="round" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - progresDari(t, 7.2)} />
+            <Muncul aktif={progresDari(t, 7.2) >= 0.33}>
               <LabelSvg x={70} y={165} w={160} teks="pagar dinding luar" ukuran={12} warna={ORANYE} />
             </Muncul>
           </>
@@ -1520,12 +1524,11 @@ function visualE(v: number, a: number, k: number, t: number): React.ReactNode {
       );
     }
     if (k === 0) {
-      const n = nyalaDariWaktu(t, 6, 1.1);
       return (
         <>
           {denah}
-          <polyline points={luar} fill="none" stroke={EMAS} strokeWidth={3 + Math.min(3, n)} strokeLinejoin="round" />
-          <Muncul aktif={n >= 2}>
+          <polyline points={luar} fill="none" stroke={EMAS} strokeWidth={5} strokeLinejoin="round" />
+          <Muncul aktif={progresDari(t, 6.6) >= 0.33}>
             <LabelSvg x={60} y={165} w={180} teks="ukur sisi luar satu-satu" ukuran={11} />
           </Muncul>
         </>
@@ -1713,7 +1716,7 @@ function visualE(v: number, a: number, k: number, t: number): React.ReactNode {
     if (k === 2) {
       return (
         <>
-          <BangunKeliling x={40} y={55} w={220} h={90} nyala={nyalaDariWaktu(t, 4, 1.4)} sisi={[12, 6, 12, 6]} tampilJumlah={false} />
+          <BangunKeliling x={40} y={55} w={220} h={90} jalan={progresDari(t, 5.6)} sisi={[12, 6, 12, 6]} tampilJumlah={false} />
         </>
       );
     }
@@ -1741,7 +1744,7 @@ function visualE(v: number, a: number, k: number, t: number): React.ReactNode {
     }
     if (k === 1) {
       return (
-        <BangunKeliling x={80} y={50} w={140} h={90} nyala={nyalaDariWaktu(t, 4, 1.4)} sisi={[5, 3, 5, 3]} outlineSaja label={false} tampilJumlah={false} jalan={Math.min(0.95, t / 6)} />
+        <BangunKeliling x={80} y={50} w={140} h={90} jalan={progresDari(t, 5.6)} sisi={[5, 3, 5, 3]} outlineSaja label={false} tampilJumlah={false} />
       );
     }
     if (k === 2) {
