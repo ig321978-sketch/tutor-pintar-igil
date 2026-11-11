@@ -31,3 +31,5 @@ Registri simulasi ada di `src/components/modul/registri-simulasi.ts` — bab bar
 Saat menambah bab SMISCPA: tulis komponen `SimulasiBabN` / `SimulasiK2BabN`, JSON `kelas*-bab*-ringkas.json`, daftarkan di `registri-simulasi.ts`. Jangan menambah entri di `IgilModulePlayer` kecuali mengubah kerangka UI bersama.
 
 Migrasi Kelas 2: Bab 1–8 sudah di `SIMULASI_MATERI` + `RINGKAS_BAB` (`SIMULASI_BAB` kosong). Seluruh Kelas 2 sudah memakai pola hibrida.
+
+Migrasi Kelas 3: Bab 1 sudah (`SimulasiK3Bab1`, dimuat malas lewat `next/dynamic` di registri), Bab 2–5 belum.

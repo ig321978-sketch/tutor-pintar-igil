@@ -1,4 +1,4 @@
-// Uji mesin skenario umum: Kelas 1 (Bab 1, 2, 3, 4, 6, 7) dan Kelas 2 Bab 1.
+// Uji mesin skenario umum: Kelas 1 (Bab 1, 2, 3, 4, 6, 7), Kelas 2, dan Kelas 3 Bab 1.
 // Jalankan: node --no-warnings scripts/uji-skenario-umum.mjs
 import { awalSk, adeganSk, langkahSk, opsiHitung, semuaKetuk, ceritaSk } from "../src/components/modul/skenario-umum.ts";
 import { SKENARIO_BAB1, SKENARIO_BAB2, SKENARIO_BAB3, SKENARIO_BAB4, SKENARIO_BAB6, SKENARIO_BAB7 } from "../src/components/modul/skenario-kelas1.ts";
@@ -10,6 +10,7 @@ import { SKENARIO_K2B5A, SKENARIO_K2B5B, SKENARIO_K2B5C } from "../src/component
 import { SKENARIO_K2B6B } from "../src/components/modul/skenario-k2b6.ts";
 import { SKENARIO_K2B7B } from "../src/components/modul/skenario-k2b7.ts";
 import { SKENARIO_K2B8B } from "../src/components/modul/skenario-k2b8.ts";
+import { SKENARIO_K3B1A, SKENARIO_K3B1B, SKENARIO_K3B1C, SKENARIO_K3B1D, SKENARIO_K3B1E, SKENARIO_K3B1F, SKENARIO_K3B1G } from "../src/components/modul/skenario-k3b1.ts";
 
 let gagal = 0;
 let lulus = 0;
@@ -39,15 +40,30 @@ const SEMUA = [
   ["K2 Bab 6B", SKENARIO_K2B6B, 20],
   ["K2 Bab 7B", SKENARIO_K2B7B, 100],
   ["K2 Bab 8B", SKENARIO_K2B8B, 20],
+  ["K3 Bab 1A", SKENARIO_K3B1A, 1000],
+  ["K3 Bab 1B", SKENARIO_K3B1B, 1000],
+  ["K3 Bab 1C", SKENARIO_K3B1C, 1000],
+  ["K3 Bab 1D", SKENARIO_K3B1D, 100],
+  ["K3 Bab 1E", SKENARIO_K3B1E, 100],
+  ["K3 Bab 1F", SKENARIO_K3B1F, 100],
+  ["K3 Bab 1G", SKENARIO_K3B1G, 1000],
 ];
 
 const OBJEK_SAH = new Set(["pesawat", "mobil", "boneka", "bola", "gasing", "bola-merah", "bola-kuning", "bola-hijau", "bola-biru", "kelereng-merah", "kelereng-kuning", "kelereng-hijau", "kelereng-biru", "jagung", "wortel", "brokoli", "kol", "jeruk", "apel", "mangga", "belimbing", "ayam", "bebek", "kelinci", "karet", "stik"]);
 
+// Hitung satu operasi: tambah, kurang (U+2212), kali (×), dan bagi (:, harus habis dibagi).
+function operasi(a, op, b) {
+  if (op === "+") return a + b;
+  if (op === "×") return a * b;
+  if (op === ":") return a % b === 0 ? a / b : NaN;
+  return a - b;
+}
+
 // Satu pilihan benar atau satu jawaban di setiap adegan; tanda minus pakai "−".
 function hitungTeks(teks) {
-  const m = teks.match(/^(\d+) ([+−]) (\d+) = …$/);
+  const m = teks.match(/^(\d+) ([+−×:]) (\d+) = …$/);
   if (!m) return null;
-  return m[2] === "+" ? Number(m[1]) + Number(m[3]) : Number(m[1]) - Number(m[3]);
+  return operasi(Number(m[1]), m[2], Number(m[3]));
 }
 
 const idGlobal = new Set();
@@ -75,9 +91,9 @@ for (const [nama, def, batas] of SEMUA) {
       cek(a.opsi.every((o) => o.umpan.length > 8), `${nama}/${a.id}: setiap pilihan punya akibat`);
       posisi.push(a.opsi.findIndex((o) => o.benar));
       const b = a.opsi.find((o) => o.benar);
-      const eq = b.teks.match(/(\d+) ([+−]) (\d+) = (\d+)/);
+      const eq = b.teks.match(/(\d+) ([+−×:]) (\d+) = (\d+)/);
       if (eq) {
-        const hasil = eq[2] === "+" ? Number(eq[1]) + Number(eq[3]) : Number(eq[1]) - Number(eq[3]);
+        const hasil = operasi(Number(eq[1]), eq[2], Number(eq[3]));
         cek(hasil === Number(eq[4]), `${nama}/${a.id}: kalimat benar ${eq[0]} ternyata salah hitung`);
       }
     }
