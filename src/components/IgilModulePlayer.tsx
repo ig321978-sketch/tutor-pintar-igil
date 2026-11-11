@@ -8,7 +8,6 @@ import {
   useProfilBelajar,
   type HasilLatihanServer,
 } from "@/components/modul/BelajarServer";
-import { KunciAksesFase } from "@/components/modul/KunciAksesFase";
 import { hentikanSuaraGuruModul, ucapkanGuruModul } from "@/lib/suara-guru-modul";
 import materiBab1 from "@/data/kelas1-bab1.json";
 import materiBab2 from "@/data/kelas1-bab2.json";
@@ -1494,7 +1493,6 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   ) : undefined;
 
   return (
-    <KunciAksesFase bab={bab}>
     <div className={`min-h-screen w-full bg-white text-[#334155] pb-16 ${fontAnak.className}`}>
       {/* =================================================================== */}
       {/* BANNER #1C01A5 TANPA DEGRADASI HAMPIR SELEBAR LAYAR MONITOR         */}
@@ -3883,6 +3881,5 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
       )}
 
     </div>
-    </KunciAksesFase>
   );
 }

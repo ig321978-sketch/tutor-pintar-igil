@@ -118,10 +118,8 @@ Pada tahap Pilot Project, platform IGIL HANYA melayani jenjang Sekolah Dasar (Ke
 
 3. **Penegakan Teknis di JSON, UI, & Supabase RPC (*One-Way Phase Ratchet*):**
    - Setiap file JSON modul di `src/data/` WAJIB mencantumkan `"phase_code": "FASE_A" | "FASE_B" | "FASE_C"` dan `"grade": 1..6`.
-   - **Kunci Akses Modul Penuh (bukan hanya tombol poin):** Siswa/user di luar fase modul **TIDAK BOLEH** membuka isi bab sama sekali (Silabus, Materi/SMICPA, Simulasi, Latihan, Ujian). Gerbang UI: `src/components/modul/KunciAksesFase.tsx` (membungkus `IgilModulePlayer`); helper fase di `src/lib/fase.ts`. Admin lolos untuk peninjauan.
-   - Jangan mengunci lintas-kelas jika masih di dalam `phase_code` yang sama (contoh: siswa Kelas 2 boleh membuka modul Kelas 1 selama keduanya `FASE_A`).
-   - Di Ruang Belajar, daftar jenjang kelas untuk akun yang sudah punya anak aktif **difilter** ke kelas dalam fasenya saja.
-   - Di fungsi RPC PostgreSQL (`SECURITY DEFINER`), validasi kelayakan poin memeriksa kecocokan `student.phase_code = chapter.phase_code` (sudah ada di `private.pastikan_bab`), menerapkan **Kunci Satu Arah Antar-Fase (*One-Way Phase Ratchet*: `FASE_A` -> `FASE_B` -> `FASE_C`)** di mana siswa di `FASE_B` tidak dapat diturunkan ke `FASE_A` dan siswa di `FASE_C` tidak dapat diturunkan ke `FASE_B`/`FASE_A`, serta mengelompokkan pemenang pada **Papan Kualifikasi Beasiswa** akhir bulan secara terpisah untuk `FASE_A`, `FASE_B`, dan `FASE_C`.
+   - UI hanya mengunci tombol Latihan, Ujian, dan Praktikum jika `student.phase_code !== chapter.phase_code` (jangan mengunci lintas-kelas jika masih di dalam `phase_code` yang sama).
+   - Di fungsi RPC PostgreSQL (`SECURITY DEFINER`), validasi kelayakan poin cukup memeriksa kecocokan `student.phase_code = chapter.phase_code` (jangan memblokir siswa Kelas 2 yang mengambil ujian Kelas 1, atau sebaliknya, selama `phase_code` sama), menerapkan **Kunci Satu Arah Antar-Fase (*One-Way Phase Ratchet*: `FASE_A` -> `FASE_B` -> `FASE_C`)** di mana siswa di `FASE_B` tidak dapat diturunkan ke `FASE_A` dan siswa di `FASE_C` tidak dapat diturunkan ke `FASE_B`/`FASE_A`, serta mengelompokkan pemenang pada **Papan Kualifikasi Beasiswa** akhir bulan secara terpisah untuk `FASE_A`, `FASE_B`, dan `FASE_C`.
 
 ---
 
