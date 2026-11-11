@@ -454,11 +454,21 @@ function visualB(v: number, a: number, k: number, t: number): React.ReactNode {
         return <SegitigaKeliling jalan={progresDari(t, 5.4)} sisi={[5, 4, 7]} tampilJumlah={false} />;
       }
       if (k === 1) {
+        // Suara: siku-siku / sama kaki / sembarang — bentuk harus beda
+        const p = progresDari(t, 6);
+        const bentuk = p < 0.33 ? ([3, 4, 5] as const) : p < 0.66 ? ([6, 6, 4] as const) : ([5, 4, 7] as const);
+        const label = p < 0.33 ? "siku-siku" : p < 0.66 ? "sama kaki" : "sembarang";
         return (
           <>
-            <SegitigaKeliling nyala={3} sisi={[5, 4, 7]} tampilJumlah={false} />
+            <SegitigaKeliling
+              nyala={3}
+              sisi={[...bentuk]}
+              tampilJumlah={false}
+              tandaSiku={bentuk[2] === 5 && bentuk[0] === 3}
+              tandaSama={bentuk[0] === bentuk[1]}
+            />
             <Muncul>
-              <LabelSvg x={70} y={175} w={160} teks="semua jenis sama" ukuran={12} />
+              <LabelSvg x={70} y={175} w={160} teks={label} ukuran={12} />
             </Muncul>
           </>
         );
@@ -591,7 +601,7 @@ function visualB(v: number, a: number, k: number, t: number): React.ReactNode {
       if (k === 2) {
         return (
           <>
-            <SegitigaKeliling nyala={3} sisi={[5, 5, 3]} tampilJumlah={false} />
+            <SegitigaKeliling nyala={3} sisi={[6, 6, 4]} tampilJumlah={false} tandaSama />
             <Muncul>
               <LabelSvg x={55} y={100} w={190} teks="sama kaki: tetap a+b+c" ukuran={12} warna={ORANYE} />
             </Muncul>
@@ -636,9 +646,9 @@ function visualB(v: number, a: number, k: number, t: number): React.ReactNode {
 
   // v === 2 cek
   if (a === 0) {
-    if (k === 0) return <SegitigaKeliling nyala={3} sisi={[6, 6, 4]} tampilJumlah={false} />;
+    if (k === 0) return <SegitigaKeliling nyala={3} sisi={[6, 6, 4]} tampilJumlah={false} tandaSama />;
     if (k === 1) {
-      return <SegitigaKeliling jalan={progresDari(t, 4.5)} sisi={[6, 6, 4]} tampilJumlah={progresDari(t, 4.5) >= 0.98} />;
+      return <SegitigaKeliling jalan={progresDari(t, 4.5)} sisi={[6, 6, 4]} tampilJumlah={progresDari(t, 4.5) >= 0.98} tandaSama />;
     }
     if (k === 2) {
       return (

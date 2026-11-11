@@ -15,6 +15,7 @@ import {
   PiktogramSvg,
   PizzaSvg,
   PolaBentukSvg,
+  SegitigaKeliling,
   SusunSvg,
   VolumePetakSvg,
   progresDari,
@@ -23,7 +24,6 @@ import {
   HIJAU,
   MERAH,
 } from "./video-visual-kit";
-import { BIRU as B } from "./CeritaBandingB";
 
 /** Koreografi visual Story Kelas 4 — seirama ketukan `k` + waktu suara `t`. */
 export function visualK4(kode: string, v: number, a: number, k: number, t = 0): React.ReactNode {
@@ -184,20 +184,8 @@ export function visualK4(kode: string, v: number, a: number, k: number, t = 0): 
     return (
       <>
         <BangunKeliling x={30} y={55} w={80} h={80} jalan={1} sisi={[3, 3, 3, 3]} tampilJumlah={false} />
-        <g transform="translate(155 40)">
-          <polygon points="50,10 10,90 90,90" fill="#FEF3C7" stroke={B} strokeWidth="2" opacity={0.5} />
-          <polyline
-            points="50,10 10,90 90,90 50,10"
-            fill="none"
-            stroke="#F0AB00"
-            strokeWidth="5"
-            pathLength={1}
-            strokeDasharray={1}
-            strokeDashoffset={1 - progresDari(t, 5)}
-            strokeLinejoin="round"
-          />
-        </g>
-        {k >= 2 ? <LabelSvg x={170} y={160} w={90} teks="3 sisi" ukuran={12} /> : null}
+        <SegitigaKeliling sisi={[3, 4, 5]} jalan={progresDari(t, 5)} tampilJumlah={false} tandaSiku />
+        {k >= 2 ? <LabelSvg x={90} y={40} w={120} teks="3 sisi · siku" ukuran={11} /> : null}
         {k >= 3 ? <LabelSvg x={80} y={40} w={140} teks="ciri bangun" ukuran={12} warna={HIJAU} /> : null}
       </>
     );

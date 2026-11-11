@@ -3,6 +3,7 @@
 import React from "react";
 import { BIRU, EMAS } from "./CeritaBandingB";
 import { Lompat, Muncul, Sorot } from "./video-cerita";
+import { indeksSudutSiku, tengahSisi, titikSegitigaDariSisi } from "./segitiga-geometri";
 
 /* ------------------------------------------------------------------------ */
 /* Primitif SVG untuk kanvas video cerita 300×208 (K4–K6). Progresif via k.  */
@@ -203,7 +204,7 @@ export function BangunKeliling({
   );
 }
 
-/** Segitiga: kerangka biru = bangun; jejak kuning = jarak keliling yang sudah dilalui. */
+/** Segitiga: bentuk dari panjang sisi (bukan selalu sama sisi); jejak kuning = jarak dilalui. */
 export function SegitigaKeliling({
   k = 0,
   nyala,
@@ -211,24 +212,31 @@ export function SegitigaKeliling({
   tandaSama = false,
   tampilJumlah = true,
   jalan,
+  tandaSiku = false,
 }: {
   k?: number;
   nyala?: number;
+  /** [a,b,c] = BC, AC, AB — menentukan bentuk aktual. */
   sisi?: [number, number, number] | number[];
   tandaSama?: boolean;
   tampilJumlah?: boolean;
   /** Progres 0…1 jarak keliling yang sudah dilalui. */
   jalan?: number;
+  /** Tampilkan siku di sudut 90° bila sisi membentuk siku-siku. */
+  tandaSiku?: boolean;
 }) {
-  const A = { x: 150, y: 48 };
-  const B = { x: 70, y: 155 };
-  const C = { x: 230, y: 155 };
+  const a = Number(sisi[0]) || 5;
+  const b = Number(sisi[1]) || 4;
+  const c = Number(sisi[2]) || 7;
+  // Urutan jejak keliling: A→B (c), B→C (a), C→A (b) agar label cocok sisi
+  const [A, B, C] = titikSegitigaDariSisi(a, b, c, { w: 300, h: 168, pad: 22 });
+  const labelSisi = [c, a, b]; // panjang di sepanjang A-B, B-C, C-A
   const hitung = nyala ?? Math.min(3, Math.max(0, k + 1));
   const progres = jalan != null ? Math.max(0, Math.min(1, jalan)) : hitung / 3;
   const segs = [
-    { a: A, b: B, lx: 95, ly: 95, n: sisi[0], len: Math.hypot(B.x - A.x, B.y - A.y) },
-    { a: B, b: C, lx: 150, ly: 172, n: sisi[1], len: Math.hypot(C.x - B.x, C.y - B.y) },
-    { a: C, b: A, lx: 205, ly: 95, n: sisi[2], len: Math.hypot(A.x - C.x, A.y - C.y) },
+    { a: A, b: B, n: labelSisi[0], len: Math.hypot(B.x - A.x, B.y - A.y) },
+    { a: B, b: C, n: labelSisi[1], len: Math.hypot(C.x - B.x, C.y - B.y) },
+    { a: C, b: A, n: labelSisi[2], len: Math.hypot(A.x - C.x, A.y - C.y) },
   ];
   const total = segs.reduce((s, g) => s + g.len, 0);
   const jejakPts: string[] = [`${A.x},${A.y}`];
@@ -248,30 +256,46 @@ export function SegitigaKeliling({
     }
   }
   const sisiSelesai = Math.floor(progres * 3 + 0.001);
+  const sama = (x: number, y: number) => Math.abs(x - y) < 0.01;
+  const sikuIdx = tandaSiku ? indeksSudutSiku(a, b, c) : -1;
+  const verts = [A, B, C];
   return (
     <g>
       <polygon points={`${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}`} fill="#FEF3C7" stroke={BIRU} strokeWidth="2" opacity={0.5} />
       {progres > 0.001 ? (
         <polyline points={jejakPts.join(" ")} fill="none" stroke={EMAS} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
       ) : null}
-      {segs.map((g, i) =>
-        sisiSelesai > i ? (
+      {segs.map((g, i) => {
+        const mid = tengahSisi(g.a, g.b, 12);
+        const tampilTanda = tandaSama && segs.filter((s) => sama(s.n, g.n)).length >= 2;
+        return sisiSelesai > i ? (
           <g key={i}>
-            <text x={g.lx} y={g.ly} textAnchor="middle" fontSize="13" fontWeight="900" fill={MERAH}>
+            <text x={mid.x} y={mid.y} textAnchor="middle" fontSize="13" fontWeight="900" fill={MERAH}>
               {g.n}
             </text>
-            {tandaSama ? (
-              <text x={(g.a.x + g.b.x) / 2} y={(g.a.y + g.b.y) / 2 - 8} textAnchor="middle" fontSize="11" fontWeight="900" fill={HIJAU}>
+            {tampilTanda ? (
+              <text x={mid.x} y={mid.y - 12} textAnchor="middle" fontSize="11" fontWeight="900" fill={HIJAU}>
                 ‖
               </text>
             ) : null}
           </g>
-        ) : null,
-      )}
+        ) : null;
+      })}
+      {sikuIdx >= 0 ? (
+        <rect
+          x={verts[sikuIdx].x - 6}
+          y={verts[sikuIdx].y - 6}
+          width="12"
+          height="12"
+          fill="none"
+          stroke={MERAH}
+          strokeWidth="2.2"
+        />
+      ) : null}
       {progres > 0.001 ? <circle cx={ujung.x} cy={ujung.y} r="7" fill={EMAS} stroke={BIRU} strokeWidth="2.2" /> : null}
       {tampilJumlah && progres >= 0.98 ? (
         <Muncul>
-          <LabelSvg x={115} y={110} w={70} teks={`K=${sisi[0] + sisi[1] + sisi[2]}`} ukuran={13} warna={HIJAU} />
+          <LabelSvg x={115} y={178} w={70} teks={`K=${a + b + c}`} ukuran={13} warna={HIJAU} />
         </Muncul>
       ) : null}
     </g>

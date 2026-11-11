@@ -1,19 +1,70 @@
 "use client";
 import React from "react";
 import type { JenisBangun } from "./data-k4b5";
+import { sisiUntukCiri, titikSegitigaDariSisi, indeksSudutSiku, type CiriSisiSegitiga, type CiriSudutSegitiga } from "./segitiga-geometri";
 
 const BIRU = "#1C01A5";
 const ISI = "#F59E0B";
 
-export function SvgBangun({ jenis, kecil = false }: { jenis: JenisBangun; kecil?: boolean }) {
+/** Gambar segitiga sesuai ciri sisi/sudut — tidak boleh selalu sama sisi. */
+export function SvgSegitiga({
+  ciriSisi,
+  ciriSudut,
+  kecil = false,
+  label,
+}: {
+  ciriSisi?: CiriSisiSegitiga;
+  ciriSudut?: CiriSudutSegitiga;
+  kecil?: boolean;
+  label?: string;
+}) {
+  const s = kecil ? 56 : 84;
+  const [a, b, c] = sisiUntukCiri(ciriSisi, ciriSudut);
+  const [A, B, C] = titikSegitigaDariSisi(a, b, c, { w: 84, h: 84, pad: 8 });
+  const siku = indeksSudutSiku(a, b, c);
+  const verts = [A, B, C];
+  const stroke = { stroke: BIRU, strokeWidth: 2.2, fill: ISI, fillOpacity: 0.85 };
+  return (
+    <svg width={s} height={s} viewBox="0 0 84 84" aria-label={label ?? "segitiga"}>
+      <polygon points={`${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}`} {...stroke} />
+      {siku >= 0 ? (
+        <rect x={verts[siku].x - 5} y={verts[siku].y - 5} width="10" height="10" fill="none" stroke={BIRU} strokeWidth="2" />
+      ) : null}
+      {ciriSisi === "sama-sisi" || ciriSisi === "sama-kaki" ? (
+        <>
+          {/* tanda sisi sama di tengah kaki yang sama */}
+          <text x={(A.x + C.x) / 2 - 4} y={(A.y + C.y) / 2} fontSize="9" fontWeight="900" fill={BIRU}>
+            ‖
+          </text>
+          <text x={(B.x + C.x) / 2 + 2} y={(B.y + C.y) / 2} fontSize="9" fontWeight="900" fill={BIRU}>
+            ‖
+          </text>
+          {ciriSisi === "sama-sisi" ? (
+            <text x={(A.x + B.x) / 2} y={(A.y + B.y) / 2 + 4} fontSize="9" fontWeight="900" fill={BIRU}>
+              ‖
+            </text>
+          ) : null}
+        </>
+      ) : null}
+    </svg>
+  );
+}
+
+export function SvgBangun({
+  jenis,
+  kecil = false,
+  ciriSisi,
+  ciriSudut,
+}: {
+  jenis: JenisBangun;
+  kecil?: boolean;
+  ciriSisi?: CiriSisiSegitiga;
+  ciriSudut?: CiriSudutSegitiga;
+}) {
   const s = kecil ? 56 : 84;
   const stroke = { stroke: BIRU, strokeWidth: 2.2, fill: ISI, fillOpacity: 0.85 };
   if (jenis === "segitiga") {
-    return (
-      <svg width={s} height={s} viewBox="0 0 84 84" aria-label="segitiga">
-        <polygon points="42,8 76,72 8,72" {...stroke} />
-      </svg>
-    );
+    return <SvgSegitiga ciriSisi={ciriSisi} ciriSudut={ciriSudut} kecil={kecil} />;
   }
   if (jenis === "persegi") {
     return (
@@ -59,8 +110,8 @@ export function SvgBangun({ jenis, kecil = false }: { jenis: JenisBangun; kecil?
   }
   if (jenis === "segilima") {
     const pts = [0, 1, 2, 3, 4].map((i) => {
-      const a = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
-      return `${42 + 32 * Math.cos(a)},${42 + 32 * Math.sin(a)}`;
+      const ang = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+      return `${42 + 32 * Math.cos(ang)},${42 + 32 * Math.sin(ang)}`;
     });
     return (
       <svg width={s} height={s} viewBox="0 0 84 84" aria-label="segilima">
@@ -70,8 +121,8 @@ export function SvgBangun({ jenis, kecil = false }: { jenis: JenisBangun; kecil?
   }
   if (jenis === "segienam") {
     const pts = [0, 1, 2, 3, 4, 5].map((i) => {
-      const a = (i * Math.PI) / 3;
-      return `${42 + 30 * Math.cos(a)},${42 + 30 * Math.sin(a)}`;
+      const ang = (i * Math.PI) / 3;
+      return `${42 + 30 * Math.cos(ang)},${42 + 30 * Math.sin(ang)}`;
     });
     return (
       <svg width={s} height={s} viewBox="0 0 84 84" aria-label="segienam">

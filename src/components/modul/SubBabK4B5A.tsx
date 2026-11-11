@@ -10,11 +10,23 @@ import { KetukPilih, KetukSemua, MemoriKartu, PasangKartu, PilihBertahap, UrutKe
 import {
   HURUF, RONDE_HITUNG_CA, RONDE_JENIS_CA, RONDE_SORTIR_CA, RONDE_PASANG_CA, RONDE_MEMORI_CA, RONDE_KETUK_CA, RONDE_SEMUA_CA, RONDE_CERITA_CA, RONDE_URUT_CA,
   RONDE_HITUNG_PA, RONDE_PASANG_PA, RONDE_MEMORI_PA, RONDE_TABEL_PA, RONDE_SEMUA_PA, RONDE_SORTIR_PA, RONDE_JENIS_PA, RONDE_BENARSALAH_QA, RONDE_DETEKTIF_QA, PETA_KONSEP_QA, RONDE_CERITA_QA,
-  opsiAngka, urutTampil, urutanTetap, byId,
+  opsiAngka, urutTampil, urutanTetap, byId, BANGUN,
 } from "./data-k4b5";
 import { buatKartu, VisualBangun, Numeral } from "./bantu-k4b5";
+import { SvgSegitiga } from "./diagram-k4b5";
 import { visualInfografisK4B5A } from "./infografis-k4b5";
 import { SUB_A45 } from "./naskah-k4b5";
+
+function visualJenisSudut(jawab: string) {
+  if (jawab === "siku-siku") return <SvgSegitiga ciriSudut="siku" ciriSisi="sembarang" />;
+  if (jawab === "tumpul") return <SvgSegitiga ciriSudut="tumpul" ciriSisi="sembarang" />;
+  if (jawab === "lancip" || jawab.includes("lancip")) return <SvgSegitiga ciriSudut="lancip" ciriSisi="sembarang" />;
+  return <Numeral n="△" />;
+}
+function bangunSortir(id: string) {
+  const kunci = id.replace(/2$/, "").replace(/b$/, "");
+  return BANGUN.find((b) => b.id === id || b.id === kunci) ?? byId("s3");
+}
 
 const J = SUB_A45.games.map((g) => g.title);
 const TOTAL = 30;
@@ -56,7 +68,7 @@ function K3(d: PropsLangkah) {
   return Kartu(d, 3, "k4b5a-sortir", "Pilah beraturan.", RONDE_SORTIR_CA.length, "Pilah semua dulu, ya.", (r, beres) => (
     <><IgilBicara pendek="Pilah" teks="Beraturan atau tak." /><Sortir key={r} lebarItem={110} kolomBin={2} item={urutanKe(RONDE_SORTIR_CA[r].length, r).map((i) => {
       const s = RONDE_SORTIR_CA[r][i];
-      return { id: s.id, label: s.label, isi: <Numeral n={s.label} kelas="text-xs" />, bin: s.bin, petunjuk: "Sisi & sudut sama?", ucapan: s.label };
+      return { id: s.id, label: s.label, isi: <VisualBangun bangun={bangunSortir(s.id)} kecil />, bin: s.bin, petunjuk: "Sisi & sudut sama?", ucapan: s.label };
     })} bin={BIN} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
@@ -107,7 +119,7 @@ function P0(d: PropsLangkah) {
 }
 function P1(d: PropsLangkah) {
   return Kartu(d, 11, "k4b5a-psudut", "Jenis sudut.", RONDE_JENIS_PA.length, "Jawab semua dulu, ya.", (r, beres) => (
-    <><CatatanTempel pendek="Sudut" teks="Pilih jenis." /><PilihBertahap key={r} soal={RONDE_JENIS_PA[r].map((s) => ({ visual: <Numeral n="△" />, tanya: s.tanya, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Lancip/siku/tumpul.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
+    <><CatatanTempel pendek="Sudut" teks="Pilih jenis." /><PilihBertahap key={r} soal={RONDE_JENIS_PA[r].map((s) => ({ visual: visualJenisSudut(s.jawab), tanya: s.tanya, opsi: s.opsi, jawab: s.opsi.indexOf(s.jawab), petunjuk: "Lancip/siku/tumpul.", pesan: s.pesan }))} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }
 function P2(d: PropsLangkah) {
@@ -137,7 +149,7 @@ function P6(d: PropsLangkah) {
   return Kartu(d, 16, "k4b5a-pl", "Pilah diagram.", RONDE_SORTIR_PA.length, "Pilah semua dulu, ya.", (r, beres) => (
     <><CatatanTempel pendek="Pilah" teks="Beraturan?" /><Sortir key={r} lebarItem={110} kolomBin={2} item={urutanKe(RONDE_SORTIR_PA[r].length, r).map((i) => {
       const s = RONDE_SORTIR_PA[r][i];
-      return { id: s.id, label: s.label, isi: <Numeral n={s.label} kelas="text-xs" />, bin: s.bin, petunjuk: "Sisi & sudut?", ucapan: s.label };
+      return { id: s.id, label: s.label, isi: <VisualBangun bangun={bangunSortir(s.id)} kecil />, bin: s.bin, petunjuk: "Sisi & sudut?", ucapan: s.label };
     })} bin={BIN} onBeres={beres} pesanBeres="Selesai." /></>
   ));
 }

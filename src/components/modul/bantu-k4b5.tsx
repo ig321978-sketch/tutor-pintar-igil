@@ -20,7 +20,7 @@ export const Numeral = ({ n, kelas = "text-2xl" }: { n: number | string; kelas?:
 export function VisualBangun({ bangun, kecil = false }: { bangun: Bangun; kecil?: boolean }) {
   return (
     <div className="flex flex-col items-center gap-1">
-      <SvgBangun jenis={bangun.jenis} kecil={kecil} />
+      <SvgBangun jenis={bangun.jenis} kecil={kecil} ciriSisi={bangun.ciriSisi} ciriSudut={bangun.ciriSudut} />
       <span className="text-[10px] font-black text-[#1C01A5]/70">{bangun.nama}</span>
     </div>
   );
