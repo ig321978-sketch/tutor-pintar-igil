@@ -1324,5 +1324,30 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   cek(ada("D", Bj({ jumlah: [12, 12, 9] }), "d-sama") && ada("D", SEL("odometer"), "d-odometer"), "bab5 D: sama dan odometer");
   cek(X5.puncakTunggal([3, 3, 1]) === -1 && X5.puncakTunggal([1, 4, 2]) === 1, "bab5: puncakTunggal");
 }
+/* ---------------- Misi Bab 6 (hibrida) ---------------- */
+{
+  const kosong = new Set();
+  const X6 = await import("../src/components/modul/misi-bab6.ts");
+  const Bj = (o) => ({ alat: "banding", jumlah: [12, 15, 9], pas: 0, pasang: true, tanda: false, selisih: true, batang: true, benda: false, paling: false, urut: false, garis: false, ...o });
+  const Lo = (o) => ({ alat: "loncat", op: "selisih", strategi: "sepuluh", a: 7, b: 9, satu: 2, sepuluh: 2, ...o });
+  const Be = (o) => ({ alat: "belasan", op: "tambah", a: 12, b: 3, benda: true, tabel: true, pecah: true, periksa: false, ...o });
+  const SEL = (id) => ({ alat: "selesai", id });
+  sama(X6.PASANGAN_JERUK, B5.PASANGAN, "bab6: pasangan jeruk sama dengan lab banding");
+  const awalSemua = [Bj({}), Lo({}), Be({}), Be({ op: "kurang", a: 15, b: 3, periksa: true })];
+  for (const sub of ["A", "B", "C"]) {
+    const daftar = X6.daftarMisiBab6(sub);
+    for (const k of awalSemua) cek(M0.misiBaru(daftar, k, kosong).length === 0, `bab6 ${sub}: keadaan awal ${k.alat} tidak memenuhi misi`);
+  }
+  ujiStruktur("bab6", X6.daftarMisiBab6, ["A", "B", "C"], { A: Bj({}), B: Lo({}), C: Be({}) });
+  const ada = (sub, k, id) => M0.misiBaru(X6.daftarMisiBab6(sub), k, kosong).includes(id);
+  cek(ada("A", Bj({ jumlah: [12, 12, 9] }), "a-sama") && !ada("A", Bj({ jumlah: [12, 12, 9], selisih: false }), "a-sama") && ada("A", Bj({ jumlah: [14, 9, 9] }), "a-batang") && !ada("A", Bj({ jumlah: [14, 9, 9], batang: false }), "a-batang"), "bab6 A: sama dan batang");
+  cek(ada("A", Bj({ jumlah: [13, 12, 9] }), "a-satu") && !ada("A", Bj({ jumlah: [13, 9, 9], pas: 1 }), "a-satu"), "bab6 A: selisih satu pada pasangan terpilih");
+  cek(ada("A", Lo({ a: 4, b: 12 }), "a-garis") && ada("A", Lo({ a: 12, b: 4 }), "a-garis") && ada("A", Lo({ a: 9, b: 7 }), "a-tukar") && ada("A", Lo({ a: 6, b: 6 }), "a-nol") && !ada("A", Lo({ op: "tambah", a: 6, b: 6 }), "a-nol"), "bab6 A: garis, tukar, nol");
+  cek(ada("B", Lo({ op: "tambah", a: 8, b: 5 }), "b-loncat") && !ada("B", Lo({ op: "kurang", a: 8, b: 5 }), "b-loncat") && ada("B", SEL("jembatan"), "b-jembatan") && ada("B", Lo({ op: "tambah", a: 12, b: 3 }), "b-tidak-lewat"), "bab6 B: loncat, jembatan");
+  cek(ada("B", Be({ a: 14, b: 4 }), "b-belasan") && ada("B", Be({ a: 15, b: 4 }), "b-sembilan-belas") && !ada("B", Be({ op: "kurang", a: 15, b: 4 }), "b-sembilan-belas") && ada("B", Bj({ jumlah: [14, 9, 9] }), "b-ingat"), "bab6 B: belasan dan ingat");
+  cek(ada("C", Lo({ op: "kurang", a: 15, b: 6 }), "c-loncat") && ada("C", Be({ op: "kurang", a: 17, b: 5 }), "c-belasan") && !ada("C", Be({ op: "tambah", a: 17, b: 5 }), "c-belasan"), "bab6 C: loncat dan belasan kurang");
+  cek(ada("C", Be({ op: "kurang", a: 16, b: 6 }), "c-sepuluh") && !ada("C", Be({ op: "kurang", a: 15, b: 3 }), "c-sepuluh") && ada("C", SEL("loket"), "c-loket") && ada("C", Lo({ op: "kurang", a: 12, b: 5 }), "c-lewat") && ada("C", SEL("jembatan"), "c-ingat"), "bab6 C: sepuluh, loket, ingat");
+  cek(X6.selisihPasang(Bj({ jumlah: [3, 8, 5], pas: 2 })) === 3, "bab6: selisihPasang");
+}
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

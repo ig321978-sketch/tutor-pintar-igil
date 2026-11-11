@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import type { KeadaanBelasan } from "./misi-bab6";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { Cek, CobaIni, KARTU, TOMBOL_BIASA } from "./simulasi-bersama";
 import { KalimatBesar, Pengatur, ejaHitung } from "./komponen-lab";
@@ -48,11 +49,17 @@ function Titik({ warna, pudar = false }: { warna: string; pudar?: boolean }) {
   return <span className={`h-4 w-4 rounded-full border-2 ${pudar ? "border-dashed border-[#1C01A5]/40 bg-white opacity-60" : "border-[#1C01A5]"}`} style={pudar ? undefined : { backgroundColor: warna }} />;
 }
 
-export default function SimulasiBelasan({ speakGuru, op, tampil = SEMUA_TAMPIL_BELASAN }: { speakGuru: (t: string) => void; op: OpBelasan; tampil?: TampilBelasan[] }) {
+export default function SimulasiBelasan({ speakGuru, op, tampil = SEMUA_TAMPIL_BELASAN, onKeadaan }: { speakGuru: (t: string) => void; op: OpBelasan; tampil?: TampilBelasan[]; /** Melapor keadaan ke papan misi (bila ada). */ onKeadaan?: (k: KeadaanBelasan) => void }) {
   const [m, setM] = useState<Belasan>(() => awalBelasan(op));
   const [lihatMentah, setLihat] = useState<Record<TampilBelasan, boolean>>({ benda: true, tabel: true, pecah: true, periksa: true });
   const tersedia = (Object.keys(LABEL) as TampilBelasan[]).filter((k) => tampil.includes(k) && (k !== "periksa" || op === "kurang"));
   const lihat = (k: TampilBelasan) => tampil.includes(k) && lihatMentah[k] && (k !== "periksa" || op === "kurang");
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  const [fBenda, fTabel, fPecah, fPeriksa] = (["benda", "tabel", "pecah", "periksa"] as const).map((k) => lihat(k));
+  useEffect(() => {
+    lapor.current?.({ alat: "belasan", op, a: m.a, b: m.b, benda: fBenda, tabel: fTabel, pecah: fPecah, periksa: fPeriksa });
+  }, [op, m.a, m.b, fBenda, fTabel, fPecah, fPeriksa]);
   const h = hasilBelasan(m, op);
   const s = satuanDari(m.a);
   const coba = langkahCoba(op, tampil);

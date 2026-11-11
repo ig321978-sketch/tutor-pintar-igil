@@ -1,119 +1,93 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
+import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiBanding from "./SimulasiBanding";
 import SimulasiLoncat from "./SimulasiLoncat";
 import SimulasiJembatan from "./SimulasiJembatan";
-import SimulasiBelasan from "./SimulasiBelasan";
+import SimulasiBelasan, { type TampilBelasan } from "./SimulasiBelasan";
 import SimulasiSkenario from "./SimulasiSkenario";
+import { Pilihan } from "./simulasi-bersama";
 import { SKENARIO_BAB6 } from "./skenario-kelas1";
+import { daftarMisiBab6, type KeadaanBab6 } from "./misi-bab6";
+import { laporMisi, tampilMisi } from "./misi-simulasi";
 
 /* ======================================================================== */
 /* Simulasi Bab 6 di dalam Materi (tahap 4 SMISCPA, di antara Infografis    */
-/* dan Concrete). Satu simulasi per layar, tiap simulasi diawali satu Misi. */
-/* Tiap sub-bab memakai alat yang sesuai isi yang diajarkannya:            */
-/*   Sub-Bab A (Lebih dari, Kurang dari, Selisih): Selisih Dua Kelompok     */
-/*     (pasangkan, model batang, selisih), lalu Selisih di Garis Bilangan.  */
-/*   Sub-Bab B (Penjumlahan kurang dari 20): Loncat Menjumlah (satu-satu    */
-/*     atau lewat sepuluh), Jembatan Sepuluh (mesin keadaan), lalu          */
-/*     Menjumlah Belasan dan Satuan (pasangan bilangan, nilai tempat).      */
-/*   Sub-Bab C (Pengurangan kurang dari 20): Loncat Mengurang, Mengurang    */
-/*     Belasan dan Satuan (termasuk periksa dengan penjumlahan), lalu       */
-/*     skenario Loket Pasar Malam yang merangkum bab.                       */
-/* Tombol LANJUTKAN aktif setelah simulasinya disentuh sekali (semua mode   */
-/* "sentuh"), supaya tahap ini ringan dan tidak menahan anak.               */
+/* dan Concrete). Pola hibrida: satu laboratorium yang alatnya bertambah    */
+/* per sub-bab, dengan misi wajib dan tantangan bebas (misi-bab6.ts).       */
+/*   Sub-Bab A (Lebih dari, Kurang dari, Selisih): tab Selisih Dua          */
+/*     Kelompok dan Garis Bilangan (selisih).                               */
+/*   Sub-Bab B (Penjumlahan kurang dari 20): + garis tambah, Jembatan       */
+/*     Sepuluh, dan Menjumlah Belasan.                                      */
+/*   Sub-Bab C (Pengurangan kurang dari 20, sub-bab akhir): + garis         */
+/*     kurang, Mengurang Belasan, dan Loket Pasar Malam, sekaligus          */
+/*     simulasi pencapaian misi bab ini.                                    */
+/* Tombol LANJUTKAN aktif bila misi wajib tercapai, atau anak memilih       */
+/* "Lewati misi" setelah mencoba. Simulasi tidak memberi Poin Kualifikasi.  */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
 const MISI = {
-  selisih: "Tekan plus pada jeruk Kira beberapa kali. Lihat jeruk yang tidak berpasangan dan selisihnya.",
-  garisSelisih: "Atur bilangan pertama dan kedua. Lihat jarak dari yang kecil ke yang besar di garis bilangan.",
-  loncatTambah: "Tekan plus pada Loncat maju, lalu bandingkan loncat satu-satu dengan lewat sepuluh. Lihat mana yang lebih sedikit lompatannya.",
-  jembatan: "Tekan Baca soal. Lihat bilangan mana yang akan dipecah.",
-  belasanTambah: "Tekan plus pada Ditambah. Lihat satuannya berubah, puluhannya tetap.",
-  loncatKurang: "Tekan plus pada Loncat mundur sampai 6. Bandingkan loncat satu-satu dengan lewat sepuluh.",
-  belasanKurang: "Tekan plus pada Dikurangi. Lihat satuannya berkurang, puluhannya tetap.",
-  loket: "Tekan Buka loket! Lalu bantu Kak Tiket menghitung tiketnya.",
+  A: "Bandingkan dua kelompok, lalu cari selisihnya di batang dan garis bilangan. Selesaikan misi wajib, lalu coba tantangan bebas.",
+  B: "Menjumlah sampai 20 dengan loncat, jembatan sepuluh, dan belasan. Selesaikan misi wajib, lalu coba tantangan bebas.",
+  C: "Mengurang sampai 20, lalu bantu Kak Tiket di loket. Selesaikan semua misi wajib, lalu coba tantangan bebas.",
 } as const;
 
+const TAMPIL_BELASAN_TAMBAH: TampilBelasan[] = ["benda", "tabel", "pecah"];
+const TAMPIL_BELASAN_KURANG: TampilBelasan[] = ["benda", "tabel", "pecah", "periksa"];
+
+/** Dua pengatur belasan (tambah dan kurang) tetap hidup, jadi pilihan anak tidak hilang saat berganti. */
+function BelasanDua({ speakGuru, onKeadaan }: { speakGuru: (t: string) => void; onKeadaan: (k: KeadaanBab6) => void }) {
+  const [op, setOp] = useState<"tambah" | "kurang">("tambah");
+  return (
+    <div className="space-y-3">
+      <div className="flex flex-wrap justify-center gap-1.5" role="group" aria-label="Pilih operasi belasan">
+        <Pilihan aktif={op === "tambah"} onKlik={() => setOp("tambah")}>
+          Menjumlah
+        </Pilihan>
+        <Pilihan aktif={op === "kurang"} onKlik={() => setOp("kurang")}>
+          Mengurang
+        </Pilihan>
+      </div>
+      <div hidden={op !== "tambah"}>
+        <SimulasiBelasan speakGuru={speakGuru} op="tambah" tampil={TAMPIL_BELASAN_TAMBAH} onKeadaan={onKeadaan} />
+      </div>
+      <div hidden={op !== "kurang"}>
+        <SimulasiBelasan speakGuru={speakGuru} op="kurang" tampil={TAMPIL_BELASAN_KURANG} onKeadaan={onKeadaan} />
+      </div>
+    </div>
+  );
+}
+
 const langkahBab6 = (sub: string): LangkahSim[] => {
-  switch (sub) {
-    case "B":
-      return [
-        {
-          metode: "PhET",
-          sub: "Loncat Menjumlah",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.loncatTambah,
-          mode: "sentuh",
-          render: (a) => <SimulasiLoncat speakGuru={a.speakGuru} ops={["tambah"]} />,
-        },
-        {
-          metode: "Mesin keadaan",
-          sub: "Jembatan Sepuluh",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.jembatan,
-          mode: "sentuh",
-          render: (a) => <SimulasiJembatan speakGuru={a.speakGuru} onTuntas={a.tuntas} />,
-        },
-        {
-          metode: "PhET",
-          sub: "Menjumlah Belasan dan Satuan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.belasanTambah,
-          mode: "sentuh",
-          render: (a) => <SimulasiBelasan speakGuru={a.speakGuru} op="tambah" tampil={["benda", "tabel", "pecah"]} />,
-        },
-      ];
-    case "C":
-      return [
-        {
-          metode: "PhET",
-          sub: "Loncat Mengurang",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.loncatKurang,
-          mode: "sentuh",
-          render: (a) => <SimulasiLoncat speakGuru={a.speakGuru} ops={["kurang"]} />,
-        },
-        {
-          metode: "PhET",
-          sub: "Mengurang Belasan dan Satuan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.belasanKurang,
-          mode: "sentuh",
-          render: (a) => <SimulasiBelasan speakGuru={a.speakGuru} op="kurang" tampil={["benda", "tabel", "pecah", "periksa"]} />,
-        },
-        {
-          metode: "Skenario",
-          sub: "Loket Pasar Malam",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.loket,
-          mode: "sentuh",
-          render: (a) => <SimulasiSkenario def={SKENARIO_BAB6} speakGuru={a.speakGuru} onTuntas={a.tuntas} />,
-        },
-      ];
-    default:
-      return [
-        {
-          metode: "PhET",
-          sub: "Selisih Dua Kelompok",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.selisih,
-          mode: "sentuh",
-          render: (a) => <SimulasiBanding speakGuru={a.speakGuru} tampil={["pasang", "batang", "selisih"]} />,
-        },
-        {
-          metode: "PhET",
-          sub: "Selisih di Garis Bilangan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.garisSelisih,
-          mode: "sentuh",
-          render: (a) => <SimulasiLoncat speakGuru={a.speakGuru} ops={["selisih"]} />,
-        },
-      ];
-  }
+  const huruf = (["A", "B", "C"].includes(sub) ? sub : "A") as "A" | "B" | "C";
+  const daftar = daftarMisiBab6(huruf);
+  return [
+    {
+      metode: "PhET",
+      sub: huruf === "C" ? "Lab Hitung 20: Pencapaian Misi" : "Lab Hitung 20",
+      petunjuk: MAINKAN_DULU,
+      misi: MISI[huruf],
+      misiDaftar: tampilMisi(daftar),
+      mode: "sentuh",
+      render: (a) => {
+        const lapor = (k: KeadaanBab6) => laporMisi(daftar, k, a.capai);
+        const selesai = (id: string) => lapor({ alat: "selesai", id });
+        const ops = huruf === "A" ? (["selisih"] as const) : huruf === "B" ? (["selisih", "tambah"] as const) : (["selisih", "tambah", "kurang"] as const);
+        const banding: TabLab = { id: "banding", nama: "Selisih Dua Kelompok", render: () => <SimulasiBanding speakGuru={a.speakGuru} tampil={["pasang", "batang", "selisih"]} onKeadaan={lapor} /> };
+        const garis: TabLab = { id: "garis", nama: "Garis Bilangan", render: () => <SimulasiLoncat speakGuru={a.speakGuru} ops={[...ops]} onKeadaan={lapor} /> };
+        const jembatan: TabLab = { id: "jembatan", nama: "Jembatan Sepuluh", render: () => <SimulasiJembatan speakGuru={a.speakGuru} onTuntas={() => selesai("jembatan")} /> };
+        const belasanB: TabLab = { id: "belasan", nama: "Belasan", render: () => <SimulasiBelasan speakGuru={a.speakGuru} op="tambah" tampil={TAMPIL_BELASAN_TAMBAH} onKeadaan={lapor} /> };
+        const belasanC: TabLab = { id: "belasan", nama: "Belasan", render: () => <BelasanDua speakGuru={a.speakGuru} onKeadaan={lapor} /> };
+        const loket: TabLab = { id: "loket", nama: "Loket Pasar Malam", render: () => <SimulasiSkenario def={SKENARIO_BAB6} speakGuru={a.speakGuru} onTuntas={() => selesai("loket")} /> };
+        const tab = huruf === "A" ? [banding, garis] : huruf === "B" ? [banding, garis, jembatan, belasanB] : [banding, garis, jembatan, belasanC, loket];
+        return <LabBertahap tab={tab} label="Alat laboratorium hitung 20" />;
+      },
+    },
+  ];
 };
 
 /** Misi simulasi pertama sub-bab, untuk digabung ke ucapan saat tahap Simulasi dibuka. */

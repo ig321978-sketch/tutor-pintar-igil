@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { CobaIni, KARTU, Pilihan, TOMBOL_BIASA } from "./simulasi-bersama";
 import { BIRU, EMAS, GarisAngka, HIJAU, KalimatBesar, MERAH, Pengatur, ejaHitung } from "./komponen-lab";
+import type { KeadaanLoncat } from "./misi-bab6";
 import { MAKS, batasOperan, catatanLoncat, hasilLoncat, kalimatLoncat, rapikan, rencana, ucapanLoncat, type Loncat, type Op, type Strategi } from "./lab-loncat-bab6";
 
 /* ------------------------------------------------------------------------ */
@@ -46,7 +47,7 @@ function langkahCoba(op: Op, ops: Op[]): string[] {
   ];
 }
 
-export default function SimulasiLoncat({ speakGuru, ops = SEMUA_OP }: { speakGuru: (t: string) => void; ops?: Op[] }) {
+export default function SimulasiLoncat({ speakGuru, ops = SEMUA_OP, onKeadaan }: { speakGuru: (t: string) => void; ops?: Op[]; /** Melapor keadaan ke papan misi (bila ada). */ onKeadaan?: (k: KeadaanLoncat) => void }) {
   const [op, setOp] = useState<Op>(ops[0]);
   const [strategi, setStrategi] = useState<Strategi>("sepuluh");
   const [p, setP] = useState<Loncat>(AWAL_LONCAT[ops[0]]);
@@ -67,6 +68,11 @@ export default function SimulasiLoncat({ speakGuru, ops = SEMUA_OP }: { speakGur
   };
   const satu = rencana(p, op, "satuan").length;
   const sepuluh = rencana(p, op, "sepuluh").length;
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  useEffect(() => {
+    lapor.current?.({ alat: "loncat", op, strategi, a: p.a, b: p.b, satu, sepuluh });
+  }, [op, strategi, p.a, p.b, satu, sepuluh]);
 
   return (
     <div className="space-y-4">
