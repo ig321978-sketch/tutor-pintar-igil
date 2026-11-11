@@ -1433,6 +1433,64 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const subC3 = bab === "mtk-1-bab3" && activeSubBab === "C";
   const subD3 = bab === "mtk-1-bab3" && activeSubBab === "D";
   const judulSubBab = currentSubContent.fullTitle.split(": ").slice(1).join(": ");
+  /** Gaya visual Mind-Map berbeda per kelas SD (1–6). */
+  const kelasPeta = (Math.min(6, Math.max(1, Number(/^mtk-(\d+)/.exec(bab)?.[1] ?? 1))) || 1) as 1 | 2 | 3 | 4 | 5 | 6;
+  const langkahPeta = modulBaru
+    ? modulBaru.peta
+    : subC2
+      ? PETA_PIKIRAN_C2
+      : subB2
+        ? PETA_PIKIRAN_B2
+        : subD3
+          ? PETA_PIKIRAN_D3
+          : subC3
+            ? PETA_PIKIRAN_C3
+            : subB3
+              ? PETA_PIKIRAN_B3
+              : subA8
+                ? PETA_PIKIRAN_A8
+                : subB8
+                  ? PETA_PIKIRAN_B8
+                  : subA7
+                    ? PETA_PIKIRAN_A7
+                    : subB7
+                      ? PETA_PIKIRAN_B7
+                      : subA6
+                        ? PETA_PIKIRAN_A6
+                        : subB6
+                          ? PETA_PIKIRAN_B6
+                          : subC6
+                            ? PETA_PIKIRAN_C6
+                            : subA5
+                              ? PETA_PIKIRAN_A5
+                              : subB5
+                                ? PETA_PIKIRAN_B5
+                                : subC5
+                                  ? PETA_PIKIRAN_C5
+                                  : subD5
+                                    ? PETA_PIKIRAN_D5
+                                    : subC4
+                                      ? PETA_PIKIRAN_C4
+                                      : subB4
+                                        ? PETA_PIKIRAN_B4
+                                        : adaBab4
+                                          ? PETA_PIKIRAN_A4
+                                          : adaBab3
+                                            ? PETA_PIKIRAN_A3
+                                            : adaBab2
+                                              ? PETA_PIKIRAN_A2
+                                              : activeSubBab === "D"
+                                                ? PETA_PIKIRAN_D
+                                                : currentSubContent.mindMaps;
+  const maskotPeta = modulBaru || subC2 || subB2 || subD3 || subC3 || subB3 || subA8 || subB8 || subA7 || subB7 || subA6 || subB6 || subC6 || subA5 || subB5 || subC5 || subD5 || subC4 || subB4 || adaBab4 || adaBab3 || adaBab2 ? (
+    <IgilWajah kelas="h-14 w-20 igil-lompat" />
+  ) : activeSubBab === "A" ? (
+    <KelinciWajah kelas="h-14 w-20 igil-lompat" />
+  ) : activeSubBab === "C" ? (
+    <KatakWajah kelas="h-14 w-20 igil-lompat" />
+  ) : activeSubBab === "D" ? (
+    <TupaiWajah kelas="h-14 w-20 igil-lompat" />
+  ) : undefined;
 
   return (
     <div className={`min-h-screen w-full bg-white text-[#334155] pb-16 ${fontAnak.className}`}>
@@ -2138,206 +2196,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           >
             {popupTahap === 2 ? (
             <div className="space-y-3">
-              {modulBaru ? (
-                <PetaPikiranB
-                  langkah={modulBaru.peta}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  uraian={modulBaru.uraianPeta}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subC2 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_C2}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subB2 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_B2}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subD3 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_D3}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subC3 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_C3}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subB3 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_B3}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subA8 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_A8}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subB8 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_B8}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subA7 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_A7}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subB7 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_B7}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subA6 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_A6}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subB6 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_B6}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subC6 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_C6}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subA5 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_A5}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subB5 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_B5}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subC5 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_C5}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subD5 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_D5}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subC4 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_C4}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : subB4 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_B4}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : adaBab4 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_A4}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : adaBab3 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_A3}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : adaBab2 ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_A2}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<IgilWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : activeSubBab === "A" ? (
-                <PetaPikiranB
-                  langkah={currentSubContent.mindMaps}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<KelinciWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : activeSubBab === "B" ? (
-                <PetaPikiranB
-                  langkah={currentSubContent.mindMaps}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                />
-              ) : activeSubBab === "C" ? (
-                <PetaPikiranB
-                  langkah={currentSubContent.mindMaps}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<KatakWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : activeSubBab === "D" ? (
-                <PetaPikiranB
-                  langkah={PETA_PIKIRAN_D}
-                  judul={judulSubBab}
-                  speakGuru={speakGuru}
-                  maskot={<TupaiWajah kelas="h-14 w-20 igil-lompat" />}
-                />
-              ) : (
-              <div className="flex flex-col">
-                {currentSubContent.mindMaps.map((mm) => (
-                  <div
-                    key={mm.stepNumber}
-                    className={`igil-kartu-lancip w-full px-5 pb-14 ${
-                      mm.stepNumber === 1 ? "igil-kartu-awal pt-5" : "pt-12"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-2xl">{mm.icon}</span>
-                      <TombolSuaraGuru kecil label="Suara" onClick={() => speakGuru(`${mm.stepTitle}. ${mm.stepDesc}`)} />
-                    </div>
-                    <h3 className="mt-3 text-base font-black text-[#1C01A5]">{mm.stepTitle}</h3>
-                  </div>
-                ))}
-              </div>
-              )}
+              <PetaPikiranB
+                langkah={langkahPeta}
+                judul={judulSubBab}
+                speakGuru={speakGuru}
+                kelas={kelasPeta}
+                maskot={maskotPeta}
+              />
 
               <div className="flex justify-end">
                 <button
