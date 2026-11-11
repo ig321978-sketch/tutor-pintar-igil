@@ -124,6 +124,25 @@ export function pasanganGuru(kelas: string): ProfilGuru[] {
   return [GURU_PER_JENJANG[jenjang].wanita, GURU_PER_JENJANG[jenjang].pria];
 }
 
+const POLA_WANITA = /female|woman|wanita|girl|zira|samantha|susan|karen|hazel|moira|tessa|veena|sari|gadis|damayanti/i;
+const POLA_PRIA = /male|man|pria|boy|david|daniel|mark|james|alex|budi|dimas|andika|ardi/i;
+
+function pilihSuaraDariDaftar(
+  daftar: SpeechSynthesisVoice[],
+  kelamin: KelaminGuru,
+): SpeechSynthesisVoice | null {
+  if (daftar.length === 0) return null;
+  if (kelamin === "wanita") {
+    return daftar.find((suara) => POLA_WANITA.test(suara.name)) ?? daftar[0] ?? null;
+  }
+  return (
+    daftar.find((suara) => POLA_PRIA.test(suara.name)) ??
+    daftar.find((suara) => !POLA_WANITA.test(suara.name)) ??
+    daftar[0] ??
+    null
+  );
+}
+
 export function pilihSuaraIndonesia(
   kelamin: KelaminGuru = "wanita",
 ): SpeechSynthesisVoice | null {
@@ -135,31 +154,45 @@ export function pilihSuaraIndonesia(
         suara.lang.toLowerCase().startsWith("id") ||
         /indonesia/i.test(suara.name),
     );
-  const wanita = /female|woman|wanita|girl|zira|andika|sari/i;
-  const pria = /male|man|pria|boy|david|budi|dimas/i;
-  if (kelamin === "wanita") {
-    return (
-      daftar.find((suara) => wanita.test(suara.name)) ?? daftar[0] ?? null
-    );
-  }
-  return (
-    daftar.find((suara) => pria.test(suara.name)) ??
-    daftar.find((suara) => !wanita.test(suara.name)) ??
-    daftar[0] ??
-    null
-  );
+  return pilihSuaraDariDaftar(daftar, kelamin);
+}
+
+/** Suara Inggris untuk kata/frasa asing agar pelafalan tidak mengikuti ejaan id-ID. */
+export function pilihSuaraInggris(
+  kelamin: KelaminGuru = "wanita",
+): SpeechSynthesisVoice | null {
+  if (typeof window === "undefined") return null;
+  const semua = window.speechSynthesis.getVoices();
+  const en = semua.filter((suara) => {
+    const lang = suara.lang.replace("_", "-").toLowerCase();
+    return lang.startsWith("en");
+  });
+  // Utamakan en-US / en-GB lokal
+  const lokal = en.filter((s) => s.localService);
+  const usGb = (lokal.length ? lokal : en).filter((s) => {
+    const lang = s.lang.replace("_", "-").toLowerCase();
+    return lang.startsWith("en-us") || lang.startsWith("en-gb") || lang === "en";
+  });
+  return pilihSuaraDariDaftar(usGb.length ? usGb : en, kelamin);
 }
 
 export function buatUcapanGuru(
   teks: string,
   guru: ProfilGuru,
+  bahasa: "id-ID" | "en-US" = "id-ID",
 ): SpeechSynthesisUtterance {
   const ucapan = new SpeechSynthesisUtterance(teks);
-  ucapan.lang = "id-ID";
+  ucapan.lang = bahasa;
   ucapan.rate = guru.laju;
   ucapan.pitch = guru.nada;
-  const suara = pilihSuaraIndonesia(guru.kelamin);
+  const suara =
+    bahasa === "en-US" ? pilihSuaraInggris(guru.kelamin) ?? pilihSuaraIndonesia(guru.kelamin) : pilihSuaraIndonesia(guru.kelamin);
   if (suara) ucapan.voice = suara;
+  // Pastikan lang mengikuti suara terpilih bila mesin Inggris tersedia
+  if (bahasa === "en-US" && suara?.lang) {
+    const lang = suara.lang.replace("_", "-");
+    if (lang.toLowerCase().startsWith("en")) ucapan.lang = lang;
+  }
   return ucapan;
 }
 

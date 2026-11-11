@@ -1,12 +1,14 @@
 import {
   buatUcapanGuru,
   normalisasiKelaminGuru,
+  pilihSuaraInggris,
   profilGuru,
   type KelaminGuru,
 } from "@/lib/guru";
 import { bacaProgres } from "@/lib/progres";
 import { mintaAudioTts, hentikanAudioGuruAktif, saatHentiAudioGuru } from "@/lib/putar-tts-klien";
 import { SUARA_SERAGAM, pecahKalimat, pilihSuaraSeragam, type PilihanSuara } from "@/lib/suara-guru-seragam";
+import { adaSegmenInggris, pecahSegmenDwibahasa } from "@/lib/ucapan-dwibahasa";
 
 /**
  * Suara Guru di dalam Materi modul.
@@ -114,14 +116,58 @@ export function pilihanSuaraSeragamSaatIni(kelamin: KelaminGuru = kelaminGuruTer
 }
 
 /** Satu ucapan seragam: bahasa, laju, nada, dan suara mengikuti guru terpilih. */
-function buatUcapanSeragam(teks: string, kelamin: KelaminGuru): SpeechSynthesisUtterance {
+function buatUcapanSeragam(
+  teks: string,
+  kelamin: KelaminGuru,
+  bahasa: "id-ID" | "en-US" = "id-ID",
+): SpeechSynthesisUtterance {
   const pilihan = pilihanSuaraSeragamSaatIni(kelamin);
   const ucapan = new SpeechSynthesisUtterance(teks);
-  ucapan.lang = SUARA_SERAGAM.bahasa;
   ucapan.rate = pilihan.laju;
   ucapan.pitch = pilihan.nada;
-  if (pilihan.suara) ucapan.voice = pilihan.suara;
+  if (bahasa === "en-US") {
+    const en = pilihSuaraInggris(kelamin);
+    if (en) {
+      ucapan.voice = en;
+      ucapan.lang = en.lang.replace("_", "-");
+    } else {
+      ucapan.lang = "en-US";
+      if (pilihan.suara) ucapan.voice = pilihan.suara;
+    }
+  } else {
+    ucapan.lang = SUARA_SERAGAM.bahasa;
+    if (pilihan.suara) ucapan.voice = pilihan.suara;
+  }
   return ucapan;
+}
+
+/** Antre segmen dwibahasa di Web Speech; segmen en-US memakai suara Inggris bila ada. */
+function antreSegmenWebSpeech(
+  naskah: string,
+  buat: (teks: string, lang: "id-ID" | "en-US") => SpeechSynthesisUtterance,
+  aktif: () => boolean,
+  selesai: () => void,
+): void {
+  const segmen = pecahSegmenDwibahasa(naskah);
+  if (segmen.length === 0) {
+    selesai();
+    return;
+  }
+  let i = 0;
+  const lanjut = () => {
+    if (!aktif()) return;
+    if (i >= segmen.length) {
+      selesai();
+      return;
+    }
+    const s = segmen[i];
+    i += 1;
+    const ucapan = buat(s.teks, s.lang);
+    ucapan.onend = lanjut;
+    ucapan.onerror = selesai;
+    window.speechSynthesis.speak(ucapan);
+  };
+  window.setTimeout(lanjut, 40);
 }
 
 /** Daftar suara perangkat sering kosong di panggilan pertama. Tunggu sebentar supaya ucapan pertama tidak memakai suara lain. */
@@ -179,28 +225,36 @@ export function ucapkanGuruModul(teks: string, opsi: OpsiSuaraGuruModul = {}): v
       laju: kustom && opsi.laju !== undefined ? opsi.laju : profil.laju,
       nada: kustom && opsi.nada !== undefined ? opsi.nada : profil.nada,
     };
-    // Laju lambat membuat satu ucapan panjang berhenti sendiri di Chrome (suara jaringan), jadi dipecah per kalimat.
-    const potongan = kustom ? pecahKalimat(naskah) : [naskah];
-    let i = 0;
-    const lanjut = () => {
-      if (saya !== giliran || tutup) return;
-      if (i >= potongan.length) {
-        selesai();
-        return;
-      }
-      const ucapan = buatUcapanGuru(potongan[i], profilPakai);
-      i += 1;
-      ucapan.onend = lanjut;
-      ucapan.onerror = selesai;
-      window.speechSynthesis.speak(ucapan);
+    const aktif = () => saya === giliran && !tutup;
+    const mulai = () => {
+      if (!aktif()) return;
+      // Pecah per kalimat dulu bila laju lambat, lalu tiap kalimat dipecah id/en.
+      const potongan = kustom ? pecahKalimat(naskah) : [naskah];
+      let k = 0;
+      const lanjutKalimat = () => {
+        if (!aktif()) return;
+        if (k >= potongan.length) {
+          selesai();
+          return;
+        }
+        const kalimat = potongan[k];
+        k += 1;
+        antreSegmenWebSpeech(
+          kalimat,
+          (teks, lang) => buatUcapanGuru(teks, profilPakai, lang),
+          aktif,
+          lanjutKalimat,
+        );
+      };
+      lanjutKalimat();
     };
     window.setTimeout(() => {
-      if (saya !== giliran || tutup) return;
-      if (kustom && window.speechSynthesis.getVoices().length === 0) {
-        void tungguSuaraSiap().then(lanjut);
+      if (!aktif()) return;
+      if (window.speechSynthesis.getVoices().length === 0) {
+        void tungguSuaraSiap().then(mulai);
         return;
       }
-      lanjut();
+      mulai();
     }, 40);
   };
 
@@ -213,21 +267,25 @@ export function ucapkanGuruModul(teks: string, opsi: OpsiSuaraGuruModul = {}): v
       }
       if (window.speechSynthesis.getVoices().length === 0) await tungguSuaraSiap();
       if (saya !== giliran || tutup) return;
+      const aktif = () => saya === giliran && !tutup;
       const potongan = pecahKalimat(naskah);
-      let i = 0;
-      const lanjut = () => {
-        if (saya !== giliran || tutup) return;
-        if (i >= potongan.length) {
+      let k = 0;
+      const lanjutKalimat = () => {
+        if (!aktif()) return;
+        if (k >= potongan.length) {
           selesai();
           return;
         }
-        const ucapan = buatUcapanSeragam(potongan[i], kelamin);
-        i += 1;
-        ucapan.onend = lanjut;
-        ucapan.onerror = selesai;
-        window.speechSynthesis.speak(ucapan);
+        const kalimat = potongan[k];
+        k += 1;
+        antreSegmenWebSpeech(
+          kalimat,
+          (teks, lang) => buatUcapanSeragam(teks, kelamin, lang),
+          aktif,
+          lanjutKalimat,
+        );
       };
-      window.setTimeout(lanjut, 40);
+      lanjutKalimat();
     };
     void bicaraSeragam();
     return;
@@ -238,7 +296,7 @@ export function ucapkanGuruModul(teks: string, opsi: OpsiSuaraGuruModul = {}): v
     return;
   }
 
-  void (async () => {
+  async function putarStatisAtauCadangan() {
     let hasil: Awaited<ReturnType<typeof mintaAudioTts>> = null;
     try {
       hasil = await Promise.race([
@@ -262,5 +320,22 @@ export function ucapkanGuruModul(teks: string, opsi: OpsiSuaraGuruModul = {}): v
     } catch {
       cadangan();
     }
-  })();
+  }
+
+  // Berkas MP3 statis memakai suara Indonesia: kata Inggris di dalamnya sering salah.
+  // Bila naskah memuat segmen Inggris dan perangkat punya suara en-*, utamakan Web Speech dwibahasa.
+  if (adaSegmenInggris(naskah) && "speechSynthesis" in window) {
+    void (async () => {
+      if (window.speechSynthesis.getVoices().length === 0) await tungguSuaraSiap();
+      if (saya !== giliran || tutup) return;
+      if (pilihSuaraInggris(kelamin)) {
+        cadangan();
+        return;
+      }
+      await putarStatisAtauCadangan();
+    })();
+    return;
+  }
+
+  void putarStatisAtauCadangan();
 }

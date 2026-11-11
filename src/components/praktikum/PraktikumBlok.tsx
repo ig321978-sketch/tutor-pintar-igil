@@ -8,6 +8,7 @@ import {
   useUjianLulus,
   usePraktikumTerkirim,
 } from "@/lib/praktikum-blok";
+import { ucapkanGuruModul } from "@/lib/suara-guru-modul";
 
 type Langkah = {
   step_id: string;
@@ -45,12 +46,8 @@ const KRITERIA = [
 ];
 
 function bacakan(teks: string) {
-  if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(teks);
-  u.lang = "id-ID";
-  u.rate = 0.9;
-  window.speechSynthesis.speak(u);
+  // Samakan dengan modul: kata Inggris memakai suara en-US bila tersedia.
+  ucapkanGuruModul(teks, { perangkatSaja: true, laju: 0.9, nada: 1 });
 }
 
 function hitungKata(teks: string): number {
