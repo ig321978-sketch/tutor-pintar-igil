@@ -15,6 +15,7 @@ import * as B5 from "../src/components/modul/lab-banding-bab5.ts";
 import * as P5 from "../src/components/modul/lab-puluhan-bab5.ts";
 import * as O5 from "../src/components/modul/mesin-odometer-bab5.ts";
 import * as L6 from "../src/components/modul/lab-loncat-bab6.ts";
+import * as E6 from "../src/components/modul/lab-belasan-bab6.ts";
 import * as J6 from "../src/components/modul/mesin-jembatan-bab6.ts";
 import * as U7 from "../src/components/modul/lab-ukur-bab7.ts";
 import * as D7 from "../src/components/modul/lab-banding-panjang-bab7.ts";
@@ -914,5 +915,64 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   cek(!/berpasangan/.test(B5.ucapanPasang([12, 15, 9], [0, 1], { pasangan: false, tanda: true })), "ucapan tanpa pasangan bila dimatikan");
   sama(B5.ucapanTiga([12, 15, 9], { paling: false, urut: false }), "", "ucapan tiga kosong bila semua mati");
 }
-console.log(`Lulus ${lulus}, gagal ${gagal}`);
+{
+  // Bab 6: selisih pada banding (Sub-Bab A).
+  for (let a = 0; a <= 20; a++) {
+    for (let b = 0; b <= 20; b++) {
+      if (B5.selisihDua(a, b) !== Math.abs(a - b)) cek(false, `selisih ${a},${b}`);
+      if (B5.kalimatKurangSelisih(a, b) !== `${Math.max(a, b)} − ${Math.min(a, b)} = ${Math.abs(a - b)}`) cek(false, `kalimat kurang selisih ${a},${b}`);
+      const k = B5.kalimatSelisih("Kira", a, "Tika", b);
+      if (a === b ? !/sama banyak, jadi selisihnya 0/.test(k) : !k.includes(`Selisihnya ${Math.abs(a - b)}.`)) cek(false, `kalimat selisih ${a},${b}: ${k}`);
+    }
+  }
+  cek(true, "selisih 441 pasangan konsisten");
+  sama(B5.kalimatKurangSelisih(6, 9), "9 − 6 = 3", "kurang selisih urut dibalik");
+  cek(/Tika 3 lebihnya dari Kira|3 lebihnya dari/.test(B5.kalimatSelisih("Kira", 6, "Tika", 9)) || /lebihnya/.test(B5.kalimatSelisih("Kira", 6, "Tika", 9)), "kalimat selisih memuat lebihnya");
+  cek(/kurangnya/.test(B5.kalimatSelisih("Kira", 6, "Tika", 9)), "kalimat selisih memuat kurangnya");
+  cek(/selisih/i.test(B5.ucapanPasang([12, 15, 9], [0, 1], { pasangan: true, tanda: false, selisih: true })), "ucapan pasang memuat selisih bila dinyalakan");
+  cek(!/selisih/i.test(B5.ucapanPasang([12, 15, 9], [0, 1], { pasangan: true, tanda: false })), "ucapan pasang tanpa selisih bila tidak diminta");
+}
+
+{
+  // Bab 6 Sub-Bab B dan C: belasan dan satuan, semua pasangan sah, dua operasi.
+  for (const op of ["tambah", "kurang"]) {
+    let n = 0;
+    for (let a = -3; a <= 25; a++) {
+      for (let b = -3; b <= 25; b++) {
+        const m = E6.rapikanBelasan({ a, b }, op);
+        const h = E6.hasilBelasan(m, op);
+        if (m.a < E6.minAwal(op) || m.a > E6.maksAwal(op) || m.b < 1) cek(false, `rapikan ${op} ${a},${b}: ${JSON.stringify(m)}`);
+        if (h < 10 || h > 19) cek(false, `hasil belasan ${op} ${a},${b}: ${h}`);
+        const t = E6.tabelBelasan(m, op);
+        if (t[0].puluhan !== 1 || t[1].puluhan !== 1) cek(false, `puluhan tetap ${op} ${m.a},${m.b}`);
+        if (t[0].satuan !== m.a - 10 || t[1].satuan !== h - 10) cek(false, `satuan tabel ${op} ${m.a},${m.b}`);
+        const p = E6.kalimatPecah(m, op);
+        if (p.length !== 3 || p[0] !== `${m.a} = 10 + ${m.a - 10}` || !p[2].endsWith(`= ${h}`)) cek(false, `pecah ${op} ${m.a},${m.b}: ${p}`);
+        const rap = E6.rapikanBelasan(m, op);
+        if (rap.a !== m.a || rap.b !== m.b) cek(false, `rapikan idempoten ${op} ${m.a},${m.b}`);
+        if (op === "kurang") {
+          const per = E6.kalimatPeriksa(m);
+          if (per !== `${h} + ${m.b} = ${m.a}`) cek(false, `periksa ${m.a},${m.b}: ${per}`);
+        }
+        const u = E6.ucapanBelasan(m, op, { tabel: true, pecah: true, periksa: true });
+        if (!u.includes(`sama dengan ${h}.`)) cek(false, `ucapan ${op} ${m.a},${m.b}`);
+        if ((op === "kurang") !== /Periksa:/.test(u)) cek(false, `periksa hanya untuk kurang ${op}`);
+        n += 1;
+      }
+    }
+    cek(n === 29 * 29, `belasan ${op}: semua kombinasi diperiksa`);
+  }
+  sama(E6.awalBelasan("tambah"), { a: 12, b: 3 }, "awal tambah");
+  sama(E6.awalBelasan("kurang"), { a: 15, b: 3 }, "awal kurang");
+  sama(E6.kalimatBelasan({ a: 12, b: 3 }, "tambah"), "12 + 3 = 15", "kalimat tambah");
+  sama(E6.kalimatBelasan({ a: 15, b: 3 }, "kurang"), "15 − 3 = 12", "kalimat kurang");
+  sama(E6.kalimatPecah({ a: 12, b: 3 }, "tambah"), ["12 = 10 + 2", "2 + 3 = 5", "10 + 5 = 15"], "pecah tambah");
+  sama(E6.kalimatPecah({ a: 15, b: 3 }, "kurang"), ["15 = 10 + 5", "5 − 3 = 2", "10 + 2 = 12"], "pecah kurang");
+  sama(E6.batasB(12, "tambah"), 7, "batas penambah 12");
+  sama(E6.batasB(15, "kurang"), 5, "batas pengurang 15");
+  sama(E6.rapikanBelasan({ a: 19, b: 5 }, "tambah"), { a: 18, b: 1 }, "19 tambah dijepit jadi 18 + 1");
+  sama(E6.rapikanBelasan({ a: 10, b: 2 }, "kurang"), { a: 11, b: 1 }, "10 kurang dijepit jadi 11 − 1");
+  sama(E6.hasilBelasan({ a: 16, b: 6 }, "kurang"), 10, "satuan habis: 16 − 6 = 10");
+  sama(E6.tabelBelasan({ a: 16, b: 6 }, "kurang")[1], { nama: "10", puluhan: 1, satuan: 0 }, "satuan habis di tabel");
+}console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

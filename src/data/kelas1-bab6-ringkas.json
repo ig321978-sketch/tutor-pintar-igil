@@ -1,0 +1,698 @@
+{
+  "chapter_id": "mtk-1-bab6",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subject": "Matematika",
+  "title": "Penjumlahan dan Pengurangan sampai dengan 20",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Lebih, Kurang, Selisih",
+          "ikon": "⚖️",
+          "suara": "Ini peta lebih dari, kurang dari, dan selisih. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "pasang",
+            "judul": "Pasangkan satu-satu",
+            "ikon": "🔗",
+            "ringkas": "Benda tanpa pasangan adalah sisanya.",
+            "suara": "Pasangkan benda satu demi satu. Benda yang tidak punya pasangan adalah sisanya. Kelompok yang punya sisa adalah yang lebih banyak."
+          },
+          {
+            "id": "kata",
+            "judul": "Lebihnya, kurangnya",
+            "ikon": "🍩",
+            "ringkas": "Satu cerita, dua cara bilang.",
+            "suara": "Donat Ibu satu lebihnya dari donat Tika. Donat Tika satu kurangnya dari donat Ibu. Itu dua cara menyatakan perbandingan yang sama."
+          },
+          {
+            "id": "selisih",
+            "judul": "Beda atau selisih",
+            "ikon": "➖",
+            "ringkas": "Besar dikurangi kecil.",
+            "suara": "Beda dua bilangan disebut juga selisih. Kita mencarinya dengan mengurangkan. Bilangan yang lebih besar dikurangi bilangan yang lebih kecil."
+          },
+          {
+            "id": "model",
+            "judul": "Garis dan batang",
+            "ikon": "📏",
+            "ringkas": "Selisih adalah jarak antara dua bilangan.",
+            "suara": "Selisih bisa ditunjukkan di garis bilangan. Dari tujuh ke sembilan melompat dua langkah ke kanan, jadi selisihnya dua. Model batang juga menunjukkan selisih sebagai bagian yang lebih panjang."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "a-donat",
+            "teks": "7 donat Ibu, 6 donat Tika: sisa 1",
+            "ikon": "🍩",
+            "cabang": "pasang",
+            "petunjuk": "Donat yang tidak punya pasangan adalah sisa. Itu cabang Pasangkan satu-satu. Coba cabang lain."
+          },
+          {
+            "id": "a-anak",
+            "teks": "5 anak laki-laki, 4 anak perempuan: sisa 1",
+            "ikon": "👦",
+            "cabang": "pasang",
+            "petunjuk": "Satu anak tidak punya pasangan. Itu cabang Pasangkan satu-satu. Coba cabang lain."
+          },
+          {
+            "id": "a-lebih",
+            "teks": "Donat Ibu 1 lebihnya dari donat Tika",
+            "ikon": "👆",
+            "cabang": "kata",
+            "petunjuk": "Kata lebihnya ada di cabang Lebihnya, kurangnya. Coba cabang lain."
+          },
+          {
+            "id": "a-kurang",
+            "teks": "Donat Tika 1 kurangnya dari donat Ibu",
+            "ikon": "👇",
+            "cabang": "kata",
+            "petunjuk": "Kata kurangnya ada di cabang Lebihnya, kurangnya. Coba cabang lain."
+          },
+          {
+            "id": "a-kupu",
+            "teks": "7 − 5 = 2: selisih kupu-kupu dan bunga",
+            "ikon": "🦋",
+            "cabang": "selisih",
+            "petunjuk": "Bilangan besar dikurangi bilangan kecil. Itu cabang Beda atau selisih. Coba cabang lain."
+          },
+          {
+            "id": "a-beda",
+            "teks": "Beda 7 dan 6 adalah 1",
+            "ikon": "🔍",
+            "cabang": "selisih",
+            "petunjuk": "Beda dua bilangan dicari dengan mengurangkan. Itu cabang Beda atau selisih. Coba cabang lain."
+          },
+          {
+            "id": "a-boneka",
+            "teks": "Dari 7 ke 9: 2 langkah ke kanan",
+            "ikon": "👉",
+            "cabang": "model",
+            "petunjuk": "Jarak di garis bilangan. Itu cabang Garis dan batang. Coba cabang lain."
+          },
+          {
+            "id": "a-batang",
+            "teks": "Batang yang lebih panjang punya bagian lebih",
+            "ikon": "📊",
+            "cabang": "model",
+            "petunjuk": "Bagian lebih pada batang adalah selisih. Itu cabang Garis dan batang. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Lebih, Kurang, dan Selisih",
+        "suara": "Ini tiga panel tentang lebih dari, kurang dari, dan selisih. Ketuk kotaknya untuk membuka.",
+        "panel": [
+          {
+            "id": "a-pasang",
+            "tipe": "buka",
+            "judul": "Pasangkan donat",
+            "ide": "Yang punya sisa lebih banyak.",
+            "suara": "Ibu punya tujuh donat dan Tika punya enam. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "jumlah",
+                "label": "Dihitung dulu",
+                "ikon": "🍩",
+                "isi": "Ibu 7 donat, Tika 6 donat.",
+                "suara": "Donat Ibu ada tujuh. Donat Tika ada enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7 dan 6"
+                }
+              },
+              {
+                "id": "pasang",
+                "label": "Dipasangkan",
+                "ikon": "🔗",
+                "isi": "Satu donat Ibu tidak punya pasangan.",
+                "suara": "Setelah dipasangkan satu demi satu, satu donat Ibu tidak punya pasangan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 pasang, sisa 1"
+                }
+              },
+              {
+                "id": "hasil",
+                "label": "Siapa lebih banyak?",
+                "ikon": "👆",
+                "isi": "Yang punya sisa lebih banyak.",
+                "suara": "Donat Ibu lebih banyak dari donat Tika karena punya sisa.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Ibu lebih banyak"
+                }
+              }
+            ]
+          },
+          {
+            "id": "a-kata",
+            "tipe": "banding",
+            "judul": "Lebihnya atau kurangnya?",
+            "ide": "Satu cerita, dua cara bilang.",
+            "suara": "Bandingkan dua kalimat tentang donat yang sama. Ketuk kedua kotaknya.",
+            "sisi": [
+              {
+                "id": "lebih",
+                "nama": "Lebihnya",
+                "ikon": "👆",
+                "catatan": "Donat Ibu 1 lebihnya dari donat Tika.",
+                "suara": "Donat Ibu satu lebihnya dari donat Tika.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Ibu: 1 lebihnya"
+                }
+              },
+              {
+                "id": "kurang",
+                "nama": "Kurangnya",
+                "ikon": "👇",
+                "catatan": "Donat Tika 1 kurangnya dari donat Ibu.",
+                "suara": "Donat Tika satu kurangnya dari donat Ibu.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Tika: 1 kurangnya"
+                }
+              }
+            ],
+            "kesimpulan": "Lebihnya dan kurangnya sama besar: 1."
+          },
+          {
+            "id": "a-selisih",
+            "tipe": "buka",
+            "judul": "Beda atau selisih",
+            "ide": "Besar dikurangi kecil.",
+            "suara": "Beda dua bilangan juga disebut selisih. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "beda",
+                "label": "Beda",
+                "ikon": "🔍",
+                "isi": "Beda 7 dan 6 adalah 1.",
+                "suara": "Beda banyaknya donat Ibu dan Tika adalah satu.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "beda = 1"
+                }
+              },
+              {
+                "id": "kurang",
+                "label": "Dikurangkan",
+                "ikon": "➖",
+                "isi": "Bilangan besar dikurangi bilangan kecil.",
+                "suara": "Kita menemukan beda dengan mengurangkan. Bilangan yang lebih besar dikurangi bilangan yang lebih kecil.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7 − 6 = 1"
+                }
+              },
+              {
+                "id": "garis",
+                "label": "Di garis bilangan",
+                "ikon": "📏",
+                "isi": "Dari 7 ke 9 ada 2 langkah.",
+                "suara": "Wei punya tujuh boneka dan Kira sembilan. Dari tujuh ke sembilan melompat dua langkah, jadi selisihnya dua.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "9 − 7 = 2"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Menjumlah sampai 20",
+          "ikon": "➕",
+          "suara": "Ini peta penjumlahan yang hasilnya kurang dari dua puluh. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "maju",
+            "judul": "Menghitung maju",
+            "ikon": "➡️",
+            "ringkas": "Mulai dari bilangan pertama, maju sebanyak bilangan kedua.",
+            "suara": "Mulai dari tujuh, lalu hitung maju sebanyak enam kali. Delapan, sembilan, sepuluh, sebelas, dua belas, tiga belas. Tujuh ditambah enam sama dengan tiga belas."
+          },
+          {
+            "id": "sepuluh",
+            "judul": "Menghitung dengan 10",
+            "ikon": "🔟",
+            "ringkas": "Genapkan dulu jadi sepuluh, lalu tambah sisanya.",
+            "suara": "Tujuh dan tiga menjadi sepuluh. Enam dipisah menjadi tiga dan tiga. Sepuluh ditambah tiga sama dengan tiga belas."
+          },
+          {
+            "id": "berulang",
+            "judul": "Penjumlahan berulang",
+            "ikon": "🔁",
+            "ringkas": "Pakai pasangan yang sama, lalu tambah sisanya.",
+            "suara": "Enam dan enam menjadi dua belas. Tujuh dipisah menjadi satu dan enam. Dua belas ditambah satu sama dengan tiga belas."
+          },
+          {
+            "id": "nilai",
+            "judul": "Pasangan dan nilai tempat",
+            "ikon": "🏷️",
+            "ringkas": "Puluhan tetap, satuan ditambahkan.",
+            "suara": "Dua belas ditambah tiga. Dua ditambah tiga sama dengan lima. Puluhannya tetap satu. Jadi hasilnya lima belas."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-maju1",
+            "teks": "7 + 6: maju 6 kali dari 7",
+            "ikon": "🐾",
+            "cabang": "maju",
+            "petunjuk": "Mulai dari satu bilangan lalu maju. Itu cabang Menghitung maju. Coba cabang lain."
+          },
+          {
+            "id": "b-maju2",
+            "teks": "8, 9, 10, 11, 12, 13",
+            "ikon": "🔢",
+            "cabang": "maju",
+            "petunjuk": "Bilangan yang dihitung maju satu-satu. Itu cabang Menghitung maju. Coba cabang lain."
+          },
+          {
+            "id": "b-sepuluh1",
+            "teks": "7 + 3 = 10",
+            "ikon": "🎯",
+            "cabang": "sepuluh",
+            "petunjuk": "Genapkan sampai sepuluh dulu. Itu cabang Menghitung dengan 10. Coba cabang lain."
+          },
+          {
+            "id": "b-sepuluh2",
+            "teks": "10 + 3 = 13",
+            "ikon": "🔟",
+            "cabang": "sepuluh",
+            "petunjuk": "Setelah sepuluh, tambah sisanya. Itu cabang Menghitung dengan 10. Coba cabang lain."
+          },
+          {
+            "id": "b-ulang1",
+            "teks": "6 + 6 = 12",
+            "ikon": "👯",
+            "cabang": "berulang",
+            "petunjuk": "Dua bilangan yang sama. Itu cabang Penjumlahan berulang. Coba cabang lain."
+          },
+          {
+            "id": "b-ulang2",
+            "teks": "12 + 1 = 13",
+            "ikon": "➕",
+            "cabang": "berulang",
+            "petunjuk": "Tambah sisanya setelah pasangan sama. Itu cabang Penjumlahan berulang. Coba cabang lain."
+          },
+          {
+            "id": "b-nilai1",
+            "teks": "12 = 10 + 2",
+            "ikon": "🧩",
+            "cabang": "nilai",
+            "petunjuk": "Bilangan dipisah jadi sepuluh dan satuannya. Itu cabang Pasangan dan nilai tempat. Coba cabang lain."
+          },
+          {
+            "id": "b-nilai2",
+            "teks": "12 + 3: 2 + 3 = 5, jadi 15",
+            "ikon": "🏷️",
+            "cabang": "nilai",
+            "petunjuk": "Satuan ditambah satuan, puluhan tetap. Itu cabang Pasangan dan nilai tempat. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Menjumlah Sampai 20",
+        "suara": "Ini tiga panel tentang menjumlah. Ketuk kotaknya untuk membuka.",
+        "panel": [
+          {
+            "id": "b-cara",
+            "tipe": "buka",
+            "judul": "Tiga cara menghitung 7 + 6",
+            "ide": "Cara beda, hasilnya sama.",
+            "suara": "Tujuh ditambah enam bisa dihitung dengan tiga cara. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "maju",
+                "label": "Menghitung maju",
+                "ikon": "➡️",
+                "isi": "Maju 6 kali dari 7.",
+                "suara": "Mulai dari tujuh, hitung maju enam kali sampai tiga belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7 → 13"
+                }
+              },
+              {
+                "id": "sepuluh",
+                "label": "Dengan 10",
+                "ikon": "🔟",
+                "isi": "7 + 3 = 10, lalu 10 + 3.",
+                "suara": "Tujuh ditambah tiga sama dengan sepuluh. Sepuluh ditambah tiga sama dengan tiga belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7 + 3 + 3 = 13"
+                }
+              },
+              {
+                "id": "ulang",
+                "label": "Berulang",
+                "ikon": "🔁",
+                "isi": "6 + 6 = 12, lalu 12 + 1.",
+                "suara": "Enam ditambah enam sama dengan dua belas. Dua belas ditambah satu sama dengan tiga belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 + 6 + 1 = 13"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-nilai",
+            "tipe": "banding",
+            "judul": "12 + 3 dengan dua jalan",
+            "ide": "Pasangan atau nilai tempat.",
+            "suara": "Bandingkan dua jalan menghitung dua belas ditambah tiga. Ketuk kedua kotaknya.",
+            "sisi": [
+              {
+                "id": "pasangan",
+                "nama": "Pasangan bilangan",
+                "ikon": "🧩",
+                "catatan": "12 = 10 + 2. Lalu 2 + 3 = 5 dan 10 + 5.",
+                "suara": "Dua belas dipisah menjadi sepuluh dan dua. Dua ditambah tiga sama dengan lima. Sepuluh ditambah lima sama dengan lima belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 + 5 = 15"
+                }
+              },
+              {
+                "id": "tempat",
+                "nama": "Nilai tempat",
+                "ikon": "🏷️",
+                "catatan": "1 puluhan 2 satuan. Satuan 2 + 3 = 5.",
+                "suara": "Dua belas adalah satu puluhan dan dua satuan. Satuannya dua ditambah tiga sama dengan lima. Puluhannya tetap satu.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "Bilangan 15",
+                  "kepala": [
+                    "Tempat",
+                    "Banyak"
+                  ],
+                  "baris": [
+                    [
+                      "Puluhan",
+                      1
+                    ],
+                    [
+                      "Satuan",
+                      5
+                    ]
+                  ]
+                }
+              }
+            ],
+            "kesimpulan": "Dua jalan, hasilnya sama: 15."
+          },
+          {
+            "id": "b-cerita",
+            "tipe": "buka",
+            "judul": "Soal cerita penjumlahan",
+            "ide": "Jumlah berarti digabungkan.",
+            "suara": "Soal cerita penjumlahan punya tiga langkah. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "kata",
+                "label": "Kata jumlah",
+                "ikon": "🔎",
+                "isi": "Jumlah berarti kedua kelompok digabungkan.",
+                "suara": "Jumlah berarti kedua kelompok digabungkan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "gabung kedua kelompok"
+                }
+              },
+              {
+                "id": "kalimat",
+                "label": "Tulis kalimatnya",
+                "ikon": "✍️",
+                "isi": "Donat Ibu 7, donat Tika 6.",
+                "suara": "Ibu punya tujuh donat dan Tika punya enam donat. Kita tulis tujuh ditambah enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7 + 6 = 13"
+                }
+              },
+              {
+                "id": "jawab",
+                "label": "Tulis jawabannya",
+                "ikon": "💬",
+                "isi": "Jumlah donat mereka 13.",
+                "suara": "Jumlah donat mereka adalah tiga belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Jumlah donat: 13"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Mengurang sampai 20",
+          "ikon": "➖",
+          "suara": "Ini peta pengurangan yang hasilnya kurang dari dua puluh. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "mundur",
+            "judul": "Menghitung mundur",
+            "ikon": "⬅️",
+            "ringkas": "Mulai dari bilangan awal, mundur sebanyak yang dikurangkan.",
+            "suara": "Mulai dari lima belas, lalu hitung mundur tiga kali. Empat belas, tiga belas, dua belas. Lima belas dikurangi tiga sama dengan dua belas."
+          },
+          {
+            "id": "pasangan",
+            "judul": "Pasangan bilangan",
+            "ikon": "🧩",
+            "ringkas": "Pisah jadi sepuluh dan satuan, kurangi satuannya.",
+            "suara": "Lima belas dipisah menjadi sepuluh dan lima. Lima dikurangi tiga sama dengan dua. Sepuluh ditambah dua sama dengan dua belas."
+          },
+          {
+            "id": "nilai",
+            "judul": "Nilai tempat",
+            "ikon": "🏷️",
+            "ringkas": "Puluhan tetap, satuan dikurangi.",
+            "suara": "Lima belas adalah satu puluhan dan lima satuan. Lima dikurangi tiga sama dengan dua. Puluhannya tetap satu. Hasilnya dua belas."
+          },
+          {
+            "id": "cerita",
+            "judul": "Periksa dan cerita",
+            "ikon": "✅",
+            "ringkas": "Hasil ditambah yang dikurangkan kembali ke awal.",
+            "suara": "Kita bisa memeriksa pengurangan dengan penjumlahan. Dalam soal cerita, kata sisa dan kurangnya menandakan pengurangan."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "c-mundur1",
+            "teks": "15 − 3: mundur 3 kali",
+            "ikon": "🐾",
+            "cabang": "mundur",
+            "petunjuk": "Mulai dari bilangan awal lalu mundur. Itu cabang Menghitung mundur. Coba cabang lain."
+          },
+          {
+            "id": "c-mundur2",
+            "teks": "14, 13, 12",
+            "ikon": "🔢",
+            "cabang": "mundur",
+            "petunjuk": "Bilangan yang dihitung mundur satu-satu. Itu cabang Menghitung mundur. Coba cabang lain."
+          },
+          {
+            "id": "c-pasang1",
+            "teks": "15 = 10 + 5",
+            "ikon": "🧩",
+            "cabang": "pasangan",
+            "petunjuk": "Bilangan dipisah jadi sepuluh dan satuannya. Itu cabang Pasangan bilangan. Coba cabang lain."
+          },
+          {
+            "id": "c-pasang2",
+            "teks": "5 − 3 = 2, lalu 10 + 2 = 12",
+            "ikon": "🎯",
+            "cabang": "pasangan",
+            "petunjuk": "Kurangi satuannya, lalu gabung dengan sepuluh. Itu cabang Pasangan bilangan. Coba cabang lain."
+          },
+          {
+            "id": "c-nilai1",
+            "teks": "15 = 1 puluhan + 5 satuan",
+            "ikon": "📋",
+            "cabang": "nilai",
+            "petunjuk": "Memisah puluhan dan satuan. Itu cabang Nilai tempat. Coba cabang lain."
+          },
+          {
+            "id": "c-nilai2",
+            "teks": "Satuan 5 − 3 = 2, puluhan tetap 1",
+            "ikon": "🏷️",
+            "cabang": "nilai",
+            "petunjuk": "Puluhan tetap, satuan dikurangi. Itu cabang Nilai tempat. Coba cabang lain."
+          },
+          {
+            "id": "c-periksa",
+            "teks": "12 + 3 = 15 memeriksa 15 − 3",
+            "ikon": "✅",
+            "cabang": "cerita",
+            "petunjuk": "Memeriksa dengan penjumlahan. Itu cabang Periksa dan cerita. Coba cabang lain."
+          },
+          {
+            "id": "c-cerita",
+            "teks": "Pensil Kira 3 kurangnya dari 11: 11 − 3 = 8",
+            "ikon": "✏️",
+            "cabang": "cerita",
+            "petunjuk": "Kata kurangnya di soal cerita. Itu cabang Periksa dan cerita. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengurang Sampai 20",
+        "suara": "Ini tiga panel tentang mengurang. Ketuk kotaknya untuk membuka.",
+        "panel": [
+          {
+            "id": "c-cara",
+            "tipe": "buka",
+            "judul": "Tiga cara menghitung 15 − 3",
+            "ide": "Cara beda, hasilnya sama.",
+            "suara": "Lima belas dikurangi tiga bisa dihitung dengan tiga cara. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "mundur",
+                "label": "Menghitung mundur",
+                "ikon": "⬅️",
+                "isi": "Mundur 3 kali dari 15.",
+                "suara": "Mulai dari lima belas, hitung mundur tiga kali sampai dua belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "15 → 12"
+                }
+              },
+              {
+                "id": "pasangan",
+                "label": "Pasangan bilangan",
+                "ikon": "🧩",
+                "isi": "15 = 10 + 5. Lalu 5 − 3 = 2.",
+                "suara": "Lima belas dipisah menjadi sepuluh dan lima. Lima dikurangi tiga sama dengan dua. Sepuluh ditambah dua sama dengan dua belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 + 2 = 12"
+                }
+              },
+              {
+                "id": "nilai",
+                "label": "Nilai tempat",
+                "ikon": "🏷️",
+                "isi": "Satuan 5 − 3 = 2, puluhan tetap.",
+                "suara": "Lima belas adalah satu puluhan dan lima satuan. Satuannya dikurangi tiga, puluhannya tetap.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "Bilangan 12",
+                  "kepala": [
+                    "Tempat",
+                    "Banyak"
+                  ],
+                  "baris": [
+                    [
+                      "Puluhan",
+                      1
+                    ],
+                    [
+                      "Satuan",
+                      2
+                    ]
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "c-periksa",
+            "tipe": "banding",
+            "judul": "Kurang, lalu periksa",
+            "ide": "Periksa dengan penjumlahan.",
+            "suara": "Bandingkan pengurangan dan pemeriksaannya. Ketuk kedua kotaknya.",
+            "sisi": [
+              {
+                "id": "kurang",
+                "nama": "Dikurangi",
+                "ikon": "➖",
+                "catatan": "Lima belas dikurangi tiga.",
+                "suara": "Lima belas dikurangi tiga sama dengan dua belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "15 − 3 = 12"
+                }
+              },
+              {
+                "id": "periksa",
+                "nama": "Diperiksa",
+                "ikon": "✅",
+                "catatan": "Hasil ditambah tiga harus kembali.",
+                "suara": "Dua belas ditambah tiga sama dengan lima belas. Hasilnya kembali ke bilangan awal.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 + 3 = 15"
+                }
+              }
+            ],
+            "kesimpulan": "Kembali ke bilangan awal berarti benar."
+          },
+          {
+            "id": "c-cerita",
+            "tipe": "buka",
+            "judul": "Soal cerita pengurangan",
+            "ide": "Sisa atau kurangnya, pakai pengurangan.",
+            "suara": "Soal cerita bisa memakai pengurangan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "bolu",
+                "label": "Sisa bolu kukus",
+                "ikon": "🍰",
+                "isi": "Ada 13, dimakan 2.",
+                "suara": "Ibu membeli tiga belas bolu kukus. Malosi memakan dua. Sisanya sebelas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "13 − 2 = 11"
+                }
+              },
+              {
+                "id": "kurangnya",
+                "label": "Kurangnya",
+                "ikon": "✏️",
+                "isi": "Pensil Kira 3 kurangnya dari Wei.",
+                "suara": "Wei punya sebelas pensil. Pensil Kira tiga kurangnya dari pensil Wei. Jadi pensil Kira delapan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "11 − 3 = 8"
+                }
+              },
+              {
+                "id": "gabung",
+                "label": "Kalau digabung",
+                "ikon": "➕",
+                "isi": "Pensil Kira dan Wei digabung.",
+                "suara": "Kalau pensil Kira dan Wei digabungkan, delapan ditambah sebelas sama dengan sembilan belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "8 + 11 = 19"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

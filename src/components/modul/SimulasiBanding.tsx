@@ -14,10 +14,13 @@ import {
   indeksTerbanyak,
   indeksTersedikit,
   kalimatDua,
+  kalimatKurangSelisih,
   kalimatPaling,
   kalimatPasangan,
+  kalimatSelisih,
   kalimatUrut,
   pasangkan,
+  selisihDua,
   simbol,
   ucapanPasang,
   ucapanTiga,
@@ -30,12 +33,14 @@ import {
 /* diurutkan, dan ditandai di garis bilangan. Logika di lab-banding-bab5.ts.  */
 /* ------------------------------------------------------------------------ */
 
-export type TampilBanding = "pasang" | "tanda" | "benda" | "paling" | "urut" | "garis";
-export const SEMUA_TAMPIL_BANDING: TampilBanding[] = ["pasang", "tanda", "benda", "paling", "urut", "garis"];
+export type TampilBanding = "pasang" | "tanda" | "selisih" | "batang" | "benda" | "paling" | "urut" | "garis";
+export const SEMUA_TAMPIL_BANDING: TampilBanding[] = ["pasang", "tanda", "selisih", "batang", "benda", "paling", "urut", "garis"];
 
 const LABEL: Record<TampilBanding, string> = {
   pasang: "Pasangkan satu-satu",
   tanda: "Tanda",
+  selisih: "Selisih",
+  batang: "Model batang",
   benda: "Benda",
   paling: "Paling banyak dan sedikit",
   urut: "Urutan",
@@ -50,6 +55,8 @@ function langkahCoba(tampil: TampilBanding[]): string[] {
   const ada = (k: TampilBanding) => tampil.includes(k);
   const hasil: string[] = [];
   if (ada("pasang")) hasil.push("Tambah jeruk milik satu orang sampai ia punya sisa yang tidak berpasangan. Siapa yang lebih banyak?");
+  if (ada("selisih")) hasil.push("Buat dua jumlah menjadi sama. Berapa selisihnya? Lalu tambah satu di salah satunya.");
+  if (ada("batang")) hasil.push("Lihat bagian emas pada batang yang lebih panjang. Berapa kotak emasnya? Bandingkan dengan selisihnya.");
   if (ada("tanda")) hasil.push("Buat dua jumlah menjadi sama. Tanda apa yang muncul? Lalu tambah satu di salah satunya.");
   if (ada("paling")) hasil.push("Buat dua orang sama banyak dan satu orang berbeda. Lihat siapa saja yang disebut paling banyak.");
   if (ada("urut")) hasil.push("Ubah satu jumlah jeruk. Lihat urutan dari terkecil dan dari terbesar. Apa yang berubah?");
@@ -72,10 +79,10 @@ function BarisJeruk({ n, nama }: { n: number; nama: string }) {
 export default function SimulasiBanding({ speakGuru, tampil = SEMUA_TAMPIL_BANDING }: { speakGuru: (t: string) => void; tampil?: TampilBanding[] }) {
   const [jumlah, setJumlah] = useState<number[]>([...AWAL]);
   const [pas, setPas] = useState(0);
-  const [lihatMentah, setLihat] = useState<Record<TampilBanding, boolean>>({ pasang: true, tanda: true, benda: true, paling: true, urut: true, garis: true });
+  const [lihatMentah, setLihat] = useState<Record<TampilBanding, boolean>>({ pasang: true, tanda: true, selisih: true, batang: true, benda: true, paling: true, urut: true, garis: true });
   const tersedia = SEMUA_TAMPIL_BANDING.filter((k) => tampil.includes(k));
   const lihat = (k: TampilBanding) => tampil.includes(k) && lihatMentah[k];
-  const dua = tampil.includes("pasang") || tampil.includes("tanda");
+  const dua = tampil.includes("pasang") || tampil.includes("tanda") || tampil.includes("selisih") || tampil.includes("batang");
   const [i, j] = PASANGAN[pas];
   const a = jumlah[i];
   const b = jumlah[j];
@@ -88,11 +95,11 @@ export default function SimulasiBanding({ speakGuru, tampil = SEMUA_TAMPIL_BANDI
   const reset = () => {
     setJumlah([...AWAL]);
     setPas(0);
-    setLihat({ pasang: true, tanda: true, benda: true, paling: true, urut: true, garis: true });
+    setLihat({ pasang: true, tanda: true, selisih: true, batang: true, benda: true, paling: true, urut: true, garis: true });
   };
 
   const ucapan = dua
-    ? ucapanPasang(jumlah, [i, j], { pasangan: lihat("pasang"), tanda: lihat("tanda") })
+    ? ucapanPasang(jumlah, [i, j], { pasangan: lihat("pasang"), tanda: lihat("tanda"), selisih: lihat("selisih") })
     : ucapanTiga(jumlah, { paling: lihat("paling"), urut: lihat("urut") });
 
   const p = pasangkan(a, b);
@@ -115,9 +122,9 @@ export default function SimulasiBanding({ speakGuru, tampil = SEMUA_TAMPIL_BANDI
     <div className="space-y-4">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <h3 className="text-lg font-black text-[#1C01A5]">{dua ? "Banding Dua Kelompok" : "Paling Banyak dan Urutan"}</h3>
+          <h3 className="text-lg font-black text-[#1C01A5]">{tampil.includes("selisih") ? "Lebih, Kurang, dan Selisih" : dua ? "Banding Dua Kelompok" : "Paling Banyak dan Urutan"}</h3>
           <p className="text-sm font-bold text-[#1C01A5]/80">
-            {dua ? "Pilih dua anak. Ubah jeruknya, lalu lihat siapa yang lebih banyak." : "Ubah jeruk ketiga anak. Cari yang paling banyak dan paling sedikit."}
+            {tampil.includes("selisih") ? "Pilih dua anak. Ubah jeruknya, lalu lihat lebihnya, kurangnya, dan selisihnya." : dua ? "Pilih dua anak. Ubah jeruknya, lalu lihat siapa yang lebih banyak." : "Ubah jeruk ketiga anak. Cari yang paling banyak dan paling sedikit."}
           </p>
         </div>
         <TombolSuaraGuru label="Dengarkan perbandingan ini" onClick={() => speakGuru(eja(ucapan !== "" ? ucapan : "Ubah jumlah jeruk, lalu lihat perbandingannya."))} />
@@ -179,6 +186,40 @@ export default function SimulasiBanding({ speakGuru, tampil = SEMUA_TAMPIL_BANDI
         </div>
       ) : null}
 
+      {lihat("batang") ? (
+        <div className={`${KARTU} space-y-2`}>
+          <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]/70">Model batang • bagian emas adalah selisih</p>
+          {[i, j].map((k, urut) => {
+            const lain = urut === 0 ? b : a;
+            const n = jumlah[k];
+            return (
+              <div key={k} className="space-y-0.5" role="img" aria-label={`Batang ${ORANG[k]}: ${n} kotak${n > lain ? `, ${n - lain} kotak emas lebihnya` : ""}`}>
+                <p className="text-sm font-black text-[#1C01A5]">
+                  {ORANG[k]}: {n}
+                </p>
+                <div className="grid gap-0.5" style={{ gridTemplateColumns: `repeat(${MAKS}, minmax(0, 1fr))` }}>
+                  {Array.from({ length: MAKS }, (_, c) => (
+                    <span
+                      key={c}
+                      className={`h-6 rounded-sm border ${c >= n ? "border-[#1C01A5]/10 bg-[#F5F3FF]" : c >= lain ? "border-[#F0AB00] bg-[#FFE566]" : urut === 0 ? "border-[#7F1D1D] bg-[#EF4444]" : "border-[#1E3A8A] bg-[#3B82F6]"}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+          <p className="text-center text-xs font-bold text-[#1C01A5]/70">Kotak yang sama panjang ada di kedua batang. Kotak emas hanya ada di batang yang lebih panjang.</p>
+        </div>
+      ) : null}
+
+      {lihat("selisih") ? (
+        <div className={`${KARTU} space-y-2`}>
+          <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]/70">Lebihnya, kurangnya, dan selisih</p>
+          <KalimatBesar teks={kalimatKurangSelisih(a, b)} warna="bg-[#FFE566]" />
+          <p className="text-center text-sm font-black text-[#1C01A5]">{kalimatSelisih(ORANG[i], a, ORANG[j], b)}</p>
+          <p className="text-center text-xs font-bold text-[#1C01A5]/70">Selisih {selisihDua(a, b)}: bilangan yang besar dikurangi bilangan yang kecil.</p>
+        </div>
+      ) : null}
       {lihat("tanda") ? (
         <div className={`${KARTU} space-y-2`}>
           <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]/70">Tanda perbandingan</p>

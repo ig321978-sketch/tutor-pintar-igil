@@ -498,7 +498,7 @@
             "id": "sama",
             "judul": "Angka sama, nilai beda",
             "ikon": "🔀",
-            "ringkas": "Angka 1 di kiri bernilai 10, di kanan bernilai 1.",
+            "ringkas": "Kiri: 1 bernilai 10. Kanan: 1 bernilai 1.",
             "suara": "Pada sebelas ada dua angka satu. Angka satu di kiri berada di tempat puluhan, nilainya sepuluh. Angka satu di kanan berada di tempat satuan, nilainya satu."
           }
         ],
@@ -732,7 +732,7 @@
             "id": "cara",
             "judul": "Cara membandingkan bilangan",
             "ikon": "⚖️",
-            "ringkas": "Puluhan dulu, lalu satuan. Di garis, kanan lebih besar.",
+            "ringkas": "Puluhan dulu, lalu satuan. Kanan lebih besar.",
             "suara": "Untuk membandingkan dua bilangan, lihat puluhannya dulu. Kalau puluhannya sama, lihat satuannya. Di garis bilangan, bilangan yang lebih ke kanan lebih besar."
           }
         ],

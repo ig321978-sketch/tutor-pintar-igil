@@ -251,7 +251,7 @@ export const SKENARIO_BAB6: DefSkenario = {
   id: "pasar-malam",
   judul: "Loket Pasar Malam",
   latar: "Bantu Kak Tiket menghitung tiket di pasar malam.",
-  tokoh: "🧑‍🔧",
+  tokoh: "🎟️",
   nama: "Kak Tiket",
   adegan: [
     {

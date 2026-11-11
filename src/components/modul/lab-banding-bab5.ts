@@ -74,16 +74,30 @@ export function kalimatUrut(jumlah: number[], naik: boolean): string {
   return `${naik ? "Dari terkecil" : "Dari terbesar"}: ${u.map((x) => x.n).join(", ")}.`;
 }
 
-export function ucapanPasang(jumlah: number[], pasang: [number, number], dengan: { pasangan: boolean; tanda: boolean }): string {
+/** Selisih dua banyak: yang besar dikurangi yang kecil (Bab 6 Sub-Bab A). */
+export const selisihDua = (a: number, b: number) => Math.abs(a - b);
+
+/** Kalimat pengurangan selisih, yang besar di depan: "7 − 6 = 1". */
+export const kalimatKurangSelisih = (a: number, b: number) => `${Math.max(a, b)} − ${Math.min(a, b)} = ${selisihDua(a, b)}`;
+
+/** Kata lebihnya, kurangnya, dan selisih untuk dua orang. */
+export function kalimatSelisih(namaA: string, a: number, namaB: string, b: number): string {
+  if (a === b) return `${namaA} dan ${namaB} sama banyak, jadi selisihnya 0.`;
+  const [banyak, sedikit] = a > b ? [namaA, namaB] : [namaB, namaA];
+  const d = selisihDua(a, b);
+  return `Jeruk ${banyak} ${d} lebihnya dari jeruk ${sedikit}. Jeruk ${sedikit} ${d} kurangnya dari jeruk ${banyak}. Selisihnya ${d}.`;
+}
+
+export function ucapanPasang(jumlah: number[], pasang: [number, number], dengan: { pasangan: boolean; tanda: boolean; selisih?: boolean }): string {
   const [i, j] = pasang;
   const a = jumlah[i];
   const b = jumlah[j];
   const bagian: string[] = [];
   if (dengan.pasangan) bagian.push(kalimatPasangan(ORANG[i], a, ORANG[j], b));
   if (dengan.tanda) bagian.push(`${a} ${simbol(a, b) === "<" ? "lebih kecil dari" : simbol(a, b) === ">" ? "lebih besar dari" : "sama dengan"} ${b}.`);
+  if (dengan.selisih) bagian.push(`${kalimatSelisih(ORANG[i], a, ORANG[j], b)} ${kalimatKurangSelisih(a, b)}.`);
   return bagian.join(" ");
 }
-
 export function ucapanTiga(jumlah: number[], dengan: { paling: boolean; urut: boolean }): string {
   const bagian: string[] = [];
   if (dengan.paling) bagian.push(kalimatPaling(jumlah));

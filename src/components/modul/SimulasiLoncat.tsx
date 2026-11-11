@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
-import { CobaIni, KARTU, Pilihan } from "./simulasi-bersama";
+import { CobaIni, KARTU, Pilihan, TOMBOL_BIASA } from "./simulasi-bersama";
 import { BIRU, EMAS, GarisAngka, HIJAU, KalimatBesar, MERAH, Pengatur, ejaHitung } from "./komponen-lab";
 import { MAKS, batasOperan, catatanLoncat, hasilLoncat, kalimatLoncat, rapikan, rencana, ucapanLoncat, type Loncat, type Op, type Strategi } from "./lab-loncat-bab6";
 
@@ -14,10 +14,49 @@ import { MAKS, batasOperan, catatanLoncat, hasilLoncat, kalimatLoncat, rapikan, 
 
 const NAMA_OP: Record<Op, string> = { tambah: "Tambah", kurang: "Kurang", selisih: "Selisih" };
 
-export default function SimulasiLoncat({ speakGuru }: { speakGuru: (t: string) => void }) {
-  const [op, setOp] = useState<Op>("tambah");
+const SEMUA_OP: Op[] = ["tambah", "kurang", "selisih"];
+
+/** Pasangan bilangan awal tiap operasi, supaya sesuai cerita sub-bab yang memakainya. */
+const AWAL_LONCAT: Record<Op, Loncat> = { tambah: { a: 8, b: 5 }, kurang: { a: 15, b: 3 }, selisih: { a: 7, b: 9 } };
+
+function langkahCoba(op: Op, ops: Op[]): string[] {
+  if (ops.length > 1) {
+    return [
+      "Pilih Tambah 8 dan 5. Bandingkan loncat satu-satu dengan lewat sepuluh. Mana yang lebih sedikit lompatannya?",
+      "Pilih Kurang. Mulai dari 15, loncat mundur 6.",
+      "Pilih Selisih. Atur dua bilangan, lalu lihat jaraknya.",
+    ];
+  }
+  if (op === "selisih") {
+    return [
+      "Atur bilangan pertama 7 dan bilangan kedua 9. Berapa langkah dari 7 ke 9?",
+      "Tukar angkanya: bilangan pertama 9 dan kedua 7. Apakah jaraknya berubah?",
+      "Buat dua bilangan sama besar. Berapa selisihnya?",
+    ];
+  }
+  if (op === "tambah") {
+    return [
+      "Atur Mulai dari 8 dan Loncat maju 5. Bandingkan loncat satu-satu dengan lewat sepuluh. Mana yang lebih sedikit lompatannya?",
+      "Atur Mulai dari 12 dan Loncat maju 3. Apakah lompatannya melewati 10?",
+    ];
+  }
+  return [
+    "Atur Mulai dari 15 dan Loncat mundur 3. Berapa lompatan mundur satu-satu?",
+    "Atur Mulai dari 15 dan Loncat mundur 6. Bandingkan loncat satu-satu dengan lewat sepuluh.",
+  ];
+}
+
+export default function SimulasiLoncat({ speakGuru, ops = SEMUA_OP }: { speakGuru: (t: string) => void; ops?: Op[] }) {
+  const [op, setOp] = useState<Op>(ops[0]);
   const [strategi, setStrategi] = useState<Strategi>("sepuluh");
-  const [p, setP] = useState<Loncat>({ a: 8, b: 5 });
+  const [p, setP] = useState<Loncat>(AWAL_LONCAT[ops[0]]);
+  const coba = langkahCoba(op, ops);
+  const judul = ops.length > 1 ? "Laboratorium Garis Bilangan Loncat" : op === "selisih" ? "Selisih di Garis Bilangan" : op === "tambah" ? "Loncat Menjumlah" : "Loncat Mengurang";
+  const reset = () => {
+    setOp(ops[0]);
+    setStrategi("sepuluh");
+    setP(AWAL_LONCAT[ops[0]]);
+  };
 
   const hops = rencana(p, op, strategi);
   const hasil = hasilLoncat(p, op);
@@ -33,20 +72,22 @@ export default function SimulasiLoncat({ speakGuru }: { speakGuru: (t: string) =
     <div className="space-y-4">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <h3 className="text-lg font-black text-[#1C01A5]">Laboratorium Garis Bilangan Loncat</h3>
-          <p className="text-sm font-bold text-[#1C01A5]/80">Pilih tambah, kurang, atau selisih. Lihat lompatannya di garis bilangan.</p>
+          <h3 className="text-lg font-black text-[#1C01A5]">{judul}</h3>
+          <p className="text-sm font-bold text-[#1C01A5]/80">{ops.length > 1 ? "Pilih tambah, kurang, atau selisih. Lihat lompatannya di garis bilangan." : "Atur bilangannya. Lihat lompatannya di garis bilangan."}</p>
         </div>
         <TombolSuaraGuru label="Dengarkan lompatan ini" onClick={() => speakGuru(ejaHitung(ucapanLoncat(p, op, strategi)))} />
       </div>
 
       <div className={`${KARTU} space-y-2`}>
-        <div className="flex flex-wrap justify-center gap-1.5" role="group" aria-label="Pilih operasi">
-          {(Object.keys(NAMA_OP) as Op[]).map((o) => (
-            <Pilihan key={o} aktif={op === o} onKlik={() => ganti(o)}>
-              {NAMA_OP[o]}
-            </Pilihan>
-          ))}
-        </div>
+        {ops.length > 1 ? (
+          <div className="flex flex-wrap justify-center gap-1.5" role="group" aria-label="Pilih operasi">
+            {ops.map((o) => (
+              <Pilihan key={o} aktif={op === o} onKlik={() => ganti(o)}>
+                {NAMA_OP[o]}
+              </Pilihan>
+            ))}
+          </div>
+        ) : null}
         <Pengatur
           nama={op === "selisih" ? "Bilangan pertama" : "Mulai dari"}
           nilai={p.a}
@@ -74,6 +115,11 @@ export default function SimulasiLoncat({ speakGuru }: { speakGuru: (t: string) =
             </Pilihan>
           </div>
         ) : null}
+        <div className="flex justify-center">
+          <button type="button" className={TOMBOL_BIASA} onClick={reset}>
+            ↺ Reset semua
+          </button>
+        </div>
       </div>
 
       <div className={`${KARTU} space-y-2`}>
@@ -85,7 +131,7 @@ export default function SimulasiLoncat({ speakGuru }: { speakGuru: (t: string) =
           lompatan={hops.map((h) => ({ dari: h.dari, ke: h.ke, warna, label: h.label }))}
           penanda={op === "selisih" ? [{ n: p.a, warna: MERAH }, { n: p.b, warna: BIRU }] : [{ n: p.a, warna: MERAH }, ...(p.b > 0 ? [{ n: hasil, warna: HIJAU }] : [])]}
         />
-        <p className="text-center text-xs font-bold text-[#1C01A5]/70">Lingkaran emas besar menandai 10, jembatan di tengah garis.</p>
+        {op !== "selisih" ? <p className="text-center text-xs font-bold text-[#1C01A5]/70">Lingkaran emas besar menandai 10, jembatan di tengah garis.</p> : <p className="text-center text-xs font-bold text-[#1C01A5]/70">Titik merah dan biru menandai kedua bilangan. Panah emas adalah jaraknya.</p>}
       </div>
 
       <div className={`${KARTU} space-y-2`}>
@@ -103,16 +149,8 @@ export default function SimulasiLoncat({ speakGuru }: { speakGuru: (t: string) =
 
       <CobaIni
         judul="Coba ini!"
-        onDengar={() =>
-          speakGuru(
-            "Coba ini. Satu, pilih tambah dengan delapan dan lima. Bandingkan loncat satu satu dengan loncat lewat sepuluh. Mana yang lebih sedikit lompatannya? Dua, pilih kurang. Mulai dari lima belas, loncat mundur enam. Tiga, pilih selisih. Atur dua bilangan, lalu lihat jaraknya."
-          )
-        }
-        langkah={[
-          "Pilih Tambah 8 dan 5. Bandingkan loncat satu-satu dengan lewat sepuluh. Mana yang lebih sedikit lompatannya?",
-          "Pilih Kurang. Mulai dari 15, loncat mundur 6.",
-          "Pilih Selisih. Atur dua bilangan, lalu lihat jaraknya.",
-        ]}
+        onDengar={() => speakGuru(ejaHitung(`Coba ini. ${coba.map((c, i) => `${["Satu", "Dua", "Tiga", "Empat"][i]}, ${c}`).join(" ")}`))}
+        langkah={coba}
       />
     </div>
   );
