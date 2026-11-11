@@ -45,7 +45,7 @@ for (const [kode, kom] of [["A", "VideoK2B3A"], ["B", "VideoK2B3B"], ["C", "Vide
 }
 cek("pemutar: bab 3 memakai peta emoji sendiri", /adaK2B3 \? SUB_ANAK_K2B3/.test(pemutar));
 cek("pemutar: bab 3 termasuk bab gaya baru (Latihan terbuka setelah materi)", /adaK2B2 \|\| adaK2B3/.test(pemutar));
-cek("pemutar: bab 3 tidak punya tab Simulasi", !/"mtk-2-bab3":\s*Simulasi/.test(pemutar));
+cek("pemutar: bab 3 punya tab Simulasi (SimulasiK2Bab3)", /"mtk-2-bab3":\s*SimulasiK2Bab3/.test(pemutar));
 cek("pemutar: kartu 'sedang disiapkan' untuk Latihan dan Ujian tanpa soal", /soalSiap/.test(pemutar) && /bab ini sedang disiapkan/.test(pemutar));
 
 /* ---- Suara: murni Web Speech perangkat, laju 0,70, nada 1 ---- */
@@ -79,7 +79,7 @@ cek("JSON: tanpa kunci jawaban", !/"correct_index"|"correctAnswer"|"explanation"
 cek("JSON: tanpa data simulasi", !/simulasi/i.test(JSON.stringify(json)));
 cek("JSON: chapter_id, phase_code, grade", json.chapter_id === "k2-mat-bab3" && json.phase_code === "FASE_A" && json.grade === 2);
 cek("seed server tidak dibuat untuk bab tanpa soal", !fs.existsSync("supabase/seed/02_kelas2_bab3_keys.sql"));
-cek("pemutar: SIMULASI_BAB tidak memuat bab 3", !/SIMULASI_BAB[\s\S]{0,400}"mtk-2-bab3"/.test(pemutar.slice(pemutar.indexOf("const SIMULASI_BAB"), pemutar.indexOf("const SIMULASI_BAB") + 600)));
+cek("pemutar: SIMULASI_BAB memuat bab 3", /"mtk-2-bab3":\s*SimulasiK2Bab3/.test(pemutar.slice(pemutar.indexOf("const SIMULASI_BAB"), pemutar.indexOf("const SIMULASI_BAB") + 900)));
 
 /* ---- Batas Concrete dan Picture ---- */
 const bendaNyata = /BendaDatarSvg|BendaDatarG|BendaRuangSvg|ObjDatar|ObjRuang|DEKOR_BENDA|Ruang3D\b/;

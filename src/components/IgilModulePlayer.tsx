@@ -95,6 +95,7 @@ import SimulasiBab7 from "@/components/modul/SimulasiBab7";
 import SimulasiBab8 from "@/components/modul/SimulasiBab8";
 import SimulasiK2Bab1 from "@/components/modul/SimulasiK2Bab1";
 import SimulasiK2Bab2 from "@/components/modul/SimulasiK2Bab2";
+import SimulasiK2Bab3 from "@/components/modul/SimulasiK2Bab3";
 import { CeritaDataA, PETA_PIKIRAN_A8 } from "@/components/modul/gambar-data-a8";
 import {
   AbstractDataA,
@@ -982,6 +983,7 @@ const SIMULASI_BAB: Partial<Record<string, ComponentType<SimulasiBabProps>>> = {
   "mtk-1-bab8": SimulasiBab8,
   "mtk-2-bab1": SimulasiK2Bab1,
   "mtk-2-bab2": SimulasiK2Bab2,
+  "mtk-2-bab3": SimulasiK2Bab3,
 };
 
 export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: BabModul; paket?: PaketBab }) {
