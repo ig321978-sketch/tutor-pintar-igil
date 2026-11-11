@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { BendaSvg } from "./data-8-dasar";
 import { Cek, CobaIni, KARTU, TOMBOL_BIASA } from "./simulasi-bersama";
 import { BIRU, BaganPasangan, Bingkai, GarisAngka, HIJAU, KalimatBesar, MERAH, Pengatur, ejaHitung } from "./komponen-lab";
+import type { KeadaanTambah } from "./misi-bab2";
 import { MAKS, bendaGabung, hitungMaju, jumlah, kalimat, kalimatTukar, selGabung, tukar, ubahKelompok, ucapanTambah } from "./lab-tambah-bab2";
 
 /**
@@ -49,14 +50,18 @@ const KATA_URUT = ["Satu", "Dua", "Tiga", "Empat"];
 export default function SimulasiTambah({
   speakGuru,
   tampil = SEMUA_TAMPIL_TAMBAH,
+  onKeadaan,
 }: {
   speakGuru: (t: string) => void;
   /** Perwakilan dan alat yang tersedia. Bawaan: semuanya (tab Simulasi lama). */
   tampil?: TampilTambah[];
+  /** Melapor keadaan ke papan misi (bila ada). */
+  onKeadaan?: (k: KeadaanTambah) => void;
 }) {
   const [p, setP] = useState({ a: 3, b: 4 });
   const [pesan, setPesan] = useState("");
   const [gabung, setGabung] = useState(false);
+  const [ditukar, setDitukar] = useState(0);
   const [lihatMentah, setLihat] = useState<Record<KartuTambah, boolean>>({ benda: true, kalimat: true, bingkai: true, garis: true, bagan: true });
   const c = jumlah(p.a, p.b);
 
@@ -66,6 +71,12 @@ export default function SimulasiTambah({
   const kartuAda = KARTU_TAMBAH.filter((k) => ada(k));
   const bisaDiatur = kartuAda.length > 1;
   const coba = langkahCoba(tampil);
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  const benda = lihat("benda"), kalimatTampil = lihat("kalimat"), bingkai = lihat("bingkai"), garis = lihat("garis"), bagan = lihat("bagan");
+  useEffect(() => {
+    lapor.current?.({ alat: "tambah", a: p.a, b: p.b, ditukar, gabung: gabung && benda, benda, kalimat: kalimatTampil, bingkai, garis, bagan });
+  }, [p.a, p.b, ditukar, gabung, benda, kalimatTampil, bingkai, garis, bagan]);
 
   const ubah = (k: "a" | "b", delta: 1 | -1) => {
     const baru = ubahKelompok(p, k, delta);
@@ -107,6 +118,7 @@ export default function SimulasiTambah({
               className={TOMBOL_BIASA}
               onClick={() => {
                 setP(tukar(p));
+                setDitukar((x) => x + 1);
                 setPesan("");
               }}
             >

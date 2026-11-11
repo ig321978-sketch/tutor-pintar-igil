@@ -23,6 +23,7 @@ import * as Q7 from "../src/components/modul/lab-posisi-bab7.ts";
 import * as M0 from "../src/components/modul/misi-simulasi.ts";
 import * as M7 from "../src/components/modul/misi-bab7.ts";
 import * as M1 from "../src/components/modul/misi-bab1.ts";
+import * as X2 from "../src/components/modul/misi-bab2.ts";
 let gagal = 0;
 let lulus = 0;
 const cek = (kondisi, pesan) => {
@@ -1200,6 +1201,37 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   cek(ada("D", D({ n: 7, a: 9 }), "d-nol") === false, "bab1 D: a dibatasi oleh batasPecah (a besar bukan nol)");
   cek(ada("D", SEL("kasir"), "d-kasir") && ada("D", SEL("katak"), "d-ingat-katak"), "bab1 D: skenario dan katak");
   cek(ada("D", D({ banding: true, n: 5, m: 5 }), "d-ingat-banding"), "bab1 D: ingat banding");
+}
+
+/* ---------------- Misi Bab 2 (hibrida) ---------------- */
+// Pemeriksa struktur bersama: keadaan awal tidak memenuhi misi, ada wajib dan bebas, id unik.
+function ujiStruktur(nama, daftarFn, subs, awalSub) {
+  for (const sub of subs) {
+    const daftar = daftarFn(sub);
+    const awal = awalSub[sub];
+    cek(M0.misiBaru(daftar, awal, new Set()).length === 0, `${nama} ${sub}: keadaan awal tidak memenuhi misi`);
+    cek(daftar.filter((m) => m.wajib).length >= 3 && daftar.some((m) => !m.wajib), `${nama} ${sub}: ada misi wajib dan tantangan bebas`);
+    cek(new Set(daftar.map((m) => m.id)).size === daftar.length, `${nama} ${sub}: id unik`);
+    cek(daftar.every((m) => m.teks.length > 10 && m.teks.length < 120), `${nama} ${sub}: teks misi ringkas`);
+  }
+}
+{
+  const kosong = new Set();
+  const T2 = (o) => ({ alat: "tambah", a: 3, b: 4, ditukar: 0, gabung: false, benda: true, kalimat: true, bingkai: true, garis: false, bagan: false, ...o });
+  ujiStruktur("bab2", X2.daftarMisiBab2, ["A", "B", "C"], { A: T2({}), B: T2({ garis: true, bagan: true }), C: T2({ garis: true, bagan: true }) });
+  const ada = (sub, k, id) => M0.misiBaru(X2.daftarMisiBab2(sub), k, kosong).includes(id);
+  const SEL = (id) => ({ alat: "selesai", id });
+  cek(ada("A", T2({ gabung: true }), "a-gabung") && !ada("A", T2({ gabung: true, benda: false }), "a-gabung"), "bab2 A: gabung");
+  cek(ada("A", T2({ a: 2, b: 3 }), "a-lima") && ada("A", T2({ a: 5, b: 0 }), "a-nol") && !ada("A", T2({ a: 0, b: 0 }), "a-nol"), "bab2 A: lima dan nol");
+  cek(ada("A", T2({ a: 6, b: 4 }), "a-sepuluh") && !ada("A", T2({ a: 6, b: 4, bingkai: false }), "a-sepuluh"), "bab2 A: sepuluh");
+  cek(ada("A", SEL("mesin"), "a-mesin") && ada("A", T2({ a: 4, b: 4 }), "a-kembar") && !ada("A", T2({ a: 0, b: 0 }), "a-kembar") && ada("A", T2({ a: 5, b: 4 }), "a-sembilan"), "bab2 A: mesin, kembar, sembilan");
+  cek(ada("B", T2({ ditukar: 1 }), "b-tukar") && !ada("B", T2({}), "b-tukar"), "bab2 B: tukar");
+  cek(ada("B", T2({ garis: true, a: 6, b: 3 }), "b-garis") && !ada("B", T2({ garis: false, a: 6, b: 3 }), "b-garis"), "bab2 B: garis");
+  cek(ada("B", T2({ a: 5, b: 5 }), "b-kembar") && ada("B", T2({ a: 8, b: 2 }), "b-sepuluh") && ada("B", T2({ bagan: true, a: 4, b: 3 }), "b-bagan"), "bab2 B: kembar, sepuluh, bagan");
+  cek(ada("B", T2({ ditukar: 1, a: 1, b: 9 }), "b-sembilan") && !ada("B", T2({ a: 1, b: 9 }), "b-sembilan") && ada("B", SEL("mesin"), "b-ingat-mesin"), "bab2 B: bebas");
+  cek(ada("C", T2({ a: 5, b: 3 }), "c-cerita") && ada("C", T2({ garis: true, a: 4, b: 2 }), "c-garis") && ada("C", T2({ ditukar: 2, a: 6, b: 2 }), "c-tukar"), "bab2 C: periksa");
+  cek(!ada("C", T2({ a: 6, b: 2 }), "c-tukar"), "bab2 C: tukar harus ditekan");
+  cek(ada("C", SEL("kantin"), "c-kantin") && ada("C", SEL("mesin"), "c-mesin") && ada("C", T2({ a: 7, b: 3 }), "c-sepuluh"), "bab2 C: kantin, mesin, sepuluh");
 }
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);
