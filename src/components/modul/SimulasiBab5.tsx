@@ -2,121 +2,69 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import SimulasiPuluhan from "./SimulasiPuluhan";
-import SimulasiOdometer from "./SimulasiOdometer";
+import LabBertahap, { type TabLab } from "./LabBertahap";
+import SimulasiPuluhan, { SEMUA_TAMPIL_PULUHAN, type TampilPuluhan } from "./SimulasiPuluhan";
 import SimulasiDeret from "./SimulasiDeret";
-import SimulasiBanding from "./SimulasiBanding";
+import SimulasiOdometer from "./SimulasiOdometer";
+import SimulasiBanding, { type TampilBanding } from "./SimulasiBanding";
+import { daftarMisiBab5, type KeadaanBab5 } from "./misi-bab5";
+import { laporMisi, tampilMisi } from "./misi-simulasi";
 
 /* ======================================================================== */
 /* Simulasi Bab 5 di dalam Materi (tahap 4 SMISCPA, di antara Infografis    */
-/* dan Concrete). Satu simulasi per layar, tiap simulasi diawali satu Misi. */
-/* Tiap sub-bab memakai alat yang sesuai isi yang diajarkannya, dan hanya   */
-/* menampilkan perwakilan yang sudah dipelajari sampai sub-bab itu:         */
-/*   Sub-Bab A (Menghitung, Membaca, Menulis sampai 20): Laboratorium       */
-/*     Bilangan sampai 20 (benda, ikat sepuluh, dua bingkai, sepuluh dulu   */
-/*     lalu sisanya, garis bilangan), tanpa istilah puluhan dan satuan.     */
-/*   Sub-Bab B (Maju dan Mundur): Maju dan Mundur (garis bilangan,          */
-/*     urutan), lalu Ulat dan Kisi Bilangan (kisi, ulat, tetangga).         */
-/*   Sub-Bab C (Nilai Tempat): Laboratorium Puluhan dan Satuan (benda,      */
-/*     ikat, tabel), lalu Odometer Bilangan (mesin keadaan).                */
-/*   Sub-Bab D (Membandingkan dan Mengurutkan): Banding Dua Kelompok,       */
-/*     Paling Banyak dan Urutan, lalu Puluhan Dulu Baru Satuan.             */
-/* Tombol LANJUTKAN aktif setelah simulasinya disentuh sekali (semua mode   */
-/* "sentuh"), supaya tahap ini ringan dan tidak menahan anak.               */
+/* dan Concrete). Pola hibrida: satu laboratorium bilangan yang alatnya     */
+/* bertambah per sub-bab, dengan misi wajib dan tantangan bebas             */
+/* (misi-bab5.ts).                                                          */
+/*   Sub-Bab A (11 sampai 20): Lab Puluhan dan Satuan tanpa tabel.          */
+/*   Sub-Bab B (Maju dan mundur): + tab Maju dan Mundur dan Ulat dan Kisi.  */
+/*   Sub-Bab C (Nilai tempat): + tabel nilai tempat dan tab Odometer.       */
+/*   Sub-Bab D (Membandingkan, sub-bab akhir): semua alat + tab Banding     */
+/*     dan Urutan, sekaligus simulasi pencapaian misi bab ini.              */
+/* Tombol LANJUTKAN aktif bila misi wajib tercapai, atau anak memilih       */
+/* "Lewati misi" setelah mencoba. Simulasi tidak memberi Poin Kualifikasi.  */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
 const MISI = {
-  lab: "Tekan plus pada Bilangan sampai lebih dari 10. Lihat bingkai kedua mulai terisi.",
-  maju: "Tekan Maju beberapa kali, lalu tekan Mundur. Lihat panah di garis bilangan.",
-  kisi: "Ketuk satu kotak di kisi. Lihat bilangan sebelum dan sesudahnya.",
-  nilaiTempat: "Tekan plus sampai 10, lalu centang Ikat sepuluh. Lihat tabelnya.",
-  odometer: "Tekan Satuan naik sampai melewati 9. Lihat apa yang terjadi pada puluhan.",
-  pasang: "Tekan plus pada jeruk Kira beberapa kali. Lihat siapa yang punya sisa tidak berpasangan.",
-  paling: "Ubah jumlah jeruk Wei. Lihat siapa yang paling banyak dan siapa yang paling sedikit.",
-  puluhanDulu: "Centang Bandingkan. Lihat angka mana yang dibandingkan lebih dulu.",
+  A: "Buat bilangan 11 sampai 20 dengan benda, bingkai, dan garis bilangan. Selesaikan misi di bawah, urutannya bebas.",
+  B: "Maju dan mundur di deret bilangan, lalu cari bilangan yang hilang. Selesaikan misi wajib, lalu coba tantangan bebas.",
+  C: "Baca puluhan dan satuan di tabel, lalu putar Odometer Bilangan. Selesaikan misi wajib, lalu coba tantangan bebas.",
+  D: "Bandingkan dan urutkan bilangan sampai 20. Selesaikan semua misi wajib, lalu coba tantangan bebas.",
 } as const;
 
+const TAMPIL_PULUHAN: Record<"A" | "B" | "C" | "D", TampilPuluhan[]> = {
+  A: ["benda", "ikat", "bingkai", "kalimat", "garis"],
+  B: ["benda", "ikat", "bingkai", "kalimat", "garis"],
+  C: ["benda", "ikat", "bingkai", "kalimat", "tabel", "garis"],
+  D: SEMUA_TAMPIL_PULUHAN,
+};
+
+const TAMPIL_BANDING: TampilBanding[] = ["pasang", "tanda", "benda", "paling", "urut", "garis"];
+
 const langkahBab5 = (sub: string): LangkahSim[] => {
-  switch (sub) {
-    case "B":
-      return [
-        {
-          metode: "PhET",
-          sub: "Maju dan Mundur",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.maju,
-          mode: "sentuh",
-          render: (a) => <SimulasiDeret speakGuru={a.speakGuru} tampil={["garis", "urutan"]} />,
-        },
-        {
-          metode: "PhET",
-          sub: "Ulat dan Kisi Bilangan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.kisi,
-          mode: "sentuh",
-          render: (a) => <SimulasiDeret speakGuru={a.speakGuru} tampil={["kisi", "ulat", "tetangga"]} />,
-        },
-      ];
-    case "C":
-      return [
-        {
-          metode: "PhET",
-          sub: "Laboratorium Puluhan dan Satuan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.nilaiTempat,
-          mode: "sentuh",
-          render: (a) => <SimulasiPuluhan speakGuru={a.speakGuru} tampil={["benda", "ikat", "tabel"]} />,
-        },
-        {
-          metode: "Mesin keadaan",
-          sub: "Odometer Bilangan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.odometer,
-          mode: "sentuh",
-          render: (a) => <SimulasiOdometer speakGuru={a.speakGuru} onTuntas={a.tuntas} />,
-        },
-      ];
-    case "D":
-      return [
-        {
-          metode: "PhET",
-          sub: "Banding Dua Kelompok",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.pasang,
-          mode: "sentuh",
-          render: (a) => <SimulasiBanding speakGuru={a.speakGuru} tampil={["pasang", "tanda"]} />,
-        },
-        {
-          metode: "PhET",
-          sub: "Paling Banyak dan Urutan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.paling,
-          mode: "sentuh",
-          render: (a) => <SimulasiBanding speakGuru={a.speakGuru} tampil={["benda", "paling", "urut", "garis"]} />,
-        },
-        {
-          metode: "PhET",
-          sub: "Puluhan Dulu, Baru Satuan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.puluhanDulu,
-          mode: "sentuh",
-          render: (a) => <SimulasiPuluhan speakGuru={a.speakGuru} tampil={["tabel", "garis", "banding"]} />,
-        },
-      ];
-    default:
-      return [
-        {
-          metode: "PhET",
-          sub: "Laboratorium Bilangan sampai 20",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.lab,
-          mode: "sentuh",
-          render: (a) => <SimulasiPuluhan speakGuru={a.speakGuru} tampil={["benda", "ikat", "bingkai", "kalimat", "garis"]} />,
-        },
-      ];
-  }
+  const huruf = (["A", "B", "C", "D"].includes(sub) ? sub : "A") as "A" | "B" | "C" | "D";
+  const daftar = daftarMisiBab5(huruf);
+  return [
+    {
+      metode: "PhET",
+      sub: huruf === "D" ? "Lab Bilangan 20: Pencapaian Misi" : "Lab Bilangan 20",
+      petunjuk: MAINKAN_DULU,
+      misi: MISI[huruf],
+      misiDaftar: tampilMisi(daftar),
+      mode: "sentuh",
+      render: (a) => {
+        const lapor = (k: KeadaanBab5) => laporMisi(daftar, k, a.capai);
+        const selesai = (id: string) => lapor({ alat: "selesai", id });
+        const puluhan: TabLab = { id: "puluhan", nama: "Puluhan dan Satuan", render: () => <SimulasiPuluhan speakGuru={a.speakGuru} tampil={TAMPIL_PULUHAN[huruf]} onKeadaan={lapor} /> };
+        const deret: TabLab = { id: "deret", nama: "Maju dan Mundur", render: () => <SimulasiDeret speakGuru={a.speakGuru} onKeadaan={lapor} /> };
+        const odometer: TabLab = { id: "odometer", nama: "Odometer", render: () => <SimulasiOdometer speakGuru={a.speakGuru} onTuntas={() => selesai("odometer")} /> };
+        const banding: TabLab = { id: "banding", nama: "Banding dan Urutan", render: () => <SimulasiBanding speakGuru={a.speakGuru} tampil={TAMPIL_BANDING} onKeadaan={lapor} /> };
+        const tab = huruf === "A" ? [puluhan] : huruf === "B" ? [puluhan, deret] : huruf === "C" ? [puluhan, deret, odometer] : [puluhan, deret, odometer, banding];
+        return <LabBertahap tab={tab} label="Alat laboratorium bilangan 20" />;
+      },
+    },
+  ];
 };
 
 /** Misi simulasi pertama sub-bab, untuk digabung ke ucapan saat tahap Simulasi dibuka. */

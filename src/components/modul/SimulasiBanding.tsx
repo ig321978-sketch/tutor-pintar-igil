@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
+import type { KeadaanBandingJeruk } from "./misi-bab5";
 import { BendaSvg } from "./data-8-dasar";
 import { Cek, CobaIni, KARTU, Pilihan, TOMBOL_BIASA } from "./simulasi-bersama";
 import { BIRU, GarisAngka, HIJAU, KalimatBesar, MERAH, Pengatur, eja } from "./komponen-lab";
@@ -76,7 +77,7 @@ function BarisJeruk({ n, nama }: { n: number; nama: string }) {
   );
 }
 
-export default function SimulasiBanding({ speakGuru, tampil = SEMUA_TAMPIL_BANDING }: { speakGuru: (t: string) => void; tampil?: TampilBanding[] }) {
+export default function SimulasiBanding({ speakGuru, tampil = SEMUA_TAMPIL_BANDING, onKeadaan }: { speakGuru: (t: string) => void; tampil?: TampilBanding[]; /** Melapor keadaan ke papan misi (bila ada). */ onKeadaan?: (k: KeadaanBandingJeruk) => void }) {
   const [jumlah, setJumlah] = useState<number[]>([...AWAL]);
   const [pas, setPas] = useState(0);
   const [lihatMentah, setLihat] = useState<Record<TampilBanding, boolean>>({ pasang: true, tanda: true, selisih: true, batang: true, benda: true, paling: true, urut: true, garis: true });
@@ -90,6 +91,12 @@ export default function SimulasiBanding({ speakGuru, tampil = SEMUA_TAMPIL_BANDI
   const terbanyak = indeksTerbanyak(jumlah);
   const tersedikit = indeksTersedikit(jumlah);
   const semuaSama = terbanyak.length === jumlah.length;
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  const [fPasang, fTanda, fSelisih, fBatang, fBenda, fPaling, fUrut, fGaris] = (["pasang", "tanda", "selisih", "batang", "benda", "paling", "urut", "garis"] as const).map((k) => Boolean(lihat(k)));
+  useEffect(() => {
+    lapor.current?.({ alat: "banding", jumlah, pas, pasang: fPasang, tanda: fTanda, selisih: fSelisih, batang: fBatang, benda: fBenda, paling: fPaling, urut: fUrut, garis: fGaris });
+  }, [jumlah, pas, fPasang, fTanda, fSelisih, fBatang, fBenda, fPaling, fUrut, fGaris]);
 
   const ubah = (k: number, delta: number) => setJumlah((x) => x.map((v, idx) => (idx === k ? batasBanding(v + delta) : v)));
   const reset = () => {

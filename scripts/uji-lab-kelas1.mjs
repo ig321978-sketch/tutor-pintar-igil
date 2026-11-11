@@ -26,6 +26,7 @@ import * as M1 from "../src/components/modul/misi-bab1.ts";
 import * as X2 from "../src/components/modul/misi-bab2.ts";
 import * as X3 from "../src/components/modul/misi-bab3.ts";
 import * as X4 from "../src/components/modul/misi-bab4.ts";
+import * as X5 from "../src/components/modul/misi-bab5.ts";
 let gagal = 0;
 let lulus = 0;
 const cek = (kondisi, pesan) => {
@@ -1290,6 +1291,38 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   cek(ada("C", Bg({ urai: true }), "c-kereta") && !ada("C", Bg({ urai: false }), "c-kereta") && ada("C", Bg({ id: "rumah-lidi", urai: true }), "c-lidi"), "bab4 C: urai");
   cek(ada("C", SEL("arsitek"), "c-arsitek") && ada("C", Bg({ urai: true, jenis: "segitiga", diambil: true }), "c-ambil"), "bab4 C: arsitek dan ambil");
   cek(ada("C", Pk({ tertutup: true, bentuk: "Persegi panjang" }), "c-panjang") && ada("C", Kl({ aturan: "warna" }), "c-ingat-warna"), "bab4 C: ingat A dan B");
+}
+
+/* ---------------- Misi Bab 5 (hibrida) ---------------- */
+{
+  const kosong = new Set();
+  const Pu = (o) => ({ alat: "puluhan", n: 14, m: 12, ikat: false, banding: false, benda: true, bingkai: true, kalimat: true, tabel: false, garis: true, ...o });
+  const De = (o) => ({ alat: "deret", awal: 12, n: 12, maju: 0, mundur: 0, sembunyi: false, tetangga: true, kisi: true, ...o });
+  const Bj = (o) => ({ alat: "banding", jumlah: [12, 15, 9], pas: 0, pasang: true, tanda: true, selisih: false, batang: false, benda: true, paling: true, urut: true, garis: true, ...o });
+  const SEL = (id) => ({ alat: "selesai", id });
+  const semuaAwal = [Pu({}), Pu({ tabel: true }), Pu({ tabel: true, banding: false }), De({}), Bj({})];
+  for (const sub of ["A", "B", "C", "D"]) {
+    const daftar = X5.daftarMisiBab5(sub);
+    for (const k of semuaAwal) cek(M0.misiBaru(daftar, k, kosong).length === 0, `bab5 ${sub}: keadaan awal ${k.alat} tidak memenuhi misi`);
+  }
+  ujiStruktur("bab5", X5.daftarMisiBab5, ["A", "B", "C", "D"], { A: Pu({}), B: De({}), C: Pu({ tabel: true }), D: Pu({ tabel: true }) });
+  const ada = (sub, k, id) => M0.misiBaru(X5.daftarMisiBab5(sub), k, kosong).includes(id);
+  cek(ada("A", Pu({ n: 11 }), "a-sebelas") && !ada("A", Pu({ n: 11, bingkai: false }), "a-sebelas") && ada("A", Pu({ n: 10 }), "a-sepuluh"), "bab5 A: sebelas dan sepuluh");
+  cek(ada("A", Pu({ n: 13, ikat: true }), "a-ikat") && !ada("A", Pu({ n: 13 }), "a-ikat") && ada("A", Pu({ n: 17 }), "a-garis") && !ada("A", Pu({ n: 17, garis: false }), "a-garis"), "bab5 A: ikat dan garis");
+  cek(ada("A", Pu({ n: 20 }), "a-dua-puluh") && ada("A", Pu({ n: 19 }), "a-sembilan-belas") && ada("A", Pu({ n: 16 }), "a-kalimat"), "bab5 A: dua puluh, sembilan belas, kalimat");
+  cek(ada("B", De({ maju: 3 }), "b-maju") && !ada("B", De({ maju: 2 }), "b-maju") && ada("B", De({ mundur: 4 }), "b-mundur"), "bab5 B: maju dan mundur");
+  cek(ada("B", De({ awal: 18, n: 20, maju: 2 }), "b-mulai") && !ada("B", De({ awal: 12, n: 20 }), "b-mulai"), "bab5 B: mulai dari 18");
+  cek(ada("B", De({ sembunyi: true }), "b-ulat") && ada("B", De({ n: 16 }), "b-tetangga") && !ada("B", De({ n: 16, tetangga: false }), "b-tetangga") && ada("B", Pu({ n: 20 }), "b-ingat"), "bab5 B: ulat, tetangga, ingat");
+  const Tb = (o) => Pu({ tabel: true, ...o });
+  cek(ada("C", Tb({ n: 10, ikat: true }), "c-ikat") && !ada("C", Tb({ n: 10 }), "c-ikat") && ada("C", Tb({ n: 15 }), "c-lima-belas") && ada("C", Tb({ n: 11 }), "c-sebelas"), "bab5 C: tabel");
+  cek(!ada("C", Pu({ n: 15 }), "c-lima-belas"), "bab5 C: tabel harus tampil");
+  cek(ada("C", SEL("odometer"), "c-odometer") && ada("C", Tb({ n: 20 }), "c-dua-puluh") && ada("C", De({ maju: 3 }), "c-ingat"), "bab5 C: odometer, dua puluh, ingat");
+  cek(ada("D", Pu({ banding: true, n: 13, m: 16 }), "d-satuan") && ada("D", Pu({ banding: true, n: 16, m: 13 }), "d-satuan") && !ada("D", Pu({ n: 13, m: 16 }), "d-satuan"), "bab5 D: satuan");
+  cek(ada("D", Pu({ banding: true, n: 15, m: 9 }), "d-puluhan") && ada("D", Pu({ banding: true, n: 8, m: 14 }), "d-puluhan") && !ada("D", Pu({ banding: true, n: 14, m: 12 }), "d-puluhan"), "bab5 D: puluhan lebih dulu");
+  cek(ada("D", Bj({ jumlah: [12, 15, 17] }), "d-wei") && !ada("D", Bj({ jumlah: [12, 17, 17] }), "d-wei"), "bab5 D: Wei terbanyak sendirian");
+  cek(ada("D", Bj({ jumlah: [15, 12, 9] }), "d-urut") && !ada("D", Bj({ jumlah: [15, 12, 12] }), "d-urut"), "bab5 D: urutan");
+  cek(ada("D", Bj({ jumlah: [12, 12, 9] }), "d-sama") && ada("D", SEL("odometer"), "d-odometer"), "bab5 D: sama dan odometer");
+  cek(X5.puncakTunggal([3, 3, 1]) === -1 && X5.puncakTunggal([1, 4, 2]) === 1, "bab5: puncakTunggal");
 }
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

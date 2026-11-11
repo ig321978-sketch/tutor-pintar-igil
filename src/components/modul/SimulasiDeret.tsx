@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
+import type { KeadaanDeret } from "./misi-bab5";
 import { Cek, CobaIni, KARTU, TOMBOL_BIASA, TOMBOL_UTAMA, sebut } from "./simulasi-bersama";
 import { BIRU, EMAS, GarisAngka, HIJAU, MERAH, Pengatur, eja } from "./komponen-lab";
 import {
@@ -22,6 +23,7 @@ import {
   titikAwal,
   ucapanDeret,
   urutan,
+  hitungLangkah,
 } from "./lab-deret-bab5";
 
 /* ------------------------------------------------------------------------ */
@@ -56,7 +58,7 @@ function langkahCoba(tampil: TampilDeret[]): string[] {
   return hasil.slice(0, 4);
 }
 
-export default function SimulasiDeret({ speakGuru, tampil = SEMUA_TAMPIL_DERET }: { speakGuru: (t: string) => void; tampil?: TampilDeret[] }) {
+export default function SimulasiDeret({ speakGuru, tampil = SEMUA_TAMPIL_DERET, onKeadaan }: { speakGuru: (t: string) => void; tampil?: TampilDeret[]; /** Melapor keadaan ke papan misi (bila ada). */ onKeadaan?: (k: KeadaanDeret) => void }) {
   const [d, setD] = useState(awalDeret);
   const [sembunyi, setSembunyi] = useState(false);
   const [lihatMentah, setLihat] = useState<Record<TampilDeret, boolean>>({ garis: true, urutan: true, kisi: true, ulat: true, tetangga: true });
@@ -69,6 +71,14 @@ export default function SimulasiDeret({ speakGuru, tampil = SEMUA_TAMPIL_DERET }
   const denganTetangga = tampil.includes("tetangga") || tampil.includes("ulat");
   const coba = langkahCoba(tampil);
   const sembunyiAktif = sembunyi && lihat("ulat");
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  const langkah = hitungLangkah(d);
+  const fTetangga = Boolean(lihat("tetangga"));
+  const fKisi = Boolean(lihat("kisi"));
+  useEffect(() => {
+    lapor.current?.({ alat: "deret", awal, n, maju: langkah.maju, mundur: langkah.mundur, sembunyi: Boolean(sembunyiAktif), tetangga: fTetangga, kisi: fKisi });
+  }, [awal, n, langkah.maju, langkah.mundur, sembunyiAktif, fTetangga, fKisi]);
 
   const reset = () => {
     setD(awalDeret());

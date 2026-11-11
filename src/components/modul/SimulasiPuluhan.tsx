@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
+import type { KeadaanPuluhan } from "./misi-bab5";
 import { BendaSvg } from "./data-8-dasar";
 import { Cek, CobaIni, KARTU, TOMBOL_BIASA, sebut } from "./simulasi-bersama";
 import { BIRU, Bingkai, GarisAngka, KalimatBesar, MERAH, Pengatur, eja } from "./komponen-lab";
@@ -49,9 +50,12 @@ function langkahCoba(tampil: TampilPuluhan[]): string[] {
 export default function SimulasiPuluhan({
   speakGuru,
   tampil = SEMUA_TAMPIL_PULUHAN,
+  onKeadaan,
 }: {
   speakGuru: (t: string) => void;
   tampil?: TampilPuluhan[];
+  /** Melapor keadaan ke papan misi (bila ada). */
+  onKeadaan?: (k: KeadaanPuluhan) => void;
 }) {
   const [n, setN] = useState(14);
   const [m, setM] = useState(12);
@@ -69,6 +73,12 @@ export default function SimulasiPuluhan({
   const diikat = bolehIkat && ikat && bisaIkat(n);
   const coba = langkahCoba(tampil);
   const banding2 = bolehBanding && banding;
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  const [fBenda, fBingkai, fKalimat, fTabel, fGaris] = (["benda", "bingkai", "kalimat", "tabel", "garis"] as const).map((k) => Boolean(lihat(k)));
+  useEffect(() => {
+    lapor.current?.({ alat: "puluhan", n, m, ikat: diikat, banding: banding2, benda: fBenda, bingkai: fBingkai, kalimat: fKalimat, tabel: fTabel, garis: fGaris });
+  }, [n, m, diikat, banding2, fBenda, fBingkai, fKalimat, fTabel, fGaris]);
 
   const reset = () => {
     setN(14);
