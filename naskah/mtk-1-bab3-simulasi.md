@@ -45,3 +45,17 @@ Tiap sub-bab: satu peta (pusat, 4 cabang) dan satu infografis (3 panel). Isinya 
 - `node scripts/uji-peta-konsep.mjs` dan `node scripts/uji-infografis-ringkas.mjs` membaca semua `kelas*-bab*-ringkas.json`.
 - `node --no-warnings scripts/uji-lab-kelas1.mjs` dan `scripts/uji-skenario-umum.mjs` (lulus).
 - Diperiksa di browser: tidak ada tab Simulasi; Mind-Map, Infografis, dan Simulasi tiap sub-bab (A sampai D) terkunci berurutan dan terbuka sesuai syarat; alat yang tampil dan teks Misi cocok; tombol "Turunkan 1 anak" (Bus Sekolah) dan "Mulai pesta!" (Pesta Jeruk) berfungsi.
+
+## Pola hibrida: simulasi bertahap, misi, tantangan bebas
+
+Bab 3 memakai **satu laboratorium yang bertambah alatnya**, bukan satu alat per simulasi. Tab Pengurangan (A), + Bus Sekolah (B), + Pesta Jeruk (C/D); alat pengurangan menyala bertahap (benda, kalimat, garis, bingkai, dua cara, bagan, keluarga fakta).
+
+- Gerbang LANJUTKAN mengikuti **misi wajib** (`src/components/modul/misi-bab3.ts`). Anak boleh menekan **Lewati misi** setelah menyentuh simulasinya sekali. **Tantangan bebas** tidak menahan siapa pun. Misi yang sudah tercapai tidak dicabut.
+- Alat melapor lewat `onKeadaan`; keadaan awal tidak boleh memenuhi misi apa pun. Logika murni dan diuji di `scripts/uji-lab-kelas1.mjs`.
+
+| Sub-Bab | Misi wajib | Tantangan bebas |
+| --- | --- | --- |
+| A | Buat 9 benda, lalu ambil 4. Berapa sisanya?; Ambil semua benda sampai sisanya nol.; Ambil 0 benda. Lihat sisanya.; Buat 10 benda, ambil 3. Lihat bingkai sepuluh.; Buat soal 7 - 2 dan baca kalimatnya. | Sisakan hanya 1 benda.; Buat soal 6 - 2 tanpa melihat contoh. |
+| B | Nyalakan Dua pengurangan, lalu buat 6 benda dan ambil 2.; Buat 5 - 3. Lihat lompat mundur di garis bilangan.; Buat 5 - 0. Lihat apa yang terjadi pada sisanya.; Buat 4 - 4. Lihat sisanya.; Dari sepuluh: buat 10 - 7 dan hitung petak kosong di bingkai. | Nyalakan Bagan pasangan, lalu buat 7 - 4.; Buat 9 - 6 dan cari dua pengurangan dari bagan yang sama. |
+| C | Nyalakan Keluarga fakta, lalu buat 7 - 3.; Periksa 9 - 4 dengan kalimat tambah di keluarga fakta.; Cari yang hilang: 6 + ? = 9. Buat 9 - 6.; Selesaikan Bus Sekolah sampai selesai. | Buat keluarga fakta dari 10 - 4.; Cari keluarga fakta yang salah satu bilangannya nol: buat 8 - 8. |
+| D | Ada 8 burung, 2 terbang. Buat kalimat pengurangannya.; Cari yang dicari: buat soal 7 - 5 dan baca sisanya.; Jawab lalu periksa: buat 6 - 2 dan cek keluarga fakta.; Selesaikan skenario Pesta Jeruk sampai adegan akhir. | Ingat Sub-Bab C: selesaikan Bus Sekolah.; Ingat Sub-Bab B: buat 4 - 4, lalu 5 - 0. |

@@ -23,6 +23,9 @@ import {
   type Lambang,
 } from "./simulasi-bersama";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
+import LabBertahap, { type TabLab } from "./LabBertahap";
+import { daftarMisiBab8, type KeadaanBab8 } from "./misi-bab8";
+import { laporMisi, tampilMisi } from "./misi-simulasi";
 import SimulasiMesinData from "./SimulasiMesinData";
 import SimulasiSkenarioPesta from "./SimulasiSkenarioPesta";
 
@@ -30,8 +33,10 @@ import SimulasiSkenarioPesta from "./SimulasiSkenarioPesta";
 /* Simulasi Bab 8 (tahap Simulasi di Materi SMISCPA), bergaya PhET. Tanpa    */
 /* skor, tanpa waktu, tanpa benar-salah. Anak menyentuh model, dan semua      */
 /* perwakilan data ikut berubah seketika:                                     */
-/*  1 Laboratorium Data (Sub-Bab A): benda, daftar, turus, tabel              */
-/*  2 Pabrik Diagram Gambar (Sub-Bab B): survei, diagram, tabel, kalimat      */
+/*  Pola hibrida: satu laboratorium yang alatnya bertambah per sub-bab,       */
+/*  dengan misi wajib dan tantangan bebas (misi-bab8.ts):                     */
+/*  A Laboratorium Data: benda, daftar, turus, tabel                          */
+/*  B (akhir) + Pabrik Diagram, Mesin Data Ajaib, Sekretaris Kelas            */
 /* Tidak ada pemanggilan jaringan. Suara memakai Suara Guru pilihan siswa.    */
 /* Naskah: naskah/mtk-1-bab8-simulasi.md                                      */
 /* ------------------------------------------------------------------------ */
@@ -51,7 +56,7 @@ function buatItem(isi: Record<string, number>): Item[] {
   return MAINAN.flatMap((j) => Array.from({ length: isi[j] ?? 0 }, () => ({ id: id++, jenis: j, rak: false })));
 }
 
-function SimulasiData({ speakGuru }: { speakGuru: (t: string) => void }) {
+function SimulasiData({ speakGuru, onKeadaan }: { speakGuru: (t: string) => void; /** Melapor keadaan ke papan misi (bila ada). */ onKeadaan?: (k: KeadaanBab8) => void }) {
   const [item, setItem] = useState<Item[]>(() => buatItem(AWAL_MAINAN));
   const idBaru = useRef(1000);
   const [terpilih, setTerpilih] = useState<number | null>(null);
@@ -88,6 +93,14 @@ function SimulasiData({ speakGuru }: { speakGuru: (t: string) => void }) {
   const tersedikit = lengkap && !semuaSama ? ada.filter((p) => p.rak === minN) : [];
 
   const sebutNama = (daftar: typeof ada) => daftar.map((p) => p.nama).join(" dan ");
+
+  const laporData = useRef(onKeadaan);
+  laporData.current = onKeadaan;
+  const kunciJumlah = per.map((p) => p.total).join(",");
+  const kunciRak = per.map((p) => p.rak).join(",");
+  useEffect(() => {
+    laporData.current?.({ alat: "data", jumlah: kunciJumlah.split(",").map(Number), rak: kunciRak.split(",").map(Number), daftar: lihatDaftar, turus: lihatTurus, tabel: lihatTabel, arahTabel });
+  }, [kunciJumlah, kunciRak, lihatDaftar, lihatTurus, lihatTabel, arahTabel]);
 
   const cerita = () => {
     if (total === 0) return "Belum ada mainan. Tekan plus untuk menambah mainan.";
@@ -452,7 +465,7 @@ const TEMA: Record<KunciTema, { label: string; emoji: string; judul: string; kat
   },
 };
 
-function SimulasiDiagram({ speakGuru }: { speakGuru: (t: string) => void }) {
+function SimulasiDiagram({ speakGuru, onKeadaan }: { speakGuru: (t: string) => void; /** Melapor keadaan ke papan misi (bila ada). */ onKeadaan?: (k: KeadaanBab8) => void }) {
   const [tema, setTema] = useState<KunciTema>("sayur");
   const [jumlah, setJumlah] = useState<number[]>(TEMA.sayur.awal);
   const [arah, setArah] = useState<"tegak" | "mendatar">("tegak");
@@ -472,6 +485,14 @@ function SimulasiDiagram({ speakGuru }: { speakGuru: (t: string) => void }) {
   const idxMax = ada ? jumlah.map((n, i) => (n === maxN ? i : -1)).filter((i) => i >= 0) : [];
   const idxMin = ada ? jumlah.map((n, i) => (n === minN ? i : -1)).filter((i) => i >= 0) : [];
   const nama = (idx: number[]) => idx.map((i) => kat[i].nama).join(" dan ");
+
+  const laporDiagram = useRef(onKeadaan);
+  laporDiagram.current = onKeadaan;
+  const kunciDiagram = `${jumlah.join(",")}|${banding.join(",")}`;
+  useEffect(() => {
+    laporDiagram.current?.({ alat: "diagram", tema, jumlah, arah, lambang, tabel: lihatTabel, kalimat: lihatKalimat, arahTabel, banding });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tema, kunciDiagram, arah, lambang, lihatTabel, lihatKalimat, arahTabel]);
 
   const kalimat = (): string[] => {
     if (total === 0) return [];
@@ -723,21 +744,33 @@ function SimulasiDiagram({ speakGuru }: { speakGuru: (t: string) => void }) {
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
 const MISI = {
-  data: "Seret semua mainan ke rak yang sama.",
-  diagram: "Tekan plus sampai ada satu kolom yang paling tinggi.",
-  mesin: "Tekan Tanyakan ke teman-teman, lalu jalankan mesin ke stasiun berikutnya.",
-  skenario: "Tekan Siap, Bu Guru! Lalu bantu Bu Guru memilih dengan data.",
+  A: "Kelompokkan mainan di rak, lalu baca daftar, turus, dan tabelnya. Selesaikan misi wajib, lalu coba tantangan bebas.",
+  B: "Buat diagram gambar, jalankan mesin data, dan bantu Bu Guru memilih dengan data. Selesaikan semua misi wajib, lalu coba tantangan bebas.",
 } as const;
 
-const langkahBab8 = (sub: string): LangkahSim[] =>
-  sub === "B"
-    ? [
-        { metode: "PhET", sub: "Pabrik Diagram", petunjuk: MAINKAN_DULU, misi: MISI.diagram, mode: "sentuh", render: (a) => <SimulasiDiagram speakGuru={a.speakGuru} /> },
-        { metode: "Mesin keadaan", sub: "Mesin Data Ajaib", petunjuk: MAINKAN_DULU, misi: MISI.mesin, mode: "sentuh", render: (a) => <SimulasiMesinData speakGuru={a.speakGuru} onTuntas={a.tuntas} /> },
-        { metode: "Skenario", sub: "Sekretaris Kelas", petunjuk: MAINKAN_DULU, misi: MISI.skenario, mode: "sentuh", render: (a) => <SimulasiSkenarioPesta speakGuru={a.speakGuru} onTuntas={a.tuntas} /> },
-      ]
-    : [{ metode: "PhET", sub: "Laboratorium Data", petunjuk: MAINKAN_DULU, misi: MISI.data, mode: "sentuh", render: (a) => <SimulasiData speakGuru={a.speakGuru} /> }];
-
+const langkahBab8 = (sub: string): LangkahSim[] => {
+  const huruf = sub === "B" ? "B" : "A";
+  const daftar = daftarMisiBab8(huruf);
+  return [
+    {
+      metode: "PhET",
+      sub: huruf === "B" ? "Lab Data: Pencapaian Misi" : "Lab Data",
+      petunjuk: MAINKAN_DULU,
+      misi: MISI[huruf],
+      misiDaftar: tampilMisi(daftar),
+      mode: "sentuh",
+      render: (a) => {
+        const lapor = (k: KeadaanBab8) => laporMisi(daftar, k, a.capai);
+        const selesai = (id: string) => lapor({ alat: "selesai", id });
+        const data: TabLab = { id: "data", nama: "Laboratorium Data", render: () => <SimulasiData speakGuru={a.speakGuru} onKeadaan={lapor} /> };
+        const diagram: TabLab = { id: "diagram", nama: "Pabrik Diagram", render: () => <SimulasiDiagram speakGuru={a.speakGuru} onKeadaan={lapor} /> };
+        const mesin: TabLab = { id: "mesin", nama: "Mesin Data Ajaib", render: () => <SimulasiMesinData speakGuru={a.speakGuru} onTuntas={() => selesai("mesin")} /> };
+        const skenario: TabLab = { id: "skenario", nama: "Sekretaris Kelas", render: () => <SimulasiSkenarioPesta speakGuru={a.speakGuru} onTuntas={() => selesai("skenario")} /> };
+        return <LabBertahap tab={huruf === "B" ? [data, diagram, mesin, skenario] : [data]} label="Alat laboratorium data" />;
+      },
+    },
+  ];
+};
 /** Misi simulasi pertama sub-bab, untuk digabung ke ucapan saat tahap Simulasi dibuka. */
 export const misiAwalBab8 = (sub: string): string => `Simulasi 1. Misi: ${langkahBab8(sub)[0].misi ?? ""}`;
 

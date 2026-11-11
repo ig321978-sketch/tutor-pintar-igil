@@ -54,3 +54,17 @@ Tiap sub-bab: satu peta (pusat, 4 cabang, 8 kartu) dan satu infografis (3 panel)
 - `node scripts/uji-peta-konsep.mjs` dan `node scripts/uji-infografis-ringkas.mjs` membaca semua `kelas*-bab*-ringkas.json`.
 - `node --no-warnings scripts/uji-lab-kelas1.mjs`: bagian baru memeriksa kalimat dan ucapan Sub-Bab A tanpa istilah puluhan dan satuan untuk bilangan 0 sampai 20; maju, mundur, ujung kisi, ringkasan, urutan, tetangga, ulat, dan kisi untuk 1 sampai 20; serta pasangkan, kalimat dua, paling banyak dan sedikit (termasuk yang sama banyak), dan urutan untuk semua pasangan 0 sampai 20.
 - Diperiksa di browser: tidak ada tab Simulasi; Mind-Map, Infografis, dan Simulasi tiap sub-bab (A sampai D) terkunci berurutan dan terbuka sesuai syarat; alat yang tampil dan teks Misi cocok dengan tabel di atas.
+
+## Pola hibrida: simulasi bertahap, misi, tantangan bebas
+
+Bab 5 memakai **satu laboratorium yang bertambah alatnya**, bukan satu alat per simulasi. Tab Puluhan dan Satuan (A), + Maju dan Mundur (B), + Odometer dan tabel nilai tempat (C), + Banding dan Urutan (D, pencapaian misi).
+
+- Gerbang LANJUTKAN mengikuti **misi wajib** (`src/components/modul/misi-bab5.ts`). Anak boleh menekan **Lewati misi** setelah menyentuh simulasinya sekali. **Tantangan bebas** tidak menahan siapa pun. Misi yang sudah tercapai tidak dicabut.
+- Alat melapor lewat `onKeadaan`; keadaan awal tidak boleh memenuhi misi apa pun. Logika murni dan diuji di `scripts/uji-lab-kelas1.mjs`.
+
+| Sub-Bab | Misi wajib | Tantangan bebas |
+| --- | --- | --- |
+| A | Buat bilangan 11: sepuluh ditambah satu. Lihat bingkai kedua mulai terisi.; Buat tepat 10. Bingkai pertama penuh, bingkai kedua kosong.; Buat 13, lalu nyalakan Ikat sepuluh.; Ketuk angka 17 di garis bilangan. Letaknya di kanan angka 10.; Isi sampai 20: dua bingkai penuh. | Buat 19. Tinggal satu lagi menjadi 20.; Buat 16 dan baca kalimat sepuluh ditambah sisanya. |
+| B | Tekan Maju 3 kali. Lihat bilangan bergerak ke kanan.; Tekan Mundur 3 kali. Lihat bilangan bergerak ke kiri.; Ubah Mulai dari menjadi 18, lalu maju sampai 20.; Sembunyikan bilangan sekarang di ulat bilangan. Tebak, lalu buka. | Pindah ke bilangan 16. Lihat tetangga sebelum dan sesudahnya.; Ingat Sub-Bab A: buat bilangan 20 di Lab Bilangan. |
+| C | Buat tepat 10, lalu nyalakan Ikat sepuluh. Lihat tabel nilai tempat.; Buat 15. Baca puluhan dan satuannya di tabel.; Buat 11. Angka 1 di kiri dan angka 1 di kanan nilainya beda.; Selesaikan Odometer Bilangan sampai selesai. | Buat 20: dua puluhan dan nol satuan di tabel.; Ingat Sub-Bab B: tekan Maju 3 kali di Maju dan Mundur. |
+| D | Nyalakan Bandingkan, lalu buat 13 dan 16. Puluhan sama, satuan menentukan.; Bandingkan bilangan belasan dengan bilangan di bawah 10. Puluhan dibandingkan lebih dulu.; Buat jeruk Wei paling banyak sendirian.; Atur jeruk supaya Kira terbanyak, Tika sedang, Wei paling sedikit. | Buat dua orang punya jeruk sama banyak.; Ingat Sub-Bab C: selesaikan Odometer Bilangan. |

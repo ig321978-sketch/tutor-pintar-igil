@@ -44,3 +44,17 @@ Keputusan isi dari tinjauan kedalaman:
 
 - `node scripts/uji-peta-konsep.mjs` dan `node scripts/uji-infografis-ringkas.mjs` membaca semua `kelas*-bab*-ringkas.json`.
 - Diperiksa di browser (tampilan 390 px): tidak ada tab Simulasi; Mind-Map, Infografis, dan Simulasi tiap sub-bab terkunci berurutan dan terbuka sesuai syarat; teks Misi cocok dengan tampilan.
+
+## Pola hibrida: simulasi bertahap, misi, tantangan bebas
+
+Bab 1 memakai **satu laboratorium yang bertambah alatnya**, bukan satu alat per simulasi. Satu Lab Bilangan 0 sampai 10 yang alatnya bertambah per sub-bab (benda, bingkai sepuluh, garis bilangan, bagan pasangan, banding), Sub-Bab D (akhir) memakai semua alat plus Kasir Pasar sebagai pencapaian misi.
+
+- Gerbang LANJUTKAN mengikuti **misi wajib** (`src/components/modul/misi-bab1.ts`). Anak boleh menekan **Lewati misi** setelah menyentuh simulasinya sekali. **Tantangan bebas** tidak menahan siapa pun. Misi yang sudah tercapai tidak dicabut.
+- Alat melapor lewat `onKeadaan`; keadaan awal tidak boleh memenuhi misi apa pun. Logika murni dan diuji di `scripts/uji-lab-kelas1.mjs`.
+
+| Sub-Bab | Misi wajib | Tantangan bebas |
+| --- | --- | --- |
+| A | Ketuk kotak benda ke-5. Angka 5 muncul.; Buat bilangan nol: tidak ada benda sama sekali.; Isi semua kotak sampai bilangan 10.; Buat bilangan 7, lalu dengarkan namanya. | Buat bilangan 9. Tinggal satu lagi menjadi 10.; Buat bilangan 2, lalu hitung bendanya satu per satu. |
+| B | Atur bilangan pertama dan kedua sampai sama banyak.; Buat bilangan kedua lebih besar dari bilangan pertama.; Buat bilangan pertama lebih besar 5 atau lebih dari bilangan kedua.; Pakai bingkai sepuluh: buat bilangan 8, lalu hitung kotak kosongnya.; Buat bilangan pertama 3 dan bilangan kedua 9. Lihat letaknya di garis bilangan. | Buat dua bilangan yang hanya beda satu.; Bandingkan bilangan paling kecil dengan paling besar: 0 dan 10. |
+| C | Ketuk angka 9 di garis bilangan. Makin ke kanan, makin besar.; Geser bilangan ke kiri sampai 1 di garis bilangan.; Antar Katak sampai semua misi sungai selesai. | Mundur sampai nol di garis bilangan.; Buat dua bilangan yang bersebelahan di garis bilangan. |
+| D | Pecah bilangan 10 menjadi 6 dan 4 dengan Bagian merah.; Bagi bilangan 8 menjadi dua bagian sama banyak: 4 dan 4.; Pecah bilangan 7 dengan Bagian merah 0. Lihat pasangannya.; Selesaikan skenario Kasir Warung sampai adegan akhir. | Ingat Sub-Bab B: buat dua bilangan sama banyak.; Ingat Sub-Bab C: antar Katak sampai selesai. |

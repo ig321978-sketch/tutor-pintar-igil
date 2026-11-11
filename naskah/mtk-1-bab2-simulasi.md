@@ -46,3 +46,16 @@ Tiap sub-bab: satu peta (pusat, 4 cabang, 8 kartu) dan satu infografis (3 panel)
 - `node scripts/uji-peta-konsep.mjs` dan `node scripts/uji-infografis-ringkas.mjs` membaca semua `kelas*-bab*-ringkas.json`.
 - `node --no-warnings scripts/uji-lab-kelas1.mjs` untuk logika Laboratorium Penjumlahan (`ucapanTambah` kini punya parameter `sebutTukar`, bawaan `true`).
 - Diperiksa di browser: tidak ada tab Simulasi; Mind-Map, Infografis, dan Simulasi tiap sub-bab terkunci berurutan dan terbuka sesuai syarat; alat yang tampil dan teks Misi cocok dengan tampilan.
+
+## Pola hibrida: simulasi bertahap, misi, tantangan bebas
+
+Bab 2 memakai **satu laboratorium yang bertambah alatnya**, bukan satu alat per simulasi. Tab Penjumlahan (A), + Mesin Tambah (B), + Kantin Sekolah (C, pencapaian misi); alat penjumlahan menyala bertahap (benda, kalimat, bingkai, garis, bagan).
+
+- Gerbang LANJUTKAN mengikuti **misi wajib** (`src/components/modul/misi-bab2.ts`). Anak boleh menekan **Lewati misi** setelah menyentuh simulasinya sekali. **Tantangan bebas** tidak menahan siapa pun. Misi yang sudah tercapai tidak dicabut.
+- Alat melapor lewat `onKeadaan`; keadaan awal tidak boleh memenuhi misi apa pun. Logika murni dan diuji di `scripts/uji-lab-kelas1.mjs`.
+
+| Sub-Bab | Misi wajib | Tantangan bebas |
+| --- | --- | --- |
+| A | Nyalakan Gabungkan kelompok. Hitung semua benda dari 1.; Atur dua kelompok sampai jumlahnya 5.; Kosongkan kelompok biru. Lihat jumlahnya.; Buat jumlah tepat 10. Lihat bingkai sepuluh penuh.; Selesaikan Mesin Tambah: gabungkan dulu, baru jawab. | Buat dua kelompok sama banyak.; Buat jumlah 9. |
+| B | Tekan Tukar tempat. Lihat dua kalimat yang jumlahnya sama.; Buat merah 6 dan biru 3. Hitung maju 3 dari 6 di garis bilangan.; Buat penjumlahan kembar: dua kelompok sama banyak.; Buat 8 + 2. Lihat bagaimana bingkai sepuluh menjadi penuh.; Nyalakan Bagan pasangan, lalu buat 4 + 3. | Buat 9 + 1, lalu tukar tempatnya.; Ingat Sub-Bab A: selesaikan Mesin Tambah. |
+| C | Ada 5 burung, datang lagi 3. Buat kalimat penjumlahannya.; Periksa dengan garis bilangan: buat merah 4 dan biru 2.; Periksa dengan tukar tempat: buat 2 + 6, lalu tekan Tukar tempat.; Selesaikan skenario Kantin Sekolah sampai adegan akhir. | Ingat Sub-Bab A: selesaikan Mesin Tambah.; Buat soal cerita yang jumlahnya tepat 10. |

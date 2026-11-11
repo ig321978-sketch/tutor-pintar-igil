@@ -109,3 +109,15 @@ Tujuan belajar: memakai data untuk mengambil keputusan nyata, memilih cara menca
 - Tab Simulasi tetap tampil di bab lain yang sudah punya simulasi (Kelas 2 Bab 1 sampai 3; Kelas 1 Bab 1, 2, 3, 4, 5, 6, dan 7 sudah dimigrasi) sampai bab itu dimigrasi ke SMISCPA. Registrinya `SIMULASI_BAB` (tab) dan `SIMULASI_MATERI` (di dalam Materi) di `IgilModulePlayer.tsx`.
 - Data Mind-Map dan Infografis ringkas bab ini ada di `src/data/kelas1-bab8-ringkas.json`, lihat `naskah/mtk-1-bab8-ringkas-smiscpa.md`.
 - Sub-bab tidak memakai kunci jawaban ujian, jadi tidak ada seed SQL.
+
+## Pola hibrida: simulasi bertahap, misi, tantangan bebas
+
+Bab 8 memakai **satu laboratorium yang bertambah alatnya**, bukan satu alat per simulasi. Laboratorium Data (A), + Pabrik Diagram, Mesin Data Ajaib, dan Sekretaris Kelas (B, pencapaian misi).
+
+- Gerbang LANJUTKAN mengikuti **misi wajib** (`src/components/modul/misi-bab8.ts`). Anak boleh menekan **Lewati misi** setelah menyentuh simulasinya sekali. **Tantangan bebas** tidak menahan siapa pun. Misi yang sudah tercapai tidak dicabut.
+- Alat melapor lewat `onKeadaan`; keadaan awal tidak boleh memenuhi misi apa pun. Logika murni dan diuji di `scripts/uji-lab-kelas1.mjs`.
+
+| Sub-Bab | Misi wajib | Tantangan bebas |
+| --- | --- | --- |
+| A | Seret semua mainan ke rak yang sama, atau tekan Rapikan semua.; Buat boneka paling banyak sendirian, lalu rapikan semua mainan.; Buat semua mainan yang ada sama banyak, lalu rapikan.; Rapikan mainan, lalu putar tabel jadi mendatar. | Kurangi bola sampai habis, lalu rapikan. Lihat tabelnya.; Atur mainan sampai jumlah semuanya tepat 10, lalu rapikan. |
+| B | Di Pabrik Diagram, buat dua kolom sama tinggi dan paling tinggi.; Ketuk dua kolom yang beda tinggi untuk membandingkannya.; Jalankan Mesin Data Ajaib sampai stasiun terakhir.; Bantu Bu Guru memilih dengan data sampai adegan akhir. | Di Pabrik Diagram, buat semua kolom sama tinggi.; Putar diagram jadi mendatar, lalu ganti lambangnya.; Ingat Sub-Bab A: rapikan semua mainan di toko. |

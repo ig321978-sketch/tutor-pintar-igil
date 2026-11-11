@@ -46,3 +46,16 @@ Tiap sub-bab: satu peta (pusat, 4 cabang, 8 kartu) dan satu infografis (3 panel)
 - `node scripts/uji-peta-konsep.mjs` dan `node scripts/uji-infografis-ringkas.mjs` membaca semua `kelas*-bab*-ringkas.json` (dua ringkasan cabang Bab 5 yang melebihi 8 kata ikut dipendekkan).
 - `node --no-warnings scripts/uji-lab-kelas1.mjs`: bagian baru memeriksa selisih, kalimat selisih, dan ucapan banding untuk semua pasangan 0 sampai 20; serta belasan untuk dua operasi dengan semua kombinasi bilangan awal dan b (termasuk yang di luar batas, harus dijepit): puluhan tetap 1, satuan tabel, tiga kalimat pecah, kalimat periksa, ucapan, hasil selalu 10 sampai 19.
 - Diperiksa di browser: tidak ada tab Simulasi; Mind-Map, Infografis, dan Simulasi tiap sub-bab (A sampai C) terkunci berurutan dan terbuka sesuai syarat; alat yang tampil, gerbang Lanjut, dan teks Misi cocok dengan tabel di atas.
+
+## Pola hibrida: simulasi bertahap, misi, tantangan bebas
+
+Bab 6 memakai **satu laboratorium yang bertambah alatnya**, bukan satu alat per simulasi. Tab Selisih Dua Kelompok dan Garis Bilangan (A), + Jembatan Sepuluh dan Belasan menjumlah (B), + garis kurang, Belasan mengurang, dan Loket Pasar Malam (C, pencapaian misi).
+
+- Gerbang LANJUTKAN mengikuti **misi wajib** (`src/components/modul/misi-bab6.ts`). Anak boleh menekan **Lewati misi** setelah menyentuh simulasinya sekali. **Tantangan bebas** tidak menahan siapa pun. Misi yang sudah tercapai tidak dicabut.
+- Alat melapor lewat `onKeadaan`; keadaan awal tidak boleh memenuhi misi apa pun. Logika murni dan diuji di `scripts/uji-lab-kelas1.mjs`.
+
+| Sub-Bab | Misi wajib | Tantangan bebas |
+| --- | --- | --- |
+| A | Buat dua orang punya jeruk sama banyak. Selisihnya nol.; Buat selisih 5 dan lihat bagian emas pada batang yang lebih panjang.; Di garis bilangan, atur 4 dan 12. Hitung langkah dari 4 ke 12.; Tukar angkanya: bilangan pertama 9 dan kedua 7. Apakah jaraknya berubah? | Buat selisih dua kelompok tepat 1.; Di garis bilangan, buat dua bilangan sama besar. |
+| B | Pilih Tambah, lalu atur Mulai dari 8 dan Loncat maju 5. Bandingkan dua cara meloncat.; Selesaikan Jembatan Sepuluh sampai selesai.; Menjumlah Belasan: buat 14 + 4. Satuannya berubah, puluhannya tetap.; Menjumlah Belasan: cari pasangan yang hasilnya 19. | Pilih Tambah, lalu atur 12 dan 3. Apakah lompatannya melewati 10?; Ingat Sub-Bab A: buat selisih dua kelompok tepat 5. |
+| C | Pilih Kurang, lalu atur Mulai dari 15 dan Loncat mundur 6. Bandingkan dua cara meloncat.; Mengurang Belasan: buat 17 - 5. Satuannya berkurang, puluhannya tetap.; Mengurang Belasan: cari pasangan yang hasilnya tepat 10.; Selesaikan skenario Loket Pasar Malam sampai adegan akhir. | Pilih Kurang, lalu atur 12 dan 5. Lompatan mundur melewati 10.; Ingat Sub-Bab B: selesaikan Jembatan Sepuluh. |

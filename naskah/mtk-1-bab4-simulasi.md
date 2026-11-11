@@ -47,3 +47,16 @@ Tiap sub-bab: satu peta (pusat, 4 cabang, 8 kartu) dan satu infografis (3 panel)
 - `node scripts/uji-peta-konsep.mjs` dan `node scripts/uji-infografis-ringkas.mjs` membaca semua `kelas*-bab*-ringkas.json`.
 - `node --no-warnings scripts/uji-lab-kelas1.mjs`: bagian baru memeriksa sebaran dan jumlah kelompok, kalimat jumlah, jumlah jenis bangun gabungan, kalimat tambah dan kurang, kelompok bentuk, ucapan susun, dan ucapan Papan Paku tanpa sudut siku.
 - Diperiksa di browser: tidak ada tab Simulasi; Mind-Map, Infografis, dan Simulasi tiap sub-bab (A sampai C) terkunci berurutan dan terbuka sesuai syarat; alat yang tampil dan teks Misi cocok; Papan Paku tanpa kartu sudut siku; tombol "Ayo membangun!" (Arsitek Cilik) berfungsi.
+
+## Pola hibrida: simulasi bertahap, misi, tantangan bebas
+
+Bab 4 memakai **satu laboratorium yang bertambah alatnya**, bukan satu alat per simulasi. Tab Ciri Bentuk dan Papan Paku (A), + Kelompok (B), + Bangun Gabungan dan Arsitek Cilik (C, pencapaian misi).
+
+- Gerbang LANJUTKAN mengikuti **misi wajib** (`src/components/modul/misi-bab4.ts`). Anak boleh menekan **Lewati misi** setelah menyentuh simulasinya sekali. **Tantangan bebas** tidak menahan siapa pun. Misi yang sudah tercapai tidak dicabut.
+- Alat melapor lewat `onKeadaan`; keadaan awal tidak boleh memenuhi misi apa pun. Logika murni dan diuji di `scripts/uji-lab-kelas1.mjs`.
+
+| Sub-Bab | Misi wajib | Tantangan bebas |
+| --- | --- | --- |
+| A | Pilih persegi, lalu tekan Putar 90°. Sisinya tetap 4.; Besarkan segitiga sampai ukuran 3. Sudutnya tetap 3.; Pilih lingkaran. Cari sisi lurus dan sudutnya.; Papan Paku: pasang 3 paku, lalu tutup bentuk sampai jadi segitiga.; Papan Paku: buat persegi dengan 4 paku, lalu tutup bentuk. | Papan Paku: nyalakan bentuk lengkung, lalu tutup bentuk.; Matikan Tampilkan sisi dan Tampilkan sudut. Kenali bentuknya saja. |
+| B | Kelompokkan balok menurut Warna. Lihat balok pindah nampan.; Kelompokkan balok menurut Ukuran. Hitung tiap nampan.; Ketuk satu balok. Lihat kelompoknya menurut bentuk, warna, dan ukuran.; Pilih satu balok, lalu ganti aturannya. Lihat balok itu pindah kelompok. | Ingat Sub-Bab A: buat segitiga di Papan Paku.; Ingat Sub-Bab A: putar persegi, sisinya tetap 4. |
+| C | Pilih 2 segitiga, lalu gabungkan bagian. Bentuk apa yang lahir?; Pilih 2 persegi, lalu gabungkan bagian. Bentuk apa yang lahir?; Uraikan kereta menjadi bagian-bagiannya.; Pilih Rumah dari lidi, lalu uraikan. Hitung lidi dinding dan lidi atap.; Selesaikan skenario Arsitek Cilik sampai adegan akhir. | Uraikan sebuah bangun, pilih satu jenis bagian, lalu ambil. Baca kalimat kurangnya.; Ingat Sub-Bab A: buat persegi panjang di Papan Paku.; Ingat Sub-Bab B: kelompokkan balok menurut Warna. |
