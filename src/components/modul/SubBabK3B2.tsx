@@ -52,7 +52,7 @@ const BIN_LETAK = [
 function buatTahap(kode: "A" | "B", S: SubBabNaskah, D: DataSub, jenis: "jumlah" | "awal") {
   const pre = `k3b2${kode.toLowerCase()}`;
   const J = S.games.map((g) => g.title);
-  const Kartu = buatKartu(J, 30);
+  const Kartu = buatKartu(J, 10);
   const huruf = kode === "A" ? "penjumlahan" : "pengurangan";
   const bagianSebut = jenis === "jumlah" ? "jumlahnya" : "terjual ditambah sisa, jumlahnya";
 
@@ -541,11 +541,11 @@ function buatTahap(kode: "A" | "B", S: SubBabNaskah, D: DataSub, jenis: "jumlah"
     render: (d) => <K {...d} />,
   }));
   const KARTU_PICTURE: KartuTahap[] = [KartuHitungBagan, KartuKalimatBagan, KartuJodohBagan, KartuMemoriBagan, KartuTabel, KartuSemuaBagan, KartuPilahBagan, KartuLangkah, KartuPapanBagan, KartuKemungkinan].map((K, i) => ({
-    nomor: i + 11,
+    nomor: i + 1,
     render: (d) => <K {...d} />,
   }));
   const KARTU_ABSTRACT: KartuTahap[] = [KartuIsi, KartuPapanNilai, KartuLangkahIsi, KartuJodohNilai, KartuMemoriNilai, KartuBenarSalah, KartuDetektif, KartuPeta, KartuCeritaAngka, KartuSusunKata].map((K, i) => ({
-    nomor: i + 21,
+    nomor: i + 1,
     render: (d) => <K {...d} />,
   }));
 

@@ -17,7 +17,7 @@ export function KartuK2B5({
   judul,
   id,
   petunjuk,
-  jumlahRonde,
+  jumlahRonde: _jumlahRonde,
   belumSiap,
   isi,
   kunciAkhir,
@@ -28,12 +28,14 @@ export function KartuK2B5({
   judul: string;
   id: string;
   petunjuk: string;
+  /** Diabaikan: tiap permainan hanya satu putaran. */
   jumlahRonde: number;
   belumSiap: string;
   isi: (ronde: number, beres: () => void) => React.ReactNode;
   kunciAkhir?: number;
   total?: number;
 }) {
+  void _jumlahRonde;
   return (
     <GameBentuk
       nomor={d.nomor}
@@ -43,9 +45,9 @@ export function KartuK2B5({
       speakGuru={d.speakGuru}
       panel={d.panel}
       id={id}
-      jumlahRonde={jumlahRonde}
+      jumlahRonde={1}
       kunciAkhir={kunciAkhir}
-      total={total}
+      total={total ?? 10}
       belumSiap={belumSiap}
       teksLanjut={d.teksLanjut}
       lanjut={d.lanjut}

@@ -19,7 +19,7 @@ import { visualInfografisK4B1H } from "./infografis-k4b1";
 import { SUB_H41 } from "./naskah-k4b1";
 
 const J = SUB_H41.games.map((g) => g.title);
-const TOTAL = 30;
+const TOTAL = 10;
 const Kartu = buatKartu(J, TOTAL);
 const hasil = (a: number, b: number) => hasilBagi(a, b);
 const TEKS = { habis: "habis dibagi", sisa: "bersisa" } as const;
@@ -121,8 +121,8 @@ function Q8(d: PropsLangkah) { return Kartu(d, 28, "k4b1h-pt", "Peta konsep.", P
 function Q9(d: PropsLangkah) { return Kartu(d, 29, "k4b1h-cq", "Cerita angka.", RONDE_CERITA_QH.length, "Jawab semua dulu, ya.", (r, beres) => (<><CatatanPensil pendek="Cerita" teks="Baca dan hitung." /><PilihBertahap key={r} soal={RONDE_CERITA_QH[r].map((s, i) => { const h = hasil(s.a, s.b); const o = opsiBagi(h, r * 2 + i); return { visual: <Numeral n={`${s.a}:${s.b}`} />, tanya: s.teks, opsi: o.map(String), jawab: o.indexOf(h), petunjuk: "Dari puluhan.", pesan: `Hasil ${h}.`, angka: true }; })} onBeres={beres} pesanBeres="Selesai." /></>)); }
 
 const KARTU_CONCRETE: KartuTahap[] = [K0, K1, K2, K3, K4, K5, K6, K7, K8, K9].map((K, i) => ({ nomor: i + 1, render: (d) => <K {...d} /> }));
-const KARTU_PICTURE: KartuTahap[] = [P0, P1, P2, P3, P4, P5, P6, P7, P8, P9].map((K, i) => ({ nomor: i + 11, render: (d) => <K {...d} /> }));
-const KARTU_ABSTRACT: KartuTahap[] = [Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9].map((K, i) => ({ nomor: i + 21, render: (d) => <K {...d} /> }));
+const KARTU_PICTURE: KartuTahap[] = [P0, P1, P2, P3, P4, P5, P6, P7, P8, P9].map((K, i) => ({ nomor: i + 1, render: (d) => <K {...d} /> }));
+const KARTU_ABSTRACT: KartuTahap[] = [Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9].map((K, i) => ({ nomor: i + 1, render: (d) => <K {...d} /> }));
 
 export function ConcreteK4B1H(props: Umum) {
   return <TahapPermainan umum={props} tahap={4} pita={{ ikon: "➗", nama: "CONCRETE", cara: "Bagi sama banyak!", warna: "#8A5322" }} kartu={KARTU_CONCRETE} teksAkhir="LANJUTKAN KE PICTURE ⬇️" />;

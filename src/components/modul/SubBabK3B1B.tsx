@@ -38,7 +38,7 @@ import { SUB_B31 } from "./naskah-k3b1";
 /* ------------------------------------------------------------------------ */
 
 const J = SUB_B31.games.map((g) => g.title);
-const TOTAL = 30;
+const TOTAL = 10;
 const Kartu = buatKartu(J, TOTAL);
 const WARNA_BIN = ["#BBF7D0", "#BFDBFE", "#FECACA"];
 
@@ -645,12 +645,12 @@ const KARTU_CONCRETE: KartuTahap[] = [KartuKalengB, KartuNilaiKemasanB, KartuJod
 }));
 
 const KARTU_PICTURE: KartuTahap[] = [KartuTabelNilaiB, KartuNilaiBlokB, KartuSusunB, KartuUraiB, KartuJodohUraianB, KartuMemoriUraianB, KartuPapanUraianB, KartuGarisNilaiB, KartuPilahNilaiB, KartuSemuaBlokNilaiB].map((K, i) => ({
-  nomor: i + 11,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 
 const KARTU_ABSTRACT: KartuTahap[] = [KartuSusunQB, KartuTempatQB, KartuNilaiQB, KartuUraiQB, KartuPapanQB, KartuTabelUraianB, KartuBenarSalahB, KartuDetektifB, KartuPetaB, KartuSusunKataB].map((K, i) => ({
-  nomor: i + 21,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 

@@ -36,7 +36,7 @@ import { SUB_B35 } from "./naskah-k3b5";
 /* ------------------------------------------------------------------------ */
 
 const J = SUB_B35.games.map((g) => g.title);
-const TOTAL = 30;
+const TOTAL = 10;
 const Kartu = buatKartu(J, TOTAL);
 const urutanKe = (n: number, r: number) => urutanTetap(n, 2, r + 1);
 
@@ -756,12 +756,12 @@ const KARTU_CONCRETE: KartuTahap[] = [
 const KARTU_PICTURE: KartuTahap[] = [
   KartuTurusPB, KartuPilihTurusPB, KartuTabelHurufPB, KartuIsiTabelPB, KartuUrutHurufPB,
   KartuBedaPB, KartuJumlahPB, KartuKelompokPB, KartuSemuaPB, KartuNilaiBukuPB,
-].map((K, i) => ({ nomor: i + 11, render: (d) => <K {...d} /> }));
+].map((K, i) => ({ nomor: i + 1, render: (d) => <K {...d} /> }));
 
 const KARTU_ABSTRACT: KartuTahap[] = [
   KartuTabelQB, KartuLebihQB, KartuKurangQB, KartuHurufKataQB, KartuUrutHurufQB,
   KartuKalimatQB, KartuJodohQB, KartuBenarSalahQB, KartuDetektifQB, KartuSusunQB,
-].map((K, i) => ({ nomor: i + 21, render: (d) => <K {...d} /> }));
+].map((K, i) => ({ nomor: i + 1, render: (d) => <K {...d} /> }));
 
 export function ConcreteK3B5B(props: Umum) {
   return <TahapPermainan umum={props} tahap={4} pita={{ ikon: "📖", nama: "CONCRETE", cara: "Lidi, manik, dan kelompok lima!", warna: "#8A5322" }} kartu={KARTU_CONCRETE} teksAkhir="LANJUTKAN KE PICTURE ⬇️" />;

@@ -38,7 +38,7 @@ import { SUB_A7 } from "./naskah-k2b7";
 /* ------------------------------------------------------------------------ */
 
 const J = SUB_A7.games.map((g) => g.title);
-const TOTAL = 30;
+const TOTAL = 10;
 const HURUF = ["A", "B", "C", "D", "E", "F"];
 
 const SUARA_INFO =
@@ -594,12 +594,12 @@ const KARTU_CONCRETE: KartuTahap[] = [KartuBungkusA, KartuHitungBungkusA, KartuJ
 }));
 
 const KARTU_PICTURE: KartuTahap[] = [KartuBatangA, KartuCariModelA, KartuIsiPapanA, KartuJodohModelA, KartuBondA, KartuGarisPuluhanA, KartuTabelSeratusA, KartuUrutModelA, KartuPilahModelA, KartuTebakTitikA].map((K, i) => ({
-  nomor: i + 11,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 
 const KARTU_ABSTRACT: KartuTahap[] = [KartuJodohKataA, KartuKalimatA, KartuSusunA, KartuTabelA, KartuBenarSalahA, KartuNamaA, KartuDetektifA, KartuPetaKonsepA, KartuUrutAngkaA, KartuSemuaA].map((K, i) => ({
-  nomor: i + 21,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 

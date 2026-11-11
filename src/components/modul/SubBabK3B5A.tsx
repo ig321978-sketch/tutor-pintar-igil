@@ -35,7 +35,7 @@ import { SUB_A35 } from "./naskah-k3b5";
 /* ------------------------------------------------------------------------ */
 
 const J = SUB_A35.games.map((g) => g.title);
-const TOTAL = 30;
+const TOTAL = 10;
 const Kartu = buatKartu(J, TOTAL);
 const urutanKe = (n: number, r: number) => urutanTetap(n, 2, r + 1);
 
@@ -742,12 +742,12 @@ const KARTU_CONCRETE: KartuTahap[] = [
 const KARTU_PICTURE: KartuTahap[] = [
   KartuBacaPA, KartuUrutPA, KartuPalingPA, KartuJangkauanPA, KartuJodohPA,
   KartuMemoriPA, KartuSemuaPA, KartuPilahPA, KartuTerbanyakPA, KartuLebihPA,
-].map((K, i) => ({ nomor: i + 11, render: (d) => <K {...d} /> }));
+].map((K, i) => ({ nomor: i + 1, render: (d) => <K {...d} /> }));
 
 const KARTU_ABSTRACT: KartuTahap[] = [
   KartuUrutQA, KartuMinMaxQA, KartuJangkauanQA, KartuBanyakNilaiQA, KartuKalimatQA,
   KartuJodohQA, KartuBenarSalahQA, KartuDetektifQA, KartuPetaQA, KartuSusunQA,
-].map((K, i) => ({ nomor: i + 21, render: (d) => <K {...d} /> }));
+].map((K, i) => ({ nomor: i + 1, render: (d) => <K {...d} /> }));
 
 export function ConcreteK3B5A(props: Umum) {
   return <TahapPermainan umum={props} tahap={4} pita={{ ikon: "📖", nama: "CONCRETE", cara: "Urutkan dan bandingkan benda!", warna: "#8A5322" }} kartu={KARTU_CONCRETE} teksAkhir="LANJUTKAN KE PICTURE ⬇️" />;

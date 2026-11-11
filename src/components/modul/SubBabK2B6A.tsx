@@ -41,7 +41,7 @@ import { SUB_A6 } from "./naskah-k2b6";
 /* ------------------------------------------------------------------------ */
 
 const J = SUB_A6.games.map((g) => g.title);
-const TOTAL = 30;
+const TOTAL = 10;
 
 const SUARA_INFO =
   "Ini poster rangkuman tentang berat. Tekan tombol suara di setiap panel untuk mendengarkan penjelasannya. Belum ada yang perlu dijawab. Kita akan bermain di tahap berikutnya.";
@@ -646,12 +646,12 @@ const KARTU_CONCRETE: KartuTahap[] = [KartuTanganA, KartuJungkatA, KartuGantunga
 }));
 
 const KARTU_PICTURE: KartuTahap[] = [KartuBacaA, KartuUrutNeracaA, KartuBatangA, KartuTitikA, KartuGoresanA, KartuTabelPA, KartuJodohNeracaA, KartuPilahNeracaA, KartuGarisA, KartuBaganA].map((K, i) => ({
-  nomor: i + 11,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 
 const KARTU_ABSTRACT: KartuTahap[] = [KartuKalimatA, KartuBenarSalahA, KartuSusunA, KartuHitungQA, KartuTabelQA, KartuBandingAngkaA, KartuDetektifA, KartuPetaKonsepA, KartuUrutAngkaA, KartuSemuaA].map((K, i) => ({
-  nomor: i + 21,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 

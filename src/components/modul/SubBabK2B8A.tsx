@@ -38,7 +38,7 @@ import { SUB_A8 } from "./naskah-k2b8";
 /* ------------------------------------------------------------------------ */
 
 const J = SUB_A8.games.map((g) => g.title);
-const TOTAL = 30;
+const TOTAL = 10;
 const WARNA_BIN = ["#BAE6FD", "#FDE68A", "#FBCFE8", "#BBF7D0"];
 
 const SUARA_INFO =
@@ -736,12 +736,12 @@ const KARTU_CONCRETE: KartuTahap[] = [KartuSortirA, KartuHitungJenisA, KartuCata
 }));
 
 const KARTU_PICTURE: KartuTahap[] = [KartuBacaTurusA, KartuIsiBanyakA, KartuGambarTurusA, KartuTurusTepatA, KartuJodohTurusA, KartuMemoriTurusA, KartuKelompokLimaA, KartuUrutTurusA, KartuPilahTurusA, KartuGarisLebihA].map((K, i) => ({
-  nomor: i + 11,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 
 const KARTU_ABSTRACT: KartuTahap[] = [KartuJodohNamaA, KartuKalimatDataA, KartuSusunDataA, KartuTabelTurusA, KartuBenarSalahDataA, KartuDetektifDataA, KartuPetaKonsepTurusA, KartuUrutDataA, KartuSemuaDataA, KartuJumlahDataA].map((K, i) => ({
-  nomor: i + 21,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 

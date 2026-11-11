@@ -37,7 +37,7 @@ import { SUB_B6 } from "./naskah-k2b6";
 /* ------------------------------------------------------------------------ */
 
 const J = SUB_B6.games.map((g) => g.title);
-const TOTAL = 30;
+const TOTAL = 10;
 
 const SUARA_INFO =
   "Ini poster rangkuman tentang waktu. Tekan tombol suara di setiap panel untuk mendengarkan penjelasannya. Belum ada yang perlu dijawab. Kita akan bermain di tahap berikutnya.";
@@ -657,12 +657,12 @@ const KARTU_CONCRETE: KartuTahap[] = [KartuBacaJamB, KartuPutarB, KartuPilahBagi
 }));
 
 const KARTU_PICTURE: KartuTahap[] = [KartuBacaDigitalPB, KartuGambarJarumPB, KartuBatangLamaPB, KartuJodohDigitalPB, KartuUrutJamPB, KartuPilahJamPB, KartuKotakJamPB, KartuTabelJamPB, KartuTallyJamPB, KartuGarisJamPB].map((K, i) => ({
-  nomor: i + 11,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 
 const KARTU_ABSTRACT: KartuTahap[] = [KartuKalimatB, KartuBenarSalahB, KartuSusunB, KartuHitungQB, KartuTabelQB, KartuPilihBagianQB, KartuDetektifQB, KartuPetaKonsepQB, KartuUrutDigitalQB, KartuSemuaQB].map((K, i) => ({
-  nomor: i + 21,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 

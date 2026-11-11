@@ -35,7 +35,7 @@ import { SUB_D33 } from "./naskah-k3b3";
 /* ------------------------------------------------------------------------ */
 
 const J = SUB_D33.games.map((g) => g.title);
-const TOTAL = 30;
+const TOTAL = 10;
 const Kartu = buatKartu(J, TOTAL);
 
 const SUARA_INFO =
@@ -688,12 +688,12 @@ const KARTU_CONCRETE: KartuTahap[] = [KartuRakitBandulD, KartuHitungBandulD, Kar
 }));
 
 const KARTU_PICTURE: KartuTahap[] = [KartuHitungGarisD, KartuKalimatUbahBeratD, KartuJodohGarisD, KartuMemoriGarisD, KartuTabelBeratD, KartuSemuaGarisD, KartuPilahKgD, KartuLangkahUbahBeratD, KartuSelisihGarisD, KartuSambungGarisD].map((K, i) => ({
-  nomor: i + 11,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 
 const KARTU_ABSTRACT: KartuTahap[] = [KartuKgKeGQD, KartuGKeKgGQD, KartuOnsQD, KartuJodohBeratQD, KartuMemoriBeratQD, KartuBenarSalahD, KartuDetektifD, KartuPetaD, KartuCeritaBeratD, KartuSusunKataD].map((K, i) => ({
-  nomor: i + 21,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 

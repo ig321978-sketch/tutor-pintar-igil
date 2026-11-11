@@ -22,7 +22,7 @@ import { visualInfografisK4B1D } from "./infografis-k4b1";
 import { SUB_D41 } from "./naskah-k4b1";
 
 const J = SUB_D41.games.map((g) => g.title);
-const TOTAL = 30;
+const TOTAL = 10;
 const Kartu = buatKartu(J, TOTAL);
 const urutanKe = (n: number, r: number) => urutanTetap(n, 2, r);
 const SUARA_INFO = "Ini poster rangkuman komposisi dan dekomposisi. Tekan tombol suara di setiap panel. Belum ada yang perlu dijawab.";
@@ -225,8 +225,8 @@ function Q8(d: PropsLangkah) {
 function Q9(d: PropsLangkah) { return Kartu(d, 29, "k4b1d-kata", "Susun kata komposisi.", RONDE_SUSUNKATA_QD.length, "Susun semua dulu, ya.", (r, beres) => (<><CatatanPensil pendek="Susun kata" teks="Susun kalimat. Satu kata tidak dipakai." /><SusunKata key={r} kata={RONDE_SUSUNKATA_QD[r].kata} pengecoh={RONDE_SUSUNKATA_QD[r].pengecoh} nomor={r} onBeres={beres} /></>)); }
 
 const KARTU_CONCRETE: KartuTahap[] = [K0, K1, K2, K3, K4, K5, K6, K7, K8, K9].map((K, i) => ({ nomor: i + 1, render: (d) => <K {...d} /> }));
-const KARTU_PICTURE: KartuTahap[] = [P0, P1, P2, P3, P4, P5, P6, P7, P8, P9].map((K, i) => ({ nomor: i + 11, render: (d) => <K {...d} /> }));
-const KARTU_ABSTRACT: KartuTahap[] = [Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9].map((K, i) => ({ nomor: i + 21, render: (d) => <K {...d} /> }));
+const KARTU_PICTURE: KartuTahap[] = [P0, P1, P2, P3, P4, P5, P6, P7, P8, P9].map((K, i) => ({ nomor: i + 1, render: (d) => <K {...d} /> }));
+const KARTU_ABSTRACT: KartuTahap[] = [Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9].map((K, i) => ({ nomor: i + 1, render: (d) => <K {...d} /> }));
 
 export function ConcreteK4B1D(props: Umum) {
   return <TahapPermainan umum={props} tahap={4} pita={{ ikon: "🧩", nama: "CONCRETE", cara: "Susun dan uraikan!", warna: "#8A5322" }} kartu={KARTU_CONCRETE} teksAkhir="LANJUTKAN KE PICTURE ⬇️" />;

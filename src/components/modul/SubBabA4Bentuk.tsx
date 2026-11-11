@@ -106,7 +106,7 @@ export function GameBentuk({
   speakGuru,
   panel,
   id,
-  jumlahRonde,
+  jumlahRonde: _jumlahRonde,
   kunciAkhir,
   belumSiap,
   teksLanjut,
@@ -127,9 +127,12 @@ export function GameBentuk({
   teksLanjut: string;
   lanjut: () => void;
   isi: (ronde: number, beres: () => void) => React.ReactNode;
-  /** Banyak permainan seluruhnya dalam satu sub-bab (bawaan 10). */
+  /** Banyak permainan per tahap CPA (bawaan 10; nomor mengulang 1–10 tiap tahap). */
   total?: number;
 }) {
+  // Satu kartu permainan = satu putaran (tanpa pengganda 3 ronde).
+  const jumlahRonde = 1;
+  void _jumlahRonde;
   const [ronde, setRonde] = useState(0);
   const [selesai, setSelesai] = useState(false);
   const terakhir = ronde >= jumlahRonde - 1;

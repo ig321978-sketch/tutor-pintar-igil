@@ -38,7 +38,7 @@ import { SUB_G31 } from "./naskah-k3b1";
 /* ------------------------------------------------------------------------ */
 
 const J = SUB_G31.games.map((g) => g.title);
-const TOTAL = 30;
+const TOTAL = 10;
 const Kartu = buatKartu(J, TOTAL);
 
 const SUARA_INFO =
@@ -592,12 +592,12 @@ const KARTU_CONCRETE: KartuTahap[] = [KartuBagiBergiliranG, KartuHitungBagianG, 
 }));
 
 const KARTU_PICTURE: KartuTahap[] = [KartuBagiTitikG, KartuKalimatBagiG, KartuJodohTitikBagiG, KartuMemoriTitikBagiG, KartuLoncatMundurG, KartuTabelBagiG, KartuSemuaBandingTitikG, KartuPilahTitikBagiG, KartuPeriksaKaliG, KartuRakitKotakBagiG].map((K, i) => ({
-  nomor: i + 11,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 
 const KARTU_ABSTRACT: KartuTahap[] = [KartuKurangBerulangQG, KartuHitungHasilBagiQG, KartuPapanQG, KartuJodohKaliQG, KartuMemoriBagiQG, KartuBenarSalahG, KartuDetektifG, KartuPetaG, KartuCeritaQG, KartuSusunKataG].map((K, i) => ({
-  nomor: i + 21,
+  nomor: i + 1,
   render: (d) => <K {...d} />,
 }));
 
