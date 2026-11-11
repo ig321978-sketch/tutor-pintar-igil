@@ -70,6 +70,6 @@ export function ucapanLab50(n: number, ikat: boolean): string {
   return `Bilangan ${n}. Terdiri dari ${u.puluhan} puluhan dan ${u.satuan} satuan.${ikatan}`;
 }
 
-/** Awal lab: bilangan contoh dari buku (26 tas/permen). */
-export const AWAL_N = 26;
-export const AWAL_M = 32;
+/** Awal lab: bilangan netral yang tidak memenuhi misi hibrida (misi menarget 26, 40, 50, dll.). */
+export const AWAL_N = 12;
+export const AWAL_M = 18;

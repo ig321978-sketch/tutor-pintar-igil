@@ -33,7 +33,7 @@ sama(L.bandingkanNilaiTempat(26, 26).simbol, "=", "26 = 26");
 sama(L.bandingkanNilaiTempat(28, 25).simbol, ">", "puluhan sama, satuan lebih");
 cek(/Puluhan/.test(L.bandingkanNilaiTempat(26, 32).alasan), "alasan banding puluhan");
 cek(/Bilangan 26\./.test(L.ucapanLab50(26, true)), "ucapan lab");
-cek(L.AWAL_N === 26 && L.AWAL_M === 32, "awal lab dari buku");
+cek(L.AWAL_N === 12 && L.AWAL_M === 18, "awal lab netral (bukan target misi)");
 
 /* ------------------------------ Mesin tukar ------------------------------ */
 {

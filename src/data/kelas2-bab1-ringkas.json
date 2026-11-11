@@ -1,0 +1,454 @@
+{
+  "chapter_id": "mtk-2-bab1",
+  "phase_code": "FASE_A",
+  "grade": 2,
+  "subject": "Matematika",
+  "title": "Ayo Membilang sampai dengan 50",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Membilang 50",
+          "ikon": "🔢",
+          "suara": "Ini peta membilang sampai lima puluh. Kita menghitung, mengelompokkan sepuluh, lalu membaca dan menulis bilangan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "satu-satu",
+            "judul": "Satu per satu",
+            "ikon": "👆",
+            "ringkas": "Sentuh tiap benda sekali saja.",
+            "suara": "Hitung dengan menyentuh setiap benda satu kali. Tandai yang sudah dihitung supaya tidak terlewat dan tidak dihitung dua kali. Angka terakhir adalah banyak seluruhnya."
+          },
+          {
+            "id": "kelompok-10",
+            "judul": "Kelompok sepuluh",
+            "ikon": "📦",
+            "ringkas": "Ikat sepuluh jadi satu puluhan.",
+            "suara": "Benda yang banyak lebih cepat dihitung kalau dikelompokkan setiap sepuluh. Satu ikat pensil, satu batang balok, atau satu bingkai sepuluh disebut satu puluhan."
+          },
+          {
+            "id": "baca-tulis",
+            "judul": "Baca dan tulis",
+            "ikon": "🗣️",
+            "ringkas": "Sebut namanya, tulis angkanya.",
+            "suara": "Bilangan dua puluh satu sampai lima puluh ditulis dua angka. Angka kiri puluhan, angka kanan satuan. Dua puluh enam ditulis 26 dan dibaca dua puluh enam."
+          },
+          {
+            "id": "maju-mundur",
+            "judul": "Maju dan mundur",
+            "ikon": "🛤️",
+            "ringkas": "Naik atau turun satu demi satu.",
+            "suara": "Menghitung maju membuat bilangan makin besar. Menghitung mundur membuat bilangan makin kecil. Di jalur bilangan, sesudah dan sebelum selalu beda satu."
+          }
+        ],
+        "kartu": [
+          { "id": "a-sentuh", "teks": "Satu benda, satu sentuhan", "ikon": "👆", "cabang": "satu-satu", "petunjuk": "Menyentuh benda satu per satu itu menghitung. Coba cabang lain." },
+          { "id": "a-terakhir", "teks": "Angka terakhir = banyaknya", "ikon": "🔚", "cabang": "satu-satu", "petunjuk": "Angka terakhir menunjukkan banyaknya. Coba cabang lain." },
+          { "id": "a-ikat", "teks": "10 pensil = 1 ikat", "ikon": "📦", "cabang": "kelompok-10", "petunjuk": "Mengikat sepuluh benda itu kelompok sepuluh. Coba cabang lain." },
+          { "id": "a-puluhan", "teks": "2 ikat + 6 = 26", "ikon": "➕", "cabang": "kelompok-10", "petunjuk": "Puluhan ditambah sisa itu kelompok sepuluh. Coba cabang lain." },
+          { "id": "a-nama", "teks": "26 dibaca dua puluh enam", "ikon": "🗣️", "cabang": "baca-tulis", "petunjuk": "Menyebut nama bilangan itu membaca. Coba cabang lain." },
+          { "id": "a-tulis", "teks": "Tulis lambang 47", "ikon": "✏️", "cabang": "baca-tulis", "petunjuk": "Menulis lambang angka itu menulis. Coba cabang lain." },
+          { "id": "a-maju", "teks": "20, 21, 22, 23", "ikon": "➡️", "cabang": "maju-mundur", "petunjuk": "Bilangan makin besar itu maju. Coba cabang lain." },
+          { "id": "a-mundur", "teks": "30, 29, 28, 27", "ikon": "⬅️", "cabang": "maju-mundur", "petunjuk": "Bilangan makin kecil itu mundur. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Menghitung sampai 50",
+        "suara": "Ini tiga panel tentang menghitung sampai lima puluh. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-cara",
+            "tipe": "banding",
+            "judul": "Satu-satu atau kelompok sepuluh?",
+            "ide": "Kelompok sepuluh lebih cepat.",
+            "suara": "Lihat dua cara menghitung dua puluh enam tas. Bandingkan hitung satu per satu dengan kelompok sepuluh.",
+            "sisi": [
+              {
+                "id": "satu",
+                "nama": "Satu per satu",
+                "ikon": "👆",
+                "catatan": "Lama. Mudah terlewat.",
+                "suara": "Menghitung satu per satu: satu, dua, tiga, sampai dua puluh enam. Benar, tetapi lama.",
+                "visual": { "jenis": "teks", "isi": "1, 2, 3, … 26" }
+              },
+              {
+                "id": "puluh",
+                "nama": "Kelompok sepuluh",
+                "ikon": "📦",
+                "catatan": "Cepat. 10 + 10 + 6.",
+                "suara": "Kelompok sepuluh: sepuluh, dua puluh, lalu enam lagi. Hasilnya sama, dua puluh enam, tetapi lebih cepat.",
+                "visual": { "jenis": "teks", "isi": "10 + 10 + 6 = 26" }
+              }
+            ],
+            "kesimpulan": "Hasil sama, kelompok sepuluh lebih cepat."
+          },
+          {
+            "id": "a-nama",
+            "tipe": "buka",
+            "judul": "Baca dan tulis bilangan",
+            "ide": "Nama puluhan lalu satuan.",
+            "suara": "Cara membaca dan menulis bilangan dua puluh satu sampai lima puluh. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "26",
+                "label": "Dua puluh enam",
+                "ikon": "2️⃣",
+                "isi": "2 puluhan dan 6 satuan.",
+                "suara": "Dua puluh enam. Angka dua di kiri adalah puluhan. Angka enam di kanan adalah satuan.",
+                "visual": { "jenis": "teks", "isi": "26 = 2P + 6S" }
+              },
+              {
+                "id": "40",
+                "label": "Empat puluh",
+                "ikon": "4️⃣",
+                "isi": "Kelipatan sepuluh tanpa satuan.",
+                "suara": "Empat puluh. Empat puluhan dan nol satuan. Dibaca empat puluh, tanpa nama satuan.",
+                "visual": { "jenis": "teks", "isi": "40 = 4P + 0S" }
+              },
+              {
+                "id": "50",
+                "label": "Lima puluh",
+                "ikon": "5️⃣",
+                "isi": "Batas terbesar bab ini.",
+                "suara": "Lima puluh. Lima batang puluhan penuh. Itu bilangan terbesar di bab ini.",
+                "visual": { "jenis": "teks", "isi": "50 = 5P + 0S" }
+              }
+            ]
+          },
+          {
+            "id": "a-jalur",
+            "tipe": "buka",
+            "judul": "Maju dan mundur",
+            "ide": "Sesudah dan sebelum beda satu.",
+            "suara": "Di jalur bilangan kita bisa maju atau mundur. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "maju",
+                "label": "Maju",
+                "ikon": "➡️",
+                "isi": "Dari 20 ke 30 makin besar.",
+                "suara": "Maju. Dua puluh, dua puluh satu, dua puluh dua, sampai tiga puluh. Bilangannya makin besar.",
+                "visual": { "jenis": "teks", "isi": "20 → 21 → … → 30" }
+              },
+              {
+                "id": "mundur",
+                "label": "Mundur",
+                "ikon": "⬅️",
+                "isi": "Dari 30 ke 20 makin kecil.",
+                "suara": "Mundur. Tiga puluh, dua puluh sembilan, dua puluh delapan, sampai dua puluh. Bilangannya makin kecil.",
+                "visual": { "jenis": "teks", "isi": "30 → 29 → … → 20" }
+              },
+              {
+                "id": "hilang",
+                "label": "Lengkapi",
+                "ikon": "🧩",
+                "isi": "Isi bilangan yang hilang.",
+                "suara": "Kalau ada bilangan hilang, lihat tetangganya. Sesudah dua puluh sembilan adalah tiga puluh.",
+                "visual": { "jenis": "teks", "isi": "28, 29, ?, 31 → 30" }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Nilai Tempat",
+          "ikon": "🧮",
+          "suara": "Ini peta nilai tempat. Angka di kiri dan di kanan punya nilai yang berbeda. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "puluhan",
+            "judul": "Puluhan",
+            "ikon": "🟥",
+            "ringkas": "Angka kiri: banyak kelompok sepuluh.",
+            "suara": "Angka di sebelah kiri menunjukkan banyak puluhan. Satu batang berisi sepuluh. Dua batang berarti dua puluhan."
+          },
+          {
+            "id": "satuan",
+            "judul": "Satuan",
+            "ikon": "🟦",
+            "ringkas": "Angka kanan: benda yang tersisa.",
+            "suara": "Angka di sebelah kanan menunjukkan satuan. Itu benda yang tersisa, kurang dari sepuluh. Empat satuan berarti empat benda lepas."
+          },
+          {
+            "id": "tabel",
+            "judul": "Tabel",
+            "ikon": "🧾",
+            "ringkas": "Tulis P di kiri, S di kanan.",
+            "suara": "Tabel nilai tempat punya dua kolom. Kolom kiri untuk puluhan, kolom kanan untuk satuan. Dua puluh delapan ditulis 2 di puluhan dan 8 di satuan."
+          },
+          {
+            "id": "tukar",
+            "judul": "Tukar sepuluh",
+            "ikon": "🔄",
+            "ringkas": "10 satuan jadi 1 puluhan.",
+            "suara": "Sepuluh satuan boleh ditukar menjadi satu batang puluhan. Bentuknya berubah, tetapi jumlahnya tetap sama. Bentuk ringkas punya satuan kurang dari sepuluh."
+          }
+        ],
+        "kartu": [
+          { "id": "b-batang", "teks": "1 batang = 10", "ikon": "🟥", "cabang": "puluhan", "petunjuk": "Batang sepuluh itu puluhan. Coba cabang lain." },
+          { "id": "b-kiri", "teks": "Angka kiri = puluhan", "ikon": "⬅️", "cabang": "puluhan", "petunjuk": "Angka di kiri adalah puluhan. Coba cabang lain." },
+          { "id": "b-lepas", "teks": "Benda lepas < 10", "ikon": "🟦", "cabang": "satuan", "petunjuk": "Benda lepas itu satuan. Coba cabang lain." },
+          { "id": "b-kanan", "teks": "Angka kanan = satuan", "ikon": "➡️", "cabang": "satuan", "petunjuk": "Angka di kanan adalah satuan. Coba cabang lain." },
+          { "id": "b-isi", "teks": "28 → 2 | 8", "ikon": "🧾", "cabang": "tabel", "petunjuk": "Mengisi kolom P dan S itu tabel. Coba cabang lain." },
+          { "id": "b-baca", "teks": "2P + 8S = 28", "ikon": "🗣️", "cabang": "tabel", "petunjuk": "Membaca dari tabel itu nilai tempat. Coba cabang lain." },
+          { "id": "b-ikat", "teks": "14 satuan → 1P 4S", "ikon": "🔄", "cabang": "tukar", "petunjuk": "Menukar sepuluh satuan itu tukar. Coba cabang lain." },
+          { "id": "b-sama", "teks": "Jumlah tetap sama", "ikon": "🤝", "cabang": "tukar", "petunjuk": "Nilai tidak berubah saat ditukar. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Puluhan dan Satuan",
+        "suara": "Ini tiga panel tentang nilai tempat. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "b-letak",
+            "tipe": "buka",
+            "judul": "Nilai menurut letak",
+            "ide": "Letak angka mengubah nilainya.",
+            "suara": "Angka yang sama punya nilai beda kalau letaknya beda. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "kiri",
+                "label": "Angka 3 di kiri",
+                "ikon": "🟥",
+                "isi": "3 puluhan = 30.",
+                "suara": "Angka tiga di kolom puluhan bernilai tiga puluh.",
+                "visual": { "jenis": "teks", "isi": "3_ = 30" }
+              },
+              {
+                "id": "kanan",
+                "label": "Angka 3 di kanan",
+                "ikon": "🟦",
+                "isi": "3 satuan = 3.",
+                "suara": "Angka tiga di kolom satuan bernilai tiga.",
+                "visual": { "jenis": "teks", "isi": "_3 = 3" }
+              },
+              {
+                "id": "33",
+                "label": "Tiga puluh tiga",
+                "ikon": "🔢",
+                "isi": "3P + 3S = 33.",
+                "suara": "Tiga puluh tiga. Dua angka tiga, tetapi nilainya beda: tiga puluh dan tiga.",
+                "visual": { "jenis": "teks", "isi": "33 = 30 + 3" }
+              }
+            ]
+          },
+          {
+            "id": "b-tukar",
+            "tipe": "banding",
+            "judul": "Sebelum dan sesudah tukar",
+            "ide": "Bentuk beda, jumlah tetap.",
+            "suara": "Lihat dua bentuk bilangan dua puluh enam. Bandingkan sebelum dan sesudah menukar sepuluh satuan.",
+            "sisi": [
+              {
+                "id": "longgar",
+                "nama": "Belum ringkas",
+                "ikon": "🌀",
+                "catatan": "1 puluhan dan 16 satuan.",
+                "suara": "Satu puluhan dan enam belas satuan. Jumlahnya dua puluh enam, tetapi belum ringkas.",
+                "visual": { "jenis": "teks", "isi": "1P + 16S" }
+              },
+              {
+                "id": "ringkas",
+                "nama": "Sudah ringkas",
+                "ikon": "✅",
+                "catatan": "2 puluhan dan 6 satuan.",
+                "suara": "Dua puluhan dan enam satuan. Jumlahnya tetap dua puluh enam, dan sudah ringkas.",
+                "visual": { "jenis": "teks", "isi": "2P + 6S" }
+              }
+            ],
+            "kesimpulan": "Ditukar atau tidak, jumlahnya tetap 26."
+          },
+          {
+            "id": "b-cara",
+            "tipe": "buka",
+            "judul": "Satu bilangan, banyak cara",
+            "ide": "Pilih cara yang paling ringkas.",
+            "suara": "Satu bilangan bisa ditulis beberapa cara. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "panjang",
+                "label": "Cara panjang",
+                "ikon": "📝",
+                "isi": "0P + 34S juga 34.",
+                "suara": "Nol puluhan dan tiga puluh empat satuan juga tiga puluh empat, tetapi belum ringkas.",
+                "visual": { "jenis": "teks", "isi": "0P + 34S = 34" }
+              },
+              {
+                "id": "campur",
+                "label": "Cara campur",
+                "ikon": "🔄",
+                "isi": "2P + 14S juga 34.",
+                "suara": "Dua puluhan dan empat belas satuan juga tiga puluh empat.",
+                "visual": { "jenis": "teks", "isi": "2P + 14S = 34" }
+              },
+              {
+                "id": "ringkas",
+                "label": "Cara ringkas",
+                "ikon": "⭐",
+                "isi": "3P + 4S paling ringkas.",
+                "suara": "Tiga puluhan dan empat satuan. Satuan kurang dari sepuluh. Itu cara paling ringkas.",
+                "visual": { "jenis": "teks", "isi": "3P + 4S = 34" }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Membandingkan",
+          "ikon": "⚖️",
+          "suara": "Ini peta membandingkan bilangan sampai lima puluh. Lihat puluhan dulu, baru satuan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "tebak",
+            "judul": "Tebak dulu",
+            "ikon": "🔍",
+            "ringkas": "Kira, lalu hitung untuk bukti.",
+            "suara": "Sebelum menghitung, tebak dulu banyak bendanya. Pakai patokan sepuluh. Lalu hitung untuk membuktikan, dan bandingkan tebakan dengan hasilnya."
+          },
+          {
+            "id": "puluhan-dulu",
+            "judul": "Puluhan dulu",
+            "ikon": "🟥",
+            "ringkas": "Bandingkan kolom puluhan lebih dulu.",
+            "suara": "Saat membandingkan dua bilangan, lihat puluhan lebih dulu. Puluhan yang lebih banyak berarti bilangannya lebih besar. Baru lihat satuan jika puluhannya sama."
+          },
+          {
+            "id": "tanda",
+            "judul": "Tiga tanda",
+            "ikon": "🔺",
+            "ringkas": "Lebih besar, lebih kecil, sama.",
+            "suara": "Pakai tiga tanda: lebih besar, lebih kecil, dan sama dengan. Mulut tanda terbuka ke bilangan yang lebih besar."
+          },
+          {
+            "id": "urut",
+            "judul": "Urutkan",
+            "ikon": "📶",
+            "ringkas": "Dari paling kecil atau paling besar.",
+            "suara": "Mengurutkan berarti menyusun bilangan dari yang paling kecil ke yang paling besar, atau sebaliknya. Bandingkan berpasangan sampai urutannya rapi."
+          }
+        ],
+        "kartu": [
+          { "id": "c-kira", "teks": "Tebak pakai patokan 10", "ikon": "🔍", "cabang": "tebak", "petunjuk": "Menebak sebelum menghitung itu tebak. Coba cabang lain." },
+          { "id": "c-bukti", "teks": "Hitung untuk membuktikan", "ikon": "✅", "cabang": "tebak", "petunjuk": "Menghitung setelah menebak itu bukti. Coba cabang lain." },
+          { "id": "c-p", "teks": "Lihat puluhan lebih dulu", "ikon": "🟥", "cabang": "puluhan-dulu", "petunjuk": "Membandingkan puluhan dulu. Coba cabang lain." },
+          { "id": "c-s", "teks": "Satuan jika P sama", "ikon": "🟦", "cabang": "puluhan-dulu", "petunjuk": "Baru satuan jika puluhan sama. Coba cabang lain." },
+          { "id": "c-lebih", "teks": "32 > 26", "ikon": "🔺", "cabang": "tanda", "petunjuk": "Tanda lebih besar. Coba cabang lain." },
+          { "id": "c-sama", "teks": "26 = 26", "ikon": "🤝", "cabang": "tanda", "petunjuk": "Tanda sama dengan. Coba cabang lain." },
+          { "id": "c-kecil", "teks": "12, 21, 25, 35", "ikon": "📶", "cabang": "urut", "petunjuk": "Menyusun dari kecil ke besar itu mengurutkan. Coba cabang lain." },
+          { "id": "c-besar", "teks": "35, 25, 21, 12", "ikon": "📉", "cabang": "urut", "petunjuk": "Menyusun dari besar ke kecil itu mengurutkan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Membandingkan sampai 50",
+        "suara": "Ini tiga panel tentang membandingkan bilangan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "c-cara",
+            "tipe": "banding",
+            "judul": "Puluhan beda atau sama?",
+            "ide": "Puluhan dulu, baru satuan.",
+            "suara": "Lihat dua pasang bilangan. Bandingkan yang puluhannya beda dengan yang puluhannya sama.",
+            "sisi": [
+              {
+                "id": "beda-p",
+                "nama": "Puluhan beda",
+                "ikon": "🟥",
+                "catatan": "32 dan 26: cukup lihat P.",
+                "suara": "Tiga puluh dua dan dua puluh enam. Puluhan tiga lebih banyak dari dua, jadi tiga puluh dua lebih besar. Tidak perlu lihat satuan.",
+                "visual": { "jenis": "teks", "isi": "32 > 26 (P: 3>2)" }
+              },
+              {
+                "id": "sama-p",
+                "nama": "Puluhan sama",
+                "ikon": "🟦",
+                "catatan": "28 dan 25: lihat satuan.",
+                "suara": "Dua puluh delapan dan dua puluh lima. Puluhannya sama. Lihat satuan: delapan lebih dari lima, jadi dua puluh delapan lebih besar.",
+                "visual": { "jenis": "teks", "isi": "28 > 25 (S: 8>5)" }
+              }
+            ],
+            "kesimpulan": "Puluhan menentukan dulu; satuan hanya jika P sama."
+          },
+          {
+            "id": "c-tanda",
+            "tipe": "buka",
+            "judul": "Tiga tanda banding",
+            "ide": "Mulut terbuka ke yang besar.",
+            "suara": "Ada tiga tanda untuk membandingkan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "lebih",
+                "label": "Lebih besar",
+                "ikon": "🔺",
+                "isi": "40 > 35.",
+                "suara": "Tanda lebih besar. Empat puluh lebih besar dari tiga puluh lima. Mulut terbuka ke empat puluh.",
+                "visual": { "jenis": "teks", "isi": "40 > 35" }
+              },
+              {
+                "id": "kurang",
+                "label": "Lebih kecil",
+                "ikon": "🔻",
+                "isi": "21 < 30.",
+                "suara": "Tanda lebih kecil. Dua puluh satu lebih kecil dari tiga puluh. Ujung runcing ke dua puluh satu.",
+                "visual": { "jenis": "teks", "isi": "21 < 30" }
+              },
+              {
+                "id": "sama",
+                "label": "Sama dengan",
+                "ikon": "🤝",
+                "isi": "25 = 25.",
+                "suara": "Tanda sama dengan. Dua puluh lima sama dengan dua puluh lima.",
+                "visual": { "jenis": "teks", "isi": "25 = 25" }
+              }
+            ]
+          },
+          {
+            "id": "c-urut",
+            "tipe": "buka",
+            "judul": "Urutkan bilangan",
+            "ide": "Bandingkan berpasangan sampai rapi.",
+            "suara": "Mengurutkan bilangan dari yang paling kecil atau paling besar. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "naik",
+                "label": "Paling kecil dulu",
+                "ikon": "📶",
+                "isi": "12, 21, 25, 35.",
+                "suara": "Dari yang paling kecil: dua belas, dua puluh satu, dua puluh lima, tiga puluh lima.",
+                "visual": { "jenis": "teks", "isi": "12 < 21 < 25 < 35" }
+              },
+              {
+                "id": "turun",
+                "label": "Paling besar dulu",
+                "ikon": "📉",
+                "isi": "35, 25, 21, 12.",
+                "suara": "Dari yang paling besar: tiga puluh lima, dua puluh lima, dua puluh satu, dua belas.",
+                "visual": { "jenis": "teks", "isi": "35 > 25 > 21 > 12" }
+              },
+              {
+                "id": "tukar-dulu",
+                "label": "Tukar dulu",
+                "ikon": "🔄",
+                "isi": "Ringkaskan sebelum banding.",
+                "suara": "Kalau bentuknya belum ringkas, tukar sepuluh satuan menjadi puluhan dulu, baru bandingkan.",
+                "visual": { "jenis": "teks", "isi": "1P+14S → 2P+4S" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

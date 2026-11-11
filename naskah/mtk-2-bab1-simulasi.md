@@ -1,12 +1,6 @@
-# Matematika Kelas 2 · Bab 1 · Tab Simulasi (tiga simulasi, tiga metode)
+# Matematika Kelas 2 · Bab 1 · Simulasi SMISCPA (pola hibrida)
 
-Komponen: `src/components/modul/SimulasiK2Bab1.tsx` (pembungkus alur), dipasang di tab **Simulasi** pemutar `IgilModulePlayer.tsx` lewat `SIMULASI_BAB["mtk-2-bab1"]`. Tidak ada pemanggilan jaringan, tidak ada skor, tidak ada Poin Kualifikasi. Suara memakai Suara Guru pilihan siswa lewat `speakGuru`.
-
-| No | Simulasi | Metode | Berkas |
-|----|----------|--------|--------|
-| 1 | Laboratorium Bilangan 50 | PhET | `SimulasiLab50.tsx`, logika `lab-bilangan-k2b1.ts` |
-| 2 | Mesin Tukar Puluhan | Mesin keadaan | `SimulasiMesinTukar.tsx`, logika `mesin-tukar-k2b1.ts` |
-| 3 | Skenario: Stoples Permen Kira | Skenario kontekstual | `SimulasiSkenario.tsx` + `skenario-k2b1.ts` |
+Komponen: `src/components/modul/SimulasiK2Bab1.tsx` (di dalam Materi, tahap 4 SMISCPA), misi di `misi-k2bab1.ts`, lab di `SimulasiLab50.tsx` + `lab-bilangan-k2b1.ts`, mesin di `SimulasiMesinTukar.tsx`, skenario di `skenario-k2b1.ts`. Didaftarkan di `SIMULASI_MATERI` + `RINGKAS_BAB` (`registri-simulasi.ts`). Mind-Map dan Infografis memakai `kelas2-bab1-ringkas.json`. Tanpa jaringan, tanpa skor, tanpa Poin Kualifikasi. Suara: `speakGuru`.
 
 ## Penilaian metode
 
@@ -17,34 +11,25 @@ Komponen: `src/components/modul/SimulasiK2Bab1.tsx` (pembungkus alur), dipasang 
 | Skenario | Tinggi | Cerita stoples permen Sub-Bab C (tebak, hitung, banding, urut) |
 | Lab 2D | Tidak | Bukan ukur/susun di kanvas |
 | Lab 3D | Tidak | Bukan bangun ruang |
-| CPA di tab ini | Tidak | CPA tetap di Materi |
 
-## Simulasi 1 · Laboratorium Bilangan 50 (PhET)
+## Pola hibrida
 
-Tujuan: membilang sampai 50 sebagai puluhan dan satuan; membaca tabel nilai tempat; membandingkan dua bilangan (puluhan dulu).
+Satu laboratorium bilangan yang alatnya bertambah per sub-bab. Gerbang lanjut: semua misi wajib, atau **Lewati misi** setelah menyentuh sekali.
 
-- **Model:** bilangan `n` (0–50). Opsional bilangan kedua `m` saat Bandingkan aktif.
-- **Kontrol:** plus/minus besar, ketuk batang atau satuan, ketuk titik di garis (segmen 0–50), Ikat sepuluh (tampilan), Bandingkan, Reset Semua.
-- **Perwakilan terhubung:** batang puluhan (bukan 50 benda lepas), satuan lepas (0–9), tabel P|S, kalimat nilai, nama bilangan, garis bilangan, hasil banding.
-- **Coba ini!** (1) Atur ke 26. Berapa puluhan dan satuan? (2) Nyalakan Bandingkan, atur bilangan kedua ke 32. Mana yang dibandingkan lebih dulu? (3) Atur ke 50. Apa yang terjadi di batang?
+| Sub-bab | Alat laboratorium | Misi wajib (ringkas) | Tantangan bebas |
+|---------|-------------------|----------------------|-----------------|
+| A · Menghitung, membaca, menulis | Lab50: batang, satuan, kalimat, garis | 26 dengan batang; 40; 50; ketuk 30 di garis | Kalimat 35; buat 21 |
+| B · Nilai tempat | Lab50 + tabel; tab Mesin Tukar | Tabel 26; tabel 11; tabel 50; tuntas Mesin Tukar | Tabel 34; ingat 26 batang |
+| C · Membandingkan (pencapaian misi) | Semua Lab50 + Bandingkan; tab Mesin Tukar; tab Stoples Permen | Banding 32↔26; 28↔25; 26=26; tuntas Stoples | Selisih puluhan ≥3; ingat Mesin Tukar |
 
-## Simulasi 2 · Mesin Tukar Puluhan (mesin keadaan)
-
-Tujuan: sepuluh satuan diganti satu puluhan sampai bentuk ringkas (satuan < 10).
-
-- **Keadaan:** Mulai → Tukar → Ringkas → Selesai.
-- **Aksi:** Ikat 10 (satuan ≥ 10), Buka 10 (puluhan ≥ 1), maju stasiun bila syarat terpenuhi.
-- **Misi:** 26 (awal 0p+26s), 34 (1p+24s), 48 (2p+28s).
-- **Coba ini!** (1) Di 0 puluhan 26 satuan, ikat dua kali. Apa yang muncul? (2) Coba maju ke Ringkas sebelum satuan < 10. Apa kata mesin? (3) Buka satu puluhan, lalu ikat lagi. Apakah jumlahnya sama?
-
-## Simulasi 3 · Stoples Permen Kira (skenario)
-
-Tujuan: tebak, hitung dengan kelompok sepuluh, bandingkan tebakan, bandingkan dua bilangan, urutkan.
-
-- **Cerita:** ulang tahun Kira; Malosi tebak 20, Halim tebak 30; permen ternyata 26; Tika punya 32; urutkan kartu.
-- **Adegan:** narasi → pilih cara hitung → hitung sisa satuan → soal total dan tebakan dekat → pilih banding 26 vs 32 → soal urut → akhir.
-- **Coba ini!** (1) Pilih cara yang salah dulu. Apa akibatnya? (2) Bandingkan puluhan dulu. (3) Urutkan dari yang paling kecil.
+Keadaan awal lab: `n=12`, `m=18` (bukan target misi). Alat melapor lewat `onKeadaan`; mesin/skenario lewat `onTuntas` → `{alat:"selesai", id}`.
 
 ## Alur satu layar
 
-Satu simulasi per layar ("Simulasi 1 dari 3" …). LANJUTKAN aktif setelah disentuh (PhET) atau tuntas (mesin/skenario). Reset Semua di PhET. Tanpa LLM/jaringan.
+Satu simulasi per sub-bab di dalam Materi (`dalamPopup`). LANJUTKAN KE CONCRETE aktif bila misi wajib tercapai atau dilewati. Reset Semua di Lab50. Tanpa LLM/jaringan.
+
+## Uji
+
+- `node --no-warnings scripts/uji-lab-k2b1.mjs` — logika lab + mesin
+- `node --no-warnings scripts/uji-lab-kelas2.mjs` — misi hibrida Bab 1
+- `node --no-warnings scripts/uji-peta-konsep.mjs` / `uji-infografis-ringkas.mjs` — data ringkas
