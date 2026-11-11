@@ -28,6 +28,7 @@ export type KeadaanBelasan = {
   op: "tambah" | "kurang";
   a: number;
   b: number;
+  benda: boolean;
   tabel: boolean;
   pecah: boolean;
   periksa: boolean;
