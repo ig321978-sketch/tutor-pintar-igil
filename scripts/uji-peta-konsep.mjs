@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import {
   awalPeta,
   bukaCabang,
@@ -24,11 +24,18 @@ const cek = (ok, teks) => {
   console.log((ok ? "OK    " : "GAGAL ") + teks);
 };
 
-const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas1-bab8-ringkas.json", import.meta.url), "utf8"));
+// Semua bab yang sudah dimigrasi ke SMISCPA (src/data/kelas<K>-bab<N>-ringkas.json) diperiksa sekaligus.
+const dirData = new URL("../src/data/", import.meta.url);
+const berkasRingkas = readdirSync(dirData).filter((f) => /^kelas\d+-bab\d+-ringkas\.json$/.test(f)).sort();
+const semuaBab = berkasRingkas.map((f) => ({ kode: f.replace("-ringkas.json", ""), data: JSON.parse(readFileSync(new URL(f, dirData), "utf8")) }));
+cek(semuaBab.length >= 1, `ada ${semuaBab.length} berkas ringkas: ${semuaBab.map((b) => b.kode).join(", ")}`);
+// Acuan untuk uji data rusak di bawah: bentuk data bab pilot.
+const ringkas = semuaBab.find((b) => b.kode === "kelas1-bab8").data;
 
-for (const sub of Object.keys(ringkas.subBab)) {
-  const d = ringkas.subBab[sub].peta;
-  const nama = `K1B8 Sub-Bab ${sub}`;
+for (const { kode, data: dataBab } of semuaBab)
+for (const sub of Object.keys(dataBab.subBab)) {
+  const d = dataBab.subBab[sub].peta;
+  const nama = `${kode} Sub-Bab ${sub}`;
 
   const salah = periksaDataPeta(d);
   cek(salah.length === 0, `${nama}: data peta sah ${salah.join("; ")}`);

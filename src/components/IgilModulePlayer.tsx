@@ -85,7 +85,7 @@ import {
   InfografisDiagramB,
   PictureDiagramB,
 } from "@/components/modul/SubBabB8Diagram";
-import SimulasiBab1 from "@/components/modul/SimulasiBab1";
+import SimulasiBab1Materi, { misiAwalBab1 } from "@/components/modul/SimulasiBab1";
 import SimulasiBab2 from "@/components/modul/SimulasiBab2";
 import SimulasiBab3 from "@/components/modul/SimulasiBab3";
 import SimulasiBab4 from "@/components/modul/SimulasiBab4";
@@ -97,6 +97,7 @@ import PetaKonsep from "@/components/modul/PetaKonsep";
 import InfografisRingkas from "@/components/modul/InfografisRingkas";
 import type { DataPeta } from "@/components/modul/peta-konsep-logika";
 import type { DataInfografis } from "@/components/modul/infografis-ringkas-logika";
+import ringkasK1B1 from "@/data/kelas1-bab1-ringkas.json";
 import ringkasK1B8 from "@/data/kelas1-bab8-ringkas.json";
 import SimulasiK2Bab1 from "@/components/modul/SimulasiK2Bab1";
 import SimulasiK2Bab2 from "@/components/modul/SimulasiK2Bab2";
@@ -999,16 +1000,19 @@ type SimulasiMateriProps = { sub: string; speakGuru: (teks: string) => void; onS
  * sampai dimigrasi.
  */
 const SIMULASI_MATERI: Partial<Record<string, ComponentType<SimulasiMateriProps>>> = {
+  "mtk-1-bab1": SimulasiBab1Materi,
   "mtk-1-bab8": SimulasiBab8Materi,
 };
 
 /** Ucapan misi simulasi pertama tiap sub-bab, digabung ke ucapan saat tahap Simulasi dibuka (suara perlu ketukan anak). */
 const SIMULASI_MISI_AWAL: Partial<Record<string, (sub: string) => string>> = {
+  "mtk-1-bab1": misiAwalBab1,
   "mtk-1-bab8": misiAwalBab8,
 };
 
 type RingkasSub = { peta: DataPeta; infografis: DataInfografis };
 const RINGKAS_BAB: Partial<Record<string, Record<string, RingkasSub>>> = {
+  "mtk-1-bab1": ringkasK1B1.subBab as unknown as Record<string, RingkasSub>,
   "mtk-1-bab8": ringkasK1B8.subBab as unknown as Record<string, RingkasSub>,
 };
 
@@ -1016,7 +1020,6 @@ type SimulasiBabProps = { speakGuru: (teks: string) => void; onKeLatihan: () => 
 
 /** Simulasi tiap bab. Bab yang belum ada di sini tidak menampilkan tab Simulasi. */
 const SIMULASI_BAB: Partial<Record<string, ComponentType<SimulasiBabProps>>> = {
-  "mtk-1-bab1": SimulasiBab1,
   "mtk-1-bab2": SimulasiBab2,
   "mtk-1-bab3": SimulasiBab3,
   "mtk-1-bab4": SimulasiBab4,

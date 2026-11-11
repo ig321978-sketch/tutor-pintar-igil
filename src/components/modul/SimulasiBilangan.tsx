@@ -3,9 +3,46 @@
 import React, { useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { BendaSvg } from "./data-8-dasar";
-import { Cek, CobaIni, KARTU } from "./simulasi-bersama";
+import { Cek, CobaIni, KARTU, sebut } from "./simulasi-bersama";
 import { BIRU, Bingkai, BaganPasangan, GarisAngka, KalimatBesar, MERAH, Pengatur, eja } from "./komponen-lab";
-import { MAKS, batas, batasPecah, hubungan, kalimatPasangan, ketukKotak, pasangan, selBingkai, ucapanLab } from "./lab-bilangan-bab1";
+import { MAKS, batas, batasPecah, hubungan, kalimatPasangan, ketukKotak, pasangan, selBingkai } from "./lab-bilangan-bab1";
+
+/**
+ * Perwakilan yang boleh tampil. Di dalam Materi, tiap sub-bab hanya membuka perwakilan yang sudah diajarkan
+ * (mis. Bingkai Sepuluh dan Garis Bilangan baru di Sub-Bab B), jadi pembungkus memilih `tampil` per sub-bab.
+ */
+export type TampilBilangan = "benda" | "bingkai" | "garis" | "pasangan" | "banding";
+export const SEMUA_TAMPIL: TampilBilangan[] = ["benda", "bingkai", "garis", "pasangan", "banding"];
+
+const LABEL_TAMPIL: Record<TampilBilangan, string> = {
+  benda: "Benda",
+  bingkai: "Bingkai sepuluh",
+  garis: "Garis bilangan",
+  pasangan: "Pasangan",
+  banding: "Bandingkan",
+};
+
+const AWAL_LIHAT: Record<TampilBilangan, boolean> = { benda: true, bingkai: true, garis: true, pasangan: true, banding: false };
+
+/** Langkah selidik "Coba ini!" yang cocok dengan perwakilan yang tampil. Tanpa kunci jawaban. */
+function langkahCoba(tampil: TampilBilangan[], awalBanding: boolean): string[] {
+  const ada = (k: TampilBilangan) => tampil.includes(k);
+  const hasil: string[] = [];
+  if (ada("bingkai")) {
+    hasil.push(ada("garis") ? "Ketuk kotak ke-7 di bingkai sepuluh. Lihat garis bilangan ikut pindah." : "Ketuk kotak ke-7 di bingkai sepuluh. Lihat benda ikut berubah.");
+  } else if (ada("garis")) {
+    hasil.push("Ketuk satu angka di garis bilangan. Lihat benda ikut berubah.");
+  } else if (ada("benda")) {
+    hasil.push("Ketuk satu kotak benda. Lihat angka dan nama bilangannya ikut berubah.");
+  }
+  if (ada("benda") && (ada("bingkai") || ada("garis"))) hasil.push("Tekan + beberapa kali. Lihat angka dan nama bilangannya ikut berubah.");
+  if (ada("pasangan")) hasil.push("Tekan + atau – pada Bagian merah. Bilangan itu terdiri dari dua bagian.");
+  if (ada("banding")) hasil.push(awalBanding ? "Atur dua bilangan, lalu lihat tanda >, <, atau =." : "Nyalakan Bandingkan. Atur dua bilangan, lalu lihat tanda >, <, atau =.");
+  if (hasil.length === 1 && ada("benda") && !ada("bingkai") && !ada("garis")) hasil.push("Tekan – sampai bilangannya nol. Apa yang terlihat?");
+  return hasil;
+}
+
+const URUT_KATA = ["Satu", "Dua", "Tiga", "Empat", "Lima"];
 
 /* ------------------------------------------------------------------------ */
 /* Simulasi 1 (Bab 1): Laboratorium Bilangan, metode PhET.                    */
@@ -41,11 +78,25 @@ function BarisBenda({ n, jenis, nama, onKetuk }: { n: number; jenis: "apel" | "j
   );
 }
 
-export default function SimulasiBilangan({ speakGuru }: { speakGuru: (t: string) => void }) {
+export default function SimulasiBilangan({
+  speakGuru,
+  tampil = SEMUA_TAMPIL,
+  awal,
+}: {
+  speakGuru: (t: string) => void;
+  /** Perwakilan yang tersedia. Bawaan: semuanya (tab Simulasi lama). */
+  tampil?: TampilBilangan[];
+  /** Perwakilan yang menyala saat simulasi dibuka. Bawaan: benda, bingkai, garis, pasangan. */
+  awal?: Partial<Record<TampilBilangan, boolean>>;
+}) {
   const [n, setN] = useState(6);
   const [m, setM] = useState(4);
   const [a, setA] = useState(2);
-  const [lihat, setLihat] = useState({ benda: true, bingkai: true, garis: true, pasangan: true, banding: false });
+  const [lihatMentah, setLihat] = useState<Record<TampilBilangan, boolean>>({ ...AWAL_LIHAT, ...awal });
+  // Perwakilan di luar `tampil` tidak pernah menyala.
+  const lihat = Object.fromEntries(SEMUA_TAMPIL.map((k) => [k, tampil.includes(k) && lihatMentah[k]])) as Record<TampilBilangan, boolean>;
+  const bisaDiatur = tampil.length > 1;
+  const coba = langkahCoba(tampil, awal?.banding ?? false);
 
   const ubahN = (nilai: number) => {
     const baru = batas(nilai);
@@ -54,7 +105,9 @@ export default function SimulasiBilangan({ speakGuru }: { speakGuru: (t: string)
   };
   const pas = pasangan(n, a);
   const h = hubungan(n, m);
-  const ganti = (k: keyof typeof lihat) => setLihat((x) => ({ ...x, [k]: !x[k] }));
+  const ganti = (k: TampilBilangan) => setLihat((x) => ({ ...x, [k]: !x[k] }));
+  // Ucapan mengikuti perwakilan yang tampil: pasangan dan perbandingan hanya disebut bila sudah diajarkan dan menyala.
+  const ucapanTampil = [`Bilangan ${n}. Ada ${n} benda.`, lihat.pasangan ? `${n} terdiri dari ${pas.a} dan ${pas.b}.` : "", lihat.banding ? h.kalimat : ""].filter(Boolean).join(" ");
 
   return (
     <div className="space-y-4">
@@ -63,7 +116,7 @@ export default function SimulasiBilangan({ speakGuru }: { speakGuru: (t: string)
           <h3 className="text-lg font-black text-[#1C01A5]">Laboratorium Bilangan</h3>
           <p className="text-sm font-bold text-[#1C01A5]/80">Ubah satu bilangan. Lihat semua gambar ikut berubah.</p>
         </div>
-        <TombolSuaraGuru label="Dengarkan bilangan ini" onClick={() => speakGuru(eja(ucapanLab(n, a, lihat.banding, m)))} />
+        <TombolSuaraGuru label="Dengarkan bilangan ini" onClick={() => speakGuru(eja(ucapanTampil))} />
       </div>
 
       <div className={`${KARTU} space-y-2`}>
@@ -71,18 +124,21 @@ export default function SimulasiBilangan({ speakGuru }: { speakGuru: (t: string)
           <span className="flex h-16 w-16 items-center justify-center rounded-2xl border-4 border-[#1C01A5] bg-[#FFE566] text-4xl font-black text-[#1C01A5]" aria-live="polite" aria-label={`Bilangan ${n}`}>
             {n}
           </span>
+          <span className="text-2xl font-black text-[#1C01A5]">{sebut(n)}</span>
         </div>
         <Pengatur nama="Bilangan" nilai={n} onKurang={() => ubahN(n - 1)} onTambah={() => ubahN(n + 1)} kurangMati={n <= 0} tambahMati={n >= MAKS} />
         {lihat.banding ? (
           <Pengatur nama="Bilangan kedua" nilai={m} warna="#DBEAFE" onKurang={() => setM(batas(m - 1))} onTambah={() => setM(batas(m + 1))} kurangMati={m <= 0} tambahMati={m >= MAKS} />
         ) : null}
-        <div className="flex flex-wrap items-center justify-center gap-1.5" role="group" aria-label="Pilih tampilan">
-          <Cek aktif={lihat.benda} onKlik={() => ganti("benda")}>Benda</Cek>
-          <Cek aktif={lihat.bingkai} onKlik={() => ganti("bingkai")}>Bingkai sepuluh</Cek>
-          <Cek aktif={lihat.garis} onKlik={() => ganti("garis")}>Garis bilangan</Cek>
-          <Cek aktif={lihat.pasangan} onKlik={() => ganti("pasangan")}>Pasangan</Cek>
-          <Cek aktif={lihat.banding} onKlik={() => ganti("banding")}>Bandingkan</Cek>
-        </div>
+        {bisaDiatur ? (
+          <div className="flex flex-wrap items-center justify-center gap-1.5" role="group" aria-label="Pilih tampilan">
+            {SEMUA_TAMPIL.filter((k) => tampil.includes(k)).map((k) => (
+              <Cek key={k} aktif={lihatMentah[k]} onKlik={() => ganti(k)}>
+                {LABEL_TAMPIL[k]}
+              </Cek>
+            ))}
+          </div>
+        ) : null}
       </div>
 
       {lihat.benda ? (
@@ -139,14 +195,12 @@ export default function SimulasiBilangan({ speakGuru }: { speakGuru: (t: string)
         judul="Coba ini!"
         onDengar={() =>
           speakGuru(
-            "Coba ini. Satu, ketuk kotak ketujuh di bingkai sepuluh. Lihat garis bilangan ikut pindah. Dua, geser bagian merah. Lihat bilangan itu terdiri dari dua bagian. Tiga, nyalakan Bandingkan. Atur dua bilangan, lalu lihat tanda lebih besar atau lebih kecil."
+            `Coba ini. ${coba
+              .map((t, i) => `${URUT_KATA[i]}, ${t.replace(/ \+ /g, " plus ").replace(/ – /g, " minus ").replace(">, <, atau =", "lebih besar, lebih kecil, atau sama dengan")}`)
+              .join(" ")}`
           )
         }
-        langkah={[
-          "Ketuk kotak ke-7 di bingkai sepuluh. Lihat garis bilangan ikut pindah.",
-          "Tekan + atau – pada Bagian merah. Bilangan itu terdiri dari dua bagian.",
-          "Nyalakan Bandingkan. Atur dua bilangan, lalu lihat tanda >, <, atau =.",
-        ]}
+        langkah={coba}
       />
     </div>
   );
