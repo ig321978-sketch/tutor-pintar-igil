@@ -12,6 +12,10 @@ import * as LU from "../src/components/modul/lab-urai-k2b3.ts";
 import * as LP from "../src/components/modul/lab-pola-k2b3.ts";
 import * as LR from "../src/components/modul/lab-ruang-k2b3.ts";
 import * as LT from "../src/components/modul/lab-cetak-k2b3.ts";
+import * as K2B4 from "../src/components/modul/misi-k2bab4.ts";
+import * as LPo from "../src/components/modul/lab-posisi-k2b4.ts";
+import * as LPe from "../src/components/modul/lab-petunjuk-k2b4.ts";
+import * as LPb from "../src/components/modul/lab-pabrik-k2b4.ts";
 
 let gagal = 0;
 let lulus = 0;
@@ -245,6 +249,113 @@ cek(L.AWAL_N !== 26 && L.AWAL_N !== 40 && L.AWAL_N !== 50 && L.AWAL_N !== 30 && 
   // Alat yang belum ada di sub-bab itu tidak dilibatkan: misi A hanya memakai lab bentuk dan mesin detektif.
   cek(K2B3.MISI_A.every((m) => !m.cek(Po({ n: 5 })) && !m.cek(Ur({ keping: 2, segitiga: 2 })) && !m.cek(Le({ meluncur: true })) && !m.cek(Ce({ dicetak: true }))), "k2bab3 A: misi hanya memakai alat Sub-Bab A");
   cek(K2B3.MISI_C.every((m) => !m.cek(Bt({ n: 5 })) && !m.cek(Po({ n: 5 })) && !m.cek(Ur({ keping: 2, segitiga: 2 }))), "k2bab3 C: misi hanya memakai alat Sub-Bab C");
+}
+
+/* ---------------- Kelas 2 Bab 4: posisi benda (A) dan pola (B) ---------------- */
+{
+  const kosong = new Set();
+  const SEL = (id) => ({ alat: "selesai", id });
+  // Keadaan dibangun dari lab yang sebenarnya, bukan ditulis tangan.
+  const Po = (o) => ({ alat: "posisi", acuan: LPo.AWAL_ACUAN, benda: LPo.AWAL_BENDA, kata: null, lawan: false, peta: false, anak: false, tabel: false, sudah: [], ...o });
+  const Pet = (papan, mode, target, daftar) => ({ alat: "petunjuk", papan, mode, target, petunjuk: daftar.length, sisa: LPe.kandidat(papan, mode, daftar).length });
+  const Pab = (atur, o = {}) => {
+    const a = LPb.rapikanPabrik(atur);
+    const st = LPb.statusPabrik(a.satuan, a.ulang);
+    return { alat: "pabrik", jenis: a.jenis, n: a.satuan.length, kodeSatuan: st.kodeSatuan, ulang: a.ulang, terpendek: st.terpendek, pola: st.pola, kode: true, tanda: false, lanjut: false, didengar: false, ...o };
+  };
+
+  const awalPosisi = Po({});
+  const awalPetunjuk = Pet("kamar", "mana", null, []);
+  const awalPabrik = Pab(LPb.awalPabrik());
+  sama(awalPetunjuk.sisa, 9, "k2bab4: awal petunjuk 9 benda cocok");
+
+  // Struktur untuk dua sub-bab, dengan keadaan awal tiap alat.
+  ujiStruktur("k2bab4", K2B4.daftarMisiK2Bab4, ["A", "B"], { A: awalPosisi, B: awalPabrik });
+  for (const sub of ["A", "B"]) {
+    for (const [nama, awal] of [["lab posisi", awalPosisi], ["lab petunjuk", awalPetunjuk], ["pabrik pola", awalPabrik]]) {
+      cek(M0.misiBaru(K2B4.daftarMisiK2Bab4(sub), awal, kosong).length === 0, `k2bab4 ${sub}: awal ${nama} tidak memenuhi misi`);
+    }
+  }
+  cek(K2B4.daftarMisiK2Bab4("A") === K2B4.MISI_A && K2B4.daftarMisiK2Bab4("B") === K2B4.MISI_B && K2B4.daftarMisiK2Bab4("Z") === K2B4.MISI_A, "k2bab4: daftar per sub-bab");
+  const ada = (sub, k, id) => M0.misiBaru(K2B4.daftarMisiK2Bab4(sub), k, kosong).includes(id);
+
+  // Alat awal sah menurut lab.
+  sama([awalPabrik.kodeSatuan, awalPabrik.n, awalPabrik.didengar, awalPabrik.lanjut], ["AB", 2, false, false], "k2bab4: awal pabrik netral");
+
+  // ---------------- Sub-Bab A: Lab Posisi ----------------
+  cek(ada("A", Po({ kata: "atas", lawan: true }), "a-atas") && !ada("A", Po({ kata: "atas" }), "a-atas") && !ada("A", Po({ kata: "bawah", lawan: true }), "a-atas"), "k2bab4 A: atas butuh Lawan");
+  cek(ada("A", Po({ kata: "depan", lawan: true }), "a-depan") && !ada("A", Po({ kata: "depan" }), "a-depan") && !ada("A", Po({ kata: "belakang", lawan: true }), "a-depan"), "k2bab4 A: depan butuh Lawan");
+  cek(ada("A", Po({ kata: "kanan", anak: true }), "a-kanan") && !ada("A", Po({ kata: "kanan" }), "a-kanan") && !ada("A", Po({ kata: "kiri", anak: true }), "a-kanan"), "k2bab4 A: kanan butuh Anak");
+  cek(ada("A", Po({ kata: "kiri", peta: true }), "a-peta") && !ada("A", Po({ kata: "kiri" }), "a-peta") && !ada("A", Po({ kata: "kanan", peta: true }), "a-peta"), "k2bab4 A: peta kotak, kiri");
+  cek(ada("A", Po({ kata: "atas", sudah: LPo.URUT_KATA }), "a-enam") && !ada("A", Po({ kata: "atas", sudah: LPo.URUT_KATA.slice(0, 5) }), "a-enam"), "k2bab4 A: enam kata dicoba");
+  cek(!ada("A", Po({ kata: "atas" }), "a-enam") && !ada("A", Po({}), "a-enam"), "k2bab4 A: satu kata bukan enam");
+  // Ganti benda dan acuan tidak mengubah misi (misi tentang kata posisi, bukan benda tertentu).
+  for (const acuan of LPo.URUT_ACUAN) for (const benda of LPo.URUT_BENDA) cek(ada("A", Po({ acuan, benda, kata: "atas", lawan: true }), "a-atas"), `k2bab4 A: atas lawan dengan ${benda} dan ${acuan}`);
+  cek(LPo.URUT_KATA.every((k) => !ada("A", Po({ kata: k }), "a-atas") && !ada("A", Po({ kata: k }), "a-depan") && !ada("A", Po({ kata: k }), "a-kanan") && !ada("A", Po({ kata: k }), "a-peta")), "k2bab4 A: tanpa pengatur tidak ada misi posisi tercapai");
+
+  // ---------------- Sub-Bab A: Lab Petunjuk Ganda ----------------
+  const satu = [{ kata: "atas", acuan: "boneka" }];
+  const duaJam = [{ kata: "atas", acuan: "boneka" }, { kata: "kiri", acuan: "buku" }];
+  cek(ada("A", Pet("kamar", "mana", "jam", satu), "a-satu") && Pet("kamar", "mana", "jam", satu).sisa === 3, "k2bab4 A: satu petunjuk menyisakan banyak benda");
+  cek(!ada("A", Pet("kamar", "mana", "jam", duaJam), "a-satu") && !ada("A", Pet("kamar", "mana", null, []), "a-satu") && !ada("A", Pet("kamar", "tepat", "kotak", [{ kata: "atas", acuan: "bola" }]), "a-satu"), "k2bab4 A: a-satu tidak tercapai oleh dua petunjuk, tanpa petunjuk, atau cara Tepat (sisa 1)");
+  cek(ada("A", Pet("kamar", "mana", "jam", duaJam), "a-dua") && Pet("kamar", "mana", "jam", duaJam).sisa === 1, "k2bab4 A: dua petunjuk menyisakan satu");
+  cek(!ada("A", Pet("kamar", "mana", "jam", satu), "a-dua"), "k2bab4 A: satu petunjuk belum cukup untuk a-dua");
+  cek(!ada("A", Pet("kamar", "tepat", "kotak", [{ kata: "atas", acuan: "bola" }, { kata: "kiri", acuan: "pensil" }]), "a-dua"), "k2bab4 A: a-dua butuh cara Di mana saja");
+  const tengah4 = [{ kata: "atas", acuan: "bola" }, { kata: "bawah", acuan: "buku" }, { kata: "kanan", acuan: "boneka" }, { kata: "kiri", acuan: "pensil" }];
+  cek(ada("A", Pet("kamar", "mana", "kotak", tengah4), "a-dua"), "k2bab4 A: empat petunjuk untuk benda tengah menyisakan satu");
+  cek(ada("A", Pet("kamar", "tepat", "kotak", [{ kata: "atas", acuan: "bola" }]), "a-tepat") && !ada("A", Pet("kamar", "mana", "kotak", [{ kata: "atas", acuan: "bola" }]), "a-tepat") && !ada("A", Pet("kamar", "tepat", "kotak", []), "a-tepat"), "k2bab4 A: cara Tepat satu petunjuk cukup");
+  const tamanJauh = [{ kata: "atas", acuan: "rumput" }, { kata: "kiri", acuan: "burung" }];
+  cek(ada("A", Pet("taman", "mana", "kupu", tamanJauh), "a-taman") && !ada("A", Pet("kamar", "mana", "jam", duaJam), "a-taman") && !ada("A", Pet("taman", "mana", "kupu", [tamanJauh[0]]), "a-taman"), "k2bab4 A: papan taman dengan dua petunjuk");
+
+  // Alat tidak saling mencampuri.
+  cek(K2B4.MISI_A.every((m) => !m.cek(awalPabrik) && !m.cek(Pab(LPb.awalPabrik(), { lanjut: true }))), "k2bab4 A: misi A tidak memakai Pabrik Pola");
+  cek(K2B4.MISI_B.every((m) => !m.cek(Po({ kata: "atas", lawan: true, anak: true, peta: true })) && !m.cek(Pet("kamar", "mana", "jam", duaJam))), "k2bab4 B: misi B tidak memakai alat Sub-Bab A");
+
+  // ---------------- Skenario dan mesin ----------------
+  cek(ada("A", SEL("sawah"), "a-sawah") && !ada("A", SEL("pesta-pola"), "a-sawah") && !ada("A", SEL("mesin-pola"), "a-sawah"), "k2bab4 A: skenario Panen di Sawah Paman");
+  cek(ada("B", SEL("pesta-pola"), "b-pesta") && !ada("B", SEL("sawah"), "b-pesta") && !ada("B", SEL("mesin-pola"), "b-pesta"), "k2bab4 B: skenario Pesta Pola");
+  cek(ada("B", SEL("mesin-pola"), "b-mesin") && !ada("B", SEL("pesta-pola"), "b-mesin") && !ada("B", SEL("sawah"), "b-mesin"), "k2bab4 B: mesin tiga pemeriksaan");
+
+  // ---------------- Sub-Bab B: Pabrik Pola ----------------
+  cek(ada("B", Pab({ jenis: "warna", satuan: ["merah", "merah", "biru"], ulang: 3 }), "b-aab") && ada("B", Pab({ jenis: "bentuk", satuan: ["segitiga", "segitiga", "persegi"], ulang: 5 }), "b-aab"), "k2bab4 B: A A B pada warna dan bentuk");
+  cek(!ada("B", Pab({ jenis: "warna", satuan: ["merah", "merah", "biru"], ulang: 2 }), "b-aab") && !ada("B", Pab({ jenis: "warna", satuan: ["merah", "biru", "merah"], ulang: 3 }), "b-aab") && !ada("B", Pab(LPb.awalPabrik()), "b-aab"), "k2bab4 B: A A B butuh ulang tiga kali dan kode yang tepat");
+  cek(ada("B", Pab({ jenis: "warna", satuan: ["merah", "merah"], ulang: 3 }), "b-bukan") && ada("B", Pab({ jenis: "bentuk", satuan: ["persegi", "persegi", "persegi"], ulang: 3 }), "b-bukan"), "k2bab4 B: unsur sama saja bukan pola");
+  cek(!ada("B", Pab({ jenis: "warna", satuan: ["merah"], ulang: 3 }), "b-bukan") && !ada("B", Pab(LPb.awalPabrik()), "b-bukan") && !ada("B", Pab({ jenis: "warna", satuan: ["merah", "merah", "biru"], ulang: 3 }), "b-bukan"), "k2bab4 B: satu unsur atau pola sungguhan bukan b-bukan");
+  cek(ada("B", Pab({ jenis: "warna", satuan: ["merah", "biru", "merah", "biru"], ulang: 2 }), "b-pendek") && ada("B", Pab({ jenis: "gerakan", satuan: ["berdiri", "tanganNaik", "berdiri", "tanganNaik"], ulang: 3 }), "b-pendek"), "k2bab4 B: satuan empat unsur, terpendek dua");
+  cek(!ada("B", Pab({ jenis: "warna", satuan: ["merah", "biru", "kuning", "merah"], ulang: 2 }), "b-pendek") && !ada("B", Pab({ jenis: "warna", satuan: ["merah", "merah", "biru", "biru"], ulang: 2 }), "b-pendek") && !ada("B", Pab(LPb.awalPabrik()), "b-pendek"), "k2bab4 B: terpendek dua butuh kode A B A B");
+  const suara = { jenis: "suara", satuan: ["keras", "pelan", "diam"], ulang: 3 };
+  cek(ada("B", Pab(suara, { didengar: true }), "b-suara") && !ada("B", Pab(suara), "b-suara") && !ada("B", Pab({ jenis: "warna", satuan: ["merah", "biru", "kuning"], ulang: 3 }, { didengar: true }), "b-suara") && !ada("B", Pab({ jenis: "suara", satuan: ["keras", "pelan"], ulang: 3 }, { didengar: true }), "b-suara"), "k2bab4 B: suara harus didengarkan, tiga unsur");
+  cek(ada("B", Pab({ jenis: "bentuk", satuan: ["lingkaran", "persegi", "segitiga"], ulang: 3 }), "b-bentuk") && !ada("B", Pab({ jenis: "warna", satuan: ["merah", "biru", "kuning"], ulang: 3 }), "b-bentuk") && !ada("B", Pab({ jenis: "bentuk", satuan: ["lingkaran", "persegi"], ulang: 3 }), "b-bentuk"), "k2bab4 B: tiga bentuk berbeda");
+  cek(ada("B", Pab(LPb.awalPabrik(), { lanjut: true }), "b-lanjut") && !ada("B", Pab(LPb.awalPabrik()), "b-lanjut") && !ada("B", Pab({ jenis: "warna", satuan: ["merah", "merah"], ulang: 3 }, { lanjut: true }), "b-lanjut"), "k2bab4 B: lanjutan hanya berarti pada pola");
+  cek(ada("B", Pab({ jenis: "gerakan", satuan: ["berdiri", "tanganNaik"], ulang: 3 }), "b-gerak") && !ada("B", Pab(LPb.awalPabrik()), "b-gerak") && !ada("B", Pab({ jenis: "gerakan", satuan: ["berdiri", "berdiri"], ulang: 3 }), "b-gerak"), "k2bab4 B: pola gerakan");
+
+  // Setiap misi wajib Sub-Bab B tercapai dari susunan yang memang bisa dibuat lab (palet dan batas).
+  for (const m of K2B4.MISI_B.filter((x) => x.wajib && !x.id.startsWith("b-mesin") && !x.id.startsWith("b-pesta"))) {
+    let bisa = false;
+    for (const j of LPb.URUT_JENIS) {
+      const palet = LPb.PALET[j];
+      const bangun = (n, dasar) => (n === 0 ? [dasar] : palet.flatMap((t) => bangun(n - 1, [...dasar, t])));
+      for (let n = 1; n <= 4; n += 1)
+        for (const satuan of bangun(n, []))
+          for (let u = LPb.MIN_ULANG; u <= LPb.maksUlang(n); u += 1) if (m.cek(Pab({ jenis: j, satuan, ulang: u }, { didengar: true }))) bisa = true;
+    }
+    cek(bisa, `k2bab4 B: misi ${m.id} bisa dicapai di lab`);
+  }
+  // Setiap misi wajib Sub-Bab A (petunjuk dan posisi) bisa dicapai dari lab sebenarnya.
+  {
+    let dua = false;
+    let satuOk = false;
+    for (const papan of LPe.URUT_PAPAN) {
+      const semuaQ = [];
+      for (const acuan of LPe.semuaNama(papan)) for (const kata of LPe.URUT_ARAH) semuaQ.push({ kata, acuan });
+      for (const target of LPe.semuaNama(papan)) {
+        const benar = semuaQ.filter((q) => LPe.kandidat(papan, "mana", [q]).includes(target));
+        for (const q of benar) if (M0.misiBaru(K2B4.MISI_A, Pet(papan, "mana", target, [q]), kosong).includes("a-satu")) satuOk = true;
+        for (const q1 of benar) for (const q2 of benar) if (q1 !== q2 && M0.misiBaru(K2B4.MISI_A, Pet(papan, "mana", target, [q1, q2]), kosong).includes("a-dua")) dua = true;
+      }
+    }
+    cek(satuOk && dua, "k2bab4 A: a-satu dan a-dua bisa dicapai di lab petunjuk");
+  }
 }
 
 console.log(gagal === 0 ? `SEMUA LULUS (${lulus} cek)` : `GAGAL ${gagal} dari ${lulus + gagal}`);

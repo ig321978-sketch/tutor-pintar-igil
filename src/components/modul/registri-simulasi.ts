@@ -18,6 +18,7 @@ import SimulasiBab8Materi, { misiAwalBab8 } from "@/components/modul/SimulasiBab
 import SimulasiK2Bab1Materi, { misiAwalK2Bab1 } from "@/components/modul/SimulasiK2Bab1";
 import SimulasiK2Bab2Materi, { misiAwalK2Bab2 } from "@/components/modul/SimulasiK2Bab2";
 import SimulasiK2Bab3Materi, { misiAwalK2Bab3 } from "@/components/modul/SimulasiK2Bab3";
+import SimulasiK2Bab4Materi, { misiAwalK2Bab4 } from "@/components/modul/SimulasiK2Bab4";
 import type { DataPeta } from "@/components/modul/peta-konsep-logika";
 import type { DataInfografis } from "@/components/modul/infografis-ringkas-logika";
 import ringkasK1B1 from "@/data/kelas1-bab1-ringkas.json";
@@ -31,6 +32,7 @@ import ringkasK1B8 from "@/data/kelas1-bab8-ringkas.json";
 import ringkasK2B1 from "@/data/kelas2-bab1-ringkas.json";
 import ringkasK2B2 from "@/data/kelas2-bab2-ringkas.json";
 import ringkasK2B3 from "@/data/kelas2-bab3-ringkas.json";
+import ringkasK2B4 from "@/data/kelas2-bab4-ringkas.json";
 
 /**
  * Kunci tahap Simulasi di dalam Materi. Pecahan (3,5) menyisip antara Infografis (3)
@@ -65,6 +67,7 @@ export const SIMULASI_MATERI: Partial<Record<string, ComponentType<SimulasiMater
   "mtk-2-bab1": SimulasiK2Bab1Materi,
   "mtk-2-bab2": SimulasiK2Bab2Materi,
   "mtk-2-bab3": SimulasiK2Bab3Materi,
+  "mtk-2-bab4": SimulasiK2Bab4Materi,
 };
 
 /** Ucapan misi simulasi pertama tiap sub-bab (digabung ke ucapan saat tahap Simulasi dibuka). */
@@ -80,6 +83,7 @@ export const SIMULASI_MISI_AWAL: Partial<Record<string, (sub: string) => string>
   "mtk-2-bab1": misiAwalK2Bab1,
   "mtk-2-bab2": misiAwalK2Bab2,
   "mtk-2-bab3": misiAwalK2Bab3,
+  "mtk-2-bab4": misiAwalK2Bab4,
 };
 
 /** Data Mind-Map + Infografis ringkas untuk bab SMISCPA. */
@@ -95,6 +99,7 @@ export const RINGKAS_BAB: Partial<Record<string, Record<string, RingkasSub>>> = 
   "mtk-2-bab1": ringkasK2B1.subBab as unknown as Record<string, RingkasSub>,
   "mtk-2-bab2": ringkasK2B2.subBab as unknown as Record<string, RingkasSub>,
   "mtk-2-bab3": ringkasK2B3.subBab as unknown as Record<string, RingkasSub>,
+  "mtk-2-bab4": ringkasK2B4.subBab as unknown as Record<string, RingkasSub>,
 };
 
 /** Bab yang masih memakai tab Simulasi terpisah (belum migrasi SMISCPA). */
