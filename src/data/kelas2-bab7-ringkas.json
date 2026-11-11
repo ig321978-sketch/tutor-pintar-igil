@@ -1,0 +1,314 @@
+{
+  "chapter_id": "mtk-2-bab7",
+  "phase_code": "FASE_A",
+  "grade": 2,
+  "subject": "Matematika",
+  "title": "Ayo Membilang sampai dengan 100",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Bilangan sampai 100",
+          "ikon": "💯",
+          "suara": "Ini peta bilangan sampai seratus. Bilangan besar tersusun dari puluhan dan satuan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "puluhan-seratus",
+            "judul": "Puluhan sampai seratus",
+            "ikon": "📦",
+            "ringkas": "Sepuluh satuan, satu puluhan.",
+            "suara": "Puluhan sampai seratus. Sepuluh satuan dikelompokkan menjadi satu puluhan. Satu bungkus berisi sepuluh kue cubit adalah satu puluhan. Kita menghitung puluhan dengan melompat sepuluh-sepuluh, dan sepuluh puluhan sama dengan seratus."
+          },
+          {
+            "id": "puluhan-satuan",
+            "judul": "Puluhan, satuan, dan nama",
+            "ikon": "🧺",
+            "ringkas": "Kiri puluhan, kanan satuan.",
+            "suara": "Puluhan, satuan, dan nama. Lima keranjang penuh dan tiga rambutan lepas adalah lima puluhan dan tiga satuan, yaitu lima puluh tiga. Angka di kiri adalah puluhan dan angka di kanan adalah satuan. Lima puluh tiga sama dengan lima puluh tambah tiga. Hati-hati, enam puluh dua tidak sama dengan dua puluh enam, karena angka yang berbeda tempat bernilai berbeda."
+          },
+          {
+            "id": "tabel-seratus",
+            "judul": "Tabel seratus",
+            "ikon": "🔢",
+            "ringkas": "Turun tambah sepuluh, kanan tambah satu.",
+            "suara": "Tabel seratus. Bilangan sampai seratus disusun dalam tabel sepuluh kolom. Turun satu baris berarti tambah sepuluh, dan naik satu baris berarti kurang sepuluh. Bilangan di sebelah kanan satu lebihnya, dan bilangan di sebelah kiri satu kurangnya. Bilangan sekolom berselisih sepuluh dan satuannya sama."
+          },
+          {
+            "id": "memperkirakan",
+            "judul": "Memperkirakan banyak",
+            "ikon": "🔭",
+            "ringkas": "Tebak, kelompokkan, lalu hitung.",
+            "suara": "Memperkirakan banyak. Sebelum menghitung, kita boleh menebak. Bayangkan satu kelompok berisi sepuluh, lalu tebak ada berapa kelompok. Setelah itu kita buktikan dengan mengelompokkan setiap sepuluh dan menghitung puluhan dan satuannya. Tebakan yang paling dekat adalah tebakan yang paling baik, dan menebak boleh keliru."
+          }
+        ],
+        "kartu": [
+          { "id": "a-bungkus", "teks": "Sepuluh kue cubit dalam satu bungkus", "ikon": "🧁", "cabang": "puluhan-seratus", "petunjuk": "Sepuluh dalam satu bungkus itu satu puluhan. Coba cabang lain." },
+          { "id": "a-seratus", "teks": "Sepuluh puluhan sama dengan seratus", "ikon": "💯", "cabang": "puluhan-seratus", "petunjuk": "Sepuluh puluhan menjadi seratus, itu puluhan sampai seratus. Coba cabang lain." },
+          { "id": "a-lima-tiga", "teks": "5 puluhan dan 3 satuan adalah 53", "ikon": "🧺", "cabang": "puluhan-satuan", "petunjuk": "Puluhan dan satuan membentuk bilangan. Coba cabang lain." },
+          { "id": "a-tertukar", "teks": "62 tidak sama dengan 26", "ikon": "🔄", "cabang": "puluhan-satuan", "petunjuk": "Angka yang tertukar tempat bernilai berbeda. Coba cabang lain." },
+          { "id": "a-turun", "teks": "Turun satu baris: tambah sepuluh", "ikon": "⬇️", "cabang": "tabel-seratus", "petunjuk": "Turun satu baris di tabel itu tabel seratus. Coba cabang lain." },
+          { "id": "a-sekolom", "teks": "Bilangan sekolom berselisih sepuluh", "ikon": "📏", "cabang": "tabel-seratus", "petunjuk": "Bilangan sekolom ada di tabel seratus. Coba cabang lain." },
+          { "id": "a-bayangkan", "teks": "Bayangkan satu kelompok sepuluh", "ikon": "💭", "cabang": "memperkirakan", "petunjuk": "Membayangkan kelompok sepuluh itu memperkirakan. Coba cabang lain." },
+          { "id": "a-dekat", "teks": "Tebakan paling dekat paling baik", "ikon": "🎯", "cabang": "memperkirakan", "petunjuk": "Tebakan yang dekat itu memperkirakan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengenal Bilangan sampai 100",
+        "suara": "Ini tiga panel tentang bilangan sampai seratus. Ketuk kotaknya untuk membuka, lalu bandingkan.",
+        "panel": [
+          {
+            "id": "a-puluhan",
+            "tipe": "buka",
+            "judul": "Dari satuan ke seratus",
+            "ide": "Sepuluh satuan, satu puluhan.",
+            "suara": "Ada tiga hal tentang puluhan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "bungkus",
+                "label": "Satu bungkus",
+                "ikon": "🧁",
+                "isi": "Sepuluh kue cubit sama dengan satu puluhan.",
+                "suara": "Pak Ahmad memasukkan sepuluh kue cubit ke dalam satu bungkus. Sepuluh satuan dikelompokkan menjadi satu puluhan. Banyak kuenya tidak berubah.",
+                "visual": { "jenis": "teks", "isi": "10 satuan = 1 puluhan" }
+              },
+              {
+                "id": "lompat",
+                "label": "Lompat puluhan",
+                "ikon": "🔟",
+                "isi": "Hitung sepuluh-sepuluh.",
+                "suara": "Kita menghitung puluhan dengan melompat sepuluh-sepuluh. Satu puluhan sepuluh, dua puluhan dua puluh, tiga puluhan tiga puluh, dan terus sampai sepuluh puluhan.",
+                "visual": { "jenis": "tabel-mendatar", "judul": "Puluhan dan bilangannya", "labelNama": "Puluhan", "labelBanyak": "Bilangan", "nama": ["1", "2", "3", "10"], "nilai": [10, 20, 30, 100] }
+              },
+              {
+                "id": "seratus",
+                "label": "Seratus",
+                "ikon": "💯",
+                "isi": "Sepuluh puluhan sama dengan seratus.",
+                "suara": "Sepuluh puluhan sama dengan seratus. Bilangan seratus dibaca seratus.",
+                "visual": { "jenis": "teks", "isi": "10 puluhan = 100" }
+              }
+            ]
+          },
+          {
+            "id": "a-nilai-tempat",
+            "tipe": "buka",
+            "judul": "Puluhan, satuan, dan nama",
+            "ide": "Kiri puluhan, kanan satuan.",
+            "suara": "Satu bilangan bisa dibaca dengan beberapa cara. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tempat",
+                "label": "Nilai tempat",
+                "ikon": "🧺",
+                "isi": "5 puluhan dan 3 satuan adalah 53.",
+                "suara": "Halim punya lima keranjang penuh dan tiga rambutan lepas. Itu lima puluhan dan tiga satuan. Angka lima di tempat puluhan dan angka tiga di tempat satuan, jadi bilangannya lima puluh tiga.",
+                "visual": { "jenis": "tabel-menurun", "judul": "Bilangan 53", "kepala": ["Tempat", "Banyak"], "baris": [["Puluhan", 5], ["Satuan", 3]] }
+              },
+              {
+                "id": "pasangan",
+                "label": "Pasangan bilangan",
+                "ikon": "🧩",
+                "isi": "53 sama dengan 50 tambah 3.",
+                "suara": "Bilangan lima puluh tiga dipecah menjadi lima puluh dan tiga. Bila kedua bagian digabung kembali, kita memperoleh lima puluh tiga.",
+                "visual": { "jenis": "teks", "isi": "53 = 50 + 3" }
+              },
+              {
+                "id": "nama",
+                "label": "Nama bilangan",
+                "ikon": "🔤",
+                "isi": "Sebut puluhannya, lalu satuannya.",
+                "suara": "Untuk membaca bilangan kita mulai dari puluhannya, lalu satuannya. Enam di puluhan dan dua di satuan dibaca enam puluh dua.",
+                "visual": { "jenis": "teks", "isi": "62 dibaca enam puluh dua" }
+              },
+              {
+                "id": "tertukar",
+                "label": "Jangan tertukar",
+                "ikon": "🔄",
+                "isi": "62 dan 26 bernilai berbeda.",
+                "suara": "Hati-hati dengan angka yang tertukar. Enam puluh dua punya enam puluhan, sedangkan dua puluh enam hanya punya dua puluhan. Angka yang berbeda tempat bernilai berbeda.",
+                "visual": { "jenis": "tabel-menurun", "judul": "Angka tertukar", "kepala": ["Bilangan", "Puluhan"], "baris": [["62", 6], ["26", 2]] }
+              }
+            ]
+          },
+          {
+            "id": "a-tebak",
+            "tipe": "banding",
+            "judul": "Tebakan yang dekat",
+            "ide": "Selisih kecil berarti lebih dekat.",
+            "suara": "Ada enam puluh dua ikan di akuarium. Bandingkan dua tebakan, lalu lihat selisihnya dari banyak ikan yang sebenarnya.",
+            "sisi": [
+              {
+                "id": "tebak-60",
+                "nama": "Tebakan 60",
+                "ikon": "🎯",
+                "catatan": "Selisihnya hanya 2.",
+                "suara": "Tebakan enam puluh. Banyak ikan sebenarnya enam puluh dua, jadi selisihnya hanya dua. Tebakan ini dekat.",
+                "visual": { "jenis": "teks", "isi": "62 dan 60 berselisih 2" }
+              },
+              {
+                "id": "tebak-80",
+                "nama": "Tebakan 80",
+                "ikon": "🎣",
+                "catatan": "Selisihnya 18, lebih jauh.",
+                "suara": "Tebakan delapan puluh. Selisihnya dari enam puluh dua adalah delapan belas, jadi tebakan ini lebih jauh.",
+                "visual": { "jenis": "teks", "isi": "80 dan 62 berselisih 18" }
+              }
+            ],
+            "kesimpulan": "Tebakan yang selisihnya lebih kecil lebih dekat. Menebak boleh keliru."
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Membandingkan",
+          "ikon": "⚖️",
+          "suara": "Ini peta membandingkan bilangan. Kita membandingkan bilangan dengan garis bilangan, puluhan, dan satuan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "garis-bilangan",
+            "judul": "Garis bilangan",
+            "ikon": "📏",
+            "ringkas": "Maju lebihnya, mundur kurangnya.",
+            "suara": "Garis bilangan. Bilangan di sebelah kanan lebih besar dan bilangan di sebelah kiri lebih kecil. Maju ke kanan mencari bilangan yang lebihnya, dan mundur ke kiri mencari bilangan yang kurangnya. Lima puluh delapan maju dua langkah menjadi enam puluh, dan tujuh puluh lima mundur tiga langkah menjadi tujuh puluh dua."
+          },
+          {
+            "id": "puluhan-dulu",
+            "judul": "Puluhan dulu",
+            "ikon": "🔟",
+            "ringkas": "Puluhan berbeda, puluhan menentukan.",
+            "suara": "Puluhan dulu. Untuk membandingkan dua bilangan, lihat banyak puluhannya lebih dulu. Lima puluh enam punya lima puluhan dan enam puluh lima punya enam puluhan, jadi enam puluh lima lebih besar. Bila puluhannya sama, barulah kita membandingkan satuannya. Bila puluhan dan satuannya sama, kedua bilangan sama besar."
+          },
+          {
+            "id": "kata-tanda",
+            "judul": "Kata dan tanda",
+            "ikon": "🐊",
+            "ringkas": "Tanda terbuka ke bilangan lebih besar.",
+            "suara": "Kata dan tanda. Ada tiga kata perbandingan, yaitu lebih besar dari, lebih kecil dari, dan sama dengan. Tanda lebih besar dan lebih kecil selalu terbuka ke arah bilangan yang lebih besar."
+          },
+          {
+            "id": "mengurutkan",
+            "judul": "Mengurutkan",
+            "ikon": "📶",
+            "ringkas": "Bandingkan puluhannya, lalu susun.",
+            "suara": "Mengurutkan. Untuk mengurutkan tiga bilangan atau lebih, bandingkan puluhannya. Bilangan dengan puluhan paling banyak adalah yang paling besar, dan bilangan dengan puluhan paling sedikit adalah yang paling kecil. Dari yang paling kecil, lima puluh tujuh, tujuh puluh enam, lalu delapan puluh tiga."
+          }
+        ],
+        "kartu": [
+          { "id": "b-maju", "teks": "Maju ke kanan: lebihnya", "ikon": "➡️", "cabang": "garis-bilangan", "petunjuk": "Maju ke kanan itu garis bilangan. Coba cabang lain." },
+          { "id": "b-mundur", "teks": "Mundur ke kiri: kurangnya", "ikon": "⬅️", "cabang": "garis-bilangan", "petunjuk": "Mundur ke kiri itu garis bilangan. Coba cabang lain." },
+          { "id": "b-puluhan", "teks": "56 dan 65: lihat puluhan", "ikon": "🔟", "cabang": "puluhan-dulu", "petunjuk": "Melihat puluhan lebih dulu itu puluhan dulu. Coba cabang lain." },
+          { "id": "b-satuan", "teks": "Puluhan sama: lihat satuan", "ikon": "🔍", "cabang": "puluhan-dulu", "petunjuk": "Puluhan sama lalu satuan itu puluhan dulu. Coba cabang lain." },
+          { "id": "b-tanda", "teks": "Tanda terbuka ke yang besar", "ikon": "🐊", "cabang": "kata-tanda", "petunjuk": "Arah buka tanda itu kata dan tanda. Coba cabang lain." },
+          { "id": "b-kata", "teks": "Lebih besar dari, lebih kecil dari", "ikon": "🔤", "cabang": "kata-tanda", "petunjuk": "Kata perbandingan itu kata dan tanda. Coba cabang lain." },
+          { "id": "b-kecil", "teks": "57, 76, 83: paling kecil dulu", "ikon": "📶", "cabang": "mengurutkan", "petunjuk": "Menyusun dari yang paling kecil itu mengurutkan. Coba cabang lain." },
+          { "id": "b-paling", "teks": "Puluhan terbanyak: paling besar", "ikon": "🏆", "cabang": "mengurutkan", "petunjuk": "Mencari yang paling besar itu mengurutkan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengenal Membandingkan Bilangan",
+        "suara": "Ini tiga panel tentang membandingkan bilangan. Ketuk kotaknya untuk membuka, lalu bandingkan.",
+        "panel": [
+          {
+            "id": "b-garis",
+            "tipe": "buka",
+            "judul": "Maju dan mundur",
+            "ide": "Kanan lebih besar, kiri lebih kecil.",
+            "suara": "Garis bilangan membantu kita maju dan mundur. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "garis",
+                "label": "Garis bilangan",
+                "ikon": "📏",
+                "isi": "Kanan lebih besar, kiri lebih kecil.",
+                "suara": "Pada garis bilangan, bilangan di sebelah kanan lebih besar dan bilangan di sebelah kiri lebih kecil. Kupu-kupu di antara lima puluh tujuh dan lima puluh sembilan berada di lima puluh delapan.",
+                "visual": { "jenis": "teks", "isi": "57, 58, 59: 58 di antara 57 dan 59" }
+              },
+              {
+                "id": "maju",
+                "label": "Maju",
+                "ikon": "➡️",
+                "isi": "58 maju 2 langkah menjadi 60.",
+                "suara": "Maju berarti bergerak ke kanan, mencari bilangan yang lebihnya. Kupu-kupu di lima puluh delapan maju dua langkah, lalu sampai di enam puluh. Dua lebihnya dari lima puluh delapan adalah enam puluh.",
+                "visual": { "jenis": "teks", "isi": "58 → 59 → 60, maju 2" }
+              },
+              {
+                "id": "mundur",
+                "label": "Mundur",
+                "ikon": "⬅️",
+                "isi": "75 mundur 3 langkah menjadi 72.",
+                "suara": "Mundur berarti bergerak ke kiri, mencari bilangan yang kurangnya. Capung di tujuh puluh lima mundur tiga langkah, lalu sampai di tujuh puluh dua. Tiga kurangnya dari tujuh puluh lima adalah tujuh puluh dua.",
+                "visual": { "jenis": "teks", "isi": "75 → 74 → 73 → 72, mundur 3" }
+              }
+            ]
+          },
+          {
+            "id": "b-puluhan-satuan",
+            "tipe": "banding",
+            "judul": "Puluhan dulu, lalu satuan",
+            "ide": "Satuan dilihat bila puluhan sama.",
+            "suara": "Ada dua cara membandingkan, tergantung puluhannya. Bandingkan kedua pasangan bilangan ini.",
+            "sisi": [
+              {
+                "id": "beda-puluhan",
+                "nama": "56 dan 65",
+                "ikon": "🔟",
+                "catatan": "Puluhan berbeda: 5 dan 6.",
+                "suara": "Lima puluh enam dan enam puluh lima. Puluhannya berbeda, lima dan enam. Enam puluhan lebih banyak, jadi enam puluh lima lebih besar. Puluhanlah yang menentukan.",
+                "visual": { "jenis": "teks", "isi": "56 < 65, karena 5 puluhan < 6 puluhan" }
+              },
+              {
+                "id": "sama-puluhan",
+                "nama": "54 dan 58",
+                "ikon": "🔍",
+                "catatan": "Puluhan sama, satuan menentukan.",
+                "suara": "Lima puluh empat dan lima puluh delapan sama-sama punya lima puluhan. Maka kita lihat satuannya. Delapan lebih banyak dari empat, jadi lima puluh delapan lebih besar.",
+                "visual": { "jenis": "teks", "isi": "54 < 58, karena 4 satuan < 8 satuan" }
+              }
+            ],
+            "kesimpulan": "Lihat puluhan dulu. Satuan hanya dilihat bila puluhan sama."
+          },
+          {
+            "id": "b-kata-urut",
+            "tipe": "buka",
+            "judul": "Kata, tanda, dan urutan",
+            "ide": "Tulis perbandingan, lalu susun.",
+            "suara": "Setelah membandingkan, kita menuliskannya dan menyusunnya. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "kata",
+                "label": "Tiga kata",
+                "ikon": "🔤",
+                "isi": "Lebih besar dari, lebih kecil dari, sama dengan.",
+                "suara": "Tiga kata perbandingan adalah lebih besar dari, lebih kecil dari, dan sama dengan. Enam puluh lima lebih besar dari lima puluh enam.",
+                "visual": { "jenis": "teks", "isi": "65 lebih besar dari 56" }
+              },
+              {
+                "id": "tanda",
+                "label": "Tiga tanda",
+                "ikon": "🐊",
+                "isi": "Tanda terbuka ke bilangan yang lebih besar.",
+                "suara": "Tanda lebih besar, lebih kecil, dan sama dengan menuliskan kata itu dengan singkat. Tanda lebih besar dan lebih kecil selalu terbuka ke arah bilangan yang lebih besar.",
+                "visual": { "jenis": "teks", "isi": "65 > 56    56 < 65    44 = 44" }
+              },
+              {
+                "id": "urut",
+                "label": "Mengurutkan",
+                "ikon": "📶",
+                "isi": "Dari paling kecil: 57, 76, 83.",
+                "suara": "Untuk mengurutkan, bandingkan puluhannya. Dari yang paling kecil, urutannya lima puluh tujuh, tujuh puluh enam, lalu delapan puluh tiga.",
+                "visual": { "jenis": "tabel-mendatar", "judul": "Urutan dari yang paling kecil", "labelNama": "Urutan", "labelBanyak": "Bilangan", "nama": ["Paling kecil", "Tengah", "Paling besar"], "nilai": [57, 76, 83] }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
