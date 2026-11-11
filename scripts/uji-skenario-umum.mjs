@@ -1,7 +1,8 @@
-// Uji mesin skenario umum dan semua skenario Kelas 1 (Bab 1, 2, 3, 4, 6, 7).
+// Uji mesin skenario umum: Kelas 1 (Bab 1, 2, 3, 4, 6, 7) dan Kelas 2 Bab 1.
 // Jalankan: node --no-warnings scripts/uji-skenario-umum.mjs
 import { awalSk, adeganSk, langkahSk, opsiHitung, semuaKetuk, ceritaSk } from "../src/components/modul/skenario-umum.ts";
 import { SKENARIO_BAB1, SKENARIO_BAB2, SKENARIO_BAB3, SKENARIO_BAB4, SKENARIO_BAB6, SKENARIO_BAB7 } from "../src/components/modul/skenario-kelas1.ts";
+import { SKENARIO_K2B1 } from "../src/components/modul/skenario-k2b1.ts";
 
 let gagal = 0;
 let lulus = 0;
@@ -20,6 +21,7 @@ const SEMUA = [
   ["Bab 4", SKENARIO_BAB4, 10],
   ["Bab 6", SKENARIO_BAB6, 20],
   ["Bab 7", SKENARIO_BAB7, 20],
+  ["K2 Bab 1", SKENARIO_K2B1, 50],
 ];
 
 const OBJEK_SAH = new Set(["pesawat", "mobil", "boneka", "bola", "gasing", "bola-merah", "bola-kuning", "bola-hijau", "bola-biru", "kelereng-merah", "kelereng-kuning", "kelereng-hijau", "kelereng-biru", "jagung", "wortel", "brokoli", "kol", "jeruk", "apel", "mangga", "belimbing", "ayam", "bebek", "kelinci", "karet", "stik"]);
