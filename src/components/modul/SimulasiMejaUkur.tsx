@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
-import { Cek, CobaIni, KARTU, Pilihan } from "./simulasi-bersama";
+import { Cek, CobaIni, KARTU, Pilihan, TOMBOL_BIASA } from "./simulasi-bersama";
 import { Pengatur } from "./komponen-lab";
-import { MAKS_SATUAN, PANJANG_BENDA, SATUAN, hasilBenar, satuanDari, susun, tabelHasil, ucapanUkur, type IdSatuan, type Susunan } from "./lab-ukur-bab7";
+import { MAKS_SATUAN, PANJANG_BENDA, SATUAN, hasilBenar, kalimatTebak, satuanDari, susun, tabelHasil, ucapanUkur, type IdSatuan, type Susunan } from "./lab-ukur-bab7";
 
 /* ------------------------------------------------------------------------ */
 /* Simulasi 1 (Bab 7): Meja Ukur, metode laboratorium virtual 2D.             */
@@ -15,8 +15,12 @@ import { MAKS_SATUAN, PANJANG_BENDA, SATUAN, hasilBenar, satuanDari, susun, tabe
 const SKALA = 24;
 const X0 = 26;
 
+const AWAL: Susunan = { id: "stik", n: 0, dariTengah: false, celah: false, tumpuk: false, campur: false };
+const TEBAKAN_AWAL = 3;
+
 export default function SimulasiMejaUkur({ speakGuru }: { speakGuru: (t: string) => void }) {
-  const [s, setS] = useState<Susunan>({ id: "stik", n: 0, dariTengah: false, celah: false, tumpuk: false });
+  const [s, setS] = useState<Susunan>(AWAL);
+  const [tebak, setTebak] = useState(TEBAKAN_AWAL);
   const sat = satuanDari(s.id);
   const h = susun(s);
   const gaya =
@@ -31,9 +35,9 @@ export default function SimulasiMejaUkur({ speakGuru }: { speakGuru: (t: string)
       <div className="flex items-start justify-between gap-2">
         <div>
           <h3 className="text-lg font-black text-[#1C01A5]">Meja Ukur</h3>
-          <p className="text-sm font-bold text-[#1C01A5]/80">Ukur pita dengan satuan. Coba juga cara yang salah, lalu lihat akibatnya.</p>
+          <p className="text-sm font-bold text-[#1C01A5]/80">Tebak dulu, lalu ukur pita dengan satuan. Coba juga cara yang salah, lalu lihat akibatnya.</p>
         </div>
-        <TombolSuaraGuru label="Dengarkan hasil ukur ini" onClick={() => speakGuru(ucapanUkur(s))} />
+        <TombolSuaraGuru label="Dengarkan hasil ukur ini" onClick={() => speakGuru(ucapanUkur(s, tebak))} />
       </div>
 
       <div className={`${KARTU} space-y-2`}>
@@ -44,6 +48,17 @@ export default function SimulasiMejaUkur({ speakGuru }: { speakGuru: (t: string)
             </Pilihan>
           ))}
         </div>
+        <Pengatur
+          nama={`Tebakanmu (${sat.nama.toLowerCase()})`}
+          nilai={tebak}
+          warna="#DBEAFE"
+          onKurang={() => setTebak(Math.max(1, tebak - 1))}
+          onTambah={() => setTebak(Math.min(MAKS_SATUAN, tebak + 1))}
+          kurangMati={tebak <= 1}
+          tambahMati={tebak >= MAKS_SATUAN}
+          kurangLabel="Kurangi tebakan"
+          tambahLabel="Tambah tebakan"
+        />
         <svg viewBox="0 0 340 150" className="mx-auto block w-full max-w-[420px] rounded-2xl bg-[#FDE9C4]" role="img" aria-label={`Pita sepanjang ${PANJANG_BENDA} ruas diukur dengan ${s.n} ${sat.nama.toLowerCase()}`}>
           <text x={X0} y="14" fontSize="12" fontWeight="900" fill="#1C01A5">
             Pita
@@ -56,7 +71,7 @@ export default function SimulasiMejaUkur({ speakGuru }: { speakGuru: (t: string)
           <line x1={X0 + PANJANG_BENDA * SKALA} y1="12" x2={X0 + PANJANG_BENDA * SKALA} y2="136" stroke="#7C3AED" strokeWidth="2" strokeDasharray="4 3" />
           {h.kotak.map((k, i) => (
             <g key={i} className="igil-muncul">
-              <rect x={X0 + k.x * SKALA} y={64 + k.baris * 12} width={k.lebar * SKALA} height="26" rx="5" fill={sat.warna} stroke="#1C01A5" strokeWidth="2.5" />
+              <rect x={X0 + k.x * SKALA} y={64 + k.baris * 12} width={k.lebar * SKALA} height="26" rx="5" fill={satuanDari(k.id).warna} stroke="#1C01A5" strokeWidth="2.5" />
               <text x={X0 + (k.x + k.lebar / 2) * SKALA} y={82 + k.baris * 12} textAnchor="middle" fontSize="13" fontWeight="900" fill="#1C01A5">
                 {i + 1}
               </text>
@@ -86,6 +101,19 @@ export default function SimulasiMejaUkur({ speakGuru }: { speakGuru: (t: string)
           <Cek aktif={s.tumpuk} onKlik={() => setS({ ...s, tumpuk: !s.tumpuk })}>
             Tumpuk satuan
           </Cek>
+          <Cek aktif={!!s.campur} onKlik={() => setS({ ...s, campur: !s.campur })}>
+            Campur alat ukur
+          </Cek>
+          <button
+            type="button"
+            className={TOMBOL_BIASA}
+            onClick={() => {
+              setS(AWAL);
+              setTebak(TEBAKAN_AWAL);
+            }}
+          >
+            ↺ Reset semua
+          </button>
         </div>
         <p role="status" className={`rounded-2xl border-4 px-3 py-1.5 text-center text-sm font-black ${gaya}`}>
           {h.status === "tepat" ? "✅ " : h.status === "salah-cara" ? "⛔ " : "📏 "}
@@ -94,6 +122,11 @@ export default function SimulasiMejaUkur({ speakGuru }: { speakGuru: (t: string)
         <p className="text-center text-base font-black text-[#1C01A5]" aria-live="polite">
           Bacaan: {s.n} {sat.nama.toLowerCase()}
         </p>
+        {h.status === "tepat" ? (
+          <p className="rounded-2xl bg-[#DBEAFE] px-3 py-1.5 text-center text-sm font-black text-[#1E3A8A]" aria-live="polite">
+            {kalimatTebak(tebak, s.n, sat.nama)}
+          </p>
+        ) : null}
       </div>
 
       <div className={`${KARTU} space-y-2`}>
@@ -116,12 +149,12 @@ export default function SimulasiMejaUkur({ speakGuru }: { speakGuru: (t: string)
         judul="Coba ini!"
         onDengar={() =>
           speakGuru(
-            "Coba ini. Satu, letakkan stik satu per satu sampai pas di ujung pita. Dua, nyalakan beri celah. Apakah hasilnya masih benar? Tiga, ganti satuan menjadi klip kecil. Berapa banyak klip yang dibutuhkan, lebih banyak atau lebih sedikit dari stik?"
+            "Coba ini. Satu, tebak dulu berapa stik panjang pita, lalu letakkan stik satu per satu sampai pas di ujung pita. Berapa selisih tebakan dan hasilnya? Dua, nyalakan beri celah atau campur alat ukur. Apakah hasilnya masih benar? Tiga, ganti satuan menjadi klip kecil. Berapa banyak klip yang dibutuhkan, lebih banyak atau lebih sedikit dari stik?"
           )
         }
         langkah={[
-          "Letakkan stik satu per satu sampai pas di ujung pita.",
-          "Nyalakan Beri celah. Apakah hasilnya masih benar?",
+          "Tebak dulu, lalu letakkan stik satu per satu sampai pas di ujung pita. Berapa selisih tebakan dan hasilnya?",
+          "Nyalakan Beri celah atau Campur alat ukur. Apakah hasilnya masih benar?",
           "Ganti satuan menjadi klip kecil. Lebih banyak atau lebih sedikit dari stik?",
         ]}
       />

@@ -28,9 +28,12 @@ export const GESER_TENGAH = 3;
 export const CELAH = 1;
 export const TUMPUK = 1;
 
-export type Susunan = { id: IdSatuan; n: number; dariTengah: boolean; celah: boolean; tumpuk: boolean };
+export type Susunan = { id: IdSatuan; n: number; dariTengah: boolean; celah: boolean; tumpuk: boolean; campur?: boolean };
 
-export type Kotak = { x: number; lebar: number; baris: 0 | 1 };
+export type Kotak = { x: number; lebar: number; baris: 0 | 1; id: IdSatuan };
+
+/** Alat ukur kedua yang dicampurkan: satuan berikutnya dalam daftar. */
+export const satuanLain = (id: IdSatuan): Satuan => SATUAN[(SATUAN.findIndex((s) => s.id === id) + 1) % SATUAN.length];
 
 export type StatusUkur = "tepat" | "kurang" | "lebih" | "salah-cara";
 
@@ -43,16 +46,21 @@ export type HasilUkur = {
 };
 
 export function susun(s: Susunan): HasilUkur {
-  const u = satuanDari(s.id).panjang;
   const awal = s.dariTengah ? GESER_TENGAH : 0;
-  const langkah = u + (s.celah ? CELAH : 0) - (s.tumpuk ? TUMPUK : 0);
   const n = Math.max(0, Math.min(MAKS_SATUAN, s.n));
-  const kotak: Kotak[] = Array.from({ length: n }, (_, i) => ({ x: awal + i * langkah, lebar: u, baris: (s.tumpuk ? i % 2 : 0) as 0 | 1 }));
-  const akhir = n === 0 ? awal : kotak[n - 1].x + u;
+  const kotak: Kotak[] = [];
+  let x = awal;
+  for (let i = 0; i < n; i += 1) {
+    const sat = s.campur && i % 2 === 1 ? satuanLain(s.id) : satuanDari(s.id);
+    kotak.push({ x, lebar: sat.panjang, baris: (s.tumpuk ? i % 2 : 0) as 0 | 1, id: sat.id });
+    x += sat.panjang + (s.celah ? CELAH : 0) - (s.tumpuk ? TUMPUK : 0);
+  }
+  const akhir = n === 0 ? awal : kotak[n - 1].x + kotak[n - 1].lebar;
   const masalah: string[] = [];
   if (s.dariTengah) masalah.push("Satuan dimulai dari tengah, bukan dari ujung benda.");
   if (s.celah) masalah.push("Ada celah di antara satuan. Satuan harus rapat.");
   if (s.tumpuk) masalah.push("Satuan bertumpuk. Satuan harus berderet, tidak menumpuk.");
+  if (s.campur && n >= 2) masalah.push("Alat ukurnya dicampur. Pakai satu jenis alat ukur dari awal sampai akhir.");
   let status: StatusUkur;
   let pesan: string;
   if (masalah.length > 0) {
@@ -76,9 +84,20 @@ export function tabelHasil(): { id: IdSatuan; nama: string; n: number }[] {
   return SATUAN.map((s) => ({ id: s.id, nama: s.nama, n: hasilBenar(s.id) }));
 }
 
-export function ucapanUkur(s: Susunan): string {
+/** Tebakan dibandingkan dengan hasil ukur: selisih dicari dengan mengurangkan yang besar dengan yang kecil. */
+export function kalimatTebak(tebak: number, hasil: number, namaSatuan: string): string {
+  const nama = namaSatuan.toLowerCase();
+  if (tebak === hasil) return `Tebakanmu ${tebak} ${nama}, hasil ukurnya ${hasil} ${nama}. Tebakanmu tepat!`;
+  const [besar, kecil] = tebak > hasil ? [tebak, hasil] : [hasil, tebak];
+  return `Tebakanmu ${tebak} ${nama}, hasil ukurnya ${hasil} ${nama}. Selisihnya ${besar} − ${kecil} = ${besar - kecil}.`;
+}
+
+export function ucapanUkur(s: Susunan, tebak?: number): string {
   const h = susun(s);
   const nama = satuanDari(s.id).nama.toLowerCase();
-  if (h.status === "tepat") return `Pita diukur dengan ${s.n} ${nama}. Panjang pita ${s.n} ${nama}. Satuan lain memberi bilangan lain, karena ukurannya berbeda.`;
+  if (h.status === "tepat") {
+    const dasar = `Pita diukur dengan ${s.n} ${nama}. Panjang pita ${s.n} ${nama}. Satuan lain memberi bilangan lain, karena ukurannya berbeda.`;
+    return tebak === undefined ? dasar : `${dasar} ${kalimatTebak(tebak, s.n, nama)}`;
+  }
   return h.pesan;
 }

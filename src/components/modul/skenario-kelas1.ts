@@ -318,7 +318,7 @@ export const SKENARIO_BAB7: DefSkenario = {
   id: "pita-kado",
   judul: "Pita untuk Kado",
   latar: "Bantu Kak Dewi mengukur dan memilih pita untuk kado.",
-  tokoh: "🧑‍🎨",
+  tokoh: "🎁",
   nama: "Kak Dewi",
   adegan: [
     {

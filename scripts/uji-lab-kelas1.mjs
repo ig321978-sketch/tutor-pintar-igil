@@ -19,6 +19,7 @@ import * as E6 from "../src/components/modul/lab-belasan-bab6.ts";
 import * as J6 from "../src/components/modul/mesin-jembatan-bab6.ts";
 import * as U7 from "../src/components/modul/lab-ukur-bab7.ts";
 import * as D7 from "../src/components/modul/lab-banding-panjang-bab7.ts";
+import * as Q7 from "../src/components/modul/lab-posisi-bab7.ts";
 let gagal = 0;
 let lulus = 0;
 const cek = (kondisi, pesan) => {
@@ -974,5 +975,105 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   sama(E6.rapikanBelasan({ a: 10, b: 2 }, "kurang"), { a: 11, b: 1 }, "10 kurang dijepit jadi 11 − 1");
   sama(E6.hasilBelasan({ a: 16, b: 6 }, "kurang"), 10, "satuan habis: 16 − 6 = 10");
   sama(E6.tabelBelasan({ a: 16, b: 6 }, "kurang")[1], { nama: "10", puluhan: 1, satuan: 0 }, "satuan habis di tabel");
+}{
+  // Bab 7 Sub-Bab A: banding tanpa angka (hanya mata), pensil, dan dua benda.
+  const A = { benda: "pita", satuan: "stik", angka: false };
+  const P = { benda: "pensil", satuan: "kotak", angka: true };
+  for (let i = 0; i < 4; i += 1) {
+    for (let j = 0; j < 4; j += 1) {
+      const pj = [5, 8, 3, 6];
+      const k = D7.bandingDua(pj, i, j, A);
+      if (i === j) {
+        if (!/dirinya sendiri/.test(k) || !/Pilih pita lain/.test(k)) cek(false, `tanpa angka diri sendiri ${i}`);
+      } else {
+        if (/\d/.test(k)) cek(false, `tanpa angka tidak boleh memuat angka: ${k}`);
+        if (/stik/.test(k)) cek(false, `tanpa angka tidak boleh memuat satuan: ${k}`);
+        const lebihI = pj[i] > pj[j];
+        const lebih = D7.PITA[lebihI ? i : j].nama;
+        const kurang = D7.PITA[lebihI ? j : i].nama;
+        if (!k.includes(`Pita ${lebih} lebih panjang dari pita ${kurang}`) || !k.includes(`Pita ${kurang} lebih pendek dari pita ${lebih}`)) cek(false, `tanpa angka kalimat ${i},${j}: ${k}`);
+        const kp = D7.bandingDua(pj, i, j, P);
+        if (!kp.includes(`Pensil ${lebih} lebih panjang ${Math.abs(pj[i] - pj[j])} kotak dari pensil ${kurang}`)) cek(false, `pensil kotak ${i},${j}: ${kp}`);
+      }
+    }
+  }
+  cek(true, "kalimat banding tanpa angka dan pensil kotak untuk semua pasangan");
+  sama(D7.bandingDua([5, 5, 3, 6], 0, 1, A), "Pita Merah dan pita Biru sama panjang.", "sama panjang tanpa angka");
+  sama(D7.bandingDua([5, 5, 3, 6], 0, 1, P), "Pensil Merah dan pensil Biru sama panjang, masing-masing 5 kotak.", "sama panjang pensil kotak");
+  sama(D7.kalimatPaling([5, 8, 3, 6], A), "Terpanjang: pita Biru. Terpendek: pita Hijau.", "paling tanpa angka");
+  sama(D7.kalimatPaling([5, 8, 3, 6]), "Terpanjang: pita Biru (8 stik). Terpendek: pita Hijau (3 stik).", "paling bawaan berangka");
+  sama(D7.kalimatPaling([8, 8, 3, 3], A), "Terpanjang: pita Merah dan Biru. Terpendek: pita Hijau dan Kuning.", "paling kembar");
+  sama(D7.kalimatPaling([9, 9, 3, 6], P), "Terpanjang: pensil Merah dan Biru (9 kotak). Terpendek: pensil Hijau (3 kotak).", "paling pensil kotak");
+  cek(!/\d/.test(D7.ucapanBanding([5, 8, 3, 6], true, false, A)) && /belum sejajar/.test(D7.ucapanBanding([5, 8, 3, 6], true, false, A)) && /Pensil/.test(D7.ucapanBanding([5, 8, 3, 6], false, true, { ...A, benda: "pensil" })), "ucapan banding tanpa angka");
+  cek(/Ketuk kedua pita/.test(D7.ucapanDua([5, 8], true, [], A)) && !/belum sejajar/.test(D7.ucapanDua([5, 8], true, [], A)) && /belum sejajar/.test(D7.ucapanDua([5, 8], false, [0, 1], A)) && /Pita Biru lebih panjang dari pita Merah/.test(D7.ucapanDua([5, 8], true, [0, 1], A)), "ucapan dua pita");
+  sama(D7.GAYA_BAWAAN, { benda: "pita", satuan: "stik", angka: true }, "gaya bawaan berangka");
+  // dua pita: geseran tidak sejajar ada untuk dua yang pertama dan muat
+  cek(D7.GESER_TAK_SEJAJAR.slice(0, 2).some((g) => g > 0), "dua pita pertama tidak sejajar di awal");
+}
+
+{
+  // Bab 7 Sub-Bab A: tinggi dan rendah (posisi kupu-kupu).
+  sama(Q7.KUPU.length, 3, "tiga kupu-kupu");
+  sama(Q7.TINGGI_AWAL, [3, 6, 9], "awal mengikuti cerita buku");
+  sama(Q7.ubahTinggi([3, 6, 9], 0, 1), [4, 6, 9], "naikkan kuning");
+  sama(Q7.ubahTinggi([1, 6, 9], 0, -1), [1, 6, 9], "tinggi minimal 1");
+  sama(Q7.ubahTinggi([3, 6, 10], 2, 1), [3, 6, 10], "tinggi maksimal 10");
+  sama(Q7.ubahTinggi([3, 6, 9], 7, 1), [3, 6, 9], "indeks di luar daftar diabaikan");
+  sama(Q7.tertinggi([3, 6, 9]), [2], "tertinggi");
+  sama(Q7.terendah([3, 6, 9]), [0], "terendah");
+  sama(Q7.tertinggi([9, 6, 9]), [0, 2], "tertinggi kembar");
+  sama(Q7.terendah([3, 3, 9]), [0, 1], "terendah kembar");
+  sama(Q7.kalimatPalingPosisi([3, 6, 9]), "Paling tinggi: kupu-kupu hijau. Paling rendah: kupu-kupu kuning.", "kalimat paling awal");
+  sama(Q7.kalimatPalingPosisi([9, 6, 9]), "Paling tinggi: kupu-kupu kuning dan kupu-kupu hijau. Paling rendah: kupu-kupu merah.", "kalimat paling kembar");
+  sama(Q7.kalimatPalingPosisi([5, 5, 5]), "Ketiga kupu-kupu sama tinggi.", "ketiganya sama tinggi");
+  for (let i = 0; i < 3; i += 1) {
+    for (let j = 0; j < 3; j += 1) {
+      const t = [3, 6, 9];
+      const k = Q7.bandingPosisi(t, i, j);
+      if (i === j) {
+        if (!/dirinya sendiri/.test(k)) cek(false, `posisi diri sendiri ${i}`);
+      } else {
+        const atas = Q7.KUPU[t[i] > t[j] ? i : j].nama;
+        const bawah = Q7.KUPU[t[i] > t[j] ? j : i].nama;
+        if (!k.includes(`Kupu-kupu ${atas} terbang lebih tinggi dari kupu-kupu ${bawah}`) || !k.includes(`Kupu-kupu ${bawah} terbang lebih rendah dari kupu-kupu ${atas}`)) cek(false, `posisi ${i},${j}: ${k}`);
+        if (/\d/.test(k)) cek(false, `posisi tanpa angka ${i},${j}`);
+      }
+    }
+  }
+  cek(true, "banding posisi semua pasangan konsisten");
+  cek(/sama tinggi/.test(Q7.bandingPosisi([5, 5, 9], 0, 1)), "dua kupu-kupu sama tinggi");
+  sama(Q7.pilihKupu([], 1), [1], "pilih kupu pertama");
+  sama(Q7.pilihKupu([1], 2), [1, 2], "pilih kupu kedua");
+  sama(Q7.pilihKupu([1, 2], 0), [2, 0], "pilih kupu ketiga menggeser yang tertua");
+  sama(Q7.pilihKupu([1, 2], 1), [2], "ketuk lagi melepas");
+  cek(/Paling tinggi/.test(Q7.ucapanPosisi([3, 6, 9], [])) && /lebih tinggi/.test(Q7.ucapanPosisi([3, 6, 9], [0, 2])), "ucapan posisi");
+}
+
+{
+  // Bab 7 Sub-Bab B: tebak dan campur alat ukur di Meja Ukur.
+  sama(U7.kalimatTebak(4, 5, "Stik"), "Tebakanmu 4 stik, hasil ukurnya 5 stik. Selisihnya 5 − 4 = 1.", "tebak kurang");
+  sama(U7.kalimatTebak(7, 4, "Stik"), "Tebakanmu 7 stik, hasil ukurnya 4 stik. Selisihnya 7 − 4 = 3.", "tebak lebih");
+  sama(U7.kalimatTebak(4, 4, "Klip kecil"), "Tebakanmu 4 klip kecil, hasil ukurnya 4 klip kecil. Tebakanmu tepat!", "tebak tepat");
+  for (const id of ["balok", "stik", "klip"]) {
+    const lain = U7.satuanLain(id);
+    cek(lain.id !== id, `satuan lain berbeda dari ${id}`);
+    for (let n = 0; n <= 9; n += 1) {
+      const dasar = { id, n, dariTengah: false, celah: false, tumpuk: false };
+      const h0 = U7.susun(dasar);
+      const h1 = U7.susun({ ...dasar, campur: false });
+      if (JSON.stringify(h0) !== JSON.stringify(h1)) cek(false, `campur mati sama dengan bawaan ${id} ${n}`);
+      if (!h0.kotak.every((k) => k.id === id)) cek(false, `semua kotak satu jenis ${id} ${n}`);
+      const hc = U7.susun({ ...dasar, campur: true });
+      const jenis = new Set(hc.kotak.map((k) => k.id));
+      if (n >= 2) {
+        if (jenis.size !== 2 || hc.status !== "salah-cara" || !hc.masalah.some((m) => /dicampur/.test(m))) cek(false, `campur dianggap salah ${id} ${n}`);
+      } else if (hc.masalah.some((m) => /dicampur/.test(m))) cek(false, `satu alat belum bisa dicampur ${id} ${n}`);
+      // kotak tetap berderet rapat tanpa celah dan tanpa tumpukan
+      for (let i = 1; i < hc.kotak.length; i += 1) if (hc.kotak[i].x !== hc.kotak[i - 1].x + hc.kotak[i - 1].lebar) cek(false, `deret rapat ${id} ${n}`);
+    }
+  }
+  cek(true, "campur alat ukur diperiksa untuk semua satuan dan jumlah");
+  cek(/Tebakanmu 3 stik/.test(U7.ucapanUkur({ id: "stik", n: 4, dariTengah: false, celah: false, tumpuk: false }, 3)) && !/Tebakanmu/.test(U7.ucapanUkur({ id: "stik", n: 4, dariTengah: false, celah: false, tumpuk: false })), "ucapan ukur memuat tebakan bila diminta");
+  cek(!/Tebakanmu/.test(U7.ucapanUkur({ id: "stik", n: 2, dariTengah: false, celah: false, tumpuk: false }, 3)), "ucapan belum pas tidak memuat tebakan");
 }console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

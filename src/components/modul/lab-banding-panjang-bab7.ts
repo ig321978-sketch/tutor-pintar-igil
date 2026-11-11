@@ -45,14 +45,26 @@ export const terpanjang = (panjang: number[]) => {
   return panjang.flatMap((p, i) => (p === m ? [i] : []));
 };
 
-export function bandingDua(panjang: number[], i: number, j: number): string {
+/**
+ * Gaya tampilan dan bahasa. Sub-Bab A hanya membandingkan dengan mata (tanpa angka, tanpa satuan),
+ * Sub-Bab B mengukur dengan satuan (angka dan nama satuan). Bawaan: pita dalam stik, dengan angka.
+ */
+export type Gaya = { benda: "pita" | "pensil"; satuan: string; angka: boolean };
+
+export const GAYA_BAWAAN: Gaya = { benda: "pita", satuan: "stik", angka: true };
+
+const kapital = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+export function bandingDua(panjang: number[], i: number, j: number, gaya: Gaya = GAYA_BAWAAN): string {
   const a = PITA[i].nama;
   const b = PITA[j].nama;
-  if (i === j) return `${a} dibandingkan dengan dirinya sendiri. Pilih pita lain.`;
+  const B = kapital(gaya.benda);
+  if (i === j) return `${a} dibandingkan dengan dirinya sendiri. Pilih ${gaya.benda} lain.`;
   const sel = panjang[i] - panjang[j];
-  if (sel === 0) return `Pita ${a} dan pita ${b} sama panjang, masing-masing ${panjang[i]} stik.`;
+  if (sel === 0) return gaya.angka ? `${B} ${a} dan ${gaya.benda} ${b} sama panjang, masing-masing ${panjang[i]} ${gaya.satuan}.` : `${B} ${a} dan ${gaya.benda} ${b} sama panjang.`;
   const [lebih, kurang, d] = sel > 0 ? [a, b, sel] : [b, a, -sel];
-  return `Pita ${lebih} lebih panjang ${d} stik dari pita ${kurang}. Pita ${kurang} lebih pendek ${d} stik dari pita ${lebih}.`;
+  if (!gaya.angka) return `${B} ${lebih} lebih panjang dari ${gaya.benda} ${kurang}. ${B} ${kurang} lebih pendek dari ${gaya.benda} ${lebih}.`;
+  return `${B} ${lebih} lebih panjang ${d} ${gaya.satuan} dari ${gaya.benda} ${kurang}. ${B} ${kurang} lebih pendek ${d} ${gaya.satuan} dari ${gaya.benda} ${lebih}.`;
 }
 
 /** Ketuk pita: dipilih bergantian, paling banyak dua pita. Ketuk lagi untuk melepas. */
@@ -61,11 +73,29 @@ export function pilihPita(dipilih: number[], i: number): number[] {
   return dipilih.length >= 2 ? [dipilih[1], i] : [...dipilih, i];
 }
 
-export function ucapanBanding(panjang: number[], urut: boolean, sejajar: boolean): string {
+/** Kalimat terpanjang dan terpendek untuk kartu hasil. Yang sama panjang disebut semuanya. */
+export function kalimatPaling(panjang: number[], gaya: Gaya = GAYA_BAWAAN): string {
   const pendek = terpendek(panjang).map((i) => PITA[i].nama);
   const panjangnya = terpanjang(panjang).map((i) => PITA[i].nama);
   const sambung = (a: string[]) => a.join(" dan ");
-  const mata = sejajar ? "" : " Ujung kiri pita belum sejajar, jadi mata mudah tertipu. Sejajarkan dulu supaya adil.";
-  const urutan = urut ? " Pita sudah diurutkan dari yang terpendek." : "";
-  return `Pita ${sambung(panjangnya)} paling panjang, ${Math.max(...panjang)} stik. Pita ${sambung(pendek)} paling pendek, ${Math.min(...panjang)} stik.${urutan}${mata}`;
+  if (!gaya.angka) return `Terpanjang: ${gaya.benda} ${sambung(panjangnya)}. Terpendek: ${gaya.benda} ${sambung(pendek)}.`;
+  return `Terpanjang: ${gaya.benda} ${sambung(panjangnya)} (${Math.max(...panjang)} ${gaya.satuan}). Terpendek: ${gaya.benda} ${sambung(pendek)} (${Math.min(...panjang)} ${gaya.satuan}).`;
+}
+
+export function ucapanBanding(panjang: number[], urut: boolean, sejajar: boolean, gaya: Gaya = GAYA_BAWAAN): string {
+  const pendek = terpendek(panjang).map((i) => PITA[i].nama);
+  const panjangnya = terpanjang(panjang).map((i) => PITA[i].nama);
+  const sambung = (a: string[]) => a.join(" dan ");
+  const B = kapital(gaya.benda);
+  const mata = sejajar ? "" : ` Ujung kiri ${gaya.benda} belum sejajar, jadi mata mudah tertipu. Sejajarkan dulu supaya adil.`;
+  const urutan = urut ? ` ${B} sudah diurutkan dari yang terpendek.` : "";
+  if (!gaya.angka) return `${B} ${sambung(panjangnya)} paling panjang. ${B} ${sambung(pendek)} paling pendek.${urutan}${mata}`;
+  return `${B} ${sambung(panjangnya)} paling panjang, ${Math.max(...panjang)} ${gaya.satuan}. ${B} ${sambung(pendek)} paling pendek, ${Math.min(...panjang)} ${gaya.satuan}.${urutan}${mata}`;
+}
+
+/** Ucapan untuk dua benda saja (Sub-Bab A, simulasi pertama). */
+export function ucapanDua(panjang: number[], sejajar: boolean, dipilih: number[], gaya: Gaya = GAYA_BAWAAN): string {
+  const mata = sejajar ? "" : ` Ujung kiri ${gaya.benda} belum sejajar, jadi mata mudah tertipu. Sejajarkan dulu supaya adil.`;
+  if (dipilih.length === 2) return `${bandingDua(panjang, dipilih[0], dipilih[1], gaya)}${mata}`;
+  return `Ketuk kedua ${gaya.benda} untuk membandingkannya.${mata}`;
 }

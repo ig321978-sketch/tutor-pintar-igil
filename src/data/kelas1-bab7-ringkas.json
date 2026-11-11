@@ -1,0 +1,501 @@
+{
+  "chapter_id": "mtk-1-bab7",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subject": "Matematika",
+  "title": "Mengukur Panjang Benda",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Membandingkan Panjang",
+          "ikon": "📏",
+          "suara": "Ini peta membandingkan dan mengurutkan panjang benda. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "dua",
+            "judul": "Dua benda",
+            "ikon": "↔️",
+            "ringkas": "Pakai kata lebih: lebih tinggi, lebih pendek.",
+            "suara": "Untuk dua benda kita memakai kata lebih. Pohon A lebih tinggi dari pohon B. Pohon B lebih pendek dari pohon A."
+          },
+          {
+            "id": "sama",
+            "judul": "Sama tinggi",
+            "ikon": "🤝",
+            "ringkas": "Ujung sejajar dari garis awal yang sama.",
+            "suara": "Kalau ujung atas dua pohon sejajar, keduanya sama tinggi. Benda yang dibandingkan harus dimulai dari garis awal yang sama, supaya adil."
+          },
+          {
+            "id": "paling",
+            "judul": "Paling dan urutan",
+            "ikon": "🏆",
+            "ringkas": "Tiga benda atau lebih: pakai kata paling.",
+            "suara": "Untuk tiga benda atau lebih kita memakai kata paling. Pohon A paling tinggi dan pohon D paling pendek. Lalu benda bisa diurutkan."
+          },
+          {
+            "id": "posisi",
+            "judul": "Tinggi dan rendah",
+            "ikon": "🦋",
+            "ringkas": "Posisi benda: lebih tinggi, lebih rendah.",
+            "suara": "Untuk posisi benda kita memakai kata lebih tinggi dan lebih rendah. Kupu-kupu hijau terbang paling tinggi dan kupu-kupu kuning paling rendah."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "a-lebih-tinggi",
+            "teks": "Pohon A lebih tinggi dari pohon B",
+            "ikon": "🌴",
+            "cabang": "dua",
+            "petunjuk": "Dua benda memakai kata lebih. Itu cabang Dua benda. Coba cabang lain."
+          },
+          {
+            "id": "a-lebih-pendek",
+            "teks": "Pohon B lebih pendek dari pohon A",
+            "ikon": "🌱",
+            "cabang": "dua",
+            "petunjuk": "Dua benda memakai kata lebih. Itu cabang Dua benda. Coba cabang lain."
+          },
+          {
+            "id": "a-sama",
+            "teks": "Pohon B sama tinggi dengan pohon C",
+            "ikon": "🌳",
+            "cabang": "sama",
+            "petunjuk": "Ujung atas sejajar berarti sama tinggi. Itu cabang Sama tinggi. Coba cabang lain."
+          },
+          {
+            "id": "a-garis",
+            "teks": "Mulai dari garis awal yang sama",
+            "ikon": "📍",
+            "cabang": "sama",
+            "petunjuk": "Garis awal yang sama membuat perbandingan adil. Itu cabang Sama tinggi. Coba cabang lain."
+          },
+          {
+            "id": "a-paling",
+            "teks": "Pohon A paling tinggi, pohon D paling pendek",
+            "ikon": "🏆",
+            "cabang": "paling",
+            "petunjuk": "Tiga benda atau lebih memakai kata paling. Itu cabang Paling dan urutan. Coba cabang lain."
+          },
+          {
+            "id": "a-urut",
+            "teks": "Urutan: A, B, C, D atau A, C, B, D",
+            "ikon": "🔢",
+            "cabang": "paling",
+            "petunjuk": "Mengurutkan benda ada di cabang Paling dan urutan. Coba cabang lain."
+          },
+          {
+            "id": "a-hijau",
+            "teks": "Kupu-kupu hijau terbang paling tinggi",
+            "ikon": "🦋",
+            "cabang": "posisi",
+            "petunjuk": "Posisi benda memakai kata tinggi dan rendah. Itu cabang Tinggi dan rendah. Coba cabang lain."
+          },
+          {
+            "id": "a-kuning",
+            "teks": "Kupu-kupu kuning terbang paling rendah",
+            "ikon": "🐛",
+            "cabang": "posisi",
+            "petunjuk": "Posisi benda memakai kata tinggi dan rendah. Itu cabang Tinggi dan rendah. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Membandingkan dan Mengurutkan",
+        "suara": "Ini tiga panel tentang membandingkan dan mengurutkan panjang. Ketuk kotaknya untuk membuka.",
+        "panel": [
+          {
+            "id": "a-lebih",
+            "tipe": "buka",
+            "judul": "Kata untuk dua pohon",
+            "ide": "Dua benda memakai kata lebih.",
+            "suara": "Kita bandingkan tinggi pohon pisang. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tinggi",
+                "label": "Lebih tinggi",
+                "ikon": "👆",
+                "isi": "Pohon A lebih tinggi dari pohon B.",
+                "suara": "Pohon A lebih tinggi dari pohon B.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "A lebih tinggi dari B"
+                }
+              },
+              {
+                "id": "pendek",
+                "label": "Lebih pendek",
+                "ikon": "👇",
+                "isi": "Pohon B lebih pendek dari pohon A.",
+                "suara": "Pohon B lebih pendek dari pohon A.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "B lebih pendek dari A"
+                }
+              },
+              {
+                "id": "sama",
+                "label": "Sama tinggi",
+                "ikon": "🤝",
+                "isi": "Ujung atas pohon B dan C sejajar.",
+                "suara": "Pohon B sama tinggi dengan pohon C. Ujung atas kedua pohon sejajar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "B sama tinggi dengan C"
+                }
+              }
+            ]
+          },
+          {
+            "id": "a-paling",
+            "tipe": "banding",
+            "judul": "Dua benda atau banyak benda?",
+            "ide": "Dua benda lebih, banyak benda paling.",
+            "suara": "Bandingkan kata untuk dua benda dan kata untuk tiga benda atau lebih. Ketuk kedua kotaknya.",
+            "sisi": [
+              {
+                "id": "dua",
+                "nama": "Dua benda",
+                "ikon": "↔️",
+                "catatan": "Kita memakai kata lebih.",
+                "suara": "Untuk dua benda kita memakai kata lebih. Pohon A lebih tinggi dari pohon B.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "A lebih tinggi dari B"
+                }
+              },
+              {
+                "id": "banyak",
+                "nama": "Tiga benda atau lebih",
+                "ikon": "🏆",
+                "catatan": "Kita memakai kata paling.",
+                "suara": "Untuk tiga benda atau lebih kita memakai kata paling. Di antara empat pohon, pohon A paling tinggi dan pohon D paling pendek.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "A paling tinggi, D paling pendek"
+                }
+              }
+            ],
+            "kesimpulan": "Dua benda: lebih. Tiga atau lebih: paling."
+          },
+          {
+            "id": "a-urut",
+            "tipe": "buka",
+            "judul": "Urutan, garis awal, dan posisi",
+            "ide": "Urutkan dengan garis awal yang sama.",
+            "suara": "Panel ini tentang urutan, garis awal, dan posisi benda. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "urutan",
+                "label": "Urutan pohon",
+                "ikon": "🔢",
+                "isi": "Dari paling tinggi: A, B, C, D.",
+                "suara": "Urutan pohon dari yang paling tinggi adalah A, B, C, dan D.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "A, B, C, D"
+                }
+              },
+              {
+                "id": "bertukar",
+                "label": "Dua urutan benar",
+                "ikon": "🔄",
+                "isi": "B dan C sama tinggi, jadi boleh bertukar.",
+                "suara": "Pohon B dan pohon C sama tinggi, jadi mereka boleh bertukar tempat. Urutannya bisa A, C, B, D.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "A, C, B, D"
+                }
+              },
+              {
+                "id": "garis",
+                "label": "Garis awal",
+                "ikon": "📍",
+                "isi": "Benda dibandingkan dari garis awal yang sama.",
+                "suara": "Semua pensil dimulai dari garis awal yang sama supaya perbandingannya adil.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "garis awal sama"
+                }
+              },
+              {
+                "id": "posisi",
+                "label": "Posisi kupu-kupu",
+                "ikon": "🦋",
+                "isi": "Hijau paling tinggi, kuning paling rendah.",
+                "suara": "Kupu-kupu hijau terbang paling tinggi, merah di tengah, dan kuning paling rendah.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "hijau paling tinggi"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Mengukur Panjang",
+          "ikon": "📏",
+          "suara": "Ini peta mengukur panjang benda dengan alat ukur tidak baku. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "tebak",
+            "judul": "Tebak dulu",
+            "ikon": "🤔",
+            "ringkas": "Tebak panjangnya sebelum mengukur.",
+            "suara": "Sebelum mengukur, tebak dulu berapa panjangnya. Tebakan membantu kita memeriksa apakah hasil ukur masuk akal."
+          },
+          {
+            "id": "alat",
+            "judul": "Alat ukur",
+            "ikon": "✏️",
+            "ringkas": "Jengkal, stik, pensil, dan koin.",
+            "suara": "Benda yang dipakai untuk mengukur disebut alat ukur. Ada jengkal, telapak kaki, depa, stik es krim, pensil, koin, sedotan, dan penjepit kertas."
+          },
+          {
+            "id": "cara",
+            "judul": "Cara yang benar",
+            "ikon": "✅",
+            "ringkas": "Mulai dari ujung, rapat, tidak bertumpuk, tidak miring.",
+            "suara": "Cara mengukur yang benar: mulai dari ujung benda, alat ukur rapat, tidak bertumpuk, dan tidak miring. Pakai satu jenis alat ukur dari awal sampai akhir."
+          },
+          {
+            "id": "hasil",
+            "judul": "Hasil ukur",
+            "ikon": "📝",
+            "ringkas": "Tulis angka dan nama alat ukur.",
+            "suara": "Tulis hasil ukur dengan angka dan nama alat ukur. Alat ukur yang berbeda memberi hasil yang berbeda."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-tebak1",
+            "teks": "Meja ditebak 4 jengkal",
+            "ikon": "🤔",
+            "cabang": "tebak",
+            "petunjuk": "Menebak sebelum mengukur ada di cabang Tebak dulu. Coba cabang lain."
+          },
+          {
+            "id": "b-tebak2",
+            "teks": "Hasil ukur 5 jengkal, selisih 1",
+            "ikon": "🔍",
+            "cabang": "tebak",
+            "petunjuk": "Membandingkan tebakan dengan hasil ada di cabang Tebak dulu. Coba cabang lain."
+          },
+          {
+            "id": "b-alat1",
+            "teks": "Jengkal, telapak kaki, dan depa",
+            "ikon": "🖐️",
+            "cabang": "alat",
+            "petunjuk": "Ini benda untuk mengukur. Itu cabang Alat ukur. Coba cabang lain."
+          },
+          {
+            "id": "b-alat2",
+            "teks": "Stik es krim, pensil, koin, sedotan",
+            "ikon": "✏️",
+            "cabang": "alat",
+            "petunjuk": "Ini benda untuk mengukur. Itu cabang Alat ukur. Coba cabang lain."
+          },
+          {
+            "id": "b-cara1",
+            "teks": "Mulai dari ujung benda",
+            "ikon": "📍",
+            "cabang": "cara",
+            "petunjuk": "Cara mengukur yang benar ada di cabang Cara yang benar. Coba cabang lain."
+          },
+          {
+            "id": "b-cara2",
+            "teks": "Alat ukur rapat, tidak bertumpuk, tidak miring",
+            "ikon": "✅",
+            "cabang": "cara",
+            "petunjuk": "Cara mengukur yang benar ada di cabang Cara yang benar. Coba cabang lain."
+          },
+          {
+            "id": "b-hasil1",
+            "teks": "Panjang meja 4 sedotan",
+            "ikon": "📝",
+            "cabang": "hasil",
+            "petunjuk": "Angka dan nama alat ukur ada di cabang Hasil ukur. Coba cabang lain."
+          },
+          {
+            "id": "b-hasil2",
+            "teks": "Buku: 2 stik es krim atau 12 koin",
+            "ikon": "📚",
+            "cabang": "hasil",
+            "petunjuk": "Alat ukur berbeda, hasil berbeda. Itu cabang Hasil ukur. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengukur Panjang Benda",
+        "suara": "Ini tiga panel tentang mengukur panjang benda. Ketuk kotaknya untuk membuka.",
+        "panel": [
+          {
+            "id": "b-cara",
+            "tipe": "buka",
+            "judul": "Empat cara mengukur yang benar",
+            "ide": "Ujung, rapat, tidak tumpuk, tidak miring.",
+            "suara": "Ada empat cara mengukur yang benar. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "ujung",
+                "label": "Dari ujung",
+                "ikon": "📍",
+                "isi": "Mulai dari ujung benda.",
+                "suara": "Pertama, mulai dari ujung benda.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "mulai dari ujung"
+                }
+              },
+              {
+                "id": "rapat",
+                "label": "Rapat",
+                "ikon": "🧱",
+                "isi": "Alat ukur rapat, tanpa celah.",
+                "suara": "Kedua, alat ukur rapat, tanpa celah.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "rapat"
+                }
+              },
+              {
+                "id": "tumpuk",
+                "label": "Tidak bertumpuk",
+                "ikon": "🚫",
+                "isi": "Alat ukur berderet, tidak menumpuk.",
+                "suara": "Ketiga, alat ukur tidak bertumpuk.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "tidak bertumpuk"
+                }
+              },
+              {
+                "id": "miring",
+                "label": "Tidak miring",
+                "ikon": "📐",
+                "isi": "Alat ukur lurus, tidak miring.",
+                "suara": "Keempat, alat ukur tidak miring. Pakai juga satu jenis alat ukur dari awal sampai akhir.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "tidak miring"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-beda",
+            "tipe": "banding",
+            "judul": "Alat ukur berbeda, hasil berbeda",
+            "ide": "Bandingkan dengan alat ukur yang sama.",
+            "suara": "Buku yang sama diukur dengan dua alat ukur. Ketuk kedua kotaknya.",
+            "sisi": [
+              {
+                "id": "stik",
+                "nama": "Stik es krim",
+                "ikon": "✏️",
+                "catatan": "Stik panjang, hasilnya sedikit.",
+                "suara": "Kalau diukur dengan stik es krim, panjang buku adalah dua stik es krim.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 stik es krim"
+                }
+              },
+              {
+                "id": "koin",
+                "nama": "Koin",
+                "ikon": "🟡",
+                "catatan": "Koin pendek, hasilnya banyak.",
+                "suara": "Kalau diukur dengan koin, panjang buku adalah dua belas koin. Hasilnya berbeda karena panjang stik dan koin berbeda.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 koin"
+                }
+              }
+            ],
+            "kesimpulan": "Pakai alat ukur yang sama untuk membandingkan."
+          },
+          {
+            "id": "b-tulis",
+            "tipe": "buka",
+            "judul": "Menulis dan memeriksa hasil",
+            "ide": "Tulis angka dan nama alat ukur.",
+            "suara": "Panel ini tentang menulis hasil ukur dan memeriksanya. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tulis",
+                "label": "Angka dan nama",
+                "ikon": "📝",
+                "isi": "Panjang meja adalah 4 sedotan.",
+                "suara": "Tulis hasil dengan angka dan nama alat ukur. Panjang meja adalah empat sedotan, atau lima jengkal tangan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 sedotan"
+                }
+              },
+              {
+                "id": "petak",
+                "label": "Kertas berpetak",
+                "ikon": "🔲",
+                "isi": "Pensil A 5 kotak, B 9 kotak, C 3 kotak.",
+                "suara": "Di kertas berpetak, pensil A lima kotak, pensil B sembilan kotak, dan pensil C tiga kotak. Pensil B lebih panjang empat kotak dari pensil A.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "Pensil di kertas berpetak",
+                  "kepala": [
+                    "Pensil",
+                    "Kotak"
+                  ],
+                  "baris": [
+                    [
+                      "A",
+                      5
+                    ],
+                    [
+                      "B",
+                      9
+                    ],
+                    [
+                      "C",
+                      3
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "tebak",
+                "label": "Tebakan dan hasil",
+                "ikon": "🤔",
+                "isi": "Tebak 4 jengkal, hasil 5 jengkal.",
+                "suara": "Meja ditebak empat jengkal dan hasil pengukurannya lima jengkal. Selisih tebakan dan hasil adalah satu.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 − 4 = 1"
+                }
+              },
+              {
+                "id": "aman",
+                "label": "Jarak aman",
+                "ikon": "👀",
+                "isi": "Baca buku sekitar 3 jengkal.",
+                "suara": "Jarak aman membaca buku sekitar tiga jengkal, dan menonton di depan laptop atau ponsel sekitar empat jengkal, supaya mata sehat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "buku 3 jengkal"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
