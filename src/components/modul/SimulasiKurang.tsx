@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { BendaSvg } from "./data-8-dasar";
 import { Cek, CobaIni, KARTU } from "./simulasi-bersama";
 import { BIRU, BaganPasangan, Bingkai, GarisAngka, HIJAU, KalimatBesar, MERAH, Pengatur, ejaHitung } from "./komponen-lab";
 import { MAKS, awalCoret, banyakDicoret, keluargaFakta, ketukBenda, kalimatKurang, selKurang, sisa, ubahAmbil, ubahTotal, ucapanKurang } from "./lab-kurang-bab3";
+import type { KeadaanKurang } from "./misi-bab3";
 
 /**
  * Perwakilan yang boleh tampil. Di dalam Materi, tiap sub-bab hanya membuka perwakilan yang sudah diajarkan
@@ -51,10 +52,13 @@ const KATA_URUT = ["Satu", "Dua", "Tiga", "Empat"];
 export default function SimulasiKurang({
   speakGuru,
   tampil = SEMUA_TAMPIL_KURANG,
+  onKeadaan,
 }: {
   speakGuru: (t: string) => void;
   /** Perwakilan yang tersedia. Bawaan: semuanya (tab Simulasi lama). */
   tampil?: TampilKurang[];
+  /** Melapor keadaan ke papan misi (bila ada). */
+  onKeadaan?: (k: KeadaanKurang) => void;
 }) {
   const [coret, setCoret] = useState<boolean[]>(() => awalCoret(8, 3));
   const [lihatMentah, setLihat] = useState<Record<TampilKurang, boolean>>({ benda: true, kalimat: true, garis: true, bingkai: true, dua: true, bagan: true, keluarga: true });
@@ -66,6 +70,12 @@ export default function SimulasiKurang({
   const lihat = (k: TampilKurang) => tampil.includes(k) && lihatMentah[k];
   const bisaDiatur = tersedia.length > 1;
   const coba = langkahCoba(tampil);
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  const [fBenda, fKalimat, fGaris, fBingkai, fDua, fBagan, fKeluarga] = (["benda", "kalimat", "garis", "bingkai", "dua", "bagan", "keluarga"] as const).map((k) => lihat(k));
+  useEffect(() => {
+    lapor.current?.({ alat: "kurang", t: s.t, k: s.k, benda: fBenda, kalimat: fKalimat, garis: fGaris, bingkai: fBingkai, dua: fDua, bagan: fBagan, keluarga: fKeluarga });
+  }, [s.t, s.k, fBenda, fKalimat, fGaris, fBingkai, fDua, fBagan, fKeluarga]);
   // Pasangan tambah baru disebut bila bagan atau keluarga fakta sudah diajarkan.
   const ucapan = ucapanKurang(s.t, s.k, tampil.includes("keluarga"));
   const duaKurang = [`${s.t} − ${s.k} = ${hasil}`, `${s.t} − ${hasil} = ${s.k}`].filter((x, i, a) => a.indexOf(x) === i);

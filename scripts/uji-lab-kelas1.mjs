@@ -24,6 +24,7 @@ import * as M0 from "../src/components/modul/misi-simulasi.ts";
 import * as M7 from "../src/components/modul/misi-bab7.ts";
 import * as M1 from "../src/components/modul/misi-bab1.ts";
 import * as X2 from "../src/components/modul/misi-bab2.ts";
+import * as X3 from "../src/components/modul/misi-bab3.ts";
 let gagal = 0;
 let lulus = 0;
 const cek = (kondisi, pesan) => {
@@ -1232,6 +1233,31 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   cek(ada("C", T2({ a: 5, b: 3 }), "c-cerita") && ada("C", T2({ garis: true, a: 4, b: 2 }), "c-garis") && ada("C", T2({ ditukar: 2, a: 6, b: 2 }), "c-tukar"), "bab2 C: periksa");
   cek(!ada("C", T2({ a: 6, b: 2 }), "c-tukar"), "bab2 C: tukar harus ditekan");
   cek(ada("C", SEL("kantin"), "c-kantin") && ada("C", SEL("mesin"), "c-mesin") && ada("C", T2({ a: 7, b: 3 }), "c-sepuluh"), "bab2 C: kantin, mesin, sepuluh");
+}
+
+/* ---------------- Misi Bab 3 (hibrida) ---------------- */
+{
+  const kosong = new Set();
+  const K3 = (o) => ({ alat: "kurang", t: 8, k: 3, benda: true, kalimat: true, garis: false, bingkai: true, dua: false, bagan: false, keluarga: false, ...o });
+  const penuh = { garis: true, dua: true, bagan: true, keluarga: true };
+  ujiStruktur("bab3", X3.daftarMisiBab3, ["A", "B", "C", "D"], { A: K3({}), B: K3({ garis: true, dua: true, bagan: true }), C: K3(penuh), D: K3(penuh) });
+  const ada = (sub, k, id) => M0.misiBaru(X3.daftarMisiBab3(sub), k, kosong).includes(id);
+  const SEL = (id) => ({ alat: "selesai", id });
+  cek(ada("A", K3({ t: 9, k: 4 }), "a-sembilan") && ada("A", K3({ t: 5, k: 5 }), "a-habis") && !ada("A", K3({ t: 0, k: 0 }), "a-habis"), "bab3 A: sembilan dan habis");
+  cek(ada("A", K3({ t: 6, k: 0 }), "a-nol") && !ada("A", K3({ t: 0, k: 0 }), "a-nol"), "bab3 A: ambil nol");
+  cek(ada("A", K3({ t: 10, k: 3 }), "a-bingkai") && !ada("A", K3({ t: 10, k: 3, bingkai: false }), "a-bingkai"), "bab3 A: bingkai");
+  cek(ada("A", K3({ t: 7, k: 2 }), "a-tujuh") && ada("A", K3({ t: 4, k: 3 }), "a-satu") && ada("A", K3({ t: 6, k: 2 }), "a-enam"), "bab3 A: tujuh, satu, enam");
+  const B = (o) => K3({ garis: true, dua: true, bagan: true, ...o });
+  cek(ada("B", B({ t: 6, k: 2 }), "b-dua") && !ada("B", B({ t: 6, k: 2, dua: false }), "b-dua"), "bab3 B: dua pengurangan");
+  cek(ada("B", B({ t: 5, k: 3 }), "b-mundur") && !ada("B", B({ t: 5, k: 3, garis: false }), "b-mundur"), "bab3 B: mundur");
+  cek(ada("B", B({ t: 5, k: 0 }), "b-nol") && ada("B", B({ t: 4, k: 4 }), "b-sama") && ada("B", B({ t: 10, k: 7 }), "b-sepuluh"), "bab3 B: nol, sama, sepuluh");
+  cek(ada("B", B({ t: 7, k: 4 }), "b-bagan") && ada("B", B({ t: 9, k: 6 }), "b-sembilan"), "bab3 B: bebas");
+  const C = (o) => K3({ ...penuh, ...o });
+  cek(ada("C", C({ t: 7, k: 3 }), "c-keluarga") && !ada("C", C({ t: 7, k: 3, keluarga: false }), "c-keluarga"), "bab3 C: keluarga");
+  cek(ada("C", C({ t: 9, k: 4 }), "c-periksa") && ada("C", C({ t: 9, k: 6 }), "c-cari") && ada("C", SEL("bus"), "c-bus"), "bab3 C: periksa, cari, bus");
+  cek(ada("C", C({ t: 10, k: 4 }), "c-sepuluh") && ada("C", C({ t: 8, k: 8 }), "c-nol"), "bab3 C: bebas");
+  cek(ada("D", K3({ ...penuh, t: 8, k: 2 }), "d-cerita") && ada("D", K3({ ...penuh, t: 7, k: 5 }), "d-dicari") && ada("D", K3({ ...penuh, t: 6, k: 2 }), "d-periksa"), "bab3 D: cerita, dicari, periksa");
+  cek(ada("D", SEL("pesta"), "d-pesta") && ada("D", SEL("bus"), "d-bus") && ada("D", K3({ ...penuh, t: 4, k: 4 }), "d-ingat"), "bab3 D: pesta, bus, ingat");
 }
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

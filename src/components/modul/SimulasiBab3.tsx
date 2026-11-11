@@ -2,120 +2,65 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import SimulasiKurang from "./SimulasiKurang";
+import LabBertahap, { type TabLab } from "./LabBertahap";
+import SimulasiKurang, { SEMUA_TAMPIL_KURANG, type TampilKurang } from "./SimulasiKurang";
 import SimulasiMesinBus from "./SimulasiMesinBus";
 import SimulasiSkenario from "./SimulasiSkenario";
 import { SKENARIO_BAB3 } from "./skenario-kelas1";
+import { daftarMisiBab3, type KeadaanBab3 } from "./misi-bab3";
+import { laporMisi, tampilMisi } from "./misi-simulasi";
 
 /* ======================================================================== */
 /* Simulasi Bab 3 di dalam Materi (tahap 4 SMISCPA, di antara Infografis    */
-/* dan Concrete). Satu simulasi per layar, tiap simulasi diawali satu Misi. */
-/* Laboratorium Pengurangan dipakai ulang tiap sub-bab, tetapi hanya        */
-/* membuka perwakilan yang sudah diajarkan sampai sub-bab itu:              */
-/*   Sub-Bab A (Cerita Pengurangan): benda dicoret, bingkai, kalimat.       */
-/*   Sub-Bab B (Berbagai Cara): tiga lab, satu per cara. Pasangan (benda,   */
-/*     bagan, dua pengurangan), Hitung Mundur (garis bilangan), Dari        */
-/*     Sepuluh (bingkai).                                                   */
-/*   Sub-Bab C (Hubungan Tambah dan Kurang): keluarga fakta, lalu Bus       */
-/*     Sekolah yang mencatat kalimat tambah dan kurang.                     */
-/*   Sub-Bab D (Soal Cerita): lab pemeriksa dengan penjumlahan, lalu Pesta  */
-/*     Jeruk yang merangkum soal cerita pengurangan.                        */
-/* Tombol LANJUTKAN aktif setelah simulasinya disentuh sekali (semua mode   */
-/* "sentuh"), supaya tahap ini ringan dan tidak menahan anak.               */
+/* dan Concrete). Pola hibrida: satu laboratorium yang alatnya bertambah    */
+/* per sub-bab, dengan misi wajib dan tantangan bebas (misi-bab3.ts).       */
+/*   Sub-Bab A (Cerita Pengurangan): benda, kalimat, bingkai sepuluh.       */
+/*   Sub-Bab B (Berbagai Cara): + dua pengurangan, bagan, garis mundur.     */
+/*   Sub-Bab C (Keluarga Bilangan): + keluarga fakta dan tab Bus Sekolah.   */
+/*   Sub-Bab D (Soal Cerita, sub-bab akhir): semua alat + tab Pesta Jeruk,  */
+/*     sekaligus simulasi pencapaian misi bab ini.                          */
+/* Tombol LANJUTKAN aktif bila misi wajib tercapai, atau anak memilih       */
+/* "Lewati misi" setelah mencoba. Simulasi tidak memberi Poin Kualifikasi.  */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
 const MISI = {
-  coret: "Ketuk satu benda untuk mencoretnya. Lihat sisanya ikut berubah.",
-  pasangan: "Ketuk satu benda untuk mencoretnya. Lihat bagan dan dua pengurangan ikut berubah.",
-  mundur: "Tekan plus pada Benda diambil. Lihat lompatan mundur di garis bilangan.",
-  sepuluh: "Tekan plus pada Semua benda sampai 10. Lihat bingkai sepuluh jadi penuh.",
-  keluarga: "Tekan plus pada Benda diambil. Lihat empat kalimat satu keluarga ikut berubah.",
-  bus: "Tekan Turunkan 1 anak. Lihat isi bus berkurang.",
-  periksa: "Coret beberapa benda. Lalu cek dengan kalimat tambah di keluarga fakta.",
-  pesta: "Tekan Mulai pesta! Lalu bantu Bu Lina menghitung sisa jeruknya.",
+  A: "Coret benda yang diambil dan baca sisanya. Selesaikan misi di bawah, urutannya bebas.",
+  B: "Coba berbagai cara mengurang: dua pengurangan, mundur, nol, dan dari sepuluh. Selesaikan misi wajib, lalu coba tantangan bebas.",
+  C: "Temukan keluarga bilangan, periksa dengan tambah, dan bantu Bus Sekolah. Selesaikan misi wajib, lalu coba tantangan bebas.",
+  D: "Ubah soal cerita menjadi pengurangan, periksa jawabanmu, dan bantu Bu Lina di pesta. Selesaikan semua misi wajib, lalu coba tantangan bebas.",
 } as const;
 
+const TAMPIL: Record<"A" | "B" | "C" | "D", TampilKurang[]> = {
+  A: ["benda", "kalimat", "bingkai"],
+  B: ["benda", "kalimat", "bingkai", "garis", "dua", "bagan"],
+  C: SEMUA_TAMPIL_KURANG,
+  D: SEMUA_TAMPIL_KURANG,
+};
+
 const langkahBab3 = (sub: string): LangkahSim[] => {
-  switch (sub) {
-    case "B":
-      return [
-        {
-          metode: "PhET",
-          sub: "Pasangan Bilangan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.pasangan,
-          mode: "sentuh",
-          render: (a) => <SimulasiKurang speakGuru={a.speakGuru} tampil={["benda", "kalimat", "dua", "bagan"]} />,
-        },
-        {
-          metode: "PhET",
-          sub: "Hitung Mundur",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.mundur,
-          mode: "sentuh",
-          render: (a) => <SimulasiKurang speakGuru={a.speakGuru} tampil={["kalimat", "garis"]} />,
-        },
-        {
-          metode: "PhET",
-          sub: "Dari Sepuluh",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.sepuluh,
-          mode: "sentuh",
-          render: (a) => <SimulasiKurang speakGuru={a.speakGuru} tampil={["kalimat", "bingkai"]} />,
-        },
-      ];
-    case "C":
-      return [
-        {
-          metode: "PhET",
-          sub: "Keluarga Bilangan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.keluarga,
-          mode: "sentuh",
-          render: (a) => <SimulasiKurang speakGuru={a.speakGuru} tampil={["benda", "kalimat", "bagan", "keluarga"]} />,
-        },
-        {
-          metode: "Mesin keadaan",
-          sub: "Bus Sekolah",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.bus,
-          mode: "sentuh",
-          render: (a) => <SimulasiMesinBus speakGuru={a.speakGuru} onTuntas={a.tuntas} />,
-        },
-      ];
-    case "D":
-      return [
-        {
-          metode: "PhET",
-          sub: "Periksa Jawabanmu",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.periksa,
-          mode: "sentuh",
-          render: (a) => <SimulasiKurang speakGuru={a.speakGuru} tampil={["benda", "kalimat", "keluarga"]} />,
-        },
-        {
-          metode: "Skenario",
-          sub: "Pesta Jeruk",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.pesta,
-          mode: "sentuh",
-          render: (a) => <SimulasiSkenario def={SKENARIO_BAB3} speakGuru={a.speakGuru} onTuntas={a.tuntas} />,
-        },
-      ];
-    default:
-      return [
-        {
-          metode: "PhET",
-          sub: "Laboratorium Pengurangan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.coret,
-          mode: "sentuh",
-          render: (a) => <SimulasiKurang speakGuru={a.speakGuru} tampil={["benda", "kalimat", "bingkai"]} />,
-        },
-      ];
-  }
+  const huruf = (["A", "B", "C", "D"].includes(sub) ? sub : "A") as "A" | "B" | "C" | "D";
+  const daftar = daftarMisiBab3(huruf);
+  return [
+    {
+      metode: "PhET",
+      sub: huruf === "D" ? "Lab Pengurangan: Pencapaian Misi" : "Lab Pengurangan",
+      petunjuk: MAINKAN_DULU,
+      misi: MISI[huruf],
+      misiDaftar: tampilMisi(daftar),
+      mode: "sentuh",
+      render: (a) => {
+        const lapor = (k: KeadaanBab3) => laporMisi(daftar, k, a.capai);
+        const selesai = (id: string) => lapor({ alat: "selesai", id });
+        const kurang: TabLab = { id: "kurang", nama: "Pengurangan", render: () => <SimulasiKurang speakGuru={a.speakGuru} tampil={TAMPIL[huruf]} onKeadaan={lapor} /> };
+        const bus: TabLab = { id: "bus", nama: "Bus Sekolah", render: () => <SimulasiMesinBus speakGuru={a.speakGuru} onTuntas={() => selesai("bus")} /> };
+        const pesta: TabLab = { id: "pesta", nama: "Pesta Jeruk", render: () => <SimulasiSkenario def={SKENARIO_BAB3} speakGuru={a.speakGuru} onTuntas={() => selesai("pesta")} /> };
+        const tab = huruf === "A" || huruf === "B" ? [kurang] : huruf === "C" ? [kurang, bus] : [kurang, bus, pesta];
+        return <LabBertahap tab={tab} label="Alat laboratorium pengurangan" />;
+      },
+    },
+  ];
 };
 
 /** Misi simulasi pertama sub-bab, untuk digabung ke ucapan saat tahap Simulasi dibuka. */
