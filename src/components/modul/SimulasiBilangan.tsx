@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { BendaSvg } from "./data-8-dasar";
 import { Cek, CobaIni, KARTU, sebut } from "./simulasi-bersama";
 import { BIRU, Bingkai, BaganPasangan, GarisAngka, KalimatBesar, MERAH, Pengatur, eja } from "./komponen-lab";
+import type { KeadaanBilangan } from "./misi-bab1";
 import { MAKS, batas, batasPecah, hubungan, kalimatPasangan, ketukKotak, pasangan, selBingkai } from "./lab-bilangan-bab1";
 
 /**
@@ -82,12 +83,15 @@ export default function SimulasiBilangan({
   speakGuru,
   tampil = SEMUA_TAMPIL,
   awal,
+  onKeadaan,
 }: {
   speakGuru: (t: string) => void;
   /** Perwakilan yang tersedia. Bawaan: semuanya (tab Simulasi lama). */
   tampil?: TampilBilangan[];
   /** Perwakilan yang menyala saat simulasi dibuka. Bawaan: benda, bingkai, garis, pasangan. */
   awal?: Partial<Record<TampilBilangan, boolean>>;
+  /** Melapor keadaan ke papan misi (bila ada). */
+  onKeadaan?: (k: KeadaanBilangan) => void;
 }) {
   const [n, setN] = useState(6);
   const [m, setM] = useState(4);
@@ -105,6 +109,12 @@ export default function SimulasiBilangan({
   };
   const pas = pasangan(n, a);
   const h = hubungan(n, m);
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  useEffect(() => {
+    lapor.current?.({ alat: "bilangan", n, m, a: pas.a, benda: lihat.benda, bingkai: lihat.bingkai, garis: lihat.garis, pasangan: lihat.pasangan, banding: lihat.banding });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [n, m, pas.a, lihat.benda, lihat.bingkai, lihat.garis, lihat.pasangan, lihat.banding]);
   const ganti = (k: TampilBilangan) => setLihat((x) => ({ ...x, [k]: !x[k] }));
   // Ucapan mengikuti perwakilan yang tampil: pasangan dan perbandingan hanya disebut bila sudah diajarkan dan menyala.
   const ucapanTampil = [`Bilangan ${n}. Ada ${n} benda.`, lihat.pasangan ? `${n} terdiri dari ${pas.a} dan ${pas.b}.` : "", lihat.banding ? h.kalimat : ""].filter(Boolean).join(" ");

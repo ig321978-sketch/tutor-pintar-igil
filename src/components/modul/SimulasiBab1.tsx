@@ -2,99 +2,73 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import SimulasiBilangan from "./SimulasiBilangan";
+import LabBertahap, { type TabLab } from "./LabBertahap";
+import SimulasiBilangan, { type TampilBilangan } from "./SimulasiBilangan";
 import SimulasiKatak from "./SimulasiKatak";
 import SimulasiSkenario from "./SimulasiSkenario";
 import { SKENARIO_BAB1 } from "./skenario-kelas1";
+import { daftarMisiBab1, type KeadaanBab1 } from "./misi-bab1";
+import { laporMisi, tampilMisi } from "./misi-simulasi";
 
 /* ======================================================================== */
 /* Simulasi Bab 1 di dalam Materi (tahap 4 SMISCPA, di antara Infografis    */
-/* dan Concrete). Satu simulasi per layar, tiap simulasi diawali satu Misi. */
-/* Laboratorium Bilangan dipakai ulang tiap sub-bab, tetapi hanya membuka   */
-/* perwakilan yang sudah diajarkan sampai sub-bab itu:                      */
-/*   Sub-Bab A (Menghitung 0 sampai 10): benda bernomor, angka, dan nama.   */
+/* dan Concrete). Pola hibrida: satu laboratorium yang alatnya bertambah    */
+/* per sub-bab, dengan misi wajib dan tantangan bebas (misi-bab1.ts).       */
+/*   Sub-Bab A (Menghitung 0 sampai 10): Laboratorium Bilangan, hanya benda.*/
 /*   Sub-Bab B (Membandingkan): + bingkai sepuluh, garis bilangan, tanda.   */
-/*   Sub-Bab C (Maju dan mundur): benda dan garis bilangan, lalu Katak.     */
-/*   Sub-Bab D (Pasangan bilangan): benda, bingkai, pasangan, lalu Kasir    */
-/*     Warung, yang merangkum menghitung, membandingkan, dan urutan.        */
-/* Tombol LANJUTKAN aktif setelah simulasinya disentuh sekali (semua mode   */
-/* "sentuh"), supaya tahap ini ringan dan tidak menahan anak.               */
+/*   Sub-Bab C (Maju dan mundur): lab B + tab Katak Maju Mundur.            */
+/*   Sub-Bab D (Pasangan bilangan, sub-bab akhir): semua alat + pasangan    */
+/*     bilangan + tab Kasir Warung, sekaligus simulasi pencapaian misi.     */
+/* Tombol LANJUTKAN aktif bila misi wajib tercapai, atau anak memilih       */
+/* "Lewati misi" setelah mencoba. Simulasi tidak memberi Poin Kualifikasi.  */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
 const MISI = {
-  hitung: "Ketuk kotak benda ke-5. Lihat angka dan namanya ikut berubah.",
-  banding: "Atur bilangan kedua sampai sama banyak dengan bilangan pertama.",
-  garis: "Tekan plus tiga kali. Lihat garis bilangan ikut bergerak.",
-  katak: "Bantu katak maju dari batu 3 sampai batu 7.",
-  pasangan: "Tekan plus pada bagian merah. Lihat bilangan terbagi dua.",
-  kasir: "Tekan Siap membantu! Lalu bantu Bu Ani menghitung apel.",
+  A: "Hitung benda dari nol sampai sepuluh. Selesaikan misi di bawah, urutannya bebas.",
+  B: "Bandingkan dua bilangan dengan benda, bingkai, dan garis. Selesaikan misi wajib, lalu coba tantangan bebas.",
+  C: "Maju dan mundur di garis bilangan, lalu bantu Katak menyeberang. Selesaikan misi di bawah, urutannya bebas.",
+  D: "Pecah bilangan, bandingkan, dan bantu Kasir Warung. Selesaikan semua misi wajib, lalu coba tantangan bebas.",
 } as const;
 
+const SEMUA: TampilBilangan[] = ["benda", "bingkai", "garis", "pasangan", "banding"];
+
 const langkahBab1 = (sub: string): LangkahSim[] => {
-  switch (sub) {
-    case "B":
-      return [
-        {
-          metode: "PhET",
-          sub: "Laboratorium Bilangan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.banding,
-          mode: "sentuh",
-          render: (a) => <SimulasiBilangan speakGuru={a.speakGuru} tampil={["benda", "bingkai", "garis", "banding"]} awal={{ banding: true }} />,
-        },
-      ];
-    case "C":
-      return [
-        {
-          metode: "PhET",
-          sub: "Laboratorium Bilangan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.garis,
-          mode: "sentuh",
-          render: (a) => <SimulasiBilangan speakGuru={a.speakGuru} tampil={["benda", "garis"]} />,
-        },
-        {
-          metode: "Mesin keadaan",
-          sub: "Katak Maju Mundur",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.katak,
-          mode: "sentuh",
-          render: (a) => <SimulasiKatak speakGuru={a.speakGuru} onTuntas={a.tuntas} />,
-        },
-      ];
-    case "D":
-      return [
-        {
-          metode: "PhET",
-          sub: "Laboratorium Bilangan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.pasangan,
-          mode: "sentuh",
-          render: (a) => <SimulasiBilangan speakGuru={a.speakGuru} tampil={["benda", "bingkai", "pasangan"]} />,
-        },
-        {
-          metode: "Skenario",
-          sub: "Kasir Warung",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.kasir,
-          mode: "sentuh",
-          render: (a) => <SimulasiSkenario def={SKENARIO_BAB1} speakGuru={a.speakGuru} onTuntas={a.tuntas} />,
-        },
-      ];
-    default:
-      return [
-        {
-          metode: "PhET",
-          sub: "Laboratorium Bilangan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.hitung,
-          mode: "sentuh",
-          render: (a) => <SimulasiBilangan speakGuru={a.speakGuru} tampil={["benda"]} />,
-        },
-      ];
-  }
+  const huruf = (["A", "B", "C", "D"].includes(sub) ? sub : "A") as "A" | "B" | "C" | "D";
+  const daftar = daftarMisiBab1(huruf);
+  return [
+    {
+      metode: "PhET",
+      sub: huruf === "D" ? "Lab Bilangan: Pencapaian Misi" : "Lab Bilangan",
+      petunjuk: MAINKAN_DULU,
+      misi: MISI[huruf],
+      misiDaftar: tampilMisi(daftar),
+      mode: "sentuh",
+      render: (a) => {
+        const lapor = (k: KeadaanBab1) => laporMisi(daftar, k, a.capai);
+        const selesai = (id: string) => lapor({ alat: "selesai", id });
+        const bilangan: TabLab = {
+          id: "bilangan",
+          nama: "Bilangan",
+          render: () => {
+            switch (huruf) {
+              case "A":
+                return <SimulasiBilangan speakGuru={a.speakGuru} tampil={["benda"]} onKeadaan={lapor} />;
+              case "D":
+                return <SimulasiBilangan speakGuru={a.speakGuru} tampil={SEMUA} onKeadaan={lapor} />;
+              default:
+                return <SimulasiBilangan speakGuru={a.speakGuru} tampil={["benda", "bingkai", "garis", "banding"]} awal={{ banding: huruf === "B" }} onKeadaan={lapor} />;
+            }
+          },
+        };
+        const katak: TabLab = { id: "katak", nama: "Katak Maju Mundur", render: () => <SimulasiKatak speakGuru={a.speakGuru} onTuntas={() => selesai("katak")} /> };
+        const kasir: TabLab = { id: "kasir", nama: "Kasir Warung", render: () => <SimulasiSkenario def={SKENARIO_BAB1} speakGuru={a.speakGuru} onTuntas={() => selesai("kasir")} /> };
+        const tab = huruf === "A" || huruf === "B" ? [bilangan] : huruf === "C" ? [bilangan, katak] : [bilangan, katak, kasir];
+        return <LabBertahap tab={tab} label="Alat laboratorium bilangan" />;
+      },
+    },
+  ];
 };
 
 /** Misi simulasi pertama sub-bab, untuk digabung ke ucapan saat tahap Simulasi dibuka. */

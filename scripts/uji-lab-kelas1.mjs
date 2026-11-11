@@ -22,6 +22,7 @@ import * as D7 from "../src/components/modul/lab-banding-panjang-bab7.ts";
 import * as Q7 from "../src/components/modul/lab-posisi-bab7.ts";
 import * as M0 from "../src/components/modul/misi-simulasi.ts";
 import * as M7 from "../src/components/modul/misi-bab7.ts";
+import * as M1 from "../src/components/modul/misi-bab1.ts";
 let gagal = 0;
 let lulus = 0;
 const cek = (kondisi, pesan) => {
@@ -1162,6 +1163,43 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   const u0 = M0.ucapanMisi(tamp, kosong);
   cek(u0.startsWith("Misi wajib 0 dari ") && u0.includes(tamp[0].teks), "ucapanMisi: awal menyebut misi berikutnya");
   cek(M0.ucapanMisi(tamp, new Set(wajibIds)).startsWith("Hebat!"), "ucapanMisi: selesai memuji");
+}
+
+/* ---------------- Misi Bab 1 (hibrida) ---------------- */
+{
+  const kosong = new Set();
+  const L = (o) => ({ alat: "bilangan", n: 6, m: 4, a: 2, benda: true, bingkai: false, garis: false, pasangan: false, banding: false, ...o });
+  const awalSub = { A: L({}), B: L({ bingkai: true, garis: true, banding: true }), C: L({ bingkai: true, garis: true }), D: L({ bingkai: true, garis: true, pasangan: true }) };
+  for (const sub of ["A", "B", "C", "D"]) {
+    const daftar = M1.daftarMisiBab1(sub);
+    cek(M0.misiBaru(daftar, awalSub[sub], kosong).length === 0, `bab1 ${sub}: keadaan awal tidak memenuhi misi`);
+    cek(daftar.filter((m) => m.wajib).length >= 3 && daftar.some((m) => !m.wajib), `bab1 ${sub}: ada misi wajib dan tantangan bebas`);
+    cek(new Set(daftar.map((m) => m.id)).size === daftar.length, `bab1 ${sub}: id unik`);
+    // Tiap misi harus bisa dicapai: tidak ada misi yang mustahil.
+  }
+  const ada = (sub, k, id) => M0.misiBaru(M1.daftarMisiBab1(sub), k, kosong).includes(id);
+  const SEL = (id) => ({ alat: "selesai", id });
+  cek(ada("A", L({ n: 5 }), "a-lima") && ada("A", L({ n: 0 }), "a-nol") && ada("A", L({ n: 10 }), "a-sepuluh") && ada("A", L({ n: 7 }), "a-tujuh"), "bab1 A: wajib");
+  cek(ada("A", L({ n: 9 }), "a-sembilan") && ada("A", L({ n: 2 }), "a-dua"), "bab1 A: bebas");
+  const B = (o) => L({ bingkai: true, garis: true, banding: true, ...o });
+  cek(ada("B", B({ n: 4, m: 4 }), "b-sama") && !ada("B", L({ n: 4, m: 4 }), "b-sama"), "bab1 B: sama hanya bila Bandingkan menyala");
+  cek(ada("B", B({ n: 2, m: 7 }), "b-kecil") && !ada("B", B({ n: 7, m: 7 }), "b-kecil"), "bab1 B: kedua lebih besar");
+  cek(ada("B", B({ n: 9, m: 4 }), "b-jauh") && !ada("B", B({ n: 8, m: 4 }), "b-jauh"), "bab1 B: selisih lima");
+  cek(ada("B", B({ n: 8 }), "b-bingkai") && !ada("B", B({ n: 8, bingkai: false }), "b-bingkai"), "bab1 B: bingkai harus tampil");
+  cek(ada("B", B({ n: 3, m: 9 }), "b-garis") && !ada("B", B({ n: 3, m: 9, garis: false }), "b-garis"), "bab1 B: garis harus tampil");
+  cek(ada("B", B({ n: 5, m: 4 }), "b-selisih") && !ada("B", B({ n: 6, m: 4 }), "b-selisih"), "bab1 B: beda satu");
+  cek(ada("B", B({ n: 10, m: 0 }), "b-ujung") && ada("B", B({ n: 0, m: 10 }), "b-ujung"), "bab1 B: nol dan sepuluh");
+  const C = (o) => L({ bingkai: true, garis: true, ...o });
+  cek(ada("C", C({ n: 9 }), "c-sembilan") && ada("C", C({ n: 1 }), "c-satu") && ada("C", C({ n: 0 }), "c-nol"), "bab1 C: garis");
+  cek(ada("C", SEL("katak"), "c-katak") && !ada("C", SEL("kasir"), "c-katak"), "bab1 C: katak");
+  cek(ada("C", C({ banding: true, n: 5, m: 4 }), "c-sebelah") && !ada("C", C({ n: 5, m: 4 }), "c-sebelah"), "bab1 C: bersebelahan");
+  const D = (o) => L({ bingkai: true, garis: true, pasangan: true, ...o });
+  cek(ada("D", D({ n: 10, a: 6 }), "d-sepuluh") && !ada("D", D({ n: 10, a: 4 }), "d-sepuluh"), "bab1 D: 6 dan 4");
+  cek(ada("D", D({ n: 8, a: 4 }), "d-sama") && ada("D", D({ n: 7, a: 0 }), "d-nol"), "bab1 D: sama dan nol");
+  cek(!ada("D", D({ n: 8, a: 4, pasangan: false }), "d-sama"), "bab1 D: pasangan harus tampil");
+  cek(ada("D", D({ n: 7, a: 9 }), "d-nol") === false, "bab1 D: a dibatasi oleh batasPecah (a besar bukan nol)");
+  cek(ada("D", SEL("kasir"), "d-kasir") && ada("D", SEL("katak"), "d-ingat-katak"), "bab1 D: skenario dan katak");
+  cek(ada("D", D({ banding: true, n: 5, m: 5 }), "d-ingat-banding"), "bab1 D: ingat banding");
 }
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

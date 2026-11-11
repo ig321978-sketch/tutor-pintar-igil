@@ -63,3 +63,14 @@ export function ucapanMisi(daftar: readonly MisiTampil[], sudah: ReadonlySet<str
   if (sisa.length === 0) return `Hebat! Semua ${h.wajibTotal} misi wajib sudah tercapai. Kamu boleh lanjut, atau coba tantangan bebas.`;
   return `Misi wajib ${h.wajibTercapai} dari ${h.wajibTotal} tercapai. Yang berikutnya: ${sisa[0].teks}`;
 }
+
+/** Keadaan yang dilaporkan alat bertipe mesin keadaan atau skenario saat tuntas (lihat LabBertahap). */
+export type KeadaanSelesai = { alat: "selesai"; id: string };
+
+/** Laporkan semua misi yang terpenuhi keadaan ini. Aman dipanggil berulang (capai idempoten). */
+export function laporMisi<K>(daftar: readonly DefMisi<K>[], keadaan: K, capai: (id: string) => void): void {
+  for (const d of daftar) if (d.cek(keadaan)) capai(d.id);
+}
+
+/** Bentuk papan misi (tanpa fungsi cek) dari daftar definisi. */
+export const tampilMisi = <K>(daftar: readonly DefMisi<K>[]): MisiTampil[] => daftar.map(({ id, teks, wajib }) => ({ id, teks, wajib }));
