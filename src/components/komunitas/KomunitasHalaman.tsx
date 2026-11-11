@@ -121,7 +121,7 @@ function KartuSekolah({ sekolah, ambang }: { sekolah: Sekolah; ambang: number })
             <p className="text-sm font-black text-indigo-950">Partner IGIL belum aktif</p>
             <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-600">
               Slot Partner Guru terbuka setelah sekolah mencapai minimal {angkaId(ambang)} siswa berlangganan.
-              Sementara ini siswa ikut ranking {LABEL_JENJANG[jenjang].toLowerCase()}.
+              Sementara ini siswa masuk arena {LABEL_JENJANG[jenjang].toLowerCase()}.
             </p>
           </section>
         )}
