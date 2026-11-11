@@ -4,6 +4,7 @@ import { awalSk, adeganSk, langkahSk, opsiHitung, semuaKetuk, ceritaSk } from ".
 import { SKENARIO_BAB1, SKENARIO_BAB2, SKENARIO_BAB3, SKENARIO_BAB4, SKENARIO_BAB6, SKENARIO_BAB7 } from "../src/components/modul/skenario-kelas1.ts";
 import { SKENARIO_K2B1 } from "../src/components/modul/skenario-k2b1.ts";
 import { SKENARIO_K2B2 } from "../src/components/modul/skenario-k2b2.ts";
+import { SKENARIO_K2B3 } from "../src/components/modul/skenario-k2b3.ts";
 
 let gagal = 0;
 let lulus = 0;
@@ -24,6 +25,7 @@ const SEMUA = [
   ["Bab 7", SKENARIO_BAB7, 20],
   ["K2 Bab 1", SKENARIO_K2B1, 50],
   ["K2 Bab 2", SKENARIO_K2B2, 20],
+  ["K2 Bab 3", SKENARIO_K2B3, 20],
 ];
 
 const OBJEK_SAH = new Set(["pesawat", "mobil", "boneka", "bola", "gasing", "bola-merah", "bola-kuning", "bola-hijau", "bola-biru", "kelereng-merah", "kelereng-kuning", "kelereng-hijau", "kelereng-biru", "jagung", "wortel", "brokoli", "kol", "jeruk", "apel", "mangga", "belimbing", "ayam", "bebek", "kelinci", "karet", "stik"]);

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { Cek, CobaIni, KARTU, Pilihan, TOMBOL_BIASA, TOMBOL_UTAMA } from "./simulasi-bersama";
 import { KalimatBesar, UNGU, eja } from "./komponen-lab";
@@ -16,6 +16,7 @@ import {
   type Posisi,
   type Ruang,
 } from "./lab-ruang-k2b3";
+import type { KeadaanLereng } from "./misi-k2bab3";
 
 /* ------------------------------------------------------------------------ */
 /* Simulasi 3 (K2B3): Lereng Gelinding — PhET percobaan bangun ruang.         */
@@ -89,7 +90,7 @@ function Gambar({ r, p }: { r: Ruang; p: Posisi }) {
   );
 }
 
-export default function SimulasiLerengGelinding({ speakGuru }: { speakGuru: (t: string) => void }) {
+export default function SimulasiLerengGelinding({ speakGuru, onKeadaan }: { speakGuru: (t: string) => void; onKeadaan?: (k: KeadaanLereng) => void }) {
   const [ruang, setRuang] = useState<Ruang>("bola");
   const [posisi, setPosisi] = useState<Posisi>("berdiri");
   const [meluncur, setMeluncur] = useState(false);
@@ -100,6 +101,10 @@ export default function SimulasiLerengGelinding({ speakGuru }: { speakGuru: (t: 
   const gerak = gerakAnimasi(hasil.gerak);
   const ciri = CIRI_RUANG[ruang];
   const bolehPosisi = ruang !== "kubus" && ruang !== "bola";
+
+  useEffect(() => {
+    onKeadaan?.({ alat: "lereng", ruang, posisi, meluncur, gerak: hasil.gerak });
+  }, [onKeadaan, ruang, posisi, meluncur, hasil.gerak]);
 
   const pilihRuang = (r: Ruang) => {
     setRuang(r);

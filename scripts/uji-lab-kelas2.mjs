@@ -6,6 +6,12 @@ import * as L from "../src/components/modul/lab-bilangan-k2b1.ts";
 import * as K2B2 from "../src/components/modul/misi-k2bab2.ts";
 import * as LC from "../src/components/modul/lab-cara-k2b2.ts";
 import * as LK from "../src/components/modul/lab-cerita-k2b2.ts";
+import * as K2B3 from "../src/components/modul/misi-k2bab3.ts";
+import * as LB from "../src/components/modul/lab-bentuk-k2b3.ts";
+import * as LU from "../src/components/modul/lab-urai-k2b3.ts";
+import * as LP from "../src/components/modul/lab-pola-k2b3.ts";
+import * as LR from "../src/components/modul/lab-ruang-k2b3.ts";
+import * as LT from "../src/components/modul/lab-cetak-k2b3.ts";
 
 let gagal = 0;
 let lulus = 0;
@@ -162,6 +168,83 @@ cek(L.AWAL_N !== 26 && L.AWAL_N !== 40 && L.AWAL_N !== 50 && L.AWAL_N !== 30 && 
   // Alat A tidak punya Selisih dan Periksa, jadi misi Sub-Bab A tidak boleh mensyaratkannya.
   const butuhExtra = K2B2.MISI_A.some((m) => ["selisih", "periksa", "pas"].some((f) => m.cek(Cara({ a: 12, b: 6, [f]: true })) !== m.cek(Cara({ a: 12, b: 6 }))));
   cek(!butuhExtra, "k2bab2 A: misi tidak mensyaratkan perwakilan yang belum ada di Sub-Bab A");
+}
+
+/* ---------------- Kelas 2 Bab 3: bentuk datar, mengurai, pola segitiga, bangun ruang ---------------- */
+{
+  const kosong = new Set();
+  const Bt = (o) => ({ alat: "bentuk", tipe: "segi", n: LB.AWAL_SISI, jenis: "lingkaran", putar: 0, skala: 1, cetakan: false, pas: true, sisi: true, ...o });
+  const Ur = (o) => ({ alat: "urai", bentuk: "persegi", keping: 1, segitiga: 0, renggang: 0, rapatLagi: false, ...o });
+  const Po = (o) => ({ alat: "pola", n: LP.AWAL_N, cara: "pojok", banding: false, tabel: true, ...o });
+  const Le = (o) => ({ alat: "lereng", ruang: "bola", posisi: "berdiri", meluncur: false, gerak: LR.lepas("bola", "berdiri").gerak, ...o });
+  const Ce = (o) => ({ alat: "cetak", ruang: "kubus", permukaan: LT.awalPermukaan("kubus"), dicetak: false, bentuk: LT.cetak("kubus", LT.awalPermukaan("kubus")).bentuk, ...o });
+  const SEL = (id) => ({ alat: "selesai", id });
+
+  // Keadaan awal tiap alat, dipakai di sub-bab mana pun alat itu muncul.
+  const awalAlat = [["lab bentuk", Bt({})], ["bengkel urai", Ur({})], ["lab pola", Po({})], ["lereng", Le({})], ["lab cetak", Ce({})]];
+  const awalSub = { A: Bt({}), B: Ur({}), C: Le({}) };
+  ujiStruktur("k2bab3", K2B3.daftarMisiK2Bab3, ["A", "B", "C"], awalSub);
+  for (const sub of ["A", "B", "C"]) {
+    for (const [nama, awal] of awalAlat) cek(M0.misiBaru(K2B3.daftarMisiK2Bab3(sub), awal, kosong).length === 0, `k2bab3 ${sub}: awal ${nama} tidak memenuhi misi`);
+  }
+  sama([LB.AWAL_SISI, LP.AWAL_N], [6, 4], "awal bentuk dan pola netral");
+
+  const ada = (sub, k, id) => M0.misiBaru(K2B3.daftarMisiK2Bab3(sub), k, kosong).includes(id);
+
+  // Keadaan Bt yang sama dengan hasil hitung lab (pas diambil dari lab, bukan ditulis tangan).
+  const BtLab = (b, putar, o = {}) => Bt({ tipe: b.tipe, n: b.tipe === "segi" ? b.n : LB.AWAL_SISI, jenis: b.tipe === "lengkung" ? b.jenis : "lingkaran", putar, pas: LB.pasDenganCetakan(b, putar), ...o });
+
+  // Sub-Bab A
+  cek(ada("A", Bt({ n: 5 }), "a-lima") && !ada("A", Bt({ n: 5, sisi: false }), "a-lima") && !ada("A", Bt({ n: 4 }), "a-lima") && !ada("A", Bt({ tipe: "lengkung", n: 5 }), "a-lima"), "k2bab3 A: segi lima butuh nomor sisi");
+  const lg = { tipe: "lengkung", jenis: "lingkaran" };
+  const lj = { tipe: "lengkung", jenis: "lonjong" };
+  cek(ada("A", BtLab(lg, 60, { cetakan: true }), "a-lingkaran") && !ada("A", BtLab(lg, 60), "a-lingkaran") && !ada("A", BtLab(lg, 0, { cetakan: true }), "a-lingkaran") && !ada("A", BtLab(lj, 60, { cetakan: true }), "a-lingkaran"), "k2bab3 A: lingkaran diputar dengan cetakan menyala");
+  cek(ada("A", BtLab(lj, 30, { cetakan: true }), "a-lonjong") && !ada("A", BtLab(lj, 180, { cetakan: true }), "a-lonjong") && !ada("A", BtLab(lj, 30), "a-lonjong") && !ada("A", BtLab(lg, 30, { cetakan: true }), "a-lonjong"), "k2bab3 A: lonjong 30 tidak pas, 180 pas (tidak dihitung)");
+  cek(!ada("A", BtLab({ tipe: "segi", n: 6 }, 30, { cetakan: true }), "a-lonjong") && !ada("A", BtLab({ tipe: "segi", n: 6 }, 30, { cetakan: true }), "a-lingkaran"), "k2bab3 A: segi banyak tidak memenuhi misi lengkung");
+  cek(ada("A", SEL("detektif"), "a-mesin") && !ada("A", SEL("toko-mainan"), "a-mesin"), "k2bab3 A: mesin detektif");
+  cek(ada("A", Bt({ n: 6, putar: 30, skala: 2 }), "a-ciri-tetap") && !ada("A", Bt({ n: 6, putar: 0, skala: 2 }), "a-ciri-tetap") && !ada("A", Bt({ n: 6, putar: 30, skala: 1 }), "a-ciri-tetap") && !ada("A", Bt({ n: 5, putar: 30, skala: 2 }), "a-ciri-tetap"), "k2bab3 A: ciri tetap saat diputar dan dibesarkan");
+  cek(ada("A", Bt({ n: 3 }), "a-segitiga") && !ada("A", Bt({ tipe: "lengkung", n: 3 }), "a-segitiga"), "k2bab3 A: segitiga");
+  cek(!ada("A", Bt({}), "a-lima") && !ada("A", Bt({}), "a-lingkaran") && !ada("A", Bt({}), "a-lonjong"), "k2bab3 A: awal tidak memenuhi wajib");
+
+  // Sub-Bab B: nilai keping dan segitiga diambil dari Bengkel Urai yang sebenarnya.
+  const dariBengkel = (bentuk, garis, o = {}) => {
+    const k = LU.uraikan(bentuk, garis);
+    return Ur({ bentuk, keping: k.length, segitiga: k.filter((x) => x.nama === "Segitiga").length, ...o });
+  };
+  cek(ada("B", dariBengkel("persegi", ["d1"]), "b-diagonal") && !ada("B", dariBengkel("persegi", ["d1", "d2"]), "b-diagonal") && !ada("B", dariBengkel("persegiPanjang", ["d1"]), "b-diagonal"), "k2bab3 B: persegi satu diagonal = dua segitiga");
+  cek(ada("B", dariBengkel("persegi", ["tegak"]), "b-tengah") && ada("B", dariBengkel("persegi", ["datar"]), "b-tengah") && !ada("B", dariBengkel("persegi", ["d1"]), "b-tengah") && !ada("B", dariBengkel("persegiPanjang", ["tegak"]), "b-tengah"), "k2bab3 B: persegi satu garis tengah = dua keping bukan segitiga");
+  cek(ada("B", dariBengkel("segienam", ["AC", "AD", "AE"]), "b-enam-pojok") && !ada("B", dariBengkel("segienam", ["AD", "BE", "CF"]), "b-enam-pojok"), "k2bab3 B: segi enam dari satu titik = empat segitiga");
+  cek(ada("B", dariBengkel("segienam", ["AD", "BE", "CF"]), "b-enam-tengah") && !ada("B", dariBengkel("segienam", ["AC", "AD", "AE"]), "b-enam-tengah"), "k2bab3 B: segi enam lewat tengah = enam segitiga");
+  cek(ada("B", dariBengkel("persegi", ["d1", "d2"], { renggang: 0, rapatLagi: true }), "b-rapat") && !ada("B", dariBengkel("persegi", ["d1", "d2"], { renggang: 2, rapatLagi: false }), "b-rapat") && !ada("B", dariBengkel("persegi", [], { rapatLagi: true }), "b-rapat"), "k2bab3 B: renggang lalu rapat butuh keping terurai");
+  cek(ada("B", Po({ n: 5, cara: "pojok" }), "b-pola-lima") && !ada("B", Po({ n: 5, cara: "tengah" }), "b-pola-lima") && !ada("B", Po({ n: 4, cara: "pojok" }), "b-pola-lima"), "k2bab3 B: segi lima dari satu pojok");
+  cek(ada("B", Po({ n: 7, cara: "tengah" }), "b-pola-tengah") && !ada("B", Po({ n: 7, cara: "pojok" }), "b-pola-tengah"), "k2bab3 B: segi tujuh dari titik tengah");
+  cek(ada("B", Po({ n: 8, banding: true }), "b-banding") && !ada("B", Po({ n: 8, banding: false }), "b-banding") && !ada("B", Po({ n: 7, banding: true }), "b-banding"), "k2bab3 B: banding segi delapan");
+  cek(ada("B", Bt({ n: 5 }), "b-ingat") && !ada("B", Bt({ n: 5, sisi: false }), "b-ingat"), "k2bab3 B: ingat Sub-Bab A");
+  cek(!ada("B", Ur({}), "b-diagonal") && !ada("B", Po({}), "b-pola-lima") && !ada("B", Po({}), "b-pola-tengah"), "k2bab3 B: awal tidak memenuhi wajib");
+
+  // Sub-Bab C: gerak dan cetakan diambil dari lab yang sebenarnya.
+  const lepasLab = (ruang, posisi, meluncur = true) => Le({ ruang, posisi, meluncur, gerak: LR.lepas(ruang, posisi).gerak });
+  const cetakLab = (ruang, permukaan, dicetak = true) => Ce({ ruang, permukaan, dicetak, bentuk: LT.cetak(ruang, permukaan).bentuk });
+  cek(ada("C", lepasLab("bola", "berdiri"), "c-bola") && !ada("C", lepasLab("bola", "berdiri", false), "c-bola") && !ada("C", lepasLab("kubus", "berdiri"), "c-bola"), "k2bab3 C: bola harus dilepas");
+  cek(ada("C", lepasLab("tabung", "rebah"), "c-tabung") && !ada("C", lepasLab("tabung", "berdiri"), "c-tabung") && !ada("C", lepasLab("tabung", "rebah", false), "c-tabung"), "k2bab3 C: tabung rebah");
+  cek(ada("C", lepasLab("kerucut", "rebah"), "c-kerucut") && !ada("C", lepasLab("kerucut", "berdiri"), "c-kerucut") && !ada("C", lepasLab("tabung", "rebah"), "c-kerucut"), "k2bab3 C: kerucut rebah melingkar");
+  cek(ada("C", cetakLab("kubus", "sisi"), "c-cetak-kubus") && !ada("C", cetakLab("kubus", "sisi", false), "c-cetak-kubus") && !ada("C", cetakLab("balok", "besar"), "c-cetak-kubus"), "k2bab3 C: cetak kubus harus ditekan");
+  cek(ada("C", SEL("toko-mainan"), "c-skenario") && !ada("C", SEL("detektif"), "c-skenario"), "k2bab3 C: skenario Toko Mainan");
+  cek(ada("C", lepasLab("kubus", "berdiri"), "c-kubus-diam") && ada("C", lepasLab("kubus", "rebah"), "c-kubus-diam") && !ada("C", lepasLab("kubus", "berdiri", false), "c-kubus-diam"), "k2bab3 C: kubus diam");
+  cek(ada("C", cetakLab("balok", "besar"), "c-balok") && !ada("C", cetakLab("balok", "kecil"), "c-balok") && !ada("C", cetakLab("kubus", "sisi"), "c-balok"), "k2bab3 C: cetak balok");
+  cek(ada("C", cetakLab("tabung", "alas"), "c-alas") && ada("C", cetakLab("kerucut", "alas"), "c-alas") && !ada("C", cetakLab("tabung", "selimut"), "c-alas") && !ada("C", cetakLab("bola", "kulit"), "c-alas"), "k2bab3 C: cetak alas lingkaran");
+  cek(!ada("C", Le({}), "c-bola") && !ada("C", Le({}), "c-tabung") && !ada("C", Le({}), "c-kerucut") && !ada("C", Ce({}), "c-cetak-kubus"), "k2bab3 C: awal tidak memenuhi wajib");
+
+  // Setiap misi wajib bisa dicapai: semua gerak dan cetakan yang disyaratkan memang dihasilkan lab.
+  sama([LR.lepas("bola", "berdiri").gerak, LR.lepas("tabung", "rebah").gerak, LR.lepas("kerucut", "rebah").gerak, LR.lepas("kubus", "berdiri").gerak], ["menggelinding", "menggelinding", "melingkar", "diam"], "k2bab3: gerak lereng sesuai misi");
+  sama([LT.cetak("kubus", "sisi").bentuk, LT.cetak("balok", "besar").bentuk, LT.cetak("tabung", "alas").bentuk], ["persegi", "persegiPanjang", "lingkaran"], "k2bab3: cetakan sesuai misi");
+  cek(LB.putaranPas(lj).indexOf(30) < 0 && LB.putaranPas(lg).includes(60), "k2bab3: putaran 30 membuat lonjong tidak pas dan 60 membuat lingkaran pas");
+
+  // Alat Sub-Bab A tidak punya Cetakan di Sub-Bab B/C, jadi misi B dan C tidak boleh mensyaratkan Cetakan.
+  cek(K2B3.MISI_B.every((m) => m.cek(Bt({ n: 5, cetakan: true })) === m.cek(Bt({ n: 5, cetakan: false }))), "k2bab3 B: misi bentuk tidak mensyaratkan cetakan");
+  // Alat yang belum ada di sub-bab itu tidak dilibatkan: misi A hanya memakai lab bentuk dan mesin detektif.
+  cek(K2B3.MISI_A.every((m) => !m.cek(Po({ n: 5 })) && !m.cek(Ur({ keping: 2, segitiga: 2 })) && !m.cek(Le({ meluncur: true })) && !m.cek(Ce({ dicetak: true }))), "k2bab3 A: misi hanya memakai alat Sub-Bab A");
+  cek(K2B3.MISI_C.every((m) => !m.cek(Bt({ n: 5 })) && !m.cek(Po({ n: 5 })) && !m.cek(Ur({ keping: 2, segitiga: 2 }))), "k2bab3 C: misi hanya memakai alat Sub-Bab C");
 }
 
 console.log(gagal === 0 ? `SEMUA LULUS (${lulus} cek)` : `GAGAL ${gagal} dari ${lulus + gagal}`);

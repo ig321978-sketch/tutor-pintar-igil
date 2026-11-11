@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { Cek, CobaIni, KARTU, Pilihan, TOMBOL_BIASA } from "./simulasi-bersama";
 import { KalimatBesar, Pengatur, UNGU, eja } from "./komponen-lab";
@@ -19,6 +19,7 @@ import {
   type BentukUrai,
   type Titik,
 } from "./lab-urai-k2b3";
+import type { KeadaanUrai } from "./misi-k2bab3";
 
 /* ------------------------------------------------------------------------ */
 /* Simulasi 2 (K2B3): Bengkel Urai dan Susun — lab virtual 2D.                */
@@ -37,17 +38,37 @@ const WARNA_KEPING: Record<string, string> = {
 
 const poin = (t: Titik[]) => t.map((p) => `${p[0].toFixed(2)},${p[1].toFixed(2)}`).join(" ");
 
-export default function SimulasiBengkelUrai({ speakGuru }: { speakGuru: (t: string) => void }) {
+export default function SimulasiBengkelUrai({ speakGuru, onKeadaan }: { speakGuru: (t: string) => void; onKeadaan?: (k: KeadaanUrai) => void }) {
   const [bentuk, setBentuk] = useState<BentukUrai>("persegi");
   const [terpilih, setTerpilih] = useState<string[]>([]);
   const [renggang, setRenggang] = useState(0);
   const [lihatNomor, setLihatNomor] = useState(true);
   const [lihatTabel, setLihatTabel] = useState(true);
+  const [pernahRenggang, setPernahRenggang] = useState(false);
 
   const garis = GARIS_URAI[bentuk];
   const keping = uraikan(bentuk, terpilih);
   const pusat = pusatBentuk(bentuk);
   const hitung = ringkas(keping);
+  const banyakSegitiga = hitung.find((h) => h.nama === "Segitiga")?.jumlah ?? 0;
+  const banyakKeping = keping.length;
+
+  // Pernah direnggangkan lalu dirapatkan lagi (dan masih terurai) = misi "rapatkan lagi".
+  useEffect(() => {
+    if (renggang > 0 && banyakKeping > 1) setPernahRenggang(true);
+    if (banyakKeping <= 1) setPernahRenggang(false);
+  }, [renggang, banyakKeping]);
+
+  useEffect(() => {
+    onKeadaan?.({
+      alat: "urai",
+      bentuk,
+      keping: banyakKeping,
+      segitiga: banyakSegitiga,
+      renggang,
+      rapatLagi: pernahRenggang && renggang === 0 && banyakKeping > 1,
+    });
+  }, [onKeadaan, bentuk, banyakKeping, banyakSegitiga, renggang, pernahRenggang]);
 
   const gantiBentuk = (b: BentukUrai) => {
     setBentuk(b);
@@ -61,6 +82,7 @@ export default function SimulasiBengkelUrai({ speakGuru }: { speakGuru: (t: stri
     setRenggang(0);
     setLihatNomor(true);
     setLihatTabel(true);
+    setPernahRenggang(false);
   };
 
   return (

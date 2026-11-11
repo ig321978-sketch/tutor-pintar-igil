@@ -80,3 +80,30 @@ export function ucapanBentuk(b: Bentuk, putar: number, skalaIdx: number): string
   const kat = b.tipe === "segi" ? " Ini termasuk segi banyak." : " Ini termasuk bentuk lengkung.";
   return `${dasar}${kat}${catatan}`;
 }
+
+/**
+ * Uji cetak dan putar: bentuk dicetak pada posisi awal, lalu diputar `putar` derajat (kelipatan 30).
+ * Segi banyak beraturan pas lagi hanya pada putaran kelipatan 360 per banyak sisinya.
+ * Lingkaran selalu pas. Bentuk lonjong pas hanya setelah setengah putaran.
+ */
+export function pasDenganCetakan(b: Bentuk, putar: number): boolean {
+  const p = putarBatas(putar);
+  if (b.tipe === "segi") return p % (360 / b.n) === 0;
+  if (b.jenis === "lingkaran") return true;
+  return p % 180 === 0;
+}
+
+export function kalimatPas(b: Bentuk, putar: number): string {
+  const p = putarBatas(putar);
+  const nama = namaBentuk(b);
+  if (b.tipe === "lengkung" && b.jenis === "lingkaran") return `Lingkaran diputar ${p} derajat tetap pas dengan cetakannya. Lingkaran pas ke arah mana pun.`;
+  if (pasDenganCetakan(b, putar)) {
+    return p === 0
+      ? `${nama} belum diputar, jadi pas dengan cetakannya.`
+      : `${nama} diputar ${p} derajat dan kebetulan pas lagi dengan cetakannya.`;
+  }
+  return `${nama} diputar ${p} derajat tidak pas dengan cetakannya. Ada bagian yang keluar dari cetakan.`;
+}
+
+/** Putaran (kelipatan 30) yang membuat bentuk pas dengan cetakannya. */
+export const putaranPas = (b: Bentuk): number[] => Array.from({ length: 12 }, (_, i) => i * 30).filter((d) => pasDenganCetakan(b, d));

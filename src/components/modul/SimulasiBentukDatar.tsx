@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { Cek, CobaIni, KARTU, Pilihan, TOMBOL_BIASA } from "./simulasi-bersama";
 import { EMAS, KalimatBesar, Pengatur, UNGU, eja } from "./komponen-lab";
@@ -14,8 +14,10 @@ import {
   batasSisi,
   ciri,
   kalimatBentuk,
+  kalimatPas,
   kategori,
   namaBentuk,
+  pasDenganCetakan,
   putarBatas,
   titikNomorSisi,
   titikSegi,
@@ -24,17 +26,19 @@ import {
   type Lengkung,
   type Sisi,
 } from "./lab-bentuk-k2b3";
+import type { KeadaanBentuk } from "./misi-k2bab3";
 
 /* ------------------------------------------------------------------------ */
-/* Simulasi 1 (K2B3): Laboratorium Bentuk Datar — PhET.                       */
+/* Simulasi (K2B3): Laboratorium Bentuk Datar — PhET.                         */
 /* Satu bentuk → gambar, sisi bernomor, sudut, tabel ciri, kalimat.           */
-/* Memutar dan membesarkan tidak mengubah ciri. Logika: lab-bentuk-k2b3.ts.   */
+/* Memutar dan membesarkan tidak mengubah ciri. Cetakan (garis putus-putus)   */
+/* menunjukkan siapa yang selalu pas bila diputar. Logika: lab-bentuk-k2b3.ts. */
 /* ------------------------------------------------------------------------ */
 
 const JARI_DASAR = 62;
 const WARNA_ISI = "#C7D2FE";
 
-export default function SimulasiBentukDatar({ speakGuru }: { speakGuru: (t: string) => void }) {
+export default function SimulasiBentukDatar({ speakGuru, onKeadaan }: { speakGuru: (t: string) => void; onKeadaan?: (k: KeadaanBentuk) => void }) {
   const [tipe, setTipe] = useState<"segi" | "lengkung">("segi");
   const [n, setN] = useState<Sisi>(AWAL_SISI);
   const [lk, setLk] = useState<Lengkung>("lingkaran");
@@ -43,13 +47,20 @@ export default function SimulasiBentukDatar({ speakGuru }: { speakGuru: (t: stri
   const [lihatSisi, setLihatSisi] = useState(true);
   const [lihatSudut, setLihatSudut] = useState(false);
   const [lihatTabel, setLihatTabel] = useState(true);
+  const [lihatCetakan, setLihatCetakan] = useState(false);
 
   const bentuk: Bentuk = tipe === "segi" ? { tipe: "segi", n } : { tipe: "lengkung", jenis: lk };
+  const pas = pasDenganCetakan(bentuk, putar);
   const c = ciri(bentuk);
+
+  useEffect(() => {
+    onKeadaan?.({ alat: "bentuk", tipe, n, jenis: lk, putar, skala, cetakan: lihatCetakan, pas, sisi: lihatSisi });
+  }, [onKeadaan, tipe, n, lk, putar, skala, lihatCetakan, pas, lihatSisi]);
   const jari = JARI_DASAR * SKALA[skala];
   const titik = tipe === "segi" ? titikSegi(n, jari, putar, [100, 100]) : [];
   const nomor = tipe === "segi" ? titikNomorSisi(titik, 13, [100, 100]) : [];
   const poin = titik.map((p) => `${p[0].toFixed(2)},${p[1].toFixed(2)}`).join(" ");
+  const poinCetakan = tipe === "segi" ? titikSegi(n, jari, 0, [100, 100]).map((p) => `${p[0].toFixed(2)},${p[1].toFixed(2)}`).join(" ") : "";
 
   const resetSemua = () => {
     setTipe("segi");
@@ -60,6 +71,7 @@ export default function SimulasiBentukDatar({ speakGuru }: { speakGuru: (t: stri
     setLihatSisi(true);
     setLihatSudut(false);
     setLihatTabel(true);
+    setLihatCetakan(false);
   };
 
   return (
@@ -126,6 +138,15 @@ export default function SimulasiBentukDatar({ speakGuru }: { speakGuru: (t: stri
           {namaBentuk(bentuk)} • {kategori(bentuk)}
         </p>
         <svg viewBox="0 0 200 200" className="mx-auto block w-full max-w-[280px] rounded-2xl bg-indigo-50/60" role="img" aria-label={`${namaBentuk(bentuk)}. ${kalimatBentuk(bentuk)}`}>
+          {lihatCetakan ? (
+            tipe === "segi" ? (
+              <polygon points={poinCetakan} fill="#FEE2E2" stroke="#EF4444" strokeWidth={3} strokeDasharray="6 4" strokeLinejoin="round" />
+            ) : lk === "lingkaran" ? (
+              <circle cx={100} cy={100} r={jari} fill="#FEE2E2" stroke="#EF4444" strokeWidth={3} strokeDasharray="6 4" />
+            ) : (
+              <ellipse cx={100} cy={100} rx={jari} ry={jari * 0.62} fill="#FEE2E2" stroke="#EF4444" strokeWidth={3} strokeDasharray="6 4" />
+            )
+          ) : null}
           {tipe === "segi" ? (
             <>
               <polygon points={poin} fill={WARNA_ISI} stroke={UNGU} strokeWidth={4} strokeLinejoin="round" />
@@ -154,9 +175,17 @@ export default function SimulasiBentukDatar({ speakGuru }: { speakGuru: (t: stri
           )}
         </svg>
         <KalimatBesar teks={kalimatBentuk(bentuk)} warna="bg-[#FFE566]" />
+        {lihatCetakan ? (
+          <p role="status" className={`rounded-xl px-3 py-1.5 text-center text-sm font-black ${pas ? "bg-[#E8F7EE] text-[#14532D]" : "bg-[#FDECEC] text-[#7F1D1D]"}`}>
+            {pas ? "✅ Pas." : "⚠️ Tidak pas."} {kalimatPas(bentuk, putar)}
+          </p>
+        ) : null}
         <div className="flex flex-wrap items-center justify-center gap-1.5">
           <Cek aktif={lihatSisi} onKlik={() => setLihatSisi((x) => !x)}>
             Nomor sisi
+          </Cek>
+          <Cek aktif={lihatCetakan} onKlik={() => setLihatCetakan((x) => !x)}>
+            Cetakan
           </Cek>
           <Cek aktif={lihatSudut} onKlik={() => setLihatSudut((x) => !x)}>
             Titik sudut
@@ -205,7 +234,7 @@ export default function SimulasiBentukDatar({ speakGuru }: { speakGuru: (t: stri
         judul="Coba ini!"
         onDengar={() =>
           speakGuru(
-            "Coba ini. Satu, atur enam sisi lalu hitung sisinya lewat nomor. Dua, putar dan besarkan bentuknya. Apakah jumlah sisinya berubah? Tiga, pindah ke bentuk lengkung. Berapa sisi lurusnya? Empat, kurangi sisi sampai tiga. Apa namanya?"
+            "Coba ini. Satu, atur enam sisi lalu hitung sisinya lewat nomor. Dua, putar dan besarkan bentuknya. Apakah jumlah sisinya berubah? Tiga, pindah ke bentuk lengkung. Berapa sisi lurusnya? Empat, kurangi sisi sampai tiga. Apa namanya? Lima, nyalakan cetakan lalu putar lingkaran dan bentuk lonjong. Mana yang selalu pas?"
           )
         }
         langkah={[
@@ -213,6 +242,7 @@ export default function SimulasiBentukDatar({ speakGuru }: { speakGuru: (t: stri
           "Putar dan besarkan bentuknya. Apakah jumlah sisinya berubah?",
           "Pindah ke Bentuk lengkung. Berapa sisi lurusnya?",
           "Kurangi sisi sampai 3. Apa namanya?",
+          "Nyalakan Cetakan, lalu putar lingkaran dan bentuk lonjong. Mana yang selalu pas?",
         ]}
       />
     </div>

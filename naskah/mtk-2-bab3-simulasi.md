@@ -1,54 +1,73 @@
-# Matematika Kelas 2 · Bab 3 · Tab Simulasi (tiga simulasi, dua metode)
+# Matematika Kelas 2 · Bab 3 · Simulasi SMISCPA (pola hibrida)
 
-Komponen: `src/components/modul/SimulasiK2Bab3.tsx`, didaftarkan di `SIMULASI_BAB["mtk-2-bab3"]`. Tanpa jaringan, tanpa skor, tanpa Poin Kualifikasi, tanpa kuis. Suara lewat `speakGuru`.
+Komponen: `src/components/modul/SimulasiK2Bab3.tsx` (di dalam Materi, tahap 4 SMISCPA), misi di `misi-k2bab3.ts`. Alat:
 
-Bab ini tentang bentuk: A bentuk datar (segitiga, segi empat, segi lima, segi enam, lingkaran), B mengurai dan menyusun bentuk, C bangun ruang (kubus, balok, tabung, kerucut, bola). Isinya eksplorasi bentuk, jadi semua simulasi bersifat bermain bebas, tanpa benar-salah.
+- `SimulasiBentukDatar.tsx` + `lab-bentuk-k2b3.ts` (PhET, kini dengan uji Cetakan)
+- `SimulasiMesinDetektif.tsx` + `mesin-detektif-k2b3.ts` (mesin keadaan, baru)
+- `SimulasiBengkelUrai.tsx` + `lab-urai-k2b3.ts` (lab virtual 2D)
+- `SimulasiLabPola.tsx` + `lab-pola-k2b3.ts` (PhET, baru)
+- `SimulasiLerengGelinding.tsx` + `lab-ruang-k2b3.ts` (PhET percobaan)
+- `SimulasiLabCetak.tsx` + `lab-cetak-k2b3.ts` (PhET, baru)
+- `SimulasiSkenario.tsx` + `skenario-k2b3.ts` (skenario, baru)
 
-| No | Simulasi | Metode | Berkas |
-|----|----------|--------|--------|
-| 1 | Laboratorium Bentuk Datar | PhET | `SimulasiBentukDatar.tsx`, `lab-bentuk-k2b3.ts` |
-| 2 | Bengkel Urai dan Susun | Lab virtual 2D | `SimulasiBengkelUrai.tsx`, `lab-urai-k2b3.ts` |
-| 3 | Lereng Gelinding | PhET (percobaan) | `SimulasiLerengGelinding.tsx`, `lab-ruang-k2b3.ts` |
+Didaftarkan di `SIMULASI_MATERI`, `SIMULASI_MISI_AWAL`, dan `RINGKAS_BAB` (`registri-simulasi.ts`); `SIMULASI_BAB` kini kosong. Mind-Map dan Infografis memakai `src/data/kelas2-bab3-ringkas.json`. Tanpa jaringan, tanpa skor, tanpa Poin Kualifikasi. Suara: `speakGuru`.
 
 ## Penilaian metode
 
 | Metode | Cocok? | Alasan |
 |--------|--------|--------|
-| PhET | Tinggi | Satu bentuk menggerakkan gambar, nomor sisi, tabel ciri, dan kalimat; ciri tetap saat diputar atau dibesarkan |
-| Lab virtual 2D | Tinggi | Anak memilih garis potong di kanvas; mesin menghitung dan menamai keping; merenggangkan lalu merapatkan menunjukkan menyusun |
-| Mesin keadaan | Tidak | Bab ini tidak punya proses berurutan dengan syarat pindah |
-| Skenario | Tidak | Tidak ada keputusan dengan akibat cerita; hindari kuis |
-| Lab 3D | Tidak | Bangun ruang hanya Sub-Bab C dan cukup lewat percobaan menggelinding; 3D terlalu berat untuk HP siswa |
-| CPA di tab ini | Tidak | CPA tetap di Materi |
+| PhET | Tinggi | Satu model menggerakkan gambar, nomor sisi, tabel, dan kalimat: bentuk dan putaran (Sub-Bab A), banyak sisi dan cara menguraikan segi banyak (Sub-Bab B), bangun ruang dan permukaannya (Sub-Bab C) |
+| Mesin keadaan | Tinggi | Mengenali bentuk punya urutan tetap: tepi lurus atau lengkung, lalu ciri (hitung sisi atau uji putar), lalu nama. Mesin menolak lompatan |
+| Skenario | Tinggi | Toko Mainan Upe: keputusan menamai bentuk, memilih cara mengurai, dan memprediksi gerak benda |
+| Lab 2D | Tinggi | Bengkel Urai: memilih garis potong di kanvas, mesin menghitung dan menamai keping |
+| Lab 3D | Tidak | Bangun ruang cukup dipahami lewat percobaan lereng dan cetakan permukaan; tanpa 3D agar ringan di HP |
+| CPA di sini | Tidak | CPA tetap di tahap Concrete, Picture, Abstract |
 
-## Simulasi 1 · Laboratorium Bentuk Datar (PhET)
+## Pola hibrida
 
-Tujuan: sisi dan sudut menentukan nama segi banyak; bentuk lengkung tidak punya sisi lurus dan sudut; memutar dan membesarkan tidak mengubah ciri.
+Satu laboratorium yang alatnya bertambah per sub-bab (maksimal tiga alat per sub-bab). Gerbang LANJUTKAN KE CONCRETE aktif bila semua misi wajib tercapai, atau anak menekan **Lewati misi** setelah menyentuh simulasi sekali. Misi yang sudah tercapai tidak dicabut.
 
-- **Model:** jenis (segi banyak atau bentuk lengkung), banyak sisi 3–6, lingkaran atau lonjong, putaran kelipatan 30°, ukuran kecil/sedang/besar.
-- **Kontrol:** plus/minus banyak sisi, tombol putar kiri dan kanan, pilihan ukuran, kotak centang perwakilan, Reset Semua.
-- **Perwakilan:** gambar, nomor sisi, titik sudut, tabel ciri (sisi lurus, sudut, garis lengkung), kalimat. Tiap perwakilan bisa dimatikan.
-- **Coba ini!** (1) Atur 6 sisi, hitung sisinya lewat nomor. (2) Putar dan besarkan. Apakah jumlah sisi berubah? (3) Pindah ke bentuk lengkung. Berapa sisi lurusnya? (4) Kurangi sisi sampai 3. Apa namanya?
+| Sub-bab | Alat laboratorium | Misi wajib | Tantangan bebas |
+|---------|-------------------|------------|-----------------|
+| A · Bangun datar | Lab Bentuk Datar (dengan Cetakan) + Mesin Tiga Pertanyaan | Segi lima dengan nomor sisi; lingkaran diputar di atas cetakan tetap pas; bentuk lonjong diputar tidak pas; tuntas Mesin Tiga Pertanyaan (empat bentuk misterius) | Segi enam diputar dan ukuran Besar; kurangi sisi sampai segitiga |
+| B · Mengurai dan menyusun | Bengkel Urai + Lab Pola Segitiga + Lab Bentuk Datar (mengingat) | Persegi satu diagonal = dua segitiga; persegi satu garis tengah = dua keping bukan segitiga; segi enam dari satu titik = empat segitiga; Lab Pola segi lima dari satu pojok; Lab Pola segi tujuh dari titik tengah | Renggangkan lalu rapatkan keping; segi enam lewat titik tengah = enam segitiga; Bandingkan di segi delapan; ingat segi lima Sub-Bab A |
+| C · Bangun ruang (pencapaian misi) | Lereng Gelinding + Lab Cetak Permukaan + skenario Toko Mainan Upe | Bola menggelinding; tabung rebah menggelinding; kerucut rebah bergerak melingkar; cetak kubus = segi empat sama sisi; tuntas skenario sampai adegan akhir | Kubus di lereng diam; cetak sisi besar balok; cetak alas tabung atau kerucut = lingkaran |
 
-## Simulasi 2 · Bengkel Urai dan Susun (Lab virtual 2D)
+Keadaan awal alat (tidak boleh langsung memenuhi misi mana pun):
 
-Tujuan: satu bentuk dapat diurai menjadi bentuk lain; cara membelah memengaruhi hasil; keping yang dirapatkan menyusun bentuk semula.
+- Lab Bentuk Datar: segi banyak, enam sisi (`AWAL_SISI`), putaran 0°, ukuran Sedang, nomor sisi dan tabel hidup, Cetakan mati.
+- Mesin Tiga Pertanyaan: stasiun Tepi, bentuk pertama (segi lima), belum ada langkah.
+- Bengkel Urai: persegi utuh (satu keping), keping rapat.
+- Lab Pola Segitiga: empat sisi, dari satu pojok, Bandingkan mati, tabel hidup.
+- Lereng Gelinding: bola, berdiri, belum dilepas.
+- Lab Cetak Permukaan: kubus, sisi, kertas kosong (belum dicetak).
+- Skenario Toko Mainan Upe: adegan pertama (narasi), delapan adegan.
 
-- **Model:** bentuk (persegi, persegi panjang, segi enam) dan himpunan garis potong (diagonal, garis tengah, atau garis antar titik sudut). Pemotongan setengah bidang, jadi urutan ketuk tidak memengaruhi hasil.
-- **Kontrol:** ketuk garis putus-putus di kanvas (atau tombol di bawahnya), contoh cepat, renggang/rapatkan keping, Bentuk utuh, Reset Semua.
-- **Perwakilan:** kanvas keping berwarna menurut nama, nomor keping, tabel keping (nama dan banyaknya), kalimat "Jadi ada N keping".
-- **Perbandingan:** segi enam dari satu titik menjadi 4 segitiga (6 − 2), lewat tengah menjadi 6 segitiga.
-- **Coba ini!** (1) Persegi, 1 diagonal: bentuk kepingnya? (2) Tambah diagonal kedua: berapa keping? (3) Segi enam: bandingkan "Dari satu titik" dan "Lewat tengah". (4) Rapatkan keping: bentuk kembali seperti semula?
+## Alat yang ditambah di pola ini
 
-## Simulasi 3 · Lereng Gelinding (PhET percobaan)
+- **Cetakan** (Lab Bentuk Datar): garis putus-putus pada posisi awal. Segi banyak pas bila putarannya kelipatan sudut antar-pojok (360° dibagi banyak sisi), lingkaran selalu pas, bentuk lonjong hanya pas di kelipatan 180°. Anak melihat sendiri mengapa lingkaran berbeda dari bentuk lengkung lain.
+- **Mesin Tiga Pertanyaan**: Tepi, Ciri, Nama. Jalur lurus menghitung sisi; jalur lengkung menguji putar. Salah jawab atau lompat stasiun hanya mendapat petunjuk, tanpa hukuman. Letak jawaban benar berputar menurut bentuk ke-berapa.
+- **Lab Pola Segitiga**: segi banyak 3 sampai 8 diurai dengan dua cara. Dari satu pojok menghasilkan banyak sisi dikurangi dua, dari titik tengah menghasilkan sebanyak sisinya. Bandingkan menampilkan dua gambar berdampingan dan selisihnya. Luas segitiga-segitiga selalu menutup segi banyaknya (diuji).
+- **Lab Cetak Permukaan**: permukaan datar menghasilkan bangun datar (segi empat sama sisi, segi empat berbeda sisi, lingkaran); permukaan lengkung tidak menghasilkan cetakan rapi. Konsisten dengan Lereng Gelinding dan Lab Bentuk Datar (diuji).
+- **Skenario Toko Mainan Upe**: menamai ubin enam sisi, memilih cara mengurai persegi, soal pola segi enam, menebak gerak benda di lereng, soal cetakan, dan menghitung tujuh bola.
 
-Tujuan: bangun ruang punya permukaan datar atau lengkung; permukaan lengkung yang menyentuh lereng membuat benda menggelinding.
+## Coba ini! (ringkas)
 
-- **Model:** bangun ruang (kubus, balok, tabung, kerucut, bola) dan letaknya (berdiri atau rebah). Hasil: diam, menggelinding, atau bergerak melingkar (kerucut rebah).
-- **Kontrol:** pilih bangun, pilih berdiri atau rebah, Lepas di lereng, Taruh lagi, kotak centang kalimat dan tabel, Reset Semua.
-- **Perwakilan:** gambar bergerak di lereng, kalimat ciri, tabel semua bangun (datar, lengkung, bisa ditumpuk) dengan baris bangun terpilih disorot.
-- **Coba ini!** (1) Lepas bola, lalu kubus. Apa bedanya? (2) Tabung berdiri lalu rebah. Apa yang berubah? (3) Kerucut rebah: ke mana geraknya? (4) Dari tabel, bangun mana yang hanya punya permukaan datar?
+- **Lab Bentuk Datar:** (1) Atur enam sisi dan hitung lewat nomor. (2) Putar dan besarkan: berubahkah jumlah sisinya? (3) Nyalakan Cetakan, putar lingkaran dan bentuk lonjong: mana yang selalu pas?
+- **Mesin Tiga Pertanyaan:** (1) Ketuk stasiun Nama sebelum menjawab Tepi. Apa kata mesin? (2) Pada bentuk lengkung, putar dulu di atas cetakannya. (3) Hitung sisi segi lima dengan menandai satu sisi sebagai awal.
+- **Bengkel Urai:** potong persegi dengan satu diagonal, lalu dengan garis tengah. Mana yang menghasilkan segitiga?
+- **Lab Pola Segitiga:** (1) Segi lima dari satu pojok: berapa segitiga? (2) Ganti ke titik tengah. (3) Bandingkan segi enam: berapa selisihnya? (4) Tebak segitiga pada segi delapan.
+- **Lereng Gelinding:** lepaskan bola, lalu kubus. Rebahkan tabung dan kerucut: apa bedanya?
+- **Lab Cetak:** cetak kubus, sisi besar balok, alas tabung, lalu bola. Mengapa bola tidak punya cetakan rapi?
+- **Skenario:** pilih tindakan yang kurang tepat dulu; main lagi dan ubah pilihan.
 
-## Alur
+## Alur satu layar
 
-Satu layar per simulasi. LANJUTKAN setelah disentuh sekali. Tanpa LLM. Logika murni diuji di `scripts/uji-lab-k2b3.mjs`.
+Satu simulasi per sub-bab di dalam Materi (`dalamPopup`, `LabBertahap`). Tanpa LLM dan tanpa jaringan. Reset Semua mengembalikan model dan semua pilihan tampilan.
+
+## Uji
+
+- `node --no-warnings scripts/uji-lab-k2b3.mjs`: logika Cetakan, Lab Pola, Lab Cetak, mesin detektif (596 cek)
+- `node --no-warnings scripts/uji-lab-kelas2.mjs`: misi hibrida Bab 1 sampai Bab 3 (145 cek)
+- `node --no-warnings scripts/uji-skenario-umum.mjs`: skenario (706 cek)
+- `node --no-warnings scripts/uji-peta-konsep.mjs` dan `scripts/uji-infografis-ringkas.mjs`: data ringkas
