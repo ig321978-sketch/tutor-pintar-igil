@@ -92,7 +92,12 @@ import SimulasiBab4 from "@/components/modul/SimulasiBab4";
 import SimulasiBab5 from "@/components/modul/SimulasiBab5";
 import SimulasiBab6 from "@/components/modul/SimulasiBab6";
 import SimulasiBab7 from "@/components/modul/SimulasiBab7";
-import SimulasiBab8 from "@/components/modul/SimulasiBab8";
+import SimulasiBab8Materi from "@/components/modul/SimulasiBab8";
+import PetaKonsep from "@/components/modul/PetaKonsep";
+import InfografisRingkas from "@/components/modul/InfografisRingkas";
+import type { DataPeta } from "@/components/modul/peta-konsep-logika";
+import type { DataInfografis } from "@/components/modul/infografis-ringkas-logika";
+import ringkasK1B8 from "@/data/kelas1-bab8-ringkas.json";
 import SimulasiK2Bab1 from "@/components/modul/SimulasiK2Bab1";
 import SimulasiK2Bab2 from "@/components/modul/SimulasiK2Bab2";
 import SimulasiK2Bab3 from "@/components/modul/SimulasiK2Bab3";
@@ -969,6 +974,39 @@ const TAHAP_SILABUS = [
   { emoji: "🔢", nama: "Abstract (Simbol Angka)", warna: "#C8EAFB" },
 ];
 
+/** Daftar tahap SMISCPA (tujuh): Simulasi menyisip antara Infografis dan Concrete. */
+const TAHAP_SILABUS_SMISCPA = [
+  TAHAP_SILABUS[0],
+  { emoji: "🗺️", nama: "Mind-Map (Peta Konsep)", warna: "#FFE9A8" },
+  { emoji: "📊", nama: "Infografis (Ketuk dan Bandingkan)", warna: "#CDEFD8" },
+  { emoji: "🧪", nama: "Simulasi (Laboratorium)", warna: "#FBD5F0" },
+  TAHAP_SILABUS[3],
+  TAHAP_SILABUS[4],
+  TAHAP_SILABUS[5],
+];
+
+/**
+ * Kunci tahap Simulasi di dalam Materi. Sengaja pecahan (3,5) supaya menyisip antara Infografis (3)
+ * dan Concrete (4) tanpa menggeser kunci tahap lama yang dipakai ratusan cabang di bawah.
+ */
+const TAHAP_SIMULASI = 3.5;
+
+type SimulasiMateriProps = { sub: string; speakGuru: (teks: string) => void; onSelesai: () => void; teksAkhir: string };
+
+/**
+ * Bab pilot SMISCPA: Simulasi pindah ke dalam Materi (tahap 4) dan tab Simulasi tidak ada.
+ * Mind-Map dan Infografis memakai komponen data-driven ringkas. Bab lain tetap SMICPA + tab Simulasi
+ * sampai dimigrasi.
+ */
+const SIMULASI_MATERI: Partial<Record<string, ComponentType<SimulasiMateriProps>>> = {
+  "mtk-1-bab8": SimulasiBab8Materi,
+};
+
+type RingkasSub = { peta: DataPeta; infografis: DataInfografis };
+const RINGKAS_BAB: Partial<Record<string, Record<string, RingkasSub>>> = {
+  "mtk-1-bab8": ringkasK1B8.subBab as unknown as Record<string, RingkasSub>,
+};
+
 type SimulasiBabProps = { speakGuru: (teks: string) => void; onKeLatihan: () => void };
 
 /** Simulasi tiap bab. Bab yang belum ada di sini tidak menampilkan tab Simulasi. */
@@ -980,7 +1018,6 @@ const SIMULASI_BAB: Partial<Record<string, ComponentType<SimulasiBabProps>>> = {
   "mtk-1-bab5": SimulasiBab5,
   "mtk-1-bab6": SimulasiBab6,
   "mtk-1-bab7": SimulasiBab7,
-  "mtk-1-bab8": SimulasiBab8,
   "mtk-2-bab1": SimulasiK2Bab1,
   "mtk-2-bab2": SimulasiK2Bab2,
   "mtk-2-bab3": SimulasiK2Bab3,
@@ -1006,6 +1043,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   /** Tab Simulasi tampil hanya di bab yang sudah punya simulasi (lihat SIMULASI_BAB). */
   const SimulasiBab = SIMULASI_BAB[bab];
   const adaTabSimulasi = SimulasiBab !== undefined;
+  /** Bab pilot SMISCPA: tahap Simulasi ada di dalam Materi (tahap 4), dan tab Simulasi tidak ada. */
+  const SimulasiMateri = SIMULASI_MATERI[bab];
+  const adaSimMateri = SimulasiMateri !== undefined;
+  const jumlahTahap = adaSimMateri ? 7 : 6;
+  const geserTahap = adaSimMateri ? 1 : 0;
+  const namaMetode = adaSimMateri ? "SMISCPA" : "SMICPA";
+  const daftarTahapSilabus = adaSimMateri ? TAHAP_SILABUS_SMISCPA : TAHAP_SILABUS;
   const materi = paket ? paket.materi : MATERI_BAB[bab as BabLama];
   const SUB_BABS = materi.subBabs as Record<SubBabId, SubBabContent>;
   const daftarSub = Object.keys(materi.subBabs) as SubBabId[];
@@ -1041,6 +1085,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const [batasTabSubBab, setBatasTabSubBab] = useState(74);
   const mindMapRef = useRef<HTMLDivElement | null>(null);
   const infografisRef = useRef<HTMLDivElement | null>(null);
+  const simulasiRef = useRef<HTMLDivElement | null>(null);
   const concreteRef = useRef<HTMLDivElement | null>(null);
   const pictorialRef = useRef<HTMLDivElement | null>(null);
   const abstractRef = useRef<HTMLDivElement | null>(null);
@@ -1420,6 +1465,8 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
 
   const currentSubContent = SUB_BABS[activeSubBab];
   const modulBaru = paket ? paket.sub[activeSubBab] : MODUL_SUBBAB[`${bab}-${activeSubBab}`];
+  /** Data Mind-Map dan Infografis ringkas untuk sub-bab aktif (hanya bab pilot SMISCPA). */
+  const ringkasSub = adaSimMateri ? RINGKAS_BAB[bab]?.[activeSubBab] : undefined;
   const subB2 = bab === "mtk-1-bab2" && activeSubBab === "B";
   const subC2 = bab === "mtk-1-bab2" && activeSubBab === "C";
   const subB3 = bab === "mtk-1-bab3" && activeSubBab === "B";
@@ -1572,7 +1619,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             {(
               [
                 { id: "silabus", label: "Silabus", keterangan: "Target & Capaian" },
-                { id: "materi", label: "Materi", keterangan: "Metode SMICPA" },
+                { id: "materi", label: "Materi", keterangan: `Metode ${namaMetode}` },
                 { id: "simulasi", label: "Simulasi", keterangan: "Lab Interaktif" },
                 { id: "latihan", label: "Latihan", keterangan: "40% HOTS" },
                 { id: "ujian", label: "Ujian", keterangan: "100% HOTS" },
@@ -1655,11 +1702,11 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                   currentSubContent.silabus
                     ? currentSubContent.silabus.teksSuara
                     : subA8
-                    ? "Kita belajar mengelompokkan data. Bukunya bernama Mengenal Diagram, bagian mengelompokkan data. Kita mengelompokkan benda yang sama, menghitungnya dengan turus, menuliskannya dalam daftar, lalu menyajikannya dalam tabel yang punya baris dan kolom. Kita juga belajar membaca yang paling banyak, yang paling sedikit, dan jumlah semuanya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
+                    ? "Kita belajar mengelompokkan data. Bukunya bernama Mengenal Diagram, bagian mengelompokkan data. Kita mengelompokkan benda yang sama, menghitungnya dengan turus, menuliskannya dalam daftar, lalu menyajikannya dalam tabel yang punya baris dan kolom. Kita juga belajar membaca yang paling banyak, yang paling sedikit, dan jumlah semuanya. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, simulasi, benda nyata, gambar, dan simbol."
                     : subB8
-                    ? "Kita belajar diagram gambar. Bukunya bernama Mengenal Diagram, bagian diagram gambar. Satu gambar mewakili satu data. Kita membuat dan membaca diagram gambar yang tegak maupun mendatar, membandingkan data dengan kata paling banyak dan paling sedikit, dan menghitung jumlah semuanya. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
+                    ? "Kita belajar diagram gambar. Bukunya bernama Mengenal Diagram, bagian diagram gambar. Satu gambar mewakili satu data. Kita membuat dan membaca diagram gambar yang tegak maupun mendatar, membandingkan data dengan kata paling banyak dan paling sedikit, dan menghitung jumlah semuanya. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, simulasi, benda nyata, gambar, dan simbol."
                     : adaBab8
-                    ? "Kita belajar mengenal diagram. Bukunya bernama Mengenal Diagram. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
+                    ? "Kita belajar mengenal diagram. Bukunya bernama Mengenal Diagram. Kita melewati tujuh tahap seru: cerita, peta pikiran, infografis, simulasi, benda nyata, gambar, dan simbol."
                     : subA7
                     ? "Kita belajar membandingkan dan mengurutkan panjang benda. Bukunya bernama Mengukur Panjang Benda, bagian membandingkan dan mengurutkan panjang benda. Kita membandingkan tinggi dan panjang dengan kata lebih tinggi, lebih pendek, sama tinggi, paling tinggi, dan paling pendek, lalu mengurutkan benda dari yang paling pendek atau paling tinggi. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol."
                     : subB7
@@ -1813,9 +1860,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                     </div>
                   </BarisIkon>
                 ) : null}
-                <BarisIkon emoji="🚀" warna="#CDEFD8" judul="Metode Pedagogis SMICPA">
+                <BarisIkon emoji="🚀" warna="#CDEFD8" judul={`Metode Pedagogis ${namaMetode}`}>
                   <span className="flex flex-wrap gap-2.5 pt-2">
-                    {TAHAP_SILABUS.map((s, i) => (
+                    {daftarTahapSilabus.map((s, i) => (
                       <span
                         key={s.nama}
                         className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-black text-[#1C01A5]"
@@ -2068,11 +2115,13 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           {/* SLIDED COMPONENT 1: STORY (3 GAMBAR DOODLE BERWARNA • TANPA TEKS) */}
           {/* --------------------------------------------------------------- */}
           <p className="rounded-2xl border-4 border-[#1C01A5] bg-[#FFF7CC] px-3 py-2 text-center text-sm font-black leading-snug text-[#1C01A5]">
-            📚 Enam tahap SMICPA: di HP disusun menurun, di desktop menyamping. Ketuk ▶ Buka — isinya muncul di layar pop-up.
+            📚 {adaSimMateri ? "Tujuh" : "Enam"} tahap {namaMetode}: di HP disusun menurun, di desktop menyamping. Ketuk ▶ Buka — isinya muncul di layar pop-up.
           </p>
           <div className="flex w-full flex-col items-stretch gap-3 md:flex-row md:flex-nowrap md:items-stretch md:gap-3 md:overflow-x-auto md:pb-2 md:[scrollbar-color:#FFE566_#1C01A5] md:[scrollbar-width:thin] md:snap-x md:snap-mandatory">
           <PopUpTahapSmicpa
             nomor={1}
+            jumlahTahap={jumlahTahap}
+            namaMetode={namaMetode}
             judul="Story"
             ringkas="Cerita dan video"
             emoji="📖"
@@ -2191,8 +2240,10 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           <PopUpTahapSmicpa
             ref={mindMapRef}
             nomor={2}
+            jumlahTahap={jumlahTahap}
+            namaMetode={namaMetode}
             judul="Mind-Map"
-            ringkas="Peta pikiran"
+            ringkas={adaSimMateri ? "Peta konsep" : "Peta pikiran"}
             emoji="🗺️"
             badgeClass="bg-[#FEF3C7] text-[#92400E]"
             terbuka={unlockedSmicpaStage >= 2}
@@ -2200,7 +2251,24 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             onBuka={() => setPopupTahap(2)}
             onTutup={() => setPopupTahap(null)}
           >
-            {popupTahap === 2 ? (
+            {popupTahap === 2 && ringkasSub ? (
+            <PetaKonsep
+              key={`${bab}-${activeSubBab}`}
+              data={ringkasSub.peta}
+              judul={judulSubBab}
+              kelas={kelasPeta}
+              maskot={maskotPeta}
+              speakGuru={speakGuru}
+              teksLanjut="LANJUTKAN KE INFOGRAFIS ⬇️"
+              onLanjut={() =>
+                handleUnlockNextSmicpa(
+                  3,
+                  infografisRef,
+                  "Peta konsep sudah jelas! Sekarang kita buka Infografis."
+                )
+              }
+            />
+            ) : popupTahap === 2 ? (
             <div className="space-y-3">
               <PetaPikiranB
                 langkah={langkahPeta}
@@ -2235,8 +2303,10 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           <PopUpTahapSmicpa
             ref={infografisRef}
             nomor={3}
+            jumlahTahap={jumlahTahap}
+            namaMetode={namaMetode}
             judul="Infografis"
-            ringkas="Tabel ringkasan"
+            ringkas={adaSimMateri ? "Ketuk dan bandingkan" : "Tabel ringkasan"}
             emoji="📊"
             badgeClass="bg-[#DCFCE7] text-[#166534]"
             terbuka={unlockedSmicpaStage >= 3}
@@ -2244,7 +2314,21 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             onBuka={() => setPopupTahap(3)}
             onTutup={() => setPopupTahap(null)}
           >
-            {popupTahap === 3 ? (
+            {popupTahap === 3 && ringkasSub ? (
+            <InfografisRingkas
+              key={`${bab}-${activeSubBab}`}
+              data={ringkasSub.infografis}
+              speakGuru={speakGuru}
+              teksLanjut="LANJUTKAN KE SIMULASI ⬇️"
+              onLanjut={() =>
+                handleUnlockNextSmicpa(
+                  TAHAP_SIMULASI,
+                  simulasiRef,
+                  "Infografis selesai! Sekarang kita bereksperimen di Simulasi."
+                )
+              }
+            />
+            ) : popupTahap === 3 ? (
             <div className="space-y-3">
               {modulBaru ? (
                 <modulBaru.Infografis speakGuru={speakGuru} />
@@ -2412,11 +2496,49 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           </PopUpTahapSmicpa>
 
           {/* --------------------------------------------------------------- */}
+          {/* SLIDED COMPONENT 3B: SIMULASI (hanya bab pilot SMISCPA)         */}
+          {/* --------------------------------------------------------------- */}
+          {adaSimMateri && SimulasiMateri ? (
+          <PopUpTahapSmicpa
+            ref={simulasiRef}
+            nomor={4}
+            jumlahTahap={jumlahTahap}
+            namaMetode={namaMetode}
+            judul="Simulasi"
+            ringkas="Laboratorium"
+            emoji="🧪"
+            badgeClass="bg-[#EDE9FE] text-[#5B21B6]"
+            terbuka={unlockedSmicpaStage >= TAHAP_SIMULASI}
+            buka={popupTahap === TAHAP_SIMULASI}
+            onBuka={() => setPopupTahap(TAHAP_SIMULASI)}
+            onTutup={() => setPopupTahap(null)}
+          >
+            {popupTahap === TAHAP_SIMULASI ? (
+              <SimulasiMateri
+                key={`${bab}-${activeSubBab}`}
+                sub={activeSubBab}
+                speakGuru={speakGuru}
+                teksAkhir="LANJUTKAN KE CONCRETE ⬇️"
+                onSelesai={() =>
+                  handleUnlockNextSmicpa(
+                    4,
+                    concreteRef,
+                    "Simulasi selesai! Sekarang ayo kita praktikkan langsung dengan Benda Nyata pada tahap Concrete."
+                  )
+                }
+              />
+            ) : null}
+          </PopUpTahapSmicpa>
+          ) : null}
+
+          {/* --------------------------------------------------------------- */}
           {/* SLIDED COMPONENT 4: CONCRETE (3 SLIDE BENDA NYATA + KANVAS)     */}
           {/* --------------------------------------------------------------- */}
           <PopUpTahapSmicpa
             ref={concreteRef}
-            nomor={4}
+            nomor={4 + geserTahap}
+            jumlahTahap={jumlahTahap}
+            namaMetode={namaMetode}
             judul="Concrete"
             ringkas="Benda nyata"
             emoji="🧱"
@@ -2866,7 +2988,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           {/* --------------------------------------------------------------- */}
           <PopUpTahapSmicpa
             ref={pictorialRef}
-            nomor={5}
+            nomor={5 + geserTahap}
+            jumlahTahap={jumlahTahap}
+            namaMetode={namaMetode}
             judul="Picture"
             ringkas="Diagram gambar"
             emoji="🖼️"
@@ -3336,7 +3460,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           {/* --------------------------------------------------------------- */}
           <PopUpTahapSmicpa
             ref={abstractRef}
-            nomor={6}
+            nomor={6 + geserTahap}
+            jumlahTahap={jumlahTahap}
+            namaMetode={namaMetode}
             judul="Abstract"
             ringkas="Angka dan simbol"
             emoji="🔢"

@@ -1,18 +1,20 @@
 ---
-description: Standar Tab Simulasi bergaya PhET pada modul Matematika (Kelas 1 Bab 1 sampai 8 sudah ada)
+description: Standar Simulasi bergaya PhET pada modul Matematika (tahap 4 SMISCPA di dalam Materi; tab Simulasi hanya untuk bab yang belum dimigrasi)
 alwaysApply: true
 ---
 
-# Tab Simulasi bergaya PhET
+# Simulasi bergaya PhET (tahap 4 SMISCPA)
 
-Tab **Simulasi** berada di antara Materi dan Latihan. Tab hanya tampil di bab yang terdaftar di `SIMULASI_BAB` (`IgilModulePlayer.tsx`); Kelas 1 Bab 1 sampai 8 sudah terdaftar. Bab baru: buat `SimulasiBab<N>.tsx` dengan `simulasi-alur.tsx`, lalu daftarkan. Simulasi tidak mengunci Latihan dan tidak memberi Poin Kualifikasi. Peta simulasi Kelas 1 ada di `naskah/mtk-1-simulasi-bab1-7.md` dan `naskah/mtk-1-bab8-simulasi.md`.
+Metode IGIL kini **SMISCPA**: Story → Mind-map → Infografis → **Simulasi** → Concrete → Pictorial → Abstract. Simulasi adalah **tahap 4 di dalam Materi**, bukan tab terpisah. Bab pilot: **Kelas 1 Bab 8**, didaftarkan di `SIMULASI_MATERI` (`IgilModulePlayer.tsx`), komponen `SimulasiBab8Materi` per sub-bab, dengan Mind-Map dan Infografis ringkas dari `src/data/kelas1-bab8-ringkas.json` (lihat `naskah/mtk-1-bab8-ringkas-smiscpa.md`).
+
+Bab yang belum dimigrasi masih memakai **tab Simulasi** di antara Materi dan Latihan, terdaftar di `SIMULASI_BAB` (Kelas 1 Bab 1 sampai 7, Kelas 2 Bab 1 sampai 3). Migrasi sebuah bab: tulis data ringkasnya, bagi simulasinya ke sub-bab (kira-kira dua per sub-bab), pindahkan pendaftarannya dari `SIMULASI_BAB` ke `SIMULASI_MATERI` dan `RINGKAS_BAB`. Bab baru yang belum punya simulasi: buat `SimulasiBab<N>.tsx` dengan `simulasi-alur.tsx` lalu daftarkan di salah satu registri itu. Simulasi tidak memberi Poin Kualifikasi dan tidak boleh menahan anak: di dalam Materi, tombol lanjut aktif setelah simulasinya disentuh sekali. Peta simulasi Kelas 1 ada di `naskah/mtk-1-simulasi-bab1-7.md` dan `naskah/mtk-1-bab8-simulasi.md`.
 
 Setiap simulasi baru wajib memenuhi ini:
 
 - **Eksplorasi bebas.** Tidak ada skor, waktu, atau benar-salah. Salah letak dijawab dengan petunjuk pendek, bukan hukuman.
 - **Satu model, banyak perwakilan terhubung.** Mengubah model mengubah benda, daftar, turus, tabel, diagram, dan kalimat seketika. Siswa boleh menyalakan atau mematikan tiap perwakilan dan menukar bentuknya.
 - **Manipulasi langsung.** Seret, atau ketuk lalu ketuk tujuan, dengan jalur papan ketik (Enter). Tombol plus dan minus besar. Benda yang diseret diabaikan saat membaca zona tujuan.
-- **Alur satu layar.** Satu simulasi per layar ("Simulasi 1 dari N"). Tombol LANJUTKAN KE SIMULASI BERIKUTNYA bergerak berurutan, dan simulasi terakhir memakai LANJUTKAN KE LATIHAN. Tombol aktif setelah siswa menyentuh simulasinya sekali (tombol suara tidak dihitung), dengan petunjuk "Mainkan dulu simulasinya, ya." selama belum. Keadaan simulasi dipertahankan saat KEMBALI.
+- **Alur satu layar.** Satu simulasi per layar ("Simulasi 1 dari N"). Tombol LANJUTKAN KE SIMULASI BERIKUTNYA bergerak berurutan, dan simulasi terakhir memakai LANJUTKAN KE LATIHAN di tab, atau LANJUTKAN KE CONCRETE di dalam Materi (`teksAkhir`, `onSelesai`, `dalamPopup` pada `simulasi-alur.tsx`). Tombol aktif setelah siswa menyentuh simulasinya sekali (tombol suara tidak dihitung), dengan petunjuk "Mainkan dulu simulasinya, ya." selama belum. Keadaan simulasi dipertahankan saat KEMBALI.
 - **Reset Semua** mengembalikan model dan semua pilihan tampilan.
 - **Kartu "Coba ini!"** berisi 3 sampai 4 langkah selidik tanpa kunci jawaban, dengan tombol suara.
 - **Batas wajar.** Bilangan tetap dalam jangkauan kelas, skala tetap tidak berubah-ubah.

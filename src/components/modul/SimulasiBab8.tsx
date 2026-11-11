@@ -27,9 +27,9 @@ import SimulasiMesinData from "./SimulasiMesinData";
 import SimulasiSkenarioPesta from "./SimulasiSkenarioPesta";
 
 /* ------------------------------------------------------------------------ */
-/* Tab Simulasi Bab 8, bergaya PhET. Dua simulasi, tanpa skor, tanpa waktu,   */
-/* tanpa benar-salah. Anak menyentuh model, dan semua perwakilan data ikut    */
-/* berubah seketika:                                                          */
+/* Simulasi Bab 8 (tahap Simulasi di Materi SMISCPA), bergaya PhET. Tanpa    */
+/* skor, tanpa waktu, tanpa benar-salah. Anak menyentuh model, dan semua      */
+/* perwakilan data ikut berubah seketika:                                     */
 /*  1 Laboratorium Data (Sub-Bab A): benda, daftar, turus, tabel              */
 /*  2 Pabrik Diagram Gambar (Sub-Bab B): survei, diagram, tabel, kalimat      */
 /* Tidak ada pemanggilan jaringan. Suara memakai Suara Guru pilihan siswa.    */
@@ -710,15 +710,44 @@ function SimulasiDiagram({ speakGuru }: { speakGuru: (t: string) => void }) {
 }
 
 /* ======================================================================== */
-/* Pembungkus tab Simulasi Bab 8                                            */
+/* Simulasi Bab 8 di dalam Materi (tahap 4 SMISCPA, di antara Infografis    */
+/* dan Concrete). Dua simulasi per sub-bab, satu per layar:                 */
+/*   Sub-Bab A (Mengelompokkan Data): Laboratorium Data + Mesin Data Ajaib  */
+/*   Sub-Bab B (Diagram Gambar):      Pabrik Diagram + Sekretaris Kelas     */
+/* Tombol LANJUTKAN aktif setelah simulasinya disentuh sekali (semua mode   */
+/* "sentuh"), supaya tahap ini ringan dan tidak menahan anak.               */
 /* ======================================================================== */
 
-export default function SimulasiBab8({ speakGuru, onKeLatihan }: { speakGuru: (t: string) => void; onKeLatihan: () => void }) {
-  const langkah: LangkahSim[] = [
-    { metode: "PhET", sub: "Laboratorium Data", petunjuk: "Mainkan dulu simulasinya, ya.", mode: "sentuh", render: (a) => <SimulasiData speakGuru={a.speakGuru} /> },
-    { metode: "PhET", sub: "Pabrik Diagram", petunjuk: "Mainkan dulu simulasinya, ya.", mode: "sentuh", render: (a) => <SimulasiDiagram speakGuru={a.speakGuru} /> },
-    { metode: "Mesin keadaan", sub: "Mesin Data Ajaib", petunjuk: "Jalankan mesinnya sampai Selesai dulu, ya.", mode: "tuntas", render: (a) => <SimulasiMesinData speakGuru={a.speakGuru} onTuntas={a.tuntas} /> },
-    { metode: "Skenario", sub: "Sekretaris Kelas", petunjuk: "Selesaikan skenarionya sampai akhir dulu, ya.", mode: "tuntas", render: (a) => <SimulasiSkenarioPesta speakGuru={a.speakGuru} onTuntas={a.tuntas} /> },
+const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
+
+export default function SimulasiBab8Materi({
+  sub,
+  speakGuru,
+  onSelesai,
+  teksAkhir,
+}: {
+  sub: string;
+  speakGuru: (t: string) => void;
+  onSelesai: () => void;
+  teksAkhir: string;
+}) {
+  const subA: LangkahSim[] = [
+    { metode: "PhET", sub: "Laboratorium Data", petunjuk: MAINKAN_DULU, mode: "sentuh", render: (a) => <SimulasiData speakGuru={a.speakGuru} /> },
+    { metode: "Mesin keadaan", sub: "Mesin Data Ajaib", petunjuk: MAINKAN_DULU, mode: "sentuh", render: (a) => <SimulasiMesinData speakGuru={a.speakGuru} onTuntas={a.tuntas} /> },
   ];
-  return <SimulasiAlur judulBab="Bab 8" langkah={langkah} speakGuru={speakGuru} onKeLatihan={onKeLatihan} />;
+  const subB: LangkahSim[] = [
+    { metode: "PhET", sub: "Pabrik Diagram", petunjuk: MAINKAN_DULU, mode: "sentuh", render: (a) => <SimulasiDiagram speakGuru={a.speakGuru} /> },
+    { metode: "Skenario", sub: "Sekretaris Kelas", petunjuk: MAINKAN_DULU, mode: "sentuh", render: (a) => <SimulasiSkenarioPesta speakGuru={a.speakGuru} onTuntas={a.tuntas} /> },
+  ];
+  const adalahB = sub === "B";
+  return (
+    <SimulasiAlur
+      judulBab={`Bab 8 · Sub-Bab ${adalahB ? "B" : "A"}`}
+      langkah={adalahB ? subB : subA}
+      speakGuru={speakGuru}
+      onSelesai={onSelesai}
+      teksAkhir={teksAkhir}
+      dalamPopup
+    />
+  );
 }

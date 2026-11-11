@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { TOMBOL_BIASA, TOMBOL_UTAMA } from "./simulasi-bersama";
 
@@ -31,13 +31,24 @@ export default function SimulasiAlur({
   langkah,
   speakGuru,
   onKeLatihan,
+  onSelesai,
+  teksAkhir,
+  dalamPopup = false,
 }: {
   judulBab: string;
   langkah: LangkahSim[];
   speakGuru: (t: string) => void;
-  onKeLatihan: () => void;
+  /** Dipanggil di simulasi terakhir pada tab Simulasi (menuju Latihan). */
+  onKeLatihan?: () => void;
+  /** Dipakai bila simulasi berada di dalam Materi (SMISCPA): menuju tahap berikutnya. Menang atas onKeLatihan. */
+  onSelesai?: () => void;
+  /** Teks tombol di simulasi terakhir. Bawaan: LANJUTKAN KE LATIHAN. */
+  teksAkhir?: string;
+  /** Di dalam pop-up Materi, layar yang menggulir adalah pop-up, bukan jendela. */
+  dalamPopup?: boolean;
 }) {
   const jumlah = langkah.length;
+  const akar = useRef<HTMLElement | null>(null);
   const [ke, setKe] = useState(0);
   const [dimainkan, setDimainkan] = useState<boolean[]>(() => langkah.map(() => false));
   const ini = langkah[ke];
@@ -59,17 +70,22 @@ export default function SimulasiAlur({
 
   const pindah = (tujuan: number) => {
     setKe(tujuan);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (dalamPopup) akar.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    else window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const lanjut = () => {
     if (!siap) return;
-    if (terakhir) onKeLatihan();
+    if (terakhir) (onSelesai ?? onKeLatihan)?.();
     else pindah(ke + 1);
   };
 
   return (
-    <section className="mx-auto mt-4 w-[98%] space-y-4 rounded-3xl border-2 border-indigo-100 bg-indigo-50/40 p-3 md:p-6" aria-label={`Laboratorium Simulasi ${judulBab}`}>
+    <section
+      ref={akar}
+      className={`mx-auto space-y-4 rounded-3xl border-2 border-indigo-100 bg-indigo-50/40 p-3 md:p-6 ${dalamPopup ? "w-full" : "mt-4 w-[98%]"}`}
+      aria-label={`Laboratorium Simulasi ${judulBab}`}
+    >
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <span className="rounded-full bg-[#1C01A5] px-3 py-1 text-xs font-black uppercase text-[#FFE566]">LABORATORIUM SIMULASI • {judulBab}</span>
@@ -128,7 +144,7 @@ export default function SimulasiAlur({
         )}
         <div className="flex flex-col items-end gap-1">
           <button type="button" onClick={lanjut} aria-disabled={!siap} className={`${TOMBOL_UTAMA} px-6 py-3 ${siap ? "" : "opacity-50"}`}>
-            {terakhir ? "LANJUTKAN KE LATIHAN ➡️" : "LANJUTKAN KE SIMULASI BERIKUTNYA ➡️"}
+            {terakhir ? (teksAkhir ?? "LANJUTKAN KE LATIHAN ➡️") : "LANJUTKAN KE SIMULASI BERIKUTNYA ➡️"}
           </button>
           {siap ? null : (
             <p role="status" className="text-xs font-black text-[#1C01A5]/80">

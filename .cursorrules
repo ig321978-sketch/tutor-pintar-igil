@@ -24,7 +24,7 @@ Kamu adalah Principal System Architect untuk platform EdTech sosial "IGIL" (Inte
 Untuk menjamin efisiensi biaya operasional hingga mendekati Rp 0 saat ribuan siswa belajar bersamaan, patuhi aturan arsitektur modul berikut tanpa pengecualian:
 
 1. **DILARANG Memanggil AI Saat Siswa Belajar (Zero Runtime LLM Calls):**
-   - **Aktivasi Otak** serta **4 Tab Modul Bab** (**1. Silabus**, **2. Materi (Metode SMICPA + Simulasi Interaktif)**, **3. Latihan (30 Poin Kualifikasi)**, dan **4. Ujian (70 Poin Kualifikasi)**) DILARANG KERAS melakukan request ke API LLM (OpenAI/Anthropic/Gemini/Grok) saat diakses oleh siswa.
+   - **Aktivasi Otak** serta **4 Tab Modul Bab** (**1. Silabus**, **2. Materi (Metode SMISCPA, memuat Simulasi Interaktif)**, **3. Latihan (30 Poin Kualifikasi)**, dan **4. Ujian (70 Poin Kualifikasi)**) DILARANG KERAS melakukan request ke API LLM (OpenAI/Anthropic/Gemini/Grok) saat diakses oleh siswa.
    - Satu-satunya pemanggilan API AI saat aplikasi berjalan (*runtime*) HANYA diizinkan tepat **1 kali** ketika siswa menekan tombol **"Serahkan Praktikum"** pada halaman **Praktikum Blok (50 Poin Kualifikasi)** yang terbuka di akun siswa setelah 4 bab lulus Ujian 100% (*On-Submit Hidden Grading*).
 
 2. **Mekanisme Generate Modul (Build-Time / Authoring-Time):**
@@ -33,14 +33,14 @@ Untuk menjamin efisiensi biaya operasional hingga mendekati Rp 0 saat ribuan sis
 
 3. **Strategi Multi-Layer Caching (Hemat Bandwidth & Instan di HP Siswa):**
    - **Layer 1 (Static Bundle / CDN Cache):** File JSON bab disajikan sebagai aset statis Next.js dengan header `Cache-Control: public, max-age=31536000, immutable`.
-   - **Layer 2 (Browser Local Cache):** Saat siswa membuka sebuah bab untuk pertama kali, simpan payload JSON bab tersebut dan progres belajar siswa di `localStorage` / `IndexedDB` browser dengan kunci versi (`igil_cache_[chapter_id]_v1`) agar navigasi tahapan SMICPA berjalan instan (0 ms latensi) dan tetap bisa dibaca meski sinyal internet siswa putus-nyambung.
+   - **Layer 2 (Browser Local Cache):** Saat siswa membuka sebuah bab untuk pertama kali, simpan payload JSON bab tersebut dan progres belajar siswa di `localStorage` / `IndexedDB` browser dengan kunci versi (`igil_cache_[chapter_id]_v1`) agar navigasi tahapan SMISCPA berjalan instan (0 ms latensi) dan tetap bisa dibaca meski sinyal internet siswa putus-nyambung.
    - **Layer 3 (Database Sync Hemat):** Jangan mengirim request ke Supabase setiap kali siswa berpindah tahapan materi. Kumpulkan progres lokal dan hanya kirim ke Supabase melalui fungsi RPC saat siswa menyelesaikan 1 komponen utuh (Selesai Materi, Submit Latihan, Submit Ujian, atau Submit Praktikum).
 
 4. **Kontrak Skema Baku JSON Modul (`ChapterSchema`):**
    Setiap kali men-*generate* file JSON bab baru di `src/data/`, struktur objek WAJIB mematuhi skema standar berikut agar tidak pernah merusak komponen UI:
    - `chapter_id`, `phase_code`, `grade`, `subject`, `title`, `points_reward` (`practice: 30`, `exam: 70` per bab = 100 Poin Kualifikasi per bab; sedangkan `practicum: 50` berada di tingkat Blok 4 Bab sehingga satu blok penuh = 450 Poin Kualifikasi).
    - `silabus`: `{ fase, elemen, capaian_pembelajaran, tujuan_pembelajaran[], peta_smicpa[] }`
-   - `materi` (berbasis metode SMICPA + simulasi interaktif di dalamnya): `{ smicpa_code ('S'|'M'|'I'|'C'|'P'|'A'), smicpa_stage, title, story_text, concept_explanation[], key_formula, visual_board: { type ('story'|'mind_map'|'infografis'|'concrete'|'pictorial'|'abstract'), ...data }, simulasi?: { id, title, instruction, mode ('ten_frame'|'number_bond'|'comparison'), ...config, success_message } }[]`
+   - `materi` (berbasis metode SMISCPA; simulasi interaktif tahap 4 didaftarkan di komponen pemutar, bukan di JSON bab; data Mind-Map dan Infografis ringkas bab pilot ada di `src/data/kelas<K>-bab<N>-ringkas.json`): `{ smicpa_code ('S'|'M'|'I'|'C'|'P'|'A'), smicpa_stage, title, story_text, concept_explanation[], key_formula, visual_board: { type ('story'|'mind_map'|'infografis'|'concrete'|'pictorial'|'abstract'), ...data }, simulasi?: { id, title, instruction, mode ('ten_frame'|'number_bond'|'comparison'), ...config, success_message } }[]`
    - `practice_questions` (10 soal): `{ id, question, visual_hint, options[4], correct_index, explanation }`
    - `exam_questions` (10 soal): `{ id, question, options[4], correct_index }`
 
@@ -49,7 +49,7 @@ Untuk menjamin efisiensi biaya operasional hingga mendekati Rp 0 saat ribuan sis
 ## 2. PEMBAGIAN TUGAS ESTAFET 3 MODEL AI DI CURSOR
 Patuhi batas teritorial file sesuai peran model yang sedang dipilih oleh Kapten Iwan:
 1. **Meja Naskah & Kurikulum (`Gemini 4 Argon`):**
-   - Fokus men-*generate* dan memperkaya file konten kurikulum di `src/data/*.json` sesuai buku Kurikulum Merdeka SD (Kelas 1–6) dan konsep metode SMICPA.
+   - Fokus men-*generate* dan memperkaya file konten kurikulum di `src/data/*.json` sesuai buku Kurikulum Merdeka SD (Kelas 1–6) dan konsep metode SMISCPA.
    - DILARANG merombak tampilan `.tsx` atau skema `.sql` kecuali diminta secara eksplisit.
 2. **Meja Visual, SVG & Animasi (`Claude Sonnet`):**
    - Fokus membangun dan mempercantik komponen UI/UX di `src/components/*.tsx` dan `src/app/**` menggunakan Tailwind CSS dan SVG interaktif.
@@ -68,19 +68,23 @@ Seluruh halaman dan komponen aplikasi IGIL WAJIB menggunakan kombinasi 3 warna i
 
 ---
 
-## 4. AKTIVASI OTAK, 4 TAB MODUL BAB (SMICPA), & PRAKTIKUM BLOK 4 BAB
+## 4. AKTIVASI OTAK, 4 TAB MODUL BAB (SMISCPA), & PRAKTIKUM BLOK 4 BAB
 - **Aktivasi Otak (Gerbang Sesi — Sudah Berjalan)**: Ditampilkan **1x setiap 6 jam** di awal sesi ketika aplikasi IGIL dibuka sebelum memulai pembelajaran, dengan **permainan yang berbeda-beda setiap sesinya**. Bukan bagian dari tab per bab.
 
-Setiap modul bab WAJIB memiliki **4 Tab Komponen** berurutan, dan **Tab Simulasi (bergaya PhET) menjadi tab kelima yang tampil di antara Materi dan Latihan pada bab yang sudah punya simulasi** (mulai Bab 8; standar di `.cursor/rules/simulasi-phet.mdc`). Tab Praktikum dihapus dari dalam modul per bab:
-1. **Silabus**: Peta Capaian Pembelajaran (CP), Tujuan Pembelajaran (TP), dan alur konsep SMICPA.
-2. **Materi (Metode SMICPA + Simulasi Interaktif)**:
+Metode belajar IGIL bernama **SMISCPA** (menggantikan SMICPA): **S**tory → **M**ind-map → **I**nfografis → **S**imulasi → **C**oncrete → **P**ictorial → **A**bstract, tujuh tahap di dalam tab Materi. **Simulasi (bergaya PhET dan metode lain yang cocok) menjadi tahap 4 di dalam Materi, bukan tab terpisah** (standar di `.cursor/rules/simulasi-phet.mdc`). Setiap modul bab WAJIB memiliki **4 Tab Komponen** berurutan. Tab Praktikum dihapus dari dalam modul per bab.
+
+**Status migrasi (jujur, per Nov 2026):** Kelas 1 Bab 8 (`mtk-1-bab8`) adalah bab **pilot** yang sudah memakai tujuh tahap SMISCPA dan tidak punya tab Simulasi. Bab lain masih memakai enam tahap SMICPA (dengan tab Simulasi kelima di bab yang sudah punya simulasi) sampai dimigrasi. UI menampilkan nama metode sesuai kenyataan bab itu. Pendaftar: `SIMULASI_MATERI` (di dalam Materi) dan `SIMULASI_BAB` (tab) di `IgilModulePlayer.tsx`.
+
+1. **Silabus**: Peta Capaian Pembelajaran (CP), Tujuan Pembelajaran (TP), dan alur konsep SMISCPA.
+2. **Materi (Metode SMISCPA)**:
    - **[S] Story (Cerita)**: Pengantar cerita kontekstual sehari-hari.
-   - **[M] Mind-Mapping (Peta Pikiran)**: Diagram cabang konsep inti bab.
-   - **[I] Infografis (Tabel Rangkuman)**: Tabel ringkasan terstruktur.
+   - **[M] Mind-Map (Peta Konsep)**: SATU komponen data-driven (`PetaKonsep.tsx`) untuk semua kelas. Data berisi pusat dan 3–4 cabang. Anak mengetuk cabang untuk membukanya, lalu menyusun kartu ke cabang yang benar. Tanpa skor dan tanpa hukuman. Ciri tiap kelas hanya warna dan maskot, bukan bentuk tampilan.
+   - **[I] Infografis (Ringkas dan Interaktif)**: Paling banyak 3 panel, satu ide per panel, tanpa tabel yang digeser (`InfografisRingkas.tsx`). Anak mengetuk untuk membuka isi atau membandingkan dua hal. Kemajuan dihitung dari ketukan, tidak bergantung pada suara.
+   - **[S] Simulasi**: Eksplorasi bebas di antara Infografis dan Concrete, satu simulasi per layar, tombol lanjut aktif setelah disentuh sekali. Tanpa skor dan tanpa poin.
    - **[C] Concrete (Ilustrasi Benda Nyata)**: Objek nyata bernomor urut untuk korespondensi satu-satu.
    - **[P] Pictorial (Diagram)**: Representasi diagram (Ten-Frame / Bingkai 10 dan Number Bond / Pasangan Bilangan).
    - **[A] Abstract (Angka)**: Lambang angka murni dan simbol matematika (`+`, `-`, `>`, `<`, `=`).
-   - Alat peraga interaktif di tiap tahap CPA tetap ada di alur Materi. Simulasi eksplorasi bebas bergaya PhET berada di Tab Simulasi, bukan di Materi.
+   - Tahap CPA: 10 permainan berbeda per tahap, nomor mengulang 1–10 di tiap tahap, satu putaran per permainan.
    - Wajib dilengkapi pembaca suara guru Bahasa Indonesia gratis (`Web Speech API` `id-ID`).
 3. **Latihan (30 Poin Kualifikasi)**: 10 soal latihan terbimbing dengan pembahasan guru langsung di tiap soal.
 4. **Ujian (70 Poin Kualifikasi)**: 10 soal evaluasi mandiri. WAJIB lulus mutlak 100% untuk masuk ke **Papan Kualifikasi Beasiswa** (lulus 100% pada percobaan pertama dengan sesi belajar yang Tervalidasi Server) serta mencentang syarat pembuka Praktikum Blok. Materi, Latihan, Ujian, dan Praktikum 100% tidak memakai kamera maupun deteksi wajah di browser. Kamera hanya dipakai pada panggilan verifikasi lisan 2 menit di akhir bulan untuk kandidat penerima beasiswa (Bagian 7), tanpa direkam.

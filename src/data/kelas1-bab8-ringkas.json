@@ -1,0 +1,333 @@
+{
+  "chapter_id": "mtk-1-bab8",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subject": "Matematika",
+  "title": "Mengenal Diagram",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Data",
+          "ikon": "🗂️",
+          "suara": "Ini peta data. Di tengah ada kata data. Data adalah keterangan tentang benda, misalnya jenisnya dan banyaknya. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "kelompok",
+            "judul": "Kelompokkan",
+            "ikon": "🧺",
+            "ringkas": "Kumpulkan benda yang sama.",
+            "suara": "Kumpulkan benda yang sama di satu tempat. Pesawat dengan pesawat, bola dengan bola."
+          },
+          {
+            "id": "hitung",
+            "judul": "Hitung",
+            "ikon": "✋",
+            "ringkas": "Satu goresan, satu benda.",
+            "suara": "Hitung setiap kelompok. Kamu boleh memakai turus. Satu goresan untuk satu benda, dan lima goresan dicoret miring."
+          },
+          {
+            "id": "sajikan",
+            "judul": "Sajikan",
+            "ikon": "📋",
+            "ringkas": "Tulis di daftar atau tabel.",
+            "suara": "Tulis hasil hitunganmu di daftar atau di tabel. Tabel punya baris dan kolom, dan bisa menurun atau mendatar."
+          },
+          {
+            "id": "baca",
+            "judul": "Baca",
+            "ikon": "🔍",
+            "ringkas": "Cari paling banyak dan paling sedikit.",
+            "suara": "Baca datamu. Cari yang paling banyak, yang paling sedikit, dan jumlah semuanya."
+          }
+        ],
+        "kartu": [
+          { "id": "a-bola", "teks": "Bola dengan bola", "ikon": "🧺", "cabang": "kelompok", "petunjuk": "Mengumpulkan benda yang sama itu mengelompokkan. Coba cabang lain." },
+          { "id": "a-turus", "teks": "Turus", "ikon": "✏️", "cabang": "hitung", "petunjuk": "Turus dipakai untuk menghitung. Coba cabang lain." },
+          { "id": "a-daftar", "teks": "Daftar", "ikon": "📝", "cabang": "sajikan", "petunjuk": "Daftar adalah cara menyajikan data. Coba cabang lain." },
+          { "id": "a-tabel", "teks": "Tabel", "ikon": "🧾", "cabang": "sajikan", "petunjuk": "Tabel adalah cara menyajikan data. Coba cabang lain." },
+          { "id": "a-banyak", "teks": "Paling banyak", "ikon": "🏆", "cabang": "baca", "petunjuk": "Mencari yang paling banyak itu membaca data. Coba cabang lain." },
+          { "id": "a-jumlah", "teks": "Jumlah semuanya", "ikon": "➕", "cabang": "baca", "petunjuk": "Mencari jumlah semuanya itu membaca data. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengelompokkan Data",
+        "suara": "Ini tiga panel tentang mengelompokkan data. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-rapi",
+            "tipe": "banding",
+            "judul": "Berantakan atau rapi?",
+            "ide": "Kelompokkan dulu, baru hitung.",
+            "suara": "Lihat dua gambar. Mainan berantakan sulit dihitung. Mainan yang dikelompokkan mudah dihitung.",
+            "sisi": [
+              {
+                "id": "berantakan",
+                "nama": "Berantakan",
+                "ikon": "🌀",
+                "catatan": "Sulit dihitung. Semua jenis bercampur.",
+                "suara": "Mainan berantakan. Sulit dihitung karena semua jenis bercampur.",
+                "visual": { "jenis": "benda-sebar", "isi": [["pesawat", 3], ["bola", 3], ["mobil", 2], ["boneka", 2]], "benih": 3 }
+              },
+              {
+                "id": "rapi",
+                "nama": "Rapi",
+                "ikon": "🧺",
+                "catatan": "Mudah dihitung. Satu kelompok, satu jenis.",
+                "suara": "Mainan rapi. Setiap jenis ada di kelompoknya, jadi mudah dihitung.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["pesawat", 3], ["bola", 3], ["mobil", 2], ["boneka", 2]] }
+              }
+            ],
+            "kesimpulan": "Mengelompokkan membuat data mudah dihitung."
+          },
+          {
+            "id": "a-turus",
+            "tipe": "buka",
+            "judul": "Hitung dengan turus",
+            "ide": "Satu goresan, satu benda.",
+            "suara": "Turus membantu kita menghitung tanpa lupa. Empat goresan tegak, goresan kelima mencoret miring.",
+            "butir": [
+              {
+                "id": "merah",
+                "label": "Merah",
+                "ikon": "🔴",
+                "isi": "Ada 7 bola merah.",
+                "suara": "Bola merah ada tujuh. Satu kelompok lima ditambah dua goresan.",
+                "visual": { "jenis": "turus", "n": 7 }
+              },
+              {
+                "id": "kuning",
+                "label": "Kuning",
+                "ikon": "🟡",
+                "isi": "Ada 4 bola kuning.",
+                "suara": "Bola kuning ada empat. Empat goresan tegak.",
+                "visual": { "jenis": "turus", "n": 4 }
+              },
+              {
+                "id": "hijau",
+                "label": "Hijau",
+                "ikon": "🟢",
+                "isi": "Ada 6 bola hijau.",
+                "suara": "Bola hijau ada enam. Satu kelompok lima ditambah satu goresan.",
+                "visual": { "jenis": "turus", "n": 6 }
+              }
+            ]
+          },
+          {
+            "id": "a-tabel",
+            "tipe": "banding",
+            "judul": "Tabel menurun atau mendatar?",
+            "ide": "Bentuknya beda, datanya sama.",
+            "suara": "Tabel bisa menurun atau mendatar. Bandingkan keduanya.",
+            "sisi": [
+              {
+                "id": "menurun",
+                "nama": "Menurun",
+                "ikon": "⬇️",
+                "catatan": "Nama warna ada di bawah satu sama lain.",
+                "suara": "Tabel menurun. Nama warna ada di bawah satu sama lain.",
+                "visual": { "jenis": "tabel-menurun", "judul": "Tabel Bola Upe", "kepala": ["Warna", "Banyak"], "baris": [["Merah", 7], ["Kuning", 4], ["Hijau", 6]] }
+              },
+              {
+                "id": "mendatar",
+                "nama": "Mendatar",
+                "ikon": "➡️",
+                "catatan": "Nama warna berjajar ke samping.",
+                "suara": "Tabel mendatar. Nama warna berjajar ke samping.",
+                "visual": { "jenis": "tabel-mendatar", "judul": "Tabel Bola Upe", "labelNama": "Warna", "labelBanyak": "Banyak", "nama": ["Merah", "Kuning", "Hijau"], "nilai": [7, 4, 6] }
+              }
+            ],
+            "kesimpulan": "Datanya sama: merah 7, kuning 4, hijau 6."
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Diagram Gambar",
+          "ikon": "🖼️",
+          "suara": "Ini peta diagram gambar. Di diagram gambar, satu gambar mewakili satu data. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "tanya",
+            "judul": "Tanya",
+            "ikon": "🙋",
+            "ringkas": "Tanya teman satu per satu.",
+            "suara": "Tentukan pertanyaan yang jelas, misalnya sayur apa yang kamu suka. Tanya teman satu per satu. Satu teman hanya memilih satu jawaban."
+          },
+          {
+            "id": "catat",
+            "judul": "Catat",
+            "ikon": "✏️",
+            "ringkas": "Pakai turus, lalu tabel.",
+            "suara": "Catat jawaban teman dengan turus, lalu pindahkan ke tabel."
+          },
+          {
+            "id": "gambar",
+            "judul": "Gambar",
+            "ikon": "🎨",
+            "ringkas": "Satu gambar, satu data.",
+            "suara": "Buat diagram gambar. Satu gambar mewakili satu data. Mulai dari kotak pertama dan jangan ada celah."
+          },
+          {
+            "id": "baca",
+            "judul": "Baca",
+            "ikon": "🔍",
+            "ringkas": "Cari paling banyak dan paling sedikit.",
+            "suara": "Baca diagrammu. Cari yang paling banyak, yang paling sedikit, dan jumlah semuanya."
+          }
+        ],
+        "kartu": [
+          { "id": "b-tanya", "teks": "Sayur apa yang kamu suka?", "ikon": "❓", "cabang": "tanya", "petunjuk": "Pertanyaan untuk teman itu bagian Tanya. Coba cabang lain." },
+          { "id": "b-turus", "teks": "Turus", "ikon": "✏️", "cabang": "catat", "petunjuk": "Turus dipakai untuk mencatat. Coba cabang lain." },
+          { "id": "b-tabel", "teks": "Tabel", "ikon": "🧾", "cabang": "catat", "petunjuk": "Menulis hasil di tabel itu mencatat. Coba cabang lain." },
+          { "id": "b-satu", "teks": "Satu gambar, satu anak", "ikon": "🎨", "cabang": "gambar", "petunjuk": "Satu gambar mewakili satu data. Itu bagian Gambar. Coba cabang lain." },
+          { "id": "b-kotak", "teks": "Mulai dari kotak pertama", "ikon": "1️⃣", "cabang": "gambar", "petunjuk": "Mengisi gambar dari kotak pertama itu bagian Gambar. Coba cabang lain." },
+          { "id": "b-sedikit", "teks": "Paling sedikit", "ikon": "🔽", "cabang": "baca", "petunjuk": "Mencari yang paling sedikit itu membaca diagram. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Diagram Gambar",
+        "suara": "Ini tiga panel tentang diagram gambar. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "b-bagian",
+            "tipe": "buka",
+            "judul": "Bagian diagram",
+            "ide": "Satu gambar, satu data.",
+            "suara": "Diagram gambar punya judul, gambar, dan kotak yang diisi dari kotak pertama.",
+            "butir": [
+              {
+                "id": "judul",
+                "label": "Judul",
+                "ikon": "🏷️",
+                "isi": "Judul memberi tahu data apa yang digambar.",
+                "suara": "Judul memberi tahu data apa yang digambar. Ini diagram sayur kesukaan.",
+                "visual": { "jenis": "teks", "isi": "Diagram Sayur Kesukaan" }
+              },
+              {
+                "id": "gambar",
+                "label": "Gambar",
+                "ikon": "🎨",
+                "isi": "Satu gambar mewakili satu anak.",
+                "suara": "Satu gambar mewakili satu anak. Wortel ada empat gambar, berarti empat anak suka wortel.",
+                "visual": {
+                  "jenis": "diagram",
+                  "arah": "tegak",
+                  "kat": [{ "nama": "Jagung", "jenis": "jagung" }, { "nama": "Wortel", "jenis": "wortel" }, { "nama": "Brokoli", "jenis": "brokoli" }, { "nama": "Kol", "jenis": "kol" }],
+                  "jumlah": [3, 4, 3, 2],
+                  "lambang": "benda"
+                }
+              },
+              {
+                "id": "kotak",
+                "label": "Kotak pertama",
+                "ikon": "1️⃣",
+                "isi": "Isi dari kotak pertama, tanpa celah.",
+                "suara": "Isi gambar dari kotak pertama. Jangan ada kotak kosong di tengah.",
+                "visual": {
+                  "jenis": "diagram",
+                  "arah": "tegak",
+                  "kat": [{ "nama": "Jagung", "jenis": "jagung" }, { "nama": "Wortel", "jenis": "wortel" }, { "nama": "Brokoli", "jenis": "brokoli" }, { "nama": "Kol", "jenis": "kol" }],
+                  "jumlah": [3, 4, 3, 2],
+                  "lambang": "bulat"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-arah",
+            "tipe": "banding",
+            "judul": "Tegak atau mendatar?",
+            "ide": "Bentuknya beda, datanya sama.",
+            "suara": "Diagram gambar bisa tegak atau mendatar. Bandingkan keduanya.",
+            "sisi": [
+              {
+                "id": "tegak",
+                "nama": "Tegak",
+                "ikon": "⬆️",
+                "catatan": "Gambar disusun naik ke atas.",
+                "suara": "Diagram tegak. Gambar disusun naik ke atas.",
+                "visual": {
+                  "jenis": "diagram",
+                  "arah": "tegak",
+                  "kat": [{ "nama": "Jagung", "jenis": "jagung" }, { "nama": "Wortel", "jenis": "wortel" }, { "nama": "Brokoli", "jenis": "brokoli" }, { "nama": "Kol", "jenis": "kol" }],
+                  "jumlah": [3, 4, 3, 2],
+                  "lambang": "benda"
+                }
+              },
+              {
+                "id": "mendatar",
+                "nama": "Mendatar",
+                "ikon": "➡️",
+                "catatan": "Gambar disusun ke samping.",
+                "suara": "Diagram mendatar. Gambar disusun ke samping.",
+                "visual": {
+                  "jenis": "diagram",
+                  "arah": "mendatar",
+                  "kat": [{ "nama": "Jagung", "jenis": "jagung" }, { "nama": "Wortel", "jenis": "wortel" }, { "nama": "Brokoli", "jenis": "brokoli" }, { "nama": "Kol", "jenis": "kol" }],
+                  "jumlah": [3, 4, 3, 2],
+                  "lambang": "benda"
+                }
+              }
+            ],
+            "kesimpulan": "Datanya sama. Wortel tetap 4 anak."
+          },
+          {
+            "id": "b-baca",
+            "tipe": "buka",
+            "judul": "Baca diagramnya",
+            "ide": "Cari paling banyak dan paling sedikit.",
+            "suara": "Baca diagram dengan tiga pertanyaan. Mana yang paling banyak, mana yang paling sedikit, dan berapa jumlah semuanya.",
+            "butir": [
+              {
+                "id": "banyak",
+                "label": "Paling banyak",
+                "ikon": "🏆",
+                "isi": "Wortel paling banyak, 4 anak.",
+                "suara": "Wortel paling banyak. Ada empat anak yang suka wortel.",
+                "visual": {
+                  "jenis": "diagram",
+                  "arah": "tegak",
+                  "kat": [{ "nama": "Jagung", "jenis": "jagung" }, { "nama": "Wortel", "jenis": "wortel" }, { "nama": "Brokoli", "jenis": "brokoli" }, { "nama": "Kol", "jenis": "kol" }],
+                  "jumlah": [3, 4, 3, 2],
+                  "lambang": "benda",
+                  "sorotMax": [1]
+                }
+              },
+              {
+                "id": "sedikit",
+                "label": "Paling sedikit",
+                "ikon": "🔽",
+                "isi": "Kol paling sedikit, 2 anak.",
+                "suara": "Kol paling sedikit. Hanya dua anak yang suka kol.",
+                "visual": {
+                  "jenis": "diagram",
+                  "arah": "tegak",
+                  "kat": [{ "nama": "Jagung", "jenis": "jagung" }, { "nama": "Wortel", "jenis": "wortel" }, { "nama": "Brokoli", "jenis": "brokoli" }, { "nama": "Kol", "jenis": "kol" }],
+                  "jumlah": [3, 4, 3, 2],
+                  "lambang": "benda",
+                  "sorotMin": [3]
+                }
+              },
+              {
+                "id": "jumlah",
+                "label": "Jumlah semuanya",
+                "ikon": "➕",
+                "isi": "Semuanya ada 12 anak.",
+                "suara": "Jumlah semuanya. Tiga ditambah empat ditambah tiga ditambah dua sama dengan dua belas anak.",
+                "visual": { "jenis": "teks", "isi": "3 + 4 + 3 + 2 = 12" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -20,6 +20,10 @@ type Props = {
   onBuka: () => void;
   onTutup: () => void;
   children: ReactNode;
+  /** Banyak tahap dalam metode. Bawaan 6 (SMICPA). Bab pilot memakai 7 (SMISCPA). */
+  jumlahTahap?: number;
+  /** Nama metode di kepala pop-up. Bawaan SMICPA. */
+  namaMetode?: string;
 };
 
 /**
@@ -27,7 +31,7 @@ type Props = {
  * di atas tab mengambang, ukuran nyaman untuk desktop.
  */
 export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUpTahapSmicpa(
-  { nomor, judul, ringkas, emoji, badgeClass, terbuka, buka, onBuka, onTutup, children },
+  { nomor, judul, ringkas, emoji, badgeClass, terbuka, buka, onBuka, onTutup, children, jumlahTahap = 6, namaMetode = "SMICPA" },
   ref,
 ) {
   const [portalSiap, setPortalSiap] = useState(false);
@@ -73,7 +77,7 @@ export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUp
               <div className="flex shrink-0 items-center justify-between gap-2 border-b-2 border-[#1C01A5]/15 bg-[#1C01A5] px-3 py-2.5 sm:px-4">
                 <div className="min-w-0">
                   <p className="text-[10px] font-black uppercase tracking-wide text-[#FFE566]/80">
-                    Tahap {nomor} dari 6 · SMICPA
+                    Tahap {nomor} dari {jumlahTahap} · {namaMetode}
                   </p>
                   <p className="truncate text-sm font-black text-white sm:text-base">
                     {emoji} {judul}
