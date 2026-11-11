@@ -1,29 +1,20 @@
 "use client";
 import React from "react";
-import { Label } from "./gambar-nilai-k2b";
-import { Lompat, Muncul, Papan, type PropsAdegan } from "./video-cerita";
-import { Batang, Besar, DaftarVideoCerita, Emo, Orang, buatAdegan, type VideoSiap } from "./video-k4b2-umum";
+import { Papan, type PropsAdegan } from "./video-cerita";
+import { DaftarVideoCerita, buatAdegan, type VideoSiap } from "./video-k4b2-umum";
+import { AdeganVisual } from "./video-visual-adegan";
 import { SUB_E42 } from "./naskah-k4b2";
 
+/* Visual diagram/animasi seirama ketukan suara — AdeganVisual (bukan teks besar). */
+const KODE = "k4b2e";
 const papan = (v: number, a: number) => SUB_E42.videos[v].adegan[a].papan;
 
 function Adegan({ v, a }: { v: number; a: number }) {
   return function Komponen({ k }: PropsAdegan) {
-    const teks = papan(v, a)[k] ?? "";
     return (
       <>
-        <Papan teks={teks} />
-        <Orang x={36} y={190} nama="kira" s={0.7} tampilNama={false} />
-        <Orang x={250} y={190} nama="halim" s={0.7} tampilNama={false} />
-        {k === 0 ? <Emo x={150} y={95} e="％" s={44} /> : null}
-        {k === 1 ? <Muncul><Besar x={150} y={100} teks={v === 2 ? "40%" : "75%"} ukuran={36} /></Muncul> : null}
-        {k === 2 ? (
-          <Lompat>
-            <Batang x={70} y={70} q={10} p={v === 1 ? 4 : 7} />
-            <Label x={70} y={115} w={160} teks={teks.slice(0, 22)} ukuran={12} />
-          </Lompat>
-        ) : null}
-        {k >= 3 ? <Muncul><Besar x={150} y={100} teks={teks.slice(0, 16)} ukuran={24} /></Muncul> : null}
+        <Papan teks={papan(v, a)[k] ?? ""} />
+        <AdeganVisual kode={KODE} v={v} a={a} k={k} />
       </>
     );
   };
