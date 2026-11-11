@@ -1,160 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
-import data from "@/data/komunitas-igil.json";
 import { KepalaHalaman, angkaId, rupiah } from "@/components/rapor/umum";
-
-type JenjangId = "sekolah" | "kecamatan" | "kabupaten" | "provinsi" | "nasional";
-
-type Sekolah = (typeof data.sekolah)[number];
-
-const LABEL_JENJANG: Record<JenjangId, string> = {
-  sekolah: "Ranking sekolah",
-  kecamatan: "Ranking kecamatan",
-  kabupaten: "Ranking kabupaten/kota",
-  provinsi: "Ranking provinsi",
-  nasional: "Ranking nasional",
-};
-
-const WARNA_JENJANG: Record<JenjangId, string> = {
-  sekolah: "bg-amber-400 text-indigo-950",
-  kecamatan: "bg-emerald-100 text-emerald-900",
-  kabupaten: "bg-sky-100 text-sky-900",
-  provinsi: "bg-violet-100 text-violet-950",
-  nasional: "bg-indigo-100 text-indigo-950",
-};
-
-function sisaKeAmbang(pelanggan: number, ambang: number): number {
-  return Math.max(0, ambang - pelanggan);
-}
-
-function KartuSekolah({ sekolah, ambang }: { sekolah: Sekolah; ambang: number }) {
-  const jenjang = sekolah.jenjangRanking as JenjangId;
-  const siapPartner = jenjang === "sekolah" && sekolah.partner;
-  const kurang = sisaKeAmbang(sekolah.pelanggan, ambang);
-  const progres = Math.min(100, Math.round((sekolah.pelanggan / ambang) * 100));
-
-  return (
-    <article className="overflow-hidden rounded-3xl border-2 border-indigo-100 bg-white shadow-sm">
-      <div className="bg-gradient-to-br from-indigo-900 via-violet-900 to-indigo-950 px-4 py-4 text-white sm:px-5">
-        <div className="flex flex-wrap items-start justify-between gap-2">
-          <div className="min-w-0">
-            <p className="text-[11px] font-black uppercase tracking-wider text-amber-300">Profil sekolah</p>
-            <h3 className="break-words text-xl font-black leading-tight">{sekolah.nama}</h3>
-            <p className="mt-1 text-sm font-semibold text-indigo-100">
-              {sekolah.kecamatan}, {sekolah.kota} · {sekolah.provinsi}
-            </p>
-          </div>
-          <span className={`rounded-full px-3 py-1 text-xs font-black ${WARNA_JENJANG[jenjang]}`}>
-            {LABEL_JENJANG[jenjang]}
-          </span>
-        </div>
-
-        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
-          <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
-            <p className="text-[10px] font-black uppercase text-indigo-100">Pelanggan</p>
-            <p className="text-2xl font-black text-amber-300">{angkaId(sekolah.pelanggan)}</p>
-          </div>
-          <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
-            <p className="text-[10px] font-black uppercase text-indigo-100">Poin bulan ini</p>
-            <p className="text-2xl font-black text-amber-300">{angkaId(sekolah.capaian.poinBulanIni)}</p>
-          </div>
-          <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
-            <p className="text-[10px] font-black uppercase text-indigo-100">Bab selesai</p>
-            <p className="text-2xl font-black text-amber-300">{angkaId(sekolah.capaian.babSelesaiBulanIni)}</p>
-          </div>
-          <div className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/20">
-            <p className="text-[10px] font-black uppercase text-indigo-100">🌟 Sempurna</p>
-            <p className="text-2xl font-black text-amber-300">{angkaId(sekolah.capaian.ujianSempurna)}</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="space-y-4 p-4 sm:p-5">
-        <div>
-          <div className="mb-1 flex items-center justify-between gap-2 text-xs font-black text-indigo-950">
-            <span>Menuju ambang {angkaId(ambang)} pelanggan</span>
-            <span>{progres}%</span>
-          </div>
-          <div className="h-3 overflow-hidden rounded-full bg-indigo-50">
-            <div
-              className="h-full rounded-full bg-amber-400 transition-all"
-              style={{ width: `${progres}%` }}
-              aria-hidden="true"
-            />
-          </div>
-          <p className="mt-2 text-sm font-semibold text-slate-600">
-            {kurang === 0
-              ? "Sudah membuka ranking per-sekolah dan slot Partner IGIL."
-              : `Kurang ${angkaId(kurang)} pelanggan lagi untuk ranking per-sekolah + Partner IGIL.`}
-          </p>
-        </div>
-
-        <div className="flex flex-wrap gap-2">
-          {sekolah.faseAktif.map((fase) => (
-            <span
-              key={fase}
-              className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-black text-indigo-950"
-            >
-              {fase.replace("_", " ")}
-            </span>
-          ))}
-          <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-black text-emerald-900">
-            Praktikum terkirim {angkaId(sekolah.capaian.praktikumTerkirim)}
-          </span>
-        </div>
-
-        {siapPartner && sekolah.partner ? (
-          <section className="rounded-2xl border-2 border-amber-300 bg-amber-50 p-4">
-            <p className="text-[11px] font-black uppercase tracking-wider text-amber-700">Partner IGIL</p>
-            <p className="mt-1 text-lg font-black text-indigo-950">{sekolah.partner.nama}</p>
-            <p className="text-sm font-semibold text-slate-600">
-              {sekolah.partner.mapel} · {sekolah.partner.jadwal}
-            </p>
-            <p className="mt-2 text-sm font-semibold leading-relaxed text-indigo-950">
-              Membimbing singkat bab target minggu depan (±{data.partner.durasiPerKelasMenit} menit per kelas).
-              Honor {rupiah(data.partner.honorMingguan)} / minggu · dibayar bulanan {rupiah(data.partner.honorBulanan)}.
-            </p>
-          </section>
-        ) : (
-          <section className="rounded-2xl border-2 border-dashed border-indigo-200 bg-indigo-50/40 p-4">
-            <p className="text-sm font-black text-indigo-950">Partner IGIL belum aktif</p>
-            <p className="mt-1 text-sm font-semibold leading-relaxed text-slate-600">
-              Slot Partner Guru terbuka setelah sekolah mencapai minimal {angkaId(ambang)} siswa berlangganan.
-              Sementara ini siswa masuk arena {LABEL_JENJANG[jenjang].toLowerCase()}.
-            </p>
-          </section>
-        )}
-
-        {sekolah.siswaUnggulan.length > 0 ? (
-          <section>
-            <p className="mb-2 text-[11px] font-black uppercase tracking-wider text-indigo-900">
-              Siswa unggulan (nama depan + inisial)
-            </p>
-            <ul className="space-y-2">
-              {sekolah.siswaUnggulan.map((s) => (
-                <li
-                  key={`${sekolah.id}-${s.nama}`}
-                  className="flex items-center justify-between gap-3 rounded-2xl border border-indigo-100 bg-indigo-50/40 px-3 py-2"
-                >
-                  <div className="min-w-0">
-                    <p className="truncate text-sm font-black text-indigo-950">{s.nama}</p>
-                    <p className="text-xs font-semibold text-slate-500">
-                      {s.kelas} · {s.fase.replace("_", " ")}
-                    </p>
-                  </div>
-                  <span className="shrink-0 rounded-full bg-amber-400 px-3 py-1 text-xs font-black text-indigo-950">
-                    {angkaId(s.poin)} poin
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
-      </div>
-    </article>
-  );
-}
+import {
+  LABEL_JENJANG,
+  WARNA_JENJANG,
+  komunitasData as data,
+  type JenjangId,
+} from "./komunitas-data";
 
 export default function KomunitasHalaman() {
   const [filterProvinsi, setFilterProvinsi] = useState(data.filterWilayah[0]);
@@ -250,47 +104,50 @@ export default function KomunitasHalaman() {
         </div>
       </section>
 
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Filter komunitas">
-        {data.filterWilayah.map((wilayah) => {
-          const aktif = wilayah === filterProvinsi;
-          return (
-            <button
-              key={wilayah}
-              type="button"
-              aria-pressed={aktif}
-              onClick={() => setFilterProvinsi(wilayah)}
-              className={`rounded-full px-4 py-2 text-sm font-black ${
-                aktif
-                  ? "bg-amber-400 text-indigo-950"
-                  : "border border-[#1C01A5] bg-white text-[#1C01A5] hover:bg-indigo-50"
-              }`}
-            >
-              {wilayah}
-            </button>
-          );
-        })}
-      </div>
+      <div>
+        <h2 className="mb-3 text-lg font-black text-indigo-950">Daftar komunitas</h2>
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter komunitas">
+          {data.filterWilayah.map((wilayah) => {
+            const aktif = wilayah === filterProvinsi;
+            return (
+              <button
+                key={wilayah}
+                type="button"
+                aria-pressed={aktif}
+                onClick={() => setFilterProvinsi(wilayah)}
+                className={`rounded-full px-4 py-2 text-sm font-black ${
+                  aktif
+                    ? "bg-amber-400 text-indigo-950"
+                    : "border border-[#1C01A5] bg-white text-[#1C01A5] hover:bg-indigo-50"
+                }`}
+              >
+                {wilayah}
+              </button>
+            );
+          })}
+        </div>
 
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Filter jenjang ranking">
-        {(["Semua", "sekolah", "kecamatan", "kabupaten", "provinsi", "nasional"] as const).map((j) => {
-          const aktif = j === filterJenjang;
-          const label = j === "Semua" ? "Semua jenjang" : LABEL_JENJANG[j];
-          return (
-            <button
-              key={j}
-              type="button"
-              aria-pressed={aktif}
-              onClick={() => setFilterJenjang(j)}
-              className={`rounded-full px-4 py-2 text-sm font-black ${
-                aktif
-                  ? "bg-[#1C01A5] text-amber-300"
-                  : "border border-indigo-200 bg-white text-indigo-950 hover:bg-indigo-50"
-              }`}
-            >
-              {label}
-            </button>
-          );
-        })}
+        <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Filter jenjang ranking">
+          {(["Semua", "sekolah", "kecamatan", "kabupaten", "provinsi", "nasional"] as const).map((j) => {
+            const aktif = j === filterJenjang;
+            const label = j === "Semua" ? "Semua jenjang" : LABEL_JENJANG[j];
+            return (
+              <button
+                key={j}
+                type="button"
+                aria-pressed={aktif}
+                onClick={() => setFilterJenjang(j)}
+                className={`rounded-full px-4 py-2 text-sm font-black ${
+                  aktif
+                    ? "bg-[#1C01A5] text-amber-300"
+                    : "border border-indigo-200 bg-white text-indigo-950 hover:bg-indigo-50"
+                }`}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {daftar.length === 0 ? (
@@ -298,11 +155,103 @@ export default function KomunitasHalaman() {
           Belum ada sekolah pada filter ini.
         </p>
       ) : (
-        <div className="grid gap-4 lg:grid-cols-2">
-          {daftar.map((sekolah) => (
-            <KartuSekolah key={sekolah.id} sekolah={sekolah} ambang={ambang} />
-          ))}
-        </div>
+        <section
+          aria-label="Tabel daftar komunitas sekolah"
+          className="overflow-hidden rounded-3xl border-2 border-indigo-100 bg-white shadow-sm"
+        >
+          <div className="overflow-x-auto">
+            <table className="min-w-full border-collapse text-left">
+              <thead>
+                <tr className="bg-[#1C01A5] text-xs font-black uppercase tracking-wide text-white">
+                  <th scope="col" className="px-3 py-3 sm:px-4">
+                    No.
+                  </th>
+                  <th scope="col" className="px-3 py-3 sm:px-4">
+                    Sekolah
+                  </th>
+                  <th scope="col" className="hidden px-3 py-3 sm:table-cell sm:px-4">
+                    Wilayah
+                  </th>
+                  <th scope="col" className="px-3 py-3 text-right sm:px-4">
+                    Pelanggan
+                  </th>
+                  <th scope="col" className="hidden px-3 py-3 text-right md:table-cell md:px-4">
+                    Poin
+                  </th>
+                  <th scope="col" className="px-3 py-3 sm:px-4">
+                    Arena
+                  </th>
+                  <th scope="col" className="hidden px-3 py-3 lg:table-cell lg:px-4">
+                    Partner
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {daftar.map((sekolah, i) => {
+                  const jenjang = sekolah.jenjangRanking as JenjangId;
+                  const partnerAktif = jenjang === "sekolah" && !!sekolah.partner;
+                  const kurang = Math.max(0, ambang - sekolah.pelanggan);
+                  return (
+                    <tr
+                      key={sekolah.id}
+                      className={`border-t border-indigo-100 ${i % 2 === 0 ? "bg-white" : "bg-indigo-50/30"}`}
+                    >
+                      <td className="px-3 py-3 align-top text-sm font-black text-indigo-950 sm:px-4">
+                        {i + 1}
+                      </td>
+                      <td className="px-3 py-3 align-top sm:px-4">
+                        <Link
+                          href={`/komunitas/${sekolah.id}`}
+                          className="text-sm font-black text-[#1C01A5] underline decoration-amber-400 decoration-2 underline-offset-2 hover:text-amber-600"
+                        >
+                          {sekolah.nama}
+                        </Link>
+                        <p className="mt-0.5 text-xs font-semibold text-slate-500 sm:hidden">
+                          {sekolah.kota}, {sekolah.provinsi}
+                        </p>
+                      </td>
+                      <td className="hidden px-3 py-3 align-top text-sm font-semibold text-slate-600 sm:table-cell sm:px-4">
+                        {sekolah.kecamatan}
+                        <br />
+                        <span className="text-xs">
+                          {sekolah.kota} · {sekolah.provinsi}
+                        </span>
+                      </td>
+                      <td className="px-3 py-3 align-top text-right sm:px-4">
+                        <span className="text-sm font-black text-indigo-950">{angkaId(sekolah.pelanggan)}</span>
+                        {kurang > 0 ? (
+                          <p className="text-[10px] font-semibold text-slate-500">−{angkaId(kurang)} ke {ambang}</p>
+                        ) : (
+                          <p className="text-[10px] font-semibold text-emerald-700">Ambang tercapai</p>
+                        )}
+                      </td>
+                      <td className="hidden px-3 py-3 align-top text-right text-sm font-black text-indigo-950 md:table-cell md:px-4">
+                        {angkaId(sekolah.capaian.poinBulanIni)}
+                      </td>
+                      <td className="px-3 py-3 align-top sm:px-4">
+                        <span
+                          className={`inline-block rounded-full px-2.5 py-1 text-[11px] font-black ${WARNA_JENJANG[jenjang]}`}
+                        >
+                          {LABEL_JENJANG[jenjang].replace("Ranking ", "")}
+                        </span>
+                      </td>
+                      <td className="hidden px-3 py-3 align-top text-sm font-semibold lg:table-cell lg:px-4">
+                        {partnerAktif && sekolah.partner ? (
+                          <span className="text-indigo-950">{sekolah.partner.nama}</span>
+                        ) : (
+                          <span className="text-slate-400">Belum aktif</span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className="border-t border-indigo-100 bg-indigo-50/40 px-4 py-3 text-xs font-semibold text-slate-600">
+            Ketuk nama sekolah untuk membuka profil dan data capaian.
+          </p>
+        </section>
       )}
 
       <p className="rounded-2xl border-2 border-indigo-100 bg-indigo-50/40 p-3 text-sm font-semibold leading-relaxed text-indigo-950">
