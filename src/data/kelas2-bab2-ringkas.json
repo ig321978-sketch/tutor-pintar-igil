@@ -1,0 +1,462 @@
+{
+  "chapter_id": "mtk-2-bab2",
+  "phase_code": "FASE_A",
+  "grade": 2,
+  "subject": "Matematika",
+  "title": "Penjumlahan dan Pengurangan",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Cara Menjumlahkan",
+          "ikon": "➕",
+          "suara": "Ini peta cara menjumlahkan. Kita menjumlahkan bilangan sampai dua puluh dengan tiga cara, dan belajar menyimpan sepuluh satuan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "maju",
+            "judul": "Hitung maju",
+            "ikon": "🐸",
+            "ringkas": "Mulai di bilangan pertama, lompat maju.",
+            "suara": "Menghitung maju. Berdiri di bilangan pertama pada jalur bilangan, lalu lompat ke depan sebanyak bilangan kedua. Dua belas ditambah enam: lompat enam kali sampai delapan belas."
+          },
+          {
+            "id": "susun",
+            "judul": "Bersusun",
+            "ikon": "📋",
+            "ringkas": "Satuan lurus satuan, puluhan lurus puluhan.",
+            "suara": "Penjumlahan bersusun. Tulis bilangannya dalam tabel nilai tempat. Satuan lurus dengan satuan, puluhan lurus dengan puluhan. Jumlahkan satuan dulu, lalu puluhan."
+          },
+          {
+            "id": "pasangan",
+            "judul": "Pasangan bilangan",
+            "ikon": "🌿",
+            "ringkas": "Pisah jadi sepuluh dan sisa.",
+            "suara": "Pasangan bilangan. Pisahkan dua belas menjadi sepuluh dan dua. Jumlahkan yang kecil dulu: dua ditambah enam sama dengan delapan. Lalu sepuluh ditambah delapan sama dengan delapan belas."
+          },
+          {
+            "id": "simpan",
+            "judul": "Simpan sepuluh",
+            "ikon": "🧱",
+            "ringkas": "10 satuan pindah jadi 1 puluhan.",
+            "suara": "Simpan sepuluh. Kalau satuan berjumlah sepuluh atau lebih, tukar sepuluh satuan menjadi satu puluhan dan simpan di kolom puluhan. Delapan belas ditambah dua: satuannya sepuluh, jadi puluhan bertambah satu dan hasilnya dua puluh."
+          }
+        ],
+        "kartu": [
+          { "id": "a-lompat", "teks": "12 + 6: lompat 6 kali", "ikon": "➡️", "cabang": "maju", "petunjuk": "Melompat maju satu-satu itu menghitung maju. Coba cabang lain." },
+          { "id": "a-berhenti", "teks": "Berhenti di 18 = hasil", "ikon": "🛑", "cabang": "maju", "petunjuk": "Tempat berhenti di garis adalah hasilnya, itu hitung maju. Coba cabang lain." },
+          { "id": "a-lurus", "teks": "Satuan lurus dengan satuan", "ikon": "↕️", "cabang": "susun", "petunjuk": "Menyusun angka lurus ke bawah itu bersusun. Coba cabang lain." },
+          { "id": "a-satuan", "teks": "2 + 6 = 8 di satuan", "ikon": "📋", "cabang": "susun", "petunjuk": "Menjumlahkan satuan dulu itu bersusun. Coba cabang lain." },
+          { "id": "a-pecah", "teks": "12 = 10 dan 2", "ikon": "✂️", "cabang": "pasangan", "petunjuk": "Memisah bilangan jadi dua bagian itu pasangan bilangan. Coba cabang lain." },
+          { "id": "a-kecil", "teks": "2 + 6, lalu 10 + 8", "ikon": "🌿", "cabang": "pasangan", "petunjuk": "Menjumlahkan bagian kecil dulu itu pasangan bilangan. Coba cabang lain." },
+          { "id": "a-sepuluh", "teks": "18 + 2: satuan jadi 10", "ikon": "🔟", "cabang": "simpan", "petunjuk": "Satuan yang mencapai sepuluh itu menyimpan. Coba cabang lain." },
+          { "id": "a-pindah", "teks": "10 satuan = 1 puluhan", "ikon": "🔁", "cabang": "simpan", "petunjuk": "Menukar sepuluh satuan jadi puluhan itu menyimpan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Berbagai Cara Menjumlahkan",
+        "suara": "Ini tiga panel tentang cara menjumlahkan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-cara",
+            "tipe": "banding",
+            "judul": "Hitung maju atau pasangan?",
+            "ide": "Hasil sama, jalannya beda.",
+            "suara": "Lihat dua jalan untuk dua belas ditambah enam. Bandingkan hitung maju dengan pasangan bilangan.",
+            "sisi": [
+              {
+                "id": "maju",
+                "nama": "Hitung maju",
+                "ikon": "🐸",
+                "catatan": "Enak kalau bilangan kedua kecil.",
+                "suara": "Hitung maju. Mulai dari dua belas, lompat enam kali ke depan sampai delapan belas.",
+                "visual": { "jenis": "teks", "isi": "12 → 18 (6 lompatan)" }
+              },
+              {
+                "id": "pasangan",
+                "nama": "Pasangan bilangan",
+                "ikon": "🌿",
+                "catatan": "Enak kalau mudah dipisah.",
+                "suara": "Pasangan bilangan. Dua belas dipisah jadi sepuluh dan dua. Dua ditambah enam sama dengan delapan, lalu sepuluh ditambah delapan sama dengan delapan belas.",
+                "visual": { "jenis": "teks", "isi": "2 + 6 = 8, 10 + 8 = 18" }
+              }
+            ],
+            "kesimpulan": "Dua jalan, sama-sama sampai 18."
+          },
+          {
+            "id": "a-susun",
+            "tipe": "buka",
+            "judul": "Bersusun, tiga langkah",
+            "ide": "Satuan dulu, lalu puluhan.",
+            "suara": "Penjumlahan bersusun punya tiga langkah. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "susun",
+                "label": "Susun",
+                "ikon": "📋",
+                "isi": "Satuan lurus dengan satuan.",
+                "suara": "Langkah satu, susun bilangannya. Satuan harus lurus dengan satuan, puluhan lurus dengan puluhan.",
+                "visual": { "jenis": "teks", "isi": "12 di atas, 6 di bawah" }
+              },
+              {
+                "id": "satuan",
+                "label": "Jumlahkan satuan",
+                "ikon": "🔢",
+                "isi": "2 + 6 = 8 satuan.",
+                "suara": "Langkah dua, jumlahkan satuan dengan satuan. Dua ditambah enam sama dengan delapan.",
+                "visual": { "jenis": "teks", "isi": "2 + 6 = 8" }
+              },
+              {
+                "id": "puluhan",
+                "label": "Jumlahkan puluhan",
+                "ikon": "🧮",
+                "isi": "Puluhan tinggal 1.",
+                "suara": "Langkah tiga, jumlahkan puluhan. Hanya ada satu puluhan, jadi hasilnya satu puluhan dan delapan satuan, yaitu delapan belas.",
+                "visual": { "jenis": "teks", "isi": "1P + 8S = 18" }
+              }
+            ]
+          },
+          {
+            "id": "a-simpan",
+            "tipe": "buka",
+            "judul": "Kapan harus menyimpan?",
+            "ide": "Sepuluh satuan pindah ke puluhan.",
+            "suara": "Kita menyimpan kalau satuannya berjumlah sepuluh atau lebih. Ketuk tiga soal ini satu per satu.",
+            "butir": [
+              {
+                "id": "dua-belas",
+                "label": "12 + 6",
+                "ikon": "🟢",
+                "isi": "Satuan 8. Tidak perlu simpan.",
+                "suara": "Dua belas ditambah enam. Satuannya dua ditambah enam sama dengan delapan. Kurang dari sepuluh, jadi tidak perlu menyimpan.",
+                "visual": { "jenis": "teks", "isi": "2 + 6 = 8, langsung 18" }
+              },
+              {
+                "id": "delapan-lima",
+                "label": "8 + 5",
+                "ikon": "🟡",
+                "isi": "Satuan 13. Simpan 1 puluhan.",
+                "suara": "Delapan ditambah lima. Satuannya tiga belas. Sepuluh satuan disimpan jadi satu puluhan, sisa tiga satuan. Hasilnya satu puluhan dan tiga satuan, yaitu tiga belas.",
+                "visual": { "jenis": "teks", "isi": "8 + 5 = 13 → 1P + 3S" }
+              },
+              {
+                "id": "delapan-belas",
+                "label": "18 + 2",
+                "ikon": "🔴",
+                "isi": "Satuan 10. Jadi 1 puluhan lagi.",
+                "suara": "Delapan belas ditambah dua. Satuannya delapan ditambah dua sama dengan sepuluh. Sepuluh satuan pindah jadi satu puluhan, jadi puluhannya dua dan satuannya nol. Hasilnya dua puluh.",
+                "visual": { "jenis": "teks", "isi": "18 + 2 = 20 → 2P + 0S" }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Cara Mengurangkan",
+          "ikon": "➖",
+          "suara": "Ini peta cara mengurangkan. Kita mencari selisih, menghitung di garis bilangan, mengurai satu puluhan, lalu memeriksa dengan penjumlahan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "selisih",
+            "judul": "Selisih",
+            "ikon": "🧩",
+            "ringkas": "Pasangkan satu-satu, sisanya selisih.",
+            "suara": "Selisih. Pasangkan benda satu-satu. Yang tidak berpasangan adalah selisihnya. Tika punya dua belas jambu dan Kira punya delapan belas, jadi selisihnya delapan belas dikurangi dua belas sama dengan enam."
+          },
+          {
+            "id": "garis",
+            "judul": "Di garis bilangan",
+            "ikon": "🐸",
+            "ringkas": "Mundur, atau tambah sampai pas.",
+            "suara": "Di garis bilangan. Menghitung mundur: dari delapan belas lompat mundur dua belas kali sampai enam. Atau tambah sampai pas: dari dua belas maju sampai delapan belas, ada enam lompatan. Dua jalan, hasilnya sama."
+          },
+          {
+            "id": "urai",
+            "judul": "Bersusun dan urai",
+            "ikon": "📋",
+            "ringkas": "Satuan kurang? Urai satu puluhan.",
+            "suara": "Bersusun dan urai. Kurangkan satuan dulu, lalu puluhan. Kalau satuan atas lebih kecil, urai satu puluhan menjadi sepuluh satuan. Dua belas dikurangi delapan: dua ditambah sepuluh menjadi dua belas satuan, dikurangi delapan sama dengan empat."
+          },
+          {
+            "id": "periksa",
+            "judul": "Periksa",
+            "ikon": "🔗",
+            "ringkas": "Periksa hasil dengan penjumlahan.",
+            "suara": "Periksa. Penjumlahan dan pengurangan berkeluarga. Kalau delapan belas dikurangi dua belas sama dengan enam, maka enam ditambah dua belas harus sama dengan delapan belas."
+          }
+        ],
+        "kartu": [
+          { "id": "b-pasang", "teks": "18 − 12: sisa 6 titik", "ikon": "🔵", "cabang": "selisih", "petunjuk": "Titik yang tidak berpasangan itu selisih. Coba cabang lain." },
+          { "id": "b-besar", "teks": "Besar dikurangi kecil", "ikon": "⚖️", "cabang": "selisih", "petunjuk": "Selisih dicari dengan bilangan besar dikurangi bilangan kecil. Coba cabang lain." },
+          { "id": "b-mundur", "teks": "Mundur 12 dari 18 → 6", "ikon": "⬅️", "cabang": "garis", "petunjuk": "Melompat mundur di garis itu menghitung mundur. Coba cabang lain." },
+          { "id": "b-pas", "teks": "Tambah sampai pas: 12 ke 18", "ikon": "🛒", "cabang": "garis", "petunjuk": "Maju dari bilangan kecil sampai pas itu tambah sampai pas. Coba cabang lain." },
+          { "id": "b-urai", "teks": "12 − 8: satuan 2 kurang", "ikon": "🧱", "cabang": "urai", "petunjuk": "Satuan atas yang lebih kecil perlu mengurai. Coba cabang lain." },
+          { "id": "b-sepuluh", "teks": "1 puluhan = 10 satuan", "ikon": "🔁", "cabang": "urai", "petunjuk": "Menukar satu puluhan jadi sepuluh satuan itu mengurai. Coba cabang lain." },
+          { "id": "b-balik", "teks": "6 + 12 = 18", "ikon": "🔙", "cabang": "periksa", "petunjuk": "Menjumlahkan hasil dengan pengurang itu memeriksa. Coba cabang lain." },
+          { "id": "b-keluarga", "teks": "6, 12, 18 berkeluarga", "ikon": "👪", "cabang": "periksa", "petunjuk": "Tiga bilangan yang berkeluarga itu cara memeriksa. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Berbagai Cara Mengurangkan",
+        "suara": "Ini tiga panel tentang cara mengurangkan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "b-cara",
+            "tipe": "banding",
+            "judul": "Mundur atau tambah sampai pas?",
+            "ide": "Dua jalan, hasil sama.",
+            "suara": "Lihat dua jalan untuk delapan belas dikurangi dua belas. Bandingkan menghitung mundur dengan tambah sampai pas.",
+            "sisi": [
+              {
+                "id": "mundur",
+                "nama": "Hitung mundur",
+                "ikon": "⬅️",
+                "catatan": "12 lompatan. Mudah salah hitung.",
+                "suara": "Hitung mundur. Mulai dari delapan belas, lompat mundur dua belas kali dan berhenti di enam.",
+                "visual": { "jenis": "teks", "isi": "18 → 6 (12 lompatan)" }
+              },
+              {
+                "id": "pas",
+                "nama": "Tambah sampai pas",
+                "ikon": "🛒",
+                "catatan": "6 lompatan. Seperti kembalian.",
+                "suara": "Tambah sampai pas. Mulai dari dua belas, maju satu-satu sampai delapan belas. Ada enam lompatan, jadi selisihnya enam.",
+                "visual": { "jenis": "teks", "isi": "12 → 18 (6 lompatan)" }
+              }
+            ],
+            "kesimpulan": "Mundur berhenti di 6. Maju dihitung 6."
+          },
+          {
+            "id": "b-urai",
+            "tipe": "buka",
+            "judul": "Kapan harus mengurai?",
+            "ide": "Bandingkan satuan atas dan bawah.",
+            "suara": "Lihat satuan di atas dan satuan di bawah. Ketuk tiga soal ini satu per satu.",
+            "butir": [
+              {
+                "id": "delapan-belas",
+                "label": "18 − 12",
+                "ikon": "🟢",
+                "isi": "Satuan 8 lebih dari 2. Langsung kurangi.",
+                "suara": "Delapan belas dikurangi dua belas. Satuan atas delapan lebih besar dari dua. Langsung dikurangi: delapan dikurangi dua sama dengan enam.",
+                "visual": { "jenis": "teks", "isi": "8 − 2 = 6, 1 − 1 = 0" }
+              },
+              {
+                "id": "dua-belas",
+                "label": "12 − 8",
+                "ikon": "🟡",
+                "isi": "Satuan 2 kurang dari 8. Urai.",
+                "suara": "Dua belas dikurangi delapan. Satuan atas dua lebih kecil dari delapan. Urai satu puluhan menjadi sepuluh satuan, jadi ada dua belas satuan. Dua belas dikurangi delapan sama dengan empat.",
+                "visual": { "jenis": "teks", "isi": "2 + 10 = 12 satuan, 12 − 8 = 4" }
+              },
+              {
+                "id": "dua-puluh",
+                "label": "20 − 6",
+                "ikon": "🔴",
+                "isi": "Satuan 0 kurang dari 6. Urai.",
+                "suara": "Dua puluh dikurangi enam. Satuan atas nol lebih kecil dari enam. Urai satu puluhan menjadi sepuluh satuan. Sepuluh dikurangi enam sama dengan empat, dan masih tersisa satu puluhan. Hasilnya empat belas.",
+                "visual": { "jenis": "teks", "isi": "10 − 6 = 4, 1P + 4S = 14" }
+              }
+            ]
+          },
+          {
+            "id": "b-periksa",
+            "tipe": "buka",
+            "judul": "Periksa dengan penjumlahan",
+            "ide": "Hasil ditambah pengurang jadi semula.",
+            "suara": "Pengurangan bisa diperiksa dengan penjumlahan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "enam",
+                "label": "18 − 12 = 6",
+                "ikon": "✅",
+                "isi": "6 + 12 = 18. Cocok.",
+                "suara": "Delapan belas dikurangi dua belas sama dengan enam. Periksa: enam ditambah dua belas sama dengan delapan belas. Cocok dengan bilangan semula.",
+                "visual": { "jenis": "teks", "isi": "6 + 12 = 18 ✔" }
+              },
+              {
+                "id": "empat",
+                "label": "12 − 8 = 4",
+                "ikon": "✅",
+                "isi": "4 + 8 = 12. Cocok.",
+                "suara": "Dua belas dikurangi delapan sama dengan empat. Periksa: empat ditambah delapan sama dengan dua belas. Cocok.",
+                "visual": { "jenis": "teks", "isi": "4 + 8 = 12 ✔" }
+              },
+              {
+                "id": "tidak-cocok",
+                "label": "Tidak cocok?",
+                "ikon": "🤔",
+                "isi": "Hitung ulang pelan-pelan.",
+                "suara": "Kalau hasil pemeriksaan tidak sama dengan bilangan semula, ada yang salah hitung. Hitung ulang pelan-pelan.",
+                "visual": { "jenis": "teks", "isi": "Beda? Hitung ulang" }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Soal Cerita",
+          "ikon": "📖",
+          "suara": "Ini peta soal cerita penjumlahan dan pengurangan. Kita membaca kata kunci, menulis empat langkah, mencari bilangan awal, dan menggambar model batang. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "kunci",
+            "judul": "Kata kunci",
+            "ikon": "🔑",
+            "ringkas": "Jumlah, selisih, lebihnya, kurangnya.",
+            "suara": "Kata kunci. Jumlah berarti digabung, jadi ditambah. Selisih berarti beda banyaknya, jadi bilangan besar dikurangi bilangan kecil. Lebihnya berarti yang dicari punya lebih banyak, jadi ditambah. Kurangnya berarti yang dicari punya lebih sedikit, jadi dikurangi."
+          },
+          {
+            "id": "langkah",
+            "judul": "Empat langkah",
+            "ikon": "📝",
+            "ringkas": "Diketahui, ditanya, solusi, kesimpulan.",
+            "suara": "Empat langkah. Satu, diketahui: apa yang sudah kita tahu. Dua, ditanya: apa yang harus dicari. Tiga, solusi: hitungan dengan tanda yang cocok. Empat, kesimpulan: kalimat jawaban yang diawali kata jadi."
+          },
+          {
+            "id": "awal",
+            "judul": "Bilangan awal",
+            "ikon": "🔙",
+            "ringkas": "Balik operasinya untuk mencari awal.",
+            "suara": "Bilangan awal. Halim memberikan empat jeruk dan sisanya dua belas. Kita tulis titik-titik dikurangi empat sama dengan dua belas. Untuk mencari awalnya, balikkan: dua belas ditambah empat sama dengan enam belas. Lalu periksa dengan mengurangkan lagi."
+          },
+          {
+            "id": "batang",
+            "judul": "Batang dan tiga bilangan",
+            "ikon": "📏",
+            "ringkas": "Gambar batang. Jumlahkan dua dulu.",
+            "suara": "Model batang dan tiga bilangan. Gambar batang panjang untuk bilangan yang lebih banyak, dan batang pendek untuk yang lebih sedikit. Bagian yang tersisa adalah selisihnya. Untuk tiga bilangan, jumlahkan dua dulu, lalu tambahkan yang ketiga."
+          }
+        ],
+        "kartu": [
+          { "id": "c-lebih", "teks": "Lebihnya +, kurangnya −", "ikon": "⚖️", "cabang": "kunci", "petunjuk": "Lebihnya dan kurangnya itu kata kunci. Coba cabang lain." },
+          { "id": "c-selisih", "teks": "Selisih: besar − kecil", "ikon": "🔍", "cabang": "kunci", "petunjuk": "Selisih itu kata kunci untuk mengurangkan. Coba cabang lain." },
+          { "id": "c-diketahui", "teks": "Diketahui: Tika 12 donat", "ikon": "📋", "cabang": "langkah", "petunjuk": "Menulis yang sudah diketahui itu langkah pertama. Coba cabang lain." },
+          { "id": "c-jadi", "teks": "Jadi donat Malosi ada 7", "ikon": "🏁", "cabang": "langkah", "petunjuk": "Kalimat jawaban yang diawali kata jadi itu kesimpulan. Coba cabang lain." },
+          { "id": "c-balik", "teks": "… − 4 = 12 jadi 12 + 4", "ikon": "🔄", "cabang": "awal", "petunjuk": "Membalik operasi itu cara mencari bilangan awal. Coba cabang lain." },
+          { "id": "c-cek", "teks": "16 − 4 = 12 ✔", "ikon": "✅", "cabang": "awal", "petunjuk": "Memeriksa awal dengan operasi lawan itu bilangan awal. Coba cabang lain." },
+          { "id": "c-batang", "teks": "Batang pendek, sisanya selisih", "ikon": "📏", "cabang": "batang", "petunjuk": "Menggambar dua batang itu model batang. Coba cabang lain." },
+          { "id": "c-tiga", "teks": "5 + 7 = 12, lalu + 8", "ikon": "🧸", "cabang": "batang", "petunjuk": "Menjumlahkan dua dulu itu tiga bilangan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Soal Cerita",
+        "suara": "Ini tiga panel tentang soal cerita. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "c-kunci",
+            "tipe": "buka",
+            "judul": "Empat kata kunci",
+            "ide": "Baca kata kunci sebelum menghitung.",
+            "suara": "Ada empat kata kunci dalam soal cerita. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "jumlah",
+                "label": "Jumlah",
+                "ikon": "➕",
+                "isi": "Digabung, jadi ditambah.",
+                "suara": "Jumlah berarti semuanya digabung, jadi kita menambah. Lima ditambah tujuh sama dengan dua belas.",
+                "visual": { "jenis": "teks", "isi": "5 + 7 = 12" }
+              },
+              {
+                "id": "selisih",
+                "label": "Selisih",
+                "ikon": "🔍",
+                "isi": "Beda banyaknya: besar − kecil.",
+                "suara": "Selisih berarti beda banyaknya. Bilangan besar dikurangi bilangan kecil. Delapan belas dikurangi dua belas sama dengan enam.",
+                "visual": { "jenis": "teks", "isi": "18 − 12 = 6" }
+              },
+              {
+                "id": "lebihnya",
+                "label": "Lebihnya",
+                "ikon": "⬆️",
+                "isi": "Yang dicari lebih banyak: tambah.",
+                "suara": "Lebihnya berarti yang dicari punya lebih banyak, jadi kita menambah. Kira punya enam lebihnya dari dua belas, jadi dua belas ditambah enam sama dengan delapan belas.",
+                "visual": { "jenis": "teks", "isi": "12 + 6 = 18" }
+              },
+              {
+                "id": "kurangnya",
+                "label": "Kurangnya",
+                "ikon": "⬇️",
+                "isi": "Yang dicari lebih sedikit: kurang.",
+                "suara": "Kurangnya berarti yang dicari punya lebih sedikit, jadi kita mengurangi. Malosi punya lima kurangnya dari dua belas, jadi dua belas dikurangi lima sama dengan tujuh.",
+                "visual": { "jenis": "teks", "isi": "12 − 5 = 7" }
+              }
+            ]
+          },
+          {
+            "id": "c-awal",
+            "tipe": "banding",
+            "judul": "Sisa dicari atau awal dicari?",
+            "ide": "Bilangan awal: operasinya dibalik.",
+            "suara": "Lihat dua pertanyaan tentang jeruk Halim. Bandingkan mencari sisa dengan mencari bilangan awal.",
+            "sisi": [
+              {
+                "id": "sisa",
+                "nama": "Sisa dicari",
+                "ikon": "🍊",
+                "catatan": "Halim punya 16, memberi 4.",
+                "suara": "Sisa dicari. Halim punya enam belas jeruk dan memberi empat. Enam belas dikurangi empat sama dengan dua belas.",
+                "visual": { "jenis": "teks", "isi": "16 − 4 = 12" }
+              },
+              {
+                "id": "awal",
+                "nama": "Awal dicari",
+                "ikon": "🔙",
+                "catatan": "Memberi 4, sisa 12.",
+                "suara": "Awal dicari. Halim memberi empat dan sisanya dua belas. Titik-titik dikurangi empat sama dengan dua belas. Balikkan menjadi dua belas ditambah empat sama dengan enam belas.",
+                "visual": { "jenis": "teks", "isi": "… − 4 = 12 → 12 + 4 = 16" }
+              }
+            ],
+            "kesimpulan": "Cari awal: balik jadi tambah, lalu periksa."
+          },
+          {
+            "id": "c-tiga",
+            "tipe": "buka",
+            "judul": "Menjumlahkan tiga bilangan",
+            "ide": "Jumlahkan dua dulu, lalu ketiga.",
+            "suara": "Untuk tiga bilangan, kita menjumlahkan dua dulu. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "dua-dulu",
+                "label": "Dua dulu",
+                "ikon": "1️⃣",
+                "isi": "Boneka Tika dan Kira: 5 + 7.",
+                "suara": "Jumlahkan dua dulu, boneka Tika dan Kira. Lima ditambah tujuh sama dengan dua belas.",
+                "visual": { "jenis": "teks", "isi": "5 + 7 = 12" }
+              },
+              {
+                "id": "ketiga",
+                "label": "Lalu ketiga",
+                "ikon": "2️⃣",
+                "isi": "Tambah boneka Lili: 12 + 8.",
+                "suara": "Lalu tambahkan boneka Lili. Dua belas ditambah delapan sama dengan dua puluh.",
+                "visual": { "jenis": "teks", "isi": "12 + 8 = 20" }
+              },
+              {
+                "id": "cari-sepuluh",
+                "label": "Cari 10",
+                "ikon": "🔟",
+                "isi": "Dua bilangan berjumlah 10 lebih mudah.",
+                "suara": "Kalau ada dua bilangan yang berjumlah sepuluh, jumlahkan keduanya dulu. Empat ditambah enam sama dengan sepuluh, lalu sepuluh ditambah tujuh sama dengan tujuh belas.",
+                "visual": { "jenis": "teks", "isi": "4 + 6 = 10, 10 + 7 = 17" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

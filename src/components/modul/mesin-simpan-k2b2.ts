@@ -34,6 +34,25 @@ export const MISI_SIMPAN: MisiSimpan[] = [
   { a: 9, b: 7, op: "tambah" },
 ];
 
+/** Sub-Bab A: hanya penjumlahan. Satu soal tidak perlu menyimpan supaya anak tahu kapan simpan dipakai. */
+export const MISI_SIMPAN_TAMBAH: MisiSimpan[] = [
+  { a: 8, b: 5, op: "tambah" },
+  { a: 12, b: 6, op: "tambah" },
+  { a: 18, b: 2, op: "tambah" },
+];
+
+/** Sub-Bab B: hanya pengurangan. Satu soal tidak perlu mengurai. */
+export const MISI_SIMPAN_KURANG: MisiSimpan[] = [
+  { a: 18, b: 12, op: "kurang" },
+  { a: 12, b: 8, op: "kurang" },
+  { a: 20, b: 6, op: "kurang" },
+];
+
+export type RagamSimpan = "campur" | "tambah" | "kurang";
+
+export const daftarSimpan = (ragam: RagamSimpan): MisiSimpan[] =>
+  ragam === "tambah" ? MISI_SIMPAN_TAMBAH : ragam === "kurang" ? MISI_SIMPAN_KURANG : MISI_SIMPAN;
+
 export const hasilMisi = (m: MisiSimpan) => (m.op === "tambah" ? m.a + m.b : m.a - m.b);
 
 export const perluSimpan = (m: MisiSimpan) => m.op === "tambah" && (m.a % 10) + (m.b % 10) >= 10;
@@ -43,6 +62,8 @@ export const perluUrai = (m: MisiSimpan) => m.op === "kurang" && m.a % 10 < m.b 
 export const perluTukar = (m: MisiSimpan) => perluSimpan(m) || perluUrai(m);
 
 export type Simpan = {
+  /** Daftar misi yang sedang dikerjakan (menurut sub-bab). */
+  daftar: MisiSimpan[];
   misi: number;
   keadaan: KeadaanSimpan;
   sudahTukar: boolean;
@@ -60,8 +81,9 @@ export type PeristiwaSimpan =
   | { t: "LOMPAT"; ke: KeadaanSimpan }
   | { t: "ULANG" };
 
-export const awalSimpan = (misi = 0): Simpan => ({
-  misi: ((misi % MISI_SIMPAN.length) + MISI_SIMPAN.length) % MISI_SIMPAN.length,
+export const awalSimpan = (misi = 0, daftar: MisiSimpan[] = MISI_SIMPAN): Simpan => ({
+  daftar,
+  misi: ((misi % daftar.length) + daftar.length) % daftar.length,
   keadaan: "soal",
   sudahTukar: false,
   riwayat: [],
@@ -80,7 +102,7 @@ const pindah = (x: Simpan, ke: KeadaanSimpan): Simpan => ({
 });
 
 export function misiAktif(x: Simpan): MisiSimpan {
-  return MISI_SIMPAN[x.misi];
+  return x.daftar[x.misi];
 }
 
 export function halanganSimpan(x: Simpan): string | null {
@@ -120,13 +142,12 @@ export function petunjukSimpan(x: Simpan): string {
 }
 
 /** Pilihan hasil: benar di tengah putaran. */
-export function pilihanHasil(misi: number): number[] {
-  const c = hasilMisi(MISI_SIMPAN[misi]);
-  const dasar = [c - 1, c, c + 1].map((n) => Math.max(0, Math.min(20, n)));
-  const unik = [...new Set(dasar)];
-  while (unik.length < 3) unik.push(unik[unik.length - 1] + 1);
+export function pilihanHasil(misi: number, daftar: MisiSimpan[] = MISI_SIMPAN): number[] {
+  const c = hasilMisi(daftar[misi]);
+  // Pengecoh dekat jawaban, tetap di 0 sampai 20: di ujung atas atau bawah, geser pengecoh ke sisi yang masih ada.
+  const dasar = c + 1 > 20 ? [c - 2, c - 1, c] : c - 1 < 0 ? [c, c + 1, c + 2] : [c - 1, c, c + 1];
   const putar = c % 3;
-  return [0, 1, 2].map((k) => unik[(k + putar) % unik.length]);
+  return [0, 1, 2].map((k) => dasar[(k + putar) % dasar.length]);
 }
 
 export function langkahSimpan(x: Simpan, p: PeristiwaSimpan): Simpan {
@@ -154,14 +175,14 @@ export function langkahSimpan(x: Simpan, p: PeristiwaSimpan): Simpan {
       if (x.keadaan !== "hasil") return tolak(x, "Hasil baru diminta di stasiun Hasil.");
       const benar = hasilMisi(m);
       if (p.nilai !== benar) return tolak(x, `Belum tepat. Periksa lagi ${m.a} ${m.op === "tambah" ? "+" : "−"} ${m.b}.`);
-      if (x.misi + 1 >= MISI_SIMPAN.length) {
+      if (x.misi + 1 >= x.daftar.length) {
         return {
           ...pindah(x, "selesai"),
           selesai: true,
           riwayat: [...x.riwayat, `Hasil ${benar}`, "Hasil → Selesai"].slice(-10),
         };
       }
-      const berikutnya = awalSimpan(x.misi + 1);
+      const berikutnya = awalSimpan(x.misi + 1, x.daftar);
       return {
         ...berikutnya,
         riwayat: [...x.riwayat, `Hasil ${benar}`, `Misi ${x.misi + 1} selesai → misi ${x.misi + 2}`].slice(-10),
@@ -204,6 +225,6 @@ export function langkahSimpan(x: Simpan, p: PeristiwaSimpan): Simpan {
     }
 
     case "ULANG":
-      return awalSimpan(0);
+      return awalSimpan(0, x.daftar);
   }
 }

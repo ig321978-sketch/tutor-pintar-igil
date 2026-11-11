@@ -83,3 +83,67 @@ export function ucapanCara(p: Cara, op: Op): string {
 
 export const AWAL_A = 8;
 export const AWAL_B = 5;
+
+/** Keadaan awal bila lab dibuka untuk pengurangan (Sub-Bab B). Bukan target misi mana pun. */
+export const AWAL_KURANG: Cara = { a: 15, b: 7 };
+
+/** Perwakilan yang bisa dinyalakan atau dimatikan anak. Sub-Bab A hanya tiga yang pertama. */
+export type TampilCara = "garis" | "pasangan" | "susun" | "selisih" | "periksa";
+export const SEMUA_TAMPIL_CARA: TampilCara[] = ["garis", "pasangan", "susun", "selisih", "periksa"];
+export const TAMPIL_CARA_A: TampilCara[] = ["garis", "pasangan", "susun"];
+
+/** Perwakilan yang menyala saat laboratorium dibuka atau di-reset. Selisih dan Periksa dinyalakan anak sendiri. */
+export const NYALA_AWAL_CARA: TampilCara[] = ["garis", "pasangan", "susun"];
+
+/** Cara menghitung di garis untuk pengurangan: mundur dari a, atau tambah sampai pas dari b ke a. */
+export type CaraGaris = "mundur" | "pas";
+
+/* ------------------------- Selisih: pasangkan satu-satu ------------------------ */
+
+export type Pasangan = { a: number; b: number; berpasangan: number; sisa: number };
+
+/** Dua baris titik dipasangkan satu-satu. Titik baris panjang yang tidak berpasangan adalah selisihnya. */
+export function pasangSelisih(p: Cara): Pasangan {
+  const berpasangan = Math.min(p.a, p.b);
+  return { a: p.a, b: p.b, berpasangan, sisa: Math.abs(p.a - p.b) };
+}
+
+/* -------------------------- Tambah sampai pas (kembalian) ------------------------- */
+
+/** Lompatan maju dari bilangan kecil (b) sampai bilangan besar (a). Banyak lompatan = selisih = hasil a − b. */
+export function rencanaPas(p: Cara): Hop[] {
+  const n = Math.max(0, p.a - p.b);
+  return Array.from({ length: n }, (_, i) => ({ dari: p.b + i, ke: p.b + i + 1, label: "+1" }));
+}
+
+/* ------------------------ Keluarga bilangan dan pemeriksaan ----------------------- */
+
+export type Keluarga = { total: number; x: number; y: number };
+
+/** Tiga bilangan yang berkeluarga: dua bagian dan satu total. */
+export function keluargaBilangan(p: Cara, op: Op): Keluarga {
+  return op === "tambah" ? { total: p.a + p.b, x: p.a, y: p.b } : { total: p.a, x: p.a - p.b, y: p.b };
+}
+
+/** Empat kalimat keluarga (dua bila kedua bagian sama). */
+export function kalimatKeluarga(k: Keluarga): string[] {
+  const baris = [`${k.x} + ${k.y} = ${k.total}`];
+  if (k.x !== k.y) baris.push(`${k.y} + ${k.x} = ${k.total}`);
+  baris.push(`${k.total} − ${k.x} = ${k.y}`);
+  if (k.x !== k.y) baris.push(`${k.total} − ${k.y} = ${k.x}`);
+  return baris;
+}
+
+/** Pemeriksaan hasil dengan operasi lawannya: pengurangan diperiksa dengan tambah, penjumlahan dengan kurang. */
+export function kalimatPeriksa(p: Cara, op: Op): string {
+  const h = hasilCara(p, op);
+  return op === "kurang" ? `${h} + ${p.b} = ${p.a}` : `${h} − ${p.b} = ${p.a}`;
+}
+
+/** Kalimat penjelasan di bawah pemeriksaan. */
+export function ucapanPeriksa(p: Cara, op: Op): string {
+  const h = hasilCara(p, op);
+  return op === "kurang"
+    ? `Periksa dengan penjumlahan. ${h} + ${p.b} = ${p.a}. Cocok dengan bilangan semula.`
+    : `Periksa dengan pengurangan. ${h} − ${p.b} = ${p.a}. Kembali ke bilangan pertama.`;
+}

@@ -116,10 +116,33 @@ export const SKENARIO_K2B2: DefSkenario = {
       ],
     },
     {
+      id: "awal",
+      jenis: "pilih",
+      cerita:
+        "Halim memberikan 4 jeruk kepada Lili. Sekarang jeruk Halim tersisa 12. Berapa jeruk Halim semula? Cara mana yang tepat untuk mencari bilangan awal?",
+      opsi: [
+        {
+          teks: "Kurangkan lagi: 12 − 4 = 8",
+          benar: false,
+          umpan: "Jeruk sudah diberikan, jadi jumlah semula pasti lebih banyak dari sisanya. 8 malah lebih sedikit dari 12.",
+        },
+        {
+          teks: "Balik operasinya: 12 + 4 = 16",
+          benar: true,
+          umpan: "Betul! Yang diberikan dikembalikan dengan menambah. Periksa: 16 − 4 = 12, cocok dengan sisanya.",
+        },
+        {
+          teks: "Ambil sisanya saja, yaitu 12",
+          benar: false,
+          umpan: "12 adalah sisanya, bukan jumlah semula. Jeruk yang diberikan harus ikut dihitung.",
+        },
+      ],
+    },
+    {
       id: "akhir",
       jenis: "akhir",
       cerita:
-        "Terima kasih! Kamu sudah memakai kata kunci, langkah berurutan, dan operasi yang tepat. Main lagi kalau mau latihan soal cerita lain.",
+        "Terima kasih! Kamu sudah memakai kata kunci, langkah berurutan, dan operasi yang tepat, bahkan untuk mencari bilangan awal. Main lagi kalau mau latihan soal cerita lain.",
     },
   ],
 };

@@ -5,11 +5,11 @@ import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { CobaIni, KARTU, TOMBOL_BIASA, TOMBOL_UTAMA } from "./simulasi-bersama";
 import { PetaStasiun, RiwayatMesin, StatusMesin, ejaHitung } from "./komponen-lab";
 import {
-  MISI_SIMPAN,
   NAMA_SIMPAN,
   STASIUN_SIMPAN,
   URUT_SIMPAN,
   awalSimpan,
+  daftarSimpan,
   langkahSimpan,
   misiAktif,
   perluSimpan,
@@ -18,6 +18,7 @@ import {
   pilihanHasil,
   type KeadaanSimpan,
   type PeristiwaSimpan,
+  type RagamSimpan,
   type Simpan,
 } from "./mesin-simpan-k2b2";
 
@@ -56,8 +57,42 @@ function TabelSusun({ a, b, op }: { a: number; b: number; op: "tambah" | "kurang
   );
 }
 
-export default function SimulasiMesinSimpan({ speakGuru, onTuntas }: { speakGuru: (t: string) => void; onTuntas: () => void }) {
-  const [x, setX] = useState<Simpan>(() => awalSimpan(0));
+const JUDUL: Record<RagamSimpan, { nama: string; ajak: string; coba: string[]; suara: string }> = {
+  campur: {
+    nama: "Mesin Simpan dan Urai",
+    ajak: "Mesin hanya jalan kalau urutannya benar. Simpan saat tambah, urai saat kurang.",
+    coba: ["Coba maju ke Hasil sebelum Tukar. Apa kata mesin?", "Di 8 + 5, simpan sekali. Apa yang tertulis di puluhan?", "Di 14 − 6, urai dulu. Mengapa satuan jadi cukup?"],
+    suara:
+      "Coba ini. Satu, coba maju ke Hasil sebelum Tukar. Apa kata mesin? Dua, di delapan ditambah lima, simpan sekali. Apa yang tertulis? Tiga, di empat belas dikurangi enam, urai dulu. Mengapa satuan jadi cukup?",
+  },
+  tambah: {
+    nama: "Mesin Simpan",
+    ajak: "Mesin hanya jalan kalau urutannya benar. Sepuluh satuan harus disimpan menjadi satu puluhan.",
+    coba: ["Coba maju ke Hasil sebelum Tukar di 8 + 5. Apa kata mesin?", "Di 12 + 6, apakah perlu menyimpan? Mengapa tidak?", "Di 18 + 2, satuan menjadi 10. Berapa puluhan dan satuan sesudah disimpan?"],
+    suara:
+      "Coba ini. Satu, coba maju ke Hasil sebelum Tukar di delapan ditambah lima. Apa kata mesin? Dua, di dua belas ditambah enam, apakah perlu menyimpan? Mengapa tidak? Tiga, di delapan belas ditambah dua, satuan menjadi sepuluh. Berapa puluhan dan satuan sesudah disimpan?",
+  },
+  kurang: {
+    nama: "Mesin Urai",
+    ajak: "Mesin hanya jalan kalau urutannya benar. Kalau satuan tidak cukup, urai satu puluhan dulu.",
+    coba: ["Di 18 − 12, apakah perlu mengurai? Mengapa tidak?", "Di 12 − 8, coba maju ke Hasil sebelum Tukar. Apa kata mesin?", "Di 20 − 6, satuan 0 tidak cukup. Berapa satuan sesudah mengurai satu puluhan?"],
+    suara:
+      "Coba ini. Satu, di delapan belas dikurangi dua belas, apakah perlu mengurai? Mengapa tidak? Dua, di dua belas dikurangi delapan, coba maju ke Hasil sebelum Tukar. Apa kata mesin? Tiga, di dua puluh dikurangi enam, satuan nol tidak cukup. Berapa satuan sesudah mengurai satu puluhan?",
+  },
+};
+
+export default function SimulasiMesinSimpan({
+  speakGuru,
+  onTuntas,
+  ragam = "campur",
+}: {
+  speakGuru: (t: string) => void;
+  onTuntas: () => void;
+  /** Soal yang dipakai mesin: hanya penjumlahan (simpan), hanya pengurangan (urai), atau campuran. */
+  ragam?: RagamSimpan;
+}) {
+  const teksRagam = JUDUL[ragam];
+  const [x, setX] = useState<Simpan>(() => awalSimpan(0, daftarSimpan(ragam)));
   const m = misiAktif(x);
   const aktif = URUT_SIMPAN.indexOf(x.keadaan);
   const tanda = m.op === "tambah" ? "+" : "−";
@@ -69,8 +104,8 @@ export default function SimulasiMesinSimpan({ speakGuru, onTuntas }: { speakGuru
   };
 
   const suara = x.selesai
-    ? "Semua misi selesai. Hebat! Kamu sudah menyimpan dan mengurai dengan urutan yang benar."
-    : `Misi ${x.misi + 1} dari ${MISI_SIMPAN.length}. ${m.a} ${m.op === "tambah" ? "ditambah" : "dikurangi"} ${m.b}. ${petunjukSimpan(x)}`;
+    ? "Semua misi selesai. Hebat! Kamu sudah mengikuti urutan mesin dengan benar."
+    : `Misi ${x.misi + 1} dari ${x.daftar.length}. ${m.a} ${m.op === "tambah" ? "ditambah" : "dikurangi"} ${m.b}. ${petunjukSimpan(x)}`;
 
   const terakhir = x.riwayat.length > 0 ? `Mesin pindah ${x.riwayat[x.riwayat.length - 1]}` : "";
 
@@ -78,8 +113,8 @@ export default function SimulasiMesinSimpan({ speakGuru, onTuntas }: { speakGuru
     <div className="space-y-4">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <h3 className="text-lg font-black text-[#1C01A5]">Mesin Simpan dan Urai</h3>
-          <p className="text-sm font-bold text-[#1C01A5]/80">Mesin hanya jalan kalau urutannya benar. Simpan saat tambah, urai saat kurang.</p>
+          <h3 className="text-lg font-black text-[#1C01A5]">{teksRagam.nama}</h3>
+          <p className="text-sm font-bold text-[#1C01A5]/80">{teksRagam.ajak}</p>
         </div>
         <TombolSuaraGuru label="Dengarkan misi ini" onClick={() => speakGuru(ejaHitung(suara))} />
       </div>
@@ -92,7 +127,7 @@ export default function SimulasiMesinSimpan({ speakGuru, onTuntas }: { speakGuru
           onPilih={(i) => kirim({ t: "LOMPAT", ke: URUT_SIMPAN[i] as KeadaanSimpan })}
         />
         <p className="text-center text-xs font-black uppercase tracking-wide text-[#1C01A5]/70">
-          {x.selesai ? "Semua misi selesai" : `Misi ${x.misi + 1} dari ${MISI_SIMPAN.length} • ${m.a} ${tanda} ${m.b}`}
+          {x.selesai ? "Semua misi selesai" : `Misi ${x.misi + 1} dari ${x.daftar.length} • ${m.a} ${tanda} ${m.b}`}
         </p>
         <StatusMesin pesan={x.pesan} terakhir={terakhir} awal={petunjukSimpan(x)} />
       </div>
@@ -156,7 +191,7 @@ export default function SimulasiMesinSimpan({ speakGuru, onTuntas }: { speakGuru
           <div className="space-y-3 text-center">
             <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]/70">Stasiun Hasil • {m.a} {tanda} {m.b}</p>
             <div className="flex flex-wrap justify-center gap-2" role="group" aria-label="Pilih hasil">
-              {pilihanHasil(x.misi).map((n) => (
+              {pilihanHasil(x.misi, x.daftar).map((n) => (
                 <button
                   key={n}
                   type="button"
@@ -177,16 +212,8 @@ export default function SimulasiMesinSimpan({ speakGuru, onTuntas }: { speakGuru
 
       <CobaIni
         judul="Coba ini!"
-        onDengar={() =>
-          speakGuru(
-            "Coba ini. Satu, coba maju ke Hasil sebelum Tukar. Apa kata mesin? Dua, di delapan ditambah lima, simpan sekali. Apa yang tertulis? Tiga, di empat belas dikurangi enam, urai dulu. Mengapa satuan jadi cukup?"
-          )
-        }
-        langkah={[
-          "Coba maju ke Hasil sebelum Tukar. Apa kata mesin?",
-          "Di 8 + 5, simpan sekali. Apa yang tertulis di puluhan?",
-          "Di 14 − 6, urai dulu. Mengapa satuan jadi cukup?",
-        ]}
+        onDengar={() => speakGuru(teksRagam.suara)}
+        langkah={teksRagam.coba}
       />
     </div>
   );
