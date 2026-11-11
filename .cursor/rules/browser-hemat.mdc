@@ -1,0 +1,14 @@
+---
+description: Batasi snapshot/klik Browser MCP agar token On Demand tidak habis
+alwaysApply: true
+---
+
+# Hemat Browser automation
+
+Setelah ubah UI/modul, buka pratinjau sekali — jangan spam alat browser.
+
+1. **Port hidup?** Satu `curl` singkat ke `http://localhost:3000` (batas waktu). Jangan `browser_navigate` hanya untuk cek server.
+2. **Satu putaran verifikasi:** `browser_navigate` (atau tab yang sudah terbuka) → paling banyak **1** `browser_snapshot` **atau** **1** `browser_take_screenshot`. Selesai.
+3. **Hanya ulang** jika ada bug interaksi nyata (klik/seret gagal). Maksimal 2 putaran ekstra; setelah itu laporkan apa yang terlihat dan berhenti.
+4. **Jangan** snapshot berulang di halaman sama, scroll-snapshot-scroll tanpa tujuan, atau buka banyak tab.
+5. Seret kartu/benda: `pointerdown`/`pointerup` (atau alat drag), bukan `.click()` semata. Teks UI sering `uppercase` di CSS — cocokkan dengan yang terlihat.

@@ -1,0 +1,27 @@
+---
+description: Halaman komunitas sekolah, ranking berjenjang, Partner IGIL (Blueprint §7)
+globs: src/app/komunitas/**,src/components/komunitas/**,src/data/komunitas*
+alwaysApply: false
+---
+
+# Komunitas IGIL (ranking sekolah berjenjang + Partner guru)
+
+Data awal statis (belum RPC live); struktur wajib dipertahankan saat dikembangkan.
+
+1. **Rute & berkas:**
+   - `/komunitas` → `src/app/komunitas/page.tsx` + `src/components/komunitas/KomunitasHalaman.tsx`
+   - `/komunitas/[id]` → profil sekolah (`ProfilSekolah.tsx`)
+   - Data: `src/data/komunitas-igil.json` lewat `src/components/komunitas/komunitas-data.ts`
+   - Menu Navbar: **Komunitas** (publik, ikut daftar rute terkunci situs bila mode admin-only aktif)
+
+2. **Aturan ranking berjenjang (ambang ≥ 100 pelanggan sekolah):**
+   - **Sekolah** (≥100 siswa berlangganan di sekolah yang sama) → ranking per-sekolah
+   - Jika belum 100 → naik ke **kecamatan** → **kabupaten/kota** → **provinsi** → **nasional**
+   - Kolam beasiswa & Papan Kualifikasi **tetap terpisah per fase** (`FASE_A` / `FASE_B` / `FASE_C`); jenjang wilayah hanya mengatur arena ranking di dalam fase
+
+3. **Partner IGIL (guru sekolah komunitas):**
+   - Honor acuan: **Rp100.000 / minggu** (contoh 6 kelas × ±10 menit bimbingan singkat)
+   - Melengkapi belajar mandiri di IGIL, bukan mengganti modul aplikasi
+   - Profil sekolah menampilkan Partner, capaian, dan siswa unggulan (nama depan + inisial)
+
+4. **UI daftar sekolah:** tabel; klik nama sekolah membuka halaman profil (`/komunitas/[id]`). Tema wajib: biru-ungu royal, kuning emas, putih.

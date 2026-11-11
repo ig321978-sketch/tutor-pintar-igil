@@ -1,0 +1,28 @@
+---
+description: Delapan pintu anti-kecurangan — RLS, PIN orang tua, ujian buta, kalender 3 hari, uji lisan (Blueprint §8)
+globs: supabase/**,src/lib/**,src/app/**/daftar*,src/app/**/akun*,src/app/**/beasiswa*
+alwaysApply: false
+---
+
+# Delapan pintu pertahanan anti-kecurangan
+
+Skema: `supabase/migrations/01_igil_eight_gates_schema.sql` dan `02_parent_pin_in_app.sql`. Tidak ada tabel vektor wajah, kolom gambar, NIK, KK, atau nomor rekening di tabel IGIL.
+
+Seluruh alur verifikasi **100% In-App** (akun login):
+
+- **Zero Email & Zero WhatsApp:** tidak ada notifikasi ke email/WA orang tua.
+- **In-App Parental PIN:** 6 digit; simpan hanya bcrypt di `private.household_pins.parent_pin_hash` (bukan SHA-256). 5 gagal → kunci 15 menit. Ubah `payout_holder_name` / `gateway_payout_ref` wajib PIN.
+
+## A. Berlangganan & belajar harian (server)
+
+1. **Pendaftaran minimalis + HMAC-SHA256 NISN + kode undangan rumah:** NISN tidak disimpan mentah; HMAC dengan kunci `igil.nisn_hmac_key` → `nisn_hmac UNIQUE`. Tanpa KK/NIK/rapor upload. Rekening hanya di Payment Gateway (`gateway_payout_ref` + `payout_holder_name`). Ratchet fase satu arah (lihat aturan isolasi fase).
+2. **Kunci jawaban di server:** JSON di perangkat tanpa `correct_index`/`explanation`. Latihan: explanation via RPC setelah jawab. Ujian: lembar utuh → nilai akhir saja + `cooldown_until`.
+3. **Tempo server & batas bab harian:** `now()` server; kiriman terlalu cepat ditolak; poin harian berhenti setelah batas bab wajar.
+4. **Poin sekali terbit:** UNIQUE `(student_id, chapter_id, component_type)`; satu sesi ujian aktif per anak.
+5. **Multi-paket soal ujian** dipilih server saat sesi dimulai.
+
+## B. Pencairan beasiswa
+
+6. **Saringan pra-kalender + kalender 3 hari (slot 2 menit):** akun pabrik / 3+ akun detik sama digugurkan; calon pilih slot sendiri (1x pindah ke slot kosong); slot kosong ke peringkat berikutnya; dana tanpa penerima → rollover bulan depan.
+7. **Rapor di kamera sekali:** hanya jika `identity_verified_once = false`; 5 detik, tanpa rekam/unggah; petugas centang `nama_cocok` + `fase_kelas_cocok`. Tidak ada deteksi kamera saat belajar/ujian.
+8. **Uji lisan 1 soal + 1 cadangan:** penentu utama beasiswa bulan itu; cair lewat gateway yang cocok `payout_holder_name`.

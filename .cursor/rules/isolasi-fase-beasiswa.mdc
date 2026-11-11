@@ -1,0 +1,30 @@
+---
+description: Isolasi fase FASE_A/B/C, kolam beasiswa per fase, One-Way Phase Ratchet (Blueprint §6)
+globs: supabase/**,src/data/**,src/lib/**,src/components/**/fase*,src/components/**/Kunci*
+alwaysApply: false
+---
+
+# Isolasi fase & distribusi beasiswa per jenjang (Pilot SD Kelas 1–6)
+
+Platform IGIL HANYA melayani SD Kelas 1–6 dalam 3 fase terisolasi.
+
+## 1. Matriks isolasi Poin Kualifikasi (per fase, bebas lintas-kelas dalam fase)
+
+- Sekat penambangan Poin Kualifikasi berlaku per **Fase**, BUKAN mengunci per satu kelas di dalam fase.
+- **`FASE_A` (Kelas 1 & 2 SD, awalan NISN `018`–`020`)**: bebas Latihan/Ujian/Praktikum pada modul Kelas 1 maupun 2.
+- **`FASE_B` (Kelas 3 & 4 SD, awalan NISN `016`–`018`)**: bebas pada modul Kelas 3 maupun 4.
+- **`FASE_C` (Kelas 5 & 6 SD, awalan NISN `014`–`016`)**: bebas pada modul Kelas 5 maupun 6.
+- NISN/usia jenjang SMP–SMA (`< 014` / usia > 12) DITOLAK pada Pilot Project SD.
+- Satu blok 4 bab lulus ujian = 450 Poin Kualifikasi (30+70)×4 + Praktikum 50.
+
+## 2. Kolam beasiswa terpisah per fase
+
+- Tiap fase punya Kantong Dana + Papan Kualifikasi sendiri (`pool_fase_a` / `b` / `c`).
+- 90% langganan → kantong fase pelanggan; 10% → Kolam Operasional terpusat.
+- Akhir bulan (`pg_cron`): setelah biaya server, PG, dan plafon hidup layak founder, 100% surplus operasional di-overflow proporsional ke tiga pool menurut jumlah pelanggan aktif per fase.
+
+## 3. Penegakan teknis (One-Way Phase Ratchet)
+
+- JSON modul wajib `"phase_code": "FASE_A"|"FASE_B"|"FASE_C"` dan `"grade": 1..6`.
+- UI mengunci Latihan/Ujian/Praktikum hanya jika `student.phase_code !== chapter.phase_code` (jangan kunci lintas-kelas dalam fase sama).
+- RPC `SECURITY DEFINER`: cocokkan `phase_code`; ratchet satu arah `FASE_A` → `FASE_B` → `FASE_C` (tidak boleh turun); pemenang akhir bulan dikelompokkan per fase.

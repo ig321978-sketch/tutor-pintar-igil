@@ -85,29 +85,15 @@ import {
   InfografisDiagramB,
   PictureDiagramB,
 } from "@/components/modul/SubBabB8Diagram";
-import SimulasiBab1Materi, { misiAwalBab1 } from "@/components/modul/SimulasiBab1";
-import SimulasiBab2Materi, { misiAwalBab2 } from "@/components/modul/SimulasiBab2";
-import SimulasiBab3Materi, { misiAwalBab3 } from "@/components/modul/SimulasiBab3";
-import SimulasiBab4Materi, { misiAwalBab4 } from "@/components/modul/SimulasiBab4";
-import SimulasiBab5Materi, { misiAwalBab5 } from "@/components/modul/SimulasiBab5";
-import SimulasiBab6Materi, { misiAwalBab6 } from "@/components/modul/SimulasiBab6";
-import SimulasiBab7Materi, { misiAwalBab7 } from "@/components/modul/SimulasiBab7";
-import SimulasiBab8Materi, { misiAwalBab8 } from "@/components/modul/SimulasiBab8";
 import PetaKonsep from "@/components/modul/PetaKonsep";
 import InfografisRingkas from "@/components/modul/InfografisRingkas";
-import type { DataPeta } from "@/components/modul/peta-konsep-logika";
-import type { DataInfografis } from "@/components/modul/infografis-ringkas-logika";
-import ringkasK1B1 from "@/data/kelas1-bab1-ringkas.json";
-import ringkasK1B2 from "@/data/kelas1-bab2-ringkas.json";
-import ringkasK1B3 from "@/data/kelas1-bab3-ringkas.json";
-import ringkasK1B4 from "@/data/kelas1-bab4-ringkas.json";
-import ringkasK1B5 from "@/data/kelas1-bab5-ringkas.json";
-import ringkasK1B6 from "@/data/kelas1-bab6-ringkas.json";
-import ringkasK1B7 from "@/data/kelas1-bab7-ringkas.json";
-import ringkasK1B8 from "@/data/kelas1-bab8-ringkas.json";
-import SimulasiK2Bab1 from "@/components/modul/SimulasiK2Bab1";
-import SimulasiK2Bab2 from "@/components/modul/SimulasiK2Bab2";
-import SimulasiK2Bab3 from "@/components/modul/SimulasiK2Bab3";
+import {
+  RINGKAS_BAB,
+  SIMULASI_BAB,
+  SIMULASI_MATERI,
+  SIMULASI_MISI_AWAL,
+  TAHAP_SIMULASI,
+} from "@/components/modul/registri-simulasi";
 import { CeritaDataA, PETA_PIKIRAN_A8 } from "@/components/modul/gambar-data-a8";
 import {
   AbstractDataA,
@@ -992,63 +978,7 @@ const TAHAP_SILABUS_SMISCPA = [
   TAHAP_SILABUS[5],
 ];
 
-/**
- * Kunci tahap Simulasi di dalam Materi. Sengaja pecahan (3,5) supaya menyisip antara Infografis (3)
- * dan Concrete (4) tanpa menggeser kunci tahap lama yang dipakai ratusan cabang di bawah.
- */
-const TAHAP_SIMULASI = 3.5;
-
-type SimulasiMateriProps = { sub: string; speakGuru: (teks: string) => void; onSelesai: () => void; teksAkhir: string };
-
-/**
- * Bab pilot SMISCPA: Simulasi pindah ke dalam Materi (tahap 4) dan tab Simulasi tidak ada.
- * Mind-Map dan Infografis memakai komponen data-driven ringkas. Bab lain tetap SMICPA + tab Simulasi
- * sampai dimigrasi.
- */
-const SIMULASI_MATERI: Partial<Record<string, ComponentType<SimulasiMateriProps>>> = {
-  "mtk-1-bab1": SimulasiBab1Materi,
-  "mtk-1-bab2": SimulasiBab2Materi,
-  "mtk-1-bab3": SimulasiBab3Materi,
-  "mtk-1-bab4": SimulasiBab4Materi,
-  "mtk-1-bab5": SimulasiBab5Materi,
-  "mtk-1-bab6": SimulasiBab6Materi,
-  "mtk-1-bab7": SimulasiBab7Materi,
-  "mtk-1-bab8": SimulasiBab8Materi,
-};
-
-/** Ucapan misi simulasi pertama tiap sub-bab, digabung ke ucapan saat tahap Simulasi dibuka (suara perlu ketukan anak). */
-const SIMULASI_MISI_AWAL: Partial<Record<string, (sub: string) => string>> = {
-  "mtk-1-bab1": misiAwalBab1,
-  "mtk-1-bab2": misiAwalBab2,
-  "mtk-1-bab3": misiAwalBab3,
-  "mtk-1-bab4": misiAwalBab4,
-  "mtk-1-bab5": misiAwalBab5,
-  "mtk-1-bab6": misiAwalBab6,
-  "mtk-1-bab7": misiAwalBab7,
-  "mtk-1-bab8": misiAwalBab8,
-};
-
-type RingkasSub = { peta: DataPeta; infografis: DataInfografis };
-const RINGKAS_BAB: Partial<Record<string, Record<string, RingkasSub>>> = {
-  "mtk-1-bab1": ringkasK1B1.subBab as unknown as Record<string, RingkasSub>,
-  "mtk-1-bab2": ringkasK1B2.subBab as unknown as Record<string, RingkasSub>,
-  "mtk-1-bab3": ringkasK1B3.subBab as unknown as Record<string, RingkasSub>,
-  "mtk-1-bab4": ringkasK1B4.subBab as unknown as Record<string, RingkasSub>,
-  "mtk-1-bab5": ringkasK1B5.subBab as unknown as Record<string, RingkasSub>,
-  "mtk-1-bab6": ringkasK1B6.subBab as unknown as Record<string, RingkasSub>,
-  "mtk-1-bab7": ringkasK1B7.subBab as unknown as Record<string, RingkasSub>,
-  "mtk-1-bab8": ringkasK1B8.subBab as unknown as Record<string, RingkasSub>,
-};
-
-type SimulasiBabProps = { speakGuru: (teks: string) => void; onKeLatihan: () => void };
-
-/** Simulasi tiap bab. Bab yang belum ada di sini tidak menampilkan tab Simulasi. */
-const SIMULASI_BAB: Partial<Record<string, ComponentType<SimulasiBabProps>>> = {
-  "mtk-2-bab1": SimulasiK2Bab1,
-  "mtk-2-bab2": SimulasiK2Bab2,
-  "mtk-2-bab3": SimulasiK2Bab3,
-};
-
+/** Registri SIMULASI_MATERI, RINGKAS_BAB, SIMULASI_BAB, TAHAP_SIMULASI ada di modul/registri-simulasi.ts. Peta file: naskah/igil-module-player-peta.md. */
 export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: BabModul; paket?: PaketBab }) {
   const adaBab3 = bab === "mtk-1-bab3";
   const adaBab4 = bab === "mtk-1-bab4";

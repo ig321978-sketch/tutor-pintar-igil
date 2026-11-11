@@ -1,0 +1,13 @@
+---
+description: Ekonomi sosial 90:10, RLS Supabase, reset bulanan Poin Kualifikasi (Blueprint §5)
+globs: supabase/**,src/lib/supabase*
+alwaysApply: false
+---
+
+# Ekonomi sosial 90:10 & keamanan Supabase
+
+- **Model 90:10 + Plafon Hidup Layak**: 90% pendapatan langganan masuk ke Kolam Beasiswa Siswa; 10% masuk ke Kolam Operasional (dipotong biaya server riil, biaya transaksi Payment Gateway riil, & plafon biaya hidup layak bulanan founder, lalu 100% surplus sisanya otomatis dilimpahkan kembali ke Kolam Beasiswa).
+- **Transparansi Publik & Privasi Nama Anak SD**: Pada halaman publik Papan Kualifikasi Beasiswa dan Laporan Penyaluran Beasiswa, nama siswa ditampilkan dengan format **Nama Depan + Inisial Nama Belakang** (contoh: `Kirana D.`) disertai Kelas, Kota/Provinsi, dan Kode Bukti Penyaluran Unik (`IGIL-BEA-...`). Nama lengkap anak hanya tampil di dalam sesi akun keluarga masing-masing.
+- **On-Submit Hidden Grading**: Saat Praktikum diserahkan, nilai AI (30% Akurasi, 25% Sintesis, 20% Kemandirian, 25% Penalaran) disimpan di tabel Supabase dengan status tersembunyi (`is_hidden = true`) hingga pengumuman akhir bulan.
+- **Row Level Security (RLS) Mutlak**: Klien browser HANYA memiliki izin `SELECT`. Seluruh penambahan Poin Kualifikasi (30/70/50), pencatatan kelulusan ujian 100% pada **Papan Kualifikasi Beasiswa**, dan penyimpanan praktikum WAJIB dieksekusi melalui fungsi PostgreSQL RPC (`SECURITY DEFINER`).
+- **Reset Siklus Bulanan (`pg_cron`)**: Setiap akhir bulan, kunci daftar pemenang pada **Papan Kualifikasi Beasiswa** dan reset Poin Kualifikasi bulanan (30/70/50) kembali ke 0 tanpa menghapus riwayat bab yang sudah dipelajari siswa.
