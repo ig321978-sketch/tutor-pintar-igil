@@ -7,7 +7,7 @@ SMISCPA = **S**tory → **M**ind-map → **I**nfografis → **S**imulasi → **C
 | 1 Story | Cerita | tetap | tetap |
 | 2 Mind-Map | Satu tampilan: pusat, 3–4 cabang, kartu | `PetaKonsep.tsx`, logika `peta-konsep-logika.ts` | `src/data/kelas1-bab8-ringkas.json` → `subBab.<A\|B>.peta` |
 | 3 Infografis | Paling banyak 3 panel, ketuk dan bandingkan | `InfografisRingkas.tsx`, logika `infografis-ringkas-logika.ts` | `subBab.<A\|B>.infografis` |
-| 4 Simulasi | Dua simulasi per sub-bab | `SimulasiBab8.tsx` (`SimulasiBab8Materi`) + `simulasi-alur.tsx` | lihat `mtk-1-bab8-simulasi.md` |
+| 4 Simulasi | Sub-Bab A satu simulasi, Sub-Bab B tiga simulasi, tiap simulasi diawali satu Misi | `SimulasiBab8.tsx` (`SimulasiBab8Materi`) + `simulasi-alur.tsx` | lihat `mtk-1-bab8-simulasi.md` |
 | 5–7 Concrete, Picture, Abstract | Sepuluh permainan per tahap | tetap | tetap |
 
 Semua statis di klien. Tanpa jaringan, tanpa LLM, tanpa skor, tanpa hukuman.
@@ -16,7 +16,8 @@ Semua statis di klien. Tanpa jaringan, tanpa LLM, tanpa skor, tanpa hukuman.
 - **Data:** `pusat` (judul, ikon, suara), `petunjuk` (gelembung maskot), `cabang[3..4]` (id, judul, ikon, ringkas ≤ 8 kata, suara), `kartu[]` (id, teks, ikon, cabang tujuan, petunjuk bila salah letak). Tiap cabang wajib punya minimal satu kartu.
 - **Satu tampilan untuk semua kelas.** Ciri tiap kelas hanya warna (warna pusat dan urutan warna cabang per kelas, `PUSAT_KELAS` dan `warnaCabang`) dan maskot (diteruskan pemutar). Enam kulit lama di `PetaPikiranB.tsx` tidak dipakai bab pilot.
 - **Alur anak:** ketuk cabang → cabang terbuka dan guru membacakan; pilih kartu (seret, atau ketuk lalu ketuk cabang; papan ketik Enter) → taruh di cabang yang cocok. Kartu yang salah letak kembali ke baki dengan petunjuk pendek. Kartu yang sudah menempel bisa dikembalikan dengan mengetuknya.
-- **LANJUTKAN KE INFOGRAFIS** aktif setelah **semua cabang dibuka**. Menyusun kartu bebas, tidak menjadi syarat. "↺ Ulangi peta" memulai ulang tampilan tanpa mengunci ulang tombol.
+- **Anak yang belum lancar membaca tetap terpandu.** Guru membacakan isi kartu saat kartu diketuk atau mulai diseret, lalu mengucapkan "ketuk cabang yang cocok". Kartu yang dipegang tampil di spanduk kuning yang menempel di atas layar ("✋ Kartu di tanganmu") dengan tombol suara dan tombol "Lepas", dan peta digulir supaya cabang terlihat. Hanya satu mode pada satu waktu: tanpa kartu di tangan, ketuk cabang = buka; dengan kartu di tangan, ketuk cabang = taruh.
+- **LANJUTKAN KE INFOGRAFIS** aktif setelah **semua cabang dibuka dan minimal dua kartu menempel benar** (`KARTU_MINIMAL`, turun otomatis bila kartu kurang dari dua). Salah letak tidak dihitung dan tidak menghukum, jadi syarat ini selalu bisa dipenuhi. Tujuannya supaya Mind-Map tidak berhenti di "ketuk lalu dengar". "↺ Ulangi peta" memulai ulang tampilan tanpa mengunci ulang tombol.
 - **Cabang yang disepakati:**
   - Sub-Bab A (pusat **Data**): Kelompokkan, Hitung, Sajikan, Baca.
   - Sub-Bab B (pusat **Diagram Gambar**): Tanya, Catat, Gambar, Baca.
@@ -28,6 +29,11 @@ Semua statis di klien. Tanpa jaringan, tanpa LLM, tanpa skor, tanpa hukuman.
 - **Panel yang disepakati:**
   - Sub-Bab A: Berantakan atau rapi? (banding) · Hitung dengan turus (buka) · Tabel menurun atau mendatar? (banding).
   - Sub-Bab B: Bagian diagram (buka) · Tegak atau mendatar? (banding) · Baca diagramnya (buka).
+
+## Pop-up tahap interaktif
+- Mind-Map, Infografis, dan Simulasi memakai `pertahankan` pada `PopUpTahapSmicpa`: isi tahap tetap terpasang (hanya disembunyikan) setelah pop-up ditutup, jadi cabang yang sudah dibuka, kartu yang sudah menempel, dan posisi simulasi tidak hilang. Isi dibuang lagi hanya saat anak berpindah sub-bab.
+- Ketiganya juga memakai `tutupDiLatar={false}`: mengetuk area gelap di luar kotak tidak menutup pop-up. Menutup hanya lewat tombol "✕ Tutup" atau Esc, supaya ketukan yang meleset tidak mengganggu kegiatan.
+- Tahap lama (Story, Concrete, Picture, Abstract) tidak berubah.
 
 ## Pengujian
 - `node scripts/uji-peta-konsep.mjs` dan `node scripts/uji-infografis-ringkas.mjs`: logika murni dan pemeriksaan bentuk data (jumlah cabang dan panel, rujukan kartu, tabel tanpa geser, teks pendek).

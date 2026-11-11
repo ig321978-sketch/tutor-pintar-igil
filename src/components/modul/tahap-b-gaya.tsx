@@ -227,6 +227,7 @@ export function BendaSeret({
   aktif = true,
   onKetuk,
   onLepas,
+  onMulaiSeret,
   label,
   kelas = "",
   gaya,
@@ -236,6 +237,8 @@ export function BendaSeret({
   aktif?: boolean;
   onKetuk?: (id: string) => void;
   onLepas?: (id: string, x: number, y: number) => void;
+  /** Dipanggil sekali ketika benda mulai digeser (bukan diketuk). Dipakai misalnya untuk membacakan isi kartu. */
+  onMulaiSeret?: (id: string) => void;
   label: string;
   kelas?: string;
   gaya?: React.CSSProperties;
@@ -243,8 +246,8 @@ export function BendaSeret({
 }) {
   const [geser, setGeser] = useState<{ dx: number; dy: number } | null>(null);
   const bersih = useRef<(() => void) | null>(null);
-  const cb = useRef({ onKetuk, onLepas });
-  cb.current = { onKetuk, onLepas };
+  const cb = useRef({ onKetuk, onLepas, onMulaiSeret });
+  cb.current = { onKetuk, onLepas, onMulaiSeret };
 
   useEffect(() => () => bersih.current?.(), []);
 
@@ -264,6 +267,7 @@ export function BendaSeret({
       const dx = ev.clientX - x0;
       const dy = ev.clientY - y0;
       if (!bergerak && Math.hypot(dx, dy) < 8) return;
+      if (!bergerak) cb.current.onMulaiSeret?.(id);
       bergerak = true;
       setGeser({ dx, dy });
     };

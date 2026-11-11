@@ -92,7 +92,7 @@ import SimulasiBab4 from "@/components/modul/SimulasiBab4";
 import SimulasiBab5 from "@/components/modul/SimulasiBab5";
 import SimulasiBab6 from "@/components/modul/SimulasiBab6";
 import SimulasiBab7 from "@/components/modul/SimulasiBab7";
-import SimulasiBab8Materi from "@/components/modul/SimulasiBab8";
+import SimulasiBab8Materi, { misiAwalBab8 } from "@/components/modul/SimulasiBab8";
 import PetaKonsep from "@/components/modul/PetaKonsep";
 import InfografisRingkas from "@/components/modul/InfografisRingkas";
 import type { DataPeta } from "@/components/modul/peta-konsep-logika";
@@ -1000,6 +1000,11 @@ type SimulasiMateriProps = { sub: string; speakGuru: (teks: string) => void; onS
  */
 const SIMULASI_MATERI: Partial<Record<string, ComponentType<SimulasiMateriProps>>> = {
   "mtk-1-bab8": SimulasiBab8Materi,
+};
+
+/** Ucapan misi simulasi pertama tiap sub-bab, digabung ke ucapan saat tahap Simulasi dibuka (suara perlu ketukan anak). */
+const SIMULASI_MISI_AWAL: Partial<Record<string, (sub: string) => string>> = {
+  "mtk-1-bab8": misiAwalBab8,
 };
 
 type RingkasSub = { peta: DataPeta; infografis: DataInfografis };
@@ -2250,8 +2255,10 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             buka={popupTahap === 2}
             onBuka={() => setPopupTahap(2)}
             onTutup={() => setPopupTahap(null)}
+            pertahankan={adaSimMateri}
+            tutupDiLatar={!adaSimMateri}
           >
-            {popupTahap === 2 && ringkasSub ? (
+            {ringkasSub ? (
             <PetaKonsep
               key={`${bab}-${activeSubBab}`}
               data={ringkasSub.peta}
@@ -2313,8 +2320,10 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             buka={popupTahap === 3}
             onBuka={() => setPopupTahap(3)}
             onTutup={() => setPopupTahap(null)}
+            pertahankan={adaSimMateri}
+            tutupDiLatar={!adaSimMateri}
           >
-            {popupTahap === 3 && ringkasSub ? (
+            {ringkasSub ? (
             <InfografisRingkas
               key={`${bab}-${activeSubBab}`}
               data={ringkasSub.infografis}
@@ -2324,7 +2333,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                 handleUnlockNextSmicpa(
                   TAHAP_SIMULASI,
                   simulasiRef,
-                  "Infografis selesai! Sekarang kita bereksperimen di Simulasi."
+                  `Infografis selesai! Sekarang kita bereksperimen di Simulasi. ${SIMULASI_MISI_AWAL[bab]?.(activeSubBab) ?? ""}`.trim()
                 )
               }
             />
@@ -2512,22 +2521,22 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             buka={popupTahap === TAHAP_SIMULASI}
             onBuka={() => setPopupTahap(TAHAP_SIMULASI)}
             onTutup={() => setPopupTahap(null)}
+            pertahankan
+            tutupDiLatar={false}
           >
-            {popupTahap === TAHAP_SIMULASI ? (
-              <SimulasiMateri
-                key={`${bab}-${activeSubBab}`}
-                sub={activeSubBab}
-                speakGuru={speakGuru}
-                teksAkhir="LANJUTKAN KE CONCRETE ⬇️"
-                onSelesai={() =>
-                  handleUnlockNextSmicpa(
-                    4,
-                    concreteRef,
-                    "Simulasi selesai! Sekarang ayo kita praktikkan langsung dengan Benda Nyata pada tahap Concrete."
-                  )
-                }
-              />
-            ) : null}
+            <SimulasiMateri
+              key={`${bab}-${activeSubBab}`}
+              sub={activeSubBab}
+              speakGuru={speakGuru}
+              teksAkhir="LANJUTKAN KE CONCRETE ⬇️"
+              onSelesai={() =>
+                handleUnlockNextSmicpa(
+                  4,
+                  concreteRef,
+                  "Simulasi selesai! Sekarang ayo kita praktikkan langsung dengan Benda Nyata pada tahap Concrete."
+                )
+              }
+            />
           </PopUpTahapSmicpa>
           ) : null}
 

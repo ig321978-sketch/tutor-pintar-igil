@@ -115,6 +115,23 @@ export const kartuDiCabang = (d: DataPeta, k: KeadaanPeta, cabangId: string) =>
   d.kartu.filter((x) => k.tersusun[x.id] === cabangId);
 export const kartuDiBaki = (d: DataPeta, k: KeadaanPeta) => d.kartu.filter((x) => !k.tersusun[x.id]);
 
+/** Kartu yang harus sudah menempel sebelum lanjut. Salah letak tidak menghukum, jadi selalu bisa dipenuhi. */
+export const KARTU_MINIMAL = 2;
+export const kartuMinimal = (d: DataPeta) => Math.min(KARTU_MINIMAL, d.kartu.length);
+
+/**
+ * Yang masih kurang sebelum anak boleh lanjut: "cabang" (belum semua dibuka), "kartu" (kartu benar belum cukup),
+ * atau null bila sudah siap. Anak harus membuka semua cabang dan menyusun minimal dua kartu, supaya Mind-Map
+ * tidak berhenti di "ketuk lalu dengar".
+ */
+export function kekuranganPeta(d: DataPeta, k: KeadaanPeta): "cabang" | "kartu" | null {
+  if (!semuaDibuka(d, k)) return "cabang";
+  if (jumlahTersusun(k) < kartuMinimal(d)) return "kartu";
+  return null;
+}
+
+export const siapLanjut = (d: DataPeta, k: KeadaanPeta) => kekuranganPeta(d, k) === null;
+
 /** Pemeriksaan bentuk data. Kosong berarti data sah. */
 export function periksaDataPeta(d: DataPeta): string[] {
   const salah: string[] = [];

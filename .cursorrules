@@ -78,9 +78,10 @@ Metode belajar IGIL bernama **SMISCPA** (menggantikan SMICPA): **S**tory → **M
 1. **Silabus**: Peta Capaian Pembelajaran (CP), Tujuan Pembelajaran (TP), dan alur konsep SMISCPA.
 2. **Materi (Metode SMISCPA)**:
    - **[S] Story (Cerita)**: Pengantar cerita kontekstual sehari-hari.
-   - **[M] Mind-Map (Peta Konsep)**: SATU komponen data-driven (`PetaKonsep.tsx`) untuk semua kelas. Data berisi pusat dan 3–4 cabang. Anak mengetuk cabang untuk membukanya, lalu menyusun kartu ke cabang yang benar. Tanpa skor dan tanpa hukuman. Ciri tiap kelas hanya warna dan maskot, bukan bentuk tampilan.
+   - **[M] Mind-Map (Peta Konsep)**: SATU komponen data-driven (`PetaKonsep.tsx`) untuk semua kelas. Data berisi pusat dan 3–4 cabang. Anak mengetuk cabang untuk membukanya, lalu menyusun kartu ke cabang yang benar; lanjut setelah semua cabang dibuka dan minimal dua kartu menempel benar. Kartu dibacakan guru karena anak Kelas 1 belum lancar membaca. Tanpa skor dan tanpa hukuman. Ciri tiap kelas hanya warna dan maskot, bukan bentuk tampilan.
    - **[I] Infografis (Ringkas dan Interaktif)**: Paling banyak 3 panel, satu ide per panel, tanpa tabel yang digeser (`InfografisRingkas.tsx`). Anak mengetuk untuk membuka isi atau membandingkan dua hal. Kemajuan dihitung dari ketukan, tidak bergantung pada suara.
-   - **[S] Simulasi**: Eksplorasi bebas di antara Infografis dan Concrete, satu simulasi per layar, tombol lanjut aktif setelah disentuh sekali. Tanpa skor dan tanpa poin.
+   - **[S] Simulasi**: Eksplorasi bebas di antara Infografis dan Concrete, satu simulasi per layar dan diawali satu "Misi", tombol lanjut aktif setelah disentuh sekali. Tanpa skor dan tanpa poin.
+   - Tahap interaktif di pop-up (Mind-Map, Infografis, Simulasi) mempertahankan kemajuan anak saat pop-up ditutup, dan tidak menutup bila area di luar kotak diketuk.
    - **[C] Concrete (Ilustrasi Benda Nyata)**: Objek nyata bernomor urut untuk korespondensi satu-satu.
    - **[P] Pictorial (Diagram)**: Representasi diagram (Ten-Frame / Bingkai 10 dan Number Bond / Pasangan Bilangan).
    - **[A] Abstract (Angka)**: Lambang angka murni dan simbol matematika (`+`, `-`, `>`, `<`, `=`).

@@ -20,6 +20,11 @@ export type LangkahSim = {
   sub: string;
   /** Petunjuk selama LANJUTKAN belum aktif. */
   petunjuk: string;
+  /**
+   * Misi satu kalimat pendek di atas simulasi: langkah pertama yang harus dicoba anak. Dibacakan guru saat anak
+   * berpindah ke simulasi ini, dan bisa didengar lagi lewat tombol suara. Wajib untuk simulasi di dalam Materi.
+   */
+  misi?: string;
   mode: "sentuh" | "tuntas";
   render: (api: { speakGuru: (t: string) => void; tuntas: () => void }) => React.ReactNode;
 };
@@ -72,6 +77,9 @@ export default function SimulasiAlur({
     setKe(tujuan);
     if (dalamPopup) akar.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     else window.scrollTo({ top: 0, behavior: "smooth" });
+    // Berpindah lewat ketukan anak, jadi suara boleh langsung berbunyi.
+    const misiTujuan = langkah[tujuan]?.misi;
+    if (misiTujuan) speakGuru(`Simulasi ${tujuan + 1}. Misi: ${misiTujuan}`);
   };
 
   const lanjut = () => {
@@ -101,7 +109,7 @@ export default function SimulasiAlur({
         />
       </div>
 
-      <ol className={`grid grid-cols-2 gap-2 ${KOLOM[Math.min(jumlah, 4)]}`} aria-label={`Simulasi ${ke + 1} dari ${jumlah}`}>
+      <ol className={`grid ${jumlah === 1 ? "grid-cols-1" : "grid-cols-2"} gap-2 ${KOLOM[Math.min(jumlah, 4)]}`} aria-label={`Simulasi ${ke + 1} dari ${jumlah}`}>
         {langkah.map((s, i) => (
           <li
             key={s.sub}
@@ -130,6 +138,18 @@ export default function SimulasiAlur({
           hidden={i !== ke}
           {...(s.mode === "sentuh" ? { onPointerDownCapture: tandai, onClickCapture: tandai, onKeyDownCapture: tandaiKunci } : {})}
         >
+          {s.misi ? (
+            <div className="mb-3 flex items-center gap-2 rounded-2xl border-4 border-[#F0AB00] bg-[#FFF7CC] px-3 py-2">
+              <span className="text-2xl leading-none" aria-hidden="true">
+                🎯
+              </span>
+              <p className="min-w-0 flex-1 text-base font-black leading-snug text-[#1C01A5]">
+                <span className="block text-[10px] uppercase tracking-wide text-[#7C4A03]">Misi</span>
+                {s.misi}
+              </p>
+              <TombolSuaraGuru kecil label="Dengarkan misi" onClick={() => speakGuru(`Misi: ${s.misi}`)} />
+            </div>
+          ) : null}
           {s.render({ speakGuru, tuntas: () => tuntas(i) })}
         </div>
       ))}

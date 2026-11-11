@@ -12,6 +12,10 @@ import {
   kartuDiCabang,
   kartuDiBaki,
   periksaDataPeta,
+  kekuranganPeta,
+  siapLanjut,
+  kartuMinimal,
+  KARTU_MINIMAL,
 } from "../src/components/modul/peta-konsep-logika.ts";
 
 let gagal = 0;
@@ -66,6 +70,23 @@ for (const sub of Object.keys(ringkas.subBab)) {
   const balik = kembalikan(d, benar, kartu.id);
   cek(jumlahTersusun(balik) === 0 && kartuDiBaki(d, balik).length === d.kartu.length, `${nama}: kartu bisa dikembalikan ke baki`);
 
+  // Syarat lanjut: semua cabang dibuka DAN minimal KARTU_MINIMAL kartu menempel benar.
+  cek(kartuMinimal(d) === Math.min(KARTU_MINIMAL, d.kartu.length), `${nama}: kartu minimal ${kartuMinimal(d)}`);
+  let g = awalPeta();
+  cek(kekuranganPeta(d, g) === "cabang" && !siapLanjut(d, g), `${nama}: awal masih kurang cabang`);
+  for (const c of d.cabang) g = ketukCabang(d, g, c.id);
+  cek(kekuranganPeta(d, g) === "kartu" && !siapLanjut(d, g), `${nama}: semua cabang dibuka saja belum cukup untuk lanjut`);
+  const salahSemua = pilihKartu(d, g, d.kartu[0].id);
+  const salahCabang = d.cabang.find((c) => c.id !== d.kartu[0].cabang);
+  g = ketukCabang(d, salahSemua, salahCabang.id);
+  cek(kekuranganPeta(d, g) === "kartu", `${nama}: salah letak tidak dihitung sebagai kartu tersusun`);
+  g = letakkan(d, g, d.kartu[0].id, d.kartu[0].cabang);
+  if (kartuMinimal(d) > 1) cek(kekuranganPeta(d, g) === "kartu", `${nama}: satu kartu benar belum cukup`);
+  g = letakkan(d, g, d.kartu[1].id, d.kartu[1].cabang);
+  cek(kekuranganPeta(d, g) === null && siapLanjut(d, g), `${nama}: dua kartu benar plus semua cabang dibuka = siap lanjut`);
+  g = kembalikan(d, g, d.kartu[1].id);
+  cek(kekuranganPeta(d, g) === "kartu", `${nama}: mengembalikan kartu menurunkan syarat lagi`);
+
   // Menyelesaikan semuanya.
   let s = awalPeta();
   for (const c of d.cabang) s = ketukCabang(d, s, c.id);
@@ -78,6 +99,11 @@ for (const sub of Object.keys(ringkas.subBab)) {
   // Teks pendek untuk anak Kelas 1.
   for (const c of d.cabang) cek(c.ringkas.split(/\s+/).length <= 8, `${nama}: ringkas cabang ${c.id} paling banyak 8 kata (${c.ringkas.split(/\s+/).length})`);
 }
+
+// Peta yang kartunya hanya satu tidak boleh membuat anak terkunci.
+const kecil = JSON.parse(JSON.stringify(ringkas.subBab.A.peta));
+kecil.kartu = [kecil.kartu[0]];
+cek(kartuMinimal(kecil) === 1, "satu kartu saja: syarat minimal turun jadi 1");
 
 // Pemeriksa data menolak data rusak.
 const rusak = JSON.parse(JSON.stringify(ringkas.subBab.A.peta));

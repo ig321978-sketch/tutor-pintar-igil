@@ -24,6 +24,13 @@ type Props = {
   jumlahTahap?: number;
   /** Nama metode di kepala pop-up. Bawaan SMICPA. */
   namaMetode?: string;
+  /**
+   * Isi tahap tetap terpasang (hanya disembunyikan) setelah pop-up ditutup, jadi kemajuan anak di dalamnya
+   * tidak hilang. Bawaan mati: isi dibuang saat ditutup, seperti tahap lama.
+   */
+  pertahankan?: boolean;
+  /** Bila mati, mengetuk latar di luar kotak tidak menutup pop-up (hanya tombol Tutup atau Esc). Bawaan menyala. */
+  tutupDiLatar?: boolean;
 };
 
 /**
@@ -31,14 +38,36 @@ type Props = {
  * di atas tab mengambang, ukuran nyaman untuk desktop.
  */
 export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUpTahapSmicpa(
-  { nomor, judul, ringkas, emoji, badgeClass, terbuka, buka, onBuka, onTutup, children, jumlahTahap = 6, namaMetode = "SMICPA" },
+  {
+    nomor,
+    judul,
+    ringkas,
+    emoji,
+    badgeClass,
+    terbuka,
+    buka,
+    onBuka,
+    onTutup,
+    children,
+    jumlahTahap = 6,
+    namaMetode = "SMICPA",
+    pertahankan = false,
+    tutupDiLatar = true,
+  },
   ref,
 ) {
   const [portalSiap, setPortalSiap] = useState(false);
+  const [pernahBuka, setPernahBuka] = useState(false);
 
   useEffect(() => {
     setPortalSiap(true);
   }, []);
+
+  // Isi dipasang pertama kali saat tahap dibuka, lalu bertahan sampai tahap terkunci lagi (ganti sub-bab).
+  useEffect(() => {
+    if (!terbuka) setPernahBuka(false);
+    else if (buka) setPernahBuka(true);
+  }, [terbuka, buka]);
 
   useEffect(() => {
     if (!buka) return;
@@ -55,19 +84,23 @@ export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUp
   }, [buka, onTutup]);
 
   const popup =
-    portalSiap && buka && terbuka
+    portalSiap && terbuka && (buka || (pertahankan && pernahBuka))
       ? createPortal(
           <div
-            className="fixed inset-0 z-[190] flex items-center justify-center p-3 sm:p-5"
+            className={`${buka ? "flex" : "hidden"} fixed inset-0 z-[190] items-center justify-center p-3 sm:p-5`}
             role="presentation"
             data-igil-tahap-ui={IGIL_POPUP_TAHAP_UI}
           >
-            <button
-              type="button"
-              aria-label={`Tutup tahap ${judul}`}
-              className="absolute inset-0 bg-[#1C01A5]/65 backdrop-blur-[2px]"
-              onClick={onTutup}
-            />
+            {tutupDiLatar ? (
+              <button
+                type="button"
+                aria-label={`Tutup tahap ${judul}`}
+                className="absolute inset-0 bg-[#1C01A5]/65 backdrop-blur-[2px]"
+                onClick={onTutup}
+              />
+            ) : (
+              <div aria-hidden="true" className="absolute inset-0 bg-[#1C01A5]/65 backdrop-blur-[2px]" />
+            )}
             <div
               role="dialog"
               aria-modal="true"

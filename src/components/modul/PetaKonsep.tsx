@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { BingkaiTahap } from "./BingkaiTahap";
 import { BendaSeret, LencanaSuara, TombolSuaraGuru, zonaDi } from "./tahap-b-gaya";
 import {
@@ -8,14 +8,17 @@ import {
   jumlahTersusun,
   kartuDiBaki,
   kartuDiCabang,
+  kartuMinimal,
+  kekuranganPeta,
   ketukCabang,
   kembalikan,
   letakkan,
   pilihKartu,
-  semuaDibuka,
   semuaTersusun,
+  siapLanjut,
   type CabangPeta,
   type DataPeta,
+  type KartuPeta,
   type KeadaanPeta,
 } from "./peta-konsep-logika";
 
@@ -157,11 +160,14 @@ export default function PetaKonsep({
   const [k, setK] = useState<KeadaanPeta>(awalPeta);
   const [sudahSiap, setSudahSiap] = useState(false);
   const [tegur, setTegur] = useState(false);
+  const daftarRef = useRef<HTMLUListElement | null>(null);
   const kls = (Math.min(6, Math.max(1, kelas || 1)) as KelasPeta);
 
   const total = data.cabang.length;
-  const dibukaSemua = semuaDibuka(data, k);
-  const siap = sudahSiap || dibukaSemua;
+  const minimal = kartuMinimal(data);
+  const kata = minimal === 1 ? "satu" : minimal === 2 ? "dua" : String(minimal);
+  const kurang = kekuranganPeta(data, k);
+  const siap = sudahSiap || kurang === null;
   const baki = kartuDiBaki(data, k);
   const cabangAktif = k.aktif ? data.cabang.find((c) => c.id === k.aktif) ?? null : null;
   const urutanAktif = cabangAktif ? data.cabang.indexOf(cabangAktif) : 0;
@@ -171,9 +177,21 @@ export default function PetaKonsep({
   /** Terapkan keadaan baru, dan bacakan kabar yang bermakna (bukan petunjuk "ketuk cabang"). */
   const terapkan = (baru: KeadaanPeta, bicara?: string) => {
     setK(baru);
-    if (semuaDibuka(data, baru)) setSudahSiap(true);
+    if (siapLanjut(data, baru)) setSudahSiap(true);
     if (bicara) speakGuru(bicara);
     setTegur(false);
+  };
+
+  /** Memegang kartu: guru membacakan isinya dan peta digulir supaya cabang terlihat. */
+  const ketukKartu = (x: KartuPeta) => {
+    const baru = pilihKartu(data, k, x.id);
+    const dipegang = baru.dipilih === x.id;
+    terapkan(baru, dipegang ? `${x.teks}. Ketuk cabang yang cocok.` : undefined);
+    if (dipegang) daftarRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  };
+
+  const lepaskanKartu = () => {
+    if (dipilih) setK((s) => pilihKartu(data, s, dipilih.id));
   };
 
   const klikCabang = (c: CabangPeta) => {
@@ -195,24 +213,50 @@ export default function PetaKonsep({
     setTegur(false);
   };
 
+  const pesanTegur = kurang === "kartu" ? `Susun ${kata} kartu dulu, ya.` : "Ketuk semua cabangnya dulu, ya.";
+
   const lanjut = () => {
     if (!siap) {
       setTegur(true);
-      speakGuru("Ketuk semua cabangnya dulu, ya.");
+      speakGuru(pesanTegur);
       return;
     }
     onLanjut();
   };
 
   const status = !siap
-    ? `Cabang dibuka: ${k.dibuka.length} dari ${total}`
+    ? kurang === "kartu"
+      ? `Semua cabang sudah dibuka. Susun kartu: ${jumlahTersusun(k)} dari ${minimal}`
+      : `Cabang dibuka: ${k.dibuka.length} dari ${total}`
     : semuaTersusun(data, k)
       ? "🌟 Hebat! Petamu sudah lengkap."
-      : `🌟 Semua cabang sudah dibuka. Kartu tersusun: ${jumlahTersusun(k)} dari ${data.kartu.length}.`;
+      : `🌟 Siap lanjut. Kartu tersusun: ${jumlahTersusun(k)} dari ${data.kartu.length}.`;
 
   return (
     <div data-igil-peta-ui={IGIL_PETA_KONSEP_UI} data-igil-peta-kelas={kls} role="region" aria-label={`Mind-Map ${judul}`}>
       <BingkaiTahap tahap={2} className="space-y-2.5">
+        {dipilih ? (
+          <div
+            role="status"
+            className="igil-muncul sticky top-0 z-20 flex items-center gap-2 rounded-2xl border-4 border-[#F0AB00] bg-[#FFF7CC] px-2.5 py-1.5 shadow-[0_4px_0_rgba(28,1,165,0.25)]"
+          >
+            <span className="text-2xl leading-none" aria-hidden="true">
+              {dipilih.ikon}
+            </span>
+            <span className="min-w-0 flex-1 leading-tight">
+              <span className="block text-[10px] font-black uppercase tracking-wide text-[#7C4A03]">✋ Kartu di tanganmu • ketuk cabang yang cocok</span>
+              <span className="block text-base font-black text-[#1C01A5]">{dipilih.teks}</span>
+            </span>
+            <TombolSuaraGuru kecil label={`Dengarkan kartu ${dipilih.teks}`} onClick={() => speakGuru(dipilih.teks)} />
+            <button
+              type="button"
+              onClick={lepaskanKartu}
+              className="shrink-0 rounded-full border-2 border-[#1C01A5] bg-white px-3 py-1.5 text-xs font-black text-[#1C01A5]"
+            >
+              Lepas
+            </button>
+          </div>
+        ) : null}
         <div className="flex items-end gap-2">
           {maskot}
           <button
@@ -242,7 +286,7 @@ export default function PetaKonsep({
         </div>
         <span aria-hidden="true" className="mx-auto block h-3 w-1 rounded-full" style={{ backgroundColor: GARIS, opacity: 0.45 }} />
 
-        <ul className="grid grid-cols-2 gap-x-3 gap-y-3" aria-label={`Cabang peta ${data.pusat.judul}`}>
+        <ul ref={daftarRef} className="grid scroll-mt-20 grid-cols-2 gap-x-3 gap-y-3" aria-label={`Cabang peta ${data.pusat.judul}`}>
           {data.cabang.map((c, i) => {
             const barisTerakhir = Math.floor(i / 2) === Math.floor((total - 1) / 2);
             const sendirian = total % 2 === 1 && i === total - 1;
@@ -320,7 +364,8 @@ export default function PetaKonsep({
                 key={x.id}
                 id={x.id}
                 label={`Kartu ${x.teks}${k.dipilih === x.id ? ", sedang dipegang" : ""}`}
-                onKetuk={() => terapkan(pilihKartu(data, k, x.id))}
+                onKetuk={() => ketukKartu(x)}
+                onMulaiSeret={() => speakGuru(`${x.teks}. Taruh di cabang yang cocok.`)}
                 onLepas={(id, px, py) => lepasKartu(id, px, py)}
                 kelas="rounded-2xl"
               >
@@ -339,18 +384,14 @@ export default function PetaKonsep({
           </div>
         </div>
 
-        {k.kabar && (k.kabar.jenis !== "info" || dipilih) ? (
+        {k.kabar && k.kabar.jenis !== "info" ? (
           <p
             role="status"
             className={`rounded-2xl border-4 px-3 py-1.5 text-center text-sm font-black ${
-              k.kabar.jenis === "benar"
-                ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]"
-                : k.kabar.jenis === "coba"
-                  ? "border-[#E98989] bg-[#FDECEC] text-[#7F1D1D]"
-                  : "border-[#F0AB00] bg-[#FFF7CC] text-[#7C4A03]"
+              k.kabar.jenis === "benar" ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]" : "border-[#E98989] bg-[#FDECEC] text-[#7F1D1D]"
             }`}
           >
-            {k.kabar.jenis === "benar" ? "✅ " : k.kabar.jenis === "coba" ? "🤔 " : "👉 "}
+            {k.kabar.jenis === "benar" ? "✅ " : "🤔 "}
             {k.kabar.teks}
           </p>
         ) : null}
@@ -386,7 +427,7 @@ export default function PetaKonsep({
           </button>
           {siap ? null : (
             <p role="status" className={`text-xs font-black ${tegur ? "text-[#7F1D1D]" : "text-[#1C01A5]/80"}`}>
-              Ketuk semua cabangnya dulu, ya.
+              {pesanTegur}
             </p>
           )}
         </div>

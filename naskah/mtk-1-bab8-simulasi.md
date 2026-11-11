@@ -2,16 +2,24 @@
 
 Komponen: `src/components/modul/SimulasiBab8.tsx` (pembungkus alur per sub-bab, `SimulasiBab8Materi`), dipasang sebagai **tahap 4 (Simulasi)** di dalam Materi pemutar `IgilModulePlayer.tsx`, di antara Infografis dan Concrete. Bab 8 adalah bab pilot SMISCPA, jadi **tab Simulasi tidak ada lagi** di bab ini. Tidak ada pemanggilan jaringan, tidak ada skor, tidak ada poin. Suara memakai Suara Guru pilihan siswa lewat `speakGuru`.
 
-Pembagian ke sub-bab (dua simulasi per sub-bab):
-- **Sub-Bab A (Mengelompokkan Data):** Simulasi 1 Laboratorium Data (PhET) lalu Simulasi 3 Mesin Data Ajaib (mesin keadaan).
-- **Sub-Bab B (Diagram Gambar):** Simulasi 2 Pabrik Diagram (PhET) lalu Simulasi 4 Sekretaris Kelas (skenario).
-- Mesin Data Ajaib dan Sekretaris Kelas melintasi data sampai diagram. Anak cukup menyentuhnya sekali; keduanya tidak menahan Concrete.
+Pembagian ke sub-bab:
+- **Sub-Bab A (Mengelompokkan Data):** hanya Simulasi 1 Laboratorium Data (PhET). Sub-bab ini belum mengajarkan diagram, jadi simulasi yang memuat stasiun atau sajian Diagram tidak ditaruh di sini.
+- **Sub-Bab B (Diagram Gambar):** Simulasi 2 Pabrik Diagram (PhET), lalu Simulasi 3 Mesin Data Ajaib (mesin keadaan), lalu Simulasi 4 Sekretaris Kelas (skenario). Mesin dan skenario melewati stasiun Diagram, jadi baru muncul setelah Pabrik Diagram.
+- Anak cukup menyentuh tiap simulasi sekali; tidak ada yang menahan Concrete.
+
+**Misi.** Tiap simulasi diawali satu kotak kuning "🎯 Misi" di atas simulasi, berisi satu langkah pertama yang harus dicoba, dengan tombol suara. Misi simulasi pertama diucapkan bersama ucapan pembuka tahap, dan misi berikutnya diucapkan saat anak berpindah simulasi:
+| Simulasi | Misi |
+|---|---|
+| Laboratorium Data | Seret semua mainan ke rak yang sama. |
+| Pabrik Diagram | Tekan plus sampai ada satu kolom yang paling tinggi. |
+| Mesin Data Ajaib | Tekan Tanyakan ke teman-teman, lalu jalankan mesin ke stasiun berikutnya. |
+| Sekretaris Kelas | Tekan Siap, Bu Guru! Lalu bantu Bu Guru memilih dengan data. |
 
 | No | Simulasi | Metode | Berkas |
 |----|----------|--------|--------|
 | 1 | Laboratorium Data: Toko Mainan (Sub-Bab A) | PhET | `SimulasiBab8.tsx` |
 | 2 | Pabrik Diagram Gambar (Sub-Bab B) | PhET | `SimulasiBab8.tsx` |
-| 3 | Mesin Data Ajaib (Sub-Bab A) | Mesin keadaan (state machine) | `SimulasiMesinData.tsx`, logika `mesin-data-bab8.ts` |
+| 3 | Mesin Data Ajaib (Sub-Bab B) | Mesin keadaan (state machine) | `SimulasiMesinData.tsx`, logika `mesin-data-bab8.ts` |
 | 4 | Skenario: Sekretaris Kelas (Sub-Bab B) | Skenario kontekstual | `SimulasiSkenarioPesta.tsx`, logika `skenario-pesta-bab8.ts` |
 
 Logika simulasi 3 dan 4 murni (tanpa React) dan diuji terpisah di Node: 54 kasus untuk mesin keadaan dan 76 kasus untuk skenario.
@@ -91,10 +99,10 @@ Tujuan belajar: memakai data untuk mengambil keputusan nyata, memilih cara menca
 - **Coba ini!** (1) Pilih cara yang salah dulu. Apa kata Bu Guru? (2) Sajikan dengan tabel, lalu main lagi dan sajikan dengan diagram. Mana yang lebih mudah dibaca? (3) Coba membeli sama banyak. Apa akibatnya bagi teman-teman?
 
 ## Alur satu layar (di dalam pop-up tahap Simulasi)
-- Satu simulasi per layar, ditandai "Simulasi 1 dari 2" dan "Simulasi 2 dari 2" di tiap sub-bab, lengkap dengan nama metodenya. Tidak ada loncat bebas antar simulasi.
-- Tombol **LANJUTKAN KE SIMULASI BERIKUTNYA** berpindah ke simulasi kedua. Di simulasi kedua tombolnya menjadi **LANJUTKAN KE CONCRETE** dan membuka tahap Concrete.
-- Tombol LANJUTKAN aktif setelah simulasinya **disentuh sekali** (menyeret atau mengetuk benda, plus atau minus, pilihan tampilan, tombol Rapikan, Acak, Reset, atau tombol di mesin dan skenario; tombol suara tidak dihitung). Semua empat simulasi memakai syarat ringan yang sama di dalam Materi, supaya tahap ini tidak menahan anak. Selama belum, tampil petunjuk "Mainkan dulu simulasinya, ya."
-- Tombol KEMBALI membawa siswa ke simulasi sebelumnya. Keadaan kedua simulasi dipertahankan selama pop-up tahap terbuka. Menutup pop-up lalu membukanya lagi memulai dari awal, seperti tahap lain di Materi.
+- Satu simulasi per layar, ditandai "Simulasi 1 dari 1" (Sub-Bab A) atau "Simulasi 1 dari 3" sampai "3 dari 3" (Sub-Bab B), lengkap dengan nama metodenya. Tidak ada loncat bebas antar simulasi.
+- Tombol **LANJUTKAN KE SIMULASI BERIKUTNYA** berpindah ke simulasi berikutnya. Di simulasi terakhir tiap sub-bab tombolnya menjadi **LANJUTKAN KE CONCRETE** dan membuka tahap Concrete.
+- Tombol LANJUTKAN aktif setelah simulasinya **disentuh sekali** (menyeret atau mengetuk benda, plus atau minus, pilihan tampilan, tombol Rapikan, Acak, Reset, atau tombol di mesin dan skenario; tombol suara tidak dihitung). Semua simulasi memakai syarat ringan yang sama di dalam Materi, supaya tahap ini tidak menahan anak. Selama belum, tampil petunjuk "Mainkan dulu simulasinya, ya."
+- Tombol KEMBALI membawa siswa ke simulasi sebelumnya. Keadaan semua simulasi dipertahankan, juga setelah pop-up ditutup dan dibuka lagi (`pertahankan`); keadaan baru dibuang hanya saat anak berpindah sub-bab. Mengetuk area gelap di luar kotak tidak menutup pop-up (`tutupDiLatar` mati).
 
 ## Catatan integrasi
 - Urutan tab Bab 8: Silabus, Materi, Latihan, Ujian. Simulasi bagian dari alur Materi (SMISCPA, tahap 4), tidak memberi poin, dan tidak mengunci Latihan secara terpisah: Latihan terbuka setelah semua sub-bab Materi selesai, sama seperti sebelumnya.

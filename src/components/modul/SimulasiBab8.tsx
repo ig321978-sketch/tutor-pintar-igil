@@ -711,14 +711,35 @@ function SimulasiDiagram({ speakGuru }: { speakGuru: (t: string) => void }) {
 
 /* ======================================================================== */
 /* Simulasi Bab 8 di dalam Materi (tahap 4 SMISCPA, di antara Infografis    */
-/* dan Concrete). Dua simulasi per sub-bab, satu per layar:                 */
-/*   Sub-Bab A (Mengelompokkan Data): Laboratorium Data + Mesin Data Ajaib  */
-/*   Sub-Bab B (Diagram Gambar):      Pabrik Diagram + Sekretaris Kelas     */
+/* dan Concrete). Satu simulasi per layar, tiap simulasi diawali satu Misi: */
+/*   Sub-Bab A (Mengelompokkan Data): Laboratorium Data                     */
+/*   Sub-Bab B (Diagram Gambar): Pabrik Diagram, lalu Mesin Data Ajaib dan  */
+/*     Sekretaris Kelas, karena keduanya melewati stasiun Diagram yang      */
+/*     baru dipelajari di sub-bab ini.                                      */
 /* Tombol LANJUTKAN aktif setelah simulasinya disentuh sekali (semua mode   */
 /* "sentuh"), supaya tahap ini ringan dan tidak menahan anak.               */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
+
+const MISI = {
+  data: "Seret semua mainan ke rak yang sama.",
+  diagram: "Tekan plus sampai ada satu kolom yang paling tinggi.",
+  mesin: "Tekan Tanyakan ke teman-teman, lalu jalankan mesin ke stasiun berikutnya.",
+  skenario: "Tekan Siap, Bu Guru! Lalu bantu Bu Guru memilih dengan data.",
+} as const;
+
+const langkahBab8 = (sub: string): LangkahSim[] =>
+  sub === "B"
+    ? [
+        { metode: "PhET", sub: "Pabrik Diagram", petunjuk: MAINKAN_DULU, misi: MISI.diagram, mode: "sentuh", render: (a) => <SimulasiDiagram speakGuru={a.speakGuru} /> },
+        { metode: "Mesin keadaan", sub: "Mesin Data Ajaib", petunjuk: MAINKAN_DULU, misi: MISI.mesin, mode: "sentuh", render: (a) => <SimulasiMesinData speakGuru={a.speakGuru} onTuntas={a.tuntas} /> },
+        { metode: "Skenario", sub: "Sekretaris Kelas", petunjuk: MAINKAN_DULU, misi: MISI.skenario, mode: "sentuh", render: (a) => <SimulasiSkenarioPesta speakGuru={a.speakGuru} onTuntas={a.tuntas} /> },
+      ]
+    : [{ metode: "PhET", sub: "Laboratorium Data", petunjuk: MAINKAN_DULU, misi: MISI.data, mode: "sentuh", render: (a) => <SimulasiData speakGuru={a.speakGuru} /> }];
+
+/** Misi simulasi pertama sub-bab, untuk digabung ke ucapan saat tahap Simulasi dibuka. */
+export const misiAwalBab8 = (sub: string): string => `Simulasi 1. Misi: ${langkahBab8(sub)[0].misi ?? ""}`;
 
 export default function SimulasiBab8Materi({
   sub,
@@ -731,19 +752,11 @@ export default function SimulasiBab8Materi({
   onSelesai: () => void;
   teksAkhir: string;
 }) {
-  const subA: LangkahSim[] = [
-    { metode: "PhET", sub: "Laboratorium Data", petunjuk: MAINKAN_DULU, mode: "sentuh", render: (a) => <SimulasiData speakGuru={a.speakGuru} /> },
-    { metode: "Mesin keadaan", sub: "Mesin Data Ajaib", petunjuk: MAINKAN_DULU, mode: "sentuh", render: (a) => <SimulasiMesinData speakGuru={a.speakGuru} onTuntas={a.tuntas} /> },
-  ];
-  const subB: LangkahSim[] = [
-    { metode: "PhET", sub: "Pabrik Diagram", petunjuk: MAINKAN_DULU, mode: "sentuh", render: (a) => <SimulasiDiagram speakGuru={a.speakGuru} /> },
-    { metode: "Skenario", sub: "Sekretaris Kelas", petunjuk: MAINKAN_DULU, mode: "sentuh", render: (a) => <SimulasiSkenarioPesta speakGuru={a.speakGuru} onTuntas={a.tuntas} /> },
-  ];
   const adalahB = sub === "B";
   return (
     <SimulasiAlur
       judulBab={`Bab 8 · Sub-Bab ${adalahB ? "B" : "A"}`}
-      langkah={adalahB ? subB : subA}
+      langkah={langkahBab8(sub)}
       speakGuru={speakGuru}
       onSelesai={onSelesai}
       teksAkhir={teksAkhir}
