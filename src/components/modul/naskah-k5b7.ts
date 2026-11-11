@@ -252,70 +252,80 @@ export const SUB_A57: SubBabNaskah = {
       "emoji": "📏",
       "countNum": 1,
       "countWord": "a+b>c",
-      "suara": "Syarat segitiga."
+      "suara": "Inequality — a+b>c. Syarat: a+b lebih dari c, a+c lebih dari b, dan b+c lebih dari a. Jika salah satu gagal, sedotan tidak menutup menjadi segitiga. Ingat: a+b>c; Inequality; gagal = bukan.",
+      "teksVisual": "📏 Inequality: a+b>c"
     },
     {
       "judul": "Lancip",
       "emoji": "△",
       "countNum": 1,
       "countWord": "3 sudut <90°",
-      "suara": "Jenis sudut."
+      "suara": "Lancip — 3 sudut <90°. Pada Membandingkan Ciri-Ciri Segitiga, cocokkan gambar “Lancip” dengan artinya (3 sudut <90°), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "△ Lancip: 3 sudut <90°"
     },
     {
       "judul": "Siku-siku",
       "emoji": "⊿",
       "countNum": 1,
       "countWord": "1 sudut 90°",
-      "suara": "Jenis sudut."
+      "suara": "Siku-siku — 1 sudut 90°. Pada Membandingkan Ciri-Ciri Segitiga, cocokkan gambar “Siku-siku” dengan artinya (1 sudut 90°), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⊿ Siku-siku: 1 sudut 90°"
     },
     {
       "judul": "Tumpul",
       "emoji": "△",
       "countNum": 1,
       "countWord": "1 sudut >90°",
-      "suara": "Jenis sudut."
+      "suara": "Tumpul — 1 sudut >90°. Pada Membandingkan Ciri-Ciri Segitiga, cocokkan gambar “Tumpul” dengan artinya (1 sudut >90°), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "△ Tumpul: 1 sudut >90°"
     },
     {
       "judul": "Jumlah",
       "emoji": "➕",
       "countNum": 180,
       "countWord": "180°",
-      "suara": "Angle Sum."
+      "suara": "Jumlah — 180°. Pada Membandingkan Ciri-Ciri Segitiga, cocokkan gambar “Jumlah” dengan artinya (180°), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan…",
+      "teksVisual": "➕ Jumlah: 180°"
     },
     {
       "judul": "Sama kaki",
       "emoji": "△",
       "countNum": 2,
       "countWord": "2 sisi sama",
-      "suara": "Ciri."
+      "suara": "Sama kaki — 2 sisi sama. Eksplorasi 7.1D: impitkan sisi alat peraga. Dua sisi berimpit → kaki-kaki sama panjang → segitiga sama kaki. Ingat: 2 sisi sama; sudut dasar sama; 1 lipat.",
+      "teksVisual": "△ Sama kaki: 2 sisi sama"
     },
     {
       "judul": "Sama sisi",
       "emoji": "△",
       "countNum": 3,
       "countWord": "3 sisi = 60°",
-      "suara": "Ciri."
+      "suara": "Sama sisi — 3 sisi = 60°. Ketiga sisi berimpit → segitiga sama sisi; tiap sudut 180 bagi 3 = 60 derajat. Punya 3 simetri lipat dan 3 simetri putar. Ingat: 3 sisi sama; 60°; sembarang.",
+      "teksVisual": "△ Sama sisi: 3 sisi = 60°"
     },
     {
       "judul": "Sembarang",
       "emoji": "△",
       "countNum": 0,
       "countWord": "sisi beda",
-      "suara": "Tanpa lipat."
+      "suara": "Sembarang — sisi beda. Ketiga sisi berimpit → segitiga sama sisi; tiap sudut 180 bagi 3 = 60 derajat. Punya 3 simetri lipat dan 3 simetri putar. Ingat: 3 sisi sama; 60°; sembarang.",
+      "teksVisual": "△ Sembarang: sisi beda"
     },
     {
       "judul": "Inclusive",
       "emoji": "🌍",
       "countNum": 1,
       "countWord": "sama sisi⊂sama kaki",
-      "suara": "Hierarki."
+      "suara": "Inclusive — sama sisi⊂sama kaki. Pada Membandingkan Ciri-Ciri Segitiga, cocokkan gambar “Inclusive” dengan artinya (sama sisi⊂sama kaki), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🌍 Inclusive: sama sisi⊂sama kaki"
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "segi empat",
-      "suara": "Lanjut."
+      "suara": "Siap B (segi empat). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan…",
+      "teksVisual": "➡️ Siap B: segi empat"
     }
   ],
   "games": [
@@ -961,70 +971,80 @@ export const SUB_B57: SubBabNaskah = {
       "emoji": "⬜",
       "countNum": 4,
       "countWord": "4 sisi",
-      "suara": "Dasar."
+      "suara": "Segi empat — 4 sisi. Segi empat dibatasi empat sisi. Di denah Candi Sewu, Asep melihat bentuk persegi, Lukas melihat panjang dan lebar berbeda. Ingat: 4 sisi; debat denah; persegi ⊂ PP.",
+      "teksVisual": "⬜ Segi empat: 4 sisi"
     },
     {
       "judul": "Trapesium",
       "emoji": "⬡",
       "countNum": 1,
       "countWord": "≥1 sejajar",
-      "suara": "Inclusive."
+      "suara": "Trapesium — ≥1 sejajar. Eksplorasi 7.2B: trapesium punya setidaknya sepasang sisi sejajar. Buku bersepakat definisi luas ini agar jajargenjang termasuk trapesium. Ingat: ≥1 sejajar; inklusif; siku / sama kaki.",
+      "teksVisual": "⬡ Trapesium: ≥1 sejajar"
     },
     {
       "judul": "Jajargenjang",
       "emoji": "▱",
       "countNum": 2,
       "countWord": "2 pasang sejajar",
-      "suara": "⊂ trapesium."
+      "suara": "Jajargenjang — 2 pasang sejajar. Eksplorasi 7.2C: dua pasang sisi berhadapan sejajar dan sama panjang. Sudut berhadapan sama besar. Ingat: 2 pasang sejajar; sudut hadap sama; ⊂ trapesium.",
+      "teksVisual": "▱ Jajargenjang: 2 pasang sejajar"
     },
     {
       "judul": "Persegi panjang",
       "emoji": "▭",
       "countNum": 4,
       "countWord": "4 siku",
-      "suara": "⊂ JG."
+      "suara": "Persegi panjang — 4 siku. Semua sudut siku-siku; sisi berhadapan sama dan sejajar. Memiliki semua ciri jajargenjang, plus siku-siku. Ingat: 4 siku; ciri JG + siku; PP ⊂ JG.",
+      "teksVisual": "▭ Persegi panjang: 4 siku"
     },
     {
       "judul": "Belah ketupat",
       "emoji": "◆",
       "countNum": 4,
       "countWord": "4 sisi sama",
-      "suara": "⊂ JG."
+      "suara": "Belah ketupat — 4 sisi sama. Belah ketupat: empat sisi sama panjang; sudut hadap sama; diagonal tegak lurus. Termasuk jajargenjang. Persegi = belah ketupat bersudut siku.",
+      "teksVisual": "◆ Belah ketupat: 4 sisi sama"
     },
     {
       "judul": "Persegi",
       "emoji": "⬜",
       "countNum": 4,
       "countWord": "siku+sama",
-      "suara": "⊂ PP & BK."
+      "suara": "Persegi — siku+sama. Semua sudut siku-siku; sisi berhadapan sama dan sejajar. Memiliki semua ciri jajargenjang, plus siku-siku. Ingat: 4 siku; ciri JG + siku; PP ⊂ JG.",
+      "teksVisual": "⬜ Persegi: siku+sama"
     },
     {
       "judul": "Layang-layang",
       "emoji": "🪁",
       "countNum": 2,
       "countWord": "sisi berurutan",
-      "suara": "Kite."
+      "suara": "Layang-layang — sisi berurutan. Eksplorasi 7.2G: dua pasang sisi berurutan sama panjang. Satu pasang sudut berhadapan sama besar. Ingat: 2 pasang berurutan; sudut hadap; diagonal ⊥.",
+      "teksVisual": "🪁 Layang-layang: sisi berurutan"
     },
     {
       "judul": "Diagonal",
       "emoji": "✖️",
       "countNum": 1,
       "countWord": "cek ⊥ / bagi 2",
-      "suara": "Ciri."
+      "suara": "Diagonal — cek ⊥ / bagi 2. Pada Membandingkan Ciri-Ciri Segi Empat, cocokkan gambar “Diagonal” dengan artinya (cek ⊥ / bagi 2), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✖️ Diagonal: cek ⊥ / bagi 2"
     },
     {
       "judul": "Van Hiele",
       "emoji": "🌍",
       "countNum": 1,
       "countWord": "Property Matrix",
-      "suara": "Metode luar."
+      "suara": "Van Hiele — Property Matrix. Pada Membandingkan Ciri-Ciri Segi Empat, cocokkan gambar “Van Hiele” dengan artinya (Property Matrix), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🌍 Van Hiele: Property Matrix"
     },
     {
       "judul": "Bab 7 A–B",
       "emoji": "🎉",
       "countNum": 1,
       "countWord": "Materi siap",
-      "suara": "Selesai."
+      "suara": "Bab 7 A–B — Materi siap. Pada Membandingkan Ciri-Ciri Segi Empat, cocokkan gambar “Bab 7 A–B” dengan artinya (Materi siap), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🎉 Bab 7 A–B: Materi siap"
     }
   ],
   "games": [

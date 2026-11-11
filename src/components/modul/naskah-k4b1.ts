@@ -267,70 +267,80 @@ export const SUB_A41: SubBabNaskah = {
       "emoji": "🟣",
       "countNum": 1000,
       "countWord": "satu peti / seribu",
-      "suara": "Tempat paling kiri pada bilangan empat angka adalah ribuan. Satu peti sama dengan seribu."
+      "suara": "Tempat paling kiri pada bilangan empat angka adalah ribuan. Satu peti sama dengan seribu. Pada Membaca dan Menulis Bilangan Cacah sampai 10.000, cocokkan gambar “RIBUAN” dengan artinya (satu peti / seribu), lalu sebut satu contoh dari…",
+      "teksVisual": "🟣 Tempat paling kiri pada bilangan empat angka adalah…"
     },
     {
       "judul": "RATUSAN",
       "emoji": "🟢",
       "countNum": 100,
       "countWord": "satu dus / seratus",
-      "suara": "Di kanan ribuan ada ratusan. Satu dus sama dengan seratus."
+      "suara": "Di kanan ribuan ada ratusan. Satu dus sama dengan seratus. Pada Membaca dan Menulis Bilangan Cacah sampai 10.000, cocokkan gambar “RATUSAN” dengan artinya (satu dus / seratus), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🟢 Di kanan ribuan ada ratusan. Satu dus sama dengan…"
     },
     {
       "judul": "PULUHAN",
       "emoji": "🔵",
       "countNum": 10,
       "countWord": "satu bungkus / sepuluh",
-      "suara": "Puluhan memakai kata puluh. Sepuluh satuan sama dengan satu puluhan."
+      "suara": "Puluhan memakai kata puluh. Sepuluh satuan sama dengan satu puluhan. Pada Membaca dan Menulis Bilangan Cacah sampai 10.000, cocokkan gambar “PULUHAN” dengan artinya (satu bungkus / sepuluh), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔵 Puluhan memakai kata puluh. Sepuluh satuan sama…"
     },
     {
       "judul": "SATUAN",
       "emoji": "🔴",
       "countNum": 1,
       "countWord": "benda lepas",
-      "suara": "Satuan dibaca angkanya saja."
+      "suara": "Satuan dibaca angkanya saja. Pada Membaca dan Menulis Bilangan Cacah sampai 10.000, cocokkan gambar “SATUAN” dengan artinya (benda lepas), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔴 SATUAN: benda lepas"
     },
     {
       "judul": "BACA DARI KIRI",
       "emoji": "⬅️",
       "countNum": 3286,
       "countWord": "tiga ribu dua ratus delapan puluh enam",
-      "suara": "Baca dari ribuan ke satuan. Contoh 3.286."
+      "suara": "Baca dari ribuan ke satuan. Contoh 3.286. Pada Membaca dan Menulis Bilangan Cacah sampai 10.000, cocokkan gambar “BACA DARI KIRI” dengan artinya (tiga ribu dua ratus delapan puluh enam), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⬅️ BACA DARI KIRI: tiga ribu dua ratus delapan puluh enam"
     },
     {
       "judul": "NOL TIDAK DIBACA",
       "emoji": "⭕",
       "countNum": 7003,
       "countWord": "tujuh ribu tiga",
-      "suara": "7.003 dibaca tujuh ribu tiga. Nol tidak dibaca."
+      "suara": "7.003 dibaca tujuh ribu tiga. Nol tidak dibaca. Pada Membaca dan Menulis Bilangan Cacah sampai 10.000, cocokkan gambar “NOL TIDAK DIBACA” dengan artinya (tujuh ribu tiga), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⭕ 7.003 dibaca tujuh ribu tiga. Nol tidak dibaca."
     },
     {
       "judul": "SERIBU",
       "emoji": "1️⃣",
       "countNum": 1025,
       "countWord": "seribu dua puluh lima",
-      "suara": "Ribuan 1 dibaca seribu, bukan satu ribu."
+      "suara": "Ribuan 1 dibaca seribu, bukan satu ribu. Bilangan 1.025: ribuannya 1 dibaca seribu. Ratusannya 0, tidak ditulis dalam bacaan. Ingat: 1.025; Seribu; Nol ratusan dilewati.",
+      "teksVisual": "1️⃣ SERIBU: seribu dua puluh lima"
     },
     {
       "judul": "NOL MENJAGA TEMPAT",
       "emoji": "✍️",
       "countNum": 405,
       "countWord": "saat menulis tetap ditulis",
-      "suara": "Saat menulis, nol menjaga tempat yang kosong."
+      "suara": "Saat menulis, nol menjaga tempat yang kosong. Pada Membaca dan Menulis Bilangan Cacah sampai 10.000, cocokkan gambar “NOL MENJAGA TEMPAT” dengan artinya (saat menulis tetap ditulis), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✍️ Saat menulis, nol menjaga tempat yang kosong."
     },
     {
       "judul": "SEPULUH DUS = SATU PETI",
       "emoji": "🔄",
       "countNum": 10,
       "countWord": "penukaran",
-      "suara": "Sepuluh dus ditukar menjadi satu peti."
+      "suara": "Sepuluh dus ditukar menjadi satu peti. Pada Membaca dan Menulis Bilangan Cacah sampai 10.000, cocokkan gambar “SEPULUH DUS = SATU PETI” dengan artinya (penukaran), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔄 SEPULUH DUS = SATU PETI: penukaran"
     },
     {
       "judul": "SAMPAI 10.000",
       "emoji": "🔟",
       "countNum": 10000,
       "countWord": "sepuluh ribu",
-      "suara": "Batas bab ini adalah sepuluh ribu."
+      "suara": "Batas bab ini adalah sepuluh ribu. Pada Membaca dan Menulis Bilangan Cacah sampai 10.000, cocokkan gambar “SAMPAI 10.000” dengan artinya (sepuluh ribu), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔟 SAMPAI 10.000: sepuluh ribu"
     }
   ],
   "games": [
@@ -1030,70 +1040,80 @@ export const SUB_B41: SubBabNaskah = {
       "emoji": "⚖️",
       "countNum": 2,
       "countWord": "digit 2 bisa bernilai 2.000",
-      "suara": "Digit adalah angka yang tertulis. Nilainya bergantung pada tempat."
+      "suara": "Digit adalah angka yang tertulis. Nilainya bergantung pada tempat. Pada Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai 10.000, cocokkan gambar “DIGIT ≠ NILAI” dengan artinya (digit 2 bisa bernilai 2.000), lalu sebut satu…",
+      "teksVisual": "⚖️ Digit adalah angka yang tertulis. Nilainya bergantung…"
     },
     {
       "judul": "RIBUAN ×1000",
       "emoji": "🟣",
       "countNum": 2000,
       "countWord": "2 di ribuan = 2.000",
-      "suara": "Angka di ribuan dikali seribu."
+      "suara": "Angka di ribuan dikali seribu. Pada Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai 10.000, cocokkan gambar “RIBUAN ×1000” dengan artinya (2 di ribuan = 2.000), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🟣 RIBUAN ×1000: 2 di ribuan = 2.000"
     },
     {
       "judul": "RATUSAN ×100",
       "emoji": "🟢",
       "countNum": 100,
       "countWord": "1 di ratusan = 100",
-      "suara": "Angka di ratusan dikali seratus."
+      "suara": "Angka di ratusan dikali seratus. Pada Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai 10.000, cocokkan gambar “RATUSAN ×100” dengan artinya (1 di ratusan = 100), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🟢 RATUSAN ×100: 1 di ratusan = 100"
     },
     {
       "judul": "PULUHAN ×10",
       "emoji": "🔵",
       "countNum": 50,
       "countWord": "5 di puluhan = 50",
-      "suara": "Angka di puluhan dikali sepuluh."
+      "suara": "Angka di puluhan dikali sepuluh. Pada Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai 10.000, cocokkan gambar “PULUHAN ×10” dengan artinya (5 di puluhan = 50), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔵 PULUHAN ×10: 5 di puluhan = 50"
     },
     {
       "judul": "SATUAN ×1",
       "emoji": "🔴",
       "countNum": 0,
       "countWord": "0 di satuan = 0",
-      "suara": "Angka di satuan dikali satu."
+      "suara": "Angka di satuan dikali satu. Pada Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai 10.000, cocokkan gambar “SATUAN ×1” dengan artinya (0 di satuan = 0), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔴 SATUAN ×1: 0 di satuan = 0"
     },
     {
       "judul": "URAIAN",
       "emoji": "🔓",
       "countNum": 2150,
       "countWord": "2000+100+50+0",
-      "suara": "Uraian menulis nilai tiap tempat."
+      "suara": "Uraian menulis nilai tiap tempat. Pada Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai 10.000, cocokkan gambar “URAIAN” dengan artinya (2000+100+50+0), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔓 URAIAN: 2000+100+50+0"
     },
     {
       "judul": "TABEL DIGIT",
       "emoji": "📋",
       "countNum": 7812,
       "countWord": "7|8|1|2",
-      "suara": "Tabel diisi digit, bukan nilai penuh."
+      "suara": "Tabel diisi digit, bukan nilai penuh. Pada tabel, kita menulis digitnya, bukan nilai penuh. Untuk 7.812 tulis 7 | 8 | 1 | 2. Ingat: Tabel digit; 7 8 1 2; Bukan 7000.",
+      "teksVisual": "📋 TABEL DIGIT: 7|8|1|2"
     },
     {
       "judul": "EMPAT KARDUS",
       "emoji": "📦",
       "countNum": 4,
       "countWord": "aktivitas buku",
-      "suara": "Empat kardus membantu menyusun bilangan."
+      "suara": "Empat kardus membantu menyusun bilangan. Pada Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai 10.000, cocokkan gambar “EMPAT KARDUS” dengan artinya (aktivitas buku), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📦 EMPAT KARDUS: aktivitas buku"
     },
     {
       "judul": "TEMPAT MENGUBAH NILAI",
       "emoji": "6️⃣",
       "countNum": 60,
       "countWord": "6 di puluhan = 60",
-      "suara": "Angka sama, tempat beda, nilai beda."
+      "suara": "Angka sama, tempat beda, nilai beda. Pada Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai 10.000, cocokkan gambar “TEMPAT MENGUBAH NILAI” dengan artinya (6 di puluhan = 60), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "6️⃣ TEMPAT MENGUBAH NILAI: 6 di puluhan = 60"
     },
     {
       "judul": "SIAP BANDING",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "lanjut Sub-Bab C",
-      "suara": "Nilai tempat dipakai untuk membandingkan."
+      "suara": "SIAP BANDING (lanjut Sub-Bab C). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Nilai tempat siap dipakai untuk membandingkan.",
+      "teksVisual": "➡️ SIAP BANDING: lanjut Sub-Bab C"
     }
   ],
   "games": [
@@ -1792,70 +1812,80 @@ export const SUB_C41: SubBabNaskah = {
       "emoji": "🟣",
       "countNum": 1,
       "countWord": "langkah pertama",
-      "suara": "Membandingkan dimulai dari ribuan."
+      "suara": "Membandingkan dimulai dari ribuan. Pada Membandingkan dan Mengurutkan Bilangan Cacah sampai 10.000, cocokkan gambar “RIBUAN DULU” dengan artinya (langkah pertama), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🟣 RIBUAN DULU: langkah pertama"
     },
     {
       "judul": "LANJUT KE KANAN",
       "emoji": "➡️",
       "countNum": 2,
       "countWord": "ratusan → puluhan → satuan",
-      "suara": "Bila sama, lanjut ke tempat di kanan."
+      "suara": "Bila sama, lanjut ke tempat di kanan. Pada Membandingkan dan Mengurutkan Bilangan Cacah sampai 10.000, cocokkan gambar “LANJUT KE KANAN” dengan artinya (ratusan → puluhan → satuan), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "➡️ LANJUT KE KANAN: ratusan → puluhan → satuan"
     },
     {
       "judul": "LEBIH DARI",
       "emoji": ">",
       "countNum": 8750,
       "countWord": "8.750 > 7.500",
-      "suara": "Tanda lebih dari terbuka ke bilangan besar."
+      "suara": "Tanda lebih dari terbuka ke bilangan besar. Mulut tanda terbuka ke bilangan yang lebih besar. 8.750 > 7.500 dibaca delapan ribu tujuh ratus lima puluh lebih dari tujuh ribu lima ratus. Ingat: > lebih dari; Contoh harga; 5.734 dan 4.312.",
+      "teksVisual": "> Tanda lebih dari terbuka ke bilangan besar."
     },
     {
       "judul": "KURANG DARI",
       "emoji": "<",
       "countNum": 4352,
       "countWord": "4.352 < 4.365",
-      "suara": "Tanda kurang dari."
+      "suara": "KURANG DARI — 4.352 < 4.365. 4.352 < 4.355 karena satuan 2 < 5. Semua tempat kiri sama, satuan yang menentukan. Ingat: < kurang dari; Satuan menentukan; 1.001 < 1.002.",
+      "teksVisual": "< KURANG DARI: 4.352 < 4.365"
     },
     {
       "judul": "SAMA DENGAN",
       "emoji": "=",
       "countNum": 4352,
       "countWord": "4.352 = 4.352",
-      "suara": "Semua tempat sama."
+      "suara": "SAMA DENGAN — 4.352 = 4.352. 4.352 dan 4.352. Semua tempat sama. Ditulis 4.352 = 4.352. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan dan Mengurutkan Bilangan Cacah sampai 10.000.",
+      "teksVisual": "= SAMA DENGAN: 4.352 = 4.352"
     },
     {
       "judul": "URUTAN NAIK",
       "emoji": "📶",
       "countNum": 2460,
       "countWord": "2.460 → 3.676 → 3.726",
-      "suara": "Dari terkecil ke terbesar."
+      "suara": "Dari terkecil ke terbesar. Ribuan: 2 kurang dari 3, jadi 2.460 paling kecil. Antara 3.676 dan 3.726, ratusan 6 < 7. Ingat: 2.460 terkecil; 3.676 < 3.726; Urutan naik.",
+      "teksVisual": "📶 URUTAN NAIK: 2.460 → 3.676 → 3.726"
     },
     {
       "judul": "URUTAN TURUN",
       "emoji": "📉",
       "countNum": 3726,
       "countWord": "dari terbesar",
-      "suara": "Dari terbesar ke terkecil."
+      "suara": "Dari terbesar ke terkecil. Pada Membandingkan dan Mengurutkan Bilangan Cacah sampai 10.000, cocokkan gambar “URUTAN TURUN” dengan artinya (dari terbesar), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📉 URUTAN TURUN: dari terbesar"
     },
     {
       "judul": "TEMPAT PENENTU",
       "emoji": "🔍",
       "countNum": 1,
       "countWord": "tempat pertama yang berbeda",
-      "suara": "Tempat pertama yang berbeda menentukan hasil."
+      "suara": "Tempat pertama yang berbeda menentukan hasil. Pada Membandingkan dan Mengurutkan Bilangan Cacah sampai 10.000, cocokkan gambar “TEMPAT PENENTU” dengan artinya (tempat pertama yang berbeda), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔍 Tempat pertama yang berbeda menentukan hasil."
     },
     {
       "judul": "KARTU DIGIT",
       "emoji": "🃏",
       "countNum": 9521,
       "countWord": "1,5,9,2 → terbesar 9.521",
-      "suara": "Susun digit dari besar untuk bilangan terbesar."
+      "suara": "Susun digit dari besar untuk bilangan terbesar. Pada Membandingkan dan Mengurutkan Bilangan Cacah sampai 10.000, cocokkan gambar “KARTU DIGIT” dengan artinya (1,5,9,2 → terbesar 9.521), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🃏 Susun digit dari besar untuk bilangan terbesar."
     },
     {
       "judul": "TELITI TANDA",
       "emoji": "⚠️",
       "countNum": 1,
       "countWord": "tanda dibalik arti berubah",
-      "suara": "Baca tanda dengan teliti."
+      "suara": "Baca tanda dengan teliti. Pada Membandingkan dan Mengurutkan Bilangan Cacah sampai 10.000, cocokkan gambar “TELITI TANDA” dengan artinya (tanda dibalik arti berubah), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⚠️ TELITI TANDA: tanda dibalik arti berubah"
     }
   ],
   "games": [
@@ -2554,70 +2584,80 @@ export const SUB_D41: SubBabNaskah = {
       "emoji": "🧩",
       "countNum": 1,
       "countWord": "susun",
-      "suara": "Komposisi artinya menyusun bilangan dari nilai tempat."
+      "suara": "Komposisi artinya menyusun bilangan dari nilai tempat. Pada Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000, cocokkan gambar “KOMPOSISI” dengan artinya (susun), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🧩 Komposisi artinya menyusun bilangan dari nilai tempat."
     },
     {
       "judul": "6.348",
       "emoji": "6️⃣",
       "countNum": 6348,
       "countWord": "enam ribu",
-      "suara": "Enam ribuan ditambah tiga ratusan, empat puluhan, delapan satuan."
+      "suara": "Enam ribuan ditambah tiga ratusan, empat puluhan, delapan satuan. Pada Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000, cocokkan gambar “6.348” dengan artinya (enam ribu), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "6️⃣ Enam ribuan ditambah tiga ratusan, empat puluhan,…"
     },
     {
       "judul": "DEKOMPOSISI",
       "emoji": "🔓",
       "countNum": 2,
       "countWord": "urai",
-      "suara": "Dekomposisi artinya mengurai bilangan ke nilai tempat."
+      "suara": "Dekomposisi artinya mengurai bilangan ke nilai tempat. Pada Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000, cocokkan gambar “DEKOMPOSISI” dengan artinya (urai), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔓 Dekomposisi artinya mengurai bilangan ke nilai tempat."
     },
     {
       "judul": "6.849",
       "emoji": "8️⃣",
       "countNum": 6849,
       "countWord": "urai",
-      "suara": "Enam ribu delapan ratus empat puluh sembilan diurai 6.000 + 800 + 40 + 9."
+      "suara": "Enam ribu delapan ratus empat puluh sembilan diurai 6.000 + 800 + 40 + 9. Lihat bilangan 6.849. Tulis di papan empat kolom. Ingat: 6.849; papan; nilai tempat.",
+      "teksVisual": "8️⃣ Enam ribu delapan ratus empat puluh sembilan diurai…"
     },
     {
       "judul": "NOL",
       "emoji": "0️⃣",
       "countNum": 0,
       "countWord": "jaga",
-      "suara": "Pada 6.035, nol ratusan tetap ditulis."
+      "suara": "Pada 6.035, nol ratusan tetap ditulis. Bilangan 6.035 punya ratusan nol. Uraian: 6.000 + 0 + 30 + 5. Ingat: 6.035; 0 ratusan; 6.000+0+30+5. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Komposisi dan…",
+      "teksVisual": "0️⃣ NOL: jaga"
     },
     {
       "judul": "7.020",
       "emoji": "7️⃣",
       "countNum": 7020,
       "countWord": "tujuh ribu",
-      "suara": "Tujuh ribuan dan dua puluhan, ratusan serta satuan nol."
+      "suara": "Tujuh ribuan dan dua puluhan, ratusan serta satuan nol. 7.020 = 7 ribuan + 0 + 2 puluhan + 0. Ditulis 7.000 + 0 + 20 + 0. Ingat: 7.020; 7 ribuan; 20. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Komposisi…",
+      "teksVisual": "7️⃣ Tujuh ribuan dan dua puluhan, ratusan serta satuan…"
     },
     {
       "judul": "9.999",
       "emoji": "9️⃣",
       "countNum": 9999,
       "countWord": "penuh",
-      "suara": "Semua tempat terisi sembilan."
+      "suara": "Semua tempat terisi sembilan. Pada Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000, cocokkan gambar “9.999” dengan artinya (penuh), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "9️⃣ 9.999: penuh"
     },
     {
       "judul": "UANG",
       "emoji": "💰",
       "countNum": 7300,
       "countWord": "tujuh ribu",
-      "suara": "Uraikan tujuh ribu tiga ratus rupiah dari pecahan Helen."
+      "suara": "Uraikan tujuh ribu tiga ratus rupiah dari pecahan Helen. Helen punya pecahan uang di warung. Slamet beli seharga 7.300. Ingat: warung; Rp7.300; pecahan.",
+      "teksVisual": "💰 Uraikan tujuh ribu tiga ratus rupiah dari pecahan…"
     },
     {
       "judul": "SALING BALIK",
       "emoji": "🔄",
       "countNum": 3,
       "countWord": "periksa",
-      "suara": "Jumlahkan uraian untuk memeriksa dekomposisi."
+      "suara": "Jumlahkan uraian untuk memeriksa dekomposisi. Pada Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000, cocokkan gambar “SALING BALIK” dengan artinya (periksa), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔄 Jumlahkan uraian untuk memeriksa dekomposisi."
     },
     {
       "judul": "SIAP E",
       "emoji": "✅",
       "countNum": 4,
       "countWord": "lanjut",
-      "suara": "Siap lanjut ke penjumlahan sampai seribu."
+      "suara": "Siap lanjut ke penjumlahan sampai seribu. Pada Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000, cocokkan gambar “SIAP E” dengan artinya (lanjut), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ SIAP E: lanjut"
     }
   ],
   "games": [
@@ -3316,70 +3356,80 @@ export const SUB_E41: SubBabNaskah = {
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "kanan",
-      "suara": "Penjumlahan dikerjakan dari kanan."
+      "suara": "Penjumlahan dikerjakan dari kanan. Pada Penjumlahan Bilangan Cacah sampai 1.000, cocokkan gambar “DARI SATUAN” dengan artinya (kanan), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "➡️ DARI SATUAN: kanan"
     },
     {
       "judul": "452",
       "emoji": "🌳",
       "countNum": 452,
       "countWord": "tanpa simpan",
-      "suara": "Seratus tiga puluh satu ditambah tiga ratus dua puluh satu."
+      "suara": "Seratus tiga puluh satu ditambah tiga ratus dua puluh satu. Pada Penjumlahan Bilangan Cacah sampai 1.000, cocokkan gambar “452” dengan artinya (tanpa simpan), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🌳 Seratus tiga puluh satu ditambah tiga ratus dua puluh…"
     },
     {
       "judul": "MENYIMPAN",
       "emoji": "1️⃣",
       "countNum": 10,
       "countWord": "simpan",
-      "suara": "Bila jumlah tempat sepuluh atau lebih, simpan satu."
+      "suara": "Bila jumlah tempat sepuluh atau lebih, simpan satu. Pada Penjumlahan Bilangan Cacah sampai 1.000, cocokkan gambar “MENYIMPAN” dengan artinya (simpan), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "1️⃣ Bila jumlah tempat sepuluh atau lebih, simpan satu."
     },
     {
       "judul": "434",
       "emoji": "🍊",
       "countNum": 434,
       "countWord": "dengan simpan",
-      "suara": "Seratus delapan puluh sembilan ditambah dua ratus empat puluh lima."
+      "suara": "Seratus delapan puluh sembilan ditambah dua ratus empat puluh lima. Pada Penjumlahan Bilangan Cacah sampai 1.000, cocokkan gambar “434” dengan artinya (dengan simpan), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🍊 Seratus delapan puluh sembilan ditambah dua ratus…"
     },
     {
       "judul": "SUSUN PENDEK",
       "emoji": "⬇️",
       "countNum": 2,
       "countWord": "bersusun",
-      "suara": "Tulis bersusun menurut nilai tempat."
+      "suara": "Tulis bersusun menurut nilai tempat. Tulis bersusun ratusan puluhan satuan. 1+1=2, 3+2=5, 1+3=4. Ingat: bersusun; dari kanan; tanpa simpan. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penjumlahan Bilangan…",
+      "teksVisual": "⬇️ SUSUN PENDEK: bersusun"
     },
     {
       "judul": "SUSUN PANJANG",
       "emoji": "📜",
       "countNum": 3,
       "countWord": "urai",
-      "suara": "Urai dulu, lalu jumlahkan tiap tempat."
+      "suara": "Urai dulu, lalu jumlahkan tiap tempat. Urai 131 = 100 + 30 + 1. Urai 321 = 300 + 20 + 1. Ingat: urai; kelompokkan; jumlahkan. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penjumlahan Bilangan Cacah sampai…",
+      "teksVisual": "📜 SUSUN PANJANG: urai"
     },
     {
       "judul": "898",
       "emoji": "📚",
       "countNum": 898,
       "countWord": "tiga suku",
-      "suara": "Seratus dua puluh empat ditambah empat ratus sebelas ditambah tiga ratus enam puluh tiga."
+      "suara": "Seratus dua puluh empat ditambah empat ratus sebelas ditambah tiga ratus enam puluh tiga. Pada Penjumlahan Bilangan Cacah sampai 1.000, cocokkan gambar “898” dengan artinya (tiga suku), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📚 Seratus dua puluh empat ditambah empat ratus sebelas…"
     },
     {
       "judul": "PERIKSA",
       "emoji": "🔍",
       "countNum": 4,
       "countWord": "ulang",
-      "suara": "Hitung lagi dari satuan untuk memeriksa."
+      "suara": "Hitung lagi dari satuan untuk memeriksa. Pada Penjumlahan Bilangan Cacah sampai 1.000, cocokkan gambar “PERIKSA” dengan artinya (ulang), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔍 PERIKSA: ulang"
     },
     {
       "judul": "CERITA",
       "emoji": "📖",
       "countNum": 5,
       "countWord": "soal",
-      "suara": "Baca cerita, tulis model penjumlahan."
+      "suara": "Baca cerita, tulis model penjumlahan. Pada Penjumlahan Bilangan Cacah sampai 1.000, cocokkan gambar “CERITA” dengan artinya (soal), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📖 CERITA: soal"
     },
     {
       "judul": "SIAP F",
       "emoji": "✅",
       "countNum": 6,
       "countWord": "lanjut",
-      "suara": "Siap lanjut ke pengurangan."
+      "suara": "Siap lanjut ke pengurangan. Pada Penjumlahan Bilangan Cacah sampai 1.000, cocokkan gambar “SIAP F” dengan artinya (lanjut), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ SIAP F: lanjut"
     }
   ],
   "games": [
@@ -4078,70 +4128,80 @@ export const SUB_F41: SubBabNaskah = {
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "kanan",
-      "suara": "Pengurangan dikerjakan dari kanan."
+      "suara": "Pengurangan dikerjakan dari kanan. Pada Pengurangan Bilangan Cacah sampai 1.000, cocokkan gambar “DARI SATUAN” dengan artinya (kanan), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "➡️ DARI SATUAN: kanan"
     },
     {
       "judul": "133",
       "emoji": "📚",
       "countNum": 133,
       "countWord": "tanpa ambil",
-      "suara": "Dua ratus enam puluh lima dikurangi seratus tiga puluh dua."
+      "suara": "Dua ratus enam puluh lima dikurangi seratus tiga puluh dua. Pada Pengurangan Bilangan Cacah sampai 1.000, cocokkan gambar “133” dengan artinya (tanpa ambil), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📚 Dua ratus enam puluh lima dikurangi seratus tiga…"
     },
     {
       "judul": "MENGAMBIL",
       "emoji": "↩️",
       "countNum": 10,
       "countWord": "ambil",
-      "suara": "Bila satuan tidak cukup, ambil satu puluhan."
+      "suara": "Bila satuan tidak cukup, ambil satu puluhan. Pada Pengurangan Bilangan Cacah sampai 1.000, cocokkan gambar “MENGAMBIL” dengan artinya (ambil), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "↩️ Bila satuan tidak cukup, ambil satu puluhan."
     },
     {
       "judul": "112",
       "emoji": "1️⃣",
       "countNum": 112,
       "countWord": "satu ambil",
-      "suara": "Dua ratus empat puluh satu dikurangi seratus dua puluh sembilan."
+      "suara": "Dua ratus empat puluh satu dikurangi seratus dua puluh sembilan. Pada Pengurangan Bilangan Cacah sampai 1.000, cocokkan gambar “112” dengan artinya (satu ambil), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "1️⃣ Dua ratus empat puluh satu dikurangi seratus dua…"
     },
     {
       "judul": "77",
       "emoji": "2️⃣",
       "countNum": 77,
       "countWord": "dua ambil",
-      "suara": "Dua ratus lima puluh tiga dikurangi seratus tujuh puluh enam."
+      "suara": "Dua ratus lima puluh tiga dikurangi seratus tujuh puluh enam. Pada Pengurangan Bilangan Cacah sampai 1.000, cocokkan gambar “77” dengan artinya (dua ambil), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "2️⃣ Dua ratus lima puluh tiga dikurangi seratus tujuh…"
     },
     {
       "judul": "SUSUN PENDEK",
       "emoji": "⬇️",
       "countNum": 2,
       "countWord": "bersusun",
-      "suara": "Tulis bersusun menurut nilai tempat."
+      "suara": "Tulis bersusun menurut nilai tempat. Tulis bersusun. 5−2=3, 6−3=3, 2−1=1. Ingat: bersusun; dari kanan; tanpa ambil. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengurangan Bilangan Cacah sampai 1.000.",
+      "teksVisual": "⬇️ SUSUN PENDEK: bersusun"
     },
     {
       "judul": "SUSUN PANJANG",
       "emoji": "📜",
       "countNum": 3,
       "countWord": "urai",
-      "suara": "Urai dulu, lalu kurangkan."
+      "suara": "Urai dulu, lalu kurangkan. Urai 265 = 200 + 60 + 5. Urai 132 = 100 + 30 + 2. Ingat: urai; kurangkan; tempat. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengurangan Bilangan Cacah sampai 1.000.",
+      "teksVisual": "📜 SUSUN PANJANG: urai"
     },
     {
       "judul": "PERIKSA",
       "emoji": "🔍",
       "countNum": 4,
       "countWord": "kebalikan",
-      "suara": "Hasil ditambah pengurang harus sama dengan bilangan awal."
+      "suara": "Hasil ditambah pengurang harus sama dengan bilangan awal. Hasil ditambah pengurang. Harus kembali ke bilangan awal. Ingat: hasil + pengurang; bilangan awal; 112+129.",
+      "teksVisual": "🔍 Hasil ditambah pengurang harus sama dengan bilangan…"
     },
     {
       "judul": "66",
       "emoji": "✅",
       "countNum": 66,
       "countWord": "contoh",
-      "suara": "Dua ratus empat puluh satu dikurangi seratus tujuh puluh lima."
+      "suara": "Dua ratus empat puluh satu dikurangi seratus tujuh puluh lima. Pada Pengurangan Bilangan Cacah sampai 1.000, cocokkan gambar “66” dengan artinya (contoh), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ Dua ratus empat puluh satu dikurangi seratus tujuh…"
     },
     {
       "judul": "SIAP",
       "emoji": "🎯",
       "countNum": 5,
       "countWord": "selesai",
-      "suara": "Sub-Bab F siap dimainkan."
+      "suara": "SIAP (selesai). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Kita sudah mengurangi dengan dan tanpa mengambil.",
+      "teksVisual": "🎯 SIAP: selesai"
     }
   ],
   "games": [
@@ -4840,70 +4900,80 @@ export const SUB_G41: SubBabNaskah = {
       "emoji": "🍩",
       "countNum": 12,
       "countWord": "12×4",
-      "suara": "Array 12 kotak berisi 4 donat."
+      "suara": "Array 12 kotak berisi 4 donat. Pada Perkalian Bilangan Cacah Sampai 100, cocokkan gambar “ARRAY” dengan artinya (12×4), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🍩 ARRAY: 12×4"
     },
     {
       "judul": "48",
       "emoji": "🔢",
       "countNum": 48,
       "countWord": "hasil",
-      "suara": "12 × 4 = 48."
+      "suara": "Pada Perkalian Bilangan Cacah Sampai 100, cocokkan gambar “48” dengan artinya (hasil), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Perkalian Bilangan Cacah Sampai 100.",
+      "teksVisual": "🔢 48: hasil"
     },
     {
       "judul": "PANJANG",
       "emoji": "📜",
       "countNum": 10,
       "countWord": "10+2",
-      "suara": "Urai 12 = 10 + 2."
+      "suara": "PANJANG — 10+2. Kita uraikan 12 menjadi 10 tambah 2. Lalu kalikan masing-masing dengan 4. Ingat: 10+2; ×4; 40+8. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Perkalian Bilangan Cacah Sampai 100.",
+      "teksVisual": "📜 PANJANG: 10+2"
     },
     {
       "judul": "40+8",
       "emoji": "➕",
       "countNum": 48,
       "countWord": "jumlah",
-      "suara": "40 + 8 = 48."
+      "suara": "40+8 — jumlah. Pada Perkalian Bilangan Cacah Sampai 100, cocokkan gambar “40+8” dengan artinya (jumlah), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Perkalian Bilangan…",
+      "teksVisual": "➕ 40+8: jumlah"
     },
     {
       "judul": "BERSUSUN",
       "emoji": "⬇️",
       "countNum": 14,
       "countWord": "dari satuan",
-      "suara": "Kalikan satuan dulu."
+      "suara": "Kalikan satuan dulu. Pada Perkalian Bilangan Cacah Sampai 100, cocokkan gambar “BERSUSUN” dengan artinya (dari satuan), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⬇️ BERSUSUN: dari satuan"
     },
     {
       "judul": "MENYIMPAN",
       "emoji": "1️⃣",
       "countNum": 20,
       "countWord": "4×5",
-      "suara": "4 × 5 = 20, simpan 2."
+      "suara": "4 × 5 = 20, simpan 2. 4 kali 5 sama dengan 20. Tulis 0, simpan 2 ke puluhan. Ingat: 4×5=20; simpan 2; 5+2=7. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Perkalian Bilangan Cacah Sampai 100.",
+      "teksVisual": "1️⃣ MENYIMPAN: 4×5"
     },
     {
       "judul": "70",
       "emoji": "🎯",
       "countNum": 70,
       "countWord": "14×5",
-      "suara": "Hasil kelereng 70."
+      "suara": "Pada Perkalian Bilangan Cacah Sampai 100, cocokkan gambar “70” dengan artinya (14×5), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Perkalian Bilangan Cacah Sampai 100.",
+      "teksVisual": "🎯 70: 14×5"
     },
     {
       "judul": "96",
       "emoji": "✏️",
       "countNum": 96,
       "countWord": "12×8",
-      "suara": "Pensil koperasi 96."
+      "suara": "Pada Perkalian Bilangan Cacah Sampai 100, cocokkan gambar “96” dengan artinya (12×8), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Perkalian Bilangan Cacah Sampai 100.",
+      "teksVisual": "✏️ 96: 12×8"
     },
     {
       "judul": "CERITA",
       "emoji": "📖",
       "countNum": 36,
       "countWord": "12×3",
-      "suara": "Ayam Asep 36 mangkok."
+      "suara": "Ayam Asep 36 mangkok. Pada Perkalian Bilangan Cacah Sampai 100, cocokkan gambar “CERITA” dengan artinya (12×3), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Perkalian…",
+      "teksVisual": "📖 CERITA: 12×3"
     },
     {
       "judul": "SIAP H",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "lanjut",
-      "suara": "Siap belajar pembagian."
+      "suara": "Siap belajar pembagian. Pada Perkalian Bilangan Cacah Sampai 100, cocokkan gambar “SIAP H” dengan artinya (lanjut), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ SIAP H: lanjut"
     }
   ],
   "games": [
@@ -5601,70 +5671,80 @@ export const SUB_H41: SubBabNaskah = {
       "emoji": "🍬",
       "countNum": 48,
       "countWord": "bagi 4",
-      "suara": "48 permen untuk 4 anak."
+      "suara": "48 permen untuk 4 anak. Pada Pembagian Bilangan Cacah Sampai 100, cocokkan gambar “SAMA BANYAK” dengan artinya (bagi 4), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🍬 SAMA BANYAK: bagi 4"
     },
     {
       "judul": "12",
       "emoji": "🎯",
       "countNum": 12,
       "countWord": "hasil",
-      "suara": "48 : 4 = 12."
+      "suara": "Pada Pembagian Bilangan Cacah Sampai 100, cocokkan gambar “12” dengan artinya (hasil), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pembagian Bilangan Cacah Sampai 100.",
+      "teksVisual": "🎯 12: hasil"
     },
     {
       "judul": "PULUHAN DULU",
       "emoji": "⬇️",
       "countNum": 4,
       "countWord": "4:4=1",
-      "suara": "Mulai dari nilai terbesar."
+      "suara": "Mulai dari nilai terbesar. Pada Pembagian Bilangan Cacah Sampai 100, cocokkan gambar “PULUHAN DULU” dengan artinya (4:4=1), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⬇️ PULUHAN DULU: 4:4=1"
     },
     {
       "judul": "SATUAN",
       "emoji": "2️⃣",
       "countNum": 8,
       "countWord": "8:4=2",
-      "suara": "Lanjut ke satuan."
+      "suara": "SATUAN — 8:4=2. 8 dibagi 4 sama dengan 2. Letakkan 2 di satuan hasil bagi. Ingat: 8:4=2; hasil 12; 2×4=8. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pembagian Bilangan Cacah Sampai 100.",
+      "teksVisual": "2️⃣ SATUAN: 8:4=2"
     },
     {
       "judul": "SISA 0",
       "emoji": "0️⃣",
       "countNum": 0,
       "countWord": "habis",
-      "suara": "Sisa nol berarti habis."
+      "suara": "Sisa nol berarti habis. Pada Pembagian Bilangan Cacah Sampai 100, cocokkan gambar “SISA 0” dengan artinya (habis), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "0️⃣ SISA 0: habis"
     },
     {
       "judul": "PERIKSA",
       "emoji": "🔍",
       "countNum": 48,
       "countWord": "12×4",
-      "suara": "12 × 4 = 48."
+      "suara": "PERIKSA — 12×4. Pada Pembagian Bilangan Cacah Sampai 100, cocokkan gambar “PERIKSA” dengan artinya (12×4), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pembagian…",
+      "teksVisual": "🔍 PERIKSA: 12×4"
     },
     {
       "judul": "36:2",
       "emoji": "👫",
       "countNum": 18,
       "countWord": "Tini",
-      "suara": "Cerita Tono dan Tini."
+      "suara": "Cerita Tono dan Tini. Pada Pembagian Bilangan Cacah Sampai 100, cocokkan gambar “36:2” dengan artinya (Tini), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pembagian…",
+      "teksVisual": "👫 36:2: Tini"
     },
     {
       "judul": "81:3",
       "emoji": "🧁",
       "countNum": 27,
       "countWord": "kotak",
-      "suara": "81 kue jadi 27 kotak."
+      "suara": "81 kue jadi 27 kotak. Pada Pembagian Bilangan Cacah Sampai 100, cocokkan gambar “81:3” dengan artinya (kotak), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pembagian…",
+      "teksVisual": "🧁 81:3: kotak"
     },
     {
       "judul": "55:5",
       "emoji": "🔑",
       "countNum": 11,
       "countWord": "Asep",
-      "suara": "55 gantungan : 5."
+      "suara": "55:5 — Asep. Pada Pembagian Bilangan Cacah Sampai 100, cocokkan gambar “55:5” dengan artinya (Asep), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pembagian Bilangan…",
+      "teksVisual": "🔑 55:5: Asep"
     },
     {
       "judul": "SIAP I",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "lanjut",
-      "suara": "Siap faktor dan kelipatan."
+      "suara": "Siap faktor dan kelipatan. Pada Pembagian Bilangan Cacah Sampai 100, cocokkan gambar “SIAP I” dengan artinya (lanjut), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ SIAP I: lanjut"
     }
   ],
   "games": [
@@ -6362,70 +6442,80 @@ export const SUB_I41: SubBabNaskah = {
       "emoji": "➗",
       "countNum": 12,
       "countWord": "pembagi",
-      "suara": "Faktor = pembagi habis."
+      "suara": "Faktor = pembagi habis. 1 kali 12, 2 kali 6, 3 kali 4. Juga 4 kali 3, 6 kali 2, 12 kali 1. Ingat: 1×12; 2×6; daftar. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor dan Kelipatan.",
+      "teksVisual": "➗ FAKTOR: pembagi"
     },
     {
       "judul": "1–12",
       "emoji": "📋",
       "countNum": 6,
       "countWord": "banyak",
-      "suara": "Faktor 12 ada 6 bilangan."
+      "suara": "Faktor 12 ada 6 bilangan. Pada Faktor dan Kelipatan, cocokkan gambar “1–12” dengan artinya (banyak), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor dan Kelipatan.",
+      "teksVisual": "📋 1–12: banyak"
     },
     {
       "judul": "BUKAN 5",
       "emoji": "🚫",
       "countNum": 5,
       "countWord": "sisa 2",
-      "suara": "5 bukan faktor 12."
+      "suara": "BUKAN 5 — sisa 2. Pada Faktor dan Kelipatan, cocokkan gambar “BUKAN 5” dengan artinya (sisa 2), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor dan Kelipatan.",
+      "teksVisual": "🚫 BUKAN 5: sisa 2"
     },
     {
       "judul": "FAKTOR 20",
       "emoji": "2️⃣",
       "countNum": 20,
       "countWord": "1…20",
-      "suara": "1, 2, 4, 5, 10, 20."
+      "suara": "FAKTOR 20 — 1…20. Faktor 20: 1, 2, 4, 5, 10, 20. 4 kali 5 sama dengan 20. Ingat: faktor 20; 4×5; habis. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor dan Kelipatan.",
+      "teksVisual": "2️⃣ FAKTOR 20: 1…20"
     },
     {
       "judul": "KELIPATAN",
       "emoji": "📶",
       "countNum": 2,
       "countWord": "×1,×2,…",
-      "suara": "Hasil kali berulang."
+      "suara": "Hasil kali berulang. Kelipatan 5 lebih dari 17 dan kurang dari 35. Yaitu 20, 25, dan 30. Ingat: >17 <35; 20,25,30; rentang. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor dan Kelipatan.",
+      "teksVisual": "📶 KELIPATAN: ×1,×2,…"
     },
     {
       "judul": "2,4,6,8",
       "emoji": "🔵",
       "countNum": 8,
       "countWord": "hari-4",
-      "suara": "Kelipatan 2 Karel."
+      "suara": "2,4,6,8 — hari-4. Pada Faktor dan Kelipatan, cocokkan gambar “2,4,6,8” dengan artinya (hari-4), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor dan Kelipatan.",
+      "teksVisual": "🔵 2,4,6,8: hari-4"
     },
     {
       "judul": "3,6,9,…",
       "emoji": "🟢",
       "countNum": 3,
       "countWord": "Slamet",
-      "suara": "Kelipatan 3."
+      "suara": "3,6,9,… — Slamet. Pada Faktor dan Kelipatan, cocokkan gambar “3,6,9,…” dengan artinya (Slamet), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor dan Kelipatan.",
+      "teksVisual": "🟢 3,6,9,…: Slamet"
     },
     {
       "judul": "RENTANG",
       "emoji": "📏",
       "countNum": 5,
       "countWord": "17–35",
-      "suara": "20, 25, 30."
+      "suara": "RENTANG — 17–35. Pada Faktor dan Kelipatan, cocokkan gambar “RENTANG” dengan artinya (17–35), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor dan Kelipatan.",
+      "teksVisual": "📏 RENTANG: 17–35"
     },
     {
       "judul": "CERITA",
       "emoji": "📖",
       "countNum": 10,
       "countWord": "beras",
-      "suara": "Faktor 10 = cara bagi beras."
+      "suara": "Faktor 10 = cara bagi beras. Pada Faktor dan Kelipatan, cocokkan gambar “CERITA” dengan artinya (beras), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor dan Kelipatan.",
+      "teksVisual": "📖 CERITA: beras"
     },
     {
       "judul": "SELESAI",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "bab 1",
-      "suara": "Siap refleksi bab."
+      "suara": "SELESAI — bab 1. Pada Faktor dan Kelipatan, cocokkan gambar “SELESAI” dengan artinya (bab 1), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor dan Kelipatan.",
+      "teksVisual": "✅ SELESAI: bab 1"
     }
   ],
   "games": [

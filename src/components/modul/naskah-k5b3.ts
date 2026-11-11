@@ -267,70 +267,80 @@ export const SUB_A53: SubBabNaskah = {
       "emoji": "⬆️",
       "countNum": 1,
       "countWord": "atas",
-      "suara": "Angka atas."
+      "suara": "Pembilang — atas. Satu per dua dan satu per lima. Pembilangnya sama: satu. Penyebut lebih kecil berarti tiap bagian lebih besar. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan dan Mengurutkan…",
+      "teksVisual": "⬆️ Pembilang: atas"
     },
     {
       "judul": "Penyebut",
       "emoji": "⬇️",
       "countNum": 1,
       "countWord": "bawah",
-      "suara": "Angka bawah."
+      "suara": "Penyebut — bawah. Tiga per delapan dan lima per delapan. Penyebut sama. Lihat pembilang: lima lebih besar dari tiga. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan dan Mengurutkan Pecahan.",
+      "teksVisual": "⬇️ Penyebut: bawah"
     },
     {
       "judul": "Garis",
       "emoji": "📏",
       "countNum": 1,
       "countWord": "kanan>",
-      "suara": "Lebih kanan lebih besar."
+      "suara": "Lebih kanan lebih besar. Empat potong makanan sama besar. Kamu makan dua. Itu dua per empat. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan dan Mengurutkan Pecahan.",
+      "teksVisual": "📏 Garis: kanan>"
     },
     {
       "judul": "Senilai",
       "emoji": "⚖️",
       "countNum": 1,
       "countWord": "sama nilai",
-      "suara": "Bentuk beda nilai sama."
+      "suara": "Bentuk beda nilai sama. Pada Membandingkan dan Mengurutkan Pecahan, cocokkan gambar “Senilai” dengan artinya (sama nilai), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⚖️ Senilai: sama nilai"
     },
     {
       "judul": "Campuran",
       "emoji": "🔄",
       "countNum": 1,
       "countWord": "ke biasa",
-      "suara": "(bulat×q)+p."
+      "suara": "Campuran — ke biasa. Pecahan biasa hanya punya pembilang dan penyebut, misalnya tiga per empat. Pecahan campuran punya bilangan bulat ditambah pecahan, misalnya dua tiga per empat. Ingat: biasa; campuran; utuh + sisa.",
+      "teksVisual": "🔄 Campuran: ke biasa"
     },
     {
       "judul": "1/2 vs 1/5",
       "emoji": "🍰",
       "countNum": 1,
       "countWord": "1/2>",
-      "suara": "Pembilang sama."
+      "suara": "1/2 vs 1/5 — 1/2>. Pada Membandingkan dan Mengurutkan Pecahan, cocokkan gambar “1/2 vs 1/5” dengan artinya (1/2>), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🍰 1/2 vs 1/5: 1/2>"
     },
     {
       "judul": "3/8 vs 5/8",
       "emoji": "📊",
       "countNum": 1,
       "countWord": "5/8>",
-      "suara": "Penyebut sama."
+      "suara": "3/8 vs 5/8 — 5/8>. Pada Membandingkan dan Mengurutkan Pecahan, cocokkan gambar “3/8 vs 5/8” dengan artinya (5/8>), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📊 3/8 vs 5/8: 5/8>"
     },
     {
       "judul": "Yohana",
       "emoji": "🏃",
       "countNum": 1,
       "countWord": "3 1/2",
-      "suara": "Terjauh."
+      "suara": "Yohana — 3 1/2. Pada Membandingkan dan Mengurutkan Pecahan, cocokkan gambar “Yohana” dengan artinya (3 1/2), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan…",
+      "teksVisual": "🏃 Yohana: 3 1/2"
     },
     {
       "judul": "2/4",
       "emoji": "✂️",
       "countNum": 1,
       "countWord": "=1/2",
-      "suara": "Senilai."
+      "suara": "Pada Membandingkan dan Mengurutkan Pecahan, cocokkan gambar “2/4” dengan artinya (=1/2), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan dan Mengurutkan…",
+      "teksVisual": "✂️ 2/4: =1/2"
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "jumlah",
-      "suara": "Lanjut penjumlahan."
+      "suara": "Siap B (jumlah). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Kalau beda pembilang dan penyebut, samakan dulu dengan pecahan senilai atau garis bilangan.",
+      "teksVisual": "➡️ Siap B: jumlah"
     }
   ],
   "games": [
@@ -1032,70 +1042,80 @@ export const SUB_B53: SubBabNaskah = {
       "emoji": "✅",
       "countNum": 1,
       "countWord": "p+p",
-      "suara": "Pembilang dijumlah."
+      "suara": "Penyebut sama — p+p. Pada Penjumlahan Bilangan Pecahan, cocokkan gambar “Penyebut sama” dengan artinya (p+p), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penjumlahan…",
+      "teksVisual": "✅ Penyebut sama: p+p"
     },
     {
       "judul": "2/7+3/7",
       "emoji": "🔢",
       "countNum": 5,
       "countWord": "5/7",
-      "suara": "Contoh."
+      "suara": "2/7+3/7 — 5/7. Pada Penjumlahan Bilangan Pecahan, cocokkan gambar “2/7+3/7” dengan artinya (5/7), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penjumlahan Bilangan…",
+      "teksVisual": "🔢 2/7+3/7: 5/7"
     },
     {
       "judul": "KPK",
       "emoji": "🎯",
       "countNum": 1,
       "countWord": "samakan",
-      "suara": "Penyebut beda."
+      "suara": "KPK — samakan. Pada Penjumlahan Bilangan Pecahan, cocokkan gambar “KPK” dengan artinya (samakan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penjumlahan Bilangan…",
+      "teksVisual": "🎯 KPK: samakan"
     },
     {
       "judul": "1/2+1/3",
       "emoji": "➕",
       "countNum": 5,
       "countWord": "5/6",
-      "suara": "Lewat 6."
+      "suara": "1/2+1/3 — 5/6. Pada Penjumlahan Bilangan Pecahan, cocokkan gambar “1/2+1/3” dengan artinya (5/6), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penjumlahan Bilangan…",
+      "teksVisual": "➕ 1/2+1/3: 5/6"
     },
     {
       "judul": "Arsir",
       "emoji": "🎨",
       "countNum": 1,
       "countWord": "lihat",
-      "suara": "Model daerah."
+      "suara": "Arsir — lihat. Gambar dua bangun sama. Arsir bagian pertama dan kedua. Gabungkan arsir secara mental atau pada satu bangun berpenyebut sama. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penjumlahan Bilangan…",
+      "teksVisual": "🎨 Arsir: lihat"
     },
     {
       "judul": "Jangan",
       "emoji": "🚫",
       "countNum": 1,
       "countWord": "q+q",
-      "suara": "Jangan jumlah penyebut."
+      "suara": "Jangan jumlah penyebut. Pada Penjumlahan Bilangan Pecahan, cocokkan gambar “Jangan” dengan artinya (q+q), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penjumlahan…",
+      "teksVisual": "🚫 Jangan: q+q"
     },
     {
       "judul": "Campuran",
       "emoji": "🔄",
       "countNum": 1,
       "countWord": "ke biasa",
-      "suara": "Ubah dulu."
+      "suara": "Campuran — ke biasa. Jika ada campuran, ubah ke biasa dulu, lalu samakan penyebut. Jangan jumlahkan bilangan bulat saja lalu mengabaikan pecahannya. Ingat: campuran; jangan; urut.",
+      "teksVisual": "🔄 Campuran: ke biasa"
     },
     {
       "judul": "Sederhana",
       "emoji": "✨",
       "countNum": 1,
       "countWord": "ringkas",
-      "suara": "Jika bisa."
+      "suara": "Sederhana — ringkas. Pada Penjumlahan Bilangan Pecahan, cocokkan gambar “Sederhana” dengan artinya (ringkas), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penjumlahan…",
+      "teksVisual": "✨ Sederhana: ringkas"
     },
     {
       "judul": "Perkiraan",
       "emoji": "📏",
       "countNum": 1,
       "countWord": "cek",
-      "suara": "Masuk akal?"
+      "suara": "Perkiraan — cek. Pada Penjumlahan Bilangan Pecahan, cocokkan gambar “Perkiraan” dengan artinya (cek), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penjumlahan Bilangan…",
+      "teksVisual": "📏 Perkiraan: cek"
     },
     {
       "judul": "Siap C",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "kurang",
-      "suara": "Pengurangan."
+      "suara": "Siap C — kurang. Penjumlahan pecahan siap. Berikutnya pengurangan. Ide dasarnya sama: samakan penyebut. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penjumlahan Bilangan Pecahan.",
+      "teksVisual": "➡️ Siap C: kurang"
     }
   ],
   "games": [
@@ -1796,70 +1816,80 @@ export const SUB_C53: SubBabNaskah = {
       "emoji": "✅",
       "countNum": 1,
       "countWord": "p-p",
-      "suara": "Kurangi pembilang."
+      "suara": "Penyebut sama — p-p. Pada Pengurangan Bilangan Pecahan, cocokkan gambar “Penyebut sama” dengan artinya (p-p), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengurangan…",
+      "teksVisual": "✅ Penyebut sama: p-p"
     },
     {
       "judul": "5/8-2/8",
       "emoji": "🔢",
       "countNum": 3,
       "countWord": "3/8",
-      "suara": "Contoh."
+      "suara": "5/8-2/8 — 3/8. Pada Pengurangan Bilangan Pecahan, cocokkan gambar “5/8-2/8” dengan artinya (3/8), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengurangan Bilangan…",
+      "teksVisual": "🔢 5/8-2/8: 3/8"
     },
     {
       "judul": "KPK",
       "emoji": "🎯",
       "countNum": 1,
       "countWord": "samakan",
-      "suara": "Bila beda."
+      "suara": "KPK — samakan. Pada Pengurangan Bilangan Pecahan, cocokkan gambar “KPK” dengan artinya (samakan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengurangan Bilangan…",
+      "teksVisual": "🎯 KPK: samakan"
     },
     {
       "judul": "3/4-1/6",
       "emoji": "➖",
       "countNum": 7,
       "countWord": "7/12",
-      "suara": "Lewat 12."
+      "suara": "3/4-1/6 — 7/12. Pada Pengurangan Bilangan Pecahan, cocokkan gambar “3/4-1/6” dengan artinya (7/12), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengurangan Bilangan…",
+      "teksVisual": "➖ 3/4-1/6: 7/12"
     },
     {
       "judul": "Sisa",
       "emoji": "🎨",
       "countNum": 1,
       "countWord": "hapus",
-      "suara": "Model sisa."
+      "suara": "Sisa — hapus. Arsir lima kotak dari delapan. Hapus dua kotak. Sisa tiga kotak. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengurangan Bilangan Pecahan.",
+      "teksVisual": "🎨 Sisa: hapus"
     },
     {
       "judul": "Jangan",
       "emoji": "🚫",
       "countNum": 1,
       "countWord": "q-q",
-      "suara": "Jangan kurang penyebut."
+      "suara": "Jangan kurang penyebut. Pada Pengurangan Bilangan Pecahan, cocokkan gambar “Jangan” dengan artinya (q-q), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengurangan…",
+      "teksVisual": "🚫 Jangan: q-q"
     },
     {
       "judul": "Campuran",
       "emoji": "🔄",
       "countNum": 1,
       "countWord": "ubah",
-      "suara": "Ke biasa dulu."
+      "suara": "Campuran — ubah. Ubah ke biasa atau kurangkan bilangan bulat dan pecahan dengan hati-hati. Urutan aman: ubah, samakan, kurangkan, sederhanakan. Ingat: campuran; urut; perkiraan.",
+      "teksVisual": "🔄 Campuran: ubah"
     },
     {
       "judul": "Perkiraan",
       "emoji": "📏",
       "countNum": 1,
       "countWord": "cek",
-      "suara": "Masuk akal?"
+      "suara": "Perkiraan — cek. Pada Pengurangan Bilangan Pecahan, cocokkan gambar “Perkiraan” dengan artinya (cek), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengurangan Bilangan…",
+      "teksVisual": "📏 Perkiraan: cek"
     },
     {
       "judul": "Senilai",
       "emoji": "⚖️",
       "countNum": 1,
       "countWord": "sama nilai",
-      "suara": "Sebelum kurang."
+      "suara": "Senilai — sama nilai. Pada Pengurangan Bilangan Pecahan, cocokkan gambar “Senilai” dengan artinya (sama nilai), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengurangan…",
+      "teksVisual": "⚖️ Senilai: sama nilai"
     },
     {
       "judul": "Bab 3",
       "emoji": "🎉",
       "countNum": 1,
       "countWord": "siap",
-      "suara": "Utuh."
+      "suara": "Bab 3 — siap. Bab 3: bandingkan, jumlahkan, kurangkan pecahan. Senjata utama: garis bilangan, senilai, KPK, model daerah. Ingat: rangkum; senjata; cek.",
+      "teksVisual": "🎉 Bab 3: siap"
     }
   ],
   "games": [

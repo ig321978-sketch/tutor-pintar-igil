@@ -267,70 +267,80 @@ export const SUB_A42: SubBabNaskah = {
       "emoji": "🍕",
       "countNum": 1,
       "countWord": "unit",
-      "suara": "Pecahan pembilang satu."
+      "suara": "Pecahan pembilang satu. Pada Pecahan dengan Pembilang Satu, cocokkan gambar “1/n” dengan artinya (unit), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "🍕 1/n: unit"
     },
     {
       "judul": "1/4",
       "emoji": "🍕",
       "countNum": 4,
       "countWord": "pizza",
-      "suara": "Pizza 4 potong."
+      "suara": "1/4 — pizza. Pada Pecahan dengan Pembilang Satu, cocokkan gambar “1/4” dengan artinya (pizza), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan Pembilang Satu.",
+      "teksVisual": "🍕 1/4: pizza"
     },
     {
       "judul": "PEMBILANG",
       "emoji": "⬆️",
       "countNum": 1,
       "countWord": "atas",
-      "suara": "Bagian diambil."
+      "suara": "PEMBILANG — atas. Pada Pecahan dengan Pembilang Satu, cocokkan gambar “PEMBILANG” dengan artinya (atas), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "⬆️ PEMBILANG: atas"
     },
     {
       "judul": "PENYEBUT",
       "emoji": "⬇️",
       "countNum": 4,
       "countWord": "bawah",
-      "suara": "Bagian seluruh."
+      "suara": "PENYEBUT — bawah. Pada Pecahan dengan Pembilang Satu, cocokkan gambar “PENYEBUT” dengan artinya (bawah), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "⬇️ PENYEBUT: bawah"
     },
     {
       "judul": "1/2 > 1/4",
       "emoji": "⚖️",
       "countNum": 2,
       "countWord": "banding",
-      "suara": "Setengah lebih besar."
+      "suara": "Setengah lebih besar. Pada Pecahan dengan Pembilang Satu, cocokkan gambar “1/2 > 1/4” dengan artinya (banding), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan…",
+      "teksVisual": "⚖️ 1/2 > 1/4: banding"
     },
     {
       "judul": "1/10 < 1/5",
       "emoji": "📉",
       "countNum": 10,
       "countWord": "kecil",
-      "suara": "Penyebut besar."
+      "suara": "1/10 < 1/5 — kecil. Pada Pecahan dengan Pembilang Satu, cocokkan gambar “1/10 < 1/5” dengan artinya (kecil), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "📉 1/10 < 1/5: kecil"
     },
     {
       "judul": "ARSIR",
       "emoji": "🖍️",
       "countNum": 1,
       "countWord": "gambar",
-      "suara": "Baca daerah arsir."
+      "suara": "ARSIR — gambar. Pada Pecahan dengan Pembilang Satu, cocokkan gambar “ARSIR” dengan artinya (gambar), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "🖍️ ARSIR: gambar"
     },
     {
       "judul": "ATURAN",
       "emoji": "📜",
       "countNum": 1,
       "countWord": "unit",
-      "suara": "n besar → 1/n kecil."
+      "suara": "n besar → 1/n kecil. Pembilang tetap satu. Penyebut menyatakan banyak bagian. Ingat: pembilang 1; penyebut; bagian kecil. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan Pembilang Satu.",
+      "teksVisual": "📜 ATURAN: unit"
     },
     {
       "judul": "CERITA",
       "emoji": "📖",
       "countNum": 2,
       "countWord": "Tiara",
-      "suara": "Bawang 1/2 kg."
+      "suara": "CERITA — Tiara. Pada Pecahan dengan Pembilang Satu, cocokkan gambar “CERITA” dengan artinya (Tiara), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "📖 CERITA: Tiara"
     },
     {
       "judul": "SIAP B",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "lanjut",
-      "suara": "Penyebut sama."
+      "suara": "SIAP B (lanjut). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "✅ SIAP B: lanjut"
     }
   ],
   "games": [
@@ -1029,70 +1039,80 @@ export const SUB_B42: SubBabNaskah = {
       "emoji": "🧱",
       "countNum": 3,
       "countWord": "potongan",
-      "suara": "Ukuran bagian sama."
+      "suara": "q SAMA — potongan. Pada Pecahan dengan Penyebut Sama, cocokkan gambar “q SAMA” dengan artinya (potongan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "🧱 q SAMA: potongan"
     },
     {
       "judul": "LIHAT p",
       "emoji": "⬆️",
       "countNum": 2,
       "countWord": "pembilang",
-      "suara": "Banding pembilang."
+      "suara": "LIHAT p — pembilang. Pada Pecahan dengan Penyebut Sama, cocokkan gambar “LIHAT p” dengan artinya (pembilang), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "⬆️ LIHAT p: pembilang"
     },
     {
       "judul": "1/3 < 2/3",
       "emoji": "⚖️",
       "countNum": 3,
       "countWord": "contoh",
-      "suara": "Contoh buku."
+      "suara": "1/3 < 2/3 — contoh. Pada Pecahan dengan Penyebut Sama, cocokkan gambar “1/3 < 2/3” dengan artinya (contoh), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "⚖️ 1/3 < 2/3: contoh"
     },
     {
       "judul": "2/10 > 1/10",
       "emoji": "✅",
       "countNum": 10,
       "countWord": "contoh",
-      "suara": "Pembilang 2 > 1."
+      "suara": "2/10 > 1/10 — contoh. Pada Pecahan dengan Penyebut Sama, cocokkan gambar “2/10 > 1/10” dengan artinya (contoh), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan…",
+      "teksVisual": "✅ 2/10 > 1/10: contoh"
     },
     {
       "judul": "TANDA",
       "emoji": "✏️",
       "countNum": 1,
       "countWord": "> <",
-      "suara": "Isi titik-titik."
+      "suara": "TANDA — > <. Isi titik-titik dengan > atau <. Pastikan penyebut sama dulu. Ingat: > atau <; cek penyebut; cek pembilang. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan Penyebut Sama.",
+      "teksVisual": "✏️ TANDA: > <"
     },
     {
       "judul": "ASEP",
       "emoji": "📏",
       "countNum": 6,
       "countWord": "3/6",
-      "suara": "Tongkat lebih panjang."
+      "suara": "Tongkat lebih panjang. Pada Pecahan dengan Penyebut Sama, cocokkan gambar “ASEP” dengan artinya (3/6), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "📏 ASEP: 3/6"
     },
     {
       "judul": "URUT",
       "emoji": "📶",
       "countNum": 5,
       "countWord": "1→4",
-      "suara": "Urut pembilang."
+      "suara": "Pada Pecahan dengan Penyebut Sama, cocokkan gambar “URUT” dengan artinya (1→4), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan Penyebut Sama.",
+      "teksVisual": "📶 URUT: 1→4"
     },
     {
       "judul": "ATURAN",
       "emoji": "📜",
       "countNum": 1,
       "countWord": "sama q",
-      "suara": "Jangan bandingkan q."
+      "suara": "Jangan bandingkan q. Pada Pecahan dengan Penyebut Sama, cocokkan gambar “ATURAN” dengan artinya (sama q), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "📜 ATURAN: sama q"
     },
     {
       "judul": "ARSIR",
       "emoji": "🖍️",
       "countNum": 2,
       "countWord": "gambar",
-      "suara": "Banyak bagian diarsir."
+      "suara": "Banyak bagian diarsir. Bayangkan kamu sedang mempelajari Pecahan dengan Penyebut Sama. Lihat dua daerah arsir. Keduanya dibagi tiga sama besar. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan…",
+      "teksVisual": "🖍️ ARSIR: gambar"
     },
     {
       "judul": "SIAP C",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "lanjut",
-      "suara": "Pecahan senilai."
+      "suara": "SIAP C — lanjut. Kadang bentuk berbeda tapi nilai sama. Itu namanya pecahan senilai. Ingat: bentuk beda; nilai sama; 2/6=1/3. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan dengan Penyebut Sama.",
+      "teksVisual": "✅ SIAP C: lanjut"
     }
   ],
   "games": [
@@ -1791,70 +1811,80 @@ export const SUB_C42: SubBabNaskah = {
       "emoji": "⚖️",
       "countNum": 1,
       "countWord": "nilai",
-      "suara": "Nilai sama."
+      "suara": "SENILAI — nilai. Pada Pecahan Senilai, cocokkan gambar “SENILAI” dengan artinya (nilai), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan Senilai.",
+      "teksVisual": "⚖️ SENILAI: nilai"
     },
     {
       "judul": "2/6=1/3",
       "emoji": "🍫",
       "countNum": 6,
       "countWord": "coklat",
-      "suara": "Contoh Putu."
+      "suara": "2/6=1/3 — coklat. Pada Pecahan Senilai, cocokkan gambar “2/6=1/3” dengan artinya (coklat), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan Senilai.",
+      "teksVisual": "🍫 2/6=1/3: coklat"
     },
     {
       "judul": "×k",
       "emoji": "✖️",
       "countNum": 2,
       "countWord": "kali",
-      "suara": "Kalikan p dan q."
+      "suara": "Pada Pecahan Senilai, cocokkan gambar “×k” dengan artinya (kali), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan Senilai.",
+      "teksVisual": "✖️ ×k: kali"
     },
     {
       "judul": ":k",
       "emoji": "➗",
       "countNum": 2,
       "countWord": "bagi",
-      "suara": "Bagi p dan q."
+      "suara": "Tangga paling kiri. Kejadian sama sekali tidak terjadi — peluang nol. Contoh: dadu biasa menghasilkan angka tujuh. Bandingkan dengan tangga di kanannya.",
+      "teksVisual": "➗ :k: bagi"
     },
     {
       "judul": "1/4=4/16",
       "emoji": "📄",
       "countNum": 16,
       "countWord": "lipat",
-      "suara": "Aktivitas kertas."
+      "suara": "1/4=4/16 — lipat. Pada Pecahan Senilai, cocokkan gambar “1/4=4/16” dengan artinya (lipat), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan Senilai.",
+      "teksVisual": "📄 1/4=4/16: lipat"
     },
     {
       "judul": "1/2=2/4",
       "emoji": "✅",
       "countNum": 2,
       "countWord": "setengah",
-      "suara": "Banyak bentuk."
+      "suara": "1/2=2/4 — setengah. Pada Pecahan Senilai, cocokkan gambar “1/2=2/4” dengan artinya (setengah), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan Senilai.",
+      "teksVisual": "✅ 1/2=2/4: setengah"
     },
     {
       "judul": "JANGAN",
       "emoji": "🚫",
       "countNum": 1,
       "countWord": "salah",
-      "suara": "Jangan ubah satu saja."
+      "suara": "Jangan ubah satu saja. Pada Pecahan Senilai, cocokkan gambar “JANGAN” dengan artinya (salah), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan Senilai.",
+      "teksVisual": "🚫 JANGAN: salah"
     },
     {
       "judul": "SEDERHANA",
       "emoji": "✨",
       "countNum": 1,
       "countWord": "bagi",
-      "suara": "Bagi sampai tidak bisa."
+      "suara": "Bagi sampai tidak bisa. Pada Pecahan Senilai, cocokkan gambar “SEDERHANA” dengan artinya (bagi), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan Senilai.",
+      "teksVisual": "✨ SEDERHANA: bagi"
     },
     {
       "judul": "ARSIR",
       "emoji": "🖍️",
       "countNum": 1,
       "countWord": "bukti",
-      "suara": "Luas arsir sama."
+      "suara": "ARSIR — bukti. Lihat dua gambar diarsir. Tulis pecahan masing-masing. Ingat: dua gambar; tulis; nilai?. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan Senilai.",
+      "teksVisual": "🖍️ ARSIR: bukti"
     },
     {
       "judul": "SIAP D",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "desimal",
-      "suara": "Sub-Bab berikutnya."
+      "suara": "SIAP D — desimal. Pecahan biasa sudah dikuasai. Berikutnya pecahan desimal. Ingat: biasa ok; desimal; 1/10. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan Senilai.",
+      "teksVisual": "✅ SIAP D: desimal"
     }
   ],
   "games": [
@@ -2553,70 +2583,80 @@ export const SUB_D42: SubBabNaskah = {
       "emoji": "🍞",
       "countNum": 10,
       "countWord": "roti",
-      "suara": "Satu per sepuluh."
+      "suara": "1/10 — roti. Pada Pecahan Desimal Persepuluhan dan Perseratusan, cocokkan gambar “1/10” dengan artinya (roti), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan…",
+      "teksVisual": "🍞 1/10: roti"
     },
     {
       "judul": "0,1",
       "emoji": "🔟",
       "countNum": 1,
       "countWord": "digit",
-      "suara": "Persepuluhan."
+      "suara": "0,1 — digit. Pada Pecahan Desimal Persepuluhan dan Perseratusan, cocokkan gambar “0,1” dengan artinya (digit), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan…",
+      "teksVisual": "🔟 0,1: digit"
     },
     {
       "judul": "1/100",
       "emoji": "🍪",
       "countNum": 100,
       "countWord": "biskuit",
-      "suara": "Satu per seratus."
+      "suara": "1/100 — biskuit. Pada Pecahan Desimal Persepuluhan dan Perseratusan, cocokkan gambar “1/100” dengan artinya (biskuit), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🍪 1/100: biskuit"
     },
     {
       "judul": "0,01",
       "emoji": "💯",
       "countNum": 2,
       "countWord": "digit",
-      "suara": "Perseratusan."
+      "suara": "0,01 — digit. Pada Pecahan Desimal Persepuluhan dan Perseratusan, cocokkan gambar “0,01” dengan artinya (digit), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "💯 0,01: digit"
     },
     {
       "judul": "0,3",
       "emoji": "✏️",
       "countNum": 3,
       "countWord": "contoh",
-      "suara": "Tiga per sepuluh."
+      "suara": "0,3 — contoh. Pada Pecahan Desimal Persepuluhan dan Perseratusan, cocokkan gambar “0,3” dengan artinya (contoh), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✏️ 0,3: contoh"
     },
     {
       "judul": "0,07",
       "emoji": "📗",
       "countNum": 7,
       "countWord": "contoh",
-      "suara": "Tujuh per seratus."
+      "suara": "0,07 — contoh. Pada Pecahan Desimal Persepuluhan dan Perseratusan, cocokkan gambar “0,07” dengan artinya (contoh), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📗 0,07: contoh"
     },
     {
       "judul": "0,25",
       "emoji": "🟧",
       "countNum": 25,
       "countWord": "seperempat",
-      "suara": "Dua puluh lima per seratus."
+      "suara": "Dua puluh lima per seratus. Pada Pecahan Desimal Persepuluhan dan Perseratusan, cocokkan gambar “0,25” dengan artinya (seperempat), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🟧 0,25: seperempat"
     },
     {
       "judul": "ATURAN",
       "emoji": "📜",
       "countNum": 1,
       "countWord": "koma",
-      "suara": "Digit = petunjuk penyebut."
+      "suara": "Digit = petunjuk penyebut. Pada Pecahan Desimal Persepuluhan dan Perseratusan, cocokkan gambar “ATURAN” dengan artinya (koma), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📜 ATURAN: koma"
     },
     {
       "judul": "UBAH",
       "emoji": "🔁",
       "countNum": 1,
       "countWord": "bentuk",
-      "suara": "Biasa ke desimal."
+      "suara": "UBAH — bentuk. Ubah pecahan biasa ke desimal. Lima per sepuluh jadi nol koma lima. Ingat: 5/10; 0,5; 9/10. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pecahan Desimal Persepuluhan dan Perseratusan.",
+      "teksVisual": "🔁 UBAH: bentuk"
     },
     {
       "judul": "SIAP E",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "lanjut",
-      "suara": "Menuju persen."
+      "suara": "SIAP E — lanjut. Pada Pecahan Desimal Persepuluhan dan Perseratusan, cocokkan gambar “SIAP E” dengan artinya (lanjut), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ SIAP E: lanjut"
     }
   ],
   "games": [
@@ -3315,70 +3355,80 @@ export const SUB_E42: SubBabNaskah = {
       "emoji": "％",
       "countNum": 100,
       "countWord": "per",
-      "suara": "Per seratus."
+      "suara": "Tangga paling kiri. Kejadian sama sekali tidak terjadi — peluang nol. Contoh: dadu biasa menghasilkan angka tujuh. Bandingkan dengan tangga di kanannya.",
+      "teksVisual": "％ %: per"
     },
     {
       "judul": "0,75",
       "emoji": "🧮",
       "countNum": 75,
       "countWord": "desimal",
-      "suara": "Contoh buku."
+      "suara": "0,75 — desimal. Pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen, cocokkan gambar “0,75” dengan artinya (desimal), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🧮 0,75: desimal"
     },
     {
       "judul": "75/100",
       "emoji": "💯",
       "countNum": 75,
       "countWord": "pecahan",
-      "suara": "Langkah biasa."
+      "suara": "75/100 — pecahan. Pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen, cocokkan gambar “75/100” dengan artinya (pecahan), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "💯 75/100: pecahan"
     },
     {
       "judul": "75%",
       "emoji": "✅",
       "countNum": 75,
       "countWord": "persen",
-      "suara": "Hasil akhir."
+      "suara": "75% — persen. Pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen, cocokkan gambar “75%” dengan artinya (persen), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ 75%: persen"
     },
     {
       "judul": "×100%",
       "emoji": "⚡",
       "countNum": 100,
       "countWord": "langsung",
-      "suara": "Cara cepat."
+      "suara": "×100% — langsung. Pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen, cocokkan gambar “×100%” dengan artinya (langsung), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⚡ ×100%: langsung"
     },
     {
       "judul": "GESER",
       "emoji": "➡️",
       "countNum": 2,
       "countWord": "kanan",
-      "suara": "Dua kali ke kanan."
+      "suara": "GESER — kanan. Tips buku: geser koma dua kali ke kanan. Nol koma dua lima jadi dua puluh lima. Ingat: geser 2×; 0,25; 25. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Menghubungkan Pecahan Desimal…",
+      "teksVisual": "➡️ GESER: kanan"
     },
     {
       "judul": "246%",
       "emoji": "📈",
       "countNum": 246,
       "countWord": "besar",
-      "suara": "Boleh >100%."
+      "suara": "246% — besar. Pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen, cocokkan gambar “246%” dengan artinya (besar), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📈 246%: besar"
     },
     {
       "judul": "40%",
       "emoji": "🏫",
       "countNum": 40,
       "countWord": "cerita",
-      "suara": "20/50 siswa."
+      "suara": "40% — cerita. Pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen, cocokkan gambar “40%” dengan artinya (cerita), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🏫 40%: cerita"
     },
     {
       "judul": "0,18",
       "emoji": "↩️",
       "countNum": 18,
       "countWord": "balik",
-      "suara": "18% → desimal."
+      "suara": "0,18 — balik. Pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen, cocokkan gambar “0,18” dengan artinya (balik), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "↩️ 0,18: balik"
     },
     {
       "judul": "INGAT",
       "emoji": "📜",
       "countNum": 1,
       "countWord": "tips",
-      "suara": "Desimal ×100%."
+      "suara": "INGAT — tips. Pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen, cocokkan gambar “INGAT” dengan artinya (tips), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📜 INGAT: tips"
     }
   ],
   "games": [

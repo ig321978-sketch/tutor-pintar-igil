@@ -267,70 +267,80 @@ export const SUB_A51: SubBabNaskah = {
       "emoji": "1️⃣",
       "countNum": 1,
       "countWord": "S",
-      "suara": "Kanan"
+      "suara": "Pada Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya, cocokkan gambar “Satuan” dengan artinya (S), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "1️⃣ Satuan: S"
     },
     {
       "judul": "Puluhan",
       "emoji": "🔟",
       "countNum": 10,
       "countWord": "P",
-      "suara": "×10"
+      "suara": "Puluhan — P. Pada Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya, cocokkan gambar “Puluhan” dengan artinya (P), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔟 Puluhan: P"
     },
     {
       "judul": "Ratusan",
       "emoji": "💯",
       "countNum": 100,
       "countWord": "R",
-      "suara": "×100"
+      "suara": "Ratusan — R. Pada Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya, cocokkan gambar “Ratusan” dengan artinya (R), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "💯 Ratusan: R"
     },
     {
       "judul": "Ribuan",
       "emoji": "📗",
       "countNum": 1000,
       "countWord": "Rb",
-      "suara": "×1000"
+      "suara": "Ribuan — Rb. Pada Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya, cocokkan gambar “Ribuan” dengan artinya (Rb), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📗 Ribuan: Rb"
     },
     {
       "judul": "Puluh rb",
       "emoji": "📘",
       "countNum": 10000,
       "countWord": "PRb",
-      "suara": "×10rb"
+      "suara": "Puluh rb — PRb. Pada Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya, cocokkan gambar “Puluh rb” dengan artinya (PRb), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📘 Puluh rb: PRb"
     },
     {
       "judul": "Ratus rb",
       "emoji": "📙",
       "countNum": 100000,
       "countWord": "RRb",
-      "suara": "×100rb"
+      "suara": "Ratus rb — RRb. Pada Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya, cocokkan gambar “Ratus rb” dengan artinya (RRb), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📙 Ratus rb: RRb"
     },
     {
       "judul": "14.500",
       "emoji": "🔢",
       "countNum": 14500,
       "countWord": "urai",
-      "suara": "Contoh"
+      "suara": "14.500 — urai. Empat belas ribu lima ratus ditulis 14.500. Digit 1 di puluh ribuan bernilai sepuluh ribu. Ingat: 14.500; 1 → 10.000; 4 dan 5. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membaca dan Menulis…",
+      "teksVisual": "🔢 14.500: urai"
     },
     {
       "judul": "Nol jaga",
       "emoji": "0",
       "countNum": 1,
       "countWord": "tetap",
-      "suara": "Jangan hapus"
+      "suara": "Nol jaga — tetap. Pada Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya, cocokkan gambar “Nol jaga” dengan artinya (tetap), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "0 Nol jaga: tetap"
     },
     {
       "judul": "Periode",
       "emoji": "🗣️",
       "countNum": 3,
       "countWord": "kelompok",
-      "suara": "Baca"
+      "suara": "Periode — kelompok. Kelompokkan tiga digit dari kanan: misalnya 305.072 → 305 ribu 072. Baca: tiga ratus lima ribu tujuh puluh dua. Ingat: periode; baca; jangan.",
+      "teksVisual": "🗣️ Periode: kelompok"
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "banding",
-      "suara": "Lanjut"
+      "suara": "Siap B (banding). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Setelah mahir membaca nilai tempat, membandingkan bilangan jadi mudah.",
+      "teksVisual": "➡️ Siap B: banding"
     }
   ],
   "games": [
@@ -1031,70 +1041,80 @@ export const SUB_B51: SubBabNaskah = {
       "emoji": "⬅️",
       "countNum": 1,
       "countWord": "utama",
-      "suara": "Aturan"
+      "suara": "Dari kiri — utama. Pada Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000, cocokkan gambar “Dari kiri” dengan artinya (utama), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⬅️ Dari kiri: utama"
     },
     {
       "judul": "Geser",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "jika sama",
-      "suara": "Lanjut"
+      "suara": "Geser — jika sama. Pada Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000, cocokkan gambar “Geser” dengan artinya (jika sama), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "➡️ Geser: jika sama"
     },
     {
       "judul": "Garis",
       "emoji": "📏",
       "countNum": 1,
       "countWord": "kanan>",
-      "suara": "Posisi"
+      "suara": "Garis — kanan>. Letakkan bilangan di garis. Yang lebih kanan lebih besar. Untuk bilangan dekat, perbesar skala di sekitarnya. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan dan Mengurutkan…",
+      "teksVisual": "📏 Garis: kanan>"
     },
     {
       "judul": "Acuan",
       "emoji": "🎯",
       "countNum": 50000,
       "countWord": "patokan",
-      "suara": "50rb"
+      "suara": "Acuan — patokan. Pakai 10.000, 50.000, 100.000 sebagai patokan. Jika satu di bawah 50.000 dan satu di atas, urutan langsung jelas. Ingat: acuan; perkiraan; cepat.",
+      "teksVisual": "🎯 Acuan: patokan"
     },
     {
       "judul": "Contoh",
       "emoji": "🔢",
       "countNum": 1,
       "countWord": "38<40",
-      "suara": "Urut"
+      "suara": "Contoh — 38<40. Pada Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000, cocokkan gambar “Contoh” dengan artinya (38<40), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔢 Contoh: 38<40"
     },
     {
       "judul": "Jangan satuan",
       "emoji": "🚫",
       "countNum": 1,
       "countWord": "salah",
-      "suara": "Bukan dari kanan"
+      "suara": "Jangan satuan — salah. Pada Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000, cocokkan gambar “Jangan satuan” dengan artinya (salah), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🚫 Jangan satuan: salah"
     },
     {
       "judul": "Naik",
       "emoji": "📶",
       "countNum": 1,
       "countWord": "kecil→",
-      "suara": "Ascending"
+      "suara": "Naik — kecil→. Urut naik: dari terkecil ke terbesar. Urut turun: kebalikannya. Tulis panah agar tidak tertukar instruksi soal. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan dan Mengurutkan…",
+      "teksVisual": "📶 Naik: kecil→"
     },
     {
       "judul": "Turun",
       "emoji": "📉",
       "countNum": 1,
       "countWord": "besar→",
-      "suara": "Descending"
+      "suara": "Turun — besar→. Urut naik: dari terkecil ke terbesar. Urut turun: kebalikannya. Tulis panah agar tidak tertukar instruksi soal. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan dan Mengurutkan…",
+      "teksVisual": "📉 Turun: besar→"
     },
     {
       "judul": "Nol",
       "emoji": "0",
       "countNum": 1,
       "countWord": "hitung",
-      "suara": "Tetap ada"
+      "suara": "Nol — hitung. Pada Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000, cocokkan gambar “Nol” dengan artinya (hitung), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "0 Nol: hitung"
     },
     {
       "judul": "Siap C",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "urai",
-      "suara": "Lanjut"
+      "suara": "Siap C — urai. Banding dan urut siap. Berikutnya komposisi bilangan. Nilai tempat tetap fondasinya. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000.",
+      "teksVisual": "➡️ Siap C: urai"
     }
   ],
   "games": [
@@ -1794,70 +1814,80 @@ export const SUB_C51: SubBabNaskah = {
       "emoji": "➕",
       "countNum": 1,
       "countWord": "nilai",
-      "suara": "Expanded"
+      "suara": "Urai — nilai. 52.307 = 50.000 + 2.000 + 300 + 7. Setiap suku adalah nilai digit di tempatnya. Ingat: urai; suku; lihat nilai. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Komposisi dan Dekomposisi Bilangan…",
+      "teksVisual": "➕ Urai: nilai"
     },
     {
       "judul": "52.307",
       "emoji": "🔢",
       "countNum": 52307,
       "countWord": "urai",
-      "suara": "Contoh"
+      "suara": "52.307 — urai. Pada Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000, cocokkan gambar “52.307” dengan artinya (urai), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔢 52.307: urai"
     },
     {
       "judul": "Tukar",
       "emoji": "🔄",
       "countNum": 10,
       "countWord": "bundel",
-      "suara": "×10"
+      "suara": "Tukar — bundel. Sepuluh ratusan = satu ribuan. Sepuluh ribuan = satu puluh ribuan. Contoh: 3.000 + 14.00 = 4.000 + 400? Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Komposisi dan Dekomposisi Bilangan Cacah…",
+      "teksVisual": "🔄 Tukar: bundel"
     },
     {
       "judul": "Total sama",
       "emoji": "⚖️",
       "countNum": 1,
       "countWord": "tetap",
-      "suara": "Invariant"
+      "suara": "Total sama (tetap). Total = semua hasil mungkin (penyebut). Koin: 2; dadu: 6. Tanpa total, rasio peluang tidak bisa dibandingkan. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Komposisi dan Dekomposisi…",
+      "teksVisual": "⚖️ Total sama: tetap"
     },
     {
       "judul": "Lazim",
       "emoji": "✍️",
       "countNum": 1,
       "countWord": "kembali",
-      "suara": "Standard"
+      "suara": "Lazim — kembali. Pada Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000, cocokkan gambar “Lazim” dengan artinya (kembali), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✍️ Lazim: kembali"
     },
     {
       "judul": "Nol",
       "emoji": "0",
       "countNum": 1,
       "countWord": "jaga",
-      "suara": "Tempat"
+      "suara": "Pada Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000, cocokkan gambar “Nol” dengan artinya (jaga), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Komposisi dan…",
+      "teksVisual": "0 Nol: jaga"
     },
     {
       "judul": "14 ratus",
       "emoji": "▦",
       "countNum": 1400,
       "countWord": "=1.400",
-      "suara": "Fleksibel"
+      "suara": "14 ratus — =1.400. Pada Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000, cocokkan gambar “14 ratus” dengan artinya (=1.400), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "▦ 14 ratus: =1.400"
     },
     {
       "judul": "Salah tempat",
       "emoji": "🚫",
       "countNum": 1,
       "countWord": "hindari",
-      "suara": "Cek kolom"
+      "suara": "Salah tempat — hindari. Pada Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000, cocokkan gambar “Salah tempat” dengan artinya (hindari), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🚫 Salah tempat: hindari"
     },
     {
       "judul": "Tabel",
       "emoji": "▦",
       "countNum": 1,
       "countWord": "kunci",
-      "suara": "Alat"
+      "suara": "Tabel — kunci. Pada Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000, cocokkan gambar “Tabel” dengan artinya (kunci), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "▦ Tabel: kunci"
     },
     {
       "judul": "Siap D",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "operasi",
-      "suara": "Lanjut"
+      "suara": "Siap D — operasi. Komposisi-dekomposisi siap. Berikutnya operasi hitung sampai 100.000. Ingat: siap; lanjut D; kaitan. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Komposisi dan Dekomposisi Bilangan Cacah…",
+      "teksVisual": "➡️ Siap D: operasi"
     }
   ],
   "games": [
@@ -2558,70 +2588,80 @@ export const SUB_D51: SubBabNaskah = {
       "emoji": "🎯",
       "countNum": 1,
       "countWord": "dulu",
-      "suara": "Estimate"
+      "suara": "Perkiraan — dulu. Sebelum bersusun, bulatkan bilangan lalu hitung kasar. Contoh: 38.600 + 21.400 ≈ 39.000 + 21.000 = 60.000. Ingat: perkiraan; masuk akal; ≈60rb.",
+      "teksVisual": "🎯 Perkiraan: dulu"
     },
     {
       "judul": "Sejajar",
       "emoji": "▦",
       "countNum": 1,
       "countWord": "kolom",
-      "suara": "Align"
+      "suara": "Sejajar — kolom. Pada Operasi Hitung pada Bilangan Cacah Sampai 100.000, cocokkan gambar “Sejajar” dengan artinya (kolom), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "▦ Sejajar: kolom"
     },
     {
       "judul": "Dari satuan",
       "emoji": "1️⃣",
       "countNum": 1,
       "countWord": "ke kiri",
-      "suara": "Algorithm"
+      "suara": "Dari satuan — ke kiri. Pada Operasi Hitung pada Bilangan Cacah Sampai 100.000, cocokkan gambar “Dari satuan” dengan artinya (ke kiri), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "1️⃣ Dari satuan: ke kiri"
     },
     {
       "judul": "Simpan",
       "emoji": "⬆️",
       "countNum": 10,
       "countWord": "ke kiri",
-      "suara": "Carry"
+      "suara": "Simpan — ke kiri. Pada Operasi Hitung pada Bilangan Cacah Sampai 100.000, cocokkan gambar “Simpan” dengan artinya (ke kiri), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⬆️ Simpan: ke kiri"
     },
     {
       "judul": "Pinjam",
       "emoji": "⬇️",
       "countNum": 10,
       "countWord": "dari kiri",
-      "suara": "Borrow"
+      "suara": "Pinjam — dari kiri. Pada Operasi Hitung pada Bilangan Cacah Sampai 100.000, cocokkan gambar “Pinjam” dengan artinya (dari kiri), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⬇️ Pinjam: dari kiri"
     },
     {
       "judul": "Cek ≈",
       "emoji": "🔍",
       "countNum": 1,
       "countWord": "dekat?",
-      "suara": "Verify"
+      "suara": "Cek ≈ — dekat?. Bandingkan hasil teliti dengan perkiraan. Jika jauh sekali, ada kesalahan kolom atau tukar. Ingat: banding; waspada; ulang. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Operasi Hitung pada…",
+      "teksVisual": "🔍 Cek ≈: dekat?"
     },
     {
       "judul": "Nol",
       "emoji": "0",
       "countNum": 1,
       "countWord": "jaga",
-      "suara": "Place"
+      "suara": "Pada Operasi Hitung pada Bilangan Cacah Sampai 100.000, cocokkan gambar “Nol” dengan artinya (jaga), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Operasi Hitung pada…",
+      "teksVisual": "0 Nol: jaga"
     },
     {
       "judul": "Cerita",
       "emoji": "📖",
       "countNum": 1,
       "countWord": "makna",
-      "suara": "Konteks"
+      "suara": "Cerita — makna. Pada Operasi Hitung pada Bilangan Cacah Sampai 100.000, cocokkan gambar “Cerita” dengan artinya (makna), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📖 Cerita: makna"
     },
     {
       "judul": "Fondasi",
       "emoji": "▦",
       "countNum": 1,
       "countWord": "A–C",
-      "suara": "PV"
+      "suara": "Fondasi — A–C. Pada Operasi Hitung pada Bilangan Cacah Sampai 100.000, cocokkan gambar “Fondasi” dengan artinya (A–C), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "▦ Fondasi: A–C"
     },
     {
       "judul": "Bab 1",
       "emoji": "🎉",
       "countNum": 1,
       "countWord": "siap",
-      "suara": "Utuh"
+      "suara": "Bab 1 — siap. Pada Operasi Hitung pada Bilangan Cacah Sampai 100.000, cocokkan gambar “Bab 1” dengan artinya (siap), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🎉 Bab 1: siap"
     }
   ],
   "games": [

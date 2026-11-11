@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { BingkaiTahap } from "./BingkaiTahap";
 import { PanelPoster } from "./SubBabBBanding";
 import { PitaTahap, TombolSuaraGuru } from "./tahap-b-gaya";
@@ -32,8 +32,11 @@ export function InfografisK2B2({
   judul: string;
   suaraInfo: string;
   visual: React.ReactNode[];
-  speakGuru: (teks: string) => void;
+  speakGuru: (teks: string, selesai?: () => void) => void;
 }) {
+  const [didengar, setDidengar] = useState<number[]>([]);
+  const semua = didengar.length >= s.infografis.length && s.infografis.length > 0;
+
   return (
     <BingkaiTahap tahap={3} className="space-y-3">
       <PitaTahap ikon="📰" nama="INFOGRAFIS" cara="Lihat dan dengar" warna="#16A34A" />
@@ -41,11 +44,39 @@ export function InfografisK2B2({
         <h3 className="min-w-0 text-xl font-black leading-tight text-[#1C01A5]">{judul}</h3>
         <TombolSuaraGuru onClick={() => speakGuru(suaraInfo)} />
       </div>
+      <p className="rounded-2xl border-2 border-dashed border-[#1C01A5]/35 bg-white/80 px-3 py-1.5 text-center text-[11px] font-black text-[#1C01A5]">
+        Lihat gambar dulu. Ketuk 🔊 — centang ✔ Didengar muncul setelah suara guru selesai.
+      </p>
       {s.infografis.map((p, i) => (
-        <PanelPoster key={p.judul} nomor={i + 1} judul={p.judul.toUpperCase()} warna={WARNA_PANEL[i % WARNA_PANEL.length]} speakGuru={speakGuru} suara={p.suara}>
+        <PanelPoster
+          key={p.judul}
+          nomor={i + 1}
+          judul={p.judul.toUpperCase()}
+          warna={WARNA_PANEL[i % WARNA_PANEL.length]}
+          speakGuru={speakGuru}
+          suara={p.suara}
+          teksVisual={p.teksVisual}
+          onSelesaiSuara={() => setDidengar((d) => (d.includes(i + 1) ? d : [...d, i + 1]))}
+        >
           {visual[i] ?? null}
         </PanelPoster>
       ))}
+      <div className="flex items-center justify-center gap-2 pt-1" aria-label={`${didengar.length} dari ${s.infografis.length} panel didengar`}>
+        {s.infografis.map((p, i) => (
+          <span key={p.judul} className="text-2xl" aria-hidden="true">
+            {didengar.includes(i + 1) ? "⭐" : "☆"}
+          </span>
+        ))}
+      </div>
+      <p
+        className={`rounded-2xl border-4 px-3 py-2 text-center text-sm font-black leading-snug ${
+          semua ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]" : "border-dashed border-[#1C01A5]/40 bg-white/80 text-[#1C01A5]"
+        }`}
+      >
+        {semua
+          ? "🌟 Hebat! Semua panel Infografis sudah didengar."
+          : `🔊 ${didengar.length}/${s.infografis.length} panel didengar — centang muncul setelah suara selesai`}
+      </p>
     </BingkaiTahap>
   );
 }

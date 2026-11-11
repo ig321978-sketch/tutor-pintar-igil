@@ -268,70 +268,80 @@ export const SUB_A54: SubBabNaskah = {
       "emoji": "🚶",
       "countNum": 1,
       "countWord": "jalur tepi",
-      "suara": "Keliling = panjang jalur mengelilingi luar sampai kembali."
+      "suara": "Keliling = panjang jalur mengelilingi luar sampai kembali. Pada Apakah Keliling Bangun Datar Itu?, cocokkan gambar “Path Length” dengan artinya (jalur tepi), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🚶 Keliling = panjang jalur mengelilingi luar sampai…"
     },
     {
       "judul": "Contoh 4+4+4+4",
       "emoji": "4️⃣",
       "countNum": 16,
       "countWord": "16 cm",
-      "suara": "Persegi sisi 4: keliling 16, bukan luas 16."
+      "suara": "Persegi sisi 4: keliling 16, bukan luas 16. Pada Apakah Keliling Bangun Datar Itu?, cocokkan gambar “Contoh 4+4+4+4” dengan artinya (16 cm), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "4️⃣ Persegi sisi 4: keliling 16, bukan luas 16."
     },
     {
       "judul": "PP 5 dan 3",
       "emoji": "▭",
       "countNum": 16,
       "countWord": "5+3+5+3",
-      "suara": "Jalur persegi panjang: dua panjang dan dua lebar."
+      "suara": "Jalur persegi panjang: dua panjang dan dua lebar. Pada Apakah Keliling Bangun Datar Itu?, cocokkan gambar “PP 5 dan 3” dengan artinya (5+3+5+3), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "▭ Jalur persegi panjang: dua panjang dan dua lebar."
     },
     {
       "judul": "Bukan luas",
       "emoji": "⚠️",
       "countNum": 1,
       "countWord": "p × l",
-      "suara": "Panjang kali lebar mengisi dalam, bukan mengelilingi."
+      "suara": "Panjang kali lebar mengisi dalam, bukan mengelilingi. Temanmu mungkin bilang: keliling sama dengan luas. Luas menjawab: berapa banyak daerah yang tertutup di dalam? Ingat: jangan tertukar; luas = isi; keliling = jalur.",
+      "teksVisual": "⚠️ Panjang kali lebar mengisi dalam, bukan mengelilingi."
     },
     {
       "judul": "Pagar",
       "emoji": "🏡",
       "countNum": 1,
       "countWord": "fencing",
-      "suara": "Panjang pagar = keliling tanah."
+      "suara": "Panjang pagar = keliling tanah. Ayah ingin memasang pagar mengelilingi tanah. Yang dibeli adalah panjang kayu atau kawat. Panjang itu sama dengan keliling tanah: jumlah sisi luar tanah.",
+      "teksVisual": "🏡 Pagar: fencing"
     },
     {
       "judul": "Bingkai",
       "emoji": "🖼️",
       "countNum": 1,
       "countWord": "kayu tepi",
-      "suara": "Panjang kayu bingkai = keliling foto."
+      "suara": "Panjang kayu bingkai = keliling foto. Ibu membuat bingkai foto. Kayu dibutuhkan untuk mengelilingi tepi foto. Ukurlah keempat tepi, jumlahkan, itu panjang kayu.",
+      "teksVisual": "🖼️ Bingkai: kayu tepi"
     },
     {
       "judul": "Baluwarti",
       "emoji": "🏰",
       "countNum": 1,
       "countWord": "batas benteng",
-      "suara": "Pemugaran butuh panjang dinding luar."
+      "suara": "Pemugaran butuh panjang dinding luar. Di buku ada Benteng Baluwarti yang mengelilingi Kraton Yogyakarta. Saat pemugaran, petugas perlu tahu panjang dinding terluar yang harus diperbaiki. Ingat: Baluwarti; panjang dinding; batas luar.",
+      "teksVisual": "🏰 Baluwarti: batas benteng"
     },
     {
       "judul": "Satuan",
       "emoji": "📐",
       "countNum": 1,
       "countWord": "cm atau m",
-      "suara": "Semua sisi harus satu satuan sebelum dijumlah."
+      "suara": "Semua sisi harus satu satuan sebelum dijumlah. Pada Apakah Keliling Bangun Datar Itu?, cocokkan gambar “Satuan” dengan artinya (cm atau m), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📐 Semua sisi harus satu satuan sebelum dijumlah."
     },
     {
       "judul": "Cek",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "> sisi max",
-      "suara": "Hasil keliling lebih besar dari sisi terpanjang."
+      "suara": "Hasil keliling lebih besar dari sisi terpanjang. Pada Apakah Keliling Bangun Datar Itu?, cocokkan gambar “Cek” dengan artinya (> sisi max), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ Hasil keliling lebih besar dari sisi terpanjang."
     },
     {
       "judul": "Label metode",
       "emoji": "🌍",
       "countNum": 1,
       "countWord": "METODE LUAR",
-      "suara": "Path Length, Fencing Context, Perimeter vs Area."
+      "suara": "Path Length, Fencing Context, Perimeter vs Area. Pada Apakah Keliling Bangun Datar Itu?, cocokkan gambar “Label metode” dengan artinya (METODE LUAR), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🌍 Path Length, Fencing Context, Perimeter vs Area."
     }
   ],
   "games": [
@@ -1034,70 +1044,80 @@ export const SUB_B54: SubBabNaskah = {
       "emoji": "🔺",
       "countNum": 1,
       "countWord": "umum",
-      "suara": "Semua segitiga: jumlah tiga sisi."
+      "suara": "Semua segitiga: jumlah tiga sisi. Pada Keliling Segitiga, cocokkan gambar “a+b+c” dengan artinya (umum), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segitiga.",
+      "teksVisual": "🔺 a+b+c: umum"
     },
     {
       "judul": "5+4+7",
       "emoji": "➕",
       "countNum": 16,
       "countWord": "16 cm",
-      "suara": "Contoh buku: keliling 16."
+      "suara": "Contoh buku: keliling 16. Di buku ada segitiga sisi lima, empat, dan tujuh centi meter. Jalurmu: lima, lalu empat, lalu tujuh. Ingat: 5, 4, 7; jalan 3 sisi; 5+4+7=16.",
+      "teksVisual": "➕ 5+4+7: 16 cm"
     },
     {
       "judul": "3×sisi",
       "emoji": "✨",
       "countNum": 1,
       "countWord": "sama sisi",
-      "suara": "Pintasan hanya jika ketiga sisi sama."
+      "suara": "Pintasan hanya jika ketiga sisi sama. Pada Keliling Segitiga, cocokkan gambar “3×sisi” dengan artinya (sama sisi), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✨ 3×sisi: sama sisi"
     },
     {
       "judul": "3×5",
       "emoji": "5️⃣",
       "countNum": 15,
       "countWord": "15 cm",
-      "suara": "Sama sisi sisi 5."
+      "suara": "3×5 — 15 cm. Pada Keliling Segitiga, cocokkan gambar “3×5” dengan artinya (15 cm), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segitiga.",
+      "teksVisual": "5️⃣ 3×5: 15 cm"
     },
     {
       "judul": "3×6",
       "emoji": "6️⃣",
       "countNum": 18,
       "countWord": "18 cm",
-      "suara": "Sama sisi sisi 6."
+      "suara": "3×6 — 18 cm. Pada Keliling Segitiga, cocokkan gambar “3×6” dengan artinya (18 cm), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segitiga.",
+      "teksVisual": "6️⃣ 3×6: 18 cm"
     },
     {
       "judul": "Ukur dulu",
       "emoji": "📏",
       "countNum": 1,
       "countWord": "penggaris",
-      "suara": "Ukur tiap sisi sebelum jumlah."
+      "suara": "Ukur tiap sisi sebelum jumlah. Jika sisi belum tertulis, ukur dengan penggaris. Jangan menebak. Pastikan ketiga ukuran memakai satuan yang sama. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segitiga.",
+      "teksVisual": "📏 Ukur dulu: penggaris"
     },
     {
       "judul": "3+4+5",
       "emoji": "📐",
       "countNum": 12,
       "countWord": "12 cm",
-      "suara": "Contoh lain side sum."
+      "suara": "Contoh lain side sum. Pada Keliling Segitiga, cocokkan gambar “3+4+5” dengan artinya (12 cm), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segitiga.",
+      "teksVisual": "📐 3+4+5: 12 cm"
     },
     {
       "judul": "Sama kaki",
       "emoji": "🦵",
       "countNum": 1,
       "countWord": "tetap a+b+c",
-      "suara": "Jangan langsung kali tiga."
+      "suara": "Jangan langsung kali tiga. Segitiga sama kaki: dua sisi sama, satu sisi berbeda. Tetap ukur atau baca ketiga sisi, lalu jumlahkan. Ingat: 2 sama; tetap a+b+c; salah kaprah.",
+      "teksVisual": "🦵 Sama kaki: tetap a+b+c"
     },
     {
       "judul": "Cek",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "> sisi max",
-      "suara": "Validasi hasil."
+      "suara": "Cek — > sisi max. Hasil keliling harus lebih besar dari sisi terpanjang. Jika satuan centi meter, jawabannya juga centi meter. Ingat: cek; satuan; ulang.",
+      "teksVisual": "✅ Cek: > sisi max"
     },
     {
       "judul": "Path Length",
       "emoji": "🚶",
       "countNum": 1,
       "countWord": "3 sisi",
-      "suara": "Berjalan di tiga sisi."
+      "suara": "Berjalan di tiga sisi. Pada Keliling Segitiga, cocokkan gambar “Path Length” dengan artinya (3 sisi), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segitiga.",
+      "teksVisual": "🚶 Path Length: 3 sisi"
     }
   ],
   "games": [
@@ -1798,70 +1818,80 @@ export const SUB_C54: SubBabNaskah = {
       "emoji": "▭",
       "countNum": 1,
       "countWord": "PP",
-      "suara": "Rumus persegi panjang."
+      "suara": "Rumus persegi panjang. Pada Keliling Segi Empat, cocokkan gambar “2(p+l)” dengan artinya (PP), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Empat.",
+      "teksVisual": "▭ 2(p+l): PP"
     },
     {
       "judul": "5 & 3",
       "emoji": "➕",
       "countNum": 16,
       "countWord": "16 cm",
-      "suara": "2(5+3)=16."
+      "suara": "5 & 3 — 16 cm. Pada Keliling Segi Empat, cocokkan gambar “5 & 3” dengan artinya (16 cm), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Empat.",
+      "teksVisual": "➕ 5 & 3: 16 cm"
     },
     {
       "judul": "2p+2l",
       "emoji": "=",
       "countNum": 1,
       "countWord": "setara",
-      "suara": "Sama dengan 2(p+l)."
+      "suara": "2p+2l — setara. Pada Keliling Segi Empat, cocokkan gambar “2p+2l” dengan artinya (setara), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Empat.",
+      "teksVisual": "= 2p+2l: setara"
     },
     {
       "judul": "4×sisi",
       "emoji": "⬜",
       "countNum": 1,
       "countWord": "persegi",
-      "suara": "Rumus persegi."
+      "suara": "4×sisi — persegi. Pada Keliling Segi Empat, cocokkan gambar “4×sisi” dengan artinya (persegi), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Empat.",
+      "teksVisual": "⬜ 4×sisi: persegi"
     },
     {
       "judul": "sisi 3",
       "emoji": "3️⃣",
       "countNum": 12,
       "countWord": "12 cm",
-      "suara": "4×3=12."
+      "suara": "sisi 3 — 12 cm. Pada Keliling Segi Empat, cocokkan gambar “sisi 3” dengan artinya (12 cm), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Empat.",
+      "teksVisual": "3️⃣ sisi 3: 12 cm"
     },
     {
       "judul": "sisi 5",
       "emoji": "5️⃣",
       "countNum": 20,
       "countWord": "20 cm",
-      "suara": "4×5=20."
+      "suara": "sisi 5 — 20 cm. Pada Keliling Segi Empat, cocokkan gambar “sisi 5” dengan artinya (20 cm), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Empat.",
+      "teksVisual": "5️⃣ sisi 5: 20 cm"
     },
     {
       "judul": "Berhadapan",
       "emoji": "⇄",
       "countNum": 1,
       "countWord": "sama",
-      "suara": "Sifat PP."
+      "suara": "Berhadapan — sama. Persegi panjang: panjang berhadapan sama, lebar berhadapan sama. Jalur keliling: panjang, lebar, panjang, lebar. Ingat: p=p, l=l; p+l+p+l; 2p+2l.",
+      "teksVisual": "⇄ Berhadapan: sama"
     },
     {
       "judul": "Bukan p×l",
       "emoji": "⚠️",
       "countNum": 1,
       "countWord": "itu luas",
-      "suara": "Miskonsepsi."
+      "suara": "Bukan p×l — itu luas. Pada Keliling Segi Empat, cocokkan gambar “Bukan p×l” dengan artinya (itu luas), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Empat.",
+      "teksVisual": "⚠️ Bukan p×l: itu luas"
     },
     {
       "judul": "4 & 2",
       "emoji": "🔢",
       "countNum": 12,
       "countWord": "12 cm",
-      "suara": "Latihan 2(4+2)."
+      "suara": "4 & 2 — 12 cm. Pada Keliling Segi Empat, cocokkan gambar “4 & 2” dengan artinya (12 cm), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Empat.",
+      "teksVisual": "🔢 4 & 2: 12 cm"
     },
     {
       "judul": "Path Length",
       "emoji": "🚶",
       "countNum": 1,
       "countWord": "4 sisi",
-      "suara": "Jalur empat sisi."
+      "suara": "Path Length — 4 sisi. Pada Keliling Segi Empat, cocokkan gambar “Path Length” dengan artinya (4 sisi), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Empat.",
+      "teksVisual": "🚶 Path Length: 4 sisi"
     }
   ],
   "games": [
@@ -2563,70 +2593,80 @@ export const SUB_D54: SubBabNaskah = {
       "emoji": "⬠",
       "countNum": 5,
       "countWord": "5×sisi",
-      "suara": "Beraturan."
+      "suara": "Segi 5 — 5×sisi. Pada Keliling Segi Banyak, cocokkan gambar “Segi 5” dengan artinya (5×sisi), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Banyak.",
+      "teksVisual": "⬠ Segi 5: 5×sisi"
     },
     {
       "judul": "5×3",
       "emoji": "3️⃣",
       "countNum": 15,
       "countWord": "15 cm",
-      "suara": "Contoh."
+      "suara": "5×3 — 15 cm. Pada Keliling Segi Banyak, cocokkan gambar “5×3” dengan artinya (15 cm), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Banyak.",
+      "teksVisual": "3️⃣ 5×3: 15 cm"
     },
     {
       "judul": "Segi 6",
       "emoji": "⬡",
       "countNum": 6,
       "countWord": "6×sisi",
-      "suara": "Beraturan."
+      "suara": "Segi 6 — 6×sisi. Pada Keliling Segi Banyak, cocokkan gambar “Segi 6” dengan artinya (6×sisi), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Banyak.",
+      "teksVisual": "⬡ Segi 6: 6×sisi"
     },
     {
       "judul": "6×4",
       "emoji": "4️⃣",
       "countNum": 24,
       "countWord": "24 cm",
-      "suara": "Contoh."
+      "suara": "6×4 — 24 cm. Pada Keliling Segi Banyak, cocokkan gambar “6×4” dengan artinya (24 cm), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Banyak.",
+      "teksVisual": "4️⃣ 6×4: 24 cm"
     },
     {
       "judul": "n×sisi",
       "emoji": "n",
       "countNum": 1,
       "countWord": "pola",
-      "suara": "General."
+      "suara": "n×sisi — pola. Pada Keliling Segi Banyak, cocokkan gambar “n×sisi” dengan artinya (pola), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Banyak.",
+      "teksVisual": "n n×sisi: pola"
     },
     {
       "judul": "Sisi beda",
       "emoji": "⚠️",
       "countNum": 1,
       "countWord": "jumlah semua",
-      "suara": "Jangan ×n."
+      "suara": "Sisi beda — jumlah semua. Pada Keliling Segi Banyak, cocokkan gambar “Sisi beda” dengan artinya (jumlah semua), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling…",
+      "teksVisual": "⚠️ Sisi beda: jumlah semua"
     },
     {
       "judul": "8×2",
       "emoji": "8️⃣",
       "countNum": 16,
       "countWord": "16 cm",
-      "suara": "Segi 8."
+      "suara": "8×2 — 16 cm. Pada Keliling Segi Banyak, cocokkan gambar “8×2” dengan artinya (16 cm), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Banyak.",
+      "teksVisual": "8️⃣ 8×2: 16 cm"
     },
     {
       "judul": "Tabel",
       "emoji": "📋",
       "countNum": 1,
       "countWord": "banyak sisi",
-      "suara": "Rangkum."
+      "suara": "Tabel — banyak sisi. Di tabel buku: banyak sisi dikali panjang sisi. Segi lima: lima kali sisi. Segi enam: enam kali sisi. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Banyak.",
+      "teksVisual": "📋 Tabel: banyak sisi"
     },
     {
       "judul": "Cabang",
       "emoji": "🔑",
       "countNum": 1,
       "countWord": "sama/beda?",
-      "suara": "Keputusan."
+      "suara": "Cabang — sama/beda?. Pertanyaan kunci: apakah semua sisi sama? Ya: pakai n × s. Tidak: jumlahkan semua. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Banyak.",
+      "teksVisual": "🔑 Cabang: sama/beda?"
     },
     {
       "judul": "Path Length",
       "emoji": "🚶",
       "countNum": 1,
       "countWord": "n sisi",
-      "suara": "Jalur luar."
+      "suara": "Path Length — n sisi. Pada Keliling Segi Banyak, cocokkan gambar “Path Length” dengan artinya (n sisi), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Segi Banyak.",
+      "teksVisual": "🚶 Path Length: n sisi"
     }
   ],
   "games": [
@@ -3327,70 +3367,80 @@ export const SUB_E54: SubBabNaskah = {
       "emoji": "⭕",
       "countNum": 1,
       "countWord": "dihitung",
-      "suara": "Outer path."
+      "suara": "Batas luar — dihitung. Pada Keliling Bangun Gabungan, cocokkan gambar “Batas luar” dengan artinya (dihitung), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling…",
+      "teksVisual": "⭕ Batas luar: dihitung"
     },
     {
       "judul": "Sekat dalam",
       "emoji": "🚫",
       "countNum": 1,
       "countWord": "abaikan",
-      "suara": "Bukan keliling luar."
+      "suara": "Bukan keliling luar. Pada Keliling Bangun Gabungan, cocokkan gambar “Sekat dalam” dengan artinya (abaikan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Bangun…",
+      "teksVisual": "🚫 Sekat dalam: abaikan"
     },
     {
       "judul": "Cara Asep",
       "emoji": "📏",
       "countNum": 1,
       "countWord": "jumlah luar",
-      "suara": "Side sum luar."
+      "suara": "Cara Asep — jumlah luar. Satu cara: ukur atau baca setiap sisi luar satu-satu, lalu jumlahkan. Ini paling langsung mengikuti Path Length. Ingat: cara Asep; langsung; jangan lewat.",
+      "teksVisual": "📏 Cara Asep: jumlah luar"
     },
     {
       "judul": "Cara Komang",
       "emoji": "📦",
       "countNum": 1,
       "countWord": "bungkus PP",
-      "suara": "Bounding rectangle."
+      "suara": "Cara Komang — bungkus PP. Pada Keliling Bangun Gabungan, cocokkan gambar “Cara Komang” dengan artinya (bungkus PP), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📦 Cara Komang: bungkus PP"
     },
     {
       "judul": "12×6",
       "emoji": "🔢",
       "countNum": 36,
       "countWord": "K=36",
-      "suara": "2(12+6)."
+      "suara": "12×6 — K=36. Pada Keliling Bangun Gabungan, cocokkan gambar “12×6” dengan artinya (K=36), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Bangun Gabungan.",
+      "teksVisual": "🔢 12×6: K=36"
     },
     {
       "judul": "8×4",
       "emoji": "▭",
       "countNum": 24,
       "countWord": "K=24",
-      "suara": "Contoh."
+      "suara": "PP luar delapan dan empat: K = 2(8+4) = dua puluh empat. Persegi sisi empat: K = enam belas. Itu latihan pembanding. Ingat: 24; 16; tanya dulu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Bangun…",
+      "teksVisual": "▭ 8×4: K=24"
     },
     {
       "judul": "Sisi 4",
       "emoji": "⬜",
       "countNum": 16,
       "countWord": "K=16",
-      "suara": "Persegi."
+      "suara": "Sisi 4 — K=16. PP luar delapan dan empat: K = 2(8+4) = dua puluh empat. Persegi sisi empat: K = enam belas. Itu latihan pembanding. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Bangun Gabungan.",
+      "teksVisual": "⬜ Sisi 4: K=16"
     },
     {
       "judul": "Sisi ?",
       "emoji": "🔍",
       "countNum": 1,
       "countWord": "selisih/sama",
-      "suara": "Missing length."
+      "suara": "— selisih/sama. Sering ada sisi bertanda tanya. Lengkapi dulu sebelum menjumlah. Pakai selisih panjang: sisi besar dikurangi bagian yang sudah diketahui.",
+      "teksVisual": "🔍 Sisi ?: selisih/sama"
     },
     {
       "judul": "Denah",
       "emoji": "🏠",
       "countNum": 1,
       "countWord": "gabungan",
-      "suara": "Konteks."
+      "suara": "Denah — gabungan. Denah sering gabungan dapur, kamar, dan ruang tamu. Jika kita memasang pagar mengelilingi seluruh rumah, kita mengikuti dinding terluar. Ingat: denah; pagar luar; sekat dalam.",
+      "teksVisual": "🏠 Denah: gabungan"
     },
     {
       "judul": "Bab 4 A–E",
       "emoji": "🎉",
       "countNum": 1,
       "countWord": "siap",
-      "suara": "Materi utuh."
+      "suara": "Bab 4 A–E — siap. Pada Keliling Bangun Gabungan, cocokkan gambar “Bab 4 A–E” dengan artinya (siap), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Keliling Bangun Gabungan.",
+      "teksVisual": "🎉 Bab 4 A–E: siap"
     }
   ],
   "games": [

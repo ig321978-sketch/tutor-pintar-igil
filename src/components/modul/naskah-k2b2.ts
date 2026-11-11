@@ -30,6 +30,8 @@ export type PanelNaskah = {
   countWord: string;
   /** Dibacakan Suara Guru saat panel diketuk. Juga menjadi voiceSentence di JSON. */
   suara: string;
+  /** Teks singkat di bawah gambar Infografis (bukan uraian panjang). */
+  teksVisual?: string;
 };
 
 export type PoinNaskah = { ikon: string; nama: string; isi: string; suara: string };

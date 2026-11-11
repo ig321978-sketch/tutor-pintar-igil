@@ -267,70 +267,80 @@ export const SUB_A45: SubBabNaskah = {
       "emoji": "🔷",
       "countNum": 3,
       "countWord": "min sisi",
-      "suara": "Segi banyak paling sedikit tiga sisi lurus."
+      "suara": "Segi banyak paling sedikit tiga sisi lurus. Pada Ciri-Ciri Bangun Datar, cocokkan gambar “Segi banyak” dengan artinya (min sisi), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔷 Segi banyak paling sedikit tiga sisi lurus."
     },
     {
       "judul": "Beraturan",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "sama",
-      "suara": "Sisi sama dan sudut sama."
+      "suara": "Sisi sama dan sudut sama. Semua sisi sama panjang. Semua sudut sama besar. Ingat: sisi sama; sudut sama; beraturan. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Ciri-Ciri Bangun Datar.",
+      "teksVisual": "✅ Beraturan: sama"
     },
     {
       "judul": "Segitiga",
       "emoji": "🔺",
       "countNum": 3,
       "countWord": "sisi",
-      "suara": "Tiga sisi dan tiga sudut."
+      "suara": "Tiga sisi dan tiga sudut. Pada Ciri-Ciri Bangun Datar, cocokkan gambar “Segitiga” dengan artinya (sisi), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Ciri-Ciri Bangun…",
+      "teksVisual": "🔺 Segitiga: sisi"
     },
     {
       "judul": "Siku-siku",
       "emoji": "📐",
       "countNum": 90,
       "countWord": "derajat",
-      "suara": "Ada satu sudut sembilan puluh derajat."
+      "suara": "Ada satu sudut sembilan puluh derajat. Pada Ciri-Ciri Bangun Datar, cocokkan gambar “Siku-siku” dengan artinya (derajat), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📐 Siku-siku: derajat"
     },
     {
       "judul": "Persegi",
       "emoji": "⬛",
       "countNum": 4,
       "countWord": "siku",
-      "suara": "Semua sisi sama, semua sudut siku."
+      "suara": "Semua sisi sama, semua sudut siku. Persegi: semua sisi sama, semua siku. Persegi panjang: siku semua,. Ingat: persegi; persegi panjang; siku. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Ciri-Ciri Bangun…",
+      "teksVisual": "⬛ Persegi: siku"
     },
     {
       "judul": "Persegi panjang",
       "emoji": "▭",
       "countNum": 4,
       "countWord": "siku",
-      "suara": "Semua sudut siku, sisi berhadapan sama."
+      "suara": "Semua sudut siku, sisi berhadapan sama. Persegi: semua sisi sama, semua siku. Persegi panjang: siku semua,. Ingat: persegi; persegi panjang; siku. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Ciri-Ciri…",
+      "teksVisual": "▭ Persegi panjang: siku"
     },
     {
       "judul": "Jajargenjang",
       "emoji": "▱",
       "countNum": 2,
       "countWord": "sejajar",
-      "suara": "Dua pasang sisi sejajar."
+      "suara": "Dua pasang sisi sejajar. Jajargenjang: dua pasang sejajar. Belah ketupat: semua sisi sama. Ingat: jajargenjang; belah ketupat; layang. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Ciri-Ciri Bangun Datar.",
+      "teksVisual": "▱ Jajargenjang: sejajar"
     },
     {
       "judul": "Trapesium",
       "emoji": "⏢",
       "countNum": 1,
       "countWord": "sejajar",
-      "suara": "Satu pasang sisi sejajar."
+      "suara": "Satu pasang sisi sejajar. Pada Ciri-Ciri Bangun Datar, cocokkan gambar “Trapesium” dengan artinya (sejajar), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Ciri-Ciri…",
+      "teksVisual": "⏢ Trapesium: sejajar"
     },
     {
       "judul": "Segilima",
       "emoji": "⬠",
       "countNum": 5,
       "countWord": "sisi",
-      "suara": "Lima sisi, lima sudut."
+      "suara": "Lima sisi, lima sudut. Pada Ciri-Ciri Bangun Datar, cocokkan gambar “Segilima” dengan artinya (sisi), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Ciri-Ciri Bangun Datar.",
+      "teksVisual": "⬠ Segilima: sisi"
     },
     {
       "judul": "Siap Sub-Bab B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "susun",
-      "suara": "Berikutnya komposisi dan dekomposisi."
+      "suara": "Berikutnya komposisi dan dekomposisi. Pada Ciri-Ciri Bangun Datar, cocokkan gambar “Siap Sub-Bab B” dengan artinya (susun), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "➡️ Siap Sub-Bab B: susun"
     }
   ],
   "games": [
@@ -1029,70 +1039,80 @@ export const SUB_B45: SubBabNaskah = {
       "emoji": "🧩",
       "countNum": 1,
       "countWord": "susun",
-      "suara": "Menyusun bagian menjadi bangun utuh."
+      "suara": "Menyusun bagian menjadi bangun utuh. Pada Komposisi dan Dekomposisi Bangun Datar, cocokkan gambar “Komposisi” dengan artinya (susun), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🧩 Komposisi: susun"
     },
     {
       "judul": "Dekomposisi",
       "emoji": "✂️",
       "countNum": 1,
       "countWord": "urai",
-      "suara": "Mengurai bangun utuh menjadi bagian."
+      "suara": "Mengurai bangun utuh menjadi bagian. Pada Komposisi dan Dekomposisi Bangun Datar, cocokkan gambar “Dekomposisi” dengan artinya (urai), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✂️ Dekomposisi: urai"
     },
     {
       "judul": "□ → 2△",
       "emoji": "⬛",
       "countNum": 2,
       "countWord": "segitiga",
-      "suara": "Persegi diiris jadi dua segitiga."
+      "suara": "Persegi diiris jadi dua segitiga. Pada Komposisi dan Dekomposisi Bangun Datar, cocokkan gambar “□ → 2△” dengan artinya (segitiga), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⬛ □ → 2△: segitiga"
     },
     {
       "judul": "2△ → □",
       "emoji": "🔺",
       "countNum": 2,
       "countWord": "susun",
-      "suara": "Dua segitiga disusun jadi persegi."
+      "suara": "Dua segitiga disusun jadi persegi. Pada Komposisi dan Dekomposisi Bangun Datar, cocokkan gambar “2△ → □” dengan artinya (susun), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔺 2△ → □: susun"
     },
     {
       "judul": "⬡ → 6△",
       "emoji": "⬡",
       "countNum": 6,
       "countWord": "urai",
-      "suara": "Segienam jadi enam segitiga."
+      "suara": "⬡ → 6△ (urai). Dadu biasa punya enam sisi. Satu angka tertentu = 1 dari 6 — lebih jarang daripada koin. Bandingkan area peluangnya. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Komposisi dan Dekomposisi…",
+      "teksVisual": "⬡ ⬡ → 6△: urai"
     },
     {
       "judul": "3△ → ⏢",
       "emoji": "🔺",
       "countNum": 3,
       "countWord": "trapesium",
-      "suara": "Tiga segitiga jadi trapesium."
+      "suara": "Tiga segitiga jadi trapesium. Pada Komposisi dan Dekomposisi Bangun Datar, cocokkan gambar “3△ → ⏢” dengan artinya (trapesium), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔺 3△ → ⏢: trapesium"
     },
     {
       "judul": "Rumah",
       "emoji": "🏠",
       "countNum": 1,
       "countWord": "susun",
-      "suara": "Persegi plus segitiga jadi rumah."
+      "suara": "Persegi plus segitiga jadi rumah. Persegi sebagai badan. Dua segitiga sebagai atap. Ingat: persegi; atap; rumah. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Komposisi dan Dekomposisi Bangun Datar.",
+      "teksVisual": "🏠 Rumah: susun"
     },
     {
       "judul": "Tanpa celah",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "rapat",
-      "suara": "Susunan rapat tanpa tumpang tindih."
+      "suara": "Susunan rapat tanpa tumpang tindih. Pada Komposisi dan Dekomposisi Bangun Datar, cocokkan gambar “Tanpa celah” dengan artinya (rapat), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ Tanpa celah: rapat"
     },
     {
       "judul": "Banyak cara",
       "emoji": "💡",
       "countNum": 1,
       "countWord": "kreatif",
-      "suara": "Satu bangun bisa banyak cara urai/susun."
+      "suara": "Satu bangun bisa banyak cara urai/susun. Pada Komposisi dan Dekomposisi Bangun Datar, cocokkan gambar “Banyak cara” dengan artinya (kreatif), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "💡 Banyak cara: kreatif"
     },
     {
       "judul": "Bab 5 siap",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "Materi",
-      "suara": "Ciri dan komposisi lengkap untuk Materi."
+      "suara": "Ciri dan komposisi lengkap untuk Materi. Pada Komposisi dan Dekomposisi Bangun Datar, cocokkan gambar “Bab 5 siap” dengan artinya (Materi), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ Bab 5 siap: Materi"
     }
   ],
   "games": [

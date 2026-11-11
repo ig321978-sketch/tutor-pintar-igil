@@ -252,70 +252,80 @@ export const SUB_A59: SubBabNaskah = {
       "emoji": "💯",
       "countNum": 100000,
       "countWord": "100.000",
-      "suara": "Tempat."
+      "suara": "Ratus ribuan — 100.000. Pada Membaca, Menulis, dan Nilai Tempat sampai 1.000.000, cocokkan gambar “Ratus ribuan” dengan artinya (100.000), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "💯 Ratus ribuan: 100.000"
     },
     {
       "judul": "Puluh ribuan",
       "emoji": "🔟",
       "countNum": 10000,
       "countWord": "10.000",
-      "suara": "Tempat."
+      "suara": "Puluh ribuan — 10.000. Pada Membaca, Menulis, dan Nilai Tempat sampai 1.000.000, cocokkan gambar “Puluh ribuan” dengan artinya (10.000), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔟 Puluh ribuan: 10.000"
     },
     {
       "judul": "Ribuan",
       "emoji": "1",
       "countNum": 1000,
       "countWord": "1.000",
-      "suara": "Tempat."
+      "suara": "Ribuan — 1.000. Pada Membaca, Menulis, dan Nilai Tempat sampai 1.000.000, cocokkan gambar “Ribuan” dengan artinya (1.000), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "1 Ribuan: 1.000"
     },
     {
       "judul": "Ratusan",
       "emoji": "C",
       "countNum": 100,
       "countWord": "100",
-      "suara": "Tempat."
+      "suara": "Ratusan — 100. Pada Membaca, Menulis, dan Nilai Tempat sampai 1.000.000, cocokkan gambar “Ratusan” dengan artinya (100), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "C Ratusan: 100"
     },
     {
       "judul": "Puluhan",
       "emoji": "X",
       "countNum": 10,
       "countWord": "10",
-      "suara": "Tempat."
+      "suara": "Puluhan — 10. Pada Membaca, Menulis, dan Nilai Tempat sampai 1.000.000, cocokkan gambar “Puluhan” dengan artinya (10), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "X Puluhan: 10"
     },
     {
       "judul": "Satuan",
       "emoji": "I",
       "countNum": 1,
       "countWord": "1",
-      "suara": "Tempat."
+      "suara": "Pada Membaca, Menulis, dan Nilai Tempat sampai 1.000.000, cocokkan gambar “Satuan” dengan artinya (1), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membaca, Menulis, dan…",
+      "teksVisual": "I Satuan: 1"
     },
     {
       "judul": "979.875",
       "emoji": "🪵",
       "countNum": 979875,
       "countWord": "lemari",
-      "suara": "Contoh."
+      "suara": "979.875 — lemari. 9 di ratus ribuan, 7 di puluh ribuan, 9 di ribuan. 8 di ratusan, 7 di puluhan, 5 di satuan. Ingat: 979.875; pemetaan digit; 9 → 900.000.",
+      "teksVisual": "🪵 979.875: lemari"
     },
     {
       "judul": "963.000",
       "emoji": "🗺️",
       "countNum": 963000,
       "countWord": "Gianyar",
-      "suara": "Sensus."
+      "suara": "963.000 — Gianyar. Satu juta = 1 di tempat jutaan, diikuti enam nol. Di kelas V kita fokus sampai 1.000.000 sebagai batas atas. Ingat: 1.000.000; satu juta; batas bab.",
+      "teksVisual": "🗺️ 963.000: Gianyar"
     },
     {
       "judul": "1.000.000",
       "emoji": "1️⃣",
       "countNum": 1000000,
       "countWord": "satu juta",
-      "suara": "Batas."
+      "suara": "1.000.000 — satu juta. Satu juta = 1 di tempat jutaan, diikuti enam nol. Di kelas V kita fokus sampai 1.000.000 sebagai batas atas. Ingat: 1.000.000; satu juta; batas bab.",
+      "teksVisual": "1️⃣ 1.000.000: satu juta"
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "banding/urut",
-      "suara": "Lanjut."
+      "suara": "Siap B (banding/urut). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Kita bisa baca, tulis, dan petakan nilai tempat.",
+      "teksVisual": "➡️ Siap B: banding/urut"
     }
   ],
   "games": [
@@ -961,70 +971,80 @@ export const SUB_B59: SubBabNaskah = {
       "emoji": "⬅️",
       "countNum": 1,
       "countWord": "mulai kiri",
-      "suara": "Metode luar."
+      "suara": "Priority — mulai kiri. Pada Mengurutkan dan Membandingkan Bilangan sampai 1.000.000, cocokkan gambar “Priority” dengan artinya (mulai kiri), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⬅️ Priority: mulai kiri"
     },
     {
       "judul": "Digit-by-Digit",
       "emoji": "🔢",
       "countNum": 1,
       "countWord": "satu per satu",
-      "suara": "Banding."
+      "suara": "Digit-by-Digit — satu per satu. Pada Mengurutkan dan Membandingkan Bilangan sampai 1.000.000, cocokkan gambar “Digit-by-Digit” dengan artinya (satu per satu), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔢 Digit-by-Digit: satu per satu"
     },
     {
       "judul": "432.543",
       "emoji": "👟",
       "countNum": 432543,
       "countWord": "Lukas",
-      "suara": "Termahal."
+      "suara": "432.543 — Lukas. Pada Mengurutkan dan Membandingkan Bilangan sampai 1.000.000, cocokkan gambar “432.543” dengan artinya (Lukas), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "👟 432.543: Lukas"
     },
     {
       "judul": "342.231",
       "emoji": "👟",
       "countNum": 342231,
       "countWord": "Komang",
-      "suara": "Tengah."
+      "suara": "342.231 — Komang. Pada Mengurutkan dan Membandingkan Bilangan sampai 1.000.000, cocokkan gambar “342.231” dengan artinya (Komang), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "👟 342.231: Komang"
     },
     {
       "judul": "232.231",
       "emoji": "👟",
       "countNum": 232231,
       "countWord": "Nisa",
-      "suara": "Termurah."
+      "suara": "232.231 — Nisa. Pada Mengurutkan dan Membandingkan Bilangan sampai 1.000.000, cocokkan gambar “232.231” dengan artinya (Nisa), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "👟 232.231: Nisa"
     },
     {
       "judul": "599.198",
       "emoji": ">",
       "countNum": 599198,
       "countWord": "> 599.047",
-      "suara": "Contoh."
+      "suara": "599.198 — > 599.047. Pada Mengurutkan dan Membandingkan Bilangan sampai 1.000.000, cocokkan gambar “599.198” dengan artinya (> 599.047), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "> 599.198: > 599.047"
     },
     {
       "judul": "> < =",
       "emoji": "🔣",
       "countNum": 3,
       "countWord": "simbol",
-      "suara": "Notasi."
+      "suara": "> < = (simbol). Tangga paling kiri. Kejadian sama sekali tidak terjadi — peluang nol. Contoh: dadu biasa menghasilkan angka tujuh. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengurutkan dan Membandingkan…",
+      "teksVisual": "🔣 > < =: simbol"
     },
     {
       "judul": "Urut naik",
       "emoji": "📈",
       "countNum": 1,
       "countWord": "kecil→besar",
-      "suara": "Ordering."
+      "suara": "Urut naik — kecil→besar. Pada Mengurutkan dan Membandingkan Bilangan sampai 1.000.000, cocokkan gambar “Urut naik” dengan artinya (kecil→besar), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📈 Urut naik: kecil→besar"
     },
     {
       "judul": "Urut turun",
       "emoji": "📉",
       "countNum": 1,
       "countWord": "besar→kecil",
-      "suara": "Ordering."
+      "suara": "Urut turun — besar→kecil. Pada Mengurutkan dan Membandingkan Bilangan sampai 1.000.000, cocokkan gambar “Urut turun” dengan artinya (besar→kecil), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📉 Urut turun: besar→kecil"
     },
     {
       "judul": "Siap C",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "komposisi",
-      "suara": "Lanjut."
+      "suara": "Siap C — komposisi. Kita bisa banding dan urut bilangan besar. Berikutnya: menyusun (komposisi) dan menguraikan (dekomposisi). Ingat: B siap; komposisi; dekomposisi.",
+      "teksVisual": "➡️ Siap C: komposisi"
     }
   ],
   "games": [
@@ -1670,70 +1690,80 @@ export const SUB_C59: SubBabNaskah = {
       "emoji": "🧱",
       "countNum": 1,
       "countWord": "susun bagian",
-      "suara": "Expanded."
+      "suara": "Komposisi — susun bagian. Komposisi: menyusun bilangan dari nilai tempat. Contoh buku: 3 ratus ribuan, 2 puluh ribuan, 7 ribuan, 1 ratusan → 327.100. Ingat: susun bagian; 327.100; Expanded Form.",
+      "teksVisual": "🧱 Komposisi: susun bagian"
     },
     {
       "judul": "Dekomposisi",
       "emoji": "🧩",
       "countNum": 1,
       "countWord": "uraikan",
-      "suara": "Flexible."
+      "suara": "Dekomposisi — uraikan. Dekomposisi: menguraikan bilangan menjadi jumlah nilai tempat. 599.198 = 5 ratus ribuan + 9 puluh ribuan + 9 ribuan + 1 ratusan + 9 puluhan + 8 satuan. Ingat: uraikan; 599.198; Flexible.",
+      "teksVisual": "🧩 Dekomposisi: uraikan"
     },
     {
       "judul": "327.100",
       "emoji": "➕",
       "countNum": 327100,
       "countWord": "contoh susun",
-      "suara": "Buku."
+      "suara": "327.100 — contoh susun. Pada Komposisi dan Dekomposisi sampai 1.000.000, cocokkan gambar “327.100” dengan artinya (contoh susun), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "➕ 327.100: contoh susun"
     },
     {
       "judul": "203.305",
       "emoji": "0",
       "countNum": 203305,
       "countWord": "nol penting",
-      "suara": "Part-Whole."
+      "suara": "203.305 — nol penting. Pada Komposisi dan Dekomposisi sampai 1.000.000, cocokkan gambar “203.305” dengan artinya (nol penting), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "0 203.305: nol penting"
     },
     {
       "judul": "505.401",
       "emoji": "➕",
       "countNum": 505401,
       "countWord": "latihan",
-      "suara": "Susun."
+      "suara": "505.401 — latihan. Pada Komposisi dan Dekomposisi sampai 1.000.000, cocokkan gambar “505.401” dengan artinya (latihan), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "➕ 505.401: latihan"
     },
     {
       "judul": "857.259",
       "emoji": "➕",
       "countNum": 857259,
       "countWord": "latihan",
-      "suara": "Susun."
+      "suara": "857.259 — latihan. Pada Komposisi dan Dekomposisi sampai 1.000.000, cocokkan gambar “857.259” dengan artinya (latihan), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "➕ 857.259: latihan"
     },
     {
       "judul": "599.198",
       "emoji": "🧩",
       "countNum": 599198,
       "countWord": "urai",
-      "suara": "Dekomposisi."
+      "suara": "599.198 — urai. Pada Komposisi dan Dekomposisi sampai 1.000.000, cocokkan gambar “599.198” dengan artinya (urai), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🧩 599.198: urai"
     },
     {
       "judul": "10× tukar",
       "emoji": "🔄",
       "countNum": 10,
       "countWord": "1 ratus rb=10 puluh rb",
-      "suara": "Fleksibel."
+      "suara": "10× tukar — 1 ratus rb=10 puluh rb. Pada Komposisi dan Dekomposisi sampai 1.000.000, cocokkan gambar “10× tukar” dengan artinya (1 ratus rb=10 puluh rb), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔄 10× tukar: 1 ratus rb=10 puluh rb"
     },
     {
       "judul": "Balikan",
       "emoji": "↔️",
       "countNum": 1,
       "countWord": "susun↔urai",
-      "suara": "Cek."
+      "suara": "Balikan — susun↔urai. Pada Komposisi dan Dekomposisi sampai 1.000.000, cocokkan gambar “Balikan” dengan artinya (susun↔urai), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "↔️ Balikan: susun↔urai"
     },
     {
       "judul": "Bab 9 A–C",
       "emoji": "🎉",
       "countNum": 1,
       "countWord": "Materi siap",
-      "suara": "Selesai."
+      "suara": "Bab 9 A–C — Materi siap. Pada Komposisi dan Dekomposisi sampai 1.000.000, cocokkan gambar “Bab 9 A–C” dengan artinya (Materi siap), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🎉 Bab 9 A–C: Materi siap"
     }
   ],
   "games": [

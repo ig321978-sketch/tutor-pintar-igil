@@ -252,70 +252,80 @@ export const SUB_A56: SubBabNaskah = {
       "emoji": "∟",
       "countNum": 90,
       "countWord": "90°",
-      "suara": "Benchmark."
+      "suara": "Siku-siku — 90°. Sudut siku-siku terasa 'tepat siku', tidak lancip dan tidak tumpul. Nanti kita ukur: besarnya sembilan puluh derajat. Ingat: tepat siku; nanti 90°; banding patokan.",
+      "teksVisual": "∟ Siku-siku: 90°"
     },
     {
       "judul": "Bingkai",
       "emoji": "🖼️",
       "countNum": 1,
       "countWord": "pojok siku",
-      "suara": "Konteks."
+      "suara": "Bingkai — pojok siku. Perhatikan pojok bingkai foto di rumah atau sekolah. Pojok yang dibuat benar membentuk sudut siku-siku. Ingat: pojok bingkai; siku-siku; penggaris siku.",
+      "teksVisual": "🖼️ Bingkai: pojok siku"
     },
     {
       "judul": "Penggaris siku",
       "emoji": "📐",
       "countNum": 1,
       "countWord": "alat tukang",
-      "suara": "Cek pojok."
+      "suara": "Penggaris siku — alat tukang. Pada Sudut Siku-Siku, cocokkan gambar “Penggaris siku” dengan artinya (alat tukang), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📐 Penggaris siku: alat tukang"
     },
     {
       "judul": "Lipat kertas",
       "emoji": "📄",
       "countNum": 1,
       "countWord": "Paper Fold",
-      "suara": "Patokan."
+      "suara": "Lipat kertas — Paper Fold. Ambil selembar kertas. Lipat hingga terbentuk sudut patokan. Sudut berwarna pada gambar buku adalah sudut siku-siku. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sudut Siku-Siku.",
+      "teksVisual": "📄 Lipat kertas: Paper Fold"
     },
     {
       "judul": "Detektif",
       "emoji": "🕵️",
       "countNum": 1,
       "countWord": "cari & cek",
-      "suara": "Angle Detective."
+      "suara": "Detektif — cari & cek. Pada Sudut Siku-Siku, cocokkan gambar “Detektif” dengan artinya (cari & cek), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sudut Siku-Siku.",
+      "teksVisual": "🕵️ Detektif: cari & cek"
     },
     {
       "judul": "Cocok",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "berimpit = siku",
-      "suara": "Uji."
+      "suara": "Cocok — berimpit = siku. Pada Sudut Siku-Siku, cocokkan gambar “Cocok” dengan artinya (berimpit = siku), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sudut Siku-Siku.",
+      "teksVisual": "✅ Cocok: berimpit = siku"
     },
     {
       "judul": "Lebih sempit",
       "emoji": "∕",
       "countNum": 1,
       "countWord": "lancip",
-      "suara": "Nanti B."
+      "suara": "Lebih sempit — lancip. Pada Sudut Siku-Siku, cocokkan gambar “Lebih sempit” dengan artinya (lancip), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sudut Siku-Siku.",
+      "teksVisual": "∕ Lebih sempit: lancip"
     },
     {
       "judul": "Lebih lebar",
       "emoji": "∠",
       "countNum": 1,
       "countWord": "tumpul",
-      "suara": "Nanti B."
+      "suara": "Lebih lebar — tumpul. Pada Sudut Siku-Siku, cocokkan gambar “Lebih lebar” dengan artinya (tumpul), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sudut Siku-Siku.",
+      "teksVisual": "∠ Lebih lebar: tumpul"
     },
     {
       "judul": "Metode",
       "emoji": "🌍",
       "countNum": 1,
       "countWord": "3 label luar",
-      "suara": "Benchmark·Fold·Detective."
+      "suara": "Benchmark·Fold·Detective. Pada Sudut Siku-Siku, cocokkan gambar “Metode” dengan artinya (3 label luar), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sudut Siku-Siku.",
+      "teksVisual": "🌍 Metode: 3 label luar"
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "pengertian",
-      "suara": "Lanjut."
+      "suara": "Siap B (pengertian). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Kita sudah punya mata detektif untuk siku-siku.",
+      "teksVisual": "➡️ Siap B: pengertian"
     }
   ],
   "games": [
@@ -961,70 +971,80 @@ export const SUB_B56: SubBabNaskah = {
       "emoji": "∠",
       "countNum": 1,
       "countWord": "2 garis+titik",
-      "suara": "Vertex-Ray."
+      "suara": "Definisi — 2 garis+titik. Sudut adalah daerah yang dibentuk oleh dua buah garis yang bertemu di satu titik. Titik pertemuan dinamakan titik sudut. Ingat: definisi; titik sudut; kaki sudut.",
+      "teksVisual": "∠ Definisi: 2 garis+titik"
     },
     {
       "judul": "Titik sudut",
       "emoji": "•",
       "countNum": 1,
       "countWord": "titik temu",
-      "suara": "Bagian."
+      "suara": "Titik sudut — titik temu. Pada Pengertian dan Jenis Sudut, cocokkan gambar “Titik sudut” dengan artinya (titik temu), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "• Titik sudut: titik temu"
     },
     {
       "judul": "Kaki sudut",
       "emoji": "／",
       "countNum": 2,
       "countWord": "dua kaki",
-      "suara": "Bagian."
+      "suara": "Kaki sudut — dua kaki. Pada Pengertian dan Jenis Sudut, cocokkan gambar “Kaki sudut” dengan artinya (dua kaki), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengertian…",
+      "teksVisual": "／ Kaki sudut: dua kaki"
     },
     {
       "judul": "Lancip",
       "emoji": "∕",
       "countNum": 45,
       "countWord": "< 90°",
-      "suara": "Acute."
+      "suara": "Lancip — < 90°. Pada Pengertian dan Jenis Sudut, cocokkan gambar “Lancip” dengan artinya (< 90°), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengertian dan Jenis Sudut.",
+      "teksVisual": "∕ Lancip: < 90°"
     },
     {
       "judul": "Siku",
       "emoji": "∟",
       "countNum": 90,
       "countWord": "= 90°",
-      "suara": "Right."
+      "suara": "Siku — = 90°. Pada Pengertian dan Jenis Sudut, cocokkan gambar “Siku” dengan artinya (= 90°), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengertian dan Jenis Sudut.",
+      "teksVisual": "∟ Siku: = 90°"
     },
     {
       "judul": "Tumpul",
       "emoji": "∠",
       "countNum": 120,
       "countWord": ">90° <180°",
-      "suara": "Obtuse."
+      "suara": "Tumpul — >90° <180°. Pada Pengertian dan Jenis Sudut, cocokkan gambar “Tumpul” dengan artinya (>90° <180°), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengertian dan…",
+      "teksVisual": "∠ Tumpul: >90° <180°"
     },
     {
       "judul": "Jam 02.00",
       "emoji": "🕐",
       "countNum": 1,
       "countWord": "contoh lancip",
-      "suara": "Buku."
+      "suara": "Jam 02.00 — contoh lancip. Pada Pengertian dan Jenis Sudut, cocokkan gambar “Jam 02.00” dengan artinya (contoh lancip), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🕐 Jam 02.00: contoh lancip"
     },
     {
       "judul": "Tabel 6.3",
       "emoji": "📋",
       "countNum": 3,
       "countWord": "3 kelompok",
-      "suara": "Klasifikasi."
+      "suara": "Tabel 6.3 — 3 kelompok. Pada Pengertian dan Jenis Sudut, cocokkan gambar “Tabel 6.3” dengan artinya (3 kelompok), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📋 Tabel 6.3: 3 kelompok"
     },
     {
       "judul": "Metode",
       "emoji": "🌍",
       "countNum": 1,
       "countWord": "2 label luar",
-      "suara": "Vertex-Ray·ARO."
+      "suara": "Metode — 2 label luar. Pada Pengertian dan Jenis Sudut, cocokkan gambar “Metode” dengan artinya (2 label luar), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengertian…",
+      "teksVisual": "🌍 Metode: 2 label luar"
     },
     {
       "judul": "Siap C",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "ukur derajat",
-      "suara": "Lanjut."
+      "suara": "Siap C — ukur derajat. Pengertian dan jenis siap. Berikutnya Tari Pakarena dan kipas: bandingkan lebar buka. Ingat: B siap; Pakarena; derajat & busur.",
+      "teksVisual": "➡️ Siap C: ukur derajat"
     }
   ],
   "games": [
@@ -1670,70 +1690,80 @@ export const SUB_C56: SubBabNaskah = {
       "emoji": "°",
       "countNum": 1,
       "countWord": "satuan sudut",
-      "suara": "Degree Measure."
+      "suara": "Derajat — satuan sudut. Alat ukurnya busur derajat. Ada titik pusat, garis dasar, skala dalam dan luar. Ingat: busur derajat; pusat & dasar; skala. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengukur dan…",
+      "teksVisual": "° Derajat: satuan sudut"
     },
     {
       "judul": "Busur",
       "emoji": "📐",
       "countNum": 1,
       "countWord": "alat ukur",
-      "suara": "Protractor."
+      "suara": "Busur — alat ukur. Alat ukurnya busur derajat. Ada titik pusat, garis dasar, skala dalam dan luar. Ingat: busur derajat; pusat & dasar; skala. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengukur dan…",
+      "teksVisual": "📐 Busur: alat ukur"
     },
     {
       "judul": "Protocol",
       "emoji": "1️⃣",
       "countNum": 1,
       "countWord": "pusat→dasar→baca",
-      "suara": "Langkah."
+      "suara": "Protocol — pusat→dasar→baca. Pada Mengukur dan Membandingkan Sudut, cocokkan gambar “Protocol” dengan artinya (pusat→dasar→baca), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "1️⃣ Protocol: pusat→dasar→baca"
     },
     {
       "judul": "Contoh",
       "emoji": "🔢",
       "countNum": 125,
       "countWord": "125°",
-      "suara": "Buku."
+      "suara": "Contoh — 125°. Pada Mengukur dan Membandingkan Sudut, cocokkan gambar “Contoh” dengan artinya (125°), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengukur dan…",
+      "teksVisual": "🔢 Contoh: 125°"
     },
     {
       "judul": "Siku ukur",
       "emoji": "∟",
       "countNum": 90,
       "countWord": "90°",
-      "suara": "Cek patokan."
+      "suara": "Siku ukur — 90°. Ukur juga patokan lipatan siku dari Sub-Bab A. Hasilnya harus sembilan puluh derajat. Ingat: ukur lipatan; hasil 90°; patokan=satuan.",
+      "teksVisual": "∟ Siku ukur: 90°"
     },
     {
       "judul": "Lurus",
       "emoji": "—",
       "countNum": 180,
       "countWord": "180°",
-      "suara": "Benchmark."
+      "suara": "Lurus — 180°. Sudut nol: nol derajat. Sudut lurus: seratus delapan puluh derajat. Ingat: 0°; 180°; 360°. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengukur dan Membandingkan Sudut.",
+      "teksVisual": "— Lurus: 180°"
     },
     {
       "judul": "Penuh",
       "emoji": "○",
       "countNum": 360,
       "countWord": "360°",
-      "suara": "Benchmark."
+      "suara": "Penuh — 360°. Sudut nol: nol derajat. Sudut lurus: seratus delapan puluh derajat. Ingat: 0°; 180°; 360°. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengukur dan Membandingkan Sudut.",
+      "teksVisual": "○ Penuh: 360°"
     },
     {
       "judul": "Releks",
       "emoji": "↻",
       "countNum": 1,
       "countWord": ">180° <360°",
-      "suara": "Definisi."
+      "suara": "Releks — >180° <360°. Sudut releks lebih dari seratus delapan puluh dan kurang dari tiga ratus enam puluh. Itu sudut 'bagian luar' yang besar. Ingat: releks; >180° <360°; bukan tumpul.",
+      "teksVisual": "↻ Releks: >180° <360°"
     },
     {
       "judul": "Pakarena",
       "emoji": "🪭",
       "countNum": 1,
       "countWord": "banding kipas",
-      "suara": "Konteks."
+      "suara": "Pakarena — banding kipas. Pada Mengukur dan Membandingkan Sudut, cocokkan gambar “Pakarena” dengan artinya (banding kipas), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🪭 Pakarena: banding kipas"
     },
     {
       "judul": "Siap D",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "melukis",
-      "suara": "Lanjut."
+      "suara": "Siap D — melukis. Latihan: ukur sudut jarum jam, misalnya pukul satu sekitar tiga puluh derajat. Pukul tiga: sembilan puluh derajat. Ingat: jam 1 ≈ 30°; jam 3 = 90°; melukis.",
+      "teksVisual": "➡️ Siap D: melukis"
     }
   ],
   "games": [
@@ -2379,70 +2409,80 @@ export const SUB_D56: SubBabNaskah = {
       "emoji": "1️⃣",
       "countNum": 1,
       "countWord": "titik+kaki",
-      "suara": "Awal."
+      "suara": "Langkah 1 — titik+kaki. Buat titik sudut dan satu kaki sudut. Boleh garis mendatar sebagai kaki pertama. Ingat: titik sudut; kaki pertama; fondasi. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Melukis Sudut.",
+      "teksVisual": "1️⃣ Langkah 1: titik+kaki"
     },
     {
       "judul": "Langkah 2",
       "emoji": "2️⃣",
       "countNum": 1,
       "countWord": "pasang busur",
-      "suara": "Protocol."
+      "suara": "Langkah 2 — pasang busur. Letakkan pusat busur derajat pada titik sudut. Pastikan dasar busur berimpit kaki yang sudah ada. Ingat: pusat di titik; dasar berimpit; seperti mengukur.",
+      "teksVisual": "2️⃣ Langkah 2: pasang busur"
     },
     {
       "judul": "Langkah 3",
       "emoji": "3️⃣",
       "countNum": 1,
       "countWord": "tadai derajat",
-      "suara": "Skala."
+      "suara": "Langkah 3 — tadai derajat. Cari angka ukuran yang diminta pada skala, misalnya tujuh puluh lima. Beri tanda kecil di situ. Ingat: cari angka; beri tanda; kaki kedua.",
+      "teksVisual": "3️⃣ Langkah 3: tadai derajat"
     },
     {
       "judul": "Langkah 4",
       "emoji": "4️⃣",
       "countNum": 1,
       "countWord": "kaki kedua",
-      "suara": "Selesai."
+      "suara": "Langkah 4 — kaki kedua. Pada Melukis Sudut, cocokkan gambar “Langkah 4” dengan artinya (kaki kedua), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Melukis Sudut.",
+      "teksVisual": "4️⃣ Langkah 4: kaki kedua"
     },
     {
       "judul": "30°",
       "emoji": "∠",
       "countNum": 30,
       "countWord": "latihan",
-      "suara": "Lancip."
+      "suara": "30° — latihan. Pada Melukis Sudut, cocokkan gambar “30°” dengan artinya (latihan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Melukis Sudut.",
+      "teksVisual": "∠ 30°: latihan"
     },
     {
       "judul": "90°",
       "emoji": "∟",
       "countNum": 90,
       "countWord": "latihan",
-      "suara": "Siku."
+      "suara": "90° — latihan. Pada Melukis Sudut, cocokkan gambar “90°” dengan artinya (latihan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Melukis Sudut.",
+      "teksVisual": "∟ 90°: latihan"
     },
     {
       "judul": "140°",
       "emoji": "∠",
       "countNum": 140,
       "countWord": "latihan",
-      "suara": "Tumpul."
+      "suara": "140° — latihan. Pada Melukis Sudut, cocokkan gambar “140°” dengan artinya (latihan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Melukis Sudut.",
+      "teksVisual": "∠ 140°: latihan"
     },
     {
       "judul": "Cek",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "ukur ulang",
-      "suara": "Akurasi."
+      "suara": "Cek — ukur ulang. Setelah dilukis, ukur kembali dengan busur. Jika hasilnya cocok target, lukisan akurat. Ingat: ukur ulang; cocok = akurat; cek pusat.",
+      "teksVisual": "✅ Cek: ukur ulang"
     },
     {
       "judul": "Metode",
       "emoji": "🌍",
       "countNum": 1,
       "countWord": "Construction",
-      "suara": "Protocol."
+      "suara": "Metode — Construction. Right Angle Benchmark, Paper Fold, Angle Detective. Vertex-Ray, Acute-Right-Obtuse. Ingat: A methods; B methods; C methods. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Melukis Sudut.",
+      "teksVisual": "🌍 Metode: Construction"
     },
     {
       "judul": "Bab 6",
       "emoji": "🎉",
       "countNum": 1,
       "countWord": "A–D siap",
-      "suara": "Materi."
+      "suara": "Bab 6 — A–D siap. Pada Melukis Sudut, cocokkan gambar “Bab 6” dengan artinya (A–D siap), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Melukis Sudut.",
+      "teksVisual": "🎉 Bab 6: A–D siap"
     }
   ],
   "games": [

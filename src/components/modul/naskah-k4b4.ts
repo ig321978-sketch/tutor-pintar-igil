@@ -267,70 +267,80 @@ export const SUB_A44: SubBabNaskah = {
       "emoji": "🟧",
       "countNum": 1,
       "countWord": "tanpa celah",
-      "suara": "Luas menutup permukaan tanpa celah."
+      "suara": "Luas menutup permukaan tanpa celah. Pada Pengukuran Luas, cocokkan gambar “Tutup permukaan” dengan artinya (tanpa celah), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🟧 Tutup permukaan: tanpa celah"
     },
     {
       "judul": "Tidak baku",
       "emoji": "💵",
       "countNum": 1,
       "countWord": "uang kertas",
-      "suara": "Uang kertas contoh satuan tidak baku."
+      "suara": "Uang kertas contoh satuan tidak baku. Pada Pengukuran Luas, cocokkan gambar “Tidak baku” dengan artinya (uang kertas), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "💵 Tidak baku: uang kertas"
     },
     {
       "judul": "1 cm²",
       "emoji": "📏",
       "countNum": 1,
       "countWord": "baku kecil",
-      "suara": "Satu cm kali satu cm sama dengan satu cm persegi."
+      "suara": "Satu cm kali satu cm sama dengan satu cm persegi. Ambil persegi sisi satu sentimeter. Luasnya satu sentimeter persegi. Ingat: 1 cm; 1 cm²; baku. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengukuran Luas.",
+      "teksVisual": "📏 Satu cm kali satu cm sama dengan satu cm persegi."
     },
     {
       "judul": "1 m²",
       "emoji": "🏟️",
       "countNum": 1,
       "countWord": "baku besar",
-      "suara": "Satu m kali satu m sama dengan satu m persegi."
+      "suara": "Satu m kali satu m sama dengan satu m persegi. Untuk lapangan yang besar,. pakai persegi sisi satu meter. Ingat: 1 m; 1 m²; lapangan. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengukuran Luas.",
+      "teksVisual": "🏟️ Satu m kali satu m sama dengan satu m persegi."
     },
     {
       "judul": "10.000",
       "emoji": "🔄",
       "countNum": 10000,
       "countWord": "cm²",
-      "suara": "Satu m persegi sama dengan sepuluh ribu cm persegi."
+      "suara": "Satu m persegi sama dengan sepuluh ribu cm persegi. Pada Pengukuran Luas, cocokkan gambar “10.000” dengan artinya (cm²), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔄 Satu m persegi sama dengan sepuluh ribu cm persegi."
     },
     {
       "judul": "13 cm²",
       "emoji": "🧩",
       "countNum": 13,
       "countWord": "contoh buku",
-      "suara": "Dua bangun berbeda bisa sama-sama tiga belas cm persegi."
+      "suara": "Dua bangun berbeda bisa sama-sama tiga belas cm persegi. Pada Pengukuran Luas, cocokkan gambar “13 cm²” dengan artinya (contoh buku), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🧩 Dua bangun berbeda bisa sama-sama tiga belas cm…"
     },
     {
       "judul": "4 satuan",
       "emoji": "📄",
       "countNum": 4,
       "countWord": "lipat",
-      "suara": "Aktivitas lipat nomor lima menghasilkan empat persegi satuan."
+      "suara": "Aktivitas lipat nomor lima menghasilkan empat persegi satuan. Pada Pengukuran Luas, cocokkan gambar “4 satuan” dengan artinya (lipat), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📄 Aktivitas lipat nomor lima menghasilkan empat persegi…"
     },
     {
       "judul": "16 satuan",
       "emoji": "📄",
       "countNum": 16,
       "countWord": "lipat",
-      "suara": "Aktivitas lipat nomor enam menghasilkan enam belas persegi satuan."
+      "suara": "Aktivitas lipat nomor enam menghasilkan enam belas persegi satuan. Pada Pengukuran Luas, cocokkan gambar “16 satuan” dengan artinya (lipat), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📄 Aktivitas lipat nomor enam menghasilkan enam belas…"
     },
     {
       "judul": "Pilih satuan",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "cocok",
-      "suara": "Pilih cm persegi atau m persegi sesuai ukuran benda."
+      "suara": "Pilih cm persegi atau m persegi sesuai ukuran benda. Pada Pengukuran Luas, cocokkan gambar “Pilih satuan” dengan artinya (cocok), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ Pilih cm persegi atau m persegi sesuai ukuran benda."
     },
     {
       "judul": "Siap Sub-Bab B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "volume",
-      "suara": "Berikutnya kita belajar volume."
+      "suara": "Berikutnya kita belajar volume. Pada Pengukuran Luas, cocokkan gambar “Siap Sub-Bab B” dengan artinya (volume), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengukuran…",
+      "teksVisual": "➡️ Siap Sub-Bab B: volume"
     }
   ],
   "games": [
@@ -1029,70 +1039,80 @@ export const SUB_B44: SubBabNaskah = {
       "emoji": "📦",
       "countNum": 1,
       "countWord": "volume",
-      "suara": "Volume mengukur isi ruang atau kapasitas."
+      "suara": "Volume mengukur isi ruang atau kapasitas. Pada Pengukuran Volume, cocokkan gambar “Isi ruang” dengan artinya (volume), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📦 Isi ruang: volume"
     },
     {
       "judul": "A = 4B",
       "emoji": "🧴",
       "countNum": 4,
       "countWord": "Kegiatan B.1",
-      "suara": "Volume A sama dengan empat volume B."
+      "suara": "Volume A sama dengan empat volume B. Isi A dari botol B. Butuh empat botol B. Ingat: = 4B; tidak baku; volume. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengukuran Volume.",
+      "teksVisual": "🧴 A = 4B: Kegiatan B.1"
     },
     {
       "judul": "A = 10C",
       "emoji": "🧴",
       "countNum": 10,
       "countWord": "Kegiatan B.2",
-      "suara": "Volume A sama dengan sepuluh volume C."
+      "suara": "Volume A sama dengan sepuluh volume C. Isi A dari botol C. Butuh sepuluh botol C. Ingat: = 10C; C kecil; beda satuan. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengukuran Volume.",
+      "teksVisual": "🧴 A = 10C: Kegiatan B.2"
     },
     {
       "judul": "5 ml",
       "emoji": "🥄",
       "countNum": 5,
       "countWord": "sendok",
-      "suara": "Satu sendok sekitar lima mililiter."
+      "suara": "Satu sendok sekitar lima mililiter. Pada Pengukuran Volume, cocokkan gambar “5 ml” dengan artinya (sendok), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengukuran Volume.",
+      "teksVisual": "🥄 5 ml: sendok"
     },
     {
       "judul": "1 liter",
       "emoji": "🥛",
       "countNum": 1000,
       "countWord": "ml",
-      "suara": "Satu liter sama dengan seribu mililiter."
+      "suara": "Satu liter sama dengan seribu mililiter. Pada Pengukuran Volume, cocokkan gambar “1 liter” dengan artinya (ml), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengukuran…",
+      "teksVisual": "🥛 1 liter: ml"
     },
     {
       "judul": "1 cm³",
       "emoji": "🧊",
       "countNum": 1,
       "countWord": "ml",
-      "suara": "Satu cm kubik sama dengan satu mililiter."
+      "suara": "Satu cm kubik sama dengan satu mililiter. Pada Pengukuran Volume, cocokkan gambar “1 cm³” dengan artinya (ml), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengukuran…",
+      "teksVisual": "🧊 1 cm³: ml"
     },
     {
       "judul": "1 m³",
       "emoji": "🛁",
       "countNum": 1000,
       "countWord": "liter",
-      "suara": "Satu m kubik sama dengan seribu liter."
+      "suara": "Satu m kubik sama dengan seribu liter. Pada Pengukuran Volume, cocokkan gambar “1 m³” dengan artinya (liter), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pengukuran…",
+      "teksVisual": "🛁 1 m³: liter"
     },
     {
       "judul": "8 botol kecil",
       "emoji": "🧴",
       "countNum": 8,
       "countWord": "sanitizer",
-      "suara": "Satu botol besar sama delapan botol kecil."
+      "suara": "Satu botol besar sama delapan botol kecil. Pada Pengukuran Volume, cocokkan gambar “8 botol kecil” dengan artinya (sanitizer), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🧴 8 botol kecil: sanitizer"
     },
     {
       "judul": "24 cm³",
       "emoji": "🔢",
       "countNum": 24,
       "countWord": "contoh buku",
-      "suara": "Volume bangun contoh buku dua puluh empat cm kubik."
+      "suara": "Volume bangun contoh buku dua puluh empat cm kubik. Pada Pengukuran Volume, cocokkan gambar “24 cm³” dengan artinya (contoh buku), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔢 Volume bangun contoh buku dua puluh empat cm kubik."
     },
     {
       "judul": "Selesai Bab 4 A–B",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "luas+volume",
-      "suara": "Luas dan volume sudah lengkap untuk Materi."
+      "suara": "Luas dan volume sudah lengkap untuk Materi. Pada Pengukuran Volume, cocokkan gambar “Selesai Bab 4 A–B” dengan artinya (luas+volume), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ Luas dan volume sudah lengkap untuk Materi."
     }
   ],
   "games": [

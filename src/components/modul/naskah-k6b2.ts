@@ -252,70 +252,80 @@ export const SUB_A62: SubBabNaskah = {
       "emoji": ":",
       "countNum": 1,
       "countWord": "a berbanding b",
-      "suara": "Definisi."
+      "suara": "Rasio (a berbanding b). Rasio peluang = favorable ÷ total. Tulis pecahan dulu, baru bandingkan besarnya. Jangan hanya melihat pembilang. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Rasio.",
+      "teksVisual": ": Rasio: a berbanding b"
     },
     {
       "judul": "4:6",
       "emoji": "🌳",
       "countNum": 1,
       "countWord": "2:3 sederhana",
-      "suara": "FPB 2."
+      "suara": "4:6 — 2:3 sederhana. Pada Konsep Rasio, cocokkan gambar “4:6” dengan artinya (2:3 sederhana), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Rasio.",
+      "teksVisual": "🌳 4:6: 2:3 sederhana"
     },
     {
       "judul": "Part-to-Part",
       "emoji": "🗣️",
       "countNum": 1,
       "countWord": "setiap a ada b",
-      "suara": "Metode."
+      "suara": "Part-to-Part — setiap a ada b. Pada Konsep Rasio, cocokkan gambar “Part-to-Part” dengan artinya (setiap a ada b), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🗣️ Part-to-Part: setiap a ada b"
     },
     {
       "judul": "Ordered",
       "emoji": "↔️",
       "countNum": 1,
       "countWord": "a:b ≠ b:a",
-      "suara": "Arah."
+      "suara": "Ordered — a:b ≠ b:a. Pada Konsep Rasio, cocokkan gambar “Ordered” dengan artinya (a:b ≠ b:a), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Rasio.",
+      "teksVisual": "↔️ Ordered: a:b ≠ b:a"
     },
     {
       "judul": "GCF Simplify",
       "emoji": "÷",
       "countNum": 1,
       "countWord": "bagi FPB",
-      "suara": "Metode."
+      "suara": "GCF Simplify — bagi FPB. Pada Konsep Rasio, cocokkan gambar “GCF Simplify” dengan artinya (bagi FPB), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Rasio.",
+      "teksVisual": "÷ GCF Simplify: bagi FPB"
     },
     {
       "judul": "14 pucuk",
       "emoji": "🌲",
       "countNum": 21,
       "countWord": "21 cemara",
-      "suara": "2:3."
+      "suara": "14 pucuk — 21 cemara. Pada Konsep Rasio, cocokkan gambar “14 pucuk” dengan artinya (21 cemara), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Rasio.",
+      "teksVisual": "🌲 14 pucuk: 21 cemara"
     },
     {
       "judul": "4:3 wahana",
       "emoji": "🎡",
       "countNum": 32,
       "countWord": "32 bianglala",
-      "suara": "dari 24."
+      "suara": "4:3 wahana — 32 bianglala. Pada Konsep Rasio, cocokkan gambar “4:3 wahana” dengan artinya (32 bianglala), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Rasio.",
+      "teksVisual": "🎡 4:3 wahana: 32 bianglala"
     },
     {
       "judul": "Sejenis",
       "emoji": "📏",
       "countNum": 1,
       "countWord": "besaran sama",
-      "suara": "Syarat."
+      "suara": "Sejenis — besaran sama. Pada Konsep Rasio, cocokkan gambar “Sejenis” dengan artinya (besaran sama), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Rasio.",
+      "teksVisual": "📏 Sejenis: besaran sama"
     },
     {
       "judul": "Bahasa",
       "emoji": "📝",
       "countNum": 1,
       "countWord": "terhadap/berbanding",
-      "suara": "Tulis."
+      "suara": "Bahasa — terhadap/berbanding. Selalu sebutkan 'terhadap' atau 'berbanding'. Sebut satuan bila ada: pohon, orang, meter. Ingat: bahasa jelas; satuan; arah.",
+      "teksVisual": "📝 Bahasa: terhadap/berbanding"
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "kesamaan",
-      "suara": "Lanjut."
+      "suara": "Siap B (kesamaan). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Konsep rasio siap.",
+      "teksVisual": "➡️ Siap B: kesamaan"
     }
   ],
   "games": [
@@ -961,70 +971,80 @@ export const SUB_B62: SubBabNaskah = {
       "emoji": "🌱",
       "countNum": 1,
       "countWord": "5:6 senilai",
-      "suara": "Sederhana."
+      "suara": "10:12 — 5:6 senilai. 10 m² lahan : 12 bibit. Sederhanakan 5 : 6. Ingat: 10:12; 5:6; tabel ×. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Kesamaan Rasio.",
+      "teksVisual": "🌱 10:12: 5:6 senilai"
     },
     {
       "judul": "Tabel ×5",
       "emoji": "▦",
       "countNum": 1,
       "countWord": "50:60",
-      "suara": "Equivalent."
+      "suara": "Tabel ×5 — 50:60. Pada Konsep Kesamaan Rasio, cocokkan gambar “Tabel ×5” dengan artinya (50:60), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Kesamaan Rasio.",
+      "teksVisual": "▦ Tabel ×5: 50:60"
     },
     {
       "judul": "Bridge",
       "emoji": "½",
       "countNum": 1,
       "countWord": "pecahan senilai",
-      "suara": "Metode."
+      "suara": "Bridge — pecahan senilai. Pada Konsep Kesamaan Rasio, cocokkan gambar “Bridge” dengan artinya (pecahan senilai), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "½ Bridge: pecahan senilai"
     },
     {
       "judul": "25 m²",
       "emoji": "📐",
       "countNum": 30,
       "countWord": "30 bibit",
-      "suara": "Skala."
+      "suara": "25 m² — 30 bibit. Dari 10:12, faktor 25/10 = 2,5. 12 × 2,5 = 30 bibit. Ingat: 25 m²; 30 bibit; proporsi. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Kesamaan Rasio.",
+      "teksVisual": "📐 25 m²: 30 bibit"
     },
     {
       "judul": "Unit rate",
       "emoji": "¹",
       "countNum": 1,
       "countWord": "per 1 satuan",
-      "suara": "Metode."
+      "suara": "Unit rate — per 1 satuan. Pada Konsep Kesamaan Rasio, cocokkan gambar “Unit rate” dengan artinya (per 1 satuan), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "¹ Unit rate: per 1 satuan"
     },
     {
       "judul": "3 bibit",
       "emoji": "💰",
       "countNum": 1,
       "countWord": "≈16667/bibit",
-      "suara": "Paket A."
+      "suara": "3 bibit — ≈16667/bibit. Pada Konsep Kesamaan Rasio, cocokkan gambar “3 bibit” dengan artinya (≈16667/bibit), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Kesamaan…",
+      "teksVisual": "💰 3 bibit: ≈16667/bibit"
     },
     {
       "judul": "5 bibit",
       "emoji": "💰",
       "countNum": 8000,
       "countWord": "8000/bibit",
-      "suara": "Paket B."
+      "suara": "5 bibit — 8000/bibit. Pada Konsep Kesamaan Rasio, cocokkan gambar “5 bibit” dengan artinya (8000/bibit), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Kesamaan…",
+      "teksVisual": "💰 5 bibit: 8000/bibit"
     },
     {
       "judul": "6 bibit/1,5 jam",
       "emoji": "⏱️",
       "countNum": 4,
       "countWord": "4 bibit/jam",
-      "suara": "Laju."
+      "suara": "6 bibit/1,5 jam — 4 bibit/jam. Pada Konsep Kesamaan Rasio, cocokkan gambar “6 bibit/1,5 jam” dengan artinya (4 bibit/jam), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⏱️ 6 bibit/1,5 jam: 4 bibit/jam"
     },
     {
       "judul": "4:10 kopi",
       "emoji": "☕",
       "countNum": 1,
       "countWord": "2:5 ≠ 1:2",
-      "suara": "Lebih manis."
+      "suara": "4:10 kopi — 2:5 ≠ 1:2. Pada Konsep Kesamaan Rasio, cocokkan gambar “4:10 kopi” dengan artinya (2:5 ≠ 1:2), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Kesamaan…",
+      "teksVisual": "☕ 4:10 kopi: 2:5 ≠ 1:2"
     },
     {
       "judul": "Siap C",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "penerapan",
-      "suara": "Lanjut."
+      "suara": "Siap C — penerapan. Kesamaan dan satuan siap. Berikutnya: bagian terhadap bagian/keseluruhan dan durasi waktu. Ingat: B siap; bagian:total; waktu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Kesamaan…",
+      "teksVisual": "➡️ Siap C: penerapan"
     }
   ],
   "games": [
@@ -1670,70 +1690,80 @@ export const SUB_C62: SubBabNaskah = {
       "emoji": "🌿",
       "countNum": 1,
       "countWord": "hias:obat",
-      "suara": "Part-part."
+      "suara": "4:5 — hias:obat. Pada Penerapan Rasio, cocokkan gambar “4:5” dengan artinya (hias:obat), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penerapan Rasio.",
+      "teksVisual": "🌿 4:5: hias:obat"
     },
     {
       "judul": "4+5=9",
       "emoji": "➕",
       "countNum": 9,
       "countWord": "9 bagian",
-      "suara": "Additive."
+      "suara": "4+5=9 — 9 bagian. Pada Penerapan Rasio, cocokkan gambar “4+5=9” dengan artinya (9 bagian), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penerapan Rasio.",
+      "teksVisual": "➕ 4+5=9: 9 bagian"
     },
     {
       "judul": "72 bibit",
       "emoji": "🧮",
       "countNum": 1,
       "countWord": "32 & 40",
-      "suara": "Hasil."
+      "suara": "72 bibit — 32 & 40. Pada Penerapan Rasio, cocokkan gambar “72 bibit” dengan artinya (32 & 40), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penerapan Rasio.",
+      "teksVisual": "🧮 72 bibit: 32 & 40"
     },
     {
       "judul": "4:9",
       "emoji": "🥧",
       "countNum": 1,
       "countWord": "hias:total",
-      "suara": "Part-whole."
+      "suara": "4:9 — hias:total. Pada Penerapan Rasio, cocokkan gambar “4:9” dengan artinya (hias:total), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penerapan Rasio.",
+      "teksVisual": "🥧 4:9: hias:total"
     },
     {
       "judul": "5:9",
       "emoji": "🥧",
       "countNum": 1,
       "countWord": "obat:total",
-      "suara": "Part-whole."
+      "suara": "5:9 — obat:total. Pada Penerapan Rasio, cocokkan gambar “5:9” dengan artinya (obat:total), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penerapan Rasio.",
+      "teksVisual": "🥧 5:9: obat:total"
     },
     {
       "judul": "9:4 → 390",
       "emoji": "🎡",
       "countNum": 270,
       "countWord": "270 anak",
-      "suara": "Pasar."
+      "suara": "9:4 → 390 — 270 anak. Pada Penerapan Rasio, cocokkan gambar “9:4 → 390” dengan artinya (270 anak), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penerapan Rasio.",
+      "teksVisual": "🎡 9:4 → 390: 270 anak"
     },
     {
       "judul": "1 km/30 mnt",
       "emoji": "🏃",
       "countNum": 2,
       "countWord": "2 km/jam",
-      "suara": "Time-Rate."
+      "suara": "1 km/30 mnt — 2 km/jam. Pada Penerapan Rasio, cocokkan gambar “1 km/30 mnt” dengan artinya (2 km/jam), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penerapan Rasio.",
+      "teksVisual": "🏃 1 km/30 mnt: 2 km/jam"
     },
     {
       "judul": "9 km",
       "emoji": "⏱️",
       "countNum": 1,
       "countWord": "4,5 jam",
-      "suara": "Skala."
+      "suara": "9 km — 4,5 jam. Dari 1 km : 30 menit → 9 km : 270 menit = 4,5 jam. Atau 2 km/jam → 9÷2 = 4,5 jam. Ingat: 9 km; 4,5 jam; skala. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penerapan Rasio.",
+      "teksVisual": "⏱️ 9 km: 4,5 jam"
     },
     {
       "judul": "1200 kata/jam",
       "emoji": "⌨️",
       "countNum": 3600,
       "countWord": "3600/3 jam",
-      "suara": "Ketik."
+      "suara": "1200 kata/jam — 3600/3 jam. 180 menit = 3 jam → 3600 kata. 3000 kata butuh 3000/1200 = 2,5 jam. Ingat: 3600 kata; 2,5 jam; kata:waktu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penerapan Rasio.",
+      "teksVisual": "⌨️ 1200 kata/jam: 3600/3 jam"
     },
     {
       "judul": "Bab 2 A–C",
       "emoji": "🎉",
       "countNum": 1,
       "countWord": "Materi siap",
-      "suara": "Selesai."
+      "suara": "Bab 2 A–C — Materi siap. Pada Penerapan Rasio, cocokkan gambar “Bab 2 A–C” dengan artinya (Materi siap), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Penerapan Rasio.",
+      "teksVisual": "🎉 Bab 2 A–C: Materi siap"
     }
   ],
   "games": [

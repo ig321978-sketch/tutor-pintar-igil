@@ -267,70 +267,80 @@ export const SUB_A35: SubBabNaskah = {
       "emoji": "📶",
       "countNum": 1,
       "countWord": "urut",
-      "suara": "Data diurutkan dari terkecil ke terbesar supaya mudah dibaca."
+      "suara": "Data diurutkan dari terkecil ke terbesar supaya mudah dibaca. Pada Mengurutkan dan Membandingkan Data, cocokkan gambar “Mengurutkan Data” dengan artinya (urut), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📶 Data diurutkan dari terkecil ke terbesar supaya mudah…"
     },
     {
       "judul": "Data Terkecil",
       "emoji": "⬇️",
       "countNum": 5,
       "countWord": "terkecil",
-      "suara": "Data terkecil adalah nilai paling kecil, misalnya lima."
+      "suara": "Data terkecil adalah nilai paling kecil, misalnya lima. Pada Mengurutkan dan Membandingkan Data, cocokkan gambar “Data Terkecil” dengan artinya (terkecil), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⬇️ Data terkecil adalah nilai paling kecil, misalnya lima."
     },
     {
       "judul": "Data Terbesar",
       "emoji": "⬆️",
       "countNum": 10,
       "countWord": "terbesar",
-      "suara": "Data terbesar adalah nilai paling besar, misalnya sepuluh."
+      "suara": "Data terbesar adalah nilai paling besar, misalnya sepuluh. Pada Mengurutkan dan Membandingkan Data, cocokkan gambar “Data Terbesar” dengan artinya (terbesar), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⬆️ Data terbesar adalah nilai paling besar, misalnya…"
     },
     {
       "judul": "Jangkauan",
       "emoji": "📏",
       "countNum": 5,
       "countWord": "jangkauan",
-      "suara": "Jangkauan sama dengan sepuluh dikurangi lima, hasilnya lima."
+      "suara": "Jangkauan sama dengan sepuluh dikurangi lima, hasilnya lima. Selisih nilai data terbesar dan terkecil disebut jangkauan. Jangkauan sama dengan data terbesar dikurangi data terkecil. Ingat: Selisih disebut jangkauan; Terbesar dikurangi…",
+      "teksVisual": "📏 Jangkauan sama dengan sepuluh dikurangi lima,…"
     },
     {
       "judul": "Turus",
       "emoji": "||||",
       "countNum": 4,
       "countWord": "garis",
-      "suara": "Turus adalah garis tegak. Satu garis untuk satu data."
+      "suara": "Turus adalah garis tegak. Satu garis untuk satu data. Pada Mengurutkan dan Membandingkan Data, cocokkan gambar “Turus” dengan artinya (garis), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "|||| Turus adalah garis tegak. Satu garis untuk satu data."
     },
     {
       "judul": "Kelompok Lima",
       "emoji": "卌",
       "countNum": 5,
       "countWord": "lima",
-      "suara": "Empat garis tegak dicoret garis miring menjadi kelompok lima."
+      "suara": "Empat garis tegak dicoret garis miring menjadi kelompok lima. Pada Mengurutkan dan Membandingkan Data, cocokkan gambar “Kelompok Lima” dengan artinya (lima), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "卌 Empat garis tegak dicoret garis miring menjadi…"
     },
     {
       "judul": "Banyak Nilai 9",
       "emoji": "5️⃣",
       "countNum": 5,
       "countWord": "siswa",
-      "suara": "Pada data ulangan, nilai sembilan diperoleh lima siswa."
+      "suara": "Pada data ulangan, nilai sembilan diperoleh lima siswa. Pada Mengurutkan dan Membandingkan Data, cocokkan gambar “Banyak Nilai 9” dengan artinya (siswa), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "5️⃣ Pada data ulangan, nilai sembilan diperoleh lima…"
     },
     {
       "judul": "Banyak Nilai 10",
       "emoji": "2️⃣",
       "countNum": 2,
       "countWord": "siswa",
-      "suara": "Nilai sepuluh diperoleh dua siswa."
+      "suara": "Nilai sepuluh diperoleh dua siswa. Pada Mengurutkan dan Membandingkan Data, cocokkan gambar “Banyak Nilai 10” dengan artinya (siswa), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "2️⃣ Banyak Nilai 10: siswa"
     },
     {
       "judul": "Enam Macam Nilai",
       "emoji": "6️⃣",
       "countNum": 6,
       "countWord": "macam",
-      "suara": "Ada enam macam nilai: lima, enam, tujuh, delapan, sembilan, dan sepuluh."
+      "suara": "Ada enam macam nilai: lima, enam, tujuh, delapan, sembilan, dan sepuluh. Setelah diurutkan, tampak enam macam nilai: lima sampai sepuluh. Nilai terkecil adalah lima, nilai terbesar adalah sepuluh. Ingat: Enam macam nilai; Terkecil 5,…",
+      "teksVisual": "6️⃣ Ada enam macam nilai: lima, enam, tujuh, delapan,…"
     },
     {
       "judul": "Siap ke Tabel",
       "emoji": "📋",
       "countNum": 3,
       "countWord": "kolom",
-      "suara": "Tabel nilai memiliki kolom nilai, turus, dan banyak."
+      "suara": "Tabel nilai memiliki kolom nilai, turus, dan banyak. Pada Mengurutkan dan Membandingkan Data, cocokkan gambar “Siap ke Tabel” dengan artinya (kolom), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📋 Tabel nilai memiliki kolom nilai, turus, dan banyak."
     }
   ],
   "games": [
@@ -1029,70 +1039,80 @@ export const SUB_B35: SubBabNaskah = {
       "emoji": "||||",
       "countNum": 4,
       "countWord": "lidi",
-      "suara": "Empat lidi tegak menyatakan empat data."
+      "suara": "Empat lidi tegak menyatakan empat data. Bayangkan kamu sedang mempelajari Menyajikan Data dalam Bentuk Tabel. Ambil satu lidi untuk menunjukkan data berjumlah satu. Tambahkan lidi tegak hingga berjumlah empat.",
+      "teksVisual": "|||| Empat Lidi Tegak: lidi"
     },
     {
       "judul": "Kelompok Lima",
       "emoji": "卌",
       "countNum": 5,
       "countWord": "lima",
-      "suara": "Empat tegak ditambah satu miring menjadi kelompok lima."
+      "suara": "Empat tegak ditambah satu miring menjadi kelompok lima. Pada Menyajikan Data dalam Bentuk Tabel, cocokkan gambar “Kelompok Lima” dengan artinya (lima), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "卌 Empat tegak ditambah satu miring menjadi kelompok lima."
     },
     {
       "judul": "Dua Kelompok",
       "emoji": "🔟",
       "countNum": 10,
       "countWord": "sepuluh",
-      "suara": "Dua kelompok lima menyatakan sepuluh data."
+      "suara": "Dua kelompok lima menyatakan sepuluh data. Pada Menyajikan Data dalam Bentuk Tabel, cocokkan gambar “Dua Kelompok” dengan artinya (sepuluh), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔟 Dua Kelompok: sepuluh"
     },
     {
       "judul": "Tiga Belas",
       "emoji": "1️⃣3️⃣",
       "countNum": 13,
       "countWord": "tiga belas",
-      "suara": "Dua kelompok lima ditambah tiga turus sama dengan tiga belas."
+      "suara": "Dua kelompok lima ditambah tiga turus sama dengan tiga belas. Pada Menyajikan Data dalam Bentuk Tabel, cocokkan gambar “Tiga Belas” dengan artinya (tiga belas), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "1️⃣3️⃣ Dua kelompok lima ditambah tiga turus sama dengan…"
     },
     {
       "judul": "Tabel Tiga Kolom",
       "emoji": "📋",
       "countNum": 3,
       "countWord": "kolom",
-      "suara": "Tabel memuat kategori, turus, dan banyak."
+      "suara": "Tabel memuat kategori, turus, dan banyak. Pada Menyajikan Data dalam Bentuk Tabel, cocokkan gambar “Tabel Tiga Kolom” dengan artinya (kolom), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📋 Tabel Tiga Kolom: kolom"
     },
     {
       "judul": "Manik Merah",
       "emoji": "🔴",
       "countNum": 1,
       "countWord": "merah",
-      "suara": "Manik merah, biru, dan hitam dicatat per warna."
+      "suara": "Manik merah, biru, dan hitam dicatat per warna. Pada Menyajikan Data dalam Bentuk Tabel, cocokkan gambar “Manik Merah” dengan artinya (merah), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔴 Manik merah, biru, dan hitam dicatat per warna."
     },
     {
       "judul": "Huruf T",
       "emoji": "🇹",
       "countNum": 3,
       "countWord": "tiga",
-      "suara": "Pada STATISTIKA, huruf T muncul tiga kali."
+      "suara": "Pada STATISTIKA, huruf T muncul tiga kali. Pada Menyajikan Data dalam Bentuk Tabel, cocokkan gambar “Huruf T” dengan artinya (tiga), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🇹 Huruf T: tiga"
     },
     {
       "judul": "Huruf K",
       "emoji": "🇰",
       "countNum": 1,
       "countWord": "satu",
-      "suara": "Huruf K pada STATISTIKA muncul satu kali."
+      "suara": "Huruf K pada STATISTIKA muncul satu kali. Pada Menyajikan Data dalam Bentuk Tabel, cocokkan gambar “Huruf K” dengan artinya (satu), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🇰 Huruf K: satu"
     },
     {
       "judul": "Lebih dari Tujuh",
       "emoji": ">",
       "countNum": 12,
       "countWord": "siswa",
-      "suara": "Jumlahkan siswa bernilai delapan, sembilan, dan sepuluh."
+      "suara": "Jumlahkan siswa bernilai delapan, sembilan, dan sepuluh. Ulangi kelompok lima, lalu tambahkan lidi di sebelahnya. Dua kelompok lima sama dengan sepuluh data. Ingat: Ulangi kelompok lima; Dua kelompok = 10; 10 + 3 = 13.",
+      "teksVisual": "> Jumlahkan siswa bernilai delapan, sembilan, dan sepuluh."
     },
     {
       "judul": "Data Rapi",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "rapi",
-      "suara": "Tabel membuat data rapi dan mudah dibandingkan."
+      "suara": "Tabel membuat data rapi dan mudah dibandingkan. Pada Menyajikan Data dalam Bentuk Tabel, cocokkan gambar “Data Rapi” dengan artinya (rapi), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ Tabel membuat data rapi dan mudah dibandingkan."
     }
   ],
   "games": [

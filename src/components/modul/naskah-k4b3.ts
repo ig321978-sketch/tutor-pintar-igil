@@ -267,70 +267,80 @@ export const SUB_A43: SubBabNaskah = {
       "emoji": "👀",
       "countNum": 1,
       "countWord": "lihat",
-      "suara": "Hitung benda."
+      "suara": "AMATI — lihat. Hitung benda tiap kumpulan. Bandingkan dengan sebelumnya. Ingat: hitung; banding; selisih. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Gambar.",
+      "teksVisual": "👀 AMATI: lihat"
     },
     {
       "judul": "BEDA",
       "emoji": "➖",
       "countNum": 2,
       "countWord": "selisih",
-      "suara": "Selisih tetap."
+      "suara": "BEDA — selisih. Jika selisih sama, itu beda pola. Beda positif berarti membesar. Ingat: beda; lanjut; struktur. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Gambar.",
+      "teksVisual": "➖ BEDA: selisih"
     },
     {
       "judul": "+2",
       "emoji": "📈",
       "countNum": 2,
       "countWord": "jeruk",
-      "suara": "Membesar."
+      "suara": "Buat tabel seperti di buku. Kumpulan empat jadi delapan. Ingat: tabel; +2; ke-7. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Gambar.",
+      "teksVisual": "📈 +2: jeruk"
     },
     {
       "judul": "−2",
       "emoji": "📉",
       "countNum": 2,
       "countWord": "permen",
-      "suara": "Mengecil."
+      "suara": "−2 — permen. Buat tabel seperti di buku. Kumpulan empat jadi delapan. Ingat: tabel; +2; ke-7. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Gambar.",
+      "teksVisual": "📉 −2: permen"
     },
     {
       "judul": "2,4,6",
       "emoji": "🟠",
       "countNum": 6,
       "countWord": "pola",
-      "suara": "Contoh buku."
+      "suara": "2,4,6 — pola. Pada Pola Gambar, cocokkan gambar “2,4,6” dengan artinya (pola), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Gambar.",
+      "teksVisual": "🟠 2,4,6: pola"
     },
     {
       "judul": "14",
       "emoji": "✅",
       "countNum": 7,
       "countWord": "ke-7",
-      "suara": "Hasil jeruk."
+      "suara": "Kumpulan ketujuh berisi empat belas jeruk. Pola membesar berarti semakin banyak. Ingat: 14 jeruk; membesar; beda +. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Gambar.",
+      "teksVisual": "✅ 14: ke-7"
     },
     {
       "judul": "9,7,5",
       "emoji": "🍬",
       "countNum": 5,
       "countWord": "pola",
-      "suara": "Permen."
+      "suara": "9,7,5 — pola. Pada Pola Gambar, cocokkan gambar “9,7,5” dengan artinya (pola), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Gambar.",
+      "teksVisual": "🍬 9,7,5: pola"
     },
     {
       "judul": "1",
       "emoji": "🍬",
       "countNum": 5,
       "countWord": "ke-5",
-      "suara": "Sisa satu."
+      "suara": "Kumpulan ketujuh berisi empat belas jeruk. Pola membesar berarti semakin banyak. Ingat: 14 jeruk; membesar; beda +. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Gambar.",
+      "teksVisual": "🍬 1: ke-5"
     },
     {
       "judul": "TABEL",
       "emoji": "📋",
       "countNum": 1,
       "countWord": "alat",
-      "suara": "Uraian selisih."
+      "suara": "TABEL — alat. Buat tabel seperti di buku. Kumpulan empat jadi delapan. Ingat: tabel; +2; ke-7. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Gambar.",
+      "teksVisual": "📋 TABEL: alat"
     },
     {
       "judul": "SIAP B",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "lanjut",
-      "suara": "Pola bilangan."
+      "suara": "SIAP B (lanjut). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Gambar.",
+      "teksVisual": "✅ SIAP B: lanjut"
     }
   ],
   "games": [
@@ -1029,70 +1039,80 @@ export const SUB_B43: SubBabNaskah = {
       "emoji": "➖",
       "countNum": 1,
       "countWord": "kunci",
-      "suara": "Selisih tetap."
+      "suara": "BEDA — kunci. Pada Pola Bilangan, cocokkan gambar “BEDA” dengan artinya (kunci), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Bilangan.",
+      "teksVisual": "➖ BEDA: kunci"
     },
     {
       "judul": "+2",
       "emoji": "📈",
       "countNum": 2,
       "countWord": "contoh",
-      "suara": "3,5,7…"
+      "suara": "+2 — contoh. Tiga puluh dua, dua puluh delapan, dua puluh empat. Bedanya minus empat. Ingat: 32 28 24; −4; mengecil. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Bilangan.",
+      "teksVisual": "📈 +2: contoh"
     },
     {
       "judul": "+3",
       "emoji": "3️⃣",
       "countNum": 3,
       "countWord": "kasus",
-      "suara": "1,4,7,10…"
+      "suara": "Kasus satu: satu, empat, tujuh, sepuluh. Bedanya plus tiga. Ingat: 1 4 7 10; +3; 13. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Bilangan.",
+      "teksVisual": "3️⃣ +3: kasus"
     },
     {
       "judul": "−5",
       "emoji": "📉",
       "countNum": 5,
       "countWord": "kasus",
-      "suara": "23,18,13…"
+      "suara": "Lanjutkan pola sampai hari lima. Hasilnya lima puluh dua. Ingat: hari 5; 52; cerita. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Bilangan.",
+      "teksVisual": "📉 −5: kasus"
     },
     {
       "judul": "−4",
       "emoji": "📉",
       "countNum": 4,
       "countWord": "contoh",
-      "suara": "32,28,24…"
+      "suara": "−4 — contoh. Pada Pola Bilangan, cocokkan gambar “−4” dengan artinya (contoh), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Bilangan.",
+      "teksVisual": "📉 −4: contoh"
     },
     {
       "judul": "+8",
       "emoji": "🥚",
       "countNum": 8,
       "countWord": "telur",
-      "suara": "20→52."
+      "suara": "Pada Pola Bilangan, cocokkan gambar “+8” dengan artinya (telur), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Bilangan.",
+      "teksVisual": "🥚 +8: telur"
     },
     {
       "judul": "13",
       "emoji": "✅",
       "countNum": 6,
       "countWord": "lanjut",
-      "suara": "Setelah 11."
+      "suara": "13 — lanjut. Pada Pola Bilangan, cocokkan gambar “13” dengan artinya (lanjut), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Bilangan.",
+      "teksVisual": "✅ 13: lanjut"
     },
     {
       "judul": "3",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "lanjut",
-      "suara": "Setelah 8."
+      "suara": "Kasus satu: satu, empat, tujuh, sepuluh. Bedanya plus tiga. Ingat: 1 4 7 10; +3; 13. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Bilangan.",
+      "teksVisual": "✅ 3: lanjut"
     },
     {
       "judul": "TABEL",
       "emoji": "📋",
       "countNum": 1,
       "countWord": "alat",
-      "suara": "Uraian hari."
+      "suara": "TABEL — alat. Pada Pola Bilangan, cocokkan gambar “TABEL” dengan artinya (alat), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Bilangan.",
+      "teksVisual": "📋 TABEL: alat"
     },
     {
       "judul": "INGAT",
       "emoji": "📜",
       "countNum": 1,
       "countWord": "definisi",
-      "suara": "Ada aturan."
+      "suara": "INGAT — definisi. Pola bilangan punya aturan penyusunan. Bisa membesar atau mengecil. Ingat: aturan; beda; tabel. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Pola Bilangan.",
+      "teksVisual": "📜 INGAT: definisi"
     }
   ],
   "games": [

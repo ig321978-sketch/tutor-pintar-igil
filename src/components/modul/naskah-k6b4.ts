@@ -16,7 +16,7 @@ export type SubBabNaskah = {
   silabus: { teksSuara: string; cp: string; referensi: string };
   videos: { id: string; judul: string; subjudul: string; adegan: { id: string; judul: string; ketukan: string[]; papan: string[] }[] }[];
   mindMaps: { stepNumber: number; stepTitle: string; stepDesc: string; icon: string; flowFrom: string; flowTo: string }[];
-  infografis: { judul: string; emoji: string; countNum: number; countWord: string; suara: string }[];
+  infografis: { judul: string; emoji: string; countNum: number; countWord: string; suara: string; teksVisual?: string }[];
   games: GameDef[];
   poin: { ikon: string; nama: string; isi: string; suara: string }[];
   poinSuara: string; cara: { suara: string; potongan: { teks: string; warna: string }[] };
@@ -270,70 +270,80 @@ export const SUB_A64 = {
       "emoji": "🚫",
       "countNum": 0,
       "countWord": "peluang 0",
-      "suara": "Ujung kiri spektrum."
+      "suara": "Tidak mungkin (peluang 0). Tangga paling kiri. Kejadian sama sekali tidak terjadi — peluang nol. Contoh: dadu biasa menghasilkan angka tujuh. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Skala Peluang.",
+      "teksVisual": "🚫 Tidak mungkin: peluang 0"
     },
     {
       "judul": "Kurang mungkin",
       "emoji": "📉",
       "countNum": 1,
       "countWord": "sedikit peluang",
-      "suara": "Jarang."
+      "suara": "Kurang mungkin (sedikit peluang). Dekat ujung kiri. Bisa terjadi, tapi jarang. Contoh: angka enam muncul sekali dari banyak lemparan dadu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Skala Peluang.",
+      "teksVisual": "📉 Kurang mungkin: sedikit peluang"
     },
     {
       "judul": "Mungkin",
       "emoji": "⚖️",
       "countNum": 1,
       "countWord": "bisa terjadi",
-      "suara": "Sedang."
+      "suara": "Mungkin (bisa terjadi). Di tengah spektrum. Kejadian bisa terjadi atau tidak. Contoh: hujan sore ini. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Skala Peluang.",
+      "teksVisual": "⚖️ Mungkin: bisa terjadi"
     },
     {
       "judul": "Sangat mungkin",
       "emoji": "📈",
       "countNum": 1,
       "countWord": "sering",
-      "suara": "Dominan."
+      "suara": "Sangat mungkin (sering). Dekat ujung kanan. Sering terjadi, hampir rutin. Contoh: matahari terbit esok pagi. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Skala Peluang.",
+      "teksVisual": "📈 Sangat mungkin: sering"
     },
     {
       "judul": "Pasti",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "selalu",
-      "suara": "Ujung kanan."
+      "suara": "Pasti (selalu). Tangga paling kanan. Selalu terjadi, peluang penuh. Contoh: hari esok datang. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Skala Peluang.",
+      "teksVisual": "✅ Pasti: selalu"
     },
     {
       "judul": "Spectrum",
       "emoji": "📶",
       "countNum": 5,
       "countWord": "lima tangga",
-      "suara": "Likelihood Spectrum."
+      "suara": "Spectrum (lima tangga). Lima tangga Likelihood Spectrum: tidak mungkin → kurang mungkin → mungkin → sangat mungkin → pasti. Urutkan prediksi sebelum menghitung angka.",
+      "teksVisual": "📶 Lima tangga Likelihood Spectrum: tidak mungkin →…"
     },
     {
       "judul": "Koin",
       "emoji": "🪙",
       "countNum": 2,
       "countWord": "dua sisi",
-      "suara": "Sama mungkin."
+      "suara": "Koin (dua sisi). Koin adil punya dua sisi. Gambar dan angka sama mungkin: masing-masing 1 dari 2. Cocokkan dengan tangga “mungkin”. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Skala Peluang.",
+      "teksVisual": "🪙 Koin: dua sisi"
     },
     {
       "judul": "Dadu 6",
       "emoji": "🎲",
       "countNum": 6,
       "countWord": "enam sisi",
-      "suara": "Satu angka = 1 dari 6."
+      "suara": "Dadu 6 (enam sisi). Dadu biasa punya enam sisi. Satu angka tertentu = 1 dari 6 — lebih jarang daripada koin. Bandingkan area peluangnya. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Skala Peluang.",
+      "teksVisual": "🎲 Dadu 6: enam sisi"
     },
     {
       "judul": "Roda putar",
       "emoji": "🎡",
       "countNum": 1,
       "countWord": "area ≈ peluang",
-      "suara": "Prediksi dulu."
+      "suara": "Roda putar (area ≈ peluang). Area warna pada roda ≈ peluang. Sektor lebih lebar → lebih mungkin. Prediksi dulu, lalu catat hasil putaran. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Skala Peluang.",
+      "teksVisual": "🎡 Roda putar: area ≈ peluang"
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "bandingkan",
-      "suara": "Lanjut."
+      "suara": "Siap B (bandingkan). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Skala kualitatif siap.",
+      "teksVisual": "➡️ Siap B: bandingkan"
     }
   ],
   "games": [
@@ -979,70 +989,80 @@ export const SUB_B64 = {
       "emoji": "✅",
       "countNum": 1,
       "countWord": "hasil untung",
-      "suara": "Pembilang."
+      "suara": "Favorable (hasil untung). Favorable = hasil yang diinginkan (pembilang). Contoh: koin gambar = 1 hasil untung. Hitung dulu pembilang sebelum membagi. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita…",
+      "teksVisual": "✅ Favorable = hasil yang diinginkan (pembilang)."
     },
     {
       "judul": "Total",
       "emoji": "📦",
       "countNum": 1,
       "countWord": "semua hasil",
-      "suara": "Penyebut."
+      "suara": "Total (semua hasil). Total = semua hasil mungkin (penyebut). Koin: 2; dadu: 6. Tanpa total, rasio peluang tidak bisa dibandingkan. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan Peluang Kejadian.",
+      "teksVisual": "📦 Total: semua hasil"
     },
     {
       "judul": "Rasio",
       "emoji": "➗",
       "countNum": 1,
       "countWord": "untung/total",
-      "suara": "Favorable-to-Total."
+      "suara": "Rasio (untung/total). Rasio peluang = favorable ÷ total. Tulis pecahan dulu, baru bandingkan besarnya. Jangan hanya melihat pembilang. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan Peluang…",
+      "teksVisual": "➗ Rasio: untung/total"
     },
     {
       "judul": "Bandingkan",
       "emoji": "🔎",
       "countNum": 2,
       "countWord": "A vs B",
-      "suara": "Comparative Ratio."
+      "suara": "Bandingkan (A vs B). Bandingkan dua pecahan peluang (Comparative Ratio). Samakan penyebut atau ubah ke desimal singkat, lalu lihat mana lebih besar. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan…",
+      "teksVisual": "🔎 Bandingkan dua pecahan peluang (Comparative Ratio)."
     },
     {
       "judul": "Adil",
       "emoji": "⚖️",
       "countNum": 1,
       "countWord": "peluang sama",
-      "suara": "Fair Game."
+      "suara": "Adil (peluang sama). Permainan adil bila peluang tiap pemain sama. Contoh: koin dua sisi. Jika peluang beda, permainan kurang adil. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan Peluang Kejadian.",
+      "teksVisual": "⚖️ Permainan adil bila peluang tiap pemain sama."
     },
     {
       "judul": "Kurang adil",
       "emoji": "⚠️",
       "countNum": 1,
       "countWord": "peluang beda",
-      "suara": "Tidak sama."
+      "suara": "Kurang adil (peluang beda). Peluang tidak sama. Contoh: roda dengan sektor merah jauh lebih lebar. Putuskan dari rasio, bukan dari perasaan. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan Peluang…",
+      "teksVisual": "⚠️ Kurang adil: peluang beda"
     },
     {
       "judul": "Koin",
       "emoji": "🪙",
       "countNum": 1,
       "countWord": "1 dari 2",
-      "suara": "Setengah."
+      "suara": "Koin (1 dari 2). Koin adil punya dua sisi. Gambar dan angka sama mungkin: masing-masing 1 dari 2. Cocokkan dengan tangga “mungkin”. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan Peluang Kejadian.",
+      "teksVisual": "🪙 Koin: 1 dari 2"
     },
     {
       "judul": "Dadu 6",
       "emoji": "🎲",
       "countNum": 1,
       "countWord": "1 dari 6",
-      "suara": "Lebih kecil."
+      "suara": "Dadu 6 (1 dari 6). Dadu biasa punya enam sisi. Satu angka tertentu = 1 dari 6 — lebih jarang daripada koin. Bandingkan area peluangnya. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan Peluang…",
+      "teksVisual": "🎲 Dadu 6: 1 dari 6"
     },
     {
       "judul": "4/7 > 3/7",
       "emoji": "🎁",
       "countNum": 4,
       "countWord": "kotak Mantap",
-      "suara": "Hadiah."
+      "suara": "4/7 > 3/7 — kotak Mantap. Pada Membandingkan Peluang Kejadian, cocokkan gambar “4/7 > 3/7” dengan artinya (kotak Mantap), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🎁 4/7 > 3/7: kotak Mantap"
     },
     {
       "judul": "Besar ≠ pasti",
       "emoji": "🧠",
       "countNum": 1,
       "countWord": "masih bisa kalah",
-      "suara": "Keputusan."
+      "suara": "Besar ≠ pasti (masih bisa kalah). Tangga paling kanan. Selalu terjadi, peluang penuh. Contoh: hari esok datang. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan Peluang Kejadian.",
+      "teksVisual": "🧠 Besar ≠ pasti: masih bisa kalah"
     }
   ],
   "games": [

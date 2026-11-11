@@ -252,70 +252,80 @@ export const SUB_A58: SubBabNaskah = {
       "emoji": "📊",
       "countNum": 1,
       "countWord": "kumpulan fakta",
-      "suara": "Definisi."
+      "suara": "Data — kumpulan fakta. Data adalah sekumpulan informasi atau fakta. Boleh ditulis kata, kalimat, angka, gambar, atau simbol. Ingat: kumpulan fakta; kata/angka/simbol; contoh sekitar.",
+      "teksVisual": "📊 Data: kumpulan fakta"
     },
     {
       "judul": "Siklus",
       "emoji": "🔄",
       "countNum": 1,
       "countWord": "Collection Cycle",
-      "suara": "Metode luar."
+      "suara": "Siklus — Collection Cycle. Eksplorasi 8.1A: tiap siswa tulis maksimal tiga sayuran favorit. Catatan mentah masih berantakan; perlu dirapikan. Ingat: Collection Cycle; max 3 sayur; mentah → rapi.",
+      "teksVisual": "🔄 Siklus: Collection Cycle"
     },
     {
       "judul": "Turus",
       "emoji": "|",
       "countNum": 1,
       "countWord": "1 hasil=1 garis",
-      "suara": "Tally."
+      "suara": "Turus — 1 hasil=1 garis. Turus adalah cara mencatat hasil pengamatan dengan simbol garis. Setiap satu hasil = satu garis: tegak atau miring. Ingat: 1 hasil = 1 garis; tidak terlewat; tidak dobel.",
+      "teksVisual": "| Turus: 1 hasil=1 garis"
     },
     {
       "judul": "Kelompok 5",
       "emoji": "卌",
       "countNum": 5,
       "countWord": "4+1 miring",
-      "suara": "Protocol."
+      "suara": "Kelompok 5 — 4+1 miring. Pada Mengumpulkan Data, cocokkan gambar “Kelompok 5” dengan artinya (4+1 miring), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengumpulkan Data.",
+      "teksVisual": "卌 Kelompok 5: 4+1 miring"
     },
     {
       "judul": "Frekuensi",
       "emoji": "ƒ",
       "countNum": 1,
       "countWord": "berapa kali",
-      "suara": "Definisi."
+      "suara": "Frekuensi — berapa kali. Kolom: nama kategori, turus, frekuensi. Dari tabel: wortel paling banyak disukai di contoh buku. Ingat: kategori|turus|f; Frequency Table; baca banding.",
+      "teksVisual": "ƒ Frekuensi: berapa kali"
     },
     {
       "judul": "Bayam",
       "emoji": "🥬",
       "countNum": 8,
       "countWord": "f=8 contoh",
-      "suara": "Buku."
+      "suara": "Bayam — f=8 contoh. Pada Mengumpulkan Data, cocokkan gambar “Bayam” dengan artinya (f=8 contoh), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengumpulkan Data.",
+      "teksVisual": "🥬 Bayam: f=8 contoh"
     },
     {
       "judul": "Wortel",
       "emoji": "🥕",
       "countNum": 1,
       "countWord": "sering terbanyak",
-      "suara": "Baca tabel."
+      "suara": "Wortel — sering terbanyak. Pada Mengumpulkan Data, cocokkan gambar “Wortel” dengan artinya (sering terbanyak), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengumpulkan…",
+      "teksVisual": "🥕 Wortel: sering terbanyak"
     },
     {
       "judul": "Tabel f",
       "emoji": "📋",
       "countNum": 3,
       "countWord": "kat|turus|f",
-      "suara": "Construction."
+      "suara": "Tabel f — kat|turus|f. Kolom: nama kategori, turus, frekuensi. Dari tabel: wortel paling banyak disukai di contoh buku. Ingat: kategori|turus|f; Frequency Table; baca banding.",
+      "teksVisual": "📋 Tabel f: kat|turus|f"
     },
     {
       "judul": "Keputusan",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "berdasarkan f",
-      "suara": "Donat Anggi."
+      "suara": "Keputusan — berdasarkan f. Pada Mengumpulkan Data, cocokkan gambar “Keputusan” dengan artinya (berdasarkan f), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengumpulkan…",
+      "teksVisual": "✅ Keputusan: berdasarkan f"
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "piktogram",
-      "suara": "Lanjut."
+      "suara": "Siap B (piktogram). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Kita sudah bisa kumpulkan data dan buat tabel frekuensi.",
+      "teksVisual": "➡️ Siap B: piktogram"
     }
   ],
   "games": [
@@ -961,70 +971,80 @@ export const SUB_B58: SubBabNaskah = {
       "emoji": "🖼️",
       "countNum": 1,
       "countWord": "data bergambar",
-      "suara": "Definisi."
+      "suara": "Piktogram — data bergambar. Pada Piktogram, cocokkan gambar “Piktogram” dengan artinya (data bergambar), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "🖼️ Piktogram: data bergambar"
     },
     {
       "judul": "Kunci",
       "emoji": "🔑",
       "countNum": 1,
       "countWord": "1 simbol=N",
-      "suara": "Legend."
+      "suara": "Kunci — 1 simbol=N. Pada Piktogram, cocokkan gambar “Kunci” dengan artinya (1 simbol=N), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "🔑 Kunci: 1 simbol=N"
     },
     {
       "judul": "Contoh kunci",
       "emoji": "🧁",
       "countNum": 4,
       "countWord": "1=4 apem",
-      "suara": "Buku."
+      "suara": "Contoh kunci — 1=4 apem. Pada Piktogram, cocokkan gambar “Contoh kunci” dengan artinya (1=4 apem), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "🧁 Contoh kunci: 1=4 apem"
     },
     {
       "judul": "Hitung",
       "emoji": "✖️",
       "countNum": 1,
       "countWord": "simbol×N",
-      "suara": "Baca."
+      "suara": "Hitung — simbol×N. Pada Piktogram, cocokkan gambar “Hitung” dengan artinya (simbol×N), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "✖️ Hitung: simbol×N"
     },
     {
       "judul": "½ simbol",
       "emoji": "✂️",
       "countNum": 1,
       "countWord": "nilai N/2",
-      "suara": "Skala."
+      "suara": "½ simbol — nilai N/2. Pada Piktogram, cocokkan gambar “½ simbol” dengan artinya (nilai N/2), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "✂️ ½ simbol: nilai N/2"
     },
     {
       "judul": "Seragam",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "ukuran sama",
-      "suara": "Consistency."
+      "suara": "Seragam — ukuran sama. Pada Piktogram, cocokkan gambar “Seragam” dengan artinya (ukuran sama), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "✅ Seragam: ukuran sama"
     },
     {
       "judul": "Error Hunt",
       "emoji": "🕵️",
       "countNum": 1,
       "countWord": "cari salah",
-      "suara": "Metode luar."
+      "suara": "Error Hunt — cari salah. Pada Piktogram, cocokkan gambar “Error Hunt” dengan artinya (cari salah), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "🕵️ Error Hunt: cari salah"
     },
     {
       "judul": "Judul",
       "emoji": "📌",
       "countNum": 1,
       "countWord": "wajib ada",
-      "suara": "Tata letak."
+      "suara": "Judul — wajib ada. Pada Piktogram, cocokkan gambar “Judul” dengan artinya (wajib ada), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "📌 Judul: wajib ada"
     },
     {
       "judul": "Cek",
       "emoji": "🧮",
       "countNum": 1,
       "countWord": "cocok tabel",
-      "suara": "Validasi."
+      "suara": "Cek — cocok tabel. Pada Piktogram, cocokkan gambar “Cek” dengan artinya (cocok tabel), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "🧮 Cek: cocok tabel"
     },
     {
       "judul": "Siap C",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "diagram batang",
-      "suara": "Lanjut."
+      "suara": "Siap C — diagram batang. Piktogram = data bergambar + kunci. Berikutnya diagram batang: tinggi batang mewakili frekuensi. Ingat: gambar+kunci; lanjut batang; sumbu & skala.",
+      "teksVisual": "➡️ Siap C: diagram batang"
     }
   ],
   "games": [
@@ -1670,70 +1690,80 @@ export const SUB_C58: SubBabNaskah = {
       "emoji": "▮",
       "countNum": 1,
       "countWord": "tinggi = f",
-      "suara": "Definisi."
+      "suara": "Diagram batang — tinggi = f. Pada Diagram Batang, cocokkan gambar “Diagram batang” dengan artinya (tinggi = f), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Diagram…",
+      "teksVisual": "▮ Diagram batang: tinggi = f"
     },
     {
       "judul": "Protocol",
       "emoji": "👁️",
       "countNum": 1,
       "countWord": "judul→skala→batang",
-      "suara": "Baca."
+      "suara": "Protocol — judul→skala→batang. Pada Diagram Batang, cocokkan gambar “Protocol” dengan artinya (judul→skala→batang), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "👁️ Protocol: judul→skala→batang"
     },
     {
       "judul": "Skala",
       "emoji": "📏",
       "countNum": 0,
       "countWord": "mulai 0 teratur",
-      "suara": "Consistency."
+      "suara": "Skala — mulai 0 teratur. Mulai dari nol agar perbedaan tidak dilebih-lebihkan. Pilih skala yang muat data terbesar. Ingat: jarak teratur; mulai 0; muat data max.",
+      "teksVisual": "📏 Skala: mulai 0 teratur"
     },
     {
       "judul": "Sea Games",
       "emoji": "🥇",
       "countNum": 1,
       "countWord": "emas per tahun",
-      "suara": "Tabel 8.8."
+      "suara": "Sea Games — emas per tahun. Tabel 8.8 medali emas Indonesia di Sea Games digambar jadi batang. Tiap tahun satu batang; tinggi sesuai banyak emas. Ingat: Tabel 8.8; 1 tahun=1 batang; tren.",
+      "teksVisual": "🥇 Sea Games: emas per tahun"
     },
     {
       "judul": "Selisih",
       "emoji": "➖",
       "countNum": 1,
       "countWord": "f besar − f kecil",
-      "suara": "Banding."
+      "suara": "Selisih — f besar − f kecil. Selisih = frekuensi besar dikurangi frekuensi kecil. Contoh: bandingkan siswa laki-laki dan perempuan per tahun. Ingat: selisih f; L vs P; Comparative.",
+      "teksVisual": "➖ Selisih: f besar − f kecil"
     },
     {
       "judul": "Batang ganda",
       "emoji": "▌▌",
       "countNum": 2,
       "countWord": "dua kelompok",
-      "suara": "Comparative."
+      "suara": "Batang ganda — dua kelompok. Dua batang berdampingan per kategori untuk dua kelompok. Pastikan legenda warna jelas. Ingat: berdampingan; legenda warna; kapan L>P.",
+      "teksVisual": "▌▌ Batang ganda: dua kelompok"
     },
     {
       "judul": "Legenda",
       "emoji": "🎨",
       "countNum": 1,
       "countWord": "warna jelas",
-      "suara": "Ganda."
+      "suara": "Legenda — warna jelas. Pada Diagram Batang, cocokkan gambar “Legenda” dengan artinya (warna jelas), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Diagram Batang.",
+      "teksVisual": "🎨 Legenda: warna jelas"
     },
     {
       "judul": "Tabel→batang",
       "emoji": "🔄",
       "countNum": 1,
       "countWord": "f jadi tinggi",
-      "suara": "Konstruksi."
+      "suara": "Tabel→batang — f jadi tinggi. Ambil frekuensi tabel panen lele atau pengunjung perpustakaan. Gambar batang proporsional ke skala. Ingat: tabel → batang; proporsional; cek tertinggi.",
+      "teksVisual": "🔄 Tabel→batang: f jadi tinggi"
     },
     {
       "judul": "Pilih sajian",
       "emoji": "🌍",
       "countNum": 1,
       "countWord": "tabel/pikto/batang",
-      "suara": "Representation."
+      "suara": "Pilih sajian — tabel/pikto/batang. Tabel f: tepat dan rinci. Piktogram: menarik + kunci. Batang: mudah banding tinggi. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Diagram Batang.",
+      "teksVisual": "🌍 Pilih sajian: tabel/pikto/batang"
     },
     {
       "judul": "Bab 8 A–C",
       "emoji": "🎉",
       "countNum": 1,
       "countWord": "Materi siap",
-      "suara": "Selesai."
+      "suara": "Bab 8 A–C — Materi siap. Pada Diagram Batang, cocokkan gambar “Bab 8 A–C” dengan artinya (Materi siap), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Diagram Batang.",
+      "teksVisual": "🎉 Bab 8 A–C: Materi siap"
     }
   ],
   "games": [

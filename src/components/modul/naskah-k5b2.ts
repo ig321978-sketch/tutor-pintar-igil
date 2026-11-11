@@ -267,70 +267,80 @@ export const SUB_A52: SubBabNaskah = {
       "emoji": "🦘",
       "countNum": 3,
       "countWord": "3,6,9",
-      "suara": "Kelipatan 3."
+      "suara": "Lompat 3 — 3,6,9. Pada Kelipatan, cocokkan gambar “Lompat 3” dengan artinya (3,6,9), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan.",
+      "teksVisual": "🦘 Lompat 3: 3,6,9"
     },
     {
       "judul": "Lompat 4",
       "emoji": "🦘",
       "countNum": 4,
       "countWord": "4,8,12",
-      "suara": "Kelipatan 4."
+      "suara": "Lompat 4 — 4,8,12. Pada Kelipatan, cocokkan gambar “Lompat 4” dengan artinya (4,8,12), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan.",
+      "teksVisual": "🦘 Lompat 4: 4,8,12"
     },
     {
       "judul": "Sisa 0",
       "emoji": "✅",
       "countNum": 0,
       "countWord": "ya",
-      "suara": "Habis dibagi."
+      "suara": "Sisa 0 — ya. Pada Kelipatan, cocokkan gambar “Sisa 0” dengan artinya (ya), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan.",
+      "teksVisual": "✅ Sisa 0: ya"
     },
     {
       "judul": "Ada sisa",
       "emoji": "🚫",
       "countNum": 1,
       "countWord": "tidak",
-      "suara": "Bukan kelipatan."
+      "suara": "Ada sisa — tidak. Pada Kelipatan, cocokkan gambar “Ada sisa” dengan artinya (tidak), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan.",
+      "teksVisual": "🚫 Ada sisa: tidak"
     },
     {
       "judul": "Tabel 100",
       "emoji": "▦",
       "countNum": 100,
       "countWord": "pola",
-      "suara": "Tandai."
+      "suara": "Tabel 100 — pola. Pada Kelipatan, cocokkan gambar “Tabel 100” dengan artinya (pola), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan.",
+      "teksVisual": "▦ Tabel 100: pola"
     },
     {
       "judul": "12÷3",
       "emoji": "➗",
       "countNum": 4,
       "countWord": "ya",
-      "suara": "12 kelipatan 3."
+      "suara": "Pada Kelipatan, cocokkan gambar “12÷3” dengan artinya (ya), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan.",
+      "teksVisual": "➗ 12÷3: ya"
     },
     {
       "judul": "10÷3",
       "emoji": "➗",
       "countNum": 1,
       "countWord": "sisa",
-      "suara": "Bukan."
+      "suara": "10÷3 — sisa. Pada Kelipatan, cocokkan gambar “10÷3” dengan artinya (sisa), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan.",
+      "teksVisual": "➗ 10÷3: sisa"
     },
     {
       "judul": "Daftar <40",
       "emoji": "📋",
       "countNum": 6,
       "countWord": "kel.6",
-      "suara": "6…36."
+      "suara": "Daftar <40 — kel.6. Pada Kelipatan, cocokkan gambar “Daftar <40” dengan artinya (kel.6), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan.",
+      "teksVisual": "📋 Daftar <40: kel.6"
     },
     {
       "judul": "Pola",
       "emoji": "👀",
       "countNum": 1,
       "countWord": "lihat",
-      "suara": "Kolom/baris."
+      "suara": "Pola — lihat. Pada Kelipatan, cocokkan gambar “Pola” dengan artinya (lihat), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan.",
+      "teksVisual": "👀 Pola: lihat"
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "KPK",
-      "suara": "Irisan."
+      "suara": "Siap B (KPK). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan.",
+      "teksVisual": "➡️ Siap B: KPK"
     }
   ],
   "games": [
@@ -1031,70 +1041,80 @@ export const SUB_B52: SubBabNaskah = {
       "emoji": "📋",
       "countNum": 4,
       "countWord": "4,8,12",
-      "suara": "Kel.4"
+      "suara": "Daftar 4 — 4,8,12. Pada Kelipatan Persekutuan dan KPK, cocokkan gambar “Daftar 4” dengan artinya (4,8,12), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan…",
+      "teksVisual": "📋 Daftar 4: 4,8,12"
     },
     {
       "judul": "Daftar 6",
       "emoji": "📋",
       "countNum": 6,
       "countWord": "6,12,24",
-      "suara": "Kel.6"
+      "suara": "Daftar 6 — 6,12,24. Pada Kelipatan Persekutuan dan KPK, cocokkan gambar “Daftar 6” dengan artinya (6,12,24), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan…",
+      "teksVisual": "📋 Daftar 6: 6,12,24"
     },
     {
       "judul": "Irisan",
       "emoji": "⋂",
       "countNum": 12,
       "countWord": "12,24",
-      "suara": "Bersama"
+      "suara": "Irisan — 12,24. Pada Kelipatan Persekutuan dan KPK, cocokkan gambar “Irisan” dengan artinya (12,24), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan Persekutuan…",
+      "teksVisual": "⋂ Irisan: 12,24"
     },
     {
       "judul": "KPK",
       "emoji": "⭐",
       "countNum": 12,
       "countWord": "terkecil",
-      "suara": "KPK=12"
+      "suara": "KPK — terkecil. Pada Kelipatan Persekutuan dan KPK, cocokkan gambar “KPK” dengan artinya (terkecil), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan Persekutuan…",
+      "teksVisual": "⭐ KPK: terkecil"
     },
     {
       "judul": "Cerita",
       "emoji": "💡",
       "countNum": 12,
       "countWord": "hari",
-      "suara": "Nyala bersama"
+      "suara": "Cerita — hari. Lampu A menyala tiap 4 hari, lampu B tiap 6 hari. Kapan menyala bersama pertama kali? Itu soal KPK: pertemuan pertama kelipatan keduanya.",
+      "teksVisual": "💡 Cerita: hari"
     },
     {
       "judul": "Bukan 24",
       "emoji": "🚫",
       "countNum": 24,
       "countWord": "bukan min",
-      "suara": "4×6 salah"
+      "suara": "Bukan 24 — bukan min. Pada Kelipatan Persekutuan dan KPK, cocokkan gambar “Bukan 24” dengan artinya (bukan min), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🚫 Bukan 24: bukan min"
     },
     {
       "judul": "3&5",
       "emoji": "⭐",
       "countNum": 15,
       "countWord": "KPK",
-      "suara": "15"
+      "suara": "Pada Kelipatan Persekutuan dan KPK, cocokkan gambar “3&5” dengan artinya (KPK), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan Persekutuan dan KPK.",
+      "teksVisual": "⭐ 3&5: KPK"
     },
     {
       "judul": "Cek",
       "emoji": "➗",
       "countNum": 0,
       "countWord": "sisa",
-      "suara": "Habis"
+      "suara": "Kesalahan: mengalikan selalu. Untuk 4 dan 6, 4×6=24, padahal KPK=12. Selalu cek irisan, jangan otomatis kali. Ingat: salah kali; cek irisan; tertukar.",
+      "teksVisual": "➗ Cek: sisa"
     },
     {
       "judul": "Tabel",
       "emoji": "▦",
       "countNum": 1,
       "countWord": "dua warna",
-      "suara": "Visual"
+      "suara": "Tabel — dua warna. Di tabel seratus, kotak yang ditandai dua warna adalah calon KPK. Yang paling kecil di antara itu adalah KPK. Ingat: dua warna; terkecil; padu.",
+      "teksVisual": "▦ Tabel: dua warna"
     },
     {
       "judul": "Siap C",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "faktor",
-      "suara": "Lanjut"
+      "suara": "Siap C — faktor. Berikutnya kita bahas faktor. Faktor adalah kebalikan arah dari kelipatan. Ingat: lanjut C; kebalikan; senjata. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Kelipatan Persekutuan dan KPK.",
+      "teksVisual": "➡️ Siap C: faktor"
     }
   ],
   "games": [
@@ -1794,70 +1814,80 @@ export const SUB_C52: SubBabNaskah = {
       "emoji": "➗",
       "countNum": 1,
       "countWord": "bagi habis",
-      "suara": "Arti"
+      "suara": "Faktor — bagi habis. Faktor 12 adalah bilangan yang membagi 12 habis: 1, 2, 3, 4, 6, 12. 1 berpasangan dengan 12 karena 1×12=12. Ingat: faktor 12; 1↔12; 2↔6,3↔4.",
+      "teksVisual": "➗ Faktor: bagi habis"
     },
     {
       "judul": "1↔n",
       "emoji": "🔗",
       "countNum": 1,
       "countWord": "pasangan",
-      "suara": "Selalu"
+      "suara": "1↔n — pasangan. Pada Faktor, cocokkan gambar “1↔n” dengan artinya (pasangan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor.",
+      "teksVisual": "🔗 1↔n: pasangan"
     },
     {
       "judul": "12",
       "emoji": "🌈",
       "countNum": 6,
       "countWord": "1..12",
-      "suara": "Faktor"
+      "suara": "Pada Faktor, cocokkan gambar “12” dengan artinya (1..12), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor.",
+      "teksVisual": "🌈 12: 1..12"
     },
     {
       "judul": "3×4",
       "emoji": "▦",
       "countNum": 12,
       "countWord": "susunan",
-      "suara": "Array"
+      "suara": "3×4 — susunan. Pada Faktor, cocokkan gambar “3×4” dengan artinya (susunan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor.",
+      "teksVisual": "▦ 3×4: susunan"
     },
     {
       "judul": "16",
       "emoji": "📋",
       "countNum": 5,
       "countWord": "1,2,4,8,16",
-      "suara": "Daftar"
+      "suara": "16 — 1,2,4,8,16. Pasangan 16: 1×16, 2×8, 4×4. Faktor: 1, 2, 4, 8, 16. 4×4 adalah persegi — tetap dihitung. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor.",
+      "teksVisual": "📋 16: 1,2,4,8,16"
     },
     {
       "judul": "Bukan kel.",
       "emoji": "🚫",
       "countNum": 1,
       "countWord": "beda",
-      "suara": "Arah beda"
+      "suara": "Faktor membagi habis ke dalam. Kelipatan melompat keluar. 12 adalah kelipatan 3, dan 3 adalah faktor 12. Hubungan kebalikan. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor.",
+      "teksVisual": "🚫 Bukan kel.: beda"
     },
     {
       "judul": "Lupa 1",
       "emoji": "⚠️",
       "countNum": 1,
       "countWord": "jangan",
-      "suara": "Selalu ada"
+      "suara": "Lupa 1 — jangan. Pada Faktor, cocokkan gambar “Lupa 1” dengan artinya (jangan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor.",
+      "teksVisual": "⚠️ Lupa 1: jangan"
     },
     {
       "judul": "Urut",
       "emoji": "📶",
       "countNum": 1,
       "countWord": "kecil→",
-      "suara": "Rapi"
+      "suara": "Urut — kecil→. Pada Faktor, cocokkan gambar “Urut” dengan artinya (kecil→), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor.",
+      "teksVisual": "📶 Urut: kecil→"
     },
     {
       "judul": "Cek",
       "emoji": "✅",
       "countNum": 0,
       "countWord": "sisa",
-      "suara": "Habis"
+      "suara": "Pada Faktor, cocokkan gambar “Cek” dengan artinya (sisa), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor.",
+      "teksVisual": "✅ Cek: sisa"
     },
     {
       "judul": "Siap D",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "FPB",
-      "suara": "Lanjut"
+      "suara": "Siap D — FPB. Faktor satu bilangan siap. Berikutnya faktor persekutuan dan FPB. Kamu akan membandingkan dua daftar faktor. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor.",
+      "teksVisual": "➡️ Siap D: FPB"
     }
   ],
   "games": [
@@ -2558,70 +2588,80 @@ export const SUB_D52: SubBabNaskah = {
       "emoji": "📋",
       "countNum": 6,
       "countWord": "1..12",
-      "suara": "Faktor"
+      "suara": "f12 — 1..12. Pada Faktor Persekutuan dan FPB, cocokkan gambar “f12” dengan artinya (1..12), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor Persekutuan dan FPB.",
+      "teksVisual": "📋 f12: 1..12"
     },
     {
       "judul": "f18",
       "emoji": "📋",
       "countNum": 6,
       "countWord": "1..18",
-      "suara": "Faktor"
+      "suara": "f18 — 1..18. Pada Faktor Persekutuan dan FPB, cocokkan gambar “f18” dengan artinya (1..18), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor Persekutuan dan FPB.",
+      "teksVisual": "📋 f18: 1..18"
     },
     {
       "judul": "Irisan",
       "emoji": "⋂",
       "countNum": 4,
       "countWord": "1,2,3,6",
-      "suara": "Sama"
+      "suara": "Irisan — 1,2,3,6. Pada Faktor Persekutuan dan FPB, cocokkan gambar “Irisan” dengan artinya (1,2,3,6), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor Persekutuan dan…",
+      "teksVisual": "⋂ Irisan: 1,2,3,6"
     },
     {
       "judul": "FPB",
       "emoji": "⭐",
       "countNum": 6,
       "countWord": "terbesar",
-      "suara": "FPB=6"
+      "suara": "FPB — terbesar. Pada Faktor Persekutuan dan FPB, cocokkan gambar “FPB” dengan artinya (terbesar), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor Persekutuan dan FPB.",
+      "teksVisual": "⭐ FPB: terbesar"
     },
     {
       "judul": "Cerita kue",
       "emoji": "🍰",
       "countNum": 6,
       "countWord": "kotak",
-      "suara": "Bagi rata"
+      "suara": "Cerita kue — kotak. Mau membagi 12 kue dan 18 kue ke kotak sama besar tanpa sisa. Ukuran kotak terbesar? Itu FPB: pembagi terbesar bersama. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor Persekutuan dan…",
+      "teksVisual": "🍰 Cerita kue: kotak"
     },
     {
       "judul": "≠ KPK",
       "emoji": "🚫",
       "countNum": 1,
       "countWord": "beda",
-      "suara": "Arah beda"
+      "suara": "≠ KPK — beda. Pada Faktor Persekutuan dan FPB, cocokkan gambar “≠ KPK” dengan artinya (beda), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor Persekutuan dan FPB.",
+      "teksVisual": "🚫 ≠ KPK: beda"
     },
     {
       "judul": "8&12",
       "emoji": "⭐",
       "countNum": 4,
       "countWord": "FPB",
-      "suara": "4"
+      "suara": "Pada Faktor Persekutuan dan FPB, cocokkan gambar “8&12” dengan artinya (FPB), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor Persekutuan dan FPB.",
+      "teksVisual": "⭐ 8&12: FPB"
     },
     {
       "judul": "Selisih",
       "emoji": "➖",
       "countNum": 6,
       "countWord": "ide",
-      "suara": "Euclid"
+      "suara": "Selisih — ide. Pada Faktor Persekutuan dan FPB, cocokkan gambar “Selisih” dengan artinya (ide), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor Persekutuan dan FPB.",
+      "teksVisual": "➖ Selisih: ide"
     },
     {
       "judul": "Cek",
       "emoji": "➗",
       "countNum": 0,
       "countWord": "sisa",
-      "suara": "Habis"
+      "suara": "Pada Faktor Persekutuan dan FPB, cocokkan gambar “Cek” dengan artinya (sisa), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor Persekutuan dan FPB.",
+      "teksVisual": "➗ Cek: sisa"
     },
     {
       "judul": "Siap E",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "prima",
-      "suara": "Lanjut"
+      "suara": "Siap E — prima. FPB dan KPK siap di tingkat daftar. Sub-Bab E: faktor prima sebagai jalan pintas. Ingat: siap; E; tetap. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Faktor Persekutuan dan FPB.",
+      "teksVisual": "➡️ Siap E: prima"
     }
   ],
   "games": [
@@ -3321,70 +3361,80 @@ export const SUB_E52: SubBabNaskah = {
       "emoji": "🌳",
       "countNum": 1,
       "countWord": "ke prima",
-      "suara": "Urai"
+      "suara": "Pohon — ke prima. Pada Menentukan KPK dan FPB dengan Faktor Prima, cocokkan gambar “Pohon” dengan artinya (ke prima), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🌳 Pohon: ke prima"
     },
     {
       "judul": "12",
       "emoji": "🔢",
       "countNum": 1,
       "countWord": "2²×3",
-      "suara": "Uraian"
+      "suara": "12 = 2×6, lalu 6 = 2×3. Daun: 2, 2, 3. Semua prima. Tulis 12 = 2² × 3. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Menentukan KPK dan FPB dengan Faktor Prima.",
+      "teksVisual": "🔢 12: 2²×3"
     },
     {
       "judul": "18",
       "emoji": "🔢",
       "countNum": 1,
       "countWord": "2×3²",
-      "suara": "Uraian"
+      "suara": "Pada Menentukan KPK dan FPB dengan Faktor Prima, cocokkan gambar “18” dengan artinya (2×3²), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Menentukan KPK dan FPB dengan…",
+      "teksVisual": "🔢 18: 2×3²"
     },
     {
       "judul": "FPB min",
       "emoji": "⬇️",
       "countNum": 6,
       "countWord": "2×3",
-      "suara": "FPB"
+      "suara": "FPB min — 2×3. Pada Menentukan KPK dan FPB dengan Faktor Prima, cocokkan gambar “FPB min” dengan artinya (2×3), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Menentukan…",
+      "teksVisual": "⬇️ FPB min: 2×3"
     },
     {
       "judul": "KPK max",
       "emoji": "⬆️",
       "countNum": 36,
       "countWord": "2²×3²",
-      "suara": "KPK"
+      "suara": "KPK max — 2²×3². Pada Menentukan KPK dan FPB dengan Faktor Prima, cocokkan gambar “KPK max” dengan artinya (2²×3²), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⬆️ KPK max: 2²×3²"
     },
     {
       "judul": "Jembatan",
       "emoji": "🌉",
       "countNum": 216,
       "countWord": "6×36",
-      "suara": "Cek"
+      "suara": "Jembatan — 6×36. Untuk dua bilangan a dan b: FPB×KPK = a×b. Contoh: 6×36=216 dan 12×18=216. Ingat: jembatan; cek 216; cek. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Menentukan KPK dan FPB dengan Faktor…",
+      "teksVisual": "🌉 Jembatan: 6×36"
     },
     {
       "judul": "Min≠Max",
       "emoji": "🚫",
       "countNum": 1,
       "countWord": "jangan",
-      "suara": "Tertukar"
+      "suara": "Min≠Max — jangan. Pada Menentukan KPK dan FPB dengan Faktor Prima, cocokkan gambar “Min≠Max” dengan artinya (jangan), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🚫 Min≠Max: jangan"
     },
     {
       "judul": "Prima",
       "emoji": "⭐",
       "countNum": 1,
       "countWord": "daun",
-      "suara": "Hanya prima"
+      "suara": "Prima — daun. 12=2²×3 dan 18=2×3². Prima yang sama: 2 dan 3. Ambil pangkat terkecil: 2¹ dan 3¹. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Menentukan KPK dan FPB dengan Faktor Prima.",
+      "teksVisual": "⭐ Prima: daun"
     },
     {
       "judul": "Daftar=Prima",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "sama",
-      "suara": "Hasil sama"
+      "suara": "Daftar=Prima — sama. Pada Menentukan KPK dan FPB dengan Faktor Prima, cocokkan gambar “Daftar=Prima” dengan artinya (sama), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ Daftar=Prima: sama"
     },
     {
       "judul": "Bab 2",
       "emoji": "🎉",
       "countNum": 1,
       "countWord": "siap",
-      "suara": "Utuh"
+      "suara": "Bab 2 — siap. Pada Menentukan KPK dan FPB dengan Faktor Prima, cocokkan gambar “Bab 2” dengan artinya (siap), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Menentukan KPK…",
+      "teksVisual": "🎉 Bab 2: siap"
     }
   ],
   "games": [

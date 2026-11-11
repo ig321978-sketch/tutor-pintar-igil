@@ -400,14 +400,30 @@ export function PanelPoster({
   suara,
   speakGuru,
   children,
+  teksVisual,
+  onSelesaiSuara,
 }: {
   nomor: number;
   judul: string;
   warna: string;
   suara: string;
-  speakGuru: (t: string) => void;
+  speakGuru: (t: string, selesai?: () => void) => void;
   children: React.ReactNode;
+  /** Teks singkat di bawah gambar (bukan uraian panjang). */
+  teksVisual?: string;
+  /** Dipanggil setelah suara guru selesai (bukan saat diklik). */
+  onSelesaiSuara?: () => void;
 }) {
+  const [fase, setFase] = useState<"idle" | "jalan" | "selesai">("idle");
+
+  const putar = () => {
+    setFase("jalan");
+    speakGuru(suara, () => {
+      setFase("selesai");
+      onSelesaiSuara?.();
+    });
+  };
+
   return (
     <section className="overflow-hidden rounded-2xl border-4 bg-white shadow-[0_4px_0_rgba(22,101,52,0.25)]" style={{ borderColor: warna }}>
       <header className="flex items-center gap-2 px-3 py-2" style={{ backgroundColor: warna }}>
@@ -415,9 +431,24 @@ export function PanelPoster({
           {nomor}
         </span>
         <h4 className="min-w-0 flex-1 text-base font-black leading-tight tracking-wide text-white">{judul}</h4>
-        <TombolSuaraGuru kecil label={`Dengarkan: ${judul}`} onClick={() => speakGuru(suara)} />
+        <TombolSuaraGuru kecil label={`Dengarkan: ${judul}`} onClick={putar} />
       </header>
-      <div className="space-y-2 p-3">{children}</div>
+      <div className="space-y-2 p-3">
+        {children}
+        {teksVisual ? (
+          <p className="rounded-xl border-2 border-[#1C01A5]/25 bg-[#FFFDF9] px-2 py-1 text-center text-[11px] font-black leading-snug text-[#1C01A5]">
+            {teksVisual}
+          </p>
+        ) : null}
+        {fase === "jalan" ? (
+          <p className="text-center text-[11px] font-black text-[#1C01A5]/70">🔊 Sedang dibacakan…</p>
+        ) : null}
+        {fase === "selesai" ? (
+          <p className="rounded-xl border-2 border-[#16A34A] bg-[#DCFCE7] px-2 py-1 text-center text-[11px] font-black text-[#14532D]">
+            ✔ Didengar
+          </p>
+        ) : null}
+      </div>
     </section>
   );
 }
@@ -480,7 +511,11 @@ function BarisPasangan({
   );
 }
 
-export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) => void }) {
+export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string, selesai?: () => void) => void }) {
+  const [didengar, setDidengar] = useState<number[]>([]);
+  const tandai = (n: number) => setDidengar((d) => (d.includes(n) ? d : [...d, n]));
+  const semua = didengar.length >= 5;
+
   return (
     <BingkaiTahap tahap={3} className="space-y-3">
       <PitaTahap ikon="📰" nama="INFOGRAFIS" cara="Lihat dan dengar" warna="#16A34A" />
@@ -488,6 +523,9 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
         <h3 className="min-w-0 text-xl font-black leading-tight text-[#1C01A5]">Cara Membandingkan Benda</h3>
         <TombolSuaraGuru onClick={() => speakGuru(SUARA_INFO)} />
       </div>
+      <p className="rounded-2xl border-2 border-dashed border-[#1C01A5]/35 bg-white/80 px-3 py-1.5 text-center text-[11px] font-black text-[#1C01A5]">
+        Lihat gambar dulu. Ketuk 🔊 — centang ✔ Didengar muncul setelah suara guru selesai.
+      </p>
 
       <PanelPoster
         nomor={1}
@@ -495,6 +533,7 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
         warna="#2563EB"
         speakGuru={speakGuru}
         suara="Ada enam kursi dan empat buku. Enam lebih banyak dari empat. Empat lebih sedikit dari enam."
+        onSelesaiSuara={() => tandai(1)}
       >
         <div className="grid grid-cols-2 gap-2 text-center">
           <div className="space-y-1">
@@ -516,6 +555,7 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
         warna="#D97706"
         speakGuru={speakGuru}
         suara="Satu kursi, satu balon. Balon habis, tapi dua kursi tidak punya pasangan. Jadi kursi lebih banyak."
+        onSelesaiSuara={() => tandai(2)}
       >
         <BarisPasangan atas={6} bawah={4} jenisAtas="kursi" jenisBawah="balon" />
       </PanelPoster>
@@ -526,6 +566,7 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
         warna="#7C3AED"
         speakGuru={speakGuru}
         suara="Tiga sepeda dan tiga balon. Semua punya pasangan. Tidak ada sisa. Jadi sama banyak."
+        onSelesaiSuara={() => tandai(3)}
       >
         <BarisPasangan atas={3} bawah={3} jenisAtas="sepeda" jenisBawah="balon" />
       </PanelPoster>
@@ -536,6 +577,7 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
         warna="#0891B2"
         speakGuru={speakGuru}
         suara="Di garis bilangan, makin ke kanan makin banyak. Katak jingga berhenti di tujuh. Katak biru di tiga. Tujuh lebih banyak dari tiga."
+        onSelesaiSuara={() => tandai(4)}
       >
         <GarisBilanganKatak posisiBiru={3} posisiJingga={7} />
       </PanelPoster>
@@ -546,6 +588,7 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
         warna="#DC2626"
         speakGuru={speakGuru}
         suara="Mulut buaya selalu terbuka ke bilangan yang lebih banyak. Sembilan lebih banyak dari enam. Empat lebih sedikit dari delapan. Enam sama dengan enam, mulut buaya menutup."
+        onSelesaiSuara={() => tandai(5)}
       >
         <div className="grid grid-cols-3 gap-1.5 text-center">
           {[
@@ -567,6 +610,23 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string) =>
           })}
         </div>
       </PanelPoster>
+
+      <div className="flex items-center justify-center gap-2 pt-1" aria-label={`${didengar.length} dari 5 panel didengar`}>
+        {[1, 2, 3, 4, 5].map((n) => (
+          <span key={n} className="text-2xl" aria-hidden="true">
+            {didengar.includes(n) ? "⭐" : "☆"}
+          </span>
+        ))}
+      </div>
+      <p
+        className={`rounded-2xl border-4 px-3 py-2 text-center text-sm font-black leading-snug ${
+          semua ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]" : "border-dashed border-[#1C01A5]/40 bg-white/80 text-[#1C01A5]"
+        }`}
+      >
+        {semua
+          ? "🌟 Hebat! Semua panel Infografis sudah didengar."
+          : `🔊 ${didengar.length}/5 panel didengar — centang muncul setelah suara selesai`}
+      </p>
 
       <div className="flex items-center justify-around gap-2 rounded-2xl border-4 border-dashed border-[#16A34A] bg-white px-2 py-3 text-center text-base font-black leading-tight text-[#14532D]">
         <span>

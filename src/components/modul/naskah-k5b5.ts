@@ -252,70 +252,80 @@ export const SUB_A55: SubBabNaskah = {
       "emoji": "⬜",
       "countNum": 1,
       "countWord": "daerah dalam",
-      "suara": "Definisi buku."
+      "suara": "Arti luas — daerah dalam. Pada Konsep Luas Daerah Bangun Datar, cocokkan gambar “Arti luas” dengan artinya (daerah dalam), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⬜ Arti luas: daerah dalam"
     },
     {
       "judul": "Satuan",
       "emoji": "📐",
       "countNum": 1,
       "countWord": "cm² / m²",
-      "suara": "Persegi satuan."
+      "suara": "Satuan — cm² / m². Buat persegi 1 cm kali 1 cm. Itu 1 sentimeter persegi. Atau 1 m kali 1 m untuk 1 meter persegi. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Luas Daerah Bangun Datar.",
+      "teksVisual": "📐 Satuan: cm² / m²"
     },
     {
       "judul": "Covering",
       "emoji": "🧩",
       "countNum": 1,
       "countWord": "Unit Square",
-      "suara": "Tutup rapat."
+      "suara": "Covering — Unit Square. Pada Konsep Luas Daerah Bangun Datar, cocokkan gambar “Covering” dengan artinya (Unit Square), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🧩 Covering: Unit Square"
     },
     {
       "judul": "Array",
       "emoji": "▦",
       "countNum": 10,
       "countWord": "5×2=10",
-      "suara": "Baris×kolom."
+      "suara": "Array — 5×2=10. Pada persegi panjang, petak tersusun baris dan kolom. Luas sama dengan banyak baris dikali banyak kolom. Ingat: baris×kolom; 5×2; 10. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Luas…",
+      "teksVisual": "▦ Array: 5×2=10"
     },
     {
       "judul": "Ubin",
       "emoji": "🧱",
       "countNum": 1,
       "countWord": "1 m²",
-      "suara": "Denah rumah."
+      "suara": "Ubin — 1 m². Pada Konsep Luas Daerah Bangun Datar, cocokkan gambar “Ubin” dengan artinya (1 m²), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Luas Daerah Bangun…",
+      "teksVisual": "🧱 Ubin: 1 m²"
     },
     {
       "judul": "Alun-Alun",
       "emoji": "🏖️",
       "countNum": 1,
       "countWord": "butuh luas",
-      "suara": "Konteks pasir."
+      "suara": "Alun-Alun — butuh luas. Di buku ada Alun-Alun Utara Keraton Yogyakarta yang dipugar dengan pasir pantai. Banyak pasir bergantung pada seberapa besar daerah alun-alun yang ditutup. Ingat: Alun-Alun; pasir menutup; daerah dalam.",
+      "teksVisual": "🏖️ Alun-Alun: butuh luas"
     },
     {
       "judul": "Yohana",
       "emoji": "✂️",
       "countNum": 9,
       "countWord": "luas tetap",
-      "suara": "Conservation."
+      "suara": "Yohana — luas tetap. Pada Konsep Luas Daerah Bangun Datar, cocokkan gambar “Yohana” dengan artinya (luas tetap), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✂️ Yohana: luas tetap"
     },
     {
       "judul": "Bukan K",
       "emoji": "⭕",
       "countNum": 1,
       "countWord": "path length",
-      "suara": "Bab 4."
+      "suara": "Bukan K — path length. Keliling menjawab panjang jalur di tepi luar. Luas menjawab isi daerah di dalam. Ingat: keliling = tepi; luas = dalam; jangan tertukar.",
+      "teksVisual": "⭕ Bukan K: path length"
     },
     {
       "judul": "Metode",
       "emoji": "🌍",
       "countNum": 1,
       "countWord": "3 label luar",
-      "suara": "Covering·Array·Conservation."
+      "suara": "Covering·Array·Conservation. Pada Konsep Luas Daerah Bangun Datar, cocokkan gambar “Metode” dengan artinya (3 label luar), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🌍 Metode: 3 label luar"
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "rumus bangun",
-      "suara": "Lanjut."
+      "suara": "Siap B (rumus bangun). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Konsep Luas…",
+      "teksVisual": "➡️ Siap B: rumus bangun"
     }
   ],
   "games": [
@@ -961,70 +971,80 @@ export const SUB_B55: SubBabNaskah = {
       "emoji": "▭",
       "countNum": 10,
       "countWord": "p×l",
-      "suara": "5×2."
+      "suara": "Pada Luas Daerah Bangun Datar, cocokkan gambar “PP” dengan artinya (p×l), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun Datar.",
+      "teksVisual": "▭ PP: p×l"
     },
     {
       "judul": "Persegi",
       "emoji": "⬜",
       "countNum": 16,
       "countWord": "s×s",
-      "suara": "sisi 4."
+      "suara": "Persegi — s×s. Jika panjang sama lebar, bangun itu persegi. Luas = sisi × sisi. Ingat: p=l; L=s×s; sisi 4. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun Datar.",
+      "teksVisual": "⬜ Persegi: s×s"
     },
     {
       "judul": "Segitiga",
       "emoji": "🔺",
       "countNum": 12,
       "countWord": "½×a×t",
-      "suara": "Dissection."
+      "suara": "Segitiga — ½×a×t. Pada Luas Daerah Bangun Datar, cocokkan gambar “Segitiga” dengan artinya (½×a×t), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun Datar.",
+      "teksVisual": "🔺 Segitiga: ½×a×t"
     },
     {
       "judul": "Jajar",
       "emoji": "▱",
       "countNum": 24,
       "countWord": "a×t",
-      "suara": "Shear."
+      "suara": "Jajar — a×t. Pada Luas Daerah Bangun Datar, cocokkan gambar “Jajar” dengan artinya (a×t), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun Datar.",
+      "teksVisual": "▱ Jajar: a×t"
     },
     {
       "judul": "Trapesium",
       "emoji": "⏢",
       "countNum": 16,
       "countWord": "½(a+b)×t",
-      "suara": "Sejajar."
+      "suara": "Trapesium — ½(a+b)×t. Trapesium punya sepasang sisi sejajar. Luas = setengah × (jumlah sisi sejajar) × tinggi. Ingat: ½(a+b)×t; 5&3 t4; 16. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun…",
+      "teksVisual": "⏢ Trapesium: ½(a+b)×t"
     },
     {
       "judul": "Belah",
       "emoji": "◇",
       "countNum": 12,
       "countWord": "½×d1×d2",
-      "suara": "Diagonal."
+      "suara": "Belah — ½×d1×d2. Pada Luas Daerah Bangun Datar, cocokkan gambar “Belah” dengan artinya (½×d1×d2), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun Datar.",
+      "teksVisual": "◇ Belah: ½×d1×d2"
     },
     {
       "judul": "Layang",
       "emoji": "🪁",
       "countNum": 24,
       "countWord": "½×d1×d2",
-      "suara": "Sama rumus."
+      "suara": "Layang — ½×d1×d2. Pada Luas Daerah Bangun Datar, cocokkan gambar “Layang” dengan artinya (½×d1×d2), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun Datar.",
+      "teksVisual": "🪁 Layang: ½×d1×d2"
     },
     {
       "judul": "Base×H",
       "emoji": "⊥",
       "countNum": 1,
       "countWord": "alas×tinggi",
-      "suara": "Unifikasi."
+      "suara": "Base×H — alas×tinggi. Panjang dan lebar adalah alas dan tinggi yang saling tegak lurus. Simpan ide ini untuk jajar dan segitiga. Ingat: alas×tinggi; Base×Height; tegak lurus.",
+      "teksVisual": "⊥ Base×H: alas×tinggi"
     },
     {
       "judul": "Metode",
       "emoji": "🌍",
       "countNum": 1,
       "countWord": "3 label",
-      "suara": "Dissection·Shear·Base×H."
+      "suara": "Dissection·Shear·Base×H. Pada Luas Daerah Bangun Datar, cocokkan gambar “Metode” dengan artinya (3 label), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah…",
+      "teksVisual": "🌍 Metode: 3 label"
     },
     {
       "judul": "Siap C",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "gabungan",
-      "suara": "Lanjut."
+      "suara": "Siap C — gabungan. Pada Luas Daerah Bangun Datar, cocokkan gambar “Siap C” dengan artinya (gabungan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun…",
+      "teksVisual": "➡️ Siap C: gabungan"
     }
   ],
   "games": [
@@ -1670,70 +1690,80 @@ export const SUB_C55: SubBabNaskah = {
       "emoji": "✂️",
       "countNum": 1,
       "countWord": "bagi bagian",
-      "suara": "Langkah 1."
+      "suara": "Urai — bagi bagian. Pada Luas Daerah Bangun Gabungan, cocokkan gambar “Urai” dengan artinya (bagi bagian), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah…",
+      "teksVisual": "✂️ Urai: bagi bagian"
     },
     {
       "judul": "Yohana",
       "emoji": "🪁",
       "countNum": 1,
       "countWord": "layang+△",
-      "suara": "Buku."
+      "suara": "Yohana — layang+△. Yohana membagi bangun jadi layang-layang dan segitiga. Luas layang = setengah × d1 × d2. Ingat: layang+segitiga; ½ d1 d2; ½ a t. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah…",
+      "teksVisual": "🪁 Yohana: layang+△"
     },
     {
       "judul": "Komang",
       "emoji": "▱",
       "countNum": 1,
       "countWord": "jajar+△",
-      "suara": "Buku."
+      "suara": "Komang — jajar+△. Komang membagi jadi jajargenjang dan segitiga. Luas jajar = alas × tinggi. Ingat: jajar+segitiga; a×t; ½ a t. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun Gabungan.",
+      "teksVisual": "▱ Komang: jajar+△"
     },
     {
       "judul": "Jumlah",
       "emoji": "➕",
       "countNum": 20,
       "countWord": "12+8",
-      "suara": "Additive."
+      "suara": "Jumlah — 12+8. Pada Luas Daerah Bangun Gabungan, cocokkan gambar “Jumlah” dengan artinya (12+8), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun Gabungan.",
+      "teksVisual": "➕ Jumlah: 12+8"
     },
     {
       "judul": "24+12",
       "emoji": "🔢",
       "countNum": 36,
       "countWord": "36",
-      "suara": "Contoh."
+      "suara": "Pada Luas Daerah Bangun Gabungan, cocokkan gambar “24+12” dengan artinya (36), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun Gabungan.",
+      "teksVisual": "🔢 24+12: 36"
     },
     {
       "judul": "Composite",
       "emoji": "🌍",
       "countNum": 1,
       "countWord": "urai+hitung+Σ",
-      "suara": "Metode luar."
+      "suara": "Composite — urai+hitung+Σ. Pada Luas Daerah Bangun Gabungan, cocokkan gambar “Composite” dengan artinya (urai+hitung+Σ), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🌍 Composite: urai+hitung+Σ"
     },
     {
       "judul": "Tak tindih",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "jangan 2×",
-      "suara": "Aturan."
+      "suara": "Tak tindih — jangan 2×. Pada Luas Daerah Bangun Gabungan, cocokkan gambar “Tak tindih” dengan artinya (jangan 2×), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "✅ Tak tindih: jangan 2×"
     },
     {
       "judul": "Validasi",
       "emoji": "🔍",
       "countNum": 1,
       "countWord": "dua cara",
-      "suara": "Cek."
+      "suara": "Validasi — dua cara. Jika sempat, hitung dengan cara uraian kedua. Hasil harus cocok. Ingat: cara 2; hasil cocok; cari salah. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun Gabungan.",
+      "teksVisual": "🔍 Validasi: dua cara"
     },
     {
       "judul": "Satuan",
       "emoji": "📐",
       "countNum": 1,
       "countWord": "sama",
-      "suara": "cm²."
+      "suara": "Satuan — sama. Pada Luas Daerah Bangun Gabungan, cocokkan gambar “Satuan” dengan artinya (sama), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun Gabungan.",
+      "teksVisual": "📐 Satuan: sama"
     },
     {
       "judul": "Siap D",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "K dan L",
-      "suara": "Lanjut."
+      "suara": "Siap D — K dan L. Gabungan luas siap. Berikutnya: keliling sama, luas bisa beda. Ingat: C siap; K vs L; isoperimetric. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Luas Daerah Bangun Gabungan.",
+      "teksVisual": "➡️ Siap D: K dan L"
     }
   ],
   "games": [
@@ -2379,70 +2409,80 @@ export const SUB_D55: SubBabNaskah = {
       "emoji": "🔒",
       "countNum": 60,
       "countWord": "2(p+l)",
-      "suara": "Syarat."
+      "suara": "K=60 — 2(p+l). Pada Hubungan Keliling dan Luas Daerah, cocokkan gambar “K=60” dengan artinya (2(p+l)), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Hubungan Keliling dan…",
+      "teksVisual": "🔒 K=60: 2(p+l)"
     },
     {
       "judul": "p+l",
       "emoji": "➕",
       "countNum": 30,
       "countWord": "30",
-      "suara": "Turunan."
+      "suara": "Pada Hubungan Keliling dan Luas Daerah, cocokkan gambar “p+l” dengan artinya (30), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Hubungan Keliling dan Luas Daerah.",
+      "teksVisual": "➕ p+l: 30"
     },
     {
       "judul": "20×10",
       "emoji": "▭",
       "countNum": 200,
       "countWord": "L=200",
-      "suara": "Buku."
+      "suara": "20×10 — L=200. Pada Hubungan Keliling dan Luas Daerah, cocokkan gambar “20×10” dengan artinya (L=200), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Hubungan Keliling dan…",
+      "teksVisual": "▭ 20×10: L=200"
     },
     {
       "judul": "25×5",
       "emoji": "📏",
       "countNum": 125,
       "countWord": "L=125",
-      "suara": "Pipih."
+      "suara": "25×5 — L=125. Pada Hubungan Keliling dan Luas Daerah, cocokkan gambar “25×5” dengan artinya (L=125), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Hubungan Keliling dan…",
+      "teksVisual": "📏 25×5: L=125"
     },
     {
       "judul": "15×15",
       "emoji": "⬜",
       "countNum": 225,
       "countWord": "L=225",
-      "suara": "Terluas PP."
+      "suara": "15×15 — L=225. Pada Hubungan Keliling dan Luas Daerah, cocokkan gambar “15×15” dengan artinya (L=225), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Hubungan Keliling dan…",
+      "teksVisual": "⬜ 15×15: L=225"
     },
     {
       "judul": "28×2",
       "emoji": "➖",
       "countNum": 56,
       "countWord": "L=56",
-      "suara": "Sangat pipih."
+      "suara": "28×2 — L=56. Pada Hubungan Keliling dan Luas Daerah, cocokkan gambar “28×2” dengan artinya (L=56), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Hubungan Keliling dan…",
+      "teksVisual": "➖ 28×2: L=56"
     },
     {
       "judul": "Isoperimetric",
       "emoji": "🌍",
       "countNum": 1,
       "countWord": "K sama ≠ L sama",
-      "suara": "Metode luar."
+      "suara": "Isoperimetric — K sama ≠ L sama. Pada Hubungan Keliling dan Luas Daerah, cocokkan gambar “Isoperimetric” dengan artinya (K sama ≠ L sama), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🌍 Isoperimetric: K sama ≠ L sama"
     },
     {
       "judul": "Kawat",
       "emoji": "🧵",
       "countNum": 1,
       "countWord": "keliling",
-      "suara": "Aplikasi K."
+      "suara": "Kawat — keliling. Pada Hubungan Keliling dan Luas Daerah, cocokkan gambar “Kawat” dengan artinya (keliling), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Hubungan…",
+      "teksVisual": "🧵 Kawat: keliling"
     },
     {
       "judul": "Ubin/cat",
       "emoji": "🧱",
       "countNum": 1,
       "countWord": "luas",
-      "suara": "Aplikasi L."
+      "suara": "Ubin/cat — luas. Pada Hubungan Keliling dan Luas Daerah, cocokkan gambar “Ubin/cat” dengan artinya (luas), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Hubungan Keliling…",
+      "teksVisual": "🧱 Ubin/cat: luas"
     },
     {
       "judul": "Bab 5",
       "emoji": "🎉",
       "countNum": 1,
       "countWord": "A–D siap",
-      "suara": "Materi."
+      "suara": "Bab 5 — A–D siap. Pada Hubungan Keliling dan Luas Daerah, cocokkan gambar “Bab 5” dengan artinya (A–D siap), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Hubungan…",
+      "teksVisual": "🎉 Bab 5: A–D siap"
     }
   ],
   "games": [

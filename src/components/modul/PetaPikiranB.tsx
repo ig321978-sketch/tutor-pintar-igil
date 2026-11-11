@@ -436,7 +436,7 @@ export function PetaPikiranB({
 }: {
   langkah: LangkahPeta[];
   judul: string;
-  speakGuru: (teks: string) => void;
+  speakGuru: (teks: string, selesai?: () => void) => void;
   maskot?: React.ReactNode;
   /** Diabaikan: uraian panjang hanya lewat suara, bukan teks layar. */
   uraian?: boolean;
@@ -444,6 +444,7 @@ export function PetaPikiranB({
   kelas?: KelasPeta;
 }) {
   const [didengar, setDidengar] = useState<number[]>([]);
+  const [sedang, setSedang] = useState<number | null>(null);
   const introSudah = useRef(false);
   const semua = didengar.length >= langkah.length;
   const gaya = (Math.min(6, Math.max(1, kelas || 1)) as KelasPeta);
@@ -451,8 +452,11 @@ export function PetaPikiranB({
   const ketuk = (l: LangkahPeta) => {
     const judulLangkah = judulBersih(l.stepTitle);
     const alur = l.flowFrom && l.flowTo ? ` Dari ${l.flowFrom} menuju ${l.flowTo}.` : "";
-    speakGuru(`${judulLangkah}.${alur} ${l.stepDesc}`);
-    setDidengar((d) => (d.includes(l.stepNumber) ? d : [...d, l.stepNumber]));
+    setSedang(l.stepNumber);
+    speakGuru(`${judulLangkah}.${alur} ${l.stepDesc}`, () => {
+      setSedang(null);
+      setDidengar((d) => (d.includes(l.stepNumber) ? d : [...d, l.stepNumber]));
+    });
   };
 
   useEffect(() => {
@@ -512,7 +516,11 @@ export function PetaPikiranB({
             semua ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]" : "border-dashed border-[#1C01A5]/40 bg-white/80 text-[#1C01A5]"
           }`}
         >
-          {semua ? "🌟 Hebat! Semua penjelasan sudah didengar." : `🔊 ${didengar.length}/${langkah.length} penjelasan didengar — ketuk langkah yang masih ☆`}
+          {sedang !== null
+            ? `🔊 Sedang dibacakan langkah ${sedang}… Centang ✔ muncul setelah selesai.`
+            : semua
+              ? "🌟 Hebat! Semua penjelasan sudah didengar."
+              : `🔊 ${didengar.length}/${langkah.length} penjelasan didengar — centang muncul setelah suara selesai`}
         </p>
       </BingkaiTahap>
     </div>

@@ -253,70 +253,80 @@ export const SUB_A63: SubBabNaskah = {
       "emoji": "🧱",
       "countNum": 1,
       "countWord": "susun unit",
-      "suara": "Metode."
+      "suara": "Construct — susun unit. Pada Mengonstruksi dan Mengurai, cocokkan gambar “Construct” dengan artinya (susun unit), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🧱 Construct: susun unit"
     },
     {
       "judul": "Decompose",
       "emoji": "🧩",
       "countNum": 1,
       "countWord": "urai unit",
-      "suara": "Metode."
+      "suara": "Decompose — urai unit. Pada Mengonstruksi dan Mengurai, cocokkan gambar “Decompose” dengan artinya (urai unit), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita…",
+      "teksVisual": "🧩 Decompose: urai unit"
     },
     {
       "judul": "Bentuk L",
       "emoji": "ʟ",
       "countNum": 3,
       "countWord": "3 kubus",
-      "suara": "Naskah lama."
+      "suara": "Bentuk L — 3 kubus. Tiga kubus: satu lantai atau bertingkat. Bentuk L: dua mendatar plus satu naik. Ingat: 3 kubus; bentuk L; putar 3D. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengonstruksi dan Mengurai.",
+      "teksVisual": "ʟ Bentuk L: 3 kubus"
     },
     {
       "judul": "Layer Count",
       "emoji": "📚",
       "countNum": 1,
       "countWord": "lantai demi lantai",
-      "suara": "Metode."
+      "suara": "Layer Count — lantai demi lantai. Pada Mengonstruksi dan Mengurai, cocokkan gambar “Layer Count” dengan artinya (lantai demi lantai), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📚 Layer Count: lantai demi lantai"
     },
     {
       "judul": "Hidden Support",
       "emoji": "⬇️",
       "countNum": 1,
       "countWord": "tidak melayang",
-      "suara": "Aturan."
+      "suara": "Hidden Support — tidak melayang. Kubus lantai atas tidak boleh melayang. Di bawahnya pasti ada kubus penopang. Ingat: tidak melayang; ada penopang; total semua.",
+      "teksVisual": "⬇️ Hidden Support: tidak melayang"
     },
     {
       "judul": "2×2×2",
       "emoji": "🧊",
       "countNum": 8,
       "countWord": "8 satuan",
-      "suara": "Penuh."
+      "suara": "2×2×2 — 8 satuan. Kubus besar 2×2×2 = 8 satuan. 3×3×3 = 27 satuan. Ingat: 8; 27; 30. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengonstruksi dan Mengurai.",
+      "teksVisual": "🧊 2×2×2: 8 satuan"
     },
     {
       "judul": "3×3×3",
       "emoji": "🧊",
       "countNum": 27,
       "countWord": "27 satuan",
-      "suara": "Penuh."
+      "suara": "3×3×3 — 27 satuan. Pada Mengonstruksi dan Mengurai, cocokkan gambar “3×3×3” dengan artinya (27 satuan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengonstruksi dan…",
+      "teksVisual": "🧊 3×3×3: 27 satuan"
     },
     {
       "judul": "5×3×2",
       "emoji": "📦",
       "countNum": 30,
       "countWord": "30 satuan",
-      "suara": "Balok."
+      "suara": "5×3×2 — 30 satuan. Pada Mengonstruksi dan Mengurai, cocokkan gambar “5×3×2” dengan artinya (30 satuan), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Mengonstruksi dan…",
+      "teksVisual": "📦 5×3×2: 30 satuan"
     },
     {
       "judul": "Putar 3D",
       "emoji": "🔄",
       "countNum": 1,
       "countWord": "geser panggung",
-      "suara": "Visual."
+      "suara": "Putar 3D — geser panggung. Pada Mengonstruksi dan Mengurai, cocokkan gambar “Putar 3D” dengan artinya (geser panggung), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🔄 Putar 3D: geser panggung"
     },
     {
       "judul": "Siap B",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "tampak 3 arah",
-      "suara": "Lanjut."
+      "suara": "Siap B (tampak 3 arah). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Konstruksi siap.",
+      "teksVisual": "➡️ Siap B: tampak 3 arah"
     }
   ],
   "games": [
@@ -962,70 +972,80 @@ export const SUB_B63: SubBabNaskah = {
       "emoji": "📐",
       "countNum": 1,
       "countWord": "3 tampak datar",
-      "suara": "Metode."
+      "suara": "Orthographic — 3 tampak datar. Pada Visualisasi Spasial, cocokkan gambar “Orthographic” dengan artinya (3 tampak datar), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "📐 Orthographic: 3 tampak datar"
     },
     {
       "judul": "Height-Matrix",
       "emoji": "▦",
       "countNum": 1,
       "countWord": "tinggi per petak",
-      "suara": "Metode."
+      "suara": "Height-Matrix — tinggi per petak. Pada Visualisasi Spasial, cocokkan gambar “Height-Matrix” dengan artinya (tinggi per petak), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "▦ Height-Matrix: tinggi per petak"
     },
     {
       "judul": "Occlusion Max",
       "emoji": "👀",
       "countNum": 1,
       "countWord": "ambil maksimum",
-      "suara": "Metode."
+      "suara": "Occlusion Max — ambil maksimum. Pada Visualisasi Spasial, cocokkan gambar “Occlusion Max” dengan artinya (ambil maksimum), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "👀 Occlusion Max: ambil maksimum"
     },
     {
       "judul": "Tampak atas",
       "emoji": "⬇️",
       "countNum": 1,
       "countWord": "bukan tinggi",
-      "suara": "Jebakan."
+      "suara": "Tampak atas — bukan tinggi. Dari atas: petak mana yang terisi. TIDAK terlihat berapa tinggi menara. Ingat: petak terisi; bukan tinggi; tumpuk → 1. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Visualisasi…",
+      "teksVisual": "⬇️ Tampak atas: bukan tinggi"
     },
     {
       "judul": "Tumpuk 4",
       "emoji": "🗼",
       "countNum": 1,
       "countWord": "atas = 1 petak",
-      "suara": "Contoh."
+      "suara": "Tumpuk 4 — atas = 1 petak. Pada Visualisasi Spasial, cocokkan gambar “Tumpuk 4” dengan artinya (atas = 1 petak), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🗼 Tumpuk 4: atas = 1 petak"
     },
     {
       "judul": "Depan [2,1]",
       "emoji": "👀",
       "countNum": 1,
       "countWord": "siluet kolom",
-      "suara": "Contoh."
+      "suara": "Depan [2,1] — siluet kolom. Pada Visualisasi Spasial, cocokkan gambar “Depan [2,1]” dengan artinya (siluet kolom), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "👀 Depan [2,1]: siluet kolom"
     },
     {
       "judul": "Belakang [3,4]",
       "emoji": "👀",
       "countNum": 1,
       "countWord": "max kolom",
-      "suara": "Contoh."
+      "suara": "Belakang [3,4] — max kolom. Pada Visualisasi Spasial, cocokkan gambar “Belakang [3,4]” dengan artinya (max kolom), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "👀 Belakang [3,4]: max kolom"
     },
     {
       "judul": "Putar 3D",
       "emoji": "🔄",
       "countNum": 1,
       "countWord": "cek arah",
-      "suara": "Visual."
+      "suara": "Putar 3D — cek arah. Pada Visualisasi Spasial, cocokkan gambar “Putar 3D” dengan artinya (cek arah), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Visualisasi Spasial.",
+      "teksVisual": "🔄 Putar 3D: cek arah"
     },
     {
       "judul": "Rekonstruksi",
       "emoji": "🧩",
       "countNum": 1,
       "countWord": "dari 3 gambar",
-      "suara": "Latihan."
+      "suara": "Rekonstruksi — dari 3 gambar. Pada Visualisasi Spasial, cocokkan gambar “Rekonstruksi” dengan artinya (dari 3 gambar), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🧩 Rekonstruksi: dari 3 gambar"
     },
     {
       "judul": "Siap C",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "lokasi petak",
-      "suara": "Lanjut."
+      "suara": "Siap C — lokasi petak. Proyeksi siap. Berikutnya: lokasi di petak dan jarak jalur. Ingat: B siap; petak; koordinat. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Visualisasi Spasial.",
+      "teksVisual": "➡️ Siap C: lokasi petak"
     }
   ],
   "games": [
@@ -1671,70 +1691,80 @@ export const SUB_C63: SubBabNaskah = {
       "emoji": "🔤",
       "countNum": 1,
       "countWord": "sumbu vertikal",
-      "suara": "Grid."
+      "suara": "Huruf — sumbu vertikal. Pada Lokasi, cocokkan gambar “Huruf” dengan artinya (sumbu vertikal), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Lokasi.",
+      "teksVisual": "🔤 Huruf: sumbu vertikal"
     },
     {
       "judul": "Angka",
       "emoji": "🔢",
       "countNum": 1,
       "countWord": "sumbu horizontal",
-      "suara": "Grid."
+      "suara": "Angka — sumbu horizontal. Pada Lokasi, cocokkan gambar “Angka” dengan artinya (sumbu horizontal), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Lokasi.",
+      "teksVisual": "🔢 Angka: sumbu horizontal"
     },
     {
       "judul": "C2",
       "emoji": "📍",
       "countNum": 1,
       "countWord": "contoh Makassar",
-      "suara": "Buku."
+      "suara": "C2 — contoh Makassar. Pada Lokasi, cocokkan gambar “C2” dengan artinya (contoh Makassar), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Lokasi.",
+      "teksVisual": "📍 C2: contoh Makassar"
     },
     {
       "judul": "Manhattan",
       "emoji": "📏",
       "countNum": 1,
       "countWord": "|Δh|+|Δa|",
-      "suara": "Metode."
+      "suara": "Manhattan — |Δh|+|Δa|. Dari (A,3) ke (E,5): |E−A|+|5−3|=4+2=6. Hanya kanan/kiri/atas/bawah. Ingat: |Δh|+|Δa|; A3→E5=6; 4 arah. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Lokasi.",
+      "teksVisual": "📏 Manhattan: |Δh|+|Δa|"
     },
     {
       "judul": "A3→E5",
       "emoji": "➡️",
       "countNum": 6,
       "countWord": "jarak 6",
-      "suara": "Contoh."
+      "suara": "A3→E5 — jarak 6. Pada Lokasi, cocokkan gambar “A3→E5” dengan artinya (jarak 6), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Lokasi.",
+      "teksVisual": "➡️ A3→E5: jarak 6"
     },
     {
       "judul": "4 arah",
       "emoji": "⬆️",
       "countNum": 1,
       "countWord": "bukan diagonal",
-      "suara": "Aturan."
+      "suara": "4 arah — bukan diagonal. Pada Lokasi, cocokkan gambar “4 arah” dengan artinya (bukan diagonal), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Lokasi.",
+      "teksVisual": "⬆️ 4 arah: bukan diagonal"
     },
     {
       "judul": "Shortest Path",
       "emoji": "🔀",
       "countNum": 1,
       "countWord": "banyak cara",
-      "suara": "Metode."
+      "suara": "Shortest Path — banyak cara. Pada Lokasi, cocokkan gambar “Shortest Path” dengan artinya (banyak cara), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Lokasi.",
+      "teksVisual": "🔀 Shortest Path: banyak cara"
     },
     {
       "judul": "F1→D2",
       "emoji": "🧊",
       "countNum": 3,
       "countWord": "jarak 3",
-      "suara": "Kubus."
+      "suara": "F1→D2 — jarak 3. Pada Lokasi, cocokkan gambar “F1→D2” dengan artinya (jarak 3), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Lokasi.",
+      "teksVisual": "🧊 F1→D2: jarak 3"
     },
     {
       "judul": "Denah kelas",
       "emoji": "🏫",
       "countNum": 1,
       "countWord": "kursi teman",
-      "suara": "Terapan."
+      "suara": "Denah kelas — kursi teman. Pada Lokasi, cocokkan gambar “Denah kelas” dengan artinya (kursi teman), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Lokasi.",
+      "teksVisual": "🏫 Denah kelas: kursi teman"
     },
     {
       "judul": "Bab 3 A–C",
       "emoji": "🎉",
       "countNum": 1,
       "countWord": "Materi siap",
-      "suara": "Selesai."
+      "suara": "Bab 3 A–C — Materi siap. Pada Lokasi, cocokkan gambar “Bab 3 A–C” dengan artinya (Materi siap), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Lokasi.",
+      "teksVisual": "🎉 Bab 3 A–C: Materi siap"
     }
   ],
   "games": [

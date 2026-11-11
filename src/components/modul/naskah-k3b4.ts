@@ -267,70 +267,80 @@ export const SUB_A34: SubBabNaskah = {
       "emoji": "📍",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Garis dibuat dari titik-titik yang berurutan. Ada garis lurus dan garis lengkung yang disebut kurva."
+      "suara": "Garis dibuat dari titik-titik yang berurutan. Ada garis lurus dan garis lengkung yang disebut kurva. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sisi pada Bangun Datar.",
+      "teksVisual": "📍 Garis dibuat dari titik-titik yang berurutan. Ada…"
     },
     {
       "judul": "Sinar Garis",
       "emoji": "🔦",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Sinar garis berpangkal di satu titik dan hanya dapat diperpanjang ke satu sisi."
+      "suara": "Sinar garis berpangkal di satu titik dan hanya dapat diperpanjang ke satu sisi. Sinar garis AB berpangkal di titik A dan menuju titik B. Sinar garis hanya dapat diperpanjang ke satu sisi. Ingat: Sinar garis AB; Satu sisi saja; Garis CD:…",
+      "teksVisual": "🔦 Sinar garis berpangkal di satu titik dan hanya dapat…"
     },
     {
       "judul": "Garis",
       "emoji": "🛤️",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Garis dapat diperpanjang ke kedua sisi dan tidak punya ujung."
+      "suara": "Garis dapat diperpanjang ke kedua sisi dan tidak punya ujung. Bayangkan kamu sedang mempelajari Sisi pada Bangun Datar. Kita sudah mengenal garis lurus dan garis lengkung di Kelas 2. Garis lengkung juga disebut kurva.",
+      "teksVisual": "🛤️ Garis dapat diperpanjang ke kedua sisi dan tidak…"
     },
     {
       "judul": "Ruas Garis",
       "emoji": "📏",
       "countNum": 3,
       "countWord": "Tiga",
-      "suara": "Ruas garis memiliki dua titik ujung dan panjang tertentu. Panjangnya dapat diukur dengan penggaris."
+      "suara": "Ruas garis memiliki dua titik ujung dan panjang tertentu. Panjangnya dapat diukur dengan penggaris. Ruas garis KL memiliki dua titik ujung. Ruas garis memiliki panjang tertentu atau tetap.",
+      "teksVisual": "📏 Ruas garis memiliki dua titik ujung dan panjang…"
     },
     {
       "judul": "Kurva",
       "emoji": "🌈",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Kurva adalah garis lengkung. Dua titik dapat dihubungkan oleh banyak kurva."
+      "suara": "Kurva adalah garis lengkung. Dua titik dapat dihubungkan oleh banyak kurva. Titik E dan F dapat dihubungkan dengan garis lengkung. Ada kurva hijau, merah, dan biru.",
+      "teksVisual": "🌈 Kurva adalah garis lengkung. Dua titik dapat…"
     },
     {
       "judul": "Dua Titik",
       "emoji": "🔗",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Dua titik berbeda hanya dapat dihubungkan dengan satu ruas garis lurus."
+      "suara": "Dua titik berbeda hanya dapat dihubungkan dengan satu ruas garis lurus. Ada dua titik berbeda, yaitu P dan Q. Kedua titik itu hanya dapat dihubungkan dengan satu ruas garis lurus. Ingat: Titik P dan Q; Satu ruas garis lurus; Ruas garis PQ.",
+      "teksVisual": "🔗 Dua titik berbeda hanya dapat dihubungkan dengan satu…"
     },
     {
       "judul": "cm dan mm",
       "emoji": "🔬",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Satu sentimeter sama dengan sepuluh milimeter. Lima milimeter sama dengan nol koma lima sentimeter."
+      "suara": "Satu sentimeter sama dengan sepuluh milimeter. Lima milimeter sama dengan nol koma lima sentimeter. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sisi pada Bangun Datar.",
+      "teksVisual": "🔬 Satu sentimeter sama dengan sepuluh milimeter. Lima…"
     },
     {
       "judul": "Mengukur Ruas Garis",
       "emoji": "0️⃣",
       "countNum": 3,
       "countWord": "Tiga",
-      "suara": "Letakkan angka nol penggaris di titik awal. Lihat angka di titik akhir. Tulis panjangnya dengan satuan."
+      "suara": "Letakkan angka nol penggaris di titik awal. Lihat angka di titik akhir. Tulis panjangnya dengan satuan. Ruas garis KL memiliki dua titik ujung. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sisi pada Bangun…",
+      "teksVisual": "0️⃣ Letakkan angka nol penggaris di titik awal. Lihat…"
     },
     {
       "judul": "Sisi",
       "emoji": "🔺",
       "countNum": 3,
       "countWord": "Tiga",
-      "suara": "Ruas garis pembatas bangun datar dinamakan sisi. Segitiga punya tiga sisi dan persegi punya empat sisi."
+      "suara": "Ruas garis pembatas bangun datar dinamakan sisi. Segitiga punya tiga sisi dan persegi punya empat sisi. Segitiga EFG dibatasi tiga ruas garis: EF, FG, dan EG. Ingat: Segitiga EFG; Ruas garis = sisi; Segitiga: 3 sisi.",
+      "teksVisual": "🔺 Ruas garis pembatas bangun datar dinamakan sisi.…"
     },
     {
       "judul": "Cara Mengukur",
       "emoji": "📝",
       "countNum": 4,
       "countWord": "Empat",
-      "suara": "Empat langkah. Satu, letakkan angka nol di titik awal. Dua, lihat angka di titik akhir. Tiga, baca sentimeter dan milimeternya. Empat, tulis hasilnya dengan satuan."
+      "suara": "Empat langkah. Satu, letakkan angka nol di titik awal. Dua, lihat angka di titik akhir. Tiga, baca sentimeter dan milimeternya. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sisi pada Bangun Datar.",
+      "teksVisual": "📝 Empat langkah. Satu, letakkan angka nol di titik…"
     }
   ],
   "games": [
@@ -1029,70 +1039,80 @@ export const SUB_B34: SubBabNaskah = {
       "emoji": "📐",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Sudut terbentuk ketika dua garis berpotongan pada satu titik. Dua kaki sudut bertemu di titik sudut."
+      "suara": "Sudut terbentuk ketika dua garis berpotongan pada satu titik. Dua kaki sudut bertemu di titik sudut. Bayangkan kamu sedang mempelajari Sudut pada Bidang Datar. Buku yang dibuka membentuk sebuah sudut.",
+      "teksVisual": "📐 Sudut terbentuk ketika dua garis berpotongan pada…"
     },
     {
       "judul": "Titik Sudut dan Kaki",
       "emoji": "📍",
       "countNum": 3,
       "countWord": "Tiga",
-      "suara": "Pada sudut AOB, titik O adalah titik sudut, sedangkan sinar OA dan sinar OB adalah kaki sudut."
+      "suara": "Pada sudut AOB, titik O adalah titik sudut, sedangkan sinar OA dan sinar OB adalah kaki sudut. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sudut pada Bidang Datar.",
+      "teksVisual": "📍 Pada sudut AOB, titik O adalah titik sudut, sedangkan…"
     },
     {
       "judul": "Membandingkan Sudut",
       "emoji": "📎",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Strip sudut dipakai untuk membandingkan sudut. Makin jauh strip diputar, makin besar sudutnya."
+      "suara": "Strip sudut dipakai untuk membandingkan sudut. Makin jauh strip diputar, makin besar sudutnya. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sudut pada Bidang Datar.",
+      "teksVisual": "📎 Bandingkan dua pecahan peluang (Comparative Ratio)."
     },
     {
       "judul": "Sudut Siku-siku",
       "emoji": "📄",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Pojok kertas yang dilipat dua kali adalah sudut siku-siku. Ukurannya tepat sembilan puluh derajat."
+      "suara": "Pojok kertas yang dilipat dua kali adalah sudut siku-siku. Ukurannya tepat sembilan puluh derajat. Lipat selembar kertas, lalu lipat sekali lagi dengan rapi. Pojok kertas lipat itu adalah sudut istimewa.",
+      "teksVisual": "📄 Pojok kertas yang dilipat dua kali adalah sudut…"
     },
     {
       "judul": "Satuan Sudut",
       "emoji": "🍕",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Sudut yang sama diukur dengan irisan besar dan irisan kecil memberi bilangan yang berbeda."
+      "suara": "Sudut yang sama diukur dengan irisan besar dan irisan kecil memberi bilangan yang berbeda. Sinar OA dan sinar OB bertemu di titik O dan membentuk sudut AOB. Titik O disebut titik sudut, sinar OA dan OB disebut kaki. Ingat: Sudut AOB; O…",
+      "teksVisual": "🍕 Sudut yang sama diukur dengan irisan besar dan irisan…"
     },
     {
       "judul": "Busur Derajat",
       "emoji": "🧭",
       "countNum": 3,
       "countWord": "Tiga",
-      "suara": "Busur derajat mengukur sudut dalam derajat. Titik tengahnya di titik sudut dan garis nolnya di kaki pertama."
+      "suara": "Busur derajat mengukur sudut dalam derajat. Titik tengahnya di titik sudut dan garis nolnya di kaki pertama. Busur derajat dipakai untuk mengukur sudut. Letakkan titik tengah busur derajat tepat di titik O.",
+      "teksVisual": "🧭 Busur derajat mengukur sudut dalam derajat. Titik…"
     },
     {
       "judul": "Lancip dan Tumpul",
       "emoji": "🔺",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Sudut lancip kurang dari sembilan puluh derajat. Sudut tumpul lebih dari sembilan puluh derajat dan kurang dari seratus delapan puluh derajat."
+      "suara": "Sudut lancip kurang dari sembilan puluh derajat. Sudut tumpul lebih dari sembilan puluh derajat dan kurang dari seratus delapan puluh derajat. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sudut pada Bidang…",
+      "teksVisual": "🔺 Sudut lancip kurang dari sembilan puluh derajat.…"
     },
     {
       "judul": "Sudut Lurus",
       "emoji": "↔️",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Sudut lurus tepat seratus delapan puluh derajat. Kedua kakinya membentuk garis lurus."
+      "suara": "Sudut lurus tepat seratus delapan puluh derajat. Kedua kakinya membentuk garis lurus. Pada Sudut pada Bidang Datar, cocokkan gambar “Sudut Lurus” dengan artinya (Dua), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "↔️ Sudut lurus tepat seratus delapan puluh derajat.…"
     },
     {
       "judul": "Sudut Refleks",
       "emoji": "🔄",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Sudut refleks lebih dari seratus delapan puluh derajat dan kurang dari tiga ratus enam puluh derajat."
+      "suara": "Sudut refleks lebih dari seratus delapan puluh derajat dan kurang dari tiga ratus enam puluh derajat. Sudut yang lebih dari 180° dan kurang dari 360° disebut sudut refleks. Sudut refleks 300° berpasangan dengan sudut lancip 60°. Ingat:…",
+      "teksVisual": "🔄 Sudut refleks lebih dari seratus delapan puluh…"
     },
     {
       "judul": "Cara Mengukur Sudut",
       "emoji": "📝",
       "countNum": 4,
       "countWord": "Empat",
-      "suara": "Empat langkah. Satu, letakkan titik tengah busur derajat di titik sudut. Dua, sejajarkan kaki pertama dengan garis nol. Tiga, lihat kaki kedua. Empat, baca derajatnya."
+      "suara": "Empat langkah. Satu, letakkan titik tengah busur derajat di titik sudut. Dua, sejajarkan kaki pertama dengan garis nol. Tiga, lihat kaki kedua. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Sudut pada Bidang…",
+      "teksVisual": "📝 Empat langkah. Satu, letakkan titik tengah busur…"
     }
   ],
   "games": [
@@ -1791,70 +1811,80 @@ export const SUB_C34: SubBabNaskah = {
       "emoji": "🔗",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Dua garis dapat bertemu pada satu titik. Dua garis juga dapat tidak bertemu walaupun diperpanjang."
+      "suara": "Dua garis dapat bertemu pada satu titik. Dua garis juga dapat tidak bertemu walaupun diperpanjang. Bayangkan kamu sedang mempelajari Garis-Garis Tegak Lurus dan Garis-Garis Sejajar. Dua garis dapat bertemu atau berpotongan pada satu titik.",
+      "teksVisual": "🔗 Dua garis dapat bertemu pada satu titik. Dua garis…"
     },
     {
       "judul": "Garis Tegak Lurus",
       "emoji": "📐",
       "countNum": 3,
       "countWord": "Tiga",
-      "suara": "Garis tegak lurus bertemu pada satu titik. Pertemuannya membentuk sudut siku-siku. Sudut itu diberi tanda kotak kecil."
+      "suara": "Garis tegak lurus bertemu pada satu titik. Pertemuannya membentuk sudut siku-siku. Sudut itu diberi tanda kotak kecil. Garis AB bertemu garis BC pada sudut siku-siku.",
+      "teksVisual": "📐 Garis tegak lurus bertemu pada satu titik.…"
     },
     {
       "judul": "Lambang Tegak Lurus",
       "emoji": "➕",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Garis AB tegak lurus garis BC ditulis AB ⊥ BC. Lambang ⊥ dibaca tegak lurus."
+      "suara": "Garis AB tegak lurus garis BC ditulis AB ⊥ BC. Lambang ⊥ dibaca tegak lurus. Garis AB bertemu garis BC pada sudut siku-siku. AB dan BC adalah garis tegak lurus.",
+      "teksVisual": "➕ Garis AB tegak lurus garis BC ditulis AB ⊥ BC. Lambang…"
     },
     {
       "judul": "Kertas Lipat",
       "emoji": "📄",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Pojok kertas yang dilipat dua kali adalah sudut siku-siku. Pojok itu dipakai untuk memeriksa garis tegak lurus."
+      "suara": "Pojok kertas yang dilipat dua kali adalah sudut siku-siku. Pojok itu dipakai untuk memeriksa garis tegak lurus. Selembar kertas yang dilipat dua kali menghasilkan sudut siku-siku. Pojok kertas lipat dapat memeriksa garis tegak lurus.",
+      "teksVisual": "📄 Pojok kertas yang dilipat dua kali adalah sudut…"
     },
     {
       "judul": "Garis Sejajar",
       "emoji": "🛤️",
       "countNum": 3,
       "countWord": "Tiga",
-      "suara": "Garis sejajar ditarik pada jarak yang selalu sama. Garis sejajar tidak pernah bertemu. Anak panah menandai garis sejajar."
+      "suara": "Garis sejajar ditarik pada jarak yang selalu sama. Garis sejajar tidak pernah bertemu. Anak panah menandai garis sejajar. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Garis-Garis Tegak Lurus dan Garis-Garis…",
+      "teksVisual": "🛤️ Garis sejajar ditarik pada jarak yang selalu sama.…"
     },
     {
       "judul": "Lambang Sejajar",
       "emoji": "⏩",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Garis AB sejajar garis CD ditulis AB // CD. Lambang // dibaca sejajar."
+      "suara": "Garis AB sejajar garis CD ditulis AB // CD. Lambang // dibaca sejajar. Pada Garis-Garis Tegak Lurus dan Garis-Garis Sejajar, cocokkan gambar “Lambang Sejajar” dengan artinya (Dua), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "⏩ Garis AB sejajar garis CD ditulis AB // CD. Lambang //…"
     },
     {
       "judul": "Segitiga",
       "emoji": "🔺",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Segitiga memiliki tiga sisi dan tiga sudut. Segitiga dibatasi tiga ruas garis."
+      "suara": "Segitiga memiliki tiga sisi dan tiga sudut. Segitiga dibatasi tiga ruas garis. Tiga batang pensil yang dihubungkan ujungnya membentuk segitiga. Segitiga dibatasi tiga ruas garis atau tiga sisi.",
+      "teksVisual": "🔺 Segitiga memiliki tiga sisi dan tiga sudut. Segitiga…"
     },
     {
       "judul": "Persegi dan Persegi Panjang",
       "emoji": "⬜",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Persegi panjang memiliki empat sisi dan empat sudut siku-siku. Persegi memiliki empat sisi yang sama panjang."
+      "suara": "Persegi panjang memiliki empat sisi dan empat sudut siku-siku. Persegi memiliki empat sisi yang sama panjang. Empat batang pensil dapat membentuk persegi panjang. Ingat: Persegi panjang; 4 sisi, 4 sudut; Persegi.",
+      "teksVisual": "⬜ Persegi panjang memiliki empat sisi dan empat sudut…"
     },
     {
       "judul": "Lingkaran",
       "emoji": "⭕",
       "countNum": 2,
       "countWord": "Dua",
-      "suara": "Lingkaran dibatasi oleh garis lengkung. Lingkaran tidak memiliki sudut."
+      "suara": "Lingkaran dibatasi oleh garis lengkung. Lingkaran tidak memiliki sudut. Ingat: Garis lengkung; Tanpa sudut; Segilima: 5 sisi. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Garis-Garis Tegak Lurus dan…",
+      "teksVisual": "⭕ Lingkaran dibatasi oleh garis lengkung. Lingkaran…"
     },
     {
       "judul": "Cara Memeriksa Garis",
       "emoji": "📝",
       "countNum": 4,
       "countWord": "Empat",
-      "suara": "Empat langkah. Satu, lipat kertas dua kali. Dua, letakkan pojok kertas di pertemuan garis. Tiga, lihat apakah garis pas dengan pojok. Empat, pas berarti tegak lurus."
+      "suara": "Empat langkah. Satu, lipat kertas dua kali. Dua, letakkan pojok kertas di pertemuan garis. Tiga, lihat apakah garis pas dengan pojok. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Garis-Garis Tegak Lurus dan…",
+      "teksVisual": "📝 Empat langkah. Satu, lipat kertas dua kali. Dua,…"
     }
   ],
   "games": [

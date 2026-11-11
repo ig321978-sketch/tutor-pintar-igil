@@ -267,70 +267,80 @@ export const SUB_A46: SubBabNaskah = {
       "emoji": "🖼️",
       "countNum": 1,
       "countWord": "diagram gambar",
-      "suara": "Piktogram memakai gambar untuk menyatakan banyak."
+      "suara": "Piktogram memakai gambar untuk menyatakan banyak. Pada Piktogram, cocokkan gambar “Definisi” dengan artinya (diagram gambar), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🖼️ Piktogram memakai gambar untuk menyatakan banyak."
     },
     {
       "judul": "Skala 1",
       "emoji": "1️⃣",
       "countNum": 1,
       "countWord": "1 gambar = 1",
-      "suara": "Satu gambar mewakili satu data."
+      "suara": "Satu gambar mewakili satu data. Pada Piktogram, cocokkan gambar “Skala 1” dengan artinya (1 gambar = 1), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "1️⃣ Skala 1: 1 gambar = 1"
     },
     {
       "judul": "Skala n",
       "emoji": "4️⃣",
       "countNum": 4,
       "countWord": "1 gambar = n",
-      "suara": "Satu gambar mewakili beberapa data."
+      "suara": "Satu gambar mewakili beberapa data. Pada Piktogram, cocokkan gambar “Skala n” dengan artinya (1 gambar = n), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "4️⃣ Skala n: 1 gambar = n"
     },
     {
       "judul": "Mainan",
       "emoji": "🔵",
       "countNum": 23,
       "countWord": "total 23",
-      "suara": "Mainan Karel berjumlah dua puluh tiga."
+      "suara": "Mainan Karel berjumlah dua puluh tiga. Mobil enam, robot empat. Pesawat tiga, puzzle satu. Ingat: 6 4 3 1; total 23; paling banyak. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "🔵 Mainan: total 23"
     },
     {
       "judul": "Kelereng",
       "emoji": "9️⃣",
       "countNum": 9,
       "countWord": "paling banyak",
-      "suara": "Kelereng paling banyak."
+      "suara": "Kelereng paling banyak. Pada Piktogram, cocokkan gambar “Kelereng” dengan artinya (paling banyak), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "9️⃣ Kelereng: paling banyak"
     },
     {
       "judul": "Puzzle",
       "emoji": "1️⃣",
       "countNum": 1,
       "countWord": "paling sedikit",
-      "suara": "Puzzle paling sedikit."
+      "suara": "Puzzle paling sedikit. Pada Piktogram, cocokkan gambar “Puzzle” dengan artinya (paling sedikit), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "1️⃣ Puzzle: paling sedikit"
     },
     {
       "judul": "Warna merah",
       "emoji": "🔴",
       "countNum": 5,
       "countWord": "5 siswa",
-      "suara": "Merah paling disukai."
+      "suara": "Merah paling disukai. Pada Piktogram, cocokkan gambar “Warna merah” dengan artinya (5 siswa), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "🔴 Warna merah: 5 siswa"
     },
     {
       "judul": "Total warna",
       "emoji": "1️⃣2️⃣",
       "countNum": 12,
       "countWord": "12 siswa",
-      "suara": "Total dua belas siswa."
+      "suara": "Total warna (12 siswa). Total = semua hasil mungkin (penyebut). Koin: 2; dadu: 6. Tanpa total, rasio peluang tidak bisa dibandingkan. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "1️⃣2️⃣ Total warna: 12 siswa"
     },
     {
       "judul": "Baca",
       "emoji": "✖️",
       "countNum": 1,
       "countWord": "gambar × skala",
-      "suara": "Nilai sama dengan gambar dikali skala."
+      "suara": "Nilai sama dengan gambar dikali skala. Hitung gambar tiap baris. Kalikan dengan skala. Ingat: hitung; × skala; banding. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Piktogram.",
+      "teksVisual": "✖️ Baca: gambar × skala"
     },
     {
       "judul": "Siap B",
       "emoji": "📊",
       "countNum": 1,
       "countWord": "lanjut batang",
-      "suara": "Berikutnya diagram batang."
+      "suara": "Siap B (lanjut batang). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Kita sudah paham piktogram.",
+      "teksVisual": "📊 Siap B: lanjut batang"
     }
   ],
   "games": [
@@ -1029,70 +1039,80 @@ export const SUB_B46: SubBabNaskah = {
       "emoji": "▮",
       "countNum": 1,
       "countWord": "batang",
-      "suara": "Diagram batang memakai persegi panjang."
+      "suara": "Diagram batang memakai persegi panjang. Pada Diagram Batang, cocokkan gambar “Definisi” dengan artinya (batang), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "▮ Definisi: batang"
     },
     {
       "judul": "Sumbu Y",
       "emoji": "⬆️",
       "countNum": 1,
       "countWord": "banyak",
-      "suara": "Sumbu tegak sering menyatakan banyak."
+      "suara": "Sumbu tegak sering menyatakan banyak. Pada Diagram Batang, cocokkan gambar “Sumbu Y” dengan artinya (banyak), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Diagram Batang.",
+      "teksVisual": "⬆️ Sumbu Y: banyak"
     },
     {
       "judul": "Sumbu X",
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "kategori",
-      "suara": "Sumbu datar sering menyatakan nama."
+      "suara": "Sumbu datar sering menyatakan nama. Pada Diagram Batang, cocokkan gambar “Sumbu X” dengan artinya (kategori), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Diagram Batang.",
+      "teksVisual": "➡️ Sumbu X: kategori"
     },
     {
       "judul": "Tegak",
       "emoji": "📊",
       "countNum": 1,
       "countWord": "ke atas",
-      "suara": "Batang tegak tumbuh ke atas."
+      "suara": "Batang tegak tumbuh ke atas. Batang bisa naik ke atas. Atau memanjang ke samping. Ingat: tegak; mendatar; sama arti. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Diagram Batang.",
+      "teksVisual": "📊 Tegak: ke atas"
     },
     {
       "judul": "Mendatar",
       "emoji": "📈",
       "countNum": 1,
       "countWord": "ke samping",
-      "suara": "Batang mendatar memanjang ke samping."
+      "suara": "Batang mendatar memanjang ke samping. Batang bisa naik ke atas. Atau memanjang ke samping. Ingat: tegak; mendatar; sama arti. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Diagram Batang.",
+      "teksVisual": "📈 Mendatar: ke samping"
     },
     {
       "judul": "Baca",
       "emoji": "👀",
       "countNum": 1,
       "countWord": "tinggi/panjang",
-      "suara": "Nilai dibaca dari tinggi atau panjang."
+      "suara": "Nilai dibaca dari tinggi atau panjang. Pada Diagram Batang, cocokkan gambar “Baca” dengan artinya (tinggi/panjang), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "👀 Baca: tinggi/panjang"
     },
     {
       "judul": "Transport",
       "emoji": "🚶",
       "countNum": 8,
       "countWord": "jalan kaki 8",
-      "suara": "Contoh nilai jalan kaki delapan."
+      "suara": "Contoh nilai jalan kaki delapan. Pada Diagram Batang, cocokkan gambar “Transport” dengan artinya (jalan kaki 8), lalu sebut satu contoh dari ceritamu.",
+      "teksVisual": "🚶 Transport: jalan kaki 8"
     },
     {
       "judul": "Banding",
       "emoji": "⚖️",
       "countNum": 1,
       "countWord": "ekstrem",
-      "suara": "Bandingkan batang untuk paling banyak."
+      "suara": "Banding (ekstrem). Bandingkan dua pecahan peluang (Comparative Ratio). Samakan penyebut atau ubah ke desimal singkat, lalu lihat mana lebih besar. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Diagram Batang.",
+      "teksVisual": "⚖️ Bandingkan dua pecahan peluang (Comparative Ratio)."
     },
     {
       "judul": "Total",
       "emoji": "➕",
       "countNum": 1,
       "countWord": "jumlah nilai",
-      "suara": "Total = jumlah semua batang."
+      "suara": "Total (jumlah nilai). Total = semua hasil mungkin (penyebut). Koin: 2; dadu: 6. Tanpa total, rasio peluang tidak bisa dibandingkan. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Diagram Batang.",
+      "teksVisual": "➕ Total: jumlah nilai"
     },
     {
       "judul": "Bab 6 siap",
       "emoji": "✅",
       "countNum": 1,
       "countWord": "A+B",
-      "suara": "Piktogram dan batang siap."
+      "suara": "Piktogram dan batang siap. Pada Diagram Batang, cocokkan gambar “Bab 6 siap” dengan artinya (A+B), lalu sebut satu contoh dari ceritamu. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Diagram Batang.",
+      "teksVisual": "✅ Bab 6 siap: A+B"
     }
   ],
   "games": [
