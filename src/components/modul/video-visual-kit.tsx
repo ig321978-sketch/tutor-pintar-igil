@@ -3,7 +3,7 @@
 import React from "react";
 import { BIRU, EMAS } from "./CeritaBandingB";
 import { Lompat, Muncul, Sorot } from "./video-cerita";
-import { indeksSudutSiku, tengahSisi, titikSegitigaDariSisi } from "./segitiga-geometri";
+import { indeksSudutSiku, polylineTandaSiku, tengahSisi, titikSegitigaDariSisi } from "./segitiga-geometri";
 
 /* ------------------------------------------------------------------------ */
 /* Primitif SVG untuk kanvas video cerita 300×208 (K4–K6). Progresif via k.  */
@@ -258,7 +258,6 @@ export function SegitigaKeliling({
   const sisiSelesai = Math.floor(progres * 3 + 0.001);
   const sama = (x: number, y: number) => Math.abs(x - y) < 0.01;
   const sikuIdx = tandaSiku ? indeksSudutSiku(a, b, c) : -1;
-  const verts = [A, B, C];
   return (
     <g>
       <polygon points={`${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}`} fill="#FEF3C7" stroke={BIRU} strokeWidth="2" opacity={0.5} />
@@ -282,14 +281,18 @@ export function SegitigaKeliling({
         ) : null;
       })}
       {sikuIdx >= 0 ? (
-        <rect
-          x={verts[sikuIdx].x - 6}
-          y={verts[sikuIdx].y - 6}
-          width="12"
-          height="12"
+        <polyline
+          points={
+            sikuIdx === 0
+              ? polylineTandaSiku(A, B, C, 12)
+              : sikuIdx === 1
+                ? polylineTandaSiku(B, A, C, 12)
+                : polylineTandaSiku(C, A, B, 12)
+          }
           fill="none"
           stroke={MERAH}
           strokeWidth="2.2"
+          strokeLinejoin="miter"
         />
       ) : null}
       {progres > 0.001 ? <circle cx={ujung.x} cy={ujung.y} r="7" fill={EMAS} stroke={BIRU} strokeWidth="2.2" /> : null}

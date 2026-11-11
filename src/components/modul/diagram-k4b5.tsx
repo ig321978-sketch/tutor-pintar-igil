@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import type { JenisBangun } from "./data-k4b5";
-import { sisiUntukCiri, titikSegitigaDariSisi, indeksSudutSiku, type CiriSisiSegitiga, type CiriSudutSegitiga } from "./segitiga-geometri";
+import { sisiUntukCiri, titikSegitigaDariSisi, indeksSudutSiku, polylineTandaSiku, type CiriSisiSegitiga, type CiriSudutSegitiga } from "./segitiga-geometri";
 
 const BIRU = "#1C01A5";
 const ISI = "#F59E0B";
@@ -22,13 +22,14 @@ export function SvgSegitiga({
   const [a, b, c] = sisiUntukCiri(ciriSisi, ciriSudut);
   const [A, B, C] = titikSegitigaDariSisi(a, b, c, { w: 84, h: 84, pad: 8 });
   const siku = indeksSudutSiku(a, b, c);
-  const verts = [A, B, C];
   const stroke = { stroke: BIRU, strokeWidth: 2.2, fill: ISI, fillOpacity: 0.85 };
+  const sikuPoly =
+    siku === 0 ? polylineTandaSiku(A, B, C, 9) : siku === 1 ? polylineTandaSiku(B, A, C, 9) : siku === 2 ? polylineTandaSiku(C, A, B, 9) : "";
   return (
     <svg width={s} height={s} viewBox="0 0 84 84" aria-label={label ?? "segitiga"}>
       <polygon points={`${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}`} {...stroke} />
       {siku >= 0 ? (
-        <rect x={verts[siku].x - 5} y={verts[siku].y - 5} width="10" height="10" fill="none" stroke={BIRU} strokeWidth="2" />
+        <polyline points={sikuPoly} fill="none" stroke={BIRU} strokeWidth="2" strokeLinejoin="miter" />
       ) : null}
       {ciriSisi === "sama-sisi" || ciriSisi === "sama-kaki" ? (
         <>

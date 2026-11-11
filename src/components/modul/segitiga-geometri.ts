@@ -95,3 +95,17 @@ export function tengahSisi(p: Titik, q: Titik, outward = 0): Titik {
   // normal “ke luar” kasar (tegak lurus)
   return { x: mx - (dy / len) * outward, y: my + (dx / len) * outward };
 }
+
+/** Polylines tanda siku di sudut `V` antara kaki ke `P` dan `Q` (mengikuti arah kaki, bukan sumbu layar). */
+export function polylineTandaSiku(V: Titik, P: Titik, Q: Titik, ukuran = 12): string {
+  const norm = (dx: number, dy: number) => {
+    const L = Math.hypot(dx, dy) || 1;
+    return { x: (dx / L) * ukuran, y: (dy / L) * ukuran };
+  };
+  const u = norm(P.x - V.x, P.y - V.y);
+  const w = norm(Q.x - V.x, Q.y - V.y);
+  const a = { x: V.x + u.x, y: V.y + u.y };
+  const b = { x: V.x + u.x + w.x, y: V.y + u.y + w.y };
+  const c = { x: V.x + w.x, y: V.y + w.y };
+  return `${a.x},${a.y} ${b.x},${b.y} ${c.x},${c.y}`;
+}

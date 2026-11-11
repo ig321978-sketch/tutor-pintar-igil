@@ -300,7 +300,7 @@ export const SUB_A57: SubBabNaskah = {
       "emoji": "△",
       "countNum": 3,
       "countWord": "3 sisi = 60°",
-      "suara": "Sama sisi — 3 sisi = 60°. Ketiga sisi berimpit → segitiga sama sisi; tiap sudut 180 bagi 3 = 60 derajat. Punya 3 simetri lipat dan 3 simetri putar. Ingat: 3 sisi sama; 60°; sembarang.",
+      "suara": "Sama sisi — 3 sisi = 60°. Ketiga sisi berimpit → segitiga sama sisi; tiap sudut 180 bagi 3 = 60 derajat. Punya 3 simetri lipat dan 3 simetri putar. Ingat: 3 sisi sama; tiap sudut 60 derajat.",
       "teksVisual": "△ Sama sisi: 3 sisi = 60°"
     },
     {
@@ -308,7 +308,7 @@ export const SUB_A57: SubBabNaskah = {
       "emoji": "△",
       "countNum": 0,
       "countWord": "sisi beda",
-      "suara": "Sembarang — sisi beda. Ketiga sisi berimpit → segitiga sama sisi; tiap sudut 180 bagi 3 = 60 derajat. Punya 3 simetri lipat dan 3 simetri putar. Ingat: 3 sisi sama; 60°; sembarang.",
+      "suara": "Sembarang — sisi beda. Ketiga sisi berbeda panjang. Tidak punya sisi yang sama, dan sudut-sudutnya juga umumnya berbeda. Ingat: semua sisi beda; tidak wajib ada sudut istimewa.",
       "teksVisual": "△ Sembarang: sisi beda"
     },
     {
@@ -324,7 +324,7 @@ export const SUB_A57: SubBabNaskah = {
       "emoji": "➡️",
       "countNum": 1,
       "countWord": "segi empat",
-      "suara": "Siap B (segi empat). Skala kualitatif sudah siap. Berikutnya bandingkan dua peluang dengan rasio untung/total, lalu putuskan adil atau kurang adil. Lihat poster: apa yang digambar, apa artinya, lalu hubungkan ke soal cerita Membandingkan…",
+      "suara": "Siap B — segi empat. Ciri segitiga sudah siap. Berikutnya kita bandingkan ciri segi empat: trapesium, jajargenjang, persegi panjang, belah ketupat, persegi, dan layang-layang.",
       "teksVisual": "➡️ Siap B: segi empat"
     }
   ],
