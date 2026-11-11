@@ -332,14 +332,7 @@ export default function RuangBelajarPage() {
   };
 
   return (
-    <PageShell
-      judul="📚 Ruang Belajar"
-      subjudul={
-        kunciPublik
-          ? "Matematika kelas 1 SD Bab 1–8, kelas 2 SD Bab 1 dan Bab 2, kelas 4 SD Bab 2, kelas 5 SD Bab 8, serta kelas 6 SD Bab 1 dan Bab 3 sudah siap di perangkat ini."
-          : "Bab 1–8 Matematika kelas 1, Bab 1 dan Bab 2 kelas 2, Bab 2 kelas 4, Bab 8 kelas 5, serta Bab 1 dan Bab 3 kelas 6 sudah terpasang."
-      }
-    >
+    <PageShell judul="📚 Ruang Belajar">
       <section className="grid gap-6">
         <div className="rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
           <h2 className="mb-4 text-lg font-extrabold text-[#1C01A5]">Profil sesi</h2>
@@ -380,9 +373,6 @@ export default function RuangBelajarPage() {
         </div>
 
         <div className="rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
-          <h2 className="mb-4 text-lg font-extrabold text-[#1C01A5]">
-            Pilih sumber pembelajaran
-          </h2>
         {kunciPublik ? null : (
           <div className="flex flex-col gap-2 rounded-2xl bg-[#F0AB00]/15 p-1">
             <button
@@ -577,10 +567,6 @@ export default function RuangBelajarPage() {
           {menyiapkanSapaan ? "Menyiapkan sesi..." : "MULAI PEMBELAJARAN"}
         </button>
       </div>
-      <p className="mt-3 flex items-center gap-2 text-sm text-slate-500">
-        <Sparkles className="h-4 w-4 text-[#F0AB00]" />
-        Bab 1–5 Matematika kelas 1, Bab 2 kelas 4, Bab 8 kelas 5, serta Bab 1 dan Bab 3 kelas 6 terbuka di sini. Bab 1 kelas 1 memakai modul lama.
-      </p>
     </PageShell>
   );
 }
