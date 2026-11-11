@@ -199,66 +199,66 @@ export const SUB_A52: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pilih bilangan",
-      "stepDesc": "Kelipatan bilangan berapa?",
+      "stepDesc": "Baca soal Kelipatan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Kelipatan bilangan berapa? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa memahami kelipatan sebagai hasil lompat hitung bilangan sama besar, memeriksa habis dibagi, dan memakai tabel sera….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pilih bilangan",
+      "flowTo": "Lompat hitung"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Lompat hitung",
-      "stepDesc": "Lompat jarak sama dari 0.",
+      "stepDesc": "Lompat jarak sama dari 0. Pada Kelipatan, langkah “Lompat hitung” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Lompat Hitung: Kelipatan didapat dengan melompat jarak sama di garis bilangan atau hitungan. Tabel Seratus: Tandai kelipatan pada tabel 1–100 untuk melihat pola…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🦘",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Lompat hitung",
+      "flowTo": "Buat daftar"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Buat daftar",
-      "stepDesc": "Tulis kelipatan berurutan.",
+      "stepDesc": "Tulis kelipatan berurutan. Pada Kelipatan, langkah “Buat daftar” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Lompat Hitung: Kelipatan didapat dengan melompat jarak sama di garis bilangan atau hitungan. Tabel Seratus: Tandai kelipatan pada tabel 1–100 untuk melihat pola…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📝",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Buat daftar",
+      "flowTo": "Cek sisa"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Cek sisa",
-      "stepDesc": "Bagi: sisa 0 = ya.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Kelipatan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "➗",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Cek sisa",
+      "flowTo": "Tabel seratus"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Tabel seratus",
-      "stepDesc": "Tandai pola bila perlu.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Kelipatan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "▦",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Tabel seratus",
+      "flowTo": "Putuskan"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Putuskan",
-      "stepDesc": "Termasuk kelipatan atau tidak?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Kelipatan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Putuskan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Cek masuk akal",
-      "stepDesc": "Apakah lompatannya konsisten?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Kelipatan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "🔍",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latihan Concrete–Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Kelipatan. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -963,66 +963,66 @@ export const SUB_B52: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Dua bilangan",
-      "stepDesc": "KPK dari a dan b?",
+      "stepDesc": "Baca soal Kelipatan Persekutuan dan KPK dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. KPK dari a dan b? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menentukan kelipatan persekutuan dan KPK dari dua bilangan dengan daftar bersama dan pengantar faktor prima sesuai….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Dua bilangan",
+      "flowTo": "Daftar a"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Daftar a",
-      "stepDesc": "Kelipatan a berurutan.",
+      "stepDesc": "Kelipatan a berurutan. Pada Kelipatan Persekutuan dan KPK, langkah “Daftar a” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Daftar Kelipatan Bersama: Buat dua daftar kelipatan, cari bilangan yang muncul di keduanya. KPK dari Irisan: KPK adalah kelipatan persekutuan yang terkecil posi…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📋",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Daftar a",
+      "flowTo": "Daftar b"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Daftar b",
-      "stepDesc": "Kelipatan b berurutan.",
+      "stepDesc": "Kelipatan b berurutan. Pada Kelipatan Persekutuan dan KPK, langkah “Daftar b” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Daftar Kelipatan Bersama: Buat dua daftar kelipatan, cari bilangan yang muncul di keduanya. KPK dari Irisan: KPK adalah kelipatan persekutuan yang terkecil posi…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📋",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Daftar b",
+      "flowTo": "Irisan"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Irisan",
-      "stepDesc": "Angka yang muncul di keduanya.",
+      "stepDesc": "Angka yang muncul di keduanya. Pada Kelipatan Persekutuan dan KPK, langkah “Irisan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Daftar Kelipatan Bersama: Buat dua daftar kelipatan, cari bilangan yang muncul di keduanya. KPK dari Irisan: KPK adalah kelipatan persekutuan yang terkecil posi…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⋂",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Irisan",
+      "flowTo": "Terkecil"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Terkecil",
-      "stepDesc": "Itu KPK.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Kelipatan Persekutuan dan KPK. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "⭐",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Terkecil",
+      "flowTo": "Cek bagi"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek bagi",
-      "stepDesc": "KPK habis dibagi a dan b?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Kelipatan Persekutuan dan KPK. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "➗",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek bagi",
+      "flowTo": "Bukan FPB"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Bukan FPB",
-      "stepDesc": "Jangan tertukar arti.",
+      "stepDesc": "Simpulkan ide utama Kelipatan Persekutuan dan KPK dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "🚫",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Bukan FPB",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latihan KPK.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Kelipatan Persekutuan dan KPK. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1726,66 +1726,66 @@ export const SUB_C52: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Bilangan n",
-      "stepDesc": "Faktor dari berapa?",
+      "stepDesc": "Baca soal Faktor dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Faktor dari berapa? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menentukan faktor suatu bilangan dengan pasangan faktor, diagram faktor, dan model susunan persegi panjang sesuai ….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Bilangan n",
+      "flowTo": "Mulai 1"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Mulai 1",
-      "stepDesc": "Uji pembagi dari kecil.",
+      "stepDesc": "Uji pembagi dari kecil. Pada Faktor, langkah “Mulai 1” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pasangan Faktor: Faktor datang berpasangan yang hasil kalinya bilangan itu. Diagram Faktor: Gambar pelangi pasangan faktor dari kecil ke besar. Model Susunan Pe…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "1️⃣",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Mulai 1",
+      "flowTo": "Pasangan"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Pasangan",
-      "stepDesc": "Tulis hasil baginya.",
+      "stepDesc": "Tulis hasil baginya. Pada Faktor, langkah “Pasangan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pasangan Faktor: Faktor datang berpasangan yang hasil kalinya bilangan itu. Diagram Faktor: Gambar pelangi pasangan faktor dari kecil ke besar. Model Susunan Pe…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔗",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Pasangan",
+      "flowTo": "Pelangi"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Pelangi",
-      "stepDesc": "Gambar pasangan.",
+      "stepDesc": "Gambar pasangan. Pada Faktor, langkah “Pelangi” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pasangan Faktor: Faktor datang berpasangan yang hasil kalinya bilangan itu. Diagram Faktor: Gambar pelangi pasangan faktor dari kecil ke besar. Model Susunan Pe…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🌈",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Pelangi",
+      "flowTo": "Susunan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Susunan",
-      "stepDesc": "Baris×kolom = n.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Faktor. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "▦",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Susunan",
+      "flowTo": "Daftar urut"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Daftar urut",
-      "stepDesc": "Dari kecil ke besar.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Faktor. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "📋",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Daftar urut",
+      "flowTo": "Cek bagi"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Cek bagi",
-      "stepDesc": "Semua habis membagi n?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Faktor. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Cek bagi",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latihan faktor.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Faktor. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -2490,66 +2490,66 @@ export const SUB_D52: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Dua bilangan",
-      "stepDesc": "FPB a dan b?",
+      "stepDesc": "Baca soal Faktor Persekutuan dan FPB dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. FPB a dan b? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menentukan faktor persekutuan dan FPB dua bilangan dengan daftar faktor bersama serta pengantar ide selisih sesuai….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Dua bilangan",
+      "flowTo": "Faktor a"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Faktor a",
-      "stepDesc": "Daftar faktor a.",
+      "stepDesc": "Daftar faktor a. Pada Faktor Persekutuan dan FPB, langkah “Faktor a” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Daftar Faktor Persekutuan: Irisan dua daftar faktor = faktor persekutuan. FPB dari Irisan: FPB adalah faktor persekutuan terbesar. Ide Selisih / Sisa: FPB terka…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📋",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Faktor a",
+      "flowTo": "Faktor b"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Faktor b",
-      "stepDesc": "Daftar faktor b.",
+      "stepDesc": "Daftar faktor b. Pada Faktor Persekutuan dan FPB, langkah “Faktor b” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Daftar Faktor Persekutuan: Irisan dua daftar faktor = faktor persekutuan. FPB dari Irisan: FPB adalah faktor persekutuan terbesar. Ide Selisih / Sisa: FPB terka…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📋",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Faktor b",
+      "flowTo": "Irisan"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Irisan",
-      "stepDesc": "Faktor yang sama.",
+      "stepDesc": "Faktor yang sama. Pada Faktor Persekutuan dan FPB, langkah “Irisan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Daftar Faktor Persekutuan: Irisan dua daftar faktor = faktor persekutuan. FPB dari Irisan: FPB adalah faktor persekutuan terbesar. Ide Selisih / Sisa: FPB terka…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⋂",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Irisan",
+      "flowTo": "Terbesar"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Terbesar",
-      "stepDesc": "Itu FPB.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Faktor Persekutuan dan FPB. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "⭐",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Terbesar",
+      "flowTo": "Cek bagi"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek bagi",
-      "stepDesc": "Keduanya habis dibagi FPB?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Faktor Persekutuan dan FPB. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "➗",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek bagi",
+      "flowTo": "Bukan KPK"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Bukan KPK",
-      "stepDesc": "Jangan tertukar.",
+      "stepDesc": "Simpulkan ide utama Faktor Persekutuan dan FPB dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "🚫",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Bukan KPK",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latihan FPB.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Faktor Persekutuan dan FPB. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -3253,66 +3253,66 @@ export const SUB_E52: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Urai pohon",
-      "stepDesc": "Pecah sampai prima.",
+      "stepDesc": "Baca soal Menentukan KPK dan FPB dengan Faktor Prima dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Pecah sampai prima. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menentukan KPK dan FPB dengan faktorisasi prima, pohon faktor, dan jembatan hubungan KPK–FPB sesuai Buku Siswa Kel….",
       "icon": "🌳",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Urai pohon",
+      "flowTo": "Tulis pangkat"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Tulis pangkat",
-      "stepDesc": "n = p^a × q^b …",
+      "stepDesc": "n = p^a × q^b …. Pada Menentukan KPK dan FPB dengan Faktor Prima, langkah “Tulis pangkat” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pohon Faktor: Urai bilangan sampai semua daunnya bilangan prima. Ide Ayakan Prima: FPB: pangkat min. KPK: pangkat max tiap prima. Jembatan KPK dan FPB: Untuk du…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✍️",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Tulis pangkat",
+      "flowTo": "FPB = min"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. FPB = min",
-      "stepDesc": "Pangkat terkecil yang sama.",
+      "stepDesc": "Pangkat terkecil yang sama. Pada Menentukan KPK dan FPB dengan Faktor Prima, langkah “FPB = min” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pohon Faktor: Urai bilangan sampai semua daunnya bilangan prima. Ide Ayakan Prima: FPB: pangkat min. KPK: pangkat max tiap prima. Jembatan KPK dan FPB: Untuk du…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⬇️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "FPB = min",
+      "flowTo": "KPK = max"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. KPK = max",
-      "stepDesc": "Pangkat terbesar tiap prima.",
+      "stepDesc": "Pangkat terbesar tiap prima. Pada Menentukan KPK dan FPB dengan Faktor Prima, langkah “KPK = max” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pohon Faktor: Urai bilangan sampai semua daunnya bilangan prima. Ide Ayakan Prima: FPB: pangkat min. KPK: pangkat max tiap prima. Jembatan KPK dan FPB: Untuk du…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⬆️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "KPK = max",
+      "flowTo": "Hitung"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Hitung",
-      "stepDesc": "Kalikan hasil aturan.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Menentukan KPK dan FPB dengan Faktor Prima. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🔢",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Hitung",
+      "flowTo": "Jembatan"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Jembatan",
-      "stepDesc": "FPB×KPK = a×b?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Menentukan KPK dan FPB dengan Faktor Prima. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "🌉",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Jembatan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Cek masuk akal",
-      "stepDesc": "Bandingkan dengan a dan b.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Menentukan KPK dan FPB dengan Faktor Prima. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Bab 2 utuh"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Bab 2 utuh",
-      "stepDesc": "Kelipatan–faktor–prima.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Menentukan KPK dan FPB dengan Faktor Prima. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎉",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Bab 2 utuh",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

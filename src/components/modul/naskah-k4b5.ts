@@ -199,66 +199,66 @@ export const SUB_A45: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Ciri-Ciri Bangun Datar?",
+      "stepDesc": "Baca soal Ciri-Ciri Bangun Datar dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengenal segi banyak, membedakan beraturan/tak beraturan, mengelompokkan segitiga (sisi & sudut), serta menyebutka….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "van Hiele Level 0-1"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. van Hiele Level 0-1",
-      "stepDesc": "Mulai kenali bentuk, lalu sebut ciri sisi dan sudut.",
+      "stepDesc": "Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Pada Ciri-Ciri Bangun Datar, langkah “van Hiele Level 0-1” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar. Papan Paku: Bentuk ka…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "van Hiele Level 0-1",
+      "flowTo": "Attribute Sort"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Attribute Sort",
-      "stepDesc": "Kelompokkan menurut sisi, sudut, atau sejajar.",
+      "stepDesc": "Kelompokkan menurut sisi, sudut, atau sejajar. Pada Ciri-Ciri Bangun Datar, langkah “Attribute Sort” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar. Papan Paku: Bentuk ka…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Attribute Sort",
+      "flowTo": "Geoboard"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Geoboard",
-      "stepDesc": "Bentuk karet di paku untuk menguji ciri.",
+      "stepDesc": "Bentuk karet di paku untuk menguji ciri. Pada Ciri-Ciri Bangun Datar, langkah “Geoboard” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: van Hiele Visual–Analisis: Mulai kenali bentuk, lalu sebut ciri sisi dan sudut. Pilah Ciri: Kelompokkan menurut sisi, sudut, atau sejajar. Papan Paku: Bentuk ka…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Geoboard",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Ciri-Ciri Bangun Datar. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Ciri-Ciri Bangun Datar. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Ciri-Ciri Bangun Datar dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Ciri-Ciri Bangun Datar. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -961,66 +961,66 @@ export const SUB_B45: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Komposisi dan Dekomposisi Bangun Datar?",
+      "stepDesc": "Baca soal Komposisi dan Dekomposisi Bangun Datar dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menyusun (komposisi) dan menguraikan (dekomposisi) bangun datar dengan banyak cara, misalnya persegi ↔ 2 segitiga,….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Compose Shapes"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Compose Shapes",
-      "stepDesc": "Gabungkan bangun sederhana jadi bangun baru.",
+      "stepDesc": "Gabungkan bangun sederhana jadi bangun baru. Pada Komposisi dan Dekomposisi Bangun Datar, langkah “Compose Shapes” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Susun Bangun: Gabungkan bangun sederhana jadi bangun baru. Urai Bangun: Pecah bangun kompleks jadi bagian dikenal. Tangram: Tujuh keping menyusun banyak siluet.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Compose Shapes",
+      "flowTo": "Decompose Shapes"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Decompose Shapes",
-      "stepDesc": "Pecah bangun kompleks jadi bagian dikenal.",
+      "stepDesc": "Pecah bangun kompleks jadi bagian dikenal. Pada Komposisi dan Dekomposisi Bangun Datar, langkah “Decompose Shapes” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Susun Bangun: Gabungkan bangun sederhana jadi bangun baru. Urai Bangun: Pecah bangun kompleks jadi bagian dikenal. Tangram: Tujuh keping menyusun banyak siluet.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Decompose Shapes",
+      "flowTo": "Tangram"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Tangram",
-      "stepDesc": "Tujuh keping menyusun banyak siluet.",
+      "stepDesc": "Tujuh keping menyusun banyak siluet. Pada Komposisi dan Dekomposisi Bangun Datar, langkah “Tangram” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Susun Bangun: Gabungkan bangun sederhana jadi bangun baru. Urai Bangun: Pecah bangun kompleks jadi bagian dikenal. Tangram: Tujuh keping menyusun banyak siluet.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Tangram",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Komposisi dan Dekomposisi Bangun Datar. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Komposisi dan Dekomposisi Bangun Datar. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Komposisi dan Dekomposisi Bangun Datar dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Komposisi dan Dekomposisi Bangun Datar. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

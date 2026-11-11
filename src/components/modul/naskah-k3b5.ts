@@ -199,66 +199,66 @@ export const SUB_A35: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Mengurutkan dan Membandingkan Data?",
+      "stepDesc": "Baca soal Mengurutkan dan Membandingkan Data dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengurutkan data dari terkecil ke terbesar atau sebaliknya, menentukan data terkecil dan data terbesar, menghitung….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Compare Data"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Compare Data",
-      "stepDesc": "Bandingkan banyaknya antar kategori.",
+      "stepDesc": "Bandingkan banyaknya antar kategori. Pada Mengurutkan dan Membandingkan Data, langkah “Compare Data” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Banding Data: Bandingkan banyaknya antar kategori. Urut Data: Urutkan dari terbanyak/tersedikit. Turus Dulu: Kumpulkan dengan turus sebelum banding.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Compare Data",
+      "flowTo": "Order Data"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Order Data",
-      "stepDesc": "Urutkan dari terbanyak/tersedikit.",
+      "stepDesc": "Urutkan dari terbanyak/tersedikit. Pada Mengurutkan dan Membandingkan Data, langkah “Order Data” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Banding Data: Bandingkan banyaknya antar kategori. Urut Data: Urutkan dari terbanyak/tersedikit. Turus Dulu: Kumpulkan dengan turus sebelum banding.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Order Data",
+      "flowTo": "Tally First"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Tally First",
-      "stepDesc": "Kumpulkan dengan turus sebelum banding.",
+      "stepDesc": "Kumpulkan dengan turus sebelum banding. Pada Mengurutkan dan Membandingkan Data, langkah “Tally First” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Banding Data: Bandingkan banyaknya antar kategori. Urut Data: Urutkan dari terbanyak/tersedikit. Turus Dulu: Kumpulkan dengan turus sebelum banding.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Tally First",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Mengurutkan dan Membandingkan Data. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Mengurutkan dan Membandingkan Data. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Mengurutkan dan Membandingkan Data dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Mengurutkan dan Membandingkan Data. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -961,66 +961,66 @@ export const SUB_B35: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Menyajikan Data dalam Bentuk Tabel?",
+      "stepDesc": "Baca soal Menyajikan Data dalam Bentuk Tabel dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menulis turus kelompok lima (empat tegak dan satu miring), menyajikan data nilai, huruf, dan manik dalam tabel ber….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Table Display"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Table Display",
-      "stepDesc": "Tabel memuat kategori dan frekuensi.",
+      "stepDesc": "Tabel memuat kategori dan frekuensi. Pada Menyajikan Data dalam Bentuk Tabel, langkah “Table Display” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Sajian Tabel: Tabel memuat kategori dan frekuensi. Judul Kolom Jelas: Setiap kolom harus berlabel. Baca Sel Tabel: Temukan nilai di perpotongan baris-kolom.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Table Display",
+      "flowTo": "Header Clarity"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Header Clarity",
-      "stepDesc": "Setiap kolom harus berlabel.",
+      "stepDesc": "Setiap kolom harus berlabel. Pada Menyajikan Data dalam Bentuk Tabel, langkah “Header Clarity” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Sajian Tabel: Tabel memuat kategori dan frekuensi. Judul Kolom Jelas: Setiap kolom harus berlabel. Baca Sel Tabel: Temukan nilai di perpotongan baris-kolom.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Header Clarity",
+      "flowTo": "Read Cells"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Read Cells",
-      "stepDesc": "Temukan nilai di perpotongan baris-kolom.",
+      "stepDesc": "Temukan nilai di perpotongan baris-kolom. Pada Menyajikan Data dalam Bentuk Tabel, langkah “Read Cells” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Sajian Tabel: Tabel memuat kategori dan frekuensi. Judul Kolom Jelas: Setiap kolom harus berlabel. Baca Sel Tabel: Temukan nilai di perpotongan baris-kolom.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Read Cells",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Menyajikan Data dalam Bentuk Tabel. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Menyajikan Data dalam Bentuk Tabel. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Menyajikan Data dalam Bentuk Tabel dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Menyajikan Data dalam Bentuk Tabel. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

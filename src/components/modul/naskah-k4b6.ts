@@ -199,66 +199,66 @@ export const SUB_A46: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Piktogram?",
+      "stepDesc": "Baca soal Piktogram dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menyajikan dan menafsirkan data dalam piktogram (diagram gambar), termasuk skala 1 dan skala lebih dari 1, menentu….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Pictograph Key"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Pictograph Key",
-      "stepDesc": "Satu gambar bisa mewakili lebih dari satu benda.",
+      "stepDesc": "Satu gambar bisa mewakili lebih dari satu benda. Pada Piktogram, langkah “Pictograph Key” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda. Turus Kategori: Hitung frekuensi tiap kategori dengan turus. Baca Lalu Banding: Bandingkan tin…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Pictograph Key",
+      "flowTo": "Categorical Tally"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Categorical Tally",
-      "stepDesc": "Hitung frekuensi tiap kategori dengan turus.",
+      "stepDesc": "Hitung frekuensi tiap kategori dengan turus. Pada Piktogram, langkah “Categorical Tally” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda. Turus Kategori: Hitung frekuensi tiap kategori dengan turus. Baca Lalu Banding: Bandingkan tin…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Categorical Tally",
+      "flowTo": "Read then Compare"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Read then Compare",
-      "stepDesc": "Bandingkan tinggi/banyak simbol antar kategori.",
+      "stepDesc": "Bandingkan tinggi/banyak simbol antar kategori. Pada Piktogram, langkah “Read then Compare” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Kunci Piktogram: Satu gambar bisa mewakili lebih dari satu benda. Turus Kategori: Hitung frekuensi tiap kategori dengan turus. Baca Lalu Banding: Bandingkan tin…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Read then Compare",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Piktogram. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Piktogram. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Piktogram dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Piktogram. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -961,66 +961,66 @@ export const SUB_B46: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Diagram Batang?",
+      "stepDesc": "Baca soal Diagram Batang dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menyajikan dan menafsirkan data dalam diagram batang tegak maupun mendatar, membaca sumbu, membandingkan tinggi/pa….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Bar Scale"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Bar Scale",
-      "stepDesc": "Baca nilai dari tinggi batang dan skala sumbu.",
+      "stepDesc": "Baca nilai dari tinggi batang dan skala sumbu. Pada Diagram Batang, langkah “Bar Scale” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Skala Batang: Baca nilai dari tinggi batang dan skala sumbu. Label Sumbu: Sumbu harus bertuliskan apa yang diukur. Banding Batang: Batang lebih tinggi = nilai l…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Bar Scale",
+      "flowTo": "Axis Labels"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Axis Labels",
-      "stepDesc": "Sumbu harus bertuliskan apa yang diukur.",
+      "stepDesc": "Sumbu harus bertuliskan apa yang diukur. Pada Diagram Batang, langkah “Axis Labels” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Skala Batang: Baca nilai dari tinggi batang dan skala sumbu. Label Sumbu: Sumbu harus bertuliskan apa yang diukur. Banding Batang: Batang lebih tinggi = nilai l…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Axis Labels",
+      "flowTo": "Compare Bars"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Compare Bars",
-      "stepDesc": "Batang lebih tinggi = nilai lebih besar.",
+      "stepDesc": "Batang lebih tinggi = nilai lebih besar. Pada Diagram Batang, langkah “Compare Bars” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Skala Batang: Baca nilai dari tinggi batang dan skala sumbu. Label Sumbu: Sumbu harus bertuliskan apa yang diukur. Banding Batang: Batang lebih tinggi = nilai l…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Compare Bars",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Diagram Batang. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Diagram Batang. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Diagram Batang dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Diagram Batang. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

@@ -199,66 +199,66 @@ export const SUB_A7: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Menghitung, Membaca, dan Menulis Bilangan sampai 100?",
+      "stepDesc": "Baca soal Menghitung, Membaca, dan Menulis Bilangan sampai 100 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menghitung puluhan sampai seratus (sepuluh satuan sama dengan satu puluhan), menghitung puluhan dan satuan dengan ….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Count to 100"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Count to 100",
-      "stepDesc": "Lanjut hitung dengan pola puluhan.",
+      "stepDesc": "Lanjut hitung dengan pola puluhan. Pada Menghitung, Membaca, dan Menulis Bilangan sampai 100, langkah “Count to 100” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Hitung sampai 100: Lanjut hitung dengan pola puluhan. Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan. Tabel Seratus: Lihat pola angka di tabel 1–100.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Count to 100",
+      "flowTo": "Tens and Ones"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Tens and Ones",
-      "stepDesc": "Baca 45 sebagai 4 puluhan 5 satuan.",
+      "stepDesc": "Baca 45 sebagai 4 puluhan 5 satuan. Pada Menghitung, Membaca, dan Menulis Bilangan sampai 100, langkah “Tens and Ones” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Hitung sampai 100: Lanjut hitung dengan pola puluhan. Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan. Tabel Seratus: Lihat pola angka di tabel 1–100.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Tens and Ones",
+      "flowTo": "Hundred Chart"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Hundred Chart",
-      "stepDesc": "Lihat pola angka di tabel 1–100.",
+      "stepDesc": "Lihat pola angka di tabel 1–100. Pada Menghitung, Membaca, dan Menulis Bilangan sampai 100, langkah “Hundred Chart” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Hitung sampai 100: Lanjut hitung dengan pola puluhan. Puluhan dan Satuan: Baca 45 sebagai 4 puluhan 5 satuan. Tabel Seratus: Lihat pola angka di tabel 1–100.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Hundred Chart",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Menghitung, Membaca, dan Menulis Bilangan sampai 100. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Menghitung, Membaca, dan Menulis Bilangan sampai 100. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Menghitung, Membaca, dan Menulis Bilangan sampai 100 dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Menghitung, Membaca, dan Menulis Bilangan sampai 100. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -961,66 +961,66 @@ export const SUB_B7: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Membandingkan Bilangan?",
+      "stepDesc": "Baca soal Membandingkan Bilangan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menentukan bilangan yang lebih dari atau kurang dari bilangan lain dengan menghitung maju dan mundur pada garis bi….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Compare Tens First"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Compare Tens First",
-      "stepDesc": "Puluhan menentukan siapa lebih besar.",
+      "stepDesc": "Puluhan menentukan siapa lebih besar. Pada Membandingkan Bilangan, langkah “Compare Tens First” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar. Garis Bilangan 100: Posisi menunjukkan urutan. Tanda Banding: Pakai <, >, = dengan tepat.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Compare Tens First",
+      "flowTo": "Number Line to 100"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Number Line to 100",
-      "stepDesc": "Posisi menunjukkan urutan.",
+      "stepDesc": "Posisi menunjukkan urutan. Pada Membandingkan Bilangan, langkah “Number Line to 100” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar. Garis Bilangan 100: Posisi menunjukkan urutan. Tanda Banding: Pakai <, >, = dengan tepat.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Number Line to 100",
+      "flowTo": "Symbols < > ="
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Symbols < > =",
-      "stepDesc": "Pakai <, >, = dengan tepat.",
+      "stepDesc": "Pakai <, >, = dengan tepat. Pada Membandingkan Bilangan, langkah “Symbols < > =” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Banding Puluhan Dulu: Puluhan menentukan siapa lebih besar. Garis Bilangan 100: Posisi menunjukkan urutan. Tanda Banding: Pakai <, >, = dengan tepat.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Symbols < > =",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Membandingkan Bilangan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Membandingkan Bilangan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Membandingkan Bilangan dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Membandingkan Bilangan. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

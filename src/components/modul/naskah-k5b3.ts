@@ -199,66 +199,66 @@ export const SUB_A53: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Baca pecahan",
-      "stepDesc": "Kenali pembilang dan penyebut.",
+      "stepDesc": "Baca soal Membandingkan dan Mengurutkan Pecahan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Kenali pembilang dan penyebut. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membandingkan dan mengurutkan pecahan biasa serta campuran dengan garis bilangan, pecahan senilai, dan mengubah ca….",
       "icon": "📖",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Baca pecahan",
+      "flowTo": "Campuran?"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Campuran?",
-      "stepDesc": "Ubah ke biasa bila perlu.",
+      "stepDesc": "Ubah ke biasa bila perlu. Pada Membandingkan dan Mengurutkan Pecahan, langkah “Campuran?” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pecahan di Garis Bilangan: Bandingkan pecahan dengan melihat posisi di garis; yang lebih kanan lebih besar. Pecahan Senilai: Pecahan senilai menunjuk bagian sam…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔄",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Campuran?",
+      "flowTo": "Senilai"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Senilai",
-      "stepDesc": "Samakan penyebut dengan pecahan senilai.",
+      "stepDesc": "Samakan penyebut dengan pecahan senilai. Pada Membandingkan dan Mengurutkan Pecahan, langkah “Senilai” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pecahan di Garis Bilangan: Bandingkan pecahan dengan melihat posisi di garis; yang lebih kanan lebih besar. Pecahan Senilai: Pecahan senilai menunjuk bagian sam…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⚖️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Senilai",
+      "flowTo": "Garis bilangan"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Garis bilangan",
-      "stepDesc": "Letakkan; kanan lebih besar.",
+      "stepDesc": "Letakkan; kanan lebih besar. Pada Membandingkan dan Mengurutkan Pecahan, langkah “Garis bilangan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pecahan di Garis Bilangan: Bandingkan pecahan dengan melihat posisi di garis; yang lebih kanan lebih besar. Pecahan Senilai: Pecahan senilai menunjuk bagian sam…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📏",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Garis bilangan",
+      "flowTo": "Bandingkan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Bandingkan",
-      "stepDesc": "Tulis tanda > < atau =.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Membandingkan dan Mengurutkan Pecahan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "⇔",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Bandingkan",
+      "flowTo": "Urutkan"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Urutkan",
-      "stepDesc": "Dari kecil ke besar atau sebaliknya.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Membandingkan dan Mengurutkan Pecahan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "📶",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Urutkan",
+      "flowTo": "Cek"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Cek",
-      "stepDesc": "Apakah posisi di garis masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Membandingkan dan Mengurutkan Pecahan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Cek",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latihan Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Membandingkan dan Mengurutkan Pecahan. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -964,66 +964,66 @@ export const SUB_B53: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Lihat penyebut",
-      "stepDesc": "Sama atau beda?",
+      "stepDesc": "Baca soal Penjumlahan Bilangan Pecahan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Sama atau beda? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menjumlahkan pecahan dengan penyebut sama maupun berbeda dengan menyamakan penyebut memakai KPK, serta memakai mod….",
       "icon": "👀",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Lihat penyebut",
+      "flowTo": "Sama?"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Sama?",
-      "stepDesc": "Jumlahkan pembilang.",
+      "stepDesc": "Jumlahkan pembilang. Pada Penjumlahan Bilangan Pecahan, langkah “Sama?” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Jumlah Penyebut Sama: Penyebut sama: jumlahkan pembilang, penyebut tetap. Samakan Penyebut dengan KPK: Penyebut beda: cari KPK, buat pecahan senilai, baru jumla…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➕",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Sama?",
+      "flowTo": "Beda?"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Beda?",
-      "stepDesc": "Cari KPK penyebut.",
+      "stepDesc": "Cari KPK penyebut. Pada Penjumlahan Bilangan Pecahan, langkah “Beda?” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Jumlah Penyebut Sama: Penyebut sama: jumlahkan pembilang, penyebut tetap. Samakan Penyebut dengan KPK: Penyebut beda: cari KPK, buat pecahan senilai, baru jumla…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔢",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Beda?",
+      "flowTo": "Senilai"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Senilai",
-      "stepDesc": "Ubah ke penyebut KPK.",
+      "stepDesc": "Ubah ke penyebut KPK. Pada Penjumlahan Bilangan Pecahan, langkah “Senilai” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Jumlah Penyebut Sama: Penyebut sama: jumlahkan pembilang, penyebut tetap. Samakan Penyebut dengan KPK: Penyebut beda: cari KPK, buat pecahan senilai, baru jumla…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⚖️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Senilai",
+      "flowTo": "Jumlahkan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Jumlahkan",
-      "stepDesc": "Pembilang + pembilang.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Penjumlahan Bilangan Pecahan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "➕",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Jumlahkan",
+      "flowTo": "Sederhanakan"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Sederhanakan",
-      "stepDesc": "Jika bisa.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Penjumlahan Bilangan Pecahan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✨",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Sederhanakan",
+      "flowTo": "Arsir cek"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Arsir cek",
-      "stepDesc": "Cek dengan model daerah.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Penjumlahan Bilangan Pecahan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "🎨",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Arsir cek",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latihan jumlah pecahan.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Penjumlahan Bilangan Pecahan. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1728,66 +1728,66 @@ export const SUB_C53: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Lihat penyebut",
-      "stepDesc": "Sama atau beda?",
+      "stepDesc": "Baca soal Pengurangan Bilangan Pecahan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Sama atau beda? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengurangkan pecahan dengan penyebut sama maupun berbeda memakai KPK dan model sisa daerah sesuai Buku Siswa Kelas….",
       "icon": "👀",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Lihat penyebut",
+      "flowTo": "Sama?"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Sama?",
-      "stepDesc": "Kurangi pembilang.",
+      "stepDesc": "Kurangi pembilang. Pada Pengurangan Bilangan Pecahan, langkah “Sama?” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Kurang Penyebut Sama: Penyebut sama: kurangkan pembilang, penyebut tetap. Kurang dengan KPK: Penyebut beda: samakan dengan KPK, lalu kurangkan pembilang. Model …. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➖",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Sama?",
+      "flowTo": "Beda?"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Beda?",
-      "stepDesc": "KPK lalu senilai.",
+      "stepDesc": "KPK lalu senilai. Pada Pengurangan Bilangan Pecahan, langkah “Beda?” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Kurang Penyebut Sama: Penyebut sama: kurangkan pembilang, penyebut tetap. Kurang dengan KPK: Penyebut beda: samakan dengan KPK, lalu kurangkan pembilang. Model …. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔢",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Beda?",
+      "flowTo": "Kurangkan"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Kurangkan",
-      "stepDesc": "Pembilang − pembilang.",
+      "stepDesc": "Pembilang − pembilang. Pada Pengurangan Bilangan Pecahan, langkah “Kurangkan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Kurang Penyebut Sama: Penyebut sama: kurangkan pembilang, penyebut tetap. Kurang dengan KPK: Penyebut beda: samakan dengan KPK, lalu kurangkan pembilang. Model …. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➖",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Kurangkan",
+      "flowTo": "Sisa daerah"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Sisa daerah",
-      "stepDesc": "Arsir lalu hapus.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Pengurangan Bilangan Pecahan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🎨",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Sisa daerah",
+      "flowTo": "Sederhanakan"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Sederhanakan",
-      "stepDesc": "Jika bisa.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Pengurangan Bilangan Pecahan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✨",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Sederhanakan",
+      "flowTo": "Cek"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Cek",
-      "stepDesc": "Hasil < pecahan awal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Pengurangan Bilangan Pecahan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Cek",
+      "flowTo": "Bab 3 utuh"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Bab 3 utuh",
-      "stepDesc": "Banding, jumlah, kurang.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Pengurangan Bilangan Pecahan. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎉",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Bab 3 utuh",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

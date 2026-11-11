@@ -200,50 +200,50 @@ export const SUB_A62: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Banding benda",
-      "stepDesc": "Jumlah/harga",
+      "stepDesc": "Baca soal Konsep Rasio dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jumlah/harga Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa memahami rasio sebagai perbandingan dua besaran sejenis, menulis a:b, menyederhanakan, dan membedakan arah a:b den….",
       "icon": "🌱",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Banding benda",
+      "flowTo": "Tulis a:b"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Tulis a:b",
-      "stepDesc": "Part-to-Part",
+      "stepDesc": "Part-to-Part. Pada Konsep Rasio, langkah “Tulis a:b” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": ":",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Tulis a:b",
+      "flowTo": "Baca makna"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Baca makna",
-      "stepDesc": "setiap a ada b",
+      "stepDesc": "setiap a ada b. Pada Konsep Rasio, langkah “Baca makna” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🗣️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Baca makna",
+      "flowTo": "Sederhanakan"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Sederhanakan",
-      "stepDesc": "bagi FPB",
+      "stepDesc": "bagi FPB. Pada Konsep Rasio, langkah “Sederhanakan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "÷",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Sederhanakan",
+      "flowTo": "Jaga arah"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Jaga arah",
-      "stepDesc": "a:b ≠ b:a",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Konsep Rasio. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "↔️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Jaga arah",
+      "flowTo": "Skala cerita"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Skala cerita",
-      "stepDesc": "perluas lahan",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Konsep Rasio. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Skala cerita",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -909,50 +909,50 @@ export const SUB_B62: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Tulis rasio",
-      "stepDesc": "a:b awal",
+      "stepDesc": "Baca soal Konsep Kesamaan Rasio dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. a:b awal Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menentukan kesamaan rasio lewat tabel (×/÷ sama), menghubungkan pecahan senilai, dan menghitung rasio satuan sesua….",
       "icon": ":",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Tulis rasio",
+      "flowTo": "Tabel ×/÷"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Tabel ×/÷",
-      "stepDesc": "Equivalent Table",
+      "stepDesc": "Equivalent Table. Pada Konsep Kesamaan Rasio, langkah “Tabel ×/÷” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "▦",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Tabel ×/÷",
+      "flowTo": "Pecahan senilai"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Pecahan senilai",
-      "stepDesc": "a/b bridge",
+      "stepDesc": "a/b bridge. Pada Konsep Kesamaan Rasio, langkah “Pecahan senilai” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "½",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Pecahan senilai",
+      "flowTo": "Unit rate"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Unit rate",
-      "stepDesc": "per 1 satuan",
+      "stepDesc": "per 1 satuan. Pada Konsep Kesamaan Rasio, langkah “Unit rate” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "¹",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Unit rate",
+      "flowTo": "Banding paket"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Banding paket",
-      "stepDesc": "harga satuan",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Konsep Kesamaan Rasio. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "💰",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Banding paket",
+      "flowTo": "Cek proporsi"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek proporsi",
-      "stepDesc": "rasa/luas/bibit",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Konsep Kesamaan Rasio. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Cek proporsi",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1618,50 +1618,50 @@ export const SUB_C62: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Part-to-part",
-      "stepDesc": "a:b",
+      "stepDesc": "Baca soal Penerapan Rasio dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. a:b Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menerapkan rasio bagian terhadap bagian dan bagian terhadap keseluruhan, serta rasio pada durasi waktu sesuai Buku….",
       "icon": ":",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Part-to-part",
+      "flowTo": "Jumlah bagian"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Jumlah bagian",
-      "stepDesc": "a+b",
+      "stepDesc": "a+b. Pada Penerapan Rasio, langkah “Jumlah bagian” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➕",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Jumlah bagian",
+      "flowTo": "Bagi total"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Bagi total",
-      "stepDesc": "total÷(a+b)",
+      "stepDesc": "total÷(a+b). Pada Penerapan Rasio, langkah “Bagi total” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "÷",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Bagi total",
+      "flowTo": "Part-to-whole"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Part-to-whole",
-      "stepDesc": "a:(a+b)",
+      "stepDesc": "a:(a+b). Pada Penerapan Rasio, langkah “Part-to-whole” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🥧",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Part-to-whole",
+      "flowTo": "Time-Rate"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Time-Rate",
-      "stepDesc": "samakan satuan",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Penerapan Rasio. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "⏱️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Time-Rate",
+      "flowTo": "Skala waktu"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Skala waktu",
-      "stepDesc": "jarak/kata",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Penerapan Rasio. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Skala waktu",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

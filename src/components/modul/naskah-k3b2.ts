@@ -199,66 +199,66 @@ export const SUB_A32: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah?",
+      "stepDesc": "Baca soal Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menulis kalimat Matematika dari cerita penjumlahan yang salah satu bilangannya belum diketahui, mencari bilangan i….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Part–Part–Whole"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Part–Part–Whole",
-      "stepDesc": "Dua bagian membentuk keseluruhan pada penjumlahan.",
+      "stepDesc": "Dua bagian membentuk keseluruhan pada penjumlahan. Pada Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah, langkah “Part–Part–Whole” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan. Model Batang: Gambar batang untuk kalimat matematika. Cerita ke Kalimat: Ubah cerita jadi…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Part–Part–Whole",
+      "flowTo": "Bar Model"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Bar Model",
-      "stepDesc": "Gambar batang untuk kalimat matematika.",
+      "stepDesc": "Gambar batang untuk kalimat matematika. Pada Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah, langkah “Bar Model” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan. Model Batang: Gambar batang untuk kalimat matematika. Cerita ke Kalimat: Ubah cerita jadi…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Bar Model",
+      "flowTo": "Story to Equation"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Story to Equation",
-      "stepDesc": "Ubah cerita jadi + dan =.",
+      "stepDesc": "Ubah cerita jadi + dan =. Pada Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah, langkah “Story to Equation” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Bagian–Bagian–Utuh: Dua bagian membentuk keseluruhan pada penjumlahan. Model Batang: Gambar batang untuk kalimat matematika. Cerita ke Kalimat: Ubah cerita jadi…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Story to Equation",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Kalimat Matematika Berkaitan dengan Penjumlahan Bilangan Cacah. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -961,66 +961,66 @@ export const SUB_B32: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Kalimat Matematika Berkaitan dengan Pengurangan Bilangan Cacah?",
+      "stepDesc": "Baca soal Kalimat Matematika Berkaitan dengan Pengurangan Bilangan Cacah dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menulis kalimat Matematika dari cerita pengurangan yang bilangan awal atau bilangan yang dikurangkan belum diketah….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Take Away"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Take Away",
-      "stepDesc": "Kurangi berarti mengambil sebagian.",
+      "stepDesc": "Kurangi berarti mengambil sebagian. Pada Kalimat Matematika Berkaitan dengan Pengurangan Bilangan Cacah, langkah “Take Away” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Mengambil: Kurangi berarti mengambil sebagian. Selisih Banding: Berapa lebih banyak/sedikit. Model Batang Kurang: Batang utuh dikurangi bagian.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Take Away",
+      "flowTo": "Comparison Difference"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Comparison Difference",
-      "stepDesc": "Berapa lebih banyak/sedikit.",
+      "stepDesc": "Berapa lebih banyak/sedikit. Pada Kalimat Matematika Berkaitan dengan Pengurangan Bilangan Cacah, langkah “Comparison Difference” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Mengambil: Kurangi berarti mengambil sebagian. Selisih Banding: Berapa lebih banyak/sedikit. Model Batang Kurang: Batang utuh dikurangi bagian.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Comparison Difference",
+      "flowTo": "Bar Model Subtract"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Bar Model Subtract",
-      "stepDesc": "Batang utuh dikurangi bagian.",
+      "stepDesc": "Batang utuh dikurangi bagian. Pada Kalimat Matematika Berkaitan dengan Pengurangan Bilangan Cacah, langkah “Bar Model Subtract” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Mengambil: Kurangi berarti mengambil sebagian. Selisih Banding: Berapa lebih banyak/sedikit. Model Batang Kurang: Batang utuh dikurangi bagian.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Bar Model Subtract",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Kalimat Matematika Berkaitan dengan Pengurangan Bilangan Cacah. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Kalimat Matematika Berkaitan dengan Pengurangan Bilangan Cacah. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Kalimat Matematika Berkaitan dengan Pengurangan Bilangan Cacah dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Kalimat Matematika Berkaitan dengan Pengurangan Bilangan Cacah. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

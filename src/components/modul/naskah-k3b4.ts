@@ -199,66 +199,66 @@ export const SUB_A34: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Sisi pada Bangun Datar?",
+      "stepDesc": "Baca soal Sisi pada Bangun Datar dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengenal titik, sinar garis, garis, ruas garis, dan kurva (garis lengkung), mengukur panjang ruas garis dengan pen….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Side Attributes"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Side Attributes",
-      "stepDesc": "Hitung dan banding panjang sisi.",
+      "stepDesc": "Hitung dan banding panjang sisi. Pada Sisi pada Bangun Datar, langkah “Side Attributes” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Ciri Sisi: Hitung dan banding panjang sisi. Sisi di Papan Paku: Bentuk sisi dengan karet. Nama Segi-n: Banyak sisi menentukan nama.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Side Attributes",
+      "flowTo": "Geoboard Sides"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Geoboard Sides",
-      "stepDesc": "Bentuk sisi dengan karet.",
+      "stepDesc": "Bentuk sisi dengan karet. Pada Sisi pada Bangun Datar, langkah “Geoboard Sides” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Ciri Sisi: Hitung dan banding panjang sisi. Sisi di Papan Paku: Bentuk sisi dengan karet. Nama Segi-n: Banyak sisi menentukan nama.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Geoboard Sides",
+      "flowTo": "Polygon Naming"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Polygon Naming",
-      "stepDesc": "Banyak sisi menentukan nama.",
+      "stepDesc": "Banyak sisi menentukan nama. Pada Sisi pada Bangun Datar, langkah “Polygon Naming” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Ciri Sisi: Hitung dan banding panjang sisi. Sisi di Papan Paku: Bentuk sisi dengan karet. Nama Segi-n: Banyak sisi menentukan nama.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Polygon Naming",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Sisi pada Bangun Datar. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Sisi pada Bangun Datar. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Sisi pada Bangun Datar dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Sisi pada Bangun Datar. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -961,66 +961,66 @@ export const SUB_B34: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Sudut pada Bidang Datar?",
+      "stepDesc": "Baca soal Sudut pada Bidang Datar dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membandingkan sudut dengan strip sudut, membentuk dan mengenali sudut siku-siku dari kertas yang dilipat, menamai ….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Angle as Turn"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Angle as Turn",
-      "stepDesc": "Sudut mengukur besar putaran.",
+      "stepDesc": "Sudut mengukur besar putaran. Pada Sudut pada Bidang Datar, langkah “Angle as Turn” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Sudut sebagai Putaran: Sudut mengukur besar putaran. Acuan Siku-siku: Bandingkan dengan sudut siku-siku. Pilah Sudut: Lebih besar/kecil dari siku-siku.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Angle as Turn",
+      "flowTo": "Right Angle Benchmark"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Right Angle Benchmark",
-      "stepDesc": "Bandingkan dengan sudut siku-siku.",
+      "stepDesc": "Bandingkan dengan sudut siku-siku. Pada Sudut pada Bidang Datar, langkah “Right Angle Benchmark” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Sudut sebagai Putaran: Sudut mengukur besar putaran. Acuan Siku-siku: Bandingkan dengan sudut siku-siku. Pilah Sudut: Lebih besar/kecil dari siku-siku.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Right Angle Benchmark",
+      "flowTo": "Corner Sort"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Corner Sort",
-      "stepDesc": "Lebih besar/kecil dari siku-siku.",
+      "stepDesc": "Lebih besar/kecil dari siku-siku. Pada Sudut pada Bidang Datar, langkah “Corner Sort” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Sudut sebagai Putaran: Sudut mengukur besar putaran. Acuan Siku-siku: Bandingkan dengan sudut siku-siku. Pilah Sudut: Lebih besar/kecil dari siku-siku.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Corner Sort",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Sudut pada Bidang Datar. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Sudut pada Bidang Datar. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Sudut pada Bidang Datar dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Sudut pada Bidang Datar. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1723,66 +1723,66 @@ export const SUB_C34: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Garis-Garis Tegak Lurus dan Garis-Garis Sejajar?",
+      "stepDesc": "Baca soal Garis-Garis Tegak Lurus dan Garis-Garis Sejajar dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengenal garis-garis tegak lurus (bertemu pada sudut siku-siku, lambang ⊥) dan garis-garis sejajar (jarak selalu s….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Perpendicular"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Perpendicular",
-      "stepDesc": "Dua garis bertemu membentuk siku-siku.",
+      "stepDesc": "Dua garis bertemu membentuk siku-siku. Pada Garis-Garis Tegak Lurus dan Garis-Garis Sejajar, langkah “Perpendicular” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Tegak Lurus: Dua garis bertemu membentuk siku-siku. Sejajar: Jarak tetap, tidak bertemu. Garis di Lingkungan: Cari contoh di kelas dan jalan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Perpendicular",
+      "flowTo": "Parallel"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Parallel",
-      "stepDesc": "Jarak tetap, tidak bertemu.",
+      "stepDesc": "Jarak tetap, tidak bertemu. Pada Garis-Garis Tegak Lurus dan Garis-Garis Sejajar, langkah “Parallel” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Tegak Lurus: Dua garis bertemu membentuk siku-siku. Sejajar: Jarak tetap, tidak bertemu. Garis di Lingkungan: Cari contoh di kelas dan jalan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Parallel",
+      "flowTo": "Real-World Lines"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Real-World Lines",
-      "stepDesc": "Cari contoh di kelas dan jalan.",
+      "stepDesc": "Cari contoh di kelas dan jalan. Pada Garis-Garis Tegak Lurus dan Garis-Garis Sejajar, langkah “Real-World Lines” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Tegak Lurus: Dua garis bertemu membentuk siku-siku. Sejajar: Jarak tetap, tidak bertemu. Garis di Lingkungan: Cari contoh di kelas dan jalan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Real-World Lines",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Garis-Garis Tegak Lurus dan Garis-Garis Sejajar. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Garis-Garis Tegak Lurus dan Garis-Garis Sejajar. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Garis-Garis Tegak Lurus dan Garis-Garis Sejajar dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Garis-Garis Tegak Lurus dan Garis-Garis Sejajar. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

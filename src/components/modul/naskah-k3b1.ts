@@ -199,66 +199,66 @@ export const SUB_A31: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Bilangan dan Lambang Bilangan Cacah sampai 1.000?",
+      "stepDesc": "Baca soal Bilangan dan Lambang Bilangan Cacah sampai 1.000 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membaca bilangan cacah tiga angka sampai 1.000 dengan benar, termasuk bilangan yang memuat angka nol (703, 900, 40….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Dienes Blocks"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Dienes Blocks",
-      "stepDesc": "Satuan–puluhan–ratusan untuk bilangan sampai 1.000.",
+      "stepDesc": "Satuan–puluhan–ratusan untuk bilangan sampai 1.000. Pada Bilangan dan Lambang Bilangan Cacah sampai 1.000, langkah “Dienes Blocks” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Balok Dienes: Satuan–puluhan–ratusan untuk bilangan sampai 1.000. Tabel Nilai Tempat: Baca dan tulis menurut ratusan, puluhan, satuan. Nama Bilangan: Ucapkan bi…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Dienes Blocks",
+      "flowTo": "Place-Value Chart"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Place-Value Chart",
-      "stepDesc": "Baca dan tulis menurut ratusan, puluhan, satuan.",
+      "stepDesc": "Baca dan tulis menurut ratusan, puluhan, satuan. Pada Bilangan dan Lambang Bilangan Cacah sampai 1.000, langkah “Place-Value Chart” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Balok Dienes: Satuan–puluhan–ratusan untuk bilangan sampai 1.000. Tabel Nilai Tempat: Baca dan tulis menurut ratusan, puluhan, satuan. Nama Bilangan: Ucapkan bi…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Place-Value Chart",
+      "flowTo": "Number Names"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Number Names",
-      "stepDesc": "Ucapkan bilangan sesuai aturan bahasa Indonesia.",
+      "stepDesc": "Ucapkan bilangan sesuai aturan bahasa Indonesia. Pada Bilangan dan Lambang Bilangan Cacah sampai 1.000, langkah “Number Names” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Balok Dienes: Satuan–puluhan–ratusan untuk bilangan sampai 1.000. Tabel Nilai Tempat: Baca dan tulis menurut ratusan, puluhan, satuan. Nama Bilangan: Ucapkan bi…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Number Names",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Bilangan dan Lambang Bilangan Cacah sampai 1.000. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Bilangan dan Lambang Bilangan Cacah sampai 1.000. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Bilangan dan Lambang Bilangan Cacah sampai 1.000 dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Bilangan dan Lambang Bilangan Cacah sampai 1.000. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -961,66 +961,66 @@ export const SUB_B31: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Nilai Tempat Bilangan Cacah sampai 1.000?",
+      "stepDesc": "Baca soal Nilai Tempat Bilangan Cacah sampai 1.000 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menentukan tempat dan nilai setiap angka pada bilangan tiga angka (pada 251, angka 2 bernilai 200, angka 5 bernila….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Place Value"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Place Value",
-      "stepDesc": "Nilai digit bergantung tempatnya.",
+      "stepDesc": "Nilai digit bergantung tempatnya. Pada Nilai Tempat Bilangan Cacah sampai 1.000, langkah “Place Value” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Nilai Tempat: Nilai digit bergantung tempatnya. Kartu Angka Montessori: Kartu 1000/100/10/1 menyusun bilangan. Bentuk Uraian: 300+40+5 = 345.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Place Value",
+      "flowTo": "Montessori Cards"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Montessori Cards",
-      "stepDesc": "Kartu 1000/100/10/1 menyusun bilangan.",
+      "stepDesc": "Kartu 1000/100/10/1 menyusun bilangan. Pada Nilai Tempat Bilangan Cacah sampai 1.000, langkah “Montessori Cards” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Nilai Tempat: Nilai digit bergantung tempatnya. Kartu Angka Montessori: Kartu 1000/100/10/1 menyusun bilangan. Bentuk Uraian: 300+40+5 = 345.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Montessori Cards",
+      "flowTo": "Expanded Form"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Expanded Form",
-      "stepDesc": "300+40+5 = 345.",
+      "stepDesc": "300+40+5 = 345. Pada Nilai Tempat Bilangan Cacah sampai 1.000, langkah “Expanded Form” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Nilai Tempat: Nilai digit bergantung tempatnya. Kartu Angka Montessori: Kartu 1000/100/10/1 menyusun bilangan. Bentuk Uraian: 300+40+5 = 345.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Expanded Form",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Nilai Tempat Bilangan Cacah sampai 1.000. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Nilai Tempat Bilangan Cacah sampai 1.000. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Nilai Tempat Bilangan Cacah sampai 1.000 dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Nilai Tempat Bilangan Cacah sampai 1.000. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1723,66 +1723,66 @@ export const SUB_C31: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Membandingkan dan Mengurutkan Bilangan Cacah sampai 1.000?",
+      "stepDesc": "Baca soal Membandingkan dan Mengurutkan Bilangan Cacah sampai 1.000 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membandingkan dua bilangan cacah tiga angka dengan nilai tempat (mulai dari ratusan, lalu puluhan, lalu satuan), m….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Compare Placewise"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Compare Placewise",
-      "stepDesc": "Mulai dari ratusan.",
+      "stepDesc": "Mulai dari ratusan. Pada Membandingkan dan Mengurutkan Bilangan Cacah sampai 1.000, langkah “Compare Placewise” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Banding per Tempat: Mulai dari ratusan. Garis Bilangan Ratusan: Posisi menentukan besar-kecil. Mengurutkan: Urut naik/turun dengan banding berulang.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Compare Placewise",
+      "flowTo": "Number Line"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Number Line",
-      "stepDesc": "Posisi menentukan besar-kecil.",
+      "stepDesc": "Posisi menentukan besar-kecil. Pada Membandingkan dan Mengurutkan Bilangan Cacah sampai 1.000, langkah “Number Line” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Banding per Tempat: Mulai dari ratusan. Garis Bilangan Ratusan: Posisi menentukan besar-kecil. Mengurutkan: Urut naik/turun dengan banding berulang.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Number Line",
+      "flowTo": "Ordering"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Ordering",
-      "stepDesc": "Urut naik/turun dengan banding berulang.",
+      "stepDesc": "Urut naik/turun dengan banding berulang. Pada Membandingkan dan Mengurutkan Bilangan Cacah sampai 1.000, langkah “Ordering” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Banding per Tempat: Mulai dari ratusan. Garis Bilangan Ratusan: Posisi menentukan besar-kecil. Mengurutkan: Urut naik/turun dengan banding berulang.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Ordering",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Membandingkan dan Mengurutkan Bilangan Cacah sampai 1.000. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Membandingkan dan Mengurutkan Bilangan Cacah sampai 1.000. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Membandingkan dan Mengurutkan Bilangan Cacah sampai 1.000 dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Membandingkan dan Mengurutkan Bilangan Cacah sampai 1.000. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -2485,66 +2485,66 @@ export const SUB_D31: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Penjumlahan Bilangan Cacah sampai 100?",
+      "stepDesc": "Baca soal Penjumlahan Bilangan Cacah sampai 100 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menjumlahkan dua bilangan cacah sampai 100 dengan cara susun pendek (tanpa dan dengan menyimpan) dan cara susun pa….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Standard Addition"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Standard Addition",
-      "stepDesc": "Dari satuan, simpan jika perlu.",
+      "stepDesc": "Dari satuan, simpan jika perlu. Pada Penjumlahan Bilangan Cacah sampai 100, langkah “Standard Addition” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Penjumlahan Bersusun: Dari satuan, simpan jika perlu. Pasangan Bilangan: Pecah bilangan untuk mudah dijumlah. Menghitung Maju: Mulai dari yang lebih besar.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Standard Addition",
+      "flowTo": "Number Bond"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Number Bond",
-      "stepDesc": "Pecah bilangan untuk mudah dijumlah.",
+      "stepDesc": "Pecah bilangan untuk mudah dijumlah. Pada Penjumlahan Bilangan Cacah sampai 100, langkah “Number Bond” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Penjumlahan Bersusun: Dari satuan, simpan jika perlu. Pasangan Bilangan: Pecah bilangan untuk mudah dijumlah. Menghitung Maju: Mulai dari yang lebih besar.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Number Bond",
+      "flowTo": "Counting On"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Counting On",
-      "stepDesc": "Mulai dari yang lebih besar.",
+      "stepDesc": "Mulai dari yang lebih besar. Pada Penjumlahan Bilangan Cacah sampai 100, langkah “Counting On” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Penjumlahan Bersusun: Dari satuan, simpan jika perlu. Pasangan Bilangan: Pecah bilangan untuk mudah dijumlah. Menghitung Maju: Mulai dari yang lebih besar.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Counting On",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Penjumlahan Bilangan Cacah sampai 100. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Penjumlahan Bilangan Cacah sampai 100. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Penjumlahan Bilangan Cacah sampai 100 dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Penjumlahan Bilangan Cacah sampai 100. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -3247,66 +3247,66 @@ export const SUB_E31: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Pengurangan Bilangan Cacah sampai 100?",
+      "stepDesc": "Baca soal Pengurangan Bilangan Cacah sampai 100 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengurangkan dua bilangan cacah sampai 100 dengan cara susun pendek (tanpa dan dengan mengambil satu puluhan) dan ….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Standard Subtraction"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Standard Subtraction",
-      "stepDesc": "Dari satuan, pinjam jika perlu.",
+      "stepDesc": "Dari satuan, pinjam jika perlu. Pada Pengurangan Bilangan Cacah sampai 100, langkah “Standard Subtraction” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pengurangan Bersusun: Dari satuan, pinjam jika perlu. Menghitung Naik: Naik dari yang dikurangi. Meminjam: Buka puluhan jadi sepuluh satuan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Standard Subtraction",
+      "flowTo": "Counting Up"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Counting Up",
-      "stepDesc": "Naik dari yang dikurangi.",
+      "stepDesc": "Naik dari yang dikurangi. Pada Pengurangan Bilangan Cacah sampai 100, langkah “Counting Up” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pengurangan Bersusun: Dari satuan, pinjam jika perlu. Menghitung Naik: Naik dari yang dikurangi. Meminjam: Buka puluhan jadi sepuluh satuan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Counting Up",
+      "flowTo": "Regrouping"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Regrouping",
-      "stepDesc": "Buka puluhan jadi sepuluh satuan.",
+      "stepDesc": "Buka puluhan jadi sepuluh satuan. Pada Pengurangan Bilangan Cacah sampai 100, langkah “Regrouping” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pengurangan Bersusun: Dari satuan, pinjam jika perlu. Menghitung Naik: Naik dari yang dikurangi. Meminjam: Buka puluhan jadi sepuluh satuan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Regrouping",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Pengurangan Bilangan Cacah sampai 100. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Pengurangan Bilangan Cacah sampai 100. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Pengurangan Bilangan Cacah sampai 100 dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Pengurangan Bilangan Cacah sampai 100. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -4009,66 +4009,66 @@ export const SUB_F31: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Perkalian Bilangan Cacah sampai 100?",
+      "stepDesc": "Baca soal Perkalian Bilangan Cacah sampai 100 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa memahami perkalian sebagai penjumlahan berulang dari kelompok yang sama banyak, menulis dan membaca perkalian (ban….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Equal Groups"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Equal Groups",
-      "stepDesc": "Penjumlahan berulang.",
+      "stepDesc": "Penjumlahan berulang. Pada Perkalian Bilangan Cacah sampai 100, langkah “Equal Groups” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Kelompok Sama: Penjumlahan berulang. Susunan Baris Kolom: Baris × kolom. Lompat Hitung: 2, 4, 6, … untuk kali 2.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Equal Groups",
+      "flowTo": "Array"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Array",
-      "stepDesc": "Baris × kolom.",
+      "stepDesc": "Baris × kolom. Pada Perkalian Bilangan Cacah sampai 100, langkah “Array” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Kelompok Sama: Penjumlahan berulang. Susunan Baris Kolom: Baris × kolom. Lompat Hitung: 2, 4, 6, … untuk kali 2.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Array",
+      "flowTo": "Skip Counting"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Skip Counting",
-      "stepDesc": "2, 4, 6, … untuk kali 2.",
+      "stepDesc": "2, 4, 6, … untuk kali 2. Pada Perkalian Bilangan Cacah sampai 100, langkah “Skip Counting” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Kelompok Sama: Penjumlahan berulang. Susunan Baris Kolom: Baris × kolom. Lompat Hitung: 2, 4, 6, … untuk kali 2.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Skip Counting",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Perkalian Bilangan Cacah sampai 100. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Perkalian Bilangan Cacah sampai 100. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Perkalian Bilangan Cacah sampai 100 dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Perkalian Bilangan Cacah sampai 100. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -4770,66 +4770,66 @@ export const SUB_G31: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Pembagian Bilangan Cacah sampai 100?",
+      "stepDesc": "Baca soal Pembagian Bilangan Cacah sampai 100 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa memahami pembagian sebagai pengurangan berulang sampai habis dan sebagai membagi sama banyak, menulis dan membaca ….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Fair Share"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Fair Share",
-      "stepDesc": "Bagi ke kelompok sama.",
+      "stepDesc": "Bagi ke kelompok sama. Pada Pembagian Bilangan Cacah sampai 100, langkah “Fair Share” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Bagi Rata: Bagi ke kelompok sama. Kurang Berulang: Kurangi berulang sampai habis. Keluarga Fakta: Kali dan bagi saling terkait.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Fair Share",
+      "flowTo": "Repeated Subtraction"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Repeated Subtraction",
-      "stepDesc": "Kurangi berulang sampai habis.",
+      "stepDesc": "Kurangi berulang sampai habis. Pada Pembagian Bilangan Cacah sampai 100, langkah “Repeated Subtraction” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Bagi Rata: Bagi ke kelompok sama. Kurang Berulang: Kurangi berulang sampai habis. Keluarga Fakta: Kali dan bagi saling terkait.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Repeated Subtraction",
+      "flowTo": "Fact Family"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Fact Family",
-      "stepDesc": "Kali dan bagi saling terkait.",
+      "stepDesc": "Kali dan bagi saling terkait. Pada Pembagian Bilangan Cacah sampai 100, langkah “Fact Family” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Bagi Rata: Bagi ke kelompok sama. Kurang Berulang: Kurangi berulang sampai habis. Keluarga Fakta: Kali dan bagi saling terkait.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Fact Family",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Pembagian Bilangan Cacah sampai 100. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Pembagian Bilangan Cacah sampai 100. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Pembagian Bilangan Cacah sampai 100 dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Pembagian Bilangan Cacah sampai 100. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

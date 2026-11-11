@@ -200,50 +200,50 @@ export const SUB_A55: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Tanya luas",
-      "stepDesc": "Seberapa besar daerah dalam?",
+      "stepDesc": "Baca soal Konsep Luas Daerah Bangun Datar dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Seberapa besar daerah dalam? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa memahami luas sebagai ukuran daerah di dalam batas bangun, mengukur dengan pengubinan petak satuan (cm²/m²), memak….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Tanya luas",
+      "flowTo": "Satuan"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Satuan",
-      "stepDesc": "cm² / m² / petak",
+      "stepDesc": "cm² / m² / petak. Pada Konsep Luas Daerah Bangun Datar, langkah “Satuan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📐",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Satuan",
+      "flowTo": "Covering"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Covering",
-      "stepDesc": "Tutup rapat petak",
+      "stepDesc": "Tutup rapat petak. Pada Konsep Luas Daerah Bangun Datar, langkah “Covering” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧩",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Covering",
+      "flowTo": "Array"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Array",
-      "stepDesc": "baris × kolom",
+      "stepDesc": "baris × kolom. Pada Konsep Luas Daerah Bangun Datar, langkah “Array” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "▦",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Array",
+      "flowTo": "Konservasi"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Konservasi",
-      "stepDesc": "Cara Yohana",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Konsep Luas Daerah Bangun Datar. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✂️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Konservasi",
+      "flowTo": "Bukan K"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Bukan K",
-      "stepDesc": "Bukan path length",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Konsep Luas Daerah Bangun Datar. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "⚠️",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Bukan K",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -909,50 +909,50 @@ export const SUB_B55: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Kenali bangun",
-      "stepDesc": "PP/persegi/segitiga/…",
+      "stepDesc": "Baca soal Luas Daerah Bangun Datar dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. PP/persegi/segitiga/… Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menemukan dan memakai rumus luas persegi panjang, persegi, segitiga, jajargenjang, trapesium, belah ketupat, dan l….",
       "icon": "👀",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Kenali bangun",
+      "flowTo": "Pilih rumus"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Pilih rumus",
-      "stepDesc": "Sesuai ciri",
+      "stepDesc": "Sesuai ciri. Pada Luas Daerah Bangun Datar, langkah “Pilih rumus” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧮",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Pilih rumus",
+      "flowTo": "Tegak lurus"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Tegak lurus",
-      "stepDesc": "Tinggi ⊥ alas",
+      "stepDesc": "Tinggi ⊥ alas. Pada Luas Daerah Bangun Datar, langkah “Tegak lurus” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⊥",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Tegak lurus",
+      "flowTo": "Hitung"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Hitung",
-      "stepDesc": "Ganti angka",
+      "stepDesc": "Ganti angka. Pada Luas Daerah Bangun Datar, langkah “Hitung” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔢",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Hitung",
+      "flowTo": "Metode luar"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Metode luar",
-      "stepDesc": "Dissection/Shear/Base×H",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Luas Daerah Bangun Datar. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🌍",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Metode luar",
+      "flowTo": "Cek"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek",
-      "stepDesc": "Masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Luas Daerah Bangun Datar. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Cek",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1618,50 +1618,50 @@ export const SUB_C55: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Lihat bangun",
-      "stepDesc": "Gabungan apa?",
+      "stepDesc": "Baca soal Luas Daerah Bangun Gabungan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Gabungan apa? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengurai bangun gabungan menjadi bagian yang dikenal (cara Yohana: layang+segitiga; cara Komang: jajar+segitiga), ….",
       "icon": "🧩",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Lihat bangun",
+      "flowTo": "Urai"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Urai",
-      "stepDesc": "Bagian dikenal",
+      "stepDesc": "Bagian dikenal. Pada Luas Daerah Bangun Gabungan, langkah “Urai” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✂️",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Urai",
+      "flowTo": "Rumus tiap"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Rumus tiap",
-      "stepDesc": "PP/segitiga/…",
+      "stepDesc": "PP/segitiga/…. Pada Luas Daerah Bangun Gabungan, langkah “Rumus tiap” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧮",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Rumus tiap",
+      "flowTo": "Jumlahkan"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Jumlahkan",
-      "stepDesc": "Additive",
+      "stepDesc": "Additive. Pada Luas Daerah Bangun Gabungan, langkah “Jumlahkan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➕",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Jumlahkan",
+      "flowTo": "Cek tindih"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Cek tindih",
-      "stepDesc": "Tanpa dobel",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Luas Daerah Bangun Gabungan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "⚠️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Cek tindih",
+      "flowTo": "Validasi"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Validasi",
-      "stepDesc": "Cara kedua?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Luas Daerah Bangun Gabungan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Validasi",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -2327,50 +2327,50 @@ export const SUB_D55: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Kunci K",
-      "stepDesc": "2(p+l) tetap",
+      "stepDesc": "Baca soal Hubungan Keliling dan Luas Daerah dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. 2(p+l) tetap Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa memahami bahwa kerangka kawat ber-keliling tetap (mis. 60 cm) dapat membentuk banyak persegi panjang dengan luas b….",
       "icon": "🔒",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Kunci K",
+      "flowTo": "Pasangan p,l"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Pasangan p,l",
-      "stepDesc": "p+l tetap",
+      "stepDesc": "p+l tetap. Pada Hubungan Keliling dan Luas Daerah, langkah “Pasangan p,l” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔢",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Pasangan p,l",
+      "flowTo": "Hitung L"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Hitung L",
-      "stepDesc": "p×l tiap pasangan",
+      "stepDesc": "p×l tiap pasangan. Pada Hubungan Keliling dan Luas Daerah, langkah “Hitung L” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧮",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Hitung L",
+      "flowTo": "Bandingkan"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Bandingkan",
-      "stepDesc": "L bisa beda",
+      "stepDesc": "L bisa beda. Pada Hubungan Keliling dan Luas Daerah, langkah “Bandingkan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⚖️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Bandingkan",
+      "flowTo": "Terluas"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Terluas",
-      "stepDesc": "dekat persegi",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Hubungan Keliling dan Luas Daerah. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "⬜",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Terluas",
+      "flowTo": "Pilih konsep"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Pilih konsep",
-      "stepDesc": "K atau L?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Hubungan Keliling dan Luas Daerah. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "🎯",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Pilih konsep",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

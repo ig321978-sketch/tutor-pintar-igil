@@ -200,50 +200,50 @@ export const SUB_A56: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Cari sudut",
-      "stepDesc": "Di sekitar kita",
+      "stepDesc": "Baca soal Sudut Siku-Siku dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Di sekitar kita Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengenali sudut siku-siku di lingkungan, membuat patokan 90° dari lipatan kertas, dan membandingkan sudut temuan d….",
       "icon": "🔍",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Cari sudut",
+      "flowTo": "Buat patokan"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Buat patokan",
-      "stepDesc": "Lipat kertas 90°",
+      "stepDesc": "Lipat kertas 90°. Pada Sudut Siku-Siku, langkah “Buat patokan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📄",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Buat patokan",
+      "flowTo": "Bandingkan"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Bandingkan",
-      "stepDesc": "Cocok patokan?",
+      "stepDesc": "Cocok patokan?. Pada Sudut Siku-Siku, langkah “Bandingkan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⚖️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Bandingkan",
+      "flowTo": "Siku?"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Siku?",
-      "stepDesc": "Ya = 90°",
+      "stepDesc": "Ya = 90°. Pada Sudut Siku-Siku, langkah “Siku?” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✅",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Siku?",
+      "flowTo": "Catat"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Catat",
-      "stepDesc": "Tabel detektif",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Sudut Siku-Siku. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "📋",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Catat",
+      "flowTo": "Pakai alat"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Pakai alat",
-      "stepDesc": "Penggaris siku",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Sudut Siku-Siku. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "📐",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Pakai alat",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -909,50 +909,50 @@ export const SUB_B56: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Titik sudut",
-      "stepDesc": "Temu dua kaki",
+      "stepDesc": "Baca soal Pengertian dan Jenis Sudut dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Temu dua kaki Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menjelaskan sudut sebagai daerah dua garis bertemu di titik sudut, menyebut kaki sudut, serta mengelompokkan lanci….",
       "icon": "•",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Titik sudut",
+      "flowTo": "Kaki sudut"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Kaki sudut",
-      "stepDesc": "Dua garis/sinar",
+      "stepDesc": "Dua garis/sinar. Pada Pengertian dan Jenis Sudut, langkah “Kaki sudut” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "／",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Kaki sudut",
+      "flowTo": "Daerah sudut"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Daerah sudut",
-      "stepDesc": "Di antara kaki",
+      "stepDesc": "Di antara kaki. Pada Pengertian dan Jenis Sudut, langkah “Daerah sudut” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "∠",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Daerah sudut",
+      "flowTo": "Banding 90°"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Banding 90°",
-      "stepDesc": "Patokan siku",
+      "stepDesc": "Patokan siku. Pada Pengertian dan Jenis Sudut, langkah “Banding 90°” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "∟",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Banding 90°",
+      "flowTo": "Lancip/Tumpul"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Lancip/Tumpul",
-      "stepDesc": "<90° atau >90°",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Pengertian dan Jenis Sudut. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "📊",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Lancip/Tumpul",
+      "flowTo": "Contoh"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Contoh",
-      "stepDesc": "Jam, gunting, kipas",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Pengertian dan Jenis Sudut. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "🕐",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Contoh",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1618,50 +1618,50 @@ export const SUB_C56: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Banding dulu",
-      "stepDesc": "Mana lebih lebar?",
+      "stepDesc": "Baca soal Mengukur dan Membandingkan Sudut dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Mana lebih lebar? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengukur sudut dengan busur derajat dalam satuan derajat, membandingkan lebar kipas (Tari Pakarena), serta mengena….",
       "icon": "🪞",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Banding dulu",
+      "flowTo": "Pakai derajat"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Pakai derajat",
-      "stepDesc": "Satuan sudut",
+      "stepDesc": "Satuan sudut. Pada Mengukur dan Membandingkan Sudut, langkah “Pakai derajat” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "°",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Pakai derajat",
+      "flowTo": "Pasang busur"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Pasang busur",
-      "stepDesc": "Pusat di titik",
+      "stepDesc": "Pusat di titik. Pada Mengukur dan Membandingkan Sudut, langkah “Pasang busur” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📐",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Pasang busur",
+      "flowTo": "Baca skala"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Baca skala",
-      "stepDesc": "Kaki kedua",
+      "stepDesc": "Kaki kedua. Pada Mengukur dan Membandingkan Sudut, langkah “Baca skala” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "👀",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Baca skala",
+      "flowTo": "Benchmark"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Benchmark",
-      "stepDesc": "0/90/180/360",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Mengukur dan Membandingkan Sudut. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "⭐",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Benchmark",
+      "flowTo": "Releks?"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Releks?",
-      "stepDesc": ">180° <360°",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Mengukur dan Membandingkan Sudut. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "↻",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Releks?",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -2327,50 +2327,50 @@ export const SUB_D56: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Titik+kaki",
-      "stepDesc": "Fondasi lukisan",
+      "stepDesc": "Baca soal Melukis Sudut dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Fondasi lukisan Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa melukis sudut berukuran tertentu dengan busur derajat mengikuti urutan titik sudut → pasang busur → tadai derajat ….",
       "icon": "•",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Titik+kaki",
+      "flowTo": "Pasang busur"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Pasang busur",
-      "stepDesc": "Pusat & dasar",
+      "stepDesc": "Pusat & dasar. Pada Melukis Sudut, langkah “Pasang busur” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📐",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Pasang busur",
+      "flowTo": "Tadai target"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Tadai target",
-      "stepDesc": "Angka derajat",
+      "stepDesc": "Angka derajat. Pada Melukis Sudut, langkah “Tadai target” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✏️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Tadai target",
+      "flowTo": "Kaki kedua"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Kaki kedua",
-      "stepDesc": "Tanda → titik",
+      "stepDesc": "Tanda → titik. Pada Melukis Sudut, langkah “Kaki kedua” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "／",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Kaki kedua",
+      "flowTo": "Ukur ulang"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Ukur ulang",
-      "stepDesc": "Cek akurat",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Melukis Sudut. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🔍",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Ukur ulang",
+      "flowTo": "Jenis"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Jenis",
-      "stepDesc": "Lancip/siku/tumpul",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Melukis Sudut. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "📊",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Jenis",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

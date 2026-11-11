@@ -199,66 +199,66 @@ export const SUB_A33: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Pengukuran Panjang dengan Satuan Baku?",
+      "stepDesc": "Baca soal Pengukuran Panjang dengan Satuan Baku dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengenal alat ukur panjang (penggaris, meteran gulung, pengukur tinggi badan) dan satuan baku panjang (sentimeter ….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Iterate Unit"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Iterate Unit",
-      "stepDesc": "Panjang diukur dengan mengulang satuan baku.",
+      "stepDesc": "Panjang diukur dengan mengulang satuan baku. Pada Pengukuran Panjang dengan Satuan Baku, langkah “Iterate Unit” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Ulangi Satuan: Panjang diukur dengan mengulang satuan baku. Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak. Perkiraan Lalu Ukur: Perkirakan…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Iterate Unit",
+      "flowTo": "Zero Point"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Zero Point",
-      "stepDesc": "Mulai dari 0, bukan ujung penggaris yang rusak.",
+      "stepDesc": "Mulai dari 0, bukan ujung penggaris yang rusak. Pada Pengukuran Panjang dengan Satuan Baku, langkah “Zero Point” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Ulangi Satuan: Panjang diukur dengan mengulang satuan baku. Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak. Perkiraan Lalu Ukur: Perkirakan…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Zero Point",
+      "flowTo": "Estimate then Measure"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Estimate then Measure",
-      "stepDesc": "Perkirakan dulu, baru ukur tepat.",
+      "stepDesc": "Perkirakan dulu, baru ukur tepat. Pada Pengukuran Panjang dengan Satuan Baku, langkah “Estimate then Measure” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Ulangi Satuan: Panjang diukur dengan mengulang satuan baku. Titik Nol Penggaris: Mulai dari 0, bukan ujung penggaris yang rusak. Perkiraan Lalu Ukur: Perkirakan…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Estimate then Measure",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Pengukuran Panjang dengan Satuan Baku. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Pengukuran Panjang dengan Satuan Baku. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Pengukuran Panjang dengan Satuan Baku dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Pengukuran Panjang dengan Satuan Baku. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -961,66 +961,66 @@ export const SUB_B33: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Hubungan Antarsatuan Baku Panjang?",
+      "stepDesc": "Baca soal Hubungan Antarsatuan Baku Panjang dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa memahami bahwa 100 sentimeter sama dengan 1 meter, mengubah meter ke sentimeter dengan mengalikan 100 dan sentimet….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Unit Conversion"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Unit Conversion",
-      "stepDesc": "1 m = 100 cm; 1 km = 1000 m.",
+      "stepDesc": "1 m = 100 cm; 1 km = 1000 m. Pada Hubungan Antarsatuan Baku Panjang, langkah “Unit Conversion” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m. Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm. Tabel Konversi: Pakai tabel untuk pindah satuan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Unit Conversion",
+      "flowTo": "Same Quantity Different Unit"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Same Quantity Different Unit",
-      "stepDesc": "120 cm = 1 m 20 cm.",
+      "stepDesc": "120 cm = 1 m 20 cm. Pada Hubungan Antarsatuan Baku Panjang, langkah “Same Quantity Different Unit” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m. Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm. Tabel Konversi: Pakai tabel untuk pindah satuan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Same Quantity Different Unit",
+      "flowTo": "Conversion Table"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Conversion Table",
-      "stepDesc": "Pakai tabel untuk pindah satuan.",
+      "stepDesc": "Pakai tabel untuk pindah satuan. Pada Hubungan Antarsatuan Baku Panjang, langkah “Conversion Table” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Konversi Satuan Panjang: 1 m = 100 cm; 1 km = 1000 m. Kuantitas Sama Satuan Beda: 120 cm = 1 m 20 cm. Tabel Konversi: Pakai tabel untuk pindah satuan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Conversion Table",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Hubungan Antarsatuan Baku Panjang. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Hubungan Antarsatuan Baku Panjang. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Hubungan Antarsatuan Baku Panjang dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Hubungan Antarsatuan Baku Panjang. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1723,66 +1723,66 @@ export const SUB_C33: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Pengukuran Berat dengan Satuan Baku?",
+      "stepDesc": "Baca soal Pengukuran Berat dengan Satuan Baku dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengenal timbangan sebagai alat ukur berat (timbangan digital, timbangan duduk, timbangan kodok, dan timbangan bad….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Balance Scale"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Balance Scale",
-      "stepDesc": "Bandingkan berat dengan anak timbangan.",
+      "stepDesc": "Bandingkan berat dengan anak timbangan. Pada Pengukuran Berat dengan Satuan Baku, langkah “Balance Scale” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Neraca: Bandingkan berat dengan anak timbangan. Satuan Berat Baku: Gram dan kilogram. Perkiraan Berat: Bandingkan dengan benda acuan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Balance Scale",
+      "flowTo": "Standard Mass Units"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Standard Mass Units",
-      "stepDesc": "Gram dan kilogram.",
+      "stepDesc": "Gram dan kilogram. Pada Pengukuran Berat dengan Satuan Baku, langkah “Standard Mass Units” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Neraca: Bandingkan berat dengan anak timbangan. Satuan Berat Baku: Gram dan kilogram. Perkiraan Berat: Bandingkan dengan benda acuan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Standard Mass Units",
+      "flowTo": "Estimate Mass"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Estimate Mass",
-      "stepDesc": "Bandingkan dengan benda acuan.",
+      "stepDesc": "Bandingkan dengan benda acuan. Pada Pengukuran Berat dengan Satuan Baku, langkah “Estimate Mass” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Neraca: Bandingkan berat dengan anak timbangan. Satuan Berat Baku: Gram dan kilogram. Perkiraan Berat: Bandingkan dengan benda acuan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Estimate Mass",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Pengukuran Berat dengan Satuan Baku. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Pengukuran Berat dengan Satuan Baku. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Pengukuran Berat dengan Satuan Baku dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Pengukuran Berat dengan Satuan Baku. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -2484,66 +2484,66 @@ export const SUB_D33: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Hubungan Antarsatuan Baku Berat?",
+      "stepDesc": "Baca soal Hubungan Antarsatuan Baku Berat dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengenal timbangan kodok dan bandul (1/2 ons, 1 ons, 2 ons, 1/2 kg, 1 kg), memahami 1 kg = 1.000 g = 10 ons dan 1 ….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Mass Conversion"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Mass Conversion",
-      "stepDesc": "1 kg = 1000 g.",
+      "stepDesc": "1 kg = 1000 g. Pada Hubungan Antarsatuan Baku Berat, langkah “Mass Conversion” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Konversi Berat: 1 kg = 1000 g. Satuan Campuran: 1 kg 200 g = 1200 g. Tabel Konversi Berat: Pakai tabel g–kg.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Mass Conversion",
+      "flowTo": "Mixed Units"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Mixed Units",
-      "stepDesc": "1 kg 200 g = 1200 g.",
+      "stepDesc": "1 kg 200 g = 1200 g. Pada Hubungan Antarsatuan Baku Berat, langkah “Mixed Units” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Konversi Berat: 1 kg = 1000 g. Satuan Campuran: 1 kg 200 g = 1200 g. Tabel Konversi Berat: Pakai tabel g–kg.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Mixed Units",
+      "flowTo": "Conversion Table Mass"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Conversion Table Mass",
-      "stepDesc": "Pakai tabel g–kg.",
+      "stepDesc": "Pakai tabel g–kg. Pada Hubungan Antarsatuan Baku Berat, langkah “Conversion Table Mass” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Konversi Berat: 1 kg = 1000 g. Satuan Campuran: 1 kg 200 g = 1200 g. Tabel Konversi Berat: Pakai tabel g–kg.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Conversion Table Mass",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Hubungan Antarsatuan Baku Berat. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Hubungan Antarsatuan Baku Berat. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Hubungan Antarsatuan Baku Berat dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Hubungan Antarsatuan Baku Berat. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

@@ -200,50 +200,50 @@ export const SUB_A57: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Syarat sisi",
-      "stepDesc": "a+b>c (Inequality)",
+      "stepDesc": "Baca soal Membandingkan Ciri-Ciri Segitiga dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. a+b>c (Inequality) Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menerapkan syarat ketaksamaan segitiga, mengelompokkan segitiga menurut sudut (lancip/siku/tumpul) dan sisi (sama ….",
       "icon": "📏",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Syarat sisi",
+      "flowTo": "Jenis sudut"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Jenis sudut",
-      "stepDesc": "Lancip/siku/tumpul",
+      "stepDesc": "Lancip/siku/tumpul. Pada Membandingkan Ciri-Ciri Segitiga, langkah “Jenis sudut” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "∠",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Jenis sudut",
+      "flowTo": "Jumlah 180°"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Jumlah 180°",
-      "stepDesc": "Angle Sum",
+      "stepDesc": "Angle Sum. Pada Membandingkan Ciri-Ciri Segitiga, langkah “Jumlah 180°” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➕",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Jumlah 180°",
+      "flowTo": "Jenis sisi"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Jenis sisi",
-      "stepDesc": "Sama kaki/sisi/sembarang",
+      "stepDesc": "Sama kaki/sisi/sembarang. Pada Membandingkan Ciri-Ciri Segitiga, langkah “Jenis sisi” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "△",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Jenis sisi",
+      "flowTo": "Simetri"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Simetri",
-      "stepDesc": "Lipat & putar",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Membandingkan Ciri-Ciri Segitiga. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🪞",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Simetri",
+      "flowTo": "Hierarki"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Hierarki",
-      "stepDesc": "Sama sisi ⊂ sama kaki",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Membandingkan Ciri-Ciri Segitiga. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "📊",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Hierarki",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -909,50 +909,50 @@ export const SUB_B57: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Segi empat",
-      "stepDesc": "4 sisi",
+      "stepDesc": "Baca soal Membandingkan Ciri-Ciri Segi Empat dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. 4 sisi Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membandingkan ciri trapesium, jajargenjang, persegi panjang, belah ketupat, persegi, dan layang-layang; memakai de….",
       "icon": "⬜",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Segi empat",
+      "flowTo": "Trapesium"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Trapesium",
-      "stepDesc": "≥1 sejajar",
+      "stepDesc": "≥1 sejajar. Pada Membandingkan Ciri-Ciri Segi Empat, langkah “Trapesium” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⬡",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Trapesium",
+      "flowTo": "Jajargenjang"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Jajargenjang",
-      "stepDesc": "2 pasang sejajar",
+      "stepDesc": "2 pasang sejajar. Pada Membandingkan Ciri-Ciri Segi Empat, langkah “Jajargenjang” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "▱",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Jajargenjang",
+      "flowTo": "PP & BK"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. PP & BK",
-      "stepDesc": "siku / sisi sama",
+      "stepDesc": "siku / sisi sama. Pada Membandingkan Ciri-Ciri Segi Empat, langkah “PP & BK” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "▭◆",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "PP & BK",
+      "flowTo": "Persegi"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Persegi",
-      "stepDesc": "siku + sisi sama",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Membandingkan Ciri-Ciri Segi Empat. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "⬜",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Persegi",
+      "flowTo": "Layang"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Layang",
-      "stepDesc": "sisi berurutan sama",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Membandingkan Ciri-Ciri Segi Empat. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "🪁",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Layang",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

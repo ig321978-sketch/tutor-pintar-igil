@@ -199,66 +199,66 @@ export const SUB_A51: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Tulis di tabel",
-      "stepDesc": "Isi digit per kolom.",
+      "stepDesc": "Baca soal Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Isi digit per kolom. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membaca, menulis, dan menentukan nilai tempat bilangan cacah sampai 100.000 dengan tabel nilai tempat dan perluasa….",
       "icon": "▦",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Tulis di tabel",
+      "flowTo": "Nilai digit"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Nilai digit",
-      "stepDesc": "Digit × nilai tempat.",
+      "stepDesc": "Digit × nilai tempat. Pada Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya, langkah “Nilai digit” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Tabel Nilai Tempat: Setiap digit punya nilai menurut tempatnya dari satuan sampai ratusan ribu. Balok Dienes Perluas: Model fisik/gambar untuk ratusan ribu memb…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔢",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Nilai digit",
+      "flowTo": "Nol jaga"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Nol jaga",
-      "stepDesc": "Jangan hapus nol tengah.",
+      "stepDesc": "Jangan hapus nol tengah. Pada Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya, langkah “Nol jaga” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Tabel Nilai Tempat: Setiap digit punya nilai menurut tempatnya dari satuan sampai ratusan ribu. Balok Dienes Perluas: Model fisik/gambar untuk ratusan ribu memb…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "0",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Nol jaga",
+      "flowTo": "Uraikan"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Uraikan",
-      "stepDesc": "Jumlah nilai tempat.",
+      "stepDesc": "Jumlah nilai tempat. Pada Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya, langkah “Uraikan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Tabel Nilai Tempat: Setiap digit punya nilai menurut tempatnya dari satuan sampai ratusan ribu. Balok Dienes Perluas: Model fisik/gambar untuk ratusan ribu memb…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➕",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Uraikan",
+      "flowTo": "Baca periode"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Baca periode",
-      "stepDesc": "Ratusan ribu → ribu → satuan.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🗣️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Baca periode",
+      "flowTo": "Bentuk lazim"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Bentuk lazim",
-      "stepDesc": "Tulis kembali bilangan.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✍️",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Bentuk lazim",
+      "flowTo": "Cek"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Cek",
-      "stepDesc": "Baca ulang cocok?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Cek",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latihan nilai tempat.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Membaca dan Menulis Bilangan Cacah Sampai 100.000 dan Menentukan Nilai Tempatnya. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -963,66 +963,66 @@ export const SUB_B51: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Sejajarkan",
-      "stepDesc": "Tulis di tabel kolom sama.",
+      "stepDesc": "Baca soal Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Tulis di tabel kolom sama. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membandingkan dan mengurutkan bilangan sampai 100.000 dengan membandingkan digit per tempat dari kiri serta garis ….",
       "icon": "▦",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Sejajarkan",
+      "flowTo": "Dari kiri"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Dari kiri",
-      "stepDesc": "Banding tempat terbesar.",
+      "stepDesc": "Banding tempat terbesar. Pada Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000, langkah “Dari kiri” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Banding Digit per Tempat: Bandingkan dari tempat terbesar; baru geser ke kanan jika sama. Urutan di Garis Bilangan: Bilangan lebih kanan lebih besar. Bilangan A…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⬅️",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Dari kiri",
+      "flowTo": "Jika sama"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Jika sama",
-      "stepDesc": "Geser satu tempat ke kanan.",
+      "stepDesc": "Geser satu tempat ke kanan. Pada Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000, langkah “Jika sama” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Banding Digit per Tempat: Bandingkan dari tempat terbesar; baru geser ke kanan jika sama. Urutan di Garis Bilangan: Bilangan lebih kanan lebih besar. Bilangan A…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➡️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Jika sama",
+      "flowTo": "Tentukan tanda"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Tentukan tanda",
-      "stepDesc": "> < =",
+      "stepDesc": "> < =. Pada Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000, langkah “Tentukan tanda” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Banding Digit per Tempat: Bandingkan dari tempat terbesar; baru geser ke kanan jika sama. Urutan di Garis Bilangan: Bilangan lebih kanan lebih besar. Bilangan A…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✍️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Tentukan tanda",
+      "flowTo": "Acuan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Acuan",
-      "stepDesc": "Perkiraan dengan 10rb/50rb.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🎯",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Acuan",
+      "flowTo": "Garis"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Garis",
-      "stepDesc": "Letakkan lalu urut.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "📏",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Garis",
+      "flowTo": "Cek arah"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Cek arah",
-      "stepDesc": "Naik atau turun sesuai soal.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Cek arah",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latihan banding-urut.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Membandingkan dan Mengurutkan Bilangan Cacah Sampai 100.000. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1726,66 +1726,66 @@ export const SUB_C51: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Lihat bilangan",
-      "stepDesc": "Bentuk lazim apa?",
+      "stepDesc": "Baca soal Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Bentuk lazim apa? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengurai dan menyusun kembali bilangan sampai 100.000 dengan bentuk uraian nilai tempat serta pengelompokan fleksi….",
       "icon": "👀",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Lihat bilangan",
+      "flowTo": "Urai"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Urai",
-      "stepDesc": "Jumlah nilai tempat.",
+      "stepDesc": "Jumlah nilai tempat. Pada Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000, langkah “Urai” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Bentuk Uraian: Tulis bilangan sebagai jumlah nilai tiap digit. Susun Ulang Nilai Tempat: Tukar sepuluh di satu tempat menjadi satu di tempat di atasnya, atau se…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➕",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Urai",
+      "flowTo": "Tukar bundel"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Tukar bundel",
-      "stepDesc": "10 di bawah = 1 di atas.",
+      "stepDesc": "10 di bawah = 1 di atas. Pada Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000, langkah “Tukar bundel” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Bentuk Uraian: Tulis bilangan sebagai jumlah nilai tiap digit. Susun Ulang Nilai Tempat: Tukar sepuluh di satu tempat menjadi satu di tempat di atasnya, atau se…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔄",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Tukar bundel",
+      "flowTo": "Total sama"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Total sama",
-      "stepDesc": "Nilai tidak boleh berubah.",
+      "stepDesc": "Nilai tidak boleh berubah. Pada Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000, langkah “Total sama” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Bentuk Uraian: Tulis bilangan sebagai jumlah nilai tiap digit. Susun Ulang Nilai Tempat: Tukar sepuluh di satu tempat menjadi satu di tempat di atasnya, atau se…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⚖️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Total sama",
+      "flowTo": "Kembali lazim"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kembali lazim",
-      "stepDesc": "Tulis bentuk biasa.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✍️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kembali lazim",
+      "flowTo": "Isi nol"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Isi nol",
-      "stepDesc": "Jaga tempat kosong.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "0",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Isi nol",
+      "flowTo": "Cek jumlah"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Cek jumlah",
-      "stepDesc": "Urai = lazim?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Cek jumlah",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latihan komposisi.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Komposisi dan Dekomposisi Bilangan Cacah Sampai 100.000. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -2490,66 +2490,66 @@ export const SUB_D51: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Perkiraan",
-      "stepDesc": "Bulatkan lalu hitung kasar.",
+      "stepDesc": "Baca soal Operasi Hitung pada Bilangan Cacah Sampai 100.000 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Bulatkan lalu hitung kasar. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa melakukan operasi hitung bilangan sampai 100.000 dengan algoritma bersusun, menyimpan/meminjam, dan perkiraan terl….",
       "icon": "🎯",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Perkiraan",
+      "flowTo": "Sejajarkan"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Sejajarkan",
-      "stepDesc": "Kolom nilai tempat rapi.",
+      "stepDesc": "Kolom nilai tempat rapi. Pada Operasi Hitung pada Bilangan Cacah Sampai 100.000, langkah “Sejajarkan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Algoritma Bersusun: Hitung per kolom dari satuan ke kiri. Menyimpan dan Meminjam: Sepuluh di satu tempat ditukar menjadi satu di tempat berikutnya. Perkiraan Du…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "▦",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Sejajarkan",
+      "flowTo": "Dari satuan"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Dari satuan",
-      "stepDesc": "Hitung kolom ke kiri.",
+      "stepDesc": "Hitung kolom ke kiri. Pada Operasi Hitung pada Bilangan Cacah Sampai 100.000, langkah “Dari satuan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Algoritma Bersusun: Hitung per kolom dari satuan ke kiri. Menyimpan dan Meminjam: Sepuluh di satu tempat ditukar menjadi satu di tempat berikutnya. Perkiraan Du…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "1️⃣",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Dari satuan",
+      "flowTo": "Simpan/pinjam"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Simpan/pinjam",
-      "stepDesc": "Tukar sepuluh antar tempat.",
+      "stepDesc": "Tukar sepuluh antar tempat. Pada Operasi Hitung pada Bilangan Cacah Sampai 100.000, langkah “Simpan/pinjam” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Algoritma Bersusun: Hitung per kolom dari satuan ke kiri. Menyimpan dan Meminjam: Sepuluh di satu tempat ditukar menjadi satu di tempat berikutnya. Perkiraan Du…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔄",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Simpan/pinjam",
+      "flowTo": "Hasil teliti"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Hasil teliti",
-      "stepDesc": "Tulis lengkap dengan nol.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Operasi Hitung pada Bilangan Cacah Sampai 100.000. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✍️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Hasil teliti",
+      "flowTo": "Cek perkiraan"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek perkiraan",
-      "stepDesc": "Apakah dekat?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Operasi Hitung pada Bilangan Cacah Sampai 100.000. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "🔍",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek perkiraan",
+      "flowTo": "Baca periode"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Baca periode",
-      "stepDesc": "Sebut hasil dengan benar.",
+      "stepDesc": "Simpulkan ide utama Operasi Hitung pada Bilangan Cacah Sampai 100.000 dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "🗣️",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Baca periode",
+      "flowTo": "Bab 1 utuh"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Bab 1 utuh",
-      "stepDesc": "Nilai tempat → operasi.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Operasi Hitung pada Bilangan Cacah Sampai 100.000. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎉",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Bab 1 utuh",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

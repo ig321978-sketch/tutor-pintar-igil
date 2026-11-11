@@ -283,66 +283,66 @@ export const SUB_A: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Berbagai Cara Melakukan Penjumlahan?",
+      "stepDesc": "Baca soal Berbagai Cara Melakukan Penjumlahan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menjumlahkan bilangan sampai 20 dengan tiga cara, yaitu menghitung maju di jalur bilangan, penjumlahan bersusun de….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Counting On"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Counting On",
-      "stepDesc": "Mulai dari bilangan lebih besar lalu maju.",
+      "stepDesc": "Mulai dari bilangan lebih besar lalu maju. Pada Berbagai Cara Melakukan Penjumlahan, langkah “Counting On” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Menghitung Maju: Mulai dari bilangan lebih besar lalu maju. Pasangan Bilangan: Pecah bilangan jadi pasangan yang mudah. Balok Dienes dan Menyimpan: Sepuluh satu…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Counting On",
+      "flowTo": "Number Bond"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Number Bond",
-      "stepDesc": "Pecah bilangan jadi pasangan yang mudah.",
+      "stepDesc": "Pecah bilangan jadi pasangan yang mudah. Pada Berbagai Cara Melakukan Penjumlahan, langkah “Number Bond” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Menghitung Maju: Mulai dari bilangan lebih besar lalu maju. Pasangan Bilangan: Pecah bilangan jadi pasangan yang mudah. Balok Dienes dan Menyimpan: Sepuluh satu…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Number Bond",
+      "flowTo": "Dienes / Regroup"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Dienes / Regroup",
-      "stepDesc": "Sepuluh satuan menjadi satu puluhan.",
+      "stepDesc": "Sepuluh satuan menjadi satu puluhan. Pada Berbagai Cara Melakukan Penjumlahan, langkah “Dienes / Regroup” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Menghitung Maju: Mulai dari bilangan lebih besar lalu maju. Pasangan Bilangan: Pecah bilangan jadi pasangan yang mudah. Balok Dienes dan Menyimpan: Sepuluh satu…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Dienes / Regroup",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Berbagai Cara Melakukan Penjumlahan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Berbagai Cara Melakukan Penjumlahan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Berbagai Cara Melakukan Penjumlahan dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Berbagai Cara Melakukan Penjumlahan. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -795,66 +795,66 @@ export const SUB_B: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Berbagai Cara Melakukan Pengurangan?",
+      "stepDesc": "Baca soal Berbagai Cara Melakukan Pengurangan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mencari selisih dengan memasangkan satu-satu, mengurangkan bilangan sampai 20 dengan tiga cara, yaitu menghitung m….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Counting Up"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Counting Up",
-      "stepDesc": "Naik dari yang dikurangi sampai bilangan awal.",
+      "stepDesc": "Naik dari yang dikurangi sampai bilangan awal. Pada Berbagai Cara Melakukan Pengurangan, langkah “Counting Up” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal. Mengambil: Ambil sebagian dari kumpulan. Meminjam: Buka satu puluhan jadi sepuluh satuan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Counting Up",
+      "flowTo": "Take Away"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Take Away",
-      "stepDesc": "Ambil sebagian dari kumpulan.",
+      "stepDesc": "Ambil sebagian dari kumpulan. Pada Berbagai Cara Melakukan Pengurangan, langkah “Take Away” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal. Mengambil: Ambil sebagian dari kumpulan. Meminjam: Buka satu puluhan jadi sepuluh satuan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Take Away",
+      "flowTo": "Regroup Borrow"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Regroup Borrow",
-      "stepDesc": "Buka satu puluhan jadi sepuluh satuan.",
+      "stepDesc": "Buka satu puluhan jadi sepuluh satuan. Pada Berbagai Cara Melakukan Pengurangan, langkah “Regroup Borrow” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Menghitung Naik: Naik dari yang dikurangi sampai bilangan awal. Mengambil: Ambil sebagian dari kumpulan. Meminjam: Buka satu puluhan jadi sepuluh satuan.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Regroup Borrow",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Berbagai Cara Melakukan Pengurangan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Berbagai Cara Melakukan Pengurangan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Berbagai Cara Melakukan Pengurangan dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Berbagai Cara Melakukan Pengurangan. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1307,66 +1307,66 @@ export const SUB_C: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Soal Cerita Penjumlahan dan Pengurangan?",
+      "stepDesc": "Baca soal Soal Cerita Penjumlahan dan Pengurangan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa memahami kata lebihnya, kurangnya, selisih, dan jumlah pada soal cerita, menuliskan yang diketahui dan yang ditany….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Part–Part–Whole Story"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Part–Part–Whole Story",
-      "stepDesc": "Cerita penjumlahan/pengurangan memakai bagian dan utuh.",
+      "stepDesc": "Cerita penjumlahan/pengurangan memakai bagian dan utuh. Pada Soal Cerita Penjumlahan dan Pengurangan, langkah “Part–Part–Whole Story” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh. Model Batang Cerita: Gambar batang sebelum menulis kalimat. Pilih Operasi: Tentukan …. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Part–Part–Whole Story",
+      "flowTo": "Bar Model Story"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Bar Model Story",
-      "stepDesc": "Gambar batang sebelum menulis kalimat.",
+      "stepDesc": "Gambar batang sebelum menulis kalimat. Pada Soal Cerita Penjumlahan dan Pengurangan, langkah “Bar Model Story” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh. Model Batang Cerita: Gambar batang sebelum menulis kalimat. Pilih Operasi: Tentukan …. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Bar Model Story",
+      "flowTo": "Choose Operation"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Choose Operation",
-      "stepDesc": "Tentukan + atau − dari makna cerita.",
+      "stepDesc": "Tentukan + atau − dari makna cerita. Pada Soal Cerita Penjumlahan dan Pengurangan, langkah “Choose Operation” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Cerita Bagian–Utuh: Cerita penjumlahan/pengurangan memakai bagian dan utuh. Model Batang Cerita: Gambar batang sebelum menulis kalimat. Pilih Operasi: Tentukan …. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Choose Operation",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Soal Cerita Penjumlahan dan Pengurangan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Soal Cerita Penjumlahan dan Pengurangan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Soal Cerita Penjumlahan dan Pengurangan dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Soal Cerita Penjumlahan dan Pengurangan. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

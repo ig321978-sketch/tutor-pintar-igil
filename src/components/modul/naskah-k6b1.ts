@@ -201,50 +201,50 @@ export const SUB_A61: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Cerita luas",
-      "stepDesc": "Ember/kebun",
+      "stepDesc": "Baca soal Perkalian Pecahan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Ember/kebun Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengalikan bilangan asli dengan pecahan dan sebaliknya memakai model luas kebun/ember serta aturan Panah Lurus ses….",
       "icon": "🪴",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Cerita luas",
+      "flowTo": "Area model"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Area model",
-      "stepDesc": "Bagian sama",
+      "stepDesc": "Bagian sama. Pada Perkalian Pecahan, langkah “Area model” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "▦",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Area model",
+      "flowTo": "Tulis a/1"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Tulis a/1",
-      "stepDesc": "Whole-as-Fraction",
+      "stepDesc": "Whole-as-Fraction. Pada Perkalian Pecahan, langkah “Tulis a/1” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "¹⁄₁",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Tulis a/1",
+      "flowTo": "Panah lurus"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Panah lurus",
-      "stepDesc": "atas×atas, bawah×bawah",
+      "stepDesc": "atas×atas, bawah×bawah. Pada Perkalian Pecahan, langkah “Panah lurus” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➡️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Panah lurus",
+      "flowTo": "Sederhanakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Sederhanakan",
-      "stepDesc": "bila perlu",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Perkalian Pecahan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "÷",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Sederhanakan",
+      "flowTo": "Tafsir"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Tafsir",
-      "stepDesc": "Satuan cerita",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Perkalian Pecahan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Tafsir",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -910,50 +910,50 @@ export const SUB_B61: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Baca cerita",
-      "stepDesc": "Bagi rata / berapa muat",
+      "stepDesc": "Baca soal Pembagian Pecahan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Bagi rata / berapa muat Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membagi pecahan dengan bilangan asli dan bilangan asli dengan pecahan memakai panah menyilang (kali kebalikan) ses….",
       "icon": "🥤",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Baca cerita",
+      "flowTo": "Tulis pecahan"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Tulis pecahan",
-      "stepDesc": "a/b : c/d",
+      "stepDesc": "a/b : c/d. Pada Pembagian Pecahan, langkah “Tulis pecahan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "½",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Tulis pecahan",
+      "flowTo": "Kebalikan"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Kebalikan",
-      "stepDesc": "c/d → d/c",
+      "stepDesc": "c/d → d/c. Pada Pembagian Pecahan, langkah “Kebalikan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔄",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Kebalikan",
+      "flowTo": "Panah silang"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Panah silang",
-      "stepDesc": "jadi perkalian",
+      "stepDesc": "jadi perkalian. Pada Pembagian Pecahan, langkah “Panah silang” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✖️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Panah silang",
+      "flowTo": "Hitung"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Hitung",
-      "stepDesc": "sederhanakan",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Pembagian Pecahan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "=",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Hitung",
+      "flowTo": "Tafsir"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Tafsir",
-      "stepDesc": "lebih kecil/besar?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Pembagian Pecahan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Tafsir",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1619,50 +1619,50 @@ export const SUB_C61: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pecahan",
-      "stepDesc": "a/b",
+      "stepDesc": "Baca soal Bilangan Desimal dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. a/b Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengubah pecahan ke desimal (penyebut 10/100), membaca nilai tempat desimal, serta membandingkan dan mengurutkan d….",
       "icon": "½",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pecahan",
+      "flowTo": "× ke 10/100"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. × ke 10/100",
-      "stepDesc": "Equivalent",
+      "stepDesc": "Equivalent. Pada Bilangan Desimal, langkah “× ke 10/100” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔟",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "× ke 10/100",
+      "flowTo": "Tulis desimal"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Tulis desimal",
-      "stepDesc": "0,...",
+      "stepDesc": "0,. Pada Bilangan Desimal, langkah “Tulis desimal” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "0,5",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Tulis desimal",
+      "flowTo": "Tabel tempat"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Tabel tempat",
-      "stepDesc": "persepuluhan/s",
+      "stepDesc": "persepuluhan/s. Pada Bilangan Desimal, langkah “Tabel tempat” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📋",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Tabel tempat",
+      "flowTo": "Banding"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Banding",
-      "stepDesc": "dari kiri",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Bilangan Desimal. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "⚖️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Banding",
+      "flowTo": "Urutkan"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Urutkan",
-      "stepDesc": "naik/turun",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Bilangan Desimal. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "📶",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Urutkan",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

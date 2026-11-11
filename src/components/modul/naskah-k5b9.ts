@@ -200,50 +200,50 @@ export const SUB_A59: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Lihat digit",
-      "stepDesc": "Dari kiri",
+      "stepDesc": "Baca soal Membaca, Menulis, dan Nilai Tempat sampai 1.000.000 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Dari kiri Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membaca dan menulis bilangan cacah sampai 1.000.000 serta menentukan nilai tempat (satuan sampai ratus ribuan) ses….",
       "icon": "👀",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Lihat digit",
+      "flowTo": "Baca nama"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Baca nama",
-      "stepDesc": "Number-Name",
+      "stepDesc": "Number-Name. Pada Membaca, Menulis, dan Nilai Tempat sampai 1.000.000, langkah “Baca nama” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🗣️",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Baca nama",
+      "flowTo": "Tabel tempat"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Tabel tempat",
-      "stepDesc": "6 kolom",
+      "stepDesc": "6 kolom. Pada Membaca, Menulis, dan Nilai Tempat sampai 1.000.000, langkah “Tabel tempat” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📋",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Tabel tempat",
+      "flowTo": "Isi digit"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Isi digit",
-      "stepDesc": "1 kolom/digit",
+      "stepDesc": "1 kolom/digit. Pada Membaca, Menulis, dan Nilai Tempat sampai 1.000.000, langkah “Isi digit” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔢",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Isi digit",
+      "flowTo": "Nilai digit"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Nilai digit",
-      "stepDesc": "digit × tempat",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Membaca, Menulis, dan Nilai Tempat sampai 1.000.000. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✖️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Nilai digit",
+      "flowTo": "Cek baca"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek baca",
-      "stepDesc": "Baca ulang",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Membaca, Menulis, dan Nilai Tempat sampai 1.000.000. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Cek baca",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -909,50 +909,50 @@ export const SUB_B59: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Samakan digit",
-      "stepDesc": "Panjang/titik",
+      "stepDesc": "Baca soal Mengurutkan dan Membandingkan Bilangan sampai 1.000.000 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Panjang/titik Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membandingkan dua bilangan dan mengurutkan beberapa bilangan sampai 1.000.000 dengan memulai dari nilai tempat pal….",
       "icon": "📐",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Samakan digit",
+      "flowTo": "Mulai kiri"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Mulai kiri",
-      "stepDesc": "Ratus ribuan",
+      "stepDesc": "Ratus ribuan. Pada Mengurutkan dan Membandingkan Bilangan sampai 1.000.000, langkah “Mulai kiri” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⬅️",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Mulai kiri",
+      "flowTo": "Banding digit"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Banding digit",
-      "stepDesc": "Lebih/kurang/sama",
+      "stepDesc": "Lebih/kurang/sama. Pada Mengurutkan dan Membandingkan Bilangan sampai 1.000.000, langkah “Banding digit” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⚖️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Banding digit",
+      "flowTo": "Jika sama"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Jika sama",
-      "stepDesc": "Geser kanan",
+      "stepDesc": "Geser kanan. Pada Mengurutkan dan Membandingkan Bilangan sampai 1.000.000, langkah “Jika sama” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➡️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Jika sama",
+      "flowTo": "Simbol"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Simbol",
-      "stepDesc": "> < =",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Mengurutkan dan Membandingkan Bilangan sampai 1.000.000. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🔣",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Simbol",
+      "flowTo": "Urutkan"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Urutkan",
-      "stepDesc": "Naik atau turun",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Mengurutkan dan Membandingkan Bilangan sampai 1.000.000. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "📶",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Urutkan",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1618,50 +1618,50 @@ export const SUB_C59: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pilih bilangan",
-      "stepDesc": "Target",
+      "stepDesc": "Baca soal Komposisi dan Dekomposisi sampai 1.000.000 dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Target Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menyusun bilangan dari nilai-nilai tempat (komposisi) dan menguraikan bilangan menjadi jumlah nilai tempat (dekomp….",
       "icon": "🎯",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pilih bilangan",
+      "flowTo": "Pecah tempat"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Pecah tempat",
-      "stepDesc": "Part-Whole",
+      "stepDesc": "Part-Whole. Pada Komposisi dan Dekomposisi sampai 1.000.000, langkah “Pecah tempat” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧩",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Pecah tempat",
+      "flowTo": "Tulis bagian"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Tulis bagian",
-      "stepDesc": "Expanded",
+      "stepDesc": "Expanded. Pada Komposisi dan Dekomposisi sampai 1.000.000, langkah “Tulis bagian” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✍️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Tulis bagian",
+      "flowTo": "Jumlahkan / uraikan"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Jumlahkan / uraikan",
-      "stepDesc": "Komposisi↔Dekomposisi",
+      "stepDesc": "Komposisi↔Dekomposisi. Pada Komposisi dan Dekomposisi sampai 1.000.000, langkah “Jumlahkan / uraikan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔄",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Jumlahkan / uraikan",
+      "flowTo": "Cek nol"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Cek nol",
-      "stepDesc": "Tempat kosong",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Komposisi dan Dekomposisi sampai 1.000.000. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "0",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Cek nol",
+      "flowTo": "Baca ulang"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Baca ulang",
-      "stepDesc": "Validasi",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Komposisi dan Dekomposisi sampai 1.000.000. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Baca ulang",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

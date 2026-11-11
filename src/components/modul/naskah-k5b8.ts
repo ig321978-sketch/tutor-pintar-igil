@@ -200,50 +200,50 @@ export const SUB_A58: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Kumpulkan",
-      "stepDesc": "Tanya / amati",
+      "stepDesc": "Baca soal Mengumpulkan Data dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Tanya / amati Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa memahami data sebagai kumpulan fakta, mengumpulkan data mentah, mencatat dengan turus berkelompok lima, menyusun t….",
       "icon": "🎤",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Kumpulkan",
+      "flowTo": "Catat mentah"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Catat mentah",
-      "stepDesc": "Daftar nama & pilihan",
+      "stepDesc": "Daftar nama & pilihan. Pada Mengumpulkan Data, langkah “Catat mentah” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📝",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Catat mentah",
+      "flowTo": "Turus"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Turus",
-      "stepDesc": "1 hasil = 1 garis",
+      "stepDesc": "1 hasil = 1 garis. Pada Mengumpulkan Data, langkah “Turus” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "||||",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Turus",
+      "flowTo": "Kelompok 5"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Kelompok 5",
-      "stepDesc": "4 tegak + 1 miring",
+      "stepDesc": "4 tegak + 1 miring. Pada Mengumpulkan Data, langkah “Kelompok 5” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "卌",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Kelompok 5",
+      "flowTo": "Frekuensi"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Frekuensi",
-      "stepDesc": "Hitung banyaknya",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Mengumpulkan Data. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "ƒ",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Frekuensi",
+      "flowTo": "Tabel f"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Tabel f",
-      "stepDesc": "Kategori | turus | f",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Mengumpulkan Data. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "📋",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Tabel f",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -909,50 +909,50 @@ export const SUB_B58: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Judul",
-      "stepDesc": "Apa datanya?",
+      "stepDesc": "Baca soal Piktogram dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Apa datanya? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membaca dan membuat piktogram dengan kunci/legenda (satu simbol mewakili nilai tertentu), menjaga konsistensi skal….",
       "icon": "📌",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Judul",
+      "flowTo": "Kunci"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Kunci",
-      "stepDesc": "1 simbol = N",
+      "stepDesc": "1 simbol = N. Pada Piktogram, langkah “Kunci” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔑",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Kunci",
+      "flowTo": "Simbol seragam"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Simbol seragam",
-      "stepDesc": "Ukuran sama",
+      "stepDesc": "Ukuran sama. Pada Piktogram, langkah “Simbol seragam” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧁",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Simbol seragam",
+      "flowTo": "Hitung"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Hitung",
-      "stepDesc": "simbol × N = f",
+      "stepDesc": "simbol × N = f. Pada Piktogram, langkah “Hitung” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✖️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Hitung",
+      "flowTo": "Cek kesalahan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Cek kesalahan",
-      "stepDesc": "Error Hunt",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Piktogram. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🔍",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Cek kesalahan",
+      "flowTo": "Banding"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Banding",
-      "stepDesc": "Mana terbanyak?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Piktogram. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "⚖️",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Banding",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1618,50 +1618,50 @@ export const SUB_C58: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Judul",
-      "stepDesc": "Konteks data",
+      "stepDesc": "Baca soal Diagram Batang dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Konteks data Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membaca dan membuat diagram batang dengan sumbu, skala, dan tinggi batang yang proporsional; membandingkan batang ….",
       "icon": "📌",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Judul",
+      "flowTo": "Sumbu X"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Sumbu X",
-      "stepDesc": "Kategori",
+      "stepDesc": "Kategori. Pada Diagram Batang, langkah “Sumbu X” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➡️",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Sumbu X",
+      "flowTo": "Sumbu Y"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Sumbu Y",
-      "stepDesc": "Skala dari 0",
+      "stepDesc": "Skala dari 0. Pada Diagram Batang, langkah “Sumbu Y” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⬆️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Sumbu Y",
+      "flowTo": "Batang"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Batang",
-      "stepDesc": "Tinggi = f",
+      "stepDesc": "Tinggi = f. Pada Diagram Batang, langkah “Batang” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "▮",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Batang",
+      "flowTo": "Banding"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Banding",
-      "stepDesc": "Selisih / tren",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Diagram Batang. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "⚖️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Banding",
+      "flowTo": "Keputusan"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Keputusan",
-      "stepDesc": "Tafsir makna",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Diagram Batang. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Keputusan",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

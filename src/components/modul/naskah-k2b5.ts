@@ -199,66 +199,66 @@ export const SUB_A5: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Setengah dari Benda Utuh?",
+      "stepDesc": "Baca soal Setengah dari Benda Utuh dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membagi satu benda utuh menjadi dua bagian sama besar, menyebut setiap bagian sebagai setengah, menemukan setengah….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Halving Whole"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Halving Whole",
-      "stepDesc": "Bagi benda menjadi dua bagian sama.",
+      "stepDesc": "Bagi benda menjadi dua bagian sama. Pada Setengah dari Benda Utuh, langkah “Halving Whole” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Setengah Benda Utuh: Bagi benda menjadi dua bagian sama. Bagian Sama: Setengah hanya jika bagian sama besar. Uji Lipat: Lipat membuktikan dua bagian sama.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Halving Whole",
+      "flowTo": "Equal Parts"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Equal Parts",
-      "stepDesc": "Setengah hanya jika bagian sama besar.",
+      "stepDesc": "Setengah hanya jika bagian sama besar. Pada Setengah dari Benda Utuh, langkah “Equal Parts” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Setengah Benda Utuh: Bagi benda menjadi dua bagian sama. Bagian Sama: Setengah hanya jika bagian sama besar. Uji Lipat: Lipat membuktikan dua bagian sama.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Equal Parts",
+      "flowTo": "Fold Test"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Fold Test",
-      "stepDesc": "Lipat membuktikan dua bagian sama.",
+      "stepDesc": "Lipat membuktikan dua bagian sama. Pada Setengah dari Benda Utuh, langkah “Fold Test” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Setengah Benda Utuh: Bagi benda menjadi dua bagian sama. Bagian Sama: Setengah hanya jika bagian sama besar. Uji Lipat: Lipat membuktikan dua bagian sama.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Fold Test",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Setengah dari Benda Utuh. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Setengah dari Benda Utuh. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Setengah dari Benda Utuh dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Setengah dari Benda Utuh. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -727,66 +727,66 @@ export const SUB_B5: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Setengah dari Kumpulan Benda?",
+      "stepDesc": "Baca soal Setengah dari Kumpulan Benda dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menemukan setengah dari sekumpulan benda dengan membagi benda menjadi dua kelompok yang sama banyak, memeriksa kel….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Half of Set"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Half of Set",
-      "stepDesc": "Ambil setengah dari banyak benda.",
+      "stepDesc": "Ambil setengah dari banyak benda. Pada Setengah dari Kumpulan Benda, langkah “Half of Set” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Setengah Kumpulan: Ambil setengah dari banyak benda. Bagi Rata Kumpulan: Bagi dua kelompok sama banyak. Cek Genap: Kumpulan genap mudah dibagi dua.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Half of Set",
+      "flowTo": "Fair Share Set"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Fair Share Set",
-      "stepDesc": "Bagi dua kelompok sama banyak.",
+      "stepDesc": "Bagi dua kelompok sama banyak. Pada Setengah dari Kumpulan Benda, langkah “Fair Share Set” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Setengah Kumpulan: Ambil setengah dari banyak benda. Bagi Rata Kumpulan: Bagi dua kelompok sama banyak. Cek Genap: Kumpulan genap mudah dibagi dua.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Fair Share Set",
+      "flowTo": "Even Check"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Even Check",
-      "stepDesc": "Kumpulan genap mudah dibagi dua.",
+      "stepDesc": "Kumpulan genap mudah dibagi dua. Pada Setengah dari Kumpulan Benda, langkah “Even Check” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Setengah Kumpulan: Ambil setengah dari banyak benda. Bagi Rata Kumpulan: Bagi dua kelompok sama banyak. Cek Genap: Kumpulan genap mudah dibagi dua.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Even Check",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Setengah dari Kumpulan Benda. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Setengah dari Kumpulan Benda. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Setengah dari Kumpulan Benda dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Setengah dari Kumpulan Benda. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1255,66 +1255,66 @@ export const SUB_C5: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Seperempat dari Benda Utuh?",
+      "stepDesc": "Baca soal Seperempat dari Benda Utuh dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membagi satu benda utuh menjadi empat bagian sama besar, menyebut setiap bagian sebagai seperempat, mendapatkan se….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Quartering"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Quartering",
-      "stepDesc": "Bagi menjadi empat bagian sama.",
+      "stepDesc": "Bagi menjadi empat bagian sama. Pada Seperempat dari Benda Utuh, langkah “Quartering” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Seperempat: Bagi menjadi empat bagian sama. Setengah dari Setengah: Seperempat = setengah dari setengah. Lipat Dua Kali: Lipat dua kali menghasilkan seperempat.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Quartering",
+      "flowTo": "Half of Half"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Half of Half",
-      "stepDesc": "Seperempat = setengah dari setengah.",
+      "stepDesc": "Seperempat = setengah dari setengah. Pada Seperempat dari Benda Utuh, langkah “Half of Half” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Seperempat: Bagi menjadi empat bagian sama. Setengah dari Setengah: Seperempat = setengah dari setengah. Lipat Dua Kali: Lipat dua kali menghasilkan seperempat.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Half of Half",
+      "flowTo": "Fold Twice"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Fold Twice",
-      "stepDesc": "Lipat dua kali menghasilkan seperempat.",
+      "stepDesc": "Lipat dua kali menghasilkan seperempat. Pada Seperempat dari Benda Utuh, langkah “Fold Twice” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Seperempat: Bagi menjadi empat bagian sama. Setengah dari Setengah: Seperempat = setengah dari setengah. Lipat Dua Kali: Lipat dua kali menghasilkan seperempat.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Fold Twice",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Seperempat dari Benda Utuh. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Seperempat dari Benda Utuh. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Seperempat dari Benda Utuh dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Seperempat dari Benda Utuh. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

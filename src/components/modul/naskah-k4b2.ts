@@ -199,66 +199,66 @@ export const SUB_A42: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Pecahan dengan Pembilang Satu?",
+      "stepDesc": "Baca soal Pecahan dengan Pembilang Satu dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menyatakan pecahan dengan pembilang satu (1/n) dari daerah arsir, membandingkan dan mengurutkan pecahan unit (1/2 ….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Unit Fraction"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Unit Fraction",
-      "stepDesc": "Pembilang 1 berarti satu bagian dari penyebut bagian sama.",
+      "stepDesc": "Pembilang 1 berarti satu bagian dari penyebut bagian sama. Pada Pecahan dengan Pembilang Satu, langkah “Unit Fraction” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama. Model Daerah: Arsir satu bagian dari keseluruhan. Pecahan di Garis: 1/n terletak anta…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Unit Fraction",
+      "flowTo": "Area Model"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Area Model",
-      "stepDesc": "Arsir satu bagian dari keseluruhan.",
+      "stepDesc": "Arsir satu bagian dari keseluruhan. Pada Pecahan dengan Pembilang Satu, langkah “Area Model” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama. Model Daerah: Arsir satu bagian dari keseluruhan. Pecahan di Garis: 1/n terletak anta…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Area Model",
+      "flowTo": "Number Line Unit"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Number Line Unit",
-      "stepDesc": "1/n terletak antara 0 dan 1.",
+      "stepDesc": "1/n terletak antara 0 dan 1. Pada Pecahan dengan Pembilang Satu, langkah “Number Line Unit” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pecahan Satuan: Pembilang 1 berarti satu bagian dari penyebut bagian sama. Model Daerah: Arsir satu bagian dari keseluruhan. Pecahan di Garis: 1/n terletak anta…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Number Line Unit",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Pecahan dengan Pembilang Satu. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Pecahan dengan Pembilang Satu. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Pecahan dengan Pembilang Satu dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Pecahan dengan Pembilang Satu. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -961,66 +961,66 @@ export const SUB_B42: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Pecahan dengan Penyebut Sama?",
+      "stepDesc": "Baca soal Pecahan dengan Penyebut Sama dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membandingkan dan mengurutkan pecahan berpenyebut sama dengan melihat pembilang (1/3 < 2/3, 2/10 > 1/10), serta me….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Same Denominator"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Same Denominator",
-      "stepDesc": "Banding/jumlah lebih mudah jika penyebut sama.",
+      "stepDesc": "Banding/jumlah lebih mudah jika penyebut sama. Pada Pecahan dengan Penyebut Sama, langkah “Same Denominator” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama. Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar. Batang Pecahan: Bat…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Same Denominator",
+      "flowTo": "Compare Numerators"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Compare Numerators",
-      "stepDesc": "Penyebut sama: pembilang lebih besar = pecahan lebih besar.",
+      "stepDesc": "Penyebut sama: pembilang lebih besar = pecahan lebih besar. Pada Pecahan dengan Penyebut Sama, langkah “Compare Numerators” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama. Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar. Batang Pecahan: Bat…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Compare Numerators",
+      "flowTo": "Fraction Bars"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Fraction Bars",
-      "stepDesc": "Batang sama panjang memudahkan banding.",
+      "stepDesc": "Batang sama panjang memudahkan banding. Pada Pecahan dengan Penyebut Sama, langkah “Fraction Bars” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Penyebut Sama: Banding/jumlah lebih mudah jika penyebut sama. Banding Pembilang: Penyebut sama: pembilang lebih besar = pecahan lebih besar. Batang Pecahan: Bat…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Fraction Bars",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Pecahan dengan Penyebut Sama. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Pecahan dengan Penyebut Sama. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Pecahan dengan Penyebut Sama dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Pecahan dengan Penyebut Sama. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1723,66 +1723,66 @@ export const SUB_C42: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Pecahan Senilai?",
+      "stepDesc": "Baca soal Pecahan Senilai dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengenali pecahan senilai (2/6 = 1/3) melalui model coklat dan lipat kertas, serta menghasilkan senilai dengan men….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Equivalent Fractions"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Equivalent Fractions",
-      "stepDesc": "Senilai menunjuk bagian sama dengan tulisan beda.",
+      "stepDesc": "Senilai menunjuk bagian sama dengan tulisan beda. Pada Pecahan Senilai, langkah “Equivalent Fractions” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda. Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama. Sederhanakan: Bagi…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Equivalent Fractions",
+      "flowTo": "Multiply Identity"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Multiply Identity",
-      "stepDesc": "Kali pembilang dan penyebut dengan bilangan sama.",
+      "stepDesc": "Kali pembilang dan penyebut dengan bilangan sama. Pada Pecahan Senilai, langkah “Multiply Identity” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda. Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama. Sederhanakan: Bagi…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Multiply Identity",
+      "flowTo": "Simplify"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Simplify",
-      "stepDesc": "Bagi pembilang dan penyebut dengan FPB.",
+      "stepDesc": "Bagi pembilang dan penyebut dengan FPB. Pada Pecahan Senilai, langkah “Simplify” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Pecahan Senilai: Senilai menunjuk bagian sama dengan tulisan beda. Kali dengan Bentuk Satu: Kali pembilang dan penyebut dengan bilangan sama. Sederhanakan: Bagi…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Simplify",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Pecahan Senilai. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Pecahan Senilai. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Pecahan Senilai dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Pecahan Senilai. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -2485,66 +2485,66 @@ export const SUB_D42: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Pecahan Desimal Persepuluhan dan Perseratusan?",
+      "stepDesc": "Baca soal Pecahan Desimal Persepuluhan dan Perseratusan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengubah pecahan biasa persepuluhan (penyebut 10) dan perseratusan (penyebut 100) menjadi pecahan desimal (0,1; 0,….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Decimal Tenths Hundredths"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Decimal Tenths Hundredths",
-      "stepDesc": "Digit setelah koma = persepuluhan dan perseratusan.",
+      "stepDesc": "Digit setelah koma = persepuluhan dan perseratusan. Pada Pecahan Desimal Persepuluhan dan Perseratusan, langkah “Decimal Tenths Hundredths” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan. Kisi Desimal: Kisi 10×10 menunjukkan perseratusan. Jembatan Pecahan–Desim…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Decimal Tenths Hundredths",
+      "flowTo": "Decimal Grid"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Decimal Grid",
-      "stepDesc": "Kisi 10×10 menunjukkan perseratusan.",
+      "stepDesc": "Kisi 10×10 menunjukkan perseratusan. Pada Pecahan Desimal Persepuluhan dan Perseratusan, langkah “Decimal Grid” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan. Kisi Desimal: Kisi 10×10 menunjukkan perseratusan. Jembatan Pecahan–Desim…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Decimal Grid",
+      "flowTo": "Fraction–Decimal Link"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Fraction–Decimal Link",
-      "stepDesc": "0,3 = 3/10; 0,25 = 25/100.",
+      "stepDesc": "0,3 = 3/10; 0,25 = 25/100. Pada Pecahan Desimal Persepuluhan dan Perseratusan, langkah “Fraction–Decimal Link” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Desimal Persepuluhan Perseratusan: Digit setelah koma = persepuluhan dan perseratusan. Kisi Desimal: Kisi 10×10 menunjukkan perseratusan. Jembatan Pecahan–Desim…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Fraction–Decimal Link",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Pecahan Desimal Persepuluhan dan Perseratusan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Pecahan Desimal Persepuluhan dan Perseratusan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Pecahan Desimal Persepuluhan dan Perseratusan dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Pecahan Desimal Persepuluhan dan Perseratusan. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -3247,66 +3247,66 @@ export const SUB_E42: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pahami soal",
-      "stepDesc": "Apa yang ditanyakan pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen?",
+      "stepDesc": "Baca soal Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengubah desimal perseratusan menjadi persen (0,75 = 75%) dengan cara biasa (via pecahan /100) maupun cara langsun….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pahami soal",
+      "flowTo": "Percent as Hundredths"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Percent as Hundredths",
-      "stepDesc": "Persen artinya per seratus.",
+      "stepDesc": "Persen artinya per seratus. Pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen, langkah “Percent as Hundredths” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Persen sebagai Perseratusan: Persen artinya per seratus. Kisi Seratus Persen: Satu kotak dari 100 = 1%. Jembatan Desimal–Persen: 0,25 = 25%.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Percent as Hundredths",
+      "flowTo": "Hundred Grid Percent"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Hundred Grid Percent",
-      "stepDesc": "Satu kotak dari 100 = 1%.",
+      "stepDesc": "Satu kotak dari 100 = 1%. Pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen, langkah “Hundred Grid Percent” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Persen sebagai Perseratusan: Persen artinya per seratus. Kisi Seratus Persen: Satu kotak dari 100 = 1%. Jembatan Desimal–Persen: 0,25 = 25%.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🛠️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Hundred Grid Percent",
+      "flowTo": "Decimal–Percent Link"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Decimal–Percent Link",
-      "stepDesc": "0,25 = 25%.",
+      "stepDesc": "0,25 = 25%. Pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen, langkah “Decimal–Percent Link” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Persen sebagai Perseratusan: Persen artinya per seratus. Kisi Seratus Persen: Satu kotak dari 100 = 1%. Jembatan Desimal–Persen: 0,25 = 25%.. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Decimal–Percent Link",
+      "flowTo": "Kerjakan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Kerjakan",
-      "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✏️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Kerjakan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek masuk akal",
-      "stepDesc": "Apakah hasilnya masuk akal?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Simpulkan"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Simpulkan",
-      "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+      "stepDesc": "Simpulkan ide utama Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "💬",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Simpulkan",
+      "flowTo": "Main"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Main",
-      "stepDesc": "Latih di Concrete sampai Abstract.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Menghubungkan Pecahan Desimal Perseratusan dengan Konsep Persen. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎮",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Main",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

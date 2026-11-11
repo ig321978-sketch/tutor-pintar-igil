@@ -201,50 +201,50 @@ export const SUB_A63: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Ambil unit",
-      "stepDesc": "Kubus/balok",
+      "stepDesc": "Baca soal Mengonstruksi dan Mengurai dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Kubus/balok Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menyusun dan mengurai kubus/balok, menghitung kubus satuan termasuk yang tersembunyi, memakai model 3D sesuai Buku….",
       "icon": "🧊",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Ambil unit",
+      "flowTo": "Susun"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Susun",
-      "stepDesc": "Samping/tumpuk",
+      "stepDesc": "Samping/tumpuk. Pada Mengonstruksi dan Mengurai, langkah “Susun” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧱",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Susun",
+      "flowTo": "Lapisan"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Lapisan",
-      "stepDesc": "Layer Counting",
+      "stepDesc": "Layer Counting. Pada Mengonstruksi dan Mengurai, langkah “Lapisan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📚",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Lapisan",
+      "flowTo": "Penyangga"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Penyangga",
-      "stepDesc": "Hidden Support",
+      "stepDesc": "Hidden Support. Pada Mengonstruksi dan Mengurai, langkah “Penyangga” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⬇️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Penyangga",
+      "flowTo": "Hitung total"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Hitung total",
-      "stepDesc": "P×L×T / jumlah",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Mengonstruksi dan Mengurai. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🔢",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Hitung total",
+      "flowTo": "Urai"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Urai",
-      "stepDesc": "Kembali ke unit",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Mengonstruksi dan Mengurai. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Urai",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -910,50 +910,50 @@ export const SUB_B63: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Model 3D",
-      "stepDesc": "Susunan kubus",
+      "stepDesc": "Baca soal Visualisasi Spasial dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Susunan kubus Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menggambar dan membaca tampak depan, samping, dan atas dari susunan kubus memakai matriks tinggi sesuai Buku Siswa….",
       "icon": "🧊",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Model 3D",
+      "flowTo": "Matriks tinggi"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Matriks tinggi",
-      "stepDesc": "Height-Matrix",
+      "stepDesc": "Height-Matrix. Pada Visualisasi Spasial, langkah “Matriks tinggi” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "▦",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Matriks tinggi",
+      "flowTo": "Tampak depan"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Tampak depan",
-      "stepDesc": "max per kolom",
+      "stepDesc": "max per kolom. Pada Visualisasi Spasial, langkah “Tampak depan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "👀",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Tampak depan",
+      "flowTo": "Tampak samping"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Tampak samping",
-      "stepDesc": "max per baris",
+      "stepDesc": "max per baris. Pada Visualisasi Spasial, langkah “Tampak samping” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➡️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Tampak samping",
+      "flowTo": "Tampak atas"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Tampak atas",
-      "stepDesc": "petak > 0",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Visualisasi Spasial. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "⬇️",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Tampak atas",
+      "flowTo": "Cocokkan"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cocokkan",
-      "stepDesc": "gambar ↔ model",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Visualisasi Spasial. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Cocokkan",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1619,50 +1619,50 @@ export const SUB_C63: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Baca sumbu",
-      "stepDesc": "Huruf & angka",
+      "stepDesc": "Baca soal Lokasi dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Huruf & angka Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menyatakan lokasi pada sistem berpetak (huruf, angka), menentukan jalur, dan menghitung jarak Manhattan sesuai Buk….",
       "icon": "🔤",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Baca sumbu",
+      "flowTo": "Tulis lokasi"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Tulis lokasi",
-      "stepDesc": "(H, N)",
+      "stepDesc": "(H, N). Pada Lokasi, langkah “Tulis lokasi” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📍",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Tulis lokasi",
+      "flowTo": "Pilih jalur"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Pilih jalur",
-      "stepDesc": "4 arah",
+      "stepDesc": "4 arah. Pada Lokasi, langkah “Pilih jalur” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➡️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Pilih jalur",
+      "flowTo": "Hitung jarak"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Hitung jarak",
-      "stepDesc": "Manhattan",
+      "stepDesc": "Manhattan. Pada Lokasi, langkah “Hitung jarak” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📏",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Hitung jarak",
+      "flowTo": "Banding jalur"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Banding jalur",
-      "stepDesc": "sama pendek?",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Lokasi. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🔀",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Banding jalur",
+      "flowTo": "Terapkan"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Terapkan",
-      "stepDesc": "denah/peta",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Lokasi. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Terapkan",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

@@ -200,66 +200,66 @@ export const SUB_A54: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Pertanyaan keliling",
-      "stepDesc": "Apa yang ditanya: panjang jalur luar atau isi dalam? Jika jalur luar, itu keliling.",
+      "stepDesc": "Baca soal Apakah Keliling Bangun Datar Itu? dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Apa yang ditanya: panjang jalur luar atau isi dalam? Jika jalur luar, itu keliling. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa memahami keliling sebagai panjang jalur yang menelusuri seluruh batas luar bangun sampai kembali ke titik awal (pa….",
       "icon": "❓",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Pertanyaan keliling",
+      "flowTo": "Path Length"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Path Length",
-      "stepDesc": "Bayangkan berjalan mengelilingi tepi sampai kembali ke titik awal. Jarak tempuh = keliling.",
+      "stepDesc": "Bayangkan berjalan mengelilingi tepi sampai kembali ke titik awal. Jarak tempuh = keliling. Pada Apakah Keliling Bangun Datar Itu?, langkah “Path Length” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Keliling sebagai Panjang Jalur: Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal. Konteks Pagar dan Bingkai: Panjan…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🚶",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Path Length",
+      "flowTo": "Tulis sisi luar"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Tulis sisi luar",
-      "stepDesc": "Catat panjang setiap sisi pada jalur. Satuan harus sama.",
+      "stepDesc": "Catat panjang setiap sisi pada jalur. Satuan harus sama. Pada Apakah Keliling Bangun Datar Itu?, langkah “Tulis sisi luar” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Keliling sebagai Panjang Jalur: Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal. Konteks Pagar dan Bingkai: Panjan…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✍️",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Tulis sisi luar",
+      "flowTo": "Jumlahkan"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Jumlahkan",
-      "stepDesc": "Keliling = jumlah semua sisi pada jalur luar.",
+      "stepDesc": "Keliling = jumlah semua sisi pada jalur luar. Pada Apakah Keliling Bangun Datar Itu?, langkah “Jumlahkan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Keliling sebagai Panjang Jalur: Keliling adalah panjang jalur yang menelusuri seluruh batas luar sampai kembali ke titik awal. Konteks Pagar dan Bingkai: Panjan…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➕",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Jumlahkan",
+      "flowTo": "Cek masuk akal"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Cek masuk akal",
-      "stepDesc": "Hasil > sisi terpanjang. Bandingkan juga dengan konteks pagar atau bingkai.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Apakah Keliling Bangun Datar Itu?. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "✅",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Cek masuk akal",
+      "flowTo": "Bukan luas"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Bukan luas",
-      "stepDesc": "Panjang × lebar atau sisi × sisi adalah luas. Jangan dipakai untuk pagar.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Apakah Keliling Bangun Datar Itu?. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "⚠️",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Bukan luas",
+      "flowTo": "Konteks nyata"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Konteks nyata",
-      "stepDesc": "Baluwarti, pagar rumah, bingkai foto: semua butuh panjang jalur luar.",
+      "stepDesc": "Simpulkan ide utama Apakah Keliling Bangun Datar Itu? dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "🏰",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Konteks nyata",
+      "flowTo": "Lanjut rumus"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Lanjut rumus",
-      "stepDesc": "Sub-Bab berikutnya memberi rumus cepat, tetapi dasarnya tetap path length.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Apakah Keliling Bangun Datar Itu?. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "➡️",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Lanjut rumus",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -966,66 +966,66 @@ export const SUB_B54: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Kenali jenis",
-      "stepDesc": "Sembarang, sama kaki, atau sama sisi? Syarat rumus bergantung jenis.",
+      "stepDesc": "Baca soal Keliling Segitiga dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Sembarang, sama kaki, atau sama sisi? Syarat rumus bergantung jenis. Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menghitung keliling segitiga dengan menjumlahkan tiga sisi (side sum), memakai pintasan 3 × sisi pada segitiga sam….",
       "icon": "👀",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Kenali jenis",
+      "flowTo": "Ukur / baca sisi"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Ukur / baca sisi",
-      "stepDesc": "Catat a, b, c dengan satuan sama.",
+      "stepDesc": "Catat a, b, c dengan satuan sama. Pada Keliling Segitiga, langkah “Ukur / baca sisi” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Jumlah Tiga Sisi: Keliling segitiga = sisi satu + sisi dua + sisi tiga; ini Path Length pada tiga sisi. Pintasan Segitiga Sama Sisi: Jika ketiga sisi sama, keli…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📏",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Ukur / baca sisi",
+      "flowTo": "Side Sum"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Side Sum",
-      "stepDesc": "Selalu aman: K = a + b + c.",
+      "stepDesc": "Selalu aman: K = a + b + c. Pada Keliling Segitiga, langkah “Side Sum” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Jumlah Tiga Sisi: Keliling segitiga = sisi satu + sisi dua + sisi tiga; ini Path Length pada tiga sisi. Pintasan Segitiga Sama Sisi: Jika ketiga sisi sama, keli…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➕",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Side Sum",
+      "flowTo": "Pintasan?"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Pintasan?",
-      "stepDesc": "Hanya jika a = b = c, boleh K = 3 × s.",
+      "stepDesc": "Hanya jika a = b = c, boleh K = 3 × s. Pada Keliling Segitiga, langkah “Pintasan?” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Jumlah Tiga Sisi: Keliling segitiga = sisi satu + sisi dua + sisi tiga; ini Path Length pada tiga sisi. Pintasan Segitiga Sama Sisi: Jika ketiga sisi sama, keli…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Pintasan?",
+      "flowTo": "Hitung"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Hitung",
-      "stepDesc": "Jumlahkan atau kalikan sesuai pilihan yang sah.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Keliling Segitiga. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🧮",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Hitung",
+      "flowTo": "Cek"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek",
-      "stepDesc": "Hasil > sisi terpanjang; satuan tetap.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Keliling Segitiga. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek",
+      "flowTo": "Sama kaki"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Sama kaki",
-      "stepDesc": "Dua sisi sama tetap pakai a+b+c, bukan otomatis 3×s.",
+      "stepDesc": "Simpulkan ide utama Keliling Segitiga dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "🦵",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Sama kaki",
+      "flowTo": "Lanjut C"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Lanjut C",
-      "stepDesc": "Segi empat memakai Path Length yang sama dengan rumus 2(p+l).",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Keliling Segitiga. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "➡️",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Lanjut C",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -1730,66 +1730,66 @@ export const SUB_C54: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Kenali bangun",
-      "stepDesc": "Persegi panjang atau persegi?",
+      "stepDesc": "Baca soal Keliling Segi Empat dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Persegi panjang atau persegi? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menghitung keliling persegi panjang dengan 2(p+l) dan persegi dengan 4×sisi, memahami sisi berhadapan sama, serta ….",
       "icon": "👀",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Kenali bangun",
+      "flowTo": "PP: berhadapan sama"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. PP: berhadapan sama",
-      "stepDesc": "Dua p dan dua l pada jalur luar.",
+      "stepDesc": "Dua p dan dua l pada jalur luar. Pada Keliling Segi Empat, langkah “PP: berhadapan sama” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Rumus 2 kali Panjang Plus Lebar: K = 2(p+l) karena jalur punya dua panjang dan dua lebar. Pintasan Empat Kali Sisi: K = 4 × sisi karena keempat sisi sama. Bukan…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "▭",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "PP: berhadapan sama",
+      "flowTo": "Rumus 2(p+l)"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Rumus 2(p+l)",
-      "stepDesc": "K = 2(p+l) = 2p+2l.",
+      "stepDesc": "K = 2(p+l) = 2p+2l. Pada Keliling Segi Empat, langkah “Rumus 2(p+l)” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Rumus 2 kali Panjang Plus Lebar: K = 2(p+l) karena jalur punya dua panjang dan dua lebar. Pintasan Empat Kali Sisi: K = 4 × sisi karena keempat sisi sama. Bukan…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🧮",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Rumus 2(p+l)",
+      "flowTo": "Persegi: 4×s"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Persegi: 4×s",
-      "stepDesc": "Keempat sisi sama: K = 4×s.",
+      "stepDesc": "Keempat sisi sama: K = 4×s. Pada Keliling Segi Empat, langkah “Persegi: 4×s” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Rumus 2 kali Panjang Plus Lebar: K = 2(p+l) karena jalur punya dua panjang dan dua lebar. Pintasan Empat Kali Sisi: K = 4 × sisi karena keempat sisi sama. Bukan…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⬜",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Persegi: 4×s",
+      "flowTo": "Hitung"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Hitung",
-      "stepDesc": "Masukkan angka, dapat keliling.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Keliling Segi Empat. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "➕",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Hitung",
+      "flowTo": "Cek manual"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek manual",
-      "stepDesc": "Boleh jumlahkan empat sisi untuk memastikan.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Keliling Segi Empat. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek manual",
+      "flowTo": "Bukan p×l"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Bukan p×l",
-      "stepDesc": "Kali panjang dan lebar = luas.",
+      "stepDesc": "Simpulkan ide utama Keliling Segi Empat dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "⚠️",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Bukan p×l",
+      "flowTo": "Lanjut D"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Lanjut D",
-      "stepDesc": "Segi banyak beraturan: n×sisi.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Keliling Segi Empat. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "➡️",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Lanjut D",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -2495,66 +2495,66 @@ export const SUB_D54: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Hitung n",
-      "stepDesc": "Berapa banyak sisi?",
+      "stepDesc": "Baca soal Keliling Segi Banyak dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Berapa banyak sisi? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menghitung keliling segi-n beraturan dengan n×sisi dan menjumlahkan sisi satu-satu jika panjang sisi berbeda, mema….",
       "icon": "🔢",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Hitung n",
+      "flowTo": "Sisi sama?"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Sisi sama?",
-      "stepDesc": "Beraturan atau tidak?",
+      "stepDesc": "Beraturan atau tidak?. Pada Keliling Segi Banyak, langkah “Sisi sama?” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Segi-n Beraturan n Kali Sisi: Jika semua sisi sama, K = n × sisi. Sisi Beda Jumlah Satu-satu: Jika sisi tidak sama, jangan ×n; jumlahkan semua sisi. Pola Tabel …. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "👀",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Sisi sama?",
+      "flowTo": "Ya: n×s"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Ya: n×s",
-      "stepDesc": "K = n × sisi.",
+      "stepDesc": "K = n × sisi. Pada Keliling Segi Banyak, langkah “Ya: n×s” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Segi-n Beraturan n Kali Sisi: Jika semua sisi sama, K = n × sisi. Sisi Beda Jumlah Satu-satu: Jika sisi tidak sama, jangan ×n; jumlahkan semua sisi. Pola Tabel …. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "✨",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Ya: n×s",
+      "flowTo": "Tidak: jumlah"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Tidak: jumlah",
-      "stepDesc": "Jumlahkan semua sisi satu-satu.",
+      "stepDesc": "Jumlahkan semua sisi satu-satu. Pada Keliling Segi Banyak, langkah “Tidak: jumlah” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Segi-n Beraturan n Kali Sisi: Jika semua sisi sama, K = n × sisi. Sisi Beda Jumlah Satu-satu: Jika sisi tidak sama, jangan ×n; jumlahkan semua sisi. Pola Tabel …. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➕",
-      "flowFrom": "2",
-      "flowTo": "5"
+      "flowFrom": "Tidak: jumlah",
+      "flowTo": "Hitung"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Hitung",
-      "stepDesc": "Dapat keliling dengan satuan.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Keliling Segi Banyak. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🧮",
-      "flowFrom": "3",
-      "flowTo": "6"
+      "flowFrom": "Hitung",
+      "flowTo": "Cek"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Cek",
-      "stepDesc": "Hasil masuk akal dibanding satu sisi.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Keliling Segi Banyak. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Cek",
+      "flowTo": "Pola tabel"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Pola tabel",
-      "stepDesc": "5→5s, 6→6s, 8→8s.",
+      "stepDesc": "Simpulkan ide utama Keliling Segi Banyak dengan kalimatmu sendiri. Sebutkan cara yang kamu pakai dan mengapa cara itu membantu. Jelaskan kepada teman seolah-olah kamu guru kecil. Simpulan yang jelas menandakan konsepnya sudah dipahami.",
       "icon": "📋",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Pola tabel",
+      "flowTo": "Lanjut E"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Lanjut E",
-      "stepDesc": "Gabungan: hanya batas luar.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Keliling Segi Banyak. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "➡️",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Lanjut E",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -3259,66 +3259,66 @@ export const SUB_E54: SubBabNaskah = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Lihat denah",
-      "stepDesc": "Gabungan ruang apa saja?",
+      "stepDesc": "Baca soal Keliling Bangun Gabungan dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Gabungan ruang apa saja? Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa menghitung keliling bangun gabungan dengan hanya menjumlahkan sisi batas luar (outer path), mengabaikan sekat dala….",
       "icon": "🏠",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Lihat denah",
+      "flowTo": "Tandai luar"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Tandai luar",
-      "stepDesc": "Warnai atau garisbawahi hanya dinding terluar.",
+      "stepDesc": "Warnai atau garisbawahi hanya dinding terluar. Pada Keliling Bangun Gabungan, langkah “Tandai luar” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Hanya Batas Luar: Keliling gabungan = jalur terluar; sekat dalam diabaikan. Strategi Bungkus Persegi Panjang: Bungkus denah dengan PP besar lalu hitung keliling…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⭕",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Tandai luar",
+      "flowTo": "Abaikan dalam"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Abaikan dalam",
-      "stepDesc": "Sekat antar ruang tidak masuk keliling luar.",
+      "stepDesc": "Sekat antar ruang tidak masuk keliling luar. Pada Keliling Bangun Gabungan, langkah “Abaikan dalam” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Hanya Batas Luar: Keliling gabungan = jalur terluar; sekat dalam diabaikan. Strategi Bungkus Persegi Panjang: Bungkus denah dengan PP besar lalu hitung keliling…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🚫",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Abaikan dalam",
+      "flowTo": "Lengkapi sisi ?"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Lengkapi sisi ?",
-      "stepDesc": "Selisih atau kesamaan ukuran.",
+      "stepDesc": "Selisih atau kesamaan ukuran. Pada Keliling Bangun Gabungan, langkah “Lengkapi sisi ?” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Ingat metode yang dianyam di sini: Hanya Batas Luar: Keliling gabungan = jalur terluar; sekat dalam diabaikan. Strategi Bungkus Persegi Panjang: Bungkus denah dengan PP besar lalu hitung keliling…. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔍",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Lengkapi sisi ?",
+      "flowTo": "Jumlah luar / bungkus"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Jumlah luar / bungkus",
-      "stepDesc": "Side sum luar atau 2(P+L) bungkus.",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Keliling Bangun Gabungan. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "➕",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Jumlah luar / bungkus",
+      "flowTo": "Hasil K"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Hasil K",
-      "stepDesc": "Keliling gabungan dengan satuan.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Keliling Bangun Gabungan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "📏",
-      "flowFrom": "5",
-      "flowTo": "7"
+      "flowFrom": "Hasil K",
+      "flowTo": "Cek 5"
     },
     {
       "stepNumber": 7,
       "stepTitle": "7. Cek 5",
-      "stepDesc": "Luar saja, satuan, masuk akal, bukan luas, sisi lengkap.",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Keliling Bangun Gabungan. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "6",
-      "flowTo": "8"
+      "flowFrom": "Cek 5",
+      "flowTo": "Bab 4 utuh"
     },
     {
       "stepNumber": 8,
       "stepTitle": "8. Bab 4 utuh",
-      "stepDesc": "A–E: arti, segitiga, segi empat, segi banyak, gabungan.",
+      "stepDesc": "Latih lagi di tahap Concrete, Picture, lalu Abstract untuk Keliling Bangun Gabungan. Mulai dari benda nyata, lanjut ke diagram, baru ke lambang angka. Ulangi sampai kamu bisa menjelaskan tanpa melihat contoh. Bermain sambil berlatih membuat konsepnya melekat lebih lama.",
       "icon": "🎉",
-      "flowFrom": "7",
-      "flowTo": "END"
+      "flowFrom": "Bab 4 utuh",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

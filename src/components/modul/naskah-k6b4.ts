@@ -218,50 +218,50 @@ export const SUB_A64 = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Kejadian",
-      "stepDesc": "Apa yang ditanya",
+      "stepDesc": "Baca soal Skala Peluang dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. Apa yang ditanya Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa mengenal peluang lewat skala kualitatif (tidak mungkin–pasti), memprediksi kejadian sehari-hari dan hasil percobaa….",
       "icon": "🎯",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Kejadian",
+      "flowTo": "Bukti"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Bukti",
-      "stepDesc": "Jumlah / data",
+      "stepDesc": "Jumlah / data. Pada Skala Peluang, langkah “Bukti” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📊",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Bukti",
+      "flowTo": "Skala"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Skala",
-      "stepDesc": "5 tangga",
+      "stepDesc": "5 tangga. Pada Skala Peluang, langkah “Skala” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "📶",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Skala",
+      "flowTo": "Ujung"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Ujung",
-      "stepDesc": "0 atau semua",
+      "stepDesc": "0 atau semua. Pada Skala Peluang, langkah “Ujung” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⬅️➡️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Ujung",
+      "flowTo": "Percobaan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Percobaan",
-      "stepDesc": "Catat hasil",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Skala Peluang. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🔁",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Percobaan",
+      "flowTo": "Refleksi"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Refleksi",
-      "stepDesc": "Cocok prediksi?",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Skala Peluang. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Refleksi",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [
@@ -927,50 +927,50 @@ export const SUB_B64 = {
     {
       "stepNumber": 1,
       "stepTitle": "1. Dua kejadian",
-      "stepDesc": "A vs B",
+      "stepDesc": "Baca soal Membandingkan Peluang Kejadian dengan teliti. Tandai apa yang diketahui dan apa yang ditanyakan. Ucapkan pertanyaan dengan kalimatmu sendiri sebelum menghitung. A vs B Jangan buru-buru ke angka; pastikan dulu makna ceritanya. Tujuan belajarnya: Siswa membandingkan peluang dua kejadian (permainan dan sehari-hari), mengenali permainan adil/kurang adil, memakai rasi….",
       "icon": "⚔️",
-      "flowFrom": "START",
-      "flowTo": "2"
+      "flowFrom": "Dua kejadian",
+      "flowTo": "Hitung"
     },
     {
       "stepNumber": 2,
       "stepTitle": "2. Hitung",
-      "stepDesc": "menguntungkan/total",
+      "stepDesc": "menguntungkan/total. Pada Membandingkan Peluang Kejadian, langkah “Hitung” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "➗",
-      "flowFrom": "1",
-      "flowTo": "3"
+      "flowFrom": "Hitung",
+      "flowTo": "Bandingkan"
     },
     {
       "stepNumber": 3,
       "stepTitle": "3. Bandingkan",
-      "stepDesc": "mana lebih besar",
+      "stepDesc": "mana lebih besar. Pada Membandingkan Peluang Kejadian, langkah “Bandingkan” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "🔎",
-      "flowFrom": "2",
-      "flowTo": "4"
+      "flowFrom": "Bandingkan",
+      "flowTo": "Adil?"
     },
     {
       "stepNumber": 4,
       "stepTitle": "4. Adil?",
-      "stepDesc": "peluang sama?",
+      "stepDesc": "peluang sama?. Pada Membandingkan Peluang Kejadian, langkah “Adil?” dipakai supaya kamu melihat hubungan antar bilangan atau benda dengan jelas. Coba contoh dari cerita, lalu ulangi dengan angka lain agar polanya terlihat. Jika bingung, kembali ke langkah sebelumnya lalu maju lagi pelan-pelan.",
       "icon": "⚖️",
-      "flowFrom": "3",
-      "flowTo": "5"
+      "flowFrom": "Adil?",
+      "flowTo": "Keputusan"
     },
     {
       "stepNumber": 5,
       "stepTitle": "5. Keputusan",
-      "stepDesc": "pilih relatif unggul",
+      "stepDesc": "Sekarang terapkan cara yang sudah dipilih pada Membandingkan Peluang Kejadian. Gambar dulu atau tulis langkahnya satu per satu, jangan lompat. Kalau tersendat, kembali ke cara sebelumnya lalu coba lagi. Hasil sementara ditulis rapi supaya mudah diperiksa.",
       "icon": "🧭",
-      "flowFrom": "4",
-      "flowTo": "6"
+      "flowFrom": "Keputusan",
+      "flowTo": "Ingat"
     },
     {
       "stepNumber": 6,
       "stepTitle": "6. Ingat",
-      "stepDesc": "besar ≠ pasti",
+      "stepDesc": "Periksa apakah jawabanmu masuk akal untuk Membandingkan Peluang Kejadian. Bandingkan dengan perkiraan kasar, hitung ulang dengan cara lain, atau balik operasi. Jika hasilnya jauh dari dugaan, cari di mana langkahnya keliru. Pemeriksaan ini melatih kejujuran berpikir, bukan hanya kecepatan.",
       "icon": "✅",
-      "flowFrom": "5",
-      "flowTo": "END"
+      "flowFrom": "Ingat",
+      "flowTo": "Latihan Concrete–Abstract"
     }
   ],
   "infografis": [

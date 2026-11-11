@@ -10,7 +10,7 @@ import { BingkaiTahap } from "./BingkaiTahap";
 /* dibacakan suara guru saat simpul diketuk. Enam gaya visual per kelas SD.  */
 /* ------------------------------------------------------------------------ */
 
-export const IGIL_PETA_UI = "peta-per-kelas-v1";
+export const IGIL_PETA_UI = "peta-per-kelas-v2-dalam";
 
 export type LangkahPeta = {
   stepNumber: number;
@@ -47,10 +47,20 @@ function judulBersih(teks: string) {
   return teks.replace(/^\d+\.\s*/, "");
 }
 
+function alurAngka(s?: string) {
+  return !s || /^(?:\d+|START|END)$/i.test(s.trim());
+}
+
+/** Subjudul visual: alur konsep bermakna; jangan tampilkan "1 → 3". */
 function subJudul(l: LangkahPeta) {
-  if (l.flowFrom && l.flowTo) return `${l.flowFrom} → ${l.flowTo}`;
-  if (l.flowFrom) return l.flowFrom;
-  if (l.flowTo) return l.flowTo;
+  if (l.flowFrom && l.flowTo && !alurAngka(l.flowFrom) && !alurAngka(l.flowTo)) {
+    return `${l.flowFrom} → ${l.flowTo}`;
+  }
+  const d = String(l.stepDesc || "").replace(/\s+/g, " ").trim();
+  if (d) {
+    const potong = (d.split(/(?<=[.!?])\s/)[0] || d).trim();
+    return potong.length > 72 ? `${potong.slice(0, 70)}…` : potong;
+  }
   return "Ketuk untuk dengar penjelasan";
 }
 
