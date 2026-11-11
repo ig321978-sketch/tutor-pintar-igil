@@ -106,6 +106,6 @@ Tujuan belajar: memakai data untuk mengambil keputusan nyata, memilih cara menca
 
 ## Catatan integrasi
 - Urutan tab Bab 8: Silabus, Materi, Latihan, Ujian. Simulasi bagian dari alur Materi (SMISCPA, tahap 4), tidak memberi poin, dan tidak mengunci Latihan secara terpisah: Latihan terbuka setelah semua sub-bab Materi selesai, sama seperti sebelumnya.
-- Tab Simulasi tetap tampil di bab lain yang sudah punya simulasi (Kelas 1 Bab 3 sampai 7, Kelas 2 Bab 1 sampai 3; Kelas 1 Bab 1 dan 2 sudah dimigrasi) sampai bab itu dimigrasi ke SMISCPA. Registrinya `SIMULASI_BAB` (tab) dan `SIMULASI_MATERI` (di dalam Materi) di `IgilModulePlayer.tsx`.
+- Tab Simulasi tetap tampil di bab lain yang sudah punya simulasi (Kelas 1 Bab 4 sampai 7, Kelas 2 Bab 1 sampai 3; Kelas 1 Bab 1, 2, dan 3 sudah dimigrasi) sampai bab itu dimigrasi ke SMISCPA. Registrinya `SIMULASI_BAB` (tab) dan `SIMULASI_MATERI` (di dalam Materi) di `IgilModulePlayer.tsx`.
 - Data Mind-Map dan Infografis ringkas bab ini ada di `src/data/kelas1-bab8-ringkas.json`, lihat `naskah/mtk-1-bab8-ringkas-smiscpa.md`.
 - Sub-bab tidak memakai kunci jawaban ujian, jadi tidak ada seed SQL.

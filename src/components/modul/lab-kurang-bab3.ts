@@ -63,7 +63,9 @@ export function keluargaFakta(t: number, k: number): string[] {
   return semua.filter((x, i) => semua.indexOf(x) === i);
 }
 
-export function ucapanKurang(t: number, k: number): string {
+/** `sebutPasangan` false untuk sub-bab yang belum mengajarkan pasangan tambah (Sub-Bab A dan B). */
+export function ucapanKurang(t: number, k: number, sebutPasangan = true): string {
   const s = sisa(t, k);
-  return `Ada ${t} benda. ${k} benda diambil. Sisanya ${s}. ${t} dikurangi ${k} sama dengan ${s}. Pasangannya, ${s} ditambah ${k} sama dengan ${t}.`;
+  const dasar = `Ada ${t} benda. ${k} benda diambil. Sisanya ${s}. ${t} dikurangi ${k} sama dengan ${s}.`;
+  return sebutPasangan ? `${dasar} Pasangannya, ${s} ditambah ${k} sama dengan ${t}.` : dasar;
 }

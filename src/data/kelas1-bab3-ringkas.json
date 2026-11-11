@@ -1,0 +1,609 @@
+{
+  "chapter_id": "mtk-1-bab3",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subject": "Matematika",
+  "title": "Pengurangan sampai dengan 10",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Pengurangan",
+          "ikon": "➖",
+          "suara": "Ini peta pengurangan. Mengurangi berarti benda menjadi lebih sedikit. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "bagian",
+            "judul": "Tiga bagian",
+            "ikon": "🧩",
+            "ringkas": "Mula-mula, berkurang, sisa.",
+            "suara": "Cerita pengurangan punya tiga bagian. Mula-mula adalah jumlah di awal. Berkurang adalah yang pergi. Sisa adalah yang masih tinggal. Enam anak bermain, dua anak pulang, sisanya empat anak."
+          },
+          {
+            "id": "berkurang",
+            "judul": "Berkurang",
+            "ikon": "👋",
+            "ringkas": "Ada yang pergi, jadi lebih sedikit.",
+            "suara": "Kalau ada yang pulang, terbang, atau dimakan, bendanya berkurang. Dua anak pulang, jadi anak yang bermain lebih sedikit."
+          },
+          {
+            "id": "tulis",
+            "judul": "Tulis dan baca",
+            "ikon": "✏️",
+            "ringkas": "Tanda kurang dan sama dengan.",
+            "suara": "Cerita itu ditulis enam, tanda kurang, dua, tanda sama dengan, empat. Dibaca enam dikurangi dua sama dengan empat."
+          },
+          {
+            "id": "nol",
+            "judul": "Sisa nol",
+            "ikon": "0️⃣",
+            "ringkas": "Semua pergi, sisanya nol.",
+            "suara": "Tiga orang di dalam mobil. Tiga orang turun. Tiga dikurangi tiga hasilnya nol. Nol artinya tidak ada yang tersisa. Kalau tidak ada yang pergi, sisanya tetap sama. Tujuh dikurangi nol hasilnya tujuh."
+          }
+        ],
+        "kartu": [
+          { "id": "a-mula", "teks": "Mula-mula 6 anak", "ikon": "🧩", "cabang": "bagian", "petunjuk": "Jumlah di awal itu mula-mula. Itu satu dari tiga bagian. Coba cabang lain." },
+          { "id": "a-sisa", "teks": "Sisa 4 anak", "ikon": "🧩", "cabang": "bagian", "petunjuk": "Yang masih tinggal itu sisa. Itu satu dari tiga bagian. Coba cabang lain." },
+          { "id": "a-pulang", "teks": "2 anak pulang", "ikon": "👋", "cabang": "berkurang", "petunjuk": "Yang pergi membuat benda berkurang. Coba cabang lain." },
+          { "id": "a-terbang", "teks": "2 kupu-kupu terbang", "ikon": "🦋", "cabang": "berkurang", "petunjuk": "Yang pergi membuat benda berkurang. Coba cabang lain." },
+          { "id": "a-tulis", "teks": "6 − 2 = 4", "ikon": "✏️", "cabang": "tulis", "petunjuk": "Menuliskan cerita dengan angka itu menulis. Coba cabang lain." },
+          { "id": "a-baca", "teks": "Enam dikurangi dua", "ikon": "🗣️", "cabang": "tulis", "petunjuk": "Menyebut kalimat dengan kata-kata itu membaca. Coba cabang lain." },
+          { "id": "a-nol", "teks": "3 − 3 = 0", "ikon": "0️⃣", "cabang": "nol", "petunjuk": "Semua pergi, sisanya nol. Coba cabang lain." },
+          { "id": "a-tetap", "teks": "7 − 0 = 7", "ikon": "0️⃣", "cabang": "nol", "petunjuk": "Tidak ada yang pergi, sisanya tetap sama. Itu soal nol. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Cerita Pengurangan",
+        "suara": "Ini tiga panel tentang cerita pengurangan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-bagian",
+            "tipe": "buka",
+            "judul": "Tiga bagian cerita",
+            "ide": "Mula-mula, berkurang, sisa.",
+            "suara": "Setiap cerita pengurangan punya tiga bagian. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "mula",
+                "label": "Mula-mula",
+                "ikon": "🧩",
+                "isi": "Enam anak bermain.",
+                "suara": "Mula-mula ada enam anak yang bermain tutup mata.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["boneka", 6]] }
+              },
+              {
+                "id": "kurang",
+                "label": "Berkurang",
+                "ikon": "👋",
+                "isi": "Dua anak pulang.",
+                "suara": "Berkurang dua. Dua anak harus pulang.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["boneka", 2]] }
+              },
+              {
+                "id": "sisa",
+                "label": "Sisa",
+                "ikon": "✅",
+                "isi": "Empat anak masih bermain.",
+                "suara": "Sisanya empat anak. Enam dikurangi dua sama dengan empat.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["boneka", 4]] }
+              }
+            ]
+          },
+          {
+            "id": "a-nol",
+            "tipe": "banding",
+            "judul": "Ada sisa atau sisa nol?",
+            "ide": "Sisa bisa banyak, bisa nol.",
+            "suara": "Lihat dua cerita. Satu cerita masih ada sisa. Satu cerita sisanya nol.",
+            "sisi": [
+              {
+                "id": "ada",
+                "nama": "Ada sisa",
+                "ikon": "🍰",
+                "catatan": "Ibu punya 6 kue. Upe makan 1. Sisa 5.",
+                "suara": "Ibu punya enam kue. Upe memakan satu kue. Sisa kue Ibu lima.",
+                "visual": { "jenis": "teks", "isi": "6 − 1 = 5" }
+              },
+              {
+                "id": "nol",
+                "nama": "Sisa nol",
+                "ikon": "🚗",
+                "catatan": "Tiga orang di mobil, semua turun.",
+                "suara": "Tiga orang di dalam mobil. Tiga orang turun. Sekarang tidak ada orang di mobil. Tiga dikurangi tiga hasilnya nol.",
+                "visual": { "jenis": "teks", "isi": "3 − 3 = 0" }
+              }
+            ],
+            "kesimpulan": "Nol artinya tidak ada yang tersisa."
+          },
+          {
+            "id": "a-cara",
+            "tipe": "buka",
+            "judul": "Tiga cara melihat sisa",
+            "ide": "Benda, bingkai, dan goresan.",
+            "suara": "Sisa dari enam kurang dua bisa dilihat dengan tiga cara. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "benda",
+                "label": "Benda",
+                "ikon": "🔴",
+                "isi": "Empat bola sisa, dua bola diambil.",
+                "suara": "Benda. Enam bola, dua bola diambil. Sisa empat bola.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 4], ["bola-biru", 2]] }
+              },
+              {
+                "id": "bingkai",
+                "label": "Bingkai sepuluh",
+                "ikon": "🔲",
+                "isi": "Dua kotak dicoret.",
+                "suara": "Bingkai sepuluh. Enam kotak terisi, dua kotak dicoret. Sisa empat kotak.",
+                "visual": { "jenis": "teks", "isi": "6 kotak, 2 dicoret, sisa 4" }
+              },
+              {
+                "id": "goresan",
+                "label": "Goresan",
+                "ikon": "✏️",
+                "isi": "Satu goresan untuk satu benda.",
+                "suara": "Goresan. Enam goresan, dua goresan dicoret. Sisa empat goresan.",
+                "visual": { "jenis": "teks", "isi": "6 goresan, dicoret 2, sisa 4" }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Cara Mengurangkan",
+          "ikon": "🛠️",
+          "suara": "Ini peta berbagai cara mengurangkan. Satu pengurangan bisa dikerjakan dengan beberapa cara. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "pasangan",
+            "judul": "Pasangan",
+            "ikon": "🥚",
+            "ringkas": "Gabungan dan sebagian.",
+            "suara": "Enam telur terdiri dari empat telur utuh dan dua telur pecah. Enam adalah gabungan. Empat dan dua adalah sebagian. Dari satu bagan ada dua pengurangan."
+          },
+          {
+            "id": "mundur",
+            "judul": "Hitung mundur",
+            "ikon": "⏪",
+            "ringkas": "Lompat ke belakang di garis bilangan.",
+            "suara": "Upe berdiri di lima, lalu melompat tiga langkah ke belakang. Empat, tiga, dua. Lima dikurangi tiga sama dengan dua."
+          },
+          {
+            "id": "nol",
+            "judul": "Nol dan sama",
+            "ikon": "0️⃣",
+            "ringkas": "Dikurang nol tetap, dikurang sama nol.",
+            "suara": "Bilangan dikurangi nol hasilnya tetap sama. Bilangan dikurangi bilangan yang sama hasilnya nol."
+          },
+          {
+            "id": "sepuluh",
+            "judul": "Dari sepuluh",
+            "ikon": "🔟",
+            "ringkas": "Petak kosong menjadi sisa.",
+            "suara": "Bingkai sepuluh punya sepuluh petak. Sepuluh kurang tujuh sama dengan tiga, karena tiga petak masih kosong."
+          }
+        ],
+        "kartu": [
+          { "id": "b-telur", "teks": "6 telur: 4 utuh, 2 pecah", "ikon": "🥚", "cabang": "pasangan", "petunjuk": "Gabungan dan sebagian itu pasangan bilangan. Coba cabang lain." },
+          { "id": "b-dua", "teks": "6 − 2 dan 6 − 4", "ikon": "🔗", "cabang": "pasangan", "petunjuk": "Satu bagan menghasilkan dua pengurangan. Itu pasangan bilangan. Coba cabang lain." },
+          { "id": "b-lompat", "teks": "Mulai 5, mundur 3", "ikon": "⏪", "cabang": "mundur", "petunjuk": "Melompat ke belakang itu hitung mundur. Coba cabang lain." },
+          { "id": "b-urut", "teks": "Empat, tiga, dua", "ikon": "👣", "cabang": "mundur", "petunjuk": "Menyebut bilangan dari besar ke kecil itu hitung mundur. Coba cabang lain." },
+          { "id": "b-kurang-nol", "teks": "5 − 0 = 5", "ikon": "0️⃣", "cabang": "nol", "petunjuk": "Dikurangi nol, hasilnya tetap. Itu soal nol. Coba cabang lain." },
+          { "id": "b-sama", "teks": "4 − 4 = 0", "ikon": "0️⃣", "cabang": "nol", "petunjuk": "Dikurangi bilangan yang sama, hasilnya nol. Coba cabang lain." },
+          { "id": "b-sepuluh", "teks": "10 − 7 = 3", "ikon": "🔟", "cabang": "sepuluh", "petunjuk": "Pengurangan dari sepuluh memakai bingkai sepuluh. Coba cabang lain." },
+          { "id": "b-kosong", "teks": "Petak kosong = sisa", "ikon": "🔲", "cabang": "sepuluh", "petunjuk": "Petak kosong di bingkai sepuluh adalah sisanya. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Berbagai Cara Mengurangkan",
+        "suara": "Ini tiga panel tentang berbagai cara mengurangkan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "b-bagan",
+            "tipe": "buka",
+            "judul": "Gabungan dan sebagian",
+            "ide": "Satu bagan, dua pengurangan.",
+            "suara": "Enam telur dipisah menjadi dua bagian. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "gabungan",
+                "label": "Gabungan",
+                "ikon": "🥚",
+                "isi": "Semua telur: enam. Paling besar.",
+                "suara": "Gabungan adalah semua telur, yaitu enam. Gabungan selalu paling besar dan ditulis pertama.",
+                "visual": { "jenis": "teks", "isi": "Gabungan = 6" }
+              },
+              {
+                "id": "sebagian",
+                "label": "Sebagian",
+                "ikon": "🧩",
+                "isi": "Empat utuh, dua pecah.",
+                "suara": "Sebagian adalah dua bagiannya. Empat telur utuh dan dua telur pecah.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 4], ["bola-biru", 2]] }
+              },
+              {
+                "id": "dua-kurang",
+                "label": "Dua pengurangan",
+                "ikon": "🔗",
+                "isi": "Satu bagan, dua kalimat.",
+                "suara": "Dari bagan ini ada dua pengurangan. Enam dikurangi dua sama dengan empat. Enam dikurangi empat sama dengan dua.",
+                "visual": { "jenis": "teks", "isi": "6 − 2 = 4 dan 6 − 4 = 2" }
+              }
+            ]
+          },
+          {
+            "id": "b-mundur",
+            "tipe": "buka",
+            "judul": "Hitung mundur",
+            "ide": "Mundur, kurang nol, kurang sama.",
+            "suara": "Di garis bilangan, ada tiga kalimat yang perlu dikenal. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "mundur",
+                "label": "Mundur",
+                "ikon": "⏪",
+                "isi": "Mulai 5, lompat mundur 3.",
+                "suara": "Mulai di lima. Lompat tiga langkah ke belakang: empat, tiga, dua. Mendarat di dua.",
+                "visual": { "jenis": "teks", "isi": "5 → 4, 3, 2" }
+              },
+              {
+                "id": "kurang-nol",
+                "label": "Kurang nol",
+                "ikon": "0️⃣",
+                "isi": "Tidak melompat, tetap di tempat.",
+                "suara": "Lima dikurangi nol. Tidak ada lompatan, jadi tetap di lima.",
+                "visual": { "jenis": "teks", "isi": "5 − 0 = 5" }
+              },
+              {
+                "id": "kurang-sama",
+                "label": "Kurang sama",
+                "ikon": "🏁",
+                "isi": "Mundur sampai nol.",
+                "suara": "Empat dikurangi empat. Lompat mundur empat langkah sampai di nol.",
+                "visual": { "jenis": "teks", "isi": "4 − 4 = 0" }
+              }
+            ]
+          },
+          {
+            "id": "b-sepuluh",
+            "tipe": "buka",
+            "judul": "Pengurangan dari sepuluh",
+            "ide": "Petak kosong menjadi sisa.",
+            "suara": "Bingkai sepuluh membantu mengurangi dari sepuluh. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "sepuluh-tujuh",
+                "label": "10 − 7",
+                "ikon": "🔟",
+                "isi": "Tujuh petak diisi, tiga kosong.",
+                "suara": "Sepuluh dikurangi tujuh sama dengan tiga.",
+                "visual": { "jenis": "teks", "isi": "10 − 7 = 3" }
+              },
+              {
+                "id": "sepuluh-tiga",
+                "label": "10 − 3",
+                "ikon": "🔟",
+                "isi": "Tiga petak diisi, tujuh kosong.",
+                "suara": "Sepuluh dikurangi tiga sama dengan tujuh.",
+                "visual": { "jenis": "teks", "isi": "10 − 3 = 7" }
+              },
+              {
+                "id": "pasangan-sepuluh",
+                "label": "Pasangan sepuluh",
+                "ikon": "🤝",
+                "isi": "Dua bilangan, jumlahnya sepuluh.",
+                "suara": "Pasangan sepuluh: satu dan sembilan, dua dan delapan, tiga dan tujuh, empat dan enam, lima dan lima.",
+                "visual": { "jenis": "teks", "isi": "1+9  2+8  3+7  4+6  5+5" }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Tambah dan Kurang",
+          "ikon": "🔄",
+          "suara": "Ini peta hubungan tambah dan kurang. Tambah dan kurang saling berkebalikan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "keluarga",
+            "judul": "Keluarga bilangan",
+            "ikon": "👪",
+            "ringkas": "Tiga bilangan, empat kalimat.",
+            "suara": "Empat, tiga, dan tujuh adalah satu keluarga bilangan. Dari keluarga ini kita bisa menulis dua penjumlahan dan dua pengurangan."
+          },
+          {
+            "id": "kebalikan",
+            "judul": "Kebalikan",
+            "ikon": "↔️",
+            "ringkas": "Tambah maju, kurang mundur.",
+            "suara": "Penjumlahan itu maju. Pengurangan itu mundur. Tiga tambah empat sama dengan tujuh. Tujuh kurang empat sama dengan tiga. Pengurangan membawa kita pulang ke bilangan semula."
+          },
+          {
+            "id": "periksa",
+            "judul": "Periksa",
+            "ikon": "✅",
+            "ringkas": "Cek dengan kebalikannya.",
+            "suara": "Periksa pengurangan dengan penjumlahan. Periksa penjumlahan dengan pengurangan. Kalau cocok, jawabanmu benar."
+          },
+          {
+            "id": "hilang",
+            "judul": "Cari yang hilang",
+            "ikon": "❓",
+            "ringkas": "Pakai kebalikan, pilih tanda.",
+            "suara": "Enam tambah berapa sama dengan sembilan? Hitung sembilan kurang enam, hasilnya tiga. Kita juga bisa memilih tanda tambah atau kurang yang tepat."
+          }
+        ],
+        "kartu": [
+          { "id": "c-fam", "teks": "Keluarga 4, 3, 7", "ikon": "👪", "cabang": "keluarga", "petunjuk": "Tiga bilangan yang berhubungan itu keluarga bilangan. Coba cabang lain." },
+          { "id": "c-empat", "teks": "Dua tambah, dua kurang", "ikon": "👪", "cabang": "keluarga", "petunjuk": "Empat kalimat dari satu keluarga itu keluarga bilangan. Coba cabang lain." },
+          { "id": "c-maju", "teks": "3 + 4 = 7: maju", "ikon": "➡️", "cabang": "kebalikan", "petunjuk": "Tambah maju dan kurang mundur itu kebalikan. Coba cabang lain." },
+          { "id": "c-mundur", "teks": "7 − 4 = 3: mundur", "ikon": "⬅️", "cabang": "kebalikan", "petunjuk": "Tambah maju dan kurang mundur itu kebalikan. Coba cabang lain." },
+          { "id": "c-cek", "teks": "9 − 4 = 5, cek 5 + 4", "ikon": "✅", "cabang": "periksa", "petunjuk": "Mengecek dengan kebalikan itu memeriksa. Coba cabang lain." },
+          { "id": "c-cek2", "teks": "Cek 3 + 2 dengan 5 − 2", "ikon": "✅", "cabang": "periksa", "petunjuk": "Mengecek dengan kebalikan itu memeriksa. Coba cabang lain." },
+          { "id": "c-hilang", "teks": "6 + ? = 9", "ikon": "❓", "cabang": "hilang", "petunjuk": "Mencari bilangan yang tidak ada itu mencari yang hilang. Coba cabang lain." },
+          { "id": "c-tanda", "teks": "7 ○ 2 = 9: pilih tanda", "ikon": "❔", "cabang": "hilang", "petunjuk": "Memilih tanda yang tepat itu mencari yang hilang. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Hubungan Tambah dan Kurang",
+        "suara": "Ini tiga panel tentang hubungan tambah dan kurang. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "c-keluarga",
+            "tipe": "buka",
+            "judul": "Keluarga bilangan",
+            "ide": "Tiga bilangan, empat kalimat.",
+            "suara": "Satu keluarga bilangan punya empat kalimat. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "keluarga",
+                "label": "Keluarga",
+                "ikon": "👪",
+                "isi": "Empat, tiga, dan tujuh.",
+                "suara": "Empat, tiga, dan tujuh adalah satu keluarga bilangan.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 4], ["bola-biru", 3]] }
+              },
+              {
+                "id": "tambah",
+                "label": "Dua tambah",
+                "ikon": "➕",
+                "isi": "Gabungkan, hasilnya tujuh.",
+                "suara": "Dua penjumlahan. Empat tambah tiga sama dengan tujuh. Tiga tambah empat sama dengan tujuh.",
+                "visual": { "jenis": "teks", "isi": "4 + 3 = 7 dan 3 + 4 = 7" }
+              },
+              {
+                "id": "kurang",
+                "label": "Dua kurang",
+                "ikon": "➖",
+                "isi": "Ambil satu bagian dari tujuh.",
+                "suara": "Dua pengurangan. Tujuh kurang tiga sama dengan empat. Tujuh kurang empat sama dengan tiga.",
+                "visual": { "jenis": "teks", "isi": "7 − 3 = 4 dan 7 − 4 = 3" }
+              }
+            ]
+          },
+          {
+            "id": "c-tukar",
+            "tipe": "banding",
+            "judul": "Boleh ditukar tempat?",
+            "ide": "Tambah boleh ditukar, kurang tidak.",
+            "suara": "Bandingkan penjumlahan dan pengurangan. Mana yang boleh ditukar tempat?",
+            "sisi": [
+              {
+                "id": "tambah",
+                "nama": "Tambah",
+                "ikon": "➕",
+                "catatan": "Empat tambah tiga sama dengan tiga tambah empat.",
+                "suara": "Penjumlahan boleh bertukar tempat. Empat tambah tiga sama dengan tiga tambah empat, sama-sama tujuh.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 4], ["bola-biru", 3]] }
+              },
+              {
+                "id": "kurang",
+                "nama": "Kurang",
+                "ikon": "➖",
+                "catatan": "Tujuh kurang tiga tidak sama dengan tiga kurang tujuh.",
+                "suara": "Pengurangan tidak boleh bertukar tempat. Tujuh kurang tiga tidak sama dengan tiga kurang tujuh.",
+                "visual": { "jenis": "teks", "isi": "7 − 3 ≠ 3 − 7" }
+              }
+            ],
+            "kesimpulan": "Hanya penjumlahan yang boleh ditukar."
+          },
+          {
+            "id": "c-periksa",
+            "tipe": "buka",
+            "judul": "Periksa dan cari yang hilang",
+            "ide": "Pakai kebalikan.",
+            "suara": "Kebalikan membantu kita memeriksa dan mencari yang hilang. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "periksa",
+                "label": "Periksa",
+                "ikon": "✅",
+                "isi": "Cek kurang dengan tambah.",
+                "suara": "Sembilan kurang empat sama dengan lima. Periksa: lima tambah empat sama dengan sembilan. Cocok.",
+                "visual": { "jenis": "teks", "isi": "9 − 4 = 5, cek 5 + 4 = 9" }
+              },
+              {
+                "id": "hilang",
+                "label": "Yang hilang",
+                "ikon": "❓",
+                "isi": "Pakai kebalikannya.",
+                "suara": "Enam tambah berapa sama dengan sembilan? Pakai kebalikan: sembilan kurang enam sama dengan tiga. Angka yang hilang adalah tiga.",
+                "visual": { "jenis": "teks", "isi": "6 + ? = 9, jadi 9 − 6 = 3" }
+              },
+              {
+                "id": "tanda",
+                "label": "Pilih tanda",
+                "ikon": "❔",
+                "isi": "Hasil lebih kecil: kurang.",
+                "suara": "Tujuh lingkaran tiga sama dengan empat. Empat lebih kecil dari tujuh, jadi tandanya kurang.",
+                "visual": { "jenis": "teks", "isi": "7 ○ 3 = 4, tandanya −" }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "D": {
+      "peta": {
+        "pusat": {
+          "judul": "Soal Cerita",
+          "ikon": "📖",
+          "suara": "Ini peta soal cerita pengurangan. Soal cerita dikerjakan dari membaca sampai memeriksa. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "baca",
+            "judul": "Baca",
+            "ikon": "📖",
+            "ringkas": "Cari mula-mula dan yang pergi.",
+            "suara": "Baca ceritanya pelan-pelan sampai selesai. Cari berapa mula-mula, apa yang terjadi, dan apa yang ditanyakan."
+          },
+          {
+            "id": "kata",
+            "judul": "Kata kunci",
+            "ikon": "🔍",
+            "ringkas": "Terbang, pergi, dimakan: kurang.",
+            "suara": "Kata terbang, pergi, diberikan, dimakan, diambil, dan hilang berarti jumlahnya berkurang. Pakai tanda kurang."
+          },
+          {
+            "id": "cari",
+            "judul": "Apa yang dicari",
+            "ikon": "❓",
+            "ringkas": "Sisa, yang pergi, atau mula-mula.",
+            "suara": "Kadang yang dicari adalah sisa. Kadang yang pergi. Kadang mula-mula. Untuk mencari mula-mula, pakai tambah."
+          },
+          {
+            "id": "jawab",
+            "judul": "Jawab dan periksa",
+            "ikon": "💬",
+            "ringkas": "Kalimat lengkap, lalu periksa.",
+            "suara": "Tulis jawaban dalam satu kalimat lengkap dengan bendanya. Lalu periksa dengan penjumlahan. Sisa ditambah yang pergi harus sama dengan mula-mula."
+          }
+        ],
+        "kartu": [
+          { "id": "d-mula", "teks": "Mula-mula 8 burung", "ikon": "🐦", "cabang": "baca", "petunjuk": "Mencari jumlah di awal itu membaca cerita. Coba cabang lain." },
+          { "id": "d-terbang", "teks": "Dua burung terbang", "ikon": "🐦", "cabang": "baca", "petunjuk": "Mencari yang terjadi itu membaca cerita. Coba cabang lain." },
+          { "id": "d-kata1", "teks": "Kata: terbang, pergi, dimakan", "ikon": "🔍", "cabang": "kata", "petunjuk": "Kata yang berarti berkurang itu kata kunci. Coba cabang lain." },
+          { "id": "d-kata2", "teks": "Kata: diberikan, diambil", "ikon": "🔍", "cabang": "kata", "petunjuk": "Kata yang berarti berkurang itu kata kunci. Coba cabang lain." },
+          { "id": "d-pergi", "teks": "7 − 5 = ?: siapa yang pergi", "ikon": "❓", "cabang": "cari", "petunjuk": "Menentukan bagian yang dicari itu apa yang dicari. Coba cabang lain." },
+          { "id": "d-awal", "teks": "? − 3 = 4: cari mula-mula", "ikon": "❓", "cabang": "cari", "petunjuk": "Menentukan bagian yang dicari itu apa yang dicari. Coba cabang lain." },
+          { "id": "d-jawab", "teks": "Sisa burung ada 6 ekor", "ikon": "💬", "cabang": "jawab", "petunjuk": "Kalimat jawaban lengkap itu menjawab. Coba cabang lain." },
+          { "id": "d-cek", "teks": "Cek: 6 + 2 = 8", "ikon": "✅", "cabang": "jawab", "petunjuk": "Mengecek dengan penjumlahan itu memeriksa. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Soal Cerita Pengurangan",
+        "suara": "Ini tiga panel tentang soal cerita pengurangan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "d-tiga",
+            "tipe": "buka",
+            "judul": "Mula-mula, pergi, sisa",
+            "ide": "Tiga bagian tiap cerita.",
+            "suara": "Setiap soal cerita pengurangan punya tiga bagian. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "mula",
+                "label": "Mula-mula",
+                "ikon": "🐦",
+                "isi": "Ada 8 burung di pohon.",
+                "suara": "Mula-mula adalah jumlah di awal. Ada delapan burung di pohon.",
+                "visual": { "jenis": "teks", "isi": "8" }
+              },
+              {
+                "id": "pergi",
+                "label": "Pergi",
+                "ikon": "👋",
+                "isi": "Dua burung terbang.",
+                "suara": "Pergi adalah yang berkurang. Dua burung terbang.",
+                "visual": { "jenis": "teks", "isi": "− 2" }
+              },
+              {
+                "id": "sisa",
+                "label": "Sisa",
+                "ikon": "✅",
+                "isi": "Enam burung masih ada.",
+                "suara": "Sisa adalah yang masih tinggal. Delapan dikurangi dua sama dengan enam.",
+                "visual": { "jenis": "teks", "isi": "= 6" }
+              }
+            ]
+          },
+          {
+            "id": "d-kata",
+            "tipe": "banding",
+            "judul": "Berkurang atau bertambah?",
+            "ide": "Kata kunci memilih tanda.",
+            "suara": "Bandingkan dua jenis kata kunci. Baca kata kuncinya, lalu pilih tandanya.",
+            "sisi": [
+              {
+                "id": "kurang",
+                "nama": "Berkurang",
+                "ikon": "➖",
+                "catatan": "Terbang, pergi, dimakan: pakai kurang.",
+                "suara": "Kata terbang, pergi, dan dimakan berarti berkurang. Pakai tanda kurang. Delapan kurang dua sama dengan enam.",
+                "visual": { "jenis": "teks", "isi": "8 − 2 = 6" }
+              },
+              {
+                "id": "tambah",
+                "nama": "Bertambah",
+                "ikon": "➕",
+                "catatan": "Datang, bergabung: pakai tambah.",
+                "suara": "Kata datang dan bergabung berarti bertambah. Pakai tanda tambah. Enam tambah dua sama dengan delapan.",
+                "visual": { "jenis": "teks", "isi": "6 + 2 = 8" }
+              }
+            ],
+            "kesimpulan": "Baca kata kuncinya, lalu pilih tanda."
+          },
+          {
+            "id": "d-cari",
+            "tipe": "buka",
+            "judul": "Apa yang dicari?",
+            "ide": "Sisa, yang pergi, mula-mula.",
+            "suara": "Dalam soal cerita, yang dicari bisa berbeda. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "sisa",
+                "label": "Cari sisa",
+                "ikon": "✅",
+                "isi": "Delapan burung, dua terbang.",
+                "suara": "Mencari sisa. Delapan kurang dua sama dengan enam.",
+                "visual": { "jenis": "teks", "isi": "8 − 2 = 6" }
+              },
+              {
+                "id": "pergi",
+                "label": "Cari yang pergi",
+                "ikon": "👋",
+                "isi": "Tujuh siswa, lima masih di kelas.",
+                "suara": "Mencari yang pergi. Tujuh kurang lima sama dengan dua. Dua siswa pergi.",
+                "visual": { "jenis": "teks", "isi": "7 − 5 = 2" }
+              },
+              {
+                "id": "mula",
+                "label": "Cari mula-mula",
+                "ikon": "🧩",
+                "isi": "Sisa dan yang pergi digabung.",
+                "suara": "Mencari mula-mula. Empat tambah tiga sama dengan tujuh.",
+                "visual": { "jenis": "teks", "isi": "4 + 3 = 7" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
