@@ -107,7 +107,7 @@ export function BingkaiTahap({ tahap, className = "", children, ref }: Props) {
       return (
         <div
           ref={ref}
-          className={`relative mt-5 rounded-xl border-4 border-[#1C01A5] px-3 pb-3 pt-7 ${className}`}
+          className={`relative mt-4 min-w-0 rounded-xl border-2 border-[#1C01A5] px-2 pb-2 pt-6 sm:mt-5 sm:border-4 sm:px-3 sm:pb-3 sm:pt-7 ${className}`}
           style={KERTAS_BUKU_TULIS}
         >
           <span

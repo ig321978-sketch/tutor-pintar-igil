@@ -87,7 +87,9 @@ export const PopUpTahapSmicpa = forwardRef<HTMLDivElement, Props>(function PopUp
                   ✕ Tutup
                 </button>
               </div>
-              <div className="min-h-0 flex-1 overflow-y-auto bg-[#FFFDF9] p-3 sm:p-4">{children}</div>
+              <div className="min-h-0 flex-1 overflow-x-auto overflow-y-auto overscroll-contain bg-[#FFFDF9] p-2 sm:p-4 [scrollbar-color:#F0AB00_#EEF2FF] [scrollbar-width:thin]">
+                {children}
+              </div>
             </div>
           </div>,
           document.body,

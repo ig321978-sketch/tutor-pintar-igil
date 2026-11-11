@@ -34,12 +34,12 @@ import { KartuAlurK2B2C, KartuModelK2B2C, KartuPanahK2B2C } from "./SubBabK2B2CP
 const SUARA_INFO =
   "Ini poster rangkuman soal cerita penjumlahan dan pengurangan. Tekan tombol suara di setiap panel untuk mendengarkan penjelasannya. Belum ada yang perlu dijawab. Kita akan bermain di tahap berikutnya.";
 
-const SEL = "space-y-1 rounded-2xl border-4 border-[#1C01A5] bg-white px-1 py-2 text-center";
+const SEL = "space-y-1 rounded-xl bg-white/90 px-1 py-1.5 text-center";
 
 function visualInfografis(): React.ReactNode[] {
   return [
     /* 1 Burung hijau dan merah */
-    <div key="1" className="space-y-1 rounded-2xl border-4 border-[#1C01A5] bg-white px-2 py-2">
+    <div key="1" className="space-y-1 rounded-xl bg-white/90 px-1.5 py-1.5">
       <div className="grid grid-cols-5 gap-x-1 gap-y-1">
         {Array.from({ length: 5 }, (_, j) => (
           <div key={j} className="flex flex-col items-center">

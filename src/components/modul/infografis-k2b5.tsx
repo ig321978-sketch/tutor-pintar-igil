@@ -52,7 +52,7 @@ const Operator = ({ children }: { children: React.ReactNode }) => <span classNam
 function Kelompok({ jenis, n, mulai = 0, kelas = "h-8 w-8", warna = "#FFFFFF", ket, tanda }: { jenis: JenisItem; n: number; mulai?: number; kelas?: string; warna?: string; ket?: React.ReactNode; tanda?: "benar" | "salah" }) {
   return (
     <div className="flex flex-col items-center gap-0.5">
-      <div className="flex min-h-12 flex-wrap items-center justify-center gap-0.5 rounded-2xl border-4 border-[#1C01A5] px-1.5 py-1" style={{ backgroundColor: warna }}>
+      <div className="flex min-h-12 flex-wrap items-center justify-center gap-0.5 rounded-xl px-1.5 py-1" style={{ backgroundColor: warna }}>
         {Array.from({ length: n }, (_, i) => (
           <ItemSvg key={i} jenis={jenis} warna={NAMA_ITEM[jenis].warna[(i + mulai) % NAMA_ITEM[jenis].warna.length]} kelas={kelas} />
         ))}

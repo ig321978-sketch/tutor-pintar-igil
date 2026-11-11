@@ -34,7 +34,7 @@ import { KartuBaganK2B2A, KartuLompatK2B2A, KartuSusunK2B2A } from "./SubBabK2B2
 const SUARA_INFO =
   "Ini poster rangkuman berbagai cara melakukan penjumlahan. Tekan tombol suara di setiap panel untuk mendengarkan penjelasannya. Belum ada yang perlu dijawab. Kita akan bermain di tahap berikutnya.";
 
-const SEL = "space-y-1 rounded-2xl border-4 border-[#1C01A5] bg-white px-1 py-2 text-center";
+const SEL = "space-y-1 rounded-xl bg-white/90 px-1 py-1.5 text-center";
 
 /* ------------------------------------------------------------------------ */
 /* Tahap 3: Infografis. Poster untuk dibaca dan didengar. Bukan permainan.    */
@@ -61,7 +61,7 @@ function visualInfografis(): React.ReactNode[] {
       <p className="text-center text-2xl font-black text-[#1C01A5]">12 + 6 = 18</p>
     </div>,
     /* 2 Menghitung maju */
-    <div key="2" className="space-y-1 rounded-2xl border-4 border-[#1C01A5] bg-white px-1 py-2">
+    <div key="2" className="space-y-1 rounded-xl bg-white/90 px-1 py-1.5">
       <JalurKotakB2 dari={11} sampai={20} mulai={12} sorot={[18]} lompat={lompatDari(12, 6)} />
       <p className="text-center text-sm font-black text-[#1C01A5]">12 + 6: maju 6 langkah, berhenti di 18</p>
     </div>,
@@ -97,13 +97,13 @@ function visualInfografis(): React.ReactNode[] {
     />,
     /* 6 Sepuluh satuan = satu puluhan */
     <div key="6" className="flex items-center justify-center gap-2">
-      <div className="flex flex-wrap items-center justify-center gap-0.5 rounded-2xl border-4 border-[#1C01A5] bg-[#BFDBFE] px-2 py-2" style={{ maxWidth: "9rem" }}>
+      <div className="flex flex-wrap items-center justify-center gap-0.5 rounded-xl bg-[#BFDBFE] px-2 py-2" style={{ maxWidth: "9rem" }}>
         {Array.from({ length: 10 }, (_, i) => (
           <KubusSatuan key={i} kelas="h-5 w-5" />
         ))}
       </div>
       <span className="text-3xl font-black text-[#1C01A5]">=</span>
-      <div className="rounded-2xl border-4 border-[#1C01A5] bg-[#FECACA] px-3 py-2">
+      <div className="rounded-xl bg-[#FECACA] px-3 py-2">
         <BatangPuluhan kelas="h-16 w-4" />
       </div>
     </div>,

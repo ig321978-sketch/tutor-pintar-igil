@@ -425,28 +425,27 @@ export function PanelPoster({
   };
 
   return (
-    <section className="overflow-hidden rounded-2xl border-4 bg-white shadow-[0_4px_0_rgba(22,101,52,0.25)]" style={{ borderColor: warna }}>
-      <header className="flex items-center gap-2 px-3 py-2" style={{ backgroundColor: warna }}>
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-lg font-black text-[#1C01A5]">
+    <section className="rounded-2xl border-2 bg-white/90" style={{ borderColor: warna }}>
+      <header className="flex items-center gap-2 rounded-t-[0.9rem] px-2.5 py-1.5" style={{ backgroundColor: warna }}>
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-base font-black text-[#1C01A5]">
           {nomor}
         </span>
-        <h4 className="min-w-0 flex-1 text-base font-black leading-tight tracking-wide text-white">{judul}</h4>
+        <h4 className="min-w-0 flex-1 text-sm font-black leading-tight tracking-wide text-white sm:text-base">{judul}</h4>
         <TombolSuaraGuru kecil label={`Dengarkan: ${judul}`} onClick={putar} />
       </header>
-      <div className="space-y-2 p-3">
-        {children}
+      <div className="space-y-1.5 p-2 sm:p-2.5">
+        {/* Geser samping di HP bila diagram lebih lebar dari layar — konten tidak dipotong. */}
+        <div className="w-full overflow-x-auto overscroll-x-contain touch-pan-x pb-1 [scrollbar-color:#F0AB00_#EEF2FF] [scrollbar-width:thin]">
+          <div className="inline-block min-w-full align-top">{children}</div>
+        </div>
         {teksVisual ? (
-          <p className="rounded-xl border-2 border-[#1C01A5]/25 bg-[#FFFDF9] px-2 py-1 text-center text-[11px] font-black leading-snug text-[#1C01A5]">
-            {teksVisual}
-          </p>
+          <p className="px-0.5 text-center text-[11px] font-black leading-snug text-[#1C01A5]">{teksVisual}</p>
         ) : null}
         {fase === "jalan" ? (
           <p className="text-center text-[11px] font-black text-[#1C01A5]/70">🔊 Sedang dibacakan…</p>
         ) : null}
         {fase === "selesai" ? (
-          <p className="rounded-xl border-2 border-[#16A34A] bg-[#DCFCE7] px-2 py-1 text-center text-[11px] font-black text-[#14532D]">
-            ✔ Didengar
-          </p>
+          <p className="text-center text-[11px] font-black text-[#14532D]">✔ Didengar</p>
         ) : null}
       </div>
     </section>
@@ -523,8 +522,8 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string, se
         <h3 className="min-w-0 text-xl font-black leading-tight text-[#1C01A5]">Cara Membandingkan Benda</h3>
         <TombolSuaraGuru onClick={() => speakGuru(SUARA_INFO)} />
       </div>
-      <p className="rounded-2xl border-2 border-dashed border-[#1C01A5]/35 bg-white/80 px-3 py-1.5 text-center text-[11px] font-black text-[#1C01A5]">
-        Lihat gambar dulu. Ketuk 🔊 — centang ✔ Didengar muncul setelah suara guru selesai.
+      <p className="text-center text-[11px] font-black leading-snug text-[#1C01A5]/80">
+        Lihat gambar · ketuk 🔊 · geser samping bila belum utuh · ✔ setelah suara selesai
       </p>
 
       <PanelPoster
@@ -611,32 +610,28 @@ export function InfografisBandingB({ speakGuru }: { speakGuru: (teks: string, se
         </div>
       </PanelPoster>
 
-      <div className="flex items-center justify-center gap-2 pt-1" aria-label={`${didengar.length} dari 5 panel didengar`}>
+      <div className="flex items-center justify-center gap-1.5 pt-0.5" aria-label={`${didengar.length} dari 5 panel didengar`}>
         {[1, 2, 3, 4, 5].map((n) => (
-          <span key={n} className="text-2xl" aria-hidden="true">
+          <span key={n} className="text-xl sm:text-2xl" aria-hidden="true">
             {didengar.includes(n) ? "⭐" : "☆"}
           </span>
         ))}
       </div>
-      <p
-        className={`rounded-2xl border-4 px-3 py-2 text-center text-sm font-black leading-snug ${
-          semua ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]" : "border-dashed border-[#1C01A5]/40 bg-white/80 text-[#1C01A5]"
-        }`}
-      >
+      <p className={`px-1 text-center text-sm font-black leading-snug ${semua ? "igil-muncul text-[#14532D]" : "text-[#1C01A5]"}`}>
         {semua
           ? "🌟 Hebat! Semua panel Infografis sudah didengar."
           : `🔊 ${didengar.length}/5 panel didengar — centang muncul setelah suara selesai`}
       </p>
 
-      <div className="flex items-center justify-around gap-2 rounded-2xl border-4 border-dashed border-[#16A34A] bg-white px-2 py-3 text-center text-base font-black leading-tight text-[#14532D]">
+      <div className="flex items-center justify-around gap-2 px-1 py-2 text-center text-sm font-black leading-tight text-[#14532D] sm:text-base">
         <span>
-          <span className="block text-3xl">🔗</span>1 Pasangkan
+          <span className="block text-2xl sm:text-3xl">🔗</span>1 Pasangkan
         </span>
         <span>
-          <span className="block text-3xl">🔎</span>2 Lihat sisa
+          <span className="block text-2xl sm:text-3xl">🔎</span>2 Lihat sisa
         </span>
         <span>
-          <span className="block text-3xl">🐊</span>3 Pilih tanda
+          <span className="block text-2xl sm:text-3xl">🐊</span>3 Pilih tanda
         </span>
       </div>
     </BingkaiTahap>

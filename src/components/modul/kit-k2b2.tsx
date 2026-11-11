@@ -38,14 +38,14 @@ export function InfografisK2B2({
   const semua = didengar.length >= s.infografis.length && s.infografis.length > 0;
 
   return (
-    <BingkaiTahap tahap={3} className="space-y-3">
+    <BingkaiTahap tahap={3} className="space-y-2.5">
       <PitaTahap ikon="📰" nama="INFOGRAFIS" cara="Lihat dan dengar" warna="#16A34A" />
       <div className="flex items-center justify-between gap-2">
-        <h3 className="min-w-0 text-xl font-black leading-tight text-[#1C01A5]">{judul}</h3>
+        <h3 className="min-w-0 text-lg font-black leading-tight text-[#1C01A5] sm:text-xl">{judul}</h3>
         <TombolSuaraGuru onClick={() => speakGuru(suaraInfo)} />
       </div>
-      <p className="rounded-2xl border-2 border-dashed border-[#1C01A5]/35 bg-white/80 px-3 py-1.5 text-center text-[11px] font-black text-[#1C01A5]">
-        Lihat gambar dulu. Ketuk 🔊 — centang ✔ Didengar muncul setelah suara guru selesai.
+      <p className="text-center text-[11px] font-black leading-snug text-[#1C01A5]/80">
+        Lihat gambar · ketuk 🔊 · geser samping bila diagram belum utuh · ✔ setelah suara selesai
       </p>
       {s.infografis.map((p, i) => (
         <PanelPoster
@@ -61,16 +61,16 @@ export function InfografisK2B2({
           {visual[i] ?? null}
         </PanelPoster>
       ))}
-      <div className="flex items-center justify-center gap-2 pt-1" aria-label={`${didengar.length} dari ${s.infografis.length} panel didengar`}>
+      <div className="flex items-center justify-center gap-1.5 pt-0.5" aria-label={`${didengar.length} dari ${s.infografis.length} panel didengar`}>
         {s.infografis.map((p, i) => (
-          <span key={p.judul} className="text-2xl" aria-hidden="true">
+          <span key={p.judul} className="text-xl sm:text-2xl" aria-hidden="true">
             {didengar.includes(i + 1) ? "⭐" : "☆"}
           </span>
         ))}
       </div>
       <p
-        className={`rounded-2xl border-4 px-3 py-2 text-center text-sm font-black leading-snug ${
-          semua ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]" : "border-dashed border-[#1C01A5]/40 bg-white/80 text-[#1C01A5]"
+        className={`px-1 text-center text-sm font-black leading-snug ${
+          semua ? "igil-muncul text-[#14532D]" : "text-[#1C01A5]"
         }`}
       >
         {semua
@@ -95,31 +95,33 @@ export function PoinK2B2({ s, speakGuru, onSelesai, teksSelesai }: { s: SubBabNa
   return <PoinPentingK2 speakGuru={speakGuru} onSelesai={onSelesai} suaraPoin={s.poinSuara} poin={poinItem(s)} cara={s.cara} rumah={s.rumah} refleksi={s.refleksi} teksSelesai={teksSelesai} />;
 }
 
-/** Kotak kecil berwarna untuk isi panel poster. */
+/** Bidang warna isi panel — tanpa kartu berbingkai (panel luar sudah cukup). */
 export function KotakPoster({ children, warna = "#FFFFFF" }: { children: React.ReactNode; warna?: string }) {
   return (
-    <div className="rounded-2xl border-4 border-[#1C01A5] px-2 py-2" style={{ backgroundColor: warna }}>
+    <div className="rounded-xl px-1.5 py-1.5" style={{ backgroundColor: warna }}>
       {children}
     </div>
   );
 }
 
-/** Tabel dua atau tiga kolom untuk poster. */
+/** Tabel dua atau tiga kolom untuk poster — bisa digeser samping di layar sempit. */
 export function TabelPoster({ kepala, baris, kolom }: { kepala: string[]; baris: string[][]; kolom: string }) {
   return (
-    <div className="overflow-hidden rounded-2xl border-4 border-[#1C01A5] bg-white">
-      <div className="grid bg-[#FFE566] px-2 py-1 text-[11px] font-black leading-tight text-[#1C01A5]" style={{ gridTemplateColumns: kolom }}>
-        {kepala.map((k) => (
-          <span key={k}>{k}</span>
-        ))}
-      </div>
-      {baris.map((b, i) => (
-        <div key={b.join("|")} className={`grid items-center gap-1 px-2 py-1 text-sm font-black leading-tight text-[#1C01A5] ${i % 2 ? "bg-[#F5F3FF]" : "bg-white"}`} style={{ gridTemplateColumns: kolom }}>
-          {b.map((c, j) => (
-            <span key={j}>{c}</span>
+    <div className="w-full overflow-x-auto overscroll-x-contain touch-pan-x [scrollbar-color:#F0AB00_#EEF2FF] [scrollbar-width:thin]">
+      <div className="inline-block min-w-full rounded-xl border border-[#1C01A5]/30 bg-white align-top">
+        <div className="grid bg-[#FFE566] px-2 py-1 text-[11px] font-black leading-tight text-[#1C01A5]" style={{ gridTemplateColumns: kolom }}>
+          {kepala.map((k) => (
+            <span key={k}>{k}</span>
           ))}
         </div>
-      ))}
+        {baris.map((b, i) => (
+          <div key={b.join("|")} className={`grid items-center gap-1 px-2 py-1 text-sm font-black leading-tight text-[#1C01A5] ${i % 2 ? "bg-[#F5F3FF]" : "bg-white"}`} style={{ gridTemplateColumns: kolom }}>
+            {b.map((c, j) => (
+              <span key={j}>{c}</span>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

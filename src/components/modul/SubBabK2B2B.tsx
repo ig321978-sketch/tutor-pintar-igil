@@ -33,7 +33,7 @@ import { KartuBaganKurangK2B2B, KartuMundurK2B2B, KartuSusunKurangK2B2B } from "
 const SUARA_INFO =
   "Ini poster rangkuman berbagai cara melakukan pengurangan. Tekan tombol suara di setiap panel untuk mendengarkan penjelasannya. Belum ada yang perlu dijawab. Kita akan bermain di tahap berikutnya.";
 
-const SEL = "space-y-1 rounded-2xl border-4 border-[#1C01A5] bg-white px-1 py-2 text-center";
+const SEL = "space-y-1 rounded-xl bg-white/90 px-1 py-1.5 text-center";
 
 const lompatMundur = (a: number, b: number): [number, number][] => Array.from({ length: b }, (_, i) => [a - i, a - i - 1] as [number, number]);
 
@@ -41,7 +41,7 @@ function visualInfografis(): React.ReactNode[] {
   return [
     /* 1 Selisih jambu air */
     <div key="1" className="space-y-1">
-      <div className="space-y-1 rounded-2xl border-4 border-[#1C01A5] bg-white px-2 py-2">
+      <div className="space-y-1 rounded-xl bg-white/90 px-1.5 py-1.5">
         <p className="text-xs font-black text-[#1C01A5]">Kira 18 (merah muda)</p>
         <BarisJambu n={18} kelas="h-4 w-4" warna="#DB2777" sorot={[12, 13, 14, 15, 16, 17]} />
         <p className="text-xs font-black text-[#1C01A5]">Tika 12 (kuning)</p>
@@ -50,7 +50,7 @@ function visualInfografis(): React.ReactNode[] {
       <p className="text-center text-xl font-black text-[#1C01A5]">18 − 12 = 6</p>
     </div>,
     /* 2 Hitung mundur */
-    <div key="2" className="space-y-1 rounded-2xl border-4 border-[#1C01A5] bg-white px-1 py-2">
+    <div key="2" className="space-y-1 rounded-xl bg-white/90 px-1 py-1.5">
       <JalurKotakB2 dari={5} sampai={20} mulai={18} sorot={[6]} lompat={lompatMundur(18, 12)} />
       <p className="text-center text-sm font-black text-[#1C01A5]">18 − 12: mundur 12 lompatan, berhenti di 6</p>
     </div>,
@@ -105,7 +105,7 @@ function visualInfografis(): React.ReactNode[] {
     <div key="8" className="space-y-1">
       <div className="flex items-center justify-center gap-2">
         {[6, 12, 18].map((n, i) => (
-          <span key={n} className={`flex h-12 w-14 items-center justify-center rounded-2xl border-4 border-[#1C01A5] text-2xl font-black text-[#1C01A5] ${i === 2 ? "bg-[#FFE566]" : "bg-[#C7D2FE]"}`}>
+          <span key={n} className={`flex h-12 w-14 items-center justify-center rounded-xl text-2xl font-black text-[#1C01A5] ${i === 2 ? "bg-[#FFE566]" : "bg-[#C7D2FE]"}`}>
             {n}
           </span>
         ))}
@@ -118,7 +118,7 @@ function visualInfografis(): React.ReactNode[] {
       </div>
     </div>,
     /* 9 Tambah sampai pas */
-    <div key="9" className="space-y-1 rounded-2xl border-4 border-[#1C01A5] bg-white px-1 py-2">
+    <div key="9" className="space-y-1 rounded-xl bg-white/90 px-1 py-1.5">
       <JalurKotakB2 dari={11} sampai={19} mulai={12} sorot={[18]} lompat={Array.from({ length: 6 }, (_, i) => [12 + i, 13 + i] as [number, number])} />
       <p className="text-center text-sm font-black text-[#1C01A5]">Dari 12 tambah 6 sampai 18, jadi 18 − 12 = 6</p>
     </div>,
