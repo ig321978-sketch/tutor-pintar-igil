@@ -10,11 +10,11 @@ const KODE = "k4b1c";
 const papan = (v: number, a: number) => SUB_C41.videos[v].adegan[a].papan;
 
 function Adegan({ v, a }: { v: number; a: number }) {
-  return function Komponen({ k }: PropsAdegan) {
+  return function Komponen({ k, t }: PropsAdegan) {
     return (
       <>
         <Papan teks={papan(v, a)[k] ?? ""} />
-        <AdeganVisual kode={KODE} v={v} a={a} k={k} />
+        <AdeganVisual kode={KODE} v={v} a={a} k={k} t={t} />
       </>
     );
   };
@@ -23,7 +23,7 @@ function Adegan({ v, a }: { v: number; a: number }) {
 const VIDEO: VideoSiap[] = [0, 1, 2].map((vi) => ({
   naskah: SUB_C41.videos[vi],
   poster: { a: 0, k: Math.min(2, SUB_C41.videos[vi].adegan[0].ketukan.length - 1) },
-  adegan: SUB_C41.videos[vi].adegan.map((ad, ai) => buatAdegan(ad, Adegan({ v: vi, a: ai }))),
+  adegan: SUB_C41.videos[vi].adegan.map((ad, ai) => buatAdegan(ad, Adegan({ v: vi, a: ai }), { waktu: true, minimal: { 0: 3.5, 1: 5.5, 2: 4.5, 3: 4 } })),
 }));
 
 export function VideoK4B1C({ speakGuru }: { speakGuru: (teks: string) => void }) {

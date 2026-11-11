@@ -57,12 +57,24 @@ export function PapanDigit({
 }
 
 /**
- * Jumlah sisi yang menyala selama satu ketukan suara.
- * `jeda` = detik antar sisi; selaras laju bicara lambat (~0,7).
+ * Jumlah item yang muncul selama satu ketukan suara.
+ * `jeda` = detik antar item; selaras laju bicara lambat (~0,7).
  */
 export function nyalaDariWaktu(t: number, total: number, jeda = 1.6): number {
   if (t < 0.12) return 0;
   return Math.min(total, Math.floor((t - 0.12) / jeda) + 1);
+}
+
+/** Progres kontinyu 0→1 dalam satu ketukan; `detik` ≈ lama kalimat suara. */
+export function progresDari(t: number, detik = 6.5): number {
+  return Math.min(1, Math.max(0, (t - 0.1) / detik));
+}
+
+/** Gabungan ketukan `k` + progres waktu: item muncul bertahap seirama suara. */
+export function nyalaSeirama(k: number, t: number, total: number, jeda = 1.5): number {
+  const basis = Math.min(total, Math.max(0, k));
+  const ekstra = nyalaDariWaktu(t, Math.max(1, total - basis), jeda);
+  return Math.min(total, Math.max(basis, basis + ekstra));
 }
 
 /** Posisi titik di keliling persegi panjang; `progres` 0→1 mengelilingi sekali. */

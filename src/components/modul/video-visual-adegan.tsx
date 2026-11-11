@@ -13,8 +13,8 @@ export type KodeVideo = string;
  */
 export function AdeganVisual({ kode, v, a, k, t = 0 }: { kode: string; v: number; a: number; k: number; t?: number }) {
   const kunci = kode.toLowerCase();
-  if (kunci.startsWith("k4")) return <>{visualK4(kunci, v, a, k)}</>;
+  if (kunci.startsWith("k4")) return <>{visualK4(kunci, v, a, k, t)}</>;
   if (kunci.startsWith("k5")) return <>{visualK5(kunci, v, a, k, t)}</>;
-  if (kunci.startsWith("k6")) return <>{visualK6(kunci, v, a, k)}</>;
+  if (kunci.startsWith("k6")) return <>{visualK6(kunci, v, a, k, t)}</>;
   return null;
 }
