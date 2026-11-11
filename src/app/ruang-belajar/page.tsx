@@ -49,6 +49,7 @@ import {
   daftarMapelUntukKelas,
   labelJenjangKelas,
 } from "@/lib/kurikulum";
+import { useProfilBelajar } from "@/components/modul/BelajarServer";
 import { useUserRole } from "@/hooks/useUserRole";
 import {
   adalahPilotMatematikaSd,
@@ -58,6 +59,7 @@ import {
   PESAN_MATERI_TERKUNCI_PUBLIK,
   situsHanyaAdmin,
 } from "@/lib/situs-hanya-admin";
+import { faseDariKelas, kelasDalamFase, type KodePhase } from "@/lib/fase";
 import { naskahSapaanUntukSuara } from "@/lib/naskah-lisan";
 import { bacaProgres, simpanProfil } from "@/lib/progres";
 import {
@@ -105,7 +107,12 @@ export default function RuangBelajarPage() {
   const router = useRouter();
   const inputBerkasRef = useRef<HTMLInputElement | null>(null);
   const { adalahAdmin } = useUserRole();
+  const profilBelajar = useProfilBelajar();
   const kunciPublik = situsHanyaAdmin() && !adalahAdmin;
+  const faseAkun =
+    !adalahAdmin && profilBelajar.status === "siap" && profilBelajar.aktif
+      ? (profilBelajar.aktif.fase as KodePhase)
+      : null;
   const [nama, setNama] = useState("");
   const [kelas, setKelas] = useState(
     situsHanyaAdmin() ? KELAS_TERBUKA_PUBLIK : "3 SD",
@@ -132,9 +139,11 @@ export default function RuangBelajarPage() {
   const [menyiapkanSapaan, setMenyiapkanSapaan] = useState(false);
 
   const daftarKelasTampil = useMemo(() => {
-    if (!kunciPublik) return DAFTAR_KELAS;
-    return [...KELAS_PILOT_SD];
-  }, [kunciPublik]);
+    const dasar = kunciPublik ? [...KELAS_PILOT_SD] : [...DAFTAR_KELAS];
+    if (!faseAkun) return dasar;
+    const boleh = new Set(kelasDalamFase(faseAkun).map((n) => `${n} SD`));
+    return dasar.filter((item) => boleh.has(item));
+  }, [faseAkun, kunciPublik]);
   const daftarMapel = useMemo(() => {
     if (!kunciPublik) return daftarMapelUntukKelas(kelas);
     return adalahPilotMatematikaSd(kelas, MAPEL_TERBUKA_PUBLIK)
@@ -166,11 +175,9 @@ export default function RuangBelajarPage() {
   }, [kunciPublik]);
 
   useEffect(() => {
-    if (!kunciPublik) return;
-    if (!daftarKelasTampil.includes(kelas)) {
-      setKelas(daftarKelasTampil[0] ?? KELAS_TERBUKA_PUBLIK);
-    }
-  }, [daftarKelasTampil, kelas, kunciPublik]);
+    if (daftarKelasTampil.includes(kelas)) return;
+    setKelas(daftarKelasTampil[0] ?? KELAS_TERBUKA_PUBLIK);
+  }, [daftarKelasTampil, kelas]);
 
   useEffect(() => {
     if (pilihanMapel === OPSI_MAPEL_LAIN) return;
@@ -308,6 +315,13 @@ export default function RuangBelajarPage() {
     const jalurModul =
       sumber === "kurikulum" ? (jalurKelas[materi] ?? jalurBabBaru) : "";
     if (jalurModul) {
+      const fasePilih = faseDariKelas(kelas);
+      if (faseAkun && fasePilih && faseAkun !== fasePilih) {
+        setPesanGalat(
+          `Modul ini di luar ${faseAkun.replace("_", " ")}. Pilih kelas di fasemu saja.`,
+        );
+        return;
+      }
       router.push(
         `${jalurModul}?nama=${encodeURIComponent(nama.trim() || "Siswa")}`,
       );
@@ -359,6 +373,12 @@ export default function RuangBelajarPage() {
                   </option>
                 ))}
               </select>
+              {faseAkun ? (
+                <p className="mt-2 text-xs font-semibold text-indigo-900/70">
+                  Akun anak aktif terkunci ke {faseAkun.replace("_", " ")}. Modul di luar fase tidak
+                  bisa dibuka.
+                </p>
+              ) : null}
             </div>
             <div>
               <label className={kelasLabel}>Kota / Daerah</label>
