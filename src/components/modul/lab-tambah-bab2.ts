@@ -42,8 +42,10 @@ export function hitungMaju(a: number, b: number): number[] {
   return Array.from({ length: b + 1 }, (_, i) => a + i);
 }
 
-export function ucapanTambah(a: number, b: number, gabung: boolean): string {
+/** `sebutTukar` false untuk sub-bab yang belum mengajarkan tukar tempat (Sub-Bab A). */
+export function ucapanTambah(a: number, b: number, gabung: boolean, sebutTukar = true): string {
   const c = a + b;
   if (!gabung) return `Ada ${a} benda merah dan ${b} benda biru. Tekan gabungkan untuk melihat semuanya.`;
+  if (!sebutTukar) return `${a} ditambah ${b} sama dengan ${c}.`;
   return `${a} ditambah ${b} sama dengan ${c}. Kalau ditukar, ${b} ditambah ${a} juga sama dengan ${c}. Menukar tempat tidak mengubah jumlahnya.`;
 }

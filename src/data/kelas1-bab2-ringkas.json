@@ -1,0 +1,461 @@
+{
+  "chapter_id": "mtk-1-bab2",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subject": "Matematika",
+  "title": "Penjumlahan sampai dengan 10",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Penjumlahan",
+          "ikon": "➕",
+          "suara": "Ini peta penjumlahan. Menjumlahkan berarti mencari banyaknya semua benda. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "gabung",
+            "judul": "Digabung",
+            "ikon": "🔗",
+            "ringkas": "Dua kelompok disatukan.",
+            "suara": "Kira punya tiga pensil. Upe punya empat pensil. Kalau pensilnya digabung, semuanya jadi tujuh. Menggabungkan berarti menjumlahkan."
+          },
+          {
+            "id": "bertambah",
+            "judul": "Datang lagi",
+            "ikon": "🧒",
+            "ringkas": "Yang ada jadi bertambah.",
+            "suara": "Empat anak bermain lompat tali. Lalu datang lagi dua anak. Anak yang bermain bertambah menjadi enam. Bertambah juga berarti menjumlahkan."
+          },
+          {
+            "id": "tulis",
+            "judul": "Tulis",
+            "ikon": "✏️",
+            "ringkas": "Pakai tanda tambah dan sama dengan.",
+            "suara": "Cerita itu ditulis dengan angka. Empat, tanda tambah, dua, tanda sama dengan, enam. Tanda tambah artinya digabung. Tanda sama dengan menunjukkan hasilnya."
+          },
+          {
+            "id": "baca",
+            "judul": "Baca",
+            "ikon": "🗣️",
+            "ringkas": "Sebut tiap bagian kalimatnya.",
+            "suara": "Kalimat penjumlahan dibaca dari kiri ke kanan. Empat ditambah dua sama dengan enam. Enam adalah jumlahnya."
+          }
+        ],
+        "kartu": [
+          { "id": "a-pensil", "teks": "3 pensil + 4 pensil", "ikon": "✏️", "cabang": "gabung", "petunjuk": "Menyatukan dua kelompok itu digabung. Coba cabang lain." },
+          { "id": "a-piring", "teks": "Dua piring kelereng disatukan", "ikon": "🔵", "cabang": "gabung", "petunjuk": "Menyatukan dua kelompok itu digabung. Coba cabang lain." },
+          { "id": "a-lompat", "teks": "4 anak, datang lagi 2 anak", "ikon": "🧒", "cabang": "bertambah", "petunjuk": "Kalau ada yang datang lagi, jumlahnya bertambah. Coba cabang lain." },
+          { "id": "a-bebek", "teks": "5 bebek, datang lagi 2 bebek", "ikon": "🦆", "cabang": "bertambah", "petunjuk": "Kalau ada yang datang lagi, jumlahnya bertambah. Coba cabang lain." },
+          { "id": "a-tulis", "teks": "4 + 2 = 6", "ikon": "🔢", "cabang": "tulis", "petunjuk": "Menuliskan cerita dengan angka itu menulis. Coba cabang lain." },
+          { "id": "a-tanda", "teks": "Tanda + dan tanda =", "ikon": "➕", "cabang": "tulis", "petunjuk": "Tanda tambah dan sama dengan dipakai saat menulis. Coba cabang lain." },
+          { "id": "a-ditambah", "teks": "Empat ditambah dua", "ikon": "🗣️", "cabang": "baca", "petunjuk": "Menyebut kalimat dengan kata-kata itu membaca. Coba cabang lain." },
+          { "id": "a-samadengan", "teks": "Sama dengan enam", "ikon": "🗣️", "cabang": "baca", "petunjuk": "Menyebut kalimat dengan kata-kata itu membaca. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Cerita Penjumlahan",
+        "suara": "Ini tiga panel tentang penjumlahan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-dua",
+            "tipe": "banding",
+            "judul": "Digabung atau datang lagi?",
+            "ide": "Dua cerita, sama-sama menjumlahkan.",
+            "suara": "Lihat dua cerita. Satu cerita menggabungkan dua kelompok. Satu cerita ada yang datang lagi.",
+            "sisi": [
+              {
+                "id": "gabung",
+                "nama": "Digabung",
+                "ikon": "🔗",
+                "catatan": "Lima kelereng dan tiga kelereng disatukan.",
+                "suara": "Upe punya lima kelereng. Wei punya tiga kelereng. Kalau digabung, semuanya ada delapan.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["kelereng-merah", 5], ["kelereng-biru", 3]] }
+              },
+              {
+                "id": "lagi",
+                "nama": "Datang lagi",
+                "ikon": "🧒",
+                "catatan": "Empat bola ada, dua bola datang lagi.",
+                "suara": "Ada empat bola merah. Lalu datang lagi dua bola biru. Sekarang semuanya ada enam.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 4], ["bola-biru", 2]] }
+              }
+            ],
+            "kesimpulan": "Digabung atau bertambah, hasilnya jumlah."
+          },
+          {
+            "id": "a-kalimat",
+            "tipe": "buka",
+            "judul": "Kalimat penjumlahan",
+            "ide": "Tiga bagian kalimat.",
+            "suara": "Kalimat penjumlahan punya tiga bagian. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tambah",
+                "label": "Tanda +",
+                "ikon": "➕",
+                "isi": "Tambah: benda digabung.",
+                "suara": "Tanda tambah. Empat ditambah dua artinya empat digabung dengan dua.",
+                "visual": { "jenis": "teks", "isi": "4 + 2" }
+              },
+              {
+                "id": "sama",
+                "label": "Tanda =",
+                "ikon": "⚖️",
+                "isi": "Sama dengan: setelah ini hasilnya.",
+                "suara": "Tanda sama dengan. Setelah tanda ini ada hasilnya, yaitu enam.",
+                "visual": { "jenis": "teks", "isi": "= 6" }
+              },
+              {
+                "id": "kalimat",
+                "label": "Satu kalimat",
+                "ikon": "🔢",
+                "isi": "Empat ditambah dua sama dengan enam.",
+                "suara": "Dibaca lengkap: empat ditambah dua sama dengan enam.",
+                "visual": { "jenis": "teks", "isi": "4 + 2 = 6" }
+              }
+            ]
+          },
+          {
+            "id": "a-cara",
+            "tipe": "buka",
+            "judul": "Tiga cara menunjukkan 4 + 2",
+            "ide": "Benda, bingkai, dan goresan.",
+            "suara": "Empat ditambah dua bisa ditunjukkan dengan tiga cara. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "benda",
+                "label": "Benda",
+                "ikon": "🔴",
+                "isi": "Empat bola merah, dua bola biru.",
+                "suara": "Benda. Empat bola merah digabung dua bola biru. Semuanya enam bola.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 4], ["bola-biru", 2]] }
+              },
+              {
+                "id": "bingkai",
+                "label": "Bingkai sepuluh",
+                "ikon": "🔲",
+                "isi": "Empat kotak merah, dua kotak biru.",
+                "suara": "Bingkai sepuluh. Empat kotak diwarnai merah, dua kotak diwarnai biru. Enam kotak terisi.",
+                "visual": { "jenis": "teks", "isi": "4 merah + 2 biru = 6 kotak" }
+              },
+              {
+                "id": "goresan",
+                "label": "Goresan",
+                "ikon": "✏️",
+                "isi": "Satu goresan untuk satu benda.",
+                "suara": "Goresan. Empat goresan, ditambah dua goresan. Semuanya enam goresan.",
+                "visual": { "jenis": "teks", "isi": "|||| + || = 6" }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Cara Menjumlahkan",
+          "ikon": "🛠️",
+          "suara": "Ini peta berbagai cara menjumlahkan. Satu penjumlahan bisa dikerjakan dengan beberapa cara. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "pasangan",
+            "judul": "Pasangan",
+            "ikon": "🍎",
+            "ringkas": "Tukar tempat, jumlahnya tetap.",
+            "suara": "Tiga apel merah dan dua apel hijau digabung jadi lima. Dua dan tiga juga jadi lima. Kalau ditukar tempat, jumlahnya tetap."
+          },
+          {
+            "id": "maju",
+            "judul": "Hitung maju",
+            "ikon": "🏃",
+            "ringkas": "Mulai dari bilangan pertama, lompat maju.",
+            "suara": "Upe berdiri di lima, lalu melompat tiga langkah ke depan. Enam, tujuh, delapan. Lima ditambah tiga sama dengan delapan."
+          },
+          {
+            "id": "kembar",
+            "judul": "Kembar",
+            "ikon": "🐞",
+            "ringkas": "Dua bilangan yang sama.",
+            "suara": "Kepik punya tiga totol di sayap kiri dan tiga totol di sayap kanan. Tiga ditambah tiga sama dengan enam. Menambah bilangan yang sama disebut penjumlahan berulang."
+          },
+          {
+            "id": "sepuluh",
+            "judul": "Jadi sepuluh",
+            "ikon": "🔟",
+            "ringkas": "Pasangan yang jumlahnya sepuluh.",
+            "suara": "Delapan ditambah dua sama dengan sepuluh. Sembilan ditambah satu juga sepuluh. Ada banyak pasangan sepuluh. Cari yang lain."
+          }
+        ],
+        "kartu": [
+          { "id": "b-tukar", "teks": "3 + 2 dan 2 + 3", "ikon": "🔄", "cabang": "pasangan", "petunjuk": "Dua bilangan yang boleh ditukar itu pasangan. Coba cabang lain." },
+          { "id": "b-tetap", "teks": "Jumlahnya tetap 5", "ikon": "🍎", "cabang": "pasangan", "petunjuk": "Jumlah yang tetap saat ditukar itu pasangan. Coba cabang lain." },
+          { "id": "b-lompat", "teks": "Mulai 5, lompat 3", "ikon": "🏃", "cabang": "maju", "petunjuk": "Mulai dari bilangan pertama lalu lompat itu hitung maju. Coba cabang lain." },
+          { "id": "b-urut", "teks": "Enam, tujuh, delapan", "ikon": "👣", "cabang": "maju", "petunjuk": "Menyebut bilangan satu per satu ke depan itu hitung maju. Coba cabang lain." },
+          { "id": "b-kepik", "teks": "3 + 3 = 6", "ikon": "🐞", "cabang": "kembar", "petunjuk": "Menambah bilangan yang sama itu kembar. Coba cabang lain." },
+          { "id": "b-empat", "teks": "4 + 4 = 8", "ikon": "🐞", "cabang": "kembar", "petunjuk": "Menambah bilangan yang sama itu kembar. Coba cabang lain." },
+          { "id": "b-jari", "teks": "8 jari + 2 jari", "ikon": "🖐️", "cabang": "sepuluh", "petunjuk": "Jumlahnya sepuluh. Itu pasangan sepuluh. Coba cabang lain." },
+          { "id": "b-bingkai", "teks": "9 + 1 = 10", "ikon": "🔟", "cabang": "sepuluh", "petunjuk": "Jumlahnya sepuluh. Itu pasangan sepuluh. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Berbagai Cara Menjumlahkan",
+        "suara": "Ini tiga panel tentang berbagai cara menjumlahkan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "b-tukar",
+            "tipe": "banding",
+            "judul": "Ditukar, jumlahnya sama?",
+            "ide": "Tukar tempat, jumlah tetap.",
+            "suara": "Lihat dua penjumlahan. Satu tiga ditambah dua. Satu lagi dua ditambah tiga.",
+            "sisi": [
+              {
+                "id": "tiga-dua",
+                "nama": "3 + 2",
+                "ikon": "🍎",
+                "catatan": "Tiga apel, lalu dua jeruk.",
+                "suara": "Tiga apel ditambah dua jeruk. Tiga ditambah dua sama dengan lima.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["apel", 3], ["jeruk", 2]] }
+              },
+              {
+                "id": "dua-tiga",
+                "nama": "2 + 3",
+                "ikon": "🍊",
+                "catatan": "Dua jeruk, lalu tiga apel.",
+                "suara": "Dua jeruk ditambah tiga apel. Dua ditambah tiga juga sama dengan lima.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["jeruk", 2], ["apel", 3]] }
+              }
+            ],
+            "kesimpulan": "Ditukar tempat, jumlahnya tetap lima."
+          },
+          {
+            "id": "b-cara",
+            "tipe": "buka",
+            "judul": "Dua cara lain",
+            "ide": "Hitung maju dan kembar.",
+            "suara": "Ada dua cara lain untuk menjumlahkan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "maju",
+                "label": "Hitung maju",
+                "ikon": "🏃",
+                "isi": "Mulai dari 5, lompat 3.",
+                "suara": "Hitung maju. Mulai dari lima, lalu lompat tiga kali. Enam, tujuh, delapan. Jadi lima ditambah tiga sama dengan delapan.",
+                "visual": { "jenis": "teks", "isi": "5 → 6, 7, 8" }
+              },
+              {
+                "id": "kembar",
+                "label": "Kembar",
+                "ikon": "🐞",
+                "isi": "Bilangan yang sama ditambahkan.",
+                "suara": "Kembar. Tiga totol di sayap kiri, tiga totol di sayap kanan. Tiga ditambah tiga sama dengan enam.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 3], ["bola-biru", 3]] }
+              }
+            ]
+          },
+          {
+            "id": "b-sepuluh",
+            "tipe": "buka",
+            "judul": "Pasangan sepuluh",
+            "ide": "Dua bilangan, jumlahnya sepuluh.",
+            "suara": "Ada banyak pasangan yang jumlahnya sepuluh. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "delapan-dua",
+                "label": "8 + 2",
+                "ikon": "🖐️",
+                "isi": "Delapan dan dua jadi sepuluh.",
+                "suara": "Delapan ditambah dua sama dengan sepuluh.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 8], ["bola-biru", 2]] }
+              },
+              {
+                "id": "sembilan-satu",
+                "label": "9 + 1",
+                "ikon": "🔴",
+                "isi": "Sembilan dan satu jadi sepuluh.",
+                "suara": "Sembilan ditambah satu sama dengan sepuluh.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 9], ["bola-biru", 1]] }
+              },
+              {
+                "id": "tujuh-tiga",
+                "label": "7 + 3",
+                "ikon": "🔟",
+                "isi": "Tujuh dan tiga jadi sepuluh.",
+                "suara": "Tujuh ditambah tiga sama dengan sepuluh.",
+                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 7], ["bola-biru", 3]] }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Soal Cerita",
+          "ikon": "📖",
+          "suara": "Ini peta soal cerita penjumlahan. Soal cerita dikerjakan dari membaca sampai menjawab. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "baca",
+            "judul": "Baca",
+            "ikon": "📖",
+            "ringkas": "Cari yang ada dan yang datang lagi.",
+            "suara": "Baca ceritanya sampai selesai. Cari berapa yang sudah ada, berapa yang datang lagi, dan apa yang ditanyakan."
+          },
+          {
+            "id": "tulis",
+            "judul": "Tulis",
+            "ikon": "✏️",
+            "ringkas": "Pilih tanda tambah, tulis kalimatnya.",
+            "suara": "Kata seperti datang lagi, bergabung, atau jumlah semua adalah petunjuk tambah. Pilih tanda tambah, lalu tulis kalimatnya, misalnya empat ditambah dua sama dengan enam."
+          },
+          {
+            "id": "jawab",
+            "judul": "Jawab",
+            "ikon": "💬",
+            "ringkas": "Jawab dengan kalimat lengkap.",
+            "suara": "Tulis jawaban dengan kalimat lengkap. Sebutkan hasil dan nama bendanya. Semuanya ada enam burung."
+          },
+          {
+            "id": "periksa",
+            "judul": "Periksa",
+            "ikon": "🔄",
+            "ringkas": "Cek dengan cara lain.",
+            "suara": "Periksa jawabanmu dengan cara lain, misalnya tukar tempat atau hitung maju. Kalau sudah yakin, ceritakan hasilnya."
+          }
+        ],
+        "kartu": [
+          { "id": "c-ada", "teks": "Ada 4 burung di dahan", "ikon": "🐦", "cabang": "baca", "petunjuk": "Mencari yang sudah ada itu membaca cerita. Coba cabang lain." },
+          { "id": "c-lagi", "teks": "Datang lagi 2 burung", "ikon": "🐦", "cabang": "baca", "petunjuk": "Mencari yang datang lagi itu membaca cerita. Coba cabang lain." },
+          { "id": "c-kata", "teks": "Kata: bergabung, jumlah semua", "ikon": "🔍", "cabang": "tulis", "petunjuk": "Memilih tanda dari kata petunjuk itu menulis. Coba cabang lain." },
+          { "id": "c-kalimat", "teks": "4 + 2 = 6", "ikon": "✏️", "cabang": "tulis", "petunjuk": "Menulis kalimat penjumlahan itu menulis. Coba cabang lain." },
+          { "id": "c-jawab", "teks": "Semuanya ada 6 burung", "ikon": "💬", "cabang": "jawab", "petunjuk": "Kalimat jawaban lengkap itu menjawab. Coba cabang lain." },
+          { "id": "c-nama", "teks": "Sebut hasil dan nama benda", "ikon": "🏷️", "cabang": "jawab", "petunjuk": "Hasil dan nama benda ada di jawaban. Coba cabang lain." },
+          { "id": "c-tukar", "teks": "Tukar tempat: 2 + 4", "ikon": "🔄", "cabang": "periksa", "petunjuk": "Mengecek dengan cara lain itu memeriksa. Coba cabang lain." },
+          { "id": "c-maju", "teks": "Hitung maju dari 4", "ikon": "👣", "cabang": "periksa", "petunjuk": "Mengecek dengan cara lain itu memeriksa. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Soal Cerita Penjumlahan",
+        "suara": "Ini tiga panel tentang soal cerita penjumlahan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "c-bagian",
+            "tipe": "buka",
+            "judul": "Tiga bagian soal cerita",
+            "ide": "Yang ada, datang lagi, pertanyaan.",
+            "suara": "Soal cerita punya tiga bagian. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "ada",
+                "label": "Yang ada",
+                "ikon": "🐦",
+                "isi": "Ada 4 burung di dahan.",
+                "suara": "Bagian pertama, yang sudah ada. Ada empat burung di dahan.",
+                "visual": { "jenis": "teks", "isi": "🐦 🐦 🐦 🐦" }
+              },
+              {
+                "id": "lagi",
+                "label": "Datang lagi",
+                "ikon": "➕",
+                "isi": "Datang lagi 2 burung.",
+                "suara": "Bagian kedua, yang datang lagi. Datang lagi dua burung.",
+                "visual": { "jenis": "teks", "isi": "+ 🐦 🐦" }
+              },
+              {
+                "id": "tanya",
+                "label": "Pertanyaan",
+                "ikon": "❓",
+                "isi": "Semuanya ada berapa burung?",
+                "suara": "Bagian ketiga, pertanyaannya. Semuanya ada berapa burung?",
+                "visual": { "jenis": "teks", "isi": "4 + 2 = ?" }
+              }
+            ]
+          },
+          {
+            "id": "c-kata",
+            "tipe": "buka",
+            "judul": "Kata petunjuk tambah",
+            "ide": "Kata yang berarti tambah.",
+            "suara": "Ada kata-kata yang memberi tahu kita untuk menambah. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "datang",
+                "label": "Datang lagi",
+                "ikon": "🚶",
+                "isi": "Ada yang datang menambah.",
+                "suara": "Datang lagi. Tiga siswa di kelas, datang lagi dua siswa. Tiga ditambah dua.",
+                "visual": { "jenis": "teks", "isi": "3 + 2" }
+              },
+              {
+                "id": "diberi",
+                "label": "Diberi lagi",
+                "ikon": "🎁",
+                "isi": "Ada yang diberikan menambah.",
+                "suara": "Diberi lagi. Lima kue, diberi lagi satu kue. Lima ditambah satu.",
+                "visual": { "jenis": "teks", "isi": "5 + 1" }
+              },
+              {
+                "id": "bergabung",
+                "label": "Bergabung",
+                "ikon": "🔗",
+                "isi": "Dua kelompok disatukan.",
+                "suara": "Bergabung. Empat pensil bergabung dengan tiga pensil. Empat ditambah tiga.",
+                "visual": { "jenis": "teks", "isi": "4 + 3" }
+              },
+              {
+                "id": "semua",
+                "label": "Jumlah semua",
+                "ikon": "🔢",
+                "isi": "Semuanya dihitung bersama.",
+                "suara": "Jumlah semua. Dua sepeda dan enam motor, jumlah semuanya. Dua ditambah enam.",
+                "visual": { "jenis": "teks", "isi": "2 + 6" }
+              }
+            ]
+          },
+          {
+            "id": "c-selesai",
+            "tipe": "buka",
+            "judul": "Dari cerita ke jawaban",
+            "ide": "Tulis, jawab, lalu periksa.",
+            "suara": "Setelah paham ceritanya, ada tiga langkah. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "kalimat",
+                "label": "Tulis",
+                "ikon": "✏️",
+                "isi": "Tulis kalimat penjumlahannya.",
+                "suara": "Tulis. Empat ditambah dua sama dengan enam.",
+                "visual": { "jenis": "teks", "isi": "4 + 2 = 6" }
+              },
+              {
+                "id": "jawab",
+                "label": "Jawab",
+                "ikon": "💬",
+                "isi": "Jawab dengan kalimat lengkap.",
+                "suara": "Jawab. Semuanya ada enam burung. Hasil dan nama benda ditulis lengkap.",
+                "visual": { "jenis": "teks", "isi": "Semuanya ada 6 burung." }
+              },
+              {
+                "id": "periksa",
+                "label": "Periksa",
+                "ikon": "🔄",
+                "isi": "Tukar tempat, hasilnya sama.",
+                "suara": "Periksa. Dua ditambah empat juga sama dengan enam. Jawabannya cocok.",
+                "visual": { "jenis": "teks", "isi": "2 + 4 = 6" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

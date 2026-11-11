@@ -70,7 +70,7 @@ export const SKENARIO_BAB2: DefSkenario = {
   id: "kantin",
   judul: "Kantin Sekolah Pak Rudi",
   latar: "Bantu Pak Rudi menjumlahkan jajanan di kantin sekolah.",
-  tokoh: "🧑‍🍳",
+  tokoh: "👨‍🍳",
   nama: "Pak Rudi",
   adegan: [
     {
