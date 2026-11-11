@@ -126,10 +126,10 @@ export function jalurKaret(titik: Titik[], tertutup: boolean, lengkung: boolean,
   return `M ${P.map((p) => p.join(" ")).join(" L ")}${tertutup ? " Z" : ""}`;
 }
 
-export function ucapanBentuk(papan: Papan, lengkung: boolean): string {
+export function ucapanBentuk(papan: Papan, lengkung: boolean, denganSiku = true): string {
   if (!papan.tertutup) return "Pasang karet di antara paku. Ketuk paku satu per satu, lalu tutup bentuknya.";
   if (lengkung) return "Karet dilengkungkan. Bentuk ini punya sisi melengkung. Tidak punya sisi lurus dan tidak punya sudut.";
   const a = analisis(papan.titik);
-  const siku = a.siku > 0 ? ` Sudut siku ada ${a.siku}.` : "";
+  const siku = denganSiku && a.siku > 0 ? ` Sudut siku ada ${a.siku}.` : "";
   return `Bentukmu bernama ${a.nama.toLowerCase()}. Sisinya ada ${a.sisi}. Sudutnya ada ${a.sudut}.${siku}`;
 }

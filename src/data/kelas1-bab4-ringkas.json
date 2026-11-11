@@ -1,0 +1,733 @@
+{
+  "chapter_id": "mtk-1-bab4",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subject": "Matematika",
+  "title": "Mengenal Bentuk",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Bentuk Benda",
+          "ikon": "🔷",
+          "suara": "Ini peta bentuk benda. Benda di sekitar kita punya bentuk. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "lengkung",
+            "judul": "Bentuk lengkung",
+            "ikon": "🔵",
+            "ringkas": "Tepi melengkung, tanpa sudut.",
+            "suara": "Donat, piring, jam dinding, dan telur tepinya melengkung. Tidak ada ujung runcing dan tidak ada sudut. Ada yang bulat, ada yang lonjong. Keduanya bentuk lengkung."
+          },
+          {
+            "id": "segitiga",
+            "judul": "Segitiga",
+            "ikon": "🔺",
+            "ringkas": "Tiga sisi lurus, tiga sudut.",
+            "suara": "Tenda dan irisan semangka berbentuk segitiga. Hitung sisinya: satu, dua, tiga. Hitung sudutnya: satu, dua, tiga. Segitiga punya tiga sisi lurus dan tiga sudut."
+          },
+          {
+            "id": "segiempat",
+            "judul": "Segi empat",
+            "ikon": "🚪",
+            "ringkas": "Empat sisi lurus, empat sudut.",
+            "suara": "Pintu, jendela, dan buku berbentuk segi empat. Hitung sisinya: satu, dua, tiga, empat. Hitung sudutnya: satu, dua, tiga, empat. Segi empat punya empat sisi lurus dan empat sudut."
+          },
+          {
+            "id": "tetap",
+            "judul": "Bentuk tetap sama",
+            "ikon": "🔄",
+            "ringkas": "Diputar, bentuknya tidak berubah.",
+            "suara": "Segitiga yang terbalik tetap segitiga. Segi empat yang miring tetap segi empat. Bentuk tidak berubah karena posisinya berubah."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "a-donat",
+            "teks": "Donat dan piring",
+            "ikon": "🍩",
+            "cabang": "lengkung",
+            "petunjuk": "Tepinya melengkung dan tanpa sudut. Itu bentuk lengkung. Coba cabang lain."
+          },
+          {
+            "id": "a-telur",
+            "teks": "Telur lonjong, tanpa sudut",
+            "ikon": "🥚",
+            "cabang": "lengkung",
+            "petunjuk": "Lonjong pun tepinya melengkung. Itu bentuk lengkung. Coba cabang lain."
+          },
+          {
+            "id": "a-tenda",
+            "teks": "Tenda: 3 sisi, 3 sudut",
+            "ikon": "⛺",
+            "cabang": "segitiga",
+            "petunjuk": "Tiga sisi lurus dan tiga sudut itu segitiga. Coba cabang lain."
+          },
+          {
+            "id": "a-semangka",
+            "teks": "Irisan semangka runcing",
+            "ikon": "🍉",
+            "cabang": "segitiga",
+            "petunjuk": "Tiga ujung runcing itu segitiga. Coba cabang lain."
+          },
+          {
+            "id": "a-pintu",
+            "teks": "Pintu: 4 sisi, 4 sudut",
+            "ikon": "🚪",
+            "cabang": "segiempat",
+            "petunjuk": "Empat sisi lurus dan empat sudut itu segi empat. Coba cabang lain."
+          },
+          {
+            "id": "a-buku",
+            "teks": "Buku dan bendera",
+            "ikon": "📕",
+            "cabang": "segiempat",
+            "petunjuk": "Empat sisi lurus dan empat sudut itu segi empat. Coba cabang lain."
+          },
+          {
+            "id": "a-terbalik",
+            "teks": "Segitiga terbalik",
+            "ikon": "🔻",
+            "cabang": "tetap",
+            "petunjuk": "Dibalik pun tetap segitiga. Bentuknya tidak berubah. Coba cabang lain."
+          },
+          {
+            "id": "a-miring",
+            "teks": "Segi empat miring",
+            "ikon": "↗️",
+            "cabang": "tetap",
+            "petunjuk": "Dimiringkan pun tetap segi empat. Bentuknya tidak berubah. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Mendeskripsikan Benda dari Bentuknya",
+        "suara": "Ini tiga panel tentang bentuk benda. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-tiga",
+            "tipe": "buka",
+            "judul": "Tiga bentuk di sekitar kita",
+            "ide": "Lengkung, segitiga, segi empat.",
+            "suara": "Benda di sekitar kita punya tiga bentuk. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "lengkung",
+                "label": "Bentuk lengkung",
+                "ikon": "🔵",
+                "isi": "Tidak punya sisi lurus dan sudut.",
+                "suara": "Bentuk lengkung. Nol sisi lurus dan nol sudut. Contohnya piring dan telur.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "0 sisi lurus • 0 sudut"
+                }
+              },
+              {
+                "id": "segitiga",
+                "label": "Segitiga",
+                "ikon": "🔺",
+                "isi": "Tiga sisi lurus dan tiga sudut.",
+                "suara": "Segitiga. Tiga sisi lurus dan tiga sudut. Contohnya tenda.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 sisi lurus • 3 sudut"
+                }
+              },
+              {
+                "id": "segiempat",
+                "label": "Segi empat",
+                "ikon": "🚪",
+                "isi": "Empat sisi lurus dan empat sudut.",
+                "suara": "Segi empat. Empat sisi lurus dan empat sudut. Contohnya pintu dan buku.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 sisi lurus • 4 sudut"
+                }
+              }
+            ]
+          },
+          {
+            "id": "a-posisi",
+            "tipe": "banding",
+            "judul": "Segitiga tegak atau terbalik?",
+            "ide": "Diputar, bentuknya tetap sama.",
+            "suara": "Lihat dua segitiga. Satu tegak, satu terbalik. Bandingkan cirinya.",
+            "sisi": [
+              {
+                "id": "tegak",
+                "nama": "Segitiga tegak",
+                "ikon": "🔺",
+                "catatan": "Tiga sisi dan tiga sudut.",
+                "suara": "Segitiga tegak. Hitung sisinya tiga, hitung sudutnya tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 sisi • 3 sudut"
+                }
+              },
+              {
+                "id": "terbalik",
+                "nama": "Segitiga terbalik",
+                "ikon": "🔻",
+                "catatan": "Tetap tiga sisi dan tiga sudut.",
+                "suara": "Segitiga terbalik. Sisinya tetap tiga dan sudutnya tetap tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 sisi • 3 sudut"
+                }
+              }
+            ],
+            "kesimpulan": "Posisi berubah, bentuk tidak berubah."
+          },
+          {
+            "id": "a-cara",
+            "tipe": "buka",
+            "judul": "Cara mendeskripsikan benda",
+            "ide": "Lihat, raba, hitung, lalu sebut.",
+            "suara": "Jendela bisa kita deskripsikan dengan empat langkah. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "lihat",
+                "label": "Lihat",
+                "ikon": "👀",
+                "isi": "Lihat garis tepinya saja.",
+                "suara": "Lihat. Perhatikan garis tepi benda, lurus atau melengkung.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Jendela: tepinya lurus"
+                }
+              },
+              {
+                "id": "raba",
+                "label": "Raba",
+                "ikon": "✋",
+                "isi": "Raba sisi dan sudutnya.",
+                "suara": "Raba. Sentuh sisi dan sudut benda dengan jarimu.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Jendela: ada sudut"
+                }
+              },
+              {
+                "id": "hitung",
+                "label": "Hitung",
+                "ikon": "🔢",
+                "isi": "Hitung sisi dan sudutnya.",
+                "suara": "Hitung. Jendela punya empat sisi lurus dan empat sudut.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 sisi • 4 sudut"
+                }
+              },
+              {
+                "id": "sebut",
+                "label": "Sebut",
+                "ikon": "🗣️",
+                "isi": "Sebut nama bentuknya.",
+                "suara": "Sebut. Jendela berbentuk segi empat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Jendela berbentuk segi empat"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Mengelompokkan",
+          "ikon": "🧺",
+          "suara": "Ini peta mengelompokkan benda. Mengelompokkan berarti menaruh benda yang sama ke satu tempat. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "aturan",
+            "judul": "Satu aturan",
+            "ikon": "📏",
+            "ringkas": "Pilih satu: bentuk, warna, ukuran.",
+            "suara": "Setiap benda punya tiga ciri: bentuk, warna, dan ukuran. Pilih satu ciri untuk dijadikan aturan sebelum mulai mengelompokkan."
+          },
+          {
+            "id": "periksa",
+            "judul": "Cocok atau tidak",
+            "ikon": "🔍",
+            "ringkas": "Periksa tiap benda, beri nama.",
+            "suara": "Periksa setiap benda dengan aturan. Kalau cocok, taruh di kelompoknya. Kelompok yang sudah jadi diberi nama, misalnya kelompok segitiga."
+          },
+          {
+            "id": "hitung",
+            "judul": "Hitung kelompok",
+            "ikon": "🔢",
+            "ringkas": "Hitung anggota tiap kelompok.",
+            "suara": "Setelah dikelompokkan, hitung anggota setiap kelompok. Tiga kue cokelat ditambah tiga kue hijau sama dengan enam kue."
+          },
+          {
+            "id": "ganti",
+            "judul": "Ganti aturan",
+            "ikon": "🔄",
+            "ringkas": "Benda sama, kelompok bisa beda.",
+            "suara": "Kue talam masuk kelompok lengkung menurut bentuk, dan masuk kelompok hijau menurut warna. Aturannya diganti, kelompoknya ikut berganti."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-bentuk",
+            "teks": "Menurut bentuk",
+            "ikon": "🔷",
+            "cabang": "aturan",
+            "petunjuk": "Memilih bentuk sebagai pembeda itu memilih satu aturan. Coba cabang lain."
+          },
+          {
+            "id": "b-warna",
+            "teks": "Menurut warna",
+            "ikon": "🎨",
+            "cabang": "aturan",
+            "petunjuk": "Memilih warna sebagai pembeda itu memilih satu aturan. Coba cabang lain."
+          },
+          {
+            "id": "b-cocok",
+            "teks": "Kue risol segitiga: cocok",
+            "ikon": "✅",
+            "cabang": "periksa",
+            "petunjuk": "Memeriksa apakah benda cocok dengan aturan itu bagian dari periksa. Coba cabang lain."
+          },
+          {
+            "id": "b-nama",
+            "teks": "Nama kelompok: segitiga",
+            "ikon": "🏷️",
+            "cabang": "periksa",
+            "petunjuk": "Memberi nama kelompok dilakukan setelah semua benda diperiksa. Coba cabang lain."
+          },
+          {
+            "id": "b-cokelat",
+            "teks": "3 kue cokelat",
+            "ikon": "🍰",
+            "cabang": "hitung",
+            "petunjuk": "Menghitung anggota satu kelompok itu bagian dari hitung kelompok. Coba cabang lain."
+          },
+          {
+            "id": "b-jumlah",
+            "teks": "2 + 2 + 2 = 6",
+            "ikon": "🧮",
+            "cabang": "hitung",
+            "petunjuk": "Menjumlahkan semua kelompok itu bagian dari hitung kelompok. Coba cabang lain."
+          },
+          {
+            "id": "b-talam-bentuk",
+            "teks": "Kue talam: lengkung",
+            "ikon": "🍮",
+            "cabang": "ganti",
+            "petunjuk": "Satu benda bisa masuk kelompok yang berbeda menurut aturannya. Itu bagian dari ganti aturan. Coba cabang lain."
+          },
+          {
+            "id": "b-talam-warna",
+            "teks": "Kue talam: hijau",
+            "ikon": "🔄",
+            "cabang": "ganti",
+            "petunjuk": "Satu benda bisa masuk kelompok yang berbeda menurut aturannya. Itu bagian dari ganti aturan. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengelompokkan Benda",
+        "suara": "Ini tiga panel tentang mengelompokkan benda. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "b-tiga",
+            "tipe": "buka",
+            "judul": "Tiga ciri tiap benda",
+            "ide": "Bentuk, warna, dan ukuran.",
+            "suara": "Setiap benda punya tiga ciri. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "bentuk",
+                "label": "Bentuk",
+                "ikon": "🔷",
+                "isi": "Lengkung, segitiga, atau segi empat.",
+                "suara": "Bentuk. Kue cucur lengkung, kue risol segitiga, bolu segi empat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "lengkung • segitiga • segi empat"
+                }
+              },
+              {
+                "id": "warna",
+                "label": "Warna",
+                "ikon": "🎨",
+                "isi": "Cokelat atau hijau.",
+                "suara": "Warna. Kue cucur berwarna cokelat, kue talam berwarna hijau.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "cokelat • hijau"
+                }
+              },
+              {
+                "id": "ukuran",
+                "label": "Ukuran",
+                "ikon": "📏",
+                "isi": "Besar atau kecil.",
+                "suara": "Ukuran. Semangka dan melon besar. Anggur dan sawo kecil.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "besar • kecil"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-ganti",
+            "tipe": "banding",
+            "judul": "Satu kue, dua kelompok",
+            "ide": "Aturan beda, kelompok beda.",
+            "suara": "Lihat kue talam. Ia masuk kelompok yang berbeda tergantung aturannya.",
+            "sisi": [
+              {
+                "id": "bentuk",
+                "nama": "Menurut bentuk",
+                "ikon": "🔷",
+                "catatan": "Kue talam masuk kelompok lengkung.",
+                "suara": "Menurut bentuk, kue talam masuk kelompok lengkung.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "talam → lengkung"
+                }
+              },
+              {
+                "id": "warna",
+                "nama": "Menurut warna",
+                "ikon": "🎨",
+                "catatan": "Kue talam masuk kelompok hijau.",
+                "suara": "Menurut warna, kue talam masuk kelompok hijau.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "talam → hijau"
+                }
+              }
+            ],
+            "kesimpulan": "Benda sama, aturan beda, kelompok beda."
+          },
+          {
+            "id": "b-hitung",
+            "tipe": "buka",
+            "judul": "Menghitung kelompok",
+            "ide": "Jumlah semua kelompok sama.",
+            "suara": "Setelah dikelompokkan, kita hitung anggotanya. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "warna",
+                "label": "Menurut warna",
+                "ikon": "🎨",
+                "isi": "Dua kelompok: cokelat dan hijau.",
+                "suara": "Menurut warna, ada tiga kue cokelat dan tiga kue hijau.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Warna",
+                    "Banyak"
+                  ],
+                  "baris": [
+                    [
+                      "Cokelat",
+                      3
+                    ],
+                    [
+                      "Hijau",
+                      3
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "bentuk",
+                "label": "Menurut bentuk",
+                "ikon": "🔷",
+                "isi": "Tiga kelompok, masing-masing dua.",
+                "suara": "Menurut bentuk, ada dua kue lengkung, dua kue segitiga, dan dua kue segi empat.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Bentuk",
+                    "Banyak"
+                  ],
+                  "baris": [
+                    [
+                      "Lengkung",
+                      2
+                    ],
+                    [
+                      "Segitiga",
+                      2
+                    ],
+                    [
+                      "Segi empat",
+                      2
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "sama",
+                "label": "Jumlah sama",
+                "ikon": "🧮",
+                "isi": "Kuenya tetap enam.",
+                "suara": "Tiga ditambah tiga sama dengan enam. Dua ditambah dua ditambah dua juga enam. Kuenya tetap sama banyak.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 + 3 = 6 dan 2 + 2 + 2 = 6"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Menyusun Bangun",
+          "ikon": "🧩",
+          "suara": "Ini peta menyusun bangun. Bentuk-bentuk bisa digabung dan bisa dipisah lagi. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "susun",
+            "judul": "Menyusun",
+            "ikon": "🧱",
+            "ringkas": "Menggabung bagian jadi bangun baru.",
+            "suara": "Menyusun berarti menggabungkan beberapa bentuk menjadi bangun baru. Dua segitiga yang sama bisa menjadi segi empat."
+          },
+          {
+            "id": "urai",
+            "judul": "Mengurai",
+            "ikon": "✂️",
+            "ringkas": "Memisah bangun jadi bagiannya.",
+            "suara": "Mengurai berarti memisahkan sebuah bangun menjadi bagian-bagiannya. Rumah mainan terurai menjadi atap, dinding, pintu, dan jendela."
+          },
+          {
+            "id": "hitung",
+            "judul": "Hitung bagian",
+            "ikon": "🔢",
+            "ringkas": "Jumlahkan bagian tiap jenis.",
+            "suara": "Hitung bagian setiap jenis, lalu jumlahkan semuanya. Kereta mainan punya lima segi empat, satu segitiga, dan tiga bentuk lengkung. Semuanya sembilan."
+          },
+          {
+            "id": "lidi",
+            "judul": "Hitung lidi",
+            "ikon": "📐",
+            "ringkas": "Lidi membentuk segitiga dan segi empat.",
+            "suara": "Tiga lidi bisa menjadi segitiga. Empat lidi bisa menjadi segi empat. Rumah dari lidi memakai enam lidi."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "c-segiempat",
+            "teks": "2 segitiga jadi segi empat",
+            "ikon": "🔺",
+            "cabang": "susun",
+            "petunjuk": "Menggabung dua bentuk menjadi bangun baru itu menyusun. Coba cabang lain."
+          },
+          {
+            "id": "c-persegi",
+            "teks": "2 persegi jadi persegi panjang",
+            "ikon": "🧱",
+            "cabang": "susun",
+            "petunjuk": "Menggabung dua bentuk menjadi bangun baru itu menyusun. Coba cabang lain."
+          },
+          {
+            "id": "c-rumah",
+            "teks": "Rumah: atap, dinding, pintu",
+            "ikon": "🏠",
+            "cabang": "urai",
+            "petunjuk": "Memisah bangun menjadi bagian-bagiannya itu mengurai. Coba cabang lain."
+          },
+          {
+            "id": "c-kereta",
+            "teks": "Kereta menjadi 9 bagian",
+            "ikon": "🚂",
+            "cabang": "urai",
+            "petunjuk": "Memisah bangun menjadi bagian-bagiannya itu mengurai. Coba cabang lain."
+          },
+          {
+            "id": "c-tambah",
+            "teks": "5 + 1 + 3 = 9 bagian",
+            "ikon": "🔢",
+            "cabang": "hitung",
+            "petunjuk": "Menjumlahkan bagian semua jenis itu bagian dari hitung bagian. Coba cabang lain."
+          },
+          {
+            "id": "c-kurang",
+            "teks": "9 − 3 = 6 bagian",
+            "ikon": "➖",
+            "cabang": "hitung",
+            "petunjuk": "Mengambil satu jenis lalu menghitung sisanya itu bagian dari hitung bagian. Coba cabang lain."
+          },
+          {
+            "id": "c-tiga-lidi",
+            "teks": "3 lidi jadi segitiga",
+            "ikon": "📐",
+            "cabang": "lidi",
+            "petunjuk": "Lidi yang disusun menjadi bentuk itu bagian dari hitung lidi. Coba cabang lain."
+          },
+          {
+            "id": "c-enam-lidi",
+            "teks": "6 lidi jadi rumah",
+            "ikon": "🏡",
+            "cabang": "lidi",
+            "petunjuk": "Lidi yang disusun menjadi bentuk itu bagian dari hitung lidi. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Menyusun dan Mengurai Bangun",
+        "suara": "Ini tiga panel tentang menyusun dan mengurai bangun. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "c-dua",
+            "tipe": "banding",
+            "judul": "Dua cara menggabung",
+            "ide": "Dua segitiga, dua bangun.",
+            "suara": "Dua segitiga yang sama besar bisa digabung dengan dua cara. Bandingkan hasilnya.",
+            "sisi": [
+              {
+                "id": "tegak",
+                "nama": "Sisi tegak",
+                "ikon": "📐",
+                "catatan": "Dirapatkan, menjadi segitiga besar.",
+                "suara": "Kalau dirapatkan pada sisi yang tegak, hasilnya segitiga yang lebih besar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 segitiga → segitiga"
+                }
+              },
+              {
+                "id": "miring",
+                "nama": "Sisi miring",
+                "ikon": "🔺",
+                "catatan": "Dirapatkan, menjadi segi empat.",
+                "suara": "Kalau dirapatkan pada sisi yang miring, hasilnya segi empat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 segitiga → segi empat"
+                }
+              }
+            ],
+            "kesimpulan": "Cara menggabung menentukan bangun barunya."
+          },
+          {
+            "id": "c-kereta",
+            "tipe": "buka",
+            "judul": "Kereta dari bentuk",
+            "ide": "Hitung tiap jenis, lalu jumlahkan.",
+            "suara": "Kereta mainan tersusun dari tiga jenis bentuk. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "segiempat",
+                "label": "Segi empat",
+                "ikon": "🚪",
+                "isi": "Cerobong, mesin, kabin, jendela, gerbong.",
+                "suara": "Segi empat ada lima: cerobong, mesin, kabin, jendela, dan gerbong.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 segi empat"
+                }
+              },
+              {
+                "id": "segitiga",
+                "label": "Segitiga",
+                "ikon": "🔺",
+                "isi": "Moncong kereta.",
+                "suara": "Segitiga ada satu, yaitu moncong kereta.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 segitiga"
+                }
+              },
+              {
+                "id": "lengkung",
+                "label": "Bentuk lengkung",
+                "ikon": "🔵",
+                "isi": "Tiga roda.",
+                "suara": "Bentuk lengkung ada tiga, yaitu tiga roda.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 bentuk lengkung"
+                }
+              },
+              {
+                "id": "semua",
+                "label": "Semua bagian",
+                "ikon": "🚂",
+                "isi": "Lima, satu, dan tiga: sembilan.",
+                "suara": "Jumlah semuanya, lima ditambah satu ditambah tiga sama dengan sembilan bagian.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 + 1 + 3 = 9"
+                }
+              }
+            ]
+          },
+          {
+            "id": "c-hitung",
+            "tipe": "buka",
+            "judul": "Susun dan urai itu hitungan",
+            "ide": "Menyusun menambah, mengurai mengurangi.",
+            "suara": "Menyusun dan mengurai bisa ditulis sebagai hitungan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "susun",
+                "label": "Menyusun",
+                "ikon": "🧱",
+                "isi": "Bagian bertambah.",
+                "suara": "Menyusun menambah bagian. Lima ditambah satu ditambah tiga sama dengan sembilan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 + 1 + 3 = 9"
+                }
+              },
+              {
+                "id": "urai",
+                "label": "Mengurai",
+                "ikon": "✂️",
+                "isi": "Ambil tiga roda, sisa enam.",
+                "suara": "Mengurai mengurangi bagian. Sembilan dikurangi tiga roda sama dengan enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "9 − 3 = 6"
+                }
+              },
+              {
+                "id": "lidi",
+                "label": "Lidi",
+                "ikon": "📐",
+                "isi": "Segitiga 3 lidi, segi empat 4 lidi.",
+                "suara": "Segitiga memakai tiga lidi. Segi empat memakai empat lidi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 lidi • 4 lidi"
+                }
+              },
+              {
+                "id": "rumah",
+                "label": "Rumah dari lidi",
+                "ikon": "🏡",
+                "isi": "Dinding 4 lidi, atap 2 lidi.",
+                "suara": "Dinding memakai empat lidi dan atap memakai dua lidi. Empat ditambah dua sama dengan enam lidi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 + 2 = 6"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

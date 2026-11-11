@@ -28,7 +28,7 @@ const JARAK = 60;
 const TEPI = 30;
 const px = (p: Titik): [number, number] => [TEPI + p[0] * JARAK, TEPI + p[1] * JARAK];
 
-export default function SimulasiPapanPaku({ speakGuru }: { speakGuru: (t: string) => void }) {
+export default function SimulasiPapanPaku({ speakGuru, tampilSiku = true }: { speakGuru: (t: string) => void; /** Sudut siku belum diajarkan di Sub-Bab A, jadi di dalam Materi bisa dimatikan. */ tampilSiku?: boolean }) {
   const [papan, setPapan] = useState<Papan>(papanKosong);
   const [lengkung, setLengkung] = useState(false);
   const [tercapai, setTercapai] = useState<string[]>([]);
@@ -52,7 +52,7 @@ export default function SimulasiPapanPaku({ speakGuru }: { speakGuru: (t: string
           <h3 className="text-lg font-black text-[#1C01A5]">Papan Paku Bebas</h3>
           <p className="text-sm font-bold text-[#1C01A5]/80">Pasang karet di paku. Mesin akan menyebut nama bentukmu.</p>
         </div>
-        <TombolSuaraGuru label="Dengarkan bentuk ini" onClick={() => speakGuru(ucapanBentuk(papan, lengkung))} />
+        <TombolSuaraGuru label="Dengarkan bentuk ini" onClick={() => speakGuru(ucapanBentuk(papan, lengkung, tampilSiku))} />
       </div>
 
       <div className={`${KARTU} space-y-2`}>
@@ -141,16 +141,18 @@ export default function SimulasiPapanPaku({ speakGuru }: { speakGuru: (t: string
             <p className="igil-muncul text-2xl font-black text-[#1C01A5]" aria-live="polite">
               {ringkas.nama}
             </p>
-            <div className="grid grid-cols-3 gap-1.5">
+            <div className={`grid gap-1.5 ${tampilSiku ? "grid-cols-3" : "grid-cols-2"}`}>
               <p className="rounded-xl bg-[#F5F3FF] px-1 py-1.5 text-sm font-black text-[#1C01A5]">Sisi lurus<br /><span className="text-2xl">{ringkas.sisi}</span></p>
               <p className="rounded-xl bg-[#F5F3FF] px-1 py-1.5 text-sm font-black text-[#1C01A5]">Sudut<br /><span className="text-2xl">{ringkas.sudut}</span></p>
-              <p className="rounded-xl bg-[#F5F3FF] px-1 py-1.5 text-sm font-black text-[#1C01A5]">Sudut siku<br /><span className="text-2xl">{lengkung ? 0 : ringkas.siku}</span></p>
+              {tampilSiku ? <p className="rounded-xl bg-[#F5F3FF] px-1 py-1.5 text-sm font-black text-[#1C01A5]">Sudut siku<br /><span className="text-2xl">{lengkung ? 0 : ringkas.siku}</span></p> : null}
             </div>
             <p className="text-sm font-bold text-[#1C01A5]/80">
               {lengkung
                 ? "Karet melengkung, jadi tidak ada sisi lurus dan tidak ada sudut."
                 : ringkas.sisi === 4 && ringkas.siku === 4 && ringkas.sisiSama
-                  ? "Empat sisi sama panjang dan empat sudut siku."
+                  ? tampilSiku
+                    ? "Empat sisi sama panjang dan empat sudut siku."
+                    : "Empat sisi sama panjang dan empat sudut."
                   : "Hitung sisi dan sudutnya, lalu cocokkan dengan namanya."}
             </p>
           </div>

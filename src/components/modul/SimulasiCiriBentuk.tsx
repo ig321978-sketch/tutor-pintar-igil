@@ -4,7 +4,14 @@ import React, { useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { Cek, CobaIni, KARTU, Pilihan, TOMBOL_BIASA } from "./simulasi-bersama";
 import { Pengatur } from "./komponen-lab";
-import { BENTUK, SKALA_MAKS, SKALA_MIN, SUSUNAN, bentukDari, ciriBentuk, poseAwal, putar90, ubahSkala, ucapanCiri, type IdBentuk, type Pose } from "./lab-ciri-bab4";
+import { BENTUK, SKALA_MAKS, SKALA_MIN, SUSUNAN, bentukDari, ciriBentuk, kelompokBentuk, poseAwal, putar90, ubahSkala, ucapanCiri, ucapanSusun, type IdBentuk, type Pose } from "./lab-ciri-bab4";
+
+/**
+ * Bagian yang boleh tampil. Di dalam Materi, Sub-Bab A hanya memakai `ciri` (empat bentuk dasar, tanpa setengah
+ * lingkaran) dan Sub-Bab C hanya memakai `menyusun`. Tab Simulasi lama memakai keduanya.
+ */
+export type TampilCiri = "ciri" | "menyusun";
+export const SEMUA_TAMPIL_CIRI: TampilCiri[] = ["ciri", "menyusun"];
 
 /* ------------------------------------------------------------------------ */
 /* Simulasi 2 (Bab 4): Laboratorium Ciri Bentuk, metode PhET.                 */
@@ -79,126 +86,152 @@ const RUPA: Record<IdBentuk, Rupa> = {
 
 const WARNA_SISI = ["#EF4444", "#2563EB", "#16A34A", "#F59E0B"];
 
-export default function SimulasiCiriBentuk({ speakGuru }: { speakGuru: (t: string) => void }) {
+const KATA_URUT = ["Satu", "Dua", "Tiga"];
+
+/** Langkah selidik "Coba ini!" yang cocok dengan bagian yang tampil. Tanpa kunci jawaban. */
+function langkahCoba(tampil: TampilCiri[]): string[] {
+  const hasil: string[] = [];
+  if (tampil.includes("ciri")) {
+    hasil.push("Pilih persegi, lalu tekan Putar 90°. Apakah jumlah sisinya berubah?");
+    hasil.push("Besarkan ukurannya. Apakah jumlah sudutnya berubah?");
+  }
+  if (tampil.includes("menyusun")) hasil.push("Pilih 2 segitiga, lalu tekan Gabungkan bagian. Bentuk apa yang lahir?");
+  return hasil;
+}
+
+export default function SimulasiCiriBentuk({
+  speakGuru,
+  tampil = SEMUA_TAMPIL_CIRI,
+}: {
+  speakGuru: (t: string) => void;
+  /** Bagian yang tersedia. Bawaan: keduanya (tab Simulasi lama). */
+  tampil?: TampilCiri[];
+}) {
   const [id, setId] = useState<IdBentuk>("persegi");
   const [pose, setPose] = useState<Pose>(poseAwal);
-  const [tampil, setTampil] = useState({ sisi: true, sudut: true });
+  const [garis, setGaris] = useState({ sisi: true, sudut: true });
   const [susun, setSusun] = useState(0);
   const [gabung, setGabung] = useState(false);
+
+  const adaCiri = tampil.includes("ciri");
+  const adaSusun = tampil.includes("menyusun");
+  // Setengah lingkaran (satu sisi lurus, satu lengkung) belum diajarkan di Sub-Bab A, jadi hanya ada di tab lama.
+  const daftarBentuk = adaCiri && adaSusun ? BENTUK : BENTUK.filter((x) => x.id !== "setengah-lingkaran");
+  const coba = langkahCoba(tampil);
 
   const b = bentukDari(id);
   const rupa = RUPA[id];
   const c = ciriBentuk(id);
   const skala = 0.55 + pose.skala * 0.25;
   const s = SUSUNAN[susun];
+  const ucapan = adaCiri ? ucapanCiri(id, pose) : ucapanSusun(s, gabung);
 
   return (
     <div className="space-y-4">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <h3 className="text-lg font-black text-[#1C01A5]">Laboratorium Ciri Bentuk</h3>
-          <p className="text-sm font-bold text-[#1C01A5]/80">Putar dan besarkan bentuknya. Lihat apa yang tetap sama.</p>
+          <h3 className="text-lg font-black text-[#1C01A5]">{adaCiri ? "Laboratorium Ciri Bentuk" : "Menyusun dan Menguraikan Bentuk"}</h3>
+          <p className="text-sm font-bold text-[#1C01A5]/80">{adaCiri ? "Putar dan besarkan bentuknya. Lihat apa yang tetap sama." : "Gabungkan bagian-bagiannya. Lalu uraikan lagi. Lihat bentuk apa yang lahir."}</p>
         </div>
-        <TombolSuaraGuru label="Dengarkan bentuk ini" onClick={() => speakGuru(ucapanCiri(id, pose))} />
+        <TombolSuaraGuru label={adaCiri ? "Dengarkan bentuk ini" : "Dengarkan susunan ini"} onClick={() => speakGuru(ucapan)} />
       </div>
 
-      <div className={`${KARTU} space-y-2`}>
-        <div className="flex flex-wrap justify-center gap-1.5" role="group" aria-label="Pilih bentuk">
-          {BENTUK.map((x) => (
-            <Pilihan key={x.id} aktif={id === x.id} onKlik={() => setId(x.id)}>
-              {x.nama}
-            </Pilihan>
-          ))}
-        </div>
-        <svg viewBox="0 0 200 150" className="mx-auto block w-full max-w-[340px] rounded-2xl bg-[#F5F3FF]" role="img" aria-label={`${b.nama}, diputar ${pose.putar} derajat, ukuran ${pose.skala}`}>
-          <g transform={`translate(100 78) rotate(${pose.putar}) scale(${skala}) translate(-100 -78)`} style={{ transition: "transform 0.4s" }}>
-            <path d={rupa.isi} fill="#FDE68A" stroke="#1C01A5" strokeWidth={tampil.sisi ? 1 : 4} strokeLinejoin="round" />
-            {tampil.sisi
-              ? rupa.sisi.map((x, i) => (
-                  <g key={i}>
-                    <path d={x.d} fill="none" stroke={x.lengkung ? "#7C3AED" : WARNA_SISI[i % WARNA_SISI.length]} strokeWidth={5 / skala} strokeLinecap="round" />
-                    <g transform={`rotate(${-pose.putar} ${x.label[0]} ${x.label[1]})`}>
-                      <text x={x.label[0]} y={x.label[1] + 4} textAnchor="middle" fontSize={14 / skala} fontWeight="900" fill={x.lengkung ? "#7C3AED" : WARNA_SISI[i % WARNA_SISI.length]}>
-                        {x.lengkung ? "lengkung" : i + 1}
-                      </text>
+      {adaCiri ? (
+        <div className={`${KARTU} space-y-2`}>
+          <div className="flex flex-wrap justify-center gap-1.5" role="group" aria-label="Pilih bentuk">
+            {daftarBentuk.map((x) => (
+              <Pilihan key={x.id} aktif={id === x.id} onKlik={() => setId(x.id)}>
+                {x.nama}
+              </Pilihan>
+            ))}
+          </div>
+          <svg viewBox="0 0 200 150" className="mx-auto block w-full max-w-[340px] rounded-2xl bg-[#F5F3FF]" role="img" aria-label={`${b.nama}, diputar ${pose.putar} derajat, ukuran ${pose.skala}`}>
+            <g transform={`translate(100 78) rotate(${pose.putar}) scale(${skala}) translate(-100 -78)`} style={{ transition: "transform 0.4s" }}>
+              <path d={rupa.isi} fill="#FDE68A" stroke="#1C01A5" strokeWidth={garis.sisi ? 1 : 4} strokeLinejoin="round" />
+              {garis.sisi
+                ? rupa.sisi.map((x, i) => (
+                    <g key={i}>
+                      <path d={x.d} fill="none" stroke={x.lengkung ? "#7C3AED" : WARNA_SISI[i % WARNA_SISI.length]} strokeWidth={5 / skala} strokeLinecap="round" />
+                      <g transform={`rotate(${-pose.putar} ${x.label[0]} ${x.label[1]})`}>
+                        <text x={x.label[0]} y={x.label[1] + 4} textAnchor="middle" fontSize={14 / skala} fontWeight="900" fill={x.lengkung ? "#7C3AED" : WARNA_SISI[i % WARNA_SISI.length]}>
+                          {x.lengkung ? "lengkung" : i + 1}
+                        </text>
+                      </g>
                     </g>
-                  </g>
-                ))
-              : null}
-            {tampil.sudut
-              ? rupa.sudut.map((p, i) => (
-                  <circle key={i} cx={p[0]} cy={p[1]} r={6 / skala} fill="#FFE566" stroke="#1C01A5" strokeWidth={2 / skala} />
-                ))
-              : null}
-          </g>
-        </svg>
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          <Cek aktif={tampil.sisi} onKlik={() => setTampil((x) => ({ ...x, sisi: !x.sisi }))}>
-            Tampilkan sisi
-          </Cek>
-          <Cek aktif={tampil.sudut} onKlik={() => setTampil((x) => ({ ...x, sudut: !x.sudut }))}>
-            Tampilkan sudut
-          </Cek>
-          <button type="button" className={TOMBOL_BIASA} onClick={() => setPose(putar90(pose))}>
-            🔄 Putar 90°
-          </button>
+                  ))
+                : null}
+              {garis.sudut
+                ? rupa.sudut.map((p, i) => (
+                    <circle key={i} cx={p[0]} cy={p[1]} r={6 / skala} fill="#FFE566" stroke="#1C01A5" strokeWidth={2 / skala} />
+                  ))
+                : null}
+            </g>
+          </svg>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <Cek aktif={garis.sisi} onKlik={() => setGaris((x) => ({ ...x, sisi: !x.sisi }))}>
+              Tampilkan sisi
+            </Cek>
+            <Cek aktif={garis.sudut} onKlik={() => setGaris((x) => ({ ...x, sudut: !x.sudut }))}>
+              Tampilkan sudut
+            </Cek>
+            <button type="button" className={TOMBOL_BIASA} onClick={() => setPose(putar90(pose))}>
+              🔄 Putar 90°
+            </button>
+          </div>
+          <Pengatur nama="Ukuran" nilai={pose.skala} onKurang={() => setPose(ubahSkala(pose, -1))} onTambah={() => setPose(ubahSkala(pose, 1))} kurangMati={pose.skala <= SKALA_MIN} tambahMati={pose.skala >= SKALA_MAKS} />
         </div>
-        <Pengatur nama="Ukuran" nilai={pose.skala} onKurang={() => setPose(ubahSkala(pose, -1))} onTambah={() => setPose(ubahSkala(pose, 1))} kurangMati={pose.skala <= SKALA_MIN} tambahMati={pose.skala >= SKALA_MAKS} />
-      </div>
+      ) : null}
 
-      <div className={`${KARTU} space-y-2`}>
-        <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]/70">Ciri {b.nama.toLowerCase()}</p>
-        <div className="grid grid-cols-3 gap-1.5 text-center">
-          <p className="rounded-xl bg-[#F5F3FF] px-1 py-1.5 text-sm font-black text-[#1C01A5]">Sisi lurus<br /><span className="text-2xl">{c.sisiLurus}</span></p>
-          <p className="rounded-xl bg-[#F5F3FF] px-1 py-1.5 text-sm font-black text-[#1C01A5]">Sisi lengkung<br /><span className="text-2xl">{c.sisiLengkung}</span></p>
-          <p className="rounded-xl bg-[#F5F3FF] px-1 py-1.5 text-sm font-black text-[#1C01A5]">Sudut<br /><span className="text-2xl">{c.sudut}</span></p>
+      {adaCiri ? (
+        <div className={`${KARTU} space-y-2`}>
+          <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]/70">Ciri {b.nama.toLowerCase()}</p>
+          <div className="grid grid-cols-3 gap-1.5 text-center">
+            <p className="rounded-xl bg-[#F5F3FF] px-1 py-1.5 text-sm font-black text-[#1C01A5]">Sisi lurus<br /><span className="text-2xl">{c.sisiLurus}</span></p>
+            <p className="rounded-xl bg-[#F5F3FF] px-1 py-1.5 text-sm font-black text-[#1C01A5]">Sisi lengkung<br /><span className="text-2xl">{c.sisiLengkung}</span></p>
+            <p className="rounded-xl bg-[#F5F3FF] px-1 py-1.5 text-sm font-black text-[#1C01A5]">Sudut<br /><span className="text-2xl">{c.sudut}</span></p>
+          </div>
+          <p className="rounded-xl bg-[#FFF7CC] px-3 py-1.5 text-center text-sm font-black text-[#1C01A5]">Masuk kelompok: {kelompokBentuk(id)}</p>
+          <p className="rounded-xl bg-[#E8F7EE] px-3 py-1.5 text-center text-sm font-black text-[#14532D]">Diputar atau dibesarkan, ciri bentuk tetap sama.</p>
         </div>
-        <p className="rounded-xl bg-[#E8F7EE] px-3 py-1.5 text-center text-sm font-black text-[#14532D]">Diputar atau dibesarkan, ciri bentuk tetap sama.</p>
-      </div>
+      ) : null}
 
-      <div className={`${KARTU} space-y-2`}>
-        <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]/70">Menyusun bentuk</p>
-        <div className="flex flex-wrap justify-center gap-1.5" role="group" aria-label="Pilih susunan">
-          {SUSUNAN.map((x, i) => (
-            <Pilihan
-              key={x.id}
-              aktif={susun === i}
-              onKlik={() => {
-                setSusun(i);
-                setGabung(false);
-              }}
-            >
-              {x.judul}
-            </Pilihan>
-          ))}
+      {adaSusun ? (
+        <div className={`${KARTU} space-y-2`}>
+          <p className="text-xs font-black uppercase tracking-wide text-[#1C01A5]/70">Menyusun bentuk</p>
+          <div className="flex flex-wrap justify-center gap-1.5" role="group" aria-label="Pilih susunan">
+            {SUSUNAN.map((x, i) => (
+              <Pilihan
+                key={x.id}
+                aktif={susun === i}
+                onKlik={() => {
+                  setSusun(i);
+                  setGabung(false);
+                }}
+              >
+                {x.judul}
+              </Pilihan>
+            ))}
+          </div>
+          <svg viewBox="0 0 120 80" className="mx-auto block w-full max-w-[320px] rounded-2xl bg-[#F5F3FF]" role="img" aria-label={gabung ? `Hasil susunan: ${bentukDari(s.hasil).nama}` : `Bagian susunan: ${s.judul}`}>
+            {s.bagian.map((p, i) => (
+              <path key={i} d={p.d} fill={p.warna} stroke="#1C01A5" strokeWidth="1.4" strokeLinejoin="round" style={{ transform: gabung ? "translate(0px, 0px)" : `translate(${p.dx}px, ${p.dy}px)`, transition: "transform 0.5s" }} />
+            ))}
+          </svg>
+          <div className="flex justify-center">
+            <Cek aktif={gabung} onKlik={() => setGabung((x) => !x)}>
+              Gabungkan bagian
+            </Cek>
+          </div>
+          <p role="status" className="rounded-xl bg-[#FFF7CC] px-3 py-1.5 text-center text-sm font-black text-[#1C01A5]">
+            {gabung ? `${s.kalimat} Hasilnya: ${bentukDari(s.hasil).nama.toLowerCase()}. Matikan pilihan untuk menguraikannya lagi.` : `Ada ${s.bagian.length} bagian. Gabungkan untuk melihat bentuk barunya.`}
+          </p>
         </div>
-        <svg viewBox="0 0 120 80" className="mx-auto block w-full max-w-[320px] rounded-2xl bg-[#F5F3FF]" role="img" aria-label={gabung ? `Hasil susunan: ${bentukDari(s.hasil).nama}` : `Bagian susunan: ${s.judul}`}>
-          {s.bagian.map((p, i) => (
-            <path key={i} d={p.d} fill={p.warna} stroke="#1C01A5" strokeWidth="1.4" strokeLinejoin="round" style={{ transform: gabung ? "translate(0px, 0px)" : `translate(${p.dx}px, ${p.dy}px)`, transition: "transform 0.5s" }} />
-          ))}
-        </svg>
-        <div className="flex justify-center">
-          <Cek aktif={gabung} onKlik={() => setGabung((x) => !x)}>
-            Gabungkan bagian
-          </Cek>
-        </div>
-        <p role="status" className="rounded-xl bg-[#FFF7CC] px-3 py-1.5 text-center text-sm font-black text-[#1C01A5]">
-          {gabung ? `${s.kalimat} Hasilnya: ${bentukDari(s.hasil).nama.toLowerCase()}.` : `Ada ${s.bagian.length} bagian. Gabungkan untuk melihat bentuk barunya.`}
-        </p>
-      </div>
+      ) : null}
 
       <CobaIni
         judul="Coba ini!"
-        onDengar={() =>
-          speakGuru(
-            "Coba ini. Satu, pilih persegi lalu tekan putar sembilan puluh derajat. Apakah jumlah sisinya berubah? Dua, besarkan ukurannya. Apakah jumlah sudutnya berubah? Tiga, pilih dua segitiga, lalu tekan gabungkan bagian. Bentuk apa yang lahir?"
-          )
-        }
-        langkah={[
-          "Pilih persegi, lalu tekan Putar 90°. Apakah jumlah sisinya berubah?",
-          "Besarkan ukurannya. Apakah jumlah sudutnya berubah?",
-          "Pilih 2 segitiga, lalu tekan Gabungkan bagian. Bentuk apa yang lahir?",
-        ]}
+        onDengar={() => speakGuru(`Coba ini. ${coba.map((l, i) => `${KATA_URUT[i]}, ${l}`).join(" ")}`.replace("90°", "sembilan puluh derajat"))}
+        langkah={coba}
       />
     </div>
   );

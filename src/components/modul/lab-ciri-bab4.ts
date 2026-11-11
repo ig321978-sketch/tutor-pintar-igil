@@ -86,6 +86,19 @@ export function ucapanCiri(id: IdBentuk, p: Pose): string {
   return `${b.nama}. ${b.ciri.join(" ")}${ubah}`;
 }
 
+/**
+ * Kelompok bentuk menurut kata Sub-Bab A: bentuk lengkung (tanpa sisi lurus), segitiga (3 sisi lurus), segi empat
+ * (4 sisi lurus). Setengah lingkaran punya sisi lurus dan sisi lengkung, jadi masuk campuran.
+ */
+export function kelompokBentuk(id: IdBentuk): string {
+  const b = bentukDari(id);
+  if (b.sisiLurus === 0) return "Bentuk lengkung";
+  if (b.sisiLengkung > 0) return "Campuran sisi lurus dan lengkung";
+  if (b.sisiLurus === 3) return "Segitiga";
+  if (b.sisiLurus === 4) return "Segi empat";
+  return `Bentuk ${b.sisiLurus} sisi`;
+}
+
 /* ------------------------------- Menyusun -------------------------------- */
 
 export type Bagian = {
@@ -203,6 +216,12 @@ export const SUSUNAN: Susunan[] = [
     kalimat: "2 setengah lingkaran yang sama besar, jika sisi lurusnya direkatkan, menjadi 1 lingkaran.",
   },
 ];
+
+/** Ucapan guru untuk bagian Menyusun: bagian terpisah atau sudah digabung (diuraikan lagi bila dimatikan). */
+export function ucapanSusun(s: Susunan, gabung: boolean): string {
+  if (!gabung) return `Ada ${s.bagian.length} bagian. Gabungkan bagian-bagian ini untuk melihat bentuk barunya.`;
+  return `${s.kalimat} Hasilnya ${bentukDari(s.hasil).nama.toLowerCase()}. Matikan pilihan gabungkan untuk menguraikannya lagi menjadi ${s.bagian.length} bagian.`;
+}
 
 /** Luas poligon (rumus tali sepatu). */
 export function luasPoligon(titik: [number, number][]): number {

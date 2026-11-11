@@ -8,6 +8,8 @@ import * as K3 from "../src/components/modul/lab-kurang-bab3.ts";
 import * as B3 from "../src/components/modul/mesin-bus-bab3.ts";
 import * as P4 from "../src/components/modul/lab-papan-paku-bab4.ts";
 import * as C4 from "../src/components/modul/lab-ciri-bab4.ts";
+import * as G4 from "../src/components/modul/lab-kelompok-bab4.ts";
+import * as H4 from "../src/components/modul/lab-gabung-bab4.ts";
 import * as P5 from "../src/components/modul/lab-puluhan-bab5.ts";
 import * as O5 from "../src/components/modul/mesin-odometer-bab5.ts";
 import * as L6 from "../src/components/modul/lab-loncat-bab6.ts";
@@ -723,5 +725,86 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   cek(/Biru dan Hijau|Biru/.test(D7.ucapanBanding([5, 8, 3, 6], false, true)) && /belum sejajar/.test(D7.ucapanBanding([5, 8, 3, 6], false, false)) && !/belum sejajar/.test(D7.ucapanBanding([5, 8, 3, 6], true, true)) && /diurutkan/.test(D7.ucapanBanding([5, 8, 3, 6], true, true)), "ucapan banding");
 }
 
+/* ----------------- Bab 4 (Materi): kelompok, gabungan, kelompok bentuk ----------------- */
+{
+  // Laboratorium Kelompok: tiap aturan memecah sembilan balok tanpa sisa dan tanpa ganda.
+  for (const a of G4.SEMUA_ATURAN) {
+    const k = G4.kelompokkan(a);
+    cek(k.reduce((s, x) => s + x.jumlah, 0) === G4.BLOK.length, `kelompok ${a}: jumlah semua = ${G4.BLOK.length}`);
+    cek(new Set(k.flatMap((x) => x.anggota.map((b) => b.id))).size === G4.BLOK.length, `kelompok ${a}: tiap balok tepat di satu kelompok`);
+    cek(k.every((x) => x.anggota.every((b) => G4.nilaiBlok(b, a) === x.id)), `kelompok ${a}: anggota cocok dengan aturan`);
+    const kal = G4.kalimatJumlah(a);
+    const [kiri, kanan] = kal.split(" = ");
+    cek(kiri.split(" + ").map(Number).reduce((s, n) => s + n, 0) === Number(kanan) && Number(kanan) === G4.BLOK.length, `kalimat jumlah ${a}: ${kal}`);
+  }
+  sama(G4.kelompokkan("bentuk").map((x) => x.jumlah), [4, 2, 3], "sebaran bentuk");
+  sama(G4.kelompokkan("warna").map((x) => x.jumlah), [3, 4, 2], "sebaran warna");
+  sama(G4.kelompokkan("ukuran").map((x) => x.jumlah), [5, 4], "sebaran ukuran");
+  cek(new Set(["bentuk", "warna", "ukuran"].map((a) => JSON.stringify(G4.kelompokkan(a).map((x) => x.jumlah)))).size === 3, "tiga aturan memberi sebaran berbeda");
+  cek(G4.BLOK.some((b) => G4.nilaiBlok(b, "bentuk") === "lengkung") && G4.BLOK.some((b) => G4.nilaiBlok(b, "warna") === "kuning"), "ada balok lengkung dan kuning");
+  // Satu balok yang sama masuk kelompok berbeda menurut aturan.
+  const talam = G4.BLOK[2];
+  const kb = G4.kelompokBlok(talam);
+  sama(kb.map((x) => x.aturan), ["bentuk", "warna", "ukuran"], "kelompok balok urut aturan");
+  sama(kb.map((x) => x.nama), ["Segitiga", "Kuning", "Besar"], "balok 3 menurut tiga aturan");
+  cek(kb.every((x) => x.jumlah >= 1), "kelompok balok punya anggota");
+  cek(/segitiga kuning besar/.test(G4.namaBlok(talam)), "nama balok");
+  cek(/Menurut warna: merah 3, biru 4, kuning 2\./.test(G4.kalimatKelompok("warna")), "kalimat kelompok warna");
+  cek(/Semuanya ada 9\./.test(G4.ucapanKelompok("bentuk")) && /Kelompok lengkung ada 4\./.test(G4.ucapanKelompok("bentuk")), "ucapan kelompok bentuk");
+  cek(/ia masuk kelompok segitiga/.test(G4.ucapanBlok(talam, "warna")) && /kelompok kuning/.test(G4.ucapanBlok(talam, "warna")) && /sedang dipakai: warna/.test(G4.ucapanBlok(talam, "warna")), "ucapan balok");
+  // Kelompok kosong dilewati pada kalimat (balok sebagian).
+  const sedikit = G4.BLOK.filter((b) => b.bentuk !== "segitiga");
+  sama(G4.kalimatJumlah("bentuk", sedikit), "4 + 3 = 7", "kalimat jumlah tanpa kelompok kosong");
+}
+
+{
+  // Laboratorium Bangun Gabungan: jumlah semua jenis sama dengan jumlah bagian, kalimat benar.
+  for (const b of H4.BANGUN) {
+    const h = H4.hitungJenis(b);
+    cek(h.reduce((s, x) => s + x.jumlah, 0) === H4.totalBagian(b), `bangun ${b.id}: jumlah jenis = jumlah bagian`);
+    cek(b.bagian.every((p) => b.jenis.some((j) => j.id === p.jenis)), `bangun ${b.id}: jenis tiap bagian terdaftar`);
+    cek(new Set(b.bagian.map((p) => p.id)).size === b.bagian.length, `bangun ${b.id}: id bagian unik`);
+    const [kiri, kanan] = H4.kalimatTambah(b).split(" = ");
+    cek(kiri.split(" + ").map(Number).reduce((s, n) => s + n, 0) === Number(kanan) && Number(kanan) === H4.totalBagian(b), `kalimat tambah ${b.id}: ${H4.kalimatTambah(b)}`);
+    for (const j of h) {
+      const kur = H4.kalimatKurang(b, j.id);
+      cek(kur === `${H4.totalBagian(b)} − ${j.jumlah} = ${H4.totalBagian(b) - j.jumlah}`, `kalimat kurang ${b.id}/${j.id}: ${kur}`);
+    }
+    cek(H4.kalimatKurang(b, "tidak-ada") === null, `kalimat kurang jenis tak dikenal ${b.id}`);
+    cek(b.bagian.every((p) => /^M/.test(p.d)), `bangun ${b.id}: jalur SVG`);
+  }
+  const kereta = H4.bangunDari("kereta");
+  sama(H4.hitungJenis(kereta).map((x) => x.jumlah), [5, 1, 3], "kereta: 5 segi empat, 1 segitiga, 3 lengkung");
+  sama(H4.kalimatTambah(kereta), "5 + 1 + 3 = 9", "kalimat kereta");
+  sama(H4.kalimatKurang(kereta, "lengkung"), "9 − 3 = 6", "kereta tanpa roda");
+  const rumah = H4.bangunDari("rumah");
+  sama(H4.hitungJenis(rumah).map((x) => x.jumlah), [3, 1], "rumah: 3 segi empat, 1 segitiga");
+  const lidi = H4.bangunDari("rumah-lidi");
+  sama(H4.kalimatTambah(lidi), "4 + 2 = 6", "rumah lidi: 4 + 2 = 6");
+  sama(lidi.satuan, "lidi", "satuan lidi");
+  sama(H4.bangunDari("tak-dikenal").id, "kereta", "bangun tak dikenal jatuh ke kereta");
+  cek(/9 bagian/.test(H4.ucapanBangun(kereta, false, null, false)) && /5 \+ 1 \+ 3 = 9/.test(H4.ucapanBangun(kereta, false, null, false)), "ucapan kereta");
+  cek(/diuraikan/.test(H4.ucapanBangun(kereta, true, null, false)) && !/diuraikan/.test(H4.ucapanBangun(kereta, false, null, false)), "ucapan urai");
+  cek(/9 − 3 = 6/.test(H4.ucapanBangun(kereta, false, "lengkung", true)) && !/9 − 3/.test(H4.ucapanBangun(kereta, false, "lengkung", false)), "ucapan ambil jenis");
+}
+
+{
+  // Laboratorium Ciri Bentuk di Sub-Bab A: kelompok bentuk memakai kata Sub-Bab A.
+  sama(C4.kelompokBentuk("lingkaran"), "Bentuk lengkung", "kelompok lingkaran");
+  sama(C4.kelompokBentuk("segitiga"), "Segitiga", "kelompok segitiga");
+  sama(C4.kelompokBentuk("persegi"), "Segi empat", "kelompok persegi");
+  sama(C4.kelompokBentuk("persegi-panjang"), "Segi empat", "kelompok persegi panjang");
+  cek(/Campuran/.test(C4.kelompokBentuk("setengah-lingkaran")), "kelompok setengah lingkaran");
+  for (const s of C4.SUSUNAN) {
+    cek(/Ada \d bagian/.test(C4.ucapanSusun(s, false)), `ucapan susun terpisah ${s.id}`);
+    cek(C4.ucapanSusun(s, true).includes(s.kalimat) && /menguraikannya lagi/.test(C4.ucapanSusun(s, true)), `ucapan susun gabung ${s.id}`);
+  }
+  // Papan paku: sudut siku boleh dihilangkan dari ucapan (Sub-Bab A).
+  let papan = P4.papanKosong();
+  for (const t of [[0, 0], [2, 0], [2, 2], [0, 2]]) papan = P4.pasangPaku(papan, t);
+  papan = P4.tutupBentuk(papan);
+  cek(/Sudut siku ada 4/.test(P4.ucapanBentuk(papan, false)) && /Sudut siku ada 4/.test(P4.ucapanBentuk(papan, false, true)), "ucapan papan paku memuat sudut siku bawaan");
+  cek(!/siku/.test(P4.ucapanBentuk(papan, false, false)) && /persegi/.test(P4.ucapanBentuk(papan, false, false)), "ucapan papan paku tanpa sudut siku");
+}
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);
