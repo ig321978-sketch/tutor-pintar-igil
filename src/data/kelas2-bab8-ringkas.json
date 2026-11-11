@@ -1,0 +1,328 @@
+{
+  "chapter_id": "mtk-2-bab8",
+  "phase_code": "FASE_A",
+  "grade": 2,
+  "subject": "Matematika",
+  "title": "Berbagai Diagram",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Diagram Turus",
+          "ikon": "📊",
+          "suara": "Ini peta diagram turus. Data yang berserakan disajikan dengan garis turus supaya mudah dibaca. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "data-kelompok",
+            "judul": "Data dan pengelompokan",
+            "ikon": "🗂️",
+            "ringkas": "Kelompokkan, lalu hitung.",
+            "suara": "Data dan pengelompokan. Data adalah keterangan tentang banyak benda, misalnya buah kesukaan teman. Data yang berserakan sulit dibaca, jadi kita mengelompokkannya menurut jenis. Semua jeruk dikumpulkan dengan jeruk, lalu setiap kelompok dihitung satu per satu."
+          },
+          {
+            "id": "turus-lima",
+            "judul": "Turus dan kelompok lima",
+            "ikon": "✏️",
+            "ringkas": "Satu garis, satu benda.",
+            "suara": "Turus dan kelompok lima. Satu garis tegak mewakili satu benda. Setiap lima data dikelompokkan: empat garis tegak, lalu garis kelima mencoret miring. Delapan data berarti satu kelompok lima dan tiga garis."
+          },
+          {
+            "id": "baca-turus",
+            "judul": "Membaca diagram turus",
+            "ikon": "🔍",
+            "ringkas": "Terpanjang paling banyak.",
+            "suara": "Membaca diagram turus. Hitung garis pada setiap baris. Turus yang paling panjang menunjukkan data paling banyak, dan yang paling pendek menunjukkan data paling sedikit. Dua baris yang sama panjang berarti datanya sama banyak."
+          },
+          {
+            "id": "lebih-kurang",
+            "judul": "Lebihnya dan kurangnya",
+            "ikon": "⚖️",
+            "ringkas": "Bandingkan dua baris.",
+            "suara": "Lebihnya dan kurangnya. Dari diagram turus kita bisa membandingkan dua baris. Kambing delapan dan sapi enam, jadi kambing dua lebihnya dari sapi, dan sapi dua kurangnya dari kambing. Selisihnya dicari dengan mengurangkan."
+          }
+        ],
+        "kartu": [
+          { "id": "a-kumpul", "teks": "Semua jeruk dikumpulkan dengan jeruk", "ikon": "🍊", "cabang": "data-kelompok", "petunjuk": "Mengumpulkan benda yang sejenis itu mengelompokkan data. Coba cabang lain." },
+          { "id": "a-serak", "teks": "Data berserakan sulit dibaca", "ikon": "🗂️", "cabang": "data-kelompok", "petunjuk": "Data yang berserakan perlu dikelompokkan dulu. Coba cabang lain." },
+          { "id": "a-garis", "teks": "Satu garis mewakili satu benda", "ikon": "✏️", "cabang": "turus-lima", "petunjuk": "Garis turus itu turus dan kelompok lima. Coba cabang lain." },
+          { "id": "a-lima", "teks": "Lima: empat garis dan satu coretan miring", "ikon": "🖐️", "cabang": "turus-lima", "petunjuk": "Coretan miring menutup kelompok lima. Coba cabang lain." },
+          { "id": "a-panjang", "teks": "Turus terpanjang berarti paling banyak", "ikon": "📏", "cabang": "baca-turus", "petunjuk": "Membandingkan panjang turus itu membaca diagram. Coba cabang lain." },
+          { "id": "a-sama", "teks": "Lili dan aster sama banyak, yaitu empat", "ikon": "🌼", "cabang": "baca-turus", "petunjuk": "Dua baris yang sama panjang dibaca dari diagram. Coba cabang lain." },
+          { "id": "a-bebek", "teks": "Bebek sebelas, satu lebihnya dari ayam", "ikon": "🦆", "cabang": "lebih-kurang", "petunjuk": "Lebihnya dicari dari dua baris. Coba cabang lain." },
+          { "id": "a-kambing", "teks": "Kambing delapan dan sapi enam selisihnya dua", "ikon": "🐐", "cabang": "lebih-kurang", "petunjuk": "Selisih dua baris itu lebihnya dan kurangnya. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengenal Diagram Turus",
+        "suara": "Ini tiga panel tentang diagram turus. Ketuk kotaknya untuk membuka, lalu bandingkan.",
+        "panel": [
+          {
+            "id": "a-menulis",
+            "tipe": "buka",
+            "judul": "Menulis turus",
+            "ide": "Satu garis, satu benda.",
+            "suara": "Ada empat hal tentang menulis turus. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "garis",
+                "label": "Satu garis",
+                "ikon": "✏️",
+                "isi": "Tiga jeruk ditulis tiga garis.",
+                "suara": "Satu garis tegak mewakili satu benda. Tiga buah jeruk ditulis tiga garis.",
+                "visual": { "jenis": "turus", "n": 3 }
+              },
+              {
+                "id": "lima",
+                "label": "Kelompok lima",
+                "ikon": "🖐️",
+                "isi": "Empat garis dan satu coretan miring.",
+                "suara": "Lima benda ditulis empat garis tegak, lalu garis kelima mencoret miring. Itu satu kelompok lima.",
+                "visual": { "jenis": "turus", "n": 5 }
+              },
+              {
+                "id": "delapan",
+                "label": "Delapan data",
+                "ikon": "8️⃣",
+                "isi": "Satu kelompok lima dan tiga garis.",
+                "suara": "Delapan data ditulis satu kelompok lima dan tiga garis. Kita menghitung lima, lalu enam, tujuh, delapan.",
+                "visual": { "jenis": "turus", "n": 8 }
+              },
+              {
+                "id": "sepuluh",
+                "label": "Sepuluh data",
+                "ikon": "🔟",
+                "isi": "Dua kelompok lima.",
+                "suara": "Sepuluh data berarti dua kelompok lima. Kita menghitung dengan melompat lima-lima.",
+                "visual": { "jenis": "turus", "n": 10 }
+              }
+            ]
+          },
+          {
+            "id": "a-buah",
+            "tipe": "buka",
+            "judul": "Turus buah kesukaan",
+            "ide": "Jeruk paling banyak, anggur paling sedikit.",
+            "suara": "Lili mencatat buah kesukaan temannya dengan turus. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tabel",
+                "label": "Tabel turus",
+                "ikon": "📋",
+                "isi": "Anggur 2, jeruk 6, apel 4, pisang 3.",
+                "suara": "Anggur dua, jeruk enam, apel empat, dan pisang tiga. Banyaknya sama dengan banyak garis turus pada barisnya.",
+                "visual": { "jenis": "tabel-menurun", "judul": "Buah kesukaan", "kepala": ["Buah", "Banyak"], "baris": [["Anggur", 2], ["Jeruk", 6], ["Apel", 4], ["Pisang", 3]] }
+              },
+              {
+                "id": "jeruk",
+                "label": "Jeruk",
+                "ikon": "🍊",
+                "isi": "Enam: satu kelompok lima dan satu garis.",
+                "suara": "Jeruk enam. Turusnya satu kelompok lima dan satu garis. Baris jeruk paling panjang, jadi jeruk paling banyak disukai.",
+                "visual": { "jenis": "turus", "n": 6 }
+              },
+              {
+                "id": "anggur",
+                "label": "Anggur",
+                "ikon": "🍇",
+                "isi": "Dua garis, paling pendek.",
+                "suara": "Anggur dua. Turusnya hanya dua garis. Baris anggur paling pendek, jadi anggur paling sedikit disukai.",
+                "visual": { "jenis": "turus", "n": 2 }
+              }
+            ]
+          },
+          {
+            "id": "a-banding",
+            "tipe": "banding",
+            "judul": "Kambing dan sapi",
+            "ide": "Kambing dua lebihnya dari sapi.",
+            "suara": "Paman Halim punya delapan kambing dan enam sapi. Bandingkan turus keduanya, lalu lihat lebihnya.",
+            "sisi": [
+              {
+                "id": "kambing",
+                "nama": "Kambing",
+                "ikon": "🐐",
+                "catatan": "Delapan: satu kelompok lima dan tiga garis.",
+                "suara": "Kambing delapan. Turusnya satu kelompok lima dan tiga garis, lebih panjang.",
+                "visual": { "jenis": "turus", "n": 8 }
+              },
+              {
+                "id": "sapi",
+                "nama": "Sapi",
+                "ikon": "🐄",
+                "catatan": "Enam: satu kelompok lima dan satu garis.",
+                "suara": "Sapi enam. Turusnya satu kelompok lima dan satu garis, lebih pendek.",
+                "visual": { "jenis": "turus", "n": 6 }
+              }
+            ],
+            "kesimpulan": "Banyak kambing dua lebihnya dari banyak sapi. Banyak sapi dua kurangnya dari banyak kambing."
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Diagram Gambar",
+          "ikon": "🖍️",
+          "suara": "Ini peta diagram gambar. Data yang sama bisa disajikan dengan gambar, satu gambar untuk satu benda. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "satu-gambar",
+            "judul": "Satu gambar, satu benda",
+            "ikon": "⭐",
+            "ringkas": "Gambar mewakili satu benda.",
+            "suara": "Satu gambar, satu benda. Data yang sama bisa disajikan dengan turus dan dengan gambar. Pada diagram gambar, satu gambar mewakili satu benda. Semua gambar dalam satu diagram harus sama bentuk dan sama ukuran."
+          },
+          {
+            "id": "buat-diagram",
+            "judul": "Membuat diagram gambar",
+            "ikon": "🖍️",
+            "ringkas": "Judul, keterangan, lalu gambar.",
+            "suara": "Membuat diagram gambar. Tulis judul supaya pembaca tahu datanya. Tulis keterangan satu gambar mewakili berapa. Lalu gambar tiap baris dari kiri, tanpa celah, sebanyak datanya."
+          },
+          {
+            "id": "baca-banding",
+            "judul": "Membaca dan membandingkan",
+            "ikon": "📖",
+            "ringkas": "Baris terpanjang paling banyak.",
+            "suara": "Membaca dan membandingkan. Baca judul dan keterangan lebih dulu, lalu hitung gambar pada tiap baris. Baris terpanjang berarti paling banyak. Dua baris yang sama panjang berarti sama banyak. Tulip lima, satu lebihnya dari lili empat."
+          },
+          {
+            "id": "jumlah-sajikan",
+            "judul": "Menjumlahkan dan menyajikan",
+            "ikon": "🎤",
+            "ringkas": "Jumlahkan, lalu presentasikan.",
+            "suara": "Menjumlahkan dan menyajikan. Diagram juga dipakai untuk mencari jumlah. Apel tiga dan jeruk empat jumlahnya tujuh. Setelah itu kita mempresentasikan data: sebutkan judul, yang paling banyak, dan lebihnya."
+          }
+        ],
+        "kartu": [
+          { "id": "b-sama-data", "teks": "Data sama, bentuk penyajiannya berbeda", "ikon": "🔁", "cabang": "satu-gambar", "petunjuk": "Turus berganti gambar itu satu gambar, satu benda. Coba cabang lain." },
+          { "id": "b-ukuran", "teks": "Semua gambar sama bentuk dan ukuran", "ikon": "🎨", "cabang": "satu-gambar", "petunjuk": "Gambar yang seragam itu satu gambar, satu benda. Coba cabang lain." },
+          { "id": "b-judul", "teks": "Tulis judul dan keterangan", "ikon": "🏷️", "cabang": "buat-diagram", "petunjuk": "Judul dan keterangan dipakai saat membuat diagram. Coba cabang lain." },
+          { "id": "b-kiri", "teks": "Gambar dari kiri tanpa celah", "ikon": "🖍️", "cabang": "buat-diagram", "petunjuk": "Menggambar rapi itu membuat diagram. Coba cabang lain." },
+          { "id": "b-baca-dulu", "teks": "Baca judul dan keterangan lebih dulu", "ikon": "📖", "cabang": "baca-banding", "petunjuk": "Membaca diagram dimulai dari judul. Coba cabang lain." },
+          { "id": "b-tulip", "teks": "Tulip lima, satu lebihnya dari lili", "ikon": "🌷", "cabang": "baca-banding", "petunjuk": "Membandingkan dua baris itu membaca dan membandingkan. Coba cabang lain." },
+          { "id": "b-tujuh", "teks": "Apel tiga dan jeruk empat jumlahnya tujuh", "ikon": "🍎", "cabang": "jumlah-sajikan", "petunjuk": "Menjumlahkan data ada di cabang menjumlahkan. Coba cabang lain." },
+          { "id": "b-presentasi", "teks": "Presentasi: judul, paling banyak, lebihnya", "ikon": "🎤", "cabang": "jumlah-sajikan", "petunjuk": "Menyampaikan hasil data itu menyajikan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengenal Diagram Gambar",
+        "suara": "Ini tiga panel tentang diagram gambar. Ketuk kotaknya untuk membuka, lalu bandingkan.",
+        "panel": [
+          {
+            "id": "b-gambar",
+            "tipe": "buka",
+            "judul": "Diagram gambar buah",
+            "ide": "Satu gambar mewakili satu anak.",
+            "suara": "Ada empat hal tentang diagram gambar. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "mewakili",
+                "label": "Satu gambar",
+                "ikon": "⭐",
+                "isi": "Satu gambar mewakili satu anak.",
+                "suara": "Pada diagram gambar, satu gambar mewakili satu anak. Jeruk enam berarti enam gambar pada barisnya.",
+                "visual": { "jenis": "teks", "isi": "1 gambar = 1 anak" }
+              },
+              {
+                "id": "baris",
+                "label": "Semua baris",
+                "ikon": "🍊",
+                "isi": "Anggur 2, jeruk 6, apel 4, pisang 3.",
+                "suara": "Anggur dua gambar, jeruk enam gambar, apel empat gambar, dan pisang tiga gambar. Barisnya makin panjang bila datanya makin banyak.",
+                "visual": {
+                  "jenis": "diagram",
+                  "arah": "mendatar",
+                  "kat": [{ "nama": "Anggur", "jenis": "jeruk" }, { "nama": "Jeruk", "jenis": "jeruk" }, { "nama": "Apel", "jenis": "apel" }, { "nama": "Pisang", "jenis": "mangga" }],
+                  "jumlah": [2, 6, 4, 3],
+                  "lambang": "bulat"
+                }
+              },
+              {
+                "id": "sama",
+                "label": "Turus dan gambar",
+                "ikon": "🪜",
+                "isi": "Jeruk enam, banyaknya sama di keduanya.",
+                "suara": "Jeruk enam ditulis satu kelompok lima dan satu garis pada turus, dan enam gambar pada diagram gambar. Banyaknya sama.",
+                "visual": { "jenis": "turus", "n": 6 }
+              },
+              {
+                "id": "ket",
+                "label": "Judul dan keterangan",
+                "ikon": "🏷️",
+                "isi": "Diagram wajib berjudul dan berketerangan.",
+                "suara": "Diagram wajib punya judul dan keterangan. Judul memberi tahu datanya. Keterangan memberi tahu satu gambar mewakili berapa.",
+                "visual": { "jenis": "teks", "isi": "Judul + keterangan wajib" }
+              }
+            ]
+          },
+          {
+            "id": "b-bunga",
+            "tipe": "buka",
+            "judul": "Bunga kebun Tika",
+            "ide": "Mawar paling banyak.",
+            "suara": "Tika menata bunga di kebun. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tabel",
+                "label": "Tabel bunga",
+                "ikon": "📋",
+                "isi": "Mawar 7, lili 4, tulip 5, aster 4.",
+                "suara": "Mawar tujuh, lili empat, tulip lima, dan aster empat. Jumlah semua bunga ada dua puluh.",
+                "visual": { "jenis": "tabel-menurun", "judul": "Bunga Tika", "kepala": ["Bunga", "Banyak"], "baris": [["Mawar", 7], ["Lili", 4], ["Tulip", 5], ["Aster", 4]] }
+              },
+              {
+                "id": "sama",
+                "label": "Lili dan aster",
+                "ikon": "🌼",
+                "isi": "Sama-sama empat, jadi sama banyak.",
+                "suara": "Lili empat dan aster empat. Dua baris sama panjang berarti datanya sama banyak.",
+                "visual": { "jenis": "turus", "n": 4 }
+              },
+              {
+                "id": "paling",
+                "label": "Paling banyak",
+                "ikon": "🌹",
+                "isi": "Mawar tujuh, barisnya paling panjang.",
+                "suara": "Mawar tujuh. Barisnya paling panjang, jadi mawar adalah bunga yang paling banyak.",
+                "visual": { "jenis": "turus", "n": 7 }
+              }
+            ]
+          },
+          {
+            "id": "b-banding",
+            "tipe": "banding",
+            "judul": "Tulip dan lili",
+            "ide": "Tulip satu lebihnya dari lili.",
+            "suara": "Tika punya lima tulip dan empat lili. Bandingkan baris keduanya, lalu lihat lebihnya.",
+            "sisi": [
+              {
+                "id": "tulip",
+                "nama": "Tulip",
+                "ikon": "🌷",
+                "catatan": "Lima gambar, satu kelompok lima.",
+                "suara": "Tulip lima. Barisnya lima gambar, sedikit lebih panjang.",
+                "visual": { "jenis": "turus", "n": 5 }
+              },
+              {
+                "id": "lili",
+                "nama": "Lili",
+                "ikon": "🌸",
+                "catatan": "Empat gambar, satu lebih pendek.",
+                "suara": "Lili empat. Barisnya empat gambar, satu lebih pendek dari tulip.",
+                "visual": { "jenis": "turus", "n": 4 }
+              }
+            ],
+            "kesimpulan": "Banyak tulip satu lebihnya dari banyak lili. Banyak lili satu kurangnya dari banyak tulip."
+          }
+        ]
+      }
+    }
+  }
+}
