@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
+import type { KeadaanKelompok } from "./misi-bab4";
 import { Cek, CobaIni, KARTU, Pilihan, TOMBOL_BIASA } from "./simulasi-bersama";
 import { KalimatBesar } from "./komponen-lab";
 import {
@@ -72,10 +73,13 @@ export function BlokSvg({ b, kelas = "h-10 w-10" }: { b: Blok; kelas?: string })
 export default function SimulasiKelompok({
   speakGuru,
   tampil = SEMUA_TAMPIL_KELOMPOK,
+  onKeadaan,
 }: {
   speakGuru: (t: string) => void;
   /** Perwakilan yang tersedia. Bawaan: semuanya. */
   tampil?: TampilKelompok[];
+  /** Melapor keadaan ke papan misi (bila ada). */
+  onKeadaan?: (k: KeadaanKelompok) => void;
 }) {
   const [aturan, setAturan] = useState<Aturan>("bentuk");
   const [terpilih, setTerpilih] = useState<number | null>(null);
@@ -85,6 +89,11 @@ export default function SimulasiKelompok({
   const lihat = (k: TampilKelompok) => tampil.includes(k) && lihatMentah[k];
   const bisaDiatur = tersedia.length > 1;
   const coba = langkahCoba(tampil);
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  useEffect(() => {
+    lapor.current?.({ alat: "kelompok", aturan, terpilih });
+  }, [aturan, terpilih]);
 
   const kelompok = kelompokkan(aturan);
   const blok = BLOK.find((b) => b.id === terpilih) ?? null;

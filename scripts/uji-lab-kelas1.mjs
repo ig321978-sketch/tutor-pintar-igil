@@ -25,6 +25,7 @@ import * as M7 from "../src/components/modul/misi-bab7.ts";
 import * as M1 from "../src/components/modul/misi-bab1.ts";
 import * as X2 from "../src/components/modul/misi-bab2.ts";
 import * as X3 from "../src/components/modul/misi-bab3.ts";
+import * as X4 from "../src/components/modul/misi-bab4.ts";
 let gagal = 0;
 let lulus = 0;
 const cek = (kondisi, pesan) => {
@@ -1258,6 +1259,37 @@ function ujiStruktur(nama, daftarFn, subs, awalSub) {
   cek(ada("C", C({ t: 10, k: 4 }), "c-sepuluh") && ada("C", C({ t: 8, k: 8 }), "c-nol"), "bab3 C: bebas");
   cek(ada("D", K3({ ...penuh, t: 8, k: 2 }), "d-cerita") && ada("D", K3({ ...penuh, t: 7, k: 5 }), "d-dicari") && ada("D", K3({ ...penuh, t: 6, k: 2 }), "d-periksa"), "bab3 D: cerita, dicari, periksa");
   cek(ada("D", SEL("pesta"), "d-pesta") && ada("D", SEL("bus"), "d-bus") && ada("D", K3({ ...penuh, t: 4, k: 4 }), "d-ingat"), "bab3 D: pesta, bus, ingat");
+}
+
+/* ---------------- Misi Bab 4 (hibrida) ---------------- */
+{
+  const kosong = new Set();
+  const Ci = (o) => ({ alat: "ciri", id: "persegi", putar: 0, skala: 1, sisi: true, sudut: true, menyusun: false, idSusun: "dua-segitiga", gabung: false, ...o });
+  const Pk = (o) => ({ alat: "paku", tertutup: false, bentuk: null, ...o });
+  const Kl = (o) => ({ alat: "kelompok", aturan: "bentuk", terpilih: null, ...o });
+  const Bg = (o) => ({ alat: "bangun", id: "kereta", urai: false, jenis: null, diambil: false, ...o });
+  const SEL = (id) => ({ alat: "selesai", id });
+  const semuaAwal = [Ci({}), Ci({ menyusun: true }), Pk({}), Kl({}), Bg({})];
+  for (const sub of ["A", "B", "C"]) {
+    const daftar = X4.daftarMisiBab4(sub);
+    for (const k of semuaAwal) cek(M0.misiBaru(daftar, k, kosong).length === 0, `bab4 ${sub}: keadaan awal ${k.alat} tidak memenuhi misi`);
+  }
+  ujiStruktur("bab4", X4.daftarMisiBab4, ["A", "B", "C"], { A: Ci({}), B: Ci({}), C: Ci({ menyusun: true }) });
+  const ada = (sub, k, id) => M0.misiBaru(X4.daftarMisiBab4(sub), k, kosong).includes(id);
+  cek(ada("A", Ci({ putar: 90 }), "a-putar") && !ada("A", Ci({ putar: 90, id: "segitiga" }), "a-putar"), "bab4 A: putar persegi");
+  cek(ada("A", Ci({ id: "segitiga", skala: 3 }), "a-besar") && !ada("A", Ci({ id: "segitiga", skala: 2 }), "a-besar"), "bab4 A: besarkan segitiga");
+  cek(ada("A", Ci({ id: "lingkaran" }), "a-lingkaran"), "bab4 A: lingkaran");
+  cek(ada("A", Pk({ tertutup: true, bentuk: "Segitiga" }), "a-segitiga") && ada("A", Pk({ tertutup: true, bentuk: "Persegi" }), "a-persegi") && ada("A", Pk({ tertutup: true, bentuk: "Bentuk lengkung" }), "a-lengkung"), "bab4 A: papan paku");
+  cek(!ada("A", Pk({ tertutup: false, bentuk: "Segitiga" }), "a-segitiga"), "bab4 A: karet harus ditutup");
+  cek(ada("A", Ci({ sisi: false, sudut: false }), "a-polos") && !ada("A", Ci({ sisi: false }), "a-polos"), "bab4 A: polos");
+  cek(ada("B", Kl({ aturan: "warna" }), "b-warna") && ada("B", Kl({ aturan: "ukuran" }), "b-ukuran") && ada("B", Kl({ terpilih: 3 }), "b-blok"), "bab4 B: kelompok");
+  cek(ada("B", Kl({ aturan: "warna", terpilih: 2 }), "b-ganti") && !ada("B", Kl({ terpilih: 2 }), "b-ganti"), "bab4 B: ganti aturan setelah memilih balok");
+  cek(ada("B", Pk({ tertutup: true, bentuk: "Segitiga" }), "b-ingat-papan") && ada("B", Ci({ putar: 180 }), "b-ingat-putar"), "bab4 B: ingat A");
+  cek(ada("C", Ci({ menyusun: true, idSusun: "dua-segitiga", gabung: true }), "c-segitiga") && !ada("C", Ci({ menyusun: false, gabung: true }), "c-segitiga"), "bab4 C: dua segitiga");
+  cek(ada("C", Ci({ menyusun: true, idSusun: "dua-persegi", gabung: true }), "c-persegi"), "bab4 C: dua persegi");
+  cek(ada("C", Bg({ urai: true }), "c-kereta") && !ada("C", Bg({ urai: false }), "c-kereta") && ada("C", Bg({ id: "rumah-lidi", urai: true }), "c-lidi"), "bab4 C: urai");
+  cek(ada("C", SEL("arsitek"), "c-arsitek") && ada("C", Bg({ urai: true, jenis: "segitiga", diambil: true }), "c-ambil"), "bab4 C: arsitek dan ambil");
+  cek(ada("C", Pk({ tertutup: true, bentuk: "Persegi panjang" }), "c-panjang") && ada("C", Kl({ aturan: "warna" }), "c-ingat-warna"), "bab4 C: ingat A dan B");
 }
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);

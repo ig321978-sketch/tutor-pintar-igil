@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
+import type { KeadaanBangun } from "./misi-bab4";
 import { Cek, CobaIni, KARTU, Pilihan, TOMBOL_BIASA } from "./simulasi-bersama";
 import { KalimatBesar, ejaHitung } from "./komponen-lab";
 import { BANGUN, bangunDari, hitungJenis, kalimatKurang, kalimatTambah, totalBagian, ucapanBangun } from "./lab-gabung-bab4";
@@ -21,7 +22,7 @@ const COBA = [
 /* lab-gabung-bab4.ts. Tanpa jaringan.                                        */
 /* ------------------------------------------------------------------------ */
 
-export default function SimulasiBangunGabungan({ speakGuru }: { speakGuru: (t: string) => void }) {
+export default function SimulasiBangunGabungan({ speakGuru, onKeadaan }: { speakGuru: (t: string) => void; onKeadaan?: (k: KeadaanBangun) => void }) {
   const [idBangun, setIdBangun] = useState("kereta");
   const [urai, setUrai] = useState(false);
   const [jenis, setJenis] = useState<string | null>(null);
@@ -34,6 +35,11 @@ export default function SimulasiBangunGabungan({ speakGuru }: { speakGuru: (t: s
   const total = totalBagian(bangun);
   const kurang = jenis && diambil ? kalimatKurang(bangun, jenis) : null;
   const ucapan = ucapanBangun(bangun, urai, jenis, diambil);
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  useEffect(() => {
+    lapor.current?.({ alat: "bangun", id: idBangun, urai, jenis, diambil });
+  }, [idBangun, urai, jenis, diambil]);
 
   const pilihBangun = (id: string) => {
     setIdBangun(id);

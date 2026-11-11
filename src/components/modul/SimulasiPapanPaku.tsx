@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
+import type { KeadaanPaku } from "./misi-bab4";
 import { Cek, CobaIni, KARTU, TOMBOL_BIASA, TOMBOL_UTAMA } from "./simulasi-bersama";
 import {
   ANALISIS_LENGKUNG,
@@ -28,7 +29,7 @@ const JARAK = 60;
 const TEPI = 30;
 const px = (p: Titik): [number, number] => [TEPI + p[0] * JARAK, TEPI + p[1] * JARAK];
 
-export default function SimulasiPapanPaku({ speakGuru, tampilSiku = true }: { speakGuru: (t: string) => void; /** Sudut siku belum diajarkan di Sub-Bab A, jadi di dalam Materi bisa dimatikan. */ tampilSiku?: boolean }) {
+export default function SimulasiPapanPaku({ speakGuru, tampilSiku = true, onKeadaan }: { speakGuru: (t: string) => void; /** Sudut siku belum diajarkan di Sub-Bab A, jadi di dalam Materi bisa dimatikan. */ tampilSiku?: boolean; /** Melapor keadaan ke papan misi (bila ada). */ onKeadaan?: (k: KeadaanPaku) => void }) {
   const [papan, setPapan] = useState<Papan>(papanKosong);
   const [lengkung, setLengkung] = useState(false);
   const [tercapai, setTercapai] = useState<string[]>([]);
@@ -42,6 +43,12 @@ export default function SimulasiPapanPaku({ speakGuru, tampilSiku = true }: { sp
   };
 
   const ringkas = papan.tertutup ? (lengkung ? ANALISIS_LENGKUNG : analisis(papan.titik)) : null;
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  const namaBentuk = ringkas?.nama ?? null;
+  useEffect(() => {
+    lapor.current?.({ alat: "paku", tertutup: papan.tertutup, bentuk: namaBentuk });
+  }, [papan.tertutup, namaBentuk]);
   const jalur = jalurKaret(papan.titik, papan.tertutup, lengkung, px);
   const pakuPertama = papan.titik[0];
 

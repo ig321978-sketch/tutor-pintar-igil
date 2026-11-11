@@ -2,108 +2,66 @@
 
 import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
-import SimulasiPapanPaku from "./SimulasiPapanPaku";
+import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiCiriBentuk from "./SimulasiCiriBentuk";
+import SimulasiPapanPaku from "./SimulasiPapanPaku";
 import SimulasiKelompok from "./SimulasiKelompok";
 import SimulasiBangunGabungan from "./SimulasiBangunGabungan";
 import SimulasiSkenario from "./SimulasiSkenario";
 import { SKENARIO_BAB4 } from "./skenario-kelas1";
+import { daftarMisiBab4, type KeadaanBab4 } from "./misi-bab4";
+import { laporMisi, tampilMisi } from "./misi-simulasi";
 
 /* ======================================================================== */
 /* Simulasi Bab 4 di dalam Materi (tahap 4 SMISCPA, di antara Infografis    */
-/* dan Concrete). Satu simulasi per layar, tiap simulasi diawali satu Misi. */
-/* Tiap sub-bab memakai alat yang sesuai isi yang diajarkannya:            */
-/*   Sub-Bab A (Mendeskripsikan Benda): Laboratorium Ciri Bentuk (empat     */
-/*     bentuk dasar, sisi dan sudut), lalu Papan Paku Bebas (lab 2D).       */
-/*   Sub-Bab B (Mengelompokkan Benda): Laboratorium Kelompok, dua kali:     */
-/*     satu aturan dengan tabel hitung, lalu satu balok dengan banyak       */
-/*     kelompok.                                                            */
-/*   Sub-Bab C (Menyusun dan Mengurai): Menyusun Bentuk, Bangun Gabungan    */
-/*     (hitung bagian), lalu skenario Arsitek Cilik yang merangkum bab.     */
-/* Tombol LANJUTKAN aktif setelah simulasinya disentuh sekali (semua mode   */
-/* "sentuh"), supaya tahap ini ringan dan tidak menahan anak.               */
+/* dan Concrete). Pola hibrida: satu laboratorium bentuk yang alatnya       */
+/* bertambah per sub-bab, dengan misi wajib dan tantangan bebas             */
+/* (misi-bab4.ts).                                                          */
+/*   Sub-Bab A (Mengenal Bentuk): tab Ciri Bentuk dan Papan Paku.           */
+/*   Sub-Bab B (Mengelompokkan): + tab Kelompok.                            */
+/*   Sub-Bab C (Menyusun Bentuk, sub-bab akhir): + menyusun bentuk,         */
+/*     tab Bangun Gabungan dan Arsitek Cilik, sekaligus simulasi            */
+/*     pencapaian misi bab ini.                                             */
+/* Tombol LANJUTKAN aktif bila misi wajib tercapai, atau anak memilih       */
+/* "Lewati misi" setelah mencoba. Simulasi tidak memberi Poin Kualifikasi.  */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
 const MISI = {
-  ciri: "Tekan Putar 90°. Lihat apakah jumlah sisi dan sudutnya berubah.",
-  papan: "Ketuk empat paku, lalu tekan Tutup bentuk. Lihat nama bentuknya.",
-  kelompokSatu: "Ketuk Warna. Lihat balok yang sama pindah ke nampan baru.",
-  kelompokBanyak: "Ketuk satu balok. Lihat kelompoknya menurut bentuk, warna, dan ukuran.",
-  susun: "Pilih 2 segitiga, lalu centang Gabungkan bagian. Bentuk apa yang lahir?",
-  gabungan: "Tekan Uraikan bangun. Lihat bagian-bagian kereta.",
-  arsitek: "Tekan Ayo membangun! Lalu bantu Pak Arsitek memilih bentuk.",
+  A: "Putar dan besarkan bentuk, lalu buat bentuk di Papan Paku. Selesaikan misi di bawah, urutannya bebas.",
+  B: "Kelompokkan balok dengan satu aturan, lalu ganti aturannya. Selesaikan misi wajib, lalu coba tantangan bebas.",
+  C: "Susun bentuk, uraikan bangun, dan bantu Pak Arsitek. Selesaikan semua misi wajib, lalu coba tantangan bebas.",
 } as const;
 
 const langkahBab4 = (sub: string): LangkahSim[] => {
-  switch (sub) {
-    case "B":
-      return [
-        {
-          metode: "PhET",
-          sub: "Kelompok Satu Aturan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.kelompokSatu,
-          mode: "sentuh",
-          render: (a) => <SimulasiKelompok speakGuru={a.speakGuru} tampil={["benda", "tabel"]} />,
-        },
-        {
-          metode: "PhET",
-          sub: "Satu Balok, Banyak Kelompok",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.kelompokBanyak,
-          mode: "sentuh",
-          render: (a) => <SimulasiKelompok speakGuru={a.speakGuru} tampil={["benda", "ciri", "kalimat"]} />,
-        },
-      ];
-    case "C":
-      return [
-        {
-          metode: "PhET",
-          sub: "Menyusun Bentuk",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.susun,
-          mode: "sentuh",
-          render: (a) => <SimulasiCiriBentuk speakGuru={a.speakGuru} tampil={["menyusun"]} />,
-        },
-        {
-          metode: "PhET",
-          sub: "Bangun Gabungan",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.gabungan,
-          mode: "sentuh",
-          render: (a) => <SimulasiBangunGabungan speakGuru={a.speakGuru} />,
-        },
-        {
-          metode: "Skenario",
-          sub: "Arsitek Cilik",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.arsitek,
-          mode: "sentuh",
-          render: (a) => <SimulasiSkenario def={SKENARIO_BAB4} speakGuru={a.speakGuru} onTuntas={a.tuntas} />,
-        },
-      ];
-    default:
-      return [
-        {
-          metode: "PhET",
-          sub: "Laboratorium Ciri Bentuk",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.ciri,
-          mode: "sentuh",
-          render: (a) => <SimulasiCiriBentuk speakGuru={a.speakGuru} tampil={["ciri"]} />,
-        },
-        {
-          metode: "Lab 2D",
-          sub: "Papan Paku Bebas",
-          petunjuk: MAINKAN_DULU,
-          misi: MISI.papan,
-          mode: "sentuh",
-          render: (a) => <SimulasiPapanPaku speakGuru={a.speakGuru} tampilSiku={false} />,
-        },
-      ];
-  }
+  const huruf = (["A", "B", "C"].includes(sub) ? sub : "A") as "A" | "B" | "C";
+  const daftar = daftarMisiBab4(huruf);
+  return [
+    {
+      metode: "PhET",
+      sub: huruf === "C" ? "Lab Bentuk: Pencapaian Misi" : "Lab Bentuk",
+      petunjuk: MAINKAN_DULU,
+      misi: MISI[huruf],
+      misiDaftar: tampilMisi(daftar),
+      mode: "sentuh",
+      render: (a) => {
+        const lapor = (k: KeadaanBab4) => laporMisi(daftar, k, a.capai);
+        const selesai = (id: string) => lapor({ alat: "selesai", id });
+        const ciri: TabLab = {
+          id: "ciri",
+          nama: huruf === "C" ? "Ciri dan Susun" : "Ciri Bentuk",
+          render: () => <SimulasiCiriBentuk speakGuru={a.speakGuru} tampil={huruf === "C" ? ["ciri", "menyusun"] : ["ciri"]} onKeadaan={lapor} />,
+        };
+        const papan: TabLab = { id: "papan", nama: "Papan Paku", render: () => <SimulasiPapanPaku speakGuru={a.speakGuru} tampilSiku={false} onKeadaan={lapor} /> };
+        const kelompok: TabLab = { id: "kelompok", nama: "Kelompok", render: () => <SimulasiKelompok speakGuru={a.speakGuru} tampil={["benda", "tabel", "ciri", "kalimat"]} onKeadaan={lapor} /> };
+        const bangun: TabLab = { id: "bangun", nama: "Bangun Gabungan", render: () => <SimulasiBangunGabungan speakGuru={a.speakGuru} onKeadaan={lapor} /> };
+        const arsitek: TabLab = { id: "arsitek", nama: "Arsitek Cilik", render: () => <SimulasiSkenario def={SKENARIO_BAB4} speakGuru={a.speakGuru} onTuntas={() => selesai("arsitek")} /> };
+        const tab = huruf === "A" ? [ciri, papan] : huruf === "B" ? [ciri, papan, kelompok] : [ciri, papan, kelompok, bangun, arsitek];
+        return <LabBertahap tab={tab} label="Alat laboratorium bentuk" />;
+      },
+    },
+  ];
 };
 
 /** Misi simulasi pertama sub-bab, untuk digabung ke ucapan saat tahap Simulasi dibuka. */

@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
+import type { KeadaanCiri } from "./misi-bab4";
 import { Cek, CobaIni, KARTU, Pilihan, TOMBOL_BIASA } from "./simulasi-bersama";
 import { Pengatur } from "./komponen-lab";
 import { BENTUK, SKALA_MAKS, SKALA_MIN, SUSUNAN, bentukDari, ciriBentuk, kelompokBentuk, poseAwal, putar90, ubahSkala, ucapanCiri, ucapanSusun, type IdBentuk, type Pose } from "./lab-ciri-bab4";
@@ -102,10 +103,13 @@ function langkahCoba(tampil: TampilCiri[]): string[] {
 export default function SimulasiCiriBentuk({
   speakGuru,
   tampil = SEMUA_TAMPIL_CIRI,
+  onKeadaan,
 }: {
   speakGuru: (t: string) => void;
   /** Bagian yang tersedia. Bawaan: keduanya (tab Simulasi lama). */
   tampil?: TampilCiri[];
+  /** Melapor keadaan ke papan misi (bila ada). */
+  onKeadaan?: (k: KeadaanCiri) => void;
 }) {
   const [id, setId] = useState<IdBentuk>("persegi");
   const [pose, setPose] = useState<Pose>(poseAwal);
@@ -125,6 +129,11 @@ export default function SimulasiCiriBentuk({
   const skala = 0.55 + pose.skala * 0.25;
   const s = SUSUNAN[susun];
   const ucapan = adaCiri ? ucapanCiri(id, pose) : ucapanSusun(s, gabung);
+  const lapor = useRef(onKeadaan);
+  lapor.current = onKeadaan;
+  useEffect(() => {
+    lapor.current?.({ alat: "ciri", id, putar: pose.putar, skala: pose.skala, sisi: garis.sisi, sudut: garis.sudut, menyusun: adaSusun, idSusun: s.id, gabung });
+  }, [id, pose.putar, pose.skala, garis.sisi, garis.sudut, adaSusun, s.id, gabung]);
 
   return (
     <div className="space-y-4">
