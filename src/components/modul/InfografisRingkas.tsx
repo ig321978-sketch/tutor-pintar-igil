@@ -188,7 +188,7 @@ function KotakPanel({
                   aria-pressed={sedang}
                   aria-label={`${b.label}${buka ? ", sudah dibuka" : ", ketuk untuk membuka"}`}
                   onClick={() => onPilih(b.id)}
-                  className={`igil-tanpa-tepi flex flex-col items-center gap-0.5 rounded-2xl border-4 px-1 py-2 text-center ${
+                  className={`flex flex-col items-center gap-0.5 rounded-2xl border-4 px-1 py-2 text-center ${
                     sedang ? "ring-4 ring-[#F0AB00]" : ""
                   } ${buka ? "" : "border-dashed"}`}
                   style={{ borderColor: warna, backgroundColor: buka ? `${warna}22` : "#FFFFFF" }}
@@ -225,7 +225,7 @@ function KotakPanel({
                   aria-pressed={sedang}
                   aria-label={`${s.nama}${dilihat.includes(s.id) ? ", sudah dilihat" : ", ketuk untuk melihat"}`}
                   onClick={() => onPilih(s.id)}
-                  className="igil-tanpa-tepi flex items-center justify-center gap-1.5 rounded-2xl border-4 px-2 py-2.5 text-center"
+                  className="flex items-center justify-center gap-1.5 rounded-2xl border-4 px-2 py-2.5 text-center"
                   style={{
                     borderColor: warna,
                     backgroundColor: sedang ? warna : dilihat.includes(s.id) ? `${warna}22` : "#FFFFFF",

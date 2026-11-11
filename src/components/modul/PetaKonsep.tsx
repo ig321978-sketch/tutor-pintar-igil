@@ -113,9 +113,9 @@ function KartuCabang({
         type="button"
         aria-expanded={dibuka}
         aria-current={aktif ? "true" : undefined}
-        aria-label={`Cabang ${urutan + 1}: ${cabang.judul}${dibuka ? ", sudah dibuka" : ", ketuk untuk membuka"}${menunggu ? ". Ketuk untuk menaruh kartu di sini" : ""}`}
+        aria-label={`Cabang ${urutan + 1}: ${cabang.judul}${menunggu ? ". Ketuk untuk menaruh kartu di sini" : dibuka ? ", sudah dibuka" : ", ketuk untuk membuka"}`}
         onClick={onKetuk}
-        className={`igil-tanpa-tepi relative flex w-full flex-col items-center gap-1 rounded-3xl border-4 px-2 py-2.5 text-center shadow-[0_4px_0_rgba(28,1,165,0.18)] transition-transform ${
+        className={`relative flex w-full flex-col items-center gap-0.5 rounded-3xl border-4 px-2 py-2 text-center shadow-[0_4px_0_rgba(28,1,165,0.18)] transition-transform ${
           aktif ? "scale-[1.03] ring-4 ring-[#F0AB00]" : ""
         } ${menunggu ? "border-dashed" : ""}`}
         style={{ backgroundColor: dibuka ? warna.isi : warna.kartu, borderColor: warna.tepi }}
@@ -211,7 +211,7 @@ export default function PetaKonsep({
       : `🌟 Semua cabang sudah dibuka. Kartu tersusun: ${jumlahTersusun(k)} dari ${data.kartu.length}.`;
 
   return (
-    <div data-igil-peta-ui={IGIL_PETA_KONSEP_UI} data-igil-peta-kelas={kls}>
+    <div data-igil-peta-ui={IGIL_PETA_KONSEP_UI} data-igil-peta-kelas={kls} role="region" aria-label={`Mind-Map ${judul}`}>
       <BingkaiTahap tahap={2} className="space-y-2.5">
         <div className="flex items-end gap-2">
           {maskot}
@@ -219,16 +219,11 @@ export default function PetaKonsep({
             type="button"
             onClick={() => speakGuru(data.petunjuk)}
             aria-label={`Dengarkan: ${data.petunjuk}`}
-            className="igil-tanpa-tepi flex min-w-0 flex-1 items-center gap-2 rounded-3xl rounded-bl-md border-4 border-[#1C01A5] bg-white px-3 py-2 text-left text-sm font-black leading-snug text-[#1C01A5]"
+            className="flex min-w-0 flex-1 items-center gap-2 rounded-3xl rounded-bl-md border-4 border-[#1C01A5] bg-white px-3 py-2 text-left text-sm font-black leading-snug text-[#1C01A5]"
           >
             <span className="min-w-0 flex-1">{data.petunjuk}</span>
             <LencanaSuara kelas="h-8 w-8" />
           </button>
-        </div>
-
-        <div className="mx-auto w-fit max-w-full rounded-[2rem] border-4 border-[#1C01A5] bg-[#FFE566] px-4 py-1.5 text-center shadow-[0_4px_0_rgba(28,1,165,0.25)]">
-          <p className="text-[10px] font-black tracking-widest text-[#1C01A5]/70">MIND-MAP</p>
-          <p className="text-base font-black leading-tight text-[#1C01A5]">{judul}</p>
         </div>
 
         <div className="flex justify-center">
@@ -236,7 +231,7 @@ export default function PetaKonsep({
             type="button"
             onClick={() => speakGuru(data.pusat.suara)}
             aria-label={`Pusat peta: ${data.pusat.judul}. Ketuk untuk mendengar`}
-            className="igil-tanpa-tepi flex items-center gap-2 rounded-full border-4 border-[#FFE566] px-5 py-2 shadow-[0_5px_0_rgba(28,1,165,0.3)]"
+            className="flex items-center gap-2 rounded-full border-4 border-[#FFE566] px-5 py-2 shadow-[0_5px_0_rgba(28,1,165,0.3)]"
             style={{ backgroundColor: PUSAT_KELAS[kls] }}
           >
             <span className="text-3xl leading-none" aria-hidden="true">
@@ -360,18 +355,14 @@ export default function PetaKonsep({
           </p>
         ) : null}
 
-        <div className="flex items-center justify-center gap-2" aria-label={`${k.dibuka.length} dari ${total} cabang dibuka`}>
-          {data.cabang.map((c) => (
-            <span key={c.id} className="text-2xl" aria-hidden="true">
-              {k.dibuka.includes(c.id) ? "⭐" : "☆"}
-            </span>
-          ))}
-        </div>
         <p
           className={`rounded-2xl border-4 px-3 py-1.5 text-center text-sm font-black leading-snug ${
             siap ? "igil-muncul border-[#7FCB96] bg-[#E8F7EE] text-[#14532D]" : "border-dashed border-[#1C01A5]/40 bg-white/80 text-[#1C01A5]"
           }`}
         >
+          <span aria-hidden="true" className="mr-1.5 text-lg">
+            {data.cabang.map((c) => (k.dibuka.includes(c.id) ? "⭐" : "☆")).join("")}
+          </span>
           {status}
         </p>
       </BingkaiTahap>
