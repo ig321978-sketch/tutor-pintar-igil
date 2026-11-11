@@ -1,0 +1,922 @@
+{
+  "chapter_id": "mtk-1-bab5",
+  "phase_code": "FASE_A",
+  "grade": 1,
+  "subject": "Matematika",
+  "title": "Ayo Membilang sampai dengan 20",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Bilangan sampai 20",
+          "ikon": "🔢",
+          "suara": "Ini peta bilangan sampai dua puluh. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "sepuluh",
+            "judul": "Sepuluh dulu",
+            "ikon": "📦",
+            "ringkas": "Isi satu kotak sampai penuh sepuluh.",
+            "suara": "Isi dulu kotak dengan sepuluh benda sampai penuh. Kotak yang penuh sudah sepuluh, jadi tidak perlu dihitung lagi. Lalu hitung benda yang ada di luar kotak."
+          },
+          {
+            "id": "nama",
+            "judul": "Nama dan lambang",
+            "ikon": "🗣️",
+            "ringkas": "Sebelas, dua belas, lalu tiga belas dan seterusnya.",
+            "suara": "Setelah sebelas dan dua belas, nama bilangan memakai kata belas, seperti tiga belas, empat belas, dan lima belas. Belas berarti sepuluh dan beberapa lagi. Lambangnya ditulis dengan angka."
+          },
+          {
+            "id": "duapuluh",
+            "judul": "Dua puluh",
+            "ikon": "🏁",
+            "ringkas": "Dua kotak penuh: sepuluh ditambah sepuluh.",
+            "suara": "Kalau benda di luar kotak sudah sepuluh, isi satu kotak lagi sampai penuh. Dua kotak penuh berarti sepuluh ditambah sepuluh. Hasilnya dua puluh, bilangan terbesar di bab ini."
+          },
+          {
+            "id": "garis",
+            "judul": "Garis bilangan",
+            "ikon": "📏",
+            "ringkas": "Sebelas sampai dua puluh ada setelah sepuluh.",
+            "suara": "Di garis bilangan, bilangan sebelas sampai dua puluh berada setelah sepuluh, ke arah kanan. Kita bisa menunjuk letak setiap bilangan."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "a-kotak",
+            "teks": "Kotak penuh = 10",
+            "ikon": "📦",
+            "cabang": "sepuluh",
+            "petunjuk": "Kotak yang penuh sudah sepuluh. Itu cabang Sepuluh dulu. Coba cabang lain."
+          },
+          {
+            "id": "a-sisa",
+            "teks": "1 di luar kotak: 10 + 1 = 11",
+            "ikon": "🔴",
+            "cabang": "sepuluh",
+            "petunjuk": "Sepuluh di kotak, lalu hitung sisanya. Itu cabang Sepuluh dulu. Coba cabang lain."
+          },
+          {
+            "id": "a-nama",
+            "teks": "Tiga belas ditulis 13",
+            "ikon": "🔢",
+            "cabang": "nama",
+            "petunjuk": "Menyebut dan menulis bilangan itu cabang Nama dan lambang. Coba cabang lain."
+          },
+          {
+            "id": "a-belas",
+            "teks": "Kata belas: sepuluh dan beberapa",
+            "ikon": "💬",
+            "cabang": "nama",
+            "petunjuk": "Kata belas ada pada nama bilangan. Itu cabang Nama dan lambang. Coba cabang lain."
+          },
+          {
+            "id": "a-dua",
+            "teks": "Dua kotak penuh",
+            "ikon": "🗃️",
+            "cabang": "duapuluh",
+            "petunjuk": "Dua kotak penuh itu dua puluh. Coba cabang lain."
+          },
+          {
+            "id": "a-sepuluh2",
+            "teks": "10 + 10 = 20",
+            "ikon": "➕",
+            "cabang": "duapuluh",
+            "petunjuk": "Sepuluh ditambah sepuluh itu dua puluh. Coba cabang lain."
+          },
+          {
+            "id": "a-lima",
+            "teks": "15 ada di kanan angka 10",
+            "ikon": "👉",
+            "cabang": "garis",
+            "petunjuk": "Letak bilangan di garis itu cabang Garis bilangan. Coba cabang lain."
+          },
+          {
+            "id": "a-ujung",
+            "teks": "20 di ujung garis 10 sampai 20",
+            "ikon": "📍",
+            "cabang": "garis",
+            "petunjuk": "Menunjuk letak 20 di garis itu cabang Garis bilangan. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Menghitung sampai 20",
+        "suara": "Ini tiga panel tentang bilangan sampai dua puluh. Ketuk kotaknya untuk membuka.",
+        "panel": [
+          {
+            "id": "a-sepuluh",
+            "tipe": "buka",
+            "judul": "Sepuluh dulu, lalu sisanya",
+            "ide": "Kotak penuh, lalu hitung sisanya.",
+            "suara": "Hitung dengan cara sepuluh dulu. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "kotak",
+                "label": "Kotak penuh",
+                "ikon": "📦",
+                "isi": "Isi kotak sampai sepuluh.",
+                "suara": "Isi satu kotak sampai penuh. Isinya sepuluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 kotak = 10"
+                }
+              },
+              {
+                "id": "sisa",
+                "label": "Sisa di luar",
+                "ikon": "🔴",
+                "isi": "Hitung benda di luar kotak.",
+                "suara": "Hitung benda di luar kotak. Misalnya ada tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 di luar kotak"
+                }
+              },
+              {
+                "id": "jumlah",
+                "label": "Jumlahnya",
+                "ikon": "➕",
+                "isi": "Sepuluh ditambah sisanya.",
+                "suara": "Sepuluh ditambah tiga sama dengan tiga belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 + 3 = 13"
+                }
+              }
+            ]
+          },
+          {
+            "id": "a-nama",
+            "tipe": "buka",
+            "judul": "Nama dan lambang bilangan",
+            "ide": "Belas berarti sepuluh dan beberapa.",
+            "suara": "Bilangan sebelas sampai dua puluh punya nama dan lambang. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "khusus",
+                "label": "11 dan 12",
+                "ikon": "🗣️",
+                "isi": "Punya nama sendiri.",
+                "suara": "Sebelas dan dua belas punya nama sendiri.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "11 sebelas • 12 dua belas"
+                }
+              },
+              {
+                "id": "belas",
+                "label": "13 sampai 19",
+                "ikon": "🔢",
+                "isi": "Namanya memakai kata belas.",
+                "suara": "Tiga belas, empat belas, lima belas, sampai sembilan belas. Semuanya memakai kata belas.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "Contoh nama dan lambang",
+                  "kepala": [
+                    "Nama",
+                    "Lambang"
+                  ],
+                  "baris": [
+                    [
+                      "tiga belas",
+                      13
+                    ],
+                    [
+                      "empat belas",
+                      14
+                    ],
+                    [
+                      "lima belas",
+                      15
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "duapuluh",
+                "label": "20",
+                "ikon": "🏁",
+                "isi": "Dua kotak penuh.",
+                "suara": "Dua puluh. Dua kotak penuh, sepuluh ditambah sepuluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 + 10 = 20"
+                }
+              }
+            ]
+          },
+          {
+            "id": "a-tebak",
+            "tipe": "banding",
+            "judul": "Tebak, lalu buktikan",
+            "ide": "Perkirakan dulu, lalu hitung.",
+            "suara": "Bandingkan dua langkah. Tebak dulu, lalu buktikan dengan menghitung.",
+            "sisi": [
+              {
+                "id": "tebak",
+                "nama": "Tebakan",
+                "ikon": "🤔",
+                "catatan": "Kira-kira ada berapa?",
+                "suara": "Tebakan. Kira-kira ada berapa benda? Jawabannya belum pasti.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Kira-kira 15"
+                }
+              },
+              {
+                "id": "bukti",
+                "nama": "Bukti",
+                "ikon": "✅",
+                "catatan": "Hitung sepuluh dulu, lalu sisanya.",
+                "suara": "Bukti. Hitung sepuluh dulu, lalu sisanya. Sekarang jumlahnya pasti.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 + 7 = 17"
+                }
+              }
+            ],
+            "kesimpulan": "Hitung untuk membuktikan tebakanmu."
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Maju dan Mundur",
+          "ikon": "↔️",
+          "suara": "Ini peta menghitung maju dan mundur. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "maju",
+            "judul": "Menghitung maju",
+            "ikon": "➡️",
+            "ringkas": "Dari kecil ke besar, satu demi satu.",
+            "suara": "Menghitung maju artinya mulai dari bilangan kecil menuju bilangan besar. Langkahnya sama, yaitu satu demi satu. Contohnya sepuluh, sebelas, dua belas."
+          },
+          {
+            "id": "mundur",
+            "judul": "Menghitung mundur",
+            "ikon": "⬅️",
+            "ringkas": "Dari besar ke kecil, satu demi satu.",
+            "suara": "Menghitung mundur artinya mulai dari bilangan besar menuju bilangan kecil. Langkahnya juga sama, satu demi satu. Contohnya lima belas, empat belas, tiga belas."
+          },
+          {
+            "id": "hilang",
+            "judul": "Bilangan yang hilang",
+            "ikon": "🐛",
+            "ringkas": "Satu lebih dari sebelumnya, satu kurang dari sesudahnya.",
+            "suara": "Pada ulat bilangan, ada satu bulatan yang kosong. Bilangan yang hilang satu lebih dari bilangan sebelumnya dan satu kurang dari bilangan sesudahnya."
+          },
+          {
+            "id": "kisi",
+            "judul": "Kisi 1 sampai 20",
+            "ikon": "🧩",
+            "ringkas": "Lima bilangan tiap baris.",
+            "suara": "Kisi bilangan satu sampai dua puluh punya lima bilangan di tiap baris. Membaca dari kiri ke kanan berarti maju. Membaca dari kanan ke kiri berarti mundur."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-malosi",
+            "teks": "Malosi naik: 10, 11, 12",
+            "ikon": "⬆️",
+            "cabang": "maju",
+            "petunjuk": "Dari kecil ke besar itu menghitung maju. Coba cabang lain."
+          },
+          {
+            "id": "b-baris",
+            "teks": "Tiap baris tambah satu kelereng",
+            "ikon": "🔵",
+            "cabang": "maju",
+            "petunjuk": "Bertambah satu demi satu itu menghitung maju. Coba cabang lain."
+          },
+          {
+            "id": "b-kira",
+            "teks": "Kira turun: 15, 14, 13",
+            "ikon": "⬇️",
+            "cabang": "mundur",
+            "petunjuk": "Dari besar ke kecil itu menghitung mundur. Coba cabang lain."
+          },
+          {
+            "id": "b-turun",
+            "teks": "Turun sampai 10: 12, 11, 10",
+            "ikon": "🔽",
+            "cabang": "mundur",
+            "petunjuk": "Berkurang satu demi satu itu menghitung mundur. Coba cabang lain."
+          },
+          {
+            "id": "b-ulat",
+            "teks": "Ulat: 10, 11, ?, 13",
+            "ikon": "❓",
+            "cabang": "hilang",
+            "petunjuk": "Ada bulatan kosong di deret. Itu bilangan yang hilang. Coba cabang lain."
+          },
+          {
+            "id": "b-antara",
+            "teks": "Yang hilang: satu lebih dari 11",
+            "ikon": "🔍",
+            "cabang": "hilang",
+            "petunjuk": "Mencari yang hilang memakai bilangan sebelum dan sesudahnya. Coba cabang lain."
+          },
+          {
+            "id": "b-kanan",
+            "teks": "Kiri ke kanan: maju",
+            "ikon": "👉",
+            "cabang": "kisi",
+            "petunjuk": "Membaca baris di kisi itu cabang Kisi. Coba cabang lain."
+          },
+          {
+            "id": "b-kiri",
+            "teks": "Kanan ke kiri: mundur",
+            "ikon": "👈",
+            "cabang": "kisi",
+            "petunjuk": "Membaca baris di kisi itu cabang Kisi. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Maju dan Mundur",
+        "suara": "Ini tiga panel tentang menghitung maju dan mundur. Ketuk kotaknya untuk membuka.",
+        "panel": [
+          {
+            "id": "b-arah",
+            "tipe": "banding",
+            "judul": "Maju atau mundur?",
+            "ide": "Langkahnya sama, arahnya beda.",
+            "suara": "Bandingkan maju dan mundur. Ketuk kedua kotaknya.",
+            "sisi": [
+              {
+                "id": "maju",
+                "nama": "Maju",
+                "ikon": "➡️",
+                "catatan": "Mulai dari bilangan kecil.",
+                "suara": "Maju. Mulai dari bilangan kecil, naik satu demi satu.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 → 11 → 12 → 13"
+                }
+              },
+              {
+                "id": "mundur",
+                "nama": "Mundur",
+                "ikon": "⬅️",
+                "catatan": "Mulai dari bilangan besar.",
+                "suara": "Mundur. Mulai dari bilangan besar, turun satu demi satu.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "15 → 14 → 13 → 12"
+                }
+              }
+            ],
+            "kesimpulan": "Satu demi satu, ke arah yang berbeda."
+          },
+          {
+            "id": "b-tetangga",
+            "tipe": "buka",
+            "judul": "Sebelum, sesudah, di antara",
+            "ide": "Satu kurang, satu lebih, di antara.",
+            "suara": "Setiap bilangan punya tetangga. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "sebelum",
+                "label": "Sebelum",
+                "ikon": "⬅️",
+                "isi": "Satu kurang dari 12 adalah 11.",
+                "suara": "Sebelum dua belas adalah sebelas. Sebelas satu kurang dari dua belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "11 → 12"
+                }
+              },
+              {
+                "id": "sesudah",
+                "label": "Sesudah",
+                "ikon": "➡️",
+                "isi": "Satu lebih dari 12 adalah 13.",
+                "suara": "Sesudah dua belas adalah tiga belas. Tiga belas satu lebih dari dua belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 → 13"
+                }
+              },
+              {
+                "id": "antara",
+                "label": "Di antara",
+                "ikon": "↔️",
+                "isi": "12 ada di antara 11 dan 13.",
+                "suara": "Dua belas ada di antara sebelas dan tiga belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "11, 12, 13"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-kisi",
+            "tipe": "buka",
+            "judul": "Kisi 1 sampai 20",
+            "ide": "Kiri ke kanan maju, kebalikannya mundur.",
+            "suara": "Ini cara membaca kisi bilangan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "lima",
+                "label": "Lima tiap baris",
+                "ikon": "🧩",
+                "isi": "Satu baris berisi lima bilangan.",
+                "suara": "Satu baris kisi berisi lima bilangan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1, 2, 3, 4, 5"
+                }
+              },
+              {
+                "id": "kanan",
+                "label": "Kiri ke kanan",
+                "ikon": "👉",
+                "isi": "Membaca maju.",
+                "suara": "Dari kiri ke kanan, kita menghitung maju.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6, 7, 8, 9, 10"
+                }
+              },
+              {
+                "id": "kiri",
+                "label": "Kanan ke kiri",
+                "ikon": "👈",
+                "isi": "Membaca mundur.",
+                "suara": "Dari kanan ke kiri, kita menghitung mundur.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10, 9, 8, 7, 6"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Puluhan dan Satuan",
+          "ikon": "🔟",
+          "suara": "Ini peta puluhan dan satuan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "puluhan",
+            "judul": "Satu puluhan",
+            "ikon": "📦",
+            "ringkas": "Sepuluh benda digabung jadi satu puluhan.",
+            "suara": "Sepuluh benda yang digabungkan disebut satu puluhan. Contohnya sepuluh pensil yang diikat menjadi satu ikat."
+          },
+          {
+            "id": "satuan",
+            "judul": "Satuan",
+            "ikon": "☝️",
+            "ringkas": "Benda sisa. Satu benda, satu satuan.",
+            "suara": "Benda yang tersisa di luar ikatan disebut satuan. Satu benda adalah satu satuan. Tiga pensil lepas adalah tiga satuan."
+          },
+          {
+            "id": "papan",
+            "judul": "Papan nilai tempat",
+            "ikon": "📋",
+            "ringkas": "Angka kiri puluhan, angka kanan satuan.",
+            "suara": "Papan nilai tempat punya dua kolom, puluhan dan satuan. Angka di sebelah kiri menunjukkan banyak puluhan. Angka di sebelah kanan menunjukkan banyak satuan."
+          },
+          {
+            "id": "sama",
+            "judul": "Angka sama, nilai beda",
+            "ikon": "🔀",
+            "ringkas": "Angka 1 di kiri bernilai 10, di kanan bernilai 1.",
+            "suara": "Pada sebelas ada dua angka satu. Angka satu di kiri berada di tempat puluhan, nilainya sepuluh. Angka satu di kanan berada di tempat satuan, nilainya satu."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "c-ikat",
+            "teks": "10 pensil diikat",
+            "ikon": "✏️",
+            "cabang": "puluhan",
+            "petunjuk": "Sepuluh yang digabung itu satu puluhan. Coba cabang lain."
+          },
+          {
+            "id": "c-menara",
+            "teks": "Menara 10 balok",
+            "ikon": "🧱",
+            "cabang": "puluhan",
+            "petunjuk": "Sepuluh yang digabung itu satu puluhan. Coba cabang lain."
+          },
+          {
+            "id": "c-lepas",
+            "teks": "3 pensil lepas",
+            "ikon": "🖍️",
+            "cabang": "satuan",
+            "petunjuk": "Benda yang tersisa itu satuan. Coba cabang lain."
+          },
+          {
+            "id": "c-balok",
+            "teks": "4 balok lepas",
+            "ikon": "🔸",
+            "cabang": "satuan",
+            "petunjuk": "Benda yang tersisa itu satuan. Coba cabang lain."
+          },
+          {
+            "id": "c-kiri",
+            "teks": "15: angka 1 di kiri",
+            "ikon": "⬅️",
+            "cabang": "papan",
+            "petunjuk": "Angka di kiri menunjukkan puluhan. Itu cabang Papan nilai tempat. Coba cabang lain."
+          },
+          {
+            "id": "c-kanan",
+            "teks": "15: angka 5 di kanan",
+            "ikon": "➡️",
+            "cabang": "papan",
+            "petunjuk": "Angka di kanan menunjukkan satuan. Itu cabang Papan nilai tempat. Coba cabang lain."
+          },
+          {
+            "id": "c-sebelas1",
+            "teks": "11: angka 1 di kiri = 10",
+            "ikon": "🔟",
+            "cabang": "sama",
+            "petunjuk": "Angka sama, tempat beda. Itu cabang Angka sama, nilai beda. Coba cabang lain."
+          },
+          {
+            "id": "c-sebelas2",
+            "teks": "11: angka 1 di kanan = 1",
+            "ikon": "🔹",
+            "cabang": "sama",
+            "petunjuk": "Angka sama, tempat beda. Itu cabang Angka sama, nilai beda. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Puluhan dan Satuan",
+        "suara": "Ini tiga panel tentang puluhan dan satuan. Ketuk kotaknya untuk membuka.",
+        "panel": [
+          {
+            "id": "c-dua",
+            "tipe": "buka",
+            "judul": "Puluhan dan satuan",
+            "ide": "Sepuluh digabung, sisanya lepas.",
+            "suara": "Bilangan bisa dibagi jadi puluhan dan satuan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "puluhan",
+                "label": "Puluhan",
+                "ikon": "📦",
+                "isi": "Sepuluh benda yang digabung.",
+                "suara": "Sepuluh benda yang digabung disebut satu puluhan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 benda = 1 puluhan"
+                }
+              },
+              {
+                "id": "satuan",
+                "label": "Satuan",
+                "ikon": "☝️",
+                "isi": "Benda yang tersisa.",
+                "suara": "Benda yang tersisa disebut satuan. Tiga benda adalah tiga satuan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 benda = 3 satuan"
+                }
+              },
+              {
+                "id": "kalimat",
+                "label": "Kalimat nilai tempat",
+                "ikon": "✍️",
+                "isi": "Puluhan dan satuan menjadi bilangan.",
+                "suara": "Satu puluhan dan tiga satuan sama dengan tiga belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 puluhan + 3 satuan = 13"
+                }
+              }
+            ]
+          },
+          {
+            "id": "c-papan",
+            "tipe": "buka",
+            "judul": "Membaca papan nilai tempat",
+            "ide": "Kiri puluhan, kanan satuan.",
+            "suara": "Ini cara membaca papan nilai tempat. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "kiri",
+                "label": "Angka kiri",
+                "ikon": "⬅️",
+                "isi": "Banyak puluhan.",
+                "suara": "Angka di sebelah kiri menunjukkan banyak puluhan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "angka kiri = puluhan"
+                }
+              },
+              {
+                "id": "kanan",
+                "label": "Angka kanan",
+                "ikon": "➡️",
+                "isi": "Banyak satuan.",
+                "suara": "Angka di sebelah kanan menunjukkan banyak satuan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "angka kanan = satuan"
+                }
+              },
+              {
+                "id": "contoh",
+                "label": "Contoh 15",
+                "ikon": "📋",
+                "isi": "Satu puluhan dan lima satuan.",
+                "suara": "Pada lima belas, angka satu di kiri berarti satu puluhan. Angka lima di kanan berarti lima satuan.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "Bilangan 15",
+                  "kepala": [
+                    "Tempat",
+                    "Banyak"
+                  ],
+                  "baris": [
+                    [
+                      "Puluhan",
+                      1
+                    ],
+                    [
+                      "Satuan",
+                      5
+                    ]
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "c-sama",
+            "tipe": "banding",
+            "judul": "Angka 1 di bilangan 11",
+            "ide": "Angka sama, tempat beda, nilai beda.",
+            "suara": "Lihat dua angka satu pada bilangan sebelas. Ketuk kedua kotaknya.",
+            "sisi": [
+              {
+                "id": "kiri",
+                "nama": "Angka 1 di kiri",
+                "ikon": "⬅️",
+                "catatan": "Tempat puluhan, nilainya 10.",
+                "suara": "Angka satu di kiri ada di tempat puluhan. Nilainya sepuluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 di kiri = 10"
+                }
+              },
+              {
+                "id": "kanan",
+                "nama": "Angka 1 di kanan",
+                "ikon": "➡️",
+                "catatan": "Tempat satuan, nilainya 1.",
+                "suara": "Angka satu di kanan ada di tempat satuan. Nilainya satu.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 di kanan = 1"
+                }
+              }
+            ],
+            "kesimpulan": "Nilai angka bergantung pada tempatnya."
+          }
+        ]
+      }
+    },
+    "D": {
+      "peta": {
+        "pusat": {
+          "judul": "Banding dan Urutan",
+          "ikon": "🆚",
+          "suara": "Ini peta membandingkan dan mengurutkan bilangan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "banding",
+            "judul": "Lebih banyak, lebih sedikit",
+            "ikon": "🍊",
+            "ringkas": "Hitung lalu bandingkan, atau pasangkan satu-satu.",
+            "suara": "Untuk membandingkan dua kelompok, hitung dulu lalu bandingkan. Kita juga bisa memasangkan satu-satu. Benda yang tidak punya pasangan adalah sisa. Kelompok yang punya sisa lebih banyak."
+          },
+          {
+            "id": "paling",
+            "judul": "Paling banyak, paling sedikit",
+            "ikon": "🏆",
+            "ringkas": "Dipakai untuk tiga kelompok atau lebih.",
+            "suara": "Kalau ada tiga kelompok atau lebih, kita memakai kata paling banyak dan paling sedikit."
+          },
+          {
+            "id": "urut",
+            "judul": "Mengurutkan",
+            "ikon": "🔢",
+            "ringkas": "Dari terkecil atau dari terbesar.",
+            "suara": "Bilangan dapat diurutkan dari yang terkecil, atau dari yang terbesar. Dari kiri ke kanan, bilangannya makin besar."
+          },
+          {
+            "id": "cara",
+            "judul": "Cara membandingkan bilangan",
+            "ikon": "⚖️",
+            "ringkas": "Puluhan dulu, lalu satuan. Di garis, kanan lebih besar.",
+            "suara": "Untuk membandingkan dua bilangan, lihat puluhannya dulu. Kalau puluhannya sama, lihat satuannya. Di garis bilangan, bilangan yang lebih ke kanan lebih besar."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "d-halim",
+            "teks": "15 dan 11 kelereng",
+            "ikon": "🔵",
+            "cabang": "banding",
+            "petunjuk": "Membandingkan dua kelompok itu lebih banyak atau lebih sedikit. Coba cabang lain."
+          },
+          {
+            "id": "d-pasang",
+            "teks": "Titik merah punya sisa 3",
+            "ikon": "🔴",
+            "cabang": "banding",
+            "petunjuk": "Yang punya sisa lebih banyak. Itu cara memasangkan satu-satu. Coba cabang lain."
+          },
+          {
+            "id": "d-jeruk",
+            "teks": "Jeruk 10, 14, 12: 14 paling banyak",
+            "ikon": "🍊",
+            "cabang": "paling",
+            "petunjuk": "Ada tiga kelompok. Kita memakai kata paling banyak. Coba cabang lain."
+          },
+          {
+            "id": "d-sedikit",
+            "teks": "Jeruk Kira paling sedikit: 10",
+            "ikon": "🍋",
+            "cabang": "paling",
+            "petunjuk": "Ada tiga kelompok. Kita memakai kata paling sedikit. Coba cabang lain."
+          },
+          {
+            "id": "d-kecil",
+            "teks": "Dari terkecil: 10, 12, 14",
+            "ikon": "📈",
+            "cabang": "urut",
+            "petunjuk": "Menyusun dari kecil ke besar itu mengurutkan. Coba cabang lain."
+          },
+          {
+            "id": "d-besar",
+            "teks": "Dari terbesar: 14, 12, 10",
+            "ikon": "📉",
+            "cabang": "urut",
+            "petunjuk": "Menyusun dari besar ke kecil itu mengurutkan. Coba cabang lain."
+          },
+          {
+            "id": "d-stoples",
+            "teks": "13 dan 16: puluhan sama, lihat satuan",
+            "ikon": "🍯",
+            "cabang": "cara",
+            "petunjuk": "Puluhan sama, lalu lihat satuan. Itu cabang Cara membandingkan bilangan. Coba cabang lain."
+          },
+          {
+            "id": "d-garis",
+            "teks": "Di garis, 15 di kanan 11",
+            "ikon": "📏",
+            "cabang": "cara",
+            "petunjuk": "Yang lebih ke kanan lebih besar. Itu cabang Cara membandingkan bilangan. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Membandingkan dan Mengurutkan",
+        "suara": "Ini tiga panel tentang membandingkan dan mengurutkan bilangan. Ketuk kotaknya untuk membuka.",
+        "panel": [
+          {
+            "id": "d-banding",
+            "tipe": "buka",
+            "judul": "Lebih banyak, lebih sedikit, sama",
+            "ide": "Bandingkan dua kelompok benda.",
+            "suara": "Ada tiga kata untuk membandingkan dua kelompok. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "banyak",
+                "label": "Lebih banyak",
+                "ikon": "⬆️",
+                "isi": "15 lebih banyak dari 11.",
+                "suara": "Lima belas lebih banyak dari sebelas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "15 lebih banyak"
+                }
+              },
+              {
+                "id": "sedikit",
+                "label": "Lebih sedikit",
+                "ikon": "⬇️",
+                "isi": "11 lebih sedikit dari 15.",
+                "suara": "Sebelas lebih sedikit dari lima belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "11 lebih sedikit"
+                }
+              },
+              {
+                "id": "sama",
+                "label": "Sama banyak",
+                "ikon": "🤝",
+                "isi": "Tidak ada sisa berarti sama banyak.",
+                "suara": "Kalau semua benda berpasangan dan tidak ada sisa, jumlahnya sama banyak.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 dan 12"
+                }
+              }
+            ]
+          },
+          {
+            "id": "d-urut",
+            "tipe": "banding",
+            "judul": "Urutan bilangan",
+            "ide": "Dari kecil ke besar, atau sebaliknya.",
+            "suara": "Bilangan yang sama bisa diurutkan dua arah. Ketuk kedua kotaknya.",
+            "sisi": [
+              {
+                "id": "kecil",
+                "nama": "Dari terkecil",
+                "ikon": "📈",
+                "catatan": "Makin ke kanan makin besar.",
+                "suara": "Dari terkecil. Makin ke kanan, bilangannya makin besar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10, 12, 14"
+                }
+              },
+              {
+                "id": "besar",
+                "nama": "Dari terbesar",
+                "ikon": "📉",
+                "catatan": "Makin ke kanan makin kecil.",
+                "suara": "Dari terbesar. Makin ke kanan, bilangannya makin kecil.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "14, 12, 10"
+                }
+              }
+            ],
+            "kesimpulan": "Bilangannya sama, arah urutannya berbeda."
+          },
+          {
+            "id": "d-cara",
+            "tipe": "buka",
+            "judul": "Tiga cara membandingkan",
+            "ide": "Pasangkan, lihat puluhan, atau garis.",
+            "suara": "Ada tiga cara membandingkan bilangan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "pasang",
+                "label": "Pasangkan satu-satu",
+                "ikon": "🔗",
+                "isi": "Yang punya sisa lebih banyak.",
+                "suara": "Pasangkan satu-satu. Kelompok yang punya sisa lebih banyak.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "sisa 3 = lebih banyak 3"
+                }
+              },
+              {
+                "id": "nilai",
+                "label": "Puluhan dulu",
+                "ikon": "🔟",
+                "isi": "Puluhan sama, lihat satuannya.",
+                "suara": "Lihat puluhannya dulu. Kalau sama, lihat satuannya.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "13 dan 16: 3 < 6"
+                }
+              },
+              {
+                "id": "garis",
+                "label": "Garis bilangan",
+                "ikon": "📏",
+                "isi": "Yang lebih ke kanan lebih besar.",
+                "suara": "Di garis bilangan, bilangan yang lebih ke kanan lebih besar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "15 di kanan 11"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

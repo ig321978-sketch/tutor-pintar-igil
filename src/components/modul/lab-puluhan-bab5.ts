@@ -58,8 +58,27 @@ export function bandingkanNilaiTempat(n: number, m: number): Banding {
   };
 }
 
-export function ucapanPuluhan(n: number, ikat: boolean): string {
+/**
+ * Kalimat "sepuluh dulu, lalu sisanya" untuk Sub-Bab A, tanpa istilah puluhan dan satuan (itu baru di Sub-Bab C).
+ * Di bawah 10 belum ada satu kotak penuh.
+ */
+export function kalimatSepuluh(n: number): string {
+  const nn = batas(n);
+  if (nn < 10) return `${nn} (belum ada sepuluh)`;
+  return `10 + ${nn - 10} = ${nn}`;
+}
+
+/**
+ * Ucapan guru. `istilahNilai` true memakai kata puluhan dan satuan (Sub-Bab C dan seterusnya); false memakai
+ * "sepuluh dan sisanya" (Sub-Bab A).
+ */
+export function ucapanPuluhan(n: number, ikat: boolean, istilahNilai = true): string {
   const u = uraiNilai(n);
+  if (!istilahNilai) {
+    if (n < 10) return `Bilangan ${n}. Belum ada sepuluh benda. Hitung terus sampai sepuluh.`;
+    const kotak = ikat ? " Sepuluh benda sudah dimasukkan ke dalam satu kotak." : "";
+    return `Bilangan ${n}. Sepuluh ditambah ${n - 10} sama dengan ${n}.${kotak}`;
+  }
   if (n < 10) return `Bilangan ${n}. Belum ada satu puluhan. Hanya ada ${u.satuan} satuan.`;
   const ikatan = ikat ? ` Sepuluh benda sudah diikat menjadi satu puluhan.` : "";
   return `Bilangan ${n}. Terdiri dari ${u.puluhan} puluhan dan ${u.satuan} satuan.${ikatan}`;

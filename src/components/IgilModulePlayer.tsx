@@ -89,7 +89,7 @@ import SimulasiBab1Materi, { misiAwalBab1 } from "@/components/modul/SimulasiBab
 import SimulasiBab2Materi, { misiAwalBab2 } from "@/components/modul/SimulasiBab2";
 import SimulasiBab3Materi, { misiAwalBab3 } from "@/components/modul/SimulasiBab3";
 import SimulasiBab4Materi, { misiAwalBab4 } from "@/components/modul/SimulasiBab4";
-import SimulasiBab5 from "@/components/modul/SimulasiBab5";
+import SimulasiBab5Materi, { misiAwalBab5 } from "@/components/modul/SimulasiBab5";
 import SimulasiBab6 from "@/components/modul/SimulasiBab6";
 import SimulasiBab7 from "@/components/modul/SimulasiBab7";
 import SimulasiBab8Materi, { misiAwalBab8 } from "@/components/modul/SimulasiBab8";
@@ -101,6 +101,7 @@ import ringkasK1B1 from "@/data/kelas1-bab1-ringkas.json";
 import ringkasK1B2 from "@/data/kelas1-bab2-ringkas.json";
 import ringkasK1B3 from "@/data/kelas1-bab3-ringkas.json";
 import ringkasK1B4 from "@/data/kelas1-bab4-ringkas.json";
+import ringkasK1B5 from "@/data/kelas1-bab5-ringkas.json";
 import ringkasK1B8 from "@/data/kelas1-bab8-ringkas.json";
 import SimulasiK2Bab1 from "@/components/modul/SimulasiK2Bab1";
 import SimulasiK2Bab2 from "@/components/modul/SimulasiK2Bab2";
@@ -1007,6 +1008,7 @@ const SIMULASI_MATERI: Partial<Record<string, ComponentType<SimulasiMateriProps>
   "mtk-1-bab2": SimulasiBab2Materi,
   "mtk-1-bab3": SimulasiBab3Materi,
   "mtk-1-bab4": SimulasiBab4Materi,
+  "mtk-1-bab5": SimulasiBab5Materi,
   "mtk-1-bab8": SimulasiBab8Materi,
 };
 
@@ -1016,6 +1018,7 @@ const SIMULASI_MISI_AWAL: Partial<Record<string, (sub: string) => string>> = {
   "mtk-1-bab2": misiAwalBab2,
   "mtk-1-bab3": misiAwalBab3,
   "mtk-1-bab4": misiAwalBab4,
+  "mtk-1-bab5": misiAwalBab5,
   "mtk-1-bab8": misiAwalBab8,
 };
 
@@ -1025,6 +1028,7 @@ const RINGKAS_BAB: Partial<Record<string, Record<string, RingkasSub>>> = {
   "mtk-1-bab2": ringkasK1B2.subBab as unknown as Record<string, RingkasSub>,
   "mtk-1-bab3": ringkasK1B3.subBab as unknown as Record<string, RingkasSub>,
   "mtk-1-bab4": ringkasK1B4.subBab as unknown as Record<string, RingkasSub>,
+  "mtk-1-bab5": ringkasK1B5.subBab as unknown as Record<string, RingkasSub>,
   "mtk-1-bab8": ringkasK1B8.subBab as unknown as Record<string, RingkasSub>,
 };
 
@@ -1032,7 +1036,6 @@ type SimulasiBabProps = { speakGuru: (teks: string) => void; onKeLatihan: () => 
 
 /** Simulasi tiap bab. Bab yang belum ada di sini tidak menampilkan tab Simulasi. */
 const SIMULASI_BAB: Partial<Record<string, ComponentType<SimulasiBabProps>>> = {
-  "mtk-1-bab5": SimulasiBab5,
   "mtk-1-bab6": SimulasiBab6,
   "mtk-1-bab7": SimulasiBab7,
   "mtk-2-bab1": SimulasiK2Bab1,

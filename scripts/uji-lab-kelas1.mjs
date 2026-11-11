@@ -10,6 +10,8 @@ import * as P4 from "../src/components/modul/lab-papan-paku-bab4.ts";
 import * as C4 from "../src/components/modul/lab-ciri-bab4.ts";
 import * as G4 from "../src/components/modul/lab-kelompok-bab4.ts";
 import * as H4 from "../src/components/modul/lab-gabung-bab4.ts";
+import * as D5 from "../src/components/modul/lab-deret-bab5.ts";
+import * as B5 from "../src/components/modul/lab-banding-bab5.ts";
 import * as P5 from "../src/components/modul/lab-puluhan-bab5.ts";
 import * as O5 from "../src/components/modul/mesin-odometer-bab5.ts";
 import * as L6 from "../src/components/modul/lab-loncat-bab6.ts";
@@ -805,6 +807,112 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   papan = P4.tutupBentuk(papan);
   cek(/Sudut siku ada 4/.test(P4.ucapanBentuk(papan, false)) && /Sudut siku ada 4/.test(P4.ucapanBentuk(papan, false, true)), "ucapan papan paku memuat sudut siku bawaan");
   cek(!/siku/.test(P4.ucapanBentuk(papan, false, false)) && /persegi/.test(P4.ucapanBentuk(papan, false, false)), "ucapan papan paku tanpa sudut siku");
+}
+{
+  // Bab 5 Sub-Bab A: kalimat sepuluh dulu, tanpa istilah puluhan dan satuan.
+  sama(P5.kalimatSepuluh(13), "10 + 3 = 13", "kalimat sepuluh 13");
+  sama(P5.kalimatSepuluh(20), "10 + 10 = 20", "kalimat sepuluh 20");
+  sama(P5.kalimatSepuluh(10), "10 + 0 = 10", "kalimat sepuluh 10");
+  cek(/belum ada sepuluh/.test(P5.kalimatSepuluh(7)), "kalimat sepuluh di bawah 10");
+  sama(P5.kalimatSepuluh(99), "10 + 10 = 20", "kalimat sepuluh dibatasi 20");
+  for (let n = 0; n <= 20; n++) {
+    for (const ikat of [false, true]) {
+      const a = P5.ucapanPuluhan(n, ikat, false);
+      cek(!/puluhan|satuan/.test(a), `ucapan Sub-Bab A ${n}/${ikat} tanpa istilah puluhan dan satuan`);
+      cek(a.includes(`Bilangan ${n}.`), `ucapan Sub-Bab A ${n} menyebut bilangannya`);
+      cek(n < 10 || a.includes(`Sepuluh ditambah ${n - 10} sama dengan ${n}`), `ucapan Sub-Bab A ${n} menyebut sepuluh dan sisanya`);
+      const c = P5.ucapanPuluhan(n, ikat, true);
+      cek(n < 10 ? /satuan/.test(c) : /puluhan dan/.test(c), `ucapan nilai tempat ${n}`);
+    }
+  }
+  cek(/satu kotak/.test(P5.ucapanPuluhan(12, true, false)) && !/satu kotak/.test(P5.ucapanPuluhan(12, false, false)), "ucapan Sub-Bab A menyebut kotak hanya saat diikat");
+}
+
+{
+  // Bab 5 Sub-Bab B: maju dan mundur satu demi satu, kisi 1 sampai 20, ulat, tetangga.
+  let d = D5.mulaiDari(12);
+  sama(D5.sekarang(d), 12, "mulai dari 12");
+  sama(D5.ringkasan(d), "Mulai dari 12. Tekan Maju atau Mundur.", "ringkasan awal");
+  d = D5.maju(D5.maju(D5.maju(d)));
+  sama(D5.sekarang(d), 15, "maju tiga kali dari 12");
+  sama(D5.ringkasan(d), "Dari 12 maju 3 langkah sampai 15.", "ringkasan maju");
+  sama(D5.urutan(d), "12 → 13 → 14 → 15", "urutan maju");
+  d = D5.mundur(D5.mundur(d));
+  sama(D5.sekarang(d), 13, "mundur dua kali dari 15");
+  sama(D5.ringkasan(d), "Dari 12: maju 3 langkah dan mundur 2 langkah, sampai 13.", "ringkasan campuran");
+  sama(D5.hitungLangkah(d), { maju: 3, mundur: 2 }, "hitung langkah");
+  const turun = D5.mundur(D5.mundur(D5.mulaiDari(15)));
+  sama(D5.ringkasan(turun), "Dari 15 mundur 2 langkah sampai 13.", "ringkasan mundur");
+  // Ujung kisi: berhenti dengan petunjuk, bilangan tidak berubah.
+  const atas = D5.maju(D5.mulaiDari(20));
+  sama(D5.sekarang(atas), 20, "maju di 20 tidak berubah");
+  cek(/ujung kisi/.test(atas.pesan), "petunjuk di ujung atas");
+  const bawah = D5.mundur(D5.mulaiDari(1));
+  sama(D5.sekarang(bawah), 1, "mundur di 1 tidak berubah");
+  cek(/awal kisi/.test(bawah.pesan), "petunjuk di awal kisi");
+  cek(D5.maju(D5.mulaiDari(5)).pesan === "", "gerak sah tanpa pesan");
+  sama(D5.sekarang(D5.mulaiDari(99)), 20, "mulai dibatasi 20");
+  sama(D5.sekarang(D5.mulaiDari(-4)), 1, "mulai dibatasi 1");
+  // Setiap bilangan 1 sampai 20: maju lalu mundur kembali, dan tetangga benar.
+  for (let n = 1; n <= 20; n++) {
+    const t = D5.tetangga(n);
+    sama(t.sebelum, n > 1 ? n - 1 : null, `sebelum ${n}`);
+    sama(t.sesudah, n < 20 ? n + 1 : null, `sesudah ${n}`);
+    if (n < 20) sama(D5.sekarang(D5.mundur(D5.maju(D5.mulaiDari(n)))), n, `maju lalu mundur kembali ke ${n}`);
+    const w = D5.jendelaUlat(n);
+    cek(w.length === 5 && w.includes(n) && w[0] >= 1 && w[4] <= 20 && w.every((x, i) => i === 0 || x === w[i - 1] + 1), `jendela ulat ${n}: ${w.join(",")}`);
+    cek(/di antara|Tidak ada bilangan/.test(D5.kalimatTetangga(n)), `kalimat tetangga ${n}`);
+    cek(!D5.kalimatUlat(n, true).includes(`${n}.`) || n === 1 || n === 20, `ulat tersembunyi ${n} tidak membocorkan bilangannya`);
+  }
+  sama(D5.kalimatTetangga(12), "Sebelum 12 adalah 11. Sesudah 12 adalah 13. 12 ada di antara 11 dan 13.", "kalimat tetangga 12");
+  sama(D5.kalimatUlat(12, true), "Satu bilangan hilang. Sebelumnya 11, sesudahnya 13. Bilangan apa di antaranya?", "ulat 12 tersembunyi");
+  sama(D5.kalimatUlat(12, false), "Deret: 10, 11, 12, 13, 14.", "ulat 12 terbuka");
+  sama(D5.jendelaUlat(1), [1, 2, 3, 4, 5], "ulat di ujung bawah");
+  sama(D5.jendelaUlat(20), [16, 17, 18, 19, 20], "ulat di ujung atas");
+  const kisi = D5.kisiBaris();
+  sama(kisi.length, 4, "kisi 4 baris");
+  cek(kisi.every((b) => b.length === 5), "kisi 5 per baris");
+  sama(kisi.flat(), Array.from({ length: 20 }, (_, i) => i + 1), "kisi 1 sampai 20 berurutan");
+  const lompat = D5.jejakLompatan(D5.maju(D5.mundur(D5.maju(D5.mulaiDari(10)))));
+  sama(lompat.map((l) => l.maju), [true, false, true], "arah lompatan");
+  cek(D5.jejakLompatan(Array.from({ length: 12 }).reduce((x) => D5.maju(x), D5.mulaiDari(1)), 6).length === 6, "lompatan dibatasi");
+  cek(D5.ucapanDeret(d, true).includes("Sebelum 13") && !D5.ucapanDeret(d, false).includes("Sebelum"), "ucapan deret memuat tetangga hanya bila diminta");
+  cek(D5.urutan(Array.from({ length: 15 }).reduce((x) => D5.maju(x), D5.mulaiDari(1))).startsWith("… "), "urutan panjang dipotong");
+}
+
+{
+  // Bab 5 Sub-Bab D: banding, pasangkan satu-satu, paling banyak dan sedikit, urutan.
+  sama(B5.simbol(12, 15), "<", "simbol kurang dari");
+  sama(B5.simbol(15, 12), ">", "simbol lebih dari");
+  sama(B5.simbol(7, 7), "=", "simbol sama");
+  for (let a = 0; a <= 20; a++) {
+    for (let b = 0; b <= 20; b++) {
+      const p = B5.pasangkan(a, b);
+      if (p.berpasangan !== Math.min(a, b) || p.sisa !== Math.abs(a - b) || p.berpasangan + p.sisa !== Math.max(a, b)) cek(false, `pasangkan ${a},${b}`);
+      if ((p.pemilikSisa === "a") !== (a > b) || (p.pemilikSisa === "b") !== (b > a) || (p.pemilikSisa === null) !== (a === b)) cek(false, `pemilik sisa ${a},${b}`);
+    }
+  }
+  cek(true, "pasangkan semua 441 pasangan konsisten");
+  sama(B5.kalimatDua("Kira", 12, "Tika", 15), "Tika punya 15, Kira punya 12. Tika lebih banyak. Kira lebih sedikit.", "kalimat dua");
+  sama(B5.kalimatDua("Kira", 9, "Wei", 9), "Kira dan Wei sama banyak, masing-masing 9.", "kalimat dua sama");
+  sama(B5.kalimatPasangan("Kira", 12, "Tika", 15), "12 jeruk berpasangan. Tika punya sisa 3, jadi Tika lebih banyak dari Kira.", "kalimat pasangan");
+  cek(/tidak ada sisa/.test(B5.kalimatPasangan("Kira", 5, "Wei", 5)), "kalimat pasangan sama");
+  sama(B5.kalimatPaling([12, 15, 9]), "Paling banyak: Tika (15). Paling sedikit: Wei (9).", "paling awal");
+  sama(B5.kalimatPaling([15, 15, 9]), "Paling banyak: Kira dan Tika (15). Paling sedikit: Wei (9).", "paling banyak kembar");
+  sama(B5.kalimatPaling([9, 15, 9]), "Paling banyak: Tika (15). Paling sedikit: Kira dan Wei (9).", "paling sedikit kembar");
+  sama(B5.kalimatPaling([7, 7, 7]), "Ketiganya sama banyak, masing-masing 7.", "ketiganya sama");
+  sama(B5.urutkan([12, 15, 9], true).map((x) => x.n), [9, 12, 15], "urut naik");
+  sama(B5.urutkan([12, 15, 9], false).map((x) => x.n), [15, 12, 9], "urut turun");
+  sama(B5.urutkan([12, 15, 9], true).map((x) => x.nama), ["Wei", "Kira", "Tika"], "nama mengikuti urutan");
+  sama(B5.urutkan([8, 8, 3], true).map((x) => x.nama), ["Wei", "Kira", "Tika"], "yang sama banyak urut menurut nama");
+  sama(B5.kalimatUrut([12, 15, 9], true), "Dari terkecil: 9, 12, 15.", "kalimat urut naik");
+  sama(B5.kalimatUrut([12, 15, 9], false), "Dari terbesar: 15, 12, 9.", "kalimat urut turun");
+  sama(B5.batasBanding(99), 20, "batas atas");
+  sama(B5.batasBanding(-3), 0, "batas bawah");
+  sama(B5.PASANGAN.length, 3, "tiga pasangan anak");
+  cek(/lebih kecil dari/.test(B5.ucapanPasang([12, 15, 9], [0, 1], { pasangan: false, tanda: true })), "ucapan tanda kurang dari");
+  cek(!/berpasangan/.test(B5.ucapanPasang([12, 15, 9], [0, 1], { pasangan: false, tanda: true })), "ucapan tanpa pasangan bila dimatikan");
+  sama(B5.ucapanTiga([12, 15, 9], { paling: false, urut: false }), "", "ucapan tiga kosong bila semua mati");
 }
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
 process.exit(gagal ? 1 : 0);
