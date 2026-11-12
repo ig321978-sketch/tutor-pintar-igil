@@ -720,6 +720,239 @@
           }
         ]
       }
+    },
+    "D": {
+      "peta": {
+        "pusat": {
+          "judul": "FPB",
+          "ikon": "🧺",
+          "suara": "Ini peta FPB. Kita belajar faktor persekutuan, FPB, bagi rata, dan jembatan antara FPB dan KPK. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "persekutuan",
+            "judul": "Faktor persekutuan",
+            "ikon": "🔀",
+            "ringkas": "Faktor yang ada di kedua daftar.",
+            "suara": "Faktor persekutuan. Ini faktor yang ada di kedua daftar faktor."
+          },
+          {
+            "id": "fpb",
+            "judul": "FPB",
+            "ikon": "🎯",
+            "ringkas": "Yang terbesar dari faktor persekutuan.",
+            "suara": "FPB. Ini faktor persekutuan yang terbesar, bukan yang terkecil dan bukan KPK."
+          },
+          {
+            "id": "bagi",
+            "judul": "Bagi rata",
+            "ikon": "🧺",
+            "ringkas": "FPB menunjukkan kelompok terbanyak, tanpa sisa.",
+            "suara": "Bagi rata. FPB menunjukkan banyak kelompok terbanyak yang masih terbagi rata, tanpa sisa."
+          },
+          {
+            "id": "jembatan",
+            "judul": "Jembatan",
+            "ikon": "🌉",
+            "ringkas": "FPB dikali KPK sama dengan hasil kali.",
+            "suara": "Jembatan. FPB dikali KPK sama dengan hasil kali dua bilangan itu."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "d-enam-sama",
+            "teks": "6 faktor 12 dan faktor 18",
+            "ikon": "✅",
+            "cabang": "persekutuan",
+            "petunjuk": "Faktor yang ada di kedua daftar itu soal faktor persekutuan. Coba cabang lain."
+          },
+          {
+            "id": "d-empat-satu",
+            "teks": "4 hanya faktor 12",
+            "ikon": "1️⃣",
+            "cabang": "persekutuan",
+            "petunjuk": "Faktor yang hanya ada di satu daftar itu bukan persekutuan. Coba cabang lain."
+          },
+          {
+            "id": "d-fpb-enam",
+            "teks": "FPB 12 dan 18 adalah 6",
+            "ikon": "🎯",
+            "cabang": "fpb",
+            "petunjuk": "Hasil FPB itu soal FPB. Coba cabang lain."
+          },
+          {
+            "id": "d-bukan-kpk",
+            "teks": "Bukan KPK: KPK 12 dan 18 adalah 36",
+            "ikon": "❎",
+            "cabang": "fpb",
+            "petunjuk": "Membedakan FPB dan KPK itu soal FPB. Coba cabang lain."
+          },
+          {
+            "id": "d-enam-vas",
+            "teks": "24 merah, 18 putih: 6 vas",
+            "ikon": "🧺",
+            "cabang": "bagi",
+            "petunjuk": "Banyak vas terbanyak itu soal bagi rata. Coba cabang lain."
+          },
+          {
+            "id": "d-isi-vas",
+            "teks": "Tiap vas: 4 merah dan 3 putih",
+            "ikon": "🌹",
+            "cabang": "bagi",
+            "petunjuk": "Isi tiap vas itu soal bagi rata. Coba cabang lain."
+          },
+          {
+            "id": "d-kali-kecil",
+            "teks": "6 × 36 = 216",
+            "ikon": "🌉",
+            "cabang": "jembatan",
+            "petunjuk": "FPB dikali KPK itu soal jembatan. Coba cabang lain."
+          },
+          {
+            "id": "d-kali-besar",
+            "teks": "12 × 18 = 216",
+            "ikon": "✖️",
+            "cabang": "jembatan",
+            "petunjuk": "Hasil kali dua bilangan itu soal jembatan. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "FPB",
+        "suara": "Ini tiga panel tentang FPB. Ketuk kotaknya untuk membuka, lalu lihat faktor dari dua belas dan delapan belas.",
+        "panel": [
+          {
+            "id": "d-daftar-info",
+            "tipe": "buka",
+            "judul": "Dua daftar faktor",
+            "ide": "Cari faktor yang sama.",
+            "suara": "Ada tiga hal tentang dua daftar faktor. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "dua-belas",
+                "label": "Dua belas",
+                "ikon": "🟨",
+                "isi": "Enam faktor.",
+                "suara": "Faktor dua belas adalah satu, dua, tiga, empat, enam, dan dua belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1, 2, 3, 4, 6, 12"
+                }
+              },
+              {
+                "id": "delapan-belas",
+                "label": "Delapan belas",
+                "ikon": "🟩",
+                "isi": "Enam faktor.",
+                "suara": "Faktor delapan belas adalah satu, dua, tiga, enam, sembilan, dan delapan belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1, 2, 3, 6, 9, 18"
+                }
+              },
+              {
+                "id": "sama",
+                "label": "Sama",
+                "ikon": "🔁",
+                "isi": "Faktor persekutuan keduanya.",
+                "suara": "Faktor yang ada di kedua daftar adalah satu, dua, tiga, dan enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1, 2, 3, 6"
+                }
+              }
+            ]
+          },
+          {
+            "id": "d-fpb-info",
+            "tipe": "banding",
+            "judul": "Persekutuan dan FPB",
+            "ide": "Hanya yang terbesar disebut FPB.",
+            "suara": "Lihat beda faktor persekutuan dan FPB.",
+            "sisi": [
+              {
+                "id": "persekutuan",
+                "nama": "Persekutuan",
+                "ikon": "🟨",
+                "catatan": "Semua faktor di kedua daftar.",
+                "suara": "Faktor persekutuan dua belas dan delapan belas adalah satu, dua, tiga, dan enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1, 2, 3, 6"
+                }
+              },
+              {
+                "id": "fpb",
+                "nama": "FPB",
+                "ikon": "🟩",
+                "catatan": "Hanya yang terbesar.",
+                "suara": "FPB dua belas dan delapan belas hanya yang terbesar, yaitu enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6"
+                }
+              }
+            ],
+            "kesimpulan": "FPB adalah faktor persekutuan yang terbesar."
+          },
+          {
+            "id": "d-bagi-info",
+            "tipe": "buka",
+            "judul": "Bagi rata dan jembatan",
+            "ide": "FPB menentukan kelompok terbanyak.",
+            "suara": "Ada tiga hal tentang bagi rata dan jembatan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "vas",
+                "label": "Vas",
+                "ikon": "🧺",
+                "isi": "Enam vas, isi tiap vas sama.",
+                "suara": "Dua puluh empat mawar merah dan delapan belas mawar putih dibagi ke enam vas. Tiap vas berisi empat merah dan tiga putih.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Mawar",
+                    "Tiap vas"
+                  ],
+                  "baris": [
+                    [
+                      "merah",
+                      4
+                    ],
+                    [
+                      "putih",
+                      3
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "jembatan",
+                "label": "Jembatan",
+                "ikon": "🌉",
+                "isi": "FPB dikali KPK.",
+                "suara": "Enam dikali tiga puluh enam sama dengan dua ratus enam belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 × 36 = 216"
+                }
+              },
+              {
+                "id": "cek",
+                "label": "Cek",
+                "ikon": "✅",
+                "isi": "Sama dengan hasil kali.",
+                "suara": "Dua belas dikali delapan belas juga sama dengan dua ratus enam belas, jadi jembatan cocok.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 × 18 = 216"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

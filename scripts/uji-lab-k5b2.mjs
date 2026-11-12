@@ -1,4 +1,4 @@
-// Uji Simulasi Kelas 5 Bab 2 (KPK dan FPB): Lab Lompat Kelipatan (A), Lab Dua Jalur (B), Lab Susunan Faktor (C), mesin, skenario,
+// Uji Simulasi Kelas 5 Bab 2 (KPK dan FPB): Lab Lompat Kelipatan (A), Lab Dua Jalur (B), Lab Susunan Faktor (C), Lab Faktor Bersama (D), mesin, skenario,
 // misi, gerbang, data ringkas, dan konsep sub-bab berikutnya tidak bocor ke sub-bab sebelumnya.
 // Jalankan: node --no-warnings scripts/uji-lab-k5b2.mjs
 import { readFileSync } from "node:fs";
@@ -8,6 +8,7 @@ import * as TK from "../src/components/modul/misi-teks-k5b2.ts";
 import * as A from "../src/components/modul/lab-kelipatan-k5b2a.ts";
 import * as B from "../src/components/modul/lab-jalur-k5b2b.ts";
 import * as C from "../src/components/modul/lab-faktor-k5b2c.ts";
+import * as E from "../src/components/modul/lab-bersama-k5b2d.ts";
 import * as MS from "../src/components/modul/mesin-data-k5b2.ts";
 import * as SK from "../src/components/modul/skenario-k5b2.ts";
 import * as ME from "../src/components/modul/mesin-bertahap-k3b1.ts";
@@ -301,16 +302,16 @@ const jumlahKe = (d, k) => kelipatanMandiri(d, d * 20)[k - 1];
 
 /* ------------------------------ Misi ------------------------------ */
 {
-  const huruf = ["A", "B", "C"];
-  sama(Object.keys(TK.MISI_K5B2), huruf, "teks misi untuk A, B, dan C");
-  sama(Object.keys(TK.NAMA_SIM_K5B2), huruf, "nama simulasi untuk A, B, dan C");
+  const huruf = ["A", "B", "C", "D"];
+  sama(Object.keys(TK.MISI_K5B2), huruf, "teks misi untuk A, B, C, dan D");
+  sama(Object.keys(TK.NAMA_SIM_K5B2), huruf, "nama simulasi untuk A, B, C, dan D");
   cek(TK.hurufK5B2("Z") === "A" && TK.hurufK5B2("A") === "A", "huruf tak dikenal jatuh ke A");
-  cek(["A", "B", "C"].every((h) => TK.misiAwalK5Bab2(h).startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK5Bab2(h))), "misi awal dan dapat dieja");
+  cek(["A", "B", "C", "D"].every((h) => TK.misiAwalK5Bab2(h).startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK5Bab2(h))), "misi awal dan dapat dieja");
   for (const h of huruf) {
     const daftar = K5.daftarMisiK5Bab2(h);
     cek(daftar.filter((m) => m.wajib).length === 7 && daftar.filter((m) => !m.wajib).length === 3, `${h}: tujuh misi wajib dan tiga tantangan bebas`);
     cek(new Set(daftar.map((m) => m.id)).size === 10 && daftar.every((m) => m.id.startsWith(`${h.toLowerCase()}-`)), `${h}: id misi unik berawalan huruf`);
-    const kosong = [{ alat: "kelipatan", pernah: [] }, { alat: "jalur", pernah: [] }, { alat: "faktor", pernah: [] }, sel("tidak-ada"), A.keadaanKelipatanK5B2A(A.awalKelipatanK5B2A()), B.keadaanJalurK5B2B(B.awalJalurK5B2B()), C.keadaanFaktorK5B2C(C.awalFaktorK5B2C())];
+    const kosong = [{ alat: "kelipatan", pernah: [] }, { alat: "jalur", pernah: [] }, { alat: "faktor", pernah: [] }, { alat: "bersama", pernah: [] }, sel("tidak-ada"), A.keadaanKelipatanK5B2A(A.awalKelipatanK5B2A()), B.keadaanJalurK5B2B(B.awalJalurK5B2B()), C.keadaanFaktorK5B2C(C.awalFaktorK5B2C()), E.keadaanBersamaK5B2D(E.awalBersamaK5B2D())];
     cek(kosong.every((k) => M0.misiBaru(daftar, k, new Set()).length === 0), `${h}: keadaan awal alat tidak memenuhi misi mana pun`);
     cek(daftar.every((m) => m.teks.length > 20 && tanpaAngka(m.teks)), `${h}: teks misi jelas dan dapat dieja`);
     const baru = (k) => M0.misiBaru(daftar, k, new Set());
@@ -454,7 +455,7 @@ const jumlahKe = (d, k) => kelipatanMandiri(d, d * 20)[k - 1];
   cek(kartu("a-12").startsWith("12 ÷ 3 bersisa 0") && kartu("a-14").startsWith("14 ÷ 3 bersisa 2") && bagiMandiri(12, 3).r === 0 && bagiMandiri(14, 3).r === 2, "ringkas A: kartu cek sisa (dihitung)");
   cek(kartu("a-warna") === `Kelipatan 4: ${deret(4, 3)}, …`, "ringkas A: kartu kelipatan empat (dihitung)");
   cek(kartu("a-mendarat") === `Mendarat di ${deret(3, 3).replace(/, /g, ", ")}`, "ringkas A: kartu pendaratan (dihitung)");
-  sama(Object.keys(ringkas.subBab), ["A", "B", "C"], "ringkas: sub-bab A, B, dan C");
+  sama(Object.keys(ringkas.subBab), ["A", "B", "C", "D"], "ringkas: sub-bab A, B, C, dan D");
 }
 
 /* ======================================================================== */
@@ -1256,6 +1257,377 @@ const z0 = C.awalFaktorK5B2C();
   const kartu = (id) => C0.peta.kartu.find((k) => k.id === id).teks;
   cek(kartu("c-tiga-baris") === `12 titik dalam 3 baris, tepat` && bagiMandiri(12, 3).r === 0 && kartu("c-lima-baris") === `12 titik dalam 5 baris, sisa ${bagiMandiri(12, 5).r}`, "ringkas C: kartu susunan (dihitung)");
   cek(kartu("c-tiga-empat") === `3 × 4 = ${kaliMandiri(3, 4)}` && kartu("c-dua-belas") === `Faktor 12: ${faktorMandiri(12).join(", ")}` && kartu("c-delapan") === `24 ÷ 8 bersisa ${bagiMandiri(24, 8).r}: faktor` && kartu("c-lima") === `24 ÷ 5 bersisa ${bagiMandiri(24, 5).r}: bukan`, "ringkas C: kartu pasangan, daftar, cek (dihitung)");
+}
+
+/* ======================================================================== */
+/* ============================ SUB-BAB D ================================= */
+/* ======================================================================== */
+// Hitungan mandiri untuk D: faktor persekutuan dengan keterbagian (pengurangan berulang), FPB dengan Euclid memakai
+// pengurangan, dan hasil kali lewat penjumlahan berulang. Lab memakai sisa bagi (%) dan daftar faktor.
+const persekutuanMandiri = (a, b) => faktorMandiri(a).filter((d) => adalahKelipatan(b, d));
+const fpbMandiri = (a, b) => gcdKurang(a, b);
+const fpbBanyak = (daftar) => daftar.reduce((h, v) => gcdKurang(h, v));
+const LD = E.langkahBersamaK5B2D;
+const w0 = E.awalBersamaK5B2D();
+const sebutLagi = (bagian) => (bagian.length < 2 ? bagian.join("") : `${bagian.slice(0, -1).join(", ")} dan ${bagian[bagian.length - 1]}`);
+
+/* ------------------------------ Data sama dengan buku (D) ------------------------------ */
+{
+  const AB = D.ANGKA_BUKU_DE;
+  const buku = D.RONDE_FPB_CD.flat();
+  for (const [a, b] of E.DATA_DAFTAR) cek(buku.some((r) => r.angka.join() === `${a},${b}` && r.hasil === fpbMandiri(a, b)), `Daftar ${a} dan ${b}: FPB dari data buku sama dengan hitungan`);
+  sama(E.DATA_DAFTAR.map(([a, b]) => fpbMandiri(a, b)), [AB.fpb1218, 1, 4, AB.fpb612], "Daftar: FPB 6, 1, 4, 6");
+  sama(E.DATA_BAGI[0].item, [AB.mawarMerah, AB.mawarPutih], "Bagi: 24 mawar merah dan 18 mawar putih dari buku");
+  sama(E.DATA_BAGI[1].item, [AB.susu, AB.lolipop, AB.biskuit], "Bagi: 36 susu, 48 lolipop, 24 biskuit dari buku");
+  cek(fpbBanyak(E.DATA_BAGI[0].item) === AB.fpbMawar && fpbBanyak(E.DATA_BAGI[1].item) === AB.fpbPaket, "Bagi: FPB 6 dan 12 sama dengan buku (dihitung)");
+  cek(D.RONDE_FPB_CD.flat().some((r) => r.angka.join() === "24,18" && r.hasil === 6), "Jembatan: 24 dan 18 dari buku");
+  sama(E.DATA_JEMBATAN, [[12, 18], [24, 18], [8, 12]], "Jembatan: 12 dan 18, 24 dan 18, 8 dan 12");
+  for (const [a, b] of [[12, 18], [24, 18], [8, 12], [15, 28], [6, 12], [36, 48], [18, 30]]) {
+    sama(E.persekutuanFaktor(a, b), persekutuanMandiri(a, b), `faktor persekutuan ${a} dan ${b} sama dengan keterbagian mandiri`);
+    cek(E.fpbDari(a, b) === fpbMandiri(a, b) && E.kpkDari(a, b) === kpkMandiri(a, b), `FPB dan KPK ${a} dan ${b} sama dengan Euclid dan pencarian mandiri`);
+    cek(kaliMandiri(fpbMandiri(a, b), kpkMandiri(a, b)) === kaliMandiri(a, b), `jembatan ${a} dan ${b}: FPB dikali KPK sama dengan hasil kali (dihitung)`);
+  }
+  cek(E.kelompokMaks([36, 48, 24]) === 12 && E.kelompokMaks([24, 18]) === 6 && E.kelompokMaks([7, 9]) === 1, "kelompokMaks dari data buku");
+}
+
+/* ------------------------------ Lab D: Faktor Bersama ------------------------------ */
+{
+  cek(w0.pernah.length === 0 && w0.pesan === "" && w0.daftar.tanda.length === 0 && !w0.daftar.tandaOk && w0.bagi.k === 1 && w0.bagi.rata.length === 0 && !w0.jembatan.fpbOk && !w0.jembatan.kpkOk, "D awal: kosong, belum ada riwayat");
+  // Daftar.
+  for (const [i, [a, b]] of E.DATA_DAFTAR.entries()) {
+    const kunci = persekutuanMandiri(a, b);
+    const f = fpbMandiri(a, b);
+    const k = kpkMandiri(a, b);
+    const xd = LD(w0, { t: "F_DATA", i });
+    const tandai = (daftar) => jalan(xd, LD, daftar.map((n) => ({ t: "F_KLIK", n })));
+    const tepat = LD(tandai(kunci), { t: "F_CEK" });
+    cek(tepat.daftar.tandaOk && tepat.pesan.startsWith("✅") && tepat.pesan.includes(kunci.join(", ")), `Daftar ${a} dan ${b}: faktor persekutuan tepat`);
+    cek(LD(tandai([...kunci].reverse()), { t: "F_CEK" }).daftar.tandaOk, `Daftar ${a} dan ${b}: urutan tanda tidak berpengaruh`);
+    const opsi = E.opsiFpbDaftar(i);
+    cek(opsi.length === 3 && new Set(opsi).size === 3 && opsi.filter((v) => v === f).length === 1 && opsi.includes(k) && opsi.includes(a + b), `Daftar ${a} dan ${b}: tiga pilihan, FPB ${f}, pengecoh KPK ${k} dan jumlah`);
+    const ok = LD(tepat, { t: "F_FPB", nilai: f });
+    cek(ok.pernah.includes(`daftar:${a}:${b}`) && ok.pesan.startsWith("✅") && ok.pesan.includes(String(f)) && (kunci.length === 1 ? /Satu-satunya/.test(ok.pesan) : /Yang terbesar/.test(ok.pesan)), `Daftar ${a} dan ${b}: FPB ${f} tercatat`);
+    for (const v of opsi.filter((o) => o !== f)) {
+      const s = LD(tepat, { t: "F_FPB", nilai: v });
+      cek(s.pernah.length === 0 && !s.pesan.startsWith("✅") && (/adalah KPK/.test(s.pesan) === (v === k)) && (/jumlah dua bilangan/.test(s.pesan) === (v === a + b)), `Daftar ${a} dan ${b}: pilihan ${v} ditolak dan dijelaskan tepat`);
+    }
+    const dini = LD(tandai(kunci), { t: "F_FPB", nilai: f });
+    cek(dini.pernah.length === 0 && /Tandai dulu/.test(dini.pesan), `Daftar ${a} dan ${b}: pilihan sebelum periksa ditolak`);
+    cek(!LD(tepat, { t: "F_KLIK", n: 1 }).daftar.tandaOk, `Daftar ${a} dan ${b}: ubah tanda mengulang periksa`);
+    // Terlewat.
+    for (const m of kunci) {
+      const s = LD(tandai(kunci.filter((v) => v !== m)), { t: "F_CEK" });
+      cek(!s.daftar.tandaOk && !s.pesan.startsWith("✅") && (kunci.length === 1 ? /Belum ada bilangan/ : /terlewat/).test(s.pesan), `Daftar ${a} dan ${b}: faktor ${m} terlewat ditolak`);
+    }
+    cek(/1 selalu faktor persekutuan/.test(LD(tandai(kunci.filter((v) => v !== 1)), { t: "F_CEK" }).pesan) || kunci.length === 1, `Daftar ${a} dan ${b}: tanpa 1 dijelaskan`);
+    // Kelebihan: faktor yang hanya ada di satu daftar.
+    const semua = [...new Set([...faktorMandiri(a), ...faktorMandiri(b)])];
+    let tolak = 0;
+    let total = 0;
+    for (const e of semua.filter((v) => !kunci.includes(v))) {
+      total += 1;
+      const s = LD(tandai([...kunci, e]), { t: "F_CEK" });
+      const di = adalahKelipatan(a, e) ? a : b;
+      if (!s.daftar.tandaOk && !s.pesan.startsWith("✅") && s.pesan.startsWith(`${e} hanya faktor ${di}.`)) tolak += 1;
+    }
+    cek(tolak === total, `Daftar ${a} dan ${b}: semua ${total} faktor yang hanya di satu daftar ditolak dan disebut daftarnya (${tolak})`);
+    cek(/Belum ada bilangan/.test(LD(xd, { t: "F_CEK" }).pesan), `Daftar ${a} dan ${b}: kosong diberi tahu`);
+    cek(LD(tepat, { t: "F_BERSIH" }).daftar.tanda.length === 0 && LD(LD(xd, { t: "F_KLIK", n: 1 }), { t: "F_KLIK", n: 1 }).daftar.tanda.length === 0, `Daftar ${a} dan ${b}: bersihkan dan ketuk dua kali`);
+    cek(LD(tepat, { t: "F_DATA", i: (i + 1) % 4 }).daftar.tanda.length === 0, `Daftar ${a} dan ${b}: ganti pasangan mengosongkan tanda`);
+    // Bilangan yang bukan faktor kedua bilangan diabaikan.
+    const bukan = Array.from({ length: 40 }, (_, j) => j + 1).find((v) => !adalahKelipatan(a, v) && !adalahKelipatan(b, v));
+    cek(LD(xd, { t: "F_KLIK", n: bukan }) === xd && LD(xd, { t: "F_KLIK", n: 0 }) === xd && LD(xd, { t: "F_KLIK", n: 2.5 }) === xd, `Daftar ${a} dan ${b}: bilangan bukan faktor diabaikan`);
+  }
+  cek(LD(w0, { t: "F_DATA", i: 4 }) === w0 && LD(w0, { t: "F_FPB", nilai: 99 }) === w0, "Daftar: di luar batas diabaikan");
+
+  // Bagi.
+  for (const [i, d] of E.DATA_BAGI.entries()) {
+    const f = fpbBanyak(d.item);
+    const xb = LD(w0, { t: "R_DATA", i });
+    const batas = Math.min(...d.item);
+    const ke = (x, k) => {
+      let s = x;
+      while (s.bagi.k < k) s = LD(s, { t: "R_NAIK" });
+      while (s.bagi.k > k) s = LD(s, { t: "R_TURUN" });
+      return s;
+    };
+    cek(E.kelompokMaks(d.item) === f, `Bagi ${d.item.join(", ")}: terbanyak ${f} sama dengan Euclid`);
+    let ok = true;
+    let rataSemua = [];
+    for (let k = 1; k <= batas; k += 1) {
+      const rata = d.item.every((v) => adalahKelipatan(v, k));
+      const s = LD(ke(xb, k), { t: "R_COBA" });
+      const gagal = d.item.findIndex((v) => !adalahKelipatan(v, k));
+      if (rata) {
+        rataSemua.push(k);
+        const isi = sebutLagi(d.item.map((v, j) => `${bagiMandiri(v, k).q} ${d.nama[j]}`));
+        if (!(s.bagi.rata.includes(k) && s.pesan.startsWith("✅") && s.pesan.includes(`tiap ${d.kelompok} berisi ${isi}`))) ok = false;
+      } else {
+        const sisa = bagiMandiri(d.item[gagal], k).r;
+        if (!(!s.bagi.rata.includes(k) && !s.pesan.startsWith("✅") && s.pesan.includes(`${d.item[gagal]} ${d.nama[gagal]} dibagi ke ${k} ${d.kelompok} bersisa ${sisa}`))) ok = false;
+      }
+      // Menyatakan terbanyak.
+      const p = LD(ke(xb, k), { t: "R_PILIH" });
+      if (rata && k === f) {
+        if (!(p.pernah.includes(`bagi:${d.item.join(":")}`) && p.pesan.startsWith("✅") && p.pesan.includes(`FPB dari ${sebutLagi(d.item.map(String))}`))) ok = false;
+      } else if (rata) {
+        if (!(p.pernah.length === 0 && /masih bisa lebih banyak/.test(p.pesan))) ok = false;
+      } else if (!(p.pernah.length === 0 && /belum rata/.test(p.pesan))) ok = false;
+    }
+    cek(ok, `Bagi ${d.item.join(", ")}: tiap banyak 1 sampai ${batas} dicoba dan dinyatakan dengan tepat`);
+    sama(rataSemua, faktorMandiri(f), `Bagi ${d.item.join(", ")}: banyak yang rata adalah faktor FPB ${f} (dihitung)`);
+    const semua = rataSemua.reduce((s, k) => LD(ke(s, k), { t: "R_COBA" }), xb);
+    sama(semua.bagi.rata, rataSemua, `Bagi ${d.item.join(", ")}: daftar yang rata tersimpan terurut`);
+    const penuh = ke(xb, batas);
+    cek(LD(penuh, { t: "R_NAIK" }).bagi.k === batas && /Paling banyak/.test(LD(penuh, { t: "R_NAIK" }).pesan), `Bagi ${d.item.join(", ")}: paling banyak ${batas}`);
+    cek(LD(xb, { t: "R_TURUN" }) === xb, `Bagi ${d.item.join(", ")}: satu adalah batas bawah`);
+    cek(LD(semua, { t: "R_DATA", i: (i + 1) % 2 }).bagi.rata.length === 0 && LD(semua, { t: "R_DATA", i: (i + 1) % 2 }).bagi.k === 1, `Bagi ${d.item.join(", ")}: ganti benda mengulang`);
+    // Hanya mencoba, belum menyatakan: tidak tercatat.
+    cek(!LD(ke(xb, f), { t: "R_COBA" }).pernah.some((p) => p.startsWith("bagi:")), `Bagi ${d.item.join(", ")}: mencoba ${f} saja belum tercatat`);
+  }
+  cek(LD(w0, { t: "R_DATA", i: 2 }) === w0, "Bagi: benda di luar batas diabaikan");
+
+  // Jembatan.
+  for (const [i, [a, b]] of E.DATA_JEMBATAN.entries()) {
+    const f = fpbMandiri(a, b);
+    const k = kpkMandiri(a, b);
+    const xj = LD(w0, { t: "J_DATA", i });
+    const of_ = E.opsiFpbJembatan(i);
+    const ok_ = E.opsiKpkJ(i);
+    cek(of_.length === 3 && new Set(of_).size === 3 && of_.includes(f) && of_.includes(k) && of_.includes(a + b), `Jembatan ${a} dan ${b}: pilihan FPB (FPB, KPK, jumlah)`);
+    cek(ok_.length === 3 && new Set(ok_).size === 3 && ok_.includes(k) && ok_.includes(kaliMandiri(a, b)) && ok_.includes(a + b) && kaliMandiri(a, b) !== k, `Jembatan ${a} dan ${b}: pilihan KPK (KPK, hasil kali, jumlah)`);
+    for (const v of of_.filter((o) => o !== f)) {
+      const s = LD(xj, { t: "J_FPB", nilai: v });
+      cek(!s.jembatan.fpbOk && !s.pesan.startsWith("✅") && (/adalah KPK, bukan FPB/.test(s.pesan) === (v === k)), `Jembatan ${a} dan ${b}: FPB ${v} ditolak`);
+    }
+    for (const v of ok_.filter((o) => o !== k)) {
+      const s = LD(xj, { t: "J_KPK", nilai: v });
+      cek(!s.jembatan.kpkOk && !s.pesan.startsWith("✅") && (new RegExp(`${v} adalah ${a} × ${b}, bukan KPK`).test(s.pesan) === (v === kaliMandiri(a, b))), `Jembatan ${a} dan ${b}: KPK ${v} ditolak`);
+    }
+    const fOk = LD(xj, { t: "J_FPB", nilai: f });
+    const kOk = LD(xj, { t: "J_KPK", nilai: k });
+    cek(fOk.jembatan.fpbOk && !fOk.jembatan.kpkOk && kOk.jembatan.kpkOk && !kOk.jembatan.fpbOk, `Jembatan ${a} dan ${b}: FPB dan KPK dicatat terpisah`);
+    // Periksa sebelum keduanya benar.
+    for (const s0 of [xj, fOk, kOk]) {
+      const s = LD(s0, { t: "J_PERIKSA" });
+      cek(s.pernah.length === 0 && /Pilih dulu FPB dan KPK/.test(s.pesan), `Jembatan ${a} dan ${b}: periksa sebelum keduanya benar ditolak`);
+    }
+    const dua = LD(LD(fOk, { t: "J_KPK", nilai: k }), { t: "J_PERIKSA" });
+    cek(dua.pernah.includes(`jembatan:${a}:${b}`) && dua.pesan.startsWith("✅") && dua.pesan.includes(`${f} × ${k} = ${kaliMandiri(f, k)}`) && dua.pesan.includes(`${a} × ${b} = ${kaliMandiri(a, b)}`) && kaliMandiri(f, k) === kaliMandiri(a, b), `Jembatan ${a} dan ${b}: ${f} × ${k} = ${a} × ${b} tercatat`);
+    // KPK benar lalu FPB salah tidak mengunci; pilihan ulang FPB salah mencabut izin periksa (riwayat tetap).
+    const cabut = LD(LD(fOk, { t: "J_KPK", nilai: k }), { t: "J_FPB", nilai: of_.find((o) => o !== f) });
+    cek(!cabut.jembatan.fpbOk && cabut.jembatan.kpkOk, `Jembatan ${a} dan ${b}: FPB salah mencabut izin FPB`);
+    cek(!LD(dua, { t: "J_DATA", i: (i + 1) % 3 }).jembatan.fpbOk && LD(dua, { t: "J_DATA", i: (i + 1) % 3 }).pernah.includes(`jembatan:${a}:${b}`), `Jembatan ${a} dan ${b}: ganti pasangan mengulang tanpa mencabut riwayat`);
+  }
+  cek(LD(w0, { t: "J_FPB", nilai: 99 }) === w0 && LD(w0, { t: "J_KPK", nilai: 99 }) === w0 && LD(w0, { t: "J_DATA", i: 3 }) === w0, "Jembatan: di luar batas diabaikan");
+
+  // Fuzz.
+  const acak = acakDari(55);
+  let s = w0;
+  let ok = true;
+  const pesanSemua = new Set();
+  const riwayatSemua = new Set();
+  for (let i = 0; i < 20000; i += 1) {
+    const p = acak(22);
+    const [fa, fb] = E.pasanganDaftar(s);
+    const kunciF = persekutuanMandiri(fa, fb);
+    const belum = kunciF.find((v) => !s.daftar.tanda.includes(v));
+    const semuaF = [...new Set([...faktorMandiri(fa), ...faktorMandiri(fb)])];
+    const dj = s.jembatan.data;
+    const bgi = E.dataBagi(s);
+    const fm = fpbBanyak(bgi.item);
+    const a =
+      p === 0 ? { t: "F_DATA", i: acak(5) } :
+      p <= 2 ? { t: "F_KLIK", n: acak(8) === 0 ? 99 : semuaF[acak(semuaF.length)] } :
+      p === 3 ? { t: "F_KLIK", n: belum ?? 1 } :
+      p === 4 ? (acak(5) === 0 ? { t: "F_BERSIH" } : { t: "F_CEK" }) :
+      p === 5 ? { t: "F_CEK" } :
+      p === 6 ? { t: "F_FPB", nilai: acak(6) === 0 ? 99 : E.opsiFpbDaftar(s.daftar.data)[acak(3)] } :
+      p === 7 ? { t: "R_DATA", i: acak(3) } :
+      p <= 10 ? { t: "R_NAIK" } :
+      p === 11 ? { t: "R_TURUN" } :
+      p === 12 ? { t: "R_COBA" } :
+      p === 13 ? { t: "R_PILIH" } :
+      p === 14 ? (s.bagi.k < fm ? { t: "R_NAIK" } : { t: "R_PILIH" }) :
+      p === 15 ? { t: "J_DATA", i: acak(4) } :
+      p === 16 ? { t: "J_FPB", nilai: acak(6) === 0 ? 99 : E.opsiFpbJembatan(dj)[acak(3)] } :
+      p === 17 ? { t: "J_KPK", nilai: acak(6) === 0 ? 99 : E.opsiKpkJ(dj)[acak(3)] } :
+      p === 18 ? { t: "J_PERIKSA" } :
+      p === 19 ? { t: "J_FPB", nilai: fpbMandiri(...E.pasanganJembatan(s)) } :
+      p === 20 ? { t: "J_KPK", nilai: kpkMandiri(...E.pasanganJembatan(s)) } :
+      acak(40) === 0 ? { t: "RESET" } : { t: "PESAN_KOSONG" };
+    const t = LD(s, a);
+    if (a.t !== "RESET" && !s.pernah.every((v) => t.pernah.includes(v))) ok = false;
+    if (!(t.daftar.data >= 0 && t.daftar.data < 4 && t.bagi.data >= 0 && t.bagi.data < 2 && t.jembatan.data >= 0 && t.jembatan.data < 3)) ok = false;
+    const [ta, tb] = E.pasanganDaftar(t);
+    if (t.daftar.tanda.some((v, j, w) => !(adalahKelipatan(ta, v) || adalahKelipatan(tb, v)) || (j > 0 && w[j - 1] >= v))) ok = false;
+    if (t.daftar.tandaOk && JSON.stringify(t.daftar.tanda) !== JSON.stringify(persekutuanMandiri(ta, tb))) ok = false;
+    const bt = E.dataBagi(t);
+    if (!(t.bagi.k >= 1 && t.bagi.k <= Math.min(...bt.item))) ok = false;
+    if (t.bagi.rata.some((v, j, w) => !bt.item.every((x) => adalahKelipatan(x, v)) || (j > 0 && w[j - 1] >= v))) ok = false;
+    if (typeof t.jembatan.fpbOk !== "boolean" || typeof t.jembatan.kpkOk !== "boolean") ok = false;
+    for (const id of t.pernah) if (!/^(daftar:(12:18|15:28|8:12|6:12)|bagi:(24:18|36:48:24)|jembatan:(12:18|24:18|8:12))$/.test(id)) ok = false;
+    if (t.pesan) pesanSemua.add(t.pesan);
+    for (const id of t.pernah) riwayatSemua.add(id);
+    s = t;
+  }
+  cek(ok, "fuzz 20.000 aksi Lab Faktor Bersama: batas terjaga, riwayat tidak dicabut");
+  cek(pesanSemua.size > 40 && [...pesanSemua].every(tanpaAngka), `fuzz Lab Faktor Bersama: semua ${pesanSemua.size} pesan dieja menjadi kata`);
+  cek(riwayatSemua.size >= 6, `fuzz Lab Faktor Bersama: riwayat terkumpul (${riwayatSemua.size})`);
+  globalThis.__pesanD = [...pesanSemua];
+}
+
+/* ------------------------------ Mesin D ------------------------------ */
+{
+  const c0 = MS.MESIN_FPB;
+  cek(c0.id === "mesin-fpb-k5b2" && c0.selesaiId === K5.ID_MESIN_K5B2.D, "Mesin FPB: id selesai sesuai misi");
+  sama(MS.KASUS_FPB.map((k) => [k.a, k.b]), [[12, 18], [36, 48], [18, 30]], "Mesin FPB: 12 dan 18, 36 dan 48, 18 dan 30");
+  for (const [i, k] of MS.KASUS_FPB.entries()) {
+    const c = c0.kasus[i];
+    const [daftar, fpb, bagi, jembatan] = c.langkah;
+    const kunci = persekutuanMandiri(k.a, k.b);
+    const f = fpbMandiri(k.a, k.b);
+    const kp = kpkMandiri(k.a, k.b);
+    cek(daftar.tanya.includes(faktorMandiri(k.a).join(", ")) && daftar.tanya.includes(faktorMandiri(k.b).join(", ")) && Number(daftar.benar) === kunci.length && daftar.opsi.includes(String(kunci.length + 1)) && daftar.opsi.includes(String(kunci.length - 1)), `Mesin FPB ${k.a} dan ${k.b}: ${kunci.length} faktor persekutuan (dihitung)`);
+    cek(Number(fpb.benar) === f && fpb.opsi.includes("1") && fpb.opsi.includes(String(kp)) && f !== 1 && f !== kp, `Mesin FPB ${k.a} dan ${k.b}: FPB ${f}; pengecoh 1 dan KPK ${kp}`);
+    cek(Number(bagi.benar) === bagiMandiri(k.a, f).q && bagi.tanya.includes(`${k.a} bunga merah`) && bagi.tanya.includes(`${k.b} bunga putih`) && bagi.opsi.includes(String(bagiMandiri(k.b, f).q)) && bagi.opsi.includes(String(2 * bagiMandiri(k.a, f).q)) && new Set(bagi.opsi).size === 3, `Mesin FPB ${k.a} dan ${k.b}: ${bagi.benar} bunga merah tiap vas (dihitung)`);
+    cek(Number(jembatan.benar) === kp && jembatan.tanya.includes(`FPB ${k.a} dan ${k.b} adalah ${f}`) && jembatan.tanya.includes(`${k.a} × ${k.b} = ${kaliMandiri(k.a, k.b)}`) && kaliMandiri(f, kp) === kaliMandiri(k.a, k.b) && jembatan.opsi.includes(String(kaliMandiri(k.a, k.b))) && jembatan.opsi.includes(String(k.a + k.b)), `Mesin FPB ${k.a} dan ${k.b}: KPK ${kp} lewat jembatan (dihitung)`);
+    cek(EJ.ejaK5B1(c.ringkas).includes(EJ.kataK5B1(f)), `Mesin FPB ${k.a} dan ${k.b}: ringkas dieja dengan FPB benar`);
+  }
+}
+
+/* ------------------------------ Skenario D ------------------------------ */
+{
+  const S = SK.SKENARIO_K5B2D;
+  cek(S.adegan.length >= 5 && S.adegan.length <= 8, `${S.id}: 5 sampai 8 adegan`);
+  cek(S.adegan[0].jenis === "narasi" && S.adegan[S.adegan.length - 1].jenis === "akhir" && new Set(S.adegan.map((a) => a.jenis)).size >= 4, `${S.id}: buka, tutup, empat jenis`);
+  const semuaTeks = [];
+  for (const a of S.adegan) {
+    semuaTeks.push(a.cerita);
+    for (const o of a.opsi ?? []) semuaTeks.push(o.teks, o.umpan);
+    for (const q of a.soal ?? []) semuaTeks.push(q.teks, ...q.opsi);
+    for (const f of ["tanya", "sukses", "salah", "kurang", "lebih"]) if (a[f]) semuaTeks.push(a[f]);
+  }
+  cek(semuaTeks.every(tanpaAngka), `${S.id}: semua teks dapat dieja`);
+  sama(S.id.replace(/-k5b2$/, ""), K5.ID_SKENARIO_K5B2.D, "id skenario D sesuai id misi");
+  const adegan = (id) => S.adegan.find((a) => a.id === id);
+  const f = fpbMandiri(24, 18);
+  const terbesar = adegan("terbesar");
+  cek(terbesar.cerita.includes(`Faktor 24: ${faktorMandiri(24).join(", ")}`) && terbesar.cerita.includes(`Faktor 18: ${faktorMandiri(18).join(", ")}`), "D: daftar faktor 24 dan 18 (dihitung)");
+  cek(terbesar.opsi.find((o) => o.benar).teks === String(f) && terbesar.opsi.filter((o) => !o.benar).every((o) => adalahKelipatan(24, Number(o.teks)) !== adalahKelipatan(18, Number(o.teks))), "D: yang terbesar di kedua daftar 6; pengecoh hanya di satu daftar (dihitung)");
+  const bersama = adegan("bersama");
+  const sebut = [...bersama.cerita.matchAll(/\d+/g)].map((m) => Number(m[0])).slice(2);
+  sama(sebut, persekutuanMandiri(24, 18), "D: faktor persekutuan 24 dan 18 di cerita");
+  cek(bersama.jumlah === persekutuanMandiri(24, 18).length && bersama.sukses.includes(String(f)), "D: banyak faktor persekutuan 4 (dihitung)");
+  const merah = adegan("merah");
+  cek(merah.target === bagiMandiri(24, f).q && merah.target <= merah.maks && kaliMandiri(f, merah.target) === 24 && merah.cerita.includes(`${f} vas`), "D: 24 mawar merah ke 6 vas, 4 tiap vas (dihitung)");
+  const soal = adegan("periksa").soal;
+  cek(soal[0].jawaban === String(bagiMandiri(18, f).q) && soal[0].opsi.filter((o) => o !== soal[0].jawaban).every((o) => Number(o) !== bagiMandiri(18, f).q), "D: mawar putih tiap vas 3 (dihitung)");
+  cek(soal[1].jawaban === String(f) && soal[1].opsi.includes(String(kpkMandiri(24, 18))) && soal[1].opsi.filter((o) => o !== soal[1].jawaban).every((o) => Number(o) !== f), "D: FPB 24 dan 18 adalah 6, KPK 72 pengecoh (dihitung)");
+  cek(soal[2].jawaban === String(fpbBanyak([36, 48, 24])) && soal[2].opsi.filter((o) => o !== soal[2].jawaban).every((o) => Number(o) !== 12), "D: paket terbanyak 12 (dihitung)");
+  const dua = adegan("dua-belas");
+  const benar = dua.opsi.find((o) => o.benar);
+  cek(adalahKelipatan(24, 12) && !adalahKelipatan(18, 12) && bagiMandiri(18, 12).r === 6 && benar.teks === `Salah, 12 bukan faktor 18, sisa ${bagiMandiri(18, 12).r} mawar putih` && dua.opsi.some((o) => !o.benar && o.umpan.includes("18 dibagi 12 bersisa 6")), "D: 12 faktor 24 tetapi bukan faktor 18, sisa 6 (dihitung)");
+  const posisi = S.adegan.filter((a) => a.jenis === "pilih").map((a) => a.opsi.findIndex((o) => o.benar));
+  cek(new Set(posisi).size === posisi.length, `D: letak jawaban pilih bervariasi (${posisi.join("")})`);
+}
+
+/* ------------------------------ Misi D ------------------------------ */
+{
+  const daftar = K5.daftarMisiK5Bab2("D");
+  const capai = (aksi) => M0.misiBaru(K5.MISI_D, E.keadaanBersamaK5B2D(jalan(E.awalBersamaK5B2D(), LD, aksi)), new Set());
+  const daftarKe_ = (i, tanda, pilih) => [{ t: "F_DATA", i }, ...tanda.map((n) => ({ t: "F_KLIK", n })), { t: "F_CEK" }, ...(pilih === null ? [] : [{ t: "F_FPB", nilai: pilih }])];
+  cek(capai(daftarKe_(0, [1, 2, 3, 6], 6)).join() === "d-daftar", "D: daftar 12 dan 18 memenuhi");
+  cek(capai(daftarKe_(0, [1, 2, 3, 6], 36)).length === 0 && capai(daftarKe_(0, [1, 2, 3, 6], 30)).length === 0 && capai(daftarKe_(0, [1, 2, 3, 6], null)).length === 0 && capai(daftarKe_(0, [2, 3, 6], 6)).length === 0 && capai(daftarKe_(0, [1, 2, 3, 4, 6], 6)).length === 0, "D: pilihan KPK atau jumlah, tanpa pilihan, tanda kurang, atau tanda kelebihan tidak memenuhi");
+  cek(capai(daftarKe_(1, [1], 1)).join() === "d-satu", "D: daftar 15 dan 28 hanya 1 memenuhi");
+  cek(capai(daftarKe_(1, [1, 3], 1)).length === 0 && capai(daftarKe_(1, [1], 420)).length === 0, "D: daftar 15 dan 28 dengan tanda kelebihan atau pilihan 420 tidak memenuhi");
+  cek(capai(daftarKe_(2, [1, 2, 4], 4)).join() === "d-delapan", "D: tantangan daftar 8 dan 12");
+  cek(capai(daftarKe_(3, [1, 2, 3, 6], 6)).join() === "d-enam", "D: tantangan daftar 6 dan 12");
+  cek(capai(daftarKe_(3, [1, 2, 3, 6], 6)).join() !== "d-daftar", "D: daftar 6 dan 12 bukan misi 12 dan 18");
+  const bagiKe = (i, k, pilih) => [{ t: "R_DATA", i }, ...Array(k - 1).fill({ t: "R_NAIK" }), ...(pilih ? [{ t: "R_PILIH" }] : [{ t: "R_COBA" }])];
+  cek(capai(bagiKe(0, 6, true)).join() === "d-vas", "D: 6 vas dinyatakan terbanyak memenuhi");
+  cek(capai(bagiKe(0, 6, false)).length === 0 && capai(bagiKe(0, 3, true)).length === 0 && capai(bagiKe(0, 2, true)).length === 0 && capai(bagiKe(0, 5, true)).length === 0, "D: 6 vas hanya dicoba, atau 3, 2, 5 vas dinyatakan, tidak memenuhi");
+  cek(capai(bagiKe(1, 12, true)).join() === "d-paket", "D: 12 paket dinyatakan terbanyak memenuhi");
+  cek(capai(bagiKe(1, 6, true)).length === 0 && capai(bagiKe(1, 24, true)).length === 0 && capai(bagiKe(1, 12, false)).length === 0, "D: 6 paket, 24 paket (tidak rata), atau 12 paket hanya dicoba tidak memenuhi");
+  const jemKe = (i, f, k, periksa = true) => [{ t: "J_DATA", i }, { t: "J_FPB", nilai: f }, { t: "J_KPK", nilai: k }, ...(periksa ? [{ t: "J_PERIKSA" }] : [])];
+  cek(capai(jemKe(0, 6, 36)).join() === "d-jembatan", "D: jembatan 12 dan 18 memenuhi");
+  cek(capai(jemKe(0, 36, 36)).length === 0 && capai(jemKe(0, 6, 216)).length === 0 && capai(jemKe(0, 6, 36, false)).length === 0 && capai(jemKe(0, 30, 30)).length === 0, "D: jembatan dengan FPB salah, KPK salah, atau tanpa periksa tidak memenuhi");
+  cek(capai(jemKe(1, 6, 72)).join() === "d-jembatan-dua" && capai(jemKe(1, 6, 72)).join() !== "d-jembatan", "D: tantangan jembatan 24 dan 18");
+  cek(M0.misiBaru(K5.MISI_D, { alat: "faktor", pernah: ["daftar:12:18", "bagi:24:18", "jembatan:12:18"] }, new Set()).length === 0, "D: riwayat alat lain tidak memenuhi misi D");
+  const tampil = M0.tampilMisi(daftar);
+  const wajib = tampil.filter((m) => m.wajib).map((m) => m.id);
+  cek(wajib.length === 7 && daftar.filter((m) => !m.wajib).length === 3 && !M0.wajibSelesai(tampil, new Set(wajib.slice(0, 6))) && M0.wajibSelesai(tampil, new Set(wajib)), "D: gerbang terbuka hanya setelah tujuh wajib");
+  const sel_ = (id) => M0.misiBaru(daftar, sel(id), new Set()).join();
+  cek(sel_(K5.ID_MESIN_K5B2.D) === "d-mesin" && sel_(K5.ID_SKENARIO_K5B2.D) === "d-skenario", "D: id mesin dan skenario memenuhi misinya");
+}
+
+/* ------------------------------ Konsep D tidak bocor ------------------------------ */
+{
+  const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas5-bab2-ringkas.json", import.meta.url), "utf8"));
+  const baca = (nama, ekstensi) => readFileSync(new URL(`../src/components/modul/${nama}.${ekstensi}`, import.meta.url), "utf8");
+  const tanpaKomentar = (s) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const teksDari = (o) => {
+    const hasil = [];
+    JSON.stringify(o, (k, v) => {
+      if (typeof v === "string") hasil.push(v);
+      return v;
+    });
+    return hasil.join(" | ");
+  };
+  // Sub-Bab D tidak memakai konsep E: bilangan prima, faktorisasi prima, pohon faktor, ayakan, pangkat.
+  const BOCOR_D = /\b(prima|faktorisasi|pohon|ayakan|eratosthenes|pangkat)\b/i;
+  const catat = (teks, apa) => {
+    const m = BOCOR_D.exec(teks);
+    cek(!m, `D: ${apa} bebas konsep sub-bab berikutnya (${m ? m[0] : ""} di "${String(teks).slice(Math.max(0, (m?.index ?? 0) - 30), (m?.index ?? 0) + 40)}")`);
+  };
+  for (const t of [TK.MISI_K5B2.D, TK.NAMA_SIM_K5B2.D, ...K5.MISI_D.map((m) => m.teks)]) catat(t, "teks misi");
+  catat(teksDari(MS.MESIN_FPB), "mesin");
+  catat(teksDari(SK.SKENARIO_K5B2D), "skenario");
+  catat(teksDari(ringkas.subBab.D), "peta dan infografis ringkas");
+  catat(tanpaKomentar(baca("SimulasiLabBersamaK5B2", "tsx")), "komponen lab (tanpa komentar)");
+  catat(tanpaKomentar(baca("model-bersama-k5b2", "tsx")), "model gambar (tanpa komentar)");
+  catat(tanpaKomentar(baca("lab-bersama-k5b2d", "ts")), "logika lab (tanpa komentar)");
+  for (const p of globalThis.__pesanD) catat(p, "pesan lab dari fuzz");
+  const ucapan = [];
+  for (let i = 0; i < 4; i += 1) {
+    const xd = LD(w0, { t: "F_DATA", i });
+    ucapan.push(E.ucapDaftarK5B2D(xd), E.ucapDaftarK5B2D(LD(xd, { t: "F_KLIK", n: 1 })));
+  }
+  for (let i = 0; i < 2; i += 1) ucapan.push(E.ucapBagiK5B2D(LD(w0, { t: "R_DATA", i })), E.ucapBagiK5B2D(LD(LD(w0, { t: "R_DATA", i }), { t: "R_NAIK" })));
+  for (let i = 0; i < 3; i += 1) ucapan.push(E.ucapJembatanK5B2D(LD(w0, { t: "J_DATA", i })));
+  cek(ucapan.length === 15 && ucapan.every(tanpaAngka), `semua ${ucapan.length} ucapan lab D dieja menjadi kata`);
+  for (const u of ucapan) catat(u, "ucapan lab");
+
+  for (const f of ["SimulasiLabBersamaK5B2", "model-bersama-k5b2"]) {
+    const s = baca(f, "tsx");
+    cek(!/correct_index|explanation/.test(s), `${f}: tidak memuat correct_index atau explanation`);
+    cek(!/fetch\(|XMLHttpRequest|api\/|openai|anthropic|gemini/i.test(s), `${f}: tanpa jaringan atau model bahasa`);
+  }
+  {
+    const s = baca("lab-bersama-k5b2d", "ts");
+    cek(!/fetch\(|XMLHttpRequest|from "react"|openai|anthropic|gemini|correct_index|explanation/i.test(s) && (s.match(/^import .+$/gm) ?? []).length === 0, "lab-bersama-k5b2d: murni, tanpa impor");
+    const k = baca("SimulasiLabBersamaK5B2", "tsx");
+    cek(/useEffect\(\(\) => \{\s*onKeadaan\?\.\(keadaan\w+\(x\)\);\s*\}, \[onKeadaan, x\]\);/.test(k), "lab D: lapor keadaan lewat useEffect");
+    cek(/setLihat\(v\);\s*kirim\(\{ t: "PESAN_KOSONG" \}\);/.test(k), "lab D: ganti tampilan mengosongkan pesan");
+    const catatan = [...k.matchAll(/^\s*"([^"]+)",$/gm)].map((m) => m[1]);
+    cek(catatan.length >= 4 && catatan.every(tanpaAngka), "lab D: Coba ini dapat dieja");
+  }
+
+  // Data ringkas D dihitung ulang mandiri.
+  const D0 = ringkas.subBab.D;
+  const butir = (panel, id) => panel.butir.find((b) => b.id === id);
+  const p1 = D0.infografis.panel[0];
+  cek(butir(p1, "dua-belas").visual.isi === faktorMandiri(12).join(", ") && butir(p1, "delapan-belas").visual.isi === faktorMandiri(18).join(", ") && butir(p1, "sama").visual.isi === persekutuanMandiri(12, 18).join(", "), "ringkas D: faktor 12, 18, dan yang sama (dihitung)");
+  const [pers, fp] = D0.infografis.panel[1].sisi;
+  cek(pers.visual.isi === persekutuanMandiri(12, 18).join(", ") && fp.visual.isi === String(fpbMandiri(12, 18)), "ringkas D: faktor persekutuan dan FPB (dihitung)");
+  const p3 = D0.infografis.panel[2];
+  sama(butir(p3, "vas").visual.baris, [["merah", bagiMandiri(24, 6).q], ["putih", bagiMandiri(18, 6).q]], "ringkas D: isi tiap vas (dihitung)");
+  cek(fpbMandiri(24, 18) === 6 && butir(p3, "jembatan").visual.isi === `6 × ${kpkMandiri(12, 18)} = ${kaliMandiri(6, kpkMandiri(12, 18))}` && butir(p3, "cek").visual.isi === `12 × 18 = ${kaliMandiri(12, 18)}`, "ringkas D: jembatan 6 × 36 = 12 × 18 (dihitung)");
+  const kartu = (id) => D0.peta.kartu.find((k) => k.id === id).teks;
+  cek(kartu("d-fpb-enam") === `FPB 12 dan 18 adalah ${fpbMandiri(12, 18)}` && kartu("d-bukan-kpk") === `Bukan KPK: KPK 12 dan 18 adalah ${kpkMandiri(12, 18)}`, "ringkas D: kartu FPB dan KPK (dihitung)");
+  cek(adalahKelipatan(12, 6) && adalahKelipatan(18, 6) && kartu("d-enam-sama") === "6 faktor 12 dan faktor 18" && adalahKelipatan(12, 4) && !adalahKelipatan(18, 4) && kartu("d-empat-satu") === "4 hanya faktor 12", "ringkas D: 6 di kedua daftar, 4 hanya di 12 (dihitung)");
+  cek(kartu("d-enam-vas") === "24 merah, 18 putih: 6 vas" && fpbMandiri(24, 18) === 6 && kartu("d-isi-vas") === `Tiap vas: ${bagiMandiri(24, 6).q} merah dan ${bagiMandiri(18, 6).q} putih`, "ringkas D: kartu bagi rata (dihitung)");
+  cek(kartu("d-kali-kecil") === `6 × 36 = ${kaliMandiri(6, 36)}` && kartu("d-kali-besar") === `12 × 18 = ${kaliMandiri(12, 18)}`, "ringkas D: kartu jembatan (dihitung)");
 }
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);

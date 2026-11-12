@@ -4,9 +4,84 @@ import type { DefSkenario } from "./skenario-umum";
  * Skenario Kelas 5 Bab 2 (KPK dan FPB). Tanpa jaringan, tanpa model bahasa.
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b2.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K5B2A: Tepuk Kelipatan Nisa (tepuk saat kelipatan, banyak tepukan, kelipatan berikutnya, cek sisa)
+ *  - SKENARIO_K5B2D: Vas Mawar Amelia (faktor persekutuan, FPB, bagi rata, banyak vas terbanyak)
  *  - SKENARIO_K5B2C: Potong Petak Lukas (faktor lewat susunan baris, hitung faktor, pasangan, faktor yang terlewat)
  *  - SKENARIO_K5B2B: Jadwal Renang Yohana (dua daftar, kelipatan persekutuan, KPK, tanggal bertemu lagi)
  */
+
+export const SKENARIO_K5B2D: DefSkenario = {
+  id: "vas-mawar-k5b2",
+  judul: "Vas Mawar Amelia",
+  latar: "Bantu Amelia merangkai mawar ke dalam vas sebanyak mungkin, tanpa sisa.",
+  tokoh: "👧",
+  nama: "Amelia",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Amelia. Aku punya 24 mawar merah dan 18 mawar putih. Aku ingin merangkainya dalam vas sebanyak mungkin, dengan isi tiap vas sama, dan tidak ada mawar yang tersisa. Ayo kita cari bersama!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "terbesar",
+      jenis: "pilih",
+      cerita: "Faktor 24: 1, 2, 3, 4, 6, 8, 12, 24. Faktor 18: 1, 2, 3, 6, 9, 18. Bilangan manakah yang ada di kedua daftar dan paling besar?",
+      opsi: [
+        { teks: "9", benar: false, umpan: "9 hanya ada di daftar faktor 18. Daftar faktor 24 tidak memuat 9." },
+        { teks: "6", benar: true, umpan: "Betul! 6 ada di kedua daftar dan paling besar. Itu FPB dari 24 dan 18." },
+        { teks: "12", benar: false, umpan: "12 hanya ada di daftar faktor 24. Daftar faktor 18 tidak memuat 12." },
+      ],
+    },
+    {
+      id: "bersama",
+      jenis: "hitung",
+      cerita: "Faktor persekutuan 24 dan 18 adalah 1, 2, 3, dan 6. Setiap faktor persekutuan diberi satu stik.",
+      tanya: "Ketuk semua stik. Ada berapa faktor persekutuan 24 dan 18?",
+      objek: "stik",
+      jumlah: 4,
+      sukses: "Betul! Empat faktor persekutuan, dan yang terbesar adalah 6.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "merah",
+      jenis: "isi",
+      cerita: "Amelia memakai 6 vas. Masukkan stik sebanyak mawar merah di tiap vas, yaitu 24 mawar merah dibagi rata ke 6 vas.",
+      objek: "stik",
+      target: 4,
+      maks: 8,
+      sukses: "Pas! Tiap vas berisi 4 mawar merah, dan 6 × 4 = 24.",
+      kurang: "Stiknya masih kurang. Bagi 24 mawar merah ke 6 vas yang sama banyak.",
+      lebih: "Stiknya kelebihan. Bagi 24 mawar merah ke 6 vas yang sama banyak.",
+    },
+    {
+      id: "periksa",
+      jenis: "soal",
+      cerita: "Amelia memeriksa isi vas dan paket di meja.",
+      soal: [
+        { teks: "Tiap vas berisi mawar putih sebanyak …", jawaban: "3", opsi: ["3", "4", "6"] },
+        { teks: "FPB dari 24 dan 18 adalah …", jawaban: "6", opsi: ["72", "6", "3"] },
+        { teks: "36 susu, 48 lolipop, dan 24 biskuit dibagi rata. Paket terbanyak …", jawaban: "12", opsi: ["6", "24", "12"] },
+      ],
+      sukses: "Hebat! FPB menunjukkan banyak kelompok terbanyak yang masih rata.",
+      salah: "Hmm, cari faktor persekutuannya lagi. Coba lagi.",
+    },
+    {
+      id: "dua-belas",
+      jenis: "pilih",
+      cerita: "Seorang teman berkata, vas terbanyak adalah 12, karena 12 faktor 24. Apa jawaban Amelia?",
+      opsi: [
+        { teks: "Benar, 12 faktor 24", benar: false, umpan: "12 memang faktor 24, tetapi 12 juga harus faktor 18. Itu belum diperiksa." },
+        { teks: "Benar, 12 lebih besar dari 6", benar: false, umpan: "Lebih besar belum tentu rata. 18 dibagi 12 bersisa 6, jadi mawar putih tersisa." },
+        { teks: "Salah, 12 bukan faktor 18, sisa 6 mawar putih", benar: true, umpan: "Betul! 18 dibagi 12 bersisa 6, jadi 12 vas tidak rata." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Faktor persekutuan adalah faktor yang sama dari dua bilangan, dan yang terbesar disebut FPB. FPB menunjukkan banyak kelompok terbanyak yang masih terbagi rata.",
+    },
+  ],
+};
 
 export const SKENARIO_K5B2C: DefSkenario = {
   id: "potong-petak-k5b2",

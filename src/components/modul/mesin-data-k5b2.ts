@@ -15,7 +15,11 @@
  *    Susun: titik tiap baris pada susunan penuh (pengecoh: satu lebih, banyak baris). Pasangan: pasangan faktor (pengecoh:
  *    selisih, satu lebih). Daftar: banyak faktor (pengecoh: dua kurang, satu lebih). Cek: apakah d faktor n lewat sisa
  *    (pengecoh: menyangka faktor, sisa palsu).
- * Data dari Buku Siswa Kelas V Bab 2 Sub-Bab A, B, dan C (lompat hitung, tabel seratus, habis dibagi, KPK, jadwal).
+ *  - MESIN_FPB (D): Daftar → FPB → Bagi → Jembatan   (12 dan 18, 36 dan 48, 18 dan 30)
+ *    Daftar: banyak faktor persekutuan (pengecoh: satu lebih, satu kurang). FPB: yang terbesar (pengecoh: 1, KPK).
+ *    Bagi: bunga merah tiap vas (pengecoh: bunga putih tiap vas, dua kali). Jembatan: KPK dari FPB dan hasil kali
+ *    (pengecoh: hasil kali, jumlah).
+ * Data dari Buku Siswa Kelas V Bab 2 Sub-Bab A, B, C, dan D (lompat hitung, tabel seratus, habis dibagi, KPK, jadwal).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b2.mjs.
  */
 import type { DefMesin, KasusMesin, LangkahMesin, StasiunDef } from "./mesin-bertahap-k3b1";
@@ -245,4 +249,77 @@ export const MESIN_FAKTOR: DefMesin = {
   kasus: KASUS_FAKTOR.map(kasusMesinFaktor),
 };
 
-export const SEMUA_MESIN_K5B2 = [MESIN_KELIPATAN, MESIN_KPK, MESIN_FAKTOR];
+/* ------------------------------ D: Mesin FPB ------------------------------ */
+
+/** a dan b: dua bilangan. */
+export type KasusFpb = { id: string; a: number; b: number };
+export const KASUS_FPB: KasusFpb[] = [
+  { id: "12-18", a: 12, b: 18 },
+  { id: "36-48", a: 36, b: 48 },
+  { id: "18-30", a: 18, b: 30 },
+];
+
+export const STASIUN_FPB: StasiunDef[] = [
+  { id: "daftar", nama: "Daftar", ikon: "📋" },
+  { id: "fpb", nama: "FPB", ikon: "🎯" },
+  { id: "bagi", nama: "Bagi", ikon: "🧺" },
+  { id: "jembatan", nama: "Jembatan", ikon: "🌉" },
+];
+
+const faktorM = (n: number): number[] => Array.from({ length: n }, (_, i) => i + 1).filter((d) => n % d === 0);
+
+export function kasusMesinFpb(c: KasusFpb, idx: number): KasusMesin {
+  const { a, b } = c;
+  const fa = faktorM(a);
+  const fb = faktorM(b);
+  const sama = fa.filter((d) => b % d === 0);
+  const f = sama[sama.length - 1];
+  const k = (a * b) / f;
+  const banyak = sama.length;
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "daftar",
+      tanya: `Faktor ${a}: ${fa.join(", ")}. Faktor ${b}: ${fb.join(", ")}. Ada berapa bilangan yang muncul di kedua daftar?`,
+      opsi: susunOpsi(String(banyak), [String(banyak + 1), String(banyak - 1)], idx),
+      benar: String(banyak),
+      petunjuk: "Cocokkan tiap faktor di daftar pertama dengan daftar kedua. Hitung yang ada di kedua daftar.",
+    },
+    {
+      stasiun: "fpb",
+      tanya: `FPB dari ${a} dan ${b} adalah …`,
+      opsi: susunOpsi(String(f), ["1", String(k)], idx + 1),
+      benar: String(f),
+      petunjuk: "FPB adalah faktor persekutuan yang terbesar, bukan yang terkecil dan bukan KPK.",
+    },
+    {
+      stasiun: "bagi",
+      tanya: `${a} bunga merah dan ${b} bunga putih dibagi rata ke vas sebanyak mungkin, tanpa sisa. Tiap vas berisi berapa bunga merah?`,
+      opsi: susunOpsi(String(a / f), [String(b / f), String((2 * a) / f)], idx + 2),
+      benar: String(a / f),
+      petunjuk: `Banyak vas terbanyak adalah FPB, yaitu ${f}. Bagi ${a} bunga merah ke ${f} vas.`,
+    },
+    {
+      stasiun: "jembatan",
+      tanya: `FPB ${a} dan ${b} adalah ${f}, dan ${a} × ${b} = ${a * b}. Maka KPK dari ${a} dan ${b} adalah …`,
+      opsi: susunOpsi(String(k), [String(a * b), String(a + b)], idx + 3),
+      benar: String(k),
+      petunjuk: `Jembatan: FPB dikali KPK sama dengan ${a} dikali ${b}. Bagi ${a * b} dengan ${f}.`,
+    },
+  ];
+  return {
+    id: c.id,
+    nama: `FPB ${a} dan ${b}`,
+    ringkas: `Ada ${banyak} faktor persekutuan ${a} dan ${b}. FPB ${a} dan ${b} adalah ${f}. Dibagi rata ke ${f} vas, tiap vas berisi ${a / f} merah dan ${b / f} putih. KPK ${a} dan ${b} adalah ${k}.`,
+    langkah,
+  };
+}
+
+export const MESIN_FPB: DefMesin = {
+  id: "mesin-fpb-k5b2",
+  judul: "Mesin FPB",
+  selesaiId: "mesin-fpb",
+  stasiun: STASIUN_FPB,
+  kasus: KASUS_FPB.map(kasusMesinFpb),
+};
+
+export const SEMUA_MESIN_K5B2 = [MESIN_KELIPATAN, MESIN_KPK, MESIN_FAKTOR, MESIN_FPB];

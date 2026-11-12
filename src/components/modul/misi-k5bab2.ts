@@ -6,6 +6,7 @@
  *  A Kelipatan : Lab Lompat Kelipatan (Lompat, Tabel, Cek) + Mesin Kelipatan + Tepuk Kelipatan Nisa
  *  B KPK       : Lab Dua Jalur (Jalur, Irisan, Jadwal)     + Mesin KPK       + Jadwal Renang Yohana
  *  C Faktor    : Lab Susunan Faktor (Susun, Pasangan, Tanda) + Mesin Faktor + Potong Petak Lukas
+ *  D FPB       : Lab Faktor Bersama (Daftar, Bagi, Jembatan) + Mesin FPB + Vas Mawar Amelia
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
@@ -13,17 +14,18 @@ import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanKelipatanK5B2A } from "./lab-kelipatan-k5b2a";
 import type { KeadaanJalurK5B2B } from "./lab-jalur-k5b2b";
 import type { KeadaanFaktorK5B2C } from "./lab-faktor-k5b2c";
+import type { KeadaanBersamaK5B2D } from "./lab-bersama-k5b2d";
 
-export type KeadaanK5Bab2 = KeadaanKelipatanK5B2A | KeadaanJalurK5B2B | KeadaanFaktorK5B2C | KeadaanSelesai;
-export type HurufMisiK5B2 = "A" | "B" | "C";
+export type KeadaanK5Bab2 = KeadaanKelipatanK5B2A | KeadaanJalurK5B2B | KeadaanFaktorK5B2C | KeadaanBersamaK5B2D | KeadaanSelesai;
+export type HurufMisiK5B2 = "A" | "B" | "C" | "D";
 
 const selesai = (k: KeadaanK5Bab2, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
 const pernah = (k: KeadaanK5Bab2, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K5B2 = { A: "tepuk-kelipatan", B: "jadwal-renang", C: "potong-petak" } as const;
-export const ID_MESIN_K5B2 = { A: "mesin-kelipatan", B: "mesin-kpk", C: "mesin-faktor" } as const;
+export const ID_SKENARIO_K5B2 = { A: "tepuk-kelipatan", B: "jadwal-renang", C: "potong-petak", D: "vas-mawar" } as const;
+export const ID_MESIN_K5B2 = { A: "mesin-kelipatan", B: "mesin-kpk", C: "mesin-faktor", D: "mesin-fpb" } as const;
 
 export const MISI_A: DefMisi<KeadaanK5Bab2>[] = [
   { id: "a-tiga", teks: "Di Lompat, pilih jarak tiga, lalu mendaratlah lima kali dari nol.", wajib: true, cek: (k) => pernah(k, "kelipatan", "lompat:3:5") },
@@ -64,5 +66,18 @@ export const MISI_C: DefMisi<KeadaanK5Bab2>[] = [
   { id: "c-tanda-tiga-enam", teks: "Di Tanda, tandai semua faktor tiga puluh enam, lalu periksa.", wajib: false, cek: (k) => pernah(k, "faktor", "cek:36") },
 ];
 
-const DAFTAR: Record<HurufMisiK5B2, DefMisi<KeadaanK5Bab2>[]> = { A: MISI_A, B: MISI_B, C: MISI_C };
+export const MISI_D: DefMisi<KeadaanK5Bab2>[] = [
+  { id: "d-daftar", teks: "Di Daftar, tandai faktor yang ada di kedua daftar faktor dua belas dan delapan belas, lalu pilih yang terbesar.", wajib: true, cek: (k) => pernah(k, "bersama", "daftar:12:18") },
+  { id: "d-satu", teks: "Di Daftar, pilih lima belas dan dua puluh delapan, tandai faktor persekutuannya, lalu pilih yang terbesar.", wajib: true, cek: (k) => pernah(k, "bersama", "daftar:15:28") },
+  { id: "d-vas", teks: "Di Bagi, bagi dua puluh empat mawar merah dan delapan belas mawar putih ke vas sebanyak mungkin, tanpa sisa.", wajib: true, cek: (k) => pernah(k, "bersama", "bagi:24:18") },
+  { id: "d-paket", teks: "Di Bagi, bagi tiga puluh enam susu, empat puluh delapan lolipop, dan dua puluh empat biskuit ke paket sebanyak mungkin, tanpa sisa.", wajib: true, cek: (k) => pernah(k, "bersama", "bagi:36:48:24") },
+  { id: "d-jembatan", teks: "Di Jembatan, pilih FPB dan KPK dari dua belas dan delapan belas, lalu periksa jembatannya.", wajib: true, cek: (k) => pernah(k, "bersama", "jembatan:12:18") },
+  { id: "d-mesin", teks: "Selesaikan Mesin FPB sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K5B2.D) },
+  { id: "d-skenario", teks: "Selesaikan skenario Vas Mawar Amelia sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K5B2.D) },
+  { id: "d-delapan", teks: "Di Daftar, pilih delapan dan dua belas. Berapa FPB-nya, dan berapa faktor persekutuannya?", wajib: false, cek: (k) => pernah(k, "bersama", "daftar:8:12") },
+  { id: "d-enam", teks: "Di Daftar, pilih enam dan dua belas. Apa yang kamu lihat pada FPB-nya?", wajib: false, cek: (k) => pernah(k, "bersama", "daftar:6:12") },
+  { id: "d-jembatan-dua", teks: "Di Jembatan, pilih FPB dan KPK dari dua puluh empat dan delapan belas, lalu periksa jembatannya.", wajib: false, cek: (k) => pernah(k, "bersama", "jembatan:24:18") },
+];
+
+const DAFTAR: Record<HurufMisiK5B2, DefMisi<KeadaanK5Bab2>[]> = { A: MISI_A, B: MISI_B, C: MISI_C, D: MISI_D };
 export const daftarMisiK5Bab2 = (huruf: string): DefMisi<KeadaanK5Bab2>[] => DAFTAR[huruf as HurufMisiK5B2] ?? MISI_A;
