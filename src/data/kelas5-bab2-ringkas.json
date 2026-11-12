@@ -953,6 +953,226 @@
           }
         ]
       }
+    },
+    "E": {
+      "peta": {
+        "pusat": {
+          "judul": "Faktor Prima",
+          "ikon": "🌳",
+          "suara": "Ini peta faktor prima. Kita belajar bilangan prima, pohon faktor, serta KPK dan FPB lewat faktor prima. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "prima",
+            "judul": "Bilangan prima",
+            "ikon": "🔢",
+            "ringkas": "Tepat dua faktor: satu dan dirinya.",
+            "suara": "Bilangan prima. Bilangan prima punya tepat dua faktor, satu dan bilangan itu sendiri. Satu bukan bilangan prima."
+          },
+          {
+            "id": "pohon",
+            "judul": "Pohon faktor",
+            "ikon": "🌳",
+            "ringkas": "Pecah sampai semua daun prima.",
+            "suara": "Pohon faktor. Pecah bilangan dengan bilangan prima sampai semua daun prima. Hasil kali daun sama dengan bilangan itu."
+          },
+          {
+            "id": "kpk",
+            "judul": "KPK dari prima",
+            "ikon": "🎯",
+            "ringkas": "Ambil semua prima, jumlah terbanyak.",
+            "suara": "KPK dari faktor prima. Ambil semua faktor prima dari kedua bilangan, dengan jumlah yang terbanyak."
+          },
+          {
+            "id": "fpb",
+            "judul": "FPB dari prima",
+            "ikon": "🧺",
+            "ringkas": "Ambil prima yang sama, jumlah paling sedikit.",
+            "suara": "FPB dari faktor prima. Ambil faktor prima yang ada di kedua bilangan, dengan jumlah yang paling sedikit."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "e-tujuh-belas",
+            "teks": "17 hanya punya faktor 1 dan 17",
+            "ikon": "✅",
+            "cabang": "prima",
+            "petunjuk": "Dua faktor saja itu soal bilangan prima. Coba cabang lain."
+          },
+          {
+            "id": "e-satu",
+            "teks": "1 bukan bilangan prima",
+            "ikon": "1️⃣",
+            "cabang": "prima",
+            "petunjuk": "Soal bilangan satu itu soal bilangan prima. Coba cabang lain."
+          },
+          {
+            "id": "e-dua-belas",
+            "teks": "12 = 2 × 2 × 3",
+            "ikon": "🌿",
+            "cabang": "pohon",
+            "petunjuk": "Faktorisasi prima itu soal pohon faktor. Coba cabang lain."
+          },
+          {
+            "id": "e-seratus",
+            "teks": "196 = 2 × 2 × 7 × 7",
+            "ikon": "🍃",
+            "cabang": "pohon",
+            "petunjuk": "Faktorisasi prima itu soal pohon faktor. Coba cabang lain."
+          },
+          {
+            "id": "e-kpk-prima",
+            "teks": "KPK 72 dan 150 = 1800",
+            "ikon": "🎯",
+            "cabang": "kpk",
+            "petunjuk": "Hasil KPK itu soal KPK dari prima. Coba cabang lain."
+          },
+          {
+            "id": "e-terbanyak",
+            "teks": "Ambil jumlah terbanyak",
+            "ikon": "⬆️",
+            "cabang": "kpk",
+            "petunjuk": "Jumlah terbanyak itu aturan KPK. Coba cabang lain."
+          },
+          {
+            "id": "e-fpb-prima",
+            "teks": "FPB 72 dan 150 = 6",
+            "ikon": "🧺",
+            "cabang": "fpb",
+            "petunjuk": "Hasil FPB itu soal FPB dari prima. Coba cabang lain."
+          },
+          {
+            "id": "e-tersedikit",
+            "teks": "Ambil jumlah paling sedikit",
+            "ikon": "⬇️",
+            "cabang": "fpb",
+            "petunjuk": "Jumlah paling sedikit itu aturan FPB. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Faktor Prima",
+        "suara": "Ini tiga panel tentang faktor prima. Ketuk kotaknya untuk membuka, lalu lihat tujuh puluh dua dan seratus lima puluh.",
+        "panel": [
+          {
+            "id": "e-prima-info",
+            "tipe": "buka",
+            "judul": "Bilangan prima",
+            "ide": "Prima punya tepat dua faktor.",
+            "suara": "Ada tiga hal tentang bilangan prima. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "prima",
+                "label": "Prima",
+                "ikon": "✅",
+                "isi": "Hanya satu dan dirinya.",
+                "suara": "Tujuh belas hanya punya dua faktor, satu dan tujuh belas, jadi tujuh belas prima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "17: 1, 17"
+                }
+              },
+              {
+                "id": "bukan",
+                "label": "Bukan",
+                "ikon": "❎",
+                "isi": "Faktor lebih dari dua.",
+                "suara": "Empat puluh sembilan sama dengan tujuh kali tujuh, jadi bukan prima walaupun ganjil.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "49 = 7 × 7"
+                }
+              },
+              {
+                "id": "satu",
+                "label": "Satu",
+                "ikon": "1️⃣",
+                "isi": "Hanya satu faktor.",
+                "suara": "Satu hanya punya satu faktor, yaitu satu, jadi satu bukan bilangan prima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1: 1"
+                }
+              }
+            ]
+          },
+          {
+            "id": "e-pohon-info",
+            "tipe": "buka",
+            "judul": "Pohon faktor",
+            "ide": "Pecah sampai semua daun prima.",
+            "suara": "Ada tiga pohon faktor. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "dua-belas",
+                "label": "Dua belas",
+                "ikon": "🌿",
+                "isi": "Tiga daun prima.",
+                "suara": "Dua belas sama dengan dua kali dua kali tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 = 2 × 2 × 3"
+                }
+              },
+              {
+                "id": "seratus",
+                "label": "Seratus sembilan puluh enam",
+                "ikon": "🍃",
+                "isi": "Empat daun prima.",
+                "suara": "Seratus sembilan puluh enam sama dengan dua kali dua kali tujuh kali tujuh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "196 = 2 × 2 × 7 × 7"
+                }
+              },
+              {
+                "id": "tiga-ratus",
+                "label": "Tiga ratus",
+                "ikon": "🌳",
+                "isi": "Lima daun prima.",
+                "suara": "Tiga ratus sama dengan dua kali dua kali tiga kali lima kali lima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "300 = 2 × 2 × 3 × 5 × 5"
+                }
+              }
+            ]
+          },
+          {
+            "id": "e-gabung-info",
+            "tipe": "banding",
+            "judul": "KPK dan FPB dari prima",
+            "ide": "KPK terbanyak, FPB paling sedikit.",
+            "suara": "Lihat KPK dan FPB dari tujuh puluh dua dan seratus lima puluh.",
+            "sisi": [
+              {
+                "id": "kpk",
+                "nama": "KPK",
+                "ikon": "🟨",
+                "catatan": "Semua prima, jumlah terbanyak.",
+                "suara": "KPK mengambil semua faktor prima dengan jumlah terbanyak, jadi hasilnya seribu delapan ratus.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 × 2 × 2 × 3 × 3 × 5 × 5 = 1800"
+                }
+              },
+              {
+                "id": "fpb",
+                "nama": "FPB",
+                "ikon": "🟩",
+                "catatan": "Prima yang sama, paling sedikit.",
+                "suara": "FPB mengambil faktor prima yang sama dengan jumlah paling sedikit, jadi hasilnya enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 × 3 = 6"
+                }
+              }
+            ],
+            "kesimpulan": "KPK ambil terbanyak, FPB ambil paling sedikit."
+          }
+        ]
+      }
     }
   }
 }

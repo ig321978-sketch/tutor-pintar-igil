@@ -19,7 +19,11 @@
  *    Daftar: banyak faktor persekutuan (pengecoh: satu lebih, satu kurang). FPB: yang terbesar (pengecoh: 1, KPK).
  *    Bagi: bunga merah tiap vas (pengecoh: bunga putih tiap vas, dua kali). Jembatan: KPK dari FPB dan hasil kali
  *    (pengecoh: hasil kali, jumlah).
- * Data dari Buku Siswa Kelas V Bab 2 Sub-Bab A, B, C, dan D (lompat hitung, tabel seratus, habis dibagi, KPK, jadwal).
+ *  - MESIN_PRIMA (E): Prima → Pohon → Pasangan → Hasil   (72 dan 150, 42 dan 60, 27 dan 81)
+ *    Prima: bilangan prima di antara dua bilangan bukan prima. Pohon: faktorisasi prima (pengecoh: ada daun yang belum
+ *    prima, hasil kali salah). Pasangan: jumlah faktor prima untuk KPK (pengecoh: paling sedikit, jumlah). Hasil: FPB
+ *    (pengecoh: KPK, 1).
+ * Data dari Buku Siswa Kelas V Bab 2 Sub-Bab A, B, C, D, dan E (lompat hitung, tabel seratus, habis dibagi, KPK, jadwal).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b2.mjs.
  */
 import type { DefMesin, KasusMesin, LangkahMesin, StasiunDef } from "./mesin-bertahap-k3b1";
@@ -322,4 +326,98 @@ export const MESIN_FPB: DefMesin = {
   kasus: KASUS_FPB.map(kasusMesinFpb),
 };
 
-export const SEMUA_MESIN_K5B2 = [MESIN_KELIPATAN, MESIN_KPK, MESIN_FAKTOR, MESIN_FPB];
+/* ------------------------------ E: Mesin Prima ------------------------------ */
+
+/** a dan b: dua bilangan. p: bilangan prima. c: dua bilangan bukan prima (pengecoh). */
+export type KasusPrima = { id: string; a: number; b: number; p: number; c: [number, number] };
+export const KASUS_PRIMA: KasusPrima[] = [
+  { id: "72-150", a: 72, b: 150, p: 17, c: [15, 21] },
+  { id: "42-60", a: 42, b: 60, p: 29, c: [27, 25] },
+  { id: "27-81", a: 27, b: 81, p: 23, c: [21, 27] },
+];
+
+export const STASIUN_PRIMA: StasiunDef[] = [
+  { id: "prima", nama: "Prima", ikon: "🔢" },
+  { id: "pohon", nama: "Pohon", ikon: "🌳" },
+  { id: "pasangan", nama: "Pasangan", ikon: "🔗" },
+  { id: "hasil", nama: "Hasil", ikon: "🎯" },
+];
+
+/** Faktorisasi prima dengan membagi bilangan prima terkecil berulang kali. */
+const faktorisasiM = (n: number): number[] => {
+  const hasil: number[] = [];
+  let sisa = n;
+  for (let q = 2; q <= sisa; q += 1) {
+    while (sisa % q === 0) {
+      hasil.push(q);
+      sisa = sisa / q;
+    }
+  }
+  return hasil;
+};
+const kali = (daftar: number[]): number => daftar.reduce((h, v) => h * v, 1);
+const kataKali = (daftar: number[]): string => daftar.join(" × ");
+
+export function kasusMesinPrima(c: KasusPrima, idx: number): KasusMesin {
+  const { a, b, p, c: pengecoh } = c;
+  const fa = faktorisasiM(a);
+  const fb = faktorisasiM(b);
+  const bersama = fa.filter((v, i) => fa.indexOf(v) === i && fb.includes(v));
+  const q = bersama[0];
+  const ca = fa.filter((v) => v === q).length;
+  const cb = fb.filter((v) => v === q).length;
+  const fpb = kali(
+    bersama.flatMap((v) => {
+      const m = Math.min(fa.filter((u) => u === v).length, fb.filter((u) => u === v).length);
+      return Array.from({ length: m }, () => v);
+    }),
+  );
+  const kpk = (a * b) / fpb;
+  const gabung = [fa[0] === 3 ? 2 : 3, ...fa.slice(1)];
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "prima",
+      tanya: "Bilangan manakah yang prima, yaitu hanya punya dua faktor?",
+      opsi: susunOpsi(String(p), pengecoh.map(String), idx),
+      benar: String(p),
+      petunjuk: "Bilangan prima hanya punya dua faktor, 1 dan bilangan itu sendiri. Periksa faktor tiap pilihan.",
+    },
+    {
+      stasiun: "pohon",
+      tanya: `Faktorisasi prima dari ${a} adalah …`,
+      opsi: susunOpsi(kataKali(fa), [kataKali([fa[0] * fa[1], ...fa.slice(2)]), kataKali(gabung)], idx + 1),
+      benar: kataKali(fa),
+      petunjuk: "Pecah terus dengan bilangan prima sampai semua daun prima. Hasil kali semua daun harus sama dengan bilangan itu.",
+    },
+    {
+      stasiun: "pasangan",
+      tanya: `Faktor prima ${q} muncul ${ca} kali di ${a} dan ${cb} kali di ${b}. Untuk KPK, faktor ${q} diambil berapa kali?`,
+      opsi: susunOpsi(String(Math.max(ca, cb)), [String(Math.min(ca, cb)), String(ca + cb)], idx + 2),
+      benar: String(Math.max(ca, cb)),
+      petunjuk: "KPK mengambil semua faktor prima dengan jumlah terbanyak. FPB mengambil jumlah paling sedikit.",
+    },
+    {
+      stasiun: "hasil",
+      tanya: `FPB dari ${a} dan ${b} lewat faktor prima adalah …`,
+      opsi: susunOpsi(String(fpb), [String(kpk), "1"], idx + 3),
+      benar: String(fpb),
+      petunjuk: "FPB hanya mengambil faktor prima yang ada di kedua bilangan, dengan jumlah paling sedikit. Kalikan hasilnya.",
+    },
+  ];
+  return {
+    id: c.id,
+    nama: `Prima ${a} dan ${b}`,
+    ringkas: `${p} bilangan prima. ${a} = ${kataKali(fa)}. Faktor prima ${q} diambil ${Math.max(ca, cb)} kali untuk KPK. FPB ${a} dan ${b} adalah ${fpb}, dan KPK ${a} dan ${b} adalah ${kpk}.`,
+    langkah,
+  };
+}
+
+export const MESIN_PRIMA: DefMesin = {
+  id: "mesin-prima-k5b2",
+  judul: "Mesin Prima",
+  selesaiId: "mesin-prima",
+  stasiun: STASIUN_PRIMA,
+  kasus: KASUS_PRIMA.map(kasusMesinPrima),
+};
+
+export const SEMUA_MESIN_K5B2 = [MESIN_KELIPATAN, MESIN_KPK, MESIN_FAKTOR, MESIN_FPB, MESIN_PRIMA];

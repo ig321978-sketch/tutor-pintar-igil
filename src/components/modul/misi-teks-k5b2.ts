@@ -3,8 +3,8 @@
  * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen laboratorium ke bundel awal.
  */
 
-export type HurufK5B2 = "A" | "B" | "C" | "D";
-const HURUF: HurufK5B2[] = ["A", "B", "C", "D"];
+export type HurufK5B2 = "A" | "B" | "C" | "D" | "E";
+const HURUF: HurufK5B2[] = ["A", "B", "C", "D", "E"];
 
 export const hurufK5B2 = (sub: string): HurufK5B2 => (HURUF.includes(sub as HurufK5B2) ? (sub as HurufK5B2) : "A");
 
@@ -13,6 +13,7 @@ export const MISI_K5B2: Record<HurufK5B2, string> = {
   B: "Di Lab Dua Jalur, lompatkan dua pelompat berjarak berbeda dan cari bilangan yang didarati keduanya, tandai bilangan yang ada di dua daftar kelipatan lalu pilih yang terkecil, dan tentukan kapan dua jadwal bertemu lagi. Periksa dengan Mesin KPK, lalu selesaikan skenario Jadwal Renang Yohana. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
   C: "Di Lab Susunan Faktor, susun titik dalam baris yang sama banyak dan simpan susunan yang tidak bersisa, cari pasangan faktor sampai bertemu di tengah, dan tandai semua faktor sebuah bilangan. Periksa dengan Mesin Faktor, lalu selesaikan skenario Potong Petak Lukas. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
   D: "Di Lab Faktor Bersama, tandai faktor yang ada di dua daftar faktor lalu pilih yang terbesar, bagi benda rata ke kelompok sebanyak mungkin tanpa sisa, dan periksa jembatan antara FPB, KPK, dan hasil kali dua bilangan. Periksa dengan Mesin FPB, lalu selesaikan skenario Vas Mawar Amelia. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
+  E: "Di Lab Pohon Prima, periksa apakah sebuah bilangan prima lewat faktornya, pecah bilangan dengan pohon faktor sampai semua daun prima, dan cari KPK serta FPB dari faktor prima. Periksa dengan Mesin Prima, lalu selesaikan skenario Kebun Sekolah Nisa. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
 };
 
 export const NAMA_SIM_K5B2: Record<HurufK5B2, string> = {
@@ -20,6 +21,7 @@ export const NAMA_SIM_K5B2: Record<HurufK5B2, string> = {
   B: "Lab Dua Jalur, Mesin KPK, dan Jadwal Renang Yohana",
   C: "Lab Susunan Faktor, Mesin Faktor, dan Potong Petak Lukas",
   D: "Lab Faktor Bersama, Mesin FPB, dan Vas Mawar Amelia",
+  E: "Lab Pohon Prima, Mesin Prima, dan Kebun Sekolah Nisa",
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */

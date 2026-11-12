@@ -4,10 +4,95 @@ import type { DefSkenario } from "./skenario-umum";
  * Skenario Kelas 5 Bab 2 (KPK dan FPB). Tanpa jaringan, tanpa model bahasa.
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b2.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K5B2A: Tepuk Kelipatan Nisa (tepuk saat kelipatan, banyak tepukan, kelipatan berikutnya, cek sisa)
+ *  - SKENARIO_K5B2E: Kebun Sekolah Nisa (pencapaian bab: kelipatan, KPK, faktor, FPB, bilangan prima, faktorisasi)
  *  - SKENARIO_K5B2D: Vas Mawar Amelia (faktor persekutuan, FPB, bagi rata, banyak vas terbanyak)
  *  - SKENARIO_K5B2C: Potong Petak Lukas (faktor lewat susunan baris, hitung faktor, pasangan, faktor yang terlewat)
  *  - SKENARIO_K5B2B: Jadwal Renang Yohana (dua daftar, kelipatan persekutuan, KPK, tanggal bertemu lagi)
  */
+
+export const SKENARIO_K5B2E: DefSkenario = {
+  id: "kebun-nisa-k5b2",
+  judul: "Kebun Sekolah Nisa",
+  latar: "Bantu Nisa mengatur jadwal dan paket di kebun sekolah, memakai semua yang sudah dipelajari.",
+  tokoh: "👧",
+  nama: "Nisa",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Nisa. Hari ini aku mengatur kebun sekolah. Aku menyiram tanaman tiap 6 hari, dan temanku Lukas tiap 9 hari. Kita pakai kelipatan, KPK, faktor, FPB, dan bilangan prima untuk membantu. Ayo mulai!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "kelipatan",
+      jenis: "pilih",
+      cerita: "Nisa menyiram tiap 6 hari. Hari ke berapa Nisa menyiram?",
+      opsi: [
+        { teks: "16", benar: false, umpan: "16 dibagi 6 bersisa 4, jadi bukan kelipatan 6. Nisa tidak menyiram di hari itu." },
+        { teks: "18", benar: true, umpan: "Betul! 18 adalah kelipatan 6, karena 6 × 3 = 18." },
+        { teks: "20", benar: false, umpan: "20 dibagi 6 bersisa 2, jadi bukan kelipatan 6. Nisa tidak menyiram di hari itu." },
+      ],
+    },
+    {
+      id: "sama",
+      jenis: "hitung",
+      cerita: "Dalam 36 hari, Nisa menyiram pada hari ke-6, 12, 18, 24, 30, dan 36. Lukas menyiram pada hari ke-9, 18, 27, dan 36. Hari yang sama adalah hari ke-18 dan ke-36. Setiap hari yang sama diberi satu stik.",
+      tanya: "Ketuk semua stik. Ada berapa hari yang sama dalam 36 hari?",
+      objek: "stik",
+      jumlah: 2,
+      sukses: "Betul! Dua hari yang sama, dan yang pertama, yaitu hari ke-18, adalah KPK dari 6 dan 9.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "faktor",
+      jenis: "isi",
+      cerita: "Nisa punya 16 bibit dan ingin menyusunnya dalam baris yang sama banyak. Masukkan stik sebanyak faktor dari 16, yaitu banyak baris yang pas.",
+      objek: "stik",
+      target: 5,
+      maks: 8,
+      sukses: "Pas! Faktor 16 ada lima: 1, 2, 4, 8, dan 16.",
+      kurang: "Stiknya masih kurang. Cari pasangan faktor 16 dari 1 sampai bertemu di tengah.",
+      lebih: "Stiknya kelebihan. Hitung lagi pasangan faktor 16 dari 1.",
+    },
+    {
+      id: "periksa",
+      jenis: "soal",
+      cerita: "Nisa memeriksa catatannya dengan faktor prima dan faktor persekutuan.",
+      soal: [
+        { teks: "FPB dari 24 dan 36 adalah …", jawaban: "12", opsi: ["72", "12", "6"] },
+        { teks: "KPK dari 6 dan 9 adalah …", jawaban: "18", opsi: ["54", "3", "18"] },
+        { teks: "Bilangan yang prima adalah …", jawaban: "7", opsi: ["7", "9", "15"] },
+      ],
+      sukses: "Hebat! KPK dan FPB bisa dicari dari faktor prima.",
+      salah: "Hmm, periksa lagi faktornya. Coba lagi.",
+    },
+    {
+      id: "pohon",
+      jenis: "pilih",
+      cerita: "Seorang teman menulis faktorisasi prima 12 adalah 3 × 4. Apa jawaban Nisa?",
+      opsi: [
+        { teks: "Benar, 3 × 4 = 12", benar: false, umpan: "3 × 4 memang 12, tetapi 4 belum prima. Pohon faktor harus berhenti di bilangan prima." },
+        { teks: "Salah, 12 adalah bilangan prima", benar: false, umpan: "12 punya faktor 1, 2, 3, 4, 6, 12. Faktornya lebih dari dua, jadi bukan prima." },
+        { teks: "Salah, 4 belum prima: 12 = 2 × 2 × 3", benar: true, umpan: "Betul! 4 dipecah lagi menjadi 2 × 2, jadi semua daun prima: 2, 2, dan 3." },
+      ],
+    },
+    {
+      id: "jadwal",
+      jenis: "pilih",
+      cerita: "Nisa ingin tahu kapan ia dan Lukas menyiram pada hari yang sama lagi. Apa yang dipakai Nisa?",
+      opsi: [
+        { teks: "KPK, kelipatan persekutuan terkecil", benar: true, umpan: "Betul! KPK dari 6 dan 9 adalah 18, jadi mereka menyiram bersama tiap 18 hari." },
+        { teks: "FPB, faktor persekutuan terbesar", benar: false, umpan: "FPB dipakai untuk membagi rata, bukan untuk jadwal bertemu lagi." },
+        { teks: "Hanya bilangan prima", benar: false, umpan: "Bilangan prima membantu mencari KPK, tetapi hasilnya harus kelipatan persekutuan terkecil." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Kelipatan, KPK, faktor, FPB, dan bilangan prima saling terhubung. Faktorisasi prima membantu mencari KPK dengan mengambil jumlah terbanyak, dan FPB dengan mengambil jumlah paling sedikit.",
+    },
+  ],
+};
 
 export const SKENARIO_K5B2D: DefSkenario = {
   id: "vas-mawar-k5b2",
