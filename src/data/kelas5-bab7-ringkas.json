@@ -1,0 +1,158 @@
+{
+  "chapter_id": "mtk-5-bab7",
+  "phase_code": "FASE_C",
+  "grade": 5,
+  "subject": "Matematika",
+  "title": "Membandingkan Ciri-Ciri Bangun Datar",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Segitiga",
+          "ikon": "△",
+          "suara": "Ini peta ciri segitiga. Kita belajar syarat tiga sedotan, jumlah tiga sudut seratus delapan puluh derajat, jenis segitiga menurut sisi, dan hubungan sama sisi dengan sama kaki. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "syarat",
+            "judul": "Syarat sisi",
+            "ikon": "📏",
+            "ringkas": "Dua sisi lebih dari sisi ketiga.",
+            "suara": "Syarat sisi. Tiga sedotan bisa menjadi segitiga bila jumlah dua sisi selalu lebih panjang dari sisi ketiga. Ujilah ketiga pasangannya. Bila satu pasangan gagal, sedotan tidak bisa menutup."
+          },
+          {
+            "id": "sudut",
+            "judul": "Jumlah sudut",
+            "ikon": "∠",
+            "ringkas": "Tiga sudut jumlahnya seratus delapan puluh derajat.",
+            "suara": "Jumlah sudut. Tiga sudut dalam segitiga jumlahnya selalu seratus delapan puluh derajat. Sudut ketiga dicari dengan mengurangkan. Menurut sudutnya, segitiga bisa lancip, siku-siku, atau tumpul."
+          },
+          {
+            "id": "sisi",
+            "judul": "Jenis sisi",
+            "ikon": "△",
+            "ringkas": "Sama kaki, sama sisi, atau sembarang.",
+            "suara": "Jenis sisi. Impitkan sisinya. Dua sisi sama panjang disebut sama kaki. Tiga sisi sama panjang disebut sama sisi. Semua sisi berbeda disebut sembarang."
+          },
+          {
+            "id": "hierarki",
+            "judul": "Hierarki",
+            "ikon": "🪜",
+            "ringkas": "Sama sisi juga sama kaki.",
+            "suara": "Hierarki. Segitiga sama sisi memiliki semua ciri sama kaki, jadi juga digolongkan sama kaki. Tetapi segitiga sama kaki belum tentu sama sisi."
+          }
+        ],
+        "kartu": [
+          { "id": "a-uji", "teks": "5 + 6 lebih dari 7, lolos", "ikon": "✅", "cabang": "syarat", "petunjuk": "Menguji jumlah dua sisi itu soal syarat sisi. Coba cabang lain." },
+          { "id": "a-gagal", "teks": "5 + 4 kurang dari 12, gagal", "ikon": "❌", "cabang": "syarat", "petunjuk": "Menguji jumlah dua sisi itu soal syarat sisi. Coba cabang lain." },
+          { "id": "a-seratus", "teks": "Tiga sudut = 180°", "ikon": "➕", "cabang": "sudut", "petunjuk": "Jumlah tiga sudut itu soal jumlah sudut. Coba cabang lain." },
+          { "id": "a-tumpul", "teks": "Satu sudut tumpul, segitiga tumpul", "ikon": "∠", "cabang": "sudut", "petunjuk": "Jenis menurut sudut itu soal jumlah sudut. Coba cabang lain." },
+          { "id": "a-kaki", "teks": "Dua sisi sama = sama kaki", "ikon": "🦵", "cabang": "sisi", "petunjuk": "Menghitung sisi yang sama itu soal jenis sisi. Coba cabang lain." },
+          { "id": "a-sembarang", "teks": "Semua sisi berbeda = sembarang", "ikon": "🔀", "cabang": "sisi", "petunjuk": "Menghitung sisi yang sama itu soal jenis sisi. Coba cabang lain." },
+          { "id": "a-sama-sisi", "teks": "Sama sisi juga sama kaki", "ikon": "🔺", "cabang": "hierarki", "petunjuk": "Hubungan antarjenis itu soal hierarki. Coba cabang lain." },
+          { "id": "a-dibalik", "teks": "Sama kaki belum tentu sama sisi", "ikon": "↩️", "cabang": "hierarki", "petunjuk": "Hubungan antarjenis itu soal hierarki. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Ciri Segitiga",
+        "suara": "Ini tiga panel tentang ciri segitiga. Ketuk kotaknya untuk membuka, lalu lihat syarat sedotan, jumlah sudut, serta jenis dan hierarki segitiga.",
+        "panel": [
+          {
+            "id": "a-syarat-info",
+            "tipe": "buka",
+            "judul": "Syarat tiga sedotan",
+            "ide": "Dua sisi harus lebih dari sisi ketiga.",
+            "suara": "Ada tiga contoh sedotan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "bisa",
+                "label": "Bisa",
+                "ikon": "✅",
+                "isi": "Semua pasangan lolos.",
+                "suara": "Sedotan lima, enam, dan tujuh bisa menjadi segitiga, karena ketiga pasangan lolos uji.",
+                "visual": { "jenis": "teks", "isi": "5, 6, 7" }
+              },
+              {
+                "id": "tidak",
+                "label": "Tidak",
+                "ikon": "❌",
+                "isi": "Ada pasangan gagal.",
+                "suara": "Sedotan lima, empat, dan dua belas tidak bisa, karena lima ditambah empat hanya sembilan, kurang dari dua belas.",
+                "visual": { "jenis": "teks", "isi": "5, 4, 12" }
+              },
+              {
+                "id": "lurus",
+                "label": "Lurus",
+                "ikon": "➖",
+                "isi": "Jumlah sama, jadi garis lurus.",
+                "suara": "Sedotan tiga, empat, dan tujuh juga tidak bisa. Tiga ditambah empat sama dengan tujuh, jadi hanya menjadi garis lurus.",
+                "visual": { "jenis": "teks", "isi": "3 + 4 = 7" }
+              }
+            ]
+          },
+          {
+            "id": "a-sudut-info",
+            "tipe": "banding",
+            "judul": "Siku-siku dan tumpul",
+            "ide": "Tiga sudut selalu jumlahnya 180°.",
+            "suara": "Lihat dua jenis segitiga menurut sudutnya.",
+            "sisi": [
+              {
+                "id": "siku",
+                "nama": "Siku-siku",
+                "ikon": "∟",
+                "catatan": "Satu sudut tepat siku.",
+                "suara": "Segitiga siku-siku punya satu sudut sembilan puluh derajat.",
+                "visual": { "jenis": "teks", "isi": "90°" }
+              },
+              {
+                "id": "tumpul",
+                "nama": "Tumpul",
+                "ikon": "∠",
+                "catatan": "Satu sudut lebih lebar dari siku.",
+                "suara": "Segitiga tumpul punya satu sudut yang lebih besar dari sembilan puluh derajat.",
+                "visual": { "jenis": "teks", "isi": "> 90°" }
+              }
+            ],
+            "kesimpulan": "Paling banyak satu sudut siku atau tumpul."
+          },
+          {
+            "id": "a-sisi-info",
+            "tipe": "buka",
+            "judul": "Jenis dan hierarki",
+            "ide": "Sama sisi juga sama kaki.",
+            "suara": "Ada tiga hal tentang jenis segitiga menurut sisi. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "kaki",
+                "label": "Sama kaki",
+                "ikon": "🦵",
+                "isi": "Dua sisi sama panjang.",
+                "suara": "Segitiga sama kaki punya dua sisi sama panjang, dan sudut di depan kaki itu juga sama besar.",
+                "visual": { "jenis": "teks", "isi": "2 sisi sama" }
+              },
+              {
+                "id": "sisi",
+                "label": "Sama sisi",
+                "ikon": "🔺",
+                "isi": "Tiga sisi sama panjang.",
+                "suara": "Segitiga sama sisi punya tiga sisi sama panjang. Tiap sudutnya enam puluh derajat.",
+                "visual": { "jenis": "teks", "isi": "3 sisi, 60°" }
+              },
+              {
+                "id": "simetri",
+                "label": "Simetri",
+                "ikon": "🪞",
+                "isi": "Banyak simetri lipat.",
+                "suara": "Segitiga sama kaki punya satu simetri lipat, sama sisi punya tiga, dan sembarang tidak punya.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Jenis", "Simetri lipat"], "baris": [["sama kaki", 1], ["sama sisi", 3], ["sembarang", 0]] }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
