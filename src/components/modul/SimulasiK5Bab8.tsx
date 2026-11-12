@@ -4,10 +4,11 @@ import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
 import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiLabDataK5B8 from "./SimulasiLabDataK5B8";
+import SimulasiLabPiktogramK5B8 from "./SimulasiLabPiktogramK5B8";
 import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
 import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K5B8A } from "./skenario-k5b8";
-import { MESIN_DATA } from "./mesin-data-k5b8";
+import { SKENARIO_K5B8A, SKENARIO_K5B8B } from "./skenario-k5b8";
+import { MESIN_DATA, MESIN_PIKTOGRAM } from "./mesin-data-k5b8";
 import { ejaK5B8 } from "./eja-k5b8";
 import type { DefSkenario } from "./skenario-umum";
 import type { DefMesin } from "./mesin-bertahap-k3b1";
@@ -19,22 +20,26 @@ import { MISI_K5B8, NAMA_SIM_K5B8, hurufK5B8, misiAwalK5Bab8, type HurufK5B8 } f
 /* Simulasi Kelas 5 Bab 8 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
 /* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k5bab8.ts. */
 /*   A Mengumpulkan data : Lab Data + Mesin Data + Anggi dan Donat          */
+/*   B Piktogram : Lab Piktogram + Mesin Piktogram + Anggi dan Kue Apem     */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
-const SKENARIO: Record<HurufK5B8, DefSkenario> = { A: SKENARIO_K5B8A };
-const MESIN: Record<HurufK5B8, DefMesin> = { A: MESIN_DATA };
+const SKENARIO: Record<HurufK5B8, DefSkenario> = { A: SKENARIO_K5B8A, B: SKENARIO_K5B8B };
+const MESIN: Record<HurufK5B8, DefMesin> = { A: MESIN_DATA, B: MESIN_PIKTOGRAM };
 
 const COBA_MESIN: Record<HurufK5B8, string[]> = {
   A: ["Ketuk stasiun Keputusan sebelum Turus. Apa kata mesin?", "Mengapa jumlah semua frekuensi harus sama dengan banyak data?", "Mengapa keputusan sebaiknya memilih frekuensi yang paling besar?"],
+  B: ["Ketuk stasiun Periksa sebelum Kunci. Apa kata mesin?", "Mengapa setengah simbol bernilai setengah kunci?", "Mengapa banyak simbol harus dicocokkan dengan tabel frekuensi?"],
 };
 
 const LAB: Record<HurufK5B8, { id: string; nama: string }> = {
   A: { id: "data", nama: "Lab Data" },
+  B: { id: "piktogram", nama: "Lab Piktogram" },
 };
 
-function LabSub({ speakGuru, lapor }: { huruf: HurufK5B8; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab8) => void }) {
+function LabSub({ huruf, speakGuru, lapor }: { huruf: HurufK5B8; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab8) => void }) {
+  if (huruf === "B") return <SimulasiLabPiktogramK5B8 speakGuru={speakGuru} onKeadaan={lapor} />;
   return <SimulasiLabDataK5B8 speakGuru={speakGuru} onKeadaan={lapor} />;
 }
 

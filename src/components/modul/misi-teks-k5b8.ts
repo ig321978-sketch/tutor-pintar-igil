@@ -3,17 +3,19 @@
  * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen laboratorium ke bundel awal.
  */
 
-export type HurufK5B8 = "A";
-const HURUF: HurufK5B8[] = ["A"];
+export type HurufK5B8 = "A" | "B";
+const HURUF: HurufK5B8[] = ["A", "B"];
 
 export const hurufK5B8 = (sub: string): HurufK5B8 => (HURUF.includes(sub as HurufK5B8) ? (sub as HurufK5B8) : "A");
 
 export const MISI_K5B8: Record<HurufK5B8, string> = {
   A: "Di Lab Data, catat jawaban mentah dengan turus berkelompok lima, isi tabel frekuensi sampai jumlahnya sama dengan banyak data, cari kesalahan rekap, lalu tentukan mode untuk mengambil keputusan. Periksa dengan Mesin Data, lalu selesaikan skenario Anggi dan Donat. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
+  B: "Di Lab Piktogram, pilih kunci yang membuat semua frekuensi bisa digambar, baca nilai dari banyak simbol dikali kunci termasuk setengah simbol, lalu cari cacat piktogram dan perbaiki. Periksa dengan Mesin Piktogram, lalu selesaikan skenario Anggi dan Kue Apem. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
 };
 
 export const NAMA_SIM_K5B8: Record<HurufK5B8, string> = {
   A: "Lab Data, Mesin Data, dan Anggi dan Donat",
+  B: "Lab Piktogram, Mesin Piktogram, dan Anggi dan Kue Apem",
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */

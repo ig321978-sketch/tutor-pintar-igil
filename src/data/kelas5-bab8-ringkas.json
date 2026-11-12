@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-fakta", "teks": "Data = kumpulan fakta", "ikon": "📝", "cabang": "kumpul", "petunjuk": "Arti data itu soal kumpulkan data. Coba cabang lain." },
-          { "id": "a-siklus", "teks": "Tanya, catat, ringkas, baca", "ikon": "🔄", "cabang": "kumpul", "petunjuk": "Langkah mengumpulkan itu soal kumpulkan data. Coba cabang lain." },
-          { "id": "a-garis", "teks": "Satu hasil, satu garis", "ikon": "✏️", "cabang": "turus", "petunjuk": "Menulis garis untuk tiap hasil itu soal turus. Coba cabang lain." },
-          { "id": "a-lima", "teks": "Empat tegak, satu miring", "ikon": "✋", "cabang": "turus", "petunjuk": "Kelompok lima itu soal turus. Coba cabang lain." },
-          { "id": "a-f", "teks": "Frekuensi 7 = muncul 7 kali", "ikon": "🔢", "cabang": "frekuensi", "petunjuk": "Berapa kali muncul itu soal frekuensi. Coba cabang lain." },
-          { "id": "a-jumlah", "teks": "Jumlah frekuensi = banyak data", "ikon": "➕", "cabang": "frekuensi", "petunjuk": "Menjumlahkan frekuensi itu soal frekuensi. Coba cabang lain." },
-          { "id": "a-mode", "teks": "Frekuensi terbesar = mode", "ikon": "🏆", "cabang": "keputusan", "petunjuk": "Mode itu soal keputusan. Coba cabang lain." },
-          { "id": "a-putus", "teks": "Putuskan dari data, bukan tebakan", "ikon": "🎯", "cabang": "keputusan", "petunjuk": "Keputusan dari data itu soal keputusan. Coba cabang lain." }
+          {
+            "id": "a-fakta",
+            "teks": "Data = kumpulan fakta",
+            "ikon": "📝",
+            "cabang": "kumpul",
+            "petunjuk": "Arti data itu soal kumpulkan data. Coba cabang lain."
+          },
+          {
+            "id": "a-siklus",
+            "teks": "Tanya, catat, ringkas, baca",
+            "ikon": "🔄",
+            "cabang": "kumpul",
+            "petunjuk": "Langkah mengumpulkan itu soal kumpulkan data. Coba cabang lain."
+          },
+          {
+            "id": "a-garis",
+            "teks": "Satu hasil, satu garis",
+            "ikon": "✏️",
+            "cabang": "turus",
+            "petunjuk": "Menulis garis untuk tiap hasil itu soal turus. Coba cabang lain."
+          },
+          {
+            "id": "a-lima",
+            "teks": "Empat tegak, satu miring",
+            "ikon": "✋",
+            "cabang": "turus",
+            "petunjuk": "Kelompok lima itu soal turus. Coba cabang lain."
+          },
+          {
+            "id": "a-f",
+            "teks": "Frekuensi 7 = muncul 7 kali",
+            "ikon": "🔢",
+            "cabang": "frekuensi",
+            "petunjuk": "Berapa kali muncul itu soal frekuensi. Coba cabang lain."
+          },
+          {
+            "id": "a-jumlah",
+            "teks": "Jumlah frekuensi = banyak data",
+            "ikon": "➕",
+            "cabang": "frekuensi",
+            "petunjuk": "Menjumlahkan frekuensi itu soal frekuensi. Coba cabang lain."
+          },
+          {
+            "id": "a-mode",
+            "teks": "Frekuensi terbesar = mode",
+            "ikon": "🏆",
+            "cabang": "keputusan",
+            "petunjuk": "Mode itu soal keputusan. Coba cabang lain."
+          },
+          {
+            "id": "a-putus",
+            "teks": "Putuskan dari data, bukan tebakan",
+            "ikon": "🎯",
+            "cabang": "keputusan",
+            "petunjuk": "Keputusan dari data itu soal keputusan. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -72,7 +120,10 @@
                 "ikon": "✏️",
                 "isi": "Satu hasil, satu garis.",
                 "suara": "Setiap hasil pengamatan ditulis satu garis. Dengan begitu tidak ada yang terlewat atau terhitung dua kali.",
-                "visual": { "jenis": "turus", "n": 3 }
+                "visual": {
+                  "jenis": "turus",
+                  "n": 3
+                }
               },
               {
                 "id": "lima",
@@ -80,7 +131,10 @@
                 "ikon": "✋",
                 "isi": "Empat garis tegak, satu miring.",
                 "suara": "Lima garis dijadikan satu kelompok: empat garis tegak dan satu garis miring yang memotongnya. Kelompok lima mudah dihitung.",
-                "visual": { "jenis": "turus", "n": 5 }
+                "visual": {
+                  "jenis": "turus",
+                  "n": 5
+                }
               },
               {
                 "id": "sisa",
@@ -88,7 +142,10 @@
                 "ikon": "➕",
                 "isi": "Tujuh = lima ditambah dua.",
                 "suara": "Tujuh hasil ditulis satu kelompok lima ditambah dua garis. Hitung kelompok dulu, lalu garis sisanya.",
-                "visual": { "jenis": "turus", "n": 7 }
+                "visual": {
+                  "jenis": "turus",
+                  "n": 7
+                }
               }
             ]
           },
@@ -105,7 +162,10 @@
                 "ikon": "✏️",
                 "catatan": "Garis hasil pengamatan.",
                 "suara": "Turus adalah garis-garis hasil pengamatan. Ini turus untuk enam hasil.",
-                "visual": { "jenis": "turus", "n": 6 }
+                "visual": {
+                  "jenis": "turus",
+                  "n": 6
+                }
               },
               {
                 "id": "frekuensi",
@@ -113,7 +173,10 @@
                 "ikon": "🔢",
                 "catatan": "Bilangan hasil menghitung turus.",
                 "suara": "Frekuensi adalah bilangan yang menyatakan berapa kali muncul. Turus enam garis berarti frekuensinya enam.",
-                "visual": { "jenis": "teks", "isi": "f = 6" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "f = 6"
+                }
               }
             ],
             "kesimpulan": "Hitung turus, hasilnya frekuensi."
@@ -131,7 +194,31 @@
                 "ikon": "📋",
                 "isi": "Kategori dan frekuensinya.",
                 "suara": "Ini tabel frekuensi donat Anggi. Cokelat enam, keju empat, stroberi tiga, dan kacang dua.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Rasa", "f"], "baris": [["Cokelat", 6], ["Keju", 4], ["Stroberi", 3], ["Kacang", 2]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Rasa",
+                    "f"
+                  ],
+                  "baris": [
+                    [
+                      "Cokelat",
+                      6
+                    ],
+                    [
+                      "Keju",
+                      4
+                    ],
+                    [
+                      "Stroberi",
+                      3
+                    ],
+                    [
+                      "Kacang",
+                      2
+                    ]
+                  ]
+                }
               },
               {
                 "id": "jumlah",
@@ -139,7 +226,10 @@
                 "ikon": "➕",
                 "isi": "Sama dengan banyak data.",
                 "suara": "Enam ditambah empat ditambah tiga ditambah dua sama dengan lima belas. Jumlah frekuensi harus sama dengan banyak data.",
-                "visual": { "jenis": "teks", "isi": "6 + 4 + 3 + 2 = 15" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 + 4 + 3 + 2 = 15"
+                }
               },
               {
                 "id": "mode",
@@ -147,7 +237,251 @@
                 "ikon": "🏆",
                 "isi": "Frekuensi yang paling besar.",
                 "suara": "Cokelat punya frekuensi paling besar, yaitu enam. Itulah mode. Anggi bisa memakainya untuk memutuskan rasa yang diutamakan.",
-                "visual": { "jenis": "teks", "isi": "Cokelat 6" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Cokelat 6"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Piktogram",
+          "ikon": "🍪",
+          "suara": "Ini peta piktogram. Kita belajar kunci simbol, cara membaca nilai, setengah simbol, serta simbol yang seragam dan jujur. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "kunci",
+            "judul": "Kunci simbol",
+            "ikon": "🔑",
+            "ringkas": "Satu simbol mewakili nilai tertentu.",
+            "suara": "Kunci simbol. Piktogram menyajikan data dengan gambar. Kunci menyatakan nilai satu simbol, misalnya satu simbol sama dengan empat kue. Tanpa kunci, gambar tidak punya arti angka."
+          },
+          {
+            "id": "baca",
+            "judul": "Baca nilai",
+            "ikon": "🔢",
+            "ringkas": "Banyak simbol dikali kunci.",
+            "suara": "Baca nilai. Nilai dihitung dari banyak simbol dikali kunci. Hasilnya harus cocok dengan frekuensi pada tabel."
+          },
+          {
+            "id": "setengah",
+            "judul": "Setengah simbol",
+            "ikon": "➗",
+            "ringkas": "Sisa tepat setengah kunci.",
+            "suara": "Setengah simbol. Bila sisa pembagian tepat setengah kunci, digambar setengah simbol. Setengah simbol bernilai setengah kunci."
+          },
+          {
+            "id": "jujur",
+            "judul": "Seragam dan jujur",
+            "ikon": "⚖️",
+            "ringkas": "Simbol sama ukuran, cocok tabel.",
+            "suara": "Seragam dan jujur. Semua simbol harus sama bentuk dan ukuran. Cocokkan juga dengan tabel supaya pembaca tidak tertipu. Cari kesalahan sebelum percaya pada gambar."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-kunci",
+            "teks": "Kunci: 1 simbol = 4",
+            "ikon": "🔑",
+            "cabang": "kunci",
+            "petunjuk": "Nilai satu simbol itu soal kunci simbol. Coba cabang lain."
+          },
+          {
+            "id": "b-tanpa",
+            "teks": "Tanpa kunci, gambar tak berarti",
+            "ikon": "❓",
+            "cabang": "kunci",
+            "petunjuk": "Pentingnya kunci itu soal kunci simbol. Coba cabang lain."
+          },
+          {
+            "id": "b-kali",
+            "teks": "3 simbol × 4 = 12",
+            "ikon": "✖️",
+            "cabang": "baca",
+            "petunjuk": "Mengalikan simbol dengan kunci itu soal baca nilai. Coba cabang lain."
+          },
+          {
+            "id": "b-cek",
+            "teks": "Simbol × kunci = frekuensi",
+            "ikon": "✅",
+            "cabang": "baca",
+            "petunjuk": "Mencocokkan dengan frekuensi itu soal baca nilai. Coba cabang lain."
+          },
+          {
+            "id": "b-setengah",
+            "teks": "Setengah simbol = setengah kunci",
+            "ikon": "➗",
+            "cabang": "setengah",
+            "petunjuk": "Nilai setengah simbol itu soal setengah simbol. Coba cabang lain."
+          },
+          {
+            "id": "b-sisa",
+            "teks": "10 ÷ 4 = 2 sisa 2",
+            "ikon": "🔢",
+            "cabang": "setengah",
+            "petunjuk": "Sisa pembagian itu soal setengah simbol. Coba cabang lain."
+          },
+          {
+            "id": "b-seragam",
+            "teks": "Semua simbol sama ukuran",
+            "ikon": "⚖️",
+            "cabang": "jujur",
+            "petunjuk": "Simbol seragam itu soal seragam dan jujur. Coba cabang lain."
+          },
+          {
+            "id": "b-salah",
+            "teks": "Cari kesalahan sebelum percaya",
+            "ikon": "🔍",
+            "cabang": "jujur",
+            "petunjuk": "Memeriksa piktogram itu soal seragam dan jujur. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Piktogram",
+        "suara": "Ini tiga panel tentang piktogram. Ketuk kotaknya untuk membuka, lalu lihat kunci dan nilai simbol, simbol yang seragam, serta cara mencari cacat piktogram.",
+        "panel": [
+          {
+            "id": "b-kunci-info",
+            "tipe": "buka",
+            "judul": "Kunci dan nilai",
+            "ide": "Kunci memberi nilai pada simbol.",
+            "suara": "Ada tiga hal tentang kunci dan nilai. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "kunci",
+                "label": "Kunci",
+                "ikon": "🔑",
+                "isi": "Nilai satu simbol.",
+                "suara": "Kunci menyatakan nilai satu simbol. Di sini satu simbol sama dengan empat kue.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 simbol = 4"
+                }
+              },
+              {
+                "id": "hitung",
+                "label": "Baca nilai",
+                "ikon": "✖️",
+                "isi": "Simbol dikali kunci.",
+                "suara": "Tiga simbol dengan kunci empat berarti tiga dikali empat sama dengan dua belas kue.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 × 4 = 12"
+                }
+              },
+              {
+                "id": "setengah",
+                "label": "Setengah simbol",
+                "ikon": "➗",
+                "isi": "Bernilai setengah kunci.",
+                "suara": "Setengah simbol bernilai setengah kunci. Dengan kunci empat, setengah simbol bernilai dua.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "½ simbol = 2"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-seragam-info",
+            "tipe": "banding",
+            "judul": "Simbol seragam",
+            "ide": "Semua simbol sama ukuran.",
+            "suara": "Bandingkan simbol yang seragam dengan yang tidak.",
+            "sisi": [
+              {
+                "id": "seragam",
+                "nama": "Seragam",
+                "ikon": "✅",
+                "catatan": "Simbol sama bentuk dan ukuran.",
+                "suara": "Piktogram yang jujur memakai simbol yang sama bentuk dan ukuran, jadi banyak simbol mudah dibandingkan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 simbol sama"
+                }
+              },
+              {
+                "id": "berbeda",
+                "nama": "Berbeda",
+                "ikon": "❌",
+                "catatan": "Satu simbol dibuat lebih besar.",
+                "suara": "Simbol yang dibesarkan sendiri membuat baris itu terlihat banyak. Itu menyesatkan pembaca.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 simbol lebih besar"
+                }
+              }
+            ],
+            "kesimpulan": "Ukuran simbol tidak boleh dibuat-buat."
+          },
+          {
+            "id": "b-periksa-info",
+            "tipe": "buka",
+            "judul": "Cari cacat",
+            "ide": "Cocokkan gambar dengan tabel.",
+            "suara": "Ada tiga hal untuk memeriksa piktogram. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tabel",
+                "label": "Tabel",
+                "ikon": "📋",
+                "isi": "Frekuensi asli.",
+                "suara": "Ini tabel frekuensi kue apem. Senin delapan, Selasa dua belas, Rabu empat, dan Kamis enam belas.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Hari",
+                    "f"
+                  ],
+                  "baris": [
+                    [
+                      "Senin",
+                      8
+                    ],
+                    [
+                      "Selasa",
+                      12
+                    ],
+                    [
+                      "Rabu",
+                      4
+                    ],
+                    [
+                      "Kamis",
+                      16
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "jumlah",
+                "label": "Jumlah simbol",
+                "ikon": "🔍",
+                "isi": "Harus cocok tabel.",
+                "suara": "Dua belas dibagi empat sama dengan tiga. Kalau gambarnya empat simbol, ada satu simbol yang kelebihan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 ÷ 4 = 3, bukan 4"
+                }
+              },
+              {
+                "id": "kunci",
+                "label": "Kunci hilang",
+                "ikon": "❓",
+                "isi": "Tanpa kunci, tak berarti.",
+                "suara": "Piktogram tanpa kunci tidak punya nilai angka. Cari kunci yang cocok dengan tabel, lalu tulis di bawah gambar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Kunci: ?"
+                }
               }
             ]
           }

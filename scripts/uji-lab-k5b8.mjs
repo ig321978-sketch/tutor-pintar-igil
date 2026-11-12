@@ -1,11 +1,12 @@
-// Uji Simulasi Kelas 5 Bab 8 (Data): Lab Data (A), mesin, skenario, misi, gerbang, data ringkas, pengeja, dan konsep
-// sub-bab berikutnya tidak bocor ke Sub-Bab A.
+// Uji Simulasi Kelas 5 Bab 8 (Data): Lab Data (A), Lab Piktogram (B), mesin, skenario, misi, gerbang, data ringkas, pengeja, dan konsep
+// sub-bab berikutnya tidak bocor ke sub-bab sebelumnya.
 // Jalankan: node --no-warnings scripts/uji-lab-k5b8.mjs
 import { readFileSync } from "node:fs";
 import * as M0 from "../src/components/modul/misi-simulasi.ts";
 import * as K8 from "../src/components/modul/misi-k5bab8.ts";
 import * as TK from "../src/components/modul/misi-teks-k5b8.ts";
 import * as A from "../src/components/modul/lab-data-k5b8a.ts";
+import * as B from "../src/components/modul/lab-piktogram-k5b8b.ts";
 import * as MS from "../src/components/modul/mesin-data-k5b8.ts";
 import * as SK from "../src/components/modul/skenario-k5b8.ts";
 import * as ME from "../src/components/modul/mesin-bertahap-k3b1.ts";
@@ -338,7 +339,7 @@ const SALAH_RENCANA = [[2, 1], [0, -1], [3, 1], [1, -1], [2, 1], [1, 1]];
 
 /* ------------------------------ Mesin ------------------------------ */
 {
-  cek(MS.SEMUA_MESIN_K5B8.length === 1 && MS.SEMUA_MESIN_K5B8[0] === MS.MESIN_DATA, "satu mesin untuk Sub-Bab A");
+  cek(MS.SEMUA_MESIN_K5B8.length === 2 && MS.SEMUA_MESIN_K5B8[0] === MS.MESIN_DATA && MS.SEMUA_MESIN_K5B8[1] === MS.MESIN_PIKTOGRAM, "dua mesin untuk Sub-Bab A dan B");
   for (const def of MS.SEMUA_MESIN_K5B8) {
     cek(def.stasiun.length === 4 && def.kasus.length === 3, `${def.id}: empat stasiun, tiga kasus`);
     const posisi = [];
@@ -360,7 +361,7 @@ const SALAH_RENCANA = [[2, 1], [0, -1], [3, 1], [1, -1], [2, 1], [1, 1]];
       const l = ME.langkahAktif(x);
       x = l ? ME.langkahMesin(x, { t: "JAWAB", nilai: l.benar }) : ME.langkahMesin(x, { t: "LANJUT" });
     }
-    cek(x.selesai && def.selesaiId === K8.ID_MESIN_K5B8.A, `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
+    cek(x.selesai && def.selesaiId === K8.ID_MESIN_K5B8[def === MS.MESIN_DATA ? "A" : "B"], `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
     const y = ME.awalMesin(def);
     const l0 = ME.langkahAktif(y);
     const z = ME.langkahMesin(y, { t: "JAWAB", nilai: l0.opsi.find((o) => o !== l0.benar) });
@@ -450,16 +451,16 @@ const SALAH_RENCANA = [[2, 1], [0, -1], [3, 1], [1, -1], [2, 1], [1, 1]];
 
 /* ------------------------------ Misi ------------------------------ */
 {
-  const huruf = ["A"];
-  sama(Object.keys(TK.MISI_K5B8), huruf, "teks misi untuk A");
-  sama(Object.keys(TK.NAMA_SIM_K5B8), huruf, "nama simulasi untuk A");
-  cek(TK.hurufK5B8("Z") === "A" && TK.hurufK5B8("A") === "A", "huruf tak dikenal jatuh ke A");
+  const huruf = ["A", "B"];
+  sama(Object.keys(TK.MISI_K5B8), huruf, "teks misi untuk A dan B");
+  sama(Object.keys(TK.NAMA_SIM_K5B8), huruf, "nama simulasi untuk A dan B");
+  cek(TK.hurufK5B8("Z") === "A" && TK.hurufK5B8("A") === "A" && TK.hurufK5B8("B") === "B", "huruf tak dikenal jatuh ke A, B dikenal");
   cek(TK.misiAwalK5Bab8("A").startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK5Bab8("A")), "misi awal dan dapat dieja");
   for (const h of huruf) {
     const daftar = K8.daftarMisiK5Bab8(h);
     cek(daftar.filter((m) => m.wajib).length === 7 && daftar.filter((m) => !m.wajib).length === 3, `${h}: tujuh misi wajib dan tiga tantangan bebas`);
     cek(new Set(daftar.map((m) => m.id)).size === 10 && daftar.every((m) => m.id.startsWith(`${h.toLowerCase()}-`)), `${h}: id misi unik berawalan huruf`);
-    const kosong = [{ alat: "data", pernah: [] }, sel("tidak-ada"), A.keadaanDataK5B8A(A.awalDataK5B8A())];
+    const kosong = [{ alat: "data", pernah: [] }, { alat: "piktogram", pernah: [] }, sel("tidak-ada"), A.keadaanDataK5B8A(A.awalDataK5B8A()), B.keadaanPiktogramK5B8B(B.awalPiktogramK5B8B())];
     cek(kosong.every((k) => M0.misiBaru(daftar, k, new Set()).length === 0), `${h}: keadaan awal alat tidak memenuhi misi mana pun`);
     cek(daftar.every((m) => m.teks.length > 20 && tanpaAngka(m.teks)), `${h}: teks misi jelas dan dapat dieja`);
     const baru = (k) => M0.misiBaru(daftar, k, new Set());
@@ -535,7 +536,7 @@ const SALAH_RENCANA = [[2, 1], [0, -1], [3, 1], [1, -1], [2, 1], [1, 1]];
   };
   for (const t of [TK.MISI_K5B8.A, TK.NAMA_SIM_K5B8.A, ...K8.MISI_A.map((m) => m.teks)]) catat(t, "teks misi");
   for (const [nama, o] of [["mesin", MS.MESIN_DATA], ["skenario", SK.SKENARIO_K5B8A], ["peta dan infografis ringkas", ringkas.subBab.A]]) catat(teksDari(o), nama);
-  for (const [f, e] of [["SimulasiLabDataK5B8", "tsx"], ["model-data-k5b8", "tsx"], ["lab-data-k5b8a", "ts"], ["mesin-data-k5b8", "ts"], ["skenario-k5b8", "ts"]]) catat(tanpaKomentar(baca(f, e)), `${f} (tanpa komentar)`);
+  for (const [f, e] of [["SimulasiLabDataK5B8", "tsx"], ["model-data-k5b8", "tsx"], ["lab-data-k5b8a", "ts"]]) catat(tanpaKomentar(baca(f, e)), `${f} (tanpa komentar)`);
   for (const p of globalThis.__pesanA) catat(p, "pesan lab dari fuzz");
   for (const u of [A.ucapTurusK5B8A(x0), A.ucapTabelK5B8A(x0), A.ucapModeK5B8A(x0)]) catat(u, "ucapan lab");
 
@@ -545,7 +546,7 @@ const SALAH_RENCANA = [[2, 1], [0, -1], [3, 1], [1, -1], [2, 1], [1, 1]];
     cek(!/correct_index|explanation/.test(s), `${f}: tidak memuat correct_index atau explanation`);
     cek(!/fetch\(|XMLHttpRequest|api\/|openai|anthropic|gemini/i.test(s), `${f}: tanpa jaringan atau model bahasa`);
   }
-  for (const f of ["lab-data-k5b8a", "mesin-data-k5b8", "skenario-k5b8", "misi-k5bab8", "misi-teks-k5b8", "eja-k5b8"]) {
+  for (const f of ["lab-data-k5b8a", "lab-piktogram-k5b8b", "mesin-data-k5b8", "skenario-k5b8", "misi-k5bab8", "misi-teks-k5b8", "eja-k5b8"]) {
     const s = baca(f, "ts");
     cek(!/fetch\(|XMLHttpRequest|from "react"|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: murni`);
     const impor = s.match(/^import .+$/gm) ?? [];
@@ -579,7 +580,7 @@ const SALAH_RENCANA = [[2, 1], [0, -1], [3, 1], [1, -1], [2, 1], [1, 1]];
 
 /* ------------------------------ Emoji paling tinggi Emoji 12 ------------------------------ */
 {
-  const berkas = ["SimulasiLabDataK5B8.tsx", "SimulasiK5Bab8.tsx", "model-data-k5b8.tsx", "lab-data-k5b8a.ts", "mesin-data-k5b8.ts", "skenario-k5b8.ts", "misi-k5bab8.ts", "misi-teks-k5b8.ts", "eja-k5b8.ts"];
+  const berkas = ["SimulasiLabDataK5B8.tsx", "SimulasiLabPiktogramK5B8.tsx", "SimulasiK5Bab8.tsx", "model-data-k5b8.tsx", "model-piktogram-k5b8.tsx", "lab-data-k5b8a.ts", "lab-piktogram-k5b8b.ts", "mesin-data-k5b8.ts", "skenario-k5b8.ts", "misi-k5bab8.ts", "misi-teks-k5b8.ts", "eja-k5b8.ts"];
   let ok = true;
   for (const f of berkas) {
     const s = readFileSync(new URL(`../src/components/modul/${f}`, import.meta.url), "utf8");
@@ -615,7 +616,419 @@ const SALAH_RENCANA = [[2, 1], [0, -1], [3, 1], [1, -1], [2, 1], [1, 1]];
   }
   const ide = [p1.ide, p2.ide, p3.ide];
   cek(ide.every((t) => t.split(/\s+/).length <= 8), "ringkas A: ide paling banyak delapan kata");
-  cek(JSON.stringify(ringkas).indexOf("\r") < 0 && Object.keys(ringkas.subBab).join() === "A", "ringkas: hanya Sub-Bab A pada gelombang ini");
+  cek(JSON.stringify(ringkas).indexOf("\r") < 0 && Object.keys(ringkas.subBab).join() === "A,B", "ringkas: Sub-Bab A dan B pada gelombang ini");
+}
+
+
+/* ====================================================================== */
+/* Sub-Bab B: Lab Piktogram                                                */
+/* ====================================================================== */
+
+/* ------------------------------ Hitungan MANDIRI B ------------------------------ */
+// Kode memakai sisa pembagian. Di sini piktogram dihitung dalam satuan setengah simbol: 2f/k harus bilangan bulat.
+const setengahSatuan = (f, k) => (2 * f) / k;
+const gambarMandiri = (f, k) => Math.ceil(setengahSatuan(f, k) / 2);
+const bisaBarisMandiri = (f, k) => Number.isInteger(setengahSatuan(f, k));
+const kunciBisaMandiri = (fs, k) => fs.every((v) => bisaBarisMandiri(v, k)) && fs.every((v) => gambarMandiri(v, k) <= 8);
+const adaSetengahMandiri = (fs, k) => kunciBisaMandiri(fs, k) && fs.some((v) => setengahSatuan(v, k) % 2 === 1);
+const F_PIK = [[8, 12, 4, 16], [6, 10, 4, 8], [15, 25, 10, 20], [12, 18, 6, 24], [20, 30, 10, 40], [5, 10, 15, 20]];
+const NAMA_PIK = ["kue apem Anggi", "panen tomat", "pengunjung perpustakaan", "siswa membawa bekal", "buku dipinjam", "sepeda terjual"];
+const KUNCI_BACA = [4, 4, 10, 4, 20, 10];
+const TARGET_BACA = [3, 0, 0, 1, 1, 2];
+const CACAT_JENIS = ["jumlah", "ukuran", "kunci", "jumlah", "ukuran", "kunci"];
+const CACAT_K = [1, 2, -1, 0, 3, -1];
+const KUNCI_LIST = [2, 4, 5, 10, 20];
+const LB = B.langkahPiktogramK5B8B;
+const y0 = B.awalPiktogramK5B8B();
+
+/* ------------------------------ Data B sama dengan rencana ------------------------------ */
+{
+  cek(B.DATA_PIK.length === 6 && B.MAKS_SIMBOL === 8, "B: enam data, paling banyak delapan simbol per baris");
+  sama(B.DATA_PIK.map((d) => d.nama), NAMA_PIK, "B: nama enam data");
+  sama(B.DATA_PIK.map((d) => d.f), F_PIK, "B: frekuensi enam data");
+  sama(B.DATA_PIK.map((d) => d.kunciBaca), KUNCI_BACA, "B: kunci baca");
+  sama(B.DATA_PIK.map((d) => d.targetBaca), TARGET_BACA, "B: target baca");
+  sama(B.DATA_PIK.map((d) => d.cacat.jenis), CACAT_JENIS, "B: jenis cacat bergantian jumlah, ukuran, kunci");
+  sama(B.DATA_PIK.map((d) => d.cacat.k), CACAT_K, "B: baris cacat");
+  sama(B.KUNCI_PILIHAN, KUNCI_LIST, "B: kunci yang bisa dipilih");
+  for (const [i, d] of B.DATA_PIK.entries()) {
+    cek(d.kategori.length === 4 && new Set(d.kategori).size === 4 && d.f.every((v) => Number.isInteger(v) && v > 0), `B data ${i}: empat kategori berbeda, frekuensi bulat positif`);
+    cek(kunciBisaMandiri(d.f, d.kunciBaca), `B data ${i}: kunci baca bisa dipakai (satuan setengah simbol)`);
+    cek(adaSetengahMandiri(d.f, d.kunciBaca) === (i !== 0), `B data ${i}: setengah simbol pada kunci baca ada kecuali data pertama (satuan setengah simbol)`);
+    const f = d.f[d.targetBaca];
+    cek((setengahSatuan(f, d.kunciBaca) % 2 === 1) === (i !== 0), `B data ${i}: baris target punya setengah simbol kecuali data pertama`);
+    cek(B.nilaiBaca(B.penuhBaris(f, d.kunciBaca), B.sisaBaris(f, d.kunciBaca) > 0, d.kunciBaca) === f, `B data ${i}: nilaiBaca mengembalikan frekuensi target`);
+    for (const k of KUNCI_LIST) {
+      cek(B.kunciBisa(d, k) === kunciBisaMandiri(d.f, k), `B data ${i} kunci ${k}: bisa sama dengan hitungan mandiri`);
+      cek(B.kunciAdaSetengah(d, k) === adaSetengahMandiri(d.f, k), `B data ${i} kunci ${k}: ada setengah sama dengan hitungan mandiri`);
+      cek((B.alasanTolak(d, k) === null) === kunciBisaMandiri(d.f, k), `B data ${i} kunci ${k}: alasan tolak null hanya bila bisa`);
+      for (const v of d.f) {
+        cek(B.barisBisa(v, k) === bisaBarisMandiri(v, k) && B.gambarBaris(v, k) === gambarMandiri(v, k), `B baris ${v}/${k}: bisa dan banyak gambar sama dengan hitungan mandiri`);
+      }
+    }
+    // Cacat: kunci cocok unik dari simbol yang tergambar.
+    const kons = KUNCI_LIST.filter((q) => d.f.every((v) => Math.abs((setengahSatuan(v, d.kunciBaca) / 2) * q - v) < 1e-9));
+    sama(kons, [d.kunciBaca], `B data ${i}: hanya kunci baca yang cocok dengan simbol yang tergambar`);
+    const p = B.opsiKunciPeriksa(i);
+    cek(p.opsi.length === 3 && new Set(p.opsi).size === 3 && p.opsi[p.benar] === d.kunciBaca && p.opsi.every((q) => KUNCI_LIST.includes(q)), `B data ${i}: tiga pilihan kunci perbaikan unik, satu benar`);
+    cek(p.opsi.filter((q) => d.f.every((v) => Math.abs((setengahSatuan(v, d.kunciBaca) / 2) * q - v) < 1e-9)).length === 1, `B data ${i}: hanya satu pilihan kunci perbaikan yang cocok`);
+    for (let k = 0; k < 4; k += 1) {
+      const harus = gambarMandiri(d.f[k], d.kunciBaca) + (d.cacat.jenis === "jumlah" && d.cacat.k === k ? 1 : 0);
+      cek(B.gambarPeriksa(d, k) === harus, `B data ${i}/${k}: gambar periksa ${harus}`);
+    }
+    // Pilihan baca: nilai benar, banyak gambar, dan satu kunci lebih.
+    const pb = B.opsiBaca(i);
+    const kb = d.kunciBaca;
+    sama([...pb.opsi].sort((u, v) => u - v), [f, gambarMandiri(f, kb), (Math.floor(f / kb) + 1) * kb].sort((u, v) => u - v), `B data ${i}: pilihan baca adalah nilai, banyak gambar, dan satu kunci lebih`);
+    cek(new Set(pb.opsi).size === 3 && pb.opsi[pb.benar] === f, `B data ${i}: tiga pilihan baca unik, satu benar`);
+  }
+  cek(new Set([0, 1, 2, 3, 4, 5].map((i) => B.opsiBaca(i).benar)).size === 3 && new Set([0, 1, 2, 3, 4, 5].map((i) => B.opsiKunciPeriksa(i).benar)).size === 3, "B: letak kunci pilihan baca dan perbaikan bervariasi");
+  cek(B.kunciBisa(B.DATA_PIK[0], 4) && B.kunciBisa(B.DATA_PIK[0], 2) && !B.kunciBisa(B.DATA_PIK[0], 5) && !B.kunciBisa(B.DATA_PIK[0], 10) && B.kunciAdaSetengah(B.DATA_PIK[1], 4) && !B.kunciAdaSetengah(B.DATA_PIK[1], 2), "B: kunci 4 dan 2 bisa untuk apem, 5 dan 10 tidak; tomat kunci 4 ada setengah simbol, kunci 2 tidak");
+  sama(B.alasanTolak(B.DATA_PIK[3], 2), { tipe: "banyak", baris: 1 }, "B: bekal kunci 2 terlalu banyak simbol (18 butuh 9)");
+  sama(B.alasanTolak(B.DATA_PIK[0], 5), { tipe: "sisa", baris: 0 }, "B: apem kunci 5 bersisa pada baris pertama");
+}
+
+/* ------------------------------ Lab B: Piktogram ------------------------------ */
+{
+  sama(B.keadaanPiktogramK5B8B(y0), { alat: "piktogram", pernah: [] }, "B keadaan awal");
+  cek(y0.kunci.pilih === null && y0.baca.data === 0 && y0.periksa.ditemukan === false && y0.pernah.length === 0 && y0.pesan === "", "B awal: kosong");
+
+  // Kunci.
+  {
+    const sebelum = LB(LB(y0, { t: "K_DATA", i: 1 }), { t: "K_JAWAB", jawab: "bisa" });
+    cek(sebelum.pernah.length === 0 && sebelum.pesan.includes("Pilih dulu kuncinya"), "B Kunci: memutuskan sebelum memilih kunci ditolak");
+    for (const [i, fs] of F_PIK.entries()) {
+      for (const k of KUNCI_LIST) {
+        const siap = jalan(y0, LB, [{ t: "K_DATA", i }, { t: "K_PILIH", k }]);
+        const bisa = kunciBisaMandiri(fs, k);
+        const benar = LB(siap, { t: "K_JAWAB", jawab: bisa ? "bisa" : "tidak" });
+        const salah = LB(siap, { t: "K_JAWAB", jawab: bisa ? "tidak" : "bisa" });
+        sama(benar.pernah, [bisa ? B.idKunci(i, k) : B.idTolak(i, k)], `B Kunci ${i}/${k}: jawaban benar dicatat dengan id yang tepat`);
+        cek(salah.pernah.length === 0 && salah.pesan.length > 10 && !salah.pesan.startsWith("✅"), `B Kunci ${i}/${k}: jawaban salah tidak dicatat, ada petunjuk`);
+        cek(benar.pesan.startsWith("✅") && benar.pesan.includes(`Satu simbol = ${k}`), `B Kunci ${i}/${k}: pesan benar menyebut kunci`);
+        if (bisa) cek(adaSetengahMandiri(fs, k) ? benar.pesan.includes("setengah simbol") && benar.pesan.includes("Sisa tepat setengah kunci") : benar.pesan.includes("tidak ada sisa"), `B Kunci ${i}/${k}: pesan setengah simbol sesuai`);
+        else {
+          const j = fs.findIndex((v) => !bisaBarisMandiri(v, k));
+          if (j >= 0) cek(benar.pesan.includes(`${fs[j]} dibagi ${k} bersisa ${fs[j] - k * Math.floor(fs[j] / k)}`), `B Kunci ${i}/${k}: pesan menyebut sisa pembagian`);
+          else cek(benar.pesan.includes("terlalu banyak"), `B Kunci ${i}/${k}: pesan terlalu banyak simbol`);
+        }
+        cek(LB(siap, { t: "K_JAWAB", jawab: "mungkin" }) === siap, `B Kunci ${i}/${k}: jawaban tak dikenal diabaikan`);
+      }
+    }
+    cek(LB(y0, { t: "K_PILIH", k: 3 }) === y0 && LB(y0, { t: "K_PILIH", k: 0 }) === y0 && LB(y0, { t: "K_PILIH", k: -1 }) === y0 && LB(y0, { t: "K_PILIH", k: 2.5 }) === y0 && LB(y0, { t: "K_DATA", i: 6 }) === y0 && LB(y0, { t: "K_DATA", i: -1 }) === y0 && LB(y0, { t: "K_DATA", i: 0.5 }) === y0, "B Kunci: kunci dan data di luar batas atau pecahan diabaikan");
+    const ganti = jalan(y0, LB, [{ t: "K_PILIH", k: 4 }, { t: "K_DATA", i: 2 }]);
+    cek(ganti.kunci.pilih === null && ganti.kunci.data === 2, "B Kunci: ganti data mengosongkan kunci terpilih");
+    // Id kunci tidak tertukar antar data: kunci 5 pada apem ditolak, pada bekal juga ditolak tetapi dengan id data sendiri.
+    sama(jalan(y0, LB, [{ t: "K_DATA", i: 0 }, { t: "K_PILIH", k: 5 }, { t: "K_JAWAB", jawab: "tidak" }]).pernah, ["tolak:0:5"], "B Kunci: id tolak apem kunci 5");
+    sama(jalan(y0, LB, [{ t: "K_DATA", i: 1 }, { t: "K_PILIH", k: 4 }, { t: "K_JAWAB", jawab: "bisa" }]).pernah, ["kunci:1:4"], "B Kunci: id kunci tomat kunci 4");
+  }
+
+  // Baca.
+  {
+    for (const [i, fs] of F_PIK.entries()) {
+      const s0 = LB(y0, { t: "B_DATA", i });
+      const p = B.opsiBaca(i);
+      const f = fs[TARGET_BACA[i]];
+      for (let o = 0; o < 3; o += 1) {
+        const s = LB(s0, { t: "B_JAWAB", o });
+        const benar = p.opsi[o] === f;
+        cek(s.pernah.includes(B.idBaca(i)) === benar && (benar ? s.pesan.startsWith("✅") && s.pesan.includes(`= ${f}`) : !s.pesan.startsWith("✅") && s.pesan.length > 10), `B Baca ${i}/${o}: ${benar ? "benar" : "salah"} (nilai ${p.opsi[o]})`);
+      }
+      const kb = KUNCI_BACA[i];
+      const bs = LB(s0, { t: "B_JAWAB", o: p.benar });
+      cek(setengahSatuan(f, kb) % 2 === 1 ? bs.pesan.includes(`+ ${kb / 2}`) : !bs.pesan.includes("+"), `B Baca ${i}: pesan memuat tambahan setengah kunci hanya bila ada setengah simbol`);
+    }
+    cek(LB(y0, { t: "B_JAWAB", o: 3 }) === y0 && LB(y0, { t: "B_JAWAB", o: -1 }) === y0 && LB(y0, { t: "B_JAWAB", o: 0.5 }) === y0 && LB(y0, { t: "B_DATA", i: 6 }) === y0, "B Baca: indeks di luar batas atau pecahan diabaikan");
+  }
+
+  // Periksa.
+  {
+    for (const [i, jenis] of CACAT_JENIS.entries()) {
+      const s0 = LB(y0, { t: "P_DATA", i });
+      for (const j of ["jumlah", "ukuran", "kunci"]) {
+        const s = LB(s0, { t: "P_JENIS", jenis: j });
+        cek(s.pernah.includes(B.idCacat(i)) === (j === jenis) && s.periksa.ditemukan === (j === jenis), `B Periksa ${i}: jenis ${j} ${j === jenis ? "benar" : "salah"}`);
+      }
+      cek(LB(s0, { t: "P_JENIS", jenis: "warna" }) === s0, `B Periksa ${i}: jenis tak dikenal diabaikan`);
+      // Sebelum jenis ditemukan, perbaikan ditolak.
+      for (let k = 0; k < 4; k += 1) cek(LB(s0, { t: "P_TUNJUK", k }).pernah.length === 0 && LB(s0, { t: "P_TUNJUK", k }).pesan.includes("Tentukan dulu"), `B Periksa ${i}/${k}: tunjuk sebelum jenis ditolak`);
+      for (let o = 0; o < 3; o += 1) cek(LB(s0, { t: "P_KUNCI", o }).pernah.length === 0 && LB(s0, { t: "P_KUNCI", o }).pesan.includes("Tentukan dulu"), `B Periksa ${i}/${o}: pilih kunci sebelum jenis ditolak`);
+      const s1 = LB(s0, { t: "P_JENIS", jenis });
+      if (jenis === "kunci") {
+        const p = B.opsiKunciPeriksa(i);
+        for (let o = 0; o < 3; o += 1) {
+          const s = LB(s1, { t: "P_KUNCI", o });
+          cek(s.pernah.includes(B.idPerbaiki(i)) === (p.opsi[o] === KUNCI_BACA[i]), `B Periksa ${i}: kunci ${p.opsi[o]} ${p.opsi[o] === KUNCI_BACA[i] ? "benar" : "salah"}`);
+        }
+        for (let k = 0; k < 4; k += 1) cek(!LB(s1, { t: "P_TUNJUK", k }).pernah.includes(B.idPerbaiki(i)), `B Periksa ${i}/${k}: menunjuk baris pada cacat kunci tidak memperbaiki`);
+      } else {
+        for (let k = 0; k < 4; k += 1) {
+          const s = LB(s1, { t: "P_TUNJUK", k });
+          cek(s.pernah.includes(B.idPerbaiki(i)) === (k === CACAT_K[i]), `B Periksa ${i}/${k}: baris ${k === CACAT_K[i] ? "cacat" : "benar"}`);
+        }
+        for (let o = 0; o < 3; o += 1) cek(!LB(s1, { t: "P_KUNCI", o }).pernah.includes(B.idPerbaiki(i)), `B Periksa ${i}/${o}: memilih kunci pada cacat baris tidak memperbaiki`);
+        const bn = LB(s1, { t: "P_TUNJUK", k: CACAT_K[i] });
+        const n = gambarMandiri(F_PIK[i][CACAT_K[i]], KUNCI_BACA[i]);
+        cek(jenis === "jumlah" ? bn.pesan.includes(`= ${n} simbol, bukan ${n + 1}`) : bn.pesan.includes("terlalu besar"), `B Periksa ${i}: pesan perbaikan sesuai`);
+      }
+      // Ganti data menutup tahap perbaikan.
+      cek(LB(s1, { t: "P_DATA", i: (i + 1) % 6 }).periksa.ditemukan === false, `B Periksa ${i}: ganti data mengosongkan penemuan`);
+    }
+    cek(LB(y0, { t: "P_TUNJUK", k: 4 }) === y0 && LB(y0, { t: "P_TUNJUK", k: -1 }) === y0 && LB(y0, { t: "P_KUNCI", o: 3 }) === y0 && LB(y0, { t: "P_DATA", i: 6 }) === y0 && LB(y0, { t: "P_TUNJUK", k: 1.5 }) === y0, "B Periksa: indeks di luar batas atau pecahan diabaikan");
+  }
+
+  // Reset dan pesan kosong.
+  {
+    const s = jalan(y0, LB, [{ t: "K_PILIH", k: 4 }, { t: "B_DATA", i: 2 }, { t: "P_DATA", i: 3 }, { t: "P_JENIS", jenis: "jumlah" }]);
+    cek(LB(s, { t: "PESAN_KOSONG" }).pesan === "" && LB(s, { t: "PESAN_KOSONG" }).kunci.pilih === 4, "B PESAN_KOSONG hanya mengosongkan pesan");
+    sama(LB(s, { t: "RESET" }), y0, "B RESET kembali ke awal");
+  }
+
+  // Fuzz 20.000 aksi.
+  {
+    const acak = acakDari(7707);
+    const pesanSemua = new Set();
+    const riwayatSemua = new Set();
+    let ok = true;
+    let s = y0;
+    const JENIS = ["jumlah", "ukuran", "kunci", "warna"];
+    const buat = () => {
+      const r = acak(20);
+      if (r === 0) return { t: "K_DATA", i: acak(8) - 1 };
+      if (r === 1 || r === 2) return { t: "K_PILIH", k: [2, 4, 5, 10, 20, 3, 0][acak(7)] };
+      if (r === 3 || r === 4) return { t: "K_JAWAB", jawab: ["bisa", "tidak", "mungkin"][acak(3)] };
+      if (r === 5) return { t: "B_DATA", i: acak(8) - 1 };
+      if (r === 6 || r === 7) return { t: "B_JAWAB", o: acak(5) - 1 };
+      if (r === 8) return { t: "B_JAWAB", o: B.opsiBaca(s.baca.data).benar };
+      if (r === 9) return { t: "P_DATA", i: acak(8) - 1 };
+      if (r === 10 || r === 11) return { t: "P_JENIS", jenis: JENIS[acak(4)] };
+      if (r === 12) return { t: "P_JENIS", jenis: B.DATA_PIK[s.periksa.data].cacat.jenis };
+      if (r === 13 || r === 14) return { t: "P_TUNJUK", k: acak(6) - 1 };
+      if (r === 15) return { t: "P_TUNJUK", k: B.DATA_PIK[s.periksa.data].cacat.k };
+      if (r === 16) return { t: "P_KUNCI", o: acak(5) - 1 };
+      if (r === 17) return { t: "P_KUNCI", o: B.opsiKunciPeriksa(s.periksa.data).benar };
+      if (r === 18 && acak(60) === 0) return { t: "RESET" };
+      if (r === 18) return { t: "PESAN_KOSONG" };
+      return { t: "K_JAWAB", jawab: kunciBisaMandiri(F_PIK[s.kunci.data], s.kunci.pilih ?? 4) ? "bisa" : "tidak" };
+    };
+    for (let n = 0; n < 20000; n += 1) {
+      const a = buat();
+      const sebelum = s;
+      s = LB(s, a);
+      pesanSemua.add(s.pesan);
+      const batas =
+        [s.kunci.data, s.baca.data, s.periksa.data].every((v) => v >= 0 && v < 6) &&
+        (s.kunci.pilih === null || KUNCI_LIST.includes(s.kunci.pilih)) &&
+        typeof s.periksa.ditemukan === "boolean" && new Set(s.pernah).size === s.pernah.length;
+      if (!batas) ok = false;
+      if (a.t === "RESET") {
+        if (s.pernah.length !== 0) ok = false;
+        continue;
+      }
+      if (!sebelum.pernah.every((p) => s.pernah.includes(p))) ok = false;
+      const baru = s.pernah.filter((p) => !sebelum.pernah.includes(p));
+      if (baru.length > 1) ok = false;
+      for (const b of baru) {
+        const bagian = b.split(":");
+        const alat = bagian[0];
+        const i = Number(bagian[1]);
+        riwayatSemua.add(alat);
+        if (alat === "kunci" || alat === "tolak") {
+          const k = Number(bagian[2]);
+          const bisa = kunciBisaMandiri(F_PIK[i], k);
+          if (!(a.t === "K_JAWAB" && sebelum.kunci.data === i && sebelum.kunci.pilih === k && (alat === "kunci") === bisa && a.jawab === (bisa ? "bisa" : "tidak"))) ok = false;
+        } else if (alat === "baca") {
+          const p = B.opsiBaca(i);
+          if (!(a.t === "B_JAWAB" && sebelum.baca.data === i && p.opsi[a.o] === F_PIK[i][TARGET_BACA[i]])) ok = false;
+        } else if (alat === "cacat") {
+          if (!(a.t === "P_JENIS" && sebelum.periksa.data === i && a.jenis === CACAT_JENIS[i])) ok = false;
+        } else if (alat === "perbaiki") {
+          const benarTunjuk = a.t === "P_TUNJUK" && CACAT_JENIS[i] !== "kunci" && a.k === CACAT_K[i];
+          const benarKunci = a.t === "P_KUNCI" && CACAT_JENIS[i] === "kunci" && B.opsiKunciPeriksa(i).opsi[a.o] === KUNCI_BACA[i];
+          if (!((benarTunjuk || benarKunci) && sebelum.periksa.data === i && sebelum.periksa.ditemukan)) ok = false;
+        } else ok = false;
+      }
+    }
+    cek(ok, "fuzz 20.000 aksi Lab Piktogram: batas terjaga, riwayat tidak dicabut dan hanya bila tercapai (orakel mandiri)");
+    cek(pesanSemua.size > 40 && [...pesanSemua].every(tanpaAngka), `fuzz Lab Piktogram: semua ${pesanSemua.size} pesan dieja menjadi kata`);
+    cek(riwayatSemua.size === 5, `fuzz Lab Piktogram: riwayat terkumpul (${[...riwayatSemua].sort().join(" ")})`);
+    globalThis.__pesanB = [...pesanSemua];
+  }
+}
+
+/* ------------------------------ Mesin B ------------------------------ */
+{
+  const def = MS.MESIN_PIKTOGRAM;
+  cek(MS.SEMUA_MESIN_K5B8[1] === def && def.selesaiId === K8.ID_MESIN_K5B8.B, "B: mesin kedua adalah Mesin Piktogram, id selesai sesuai misi");
+  sama(def.stasiun.map((s) => s.id), ["kunci", "hitung", "setengah", "periksa"], "B: empat stasiun");
+  const RENCANA = [
+    { id: "apem", f: [8, 12, 4, 16], opsi: [4, 5, 10], hitung: ["Senin", 3, 4], setengah: ["Selasa", 2, 10], salah: ["Rabu", 12, 4, 4] },
+    { id: "tomat", f: [6, 10, 4, 8], opsi: [5, 2, 4], hitung: ["Minggu 2", 5, 2], setengah: ["Minggu 1", 2, 4], salah: ["Minggu 3", 10, 2, 4] },
+    { id: "perpustakaan", f: [20, 30, 10, 40], opsi: [4, 10, 20], hitung: ["Selasa", 3, 10], setengah: ["Kamis", 1, 20], salah: ["Rabu", 20, 5, 4] },
+  ];
+  sama(MS.KASUS_PIKTOGRAM.map((k) => [k.id, k.f, k.kunciOpsi, [k.hitung.nama, k.hitung.simbol, k.hitung.kunci], [k.setengah.nama, k.setengah.penuh, k.setengah.kunci], [k.salah.nama, k.salah.f, k.salah.kunci, k.salah.gambar]]), RENCANA.map((r) => [r.id, r.f, r.opsi, r.hitung, r.setengah, r.salah]), "B Mesin: data tiga kasus sesuai rencana");
+  for (const [i, r] of RENCANA.entries()) {
+    const c = def.kasus[i];
+    const [ku, hi, se, pe] = c.langkah;
+    // Kunci: yang membagi habis semua frekuensi (pembagian bilangan bulat), dihitung mandiri.
+    const habis = r.opsi.filter((k) => r.f.every((v) => Number.isInteger(v / k)));
+    cek(habis.length === 1 && ku.benar === `1 simbol = ${habis[0]}`, `B Mesin ${r.id}: kunci ${habis[0]} satu-satunya yang habis membagi`);
+    sama([...ku.opsi].sort(), r.opsi.map((k) => `1 simbol = ${k}`).sort(), `B Mesin ${r.id}: tiga pilihan kunci`);
+    cek(r.opsi.every((k) => k === habis[0] || !r.f.every((v) => Number.isInteger(v / k))), `B Mesin ${r.id}: pengecoh kunci meninggalkan sisa`);
+    // Hitung.
+    const [nh, sh, kh] = r.hitung;
+    cek(hi.benar === String(sh * kh) && hi.tanya.includes(`${nh} punya ${sh} simbol`) && hi.tanya.includes(`sama dengan ${kh}`) && hi.opsi.every((o) => o === hi.benar || Number(o) !== sh * kh), `B Mesin ${r.id}: hitung ${sh} × ${kh} = ${sh * kh}`);
+    cek(hi.opsi.includes(String(sh)) && hi.opsi.every((o) => Number(o) >= 0), `B Mesin ${r.id}: pengecoh hitung memuat banyak simbol saja`);
+    // Setengah.
+    const [ns, ps, ks] = r.setengah;
+    const nilai = (2 * ps * ks + ks) / 2;
+    sama([...se.opsi].sort((u, v) => u - v), [nilai, (ps + 1) * ks, ps * ks].sort((u, v) => u - v).map(String), `B Mesin ${r.id}: pilihan setengah simbol (benar, setengah dihitung penuh, setengah diabaikan)`);
+    cek(se.benar === String(nilai) && se.tanya.includes(`${ns} punya ${ps} simbol utuh dan satu setengah simbol`) && ks % 2 === 0, `B Mesin ${r.id}: setengah ${ps} × ${ks} + ${ks / 2} = ${nilai}`);
+    // Periksa.
+    const [nz, fz, kz, gz] = r.salah;
+    const E = fz / kz;
+    const harus = gz > E ? "terlalu banyak satu simbol" : gz < E ? "kurang satu simbol" : "tidak ada yang salah";
+    cek(pe.benar.startsWith(harus) && Math.abs(gz - E) <= 1 && pe.tanya.includes(`${nz} ${fz}`) && pe.tanya.includes(`menggambar ${gz} simbol`) && pe.opsi.filter((o) => o.startsWith("terlalu banyak")).length === 1, `B Mesin ${r.id}: cacat periksa ${harus} (E = ${E})`);
+    if (harus !== "tidak ada yang salah") cek(pe.benar.includes(`seharusnya ${E}`), `B Mesin ${r.id}: seharusnya ${E}`);
+    cek(EJ.ejaK5B8(c.ringkas).includes(EJ.kataK5B8(nilai)) && c.ringkas.includes(`bernilai ${nilai}`), `B Mesin ${r.id}: ringkas memuat nilai setengah simbol`);
+  }
+  sama(RENCANA.map((r) => { const [, f, k, g] = r.salah; return g > f / k ? "lebih" : g < f / k ? "kurang" : "cocok"; }), ["lebih", "kurang", "cocok"], "B Mesin: tiga kasus periksa lebih, kurang, cocok");
+}
+
+/* ------------------------------ Skenario B ------------------------------ */
+{
+  const S = SK.SKENARIO_K5B8B;
+  cek(S.adegan.length >= 5 && S.adegan.length <= 8, `${S.id}: 5 sampai 8 adegan`);
+  cek(S.adegan[0].jenis === "narasi" && S.adegan[S.adegan.length - 1].jenis === "akhir", `${S.id}: buka dan tutup`);
+  cek(new Set(S.adegan.map((a) => a.jenis)).size >= 4, `${S.id}: paling sedikit empat jenis adegan`);
+  const semuaTeks = [];
+  for (const a of S.adegan) {
+    semuaTeks.push(a.cerita);
+    for (const o of a.opsi ?? []) semuaTeks.push(o.teks, o.umpan);
+    for (const q of a.soal ?? []) semuaTeks.push(q.teks, ...q.opsi);
+    for (const f of ["tanya", "sukses", "salah", "kurang", "lebih"]) if (a[f]) semuaTeks.push(a[f]);
+  }
+  cek(semuaTeks.every(tanpaAngka), `${S.id}: semua teks dapat dieja`);
+  sama(S.id.replace(/-k5b8$/, ""), K8.ID_SKENARIO_K5B8.B, "B: id skenario sesuai id misi");
+  const adegan = (id) => S.adegan.find((a) => a.id === id);
+  const kunci = adegan("kunci");
+  cek(/nilai satu simbol/.test(kunci.opsi.find((o) => o.benar).teks) && kunci.opsi.filter((o) => o.benar).length === 1 && kunci.cerita.includes("4 kue"), "B kunci: kunci menunjukkan nilai satu simbol");
+  const baca = adegan("baca");
+  cek(baca.soal[0].jawaban === String(3 * 4) && baca.soal[1].jawaban === String(5 * 4) && baca.soal[0].opsi.includes("3") && baca.soal[0].opsi.includes("7") && baca.soal[1].opsi.includes("5") && baca.soal[1].opsi.includes("9") && baca.sukses.includes("3 × 4 = 12") && baca.sukses.includes("5 × 4 = 20"), "B baca: 3 × 4 = 12 dan 5 × 4 = 20, pengecoh banyak simbol dan jumlah");
+  const simbol = adegan("simbol");
+  cek(simbol.jumlah === 20 / 4 && simbol.jumlah <= 12 && simbol.cerita.includes("20 kue") && simbol.sukses.includes("20 ÷ 4 = 5"), "B simbol: 20 ÷ 4 = 5 stik");
+  const kamis = adegan("kamis");
+  cek(kamis.target === 16 / 4 && kamis.target <= kamis.maks && kamis.maks <= 20 && kamis.cerita.includes("16 kue") && kamis.sukses.includes("16 ÷ 4 = 4"), "B kamis: 16 ÷ 4 = 4 stik");
+  const seten = adegan("setengah");
+  cek(10 % 4 === 2 && 2 * 2 === 4 && seten.cerita.includes("sisa 2") && seten.soal[0].jawaban === "setengah simbol" && seten.sukses.includes("2 × 4 + 2 = 10") && 2 * 4 + 2 === 10, "B setengah: 10 ÷ 4 sisa 2 = setengah kunci, nilai 2 × 4 + 2 = 10");
+  const salah = adegan("salah");
+  const sb = salah.opsi.find((o) => o.benar);
+  cek(12 / 4 === 3 && 4 > 3 && /^terlalu banyak satu simbol, seharusnya 3$/.test(sb.teks) && salah.cerita.includes("12 kue") && salah.cerita.includes("4 simbol") && salah.opsi.filter((o) => !o.benar).every((o) => !/^terlalu banyak/.test(o.teks)) && salah.opsi.some((o) => /^kurang satu simbol/.test(o.teks)) && salah.opsi.some((o) => /^tidak ada yang salah/.test(o.teks)), "B salah: 12 ÷ 4 = 3, gambar 4 kelebihan satu, pengecoh kurang dan tidak ada yang salah");
+  const posisi = S.adegan.filter((a) => a.jenis === "pilih").map((a) => a.opsi.findIndex((o) => o.benar));
+  cek(new Set(posisi).size === posisi.length, `B letak jawaban pilih bervariasi (${posisi.join("")})`);
+  for (const id of ["baca"]) {
+    const ps = adegan(id).soal.map((q) => q.opsi.indexOf(q.jawaban));
+    cek(new Set(ps).size === ps.length && ps.every((p) => p >= 0), `B letak jawaban soal ${id} bervariasi (${ps.join("")})`);
+  }
+  cek(S.adegan.filter((a) => a.jenis === "pilih").every((a) => a.opsi.length === 3 && a.opsi.filter((o) => o.benar).length === 1), "B setiap pilih: tiga opsi, satu benar");
+  cek(/tabel frekuensi/.test(S.adegan[0].cerita), "B skenario menyentuh tabel frekuensi dari Sub-Bab A");
+}
+
+/* ------------------------------ Misi B ------------------------------ */
+{
+  const daftar = K8.daftarMisiK5Bab8("B");
+  const capai = (aksi) => M0.misiBaru(K8.MISI_B, B.keadaanPiktogramK5B8B(jalan(B.awalPiktogramK5B8B(), LB, aksi)), new Set());
+  const kunciAksi = (i, k, jawab) => [{ t: "K_DATA", i }, { t: "K_PILIH", k }, { t: "K_JAWAB", jawab: jawab ?? (kunciBisaMandiri(F_PIK[i], k) ? "bisa" : "tidak") }];
+  const bacaAksi = (i, o) => [{ t: "B_DATA", i }, { t: "B_JAWAB", o: o ?? B.opsiBaca(i).benar }];
+  const periksaAksi = (i, penuh = true) => {
+    const jenis = CACAT_JENIS[i];
+    return [{ t: "P_DATA", i }, { t: "P_JENIS", jenis }, ...(penuh ? [jenis === "kunci" ? { t: "P_KUNCI", o: B.opsiKunciPeriksa(i).benar } : { t: "P_TUNJUK", k: CACAT_K[i] }] : [])];
+  };
+  cek(daftar.filter((m) => m.wajib).length === 7 && daftar.length === 10, "B: tujuh wajib dan tiga tantangan");
+  cek(capai(kunciAksi(0, 4)).join() === "b-kunci" && capai(kunciAksi(1, 4)).join() === "b-setengah" && capai(kunciAksi(0, 5)).join() === "b-tolak", "B: kunci 4 apem, kunci 4 tomat, tolak kunci 5 apem memenuhi misinya");
+  cek(capai(kunciAksi(0, 4, "tidak")).length === 0 && capai(kunciAksi(0, 5, "bisa")).length === 0, "B: jawaban terbalik tidak memenuhi");
+  cek(capai(kunciAksi(0, 2)).length === 0 && capai(kunciAksi(1, 2)).length === 0 && capai(kunciAksi(2, 4, "tidak")).length === 0 && capai(kunciAksi(3, 4)).length === 0, "B: kunci lain atau data lain tidak memenuhi misi kunci");
+  cek(capai([{ t: "K_DATA", i: 0 }, { t: "K_JAWAB", jawab: "bisa" }]).length === 0, "B: memutuskan tanpa memilih kunci tidak memenuhi");
+  cek(capai(bacaAksi(2)).join() === "b-baca" && capai(bacaAksi(1)).length === 0 && capai(bacaAksi(2, (B.opsiBaca(2).benar + 1) % 3)).length === 0, "B: baca perpustakaan benar memenuhi, data lain atau salah tidak");
+  cek(capai(periksaAksi(0)).join() === "b-periksa" && capai(periksaAksi(0, false)).length === 0 && capai(periksaAksi(1)).length === 0 && capai([{ t: "P_DATA", i: 0 }, { t: "P_JENIS", jenis: "ukuran" }, { t: "P_TUNJUK", k: 1 }]).length === 0, "B: periksa apem sampai perbaiki memenuhi, tanpa perbaikan atau jenis salah tidak");
+  cek(capai([{ t: "P_DATA", i: 0 }, { t: "P_JENIS", jenis: "jumlah" }, { t: "P_TUNJUK", k: 0 }]).length === 0, "B: baris salah tidak memperbaiki");
+  const semuaKunci = [0, 1, 2, 3, 4, 5].flatMap((i) => kunciAksi(i, B.DATA_PIK[i].kunciBaca));
+  cek(capai(semuaKunci).join() === "b-kunci,b-setengah,b-kunci-semua", "B: kunci baca setiap data memenuhi b-kunci, b-setengah, dan tantangan");
+  cek(capai(semuaKunci.slice(0, -3)).includes("b-kunci-semua") === false, "B: lima data belum memenuhi tantangan kunci");
+  cek(capai([0, 1, 2, 3, 4, 5].flatMap((i) => bacaAksi(i))).join() === "b-baca,b-baca-semua" && capai([0, 1, 2, 3, 4].flatMap((i) => bacaAksi(i))).join() === "b-baca", "B: keenam baca memenuhi tantangan, lima belum");
+  cek(capai([0, 1, 2, 3, 4, 5].flatMap((i) => periksaAksi(i))).join() === "b-periksa,b-periksa-semua" && capai([0, 1, 2, 3, 4].flatMap((i) => periksaAksi(i))).join() === "b-periksa", "B: keenam periksa memenuhi tantangan, lima belum");
+  cek(capai([0, 1, 2, 3, 4, 5].flatMap((i) => periksaAksi(i, i !== 5))).join() === "b-periksa", "B: cacat kunci data keenam belum diperbaiki belum memenuhi tantangan");
+  cek(M0.misiBaru(K8.MISI_B, { alat: "data", pernah: ["kunci:0:4", "kunci:1:4", "tolak:0:5", "baca:2", "cacat:0", "perbaiki:0"] }, new Set()).length === 0, "B: riwayat alat data tidak memenuhi misi B");
+  cek(M0.misiBaru(K8.MISI_A, { alat: "piktogram", pernah: ["lima:0", "turus:1", "tabel:1", "salah:1", "mode:1", "putus:1"] }, new Set()).length === 0, "A: riwayat alat piktogram tidak memenuhi misi A");
+  cek(capai([...kunciAksi(3, 4), ...bacaAksi(0), ...periksaAksi(2)]).length === 0, "B: riwayat tiga tampilan pada data lain tidak memenuhi misi");
+}
+
+/* ------------------------------ Konsep tidak bocor ke Sub-Bab B ------------------------------ */
+{
+  const baca = (nama, ekstensi) => readFileSync(new URL(`../src/components/modul/${nama}.${ekstensi}`, import.meta.url), "utf8");
+  const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas5-bab8-ringkas.json", import.meta.url), "utf8"));
+  const tanpaKomentar = (s) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const teksDari = (o) => {
+    const hasil = [];
+    JSON.stringify(o, (k, v) => {
+      if (typeof v === "string") hasil.push(v);
+      return v;
+    });
+    return hasil.join(" | ");
+  };
+  // Sub-Bab B memakai tabel frekuensi (dari A) tetapi tidak membahas diagram batang, sumbu, atau skala (Sub-Bab C).
+  const BOCOR_B = /(diagram|batang|sumbu|skala|grafik|\baxis\b|bar chart|garis bantu)/i;
+  const catat = (teks, apa) => {
+    const m = BOCOR_B.exec(teks);
+    cek(!m, `B: ${apa} bebas konsep diagram batang (${m ? m[0] : ""} di "${String(teks).slice(Math.max(0, (m?.index ?? 0) - 30), (m?.index ?? 0) + 40)}")`);
+  };
+  for (const t of [TK.MISI_K5B8.B, TK.NAMA_SIM_K5B8.B, ...K8.MISI_B.map((m) => m.teks)]) catat(t, "teks misi");
+  for (const [nama, o] of [["mesin", MS.MESIN_PIKTOGRAM], ["skenario", SK.SKENARIO_K5B8B], ["peta dan infografis ringkas", ringkas.subBab.B]]) catat(teksDari(o), nama);
+  for (const [f, e] of [["SimulasiLabPiktogramK5B8", "tsx"], ["model-piktogram-k5b8", "tsx"], ["lab-piktogram-k5b8b", "ts"]]) catat(tanpaKomentar(baca(f, e)), `${f} (tanpa komentar)`);
+  for (const p of globalThis.__pesanB) catat(p, "pesan lab dari fuzz");
+  for (const u of [B.ucapKunciK5B8B(y0), B.ucapBacaK5B8B(y0), B.ucapPeriksaK5B8B(y0)]) catat(u, "ucapan lab");
+  // Sub-Bab A tidak membocorkan piktogram: lab A tidak memakai berkas B.
+  cek(!/piktogram/i.test(tanpaKomentar(baca("SimulasiLabDataK5B8", "tsx"))) && !/piktogram/i.test(tanpaKomentar(baca("lab-data-k5b8a", "ts"))), "A: kode lab A tidak menyebut piktogram");
+
+  for (const f of ["SimulasiLabPiktogramK5B8", "model-piktogram-k5b8"]) {
+    const s = baca(f, "tsx");
+    cek(!/correct_index|explanation/.test(s), `${f}: tidak memuat correct_index atau explanation`);
+    cek(!/fetch\(|XMLHttpRequest|api\/|openai|anthropic|gemini/i.test(s), `${f}: tanpa jaringan atau model bahasa`);
+  }
+  {
+    const s = baca("lab-piktogram-k5b8b", "ts");
+    cek(!/fetch\(|XMLHttpRequest|from "react"|openai|anthropic|gemini|correct_index|explanation/i.test(s) && (s.match(/^import /gm) ?? []).length === 0, "lab-piktogram-k5b8b: murni, tanpa impor");
+  }
+  {
+    const s = baca("SimulasiLabPiktogramK5B8", "tsx");
+    cek(/useEffect\(\(\) => \{\s*onKeadaan\?\.\(keadaan\w+\(x\)\);\s*\}, \[onKeadaan, x\]\);/.test(s), "lab B: lapor keadaan lewat useEffect");
+    cek(/setLihat\(v\);\s*kirim\(\{ t: "PESAN_KOSONG" \}\);/.test(s), "lab B: ganti tampilan mengosongkan pesan");
+    const catatan = [...s.matchAll(/^\s*"([^"]+)",$/gm)].map((m) => m[1]);
+    cek(catatan.length >= 3 && catatan.every(tanpaAngka), "lab B: Coba ini dapat dieja");
+    for (const lab of ["Kunci bisa dipakai", "Kunci tidak bisa dipakai"]) cek(s.includes(`aria-label="${lab}"`), `lab B: tombol berlabel ${lab}`);
+    for (const awalan of ["Jawab nilai ", "Cacat ", "Kunci cocok ", "Perbaiki baris "]) cek(s.includes(`aria-label={\`${awalan}`), `lab B: tombol berlabel ${awalan.trim()}`);
+    for (const awalan of ["Pilih data ", "Pilih baca ", "Pilih periksa ", "Pilih kunci "]) cek(s.includes(`label={\`${awalan}`), `lab B: pilihan berlabel ${awalan.trim()}`);
+    cek(/x\.periksa\.ditemukan \? \(/.test(s), "lab B: perbaikan hanya tampil setelah jenis cacat benar");
+    const m = baca("model-piktogram-k5b8", "tsx");
+    cek(/role="img"/.test(m) && /aria-label=\{`Piktogram /.test(m), "model B: gambar piktogram berlabel");
+  }
+  const ucapan = [];
+  for (let i = 0; i < 6; i += 1) ucapan.push(B.ucapKunciK5B8B(LB(y0, { t: "K_DATA", i })), B.ucapBacaK5B8B(LB(y0, { t: "B_DATA", i })), B.ucapPeriksaK5B8B(LB(y0, { t: "P_DATA", i })));
+  cek(ucapan.length === 18 && ucapan.every(tanpaAngka), `semua ${ucapan.length} ucapan lab B dieja menjadi kata`);
+  // Data ringkas B dihitung mandiri.
+  const B0 = ringkas.subBab.B;
+  const [q1, q2, q3] = B0.infografis.panel;
+  const bt = (panel, id) => panel.butir.find((b) => b.id === id);
+  cek(B0.infografis.panel.length === 3 && q1.butir.length >= 2 && q2.sisi.length === 2 && q3.butir.length >= 2, "ringkas B: tiga panel");
+  cek(bt(q1, "kunci").visual.isi === "1 simbol = 4" && bt(q1, "hitung").visual.isi === "3 × 4 = 12" && 3 * 4 === 12 && bt(q1, "setengah").visual.isi === "½ simbol = 2" && 4 / 2 === 2, "ringkas B: kunci 4, 3 × 4 = 12, setengah simbol 2");
+  const tb = bt(q3, "tabel").visual;
+  sama(tb.baris, F_PIK[0].map((v, k) => [B.DATA_PIK[0].kategori[k], v]), "ringkas B: tabel apem sama dengan data lab");
+  cek(bt(q3, "jumlah").visual.isi === "12 ÷ 4 = 3, bukan 4" && 12 / 4 === 3, "ringkas B: 12 ÷ 4 = 3");
+  sama(B0.peta.cabang.map((c) => c.id), ["kunci", "baca", "setengah", "jujur"], "ringkas B: empat cabang");
+  cek(B0.peta.kartu.length === 8 && B0.peta.cabang.every((c) => B0.peta.kartu.filter((k) => k.cabang === c.id).length >= 2) && B0.peta.kartu.every((k) => B0.peta.cabang.filter((c) => c.id === k.cabang).length === 1), "ringkas B: delapan kartu, tiap cabang dua kartu atau lebih");
+  const kartuB = (id) => B0.peta.kartu.find((k) => k.id === id);
+  cek(kartuB("b-kali").teks === "3 simbol × 4 = 12" && kartuB("b-sisa").teks === "10 ÷ 4 = 2 sisa 2" && 10 % 4 === 2 && Math.floor(10 / 4) === 2, "ringkas B: kartu perkalian dan sisa pembagian benar");
+  cek([q1.ide, q2.ide, q3.ide].every((t) => t.split(/\s+/).length <= 8), "ringkas B: ide paling banyak delapan kata");
 }
 
 console.log(`\nLulus: ${lulus}, Gagal: ${gagal}`);

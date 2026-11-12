@@ -143,4 +143,129 @@ export const MESIN_DATA: DefMesin = {
   kasus: KASUS_DATA.map(kasusMesinData),
 };
 
-export const SEMUA_MESIN_K5B8: DefMesin[] = [MESIN_DATA];
+/* ------------------------------ B: Mesin Piktogram ------------------------------ */
+
+/**
+ * kunciOpsi: tiga kunci, tepat satu yang habis membagi semua frekuensi. hitung: nama kategori, banyak simbol, kunci.
+ * setengah: nama kategori, simbol utuh, kunci genap. salah: tabel menulis f, kunci, dan banyak simbol yang tergambar.
+ */
+export type KasusPiktogram = {
+  id: string;
+  nama: string;
+  konteks: string;
+  kategori: [string, string, string, string];
+  f: Empat;
+  kunciOpsi: [number, number, number];
+  hitung: { nama: string; simbol: number; kunci: number };
+  setengah: { nama: string; penuh: number; kunci: number };
+  salah: { nama: string; f: number; kunci: number; gambar: number };
+};
+
+export const KASUS_PIKTOGRAM: KasusPiktogram[] = [
+  {
+    id: "apem",
+    nama: "Kue Apem",
+    konteks: "Anggi menggambar piktogram penjualan kue apem",
+    kategori: ["Senin", "Selasa", "Rabu", "Kamis"],
+    f: [8, 12, 4, 16],
+    kunciOpsi: [4, 5, 10],
+    hitung: { nama: "Senin", simbol: 3, kunci: 4 },
+    setengah: { nama: "Selasa", penuh: 2, kunci: 10 },
+    salah: { nama: "Rabu", f: 12, kunci: 4, gambar: 4 },
+  },
+  {
+    id: "tomat",
+    nama: "Panen Tomat",
+    konteks: "Pak Tani menggambar piktogram panen tomat",
+    kategori: ["Minggu 1", "Minggu 2", "Minggu 3", "Minggu 4"],
+    f: [6, 10, 4, 8],
+    kunciOpsi: [5, 2, 4],
+    hitung: { nama: "Minggu 2", simbol: 5, kunci: 2 },
+    setengah: { nama: "Minggu 1", penuh: 2, kunci: 4 },
+    salah: { nama: "Minggu 3", f: 10, kunci: 2, gambar: 4 },
+  },
+  {
+    id: "perpustakaan",
+    nama: "Perpustakaan",
+    konteks: "Petugas menggambar piktogram pengunjung perpustakaan",
+    kategori: ["Senin", "Selasa", "Rabu", "Kamis"],
+    f: [20, 30, 10, 40],
+    kunciOpsi: [4, 10, 20],
+    hitung: { nama: "Selasa", simbol: 3, kunci: 10 },
+    setengah: { nama: "Kamis", penuh: 1, kunci: 20 },
+    salah: { nama: "Rabu", f: 20, kunci: 5, gambar: 4 },
+  },
+];
+
+export const STASIUN_PIKTOGRAM: StasiunDef[] = [
+  { id: "kunci", nama: "Kunci", ikon: "🔑" },
+  { id: "hitung", nama: "Hitung", ikon: "🔢" },
+  { id: "setengah", nama: "Setengah", ikon: "➗" },
+  { id: "periksa", nama: "Periksa", ikon: "🔍" },
+];
+
+/** Kunci yang habis membagi semua frekuensi, tanpa sisa. */
+export const kunciHabis = (f: readonly number[], k: number): boolean => f.every((v) => v % k === 0);
+export const nilaiSetengah = (penuh: number, k: number): number => penuh * k + k / 2;
+
+export function kasusMesinPiktogram(c: KasusPiktogram, idx: number): KasusMesin {
+  const tabel = c.kategori.map((n, k) => `${n} ${c.f[k]}`).join(", ");
+  const kunciBenar = c.kunciOpsi.find((k) => kunciHabis(c.f, k)) as number;
+  const teksKunci = (k: number) => `1 simbol = ${k}`;
+  const h = c.hitung;
+  const nilaiH = h.simbol * h.kunci;
+  const s = c.setengah;
+  const nilaiS = nilaiSetengah(s.penuh, s.kunci);
+  const z = c.salah;
+  const seharusnya = z.f / z.kunci;
+  const lebih = `terlalu banyak satu simbol, seharusnya ${seharusnya}`;
+  const kurang = `kurang satu simbol, seharusnya ${seharusnya}`;
+  const cocok = "tidak ada yang salah, jumlah simbol cocok dengan tabel";
+  const benarSalah = z.gambar === seharusnya + 1 ? lebih : z.gambar === seharusnya - 1 ? kurang : cocok;
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "kunci",
+      tanya: `${c.konteks}. Tabel frekuensi: ${tabel}. Kunci yang membuat semua kategori punya simbol utuh, tanpa sisa dan tanpa setengah simbol, adalah …`,
+      opsi: susunOpsi(teksKunci(kunciBenar), c.kunciOpsi.filter((k) => k !== kunciBenar).map(teksKunci), idx),
+      benar: teksKunci(kunciBenar),
+      petunjuk: "Bagi tiap frekuensi dengan kunci. Kunci yang tepat membuat semua hasil bagi bilangan bulat, tanpa sisa.",
+    },
+    {
+      stasiun: "hitung",
+      tanya: `Pada piktogram, satu simbol sama dengan ${h.kunci}. ${h.nama} punya ${h.simbol} simbol. Nilai ${h.nama} adalah …`,
+      opsi: susunOpsi(`${nilaiH}`, pengecoh(nilaiH, [h.simbol, nilaiH + h.kunci, nilaiH - h.kunci]).map(String), idx + 1),
+      benar: `${nilaiH}`,
+      petunjuk: "Nilai dibaca dengan mengalikan banyak simbol dengan kunci. Banyak simbol saja belum menjadi nilai.",
+    },
+    {
+      stasiun: "setengah",
+      tanya: `Satu simbol sama dengan ${s.kunci}. ${s.nama} punya ${s.penuh} simbol utuh dan satu setengah simbol. Nilai ${s.nama} adalah …`,
+      opsi: susunOpsi(`${nilaiS}`, [`${(s.penuh + 1) * s.kunci}`, `${s.penuh * s.kunci}`], idx + 2),
+      benar: `${nilaiS}`,
+      petunjuk: "Setengah simbol bernilai setengah kunci. Hitung simbol utuh dikali kunci, lalu tambahkan setengah kunci.",
+    },
+    {
+      stasiun: "periksa",
+      tanya: `Tabel menulis ${z.nama} ${z.f}. Piktogram memakai kunci satu simbol sama dengan ${z.kunci} dan menggambar ${z.gambar} simbol untuk ${z.nama}. Kesalahan piktogram itu adalah …`,
+      opsi: susunOpsi(benarSalah, [lebih, kurang, cocok].filter((o) => o !== benarSalah), idx + 3),
+      benar: benarSalah,
+      petunjuk: "Bagi frekuensi pada tabel dengan kunci untuk tahu banyak simbol yang seharusnya, lalu bandingkan dengan simbol yang tergambar.",
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `Kunci ${kunciBenar} habis membagi semua frekuensi. ${h.nama} dengan ${h.simbol} simbol bernilai ${nilaiH}. ${s.nama} dengan ${s.penuh} simbol dan satu setengah simbol bernilai ${nilaiS}. ${z.nama} ${z.f} seharusnya ${seharusnya} simbol: ${benarSalah}.`,
+    langkah,
+  };
+}
+
+export const MESIN_PIKTOGRAM: DefMesin = {
+  id: "mesin-piktogram-k5b8",
+  judul: "Mesin Piktogram",
+  selesaiId: "mesin-piktogram",
+  stasiun: STASIUN_PIKTOGRAM,
+  kasus: KASUS_PIKTOGRAM.map(kasusMesinPiktogram),
+};
+
+export const SEMUA_MESIN_K5B8: DefMesin[] = [MESIN_DATA, MESIN_PIKTOGRAM];

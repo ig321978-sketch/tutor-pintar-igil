@@ -4,7 +4,7 @@ Bab: Data (Tabel Frekuensi, Piktogram, dan Diagram Batang) (`mtk-5-bab8`, `FASE_
 
 Bab ini punya **tiga sub-bab**: A (mengumpulkan data), B (piktogram), dan C (diagram batang). Dikerjakan dalam tiga gelombang, satu sub-bab per gelombang. Gelombang A dan B tidak mendaftarkan bab; gelombang C mendaftarkan bab dan menjadi pencapaian bab.
 
-**Status: gelombang A (Sub-Bab A, Mengumpulkan Data) selesai. B dan C menyusul. Bab belum didaftarkan di registri.**
+**Status: gelombang A (Sub-Bab A, Mengumpulkan Data) dan B (Sub-Bab B, Piktogram) selesai. C menyusul. Bab belum didaftarkan di registri.**
 
 Berkas Materi bab ini tidak diubah (`SubBabK5B8A–C.tsx`, `naskah-k5b8.ts`, `data-k5b8.ts`, `paket-k5b8.ts`, dan lainnya). Pengeja suara memakai `ejaK5B8` (berkas baru `eja-k5b8.ts`) lewat prop `eja` mesin dan di lab. Pengeja ini mengeja tanda tambah, kurang, kali, bagi, sama dengan, lebih besar, lebih kecil, dan kurung.
 
@@ -17,17 +17,18 @@ Berkas Materi bab ini tidak diubah (`SubBabK5B8A–C.tsx`, `naskah-k5b8.ts`, `da
 | `5 + 3 > 7` | lima ditambah tiga lebih besar dari tujuh |
 | `ada 14 jawaban.` | ada empat belas jawaban. |
 
-Kata bilangan sama dengan `kataK5B1` (diuji 0 sampai 360 dan beberapa bilangan besar). Tokoh skenario A: Anggi, penjual donat (tokoh dari Materi).
+Kata bilangan sama dengan `kataK5B1` (diuji 0 sampai 360 dan beberapa bilangan besar). Tokoh skenario A dan B: Anggi, penjual donat dan kue apem (tokoh dari Materi).
 
 ## Alat
 
 | Sub-bab | Lab (tampilan) | Berkas | Mesin | Skenario |
 |---------|----------------|--------|-------|----------|
 | A | Lab Data (Turus, Tabel, Mode) | `SimulasiLabDataK5B8.tsx` + `lab-data-k5b8a.ts` | Mesin Data | Anggi dan Donat (8 adegan) |
+| B | Lab Piktogram (Kunci, Baca, Periksa) | `SimulasiLabPiktogramK5B8.tsx` + `lab-piktogram-k5b8b.ts` | Mesin Piktogram | Anggi dan Kue Apem (8 adegan, menyentuh tabel frekuensi A) |
 
-Mesin: `mesin-data-k5b8.ts`, dijalankan `SimulasiMesinBertahapK3.tsx` dan `mesin-bertahap-k3b1.ts`. Skenario: `skenario-k5b8.ts`, dijalankan `SimulasiSkenario.tsx`. Model gambar: `model-data-k5b8.tsx` (turus satu kategori: empat garis tegak biru dan satu garis miring emas per kelompok lima, garis sisa berdiri sendiri). Data ringkas Mind-Map dan Infografis: `src/data/kelas5-bab8-ringkas.json`. Uji: `scripts/uji-lab-k5b8.mjs`.
+Mesin: `mesin-data-k5b8.ts`, dijalankan `SimulasiMesinBertahapK3.tsx` dan `mesin-bertahap-k3b1.ts`. Skenario: `skenario-k5b8.ts`, dijalankan `SimulasiSkenario.tsx`. Model gambar: `model-data-k5b8.tsx` (turus satu kategori: empat garis tegak biru dan satu garis miring emas per kelompok lima, garis sisa berdiri sendiri). B: `model-piktogram-k5b8.tsx` (piktogram dengan simbol emas, setengah simbol berupa setengah lingkaran, baris yang tidak bisa digambar ditandai sisanya dengan merah, simbol cacat ukuran digambar lebih besar, keterangan kunci di bawah gambar atau "Kunci: ?" bila hilang). Data ringkas Mind-Map dan Infografis: `src/data/kelas5-bab8-ringkas.json`. Uji: `scripts/uji-lab-k5b8.mjs`.
 
-Metode luar buku yang dianyam. A: Data Collection Cycle (tanya, catat, ringkas, baca makna; muncul di skenario dan misi), Tally Mark Protocol (Turus: tiap jawaban mentah dicatat satu garis pada kategori yang tepat, lima garis menjadi satu kelompok), Frequency Table Construction (Tabel: frekuensi diisi dari turus, jumlah frekuensi harus sama dengan banyak data, rekap yang salah ditemukan lewat selisih jumlahnya), dan Data-Informed Decision (Mode: frekuensi terbesar disebut mode, lalu keputusan dipilih dengan alasan dari tabel, bukan menebak).
+Metode luar buku yang dianyam. A: Data Collection Cycle (tanya, catat, ringkas, baca makna; muncul di skenario dan misi), Tally Mark Protocol (Turus: tiap jawaban mentah dicatat satu garis pada kategori yang tepat, lima garis menjadi satu kelompok), Frequency Table Construction (Tabel: frekuensi diisi dari turus, jumlah frekuensi harus sama dengan banyak data, rekap yang salah ditemukan lewat selisih jumlahnya), dan Data-Informed Decision (Mode: frekuensi terbesar disebut mode, lalu keputusan dipilih dengan alasan dari tabel, bukan menebak). B: Pictograph Scale Legend (Kunci: satu simbol mewakili nilai tertentu; kunci bisa dipakai bila sisa pembagian tiap frekuensi nol atau tepat setengah kunci, dan tidak lebih dari delapan simbol per baris; Baca: nilai = banyak simbol dikali kunci, setengah simbol bernilai setengah kunci), Unit Symbol Consistency (Periksa: semua simbol sama bentuk dan ukuran), dan Pictograph Error Hunt (Periksa: cacat jumlah simbol tidak cocok tabel, ukuran simbol berbeda, atau kunci hilang, lalu diperbaiki).
 
 ## Pola hibrida
 
@@ -36,22 +37,25 @@ Satu laboratorium per sub-bab, tiga alat. Gerbang LANJUTKAN KE CONCRETE aktif bi
 | Sub-bab | Misi wajib dari lab | Tantangan bebas |
 |---------|---------------------|-----------------|
 | A | Turus: data sayuran favorit sampai ada kelompok lima penuh; Turus: semua jawaban penjualan donat Anggi dicatat sampai habis; Tabel: frekuensi donat Anggi benar dan jumlahnya sama dengan banyak data; Tabel: kategori yang salah pada rekap teman ditunjuk; Mode: rasa donat tertinggi dan keputusan yang punya alasan | Turus: keenam data dicatat sampai habis; Tabel: keenam tabel benar; Mode: mode dan keputusan keenam data benar, termasuk dua data dengan dua kategori sama tinggi |
+| B | Kunci: kunci 4 untuk data kue apem Anggi bisa dipakai; Kunci: kunci 4 untuk data panen tomat bisa dipakai dengan setengah simbol; Kunci: kunci 5 untuk kue apem ditolak karena bersisa; Baca: nilai hari Senin pengunjung perpustakaan dengan setengah simbol (15); Periksa: cacat jumlah simbol pada kue apem ditemukan dan barisnya diperbaiki | Kunci: sedikitnya satu kunci yang bisa dipakai untuk keenam data; Baca: nilai keenam piktogram benar; Periksa: cacat keenam piktogram (jumlah, ukuran, kunci hilang) ditemukan dan diperbaiki |
 
-Near-miss tidak memenuhi misi: mencatat kategori yang salah (tidak mengubah apa pun), mencatat kurang satu jawaban, mencatat data lain saja, tabel donat dengan satu frekuensi kurang atau lebih satu, dua kategori tertukar (jumlah benar tetapi isinya salah), menunjuk kategori salah rekap sebelum tabel benar, menunjuk kategori yang justru benar, mode tanpa keputusan, keputusan salah (termasuk menebak), dan mode pada data lain.
+Near-miss tidak memenuhi misi: mencatat kategori yang salah (tidak mengubah apa pun), mencatat kurang satu jawaban, mencatat data lain saja, tabel donat dengan satu frekuensi kurang atau lebih satu, dua kategori tertukar (jumlah benar tetapi isinya salah), menunjuk kategori salah rekap sebelum tabel benar, menunjuk kategori yang justru benar, mode tanpa keputusan, keputusan salah (termasuk menebak), dan mode pada data lain. Sub-Bab B: memutuskan kunci sebelum memilih, jawaban bisa dan tidak tertukar, kunci atau data lain, jawaban baca salah (banyak gambar saja, atau setengah simbol dihitung penuh), data baca lain, jenis cacat salah, memperbaiki baris yang benar, menunjuk baris pada cacat kunci, memperbaiki sebelum jenis cacat benar, dan cacat ditemukan tanpa perbaikan.
 
 ## Mesin berstasiun
 
 | Mesin | Stasiun | Kasus |
 |-------|---------|-------|
 | Mesin Data (A) | Turus → Frekuensi → Tabel → Keputusan | Donat Anggi (cokelat 7, keju 5, stroberi 3, kacang 2, banyak data 17; turus 7 = 1 kelompok lima dan 2 garis; keju muncul 3 kali dalam daftar sepuluh jawaban; frekuensi kacang yang hilang 2; keputusan cokelat), Sayuran Favorit (bayam 8, wortel 6, kangkung 4, sawi 2, banyak data 20; turus 8 = 1 kelompok lima dan 3 garis; wortel muncul 4 kali; frekuensi kangkung yang hilang 4; keputusan bayam), Cara Berangkat (jalan kaki 9, sepeda 5, angkot 4, motor 2, banyak data 20; turus 9 = 1 kelompok lima dan 4 garis; jalan kaki muncul 5 kali; frekuensi sepeda yang hilang 5; keputusan jalan kaki) |
+| Mesin Piktogram (B) | Kunci → Hitung → Setengah → Periksa | Kue Apem (tabel 8, 12, 4, 16; kunci yang habis membagi semua adalah 4, pengecoh 5 dan 10; Senin 3 simbol kunci 4 bernilai 12; Selasa 2 simbol dan setengah simbol kunci 10 bernilai 25; Rabu 12 dengan kunci 4 digambar 4 simbol: terlalu banyak satu, seharusnya 3), Panen Tomat (tabel 6, 10, 4, 8; kunci yang habis membagi 2, pengecoh 4 dan 5; Minggu 2 5 simbol kunci 2 bernilai 10; Minggu 1 2 simbol dan setengah kunci 4 bernilai 10; Minggu 3 10 dengan kunci 2 digambar 4 simbol: kurang satu, seharusnya 5), Perpustakaan (tabel 20, 30, 10, 40; kunci 10, pengecoh 4 dan 20; Selasa 3 simbol kunci 10 bernilai 30; Kamis 1 simbol dan setengah kunci 20 bernilai 30; Rabu 20 dengan kunci 5 digambar 4 simbol: tidak ada yang salah) |
 
-Pengecoh dihitung dari kesalahan khas: menukar banyak kelompok dengan banyak garis dan kelompok lebih satu (Turus); hitungan lebih atau kurang satu dan banyak data (Frekuensi); jumlah tiga kategori dan banyak data (Tabel); kategori terendah dan peringkat kedua (Keputusan). Letak kunci bervariasi.
+Pengecoh Mesin Data dihitung dari kesalahan khas: menukar banyak kelompok dengan banyak garis dan kelompok lebih satu (Turus); hitungan lebih atau kurang satu dan banyak data (Frekuensi); jumlah tiga kategori dan banyak data (Tabel); kategori terendah dan peringkat kedua (Keputusan). Pengecoh Mesin Piktogram: kunci yang meninggalkan sisa atau setengah simbol (Kunci); banyak simbol saja, dan nilai lebih atau kurang satu kunci (Hitung); setengah simbol dihitung penuh atau diabaikan (Setengah); lebih satu, kurang satu, atau tidak ada yang salah (Periksa). Letak kunci bervariasi.
 
 ## Skenario
 
 | Skenario | Adegan | Isi |
 |----------|--------|-----|
 | Anggi dan Donat (A) | 8 | Narasi Anggi dan siklus kumpulkan data; arti data (kumpulan fakta; pengecoh: tebakan, dan hanya angka); turus dikelompokkan lima supaya mudah dihitung lima-lima dan 8 = 5 + 3 (pengecoh 2 dan 4); ketuk 5 stik untuk pembeli donat keju; isi 2 stik untuk frekuensi donat kacang; tabel donat dengan jumlah 17 (pengecoh 15 dan 19) dan mode cokelat; keputusan menambah bahan cokelat (pengecoh: kacang, dan menebak); penutup. |
+| Anggi dan Kue Apem (B) | 8 | Narasi Anggi menggambar piktogram dari tabel frekuensi; kunci menunjukkan nilai satu simbol (pengecoh: hiasan, dan pengganti judul); 3 simbol kunci 4 bernilai 12 dan 5 simbol bernilai 20 (pengecoh banyak simbol dan jumlah); ketuk 5 stik untuk 20 ÷ 4 = 5 simbol; isi 4 stik untuk 16 ÷ 4 = 4 simbol; 10 ÷ 4 sisa 2 digambar setengah simbol; piktogram Sabtu 12 kue dengan 4 simbol: terlalu banyak satu, seharusnya 3 (pengecoh: kurang satu, dan tidak ada yang salah); penutup. |
 
 ## Kejujuran konsep
 
@@ -60,5 +64,10 @@ Pengecoh dihitung dari kesalahan khas: menukar banyak kelompok dengan banyak gar
 - Mode: mode dihitung mandiri lewat urutan menurun (bukan perbandingan maksimum seperti di kode); dua data (cara berangkat dan olahraga) punya dua kategori sama tinggi, dan menunjuk salah satunya saja ditolak. Keputusan baru bisa dipilih setelah mode benar; pilihan menebak selalu salah.
 - Konsep Sub-Bab B dan C tidak dipakai di Sub-Bab A (diuji pada misi, mesin, skenario, data ringkas, kode tampilan, model, logika, pesan lab hasil fuzz, dan ucapan): tanpa piktogram, kunci atau legenda, simbol, diagram, batang, sumbu, dan skala.
 - Fuzz 20.000 aksi Lab Data: batas terjaga (turus dan tally selalu cocok dengan jawaban yang sudah dicatat), riwayat tidak dicabut dan hanya bila tercapai (orakel mandiri memeriksa tiap id baru dari jawaban benar bersyarat), semua pesan bisa dieja. Uji mutasi (skrip sementara di luar repositori): 42 dari 46 mutan terbunuh pada logika lab, mesin, skenario, misi, dan pengeja; empat mutan yang tersisa setara (`m.includes(k)` sama dengan `k === m[0]` bila tidak seri; `lastIndexOf` sama dengan `indexOf` untuk terendah karena tak ada data dengan dua terendah; penggantian tally dengan ekspresi identik; dan rotasi letak kunci mesin yang hanya mengubah urutan tampil).
+- Kunci (B): kunci diputuskan bisa atau tidak bisa, dan hanya putusan yang benar dicatat (id memuat nomor data dan nilai kunci, jadi kunci 4 pada apem dan kunci 4 pada tomat berbeda). Bisa-tidaknya dihitung mandiri dalam satuan setengah simbol (2f/k harus bilangan bulat dan tidak lebih dari delapan simbol), bukan dari sisa pembagian seperti di kode; semua 30 pasangan data dan kunci diuji, termasuk penolakan karena terlalu banyak simbol (bekal dengan kunci 2).
+- Baca (B): tiga pilihan nilai (nilai benar, banyak gambar saja, dan satu kunci lebih) dihitung mandiri; hanya baris target yang punya setengah simbol menambah setengah kunci.
+- Periksa (B): cacat enam piktogram bergantian jumlah, ukuran, dan kunci hilang. Perbaikan hanya bisa setelah jenis cacat benar; cacat kunci diperbaiki dengan memilih kunci yang cocok (tepat satu dari tiga pilihan, dibuktikan dari simbol yang tergambar), cacat jumlah dan ukuran dengan menunjuk baris yang tepat.
+- Konsep Sub-Bab C tidak dipakai di Sub-Bab B (diuji pada misi, mesin, skenario, data ringkas, kode tampilan, model, logika, pesan lab hasil fuzz, dan ucapan): tanpa diagram, batang, sumbu, skala, grafik, dan garis bantu. Sub-Bab B hanya memakai tabel frekuensi dari Sub-Bab A; kode lab Sub-Bab A tidak menyebut piktogram.
+- Fuzz 20.000 aksi Lab Piktogram: batas terjaga, riwayat tidak dicabut dan hanya bila tercapai (orakel mandiri memeriksa tiap id baru). Uji mutasi gelombang B: 39 dari 40 mutan terbunuh; satu mutan setara pada data (`v % k <= 1` sama dengan `v % k === 0` karena tak ada kasus mesin dengan sisa tepat satu).
 - Emoji: paling baru Emoji 12 (diuji pada semua berkas simulasi dan data ringkas Bab 8).
 - Pendaftaran: belum. `registri-simulasi.ts` belum memuat `mtk-5-bab8`; itu dikerjakan di gelombang C.
