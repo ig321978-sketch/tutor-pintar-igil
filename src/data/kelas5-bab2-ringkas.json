@@ -483,6 +483,243 @@
           }
         ]
       }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Faktor",
+          "ikon": "🧩",
+          "suara": "Ini peta faktor. Kita belajar susunan tanpa sisa, pasangan faktor, daftar semua faktor, dan cara memeriksa dengan sisa. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "susunan",
+            "judul": "Susunan",
+            "ikon": "🧩",
+            "ringkas": "Titik tersusun rata, tanpa sisa.",
+            "suara": "Susunan. Titik disusun dalam baris yang sama banyak. Kalau semua titik terpakai tanpa sisa, banyak baris itu adalah faktor."
+          },
+          {
+            "id": "pasangan",
+            "judul": "Pasangan",
+            "ikon": "🤝",
+            "ringkas": "Faktor berpasangan, hasil kalinya bilangan itu.",
+            "suara": "Pasangan. Faktor selalu berpasangan, dan hasil kali pasangannya adalah bilangan itu. Pencarian berhenti saat pasangan bertemu di tengah."
+          },
+          {
+            "id": "daftar",
+            "judul": "Daftar faktor",
+            "ikon": "📋",
+            "ringkas": "Semua faktor, dari satu sampai bilangan itu.",
+            "suara": "Daftar faktor. Tulis semua faktor, mulai dari satu sampai bilangan itu sendiri. Satu dan bilangan itu selalu faktor."
+          },
+          {
+            "id": "cek",
+            "judul": "Cek sisa",
+            "ikon": "➗",
+            "ringkas": "Faktor membagi tanpa sisa.",
+            "suara": "Cek sisa. Bagi bilangan dengan kandidat faktor. Kalau sisanya nol, kandidat itu faktor."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "c-tiga-baris",
+            "teks": "12 titik dalam 3 baris, tepat",
+            "ikon": "✅",
+            "cabang": "susunan",
+            "petunjuk": "Susunan yang tepat itu soal susunan. Coba cabang lain."
+          },
+          {
+            "id": "c-lima-baris",
+            "teks": "12 titik dalam 5 baris, sisa 2",
+            "ikon": "❎",
+            "cabang": "susunan",
+            "petunjuk": "Susunan yang bersisa itu soal susunan. Coba cabang lain."
+          },
+          {
+            "id": "c-tiga-empat",
+            "teks": "3 × 4 = 12",
+            "ikon": "✖️",
+            "cabang": "pasangan",
+            "petunjuk": "Hasil kali pasangan itu soal pasangan. Coba cabang lain."
+          },
+          {
+            "id": "c-tengah",
+            "teks": "Berhenti saat pasangan bertemu",
+            "ikon": "🤝",
+            "cabang": "pasangan",
+            "petunjuk": "Kapan pencarian berhenti itu soal pasangan. Coba cabang lain."
+          },
+          {
+            "id": "c-dua-belas",
+            "teks": "Faktor 12: 1, 2, 3, 4, 6, 12",
+            "ikon": "📋",
+            "cabang": "daftar",
+            "petunjuk": "Semua faktor itu soal daftar faktor. Coba cabang lain."
+          },
+          {
+            "id": "c-satu",
+            "teks": "1 dan 12 selalu faktor",
+            "ikon": "1️⃣",
+            "cabang": "daftar",
+            "petunjuk": "Faktor yang selalu ada itu soal daftar faktor. Coba cabang lain."
+          },
+          {
+            "id": "c-delapan",
+            "teks": "24 ÷ 8 bersisa 0: faktor",
+            "ikon": "🟩",
+            "cabang": "cek",
+            "petunjuk": "Sisa nol itu soal cek sisa. Coba cabang lain."
+          },
+          {
+            "id": "c-lima",
+            "teks": "24 ÷ 5 bersisa 4: bukan",
+            "ikon": "🟥",
+            "cabang": "cek",
+            "petunjuk": "Sisa yang bukan nol itu soal cek sisa. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Faktor",
+        "suara": "Ini tiga panel tentang faktor. Ketuk kotaknya untuk membuka, lalu lihat faktor dari dua belas dan delapan belas.",
+        "panel": [
+          {
+            "id": "c-susun-info",
+            "tipe": "buka",
+            "judul": "Susunan tanpa sisa",
+            "ide": "Baris yang pas adalah faktor.",
+            "suara": "Ada tiga hal tentang susunan tanpa sisa. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tepat",
+                "label": "Tepat",
+                "ikon": "✅",
+                "isi": "Semua titik terpakai.",
+                "suara": "Dua belas titik dalam tiga baris tepat empat titik tiap baris. Tiga dikali empat sama dengan dua belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 × 4 = 12"
+                }
+              },
+              {
+                "id": "sisa",
+                "label": "Bersisa",
+                "ikon": "❎",
+                "isi": "Ada titik yang tersisa.",
+                "suara": "Dua belas titik dalam lima baris tidak rata. Dua belas dibagi lima sama dengan dua sisa dua.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 ÷ 5 = 2 sisa 2"
+                }
+              },
+              {
+                "id": "baris",
+                "label": "Baris",
+                "ikon": "🧩",
+                "isi": "Makin banyak baris, makin pendek.",
+                "suara": "Satu baris berisi dua belas titik, dua baris berisi enam, tiga baris berisi empat.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Baris",
+                    "Titik tiap baris"
+                  ],
+                  "baris": [
+                    [
+                      "1 baris",
+                      12
+                    ],
+                    [
+                      "2 baris",
+                      6
+                    ],
+                    [
+                      "3 baris",
+                      4
+                    ]
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "c-faktor-info",
+            "tipe": "banding",
+            "judul": "Faktor atau bukan",
+            "ide": "Lihat sisa saat membagi.",
+            "suara": "Lihat dua kandidat faktor dua puluh empat.",
+            "sisi": [
+              {
+                "id": "faktor",
+                "nama": "Faktor",
+                "ikon": "🟩",
+                "catatan": "Habis dibagi, sisa nol.",
+                "suara": "Dua puluh empat dibagi delapan sama dengan tiga, sisanya nol. Jadi delapan faktor.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "24 ÷ 8 = 3 sisa 0"
+                }
+              },
+              {
+                "id": "bukan",
+                "nama": "Bukan",
+                "ikon": "🟥",
+                "catatan": "Ada sisa, bukan faktor.",
+                "suara": "Dua puluh empat dibagi lima sama dengan empat sisa empat. Jadi lima bukan faktor.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "24 ÷ 5 = 4 sisa 4"
+                }
+              }
+            ],
+            "kesimpulan": "Sisa nol berarti faktor."
+          },
+          {
+            "id": "c-daftar-info",
+            "tipe": "buka",
+            "judul": "Daftar faktor",
+            "ide": "Faktor selalu berpasangan.",
+            "suara": "Ada tiga hal tentang daftar faktor. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "dua-belas",
+                "label": "Dua belas",
+                "ikon": "🟨",
+                "isi": "Enam faktor.",
+                "suara": "Faktor dua belas adalah satu, dua, tiga, empat, enam, dan dua belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1, 2, 3, 4, 6, 12"
+                }
+              },
+              {
+                "id": "delapan-belas",
+                "label": "Delapan belas",
+                "ikon": "🟩",
+                "isi": "Enam faktor.",
+                "suara": "Faktor delapan belas adalah satu, dua, tiga, enam, sembilan, dan delapan belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1, 2, 3, 6, 9, 18"
+                }
+              },
+              {
+                "id": "pasangan",
+                "label": "Pasangan",
+                "ikon": "🤝",
+                "isi": "Pasangan faktor delapan belas.",
+                "suara": "Satu dengan delapan belas, dua dengan sembilan, tiga dengan enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 × 18, 2 × 9, 3 × 6"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

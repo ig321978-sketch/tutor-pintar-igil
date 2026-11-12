@@ -5,23 +5,25 @@
  * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
  *  A Kelipatan : Lab Lompat Kelipatan (Lompat, Tabel, Cek) + Mesin Kelipatan + Tepuk Kelipatan Nisa
  *  B KPK       : Lab Dua Jalur (Jalur, Irisan, Jadwal)     + Mesin KPK       + Jadwal Renang Yohana
+ *  C Faktor    : Lab Susunan Faktor (Susun, Pasangan, Tanda) + Mesin Faktor + Potong Petak Lukas
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanKelipatanK5B2A } from "./lab-kelipatan-k5b2a";
 import type { KeadaanJalurK5B2B } from "./lab-jalur-k5b2b";
+import type { KeadaanFaktorK5B2C } from "./lab-faktor-k5b2c";
 
-export type KeadaanK5Bab2 = KeadaanKelipatanK5B2A | KeadaanJalurK5B2B | KeadaanSelesai;
-export type HurufMisiK5B2 = "A" | "B";
+export type KeadaanK5Bab2 = KeadaanKelipatanK5B2A | KeadaanJalurK5B2B | KeadaanFaktorK5B2C | KeadaanSelesai;
+export type HurufMisiK5B2 = "A" | "B" | "C";
 
 const selesai = (k: KeadaanK5Bab2, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
 const pernah = (k: KeadaanK5Bab2, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K5B2 = { A: "tepuk-kelipatan", B: "jadwal-renang" } as const;
-export const ID_MESIN_K5B2 = { A: "mesin-kelipatan", B: "mesin-kpk" } as const;
+export const ID_SKENARIO_K5B2 = { A: "tepuk-kelipatan", B: "jadwal-renang", C: "potong-petak" } as const;
+export const ID_MESIN_K5B2 = { A: "mesin-kelipatan", B: "mesin-kpk", C: "mesin-faktor" } as const;
 
 export const MISI_A: DefMisi<KeadaanK5Bab2>[] = [
   { id: "a-tiga", teks: "Di Lompat, pilih jarak tiga, lalu mendaratlah lima kali dari nol.", wajib: true, cek: (k) => pernah(k, "kelipatan", "lompat:3:5") },
@@ -49,5 +51,18 @@ export const MISI_B: DefMisi<KeadaanK5Bab2>[] = [
   { id: "b-duatiga", teks: "Di Irisan, tandai kelipatan persekutuan dua dan tiga. Ada berapa bilangan di kedua daftar?", wajib: false, cek: (k) => pernah(k, "jalur", "irisan:2:3") },
 ];
 
-const DAFTAR: Record<HurufMisiK5B2, DefMisi<KeadaanK5Bab2>[]> = { A: MISI_A, B: MISI_B };
+export const MISI_C: DefMisi<KeadaanK5Bab2>[] = [
+  { id: "c-dua-belas", teks: "Di Susun, susun dua belas titik dalam baris yang sama banyak, dan simpan semua susunan yang semua titiknya terpakai.", wajib: true, cek: (k) => pernah(k, "faktor", "susun:12") },
+  { id: "c-delapan-belas", teks: "Di Susun, susun delapan belas titik dalam baris yang sama banyak, dan simpan semua susunan yang semua titiknya terpakai.", wajib: true, cek: (k) => pernah(k, "faktor", "susun:18") },
+  { id: "c-lima", teks: "Di Susun, susun dua puluh empat titik dalam lima baris, lalu simpan. Apa yang tersisa?", wajib: true, cek: (k) => pernah(k, "faktor", "gagal:24:5") },
+  { id: "c-pasangan", teks: "Di Pasangan, cari semua pasangan faktor delapan belas sampai pasangannya bertemu di tengah.", wajib: true, cek: (k) => pernah(k, "faktor", "pasangan:18") },
+  { id: "c-tanda", teks: "Di Tanda, tandai semua faktor dua puluh empat, termasuk satu dan dua puluh empat, lalu periksa.", wajib: true, cek: (k) => pernah(k, "faktor", "cek:24") },
+  { id: "c-mesin", teks: "Selesaikan Mesin Faktor sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K5B2.C) },
+  { id: "c-skenario", teks: "Selesaikan skenario Potong Petak Lukas sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K5B2.C) },
+  { id: "c-dua-empat", teks: "Di Susun, temukan semua susunan penuh untuk dua puluh empat titik. Ada berapa faktornya?", wajib: false, cek: (k) => pernah(k, "faktor", "susun:24") },
+  { id: "c-tiga-enam", teks: "Di Pasangan, cari semua pasangan faktor tiga puluh enam. Pasangan mana yang kembar?", wajib: false, cek: (k) => pernah(k, "faktor", "pasangan:36") },
+  { id: "c-tanda-tiga-enam", teks: "Di Tanda, tandai semua faktor tiga puluh enam, lalu periksa.", wajib: false, cek: (k) => pernah(k, "faktor", "cek:36") },
+];
+
+const DAFTAR: Record<HurufMisiK5B2, DefMisi<KeadaanK5Bab2>[]> = { A: MISI_A, B: MISI_B, C: MISI_C };
 export const daftarMisiK5Bab2 = (huruf: string): DefMisi<KeadaanK5Bab2>[] => DAFTAR[huruf as HurufMisiK5B2] ?? MISI_A;

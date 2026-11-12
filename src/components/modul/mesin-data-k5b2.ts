@@ -11,7 +11,11 @@
  *    Irisan: banyak bilangan di kedua daftar enam kelipatan (pengecoh: satu lebih, satu kurang).
  *    KPK: kelipatan persekutuan terkecil (pengecoh: jumlah, hasil kali atau dua kali KPK).
  *    Jadwal: tanggal bertemu lagi (pengecoh: lama hari sebagai tanggal, tanggal mulai ditambah jumlah selang).
- * Data dari Buku Siswa Kelas V Bab 2 Sub-Bab A dan B (lompat hitung, tabel seratus, habis dibagi, KPK, jadwal).
+ *  - MESIN_FAKTOR (C): Susun → Pasangan → Daftar → Cek   (18, 24, 36)
+ *    Susun: titik tiap baris pada susunan penuh (pengecoh: satu lebih, banyak baris). Pasangan: pasangan faktor (pengecoh:
+ *    selisih, satu lebih). Daftar: banyak faktor (pengecoh: dua kurang, satu lebih). Cek: apakah d faktor n lewat sisa
+ *    (pengecoh: menyangka faktor, sisa palsu).
+ * Data dari Buku Siswa Kelas V Bab 2 Sub-Bab A, B, dan C (lompat hitung, tabel seratus, habis dibagi, KPK, jadwal).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b2.mjs.
  */
 import type { DefMesin, KasusMesin, LangkahMesin, StasiunDef } from "./mesin-bertahap-k3b1";
@@ -169,4 +173,76 @@ export const MESIN_KPK: DefMesin = {
   kasus: KASUS_KPK.map(kasusMesinKpk),
 };
 
-export const SEMUA_MESIN_K5B2 = [MESIN_KELIPATAN, MESIN_KPK];
+/* ------------------------------ C: Mesin Faktor ------------------------------ */
+
+/** n: bilangan. r: banyak baris susunan penuh. a: kandidat berpasangan. d: kandidat yang bukan faktor. */
+export type KasusFaktor = { id: string; n: number; r: number; a: number; d: number };
+export const KASUS_FAKTOR: KasusFaktor[] = [
+  { id: "18", n: 18, r: 3, a: 2, d: 4 },
+  { id: "24", n: 24, r: 4, a: 3, d: 5 },
+  { id: "36", n: 36, r: 9, a: 4, d: 8 },
+];
+
+export const STASIUN_FAKTOR: StasiunDef[] = [
+  { id: "susun", nama: "Susun", ikon: "🧩" },
+  { id: "pasangan", nama: "Pasangan", ikon: "🤝" },
+  { id: "daftar", nama: "Daftar", ikon: "📋" },
+  { id: "cek", nama: "Cek", ikon: "➗" },
+];
+
+const banyakFaktor = (n: number): number => Array.from({ length: n }, (_, i) => i + 1).filter((d) => n % d === 0).length;
+
+export function kasusMesinFaktor(c: KasusFaktor, idx: number): KasusMesin {
+  const { n, r, a, d } = c;
+  const q = n / r;
+  const pasangan = n / a;
+  const banyak = banyakFaktor(n);
+  const sisa = n % d;
+  const palsu = sisa + 1 < d ? sisa + 1 : sisa - 1;
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "susun",
+      tanya: `${n} titik disusun dalam ${r} baris yang sama banyak, tanpa sisa. Berapa titik tiap baris?`,
+      opsi: susunOpsi(String(q), [String(q + 1), String(r)], idx),
+      benar: String(q),
+      petunjuk: `Bagi ${n} titik ke ${r} baris yang sama banyak. Semua titik harus terpakai.`,
+    },
+    {
+      stasiun: "pasangan",
+      tanya: `Faktor ${n} yang berpasangan dengan ${a} adalah …`,
+      opsi: susunOpsi(String(pasangan), [String(n - a), String(pasangan + 1)], idx + 1),
+      benar: String(pasangan),
+      petunjuk: `Pasangan faktor jika dikalikan hasilnya ${n}. Cari bilangan yang dikali ${a} sama dengan ${n}.`,
+    },
+    {
+      stasiun: "daftar",
+      tanya: `Faktor ${n} ada berapa? Hitung semua pasangan, termasuk 1 dan ${n}.`,
+      opsi: susunOpsi(String(banyak), [String(banyak - 2), String(banyak + 1)], idx + 2),
+      benar: String(banyak),
+      petunjuk: `Cari pasangan faktor ${n} dari 1 sampai bertemu di tengah, lalu hitung semua bilangannya.`,
+    },
+    {
+      stasiun: "cek",
+      tanya: `Apakah ${d} faktor ${n}? Bagi ${n} dengan ${d}, lalu lihat sisanya.`,
+      opsi: susunOpsi(`bukan, sisa ${sisa}`, [`ya, faktor ${n}`, `bukan, sisa ${palsu}`], idx + 3),
+      benar: `bukan, sisa ${sisa}`,
+      petunjuk: `Faktor ${n} membagi ${n} tanpa sisa. Kelompokkan ${n} titik, tiap kelompok berisi ${d}, lalu hitung yang tersisa.`,
+    },
+  ];
+  return {
+    id: c.id,
+    nama: `Faktor ${n}`,
+    ringkas: `${n} titik dalam ${r} baris, tiap baris ${q} titik. ${a} berpasangan dengan ${pasangan}. Faktor ${n} ada ${banyak}. ${n} dibagi ${d} bersisa ${sisa}, jadi ${d} bukan faktor ${n}.`,
+    langkah,
+  };
+}
+
+export const MESIN_FAKTOR: DefMesin = {
+  id: "mesin-faktor-k5b2",
+  judul: "Mesin Faktor",
+  selesaiId: "mesin-faktor",
+  stasiun: STASIUN_FAKTOR,
+  kasus: KASUS_FAKTOR.map(kasusMesinFaktor),
+};
+
+export const SEMUA_MESIN_K5B2 = [MESIN_KELIPATAN, MESIN_KPK, MESIN_FAKTOR];

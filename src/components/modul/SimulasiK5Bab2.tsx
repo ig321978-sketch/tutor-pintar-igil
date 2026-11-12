@@ -5,10 +5,11 @@ import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
 import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiLabKelipatanK5B2 from "./SimulasiLabKelipatanK5B2";
 import SimulasiLabJalurK5B2 from "./SimulasiLabJalurK5B2";
+import SimulasiLabFaktorK5B2 from "./SimulasiLabFaktorK5B2";
 import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
 import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K5B2A, SKENARIO_K5B2B } from "./skenario-k5b2";
-import { MESIN_KELIPATAN, MESIN_KPK } from "./mesin-data-k5b2";
+import { SKENARIO_K5B2A, SKENARIO_K5B2B, SKENARIO_K5B2C } from "./skenario-k5b2";
+import { MESIN_KELIPATAN, MESIN_KPK, MESIN_FAKTOR } from "./mesin-data-k5b2";
 import { ejaK5B1 } from "./eja-k5b1";
 import type { DefSkenario } from "./skenario-umum";
 import type { DefMesin } from "./mesin-bertahap-k3b1";
@@ -21,25 +22,29 @@ import { MISI_K5B2, NAMA_SIM_K5B2, hurufK5B2, misiAwalK5Bab2, type HurufK5B2 } f
 /* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k5bab2.ts. */
 /*   A Kelipatan : Lab Lompat Kelipatan + Mesin Kelipatan + Tepuk Kelipatan Nisa */
 /*   B KPK       : Lab Dua Jalur + Mesin KPK + Jadwal Renang Yohana            */
+/*   C Faktor    : Lab Susunan Faktor + Mesin Faktor + Potong Petak Lukas      */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
-const SKENARIO: Record<HurufK5B2, DefSkenario> = { A: SKENARIO_K5B2A, B: SKENARIO_K5B2B };
-const MESIN: Record<HurufK5B2, DefMesin> = { A: MESIN_KELIPATAN, B: MESIN_KPK };
+const SKENARIO: Record<HurufK5B2, DefSkenario> = { A: SKENARIO_K5B2A, B: SKENARIO_K5B2B, C: SKENARIO_K5B2C };
+const MESIN: Record<HurufK5B2, DefMesin> = { A: MESIN_KELIPATAN, B: MESIN_KPK, C: MESIN_FAKTOR };
 
 const COBA_MESIN: Record<HurufK5B2, string[]> = {
   A: ["Ketuk stasiun Cek sebelum Lompat. Apa kata mesin?", "Mengapa sisa harus nol agar bilangan menjadi kelipatan?", "Apa yang sama pada semua pendaratan lompatan berjarak tiga?"],
   B: ["Ketuk stasiun KPK sebelum Jalur. Apa kata mesin?", "Mengapa KPK harus yang terkecil di antara kelipatan persekutuan?", "Mengapa jumlah dua bilangan bukan KPK?"],
+  C: ["Ketuk stasiun Cek sebelum Susun. Apa kata mesin?", "Mengapa satu dan bilangan itu sendiri selalu faktor?", "Mengapa faktor selalu berpasangan?"],
 };
 
 const LAB: Record<HurufK5B2, { id: string; nama: string }> = {
   A: { id: "kelipatan", nama: "Lab Lompat Kelipatan" },
   B: { id: "jalur", nama: "Lab Dua Jalur" },
+  C: { id: "faktor", nama: "Lab Susunan Faktor" },
 };
 
 function LabSub({ huruf, speakGuru, lapor }: { huruf: HurufK5B2; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab2) => void }) {
   if (huruf === "B") return <SimulasiLabJalurK5B2 speakGuru={speakGuru} onKeadaan={lapor} />;
+  if (huruf === "C") return <SimulasiLabFaktorK5B2 speakGuru={speakGuru} onKeadaan={lapor} />;
   return <SimulasiLabKelipatanK5B2 speakGuru={speakGuru} onKeadaan={lapor} />;
 }
 

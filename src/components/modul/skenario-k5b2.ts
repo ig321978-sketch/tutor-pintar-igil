@@ -4,8 +4,83 @@ import type { DefSkenario } from "./skenario-umum";
  * Skenario Kelas 5 Bab 2 (KPK dan FPB). Tanpa jaringan, tanpa model bahasa.
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b2.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K5B2A: Tepuk Kelipatan Nisa (tepuk saat kelipatan, banyak tepukan, kelipatan berikutnya, cek sisa)
+ *  - SKENARIO_K5B2C: Potong Petak Lukas (faktor lewat susunan baris, hitung faktor, pasangan, faktor yang terlewat)
  *  - SKENARIO_K5B2B: Jadwal Renang Yohana (dua daftar, kelipatan persekutuan, KPK, tanggal bertemu lagi)
  */
+
+export const SKENARIO_K5B2C: DefSkenario = {
+  id: "potong-petak-k5b2",
+  judul: "Potong Petak Lukas",
+  latar: "Bantu Lukas menyusun petak kue dalam baris yang sama banyak.",
+  tokoh: "👦",
+  nama: "Lukas",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Lukas. Aku punya 12 petak kue dan ingin menyusunnya dalam baris yang sama banyak, tanpa ada petak yang tersisa. Banyak baris yang pas disebut faktor dari 12. Ayo kita cari!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "lima",
+      jenis: "pilih",
+      cerita: "Lukas mencoba menyusun 12 petak dalam 5 baris. Apa yang terjadi?",
+      opsi: [
+        { teks: "Tiap baris 2 petak, tepat", benar: false, umpan: "5 baris dengan 2 petak hanya memakai 10 petak. Masih ada 2 petak yang tersisa." },
+        { teks: "Tiap baris 3 petak, tepat", benar: false, umpan: "5 baris dengan 3 petak memerlukan 15 petak, padahal petaknya hanya 12." },
+        { teks: "Ada sisa 2 petak, jadi 5 bukan faktor 12", benar: true, umpan: "Betul! 12 dibagi 5 bersisa 2, jadi 5 baris tidak pas." },
+      ],
+    },
+    {
+      id: "faktor-dua-belas",
+      jenis: "hitung",
+      cerita: "Susunan yang pas untuk 12 petak adalah 1, 2, 3, 4, 6, dan 12 baris. Setiap banyak baris yang pas diberi satu stik.",
+      tanya: "Ketuk semua stik. Ada berapa faktor dari 12?",
+      objek: "stik",
+      jumlah: 6,
+      sukses: "Betul! Enam faktor, dari 1 sampai 12.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "delapan-belas",
+      jenis: "isi",
+      cerita: "Lukas punya 18 petak. Masukkan stik sebanyak faktor dari 18, satu stik untuk tiap banyak baris yang pas.",
+      objek: "stik",
+      target: 6,
+      maks: 8,
+      sukses: "Pas! Faktor 18 ada enam: 1, 2, 3, 6, 9, dan 18.",
+      kurang: "Stiknya masih kurang. Cari pasangan faktor 18 dari 1 sampai bertemu di tengah.",
+      lebih: "Stiknya kelebihan. Hitung lagi pasangan faktor 18 dari 1.",
+    },
+    {
+      id: "periksa",
+      jenis: "soal",
+      cerita: "Lukas memeriksa faktor-faktor di papan tulis.",
+      soal: [
+        { teks: "Faktor 12 yang berpasangan dengan 3 adalah …", jawaban: "4", opsi: ["9", "3", "4"] },
+        { teks: "2 × 9 = …", jawaban: "18", opsi: ["18", "11", "29"] },
+        { teks: "Faktor 24 ada berapa?", jawaban: "8", opsi: ["6", "8", "9"] },
+      ],
+      sukses: "Hebat! Faktor selalu berpasangan, dan hasil kali pasangannya adalah bilangan itu.",
+      salah: "Hmm, cari pasangan faktornya lagi. Coba lagi.",
+    },
+    {
+      id: "lupa",
+      jenis: "pilih",
+      cerita: "Seorang teman menulis faktor 24 adalah 2, 3, 4, 6, 8, dan 12. Faktor apa yang terlewat?",
+      opsi: [
+        { teks: "1 dan 24", benar: true, umpan: "Betul! 1 dan 24 selalu faktor, karena 1 × 24 = 24." },
+        { teks: "5 dan 7", benar: false, umpan: "24 dibagi 5 bersisa 4, dan 24 dibagi 7 bersisa 3. Itu bukan faktor." },
+        { teks: "10 dan 20", benar: false, umpan: "24 dibagi 10 bersisa 4, dan 24 dibagi 20 bersisa 4. Itu bukan faktor." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Faktor sebuah bilangan membagi bilangan itu tanpa sisa. Faktor berpasangan, dan 1 serta bilangan itu sendiri selalu faktor.",
+    },
+  ],
+};
 
 export const SKENARIO_K5B2B: DefSkenario = {
   id: "jadwal-renang-k5b2",
