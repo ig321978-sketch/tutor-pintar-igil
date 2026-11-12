@@ -5,6 +5,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b4.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K5B4A: Pagar dan Bingkai (keliling sebagai jalur tepi, pagar, bingkai, dibedakan dari isi)
  *  - SKENARIO_K5B4B: Bendera Pita Segitiga (jumlah tiga sisi, sama sisi dikali 3, sama kaki tetap dijumlah)
+ *  - SKENARIO_K5B4C: Kebun dan Papan Tulis (dua kali jumlah panjang dan lebar, empat kali sisi, bukan luas)
  */
 
 export const SKENARIO_K5B4A: DefSkenario = {
@@ -149,6 +150,79 @@ export const SKENARIO_K5B4B: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Keliling segitiga adalah jumlah ketiga sisinya. Bila ketiga sisi sama panjang, boleh dikali 3. Pada segitiga sama kaki tetap dijumlahkan, dan sisi yang belum diketahui diukur dulu sebelum dijumlahkan.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B4C: DefSkenario = {
+  id: "kebun-papan-k5b4",
+  judul: "Kebun dan Papan Tulis",
+  latar: "Bantu Komang menghitung keliling kebun dan bingkai papan tulis.",
+  tokoh: "🧒",
+  nama: "Komang",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Komang. Sekolahku punya kebun berbentuk persegi panjang dan papan kecil berbentuk persegi yang akan diberi bingkai. Ayo bantu aku menghitung kelilingnya!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "hitung-keliling",
+      jenis: "soal",
+      cerita: "Komang menghitung keliling bangun di sekolah.",
+      soal: [
+        { teks: "Kebun Komang panjangnya 5 m dan lebarnya 3 m. Keliling kebun adalah … meter.", jawaban: "16", opsi: ["8", "15", "16"] },
+        { teks: "Taman berbentuk persegi, sisinya 3 m. Keliling taman adalah … meter.", jawaban: "12", opsi: ["9", "12", "6"] },
+      ],
+      sukses: "Hebat! Persegi panjang dihitung dengan dua kali jumlah panjang dan lebar, persegi dengan empat kali sisi.",
+      salah: "Hmm, ingat ada dua panjang dan dua lebar, dan panjang dikali lebar adalah luas. Coba lagi.",
+    },
+    {
+      id: "alasan",
+      jenis: "pilih",
+      cerita: "Komang menghitung keliling kebun dengan 2 × (5 + 3). Mengapa jumlah panjang dan lebar dikali 2?",
+      opsi: [
+        { teks: "karena kebun punya dua sudut", benar: false, umpan: "Banyak sudut tidak menentukan cara hitung. Yang menentukan adalah panjang sisinya." },
+        { teks: "karena ada dua panjang dan dua lebar", benar: true, umpan: "Betul! Sisi yang berhadapan sama panjang, jadi jalur tepi punya dua panjang dan dua lebar." },
+        { teks: "karena luas harus dikali 2", benar: false, umpan: "Ini keliling, bukan luas. Dikali 2 karena sisinya berpasangan." },
+      ],
+    },
+    {
+      id: "ruas",
+      jenis: "hitung",
+      cerita: "Pagar kebun lain, 7 m dan 2 m, dipasang dengan ruas sepanjang 1 meter. Tiap ruas diberi satu stik.",
+      tanya: "Ketuk semua stik. Ada berapa ruas pagar yang mengelilingi kebun?",
+      objek: "stik",
+      jumlah: 18,
+      sukses: "Betul! Ada 18 ruas, sama dengan 2 × (7 + 2) = 18 meter.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "bingkai",
+      jenis: "isi",
+      cerita: "Papan persegi itu bersisi 5 dm. Masukkan satu stik untuk tiap desimeter kayu bingkai di seluruh tepi.",
+      objek: "stik",
+      target: 20,
+      maks: 20,
+      sukses: "Pas! 4 × 5 = 20 dm kayu. Itulah keliling bingkai persegi.",
+      kurang: "Stiknya masih sedikit. Persegi punya empat sisi sama panjang, tiap sisi 5 dm.",
+      lebih: "Stiknya kebanyakan. Persegi punya empat sisi sama panjang, tiap sisi 5 dm.",
+    },
+    {
+      id: "luas",
+      jenis: "pilih",
+      cerita: "Komang menghitung keliling kebun 8 m dan 4 m dengan 8 × 4 = 32. Apakah hitungannya benar?",
+      opsi: [
+        { teks: "benar, panjang dikali lebar adalah keliling", benar: false, umpan: "Panjang dikali lebar adalah luas, banyak petak di dalam, bukan jalur di tepi." },
+        { teks: "salah, kelilingnya 12 m karena hanya panjang ditambah lebar", benar: false, umpan: "Panjang ditambah lebar baru setengah jalur. Masih harus dikali 2." },
+        { teks: "salah, itu luas, kelilingnya 24 m", benar: true, umpan: "Betul! 32 adalah luas. Keliling kebun adalah 2 × (8 + 4) = 24 meter." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Keliling persegi panjang adalah dua kali jumlah panjang dan lebar, dan keliling persegi adalah empat kali sisi. Panjang dikali lebar adalah luas, bukan keliling.",
     },
   ],
 };

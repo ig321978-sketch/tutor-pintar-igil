@@ -483,6 +483,247 @@
           }
         ]
       }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Keliling Segi Empat",
+          "ikon": "🔲",
+          "suara": "Ini peta keliling segi empat. Kita belajar persegi panjang, persegi, sisi berhadapan yang sama panjang, dan beda keliling dengan luas. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "pp",
+            "judul": "Persegi panjang",
+            "ikon": "🔲",
+            "ringkas": "Dua kali panjang ditambah lebar.",
+            "suara": "Persegi panjang. Keliling adalah dua kali jumlah panjang dan lebar, sebab ada dua panjang dan dua lebar."
+          },
+          {
+            "id": "persegi",
+            "judul": "Persegi",
+            "ikon": "⬛",
+            "ringkas": "Empat kali panjang sisi.",
+            "suara": "Persegi. Keempat sisinya sama panjang, jadi keliling adalah empat kali panjang sisi."
+          },
+          {
+            "id": "pasang",
+            "judul": "Sisi berhadapan",
+            "ikon": "↔️",
+            "ringkas": "Sisi berhadapan sama panjang.",
+            "suara": "Sisi berhadapan. Pada persegi panjang, dua sisi yang berhadapan sama panjang. Itu sebabnya ada dua panjang dan dua lebar."
+          },
+          {
+            "id": "luas",
+            "judul": "Bukan luas",
+            "ikon": "🟨",
+            "ringkas": "Panjang kali lebar adalah luas.",
+            "suara": "Bukan luas. Panjang dikali lebar menghitung petak di dalam, yaitu luas. Keliling adalah jalur di tepi."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "c-pp-lima",
+            "teks": "2 × (5 + 3) = 16",
+            "ikon": "🔲",
+            "cabang": "pp",
+            "petunjuk": "Dua kali jumlah panjang dan lebar itu soal persegi panjang. Coba cabang lain."
+          },
+          {
+            "id": "c-pp-empat",
+            "teks": "2 × (4 + 2) = 12",
+            "ikon": "🔳",
+            "cabang": "pp",
+            "petunjuk": "Dua kali jumlah panjang dan lebar itu soal persegi panjang. Coba cabang lain."
+          },
+          {
+            "id": "c-persegi-tiga",
+            "teks": "4 × 3 = 12",
+            "ikon": "3️⃣",
+            "cabang": "persegi",
+            "petunjuk": "Empat kali sisi itu soal persegi. Coba cabang lain."
+          },
+          {
+            "id": "c-persegi-lima",
+            "teks": "4 × 5 = 20",
+            "ikon": "5️⃣",
+            "cabang": "persegi",
+            "petunjuk": "Empat kali sisi itu soal persegi. Coba cabang lain."
+          },
+          {
+            "id": "c-pasang",
+            "teks": "Sisi berhadapan sama panjang",
+            "ikon": "↔️",
+            "cabang": "pasang",
+            "petunjuk": "Sisi yang berhadapan itu soal sisi berhadapan. Coba cabang lain."
+          },
+          {
+            "id": "c-empat-sisi",
+            "teks": "5 + 3 + 5 + 3 = 16",
+            "ikon": "🔢",
+            "cabang": "pasang",
+            "petunjuk": "Dua panjang dan dua lebar itu soal sisi berhadapan. Coba cabang lain."
+          },
+          {
+            "id": "c-luas",
+            "teks": "8 × 4 = 32 petak",
+            "ikon": "🟨",
+            "cabang": "luas",
+            "petunjuk": "Petak di dalam itu soal luas. Coba cabang lain."
+          },
+          {
+            "id": "c-bukan",
+            "teks": "Keliling 24, bukan 32",
+            "ikon": "🚫",
+            "cabang": "luas",
+            "petunjuk": "Membedakan keliling dari luas itu soal luas. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Keliling Segi Empat",
+        "suara": "Ini tiga panel tentang keliling segi empat. Ketuk kotaknya untuk membuka, lalu lihat persegi panjang, persegi, dan beda keliling dengan luas.",
+        "panel": [
+          {
+            "id": "c-pp-info",
+            "tipe": "buka",
+            "judul": "Persegi panjang",
+            "ide": "Dua panjang dan dua lebar.",
+            "suara": "Ada tiga langkah menghitung keliling persegi panjang. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "sisi",
+                "label": "Sisi",
+                "ikon": "🔲",
+                "isi": "Dua panjang dan dua lebar.",
+                "suara": "Persegi panjang ini panjangnya lima dan lebarnya tiga. Ada dua panjang dan dua lebar.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Sisi",
+                    "Panjang"
+                  ],
+                  "baris": [
+                    [
+                      "panjang",
+                      5
+                    ],
+                    [
+                      "lebar",
+                      3
+                    ],
+                    [
+                      "panjang",
+                      5
+                    ],
+                    [
+                      "lebar",
+                      3
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "jumlah",
+                "label": "Jumlah",
+                "ikon": "➕",
+                "isi": "Jumlahkan panjang dan lebar.",
+                "suara": "Jumlahkan satu panjang dan satu lebar. Lima ditambah tiga sama dengan delapan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 + 3 = 8"
+                }
+              },
+              {
+                "id": "kali",
+                "label": "Kali dua",
+                "ikon": "✖️",
+                "isi": "Lalu kalikan dua.",
+                "suara": "Kalikan jumlahnya dengan dua. Dua dikali delapan sama dengan enam belas sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 × 8 = 16"
+                }
+              }
+            ]
+          },
+          {
+            "id": "c-banding-info",
+            "tipe": "banding",
+            "judul": "Persegi dan persegi panjang",
+            "ide": "Persegi memakai empat kali sisi.",
+            "suara": "Lihat dua jenis segi empat dan cara menghitung kelilingnya.",
+            "sisi": [
+              {
+                "id": "persegi",
+                "nama": "Persegi",
+                "ikon": "⬛",
+                "catatan": "Keempat sisi sama panjang.",
+                "suara": "Persegi bersisi tiga. Empat dikali tiga sama dengan dua belas sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 × 3 = 12"
+                }
+              },
+              {
+                "id": "pp",
+                "nama": "Persegi panjang",
+                "ikon": "🔲",
+                "catatan": "Dua pasang sisi sama panjang.",
+                "suara": "Persegi panjang lima dan tiga. Dua dikali lima ditambah tiga sama dengan enam belas sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 × (5 + 3) = 16"
+                }
+              }
+            ],
+            "kesimpulan": "Persegi empat kali sisi, persegi panjang dua kali jumlah."
+          },
+          {
+            "id": "c-luas-info",
+            "tipe": "buka",
+            "judul": "Keliling bukan luas",
+            "ide": "Panjang kali lebar adalah luas.",
+            "suara": "Ada tiga hal tentang keliling dan luas. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "luas",
+                "label": "Luas",
+                "ikon": "🟨",
+                "isi": "Panjang kali lebar menghitung petak.",
+                "suara": "Delapan dikali empat sama dengan tiga puluh dua petak. Itu luas, banyak petak di dalam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "8 × 4 = 32"
+                }
+              },
+              {
+                "id": "keliling",
+                "label": "Keliling",
+                "ikon": "📏",
+                "isi": "Keliling menghitung jalur di tepi.",
+                "suara": "Dua dikali delapan ditambah empat sama dengan dua puluh empat sentimeter. Itu keliling.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 × (8 + 4) = 24"
+                }
+              },
+              {
+                "id": "beda",
+                "label": "Beda",
+                "ikon": "⚖️",
+                "isi": "Keliling dan luas berbeda.",
+                "suara": "Keliling dua puluh empat dan luas tiga puluh dua adalah dua hal yang berbeda.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "24 dan 32"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

@@ -5,23 +5,25 @@
  * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
  *  A Jalur : Lab Jalur (Jalan, Pagar, Banding) + Mesin Jalur + Pagar dan Bingkai
  *  B Segitiga : Lab Segitiga (Jumlah, Sama, Ukur) + Mesin Segitiga + Bendera Pita Segitiga
+ *  C Segi Empat : Lab Segi Empat (Persegi Panjang, Persegi, Beda) + Mesin Segi Empat + Kebun dan Papan Tulis
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanJalurK5B4A } from "./lab-jalur-k5b4a";
 import type { KeadaanSegitigaK5B4B } from "./lab-segitiga-k5b4b";
+import type { KeadaanSegiEmpatK5B4C } from "./lab-segiempat-k5b4c";
 
-export type KeadaanK5Bab4 = KeadaanJalurK5B4A | KeadaanSegitigaK5B4B | KeadaanSelesai;
-export type HurufMisiK5B4 = "A" | "B";
+export type KeadaanK5Bab4 = KeadaanJalurK5B4A | KeadaanSegitigaK5B4B | KeadaanSegiEmpatK5B4C | KeadaanSelesai;
+export type HurufMisiK5B4 = "A" | "B" | "C";
 
 const selesai = (k: KeadaanK5Bab4, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
 const pernah = (k: KeadaanK5Bab4, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K5B4 = { A: "pagar-bingkai", B: "bendera-pita" } as const;
-export const ID_MESIN_K5B4 = { A: "mesin-jalur", B: "mesin-segitiga" } as const;
+export const ID_SKENARIO_K5B4 = { A: "pagar-bingkai", B: "bendera-pita", C: "kebun-papan" } as const;
+export const ID_MESIN_K5B4 = { A: "mesin-jalur", B: "mesin-segitiga", C: "mesin-segiempat" } as const;
 
 export const MISI_A: DefMisi<KeadaanK5Bab4>[] = [
   { id: "a-persegi", teks: "Di Jalan, susuri persegi sisi empat sentimeter, sisi demi sisi, lalu kembali ke sudut awal.", wajib: true, cek: (k) => pernah(k, "jalur", "jalan:0") },
@@ -49,5 +51,18 @@ export const MISI_B: DefMisi<KeadaanK5Bab4>[] = [
   { id: "b-besar", teks: "Di Jumlah, ketuk ketiga sisi segitiga enam, delapan, dan sepuluh, lalu pilih kelilingnya.", wajib: false, cek: (k) => pernah(k, "segitiga", "jumlah:3") },
 ];
 
-const DAFTAR: Record<HurufMisiK5B4, DefMisi<KeadaanK5Bab4>[]> = { A: MISI_A, B: MISI_B };
+export const MISI_C: DefMisi<KeadaanK5Bab4>[] = [
+  { id: "c-pp-lima", teks: "Di Persegi Panjang, hitung keliling persegi panjang lima sentimeter dan tiga sentimeter: jumlahkan panjang dan lebar dulu, lalu kalikan dua.", wajib: true, cek: (k) => pernah(k, "segiempat", "pp:0") },
+  { id: "c-pp-empat", teks: "Di Persegi Panjang, hitung keliling persegi panjang empat sentimeter dan dua sentimeter: jumlahkan panjang dan lebar dulu, lalu kalikan dua.", wajib: true, cek: (k) => pernah(k, "segiempat", "pp:1") },
+  { id: "c-persegi-tiga", teks: "Di Persegi, hitung keliling persegi yang sisinya tiga sentimeter dengan empat dikali sisi.", wajib: true, cek: (k) => pernah(k, "segiempat", "persegi:0") },
+  { id: "c-persegi-lima", teks: "Di Persegi, hitung keliling persegi yang sisinya lima sentimeter dengan empat dikali sisi.", wajib: true, cek: (k) => pernah(k, "segiempat", "persegi:1") },
+  { id: "c-beda", teks: "Di Beda, pada persegi panjang delapan dan empat, hitung keliling dan luasnya. Panjang dikali lebar bukan keliling.", wajib: true, cek: (k) => pernah(k, "segiempat", "beda:0") },
+  { id: "c-mesin", teks: "Selesaikan Mesin Segi Empat sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K5B4.C) },
+  { id: "c-skenario", teks: "Selesaikan skenario Kebun dan Papan Tulis sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K5B4.C) },
+  { id: "c-pp-tujuh", teks: "Di Persegi Panjang, hitung keliling persegi panjang tujuh sentimeter dan dua sentimeter.", wajib: false, cek: (k) => pernah(k, "segiempat", "pp:2") },
+  { id: "c-persegi-enam", teks: "Di Persegi, hitung keliling persegi yang sisinya enam sentimeter.", wajib: false, cek: (k) => pernah(k, "segiempat", "persegi:2") },
+  { id: "c-kecil", teks: "Di Beda, hitung keliling dan luas persegi yang sisinya dua sentimeter. Apakah hasilnya sama?", wajib: false, cek: (k) => pernah(k, "segiempat", "beda:1") },
+];
+
+const DAFTAR: Record<HurufMisiK5B4, DefMisi<KeadaanK5Bab4>[]> = { A: MISI_A, B: MISI_B, C: MISI_C };
 export const daftarMisiK5Bab4 = (huruf: string): DefMisi<KeadaanK5Bab4>[] => DAFTAR[huruf as HurufMisiK5B4] ?? MISI_A;

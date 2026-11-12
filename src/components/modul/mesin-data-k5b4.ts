@@ -9,6 +9,10 @@
  *  - MESIN_SEGITIGA (B): Jumlah → Sama → Kaki → Ukur   (kasus Segitiga buku, enam, tujuh)
  *    Jumlah/Kaki/Ukur: keliling sebagai jumlah tiga sisi (pengecoh: tiga kali sisi pertama, jumlah dua sisi saja).
  *    Sama : keliling 3 × sisi (pengecoh: dua kali sisi, sisi kali sisi).
+ *  - MESIN_SEGIEMPAT (C): Persegi panjang → Persegi → Rumus → Beda   (kasus Segi empat buku, Kebun dan papan, Lapangan kecil)
+ *    Persegi panjang: 2 × (panjang + lebar) (pengecoh: belum dikali 2, panjang dikali lebar).
+ *    Persegi: 4 × sisi (pengecoh: sisi kali sisi, dua kali sisi).
+ *    Rumus: ungkapan yang benar (pengecoh: panjang kali lebar, kurung hilang).  Beda: keliling dan luas (pengecoh: tertukar, luas disamakan dengan keliling).
  * Data dari Buku Siswa Kelas V Bab 4 Sub-Bab A dan B (pagar, bingkai foto, Benteng Baluwarti, segitiga 5, 4, 7).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b4.mjs.
  */
@@ -201,4 +205,88 @@ export const MESIN_SEGITIGA: DefMesin = {
   kasus: KASUS_SEGITIGA.map(kasusMesinSegitiga),
 };
 
-export const SEMUA_MESIN_K5B4 = [MESIN_JALUR, MESIN_SEGITIGA];
+/* ------------------------------ C: Mesin Segi Empat ------------------------------ */
+
+/** pp: persegi panjang untuk keliling. s: sisi persegi. rumus: persegi panjang untuk memilih ungkapan. beda: persegi panjang untuk keliling dan luas. */
+export type KasusSegiEmpat = {
+  id: string;
+  nama: string;
+  pp: { p: number; l: number };
+  s: number;
+  rumus: { p: number; l: number };
+  beda: { p: number; l: number };
+};
+export const KASUS_SEGIEMPAT: KasusSegiEmpat[] = [
+  { id: "buku", nama: "Segi empat buku", pp: { p: 5, l: 3 }, s: 3, rumus: { p: 5, l: 3 }, beda: { p: 8, l: 4 } },
+  { id: "kebun", nama: "Kebun dan papan", pp: { p: 4, l: 2 }, s: 5, rumus: { p: 4, l: 2 }, beda: { p: 6, l: 2 } },
+  { id: "lapangan", nama: "Lapangan kecil", pp: { p: 7, l: 2 }, s: 6, rumus: { p: 8, l: 4 }, beda: { p: 9, l: 3 } },
+];
+
+export const STASIUN_SEGIEMPAT: StasiunDef[] = [
+  { id: "pp", nama: "Persegi panjang", ikon: "🔲" },
+  { id: "persegi", nama: "Persegi", ikon: "⬛" },
+  { id: "rumus", nama: "Rumus", ikon: "🧮" },
+  { id: "beda", nama: "Beda", ikon: "⚖️" },
+];
+
+/** Keliling persegi panjang dengan berjalan di tepi: panjang, lebar, panjang, lebar. */
+export function kelilingSegiEmpat(p: number, l: number): number {
+  let k = 0;
+  for (const s of [p, l, p, l]) k += s;
+  return k;
+}
+
+export function kasusMesinSegiEmpat(c: KasusSegiEmpat, idx: number): KasusMesin {
+  const kPP = kelilingSegiEmpat(c.pp.p, c.pp.l);
+  const kS = kelilingSegiEmpat(c.s, c.s);
+  const benarRumus = `2 × (${c.rumus.p} + ${c.rumus.l})`;
+  const kB = kelilingSegiEmpat(c.beda.p, c.beda.l);
+  const lB = c.beda.p * c.beda.l;
+  const benarBeda = `keliling ${kB} cm, luas ${lB} petak`;
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "pp",
+      tanya: `Persegi panjang berukuran ${c.pp.p} cm dan ${c.pp.l} cm. Jumlahkan panjang dan lebar, lalu kalikan 2. Kelilingnya …`,
+      opsi: susunOpsi(`${kPP} cm`, pengecoh(kPP, [c.pp.p + c.pp.l, c.pp.p * c.pp.l]).map((n) => `${n} cm`), idx),
+      benar: `${kPP} cm`,
+      petunjuk: `Ada dua panjang dan dua lebar: 2 × (${c.pp.p} + ${c.pp.l}). Jangan lupa dikali 2, dan panjang dikali lebar adalah luas.`,
+    },
+    {
+      stasiun: "persegi",
+      tanya: `Persegi bersisi ${c.s} cm. Keliling dengan 4 × ${c.s} adalah …`,
+      opsi: susunOpsi(`${kS} cm`, pengecoh(kS, [c.s * c.s, 2 * c.s]).map((n) => `${n} cm`), idx + 1),
+      benar: `${kS} cm`,
+      petunjuk: `Keempat sisi persegi sama panjang: ${c.s} + ${c.s} + ${c.s} + ${c.s} sama dengan 4 × ${c.s}. Sisi dikali sisi adalah luas.`,
+    },
+    {
+      stasiun: "rumus",
+      tanya: `Persegi panjang ${c.rumus.p} cm dan ${c.rumus.l} cm. Ungkapan yang menghitung kelilingnya adalah …`,
+      opsi: susunOpsi(benarRumus, [`${c.rumus.p} × ${c.rumus.l}`, `2 × ${c.rumus.p} + ${c.rumus.l}`], idx + 2),
+      benar: benarRumus,
+      petunjuk: "Keliling memakai dua panjang dan dua lebar: jumlahkan panjang dan lebar dulu di dalam kurung, lalu kalikan 2.",
+    },
+    {
+      stasiun: "beda",
+      tanya: `Persegi panjang ${c.beda.p} cm dan ${c.beda.l} cm. Pernyataan yang benar adalah …`,
+      opsi: susunOpsi(benarBeda, [`keliling ${lB} cm, luas ${kB} petak`, `keliling ${kB} cm, luas ${kB} petak`], idx + 3),
+      benar: benarBeda,
+      petunjuk: "Keliling adalah jalur di tepi: 2 kali jumlah panjang dan lebar. Luas adalah panjang dikali lebar, banyak petak di dalam.",
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `Persegi panjang ${c.pp.p} dan ${c.pp.l} berkeliling ${kPP} cm. Persegi sisi ${c.s} berkeliling ${kS} cm. Ungkapan ${benarRumus} menghitung keliling. Persegi panjang ${c.beda.p} dan ${c.beda.l}: keliling ${kB} cm, luas ${lB} petak.`,
+    langkah,
+  };
+}
+
+export const MESIN_SEGIEMPAT: DefMesin = {
+  id: "mesin-segiempat-k5b4",
+  judul: "Mesin Segi Empat",
+  selesaiId: "mesin-segiempat",
+  stasiun: STASIUN_SEGIEMPAT,
+  kasus: KASUS_SEGIEMPAT.map(kasusMesinSegiEmpat),
+};
+
+export const SEMUA_MESIN_K5B4 = [MESIN_JALUR, MESIN_SEGITIGA, MESIN_SEGIEMPAT];
