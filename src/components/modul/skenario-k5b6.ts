@@ -5,6 +5,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b6.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K5B6A: Bingkai Pak Tukang (sudut siku-siku, patokan lipatan, membandingkan pojok dengan patokan)
  *  - SKENARIO_K5B6B: Yohana dan Kotak Pensil (titik sudut, kaki sudut, lancip, siku-siku, tumpul, sudut jarum jam)
+ *  - SKENARIO_K5B6C: Kipas Tari Pakarena (satuan derajat, memasang dan membaca busur, sudut nol, lurus, penuh, releks)
  */
 
 export const SKENARIO_K5B6A: DefSkenario = {
@@ -149,6 +150,90 @@ export const SKENARIO_K5B6B: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Sudut punya satu titik sudut dan dua kaki sudut. Sudut yang lebih sempit dari siku-siku disebut lancip, yang tepat siku-siku besarnya 90°, dan yang lebih lebar disebut tumpul.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B6C: DefSkenario = {
+  id: "pakarena-k5b6",
+  judul: "Kipas Tari Pakarena",
+  latar: "Bantu Sitti mengukur sudut kipas dengan busur derajat.",
+  tokoh: "💃",
+  nama: "Sitti",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Sitti, penari Pakarena dari Sulawesi Selatan. Kipas lipatku bisa dibuka sempit atau lebar. Ayo kita ukur sudut kipas dengan busur derajat!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "satuan",
+      jenis: "pilih",
+      cerita: "Sitti bertanya, satuan apa yang dipakai untuk mengukur besar sudut?",
+      opsi: [
+        { teks: "derajat, ditulis dengan tanda °", benar: true, umpan: "Betul! Besar sudut diukur dalam derajat, ditulis dengan tanda °." },
+        { teks: "sentimeter, ditulis cm", benar: false, umpan: "Sentimeter dipakai untuk panjang. Besar sudut diukur dalam derajat." },
+        { teks: "liter, ditulis L", benar: false, umpan: "Liter dipakai untuk isi. Besar sudut diukur dalam derajat." },
+      ],
+    },
+    {
+      id: "busur",
+      jenis: "soal",
+      cerita: "Sitti memasang busur derajat pada sudut kipasnya. Ia mengikuti urutan pemasangan dengan teliti.",
+      soal: [
+        { teks: "Pusat busur diletakkan tepat pada … sudut.", jawaban: "titik", opsi: ["kaki", "titik", "daerah"] },
+        { teks: "Garis dasar busur berimpit dengan salah satu … sudut.", jawaban: "kaki", opsi: ["titik", "kaki", "daerah"] },
+      ],
+      sukses: "Hebat! Pusat busur di titik sudut, dan garis dasarnya berimpit dengan kaki pertama.",
+      salah: "Hmm, ingat urutan memasang busur: pusat di titik sudut, dasar berimpit kaki. Coba lagi.",
+    },
+    {
+      id: "baca",
+      jenis: "soal",
+      cerita: "Kaki pertama berimpit pada angka nol. Sitti membaca angka yang ditunjuk kaki kedua pada skala yang mulai dari nol.",
+      soal: [
+        { teks: "Kaki kedua kipas menunjuk 125. Ukuran sudut kipas adalah … derajat.", jawaban: "125", opsi: ["55", "125", "180"] },
+        { teks: "Pada jam pukul tiga, sudut antara kedua jarum adalah … derajat.", jawaban: "90", opsi: ["30", "90", "180"] },
+      ],
+      sukses: "Betul! Ukuran sudut dibaca dari nol di kaki pertama, dan pukul tiga tepat siku-siku, 90°.",
+      salah: "Hmm, baca angka dari nol di kaki pertama. Coba lagi.",
+    },
+    {
+      id: "patokan",
+      jenis: "hitung",
+      cerita: "Sitti menandai sudut patokan dengan stik: 0°, 90°, 180°, dan 360°. Tiap patokan satu stik.",
+      tanya: "Ketuk semua stik. Ada berapa sudut patokan yang Sitti tandai?",
+      objek: "stik",
+      jumlah: 4,
+      sukses: "Betul! Ada 4 sudut patokan: nol, siku-siku, lurus, dan penuh.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "penuh",
+      jenis: "isi",
+      cerita: "Sudut penuh 360° terbentuk dari sudut lurus 180°. Masukkan satu stik untuk tiap sudut lurus yang membentuk satu sudut penuh.",
+      objek: "stik",
+      target: 2,
+      maks: 5,
+      sukses: "Pas! 180° ditambah 180° sama dengan 360°, jadi 2 sudut lurus membentuk satu sudut penuh.",
+      kurang: "Stiknya masih sedikit. Hitung berapa 180° yang dibutuhkan sampai 360°.",
+      lebih: "Stiknya kebanyakan. 180° ditambah 180° sudah 360°.",
+    },
+    {
+      id: "releks",
+      jenis: "pilih",
+      cerita: "Sitti membuka kipas sangat lebar sampai sudutnya 270°. Sudut itu lebih dari 180° dan kurang dari 360°. Sudut itu disebut …",
+      opsi: [
+        { teks: "sudut tumpul", benar: false, umpan: "Tumpul itu kurang dari 180°. Sudut 270° lebih dari 180°, jadi releks." },
+        { teks: "sudut lurus", benar: false, umpan: "Sudut lurus tepat 180°. Sudut 270° lebih besar, jadi releks." },
+        { teks: "sudut releks, bukan tumpul", benar: true, umpan: "Betul! Lebih dari 180° dan kurang dari 360° adalah sudut releks. Tumpul masih kurang dari 180°." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Sudut diukur dengan busur derajat dalam satuan derajat. Pasang pusat busur di titik sudut, dasar berimpit dengan kaki pertama, lalu baca angka kaki kedua dari nol. Ingat patokan 0°, 90°, 180°, dan 360°, dan sudut releks di antara 180° dan 360°.",
     },
   ],
 };

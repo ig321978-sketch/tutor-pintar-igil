@@ -273,6 +273,148 @@
           }
         ]
       }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Derajat",
+          "ikon": "📐",
+          "suara": "Ini peta mengukur sudut. Kita belajar satuan derajat, memasang busur, membaca skala, dan sudut patokan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "satuan",
+            "judul": "Satuan derajat",
+            "ikon": "°",
+            "ringkas": "Besar sudut diukur dalam derajat.",
+            "suara": "Satuan derajat. Seperti panjang punya meter, sudut punya derajat. Derajat ditulis dengan tanda derajat. Kipas yang dibuka lebih lebar membentuk sudut yang lebih besar."
+          },
+          {
+            "id": "busur",
+            "judul": "Pasang busur",
+            "ikon": "📐",
+            "ringkas": "Pusat di titik, dasar di kaki.",
+            "suara": "Pasang busur. Letakkan pusat busur tepat di titik sudut. Lalu putar sampai garis dasar busur berimpit dengan salah satu kaki sudut."
+          },
+          {
+            "id": "baca",
+            "judul": "Baca skala",
+            "ikon": "🔢",
+            "ringkas": "Baca dari nol di kaki pertama.",
+            "suara": "Baca skala. Pilih skala yang mulai dari nol di kaki pertama. Lalu baca angka yang ditunjuk kaki kedua. Angka itulah ukuran sudut."
+          },
+          {
+            "id": "patokan",
+            "judul": "Sudut patokan",
+            "ikon": "⭐",
+            "ringkas": "Nol, siku, lurus, penuh, releks.",
+            "suara": "Sudut patokan. Ada sudut nol, siku-siku, lurus, dan penuh sebagai patokan. Sudut yang lebih besar dari lurus dan lebih kecil dari penuh disebut releks."
+          }
+        ],
+        "kartu": [
+          { "id": "c-derajat", "teks": "Satuan sudut: derajat (°)", "ikon": "°", "cabang": "satuan", "petunjuk": "Satuan sudut itu soal satuan derajat. Coba cabang lain." },
+          { "id": "c-kipas", "teks": "Kipas lebih lebar, sudut lebih besar", "ikon": "🪭", "cabang": "satuan", "petunjuk": "Membandingkan lebar kipas itu soal satuan derajat. Coba cabang lain." },
+          { "id": "c-pusat", "teks": "Pusat busur di titik sudut", "ikon": "•", "cabang": "busur", "petunjuk": "Letak pusat busur itu soal pasang busur. Coba cabang lain." },
+          { "id": "c-dasar", "teks": "Garis dasar berimpit kaki pertama", "ikon": "／", "cabang": "busur", "petunjuk": "Garis dasar busur itu soal pasang busur. Coba cabang lain." },
+          { "id": "c-nol", "teks": "Baca dari nol di kaki pertama", "ikon": "0️⃣", "cabang": "baca", "petunjuk": "Membaca dari nol itu soal baca skala. Coba cabang lain." },
+          { "id": "c-125", "teks": "Kipas Pakarena: 125°", "ikon": "🔢", "cabang": "baca", "petunjuk": "Angka yang ditunjuk kaki kedua itu soal baca skala. Coba cabang lain." },
+          { "id": "c-lurus", "teks": "Sudut lurus = 180°", "ikon": "➖", "cabang": "patokan", "petunjuk": "Ukuran sudut lurus itu soal sudut patokan. Coba cabang lain." },
+          { "id": "c-penuh", "teks": "Sudut penuh = 360°", "ikon": "⭕", "cabang": "patokan", "petunjuk": "Ukuran sudut penuh itu soal sudut patokan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengukur Sudut",
+        "suara": "Ini tiga panel tentang mengukur sudut. Ketuk kotaknya untuk membuka, lalu lihat memasang busur, tumpul dan releks, serta sudut patokan.",
+        "panel": [
+          {
+            "id": "c-busur-info",
+            "tipe": "buka",
+            "judul": "Memasang busur",
+            "ide": "Pusat di titik, dasar di kaki.",
+            "suara": "Ada tiga langkah memakai busur derajat. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "pusat",
+                "label": "Pusat",
+                "ikon": "•",
+                "isi": "Pusat busur di titik sudut.",
+                "suara": "Letakkan pusat busur tepat di titik sudut.",
+                "visual": { "jenis": "teks", "isi": "pusat = titik sudut" }
+              },
+              {
+                "id": "dasar",
+                "label": "Dasar",
+                "ikon": "／",
+                "isi": "Dasar berimpit kaki pertama.",
+                "suara": "Putar busur sampai garis dasarnya berimpit dengan kaki pertama. Kaki pertama menunjuk nol.",
+                "visual": { "jenis": "teks", "isi": "kaki 1 = 0°" }
+              },
+              {
+                "id": "baca",
+                "label": "Baca",
+                "ikon": "👁️",
+                "isi": "Baca angka kaki kedua.",
+                "suara": "Baca angka yang ditunjuk kaki kedua. Contoh di buku, kipas Pakarena seratus dua puluh lima derajat.",
+                "visual": { "jenis": "teks", "isi": "kaki 2 = 125°" }
+              }
+            ]
+          },
+          {
+            "id": "c-releks-info",
+            "tipe": "banding",
+            "judul": "Tumpul dan releks",
+            "ide": "Beda batas, jangan tertukar.",
+            "suara": "Lihat dua jenis sudut yang lebih besar dari siku-siku.",
+            "sisi": [
+              { "id": "tumpul", "nama": "Tumpul", "ikon": "∠", "catatan": "Kurang dari lurus.", "suara": "Sudut tumpul lebih besar dari siku-siku dan masih kurang dari sudut lurus.", "visual": { "jenis": "teks", "isi": "90° sampai 180°" } },
+              { "id": "releks", "nama": "Releks", "ikon": "⭕", "catatan": "Lebih dari lurus.", "suara": "Sudut releks lebih besar dari sudut lurus dan kurang dari sudut penuh.", "visual": { "jenis": "teks", "isi": "180° sampai 360°" } }
+            ],
+            "kesimpulan": "Releks bukan tumpul."
+          },
+          {
+            "id": "c-patokan-info",
+            "tipe": "buka",
+            "judul": "Sudut patokan",
+            "ide": "Nol, siku, lurus, penuh.",
+            "suara": "Ada empat sudut patokan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "nol",
+                "label": "Nol",
+                "ikon": "0️⃣",
+                "isi": "Kedua kaki berimpit.",
+                "suara": "Sudut nol punya ukuran nol derajat. Kedua kakinya berimpit.",
+                "visual": { "jenis": "teks", "isi": "0°" }
+              },
+              {
+                "id": "siku",
+                "label": "Siku-siku",
+                "ikon": "∟",
+                "isi": "Setengah dari sudut lurus.",
+                "suara": "Sudut siku-siku sembilan puluh derajat, setengah dari sudut lurus.",
+                "visual": { "jenis": "teks", "isi": "90°" }
+              },
+              {
+                "id": "lurus",
+                "label": "Lurus",
+                "ikon": "➖",
+                "isi": "Kaki membentuk garis lurus.",
+                "suara": "Sudut lurus seratus delapan puluh derajat. Kedua kakinya membentuk garis lurus.",
+                "visual": { "jenis": "teks", "isi": "180°" }
+              },
+              {
+                "id": "penuh",
+                "label": "Penuh",
+                "ikon": "⭕",
+                "isi": "Satu putaran penuh.",
+                "suara": "Sudut penuh tiga ratus enam puluh derajat. Kaki kedua berputar satu putaran penuh.",
+                "visual": { "jenis": "teks", "isi": "360°" }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

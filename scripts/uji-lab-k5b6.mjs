@@ -1,5 +1,5 @@
-// Uji Simulasi Kelas 5 Bab 6 (Sudut): Lab Pojok (Sub-Bab A), Lab Sudut (Sub-Bab B), mesin, skenario, misi, gerbang, data
-// ringkas, pengeja, dan konsep sub-bab berikutnya tidak bocor ke Sub-Bab A dan B.
+// Uji Simulasi Kelas 5 Bab 6 (Sudut): Lab Pojok (Sub-Bab A), Lab Sudut (Sub-Bab B), Lab Busur (Sub-Bab C), mesin, skenario,
+// misi, gerbang, data ringkas, pengeja, dan konsep sub-bab berikutnya tidak bocor ke Sub-Bab A, B, dan C.
 // Jalankan: node --no-warnings scripts/uji-lab-k5b6.mjs
 import { readFileSync } from "node:fs";
 import * as M0 from "../src/components/modul/misi-simulasi.ts";
@@ -7,6 +7,7 @@ import * as K6 from "../src/components/modul/misi-k5bab6.ts";
 import * as TK from "../src/components/modul/misi-teks-k5b6.ts";
 import * as A from "../src/components/modul/lab-pojok-k5b6a.ts";
 import * as B from "../src/components/modul/lab-sudut-k5b6b.ts";
+import * as C from "../src/components/modul/lab-busur-k5b6c.ts";
 import * as MS from "../src/components/modul/mesin-data-k5b6.ts";
 import * as SK from "../src/components/modul/skenario-k5b6.ts";
 import * as ME from "../src/components/modul/mesin-bertahap-k3b1.ts";
@@ -266,10 +267,10 @@ const ID = /^(lipat:[01]|banding:[0-5]|detektif:[0-5])$/;
         cek(l.stasiun === def.stasiun[i].id, `${def.id}/${kasus.id}: langkah ${i + 1} di stasiun ${def.stasiun[i].id}`);
         cek(l.opsi.length === 3 && new Set(l.opsi).size === 3 && l.opsi.filter((o) => o === l.benar).length === 1, `${def.id}/${kasus.id}/${l.stasiun}: tiga pilihan unik, satu kunci`);
         cek([l.tanya, l.petunjuk, ...l.opsi].every(tanpaAngka), `${def.id}/${kasus.id}/${l.stasiun}: dapat dieja`);
-        cek([l.tanya, l.petunjuk, ...l.opsi].every(tanpaUkuran), `${def.id}/${kasus.id}/${l.stasiun}: tanpa ukuran pojok`);
+        cek(def.id === "mesin-busur-k5b6" || [l.tanya, l.petunjuk, ...l.opsi].every(tanpaUkuran), `${def.id}/${kasus.id}/${l.stasiun}: tanpa ukuran pojok`);
         posisi.push(l.opsi.indexOf(l.benar));
       });
-      cek(tanpaAngka(kasus.nama) && tanpaAngka(kasus.ringkas) && tanpaUkuran(kasus.ringkas), `${def.id}/${kasus.id}: nama dan ringkas dapat dieja, tanpa ukuran`);
+      cek(tanpaAngka(kasus.nama) && tanpaAngka(kasus.ringkas) && (def.id === "mesin-busur-k5b6" || tanpaUkuran(kasus.ringkas)), `${def.id}/${kasus.id}: nama dan ringkas dapat dieja, tanpa ukuran`);
     }
     cek(new Set(posisi).size === 3, `${def.id}: letak kunci bervariasi`);
     let x = ME.awalMesin(def);
@@ -279,7 +280,7 @@ const ID = /^(lipat:[01]|banding:[0-5]|detektif:[0-5])$/;
       const l = ME.langkahAktif(x);
       x = l ? ME.langkahMesin(x, { t: "JAWAB", nilai: l.benar }) : ME.langkahMesin(x, { t: "LANJUT" });
     }
-    cek(x.selesai && def.selesaiId === (def.id === "mesin-pojok-k5b6" ? K6.ID_MESIN_K5B6.A : K6.ID_MESIN_K5B6.B), `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
+    cek(x.selesai && def.selesaiId === { "mesin-pojok-k5b6": K6.ID_MESIN_K5B6.A, "mesin-sudut-k5b6": K6.ID_MESIN_K5B6.B, "mesin-busur-k5b6": K6.ID_MESIN_K5B6.C }[def.id], `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
   }
   const angka = (o) => Number(o.split(" ")[0]);
   const urut = ["pertama", "kedua", "ketiga", "keempat"];
@@ -352,16 +353,16 @@ const ID = /^(lipat:[01]|banding:[0-5]|detektif:[0-5])$/;
 
 /* ------------------------------ Misi ------------------------------ */
 {
-  const huruf = ["A", "B"];
-  sama(Object.keys(TK.MISI_K5B6), huruf, "teks misi untuk A dan B");
-  sama(Object.keys(TK.NAMA_SIM_K5B6), huruf, "nama simulasi untuk A dan B");
-  cek(TK.hurufK5B6("Z") === "A" && TK.hurufK5B6("A") === "A" && TK.hurufK5B6("B") === "B", "huruf tak dikenal jatuh ke A, B dikenal");
-  cek(TK.misiAwalK5Bab6("A").startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK5Bab6("A")) && tanpaAngka(TK.misiAwalK5Bab6("B")), "misi awal dan dapat dieja");
+  const huruf = ["A", "B", "C"];
+  sama(Object.keys(TK.MISI_K5B6), huruf, "teks misi untuk A, B, dan C");
+  sama(Object.keys(TK.NAMA_SIM_K5B6), huruf, "nama simulasi untuk A, B, dan C");
+  cek(TK.hurufK5B6("Z") === "A" && TK.hurufK5B6("A") === "A" && TK.hurufK5B6("B") === "B" && TK.hurufK5B6("C") === "C", "huruf tak dikenal jatuh ke A, B dan C dikenal");
+  cek(TK.misiAwalK5Bab6("A").startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK5Bab6("A")) && tanpaAngka(TK.misiAwalK5Bab6("B")) && tanpaAngka(TK.misiAwalK5Bab6("C")), "misi awal dan dapat dieja");
   for (const h of huruf) {
     const daftar = K6.daftarMisiK5Bab6(h);
     cek(daftar.filter((m) => m.wajib).length === 7 && daftar.filter((m) => !m.wajib).length === 3, `${h}: tujuh misi wajib dan tiga tantangan bebas`);
     cek(new Set(daftar.map((m) => m.id)).size === 10 && daftar.every((m) => m.id.startsWith(`${h.toLowerCase()}-`)), `${h}: id misi unik berawalan huruf`);
-    const kosong = [{ alat: "pojok", pernah: [] }, { alat: "sudut", pernah: [] }, sel("tidak-ada"), A.keadaanPojokK5B6A(A.awalPojokK5B6A()), B.keadaanSudutK5B6B(B.awalSudutK5B6B())];
+    const kosong = [{ alat: "pojok", pernah: [] }, { alat: "sudut", pernah: [] }, { alat: "busur", pernah: [] }, sel("tidak-ada"), A.keadaanPojokK5B6A(A.awalPojokK5B6A()), B.keadaanSudutK5B6B(B.awalSudutK5B6B()), C.keadaanBusurK5B6C(C.awalBusurK5B6C())];
     cek(kosong.every((k) => M0.misiBaru(daftar, k, new Set()).length === 0), `${h}: keadaan awal alat tidak memenuhi misi mana pun`);
     cek(daftar.every((m) => m.teks.length > 20 && tanpaAngka(m.teks)), `${h}: teks misi jelas dan dapat dieja`);
     const baru = (k) => M0.misiBaru(daftar, k, new Set());
@@ -446,18 +447,18 @@ const ID = /^(lipat:[01]|banding:[0-5]|detektif:[0-5])$/;
   for (const u of [A.ucapLipatK5B6A(x0), A.ucapBandingK5B6A(x0), A.ucapDetektifK5B6A(x0)]) catat(u, "ucapan lab");
 
   // Kunci tidak bocor ke klien, tanpa jaringan.
-  for (const f of ["SimulasiLabPojokK5B6", "SimulasiLabSudutK5B6", "SimulasiK5Bab6", "model-pojok-k5b6", "model-sudut-k5b6"]) {
+  for (const f of ["SimulasiLabPojokK5B6", "SimulasiLabSudutK5B6", "SimulasiLabBusurK5B6", "SimulasiK5Bab6", "model-pojok-k5b6", "model-sudut-k5b6", "model-busur-k5b6"]) {
     const s = baca(f, "tsx");
     cek(!/correct_index|explanation/.test(s), `${f}: tidak memuat correct_index atau explanation`);
     cek(!/fetch\(|XMLHttpRequest|api\/|openai|anthropic|gemini/i.test(s), `${f}: tanpa jaringan atau model bahasa`);
   }
-  for (const f of ["lab-pojok-k5b6a", "lab-sudut-k5b6b", "mesin-data-k5b6", "skenario-k5b6", "misi-k5bab6", "misi-teks-k5b6", "eja-k5b6"]) {
+  for (const f of ["lab-pojok-k5b6a", "lab-sudut-k5b6b", "lab-busur-k5b6c", "mesin-data-k5b6", "skenario-k5b6", "misi-k5bab6", "misi-teks-k5b6", "eja-k5b6"]) {
     const s = baca(f, "ts");
     cek(!/fetch\(|XMLHttpRequest|from "react"|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: murni`);
     const impor = s.match(/^import .+$/gm) ?? [];
     cek(impor.every((l) => l.startsWith("import type")), `${f}: hanya mengimpor tipe`);
   }
-  cek((baca("lab-pojok-k5b6a", "ts").match(/^import /gm) ?? []).length === 0 && (baca("lab-sudut-k5b6b", "ts").match(/^import /gm) ?? []).length === 0 && (baca("eja-k5b6", "ts").match(/^import /gm) ?? []).length === 0, "lab dan pengeja tanpa impor");
+  cek((baca("lab-pojok-k5b6a", "ts").match(/^import /gm) ?? []).length === 0 && (baca("lab-sudut-k5b6b", "ts").match(/^import /gm) ?? []).length === 0 && (baca("lab-busur-k5b6c", "ts").match(/^import /gm) ?? []).length === 0 && (baca("eja-k5b6", "ts").match(/^import /gm) ?? []).length === 0, "lab dan pengeja tanpa impor");
   {
     const s = baca("SimulasiLabPojokK5B6", "tsx");
     cek(/useEffect\(\(\) => \{\s*onKeadaan\?\.\(keadaan\w+\(x\)\);\s*\}, \[onKeadaan, x\]\);/.test(s), "lab: lapor keadaan lewat useEffect");
@@ -528,7 +529,7 @@ const ID = /^(lipat:[01]|banding:[0-5]|detektif:[0-5])$/;
   cek(butir(p3, "alat").visual.isi === `∟ = ${A.SIKU}°`, "ringkas A: penggaris siku sama dengan 90°");
   const kartu = (id) => A0.peta.kartu.find((k) => k.id === id).teks;
   cek(kartu("a-sembilan") === `Sudut siku-siku = ${A.SIKU}°`, "ringkas A: kartu siku-siku sama dengan 90°");
-  sama(Object.keys(ringkas.subBab), ["A", "B"], "ringkas: gelombang ini sub-bab A dan B");
+  sama(Object.keys(ringkas.subBab), ["A", "B", "C"], "ringkas: gelombang ini sub-bab A, B, dan C");
 }
 
 /* ============================== Sub-Bab B: Lab Sudut ============================== */
@@ -835,6 +836,354 @@ const SEBUT = { titik: "titik sudut", kaki: "kaki sudut", daerah: "daerah sudut"
   const kartu = (id) => B0.peta.kartu.find((k) => k.id === id).teks;
   cek(kartu("b-dua") === "Jam pukul 2: sudut lancip" && kartu("b-tiga") === "Jam pukul 3: sudut siku-siku", "ringkas B: kartu jam");
   cek(B0.peta.cabang.map((c) => c.id).join() === "bagian,daerah,jenis,jam", "ringkas B: empat cabang");
+}
+
+/* ============================== Sub-Bab C: Lab Busur ============================== */
+// Nama sudut ditimbang dengan kuadran: tanda sin dan cos pada lingkaran satuan (bukan dengan pembandingan ukuran seperti di kode).
+const klasifikasi = (deg) => {
+  if (deg === 0) return "nol";
+  if (deg === 360) return "penuh";
+  const r = (deg * Math.PI) / 180;
+  const sn = Math.round(Math.sin(r) * 1e9) / 1e9;
+  const cs = Math.round(Math.cos(r) * 1e9) / 1e9;
+  if (sn < 0) return "releks";
+  if (sn === 0) return "lurus";
+  return cs > 0 ? "lancip" : cs === 0 ? "siku" : "tumpul";
+};
+// Bacaan skala dari geometri: sinar pada sudut phi dari sumbu kanan (0 sampai 180). Skala dalam nol di kanan (bacaan = phi),
+// skala luar nol di kiri (bacaan = 180 dikurangi phi).
+const bacaanSkala = (sisi, deg) => {
+  const phi = sisi === "kanan" ? deg : 180 - deg;
+  return { dalam: phi, luar: 180 - phi };
+};
+const LC = C.langkahBusurK5B6C;
+const xc0 = C.awalBusurK5B6C();
+const IDC = /^(pasang:[0-2]|baca:[0-2]|patokan:[0-6])$/;
+const NAMA_C = ["nol", "lancip", "siku", "tumpul", "lurus", "releks", "penuh"];
+{
+  cek(xc0.pernah.length === 0 && xc0.pesan === "" && xc0.pasang.data === 0 && xc0.pasang.geser === 2 && xc0.pasang.putar === 15 && xc0.baca.skala === null && xc0.baca.data === 0 && xc0.patokan.data === 0, "C awal: kosong, belum ada riwayat");
+  cek(C.DATA_PASANG.length === 3 && C.DATA_BACA.length === 3 && C.DATA_PATOKAN.length === 7, "C: tiga sudut Pasang, tiga sudut Baca, tujuh ukuran Patokan");
+  sama(C.DATA_PASANG.map((d) => [d.nama, d.deg, d.geser, d.putar]), [["sudut kipas Pakarena", 125, 2, 15], ["sudut jarum jam", 30, -1, -30], ["sudut lipatan kertas", 90, 1, -15]], "C: data tiga sudut Pasang sesuai rancangan");
+  cek(C.DATA_PASANG.every((d) => d.geser !== 0 && Math.abs(d.geser) <= C.GESER_BATAS && d.putar !== 0 && Math.abs(d.putar) <= C.PUTAR_BATAS && d.putar % C.PUTAR_LANGKAH === 0 && d.deg > 0 && d.deg < 180), "C: geser dan putar awal tidak nol, di dalam batas, sudut dapat diukur busur");
+  sama(C.DATA_BACA.map((d) => [d.nama, d.deg, d.sisi]), [["kipas Pakarena", 125, "kanan"], ["pintu lemari", 50, "kiri"], ["atap rumah", 70, "kanan"]], "C: data tiga sudut Baca sesuai rancangan");
+  sama(C.DATA_PATOKAN, [0, 45, 90, 130, 180, 270, 360], "C: tujuh ukuran Patokan sesuai rancangan");
+  sama(C.DATA_PATOKAN.map(klasifikasi), ["nol", "lancip", "siku", "tumpul", "lurus", "releks", "penuh"], "C: ketujuh ukuran Patokan, satu untuk tiap nama (timbangan kuadran)");
+  for (let d = 0; d <= 360; d += 1) cek(C.jenisUkuran(d) === klasifikasi(d), `C: jenis ukuran ${d} sama dengan timbangan kuadran`);
+  cek(Object.values(C.RENTANG).every((t) => /°/.test(t)) && Object.keys(C.SEBUT_UKURAN).join() === NAMA_C.join(), "C: rentang dan sebutan memuat ketujuh nama");
+
+  // Pasang.
+  for (const [i, d] of C.DATA_PASANG.entries()) {
+    const nama = d.nama;
+    const awal = LC(xc0, { t: "P_DATA", i });
+    cek(awal.pasang.data === i && awal.pasang.geser === d.geser && awal.pasang.putar === d.putar && awal.pernah.length === 0, `Pasang ${nama}: dipilih, busur belum terpasang`);
+    // Geser saja atau putar saja tidak cukup.
+    const periksaAwal = LC(awal, { t: "P_CEK" });
+    cek(periksaAwal.pernah.length === 0 && /Pusat busur belum tepat/.test(periksaAwal.pesan) && periksaAwal.pesan.includes(d.geser > 0 ? "di kanan titik sudut" : "di kiri titik sudut") && periksaAwal.pesan.includes(d.geser > 0 ? "ke kiri" : "ke kanan"), `Pasang ${nama}: periksa sebelum digeser menyarankan arah geser`);
+    for (const buruk of [0, 2, -2, 15]) sama(LC(awal, { t: "P_GESER", d: buruk }).pasang, awal.pasang, `Pasang ${nama}: geser ${buruk} bukan satu langkah diabaikan`);
+    for (const buruk of [0, 10, 30, 1]) sama(LC(awal, { t: "P_PUTAR", d: buruk }).pasang, awal.pasang, `Pasang ${nama}: putar ${buruk} bukan 15 derajat diabaikan`);
+    // Hanya digeser: pusat benar, dasar belum.
+    let s = awal;
+    const arahG = d.geser > 0 ? -1 : 1;
+    for (let n = 0; n < Math.abs(d.geser); n += 1) s = LC(s, { t: "P_GESER", d: arahG });
+    cek(s.pasang.geser === 0, `Pasang ${nama}: digeser ${Math.abs(d.geser)} langkah, pusat tepat`);
+    const hanyaGeser = LC(s, { t: "P_CEK" });
+    cek(hanyaGeser.pernah.length === 0 && /Garis dasar busur belum berimpit/.test(hanyaGeser.pesan) && hanyaGeser.pesan.includes(d.putar > 0 ? "masih miring ke kiri" : "masih miring ke kanan") && hanyaGeser.pesan.includes(d.putar > 0 ? "Putar busur ke kanan" : "Putar busur ke kiri"), `Pasang ${nama}: pusat tepat tetapi dasar belum, ditolak dengan arah putar`);
+    // Hanya diputar: dasar benar, pusat belum.
+    let t = awal;
+    const arahP = d.putar > 0 ? -15 : 15;
+    for (let n = 0; n < Math.abs(d.putar) / 15; n += 1) t = LC(t, { t: "P_PUTAR", d: arahP });
+    cek(t.pasang.putar === 0, `Pasang ${nama}: diputar ${Math.abs(d.putar) / 15} langkah, dasar berimpit`);
+    const hanyaPutar = LC(t, { t: "P_CEK" });
+    cek(hanyaPutar.pernah.length === 0 && /Pusat busur belum tepat/.test(hanyaPutar.pesan), `Pasang ${nama}: dasar berimpit tetapi pusat belum, ditolak`);
+    // Keduanya.
+    let u = s;
+    for (let n = 0; n < Math.abs(d.putar) / 15; n += 1) u = LC(u, { t: "P_PUTAR", d: arahP });
+    const jadi = LC(u, { t: "P_CEK" });
+    cek(u.pasang.geser === 0 && u.pasang.putar === 0 && jadi.pernah.join() === `pasang:${i}` && jadi.pesan.startsWith("✅"), `Pasang ${nama}: pusat dan dasar tepat, dicatat pasang:${i}`);
+    cek(LC(jadi, { t: "P_DATA", i }).pasang.geser === d.geser && LC(jadi, { t: "P_DATA", i }).pernah.join() === `pasang:${i}`, `Pasang ${nama}: mulai lagi mengembalikan busur, riwayat tetap`);
+    // Batas.
+    let kanan = awal;
+    for (let n = 0; n < 10; n += 1) kanan = LC(kanan, { t: "P_GESER", d: 1 });
+    let kiri = awal;
+    for (let n = 0; n < 10; n += 1) kiri = LC(kiri, { t: "P_GESER", d: -1 });
+    cek(kanan.pasang.geser === C.GESER_BATAS && kiri.pasang.geser === -C.GESER_BATAS && /ujung geseran/.test(kanan.pesan), `Pasang ${nama}: geser berhenti di batas ${C.GESER_BATAS}`);
+    let ccw = awal;
+    for (let n = 0; n < 10; n += 1) ccw = LC(ccw, { t: "P_PUTAR", d: 15 });
+    let cw = awal;
+    for (let n = 0; n < 10; n += 1) cw = LC(cw, { t: "P_PUTAR", d: -15 });
+    cek(ccw.pasang.putar === C.PUTAR_BATAS && cw.pasang.putar === -C.PUTAR_BATAS && /ujung putaran/.test(ccw.pesan), `Pasang ${nama}: putar berhenti di batas ${C.PUTAR_BATAS}`);
+  }
+  cek(LC(xc0, { t: "P_DATA", i: 3 }) === xc0 && LC(xc0, { t: "P_DATA", i: -1 }) === xc0, "Pasang: sudut di luar daftar diabaikan");
+
+  // Baca.
+  for (const [i, d] of C.DATA_BACA.entries()) {
+    const nama = d.nama;
+    const bs = bacaanSkala(d.sisi, d.deg);
+    const benarSkala = bs.dalam === d.deg ? "dalam" : "luar";
+    const salahSkala = benarSkala === "dalam" ? "luar" : "dalam";
+    cek(C.SKALA_UNTUK[d.sisi] === benarSkala && C.skalaBenar(d) === benarSkala && bs[benarSkala] === d.deg && bs[salahSkala] === 180 - d.deg, `Baca ${nama}: kaki pertama di ${d.sisi}, skala ${benarSkala} membaca ${d.deg} (geometri)`);
+    const o = C.opsiBaca(d);
+    cek(o.length === 3 && new Set(o).size === 3 && o.includes(d.deg) && o.includes(180 - d.deg) && o.includes(d.deg + 10) && o.every((n) => n > 0 && n < 180) && [...o].sort((a, b) => a - b).join() === o.join(), `Baca ${nama}: tiga angka unik, terurut, memuat ukuran, angka skala lain, dan ukuran ditambah 10`);
+    const xb = LC(xc0, { t: "B_DATA", i });
+    cek(xb.baca.data === i && xb.baca.skala === null, `Baca ${nama}: dipilih, skala belum dipilih`);
+    // Angka sebelum skala ditolak walau benar.
+    for (const n of o) {
+      const t = LC(xb, { t: "B_ANGKA", nilai: n });
+      cek(t.pernah.length === 0 && /Pilih dulu skala/.test(t.pesan), `Baca ${nama}: angka ${n} sebelum memilih skala ditolak`);
+    }
+    // Skala salah ditolak dan tidak terpilih.
+    const sk = LC(xb, { t: "B_SKALA", skala: salahSkala });
+    cek(sk.baca.skala === null && !sk.pesan.startsWith("✅") && sk.pesan.includes(`pakai skala ${benarSkala}`), `Baca ${nama}: skala ${salahSkala} ditolak dengan petunjuk skala ${benarSkala}`);
+    const sb = LC(xb, { t: "B_SKALA", skala: benarSkala });
+    cek(sb.baca.skala === benarSkala && sb.pesan.startsWith("✅"), `Baca ${nama}: skala ${benarSkala} diterima`);
+    cek(LC(xb, { t: "B_SKALA", skala: "tengah" }) === xb && LC(xb, { t: "B_SKALA", skala: "" }) === xb, `Baca ${nama}: skala di luar pilihan diabaikan`);
+    // Angka.
+    for (const n of o) {
+      const t = LC(sb, { t: "B_ANGKA", nilai: n });
+      const betul = n === d.deg;
+      cek(betul ? t.pernah.join() === `baca:${i}` && t.pesan.startsWith("✅") && t.pesan.includes(`${d.deg}°`) : t.pernah.length === 0 && !t.pesan.startsWith("✅"), `Baca ${nama}: angka ${n} ${betul ? "benar dicatat" : "salah tidak dicatat"}`);
+    }
+    const lain = LC(sb, { t: "B_ANGKA", nilai: 180 - d.deg });
+    cek(/skala yang satunya/.test(lain.pesan) && lain.pesan.includes(String(180 - d.deg)), `Baca ${nama}: angka dari skala yang satunya dijelaskan`);
+    cek(LC(sb, { t: "B_ANGKA", nilai: 999 }) === sb && LC(sb, { t: "B_ANGKA", nilai: 0 }) === sb, `Baca ${nama}: angka di luar pilihan diabaikan`);
+    // Skala salah setelah skala benar melepas pilihan.
+    cek(LC(sb, { t: "B_SKALA", skala: salahSkala }).baca.skala === null, `Baca ${nama}: memilih skala salah melepas pilihan`);
+  }
+  cek(LC(xc0, { t: "B_DATA", i: 3 }) === xc0 && LC(xc0, { t: "B_DATA", i: -1 }) === xc0, "Baca: sudut di luar daftar diabaikan");
+
+  // Patokan.
+  for (const [i, deg] of C.DATA_PATOKAN.entries()) {
+    const benar = klasifikasi(deg);
+    const xt = LC(xc0, { t: "T_DATA", i });
+    cek(C.ukuranPatokan(xt) === deg && xt.pernah.length === 0, `Patokan ${deg}: dipilih`);
+    for (const n of NAMA_C) {
+      const t = LC(xt, { t: "T_JAWAB", nama: n });
+      const betul = n === benar;
+      cek(betul ? t.pernah.join() === `patokan:${i}` && t.pesan.startsWith("✅") && t.pesan.includes(`${deg}°`) : t.pernah.length === 0 && !t.pesan.startsWith("✅") && t.pesan.includes(`${deg}° bukan ${C.SEBUT_UKURAN[n]}`), `Patokan ${deg}: nama ${n} ${betul ? "benar dicatat" : "salah tidak dicatat"}`);
+    }
+    cek(LC(xt, { t: "T_JAWAB", nama: "segitiga" }) === xt && LC(xt, { t: "T_JAWAB", nama: "" }) === xt, `Patokan ${deg}: nama di luar pilihan diabaikan`);
+  }
+  const rel = LC(LC(xc0, { t: "T_DATA", i: 5 }), { t: "T_JAWAB", nama: "releks" });
+  cek(/bukan tumpul/.test(rel.pesan) && /kurang dari 180°/.test(rel.pesan), "Patokan 270: pesan benar menyebut bukan tumpul");
+  const tum = LC(LC(xc0, { t: "T_DATA", i: 5 }), { t: "T_JAWAB", nama: "tumpul" });
+  cek(/bukan sudut tumpul/.test(tum.pesan) && /lebih dari 90° dan kurang dari 180°/.test(tum.pesan), "Patokan 270: menjawab tumpul ditolak dengan rentang tumpul");
+  cek(LC(xc0, { t: "T_DATA", i: 7 }) === xc0 && LC(xc0, { t: "T_DATA", i: -1 }) === xc0, "Patokan: ukuran di luar daftar diabaikan");
+
+  // Reset, pesan kosong, riwayat tidak dicabut.
+  const sat = jalan(xc0, LC, [{ t: "T_DATA", i: 2 }, { t: "T_JAWAB", nama: "siku" }, { t: "B_DATA", i: 1 }, { t: "B_SKALA", skala: "luar" }, { t: "B_ANGKA", nilai: 50 }]);
+  cek(sat.pernah.join() === "patokan:2,baca:1", "C: riwayat Patokan dan Baca terkumpul berurutan");
+  sama(LC(sat, { t: "RESET" }), xc0, "C: reset mengembalikan keadaan awal");
+  cek(LC(sat, { t: "PESAN_KOSONG" }).pesan === "" && LC(sat, { t: "PESAN_KOSONG" }).pernah.join() === sat.pernah.join(), "C: pesan dikosongkan, riwayat tetap");
+  cek(LC(sat, { t: "T_JAWAB", nama: "lancip" }).pernah.join() === sat.pernah.join() && LC(LC(sat, { t: "T_JAWAB", nama: "siku" }), { t: "T_JAWAB", nama: "siku" }).pernah.join() === sat.pernah.join(), "C: jawaban salah dan ulang tidak mencabut atau menggandakan riwayat");
+
+  // Fuzz 20.000 aksi.
+  const acak = acakDari(31337);
+  let st = xc0;
+  let ok = true;
+  const pesanSemua = new Set();
+  const riwayatSemua = new Set();
+  for (let n = 0; n < 20000; n += 1) {
+    const pil = acak(30);
+    const dBaca = C.dataBaca(st);
+    const dPas = C.dataPasang(st);
+    const a =
+      pil === 0 ? { t: "P_DATA", i: acak(4) - (acak(8) === 0 ? 1 : 0) } :
+      pil === 1 || pil === 2 || pil === 3 ? { t: "P_GESER", d: [1, -1, 1, -1, 2, 0][acak(6)] } :
+      pil === 4 || pil === 5 || pil === 6 ? { t: "P_PUTAR", d: [15, -15, 15, -15, 30, 10][acak(6)] } :
+      pil === 7 || pil === 8 ? { t: "P_GESER", d: dPas.geser === st.pasang.geser && st.pasang.geser !== 0 ? -Math.sign(st.pasang.geser) : 1 } :
+      pil === 9 || pil === 10 ? { t: "P_PUTAR", d: st.pasang.putar !== 0 ? -15 * Math.sign(st.pasang.putar) : 15 } :
+      pil === 11 || pil === 12 ? { t: "P_CEK" } :
+      pil === 13 ? { t: "B_DATA", i: acak(4) - (acak(8) === 0 ? 1 : 0) } :
+      pil === 14 || pil === 15 ? { t: "B_SKALA", skala: ["dalam", "luar", "tengah"][acak(3)] } :
+      pil === 16 ? { t: "B_SKALA", skala: C.skalaBenar(dBaca) } :
+      pil === 17 || pil === 18 ? { t: "B_ANGKA", nilai: [...C.opsiBaca(dBaca), 0][acak(4)] } :
+      pil === 19 ? { t: "B_ANGKA", nilai: dBaca.deg } :
+      pil === 20 ? { t: "T_DATA", i: acak(8) - (acak(8) === 0 ? 1 : 0) } :
+      pil === 21 || pil === 22 || pil === 23 ? { t: "T_JAWAB", nama: [...NAMA_C, "x"][acak(8)] } :
+      pil === 24 ? { t: "T_JAWAB", nama: klasifikasi(C.ukuranPatokan(st)) } :
+      acak(40) === 0 ? { t: "RESET" } : { t: "PESAN_KOSONG" };
+    const t = LC(st, a);
+    if (a.t !== "RESET" && !st.pernah.every((v) => t.pernah.includes(v))) ok = false;
+    if (!(t.pasang.data >= 0 && t.pasang.data < 3 && Math.abs(t.pasang.geser) <= 3 && Math.abs(t.pasang.putar) <= 45 && t.pasang.putar % 15 === 0)) ok = false;
+    if (!(t.baca.data >= 0 && t.baca.data < 3 && [null, "dalam", "luar"].includes(t.baca.skala))) ok = false;
+    if (t.baca.skala !== null && t.baca.skala !== C.skalaBenar(C.dataBaca(t))) ok = false;
+    if (!(t.patokan.data >= 0 && t.patokan.data < 7)) ok = false;
+    for (const id of t.pernah) if (!IDC.test(id)) ok = false;
+    for (const id of t.pernah) {
+      if (st.pernah.includes(id)) continue;
+      const [jenis, nomor] = id.split(":");
+      const nn = Number(nomor);
+      if (jenis === "pasang" && !(a.t === "P_CEK" && t.pasang.data === nn && t.pasang.geser === 0 && t.pasang.putar === 0)) ok = false;
+      if (jenis === "baca" && !(a.t === "B_ANGKA" && t.baca.data === nn && t.baca.skala === C.skalaBenar(C.DATA_BACA[nn]) && a.nilai === C.DATA_BACA[nn].deg)) ok = false;
+      if (jenis === "patokan" && !(a.t === "T_JAWAB" && t.patokan.data === nn && a.nama === klasifikasi(C.DATA_PATOKAN[nn]))) ok = false;
+    }
+    if (t.pesan) pesanSemua.add(t.pesan);
+    for (const id of t.pernah) riwayatSemua.add(id);
+    st = t;
+  }
+  cek(ok, "fuzz 20.000 aksi Lab Busur: batas terjaga, riwayat tidak dicabut dan hanya bila tercapai");
+  cek(pesanSemua.size > 25 && [...pesanSemua].every(tanpaAngka), `fuzz Lab Busur: semua ${pesanSemua.size} pesan dieja menjadi kata`);
+  cek(riwayatSemua.size >= 9, `fuzz Lab Busur: riwayat terkumpul (${[...riwayatSemua].sort().join(" ")})`);
+  globalThis.__pesanC = [...pesanSemua];
+}
+
+/* ------------------------------ Mesin C ------------------------------ */
+{
+  const def = MS.MESIN_BUSUR;
+  const NAMA_PANJANG = { nol: "sudut nol", lancip: "sudut lancip", siku: "sudut siku-siku", tumpul: "sudut tumpul", lurus: "sudut lurus", releks: "sudut releks", penuh: "sudut penuh" };
+  const URUT = ["nol", "lancip", "siku", "tumpul", "lurus", "releks", "penuh"];
+  for (const [i, k] of MS.KASUS_BUSUR.entries()) {
+    const c = def.kasus[i];
+    const [pasang, skala, baca, jenis] = c.langkah;
+    cek(pasang.benar === `${k.geser} langkah` && pasang.tanya.includes(`${k.geser} langkah di kanan titik sudut`) && pasang.tanya.includes(k.konteks), `Mesin C ${k.id}: geser ${k.geser} langkah`);
+    cek(pasang.opsi.every((o) => o === pasang.benar || Number(o.split(" ")[0]) !== k.geser) && pasang.opsi.every((o) => Number(o.split(" ")[0]) > 0) && pasang.opsi.includes(`${k.geser + 1} langkah`), `Mesin C ${k.id}: pengecoh pasang salah dan positif`);
+    const bs = bacaanSkala(k.sisi, k.deg);
+    const sb = bs.dalam === k.deg ? "dalam" : "luar";
+    cek(k.deg !== 90 || bs.dalam === bs.luar, `Mesin C ${k.id}: ukuran 90 berbacaan sama di kedua skala`);
+    cek(k.deg === 90 ? true : skala.benar === `skala ${sb}`, `Mesin C ${k.id}: skala ${sb} untuk kaki pertama di ${k.sisi} (geometri)`);
+    cek(skala.benar === `skala ${C.SKALA_UNTUK[k.sisi]}` && skala.tanya.includes(`sisi ${k.sisi}`), `Mesin C ${k.id}: skala sama dengan aturan nol di sisi kaki pertama`);
+    sama([...skala.opsi].sort(), ["skala dalam", "skala luar", "skala mana saja"], `Mesin C ${k.id}: pilihan skala tiga`);
+    cek(baca.benar === `${k.deg}°` && baca.tanya.includes(`angka ${bs.luar} pada skala luar dan angka ${bs.dalam} pada skala dalam`) && baca.tanya.includes(`sisi ${k.sisi}`), `Mesin C ${k.id}: ukuran ${k.deg}° dibaca dari skala yang nol di kaki pertama (geometri)`);
+    cek(baca.opsi.every((o) => o === baca.benar || Number(o.replace("°", "")) !== k.deg) && baca.opsi.every((o) => Number(o.replace("°", "")) > 0 && Number(o.replace("°", "")) < 180), `Mesin C ${k.id}: pengecoh baca salah dan di dalam busur`);
+    cek(k.deg === 90 || baca.opsi.includes(`${180 - k.deg}°`), `Mesin C ${k.id}: pengecoh baca memuat angka skala yang satunya`);
+    const nm = NAMA_PANJANG[klasifikasi(k.jenisDeg)];
+    cek(jenis.benar === nm && jenis.tanya.includes(`${k.jenisDeg}°`), `Mesin C ${k.id}: ${k.jenisDeg}° adalah ${nm} (timbangan kuadran)`);
+    const pos = URUT.indexOf(klasifikasi(k.jenisDeg));
+    const tetangga = [URUT[pos - 1] ?? URUT[pos + 2], URUT[pos + 1] ?? URUT[pos - 2]].map((n) => NAMA_PANJANG[n]);
+    sama([...jenis.opsi].sort(), [nm, ...tetangga].sort(), `Mesin C ${k.id}: pengecoh jenis nama bersebelahan`);
+    cek(c.ringkas.includes(`${k.geser} langkah`) && c.ringkas.includes(`skala ${C.SKALA_UNTUK[k.sisi]}`) && c.ringkas.includes(`${k.deg}°`) && c.ringkas.includes(nm), `Mesin C ${k.id}: ringkas memuat hasil benar`);
+  }
+  sama(MS.KASUS_BUSUR.map((k) => k.id), ["kipas", "jam", "lipatan"], "Mesin C: tiga kasus");
+  sama(MS.KASUS_BUSUR.map((k) => [k.geser, k.sisi, k.deg, k.jenisDeg]), [[2, "kanan", 125, 125], [1, "kiri", 30, 180], [3, "kanan", 90, 270]], "Mesin C: data tiga kasus sesuai rancangan");
+  sama(MS.KASUS_BUSUR.map((k) => klasifikasi(k.jenisDeg)), ["tumpul", "lurus", "releks"], "Mesin C: jenis tumpul, lurus, releks");
+  const idx = def.kasus.flatMap((c) => c.langkah.map((l) => l.opsi.indexOf(l.benar)));
+  cek(new Set(idx).size === 3, `Mesin C: letak kunci bervariasi (${idx.join("")})`);
+}
+
+/* ------------------------------ Skenario C ------------------------------ */
+{
+  const S = SK.SKENARIO_K5B6C;
+  cek(S.adegan.length >= 5 && S.adegan.length <= 8, `${S.id}: 5 sampai 8 adegan`);
+  cek(S.adegan[0].jenis === "narasi" && S.adegan[S.adegan.length - 1].jenis === "akhir", `${S.id}: buka dan tutup`);
+  cek(new Set(S.adegan.map((a) => a.jenis)).size >= 4, `${S.id}: paling sedikit empat jenis adegan`);
+  const semuaTeks = [];
+  for (const a of S.adegan) {
+    semuaTeks.push(a.cerita);
+    for (const o of a.opsi ?? []) semuaTeks.push(o.teks, o.umpan);
+    for (const q of a.soal ?? []) semuaTeks.push(q.teks, ...q.opsi);
+    for (const f of ["tanya", "sukses", "salah", "kurang", "lebih"]) if (a[f]) semuaTeks.push(a[f]);
+  }
+  cek(semuaTeks.every(tanpaAngka), `${S.id}: semua teks dapat dieja`);
+  sama(S.id.replace(/-k5b6$/, ""), K6.ID_SKENARIO_K5B6.C, "id skenario C sesuai id misi");
+  const adegan = (id) => S.adegan.find((a) => a.id === id);
+  const sat = adegan("satuan").opsi.find((o) => o.benar);
+  cek(/^derajat/.test(sat.teks) && adegan("satuan").opsi.filter((o) => !o.benar).every((o) => !/derajat/.test(o.teks.split(",")[0])), "C: satuan sudut derajat, pengecoh sentimeter dan liter salah");
+  const busur = adegan("busur").soal;
+  cek(busur[0].jawaban === "titik" && busur[1].jawaban === "kaki" && busur.every((q) => q.opsi.length === 3 && q.opsi.includes(q.jawaban)), "C: pusat busur di titik sudut, dasar berimpit kaki");
+  const baca = adegan("baca").soal;
+  const bacaKipas = bacaanSkala("kanan", 125);
+  cek(baca[0].jawaban === "125" && baca[0].teks.includes("125") && baca[0].opsi.includes(String(bacaKipas.luar)) && baca[0].opsi.includes("125") && baca[0].opsi.filter((o) => o !== "125").every((o) => Number(o) !== 125), "C: kipas 125, pengecoh 55 (skala satunya) dan 180");
+  cek(baca[1].jawaban === "90" && timbangJam(3) === "siku" && baca[1].opsi.includes("30") && baca[1].opsi.includes("180") && /pukul tiga/.test(baca[1].teks), "C: pukul tiga 90, pengecoh 30 dan 180");
+  const patokan = adegan("patokan");
+  cek(patokan.jumlah === [0, 90, 180, 360].length && patokan.jumlah <= 12 && patokan.cerita.includes("0°, 90°, 180°, dan 360°"), "C: empat sudut patokan");
+  const penuh = adegan("penuh");
+  cek(penuh.target === 360 / 180 && penuh.target <= penuh.maks && penuh.maks <= 20 && penuh.sukses.includes("180° ditambah 180° sama dengan 360°"), "C: dua sudut lurus membentuk satu sudut penuh");
+  const rel = adegan("releks");
+  const bb = rel.opsi.find((o) => o.benar);
+  cek(klasifikasi(270) === "releks" && /^sudut releks/.test(bb.teks) && rel.cerita.includes("270°") && rel.opsi.filter((o) => !o.benar).every((o) => !/releks/.test(o.teks)) && rel.opsi.some((o) => o.teks === "sudut tumpul") && rel.opsi.some((o) => o.teks === "sudut lurus"), "C: 270 releks (kuadran), pengecoh tumpul dan lurus salah");
+  const posisi = S.adegan.filter((a) => a.jenis === "pilih").map((a) => a.opsi.findIndex((o) => o.benar));
+  cek(new Set(posisi).size === posisi.length, `C: letak jawaban pilih bervariasi (${posisi.join("")})`);
+}
+
+/* ------------------------------ Misi C ------------------------------ */
+{
+  const capai = (aksi) => M0.misiBaru(K6.MISI_C, C.keadaanBusurK5B6C(jalan(C.awalBusurK5B6C(), LC, aksi)), new Set());
+  const pasang = (i, { geser = true, putar = true, periksa = true } = {}) => {
+    const d = C.DATA_PASANG[i];
+    const aksi = [{ t: "P_DATA", i }];
+    if (geser) for (let n = 0; n < Math.abs(d.geser); n += 1) aksi.push({ t: "P_GESER", d: d.geser > 0 ? -1 : 1 });
+    if (putar) for (let n = 0; n < Math.abs(d.putar) / 15; n += 1) aksi.push({ t: "P_PUTAR", d: d.putar > 0 ? -15 : 15 });
+    if (periksa) aksi.push({ t: "P_CEK" });
+    return aksi;
+  };
+  cek(capai(pasang(0)).join() === "c-pasang" && capai(pasang(1)).join() === "c-pasang-jam" && capai(pasang(2)).join() === "c-pasang-lipat", "C: memasang busur pada kipas memenuhi misi, jam dan lipatan memenuhi tantangan");
+  cek(capai(pasang(0, { geser: false })).length === 0 && capai(pasang(0, { putar: false })).length === 0 && capai(pasang(0, { periksa: false })).length === 0, "C: memasang tanpa menggeser, tanpa memutar, atau tanpa memeriksa tidak memenuhi");
+  cek(capai([...pasang(0), ...pasang(1), ...pasang(2)]).join() === "c-pasang,c-pasang-jam,c-pasang-lipat", "C: tiga sudut Pasang bersamaan");
+  const baca = (i, skala = C.skalaBenar(C.DATA_BACA[i]), angka = C.DATA_BACA[i].deg) => [{ t: "B_DATA", i }, ...(skala ? [{ t: "B_SKALA", skala }] : []), { t: "B_ANGKA", nilai: angka }];
+  cek(capai([...baca(0), ...baca(2)]).join() === "c-baca-kanan" && capai(baca(1)).join() === "c-baca-kiri", "C: membaca kipas dan atap rumah (kanan) serta pintu lemari (kiri) memenuhi");
+  cek(capai(baca(0)).length === 0 && capai(baca(2)).length === 0, "C: hanya satu dari dua sudut kanan tidak memenuhi");
+  cek(capai(baca(1, "dalam")).length === 0 && capai(baca(1, null)).length === 0 && capai(baca(1, "luar", 130)).length === 0 && capai(baca(1, "luar", 60)).length === 0, "C: skala salah, tanpa skala, atau angka salah tidak memenuhi");
+  cek(capai([...baca(0), ...baca(1), ...baca(2)]).join() === "c-baca-kanan,c-baca-kiri", "C: tiga sudut Baca bersamaan");
+  const patokan = (i, nama = klasifikasi(C.DATA_PATOKAN[i])) => [{ t: "T_DATA", i }, { t: "T_JAWAB", nama }];
+  cek(capai([0, 2, 4, 6].flatMap((i) => patokan(i))).join() === "c-patokan", "C: nol, siku-siku, lurus, penuh memenuhi misi patokan");
+  cek(capai([0, 2, 4].flatMap((i) => patokan(i))).length === 0 && capai([0, 2, 4].flatMap((i) => patokan(i)).concat(patokan(6, "releks"))).length === 0, "C: tiga dari empat patokan, atau penuh dinamai releks, tidak memenuhi");
+  cek(capai(patokan(5)).join() === "c-releks" && capai(patokan(5, "tumpul")).length === 0 && capai(patokan(5, "lurus")).length === 0 && capai(patokan(5, "penuh")).length === 0, "C: 270 releks memenuhi, tumpul, lurus, dan penuh tidak");
+  cek(capai([0, 1, 2, 3, 4, 5, 6].flatMap((i) => patokan(i))).join() === "c-patokan,c-releks,c-patokan-semua", "C: ketujuh sudut memenuhi tiga misi Patokan");
+  cek(capai([0, 1, 2, 3, 4, 6].flatMap((i) => patokan(i))).join() === "c-patokan", "C: enam dari tujuh sudut belum memenuhi tantangan semua sudut");
+  cek(M0.misiBaru(K6.MISI_C, { alat: "sudut", pernah: ["pasang:0", "baca:0", "baca:1", "baca:2", "patokan:0", "patokan:5"] }, new Set()).length === 0, "C: riwayat alat lain (sudut) tidak memenuhi misi C");
+  cek(M0.misiBaru(K6.MISI_B, { alat: "busur", pernah: ["bagian:0", "jenis:lancip", "jam:0"] }, new Set()).length === 0, "C: riwayat alat busur tidak memenuhi misi B");
+}
+
+/* ------------------------------ Konsep tidak bocor ke Sub-Bab C ------------------------------ */
+{
+  const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas5-bab6-ringkas.json", import.meta.url), "utf8"));
+  const baca = (nama, ekstensi) => readFileSync(new URL(`../src/components/modul/${nama}.${ekstensi}`, import.meta.url), "utf8");
+  const tanpaKomentar = (s) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const teksDari = (o) => {
+    const hasil = [];
+    JSON.stringify(o, (k, v) => {
+      if (typeof v === "string") hasil.push(v);
+      return v;
+    });
+    return hasil.join(" | ");
+  };
+  // Sub-Bab C tidak memakai konsep Sub-Bab D: melukis sudut (lukis, melukis, konstruksi).
+  const BOCOR_C = /(\bmelukis\b|\blukis\w*|\bkonstruksi\b|\bconstruct\w*)/i;
+  const catat = (teks, apa) => {
+    const m = BOCOR_C.exec(teks);
+    cek(!m, `C: ${apa} bebas konsep melukis (${m ? m[0] : ""} di "${String(teks).slice(Math.max(0, (m?.index ?? 0) - 30), (m?.index ?? 0) + 40)}")`);
+  };
+  for (const t of [TK.MISI_K5B6.C, TK.NAMA_SIM_K5B6.C, ...K6.MISI_C.map((m) => m.teks)]) catat(t, "teks misi");
+  for (const [nama, o] of [["mesin", MS.MESIN_BUSUR], ["skenario", SK.SKENARIO_K5B6C], ["peta dan infografis ringkas", ringkas.subBab.C]]) catat(teksDari(o), nama);
+  for (const [f, e] of [["SimulasiLabBusurK5B6", "tsx"], ["model-busur-k5b6", "tsx"], ["lab-busur-k5b6c", "ts"]]) catat(tanpaKomentar(baca(f, e)), `${f} (tanpa komentar)`);
+  for (const p of globalThis.__pesanC) catat(p, "pesan lab dari fuzz");
+  const ucapan = [];
+  for (let i = 0; i < 3; i += 1) {
+    const xp = LC(xc0, { t: "P_DATA", i });
+    ucapan.push(C.ucapPasangK5B6C(xp));
+    let s = xp;
+    for (let n = 0; n < 6; n += 1) s = LC(s, { t: "P_GESER", d: Math.sign(-s.pasang.geser) || 1 });
+    for (let n = 0; n < 6; n += 1) s = LC(s, { t: "P_PUTAR", d: -15 * (Math.sign(s.pasang.putar) || 0) });
+    ucapan.push(C.ucapPasangK5B6C(s));
+    ucapan.push(C.ucapBacaK5B6C(LC(xc0, { t: "B_DATA", i })));
+  }
+  for (let i = 0; i < C.DATA_PATOKAN.length; i += 1) ucapan.push(C.ucapPatokanK5B6C(LC(xc0, { t: "T_DATA", i })));
+  cek(ucapan.length === 16 && ucapan.every(tanpaAngka), `semua ${ucapan.length} ucapan Lab Busur dieja menjadi kata`);
+  for (const u of ucapan) catat(u, "ucapan lab");
+  cek(C.ucapPasangK5B6C(xc0).includes("pusat busur di titik sudut") && C.ucapPatokanK5B6C(LC(xc0, { t: "T_DATA", i: 5 })).includes("270°"), "C: ucapan Pasang dan Patokan menyebut isi yang benar");
+  {
+    const s = baca("SimulasiLabBusurK5B6", "tsx");
+    cek(/useEffect\(\(\) => \{\s*onKeadaan\?\.\(keadaan\w+\(x\)\);\s*\}, \[onKeadaan, x\]\);/.test(s), "lab C: lapor keadaan lewat useEffect");
+    cek(/setLihat\(v\);\s*kirim\(\{ t: "PESAN_KOSONG" \}\);/.test(s), "lab C: ganti tampilan mengosongkan pesan");
+    const catatan = [...s.matchAll(/^\s*"([^"]+)",$/gm)].map((m) => m[1]);
+    cek(catatan.length >= 3 && catatan.every(tanpaAngka), "lab C: Coba ini dapat dieja");
+    cek(/aria-label="Geser busur ke kiri"/.test(s) && /aria-label="Geser busur ke kanan"/.test(s) && /aria-label="Putar busur ke kiri"/.test(s) && /aria-label="Putar busur ke kanan"/.test(s) && /aria-label="Periksa pemasangan"/.test(s) && /aria-label="Pakai skala luar"/.test(s) && /aria-label="Pakai skala dalam"/.test(s) && /aria-label=\{`Angka \$\{n\} derajat`\}/.test(s) && /aria-label=\{`Namai \$\{SEBUT_UKURAN\[n\]\}`\}/.test(s), "lab C: tombol geser, putar, periksa, skala, angka, dan nama berlabel");
+    cek(/P_GESER", d: -1 \}\)\} className=\{TOMBOL_KECIL\}>\s*◀/.test(s) && /P_PUTAR", d: PUTAR_LANGKAH \}\)\} className=\{TOMBOL_KECIL\}>\s*↺/.test(s) && /P_PUTAR", d: -PUTAR_LANGKAH \}\)\} className=\{TOMBOL_KECIL\}>\s*↻/.test(s), "lab C: tombol kiri menggeser negatif, putar kiri positif, putar kanan negatif");
+    const m = baca("model-busur-k5b6", "tsx");
+    cek(/role="img"/.test(m) && (m.match(/aria-label=\{`Gambar /g) ?? []).length === 2 && /rotate\(\$\{-putar\}\)/.test(m) && /vx \+ geser \* 14/.test(m), "model C: dua gambar berlabel, putar dan geser sesuai arah pesan");
+  }
+  // Ringkas C dihitung ulang mandiri.
+  const C0 = ringkas.subBab.C;
+  const butir = (panel, id) => panel.butir.find((b) => b.id === id);
+  const [p1, p2, p3] = C0.infografis.panel;
+  cek(butir(p1, "pusat").visual.isi === "pusat = titik sudut" && butir(p1, "dasar").visual.isi === "kaki 1 = 0°" && butir(p1, "baca").visual.isi === "kaki 2 = 125°" && butir(p1, "baca").suara.includes(EJ.kataK5B6(125)), "ringkas C: pusat busur, kaki pertama nol, kipas 125");
+  const [tumpul, releks] = p2.sisi;
+  cek(tumpul.visual.isi === "90° sampai 180°" && releks.visual.isi === "180° sampai 360°" && klasifikasi(135) === "tumpul" && klasifikasi(270) === "releks" && p2.kesimpulan === "Releks bukan tumpul.", "ringkas C: tumpul 90 sampai 180 dan releks 180 sampai 360 (kuadran)");
+  cek(butir(p3, "nol").visual.isi === "0°" && butir(p3, "siku").visual.isi === "90°" && butir(p3, "lurus").visual.isi === "180°" && butir(p3, "penuh").visual.isi === "360°" && klasifikasi(0) === "nol" && klasifikasi(90) === "siku" && klasifikasi(180) === "lurus" && klasifikasi(360) === "penuh", "ringkas C: patokan 0, 90, 180, 360 (kuadran)");
+  cek(butir(p3, "siku").suara.includes(`${EJ.kataK5B6(90)} derajat`) && butir(p3, "lurus").suara.includes(`${EJ.kataK5B6(180)} derajat`) && butir(p3, "penuh").suara.includes(`${EJ.kataK5B6(360)} derajat`) && 90 * 2 === 180 && 180 * 2 === 360, "ringkas C: suara menyebut sembilan puluh, seratus delapan puluh, tiga ratus enam puluh");
+  const kartu = (id) => C0.peta.kartu.find((k) => k.id === id).teks;
+  cek(kartu("c-lurus") === "Sudut lurus = 180°" && kartu("c-penuh") === "Sudut penuh = 360°" && kartu("c-125") === "Kipas Pakarena: 125°", "ringkas C: kartu patokan dan kipas");
+  cek(C0.peta.cabang.map((c) => c.id).join() === "satuan,busur,baca,patokan", "ringkas C: empat cabang");
 }
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);

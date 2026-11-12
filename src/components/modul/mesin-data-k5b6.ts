@@ -14,6 +14,12 @@
  *    Jenis  : lancip, siku-siku, atau tumpul.
  *    Jam    : jenis sudut antara dua jarum jam pada pukul bulat.
  * Data dari Buku Siswa Kelas V Bab 6 Sub-Bab B (jam, gunting, kipas, Tabel 6.3).
+ *  - MESIN_BUSUR (C): Pasang → Skala → Baca → Jenis   (kasus Kipas Pakarena, Jarum Jam, Lipatan Kertas)
+ *    Pasang: banyak langkah menggeser busur sampai pusatnya di titik sudut.
+ *    Skala : skala yang mulai dari nol di sisi kaki pertama.
+ *    Baca  : ukuran sudut dari angka pada skala yang benar.
+ *    Jenis : nama sudut menurut ukurannya, nol sampai penuh.
+ * Data dari Buku Siswa Kelas V Bab 6 Sub-Bab C (kipas Pakarena 125°, jam pukul satu, lipatan siku-siku, sudut lurus dan releks).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b6.mjs.
  */
 import type { DefMesin, KasusMesin, LangkahMesin, StasiunDef } from "./mesin-bertahap-k3b1";
@@ -197,4 +203,92 @@ export const MESIN_SUDUT: DefMesin = {
   kasus: KASUS_SUDUT.map(kasusMesinSudut),
 };
 
-export const SEMUA_MESIN_K5B6 = [MESIN_POJOK, MESIN_SUDUT];
+/* ------------------------------ C: Mesin Busur ------------------------------ */
+
+const URUT_UKURAN = ["sudut nol", "sudut lancip", "sudut siku-siku", "sudut tumpul", "sudut lurus", "sudut releks", "sudut penuh"] as const;
+const UKURAN_DARI = (deg: number): (typeof URUT_UKURAN)[number] =>
+  deg === 0 ? "sudut nol" : deg < 90 ? "sudut lancip" : deg === 90 ? "sudut siku-siku" : deg < 180 ? "sudut tumpul" : deg === 180 ? "sudut lurus" : deg < 360 ? "sudut releks" : "sudut penuh";
+/** Skala luar mulai dari nol di sisi kiri, skala dalam mulai dari nol di sisi kanan. */
+const SKALA_SISI = (sisi: "kiri" | "kanan"): "luar" | "dalam" => (sisi === "kiri" ? "luar" : "dalam");
+const URAIAN_SKALA_M = "Skala luar mulai dari nol di sisi kiri dan skala dalam mulai dari nol di sisi kanan.";
+function pengecohPositif(benar: number, kandidat: number[]): number[] {
+  const hasil: number[] = [];
+  for (const n of [...kandidat, benar + 2, benar + 3]) {
+    if (hasil.length < 2 && n > 0 && n !== benar && !hasil.includes(n)) hasil.push(n);
+  }
+  return hasil;
+}
+
+/**
+ * geser: pusat busur berada sekian langkah di kanan titik sudut. sisi: tempat kaki pertama. deg: ukuran sudut yang dibaca.
+ * jenisDeg: ukuran sudut lain untuk dinamai.
+ */
+export type KasusBusur = { id: string; nama: string; konteks: string; geser: number; sisi: "kiri" | "kanan"; deg: number; jenisDeg: number };
+export const KASUS_BUSUR: KasusBusur[] = [
+  { id: "kipas", nama: "Kipas Pakarena", konteks: "Sitti mengukur sudut kipas Pakarena", geser: 2, sisi: "kanan", deg: 125, jenisDeg: 125 },
+  { id: "jam", nama: "Jarum Jam", konteks: "Sitti mengukur sudut jarum jam pukul satu", geser: 1, sisi: "kiri", deg: 30, jenisDeg: 180 },
+  { id: "lipatan", nama: "Lipatan Kertas", konteks: "Sitti mengukur sudut lipatan kertas siku-siku", geser: 3, sisi: "kanan", deg: 90, jenisDeg: 270 },
+];
+
+export const STASIUN_BUSUR: StasiunDef[] = [
+  { id: "pasang", nama: "Pasang", ikon: "📐" },
+  { id: "skala", nama: "Skala", ikon: "🔢" },
+  { id: "baca", nama: "Baca", ikon: "👁️" },
+  { id: "jenis", nama: "Jenis", ikon: "⭐" },
+];
+
+export function kasusMesinBusur(c: KasusBusur, idx: number): KasusMesin {
+  const skala = SKALA_SISI(c.sisi);
+  const luar = c.sisi === "kiri" ? c.deg : 180 - c.deg;
+  const dalam = c.sisi === "kiri" ? 180 - c.deg : c.deg;
+  const nama = UKURAN_DARI(c.jenisDeg);
+  const pos = URUT_UKURAN.indexOf(nama);
+  const salahUkuran = [URUT_UKURAN[pos - 1] ?? URUT_UKURAN[pos + 2], URUT_UKURAN[pos + 1] ?? URUT_UKURAN[pos - 2]];
+  const salahBaca = pengecohPositif(c.deg, [180 - c.deg, c.deg + 10, c.deg - 10]);
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "pasang",
+      tanya: `${c.konteks}. Pusat busur berada ${c.geser} langkah di kanan titik sudut. Agar pusatnya tepat di titik sudut, busur digeser ke kiri sebanyak … langkah.`,
+      opsi: susunOpsi(`${c.geser} langkah`, pengecohPositif(c.geser, [c.geser + 1, c.geser - 1]).map((n) => `${n} langkah`), idx),
+      benar: `${c.geser} langkah`,
+      petunjuk: "Pusat busur harus tepat di titik sudut. Geser sebanyak jarak pusat busur dari titik sudut, ke arah titik sudut.",
+    },
+    {
+      stasiun: "skala",
+      tanya: `${URAIAN_SKALA_M} Kaki pertama sudut ada di sisi ${c.sisi}. Skala yang dipakai adalah …`,
+      opsi: susunOpsi(`skala ${skala}`, [skala === "luar" ? "skala dalam" : "skala luar", "skala mana saja"], idx + 1),
+      benar: `skala ${skala}`,
+      petunjuk: "Pilih skala yang mulai dari nol di sisi kaki pertama, supaya angka dibaca dari nol di kaki pertama.",
+    },
+    {
+      stasiun: "baca",
+      tanya: `Kaki pertama ada di sisi ${c.sisi}. Kaki kedua menunjuk angka ${luar} pada skala luar dan angka ${dalam} pada skala dalam. Ukuran sudut adalah …`,
+      opsi: susunOpsi(`${c.deg}°`, salahBaca.map((n) => `${n}°`), idx + 2),
+      benar: `${c.deg}°`,
+      petunjuk: `Baca pada skala ${skala}, karena skala itu mulai dari nol di sisi ${c.sisi}, tempat kaki pertama. Angka pada skala yang satunya adalah 180 dikurangi ukuran sudut.`,
+    },
+    {
+      stasiun: "jenis",
+      tanya: `Sudut yang ukurannya ${c.jenisDeg}° termasuk …`,
+      opsi: susunOpsi(nama, [...salahUkuran], idx + 3),
+      benar: nama,
+      petunjuk: "Nol: tepat 0°. Lancip: kurang dari 90°. Siku-siku: 90°. Tumpul: lebih dari 90° dan kurang dari 180°. Lurus: 180°. Releks: lebih dari 180° dan kurang dari 360°. Penuh: 360°.",
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `Busur digeser ${c.geser} langkah ke kiri. Kaki pertama di sisi ${c.sisi}, jadi skala ${skala}. Ukuran sudut ${c.deg}°. Ukuran ${c.jenisDeg}° adalah ${nama}.`,
+    langkah,
+  };
+}
+
+export const MESIN_BUSUR: DefMesin = {
+  id: "mesin-busur-k5b6",
+  judul: "Mesin Busur",
+  selesaiId: "mesin-busur",
+  stasiun: STASIUN_BUSUR,
+  kasus: KASUS_BUSUR.map(kasusMesinBusur),
+};
+
+export const SEMUA_MESIN_K5B6 = [MESIN_POJOK, MESIN_SUDUT, MESIN_BUSUR];
