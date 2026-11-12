@@ -3,17 +3,19 @@
  * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen laboratorium ke bundel awal.
  */
 
-export type HurufK5B2 = "A";
-const HURUF: HurufK5B2[] = ["A"];
+export type HurufK5B2 = "A" | "B";
+const HURUF: HurufK5B2[] = ["A", "B"];
 
 export const hurufK5B2 = (sub: string): HurufK5B2 => (HURUF.includes(sub as HurufK5B2) ? (sub as HurufK5B2) : "A");
 
 export const MISI_K5B2: Record<HurufK5B2, string> = {
   A: "Di Lab Lompat Kelipatan, melompatlah dengan jarak sama di garis bilangan, warnai kelipatan di tabel seratus, dan periksa dengan sisa pembagian apakah suatu bilangan kelipatan. Periksa dengan Mesin Kelipatan, lalu selesaikan skenario Tepuk Kelipatan Nisa. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
+  B: "Di Lab Dua Jalur, lompatkan dua pelompat berjarak berbeda dan cari bilangan yang didarati keduanya, tandai bilangan yang ada di dua daftar kelipatan lalu pilih yang terkecil, dan tentukan kapan dua jadwal bertemu lagi. Periksa dengan Mesin KPK, lalu selesaikan skenario Jadwal Renang Yohana. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
 };
 
 export const NAMA_SIM_K5B2: Record<HurufK5B2, string> = {
   A: "Lab Lompat Kelipatan, Mesin Kelipatan, dan Tepuk Kelipatan Nisa",
+  B: "Lab Dua Jalur, Mesin KPK, dan Jadwal Renang Yohana",
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */

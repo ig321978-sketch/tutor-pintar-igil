@@ -4,10 +4,11 @@ import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
 import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiLabKelipatanK5B2 from "./SimulasiLabKelipatanK5B2";
+import SimulasiLabJalurK5B2 from "./SimulasiLabJalurK5B2";
 import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
 import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K5B2A } from "./skenario-k5b2";
-import { MESIN_KELIPATAN } from "./mesin-data-k5b2";
+import { SKENARIO_K5B2A, SKENARIO_K5B2B } from "./skenario-k5b2";
+import { MESIN_KELIPATAN, MESIN_KPK } from "./mesin-data-k5b2";
 import { ejaK5B1 } from "./eja-k5b1";
 import type { DefSkenario } from "./skenario-umum";
 import type { DefMesin } from "./mesin-bertahap-k3b1";
@@ -19,22 +20,26 @@ import { MISI_K5B2, NAMA_SIM_K5B2, hurufK5B2, misiAwalK5Bab2, type HurufK5B2 } f
 /* Simulasi Kelas 5 Bab 2 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
 /* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k5bab2.ts. */
 /*   A Kelipatan : Lab Lompat Kelipatan + Mesin Kelipatan + Tepuk Kelipatan Nisa */
+/*   B KPK       : Lab Dua Jalur + Mesin KPK + Jadwal Renang Yohana            */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
-const SKENARIO: Record<HurufK5B2, DefSkenario> = { A: SKENARIO_K5B2A };
-const MESIN: Record<HurufK5B2, DefMesin> = { A: MESIN_KELIPATAN };
+const SKENARIO: Record<HurufK5B2, DefSkenario> = { A: SKENARIO_K5B2A, B: SKENARIO_K5B2B };
+const MESIN: Record<HurufK5B2, DefMesin> = { A: MESIN_KELIPATAN, B: MESIN_KPK };
 
 const COBA_MESIN: Record<HurufK5B2, string[]> = {
   A: ["Ketuk stasiun Cek sebelum Lompat. Apa kata mesin?", "Mengapa sisa harus nol agar bilangan menjadi kelipatan?", "Apa yang sama pada semua pendaratan lompatan berjarak tiga?"],
+  B: ["Ketuk stasiun KPK sebelum Jalur. Apa kata mesin?", "Mengapa KPK harus yang terkecil di antara kelipatan persekutuan?", "Mengapa jumlah dua bilangan bukan KPK?"],
 };
 
 const LAB: Record<HurufK5B2, { id: string; nama: string }> = {
   A: { id: "kelipatan", nama: "Lab Lompat Kelipatan" },
+  B: { id: "jalur", nama: "Lab Dua Jalur" },
 };
 
-function LabSub({ speakGuru, lapor }: { huruf: HurufK5B2; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab2) => void }) {
+function LabSub({ huruf, speakGuru, lapor }: { huruf: HurufK5B2; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab2) => void }) {
+  if (huruf === "B") return <SimulasiLabJalurK5B2 speakGuru={speakGuru} onKeadaan={lapor} />;
   return <SimulasiLabKelipatanK5B2 speakGuru={speakGuru} onKeadaan={lapor} />;
 }
 

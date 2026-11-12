@@ -4,7 +4,82 @@ import type { DefSkenario } from "./skenario-umum";
  * Skenario Kelas 5 Bab 2 (KPK dan FPB). Tanpa jaringan, tanpa model bahasa.
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b2.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K5B2A: Tepuk Kelipatan Nisa (tepuk saat kelipatan, banyak tepukan, kelipatan berikutnya, cek sisa)
+ *  - SKENARIO_K5B2B: Jadwal Renang Yohana (dua daftar, kelipatan persekutuan, KPK, tanggal bertemu lagi)
  */
+
+export const SKENARIO_K5B2B: DefSkenario = {
+  id: "jadwal-renang-k5b2",
+  judul: "Jadwal Renang Yohana",
+  latar: "Bantu Yohana mencari kapan ia dan Nisa berenang pada hari yang sama.",
+  tokoh: "👧",
+  nama: "Yohana",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Yohana. Aku berenang tiap 4 hari, dan temanku Nisa berenang tiap 3 hari. Hari ini kami berenang pada hari yang sama. Kapan kami berenang bersama lagi? Ayo kita cari!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "daftar",
+      jenis: "pilih",
+      cerita: "Yohana menulis dua daftar. Kelipatan 3: 3, 6, 9, 12. Kelipatan 4: 4, 8, 12. Bilangan mana yang ada di kedua daftar?",
+      opsi: [
+        { teks: "8", benar: false, umpan: "8 hanya ada di daftar kelipatan 4. Daftar kelipatan 3 tidak memuat 8." },
+        { teks: "12", benar: true, umpan: "Betul! 12 ada di kedua daftar, jadi 12 adalah kelipatan persekutuan 3 dan 4." },
+        { teks: "6", benar: false, umpan: "6 hanya ada di daftar kelipatan 3. Daftar kelipatan 4 melompati 6." },
+      ],
+    },
+    {
+      id: "yohana",
+      jenis: "hitung",
+      cerita: "Dalam 12 hari, Yohana berenang pada hari ke-4, ke-8, dan ke-12. Setiap hari renang diberi satu stik.",
+      tanya: "Ketuk semua stik. Berapa kali Yohana berenang dalam 12 hari?",
+      objek: "stik",
+      jumlah: 3,
+      sukses: "Betul! Tiga kali, dan hari terakhirnya hari ke-12.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "nisa",
+      jenis: "isi",
+      cerita: "Dalam 12 hari, Nisa berenang tiap 3 hari. Masukkan stik sebanyak hari renang Nisa.",
+      objek: "stik",
+      target: 4,
+      maks: 6,
+      sukses: "Pas! Nisa berenang empat kali, pada hari ke-3, 6, 9, dan 12.",
+      kurang: "Stiknya masih kurang. Lompat 3 demi 3 sampai hari ke-12.",
+      lebih: "Stiknya kelebihan. Lompatan 3 demi 3 berhenti di hari ke-12.",
+    },
+    {
+      id: "periksa",
+      jenis: "soal",
+      cerita: "Yohana memeriksa jadwalnya. Hari ini tanggal 3 Agustus.",
+      soal: [
+        { teks: "KPK dari 3 dan 4 adalah …", jawaban: "12", opsi: ["7", "12", "24"] },
+        { teks: "Yohana dan Nisa berenang bersama lagi pada …", jawaban: "15 Agustus", opsi: ["12 Agustus", "15 Agustus", "10 Agustus"] },
+        { teks: "Kelipatan persekutuan 3 dan 4 yang kedua adalah …", jawaban: "24", opsi: ["16", "20", "24"] },
+      ],
+      sukses: "Hebat! KPK adalah kelipatan persekutuan yang terkecil, dan dari situ jadwal bertemu lagi bisa dihitung.",
+      salah: "Hmm, lihat lagi kedua daftar kelipatan. Coba lagi.",
+    },
+    {
+      id: "tebak",
+      jenis: "pilih",
+      cerita: "Seorang teman berkata, KPK dari 3 dan 4 adalah 7, karena 3 ditambah 4. Apa jawaban Yohana?",
+      opsi: [
+        { teks: "Benar, KPK adalah jumlah dua bilangan", benar: false, umpan: "KPK bukan jumlah. 7 tidak ada di daftar kelipatan 3, jadi bukan kelipatan persekutuan." },
+        { teks: "Salah, KPK adalah 24", benar: false, umpan: "24 memang kelipatan persekutuan, tetapi ada yang lebih kecil, yaitu 12." },
+        { teks: "Salah, KPK adalah 12", benar: true, umpan: "Betul! 12 adalah kelipatan persekutuan 3 dan 4 yang paling pertama muncul." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Kelipatan persekutuan adalah bilangan yang ada di daftar kelipatan kedua bilangan. Yang terkecil disebut KPK, dan KPK menunjukkan kapan dua jadwal bertemu lagi.",
+    },
+  ],
+};
 
 export const SKENARIO_K5B2A: DefSkenario = {
   id: "tepuk-kelipatan-k5b2",

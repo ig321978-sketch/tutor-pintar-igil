@@ -1,11 +1,12 @@
-// Uji Simulasi Kelas 5 Bab 2 (KPK dan FPB): Lab Lompat Kelipatan (Sub-Bab A), mesin, skenario, misi, gerbang,
-// data ringkas, dan konsep sub-bab berikutnya tidak bocor ke Sub-Bab A.
+// Uji Simulasi Kelas 5 Bab 2 (KPK dan FPB): Lab Lompat Kelipatan (Sub-Bab A), Lab Dua Jalur (Sub-Bab B), mesin, skenario,
+// misi, gerbang, data ringkas, dan konsep sub-bab berikutnya tidak bocor ke sub-bab sebelumnya.
 // Jalankan: node --no-warnings scripts/uji-lab-k5b2.mjs
 import { readFileSync } from "node:fs";
 import * as M0 from "../src/components/modul/misi-simulasi.ts";
 import * as K5 from "../src/components/modul/misi-k5bab2.ts";
 import * as TK from "../src/components/modul/misi-teks-k5b2.ts";
 import * as A from "../src/components/modul/lab-kelipatan-k5b2a.ts";
+import * as B from "../src/components/modul/lab-jalur-k5b2b.ts";
 import * as MS from "../src/components/modul/mesin-data-k5b2.ts";
 import * as SK from "../src/components/modul/skenario-k5b2.ts";
 import * as ME from "../src/components/modul/mesin-bertahap-k3b1.ts";
@@ -235,7 +236,7 @@ const jumlahKe = (d, k) => kelipatanMandiri(d, d * 20)[k - 1];
       const l = ME.langkahAktif(x);
       x = l ? ME.langkahMesin(x, { t: "JAWAB", nilai: l.benar }) : ME.langkahMesin(x, { t: "LANJUT" });
     }
-    cek(x.selesai && def.selesaiId === K5.ID_MESIN_K5B2.A, `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
+    cek(x.selesai && Object.values(K5.ID_MESIN_K5B2).includes(def.selesaiId), `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
   }
   // Kunci dan pengecoh dihitung ulang mandiri.
   const angka = (t) => Number(t);
@@ -299,16 +300,16 @@ const jumlahKe = (d, k) => kelipatanMandiri(d, d * 20)[k - 1];
 
 /* ------------------------------ Misi ------------------------------ */
 {
-  const huruf = ["A"];
-  sama(Object.keys(TK.MISI_K5B2), huruf, "teks misi untuk A");
-  sama(Object.keys(TK.NAMA_SIM_K5B2), huruf, "nama simulasi untuk A");
+  const huruf = ["A", "B"];
+  sama(Object.keys(TK.MISI_K5B2), huruf, "teks misi untuk A dan B");
+  sama(Object.keys(TK.NAMA_SIM_K5B2), huruf, "nama simulasi untuk A dan B");
   cek(TK.hurufK5B2("Z") === "A" && TK.hurufK5B2("A") === "A", "huruf tak dikenal jatuh ke A");
-  cek(TK.misiAwalK5Bab2("A").startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK5Bab2("A")), "misi awal dan dapat dieja");
+  cek(["A", "B"].every((h) => TK.misiAwalK5Bab2(h).startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK5Bab2(h))), "misi awal dan dapat dieja");
   for (const h of huruf) {
     const daftar = K5.daftarMisiK5Bab2(h);
     cek(daftar.filter((m) => m.wajib).length === 7 && daftar.filter((m) => !m.wajib).length === 3, `${h}: tujuh misi wajib dan tiga tantangan bebas`);
     cek(new Set(daftar.map((m) => m.id)).size === 10 && daftar.every((m) => m.id.startsWith(`${h.toLowerCase()}-`)), `${h}: id misi unik berawalan huruf`);
-    const kosong = [{ alat: "kelipatan", pernah: [] }, sel("tidak-ada"), A.keadaanKelipatanK5B2A(A.awalKelipatanK5B2A())];
+    const kosong = [{ alat: "kelipatan", pernah: [] }, { alat: "jalur", pernah: [] }, sel("tidak-ada"), A.keadaanKelipatanK5B2A(A.awalKelipatanK5B2A()), B.keadaanJalurK5B2B(B.awalJalurK5B2B())];
     cek(kosong.every((k) => M0.misiBaru(daftar, k, new Set()).length === 0), `${h}: keadaan awal alat tidak memenuhi misi mana pun`);
     cek(daftar.every((m) => m.teks.length > 20 && tanpaAngka(m.teks)), `${h}: teks misi jelas dan dapat dieja`);
     const baru = (k) => M0.misiBaru(daftar, k, new Set());
@@ -373,7 +374,6 @@ const jumlahKe = (d, k) => kelipatanMandiri(d, d * 20)[k - 1];
   catat(tanpaKomentar(baca("SimulasiLabKelipatanK5B2", "tsx")), "komponen lab (tanpa komentar)");
   catat(tanpaKomentar(baca("model-kelipatan-k5b2", "tsx")), "model gambar (tanpa komentar)");
   catat(tanpaKomentar(baca("lab-kelipatan-k5b2a", "ts")), "logika lab (tanpa komentar)");
-  catat(tanpaKomentar(baca("SimulasiK5Bab2", "tsx")), "pembungkus (tanpa komentar)");
   for (const p of globalThis.__pesanA) catat(p, "pesan lab dari fuzz");
   for (const u of [A.ucapLompatK5B2A(x0), A.ucapTabelK5B2A(x0), A.ucapCekK5B2A(x0)]) catat(u, "ucapan lab");
 
@@ -453,7 +453,410 @@ const jumlahKe = (d, k) => kelipatanMandiri(d, d * 20)[k - 1];
   cek(kartu("a-12").startsWith("12 ÷ 3 bersisa 0") && kartu("a-14").startsWith("14 ÷ 3 bersisa 2") && bagiMandiri(12, 3).r === 0 && bagiMandiri(14, 3).r === 2, "ringkas A: kartu cek sisa (dihitung)");
   cek(kartu("a-warna") === `Kelipatan 4: ${deret(4, 3)}, …`, "ringkas A: kartu kelipatan empat (dihitung)");
   cek(kartu("a-mendarat") === `Mendarat di ${deret(3, 3).replace(/, /g, ", ")}`, "ringkas A: kartu pendaratan (dihitung)");
-  sama(Object.keys(ringkas.subBab), ["A"], "ringkas: gelombang ini hanya sub-bab A");
+  sama(Object.keys(ringkas.subBab), ["A", "B"], "ringkas: sub-bab A dan B");
+}
+
+/* ======================================================================== */
+/* ============================ SUB-BAB B ================================= */
+/* ======================================================================== */
+// Hitungan mandiri untuk B: kelipatan dengan penjumlahan berulang; KPK sebagai kelipatan a pertama yang habis dibagi b
+// (pengurangan berulang), dan dicek ulang dengan hasil kali dibagi pembagi persekutuan terbesar (Euclid dengan pengurangan).
+const gcdKurang = (a, b) => {
+  while (a !== b) {
+    if (a > b) a -= b;
+    else b -= a;
+  }
+  return a;
+};
+const kpkMandiri = (a, b) => {
+  for (let v = a; ; v += a) if (adalahKelipatan(v, b)) return v;
+};
+const daftarKe = kelipatanMandiri;
+const kpkDariGcd = (a, b) => {
+  // hasil kali dihitung dengan penjumlahan berulang lalu dibagi dengan pengurangan berulang
+  let kali = 0;
+  for (let i = 0; i < b; i += 1) kali += a;
+  return bagiMandiri(kali, gcdKurang(a, b)).q;
+};
+const biasaMandiri = (p, q) => p.filter((v) => !!q.find((w) => w === v));
+/** Hitung hari satu per satu: tanggal mulai ditambah n hari. */
+const tanggalSetelah = (awal, n) => {
+  let t = awal;
+  for (let i = 0; i < n; i += 1) t += 1;
+  return t;
+};
+const LB = B.langkahJalurK5B2B;
+const y0 = B.awalJalurK5B2B();
+
+/* ------------------------------ Data sama dengan buku (B) ------------------------------ */
+{
+  const AB = D.ANGKA_BUKU;
+  sama(B.DATA_JADWAL.map((d) => [d.a, d.b]), [[AB.nisaHari, AB.yohanaHari], [AB.asepHari, AB.lukasHari], [AB.dindaHari, AB.ameliaHari]], "Jadwal: selang Nisa, Yohana, Asep, Lukas, Dinda, Amelia dari buku");
+  sama(B.DATA_JADWAL.map((d) => kpkMandiri(d.a, d.b)), [AB.kpkRenang, AB.kpkAsepLukas, AB.kpkPiano], "Jadwal: KPK 12, 15, 10 sama dengan buku (dihitung)");
+  cek(B.DATA_JADWAL[0].awal === AB.tanggalAwal && tanggalSetelah(AB.tanggalAwal, AB.kpkRenang) === AB.tanggalBaru, "Jadwal: 3 Agustus ditambah 12 hari menjadi 15 Agustus (dari buku, dihitung)");
+  cek(D.RONDE_KPK_CB.flat().some((r) => r.angka.join() === "4,5" && r.hasil === 20) && B.DATA_JALUR.some(([a, b]) => a === 4 && b === 5) && B.DATA_IRISAN.some(([a, b]) => a === 4 && b === 5), "Jalur dan Irisan: 4 dan 5 dari buku");
+  cek(D.RONDE_KPK_CB.flat().some((r) => r.angka.join() === "2,3" && r.hasil === 6) && B.DATA_IRISAN.some(([a, b]) => a === 2 && b === 3), "Irisan: 2 dan 3 dari buku");
+  cek(D.RONDE_KPK_CB.flat().some((r) => r.angka.join() === "6,8" && r.hasil === 24) && B.DATA_IRISAN.some(([a, b]) => a === 6 && b === 8), "Irisan: 6 dan 8 dari buku");
+  cek(D.RONDE_KPK_CB.flat().some((r) => r.angka.join() === "3,4" && r.hasil === 12) && B.DATA_JALUR.some(([a, b]) => a === 3 && b === 4), "Jalur: 3 dan 4 dari buku");
+  cek(AB.kpkAsepLukas === 15 && B.DATA_JALUR.some(([a, b]) => a === 3 && b === 5), "Jalur: 3 dan 5 dari buku (Asep dan Lukas)");
+  for (const [a, b] of [[2, 3], [3, 4], [3, 5], [4, 5], [5, 2], [6, 8], [4, 6], [7, 9]]) {
+    cek(kpkMandiri(a, b) === kpkDariGcd(a, b) && B.kpkDaftar(a, b) === kpkMandiri(a, b), `KPK ${a} dan ${b}: daftar, pencarian, dan hasil kali dibagi pembagi terbesar sama`);
+  }
+}
+
+/* ------------------------------ Lab B: Dua Jalur ------------------------------ */
+{
+  cek(y0.pernah.length === 0 && y0.pesan === "" && y0.jalur.a === 0 && y0.jalur.b === 0 && y0.irisan.tanda.length === 0 && !y0.irisan.tandaOk && !y0.jadwal.hariOk, "B awal: kosong, belum ada riwayat");
+  const A_ = { t: "J_A" };
+  const B_ = { t: "J_B" };
+  const ulang = (aksi, n) => Array(n).fill(aksi);
+  for (const [i, [a, b]] of B.DATA_JALUR.entries()) {
+    const k = kpkMandiri(a, b);
+    const na = daftarKe(a, k).length;
+    const nb = daftarKe(b, k).length;
+    const xj = LB(y0, { t: "J_DATA", i });
+    // Urutan: A dulu, B dulu, bergantian. Riwayat baru muncul tepat saat kedua pelompat sama-sama mendarat di KPK.
+    const urutan = {
+      "A dulu": [...ulang(A_, na), ...ulang(B_, nb)],
+      "B dulu": [...ulang(B_, nb), ...ulang(A_, na)],
+      bergantian: Array.from({ length: Math.max(na, nb) }, (_, j) => [...(j < na ? [A_] : []), ...(j < nb ? [B_] : [])]).flat(),
+    };
+    for (const [nama, aksi] of Object.entries(urutan)) {
+      let s = xj;
+      let ok = true;
+      for (const [j, ak] of aksi.entries()) {
+        s = LB(s, ak);
+        const terakhir = j === aksi.length - 1;
+        if (s.pernah.includes(`jalur:${a}:${b}`) !== terakhir) ok = false;
+      }
+      cek(ok, `Jalur ${a} dan ${b} (${nama}): riwayat muncul tepat saat keduanya mendarat di ${k}`);
+      cek(s.pesan.startsWith("✅") && s.pesan.includes(`di ${k}.`) && /kelipatan persekutuan pertama/.test(s.pesan) && s.pesan.includes(`KPK dari ${a} dan ${b}`), `Jalur ${a} dan ${b} (${nama}): pesan menyebut KPK ${k}`);
+      sama(B.sejajarJalur(s), [k], `Jalur ${a} dan ${b} (${nama}): hanya ${k} yang sama`);
+    }
+    // Pelompat yang sama terus melompat: tidak pernah bertemu.
+    for (const sisi of [A_, B_]) {
+      const s = jalan(xj, LB, ulang(sisi, 10));
+      cek(s.pernah.length === 0 && /Belum ada bilangan/.test(LB(xj, sisi).pesan), `Jalur ${a} dan ${b}: satu pelompat saja tidak bertemu`);
+      const lagi = LB(s, sisi);
+      cek(lagi.pernah.length === 0 && /sudah mendarat sepuluh kali/.test(lagi.pesan) && !lagi.pesan.startsWith("✅"), `Jalur ${a} dan ${b}: pendaratan kesebelas ditolak`);
+      cek((sisi.t === "J_A" ? lagi.jalur.a : lagi.jalur.b) === 10, `Jalur ${a} dan ${b}: paling banyak sepuluh pendaratan`);
+    }
+    // Kelipatan persekutuan kedua (dua kali KPK) dicatat bukan yang terkecil.
+    const dua = jalan(xj, LB, [...ulang(A_, daftarKe(a, 2 * k).length), ...ulang(B_, daftarKe(b, 2 * k).length)]);
+    cek(dua.pernah.includes(`jalur:${a}:${b}`) && /bukan yang terkecil/.test(dua.pesan) && dua.pesan.includes(`di ${2 * k}.`), `Jalur ${a} dan ${b}: kelipatan persekutuan kedua ${2 * k} disebut bukan yang terkecil`);
+    sama(B.sejajarJalur(dua), [k, 2 * k], `Jalur ${a} dan ${b}: dua bilangan sama (dihitung)`);
+    // Pendaratan sama dengan penjumlahan berulang.
+    const tengah = jalan(xj, LB, [...ulang(A_, 4), ...ulang(B_, 3)]);
+    sama(B.pendaratanJalur(tengah).a, daftarKe(a, a * 4), `Jalur ${a}: empat pendaratan`);
+    sama(B.pendaratanJalur(tengah).b, daftarKe(b, b * 3), `Jalur ${b}: tiga pendaratan`);
+    sama(B.sejajarJalur(tengah), biasaMandiri(daftarKe(a, a * 4), daftarKe(b, b * 3)), `Jalur ${a} dan ${b}: bilangan sama sementara`);
+    // Mulai lagi mengulang dari nol tanpa mencabut riwayat.
+    const m = LB(dua, { t: "J_ULANG" });
+    cek(m.jalur.a === 0 && m.jalur.b === 0 && m.pernah.includes(`jalur:${a}:${b}`), `Jalur ${a} dan ${b}: mulai lagi tidak mencabut riwayat`);
+    cek(LB(dua, { t: "J_DATA", i: (i + 1) % 3 }).jalur.a === 0, `Jalur ${a} dan ${b}: ganti pasangan mengulang`);
+  }
+  cek(LB(y0, { t: "J_DATA", i: 3 }) === y0 && LB(y0, { t: "J_DATA", i: -1 }) === y0, "Jalur: pasangan di luar batas diabaikan");
+  // Pasangan lain tidak mengisi riwayat pasangan ini.
+  const campur = jalan(LB(y0, { t: "J_DATA", i: 1 }), LB, [...ulang({ t: "J_A" }, 4), ...ulang({ t: "J_B" }, 3)]);
+  cek(campur.pernah.length === 0, "Jalur: 3 dan 5 belum bertemu di dua belas, tidak tercatat");
+
+  // Irisan.
+  for (const [i, [a, b]] of B.DATA_IRISAN.entries()) {
+    const p = daftarKe(a, a * 10);
+    const q = daftarKe(b, b * 10);
+    const xi = LB(y0, { t: "I_DATA", i });
+    sama(B.daftarIrisan(xi), { a: p, b: q }, `Irisan ${a} dan ${b}: dua daftar sepuluh kelipatan`);
+    const kunci = p.filter((v) => adalahKelipatan(v, b));
+    sama(B.kunciIrisan(xi), kunci, `Irisan ${a} dan ${b}: bilangan di kedua daftar sama dengan hitungan keterbagian`);
+    sama(kunci, biasaMandiri(p, q), `Irisan ${a} dan ${b}: kunci sama dengan bilangan yang ada di kedua daftar`);
+    cek(kunci.length >= 2 && kunci.every((v) => q.includes(v) && adalahKelipatan(v, a) && adalahKelipatan(v, b)), `Irisan ${a} dan ${b}: dua atau lebih bilangan, semuanya kelipatan kedua bilangan`);
+    const k = kpkMandiri(a, b);
+    cek(kunci[0] === k, `Irisan ${a} dan ${b}: yang terkecil adalah KPK ${k}`);
+    const tandai = (daftar) => jalan(xi, LB, daftar.map((n) => ({ t: "I_KLIK", n })));
+    const tepat = LB(tandai(kunci), { t: "I_CEK" });
+    cek(tepat.irisan.tandaOk && tepat.pesan.startsWith("✅") && tepat.pesan.includes(kunci.join(", ")), `Irisan ${a} dan ${b}: tanda tepat`);
+    cek(LB(tandai([...kunci].reverse()), { t: "I_CEK" }).irisan.tandaOk, `Irisan ${a} dan ${b}: urutan tanda tidak berpengaruh`);
+    // Pilihan terkecil.
+    const opsi = B.opsiKpkIrisan(i);
+    cek(opsi.length === 3 && new Set(opsi).size === 3 && opsi.filter((v) => v === k).length === 1, `Irisan ${a} dan ${b}: tiga pilihan unik, satu KPK`);
+    cek(opsi.includes(kunci[kunci.length - 1]) && opsi.includes(a + b) && (a + b) !== k, `Irisan ${a} dan ${b}: pengecoh kelipatan persekutuan terakhir dan jumlah`);
+    const ok = LB(tepat, { t: "I_KPK", nilai: k });
+    cek(ok.pernah.includes(`irisan:${a}:${b}`) && ok.pesan.startsWith("✅") && ok.pesan.includes(`KPK dari ${a} dan ${b}`), `Irisan ${a} dan ${b}: pilihan ${k} tercatat`);
+    for (const v of opsi.filter((o) => o !== k)) {
+      const s = LB(tepat, { t: "I_KPK", nilai: v });
+      cek(s.pernah.length === 0 && !s.pesan.startsWith("✅") && s.pesan.length > 10, `Irisan ${a} dan ${b}: pilihan ${v} ditolak`);
+      cek(/bukan yang terkecil/.test(s.pesan) === kunci.includes(v), `Irisan ${a} dan ${b}: ${v} dijelaskan tepat`);
+    }
+    // KPK sebelum tanda diperiksa ditolak.
+    const dini = LB(tandai(kunci), { t: "I_KPK", nilai: k });
+    cek(dini.pernah.length === 0 && /Tandai dulu/.test(dini.pesan), `Irisan ${a} dan ${b}: pilihan sebelum periksa ditolak`);
+    // Mengubah tanda setelah benar mencabut izin memilih (riwayat tetap).
+    const ubah = LB(tepat, { t: "I_KLIK", n: p[0] === kunci[0] ? q[0] : p[0] });
+    cek(!ubah.irisan.tandaOk, `Irisan ${a} dan ${b}: ubah tanda mengulang periksa`);
+    // Satu bilangan terlewat.
+    for (const m of kunci) {
+      const s = LB(tandai(kunci.filter((v) => v !== m)), { t: "I_CEK" });
+      cek(!s.irisan.tandaOk && !s.pesan.startsWith("✅") && /muncul di kedua daftar/.test(s.pesan), `Irisan ${a} dan ${b}: ${m} terlewat ditolak`);
+    }
+    // Satu bilangan hanya di satu daftar kelebihan.
+    const semua = [...new Set([...p, ...q])];
+    let ditolak = 0;
+    let total = 0;
+    for (const n of semua.filter((v) => !kunci.includes(v))) {
+      total += 1;
+      const s = LB(tandai([...kunci, n]), { t: "I_CEK" });
+      const di = p.includes(n) ? a : b;
+      if (!s.irisan.tandaOk && !s.pesan.startsWith("✅") && s.pesan.startsWith(`${n} hanya ada di daftar kelipatan ${di}.`)) ditolak += 1;
+    }
+    cek(ditolak === total && total >= 10, `Irisan ${a} dan ${b}: semua ${total} bilangan di satu daftar ditolak dan disebut daftarnya (${ditolak})`);
+    cek(LB(xi, { t: "I_CEK" }).pesan.startsWith("Belum ada bilangan"), `Irisan ${a} dan ${b}: kosong diberi tahu`);
+    cek(LB(tepat, { t: "I_BERSIH" }).irisan.tanda.length === 0 && !LB(tepat, { t: "I_BERSIH" }).irisan.tandaOk, `Irisan ${a} dan ${b}: bersihkan`);
+    cek(LB(LB(xi, { t: "I_KLIK", n: p[1] }), { t: "I_KLIK", n: p[1] }).irisan.tanda.length === 0, `Irisan ${a} dan ${b}: ketuk dua kali melepas tanda`);
+    cek(LB(tepat, { t: "I_DATA", i: (i + 1) % 3 }).irisan.tanda.length === 0, `Irisan ${a} dan ${b}: ganti pasangan mengosongkan tanda`);
+  }
+  cek(LB(y0, { t: "I_KLIK", n: 999 }) === y0 && LB(y0, { t: "I_KLIK", n: 7 }) === y0 && LB(y0, { t: "I_DATA", i: 5 }) === y0 && LB(y0, { t: "I_KPK", nilai: 99 }) === y0, "Irisan: di luar batas diabaikan");
+  // Kelipatan persekutuan 4 dan 5 tidak memenuhi pasangan lain.
+  const salahPasangan = jalan(LB(y0, { t: "I_DATA", i: 1 }), LB, [...daftarKe(4, 40).filter((v) => daftarKe(5, 50).includes(v)).map((n) => ({ t: "I_KLIK", n })), { t: "I_CEK" }]);
+  cek(!salahPasangan.irisan.tandaOk && !salahPasangan.irisan.tanda.includes(40), "Irisan: bilangan di luar daftar pasangan ini tidak dapat ditandai, dan tanda kelebihan ditolak");
+
+  // Jadwal.
+  for (const [i, d] of B.DATA_JADWAL.entries()) {
+    const k = kpkMandiri(d.a, d.b);
+    const tgl = tanggalSetelah(d.awal, k);
+    const xd = LB(y0, { t: "D_DATA", i });
+    const oh = B.opsiHari(i);
+    cek(oh.length === 3 && new Set(oh).size === 3 && oh.filter((v) => v === k).length === 1 && oh.includes(2 * k) && oh.includes(d.a + d.b) && d.a + d.b !== k, `Jadwal ${d.namaA}: tiga pilihan hari, satu KPK ${k}`);
+    const ot = B.opsiTanggal(i);
+    cek(ot.length === 3 && new Set(ot).size === 3 && ot.filter((v) => v === tgl).length === 1 && ot.includes(k) && ot.includes(tanggalSetelah(d.awal, d.a + d.b)) && ot.every((v) => v >= 1 && v <= 31), `Jadwal ${d.namaA}: tiga pilihan tanggal Agustus, satu benar (${tgl})`);
+    cek(tgl <= 31, `Jadwal ${d.namaA}: tanggal tetap di bulan Agustus`);
+    // Tanggal sebelum hari ditolak.
+    const dini = LB(xd, { t: "D_TANGGAL", nilai: tgl });
+    cek(dini.pernah.length === 0 && /Tentukan dulu lama hari/.test(dini.pesan), `Jadwal ${d.namaA}: tanggal sebelum hari ditolak`);
+    for (const v of oh.filter((o) => o !== k)) {
+      const s = LB(xd, { t: "D_HARI", nilai: v });
+      cek(!s.jadwal.hariOk && !s.pesan.startsWith("✅") && s.pesan.length > 10, `Jadwal ${d.namaA}: hari ${v} ditolak`);
+      cek(LB(s, { t: "D_TANGGAL", nilai: tgl }).pernah.length === 0, `Jadwal ${d.namaA}: tanggal setelah hari salah tidak dicatat`);
+      cek(/pertemuan yang kedua/.test(s.pesan) === (v === 2 * k) && /jumlah dua selang/.test(s.pesan) === (v === d.a + d.b), `Jadwal ${d.namaA}: hari ${v} dijelaskan tepat`);
+    }
+    const hOk = LB(xd, { t: "D_HARI", nilai: k });
+    cek(hOk.jadwal.hariOk && hOk.pesan.startsWith("✅") && hOk.pesan.includes(`KPK dari ${d.a} dan ${d.b}`), `Jadwal ${d.namaA}: hari ${k} benar`);
+    const tOk = LB(hOk, { t: "D_TANGGAL", nilai: tgl });
+    cek(tOk.pernah.includes(`jadwal:${d.a}:${d.b}`) && tOk.pesan.startsWith("✅") && tOk.pesan.includes(`${d.awal} Agustus ditambah ${k} hari jatuh pada ${tgl} Agustus`), `Jadwal ${d.namaA}: tanggal ${tgl} Agustus tercatat`);
+    for (const v of ot.filter((o) => o !== tgl)) {
+      const s = LB(hOk, { t: "D_TANGGAL", nilai: v });
+      cek(s.pernah.length === 0 && !s.pesan.startsWith("✅") && /lamanya hari/.test(s.pesan) === (v === k), `Jadwal ${d.namaA}: tanggal ${v} ditolak`);
+    }
+    cek(!LB(hOk, { t: "D_DATA", i: (i + 1) % 3 }).jadwal.hariOk, `Jadwal ${d.namaA}: ganti pasangan mengulang hari`);
+  }
+  cek(LB(y0, { t: "D_HARI", nilai: 99 }) === y0 && LB(y0, { t: "D_DATA", i: 3 }) === y0 && LB(y0, { t: "D_TANGGAL", nilai: 99 }) === y0, "Jadwal: di luar batas diabaikan");
+
+  // Fuzz.
+  const acak = acakDari(53);
+  let s = y0;
+  let ok = true;
+  const pesanSemua = new Set();
+  const riwayatSemua = new Set();
+  for (let i = 0; i < 20000; i += 1) {
+    const p = acak(18);
+    const kunciI = B.kunciIrisan(s);
+    const belum = kunciI.find((n) => !s.irisan.tanda.includes(n));
+    const ij = B.daftarIrisan(s);
+    const a =
+      p === 0 ? { t: "J_DATA", i: acak(4) } :
+      p <= 3 ? { t: "J_A" } :
+      p <= 6 ? { t: "J_B" } :
+      p === 7 ? (acak(4) === 0 ? { t: "J_ULANG" } : { t: "PESAN_KOSONG" }) :
+      p === 8 ? { t: "I_DATA", i: acak(4) } :
+      p === 9 ? { t: "I_KLIK", n: acak(8) === 0 ? 999 : [...ij.a, ...ij.b][acak(20)] } :
+      p === 10 ? { t: "I_KLIK", n: belum ?? ij.a[0] } :
+      p === 11 ? (acak(5) === 0 ? { t: "I_BERSIH" } : { t: "I_CEK" }) :
+      p === 12 ? { t: "I_KPK", nilai: acak(6) === 0 ? 99 : B.opsiKpkIrisan(s.irisan.data)[acak(3)] } :
+      p === 13 ? { t: "D_DATA", i: acak(4) } :
+      p === 14 ? { t: "D_HARI", nilai: acak(6) === 0 ? 99 : B.opsiHari(s.jadwal.data)[acak(3)] } :
+      p === 15 ? { t: "D_TANGGAL", nilai: acak(6) === 0 ? 99 : B.opsiTanggal(s.jadwal.data)[acak(3)] } :
+      p === 16 ? { t: "I_CEK" } :
+      acak(40) === 0 ? { t: "RESET" } : { t: "J_A" };
+    const t = LB(s, a);
+    if (a.t !== "RESET" && !s.pernah.every((v) => t.pernah.includes(v))) ok = false;
+    if (!(t.jalur.a >= 0 && t.jalur.a <= 10 && t.jalur.b >= 0 && t.jalur.b <= 10 && t.jalur.data >= 0 && t.jalur.data < 3)) ok = false;
+    if (!(t.irisan.data >= 0 && t.irisan.data < 3 && t.jadwal.data >= 0 && t.jadwal.data < 3)) ok = false;
+    const tj = B.daftarIrisan(t);
+    if (t.irisan.tanda.some((v, j, w) => !(tj.a.includes(v) || tj.b.includes(v)) || (j > 0 && w[j - 1] >= v))) ok = false;
+    if (t.irisan.tandaOk && JSON.stringify(t.irisan.tanda) !== JSON.stringify(B.kunciIrisan(t))) ok = false;
+    if (typeof t.jadwal.hariOk !== "boolean") ok = false;
+    for (const id of t.pernah) if (!/^(jalur:(3:4|3:5|4:5)|irisan:(4:5|2:3|6:8)|jadwal:(3:4|3:5|5:2))$/.test(id)) ok = false;
+    if (t.pesan) pesanSemua.add(t.pesan);
+    for (const id of t.pernah) riwayatSemua.add(id);
+    s = t;
+  }
+  cek(ok, "fuzz 20.000 aksi Lab Dua Jalur: batas terjaga, riwayat tidak dicabut");
+  cek(pesanSemua.size > 40 && [...pesanSemua].every(tanpaAngka), `fuzz Lab Dua Jalur: semua ${pesanSemua.size} pesan dieja menjadi kata`);
+  cek(riwayatSemua.size >= 6, `fuzz Lab Dua Jalur: riwayat terkumpul (${[...riwayatSemua].join(" ")})`);
+  globalThis.__pesanB = [...pesanSemua];
+}
+
+/* ------------------------------ Mesin B ------------------------------ */
+{
+  const c0 = MS.MESIN_KPK;
+  cek(c0.id === "mesin-kpk-k5b2" && c0.selesaiId === K5.ID_MESIN_K5B2.B, "Mesin KPK: id selesai sesuai misi");
+  sama(MS.KASUS_KPK.map((k) => [k.a, k.b]), [[2, 3], [4, 5], [6, 8]], "Mesin KPK: pasangan 2 dan 3, 4 dan 5, 6 dan 8");
+  for (const [i, k] of MS.KASUS_KPK.entries()) {
+    const c = c0.kasus[i];
+    const [jalur, irisan, kpk, jadwal] = c.langkah;
+    const kunci = kpkMandiri(k.a, k.b);
+    const p = daftarKe(k.a, k.a * MS.PANJANG_DAFTAR_KPK);
+    const q = daftarKe(k.b, k.b * MS.PANJANG_DAFTAR_KPK);
+    const banyak = p.filter((v) => adalahKelipatan(v, k.b)).length;
+    cek(banyak >= 1 && banyak === biasaMandiri(p, q).length, `Mesin KPK ${k.a} dan ${k.b}: ada kelipatan persekutuan di daftar`);
+    const hitungA = daftarKe(k.a, kunci).length;
+    const hitungB = daftarKe(k.b, kunci).length;
+    cek(Number(jalur.benar) === hitungA && jalur.tanya.includes(`berjarak ${k.a} harus`) && jalur.opsi.includes(String(hitungA + 1)) && jalur.opsi.includes(String(hitungB)) && hitungA !== hitungB, `Mesin KPK ${k.a} dan ${k.b}: ${hitungA} kali pendaratan sampai bertemu`);
+    cek(Number(irisan.benar) === banyak && irisan.tanya.includes(p.join(", ")) && irisan.tanya.includes(q.join(", ")) && irisan.opsi.every((o) => o === irisan.benar || Number(o) !== banyak), `Mesin KPK ${k.a} dan ${k.b}: ${banyak} bilangan di kedua daftar (dihitung)`);
+    cek(Number(kpk.benar) === kunci && kpk.opsi.includes(String(k.a + k.b)) && kpk.opsi.every((o) => o === kpk.benar || (Number(o) !== kunci && !(adalahKelipatan(Number(o), k.a) && adalahKelipatan(Number(o), k.b) && Number(o) < kunci))), `Mesin KPK ${k.a} dan ${k.b}: KPK ${kunci}; pengecoh bukan KPK`);
+    cek(kpk.opsi.some((o) => Number(o) === (k.a * k.b !== kunci ? k.a * k.b : 2 * kunci)), `Mesin KPK ${k.a} dan ${k.b}: pengecoh hasil kali atau dua kali KPK`);
+    const tgl = tanggalSetelah(k.awal, kunci);
+    cek(jadwal.benar === `${tgl} Agustus` && tgl <= 31 && jadwal.tanya.includes(`${k.awal} Agustus`) && jadwal.opsi.includes(`${kunci} Agustus`) && jadwal.opsi.includes(`${tanggalSetelah(k.awal, k.a + k.b)} Agustus`), `Mesin KPK ${k.a} dan ${k.b}: ${k.awal} Agustus ditambah ${kunci} menjadi ${tgl} Agustus`);
+    cek(EJ.ejaK5B1(c.ringkas).includes(EJ.kataK5B1(kunci)), `Mesin KPK ${k.a} dan ${k.b}: ringkas dieja dengan KPK benar`);
+  }
+}
+
+/* ------------------------------ Skenario B ------------------------------ */
+{
+  const S = SK.SKENARIO_K5B2B;
+  cek(S.adegan.length >= 5 && S.adegan.length <= 8, `${S.id}: 5 sampai 8 adegan`);
+  cek(S.adegan[0].jenis === "narasi" && S.adegan[S.adegan.length - 1].jenis === "akhir" && new Set(S.adegan.map((a) => a.jenis)).size >= 4, `${S.id}: buka, tutup, empat jenis`);
+  const semuaTeks = [];
+  for (const a of S.adegan) {
+    semuaTeks.push(a.cerita);
+    for (const o of a.opsi ?? []) semuaTeks.push(o.teks, o.umpan);
+    for (const q of a.soal ?? []) semuaTeks.push(q.teks, ...q.opsi);
+    for (const f of ["tanya", "sukses", "salah", "kurang", "lebih"]) if (a[f]) semuaTeks.push(a[f]);
+  }
+  cek(semuaTeks.every(tanpaAngka), `${S.id}: semua teks dapat dieja`);
+  sama(S.id.replace(/-k5b2$/, ""), K5.ID_SKENARIO_K5B2.B, "id skenario B sesuai id misi");
+  const adegan = (id) => S.adegan.find((a) => a.id === id);
+  const kpk34 = kpkMandiri(3, 4);
+  const daftar = adegan("daftar");
+  cek(daftar.cerita.includes(`Kelipatan 3: ${daftarKe(3, 12).join(", ")}`) && daftar.cerita.includes(`Kelipatan 4: ${daftarKe(4, 12).join(", ")}`), "B: dua daftar kelipatan 3 dan 4 sampai 12 (dihitung)");
+  cek(daftar.opsi.find((o) => o.benar).teks === String(kpk34) && daftar.opsi.filter((o) => !o.benar).every((o) => adalahKelipatan(Number(o.teks), 3) !== adalahKelipatan(Number(o.teks), 4)), "B: bilangan di kedua daftar 12; pengecoh hanya di satu daftar");
+  const yohana = adegan("yohana");
+  const hariKe = [...yohana.cerita.matchAll(/ke-(\d+)/g)].map((m) => Number(m[1]));
+  sama(hariKe, daftarKe(4, 12), "B: hari renang Yohana ke-4, ke-8, ke-12");
+  cek(yohana.jumlah === daftarKe(4, 12).length, "B: tiga hari renang Yohana dalam 12 hari (dihitung)");
+  const nisa = adegan("nisa");
+  cek(nisa.target === daftarKe(3, 12).length && nisa.target <= nisa.maks, "B: empat hari renang Nisa dalam 12 hari (dihitung)");
+  const soal = adegan("periksa").soal;
+  cek(soal[0].jawaban === String(kpk34) && soal[0].opsi.filter((o) => o !== soal[0].jawaban).every((o) => Number(o) !== kpk34), "B: KPK 3 dan 4 (dihitung)");
+  cek(soal[1].jawaban === `${tanggalSetelah(3, kpk34)} Agustus` && adegan("periksa").cerita.includes("3 Agustus") && soal[1].opsi.filter((o) => o !== soal[1].jawaban).every((o) => o !== `${tanggalSetelah(3, kpk34)} Agustus`), "B: 3 Agustus ditambah KPK menjadi 15 Agustus (dihitung)");
+  cek(soal[2].jawaban === String(2 * kpk34) && soal[2].opsi.filter((o) => o !== soal[2].jawaban).every((o) => !(adalahKelipatan(Number(o), 3) && adalahKelipatan(Number(o), 4))), "B: kelipatan persekutuan kedua 24; pengecoh bukan kelipatan persekutuan (dihitung)");
+  const tebak = adegan("tebak");
+  cek(tebak.cerita.includes("7") && 3 + 4 === 7 && !adalahKelipatan(7, 3) && tebak.opsi.find((o) => o.benar).teks === `Salah, KPK adalah ${kpk34}` && tebak.opsi.some((o) => !o.benar && o.teks === `Salah, KPK adalah ${2 * kpk34}`), "B: KPK bukan jumlah (7 bukan kelipatan 3) dan bukan 24 (dihitung)");
+  const posisi = S.adegan.filter((a) => a.jenis === "pilih").map((a) => a.opsi.findIndex((o) => o.benar));
+  cek(new Set(posisi).size === posisi.length, `B: letak jawaban pilih bervariasi (${posisi.join("")})`);
+}
+
+/* ------------------------------ Misi B ------------------------------ */
+{
+  const daftar = K5.daftarMisiK5Bab2("B");
+  const capai = (aksi) => M0.misiBaru(K5.MISI_B, B.keadaanJalurK5B2B(jalan(B.awalJalurK5B2B(), LB, aksi)), new Set());
+  const ulang = (aksi, n) => Array(n).fill(aksi);
+  const jalurKe = (i, na, nb) => [{ t: "J_DATA", i }, ...ulang({ t: "J_A" }, na), ...ulang({ t: "J_B" }, nb)];
+  cek(capai(jalurKe(0, 4, 3)).join() === "b-nisa", "B: jalur 3 dan 4 bertemu di 12 memenuhi");
+  cek(capai(jalurKe(0, 4, 2)).length === 0 && capai(jalurKe(0, 10, 0)).length === 0 && capai(jalurKe(0, 3, 4)).length === 0, "B: 4 dan 2 pendaratan, satu pelompat saja, atau 3 dan 4 pendaratan tidak memenuhi");
+  cek(capai(jalurKe(1, 5, 3)).join() === "b-asep", "B: jalur 3 dan 5 bertemu di 15 memenuhi");
+  cek(capai(jalurKe(1, 4, 3)).length === 0 && capai(jalurKe(1, 5, 2)).length === 0, "B: jalur 3 dan 5 belum bertemu tidak memenuhi");
+  cek(capai(jalurKe(2, 5, 4)).join() === "b-empatlima", "B: tantangan jalur 4 dan 5 bertemu di 20");
+  cek(capai(jalurKe(2, 4, 4)).length === 0, "B: jalur 4 dan 5 pada 16 dan 20 sebelum bertemu tidak memenuhi");
+  const irisanKe = (i, tanda, pilih) => [{ t: "I_DATA", i }, ...tanda.map((n) => ({ t: "I_KLIK", n })), { t: "I_CEK" }, ...(pilih === null ? [] : [{ t: "I_KPK", nilai: pilih }])];
+  cek(capai(irisanKe(0, [20, 40], 20)).join() === "b-irisan", "B: irisan 4 dan 5 memenuhi");
+  cek(capai(irisanKe(0, [20, 40], 40)).length === 0 && capai(irisanKe(0, [20, 40], null)).length === 0 && capai(irisanKe(0, [20], 20)).length === 0 && capai(irisanKe(0, [20, 40, 10], 20)).length === 0, "B: irisan 4 dan 5 dengan pilihan 40, tanpa pilihan, tanda kurang, atau tanda kelebihan tidak memenuhi");
+  cek(capai(irisanKe(1, [6, 12, 18], 6)).join() === "b-duatiga", "B: tantangan irisan 2 dan 3");
+  cek(capai(irisanKe(2, [24, 48], 24)).join() === "b-enamdelapan", "B: tantangan irisan 6 dan 8");
+  cek(capai(irisanKe(2, [24, 48], 24)).join() !== "b-irisan", "B: irisan 6 dan 8 bukan misi 4 dan 5");
+  const jadwalKe = (i, hari, tgl) => [{ t: "D_DATA", i }, { t: "D_HARI", nilai: hari }, { t: "D_TANGGAL", nilai: tgl }];
+  cek(capai(jadwalKe(0, 12, 15)).join() === "b-hari", "B: Nisa dan Yohana 12 hari, 15 Agustus memenuhi");
+  cek(capai(jadwalKe(0, 12, 12)).length === 0 && capai(jadwalKe(0, 24, 15)).length === 0 && capai(jadwalKe(0, 7, 15)).length === 0 && capai([{ t: "D_DATA", i: 0 }, { t: "D_TANGGAL", nilai: 15 }]).length === 0, "B: tanggal 12, hari 24, hari 7, atau tanggal tanpa hari tidak memenuhi");
+  cek(capai(jadwalKe(2, 10, 11)).join() === "b-dinda", "B: Dinda dan Amelia 10 hari, 11 Agustus memenuhi");
+  cek(capai(jadwalKe(2, 10, 10)).length === 0 && capai(jadwalKe(1, 15, 20)).join() === "", "B: tanggal 10 tidak memenuhi, dan Asep Lukas bukan misi jadwal");
+  cek(M0.misiBaru(K5.MISI_B, { alat: "kelipatan", pernah: ["jalur:3:4", "irisan:4:5", "jadwal:3:4"] }, new Set()).length === 0, "B: riwayat alat lain tidak memenuhi misi B");
+  cek(M0.misiBaru(K5.MISI_A, B.keadaanJalurK5B2B({ ...B.awalJalurK5B2B(), pernah: ["jalur:3:4"] }), new Set()).length === 0, "B: riwayat jalur tidak memenuhi misi A");
+  // Gerbang: tujuh wajib.
+  const tampil = M0.tampilMisi(daftar);
+  const wajib = tampil.filter((m) => m.wajib).map((m) => m.id);
+  cek(wajib.length === 7 && !M0.wajibSelesai(tampil, new Set(wajib.slice(0, 6))) && M0.wajibSelesai(tampil, new Set(wajib)), "B: gerbang terbuka hanya setelah tujuh wajib");
+}
+
+/* ------------------------------ Konsep B tidak bocor ------------------------------ */
+{
+  const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas5-bab2-ringkas.json", import.meta.url), "utf8"));
+  const baca = (nama, ekstensi) => readFileSync(new URL(`../src/components/modul/${nama}.${ekstensi}`, import.meta.url), "utf8");
+  const tanpaKomentar = (s) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const teksDari = (o) => {
+    const hasil = [];
+    JSON.stringify(o, (k, v) => {
+      if (typeof v === "string") hasil.push(v);
+      return v;
+    });
+    return hasil.join(" | ");
+  };
+  // Sub-Bab B tidak memakai konsep C sampai E: faktor, pembagi, FPB, bilangan prima, faktorisasi, dan "terbesar".
+  const BOCOR_B = /\b(fpb|faktor\w*|prima|pembagi|pohon|ayakan|eratosthenes|terbesar)\b/i;
+  const catat = (teks, apa) => {
+    const m = BOCOR_B.exec(teks);
+    cek(!m, `B: ${apa} bebas konsep sub-bab berikutnya (${m ? m[0] : ""} di "${String(teks).slice(Math.max(0, (m?.index ?? 0) - 30), (m?.index ?? 0) + 40)}")`);
+  };
+  for (const t of [TK.MISI_K5B2.B, TK.NAMA_SIM_K5B2.B, ...K5.MISI_B.map((m) => m.teks)]) catat(t, "teks misi");
+  catat(teksDari(MS.MESIN_KPK), "mesin");
+  catat(teksDari(SK.SKENARIO_K5B2B), "skenario");
+  catat(teksDari(ringkas.subBab.B), "peta dan infografis ringkas");
+  catat(tanpaKomentar(baca("SimulasiLabJalurK5B2", "tsx")), "komponen lab (tanpa komentar)");
+  catat(tanpaKomentar(baca("model-jalur-k5b2", "tsx")), "model gambar (tanpa komentar)");
+  catat(tanpaKomentar(baca("lab-jalur-k5b2b", "ts")), "logika lab (tanpa komentar)");
+  // Kode bersama dan Sub-Bab A juga bebas dari konsep C sampai E (tanpa komentar).
+  catat(tanpaKomentar(baca("SimulasiK5Bab2", "tsx")), "pembungkus (tanpa komentar)");
+  for (const p of globalThis.__pesanB) catat(p, "pesan lab dari fuzz");
+  const x = B.awalJalurK5B2B();
+  const ucapan = [];
+  for (let i = 0; i < 3; i += 1) {
+    ucapan.push(B.ucapJalurK5B2B(LB(x, { t: "J_DATA", i })), B.ucapJalurK5B2B(LB(LB(x, { t: "J_DATA", i }), { t: "J_A" })));
+    ucapan.push(B.ucapIrisanK5B2B(LB(x, { t: "I_DATA", i })), B.ucapIrisanK5B2B(LB(LB(x, { t: "I_DATA", i }), { t: "I_KLIK", n: B.daftarIrisan(LB(x, { t: "I_DATA", i })).a[1] })));
+    ucapan.push(B.ucapJadwalK5B2B(LB(x, { t: "D_DATA", i })));
+  }
+  cek(ucapan.length === 15 && ucapan.every(tanpaAngka), `semua ${ucapan.length} ucapan lab B dieja menjadi kata`);
+  for (const u of ucapan) catat(u, "ucapan lab");
+
+  for (const f of ["SimulasiLabJalurK5B2", "model-jalur-k5b2"]) {
+    const s = baca(f, "tsx");
+    cek(!/correct_index|explanation/.test(s), `${f}: tidak memuat correct_index atau explanation`);
+    cek(!/fetch\(|XMLHttpRequest|api\/|openai|anthropic|gemini/i.test(s), `${f}: tanpa jaringan atau model bahasa`);
+  }
+  {
+    const s = baca("lab-jalur-k5b2b", "ts");
+    cek(!/fetch\(|XMLHttpRequest|from "react"|openai|anthropic|gemini|correct_index|explanation/i.test(s) && (s.match(/^import .+$/gm) ?? []).length === 0, "lab-jalur-k5b2b: murni, tanpa impor");
+    const k = baca("SimulasiLabJalurK5B2", "tsx");
+    cek(/useEffect\(\(\) => \{\s*onKeadaan\?\.\(keadaan\w+\(x\)\);\s*\}, \[onKeadaan, x\]\);/.test(k), "lab B: lapor keadaan lewat useEffect");
+    cek(/setLihat\(v\);\s*kirim\(\{ t: "PESAN_KOSONG" \}\);/.test(k), "lab B: ganti tampilan mengosongkan pesan");
+    const catatan = [...k.matchAll(/^\s*"([^"]+)",$/gm)].map((m) => m[1]);
+    cek(catatan.length >= 4 && catatan.every(tanpaAngka), "lab B: Coba ini dapat dieja");
+  }
+
+  // Data ringkas B dihitung ulang mandiri.
+  const B0 = ringkas.subBab.B;
+  const butir = (panel, id) => panel.butir.find((b) => b.id === id);
+  const deret = (d, n) => daftarKe(d, d * n).join(", ");
+  const p1 = B0.infografis.panel[0];
+  const k34 = kpkMandiri(3, 4);
+  cek(butir(p1, "tiga").visual.isi === deret(3, 5) && butir(p1, "empat").visual.isi === deret(4, 5) && butir(p1, "sama").visual.isi === String(k34), "ringkas B: dua daftar dan bilangan yang sama (dihitung)");
+  cek(biasaMandiri(daftarKe(3, 15), daftarKe(4, 20)).join() === String(k34), "ringkas B: hanya 12 di dua daftar pendek (dihitung)");
+  const [pers, kp] = B0.infografis.panel[1].sisi;
+  cek(pers.visual.isi === `${[1, 2, 3].map((m) => k34 * m).join(", ")}, …` && kp.visual.isi === String(k34), "ringkas B: kelipatan persekutuan dan KPK (dihitung)");
+  const p3 = B0.infografis.panel[2];
+  sama(butir(p3, "lama").visual.baris, [["3 dan 4", kpkMandiri(3, 4)], ["3 dan 5", kpkMandiri(3, 5)], ["5 dan 2", kpkMandiri(5, 2)]], "ringkas B: KPK tiga pasangan (dihitung)");
+  cek(butir(p3, "tanggal").visual.isi === `3 + ${k34} = ${tanggalSetelah(3, k34)} Agustus` && butir(p3, "jumlah").visual.isi === `3 + 4 = ${3 + 4}` && !adalahKelipatan(7, 3), "ringkas B: tanggal dan jumlah (dihitung)");
+  const kartu = (id) => B0.peta.kartu.find((k) => k.id === id).teks;
+  cek(kartu("b-tiga") === `Kelipatan 3: ${deret(3, 4)}` && kartu("b-empat") === `Kelipatan 4: ${deret(4, 4)}` && kartu("b-dua-belas") === `KPK 3 dan 4 adalah ${k34}`, "ringkas B: kartu daftar dan KPK (dihitung)");
+  cek(daftarKe(3, 12).includes(12) && daftarKe(4, 16).includes(12) && !adalahKelipatan(8, 3) && adalahKelipatan(8, 4) && kartu("b-dua-daftar") === "12 ada di kedua daftar" && kartu("b-satu-daftar") === "8 hanya ada di daftar 4", "ringkas B: 12 di kedua daftar, 8 hanya di daftar 4 (dihitung)");
+  cek(kartu("b-tanggal") === `3 Agustus + ${k34} hari = ${tanggalSetelah(3, k34)} Agustus` && kartu("b-berulang") === `Bertemu lagi tiap ${k34} hari` && kartu("b-bukan-jumlah") === "Bukan jumlah: 3 + 4 = 7", "ringkas B: kartu jadwal (dihitung)");
 }
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);

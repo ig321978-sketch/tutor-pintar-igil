@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-mendarat", "teks": "Mendarat di 3, 6, 9", "ikon": "🦘", "cabang": "lompat", "petunjuk": "Pendaratan lompatan itu soal lompat hitung. Coba cabang lain." },
-          { "id": "a-jarak", "teks": "Jarak tiap lompatan sama", "ikon": "↔️", "cabang": "lompat", "petunjuk": "Jarak yang sama itu soal lompat hitung. Coba cabang lain." },
-          { "id": "a-warna", "teks": "Kelipatan 4: 4, 8, 12, …", "ikon": "🟨", "cabang": "tabel", "petunjuk": "Bilangan yang diwarnai itu soal tabel seratus. Coba cabang lain." },
-          { "id": "a-pola", "teks": "Warna jatuh berpola teratur", "ikon": "🔲", "cabang": "tabel", "petunjuk": "Pola warna itu soal tabel seratus. Coba cabang lain." },
-          { "id": "a-12", "teks": "12 ÷ 3 bersisa 0: kelipatan", "ikon": "✅", "cabang": "habis", "petunjuk": "Sisa nol itu soal habis dibagi. Coba cabang lain." },
-          { "id": "a-14", "teks": "14 ÷ 3 bersisa 2: bukan", "ikon": "❎", "cabang": "habis", "petunjuk": "Sisa yang bukan nol itu soal habis dibagi. Coba cabang lain." },
-          { "id": "a-pertama", "teks": "Kelipatan pertama: bilangan itu sendiri", "ikon": "1️⃣", "cabang": "aturan", "petunjuk": "Kelipatan pertama itu aturan buku. Coba cabang lain." },
-          { "id": "a-nol", "teks": "Nol bukan kelipatan di buku ini", "ikon": "0️⃣", "cabang": "aturan", "petunjuk": "Soal nol itu aturan buku. Coba cabang lain." }
+          {
+            "id": "a-mendarat",
+            "teks": "Mendarat di 3, 6, 9",
+            "ikon": "🦘",
+            "cabang": "lompat",
+            "petunjuk": "Pendaratan lompatan itu soal lompat hitung. Coba cabang lain."
+          },
+          {
+            "id": "a-jarak",
+            "teks": "Jarak tiap lompatan sama",
+            "ikon": "↔️",
+            "cabang": "lompat",
+            "petunjuk": "Jarak yang sama itu soal lompat hitung. Coba cabang lain."
+          },
+          {
+            "id": "a-warna",
+            "teks": "Kelipatan 4: 4, 8, 12, …",
+            "ikon": "🟨",
+            "cabang": "tabel",
+            "petunjuk": "Bilangan yang diwarnai itu soal tabel seratus. Coba cabang lain."
+          },
+          {
+            "id": "a-pola",
+            "teks": "Warna jatuh berpola teratur",
+            "ikon": "🔲",
+            "cabang": "tabel",
+            "petunjuk": "Pola warna itu soal tabel seratus. Coba cabang lain."
+          },
+          {
+            "id": "a-12",
+            "teks": "12 ÷ 3 bersisa 0: kelipatan",
+            "ikon": "✅",
+            "cabang": "habis",
+            "petunjuk": "Sisa nol itu soal habis dibagi. Coba cabang lain."
+          },
+          {
+            "id": "a-14",
+            "teks": "14 ÷ 3 bersisa 2: bukan",
+            "ikon": "❎",
+            "cabang": "habis",
+            "petunjuk": "Sisa yang bukan nol itu soal habis dibagi. Coba cabang lain."
+          },
+          {
+            "id": "a-pertama",
+            "teks": "Kelipatan pertama: bilangan itu sendiri",
+            "ikon": "1️⃣",
+            "cabang": "aturan",
+            "petunjuk": "Kelipatan pertama itu aturan buku. Coba cabang lain."
+          },
+          {
+            "id": "a-nol",
+            "teks": "Nol bukan kelipatan di buku ini",
+            "ikon": "0️⃣",
+            "cabang": "aturan",
+            "petunjuk": "Soal nol itu aturan buku. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -72,10 +120,54 @@
                 "ikon": "🦘",
                 "isi": "Jarak tiga, empat pendaratan pertama.",
                 "suara": "Dengan jarak tiga, pendaratan pertama di tiga, lalu enam, sembilan, dan dua belas.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Pendaratan", "Letak"], "baris": [["pertama", 3], ["kedua", 6], ["ketiga", 9], ["keempat", 12]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Pendaratan",
+                    "Letak"
+                  ],
+                  "baris": [
+                    [
+                      "pertama",
+                      3
+                    ],
+                    [
+                      "kedua",
+                      6
+                    ],
+                    [
+                      "ketiga",
+                      9
+                    ],
+                    [
+                      "keempat",
+                      12
+                    ]
+                  ]
+                }
               },
-              { "id": "jarak", "label": "Jarak", "ikon": "↔️", "isi": "Tiap lompatan menambah jarak yang sama.", "suara": "Tiap lompatan menambah jarak yang sama, yaitu tiga.", "visual": { "jenis": "teks", "isi": "+3 +3 +3" } },
-              { "id": "contoh", "label": "Contoh", "ikon": "✍️", "isi": "Kelipatan tujuh.", "suara": "Kelipatan tujuh adalah tujuh, empat belas, dua puluh satu, dan dua puluh delapan.", "visual": { "jenis": "teks", "isi": "7, 14, 21, 28" } }
+              {
+                "id": "jarak",
+                "label": "Jarak",
+                "ikon": "↔️",
+                "isi": "Tiap lompatan menambah jarak yang sama.",
+                "suara": "Tiap lompatan menambah jarak yang sama, yaitu tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "+3 +3 +3"
+                }
+              },
+              {
+                "id": "contoh",
+                "label": "Contoh",
+                "ikon": "✍️",
+                "isi": "Kelipatan tujuh.",
+                "suara": "Kelipatan tujuh adalah tujuh, empat belas, dua puluh satu, dan dua puluh delapan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7, 14, 21, 28"
+                }
+              }
             ]
           },
           {
@@ -85,8 +177,28 @@
             "ide": "Jarak lompatan menentukan daftarnya.",
             "suara": "Lihat dua daftar kelipatan dengan jarak yang berbeda.",
             "sisi": [
-              { "id": "tiga", "nama": "Jarak tiga", "ikon": "🟨", "catatan": "Mendarat tiap tiga bilangan.", "suara": "Dengan jarak tiga, pendaratan jatuh tiap tiga bilangan.", "visual": { "jenis": "teks", "isi": "3, 6, 9, 12, 15" } },
-              { "id": "empat", "nama": "Jarak empat", "ikon": "🟩", "catatan": "Mendarat tiap empat bilangan.", "suara": "Dengan jarak empat, pendaratan jatuh tiap empat bilangan.", "visual": { "jenis": "teks", "isi": "4, 8, 12, 16, 20" } }
+              {
+                "id": "tiga",
+                "nama": "Jarak tiga",
+                "ikon": "🟨",
+                "catatan": "Mendarat tiap tiga bilangan.",
+                "suara": "Dengan jarak tiga, pendaratan jatuh tiap tiga bilangan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3, 6, 9, 12, 15"
+                }
+              },
+              {
+                "id": "empat",
+                "nama": "Jarak empat",
+                "ikon": "🟩",
+                "catatan": "Mendarat tiap empat bilangan.",
+                "suara": "Dengan jarak empat, pendaratan jatuh tiap empat bilangan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4, 8, 12, 16, 20"
+                }
+              }
             ],
             "kesimpulan": "Jarak berbeda, daftar kelipatan pun berbeda."
           },
@@ -97,9 +209,276 @@
             "ide": "Lihat sisa saat membagi.",
             "suara": "Ada tiga cara memeriksa kelipatan. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "kelipatan", "label": "Habis", "ikon": "✅", "isi": "Sisa nol berarti kelipatan.", "suara": "Dua belas dibagi tiga sama dengan empat, sisanya nol. Jadi dua belas kelipatan tiga.", "visual": { "jenis": "teks", "isi": "12 ÷ 3 = 4 sisa 0" } },
-              { "id": "bukan", "label": "Bukan", "ikon": "❎", "isi": "Sisa tidak nol berarti bukan kelipatan.", "suara": "Empat belas dibagi tiga sama dengan empat, sisanya dua. Jadi empat belas bukan kelipatan tiga.", "visual": { "jenis": "teks", "isi": "14 ÷ 3 = 4 sisa 2" } },
-              { "id": "tabel", "label": "Tabel", "ikon": "🧮", "isi": "Kelipatan di tabel seratus berjarak sama.", "suara": "Di tabel seratus, kelipatan sembilan adalah sembilan, delapan belas, dua puluh tujuh, dan seterusnya.", "visual": { "jenis": "teks", "isi": "9, 18, 27, 36, …" } }
+              {
+                "id": "kelipatan",
+                "label": "Habis",
+                "ikon": "✅",
+                "isi": "Sisa nol berarti kelipatan.",
+                "suara": "Dua belas dibagi tiga sama dengan empat, sisanya nol. Jadi dua belas kelipatan tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 ÷ 3 = 4 sisa 0"
+                }
+              },
+              {
+                "id": "bukan",
+                "label": "Bukan",
+                "ikon": "❎",
+                "isi": "Sisa tidak nol berarti bukan kelipatan.",
+                "suara": "Empat belas dibagi tiga sama dengan empat, sisanya dua. Jadi empat belas bukan kelipatan tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "14 ÷ 3 = 4 sisa 2"
+                }
+              },
+              {
+                "id": "tabel",
+                "label": "Tabel",
+                "ikon": "🧮",
+                "isi": "Kelipatan di tabel seratus berjarak sama.",
+                "suara": "Di tabel seratus, kelipatan sembilan adalah sembilan, delapan belas, dua puluh tujuh, dan seterusnya.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "9, 18, 27, 36, …"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "KPK",
+          "ikon": "🎯",
+          "suara": "Ini peta KPK. Kita belajar daftar kelipatan, kelipatan persekutuan, KPK, dan jadwal yang bertemu lagi. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "daftar",
+            "judul": "Daftar kelipatan",
+            "ikon": "📋",
+            "ringkas": "Tulis kelipatan tiap bilangan, lalu bandingkan.",
+            "suara": "Daftar kelipatan. Tulis kelipatan tiap bilangan, lalu bandingkan kedua daftar."
+          },
+          {
+            "id": "persekutuan",
+            "judul": "Kelipatan persekutuan",
+            "ikon": "🔀",
+            "ringkas": "Bilangan yang ada di kedua daftar.",
+            "suara": "Kelipatan persekutuan. Ini bilangan yang ada di kedua daftar kelipatan."
+          },
+          {
+            "id": "kpk",
+            "judul": "KPK",
+            "ikon": "🎯",
+            "ringkas": "Yang terkecil dari kelipatan persekutuan.",
+            "suara": "KPK. Ini kelipatan persekutuan yang terkecil, bukan jumlah dan bukan sembarang kelipatan."
+          },
+          {
+            "id": "jadwal",
+            "judul": "Jadwal",
+            "ikon": "🗓️",
+            "ringkas": "KPK menunjukkan kapan bertemu lagi.",
+            "suara": "Jadwal. KPK menunjukkan lama hari sampai dua orang bertemu lagi."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-tiga",
+            "teks": "Kelipatan 3: 3, 6, 9, 12",
+            "ikon": "🟨",
+            "cabang": "daftar",
+            "petunjuk": "Daftar kelipatan satu bilangan itu soal daftar kelipatan. Coba cabang lain."
+          },
+          {
+            "id": "b-empat",
+            "teks": "Kelipatan 4: 4, 8, 12, 16",
+            "ikon": "🟩",
+            "cabang": "daftar",
+            "petunjuk": "Daftar kelipatan satu bilangan itu soal daftar kelipatan. Coba cabang lain."
+          },
+          {
+            "id": "b-dua-daftar",
+            "teks": "12 ada di kedua daftar",
+            "ikon": "🔁",
+            "cabang": "persekutuan",
+            "petunjuk": "Bilangan yang ada di kedua daftar itu soal kelipatan persekutuan. Coba cabang lain."
+          },
+          {
+            "id": "b-satu-daftar",
+            "teks": "8 hanya ada di daftar 4",
+            "ikon": "1️⃣",
+            "cabang": "persekutuan",
+            "petunjuk": "Bilangan yang hanya ada di satu daftar itu bukan persekutuan. Coba cabang lain."
+          },
+          {
+            "id": "b-dua-belas",
+            "teks": "KPK 3 dan 4 adalah 12",
+            "ikon": "✅",
+            "cabang": "kpk",
+            "petunjuk": "Hasil KPK itu soal KPK. Coba cabang lain."
+          },
+          {
+            "id": "b-bukan-jumlah",
+            "teks": "Bukan jumlah: 3 + 4 = 7",
+            "ikon": "❎",
+            "cabang": "kpk",
+            "petunjuk": "Menolak jumlah sebagai KPK itu soal KPK. Coba cabang lain."
+          },
+          {
+            "id": "b-tanggal",
+            "teks": "3 Agustus + 12 hari = 15 Agustus",
+            "ikon": "📅",
+            "cabang": "jadwal",
+            "petunjuk": "Tanggal bertemu lagi itu soal jadwal. Coba cabang lain."
+          },
+          {
+            "id": "b-berulang",
+            "teks": "Bertemu lagi tiap 12 hari",
+            "ikon": "🔄",
+            "cabang": "jadwal",
+            "petunjuk": "Pertemuan berulang itu soal jadwal. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "KPK",
+        "suara": "Ini tiga panel tentang KPK. Ketuk kotaknya untuk membuka, lalu lihat dua daftar kelipatan dan jadwal bertemu lagi.",
+        "panel": [
+          {
+            "id": "b-daftar-info",
+            "tipe": "buka",
+            "judul": "Dua daftar kelipatan",
+            "ide": "Bandingkan dua daftar kelipatan.",
+            "suara": "Ada tiga hal tentang dua daftar kelipatan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tiga",
+                "label": "Kelipatan tiga",
+                "ikon": "🟨",
+                "isi": "Lompat tiga demi tiga.",
+                "suara": "Kelipatan tiga adalah tiga, enam, sembilan, dua belas, dan lima belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3, 6, 9, 12, 15"
+                }
+              },
+              {
+                "id": "empat",
+                "label": "Kelipatan empat",
+                "ikon": "🟩",
+                "isi": "Lompat empat demi empat.",
+                "suara": "Kelipatan empat adalah empat, delapan, dua belas, enam belas, dan dua puluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4, 8, 12, 16, 20"
+                }
+              },
+              {
+                "id": "sama",
+                "label": "Sama",
+                "ikon": "🔁",
+                "isi": "Bilangan yang ada di kedua daftar.",
+                "suara": "Dua belas ada di kedua daftar, jadi dua belas adalah kelipatan persekutuan tiga dan empat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-kpk-info",
+            "tipe": "banding",
+            "judul": "Persekutuan dan KPK",
+            "ide": "Hanya yang terkecil disebut KPK.",
+            "suara": "Lihat beda kelipatan persekutuan dan KPK.",
+            "sisi": [
+              {
+                "id": "persekutuan",
+                "nama": "Persekutuan",
+                "ikon": "🟨",
+                "catatan": "Semua bilangan di kedua daftar.",
+                "suara": "Kelipatan persekutuan tiga dan empat adalah dua belas, dua puluh empat, tiga puluh enam, dan seterusnya.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12, 24, 36, …"
+                }
+              },
+              {
+                "id": "kpk",
+                "nama": "KPK",
+                "ikon": "🟩",
+                "catatan": "Hanya yang terkecil.",
+                "suara": "KPK tiga dan empat hanya yang terkecil, yaitu dua belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12"
+                }
+              }
+            ],
+            "kesimpulan": "KPK adalah kelipatan persekutuan yang terkecil."
+          },
+          {
+            "id": "b-jadwal-info",
+            "tipe": "buka",
+            "judul": "Jadwal bertemu lagi",
+            "ide": "KPK menjadi lama hari bertemu lagi.",
+            "suara": "Ada tiga hal tentang jadwal bertemu lagi. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "lama",
+                "label": "Lama",
+                "ikon": "⏳",
+                "isi": "Lama hari adalah KPK.",
+                "suara": "Orang yang tiga hari sekali dan empat hari sekali bertemu lagi setelah dua belas hari.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Selang",
+                    "KPK"
+                  ],
+                  "baris": [
+                    [
+                      "3 dan 4",
+                      12
+                    ],
+                    [
+                      "3 dan 5",
+                      15
+                    ],
+                    [
+                      "5 dan 2",
+                      10
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "tanggal",
+                "label": "Tanggal",
+                "ikon": "📅",
+                "isi": "Tambahkan pada tanggal mulai.",
+                "suara": "Mulai tanggal tiga Agustus, ditambah dua belas hari, jatuh pada tanggal lima belas Agustus.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 + 12 = 15 Agustus"
+                }
+              },
+              {
+                "id": "jumlah",
+                "label": "Bukan jumlah",
+                "ikon": "❎",
+                "isi": "Jumlah dua selang bukan KPK.",
+                "suara": "Tiga ditambah empat sama dengan tujuh, tetapi tujuh bukan kelipatan persekutuan tiga dan empat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 + 4 = 7"
+                }
+              }
             ]
           }
         ]

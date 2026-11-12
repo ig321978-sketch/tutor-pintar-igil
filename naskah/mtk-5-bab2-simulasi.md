@@ -4,19 +4,20 @@ Bab: KPK dan FPB (`mtk-5-bab2`, `FASE_C`, kelas 5; kode data Materi `k5-mat-bab2
 
 Bab ini punya **lima sub-bab**: A (kelipatan), B (kelipatan persekutuan dan KPK), C (faktor), D (faktor persekutuan dan FPB), E (KPK dan FPB dengan faktor prima). Dikerjakan dalam lima gelombang, satu sub-bab per gelombang. Gelombang A sampai D tidak didaftarkan di registri; gelombang E mendaftarkan bab.
 
-**Status: Gelombang A (Sub-Bab A, Kelipatan) selesai. B sampai E belum.**
+**Status: Gelombang A (Kelipatan) dan B (Kelipatan Persekutuan dan KPK) selesai. C sampai E belum.**
 
-Berkas Materi bab ini tidak diubah (`SubBabK5B2A–E.tsx`, `naskah-k5b2.ts`, `data-k5b2.ts`, `paket-k5b2.ts`, dan lainnya). Pengeja suara memakai `ejaK5B1` (sampai 999.999) lewat prop `eja` mesin. Tokoh skenario dari buku: Nisa (A).
+Berkas Materi bab ini tidak diubah (`SubBabK5B2A–E.tsx`, `naskah-k5b2.ts`, `data-k5b2.ts`, `paket-k5b2.ts`, dan lainnya). Pengeja suara memakai `ejaK5B1` (sampai 999.999) lewat prop `eja` mesin. Tokoh skenario dari buku: Nisa (A) dan Yohana bersama Nisa (B).
 
 ## Alat
 
 | Sub-bab | Lab (tampilan) | Berkas | Mesin | Skenario |
 |---------|----------------|--------|-------|----------|
 | A | Lab Lompat Kelipatan (Lompat, Tabel, Cek) | `SimulasiLabKelipatanK5B2.tsx` + `lab-kelipatan-k5b2a.ts` | Mesin Kelipatan | Tepuk Kelipatan Nisa (7 adegan) |
+| B | Lab Dua Jalur (Jalur, Irisan, Jadwal) | `SimulasiLabJalurK5B2.tsx` + `lab-jalur-k5b2b.ts` | Mesin KPK | Jadwal Renang Yohana (7 adegan) |
 
-Mesin: `mesin-data-k5b2.ts`, dijalankan `SimulasiMesinBertahapK3.tsx` dan `mesin-bertahap-k3b1.ts`. Skenario: `skenario-k5b2.ts`, dijalankan `SimulasiSkenario.tsx`. Model gambar: `model-kelipatan-k5b2.tsx` (garis bilangan dengan busur lompatan, tabel seratus yang bisa diwarnai, titik polos dalam kelompok sama banyak). Data ringkas Mind-Map dan Infografis: `src/data/kelas5-bab2-ringkas.json`. Uji: `scripts/uji-lab-k5b2.mjs`.
+Mesin: `mesin-data-k5b2.ts`, dijalankan `SimulasiMesinBertahapK3.tsx` dan `mesin-bertahap-k3b1.ts`. Skenario: `skenario-k5b2.ts`, dijalankan `SimulasiSkenario.tsx`. Model gambar: `model-kelipatan-k5b2.tsx` (garis bilangan dengan busur lompatan, tabel seratus yang bisa diwarnai, titik polos dalam kelompok sama banyak) dan `model-jalur-k5b2.tsx` (dua garis bilangan sejajar dengan penanda pendaratan sama, kartu angka polos). Data ringkas Mind-Map dan Infografis: `src/data/kelas5-bab2-ringkas.json`. Uji: `scripts/uji-lab-k5b2.mjs`.
 
-Metode luar buku yang dianyam. A: Lompat Hitung (kelipatan sebagai pendaratan berjarak sama dari nol), pola Tabel Seratus (warna jatuh berjarak sama), dan Cek Sisa (bilangan dikelompokkan sama banyak, sisa nol berarti kelipatan).
+Metode luar buku yang dianyam. A: Lompat Hitung (kelipatan sebagai pendaratan berjarak sama dari nol), pola Tabel Seratus (warna jatuh berjarak sama), dan Cek Sisa (bilangan dikelompokkan sama banyak, sisa nol berarti kelipatan). B: Dua Pelompat Berlomba (pendaratan sama pertama adalah KPK), Daftar Kelipatan Bersama atau irisan dua daftar (yang terkecil adalah KPK), dan Jadwal Bertemu Lagi (KPK menjadi lama hari, ditambahkan pada tanggal mulai).
 
 ## Pola hibrida
 
@@ -25,22 +26,25 @@ Satu laboratorium per sub-bab, tiga alat. Gerbang LANJUTKAN KE CONCRETE aktif bi
 | Sub-bab | Misi wajib dari lab | Tantangan bebas |
 |---------|---------------------|-----------------|
 | A | Lompat: lima pendaratan jarak 3 (3, 6, 9, 12, 15); Lompat: lima pendaratan jarak 7; Tabel: semua kelipatan 4 di tabel seratus; Cek: 12 titik dalam kelompok berisi 3, sisa 0, kelipatan; Cek: 14 titik dalam kelompok berisi 3, sisa 2, bukan kelipatan | Lompat: sepuluh pendaratan jarak 3 (terakhir 30); Tabel: kelipatan 9 (pola diagonal); Cek: 25 dalam kelompok berisi 4, sisa 1, bukan kelipatan |
+| B | Jalur: 3 dan 4 bertemu di 12; Jalur: 3 dan 5 bertemu di 15; Irisan: tandai semua bilangan di kedua daftar kelipatan 4 dan 5 lalu pilih yang terkecil (20); Jadwal: Nisa (3 hari) dan Yohana (4 hari), 12 hari, 15 Agustus; Jadwal: Dinda (5 hari) dan Amelia (2 hari), 10 hari, 11 Agustus | Jalur 4 dan 5 (bertemu di 20); Irisan 6 dan 8 (24); Irisan 2 dan 3 (6, 12, 18 di kedua daftar) |
 
-Near-miss tidak memenuhi misi: empat pendaratan atau jarak lain; kelipatan 4 kurang satu atau kelebihan satu bilangan (lab menyebut bilangan yang kelebihan beserta sisanya, atau kelipatan terkecil yang terlewat); kelipatan 5 saat targetnya 4; belum diperiksa; putusan "ya" atau "bukan" yang salah, sisa yang salah (termasuk menyebut hasil bagi), atau putusan sebelum sisa ditentukan.
+Near-miss tidak memenuhi misi A: empat pendaratan atau jarak lain; kelipatan 4 kurang satu atau kelebihan satu bilangan (lab menyebut bilangan yang kelebihan beserta sisanya, atau kelipatan terkecil yang terlewat); kelipatan 5 saat targetnya 4; belum diperiksa; putusan "ya" atau "bukan" yang salah, sisa yang salah (termasuk menyebut hasil bagi), atau putusan sebelum sisa ditentukan.
 
 ## Mesin berstasiun
 
 | Mesin | Stasiun | Kasus |
 |-------|---------|-------|
 | Mesin Kelipatan (A) | Lompat → Tabel → Cek → Lanjut | jarak 3 (pendaratan ke-4 = 12, 24 di tabel, 22 bersisa 1, lanjut 15), jarak 7 (ke-6 = 42, 63, 30 bersisa 2, lanjut 35), jarak 9 (ke-7 = 63, 90, 40 bersisa 4, lanjut 45) |
+| Mesin KPK (B) | Jalur → Irisan → KPK → Jadwal | 2 dan 3 (3 pendaratan, 2 bilangan di kedua daftar, KPK 6, 10 Agustus), 4 dan 5 (5 pendaratan, 1 bilangan, KPK 20, 22 Agustus), 6 dan 8 (4 pendaratan, 1 bilangan, KPK 24, 25 Agustus) |
 
-Data ditulis di pertanyaan (mesin tanpa gambar). Pengecoh dihitung: jarak ditambah k dan satu pendaratan kurang (Lompat), bilangan tetangga (Tabel), menyangka kelipatan dan sisa tertukar (Cek), tambah satu dan satu kurang (Lanjut).
+Data ditulis di pertanyaan (mesin tanpa gambar). Pengecoh dihitung. A: jarak ditambah k dan satu pendaratan kurang (Lompat), bilangan tetangga (Tabel), menyangka kelipatan dan sisa tertukar (Cek), tambah satu dan satu kurang (Lanjut). B: satu pendaratan lebih dan pendaratan pelompat lain (Jalur), satu lebih dan satu kurang (Irisan), jumlah dua bilangan dan hasil kali atau dua kali KPK (KPK), lama hari sebagai tanggal dan tanggal mulai ditambah jumlah selang (Jadwal).
 
 ## Skenario
 
 | Skenario | Adegan | Isi |
 |----------|--------|-----|
 | Tepuk Kelipatan Nisa (A) | 7 | tepuk di 9 dan 12 pada hitungan 9 sampai 13; banyak tepukan 3 sampai 18 (6 stik); tepukan sampai 30 (10 stik); 3 × 7, kelipatan 3 setelah 12, sisa 14 dibagi 3; 14 bukan kelipatan 3 (sisa 2) |
+| Jadwal Renang Yohana (B) | 7 | dua daftar kelipatan 3 dan 4 sampai 12 (12 ada di kedua daftar); 3 hari renang Yohana dalam 12 hari (3 stik); 4 hari renang Nisa (4 stik); KPK 3 dan 4, 3 Agustus + 12 hari = 15 Agustus, kelipatan persekutuan kedua 24; KPK bukan jumlah 7 dan bukan 24 |
 
 ## Kejujuran konsep
 
@@ -50,3 +54,7 @@ Data ditulis di pertanyaan (mesin tanpa gambar). Pengecoh dihitung: jarak ditamb
 - Hanya bilangan bulat. Mesin, skenario, dan ringkas dihitung ulang mandiri (penjumlahan dan pengurangan berulang).
 - Konsep sub-bab berikutnya tidak dipakai di Sub-Bab A (diuji pada misi, mesin, skenario, data ringkas, kode tampilan, model, logika, pembungkus, pesan lab hasil fuzz, dan ucapan): tanpa persekutuan, KPK, FPB, faktor, pembagi, prima, irisan, pohon, jadwal, bertemu, terkecil, dan terbesar.
 - Fuzz 20.000 aksi: batas terjaga, riwayat tidak dicabut, semua pesan bisa dieja.
+- Jalur: pendaratan tiap pelompat dihitung dari jarak, bilangan yang sama dibandingkan dua daftar. Riwayat KPK baru dicatat saat kedua pelompat mendarat di KPK, baik A dulu, B dulu, maupun bergantian; satu pelompat saja tidak pernah memenuhi. Pendaratan sama berikutnya disebut kelipatan persekutuan yang bukan terkecil.
+- Irisan: kunci adalah bilangan di kedua daftar sepuluh kelipatan. KPK diuji terhadap pencarian kelipatan pertama yang habis dibagi (pengurangan berulang) dan terhadap hasil kali dibagi pembagi persekutuan terbesar (Euclid dengan pengurangan). Semua bilangan yang hanya ada di satu daftar diuji ditolak dan disebut daftarnya; setiap bilangan terlewat diuji ditolak.
+- Jadwal: tanggal dihitung hari demi hari dari tanggal mulai dan tetap di bulan Agustus. Pengecoh: dua kali KPK dan jumlah selang (hari), lama hari sebagai tanggal dan tanggal mulai ditambah jumlah selang (tanggal).
+- Konsep sub-bab berikutnya tidak dipakai di Sub-Bab B (diuji pada misi, mesin, skenario, data ringkas, kode tampilan, model, logika, pembungkus, pesan lab hasil fuzz, dan ucapan): tanpa faktor, pembagi, FPB, prima, pohon, dan terbesar.
