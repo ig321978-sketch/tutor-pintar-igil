@@ -1,0 +1,158 @@
+{
+  "chapter_id": "mtk-5-bab8",
+  "phase_code": "FASE_C",
+  "grade": 5,
+  "subject": "Matematika",
+  "title": "Data (Tabel Frekuensi, Piktogram, dan Diagram Batang)",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Mengumpulkan Data",
+          "ikon": "📝",
+          "suara": "Ini peta mengumpulkan data. Kita belajar data sebagai kumpulan fakta, turus berkelompok lima, frekuensi dan tabel, serta mode untuk mengambil keputusan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "kumpul",
+            "judul": "Kumpulkan data",
+            "ikon": "📝",
+            "ringkas": "Data adalah kumpulan fakta.",
+            "suara": "Kumpulkan data. Data adalah kumpulan fakta yang ditulis dengan kata, angka, atau tanda. Caranya: tanya atau amati, catat, ringkas, lalu baca maknanya."
+          },
+          {
+            "id": "turus",
+            "judul": "Turus",
+            "ikon": "✏️",
+            "ringkas": "Satu hasil satu garis, kelompok lima.",
+            "suara": "Turus. Setiap hasil ditulis satu garis supaya tidak ada yang terlewat atau terhitung dua kali. Turus dikelompokkan lima: empat garis tegak dan satu garis miring."
+          },
+          {
+            "id": "frekuensi",
+            "judul": "Frekuensi",
+            "ikon": "🔢",
+            "ringkas": "Berapa kali muncul, dan jumlahnya.",
+            "suara": "Frekuensi. Frekuensi menyatakan berapa kali suatu hasil muncul. Tabel frekuensi memuat kategori, turus, dan frekuensi. Jumlah semua frekuensi sama dengan banyak data."
+          },
+          {
+            "id": "keputusan",
+            "judul": "Keputusan",
+            "ikon": "🏆",
+            "ringkas": "Frekuensi terbesar disebut mode.",
+            "suara": "Keputusan. Bandingkan frekuensi tiap kategori. Frekuensi yang paling besar disebut mode. Keputusan yang baik punya alasan dari data, bukan tebakan."
+          }
+        ],
+        "kartu": [
+          { "id": "a-fakta", "teks": "Data = kumpulan fakta", "ikon": "📝", "cabang": "kumpul", "petunjuk": "Arti data itu soal kumpulkan data. Coba cabang lain." },
+          { "id": "a-siklus", "teks": "Tanya, catat, ringkas, baca", "ikon": "🔄", "cabang": "kumpul", "petunjuk": "Langkah mengumpulkan itu soal kumpulkan data. Coba cabang lain." },
+          { "id": "a-garis", "teks": "Satu hasil, satu garis", "ikon": "✏️", "cabang": "turus", "petunjuk": "Menulis garis untuk tiap hasil itu soal turus. Coba cabang lain." },
+          { "id": "a-lima", "teks": "Empat tegak, satu miring", "ikon": "✋", "cabang": "turus", "petunjuk": "Kelompok lima itu soal turus. Coba cabang lain." },
+          { "id": "a-f", "teks": "Frekuensi 7 = muncul 7 kali", "ikon": "🔢", "cabang": "frekuensi", "petunjuk": "Berapa kali muncul itu soal frekuensi. Coba cabang lain." },
+          { "id": "a-jumlah", "teks": "Jumlah frekuensi = banyak data", "ikon": "➕", "cabang": "frekuensi", "petunjuk": "Menjumlahkan frekuensi itu soal frekuensi. Coba cabang lain." },
+          { "id": "a-mode", "teks": "Frekuensi terbesar = mode", "ikon": "🏆", "cabang": "keputusan", "petunjuk": "Mode itu soal keputusan. Coba cabang lain." },
+          { "id": "a-putus", "teks": "Putuskan dari data, bukan tebakan", "ikon": "🎯", "cabang": "keputusan", "petunjuk": "Keputusan dari data itu soal keputusan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengumpulkan Data",
+        "suara": "Ini tiga panel tentang mengumpulkan data. Ketuk kotaknya untuk membuka, lalu lihat turus berkelompok lima, hubungan turus dengan frekuensi, serta tabel dan mode.",
+        "panel": [
+          {
+            "id": "a-turus-info",
+            "tipe": "buka",
+            "judul": "Turus kelompok lima",
+            "ide": "Lima garis jadi satu kelompok.",
+            "suara": "Ada tiga hal tentang turus. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "garis",
+                "label": "Satu garis",
+                "ikon": "✏️",
+                "isi": "Satu hasil, satu garis.",
+                "suara": "Setiap hasil pengamatan ditulis satu garis. Dengan begitu tidak ada yang terlewat atau terhitung dua kali.",
+                "visual": { "jenis": "turus", "n": 3 }
+              },
+              {
+                "id": "lima",
+                "label": "Kelompok lima",
+                "ikon": "✋",
+                "isi": "Empat garis tegak, satu miring.",
+                "suara": "Lima garis dijadikan satu kelompok: empat garis tegak dan satu garis miring yang memotongnya. Kelompok lima mudah dihitung.",
+                "visual": { "jenis": "turus", "n": 5 }
+              },
+              {
+                "id": "sisa",
+                "label": "Kelompok dan sisa",
+                "ikon": "➕",
+                "isi": "Tujuh = lima ditambah dua.",
+                "suara": "Tujuh hasil ditulis satu kelompok lima ditambah dua garis. Hitung kelompok dulu, lalu garis sisanya.",
+                "visual": { "jenis": "turus", "n": 7 }
+              }
+            ]
+          },
+          {
+            "id": "a-f-info",
+            "tipe": "banding",
+            "judul": "Turus dan frekuensi",
+            "ide": "Turus dihitung menjadi frekuensi.",
+            "suara": "Lihat hubungan turus dengan frekuensi.",
+            "sisi": [
+              {
+                "id": "turus",
+                "nama": "Turus",
+                "ikon": "✏️",
+                "catatan": "Garis hasil pengamatan.",
+                "suara": "Turus adalah garis-garis hasil pengamatan. Ini turus untuk enam hasil.",
+                "visual": { "jenis": "turus", "n": 6 }
+              },
+              {
+                "id": "frekuensi",
+                "nama": "Frekuensi",
+                "ikon": "🔢",
+                "catatan": "Bilangan hasil menghitung turus.",
+                "suara": "Frekuensi adalah bilangan yang menyatakan berapa kali muncul. Turus enam garis berarti frekuensinya enam.",
+                "visual": { "jenis": "teks", "isi": "f = 6" }
+              }
+            ],
+            "kesimpulan": "Hitung turus, hasilnya frekuensi."
+          },
+          {
+            "id": "a-tabel-info",
+            "tipe": "buka",
+            "judul": "Tabel dan mode",
+            "ide": "Frekuensi terbesar menolong memutuskan.",
+            "suara": "Ada tiga hal tentang tabel frekuensi. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tabel",
+                "label": "Tabel frekuensi",
+                "ikon": "📋",
+                "isi": "Kategori dan frekuensinya.",
+                "suara": "Ini tabel frekuensi donat Anggi. Cokelat enam, keju empat, stroberi tiga, dan kacang dua.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Rasa", "f"], "baris": [["Cokelat", 6], ["Keju", 4], ["Stroberi", 3], ["Kacang", 2]] }
+              },
+              {
+                "id": "jumlah",
+                "label": "Jumlah frekuensi",
+                "ikon": "➕",
+                "isi": "Sama dengan banyak data.",
+                "suara": "Enam ditambah empat ditambah tiga ditambah dua sama dengan lima belas. Jumlah frekuensi harus sama dengan banyak data.",
+                "visual": { "jenis": "teks", "isi": "6 + 4 + 3 + 2 = 15" }
+              },
+              {
+                "id": "mode",
+                "label": "Mode",
+                "ikon": "🏆",
+                "isi": "Frekuensi yang paling besar.",
+                "suara": "Cokelat punya frekuensi paling besar, yaitu enam. Itulah mode. Anggi bisa memakainya untuk memutuskan rasa yang diutamakan.",
+                "visual": { "jenis": "teks", "isi": "Cokelat 6" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
