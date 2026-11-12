@@ -39,3 +39,4 @@ Migrasi Kelas 4: Bab 2 sudah (`SimulasiK4Bab2`, lima sub-bab A sampai E: pecahan
 Migrasi Kelas 4: Bab 3 sudah (`SimulasiK4Bab3`, dua sub-bab A dan B: pola gambar dan pola bilangan; dimuat malas lewat `next/dynamic` di registri).
 Migrasi Kelas 4: Bab 4 sudah (`SimulasiK4Bab4`, dua sub-bab A dan B: pengukuran luas dan pengukuran volume; dimuat malas lewat `next/dynamic` di registri).
 Migrasi Kelas 4: Bab 5 sudah (`SimulasiK4Bab5`, dua sub-bab A dan B: ciri-ciri bangun datar serta komposisi dan dekomposisi; dimuat malas lewat `next/dynamic` di registri).
+Migrasi Kelas 4: Bab 6 sudah (`SimulasiK4Bab6`, dua sub-bab A dan B: piktogram serta diagram batang; dimuat malas lewat `next/dynamic` di registri).

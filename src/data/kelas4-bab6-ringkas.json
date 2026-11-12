@@ -104,6 +104,105 @@
           }
         ]
       }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Diagram Batang",
+          "ikon": "📊",
+          "suara": "Ini peta diagram batang. Kita belajar bentuk batang, label sumbu, langkah sumbu, dan arah batang. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "bentuk",
+            "judul": "Bentuk batang",
+            "ikon": "📊",
+            "ringkas": "Batang persegi panjang menunjukkan banyak.",
+            "suara": "Diagram batang memakai batang persegi panjang. Makin panjang batangnya, makin besar nilainya."
+          },
+          {
+            "id": "label",
+            "judul": "Judul dan label",
+            "ikon": "🏷️",
+            "ringkas": "Judul dan kedua sumbu harus berlabel.",
+            "suara": "Beri judul di atas diagram. Satu sumbu untuk nama kategori, sumbu lain untuk banyaknya."
+          },
+          {
+            "id": "skala",
+            "judul": "Langkah sumbu",
+            "ikon": "📏",
+            "ringkas": "Mulai nol, naik dengan langkah sama.",
+            "suara": "Sumbu nilai mulai dari nol dan naik dengan langkah yang sama, misalnya satu, dua, atau empat. Nilai sama dengan garis dikali langkah."
+          },
+          {
+            "id": "arah",
+            "judul": "Tegak dan mendatar",
+            "ikon": "↔️",
+            "ringkas": "Arah berubah, arti data tetap.",
+            "suara": "Batang bisa tegak atau mendatar. Arahnya berubah, nilainya tetap. Label sumbunya ikut bertukar tempat."
+          }
+        ],
+        "kartu": [
+          { "id": "b-persegi", "teks": "Batang persegi panjang", "ikon": "▮", "cabang": "bentuk", "petunjuk": "Bentuk batang itu soal bentuk diagram. Coba cabang lain." },
+          { "id": "b-panjang", "teks": "Lebih panjang, lebih banyak", "ikon": "📈", "cabang": "bentuk", "petunjuk": "Panjang batang menunjukkan banyak. Coba cabang lain." },
+          { "id": "b-judul", "teks": "Judul di atas diagram", "ikon": "🏷️", "cabang": "label", "petunjuk": "Judul itu bagian dari label diagram. Coba cabang lain." },
+          { "id": "b-nama", "teks": "Sumbu berlabel nama kategori", "ikon": "🔤", "cabang": "label", "petunjuk": "Menulis nama di sumbu itu soal label. Coba cabang lain." },
+          { "id": "b-nol", "teks": "Sumbu mulai dari nol", "ikon": "0️⃣", "cabang": "skala", "petunjuk": "Titik mulai sumbu itu soal langkah sumbu. Coba cabang lain." },
+          { "id": "b-garis", "teks": "Garis × langkah = nilai", "ikon": "✖️", "cabang": "skala", "petunjuk": "Membaca garis itu soal langkah sumbu. Coba cabang lain." },
+          { "id": "b-tidur", "teks": "Batang mendatar ke samping", "ikon": "➡️", "cabang": "arah", "petunjuk": "Arah ke samping itu soal tegak dan mendatar. Coba cabang lain." },
+          { "id": "b-tetap", "teks": "Arah berubah, nilai tetap", "ikon": "🔁", "cabang": "arah", "petunjuk": "Nilai yang tetap saat arah berubah itu soal arah batang. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Diagram Batang",
+        "suara": "Ini tiga panel tentang diagram batang. Ketuk kotaknya untuk membuka, lalu bandingkan dua arah batang.",
+        "panel": [
+          {
+            "id": "b-baca-info",
+            "tipe": "buka",
+            "judul": "Membaca diagram batang",
+            "ide": "Ikuti ujung batang ke angka sumbu.",
+            "suara": "Ada tiga hal untuk membaca diagram batang. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "sumbu", "label": "Sumbu", "ikon": "📐", "isi": "Satu sumbu nama, satu sumbu banyak.", "suara": "Pada diagram tegak, sumbu tegak menunjukkan banyak dan sumbu datar menunjukkan nama kategori.", "visual": { "jenis": "teks", "isi": "tegak = banyak" } },
+              {
+                "id": "data",
+                "label": "Data",
+                "ikon": "🚲",
+                "isi": "Alat transportasi ke sekolah.",
+                "suara": "Jalan kaki delapan, sepeda lima, motor tujuh, lainnya tiga.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Alat", "Siswa"], "baris": [["jalan kaki", 8], ["sepeda", 5], ["motor", 7], ["lainnya", 3]] }
+              },
+              { "id": "langkah", "label": "Langkah", "ikon": "📏", "isi": "Garis dikali langkah sumbu.", "suara": "Kalau tiap garis bernilai dua, batang yang sampai garis ketujuh bernilai empat belas.", "visual": { "jenis": "teks", "isi": "7 × 2 = 14" } }
+            ]
+          },
+          {
+            "id": "b-arah-info",
+            "tipe": "banding",
+            "judul": "Tegak dan mendatar",
+            "ide": "Arah berubah, nilai dan arti tetap.",
+            "suara": "Bandingkan diagram batang tegak dan mendatar.",
+            "sisi": [
+              { "id": "tegak", "nama": "Tegak", "ikon": "⬆️", "catatan": "Batang naik ke atas.", "suara": "Diagram tegak. Batang naik ke atas, nama kategori di bawah, banyak di sumbu tegak.", "visual": { "jenis": "teks", "isi": "kategori di bawah" } },
+              { "id": "mendatar", "nama": "Mendatar", "ikon": "➡️", "catatan": "Batang memanjang ke samping.", "suara": "Diagram mendatar. Batang memanjang ke samping, nama kategori di kiri, banyak di sumbu datar.", "visual": { "jenis": "teks", "isi": "kategori di kiri" } }
+            ],
+            "kesimpulan": "Nilai sama, hanya arah batang dan letak label yang bertukar."
+          },
+          {
+            "id": "b-banding-info",
+            "tipe": "buka",
+            "judul": "Membandingkan batang",
+            "ide": "Batang lebih panjang berarti lebih banyak.",
+            "suara": "Ada tiga cara membandingkan batang. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "terbanyak", "label": "Paling banyak", "ikon": "🏆", "isi": "Batang paling panjang.", "suara": "Jalan kaki paling banyak dipakai, delapan siswa.", "visual": { "jenis": "teks", "isi": "jalan kaki 8" } },
+              { "id": "selisih", "label": "Selisih", "ikon": "➖", "isi": "Panjang dikurangi pendek.", "suara": "Buku dipinjam hari Rabu empat belas, Sabtu lima. Selisihnya sembilan.", "visual": { "jenis": "teks", "isi": "14 − 5 = 9" } },
+              { "id": "jumlah", "label": "Jumlah", "ikon": "➕", "isi": "Tambahkan nilai semua batang.", "suara": "Semua alat transportasi berjumlah dua puluh tiga siswa.", "visual": { "jenis": "teks", "isi": "8 + 5 + 7 + 3 = 23" } }
+            ]
+          }
+        ]
+      }
     }
   }
 }
