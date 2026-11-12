@@ -20,6 +20,9 @@
  *    Baca  : ukuran sudut dari angka pada skala yang benar.
  *    Jenis : nama sudut menurut ukurannya, nol sampai penuh.
  * Data dari Buku Siswa Kelas V Bab 6 Sub-Bab C (kipas Pakarena 125°, jam pukul satu, lipatan siku-siku, sudut lurus dan releks).
+ *  - MESIN_LUKIS (D): Titik → Busur → Tanda → Ukur   (kasus Sudut 75°, 110°, 52°)
+ *    Titik: langkah pertama melukis. Busur: letak pusat dan garis dasar. Tanda: skala yang dipakai. Ukur: hasil ukur ulang.
+ * Data dari Buku Siswa Kelas V Bab 6 Sub-Bab D (melukis 30°, 75°, 110°, 52°, 140° dan ukur ulang).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b6.mjs.
  */
 import type { DefMesin, KasusMesin, LangkahMesin, StasiunDef } from "./mesin-bertahap-k3b1";
@@ -291,4 +294,71 @@ export const MESIN_BUSUR: DefMesin = {
   kasus: KASUS_BUSUR.map(kasusMesinBusur),
 };
 
-export const SEMUA_MESIN_K5B6 = [MESIN_POJOK, MESIN_SUDUT, MESIN_BUSUR];
+/* ------------------------------ D: Mesin Lukis ------------------------------ */
+
+/** target: ukuran yang dilukis. sisi: tempat kaki pertama (menentukan skala yang dipakai untuk tanda). */
+export type KasusLukis = { id: string; nama: string; konteks: string; target: number; sisi: "kiri" | "kanan" };
+export const KASUS_LUKIS: KasusLukis[] = [
+  { id: "k75", nama: "Sudut 75°", konteks: "Bu Ratna melukis sudut 75°", target: 75, sisi: "kanan" },
+  { id: "k110", nama: "Sudut 110°", konteks: "Bu Ratna melukis sudut 110°", target: 110, sisi: "kiri" },
+  { id: "k52", nama: "Sudut 52°", konteks: "Bu Ratna melukis sudut 52°", target: 52, sisi: "kanan" },
+];
+
+export const STASIUN_LUKIS: StasiunDef[] = [
+  { id: "titik", nama: "Titik", ikon: "•" },
+  { id: "busur", nama: "Busur", ikon: "📐" },
+  { id: "tanda", nama: "Tanda", ikon: "📍" },
+  { id: "ukur", nama: "Ukur", ikon: "🔍" },
+];
+
+export function kasusMesinLukis(c: KasusLukis, idx: number): KasusMesin {
+  const skala = SKALA_SISI(c.sisi);
+  const t = c.target;
+  const salahUkur = pengecohPositif(t, [180 - t, t + 10, t - 10]);
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "titik",
+      tanya: `${c.konteks}. Langkah pertama melukis sudut ${t}° adalah membuat …`,
+      opsi: susunOpsi("titik sudut dan satu kaki sudut", ["dua kaki sudut sekaligus", `tanda angka ${t}`], idx),
+      benar: "titik sudut dan satu kaki sudut",
+      petunjuk: "Sudut dilukis dari titik sudut dan kaki pertama dulu. Busur dipasang sesudah itu, dan kaki kedua digambar paling akhir.",
+    },
+    {
+      stasiun: "busur",
+      tanya: "Setelah itu busur dipasang. Pusat busur diletakkan pada …, dan garis dasar busur berimpit dengan …",
+      opsi: susunOpsi("titik sudut dan kaki pertama", ["ujung kaki dan kaki pertama", "titik sudut dan tanda angka"], idx + 1),
+      benar: "titik sudut dan kaki pertama",
+      petunjuk: "Cara memasang busur sama dengan saat mengukur: pusat di titik sudut, dasar berimpit dengan kaki yang sudah ada.",
+    },
+    {
+      stasiun: "tanda",
+      tanya: `Kaki pertama ada di sisi ${c.sisi}. ${URAIAN_SKALA_M} Untuk menandai ${t}°, skala yang dipakai adalah …`,
+      opsi: susunOpsi(`skala ${skala}`, [skala === "luar" ? "skala dalam" : "skala luar", "skala mana saja"], idx + 2),
+      benar: `skala ${skala}`,
+      petunjuk: "Tandai angka pada skala yang mulai dari nol di kaki pertama. Skala yang satunya menunjuk 180 dikurangi ukuran sudut di tempat yang sama.",
+    },
+    {
+      stasiun: "ukur",
+      tanya: `Sudut ${t}° sudah dilukis dengan kaki kedua melalui tanda. Setelah diukur ulang dengan busur, hasilnya harus …`,
+      opsi: susunOpsi(`${t}°`, salahUkur.map((n) => `${n}°`), idx + 3),
+      benar: `${t}°`,
+      petunjuk: "Lukisan yang akurat memberi hasil ukur ulang yang sama dengan target. Bila meleset, periksa pusat busur, garis dasar, dan pilihan skala.",
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `Lukis sudut ${t}°: titik sudut dan kaki pertama, pasang busur, tandai ${t} pada skala ${skala}, gambar kaki kedua. Hasil ukur ulang harus ${t}°.`,
+    langkah,
+  };
+}
+
+export const MESIN_LUKIS: DefMesin = {
+  id: "mesin-lukis-k5b6",
+  judul: "Mesin Lukis",
+  selesaiId: "mesin-lukis",
+  stasiun: STASIUN_LUKIS,
+  kasus: KASUS_LUKIS.map(kasusMesinLukis),
+};
+
+export const SEMUA_MESIN_K5B6 = [MESIN_POJOK, MESIN_SUDUT, MESIN_BUSUR, MESIN_LUKIS];

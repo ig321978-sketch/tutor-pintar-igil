@@ -415,6 +415,148 @@
           }
         ]
       }
+    },
+    "D": {
+      "peta": {
+        "pusat": {
+          "judul": "Lukis",
+          "ikon": "✏️",
+          "suara": "Ini peta melukis sudut. Kita belajar urutan melukis dengan busur derajat, dari titik sudut sampai kaki kedua, lalu mengukur ulang hasilnya. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "titik",
+            "judul": "Titik dan kaki",
+            "ikon": "•",
+            "ringkas": "Mulai dari titik dan kaki pertama.",
+            "suara": "Titik dan kaki. Melukis sudut dimulai dengan membuat titik sudut dan satu kaki sudut. Kaki pertama boleh berupa garis mendatar."
+          },
+          {
+            "id": "busur",
+            "judul": "Pasang busur",
+            "ikon": "📐",
+            "ringkas": "Pusat di titik, dasar di kaki.",
+            "suara": "Pasang busur. Letakkan pusat busur derajat tepat di titik sudut. Pastikan garis dasarnya berimpit dengan kaki yang sudah ada."
+          },
+          {
+            "id": "tanda",
+            "judul": "Tanda dan kaki",
+            "ikon": "📍",
+            "ringkas": "Tandai angka, gambar kaki kedua.",
+            "suara": "Tanda dan kaki. Cari angka ukuran yang diminta pada skala yang mulai dari nol di kaki pertama, lalu beri tanda kecil. Gambar kaki kedua dari titik sudut melalui tanda itu."
+          },
+          {
+            "id": "cek",
+            "judul": "Ukur ulang",
+            "ikon": "🔍",
+            "ringkas": "Cocok target, lukisan akurat.",
+            "suara": "Ukur ulang. Setelah dilukis, ukur kembali dengan busur. Bila hasilnya cocok dengan target, lukisan akurat. Bila meleset, periksa pusat busur, garis dasar, dan skala."
+          }
+        ],
+        "kartu": [
+          { "id": "d-titik", "teks": "Buat titik sudut lebih dulu", "ikon": "•", "cabang": "titik", "petunjuk": "Titik sudut itu soal titik dan kaki. Coba cabang lain." },
+          { "id": "d-kaki-satu", "teks": "Kaki pertama: garis mendatar", "ikon": "➖", "cabang": "titik", "petunjuk": "Kaki pertama itu soal titik dan kaki. Coba cabang lain." },
+          { "id": "d-pusat", "teks": "Pusat busur di titik sudut", "ikon": "🎯", "cabang": "busur", "petunjuk": "Letak pusat busur itu soal pasang busur. Coba cabang lain." },
+          { "id": "d-dasar", "teks": "Dasar busur berimpit kaki pertama", "ikon": "／", "cabang": "busur", "petunjuk": "Garis dasar busur itu soal pasang busur. Coba cabang lain." },
+          { "id": "d-tanda", "teks": "Tanda di angka 75° dari nol", "ikon": "📍", "cabang": "tanda", "petunjuk": "Memberi tanda angka itu soal tanda dan kaki. Coba cabang lain." },
+          { "id": "d-kaki-dua", "teks": "Kaki kedua melalui tanda", "ikon": "✏️", "cabang": "tanda", "petunjuk": "Menggambar kaki kedua itu soal tanda dan kaki. Coba cabang lain." },
+          { "id": "d-cocok", "teks": "Hasil ukur ulang = target: akurat", "ikon": "✅", "cabang": "cek", "petunjuk": "Mencocokkan hasil dengan target itu soal ukur ulang. Coba cabang lain." },
+          { "id": "d-meleset", "teks": "Meleset: periksa pusat dan dasar", "ikon": "⚠️", "cabang": "cek", "petunjuk": "Mencari sebab meleset itu soal ukur ulang. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Melukis Sudut",
+        "suara": "Ini tiga panel tentang melukis sudut. Ketuk kotaknya untuk membuka, lalu lihat empat langkah melukis, cocok dan meleset, serta hubungan dengan yang sudah kita pelajari.",
+        "panel": [
+          {
+            "id": "d-langkah-info",
+            "tipe": "buka",
+            "judul": "Empat langkah melukis",
+            "ide": "Titik, busur, tanda, kaki kedua.",
+            "suara": "Ada empat langkah melukis sudut. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "satu",
+                "label": "Langkah 1",
+                "ikon": "•",
+                "isi": "Titik sudut dan kaki pertama.",
+                "suara": "Langkah satu. Buat titik sudut dan satu kaki sudut.",
+                "visual": { "jenis": "teks", "isi": "titik + kaki 1" }
+              },
+              {
+                "id": "dua",
+                "label": "Langkah 2",
+                "ikon": "📐",
+                "isi": "Pasang busur.",
+                "suara": "Langkah dua. Pasang busur, pusat di titik sudut dan dasar berimpit dengan kaki pertama.",
+                "visual": { "jenis": "teks", "isi": "pusat + dasar" }
+              },
+              {
+                "id": "tiga",
+                "label": "Langkah 3",
+                "ikon": "📍",
+                "isi": "Tandai angka target.",
+                "suara": "Langkah tiga. Tandai angka target pada skala yang mulai dari nol di kaki pertama. Contoh tujuh puluh lima derajat.",
+                "visual": { "jenis": "teks", "isi": "tanda 75°" }
+              },
+              {
+                "id": "empat",
+                "label": "Langkah 4",
+                "ikon": "✏️",
+                "isi": "Gambar kaki kedua.",
+                "suara": "Langkah empat. Gambar kaki kedua dari titik sudut melalui tanda.",
+                "visual": { "jenis": "teks", "isi": "kaki 2 lewat tanda" }
+              }
+            ]
+          },
+          {
+            "id": "d-cek-info",
+            "tipe": "banding",
+            "judul": "Cocok dan meleset",
+            "ide": "Ukur ulang, bandingkan dengan target.",
+            "suara": "Lihat dua hasil ukur ulang lukisan.",
+            "sisi": [
+              { "id": "cocok", "nama": "Cocok", "ikon": "✅", "catatan": "Hasil sama dengan target.", "suara": "Hasil ukur ulang sama dengan target, jadi lukisan akurat.", "visual": { "jenis": "teks", "isi": "75° = 75°" } },
+              { "id": "meleset", "nama": "Meleset", "ikon": "⚠️", "catatan": "Hasil berbeda dari target.", "suara": "Hasil ukur ulang berbeda dari target, jadi lukisan perlu diulang.", "visual": { "jenis": "teks", "isi": "110° ≠ 70°" } }
+            ],
+            "kesimpulan": "Meleset: cek pusat, dasar, dan skala."
+          },
+          {
+            "id": "d-hubung-info",
+            "tipe": "buka",
+            "judul": "Hubungan dengan sub-bab lain",
+            "ide": "Melukis memakai semua yang dipelajari.",
+            "suara": "Ada tiga hal dari sub-bab sebelumnya yang dipakai lagi. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "siku",
+                "label": "Patokan",
+                "ikon": "∟",
+                "isi": "Siku-siku sembilan puluh.",
+                "suara": "Patokan siku-siku sembilan puluh derajat membantu menentukan lancip atau tumpul pada hasil lukisan.",
+                "visual": { "jenis": "teks", "isi": "90°" }
+              },
+              {
+                "id": "jenis",
+                "label": "Jenis",
+                "ikon": "∠",
+                "isi": "Lancip atau tumpul.",
+                "suara": "Jenis sudut tetap berlaku pada hasil lukisan. Tiga puluh derajat lancip, seratus sepuluh derajat tumpul.",
+                "visual": { "jenis": "teks", "isi": "30° lancip, 110° tumpul" }
+              },
+              {
+                "id": "busur",
+                "label": "Busur",
+                "ikon": "📏",
+                "isi": "Protokol sama dengan mengukur.",
+                "suara": "Memasang busur untuk melukis sama dengan saat mengukur. Pusat di titik sudut, dasar berimpit dengan kaki pertama.",
+                "visual": { "jenis": "teks", "isi": "ukur = lukis" }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

@@ -6,6 +6,7 @@ import type { DefSkenario } from "./skenario-umum";
  *  - SKENARIO_K5B6A: Bingkai Pak Tukang (sudut siku-siku, patokan lipatan, membandingkan pojok dengan patokan)
  *  - SKENARIO_K5B6B: Yohana dan Kotak Pensil (titik sudut, kaki sudut, lancip, siku-siku, tumpul, sudut jarum jam)
  *  - SKENARIO_K5B6C: Kipas Tari Pakarena (satuan derajat, memasang dan membaca busur, sudut nol, lurus, penuh, releks)
+ *  - SKENARIO_K5B6D: Studio Sudut Bu Ratna (pencapaian bab: patokan siku-siku, bagian dan jenis sudut, membaca busur, melukis, ukur ulang)
  */
 
 export const SKENARIO_K5B6A: DefSkenario = {
@@ -234,6 +235,90 @@ export const SKENARIO_K5B6C: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Sudut diukur dengan busur derajat dalam satuan derajat. Pasang pusat busur di titik sudut, dasar berimpit dengan kaki pertama, lalu baca angka kaki kedua dari nol. Ingat patokan 0°, 90°, 180°, dan 360°, dan sudut releks di antara 180° dan 360°.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B6D: DefSkenario = {
+  id: "studio-sudut-k5b6",
+  judul: "Studio Sudut Bu Ratna",
+  latar: "Bantu Bu Ratna melukis sudut dan mengingat semua yang sudah dipelajari.",
+  tokoh: "👩",
+  nama: "Bu Ratna",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Bu Ratna, guru gambar. Hari ini kita melukis sudut dengan busur derajat. Sebelum melukis, ayo ingat dulu semua yang sudah kita pelajari tentang sudut!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "siku",
+      jenis: "pilih",
+      cerita: "Bu Ratna bertanya, sudut siku-siku itu besarnya berapa?",
+      opsi: [
+        { teks: "45°, lebih sempit dari patokan", benar: false, umpan: "Sudut 45° lebih sempit dari patokan siku-siku, jadi lancip. Siku-siku tepat 90°." },
+        { teks: "90°, tepat berimpit dengan patokan", benar: true, umpan: "Betul! Sudut siku-siku besarnya 90° dan tepat berimpit dengan patokan." },
+        { teks: "180°, membentuk garis lurus", benar: false, umpan: "Sudut 180° adalah sudut lurus. Siku-siku tepat 90°." },
+      ],
+    },
+    {
+      id: "bagian",
+      jenis: "soal",
+      cerita: "Bu Ratna menggambar sebuah sudut di papan tulis dan menanyakan bagian-bagiannya.",
+      soal: [
+        { teks: "Dua garis yang membentuk sudut disebut … sudut.", jawaban: "kaki", opsi: ["kaki", "titik", "daerah"] },
+        { teks: "Sudut yang lebih lebar dari siku-siku dan kurang dari 180° disebut sudut …", jawaban: "tumpul", opsi: ["lancip", "tumpul", "releks"] },
+      ],
+      sukses: "Hebat! Dua garis disebut kaki sudut, dan sudut yang lebih lebar dari siku-siku sampai kurang dari 180° disebut tumpul.",
+      salah: "Hmm, ingat bagian sudut dan jenis sudut. Coba lagi.",
+    },
+    {
+      id: "ukur",
+      jenis: "soal",
+      cerita: "Bu Ratna mengukur sudut dengan busur. Kaki pertama berimpit di nol, lalu ia membaca angka kaki kedua.",
+      soal: [
+        { teks: "Kaki kedua menunjuk 75 dari nol di kaki pertama. Ukuran sudut adalah … derajat.", jawaban: "75", opsi: ["75", "105", "85"] },
+        { teks: "Sudut lurus besarnya … derajat.", jawaban: "180", opsi: ["90", "180", "360"] },
+      ],
+      sukses: "Betul! Ukuran dibaca dari nol di kaki pertama, dan sudut lurus 180°.",
+      salah: "Hmm, baca angka dari nol di kaki pertama. Coba lagi.",
+    },
+    {
+      id: "lukis",
+      jenis: "isi",
+      cerita: "Sekarang melukis. Urutan melukis sudut ada 4 langkah: titik sudut dan kaki pertama, pasang busur, tandai angka, lalu gambar kaki kedua. Masukkan satu stik untuk tiap langkah.",
+      objek: "stik",
+      target: 4,
+      maks: 8,
+      sukses: "Pas! Melukis sudut punya 4 langkah, dan kaki kedua digambar paling akhir.",
+      kurang: "Stiknya masih sedikit. Hitung semua langkah melukis, dari titik sudut sampai kaki kedua.",
+      lebih: "Stiknya kebanyakan. Melukis sudut hanya 4 langkah.",
+    },
+    {
+      id: "cek",
+      jenis: "pilih",
+      cerita: "Bu Ratna melukis sudut 110°, tetapi hasil ukur ulangnya 70°. Angka 70 itu 180° dikurangi 110°. Kesalahannya …",
+      opsi: [
+        { teks: "pusat busur bergeser dari titik sudut", benar: false, umpan: "Pusat yang bergeser membuat hasil meleset sedikit saja, bukan tepat 180° dikurangi target. Lihat angka 70 itu." },
+        { teks: "garis dasar busur tidak berimpit dengan kaki pertama", benar: false, umpan: "Dasar yang miring membuat hasil meleset sedikit saja, bukan tepat 180° dikurangi target. Lihat angka 70 itu." },
+        { teks: "salah membaca skala, angka diambil dari skala yang satunya", benar: true, umpan: "Betul! 70° adalah 180° dikurangi 110°, jadi angka diambil dari skala yang nolnya bukan di kaki pertama." },
+      ],
+    },
+    {
+      id: "lima",
+      jenis: "hitung",
+      cerita: "Bu Ratna sudah melukis lima sudut: 30°, 75°, 110°, 52°, dan 140°. Tiap sudut diberi satu stik.",
+      tanya: "Ketuk semua stik. Ada berapa sudut yang sudah dilukis Bu Ratna?",
+      objek: "stik",
+      jumlah: 5,
+      sukses: "Betul! Ada 5 sudut yang sudah dilukis, ada yang lancip dan ada yang tumpul.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Melukis sudut berurutan: titik sudut dan kaki pertama, pasang busur, tandai angka dari nol di kaki pertama, lalu gambar kaki kedua. Ukur ulang hasilnya, dan sudut siku-siku 90° jadi patokan untuk menentukan lancip atau tumpul.",
     },
   ],
 };
