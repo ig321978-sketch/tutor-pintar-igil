@@ -104,6 +104,105 @@
           }
         ]
       }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Jumlah Pecahan",
+          "ikon": "➕",
+          "suara": "Ini peta menjumlahkan pecahan. Kita belajar penyebut yang sama, penyebut yang berbeda dengan KPK, model arsir, dan menyederhanakan hasil. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "sama",
+            "judul": "Penyebut sama",
+            "ikon": "🟨",
+            "ringkas": "Jumlahkan pembilang, penyebut tetap.",
+            "suara": "Penyebut sama. Bagian pada kedua batang sama besar. Jumlahkan pembilangnya, dan penyebutnya tetap."
+          },
+          {
+            "id": "beda",
+            "judul": "Penyebut beda",
+            "ikon": "🧩",
+            "ringkas": "Samakan penyebut dengan KPK dahulu.",
+            "suara": "Penyebut beda. Cari kelipatan persekutuan terkecil dari kedua penyebut. Ubah kedua pecahan ke penyebut itu, lalu jumlahkan pembilangnya."
+          },
+          {
+            "id": "arsir",
+            "judul": "Model arsir",
+            "ikon": "🖍️",
+            "ringkas": "Dua arsiran bertemu pada satu batang.",
+            "suara": "Model arsir. Arsiran pertama dan kedua digabung pada satu batang yang bagiannya sama besar. Banyak bagian terarsir adalah jumlahnya."
+          },
+          {
+            "id": "hasil",
+            "judul": "Hasil",
+            "ikon": "✂️",
+            "ringkas": "Sederhanakan, atau ubah ke campuran.",
+            "suara": "Hasil. Bila pembilang dan penyebut bisa dibagi bilangan yang sama, sederhanakan. Bila hasilnya lebih dari satu bulat, ubah ke pecahan campuran."
+          }
+        ],
+        "kartu": [
+          { "id": "b-martabak", "teks": "1/8 + 2/8 = 3/8", "ikon": "🥞", "cabang": "sama", "petunjuk": "Penyebut yang tetap itu soal penyebut sama. Coba cabang lain." },
+          { "id": "b-penghapus", "teks": "2/10 + 3/10 = 5/10", "ikon": "🧽", "cabang": "sama", "petunjuk": "Hanya pembilang yang dijumlahkan itu soal penyebut sama. Coba cabang lain." },
+          { "id": "b-wingko", "teks": "1/2 + 1/3 = 5/6", "ikon": "🍰", "cabang": "beda", "petunjuk": "Penyebut yang berbeda itu soal penyebut beda. Coba cabang lain." },
+          { "id": "b-dua-belas", "teks": "1/4 + 1/6 = 5/12", "ikon": "🔢", "cabang": "beda", "petunjuk": "KPK dari empat dan enam itu soal penyebut beda. Coba cabang lain." },
+          { "id": "b-satu-batang", "teks": "Arsiran bertemu di satu batang", "ikon": "📏", "cabang": "arsir", "petunjuk": "Arsiran pada batang itu soal model arsir. Coba cabang lain." },
+          { "id": "b-sama-besar", "teks": "Bagian harus sama besar", "ikon": "🟦", "cabang": "arsir", "petunjuk": "Bagian yang sama besar itu soal model arsir. Coba cabang lain." },
+          { "id": "b-enam-sembilan", "teks": "6/9 = 2/3", "ikon": "🔻", "cabang": "hasil", "petunjuk": "Bentuk paling sederhana itu soal hasil. Coba cabang lain." },
+          { "id": "b-tujuh-lima", "teks": "7/5 = 1 2/5", "ikon": "🔁", "cabang": "hasil", "petunjuk": "Bentuk campuran itu soal hasil. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Menjumlahkan Pecahan",
+        "suara": "Ini tiga panel tentang menjumlahkan pecahan. Ketuk kotaknya untuk membuka, lalu lihat penyebut sama, penyebut beda, dan hasilnya.",
+        "panel": [
+          {
+            "id": "b-sama-info",
+            "tipe": "buka",
+            "judul": "Penyebut sama",
+            "ide": "Pembilang dijumlahkan, penyebut tetap.",
+            "suara": "Ada tiga hal tentang penyebut yang sama. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "bagian",
+                "label": "Bagian",
+                "ikon": "🥞",
+                "isi": "Satu bagian dan dua bagian.",
+                "suara": "Lukas makan satu per delapan martabak, Komang dua per delapan. Bagian terarsirnya satu, dua, lalu tiga.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Orang", "Bagian"], "baris": [["Lukas", 1], ["Komang", 2], ["Bersama", 3]] }
+              },
+              { "id": "hasil", "label": "Hasil", "ikon": "✅", "isi": "Penyebut tetap delapan.", "suara": "Satu per delapan ditambah dua per delapan sama dengan tiga per delapan.", "visual": { "jenis": "teks", "isi": "1/8 + 2/8 = 3/8" } },
+              { "id": "salah", "label": "Jangan", "ikon": "🚫", "isi": "Penyebut tidak dijumlahkan.", "suara": "Penyebut tidak dijumlahkan. Tiga per enam belas adalah jawaban yang salah.", "visual": { "jenis": "teks", "isi": "3/16 salah" } }
+            ]
+          },
+          {
+            "id": "b-banding-info",
+            "tipe": "banding",
+            "judul": "Penyebut sama dan beda",
+            "ide": "Penyebut harus sama dahulu.",
+            "suara": "Lihat dua cara menjumlahkan pecahan.",
+            "sisi": [
+              { "id": "sama", "nama": "Penyebut sama", "ikon": "🟨", "catatan": "Langsung jumlahkan pembilang.", "suara": "Dua per sepuluh dan tiga per sepuluh punya penyebut sama. Jumlahkan pembilangnya saja.", "visual": { "jenis": "teks", "isi": "2/10 + 3/10 = 5/10" } },
+              { "id": "beda", "nama": "Penyebut beda", "ikon": "🧩", "catatan": "Samakan dengan KPK, lalu jumlahkan.", "suara": "Satu per dua dan satu per tiga berpenyebut beda. Samakan menjadi tiga per enam dan dua per enam.", "visual": { "jenis": "teks", "isi": "3/6 + 2/6 = 5/6" } }
+            ],
+            "kesimpulan": "Samakan penyebut dengan KPK, lalu jumlahkan pembilang."
+          },
+          {
+            "id": "b-hasil-info",
+            "tipe": "buka",
+            "judul": "Merapikan hasil",
+            "ide": "Sederhanakan atau ubah ke campuran.",
+            "suara": "Ada tiga hal tentang hasil penjumlahan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "sederhana", "label": "Sederhana", "ikon": "✂️", "isi": "Bagi dengan bilangan yang sama.", "suara": "Enam per sembilan dibagi tiga pada pembilang dan penyebut menjadi dua per tiga.", "visual": { "jenis": "teks", "isi": "6/9 = 2/3" } },
+              { "id": "kpk", "label": "KPK", "ikon": "🔢", "isi": "KPK empat dan enam adalah dua belas.", "suara": "Kelipatan persekutuan terkecil dari empat dan enam adalah dua belas.", "visual": { "jenis": "teks", "isi": "4, 8, 12 dan 6, 12" } },
+              { "id": "campuran", "label": "Campuran", "ikon": "🔁", "isi": "Lebih dari satu bulat.", "suara": "Tujuh per lima berisi satu bulat penuh dan dua per lima lagi.", "visual": { "jenis": "teks", "isi": "7/5 = 1 2/5" } }
+            ]
+          }
+        ]
+      }
     }
   }
 }

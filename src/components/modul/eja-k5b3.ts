@@ -44,6 +44,8 @@ export function ejaK5B3(teks: string): string {
   return teks
     .replace(/(\d+) (\d+)\/(\d+)/g, (_m, b: string, p: string, q: string) => kataCampuranK5B3(Number(b), Number(p), Number(q)))
     .replace(/(\d+)\/(\d+)/g, (_m, p: string, q: string) => kataPecahanK5B3(Number(p), Number(q)))
+    .replace(/\bKPK\b/g, "kelipatan persekutuan terkecil")
+    .replace(/\bFPB\b/g, "faktor persekutuan terbesar")
     .replace(/ \+ /g, " ditambah ")
     .replace(/ [−-] /g, " dikurangi ")
     .replace(/ × /g, " dikali ")

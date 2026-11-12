@@ -4,22 +4,24 @@
  *
  * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
  *  A Banding : Lab Banding Pecahan (Garis, Banding, Campuran) + Mesin Banding + Lompat Jauh Yohana
+ *  B Jumlah  : Lab Jumlah Arsir (Sama, Beda, Hasil) + Mesin Jumlah + Martabak dan Wingko Komang
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanBandingK5B3A } from "./lab-banding-k5b3a";
+import type { KeadaanJumlahK5B3B } from "./lab-jumlah-k5b3b";
 
-export type KeadaanK5Bab3 = KeadaanBandingK5B3A | KeadaanSelesai;
-export type HurufMisiK5B3 = "A";
+export type KeadaanK5Bab3 = KeadaanBandingK5B3A | KeadaanJumlahK5B3B | KeadaanSelesai;
+export type HurufMisiK5B3 = "A" | "B";
 
 const selesai = (k: KeadaanK5Bab3, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
 const pernah = (k: KeadaanK5Bab3, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K5B3 = { A: "lompat-yohana" } as const;
-export const ID_MESIN_K5B3 = { A: "mesin-banding" } as const;
+export const ID_SKENARIO_K5B3 = { A: "lompat-yohana", B: "martabak-wingko" } as const;
+export const ID_MESIN_K5B3 = { A: "mesin-banding", B: "mesin-jumlah" } as const;
 
 export const MISI_A: DefMisi<KeadaanK5Bab3>[] = [
   { id: "a-garis", teks: "Di Garis, letakkan ketiga lompatan Yohana di garis bilangan: tujuh per delapan, sebelas per empat, dan tujuh per dua.", wajib: true, cek: (k) => pernah(k, "banding", "garis:7:8", "garis:11:4", "garis:7:2") },
@@ -34,5 +36,18 @@ export const MISI_A: DefMisi<KeadaanK5Bab3>[] = [
   { id: "a-empat", teks: "Di Campuran, ubah empat dan satu per empat menjadi pecahan biasa.", wajib: false, cek: (k) => pernah(k, "banding", "campuran:4:1:4") },
 ];
 
-const DAFTAR: Record<HurufMisiK5B3, DefMisi<KeadaanK5Bab3>[]> = { A: MISI_A };
+export const MISI_B: DefMisi<KeadaanK5Bab3>[] = [
+  { id: "b-martabak", teks: "Di Sama, jumlahkan satu per delapan dan dua per delapan. Tentukan pembilangnya, lalu penyebutnya.", wajib: true, cek: (k) => pernah(k, "jumlah", "sama:0") },
+  { id: "b-penghapus", teks: "Di Sama, jumlahkan dua per sepuluh dan tiga per sepuluh. Tentukan pembilangnya, lalu penyebutnya.", wajib: true, cek: (k) => pernah(k, "jumlah", "sama:1") },
+  { id: "b-wingko", teks: "Di Beda, jumlahkan satu per dua dan satu per tiga. Cari KPK penyebutnya, lalu jumlahkan pembilangnya.", wajib: true, cek: (k) => pernah(k, "jumlah", "beda:0") },
+  { id: "b-duabelas", teks: "Di Beda, jumlahkan satu per empat dan satu per enam. Cari KPK penyebutnya, lalu jumlahkan pembilangnya.", wajib: true, cek: (k) => pernah(k, "jumlah", "beda:1") },
+  { id: "b-sederhana", teks: "Di Hasil, sederhanakan hasil penjumlahan empat per sembilan dan dua per sembilan, yaitu enam per sembilan.", wajib: true, cek: (k) => pernah(k, "jumlah", "hasil:0") },
+  { id: "b-mesin", teks: "Selesaikan Mesin Jumlah sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K5B3.B) },
+  { id: "b-skenario", teks: "Selesaikan skenario Martabak dan Wingko Komang sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K5B3.B) },
+  { id: "b-delapan", teks: "Di Beda, jumlahkan tiga per empat dan satu per delapan. Apa KPK dari empat dan delapan?", wajib: false, cek: (k) => pernah(k, "jumlah", "beda:4") },
+  { id: "b-sepuluhan", teks: "Di Beda, jumlahkan dua per lima dan satu per sepuluh. Lalu coba sederhanakan hasilnya di tampilan Hasil.", wajib: false, cek: (k) => pernah(k, "jumlah", "beda:5") },
+  { id: "b-campuran", teks: "Di Hasil, ubah hasil penjumlahan tiga per lima dan empat per lima, yaitu tujuh per lima, menjadi pecahan campuran.", wajib: false, cek: (k) => pernah(k, "jumlah", "hasil:3") },
+];
+
+const DAFTAR: Record<HurufMisiK5B3, DefMisi<KeadaanK5Bab3>[]> = { A: MISI_A, B: MISI_B };
 export const daftarMisiK5Bab3 = (huruf: string): DefMisi<KeadaanK5Bab3>[] => DAFTAR[huruf as HurufMisiK5B3] ?? MISI_A;
