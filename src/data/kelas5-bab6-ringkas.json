@@ -1,0 +1,144 @@
+{
+  "chapter_id": "mtk-5-bab6",
+  "phase_code": "FASE_C",
+  "grade": 5,
+  "subject": "Matematika",
+  "title": "Sudut",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Siku-siku",
+          "ikon": "∟",
+          "suara": "Ini peta sudut siku-siku. Kita belajar patokan sembilan puluh derajat, lipat kertas, membandingkan pojok dengan patokan, dan menjadi detektif sudut. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "patokan",
+            "judul": "Patokan siku",
+            "ikon": "∟",
+            "ringkas": "Pojok tepat siku, sembilan puluh derajat.",
+            "suara": "Patokan siku. Sudut siku-siku besarnya sembilan puluh derajat. Pojok bingkai foto yang benar tepat siku, dan tukang kayu memakai penggaris siku untuk memeriksanya."
+          },
+          {
+            "id": "lipat",
+            "judul": "Lipat kertas",
+            "ikon": "📄",
+            "ringkas": "Dua lipatan berimpit jadi patokan.",
+            "suara": "Lipat kertas. Lipatan pertama membuat tepi lurus. Lipatan kedua menimpa lipatan pertama sampai berimpit rapi. Pojok lipatannya menjadi patokan siku-siku."
+          },
+          {
+            "id": "banding",
+            "judul": "Banding pojok",
+            "ikon": "⚖️",
+            "ringkas": "Berimpit, lebih sempit, atau lebih lebar.",
+            "suara": "Banding pojok. Tempelkan patokan ke pojok benda. Berimpit berarti siku-siku. Lebih sempit disebut lancip. Lebih lebar disebut tumpul."
+          },
+          {
+            "id": "detektif",
+            "judul": "Detektif sudut",
+            "ikon": "🕵️",
+            "ringkas": "Cari pojok, periksa dengan patokan.",
+            "suara": "Detektif sudut. Cari pojok benda di sekitar, lalu periksa dengan patokan. Tidak semua pojok siku-siku, jadi jangan menebak, periksa dulu."
+          }
+        ],
+        "kartu": [
+          { "id": "a-sembilan", "teks": "Sudut siku-siku = 90°", "ikon": "∟", "cabang": "patokan", "petunjuk": "Besar siku-siku itu soal patokan siku. Coba cabang lain." },
+          { "id": "a-bingkai", "teks": "Pojok bingkai foto tepat siku", "ikon": "🖼️", "cabang": "patokan", "petunjuk": "Pojok yang tepat siku itu soal patokan siku. Coba cabang lain." },
+          { "id": "a-lipat-satu", "teks": "Lipatan pertama membuat tepi lurus", "ikon": "📄", "cabang": "lipat", "petunjuk": "Melipat kertas itu soal lipat kertas. Coba cabang lain." },
+          { "id": "a-lipat-dua", "teks": "Lipatan kedua menimpa lipatan pertama", "ikon": "🔁", "cabang": "lipat", "petunjuk": "Tepi yang berimpit itu soal lipat kertas. Coba cabang lain." },
+          { "id": "a-sempit", "teks": "Lebih sempit dari patokan = lancip", "ikon": "∕", "cabang": "banding", "petunjuk": "Membandingkan dengan patokan itu soal banding pojok. Coba cabang lain." },
+          { "id": "a-lebar", "teks": "Lebih lebar dari patokan = tumpul", "ikon": "∠", "cabang": "banding", "petunjuk": "Membandingkan dengan patokan itu soal banding pojok. Coba cabang lain." },
+          { "id": "a-cek", "teks": "Periksa pojok meja dengan patokan", "ikon": "🔍", "cabang": "detektif", "petunjuk": "Memeriksa pojok benda itu soal detektif sudut. Coba cabang lain." },
+          { "id": "a-tidak", "teks": "Tidak semua pojok siku-siku", "ikon": "❓", "cabang": "detektif", "petunjuk": "Memeriksa dulu itu soal detektif sudut. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Sudut Siku-Siku",
+        "suara": "Ini tiga panel tentang sudut siku-siku. Ketuk kotaknya untuk membuka, lalu lihat cara membuat patokan, lancip dan tumpul, serta pojok benda di sekitar kita.",
+        "panel": [
+          {
+            "id": "a-patokan-info",
+            "tipe": "buka",
+            "judul": "Membuat patokan",
+            "ide": "Dua lipatan berimpit jadi patokan.",
+            "suara": "Ada tiga hal tentang membuat patokan dari kertas. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "satu",
+                "label": "Lipat satu",
+                "ikon": "📄",
+                "isi": "Tepi jadi lurus.",
+                "suara": "Lipat kertas sekali. Lipatan pertama membuat satu tepi yang lurus.",
+                "visual": { "jenis": "teks", "isi": "lipatan 1" }
+              },
+              {
+                "id": "dua",
+                "label": "Lipat dua",
+                "ikon": "🔁",
+                "isi": "Tepi menimpa tepi.",
+                "suara": "Lipat lagi sampai tepi lurus itu menimpa dirinya sendiri dengan rapi. Itu lipatan kedua.",
+                "visual": { "jenis": "teks", "isi": "lipatan 2" }
+              },
+              {
+                "id": "jadi",
+                "label": "Patokan",
+                "ikon": "∟",
+                "isi": "Pojoknya siku-siku.",
+                "suara": "Pojok lipatan menjadi patokan siku-siku. Besarnya sembilan puluh derajat.",
+                "visual": { "jenis": "teks", "isi": "90°" }
+              }
+            ]
+          },
+          {
+            "id": "a-banding-info",
+            "tipe": "banding",
+            "judul": "Lancip dan tumpul",
+            "ide": "Dibanding patokan, sempit atau lebar.",
+            "suara": "Lihat dua pojok yang tidak berimpit dengan patokan.",
+            "sisi": [
+              { "id": "lancip", "nama": "Lancip", "ikon": "∕", "catatan": "Lebih sempit dari patokan.", "suara": "Pojok yang lebih sempit dari patokan disebut lancip.", "visual": { "jenis": "teks", "isi": "< 90°" } },
+              { "id": "tumpul", "nama": "Tumpul", "ikon": "∠", "catatan": "Lebih lebar dari patokan.", "suara": "Pojok yang lebih lebar dari patokan disebut tumpul.", "visual": { "jenis": "teks", "isi": "> 90°" } }
+            ],
+            "kesimpulan": "Berimpit berarti siku-siku."
+          },
+          {
+            "id": "a-sekitar-info",
+            "tipe": "buka",
+            "judul": "Pojok di sekitar kita",
+            "ide": "Periksa dulu, jangan menebak.",
+            "suara": "Ada tiga contoh pojok di sekitar kita. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "bingkai",
+                "label": "Bangun",
+                "ikon": "🖼️",
+                "isi": "Berapa pojok siku-siku.",
+                "suara": "Bingkai foto persegi panjang punya empat pojok siku-siku. Penggaris segitiga siku-siku hanya punya satu.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Bangun", "Pojok siku"], "baris": [["bingkai", 4], ["penggaris segitiga", 1]] }
+              },
+              {
+                "id": "alat",
+                "label": "Alat",
+                "ikon": "📐",
+                "isi": "Penggaris siku tukang.",
+                "suara": "Tukang kayu memakai penggaris siku supaya pojok bingkai tepat sembilan puluh derajat.",
+                "visual": { "jenis": "teks", "isi": "∟ = 90°" }
+              },
+              {
+                "id": "miring",
+                "label": "Miring",
+                "ikon": "❓",
+                "isi": "Pojok yang bukan siku.",
+                "suara": "Pojok yang miring tidak berimpit dengan patokan, jadi bukan siku-siku. Pojok itu harus diganti.",
+                "visual": { "jenis": "teks", "isi": "bukan 90°" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
