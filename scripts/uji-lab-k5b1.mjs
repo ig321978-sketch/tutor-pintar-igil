@@ -1,4 +1,4 @@
-// Uji Simulasi Kelas 5 Bab 1 (Bilangan Cacah sampai 100.000): pengeja, Lab Nilai Tempat (A), Lab Banding (B), mesin,
+// Uji Simulasi Kelas 5 Bab 1 (Bilangan Cacah sampai 100.000): pengeja, Lab Nilai Tempat (A), Lab Banding (B), Lab Susun (C), mesin,
 // skenario, misi, gerbang, data ringkas, dan konsep sub-bab berikutnya tidak bocor ke sub-bab sebelumnya.
 // Jalankan: node --no-warnings scripts/uji-lab-k5b1.mjs
 import { readFileSync } from "node:fs";
@@ -7,6 +7,7 @@ import * as K5 from "../src/components/modul/misi-k5bab1.ts";
 import * as TK from "../src/components/modul/misi-teks-k5b1.ts";
 import * as A from "../src/components/modul/lab-tempat-k5b1a.ts";
 import * as B from "../src/components/modul/lab-banding-k5b1b.ts";
+import * as C from "../src/components/modul/lab-susun-k5b1c.ts";
 import * as MS from "../src/components/modul/mesin-data-k5b1.ts";
 import * as SK from "../src/components/modul/skenario-k5b1.ts";
 import * as ME from "../src/components/modul/mesin-bertahap-k3b1.ts";
@@ -69,6 +70,7 @@ const aksiTulis = (n) => {
   }
   cek(cocok === total, `kata dan lambang 1 sampai 100.000 sama dengan data-k5b1 (${cocok}/${total})`);
   cek(EJ.kataK5B1(0) === "nol" && A.bacaBil(0) === "nol", "kata nol");
+  cek(EJ.kataK5B1(118663) === "seratus delapan belas ribu enam ratus enam puluh tiga" && EJ.ejaK5B1("118.663") === EJ.kataK5B1(118663) && EJ.kataK5B1(1000000) === "1000000", "kata di atas 100.000 untuk pesan jumlah suku");
   sama(EJ.ejaK5B1("14.500 dan 100.000"), "empat belas ribu lima ratus dan seratus ribu", "eja bertitik");
   sama(EJ.ejaK5B1("7 di ribuan bernilai 7.000."), "tujuh di ribuan bernilai tujuh ribu.", "eja akhir kalimat");
   sama(EJ.ejaK5B1("38.600 + 21.400 ≈ 60.000"), "tiga puluh delapan ribu enam ratus ditambah dua puluh satu ribu empat ratus kira-kira enam puluh ribu", "eja tambah dan kira-kira");
@@ -234,7 +236,7 @@ const aksiTulis = (n) => {
       const l = ME.langkahAktif(x);
       x = l ? ME.langkahMesin(x, { t: "JAWAB", nilai: l.benar }) : ME.langkahMesin(x, { t: "LANJUT" });
     }
-    cek(x.selesai && def.selesaiId === K5.ID_MESIN_K5B1[def === MS.MESIN_TEMPAT ? "A" : "B"], `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
+    cek(x.selesai && def.selesaiId === K5.ID_MESIN_K5B1[{ [MS.MESIN_TEMPAT.id]: "A", [MS.MESIN_BANDING.id]: "B", [MS.MESIN_URAIAN.id]: "C" }[def.id]], `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
   }
   // Kunci dan pengecoh dihitung ulang mandiri.
   for (const [i, k] of MS.KASUS_TEMPAT.entries()) {
@@ -286,16 +288,16 @@ const aksiTulis = (n) => {
 
 /* ------------------------------ Misi ------------------------------ */
 {
-  const huruf = ["A", "B"];
-  sama(Object.keys(TK.MISI_K5B1), huruf, "teks misi untuk A dan B");
-  sama(Object.keys(TK.NAMA_SIM_K5B1), huruf, "nama simulasi untuk A dan B");
-  cek(TK.hurufK5B1("Z") === "A" && TK.hurufK5B1("A") === "A" && TK.hurufK5B1("B") === "B", "huruf tak dikenal jatuh ke A");
+  const huruf = ["A", "B", "C"];
+  sama(Object.keys(TK.MISI_K5B1), huruf, "teks misi untuk A, B, dan C");
+  sama(Object.keys(TK.NAMA_SIM_K5B1), huruf, "nama simulasi untuk A, B, dan C");
+  cek(TK.hurufK5B1("Z") === "A" && huruf.every((h) => TK.hurufK5B1(h) === h), "huruf tak dikenal jatuh ke A");
   cek(huruf.every((h) => TK.misiAwalK5Bab1(h).startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK5Bab1(h))), "misi awal dan dapat dieja");
   for (const h of huruf) {
     const daftar = K5.daftarMisiK5Bab1(h);
     cek(daftar.filter((m) => m.wajib).length === 7 && daftar.filter((m) => !m.wajib).length === 3, `${h}: tujuh misi wajib dan tiga tantangan bebas`);
     cek(new Set(daftar.map((m) => m.id)).size === 10 && daftar.every((m) => m.id.startsWith(`${h.toLowerCase()}-`)), `${h}: id misi unik berawalan huruf`);
-    const kosong = [{ alat: "nilai-tempat", pernah: [] }, { alat: "banding", pernah: [] }, sel("tidak-ada"), A.keadaanTempatK5B1A(A.awalTempatK5B1A()), B.keadaanBandingK5B1B(B.awalBandingK5B1B())];
+    const kosong = [{ alat: "nilai-tempat", pernah: [] }, { alat: "banding", pernah: [] }, { alat: "susun", pernah: [] }, sel("tidak-ada"), A.keadaanTempatK5B1A(A.awalTempatK5B1A()), B.keadaanBandingK5B1B(B.awalBandingK5B1B()), C.keadaanSusunK5B1C(C.awalSusunK5B1C())];
     cek(kosong.every((k) => M0.misiBaru(daftar, k, new Set()).length === 0), `${h}: keadaan awal alat tidak memenuhi misi mana pun`);
     cek(daftar.every((m) => m.teks.length > 20 && tanpaAngka(m.teks)), `${h}: teks misi jelas dan dapat dieja`);
     const baru = (k) => M0.misiBaru(daftar, k, new Set());
@@ -608,7 +610,8 @@ const naskahK5 = readFileSync(new URL("../src/components/modul/naskah-k5b1.ts", 
   catatB(tanpaKomentar(baca("SimulasiLabBandingK5B1", "tsx")), "komponen lab (tanpa komentar)", false);
   catatB(tanpaKomentar(baca("model-banding-k5b1", "tsx")), "model gambar (tanpa komentar)", false);
   catatB(tanpaKomentar(baca("lab-banding-k5b1b", "ts")), "logika lab (tanpa komentar)", false);
-  catatB(tanpaKomentar(baca("SimulasiK5Bab1", "tsx")), "pembungkus (tanpa komentar)", false);
+  // Pembungkus bersama memuat semua sub-bab, jadi yang diperiksa hanya Coba ini mesin B.
+  catatB(/\n  B: \[(.*)\],\n  C: \[/.exec(baca("SimulasiK5Bab1", "tsx"))[1], "Coba ini mesin B");
   for (const p of globalThis.__pesanB) catatB(p, "pesan lab dari fuzz");
   const ucapan = [];
   for (let i = 0; i < B.DATA_BANDING.length; i += 1) {
@@ -632,6 +635,332 @@ const naskahK5 = readFileSync(new URL("../src/components/modul/naskah-k5b1.ts", 
     const catatan = [...k.matchAll(/^\s*"([^"]+)",$/gm)].map((m) => m[1]);
     cek(catatan.length >= 4 && catatan.every(tanpaAngka), "lab B: Coba ini dapat dieja");
   }
+}
+
+/* ------------------------------ Sub-Bab C: hitungan MANDIRI ------------------------------ */
+// Kode memakai pembagian dan sisa bagi. Di sini suku dibentuk dari teks angka (digit ditempeli nol), jumlah kartu
+// dengan penjumlahan berulang satu kartu demi satu kartu, dan persamaan di ringkas dievaluasi dari teksnya.
+const NILAI5 = [10000, 1000, 100, 10, 1];
+const sukuMandiri = (n) => String(n).split("").map((c, j, a) => (c === "0" ? null : Number(c + "0".repeat(a.length - 1 - j)))).filter((v) => v !== null);
+const totalMandiri = (kartu) => {
+  let t = 0;
+  for (let i = 0; i < kartu.length; i += 1) for (let j = 0; j < kartu[i]; j += 1) t += NILAI5[i];
+  return t;
+};
+const angkaTeks = (t) => Number(String(t).replace(/\./g, ""));
+/** Evaluasi "a × b + c = d" dari teks: kedua sisi dihitung dengan penjumlahan dan perkalian satu suku. */
+const sisiMandiri = (t) => t.split(" + ").reduce((s, suku) => s + suku.split(" × ").reduce((p, f) => p * angkaTeks(f), 1), 0);
+const LC = C.langkahSusunK5B1C;
+const z0 = C.awalSusunK5B1C();
+const aksiUrai = (i, nilai) => [{ t: "U_DATA", i }, ...nilai.map((v) => ({ t: "U_TOGGLE", v })), { t: "U_CEK" }];
+const aksiKartu = (i, kartu) => [{ t: "S_DATA", i }, ...kartu.flatMap((n, k) => Array.from({ length: n }, () => ({ t: "S_TAMBAH", k }))), { t: "S_CEK" }];
+const naskahC = readFileSync(new URL("../src/components/modul/naskah-k5b1.ts", import.meta.url), "utf8");
+
+/* ------------------------------ Data C sama dengan buku ------------------------------ */
+{
+  const CD = D.ANGKA_BUKU_CD;
+  sama(C.DATA_URAI.map((d) => d.n), [52307, 70080, CD.asep, D.ANGKA_BUKU.bukuYohana], "Urai: 52.307, 70.080 (naskah), Asep, Yohana (buku)");
+  cek(naskahC.includes("52.307 = 50.000 + 2.000 + 300 + 7") && naskahC.includes("70.080"), "naskah memuat contoh 52.307 dan 70.080");
+  sama(C.DATA_SUSUN.map((d) => d.n), [CD.asep, CD.komang, 66600], "Susun: Asep, Komang (buku), 66.600");
+  cek(D.RONDE_KOMPOS_CC.flat().some((r) => r.total === 66600 && jumlahPecahanMandiri(r.pecahan) === 66600), "data buku: 66.600 = 5 × 10.000 + 15 × 1.000 + 16 × 100");
+  sama(C.DATA_TUKAR.map((d) => d.n), [CD.komang, 1400], "Tukar: Komang dan 1.400");
+  cek(naskahC.includes("1.400 = 14 ratusan"), "naskah memuat 1.400 = 14 ratusan");
+  sama(MS.KASUS_URAIAN.map((k) => k.n), [CD.asep, CD.lukas, CD.komang], "Mesin C: Asep, Lukas, Komang (buku)");
+  cek(C.DATA_TUKAR.every((d) => totalMandiri(d.awal) === d.n), "Tukar: kartu awal berjumlah bilangannya (mandiri)");
+  cek(C.NILAI_KARTU.join() === NILAI5.join() && C.NAMA_KARTU.join() === ["10.000", "1.000", "100", "10", "1"].join(), "nilai dan nama kartu");
+}
+function jumlahPecahanMandiri(p) {
+  let t = 0;
+  for (let i = 0; i < p.pr; i += 1) t += 10000;
+  for (let i = 0; i < p.rb; i += 1) t += 1000;
+  for (let i = 0; i < p.r; i += 1) t += 100;
+  for (let i = 0; i < (p.p ?? 0); i += 1) t += 10;
+  for (let i = 0; i < (p.s ?? 0); i += 1) t += 1;
+  return t;
+}
+
+/* ------------------------------ Lab C: Urai ------------------------------ */
+{
+  cek(z0.pernah.length === 0 && z0.pesan === "" && z0.urai.pilih.length === 0 && totalMandiri(z0.susun.kartu) === 0 && totalMandiri(z0.tukar.kartu) === 45600, "C awal: belum ada riwayat");
+  for (const [i, d] of C.DATA_URAI.entries()) {
+    const benar = sukuMandiri(d.n);
+    sama(C.sukuBenar(d.n), benar, `Urai ${d.n}: suku sama dengan hitungan mandiri`);
+    cek(benar.reduce((a, v) => a + v, 0) === d.n && benar.every((v) => v > 0), `Urai ${d.n}: suku berjumlah bilangannya`);
+    const pool = C.poolUrai(i);
+    cek(pool.length === benar.length + 3 && new Set(pool).size === pool.length && benar.every((v) => pool.includes(v)), `Urai ${d.n}: tumpukan memuat suku benar dan tiga pengecoh unik`);
+    cek(d.pengecoh.every((v) => !benar.includes(v)) && pool.join() !== [...pool].sort((a, b) => a - b).join(), `Urai ${d.n}: pengecoh bukan suku benar, tumpukan tidak berurutan`);
+    const t = jalan(z0, LC, aksiUrai(i, benar));
+    cek(t.pernah.includes(`urai:${d.n}`) && t.pesan.startsWith("✅") && t.pesan.includes(`${D.lambang(d.n)} = ${benar.map(D.lambang).join(" + ")}`), `Urai ${d.n}: uraian benar tercatat`);
+    cek(/Nol tidak jadi suku/.test(t.pesan) === String(d.n).includes("0"), `Urai ${d.n}: penjelasan nol hanya untuk bilangan bernol`);
+    cek(jalan(z0, LC, aksiUrai(i, [...benar].reverse())).pernah.includes(`urai:${d.n}`), `Urai ${d.n}: urutan ketuk tidak berpengaruh`);
+    // Near-miss.
+    for (let j = 0; j < benar.length; j += 1) {
+      const kurang = benar.filter((_, q) => q !== j);
+      const s = jalan(z0, LC, aksiUrai(i, kurang));
+      cek(!s.pernah.includes(`urai:${d.n}`) && !s.pesan.startsWith("✅") && /Masih 1 suku|Jumlah sukumu/.test(s.pesan) || kurang.length === 0, `Urai ${d.n}: kurang suku ${benar[j]} ditolak`);
+      for (const p of d.pengecoh) {
+        const s2 = jalan(z0, LC, aksiUrai(i, [...kurang, p]));
+        cek(!s2.pernah.includes(`urai:${d.n}`) && !s2.pesan.startsWith("✅") && s2.pesan.includes(D.lambang(kurang.reduce((a, v) => a + v, 0) + p)), `Urai ${d.n}: ganti ${benar[j]} dengan ${p} ditolak, jumlah sukunya dibacakan`);
+      }
+    }
+    for (const p of d.pengecoh) {
+      const s3 = jalan(z0, LC, aksiUrai(i, [...benar, p]));
+      cek(!s3.pernah.includes(`urai:${d.n}`) && !s3.pesan.startsWith("✅"), `Urai ${d.n}: kelebihan suku ${p} ditolak`);
+      cek(/digitnya saja/.test(s3.pesan) === (p < 10), `Urai ${d.n}: suku ${p} ${p < 10 ? "digit saja dijelaskan" : "bukan digit saja"}`);
+    }
+    const kosong = jalan(z0, LC, [{ t: "U_DATA", i }, { t: "U_CEK" }]);
+    cek(!kosong.pernah.length && /Belum ada suku/.test(kosong.pesan), `Urai ${d.n}: tanpa pilihan diberi tahu`);
+    const dobel = jalan(z0, LC, [{ t: "U_DATA", i }, { t: "U_TOGGLE", v: benar[0] }, { t: "U_TOGGLE", v: benar[0] }]);
+    cek(dobel.urai.pilih.length === 0, `Urai ${d.n}: ketuk dua kali membatalkan`);
+  }
+  const salah = jalan(z0, LC, aksiUrai(1, [70000, 8]));
+  cek(salah.pernah.join() === "urai-70000+8" && /80, bukan 8/.test(salah.pesan) && /70\.008|belum 70\.080/.test(salah.pesan), "Urai: 70.000 + 8 dicatat dan dijelaskan");
+  cek(jalan(z0, LC, aksiUrai(0, [70000, 8])).pernah.length === 0, "Urai: kartu 70.000 dan 8 hanya dicatat untuk 70.080");
+  cek(LC(z0, { t: "U_TOGGLE", v: 12345 }) === z0 && LC(z0, { t: "U_DATA", i: 9 }) === z0, "Urai: aksi di luar batas diabaikan");
+}
+
+/* ------------------------------ Lab C: Susun ------------------------------ */
+{
+  for (const [i, d] of C.DATA_SUSUN.entries()) {
+    const baku = String(d.n).padStart(5, "0").split("").map(Number);
+    const t = jalan(z0, LC, aksiKartu(i, baku));
+    cek(totalMandiri(baku) === d.n && t.pernah.includes(`susun:${d.n}`) && t.pesan.startsWith("✅") && t.pesan.includes(C.teksKartu(baku)), `Susun ${d.n}: susunan baku tercatat`);
+    // Satu kartu lebih atau kurang ditolak, dan selisih dibacakan.
+    for (const [k, nilai] of NILAI5.entries()) {
+      const lebih = [...baku];
+      lebih[k] += 1;
+      const s = jalan(z0, LC, aksiKartu(i, lebih));
+      cek(!s.pernah.includes(`susun:${d.n}`) && !s.pesan.startsWith("✅") && s.pesan.includes(D.lambang(d.n + nilai)) && /kelebihan/.test(s.pesan), `Susun ${d.n}: satu kartu ${nilai} berlebih ditolak`);
+      if (baku[k] > 0) {
+        const kurang = [...baku];
+        kurang[k] -= 1;
+        const s2 = jalan(z0, LC, aksiKartu(i, kurang));
+        cek(!s2.pernah.includes(`susun:${d.n}`) && s2.pesan.includes(D.lambang(d.n - nilai)) && /kurang/.test(s2.pesan), `Susun ${d.n}: satu kartu ${nilai} kurang ditolak`);
+      }
+    }
+  }
+  const kosong = jalan(z0, LC, [{ t: "S_CEK" }]);
+  cek(!kosong.pernah.length && /Belum ada kartu/.test(kosong.pesan), "Susun: tanpa kartu diberi tahu");
+  // Semua susunan 45.600 dengan kartu 10.000, 1.000, dan 100 diperiksa lewat aksi, dibandingkan dengan jumlah mandiri.
+  let diperiksa = 0;
+  let cocok = 0;
+  for (let a = 0; a <= 4; a += 1)
+    for (let b = 0; b <= 50; b += 1)
+      for (let c = 0; c <= 30; c += 1) {
+        const t = jalan(z0, LC, aksiKartu(1, [a, b, c, 0, 0]));
+        const sama45 = totalMandiri([a, b, c, 0, 0]) === 45600;
+        diperiksa += 1;
+        const ids = t.pernah.filter((v) => v.startsWith("susun:"));
+        if (sama45 ? ids.join() === `susun:45600,susun:45600:p${a}` : ids.length === 0) cocok += 1;
+      }
+  cek(diperiksa === 5 * 51 * 31 && cocok === diperiksa, `Susun 45.600: ${diperiksa} susunan, tercatat tepat bila jumlahnya 45.600 (${cocok})`);
+  const ada = (a, b, c) => totalMandiri([a, b, c, 0, 0]) === 45600;
+  cek(ada(4, 5, 6) && ada(3, 15, 6) && ada(0, 45, 6) && ada(3, 14, 16) && !ada(3, 15, 5) && !ada(4, 5, 7), "Susun 45.600: contoh susunan sah dan tidak sah (mandiri)");
+  // 66.600 tepat 5-15-16 untuk tantangan; susunan lain dengan jumlah sama tidak.
+  cek(jalan(z0, LC, aksiKartu(2, [5, 15, 16, 0, 0])).pernah.includes("susun:66600:5-15-16"), "Susun: 5-15-16 untuk 66.600 tercatat");
+  for (const lain of [[6, 5, 16, 0, 0], [6, 6, 6, 0, 0], [5, 16, 6, 0, 0], [5, 15, 16, 0, 1]]) {
+    const t = jalan(z0, LC, aksiKartu(2, lain));
+    cek(!t.pernah.includes("susun:66600:5-15-16") && t.pernah.includes("susun:66600") === (totalMandiri(lain) === 66600), `Susun 66.600: susunan ${lain.join("-")} bukan 5-15-16`);
+  }
+  // Batas.
+  const sepuluh = jalan(z0, LC, Array.from({ length: 10 }, () => ({ t: "S_TAMBAH", k: 0 })));
+  const t11 = LC(sepuluh, { t: "S_TAMBAH", k: 0 });
+  cek(totalMandiri(t11.susun.kartu) === 100000 && /100\.000/.test(t11.pesan), "Susun: di atas 100.000 ditolak");
+  const seratus = jalan(z0, LC, Array.from({ length: 100 }, () => ({ t: "S_TAMBAH", k: 4 })));
+  cek(LC(seratus, { t: "S_TAMBAH", k: 4 }).susun.kartu[4] === 100 && /paling banyak 100/.test(LC(seratus, { t: "S_TAMBAH", k: 4 }).pesan), "Susun: satu jenis paling banyak 100");
+  cek(LC(z0, { t: "S_KURANG", k: 2 }) === z0 && LC(z0, { t: "S_TAMBAH", k: 5 }) === z0 && LC(z0, { t: "S_DATA", i: 9 }) === z0, "Susun: aksi di luar batas diabaikan");
+  cek(totalMandiri(jalan(z0, LC, [...aksiKartu(0, [3, 8, 6, 0, 0]).slice(0, -1), { t: "S_ULANG" }]).susun.kartu) === 0, "Susun: kosongkan");
+}
+
+/* ------------------------------ Lab C: Tukar ------------------------------ */
+{
+  for (const [i, d] of C.DATA_TUKAR.entries()) {
+    const x = LC(z0, { t: "X_DATA", i });
+    cek(totalMandiri(x.tukar.kartu) === d.n, `Tukar ${d.n}: kartu awal berjumlah ${d.n}`);
+    for (let k = 0; k < 4; k += 1) {
+      const p = LC(x, { t: "X_PECAH", k });
+      if (x.tukar.kartu[k] > 0) {
+        cek(totalMandiri(p.tukar.kartu) === d.n && p.tukar.kartu[k] === x.tukar.kartu[k] - 1 && p.tukar.kartu[k + 1] === x.tukar.kartu[k + 1] + 10 && p.pesan.startsWith("✅") && p.pesan.includes(D.lambang(d.n)), `Tukar ${d.n}/${k}: pecah satu kartu, jumlah tetap`);
+        const balik = LC(p, { t: "X_GABUNG", k });
+        cek(balik.tukar.kartu.join() === x.tukar.kartu.join(), `Tukar ${d.n}/${k}: pecah lalu gabung kembali ke awal`);
+      } else cek(p.tukar.kartu.join() === x.tukar.kartu.join() && /Tidak ada kartu/.test(p.pesan), `Tukar ${d.n}/${k}: tanpa kartu tidak bisa dipecah`);
+      const g = LC(x, { t: "X_GABUNG", k });
+      if (x.tukar.kartu[k + 1] >= 10) cek(totalMandiri(g.tukar.kartu) === d.n && g.tukar.kartu[k] === x.tukar.kartu[k] + 1, `Tukar ${d.n}/${k}: gabung sepuluh kartu`);
+      else cek(g.tukar.kartu.join() === x.tukar.kartu.join() && /Perlu 10 kartu/.test(g.pesan), `Tukar ${d.n}/${k}: kurang dari sepuluh tidak bisa digabung`);
+    }
+  }
+  const x1400 = LC(z0, { t: "X_DATA", i: 1 });
+  const ratusan = LC(x1400, { t: "X_PECAH", k: 1 });
+  cek(ratusan.tukar.kartu.join() === "0-0-14-0-0".split("-").join() && ratusan.pernah.join() === "tukar:1400:14", "Tukar: 1.400 menjadi 14 kartu 100 tercatat");
+  cek(LC(LC(x1400, { t: "X_PECAH", k: 1 }), { t: "X_PECAH", k: 2 }).pernah.length === 1 && LC(LC(z0, { t: "X_DATA", i: 0 }), { t: "X_PECAH", k: 0 }).pernah.length === 0, "Tukar: 14 ratusan hanya dicatat untuk 1.400 dan riwayat tidak dicabut");
+  cek(LC(x1400, { t: "X_ULANG" }).tukar.kartu.join() === "0,1,4,0,0", "Tukar: kembali ke kartu awal");
+  cek(LC(z0, { t: "X_PECAH", k: 4 }) === z0 && LC(z0, { t: "X_GABUNG", k: -1 }) === z0 && LC(z0, { t: "X_DATA", i: 5 }) === z0, "Tukar: aksi di luar batas diabaikan");
+  // Batas 100 kartu: memecah ratusan terlalu banyak ditolak.
+  let y = x1400;
+  y = LC(y, { t: "X_PECAH", k: 1 });
+  for (let i = 0; i < 14; i += 1) y = LC(y, { t: "X_PECAH", k: 2 });
+  cek(totalMandiri(y.tukar.kartu) === 1400 && y.tukar.kartu[3] <= 100 && /lebih dari 100/.test(y.pesan), "Tukar: terlalu banyak kartu 10 ditolak, jumlah tetap");
+
+  // Fuzz.
+  const acak = acakDari(53);
+  let s = z0;
+  let ok = true;
+  const pesanSemua = new Set();
+  const riwayatSemua = new Set();
+  for (let i = 0; i < 20000; i += 1) {
+    const p = acak(18);
+    const pool = C.poolUrai(s.urai.data);
+    const a =
+      p <= 1 ? { t: "U_TOGGLE", v: acak(8) === 0 ? 4 : pool[acak(pool.length)] } :
+      p === 2 ? (acak(3) === 0 ? { t: "U_DATA", i: acak(5) } : acak(4) === 0 ? { t: "U_ULANG" } : { t: "U_CEK" }) :
+      p === 3 ? { t: "U_CEK" } :
+      p <= 6 ? { t: "S_TAMBAH", k: acak(6) } :
+      p === 7 ? { t: "S_KURANG", k: acak(6) } :
+      p === 8 ? (acak(3) === 0 ? { t: "S_DATA", i: acak(4) } : acak(5) === 0 ? { t: "S_ULANG" } : { t: "S_CEK" }) :
+      p === 9 ? { t: "S_CEK" } :
+      p <= 12 ? { t: "X_PECAH", k: acak(5) } :
+      p <= 15 ? { t: "X_GABUNG", k: acak(5) } :
+      p === 16 ? (acak(4) === 0 ? { t: "X_DATA", i: acak(3) } : acak(4) === 0 ? { t: "X_ULANG" } : { t: "PESAN_KOSONG" }) :
+      acak(40) === 0 ? { t: "RESET" } : { t: "S_CEK" };
+    const t = LC(s, a);
+    if (a.t !== "RESET" && !s.pernah.every((v) => t.pernah.includes(v))) ok = false;
+    if (t.susun.kartu.length !== 5 || t.susun.kartu.some((v) => !Number.isInteger(v) || v < 0 || v > C.MAKS_KARTU) || totalMandiri(t.susun.kartu) > 100000) ok = false;
+    if (t.tukar.kartu.length !== 5 || t.tukar.kartu.some((v) => !Number.isInteger(v) || v < 0 || v > C.MAKS_KARTU) || totalMandiri(t.tukar.kartu) !== C.DATA_TUKAR[t.tukar.data].n) ok = false;
+    const poolT = C.poolUrai(t.urai.data);
+    if (t.urai.pilih.some((v) => !poolT.includes(v)) || new Set(t.urai.pilih).size !== t.urai.pilih.length) ok = false;
+    for (const id of t.pernah) if (!/^(urai:(52307|70080|38600|14500)|urai-70000\+8|susun:(38600|45600|66600)|susun:45600:p[0-4]|susun:66600:5-15-16|tukar:1400:14)$/.test(id)) ok = false;
+    if (t.pernah.includes("susun:45600") !== t.pernah.some((v) => v.startsWith("susun:45600:p"))) ok = false;
+    if (t.pesan) pesanSemua.add(t.pesan);
+    for (const id of t.pernah) riwayatSemua.add(id);
+    s = t;
+  }
+  cek(ok, "fuzz 20.000 aksi Lab Susun: batas terjaga, jumlah tukar tetap, riwayat tidak dicabut");
+  cek(pesanSemua.size > 25 && [...pesanSemua].every(tanpaAngka), `fuzz Lab Susun: semua ${pesanSemua.size} pesan dieja menjadi kata`);
+  cek(riwayatSemua.size >= 4 && [...riwayatSemua].some((v) => v.startsWith("urai:")) && riwayatSemua.has("tukar:1400:14"), `fuzz Lab Susun: riwayat urai dan tukar terkumpul (${[...riwayatSemua].join(" ")})`);
+  globalThis.__pesanC = [...pesanSemua];
+}
+
+/* ------------------------------ Mesin C ------------------------------ */
+{
+  for (const [i, k] of MS.KASUS_URAIAN.entries()) {
+    const c = MS.MESIN_URAIAN.kasus[i];
+    const [urai, susun, tukar, cekL] = c.langkah;
+    const s = String(k.n);
+    const pr = Number(s[0]);
+    const rb = Number(s[1]);
+    const r = Number(s[2]);
+    const bentuk = sukuMandiri(k.n).map(D.lambang).join(" + ");
+    cek(urai.benar === bentuk && urai.tanya.includes(D.lambang(k.n)) && urai.opsi.filter((o) => o === bentuk).length === 1, `Mesin C ${k.n}: bentuk panjang ${bentuk} (mandiri)`);
+    cek(urai.opsi.every((o) => o === bentuk || sisiMandiri(o) !== k.n), `Mesin C ${k.n}: pengecoh bentuk panjang berjumlah lain`);
+    cek(susun.benar === String(rb) && totalMandiri([pr, rb, r, 0, 0]) === k.n && susun.tanya.includes(`${pr} kartu 10.000 dan ${r} kartu 100`), `Mesin C ${k.n}: kartu 1.000 yang diperlukan ${rb} (jumlah kartu mandiri)`);
+    cek(susun.opsi.every((o) => o === susun.benar || totalMandiri([pr, Number(o), r, 0, 0]) !== k.n) && susun.opsi.includes(String(rb * 10)), `Mesin C ${k.n}: pengecoh kartu 1.000 salah, ada sepuluh kali`);
+    const baru = rb + 10 * k.tukar;
+    cek(tukar.benar === String(baru) && totalMandiri([pr - k.tukar, baru, r, 0, 0]) === k.n && tukar.tanya.includes(`${k.tukar} kartu 10.000 ditukar`), `Mesin C ${k.n}: setelah tukar ${k.tukar} kartu 10.000, kartu 1.000 ${baru} (jumlah tetap, mandiri)`);
+    cek(tukar.opsi.every((o) => o === tukar.benar || totalMandiri([pr - k.tukar, Number(o), r, 0, 0]) !== k.n), `Mesin C ${k.n}: pengecoh tukar mengubah jumlah`);
+    cek(cekL.benar === `tetap ${D.lambang(k.n)}` && cekL.opsi.filter((o) => o.startsWith("menjadi ")).every((o) => angkaTeks(o.replace("menjadi ", "")) !== k.n) && cekL.opsi.length === 3, `Mesin C ${k.n}: total tetap, pengecoh berubah`);
+    cek(EJ.ejaK5B1(c.ringkas).includes(D.kata(k.n)), `Mesin C ${k.n}: ringkas dieja dengan bacaan benar`);
+  }
+}
+
+/* ------------------------------ Skenario C ------------------------------ */
+{
+  const S = SK.SKENARIO_K5B1C;
+  cek(S.adegan.length >= 5 && S.adegan.length <= 8 && S.adegan[0].jenis === "narasi" && S.adegan[S.adegan.length - 1].jenis === "akhir", `${S.id}: 5 sampai 8 adegan, buka dan tutup`);
+  cek(new Set(S.adegan.map((x) => x.jenis)).size >= 4 && S.adegan.every((x) => tanpaAngka(x.cerita)), `${S.id}: empat jenis adegan, cerita dapat dieja`);
+  sama(S.id.replace(/-k5b1$/, ""), K5.ID_SKENARIO_K5B1.C, "id skenario C sesuai id misi");
+  const ad = (id) => S.adegan.find((x) => x.id === id);
+  const asep = ad("asep");
+  cek(asep.cerita.includes("3 kartu 10.000, 8 kartu 1.000, dan 6 kartu 100") && asep.opsi.find((o) => o.benar).teks === D.lambang(totalMandiri([3, 8, 6, 0, 0])) && totalMandiri([3, 8, 6, 0, 0]) === D.ANGKA_BUKU_CD.asep, "C: uang Asep dari jumlah kartu (mandiri)");
+  cek(asep.opsi.filter((o) => !o.benar).every((o) => angkaTeks(o.teks) !== D.ANGKA_BUKU_CD.asep), "C: pengecoh uang Asep salah");
+  const lukas = ad("lukas");
+  cek(lukas.cerita.includes(`${D.lambang(D.ANGKA_BUKU_CD.lukas)}. Bentuk panjangnya ${sukuMandiri(D.ANGKA_BUKU_CD.lukas).map(D.lambang).join(" + ")}`) && lukas.jumlah === sukuMandiri(D.ANGKA_BUKU_CD.lukas).length, "C: banyak suku uang Lukas (mandiri)");
+  const komang = ad("komang");
+  let perlu = 0;
+  for (let sisa = D.ANGKA_BUKU_CD.komang - totalMandiri([3, 0, 6, 0, 0]); sisa >= 1000; sisa -= 1000) perlu += 1;
+  cek(komang.target === perlu && totalMandiri([3, perlu, 6, 0, 0]) === D.ANGKA_BUKU_CD.komang && komang.target <= komang.maks && komang.cerita.includes("3 kartu 10.000 dan 6 kartu 100"), "C: kartu 1.000 yang diperlukan Komang (mandiri)");
+  const tukar = ad("tukar");
+  cek(tukar.cerita.includes("2 kartu 10.000, 25 kartu 1.000, dan 6 kartu 100") && totalMandiri([2, 25, 6, 0, 0]) === D.ANGKA_BUKU_CD.komang && tukar.opsi.find((o) => o.benar).teks.includes(D.lambang(D.ANGKA_BUKU_CD.komang)), "C: 2, 25, 6 kartu tetap 45.600 (mandiri)");
+  const soal = ad("baca").soal;
+  cek(soal[0].jawaban === sukuMandiri(63500).map(D.lambang).join(" + ") && soal[0].opsi.filter((o) => o !== soal[0].jawaban).every((o) => sisiMandiri(o) !== 63500), "C: bentuk panjang 63.500 (mandiri), pengecoh berjumlah lain");
+  cek(soal[1].jawaban === D.lambang(totalMandiri([2, 25, 6, 0, 0])) && soal[1].opsi.filter((o) => o !== soal[1].jawaban).every((o) => angkaTeks(o) !== 45600), "C: jumlah 2, 25, 6 kartu (mandiri)");
+  cek(soal[2].jawaban === "10" && soal[2].opsi.length === 3 && totalMandiri([0, 10, 0, 0, 0]) === 10000, "C: satu kartu 10.000 menjadi sepuluh kartu 1.000");
+  for (const q of soal) cek(q.opsi.filter((o) => o === q.jawaban).length === 1, `C: satu kunci (${q.teks})`);
+  const posisi = S.adegan.filter((x) => x.jenis === "pilih").map((x) => x.opsi.findIndex((o) => o.benar));
+  cek(new Set(posisi).size === posisi.length, `C: letak jawaban pilih bervariasi (${posisi.join("")})`);
+}
+
+/* ------------------------------ Misi C lewat aksi lab ------------------------------ */
+{
+  const capai = (aksi) => M0.misiBaru(K5.MISI_C, C.keadaanSusunK5B1C(jalan(C.awalSusunK5B1C(), LC, aksi)), new Set());
+  cek(capai(aksiUrai(0, sukuMandiri(52307))).join() === "c-contoh", "C: urai 52.307 memenuhi");
+  cek(capai(aksiUrai(0, [50000, 2000, 300])).length === 0 && capai(aksiUrai(0, [50000, 2000, 300, 7, 5])).length === 0 && capai(aksiUrai(0, [50000, 2000, 300, 7]).slice(0, -1)).length === 0, "C: suku kurang, kelebihan, atau belum diperiksa tidak memenuhi");
+  cek(capai(aksiUrai(1, sukuMandiri(70080))).join() === "c-nol", "C: urai 70.080 memenuhi");
+  cek(capai(aksiUrai(1, [70000, 8])).join() === "c-salah" && capai(aksiUrai(1, [70000, 80, 8])).length === 0, "C: 70.000 + 8 hanya tantangan, 70.080 tanpa nol salah tidak memenuhi");
+  cek(capai(aksiKartu(0, [3, 8, 6, 0, 0])).join() === "c-asep" && capai(aksiKartu(0, [4, 0, 0, 0, 0])).length === 0, "C: susun Asep memenuhi, jumlah lain tidak");
+  cek(capai(aksiKartu(1, [3, 15, 6, 0, 0])).join() === "c-tiga" && capai(aksiKartu(1, [4, 5, 6, 0, 0])).length === 0, "C: 45.600 dengan tiga kartu 10.000 memenuhi, empat kartu tidak");
+  cek(capai(aksiKartu(1, [0, 45, 6, 0, 0])).join() === "c-tanpa" && capai(aksiKartu(1, [1, 35, 6, 0, 0])).length === 0, "C: 45.600 tanpa kartu 10.000 memenuhi, satu kartu tidak");
+  cek(capai(aksiKartu(1, [3, 15, 5, 0, 0])).length === 0 && capai(aksiKartu(1, [3, 14, 16, 0, 0])).join() === "c-tiga", "C: 45.500 tidak memenuhi, 3-14-16 (jumlah 45.600) memenuhi");
+  cek(capai(aksiKartu(2, [5, 15, 16, 0, 0])).join() === "c-enam" && capai(aksiKartu(2, [6, 5, 16, 0, 0])).length === 0, "C: tantangan 5-15-16 (bukan susunan lain)");
+  cek(capai([{ t: "X_DATA", i: 1 }, { t: "X_PECAH", k: 1 }]).join() === "c-ratusan" && capai([{ t: "X_PECAH", k: 0 }]).length === 0 && capai([{ t: "X_DATA", i: 1 }, { t: "X_PECAH", k: 2 }]).length === 0, "C: tantangan 14 ratusan, tukar lain tidak");
+  cek(M0.misiBaru(K5.MISI_C, B.keadaanBandingK5B1B(jalan(y0, LB, aksiBanding(0))), new Set()).length === 0 && M0.misiBaru(K5.MISI_B, C.keadaanSusunK5B1C(jalan(z0, LC, aksiKartu(0, [3, 8, 6, 0, 0]))), new Set()).length === 0, "riwayat lab B dan C tidak saling memenuhi");
+}
+
+/* ------------------------------ Konsep D tidak bocor ke Sub-Bab C ------------------------------ */
+{
+  const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas5-bab1-ringkas.json", import.meta.url), "utf8"));
+  const baca = (nama, ekstensi) => readFileSync(new URL(`../src/components/modul/${nama}.${ekstensi}`, import.meta.url), "utf8");
+  const tanpaKomentar = (s) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const teksDari = (o) => {
+    const hasil = [];
+    JSON.stringify(o, (k, v) => {
+      if (typeof v === "string") hasil.push(v);
+      return v;
+    });
+    return hasil.join(" | ");
+  };
+  // Sub-Bab C memakai + dan × (uraian, kartu) tetapi tidak memakai konsep D: operasi hitung lain, perkiraan,
+  // menyimpan, dan meminjam.
+  const BOCOR_C = /\b(dikurangi|pengurangan|selisih|dibagi|pembagian|perkiraan|dibulatkan|pembulatan|menyimpan|meminjam|bersusun|operasi)\b/i;
+  const LAMBANG_C = /[−÷≈]/;
+  const catatC = (teks, apa, lambang = true) => {
+    for (const [p, nama] of lambang ? [[BOCOR_C, "konsep sub-bab berikutnya"], [LAMBANG_C, "lambang kurang, bagi, atau kira-kira"]] : [[BOCOR_C, "konsep sub-bab berikutnya"]]) {
+      const m = p.exec(teks);
+      cek(!m, `C: ${apa} bebas ${nama} (${m ? m[0] : ""} di "${String(teks).slice(Math.max(0, (m?.index ?? 0) - 30), (m?.index ?? 0) + 40)}")`);
+    }
+  };
+  for (const t of [TK.MISI_K5B1.C, TK.NAMA_SIM_K5B1.C, ...K5.MISI_C.map((m) => m.teks)]) catatC(t, "teks misi");
+  catatC(teksDari(MS.MESIN_URAIAN), "mesin");
+  catatC(teksDari(SK.SKENARIO_K5B1C), "skenario");
+  catatC(teksDari(ringkas.subBab.C), "peta dan infografis ringkas");
+  // Komponen lab memakai tombol "−" (kurangi kartu); yang diperiksa hanya kata konsep D.
+  catatC(tanpaKomentar(baca("SimulasiLabSusunK5B1", "tsx")), "komponen lab (tanpa komentar)", false);
+  catatC(tanpaKomentar(baca("model-susun-k5b1", "tsx")), "model gambar (tanpa komentar)", false);
+  catatC(tanpaKomentar(baca("lab-susun-k5b1c", "ts")), "logika lab (tanpa komentar)", false);
+  catatC(/\n  C: \[(.*)\],\n\};/.exec(baca("SimulasiK5Bab1", "tsx"))[1], "Coba ini mesin C");
+  for (const p of globalThis.__pesanC) catatC(p, "pesan lab dari fuzz");
+  const ucapan = [];
+  for (let i = 0; i < C.DATA_URAI.length; i += 1) ucapan.push(C.ucapUraiK5B1C(LC(z0, { t: "U_DATA", i })), C.ucapUraiK5B1C(jalan(z0, LC, aksiUrai(i, sukuMandiri(C.DATA_URAI[i].n)).slice(0, -1))));
+  for (let i = 0; i < C.DATA_SUSUN.length; i += 1) ucapan.push(C.ucapSusunK5B1C(LC(z0, { t: "S_DATA", i })), C.ucapSusunK5B1C(jalan(z0, LC, aksiKartu(i, [3, 8, 6, 0, 0]))));
+  for (let i = 0; i < C.DATA_TUKAR.length; i += 1) ucapan.push(C.ucapTukarK5B1C(LC(z0, { t: "X_DATA", i })), C.ucapTukarK5B1C(LC(LC(z0, { t: "X_DATA", i }), { t: "X_PECAH", k: 1 })));
+  cek(ucapan.length > 10 && ucapan.every(tanpaAngka), `C: semua ${ucapan.length} ucapan lab dieja menjadi kata`);
+  for (const u of ucapan) catatC(u, "ucapan lab");
+  for (const f of ["SimulasiLabSusunK5B1", "model-susun-k5b1"]) {
+    const s = baca(f, "tsx");
+    cek(!/correct_index|explanation/.test(s) && !/fetch\(|XMLHttpRequest|api\/|openai|anthropic|gemini/i.test(s), `${f}: tanpa kunci, jaringan, atau model bahasa`);
+  }
+  {
+    const s = baca("lab-susun-k5b1c", "ts");
+    cek(!/fetch\(|XMLHttpRequest|from "react"|correct_index|explanation/i.test(s) && (s.match(/^import .+$/gm) ?? []).every((l) => l.startsWith("import type")), "lab-susun-k5b1c: murni, hanya impor tipe");
+    const k = baca("SimulasiLabSusunK5B1", "tsx");
+    cek(/useEffect\(\(\) => \{\s*onKeadaan\?\.\(keadaan\w+\(x\)\);\s*\}, \[onKeadaan, x\]\);/.test(k), "lab C: lapor keadaan lewat useEffect");
+    cek(/setLihat\(v\);\s*kirim\(\{ t: "PESAN_KOSONG" \}\);/.test(k), "lab C: ganti tampilan mengosongkan pesan");
+    const catatan = [...k.matchAll(/^\s*"([^"]+)",$/gm)].map((m) => m[1]);
+    cek(catatan.length >= 4 && catatan.every(tanpaAngka), "lab C: Coba ini dapat dieja");
+  }
+  // Konsep C tidak bocor ke A dan B.
+  const BOCOR_KE_AB = /\b(uraian|diuraikan|bentuk panjang|komposisi|dekomposisi|tukar|ditukar|menukar)\b/i;
+  for (const [h, bagian] of [["A", [TK.MISI_K5B1.A, ...K5.MISI_A.map((m) => m.teks), teksDari(MS.MESIN_TEMPAT), teksDari(SK.SKENARIO_K5B1A), teksDari(ringkas.subBab.A)]], ["B", [TK.MISI_K5B1.B, ...K5.MISI_B.map((m) => m.teks), teksDari(MS.MESIN_BANDING), teksDari(SK.SKENARIO_K5B1B), teksDari(ringkas.subBab.B)]]])
+    for (const t of bagian) cek(!BOCOR_KE_AB.test(t), `${h}: bebas konsep Sub-Bab C (${BOCOR_KE_AB.exec(t)?.[0] ?? ""})`);
 }
 
 /* ------------------------------ Konsep tidak bocor antar sub-bab ------------------------------ */
@@ -755,7 +1084,26 @@ const naskahK5 = readFileSync(new URL("../src/components/modul/naskah-k5b1.ts", 
   sama(B0.infografis.panel[1].sisi.map((x) => x.visual.isi), [`${D.lambang(turun[3])} → ${D.lambang(turun[0])}`, `${D.lambang(turun[0])} → ${D.lambang(turun[3])}`], "ringkas B: naik dan turun dakon");
   cek(B0.infografis.panel[2].butir.find((b) => b.id === "acuan").visual.isi === urutMandiri([38500, 40200, 39999], "naik").map(D.lambang).join(" < "), "ringkas B: urutan sekitar acuan (mandiri)");
   cek(B0.peta.kartu.find((k) => k.id === "b-kurang-dari").teks === `45.230 ${tandaMandiri(45230, 46001)} 46.001` && B0.peta.kartu.find((k) => k.id === "b-sama-dengan").teks === `13.234 ${tandaMandiri(13234, 13234)} 13.234`, "ringkas B: kartu tanda (mandiri)");
-  sama(Object.keys(ringkas.subBab), ["A", "B"], "ringkas: gelombang ini sub-bab A dan B");
+  // Angka di ringkas C dihitung ulang mandiri (persamaan dievaluasi dari teksnya).
+  const C0 = ringkas.subBab.C;
+  const evalT = (t) => t.split(" + ").reduce((a, suku) => a + suku.split(" × ").reduce((q, f) => q * Number(f.replace(/\./g, "")), 1), 0);
+  const eqOk = (t) => { const [l, r] = t.split(" = "); return evalT(l) === evalT(r); };
+  const semuaVisual = [];
+  JSON.stringify(C0.infografis, (k, v) => { if (k === "isi" && typeof v === "string" && v.includes(" = ")) semuaVisual.push(v); return v; });
+  cek(semuaVisual.length >= 4 && semuaVisual.every(eqOk), `ringkas C: ${semuaVisual.length} persamaan di infografis benar (dihitung)`);
+  const visualDari = (panel, id, jenis) => C0.infografis.panel[panel][jenis].find((b) => b.id === id).visual.isi;
+  cek(eqOk(visualDari(0, "kembali", "butir")) && eqOk(visualDari(0, "nol", "butir")) && visualDari(0, "nol", "butir") === "70.080 = 70.000 + 80", "ringkas C: uraian 70.080 dan kembali ke 52.307");
+  const tabelC = C0.infografis.panel[0].butir.find((b) => b.id === "urai").visual.baris;
+  sama(tabelC.map((r) => r[1]), sukuMandiri(52307), "ringkas C: tabel suku 52.307 (mandiri)");
+  sama(tabelC.map((r) => r[0]), ["puluh ribuan", "ribuan", "ratusan", "satuan"], "ringkas C: nama tempat tabel suku");
+  const sisiC = C0.infografis.panel[1].sisi.map((x) => evalT(x.visual.isi));
+  cek(sisiC.length === 2 && sisiC.every((v) => v === 45600) && C0.infografis.panel[1].kesimpulan.includes("45.600"), "ringkas C: dua cara sama-sama 45.600 (dihitung)");
+  cek(C0.peta.kartu.every((k) => !k.teks.includes(" = ") || k.teks.includes("kartu") || eqOk(k.teks)), "ringkas C: persamaan di kartu peta benar (dihitung)");
+  const sepuluhKartu = C0.peta.kartu.find((k) => k.id === "c-sepuluh").teks;
+  cek(sepuluhKartu === "10 kartu 1.000 = 1 kartu 10.000" && 10 * 1000 === 1 * 10000, "ringkas C: sepuluh kartu 1.000 sama dengan satu kartu 10.000 (dihitung)");
+  const suaraC = JSON.stringify(C0).toLowerCase();
+  cek([52307, 70080, 45600, 1400].every((n) => suaraC.includes(D.kata(n))), "ringkas C: bacaan 52.307, 70.080, 45.600, dan 1.400 sesuai kata");
+  sama(Object.keys(ringkas.subBab), ["A", "B", "C"], "ringkas: gelombang ini sub-bab A, B, dan C");
 }
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);

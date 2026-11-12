@@ -5,23 +5,25 @@
  * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
  *  A Nilai tempat : Lab Nilai Tempat (Tulis, Baca, Nilai) + Mesin Nilai Tempat + Papan Data Desa
  *  B Banding-urut : Lab Banding (Banding, Garis, Urut)      + Mesin Banding      + Lomba Dakon
+ *  C Urai-susun   : Lab Susun (Urai, Susun, Tukar)          + Mesin Uraian       + Uang Asep dan Komang
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanTempatK5B1A } from "./lab-tempat-k5b1a";
 import type { KeadaanBandingK5B1B } from "./lab-banding-k5b1b";
+import type { KeadaanSusunK5B1C } from "./lab-susun-k5b1c";
 
-export type KeadaanK5Bab1 = KeadaanTempatK5B1A | KeadaanBandingK5B1B | KeadaanSelesai;
-export type HurufMisiK5B1 = "A" | "B";
+export type KeadaanK5Bab1 = KeadaanTempatK5B1A | KeadaanBandingK5B1B | KeadaanSusunK5B1C | KeadaanSelesai;
+export type HurufMisiK5B1 = "A" | "B" | "C";
 
 const selesai = (k: KeadaanK5Bab1, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
 const pernah = (k: KeadaanK5Bab1, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K5B1 = { A: "data-desa", B: "lomba-dakon" } as const;
-export const ID_MESIN_K5B1 = { A: "mesin-tempat", B: "mesin-banding" } as const;
+export const ID_SKENARIO_K5B1 = { A: "data-desa", B: "lomba-dakon", C: "uang-asep" } as const;
+export const ID_MESIN_K5B1 = { A: "mesin-tempat", B: "mesin-banding", C: "mesin-uraian" } as const;
 
 export const MISI_A: DefMisi<KeadaanK5Bab1>[] = [
   { id: "a-yohana", teks: "Di Tulis, tulis empat belas ribu lima ratus di tabel nilai tempat, lalu periksa.", wajib: true, cek: (k) => pernah(k, "nilai-tempat", "tulis:14500") },
@@ -49,5 +51,18 @@ export const MISI_B: DefMisi<KeadaanK5Bab1>[] = [
   { id: "b-tengah", teks: "Di Urut, urutkan tiga bilangan dari yang terkecil. Mana bilangan tengahnya?", wajib: false, cek: (k) => pernah(k, "banding", "urut:tengah") },
 ];
 
-const DAFTAR: Record<HurufMisiK5B1, DefMisi<KeadaanK5Bab1>[]> = { A: MISI_A, B: MISI_B };
+export const MISI_C: DefMisi<KeadaanK5Bab1>[] = [
+  { id: "c-contoh", teks: "Di Urai, pilih suku-suku bentuk panjang lima puluh dua ribu tiga ratus tujuh, lalu periksa.", wajib: true, cek: (k) => pernah(k, "susun", "urai:52307") },
+  { id: "c-nol", teks: "Di Urai, uraikan tujuh puluh ribu delapan puluh. Nol tidak jadi suku, tetapi tempatnya tetap ada.", wajib: true, cek: (k) => pernah(k, "susun", "urai:70080") },
+  { id: "c-asep", teks: "Di Susun, susun uang Asep tiga puluh delapan ribu enam ratus dari kartu, lalu periksa.", wajib: true, cek: (k) => pernah(k, "susun", "susun:38600") },
+  { id: "c-tiga", teks: "Di Susun, susun uang Komang empat puluh lima ribu enam ratus dengan tepat tiga kartu sepuluh ribu.", wajib: true, cek: (k) => pernah(k, "susun", "susun:45600:p3") },
+  { id: "c-tanpa", teks: "Di Susun, susun lagi empat puluh lima ribu enam ratus tanpa kartu sepuluh ribu.", wajib: true, cek: (k) => pernah(k, "susun", "susun:45600:p0") },
+  { id: "c-mesin", teks: "Selesaikan Mesin Uraian sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K5B1.C) },
+  { id: "c-skenario", teks: "Selesaikan skenario Uang Asep dan Komang sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K5B1.C) },
+  { id: "c-salah", teks: "Di Urai, coba uraikan tujuh puluh ribu delapan puluh menjadi tujuh puluh ribu dan delapan. Baca penjelasan lab.", wajib: false, cek: (k) => pernah(k, "susun", "urai-70000+8") },
+  { id: "c-enam", teks: "Di Susun, susun enam puluh enam ribu enam ratus dengan lima kartu sepuluh ribu, lima belas kartu seribu, dan enam belas kartu seratus.", wajib: false, cek: (k) => pernah(k, "susun", "susun:66600:5-15-16") },
+  { id: "c-ratusan", teks: "Di Tukar, tukar seribu empat ratus sampai semuanya menjadi kartu seratus. Berapa kartu seratus?", wajib: false, cek: (k) => pernah(k, "susun", "tukar:1400:14") },
+];
+
+const DAFTAR: Record<HurufMisiK5B1, DefMisi<KeadaanK5Bab1>[]> = { A: MISI_A, B: MISI_B, C: MISI_C };
 export const daftarMisiK5Bab1 = (huruf: string): DefMisi<KeadaanK5Bab1>[] => DAFTAR[huruf as HurufMisiK5B1] ?? MISI_A;

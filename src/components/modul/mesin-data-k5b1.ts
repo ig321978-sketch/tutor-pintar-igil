@@ -9,6 +9,10 @@
  *    Sejajar: digit puluh ribuan (pengecoh: digit satuan, ribuan, tertukar). Penentu: tempat pertama dari kiri yang
  *    berbeda (pengecoh: satuan, tempat tetangga). Tanda: kalimat < > =. Urut: tiga bilangan naik atau turun
  *    (pengecoh: arah terbalik, diurutkan menurut satuan, urutan asal).
+ *  - MESIN_URAIAN (C): Urai → Susun → Tukar → Cek   (38.600, 63.500, 45.600)
+ *    Urai: bentuk panjang (pengecoh: digit bergeser satu tempat, digit saja). Susun: banyak kartu 1.000 (pengecoh:
+ *    sepuluh kali, banyak kartu 10.000). Tukar: kartu 1.000 setelah menukar kartu 10.000 (pengecoh: hanya ditambah
+ *    banyak yang ditukar, hanya sepuluh kali). Cek: total tetap (pengecoh: total berubah).
  * Data dari Buku Siswa Kelas V Bab 1 (dicocokkan dengan data-k5b1.ts di uji). Murni: tanpa React, tanpa jaringan.
  * Hanya impor tipe. Diuji di scripts/uji-lab-k5b1.mjs.
  */
@@ -17,6 +21,7 @@ import type { DefMesin, KasusMesin, LangkahMesin, StasiunDef } from "./mesin-ber
 const putar = <T,>(a: T[], k: number): T[] => a.map((_, i) => a[(i + k) % a.length]);
 const susunOpsi = (benar: string, salah: string[], idx: number): string[] => putar([benar, ...salah], idx % (1 + salah.length));
 const duaPengecoh = (benar: string, calon: string[]): string[] => [...new Set(calon.filter((c) => c !== benar))].slice(0, 2);
+const angkaPengecoh = (benar: number, calon: number[]): string[] => duaPengecoh(String(benar), calon.filter((v) => v >= 0).map(String));
 
 export const TEMPAT_M = ["ratus ribuan", "puluh ribuan", "ribuan", "ratusan", "puluhan", "satuan"];
 const BOBOT_M = [100000, 10000, 1000, 100, 10, 1];
@@ -197,4 +202,77 @@ export const MESIN_BANDING: DefMesin = {
   kasus: KASUS_BANDING.map(kasusMesinBanding),
 };
 
-export const SEMUA_MESIN_K5B1 = [MESIN_TEMPAT, MESIN_BANDING];
+/* ------------------------------ C: Mesin Uraian ------------------------------ */
+
+export type KasusUraian = { id: string; n: number; tukar: number };
+export const KASUS_URAIAN: KasusUraian[] = [
+  { id: "38600", n: 38600, tukar: 1 },
+  { id: "63500", n: 63500, tukar: 1 },
+  { id: "45600", n: 45600, tukar: 2 },
+];
+
+export const STASIUN_URAIAN: StasiunDef[] = [
+  { id: "urai", nama: "Urai", ikon: "🔍" },
+  { id: "susun", nama: "Susun", ikon: "🧱" },
+  { id: "tukar", nama: "Tukar", ikon: "🔄" },
+  { id: "cek", nama: "Cek", ikon: "✅" },
+];
+
+export function kasusMesinUraian(k: KasusUraian, idx: number): KasusMesin {
+  const d = enam(k.n);
+  const pr = d[1];
+  const rb = d[2];
+  const r = d[3];
+  const bentuk = [pr * 10000, rb * 1000, r * 100].filter((v) => v > 0).map(titikM).join(" + ");
+  const geser = [pr * 1000, rb * 100, r * 10].filter((v) => v > 0).map(titikM).join(" + ");
+  const digitSaja = [pr, rb, r].join(" + ");
+  const ribuanBaru = rb + 10 * k.tukar;
+  const lebih = k.tukar * 10000;
+  const tetap = `tetap ${titikM(k.n)}`;
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "urai",
+      tanya: `Bentuk panjang ${titikM(k.n)} adalah …`,
+      opsi: susunOpsi(bentuk, duaPengecoh(bentuk, [geser, digitSaja]), idx),
+      benar: bentuk,
+      petunjuk: "Tulis satu suku untuk tiap digit: digit dikali nilai tempatnya. Jangan hanya menulis digitnya.",
+    },
+    {
+      stasiun: "susun",
+      tanya: `${pr} kartu 10.000 dan ${r} kartu 100 dipakai untuk ${titikM(k.n)}. Kartu 1.000 yang diperlukan …`,
+      opsi: susunOpsi(String(rb), angkaPengecoh(rb, [rb * 10, pr]), idx + 1),
+      benar: String(rb),
+      petunjuk: "Ambil digit di tempat ribuan. Banyak kartu 1.000 sama dengan digit ribuan.",
+    },
+    {
+      stasiun: "tukar",
+      tanya: `${titikM(k.n)} disusun dari ${pr} kartu 10.000, ${rb} kartu 1.000, dan ${r} kartu 100. Bila ${k.tukar} kartu 10.000 ditukar kartu 1.000, kartu 1.000 menjadi …`,
+      opsi: susunOpsi(String(ribuanBaru), angkaPengecoh(ribuanBaru, [rb + k.tukar, 10 * k.tukar]), idx + 2),
+      benar: String(ribuanBaru),
+      petunjuk: "Satu kartu 10.000 ditukar sepuluh kartu 1.000. Tambahkan ke kartu 1.000 yang sudah ada.",
+    },
+    {
+      stasiun: "cek",
+      tanya: `Setelah ${k.tukar} kartu 10.000 ditukar, total uang …`,
+      opsi: susunOpsi(tetap, duaPengecoh(tetap, [`menjadi ${titikM(k.n + lebih)}`, `menjadi ${titikM(k.n - lebih)}`]), idx + 3),
+      benar: tetap,
+      petunjuk: "Menukar kartu hanya mengganti bentuknya. Nilai uangnya sama.",
+    },
+  ];
+  return {
+    id: k.id,
+    nama: `Uang ${titikM(k.n)}`,
+    ringkas: `${titikM(k.n)} sama dengan ${bentuk}. Setelah ${k.tukar} kartu 10.000 ditukar, kartu 1.000 menjadi ${ribuanBaru}. Total tetap ${titikM(k.n)}.`,
+    langkah,
+  };
+}
+
+export const MESIN_URAIAN: DefMesin = {
+  id: "mesin-uraian-k5b1",
+  judul: "Mesin Uraian",
+  selesaiId: "mesin-uraian",
+  stasiun: STASIUN_URAIAN,
+  kasus: KASUS_URAIAN.map(kasusMesinUraian),
+};
+
+export const SEMUA_MESIN_K5B1 = [MESIN_TEMPAT, MESIN_BANDING, MESIN_URAIAN];

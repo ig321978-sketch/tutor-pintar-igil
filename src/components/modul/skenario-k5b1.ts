@@ -5,6 +5,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b1.mjs (dihitung ulang dari data buku).
  *  - SKENARIO_K5B1A: Papan Data Desa (menulis, banyak digit, digit di satu tempat, nilai digit, nol penjaga)
  *  - SKENARIO_K5B1B: Lomba Dakon (tanda, memeriksa dari kiri, digit penentu, acuan, bilangan tengah, urut naik)
+ *  - SKENARIO_K5B1C: Uang Asep dan Komang (bentuk panjang, suku, kartu yang diperlukan, menukar kartu)
  */
 
 export const SKENARIO_K5B1A: DefSkenario = {
@@ -152,6 +153,80 @@ export const SKENARIO_K5B1B: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Juaranya sudah ketemu. Kita membandingkan dari tempat terbesar di kiri, memakai tanda lebih kecil, lebih besar, atau sama dengan, dan mengurutkan naik atau turun dengan teliti.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B1C: DefSkenario = {
+  id: "uang-asep-k5b1",
+  judul: "Uang Asep dan Komang",
+  latar: "Bantu Asep menguraikan dan menyusun uang tabungan dari kartu.",
+  tokoh: "🧒",
+  nama: "Asep",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Asep. Bersama Komang, aku menghitung uang tabungan. Uangnya berupa kartu 10.000, 1.000, dan 100. Kita uraikan dan susun, ya.",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "asep",
+      jenis: "pilih",
+      cerita: "Asep punya 3 kartu 10.000, 8 kartu 1.000, dan 6 kartu 100. Berapa uang Asep?",
+      opsi: [
+        { teks: "36.800", benar: false, umpan: "Digit 8 dan 6 tertukar tempat. 8 kartu 1.000 bernilai 8.000, dan 6 kartu 100 bernilai 600." },
+        { teks: "48.600", benar: false, umpan: "3 kartu 10.000 bernilai 30.000, bukan 40.000." },
+        { teks: "38.600", benar: true, umpan: "Betul! 30.000 + 8.000 + 600 = 38.600." },
+      ],
+    },
+    {
+      id: "lukas",
+      jenis: "hitung",
+      cerita: "Uang Lukas 63.500. Bentuk panjangnya 60.000 + 3.000 + 500. Satu stik untuk tiap suku.",
+      tanya: "Ketuk semua stik. Ada berapa suku?",
+      objek: "stik",
+      jumlah: 3,
+      sukses: "Betul! Tiga suku: 60.000, 3.000, dan 500.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "komang",
+      jenis: "isi",
+      cerita: "Komang butuh 45.600. Ia sudah punya 3 kartu 10.000 dan 6 kartu 100. Masukkan stik sebanyak kartu 1.000 yang masih diperlukan.",
+      objek: "stik",
+      target: 15,
+      maks: 20,
+      sukses: "Pas! 3 kartu 10.000 + 15 kartu 1.000 + 6 kartu 100 = 45.600.",
+      kurang: "Stiknya masih kurang. Hitung nilai kartu yang sudah ada, lalu cari sisanya sampai 45.600.",
+      lebih: "Stiknya kelebihan. Jumlah semua kartu harus tepat 45.600.",
+    },
+    {
+      id: "tukar",
+      jenis: "pilih",
+      cerita: "Komang menukar uangnya menjadi 2 kartu 10.000, 25 kartu 1.000, dan 6 kartu 100. Apakah jumlahnya masih 45.600?",
+      opsi: [
+        { teks: "Ya, totalnya tetap 45.600", benar: true, umpan: "Betul! 20.000 + 25.000 + 600 = 45.600. Menukar kartu hanya mengganti bentuknya." },
+        { teks: "Tidak, harus 4 kartu 10.000", benar: false, umpan: "Ada banyak cara menyusun jumlah yang sama. Kartu 10.000 tidak harus empat." },
+        { teks: "Tidak, hanya 4.560", benar: false, umpan: "Itu terlalu kecil. Jumlahkan nilai tiap kartu, jangan hanya menghitung kartunya." },
+      ],
+    },
+    {
+      id: "baca",
+      jenis: "soal",
+      cerita: "Asep menjawab pertanyaan Komang.",
+      soal: [
+        { teks: "Bentuk panjang 63.500 …", jawaban: "60.000 + 3.000 + 500", opsi: ["6.000 + 300 + 50", "60.000 + 3.000 + 500", "60 + 3 + 5"] },
+        { teks: "2 kartu 10.000 + 25 kartu 1.000 + 6 kartu 100 = …", jawaban: "45.600", opsi: ["45.600", "27.600", "55.600"] },
+        { teks: "1 kartu 10.000 ditukar kartu 1.000. Kartu 1.000 yang didapat …", jawaban: "10", opsi: ["1", "100", "10"] },
+      ],
+      sukses: "Hebat! Uraikan tiap digit dengan nilai tempatnya, dan jumlahkan lagi untuk kembali ke bilangan semula.",
+      salah: "Hmm, ingat nilai tempat tiap digit. Coba lagi.",
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Bilangan bisa diuraikan menjadi suku nilai tempat dan disusun kembali dari kartu. Ada banyak cara menyusun jumlah yang sama, dan saat kartu ditukar, jumlahnya tetap.",
     },
   ],
 };

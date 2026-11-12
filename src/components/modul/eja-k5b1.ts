@@ -23,9 +23,9 @@ function kataTiga(n: number): string {
   return sisa === 0 ? depan : `${depan} ${kataDua(sisa)}`;
 }
 
-/** Kata bilangan 0 sampai 100.000. Di luar itu dikembalikan apa adanya. */
+/** Kata bilangan 0 sampai 999.999 (pesan lab bisa menyebut jumlah di atas 100.000). Di luar itu dikembalikan apa adanya. */
 export function kataK5B1(n: number): string {
-  if (!Number.isInteger(n) || n < 0 || n > 100000) return String(n);
+  if (!Number.isInteger(n) || n < 0 || n > 999999) return String(n);
   if (n < 1000) return kataTiga(n);
   const ribu = Math.floor(n / 1000);
   const sisa = n % 1000;

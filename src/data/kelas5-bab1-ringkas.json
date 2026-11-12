@@ -203,6 +203,105 @@
           }
         ]
       }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Urai dan Susun",
+          "ikon": "🧩",
+          "suara": "Ini peta komposisi dan dekomposisi. Kita belajar menguraikan bilangan, menyusunnya kembali, menukar sepuluh, dan banyak cara menyusun. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "urai",
+            "judul": "Urai",
+            "ikon": "🔍",
+            "ringkas": "Pecah menjadi suku nilai tempat.",
+            "suara": "Dekomposisi. Bilangan diuraikan menjadi suku, satu suku untuk tiap digit yang bukan nol."
+          },
+          {
+            "id": "susun",
+            "judul": "Susun kembali",
+            "ikon": "🧱",
+            "ringkas": "Jumlahkan suku jadi bilangan semula.",
+            "suara": "Komposisi. Jumlahkan semua suku atau kartu untuk mendapat bilangan semula."
+          },
+          {
+            "id": "tukar",
+            "judul": "Tukar sepuluh",
+            "ikon": "🔄",
+            "ringkas": "Sepuluh kartu diganti satu kartu kiri.",
+            "suara": "Tukar sepuluh. Sepuluh kartu di satu tempat sama dengan satu kartu di tempat kirinya."
+          },
+          {
+            "id": "cara",
+            "judul": "Banyak cara",
+            "ikon": "🌈",
+            "ringkas": "Jumlah sama, susunan bisa berbeda.",
+            "suara": "Banyak cara. Satu bilangan bisa disusun dari kartu yang berbeda, asalkan jumlahnya sama."
+          }
+        ],
+        "kartu": [
+          { "id": "c-panjang", "teks": "52.307 = 50.000 + 2.000 + 300 + 7", "ikon": "🔍", "cabang": "urai", "petunjuk": "Bentuk panjang itu soal menguraikan. Coba cabang lain." },
+          { "id": "c-nol", "teks": "Nol tidak jadi suku", "ikon": "0️⃣", "cabang": "urai", "petunjuk": "Nol di tengah itu soal menguraikan. Coba cabang lain." },
+          { "id": "c-jumlah", "teks": "Jumlahkan semua suku", "ikon": "➕", "cabang": "susun", "petunjuk": "Menjumlahkan suku itu menyusun kembali. Coba cabang lain." },
+          { "id": "c-lazim", "teks": "Kembali ke bentuk lazim", "ikon": "↩️", "cabang": "susun", "petunjuk": "Kembali ke bilangan semula itu menyusun. Coba cabang lain." },
+          { "id": "c-sepuluh", "teks": "10 kartu 1.000 = 1 kartu 10.000", "ikon": "🔟", "cabang": "tukar", "petunjuk": "Sepuluh jadi satu itu soal menukar. Coba cabang lain." },
+          { "id": "c-tetap", "teks": "Ditukar, jumlahnya tetap", "ikon": "⚖️", "cabang": "tukar", "petunjuk": "Jumlah yang tetap itu soal menukar. Coba cabang lain." },
+          { "id": "c-dua", "teks": "45 × 1.000 + 6 × 100 = 45.600", "ikon": "🧮", "cabang": "cara", "petunjuk": "Susunan lain untuk bilangan yang sama itu soal banyak cara. Coba cabang lain." },
+          { "id": "c-tiga", "teks": "3 kartu 10.000 juga bisa", "ikon": "🌈", "cabang": "cara", "petunjuk": "Susunan yang berbeda itu soal banyak cara. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Urai dan Susun",
+        "suara": "Ini tiga panel tentang menguraikan dan menyusun bilangan. Ketuk kotaknya untuk membuka, lalu bandingkan dua cara menyusun.",
+        "panel": [
+          {
+            "id": "c-urai-info",
+            "tipe": "buka",
+            "judul": "Dari bilangan ke suku",
+            "ide": "Satu suku untuk tiap digit bukan nol.",
+            "suara": "Ada tiga hal tentang menguraikan bilangan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "urai",
+                "label": "Urai",
+                "ikon": "🔍",
+                "isi": "Tiap digit dikali nilai tempatnya.",
+                "suara": "Lima puluh dua ribu tiga ratus tujuh diuraikan menjadi lima puluh ribu, dua ribu, tiga ratus, dan tujuh.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Tempat", "Suku"], "baris": [["puluh ribuan", 50000], ["ribuan", 2000], ["ratusan", 300], ["satuan", 7]] }
+              },
+              { "id": "nol", "label": "Nol", "ikon": "0️⃣", "isi": "Nol tidak jadi suku.", "suara": "Pada tujuh puluh ribu delapan puluh, nol tidak menjadi suku, tetapi tempatnya tetap ada.", "visual": { "jenis": "teks", "isi": "70.080 = 70.000 + 80" } },
+              { "id": "kembali", "label": "Kembali", "ikon": "↩️", "isi": "Jumlahkan semua suku.", "suara": "Jumlahkan lagi semua suku untuk kembali ke bilangan semula.", "visual": { "jenis": "teks", "isi": "50.000 + 2.000 + 300 + 7 = 52.307" } }
+            ]
+          },
+          {
+            "id": "c-cara-info",
+            "tipe": "banding",
+            "judul": "Dua cara, satu bilangan",
+            "ide": "Jumlah sama, susunan boleh beda.",
+            "suara": "Bandingkan dua cara menyusun empat puluh lima ribu enam ratus.",
+            "sisi": [
+              { "id": "baku", "nama": "Cara pertama", "ikon": "1️⃣", "catatan": "Empat, lima, dan enam kartu.", "suara": "Empat kartu sepuluh ribu, lima kartu seribu, dan enam kartu seratus.", "visual": { "jenis": "teks", "isi": "4 × 10.000 + 5 × 1.000 + 6 × 100" } },
+              { "id": "lain", "nama": "Cara kedua", "ikon": "2️⃣", "catatan": "Tanpa kartu sepuluh ribu.", "suara": "Empat puluh lima kartu seribu dan enam kartu seratus.", "visual": { "jenis": "teks", "isi": "45 × 1.000 + 6 × 100" } }
+            ],
+            "kesimpulan": "Keduanya 45.600. Banyak cara untuk jumlah yang sama."
+          },
+          {
+            "id": "c-tukar-info",
+            "tipe": "buka",
+            "judul": "Tukar sepuluh",
+            "ide": "Ditukar, jumlahnya tetap.",
+            "suara": "Ada tiga hal tentang menukar kartu. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "sepuluh", "label": "Sepuluh", "ikon": "🔟", "isi": "Sepuluh kartu diganti satu di kiri.", "suara": "Sepuluh kartu seribu sama dengan satu kartu sepuluh ribu.", "visual": { "jenis": "teks", "isi": "10 × 1.000 = 1 × 10.000" } },
+              { "id": "ratusan", "label": "Ratusan", "ikon": "💯", "isi": "Seribu empat ratus, empat belas ratusan.", "suara": "Seribu empat ratus sama dengan empat belas kartu seratus.", "visual": { "jenis": "teks", "isi": "1.400 = 14 × 100" } },
+              { "id": "tetap", "label": "Tetap", "ikon": "⚖️", "isi": "Jumlah tidak berubah.", "suara": "Dua kartu sepuluh ribu, dua puluh lima kartu seribu, dan enam kartu seratus tetap empat puluh lima ribu enam ratus.", "visual": { "jenis": "teks", "isi": "2 × 10.000 + 25 × 1.000 + 6 × 100 = 45.600" } }
+            ]
+          }
+        ]
+      }
     }
   }
 }
