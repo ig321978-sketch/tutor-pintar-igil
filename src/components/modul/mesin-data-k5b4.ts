@@ -13,6 +13,9 @@
  *    Persegi panjang: 2 × (panjang + lebar) (pengecoh: belum dikali 2, panjang dikali lebar).
  *    Persegi: 4 × sisi (pengecoh: sisi kali sisi, dua kali sisi).
  *    Rumus: ungkapan yang benar (pengecoh: panjang kali lebar, kurung hilang).  Beda: keliling dan luas (pengecoh: tertukar, luas disamakan dengan keliling).
+ *  - MESIN_SEGIBANYAK (D): Beraturan → Beda → Tabel → Banyak sisi   (kasus Segi lima, Segi enam, Segi delapan)
+ *    Beraturan/Tabel: n × sisi (pengecoh: banyak sisi ditambah sisi, sisi kali sisi atau n kali n).
+ *    Beda: jumlah semua sisi (pengecoh: banyak sisi kali sisi pertama, satu sisi terlewat).  Banyak sisi: sesuai nama segi.
  * Data dari Buku Siswa Kelas V Bab 4 Sub-Bab A dan B (pagar, bingkai foto, Benteng Baluwarti, segitiga 5, 4, 7).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b4.mjs.
  */
@@ -289,4 +292,90 @@ export const MESIN_SEGIEMPAT: DefMesin = {
   kasus: KASUS_SEGIEMPAT.map(kasusMesinSegiEmpat),
 };
 
-export const SEMUA_MESIN_K5B4 = [MESIN_JALUR, MESIN_SEGITIGA, MESIN_SEGIEMPAT];
+/* ------------------------------ D: Mesin Segi Banyak ------------------------------ */
+
+/** ber: segi-n beraturan. beda: sisi tidak sama. tabel: baris tabel sisi tetap. banyak: segi yang ditanyakan banyak sisinya. */
+export type KasusSegiBanyak = {
+  id: string;
+  nama: string;
+  ber: { n: number; s: number };
+  beda: number[];
+  tabel: { n: number; s: number };
+  banyak: number;
+};
+export const KASUS_SEGIBANYAK: KasusSegiBanyak[] = [
+  { id: "lima", nama: "Segi lima", ber: { n: 5, s: 3 }, beda: [2, 3, 4, 5, 6], tabel: { n: 5, s: 2 }, banyak: 5 },
+  { id: "enam", nama: "Segi enam", ber: { n: 6, s: 4 }, beda: [2, 3, 4, 3, 5, 6], tabel: { n: 6, s: 3 }, banyak: 6 },
+  { id: "delapan", nama: "Segi delapan", ber: { n: 8, s: 2 }, beda: [3, 4, 2, 5, 5], tabel: { n: 8, s: 2 }, banyak: 8 },
+];
+
+export const STASIUN_SEGIBANYAK: StasiunDef[] = [
+  { id: "ber", nama: "Beraturan", ikon: "🔷" },
+  { id: "beda", nama: "Beda", ikon: "🔶" },
+  { id: "tabel", nama: "Tabel", ikon: "📋" },
+  { id: "banyak", nama: "Banyak sisi", ikon: "🔢" },
+];
+
+/** Nama bangun menurut banyak sisi. */
+export const namaSegi = (n: number): string => ({ 3: "segitiga", 4: "persegi", 5: "segi lima", 6: "segi enam", 7: "segi tujuh", 8: "segi delapan" } as Record<number, string>)[n] ?? `segi ${n}`;
+
+/** Keliling n sisi sama panjang: dijumlah satu per satu. */
+export function kelilingSamaSisi(n: number, s: number): number {
+  let k = 0;
+  for (let i = 0; i < n; i += 1) k += s;
+  return k;
+}
+
+export function kasusMesinSegiBanyak(c: KasusSegiBanyak, idx: number): KasusMesin {
+  const kBer = kelilingSamaSisi(c.ber.n, c.ber.s);
+  const kBeda = jumlah(c.beda);
+  const nBeda = c.beda.length;
+  const kTabel = kelilingSamaSisi(c.tabel.n, c.tabel.s);
+  const cm = (n: number): string => `${n} cm`;
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "ber",
+      tanya: `${namaSegi(c.ber.n)} beraturan, tiap sisinya ${c.ber.s} cm. Keliling dengan ${c.ber.n} × ${c.ber.s} adalah …`,
+      opsi: susunOpsi(cm(kBer), pengecoh(kBer, [c.ber.n + c.ber.s, c.ber.s * c.ber.s]).map(cm), idx),
+      benar: cm(kBer),
+      petunjuk: `Semua sisi sama panjang, jadi ${c.ber.s} dijumlah ${c.ber.n} kali sama dengan ${c.ber.n} × ${c.ber.s}. Sisi dikali sisi bukan keliling.`,
+    },
+    {
+      stasiun: "beda",
+      tanya: `${namaSegi(nBeda)} dengan sisi ${c.beda.join(" cm, ")} cm. Sisinya tidak sama panjang. Kelilingnya adalah …`,
+      opsi: susunOpsi(cm(kBeda), pengecoh(kBeda, [nBeda * c.beda[0], kBeda - c.beda[nBeda - 1]]).map(cm), idx + 1),
+      benar: cm(kBeda),
+      petunjuk: `Sisinya berbeda, jangan dikali ${nBeda}. Jumlahkan semua sisi satu per satu: ${c.beda.join(" + ")}.`,
+    },
+    {
+      stasiun: "tabel",
+      tanya: `Tabel keliling segi beraturan bersisi ${c.tabel.s} cm. Pada baris ${namaSegi(c.tabel.n)}, kelilingnya …`,
+      opsi: susunOpsi(cm(kTabel), pengecoh(kTabel, [c.tabel.n + c.tabel.s, c.tabel.n * c.tabel.n]).map(cm), idx + 2),
+      benar: cm(kTabel),
+      petunjuk: `Pola tabel: keliling = banyak sisi × ${c.tabel.s}. ${namaSegi(c.tabel.n)} punya ${c.tabel.n} sisi.`,
+    },
+    {
+      stasiun: "banyak",
+      tanya: `${namaSegi(c.banyak)} punya … sisi.`,
+      opsi: susunOpsi(`${c.banyak} sisi`, [`${c.banyak - 1} sisi`, `${c.banyak + 1} sisi`], idx + 3),
+      benar: `${c.banyak} sisi`,
+      petunjuk: `Nama segi menunjukkan banyak sisinya: ${namaSegi(c.banyak)} punya ${c.banyak} sisi.`,
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `${namaSegi(c.ber.n)} beraturan bersisi ${c.ber.s} cm berkeliling ${kBer} cm. Sisi tidak sama dijumlah semua: ${c.beda.join(" + ")} = ${kBeda} cm. Pada tabel sisi ${c.tabel.s} cm, ${namaSegi(c.tabel.n)} berkeliling ${kTabel} cm. ${namaSegi(c.banyak)} punya ${c.banyak} sisi.`,
+    langkah,
+  };
+}
+
+export const MESIN_SEGIBANYAK: DefMesin = {
+  id: "mesin-segibanyak-k5b4",
+  judul: "Mesin Segi Banyak",
+  selesaiId: "mesin-segibanyak",
+  stasiun: STASIUN_SEGIBANYAK,
+  kasus: KASUS_SEGIBANYAK.map(kasusMesinSegiBanyak),
+};
+
+export const SEMUA_MESIN_K5B4 = [MESIN_JALUR, MESIN_SEGITIGA, MESIN_SEGIEMPAT, MESIN_SEGIBANYAK];

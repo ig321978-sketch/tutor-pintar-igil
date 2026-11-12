@@ -724,6 +724,268 @@
           }
         ]
       }
+    },
+    "D": {
+      "peta": {
+        "pusat": {
+          "judul": "Keliling Segi Banyak",
+          "ikon": "🔷",
+          "suara": "Ini peta keliling segi banyak. Kita belajar segi beraturan, sisi yang tidak sama, pola pada tabel, dan banyak sisi. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "beraturan",
+            "judul": "Beraturan",
+            "ikon": "🔷",
+            "ringkas": "Banyak sisi dikali panjang sisi.",
+            "suara": "Segi beraturan. Semua sisinya sama panjang, jadi keliling adalah banyak sisi dikali panjang sisi."
+          },
+          {
+            "id": "beda",
+            "judul": "Sisi berbeda",
+            "ikon": "🔶",
+            "ringkas": "Jumlahkan semua sisi satu per satu.",
+            "suara": "Sisi berbeda. Bila sisinya tidak sama panjang, jangan dikali banyak sisi. Jumlahkan semua sisinya satu per satu."
+          },
+          {
+            "id": "tabel",
+            "judul": "Pola tabel",
+            "ikon": "📋",
+            "ringkas": "Keliling naik sebesar panjang sisi.",
+            "suara": "Pola tabel. Pada sisi yang tetap, tiap bertambah satu sisi, keliling bertambah sebesar panjang sisi."
+          },
+          {
+            "id": "sisi",
+            "judul": "Banyak sisi",
+            "ikon": "🔢",
+            "ringkas": "Nama segi menunjukkan banyak sisi.",
+            "suara": "Banyak sisi. Segi lima punya lima sisi, segi enam punya enam sisi, dan segi delapan punya delapan sisi."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "d-lima",
+            "teks": "5 × 3 = 15",
+            "ikon": "5️⃣",
+            "cabang": "beraturan",
+            "petunjuk": "Banyak sisi dikali sisi itu soal beraturan. Coba cabang lain."
+          },
+          {
+            "id": "d-enam",
+            "teks": "6 × 4 = 24",
+            "ikon": "6️⃣",
+            "cabang": "beraturan",
+            "petunjuk": "Banyak sisi dikali sisi itu soal beraturan. Coba cabang lain."
+          },
+          {
+            "id": "d-jumlah",
+            "teks": "2 + 3 + 4 + 5 + 6 = 20",
+            "ikon": "🔢",
+            "cabang": "beda",
+            "petunjuk": "Menjumlah sisi yang berbeda itu soal sisi berbeda. Coba cabang lain."
+          },
+          {
+            "id": "d-jangan",
+            "teks": "Sisi berbeda: jangan dikali 5",
+            "ikon": "🚫",
+            "cabang": "beda",
+            "petunjuk": "Larangan dikali itu soal sisi berbeda. Coba cabang lain."
+          },
+          {
+            "id": "d-sepuluh",
+            "teks": "Segi lima sisi 2: 10",
+            "ikon": "🔟",
+            "cabang": "tabel",
+            "petunjuk": "Baris pada tabel itu soal pola tabel. Coba cabang lain."
+          },
+          {
+            "id": "d-enambelas",
+            "teks": "Segi delapan sisi 2: 16",
+            "ikon": "📈",
+            "cabang": "tabel",
+            "petunjuk": "Baris pada tabel itu soal pola tabel. Coba cabang lain."
+          },
+          {
+            "id": "d-lima-sisi",
+            "teks": "Segi lima punya 5 sisi",
+            "ikon": "🖐️",
+            "cabang": "sisi",
+            "petunjuk": "Nama segi dan sisinya itu soal banyak sisi. Coba cabang lain."
+          },
+          {
+            "id": "d-enam-sisi",
+            "teks": "Segi enam punya 6 sisi",
+            "ikon": "🎲",
+            "cabang": "sisi",
+            "petunjuk": "Nama segi dan sisinya itu soal banyak sisi. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Keliling Segi Banyak",
+        "suara": "Ini tiga panel tentang keliling segi banyak. Ketuk kotaknya untuk membuka, lalu lihat segi beraturan, sisi yang berbeda, dan pola tabel.",
+        "panel": [
+          {
+            "id": "d-ber-info",
+            "tipe": "buka",
+            "judul": "Segi beraturan",
+            "ide": "Semua sisi sama panjang.",
+            "suara": "Ada tiga hal tentang segi beraturan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "sisi",
+                "label": "Sisi",
+                "ikon": "🔷",
+                "isi": "Segi lima punya lima sisi.",
+                "suara": "Segi lima beraturan punya lima sisi yang sama panjang, yaitu tiga sentimeter.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Segi",
+                    "Sisi"
+                  ],
+                  "baris": [
+                    [
+                      "lima",
+                      5
+                    ],
+                    [
+                      "enam",
+                      6
+                    ],
+                    [
+                      "tujuh",
+                      7
+                    ],
+                    [
+                      "delapan",
+                      8
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "kali",
+                "label": "Kali",
+                "ikon": "✖️",
+                "isi": "Banyak sisi dikali panjang sisi.",
+                "suara": "Lima dikali tiga sama dengan lima belas sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 × 3 = 15"
+                }
+              },
+              {
+                "id": "cek",
+                "label": "Cek",
+                "ikon": "✅",
+                "isi": "Sama dengan menjumlah lima sisi.",
+                "suara": "Tiga ditambah tiga ditambah tiga ditambah tiga ditambah tiga juga sama dengan lima belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 + 3 + 3 + 3 + 3 = 15"
+                }
+              }
+            ]
+          },
+          {
+            "id": "d-banding-info",
+            "tipe": "banding",
+            "judul": "Sisi sama dan sisi berbeda",
+            "ide": "Sisi berbeda tidak boleh dikali.",
+            "suara": "Lihat dua keadaan segi lima dan cara menghitung kelilingnya.",
+            "sisi": [
+              {
+                "id": "sama",
+                "nama": "Sisi sama",
+                "ikon": "🔷",
+                "catatan": "Boleh banyak sisi dikali sisi.",
+                "suara": "Segi lima beraturan bersisi tiga. Lima dikali tiga sama dengan lima belas sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 × 3 = 15"
+                }
+              },
+              {
+                "id": "beda",
+                "nama": "Sisi berbeda",
+                "ikon": "🔶",
+                "catatan": "Jumlahkan semua sisi.",
+                "suara": "Segi lima bersisi dua, tiga, empat, lima, dan enam. Semuanya dijumlah sama dengan dua puluh sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 + 3 + 4 + 5 + 6 = 20"
+                }
+              }
+            ],
+            "kesimpulan": "Dikali hanya bila semua sisi sama."
+          },
+          {
+            "id": "d-tabel-info",
+            "tipe": "buka",
+            "judul": "Pola pada tabel",
+            "ide": "Keliling naik tiap sisi bertambah.",
+            "suara": "Ada tiga hal tentang pola tabel. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "lima",
+                "label": "Lima",
+                "ikon": "5️⃣",
+                "isi": "Segi lima bersisi dua: sepuluh.",
+                "suara": "Segi lima bersisi dua sentimeter berkeliling sepuluh sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 × 2 = 10"
+                }
+              },
+              {
+                "id": "enam",
+                "label": "Enam",
+                "ikon": "6️⃣",
+                "isi": "Segi enam bersisi dua: dua belas.",
+                "suara": "Segi enam bersisi dua sentimeter berkeliling dua belas sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 × 2 = 12"
+                }
+              },
+              {
+                "id": "pola",
+                "label": "Pola",
+                "ikon": "📈",
+                "isi": "Tiap tambah satu sisi, naik dua.",
+                "suara": "Setiap bertambah satu sisi, keliling bertambah dua sentimeter, yaitu sebesar panjang sisi.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Banyak sisi",
+                    "Keliling"
+                  ],
+                  "baris": [
+                    [
+                      5,
+                      10
+                    ],
+                    [
+                      6,
+                      12
+                    ],
+                    [
+                      7,
+                      14
+                    ],
+                    [
+                      8,
+                      16
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

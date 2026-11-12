@@ -6,6 +6,7 @@ import type { DefSkenario } from "./skenario-umum";
  *  - SKENARIO_K5B4A: Pagar dan Bingkai (keliling sebagai jalur tepi, pagar, bingkai, dibedakan dari isi)
  *  - SKENARIO_K5B4B: Bendera Pita Segitiga (jumlah tiga sisi, sama sisi dikali 3, sama kaki tetap dijumlah)
  *  - SKENARIO_K5B4C: Kebun dan Papan Tulis (dua kali jumlah panjang dan lebar, empat kali sisi, bukan luas)
+ *  - SKENARIO_K5B4D: Taman Segi Banyak (banyak sisi dikali sisi, sisi berbeda dijumlah, pola tabel)
  */
 
 export const SKENARIO_K5B4A: DefSkenario = {
@@ -223,6 +224,79 @@ export const SKENARIO_K5B4C: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Keliling persegi panjang adalah dua kali jumlah panjang dan lebar, dan keliling persegi adalah empat kali sisi. Panjang dikali lebar adalah luas, bukan keliling.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B4D: DefSkenario = {
+  id: "taman-segibanyak-k5b4",
+  judul: "Taman Segi Banyak",
+  latar: "Bantu Ibu menghitung keliling taman dan kolam berbentuk segi banyak.",
+  tokoh: "👩",
+  nama: "Ibu",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Ibu. Taman sekolah punya kolam dan petak berbentuk segi banyak. Sebagian sisinya sama panjang, sebagian berbeda. Ayo bantu aku menghitung kelilingnya!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "hitung-keliling",
+      jenis: "soal",
+      cerita: "Ibu menghitung keliling segi banyak beraturan.",
+      soal: [
+        { teks: "Petak segi lima beraturan, tiap sisinya 3 m. Kelilingnya adalah … meter.", jawaban: "15", opsi: ["8", "15", "9"] },
+        { teks: "Kolam segi enam beraturan, tiap sisinya 4 m. Kelilingnya adalah … meter.", jawaban: "24", opsi: ["10", "16", "24"] },
+      ],
+      sukses: "Hebat! Bila semua sisi sama panjang, keliling adalah banyak sisi dikali panjang sisi.",
+      salah: "Hmm, kalikan banyak sisi dengan panjang satu sisi. Coba lagi.",
+    },
+    {
+      id: "beda",
+      jenis: "pilih",
+      cerita: "Sebuah petak segi lima punya sisi 2 m, 3 m, 4 m, 5 m, dan 6 m. Ibu ingin menghitungnya dengan 5 × 2. Apakah benar?",
+      opsi: [
+        { teks: "benar, segi lima selalu dikali 5", benar: false, umpan: "Dikali 5 hanya bila kelima sisi sama panjang. Di sini sisinya berbeda." },
+        { teks: "salah, sisinya berbeda jadi semua sisi dijumlah", benar: true, umpan: "Betul! Sisinya tidak sama panjang, jadi 2 + 3 + 4 + 5 + 6 = 20 meter." },
+        { teks: "salah, cukup menjumlah dua sisi", benar: false, umpan: "Dua sisi baru sebagian jalur. Segi lima punya lima sisi, semuanya dijumlah." },
+      ],
+    },
+    {
+      id: "pagar",
+      jenis: "hitung",
+      cerita: "Taman segi enam beraturan bersisi 3 m dipagari. Tiap meter pagar diberi satu stik.",
+      tanya: "Ketuk semua stik. Ada berapa meter pagar yang mengelilingi taman?",
+      objek: "stik",
+      jumlah: 18,
+      sukses: "Betul! Ada 18 meter pagar, sama dengan 6 × 3 = 18.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "lampu",
+      jenis: "isi",
+      cerita: "Kolam segi delapan beraturan bersisi 2 m dihias lampu. Masukkan satu stik untuk tiap meter tepi kolam.",
+      objek: "stik",
+      target: 16,
+      maks: 20,
+      sukses: "Pas! 8 × 2 = 16 meter tepi kolam. Itulah kelilingnya.",
+      kurang: "Stiknya masih sedikit. Kolam punya delapan sisi, tiap sisi 2 m.",
+      lebih: "Stiknya kebanyakan. Kolam punya delapan sisi, tiap sisi 2 m.",
+    },
+    {
+      id: "pola",
+      jenis: "pilih",
+      cerita: "Ibu mengisi tabel keliling segi beraturan bersisi 2 m: segi lima 10 m, segi enam 12 m, segi delapan 16 m. Pola apa yang terlihat?",
+      opsi: [
+        { teks: "keliling sama dengan banyak sisi dikali panjang sisi", benar: true, umpan: "Betul! Tiap bertambah satu sisi, keliling bertambah 2 meter." },
+        { teks: "keliling sama dengan banyak sisi ditambah panjang sisi", benar: false, umpan: "Segi lima menjadi 5 + 2 = 7, padahal kelilingnya 10 meter." },
+        { teks: "keliling selalu sama berapa pun banyak sisinya", benar: false, umpan: "Keliling 10, 12, dan 16 berbeda. Makin banyak sisi, makin panjang kelilingnya." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Pada segi banyak beraturan, keliling adalah banyak sisi dikali panjang sisi. Bila sisinya tidak sama panjang, jumlahkan semua sisinya satu per satu.",
     },
   ],
 };
