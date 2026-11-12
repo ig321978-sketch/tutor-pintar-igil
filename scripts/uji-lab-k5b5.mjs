@@ -8,6 +8,7 @@ import * as TK from "../src/components/modul/misi-teks-k5b5.ts";
 import * as A from "../src/components/modul/lab-petak-k5b5a.ts";
 import * as R from "../src/components/modul/lab-rumus-k5b5b.ts";
 import * as G_ from "../src/components/modul/lab-gabungan-k5b5c.ts";
+import * as D_ from "../src/components/modul/lab-kawat-k5b5d.ts";
 import * as MS from "../src/components/modul/mesin-data-k5b5.ts";
 import * as SK from "../src/components/modul/skenario-k5b5.ts";
 import * as ME from "../src/components/modul/mesin-bertahap-k3b1.ts";
@@ -382,7 +383,7 @@ const urutan = (a) => [...a].sort();
       const l = ME.langkahAktif(x);
       x = l ? ME.langkahMesin(x, { t: "JAWAB", nilai: l.benar }) : ME.langkahMesin(x, { t: "LANJUT" });
     }
-    cek(x.selesai && def.selesaiId === { "mesin-petak-k5b5": K5.ID_MESIN_K5B5.A, "mesin-rumus-k5b5": K5.ID_MESIN_K5B5.B, "mesin-gabungan-k5b5": K5.ID_MESIN_K5B5.C }[def.id], `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
+    cek(x.selesai && def.selesaiId === { "mesin-petak-k5b5": K5.ID_MESIN_K5B5.A, "mesin-rumus-k5b5": K5.ID_MESIN_K5B5.B, "mesin-gabungan-k5b5": K5.ID_MESIN_K5B5.C, "mesin-kawat-k5b5": K5.ID_MESIN_K5B5.D }[def.id], `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
   }
   const angka = (o) => Number(o.split(" ")[0]);
   for (const [i, k] of MS.KASUS_PETAK.entries()) {
@@ -989,9 +990,237 @@ const g0 = G_.awalGabunganK5B5C();
   cek(new Set(posisi).size === posisi.length, `C: letak jawaban pilih bervariasi (${posisi.join("")})`);
 }
 
+/* ------------------------------ Lab D: Kawat ------------------------------ */
+// Hitungan mandiri Sub-Bab D: luas dari cacah petak, keliling dari cacah sisi petak yang hanya dimiliki satu petak
+// (tepi kerangka), dan urutan dari pengurutan luas hasil cacah. Kode memakai perkalian dan rumus dua kali jumlah.
+const kelilingMandiri = (w, h) => {
+  const hitung = new Map();
+  for (let j = 0; j < h; j += 1) {
+    for (let i = 0; i < w; i += 1) {
+      for (const e of [`H${i},${j}`, `H${i},${j + 1}`, `V${i},${j}`, `V${i + 1},${j}`]) hitung.set(e, (hitung.get(e) ?? 0) + 1);
+    }
+  }
+  let n = 0;
+  for (const v of hitung.values()) if (v === 1) n += 1;
+  return n;
+};
+const KW = D_.langkahKawatK5B5D;
+const w0 = D_.awalKawatK5B5D();
+/** Aksi dari panjang awal 10 ke panjang p, memakai langkah lima dan satu. */
+const keP = (dari, p) => {
+  const aksi = [];
+  let sekarang = dari;
+  while (Math.abs(p - sekarang) >= 5) {
+    const d = p > sekarang ? 5 : -5;
+    aksi.push({ t: "K_UBAH", d });
+    sekarang += d;
+  }
+  while (sekarang !== p) {
+    const d = p > sekarang ? 1 : -1;
+    aksi.push({ t: "K_UBAH", d });
+    sekarang += d;
+  }
+  return aksi;
+};
+
+{
+  cek(w0.pernah.length === 0 && w0.pesan === "" && w0.kawat.p === 10 && w0.urut.dipilih.length === 0 && w0.pilih.data === 0, "D awal: kosong, belum ada riwayat");
+  cek(D_.KELILING_KAWAT === 60 && D_.SETENGAH_KELILING === 30 && D_.LUAS_BUKU === 200, "D: kawat 60 cm, panjang tambah lebar 30");
+  cek(D_.DATA_PILIH.length === 4 && D_.DATA_URUT.length === 5, "D: empat kebutuhan Pilih, lima kerangka Urut");
+
+  // Kawat: semua panjang 1 sampai 29.
+  const idCatat = new Set();
+  for (let p = 1; p <= 29; p += 1) {
+    const l = 30 - p;
+    const luas = petakMandiri(p, l);
+    cek(D_.lebarDari(p) === l && D_.luasKawat(p) === luas && luas === ulangTambah(p, l), `Kawat ${p} dan ${l}: luas ${luas} (cacah petak dan penjumlahan berulang)`);
+    cek(kelilingMandiri(p, l) === 60 && D_.kelilingKawat(p) === 60, `Kawat ${p} dan ${l}: keliling 60 (cacah sisi petak di tepi)`);
+    cek(D_.idKawat(p) === `kawat:${Math.max(p, l)}` && D_.idKawat(p) === D_.idKawat(l), `Kawat ${p} dan ${l}: dicatat dengan sisi yang lebih panjang`);
+    cek(luas !== 60 && luas !== 30, `Kawat ${p} dan ${l}: luas tidak pernah sama dengan keliling 60 atau 30`);
+    const xp = jalan(w0, KW, keP(10, p));
+    cek(xp.kawat.p === p && xp.pernah.length === 0, `Kawat ${p}: diatur dari 10, belum tercatat`);
+    const c = KW(xp, { t: "K_CATAT" });
+    idCatat.add(D_.idKawat(p));
+    cek(c.pernah.includes(D_.idKawat(p)) && c.pernah.length === 1 && c.pesan.startsWith("✅") && c.pesan.includes(`${p} × ${l}`) && c.pesan.includes(`= ${luas} cm²`) && c.pesan.includes("= 60 cm"), `Kawat ${p}: dicatat dengan keliling 60 dan luas ${luas}`);
+    if (p === l) cek(/luas terbesar/.test(c.pesan), `Kawat ${p}: persegi disebut luas terbesar`);
+    else cek(luas < 200 ? /lebih kecil dari 200/.test(c.pesan) : luas > 200 ? /lebih besar dari 200/.test(c.pesan) : /luasnya 200/.test(c.pesan), `Kawat ${p}: dibandingkan dengan 200 (luas ${luas})`);
+    cek(KW(c, { t: "K_CATAT" }).pernah.length === 1, `Kawat ${p}: dicatat dua kali tetap satu riwayat`);
+  }
+  cek(idCatat.size === 15 && [...idCatat].every((id) => /^kawat:(1[5-9]|2[0-9])$/.test(id)), "Kawat: lima belas kerangka berbeda (sisi panjang 15 sampai 29)");
+  // Luas terbesar hanya pada persegi dan menurun menjauhi persegi (dihitung).
+  {
+    const luasSemua = Array.from({ length: 29 }, (_, i) => petakMandiri(i + 1, 29 - i));
+    cek(Math.max(...luasSemua) === 225 && luasSemua.filter((v) => v === 225).length === 1 && luasSemua[14] === 225, "Kawat: hanya persegi 15 dan 15 yang luasnya terbesar, 225");
+    cek(luasSemua.slice(0, 14).every((v, i) => v < luasSemua[i + 1]), "Kawat: makin mendekati persegi, luas makin besar (panjang 1 sampai 15)");
+  }
+  // Batas dan langkah.
+  {
+    const kecil = jalan(w0, KW, keP(10, 1));
+    const kb = KW(kecil, { t: "K_UBAH", d: -1 });
+    cek(kb.kawat.p === 1 && /paling sedikit 1 cm/.test(kb.pesan) && KW(kecil, { t: "K_UBAH", d: -5 }).kawat.p === 1, "Kawat: panjang tidak bisa kurang dari 1");
+    const besar = jalan(w0, KW, keP(10, 29));
+    cek(besar.kawat.p === 29 && KW(besar, { t: "K_UBAH", d: 1 }).kawat.p === 29 && /paling banyak 29 cm/.test(KW(besar, { t: "K_UBAH", d: 5 }).pesan), "Kawat: panjang tidak bisa lebih dari 29");
+    cek(KW(w0, { t: "K_UBAH", d: 2 }) === w0 && KW(w0, { t: "K_UBAH", d: 0 }) === w0 && KW(w0, { t: "K_UBAH", d: 10 }) === w0 && KW(w0, { t: "K_UBAH", d: 0.5 }) === w0, "Kawat: langkah selain minus lima, minus satu, satu, lima diabaikan");
+    cek(KW(w0, { t: "K_UBAH", d: 1 }).kawat.p === 11 && KW(w0, { t: "K_UBAH", d: -1 }).kawat.p === 9 && KW(w0, { t: "K_UBAH", d: 5 }).kawat.p === 15 && KW(w0, { t: "K_UBAH", d: -5 }).kawat.p === 5, "Kawat: langkah satu dan lima");
+    cek(D_.PERUBAHAN.join() === "-5,-1,1,5", "Kawat: empat tombol perubahan");
+  }
+
+  // Pilih.
+  for (const [i, k] of D_.DATA_PILIH.entries()) {
+    const xp = KW(w0, { t: "P_DATA", i });
+    const lain = k.jawab === "keliling" ? "luas" : "keliling";
+    const salah = KW(xp, { t: "P_JAWAB", jawab: lain });
+    cek(salah.pernah.length === 0 && !salah.pesan.startsWith("✅") && salah.pesan.includes(k.teks), `Pilih ${k.teks}: ${lain} ditolak`);
+    const benar = KW(xp, { t: "P_JAWAB", jawab: k.jawab });
+    cek(benar.pernah.includes(`pilih:${i}`) && benar.pesan.startsWith("✅") && benar.pesan.includes(`${k.teks} memakai ${k.jawab}`), `Pilih ${k.teks}: ${k.jawab} tercatat`);
+    cek(KW(xp, { t: "P_JAWAB", jawab: "sudut" }) === xp && KW(xp, { t: "P_JAWAB", jawab: "" }) === xp, `Pilih ${k.teks}: jawaban tak dikenal diabaikan`);
+    cek(KW(benar, { t: "P_DATA", i: (i + 1) % 4 }).pernah.includes(`pilih:${i}`), `Pilih ${k.teks}: ganti kebutuhan, riwayat tetap`);
+  }
+  cek(/pagar|kawat/.test(D_.DATA_PILIH[0].teks + D_.DATA_PILIH[2].teks) && D_.DATA_PILIH[0].jawab === "keliling" && D_.DATA_PILIH[2].jawab === "keliling" && D_.DATA_PILIH[1].jawab === "luas" && D_.DATA_PILIH[3].jawab === "luas" && /ubin/.test(D_.DATA_PILIH[1].teks) && /pasir/.test(D_.DATA_PILIH[3].teks), "Pilih: pagar dan kawat keliling, ubin dan pasir luas");
+  cek(KW(w0, { t: "P_DATA", i: 4 }) === w0 && KW(w0, { t: "P_DATA", i: -1 }) === w0, "Pilih: kebutuhan di luar batas diabaikan");
+
+  // Urut.
+  {
+    const luasU = D_.DATA_URUT.map((d) => petakMandiri(d.p, d.l));
+    const benarU = luasU.map((v, i) => [v, i]).sort((a, b) => a[0] - b[0]).map((e) => e[1]);
+    sama(luasU.slice().sort((a, b) => a - b), [56, 125, 176, 216, 225], "Urut: luas lima kerangka terurut (cacah petak)");
+    cek(new Set(luasU).size === 5 && D_.DATA_URUT.every((d) => d.p + d.l === 30) && D_.DATA_URUT.every((d) => petakMandiri(d.p, d.l) === ulangTambah(d.p, d.l) && kelilingMandiri(d.p, d.l) === 60), "Urut: lima kerangka berkeliling 60 dengan luas berbeda");
+    sama(D_.urutanBenar(), benarU, "Urut: urutan benar sama dengan pengurutan luas mandiri");
+    cek(D_.urutanBenar().join() !== "0,1,2,3,4" && D_.urutanBenar().join() !== "4,3,2,1,0", "Urut: urutan di layar tidak sama dengan urutan jawaban");
+    // Tiap awal yang salah ditolak.
+    for (let k = 0; k < 5; k += 1) {
+      if (k === benarU[0]) continue;
+      const s = KW(w0, { t: "U_PILIH", k });
+      cek(s.urut.dipilih.length === 0 && s.pernah.length === 0 && /luasnya lebih kecil/.test(s.pesan) && !s.pesan.startsWith("✅"), `Urut: memilih kerangka ${k} lebih dulu ditolak`);
+    }
+    let s = w0;
+    for (let n = 0; n < 5; n += 1) {
+      for (let k = 0; k < 5; k += 1) {
+        if (k === benarU[n] || s.urut.dipilih.includes(k)) continue;
+        const t = KW(s, { t: "U_PILIH", k });
+        cek(t.urut.dipilih.length === n && t.pernah.length === 0 && /luasnya lebih kecil/.test(t.pesan), `Urut: langkah ${n + 1}, kerangka ${k} salah ditolak`);
+      }
+      s = KW(s, { t: "U_PILIH", k: benarU[n] });
+      cek(s.urut.dipilih.length === n + 1 && s.urut.dipilih.join() === benarU.slice(0, n + 1).join(), `Urut: langkah ${n + 1} diterima`);
+      if (n < 4) cek(s.pernah.length === 0 && s.pesan.startsWith("✅") && s.pesan.includes(`= ${luasU[benarU[n]]} cm²`), `Urut: langkah ${n + 1} belum selesai, luas ${luasU[benarU[n]]}`);
+      cek(KW(s, { t: "U_PILIH", k: benarU[n] }).urut.dipilih.length === n + 1 && /sudah dipilih/.test(KW(s, { t: "U_PILIH", k: benarU[n] }).pesan), `Urut: memilih ulang langkah ${n + 1} ditolak`);
+    }
+    cek(s.pernah.includes("urut:0") && s.pesan.startsWith("✅") && s.pesan.includes("56 < 125 < 176 < 216 < 225 cm²") && /mendekati persegi/.test(s.pesan), "Urut: urutan lengkap tercatat");
+    cek(KW(s, { t: "U_ULANG" }).urut.dipilih.length === 0 && KW(s, { t: "U_ULANG" }).pernah.includes("urut:0"), "Urut: urut ulang mengosongkan pilihan, riwayat tetap");
+    cek(KW(w0, { t: "U_PILIH", k: 5 }) === w0 && KW(w0, { t: "U_PILIH", k: -1 }) === w0 && KW(w0, { t: "U_PILIH", k: 1.5 }) === w0, "Urut: kerangka di luar batas diabaikan");
+    cek(KW(KW(w0, { t: "U_PILIH", k: benarU[0] }), { t: "U_PILIH", k: benarU[2] }).pernah.length === 0, "Urut: melompat tidak memenuhi");
+  }
+
+  // Fuzz.
+  const acak = acakDari(97);
+  let s = w0;
+  let ok = true;
+  const pesanSemua = new Set();
+  const riwayatSemua = new Set();
+  const ID = /^(kawat:(1[5-9]|2[0-9])|pilih:[0-3]|urut:0)$/;
+  for (let i = 0; i < 20000; i += 1) {
+    const p = acak(22);
+    const a =
+      p <= 3 ? { t: "K_UBAH", d: D_.PERUBAHAN[acak(4)] } :
+      p === 4 ? { t: "K_UBAH", d: acak(12) - 6 } :
+      p === 5 || p === 6 ? { t: "K_CATAT" } :
+      p === 7 ? { t: "P_DATA", i: acak(5) - (acak(8) === 0 ? 1 : 0) } :
+      p === 8 ? { t: "P_JAWAB", jawab: ["keliling", "luas", "sudut"][acak(3)] } :
+      p === 9 || p === 10 ? { t: "P_JAWAB", jawab: D_.dataPilih(s).jawab } :
+      p === 11 || p === 12 ? { t: "U_PILIH", k: acak(6) - (acak(8) === 0 ? 1 : 0) } :
+      p === 13 || p === 14 || p === 15 ? { t: "U_PILIH", k: D_.urutanBenar()[Math.min(s.urut.dipilih.length, 4)] } :
+      p === 16 ? { t: "U_ULANG" } :
+      acak(40) === 0 ? { t: "RESET" } : { t: "PESAN_KOSONG" };
+    const t = KW(s, a);
+    if (a.t !== "RESET" && !s.pernah.every((v) => t.pernah.includes(v))) ok = false;
+    if (!(t.kawat.p >= 1 && t.kawat.p <= 29 && D_.kelilingKawat(t.kawat.p) === 60)) ok = false;
+    if (!(t.pilih.data >= 0 && t.pilih.data < 4)) ok = false;
+    if (!(t.urut.dipilih.length <= 5 && new Set(t.urut.dipilih).size === t.urut.dipilih.length && t.urut.dipilih.join() === D_.urutanBenar().slice(0, t.urut.dipilih.length).join())) ok = false;
+    for (const id of t.pernah) if (!ID.test(id)) ok = false;
+    for (const id of t.pernah) {
+      if (s.pernah.includes(id)) continue;
+      const [jenis, n] = id.split(":");
+      if (jenis === "kawat" && !(a.t === "K_CATAT" && D_.idKawat(t.kawat.p) === id)) ok = false;
+      if (jenis === "pilih" && !(a.t === "P_JAWAB" && t.pilih.data === Number(n) && D_.DATA_PILIH[Number(n)].jawab === a.jawab)) ok = false;
+      if (jenis === "urut" && !(t.urut.dipilih.length === 5)) ok = false;
+    }
+    if (t.pesan) pesanSemua.add(t.pesan);
+    for (const id of t.pernah) riwayatSemua.add(id);
+    s = t;
+  }
+  cek(ok, "fuzz 20.000 aksi Lab Kawat: batas terjaga, keliling tetap 60, riwayat tidak dicabut dan hanya bila tercapai");
+  cek(pesanSemua.size > 30 && [...pesanSemua].every(tanpaAngka), `fuzz Lab Kawat: semua ${pesanSemua.size} pesan dieja menjadi kata`);
+  cek(riwayatSemua.size >= 8, `fuzz Lab Kawat: riwayat terkumpul (${[...riwayatSemua].sort().join(" ")})`);
+  globalThis.__pesanD = [...pesanSemua];
+}
+
+/* ------------------------------ Mesin D ------------------------------ */
+{
+  const angka = (o) => Number(o.split(" ")[0]);
+  const def = MS.MESIN_KAWAT;
+  sama(MS.KASUS_KAWAT.map((k) => k.id), ["panjang", "pipih", "sedang"], "Mesin Kawat: tiga kasus");
+  sama(MS.KASUS_KAWAT.map((k) => [k.p, k.l, k.perlu]), [[20, 10, "keliling"], [25, 5, "luas"], [18, 12, "keliling"]], "Mesin Kawat: data tiga kasus sesuai rancangan");
+  sama(def.stasiun.map((s) => s.id), ["pasangan", "beda", "terbesar", "pilih"], "Mesin Kawat: urutan stasiun");
+  for (const [i, k] of MS.KASUS_KAWAT.entries()) {
+    const c = def.kasus[i];
+    const [pasangan, beda, terbesar, pilih] = c.langkah;
+    cek(k.p + k.l === 30 && kelilingMandiri(k.p, k.l) === 60, `Mesin ${k.id}: kerangka ${k.p} dan ${k.l} berkeliling 60 (cacah sisi petak)`);
+    cek(pasangan.benar === `${k.l} cm` && pasangan.tanya.includes(`panjang ${k.p} cm`) && pasangan.opsi.includes(`${60 - k.p} cm`) && pasangan.opsi.includes("30 cm") && pasangan.opsi.every((o) => o === pasangan.benar || angka(o) !== k.l) && pasangan.opsi.every((o) => angka(o) > 0), `Mesin ${k.id}: lebar ${k.l}, pengecoh 60 dikurangi panjang dan 30`);
+    const L = petakMandiri(k.p, k.l);
+    cek(beda.benar === `${L} cm²` && beda.tanya.includes(`${k.p} cm kali ${k.l} cm`) && beda.opsi.includes("60 cm²") && beda.opsi.includes("30 cm²") && beda.opsi.every((o) => o === beda.benar || angka(o) !== L) && L !== 60 && L !== 30, `Mesin ${k.id}: luas ${L}, pengecoh keliling 60 dan 30`);
+    const persegi = petakMandiri(15, 15);
+    cek(persegi === 225 && L < persegi && terbesar.benar === `persegi 15 cm kali 15 cm, luasnya ${persegi} cm²` && terbesar.opsi.includes(`kerangka ${k.p} cm kali ${k.l} cm, luasnya ${L} cm²`) && terbesar.opsi.includes("sama besar, karena kelilingnya sama") && terbesar.opsi.filter((o) => o !== terbesar.benar).every((o) => !/^persegi 15/.test(o)), `Mesin ${k.id}: persegi 225 lebih besar dari ${L}, pengecoh kerangka lain dan sama besar`);
+    const benarPerlu = k.perlu === "keliling" ? "keliling, yaitu panjang di tepi" : "luas, yaitu daerah di dalam";
+    cek(pilih.benar === benarPerlu && pilih.tanya.includes(k.keperluan) && pilih.opsi.includes("banyak sudut bangun") && ((k.perlu === "keliling" && /pagar|memagari|kawat/.test(k.keperluan)) || (k.perlu === "luas" && /ubin|pasir/.test(k.keperluan))), `Mesin ${k.id}: ${k.keperluan} memakai ${k.perlu}`);
+    const eja = EJ.ejaK5B5(c.ringkas);
+    cek([L, persegi, k.l].every((n) => eja.includes(EJ.kataK5B5(n))) && c.ringkas.includes(k.perlu), `Mesin ${k.id}: ringkas dieja dengan hasil benar`);
+  }
+  cek(MS.KASUS_KAWAT.filter((k) => k.perlu === "keliling").length === 2 && MS.KASUS_KAWAT.filter((k) => k.perlu === "luas").length === 1, "Mesin Kawat: keperluan keliling dan luas dua banding satu");
+}
+
+/* ------------------------------ Skenario D ------------------------------ */
+{
+  const S = SK.SKENARIO_K5B5D;
+  cek(S.adegan.length >= 5 && S.adegan.length <= 8, `${S.id}: 5 sampai 8 adegan`);
+  cek(S.adegan[0].jenis === "narasi" && S.adegan[S.adegan.length - 1].jenis === "akhir", `${S.id}: buka dan tutup`);
+  cek(new Set(S.adegan.map((a) => a.jenis)).size >= 4, `${S.id}: paling sedikit empat jenis adegan`);
+  const semuaTeks = [];
+  for (const a of S.adegan) {
+    semuaTeks.push(a.cerita);
+    for (const o of a.opsi ?? []) semuaTeks.push(o.teks, o.umpan);
+    for (const q of a.soal ?? []) semuaTeks.push(q.teks, ...q.opsi);
+    for (const f of ["tanya", "sukses", "salah", "kurang", "lebih"]) if (a[f]) semuaTeks.push(a[f]);
+  }
+  cek(semuaTeks.every(tanpaAngka), `${S.id}: semua teks dapat dieja`);
+  sama(S.id.replace(/-k5b5$/, ""), K5.ID_SKENARIO_K5B5.D, "id skenario D sesuai id misi");
+  const adegan = (id) => S.adegan.find((a) => a.id === id);
+  const ubin = adegan("ubin");
+  cek(ubin.jumlah === petakMandiri(4, 3) && ubin.cerita.includes("4 m dan 3 m") && ubin.sukses.includes("4 × 3 = 12"), "D: pos jaga 4 dan 3 sama dengan 12 ubin (konsep A)");
+  const rumus = adegan("rumus").soal;
+  cek(rumus[0].jawaban === String(petakMandiri(8, 3)) && rumus[0].opsi.includes(String(8 + 3)) && rumus[0].opsi.includes(String(8 * 5)) && rumus[0].opsi.filter((o) => o !== "24").every((o) => Number(o) !== 24), "D: persegi panjang 8 dan 3 sama dengan 24, pengecoh 11 dan 40 salah (konsep B)");
+  cek(rumus[1].jawaban === String(luasPoligon(poliSegitiga(6, 4))) && rumus[1].opsi.includes(String(petakMandiri(6, 4))) && rumus[1].opsi.includes(String(6 + 4)) && rumus[1].opsi.filter((o) => o !== "12").every((o) => Number(o) !== 12), "D: segitiga 6 dan 4 sama dengan 12 (titik sudut), pengecoh 24 dan 10 salah (konsep B)");
+  const gab = adegan("gabungan").soal;
+  cek(gab[0].jawaban === String(petakMandiri(4, 3) + petakMandiri(4, 2)) && gab[0].opsi.includes(String(12 - 8)) && gab[0].opsi.includes(String(12 * 8)) && gab[0].opsi.filter((o) => o !== "20").every((o) => Number(o) !== 20), "D: 12 + 8 sama dengan 20, pengecoh 4 dan 96 salah (konsep C)");
+  const tp = tumpangMandiri({ A: { x: 0, y: 0, w: 4, h: 3 }, B: { x: 2, y: 0, w: 4, h: 3 } });
+  cek(gab[1].jawaban === String(tp.gabungan) && tp.gabungan === 18 && gab[1].teks.includes("12 cm²") && gab[1].teks.includes("6 cm²") && gab[1].opsi.includes("24") && gab[1].opsi.filter((o) => o !== "18").every((o) => Number(o) !== 18), "D: dua 12 menumpuk 6 sama dengan 18 (himpunan petak), pengecoh 24 dan 12 salah (konsep C)");
+  const syarat = adegan("syarat");
+  const sb = syarat.opsi.find((o) => o.benar);
+  cek(/panjang ditambah lebar sama dengan 30/.test(sb.teks) && D_.SETENGAH_KELILING === 30 && syarat.cerita.includes("60 cm") && syarat.opsi.filter((o) => !o.benar).every((o) => !/ditambah lebar sama dengan 30/.test(o.teks)), "D: syarat kawat panjang ditambah lebar 30, pengecoh salah");
+  const lk = adegan("luas-kawat").soal;
+  cek(lk[0].jawaban === String(petakMandiri(20, 10)) && lk[1].jawaban === String(petakMandiri(25, 5)) && lk[0].opsi.includes("60") && lk[1].opsi.includes("60") && lk[0].opsi.filter((o) => o !== "200").every((o) => Number(o) !== 200) && lk[1].opsi.filter((o) => o !== "125").every((o) => Number(o) !== 125) && kelilingMandiri(20, 10) === 60 && kelilingMandiri(25, 5) === 60, "D: 20 kali 10 sama dengan 200 dan 25 kali 5 sama dengan 125, keliling sama 60 (cacah)");
+  const tb = adegan("terbesar");
+  const tbb = tb.opsi.find((o) => o.benar);
+  cek(petakMandiri(15, 15) === 225 && petakMandiri(20, 10) === 200 && petakMandiri(25, 5) === 125 && /persegi 15 cm kali 15 cm, luasnya 225 cm²/.test(tbb.teks) && tb.opsi.filter((o) => !o.benar).every((o) => !/persegi/.test(o.teks)) && tb.opsi.find((o) => /200/.test(o.teks)).umpan.includes("225"), "D: persegi 15 kali 15 luas 225 paling besar, pengecoh 200 dan 125 salah");
+  const posisi = S.adegan.filter((a) => a.jenis === "pilih").map((a) => a.opsi.findIndex((o) => o.benar));
+  cek(new Set(posisi).size === posisi.length, `D: letak jawaban pilih bervariasi (${posisi.join("")})`);
+  // Menyentuh konsep A sampai D.
+  const gabung = JSON.stringify(S);
+  cek(/ubin/.test(gabung) && /rumus|alas/.test(gabung) && /menumpuk/.test(gabung) && /keliling/.test(gabung) && /kawat/.test(gabung), "D: skenario menyentuh konsep A (ubin), B (rumus), C (menumpuk), dan D (kawat dan keliling)");
+}
+
 /* ------------------------------ Misi ------------------------------ */
 {
-  const huruf = ["A", "B", "C"];
+  const huruf = ["A", "B", "C", "D"];
   sama(Object.keys(TK.MISI_K5B5), huruf, "teks misi untuk A");
   sama(Object.keys(TK.NAMA_SIM_K5B5), huruf, "nama simulasi untuk A");
   cek(TK.hurufK5B5("Z") === "A" && TK.hurufK5B5("A") === "A", "huruf tak dikenal jatuh ke A");
@@ -1000,7 +1229,7 @@ const g0 = G_.awalGabunganK5B5C();
     const daftar = K5.daftarMisiK5Bab5(h);
     cek(daftar.filter((m) => m.wajib).length === 7 && daftar.filter((m) => !m.wajib).length === 3, `${h}: tujuh misi wajib dan tiga tantangan bebas`);
     cek(new Set(daftar.map((m) => m.id)).size === 10 && daftar.every((m) => m.id.startsWith(`${h.toLowerCase()}-`)), `${h}: id misi unik berawalan huruf`);
-    const kosong = [{ alat: "petak", pernah: [] }, { alat: "rumus", pernah: [] }, { alat: "gabungan", pernah: [] }, sel("tidak-ada"), A.keadaanPetakK5B5A(A.awalPetakK5B5A()), R.keadaanRumusK5B5B(R.awalRumusK5B5B()), G_.keadaanGabunganK5B5C(G_.awalGabunganK5B5C())];
+    const kosong = [{ alat: "petak", pernah: [] }, { alat: "rumus", pernah: [] }, { alat: "gabungan", pernah: [] }, { alat: "kawat", pernah: [] }, sel("tidak-ada"), A.keadaanPetakK5B5A(A.awalPetakK5B5A()), R.keadaanRumusK5B5B(R.awalRumusK5B5B()), G_.keadaanGabunganK5B5C(G_.awalGabunganK5B5C()), D_.keadaanKawatK5B5D(D_.awalKawatK5B5D())];
     cek(kosong.every((k) => M0.misiBaru(daftar, k, new Set()).length === 0), `${h}: keadaan awal alat tidak memenuhi misi mana pun`);
     cek(daftar.every((m) => m.teks.length > 20 && tanpaAngka(m.teks)), `${h}: teks misi jelas dan dapat dieja`);
     const baru = (k) => M0.misiBaru(daftar, k, new Set());
@@ -1104,6 +1333,37 @@ const g0 = G_.awalGabunganK5B5C();
   cek(capaiC(tumpAksi(0)).join() === "c-tumpang" && capaiC(tumpAksi(1)).length === 0, "C: Tumpang 4 kali 3 dan 4 kali 3 memenuhi, pasangan kedua hanya latihan");
   cek(capaiC(tumpAksi(0, { irisan: false })).length === 0 && capaiC(tumpAksi(0, { total: false })).length === 0 && capaiC(tumpAksi(0, { nilaiTotal: 24 })).length === 0 && capaiC(tumpAksi(0, { nilaiTotal: 12 })).length === 0 && capaiC(tumpAksi(0, { nilaiIrisan: 12 })).length === 0, "C: Tumpang tanpa bagian menumpuk, jumlah dobel, satu bangun, atau bagian salah tidak memenuhi");
   cek(capaiC([...uraiAksi(0), ...silangAksi(0), ...tumpAksi(0)]).join() === "c-denah-rumah,c-silang,c-tumpang", "C: tiga tampilan bersamaan");
+
+  // Misi D lewat aksi lab, dan near-miss.
+  cek(M0.misiBaru(K5.MISI_D, { alat: "gabungan", pernah: ["kawat:20", "kawat:25", "kawat:15", "pilih:0", "pilih:1", "pilih:2", "pilih:3", "urut:0"] }, new Set()).length === 0, "D: riwayat alat lain tidak memenuhi misi D");
+  const capaiD = (aksi) => M0.misiBaru(K5.MISI_D, D_.keadaanKawatK5B5D(jalan(D_.awalKawatK5B5D(), KW, aksi)), new Set());
+  const rangkaiKawat = (ps, { catatBentuk = true } = {}) => {
+    let sekarang = 10;
+    const a = [];
+    for (const q of ps) {
+      a.push(...keP(sekarang, q));
+      sekarang = q;
+      if (catatBentuk) a.push({ t: "K_CATAT" });
+    }
+    return a;
+  };
+  cek(capaiD(rangkaiKawat([20])).join() === "d-dua-puluh" && capaiD(rangkaiKawat([10])).join() === "d-dua-puluh", "D: kerangka 20 dan 10 (dan 10 dan 20) memenuhi");
+  cek(capaiD(rangkaiKawat([25])).join() === "d-pipih" && capaiD(rangkaiKawat([5])).join() === "d-pipih", "D: kerangka 25 dan 5 (dan 5 dan 25) memenuhi");
+  cek(capaiD(rangkaiKawat([15])).join() === "d-persegi", "D: persegi 15 dan 15 memenuhi");
+  cek(capaiD(rangkaiKawat([18])).join() === "d-delapan-belas" && capaiD(rangkaiKawat([12])).join() === "d-delapan-belas" && capaiD(rangkaiKawat([28])).join() === "d-pipih-sekali" && capaiD(rangkaiKawat([2])).join() === "d-pipih-sekali" && capaiD(rangkaiKawat([22])).join() === "d-dua-dua" && capaiD(rangkaiKawat([8])).join() === "d-dua-dua", "D: tiga tantangan bebas memenuhi");
+  cek(capaiD(rangkaiKawat([20, 25, 15])).join() === "d-dua-puluh,d-pipih,d-persegi", "D: tiga kerangka wajib bersamaan");
+  cek(capaiD(rangkaiKawat([20, 25, 15], { catatBentuk: false })).length === 0 && capaiD(rangkaiKawat([21, 24, 16, 17, 19, 29])).length === 0, "D: mengatur tanpa mencatat, atau mencatat kerangka lain, tidak memenuhi");
+  const pilihAksi = (daftar) => daftar.flatMap(([i, jawab]) => [{ t: "P_DATA", i }, { t: "P_JAWAB", jawab }]);
+  const semuaBenar = D_.DATA_PILIH.map((d, i) => [i, d.jawab]);
+  cek(capaiD(pilihAksi(semuaBenar)).join() === "d-pilih", "D: keempat kebutuhan dijawab benar memenuhi");
+  cek(capaiD(pilihAksi(semuaBenar.slice(0, 3))).length === 0 && capaiD(pilihAksi(semuaBenar.slice(1))).length === 0, "D: hanya tiga kebutuhan tidak memenuhi");
+  cek(capaiD(pilihAksi(semuaBenar.map(([i, j]) => [i, j === "luas" ? "keliling" : "luas"]))).length === 0 && capaiD(pilihAksi([...semuaBenar.slice(0, 3), [3, "keliling"]])).length === 0, "D: jawaban terbalik tidak memenuhi");
+  const urutAksi = (urutan) => urutan.map((k) => ({ t: "U_PILIH", k }));
+  const benarU = D_.urutanBenar();
+  cek(capaiD(urutAksi(benarU)).join() === "d-urut", "D: kelima kerangka terurut memenuhi");
+  cek(capaiD(urutAksi(benarU.slice(0, 4))).length === 0 && capaiD(urutAksi([...benarU].reverse())).length === 0, "D: urutan belum lengkap atau terbalik tidak memenuhi");
+  cek(capaiD(urutAksi([benarU[1], ...benarU])).join() === "d-urut", "D: pilihan keliru ditolak, lalu urutan yang benar tetap memenuhi");
+  cek(capaiD([...rangkaiKawat([20, 25, 15]), ...pilihAksi(semuaBenar), ...urutAksi(benarU)]).join() === "d-dua-puluh,d-pipih,d-persegi,d-pilih,d-urut", "D: lima misi lab bersamaan");
 
   // Gerbang.
   for (const h of huruf) {
@@ -1245,6 +1505,35 @@ const g0 = G_.awalGabunganK5B5C();
   cek(ucapanC.length >= 15 && ucapanC.every(tanpaAngka), `semua ${ucapanC.length} ucapan lab C dieja menjadi kata`);
   for (const u of ucapanC) catatC(u, "ucapan lab");
 
+  // Sub-Bab D menyentuh konsep sebelumnya, jadi tidak ada uji bocor ke D. Uji murni dan statis berikut tetap berlaku.
+  for (const f of ["SimulasiLabKawatK5B5", "model-kawat-k5b5"]) {
+    const s = baca(f, "tsx");
+    cek(!/correct_index|explanation/.test(s) && !/fetch\(|XMLHttpRequest|api\/|openai|anthropic|gemini/i.test(s), `${f}: tanpa kunci jawaban, jaringan, atau model bahasa`);
+  }
+  {
+    const s = baca("lab-kawat-k5b5d", "ts");
+    cek(!/fetch\(|XMLHttpRequest|from "react"|openai|anthropic|gemini|correct_index|explanation/i.test(s) && (s.match(/^import /gm) ?? []).length === 0, "lab-kawat-k5b5d: murni dan tanpa impor");
+    const c = baca("SimulasiLabKawatK5B5", "tsx");
+    cek(/useEffect\(\(\) => \{\s*onKeadaan\?\.\(keadaan\w+\(x\)\);\s*\}, \[onKeadaan, x\]\);/.test(c), "lab kawat: lapor keadaan lewat useEffect");
+    cek(/setLihat\(v\);\s*kirim\(\{ t: "PESAN_KOSONG" \}\);/.test(c), "lab kawat: ganti tampilan mengosongkan pesan");
+    const catatan = [...c.matchAll(/^\s*"([^"]+)",$/gm)].map((m) => m[1]);
+    cek(catatan.length >= 3 && catatan.every(tanpaAngka), "lab kawat: Coba ini dapat dieja");
+    cek(/aria-label="Catat bentuk ini"/.test(c) && /aria-label=\{NAMA_UBAH\[d\]\}/.test(c) && /aria-label="Yang dihitung keliling"/.test(c) && /aria-label="Yang dihitung luas"/.test(c) && /aria-label=\{`Kerangka \$\{d\.p\} kali \$\{d\.l\}`\}/.test(c) && /aria-label="Urut ulang"/.test(c), "lab kawat: tombol ubah, catat, pilih, kerangka, dan urut ulang berlabel");
+    const pembungkus = baca("SimulasiK5Bab5", "tsx");
+    const coba = [...pembungkus.matchAll(/"([^"]*\?)"/g)].map((m) => m[1]);
+    cek(coba.length >= 12 && coba.every(tanpaAngka), "Coba ini mesin A sampai D dapat dieja");
+    cek(/SimulasiLabKawatK5B5/.test(pembungkus) && /MESIN_KAWAT/.test(pembungkus) && /SKENARIO_K5B5D/.test(pembungkus), "pembungkus memuat lab, mesin, dan skenario D");
+  }
+  const ucapanD = [];
+  {
+    const xk = KW(w0, { t: "K_UBAH", d: 5 });
+    ucapanD.push(D_.ucapKawatK5B5D(w0), D_.ucapKawatK5B5D(xk));
+    for (let p = 1; p <= 29; p += 7) ucapanD.push(D_.ucapKawatK5B5D(jalan(w0, KW, keP(10, p))));
+    for (let i = 0; i < 4; i += 1) ucapanD.push(D_.ucapPilihK5B5D(KW(w0, { t: "P_DATA", i })));
+    ucapanD.push(D_.ucapUrutK5B5D(w0), D_.ucapUrutK5B5D(jalan(w0, KW, [{ t: "U_PILIH", k: D_.urutanBenar()[0] }])), D_.ucapUrutK5B5D(jalan(w0, KW, D_.urutanBenar().map((k) => ({ t: "U_PILIH", k })))));
+  }
+  cek(ucapanD.length >= 12 && ucapanD.every(tanpaAngka), `semua ${ucapanD.length} ucapan lab D dieja menjadi kata`);
+
   // Kunci tidak bocor ke klien, tanpa jaringan.
   for (const f of ["SimulasiLabPetakK5B5", "SimulasiK5Bab5", "model-petak-k5b5"]) {
     const s = baca(f, "tsx");
@@ -1360,7 +1649,21 @@ const g0 = G_.awalGabunganK5B5C();
   cek(butir(r3, "irisan").visual.isi === `${dimr.w} × ${dimr.h} = ${tp0.irisan} cm²` && butir(r3, "jumlah").visual.isi === `${tp0.a} + ${tp0.b} = ${tp0.a + tp0.b}` && butir(r3, "kurang").visual.isi === `${tp0.a + tp0.b} − ${tp0.irisan} = ${tp0.gabungan} cm²` && butir(r3, "kurang").suara.includes(kataC(18)), "ringkas C: menumpuk 6, jumlah 24, dikurangi 6 sama dengan 18 (himpunan petak)");
   const kartuC = (id) => C0.peta.kartu.find((k) => k.id === id).teks;
   cek(kartuC("c-dua") === `${uPertama.join(" + ")} = ${uPertama.reduce((p, q) => p + q, 0)} cm²` && kartuC("c-tiga") === `${G_.DATA_URAIAN[2].bagian.map(luasBagianMandiri).join(" + ")} = ${G_.DATA_URAIAN[2].bagian.map(luasBagianMandiri).reduce((p, q) => p + q, 0)} cm²` && kartuC("c-yohana") === `Cara Yohana: ${cc1.join(" + ")} = 16` && kartuC("c-komang") === `Cara Komang: ${cc2.join(" + ")} = 16` && kartuC("c-kurang") === `${tp0.a} + ${tp0.b} − ${tp0.irisan} = ${tp0.gabungan} cm²`, "ringkas C: kartu jumlah, dua cara, dan menumpuk (dihitung)");
-  sama(Object.keys(ringkas.subBab), ["A", "B", "C"], "ringkas: gelombang ini sub-bab A, B, dan C");
+  // Angka di ringkas D dihitung ulang mandiri (cacah petak dan cacah sisi petak di tepi).
+  const D0 = ringkas.subBab.D;
+  const [d1, d2, d3] = D0.infografis.panel;
+  const kataD = (n) => EJ.kataK5B5(n);
+  cek(butir(d1, "kawat").visual.isi === "60 cm" && butir(d1, "syarat").visual.isi === "2 × (p + l) = 60" && butir(d1, "tiga").visual.isi === "p + l = 30" && kelilingMandiri(20, 10) === 60 && 20 + 10 === 30, "ringkas D: kawat 60 dan p + l = 30 (cacah sisi petak)");
+  cek(butir(d1, "kawat").suara.includes(kataD(60)) && butir(d1, "tiga").suara.includes(kataD(30)), "ringkas D: suara menyebut 60 dan 30");
+  const [dua, lima] = d2.sisi;
+  cek(dua.visual.isi === `${petakMandiri(20, 10)} cm²` && lima.visual.isi === `${petakMandiri(25, 5)} cm²` && petakMandiri(20, 10) !== petakMandiri(25, 5) && kelilingMandiri(20, 10) === kelilingMandiri(25, 5) && dua.suara.includes(kataD(200)) && lima.suara.includes(kataD(125)), "ringkas D: 20 kali 10 sama dengan 200 dan 25 kali 5 sama dengan 125, keliling sama (dihitung)");
+  const urutR = butir(d3, "urut");
+  const luasR = urutR.visual.baris.map((r) => r[1]);
+  cek(urutR.visual.baris.every((r) => { const [a, b] = r[0].split(" × ").map(Number); return a + b === 30 && petakMandiri(a, b) === r[1]; }) && luasR.every((v, i) => i === 0 || v > luasR[i - 1]), "ringkas D: tabel kerangka 60 cm, luas dihitung dan terurut");
+  cek([56, 125, 176, 216, 225].every((n) => urutR.suara.includes(kataD(n))) && [56, 125, 176, 216, 225].join() === D_.DATA_URUT.map((d) => petakMandiri(d.p, d.l)).sort((a, b) => a - b).join(), "ringkas D: suara menyebut lima luas terurut (dihitung)");
+  const kartuD = (id) => D0.peta.kartu.find((k) => k.id === id).teks;
+  cek(kartuD("d-dua") === `20 × 10 = ${petakMandiri(20, 10)} cm²` && kartuD("d-lima") === `25 × 5 = ${petakMandiri(25, 5)} cm²` && kartuD("d-persegi") === `15 × 15 = ${petakMandiri(15, 15)} cm²`, "ringkas D: kartu luas tiga kerangka (dihitung)");
+  sama(Object.keys(ringkas.subBab), ["A", "B", "C", "D"], "ringkas: keempat sub-bab A sampai D");
 }
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);

@@ -302,6 +302,98 @@
           }
         ]
       }
+    },
+    "D": {
+      "peta": {
+        "pusat": {
+          "judul": "Keliling dan Luas",
+          "ikon": "🧵",
+          "suara": "Ini peta hubungan keliling dan luas. Kita belajar kawat yang kelilingnya tetap, luas yang bisa berbeda, bentuk yang mendekati persegi, dan memilih keliling atau luas. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "kawat",
+            "judul": "Kawat tetap",
+            "ikon": "🧵",
+            "ringkas": "Keliling tetap, panjang tambah lebar tetap.",
+            "suara": "Kawat tetap. Kawat enam puluh sentimeter membuat kerangka persegi panjang. Dua kali panjang tambah lebar sama dengan enam puluh, jadi panjang tambah lebar sama dengan tiga puluh."
+          },
+          {
+            "id": "beda",
+            "judul": "Luas berbeda",
+            "ikon": "📊",
+            "ringkas": "Keliling sama, luas bisa beda.",
+            "suara": "Luas berbeda. Kerangka dua puluh kali sepuluh luasnya dua ratus, sedangkan dua puluh lima kali lima luasnya seratus dua puluh lima. Kelilingnya sama, luasnya berbeda."
+          },
+          {
+            "id": "persegi",
+            "judul": "Mendekati persegi",
+            "ikon": "🟦",
+            "ringkas": "Makin mirip persegi, luas makin besar.",
+            "suara": "Mendekati persegi. Dengan keliling tetap, bentuk yang mendekati persegi punya luas terbesar. Persegi lima belas kali lima belas luasnya dua ratus dua puluh lima."
+          },
+          {
+            "id": "pilih",
+            "judul": "Keliling atau luas",
+            "ikon": "🤔",
+            "ringkas": "Pagar keliling, ubin luas.",
+            "suara": "Keliling atau luas. Pagar dan kawat memakai keliling. Ubin dan pasir memakai luas."
+          }
+        ],
+        "kartu": [
+          { "id": "d-syarat", "teks": "2 × (p + l) = 60", "ikon": "🧵", "cabang": "kawat", "petunjuk": "Syarat kawat itu soal kawat tetap. Coba cabang lain." },
+          { "id": "d-tiga", "teks": "p + l = 30 cm", "ikon": "➕", "cabang": "kawat", "petunjuk": "Panjang tambah lebar itu soal kawat tetap. Coba cabang lain." },
+          { "id": "d-dua", "teks": "20 × 10 = 200 cm²", "ikon": "▭", "cabang": "beda", "petunjuk": "Luas satu kerangka itu soal luas berbeda. Coba cabang lain." },
+          { "id": "d-lima", "teks": "25 × 5 = 125 cm²", "ikon": "➖", "cabang": "beda", "petunjuk": "Luas kerangka yang pipih itu soal luas berbeda. Coba cabang lain." },
+          { "id": "d-persegi", "teks": "15 × 15 = 225 cm²", "ikon": "🟦", "cabang": "persegi", "petunjuk": "Persegi itu soal mendekati persegi. Coba cabang lain." },
+          { "id": "d-terbesar", "teks": "Luas terbesar pada persegi", "ikon": "🏆", "cabang": "persegi", "petunjuk": "Luas terbesar itu soal mendekati persegi. Coba cabang lain." },
+          { "id": "d-pagar", "teks": "Pagar kebun memakai keliling", "ikon": "🧱", "cabang": "pilih", "petunjuk": "Pagar itu soal keliling atau luas. Coba cabang lain." },
+          { "id": "d-ubin", "teks": "Ubin lantai memakai luas", "ikon": "🟨", "cabang": "pilih", "petunjuk": "Ubin itu soal keliling atau luas. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Keliling dan Luas",
+        "suara": "Ini tiga panel tentang keliling dan luas. Ketuk kotaknya untuk membuka, lalu lihat kawat enam puluh sentimeter, tiga kerangka yang luasnya berbeda, serta keliling atau luas.",
+        "panel": [
+          {
+            "id": "d-kawat-info",
+            "tipe": "buka",
+            "judul": "Kawat enam puluh sentimeter",
+            "ide": "Panjang tambah lebar selalu tiga puluh.",
+            "suara": "Ada tiga hal tentang kawat. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "kawat", "label": "Kawat", "ikon": "🧵", "isi": "Kawat 60 cm dibentuk kerangka.", "suara": "Kawat enam puluh sentimeter dibentuk menjadi kerangka persegi panjang.", "visual": { "jenis": "teks", "isi": "60 cm" } },
+              { "id": "syarat", "label": "Syarat", "ikon": "📏", "isi": "Dua kali panjang tambah lebar.", "suara": "Dua kali panjang tambah lebar harus sama dengan enam puluh.", "visual": { "jenis": "teks", "isi": "2 × (p + l) = 60" } },
+              { "id": "tiga", "label": "Tiga puluh", "ikon": "➕", "isi": "Panjang tambah lebar tiga puluh.", "suara": "Jadi panjang tambah lebar sama dengan tiga puluh. Dua puluh tambah sepuluh, atau dua puluh lima tambah lima.", "visual": { "jenis": "teks", "isi": "p + l = 30" } }
+            ]
+          },
+          {
+            "id": "d-beda-info",
+            "tipe": "banding",
+            "judul": "Dua kerangka, luas beda",
+            "ide": "Keliling sama, luas berbeda.",
+            "suara": "Lihat dua kerangka dari kawat yang sama.",
+            "sisi": [
+              { "id": "dua", "nama": "20 kali 10", "ikon": "▭", "catatan": "Luas dua ratus.", "suara": "Kerangka dua puluh kali sepuluh luasnya dua ratus sentimeter persegi.", "visual": { "jenis": "teks", "isi": "200 cm²" } },
+              { "id": "lima", "nama": "25 kali 5", "ikon": "➖", "catatan": "Luas seratus dua puluh lima.", "suara": "Kerangka dua puluh lima kali lima luasnya seratus dua puluh lima sentimeter persegi, lebih kecil.", "visual": { "jenis": "teks", "isi": "125 cm²" } }
+            ],
+            "kesimpulan": "Keliling sama belum tentu luas sama."
+          },
+          {
+            "id": "d-pilih-info",
+            "tipe": "buka",
+            "judul": "Keliling atau luas",
+            "ide": "Pilih sesuai kebutuhan.",
+            "suara": "Ada tiga kebutuhan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "pagar", "label": "Pagar", "ikon": "🧱", "isi": "Panjang di tepi, keliling.", "suara": "Pagar dan kawat dipasang di tepi, jadi memakai keliling.", "visual": { "jenis": "teks", "isi": "keliling" } },
+              { "id": "ubin", "label": "Ubin", "ikon": "🟨", "isi": "Daerah di dalam, luas.", "suara": "Ubin dan pasir menutupi daerah di dalam, jadi memakai luas.", "visual": { "jenis": "teks", "isi": "luas" } },
+              { "id": "urut", "label": "Urutan", "ikon": "📊", "isi": "Lima kerangka, luas beda.", "suara": "Lima kerangka kawat berkeliling sama punya luas lima puluh enam, seratus dua puluh lima, seratus tujuh puluh enam, dua ratus enam belas, dan dua ratus dua puluh lima.", "visual": { "jenis": "tabel-menurun", "kepala": ["Kerangka", "Luas"], "baris": [["28 × 2", 56], ["25 × 5", 125], ["22 × 8", 176], ["15 × 15", 225]] } }
+            ]
+          }
+        ]
+      }
     }
   }
 }

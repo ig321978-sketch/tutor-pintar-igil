@@ -6,6 +6,7 @@ import type { DefSkenario } from "./skenario-umum";
  *  - SKENARIO_K5B5A: Ubin Alun-Alun (luas sebagai banyak petak satuan, baris dan kolom, petak dipindah luas tetap)
  *  - SKENARIO_K5B5B: Taman Bentuk-Bentuk (alas kali tinggi, tinggi bukan sisi miring, setengah, trapesium)
  *  - SKENARIO_K5B5C: Denah Yohana dan Komang (bangun gabungan: urai, jumlahkan, dua cara sama, bagian menumpuk)
+ *  - SKENARIO_K5B5D: Kawat Bapak (menyentuh A sampai D: petak, rumus, gabungan, keliling tetap luas berbeda)
  */
 
 export const SKENARIO_K5B5A: DefSkenario = {
@@ -234,6 +235,90 @@ export const SKENARIO_K5B5C: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Luas bangun gabungan dihitung dengan menguraikannya menjadi bagian, menghitung luas tiap bagian dengan rumusnya, lalu menjumlahkannya. Dua cara yang berbeda memberi luas yang sama, dan bagian yang menumpuk hanya dihitung satu kali.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B5D: DefSkenario = {
+  id: "kawat-bapak-k5b5",
+  judul: "Kawat Bapak",
+  latar: "Bantu Bapak membuat kerangka dari kawat 60 cm.",
+  tokoh: "👨",
+  nama: "Bapak",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Bapak. Aku punya kawat 60 cm untuk kerangka persegi panjang, dan lantai yang akan ditutup ubin. Ayo bantu aku menghitung luas dan kelilingnya!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "ubin",
+      jenis: "hitung",
+      cerita: "Lantai pos jaga 4 m dan 3 m ditutup ubin 1 m². Satu stik mewakili satu ubin.",
+      tanya: "Ketuk semua stik. Ada berapa ubin yang menutup lantai?",
+      objek: "stik",
+      jumlah: 12,
+      sukses: "Betul! Ada 12 ubin, sama dengan 4 × 3 = 12 m². Luas dihitung dengan petak satuan.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "rumus",
+      jenis: "soal",
+      cerita: "Bapak menghitung luas dengan rumus.",
+      soal: [
+        { teks: "Persegi panjang beralas 8 cm dan tinggi 3 cm. Luasnya adalah … cm².", jawaban: "24", opsi: ["11", "24", "40"] },
+        { teks: "Segitiga beralas 6 cm dan tinggi 4 cm. Luasnya adalah … cm².", jawaban: "12", opsi: ["24", "10", "12"] },
+      ],
+      sukses: "Hebat! Persegi panjang alas kali tinggi, segitiga setengahnya.",
+      salah: "Hmm, ingat rumus luas tiap bangun. Coba lagi.",
+    },
+    {
+      id: "gabungan",
+      jenis: "soal",
+      cerita: "Denah Bapak terdiri dari dua bagian yang dijumlahkan.",
+      soal: [
+        { teks: "Bagian pertama 12 cm² dan bagian kedua 8 cm². Luas denah adalah … cm².", jawaban: "20", opsi: ["20", "4", "96"] },
+        { teks: "Dua bangun masing-masing 12 cm² saling menumpuk 6 cm². Luas gabungan adalah … cm².", jawaban: "18", opsi: ["24", "18", "12"] },
+      ],
+      sukses: "Betul! Luas gabungan dijumlahkan, dan bagian yang menumpuk dihitung satu kali.",
+      salah: "Hmm, jumlahkan luas bagian, kurangi bagian yang menumpuk. Coba lagi.",
+    },
+    {
+      id: "syarat",
+      jenis: "pilih",
+      cerita: "Kawat 60 cm dibentuk menjadi kerangka persegi panjang. Kelilingnya 60 cm. Syarat panjang dan lebarnya adalah …",
+      opsi: [
+        { teks: "panjang ditambah lebar sama dengan 30 cm", benar: true, umpan: "Betul! Dua kali panjang ditambah lebar sama dengan 60, jadi panjang ditambah lebar 30 cm." },
+        { teks: "panjang dikali lebar sama dengan 60 cm²", benar: false, umpan: "Panjang dikali lebar adalah luas. Yang dibatasi kawat adalah keliling, yaitu dua kali panjang ditambah lebar." },
+        { teks: "panjang dikurang lebar sama dengan 30 cm", benar: false, umpan: "Panjang dikurang lebar tidak dibatasi kawat. Yang dibatasi adalah panjang ditambah lebar." },
+      ],
+    },
+    {
+      id: "luas-kawat",
+      jenis: "soal",
+      cerita: "Bapak mencoba dua kerangka dari kawat yang sama, keduanya berkeliling 60 cm.",
+      soal: [
+        { teks: "Kerangka 20 cm kali 10 cm. Luasnya adalah … cm².", jawaban: "200", opsi: ["200", "60", "30"] },
+        { teks: "Kerangka 25 cm kali 5 cm. Luasnya adalah … cm².", jawaban: "125", opsi: ["60", "150", "125"] },
+      ],
+      sukses: "Betul! Kelilingnya sama, tetapi luasnya berbeda, yaitu 200 cm² dan 125 cm².",
+      salah: "Hmm, luas adalah panjang dikali lebar. Angka 60 adalah keliling. Coba lagi.",
+    },
+    {
+      id: "terbesar",
+      jenis: "pilih",
+      cerita: "Bapak ingin kerangka kawat 60 cm yang luasnya paling besar. Pilihannya 25 cm kali 5 cm, 20 cm kali 10 cm, atau persegi 15 cm kali 15 cm. Yang luasnya paling besar adalah …",
+      opsi: [
+        { teks: "25 cm kali 5 cm, luasnya 125 cm²", benar: false, umpan: "Bentuk yang pipih luasnya kecil, hanya 125 cm². Ada yang lebih besar." },
+        { teks: "20 cm kali 10 cm, luasnya 200 cm²", benar: false, umpan: "200 cm² cukup besar, tetapi persegi 15 kali 15 luasnya 225 cm², lebih besar lagi." },
+        { teks: "persegi 15 cm kali 15 cm, luasnya 225 cm²", benar: true, umpan: "Betul! Dengan keliling tetap, bentuk yang mendekati persegi punya luas terbesar." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Luas dihitung dengan petak satuan, rumus, dan penjumlahan bagian. Kawat 60 cm bisa menjadi banyak kerangka dengan keliling sama tetapi luas berbeda, dan yang mendekati persegi paling luas. Pagar dan kawat memakai keliling, ubin dan pasir memakai luas.",
     },
   ],
 };

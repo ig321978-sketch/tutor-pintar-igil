@@ -17,6 +17,11 @@
  *    Bagian dan Rumus: luas satu bagian menurut rumusnya (pengecoh sesuai jenis bangun).
  *    Jumlah : luas seluruh bangun (pengecoh: satu bagian terlewat, dan satu bagian dihitung dua kali).
  *    Silang : luas denah L (pengecoh: persegi panjang besar tanpa takik, dan satu bagian saja).
+ *  - MESIN_KAWAT (D): Pasangan → Beda → Terbesar → Pilih   (kasus Kerangka Panjang, Pipih, Sedang)
+ *    Pasangan: lebar dari panjang tambah lebar sama dengan 30 (pengecoh: 60 dikurangi panjang, dan 30).
+ *    Beda    : luas kerangka (pengecoh: keliling 60 dan 30 dipakai sebagai luas).
+ *    Terbesar: bentuk dengan luas terbesar (pengecoh: kerangka lain, dan sama besar karena keliling sama).
+ *    Pilih   : keliling atau luas menurut keperluan (pengecoh: yang lain, dan banyak sudut).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b5.mjs.
  */
 import type { DefMesin, KasusMesin, LangkahMesin, StasiunDef } from "./mesin-bertahap-k3b1";
@@ -324,4 +329,89 @@ export const MESIN_GABUNGAN: DefMesin = {
   kasus: KASUS_GABUNGAN.map(kasusMesinGabungan),
 };
 
-export const SEMUA_MESIN_K5B5 = [MESIN_PETAK, MESIN_RUMUS, MESIN_GABUNGAN];
+/* ------------------------------ D: Mesin Kawat ------------------------------ */
+
+/** Kerangka dari kawat 60 cm: panjang p dan lebar l (p + l = 30). perlu: keperluan yang dihitung. */
+export type KasusKawat = {
+  id: string;
+  nama: string;
+  konteks: string;
+  p: number;
+  l: number;
+  perlu: "keliling" | "luas";
+  keperluan: string;
+};
+export const KASUS_KAWAT: KasusKawat[] = [
+  { id: "panjang", nama: "Kerangka Panjang", konteks: "Bapak membuat kerangka dari kawat 60 cm", p: 20, l: 10, perlu: "keliling", keperluan: "memagari kebun" },
+  { id: "pipih", nama: "Kerangka Pipih", konteks: "Bapak mencoba bentuk lain dari kawat yang sama", p: 25, l: 5, perlu: "luas", keperluan: "menutup lantai dengan ubin" },
+  { id: "sedang", nama: "Kerangka Sedang", konteks: "Bapak membuat bentuk ketiga dari kawat yang sama", p: 18, l: 12, perlu: "keliling", keperluan: "membuat kerangka dari kawat" },
+];
+
+export const STASIUN_KAWAT: StasiunDef[] = [
+  { id: "pasangan", nama: "Pasangan", ikon: "🧵" },
+  { id: "beda", nama: "Beda", ikon: "📊" },
+  { id: "terbesar", nama: "Terbesar", ikon: "🟦" },
+  { id: "pilih", nama: "Pilih", ikon: "🤔" },
+];
+
+/** Luas p kali l: dihitung dengan penjumlahan berulang. */
+export function luasKerangka(p: number, l: number): number {
+  let n = 0;
+  for (let i = 0; i < l; i += 1) n += p;
+  return n;
+}
+
+export function kasusMesinKawat(c: KasusKawat, idx: number): KasusMesin {
+  const L = luasKerangka(c.p, c.l);
+  const persegi = luasKerangka(15, 15);
+  const cm = (n: number) => `${n} cm`;
+  const cm2 = (n: number) => `${n} cm²`;
+  const benarPerlu = c.perlu === "keliling" ? "keliling, yaitu panjang di tepi" : "luas, yaitu daerah di dalam";
+  const lainPerlu = c.perlu === "keliling" ? "luas, yaitu daerah di dalam" : "keliling, yaitu panjang di tepi";
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "pasangan",
+      tanya: `${c.konteks}. Kerangkanya berbentuk persegi panjang dengan panjang ${c.p} cm. Dua kali panjang ditambah lebar sama dengan 60 cm, jadi panjang ditambah lebar 30 cm. Lebarnya adalah …`,
+      opsi: susunOpsi(cm(c.l), pengecoh(c.l, [60 - c.p, 30]).map(cm), idx),
+      benar: cm(c.l),
+      petunjuk: `Panjang ditambah lebar sama dengan 30, jadi lebarnya 30 dikurangi ${c.p}. Bukan 60 dikurangi ${c.p}.`,
+    },
+    {
+      stasiun: "beda",
+      tanya: `Kerangka dari kawat 60 cm itu berukuran ${c.p} cm kali ${c.l} cm. Luasnya adalah …`,
+      opsi: susunOpsi(cm2(L), pengecoh(L, [60, 30]).map(cm2), idx + 1),
+      benar: cm2(L),
+      petunjuk: `Luas persegi panjang adalah ${c.p} × ${c.l}. Angka 60 adalah keliling kawat, bukan luas.`,
+    },
+    {
+      stasiun: "terbesar",
+      tanya: `Kerangka ${c.p} cm kali ${c.l} cm dibandingkan dengan persegi 15 cm kali 15 cm dari kawat 60 cm yang sama. Yang luasnya lebih besar adalah …`,
+      opsi: susunOpsi("persegi 15 cm kali 15 cm, luasnya " + cm2(persegi), [`kerangka ${c.p} cm kali ${c.l} cm, luasnya ${cm2(L)}`, "sama besar, karena kelilingnya sama"], idx + 2),
+      benar: "persegi 15 cm kali 15 cm, luasnya " + cm2(persegi),
+      petunjuk: `Keliling sama belum tentu luas sama. Persegi luasnya ${persegi} cm², kerangka satunya ${L} cm². Bentuk yang mendekati persegi paling luas.`,
+    },
+    {
+      stasiun: "pilih",
+      tanya: `Untuk ${c.keperluan}, yang perlu dihitung adalah …`,
+      opsi: susunOpsi(benarPerlu, [lainPerlu, "banyak sudut bangun"], idx + 3),
+      benar: benarPerlu,
+      petunjuk: c.perlu === "keliling" ? "Pagar dan kawat dipasang di tepi, jadi yang dihitung panjang di tepi, yaitu keliling." : "Ubin menutupi daerah di dalam, jadi yang dihitung luas, bukan keliling.",
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `Kawat 60 cm membuat kerangka ${c.p} kali ${c.l}, luasnya ${L} cm². Persegi 15 kali 15 luasnya ${persegi} cm², lebih besar, padahal kelilingnya sama. Untuk ${c.keperluan} yang dihitung ${c.perlu}.`,
+    langkah,
+  };
+}
+
+export const MESIN_KAWAT: DefMesin = {
+  id: "mesin-kawat-k5b5",
+  judul: "Mesin Kawat",
+  selesaiId: "mesin-kawat",
+  stasiun: STASIUN_KAWAT,
+  kasus: KASUS_KAWAT.map(kasusMesinKawat),
+};
+
+export const SEMUA_MESIN_K5B5 = [MESIN_PETAK, MESIN_RUMUS, MESIN_GABUNGAN, MESIN_KAWAT];

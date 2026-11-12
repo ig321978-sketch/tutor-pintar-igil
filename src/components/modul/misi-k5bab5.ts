@@ -6,6 +6,7 @@
  *  A Petak : Lab Petak (Tutup, Baris, Potong) + Mesin Petak + Ubin Alun-Alun
  *  B Rumus : Lab Rumus (Kali, Setengah, Trapesium) + Mesin Rumus + Taman Bentuk-Bentuk
  *  C Gabungan : Lab Gabungan (Uraikan, Silang, Tumpang) + Mesin Gabungan + Denah Yohana dan Komang
+ *  D Kawat : Lab Kawat (Kawat, Pilih, Urut) + Mesin Kawat + Kawat Bapak (pencapaian bab)
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
@@ -13,17 +14,18 @@ import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanPetakK5B5A } from "./lab-petak-k5b5a";
 import type { KeadaanRumusK5B5B } from "./lab-rumus-k5b5b";
 import type { KeadaanGabunganK5B5C } from "./lab-gabungan-k5b5c";
+import type { KeadaanKawatK5B5D } from "./lab-kawat-k5b5d";
 
-export type KeadaanK5Bab5 = KeadaanPetakK5B5A | KeadaanRumusK5B5B | KeadaanGabunganK5B5C | KeadaanSelesai;
-export type HurufMisiK5B5 = "A" | "B" | "C";
+export type KeadaanK5Bab5 = KeadaanPetakK5B5A | KeadaanRumusK5B5B | KeadaanGabunganK5B5C | KeadaanKawatK5B5D | KeadaanSelesai;
+export type HurufMisiK5B5 = "A" | "B" | "C" | "D";
 
 const selesai = (k: KeadaanK5Bab5, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
 const pernah = (k: KeadaanK5Bab5, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K5B5 = { A: "ubin-alun", B: "taman-bentuk", C: "denah-yohana-komang" } as const;
-export const ID_MESIN_K5B5 = { A: "mesin-petak", B: "mesin-rumus", C: "mesin-gabungan" } as const;
+export const ID_SKENARIO_K5B5 = { A: "ubin-alun", B: "taman-bentuk", C: "denah-yohana-komang", D: "kawat-bapak" } as const;
+export const ID_MESIN_K5B5 = { A: "mesin-petak", B: "mesin-rumus", C: "mesin-gabungan", D: "mesin-kawat" } as const;
 
 export const MISI_A: DefMisi<KeadaanK5Bab5>[] = [
   { id: "a-tutup-lima", teks: "Di Tutup, tutup daerah lima petak dan dua petak sampai rapat, periksa tutupannya, lalu pilih luasnya.", wajib: true, cek: (k) => pernah(k, "petak", "tutup:0") },
@@ -64,5 +66,18 @@ export const MISI_C: DefMisi<KeadaanK5Bab5>[] = [
   { id: "c-silang-dua", teks: "Di Silang, hitung luas denah L kedua dengan cara satu dan cara dua, lalu periksa bahwa hasil kedua cara sama.", wajib: false, cek: (k) => pernah(k, "gabungan", "silang:1") },
 ];
 
-const DAFTAR: Record<HurufMisiK5B5, DefMisi<KeadaanK5Bab5>[]> = { A: MISI_A, B: MISI_B, C: MISI_C };
+export const MISI_D: DefMisi<KeadaanK5Bab5>[] = [
+  { id: "d-dua-puluh", teks: "Di Kawat, atur kerangka dua puluh dan sepuluh dari kawat enam puluh sentimeter, lalu catat bentuknya. Lihat luasnya.", wajib: true, cek: (k) => pernah(k, "kawat", "kawat:20") },
+  { id: "d-pipih", teks: "Di Kawat, atur kerangka dua puluh lima dan lima, lalu catat bentuknya. Kelilingnya sama, tetapi luasnya lebih kecil.", wajib: true, cek: (k) => pernah(k, "kawat", "kawat:25") },
+  { id: "d-persegi", teks: "Di Kawat, atur persegi lima belas dan lima belas, lalu catat bentuknya. Itulah luas terbesar.", wajib: true, cek: (k) => pernah(k, "kawat", "kawat:15") },
+  { id: "d-pilih", teks: "Di Pilih, tentukan untuk pagar kebun, ubin lantai, kerangka kawat, dan pasir lapangan, apakah yang dihitung keliling atau luas.", wajib: true, cek: (k) => pernah(k, "kawat", "pilih:0", "pilih:1", "pilih:2", "pilih:3") },
+  { id: "d-urut", teks: "Di Urut, urutkan kelima kerangka kawat dari luas terkecil sampai luas terbesar.", wajib: true, cek: (k) => pernah(k, "kawat", "urut:0") },
+  { id: "d-mesin", teks: "Selesaikan Mesin Kawat sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K5B5.D) },
+  { id: "d-skenario", teks: "Selesaikan skenario Kawat Bapak sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K5B5.D) },
+  { id: "d-delapan-belas", teks: "Di Kawat, atur kerangka delapan belas dan dua belas, lalu catat bentuknya.", wajib: false, cek: (k) => pernah(k, "kawat", "kawat:18") },
+  { id: "d-pipih-sekali", teks: "Di Kawat, atur kerangka dua puluh delapan dan dua, lalu catat bentuknya. Luasnya sangat kecil.", wajib: false, cek: (k) => pernah(k, "kawat", "kawat:28") },
+  { id: "d-dua-dua", teks: "Di Kawat, atur kerangka dua puluh dua dan delapan, lalu catat bentuknya.", wajib: false, cek: (k) => pernah(k, "kawat", "kawat:22") },
+];
+
+const DAFTAR: Record<HurufMisiK5B5, DefMisi<KeadaanK5Bab5>[]> = { A: MISI_A, B: MISI_B, C: MISI_C, D: MISI_D };
 export const daftarMisiK5Bab5 = (huruf: string): DefMisi<KeadaanK5Bab5>[] => DAFTAR[huruf as HurufMisiK5B5] ?? MISI_A;
