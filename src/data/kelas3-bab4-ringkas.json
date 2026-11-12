@@ -1,0 +1,175 @@
+{
+  "chapter_id": "mtk-3-bab4",
+  "phase_code": "FASE_B",
+  "grade": 3,
+  "subject": "Matematika",
+  "title": "Unsur-Unsur Bangun Datar",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": { "judul": "Garis dan Ruas Garis", "ikon": "📏", "suara": "Ini peta garis dan ruas garis. Kita belajar mengenali sinar garis, garis, dan ruas garis, mengukur ruas garis dalam sentimeter dan milimeter, dan menghitung sisi bangun datar. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "jenis-garis", "judul": "Jenis garis", "ikon": "📍", "ringkas": "Sinar, garis, dan ruas garis berbeda.", "suara": "Jenis garis. Sinar garis berpangkal di satu titik dan hanya dapat diperpanjang ke satu sisi. Garis dapat diperpanjang ke kedua sisi dan tidak punya ujung. Ruas garis punya dua titik ujung dan panjang tertentu." },
+          { "id": "dua-titik", "judul": "Dua titik", "ikon": "🔗", "ringkas": "Satu ruas lurus, banyak kurva.", "suara": "Dua titik. Dua titik berbeda hanya dapat dihubungkan oleh satu ruas garis lurus. Tetapi dua titik yang sama dapat dihubungkan oleh banyak kurva, yaitu garis lengkung." },
+          { "id": "ukur-ruas", "judul": "Mengukur ruas garis", "ikon": "0️⃣", "ringkas": "Mulai dari angka nol.", "suara": "Mengukur ruas garis. Letakkan titik awal tepat di angka nol penggaris, lalu baca angka di titik akhir. Garis kecil membagi satu sentimeter menjadi sepuluh milimeter, jadi satu sentimeter sama dengan sepuluh milimeter. Lima senti lima milimeter sama dengan lima koma lima sentimeter." },
+          { "id": "sisi", "judul": "Sisi bangun datar", "ikon": "🔺", "ringkas": "Ruas garis pembatas bangun dinamakan sisi.", "suara": "Sisi bangun datar. Ruas garis yang menjadi batas bangun datar dinamakan sisi. Segitiga memiliki tiga sisi, segiempat empat sisi, dan segilima lima sisi." }
+        ],
+        "kartu": [
+          { "id": "a-sinar", "teks": "Sinar garis: satu pangkal, satu sisi", "ikon": "🔦", "cabang": "jenis-garis", "petunjuk": "Pangkal dan arah garis itu soal jenis garis. Coba cabang lain." },
+          { "id": "a-garis", "teks": "Garis: dua sisi, tanpa ujung", "ikon": "🛤️", "cabang": "jenis-garis", "petunjuk": "Garis yang tidak punya ujung itu soal jenis garis. Coba cabang lain." },
+          { "id": "a-satu-ruas", "teks": "Dua titik: satu ruas lurus", "ikon": "➖", "cabang": "dua-titik", "petunjuk": "Menghubungkan dua titik itu soal dua titik. Coba cabang lain." },
+          { "id": "a-kurva", "teks": "Dua titik: banyak kurva", "ikon": "🌈", "cabang": "dua-titik", "petunjuk": "Banyak garis lengkung antara dua titik itu soal dua titik. Coba cabang lain." },
+          { "id": "a-nol", "teks": "Titik awal di angka 0", "ikon": "0️⃣", "cabang": "ukur-ruas", "petunjuk": "Tempat memulai mengukur itu soal mengukur ruas garis. Coba cabang lain." },
+          { "id": "a-cm-mm", "teks": "1 cm = 10 mm", "ikon": "🔬", "cabang": "ukur-ruas", "petunjuk": "Hubungan sentimeter dan milimeter itu soal mengukur ruas garis. Coba cabang lain." },
+          { "id": "a-segitiga", "teks": "Segitiga: 3 sisi", "ikon": "🔺", "cabang": "sisi", "petunjuk": "Menghitung sisi itu soal sisi bangun datar. Coba cabang lain." },
+          { "id": "a-segiempat", "teks": "Segiempat: 4 sisi", "ikon": "⬜", "cabang": "sisi", "petunjuk": "Menghitung sisi itu soal sisi bangun datar. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Garis, Ruas Garis, dan Ukurannya",
+        "suara": "Ini tiga panel tentang garis dan ruas garis. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-tiga-garis", "tipe": "buka", "judul": "Tiga jenis garis", "ide": "Pangkal dan ujung membedakannya.",
+            "suara": "Ada tiga jenis garis. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "sinar", "label": "Sinar garis", "ikon": "🔦", "isi": "Satu pangkal, satu arah.", "suara": "Sinar garis berpangkal di satu titik dan hanya dapat diperpanjang ke satu sisi, seperti sinar senter.", "visual": { "jenis": "teks", "isi": "A ●━━━━▶" } },
+              { "id": "garis", "label": "Garis", "ikon": "🛤️", "isi": "Dua arah, tanpa ujung.", "suara": "Garis dapat diperpanjang ke kedua sisi dan tidak punya ujung, seperti rel kereta api.", "visual": { "jenis": "teks", "isi": "◀━━━━━━▶" } },
+              { "id": "ruas", "label": "Ruas garis", "ikon": "📏", "isi": "Dua ujung, panjang tetap.", "suara": "Ruas garis punya dua titik ujung dan panjang tertentu. Panjangnya dapat diukur dengan penggaris.", "visual": { "jenis": "teks", "isi": "K ●━━━━● L" } }
+            ]
+          },
+          {
+            "id": "a-dua-titik", "tipe": "banding", "judul": "Dua titik P dan Q", "ide": "Satu ruas lurus, banyak kurva.",
+            "suara": "Bandingkan ruas garis dan kurva yang menghubungkan dua titik.",
+            "sisi": [
+              { "id": "ruas-lurus", "nama": "Ruas garis lurus", "ikon": "➖", "catatan": "Hanya ada satu.", "suara": "Dua titik berbeda hanya dapat dihubungkan oleh satu ruas garis lurus, yaitu PQ.", "visual": { "jenis": "teks", "isi": "P ●━━━━● Q: 1 ruas" } },
+              { "id": "kurva", "nama": "Kurva", "ikon": "🌈", "catatan": "Banyak sekali.", "suara": "Dua titik yang sama dapat dihubungkan oleh banyak kurva. Banyaknya tak terhingga.", "visual": { "jenis": "teks", "isi": "P ●⌒⌣⌒● Q: banyak kurva" } }
+            ],
+            "kesimpulan": "Ruas garis lurus hanya satu, tetapi kurva ada banyak."
+          },
+          {
+            "id": "a-ukuran", "tipe": "buka", "judul": "Sentimeter dan milimeter", "ide": "Satu cm sepuluh mm.",
+            "suara": "Ada tiga hal tentang ukuran ruas garis. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "garis-kecil", "label": "Garis kecil", "ikon": "🔬", "isi": "1 cm dibagi 10 bagian.", "suara": "Garis kecil membagi satu sentimeter menjadi sepuluh bagian. Tiap bagian satu milimeter. Jadi satu sentimeter sama dengan sepuluh milimeter.", "visual": { "jenis": "teks", "isi": "1 cm = 10 mm" } },
+              { "id": "lima-mm", "label": "5 mm", "ikon": "5️⃣", "isi": "Setengah sentimeter.", "suara": "Lima milimeter sama dengan nol koma lima sentimeter.", "visual": { "jenis": "teks", "isi": "5 mm = 0,5 cm" } },
+              { "id": "lima-lima", "label": "5 cm 5 mm", "ikon": "📏", "isi": "Sama dengan 55 mm.", "suara": "Lima sentimeter lima milimeter sama dengan lima puluh lima milimeter, atau lima koma lima sentimeter.", "visual": { "jenis": "teks", "isi": "5 cm 5 mm = 55 mm = 5,5 cm" } }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": { "judul": "Sudut", "ikon": "📐", "suara": "Ini peta sudut. Kita belajar bagian sudut, mengukurnya dengan busur derajat, dan mengenali jenis-jenis sudut. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "bagian-sudut", "judul": "Bagian sudut", "ikon": "📍", "ringkas": "Titik sudut di tengah, dua kaki.", "suara": "Bagian sudut. Pada sudut A O B, titik O adalah titik sudut dan sinar O A serta sinar O B adalah kaki sudut. Nama sudut ditulis dengan titik sudut di tengah." },
+          { "id": "busur-derajat", "judul": "Busur derajat", "ikon": "🧭", "ringkas": "Satuan baku sudut: derajat.", "suara": "Busur derajat. Sudut yang sama diukur dengan irisan besar dan irisan kecil memberi bilangan berbeda, jadi kita perlu satuan baku, yaitu derajat. Letakkan titik tengah busur di titik sudut dan garis nol di kaki pertama." },
+          { "id": "jenis-sudut", "judul": "Jenis sudut", "ikon": "🔺", "ringkas": "Bandingkan dengan sembilan puluh derajat.", "suara": "Jenis sudut. Sudut lancip kurang dari sembilan puluh derajat. Sudut siku-siku tepat sembilan puluh derajat. Sudut tumpul lebih dari sembilan puluh dan kurang dari seratus delapan puluh derajat. Sudut lurus tepat seratus delapan puluh derajat." },
+          { "id": "sudut-refleks", "judul": "Sudut refleks", "ikon": "🔄", "ringkas": "Pasangan sudut berjumlah 360°.", "suara": "Sudut refleks. Sudut refleks lebih dari seratus delapan puluh dan kurang dari tiga ratus enam puluh derajat. Busur derajat hanya sampai seratus delapan puluh, jadi kita baca sudut pasangannya. Tiga ratus enam puluh dikurangi sudut pasangan sama dengan sudut refleks." }
+        ],
+        "kartu": [
+          { "id": "b-titik-sudut", "teks": "Titik sudut O di tengah", "ikon": "📍", "cabang": "bagian-sudut", "petunjuk": "Nama bagian sudut itu soal bagian sudut. Coba cabang lain." },
+          { "id": "b-kaki", "teks": "Kaki: sinar OA dan OB", "ikon": "🦵", "cabang": "bagian-sudut", "petunjuk": "Garis yang membentuk sudut itu soal bagian sudut. Coba cabang lain." },
+          { "id": "b-irisan", "teks": "3 irisan besar = 6 irisan kecil", "ikon": "🍕", "cabang": "busur-derajat", "petunjuk": "Satuan yang berbeda itu soal perlunya busur derajat dan derajat. Coba cabang lain." },
+          { "id": "b-garis-nol", "teks": "Garis nol di kaki pertama", "ikon": "0️⃣", "cabang": "busur-derajat", "petunjuk": "Cara memakai busur itu soal busur derajat. Coba cabang lain." },
+          { "id": "b-siku", "teks": "Siku-siku: tepat 90°", "ikon": "📄", "cabang": "jenis-sudut", "petunjuk": "Ukuran dan nama sudut itu soal jenis sudut. Coba cabang lain." },
+          { "id": "b-lancip-tumpul", "teks": "Lancip kurang dari 90°, tumpul lebih", "ikon": "🔺", "cabang": "jenis-sudut", "petunjuk": "Membandingkan dengan 90° itu soal jenis sudut. Coba cabang lain." },
+          { "id": "b-pasangan", "teks": "360° − 60° = 300°", "ikon": "➖", "cabang": "sudut-refleks", "petunjuk": "Mencari sudut dari pasangannya itu soal sudut refleks. Coba cabang lain." },
+          { "id": "b-refleks", "teks": "Refleks: 180° sampai 360°", "ikon": "🔄", "cabang": "sudut-refleks", "petunjuk": "Rentang ukuran ini itu soal sudut refleks. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Sudut dan Ukurannya",
+        "suara": "Ini tiga panel tentang sudut. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "b-bagian", "tipe": "buka", "judul": "Bagian sudut", "ide": "Titik sudut dan dua kaki.",
+            "suara": "Sudut punya tiga hal penting. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "titik-sudut", "label": "Titik sudut", "ikon": "📍", "isi": "Tempat dua kaki bertemu.", "suara": "Pada sudut A O B, titik O adalah titik sudut. Di situ dua kaki bertemu.", "visual": { "jenis": "teks", "isi": "O = titik sudut" } },
+              { "id": "kaki", "label": "Kaki sudut", "ikon": "🦵", "isi": "Sinar OA dan sinar OB.", "suara": "Sinar O A dan sinar O B adalah kaki sudut.", "visual": { "jenis": "teks", "isi": "Kaki: OA dan OB" } },
+              { "id": "nama", "label": "Nama sudut", "ikon": "✍️", "isi": "Titik sudut di tengah.", "suara": "Nama sudut ditulis dengan titik sudut di tengah, yaitu sudut A O B. Simbolnya adalah sudut kecil di depan huruf.", "visual": { "jenis": "teks", "isi": "∠AOB atau ∠BOA" } }
+            ]
+          },
+          {
+            "id": "b-satuan-banding", "tipe": "banding", "judul": "Sudut yang sama, satuan berbeda", "ide": "Satuan baku diperlukan.",
+            "suara": "Bandingkan sudut sembilan puluh derajat yang diukur dengan irisan besar dan irisan kecil.",
+            "sisi": [
+              { "id": "besar", "nama": "Irisan besar", "ikon": "🍕", "catatan": "90° = 3 irisan.", "suara": "Dengan irisan besar tiga puluh derajat, sudut sembilan puluh derajat sama dengan tiga irisan.", "visual": { "jenis": "teks", "isi": "90° = 3 irisan besar" } },
+              { "id": "kecil", "nama": "Irisan kecil", "ikon": "🥧", "catatan": "90° = 6 irisan.", "suara": "Dengan irisan kecil lima belas derajat, sudut yang sama sama dengan enam irisan.", "visual": { "jenis": "teks", "isi": "90° = 6 irisan kecil" } }
+            ],
+            "kesimpulan": "Sudut yang sama menjadi bilangan berbeda. Karena itu kita pakai derajat."
+          },
+          {
+            "id": "b-jenis-info", "tipe": "buka", "judul": "Jenis-jenis sudut", "ide": "Bandingkan dengan 90° dan 180°.",
+            "suara": "Ada lima jenis sudut. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "lancip-siku", "label": "Lancip dan siku-siku", "ikon": "📄", "isi": "Kurang dari 90° dan tepat 90°.", "suara": "Sudut lancip kurang dari sembilan puluh derajat. Sudut siku-siku tepat sembilan puluh derajat, seperti pojok kertas lipat.", "visual": { "jenis": "teks", "isi": "lancip < 90°, siku-siku = 90°" } },
+              { "id": "tumpul-lurus", "label": "Tumpul dan lurus", "ikon": "↔️", "isi": "Antara 90° dan 180°, tepat 180°.", "suara": "Sudut tumpul lebih dari sembilan puluh dan kurang dari seratus delapan puluh derajat. Sudut lurus tepat seratus delapan puluh derajat, dua kali sudut siku-siku.", "visual": { "jenis": "teks", "isi": "tumpul: 90° sampai 180°, lurus = 180°" } },
+              { "id": "refleks-info", "label": "Refleks", "ikon": "🔄", "isi": "Lebih dari 180°, kurang dari 360°.", "suara": "Sudut refleks lebih dari seratus delapan puluh dan kurang dari tiga ratus enam puluh derajat. Sudut refleks tiga ratus derajat berpasangan dengan sudut lancip enam puluh derajat.", "visual": { "jenis": "teks", "isi": "300° dan 60° berjumlah 360°" } }
+            ]
+          }
+        ]
+      }
+    },
+    "C": {
+      "peta": {
+        "pusat": { "judul": "Garis dan Bangun", "ikon": "🛤️", "suara": "Ini peta garis tegak lurus, garis sejajar, dan bangun datar sederhana. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "tegak-lurus", "judul": "Tegak lurus", "ikon": "📐", "ringkas": "Bertemu pada sudut siku-siku.", "suara": "Garis tegak lurus. Dua garis yang bertemu pada sudut siku-siku disebut tegak lurus. A B tegak lurus B C ditulis dengan lambang tegak lurus. Pojok kertas lipat dipakai untuk memeriksanya, dan pertemuannya diberi tanda kotak kecil." },
+          { "id": "sejajar", "judul": "Sejajar", "ikon": "🛤️", "ringkas": "Jarak sama, tidak pernah bertemu.", "suara": "Garis sejajar. Garis sejajar jaraknya selalu sama dan tidak pernah bertemu. A B sejajar C D ditulis dengan lambang dua garis miring. Pada kertas berpetak, jarak di ujung kiri dan ujung kanan harus sama." },
+          { "id": "bukan-keduanya", "judul": "Bukan keduanya", "ikon": "❌", "ringkas": "Jarak berbeda atau bertemu miring.", "suara": "Bukan keduanya. Bila jarak di kedua ujung berbeda, garisnya bukan sejajar. Bila bertemu tetapi tidak pada sudut siku-siku, garisnya bukan tegak lurus. Dua garis yang berimpit hanya terlihat satu garis, jadi bukan dua garis sejajar." },
+          { "id": "bangun-datar", "judul": "Bangun datar", "ikon": "⬜", "ringkas": "Kenali dari sisi dan sudutnya.", "suara": "Bangun datar. Segitiga punya tiga sisi dan tiga sudut. Persegi panjang dan persegi punya empat sisi dan empat sudut siku-siku. Segilima punya lima sisi. Lingkaran dibatasi garis lengkung dan tidak punya sudut." }
+        ],
+        "kartu": [
+          { "id": "c-lambang-tegak", "teks": "AB ⊥ BC", "ikon": "⊥", "cabang": "tegak-lurus", "petunjuk": "Lambang ini dibaca tegak lurus. Itu soal garis tegak lurus. Coba cabang lain." },
+          { "id": "c-pojok", "teks": "Pojok kertas lipat memeriksa", "ikon": "📄", "cabang": "tegak-lurus", "petunjuk": "Memeriksa sudut siku-siku itu soal garis tegak lurus. Coba cabang lain." },
+          { "id": "c-lambang-sejajar", "teks": "EF // GH", "ikon": "⏩", "cabang": "sejajar", "petunjuk": "Lambang ini dibaca sejajar. Itu soal garis sejajar. Coba cabang lain." },
+          { "id": "c-jarak-sama", "teks": "Jarak 2 petak dan 2 petak", "ikon": "🧮", "cabang": "sejajar", "petunjuk": "Jarak yang sama di kedua ujung itu soal garis sejajar. Coba cabang lain." },
+          { "id": "c-jarak-beda", "teks": "Jarak 2 petak dan 4 petak", "ikon": "↔️", "cabang": "bukan-keduanya", "petunjuk": "Jarak yang berbeda berarti bukan sejajar. Itu soal bukan keduanya. Coba cabang lain." },
+          { "id": "c-miring", "teks": "Bertemu miring: bukan siku-siku", "ikon": "↗️", "cabang": "bukan-keduanya", "petunjuk": "Bertemu tetapi tidak siku-siku itu soal bukan keduanya. Coba cabang lain." },
+          { "id": "c-segitiga", "teks": "Segitiga: 3 sisi, 3 sudut", "ikon": "🔺", "cabang": "bangun-datar", "petunjuk": "Ciri bangun itu soal bangun datar. Coba cabang lain." },
+          { "id": "c-lingkaran", "teks": "Lingkaran: tanpa sudut", "ikon": "⭕", "cabang": "bangun-datar", "petunjuk": "Ciri bangun itu soal bangun datar. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Garis dan Bangun Datar",
+        "suara": "Ini tiga panel tentang garis dan bangun datar. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "c-hubungan", "tipe": "buka", "judul": "Dua garis dan lambangnya", "ide": "Tegak lurus dan sejajar.",
+            "suara": "Ada tiga hal tentang hubungan dua garis. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "tegak", "label": "Tegak lurus", "ikon": "📐", "isi": "Bertemu pada sudut siku-siku.", "suara": "Garis tegak lurus bertemu pada sudut siku-siku. Pertemuannya diberi tanda kotak kecil.", "visual": { "jenis": "teks", "isi": "AB ⊥ BC" } },
+              { "id": "sejajar", "label": "Sejajar", "ikon": "🛤️", "isi": "Jarak sama, tidak bertemu.", "suara": "Garis sejajar ditarik pada jarak yang selalu sama dan tidak pernah bertemu. Anak panah menandainya.", "visual": { "jenis": "teks", "isi": "AB // CD" } },
+              { "id": "lambang", "label": "Cara membaca", "ikon": "✍️", "isi": "⊥ tegak lurus, // sejajar.", "suara": "Lambang tegak lurus dibaca tegak lurus. Lambang dua garis miring dibaca sejajar.", "visual": { "jenis": "teks", "isi": "⊥ = tegak lurus, // = sejajar" } }
+            ]
+          },
+          {
+            "id": "c-jarak-banding", "tipe": "banding", "judul": "Jarak di kedua ujung", "ide": "Sejajar bila jaraknya sama.",
+            "suara": "Bandingkan dua pasang garis pada kertas berpetak.",
+            "sisi": [
+              { "id": "jarak-sama", "nama": "Jarak sama", "ikon": "✅", "catatan": "2 petak dan 2 petak: sejajar.", "suara": "Jarak di ujung kiri dua petak dan di ujung kanan dua petak. Jaraknya sama, jadi kedua garis sejajar.", "visual": { "jenis": "teks", "isi": "2 petak = 2 petak: sejajar" } },
+              { "id": "jarak-beda", "nama": "Jarak berbeda", "ikon": "❌", "catatan": "2 petak dan 4 petak: bukan.", "suara": "Jarak di ujung kiri dua petak dan di ujung kanan empat petak. Jaraknya berbeda, jadi kedua garis bukan sejajar.", "visual": { "jenis": "teks", "isi": "2 petak ≠ 4 petak: bukan sejajar" } }
+            ],
+            "kesimpulan": "Garis sejajar jaraknya selalu sama. Bila jarak berbeda, bukan sejajar."
+          },
+          {
+            "id": "c-bangun-info", "tipe": "buka", "judul": "Ciri bangun datar", "ide": "Hitung sisi dan sudutnya.",
+            "suara": "Bangun datar dikenali dari sisi dan sudutnya. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "tiga-lima", "label": "Segitiga dan segilima", "ikon": "🔺", "isi": "3 sisi 3 sudut, 5 sisi 5 sudut.", "suara": "Segitiga punya tiga sisi dan tiga sudut. Segilima punya lima sisi dan lima sudut.", "visual": { "jenis": "teks", "isi": "segitiga 3, segilima 5" } },
+              { "id": "empat", "label": "Persegi panjang dan persegi", "ikon": "⬜", "isi": "4 sisi, 4 sudut siku-siku.", "suara": "Persegi panjang punya empat sisi dan empat sudut siku-siku. Persegi punya empat sisi yang sama panjang.", "visual": { "jenis": "teks", "isi": "4 sisi, 4 sudut siku-siku" } },
+              { "id": "bulat", "label": "Lingkaran", "ikon": "⭕", "isi": "Garis lengkung, tanpa sudut.", "suara": "Lingkaran dibatasi garis lengkung dan tidak memiliki sudut.", "visual": { "jenis": "teks", "isi": "lingkaran: 0 sudut" } }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

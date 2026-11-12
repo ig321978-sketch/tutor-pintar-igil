@@ -32,4 +32,4 @@ Saat menambah bab SMISCPA: tulis komponen `SimulasiBabN` / `SimulasiK2BabN`, JSO
 
 Migrasi Kelas 2: Bab 1–8 sudah di `SIMULASI_MATERI` + `RINGKAS_BAB` (`SIMULASI_BAB` kosong). Seluruh Kelas 2 sudah memakai pola hibrida.
 
-Migrasi Kelas 3: Bab 1, Bab 2, dan Bab 3 sudah (`SimulasiK3Bab1`, `SimulasiK3Bab2`, `SimulasiK3Bab3`, dimuat malas lewat `next/dynamic` di registri), Bab 4–5 belum.
+Migrasi Kelas 3: Bab 1 sampai Bab 4 sudah (`SimulasiK3Bab1` sampai `SimulasiK3Bab4`, dimuat malas lewat `next/dynamic` di registri), Bab 5 belum.

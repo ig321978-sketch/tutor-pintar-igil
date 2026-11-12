@@ -1,4 +1,4 @@
-// Uji mesin skenario umum: Kelas 1 (Bab 1, 2, 3, 4, 6, 7), Kelas 2, dan Kelas 3 Bab 1 sampai 3.
+// Uji mesin skenario umum: Kelas 1 (Bab 1, 2, 3, 4, 6, 7), Kelas 2, dan Kelas 3 Bab 1 sampai 4.
 // Jalankan: node --no-warnings scripts/uji-skenario-umum.mjs
 import { awalSk, adeganSk, langkahSk, opsiHitung, semuaKetuk, ceritaSk } from "../src/components/modul/skenario-umum.ts";
 import { SKENARIO_BAB1, SKENARIO_BAB2, SKENARIO_BAB3, SKENARIO_BAB4, SKENARIO_BAB6, SKENARIO_BAB7 } from "../src/components/modul/skenario-kelas1.ts";
@@ -13,6 +13,7 @@ import { SKENARIO_K2B8B } from "../src/components/modul/skenario-k2b8.ts";
 import { SKENARIO_K3B1A, SKENARIO_K3B1B, SKENARIO_K3B1C, SKENARIO_K3B1D, SKENARIO_K3B1E, SKENARIO_K3B1F, SKENARIO_K3B1G } from "../src/components/modul/skenario-k3b1.ts";
 import { SKENARIO_K3B2A, SKENARIO_K3B2B } from "../src/components/modul/skenario-k3b2.ts";
 import { SKENARIO_K3B3A, SKENARIO_K3B3B, SKENARIO_K3B3C, SKENARIO_K3B3D } from "../src/components/modul/skenario-k3b3.ts";
+import { SKENARIO_K3B4A, SKENARIO_K3B4B, SKENARIO_K3B4C } from "../src/components/modul/skenario-k3b4.ts";
 
 let gagal = 0;
 let lulus = 0;
@@ -55,6 +56,9 @@ const SEMUA = [
   ["K3 Bab 3B", SKENARIO_K3B3B, 10000],
   ["K3 Bab 3C", SKENARIO_K3B3C, 5000],
   ["K3 Bab 3D", SKENARIO_K3B3D, 10000],
+  ["K3 Bab 4A", SKENARIO_K3B4A, 150],
+  ["K3 Bab 4B", SKENARIO_K3B4B, 360],
+  ["K3 Bab 4C", SKENARIO_K3B4C, 100],
 ];
 
 const OBJEK_SAH = new Set(["pesawat", "mobil", "boneka", "bola", "gasing", "bola-merah", "bola-kuning", "bola-hijau", "bola-biru", "kelereng-merah", "kelereng-kuning", "kelereng-hijau", "kelereng-biru", "jagung", "wortel", "brokoli", "kol", "jeruk", "apel", "mangga", "belimbing", "ayam", "bebek", "kelinci", "karet", "stik"]);
