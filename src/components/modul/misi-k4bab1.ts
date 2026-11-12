@@ -7,6 +7,8 @@
  *  B Nilai tempat          : Lab Nilai Tempat (Nilai, Uraian, Tabel)   + Mesin Nilai   + Struk Belanja Azizah
  *  C Membandingkan, urut   : Lab Banding (Dua Bilangan, Urut, Kartu)   + Mesin Banding + Harga di Pasar
  *  D Komposisi, dekomposisi: Lab Susun-Urai (Susun, Urai, Uang)        + Mesin Susun   + Uang Helen
+ *  E Penjumlahan sampai 1.000: Lab Jumlah Bersusun (Bersusun, Cara Panjang) + Mesin Jumlah + Jeruk Pak Toni
+ *  F Pengurangan sampai 1.000: Lab Kurang Bersusun (Bersusun, Cara Panjang, Periksa) + Mesin Kurang + Buku Perpustakaan
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
@@ -15,9 +17,11 @@ import type { KeadaanKemasanK4B1A } from "./lab-kemasan-k4b1a";
 import type { KeadaanNilaiK4B1B } from "./lab-nilai-k4b1b";
 import type { KeadaanBandingK4B1C } from "./lab-banding-k4b1c";
 import type { KeadaanSusunK4B1D } from "./lab-susun-k4b1d";
+import type { KeadaanJumlahK4B1E } from "./lab-jumlah-k4b1e";
+import type { KeadaanKurangK4B1F } from "./lab-kurang-k4b1f";
 
-export type KeadaanK4Bab1 = KeadaanKemasanK4B1A | KeadaanNilaiK4B1B | KeadaanBandingK4B1C | KeadaanSusunK4B1D | KeadaanSelesai;
-export type HurufMisiK4B1 = "A" | "B" | "C" | "D";
+export type KeadaanK4Bab1 = KeadaanKemasanK4B1A | KeadaanNilaiK4B1B | KeadaanBandingK4B1C | KeadaanSusunK4B1D | KeadaanJumlahK4B1E | KeadaanKurangK4B1F | KeadaanSelesai;
+export type HurufMisiK4B1 = "A" | "B" | "C" | "D" | "E" | "F";
 
 const selesai = (k: KeadaanK4Bab1, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
@@ -26,8 +30,8 @@ const pernah = (k: KeadaanK4Bab1, alat: string, ...id: string[]) => k.alat === a
 const banyakAwalan = (k: KeadaanK4Bab1, alat: string, awalan: string) => (k.alat === alat && "pernah" in k ? k.pernah.filter((p) => p.startsWith(awalan)).length : 0);
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K4B1 = { A: "helen-minimarket", B: "struk-azizah", C: "harga-pasar", D: "uang-helen" } as const;
-export const ID_MESIN_K4B1 = { A: "mesin-baca", B: "mesin-nilai", C: "mesin-banding", D: "mesin-susun" } as const;
+export const ID_SKENARIO_K4B1 = { A: "helen-minimarket", B: "struk-azizah", C: "harga-pasar", D: "uang-helen", E: "jeruk-pak-toni", F: "buku-perpustakaan" } as const;
+export const ID_MESIN_K4B1 = { A: "mesin-baca", B: "mesin-nilai", C: "mesin-banding", D: "mesin-susun", E: "mesin-jumlah", F: "mesin-kurang" } as const;
 
 export const MISI_A: DefMisi<KeadaanK4Bab1>[] = [
   { id: "a-tukar", teks: "Di Rakit, tambah dus sampai sepuluh dan lihat sepuluh dus ditukar menjadi satu peti.", wajib: true, cek: (k) => pernah(k, "kemasan", "tukar:dus") },
@@ -81,4 +85,31 @@ export const MISI_D: DefMisi<KeadaanK4Bab1>[] = [
   { id: "d-9999", teks: "Di Susun, buat bilangan 9.999.", wajib: false, cek: (k) => pernah(k, "susun", "susun:9999") },
 ];
 
-export const daftarMisiK4Bab1 = (huruf: string): DefMisi<KeadaanK4Bab1>[] => (huruf === "B" ? MISI_B : huruf === "C" ? MISI_C : huruf === "D" ? MISI_D : MISI_A);
+export const MISI_E: DefMisi<KeadaanK4Bab1>[] = [
+  { id: "e-tanpa", teks: "Di Bersusun, selesaikan 131 + 321 kolom demi kolom.", wajib: true, cek: (k) => pernah(k, "jumlah", "jumlah:131+321") },
+  { id: "e-simpan", teks: "Selesaikan 189 + 245 dengan menyimpan di tempat yang tepat.", wajib: true, cek: (k) => pernah(k, "jumlah", "jumlah:189+245") },
+  { id: "e-lupa", teks: "Coba tekan Tulis tanpa simpanan pada kolom yang jumlahnya sepuluh atau lebih. Baca penjelasan lab.", wajib: true, cek: (k) => pernah(k, "jumlah", "lupa-simpan") },
+  { id: "e-panjang", teks: "Nyalakan Cara Panjang untuk 189 + 245. Bandingkan dengan hasil bersusun.", wajib: true, cek: (k) => pernah(k, "jumlah", "panjang:189+245") },
+  { id: "e-tiga", teks: "Selesaikan 124 + 411 + 363 bersusun.", wajib: true, cek: (k) => pernah(k, "jumlah", "tiga:898") },
+  { id: "e-mesin", teks: "Selesaikan Mesin Jumlah sampai semua soal diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B1.E) },
+  { id: "e-skenario", teks: "Selesaikan skenario Jeruk Pak Toni sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B1.E) },
+  { id: "e-907", teks: "Selesaikan 328 + 579. Berapa kali menyimpan?", wajib: false, cek: (k) => pernah(k, "jumlah", "jumlah:328+579") },
+  { id: "e-seribu", teks: "Selesaikan penjumlahan yang hasilnya tepat 1.000.", wajib: false, cek: (k) => pernah(k, "jumlah", "jumlah-1000") },
+  { id: "e-lele", teks: "Selesaikan 117 + 105 + 242 (ikan lele).", wajib: false, cek: (k) => pernah(k, "jumlah", "tiga:464") },
+];
+
+export const MISI_F: DefMisi<KeadaanK4Bab1>[] = [
+  { id: "f-tanpa", teks: "Di Bersusun, selesaikan 265 − 132 tanpa mengambil.", wajib: true, cek: (k) => pernah(k, "kurang", "kurang:265-132") },
+  { id: "f-ambil", teks: "Selesaikan 241 − 129 dengan mengambil 1 puluhan.", wajib: true, cek: (k) => pernah(k, "kurang", "kurang:241-129") },
+  { id: "f-dua", teks: "Selesaikan 253 − 176 dengan dua kali mengambil.", wajib: true, cek: (k) => pernah(k, "kurang", "ambil-dua:253-176") },
+  { id: "f-balik", teks: "Pada 241 − 129, coba tulis hasil 9 − 1 di satuan. Baca mengapa lab menolaknya.", wajib: true, cek: (k) => pernah(k, "kurang", "balik-salah") },
+  { id: "f-periksa", teks: "Setelah 241 − 129 selesai, tekan Periksa: hasil ditambah pengurang.", wajib: true, cek: (k) => pernah(k, "kurang", "periksa:241-129") },
+  { id: "f-mesin", teks: "Selesaikan Mesin Kurang sampai semua soal diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B1.F) },
+  { id: "f-skenario", teks: "Selesaikan skenario Buku Perpustakaan sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B1.F) },
+  { id: "f-66", teks: "Selesaikan 241 − 175. Berapa kali mengambil?", wajib: false, cek: (k) => pernah(k, "kurang", "kurang:241-175") },
+  { id: "f-nol", teks: "Selesaikan 304 − 128. Puluhannya 0: dari mana satuan mengambil?", wajib: false, cek: (k) => pernah(k, "kurang", "kurang:304-128") },
+  { id: "f-seribu", teks: "Selesaikan 1.000 − 1. Berapa kali mengambil?", wajib: false, cek: (k) => pernah(k, "kurang", "kurang:1000-1") },
+];
+
+const DAFTAR: Record<HurufMisiK4B1, DefMisi<KeadaanK4Bab1>[]> = { A: MISI_A, B: MISI_B, C: MISI_C, D: MISI_D, E: MISI_E, F: MISI_F };
+export const daftarMisiK4Bab1 = (huruf: string): DefMisi<KeadaanK4Bab1>[] => DAFTAR[huruf as HurufMisiK4B1] ?? MISI_A;

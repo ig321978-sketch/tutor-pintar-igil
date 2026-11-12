@@ -225,6 +225,116 @@
           }
         ]
       }
+    },
+    "E": {
+      "peta": {
+        "pusat": { "judul": "Penjumlahan sampai 1.000", "ikon": "➕", "suara": "Ini peta penjumlahan sampai seribu. Kita belajar menjumlahkan dari satuan, menyimpan, cara panjang, dan menjumlahkan tiga bilangan. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "dari-satuan", "judul": "Mulai dari satuan", "ikon": "➡️", "ringkas": "Satuan dulu, lalu puluhan, lalu ratusan.", "suara": "Mulai dari satuan. Penjumlahan bersusun dikerjakan dari kanan: satuan dulu, lalu puluhan, lalu ratusan. Seratus tiga puluh satu ditambah tiga ratus dua puluh satu sama dengan empat ratus lima puluh dua." },
+          { "id": "menyimpan", "judul": "Menyimpan", "ikon": "1️⃣", "ringkas": "Sepuluh atau lebih: tulis satuannya, simpan satu.", "suara": "Menyimpan. Bila jumlah satu tempat sepuluh atau lebih, tulis satuannya dan simpan satu ke tempat di kirinya. Sembilan ditambah lima sama dengan empat belas: tulis empat, simpan satu." },
+          { "id": "cara-panjang", "judul": "Cara panjang", "ikon": "📜", "ringkas": "Urai, jumlahkan tiap tempat, lalu gabung.", "suara": "Cara panjang. Urai kedua bilangan, jumlahkan tiap tempat, lalu gabungkan. Hasilnya sama dengan cara bersusun pendek." },
+          { "id": "tiga-bilangan", "judul": "Tiga bilangan", "ikon": "3️⃣", "ringkas": "Jumlahkan bertahap atau bersusun bersama.", "suara": "Tiga bilangan. Seratus dua puluh empat, empat ratus sebelas, dan tiga ratus enam puluh tiga dijumlahkan menjadi delapan ratus sembilan puluh delapan." }
+        ],
+        "kartu": [
+          { "id": "e-kanan", "teks": "Kerjakan dari kanan", "ikon": "➡️", "cabang": "dari-satuan", "petunjuk": "Arah mengerjakan itu soal mulai dari satuan. Coba cabang lain." },
+          { "id": "e-452", "teks": "131 + 321 = 452", "ikon": "🌳", "cabang": "dari-satuan", "petunjuk": "Penjumlahan tanpa menyimpan itu soal mulai dari satuan. Coba cabang lain." },
+          { "id": "e-14", "teks": "9 + 5 = 14: tulis 4, simpan 1", "ikon": "1️⃣", "cabang": "menyimpan", "petunjuk": "Menulis satuan dan menyimpan itu soal menyimpan. Coba cabang lain." },
+          { "id": "e-434", "teks": "189 + 245 = 434", "ikon": "🍊", "cabang": "menyimpan", "petunjuk": "Penjumlahan dengan dua kali menyimpan itu soal menyimpan. Coba cabang lain." },
+          { "id": "e-urai", "teks": "100 + 300, 30 + 20, 1 + 1", "ikon": "📜", "cabang": "cara-panjang", "petunjuk": "Menjumlahkan tiap tempat itu soal cara panjang. Coba cabang lain." },
+          { "id": "e-gabung", "teks": "400 + 50 + 2 = 452", "ikon": "🧩", "cabang": "cara-panjang", "petunjuk": "Menggabungkan hasil tiap tempat itu soal cara panjang. Coba cabang lain." },
+          { "id": "e-898", "teks": "124 + 411 + 363 = 898", "ikon": "📚", "cabang": "tiga-bilangan", "petunjuk": "Menjumlahkan tiga bilangan itu soal tiga bilangan. Coba cabang lain." },
+          { "id": "e-dua-dua", "teks": "Boleh dua-dua dulu", "ikon": "3️⃣", "cabang": "tiga-bilangan", "petunjuk": "Cara bertahap itu soal tiga bilangan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Penjumlahan sampai 1.000",
+        "suara": "Ini tiga panel tentang penjumlahan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "e-langkah", "tipe": "buka", "judul": "Langkah bersusun", "ide": "Dari satuan ke ratusan.",
+            "suara": "Ada tiga langkah penjumlahan bersusun seratus delapan puluh sembilan ditambah dua ratus empat puluh lima. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "satuan", "label": "Satuan", "ikon": "🔴", "isi": "9 + 5 = 14, simpan 1.", "suara": "Satuan: sembilan ditambah lima sama dengan empat belas. Tulis empat, simpan satu ke puluhan.", "visual": { "jenis": "teks", "isi": "9 + 5 = 14 → tulis 4, simpan 1" } },
+              { "id": "puluhan", "label": "Puluhan", "ikon": "🔵", "isi": "8 + 4 + 1 = 13, simpan 1.", "suara": "Puluhan: delapan ditambah empat ditambah satu simpanan sama dengan tiga belas. Tulis tiga, simpan satu ke ratusan.", "visual": { "jenis": "teks", "isi": "8 + 4 + 1 = 13 → tulis 3, simpan 1" } },
+              { "id": "ratusan", "label": "Ratusan", "ikon": "🟢", "isi": "1 + 2 + 1 = 4.", "suara": "Ratusan: satu ditambah dua ditambah satu simpanan sama dengan empat. Hasilnya empat ratus tiga puluh empat.", "visual": { "jenis": "teks", "isi": "189 + 245 = 434" } }
+            ]
+          },
+          {
+            "id": "e-simpan-banding", "tipe": "banding", "judul": "Menyimpan atau lupa", "ide": "Simpanan harus ikut dijumlahkan.",
+            "suara": "Bandingkan dua hasil seratus delapan puluh sembilan ditambah dua ratus empat puluh lima.",
+            "sisi": [
+              { "id": "simpan", "nama": "Dengan menyimpan", "ikon": "✅", "catatan": "Hasil 434. Benar.", "suara": "Dengan menyimpan, hasilnya empat ratus tiga puluh empat. Ini benar.", "visual": { "jenis": "teks", "isi": "189 + 245 = 434" } },
+              { "id": "lupa", "nama": "Lupa menyimpan", "ikon": "❌", "catatan": "Hasil 324. Keliru.", "suara": "Bila simpanan lupa dijumlahkan, hasilnya tiga ratus dua puluh empat. Itu keliru.", "visual": { "jenis": "teks", "isi": "324 ✗" } }
+            ],
+            "kesimpulan": "Simpanan satu selalu ikut dijumlahkan di tempat berikutnya."
+          },
+          {
+            "id": "e-cara", "tipe": "buka", "judul": "Dua cara, satu hasil", "ide": "Cara panjang dan pendek sama hasilnya.",
+            "suara": "Ada tiga hal tentang cara menjumlahkan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "panjang", "label": "Cara panjang", "ikon": "📜", "isi": "400 + 50 + 2.", "suara": "Cara panjang seratus tiga puluh satu ditambah tiga ratus dua puluh satu: empat ratus ditambah lima puluh ditambah dua.", "visual": { "jenis": "teks", "isi": "131 + 321 = 400 + 50 + 2 = 452" } },
+              { "id": "pendek", "label": "Cara pendek", "ikon": "⬇️", "isi": "Bersusun dari satuan.", "suara": "Cara pendek: tulis bersusun, jumlahkan dari satuan. Hasilnya sama, empat ratus lima puluh dua.", "visual": { "jenis": "teks", "isi": "1 + 1, 3 + 2, 1 + 3 → 452" } },
+              { "id": "tiga", "label": "Tiga bilangan", "ikon": "📚", "isi": "124 + 411 + 363.", "suara": "Seratus dua puluh empat ditambah empat ratus sebelas ditambah tiga ratus enam puluh tiga sama dengan delapan ratus sembilan puluh delapan.", "visual": { "jenis": "teks", "isi": "124 + 411 + 363 = 898" } }
+            ]
+          }
+        ]
+      }
+    },
+    "F": {
+      "peta": {
+        "pusat": { "judul": "Pengurangan sampai 1.000", "ikon": "➖", "suara": "Ini peta pengurangan sampai seribu. Kita belajar mengurangkan dari satuan, mengambil dari kiri, mengambil dua kali, dan memeriksa dengan penjumlahan. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "dari-satuan", "judul": "Mulai dari satuan", "ikon": "➡️", "ringkas": "Kurangkan dari kanan ke kiri.", "suara": "Mulai dari satuan. Pengurangan bersusun dikerjakan dari kanan. Dua ratus enam puluh lima dikurangi seratus tiga puluh dua sama dengan seratus tiga puluh tiga." },
+          { "id": "mengambil", "judul": "Mengambil", "ikon": "↩️", "ringkas": "Tidak cukup? Ambil satu dari kiri.", "suara": "Mengambil. Bila angka atas lebih kecil dari angka bawah, ambil satu dari tempat di kirinya. Satu puluhan menjadi sepuluh satuan. Satu menjadi sebelas, lalu sebelas dikurangi sembilan sama dengan dua." },
+          { "id": "dua-kali", "judul": "Dua kali mengambil", "ikon": "2️⃣", "ringkas": "Ambil puluhan, lalu ambil ratusan.", "suara": "Dua kali mengambil. Dua ratus lima puluh tiga dikurangi seratus tujuh puluh enam perlu mengambil di satuan dan di puluhan. Hasilnya tujuh puluh tujuh." },
+          { "id": "periksa", "judul": "Periksa", "ikon": "🔍", "ringkas": "Hasil ditambah pengurang sama dengan awal.", "suara": "Periksa. Hasil ditambah bilangan pengurang harus kembali ke bilangan awal. Seratus dua belas ditambah seratus dua puluh sembilan sama dengan dua ratus empat puluh satu." }
+        ],
+        "kartu": [
+          { "id": "f-kanan", "teks": "Kerjakan dari kanan", "ikon": "➡️", "cabang": "dari-satuan", "petunjuk": "Arah mengerjakan itu soal mulai dari satuan. Coba cabang lain." },
+          { "id": "f-133", "teks": "265 − 132 = 133", "ikon": "📚", "cabang": "dari-satuan", "petunjuk": "Pengurangan tanpa mengambil itu soal mulai dari satuan. Coba cabang lain." },
+          { "id": "f-11", "teks": "1 menjadi 11, lalu 11 − 9 = 2", "ikon": "↩️", "cabang": "mengambil", "petunjuk": "Mengambil satu puluhan itu soal mengambil. Coba cabang lain." },
+          { "id": "f-bukan-8", "teks": "Bukan 9 − 1 = 8", "ikon": "🚫", "cabang": "mengambil", "petunjuk": "Kesalahan membalik angka itu soal mengambil. Coba cabang lain." },
+          { "id": "f-77", "teks": "253 − 176 = 77", "ikon": "2️⃣", "cabang": "dua-kali", "petunjuk": "Mengambil di dua tempat itu soal dua kali mengambil. Coba cabang lain." },
+          { "id": "f-ratusan", "teks": "Puluhan juga mengambil dari ratusan", "ikon": "🟢", "cabang": "dua-kali", "petunjuk": "Mengambil di puluhan itu soal dua kali mengambil. Coba cabang lain." },
+          { "id": "f-cek", "teks": "112 + 129 = 241", "ikon": "🔍", "cabang": "periksa", "petunjuk": "Memeriksa dengan penjumlahan itu soal periksa. Coba cabang lain." },
+          { "id": "f-cek-66", "teks": "66 + 175 = 241", "ikon": "✅", "cabang": "periksa", "petunjuk": "Memeriksa dengan penjumlahan itu soal periksa. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Pengurangan sampai 1.000",
+        "suara": "Ini tiga panel tentang pengurangan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "f-langkah", "tipe": "buka", "judul": "Langkah mengambil", "ide": "Satu puluhan menjadi sepuluh satuan.",
+            "suara": "Ada tiga langkah dua ratus empat puluh satu dikurangi seratus dua puluh sembilan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "satuan", "label": "Satuan", "ikon": "🔴", "isi": "1 kurang dari 9, ambil 1 puluhan.", "suara": "Satuan satu lebih kecil dari sembilan. Ambil satu puluhan, satuan menjadi sebelas. Sebelas dikurangi sembilan sama dengan dua.", "visual": { "jenis": "teks", "isi": "11 − 9 = 2" } },
+              { "id": "puluhan", "label": "Puluhan", "ikon": "🔵", "isi": "Tinggal 3, lalu 3 − 2 = 1.", "suara": "Puluhan empat tinggal tiga karena satu diambil. Tiga dikurangi dua sama dengan satu.", "visual": { "jenis": "teks", "isi": "3 − 2 = 1" } },
+              { "id": "ratusan", "label": "Ratusan", "ikon": "🟢", "isi": "2 − 1 = 1.", "suara": "Ratusan: dua dikurangi satu sama dengan satu. Hasilnya seratus dua belas.", "visual": { "jenis": "teks", "isi": "241 − 129 = 112" } }
+            ]
+          },
+          {
+            "id": "f-balik-banding", "tipe": "banding", "judul": "Mengambil atau membalik", "ide": "Jangan membalik angka atas dan bawah.",
+            "suara": "Bandingkan dua cara menghitung satuan dua ratus empat puluh satu dikurangi seratus dua puluh sembilan.",
+            "sisi": [
+              { "id": "ambil", "nama": "Mengambil", "ikon": "✅", "catatan": "11 − 9 = 2. Benar.", "suara": "Ambil satu puluhan. Sebelas dikurangi sembilan sama dengan dua. Hasil akhirnya seratus dua belas. Ini benar.", "visual": { "jenis": "teks", "isi": "241 − 129 = 112" } },
+              { "id": "balik", "nama": "Membalik", "ikon": "❌", "catatan": "9 − 1 = 8. Keliru.", "suara": "Membalik menjadi sembilan dikurangi satu itu keliru. Angka bawah dikurangkan dari angka atas.", "visual": { "jenis": "teks", "isi": "128 ✗" } }
+            ],
+            "kesimpulan": "Bila angka atas kurang, ambil satu dari kiri. Jangan dibalik."
+          },
+          {
+            "id": "f-periksa", "tipe": "buka", "judul": "Periksa dengan penjumlahan", "ide": "Hasil ditambah pengurang sama dengan awal.",
+            "suara": "Ada tiga hal tentang memeriksa pengurangan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "112", "label": "241 − 129", "ikon": "🔍", "isi": "112 + 129 = 241.", "suara": "Seratus dua belas ditambah seratus dua puluh sembilan sama dengan dua ratus empat puluh satu. Benar.", "visual": { "jenis": "teks", "isi": "112 + 129 = 241" } },
+              { "id": "77", "label": "253 − 176", "ikon": "2️⃣", "isi": "77 + 176 = 253.", "suara": "Tujuh puluh tujuh ditambah seratus tujuh puluh enam sama dengan dua ratus lima puluh tiga. Benar.", "visual": { "jenis": "teks", "isi": "77 + 176 = 253" } },
+              { "id": "66", "label": "241 − 175", "ikon": "✅", "isi": "66 + 175 = 241.", "suara": "Enam puluh enam ditambah seratus tujuh puluh lima sama dengan dua ratus empat puluh satu. Benar.", "visual": { "jenis": "teks", "isi": "66 + 175 = 241" } }
+            ]
+          }
+        ]
+      }
     }
   }
 }

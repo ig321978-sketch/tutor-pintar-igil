@@ -9,6 +9,10 @@ import * as A from "../src/components/modul/lab-kemasan-k4b1a.ts";
 import * as B from "../src/components/modul/lab-nilai-k4b1b.ts";
 import * as C from "../src/components/modul/lab-banding-k4b1c.ts";
 import * as D from "../src/components/modul/lab-susun-k4b1d.ts";
+import * as J from "../src/components/modul/lab-jumlah-k4b1e.ts";
+import * as KR from "../src/components/modul/lab-kurang-k4b1f.ts";
+import * as MH from "../src/components/modul/mesin-data-k4b1-hitung.ts";
+import * as SH from "../src/components/modul/skenario-k4b1-hitung.ts";
 import * as ME from "../src/components/modul/mesin-bertahap-k3b1.ts";
 import * as MB from "../src/components/modul/mesin-data-k4b1-bilangan.ts";
 import * as SB from "../src/components/modul/skenario-k4b1-bilangan.ts";
@@ -400,6 +404,231 @@ function aturUang(x, target, u) {
   cek(ok2, "fuzz 20.000 aksi lab susun: tidak negatif, tidak lewat 10.000, riwayat tidak dicabut");
 }
 
+/* ------------------------------ Lab Jumlah Bersusun (E) ------------------------------ */
+const ej = (x, ...ak) => ak.reduce((s, a) => J.langkahJumlahK4B1E(s, a), x);
+const kj = J.keadaanJumlahK4B1E;
+const ds = (n) => String(n).split("").reduce((s, c) => s + Number(c), 0);
+function aturDigitE(x, target) {
+  let s = x;
+  for (let g = 0; g < 10 && s.digit !== target; g += 1) s = ej(s, { t: "DIGIT", d: 1 });
+  return s;
+}
+function selesaikanE(x) {
+  let s = x;
+  for (let g = 0; g < 5 && !J.selesaiE(s); g += 1) {
+    const r = J.rincianKolom(s.soal)[s.kolom];
+    s = ej(aturDigitE(s, r.tulis), { t: "SIMPAN", n: r.keluar }, { t: "TULIS" });
+  }
+  return s;
+}
+const sampaiKolomE = (x, c) => {
+  let s = x;
+  while (s.kolom < c) {
+    const r = J.rincianKolom(s.soal)[s.kolom];
+    s = ej(aturDigitE(s, r.tulis), { t: "SIMPAN", n: r.keluar }, { t: "TULIS" });
+  }
+  return s;
+};
+const pilihE = (x, kunci) => ej(x, { t: "SOAL", i: J.SOAL_E.findIndex((s) => J.kunciSoal(s) === kunci) });
+const stateE = (x, soal) => ({ ...x, soal, kolom: 0, tulis: [null, null, null, null], digit: 0, simpan: 0 });
+{
+  const e0 = J.awalJumlahK4B1E();
+  cek(J.kunciSoal(e0.soal) === "131+321" && e0.kolom === 0 && e0.pernah.length === 0 && e0.tulis.every((v) => v === null) && !e0.panjang, "E awal: 131 + 321, kolom satuan, tanpa riwayat");
+  // Semua pasangan a + b <= 1.000 dibandingkan hitungan mandiri (identitas jumlah angka: simpanan = (ds(a) + ds(b) - ds(a+b)) / 9).
+  let okRinci = true;
+  let okSimpan = true;
+  let pasangan = 0;
+  for (let a = 0; a <= 999; a += 1)
+    for (let b = 0; b <= 999 && a + b <= 1000; b += 1) {
+      pasangan += 1;
+      const r = J.rincianKolom([a, b]);
+      const total = a + b;
+      if (r[0].tulis + r[1].tulis * 10 + r[2].tulis * 100 + r[2].keluar * 1000 !== total) okRinci = false;
+      if (r.reduce((s, k) => s + k.keluar, 0) * 9 !== ds(a) + ds(b) - ds(total)) okSimpan = false;
+    }
+  cek(okRinci, `rincian kolom: ${pasangan} pasangan, angka yang ditulis dan simpanan menyusun jumlah yang benar`);
+  cek(okSimpan, "jumlah simpanan sama dengan identitas jumlah angka (hitungan mandiri) untuk semua pasangan");
+  const ac = acakDari(61);
+  let okTiga = true;
+  for (let k = 0; k < 100000; k += 1) {
+    const s = [ac(500), ac(500), ac(500)];
+    const total = s[0] + s[1] + s[2];
+    if (total > 1000) continue;
+    const r = J.rincianKolom(s);
+    if (r[0].tulis + r[1].tulis * 10 + r[2].tulis * 100 + r[2].keluar * 1000 !== total || r.reduce((q, c) => q + c.keluar, 0) * 9 !== ds(s[0]) + ds(s[1]) + ds(s[2]) - ds(total)) okTiga = false;
+  }
+  cek(okTiga, "tiga bilangan: rincian kolom dan simpanan benar untuk 100.000 acak");
+  // Menyelesaikan lewat tombol untuk 3.000 soal acak.
+  let okSolve = true;
+  for (let k = 0; k < 3000; k += 1) {
+    const dua = ac(2) === 0;
+    const soal = dua ? [ac(1000), ac(1000)] : [ac(334), ac(333), ac(333)];
+    if (soal.reduce((p, q) => p + q, 0) > 1000) continue;
+    const s = selesaikanE(stateE(e0, soal));
+    const total = soal.reduce((p, q) => p + q, 0);
+    const tulis = s.tulis[0] + s.tulis[1] * 10 + s.tulis[2] * 100 + (s.tulis[3] ?? 0) * 1000;
+    let carry = 0;
+    let banyak = 0;
+    for (let c = 0; c < 3; c += 1) {
+      const sum = soal.reduce((p, q) => p + (Math.floor(q / 10 ** c) % 10), 0) + carry;
+      if (sum >= 10) banyak += 1;
+      carry = Math.floor(sum / 10);
+    }
+    if (!J.selesaiE(s) || tulis !== total || !s.pernah.includes(`jumlah:${soal.join("+")}`) || s.pernah.includes("simpan-dua") !== (banyak >= 2) || s.pernah.includes("jumlah-1000") !== (total === 1000)) okSolve = false;
+  }
+  cek(okSolve, "3.000 soal acak diselesaikan lewat tombol: hasil, riwayat jumlah, simpan-dua, dan jumlah-1000 benar");
+  // Salah dan benar per kolom: tepat satu (angka, simpanan) yang diterima.
+  for (const soal of J.SOAL_E)
+    for (let c = 0; c < 3; c += 1) {
+      const awal = sampaiKolomE(stateE(e0, soal), c);
+      let diterima = 0;
+      let okPesan = true;
+      for (let d = 0; d <= 9; d += 1)
+        for (let sm = 0; sm <= 2; sm += 1) {
+          const s = ej({ ...awal, digit: d, simpan: sm }, { t: "TULIS" });
+          const r = J.rincianKolom(soal)[c];
+          const benar = d === r.tulis && sm === r.keluar;
+          if (s.kolom === c + 1) diterima += benar ? 1 : 100;
+          else if (benar || s.kolom !== c || s.pesan.length < 10) okPesan = false;
+          if (d === r.tulis && sm < r.keluar && !s.pernah.includes("lupa-simpan")) okPesan = false;
+          if (d === r.tulis && sm > r.keluar && r.keluar > 0 && /Kurang dari sepuluh/.test(s.pesan)) okPesan = false;
+          if (d === r.tulis && sm > r.keluar && r.keluar === 0 && !/Kurang dari sepuluh/.test(s.pesan)) okPesan = false;
+        }
+      cek(diterima === 1 && okPesan, `${soal.join("+")} kolom ${J.TEMPAT_E[c]}: tepat satu pasangan angka dan simpanan diterima, yang lain ditolak dengan pesan`);
+    }
+  // ATUR, batas, dan SIMPAN.
+  const s1000 = pilihE(e0, "456+544");
+  cek(J.jumlahSoal(s1000.soal) === 1000, "456 + 544 = 1.000");
+  const lewat = ej(s1000, { t: "ATUR", suku: 0, c: 0, d: 1 });
+  cek(J.jumlahSoal(lewat.soal) === 1000 && lewat.pesan.includes("paling banyak"), "jumlah tidak boleh lewat 1.000");
+  const turun = ej(s1000, { t: "ATUR", suku: 0, c: 0, d: -1 });
+  cek(J.jumlahSoal(turun.soal) === 999 && turun.kolom === 0, "mengubah bilangan mengulang pengerjaan dari kolom satuan");
+  cek(ej(e0, { t: "SIMPAN", n: 5 }).simpan === 2 && ej(e0, { t: "SIMPAN", n: -3 }).simpan === 0, "simpanan dibatasi 0 sampai 2");
+  cek(ej(selesaikanE(e0), { t: "TULIS" }).pesan.includes("Semua kolom sudah ditulis"), "menulis lagi setelah selesai ditolak");
+  // Fuzz.
+  let x = e0;
+  let ok = true;
+  const af = acakDari(63);
+  for (let n = 0; n < 20000; n += 1) {
+    const sebelum = x;
+    x = J.langkahJumlahK4B1E(x, [{ t: "SOAL", i: af(6) }, { t: "ATUR", suku: af(3), c: af(3), d: af(2) ? 1 : -1 }, { t: "DIGIT", d: af(2) ? 1 : -1 }, { t: "SIMPAN", n: af(4) }, { t: "TULIS" }, { t: "PANJANG" }][af(6)]);
+    if (x.kolom < 0 || x.kolom > 3 || J.jumlahSoal(x.soal) > 1000 || x.soal.some((v) => v < 0 || v > 999) || x.digit < 0 || x.digit > 9 || x.simpan < 0 || x.simpan > 2 || x.tulis.some((v) => v !== null && (v < 0 || v > 9))) ok = false;
+    if (!sebelum.pernah.every((p) => x.pernah.includes(p))) ok = false;
+  }
+  cek(ok, "fuzz 20.000 aksi lab jumlah: kolom 0 sampai 3, jumlah <= 1.000, digit dan simpanan dalam batas, riwayat tidak dicabut");
+}
+
+/* ------------------------------ Lab Kurang Bersusun (F) ------------------------------ */
+const fk = (x, ...ak) => ak.reduce((s, a) => KR.langkahKurangK4B1F(s, a), x);
+const kk = KR.keadaanKurangK4B1F;
+function aturDigitF(x, target) {
+  let s = x;
+  for (let g = 0; g < 10 && s.digit !== target; g += 1) s = fk(s, { t: "DIGIT", d: 1 });
+  return s;
+}
+function ambilUntuk(x, c) {
+  let s = x;
+  if (s.atas[c + 1] === 0) s = ambilUntuk(s, c + 1);
+  return fk(s, { t: "AMBIL", c });
+}
+function selesaikanF(x) {
+  let s = x;
+  for (let g = 0; g < 6 && !KR.selesaiF(s); g += 1) {
+    const c = s.kolom;
+    if (s.atas[c] < KR.digitF(s.b, c)) s = ambilUntuk(s, c);
+    s = fk(aturDigitF(s, s.atas[c] - KR.digitF(s.b, c)), { t: "TULIS" });
+  }
+  return s;
+}
+const pilihF = (x, a, b) => fk(x, { t: "SOAL", i: KR.SOAL_F.findIndex(([p, q]) => p === a && q === b) });
+const stateF = (x, a, b) => ({ ...x, a, b, atas: [0, 1, 2, 3].map((c) => Math.floor(a / 10 ** c) % 10), kolom: 0, tulis: [null, null, null, null], digit: 0, ambil: 0, periksa: false });
+{
+  const f0 = KR.awalKurangK4B1F();
+  cek(f0.a === 265 && f0.b === 132 && f0.kolom === 0 && f0.pernah.length === 0 && !f0.periksa, "F awal: 265 - 132, kolom satuan, tanpa riwayat");
+  // Semua pasangan a >= b (0 sampai 999, dan 1.000): banyak pengambilan = (ds(b) + ds(a-b) - ds(a)) / 9 (hitungan mandiri).
+  let okAmbil = true;
+  let pasangan = 0;
+  for (let a = 0; a <= 1000; a += 1)
+    for (let b = 0; b <= a; b += 1) {
+      pasangan += 1;
+      if (KR.banyakAmbil(a, b) * 9 !== ds(b) + ds(a - b) - ds(a)) okAmbil = false;
+    }
+  cek(okAmbil, `banyak pengambilan sama dengan identitas jumlah angka (hitungan mandiri) untuk ${pasangan} pasangan`);
+  const ac = acakDari(71);
+  let okSolve = true;
+  let banyakDiuji = 0;
+  for (let k = 0; k < 3000; k += 1) {
+    const a = ac(1000);
+    const b = ac(a + 1);
+    banyakDiuji += 1;
+    const s = selesaikanF(stateF(f0, a, b));
+    const tulis = s.tulis.reduce((p, v, c) => p + (v ?? 0) * 10 ** c, 0);
+    const kunci = `${a}-${b}`;
+    if (!KR.selesaiF(s) || tulis !== a - b || s.ambil !== KR.banyakAmbil(a, b) || !s.pernah.includes(`kurang:${kunci}`) || s.pernah.includes(`ambil-dua:${kunci}`) !== (s.ambil >= 2)) okSolve = false;
+    const p = fk(s, { t: "PERIKSA" });
+    if (!p.pernah.includes(`periksa:${kunci}`) || !KR.kalimatPeriksa(p).includes("Benar!")) okSolve = false;
+    if (Array.from({ length: 4 }, (_, c) => s.atas[c] * 10 ** c).reduce((p2, q) => p2 + q, 0) !== a) okSolve = false;
+  }
+  cek(okSolve, `${banyakDiuji} soal acak diselesaikan lewat tombol Ambil, angka, dan Tulis: hasil, pengambilan, riwayat, dan periksa benar`);
+  const seribu = selesaikanF(pilihF(f0, 1000, 1));
+  cek(KR.selesaiF(seribu) && seribu.ambil === 3 && seribu.tulis.join() === "9,9,9,0" && seribu.pernah.includes("kurang:1000-1"), "1.000 - 1 = 999 dengan tiga kali mengambil berantai");
+  // Tulis: angka yang diterima per kolom.
+  for (const [a, b] of KR.SOAL_F)
+    for (let c = 0; c < KR.kolomF(a); c += 1) {
+      let s = stateF(f0, a, b);
+      for (let g = 0; g < c; g += 1) {
+        if (s.atas[s.kolom] < KR.digitF(b, s.kolom)) s = ambilUntuk(s, s.kolom);
+        s = fk(aturDigitF(s, s.atas[s.kolom] - KR.digitF(b, s.kolom)), { t: "TULIS" });
+      }
+      const perlu = s.atas[c] < KR.digitF(b, c);
+      let diterimaSebelum = 0;
+      for (let d = 0; d <= 9; d += 1) {
+        const t = fk({ ...s, digit: d }, { t: "TULIS" });
+        if (t.kolom === c + 1) diterimaSebelum += 1;
+        if (perlu && d === KR.digitF(b, c) - s.atas[c] && !t.pernah.includes("balik-salah")) diterimaSebelum += 100;
+        if (perlu && d !== KR.digitF(b, c) - s.atas[c] && !t.pernah.includes("ambil-lupa")) diterimaSebelum += 100;
+      }
+      const sesudah = perlu ? ambilUntuk(s, c) : s;
+      let diterima = 0;
+      for (let d = 0; d <= 9; d += 1) if (fk({ ...sesudah, digit: d }, { t: "TULIS" }).kolom === c + 1) diterima += 1;
+      cek(diterimaSebelum === (perlu ? 0 : 1) && diterima === 1, `${a} - ${b} kolom ${KR.TEMPAT_F[c]}: ${perlu ? "ditolak sebelum mengambil (termasuk balik), tepat satu angka sesudahnya" : "tepat satu angka diterima"}`);
+    }
+  // Penjagaan tombol Ambil.
+  const tanpa = fk(f0, { t: "AMBIL", c: 0 });
+  cek(tanpa.ambil === 0 && tanpa.pesan.includes("Tidak perlu mengambil"), "265 - 132: mengambil di satuan ditolak (sudah cukup)");
+  const dini = fk(pilihF(f0, 265, 132), { t: "AMBIL", c: 1 });
+  cek(dini.ambil === 0 && dini.atas.join() === "5,6,2,0", "265 - 132: mengambil untuk puluhan sebelum waktunya ditolak (tidak membuat anak macet)");
+  const nol = pilihF(f0, 304, 128);
+  const tolakNol = fk(nol, { t: "AMBIL", c: 0 });
+  cek(tolakNol.ambil === 0 && tolakNol.pesan.includes("tinggal 0"), "304 - 128: satuan tidak bisa mengambil dari puluhan yang kosong");
+  const rantai = fk(nol, { t: "AMBIL", c: 1 }, { t: "AMBIL", c: 0 });
+  cek(rantai.ambil === 2 && rantai.atas.join() === "14,9,2,0", "304 - 128: ambil untuk puluhan dulu, lalu satuan (14, 9, 2)");
+  cek(fk(rantai, { t: "AMBIL", c: 0 }).atas[0] === 14, "ambil lagi di satuan yang sudah 14 ditolak");
+  cek(fk(f0, { t: "AMBIL", c: 5 }).ambil === 0 && fk(f0, { t: "AMBIL", c: 2 }).ambil === 0, "mengambil untuk ratusan (tidak ada kolom di kirinya) ditolak");
+  const sel = selesaikanF(f0);
+  cek(fk(sel, { t: "TULIS" }).pesan.includes("Semua kolom sudah ditulis") && fk(f0, { t: "PERIKSA" }).pesan.includes("Selesaikan dulu"), "menulis setelah selesai dan memeriksa sebelum selesai ditolak");
+  // ATUR.
+  const lebihKecil = fk(f0, { t: "ATUR", bil: "a", c: 2, d: -1 }, { t: "ATUR", bil: "a", c: 2, d: -1 });
+  cek(lebihKecil.a === 165 && lebihKecil.pesan.includes("lebih kecil"), "bilangan atas 65 (lebih kecil dari 132) ditolak, tinggal 165");
+  cek(fk(seribu, { t: "ATUR", bil: "a", c: 0, d: 1 }).a === 1000, "bilangan 1.000 tidak diubah lewat ATUR");
+  // Cara panjang mengikuti pengambilan.
+  const u = KR.uraianPanjang(ambilUntuk(pilihF(f0, 241, 129), 0));
+  cek(u.atas === "200 + 30 + 11 = 241" && u.bawah === "100 + 20 + 9 = 129" && u.selisih === "100 + 10 + 2 = 112", `cara panjang 241 - 129 mengikuti pengambilan (${u.atas} | ${u.selisih})`);
+  cek(KR.uraianPanjang(pilihF(f0, 241, 129)).selisih.includes("Ambil dulu"), "cara panjang sebelum mengambil meminta mengambil dulu");
+  // Fuzz.
+  let x = f0;
+  let ok = true;
+  const af = acakDari(73);
+  for (let n = 0; n < 20000; n += 1) {
+    const sebelum = x;
+    x = KR.langkahKurangK4B1F(x, [{ t: "SOAL", i: af(6) }, { t: "ATUR", bil: af(2) ? "a" : "b", c: af(3), d: af(2) ? 1 : -1 }, { t: "AMBIL", c: af(4) }, { t: "DIGIT", d: af(2) ? 1 : -1 }, { t: "TULIS" }, { t: "PERIKSA" }][af(6)]);
+    if (x.a < x.b || x.b < 0 || x.a > 1000 || x.kolom < 0 || x.kolom > KR.kolomF(x.a) || x.digit < 0 || x.digit > 9 || x.tulis.some((v) => v !== null && (v < 0 || v > 9))) ok = false;
+    if (x.atas.some((v) => v < 0 || v > 19) || x.atas.reduce((p, v, c) => p + v * 10 ** c, 0) !== x.a) ok = false;
+    if (!sebelum.pernah.every((p) => x.pernah.includes(p))) ok = false;
+  }
+  cek(ok, "fuzz 20.000 aksi lab kurang: atas >= bawah, nilai bilangan atas tetap utuh walau mengambil, digit dalam batas, riwayat tidak dicabut");
+}
+
 /* ------------------------------ Mesin Bertahap ------------------------------ */
 {
   const posisi = [];
@@ -495,6 +724,103 @@ function aturUang(x, target, u) {
   });
 }
 
+/* ------------------------------ Mesin Hitung (E dan F) ------------------------------ */
+{
+  cek(MH.SEMUA_MESIN_K4B1_HITUNG.length === 2, "ada dua mesin hitung (E dan F)");
+  const posisi = [];
+  for (const def of MH.SEMUA_MESIN_K4B1_HITUNG) {
+    cek(def.stasiun.length === 4 && def.kasus.length === 3, `${def.id}: 4 stasiun, 3 kasus`);
+    const lokal = [];
+    for (const kasus of def.kasus) {
+      cek(kasus.langkah.length === 4, `${def.id}/${kasus.id}: satu langkah per stasiun`);
+      kasus.langkah.forEach((l, i) => {
+        cek(l.stasiun === def.stasiun[i].id, `${kasus.id}: stasiun ${i} bernama ${def.stasiun[i].id}`);
+        cek(l.opsi.length === 3 && new Set(l.opsi).size === 3 && l.opsi.filter((o) => o === l.benar).length === 1, `${def.id}/${kasus.id}/${l.stasiun}: tiga pilihan unik, satu kunci (${JSON.stringify(l.opsi)})`);
+        cek(l.petunjuk.length > 20 && l.tanya.length > 5, `${kasus.id}/${l.stasiun}: tanya dan petunjuk ada`);
+        lokal.push(l.opsi.indexOf(l.benar));
+      });
+    }
+    posisi.push(...lokal);
+    cek(new Set(lokal).size === 3, `${def.id}: letak kunci bervariasi (${lokal.join("")})`);
+    let x = ME.awalMesin(def);
+    for (let mi = 0; mi < def.kasus.length; mi += 1) {
+      for (let i = 0; i < 4; i += 1) {
+        const l = ME.langkahAktif(x);
+        const lompat = ME.langkahMesin(x, { t: "LOMPAT", ke: i + 1 });
+        cek(lompat.ke === x.ke && lompat.ditolak === x.ditolak + 1, `${def.id}: lompat stasiun ditolak`);
+        for (const s of l.opsi.filter((o) => o !== l.benar)) {
+          const t = ME.langkahMesin(x, { t: "JAWAB", nilai: s });
+          cek(t.ke === x.ke && t.pesan === l.petunjuk, `${def.id}: "${s}" ditolak dengan petunjuk`);
+        }
+        x = ME.langkahMesin(x, { t: "JAWAB", nilai: l.benar });
+      }
+      cek(x.fase === "sudah", `${def.id}: kasus ${mi} selesai`);
+      x = ME.langkahMesin(x, { t: "LANJUT" });
+    }
+    cek(x.selesai, `${def.id}: semua kasus selesai`);
+  }
+  sama(MH.SEMUA_MESIN_K4B1_HITUNG.map((d) => d.selesaiId), [K4.ID_MESIN_K4B1.E, K4.ID_MESIN_K4B1.F], "selesaiId mesin E dan F sama dengan id misi");
+
+  // Mesin Jumlah: kunci dan SEMUA pengecoh dihitung ulang mandiri.
+  const satuanE = (t) => {
+    const m = t.match(/^tulis (\d+), (?:simpan (\d+)|tidak menyimpan)$/);
+    return m ? [Number(m[1]), m[2] ? Number(m[2]) : 0] : null;
+  };
+  MH.KASUS_JUMLAH.forEach((k, idx) => {
+    const [satuan, puluhan, ratusan, hasil] = MH.MESIN_JUMLAH.kasus[idx].langkah;
+    const [a, b] = k.suku;
+    const total = a + b;
+    const s = (a % 10) + (b % 10);
+    sama(satuanE(satuan.benar), [s % 10, Math.floor(s / 10)], `${k.id}: kolom satuan ${s}`);
+    cek(satuan.tanya.includes(`= ${s}.`), `${k.id}: pertanyaan satuan memuat jumlah ${s}`);
+    for (const o of satuan.opsi.filter((q) => q !== satuan.benar)) {
+      const p = satuanE(o);
+      cek(p !== null && !(p[0] === s % 10 && p[1] === Math.floor(s / 10)), `${k.id}: pengecoh satuan "${o}" memang salah`);
+    }
+    const p = (Math.floor(a / 10) % 10) + (Math.floor(b / 10) % 10) + Math.floor(s / 10);
+    cek(puluhan.benar === String(p), `${k.id}: kolom puluhan ${p}`);
+    for (const o of puluhan.opsi.filter((q) => q !== puluhan.benar)) cek(Number(o) !== p, `${k.id}: pengecoh puluhan ${o} salah`);
+    const r = Math.floor(total / 100) % 10;
+    cek(ratusan.benar === String(r), `${k.id}: angka ratusan ${r}`);
+    for (const o of ratusan.opsi.filter((q) => q !== ratusan.benar)) cek(Number(o) !== r && Number(o) >= 0 && Number(o) <= 9, `${k.id}: pengecoh ratusan ${o} satu angka dan salah`);
+    cek(hasil.benar === String(total), `${k.id}: hasil ${total}`);
+    for (const o of hasil.opsi.filter((q) => q !== hasil.benar)) cek(Number(o) !== total, `${k.id}: pengecoh hasil ${o} salah`);
+    const lupa = [0, 1, 2].reduce((q, c) => q + (((Math.floor(a / 10 ** c) % 10) + (Math.floor(b / 10 ** c) % 10)) % 10) * 10 ** c, 0);
+    if (lupa !== total) cek(hasil.opsi.includes(String(lupa)), `${k.id}: pengecoh lupa menyimpan (${lupa}) ada`);
+  });
+  cek(MH.KASUS_JUMLAH.some((k) => k.suku[0] % 10 + (k.suku[1] % 10) < 10) && MH.KASUS_JUMLAH.some((k) => k.suku[0] % 10 + (k.suku[1] % 10) >= 10), "mesin jumlah: ada yang tanpa menyimpan dan ada yang menyimpan");
+
+  // Mesin Kurang.
+  const patSatuan = (t, a0, b0) => {
+    let m = t.match(/^ambil 1 puluhan, (\d+) − (\d+) = (\d+)$/);
+    if (m) return a0 < b0 && Number(m[1]) === a0 + 10 && Number(m[2]) === b0 && Number(m[3]) === a0 + 10 - b0;
+    m = t.match(/^(\d+) − (\d+) = (\d+)$/);
+    if (m) return a0 >= b0 && Number(m[1]) === a0 && Number(m[2]) === b0 && Number(m[3]) === a0 - b0;
+    return false;
+  };
+  MH.KASUS_KURANG.forEach((k, idx) => {
+    const [satuan, puluhan, ratusan, periksa] = MH.MESIN_KURANG.kasus[idx].langkah;
+    const a0 = k.a % 10;
+    const b0 = k.b % 10;
+    cek(patSatuan(satuan.benar, a0, b0), `${k.id}: langkah satuan benar "${satuan.benar}"`);
+    for (const o of satuan.opsi.filter((q) => q !== satuan.benar)) cek(!patSatuan(o, a0, b0), `${k.id}: pengecoh satuan "${o}" memang salah`);
+    const pinjam0 = a0 < b0 ? 1 : 0;
+    const t1 = (Math.floor(k.a / 10) % 10) - pinjam0;
+    const b1 = Math.floor(k.b / 10) % 10;
+    const hasilP = t1 < b1 ? t1 + 10 - b1 : t1 - b1;
+    cek(puluhan.benar === String(hasilP), `${k.id}: kolom puluhan ${hasilP}`);
+    for (const o of puluhan.opsi.filter((q) => q !== puluhan.benar)) cek(Number(o) !== hasilP, `${k.id}: pengecoh puluhan ${o} salah`);
+    const pinjam1 = t1 < b1 ? 1 : 0;
+    const hasilR = (Math.floor(k.a / 100) % 10) - pinjam1 - (Math.floor(k.b / 100) % 10);
+    cek(ratusan.benar === String(hasilR) && hasilR >= 0, `${k.id}: kolom ratusan ${hasilR}`);
+    for (const o of ratusan.opsi.filter((q) => q !== ratusan.benar)) cek(Number(o) !== hasilR, `${k.id}: pengecoh ratusan ${o} salah`);
+    cek(periksa.tanya.includes(`${k.a - k.b} + ${k.b} = `) && periksa.benar === String(k.a), `${k.id}: periksa ${k.a - k.b} + ${k.b} = ${k.a}`);
+    for (const o of periksa.opsi.filter((q) => q !== periksa.benar)) cek(Number(o) !== k.a, `${k.id}: pengecoh periksa ${o} salah`);
+  });
+  const nAmbil = MH.KASUS_KURANG.map((k) => (ds(k.b) + ds(k.a - k.b) - ds(k.a)) / 9).sort().join();
+  sama(nAmbil, "0,1,2", "mesin kurang: tanpa mengambil, satu kali, dan dua kali");
+}
+
 /* ------------------------------ Skenario (kunci dihitung mandiri) ------------------------------ */
 {
   const semua = [SB.SKENARIO_K4B1A, SB.SKENARIO_K4B1B, SB.SKENARIO_K4B1C, SB.SKENARIO_K4B1D];
@@ -541,11 +867,52 @@ function aturUang(x, target, u) {
   cek(ad(SB.SKENARIO_K4B1D, "sepuluh-ribu").jumlah * 1000 === 10000, "D: sepuluh lembar Rp1.000");
 }
 
+/* ------------------------------ Skenario hitung (E dan F) ------------------------------ */
+{
+  const E = SH.SKENARIO_K4B1E;
+  const F = SH.SKENARIO_K4B1F;
+  for (const s of [E, F]) {
+    cek(s.adegan.length >= 5 && s.adegan.length <= 8 && new Set(s.adegan.map((a) => a.jenis)).size >= 4, `${s.id}: 5-8 adegan, minimal 4 jenis`);
+    for (const a of s.adegan.filter((q) => q.jenis === "pilih")) cek(a.opsi.length === 3 && a.opsi.filter((o) => o.benar).length === 1, `${s.id}/${a.id}: tiga pilihan, satu benar`);
+    for (const a of s.adegan.filter((q) => q.jenis === "soal")) for (const q of a.soal) cek(q.opsi.length === 3 && new Set(q.opsi).size === 3 && q.opsi.includes(q.jawaban), `${s.id}/${a.id}: "${q.teks}" tiga pilihan memuat jawaban`);
+  }
+  const ad = (s, id) => s.adegan.find((a) => a.id === id);
+  const benar = (s, id) => ad(s, id).opsi.find((o) => o.benar).teks;
+  const hitungSuku = (teks, op) => {
+    const m = teks.match(op === "+" ? /^(\d+(?: \+ \d+)+) = …$/ : /^(\d+) − (\d+) = …$/);
+    if (!m) return null;
+    return op === "+" ? m[1].split(" + ").map(Number).reduce((p, q) => p + q, 0) : Number(m[1]) - Number(m[2]);
+  };
+  // E
+  for (const q of [...ad(E, "pohon").soal, ...ad(E, "tiga").soal.slice(0, 2)]) {
+    cek(hitungSuku(q.teks, "+") === Number(q.jawaban), `E: ${q.teks} = ${q.jawaban}`);
+    for (const o of q.opsi.filter((v) => v !== q.jawaban)) cek(hitungSuku(q.teks, "+") !== Number(o), `E: pengecoh ${o} untuk ${q.teks} salah`);
+  }
+  cek(benar(E, "simpan") === `Tulis ${(9 + 5) % 10}, simpan ${Math.floor((9 + 5) / 10)} ke puluhan`, "E: 9 + 5 = 14 ditulis 4 dan simpan 1");
+  cek(ad(E, "sisa-satuan").jumlah === (9 + 5) % 10, "E: satuan yang ditulis dari 9 + 5");
+  cek(ad(E, "puluhan").target === (8 + 4 + 1) % 10 && ad(E, "puluhan").cerita.includes(`8 + 4 + simpanan 1 = ${8 + 4 + 1}`), "E: puluhan 8 + 4 + 1 = 13, ditulis 3");
+  cek(Number(benar(E, "hasil").split(" ")[0]) === 189 + 245, "E: jeruk 189 + 245 = 434");
+  for (const o of ad(E, "hasil").opsi.filter((q) => !q.benar)) cek(Number(o.teks.split(" ")[0]) !== 189 + 245, `E: pengecoh hasil "${o.teks}" bukan 434`);
+  cek(ad(E, "hasil").opsi.some((o) => Number(o.teks.split(" ")[0]) === 324), "E: pengecoh lupa menyimpan (324) ada");
+  // F
+  for (const q of ad(F, "sisa").soal) {
+    cek(hitungSuku(q.teks, "-") === Number(q.jawaban), `F: ${q.teks} = ${q.jawaban}`);
+    for (const o of q.opsi.filter((v) => v !== q.jawaban)) cek(hitungSuku(q.teks, "-") !== Number(o), `F: pengecoh ${o} untuk ${q.teks} salah`);
+  }
+  cek(benar(F, "ambil").includes(`satuan menjadi ${1 + 10}`) && 1 + 10 - 9 === 2, "F: 1 puluhan diambil, satuan menjadi 11, 11 - 9 = 2");
+  cek(ad(F, "ambil").opsi.find((o) => o.teks.includes("9 − 1")).umpan.includes(`${2 - 1}${4 - 2}${9 - 1}`), "F: umpan membalik menyebut hasil keliru 128 (9 - 1 = 8, 4 - 2 = 2, 2 - 1 = 1)");
+  cek(ad(F, "sebelas").jumlah === 11 - 9, "F: 11 - 9 = 2");
+  cek((ds(176) + ds(253 - 176) - ds(253)) / 9 === 2 && benar(F, "dua-kali").startsWith("Dua kali"), "F: 253 - 176 mengambil dua kali");
+  cek(ad(F, "puluhan-66").target === Math.floor((241 - 175) / 10) % 10 && 241 - 175 === 66, "F: puluhan pada 241 - 175 = 66 adalah 6");
+  cek(112 + 129 === 241 && benar(F, "periksa").includes("241"), "F: 112 + 129 = 241");
+}
+
 /* ------------------------------ Misi ------------------------------ */
-const keadaanAwal = [ka(A.awalKemasanK4B1A()), kb(B.awalNilaiK4B1B()), kc(C.awalBandingK4B1C()), kd(D.awalSusunK4B1D())];
+const keadaanAwal = [ka(A.awalKemasanK4B1A()), kb(B.awalNilaiK4B1B()), kc(C.awalBandingK4B1C()), kd(D.awalSusunK4B1D()), kj(J.awalJumlahK4B1E()), kk(KR.awalKurangK4B1F())];
 const SEMUA_ID = [...Object.values(K4.ID_MESIN_K4B1), ...Object.values(K4.ID_SKENARIO_K4B1), "x", "mesin-urut"];
 const HURUF = ["A", "B", "C", "D"];
-for (const h of HURUF) {
+const HURUF_ALL = ["A", "B", "C", "D", "E", "F"];
+for (const h of HURUF_ALL) {
   const daftar = K4.daftarMisiK4Bab1(h);
   cek(daftar.filter((m) => m.wajib).length === 7 && daftar.filter((m) => !m.wajib).length === 3, `sub-bab ${h}: 7 misi wajib dan 3 tantangan bebas`);
   const ids = new Set();
@@ -677,11 +1044,79 @@ const AKSI_WAJIB = {};
   s = aturUang(s, 7300, [1, 1, 0, 0, 3]);
   AKSI_WAJIB.D = [kd(s)];
 }
+// Sub-Bab E
+{
+  const e0 = J.awalJumlahK4B1E();
+  const ke = (x) => kj(x);
+  penuh("E", "e-tanpa", ke(selesaikanE(e0)));
+  belum("E", "e-tanpa", ke(sampaiKolomE(e0, 1)), "baru kolom satuan");
+  penuh("E", "e-simpan", ke(selesaikanE(pilihE(e0, "189+245"))));
+  belum("E", "e-simpan", ke(selesaikanE(e0)), "131 + 321 tidak menyimpan");
+  const lupa = ej(aturDigitE(pilihE(e0, "189+245"), 4), { t: "TULIS" });
+  penuh("E", "e-lupa", ke(lupa));
+  belum("E", "e-lupa", ke(ej(aturDigitE(pilihE(e0, "189+245"), 4), { t: "SIMPAN", n: 1 }, { t: "TULIS" })), "angka dan simpanan benar");
+  belum("E", "e-lupa", ke(ej(aturDigitE(pilihE(e0, "189+245"), 5), { t: "TULIS" })), "angka keliru ditolak lebih dulu");
+  belum("E", "e-lupa", ke(ej(aturDigitE(e0, 2), { t: "TULIS" })), "131 + 321 kolom satuan benar");
+  penuh("E", "e-panjang", ke(ej(pilihE(e0, "189+245"), { t: "PANJANG" })));
+  belum("E", "e-panjang", ke(ej(e0, { t: "PANJANG" })), "soal 131 + 321");
+  belum("E", "e-panjang", ke(pilihE(e0, "189+245")), "Cara Panjang belum menyala");
+  penuh("E", "e-tiga", ke(selesaikanE(pilihE(e0, "124+411+363"))));
+  belum("E", "e-tiga", ke(selesaikanE(pilihE(e0, "117+105+242"))), "jumlahnya 464, bukan 898");
+  belum("E", "e-tiga", ke(sampaiKolomE(pilihE(e0, "124+411+363"), 2)), "belum semua kolom");
+  penuh("E", "e-907", ke(selesaikanE(pilihE(e0, "328+579"))));
+  belum("E", "e-907", ke(selesaikanE(pilihE(e0, "189+245"))), "bukan 328 + 579");
+  penuh("E", "e-seribu", ke(selesaikanE(pilihE(e0, "456+544"))));
+  belum("E", "e-seribu", ke(selesaikanE(pilihE(e0, "328+579"))), "907");
+  penuh("E", "e-lele", ke(selesaikanE(pilihE(e0, "117+105+242"))));
+  belum("E", "e-lele", ke(selesaikanE(pilihE(e0, "124+411+363"))), "898");
+  let s = pilihE(e0, "189+245");
+  s = ej(aturDigitE(s, 4), { t: "TULIS" }, { t: "PANJANG" });
+  s = selesaikanE(s);
+  s = selesaikanE(pilihE(s, "124+411+363"));
+  s = selesaikanE(pilihE(s, "131+321"));
+  AKSI_WAJIB.E = [ke(s)];
+  for (const m of K4.MISI_E.filter((q) => q.wajib && !/mesin|skenario/.test(q.id))) penuh("E", m.id, ke(s));
+  for (const ke2 of keadaanAwal.filter((q) => q.alat !== "jumlah")) for (const m of K4.MISI_E) belum("E", m.id, ke2, `alat ${ke2.alat} bukan lab jumlah`);
+}
+// Sub-Bab F
+{
+  const f0 = KR.awalKurangK4B1F();
+  const kf = (x) => kk(x);
+  penuh("F", "f-tanpa", kf(selesaikanF(f0)));
+  belum("F", "f-tanpa", kf(fk(aturDigitF(f0, 3), { t: "TULIS" })), "baru kolom satuan");
+  penuh("F", "f-ambil", kf(selesaikanF(pilihF(f0, 241, 129))));
+  belum("F", "f-ambil", kf(selesaikanF(f0)), "265 - 132 tidak mengambil");
+  penuh("F", "f-dua", kf(selesaikanF(pilihF(f0, 253, 176))));
+  belum("F", "f-dua", kf(selesaikanF(pilihF(f0, 241, 129))), "hanya satu kali mengambil");
+  const balik = fk(aturDigitF(pilihF(f0, 241, 129), 8), { t: "TULIS" });
+  penuh("F", "f-balik", kf(balik));
+  belum("F", "f-balik", kf(fk(aturDigitF(pilihF(f0, 241, 129), 5), { t: "TULIS" })), "angka lain bukan membalik");
+  belum("F", "f-balik", kf(fk(aturDigitF(pilihF(f0, 241, 129), 2), { t: "TULIS" })), "2 tanpa mengambil: bukan membalik");
+  belum("F", "f-balik", kf(selesaikanF(f0)), "tidak pernah mencoba membalik");
+  penuh("F", "f-periksa", kf(fk(selesaikanF(pilihF(f0, 241, 129)), { t: "PERIKSA" })));
+  belum("F", "f-periksa", kf(selesaikanF(pilihF(f0, 241, 129))), "belum menekan Periksa");
+  belum("F", "f-periksa", kf(fk(selesaikanF(f0), { t: "PERIKSA" })), "periksa soal 265 - 132");
+  belum("F", "f-periksa", kf(fk(pilihF(f0, 241, 129), { t: "PERIKSA" })), "Periksa sebelum selesai");
+  penuh("F", "f-66", kf(selesaikanF(pilihF(f0, 241, 175))));
+  belum("F", "f-66", kf(selesaikanF(pilihF(f0, 241, 129))), "241 - 129");
+  penuh("F", "f-nol", kf(selesaikanF(pilihF(f0, 304, 128))));
+  belum("F", "f-nol", kf(selesaikanF(pilihF(f0, 253, 176))), "bukan 304 - 128");
+  penuh("F", "f-seribu", kf(selesaikanF(pilihF(f0, 1000, 1))));
+  belum("F", "f-seribu", kf(selesaikanF(pilihF(f0, 304, 128))), "bukan 1.000 - 1");
+  let s = selesaikanF(f0);
+  s = pilihF(s, 241, 129);
+  s = fk(aturDigitF(s, 8), { t: "TULIS" });
+  s = fk(selesaikanF(s), { t: "PERIKSA" });
+  s = selesaikanF(pilihF(s, 253, 176));
+  AKSI_WAJIB.F = [kf(s)];
+  for (const m of K4.MISI_F.filter((q) => q.wajib && !/mesin|skenario/.test(q.id))) penuh("F", m.id, kf(s));
+  for (const ke2 of keadaanAwal.filter((q) => q.alat !== "kurang")) for (const m of K4.MISI_F) belum("F", m.id, ke2, `alat ${ke2.alat} bukan lab kurang`);
+}
 // Misi alat sub-bab lain tidak tercapai oleh alat yang salah.
-for (const h of HURUF) for (const m of K4.daftarMisiK4Bab1(h)) for (const [g, kes] of Object.entries(AKSI_WAJIB)) if (g !== h) for (const ke of kes) cek(!m.cek(ke), `misi ${m.id} tidak tercapai oleh alat sub-bab ${g}`);
+for (const h of HURUF_ALL) for (const m of K4.daftarMisiK4Bab1(h)) for (const [g, kes] of Object.entries(AKSI_WAJIB)) if (g !== h) for (const ke of kes) cek(!m.cek(ke), `misi ${m.id} tidak tercapai oleh alat sub-bab ${g}`);
 
 /* ---- Gerbang ---- */
-for (const h of HURUF) {
+for (const h of HURUF_ALL) {
   const daftar = K4.daftarMisiK4Bab1(h);
   const tampil = M0.tampilMisi(daftar);
   const sudah = new Set();
@@ -745,6 +1180,46 @@ for (const h of HURUF) {
     if (!bocorB && BOCOR.B.test(t)) bocorB = t;
   }
   cek(!bocorB, `ucapan dan pesan lab B bebas konsep sub-bab berikutnya ${bocorB}`);
+}
+
+/* ---- Konsep Sub-Bab F dan sesudahnya tidak dipakai di E, dan perkalian dan pembagian tidak dipakai di F ---- */
+{
+  const BOCOR_E = /(mengambil|ambil|dikurangi|−|kurangkan|pengurangan|perkalian|×|pembagian|dibagi|faktor|kelipatan)/i;
+  const BOCOR_F = /(perkalian|×|pembagian|dibagi|faktor|kelipatan| : )/i;
+  const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas4-bab1-ringkas.json", import.meta.url), "utf8"));
+  const dataH = {
+    E: { r: BOCOR_E, misi: [TK.MISI_K4B1.E, TK.NAMA_SIM_K4B1.E, ...K4.MISI_E.map((m) => m.teks)], sk: SH.SKENARIO_K4B1E, ms: MH.MESIN_JUMLAH, komp: "SimulasiLabJumlahK4", kompRe: /(mengambil|ambil|dikurangi|kurangkan|pengurangan|perkalian|dibagi|pembagian|faktor|kelipatan)/i },
+    F: { r: BOCOR_F, misi: [TK.MISI_K4B1.F, TK.NAMA_SIM_K4B1.F, ...K4.MISI_F.map((m) => m.teks)], sk: SH.SKENARIO_K4B1F, ms: MH.MESIN_KURANG, komp: "SimulasiLabKurangK4", kompRe: /(perkalian|dibagi|pembagian|faktor|kelipatan)/i },
+  };
+  for (const [h, d] of Object.entries(dataH)) {
+    cek(!d.r.test(d.misi.join(" ")), `misi ${h} bebas konsep sub-bab berikutnya (${d.misi.join(" ").match(d.r)?.[0]})`);
+    cek(!d.r.test(JSON.stringify(d.sk)), `skenario ${h} bebas konsep sub-bab berikutnya (${JSON.stringify(d.sk).match(d.r)?.[0]})`);
+    cek(!d.r.test(JSON.stringify(d.ms)), `mesin ${h} bebas konsep sub-bab berikutnya (${JSON.stringify(d.ms).match(d.r)?.[0]})`);
+    cek(!d.r.test(JSON.stringify(ringkas.subBab[h])), `ringkas ${h} bebas konsep sub-bab berikutnya (${JSON.stringify(ringkas.subBab[h]).match(d.r)?.[0]})`);
+    const sumber = readFileSync(new URL(`../src/components/modul/${d.komp}.tsx`, import.meta.url), "utf8")
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/^\s*\/\/.*$/gm, "")
+      .replace(/import[\s\S]*?from "[^"]+";/g, "");
+    cek(!d.kompRe.test(sumber), `komponen ${d.komp} bebas konsep sub-bab berikutnya (${sumber.match(d.kompRe)?.[0]})`);
+  }
+  const ac = acakDari(83);
+  let s = J.awalJumlahK4B1E();
+  let bocorE = "";
+  for (let n = 0; n < 5000; n += 1) {
+    s = J.langkahJumlahK4B1E(s, [{ t: "SOAL", i: ac(6) }, { t: "ATUR", suku: ac(s.soal.length), c: ac(3), d: ac(2) ? 1 : -1 }, { t: "DIGIT", d: 1 }, { t: "SIMPAN", n: ac(3) }, { t: "TULIS" }, { t: "PANJANG" }][ac(6)]);
+    const t = [s.pesan, J.ucapJumlahK4B1E(s), ...J.caraPanjang(s.soal).baris, J.caraPanjang(s.soal).gabung].join(" ");
+    if (!bocorE && BOCOR_E.test(t)) bocorE = t;
+  }
+  cek(!bocorE, `ucapan dan pesan lab E bebas konsep sub-bab berikutnya ${bocorE}`);
+  let f = KR.awalKurangK4B1F();
+  let bocorF = "";
+  for (let n = 0; n < 5000; n += 1) {
+    f = KR.langkahKurangK4B1F(f, [{ t: "SOAL", i: ac(6) }, { t: "ATUR", bil: ac(2) ? "a" : "b", c: ac(3), d: ac(2) ? 1 : -1 }, { t: "AMBIL", c: ac(4) }, { t: "DIGIT", d: 1 }, { t: "TULIS" }, { t: "PERIKSA" }][ac(6)]);
+    const u = KR.uraianPanjang(f);
+    const t = [f.pesan, KR.ucapKurangK4B1F(f), u.atas, u.bawah, u.selisih, KR.kalimatPeriksa(f)].join(" ");
+    if (!bocorF && BOCOR_F.test(t)) bocorF = t;
+  }
+  cek(!bocorF, `ucapan dan pesan lab F bebas konsep sub-bab berikutnya ${bocorF}`);
 }
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
