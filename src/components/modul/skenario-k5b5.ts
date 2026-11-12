@@ -5,6 +5,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b5.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K5B5A: Ubin Alun-Alun (luas sebagai banyak petak satuan, baris dan kolom, petak dipindah luas tetap)
  *  - SKENARIO_K5B5B: Taman Bentuk-Bentuk (alas kali tinggi, tinggi bukan sisi miring, setengah, trapesium)
+ *  - SKENARIO_K5B5C: Denah Yohana dan Komang (bangun gabungan: urai, jumlahkan, dua cara sama, bagian menumpuk)
  */
 
 export const SKENARIO_K5B5A: DefSkenario = {
@@ -149,6 +150,90 @@ export const SKENARIO_K5B5B: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Luas persegi panjang, persegi, dan jajargenjang adalah alas kali tinggi. Luas segitiga, belah ketupat, dan layang-layang adalah setengah dari hasil kali, dan luas trapesium adalah setengah dikali jumlah sisi sejajar kali tinggi.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B5C: DefSkenario = {
+  id: "denah-yohana-komang-k5b5",
+  judul: "Denah Yohana dan Komang",
+  latar: "Bantu Yohana dan Komang menghitung luas denah.",
+  tokoh: "👧",
+  nama: "Yohana",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Yohana, dan ini temanku Komang. Kami sedang menghitung luas denah yang bentuknya gabungan. Ayo bantu kami menguraikannya menjadi bagian lalu menjumlahkan luasnya!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "dua-cara",
+      jenis: "pilih",
+      cerita: "Aku membagi denah menjadi layang-layang dan segitiga. Komang membagi denah yang sama menjadi jajargenjang dan segitiga. Luas total dari kedua cara itu …",
+      opsi: [
+        { teks: "berbeda, karena bagiannya berbeda", benar: false, umpan: "Bagiannya berbeda, tetapi denahnya sama. Luas denah tidak berubah karena cara membaginya." },
+        { teks: "sama, karena denahnya sama", benar: true, umpan: "Betul! Bangun yang sama punya luas yang sama, apa pun cara membaginya." },
+        { teks: "tergantung siapa yang menghitung", benar: false, umpan: "Luas tidak tergantung siapa yang menghitung. Kalau hitungannya benar, hasilnya sama." },
+      ],
+    },
+    {
+      id: "uraian",
+      jenis: "soal",
+      cerita: "Kami menjumlahkan luas bagian denah.",
+      soal: [
+        { teks: "Denah dibagi dua persegi panjang, luasnya 12 m² dan 8 m². Luas denah adalah … m².", jawaban: "20", opsi: ["12", "20", "26"] },
+        { teks: "Papan nama terdiri dari jajargenjang 24 m² dan segitiga 12 m². Luasnya adalah … m².", jawaban: "36", opsi: ["36", "24", "48"] },
+      ],
+      sukses: "Hebat! Luas gabungan adalah jumlah luas semua bagian.",
+      salah: "Hmm, jumlahkan luas semua bagian, jangan ada yang terlewat. Coba lagi.",
+    },
+    {
+      id: "silang",
+      jenis: "soal",
+      cerita: "Denah L dibagi dengan dua cara. Cara pertama 10 m² dan 6 m². Cara kedua 12 m² dan 4 m².",
+      soal: [
+        { teks: "Luas denah L menurut cara pertama adalah … m².", jawaban: "16", opsi: ["22", "16", "28"] },
+        { teks: "Persegi panjang besar 5 m kali 4 m, takiknya 2 m kali 2 m. Luas denah L adalah … m².", jawaban: "16", opsi: ["20", "18", "16"] },
+      ],
+      sukses: "Betul! Kedua cara menghasilkan 16 m², sama.",
+      salah: "Hmm, jumlahkan kedua bagian, atau kurangi takik dari persegi panjang besar. Coba lagi.",
+    },
+    {
+      id: "ruang-tamu",
+      jenis: "hitung",
+      cerita: "Ruang tamu terdiri dari dua persegi panjang, 16 m² dan 9 m². Satu stik mewakili satu meter persegi.",
+      tanya: "Ketuk semua stik. Ada berapa meter persegi luas ruang tamu?",
+      objek: "stik",
+      jumlah: 25,
+      sukses: "Betul! 16 + 9 = 25 m².",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "denah-l",
+      jenis: "isi",
+      cerita: "Denah L punya luas 10 m² ditambah 6 m². Masukkan satu stik untuk tiap meter persegi luasnya.",
+      objek: "stik",
+      target: 16,
+      maks: 20,
+      sukses: "Pas! 10 + 6 = 16 m².",
+      kurang: "Stiknya masih sedikit. Jumlahkan kedua bagian denah.",
+      lebih: "Stiknya kebanyakan. Jumlahkan hanya dua bagian denah itu.",
+    },
+    {
+      id: "menumpuk",
+      jenis: "pilih",
+      cerita: "Dua persegi panjang, masing-masing 12 m², saling menumpuk. Bagian yang menumpuk luasnya 6 m². Luas gabungan kedua bangun adalah …",
+      opsi: [
+        { teks: "24 m², cukup jumlahkan kedua luasnya", benar: false, umpan: "24 m² menghitung bagian yang menumpuk dua kali. Bagian itu hanya boleh dihitung satu kali." },
+        { teks: "12 m², sama dengan satu bangun", benar: false, umpan: "12 m² baru luas satu bangun. Gabungan memuat kedua bangun." },
+        { teks: "18 m², bagian yang menumpuk dihitung satu kali", benar: true, umpan: "Betul! 12 + 12 − 6 = 18 m². Bagian yang menumpuk dikurangi satu kali." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Luas bangun gabungan dihitung dengan menguraikannya menjadi bagian, menghitung luas tiap bagian dengan rumusnya, lalu menjumlahkannya. Dua cara yang berbeda memberi luas yang sama, dan bagian yang menumpuk hanya dihitung satu kali.",
     },
   ],
 };

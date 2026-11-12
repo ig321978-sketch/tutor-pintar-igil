@@ -13,6 +13,10 @@
  *    Setengah : setengah persegi panjang (pengecoh: persegi panjang utuh, dan jumlah dua ukuran).
  *    Trapesium: setengah jumlah sisi sejajar kali tinggi (pengecoh: tanpa setengah, dan jumlah semua ukuran).
  *    Tinggi   : jajargenjang dengan tinggi tegak lurus (pengecoh: sisi miring dikali alas, dan alas ditambah tinggi).
+ *  - MESIN_GABUNGAN (C): Bagian → Rumus → Jumlah → Silang   (kasus Denah Rumah, Papan Nama, Taman Tiga Bagian)
+ *    Bagian dan Rumus: luas satu bagian menurut rumusnya (pengecoh sesuai jenis bangun).
+ *    Jumlah : luas seluruh bangun (pengecoh: satu bagian terlewat, dan satu bagian dihitung dua kali).
+ *    Silang : luas denah L (pengecoh: persegi panjang besar tanpa takik, dan satu bagian saja).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b5.mjs.
  */
 import type { DefMesin, KasusMesin, LangkahMesin, StasiunDef } from "./mesin-bertahap-k3b1";
@@ -221,4 +225,103 @@ export const MESIN_RUMUS: DefMesin = {
   kasus: KASUS_RUMUS.map(kasusMesinRumus),
 };
 
-export const SEMUA_MESIN_K5B5 = [MESIN_PETAK, MESIN_RUMUS];
+/* ------------------------------ C: Mesin Gabungan ------------------------------ */
+
+type BagianMesin = { jenis: "pp" | "segitiga" | "jajar"; a: number; t: number };
+/** uraian: bagian bangun gabungan. silang: denah L (persegi panjang W kali H, takik w kali h di sudut kanan atas). */
+export type KasusGabungan = {
+  id: string;
+  nama: string;
+  konteks: string;
+  uraian: BagianMesin[];
+  silang: { W: number; H: number; w: number; h: number };
+};
+export const KASUS_GABUNGAN: KasusGabungan[] = [
+  { id: "rumah", nama: "Denah Rumah", konteks: "Asep membagi denah rumahnya menjadi beberapa bagian", uraian: [{ jenis: "pp", a: 4, t: 3 }, { jenis: "pp", a: 4, t: 2 }], silang: { W: 5, H: 4, w: 2, h: 2 } },
+  { id: "papan", nama: "Papan Nama", konteks: "Komang membagi papan nama sekolah menjadi beberapa bagian", uraian: [{ jenis: "jajar", a: 6, t: 4 }, { jenis: "segitiga", a: 6, t: 4 }], silang: { W: 6, H: 4, w: 2, h: 2 } },
+  { id: "taman", nama: "Taman Tiga Bagian", konteks: "Yohana membagi taman menjadi tiga bagian", uraian: [{ jenis: "pp", a: 5, t: 3 }, { jenis: "pp", a: 5, t: 2 }, { jenis: "segitiga", a: 5, t: 2 }], silang: { W: 7, H: 4, w: 3, h: 2 } },
+];
+
+export const STASIUN_GABUNGAN: StasiunDef[] = [
+  { id: "bagian", nama: "Bagian", ikon: "✂️" },
+  { id: "rumus", nama: "Rumus", ikon: "📐" },
+  { id: "jumlah", nama: "Jumlah", ikon: "➕" },
+  { id: "silang", nama: "Silang", ikon: "🔀" },
+];
+
+const NAMA_JENIS = { pp: "persegi panjang", segitiga: "segitiga", jajar: "jajargenjang" } as const;
+/** Luas satu bagian: persegi panjang dan jajargenjang alas kali tinggi (penjumlahan berulang), segitiga setengahnya. */
+export function luasBagianMesin(b: BagianMesin): number {
+  let n = 0;
+  for (let i = 0; i < b.t; i += 1) n += b.a;
+  return b.jenis === "segitiga" ? n / 2 : n;
+}
+/** Luas denah L: dihitung dengan cara 1, dipotong mendatar menjadi dua persegi panjang. */
+export function luasDenahMesin(d: { W: number; H: number; w: number; h: number }): number {
+  let bawah = 0;
+  for (let i = 0; i < d.H - d.h; i += 1) bawah += d.W;
+  let atas = 0;
+  for (let i = 0; i < d.h; i += 1) atas += d.W - d.w;
+  return bawah + atas;
+}
+function pengecohBagian(b: BagianMesin): number[] {
+  const benar = luasBagianMesin(b);
+  return pengecoh(benar, b.jenis === "segitiga" ? [b.a * b.t, b.a + b.t] : b.jenis === "jajar" ? [b.a + b.t, (b.a * b.t) / 2] : [b.a + b.t, 2 * (b.a + b.t)]);
+}
+const ukuranBagian = (b: BagianMesin): string => (b.jenis === "pp" ? `panjang ${b.a} cm dan lebar ${b.t} cm` : `alas ${b.a} cm dan tinggi ${b.t} cm`);
+
+export function kasusMesinGabungan(c: KasusGabungan, idx: number): KasusMesin {
+  const luas = c.uraian.map(luasBagianMesin);
+  const total = jumlah(luas);
+  const terkecil = Math.min(...luas);
+  const pertama = c.uraian[0];
+  const terakhir = c.uraian[c.uraian.length - 1];
+  const dL = luasDenahMesin(c.silang);
+  const cm2 = (n: number) => `${n} cm²`;
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "bagian",
+      tanya: `${c.konteks}. Bangun gabungan itu diurai menjadi ${c.uraian.length} bagian. Bagian pertama berbentuk ${NAMA_JENIS[pertama.jenis]} dengan ${ukuranBagian(pertama)}. Luas bagian pertama adalah …`,
+      opsi: susunOpsi(cm2(luas[0]), pengecohBagian(pertama).map(cm2), idx),
+      benar: cm2(luas[0]),
+      petunjuk: `Uraikan dulu menjadi bagian yang punya rumus. Bagian pertama ${NAMA_JENIS[pertama.jenis]}, jadi pakai rumus luas ${NAMA_JENIS[pertama.jenis]}.`,
+    },
+    {
+      stasiun: "rumus",
+      tanya: `Bagian terakhir berbentuk ${NAMA_JENIS[terakhir.jenis]} dengan ${ukuranBagian(terakhir)}. Luas bagian terakhir adalah …`,
+      opsi: susunOpsi(cm2(luas[luas.length - 1]), pengecohBagian(terakhir).map(cm2), idx + 1),
+      benar: cm2(luas[luas.length - 1]),
+      petunjuk: terakhir.jenis === "segitiga" ? `Luas segitiga setengah dari alas kali tinggi, yaitu ½ × ${terakhir.a} × ${terakhir.t}. Jangan lupa setengah.` : `Luas ${NAMA_JENIS[terakhir.jenis]} adalah ${terakhir.a} × ${terakhir.t}.`,
+    },
+    {
+      stasiun: "jumlah",
+      tanya: `Luas semua bagian berturut-turut ${luas.map(cm2).join(", ")}. Luas seluruh bangun gabungan adalah …`,
+      opsi: susunOpsi(cm2(total), pengecoh(total, [total - terkecil, total + terkecil]).map(cm2), idx + 2),
+      benar: cm2(total),
+      petunjuk: `Jumlahkan luas semua bagian: ${luas.join(" + ")}. Jangan ada bagian yang terlewat atau dihitung dua kali.`,
+    },
+    {
+      stasiun: "silang",
+      tanya: `Denah L berasal dari persegi panjang ${c.silang.W} cm kali ${c.silang.H} cm dengan takik ${c.silang.w} cm kali ${c.silang.h} cm. Yohana memotongnya mendatar, Komang memotongnya tegak. Luas denah adalah …`,
+      opsi: susunOpsi(cm2(dL), pengecoh(dL, [c.silang.W * c.silang.H, c.silang.W * (c.silang.H - c.silang.h)]).map(cm2), idx + 3),
+      benar: cm2(dL),
+      petunjuk: "Uraikan denah menjadi dua persegi panjang, lalu jumlahkan. Cara Yohana dan cara Komang memberi luas yang sama.",
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `Bagian pertama luasnya ${luas[0]} cm². Bagian terakhir luasnya ${luas[luas.length - 1]} cm². Seluruh bangun ${luas.join(" + ")} = ${total} cm². Denah L luasnya ${dL} cm², dengan cara apa pun dipotong.`,
+    langkah,
+  };
+}
+
+export const MESIN_GABUNGAN: DefMesin = {
+  id: "mesin-gabungan-k5b5",
+  judul: "Mesin Gabungan",
+  selesaiId: "mesin-gabungan",
+  stasiun: STASIUN_GABUNGAN,
+  kasus: KASUS_GABUNGAN.map(kasusMesinGabungan),
+};
+
+export const SEMUA_MESIN_K5B5 = [MESIN_PETAK, MESIN_RUMUS, MESIN_GABUNGAN];

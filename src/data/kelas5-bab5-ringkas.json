@@ -210,6 +210,98 @@
           }
         ]
       }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Gabungan",
+          "ikon": "🧩",
+          "suara": "Ini peta luas bangun gabungan. Kita belajar mengurai bangun menjadi bagian, menjumlahkan luas bagian, memeriksa dengan dua cara, dan bagian yang menumpuk. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "urai",
+            "judul": "Urai bagian",
+            "ikon": "✂️",
+            "ringkas": "Bagi menjadi bangun yang punya rumus.",
+            "suara": "Urai bagian. Bangun gabungan dibagi menjadi bangun yang sudah punya rumus, seperti persegi panjang, jajargenjang, dan segitiga."
+          },
+          {
+            "id": "jumlah",
+            "judul": "Jumlahkan",
+            "ikon": "➕",
+            "ringkas": "Luas tiap bagian, lalu dijumlah.",
+            "suara": "Jumlahkan. Hitung luas tiap bagian dengan rumusnya, lalu jumlahkan semuanya. Tidak ada bagian yang terlewat."
+          },
+          {
+            "id": "silang",
+            "judul": "Cek dua cara",
+            "ikon": "🔀",
+            "ringkas": "Dua cara, hasil harus sama.",
+            "suara": "Cek dua cara. Yohana dan Komang membagi bangun dengan cara berbeda. Bangunnya sama, jadi luasnya juga harus sama."
+          },
+          {
+            "id": "tumpang",
+            "judul": "Menumpuk",
+            "ikon": "🧱",
+            "ringkas": "Bagian menumpuk dihitung satu kali.",
+            "suara": "Menumpuk. Bila dua bangun saling menumpuk, bagian yang menumpuk jangan dihitung dua kali. Kurangi dengan luas bagian itu."
+          }
+        ],
+        "kartu": [
+          { "id": "c-bagi", "teks": "Bagi denah menjadi dua persegi panjang", "ikon": "✂️", "cabang": "urai", "petunjuk": "Membagi bangun itu soal urai bagian. Coba cabang lain." },
+          { "id": "c-rumus", "teks": "Tiap bagian punya rumus luas", "ikon": "📐", "cabang": "urai", "petunjuk": "Bagian yang punya rumus itu soal urai bagian. Coba cabang lain." },
+          { "id": "c-dua", "teks": "12 + 8 = 20 cm²", "ikon": "➕", "cabang": "jumlah", "petunjuk": "Menjumlah luas bagian itu soal jumlahkan. Coba cabang lain." },
+          { "id": "c-tiga", "teks": "15 + 10 + 5 = 30 cm²", "ikon": "3️⃣", "cabang": "jumlah", "petunjuk": "Menjumlah tiga bagian itu soal jumlahkan. Coba cabang lain." },
+          { "id": "c-yohana", "teks": "Cara Yohana: 10 + 6 = 16", "ikon": "👧", "cabang": "silang", "petunjuk": "Cara membagi itu soal cek dua cara. Coba cabang lain." },
+          { "id": "c-komang", "teks": "Cara Komang: 12 + 4 = 16", "ikon": "🧒", "cabang": "silang", "petunjuk": "Cara membagi itu soal cek dua cara. Coba cabang lain." },
+          { "id": "c-irisan", "teks": "Bagian menumpuk jangan dihitung 2 kali", "ikon": "🚫", "cabang": "tumpang", "petunjuk": "Bagian yang menumpuk itu soal menumpuk. Coba cabang lain." },
+          { "id": "c-kurang", "teks": "12 + 12 − 6 = 18 cm²", "ikon": "➖", "cabang": "tumpang", "petunjuk": "Mengurangi bagian menumpuk itu soal menumpuk. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Luas Bangun Gabungan",
+        "suara": "Ini tiga panel tentang bangun gabungan. Ketuk kotaknya untuk membuka, lalu lihat langkah urai dan jumlah, dua cara yang hasilnya sama, serta bagian yang menumpuk.",
+        "panel": [
+          {
+            "id": "c-langkah-info",
+            "tipe": "buka",
+            "judul": "Urai lalu jumlahkan",
+            "ide": "Tiga langkah menghitung gabungan.",
+            "suara": "Ada tiga langkah menghitung bangun gabungan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "urai", "label": "Urai", "ikon": "✂️", "isi": "Bagi jadi bagian.", "suara": "Bagi bangun menjadi bagian yang punya rumus, misalnya dua persegi panjang.", "visual": { "jenis": "teks", "isi": "bagian 1 + bagian 2" } },
+              { "id": "hitung", "label": "Hitung", "ikon": "🔢", "isi": "Luas tiap bagian.", "suara": "Hitung luas tiap bagian dengan rumusnya. Persegi panjang empat kali tiga sama dengan dua belas, dan empat kali dua sama dengan delapan.", "visual": { "jenis": "tabel-menurun", "kepala": ["Bagian", "Luas"], "baris": [["pertama", 12], ["kedua", 8]] } },
+              { "id": "jumlah", "label": "Jumlah", "ikon": "➕", "isi": "Jumlahkan semua luas.", "suara": "Jumlahkan luas semua bagian. Dua belas ditambah delapan sama dengan dua puluh sentimeter persegi.", "visual": { "jenis": "teks", "isi": "12 + 8 = 20 cm²" } }
+            ]
+          },
+          {
+            "id": "c-silang-info",
+            "tipe": "banding",
+            "judul": "Dua cara, hasil sama",
+            "ide": "Cara beda, luas sama.",
+            "suara": "Lihat dua cara membagi denah L yang sama.",
+            "sisi": [
+              { "id": "yohana", "nama": "Cara Yohana", "ikon": "👧", "catatan": "Dipotong mendatar.", "suara": "Cara Yohana memotong mendatar. Sepuluh ditambah enam sama dengan enam belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "10 + 6 = 16" } },
+              { "id": "komang", "nama": "Cara Komang", "ikon": "🧒", "catatan": "Dipotong tegak.", "suara": "Cara Komang memotong tegak. Dua belas ditambah empat sama dengan enam belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "12 + 4 = 16" } }
+            ],
+            "kesimpulan": "Luas denah sama, 16 cm²."
+          },
+          {
+            "id": "c-tumpang-info",
+            "tipe": "buka",
+            "judul": "Bagian yang menumpuk",
+            "ide": "Hitung satu kali, bukan dua.",
+            "suara": "Ada tiga langkah bila dua bangun saling menumpuk. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "irisan", "label": "Menumpuk", "ikon": "🧱", "isi": "Daerah milik kedua bangun.", "suara": "Cari daerah yang dimiliki kedua bangun sekaligus. Itu bagian yang menumpuk, luasnya enam sentimeter persegi.", "visual": { "jenis": "teks", "isi": "2 × 3 = 6 cm²" } },
+              { "id": "jumlah", "label": "Jumlah", "ikon": "➕", "isi": "Luas kedua bangun.", "suara": "Jumlahkan luas kedua bangun. Dua belas ditambah dua belas sama dengan dua puluh empat. Ini masih terlalu besar.", "visual": { "jenis": "teks", "isi": "12 + 12 = 24" } },
+              { "id": "kurang", "label": "Kurangi", "ikon": "➖", "isi": "Kurangi bagian menumpuk.", "suara": "Kurangi dengan bagian yang menumpuk. Dua puluh empat dikurangi enam sama dengan delapan belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "24 − 6 = 18 cm²" } }
+            ]
+          }
+        ]
+      }
     }
   }
 }

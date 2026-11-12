@@ -5,23 +5,25 @@
  * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
  *  A Petak : Lab Petak (Tutup, Baris, Potong) + Mesin Petak + Ubin Alun-Alun
  *  B Rumus : Lab Rumus (Kali, Setengah, Trapesium) + Mesin Rumus + Taman Bentuk-Bentuk
+ *  C Gabungan : Lab Gabungan (Uraikan, Silang, Tumpang) + Mesin Gabungan + Denah Yohana dan Komang
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanPetakK5B5A } from "./lab-petak-k5b5a";
 import type { KeadaanRumusK5B5B } from "./lab-rumus-k5b5b";
+import type { KeadaanGabunganK5B5C } from "./lab-gabungan-k5b5c";
 
-export type KeadaanK5Bab5 = KeadaanPetakK5B5A | KeadaanRumusK5B5B | KeadaanSelesai;
-export type HurufMisiK5B5 = "A" | "B";
+export type KeadaanK5Bab5 = KeadaanPetakK5B5A | KeadaanRumusK5B5B | KeadaanGabunganK5B5C | KeadaanSelesai;
+export type HurufMisiK5B5 = "A" | "B" | "C";
 
 const selesai = (k: KeadaanK5Bab5, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
 const pernah = (k: KeadaanK5Bab5, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K5B5 = { A: "ubin-alun", B: "taman-bentuk" } as const;
-export const ID_MESIN_K5B5 = { A: "mesin-petak", B: "mesin-rumus" } as const;
+export const ID_SKENARIO_K5B5 = { A: "ubin-alun", B: "taman-bentuk", C: "denah-yohana-komang" } as const;
+export const ID_MESIN_K5B5 = { A: "mesin-petak", B: "mesin-rumus", C: "mesin-gabungan" } as const;
 
 export const MISI_A: DefMisi<KeadaanK5Bab5>[] = [
   { id: "a-tutup-lima", teks: "Di Tutup, tutup daerah lima petak dan dua petak sampai rapat, periksa tutupannya, lalu pilih luasnya.", wajib: true, cek: (k) => pernah(k, "petak", "tutup:0") },
@@ -49,5 +51,18 @@ export const MISI_B: DefMisi<KeadaanK5Bab5>[] = [
   { id: "b-jajar-enam", teks: "Di Kali, pada jajargenjang beralas enam, pilih tinggi yang tegak lurus alas, lalu hitung luasnya.", wajib: false, cek: (k) => pernah(k, "rumus", "kali:3") },
 ];
 
-const DAFTAR: Record<HurufMisiK5B5, DefMisi<KeadaanK5Bab5>[]> = { A: MISI_A, B: MISI_B };
+export const MISI_C: DefMisi<KeadaanK5Bab5>[] = [
+  { id: "c-denah-rumah", teks: "Di Uraikan, pada denah rumah, hitung luas kedua bagian persegi panjang, lalu jumlahkan luas seluruhnya.", wajib: true, cek: (k) => pernah(k, "gabungan", "uraikan:0") },
+  { id: "c-papan-nama", teks: "Di Uraikan, pada papan nama, hitung luas jajargenjang dan segitiga dengan rumusnya, lalu jumlahkan luas seluruhnya.", wajib: true, cek: (k) => pernah(k, "gabungan", "uraikan:1") },
+  { id: "c-tiga-bagian", teks: "Di Uraikan, pada taman tiga bagian, hitung luas ketiga bagian, lalu jumlahkan luas seluruhnya.", wajib: true, cek: (k) => pernah(k, "gabungan", "uraikan:2") },
+  { id: "c-silang", teks: "Di Silang, hitung luas denah L pertama dengan cara satu dan cara dua, lalu periksa bahwa hasil kedua cara sama.", wajib: true, cek: (k) => pernah(k, "gabungan", "silang:0") },
+  { id: "c-tumpang", teks: "Di Tumpang, hitung bagian yang menumpuk, lalu luas gabungan dua persegi panjang empat kali tiga yang saling menumpuk.", wajib: true, cek: (k) => pernah(k, "gabungan", "tumpang:0") },
+  { id: "c-mesin", teks: "Selesaikan Mesin Gabungan sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K5B5.C) },
+  { id: "c-skenario", teks: "Selesaikan skenario Denah Yohana dan Komang sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K5B5.C) },
+  { id: "c-ruang-tamu", teks: "Di Uraikan, pada ruang tamu, hitung luas kedua bagian persegi panjang, lalu jumlahkan luas seluruhnya.", wajib: false, cek: (k) => pernah(k, "gabungan", "uraikan:3") },
+  { id: "c-pintu", teks: "Di Uraikan, pada pintu gerbang, hitung luas persegi panjang dan segitiga, lalu jumlahkan luas seluruhnya.", wajib: false, cek: (k) => pernah(k, "gabungan", "uraikan:4") },
+  { id: "c-silang-dua", teks: "Di Silang, hitung luas denah L kedua dengan cara satu dan cara dua, lalu periksa bahwa hasil kedua cara sama.", wajib: false, cek: (k) => pernah(k, "gabungan", "silang:1") },
+];
+
+const DAFTAR: Record<HurufMisiK5B5, DefMisi<KeadaanK5Bab5>[]> = { A: MISI_A, B: MISI_B, C: MISI_C };
 export const daftarMisiK5Bab5 = (huruf: string): DefMisi<KeadaanK5Bab5>[] => DAFTAR[huruf as HurufMisiK5B5] ?? MISI_A;
