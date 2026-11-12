@@ -12,6 +12,11 @@
  *    Beda: jumlah dengan KPK (pengecoh: pembilang dan penyebut dijumlahkan, penyebut belum disamakan).
  *    Sederhana: bentuk paling sederhana (pengecoh: hanya pembilang dibagi, hanya penyebut dibagi, belum tuntas).
  *    Campuran: bentuk campuran (pengecoh: bulat dan sisa tertukar, sisa dibagi pembilang).
+ *  - MESIN_SISA (C): Sama → Beda → Sederhana → Periksa   (kasus Lukis, Kertas, Kebun)
+ *    Sama: selisih dua pecahan berpenyebut sama (pengecoh: penyebut ikut dikurangi, pembilang dijumlahkan).
+ *    Beda: selisih dengan KPK (pengecoh: pembilang dan penyebut dikurangi, pembilang tanpa menyamakan penyebut).
+ *    Sederhana: bentuk paling sederhana (pengecoh: hanya pembilang dibagi, hanya penyebut dibagi, belum tuntas).
+ *    Periksa: sisa ditambah bagian yang diambil (pengecoh: pembilang dan penyebut dijumlahkan langsung, hanya sisa).
  * Data dari Buku Siswa Kelas V Bab 3 Sub-Bab A (lompatan Yohana, banding pecahan, campuran ke biasa).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b3.mjs.
  */
@@ -211,4 +216,89 @@ export const MESIN_JUMLAH: DefMesin = {
   kasus: KASUS_JUMLAH.map(kasusMesinJumlah),
 };
 
-export const SEMUA_MESIN_K5B3 = [MESIN_BANDING, MESIN_JUMLAH];
+/* ------------------------------ C: Mesin Sisa ------------------------------ */
+
+/** sa: dua pecahan penyebut sama. be: penyebut beda (selisih sudah paling sederhana). se: selisih yang disederhanakan. pk: selisih yang diperiksa dengan penjumlahan. Pecahan pertama selalu lebih besar. */
+export type KasusSisa = { id: string; nama: string; sa: [Pec, Pec]; be: [Pec, Pec]; se: [Pec, Pec]; pk: [Pec, Pec] };
+export const KASUS_SISA: KasusSisa[] = [
+  { id: "lukis", nama: "Lukis Lukas dan Yohana", sa: [{ p: 2, q: 3 }, { p: 1, q: 3 }], be: [{ p: 2, q: 3 }, { p: 1, q: 2 }], se: [{ p: 6, q: 8 }, { p: 2, q: 8 }], pk: [{ p: 5, q: 6 }, { p: 1, q: 3 }] },
+  { id: "kertas", nama: "Kertas Asep", sa: [{ p: 5, q: 7 }, { p: 2, q: 7 }], be: [{ p: 3, q: 4 }, { p: 1, q: 6 }], se: [{ p: 9, q: 10 }, { p: 3, q: 10 }], pk: [{ p: 7, q: 8 }, { p: 1, q: 4 }] },
+  { id: "kebun", nama: "Kebun Sekolah", sa: [{ p: 7, q: 8 }, { p: 3, q: 8 }], be: [{ p: 1, q: 2 }, { p: 1, q: 5 }], se: [{ p: 7, q: 12 }, { p: 1, q: 4 }], pk: [{ p: 2, q: 3 }, { p: 1, q: 6 }] },
+];
+
+export const STASIUN_SISA: StasiunDef[] = [
+  { id: "sama", nama: "Sama", ikon: "🟦" },
+  { id: "beda", nama: "Beda", ikon: "🧩" },
+  { id: "sederhana", nama: "Sederhana", ikon: "✂️" },
+  { id: "periksa", nama: "Periksa", ikon: "🔎" },
+];
+
+/** Selisih dua pecahan dengan penyebut KPK, belum disederhanakan. */
+export const selisihKasus = (a: Pec, b: Pec): Pec => {
+  const k = kpk(a.q, b.q);
+  return { p: a.p * (k / a.q) - b.p * (k / b.q), q: k };
+};
+
+export function kasusMesinSisa(c: KasusSisa, idx: number): KasusMesin {
+  const [sa, sb] = c.sa;
+  const [ba, bb] = c.be;
+  const [ea, eb] = c.se;
+  const [pa, pb] = c.pk;
+  const hasilSama: Pec = { p: sa.p - sb.p, q: sa.q };
+  const k = kpk(ba.q, bb.q);
+  const hasilBeda = selisihKasus(ba, bb);
+  const hasilSe = selisihKasus(ea, eb);
+  const g = fpb(hasilSe.p, hasilSe.q);
+  let sebagian = 0;
+  for (let d = 2; d < g; d += 1) if (g % d === 0) { sebagian = d; break; }
+  const simpel = teks({ p: hasilSe.p / g, q: hasilSe.q / g });
+  const selisihPk = selisihKasus(pa, pb);
+  const gp = fpb(selisihPk.p, selisihPk.q);
+  const sisaPk: Pec = { p: selisihPk.p / gp, q: selisihPk.q / gp };
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "sama",
+      tanya: `Dari ${teks(sa)} diambil ${teks(sb)}. Penyebutnya sudah sama. Sisanya …`,
+      opsi: susunOpsi(teks(hasilSama), uniqTeks(teks(hasilSama), [`${sa.p - sb.p}/${sa.q - sb.q}`, `${sa.p + sb.p}/${sa.q}`, `${sb.p}/${sa.q}`, `${sa.p}/${sa.q}`]), idx),
+      benar: teks(hasilSama),
+      petunjuk: `Penyebut tetap ${sa.q}. Kurangkan pembilangnya saja: ${sa.p} dan ${sb.p}.`,
+    },
+    {
+      stasiun: "beda",
+      tanya: `Dari ${teks(ba)} diambil ${teks(bb)}. Samakan penyebut dengan KPK, lalu kurangkan pembilangnya. Sisanya …`,
+      opsi: susunOpsi(teks(hasilBeda), uniqTeks(teks(hasilBeda), [`${Math.abs(ba.p - bb.p)}/${Math.abs(ba.q - bb.q)}`, `${ba.p - bb.p}/${k}`, `${ba.p - bb.p}/${Math.max(ba.q, bb.q)}`, `${hasilBeda.p + 1}/${k}`]), idx + 1),
+      benar: teks(hasilBeda),
+      petunjuk: `KPK dari ${ba.q} dan ${bb.q} adalah ${k}. Ubah kedua pecahan ke penyebut ${k}, lalu kurangkan pembilangnya.`,
+    },
+    {
+      stasiun: "sederhana",
+      tanya: `Hasil pengurangan ${teks(ea)} dan ${teks(eb)} adalah ${teks(hasilSe)}. Bentuk paling sederhananya …`,
+      opsi: susunOpsi(simpel, uniqTeks(simpel, [sebagian > 0 ? `${hasilSe.p / sebagian}/${hasilSe.q / sebagian}` : "", `${hasilSe.p / g}/${hasilSe.q}`, `${hasilSe.p}/${hasilSe.q / g}`].filter((t) => t !== "")), idx + 2),
+      benar: simpel,
+      petunjuk: `Bagi pembilang dan penyebut dengan bilangan terbesar yang membagi keduanya, yaitu ${g}.`,
+    },
+    {
+      stasiun: "periksa",
+      tanya: `${teks(pa)} dikurangi ${teks(pb)} bersisa ${teks(sisaPk)}. Periksa: ${teks(sisaPk)} ditambah ${teks(pb)} sama dengan …`,
+      opsi: susunOpsi(teks(pa), uniqTeks(teks(pa), [`${sisaPk.p + pb.p}/${sisaPk.q + pb.q}`, teks(sisaPk), teks(pb)]), idx + 3),
+      benar: teks(pa),
+      petunjuk: `Samakan penyebut ${sisaPk.q} dan ${pb.q} dahulu, lalu jumlahkan pembilangnya. Hasilnya harus kembali ke pecahan awal.`,
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `${teks(sa)} − ${teks(sb)} = ${teks(hasilSama)}. ${teks(ba)} − ${teks(bb)} = ${teks(hasilBeda)}. ${teks(hasilSe)} disederhanakan menjadi ${simpel}. ${teks(sisaPk)} + ${teks(pb)} = ${teks(pa)}.`,
+    langkah,
+  };
+}
+
+export const MESIN_SISA: DefMesin = {
+  id: "mesin-sisa-k5b3",
+  judul: "Mesin Sisa",
+  selesaiId: "mesin-sisa",
+  stasiun: STASIUN_SISA,
+  kasus: KASUS_SISA.map(kasusMesinSisa),
+};
+
+export const SEMUA_MESIN_K5B3 = [MESIN_BANDING, MESIN_JUMLAH, MESIN_SISA];

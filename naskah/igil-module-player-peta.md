@@ -42,3 +42,4 @@ Migrasi Kelas 4: Bab 5 sudah (`SimulasiK4Bab5`, dua sub-bab A dan B: ciri-ciri b
 Migrasi Kelas 4: Bab 6 sudah (`SimulasiK4Bab6`, dua sub-bab A dan B: piktogram serta diagram batang; dimuat malas lewat `next/dynamic` di registri).
 Migrasi Kelas 5: Bab 1 sudah (`SimulasiK5Bab1`, empat sub-bab A sampai D: nilai tempat, membandingkan dan mengurutkan, komposisi dan dekomposisi, serta operasi hitung; dimuat malas lewat `next/dynamic` di registri).
 Migrasi Kelas 5: Bab 2 sudah (`SimulasiK5Bab2`, lima sub-bab A sampai E: kelipatan, kelipatan persekutuan dan KPK, faktor, faktor persekutuan dan FPB, serta KPK dan FPB dengan faktor prima; dimuat malas lewat `next/dynamic` di registri).
+Migrasi Kelas 5: Bab 3 sudah (`SimulasiK5Bab3`, tiga sub-bab A sampai C: membandingkan dan mengurutkan pecahan, penjumlahan pecahan, dan pengurangan pecahan; dimuat malas lewat `next/dynamic` di registri).

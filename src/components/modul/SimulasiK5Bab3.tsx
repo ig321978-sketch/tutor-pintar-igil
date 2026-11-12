@@ -5,10 +5,11 @@ import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
 import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiLabBandingK5B3 from "./SimulasiLabBandingK5B3";
 import SimulasiLabJumlahK5B3 from "./SimulasiLabJumlahK5B3";
+import SimulasiLabSisaK5B3 from "./SimulasiLabSisaK5B3";
 import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
 import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K5B3A, SKENARIO_K5B3B } from "./skenario-k5b3";
-import { MESIN_BANDING, MESIN_JUMLAH } from "./mesin-data-k5b3";
+import { SKENARIO_K5B3A, SKENARIO_K5B3B, SKENARIO_K5B3C } from "./skenario-k5b3";
+import { MESIN_BANDING, MESIN_JUMLAH, MESIN_SISA } from "./mesin-data-k5b3";
 import { ejaK5B3 } from "./eja-k5b3";
 import type { DefSkenario } from "./skenario-umum";
 import type { DefMesin } from "./mesin-bertahap-k3b1";
@@ -21,25 +22,29 @@ import { MISI_K5B3, NAMA_SIM_K5B3, hurufK5B3, misiAwalK5Bab3, type HurufK5B3 } f
 /* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k5bab3.ts. */
 /*   A Banding : Lab Banding Pecahan + Mesin Banding + Lompat Jauh Yohana   */
 /*   B Jumlah  : Lab Jumlah Arsir + Mesin Jumlah + Martabak dan Wingko Komang */
+/*   C Sisa    : Lab Sisa Arsir + Mesin Sisa + Kertas Lukis Yohana dan Lukas (pencapaian bab) */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
-const SKENARIO: Record<HurufK5B3, DefSkenario> = { A: SKENARIO_K5B3A, B: SKENARIO_K5B3B };
-const MESIN: Record<HurufK5B3, DefMesin> = { A: MESIN_BANDING, B: MESIN_JUMLAH };
+const SKENARIO: Record<HurufK5B3, DefSkenario> = { A: SKENARIO_K5B3A, B: SKENARIO_K5B3B, C: SKENARIO_K5B3C };
+const MESIN: Record<HurufK5B3, DefMesin> = { A: MESIN_BANDING, B: MESIN_JUMLAH, C: MESIN_SISA };
 
 const COBA_MESIN: Record<HurufK5B3, string[]> = {
   A: ["Ketuk stasiun Urut sebelum Garis. Apa kata mesin?", "Mengapa penyebut harus sama sebelum dua pecahan dibandingkan?", "Di garis bilangan, pecahan mana yang paling kanan?"],
   B: ["Ketuk stasiun Campuran sebelum Sama. Apa kata mesin?", "Mengapa penyebut tidak dijumlahkan saat penyebutnya sudah sama?", "Mengapa penyebut harus disamakan dengan KPK sebelum pembilang dijumlahkan?"],
+  C: ["Ketuk stasiun Periksa sebelum Sama. Apa kata mesin?", "Mengapa penyebut tidak dikurangi saat penyebutnya sudah sama?", "Mengapa sisa ditambah bagian yang diambil harus kembali ke pecahan awal?"],
 };
 
 const LAB: Record<HurufK5B3, { id: string; nama: string }> = {
   A: { id: "banding", nama: "Lab Banding Pecahan" },
   B: { id: "jumlah", nama: "Lab Jumlah Arsir" },
+  C: { id: "sisa", nama: "Lab Sisa Arsir" },
 };
 
 function LabSub({ huruf, speakGuru, lapor }: { huruf: HurufK5B3; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab3) => void }) {
   if (huruf === "B") return <SimulasiLabJumlahK5B3 speakGuru={speakGuru} onKeadaan={lapor} />;
+  if (huruf === "C") return <SimulasiLabSisaK5B3 speakGuru={speakGuru} onKeadaan={lapor} />;
   return <SimulasiLabBandingK5B3 speakGuru={speakGuru} onKeadaan={lapor} />;
 }
 

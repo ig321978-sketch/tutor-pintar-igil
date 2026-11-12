@@ -5,6 +5,8 @@ import type { DefSkenario } from "./skenario-umum";
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b3.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K5B3A: Lompat Jauh Yohana (campuran ke biasa, potongan sama panjang, banding, lompatan terjauh)
  *  - SKENARIO_K5B3B: Martabak dan Wingko Komang (penjumlahan penyebut sama dan beda, KPK, menyederhanakan)
+ *  - SKENARIO_K5B3C: Kertas Lukis Yohana dan Lukas (pencapaian bab: banding, KPK, pengurangan penyebut sama dan beda,
+ *    menyederhanakan, memeriksa dengan penjumlahan)
  */
 
 export const SKENARIO_K5B3A: DefSkenario = {
@@ -151,6 +153,92 @@ export const SKENARIO_K5B3B: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Pecahan berpenyebut sama dijumlahkan pada pembilangnya, dan penyebutnya tetap. Bila penyebutnya berbeda, samakan dengan KPK dahulu. Setelah itu sederhanakan hasilnya.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B3C: DefSkenario = {
+  id: "kertas-lukis-k5b3",
+  judul: "Kertas Lukis Yohana dan Lukas",
+  latar: "Bantu Yohana dan Lukas menghitung bagian kertas lukis yang belum mereka warnai.",
+  tokoh: "👧",
+  nama: "Yohana",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Yohana. Aku dan Lukas masing-masing harus melukis 2/3 bagian kertas gambar. Lukas sudah melukis 1/3, dan aku sudah melukis 1/2. Ayo bantu kami menghitung sisa yang belum dilukis!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "lukas",
+      jenis: "pilih",
+      cerita: "Lukas harus melukis 2/3 dan sudah melukis 1/3. Berapa bagian yang belum dilukis Lukas?",
+      opsi: [
+        { teks: "1/0, sebab penyebut juga dikurangi", benar: false, umpan: "Penyebut tidak dikurangi. Potongan kertas tetap sama besar, yaitu per 3." },
+        { teks: "1/3, sebab penyebut tetap 3 dan pembilang dikurangi", benar: true, umpan: "Betul! 2 bagian diambil 1 bagian menyisakan 1 bagian dari 3 bagian." },
+        { teks: "3/3, sebab pembilang dijumlahkan", benar: false, umpan: "Bagian yang sudah dilukis dikurangkan dari bagian yang harus dilukis, bukan digabung." },
+      ],
+    },
+    {
+      id: "banding",
+      jenis: "soal",
+      cerita: "Sebelum menghitung sisa Yohana, kami menyamakan penyebut 2/3 dan 1/2 di papan tulis.",
+      soal: [
+        { teks: "Yang lebih besar: 2/3 atau 1/2?", jawaban: "2/3", opsi: ["1/2", "2/3", "sama besar"] },
+        { teks: "KPK dari 3 dan 2 adalah …", jawaban: "6", opsi: ["5", "6", "12"] },
+        { teks: "Dengan penyebut 6, 1/2 ditulis …", jawaban: "3/6", opsi: ["2/6", "3/6", "1/6"] },
+      ],
+      sukses: "Hebat! 2/3 sama dengan 4/6 dan 1/2 sama dengan 3/6. Penyebutnya sudah sama.",
+      salah: "Hmm, bandingkan setelah penyebutnya sama. Coba lagi.",
+    },
+    {
+      id: "sudah",
+      jenis: "hitung",
+      cerita: "Yohana sudah melukis 1/2, yaitu 3/6 kertas. Tiap bagian per enam yang sudah dilukis diberi satu stik.",
+      tanya: "Ketuk semua stik. Berapa bagian per enam yang sudah dilukis Yohana?",
+      objek: "stik",
+      jumlah: 3,
+      sukses: "Betul! Ada 3 bagian per enam, sama dengan 1/2.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "sisa",
+      jenis: "isi",
+      cerita: "Yohana harus melukis 4/6 dan sudah melukis 3/6. Masukkan satu stik untuk tiap bagian per enam yang belum dilukis Yohana.",
+      objek: "stik",
+      target: 1,
+      maks: 6,
+      sukses: "Pas! Sisanya 1 bagian per enam, jadi 2/3 − 1/2 = 1/6.",
+      kurang: "Belum ada stik. Masih ada bagian yang belum dilukis.",
+      lebih: "Stiknya kebanyakan. 4 bagian diambil 3 bagian menyisakan satu bagian.",
+    },
+    {
+      id: "yohana",
+      jenis: "pilih",
+      cerita: "Yohana harus melukis 2/3 dan sudah melukis 1/2. Berapa bagian yang belum dilukis Yohana?",
+      opsi: [
+        { teks: "1/1, sebab 2 dikurangi 1 dan 3 dikurangi 2", benar: false, umpan: "Penyebut tidak boleh dikurangi langsung. Samakan penyebut dengan KPK dahulu." },
+        { teks: "1/3, sebab 2/3 dikurangi 1/3", benar: false, umpan: "Yohana sudah melukis 1/2, bukan 1/3. Samakan penyebutnya dahulu menjadi per 6." },
+        { teks: "1/6, sebab penyebut disamakan menjadi 6 dan 4 dikurangi 3", benar: true, umpan: "Betul! 4/6 diambil 3/6 menyisakan 1/6." },
+      ],
+    },
+    {
+      id: "periksa",
+      jenis: "soal",
+      cerita: "Lukas memeriksa dan menyederhanakan hasil di papan tulis.",
+      soal: [
+        { teks: "1/3 + 1/3 = …", jawaban: "2/3", opsi: ["2/6", "2/3", "1/3"] },
+        { teks: "6/8 − 2/8 = 4/8, disederhanakan menjadi …", jawaban: "1/2", opsi: ["2/8", "1/2", "4/4"] },
+        { teks: "5/6 − 1/3 = …", jawaban: "1/2", opsi: ["4/3", "1/2", "2/6"] },
+      ],
+      sukses: "Hebat! Sisa ditambah bagian yang diambil kembali ke pecahan awal, dan hasilnya boleh disederhanakan.",
+      salah: "Hmm, samakan penyebutnya, lalu hitung lagi. Coba lagi.",
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Pecahan dibandingkan lewat penyebut yang sama. Pada pengurangan, penyebut yang sama tetap dan pembilang dikurangkan. Bila penyebutnya berbeda, samakan dengan KPK dahulu. Periksa dengan penjumlahan, lalu sederhanakan hasilnya.",
     },
   ],
 };
