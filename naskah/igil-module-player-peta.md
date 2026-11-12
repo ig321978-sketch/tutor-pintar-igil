@@ -35,3 +35,4 @@ Migrasi Kelas 2: Bab 1–8 sudah di `SIMULASI_MATERI` + `RINGKAS_BAB` (`SIMULASI
 Migrasi Kelas 3: Bab 1 sampai Bab 5 sudah (`SimulasiK3Bab1` sampai `SimulasiK3Bab5`, dimuat malas lewat `next/dynamic` di registri).
 
 Migrasi Kelas 4: Bab 1 sudah (`SimulasiK4Bab1`, sembilan sub-bab A sampai I, dimuat malas lewat `next/dynamic` di registri).
+Migrasi Kelas 4: Bab 2 sudah (`SimulasiK4Bab2`, lima sub-bab A sampai E: pecahan pembilang satu, penyebut sama, senilai, desimal, dan persen; dimuat malas lewat `next/dynamic` di registri).
