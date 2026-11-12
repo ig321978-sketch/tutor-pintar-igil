@@ -1,0 +1,206 @@
+{
+  "chapter_id": "mtk-5-bab9",
+  "phase_code": "FASE_C",
+  "grade": 5,
+  "subject": "Matematika",
+  "title": "Bilangan Cacah sampai 1.000.000",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Baca, Tulis, Nilai Tempat",
+          "ikon": "🔢",
+          "suara": "Ini peta membaca, menulis, dan nilai tempat. Kita belajar membaca bilangan dari kiri, menulis bilangan dari kata, tabel enam tempat, serta nilai angka dan satu juta. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "baca",
+            "judul": "Baca bilangan",
+            "ikon": "📖",
+            "ringkas": "Baca dari kiri, ribu dulu.",
+            "suara": "Baca bilangan. Baca dari kiri. Kelompok angka sebelum titik dibaca lebih dulu dan diikuti kata ribu, lalu kelompok sesudah titik. Nol tidak diucapkan."
+          },
+          {
+            "id": "tulis",
+            "judul": "Tulis bilangan",
+            "ikon": "✏️",
+            "ringkas": "Dari kata ke angka, nol ditulis.",
+            "suara": "Tulis bilangan. Dengar kata bilangannya, lalu tulis angkanya. Kolom yang tidak diucapkan tetap diisi nol supaya angka lain tidak bergeser."
+          },
+          {
+            "id": "tempat",
+            "judul": "Tabel tempat",
+            "ikon": "🧮",
+            "ringkas": "Enam kolom, satu angka tiap kolom.",
+            "suara": "Tabel tempat. Ada enam kolom dari kiri: ratus ribuan, puluh ribuan, ribuan, ratusan, puluhan, dan satuan. Setiap angka mengisi tepat satu kolom."
+          },
+          {
+            "id": "nilai",
+            "judul": "Nilai dan sejuta",
+            "ikon": "💎",
+            "ringkas": "Angka kali nilai tempatnya.",
+            "suara": "Nilai dan sejuta. Nilai sebuah angka adalah angkanya dikali nilai tempatnya. Bilangan 999.999 ditambah 1 menjadi 1.000.000, dibaca satu juta."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "a-kiri",
+            "teks": "Baca dari kiri ke kanan",
+            "ikon": "👀",
+            "cabang": "baca",
+            "petunjuk": "Arah membaca itu soal baca bilangan. Coba cabang lain."
+          },
+          {
+            "id": "a-ribu",
+            "teks": "Sebelum titik diikuti kata ribu",
+            "ikon": "📖",
+            "cabang": "baca",
+            "petunjuk": "Cara membaca kelompok itu soal baca bilangan. Coba cabang lain."
+          },
+          {
+            "id": "a-kata",
+            "teks": "Dengar kata, tulis angka",
+            "ikon": "✏️",
+            "cabang": "tulis",
+            "petunjuk": "Menulis dari kata itu soal tulis bilangan. Coba cabang lain."
+          },
+          {
+            "id": "a-nol",
+            "teks": "Nol penyangga tetap ditulis",
+            "ikon": "0️⃣",
+            "cabang": "tulis",
+            "petunjuk": "Nol yang tidak diucapkan itu soal tulis bilangan. Coba cabang lain."
+          },
+          {
+            "id": "a-enam",
+            "teks": "Enam kolom tempat",
+            "ikon": "🧮",
+            "cabang": "tempat",
+            "petunjuk": "Jumlah kolom itu soal tabel tempat. Coba cabang lain."
+          },
+          {
+            "id": "a-satu",
+            "teks": "Satu angka satu kolom",
+            "ikon": "🎯",
+            "cabang": "tempat",
+            "petunjuk": "Isi kolom itu soal tabel tempat. Coba cabang lain."
+          },
+          {
+            "id": "a-kali",
+            "teks": "9 × 100.000 = 900.000",
+            "ikon": "💎",
+            "cabang": "nilai",
+            "petunjuk": "Nilai angka itu soal nilai dan sejuta. Coba cabang lain."
+          },
+          {
+            "id": "a-juta",
+            "teks": "999.999 + 1 = satu juta",
+            "ikon": "➕",
+            "cabang": "nilai",
+            "petunjuk": "Batas bilangan itu soal nilai dan sejuta. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Baca, Tulis, dan Nilai Tempat",
+        "suara": "Ini tiga panel tentang bilangan besar. Ketuk kotaknya untuk membuka, lalu lihat cara membaca, hubungan kata dengan angka, serta nilai tempat dan satu juta.",
+        "panel": [
+          {
+            "id": "a-baca-info",
+            "tipe": "buka",
+            "judul": "Membaca bilangan",
+            "ide": "Baca kelompok kiri, lalu kanan.",
+            "suara": "Ada tiga hal tentang membaca bilangan besar. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "titik",
+                "label": "Titik ribuan",
+                "ikon": "🔹",
+                "isi": "Titik memisahkan kelompok tiga angka.",
+                "suara": "Titik memisahkan ribuan agar mudah dibaca. Bilangan 979.875 punya dua kelompok tiga angka.",
+                "visual": { "jenis": "teks", "isi": "979.875" }
+              },
+              {
+                "id": "ribu",
+                "label": "Kata ribu",
+                "ikon": "📖",
+                "isi": "Kelompok kiri diikuti ribu.",
+                "suara": "Kelompok di kiri titik dibaca sembilan ratus tujuh puluh sembilan, lalu diikuti kata ribu.",
+                "visual": { "jenis": "teks", "isi": "979 ribu" }
+              },
+              {
+                "id": "kanan",
+                "label": "Kelompok kanan",
+                "ikon": "➡️",
+                "isi": "Lalu baca tiga angka terakhir.",
+                "suara": "Setelah kata ribu, baca kelompok di kanan titik: delapan ratus tujuh puluh lima.",
+                "visual": { "jenis": "teks", "isi": "875" }
+              }
+            ]
+          },
+          {
+            "id": "a-kata-info",
+            "tipe": "banding",
+            "judul": "Kata dan angka",
+            "ide": "Satu bilangan, dua cara menulis.",
+            "suara": "Lihat dua cara menulis bilangan yang sama.",
+            "sisi": [
+              {
+                "id": "kata",
+                "nama": "Kata",
+                "ikon": "📝",
+                "catatan": "Lima ratus ribu empat puluh.",
+                "suara": "Dengan kata, bilangan ini ditulis lima ratus ribu empat puluh. Nol tidak diucapkan.",
+                "visual": { "jenis": "teks", "isi": "lima ratus ribu empat puluh" }
+              },
+              {
+                "id": "angka",
+                "nama": "Angka",
+                "ikon": "🔢",
+                "catatan": "Nol tetap ditulis.",
+                "suara": "Dengan angka, bilangan ini ditulis lima ratus ribu empat puluh, yaitu 500.040. Nol tetap ditulis supaya angka lain tidak bergeser.",
+                "visual": { "jenis": "teks", "isi": "500.040" }
+              }
+            ],
+            "kesimpulan": "Nol tetap ditulis di angka."
+          },
+          {
+            "id": "a-tempat-info",
+            "tipe": "buka",
+            "judul": "Nilai tempat",
+            "ide": "Angka kali nilai tempatnya.",
+            "suara": "Ada tiga hal tentang nilai tempat. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "enam",
+                "label": "Enam kolom",
+                "ikon": "🧮",
+                "isi": "Ratus ribuan sampai satuan.",
+                "suara": "Tabel tempat punya enam kolom: ratus ribuan, puluh ribuan, ribuan, ratusan, puluhan, dan satuan.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Tempat", "Nilai"], "baris": [["Ratus ribuan", 100000], ["Puluh ribuan", 10000], ["Ribuan", 1000], ["Ratusan", 100]] }
+              },
+              {
+                "id": "nilai",
+                "label": "Nilai angka",
+                "ikon": "💎",
+                "isi": "Angka 9 di ratus ribuan.",
+                "suara": "Angka 9 di tempat ratus ribuan bernilai sembilan dikali seratus ribu, sama dengan sembilan ratus ribu.",
+                "visual": { "jenis": "teks", "isi": "9 × 100.000 = 900.000" }
+              },
+              {
+                "id": "juta",
+                "label": "Satu juta",
+                "ikon": "➕",
+                "isi": "Tambah 1, semua kolom jadi nol.",
+                "suara": "Sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan ditambah satu sama dengan satu juta.",
+                "visual": { "jenis": "teks", "isi": "999.999 + 1 = 1.000.000" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
