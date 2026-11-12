@@ -1,0 +1,175 @@
+{
+  "chapter_id": "mtk-4-bab2",
+  "phase_code": "FASE_B",
+  "grade": 4,
+  "subject": "Matematika",
+  "title": "Pecahan",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": { "judul": "Pecahan Pembilang Satu", "ikon": "🍕", "suara": "Ini peta pecahan dengan pembilang satu. Kita belajar bagian sama besar, satu per n, membandingkan, dan letaknya pada garis. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "bagian-sama", "judul": "Bagian sama besar", "ikon": "🔪", "ringkas": "Potong sama besar, hitung semua bagian.", "suara": "Bagian sama besar. Pecahan dimulai dari membagi keseluruhan menjadi bagian yang sama besar. Pizza dipotong empat sama besar punya empat bagian." },
+          { "id": "satu-per-n", "judul": "Satu per n", "ikon": "1️⃣", "ringkas": "Pembilang 1, penyebut banyak bagian.", "suara": "Satu per n. Satu dari empat bagian ditulis satu per empat. Angka di atas garis adalah pembilang, yaitu satu. Angka di bawah garis adalah penyebut, yaitu banyak bagian." },
+          { "id": "banding-unit", "judul": "Membandingkan", "ikon": "⚖️", "ringkas": "Penyebut besar, tiap bagian kecil.", "suara": "Membandingkan. Satu per dua lebih dari satu per empat. Makin banyak bagian, makin kecil tiap bagiannya. Jadi penyebut yang lebih besar membuat pecahan satu per n lebih kecil." },
+          { "id": "di-garis", "judul": "Pada garis", "ikon": "📏", "ringkas": "Satu per n ada antara 0 dan 1.", "suara": "Pada garis. Pada garis dari nol sampai satu, satu per n terletak di tanda pertama setelah nol, bila garis dibagi n sama panjang." }
+        ],
+        "kartu": [
+          { "id": "a-pizza", "teks": "Pizza 4 potong sama besar", "ikon": "🍕", "cabang": "bagian-sama", "petunjuk": "Memotong sama besar itu soal bagian sama besar. Coba cabang lain." },
+          { "id": "a-sama-besar", "teks": "Bagian harus sama besar", "ikon": "⚖️", "cabang": "bagian-sama", "petunjuk": "Syarat bagian itu soal bagian sama besar. Coba cabang lain." },
+          { "id": "a-1-4", "teks": "1 dari 4 bagian ditulis 1/4", "ikon": "1️⃣", "cabang": "satu-per-n", "petunjuk": "Menulis satu bagian dari n itu soal satu per n. Coba cabang lain." },
+          { "id": "a-pembilang", "teks": "Pembilang 1, penyebut 4", "ikon": "🔢", "cabang": "satu-per-n", "petunjuk": "Nama angka pada pecahan itu soal satu per n. Coba cabang lain." },
+          { "id": "a-2-4", "teks": "1/2 lebih dari 1/4", "ikon": "➡️", "cabang": "banding-unit", "petunjuk": "Membandingkan dua pecahan itu soal membandingkan. Coba cabang lain." },
+          { "id": "a-10-5", "teks": "1/10 kurang dari 1/5", "ikon": "⬅️", "cabang": "banding-unit", "petunjuk": "Membandingkan dua pecahan itu soal membandingkan. Coba cabang lain." },
+          { "id": "a-garis-4", "teks": "Garis dibagi 4 sama panjang", "ikon": "📏", "cabang": "di-garis", "petunjuk": "Garis bilangan itu soal pada garis. Coba cabang lain." },
+          { "id": "a-antara", "teks": "1/4 di antara 0 dan 1", "ikon": "📍", "cabang": "di-garis", "petunjuk": "Letak pecahan itu soal pada garis. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Pecahan Pembilang Satu",
+        "suara": "Ini tiga panel tentang pecahan dengan pembilang satu. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-pizza-info", "tipe": "buka", "judul": "Pizza Ibu Guru", "ide": "Satu dari empat bagian sama besar.",
+            "suara": "Ada tiga hal tentang pizza Ibu Guru. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "potong", "label": "4 potong", "ikon": "🍕", "isi": "Dipotong sama besar.", "suara": "Pizza dipotong menjadi empat bagian sama besar.", "visual": { "jenis": "teks", "isi": "4 bagian sama besar" } },
+              { "id": "satu", "label": "1 dari 4", "ikon": "1️⃣", "isi": "Tiap anak mendapat satu bagian.", "suara": "Tiap anak mendapat satu dari empat bagian. Ditulis satu per empat.", "visual": { "jenis": "teks", "isi": "1/4" } },
+              { "id": "baca", "label": "Nama angka", "ikon": "🔢", "isi": "Pembilang 1, penyebut 4.", "suara": "Angka satu di atas garis disebut pembilang. Angka empat di bawah garis disebut penyebut.", "visual": { "jenis": "teks", "isi": "pembilang 1, penyebut 4" } }
+            ]
+          },
+          {
+            "id": "a-banding-info", "tipe": "banding", "judul": "Bawang dan gula Tiara", "ide": "Penyebut kecil, tiap bagian besar.",
+            "suara": "Bandingkan satu per dua kilogram bawang putih dan satu per empat kilogram gula pasir.",
+            "sisi": [
+              { "id": "setengah", "nama": "1/2 kg", "ikon": "🧅", "catatan": "2 bagian, tiap bagian besar.", "suara": "Satu per dua kilogram dibagi dua bagian. Tiap bagian besar.", "visual": { "jenis": "teks", "isi": "bawang putih 1/2 kg" } },
+              { "id": "seperempat", "nama": "1/4 kg", "ikon": "🍚", "catatan": "4 bagian, tiap bagian kecil.", "suara": "Satu per empat kilogram dibagi empat bagian. Tiap bagian lebih kecil.", "visual": { "jenis": "teks", "isi": "gula pasir 1/4 kg" } }
+            ],
+            "kesimpulan": "1/2 lebih dari 1/4: bawang lebih berat dari gula."
+          },
+          {
+            "id": "a-garis-info", "tipe": "buka", "judul": "Pada garis bilangan", "ide": "Makin besar penyebut, makin dekat nol.",
+            "suara": "Ada tiga pecahan pada garis dari nol sampai satu. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "g2", "label": "1/2", "ikon": "2️⃣", "isi": "Di tengah garis.", "suara": "Satu per dua ada di tengah garis antara nol dan satu.", "visual": { "jenis": "teks", "isi": "0 — 1/2 — 1" } },
+              { "id": "g4", "label": "1/4", "ikon": "4️⃣", "isi": "Lebih dekat ke 0.", "suara": "Satu per empat lebih dekat ke nol daripada satu per dua.", "visual": { "jenis": "teks", "isi": "0 — 1/4 — 1/2 — 1" } },
+              { "id": "g10", "label": "1/10", "ikon": "🔟", "isi": "Sangat dekat ke 0.", "suara": "Satu per sepuluh sangat dekat ke nol karena tiap bagiannya kecil.", "visual": { "jenis": "teks", "isi": "0 — 1/10 — … — 1" } }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": { "judul": "Penyebut Sama", "ikon": "🍫", "suara": "Ini peta pecahan dengan penyebut sama. Kita belajar membaca, membandingkan pembilang, mengurutkan, dan cerita tongkat. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "penyebut-sama", "judul": "Penyebut sama", "ikon": "🟰", "ringkas": "Bagian sama besar di kedua batang.", "suara": "Penyebut sama. Dua batang dibagi sama banyak, misalnya sama-sama tiga bagian. Karena bagiannya sama besar, kita bisa langsung membandingkan banyak bagian yang diarsir." },
+          { "id": "banding-pembilang", "judul": "Banding pembilang", "ikon": "⚖️", "ringkas": "Pembilang lebih besar, pecahan lebih besar.", "suara": "Banding pembilang. Bila penyebutnya sama, pecahan yang pembilangnya lebih besar adalah pecahan yang lebih besar. Satu per tiga kurang dari dua per tiga." },
+          { "id": "urutkan", "judul": "Urutkan", "ikon": "📶", "ringkas": "Urutkan lewat pembilangnya saja.", "suara": "Urutkan. Pada penyebut yang sama, cukup urutkan pembilangnya. Satu per lima, dua per lima, tiga per lima, empat per lima." },
+          { "id": "tongkat", "judul": "Cerita tongkat", "ikon": "📏", "ringkas": "3/6 meter lebih panjang dari 2/6.", "suara": "Cerita tongkat. Tongkat Asep tiga per enam meter dan tongkat Azizah dua per enam meter. Tiga lebih besar dari dua, jadi tongkat Asep lebih panjang." }
+        ],
+        "kartu": [
+          { "id": "b-3-bagian", "teks": "Dua batang dibagi 3 bagian", "ikon": "🍫", "cabang": "penyebut-sama", "petunjuk": "Bagian yang sama banyak itu soal penyebut sama. Coba cabang lain." },
+          { "id": "b-per-enam", "teks": "Sama-sama per enam", "ikon": "6️⃣", "cabang": "penyebut-sama", "petunjuk": "Penyebut yang sama itu soal penyebut sama. Coba cabang lain." },
+          { "id": "b-1-3", "teks": "1/3 < 2/3", "ikon": "⬅️", "cabang": "banding-pembilang", "petunjuk": "Membandingkan lewat pembilang itu soal banding pembilang. Coba cabang lain." },
+          { "id": "b-2-10", "teks": "2/10 > 1/10", "ikon": "➡️", "cabang": "banding-pembilang", "petunjuk": "Membandingkan lewat pembilang itu soal banding pembilang. Coba cabang lain." },
+          { "id": "b-1-5", "teks": "1/5, 2/5, 3/5, 4/5", "ikon": "📶", "cabang": "urutkan", "petunjuk": "Susunan dari kecil ke besar itu soal urutkan. Coba cabang lain." },
+          { "id": "b-pembilang-naik", "teks": "Pembilang makin besar, nilai ikut besar", "ikon": "📈", "cabang": "urutkan", "petunjuk": "Urutan lewat pembilang itu soal urutkan. Coba cabang lain." },
+          { "id": "b-asep", "teks": "Asep 3/6 m", "ikon": "👦", "cabang": "tongkat", "petunjuk": "Cerita Asep dan Azizah itu soal cerita tongkat. Coba cabang lain." },
+          { "id": "b-azizah", "teks": "Azizah 2/6 m", "ikon": "👧", "cabang": "tongkat", "petunjuk": "Cerita Asep dan Azizah itu soal cerita tongkat. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Pecahan Penyebut Sama",
+        "suara": "Ini tiga panel tentang pecahan dengan penyebut sama. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "b-aturan", "tipe": "buka", "judul": "Aturan penyebut sama", "ide": "Lihat pembilangnya saja.",
+            "suara": "Ada tiga hal tentang penyebut sama. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "sama", "label": "Penyebut sama", "ikon": "🟰", "isi": "Bagian kedua batang sama besar.", "suara": "Kedua batang dibagi sama banyak, jadi bagiannya sama besar.", "visual": { "jenis": "teks", "isi": "1/3 dan 2/3" } },
+              { "id": "banding", "label": "Banding pembilang", "ikon": "⚖️", "isi": "Pembilang besar, pecahan besar.", "suara": "Pembilang satu kurang dari dua. Jadi satu per tiga kurang dari dua per tiga.", "visual": { "jenis": "teks", "isi": "1/3 < 2/3" } },
+              { "id": "sepuluh", "label": "Penyebut 10", "ikon": "🔟", "isi": "2/10 lebih dari 1/10.", "suara": "Dua per sepuluh lebih dari satu per sepuluh, karena dua bagian lebih banyak dari satu bagian.", "visual": { "jenis": "teks", "isi": "2/10 > 1/10" } }
+            ]
+          },
+          {
+            "id": "b-beda-banding", "tipe": "banding", "judul": "Penyebut sama atau beda", "ide": "Pembilang hanya cukup bila penyebut sama.",
+            "suara": "Bandingkan dua pasang pecahan. Pada satu pasang penyebutnya sama, pada pasangan lain berbeda.",
+            "sisi": [
+              { "id": "sama2", "nama": "Penyebut sama", "ikon": "✅", "catatan": "3/6 > 2/6: lihat pembilang.", "suara": "Tiga per enam dan dua per enam punya penyebut sama. Tiga lebih dari dua, jadi tiga per enam lebih besar.", "visual": { "jenis": "teks", "isi": "3/6 > 2/6" } },
+              { "id": "beda", "nama": "Penyebut beda", "ikon": "⚠️", "catatan": "1/2 dan 1/4: pembilang sama, nilai beda.", "suara": "Satu per dua dan satu per empat punya pembilang sama, tetapi bagiannya tidak sama besar. Jadi pembilang saja tidak cukup.", "visual": { "jenis": "teks", "isi": "1/2 > 1/4" } }
+            ],
+            "kesimpulan": "Pembilang menentukan hanya bila penyebutnya sama."
+          },
+          {
+            "id": "b-urut-info", "tipe": "buka", "judul": "Urutan penyebut 5", "ide": "Pembilang naik, pecahan naik.",
+            "suara": "Ada tiga hal tentang mengurutkan pecahan berpenyebut lima. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "naik", "label": "Dari terkecil", "ikon": "📶", "isi": "1/5, 2/5, 3/5, 4/5.", "suara": "Dari terkecil: satu per lima, dua per lima, tiga per lima, empat per lima.", "visual": { "jenis": "teks", "isi": "1/5 < 2/5 < 3/5 < 4/5" } },
+              { "id": "turun", "label": "Dari terbesar", "ikon": "📉", "isi": "4/5, 3/5, 2/5, 1/5.", "suara": "Dari terbesar: empat per lima, tiga per lima, dua per lima, satu per lima.", "visual": { "jenis": "teks", "isi": "4/5 > 3/5 > 2/5 > 1/5" } },
+              { "id": "tongkat", "label": "Tongkat", "ikon": "📏", "isi": "Asep 3/6 m, Azizah 2/6 m.", "suara": "Tongkat Asep tiga per enam meter lebih panjang daripada tongkat Azizah dua per enam meter.", "visual": { "jenis": "teks", "isi": "3/6 m > 2/6 m" } }
+            ]
+          }
+        ]
+      }
+    },
+    "C": {
+      "peta": {
+        "pusat": { "judul": "Pecahan Senilai", "ikon": "🟰", "suara": "Ini peta pecahan senilai. Kita belajar nilai sama dengan tulisan berbeda, mengalikan, membagi, dan menyederhanakan. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "senilai", "judul": "Senilai", "ikon": "🟰", "ringkas": "Nilai sama, tulisan berbeda.", "suara": "Senilai. Dua pecahan senilai bila daerah arsirnya sama luas, walau tulisannya berbeda. Dua per enam sama dengan satu per tiga." },
+          { "id": "kali", "judul": "Dikali bentuk satu", "ikon": "✖️", "ringkas": "Kali pembilang dan penyebut sama-sama.", "suara": "Dikali bentuk satu. Kalikan pembilang dan penyebut dengan bilangan yang sama. Satu per tiga dikali dua per dua sama dengan dua per enam." },
+          { "id": "bagi", "judul": "Dibagi bilangan sama", "ikon": "➗", "ringkas": "Bagi pembilang dan penyebut sama-sama.", "suara": "Dibagi bilangan sama. Bagi pembilang dan penyebut dengan bilangan yang sama. Dua per enam dibagi dua sama dengan satu per tiga." },
+          { "id": "sederhana", "judul": "Sederhana", "ikon": "✨", "ringkas": "Bagi dengan FPB, bentuk paling sederhana.", "suara": "Sederhana. Pecahan paling sederhana didapat dengan membagi pembilang dan penyebut dengan FPB. Empat per enam belas menjadi satu per empat." }
+        ],
+        "kartu": [
+          { "id": "c-coklat", "teks": "Putu: 2/6 sama luas dengan 1/3", "ikon": "🍫", "cabang": "senilai", "petunjuk": "Luas yang sama itu soal senilai. Coba cabang lain." },
+          { "id": "c-lipat", "teks": "Lipat kertas: 1/4 = 4/16", "ikon": "📄", "cabang": "senilai", "petunjuk": "Gambar yang sama luas itu soal senilai. Coba cabang lain." },
+          { "id": "c-kali-2", "teks": "1/3 × 2/2 = 2/6", "ikon": "✖️", "cabang": "kali", "petunjuk": "Mengalikan pembilang dan penyebut itu soal dikali bentuk satu. Coba cabang lain." },
+          { "id": "c-keduanya", "teks": "Ubah pembilang dan penyebut keduanya", "ikon": "🔁", "cabang": "kali", "petunjuk": "Mengubah keduanya itu soal dikali bentuk satu. Coba cabang lain." },
+          { "id": "c-bagi-2", "teks": "2/6 : 2/2 = 1/3", "ikon": "➗", "cabang": "bagi", "petunjuk": "Membagi pembilang dan penyebut itu soal dibagi bilangan sama. Coba cabang lain." },
+          { "id": "c-6-12", "teks": "6/12 dibagi 6 menjadi 1/2", "ikon": "6️⃣", "cabang": "bagi", "petunjuk": "Membagi dengan bilangan sama itu soal dibagi bilangan sama. Coba cabang lain." },
+          { "id": "c-fpb", "teks": "FPB 4/16 adalah 4", "ikon": "🔢", "cabang": "sederhana", "petunjuk": "Bagi dengan FPB itu soal sederhana. Coba cabang lain." },
+          { "id": "c-1-4", "teks": "4/16 paling sederhana 1/4", "ikon": "✨", "cabang": "sederhana", "petunjuk": "Bentuk paling sederhana itu soal sederhana. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Pecahan Senilai",
+        "suara": "Ini tiga panel tentang pecahan senilai. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "c-coklat-info", "tipe": "buka", "judul": "Coklat Putu", "ide": "Dua gambar sama luas, tulisan beda.",
+            "suara": "Ada tiga hal tentang coklat Putu. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "satu", "label": "Coklat pertama", "ikon": "🍫", "isi": "Dibagi 6, Putu dapat 2/6.", "suara": "Coklat pertama dibagi enam. Putu mendapat dua per enam.", "visual": { "jenis": "teks", "isi": "2/6" } },
+              { "id": "dua", "label": "Coklat kedua", "ikon": "🍫", "isi": "Dibagi 3, Putu dapat 1/3.", "suara": "Coklat kedua dibagi tiga. Putu mendapat satu per tiga.", "visual": { "jenis": "teks", "isi": "1/3" } },
+              { "id": "sama", "label": "Sama luas", "ikon": "🟰", "isi": "2/6 = 1/3.", "suara": "Daerah coklat Putu sama luas. Jadi dua per enam sama dengan satu per tiga.", "visual": { "jenis": "teks", "isi": "2/6 = 1/3" } }
+            ]
+          },
+          {
+            "id": "c-ubah-banding", "tipe": "banding", "judul": "Ubah keduanya atau satu", "ide": "Ubah pembilang dan penyebut bersama.",
+            "suara": "Bandingkan dua cara mengubah satu per tiga. Hanya satu yang menghasilkan pecahan senilai.",
+            "sisi": [
+              { "id": "keduanya", "nama": "Ubah keduanya", "ikon": "✅", "catatan": "1/3 → 2/6: senilai.", "suara": "Pembilang dan penyebut sama-sama dikali dua. Satu per tiga menjadi dua per enam, senilai.", "visual": { "jenis": "teks", "isi": "1/3 = 2/6" } },
+              { "id": "satu", "nama": "Ubah satu saja", "ikon": "❌", "catatan": "1/3 → 2/3: tidak senilai.", "suara": "Kalau hanya pembilang dikali dua, hasilnya dua per tiga. Itu lebih besar, tidak senilai.", "visual": { "jenis": "teks", "isi": "1/3 ≠ 2/3" } }
+            ],
+            "kesimpulan": "Ubah pembilang dan penyebut dengan bilangan sama."
+          },
+          {
+            "id": "c-bentuk", "tipe": "buka", "judul": "Bentuk senilai setengah", "ide": "Satu nilai, banyak tulisan.",
+            "suara": "Ada tiga bentuk senilai untuk satu per dua. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "b1", "label": "1/2", "ikon": "1️⃣", "isi": "Satu dari dua bagian.", "suara": "Satu per dua adalah satu dari dua bagian.", "visual": { "jenis": "teks", "isi": "1/2" } },
+              { "id": "b2", "label": "2/4", "ikon": "2️⃣", "isi": "Dua dari empat bagian.", "suara": "Dua per empat sama luas dengan satu per dua.", "visual": { "jenis": "teks", "isi": "2/4 = 1/2" } },
+              { "id": "b3", "label": "3/6", "ikon": "3️⃣", "isi": "Tiga dari enam bagian.", "suara": "Tiga per enam juga sama luas dengan satu per dua.", "visual": { "jenis": "teks", "isi": "3/6 = 1/2" } }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
