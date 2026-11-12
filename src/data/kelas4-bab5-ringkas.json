@@ -1,0 +1,109 @@
+{
+  "chapter_id": "mtk-4-bab5",
+  "phase_code": "FASE_B",
+  "grade": 4,
+  "subject": "Matematika",
+  "title": "Bangun Datar",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Ciri-Ciri Bangun Datar",
+          "ikon": "🔺",
+          "suara": "Ini peta ciri-ciri bangun datar. Kita belajar segi banyak, beraturan, ciri segitiga, dan ciri segiempat. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "segi",
+            "judul": "Segi banyak",
+            "ikon": "🔷",
+            "ringkas": "Tertutup, dibatasi ruas garis lurus.",
+            "suara": "Segi banyak. Bangun tertutup yang dibatasi paling sedikit tiga ruas garis lurus. Namanya mengikuti banyak sisi."
+          },
+          {
+            "id": "beraturan",
+            "judul": "Beraturan",
+            "ikon": "✅",
+            "ringkas": "Semua sisi dan sudut sama.",
+            "suara": "Segi banyak beraturan. Semua sisinya sama panjang dan semua sudutnya sama besar, seperti persegi."
+          },
+          {
+            "id": "segitiga",
+            "judul": "Segitiga",
+            "ikon": "📐",
+            "ringkas": "Dikelompokkan menurut sisi dan sudut.",
+            "suara": "Segitiga. Menurut sisi ada sama sisi, sama kaki, dan sembarang. Menurut sudut ada lancip, siku-siku, dan tumpul."
+          },
+          {
+            "id": "segiempat",
+            "judul": "Segiempat",
+            "ikon": "⬛",
+            "ringkas": "Bedakan lewat sisi, sudut, dan sejajar.",
+            "suara": "Segiempat. Persegi, persegi panjang, jajargenjang, belah ketupat, layang-layang, dan trapesium dibedakan lewat sisi, sudut siku-siku, dan sisi sejajar."
+          }
+        ],
+        "kartu": [
+          { "id": "a-tutup", "teks": "Tertutup, tepi lurus", "ikon": "🔷", "cabang": "segi", "petunjuk": "Tertutup dan lurus itu syarat segi banyak. Coba cabang lain." },
+          { "id": "a-lingkaran", "teks": "Lingkaran bukan segi banyak", "ikon": "⭕", "cabang": "segi", "petunjuk": "Lingkaran bertepi lengkung, itu soal syarat segi banyak. Coba cabang lain." },
+          { "id": "a-persegi", "teks": "Persegi itu beraturan", "ikon": "🟨", "cabang": "beraturan", "petunjuk": "Sisi dan sudut persegi sama semua. Itu soal beraturan. Coba cabang lain." },
+          { "id": "a-belah", "teks": "Belah ketupat: sisi sama, sudut beda", "ikon": "🔶", "cabang": "beraturan", "petunjuk": "Sisi sama tetapi sudut berbeda itu soal beraturan atau tidak. Coba cabang lain." },
+          { "id": "a-siku", "teks": "Satu sudut siku-siku", "ikon": "📐", "cabang": "segitiga", "petunjuk": "Segitiga siku-siku dikelompokkan menurut sudut. Coba cabang lain." },
+          { "id": "a-kaki", "teks": "Dua sisi sama: sama kaki", "ikon": "🔺", "cabang": "segitiga", "petunjuk": "Sama kaki itu jenis segitiga menurut sisi. Coba cabang lain." },
+          { "id": "a-trapesium", "teks": "Trapesium: 1 pasang sejajar", "ikon": "🛤️", "cabang": "segiempat", "petunjuk": "Sisi sejajar trapesium itu ciri segiempat. Coba cabang lain." },
+          { "id": "a-jajar", "teks": "Jajargenjang: 2 pasang sejajar", "ikon": "▱", "cabang": "segiempat", "petunjuk": "Dua pasang sisi sejajar itu ciri segiempat. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Ciri-Ciri Bangun Datar",
+        "suara": "Ini tiga panel tentang ciri bangun datar. Ketuk kotaknya untuk membuka, lalu bandingkan dua bangun.",
+        "panel": [
+          {
+            "id": "a-segi-info",
+            "tipe": "buka",
+            "judul": "Segi banyak",
+            "ide": "Nama segi banyak mengikuti banyak sisi.",
+            "suara": "Ada tiga hal tentang segi banyak. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "tutup", "label": "Tertutup", "ikon": "🔷", "isi": "Tepi lurus dan ujungnya bertemu.", "suara": "Segi banyak tertutup dan dibatasi ruas garis lurus. Lingkaran bukan segi banyak.", "visual": { "jenis": "teks", "isi": "tertutup + lurus" } },
+              {
+                "id": "nama",
+                "label": "Nama",
+                "ikon": "🏷️",
+                "isi": "Banyak sisi memberi nama.",
+                "suara": "Tiga sisi segitiga, empat sisi segiempat, lima sisi segilima, enam sisi segienam.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Bangun", "Sisi"], "baris": [["segitiga", 3], ["segiempat", 4], ["segilima", 5], ["segienam", 6]] }
+              },
+              { "id": "beraturan", "label": "Beraturan", "ikon": "✅", "isi": "Semua sisi dan sudut sama.", "suara": "Segi banyak beraturan punya sisi yang sama panjang dan sudut yang sama besar.", "visual": { "jenis": "teks", "isi": "sisi sama, sudut sama" } }
+            ]
+          },
+          {
+            "id": "a-banding-info",
+            "tipe": "banding",
+            "judul": "Persegi dan persegi panjang",
+            "ide": "Keduanya punya empat sudut siku-siku.",
+            "suara": "Bandingkan persegi dan persegi panjang.",
+            "sisi": [
+              { "id": "persegi", "nama": "Persegi", "ikon": "🟨", "catatan": "Semua sisi sama panjang.", "suara": "Persegi punya empat sudut siku-siku dan semua sisinya sama panjang.", "visual": { "jenis": "teks", "isi": "4 sisi sama" } },
+              { "id": "pp", "nama": "Persegi panjang", "ikon": "🟧", "catatan": "Sisi berhadapan sama panjang.", "suara": "Persegi panjang punya empat sudut siku-siku dan sisi yang berhadapan sama panjang.", "visual": { "jenis": "teks", "isi": "berhadapan sama" } }
+            ],
+            "kesimpulan": "Keduanya punya 4 sudut siku-siku dan 2 pasang sisi sejajar."
+          },
+          {
+            "id": "a-segitiga-info",
+            "tipe": "buka",
+            "judul": "Jenis segitiga",
+            "ide": "Lihat sudut terbesar segitiga.",
+            "suara": "Ada tiga jenis segitiga menurut sudut. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "lancip", "label": "Lancip", "ikon": "🔺", "isi": "Semua sudut lebih kecil dari siku.", "suara": "Segitiga lancip. Semua sudutnya lebih kecil dari sudut siku-siku.", "visual": { "jenis": "teks", "isi": "semua < 90°" } },
+              { "id": "siku", "label": "Siku-siku", "ikon": "📐", "isi": "Satu sudut pas pojok buku.", "suara": "Segitiga siku-siku. Satu sudutnya sembilan puluh derajat, pas dengan pojok buku.", "visual": { "jenis": "teks", "isi": "satu = 90°" } },
+              { "id": "tumpul", "label": "Tumpul", "ikon": "📏", "isi": "Satu sudut lebih besar dari siku.", "suara": "Segitiga tumpul. Satu sudutnya lebih besar dari sudut siku-siku.", "visual": { "jenis": "teks", "isi": "satu > 90°" } }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
