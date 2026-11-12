@@ -8,6 +8,12 @@
  *    Banding  : jenis pojok yang tidak berimpit (lancip atau tumpul).
  *    Putuskan : pakai pojok itu atau ganti.
  * Data dari Buku Siswa Kelas V Bab 6 Sub-Bab A (pojok bingkai, penggaris siku, patokan lipatan).
+ *  - MESIN_SUDUT (B): Tunjuk → Banding → Jenis → Jam   (kasus Jam Dinding, Gunting, Kipas Lipat)
+ *    Tunjuk : nama bagian sudut (titik sudut, kaki sudut, daerah sudut).
+ *    Banding: sudut lebih sempit, sama besar, atau lebih lebar dari patokan siku-siku.
+ *    Jenis  : lancip, siku-siku, atau tumpul.
+ *    Jam    : jenis sudut antara dua jarum jam pada pukul bulat.
+ * Data dari Buku Siswa Kelas V Bab 6 Sub-Bab B (jam, gunting, kipas, Tabel 6.3).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b6.mjs.
  */
 import type { DefMesin, KasusMesin, LangkahMesin, StasiunDef } from "./mesin-bertahap-k3b1";
@@ -103,4 +109,92 @@ export const MESIN_POJOK: DefMesin = {
   kasus: KASUS_POJOK.map(kasusMesinPojok),
 };
 
-export const SEMUA_MESIN_K5B6 = [MESIN_POJOK];
+/* ------------------------------ B: Mesin Sudut ------------------------------ */
+
+const KATA_JAM = ["dua belas", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas"];
+const NAMA_BAGIAN = ["titik sudut", "kaki sudut", "daerah sudut"] as const;
+/** Sudut terkecil antara jarum pendek dan jarum panjang pada pukul bulat (derajat, hanya untuk menimbang). */
+const sudutJam = (jam: number): number => Math.min(30 * jam, 360 - 30 * jam);
+const RELASI = (deg: number): "lebih sempit" | "sama besar" | "lebih lebar" => (deg < SIKU ? "lebih sempit" : deg === SIKU ? "sama besar" : "lebih lebar");
+
+/**
+ * bagian: uraian sebuah bagian benda dan namanya. deg: ukuran sudut benda (hanya untuk menimbang, tidak ditulis).
+ * pukul: pukul bulat pada jam dinding.
+ */
+export type KasusSudut = {
+  id: string;
+  nama: string;
+  konteks: string;
+  bagian: { uraian: string; nama: (typeof NAMA_BAGIAN)[number] };
+  deg: number;
+  pukul: number;
+};
+export const KASUS_SUDUT: KasusSudut[] = [
+  { id: "jam", nama: "Jam Dinding", konteks: "Yohana mengamati sebuah jam dinding", bagian: { uraian: "titik pusat tempat kedua jarum bertemu", nama: "titik sudut" }, deg: 60, pukul: 8 },
+  { id: "gunting", nama: "Gunting", konteks: "Yohana membuka sebuah gunting", bagian: { uraian: "salah satu bilah gunting", nama: "kaki sudut" }, deg: 130, pukul: 3 },
+  { id: "kipas", nama: "Kipas Lipat", konteks: "Yohana membuka sebuah kipas lipat", bagian: { uraian: "daerah kipas di antara dua tulang terluar", nama: "daerah sudut" }, deg: 90, pukul: 2 },
+];
+
+export const STASIUN_SUDUT: StasiunDef[] = [
+  { id: "tunjuk", nama: "Tunjuk", ikon: "👆" },
+  { id: "banding", nama: "Banding", ikon: "⚖️" },
+  { id: "jenis", nama: "Jenis", ikon: "📐" },
+  { id: "jam", nama: "Jam", ikon: "🕐" },
+];
+
+const hurufAwal = (t: string): string => `${t[0].toUpperCase()}${t.slice(1)}`;
+
+export function kasusMesinSudut(c: KasusSudut, idx: number): KasusMesin {
+  const rel = RELASI(c.deg);
+  const jenis = JENIS(c.deg);
+  const jenisSalah = (["lancip", "siku-siku", "tumpul"] as const).filter((j) => j !== jenis);
+  const relSemua = ["lebih sempit", "sama besar", "lebih lebar"];
+  const jJam = JENIS(sudutJam(c.pukul));
+  const jJamSalah = (["lancip", "siku-siku", "tumpul"] as const).filter((j) => j !== jJam);
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "tunjuk",
+      tanya: `${c.konteks}. ${hurufAwal(c.bagian.uraian)} adalah bagian dari sudut. Bagian itu disebut …`,
+      opsi: susunOpsi(c.bagian.nama, NAMA_BAGIAN.filter((n) => n !== c.bagian.nama), idx),
+      benar: c.bagian.nama,
+      petunjuk: "Titik sudut adalah titik tempat dua garis bertemu. Kaki sudut adalah salah satu dari dua garis itu. Daerah sudut adalah daerah di antara kedua kaki.",
+    },
+    {
+      stasiun: "banding",
+      tanya: `Patokan siku-siku ditempelkan pada sudut ${c.nama.toLowerCase()}. Kaki sudut kedua ${letakPojok(c.deg)} patokan. Dibandingkan dengan patokan, sudut itu …`,
+      opsi: susunOpsi(rel, relSemua.filter((o) => o !== rel), idx + 1),
+      benar: rel,
+      petunjuk: "Kaki yang masuk ke dalam patokan berarti lebih sempit. Kaki yang keluar dari patokan berarti lebih lebar. Kaki yang berimpit berarti sama besar.",
+    },
+    {
+      stasiun: "jenis",
+      tanya: `Sudut yang ${rel} dari patokan siku-siku disebut sudut …`,
+      opsi: susunOpsi(jenis, [...jenisSalah], idx + 2),
+      benar: jenis,
+      petunjuk: "Lebih sempit dari siku-siku disebut lancip. Sama besar disebut siku-siku. Lebih lebar disebut tumpul.",
+    },
+    {
+      stasiun: "jam",
+      tanya: `Jam dinding menunjukkan pukul ${KATA_JAM[c.pukul]}. Jarum pendek menunjuk angka ${KATA_JAM[c.pukul]} dan jarum panjang menunjuk angka dua belas. Sudut antara kedua jarum termasuk …`,
+      opsi: susunOpsi(jJam, [...jJamSalah], idx + 3),
+      benar: jJam,
+      petunjuk: "Bandingkan sudut antara kedua jarum dengan patokan siku-siku. Pukul tiga tepat siku-siku.",
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `${hurufAwal(c.bagian.uraian)} disebut ${c.bagian.nama}. Sudut ${c.nama.toLowerCase()} ${rel} dari patokan, jadi ${jenis}. Pukul ${KATA_JAM[c.pukul]}, sudut antara kedua jarum ${jJam}.`,
+    langkah,
+  };
+}
+
+export const MESIN_SUDUT: DefMesin = {
+  id: "mesin-sudut-k5b6",
+  judul: "Mesin Sudut",
+  selesaiId: "mesin-sudut",
+  stasiun: STASIUN_SUDUT,
+  kasus: KASUS_SUDUT.map(kasusMesinSudut),
+};
+
+export const SEMUA_MESIN_K5B6 = [MESIN_POJOK, MESIN_SUDUT];

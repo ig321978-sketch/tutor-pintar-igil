@@ -1,11 +1,12 @@
-// Uji Simulasi Kelas 5 Bab 6 (Sudut): Lab Pojok (Sub-Bab A), mesin, skenario, misi, gerbang, data ringkas, pengeja,
-// dan konsep sub-bab berikutnya tidak bocor ke Sub-Bab A.
+// Uji Simulasi Kelas 5 Bab 6 (Sudut): Lab Pojok (Sub-Bab A), Lab Sudut (Sub-Bab B), mesin, skenario, misi, gerbang, data
+// ringkas, pengeja, dan konsep sub-bab berikutnya tidak bocor ke Sub-Bab A dan B.
 // Jalankan: node --no-warnings scripts/uji-lab-k5b6.mjs
 import { readFileSync } from "node:fs";
 import * as M0 from "../src/components/modul/misi-simulasi.ts";
 import * as K6 from "../src/components/modul/misi-k5bab6.ts";
 import * as TK from "../src/components/modul/misi-teks-k5b6.ts";
 import * as A from "../src/components/modul/lab-pojok-k5b6a.ts";
+import * as B from "../src/components/modul/lab-sudut-k5b6b.ts";
 import * as MS from "../src/components/modul/mesin-data-k5b6.ts";
 import * as SK from "../src/components/modul/skenario-k5b6.ts";
 import * as ME from "../src/components/modul/mesin-bertahap-k3b1.ts";
@@ -278,7 +279,7 @@ const ID = /^(lipat:[01]|banding:[0-5]|detektif:[0-5])$/;
       const l = ME.langkahAktif(x);
       x = l ? ME.langkahMesin(x, { t: "JAWAB", nilai: l.benar }) : ME.langkahMesin(x, { t: "LANJUT" });
     }
-    cek(x.selesai && def.selesaiId === K6.ID_MESIN_K5B6.A, `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
+    cek(x.selesai && def.selesaiId === (def.id === "mesin-pojok-k5b6" ? K6.ID_MESIN_K5B6.A : K6.ID_MESIN_K5B6.B), `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
   }
   const angka = (o) => Number(o.split(" ")[0]);
   const urut = ["pertama", "kedua", "ketiga", "keempat"];
@@ -351,16 +352,16 @@ const ID = /^(lipat:[01]|banding:[0-5]|detektif:[0-5])$/;
 
 /* ------------------------------ Misi ------------------------------ */
 {
-  const huruf = ["A"];
-  sama(Object.keys(TK.MISI_K5B6), huruf, "teks misi untuk A");
-  sama(Object.keys(TK.NAMA_SIM_K5B6), huruf, "nama simulasi untuk A");
-  cek(TK.hurufK5B6("Z") === "A" && TK.hurufK5B6("A") === "A", "huruf tak dikenal jatuh ke A");
-  cek(TK.misiAwalK5Bab6("A").startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK5Bab6("A")), "misi awal dan dapat dieja");
+  const huruf = ["A", "B"];
+  sama(Object.keys(TK.MISI_K5B6), huruf, "teks misi untuk A dan B");
+  sama(Object.keys(TK.NAMA_SIM_K5B6), huruf, "nama simulasi untuk A dan B");
+  cek(TK.hurufK5B6("Z") === "A" && TK.hurufK5B6("A") === "A" && TK.hurufK5B6("B") === "B", "huruf tak dikenal jatuh ke A, B dikenal");
+  cek(TK.misiAwalK5Bab6("A").startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK5Bab6("A")) && tanpaAngka(TK.misiAwalK5Bab6("B")), "misi awal dan dapat dieja");
   for (const h of huruf) {
     const daftar = K6.daftarMisiK5Bab6(h);
     cek(daftar.filter((m) => m.wajib).length === 7 && daftar.filter((m) => !m.wajib).length === 3, `${h}: tujuh misi wajib dan tiga tantangan bebas`);
     cek(new Set(daftar.map((m) => m.id)).size === 10 && daftar.every((m) => m.id.startsWith(`${h.toLowerCase()}-`)), `${h}: id misi unik berawalan huruf`);
-    const kosong = [{ alat: "pojok", pernah: [] }, sel("tidak-ada"), A.keadaanPojokK5B6A(A.awalPojokK5B6A())];
+    const kosong = [{ alat: "pojok", pernah: [] }, { alat: "sudut", pernah: [] }, sel("tidak-ada"), A.keadaanPojokK5B6A(A.awalPojokK5B6A()), B.keadaanSudutK5B6B(B.awalSudutK5B6B())];
     cek(kosong.every((k) => M0.misiBaru(daftar, k, new Set()).length === 0), `${h}: keadaan awal alat tidak memenuhi misi mana pun`);
     cek(daftar.every((m) => m.teks.length > 20 && tanpaAngka(m.teks)), `${h}: teks misi jelas dan dapat dieja`);
     const baru = (k) => M0.misiBaru(daftar, k, new Set());
@@ -445,18 +446,18 @@ const ID = /^(lipat:[01]|banding:[0-5]|detektif:[0-5])$/;
   for (const u of [A.ucapLipatK5B6A(x0), A.ucapBandingK5B6A(x0), A.ucapDetektifK5B6A(x0)]) catat(u, "ucapan lab");
 
   // Kunci tidak bocor ke klien, tanpa jaringan.
-  for (const f of ["SimulasiLabPojokK5B6", "SimulasiK5Bab6", "model-pojok-k5b6"]) {
+  for (const f of ["SimulasiLabPojokK5B6", "SimulasiLabSudutK5B6", "SimulasiK5Bab6", "model-pojok-k5b6", "model-sudut-k5b6"]) {
     const s = baca(f, "tsx");
     cek(!/correct_index|explanation/.test(s), `${f}: tidak memuat correct_index atau explanation`);
     cek(!/fetch\(|XMLHttpRequest|api\/|openai|anthropic|gemini/i.test(s), `${f}: tanpa jaringan atau model bahasa`);
   }
-  for (const f of ["lab-pojok-k5b6a", "mesin-data-k5b6", "skenario-k5b6", "misi-k5bab6", "misi-teks-k5b6", "eja-k5b6"]) {
+  for (const f of ["lab-pojok-k5b6a", "lab-sudut-k5b6b", "mesin-data-k5b6", "skenario-k5b6", "misi-k5bab6", "misi-teks-k5b6", "eja-k5b6"]) {
     const s = baca(f, "ts");
     cek(!/fetch\(|XMLHttpRequest|from "react"|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: murni`);
     const impor = s.match(/^import .+$/gm) ?? [];
     cek(impor.every((l) => l.startsWith("import type")), `${f}: hanya mengimpor tipe`);
   }
-  cek((baca("lab-pojok-k5b6a", "ts").match(/^import /gm) ?? []).length === 0 && (baca("eja-k5b6", "ts").match(/^import /gm) ?? []).length === 0, "lab dan pengeja tanpa impor");
+  cek((baca("lab-pojok-k5b6a", "ts").match(/^import /gm) ?? []).length === 0 && (baca("lab-sudut-k5b6b", "ts").match(/^import /gm) ?? []).length === 0 && (baca("eja-k5b6", "ts").match(/^import /gm) ?? []).length === 0, "lab dan pengeja tanpa impor");
   {
     const s = baca("SimulasiLabPojokK5B6", "tsx");
     cek(/useEffect\(\(\) => \{\s*onKeadaan\?\.\(keadaan\w+\(x\)\);\s*\}, \[onKeadaan, x\]\);/.test(s), "lab: lapor keadaan lewat useEffect");
@@ -527,7 +528,313 @@ const ID = /^(lipat:[01]|banding:[0-5]|detektif:[0-5])$/;
   cek(butir(p3, "alat").visual.isi === `∟ = ${A.SIKU}°`, "ringkas A: penggaris siku sama dengan 90°");
   const kartu = (id) => A0.peta.kartu.find((k) => k.id === id).teks;
   cek(kartu("a-sembilan") === `Sudut siku-siku = ${A.SIKU}°`, "ringkas A: kartu siku-siku sama dengan 90°");
-  sama(Object.keys(ringkas.subBab), ["A"], "ringkas: gelombang ini hanya sub-bab A");
+  sama(Object.keys(ringkas.subBab), ["A", "B"], "ringkas: gelombang ini sub-bab A dan B");
+}
+
+/* ============================== Sub-Bab B: Lab Sudut ============================== */
+// Jam ditimbang dengan vektor: jarum pendek (sin, cos) dari arah dua belas searah jarum jam, jarum panjang (0, 1).
+const timbangJam = (jam) => {
+  const th = (jam * 30 * Math.PI) / 180;
+  const dot = Math.round((Math.sin(th) * 0 + Math.cos(th) * 1) * 1e6) / 1e6;
+  return dot === 0 ? "siku" : dot > 0 ? "lancip" : "tumpul";
+};
+const LB = B.langkahSudutK5B6B;
+const xb0 = B.awalSudutK5B6B();
+const IDB = /^(bagian:[01]|jenis:(lancip|siku|tumpul)|jam:[0-5])$/;
+const KAT = { titik: "titik", kaki1: "kaki", kaki2: "kaki", daerah: "daerah" };
+const SEBUT = { titik: "titik sudut", kaki: "kaki sudut", daerah: "daerah sudut" };
+{
+  cek(xb0.pernah.length === 0 && xb0.pesan === "" && xb0.bagian.langkah === 0 && xb0.jenis.deg === 60 && xb0.jenis.tugas === 0 && xb0.jam.data === 0, "B awal: kosong, belum ada riwayat");
+  cek(B.DATA_BAGIAN.length === 2 && B.TUGAS_JENIS.length === 3 && B.DATA_JAM.length === 6, "B: dua sudut Bagian, tiga tugas Jenis, enam jam");
+  sama(B.DATA_BAGIAN.map((d) => [d.nama, d.urutan.join("-"), d.deg]), [["huruf V", "kaki1-titik-daerah-kaki2", 50], ["gunting terbuka", "daerah-kaki2-titik-kaki1", 70]], "B: data dua sudut Bagian sesuai rancangan");
+  cek(B.DATA_BAGIAN.every((d) => [...d.urutan].sort().join() === "daerah,kaki1,kaki2,titik" && d.deg > 0 && d.deg < 90), "B: urutan sorot memuat keempat bagian tepat sekali, sudut gambar lancip");
+  sama(B.DATA_JAM, [2, 3, 4, 8, 1, 5], "B: data enam jam sesuai rancangan");
+  cek(B.DATA_JAM.every((h) => Number.isInteger(h) && h >= 1 && h <= 11 && h !== 6), "B: jam bukan 6 dan 12 (sudut lurus dan penuh dibahas di C)");
+  sama(B.DATA_JAM.map(timbangJam), ["lancip", "siku", "tumpul", "tumpul", "lancip", "tumpul"], "B: jenis enam jam (timbangan vektor)");
+  for (const h of B.DATA_JAM) cek(B.jenisSudut(B.sudutJam(h)) === timbangJam(h), `B: pukul ${h} jenis kode sama dengan timbangan vektor`);
+  for (let h = 1; h <= 11; h += 1) {
+    const th = (h * 30 * Math.PI) / 180;
+    const pendek = [Math.sin(th), Math.cos(th)];
+    const sudutVektor = Math.round((Math.acos(Math.max(-1, Math.min(1, pendek[1]))) * 180) / Math.PI);
+    cek(B.sudutJam(h) === sudutVektor && MS.KASUS_SUDUT.every(() => true), `B: sudut antara jarum pukul ${h} sama dengan sudut vektor (${sudutVektor})`);
+  }
+  cek(B.DEG_AWAL === 60 && B.DEG_MIN === 15 && B.DEG_MAKS === 165 && B.DEG_LANGKAH === 15 && (90 - B.DEG_MIN) % B.DEG_LANGKAH === 0, "B: sudut Jenis 15 sampai 165, kelipatan 15, 90 dapat dicapai");
+
+  // Bagian.
+  for (const [i, d] of B.DATA_BAGIAN.entries()) {
+    const awal = LB(xb0, { t: "G_DATA", i });
+    cek(awal.bagian.data === i && awal.bagian.langkah === 0 && awal.pernah.length === 0, `Bagian ${d.nama}: dipilih, mulai dari langkah nol`);
+    let s = awal;
+    for (const [n, bagian] of d.urutan.entries()) {
+      const kat = KAT[bagian];
+      cek(B.sorotBagian(s) === bagian, `Bagian ${d.nama}: sorot ke-${n + 1} adalah ${bagian}`);
+      for (const nama of ["titik", "kaki", "daerah"]) {
+        const t = LB(s, { t: "G_NAMA", nama });
+        if (nama === kat) {
+          cek(t.bagian.langkah === n + 1 && t.pesan.startsWith("✅"), `Bagian ${d.nama}: ${bagian} dinamai ${nama} benar maju`);
+        } else {
+          cek(t.bagian.langkah === n && t.pernah.length === 0 && !t.pesan.startsWith("✅") && t.pesan.includes(`bukan ${SEBUT[nama]}`), `Bagian ${d.nama}: ${bagian} dinamai ${nama} salah tidak maju`);
+        }
+      }
+      sama(LB(s, { t: "G_NAMA", nama: "segitiga" }), s, `Bagian ${d.nama}: nama di luar pilihan diabaikan`);
+      s = LB(s, { t: "G_NAMA", nama: kat });
+    }
+    cek(s.bagian.langkah === 4 && s.pernah.join() === `bagian:${i}` && s.pesan.startsWith("✅ Lengkap") && B.sorotBagian(s) === null, `Bagian ${d.nama}: keempat bagian benar mencatat bagian:${i}`);
+    for (const nama of ["titik", "kaki", "daerah"]) sama(LB(s, { t: "G_NAMA", nama }), s, `Bagian ${d.nama}: menamai setelah lengkap diabaikan`);
+    cek(LB(s, { t: "G_DATA", i }).bagian.langkah === 0 && LB(s, { t: "G_DATA", i }).pernah.join() === `bagian:${i}`, `Bagian ${d.nama}: ulang dari awal, riwayat tetap`);
+  }
+  cek(LB(xb0, { t: "G_DATA", i: 2 }) === xb0 && LB(xb0, { t: "G_DATA", i: -1 }) === xb0, "Bagian: sudut di luar daftar diabaikan");
+
+  // Jenis.
+  cek(LB(xb0, { t: "J_UBAH", d: 10 }) === xb0 && LB(xb0, { t: "J_UBAH", d: 0 }) === xb0 && LB(xb0, { t: "J_UBAH", d: 30 }) === xb0, "Jenis: langkah ubah di luar plus minus 15 diabaikan");
+  cek(LB(xb0, { t: "J_TUGAS", i: 3 }) === xb0 && LB(xb0, { t: "J_TUGAS", i: -1 }) === xb0, "Jenis: tugas di luar daftar diabaikan");
+  let ujungBuka = xb0;
+  for (let n = 0; n < 12; n += 1) ujungBuka = LB(ujungBuka, { t: "J_UBAH", d: 15 });
+  cek(ujungBuka.jenis.deg === 165 && /paling lebar/.test(ujungBuka.pesan), "Jenis: membuka berhenti di batas paling lebar");
+  let ujungTutup = xb0;
+  for (let n = 0; n < 12; n += 1) ujungTutup = LB(ujungTutup, { t: "J_UBAH", d: -15 });
+  cek(ujungTutup.jenis.deg === 15 && /paling sempit/.test(ujungTutup.pesan), "Jenis: menutup berhenti di batas paling sempit");
+  let jumlahJenis = 0;
+  for (const [ti, target] of B.TUGAS_JENIS.entries()) {
+    for (let deg = 15; deg <= 165; deg += 15) {
+      let s = LB(xb0, { t: "J_TUGAS", i: ti });
+      while (s.jenis.deg < deg) s = LB(s, { t: "J_UBAH", d: 15 });
+      while (s.jenis.deg > deg) s = LB(s, { t: "J_UBAH", d: -15 });
+      const t = LB(s, { t: "J_CEK" });
+      const tepat = timbang(deg) === target;
+      jumlahJenis += 1;
+      cek(tepat ? t.pernah.join() === `jenis:${target}` && t.pesan.startsWith("✅") : t.pernah.length === 0 && !t.pesan.startsWith("✅"), `Jenis: tugas ${target} pada sudut ${deg} ${tepat ? "dicatat" : "tidak dicatat"}`);
+      if (!tepat) {
+        const arah = target === "siku" ? (deg < 90 ? "Buka lebih lebar" : "Tutup lebih sempit") : target === "lancip" ? "Tutup lebih sempit" : "Buka lebih lebar";
+        cek(t.pesan.includes(arah), `Jenis: tugas ${target} pada sudut ${deg} menyarankan "${arah}"`);
+      }
+    }
+  }
+  cek(jumlahJenis === 33, "Jenis: tiga tugas pada sebelas sudut diperiksa");
+
+  // Jam.
+  for (const [i, h] of B.DATA_JAM.entries()) {
+    const benar = timbangJam(h);
+    const xj = LB(xb0, { t: "M_DATA", i });
+    cek(xj.jam.data === i && B.jamDipilih(xj) === h, `Jam ${h}: dipilih`);
+    for (const j of ["lancip", "siku", "tumpul"]) {
+      const t = LB(xj, { t: "M_JAWAB", jawab: j });
+      cek(j === benar ? t.pernah.join() === `jam:${i}` && t.pesan.startsWith("✅") : t.pernah.length === 0 && !t.pesan.startsWith("✅") && /Bandingkan lagi/.test(t.pesan), `Jam ${h}: jawaban ${j} ${j === benar ? "benar dicatat" : "salah tidak dicatat"}`);
+    }
+    cek(LB(xj, { t: "M_JAWAB", jawab: "lurus" }) === xj && LB(xj, { t: "M_JAWAB", jawab: "" }) === xj, `Jam ${h}: jawaban di luar pilihan diabaikan`);
+  }
+  cek(LB(xb0, { t: "M_DATA", i: 6 }) === xb0 && LB(xb0, { t: "M_DATA", i: -1 }) === xb0, "Jam: jam di luar daftar diabaikan");
+
+  // Reset, pesan kosong, riwayat tidak dicabut.
+  const sat = jalan(xb0, LB, [{ t: "J_UBAH", d: -15 }, { t: "J_CEK" }, { t: "M_DATA", i: 1 }, { t: "M_JAWAB", jawab: "siku" }]);
+  cek(sat.pernah.join() === "jenis:lancip,jam:1", "B: riwayat Jenis dan Jam terkumpul berurutan");
+  sama(LB(sat, { t: "RESET" }), xb0, "B: reset mengembalikan keadaan awal");
+  cek(LB(sat, { t: "PESAN_KOSONG" }).pesan === "" && LB(sat, { t: "PESAN_KOSONG" }).pernah.join() === sat.pernah.join(), "B: pesan dikosongkan, riwayat tetap");
+  cek(LB(sat, { t: "J_CEK" }).pernah.join() === "jenis:lancip,jam:1" && LB(jalan(sat, LB, [{ t: "J_UBAH", d: 15 }, { t: "J_UBAH", d: 15 }, { t: "J_UBAH", d: 15 }]), { t: "J_CEK" }).pernah.join() === "jenis:lancip,jam:1", "B: jawaban salah dan ulang tidak mencabut atau menggandakan riwayat");
+
+  // Fuzz 20.000 aksi.
+  const acak = acakDari(777);
+  let s = xb0;
+  let ok = true;
+  const pesanSemua = new Set();
+  const riwayatSemua = new Set();
+  const N = ["titik", "kaki", "daerah"];
+  for (let n = 0; n < 20000; n += 1) {
+    const pil = acak(24);
+    const sorot = B.sorotBagian(s);
+    const benarJam = timbangJam(B.DATA_JAM[s.jam.data]);
+    const a =
+      pil === 0 ? { t: "G_DATA", i: acak(3) - (acak(8) === 0 ? 1 : 0) } :
+      pil === 1 || pil === 2 ? { t: "G_NAMA", nama: N[acak(3)] } :
+      pil === 3 || pil === 4 ? { t: "G_NAMA", nama: sorot === null ? "titik" : KAT[sorot] } :
+      pil === 5 ? { t: "G_NAMA", nama: "x" } :
+      pil === 6 ? { t: "J_TUGAS", i: acak(4) - (acak(8) === 0 ? 1 : 0) } :
+      pil === 7 || pil === 8 || pil === 9 ? { t: "J_UBAH", d: [15, -15, 15, -15, 10, 0][acak(6)] } :
+      pil === 10 || pil === 11 ? { t: "J_CEK" } :
+      pil === 12 ? { t: "M_DATA", i: acak(7) } :
+      pil === 13 || pil === 14 ? { t: "M_JAWAB", jawab: ["lancip", "siku", "tumpul", "x"][acak(4)] } :
+      pil === 15 ? { t: "M_JAWAB", jawab: benarJam } :
+      pil === 16 || pil === 17 ? { t: "J_UBAH", d: 15 } :
+      acak(40) === 0 ? { t: "RESET" } : { t: "PESAN_KOSONG" };
+    const t = LB(s, a);
+    if (a.t !== "RESET" && !s.pernah.every((v) => t.pernah.includes(v))) ok = false;
+    if (!(t.bagian.data >= 0 && t.bagian.data < 2 && t.bagian.langkah >= 0 && t.bagian.langkah <= 4)) ok = false;
+    if (!(t.jenis.deg >= 15 && t.jenis.deg <= 165 && t.jenis.deg % 15 === 0 && t.jenis.tugas >= 0 && t.jenis.tugas < 3)) ok = false;
+    if (!(t.jam.data >= 0 && t.jam.data < 6)) ok = false;
+    for (const id of t.pernah) if (!IDB.test(id)) ok = false;
+    for (const id of t.pernah) {
+      if (s.pernah.includes(id)) continue;
+      const [jenis, nomor] = id.split(":");
+      if (jenis === "bagian" && !(t.bagian.data === Number(nomor) && t.bagian.langkah === 4 && a.t === "G_NAMA")) ok = false;
+      if (jenis === "jenis" && !(a.t === "J_CEK" && B.TUGAS_JENIS[t.jenis.tugas] === nomor && timbang(t.jenis.deg) === nomor)) ok = false;
+      if (jenis === "jam" && !(a.t === "M_JAWAB" && t.jam.data === Number(nomor) && a.jawab === timbangJam(B.DATA_JAM[Number(nomor)]))) ok = false;
+    }
+    if (t.pesan) {
+      pesanSemua.add(t.pesan);
+      if (!tanpaSembilanPuluh(t.pesan)) ok = false;
+    }
+    for (const id of t.pernah) riwayatSemua.add(id);
+    s = t;
+  }
+  cek(ok, "fuzz 20.000 aksi Lab Sudut: batas terjaga, riwayat tidak dicabut dan hanya bila tercapai");
+  cek(pesanSemua.size > 15 && [...pesanSemua].every(tanpaAngka), `fuzz Lab Sudut: semua ${pesanSemua.size} pesan dieja menjadi kata`);
+  cek(pesanSemua.size > 15 && [...pesanSemua].every(tanpaSembilanPuluh), "fuzz Lab Sudut: tidak ada ukuran selain 90 di pesan");
+  cek(riwayatSemua.size >= 8, `fuzz Lab Sudut: riwayat terkumpul (${[...riwayatSemua].sort().join(" ")})`);
+  globalThis.__pesanB = [...pesanSemua];
+}
+
+/* ------------------------------ Mesin B ------------------------------ */
+{
+  const def = MS.MESIN_SUDUT;
+  const urutLetak = (deg) => (timbang(deg) === "siku" ? "berimpit dengan" : timbang(deg) === "lancip" ? "masuk ke dalam" : "keluar dari");
+  const REL = { lancip: "lebih sempit", siku: "sama besar", tumpul: "lebih lebar" };
+  const NAMA = { lancip: "lancip", siku: "siku-siku", tumpul: "tumpul" };
+  const KATA = ["dua belas", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas"];
+  for (const [i, k] of MS.KASUS_SUDUT.entries()) {
+    const c = def.kasus[i];
+    const [tunjuk, banding, jenis, jam] = c.langkah;
+    cek(tunjuk.benar === k.bagian.nama && tunjuk.tanya.includes(k.konteks) && tunjuk.tanya.toLowerCase().includes(k.bagian.uraian), `Mesin B ${k.id}: bagian ${k.bagian.nama}`);
+    sama([...tunjuk.opsi].sort(), ["daerah sudut", "kaki sudut", "titik sudut"], `Mesin B ${k.id}: pilihan tunjuk tiga nama`);
+    const jb = timbang(k.deg);
+    cek(banding.benar === REL[jb] && banding.tanya.includes(`Kaki sudut kedua ${urutLetak(k.deg)} patokan`), `Mesin B ${k.id}: hubungan dengan patokan ${REL[jb]} (timbangan)`);
+    sama([...banding.opsi].sort(), ["lebih lebar", "lebih sempit", "sama besar"], `Mesin B ${k.id}: pilihan banding tiga hubungan`);
+    cek(jenis.benar === NAMA[jb] && jenis.tanya.includes(`Sudut yang ${REL[jb]} dari patokan`), `Mesin B ${k.id}: jenis ${NAMA[jb]}`);
+    sama([...jenis.opsi].sort(), ["lancip", "siku-siku", "tumpul"], `Mesin B ${k.id}: pilihan jenis tiga jenis`);
+    const jj = timbangJam(k.pukul);
+    cek(jam.benar === NAMA[jj] && jam.tanya.includes(`pukul ${KATA[k.pukul]}`) && jam.tanya.includes(`angka ${KATA[k.pukul]}`), `Mesin B ${k.id}: pukul ${k.pukul} sudut ${NAMA[jj]} (timbangan vektor)`);
+    sama([...jam.opsi].sort(), ["lancip", "siku-siku", "tumpul"], `Mesin B ${k.id}: pilihan jam tiga jenis`);
+    cek(c.ringkas.includes(k.bagian.nama) && c.ringkas.includes(NAMA[jb]) && c.ringkas.includes(`Pukul ${KATA[k.pukul]}`) && c.ringkas.endsWith(`${NAMA[jj]}.`), `Mesin B ${k.id}: ringkas memuat hasil benar`);
+  }
+  sama(MS.KASUS_SUDUT.map((k) => k.id), ["jam", "gunting", "kipas"], "Mesin B: tiga kasus");
+  sama(MS.KASUS_SUDUT.map((k) => [k.bagian.nama, k.deg, k.pukul]), [["titik sudut", 60, 8], ["kaki sudut", 130, 3], ["daerah sudut", 90, 2]], "Mesin B: data tiga kasus sesuai rancangan");
+  sama(MS.KASUS_SUDUT.map((k) => timbang(k.deg)), ["lancip", "tumpul", "siku"], "Mesin B: jenis sudut benda lancip, tumpul, siku");
+  sama(MS.KASUS_SUDUT.map((k) => timbangJam(k.pukul)), ["tumpul", "siku", "lancip"], "Mesin B: jenis sudut jam tumpul, siku, lancip");
+  cek(MS.KASUS_SUDUT.every((k) => k.pukul !== 6 && k.pukul !== 12 && (k.deg === 90 || Math.abs(k.deg - 90) >= 20)), "Mesin B: bukan pukul 6 atau 12, bukan siku berbeda paling sedikit 20 dari siku");
+  const ketiga = def.kasus.map((c) => c.langkah.map((l) => l.opsi.indexOf(l.benar)).join(""));
+  cek(new Set(def.kasus.flatMap((c) => c.langkah.map((l) => l.opsi.indexOf(l.benar)))).size === 3, `Mesin B: letak kunci bervariasi (${ketiga.join(" ")})`);
+}
+
+/* ------------------------------ Skenario B ------------------------------ */
+{
+  const S = SK.SKENARIO_K5B6B;
+  cek(S.adegan.length >= 5 && S.adegan.length <= 8, `${S.id}: 5 sampai 8 adegan`);
+  cek(S.adegan[0].jenis === "narasi" && S.adegan[S.adegan.length - 1].jenis === "akhir", `${S.id}: buka dan tutup`);
+  cek(new Set(S.adegan.map((a) => a.jenis)).size >= 4, `${S.id}: paling sedikit empat jenis adegan`);
+  const semuaTeks = [];
+  for (const a of S.adegan) {
+    semuaTeks.push(a.cerita);
+    for (const o of a.opsi ?? []) semuaTeks.push(o.teks, o.umpan);
+    for (const q of a.soal ?? []) semuaTeks.push(q.teks, ...q.opsi);
+    for (const f of ["tanya", "sukses", "salah", "kurang", "lebih"]) if (a[f]) semuaTeks.push(a[f]);
+  }
+  cek(semuaTeks.every(tanpaAngka), `${S.id}: semua teks dapat dieja`);
+  sama(S.id.replace(/-k5b6$/, ""), K6.ID_SKENARIO_K5B6.B, "id skenario B sesuai id misi");
+  const adegan = (id) => S.adegan.find((a) => a.id === id);
+  const arti = adegan("arti").opsi.find((o) => o.benar);
+  cek(/dua garis yang bertemu di satu titik/.test(arti.teks) && adegan("arti").opsi.filter((o) => !o.benar).every((o) => !/dua garis yang bertemu/.test(o.teks)), "B: arti sudut dua garis bertemu di satu titik, pengecoh salah");
+  const bagian = adegan("bagian").soal;
+  cek(bagian[0].jawaban === "sudut" && bagian[0].opsi.includes("sudut") && bagian[0].opsi.length === 3 && bagian[1].jawaban === "kaki" && bagian[1].opsi.length === 3 && bagian[1].opsi.includes("kaki"), "B: titik sudut dan kaki sudut, tiga pilihan");
+  const kaki = adegan("kaki");
+  cek(kaki.jumlah === 2 + 2 && kaki.jumlah <= 12 && kaki.cerita.includes("2 kaki sudut") && kaki.sukses.includes("2 kaki sudut ditambah 2 kaki sudut") && kaki.sukses.includes("4 kaki sudut"), "B: gunting 2 kaki dan jam 2 kaki, seluruhnya 4");
+  const segitiga = adegan("segitiga");
+  cek(segitiga.target === 3 && segitiga.target <= segitiga.maks && segitiga.maks <= 20 && segitiga.cerita.includes("segitiga") && segitiga.sukses.includes("3 pojok"), "B: segitiga 3 pojok sama dengan 3 titik sudut");
+  const jamA = adegan("jam");
+  const bb = jamA.opsi.find((o) => o.benar);
+  cek(timbangJam(2) === "lancip" && /^lancip/.test(bb.teks) && /pukul dua/.test(jamA.cerita) && jamA.opsi.filter((o) => !o.benar).every((o) => !/^lancip/.test(o.teks)) && jamA.opsi.some((o) => /^tumpul, karena lebih lebar/.test(o.teks)) && jamA.opsi.some((o) => /^siku-siku, karena berimpit/.test(o.teks)), "B: pukul dua lancip (timbangan vektor), pengecoh tumpul dan siku-siku salah");
+  const posisi = S.adegan.filter((a) => a.jenis === "pilih").map((a) => a.opsi.findIndex((o) => o.benar));
+  cek(new Set(posisi).size === posisi.length, `B: letak jawaban pilih bervariasi (${posisi.join("")})`);
+}
+
+/* ------------------------------ Misi B ------------------------------ */
+{
+  const capai = (aksi) => M0.misiBaru(K6.MISI_B, B.keadaanSudutK5B6B(jalan(B.awalSudutK5B6B(), LB, aksi)), new Set());
+  const namai = (i) => {
+    const aksi = [{ t: "G_DATA", i }];
+    for (const bagian of B.DATA_BAGIAN[i].urutan) aksi.push({ t: "G_NAMA", nama: KAT[bagian] });
+    return aksi;
+  };
+  cek(capai(namai(0)).join() === "b-bagian" && capai(namai(1)).join() === "b-bagian-dua", "B: menamai keempat bagian huruf V memenuhi misi, gunting terbuka memenuhi tantangan");
+  cek(capai(namai(0).slice(0, 4)).length === 0 && capai([{ t: "G_DATA", i: 0 }, { t: "G_NAMA", nama: "titik" }, { t: "G_NAMA", nama: "kaki" }, { t: "G_NAMA", nama: "daerah" }, { t: "G_NAMA", nama: "kaki" }]).length === 0, "B: menamai kurang dari empat bagian atau salah nama tidak memenuhi");
+  cek(capai([...namai(0), ...namai(1)]).join() === "b-bagian,b-bagian-dua", "B: dua sudut bersamaan");
+  const jenis = (tugas, naik) => {
+    const aksi = [{ t: "J_TUGAS", i: tugas }];
+    for (let n = 0; n < Math.abs(naik); n += 1) aksi.push({ t: "J_UBAH", d: naik > 0 ? 15 : -15 });
+    aksi.push({ t: "J_CEK" });
+    return aksi;
+  };
+  cek(capai(jenis(0, 0)).join() === "b-lancip" && capai(jenis(1, 2)).join() === "b-siku" && capai(jenis(2, 3)).join() === "b-tumpul", "B: lancip pada 60, siku-siku pada 90, tumpul pada 105 memenuhi (timbangan)");
+  cek(capai(jenis(0, 2)).length === 0 && capai(jenis(1, 1)).length === 0 && capai(jenis(1, 3)).length === 0 && capai(jenis(2, 2)).length === 0 && capai(jenis(2, -1)).length === 0, "B: tugas lancip di 90, siku-siku di 75 atau 105, tumpul di 90 atau 45 tidak memenuhi");
+  cek(capai([...jenis(0, 0), ...jenis(1, 2), ...jenis(2, 3)]).join() === "b-lancip,b-siku,b-tumpul", "B: tiga jenis bersamaan");
+  cek(capai([{ t: "J_UBAH", d: 15 }, { t: "J_UBAH", d: 15 }]).length === 0, "B: sudut diatur tanpa tekan Cek tidak memenuhi");
+  const jam = (i, jawab = timbangJam(B.DATA_JAM[i])) => [{ t: "M_DATA", i }, { t: "M_JAWAB", jawab }];
+  cek(capai(jam(0)).join() === "b-jam" && capai(jam(1)).join() === "b-jam-siku" && capai(jam(2)).join() === "b-jam-tumpul", "B: pukul dua, tiga, empat memenuhi");
+  cek(capai(jam(0, "tumpul")).length === 0 && capai(jam(1, "lancip")).length === 0 && capai(jam(2, "siku")).length === 0, "B: jawaban jam tertukar tidak memenuhi");
+  cek(capai(jam(3)).length === 0 && capai(jam(4)).length === 0 && capai(jam(5)).length === 0, "B: pukul delapan, satu, lima tidak memenuhi misi mana pun");
+  cek(capai([...namai(0), ...jenis(0, 0), ...jenis(1, 2), ...jenis(2, 3), ...jam(0)]).join() === "b-bagian,b-lancip,b-siku,b-tumpul,b-jam", "B: lima misi lab wajib bersamaan");
+  cek(M0.misiBaru(K6.MISI_B, { alat: "pojok", pernah: ["bagian:0", "jenis:lancip", "jenis:siku", "jenis:tumpul", "jam:0"] }, new Set()).length === 0, "B: riwayat alat lain (pojok) tidak memenuhi misi B");
+  cek(M0.misiBaru(K6.MISI_A, { alat: "sudut", pernah: ["lipat:0", "banding:0"] }, new Set()).length === 0, "B: riwayat alat sudut tidak memenuhi misi A");
+}
+
+/* ------------------------------ Konsep tidak bocor ke Sub-Bab B ------------------------------ */
+{
+  const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas5-bab6-ringkas.json", import.meta.url), "utf8"));
+  const baca = (nama, ekstensi) => readFileSync(new URL(`../src/components/modul/${nama}.${ekstensi}`, import.meta.url), "utf8");
+  const tanpaKomentar = (s) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const teksDari = (o) => {
+    const hasil = [];
+    JSON.stringify(o, (k, v) => {
+      if (typeof v === "string") hasil.push(v);
+      return v;
+    });
+    return hasil.join(" | ");
+  };
+  // Sub-Bab B tidak memakai konsep sub-bab berikutnya: mengukur (C): busur, skala, derajat selain 90, sudut nol, lurus,
+  // penuh, releks; melukis (D): lukis, gambar sudut dengan ukuran.
+  const BOCOR_B = /(\bbusur\b|\bskala\b|\breleks\b|\brefleks\b|\bsudut nol\b|\bsudut lurus\b|\bsudut penuh\b|\bmelukis\b|\blukis\w*|\bprotractor\b|\bukur\w*|\bkawat\b)/i;
+  const derajatLain = (t) => /(?<![\d])(?!90\b)\d+\s*°/.test(t);
+  const catat = (teks, apa) => {
+    const m = BOCOR_B.exec(teks);
+    cek(!m, `B: ${apa} bebas konsep sub-bab berikutnya (${m ? m[0] : ""} di "${String(teks).slice(Math.max(0, (m?.index ?? 0) - 30), (m?.index ?? 0) + 40)}")`);
+    cek(!derajatLain(teks), `B: ${apa} tidak menulis ukuran derajat selain 90`);
+  };
+  for (const t of [TK.MISI_K5B6.B, TK.NAMA_SIM_K5B6.B, ...K6.MISI_B.map((m) => m.teks)]) catat(t, "teks misi");
+  for (const [nama, o] of [["mesin", MS.MESIN_SUDUT], ["skenario", SK.SKENARIO_K5B6B], ["peta dan infografis ringkas", ringkas.subBab.B]]) catat(teksDari(o), nama);
+  for (const [f, e] of [["SimulasiLabSudutK5B6", "tsx"], ["model-sudut-k5b6", "tsx"], ["lab-sudut-k5b6b", "ts"]]) catat(tanpaKomentar(baca(f, e)), `${f} (tanpa komentar)`);
+  for (const p of globalThis.__pesanB) catat(p, "pesan lab dari fuzz");
+  const ucapan = [];
+  for (let i = 0; i < B.DATA_BAGIAN.length; i += 1) {
+    let s = LB(xb0, { t: "G_DATA", i });
+    ucapan.push(B.ucapBagianK5B6B(s));
+    for (const bagian of B.DATA_BAGIAN[i].urutan) s = LB(s, { t: "G_NAMA", nama: KAT[bagian] });
+    ucapan.push(B.ucapBagianK5B6B(s));
+  }
+  for (let i = 0; i < 3; i += 1) ucapan.push(B.ucapJenisK5B6B(LB(xb0, { t: "J_TUGAS", i })));
+  for (let i = 0; i < B.DATA_JAM.length; i += 1) ucapan.push(B.ucapJamK5B6B(LB(xb0, { t: "M_DATA", i })));
+  cek(ucapan.length === 13 && ucapan.every(tanpaAngka), `semua ${ucapan.length} ucapan Lab Sudut dieja menjadi kata`);
+  for (const u of ucapan) catat(u, "ucapan lab");
+  {
+    const s = baca("SimulasiLabSudutK5B6", "tsx");
+    cek(/useEffect\(\(\) => \{\s*onKeadaan\?\.\(keadaan\w+\(x\)\);\s*\}, \[onKeadaan, x\]\);/.test(s), "lab B: lapor keadaan lewat useEffect");
+    cek(/setLihat\(v\);\s*kirim\(\{ t: "PESAN_KOSONG" \}\);/.test(s), "lab B: ganti tampilan mengosongkan pesan");
+    const catatan = [...s.matchAll(/^\s*"([^"]+)",$/gm)].map((m) => m[1]);
+    cek(catatan.length >= 3 && catatan.every(tanpaAngka), "lab B: Coba ini dapat dieja");
+    cek(/aria-label=\{`Namai \$\{SEBUT_BAGIAN\[n\]\}`\}/.test(s) && /aria-label="Tutup sudut lebih sempit"/.test(s) && /aria-label="Buka sudut lebih lebar"/.test(s) && /aria-label="Cek sudut"/.test(s) && /aria-label="Pilih lancip"/.test(s) && /aria-label="Pilih siku-siku"/.test(s) && /aria-label="Pilih tumpul"/.test(s), "lab B: tombol nama bagian, atur sudut, cek, dan pilihan jam berlabel");
+    const m = baca("model-sudut-k5b6", "tsx");
+    cek(/role="img"/.test(m) && (m.match(/aria-label=\{`Gambar /g) ?? []).length === 2, "model B: dua gambar berlabel");
+  }
+  // Ringkas B dihitung ulang mandiri.
+  const B0 = ringkas.subBab.B;
+  const butir = (panel, id) => panel.butir.find((b) => b.id === id);
+  const [p1, p2, p3] = B0.infografis.panel;
+  cek(butir(p1, "titik").visual.isi === "1 titik sudut" && butir(p1, "kaki").visual.isi === "2 kaki sudut" && butir(p1, "kaki").suara.includes("dua kaki"), "ringkas B: satu titik sudut dan dua kaki sudut");
+  const [lancip, tumpul] = p2.sisi;
+  cek(lancip.visual.isi === "< 90°" && tumpul.visual.isi === "> 90°" && p2.kesimpulan.includes("90°"), "ringkas B: lancip kurang dari 90 dan tumpul lebih dari 90");
+  cek(timbangJam(2) === "lancip" && butir(p3, "dua").visual.isi === "lancip" && butir(p3, "dua").label === "Pukul 2" && butir(p3, "dua").suara.includes("pukul dua"), "ringkas B: pukul dua lancip (timbangan vektor)");
+  cek(timbangJam(3) === "siku" && butir(p3, "tiga").visual.isi === "∟ = 90°" && butir(p3, "tiga").label === "Pukul 3", "ringkas B: pukul tiga siku-siku (timbangan vektor)");
+  cek(timbangJam(4) === "tumpul" && butir(p3, "empat").visual.isi === "tumpul" && butir(p3, "empat").label === "Pukul 4", "ringkas B: pukul empat tumpul (timbangan vektor)");
+  const kartu = (id) => B0.peta.kartu.find((k) => k.id === id).teks;
+  cek(kartu("b-dua") === "Jam pukul 2: sudut lancip" && kartu("b-tiga") === "Jam pukul 3: sudut siku-siku", "ringkas B: kartu jam");
+  cek(B0.peta.cabang.map((c) => c.id).join() === "bagian,daerah,jenis,jam", "ringkas B: empat cabang");
 }
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);

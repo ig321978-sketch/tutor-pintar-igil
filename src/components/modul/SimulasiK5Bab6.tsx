@@ -4,10 +4,11 @@ import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
 import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiLabPojokK5B6 from "./SimulasiLabPojokK5B6";
+import SimulasiLabSudutK5B6 from "./SimulasiLabSudutK5B6";
 import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
 import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K5B6A } from "./skenario-k5b6";
-import { MESIN_POJOK } from "./mesin-data-k5b6";
+import { SKENARIO_K5B6A, SKENARIO_K5B6B } from "./skenario-k5b6";
+import { MESIN_POJOK, MESIN_SUDUT } from "./mesin-data-k5b6";
 import { ejaK5B6 } from "./eja-k5b6";
 import type { DefSkenario } from "./skenario-umum";
 import type { DefMesin } from "./mesin-bertahap-k3b1";
@@ -19,22 +20,26 @@ import { MISI_K5B6, NAMA_SIM_K5B6, hurufK5B6, misiAwalK5Bab6, type HurufK5B6 } f
 /* Simulasi Kelas 5 Bab 6 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
 /* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k5bab6.ts. */
 /*   A Pojok : Lab Pojok + Mesin Pojok + Bingkai Pak Tukang                  */
+/*   B Sudut : Lab Sudut + Mesin Sudut + Yohana dan Kotak Pensil             */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
-const SKENARIO: Record<HurufK5B6, DefSkenario> = { A: SKENARIO_K5B6A };
-const MESIN: Record<HurufK5B6, DefMesin> = { A: MESIN_POJOK };
+const SKENARIO: Record<HurufK5B6, DefSkenario> = { A: SKENARIO_K5B6A, B: SKENARIO_K5B6B };
+const MESIN: Record<HurufK5B6, DefMesin> = { A: MESIN_POJOK, B: MESIN_SUDUT };
 
 const COBA_MESIN: Record<HurufK5B6, string[]> = {
   A: ["Ketuk stasiun Putuskan sebelum Banding. Apa kata mesin?", "Mengapa pojok yang lebih sempit dari patokan disebut lancip?", "Apa yang dilakukan Pak Tukang pada pojok yang tidak berimpit?"],
+  B: ["Ketuk stasiun Jam sebelum Tunjuk. Apa kata mesin?", "Mengapa sudut yang lebih lebar dari patokan disebut tumpul?", "Bagian mana dari sudut yang disebut kaki sudut?"],
 };
 
 const LAB: Record<HurufK5B6, { id: string; nama: string }> = {
   A: { id: "pojok", nama: "Lab Pojok" },
+  B: { id: "sudut", nama: "Lab Sudut" },
 };
 
-function LabSub({ speakGuru, lapor }: { huruf: HurufK5B6; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab6) => void }) {
+function LabSub({ huruf, speakGuru, lapor }: { huruf: HurufK5B6; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab6) => void }) {
+  if (huruf === "B") return <SimulasiLabSudutK5B6 speakGuru={speakGuru} onKeadaan={lapor} />;
   return <SimulasiLabPojokK5B6 speakGuru={speakGuru} onKeadaan={lapor} />;
 }
 

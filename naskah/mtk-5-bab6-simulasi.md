@@ -4,7 +4,7 @@ Bab: Sudut (`mtk-5-bab6`, `FASE_C`, kelas 5; kode data Materi `k5-mat-bab6`). Ko
 
 Bab ini punya **empat sub-bab**: A (sudut siku-siku), B (pengertian dan jenis sudut), C (mengukur sudut), D (melukis sudut). Dikerjakan dalam empat gelombang, satu sub-bab per gelombang. Gelombang A sampai C tidak didaftarkan di registri; gelombang D mendaftarkan bab dan menjadi pencapaian bab (skenario D menyentuh konsep A sampai D).
 
-**Status: Gelombang A (Sub-Bab A, Sudut Siku-Siku) selesai. B sampai D belum.**
+**Status: Gelombang A (Sub-Bab A, Sudut Siku-Siku) dan B (Sub-Bab B, Pengertian dan Jenis Sudut) selesai. C dan D belum.**
 
 Berkas Materi bab ini tidak diubah (`SubBabK5B6A–D.tsx`, `naskah-k5b6.ts`, `data-k5b6.ts`, `paket-k5b6.ts`, dan lainnya). Pengeja suara memakai `ejaK5B6` (berkas baru `eja-k5b6.ts`) lewat prop `eja` mesin dan di lab. Pengeja ini mengeja tanda derajat (°), sudut (∠), dan siku-siku (∟).
 
@@ -18,17 +18,18 @@ Berkas Materi bab ini tidak diubah (`SubBabK5B6A–D.tsx`, `naskah-k5b6.ts`, `da
 | `45° < 90°` | empat puluh lima derajat lebih kecil dari sembilan puluh derajat |
 | `16 cm`, `20 m` | enam belas sentimeter, dua puluh meter |
 
-Kata bilangan sama dengan `kataK5B1` (diuji 0 sampai 1200 dan 999.999; semua bilangan 0 sampai 360 dengan tanda derajat). Tokoh skenario: Pak Tukang (A).
+Kata bilangan sama dengan `kataK5B1` (diuji 0 sampai 1200 dan 999.999; semua bilangan 0 sampai 360 dengan tanda derajat). Tokoh skenario: Pak Tukang (A) dan Yohana (B).
 
 ## Alat
 
 | Sub-bab | Lab (tampilan) | Berkas | Mesin | Skenario |
 |---------|----------------|--------|-------|----------|
 | A | Lab Pojok (Lipat, Banding, Detektif) | `SimulasiLabPojokK5B6.tsx` + `lab-pojok-k5b6a.ts` | Mesin Pojok | Bingkai Pak Tukang (7 adegan) |
+| B | Lab Sudut (Bagian, Jenis, Jam) | `SimulasiLabSudutK5B6.tsx` + `lab-sudut-k5b6b.ts` | Mesin Sudut | Yohana dan Kotak Pensil (7 adegan) |
 
-Mesin: `mesin-data-k5b6.ts`, dijalankan `SimulasiMesinBertahapK3.tsx` dan `mesin-bertahap-k3b1.ts`. Skenario: `skenario-k5b6.ts`, dijalankan `SimulasiSkenario.tsx`. Model gambar: `model-pojok-k5b6.tsx` (pojok benda dengan patokan siku-siku bergaris putus emas, dan kertas yang dilipat). Data ringkas Mind-Map dan Infografis: `src/data/kelas5-bab6-ringkas.json`. Uji: `scripts/uji-lab-k5b6.mjs`.
+Mesin: `mesin-data-k5b6.ts`, dijalankan `SimulasiMesinBertahapK3.tsx` dan `mesin-bertahap-k3b1.ts`. Skenario: `skenario-k5b6.ts`, dijalankan `SimulasiSkenario.tsx`. Model gambar: `model-pojok-k5b6.tsx` (pojok benda dengan patokan siku-siku bergaris putus emas, dan kertas yang dilipat) dan `model-sudut-k5b6.tsx` (B: sudut dengan bagian yang disorot emas, patokan siku-siku bergaris putus, dan jam dinding dengan dua jarum). Data ringkas Mind-Map dan Infografis: `src/data/kelas5-bab6-ringkas.json`. Uji: `scripts/uji-lab-k5b6.mjs`.
 
-Metode luar buku yang dianyam. A: Paper Fold Benchmark (Lipat: lipatan pertama membuat tepi lurus, lipatan kedua harus menimpa lipatan pertama dengan rapi, digeser dulu sampai tegak lurus; pojoknya menjadi patokan 90°), Right Angle Benchmark (Banding: patokan ditempel ke pojok benda, lalu pilih berimpit, lebih sempit, atau lebih lebar), dan Angle Detective (Detektif: periksa enam pojok benda di sekitar dengan patokan, pilah siku-siku atau bukan).
+Metode luar buku yang dianyam. A: Paper Fold Benchmark (Lipat: lipatan pertama membuat tepi lurus, lipatan kedua harus menimpa lipatan pertama dengan rapi, digeser dulu sampai tegak lurus; pojoknya menjadi patokan 90°), Right Angle Benchmark (Banding: patokan ditempel ke pojok benda, lalu pilih berimpit, lebih sempit, atau lebih lebar), dan Angle Detective (Detektif: periksa enam pojok benda di sekitar dengan patokan, pilah siku-siku atau bukan). B: Vertex-Ray Model (Bagian: satu bagian gambar sudut disorot, anak menamai titik sudut, kaki sudut, atau daerah sudut; keempat bagian harus benar) dan Acute-Right-Obtuse Classification (Jenis: buka atau tutup kaki sudut sampai lancip, siku-siku, atau tumpul, lalu tekan Cek sudut; Jam: jenis sudut antara jarum pendek dan jarum panjang pada pukul bulat).
 
 ## Pola hibrida
 
@@ -37,14 +38,17 @@ Satu laboratorium per sub-bab, tiga alat. Gerbang LANJUTKAN KE CONCRETE aktif bi
 | Sub-bab | Misi wajib dari lab | Tantangan bebas |
 |---------|---------------------|-----------------|
 | A | Lipat: kertas HVS menjadi patokan; Banding: pojok buku, pojok bingkai foto, dan pojok ubin lantai siku-siku; Banding: ujung gunting terbuka lancip; Banding: bukaan kipas lipat tumpul; Detektif: keenam pojok dipilah benar | Lipat: kertas koran; Banding: pojok atap rumah (tumpul); Banding: keenam pojok benar |
+| B | Bagian: namai keempat bagian huruf V; Jenis: buat lancip, siku-siku, dan tumpul (tiga misi); Jam: pukul dua (lancip) | Bagian: namai keempat bagian gunting terbuka; Jam: pukul tiga (siku-siku); Jam: pukul empat (tumpul) |
 
-Near-miss tidak memenuhi misi: lipat kedua tanpa lipat pertama, lipat kedua tanpa menggeser sampai berimpit, melewati posisi tegak lurus, menjawab Banding tanpa menempel patokan (walau jawabannya benar), jawaban tertukar (lancip dan tumpul), hanya dua dari tiga pojok siku-siku, dan lima dari enam pojok Detektif atau pojok keenam salah jawab.
+Near-miss tidak memenuhi misi: lipat kedua tanpa lipat pertama, lipat kedua tanpa menggeser sampai berimpit, melewati posisi tegak lurus, menjawab Banding tanpa menempel patokan (walau jawabannya benar), jawaban tertukar (lancip dan tumpul), hanya dua dari tiga pojok siku-siku, dan lima dari enam pojok Detektif atau pojok keenam salah jawab. Sub-Bab B: menamai kurang dari empat bagian atau salah nama, mengatur sudut tanpa menekan Cek sudut, tugas lancip pada sudut siku-siku atau tumpul, tugas siku-siku pada sudut yang lebih sempit atau lebih lebar, tugas tumpul pada sudut yang tidak melewati siku, jawaban jam tertukar, dan pukul delapan, satu, atau lima yang tidak dihitung sebagai misi.
 
 ## Mesin berstasiun
 
 | Mesin | Stasiun | Kasus |
 |-------|---------|-------|
 | Mesin Pojok (A) | Temukan → Patokan → Banding → Putuskan | Bingkai Foto (empat pojok, tiga berimpit dengan patokan, satu tidak; pojok keempat lebih sempit, lancip; pojok pertama dipakai), Pintu Lemari (dua berimpit; pojok keempat lebih lebar, tumpul; pojok ketiga lebih sempit, diganti karena lancip), Papan Meja (tidak ada yang berimpit; pojok pertama lancip; pojok kedua lebih lebar, diganti karena tumpul) |
+
+Mesin Sudut (B): Tunjuk → Banding → Jenis → Jam, dengan kasus Jam Dinding (titik pusat tempat dua jarum bertemu = titik sudut; sudut lebih sempit dari patokan, lancip; pukul delapan tumpul), Gunting (salah satu bilah = kaki sudut; lebih lebar, tumpul; pukul tiga siku-siku), dan Kipas Lipat (daerah di antara dua tulang terluar = daerah sudut; sama besar, siku-siku; pukul dua lancip). Pengecoh Mesin Sudut adalah dua nama bagian lain, dua hubungan lain, dan dua jenis lain.
 
 Ukuran pojok hanya ada di data (untuk menimbang), tidak tertulis di layar. Pengecoh dihitung dari banyak pojok dan banyak pojok siku (Temukan dan Patokan), serta dua jenis lain (Banding dan Putuskan). Letak kunci bervariasi.
 
@@ -53,6 +57,7 @@ Ukuran pojok hanya ada di data (untuk menimbang), tidak tertulis di layar. Penge
 | Skenario | Adegan | Isi |
 |----------|--------|-----|
 | Bingkai Pak Tukang (A) | 7 | Narasi Pak Tukang; arti siku-siku (pengecoh: lebih sempit dan lebih lebar dari patokan); besar siku-siku 90 (pengecoh 45 dan 180) dan banyak lipatan 2 (pengecoh 1 dan 3); ketuk 4 stik untuk pojok bingkai persegi panjang; isi 2 stik untuk pojok penggaris segitiga yang bukan siku-siku (3 pojok, 1 siku-siku); pojok yang masuk ke dalam patokan adalah lancip (pengecoh: tumpul dan siku-siku); penutup |
+| Yohana dan Kotak Pensil (B) | 7 | Narasi Yohana; arti sudut (pengecoh: garis melengkung dan satu titik tanpa garis); titik sudut dan kaki sudut pada huruf V; ketuk 4 stik untuk 2 kaki gunting dan 2 kaki jam; isi 3 stik untuk titik sudut segitiga; pukul dua sudut lancip (pengecoh: tumpul dan siku-siku); penutup |
 
 ## Kejujuran konsep
 
@@ -61,4 +66,8 @@ Ukuran pojok hanya ada di data (untuk menimbang), tidak tertulis di layar. Penge
 - Detektif: tiga pojok siku-siku dan tiga bukan.
 - Ukuran selain 90 tidak pernah tertulis di layar, ucapan, pesan, mesin, skenario, atau data ringkas; ukuran hanya untuk menggambar dan menimbang (derajat dan busur dibahas di sub-bab C).
 - Konsep sub-bab berikutnya tidak dipakai di Sub-Bab A (diuji pada misi, mesin, skenario, data ringkas, kode tampilan, model, logika, pesan lab hasil fuzz, dan ucapan): tanpa titik sudut, kaki sudut, kaki, vertex, sinar, busur, skala, releks, sudut nol, sudut lurus, sudut penuh, melukis, dan mengukur. Lancip dan tumpul hanya disebut secara kualitatif (lebih sempit dan lebih lebar dari patokan), sesuai Materi A.
+- Bagian: urutan sorot tiap sudut memuat keempat bagian tepat sekali; kaki pertama dan kedua sama-sama bernama kaki sudut; setelah lengkap, menamai lagi diabaikan.
+- Jenis: sudut diatur 15 sampai 165 dengan langkah 15; 90 dapat dicapai; tiga tugas pada sebelas sudut diperiksa satu per satu (33 kombinasi), dan pesan salah menyarankan arah yang benar (lebih sempit atau lebih lebar).
+- Jam: jenis sudut antara dua jarum pada pukul 2, 3, 4, 8, 1, 5 ditimbang dengan vektor jarum, bukan dengan rumus di kode; pukul 6 dan 12 (sudut lurus dan penuh) tidak dipakai karena dibahas di Sub-Bab C. Sudut antara jarum diuji sama dengan sudut vektor.
+- Sub-Bab B tidak memakai konsep sub-bab berikutnya (diuji pada misi, mesin, skenario, data ringkas, kode tampilan, model, logika, pesan lab hasil fuzz, dan ucapan): tanpa busur, skala, releks, sudut nol, sudut lurus, sudut penuh, melukis, mengukur, dan ukuran derajat selain 90. Penamaan sudut dengan tiga huruf tidak dipakai karena tidak ada di Materi B.
 - Fuzz 20.000 aksi: batas terjaga, riwayat tidak dicabut dan hanya bila tercapai, semua pesan bisa dieja. Uji mutasi pada logika lab, mesin, skenario, misi, pengeja, dan data ringkas: satu angka atau satu syarat diubah, uji gagal.

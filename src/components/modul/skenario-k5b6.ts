@@ -4,6 +4,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Skenario Kelas 5 Bab 6 (Sudut). Tanpa jaringan, tanpa model bahasa.
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b6.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K5B6A: Bingkai Pak Tukang (sudut siku-siku, patokan lipatan, membandingkan pojok dengan patokan)
+ *  - SKENARIO_K5B6B: Yohana dan Kotak Pensil (titik sudut, kaki sudut, lancip, siku-siku, tumpul, sudut jarum jam)
  */
 
 export const SKENARIO_K5B6A: DefSkenario = {
@@ -75,6 +76,79 @@ export const SKENARIO_K5B6A: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Sudut siku-siku besarnya 90° dan tepat berimpit dengan patokan. Pojok yang lebih sempit dari patokan disebut lancip, dan yang lebih lebar disebut tumpul. Periksa pojok dengan patokan lipatan atau penggaris siku, jangan hanya menebak.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B6B: DefSkenario = {
+  id: "yohana-pensil-k5b6",
+  judul: "Yohana dan Kotak Pensil",
+  latar: "Bantu Yohana mengenali bagian dan jenis sudut.",
+  tokoh: "👧",
+  nama: "Yohana",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Yohana. Aku bertanya-tanya, apakah pojok kotak pensilku termasuk sudut? Ayo kita cari tahu bagian dan jenis sudut bersama!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "arti",
+      jenis: "pilih",
+      cerita: "Yohana bertanya, sudut itu apa?",
+      opsi: [
+        { teks: "garis yang melengkung panjang", benar: false, umpan: "Garis yang melengkung bukan sudut. Sudut dibentuk oleh dua garis yang bertemu di satu titik." },
+        { teks: "daerah yang dibentuk dua garis yang bertemu di satu titik", benar: true, umpan: "Betul! Sudut adalah daerah yang dibentuk oleh dua garis yang bertemu di satu titik." },
+        { teks: "satu titik tanpa garis", benar: false, umpan: "Satu titik saja belum sudut. Sudut punya titik sudut dan dua garis, yaitu kaki sudut." },
+      ],
+    },
+    {
+      id: "bagian",
+      jenis: "soal",
+      cerita: "Yohana menggambar huruf V. Dua garisnya bertemu di bagian bawah huruf.",
+      soal: [
+        { teks: "Titik tempat dua garis bertemu disebut titik …", jawaban: "sudut", opsi: ["tengah", "sudut", "ujung"] },
+        { teks: "Dua garis yang membentuk sudut disebut … sudut.", jawaban: "kaki", opsi: ["kaki", "tangan", "sisi"] },
+      ],
+      sukses: "Hebat! Titik pertemuan disebut titik sudut, dan dua garisnya disebut kaki sudut.",
+      salah: "Hmm, ingat huruf V: titik di bawah dan dua garis. Coba lagi.",
+    },
+    {
+      id: "kaki",
+      jenis: "hitung",
+      cerita: "Gunting yang terbuka punya 2 kaki sudut, dan jam dinding juga punya 2 kaki sudut dari dua jarumnya. Tiap kaki sudut diberi satu stik.",
+      tanya: "Ketuk semua stik. Ada berapa kaki sudut pada gunting dan jam dinding seluruhnya?",
+      objek: "stik",
+      jumlah: 4,
+      sukses: "Betul! 2 kaki sudut ditambah 2 kaki sudut, seluruhnya 4 kaki sudut.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "segitiga",
+      jenis: "isi",
+      cerita: "Yohana menggambar segitiga. Di setiap pojok segitiga ada satu titik sudut. Masukkan satu stik untuk tiap titik sudut.",
+      objek: "stik",
+      target: 3,
+      maks: 6,
+      sukses: "Pas! Segitiga punya 3 pojok, jadi ada 3 titik sudut.",
+      kurang: "Stiknya masih sedikit. Hitung semua pojok segitiga.",
+      lebih: "Stiknya kebanyakan. Satu pojok hanya punya satu titik sudut.",
+    },
+    {
+      id: "jam",
+      jenis: "pilih",
+      cerita: "Yohana melihat jam dinding pukul dua. Sudut antara kedua jarum lebih sempit dari patokan siku-siku. Sudut itu …",
+      opsi: [
+        { teks: "tumpul, karena lebih lebar dari patokan", benar: false, umpan: "Lebih sempit dari patokan itu lancip, bukan tumpul. Tumpul itu lebih lebar dari patokan." },
+        { teks: "siku-siku, karena berimpit dengan patokan", benar: false, umpan: "Sudutnya lebih sempit dari patokan, tidak berimpit. Jadi bukan siku-siku." },
+        { teks: "lancip, karena lebih sempit dari patokan", benar: true, umpan: "Betul! Sudut yang lebih sempit dari patokan siku-siku disebut lancip." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Sudut punya satu titik sudut dan dua kaki sudut. Sudut yang lebih sempit dari siku-siku disebut lancip, yang tepat siku-siku besarnya 90°, dan yang lebih lebar disebut tumpul.",
     },
   ],
 };

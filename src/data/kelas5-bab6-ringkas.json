@@ -139,6 +139,140 @@
           }
         ]
       }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Sudut",
+          "ikon": "∠",
+          "suara": "Ini peta pengertian dan jenis sudut. Kita belajar titik sudut dan kaki sudut, daerah sudut, tiga jenis sudut, dan sudut pada jam. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "bagian",
+            "judul": "Titik dan kaki",
+            "ikon": "•",
+            "ringkas": "Satu titik sudut, dua kaki sudut.",
+            "suara": "Titik dan kaki. Titik tempat dua garis bertemu disebut titik sudut. Dua garis yang membentuk sudut disebut kaki sudut."
+          },
+          {
+            "id": "daerah",
+            "judul": "Daerah sudut",
+            "ikon": "∠",
+            "ringkas": "Daerah di antara kedua kaki.",
+            "suara": "Daerah sudut. Sudut adalah daerah yang dibentuk oleh dua garis yang bertemu di satu titik, yaitu daerah di antara kedua kaki."
+          },
+          {
+            "id": "jenis",
+            "judul": "Tiga jenis",
+            "ikon": "⚖️",
+            "ringkas": "Banding dengan patokan siku-siku.",
+            "suara": "Tiga jenis. Bandingkan sudut dengan patokan siku-siku. Lebih sempit disebut lancip. Tepat siku disebut siku-siku. Lebih lebar disebut tumpul."
+          },
+          {
+            "id": "jam",
+            "judul": "Sudut jam",
+            "ikon": "🕐",
+            "ringkas": "Dua jarum membentuk sudut.",
+            "suara": "Sudut jam. Jarum pendek dan jarum panjang jam membentuk sudut. Pada pukul dua sudutnya lancip, dan pada pukul tiga tepat siku-siku."
+          }
+        ],
+        "kartu": [
+          { "id": "b-titik", "teks": "Titik temu dua garis: titik sudut", "ikon": "•", "cabang": "bagian", "petunjuk": "Titik pertemuan itu soal titik dan kaki. Coba cabang lain." },
+          { "id": "b-kaki", "teks": "Dua garis pembentuk: kaki sudut", "ikon": "／", "cabang": "bagian", "petunjuk": "Garis pembentuk itu soal titik dan kaki. Coba cabang lain." },
+          { "id": "b-definisi", "teks": "Sudut adalah daerah dua garis bertemu", "ikon": "∠", "cabang": "daerah", "petunjuk": "Arti sudut itu soal daerah sudut. Coba cabang lain." },
+          { "id": "b-antara", "teks": "Daerah di antara kedua kaki", "ikon": "🟨", "cabang": "daerah", "petunjuk": "Daerah di antara kaki itu soal daerah sudut. Coba cabang lain." },
+          { "id": "b-lancip", "teks": "Lebih sempit dari siku-siku: lancip", "ikon": "∕", "cabang": "jenis", "petunjuk": "Membandingkan dengan siku-siku itu soal tiga jenis. Coba cabang lain." },
+          { "id": "b-tumpul", "teks": "Lebih lebar dari siku-siku: tumpul", "ikon": "∟", "cabang": "jenis", "petunjuk": "Membandingkan dengan siku-siku itu soal tiga jenis. Coba cabang lain." },
+          { "id": "b-dua", "teks": "Jam pukul 2: sudut lancip", "ikon": "🕑", "cabang": "jam", "petunjuk": "Jarum jam itu soal sudut jam. Coba cabang lain." },
+          { "id": "b-tiga", "teks": "Jam pukul 3: sudut siku-siku", "ikon": "🕒", "cabang": "jam", "petunjuk": "Jarum jam itu soal sudut jam. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Pengertian dan Jenis Sudut",
+        "suara": "Ini tiga panel tentang sudut. Ketuk kotaknya untuk membuka, lalu lihat bagian sudut, lancip dan tumpul, serta sudut pada jam.",
+        "panel": [
+          {
+            "id": "b-bagian-info",
+            "tipe": "buka",
+            "judul": "Bagian sudut",
+            "ide": "Titik sudut, kaki sudut, dan daerahnya.",
+            "suara": "Ada tiga bagian sudut. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "titik",
+                "label": "Titik",
+                "ikon": "•",
+                "isi": "Titik temu dua garis.",
+                "suara": "Dua garis bertemu di satu titik. Titik itu disebut titik sudut.",
+                "visual": { "jenis": "teks", "isi": "1 titik sudut" }
+              },
+              {
+                "id": "kaki",
+                "label": "Kaki",
+                "ikon": "／",
+                "isi": "Dua garis pembentuk.",
+                "suara": "Dua garis yang membentuk sudut disebut kaki sudut. Satu sudut punya dua kaki.",
+                "visual": { "jenis": "teks", "isi": "2 kaki sudut" }
+              },
+              {
+                "id": "daerah",
+                "label": "Daerah",
+                "ikon": "🟨",
+                "isi": "Di antara kedua kaki.",
+                "suara": "Daerah di antara kedua kaki adalah daerah sudut.",
+                "visual": { "jenis": "teks", "isi": "daerah sudut" }
+              }
+            ]
+          },
+          {
+            "id": "b-jenis-info",
+            "tipe": "banding",
+            "judul": "Lancip dan tumpul",
+            "ide": "Dibanding siku-siku, sempit atau lebar.",
+            "suara": "Lihat dua jenis sudut yang tidak siku-siku.",
+            "sisi": [
+              { "id": "lancip", "nama": "Lancip", "ikon": "∕", "catatan": "Lebih sempit dari siku-siku.", "suara": "Sudut yang lebih sempit dari siku-siku disebut lancip.", "visual": { "jenis": "teks", "isi": "< 90°" } },
+              { "id": "tumpul", "nama": "Tumpul", "ikon": "∠", "catatan": "Lebih lebar dari siku-siku.", "suara": "Sudut yang lebih lebar dari siku-siku disebut tumpul.", "visual": { "jenis": "teks", "isi": "> 90°" } }
+            ],
+            "kesimpulan": "Tepat siku-siku adalah 90°."
+          },
+          {
+            "id": "b-jam-info",
+            "tipe": "buka",
+            "judul": "Sudut pada jam",
+            "ide": "Dua jarum membentuk sudut.",
+            "suara": "Ada tiga contoh jam. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "dua",
+                "label": "Pukul 2",
+                "ikon": "🕑",
+                "isi": "Sudutnya lancip.",
+                "suara": "Pada pukul dua, kedua jarum membentuk sudut yang lebih sempit dari siku-siku, yaitu lancip.",
+                "visual": { "jenis": "teks", "isi": "lancip" }
+              },
+              {
+                "id": "tiga",
+                "label": "Pukul 3",
+                "ikon": "🕒",
+                "isi": "Sudutnya siku-siku.",
+                "suara": "Pada pukul tiga, kedua jarum membentuk sudut siku-siku.",
+                "visual": { "jenis": "teks", "isi": "∟ = 90°" }
+              },
+              {
+                "id": "empat",
+                "label": "Pukul 4",
+                "ikon": "🕓",
+                "isi": "Sudutnya tumpul.",
+                "suara": "Pada pukul empat, kedua jarum membentuk sudut yang lebih lebar dari siku-siku, yaitu tumpul.",
+                "visual": { "jenis": "teks", "isi": "tumpul" }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }
