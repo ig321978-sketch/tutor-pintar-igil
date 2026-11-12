@@ -1,0 +1,230 @@
+{
+  "chapter_id": "mtk-4-bab1",
+  "phase_code": "FASE_B",
+  "grade": 4,
+  "subject": "Matematika",
+  "title": "Bilangan Cacah sampai 10.000",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": { "judul": "Membaca dan Menulis Bilangan", "ikon": "🔢", "suara": "Ini peta membaca dan menulis bilangan sampai sepuluh ribu. Kita belajar empat tempat, cara membaca, angka nol, dan menulis lambang. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "empat-tempat", "judul": "Empat tempat", "ikon": "🟣", "ringkas": "Ribuan, ratusan, puluhan, dan satuan.", "suara": "Empat tempat. Bilangan empat angka punya empat tempat dari kiri: ribuan, ratusan, puluhan, dan satuan. Satu peti seribu, satu dus seratus, satu bungkus sepuluh, dan satu benda satu." },
+          { "id": "membaca", "judul": "Cara membaca", "ikon": "🗣️", "ringkas": "Baca dari kiri: ribu, ratus, puluh.", "suara": "Cara membaca. Baca dari kiri. Ribuan ditambah kata ribu, ratusan ditambah ratus, puluhan ditambah puluh, dan satuan dibaca angkanya saja. Tiga ribu dua ratus delapan puluh enam." },
+          { "id": "nol-seribu", "judul": "Nol dan seribu", "ikon": "⭕", "ringkas": "Nol tidak dibaca. Satu ribu dibaca seribu.", "suara": "Nol dan seribu. Tempat yang berisi nol tidak dibaca. Bilangan dengan angka tujuh, nol, nol, tiga dibaca tujuh ribu tiga. Ribuan satu dibaca seribu, jadi angka satu, nol, dua, lima dibaca seribu dua puluh lima." },
+          { "id": "menulis", "judul": "Menulis lambang", "ikon": "✍️", "ringkas": "Dengar kata, tulis angka tiap tempat.", "suara": "Menulis lambang. Dengar kata bilangannya, lalu tulis angka tiap tempat. Tempat yang tidak disebut diisi nol. Tiga ribu enam ratus tujuh puluh enam ditulis tiga, enam, tujuh, enam." }
+        ],
+        "kartu": [
+          { "id": "a-peti", "teks": "1 peti = 1.000", "ikon": "📦", "cabang": "empat-tempat", "petunjuk": "Peti dan nilainya itu soal empat tempat. Coba cabang lain." },
+          { "id": "a-tukar", "teks": "10 dus ditukar 1 peti", "ikon": "🔄", "cabang": "empat-tempat", "petunjuk": "Penukaran kemasan itu soal empat tempat. Coba cabang lain." },
+          { "id": "a-kiri", "teks": "Baca dari kiri", "ikon": "⬅️", "cabang": "membaca", "petunjuk": "Arah membaca itu soal cara membaca. Coba cabang lain." },
+          { "id": "a-3286", "teks": "3.286: tiga ribu dua ratus delapan puluh enam", "ikon": "🗣️", "cabang": "membaca", "petunjuk": "Membaca bilangan lengkap itu soal cara membaca. Coba cabang lain." },
+          { "id": "a-7003", "teks": "7.003: tujuh ribu tiga", "ikon": "⭕", "cabang": "nol-seribu", "petunjuk": "Nol yang dilewati itu soal nol dan seribu. Coba cabang lain." },
+          { "id": "a-1025", "teks": "1.025: seribu dua puluh lima", "ikon": "1️⃣", "cabang": "nol-seribu", "petunjuk": "Kata seribu itu soal nol dan seribu. Coba cabang lain." },
+          { "id": "a-semeru", "teks": "Semeru 3.676 meter", "ikon": "🌋", "cabang": "menulis", "petunjuk": "Menulis tinggi gunung dari kata itu soal menulis lambang. Coba cabang lain." },
+          { "id": "a-isi-nol", "teks": "Tempat kosong diisi 0", "ikon": "✍️", "cabang": "menulis", "petunjuk": "Mengisi tempat kosong saat menulis itu soal menulis lambang. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Membaca dan Menulis Bilangan Empat Angka",
+        "suara": "Ini tiga panel tentang membaca dan menulis bilangan empat angka. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-kemasan", "tipe": "buka", "judul": "Peti, dus, bungkus, benda", "ide": "Empat kemasan untuk empat tempat.",
+            "suara": "Ada empat kemasan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "peti", "label": "Peti", "ikon": "📦", "isi": "Seribu benda, tempat ribuan.", "suara": "Satu peti berisi seribu benda. Peti ada di tempat ribuan.", "visual": { "jenis": "teks", "isi": "1 peti = 1.000" } },
+              { "id": "dus", "label": "Dus dan bungkus", "ikon": "🧃", "isi": "Seratus dan sepuluh.", "suara": "Satu dus berisi seratus benda, dan satu bungkus berisi sepuluh benda.", "visual": { "jenis": "teks", "isi": "1 dus = 100, 1 bungkus = 10" } },
+              { "id": "tukar", "label": "Penukaran", "ikon": "🔄", "isi": "Sepuluh dus menjadi satu peti.", "suara": "Bila dus sudah sepuluh, kesepuluh dus itu ditukar menjadi satu peti.", "visual": { "jenis": "teks", "isi": "10 dus → 1 peti" } }
+            ]
+          },
+          {
+            "id": "a-nol-banding", "tipe": "banding", "judul": "Membaca bilangan dengan nol", "ide": "Nol menjaga tempat, tetapi tidak dibaca.",
+            "suara": "Bandingkan dua cara membaca bilangan dengan angka tujuh, nol, nol, tiga. Hanya satu yang benar.",
+            "sisi": [
+              { "id": "benar", "nama": "Nol dilewati", "ikon": "✅", "catatan": "Tujuh ribu tiga.", "suara": "Ratusan dan puluhan berisi nol, jadi dilewati. Dibaca tujuh ribu tiga. Ini benar.", "visual": { "jenis": "teks", "isi": "7.003 = tujuh ribu tiga" } },
+              { "id": "keliru", "nama": "Nol ikut dibaca", "ikon": "❌", "catatan": "Tujuh ribu nol ratus. Keliru.", "suara": "Tujuh ribu nol ratus nol puluh tiga itu keliru. Tempat yang berisi nol tidak dibaca.", "visual": { "jenis": "teks", "isi": "tujuh ribu nol ratus ✗" } }
+            ],
+            "kesimpulan": "Nol tetap ditulis, tetapi tidak dibaca."
+          },
+          {
+            "id": "a-baca", "tipe": "buka", "judul": "Contoh membaca", "ide": "Ribu, ratus, puluh, lalu satuan.",
+            "suara": "Ada tiga contoh membaca. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "jarak", "label": "Jarak rumah Helen", "ikon": "🏠", "isi": "3.286 meter.", "suara": "Tiga ribu dua ratus delapan puluh enam meter.", "visual": { "jenis": "teks", "isi": "3.286 = tiga ribu dua ratus delapan puluh enam" } },
+              { "id": "seribu", "label": "Seribu", "ikon": "1️⃣", "isi": "Bukan satu ribu.", "suara": "Angka satu, nol, dua, lima dibaca seribu dua puluh lima, bukan satu ribu dua puluh lima.", "visual": { "jenis": "teks", "isi": "1.025 = seribu dua puluh lima" } },
+              { "id": "semeru", "label": "Gunung Semeru", "ikon": "🌋", "isi": "3.676 meter.", "suara": "Tinggi Gunung Semeru tiga ribu enam ratus tujuh puluh enam meter.", "visual": { "jenis": "teks", "isi": "3.676 m" } }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": { "judul": "Nilai Tempat", "ikon": "📍", "suara": "Ini peta nilai tempat bilangan sampai sepuluh ribu. Kita belajar tempat dan nilai angka, uraian, tabel digit, dan angka yang sama di tempat berbeda. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "tempat-nilai", "judul": "Tempat menentukan nilai", "ikon": "📍", "ringkas": "Angka 2 di ribuan bernilai 2.000.", "suara": "Tempat menentukan nilai. Pada dua ribu seratus lima puluh, angka dua ada di ribuan, jadi nilainya dua ribu, bukan dua." },
+          { "id": "uraian", "judul": "Uraian", "ikon": "🔓", "ringkas": "Tulis nilai tiap tempat, termasuk nol.", "suara": "Uraian. Uraian menulis nilai tiap tempat. Dua ribu seratus lima puluh sama dengan dua ribu ditambah seratus ditambah lima puluh ditambah nol." },
+          { "id": "tabel", "judul": "Tabel digit", "ikon": "📋", "ringkas": "Tabel diisi digit, bukan nilai.", "suara": "Tabel digit. Pada tabel nilai tempat kita menulis digitnya. Untuk tujuh ribu delapan ratus dua belas tulis tujuh, delapan, satu, dua. Jangan menulis tujuh ribu di kolom ribuan." },
+          { "id": "angka-sama", "judul": "Angka sama, nilai beda", "ikon": "6️⃣", "ringkas": "Angka 6 bisa bernilai 60 atau 600.", "suara": "Angka sama, nilai beda. Pada delapan ribu empat ratus enam puluh tiga, angka enam bernilai enam puluh. Pada empat ribu enam ratus tujuh puluh lima, angka enam bernilai enam ratus." }
+        ],
+        "kartu": [
+          { "id": "b-2000", "teks": "2 pada 2.150 bernilai 2.000", "ikon": "🟣", "cabang": "tempat-nilai", "petunjuk": "Nilai angka di ribuan itu soal tempat menentukan nilai. Coba cabang lain." },
+          { "id": "b-digit-nilai", "teks": "Digit ≠ nilai", "ikon": "⚖️", "cabang": "tempat-nilai", "petunjuk": "Beda digit dan nilai itu soal tempat menentukan nilai. Coba cabang lain." },
+          { "id": "b-2150", "teks": "2.000 + 100 + 50 + 0", "ikon": "🔓", "cabang": "uraian", "petunjuk": "Menulis nilai tiap tempat itu soal uraian. Coba cabang lain." },
+          { "id": "b-nol-uraian", "teks": "Nol tetap ditulis di uraian", "ikon": "⭕", "cabang": "uraian", "petunjuk": "Nol di uraian itu soal uraian. Coba cabang lain." },
+          { "id": "b-7812", "teks": "7.812 → 7 | 8 | 1 | 2", "ikon": "📋", "cabang": "tabel", "petunjuk": "Mengisi kolom dengan digit itu soal tabel digit. Coba cabang lain." },
+          { "id": "b-bukan-7000", "teks": "Bukan 7000 di kolom ribuan", "ikon": "🚫", "cabang": "tabel", "petunjuk": "Kesalahan mengisi kolom itu soal tabel digit. Coba cabang lain." },
+          { "id": "b-60", "teks": "8.463: angka 6 bernilai 60", "ikon": "🔵", "cabang": "angka-sama", "petunjuk": "Angka 6 di puluhan itu soal angka sama, nilai beda. Coba cabang lain." },
+          { "id": "b-600", "teks": "4.675: angka 6 bernilai 600", "ikon": "🟢", "cabang": "angka-sama", "petunjuk": "Angka 6 di ratusan itu soal angka sama, nilai beda. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Nilai Tempat Bilangan Empat Angka",
+        "suara": "Ini tiga panel tentang nilai tempat. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "b-bobot", "tipe": "buka", "judul": "Nilai tiap tempat", "ide": "Tempat menentukan nilai angka.",
+            "suara": "Ada empat tempat. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "ribuan", "label": "Ribuan", "ikon": "🟣", "isi": "Angka 2 bernilai 2.000.", "suara": "Pada dua ribu seratus lima puluh, angka dua di ribuan bernilai dua ribu.", "visual": { "jenis": "teks", "isi": "2.150 → 2.000" } },
+              { "id": "ratusan", "label": "Ratusan", "ikon": "🟢", "isi": "Angka 1 bernilai 100.", "suara": "Angka satu di ratusan bernilai seratus.", "visual": { "jenis": "teks", "isi": "2.150 → 100" } },
+              { "id": "puluhan-satuan", "label": "Puluhan dan satuan", "ikon": "🔵", "isi": "50 dan 0.", "suara": "Angka lima di puluhan bernilai lima puluh. Angka nol di satuan bernilai nol.", "visual": { "jenis": "teks", "isi": "2.150 → 50 dan 0" } }
+            ]
+          },
+          {
+            "id": "b-tabel-banding", "tipe": "banding", "judul": "Kolom ribuan pada tabel", "ide": "Tabel diisi digit, bukan nilai.",
+            "suara": "Bandingkan dua cara mengisi kolom ribuan untuk tujuh ribu delapan ratus dua belas.",
+            "sisi": [
+              { "id": "digit", "nama": "Tulis digit", "ikon": "✅", "catatan": "Kolom ribuan: 7.", "suara": "Kolom ribuan diisi digitnya, yaitu tujuh. Ini benar.", "visual": { "jenis": "tabel-menurun", "kepala": ["Kolom", "Isi"], "baris": [["Ribuan", 7], ["Ratusan", 8], ["Puluhan", 1], ["Satuan", 2]] } },
+              { "id": "nilai", "nama": "Tulis nilai", "ikon": "❌", "catatan": "Kolom ribuan: 7000. Keliru.", "suara": "Menulis tujuh ribu di kolom ribuan itu keliru. Kolomnya sudah menunjukkan ribuan.", "visual": { "jenis": "teks", "isi": "Ribuan: 7000 ✗" } }
+            ],
+            "kesimpulan": "Kolom sudah menunjukkan tempat, jadi isinya cukup digit."
+          },
+          {
+            "id": "b-enam", "tipe": "buka", "judul": "Di mana angka 6?", "ide": "Angka sama, tempat beda, nilai beda.",
+            "suara": "Angka enam bisa bernilai berbeda. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "puluhan", "label": "8.463", "ikon": "🔵", "isi": "6 di puluhan: 60.", "suara": "Pada delapan ribu empat ratus enam puluh tiga, angka enam di puluhan bernilai enam puluh.", "visual": { "jenis": "teks", "isi": "8.463 → 60" } },
+              { "id": "ratusan6", "label": "4.675", "ikon": "🟢", "isi": "6 di ratusan: 600.", "suara": "Pada empat ribu enam ratus tujuh puluh lima, angka enam di ratusan bernilai enam ratus.", "visual": { "jenis": "teks", "isi": "4.675 → 600" } },
+              { "id": "uraian7350", "label": "Uraian 7.350", "ikon": "🔓", "isi": "7.000 + 300 + 50 + 0.", "suara": "Tujuh ribu tiga ratus lima puluh diurai tujuh ribu ditambah tiga ratus ditambah lima puluh ditambah nol.", "visual": { "jenis": "teks", "isi": "7.350 = 7.000 + 300 + 50 + 0" } }
+            ]
+          }
+        ]
+      }
+    },
+    "C": {
+      "peta": {
+        "pusat": { "judul": "Membandingkan dan Mengurutkan", "ikon": "⚖️", "suara": "Ini peta membandingkan dan mengurutkan bilangan sampai sepuluh ribu. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "ribuan-dulu", "judul": "Ribuan dulu", "ikon": "🟣", "ringkas": "Bandingkan dari tempat paling kiri.", "suara": "Ribuan dulu. Membandingkan dimulai dari ribuan. Delapan ribu tujuh ratus lima puluh lebih dari tujuh ribu lima ratus, karena ribuannya delapan dan tujuh." },
+          { "id": "penentu", "judul": "Tempat penentu", "ikon": "🔍", "ringkas": "Tempat pertama yang berbeda menentukan.", "suara": "Tempat penentu. Bila ribuan sama, lihat ratusan, lalu puluhan, lalu satuan. Tempat pertama yang berbeda menentukan hasilnya." },
+          { "id": "tanda", "judul": "Tiga tanda", "ikon": "🐊", "ringkas": "Lebih dari, kurang dari, sama dengan.", "suara": "Tiga tanda. Tanda lebih dari dan kurang dari terbuka ke bilangan yang lebih besar. Tanda sama dengan dipakai bila semua tempat sama." },
+          { "id": "urut", "judul": "Mengurutkan", "ikon": "📶", "ringkas": "Naik dari terkecil, turun dari terbesar.", "suara": "Mengurutkan. Urutan naik dimulai dari bilangan terkecil. Tinggi gunung dua ribu empat ratus enam puluh, tiga ribu enam ratus tujuh puluh enam, dan tiga ribu tujuh ratus dua puluh enam." }
+        ],
+        "kartu": [
+          { "id": "c-8-7", "teks": "Ribuan 8 dan 7: 8.750 lebih besar", "ikon": "🟣", "cabang": "ribuan-dulu", "petunjuk": "Membandingkan ribuan itu soal ribuan dulu. Coba cabang lain." },
+          { "id": "c-kiri", "teks": "Mulai dari kiri", "ikon": "⬅️", "cabang": "ribuan-dulu", "petunjuk": "Tempat memulai itu soal ribuan dulu. Coba cabang lain." },
+          { "id": "c-puluhan", "teks": "4.352 dan 4.365: puluhan menentukan", "ikon": "🔍", "cabang": "penentu", "petunjuk": "Tempat pertama yang berbeda itu soal tempat penentu. Coba cabang lain." },
+          { "id": "c-satuan", "teks": "1.001 dan 1.002: satuan menentukan", "ikon": "🔍", "cabang": "penentu", "petunjuk": "Tempat pertama yang berbeda itu soal tempat penentu. Coba cabang lain." },
+          { "id": "c-lebih", "teks": "5.734 > 4.312", "ikon": "🐊", "cabang": "tanda", "petunjuk": "Menulis tanda itu soal tiga tanda. Coba cabang lain." },
+          { "id": "c-sama", "teks": "8.765 = 8.765", "ikon": "🟰", "cabang": "tanda", "petunjuk": "Tanda sama dengan itu soal tiga tanda. Coba cabang lain." },
+          { "id": "c-gunung", "teks": "2.460, 3.676, 3.726", "ikon": "🌋", "cabang": "urut", "petunjuk": "Urutan tinggi gunung itu soal mengurutkan. Coba cabang lain." },
+          { "id": "c-9521", "teks": "Digit 1, 5, 9, 2: terbesar 9.521", "ikon": "🃏", "cabang": "urut", "petunjuk": "Menyusun bilangan terbesar itu soal mengurutkan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Membandingkan dan Mengurutkan Bilangan",
+        "suara": "Ini tiga panel tentang membandingkan dan mengurutkan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "c-tanda", "tipe": "buka", "judul": "Tiga tanda", "ide": "Mulut tanda menghadap bilangan besar.",
+            "suara": "Ada tiga tanda. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "lebih", "label": "Lebih dari", "ikon": "▶️", "isi": "8.750 > 7.500.", "suara": "Delapan ribu tujuh ratus lima puluh lebih dari tujuh ribu lima ratus.", "visual": { "jenis": "teks", "isi": "8.750 > 7.500" } },
+              { "id": "kurang", "label": "Kurang dari", "ikon": "◀️", "isi": "4.352 < 4.355.", "suara": "Empat ribu tiga ratus lima puluh dua kurang dari empat ribu tiga ratus lima puluh lima.", "visual": { "jenis": "teks", "isi": "4.352 < 4.355" } },
+              { "id": "sama", "label": "Sama dengan", "ikon": "🟰", "isi": "Semua tempat sama.", "suara": "Bila semua tempat sama, pakai tanda sama dengan.", "visual": { "jenis": "teks", "isi": "8.765 = 8.765" } }
+            ]
+          },
+          {
+            "id": "c-penentu-banding", "tipe": "banding", "judul": "Dari kiri atau dari kanan?", "ide": "Bandingkan dari kiri, bukan kanan.",
+            "suara": "Bandingkan dua cara membandingkan tiga ribu enam ratus tujuh puluh enam dan tiga ribu tujuh ratus dua puluh enam.",
+            "sisi": [
+              { "id": "kiri", "nama": "Dari ribuan", "ikon": "✅", "catatan": "Ratusan 6 < 7: 3.676 < 3.726.", "suara": "Ribuan sama, tiga dan tiga. Ratusan enam dan tujuh. Jadi tiga ribu enam ratus tujuh puluh enam lebih kecil. Ini benar.", "visual": { "jenis": "teks", "isi": "3.676 < 3.726" } },
+              { "id": "kanan", "nama": "Dari satuan", "ikon": "❌", "catatan": "Puluhan 7 > 2 menyesatkan.", "suara": "Kalau mulai dari satuan atau puluhan, kita bisa salah. Puluhan tujuh lebih dari dua, padahal bilangannya lebih kecil.", "visual": { "jenis": "teks", "isi": "puluhan 7 > 2, tetapi 3.676 < 3.726" } }
+            ],
+            "kesimpulan": "Tempat pertama yang berbeda dari kiri menentukan hasilnya."
+          },
+          {
+            "id": "c-urut", "tipe": "buka", "judul": "Mengurutkan", "ide": "Cari terkecil, lalu yang berikutnya.",
+            "suara": "Ada tiga hal tentang mengurutkan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "naik", "label": "Urutan naik", "ikon": "📶", "isi": "Dari terkecil.", "suara": "Urutan naik tinggi gunung: dua ribu empat ratus enam puluh, tiga ribu enam ratus tujuh puluh enam, tiga ribu tujuh ratus dua puluh enam.", "visual": { "jenis": "teks", "isi": "2.460, 3.676, 3.726" } },
+              { "id": "turun", "label": "Urutan turun", "ikon": "📉", "isi": "Dari terbesar.", "suara": "Urutan turun dimulai dari bilangan terbesar.", "visual": { "jenis": "teks", "isi": "3.726, 3.676, 2.460" } },
+              { "id": "kartu", "label": "Kartu digit", "ikon": "🃏", "isi": "Digit besar di kiri.", "suara": "Dari kartu satu, lima, sembilan, dua, bilangan terbesar adalah sembilan ribu lima ratus dua puluh satu.", "visual": { "jenis": "teks", "isi": "1 5 9 2 → 9.521" } }
+            ]
+          }
+        ]
+      }
+    },
+    "D": {
+      "peta": {
+        "pusat": { "judul": "Komposisi dan Dekomposisi", "ikon": "🧩", "suara": "Ini peta komposisi dan dekomposisi bilangan sampai sepuluh ribu. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "komposisi", "judul": "Komposisi", "ikon": "🧩", "ringkas": "Menyusun bilangan dari nilai tempat.", "suara": "Komposisi. Komposisi menyusun bilangan dari bagian-bagiannya. Enam ribu ditambah tiga ratus ditambah empat puluh ditambah delapan membentuk enam ribu tiga ratus empat puluh delapan." },
+          { "id": "dekomposisi", "judul": "Dekomposisi", "ikon": "🔓", "ringkas": "Mengurai bilangan menjadi bagian.", "suara": "Dekomposisi. Dekomposisi mengurai bilangan menjadi bagian. Enam ribu delapan ratus empat puluh sembilan diurai enam ribu, delapan ratus, empat puluh, dan sembilan. Satu bilangan bisa diurai dengan lebih dari satu cara." },
+          { "id": "nol", "judul": "Nol menjaga tempat", "ikon": "0️⃣", "ringkas": "Bagian bernilai nol tetap ditulis.", "suara": "Nol menjaga tempat. Enam ribu tiga puluh lima diurai enam ribu ditambah nol ditambah tiga puluh ditambah lima. Nol ratusan tetap ditulis." },
+          { "id": "periksa", "judul": "Saling memeriksa", "ikon": "🔄", "ringkas": "Jumlahkan uraian untuk memeriksa.", "suara": "Saling memeriksa. Komposisi dan dekomposisi saling membalik. Jumlahkan semua bagian uraian. Hasilnya harus sama dengan bilangan semula. Uang Helen tujuh ribu tiga ratus juga bisa diurai dari pecahan uang." }
+        ],
+        "kartu": [
+          { "id": "d-6348", "teks": "6.000 + 300 + 40 + 8 → 6.348", "ikon": "🧩", "cabang": "komposisi", "petunjuk": "Menyusun dari bagian itu soal komposisi. Coba cabang lain." },
+          { "id": "d-susun", "teks": "Bagian ke bilangan", "ikon": "➡️", "cabang": "komposisi", "petunjuk": "Arah dari bagian ke bilangan itu soal komposisi. Coba cabang lain." },
+          { "id": "d-6849", "teks": "6.849 → 6.000 + 800 + 40 + 9", "ikon": "🔓", "cabang": "dekomposisi", "petunjuk": "Mengurai menjadi bagian itu soal dekomposisi. Coba cabang lain." },
+          { "id": "d-cara-lain", "teks": "3.035 = 2.000 + 1.035", "ikon": "🔀", "cabang": "dekomposisi", "petunjuk": "Uraian cara lain itu soal dekomposisi. Coba cabang lain." },
+          { "id": "d-6035", "teks": "6.035 → 6.000 + 0 + 30 + 5", "ikon": "0️⃣", "cabang": "nol", "petunjuk": "Nol ratusan di uraian itu soal nol menjaga tempat. Coba cabang lain." },
+          { "id": "d-7020", "teks": "7.020 → 7.000 + 0 + 20 + 0", "ikon": "7️⃣", "cabang": "nol", "petunjuk": "Dua nol di uraian itu soal nol menjaga tempat. Coba cabang lain." },
+          { "id": "d-jumlah", "teks": "Jumlah uraian = bilangan semula", "ikon": "🔍", "cabang": "periksa", "petunjuk": "Memeriksa dengan menjumlahkan itu soal saling memeriksa. Coba cabang lain." },
+          { "id": "d-uang", "teks": "Rp5.000 + Rp2.000 + Rp300", "ikon": "💰", "cabang": "periksa", "petunjuk": "Menguraikan uang lalu memeriksanya itu soal saling memeriksa. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Menyusun dan Mengurai Bilangan",
+        "suara": "Ini tiga panel tentang komposisi dan dekomposisi. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "d-dua-arah", "tipe": "buka", "judul": "Dua arah", "ide": "Menyusun dan mengurai saling membalik.",
+            "suara": "Ada tiga hal tentang dua arah. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "susun", "label": "Komposisi", "ikon": "🧩", "isi": "Bagian menjadi bilangan.", "suara": "Enam ribu, tiga ratus, empat puluh, dan delapan disusun menjadi enam ribu tiga ratus empat puluh delapan.", "visual": { "jenis": "teks", "isi": "6.000 + 300 + 40 + 8 → 6.348" } },
+              { "id": "urai", "label": "Dekomposisi", "ikon": "🔓", "isi": "Bilangan menjadi bagian.", "suara": "Enam ribu delapan ratus empat puluh sembilan diurai menjadi enam ribu, delapan ratus, empat puluh, dan sembilan.", "visual": { "jenis": "teks", "isi": "6.849 → 6.000 + 800 + 40 + 9" } },
+              { "id": "nol", "label": "Nol menjaga", "ikon": "0️⃣", "isi": "6.000 + 0 + 30 + 5.", "suara": "Pada enam ribu tiga puluh lima, nol ratusan tetap ditulis dalam uraian.", "visual": { "jenis": "teks", "isi": "6.035 → 6.000 + 0 + 30 + 5" } }
+            ]
+          },
+          {
+            "id": "d-cara-banding", "tipe": "banding", "judul": "Dua cara mengurai 3.035", "ide": "Satu bilangan, banyak cara mengurai.",
+            "suara": "Bandingkan dua cara mengurai tiga ribu tiga puluh lima. Keduanya benar.",
+            "sisi": [
+              { "id": "baku", "nama": "Menurut tempat", "ikon": "📍", "catatan": "3.000 + 0 + 30 + 5.", "suara": "Menurut nilai tempat: tiga ribu ditambah nol ditambah tiga puluh ditambah lima.", "visual": { "jenis": "teks", "isi": "3.000 + 0 + 30 + 5" } },
+              { "id": "lain", "nama": "Cara lain", "ikon": "🔀", "catatan": "2.000 + 1.035.", "suara": "Cara lain: dua ribu ditambah seribu tiga puluh lima. Jumlahnya tetap tiga ribu tiga puluh lima.", "visual": { "jenis": "teks", "isi": "2.000 + 1.035" } }
+            ],
+            "kesimpulan": "Uraian benar bila jumlahnya sama dengan bilangan semula."
+          },
+          {
+            "id": "d-uang", "tipe": "buka", "judul": "Uang Helen", "ide": "Uang juga bisa diurai.",
+            "suara": "Ada tiga hal tentang uang Helen. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "7300", "label": "Rp7.300", "ikon": "💰", "isi": "Rp5.000, Rp2.000, Rp300.", "suara": "Tujuh ribu tiga ratus rupiah bisa diurai menjadi lima ribu, dua ribu, dan tiga ratus rupiah.", "visual": { "jenis": "tabel-menurun", "kepala": ["Pecahan", "Lembar atau keping"], "baris": [["Rp5.000", 1], ["Rp2.000", 1], ["Rp100", 3]] } },
+              { "id": "10000", "label": "Rp10.000", "ikon": "🔟", "isi": "Dua lembar Rp5.000.", "suara": "Sepuluh ribu rupiah bisa diurai menjadi dua lembar lima ribu rupiah.", "visual": { "jenis": "teks", "isi": "Rp10.000 = Rp5.000 + Rp5.000" } },
+              { "id": "periksa", "label": "Periksa", "ikon": "🔍", "isi": "Jumlahkan semua pecahan.", "suara": "Jumlahkan semua pecahan. Hasilnya harus sama dengan uang semula.", "visual": { "jenis": "teks", "isi": "jumlah pecahan = uang semula" } }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
