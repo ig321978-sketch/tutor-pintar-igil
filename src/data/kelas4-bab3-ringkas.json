@@ -1,0 +1,402 @@
+{
+  "chapter_id": "mtk-4-bab3",
+  "phase_code": "FASE_B",
+  "grade": 4,
+  "subject": "Matematika",
+  "title": "Pola Gambar dan Pola Bilangan",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Pola Gambar",
+          "ikon": "🟠",
+          "suara": "Ini peta pola gambar. Kita belajar kumpulan yang membesar, kumpulan yang mengecil, selisih yang tetap, dan tabel selisih. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "membesar",
+            "judul": "Membesar",
+            "ikon": "📈",
+            "ringkas": "Benda bertambah di setiap kumpulan.",
+            "suara": "Membesar. Pada pola membesar, banyak benda bertambah di setiap kumpulan. Jeruk dua, empat, enam makin banyak."
+          },
+          {
+            "id": "mengecil",
+            "judul": "Mengecil",
+            "ikon": "📉",
+            "ringkas": "Benda berkurang di setiap kumpulan.",
+            "suara": "Mengecil. Pada pola mengecil, banyak benda berkurang di setiap kumpulan. Permen sembilan, tujuh, lima makin sedikit."
+          },
+          {
+            "id": "selisih",
+            "judul": "Selisih tetap",
+            "ikon": "↔️",
+            "ringkas": "Bandingkan dua kumpulan yang berurutan.",
+            "suara": "Selisih tetap. Bandingkan dua kumpulan yang berurutan. Jeruk bertambah dua setiap kumpulan, permen berkurang dua setiap kumpulan."
+          },
+          {
+            "id": "tabel",
+            "judul": "Tabel selisih",
+            "ikon": "📋",
+            "ringkas": "Catat kumpulan, lalu lanjutkan dengan selisih.",
+            "suara": "Tabel selisih. Tulis banyak benda di tiap kumpulan, lalu lanjutkan dengan selisih yang sama. Kumpulan ketujuh jeruk berisi empat belas."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "a-jeruk",
+            "teks": "Jeruk 2, 4, 6, 8",
+            "ikon": "🍊",
+            "cabang": "membesar",
+            "petunjuk": "Jeruk makin banyak itu soal pola membesar. Coba cabang lain."
+          },
+          {
+            "id": "a-bertambah",
+            "teks": "Banyak benda bertambah",
+            "ikon": "➕",
+            "cabang": "membesar",
+            "petunjuk": "Benda bertambah itu soal pola membesar. Coba cabang lain."
+          },
+          {
+            "id": "a-permen",
+            "teks": "Permen 9, 7, 5, 3",
+            "ikon": "🍬",
+            "cabang": "mengecil",
+            "petunjuk": "Permen makin sedikit itu soal pola mengecil. Coba cabang lain."
+          },
+          {
+            "id": "a-habis",
+            "teks": "Berhenti saat benda habis",
+            "ikon": "0️⃣",
+            "cabang": "mengecil",
+            "petunjuk": "Benda yang habis itu soal pola mengecil. Coba cabang lain."
+          },
+          {
+            "id": "a-berurutan",
+            "teks": "Bandingkan kumpulan berurutan",
+            "ikon": "👀",
+            "cabang": "selisih",
+            "petunjuk": "Cara mencari selisih itu soal selisih tetap. Coba cabang lain."
+          },
+          {
+            "id": "a-sama",
+            "teks": "Selisihnya selalu sama",
+            "ikon": "🟰",
+            "cabang": "selisih",
+            "petunjuk": "Selisih yang sama itu soal selisih tetap. Coba cabang lain."
+          },
+          {
+            "id": "a-ketujuh",
+            "teks": "Kumpulan ke-7 jeruk = 14",
+            "ikon": "7️⃣",
+            "cabang": "tabel",
+            "petunjuk": "Mencari kumpulan jauh itu soal tabel selisih. Coba cabang lain."
+          },
+          {
+            "id": "a-baris",
+            "teks": "Tiap baris tabel satu kumpulan",
+            "ikon": "📋",
+            "cabang": "tabel",
+            "petunjuk": "Baris tabel itu soal tabel selisih. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Pola Gambar",
+        "suara": "Ini tiga panel tentang pola gambar. Ketuk kotaknya untuk membuka, lalu bandingkan dua pola.",
+        "panel": [
+          {
+            "id": "a-jeruk-info",
+            "tipe": "buka",
+            "judul": "Jeruk di meja",
+            "ide": "Setiap kumpulan bertambah dua jeruk.",
+            "suara": "Ada tiga hal tentang pola jeruk. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "awal",
+                "label": "3 kumpulan",
+                "ikon": "🍊",
+                "isi": "Dua, empat, lalu enam jeruk.",
+                "suara": "Kumpulan pertama dua jeruk, kedua empat jeruk, ketiga enam jeruk.",
+                "visual": { "jenis": "teks", "isi": "2, 4, 6" }
+              },
+              {
+                "id": "selisih",
+                "label": "Selisih",
+                "ikon": "↔️",
+                "isi": "Bertambah dua setiap kumpulan.",
+                "suara": "Dua ke empat bertambah dua. Empat ke enam bertambah dua. Selisihnya tetap.",
+                "visual": { "jenis": "teks", "isi": "selisih +2" }
+              },
+              {
+                "id": "lanjut",
+                "label": "Berikutnya",
+                "ikon": "➡️",
+                "isi": "Kumpulan keempat berisi delapan.",
+                "suara": "Enam ditambah dua sama dengan delapan. Kumpulan keempat berisi delapan jeruk.",
+                "visual": { "jenis": "teks", "isi": "6 + 2 = 8" }
+              }
+            ]
+          },
+          {
+            "id": "a-banding-info",
+            "tipe": "banding",
+            "judul": "Jeruk dan permen",
+            "ide": "Satu membesar, satu mengecil.",
+            "suara": "Bandingkan pola jeruk yang membesar dan pola permen yang mengecil.",
+            "sisi": [
+              {
+                "id": "jeruk",
+                "nama": "Jeruk",
+                "ikon": "📈",
+                "catatan": "Bertambah dua, pola membesar.",
+                "suara": "Jeruk dua, empat, enam. Bertambah dua, jadi pola membesar.",
+                "visual": { "jenis": "teks", "isi": "2, 4, 6, 8" }
+              },
+              {
+                "id": "permen",
+                "nama": "Permen",
+                "ikon": "📉",
+                "catatan": "Berkurang dua, pola mengecil.",
+                "suara": "Permen sembilan, tujuh, lima. Berkurang dua, jadi pola mengecil.",
+                "visual": { "jenis": "teks", "isi": "9, 7, 5, 3" }
+              }
+            ],
+            "kesimpulan": "Arah selisih menentukan pola membesar atau mengecil."
+          },
+          {
+            "id": "a-tabel-info",
+            "tipe": "buka",
+            "judul": "Tabel jeruk",
+            "ide": "Tabel membantu mencari kumpulan jauh.",
+            "suara": "Ada tiga hal tentang tabel jeruk. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tabel",
+                "label": "Isi tabel",
+                "ikon": "📋",
+                "isi": "Kumpulan pertama sampai keempat.",
+                "suara": "Tabel mencatat dua, empat, enam, dan delapan jeruk.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Kumpulan", "Jeruk"], "baris": [["ke-1", 2], ["ke-2", 4], ["ke-3", 6], ["ke-4", 8]] }
+              },
+              {
+                "id": "ketujuh",
+                "label": "Kumpulan ke-7",
+                "ikon": "7️⃣",
+                "isi": "Terus tambah dua sampai empat belas.",
+                "suara": "Terus tambah dua. Kumpulan ketujuh berisi empat belas jeruk.",
+                "visual": { "jenis": "teks", "isi": "8, 10, 12, 14" }
+              },
+              {
+                "id": "habis",
+                "label": "Permen habis",
+                "ikon": "0️⃣",
+                "isi": "Pola mengecil berhenti saat habis.",
+                "suara": "Permen tinggal satu di kumpulan kelima. Setelah itu permennya habis.",
+                "visual": { "jenis": "teks", "isi": "9, 7, 5, 3, 1" }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Pola Bilangan",
+          "ikon": "🔢",
+          "suara": "Ini peta pola bilangan. Kita belajar beda tetap, pola membesar dan mengecil, mesin aturan, dan tabel nilai. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "beda",
+            "judul": "Beda tetap",
+            "ikon": "↔️",
+            "ringkas": "Kurangkan dua suku yang berurutan.",
+            "suara": "Beda tetap. Pola bilangan punya beda yang sama antara dua suku yang berurutan. Satu, empat, tujuh, sepuluh bedanya tambah tiga."
+          },
+          {
+            "id": "jenis",
+            "judul": "Membesar dan mengecil",
+            "ikon": "📈",
+            "ringkas": "Beda tambah membesar, beda kurang mengecil.",
+            "suara": "Membesar dan mengecil. Bila bedanya tambah, pola membesar. Bila bedanya kurang, pola mengecil, seperti dua puluh tiga, delapan belas, tiga belas."
+          },
+          {
+            "id": "aturan",
+            "judul": "Mesin aturan",
+            "ikon": "⚙️",
+            "ringkas": "Masukan diubah aturan menjadi keluaran.",
+            "suara": "Mesin aturan. Masukan diproses aturan menjadi keluaran. Dengan aturan tambah delapan, telur dua puluh menjadi dua puluh delapan."
+          },
+          {
+            "id": "tabel",
+            "judul": "Tabel nilai",
+            "ikon": "📋",
+            "ringkas": "Catat suku ke-n dan nilainya.",
+            "suara": "Tabel nilai. Catat suku pertama, kedua, ketiga, dan seterusnya beserta nilainya. Rak buku kelima berisi dua puluh satu."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-tiga",
+            "teks": "1, 4, 7, 10 beda +3",
+            "ikon": "➕",
+            "cabang": "beda",
+            "petunjuk": "Mencari beda itu soal beda tetap. Coba cabang lain."
+          },
+          {
+            "id": "b-berurutan",
+            "teks": "Pakai dua suku berurutan",
+            "ikon": "👀",
+            "cabang": "beda",
+            "petunjuk": "Cara mencari beda itu soal beda tetap. Coba cabang lain."
+          },
+          {
+            "id": "b-ganjil",
+            "teks": "3, 5, 7, 9 membesar",
+            "ikon": "📈",
+            "cabang": "jenis",
+            "petunjuk": "Jenis pola itu soal membesar dan mengecil. Coba cabang lain."
+          },
+          {
+            "id": "b-lima",
+            "teks": "23, 18, 13 mengecil",
+            "ikon": "📉",
+            "cabang": "jenis",
+            "petunjuk": "Jenis pola itu soal membesar dan mengecil. Coba cabang lain."
+          },
+          {
+            "id": "b-telur",
+            "teks": "Telur: aturan tambah 8",
+            "ikon": "🥚",
+            "cabang": "aturan",
+            "petunjuk": "Aturan tambah itu soal mesin aturan. Coba cabang lain."
+          },
+          {
+            "id": "b-tv",
+            "teks": "TV: aturan kurang 6",
+            "ikon": "📺",
+            "cabang": "aturan",
+            "petunjuk": "Aturan kurang itu soal mesin aturan. Coba cabang lain."
+          },
+          {
+            "id": "b-rak",
+            "teks": "Rak ke-5 berisi 21",
+            "ikon": "📚",
+            "cabang": "tabel",
+            "petunjuk": "Suku ke-n dan nilainya itu soal tabel nilai. Coba cabang lain."
+          },
+          {
+            "id": "b-kursi",
+            "teks": "Kursi baris ke-5 = 32",
+            "ikon": "🪑",
+            "cabang": "tabel",
+            "petunjuk": "Suku ke-n dan nilainya itu soal tabel nilai. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Pola Bilangan",
+        "suara": "Ini tiga panel tentang pola bilangan. Ketuk kotaknya untuk membuka, lalu bandingkan dua pola.",
+        "panel": [
+          {
+            "id": "b-beda-info",
+            "tipe": "buka",
+            "judul": "Mencari beda",
+            "ide": "Beda sama untuk semua pasangan berurutan.",
+            "suara": "Ada tiga hal tentang mencari beda. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "pasangan",
+                "label": "Pasangan",
+                "ikon": "👀",
+                "isi": "Lihat dua suku yang berurutan.",
+                "suara": "Lihat satu dan empat, lalu empat dan tujuh, lalu tujuh dan sepuluh.",
+                "visual": { "jenis": "teks", "isi": "1, 4, 7, 10" }
+              },
+              {
+                "id": "sama",
+                "label": "Beda sama",
+                "ikon": "🟰",
+                "isi": "Setiap pasangan bertambah tiga.",
+                "suara": "Setiap pasangan bertambah tiga. Bedanya tambah tiga.",
+                "visual": { "jenis": "teks", "isi": "beda +3" }
+              },
+              {
+                "id": "lanjut",
+                "label": "Berikutnya",
+                "ikon": "➡️",
+                "isi": "Suku berikutnya tiga belas.",
+                "suara": "Sepuluh ditambah tiga sama dengan tiga belas.",
+                "visual": { "jenis": "teks", "isi": "10 + 3 = 13" }
+              }
+            ]
+          },
+          {
+            "id": "b-banding-info",
+            "tipe": "banding",
+            "judul": "Telur dan TV",
+            "ide": "Aturan tambah dan aturan kurang.",
+            "suara": "Bandingkan telur yang bertambah dan produksi TV yang berkurang.",
+            "sisi": [
+              {
+                "id": "telur",
+                "nama": "Telur",
+                "ikon": "🥚",
+                "catatan": "Tambah delapan setiap hari.",
+                "suara": "Telur dua puluh, dua puluh delapan, tiga puluh enam. Tambah delapan setiap hari, pola membesar.",
+                "visual": { "jenis": "teks", "isi": "20, 28, 36, 44, 52" }
+              },
+              {
+                "id": "tv",
+                "nama": "TV",
+                "ikon": "📺",
+                "catatan": "Kurang enam setiap bulan.",
+                "suara": "TV tujuh puluh, enam puluh empat, lima puluh delapan. Kurang enam setiap bulan, pola mengecil.",
+                "visual": { "jenis": "teks", "isi": "70, 64, 58, 52" }
+              }
+            ],
+            "kesimpulan": "Telur hari kelima 52, TV bulan Juni 40."
+          },
+          {
+            "id": "b-tabel-info",
+            "tipe": "buka",
+            "judul": "Tabel rak buku",
+            "ide": "Tabel nilai mencatat suku dan nilainya.",
+            "suara": "Ada tiga hal tentang tabel rak buku. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tabel",
+                "label": "Isi tabel",
+                "ikon": "📋",
+                "isi": "Rak pertama sampai keempat.",
+                "suara": "Rak pertama lima buku, kedua sembilan, ketiga tiga belas, keempat tujuh belas.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Rak", "Buku"], "baris": [["ke-1", 5], ["ke-2", 9], ["ke-3", 13], ["ke-4", 17]] }
+              },
+              {
+                "id": "kelima",
+                "label": "Rak ke-5",
+                "ikon": "📚",
+                "isi": "Tujuh belas tambah empat.",
+                "suara": "Tujuh belas ditambah empat sama dengan dua puluh satu buku.",
+                "visual": { "jenis": "teks", "isi": "17 + 4 = 21" }
+              },
+              {
+                "id": "kursi",
+                "label": "Kursi gedung",
+                "ikon": "🪑",
+                "isi": "Tambah tiga setiap baris.",
+                "suara": "Kursi dua puluh, dua puluh tiga, dua puluh enam. Baris kelima berisi tiga puluh dua kursi.",
+                "visual": { "jenis": "teks", "isi": "20, 23, 26, 29, 32" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
