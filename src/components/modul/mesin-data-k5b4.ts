@@ -6,7 +6,10 @@
  *    Arti : jalur tepi atau isi petak, menurut keperluan (pengecoh: yang lain, dan banyak sudut).
  *    Pagar: ruas pagar mengelilingi tanah berpetak (pengecoh: isi petak, dan jumlah dua sisi saja).
  *    Beda : jalur tepi dan isi dibedakan (pengecoh: tertukar, dan isi disamakan dengan jalur).
- * Data dari Buku Siswa Kelas V Bab 4 Sub-Bab A (pagar, bingkai foto, Benteng Baluwarti).
+ *  - MESIN_SEGITIGA (B): Jumlah → Sama → Kaki → Ukur   (kasus Segitiga buku, enam, tujuh)
+ *    Jumlah/Kaki/Ukur: keliling sebagai jumlah tiga sisi (pengecoh: tiga kali sisi pertama, jumlah dua sisi saja).
+ *    Sama : keliling 3 × sisi (pengecoh: dua kali sisi, sisi kali sisi).
+ * Data dari Buku Siswa Kelas V Bab 4 Sub-Bab A dan B (pagar, bingkai foto, Benteng Baluwarti, segitiga 5, 4, 7).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b4.mjs.
  */
 import type { DefMesin, KasusMesin, LangkahMesin, StasiunDef } from "./mesin-bertahap-k3b1";
@@ -118,4 +121,84 @@ export const MESIN_JALUR: DefMesin = {
   kasus: KASUS_JALUR.map(kasusMesinJalur),
 };
 
-export const SEMUA_MESIN_K5B4 = [MESIN_JALUR];
+/* ------------------------------ B: Mesin Segitiga ------------------------------ */
+
+/**
+ * jumlah: segitiga sisi sembarang. sama: sisi segitiga sama sisi. kaki: segitiga sama kaki. ukur: sisi yang dibaca pada penggaris.
+ * Semua ditulis sebagai daftar tiga sisi berurutan.
+ */
+export type KasusSegitiga = { id: string; nama: string; jumlah: number[]; sama: number; kaki: number[]; ukur: number[] };
+export const KASUS_SEGITIGA: KasusSegitiga[] = [
+  { id: "buku", nama: "Segitiga buku", jumlah: [5, 4, 7], sama: 5, kaki: [8, 5, 5], ukur: [3, 4, 5] },
+  { id: "enam", nama: "Segitiga enam", jumlah: [6, 8, 10], sama: 6, kaki: [6, 6, 4], ukur: [7, 4, 6] },
+  { id: "tujuh", nama: "Segitiga tujuh", jumlah: [4, 6, 9], sama: 7, kaki: [7, 7, 3], ukur: [5, 9, 8] },
+];
+
+export const STASIUN_SEGITIGA: StasiunDef[] = [
+  { id: "jumlah", nama: "Jumlah", ikon: "➕" },
+  { id: "sama", nama: "Sama", ikon: "🔺" },
+  { id: "kaki", nama: "Kaki", ikon: "📐" },
+  { id: "ukur", nama: "Ukur", ikon: "📏" },
+];
+
+/** Keliling segitiga dari tiga sisi: ketiganya dijumlah satu per satu. */
+export function kelilingSegitiga(sisi: number[]): number {
+  let k = 0;
+  for (const s of sisi) k += s;
+  return k;
+}
+
+export function kasusMesinSegitiga(c: KasusSegitiga, idx: number): KasusMesin {
+  const kJumlah = kelilingSegitiga(c.jumlah);
+  const kSama = kelilingSegitiga([c.sama, c.sama, c.sama]);
+  const kKaki = kelilingSegitiga(c.kaki);
+  const kUkur = kelilingSegitiga(c.ukur);
+  const daftar = (s: number[]): string => `${s[0]} cm, ${s[1]} cm, dan ${s[2]} cm`;
+  const opsi = (benar: number, salah: number[], geser: number): string[] => susunOpsi(`${benar} cm`, pengecoh(benar, salah).map((n) => `${n} cm`), geser);
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "jumlah",
+      tanya: `Segitiga bersisi ${daftar(c.jumlah)}. Jumlah ketiga sisinya, yaitu keliling, adalah …`,
+      opsi: opsi(kJumlah, [3 * c.jumlah[0], c.jumlah[0] + c.jumlah[1]], idx),
+      benar: `${kJumlah} cm`,
+      petunjuk: `Berjalanlah di tepi segitiga: ${c.jumlah.join(" + ")}. Ketiga sisi dijumlah, jangan hanya dua.`,
+    },
+    {
+      stasiun: "sama",
+      tanya: `Segitiga sama sisi, tiap sisinya ${c.sama} cm. Keliling dengan 3 × ${c.sama} adalah …`,
+      opsi: opsi(kSama, [2 * c.sama, c.sama * c.sama], idx + 1),
+      benar: `${kSama} cm`,
+      petunjuk: `Ketiga sisi sama panjang, jadi ${c.sama} + ${c.sama} + ${c.sama} sama dengan 3 × ${c.sama}.`,
+    },
+    {
+      stasiun: "kaki",
+      tanya: `Segitiga sama kaki bersisi ${daftar(c.kaki)}. Keliling yang benar adalah …`,
+      opsi: opsi(kKaki, [3 * c.kaki[0], c.kaki[0] + c.kaki[1]], idx + 2),
+      benar: `${kKaki} cm`,
+      petunjuk: `Hanya dua sisi yang sama. Jangan langsung dikali 3, jumlahkan ketiga sisi: ${c.kaki.join(" + ")}.`,
+    },
+    {
+      stasiun: "ukur",
+      tanya: `Penggaris menunjukkan ketiga sisi segitiga: ${daftar(c.ukur)}. Setelah diukur, keliling segitiga adalah …`,
+      opsi: opsi(kUkur, [3 * c.ukur[0], c.ukur[0] + c.ukur[1]], idx + 3),
+      benar: `${kUkur} cm`,
+      petunjuk: `Ukur dulu ketiga sisi, baru jumlahkan: ${c.ukur.join(" + ")}.`,
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `Keliling segitiga ${c.jumlah.join(" + ")} = ${kJumlah} cm. Sama sisi ${c.sama} cm memberi ${kSama} cm, sama dengan 3 × ${c.sama}. Sama kaki ${c.kaki.join(", ")} tetap dijumlah: ${kKaki} cm. Hasil ukur ${c.ukur.join(" + ")} = ${kUkur} cm.`,
+    langkah,
+  };
+}
+
+export const MESIN_SEGITIGA: DefMesin = {
+  id: "mesin-segitiga-k5b4",
+  judul: "Mesin Segitiga",
+  selesaiId: "mesin-segitiga",
+  stasiun: STASIUN_SEGITIGA,
+  kasus: KASUS_SEGITIGA.map(kasusMesinSegitiga),
+};
+
+export const SEMUA_MESIN_K5B4 = [MESIN_JALUR, MESIN_SEGITIGA];

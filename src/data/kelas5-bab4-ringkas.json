@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-awal", "teks": "Mulai dan berhenti di sudut awal", "ikon": "🚶", "cabang": "jalur", "petunjuk": "Berjalan sampai kembali itu soal jalur tepi. Coba cabang lain." },
-          { "id": "a-keliling", "teks": "Jalur tepi disebut keliling", "ikon": "📏", "cabang": "jalur", "petunjuk": "Nama jalur di tepi itu soal jalur tepi. Coba cabang lain." },
-          { "id": "a-pagar", "teks": "Pagar kebun mengelilingi tepi", "ikon": "🧱", "cabang": "pagar", "petunjuk": "Pagar itu soal pagar dan bingkai. Coba cabang lain." },
-          { "id": "a-bingkai", "teks": "Bingkai foto: kayu di tepi", "ikon": "🖼️", "cabang": "pagar", "petunjuk": "Bingkai itu soal pagar dan bingkai. Coba cabang lain." },
-          { "id": "a-isi", "teks": "Isi dihitung dengan petak", "ikon": "🟨", "cabang": "isi", "petunjuk": "Petak di dalam itu soal isi. Coba cabang lain." },
-          { "id": "a-sama", "teks": "Jalur sama, isi bisa beda", "ikon": "⚖️", "cabang": "isi", "petunjuk": "Jalur dan isi yang dibedakan itu soal isi. Coba cabang lain." },
-          { "id": "a-lima", "teks": "5 + 3 + 5 + 3 = 16", "ikon": "🔢", "cabang": "jumlah", "petunjuk": "Menjumlah sisi itu soal jumlah sisi. Coba cabang lain." },
-          { "id": "a-empat", "teks": "4 + 4 + 4 + 4 = 16", "ikon": "4️⃣", "cabang": "jumlah", "petunjuk": "Menjumlah sisi itu soal jumlah sisi. Coba cabang lain." }
+          {
+            "id": "a-awal",
+            "teks": "Mulai dan berhenti di sudut awal",
+            "ikon": "🚶",
+            "cabang": "jalur",
+            "petunjuk": "Berjalan sampai kembali itu soal jalur tepi. Coba cabang lain."
+          },
+          {
+            "id": "a-keliling",
+            "teks": "Jalur tepi disebut keliling",
+            "ikon": "📏",
+            "cabang": "jalur",
+            "petunjuk": "Nama jalur di tepi itu soal jalur tepi. Coba cabang lain."
+          },
+          {
+            "id": "a-pagar",
+            "teks": "Pagar kebun mengelilingi tepi",
+            "ikon": "🧱",
+            "cabang": "pagar",
+            "petunjuk": "Pagar itu soal pagar dan bingkai. Coba cabang lain."
+          },
+          {
+            "id": "a-bingkai",
+            "teks": "Bingkai foto: kayu di tepi",
+            "ikon": "🖼️",
+            "cabang": "pagar",
+            "petunjuk": "Bingkai itu soal pagar dan bingkai. Coba cabang lain."
+          },
+          {
+            "id": "a-isi",
+            "teks": "Isi dihitung dengan petak",
+            "ikon": "🟨",
+            "cabang": "isi",
+            "petunjuk": "Petak di dalam itu soal isi. Coba cabang lain."
+          },
+          {
+            "id": "a-sama",
+            "teks": "Jalur sama, isi bisa beda",
+            "ikon": "⚖️",
+            "cabang": "isi",
+            "petunjuk": "Jalur dan isi yang dibedakan itu soal isi. Coba cabang lain."
+          },
+          {
+            "id": "a-lima",
+            "teks": "5 + 3 + 5 + 3 = 16",
+            "ikon": "🔢",
+            "cabang": "jumlah",
+            "petunjuk": "Menjumlah sisi itu soal jumlah sisi. Coba cabang lain."
+          },
+          {
+            "id": "a-empat",
+            "teks": "4 + 4 + 4 + 4 = 16",
+            "ikon": "4️⃣",
+            "cabang": "jumlah",
+            "petunjuk": "Menjumlah sisi itu soal jumlah sisi. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -72,7 +120,10 @@
                 "ikon": "📍",
                 "isi": "Mulai dari satu sudut.",
                 "suara": "Pilih satu sudut sebagai awal. Dari situ kamu berjalan di tepi bangun.",
-                "visual": { "jenis": "teks", "isi": "sudut awal" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "sudut awal"
+                }
               },
               {
                 "id": "sisi",
@@ -80,7 +131,31 @@
                 "ikon": "🚶",
                 "isi": "Susuri sisi satu per satu.",
                 "suara": "Susuri keempat sisi satu per satu. Persegi panjang ini sisinya lima, tiga, lima, dan tiga sentimeter.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Sisi", "Panjang"], "baris": [["pertama", 5], ["kedua", 3], ["ketiga", 5], ["keempat", 3]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Sisi",
+                    "Panjang"
+                  ],
+                  "baris": [
+                    [
+                      "pertama",
+                      5
+                    ],
+                    [
+                      "kedua",
+                      3
+                    ],
+                    [
+                      "ketiga",
+                      5
+                    ],
+                    [
+                      "keempat",
+                      3
+                    ]
+                  ]
+                }
               },
               {
                 "id": "kembali",
@@ -88,7 +163,10 @@
                 "ikon": "🏁",
                 "isi": "Berhenti saat kembali ke awal.",
                 "suara": "Setelah kembali ke sudut awal, jumlahkan semua jalan yang kamu tempuh. Lima ditambah tiga ditambah lima ditambah tiga sama dengan enam belas sentimeter.",
-                "visual": { "jenis": "teks", "isi": "5 + 3 + 5 + 3 = 16" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 + 3 + 5 + 3 = 16"
+                }
               }
             ]
           },
@@ -99,8 +177,28 @@
             "ide": "Keliling bukan isi.",
             "suara": "Lihat dua hal yang berbeda pada bangun yang sama.",
             "sisi": [
-              { "id": "jalur", "nama": "Jalur tepi", "ikon": "📏", "catatan": "Panjang semua sisi di tepi.", "suara": "Jalur tepi bangun lima petak panjang dan tiga petak lebar adalah enam belas sentimeter.", "visual": { "jenis": "teks", "isi": "16 cm" } },
-              { "id": "isi", "nama": "Isi petak", "ikon": "🟨", "catatan": "Banyak petak di dalam.", "suara": "Isi bangun yang sama adalah lima belas petak.", "visual": { "jenis": "teks", "isi": "15 petak" } }
+              {
+                "id": "jalur",
+                "nama": "Jalur tepi",
+                "ikon": "📏",
+                "catatan": "Panjang semua sisi di tepi.",
+                "suara": "Jalur tepi bangun lima petak panjang dan tiga petak lebar adalah enam belas sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "16 cm"
+                }
+              },
+              {
+                "id": "isi",
+                "nama": "Isi petak",
+                "ikon": "🟨",
+                "catatan": "Banyak petak di dalam.",
+                "suara": "Isi bangun yang sama adalah lima belas petak.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "15 petak"
+                }
+              }
             ],
             "kesimpulan": "Pagar memakai jalur tepi, bukan isi."
           },
@@ -111,9 +209,276 @@
             "ide": "Dipasang di tepi, jadi keliling.",
             "suara": "Ada tiga contoh keliling dalam kehidupan. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "pagar", "label": "Pagar", "ikon": "🧱", "isi": "Pagar kebun enam dan empat meter.", "suara": "Pagar kebun enam meter dan empat meter. Jalurnya enam, empat, enam, empat, jadi dua puluh meter.", "visual": { "jenis": "teks", "isi": "6 + 4 + 6 + 4 = 20" } },
-              { "id": "bingkai", "label": "Bingkai", "ikon": "🖼️", "isi": "Bingkai foto persegi tiga sentimeter.", "suara": "Bingkai foto persegi bersisi tiga sentimeter. Kayunya tiga, tiga, tiga, tiga, jadi dua belas sentimeter.", "visual": { "jenis": "teks", "isi": "3 + 3 + 3 + 3 = 12" } },
-              { "id": "benteng", "label": "Benteng", "ikon": "🏰", "isi": "Dinding Benteng Baluwarti di tepi.", "suara": "Saat Benteng Baluwarti dipugar, petugas menghitung panjang dinding di tepi, bukan isi halamannya.", "visual": { "jenis": "teks", "isi": "Baluwarti" } }
+              {
+                "id": "pagar",
+                "label": "Pagar",
+                "ikon": "🧱",
+                "isi": "Pagar kebun enam dan empat meter.",
+                "suara": "Pagar kebun enam meter dan empat meter. Jalurnya enam, empat, enam, empat, jadi dua puluh meter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 + 4 + 6 + 4 = 20"
+                }
+              },
+              {
+                "id": "bingkai",
+                "label": "Bingkai",
+                "ikon": "🖼️",
+                "isi": "Bingkai foto persegi tiga sentimeter.",
+                "suara": "Bingkai foto persegi bersisi tiga sentimeter. Kayunya tiga, tiga, tiga, tiga, jadi dua belas sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 + 3 + 3 + 3 = 12"
+                }
+              },
+              {
+                "id": "benteng",
+                "label": "Benteng",
+                "ikon": "🏰",
+                "isi": "Dinding Benteng Baluwarti di tepi.",
+                "suara": "Saat Benteng Baluwarti dipugar, petugas menghitung panjang dinding di tepi, bukan isi halamannya.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Baluwarti"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Keliling Segitiga",
+          "ikon": "🔺",
+          "suara": "Ini peta keliling segitiga. Kita belajar menjumlah tiga sisi, pintasan segitiga sama sisi, segitiga sama kaki, dan mengukur sisi dulu. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "jumlah",
+            "judul": "Jumlah tiga sisi",
+            "ikon": "➕",
+            "ringkas": "Jumlahkan sisi pertama, kedua, ketiga.",
+            "suara": "Jumlah tiga sisi. Keliling segitiga sembarang adalah sisi pertama ditambah sisi kedua ditambah sisi ketiga."
+          },
+          {
+            "id": "sama",
+            "judul": "Sama sisi",
+            "ikon": "🔺",
+            "ringkas": "Tiga dikali panjang sisi.",
+            "suara": "Segitiga sama sisi. Bila ketiga sisi sama panjang, keliling boleh dihitung tiga dikali panjang sisi."
+          },
+          {
+            "id": "kaki",
+            "judul": "Sama kaki",
+            "ikon": "📐",
+            "ringkas": "Dua sisi sama, tetap dijumlah.",
+            "suara": "Segitiga sama kaki. Hanya dua sisi yang sama, jadi jangan langsung dikali tiga. Jumlahkan ketiga sisinya."
+          },
+          {
+            "id": "ukur",
+            "judul": "Ukur dulu",
+            "ikon": "📏",
+            "ringkas": "Ukur tiap sisi, baru jumlahkan.",
+            "suara": "Ukur dulu. Baca panjang tiap sisi pada penggaris dengan satuan yang sama, baru jumlahkan."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-lima",
+            "teks": "5 + 4 + 7 = 16",
+            "ikon": "🔢",
+            "cabang": "jumlah",
+            "petunjuk": "Menjumlah tiga sisi berbeda itu soal jumlah tiga sisi. Coba cabang lain."
+          },
+          {
+            "id": "b-siku",
+            "teks": "3 + 4 + 5 = 12",
+            "ikon": "📐",
+            "cabang": "jumlah",
+            "petunjuk": "Menjumlah tiga sisi itu soal jumlah tiga sisi. Coba cabang lain."
+          },
+          {
+            "id": "b-tiga-lima",
+            "teks": "3 × 5 = 15",
+            "ikon": "5️⃣",
+            "cabang": "sama",
+            "petunjuk": "Tiga dikali sisi itu soal sama sisi. Coba cabang lain."
+          },
+          {
+            "id": "b-tiga-enam",
+            "teks": "3 × 6 = 18",
+            "ikon": "6️⃣",
+            "cabang": "sama",
+            "petunjuk": "Tiga dikali sisi itu soal sama sisi. Coba cabang lain."
+          },
+          {
+            "id": "b-kaki-enam",
+            "teks": "6 + 6 + 4 = 16",
+            "ikon": "🟨",
+            "cabang": "kaki",
+            "petunjuk": "Dua sisi sama yang tetap dijumlah itu soal sama kaki. Coba cabang lain."
+          },
+          {
+            "id": "b-jangan",
+            "teks": "Jangan langsung dikali 3",
+            "ikon": "🚫",
+            "cabang": "kaki",
+            "petunjuk": "Larangan dikali tiga itu soal sama kaki. Coba cabang lain."
+          },
+          {
+            "id": "b-penggaris",
+            "teks": "Baca ujung sisi di penggaris",
+            "ikon": "📏",
+            "cabang": "ukur",
+            "petunjuk": "Membaca penggaris itu soal ukur dulu. Coba cabang lain."
+          },
+          {
+            "id": "b-satuan",
+            "teks": "Satuan semua sisi harus sama",
+            "ikon": "🧮",
+            "cabang": "ukur",
+            "petunjuk": "Satuan yang sama itu soal ukur dulu. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Keliling Segitiga",
+        "suara": "Ini tiga panel tentang keliling segitiga. Ketuk kotaknya untuk membuka, lalu lihat jumlah tiga sisi, sama sisi dan sama kaki, serta mengukur sisi.",
+        "panel": [
+          {
+            "id": "b-jumlah-info",
+            "tipe": "buka",
+            "judul": "Jumlah tiga sisi",
+            "ide": "Keliling segitiga: jumlah ketiga sisinya.",
+            "suara": "Ada tiga hal tentang menjumlah sisi segitiga. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "sisi",
+                "label": "Sisi",
+                "ikon": "📐",
+                "isi": "Segitiga bersisi lima, empat, tujuh.",
+                "suara": "Segitiga ini bersisi lima, empat, dan tujuh sentimeter.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Sisi",
+                    "Panjang"
+                  ],
+                  "baris": [
+                    [
+                      "pertama",
+                      5
+                    ],
+                    [
+                      "kedua",
+                      4
+                    ],
+                    [
+                      "ketiga",
+                      7
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "jumlah",
+                "label": "Jumlah",
+                "ikon": "➕",
+                "isi": "Jumlahkan ketiga sisinya.",
+                "suara": "Lima ditambah empat ditambah tujuh sama dengan enam belas sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 + 4 + 7 = 16"
+                }
+              },
+              {
+                "id": "hati",
+                "label": "Hati-hati",
+                "ikon": "⚠️",
+                "isi": "Bukan tiga kali sisi pertama.",
+                "suara": "Jangan mengalikan tiga dengan sisi pertama. Sisinya berbeda panjang, jadi tiap sisi dijumlah.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "bukan 3 × 5"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-sama-info",
+            "tipe": "banding",
+            "judul": "Sama sisi dan sama kaki",
+            "ide": "Dikali tiga hanya bila ketiganya sama.",
+            "suara": "Lihat dua jenis segitiga dan cara menghitung kelilingnya.",
+            "sisi": [
+              {
+                "id": "sama",
+                "nama": "Sama sisi",
+                "ikon": "🔺",
+                "catatan": "Ketiga sisi sama panjang.",
+                "suara": "Segitiga sama sisi bersisi lima. Tiga dikali lima sama dengan lima belas sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 × 5 = 15"
+                }
+              },
+              {
+                "id": "kaki",
+                "nama": "Sama kaki",
+                "ikon": "📐",
+                "catatan": "Dua sisi sama, tetap dijumlah.",
+                "suara": "Segitiga sama kaki bersisi enam, enam, dan empat. Enam ditambah enam ditambah empat sama dengan enam belas sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 + 6 + 4 = 16"
+                }
+              }
+            ],
+            "kesimpulan": "Dikali 3 hanya bila ketiga sisi sama."
+          },
+          {
+            "id": "b-ukur-info",
+            "tipe": "buka",
+            "judul": "Ukur dulu, baru jumlah",
+            "ide": "Baca penggaris, lalu jumlahkan.",
+            "suara": "Ada tiga langkah mengukur segitiga. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "baca",
+                "label": "Baca",
+                "ikon": "📏",
+                "isi": "Baca ujung sisi pada penggaris.",
+                "suara": "Letakkan penggaris dan baca angka di ujung sisi. Misalnya sisi pertama tiga sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 cm"
+                }
+              },
+              {
+                "id": "satuan",
+                "label": "Satuan",
+                "ikon": "🧮",
+                "isi": "Satuan semua sisi sama.",
+                "suara": "Pastikan ketiga sisi memakai satuan yang sama, yaitu sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "cm"
+                }
+              },
+              {
+                "id": "hasil",
+                "label": "Hasil",
+                "ikon": "✅",
+                "isi": "Jumlahkan hasil ukurnya.",
+                "suara": "Tiga ditambah empat ditambah lima sama dengan dua belas sentimeter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 + 4 + 5 = 12"
+                }
+              }
             ]
           }
         ]

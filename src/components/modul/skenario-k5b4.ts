@@ -4,6 +4,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Skenario Kelas 5 Bab 4 (Keliling Bangun Datar). Tanpa jaringan, tanpa model bahasa.
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b4.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K5B4A: Pagar dan Bingkai (keliling sebagai jalur tepi, pagar, bingkai, dibedakan dari isi)
+ *  - SKENARIO_K5B4B: Bendera Pita Segitiga (jumlah tiga sisi, sama sisi dikali 3, sama kaki tetap dijumlah)
  */
 
 export const SKENARIO_K5B4A: DefSkenario = {
@@ -75,6 +76,79 @@ export const SKENARIO_K5B4A: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Keliling adalah panjang jalur di tepi bangun, dihitung dengan menjumlah semua sisi sampai kembali ke awal. Pagar dan bingkai memakai keliling, sedangkan isi dihitung dengan petak di dalam.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B4B: DefSkenario = {
+  id: "bendera-pita-k5b4",
+  judul: "Bendera Pita Segitiga",
+  latar: "Bantu Asep menghitung panjang pita di tepi bendera segitiga.",
+  tokoh: "👦",
+  nama: "Asep",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Asep. Aku membuat bendera berbentuk segitiga untuk lomba sekolah. Pita dipasang di tepi bendera. Ayo bantu aku menghitung panjang pita!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "hitung-pita",
+      jenis: "soal",
+      cerita: "Asep menghitung pita di tepi bendera.",
+      soal: [
+        { teks: "Bendera pertama bersisi 5 cm, 4 cm, dan 7 cm. Panjang pita di tepinya adalah … cm.", jawaban: "16", opsi: ["15", "16", "9"] },
+        { teks: "Bendera sama sisi bersisi 5 cm. Panjang pita di tepinya adalah … cm.", jawaban: "15", opsi: ["10", "15", "25"] },
+      ],
+      sukses: "Hebat! Jumlahkan ketiga sisinya, atau kalikan 3 bila ketiga sisinya sama.",
+      salah: "Hmm, berjalanlah di tepi dan jumlahkan ketiga sisinya. Coba lagi.",
+    },
+    {
+      id: "alasan",
+      jenis: "pilih",
+      cerita: "Asep menghitung bendera sama sisi dengan 3 × 5. Mengapa boleh dikali 3?",
+      opsi: [
+        { teks: "karena ketiga sisinya sama panjang", benar: true, umpan: "Betul! Menjumlah tiga sisi yang sama panjang sama dengan mengalikannya dengan 3." },
+        { teks: "karena segitiga hanya punya tiga sudut", benar: false, umpan: "Banyak sudut tidak menentukan cara hitung. Yang menentukan adalah panjang sisinya." },
+        { teks: "karena semua segitiga boleh dikali 3", benar: false, umpan: "Tidak semua. Bila sisinya berbeda panjang, dikali 3 memberi hasil yang salah." },
+      ],
+    },
+    {
+      id: "pita-enam",
+      jenis: "hitung",
+      cerita: "Bendera sama sisi bersisi 6 cm. Tiap sentimeter pita diberi satu stik.",
+      tanya: "Ketuk semua stik. Ada berapa sentimeter pita di tepi bendera?",
+      objek: "stik",
+      jumlah: 18,
+      sukses: "Betul! Ada 18 sentimeter pita, sama dengan 3 × 6 = 18.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "siku",
+      jenis: "isi",
+      cerita: "Bendera siku-siku bersisi 3 cm, 4 cm, dan 5 cm. Masukkan satu stik untuk tiap sentimeter pita di seluruh tepi.",
+      objek: "stik",
+      target: 12,
+      maks: 20,
+      sukses: "Pas! 3 + 4 + 5 = 12 cm pita. Itulah keliling bendera.",
+      kurang: "Stiknya masih sedikit. Jumlahkan ketiga sisi: 3, 4, dan 5.",
+      lebih: "Stiknya kebanyakan. Jumlahkan ketiga sisi: 3, 4, dan 5.",
+    },
+    {
+      id: "kaki",
+      jenis: "pilih",
+      cerita: "Bendera sama kaki bersisi 6 cm, 6 cm, dan 4 cm. Asep ingin langsung dikali 3. Bagaimana yang benar?",
+      opsi: [
+        { teks: "boleh dikali 3 karena ada sisi yang sama", benar: false, umpan: "Dikali 3 memberi 18, padahal sisi ketiga hanya 4 cm. Hanya dua sisi yang sama." },
+        { teks: "cukup mengambil satu sisi saja", benar: false, umpan: "Satu sisi bukan seluruh pita. Pita melewati ketiga sisi." },
+        { teks: "tidak boleh, jumlahkan ketiga sisinya satu per satu", benar: true, umpan: "Betul! Sama kaki tetap dijumlahkan: kelilingnya 16 cm." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Keliling segitiga adalah jumlah ketiga sisinya. Bila ketiga sisi sama panjang, boleh dikali 3. Pada segitiga sama kaki tetap dijumlahkan, dan sisi yang belum diketahui diukur dulu sebelum dijumlahkan.",
     },
   ],
 };
