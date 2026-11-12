@@ -487,6 +487,247 @@
           }
         ]
       }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Diagram Batang",
+          "ikon": "📊",
+          "suara": "Ini peta diagram batang. Kita belajar membaca batang, memilih skala sumbu, membandingkan batang ganda, dan memilih penyajian yang tepat. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "baca",
+            "judul": "Baca batang",
+            "ikon": "📖",
+            "ringkas": "Judul, skala, lalu tinggi.",
+            "suara": "Baca batang. Baca judul dulu, lalu skala, lalu tinggi batang. Nilai batang adalah banyak garis dikali nilai tiap garis."
+          },
+          {
+            "id": "skala",
+            "judul": "Skala sumbu",
+            "ikon": "📏",
+            "ringkas": "Mulai dari nol, jarak teratur.",
+            "suara": "Skala sumbu. Sumbu mulai dari nol dan jarak angkanya teratur. Pilih skala yang memuat data terbesar, tetapi tidak membuat batang terlalu pendek."
+          },
+          {
+            "id": "banding",
+            "judul": "Bandingkan",
+            "ikon": "⚖️",
+            "ringkas": "Selisih dan tren, skala sama.",
+            "suara": "Bandingkan. Selisih adalah nilai besar dikurangi nilai kecil. Batang ganda dibandingkan dengan skala yang sama, dan tren dilihat dari naik atau turunnya tinggi batang."
+          },
+          {
+            "id": "pilih",
+            "judul": "Pilih penyajian",
+            "ikon": "🎯",
+            "ringkas": "Tabel, piktogram, atau batang.",
+            "suara": "Pilih penyajian. Tabel tepat untuk angka rinci. Piktogram menarik dengan kunci. Diagram batang mudah untuk membandingkan tinggi rendah. Pilih sesuai tujuan pembaca."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "c-urut",
+            "teks": "Judul, skala, lalu tinggi",
+            "ikon": "📖",
+            "cabang": "baca",
+            "petunjuk": "Urutan membaca itu soal baca batang. Coba cabang lain."
+          },
+          {
+            "id": "c-kali",
+            "teks": "6 garis × 5 = 30",
+            "ikon": "✖️",
+            "cabang": "baca",
+            "petunjuk": "Mengubah garis menjadi nilai itu soal baca batang. Coba cabang lain."
+          },
+          {
+            "id": "c-nol",
+            "teks": "Sumbu mulai dari nol",
+            "ikon": "0️⃣",
+            "cabang": "skala",
+            "petunjuk": "Titik awal sumbu itu soal skala sumbu. Coba cabang lain."
+          },
+          {
+            "id": "c-teratur",
+            "teks": "Jarak angka teratur",
+            "ikon": "📏",
+            "cabang": "skala",
+            "petunjuk": "Angka yang teratur itu soal skala sumbu. Coba cabang lain."
+          },
+          {
+            "id": "c-selisih",
+            "teks": "Selisih = besar − kecil",
+            "ikon": "➖",
+            "cabang": "banding",
+            "petunjuk": "Mencari selisih itu soal membandingkan. Coba cabang lain."
+          },
+          {
+            "id": "c-sama",
+            "teks": "Dua batang, skala sama",
+            "ikon": "⚖️",
+            "cabang": "banding",
+            "petunjuk": "Skala yang sama itu soal membandingkan. Coba cabang lain."
+          },
+          {
+            "id": "c-tabel",
+            "teks": "Angka tepat: tabel",
+            "ikon": "📋",
+            "cabang": "pilih",
+            "petunjuk": "Memilih tabel itu soal pilih penyajian. Coba cabang lain."
+          },
+          {
+            "id": "c-gambar",
+            "teks": "Anak kecil: piktogram",
+            "ikon": "🍪",
+            "cabang": "pilih",
+            "petunjuk": "Memilih piktogram itu soal pilih penyajian. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Diagram Batang",
+        "suara": "Ini tiga panel tentang diagram batang. Ketuk kotaknya untuk membuka, lalu lihat cara membaca batang, skala yang jujur, dan memilih penyajian.",
+        "panel": [
+          {
+            "id": "c-baca-info",
+            "tipe": "buka",
+            "judul": "Membaca batang",
+            "ide": "Judul, skala, lalu tinggi.",
+            "suara": "Ada tiga langkah membaca diagram batang. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "judul",
+                "label": "Judul",
+                "ikon": "📖",
+                "isi": "Data apa yang digambar.",
+                "suara": "Langkah pertama, baca judul supaya tahu data apa yang digambar, misalnya medali emas Indonesia.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Medali Emas"
+                }
+              },
+              {
+                "id": "skala",
+                "label": "Skala",
+                "ikon": "📏",
+                "isi": "Nilai tiap garis.",
+                "suara": "Langkah kedua, baca skala. Di sini tiap garis bernilai lima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 garis = 5"
+                }
+              },
+              {
+                "id": "tinggi",
+                "label": "Tinggi batang",
+                "ikon": "✖️",
+                "isi": "Garis dikali skala.",
+                "suara": "Langkah ketiga, batang setinggi enam garis berarti enam dikali lima sama dengan tiga puluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 × 5 = 30"
+                }
+              }
+            ]
+          },
+          {
+            "id": "c-skala-info",
+            "tipe": "banding",
+            "judul": "Skala sumbu",
+            "ide": "Skala yang jujur mulai dari nol.",
+            "suara": "Bandingkan skala yang baik dengan yang buruk.",
+            "sisi": [
+              {
+                "id": "baik",
+                "nama": "Skala baik",
+                "ikon": "✅",
+                "catatan": "Mulai nol, jarak teratur.",
+                "suara": "Skala yang baik mulai dari nol dan jarak angkanya teratur, misalnya nol, lima, sepuluh, lima belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "0, 5, 10, 15"
+                }
+              },
+              {
+                "id": "buruk",
+                "nama": "Skala buruk",
+                "ikon": "❌",
+                "catatan": "Angka meloncat-loncat.",
+                "suara": "Skala yang buruk memakai angka yang meloncat-loncat, sehingga pembaca bingung dan beda batang menjadi menyesatkan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "0, 5, 20, 25"
+                }
+              }
+            ],
+            "kesimpulan": "Jarak angka harus selalu teratur."
+          },
+          {
+            "id": "c-saji-info",
+            "tipe": "buka",
+            "judul": "Pilih penyajian",
+            "ide": "Pilih sesuai tujuan pembaca.",
+            "suara": "Ada tiga cara menyajikan data yang sama. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tabel",
+                "label": "Tabel",
+                "ikon": "📋",
+                "isi": "Angka rinci dan tepat.",
+                "suara": "Tabel tepat untuk angka rinci. Ini tabel medali emas: dua ribu tiga belas empat puluh, dua ribu lima belas lima puluh, dua ribu tujuh belas tiga puluh, dan dua ribu sembilan belas empat puluh lima.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Tahun",
+                    "Emas"
+                  ],
+                  "baris": [
+                    [
+                      "2013",
+                      40
+                    ],
+                    [
+                      "2015",
+                      50
+                    ],
+                    [
+                      "2017",
+                      30
+                    ],
+                    [
+                      "2019",
+                      45
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "gambar",
+                "label": "Piktogram",
+                "ikon": "🍪",
+                "isi": "Gambar dan kunci.",
+                "suara": "Piktogram menarik bagi anak kecil dan harus punya kunci, misalnya satu simbol sama dengan lima medali.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 simbol = 5"
+                }
+              },
+              {
+                "id": "batang",
+                "label": "Diagram batang",
+                "ikon": "📊",
+                "isi": "Banding tinggi rendah.",
+                "suara": "Diagram batang paling mudah untuk membandingkan tinggi rendah antarkategori dengan sekali lihat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "tinggi = nilai ÷ skala"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

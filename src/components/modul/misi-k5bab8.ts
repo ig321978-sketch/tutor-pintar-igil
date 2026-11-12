@@ -5,15 +5,17 @@
  * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
  *  A Mengumpulkan data : Lab Data (Turus, Tabel, Mode) + Mesin Data + Anggi dan Donat
  *  B Piktogram : Lab Piktogram (Kunci, Baca, Periksa) + Mesin Piktogram + Anggi dan Kue Apem
+ *  C Diagram batang : Lab Batang (Baca, Skala, Banding) + Mesin Batang + Rani dan Sea Games
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanDataK5B8A } from "./lab-data-k5b8a";
 import type { KeadaanPiktogramK5B8B } from "./lab-piktogram-k5b8b";
+import type { KeadaanBatangK5B8C } from "./lab-batang-k5b8c";
 
-export type KeadaanK5Bab8 = KeadaanDataK5B8A | KeadaanPiktogramK5B8B | KeadaanSelesai;
-export type HurufMisiK5B8 = "A" | "B";
+export type KeadaanK5Bab8 = KeadaanDataK5B8A | KeadaanPiktogramK5B8B | KeadaanBatangK5B8C | KeadaanSelesai;
+export type HurufMisiK5B8 = "A" | "B" | "C";
 
 const selesai = (k: KeadaanK5Bab8, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
@@ -21,8 +23,8 @@ const pernah = (k: KeadaanK5Bab8, alat: string, ...id: string[]) => k.alat === a
 const semua = (awalan: string) => [0, 1, 2, 3, 4, 5].map((i) => `${awalan}:${i}`);
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K5B8 = { A: "anggi-donat", B: "anggi-apem" } as const;
-export const ID_MESIN_K5B8 = { A: "mesin-data", B: "mesin-piktogram" } as const;
+export const ID_SKENARIO_K5B8 = { A: "anggi-donat", B: "anggi-apem", C: "rani-seagames" } as const;
+export const ID_MESIN_K5B8 = { A: "mesin-data", B: "mesin-piktogram", C: "mesin-batang" } as const;
 
 export const MISI_A: DefMisi<KeadaanK5Bab8>[] = [
   { id: "a-lima", teks: "Di Turus, catat data sayuran favorit sampai satu kategori punya satu kelompok lima penuh: empat garis tegak dan satu garis miring.", wajib: true, cek: (k) => pernah(k, "data", "lima:0") },
@@ -50,5 +52,18 @@ export const MISI_B: DefMisi<KeadaanK5Bab8>[] = [
   { id: "b-periksa-semua", teks: "Di Periksa, temukan cacat dan perbaiki keenam piktogram, dari jumlah simbol, ukuran simbol, sampai kunci yang hilang.", wajib: false, cek: (k) => pernah(k, "piktogram", ...semua("cacat"), ...semua("perbaiki")) },
 ];
 
-const DAFTAR: Record<HurufMisiK5B8, DefMisi<KeadaanK5Bab8>[]> = { A: MISI_A, B: MISI_B };
+export const MISI_C: DefMisi<KeadaanK5Bab8>[] = [
+  { id: "c-baca", teks: "Di Baca, ikuti protokol: lihat judul, lihat skala, lalu baca nilai batang medali emas Sea Games tahun 2019.", wajib: true, cek: (k) => pernah(k, "batang", "baca:0") },
+  { id: "c-skala", teks: "Di Skala, putuskan bahwa langkah 5 untuk data medali emas Sea Games adalah skala yang baik.", wajib: true, cek: (k) => pernah(k, "batang", "skala:0:5") },
+  { id: "c-tolak", teks: "Di Skala, putuskan bahwa langkah 2 dan langkah 10 untuk data medali emas bukan skala yang baik, karena batang melewati bingkai atau terlalu pendek.", wajib: true, cek: (k) => pernah(k, "batang", "tolak:0:2", "tolak:0:10") },
+  { id: "c-banding", teks: "Di Banding, cari selisih batang laki-laki dan perempuan tahun 2023, lalu tentukan tren batang laki-laki.", wajib: true, cek: (k) => pernah(k, "batang", "selisih:0", "tren:0") },
+  { id: "c-pilih", teks: "Di Banding, pilih diagram batang sebagai penyajian yang tepat untuk membandingkan dua kelompok sekilas.", wajib: true, cek: (k) => pernah(k, "batang", "pilih:0") },
+  { id: "c-mesin", teks: "Selesaikan Mesin Batang sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K5B8.C) },
+  { id: "c-skenario", teks: "Selesaikan skenario Rani dan Sea Games sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K5B8.C) },
+  { id: "c-baca-semua", teks: "Di Baca, baca nilai keenam diagram batang sampai semuanya benar.", wajib: false, cek: (k) => pernah(k, "batang", ...semua("baca")) },
+  { id: "c-skala-semua", teks: "Di Skala, temukan skala yang baik untuk keenam data.", wajib: false, cek: (k) => k.alat === "batang" && "pernah" in k && [0, 1, 2, 3, 4, 5].every((i) => k.pernah.some((p) => p.startsWith(`skala:${i}:`))) },
+  { id: "c-banding-semua", teks: "Di Banding, selesaikan selisih, tren, dan penyajian untuk keenam diagram batang ganda.", wajib: false, cek: (k) => pernah(k, "batang", ...semua("selisih"), ...semua("tren"), ...semua("pilih")) },
+];
+
+const DAFTAR: Record<HurufMisiK5B8, DefMisi<KeadaanK5Bab8>[]> = { A: MISI_A, B: MISI_B, C: MISI_C };
 export const daftarMisiK5Bab8 = (huruf: string): DefMisi<KeadaanK5Bab8>[] => DAFTAR[huruf as HurufMisiK5B8] ?? MISI_A;

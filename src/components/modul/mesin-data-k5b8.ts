@@ -268,4 +268,119 @@ export const MESIN_PIKTOGRAM: DefMesin = {
   kasus: KASUS_PIKTOGRAM.map(kasusMesinPiktogram),
 };
 
-export const SEMUA_MESIN_K5B8: DefMesin[] = [MESIN_DATA, MESIN_PIKTOGRAM];
+/* ------------------------------ C: Mesin Batang ------------------------------ */
+
+/**
+ * baca: kategori yang dibaca, tinggi batang dalam garis, dan nilai tiap garis. skala: nilai tertinggi dan tiga langkah, tepat satu yang baik
+ * (muat dalam sepuluh garis dan lebih dari separuh tinggi). ganda: dua kelompok pada satu kategori dengan skala yang sama.
+ * penyajian: tujuan pembaca dan penyajian yang tepat (0 tabel, 1 piktogram, 2 diagram batang).
+ */
+export type KasusBatang = {
+  id: string;
+  nama: string;
+  konteks: string;
+  baca: { kategori: string; garis: number; langkah: number };
+  skala: { tertinggi: number; opsi: [number, number, number] };
+  ganda: { kategori: string; a: string; nilaiA: number; b: string; nilaiB: number; langkah: number };
+  tujuan: string;
+  penyajian: number;
+};
+
+export const KASUS_BATANG: KasusBatang[] = [
+  {
+    id: "seagames",
+    nama: "Sea Games",
+    konteks: "Rani membaca diagram batang medali emas Indonesia",
+    baca: { kategori: "2017", garis: 6, langkah: 5 },
+    skala: { tertinggi: 50, opsi: [2, 5, 10] },
+    ganda: { kategori: "2023", a: "Laki-laki", nilaiA: 50, b: "Perempuan", nilaiB: 35, langkah: 5 },
+    tujuan: "Guru ingin membandingkan tinggi rendah banyak tahun sekilas.",
+    penyajian: 2,
+  },
+  {
+    id: "lele",
+    nama: "Panen Lele",
+    konteks: "Pak Budi membaca diagram batang panen lele",
+    baca: { kategori: "Kolam 3", garis: 5, langkah: 20 },
+    skala: { tertinggi: 120, opsi: [50, 20, 10] },
+    ganda: { kategori: "Kolam 1", a: "Panen pagi", nilaiA: 120, b: "Panen sore", nilaiB: 80, langkah: 20 },
+    tujuan: "Pemilik kolam ingin menyebut jumlah ikan yang tepat untuk tiap kolam.",
+    penyajian: 0,
+  },
+  {
+    id: "perpustakaan-batang",
+    nama: "Perpustakaan",
+    konteks: "Bu Sari membaca diagram batang pengunjung perpustakaan",
+    baca: { kategori: "Kamis", garis: 7, langkah: 10 },
+    skala: { tertinggi: 80, opsi: [5, 10, 20] },
+    ganda: { kategori: "Selasa", a: "Laki-laki", nilaiA: 60, b: "Perempuan", nilaiB: 90, langkah: 10 },
+    tujuan: "Pustakawan ingin poster bergambar yang menarik untuk anak kecil, satu gambar mewakili sepuluh pengunjung.",
+    penyajian: 1,
+  },
+];
+
+export const STASIUN_BATANG: StasiunDef[] = [
+  { id: "baca", nama: "Baca", ikon: "📖" },
+  { id: "skala", nama: "Skala", ikon: "📏" },
+  { id: "selisih", nama: "Selisih", ikon: "➖" },
+  { id: "penyajian", nama: "Penyajian", ikon: "🖼️" },
+];
+
+const NAMA_SAJI = ["tabel", "piktogram", "diagram batang"];
+/** Skala yang baik: nilai tertinggi muat dalam sepuluh garis dan lebih dari lima garis. */
+export const skalaCocok = (tertinggi: number, langkah: number): boolean => tertinggi <= 10 * langkah && tertinggi > 5 * langkah;
+
+export function kasusMesinBatang(c: KasusBatang, idx: number): KasusMesin {
+  const b = c.baca;
+  const nilaiB = b.garis * b.langkah;
+  const baik = c.skala.opsi.find((k) => skalaCocok(c.skala.tertinggi, k)) as number;
+  const g = c.ganda;
+  const selisih = Math.abs(g.nilaiA - g.nilaiB);
+  const saji = NAMA_SAJI[c.penyajian];
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "baca",
+      tanya: `${c.konteks}. Skala tiap garis ${b.langkah} dan batang ${b.kategori} setinggi ${b.garis} garis. Nilai ${b.kategori} adalah …`,
+      opsi: susunOpsi(`${nilaiB}`, pengecoh(nilaiB, [b.garis, nilaiB + b.langkah, nilaiB - b.langkah]).map(String), idx),
+      benar: `${nilaiB}`,
+      petunjuk: "Baca judul, lalu skala, lalu tinggi batang. Nilai adalah banyak garis dikali nilai tiap garis.",
+    },
+    {
+      stasiun: "skala",
+      tanya: `Nilai tertinggi data adalah ${c.skala.tertinggi}. Sumbu mulai dari nol dan punya ${10} garis. Langkah tiap garis yang paling baik adalah …`,
+      opsi: susunOpsi(`langkah ${baik}`, c.skala.opsi.filter((k) => k !== baik).map((k) => `langkah ${k}`), idx + 1),
+      benar: `langkah ${baik}`,
+      petunjuk: "Skala yang baik memuat nilai tertinggi dalam sepuluh garis, tetapi tidak membuat batang tertinggi kurang dari separuh tinggi.",
+    },
+    {
+      stasiun: "selisih",
+      tanya: `Diagram batang ganda ${g.kategori}: ${g.a} ${g.nilaiA} dan ${g.b} ${g.nilaiB}, dengan skala yang sama. Selisih kedua batang adalah …`,
+      opsi: susunOpsi(`${selisih}`, pengecoh(selisih, [g.nilaiA + g.nilaiB, selisih / g.langkah]).map(String), idx + 2),
+      benar: `${selisih}`,
+      petunjuk: "Selisih adalah nilai besar dikurangi nilai kecil, bukan jumlah keduanya. Bandingkan nilainya, bukan hanya banyak garisnya.",
+    },
+    {
+      stasiun: "penyajian",
+      tanya: `${c.tujuan} Penyajian yang paling cocok adalah …`,
+      opsi: susunOpsi(saji, NAMA_SAJI.filter((n) => n !== saji), idx + 3),
+      benar: saji,
+      petunjuk: "Tabel tepat untuk angka rinci, piktogram menarik bagi anak kecil dengan kunci, dan diagram batang paling mudah untuk membandingkan tinggi rendah.",
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `Batang ${b.kategori} setinggi ${b.garis} garis dengan tiap garis ${b.langkah} bernilai ${nilaiB}. Nilai tertinggi ${c.skala.tertinggi} cocok dengan langkah ${baik}. Selisih ${g.a} dan ${g.b} ${selisih}. Penyajian yang cocok: ${saji}.`,
+    langkah,
+  };
+}
+
+export const MESIN_BATANG: DefMesin = {
+  id: "mesin-batang-k5b8",
+  judul: "Mesin Batang",
+  selesaiId: "mesin-batang",
+  stasiun: STASIUN_BATANG,
+  kasus: KASUS_BATANG.map(kasusMesinBatang),
+};
+
+export const SEMUA_MESIN_K5B8: DefMesin[] = [MESIN_DATA, MESIN_PIKTOGRAM, MESIN_BATANG];

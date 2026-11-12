@@ -7,6 +7,8 @@ import type { DefSkenario } from "./skenario-umum";
  *    sama dengan banyak data, mode untuk keputusan)
  *  - SKENARIO_K5B8B: Anggi dan Kue Apem (piktogram: kunci, nilai dari banyak simbol dikali kunci, setengah simbol, cari kesalahan;
  *    menyentuh tabel frekuensi dari Sub-Bab A)
+ *  - SKENARIO_K5B8C: Rani dan Sea Games (diagram batang: urutan membaca, skala, selisih batang ganda, tren, memilih penyajian;
+ *    pencapaian bab, menyentuh tabel dari A dan piktogram dari B)
  */
 
 export const SKENARIO_K5B8A: DefSkenario = {
@@ -170,6 +172,89 @@ export const SKENARIO_K5B8B: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Piktogram memakai kunci: satu simbol mewakili nilai tertentu. Nilai dibaca dari banyak simbol dikali kunci, setengah simbol bernilai setengah kunci, dan semua simbol harus seragam. Selalu cocokkan dengan tabel frekuensi.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B8C: DefSkenario = {
+  id: "rani-seagames-k5b8",
+  judul: "Rani dan Sea Games",
+  latar: "Bantu Rani menyajikan medali emas Sea Games dengan diagram batang.",
+  tokoh: "👧",
+  nama: "Rani",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Rani. Aku punya tabel frekuensi medali emas Indonesia di Sea Games, dan aku sudah pernah menggambarnya sebagai piktogram. Sekarang aku ingin membuat diagram batang yang jujur. Ayo kita belajar membacanya!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "urutan",
+      jenis: "pilih",
+      cerita: "Rani membuka diagram batang medali emas. Urutan membaca mana yang paling tepat?",
+      opsi: [
+        { teks: "langsung menebak tinggi batang tertinggi", benar: false, umpan: "Menebak tidak aman. Mulailah dari judul supaya tahu data apa yang digambar." },
+        { teks: "baca skala dulu, baru judul dan tinggi batang", benar: false, umpan: "Judul dibaca lebih dulu supaya tahu apa yang diukur. Setelah itu baru skala." },
+        { teks: "baca judul, lalu skala, lalu tinggi batang", benar: true, umpan: "Betul! Judul, skala, lalu tinggi batang. Urutan ini menjaga kita dari salah baca." },
+      ],
+    },
+    {
+      id: "baca",
+      jenis: "soal",
+      cerita: "Pada diagram Rani, tiap garis sumbu bernilai 5 medali. Batang tahun 2015 setinggi 10 garis, dan batang tahun 2017 setinggi 6 garis.",
+      soal: [
+        { teks: "Medali emas tahun 2015 adalah …", jawaban: "50", opsi: ["10", "50", "15"] },
+        { teks: "Medali emas tahun 2017 adalah …", jawaban: "30", opsi: ["30", "6", "35"] },
+      ],
+      sukses: "Hebat! Nilai dibaca dari banyak garis dikali nilai tiap garis: 10 × 5 = 50 dan 6 × 5 = 30.",
+      salah: "Hmm, jangan berhenti di banyak garis. Kalikan dengan nilai tiap garis pada skala, lalu coba lagi.",
+    },
+    {
+      id: "garis",
+      jenis: "hitung",
+      cerita: "Batang tahun 2019 mencapai garis ke-9. Rani meletakkan satu stik untuk tiap garis yang dilewati batang itu.",
+      tanya: "Ketuk semua stik. Setinggi berapa garis batang tahun 2019?",
+      objek: "stik",
+      jumlah: 9,
+      sukses: "Betul! Batang setinggi 9 garis, jadi nilainya 9 × 5 = 45.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "skala",
+      jenis: "pilih",
+      cerita: "Nilai tertinggi medali adalah 50. Rani ingin skala yang baik pada sumbu dengan 10 garis, mulai dari nol. Skala mana yang dipilih?",
+      opsi: [
+        { teks: "langkah 2, supaya angkanya kecil", benar: false, umpan: "Dengan langkah 2, sepuluh garis hanya sampai 20. Batang 50 melewati bingkai." },
+        { teks: "langkah 5, muat dalam 10 garis dan lebih dari separuh tinggi", benar: true, umpan: "Betul! 10 × 5 = 50 muat, dan batang tertinggi mengisi lebih dari separuh bingkai." },
+        { teks: "langkah 10, supaya batang terlihat pendek", benar: false, umpan: "Dengan langkah 10, batang 50 hanya separuh bingkai. Terlalu longgar dan sulit dibandingkan." },
+      ],
+    },
+    {
+      id: "banding",
+      jenis: "soal",
+      cerita: "Rani membuat diagram batang ganda, dengan skala yang sama. Tahun 2023, batang laki-laki 50 dan batang perempuan 40. Batang laki-laki naik dari 30 pada tahun 2020 menjadi 50.",
+      soal: [
+        { teks: "Selisih batang laki-laki dan perempuan tahun 2023 adalah …", jawaban: "10", opsi: ["10", "90", "5"] },
+        { teks: "Dari 2020 ke 2023, batang laki-laki …", jawaban: "naik", opsi: ["turun", "naik", "tetap"] },
+      ],
+      sukses: "Tepat! 50 − 40 = 10, dan batang laki-laki naik dari 30 menjadi 50.",
+      salah: "Hmm, selisih adalah nilai besar dikurangi nilai kecil, dan tren dilihat dari tinggi pertama dan terakhir. Coba lagi.",
+    },
+    {
+      id: "penyajian",
+      jenis: "pilih",
+      cerita: "Rani ingin poster bergambar untuk anak kecil, satu gambar mewakili 5 medali, dengan kunci di bawahnya. Penyajian apa yang paling cocok?",
+      opsi: [
+        { teks: "piktogram, karena gambarnya menarik dan ada kunci", benar: true, umpan: "Betul! Piktogram dengan kunci menarik bagi anak kecil dan nilainya tetap bisa dibaca." },
+        { teks: "tabel tanpa gambar sama sekali", benar: false, umpan: "Tabel tepat untuk angka rinci, tetapi poster ini ingin menarik dengan gambar." },
+        { teks: "diagram batang tanpa skala", benar: false, umpan: "Diagram batang tanpa skala tidak bisa dibaca nilainya. Skala wajib ada." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Baca diagram batang dengan urutan judul, skala, lalu tinggi batang. Skala yang baik mulai dari nol, jaraknya teratur, dan memuat data dengan pas. Batang ganda dibandingkan dengan skala yang sama. Pilih tabel, piktogram, atau diagram batang sesuai tujuan pembaca.",
     },
   ],
 };
