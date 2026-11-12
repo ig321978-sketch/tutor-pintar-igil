@@ -39,7 +39,7 @@
           {
             "id": "hierarki",
             "judul": "Hierarki",
-            "ikon": "🪜",
+            "ikon": "⬆️",
             "ringkas": "Sama sisi juga sama kaki.",
             "suara": "Hierarki. Segitiga sama sisi memiliki semua ciri sama kaki, jadi juga digolongkan sama kaki. Tetapi segitiga sama kaki belum tentu sama sisi."
           }
@@ -144,10 +144,158 @@
               {
                 "id": "simetri",
                 "label": "Simetri",
-                "ikon": "🪞",
+                "ikon": "↔️",
                 "isi": "Banyak simetri lipat.",
                 "suara": "Segitiga sama kaki punya satu simetri lipat, sama sisi punya tiga, dan sembarang tidak punya.",
                 "visual": { "jenis": "tabel-menurun", "kepala": ["Jenis", "Simetri lipat"], "baris": [["sama kaki", 1], ["sama sisi", 3], ["sembarang", 0]] }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Segi empat",
+          "ikon": "⬜",
+          "suara": "Ini peta ciri segi empat. Kita belajar trapesium dengan setidaknya sepasang sisi sejajar, jajargenjang dan persegi panjang, belah ketupat dan layang-layang, serta persegi yang ada di pusat tangga bangun. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "trapesium",
+            "judul": "Trapesium",
+            "ikon": "⏢",
+            "ringkas": "Setidaknya sepasang sisi sejajar.",
+            "suara": "Trapesium. Trapesium punya setidaknya sepasang sisi sejajar. Definisi ini luas, jadi jajargenjang juga termasuk trapesium. Ada trapesium siku-siku dan trapesium sama kaki."
+          },
+          {
+            "id": "jajar",
+            "judul": "Jajargenjang",
+            "ikon": "▱",
+            "ringkas": "Dua pasang sisi sejajar.",
+            "suara": "Jajargenjang. Jajargenjang punya dua pasang sisi berhadapan yang sejajar dan sama panjang. Persegi panjang adalah jajargenjang dengan empat sudut siku-siku."
+          },
+          {
+            "id": "belah",
+            "judul": "Belah ketupat",
+            "ikon": "◇",
+            "ringkas": "Empat sisi sama, diagonal tegak lurus.",
+            "suara": "Belah ketupat dan layang-layang. Belah ketupat punya empat sisi sama panjang dan diagonal yang saling tegak lurus. Layang-layang punya dua pasang sisi berurutan yang sama panjang, jadi belah ketupat juga termasuk layang-layang."
+          },
+          {
+            "id": "persegi",
+            "judul": "Persegi",
+            "ikon": "⬜",
+            "ringkas": "Pusat tangga bangun.",
+            "suara": "Persegi. Persegi punya empat sisi sama panjang dan empat sudut siku-siku. Jadi persegi juga persegi panjang, belah ketupat, dan jajargenjang. Bandingkan ciri satu per satu, jangan menghafal nama saja."
+          }
+        ],
+        "kartu": [
+          { "id": "b-satu-pasang", "teks": "Setidaknya sepasang sisi sejajar", "ikon": "∥", "cabang": "trapesium", "petunjuk": "Ciri sisi sejajar yang paling sedikit itu soal trapesium. Coba cabang lain." },
+          { "id": "b-siku-sama", "teks": "Trapesium siku-siku dan sama kaki", "ikon": "📐", "cabang": "trapesium", "petunjuk": "Jenis trapesium itu soal trapesium. Coba cabang lain." },
+          { "id": "b-dua-pasang", "teks": "Dua pasang sisi berhadapan sejajar", "ikon": "▱", "cabang": "jajar", "petunjuk": "Dua pasang sisi sejajar itu soal jajargenjang. Coba cabang lain." },
+          { "id": "b-persegi-panjang", "teks": "Persegi panjang: jajargenjang bersudut siku", "ikon": "▭", "cabang": "jajar", "petunjuk": "Jajargenjang bersudut siku itu soal jajargenjang. Coba cabang lain." },
+          { "id": "b-empat-sama", "teks": "Empat sisi sama panjang", "ikon": "◇", "cabang": "belah", "petunjuk": "Empat sisi sama panjang itu soal belah ketupat. Coba cabang lain." },
+          { "id": "b-layang", "teks": "Belah ketupat juga layang-layang", "ikon": "🪁", "cabang": "belah", "petunjuk": "Belah ketupat dan layang-layang itu soal cabang belah ketupat. Coba cabang lain." },
+          { "id": "b-persegi-pusat", "teks": "Persegi ada di pusat tangga", "ikon": "⬜", "cabang": "persegi", "petunjuk": "Persegi di pusat itu soal persegi. Coba cabang lain." },
+          { "id": "b-persegi-semua", "teks": "Persegi juga persegi panjang dan belah ketupat", "ikon": "⬆️", "cabang": "persegi", "petunjuk": "Persegi termasuk golongan lain itu soal persegi. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Ciri Segi Empat",
+        "suara": "Ini tiga panel tentang ciri segi empat. Ketuk kotaknya untuk membuka, lalu lihat trapesium, perbandingan persegi panjang dengan belah ketupat, serta tangga bangun.",
+        "panel": [
+          {
+            "id": "b-trapesium-info",
+            "tipe": "buka",
+            "judul": "Trapesium inklusif",
+            "ide": "Setidaknya sepasang sisi sejajar.",
+            "suara": "Ada tiga hal tentang trapesium. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "sejajar",
+                "label": "Sejajar",
+                "ikon": "∥",
+                "isi": "Satu pasang sudah cukup.",
+                "suara": "Trapesium punya setidaknya sepasang sisi sejajar. Satu pasang sudah cukup.",
+                "visual": { "jenis": "teks", "isi": "1 pasang atau lebih" }
+              },
+              {
+                "id": "jajar",
+                "label": "Jajargenjang",
+                "ikon": "▱",
+                "isi": "Dua pasang, juga trapesium.",
+                "suara": "Jajargenjang punya dua pasang sisi sejajar, jadi jajargenjang juga trapesium.",
+                "visual": { "jenis": "teks", "isi": "2 pasang" }
+              },
+              {
+                "id": "jenis",
+                "label": "Jenis",
+                "ikon": "📐",
+                "isi": "Siku-siku dan sama kaki.",
+                "suara": "Ada trapesium siku-siku yang punya sudut siku-siku, dan trapesium sama kaki yang kakinya sama panjang.",
+                "visual": { "jenis": "teks", "isi": "siku-siku, sama kaki" }
+              }
+            ]
+          },
+          {
+            "id": "b-banding-info",
+            "tipe": "banding",
+            "judul": "Dua ciri khusus",
+            "ide": "Persegi punya keduanya.",
+            "suara": "Lihat dua bangun dengan ciri khusus.",
+            "sisi": [
+              {
+                "id": "panjang",
+                "nama": "Persegi panjang",
+                "ikon": "▭",
+                "catatan": "Empat sudut siku-siku.",
+                "suara": "Persegi panjang punya empat sudut siku-siku dan dua pasang sisi sejajar.",
+                "visual": { "jenis": "teks", "isi": "4 siku-siku" }
+              },
+              {
+                "id": "ketupat",
+                "nama": "Belah ketupat",
+                "ikon": "◇",
+                "catatan": "Empat sisi sama panjang.",
+                "suara": "Belah ketupat punya empat sisi sama panjang dan diagonal yang saling tegak lurus.",
+                "visual": { "jenis": "teks", "isi": "4 sisi sama" }
+              }
+            ],
+            "kesimpulan": "Persegi punya empat siku dan empat sisi sama."
+          },
+          {
+            "id": "b-tangga-info",
+            "tipe": "buka",
+            "judul": "Tangga bangun",
+            "ide": "Periksa ciri, jangan hafal nama.",
+            "suara": "Ada tiga hal tentang tangga bangun. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "naik",
+                "label": "Naik",
+                "ikon": "⬆️",
+                "isi": "Banyak ciri, naik golongan.",
+                "suara": "Persegi panjang dan belah ketupat sama-sama termasuk jajargenjang. Belah ketupat juga termasuk layang-layang.",
+                "visual": { "jenis": "teks", "isi": "persegi panjang → jajargenjang" }
+              },
+              {
+                "id": "pusat",
+                "label": "Persegi",
+                "ikon": "⬜",
+                "isi": "Ada di pusat tangga.",
+                "suara": "Persegi termasuk persegi panjang, belah ketupat, jajargenjang, dan trapesium. Tetapi hubungannya tidak berlaku sebaliknya.",
+                "visual": { "jenis": "teks", "isi": "persegi di pusat" }
+              },
+              {
+                "id": "tabel",
+                "label": "Sejajar",
+                "ikon": "∥",
+                "isi": "Banyak pasang sisi sejajar.",
+                "suara": "Trapesium biasa punya satu pasang sisi sejajar, jajargenjang dua pasang, dan layang-layang tidak punya.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Bangun", "Pasang sejajar"], "baris": [["trapesium biasa", 1], ["jajargenjang", 2], ["layang-layang", 0]] }
               }
             ]
           }

@@ -46,3 +46,4 @@ Migrasi Kelas 5: Bab 3 sudah (`SimulasiK5Bab3`, tiga sub-bab A sampai C: memband
 Migrasi Kelas 5: Bab 4 sudah (`SimulasiK5Bab4`, lima sub-bab A sampai E: konsep keliling, keliling segitiga, keliling segi empat, keliling segi banyak, dan keliling bangun gabungan; dimuat malas lewat `next/dynamic` di registri).
 Migrasi Kelas 5: Bab 5 sudah (`SimulasiK5Bab5`, empat sub-bab A sampai D: konsep luas daerah, luas daerah bangun datar dengan rumus, luas bangun gabungan, dan hubungan keliling dan luas; dimuat malas lewat `next/dynamic` di registri).
 Migrasi Kelas 5: Bab 6 sudah (`SimulasiK5Bab6`, empat sub-bab A sampai D: sudut siku-siku, pengertian dan jenis sudut, mengukur sudut dengan busur derajat, dan melukis sudut; dimuat malas lewat `next/dynamic` di registri).
+Migrasi Kelas 5: Bab 7 sudah (`SimulasiK5Bab7`, dua sub-bab A dan B: membandingkan ciri segitiga, dan membandingkan ciri segi empat; dimuat malas lewat `next/dynamic` di registri).

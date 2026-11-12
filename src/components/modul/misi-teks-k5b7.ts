@@ -3,17 +3,19 @@
  * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen laboratorium ke bundel awal.
  */
 
-export type HurufK5B7 = "A";
-const HURUF: HurufK5B7[] = ["A"];
+export type HurufK5B7 = "A" | "B";
+const HURUF: HurufK5B7[] = ["A", "B"];
 
 export const hurufK5B7 = (sub: string): HurufK5B7 => (HURUF.includes(sub as HurufK5B7) ? (sub as HurufK5B7) : "A");
 
 export const MISI_K5B7: Record<HurufK5B7, string> = {
   A: "Di Lab Segitiga, uji tiga sedotan dengan jumlah dua sisi lawan sisi ketiga, hitung sudut ketiga dari jumlah 180°, dan impitkan sisi untuk menentukan jenis segitiga sampai hierarki sama sisi dan sama kaki. Periksa dengan Mesin Segitiga, lalu selesaikan skenario Yohana di Candi Sewu. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
+  B: "Di Lab Segi Empat, periksa ciri satu bangun sampai bisa menamainya dengan paling tepat, uji sisi sejajar dengan garis tegak lurus untuk memutuskan trapesium, dan naiki tangga bangun: persegi panjang, belah ketupat, dan persegi termasuk golongan mana saja. Periksa dengan Mesin Segi Empat, lalu selesaikan skenario Denah Candi Sewu. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
 };
 
 export const NAMA_SIM_K5B7: Record<HurufK5B7, string> = {
   A: "Lab Segitiga, Mesin Segitiga, dan Yohana di Candi Sewu",
+  B: "Lab Segi Empat, Mesin Segi Empat, dan Denah Candi Sewu",
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */

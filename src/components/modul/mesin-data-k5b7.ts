@@ -7,6 +7,9 @@
  *    Sisi     : jenis menurut sisi (sama kaki, sama sisi, sembarang).
  *    Hierarki : golongan segitiga menurut hierarki inklusif (sama sisi juga sama kaki).
  * Data dari Buku Siswa Kelas V Bab 7 Sub-Bab A (sedotan 5, 6, 7 dan 5, 4, 12; jumlah sudut 180; hierarki segitiga).
+ *  - MESIN_SEGIEMPAT (B): Sejajar → Sisi → Sudut → Hierarki   (kasus Denah, Jendela, Gapura Candi Sewu)
+ *    Sejajar: pasang sisi sejajar; Sisi: ciri sisi; Sudut: banyak sudut siku-siku; Hierarki: golongan lain yang memuat bangun.
+ * Data dari Buku Siswa Kelas V Bab 7 Sub-Bab B (trapesium inklusif, jajargenjang, persegi panjang, belah ketupat, layang-layang).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b7.mjs.
  */
 import type { DefMesin, KasusMesin, LangkahMesin, StasiunDef } from "./mesin-bertahap-k3b1";
@@ -40,7 +43,7 @@ export const STASIUN_SEGITIGA: StasiunDef[] = [
   { id: "syarat", nama: "Syarat", ikon: "📏" },
   { id: "sudut", nama: "Sudut", ikon: "∠" },
   { id: "sisi", nama: "Sisi", ikon: "△" },
-  { id: "hierarki", nama: "Hierarki", ikon: "🪜" },
+  { id: "hierarki", nama: "Hierarki", ikon: "⬆️" },
 ];
 
 const daftar = (t: Tiga): string => `${t[0]}, ${t[1]}, dan ${t[2]}`;
@@ -121,4 +124,153 @@ export const MESIN_SEGITIGA: DefMesin = {
   kasus: KASUS_SEGITIGA.map(kasusMesinSegitiga),
 };
 
-export const SEMUA_MESIN_K5B7: DefMesin[] = [MESIN_SEGITIGA];
+/* ------------------------------ B: Mesin Segi Empat ------------------------------ */
+
+type Titik = [number, number];
+type Empat = [Titik, Titik, Titik, Titik];
+const sisiVek = (q: Empat, i: number): Titik => [q[(i + 1) % 4][0] - q[i][0], q[(i + 1) % 4][1] - q[i][1]];
+const panjang2 = (v: Titik): number => v[0] * v[0] + v[1] * v[1];
+const silang = (u: Titik, v: Titik): number => u[0] * v[1] - u[1] * v[0];
+const titikKali = (u: Titik, v: Titik): number => u[0] * v[0] + u[1] * v[1];
+
+/** Banyak pasang sisi berhadapan yang sejajar. */
+export const pasangSejajar = (q: Empat): number => (silang(sisiVek(q, 0), sisiVek(q, 2)) === 0 ? 1 : 0) + (silang(sisiVek(q, 1), sisiVek(q, 3)) === 0 ? 1 : 0);
+/** Banyak sudut siku-siku di empat titik sudut. */
+export const banyakSikuEmpat = (q: Empat): number => [0, 1, 2, 3].filter((i) => titikKali(sisiVek(q, (i + 3) % 4), sisiVek(q, i)) === 0).length;
+export type CiriSisi = "dua pasang sisi berhadapan sama panjang" | "dua pasang sisi berurutan sama panjang" | "hanya sepasang sisi sama panjang";
+export const ciriSisi = (q: Empat): CiriSisi | null => {
+  const [a, b, c, d] = [0, 1, 2, 3].map((i) => panjang2(sisiVek(q, i)));
+  const hadap = a === c && b === d;
+  const urut = (a === b && c === d) || (b === c && d === a);
+  if (hadap && !urut) return "dua pasang sisi berhadapan sama panjang";
+  if (urut && !hadap) return "dua pasang sisi berurutan sama panjang";
+  const sama = (a === c ? 1 : 0) + (b === d ? 1 : 0) + (a === b ? 1 : 0) + (b === c ? 1 : 0) + (c === d ? 1 : 0) + (d === a ? 1 : 0);
+  return sama === 1 ? "hanya sepasang sisi sama panjang" : null;
+};
+
+type Rep = "trapesium" | "jajargenjang" | "persegi panjang" | "belah ketupat" | "persegi" | "layang-layang";
+const REP: Record<Rep, Empat> = {
+  trapesium: [[0, 0], [8, 0], [6, 3], [1, 3]],
+  jajargenjang: [[0, 0], [6, 0], [8, 3], [2, 3]],
+  "persegi panjang": [[0, 0], [6, 0], [6, 3], [0, 3]],
+  "belah ketupat": [[3, 0], [6, 2], [3, 4], [0, 2]],
+  persegi: [[0, 0], [4, 0], [4, 4], [0, 4]],
+  "layang-layang": [[0, 6], [3, 2], [0, 0], [-3, 2]],
+};
+const SIKU_SIKU: Empat = [[0, 0], [7, 0], [4, 3], [0, 3]];
+const SAMA_KAKI: Empat = [[0, 0], [8, 0], [6, 3], [2, 3]];
+/** Ciri tiap bangun dihitung dari koordinatnya: [sejajar 1 atau lebih, dua pasang sejajar, empat siku-siku, empat sisi sama, dua pasang berurutan sama, diagonal tegak lurus]. */
+export const ciriRep = (r: Rep): boolean[] => {
+  const q = REP[r];
+  const [a, b, c, d] = [0, 1, 2, 3].map((i) => panjang2(sisiVek(q, i)));
+  const dg1: Titik = [q[2][0] - q[0][0], q[2][1] - q[0][1]];
+  const dg2: Titik = [q[3][0] - q[1][0], q[3][1] - q[1][1]];
+  return [pasangSejajar(q) >= 1, pasangSejajar(q) === 2, banyakSikuEmpat(q) === 4, a === b && b === c && c === d, (a === b && c === d) || (b === c && d === a), titikKali(dg1, dg2) === 0];
+};
+/** Ciri penentu tiap golongan (indeks ciri di ciriRep). */
+const PENENTU: Record<Rep, number[]> = { trapesium: [0], jajargenjang: [1], "persegi panjang": [1, 2], "belah ketupat": [1, 3], persegi: [1, 2, 3], "layang-layang": [4] };
+export const golonganLain = (a: Rep, b: Rep): boolean => PENENTU[b].every((k) => ciriRep(a)[k]);
+export const BANGUN_REP: Rep[] = Object.keys(REP) as Rep[];
+
+export type KasusSegiempat = {
+  id: string;
+  nama: string;
+  konteks: string;
+  sejajar: { sebut: string; titik: Empat };
+  sisi: { sebut: string; titik: Empat };
+  sudut: { sebut: string; titik: Empat };
+  hier: { dari: Rep; pilihan: [Rep, Rep, Rep] };
+};
+export const KASUS_SEGIEMPAT: KasusSegiempat[] = [
+  {
+    id: "denah",
+    nama: "Denah Candi",
+    konteks: "Asep dan Lukas mengamati denah Candi Sewu",
+    sejajar: { sebut: "trapesium biasa (bukan jajargenjang)", titik: REP.trapesium },
+    sisi: { sebut: "persegi panjang", titik: REP["persegi panjang"] },
+    sudut: { sebut: "trapesium siku-siku", titik: SIKU_SIKU },
+    hier: { dari: "persegi panjang", pilihan: ["jajargenjang", "layang-layang", "belah ketupat"] },
+  },
+  {
+    id: "jendela",
+    nama: "Hiasan Jendela",
+    konteks: "Komang mengamati hiasan jendela Candi Sewu",
+    sejajar: { sebut: "jajargenjang", titik: REP.jajargenjang },
+    sisi: { sebut: "layang-layang", titik: REP["layang-layang"] },
+    sudut: { sebut: "persegi panjang", titik: REP["persegi panjang"] },
+    hier: { dari: "belah ketupat", pilihan: ["layang-layang", "persegi panjang", "persegi"] },
+  },
+  {
+    id: "gapura",
+    nama: "Hiasan Gapura",
+    konteks: "Nisa mengamati hiasan gapura Candi Sewu",
+    sejajar: { sebut: "layang-layang", titik: REP["layang-layang"] },
+    sisi: { sebut: "trapesium sama kaki", titik: SAMA_KAKI },
+    sudut: { sebut: "jajargenjang", titik: REP.jajargenjang },
+    hier: { dari: "jajargenjang", pilihan: ["trapesium", "persegi panjang", "belah ketupat"] },
+  },
+];
+
+export const STASIUN_SEGIEMPAT: StasiunDef[] = [
+  { id: "sejajar", nama: "Sejajar", ikon: "∥" },
+  { id: "sisi", nama: "Sisi", ikon: "📏" },
+  { id: "sudut", nama: "Sudut", ikon: "∟" },
+  { id: "hierarki", nama: "Hierarki", ikon: "⬆️" },
+];
+
+const hurufDepan = (t: string): string => `${t[0].toUpperCase()}${t.slice(1)}`;
+const CIRI_SISI: CiriSisi[] = ["dua pasang sisi berhadapan sama panjang", "dua pasang sisi berurutan sama panjang", "hanya sepasang sisi sama panjang"];
+
+export function kasusMesinSegiempat(c: KasusSegiempat, idx: number): KasusMesin {
+  const pasang = pasangSejajar(c.sejajar.titik);
+  const cs = ciriSisi(c.sisi.titik) as CiriSisi;
+  const siku = banyakSikuEmpat(c.sudut.titik);
+  const benarH = c.hier.pilihan.find((p) => golonganLain(c.hier.dari, p)) as Rep;
+  const salahH = c.hier.pilihan.filter((p) => p !== benarH);
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "sejajar",
+      tanya: `${c.konteks}. Hiasan pertama berbentuk ${c.sejajar.sebut}. Banyak pasang sisi berhadapan yang sejajar adalah …`,
+      opsi: susunOpsi(`${pasang} pasang`, pengecoh(pasang, [0, 1, 2]).map((v) => `${v} pasang`), idx),
+      benar: `${pasang} pasang`,
+      petunjuk: "Ada dua pasang sisi berhadapan. Uji tiap pasang: bila sejajar, arahnya sama dan jaraknya tetap. Trapesium biasa hanya punya sepasang.",
+    },
+    {
+      stasiun: "sisi",
+      tanya: `Hiasan kedua berbentuk ${c.sisi.sebut}. Ciri sisinya adalah …`,
+      opsi: susunOpsi(cs, CIRI_SISI.filter((o) => o !== cs), idx + 1),
+      benar: cs,
+      petunjuk: "Impitkan sisinya. Sisi berhadapan itu yang di seberang, sisi berurutan itu yang bersebelahan. Layang-layang punya dua pasang sisi berurutan sama, trapesium sama kaki hanya kakinya yang sama.",
+    },
+    {
+      stasiun: "sudut",
+      tanya: `Hiasan ketiga berbentuk ${c.sudut.sebut}. Banyak sudutnya yang siku-siku adalah …`,
+      opsi: susunOpsi(`${siku} sudut`, pengecoh(siku, [0, 2, 4, 1]).map((v) => `${v} sudut`), idx + 2),
+      benar: `${siku} sudut`,
+      petunjuk: "Periksa keempat sudut dengan patokan siku-siku. Persegi panjang punya empat, trapesium siku-siku punya dua, dan jajargenjang biasa tidak punya.",
+    },
+    {
+      stasiun: "hierarki",
+      tanya: `${hurufDepan(c.hier.dari)} digolongkan juga sebagai …`,
+      opsi: susunOpsi(benarH, salahH, idx + 3),
+      benar: benarH,
+      petunjuk: "Bangun masuk golongan lain bila memiliki semua ciri golongan itu. Jangan dibalik: golongan yang lebih luas belum tentu masuk golongan yang lebih khusus.",
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `${hurufDepan(c.sejajar.sebut)}: ${pasang} pasang sisi sejajar. ${hurufDepan(c.sisi.sebut)}: ${cs}. ${hurufDepan(c.sudut.sebut)}: ${siku} sudut siku-siku. ${hurufDepan(c.hier.dari)} juga ${benarH}.`,
+    langkah,
+  };
+}
+
+export const MESIN_SEGIEMPAT: DefMesin = {
+  id: "mesin-segiempat-k5b7",
+  judul: "Mesin Segi Empat",
+  selesaiId: "mesin-segiempat",
+  stasiun: STASIUN_SEGIEMPAT,
+  kasus: KASUS_SEGIEMPAT.map(kasusMesinSegiempat),
+};
+
+export const SEMUA_MESIN_K5B7: DefMesin[] = [MESIN_SEGITIGA, MESIN_SEGIEMPAT];
