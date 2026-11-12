@@ -1,0 +1,109 @@
+{
+  "chapter_id": "mtk-5-bab3",
+  "phase_code": "FASE_C",
+  "grade": 5,
+  "subject": "Matematika",
+  "title": "Bilangan Pecahan",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Banding Pecahan",
+          "ikon": "⚖️",
+          "suara": "Ini peta membandingkan pecahan. Kita belajar garis bilangan, pecahan senilai, pecahan campuran, dan tanda banding. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "garis",
+            "judul": "Garis bilangan",
+            "ikon": "📏",
+            "ringkas": "Kanan lebih besar, kiri lebih kecil.",
+            "suara": "Garis bilangan. Pecahan diletakkan di garis yang dibagi sama panjang. Makin ke kanan, makin besar."
+          },
+          {
+            "id": "senilai",
+            "judul": "Pecahan senilai",
+            "ikon": "🔗",
+            "ringkas": "Tulisan berbeda, bagian sama besar.",
+            "suara": "Pecahan senilai. Penyebutnya diganti, tetapi bagian yang diarsir tetap sama besar. Cara ini dipakai untuk menyamakan penyebut."
+          },
+          {
+            "id": "campuran",
+            "judul": "Campuran",
+            "ikon": "🔁",
+            "ringkas": "Bulat dikali penyebut, lalu pembilangnya.",
+            "suara": "Pecahan campuran. Setiap bulat berisi sebanyak penyebut bagian. Hitung semua bagiannya, lalu tulis sebagai pecahan biasa."
+          },
+          {
+            "id": "tanda",
+            "judul": "Tanda banding",
+            "ikon": "⚖️",
+            "ringkas": "Samakan penyebut, lalu bandingkan pembilang.",
+            "suara": "Tanda banding. Setelah penyebut sama, bandingkan pembilangnya. Pembilang yang lebih besar berarti pecahan yang lebih besar."
+          }
+        ],
+        "kartu": [
+          { "id": "a-lompatan", "teks": "7/8, 11/4, 7/2 di garis", "ikon": "🦘", "cabang": "garis", "petunjuk": "Letak di garis itu soal garis bilangan. Coba cabang lain." },
+          { "id": "a-kanan", "teks": "Makin ke kanan, makin besar", "ikon": "➡️", "cabang": "garis", "petunjuk": "Arah di garis itu soal garis bilangan. Coba cabang lain." },
+          { "id": "a-sepertiga", "teks": "1/3 = 2/6", "ikon": "🟨", "cabang": "senilai", "petunjuk": "Dua tulisan yang sama besar itu soal pecahan senilai. Coba cabang lain." },
+          { "id": "a-setengah-senilai", "teks": "1/2 = 5/10", "ikon": "🟩", "cabang": "senilai", "petunjuk": "Penyebut yang diganti itu soal pecahan senilai. Coba cabang lain." },
+          { "id": "a-duatigaperempat", "teks": "2 3/4 = 11/4", "ikon": "2️⃣", "cabang": "campuran", "petunjuk": "Bulat dan pecahan sekaligus itu soal campuran. Coba cabang lain." },
+          { "id": "a-tigasetengah", "teks": "3 1/2 = 7/2", "ikon": "3️⃣", "cabang": "campuran", "petunjuk": "Bentuk bulat dan pecahan itu soal campuran. Coba cabang lain." },
+          { "id": "a-setengah-lima", "teks": "1/2 > 1/5", "ikon": "✅", "cabang": "tanda", "petunjuk": "Tanda yang dipilih itu soal tanda banding. Coba cabang lain." },
+          { "id": "a-tiga-delapan", "teks": "3/8 < 5/8", "ikon": "❎", "cabang": "tanda", "petunjuk": "Tanda yang dipilih itu soal tanda banding. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Membandingkan Pecahan",
+        "suara": "Ini tiga panel tentang membandingkan pecahan. Ketuk kotaknya untuk membuka, lalu lihat garis bilangan, penyebut yang sama, dan pecahan campuran.",
+        "panel": [
+          {
+            "id": "a-garis-info",
+            "tipe": "buka",
+            "judul": "Pecahan di garis bilangan",
+            "ide": "Kanan lebih besar, kiri lebih kecil.",
+            "suara": "Ada tiga hal tentang garis bilangan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "bagian",
+                "label": "Bagian",
+                "ikon": "📏",
+                "isi": "Satu bulat dibagi empat bagian.",
+                "suara": "Satu bulat dibagi empat bagian sama panjang. Titik pertama satu per empat, lalu dua per empat, tiga per empat, dan empat per empat.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Titik", "Pembilang"], "baris": [["pertama", 1], ["kedua", 2], ["ketiga", 3], ["keempat", 4]] }
+              },
+              { "id": "kanan", "label": "Urutan", "ikon": "➡️", "isi": "Makin ke kanan, makin besar.", "suara": "Tujuh per delapan lebih kecil dari sebelas per empat. Sebelas per empat lebih kecil dari tujuh per dua.", "visual": { "jenis": "teks", "isi": "7/8 < 11/4 < 7/2" } },
+              { "id": "bulat", "label": "Bulat", "ikon": "1️⃣", "isi": "Empat bagian membentuk satu bulat.", "suara": "Empat per empat sama dengan satu bulat penuh.", "visual": { "jenis": "teks", "isi": "4/4 = 1" } }
+            ]
+          },
+          {
+            "id": "a-banding-info",
+            "tipe": "banding",
+            "judul": "Penyebut sama dan penyebut beda",
+            "ide": "Penyebut harus sama dulu.",
+            "suara": "Lihat dua cara membandingkan pecahan.",
+            "sisi": [
+              { "id": "sama", "nama": "Penyebut sama", "ikon": "🟨", "catatan": "Langsung bandingkan pembilangnya.", "suara": "Tiga per delapan dan lima per delapan punya penyebut sama. Bandingkan pembilangnya saja.", "visual": { "jenis": "teks", "isi": "3/8 < 5/8" } },
+              { "id": "beda", "nama": "Penyebut beda", "ikon": "🟩", "catatan": "Samakan penyebut dengan pecahan senilai.", "suara": "Satu per dua dan tiga per lima berpenyebut beda. Samakan menjadi lima per sepuluh dan enam per sepuluh.", "visual": { "jenis": "teks", "isi": "5/10 < 6/10" } }
+            ],
+            "kesimpulan": "Samakan penyebut dulu, lalu bandingkan pembilang."
+          },
+          {
+            "id": "a-campuran-info",
+            "tipe": "buka",
+            "judul": "Campuran ke pecahan biasa",
+            "ide": "Hitung semua bagiannya.",
+            "suara": "Ada tiga langkah mengubah campuran. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "bulat", "label": "Bulat", "ikon": "2️⃣", "isi": "Dua bulat berisi delapan bagian.", "suara": "Tiap bulat dibagi empat bagian. Dua bulat berisi delapan bagian.", "visual": { "jenis": "teks", "isi": "2 × 4 = 8" } },
+              { "id": "pecahan", "label": "Pecahan", "ikon": "🧩", "isi": "Masih ada tiga bagian pecahan.", "suara": "Delapan bagian dari bulatnya, lalu tiga bagian pecahannya, jadi sebelas bagian.", "visual": { "jenis": "teks", "isi": "8 dan 3 bagian" } },
+              { "id": "hasil", "label": "Hasil", "ikon": "✅", "isi": "Penyebutnya tetap empat.", "suara": "Dua dan tiga per empat sama dengan sebelas per empat.", "visual": { "jenis": "teks", "isi": "2 3/4 = 11/4" } }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
