@@ -118,6 +118,98 @@
           }
         ]
       }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Rumus Luas",
+          "ikon": "📐",
+          "suara": "Ini peta rumus luas. Kita belajar alas dikali tinggi, tinggi yang tegak lurus, bangun yang luasnya setengah, dan trapesium. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "kali",
+            "judul": "Alas kali tinggi",
+            "ikon": "✖️",
+            "ringkas": "Persegi panjang, persegi, jajargenjang.",
+            "suara": "Alas kali tinggi. Luas persegi panjang, persegi, dan jajargenjang sama dengan alas dikali tinggi. Jajargenjang digeser menjadi persegi panjang."
+          },
+          {
+            "id": "tegak",
+            "judul": "Tinggi tegak lurus",
+            "ikon": "📏",
+            "ringkas": "Tinggi bukan sisi miring.",
+            "suara": "Tinggi tegak lurus. Tinggi adalah garis yang tegak lurus alas. Sisi miring jajargenjang lebih panjang dan tidak dipakai untuk luas."
+          },
+          {
+            "id": "setengah",
+            "judul": "Setengah",
+            "ikon": "➗",
+            "ringkas": "Dua bangun sama menyusun persegi panjang.",
+            "suara": "Setengah. Dua segitiga yang sama menyusun persegi panjang. Karena itu luas segitiga setengah dari alas dikali tinggi. Belah ketupat dan layang-layang setengah dari kedua diagonal dikali."
+          },
+          {
+            "id": "trapesium",
+            "judul": "Trapesium",
+            "ikon": "📐",
+            "ringkas": "Setengah jumlah sisi sejajar kali tinggi.",
+            "suara": "Trapesium. Dua trapesium yang sama menyusun jajargenjang. Luas satu trapesium setengah dikali jumlah sisi sejajar dikali tinggi."
+          }
+        ],
+        "kartu": [
+          { "id": "b-pp", "teks": "5 × 2 = 10 cm²", "ikon": "▭", "cabang": "kali", "petunjuk": "Alas kali tinggi itu soal alas kali tinggi. Coba cabang lain." },
+          { "id": "b-jajar", "teks": "Jajargenjang digeser jadi persegi panjang", "ikon": "▱", "cabang": "kali", "petunjuk": "Menggeser jajargenjang itu soal alas kali tinggi. Coba cabang lain." },
+          { "id": "b-garis", "teks": "Garis tegak lurus alas", "ikon": "📏", "cabang": "tegak", "petunjuk": "Garis tegak lurus itu soal tinggi tegak lurus. Coba cabang lain." },
+          { "id": "b-miring", "teks": "Sisi miring tidak dikali alas", "ikon": "🚫", "cabang": "tegak", "petunjuk": "Sisi miring yang tidak dipakai itu soal tinggi tegak lurus. Coba cabang lain." },
+          { "id": "b-segitiga", "teks": "½ × 6 × 4 = 12 cm²", "ikon": "🔺", "cabang": "setengah", "petunjuk": "Setengah alas kali tinggi itu soal setengah. Coba cabang lain." },
+          { "id": "b-dua", "teks": "Dua segitiga membentuk persegi panjang", "ikon": "🔻", "cabang": "setengah", "petunjuk": "Dua bangun sama itu soal setengah. Coba cabang lain." },
+          { "id": "b-trap", "teks": "½ × (5 + 3) × 4 = 16 cm²", "ikon": "📐", "cabang": "trapesium", "petunjuk": "Jumlah sisi sejajar itu soal trapesium. Coba cabang lain." },
+          { "id": "b-sejajar", "teks": "Jumlahkan dua sisi sejajar", "ikon": "➕", "cabang": "trapesium", "petunjuk": "Dua sisi sejajar itu soal trapesium. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Rumus Luas Bangun",
+        "suara": "Ini tiga panel tentang rumus luas. Ketuk kotaknya untuk membuka, lalu lihat alas kali tinggi, tinggi dan sisi miring, serta bangun yang luasnya setengah.",
+        "panel": [
+          {
+            "id": "b-kali-info",
+            "tipe": "buka",
+            "judul": "Alas kali tinggi",
+            "ide": "Tiga bangun, satu rumus.",
+            "suara": "Ada tiga bangun yang luasnya alas dikali tinggi. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "pp", "label": "Persegi panjang", "ikon": "▭", "isi": "Lima kali dua.", "suara": "Persegi panjang beralas lima dan tinggi dua. Luasnya lima dikali dua sama dengan sepuluh sentimeter persegi.", "visual": { "jenis": "teks", "isi": "5 × 2 = 10 cm²" } },
+              { "id": "persegi", "label": "Persegi", "ikon": "◼️", "isi": "Sisi kali sisi.", "suara": "Persegi bersisi empat. Luasnya empat dikali empat sama dengan enam belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "4 × 4 = 16 cm²" } },
+              { "id": "jajar", "label": "Jajargenjang", "ikon": "▱", "isi": "Digeser jadi persegi panjang.", "suara": "Jajargenjang beralas delapan dan tinggi tiga. Luasnya delapan dikali tiga sama dengan dua puluh empat sentimeter persegi.", "visual": { "jenis": "teks", "isi": "8 × 3 = 24 cm²" } }
+            ]
+          },
+          {
+            "id": "b-tinggi-info",
+            "tipe": "banding",
+            "judul": "Tinggi atau sisi miring",
+            "ide": "Pakai tinggi yang tegak lurus.",
+            "suara": "Lihat dua pilihan untuk jajargenjang beralas delapan, tinggi tiga, dan sisi miring lima.",
+            "sisi": [
+              { "id": "tinggi", "nama": "Pakai tinggi", "ikon": "✅", "catatan": "Tegak lurus alas.", "suara": "Dengan tinggi tiga, luasnya delapan dikali tiga sama dengan dua puluh empat sentimeter persegi. Ini benar.", "visual": { "jenis": "teks", "isi": "24 cm²" } },
+              { "id": "miring", "nama": "Pakai sisi miring", "ikon": "❌", "catatan": "Bukan tinggi.", "suara": "Dengan sisi miring lima, hasilnya empat puluh. Ini salah, karena sisi miring bukan tinggi.", "visual": { "jenis": "teks", "isi": "40 cm²" } }
+            ],
+            "kesimpulan": "Yang dikali alas adalah tinggi."
+          },
+          {
+            "id": "b-setengah-info",
+            "tipe": "buka",
+            "judul": "Luasnya setengah",
+            "ide": "Segitiga, trapesium, belah ketupat.",
+            "suara": "Ada tiga bangun yang luasnya memakai setengah. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "segitiga", "label": "Segitiga", "ikon": "🔺", "isi": "Setengah alas kali tinggi.", "suara": "Segitiga beralas enam dan tinggi empat. Luasnya setengah dikali enam dikali empat sama dengan dua belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "½ × 6 × 4 = 12 cm²" } },
+              { "id": "trap", "label": "Trapesium", "ikon": "📐", "isi": "Setengah jumlah sisi sejajar kali tinggi.", "suara": "Trapesium dengan sisi sejajar lima dan tiga, tinggi empat. Luasnya setengah dikali delapan dikali empat sama dengan enam belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "½ × (5 + 3) × 4 = 16 cm²" } },
+              { "id": "belah", "label": "Belah ketupat", "ikon": "🔶", "isi": "Setengah diagonal kali diagonal.", "suara": "Belah ketupat dengan diagonal enam dan empat. Luasnya setengah dikali enam dikali empat sama dengan dua belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "½ × 6 × 4 = 12 cm²" } }
+            ]
+          }
+        ]
+      }
     }
   }
 }

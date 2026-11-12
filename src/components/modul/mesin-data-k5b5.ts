@@ -8,6 +8,11 @@
  *    Satuan: luas ditulis dengan satuan persegi (pengecoh: satuan panjang, dan jumlah panjang dengan satuan persegi).
  *    Potong: luas setelah petak dipindah tetap sama (pengecoh: berkurang atau bertambah sebanyak petak yang dipindah).
  * Data dari Buku Siswa Kelas V Bab 5 Sub-Bab A (ubin lantai, Alun-Alun, cara Yohana).
+ *  - MESIN_RUMUS (B): Dasar → Setengah → Trapesium → Tinggi   (kasus Petak Kebun, Papan Bendera, Kolam Hias)
+ *    Dasar    : alas dikali tinggi (pengecoh: jumlah ukuran dan dua kali jumlah ukuran).
+ *    Setengah : setengah persegi panjang (pengecoh: persegi panjang utuh, dan jumlah dua ukuran).
+ *    Trapesium: setengah jumlah sisi sejajar kali tinggi (pengecoh: tanpa setengah, dan jumlah semua ukuran).
+ *    Tinggi   : jajargenjang dengan tinggi tegak lurus (pengecoh: sisi miring dikali alas, dan alas ditambah tinggi).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b5.mjs.
  */
 import type { DefMesin, KasusMesin, LangkahMesin, StasiunDef } from "./mesin-bertahap-k3b1";
@@ -120,4 +125,100 @@ export const MESIN_PETAK: DefMesin = {
   kasus: KASUS_PETAK.map(kasusMesinPetak),
 };
 
-export const SEMUA_MESIN_K5B5 = [MESIN_PETAK];
+/* ------------------------------ B: Mesin Rumus ------------------------------ */
+
+/**
+ * dasar: persegi panjang atau persegi. setengah: segitiga (alas dan tinggi) atau belah ketupat dan layang-layang (dua
+ * diagonal). trap: dua sisi sejajar dan tinggi. tinggi: jajargenjang beralas alas, tegak lurus setinggi t, sisi miring m.
+ */
+export type KasusRumus = {
+  id: string;
+  nama: string;
+  konteks: string;
+  dasar: { bentuk: "persegi panjang" | "persegi"; p: number; l: number };
+  setengah: { bangun: "segitiga" | "belah ketupat" | "layang-layang"; a: number; t: number };
+  trap: { a: number; b: number; t: number };
+  tinggi: { alas: number; t: number; m: number };
+};
+export const KASUS_RUMUS: KasusRumus[] = [
+  { id: "kebun", nama: "Petak Kebun", konteks: "Pak Tani membagi kebunnya menjadi beberapa petak", dasar: { bentuk: "persegi panjang", p: 5, l: 2 }, setengah: { bangun: "segitiga", a: 6, t: 4 }, trap: { a: 5, b: 3, t: 4 }, tinggi: { alas: 6, t: 4, m: 5 } },
+  { id: "bendera", nama: "Papan Bendera", konteks: "Komang membuat papan bendera dari beberapa bentuk", dasar: { bentuk: "persegi panjang", p: 8, l: 3 }, setengah: { bangun: "belah ketupat", a: 10, t: 4 }, trap: { a: 6, b: 4, t: 3 }, tinggi: { alas: 8, t: 3, m: 5 } },
+  { id: "kolam", nama: "Kolam Hias", konteks: "Yohana menggambar denah kolam hias di taman", dasar: { bentuk: "persegi", p: 6, l: 6 }, setengah: { bangun: "layang-layang", a: 8, t: 6 }, trap: { a: 7, b: 5, t: 2 }, tinggi: { alas: 9, t: 2, m: 4 } },
+];
+
+export const STASIUN_RUMUS: StasiunDef[] = [
+  { id: "dasar", nama: "Dasar", ikon: "✖️" },
+  { id: "setengah", nama: "Setengah", ikon: "➗" },
+  { id: "trapesium", nama: "Trapesium", ikon: "📐" },
+  { id: "tinggi", nama: "Tinggi", ikon: "📏" },
+];
+
+/** Luas persegi panjang dan jajargenjang: alas dikali tinggi, dihitung dengan penjumlahan berulang. */
+export function luasAlasTinggi(alas: number, t: number): number {
+  let n = 0;
+  for (let i = 0; i < t; i += 1) n += alas;
+  return n;
+}
+/** Luas bangun yang setengah dari persegi panjang. Hanya dipakai bila hasil kalinya genap. */
+export function luasSetengahMesin(a: number, t: number): number {
+  const penuh = luasAlasTinggi(a, t);
+  return penuh % 2 === 0 ? penuh / 2 : NaN;
+}
+
+export function kasusMesinRumus(c: KasusRumus, idx: number): KasusMesin {
+  const dasar = luasAlasTinggi(c.dasar.p, c.dasar.l);
+  const sSet = luasSetengahMesin(c.setengah.a, c.setengah.t);
+  const sPenuh = luasAlasTinggi(c.setengah.a, c.setengah.t);
+  const trapPenuh = luasAlasTinggi(c.trap.a + c.trap.b, c.trap.t);
+  const trapLuas = trapPenuh / 2;
+  const jajar = luasAlasTinggi(c.tinggi.alas, c.tinggi.t);
+  const ukuranSetengah = c.setengah.bangun === "segitiga" ? `alas ${c.setengah.a} cm dan tinggi ${c.setengah.t} cm` : `diagonal ${c.setengah.a} cm dan ${c.setengah.t} cm`;
+  const bentukDasar = c.dasar.bentuk === "persegi" ? `persegi dengan sisi ${c.dasar.p} cm` : `persegi panjang dengan alas ${c.dasar.p} cm dan tinggi ${c.dasar.l} cm`;
+  const cm2 = (n: number) => `${n} cm²`;
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "dasar",
+      tanya: `${c.konteks}. Satu petak berbentuk ${bentukDasar}. Luasnya adalah …`,
+      opsi: susunOpsi(cm2(dasar), pengecoh(dasar, [c.dasar.p + c.dasar.l, 2 * (c.dasar.p + c.dasar.l)]).map(cm2), idx),
+      benar: cm2(dasar),
+      petunjuk: `Luas persegi panjang dan persegi sama dengan alas dikali tinggi, yaitu ${c.dasar.p} × ${c.dasar.l}. Menjumlahkan ukuran tidak memberi luas.`,
+    },
+    {
+      stasiun: "setengah",
+      tanya: `Sebuah ${c.setengah.bangun} berukuran ${ukuranSetengah}. Dua bangun yang sama menyusun persegi panjang ${c.setengah.a} cm kali ${c.setengah.t} cm. Luas satu ${c.setengah.bangun} adalah …`,
+      opsi: susunOpsi(cm2(sSet), pengecoh(sSet, [sPenuh, c.setengah.a + c.setengah.t]).map(cm2), idx + 1),
+      benar: cm2(sSet),
+      petunjuk: `Persegi panjangnya ${sPenuh} cm². Satu bangun hanya setengahnya, yaitu ½ × ${c.setengah.a} × ${c.setengah.t}. Jangan lupa setengah.`,
+    },
+    {
+      stasiun: "trapesium",
+      tanya: `Sebuah trapesium punya sisi sejajar ${c.trap.a} cm dan ${c.trap.b} cm, tingginya ${c.trap.t} cm. Luasnya adalah …`,
+      opsi: susunOpsi(cm2(trapLuas), pengecoh(trapLuas, [trapPenuh, c.trap.a + c.trap.b + c.trap.t]).map(cm2), idx + 2),
+      benar: cm2(trapLuas),
+      petunjuk: `Jumlahkan dua sisi sejajar dulu: ${c.trap.a} + ${c.trap.b}. Lalu kalikan tinggi dan ambil setengahnya, ½ × (${c.trap.a} + ${c.trap.b}) × ${c.trap.t}.`,
+    },
+    {
+      stasiun: "tinggi",
+      tanya: `Sebuah jajargenjang beralas ${c.tinggi.alas} cm. Tingginya, garis yang tegak lurus alas, ${c.tinggi.t} cm, dan sisi miringnya ${c.tinggi.m} cm. Luasnya adalah …`,
+      opsi: susunOpsi(cm2(jajar), pengecoh(jajar, [c.tinggi.alas * c.tinggi.m, c.tinggi.alas + c.tinggi.t]).map(cm2), idx + 3),
+      benar: cm2(jajar),
+      petunjuk: `Yang dikalikan dengan alas adalah tinggi yang tegak lurus, yaitu ${c.tinggi.t}, bukan sisi miring ${c.tinggi.m}.`,
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `Luas ${c.dasar.bentuk} ${c.dasar.p} dan ${c.dasar.l} adalah ${dasar} cm². Satu ${c.setengah.bangun} ${c.setengah.a} dan ${c.setengah.t} luasnya ${sSet} cm². Trapesium ${c.trap.a} dan ${c.trap.b} tinggi ${c.trap.t} luasnya ${trapLuas} cm². Jajargenjang alas ${c.tinggi.alas} tinggi ${c.tinggi.t} luasnya ${jajar} cm², bukan memakai sisi miring.`,
+    langkah,
+  };
+}
+
+export const MESIN_RUMUS: DefMesin = {
+  id: "mesin-rumus-k5b5",
+  judul: "Mesin Rumus",
+  selesaiId: "mesin-rumus",
+  stasiun: STASIUN_RUMUS,
+  kasus: KASUS_RUMUS.map(kasusMesinRumus),
+};
+
+export const SEMUA_MESIN_K5B5 = [MESIN_PETAK, MESIN_RUMUS];

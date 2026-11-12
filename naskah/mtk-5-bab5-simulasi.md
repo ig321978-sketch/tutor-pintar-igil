@@ -4,7 +4,7 @@ Bab: Luas Daerah Bangun Datar (`mtk-5-bab5`, `FASE_C`, kelas 5; kode data Materi
 
 Bab ini punya **empat sub-bab**: A (konsep luas daerah), B (luas daerah bangun datar, rumus), C (luas bangun gabungan), D (hubungan keliling dan luas). Dikerjakan dalam empat gelombang, satu sub-bab per gelombang. Gelombang A sampai C tidak didaftarkan di registri; gelombang D mendaftarkan bab dan menjadi pencapaian bab (skenario D menyentuh konsep A sampai D).
 
-**Status: Gelombang A (Sub-Bab A, Apakah Luas Daerah Itu?) selesai. B sampai D belum.**
+**Status: Gelombang A (Sub-Bab A, Apakah Luas Daerah Itu?) dan Gelombang B (Sub-Bab B, Luas Daerah Bangun Datar) selesai. C dan D belum.**
 
 Berkas Materi bab ini tidak diubah (`SubBabK5B5A–D.tsx`, `naskah-k5b5.ts`, `data-k5b5.ts`, `paket-k5b5.ts`, dan lainnya). Pengeja suara memakai `ejaK5B5` (berkas baru `eja-k5b5.ts`) lewat prop `eja` mesin dan di lab. `ejaK5B4` tidak dipakai karena tidak mengeja ² dan ½.
 
@@ -18,17 +18,18 @@ Berkas Materi bab ini tidak diubah (`SubBabK5B5A–D.tsx`, `naskah-k5b5.ts`, `da
 | `½ × 6 × 4 = 12` | setengah dikali enam dikali empat sama dengan dua belas |
 | `(5 + 3) × 4 ÷ 2` | kurung buka lima ditambah tiga kurung tutup dikali empat dibagi dua |
 
-Kata bilangan sama dengan `kataK5B1` (diuji 0 sampai 1200 dan 999.999). Tokoh skenario dari naskah: Lukas dan Yohana (A).
+Kata bilangan sama dengan `kataK5B1` (diuji 0 sampai 1200 dan 999.999). Tokoh skenario dari naskah: Lukas dan Yohana (A), Komang (B).
 
 ## Alat
 
 | Sub-bab | Lab (tampilan) | Berkas | Mesin | Skenario |
 |---------|----------------|--------|-------|----------|
 | A | Lab Petak (Tutup, Baris, Potong) | `SimulasiLabPetakK5B5.tsx` + `lab-petak-k5b5a.ts` | Mesin Petak | Ubin Alun-Alun (7 adegan) |
+| B | Lab Rumus (Kali, Setengah, Trapesium) | `SimulasiLabRumusK5B5.tsx` + `lab-rumus-k5b5b.ts` | Mesin Rumus | Taman Bentuk-Bentuk (7 adegan) |
 
-Mesin: `mesin-data-k5b5.ts`, dijalankan `SimulasiMesinBertahapK3.tsx` dan `mesin-bertahap-k3b1.ts`. Skenario: `skenario-k5b5.ts`, dijalankan `SimulasiSkenario.tsx`. Model gambar: `model-petak-k5b5.tsx` (kisi petak polos yang bisa diketuk, susunan baris dan kolom, bangun tangga dengan garis putus pembatas persegi panjang tujuan). Data ringkas Mind-Map dan Infografis: `src/data/kelas5-bab5-ringkas.json`. Uji: `scripts/uji-lab-k5b5.mjs`.
+Mesin: `mesin-data-k5b5.ts`, dijalankan `SimulasiMesinBertahapK3.tsx` dan `mesin-bertahap-k3b1.ts`. Skenario: `skenario-k5b5.ts`, dijalankan `SimulasiSkenario.tsx`. Model gambar: `model-petak-k5b5.tsx` (A: kisi petak polos yang bisa diketuk, susunan baris dan kolom, bangun tangga dengan garis putus pembatas persegi panjang tujuan) dan `model-rumus-k5b5.tsx` (B: persegi panjang, persegi, jajargenjang dengan garis tinggi putus-putus, segitiga, belah ketupat, layang-layang dengan persegi panjang putus-putus, trapesium dengan trapesium kedua yang diputar menjadi jajargenjang). Data ringkas Mind-Map dan Infografis: `src/data/kelas5-bab5-ringkas.json`. Uji: `scripts/uji-lab-k5b5.mjs`.
 
-Metode luar buku yang dianyam. A: Unit Square Covering (Tutup: ketuk petak satuan sampai daerah tertutup rapat tanpa celah, lalu pilih luasnya dengan satuan cm² atau m²), Array Model (Baris: atur baris dan kolom, banyak petak sama dengan petak tiap baris dikali banyak baris), dan Area Conservation, cara Yohana (Potong: petak yang menonjol di luar garis putus dipindah ke lubang di dalamnya; luas tetap).
+Metode luar buku yang dianyam. A: Unit Square Covering (Tutup: ketuk petak satuan sampai daerah tertutup rapat tanpa celah, lalu pilih luasnya dengan satuan cm² atau m²), Array Model (Baris: atur baris dan kolom, banyak petak sama dengan petak tiap baris dikali banyak baris), dan Area Conservation, cara Yohana (Potong: petak yang menonjol di luar garis putus dipindah ke lubang di dalamnya; luas tetap). B: Base × Height Unification dan Shear Principle (Kali: luas persegi panjang, persegi, dan jajargenjang adalah alas dikali tinggi; pada jajargenjang yang dipakai tinggi tegak lurus, bukan sisi miring), Dissection Method (Setengah: dua segitiga, belah ketupat, atau layang-layang yang sama menyusun persegi panjang, jadi luas satu bangun setengahnya), dan dua trapesium yang disusun menjadi jajargenjang beralas jumlah dua sisi sejajar (Trapesium).
 
 ## Pola hibrida
 
@@ -37,21 +38,26 @@ Satu laboratorium per sub-bab, tiga alat. Gerbang LANJUTKAN KE CONCRETE aktif bi
 | Sub-bab | Misi wajib dari lab | Tantangan bebas |
 |---------|---------------------|-----------------|
 | A | Tutup: daerah 5 dan 2 (10 cm²); Tutup: daerah 3 dan 3 (9 m²); Baris: 4 baris 2 kolom (8 petak); Baris: 6 baris 3 kolom (18 petak); Potong: tangga tiga tingkat menjadi 2 baris 3 kolom (luas tetap 6) | Tutup: daerah 4 dan 2 (8 cm²); Baris: 5 baris 4 kolom (20 petak); Potong: tangga empat tingkat menjadi 2 baris 5 kolom (luas tetap 10) |
+| B | Kali: persegi panjang 5 dan 2 (10 cm²); Kali: persegi sisi 4 (16 cm²); Kali: jajargenjang alas 8, pilih tinggi 3 bukan sisi miring 5 (24 cm²); Setengah: segitiga alas 6 tinggi 4 (12 cm²); Trapesium: sisi sejajar 5 dan 3, tinggi 4 (16 cm²) | Setengah: belah ketupat diagonal 6 dan 4 (12 cm²); Setengah: layang-layang diagonal 8 dan 6 (24 cm²); Kali: jajargenjang alas 6, tinggi 4, sisi miring 5 (24 cm²) |
 
-Near-miss tidak memenuhi misi: menutup dengan celah (tiap petak yang dilewatkan diuji), menutup tetapi belum diperiksa, memilih luas sebelum rapat, membuka petak setelah diperiksa, memilih jumlah baris dan kolom atau jumlah tepi sebagai luas, susunan Baris yang tidak sesuai tugas (termasuk tertukar) walau banyak petaknya benar, baris dikali baris, mengambil petak yang sudah pas, menaruh di luar garis putus atau di tempat terisi, dan pemindahan yang belum selesai.
+Near-miss tidak memenuhi misi A: menutup dengan celah (tiap petak yang dilewatkan diuji), menutup tetapi belum diperiksa, memilih luas sebelum rapat, membuka petak setelah diperiksa, memilih jumlah baris dan kolom atau jumlah tepi sebagai luas, susunan Baris yang tidak sesuai tugas (termasuk tertukar) walau banyak petaknya benar, baris dikali baris, mengambil petak yang sudah pas, menaruh di luar garis putus atau di tempat terisi, dan pemindahan yang belum selesai.
+
+Near-miss tidak memenuhi misi B: luas dipilih sebelum memilih tinggi pada jajargenjang, sisi miring dipilih sebagai tinggi, sisi miring dikali alas (40), alas ditambah tinggi, Setengah tanpa menggandakan dulu, lupa setengah (luas persegi panjang utuh), jumlah dua ukuran, Trapesium tanpa menyusun jajargenjang, tanpa memilih alas, alas satu sisi sejajar saja (memilih alas yang salah mencabut alas yang benar), jajargenjang utuh tanpa setengah, dan jumlah semua ukuran. Trapesium 7 dan 5 tinggi 3 hanya latihan, bukan misi.
 
 ## Mesin berstasiun
 
 | Mesin | Stasiun | Kasus |
 |-------|---------|-------|
 | Mesin Petak (A) | Tutup → Baris → Satuan → Potong | Alun-Alun (tutup 5 petak tiap baris, 2 baris = 10; 3 baris 4 kolom = 12; 6 dan 2 ubin = 12 m²; kolom 2, 3, 1 jadi 2 baris 3 kolom, luas 6), Ubin Lukas (3 dan 3 = 9; 2 baris 5 kolom = 10; 4 dan 3 ubin = 12 m²; kolom 4, 2, 3 jadi 3 baris 3 kolom, luas 9), Cara Yohana (4 dan 2 = 8; 5 baris 3 kolom = 15; 3 dan 2 ubin = 6 cm²; kolom 1, 2, 3, 4 jadi 2 baris 5 kolom, luas 10) |
+| Mesin Rumus (B) | Dasar → Setengah → Trapesium → Tinggi | Petak Kebun (persegi panjang 5 dan 2 = 10; segitiga 6 dan 4 = 12; trapesium 5, 3, tinggi 4 = 16; jajargenjang alas 6 tinggi 4 sisi miring 5 = 24), Papan Bendera (8 dan 3 = 24; belah ketupat diagonal 10 dan 4 = 20; trapesium 6, 4, tinggi 3 = 15; jajargenjang alas 8 tinggi 3 sisi miring 5 = 24), Kolam Hias (persegi sisi 6 = 36; layang-layang diagonal 8 dan 6 = 24; trapesium 7, 5, tinggi 2 = 12; jajargenjang alas 9 tinggi 2 sisi miring 4 = 18) |
 
-Data ditulis di pertanyaan (mesin tanpa gambar). Pengecoh dihitung: petak satu baris ditambah satu kolom dan jumlah tepi (Tutup); baris ditambah kolom dan baris dikali baris (Baris); satuan panjang dan jumlah panjang dengan satuan persegi (Satuan); luas berkurang atau bertambah sebanyak petak yang dipindah (Potong). Letak kunci bervariasi.
+Data ditulis di pertanyaan (mesin tanpa gambar). Pengecoh Mesin Rumus dihitung: jumlah ukuran (Dasar); persegi panjang utuh tanpa setengah dan jumlah dua ukuran (Setengah); jajargenjang utuh tanpa setengah dan jumlah semua ukuran (Trapesium); sisi miring dikali alas dan alas ditambah tinggi (Tinggi). Pengecoh Mesin Petak dihitung: petak satu baris ditambah satu kolom dan jumlah tepi (Tutup); baris ditambah kolom dan baris dikali baris (Baris); satuan panjang dan jumlah panjang dengan satuan persegi (Satuan); luas berkurang atau bertambah sebanyak petak yang dipindah (Potong). Letak kunci bervariasi.
 
 ## Skenario
 
 | Skenario | Adegan | Isi |
 |----------|--------|-----|
+| Taman Bentuk-Bentuk (B) | 7 | Narasi Komang; tinggi jajargenjang alas 8 m adalah garis tegak lurus 3 m, bukan sisi miring 5 m (pengecoh: sisi miring, alas lagi); persegi sisi 4 m = 16 m² dan jajargenjang 8 dan 3 = 24 m² (pengecoh 40 dan 11); ketuk 12 stik untuk segitiga 6 dan 4 (½ × 6 × 4); isi 16 stik untuk trapesium 5 dan 3 tinggi 4; jawaban 24 m² untuk segitiga lupa setengah (pengecoh: ditambah tinggi, dikali sisi miring); penutup |
 | Ubin Alun-Alun (A) | 7 | Narasi Lukas; arti luas daerah (pengecoh: panjang tepi dan banyak sudut); kamar 5 m dan 2 m = 10 ubin dan persegi sisi 3 m = 9 ubin; ketuk 12 stik untuk lantai pos jaga 4 m dan 3 m; isi 18 stik untuk serambi 6 m dan 3 m; cara Yohana, luas tetap enam petak (pengecoh: bertambah atau berkurang); penutup |
 
 ## Kejujuran konsep
@@ -61,4 +67,8 @@ Data ditulis di pertanyaan (mesin tanpa gambar). Pengecoh dihitung: petak satu b
 - Potong: pemindahan hanya satu petak sekali (ambil petak yang menonjol, taruh di lubang), luas selalu tetap (diuji pada tiap langkah dan pada fuzz), selesai bila tidak ada petak yang menonjol. Banyak petak menonjol dan lubang dihitung mandiri dengan himpunan petak kisi yang dibangun dari bawah.
 - Hanya bilangan bulat. Mesin, skenario, dan ringkas dihitung ulang mandiri.
 - Konsep sub-bab berikutnya tidak dipakai di Sub-Bab A (diuji pada misi, mesin, skenario, data ringkas, kode tampilan, model, logika, pembungkus, pesan lab hasil fuzz, dan ucapan): tanpa setengah dan lambang ½, segitiga, jajargenjang, trapesium, belah ketupat, layang-layang, alas, tinggi, diagonal, rumus, gabungan, uraikan, tumpang tindih, silang, kawat, dan keliling. Perkalian baris dikali kolom boleh karena itu Array Model.
+- Kali: pada jajargenjang, luas baru diterima setelah tinggi yang tegak lurus dipilih; memilih sisi miring sebagai tinggi menolak luas yang benar. Pada persegi panjang dan persegi, tinggi sudah diketahui.
+- Setengah: luas satu bangun hanya diterima setelah dua bangun disusun menjadi persegi panjang; hasil kali selalu genap (diuji), jadi tanpa pecahan. Trapesium: urutan susun, pilih alas (jumlah dua sisi sejajar), lalu luas.
+- Luas B dihitung mandiri dengan rumus tali sepatu dari titik sudut (bukan alas kali tinggi atau setengahnya seperti di kode), dan data dipilih agar semua pengecoh salah.
+- Konsep sub-bab berikutnya tidak dipakai di Sub-Bab B (diuji pada misi, mesin, skenario, data ringkas, kode tampilan, model, logika, pesan lab hasil fuzz, dan ucapan): tanpa gabungan, uraikan, tumpang tindih, silang, kawat, dan keliling.
 - Fuzz 20.000 aksi: batas terjaga, luas tetap, riwayat tidak dicabut dan hanya bila tercapai, semua pesan bisa dieja. Uji mutasi pada logika lab dan mesin: satu angka diubah, uji gagal.
