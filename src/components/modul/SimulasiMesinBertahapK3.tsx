@@ -21,12 +21,15 @@ export default function SimulasiMesinBertahapK3({
   coba,
   speakGuru,
   onTuntas,
+  eja = ejaK3,
 }: {
   def: DefMesin;
   /** Tiga langkah selidik "Coba ini!" khusus mesin ini. */
   coba: string[];
   speakGuru: (t: string) => void;
   onTuntas: (id: string) => void;
+  /** Pengeja suara. Bawaan ejaK3 (bilangan sampai 1.000); bab dengan bilangan lebih besar memberi pengejanya sendiri. */
+  eja?: (t: string) => string;
 }) {
   const [x, setX] = useState<StateMesin>(() => awalMesin(def));
   const kasus = kasusAktif(x);
@@ -50,7 +53,7 @@ export default function SimulasiMesinBertahapK3({
           <h3 className="text-lg font-black text-[#1C01A5]">{def.judul}</h3>
           <p className="text-sm font-bold text-[#1C01A5]/80">Jawab pertanyaan di tiap stasiun, berurutan, untuk memeriksa setiap kasus.</p>
         </div>
-        <TombolSuaraGuru label="Dengarkan pertanyaannya" onClick={() => speakGuru(ejaK3(suara))} />
+        <TombolSuaraGuru label="Dengarkan pertanyaannya" onClick={() => speakGuru(eja(suara))} />
       </div>
 
       <div className={`${KARTU} space-y-3`}>
@@ -112,7 +115,7 @@ export default function SimulasiMesinBertahapK3({
 
       <RiwayatMesin riwayat={x.riwayat} ditolak={x.ditolak} />
 
-      <CobaIni judul="Coba ini!" onDengar={() => speakGuru(`Coba ini. ${coba.map((c, i) => `${["Satu", "Dua", "Tiga"][i]}, ${ejaK3(c)}`).join(" ")}`)} langkah={coba} />
+      <CobaIni judul="Coba ini!" onDengar={() => speakGuru(`Coba ini. ${coba.map((c, i) => `${["Satu", "Dua", "Tiga"][i]}, ${eja(c)}`).join(" ")}`)} langkah={coba} />
     </div>
   );
 }

@@ -1,0 +1,109 @@
+{
+  "chapter_id": "mtk-5-bab1",
+  "phase_code": "FASE_C",
+  "grade": 5,
+  "subject": "Matematika",
+  "title": "Bilangan Cacah sampai 100.000",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Nilai Tempat",
+          "ikon": "🔢",
+          "suara": "Ini peta nilai tempat. Kita belajar tabel enam tempat, nilai digit, membaca per kelompok tiga digit, dan nol penjaga. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "tabel",
+            "judul": "Tabel tempat",
+            "ikon": "📋",
+            "ringkas": "Enam tempat dari satuan sampai ratus ribuan.",
+            "suara": "Tabel nilai tempat. Dari kanan: satuan, puluhan, ratusan, ribuan, puluh ribuan, dan ratus ribuan."
+          },
+          {
+            "id": "nilai",
+            "judul": "Nilai digit",
+            "ikon": "💎",
+            "ringkas": "Nilai digit bergantung pada tempatnya.",
+            "suara": "Nilai digit. Digit tujuh di tempat ribuan bernilai tujuh ribu, bukan tujuh."
+          },
+          {
+            "id": "baca",
+            "judul": "Baca per periode",
+            "ikon": "🗣️",
+            "ringkas": "Kelompokkan tiga digit dari kanan.",
+            "suara": "Membaca bilangan besar. Kelompokkan tiga digit dari kanan. Bagian kiri dibaca dengan kata ribu."
+          },
+          {
+            "id": "nol",
+            "judul": "Nol penjaga",
+            "ikon": "0️⃣",
+            "ringkas": "Nol menjaga tempat agar digit tidak bergeser.",
+            "suara": "Nol penjaga. Nol tetap ditulis supaya digit lain tidak bergeser tempat."
+          }
+        ],
+        "kartu": [
+          { "id": "a-enam", "teks": "Enam kolom tempat", "ikon": "📋", "cabang": "tabel", "petunjuk": "Banyak kolom itu soal tabel tempat. Coba cabang lain." },
+          { "id": "a-sepuluh", "teks": "Sepuluh satuan jadi satu puluhan", "ikon": "🧱", "cabang": "tabel", "petunjuk": "Tiap tempat sepuluh dari tempat kanannya. Itu soal tabel. Coba cabang lain." },
+          { "id": "a-tujuh-ribu", "teks": "7 di ribuan bernilai 7.000", "ikon": "💎", "cabang": "nilai", "petunjuk": "Nilai satu digit itu soal nilai digit. Coba cabang lain." },
+          { "id": "a-beda-tempat", "teks": "Digit sama, tempat beda, nilai beda", "ikon": "🔀", "cabang": "nilai", "petunjuk": "Nilai yang berubah menurut tempat itu soal nilai digit. Coba cabang lain." },
+          { "id": "a-tiga-digit", "teks": "Kelompok tiga digit", "ikon": "✂️", "cabang": "baca", "petunjuk": "Mengelompokkan digit itu cara membaca. Coba cabang lain." },
+          { "id": "a-kata-ribu", "teks": "Bagian kiri dibaca ribu", "ikon": "🗣️", "cabang": "baca", "petunjuk": "Kata ribu dipakai saat membaca. Coba cabang lain." },
+          { "id": "a-20040", "teks": "20.040 tetap ditulis nol", "ikon": "0️⃣", "cabang": "nol", "petunjuk": "Nol di tengah itu soal nol penjaga. Coba cabang lain." },
+          { "id": "a-geser", "teks": "Tanpa nol, digit bergeser", "ikon": "⚠️", "cabang": "nol", "petunjuk": "Digit yang bergeser itu soal nol penjaga. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Nilai Tempat",
+        "suara": "Ini tiga panel tentang nilai tempat. Ketuk kotaknya untuk membuka, lalu lihat digit yang sama di dua tempat.",
+        "panel": [
+          {
+            "id": "a-tempat-info",
+            "tipe": "buka",
+            "judul": "Tabel nilai tempat",
+            "ide": "Tiap tempat sepuluh dari tempat kanannya.",
+            "suara": "Ada tiga hal tentang tabel nilai tempat. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tabel",
+                "label": "Tempat",
+                "ikon": "📋",
+                "isi": "Nilai satu di tiap tempat.",
+                "suara": "Satu di ratus ribuan bernilai seratus ribu, di puluh ribuan sepuluh ribu, di ribuan seribu, di ratusan seratus.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Tempat", "Nilai"], "baris": [["ratus ribuan", 100000], ["puluh ribuan", 10000], ["ribuan", 1000], ["ratusan", 100]] }
+              },
+              { "id": "sepuluh", "label": "Sepuluh", "ikon": "🧱", "isi": "Sepuluh di satu tempat jadi satu di kirinya.", "suara": "Sepuluh satuan menjadi satu puluhan, sepuluh puluhan menjadi satu ratusan, dan seterusnya.", "visual": { "jenis": "teks", "isi": "10 satuan → 1 puluhan" } },
+              { "id": "contoh", "label": "Contoh", "ikon": "✍️", "isi": "Empat belas ribu lima ratus.", "suara": "Empat belas ribu lima ratus ditulis satu empat lima nol nol, dengan titik sesudah empat belas.", "visual": { "jenis": "teks", "isi": "14.500" } }
+            ]
+          },
+          {
+            "id": "a-nilai-info",
+            "tipe": "banding",
+            "judul": "Digit tujuh di dua tempat",
+            "ide": "Tempat menentukan nilai digit.",
+            "suara": "Lihat digit tujuh di dua tempat yang berbeda.",
+            "sisi": [
+              { "id": "ribuan", "nama": "Di ribuan", "ikon": "🟨", "catatan": "Tujuh ribuan bernilai tujuh ribu.", "suara": "Digit tujuh di tempat ribuan bernilai tujuh ribu.", "visual": { "jenis": "teks", "isi": "87.986 → 7.000" } },
+              { "id": "ratusan", "nama": "Di ratusan", "ikon": "🟩", "catatan": "Tujuh ratusan bernilai tujuh ratus.", "suara": "Digit tujuh di tempat ratusan bernilai tujuh ratus.", "visual": { "jenis": "teks", "isi": "25.786 → 700" } }
+            ],
+            "kesimpulan": "Digit sama, tempat beda, nilainya pun beda."
+          },
+          {
+            "id": "a-baca-info",
+            "tipe": "buka",
+            "judul": "Membaca bilangan besar",
+            "ide": "Baca per kelompok tiga digit.",
+            "suara": "Ada tiga langkah membaca bilangan besar. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "periode", "label": "Kelompok", "ikon": "✂️", "isi": "Pisah tiga digit dari kanan.", "suara": "Dua puluh enam ribu sembilan ratus tiga puluh dua dipisah menjadi dua puluh enam dan sembilan ratus tiga puluh dua.", "visual": { "jenis": "teks", "isi": "26 | 932" } },
+              { "id": "ribu", "label": "Kata ribu", "ikon": "🗣️", "isi": "Bagian kiri diberi kata ribu.", "suara": "Dua puluh enam ribu, lalu sembilan ratus tiga puluh dua.", "visual": { "jenis": "teks", "isi": "26 ribu 932" } },
+              { "id": "nol", "label": "Nol", "ikon": "0️⃣", "isi": "Nol tidak dibaca, tetapi tetap ditulis.", "suara": "Dua puluh ribu empat puluh. Nol di ribuan dan ratusan tidak dibaca, tetapi tetap ditulis.", "visual": { "jenis": "teks", "isi": "20.040" } }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
