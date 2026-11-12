@@ -1,0 +1,229 @@
+{
+  "chapter_id": "mtk-3-bab3",
+  "phase_code": "FASE_B",
+  "grade": 3,
+  "subject": "Matematika",
+  "title": "Pengukuran Panjang dan Berat",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": { "judul": "Mengukur Panjang", "ikon": "📏", "suara": "Ini peta mengukur panjang. Kita belajar mengukur benda dengan penggaris dan meteran, mulai dari angka nol, lalu membaca panjangnya. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "satuan-baku", "judul": "Satuan baku", "ikon": "📐", "ringkas": "Sentimeter dan meter sama untuk semua.", "suara": "Satuan baku. Jengkal tangan setiap orang berbeda, jadi hasil ukur bisa berbeda. Karena itu kita memakai satuan baku panjang, yaitu sentimeter dan meter. Hasilnya sama siapa pun yang mengukur." },
+          { "id": "mulai-nol", "judul": "Mulai dari nol", "ikon": "0️⃣", "ringkas": "Ujung benda tepat di angka nol.", "suara": "Mulai dari nol. Letakkan ujung benda tepat di angka nol pada penggaris. Kalau benda mulai dari angka lain, bacaan di ujung yang lain terlalu besar dan hasilnya keliru." },
+          { "id": "baca-panjang", "judul": "Baca panjang", "ikon": "🔍", "ringkas": "Angka di ujung yang lain.", "suara": "Baca panjang. Setelah ujung kiri di angka nol, angka di ujung benda yang lain adalah panjang benda. Bila ujung pensil di angka lima belas, panjang pensil lima belas sentimeter. Tulis dengan satuannya." },
+          { "id": "pilih-alat", "judul": "Pilih alat", "ikon": "🧰", "ringkas": "Penggaris pendek, meteran panjang.", "suara": "Pilih alat. Benda pendek sampai tiga puluh sentimeter diukur dengan penggaris. Benda yang lebih panjang, seperti pintu dan lemari, diukur dengan meteran. Timbangan bukan alat ukur panjang." }
+        ],
+        "kartu": [
+          { "id": "a-jengkal", "teks": "Jengkal tiap orang berbeda", "ikon": "🖐️", "cabang": "satuan-baku", "petunjuk": "Hasil yang berbeda-beda itu soal perlunya satuan baku. Coba cabang lain." },
+          { "id": "a-cm-m", "teks": "Satuan baku: cm dan m", "ikon": "📐", "cabang": "satuan-baku", "petunjuk": "Nama satuan baku panjang itu soal satuan baku. Coba cabang lain." },
+          { "id": "a-nol", "teks": "Ujung benda di angka 0", "ikon": "0️⃣", "cabang": "mulai-nol", "petunjuk": "Tempat meletakkan benda itu soal mulai dari nol. Coba cabang lain." },
+          { "id": "a-salah", "teks": "Mulai dari 3: bacaan keliru", "ikon": "⚠️", "cabang": "mulai-nol", "petunjuk": "Bacaan keliru karena tidak mulai dari nol. Itu soal mulai dari nol. Coba cabang lain." },
+          { "id": "a-15", "teks": "Ujung di 15: panjang 15 cm", "ikon": "🔍", "cabang": "baca-panjang", "petunjuk": "Membaca angka di ujung itu soal baca panjang. Coba cabang lain." },
+          { "id": "a-tulis", "teks": "Tulis hasilnya: 15 cm", "ikon": "✍️", "cabang": "baca-panjang", "petunjuk": "Menulis hasil dengan satuan itu soal baca panjang. Coba cabang lain." },
+          { "id": "a-pensil", "teks": "Pensil: penggaris", "ikon": "✏️", "cabang": "pilih-alat", "petunjuk": "Memilih alat untuk benda pendek itu soal pilih alat. Coba cabang lain." },
+          { "id": "a-pintu", "teks": "Pintu: meteran", "ikon": "🚪", "cabang": "pilih-alat", "petunjuk": "Memilih alat untuk benda panjang itu soal pilih alat. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengukur Panjang dengan Benar",
+        "suara": "Ini tiga panel tentang mengukur panjang. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-langkah", "tipe": "buka", "judul": "Tiga langkah mengukur", "ide": "Nol dulu, baru baca.",
+            "suara": "Ada tiga langkah mengukur panjang. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "letak", "label": "Letakkan", "ikon": "0️⃣", "isi": "Ujung kiri benda di angka nol.", "suara": "Langkah satu, letakkan ujung kiri benda tepat di angka nol pada penggaris.", "visual": { "jenis": "teks", "isi": "Ujung kiri → angka 0" } },
+              { "id": "baca", "label": "Baca", "ikon": "🔍", "isi": "Lihat angka di ujung kanan.", "suara": "Langkah dua, lihat angka di ujung benda yang lain. Angka itu adalah panjang benda.", "visual": { "jenis": "tabel-menurun", "judul": "Pensil", "kepala": ["Letak", "Angka"], "baris": [["Ujung kiri", 0], ["Ujung kanan", 15], ["Panjang", 15]] } },
+              { "id": "tulis", "label": "Tulis", "ikon": "✍️", "isi": "Tulis panjang dengan satuan.", "suara": "Langkah tiga, tulis hasilnya dengan satuan baku. Panjang pensil lima belas sentimeter, ditulis 15 cm.", "visual": { "jenis": "teks", "isi": "Panjang pensil: 15 cm" } }
+            ]
+          },
+          {
+            "id": "a-nol-banding", "tipe": "banding", "judul": "Dari nol atau bukan", "ide": "Mulai dari nol menjaga hasil.",
+            "suara": "Bandingkan pensil yang mulai dari angka nol dan yang mulai dari angka tiga.",
+            "sisi": [
+              { "id": "dari-nol", "nama": "Dari angka 0", "ikon": "✅", "catatan": "Ujung kanan di 15: panjang 15 cm.", "suara": "Pensil mulai dari angka nol. Ujung kanan di angka lima belas, jadi panjangnya lima belas sentimeter.", "visual": { "jenis": "teks", "isi": "0 → 15: panjang 15 cm" } },
+              { "id": "dari-tiga", "nama": "Dari angka 3", "ikon": "⚠️", "catatan": "Ujung kanan di 18, bukan panjangnya.", "suara": "Pensil yang sama mulai dari angka tiga. Ujung kanan di angka delapan belas. Angka itu bukan panjang pensil, karena benda tidak mulai dari nol.", "visual": { "jenis": "teks", "isi": "3 → 18: bacaan 18, keliru" } }
+            ],
+            "kesimpulan": "Mulai dari nol, supaya angka di ujung kanan adalah panjangnya."
+          },
+          {
+            "id": "a-alat", "tipe": "buka", "judul": "Penggaris atau meteran", "ide": "Pilih alat sesuai benda.",
+            "suara": "Alat ukur dipilih sesuai benda. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "penggaris", "label": "Penggaris", "ikon": "📏", "isi": "Benda pendek sampai 30 cm.", "suara": "Penggaris dipakai untuk benda pendek sampai tiga puluh sentimeter, seperti pensil dan penghapus.", "visual": { "jenis": "teks", "isi": "Pensil 15 cm → penggaris" } },
+              { "id": "meteran", "label": "Meteran", "ikon": "🧰", "isi": "Benda lebih panjang dari 30 cm.", "suara": "Meteran dipakai untuk benda yang lebih panjang dari penggaris, seperti meja, lemari, dan pintu.", "visual": { "jenis": "teks", "isi": "Pintu 200 cm → meteran" } },
+              { "id": "bukan", "label": "Bukan timbangan", "ikon": "⚖️", "isi": "Timbangan mengukur berat.", "suara": "Timbangan bukan alat ukur panjang. Timbangan dipakai untuk mengukur berat.", "visual": { "jenis": "teks", "isi": "Panjang: cm. Berat: g." } }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": { "judul": "Meter dan Sentimeter", "ikon": "📐", "suara": "Ini peta hubungan meter dan sentimeter. Kita belajar mengubah satuan, lalu menyambung dan memotong pita. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "seratus", "judul": "100 cm = 1 m", "ikon": "💯", "ringkas": "Seratus sentimeter sama dengan satu meter.", "suara": "Seratus sentimeter sama dengan satu meter. Pada meteran dari nol sampai seratus, panjangnya satu meter. Dua meter sama dengan dua ratus sentimeter. Ukuran bisa ditulis dengan meter dan sentimeter bersama, misalnya satu meter tujuh belas sentimeter." },
+          { "id": "m-ke-cm", "judul": "Meter ke cm", "ikon": "✖️", "ringkas": "Meter ke sentimeter: kalikan 100.", "suara": "Meter ke sentimeter. Untuk mengubah meter ke sentimeter, kalikan dengan seratus. Tiga meter sama dengan tiga kali seratus, yaitu tiga ratus sentimeter. Bilangannya makin besar karena sentimeter satuan yang lebih kecil." },
+          { "id": "cm-ke-m", "judul": "Cm ke meter", "ikon": "➗", "ringkas": "Sentimeter ke meter: bagi 100.", "suara": "Sentimeter ke meter. Untuk mengubah sentimeter ke meter, bagilah dengan seratus. Tujuh ratus sentimeter dibagi seratus sama dengan tujuh meter. Bilangannya makin kecil karena meter satuan yang lebih besar." },
+          { "id": "gabung", "judul": "Sambung dan potong", "ikon": "➕", "ringkas": "Satuan sama dihitung bersama.", "suara": "Sambung dan potong. Jumlahkan atau kurangkan meter dengan meter dan sentimeter dengan sentimeter. Bila sentimeter lebih dari seratus, tukar seratus sentimeter menjadi satu meter. Bila sentimeter kurang, pinjam satu meter yang sama dengan seratus sentimeter." }
+        ],
+        "kartu": [
+          { "id": "b-seratus", "teks": "1 m = 100 cm", "ikon": "💯", "cabang": "seratus", "petunjuk": "Hubungan dasar meter dan sentimeter itu soal seratus sentimeter. Coba cabang lain." },
+          { "id": "b-117", "teks": "1 m 17 cm = 117 cm", "ikon": "🧍", "cabang": "seratus", "petunjuk": "Menulis meter dan sentimeter bersama itu soal hubungan seratus sentimeter. Coba cabang lain." },
+          { "id": "b-300", "teks": "3 m = 3 × 100 = 300 cm", "ikon": "✖️", "cabang": "m-ke-cm", "petunjuk": "Mengalikan dengan 100 itu soal meter ke sentimeter. Coba cabang lain." },
+          { "id": "b-lupa", "teks": "Jangan lupa kali 100", "ikon": "⚠️", "cabang": "m-ke-cm", "petunjuk": "Mengubah meter ke sentimeter berarti dikali 100. Coba cabang lain." },
+          { "id": "b-700", "teks": "700 cm : 100 = 7 m", "ikon": "➗", "cabang": "cm-ke-m", "petunjuk": "Membagi dengan 100 itu soal sentimeter ke meter. Coba cabang lain." },
+          { "id": "b-kecil", "teks": "Satuan kecil ke besar: bagi", "ikon": "🔄", "cabang": "cm-ke-m", "petunjuk": "Dari satuan kecil ke satuan besar berarti dibagi. Itu soal sentimeter ke meter. Coba cabang lain." },
+          { "id": "b-sambung", "teks": "4 m 37 cm + 7 m 43 cm = 11 m 80 cm", "ikon": "➕", "cabang": "gabung", "petunjuk": "Menjumlahkan satuan sama itu soal sambung dan potong. Coba cabang lain." },
+          { "id": "b-pinjam", "teks": "Kurang: pinjam 1 m = 100 cm", "ikon": "➖", "cabang": "gabung", "petunjuk": "Meminjam satu meter itu soal mengurangkan ukuran. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Meter dan Sentimeter",
+        "suara": "Ini tiga panel tentang meter dan sentimeter. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "b-pita", "tipe": "buka", "judul": "Pita dari tiga potongan", "ide": "Sepuluh kecil jadi satu besar.",
+            "suara": "Pita dirakit dari tiga jenis potongan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "meter", "label": "Potongan 1 m", "ikon": "🟥", "isi": "Satu potongan sama dengan 100 cm.", "suara": "Potongan merah panjangnya satu meter, yaitu seratus sentimeter.", "visual": { "jenis": "teks", "isi": "1 m = 100 cm" } },
+              { "id": "sepuluh", "label": "Potongan 10 cm", "ikon": "🟦", "isi": "Sepuluh potongan jadi 1 meter.", "suara": "Potongan biru panjangnya sepuluh sentimeter. Sepuluh potongan biru ditukar satu potongan merah.", "visual": { "jenis": "teks", "isi": "10 × 10 cm = 100 cm = 1 m" } },
+              { "id": "satu", "label": "Potongan 1 cm", "ikon": "🟨", "isi": "Sepuluh potongan jadi 10 cm.", "suara": "Potongan kuning panjangnya satu sentimeter. Sepuluh potongan kuning ditukar satu potongan biru.", "visual": { "jenis": "teks", "isi": "10 × 1 cm = 10 cm" } }
+            ]
+          },
+          {
+            "id": "b-ubah", "tipe": "banding", "judul": "Meter ke cm atau cm ke meter", "ide": "Kalikan atau bagi seratus.",
+            "suara": "Bandingkan mengubah meter ke sentimeter dan sentimeter ke meter.",
+            "sisi": [
+              { "id": "kali", "nama": "Meter ke cm", "ikon": "✖️", "catatan": "3 m = 3 × 100 = 300 cm.", "suara": "Meter ke sentimeter, kalikan seratus. Tiga meter sama dengan tiga ratus sentimeter.", "visual": { "jenis": "teks", "isi": "3 m × 100 = 300 cm" } },
+              { "id": "bagi", "nama": "Cm ke meter", "ikon": "➗", "catatan": "700 cm : 100 = 7 m.", "suara": "Sentimeter ke meter, bagi seratus. Tujuh ratus sentimeter sama dengan tujuh meter.", "visual": { "jenis": "teks", "isi": "700 cm : 100 = 7 m" } }
+            ],
+            "kesimpulan": "Satuan kecil ke besar dibagi 100. Besar ke kecil dikali 100."
+          },
+          {
+            "id": "b-hitung", "tipe": "buka", "judul": "Menghitung ukuran panjang", "ide": "Satuan sama, hitung bersama.",
+            "suara": "Ada tiga hal saat menghitung ukuran panjang. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "sambung", "label": "Menyambung", "ikon": "➕", "isi": "Meter dengan meter, cm dengan cm.", "suara": "Empat meter tiga puluh tujuh sentimeter ditambah tujuh meter empat puluh tiga sentimeter. Meter empat tambah tujuh sebelas. Sentimeter tiga puluh tujuh tambah empat puluh tiga delapan puluh. Hasilnya sebelas meter delapan puluh sentimeter.", "visual": { "jenis": "teks", "isi": "4 m 37 cm + 7 m 43 cm = 11 m 80 cm" } },
+              { "id": "tukar", "label": "Menukar", "ikon": "🔁", "isi": "Seratus sentimeter jadi satu meter.", "suara": "Bila jumlah sentimeter seratus atau lebih, tukar seratus sentimeter menjadi satu meter dan tambahkan ke meter.", "visual": { "jenis": "teks", "isi": "60 cm + 70 cm = 130 cm = 1 m 30 cm" } },
+              { "id": "pinjam", "label": "Meminjam", "ikon": "➖", "isi": "Pinjam 1 m yang sama dengan 100 cm.", "suara": "Bila sentimeter yang dikurangkan lebih besar, pinjam satu meter yang sama dengan seratus sentimeter, lalu kurangkan.", "visual": { "jenis": "teks", "isi": "5 m 20 cm − 2 m 50 cm = 2 m 70 cm" } }
+            ]
+          }
+        ]
+      }
+    },
+    "C": {
+      "peta": {
+        "pusat": { "judul": "Mengukur Berat", "ikon": "⚖️", "suara": "Ini peta mengukur berat. Kita belajar menimbang dengan timbangan, memakai satuan gram dan kilogram, dan selalu mulai dari angka nol. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "timbangan", "judul": "Timbangan", "ikon": "⚖️", "ringkas": "Alat untuk mengukur berat.", "suara": "Timbangan. Timbangan adalah alat untuk mengukur berat benda. Timbangan digital menampilkan angka pada layar. Timbangan duduk memakai jarum yang menunjuk angka." },
+          { "id": "satuan-berat", "judul": "Gram dan kilogram", "ikon": "📐", "ringkas": "Satuan baku berat: g dan kg.", "suara": "Gram dan kilogram. Satuan baku berat adalah gram dan kilogram. Gram ditulis g dan kilogram ditulis kg. Sentimeter dan meter bukan satuan berat, karena itu satuan panjang." },
+          { "id": "nol-timbang", "judul": "Mulai dari nol", "ikon": "0️⃣", "ringkas": "Layar atau jarum di angka nol.", "suara": "Mulai dari nol. Sebelum menimbang, layar atau jarum harus tepat di angka nol. Bila tidak, bacaan sudah tertambah dan hasilnya bukan berat benda." },
+          { "id": "pilih-timbangan", "judul": "Pilih satuan", "ikon": "✅", "ringkas": "Ringan: gram. Berat: kilogram.", "suara": "Pilih satuan. Gram dipakai untuk benda yang ringan, seperti telur dan tepung. Kilogram dipakai untuk benda yang lebih berat, seperti semangka dan karung beras." }
+        ],
+        "kartu": [
+          { "id": "c-digital", "teks": "Timbangan digital: layar", "ikon": "🔢", "cabang": "timbangan", "petunjuk": "Membaca angka pada layar itu soal timbangan. Coba cabang lain." },
+          { "id": "c-duduk", "teks": "Timbangan duduk: jarum", "ikon": "🕐", "cabang": "timbangan", "petunjuk": "Membaca angka yang ditunjuk jarum itu soal timbangan. Coba cabang lain." },
+          { "id": "c-g-kg", "teks": "Satuan baku: g dan kg", "ikon": "📐", "cabang": "satuan-berat", "petunjuk": "Nama satuan baku berat itu soal gram dan kilogram. Coba cabang lain." },
+          { "id": "c-bukan-cm", "teks": "Berat bukan cm atau m", "ikon": "🚫", "cabang": "satuan-berat", "petunjuk": "Satuan untuk berat itu soal gram dan kilogram. Coba cabang lain." },
+          { "id": "c-nol", "teks": "Layar di angka 0 dulu", "ikon": "0️⃣", "cabang": "nol-timbang", "petunjuk": "Memeriksa angka awal itu soal mulai dari nol. Coba cabang lain." },
+          { "id": "c-awal", "teks": "Awal 50 g: hasil keliru", "ikon": "⚠️", "cabang": "nol-timbang", "petunjuk": "Hasil keliru karena tidak mulai dari nol. Itu soal mulai dari nol. Coba cabang lain." },
+          { "id": "c-telur", "teks": "Telur 250 g: gram", "ikon": "🥚", "cabang": "pilih-timbangan", "petunjuk": "Memilih satuan untuk benda ringan itu soal pilih satuan. Coba cabang lain." },
+          { "id": "c-semangka", "teks": "Semangka 3 kg: kilogram", "ikon": "🍉", "cabang": "pilih-timbangan", "petunjuk": "Memilih satuan untuk benda berat itu soal pilih satuan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Menimbang dengan Benar",
+        "suara": "Ini tiga panel tentang menimbang. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "c-dua", "tipe": "buka", "judul": "Dua timbangan", "ide": "Layar atau jarum.",
+            "suara": "Ada dua timbangan yang kita pakai. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "digital", "label": "Timbangan digital", "ikon": "🔢", "isi": "Angka pada layar, dalam gram.", "suara": "Timbangan digital menampilkan berat sebagai angka pada layar. Telur menunjukkan dua ratus lima puluh gram.", "visual": { "jenis": "teks", "isi": "Layar: 250 g" } },
+              { "id": "duduk", "label": "Timbangan duduk", "ikon": "🕐", "isi": "Jarum menunjuk angka kilogram.", "suara": "Timbangan duduk memakai jarum. Bila jarum menunjuk angka tiga, beratnya tiga kilogram.", "visual": { "jenis": "teks", "isi": "Jarum: 3 kg" } }
+            ]
+          },
+          {
+            "id": "c-banding-nol", "tipe": "banding", "judul": "Dari nol atau bukan", "ide": "Nol dulu, baru letakkan.",
+            "suara": "Bandingkan menimbang telur dari angka nol dan dari angka lima puluh gram.",
+            "sisi": [
+              { "id": "mulai-nol", "nama": "Dari 0", "ikon": "✅", "catatan": "Layar 250 g: berat telur 250 g.", "suara": "Layar mulai dari nol. Setelah telur diletakkan, layar menunjukkan dua ratus lima puluh gram. Itulah berat telur.", "visual": { "jenis": "teks", "isi": "0 + telur = 250 g" } },
+              { "id": "mulai-lima-puluh", "nama": "Dari 50 g", "ikon": "⚠️", "catatan": "Layar 300 g: bukan berat telur.", "suara": "Layar sudah menunjukkan lima puluh gram sebelum ada telur. Setelah telur diletakkan, layar menunjukkan tiga ratus gram. Angka itu bukan berat telur.", "visual": { "jenis": "teks", "isi": "50 + telur = 300 g, keliru" } }
+            ],
+            "kesimpulan": "Atur ke nol dulu, supaya bacaan adalah berat benda."
+          },
+          {
+            "id": "c-satuan", "tipe": "buka", "judul": "Gram atau kilogram", "ide": "Ringan gram, berat kilogram.",
+            "suara": "Pilih satuan sesuai bendanya. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "gram", "label": "Gram", "ikon": "🥚", "isi": "Untuk benda ringan.", "suara": "Gram dipakai untuk benda yang ringan, seperti telur, tepung, gula, dan pensil.", "visual": { "jenis": "teks", "isi": "Telur 250 g" } },
+              { "id": "kilogram", "label": "Kilogram", "ikon": "🍉", "isi": "Untuk benda yang berat.", "suara": "Kilogram dipakai untuk benda yang lebih berat, seperti semangka, karung beras, dan berat badan.", "visual": { "jenis": "teks", "isi": "Semangka 3 kg" } },
+              { "id": "bukan-panjang", "label": "Bukan cm", "ikon": "🚫", "isi": "Sentimeter untuk panjang.", "suara": "Berat tidak ditulis dengan sentimeter atau meter. Satuan itu untuk panjang.", "visual": { "jenis": "teks", "isi": "Berat: g, kg. Panjang: cm, m." } }
+            ]
+          }
+        ]
+      }
+    },
+    "D": {
+      "peta": {
+        "pusat": { "judul": "Kilogram, Ons, dan Gram", "ikon": "🏋️", "suara": "Ini peta hubungan kilogram, ons, dan gram. Kita belajar timbangan kodok dengan bandul, lalu mengubah satuan berat. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "bandul", "judul": "Bandul kodok", "ikon": "🛒", "ringkas": "Jumlah bandul sama dengan berat benda.", "suara": "Bandul kodok. Timbangan kodok memakai lima jenis bandul: setengah ons, satu ons, dua ons, setengah kilogram, dan satu kilogram. Benda seimbang bila jumlah berat bandul sama dengan berat benda. Banyak susunan bandul yang bisa membuatnya seimbang." },
+          { "id": "hubungan", "judul": "1 kg = 1.000 g", "ikon": "⚖️", "ringkas": "Satu kilogram: seribu gram, sepuluh ons.", "suara": "Satu kilogram sama dengan seribu gram, dan sama dengan sepuluh ons. Satu ons sama dengan seratus gram. Bilangan seribu ditulis dengan titik, yaitu 1.000." },
+          { "id": "kg-ke-g", "judul": "Kg ke gram", "ikon": "✖️", "ringkas": "Kilogram ke gram: kalikan 1.000.", "suara": "Kilogram ke gram. Untuk mengubah kilogram ke gram, kalikan dengan seribu. Tiga kilogram sama dengan tiga ribu gram. Empat kilogram seratus lima puluh gram sama dengan empat ribu seratus lima puluh gram." },
+          { "id": "g-ke-kg", "judul": "Gram ke kg", "ikon": "➗", "ringkas": "Gram ke kilogram: ambil tiap 1.000.", "suara": "Gram ke kilogram. Ambil tiap seribu gram sebagai satu kilogram, sisanya tetap gram. Seribu tujuh ratus lima puluh tiga gram sama dengan satu kilogram tujuh ratus lima puluh tiga gram." }
+        ],
+        "kartu": [
+          { "id": "d-lima", "teks": "Lima jenis bandul", "ikon": "🏋️", "cabang": "bandul", "petunjuk": "Jenis bandul itu soal bandul kodok. Coba cabang lain." },
+          { "id": "d-susun", "teks": "Banyak susunan seimbang", "ikon": "🔀", "cabang": "bandul", "petunjuk": "Susunan bandul yang berbeda itu soal bandul kodok. Coba cabang lain." },
+          { "id": "d-1kg", "teks": "1 kg = 10 ons = 1.000 g", "ikon": "⚖️", "cabang": "hubungan", "petunjuk": "Hubungan dasar kilogram, ons, dan gram itu soal hubungan satuan. Coba cabang lain." },
+          { "id": "d-ons", "teks": "1 ons = 100 g", "ikon": "💯", "cabang": "hubungan", "petunjuk": "Hubungan ons dan gram itu soal hubungan satuan. Coba cabang lain." },
+          { "id": "d-3kg", "teks": "3 kg = 3 × 1.000 = 3.000 g", "ikon": "✖️", "cabang": "kg-ke-g", "petunjuk": "Mengalikan dengan 1.000 itu soal kilogram ke gram. Coba cabang lain." },
+          { "id": "d-4150", "teks": "4 kg 150 g = 4.150 g", "ikon": "🔢", "cabang": "kg-ke-g", "petunjuk": "Menulis kilogram dan gram sebagai gram itu soal kilogram ke gram. Coba cabang lain." },
+          { "id": "d-1753", "teks": "1.753 g = 1 kg 753 g", "ikon": "🔍", "cabang": "g-ke-kg", "petunjuk": "Memecah gram menjadi kilogram dan gram itu soal gram ke kilogram. Coba cabang lain." },
+          { "id": "d-8000", "teks": "8.000 g = 8 kg", "ikon": "🥭", "cabang": "g-ke-kg", "petunjuk": "Mengambil tiap 1.000 g itu soal gram ke kilogram. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Satuan Berat dan Timbangan Kodok",
+        "suara": "Ini tiga panel tentang satuan berat dan timbangan kodok. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "d-bandul", "tipe": "buka", "judul": "Bandul timbangan kodok", "ide": "Lima bandul, beratnya berbeda.",
+            "suara": "Ada lima bandul. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "kecil", "label": "½ ons dan 1 ons", "ikon": "🥉", "isi": "50 g dan 100 g.", "suara": "Bandul setengah ons beratnya lima puluh gram. Bandul satu ons beratnya seratus gram.", "visual": { "jenis": "teks", "isi": "½ ons = 50 g, 1 ons = 100 g" } },
+              { "id": "dua-ons", "label": "2 ons", "ikon": "🥈", "isi": "Dua ratus gram.", "suara": "Bandul dua ons beratnya dua ratus gram.", "visual": { "jenis": "teks", "isi": "2 ons = 200 g" } },
+              { "id": "kilo", "label": "½ kg dan 1 kg", "ikon": "🥇", "isi": "500 g dan 1.000 g.", "suara": "Bandul setengah kilogram beratnya lima ratus gram. Bandul satu kilogram beratnya seribu gram.", "visual": { "jenis": "teks", "isi": "½ kg = 500 g, 1 kg = 1.000 g" } }
+            ]
+          },
+          {
+            "id": "d-ubah", "tipe": "banding", "judul": "Kilogram ke gram atau gram ke kilogram", "ide": "Kalikan atau ambil tiap 1.000.",
+            "suara": "Bandingkan mengubah kilogram ke gram dan gram ke kilogram.",
+            "sisi": [
+              { "id": "kali", "nama": "Kg ke gram", "ikon": "✖️", "catatan": "3 kg = 3 × 1.000 = 3.000 g.", "suara": "Kilogram ke gram, kalikan seribu. Tiga kilogram sama dengan tiga ribu gram.", "visual": { "jenis": "teks", "isi": "3 kg × 1.000 = 3.000 g" } },
+              { "id": "ambil", "nama": "Gram ke kg", "ikon": "➗", "catatan": "1.753 g = 1 kg 753 g.", "suara": "Gram ke kilogram, ambil tiap seribu gram sebagai satu kilogram. Seribu tujuh ratus lima puluh tiga gram sama dengan satu kilogram tujuh ratus lima puluh tiga gram.", "visual": { "jenis": "teks", "isi": "1.753 g = 1.000 g + 753 g" } }
+            ],
+            "kesimpulan": "Kilogram ke gram dikali 1.000. Gram ke kilogram: ambil tiap 1.000."
+          },
+          {
+            "id": "d-hubungan", "tipe": "buka", "judul": "Hubungan satuan berat", "ide": "Kilogram, ons, dan gram.",
+            "suara": "Ada tiga hubungan satuan berat. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "kg-g", "label": "1 kg", "ikon": "⚖️", "isi": "Satu kilogram sama dengan seribu gram.", "suara": "Satu kilogram sama dengan seribu gram.", "visual": { "jenis": "teks", "isi": "1 kg = 1.000 g" } },
+              { "id": "kg-ons", "label": "1 kg", "ikon": "🔟", "isi": "Satu kilogram sama dengan sepuluh ons.", "suara": "Satu kilogram sama dengan sepuluh ons.", "visual": { "jenis": "teks", "isi": "1 kg = 10 ons" } },
+              { "id": "ons-g", "label": "1 ons", "ikon": "💯", "isi": "Satu ons sama dengan seratus gram.", "suara": "Satu ons sama dengan seratus gram.", "visual": { "jenis": "teks", "isi": "1 ons = 100 g" } }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

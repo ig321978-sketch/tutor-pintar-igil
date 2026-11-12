@@ -26,6 +26,7 @@ import SimulasiK2Bab7Materi, { misiAwalK2Bab7 } from "@/components/modul/Simulas
 import SimulasiK2Bab8Materi, { misiAwalK2Bab8 } from "@/components/modul/SimulasiK2Bab8";
 import { misiAwalK3Bab1 } from "@/components/modul/misi-teks-k3b1";
 import { misiAwalK3Bab2 } from "@/components/modul/misi-teks-k3b2";
+import { misiAwalK3Bab3 } from "@/components/modul/misi-teks-k3b3";
 import type { DataPeta } from "@/components/modul/peta-konsep-logika";
 import type { DataInfografis } from "@/components/modul/infografis-ringkas-logika";
 import ringkasK1B1 from "@/data/kelas1-bab1-ringkas.json";
@@ -46,6 +47,7 @@ import ringkasK2B7 from "@/data/kelas2-bab7-ringkas.json";
 import ringkasK2B8 from "@/data/kelas2-bab8-ringkas.json";
 import ringkasK3B1 from "@/data/kelas3-bab1-ringkas.json";
 import ringkasK3B2 from "@/data/kelas3-bab2-ringkas.json";
+import ringkasK3B3 from "@/data/kelas3-bab3-ringkas.json";
 
 /**
  * Kunci tahap Simulasi di dalam Materi. Pecahan (3,5) menyisip antara Infografis (3)
@@ -63,6 +65,7 @@ export type SimulasiMateriProps = {
 /** Kelas 3 dimuat malas: laboratorium K3 tidak ikut bundel pemutar Kelas 1 dan 2. */
 const SimulasiK3Bab1Materi = dynamic<SimulasiMateriProps>(() => import("@/components/modul/SimulasiK3Bab1"), { ssr: false });
 const SimulasiK3Bab2Materi = dynamic<SimulasiMateriProps>(() => import("@/components/modul/SimulasiK3Bab2"), { ssr: false });
+const SimulasiK3Bab3Materi = dynamic<SimulasiMateriProps>(() => import("@/components/modul/SimulasiK3Bab3"), { ssr: false });
 
 export type SimulasiBabProps = {
   speakGuru: (teks: string) => void;
@@ -91,6 +94,7 @@ export const SIMULASI_MATERI: Partial<Record<string, ComponentType<SimulasiMater
   "mtk-2-bab8": SimulasiK2Bab8Materi,
   "mtk-3-bab1": SimulasiK3Bab1Materi,
   "mtk-3-bab2": SimulasiK3Bab2Materi,
+  "mtk-3-bab3": SimulasiK3Bab3Materi,
 };
 
 /** Ucapan misi simulasi pertama tiap sub-bab (digabung ke ucapan saat tahap Simulasi dibuka). */
@@ -113,6 +117,7 @@ export const SIMULASI_MISI_AWAL: Partial<Record<string, (sub: string) => string>
   "mtk-2-bab8": misiAwalK2Bab8,
   "mtk-3-bab1": misiAwalK3Bab1,
   "mtk-3-bab2": misiAwalK3Bab2,
+  "mtk-3-bab3": misiAwalK3Bab3,
 };
 
 /** Data Mind-Map + Infografis ringkas untuk bab SMISCPA. */
@@ -135,6 +140,7 @@ export const RINGKAS_BAB: Partial<Record<string, Record<string, RingkasSub>>> = 
   "mtk-2-bab8": ringkasK2B8.subBab as unknown as Record<string, RingkasSub>,
   "mtk-3-bab1": ringkasK3B1.subBab as unknown as Record<string, RingkasSub>,
   "mtk-3-bab2": ringkasK3B2.subBab as unknown as Record<string, RingkasSub>,
+  "mtk-3-bab3": ringkasK3B3.subBab as unknown as Record<string, RingkasSub>,
 };
 
 /** Bab yang masih memakai tab Simulasi terpisah (belum migrasi SMISCPA). */
