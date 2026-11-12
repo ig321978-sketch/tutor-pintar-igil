@@ -7,6 +7,7 @@ import type { DefSkenario } from "./skenario-umum";
  *  - SKENARIO_K5B4B: Bendera Pita Segitiga (jumlah tiga sisi, sama sisi dikali 3, sama kaki tetap dijumlah)
  *  - SKENARIO_K5B4C: Kebun dan Papan Tulis (dua kali jumlah panjang dan lebar, empat kali sisi, bukan luas)
  *  - SKENARIO_K5B4D: Taman Segi Banyak (banyak sisi dikali sisi, sisi berbeda dijumlah, pola tabel)
+ *  - SKENARIO_K5B4E: Denah Rumah Asep dan Komang (pencapaian bab: keliling bukan luas, segitiga, persegi panjang, segi banyak, sekat, bungkus, sisi hilang)
  */
 
 export const SKENARIO_K5B4A: DefSkenario = {
@@ -297,6 +298,91 @@ export const SKENARIO_K5B4D: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Pada segi banyak beraturan, keliling adalah banyak sisi dikali panjang sisi. Bila sisinya tidak sama panjang, jumlahkan semua sisinya satu per satu.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B4E: DefSkenario = {
+  id: "denah-rumah-k5b4",
+  judul: "Denah Rumah Asep dan Komang",
+  latar: "Bantu Asep dan Komang menghitung keliling denah rumah, pencapaian Bab Keliling.",
+  tokoh: "👦",
+  nama: "Asep",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Asep, dan ini temanku Komang. Kami menggambar denah rumah dari beberapa bangun datar yang digabung. Ayo bantu kami menghitung keliling, dari bangun sederhana sampai denah gabungan!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "pagar",
+      jenis: "pilih",
+      cerita: "Komang ingin memasang pagar mengelilingi rumah. Panjang pagar yang dibutuhkan sama dengan …",
+      opsi: [
+        { teks: "banyak petak lantai rumah, yaitu luas", benar: false, umpan: "Petak lantai di dalam itu luas. Pagar dipasang di tepi, jadi yang dihitung panjang di tepi." },
+        { teks: "panjang jalur di batas luar, yaitu keliling", benar: true, umpan: "Betul! Pagar mengelilingi batas luar, jadi panjangnya sama dengan keliling." },
+        { teks: "banyak sudut denah", benar: false, umpan: "Banyak sudut tidak memberi panjang pagar. Pagar mengikuti jalur di tepi." },
+      ],
+    },
+    {
+      id: "bangun",
+      jenis: "soal",
+      cerita: "Asep dan Komang menghitung keliling bangun penyusun denah.",
+      soal: [
+        { teks: "Bendera segitiga sama sisi bersisi 5 m. Kelilingnya adalah … meter.", jawaban: "15", opsi: ["10", "15", "25"] },
+        { teks: "Meja persegi panjang 5 m dan 3 m. Kelilingnya adalah … meter.", jawaban: "16", opsi: ["8", "15", "16"] },
+        { teks: "Kolam segi enam beraturan bersisi 4 m. Kelilingnya adalah … meter.", jawaban: "24", opsi: ["10", "16", "24"] },
+      ],
+      sukses: "Hebat! Segitiga sama sisi dikali 3, persegi panjang dua kali jumlah panjang dan lebar, segi enam beraturan dikali 6.",
+      salah: "Hmm, ingat cara tiap bangun: jumlahkan sisi, atau kalikan bila sisinya sama. Coba lagi.",
+    },
+    {
+      id: "sekat",
+      jenis: "pilih",
+      cerita: "Denah rumah berbentuk L punya sekat dalam antar kamar. Apakah sekat ikut dijumlah ke keliling rumah?",
+      opsi: [
+        { teks: "ya, semua garis di denah dijumlah", benar: false, umpan: "Sekat dalam bukan batas luar. Bila ikut dijumlah, hasilnya terlalu panjang." },
+        { teks: "ya, tetapi hanya sekat yang pendek", benar: false, umpan: "Sekat sepanjang apa pun tetap berada di dalam denah, jadi tidak dijumlah." },
+        { teks: "tidak, sekat bukan batas luar", benar: true, umpan: "Betul! Keliling gabungan hanya menjumlah sisi luar, sekat dalam diabaikan." },
+      ],
+    },
+    {
+      id: "luar",
+      jenis: "hitung",
+      cerita: "Denah rumah Komang dibungkus persegi panjang 10 m dan 5 m dan tidak punya lekukan ke dalam. Tiap meter batas luar diberi satu stik.",
+      tanya: "Ketuk semua stik. Ada berapa meter batas luar rumah?",
+      objek: "stik",
+      jumlah: 30,
+      sukses: "Betul! Ada 30 meter, sama dengan 2 × (10 + 5) = 30.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "hilang",
+      jenis: "isi",
+      cerita: "Pada denah L, sisi atas 12 m sejajar dengan sisi bawah 6 m. Sisi yang hilang adalah selisihnya. Masukkan satu stik untuk tiap meter sisi yang hilang.",
+      objek: "stik",
+      target: 6,
+      maks: 12,
+      sukses: "Pas! 12 − 6 = 6 m. Setelah sisi hilang dilengkapi, semua sisi luar dijumlah.",
+      kurang: "Stiknya masih sedikit. Sisi hilang adalah sisi besar 12 dikurangi sisi kecil 6.",
+      lebih: "Stiknya kebanyakan. Sisi hilang adalah sisi besar 12 dikurangi sisi kecil 6.",
+    },
+    {
+      id: "jumlah",
+      jenis: "soal",
+      cerita: "Sekarang semua sisi luar denah L sudah lengkap: 12 m, 4 m, 6 m, 2 m, 6 m, dan 6 m.",
+      soal: [
+        { teks: "Jumlah semua sisi luar denah L adalah … meter.", jawaban: "36", opsi: ["28", "36", "46"] },
+        { teks: "Denah L dibungkus persegi panjang 12 m dan 6 m. Keliling pembungkusnya … meter.", jawaban: "36", opsi: ["18", "36", "72"] },
+      ],
+      sukses: "Hebat! Denah L tidak punya lekukan ke dalam, jadi kelilingnya sama dengan keliling pembungkus, 36 meter.",
+      salah: "Hmm, jumlahkan sisi luar saja, atau hitung dengan pembungkus. Coba lagi.",
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Keliling adalah jalur di batas luar, bukan luas. Segitiga sama sisi dikali 3, persegi panjang dua kali jumlah panjang dan lebar, segi beraturan dikali banyak sisi. Pada denah gabungan, jumlahkan hanya sisi luar, abaikan sekat dalam, lengkapi sisi hilang dengan selisih, dan bungkus bila tidak ada lekukan ke dalam.",
     },
   ],
 };

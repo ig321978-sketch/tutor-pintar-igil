@@ -3,8 +3,8 @@
  * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen laboratorium ke bundel awal.
  */
 
-export type HurufK5B4 = "A" | "B" | "C" | "D";
-const HURUF: HurufK5B4[] = ["A", "B", "C", "D"];
+export type HurufK5B4 = "A" | "B" | "C" | "D" | "E";
+const HURUF: HurufK5B4[] = ["A", "B", "C", "D", "E"];
 
 export const hurufK5B4 = (sub: string): HurufK5B4 => (HURUF.includes(sub as HurufK5B4) ? (sub as HurufK5B4) : "A");
 
@@ -13,6 +13,7 @@ export const MISI_K5B4: Record<HurufK5B4, string> = {
   B: "Di Lab Segitiga, jumlahkan ketiga sisi segitiga, periksa dulu apakah ketiga sisinya sama panjang sebelum memakai tiga dikali sisi, dan ukur sisi pada penggaris sebelum menjumlahkan. Periksa dengan Mesin Segitiga, lalu selesaikan skenario Bendera Pita Segitiga. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
   C: "Di Lab Segi Empat, hitung keliling persegi panjang dengan menjumlahkan panjang dan lebar lalu mengalikan dua, hitung keliling persegi dengan empat dikali sisi, dan bedakan keliling dari luas. Periksa dengan Mesin Segi Empat, lalu selesaikan skenario Kebun dan Papan Tulis. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
   D: "Di Lab Segi Banyak, hitung keliling segi beraturan dengan banyak sisi dikali panjang sisi, jumlahkan semua sisi bila sisinya tidak sama panjang, dan isi tabel untuk menemukan polanya. Periksa dengan Mesin Segi Banyak, lalu selesaikan skenario Taman Segi Banyak. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
+  E: "Di Lab Denah, jumlahkan hanya sisi luar denah dan abaikan sekat dalam, periksa apakah denah cocok dibungkus persegi panjang, dan lengkapi sisi yang hilang dengan selisih sebelum menjumlahkan. Periksa dengan Mesin Gabungan, lalu selesaikan skenario Denah Rumah Asep dan Komang yang menyentuh semua konsep keliling. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
 };
 
 export const NAMA_SIM_K5B4: Record<HurufK5B4, string> = {
@@ -20,6 +21,7 @@ export const NAMA_SIM_K5B4: Record<HurufK5B4, string> = {
   B: "Lab Segitiga, Mesin Segitiga, dan Bendera Pita Segitiga",
   C: "Lab Segi Empat, Mesin Segi Empat, dan Kebun dan Papan Tulis",
   D: "Lab Segi Banyak, Mesin Segi Banyak, dan Taman Segi Banyak",
+  E: "Lab Denah, Mesin Gabungan, dan Denah Rumah Asep dan Komang",
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */

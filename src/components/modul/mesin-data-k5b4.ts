@@ -16,6 +16,9 @@
  *  - MESIN_SEGIBANYAK (D): Beraturan → Beda → Tabel → Banyak sisi   (kasus Segi lima, Segi enam, Segi delapan)
  *    Beraturan/Tabel: n × sisi (pengecoh: banyak sisi ditambah sisi, sisi kali sisi atau n kali n).
  *    Beda: jumlah semua sisi (pengecoh: banyak sisi kali sisi pertama, satu sisi terlewat).  Banyak sisi: sesuai nama segi.
+ *  - MESIN_GABUNGAN (E): Luar → Bungkus → Hilang → Cek   (kasus Denah buku, Denah dua kamar, Denah rumah Komang)
+ *    Luar: hanya sisi luar (pengecoh: sekat dalam ikut dijumlah, satu sisi luar terlewat).  Bungkus: 2 × (panjang + lebar) pembungkus (pengecoh: luas, jumlah dua sisi).
+ *    Hilang: selisih sisi besar dan kecil (pengecoh: dijumlah, sisi besar saja).  Cek: keliling dan luas dibedakan (pengecoh: tertukar, luas disamakan dengan keliling).
  * Data dari Buku Siswa Kelas V Bab 4 Sub-Bab A dan B (pagar, bingkai foto, Benteng Baluwarti, segitiga 5, 4, 7).
  * Murni: tanpa React, tanpa jaringan. Hanya impor tipe. Diuji di scripts/uji-lab-k5b4.mjs.
  */
@@ -378,4 +381,86 @@ export const MESIN_SEGIBANYAK: DefMesin = {
   kasus: KASUS_SEGIBANYAK.map(kasusMesinSegiBanyak),
 };
 
-export const SEMUA_MESIN_K5B4 = [MESIN_JALUR, MESIN_SEGITIGA, MESIN_SEGIEMPAT, MESIN_SEGIBANYAK];
+/* ------------------------------ E: Mesin Gabungan ------------------------------ */
+
+/**
+ * luar: sisi luar denah dan sekat dalamnya. bungkus: persegi panjang pembungkus denah tanpa lekukan ke dalam.
+ * hilang: sisi besar dan sisi kecil yang sejajar. cek: persegi panjang untuk membedakan keliling dari luas.
+ */
+export type KasusGabungan = {
+  id: string;
+  nama: string;
+  luar: { sisi: number[]; sekat: number[] };
+  bungkus: { w: number; h: number };
+  hilang: { besar: number; kecil: number };
+  cek: { p: number; l: number };
+};
+export const KASUS_GABUNGAN: KasusGabungan[] = [
+  { id: "buku", nama: "Denah buku", luar: { sisi: [4, 4, 4, 6, 4, 4, 4, 2, 4, 8, 6, 4], sekat: [3, 5] }, bungkus: { w: 12, h: 6 }, hilang: { besar: 12, kecil: 6 }, cek: { p: 8, l: 4 } },
+  { id: "kamar", nama: "Denah dua kamar", luar: { sisi: [8, 4, 8, 4], sekat: [4] }, bungkus: { w: 8, h: 4 }, hilang: { besar: 10, kecil: 7 }, cek: { p: 9, l: 3 } },
+  { id: "komang", nama: "Denah rumah Komang", luar: { sisi: [6, 6, 6, 6, 6, 6], sekat: [3, 3] }, bungkus: { w: 10, h: 5 }, hilang: { besar: 9, kecil: 4 }, cek: { p: 7, l: 3 } },
+];
+
+export const STASIUN_GABUNGAN: StasiunDef[] = [
+  { id: "luar", nama: "Luar", ikon: "🏠" },
+  { id: "bungkus", nama: "Bungkus", ikon: "📦" },
+  { id: "hilang", nama: "Hilang", ikon: "❓" },
+  { id: "cek", nama: "Cek", ikon: "✅" },
+];
+
+export function kasusMesinGabungan(c: KasusGabungan, idx: number): KasusMesin {
+  const kLuar = jumlah(c.luar.sisi);
+  const sekat = jumlah(c.luar.sekat);
+  const kBungkus = 2 * (c.bungkus.w + c.bungkus.h);
+  const selisih = c.hilang.besar - c.hilang.kecil;
+  const kCek = 2 * (c.cek.p + c.cek.l);
+  const lCek = c.cek.p * c.cek.l;
+  const benarCek = `keliling ${kCek} m, luas ${lCek} petak`;
+  const m = (n: number): string => `${n} m`;
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "luar",
+      tanya: `${c.nama} punya sisi luar ${c.luar.sisi.join(" m, ")} m dan sekat dalam ${c.luar.sekat.join(" m dan ")} m. Keliling denah adalah …`,
+      opsi: susunOpsi(m(kLuar), pengecoh(kLuar, [kLuar + sekat, kLuar - c.luar.sisi[c.luar.sisi.length - 1]]).map(m), idx),
+      benar: m(kLuar),
+      petunjuk: "Keliling gabungan hanya menjumlah sisi luar. Sekat dalam bukan batas luar, jadi diabaikan.",
+    },
+    {
+      stasiun: "bungkus",
+      tanya: `Denah tanpa lekukan ke dalam dibungkus persegi panjang ${c.bungkus.w} m dan ${c.bungkus.h} m. Keliling denahnya adalah …`,
+      opsi: susunOpsi(m(kBungkus), pengecoh(kBungkus, [c.bungkus.w * c.bungkus.h, c.bungkus.w + c.bungkus.h]).map(m), idx + 1),
+      benar: m(kBungkus),
+      petunjuk: `Pembungkus cocok bila denah tidak punya lekukan ke dalam: 2 × (${c.bungkus.w} + ${c.bungkus.h}). Panjang dikali lebar adalah luas.`,
+    },
+    {
+      stasiun: "hilang",
+      tanya: `Sisi besar ${c.hilang.besar} m sejajar dengan sisi kecil ${c.hilang.kecil} m. Panjang sisi yang hilang adalah …`,
+      opsi: susunOpsi(m(selisih), pengecoh(selisih, [c.hilang.besar + c.hilang.kecil, c.hilang.besar]).map(m), idx + 2),
+      benar: m(selisih),
+      petunjuk: `Sisi hilang adalah selisih: ${c.hilang.besar} − ${c.hilang.kecil}. Lengkapi dulu sebelum menjumlah.`,
+    },
+    {
+      stasiun: "cek",
+      tanya: `Denah berbentuk persegi panjang, luarnya ${c.cek.p} m dan ${c.cek.l} m. Pernyataan yang benar adalah …`,
+      opsi: susunOpsi(benarCek, [`keliling ${lCek} m, luas ${kCek} petak`, `keliling ${kCek} m, luas ${kCek} petak`], idx + 3),
+      benar: benarCek,
+      petunjuk: "Keliling adalah jalur di batas luar. Luas adalah banyak petak di dalam, panjang dikali lebar. Keduanya berbeda.",
+    },
+  ];
+  return {
+    id: c.id,
+    nama: c.nama,
+    ringkas: `Keliling denah hanya menjumlah sisi luar: ${c.luar.sisi.join(" + ")} = ${kLuar} m, sekat dalam ${sekat} m tidak ikut. Dibungkus ${c.bungkus.w} dan ${c.bungkus.h}, kelilingnya ${kBungkus} m. Sisi hilang ${c.hilang.besar} − ${c.hilang.kecil} = ${selisih} m. Persegi panjang ${c.cek.p} dan ${c.cek.l}: keliling ${kCek} m, luas ${lCek} petak.`,
+    langkah,
+  };
+}
+
+export const MESIN_GABUNGAN: DefMesin = {
+  id: "mesin-gabungan-k5b4",
+  judul: "Mesin Gabungan",
+  selesaiId: "mesin-gabungan",
+  stasiun: STASIUN_GABUNGAN,
+  kasus: KASUS_GABUNGAN.map(kasusMesinGabungan),
+};
+
+export const SEMUA_MESIN_K5B4 = [MESIN_JALUR, MESIN_SEGITIGA, MESIN_SEGIEMPAT, MESIN_SEGIBANYAK, MESIN_GABUNGAN];

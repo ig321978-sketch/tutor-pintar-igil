@@ -986,6 +986,226 @@
           }
         ]
       }
+    },
+    "E": {
+      "peta": {
+        "pusat": {
+          "judul": "Keliling Gabungan",
+          "ikon": "🏠",
+          "suara": "Ini peta keliling bangun gabungan. Kita belajar batas luar, sekat dalam yang diabaikan, membungkus denah, dan mencari sisi yang hilang. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "luar",
+            "judul": "Batas luar",
+            "ikon": "🏠",
+            "ringkas": "Hanya sisi luar yang dijumlah.",
+            "suara": "Batas luar. Keliling bangun gabungan adalah jalur di batas luar. Jumlahkan hanya sisi luarnya."
+          },
+          {
+            "id": "sekat",
+            "judul": "Sekat dalam",
+            "ikon": "🚪",
+            "ringkas": "Sekat dalam tidak ikut dihitung.",
+            "suara": "Sekat dalam. Sekat yang membagi ruangan berada di dalam denah, jadi tidak ikut dijumlah ke keliling."
+          },
+          {
+            "id": "bungkus",
+            "judul": "Bungkus",
+            "ikon": "📦",
+            "ringkas": "Bungkus denah dengan persegi panjang.",
+            "suara": "Bungkus. Bila denah tidak punya lekukan ke dalam, bungkus denah dengan persegi panjang lalu hitung kelilingnya."
+          },
+          {
+            "id": "hilang",
+            "judul": "Sisi hilang",
+            "ikon": "❓",
+            "ringkas": "Cari dari selisih sisi sejajar.",
+            "suara": "Sisi hilang. Cari dulu dari selisih sisi besar dan sisi kecil yang sejajar, baru semua sisi dijumlah."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "e-luar",
+            "teks": "12 + 4 + 6 + 2 + 6 + 6 = 36",
+            "ikon": "🔢",
+            "cabang": "luar",
+            "petunjuk": "Menjumlah sisi luar itu soal batas luar. Coba cabang lain."
+          },
+          {
+            "id": "e-pagar",
+            "teks": "Pagar mengikuti batas luar",
+            "ikon": "🧱",
+            "cabang": "luar",
+            "petunjuk": "Pagar di batas luar itu soal batas luar. Coba cabang lain."
+          },
+          {
+            "id": "e-sekat",
+            "teks": "Sekat dalam diabaikan",
+            "ikon": "🚪",
+            "cabang": "sekat",
+            "petunjuk": "Sekat yang diabaikan itu soal sekat dalam. Coba cabang lain."
+          },
+          {
+            "id": "e-sepuluh",
+            "teks": "Bukan 36 + 10 = 46",
+            "ikon": "🚫",
+            "cabang": "sekat",
+            "petunjuk": "Hasil yang terlalu panjang karena sekat itu soal sekat dalam. Coba cabang lain."
+          },
+          {
+            "id": "e-bungkus",
+            "teks": "2 × (12 + 6) = 36",
+            "ikon": "📦",
+            "cabang": "bungkus",
+            "petunjuk": "Keliling pembungkus itu soal bungkus. Coba cabang lain."
+          },
+          {
+            "id": "e-lekuk",
+            "teks": "Berlekuk ke dalam: jangan dibungkus",
+            "ikon": "🔳",
+            "cabang": "bungkus",
+            "petunjuk": "Kapan pembungkus tidak cocok itu soal bungkus. Coba cabang lain."
+          },
+          {
+            "id": "e-selisih-enam",
+            "teks": "12 − 6 = 6",
+            "ikon": "6️⃣",
+            "cabang": "hilang",
+            "petunjuk": "Selisih sisi sejajar itu soal sisi hilang. Coba cabang lain."
+          },
+          {
+            "id": "e-selisih-dua",
+            "teks": "6 − 4 = 2",
+            "ikon": "2️⃣",
+            "cabang": "hilang",
+            "petunjuk": "Selisih sisi sejajar itu soal sisi hilang. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Keliling Bangun Gabungan",
+        "suara": "Ini tiga panel tentang keliling bangun gabungan. Ketuk kotaknya untuk membuka, lalu lihat batas luar, pembungkus, dan sisi yang hilang.",
+        "panel": [
+          {
+            "id": "e-luar-info",
+            "tipe": "buka",
+            "judul": "Hanya batas luar",
+            "ide": "Jumlahkan sisi luar, abaikan sekat.",
+            "suara": "Ada tiga hal tentang keliling denah. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "luar",
+                "label": "Luar",
+                "ikon": "🏠",
+                "isi": "Jumlahkan semua sisi luar.",
+                "suara": "Denah L bersisi luar dua belas, empat, enam, dua, enam, dan enam. Semuanya dijumlah sama dengan tiga puluh enam meter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 + 4 + 6 + 2 + 6 + 6 = 36"
+                }
+              },
+              {
+                "id": "sekat",
+                "label": "Sekat",
+                "ikon": "🚪",
+                "isi": "Sekat dalam tidak dijumlah.",
+                "suara": "Dua sekat di dalam denah panjangnya empat dan enam meter. Sekat bukan batas luar, jadi tidak ikut.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "sekat 4 dan 6"
+                }
+              },
+              {
+                "id": "salah",
+                "label": "Salah",
+                "ikon": "🚫",
+                "isi": "Menjumlah sekat terlalu panjang.",
+                "suara": "Bila sekat ikut dijumlah, hasilnya empat puluh enam meter. Itu terlalu panjang dan salah.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "36 + 10 = 46"
+                }
+              }
+            ]
+          },
+          {
+            "id": "e-bungkus-info",
+            "tipe": "banding",
+            "judul": "Kapan boleh dibungkus",
+            "ide": "Bungkus bila tanpa lekukan dalam.",
+            "suara": "Lihat dua denah dan apakah pembungkus persegi panjang cocok.",
+            "sisi": [
+              {
+                "id": "cocok",
+                "nama": "Denah L",
+                "ikon": "📦",
+                "catatan": "Tanpa lekukan ke dalam: cocok.",
+                "suara": "Denah L dibungkus persegi panjang dua belas dan enam. Dua dikali dua belas ditambah enam sama dengan tiga puluh enam meter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 × (12 + 6) = 36"
+                }
+              },
+              {
+                "id": "tidak",
+                "nama": "Denah U",
+                "ikon": "🔳",
+                "catatan": "Berlekuk ke dalam: tidak cocok.",
+                "suara": "Denah U keliling luarnya tiga puluh enam, tetapi pembungkusnya hanya tiga puluh. Pembungkus tidak cocok, jadi jumlahkan sisi luar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "36 bukan 30"
+                }
+              }
+            ],
+            "kesimpulan": "Bungkus hanya bila tidak berlekuk dalam."
+          },
+          {
+            "id": "e-hilang-info",
+            "tipe": "buka",
+            "judul": "Sisi yang hilang",
+            "ide": "Lengkapi dulu dengan selisih.",
+            "suara": "Ada tiga langkah mencari sisi yang hilang. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "satu",
+                "label": "Satu",
+                "ikon": "1️⃣",
+                "isi": "Sisi besar dikurangi sisi kecil.",
+                "suara": "Sisi atas dua belas sejajar dengan sisi bawah enam. Dua belas dikurangi enam sama dengan enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 − 6 = 6"
+                }
+              },
+              {
+                "id": "dua",
+                "label": "Dua",
+                "ikon": "2️⃣",
+                "isi": "Lakukan juga untuk sisi tegak.",
+                "suara": "Sisi kiri enam sejajar dengan sisi kanan empat. Enam dikurangi empat sama dengan dua.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 − 4 = 2"
+                }
+              },
+              {
+                "id": "jumlah",
+                "label": "Jumlah",
+                "ikon": "➕",
+                "isi": "Baru jumlahkan semua sisi.",
+                "suara": "Setelah semua sisi lengkap, jumlahkan semuanya. Hasilnya tiga puluh enam meter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "36 m"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

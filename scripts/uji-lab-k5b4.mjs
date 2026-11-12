@@ -1,5 +1,5 @@
-// Uji Simulasi Kelas 5 Bab 4 (Keliling Bangun Datar): Lab Jalur (A), Lab Segitiga (B), Lab Segi Empat (C), Lab Segi Banyak (D),
-// mesin, skenario, misi, gerbang, data ringkas, pengeja, dan konsep sub-bab berikutnya tidak bocor ke Sub-Bab A sampai D.
+// Uji Simulasi Kelas 5 Bab 4 (Keliling Bangun Datar): Lab Jalur (A), Lab Segitiga (B), Lab Segi Empat (C), Lab Segi Banyak (D), Lab Denah (E),
+// mesin, skenario, misi, gerbang, data ringkas, pengeja, pendaftaran bab, dan konsep sub-bab berikutnya tidak bocor ke Sub-Bab A sampai D.
 // Jalankan: node --no-warnings scripts/uji-lab-k5b4.mjs
 import { readFileSync } from "node:fs";
 import * as M0 from "../src/components/modul/misi-simulasi.ts";
@@ -9,6 +9,7 @@ import * as A from "../src/components/modul/lab-jalur-k5b4a.ts";
 import * as B from "../src/components/modul/lab-segitiga-k5b4b.ts";
 import * as SE from "../src/components/modul/lab-segiempat-k5b4c.ts";
 import * as SB from "../src/components/modul/lab-segibanyak-k5b4d.ts";
+import * as DN from "../src/components/modul/lab-denah-k5b4e.ts";
 import * as MS from "../src/components/modul/mesin-data-k5b4.ts";
 import * as SK from "../src/components/modul/skenario-k5b4.ts";
 import * as ME from "../src/components/modul/mesin-bertahap-k3b1.ts";
@@ -320,7 +321,7 @@ const sisiTanah = (t) => [t.w, t.h, t.w, t.h];
       const l = ME.langkahAktif(x);
       x = l ? ME.langkahMesin(x, { t: "JAWAB", nilai: l.benar }) : ME.langkahMesin(x, { t: "LANJUT" });
     }
-    cek(x.selesai && def.selesaiId === K5.ID_MESIN_K5B4[{ "mesin-jalur-k5b4": "A", "mesin-segitiga-k5b4": "B", "mesin-segiempat-k5b4": "C", "mesin-segibanyak-k5b4": "D" }[def.id]], `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
+    cek(x.selesai && def.selesaiId === K5.ID_MESIN_K5B4[{ "mesin-jalur-k5b4": "A", "mesin-segitiga-k5b4": "B", "mesin-segiempat-k5b4": "C", "mesin-segibanyak-k5b4": "D", "mesin-gabungan-k5b4": "E" }[def.id]], `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
   }
   // Kunci dan pengecoh dihitung ulang mandiri.
   for (const [i, k] of MS.KASUS_JALUR.entries()) {
@@ -392,9 +393,9 @@ const sisiTanah = (t) => [t.w, t.h, t.w, t.h];
 /* ------------------------------ Misi ------------------------------ */
 {
   const huruf = ["A"];
-  sama(Object.keys(TK.MISI_K5B4), ["A", "B", "C", "D"], "teks misi untuk A sampai D");
-  sama(Object.keys(TK.NAMA_SIM_K5B4), ["A", "B", "C", "D"], "nama simulasi untuk A sampai D");
-  cek(TK.hurufK5B4("Z") === "A" && TK.hurufK5B4("A") === "A" && TK.hurufK5B4("B") === "B" && TK.hurufK5B4("C") === "C" && TK.hurufK5B4("D") === "D", "huruf tak dikenal jatuh ke A");
+  sama(Object.keys(TK.MISI_K5B4), ["A", "B", "C", "D", "E"], "teks misi untuk A sampai E");
+  sama(Object.keys(TK.NAMA_SIM_K5B4), ["A", "B", "C", "D", "E"], "nama simulasi untuk A sampai E");
+  cek(TK.hurufK5B4("Z") === "A" && TK.hurufK5B4("A") === "A" && TK.hurufK5B4("B") === "B" && TK.hurufK5B4("C") === "C" && TK.hurufK5B4("D") === "D" && TK.hurufK5B4("E") === "E", "huruf tak dikenal jatuh ke A");
   cek(TK.misiAwalK5Bab4("A").startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK5Bab4("A")), "misi awal dan dapat dieja");
   for (const h of huruf) {
     const daftar = K5.daftarMisiK5Bab4(h);
@@ -487,7 +488,7 @@ const sisiTanah = (t) => [t.w, t.h, t.w, t.h];
     cek(!/correct_index|explanation/.test(s), `${f}: tidak memuat correct_index atau explanation`);
     cek(!/fetch\(|XMLHttpRequest|api\/|openai|anthropic|gemini/i.test(s), `${f}: tanpa jaringan atau model bahasa`);
   }
-  for (const f of ["lab-jalur-k5b4a", "lab-segitiga-k5b4b", "lab-segiempat-k5b4c", "lab-segibanyak-k5b4d", "mesin-data-k5b4", "skenario-k5b4", "misi-k5bab4", "misi-teks-k5b4", "eja-k5b4"]) {
+  for (const f of ["lab-jalur-k5b4a", "lab-segitiga-k5b4b", "lab-segiempat-k5b4c", "lab-segibanyak-k5b4d", "lab-denah-k5b4e", "mesin-data-k5b4", "skenario-k5b4", "misi-k5bab4", "misi-teks-k5b4", "eja-k5b4"]) {
     const s = baca(f, "ts");
     cek(!/fetch\(|XMLHttpRequest|from "react"|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: murni`);
     const impor = s.match(/^import .+$/gm) ?? [];
@@ -892,7 +893,7 @@ const banyakSama = (s) => {
   }
   const pembungkus = baca("SimulasiK5Bab4", "tsx");
   const coba = [...pembungkus.matchAll(/"([^"]*\?)"/g)].map((m) => m[1]);
-  cek(coba.length >= 12 && coba.every(tanpaAngka), "Coba ini mesin A sampai D dapat dieja");
+  cek(coba.length >= 15 && coba.every(tanpaAngka), "Coba ini mesin A sampai E dapat dieja");
   const ucapan = [];
   for (let i = 0; i < B.DATA_JUMLAH.length; i += 1) {
     const xj = LB(y0, { t: "JM_DATA", i });
@@ -1595,7 +1596,458 @@ const samaSisi = (n, s) => Array.from({ length: n }, () => s);
   const kartu = (id) => D0.peta.kartu.find((k) => k.id === id).teks;
   cek(kartu("d-lima") === `5 × 3 = ${jalanSisi(samaSisi(5, 3))}` && kartu("d-enam") === `6 × 4 = ${jalanSisi(samaSisi(6, 4))}` && kartu("d-jumlah") === `${SB.DATA_BEDA[0].join(" + ")} = ${jalanSisi(SB.DATA_BEDA[0])}`, "ringkas D: kartu beraturan dan sisi berbeda (dihitung)");
   cek(kartu("d-sepuluh") === `Segi lima sisi 2: ${jalanSisi(samaSisi(5, 2))}` && kartu("d-enambelas") === `Segi delapan sisi 2: ${jalanSisi(samaSisi(8, 2))}` && kartu("d-lima-sisi") === "Segi lima punya 5 sisi" && kartu("d-enam-sisi") === "Segi enam punya 6 sisi", "ringkas D: kartu tabel dan banyak sisi (dihitung)");
-  sama(Object.keys(ringkas.subBab), ["A", "B", "C", "D"], "ringkas: gelombang ini sub-bab A, B, C, dan D");
+}
+
+/* ------------------------------ Lab E: Denah ------------------------------ */
+const LE = DN.langkahDenahK5B4E;
+const e0 = DN.awalDenahK5B4E();
+// Hitungan mandiri denah: poligon bersudut siku diubah menjadi petak (titik tengah petak di dalam poligon, aturan genap-ganjil),
+// lalu keliling = sisi petak yang hanya dimiliki satu petak, luas = banyak petak, cocok-bungkus = tiap baris dan kolom petak menyambung.
+const dalamPoligon = (v, px, py) => {
+  let dalam = false;
+  for (let k = 0; k < v.length; k += 1) {
+    const [x1, y1] = v[k];
+    const [x2, y2] = v[(k + 1) % v.length];
+    if (x1 === x2 && x1 > px && py > Math.min(y1, y2) && py < Math.max(y1, y2)) dalam = !dalam;
+  }
+  return dalam;
+};
+const petakDenah = (v) => {
+  const xs = v.map((p) => p[0]);
+  const ys = v.map((p) => p[1]);
+  const sel = new Set();
+  for (let y = Math.min(...ys); y < Math.max(...ys); y += 1) for (let x = Math.min(...xs); x < Math.max(...xs); x += 1) if (dalamPoligon(v, x + 0.5, y + 0.5)) sel.add(`${x},${y}`);
+  return sel;
+};
+const kelilingPetak = (sel) => {
+  let n = 0;
+  for (const kunci of sel) {
+    const [x, y] = kunci.split(",").map(Number);
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) if (!sel.has(`${x + dx},${y + dy}`)) n += 1;
+  }
+  return n;
+};
+const menyambung = (sel) => {
+  const baris = new Map();
+  const kolom = new Map();
+  for (const kunci of sel) {
+    const [x, y] = kunci.split(",").map(Number);
+    baris.set(y, [...(baris.get(y) ?? []), x]);
+    kolom.set(x, [...(kolom.get(x) ?? []), y]);
+  }
+  const rapat = (a) => {
+    const u = [...a].sort((m, n) => m - n);
+    return u[u.length - 1] - u[0] + 1 === u.length;
+  };
+  return [...baris.values()].every(rapat) && [...kolom.values()].every(rapat);
+};
+const sisiSegi = (v) => v.map((p, k) => {
+  const q = v[(k + 1) % v.length];
+  let jarak = 0;
+  let [x, y] = p;
+  while (x !== q[0]) {
+    x += Math.sign(q[0] - x);
+    jarak += 1;
+  }
+  while (y !== q[1]) {
+    y += Math.sign(q[1] - y);
+    jarak += 1;
+  }
+  return jarak;
+});
+const tulisJ = (a) => a.join(" + ");
+{
+  cek(e0.pernah.length === 0 && e0.pesan === "" && e0.luar.lewat.every((v) => !v) && !e0.bungkus.tahuOk && e0.hilang.ok.every((v) => !v), "E awal: kosong, belum ada riwayat");
+  cek(DN.DATA_LUAR.length === 3 && DN.DATA_BUNGKUS.length === 3 && DN.DATA_HILANG.length === 2, "E: jumlah denah di tiap tampilan");
+
+  // Geometri semua denah.
+  const semuaDenah = [...DN.DATA_LUAR.map((d) => ["luar " + d.nama, d.v]), ...DN.DATA_BUNGKUS.map((d) => ["bungkus " + d.nama, d.v]), ...DN.DATA_HILANG.map((d) => ["hilang " + d.nama, d.v])];
+  for (const [nama, v] of semuaDenah) {
+    const sel = petakDenah(v);
+    const sisi = DN.sisiDenah(v);
+    cek(v.every((p, k) => { const q = v[(k + 1) % v.length]; return (p[0] === q[0]) !== (p[1] === q[1]); }), `E ${nama}: tiap sisi mendatar atau tegak, tidak nol`);
+    sama(sisi, sisiSegi(v), `E ${nama}: panjang sisi sama dengan berjalan satu meter demi satu meter`);
+    cek(kelilingPetak(sel) === DN.kelilingLuar(v) && DN.kelilingLuar(v) === jalanSisi(sisi), `E ${nama}: keliling luar ${DN.kelilingLuar(v)} sama dengan hitungan sisi petak di tepi`);
+    const { w, h } = DN.ukuranBungkus(v);
+    cek(DN.kelilingBungkus(v) === 2 * (w + h) && w * h >= sel.size, `E ${nama}: pembungkus ${w} dan ${h}`);
+    cek(DN.cocokBungkus(v) === menyambung(sel), `E ${nama}: cocok bungkus (${DN.cocokBungkus(v)}) sama dengan baris dan kolom petak menyambung`);
+  }
+  // Sekat berada di dalam denah, bukan batas luar.
+  for (const d of DN.DATA_LUAR) {
+    const sel = petakDenah(d.v);
+    for (const [j, s] of d.sekat.entries()) {
+      const [x1, y1, x2, y2] = s;
+      let ok = true;
+      if (x1 === x2) for (let y = Math.min(y1, y2); y < Math.max(y1, y2); y += 1) { if (!(sel.has(`${x1 - 1},${y}`) && sel.has(`${x1},${y}`))) ok = false; }
+      else for (let x = Math.min(x1, x2); x < Math.max(x1, x2); x += 1) { if (!(sel.has(`${x},${y1 - 1}`) && sel.has(`${x},${y1}`))) ok = false; }
+      cek(ok && DN.panjangSekat(s) === (x1 === x2 ? Math.abs(y2 - y1) : Math.abs(x2 - x1)), `E denah ${d.nama}: sekat ${j + 1} di dalam denah, panjang ${DN.panjangSekat(s)}`);
+    }
+    cek(DN.jumlahSekat(d) === jalanSisi(d.sekat.map(DN.panjangSekat)), `E denah ${d.nama}: jumlah sekat`);
+  }
+  // Sisi hilang: selisih sisi sejajar, dihitung dari koordinat.
+  for (const d of DN.DATA_HILANG) {
+    const sisi = sisiSegi(d.v);
+    for (const g of d.hilang) {
+      const datar = (k) => d.v[k][1] === d.v[(k + 1) % d.v.length][1];
+      cek(sisi[g.sisi] === sisi[g.besar] - sisi[g.kecil] && datar(g.sisi) === datar(g.besar) && datar(g.sisi) === datar(g.kecil) && sisi[g.besar] > sisi[g.kecil], `E hilang ${d.nama}: sisi ke-${g.sisi + 1} = ${sisi[g.besar]} − ${sisi[g.kecil]} = ${sisi[g.sisi]}, ketiganya sejajar`);
+    }
+    cek(DN.jumlahHilang(d) === jalanSisi(d.hilang.map((g) => sisi[g.sisi])), `E hilang ${d.nama}: jumlah sisi hilang`);
+  }
+
+  // Luar.
+  const letakL = [];
+  for (const [i, d] of DN.DATA_LUAR.entries()) {
+    const nama = `denah ${d.nama}`;
+    const sisi = sisiSegi(d.v);
+    const n = sisi.length;
+    const K = kelilingPetak(petakDenah(d.v));
+    const sekat = jalanSisi(d.sekat.map(DN.panjangSekat));
+    const o = DN.opsiLuar(i);
+    cek(o.length === 3 && new Set(o).size === 3 && o.filter((v) => v === K).length === 1 && o.includes(K + sekat) && o.includes(K - sisi[n - 1]) && o.every((v) => v > 0), `E Luar ${nama}: tiga pilihan unik, satu benar (${K}), pengecoh sekat ikut dijumlah dan satu sisi terlewat`);
+    letakL.push(o.indexOf(K));
+    const xl = LE(e0, { t: "LR_DATA", i });
+    cek(xl.luar.lewat.length === n, `E Luar ${nama}: ${n} sisi luar`);
+    cek(/Ketuk dulu/.test(LE(xl, { t: "LR_HASIL", nilai: K }).pesan) && LE(xl, { t: "LR_HASIL", nilai: K }).pernah.length === 0, `E Luar ${nama}: keliling sebelum semua sisi luar diketuk ditolak`);
+    for (const [j, s] of d.sekat.entries()) {
+      const t = LE(xl, { t: "LR_SEKAT", j });
+      cek(/sekat dalam/.test(t.pesan) && t.pesan.includes(`${DN.panjangSekat(s)} m`) && /tidak dijumlah/.test(t.pesan) && !t.pesan.startsWith("✅") && t.luar.lewat.every((v) => !v) && t.pernah.length === 0, `E Luar ${nama}: sekat ${j + 1} ditolak, tidak mengubah jumlah`);
+    }
+    cek(LE(xl, { t: "LR_SEKAT", j: d.sekat.length }) === xl && LE(xl, { t: "LR_SEKAT", j: -1 }) === xl, `E Luar ${nama}: sekat di luar batas diabaikan`);
+    const urutan = [sisi.map((_, k) => k), sisi.map((_, k) => n - 1 - k), sisi.map((_, k) => (k + 2) % n)];
+    for (const urut of urutan) {
+      let s = xl;
+      urut.forEach((k, m) => {
+        s = LE(s, { t: "LR_SISI", k });
+        const dipakai = urut.slice(0, m + 1).sort((a, b) => a - b).map((q) => sisi[q]);
+        cek(s.pesan.startsWith("✅") && s.pesan.includes(`sepanjang ${sisi[k]} m`) && s.pesan.includes(`Jumlah sekarang ${dipakai.length === 1 ? dipakai[0] : `${dipakai.join(" + ")} = ${jalanSisi(dipakai)}`} m`), `E Luar ${nama}: sisi luar ke-${k + 1} urutan ${urut.join("")} langkah ${m + 1}`);
+        cek(LE(s, { t: "LR_SISI", k }).pesan.includes("sudah dijumlah") && LE(s, { t: "LR_SISI", k }).luar.lewat.filter(Boolean).length === m + 1, `E Luar ${nama}: mengetuk sisi luar ke-${k + 1} lagi ditolak`);
+      });
+      cek(s.pesan.includes("Semua sisi luar sudah dijumlah") && s.pesan.includes("Sekat dalam tidak ikut"), `E Luar ${nama}: semua sisi luar disebut selesai`);
+      for (const v of o.filter((q) => q !== K)) {
+        const t = LE(s, { t: "LR_HASIL", nilai: v });
+        cek(!t.luar.hasilOk && t.pernah.length === 0 && !t.pesan.startsWith("✅") && /ikut menjumlah sekat dalam/.test(t.pesan) === (v === K + sekat) && /terlewat/.test(t.pesan) === (v === K - sisi[n - 1] && v !== K + sekat), `E Luar ${nama}: keliling ${v} ditolak dan dijelaskan tepat`);
+      }
+      const ok = LE(s, { t: "LR_HASIL", nilai: K });
+      cek(ok.luar.hasilOk && ok.pernah.includes(`luar:${i}`) && ok.pesan.startsWith("✅") && ok.pesan.includes(`${tulisJ(sisi)} = ${K} m`) && /sekat dalam diabaikan/.test(ok.pesan), `E Luar ${nama}: keliling ${K} tercatat`);
+    }
+    const sebagian = jalan(xl, LE, [{ t: "LR_SISI", k: 0 }, { t: "LR_SISI", k: 1 }]);
+    cek(LE(sebagian, { t: "LR_HASIL", nilai: K }).pernah.length === 0, `E Luar ${nama}: sebagian sisi luar belum cukup`);
+    cek(LE(xl, { t: "LR_SISI", k: n }) === xl && LE(xl, { t: "LR_SISI", k: -1 }) === xl && LE(xl, { t: "LR_HASIL", nilai: 999 }) === xl, `E Luar ${nama}: sisi dan nilai di luar batas diabaikan`);
+    cek(LE(sebagian, { t: "LR_DATA", i: (i + 1) % 3 }).luar.lewat.every((v) => !v), `E Luar ${nama}: ganti denah mengosongkan ketukan`);
+  }
+  cek(new Set(letakL).size >= 2, `E Luar: letak jawaban benar bervariasi (${letakL.join("")})`);
+  cek(LE(e0, { t: "LR_DATA", i: 3 }) === e0 && LE(e0, { t: "LR_DATA", i: -1 }) === e0, "E Luar: denah di luar batas diabaikan");
+
+  // Bungkus.
+  const letakB = [];
+  const cocokAda = [];
+  for (const [i, d] of DN.DATA_BUNGKUS.entries()) {
+    const nama = `denah ${d.nama}`;
+    const sel = petakDenah(d.v);
+    const K = kelilingPetak(sel);
+    const cocok = menyambung(sel);
+    cocokAda.push(cocok);
+    const { w, h } = DN.ukuranBungkus(d.v);
+    const B = 2 * (w + h);
+    const luas = w * h;
+    const o = DN.opsiBungkus(i);
+    cek(o.length === 3 && new Set(o).size === 3 && o.filter((v) => v === K).length === 1 && o.every((v) => v > 0) && (cocok ? K === B : K > B), `E Bungkus ${nama}: tiga pilihan unik, satu benar (${K}), ${cocok ? "sama" : "lebih panjang dari"} pembungkus ${B}`);
+    cek(cocok ? o.includes(luas) && o.includes(w + h) : o.includes(B) && o.includes(luas), `E Bungkus ${nama}: pengecoh ${cocok ? "luas dan jumlah dua sisi" : "pembungkus yang dipaksakan dan luas"}`);
+    letakB.push(o.indexOf(K));
+    const xb = LE(e0, { t: "BG_DATA", i });
+    for (const v of o) cek(LE(xb, { t: "BG_HASIL", nilai: v }).pernah.length === 0 && /Periksa dulu/.test(LE(xb, { t: "BG_HASIL", nilai: v }).pesan), `E Bungkus ${nama}: keliling ${v} sebelum pemeriksaan ditolak`);
+    const salah = LE(xb, { t: "BG_COCOK", ya: !cocok });
+    cek(!salah.bungkus.tahuOk && !salah.pesan.startsWith("✅") && salah.pesan.includes(`${K} m`), `E Bungkus ${nama}: jawaban cocok yang salah ditolak`);
+    cek(LE(salah, { t: "BG_HASIL", nilai: K }).pernah.length === 0, `E Bungkus ${nama}: keliling setelah jawaban salah tidak dicatat`);
+    const benar = LE(xb, { t: "BG_COCOK", ya: cocok });
+    cek(benar.bungkus.tahuOk && benar.pesan.startsWith("✅") && (cocok ? benar.pesan.includes(`2 × (${w} + ${h})`) : /lekukan ke dalam: keliling luar/.test(benar.pesan) && benar.pesan.includes(`${K} m`) && benar.pesan.includes(`${B} m`)), `E Bungkus ${nama}: jawaban cocok yang benar diterima`);
+    cek(LE(xb, { t: "BG_COCOK", ya: "ya" }) === xb, `E Bungkus ${nama}: jawaban bukan ya atau tidak diabaikan`);
+    for (const v of o.filter((q) => q !== K)) {
+      const t = LE(benar, { t: "BG_HASIL", nilai: v });
+      cek(!t.bungkus.hasilOk && t.pernah.length === 0 && !t.pesan.startsWith("✅"), `E Bungkus ${nama}: keliling ${v} ditolak`);
+      cek(/lekukan ke dalam/.test(t.pesan) === (!cocok && v === B) && /luas pembungkus/.test(t.pesan) === (v === luas && !(!cocok && v === B)) && /baru panjang ditambah lebar/.test(t.pesan) === (cocok && v === w + h && v !== luas), `E Bungkus ${nama}: keliling ${v} dijelaskan tepat`);
+    }
+    const ok = LE(benar, { t: "BG_HASIL", nilai: K });
+    cek(ok.bungkus.hasilOk && ok.pernah.includes(`bungkus:${i}`) && ok.pesan.startsWith("✅") && (cocok ? ok.pesan.includes(`2 × (${w} + ${h}) = ${K} m`) : ok.pesan.includes(`${tulisJ(sisiSegi(d.v))} = ${K} m`) && /Pembungkus tidak dipakai/.test(ok.pesan)), `E Bungkus ${nama}: keliling ${K} tercatat`);
+    cek(LE(xb, { t: "BG_HASIL", nilai: 999 }) === xb && !LE(ok, { t: "BG_DATA", i: (i + 1) % 3 }).bungkus.tahuOk && LE(ok, { t: "BG_DATA", i: (i + 1) % 3 }).pernah.includes(`bungkus:${i}`), `E Bungkus ${nama}: nilai di luar pilihan diabaikan, ganti denah mengosongkan`);
+    cek(!LE(ok, { t: "BG_COCOK", ya: !cocok }).bungkus.hasilOk && LE(ok, { t: "BG_COCOK", ya: !cocok }).pernah.includes(`bungkus:${i}`), `E Bungkus ${nama}: jawaban salah setelah selesai mengosongkan tanda, riwayat tetap`);
+  }
+  cek(cocokAda.includes(true) && cocokAda.includes(false) && cocokAda.filter((v) => !v).length === 1, "E Bungkus: ada denah cocok dan satu denah (U) yang tidak cocok");
+  cek(new Set(letakB).size >= 2, `E Bungkus: letak jawaban benar bervariasi (${letakB.join("")})`);
+  cek(LE(e0, { t: "BG_DATA", i: 3 }) === e0, "E Bungkus: denah di luar batas diabaikan");
+
+  // Hilang.
+  const letakH = [];
+  for (const [i, d] of DN.DATA_HILANG.entries()) {
+    const nama = `denah ${d.nama}`;
+    const sisi = sisiSegi(d.v);
+    const K = kelilingPetak(petakDenah(d.v));
+    const hid = jalanSisi(d.hilang.map((g) => sisi[g.sisi]));
+    const xh = LE(e0, { t: "HL_DATA", i });
+    cek(xh.hilang.ok.length === 2, `E Hilang ${nama}: dua sisi hilang`);
+    for (const [h, g] of d.hilang.entries()) {
+      const o = DN.opsiHilang(i, h);
+      const benar = sisi[g.besar] - sisi[g.kecil];
+      cek(o.length === 3 && new Set(o).size === 3 && o.filter((v) => v === benar).length === 1 && o.includes(sisi[g.besar] + sisi[g.kecil]) && o.includes(sisi[g.besar]), `E Hilang ${nama}: sisi hilang ${h + 1} tiga pilihan unik, satu benar (${benar}), pengecoh dijumlah dan sisi besar`);
+      letakH.push(o.indexOf(benar));
+      for (const v of o.filter((q) => q !== benar)) {
+        const t = LE(xh, { t: "HL_ISI", h, nilai: v });
+        cek(!t.hilang.ok[h] && !t.pesan.startsWith("✅") && /menjumlah, padahal/.test(t.pesan) === (v === sisi[g.besar] + sisi[g.kecil]) && /panjang sisi besar/.test(t.pesan) === (v === sisi[g.besar]), `E Hilang ${nama}: sisi hilang ${h + 1} isi ${v} ditolak dan dijelaskan tepat`);
+      }
+      const t = LE(xh, { t: "HL_ISI", h, nilai: benar });
+      cek(t.hilang.ok[h] && t.pesan.startsWith("✅") && t.pesan.includes(`${sisi[g.besar]} − ${sisi[g.kecil]} = ${benar} m`), `E Hilang ${nama}: sisi hilang ${h + 1} diisi ${benar} dari selisih`);
+      cek(/sudah dilengkapi/.test(LE(t, { t: "HL_ISI", h, nilai: benar }).pesan), `E Hilang ${nama}: sisi hilang ${h + 1} tidak diisi lagi`);
+    }
+    const o = DN.opsiHasilHilang(i);
+    cek(o.length === 3 && new Set(o).size === 3 && o.filter((v) => v === K).length === 1 && o.includes(K - hid) && o.includes(K + hid), `E Hilang ${nama}: pilihan keliling unik, satu benar (${K}), pengecoh sisi hilang belum dijumlah dan dua kali`);
+    letakH.push(o.indexOf(K));
+    for (const v of o) cek(/Lengkapi dulu/.test(LE(xh, { t: "HL_HASIL", nilai: v }).pesan) && LE(xh, { t: "HL_HASIL", nilai: v }).pernah.length === 0, `E Hilang ${nama}: keliling ${v} sebelum sisi hilang lengkap ditolak`);
+    const satu = LE(xh, { t: "HL_ISI", h: 0, nilai: sisi[d.hilang[0].sisi] });
+    cek(/Lengkapi dulu/.test(LE(satu, { t: "HL_HASIL", nilai: K }).pesan) && LE(satu, { t: "HL_HASIL", nilai: K }).pernah.length === 0, `E Hilang ${nama}: satu sisi hilang belum cukup`);
+    for (const urut of [[0, 1], [1, 0]]) {
+      const penuh = jalan(xh, LE, urut.map((h) => ({ t: "HL_ISI", h, nilai: sisi[d.hilang[h].sisi] })));
+      for (const v of o.filter((q) => q !== K)) {
+        const t = LE(penuh, { t: "HL_HASIL", nilai: v });
+        cek(!t.hilang.hasilOk && t.pernah.length === 0 && /belum menjumlah sisi yang hilang/.test(t.pesan) === (v === K - hid) && /dua kali/.test(t.pesan) === (v === K + hid), `E Hilang ${nama}: keliling ${v} ditolak dan dijelaskan tepat`);
+      }
+      const ok = LE(penuh, { t: "HL_HASIL", nilai: K });
+      cek(ok.hilang.hasilOk && ok.pernah.includes(`hilang:${i}`) && ok.pesan.startsWith("✅") && ok.pesan.includes(`${tulisJ(sisi)} = ${K} m`), `E Hilang ${nama}: keliling ${K} tercatat urutan ${urut.join("")}`);
+      cek(!LE(ok, { t: "HL_DATA", i: (i + 1) % 2 }).hilang.ok.some(Boolean) && LE(ok, { t: "HL_DATA", i: (i + 1) % 2 }).pernah.includes(`hilang:${i}`), `E Hilang ${nama}: ganti denah mengosongkan, riwayat tetap`);
+    }
+    cek(LE(xh, { t: "HL_ISI", h: 2, nilai: 5 }) === xh && LE(xh, { t: "HL_ISI", h: -1, nilai: 5 }) === xh && LE(xh, { t: "HL_ISI", h: 0, nilai: 999 }) === xh && LE(xh, { t: "HL_HASIL", nilai: 999 }) === xh, `E Hilang ${nama}: sisi dan nilai di luar batas diabaikan`);
+  }
+  cek(new Set(letakH).size >= 2, `E Hilang: letak jawaban benar bervariasi (${letakH.join("")})`);
+  cek(LE(e0, { t: "HL_DATA", i: 2 }) === e0, "E Hilang: denah di luar batas diabaikan");
+
+  // Fuzz.
+  const acak = acakDari(131);
+  let s = e0;
+  let ok = true;
+  const pesanSemua = new Set();
+  const riwayatSemua = new Set();
+  const ID = /^(luar:[0-2]|bungkus:[0-2]|hilang:[0-1])$/;
+  for (let m = 0; m < 20000; m += 1) {
+    const p = acak(30);
+    const dl = DN.dataLuar(s);
+    const nl = dl.v.length;
+    const db = DN.dataBungkus(s);
+    const dh = DN.dataHilang(s);
+    const sh = DN.sisiDenah(dh.v);
+    const hBelum = Math.max(0, s.hilang.ok.findIndex((v) => !v));
+    const a =
+      p === 0 ? { t: "LR_DATA", i: acak(4) } :
+      p <= 3 ? { t: "LR_SISI", k: acak(nl + 1) - (acak(8) === 0 ? 1 : 0) } :
+      p === 4 || p === 5 ? { t: "LR_SISI", k: Math.max(0, s.luar.lewat.findIndex((v) => !v)) } :
+      p === 6 ? { t: "LR_SEKAT", j: acak(3) - (acak(6) === 0 ? 1 : 0) } :
+      p === 7 ? { t: "LR_HASIL", nilai: acak(5) === 0 ? 99 : DN.opsiLuar(s.luar.data)[acak(3)] } :
+      p === 8 || p === 9 ? { t: "LR_HASIL", nilai: DN.kelilingLuar(dl.v) } :
+      p === 10 ? { t: "BG_DATA", i: acak(4) } :
+      p === 11 ? { t: "BG_COCOK", ya: acak(2) === 0 } :
+      p === 12 || p === 13 ? { t: "BG_COCOK", ya: DN.cocokBungkus(db.v) } :
+      p === 14 ? { t: "BG_HASIL", nilai: acak(5) === 0 ? 99 : DN.opsiBungkus(s.bungkus.data)[acak(3)] } :
+      p === 15 || p === 16 ? { t: "BG_HASIL", nilai: DN.kelilingLuar(db.v) } :
+      p === 17 ? { t: "HL_DATA", i: acak(3) } :
+      p === 18 ? { t: "HL_ISI", h: acak(3) - (acak(6) === 0 ? 1 : 0), nilai: acak(5) === 0 ? 99 : DN.opsiHilang(s.hilang.data, acak(2))[acak(3)] } :
+      p === 19 || p === 20 || p === 21 ? { t: "HL_ISI", h: hBelum, nilai: sh[dh.hilang[hBelum].sisi] } :
+      p === 22 ? { t: "HL_HASIL", nilai: acak(5) === 0 ? 99 : DN.opsiHasilHilang(s.hilang.data)[acak(3)] } :
+      p === 23 || p === 24 ? { t: "HL_HASIL", nilai: DN.kelilingLuar(dh.v) } :
+      p === 25 ? { t: "PESAN_KOSONG" } :
+      acak(30) === 0 ? { t: "RESET" } : { t: "LR_SISI", k: Math.max(0, s.luar.lewat.findIndex((v) => !v)) };
+    const t = LE(s, a);
+    if (a.t !== "RESET" && !s.pernah.every((v) => t.pernah.includes(v))) ok = false;
+    if (!(t.luar.data >= 0 && t.luar.data < 3 && t.bungkus.data >= 0 && t.bungkus.data < 3 && t.hilang.data >= 0 && t.hilang.data < 2)) ok = false;
+    if (t.luar.lewat.length !== DN.DATA_LUAR[t.luar.data].v.length || t.hilang.ok.length !== 2) ok = false;
+    if (t.hilang.hasilOk && !t.hilang.ok.every(Boolean)) ok = false;
+    for (const id of t.pernah) if (!ID.test(id)) ok = false;
+    for (const id of t.pernah.filter((v) => !s.pernah.includes(v))) {
+      const [jenis, nn] = id.split(":");
+      const idx = Number(nn);
+      if (jenis === "luar" && !(t.luar.data === idx && t.luar.lewat.every(Boolean) && t.luar.hasilOk)) ok = false;
+      if (jenis === "bungkus" && !(t.bungkus.data === idx && t.bungkus.tahuOk && t.bungkus.hasilOk)) ok = false;
+      if (jenis === "hilang" && !(t.hilang.data === idx && t.hilang.ok.every(Boolean) && t.hilang.hasilOk)) ok = false;
+    }
+    if (t.pesan) pesanSemua.add(t.pesan);
+    for (const id of t.pernah) riwayatSemua.add(id);
+    s = t;
+  }
+  cek(ok, "fuzz 20.000 aksi Lab Denah: batas terjaga, riwayat tidak dicabut dan hanya bila tercapai");
+  cek(pesanSemua.size > 40 && [...pesanSemua].every(tanpaAngka), `fuzz Lab Denah: semua ${pesanSemua.size} pesan dieja menjadi kata`);
+  cek(riwayatSemua.size >= 6, `fuzz Lab Denah: riwayat terkumpul (${[...riwayatSemua].sort().join(" ")})`);
+  globalThis.__pesanE = [...pesanSemua];
+}
+
+/* ------------------------------ Mesin E: kunci mandiri ------------------------------ */
+{
+  for (const [i, k] of MS.KASUS_GABUNGAN.entries()) {
+    const c = MS.MESIN_GABUNGAN.kasus[i];
+    const [lr, bg, hl, cekL] = c.langkah;
+    const Kl = jalanSisi(k.luar.sisi);
+    const sekat = jalanSisi(k.luar.sekat);
+    const n = k.luar.sisi.length;
+    cek(lr.benar === `${Kl} m` && lr.tanya.includes(k.luar.sisi.join(" m, ")) && lr.tanya.includes(k.luar.sekat.join(" m dan ")), `Mesin ${k.id}: luar ${Kl} m`);
+    cek(lr.opsi.includes(`${Kl + sekat} m`) && lr.opsi.includes(`${Kl - k.luar.sisi[n - 1]} m`) && lr.opsi.every((o) => o === lr.benar || o !== `${Kl} m`), `Mesin ${k.id}: pengecoh luar (sekat ikut dijumlah, satu sisi terlewat)`);
+    const Kb = kelilingPetak(petakDenah([[0, 0], [k.bungkus.w, 0], [k.bungkus.w, k.bungkus.h], [0, k.bungkus.h]]));
+    cek(bg.benar === `${Kb} m` && bg.tanya.includes(`${k.bungkus.w} m dan ${k.bungkus.h} m`) && Kb === 2 * (k.bungkus.w + k.bungkus.h), `Mesin ${k.id}: bungkus ${Kb} m (sisi petak di tepi)`);
+    cek(bg.opsi.includes(`${petakMandiri(k.bungkus.w, k.bungkus.h)} m`) && bg.opsi.includes(`${k.bungkus.w + k.bungkus.h} m`) && petakMandiri(k.bungkus.w, k.bungkus.h) !== Kb, `Mesin ${k.id}: pengecoh bungkus (luas, jumlah dua sisi)`);
+    const sel = k.hilang.besar - k.hilang.kecil;
+    cek(hl.benar === `${sel} m` && hl.tanya.includes(`${k.hilang.besar} m`) && hl.tanya.includes(`${k.hilang.kecil} m`) && sel > 0, `Mesin ${k.id}: sisi hilang ${sel} m`);
+    cek(hl.opsi.includes(`${k.hilang.besar + k.hilang.kecil} m`) && hl.opsi.includes(`${k.hilang.besar} m`), `Mesin ${k.id}: pengecoh hilang (dijumlah, sisi besar)`);
+    const Kc = kelilingPetak(petakDenah([[0, 0], [k.cek.p, 0], [k.cek.p, k.cek.l], [0, k.cek.l]]));
+    const Lc = petakMandiri(k.cek.p, k.cek.l);
+    cek(Kc !== Lc && cekL.benar === `keliling ${Kc} m, luas ${Lc} petak` && cekL.opsi.includes(`keliling ${Lc} m, luas ${Kc} petak`) && cekL.opsi.includes(`keliling ${Kc} m, luas ${Kc} petak`), `Mesin ${k.id}: cek keliling ${Kc} dan luas ${Lc}`);
+    const ej = EJ.ejaK5B4(c.ringkas);
+    cek([Kl, Kb, sel, Kc, Lc].every((v) => ej.includes(EJ.kataK5B4(v))), `Mesin ${k.id}: ringkas dieja dengan hasil benar`);
+  }
+  sama(MS.KASUS_GABUNGAN.map((k) => k.id), ["buku", "kamar", "komang"], "Mesin E: tiga kasus");
+  cek(MS.KASUS_GABUNGAN[0].luar.sisi.join() === "4,4,4,6,4,4,4,2,4,8,6,4" && jalanSisi(MS.KASUS_GABUNGAN[0].luar.sisi) === 54 && D.RONDE_HITUNG_CE.flat().some((r) => r.luar.join() === "4,4,4,6,4,4,4,2,4,8,6,4" && r.hasil === 54) && D.RONDE_HITUNG_CE.flat().some((r) => r.luar.join() === "12,6,12,6" && r.hasil === 36), "Mesin E: denah buku 54 dan pembungkus 12, 6 sama dengan data buku");
+}
+
+/* ------------------------------ Skenario E ------------------------------ */
+{
+  const S = SK.SKENARIO_K5B4E;
+  cek(S.adegan.length >= 5 && S.adegan.length <= 8, `${S.id}: 5 sampai 8 adegan`);
+  cek(S.adegan[0].jenis === "narasi" && S.adegan[S.adegan.length - 1].jenis === "akhir", `${S.id}: buka dan tutup`);
+  cek(new Set(S.adegan.map((a) => a.jenis)).size >= 4, `${S.id}: paling sedikit empat jenis adegan`);
+  const semuaTeks = [];
+  for (const a of S.adegan) {
+    semuaTeks.push(a.cerita);
+    for (const o of a.opsi ?? []) semuaTeks.push(o.teks, o.umpan);
+    for (const q of a.soal ?? []) semuaTeks.push(q.teks, ...q.opsi);
+    for (const f of ["tanya", "sukses", "salah", "kurang", "lebih"]) if (a[f]) semuaTeks.push(a[f]);
+  }
+  cek(semuaTeks.every(tanpaAngka), `${S.id}: semua teks dapat dieja`);
+  sama(S.id.replace(/-k5b4$/, ""), K5.ID_SKENARIO_K5B4.E, "id skenario E sesuai id misi");
+  // Pencapaian bab: skenario menyentuh konsep A sampai E.
+  const semua = semuaTeks.join(" | ");
+  const sentuh = { "A keliling dan luas": /keliling/i.test(semua) && /luas/i.test(semua) && /batas luar|tepi/i.test(semua), "B segitiga": /segitiga sama sisi/.test(semua), "C persegi panjang": /persegi panjang/.test(semua), "D segi beraturan": /segi enam beraturan/.test(semua), "E sekat, bungkus, sisi hilang": /sekat/.test(semua) && /bungkus/i.test(semua) && /hilang/.test(semua) };
+  for (const [nama, ada] of Object.entries(sentuh)) cek(ada, `E pencapaian bab: skenario menyentuh konsep ${nama}`);
+  const adegan = (id) => S.adegan.find((a) => a.id === id);
+  const bangun = adegan("bangun").soal;
+  cek(bangun[0].jawaban === String(jalanSisi([5, 5, 5])) && bangun[0].jawaban === "15" && bangun[0].opsi.includes("10") && bangun[0].opsi.includes("25") && bangun[0].opsi.filter((o) => o !== "15").every((o) => Number(o) !== 15), "E: bendera segitiga sama sisi 5 m berkeliling 15 (dihitung), pengecoh 10 dan 25");
+  cek(bangun[1].jawaban === String(jalanSisi([5, 3, 5, 3])) && bangun[1].jawaban === "16" && bangun[1].opsi.includes(String(5 + 3)) && bangun[1].opsi.includes(String(petakMandiri(5, 3))) && bangun[1].opsi.filter((o) => o !== "16").every((o) => Number(o) !== 16), "E: meja 5 m dan 3 m berkeliling 16 (dihitung), pengecoh 8 dan 15");
+  cek(bangun[2].jawaban === String(jalanSisi([4, 4, 4, 4, 4, 4])) && bangun[2].jawaban === "24" && bangun[2].opsi.includes(String(6 + 4)) && bangun[2].opsi.includes(String(4 * 4)) && bangun[2].opsi.filter((o) => o !== "24").every((o) => Number(o) !== 24), "E: kolam segi enam sisi 4 m berkeliling 24 (dihitung), pengecoh 10 dan 16");
+  const sekat = adegan("sekat");
+  cek(/tidak, sekat bukan batas luar/.test(sekat.opsi.find((o) => o.benar).teks) && sekat.opsi.filter((o) => !o.benar).every((o) => !/^tidak/.test(o.teks)), "E: sekat tidak dijumlah, pengecoh salah");
+  const pagar = adegan("pagar");
+  cek(/keliling/.test(pagar.opsi.find((o) => o.benar).teks) && pagar.opsi.filter((o) => !o.benar).every((o) => !/keliling/.test(o.teks.replace("bukan keliling", ""))), "E: pagar memakai keliling, pengecoh luas dan sudut salah");
+  const luar = adegan("luar");
+  cek(luar.jumlah === 2 * (10 + 5) && luar.jumlah === kelilingPetak(petakDenah([[0, 0], [10, 0], [10, 5], [0, 5]])) && luar.cerita.includes("10 m dan 5 m") && luar.sukses.includes("2 × (10 + 5) = 30"), "E: batas luar 30 meter (sisi petak di tepi)");
+  const hilang = adegan("hilang");
+  cek(hilang.target === DN.sisiDenah(DN.DATA_HILANG[0].v)[2] && hilang.target === 12 - 6 && hilang.target <= hilang.maks && hilang.cerita.includes("12 m") && hilang.cerita.includes("6 m") && hilang.sukses.includes("12 − 6 = 6"), "E: sisi hilang denah L 12 − 6 = 6 sama dengan data lab");
+  const jml = adegan("jumlah");
+  const sisiL = DN.sisiDenah(DN.DATA_LUAR[0].v);
+  cek(jml.cerita.includes(sisiL.join(" m, ").replace(/, (\d+)$/, ", dan $1")) || sisiL.every((s) => jml.cerita.includes(`${s} m`)), "E: sisi luar denah L disebut sama dengan data lab");
+  cek(jml.soal[0].jawaban === String(jalanSisi(sisiL)) && jml.soal[0].jawaban === "36" && jml.soal[0].opsi.includes(String(36 + 10)) && jml.soal[0].opsi.includes(String(36 - 8)) && jml.soal[0].opsi.filter((o) => o !== "36").every((o) => Number(o) !== 36), "E: jumlah sisi luar denah L 36, pengecoh dengan sekat 46 dan sisi hilang belum dijumlah 28");
+  cek(jml.soal[1].jawaban === String(2 * (12 + 6)) && jml.soal[1].jawaban === "36" && jml.soal[1].opsi.includes("18") && jml.soal[1].opsi.includes("72") && DN.cocokBungkus(DN.DATA_LUAR[0].v), "E: pembungkus 12 dan 6 berkeliling 36, denah L cocok, pengecoh 18 dan 72");
+  const posisi = S.adegan.filter((a) => a.jenis === "pilih").map((a) => a.opsi.findIndex((o) => o.benar));
+  cek(new Set(posisi).size === posisi.length, `E: letak jawaban pilih bervariasi (${posisi.join("")})`);
+}
+
+/* ------------------------------ Misi E ------------------------------ */
+{
+  const daftar = K5.daftarMisiK5Bab4("E");
+  cek(daftar.filter((m) => m.wajib).length === 7 && daftar.filter((m) => !m.wajib).length === 3, "E: tujuh misi wajib dan tiga tantangan bebas");
+  cek(new Set(daftar.map((m) => m.id)).size === 10 && daftar.every((m) => m.id.startsWith("e-")), "E: id misi unik berawalan e");
+  cek(daftar.every((m) => m.teks.length > 20 && tanpaAngka(m.teks)), "E: teks misi jelas dan dapat dieja");
+  const kosong = [{ alat: "denah", pernah: [] }, sel("tidak-ada"), DN.keadaanDenahK5B4E(DN.awalDenahK5B4E())];
+  cek(kosong.every((k) => M0.misiBaru(daftar, k, new Set()).length === 0), "E: keadaan awal alat tidak memenuhi misi mana pun");
+  const baru = (k) => M0.misiBaru(daftar, k, new Set());
+  cek(baru(sel(K5.ID_MESIN_K5B4.E)).join() === "e-mesin" && baru(sel(K5.ID_SKENARIO_K5B4.E)).join() === "e-skenario", "E: id mesin dan skenario memenuhi misinya");
+  cek(M0.misiBaru(daftar, { alat: "segibanyak", pernah: ["luar:0", "luar:1", "bungkus:0", "bungkus:1", "hilang:0"] }, new Set()).length === 0, "E: riwayat alat lain tidak memenuhi misi E");
+
+  const capai = (aksi) => M0.misiBaru(daftar, DN.keadaanDenahK5B4E(jalan(DN.awalDenahK5B4E(), LE, aksi)), new Set());
+  const luarAksi = (i, hasil = DN.kelilingLuar(DN.DATA_LUAR[i].v), sisi = DN.DATA_LUAR[i].v.map((_, k) => k)) => [{ t: "LR_DATA", i }, ...sisi.map((k) => ({ t: "LR_SISI", k })), { t: "LR_HASIL", nilai: hasil }];
+  cek(capai(luarAksi(0)).join() === "e-luar-l" && capai(luarAksi(1)).join() === "e-luar-t" && capai(luarAksi(2)).join() === "e-persegi-panjang", "E: denah L, T, dan tantangan persegi panjang memenuhi");
+  cek(capai(luarAksi(0, 36 + 10)).length === 0 && capai(luarAksi(0, 36 - 6)).length === 0 && capai(luarAksi(0, 36, [0, 1, 2, 3, 4])).length === 0 && capai([{ t: "LR_DATA", i: 0 }, { t: "LR_SEKAT", j: 0 }, { t: "LR_SEKAT", j: 1 }, { t: "LR_HASIL", nilai: 36 }]).length === 0, "E: sekat ikut dijumlah, sisi terlewat, atau hanya mengetuk sekat tidak memenuhi");
+  const bgAksi = (i, ya = DN.cocokBungkus(DN.DATA_BUNGKUS[i].v), hasil = DN.kelilingLuar(DN.DATA_BUNGKUS[i].v)) => [{ t: "BG_DATA", i }, ...(ya === null ? [] : [{ t: "BG_COCOK", ya }]), { t: "BG_HASIL", nilai: hasil }];
+  cek(capai(bgAksi(0)).join() === "e-bungkus-l" && capai(bgAksi(1)).join() === "e-bungkus-u" && capai(bgAksi(2)).join() === "e-bungkus-t", "E: bungkus denah L, U, dan tantangan T memenuhi");
+  cek(capai(bgAksi(0, false)).length === 0 && capai(bgAksi(1, true)).length === 0 && capai(bgAksi(1, null)).length === 0 && capai(bgAksi(1, false, 30)).length === 0 && capai(bgAksi(0, true, 72)).length === 0, "E: jawaban cocok yang salah, dilewati, pembungkus dipaksakan pada denah U, atau luas tidak memenuhi");
+  const hlAksi = (i, isi = [0, 1], hasil = DN.kelilingLuar(DN.DATA_HILANG[i].v), salahNilai = null) => [{ t: "HL_DATA", i }, ...isi.map((h) => ({ t: "HL_ISI", h, nilai: salahNilai ?? DN.sisiDenah(DN.DATA_HILANG[i].v)[DN.DATA_HILANG[i].hilang[h].sisi] })), { t: "HL_HASIL", nilai: hasil }];
+  cek(capai(hlAksi(0)).join() === "e-hilang" && capai(hlAksi(1)).join() === "e-hilang-dua", "E: sisi hilang denah L dan tantangan denah kedua memenuhi");
+  cek(capai(hlAksi(0, [0])).length === 0 && capai(hlAksi(0, [0, 1], 28)).length === 0 && capai(hlAksi(0, [0, 1], 44)).length === 0 && capai(hlAksi(0, [0, 1], 36, 18)).length === 0 && capai([{ t: "HL_DATA", i: 0 }, { t: "HL_HASIL", nilai: 36 }]).length === 0, "E: satu sisi hilang, keliling salah, sisi hilang dijumlah, atau tanpa melengkapi tidak memenuhi");
+
+  const tampil = M0.tampilMisi(daftar);
+  const wajibIds = tampil.filter((m) => m.wajib).map((m) => m.id);
+  cek(!M0.wajibSelesai(tampil, new Set(wajibIds.slice(0, 6))) && M0.wajibSelesai(tampil, new Set(wajibIds)), "E: gerbang terbuka hanya bila tujuh wajib");
+}
+
+/* ------------------------------ Kode Sub-Bab E murni dan data ringkas ------------------------------ */
+{
+  const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas5-bab4-ringkas.json", import.meta.url), "utf8"));
+  const baca = (nama, ekstensi) => readFileSync(new URL(`../src/components/modul/${nama}.${ekstensi}`, import.meta.url), "utf8");
+  for (const f of ["SimulasiLabDenahK5B4", "model-denah-k5b4"]) {
+    const s = baca(f, "tsx");
+    cek(!/correct_index|explanation/.test(s) && !/fetch\(|XMLHttpRequest|api\/|openai|anthropic|gemini/i.test(s), `${f}: tanpa kunci jawaban dan tanpa jaringan`);
+  }
+  {
+    const s = baca("lab-denah-k5b4e", "ts");
+    cek(!/fetch\(|XMLHttpRequest|from "react"|openai|anthropic|gemini|correct_index|explanation/i.test(s) && (s.match(/^import /gm) ?? []).length === 0, "lab-denah-k5b4e: murni dan tanpa impor");
+  }
+  {
+    const s = baca("SimulasiLabDenahK5B4", "tsx");
+    cek(/useEffect\(\(\) => \{\s*onKeadaan\?\.\(keadaan\w+\(x\)\);\s*\}, \[onKeadaan, x\]\);/.test(s), "E lab: lapor keadaan lewat useEffect");
+    cek(/setLihat\(v\);\s*kirim\(\{ t: "PESAN_KOSONG" \}\);/.test(s), "E lab: ganti tampilan mengosongkan pesan");
+    const catatan = [...s.matchAll(/^\s*"([^"]+)",$/gm)].map((m) => m[1]);
+    cek(catatan.length >= 3 && catatan.every(tanpaAngka), "E lab: Coba ini dapat dieja");
+    cek(/aria-label=\{`Sisi luar \$\{k \+ 1\}`\}/.test(s) && /aria-label=\{`Sekat \$\{j \+ 1\}`\}/.test(s) && /aria-label="Pembungkus cocok"/.test(s) && /aria-label=\{`Keliling hilang \$\{n\}`\}/.test(s), "E lab: tombol jawaban berlabel");
+    cek(!/[\u{1F7E0}-\u{1F7FF}\u{1F90C}-\u{1FAFF}]/u.test(s), "E lab: emoji tidak melebihi Emoji 12");
+  }
+  const ucapan = [];
+  for (let i = 0; i < DN.DATA_LUAR.length; i += 1) {
+    const xl = LE(e0, { t: "LR_DATA", i });
+    ucapan.push(DN.ucapLuarK5B4E(xl), DN.ucapLuarK5B4E(LE(xl, { t: "LR_SISI", k: 0 })));
+  }
+  for (let i = 0; i < DN.DATA_BUNGKUS.length; i += 1) {
+    const xb = LE(e0, { t: "BG_DATA", i });
+    ucapan.push(DN.ucapBungkusK5B4E(xb), DN.ucapBungkusK5B4E(LE(xb, { t: "BG_COCOK", ya: DN.cocokBungkus(DN.DATA_BUNGKUS[i].v) })));
+  }
+  for (let i = 0; i < DN.DATA_HILANG.length; i += 1) {
+    const xh = LE(e0, { t: "HL_DATA", i });
+    ucapan.push(DN.ucapHilangK5B4E(xh), DN.ucapHilangK5B4E(LE(xh, { t: "HL_ISI", h: 0, nilai: DN.sisiDenah(DN.DATA_HILANG[i].v)[DN.DATA_HILANG[i].hilang[0].sisi] })));
+  }
+  cek(ucapan.length >= 14 && ucapan.every(tanpaAngka), `E: semua ${ucapan.length} ucapan lab dieja menjadi kata`);
+
+  // Data ringkas E dihitung ulang mandiri.
+  const E0 = ringkas.subBab.E;
+  const butir = (panel, id) => panel.butir.find((b) => b.id === id);
+  const [p1, p2, p3] = E0.infografis.panel;
+  const sisiL = sisiSegi(DN.DATA_LUAR[0].v);
+  cek(butir(p1, "luar").visual.isi === `${tulisJ(sisiL)} = ${kelilingPetak(petakDenah(DN.DATA_LUAR[0].v))}` && kelilingPetak(petakDenah(DN.DATA_LUAR[0].v)) === 36, "ringkas E: sisi luar denah L berjumlah 36 (dihitung)");
+  const sekatL = DN.DATA_LUAR[0].sekat.map(DN.panjangSekat);
+  cek(butir(p1, "sekat").visual.isi === `sekat ${sekatL.join(" dan ")}` && butir(p1, "salah").visual.isi === `36 + ${jalanSisi(sekatL)} = ${36 + jalanSisi(sekatL)}`, "ringkas E: sekat 4 dan 6, bila ikut dijumlah 46 (dihitung)");
+  cek(butir(p1, "luar").suara.includes(EJ.kataK5B4(36)) && butir(p1, "salah").suara.includes(EJ.kataK5B4(46)), "ringkas E: suara 36 dan 46");
+  const [sCocok, sTidak] = p2.sisi;
+  const bL = DN.ukuranBungkus(DN.DATA_BUNGKUS[0].v);
+  const bU = DN.ukuranBungkus(DN.DATA_BUNGKUS[1].v);
+  cek(sCocok.visual.isi === `2 × (${bL.w} + ${bL.h}) = ${2 * (bL.w + bL.h)}` && DN.cocokBungkus(DN.DATA_BUNGKUS[0].v), "ringkas E: denah L cocok dibungkus 2 × (12 + 6) = 36 (dihitung)");
+  cek(sTidak.visual.isi === `${DN.kelilingLuar(DN.DATA_BUNGKUS[1].v)} bukan ${2 * (bU.w + bU.h)}` && !DN.cocokBungkus(DN.DATA_BUNGKUS[1].v), "ringkas E: denah U 36 bukan 30, pembungkus tidak cocok (dihitung)");
+  cek(sCocok.suara.includes(EJ.kataK5B4(36)) && sTidak.suara.includes(EJ.kataK5B4(30)), "ringkas E: suara denah L dan U");
+  const dh = DN.DATA_HILANG[0];
+  const sh = sisiSegi(dh.v);
+  cek(butir(p3, "satu").visual.isi === `${sh[dh.hilang[0].besar]} − ${sh[dh.hilang[0].kecil]} = ${sh[dh.hilang[0].sisi]}` && butir(p3, "dua").visual.isi === `${sh[dh.hilang[1].besar]} − ${sh[dh.hilang[1].kecil]} = ${sh[dh.hilang[1].sisi]}` && butir(p3, "jumlah").visual.isi === `${kelilingPetak(petakDenah(dh.v))} m`, "ringkas E: sisi hilang 12 − 6 = 6 dan 6 − 4 = 2, keliling 36 (dihitung)");
+  cek(butir(p3, "satu").suara.includes(EJ.kataK5B4(12)) && butir(p3, "dua").suara.includes(EJ.kataK5B4(4)) && butir(p3, "jumlah").suara.includes(EJ.kataK5B4(36)), "ringkas E: suara selisih dan keliling");
+  const kartu = (id) => E0.peta.kartu.find((k) => k.id === id).teks;
+  cek(kartu("e-luar") === `${tulisJ(sisiL)} = 36` && kartu("e-sepuluh") === `Bukan 36 + ${jalanSisi(sekatL)} = ${36 + jalanSisi(sekatL)}` && kartu("e-bungkus") === `2 × (${bL.w} + ${bL.h}) = ${2 * (bL.w + bL.h)}` && kartu("e-selisih-enam") === `${sh[0]} − ${sh[4]} = ${sh[2]}` && kartu("e-selisih-dua") === `${sh[5]} − ${sh[1]} = ${sh[3]}`, "ringkas E: kartu luar, sekat, bungkus, dan selisih (dihitung)");
+  sama(Object.keys(ringkas.subBab), ["A", "B", "C", "D", "E"], "ringkas: lima sub-bab A sampai E");
+  const semuaSuara = [];
+  JSON.stringify(E0, (k, v) => {
+    if (k === "suara") semuaSuara.push(v);
+    return v;
+  });
+  cek(semuaSuara.length > 10 && semuaSuara.every((t) => !/\d/.test(t)), "ringkas E: semua teks suara berupa kata");
+}
+
+/* ------------------------------ Pendaftaran bab ------------------------------ */
+{
+  const registri = readFileSync(new URL("../src/components/modul/registri-simulasi.ts", import.meta.url), "utf8");
+  cek(/"mtk-5-bab4": SimulasiK5Bab4Materi,/.test(registri) && /"mtk-5-bab4": misiAwalK5Bab4,/.test(registri) && /"mtk-5-bab4": ringkasK5B4\.subBab as unknown as Record<string, RingkasSub>,/.test(registri), "registri: mtk-5-bab4 terdaftar di tiga peta (simulasi, misi awal, ringkas)");
+  cek(/dynamic<SimulasiMateriProps>\(\(\) => import\("@\/components\/modul\/SimulasiK5Bab4"\), \{ ssr: false \}\)/.test(registri), "registri: simulasi Kelas 5 Bab 4 dimuat malas tanpa SSR");
+  cek(!/SimulasiLab(Jalur|Segitiga|SegiEmpat|SegiBanyak|Denah)K5B4/.test(registri) && !/lab-(jalur|segitiga|segiempat|segibanyak|denah)-k5b4/.test(registri), "registri: tidak menarik komponen lab ke bundel awal");
+  const peta = readFileSync(new URL("../naskah/igil-module-player-peta.md", import.meta.url), "utf8");
+  cek(peta.includes("SimulasiK5Bab4"), "peta pemutar: Kelas 5 Bab 4 dicatat");
+  const bab = readFileSync(new URL("../src/components/modul/registri-bab-baru.ts", import.meta.url), "utf8");
+  cek(bab.includes("mtk-5-bab4"), "registri bab baru: mtk-5-bab4 ada");
+  cek(registri.split("\r\n").length === registri.split("\n").length, "registri: CR sama dengan LF");
 }
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
