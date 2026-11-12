@@ -6,6 +6,7 @@
  *  A Nilai tempat : Lab Nilai Tempat (Tulis, Baca, Nilai) + Mesin Nilai Tempat + Papan Data Desa
  *  B Banding-urut : Lab Banding (Banding, Garis, Urut)      + Mesin Banding      + Lomba Dakon
  *  C Urai-susun   : Lab Susun (Urai, Susun, Tukar)          + Mesin Uraian       + Uang Asep dan Komang
+ *  D Operasi      : Lab Operasi (Perkiraan, Bersusun, Kali-Bagi) + Mesin Operasi + Bakti Sosial Nisa (pencapaian bab)
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
@@ -13,17 +14,18 @@ import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanTempatK5B1A } from "./lab-tempat-k5b1a";
 import type { KeadaanBandingK5B1B } from "./lab-banding-k5b1b";
 import type { KeadaanSusunK5B1C } from "./lab-susun-k5b1c";
+import type { KeadaanOperasiK5B1D } from "./lab-operasi-k5b1d";
 
-export type KeadaanK5Bab1 = KeadaanTempatK5B1A | KeadaanBandingK5B1B | KeadaanSusunK5B1C | KeadaanSelesai;
-export type HurufMisiK5B1 = "A" | "B" | "C";
+export type KeadaanK5Bab1 = KeadaanTempatK5B1A | KeadaanBandingK5B1B | KeadaanSusunK5B1C | KeadaanOperasiK5B1D | KeadaanSelesai;
+export type HurufMisiK5B1 = "A" | "B" | "C" | "D";
 
 const selesai = (k: KeadaanK5Bab1, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
 const pernah = (k: KeadaanK5Bab1, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K5B1 = { A: "data-desa", B: "lomba-dakon", C: "uang-asep" } as const;
-export const ID_MESIN_K5B1 = { A: "mesin-tempat", B: "mesin-banding", C: "mesin-uraian" } as const;
+export const ID_SKENARIO_K5B1 = { A: "data-desa", B: "lomba-dakon", C: "uang-asep", D: "bakti-nisa" } as const;
+export const ID_MESIN_K5B1 = { A: "mesin-tempat", B: "mesin-banding", C: "mesin-uraian", D: "mesin-operasi" } as const;
 
 export const MISI_A: DefMisi<KeadaanK5Bab1>[] = [
   { id: "a-yohana", teks: "Di Tulis, tulis empat belas ribu lima ratus di tabel nilai tempat, lalu periksa.", wajib: true, cek: (k) => pernah(k, "nilai-tempat", "tulis:14500") },
@@ -64,5 +66,18 @@ export const MISI_C: DefMisi<KeadaanK5Bab1>[] = [
   { id: "c-ratusan", teks: "Di Tukar, tukar seribu empat ratus sampai semuanya menjadi kartu seratus. Berapa kartu seratus?", wajib: false, cek: (k) => pernah(k, "susun", "tukar:1400:14") },
 ];
 
-const DAFTAR: Record<HurufMisiK5B1, DefMisi<KeadaanK5Bab1>[]> = { A: MISI_A, B: MISI_B, C: MISI_C };
+export const MISI_D: DefMisi<KeadaanK5Bab1>[] = [
+  { id: "d-perkiraan", teks: "Di Perkiraan, bulatkan tiga puluh delapan ribu enam ratus dan dua puluh satu ribu empat ratus, lalu pilih hasil kasarnya.", wajib: true, cek: (k) => pernah(k, "operasi", "perkiraan:38600+21400") },
+  { id: "d-tambah", teks: "Di Bersusun, kerjakan tiga puluh dua ribu lima ratus ditambah tiga belas ribu dua ratus lima puluh, kolom demi kolom.", wajib: true, cek: (k) => pernah(k, "operasi", "bersusun:32500+13250") },
+  { id: "d-kurang", teks: "Di Bersusun, kerjakan empat puluh tujuh ribu sembilan ratus dikurangi empat puluh lima ribu tujuh ratus lima puluh. Ada kolom yang meminjam.", wajib: true, cek: (k) => pernah(k, "operasi", "bersusun:47900-45750") },
+  { id: "d-kali", teks: "Di Kali-Bagi, kerjakan dua belas kali lima ribu dengan memecah menjadi sepuluh kali dan dua kali.", wajib: true, cek: (k) => pernah(k, "operasi", "kali:12x5000") },
+  { id: "d-bagi", teks: "Di Kali-Bagi, bagi enam puluh empat ribu dengan empat, lalu cek dengan perkalian.", wajib: true, cek: (k) => pernah(k, "operasi", "bagi:64000d4") },
+  { id: "d-mesin", teks: "Selesaikan Mesin Operasi sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K5B1.D) },
+  { id: "d-skenario", teks: "Selesaikan skenario Bakti Sosial Nisa sampai adegan akhir. Ini misi penutup bab.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K5B1.D) },
+  { id: "d-simpan", teks: "Di Bersusun, kerjakan tiga puluh delapan ribu enam ratus ditambah empat belas ribu lima ratus, lalu coba lupa menambahkan simpanan. Baca penjelasan lab.", wajib: false, cek: (k) => pernah(k, "operasi", "lupa-simpan") },
+  { id: "d-cocok", teks: "Kerjakan enam puluh tiga ribu lima ratus dikurangi tiga puluh delapan ribu enam ratus di Perkiraan dan di Bersusun, lalu cocokkan hasilnya.", wajib: false, cek: (k) => pernah(k, "operasi", "perkiraan:63500-38600", "bersusun:63500-38600") },
+  { id: "d-campur", teks: "Di Kali-Bagi, kerjakan dua kali dua puluh tiga ribu lima ratus ditambah tujuh belas ribu.", wajib: false, cek: (k) => pernah(k, "operasi", "campur:2x23500+17000") },
+];
+
+const DAFTAR: Record<HurufMisiK5B1, DefMisi<KeadaanK5Bab1>[]> = { A: MISI_A, B: MISI_B, C: MISI_C, D: MISI_D };
 export const daftarMisiK5Bab1 = (huruf: string): DefMisi<KeadaanK5Bab1>[] => DAFTAR[huruf as HurufMisiK5B1] ?? MISI_A;

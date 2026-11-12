@@ -302,6 +302,98 @@
           }
         ]
       }
+    },
+    "D": {
+      "peta": {
+        "pusat": {
+          "judul": "Operasi Bilangan Besar",
+          "ikon": "🧮",
+          "suara": "Ini peta operasi bilangan besar. Kita belajar perkiraan, hitung bersusun, menyimpan dan meminjam, serta kali dan bagi. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "perkiraan",
+            "judul": "Perkiraan",
+            "ikon": "🎯",
+            "ringkas": "Bulatkan dulu, hitung kasar.",
+            "suara": "Perkiraan. Bulatkan bilangan ke ribuan terdekat, lalu hitung kasar untuk tahu hasilnya masuk akal."
+          },
+          {
+            "id": "bersusun",
+            "judul": "Bersusun",
+            "ikon": "📐",
+            "ringkas": "Tulis sejajar, mulai dari satuan.",
+            "suara": "Hitung bersusun. Tulis bilangan sejajar menurut nilai tempat, lalu hitung dari satuan ke kiri."
+          },
+          {
+            "id": "simpan",
+            "judul": "Simpan dan pinjam",
+            "ikon": "🔄",
+            "ringkas": "Tukar sepuluh antar kolom.",
+            "suara": "Menyimpan pada penjumlahan dan meminjam pada pengurangan sama dengan menukar sepuluh antar kolom."
+          },
+          {
+            "id": "kali",
+            "judul": "Kali dan bagi",
+            "ikon": "✖️",
+            "ringkas": "Pecah faktor, cek dengan kebalikan.",
+            "suara": "Kali dan bagi. Pecah faktor untuk perkalian, bagi rata untuk pembagian, lalu cek dengan operasi kebalikannya."
+          }
+        ],
+        "kartu": [
+          { "id": "d-bulat", "teks": "38.600 ≈ 39.000", "ikon": "🎯", "cabang": "perkiraan", "petunjuk": "Pembulatan itu soal perkiraan. Coba cabang lain." },
+          { "id": "d-kasar", "teks": "Hasil kasar lalu cek", "ikon": "✅", "cabang": "perkiraan", "petunjuk": "Hasil kasar itu soal perkiraan. Coba cabang lain." },
+          { "id": "d-sejajar", "teks": "Tulis sejajar kolom", "ikon": "📏", "cabang": "bersusun", "petunjuk": "Menulis sejajar itu hitung bersusun. Coba cabang lain." },
+          { "id": "d-satuan", "teks": "Mulai dari satuan", "ikon": "➡️", "cabang": "bersusun", "petunjuk": "Urutan kolom itu hitung bersusun. Coba cabang lain." },
+          { "id": "d-simpan", "teks": "Sepuluh jadi satu di kiri", "ikon": "➕", "cabang": "simpan", "petunjuk": "Sepuluh jadi satu itu menyimpan. Coba cabang lain." },
+          { "id": "d-pinjam", "teks": "Satu di kiri jadi sepuluh", "ikon": "➖", "cabang": "simpan", "petunjuk": "Satu jadi sepuluh itu meminjam. Coba cabang lain." },
+          { "id": "d-kali", "teks": "12 × 5.000 = 60.000", "ikon": "✖️", "cabang": "kali", "petunjuk": "Perkalian itu soal kali dan bagi. Coba cabang lain." },
+          { "id": "d-bagi", "teks": "64.000 ÷ 4 = 16.000", "ikon": "➗", "cabang": "kali", "petunjuk": "Pembagian itu soal kali dan bagi. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Operasi Bilangan Besar",
+        "suara": "Ini tiga panel tentang operasi bilangan besar. Ketuk kotaknya untuk membuka, lalu bandingkan menyimpan dan meminjam.",
+        "panel": [
+          {
+            "id": "d-perkiraan-info",
+            "tipe": "buka",
+            "judul": "Perkiraan dulu",
+            "ide": "Bulatkan dulu, hitung kasar, lalu cek.",
+            "suara": "Ada tiga langkah perkiraan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "bulat", "label": "Bulatkan", "ikon": "🎯", "isi": "Ke ribuan terdekat.", "suara": "Tiga puluh delapan ribu enam ratus dibulatkan menjadi tiga puluh sembilan ribu. Dua puluh satu ribu empat ratus menjadi dua puluh satu ribu.", "visual": { "jenis": "teks", "isi": "38.600 ≈ 39.000" } },
+              { "id": "kasar", "label": "Kasar", "ikon": "🧮", "isi": "Hitung bilangan yang sudah bulat.", "suara": "Tiga puluh sembilan ribu ditambah dua puluh satu ribu sama dengan enam puluh ribu.", "visual": { "jenis": "teks", "isi": "39.000 + 21.000 = 60.000" } },
+              { "id": "cek", "label": "Cek", "ikon": "✅", "isi": "Hasil teliti harus dekat.", "suara": "Hasil teliti tiga puluh delapan ribu enam ratus ditambah dua puluh satu ribu empat ratus juga enam puluh ribu, dekat dengan perkiraan.", "visual": { "jenis": "teks", "isi": "38.600 + 21.400 = 60.000" } }
+            ]
+          },
+          {
+            "id": "d-simpan-info",
+            "tipe": "banding",
+            "judul": "Simpan dan pinjam",
+            "ide": "Tukar sepuluh saat menghitung per kolom.",
+            "suara": "Bandingkan menyimpan pada penjumlahan dan meminjam pada pengurangan.",
+            "sisi": [
+              { "id": "simpan", "nama": "Menyimpan", "ikon": "➕", "catatan": "Sepuluh jadi satu di kolom kiri.", "suara": "Enam ditambah lima sama dengan sebelas. Tulis satu dan simpan satu ke kolom kirinya.", "visual": { "jenis": "teks", "isi": "6 + 5 = 11" } },
+              { "id": "pinjam", "nama": "Meminjam", "ikon": "➖", "catatan": "Satu di kiri jadi sepuluh.", "suara": "Nol lebih kecil dari lima. Pinjam satu dari kolom kiri, jadi sepuluh dikurangi lima sama dengan lima.", "visual": { "jenis": "teks", "isi": "10 − 5 = 5" } }
+            ],
+            "kesimpulan": "Menyimpan dan meminjam adalah tukar sepuluh."
+          },
+          {
+            "id": "d-kali-info",
+            "tipe": "buka",
+            "judul": "Kali, bagi, dan cek",
+            "ide": "Pecah faktor, bagi rata, cek kebalikan.",
+            "suara": "Ada tiga hal tentang kali dan bagi. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "pecah", "label": "Pecah", "ikon": "✂️", "isi": "Dua belas jadi sepuluh dan dua.", "suara": "Dua belas kali lima ribu sama dengan sepuluh kali lima ribu ditambah dua kali lima ribu, yaitu enam puluh ribu.", "visual": { "jenis": "teks", "isi": "10 × 5.000 + 2 × 5.000 = 60.000" } },
+              { "id": "bagi", "label": "Bagi", "ikon": "➗", "isi": "Bagi rata untuk empat anak.", "suara": "Enam puluh empat ribu dibagi empat sama dengan enam belas ribu.", "visual": { "jenis": "teks", "isi": "64.000 ÷ 4 = 16.000" } },
+              { "id": "cek", "label": "Cek", "ikon": "🔁", "isi": "Kalikan dengan pembagi.", "suara": "Empat kali enam belas ribu sama dengan enam puluh empat ribu, kembali ke bilangan semula.", "visual": { "jenis": "teks", "isi": "4 × 16.000 = 64.000" } }
+            ]
+          }
+        ]
+      }
     }
   }
 }

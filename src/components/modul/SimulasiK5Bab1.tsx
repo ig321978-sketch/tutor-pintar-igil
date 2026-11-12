@@ -6,10 +6,11 @@ import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiLabTempatK5B1 from "./SimulasiLabTempatK5B1";
 import SimulasiLabBandingK5B1 from "./SimulasiLabBandingK5B1";
 import SimulasiLabSusunK5B1 from "./SimulasiLabSusunK5B1";
+import SimulasiLabOperasiK5B1 from "./SimulasiLabOperasiK5B1";
 import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
 import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K5B1A, SKENARIO_K5B1B, SKENARIO_K5B1C } from "./skenario-k5b1";
-import { MESIN_BANDING, MESIN_TEMPAT, MESIN_URAIAN } from "./mesin-data-k5b1";
+import { SKENARIO_K5B1A, SKENARIO_K5B1B, SKENARIO_K5B1C, SKENARIO_K5B1D } from "./skenario-k5b1";
+import { MESIN_BANDING, MESIN_OPERASI, MESIN_TEMPAT, MESIN_URAIAN } from "./mesin-data-k5b1";
 import { ejaK5B1 } from "./eja-k5b1";
 import type { DefSkenario } from "./skenario-umum";
 import type { DefMesin } from "./mesin-bertahap-k3b1";
@@ -23,28 +24,32 @@ import { MISI_K5B1, NAMA_SIM_K5B1, hurufK5B1, misiAwalK5Bab1, type HurufK5B1 } f
 /*   A Nilai tempat : Lab Nilai Tempat + Mesin Nilai Tempat + Papan Data Desa */
 /*   B Banding-urut : Lab Banding + Mesin Banding + Lomba Dakon              */
 /*   C Urai-susun   : Lab Susun Bilangan + Mesin Uraian + Uang Asep dan Komang */
+/*   D Operasi      : Lab Operasi + Mesin Operasi + Bakti Sosial Nisa (pencapaian bab) */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
-const SKENARIO: Record<HurufK5B1, DefSkenario> = { A: SKENARIO_K5B1A, B: SKENARIO_K5B1B, C: SKENARIO_K5B1C };
-const MESIN: Record<HurufK5B1, DefMesin> = { A: MESIN_TEMPAT, B: MESIN_BANDING, C: MESIN_URAIAN };
+const SKENARIO: Record<HurufK5B1, DefSkenario> = { A: SKENARIO_K5B1A, B: SKENARIO_K5B1B, C: SKENARIO_K5B1C, D: SKENARIO_K5B1D };
+const MESIN: Record<HurufK5B1, DefMesin> = { A: MESIN_TEMPAT, B: MESIN_BANDING, C: MESIN_URAIAN, D: MESIN_OPERASI };
 
 const COBA_MESIN: Record<HurufK5B1, string[]> = {
   A: ["Ketuk stasiun Baca sebelum Tulis. Apa kata mesin?", "Mengapa nol tidak boleh dihapus dari bilangan?", "Apa beda digit dan nilai digit?"],
   B: ["Ketuk stasiun Urut sebelum Sejajar. Apa kata mesin?", "Mengapa membandingkan dimulai dari tempat terbesar?", "Apa beda urut naik dan urut turun?"],
   C: ["Ketuk stasiun Cek sebelum Urai. Apa kata mesin?", "Mengapa jumlah tidak berubah saat kartu ditukar?", "Apa beda digit dan suku nilai tempat?"],
+  D: ["Ketuk stasiun Cek sebelum Perkiraan. Apa kata mesin?", "Mengapa perkiraan dibuat sebelum menghitung teliti?", "Mengapa hasil pembagian dicek dengan perkalian?"],
 };
 
 const LAB: Record<HurufK5B1, { id: string; nama: string }> = {
   A: { id: "nilai-tempat", nama: "Lab Nilai Tempat" },
   B: { id: "banding", nama: "Lab Banding" },
   C: { id: "susun", nama: "Lab Susun Bilangan" },
+  D: { id: "operasi", nama: "Lab Operasi" },
 };
 
 function LabSub({ huruf, speakGuru, lapor }: { huruf: HurufK5B1; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab1) => void }) {
   if (huruf === "B") return <SimulasiLabBandingK5B1 speakGuru={speakGuru} onKeadaan={lapor} />;
   if (huruf === "C") return <SimulasiLabSusunK5B1 speakGuru={speakGuru} onKeadaan={lapor} />;
+  if (huruf === "D") return <SimulasiLabOperasiK5B1 speakGuru={speakGuru} onKeadaan={lapor} />;
   return <SimulasiLabTempatK5B1 speakGuru={speakGuru} onKeadaan={lapor} />;
 }
 

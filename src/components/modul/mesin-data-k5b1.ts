@@ -13,6 +13,10 @@
  *    Urai: bentuk panjang (pengecoh: digit bergeser satu tempat, digit saja). Susun: banyak kartu 1.000 (pengecoh:
  *    sepuluh kali, banyak kartu 10.000). Tukar: kartu 1.000 setelah menukar kartu 10.000 (pengecoh: hanya ditambah
  *    banyak yang ditukar, hanya sepuluh kali). Cek: total tetap (pengecoh: total berubah).
+ *  - MESIN_OPERASI (D): Perkiraan → Kolom → Hasil → Cek   (57.500 + 22.000, 47.900 − 45.750, 64.000 ÷ 4)
+ *    Perkiraan: bulatkan ke ribuan terdekat lalu hitung kasar (pengecoh: dibulatkan ke bawah, operasi tertukar). Kolom:
+ *    berapa kali menyimpan atau meminjam (pengecoh: satu lebih banyak atau lebih sedikit). Hasil: hasil teliti (pengecoh:
+ *    pinjaman terlupa, nol keliru). Cek: operasi kebalikan kembali ke bilangan semula.
  * Data dari Buku Siswa Kelas V Bab 1 (dicocokkan dengan data-k5b1.ts di uji). Murni: tanpa React, tanpa jaringan.
  * Hanya impor tipe. Diuji di scripts/uji-lab-k5b1.mjs.
  */
@@ -275,4 +279,143 @@ export const MESIN_URAIAN: DefMesin = {
   kasus: KASUS_URAIAN.map(kasusMesinUraian),
 };
 
-export const SEMUA_MESIN_K5B1 = [MESIN_TEMPAT, MESIN_BANDING, MESIN_URAIAN];
+/* ------------------------------ D: Mesin Operasi ------------------------------ */
+
+export type OpMesin = "+" | "−" | "÷";
+export type KasusOperasi = { id: string; a: number; b: number; op: OpMesin };
+export const KASUS_OPERASI: KasusOperasi[] = [
+  { id: "tambah", a: 57500, b: 22000, op: "+" },
+  { id: "kurang", a: 47900, b: 45750, op: "−" },
+  { id: "bagi", a: 64000, b: 4, op: "÷" },
+];
+
+export const STASIUN_OPERASI: StasiunDef[] = [
+  { id: "perkiraan", nama: "Perkiraan", ikon: "🎯" },
+  { id: "kolom", nama: "Kolom", ikon: "📐" },
+  { id: "hasil", nama: "Hasil", ikon: "🧮" },
+  { id: "cek", nama: "Cek", ikon: "🔁" },
+];
+
+const bulat1000 = (n: number): number => Math.floor((n + 500) / 1000) * 1000;
+const bulat10000 = (n: number): number => Math.floor((n + 5000) / 10000) * 10000;
+const lantai1000 = (n: number): number => Math.floor(n / 1000) * 1000;
+/** Banyak kolom yang menyimpan (+) atau meminjam (−), dihitung per kolom dari satuan. */
+function banyakKolom(a: number, b: number, op: "+" | "−"): number {
+  let n = 0;
+  let sisa = 0;
+  for (let c = 0; c < 5; c += 1) {
+    const da = Math.floor(a / 10 ** c) % 10;
+    const db = Math.floor(b / 10 ** c) % 10;
+    if (op === "+") {
+      const t = da + db + sisa;
+      sisa = t >= 10 ? 1 : 0;
+    } else {
+      const t = da - sisa;
+      sisa = t < db ? 1 : 0;
+    }
+    n += sisa;
+  }
+  return n;
+}
+/** Hasil pengurangan tanpa meminjam: tiap kolom dikurangi terbalik (besar dikurangi kecil). */
+function tanpaPinjam(a: number, b: number): number {
+  let h = 0;
+  for (let c = 4; c >= 0; c -= 1) h = h * 10 + Math.abs((Math.floor(a / 10 ** c) % 10) - (Math.floor(b / 10 ** c) % 10));
+  return h;
+}
+
+export function kasusMesinOperasi(k: KasusOperasi, idx: number): KasusMesin {
+  let langkah: LangkahMesin[];
+  let ringkas: string;
+  if (k.op === "÷") {
+    const q = k.a / k.b;
+    const dekat = bulat10000(k.a);
+    const kasar = dekat / k.b;
+    const ribuan = k.a / 1000;
+    const qr = ribuan / k.b;
+    langkah = [
+      {
+        stasiun: "perkiraan",
+        tanya: `${titikM(k.a)} ÷ ${k.b}: ${titikM(k.a)} dekat dengan ${titikM(dekat)}. ${titikM(dekat)} ÷ ${k.b} kira-kira …`,
+        opsi: susunOpsi(titikM(kasar), duaPengecoh(titikM(kasar), [titikM(kasar / 10), titikM(kasar * 10)]), idx),
+        benar: titikM(kasar),
+        petunjuk: "Bagi bilangan bulatnya dulu. Hasil kasar harus dekat dengan hasil teliti.",
+      },
+      {
+        stasiun: "kolom",
+        tanya: `${ribuan} ribuan dibagi ${k.b}. ${ribuan} ÷ ${k.b} = …`,
+        opsi: susunOpsi(String(qr), angkaPengecoh(qr, [qr * 10, qr - 1]), idx + 1),
+        benar: String(qr),
+        petunjuk: `Bagi dulu ${ribuan} dengan ${k.b}. Hasilnya menjadi jumlah ribuan.`,
+      },
+      {
+        stasiun: "hasil",
+        tanya: `${titikM(k.a)} ÷ ${k.b} = …`,
+        opsi: susunOpsi(titikM(q), duaPengecoh(titikM(q), [titikM(q / 10), titikM(q * 10)]), idx + 2),
+        benar: titikM(q),
+        petunjuk: "Bagi rata. Tulis hasilnya dengan nilai tempat yang benar.",
+      },
+      {
+        stasiun: "cek",
+        tanya: `Cek: ${k.b} × ${titikM(q)} = …`,
+        opsi: susunOpsi(titikM(k.a), duaPengecoh(titikM(k.a), [titikM(k.b + q), titikM(k.a * 10)]), idx + 3),
+        benar: titikM(k.a),
+        petunjuk: "Hasil bagi dikali pembagi harus kembali ke bilangan semula.",
+      },
+    ];
+    ringkas = `${titikM(k.a)} ÷ ${k.b} = ${titikM(q)}. Perkiraan ${titikM(kasar)}, dekat dengan hasilnya. Cek: ${k.b} × ${titikM(q)} = ${titikM(k.a)}.`;
+  } else {
+    const op = k.op;
+    const ra = bulat1000(k.a);
+    const rb = bulat1000(k.b);
+    const kasar = op === "+" ? ra + rb : ra - rb;
+    const r = op === "+" ? k.a + k.b : k.a - k.b;
+    const n = banyakKolom(k.a, k.b, op);
+    const salahKasar = op === "+" ? [lantai1000(k.a) + lantai1000(k.b), kasar + 1000] : [ra + rb, kasar + 1000];
+    const salahHasil = op === "+" ? [r + 1000, r - 1000] : [tanpaPinjam(k.a, k.b), k.a + k.b];
+    const salahCek = op === "+" ? [r + k.b, k.a - 1000] : [k.b - r, k.a + 1000];
+    const simpanKata = op === "+" ? "menyimpan" : "meminjam";
+    langkah = [
+      {
+        stasiun: "perkiraan",
+        tanya: `Perkiraan ${titikM(k.a)} ${op} ${titikM(k.b)}, dibulatkan ke ribuan terdekat, kira-kira …`,
+        opsi: susunOpsi(titikM(kasar), duaPengecoh(titikM(kasar), salahKasar.map(titikM)), idx),
+        benar: titikM(kasar),
+        petunjuk: "Bulatkan tiap bilangan ke ribuan terdekat dulu, lalu hitung bilangan yang sudah bulat.",
+      },
+      {
+        stasiun: "kolom",
+        tanya: `Pada ${titikM(k.a)} ${op} ${titikM(k.b)} bersusun, berapa kali perlu ${simpanKata}?`,
+        opsi: susunOpsi(String(n), angkaPengecoh(n, [n + 1, n === 0 ? 2 : n - 1, n + 2]), idx + 1),
+        benar: String(n),
+        petunjuk: `Kerjakan dari kolom satuan ke kiri. Hitung kolom yang ${op === "+" ? "jumlahnya 10 atau lebih" : "digit atasnya lebih kecil dari digit bawahnya"}.`,
+      },
+      {
+        stasiun: "hasil",
+        tanya: `${titikM(k.a)} ${op} ${titikM(k.b)} = …`,
+        opsi: susunOpsi(titikM(r), duaPengecoh(titikM(r), salahHasil.map(titikM)), idx + 2),
+        benar: titikM(r),
+        petunjuk: op === "+" ? "Jumlahkan per kolom dan jangan lupa simpanan." : "Kurangkan per kolom dan jangan lupa pinjaman.",
+      },
+      {
+        stasiun: "cek",
+        tanya: `Cek: ${titikM(r)} ${op === "+" ? "−" : "+"} ${titikM(k.b)} = …`,
+        opsi: susunOpsi(titikM(k.a), duaPengecoh(titikM(k.a), salahCek.map(titikM)), idx + 3),
+        benar: titikM(k.a),
+        petunjuk: "Operasi kebalikannya harus kembali ke bilangan semula.",
+      },
+    ];
+    ringkas = `${titikM(k.a)} ${op} ${titikM(k.b)} = ${titikM(r)}. Perkiraan ${titikM(kasar)}, dekat dengan hasilnya. Perlu ${simpanKata} ${n} kali. Cek: ${titikM(r)} ${op === "+" ? "−" : "+"} ${titikM(k.b)} = ${titikM(k.a)}.`;
+  }
+  return { id: k.id, nama: `${titikM(k.a)} ${k.op} ${titikM(k.b)}`, ringkas, langkah };
+}
+
+export const MESIN_OPERASI: DefMesin = {
+  id: "mesin-operasi-k5b1",
+  judul: "Mesin Operasi",
+  selesaiId: "mesin-operasi",
+  stasiun: STASIUN_OPERASI,
+  kasus: KASUS_OPERASI.map(kasusMesinOperasi),
+};
+
+export const SEMUA_MESIN_K5B1 = [MESIN_TEMPAT, MESIN_BANDING, MESIN_URAIAN, MESIN_OPERASI];

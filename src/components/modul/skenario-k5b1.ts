@@ -6,6 +6,7 @@ import type { DefSkenario } from "./skenario-umum";
  *  - SKENARIO_K5B1A: Papan Data Desa (menulis, banyak digit, digit di satu tempat, nilai digit, nol penjaga)
  *  - SKENARIO_K5B1B: Lomba Dakon (tanda, memeriksa dari kiri, digit penentu, acuan, bilangan tengah, urut naik)
  *  - SKENARIO_K5B1C: Uang Asep dan Komang (bentuk panjang, suku, kartu yang diperlukan, menukar kartu)
+ *  - SKENARIO_K5B1D: Bakti Sosial Nisa (pencapaian bab: nilai tempat, banding, uraian, tambah, kurang, kali, perkiraan, bagi)
  */
 
 export const SKENARIO_K5B1A: DefSkenario = {
@@ -227,6 +228,90 @@ export const SKENARIO_K5B1C: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Bilangan bisa diuraikan menjadi suku nilai tempat dan disusun kembali dari kartu. Ada banyak cara menyusun jumlah yang sama, dan saat kartu ditukar, jumlahnya tetap.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B1D: DefSkenario = {
+  id: "bakti-nisa-k5b1",
+  judul: "Bakti Sosial Nisa",
+  latar: "Bantu Nisa mengurus uang bakti sosial dengan semua yang sudah dipelajari di Bab 1.",
+  tokoh: "👧",
+  nama: "Nisa",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Nisa. Kelasku mengadakan bakti sosial. Uangnya sampai puluhan ribu. Kita pakai semua yang sudah dipelajari: nilai tempat, membandingkan, menguraikan, dan menghitung.",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "tempat",
+      jenis: "pilih",
+      cerita: "Ibu Nisa menyumbang 57.500. Berapa nilai digit 7 pada 57.500?",
+      opsi: [
+        { teks: "7", benar: false, umpan: "Itu digitnya saja. Digit 7 ada di tempat ribuan, jadi nilainya lebih besar." },
+        { teks: "7.000", benar: true, umpan: "Betul! Digit 7 ada di tempat ribuan, jadi nilainya 7.000." },
+        { teks: "700", benar: false, umpan: "700 adalah nilai di tempat ratusan. Digit 7 ada di tempat ribuan." },
+      ],
+    },
+    {
+      id: "banding",
+      jenis: "pilih",
+      cerita: "Ibu menyumbang 57.500 dan Ayah 22.000. Mana kalimat yang benar?",
+      opsi: [
+        { teks: "57.500 > 22.000", benar: true, umpan: "Betul! Bandingkan dari kiri. Di puluh ribuan, 5 lebih besar dari 2." },
+        { teks: "57.500 < 22.000", benar: false, umpan: "Bandingkan dari tempat terbesar di kiri. Di puluh ribuan ada 5 dan 2." },
+        { teks: "57.500 = 22.000", benar: false, umpan: "Kedua bilangan tidak sama. Digit di puluh ribuan sudah berbeda." },
+      ],
+    },
+    {
+      id: "urai",
+      jenis: "hitung",
+      cerita: "Sumbangan Ibu 57.500 diuraikan menjadi 50.000 + 7.000 + 500. Satu stik untuk tiap suku.",
+      tanya: "Ketuk semua stik. Ada berapa suku?",
+      objek: "stik",
+      jumlah: 3,
+      sukses: "Betul! Tiga suku: 50.000, 7.000, dan 500.",
+      salah: "Hmm, ketuk tiap stik sekali saja, lalu hitung lagi.",
+    },
+    {
+      id: "hitung",
+      jenis: "soal",
+      cerita: "Nisa menghitung uang bakti sosial.",
+      soal: [
+        { teks: "57.500 + 22.000 = …", jawaban: "79.500", opsi: ["75.900", "79.500", "35.500"] },
+        { teks: "47.900 − 45.750 = …", jawaban: "2.150", opsi: ["2.150", "1.250", "93.650"] },
+        { teks: "12 × 5.000 = …", jawaban: "60.000", opsi: ["17.000", "50.000", "60.000"] },
+      ],
+      sukses: "Hebat! Hitung per kolom dari satuan, dan jangan lupa simpanan serta pinjaman.",
+      salah: "Hmm, hitung lagi per kolom. Coba lagi.",
+    },
+    {
+      id: "perkiraan",
+      jenis: "pilih",
+      cerita: "Sebelum menghitung 38.600 + 21.400, Nisa memperkirakan dulu dengan membulatkan ke ribuan terdekat. Mana perkiraan yang masuk akal?",
+      opsi: [
+        { teks: "Sekitar 6.000", benar: false, umpan: "Itu terlalu kecil. 38.600 saja sudah lebih dari 30.000." },
+        { teks: "Sekitar 600.000", benar: false, umpan: "Itu terlalu besar. Dua bilangan puluhan ribu tidak mungkin berjumlah ratusan ribu." },
+        { teks: "Sekitar 60.000", benar: true, umpan: "Betul! 39.000 + 21.000 = 60.000, dan hasil telitinya juga 60.000." },
+      ],
+    },
+    {
+      id: "bagi",
+      jenis: "isi",
+      cerita: "Uang 64.000 dibagi rata untuk 4 anak. Masukkan stik sebanyak ribuan yang diterima tiap anak.",
+      objek: "stik",
+      target: 16,
+      maks: 20,
+      sukses: "Pas! 64.000 ÷ 4 = 16.000. Cek: 4 × 16.000 = 64.000.",
+      kurang: "Stiknya masih kurang. Bagi 64 ribuan dengan 4.",
+      lebih: "Stiknya kelebihan. Cek dengan 4 × hasilnya, harus kembali ke 64.000.",
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Bakti sosial kelas kita berjalan lancar. Bab 1 selesai: membaca dan menulis bilangan sampai 100.000, membandingkan, menguraikan, dan menghitung dengan perkiraan dulu serta mengecek hasilnya.",
     },
   ],
 };
