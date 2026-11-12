@@ -1,0 +1,536 @@
+{
+  "chapter_id": "mtk-3-bab2",
+  "phase_code": "FASE_B",
+  "grade": 3,
+  "subject": "Matematika",
+  "title": "Kalimat Matematika",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Kalimat Matematika Penjumlahan",
+          "ikon": "➕",
+          "suara": "Ini peta kalimat Matematika penjumlahan. Galih punya kelereng di rumah, tetapi banyaknya belum kita ketahui. Kita belajar menulis kalimatnya dan mencari bilangan itu. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "titik-titik",
+            "judul": "Titik-titik",
+            "ikon": "❓",
+            "ringkas": "Titik-titik: bilangan yang belum diketahui.",
+            "suara": "Titik-titik. Bilangan yang belum diketahui ditulis dengan titik-titik. Galih punya sejumlah kelereng, membeli lima lagi, dan jumlahnya tujuh belas. Kalimat Matematikanya: titik-titik tambah lima sama dengan tujuh belas. Titik-titik boleh ada di depan atau di tengah."
+          },
+          {
+            "id": "sama-dengan",
+            "judul": "Tanda sama dengan",
+            "ikon": "⚖️",
+            "ringkas": "Kiri dan kanan sama nilainya.",
+            "suara": "Tanda sama dengan. Tanda sama dengan itu seperti neraca yang seimbang. Nilai di sebelah kiri harus sama dengan nilai di sebelah kanan. Delapan tambah sebelas sama nilainya dengan sembilan belas."
+          },
+          {
+            "id": "cari-periksa",
+            "judul": "Cari dan periksa",
+            "ikon": "🔎",
+            "ringkas": "Jumlah dikurangi bagian, lalu periksa.",
+            "suara": "Cari dan periksa. Untuk mencari bilangan yang belum diketahui, kurangi jumlahnya dengan bilangan yang diketahui. Lima puluh dikurangi tiga puluh sama dengan dua puluh. Lalu periksa dengan menjumlahkan lagi: tiga puluh tambah dua puluh sama dengan lima puluh."
+          },
+          {
+            "id": "banyak",
+            "judul": "Banyak kemungkinan",
+            "ikon": "🔀",
+            "ringkas": "Hanya jumlah diketahui: banyak jawaban.",
+            "suara": "Banyak kemungkinan. Perpustakaan punya seratus buku. Sebagian dipinjam dan sebagian tersisa. Bila hanya jumlahnya yang diketahui, jawabannya banyak: enam puluh dan empat puluh, tujuh puluh lima dan dua puluh lima, dan masih banyak lagi."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "a-galih",
+            "teks": "… + 5 = 17",
+            "ikon": "🎱",
+            "cabang": "titik-titik",
+            "petunjuk": "Kalimat kelereng Galih itu contoh menulis titik-titik. Coba cabang lain."
+          },
+          {
+            "id": "a-letak",
+            "teks": "Boleh di depan atau di tengah",
+            "ikon": "↔️",
+            "cabang": "titik-titik",
+            "petunjuk": "Letak bilangan yang belum diketahui itu soal titik-titik. Coba cabang lain."
+          },
+          {
+            "id": "a-neraca",
+            "teks": "Seperti neraca yang seimbang",
+            "ikon": "⚖️",
+            "cabang": "sama-dengan",
+            "petunjuk": "Neraca seimbang itu arti tanda sama dengan. Coba cabang lain."
+          },
+          {
+            "id": "a-sama-nilai",
+            "teks": "8 + 11 sama nilainya dengan 19",
+            "ikon": "🤝",
+            "cabang": "sama-dengan",
+            "petunjuk": "Dua sisi yang sama nilainya itu soal tanda sama dengan. Coba cabang lain."
+          },
+          {
+            "id": "a-kurangi",
+            "teks": "50 − 30 = 20",
+            "ikon": "➖",
+            "cabang": "cari-periksa",
+            "petunjuk": "Jumlah dikurangi bagian itu cara mencari. Coba cabang lain."
+          },
+          {
+            "id": "a-periksa",
+            "teks": "Periksa: 30 + 20 = 50",
+            "ikon": "✅",
+            "cabang": "cari-periksa",
+            "petunjuk": "Menjumlahkan lagi itu cara memeriksa. Coba cabang lain."
+          },
+          {
+            "id": "a-buku",
+            "teks": "100 buku: 60 dan 40, 75 dan 25",
+            "ikon": "📚",
+            "cabang": "banyak",
+            "petunjuk": "Beberapa pasangan untuk jumlah yang sama itu soal banyak kemungkinan. Coba cabang lain."
+          },
+          {
+            "id": "a-tiket",
+            "teks": "95 tiket: 50 dan 45, 60 dan 35",
+            "ikon": "🎟️",
+            "cabang": "banyak",
+            "petunjuk": "Tiket laki-laki dan perempuan bisa bermacam-macam. Itu soal banyak kemungkinan. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Kalimat Matematika Penjumlahan",
+        "suara": "Ini tiga panel tentang kalimat Matematika penjumlahan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-cerita",
+            "tipe": "buka",
+            "judul": "Dari cerita ke kalimat",
+            "ide": "Cerita ditulis dengan titik-titik.",
+            "suara": "Cerita kelereng Galih bisa ditulis menjadi kalimat Matematika. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "cerita",
+                "label": "Ceritanya",
+                "ikon": "🎱",
+                "isi": "Galih membeli 5 kelereng, jadi 17.",
+                "suara": "Galih menyimpan sejumlah kelereng di rumah. Ia membeli lima kelereng lagi, sehingga jumlahnya tujuh belas butir.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "Kelereng Galih",
+                  "kepala": [
+                    "Bagian",
+                    "Banyak"
+                  ],
+                  "baris": [
+                    [
+                      "Dibeli",
+                      5
+                    ],
+                    [
+                      "Jumlah",
+                      17
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "belum",
+                "label": "Yang belum diketahui",
+                "ikon": "❓",
+                "isi": "Kelereng di rumah belum diketahui.",
+                "suara": "Banyak kelereng di rumah belum kita ketahui. Bilangan itu kita tulis dengan titik-titik.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Kelereng di rumah: …"
+                }
+              },
+              {
+                "id": "kalimat",
+                "label": "Kalimatnya",
+                "ikon": "✍️",
+                "isi": "… + 5 = 17",
+                "suara": "Kalimat Matematikanya: titik-titik tambah lima sama dengan tujuh belas. Bentuk seperti ini disebut kalimat Matematika.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "… + 5 = 17"
+                }
+              }
+            ]
+          },
+          {
+            "id": "a-letak",
+            "tipe": "banding",
+            "judul": "Titik-titik di tengah atau di depan",
+            "ide": "Letak berbeda, cara mencarinya sama.",
+            "suara": "Bandingkan titik-titik di tengah dan titik-titik di depan.",
+            "sisi": [
+              {
+                "id": "tengah",
+                "nama": "Di tengah",
+                "ikon": "➡️",
+                "catatan": "8 + … = 19, dicari dengan 19 − 8.",
+                "suara": "Delapan tambah titik-titik sama dengan sembilan belas. Kurangi jumlahnya: sembilan belas dikurangi delapan sama dengan sebelas. Jadi delapan tambah sebelas sama dengan sembilan belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "8 + … = 19 → 19 − 8 = 11"
+                }
+              },
+              {
+                "id": "depan",
+                "nama": "Di depan",
+                "ikon": "⬅️",
+                "catatan": "… + 16 = 54, dicari dengan 54 − 16.",
+                "suara": "Titik-titik tambah enam belas sama dengan lima puluh empat. Kurangi jumlahnya: lima puluh empat dikurangi enam belas sama dengan tiga puluh delapan. Jadi tiga puluh delapan tambah enam belas sama dengan lima puluh empat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "… + 16 = 54 → 54 − 16 = 38"
+                }
+              }
+            ],
+            "kesimpulan": "Di depan atau di tengah, caranya sama: jumlah dikurangi bilangan yang diketahui."
+          },
+          {
+            "id": "a-bagan",
+            "tipe": "buka",
+            "judul": "Bagan, periksa, dan banyak kemungkinan",
+            "ide": "Cari, periksa, lalu pikirkan kemungkinan lain.",
+            "suara": "Ada tiga hal penting saat mengisi titik-titik. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "bagan",
+                "label": "Bagan jumlah",
+                "ikon": "📊",
+                "isi": "Jumlah 50, bagian 30 dan 20.",
+                "suara": "Pada bagan, jumlah semua kelereng lima puluh. Bagian Galih tiga puluh. Bagian Andi dicari dengan lima puluh dikurangi tiga puluh, yaitu dua puluh.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "30 + … = 50",
+                  "kepala": [
+                    "Bagian",
+                    "Banyak"
+                  ],
+                  "baris": [
+                    [
+                      "Jumlah",
+                      50
+                    ],
+                    [
+                      "Galih",
+                      30
+                    ],
+                    [
+                      "Andi",
+                      20
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "periksa",
+                "label": "Periksa",
+                "ikon": "✅",
+                "isi": "Jumlahkan lagi: 30 + 20 = 50.",
+                "suara": "Periksa jawabanmu dengan menjumlahkan lagi. Tiga puluh tambah dua puluh sama dengan lima puluh. Hasilnya sama dengan jumlah semula, jadi jawabannya benar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "30 + 20 = 50 ✔"
+                }
+              },
+              {
+                "id": "mungkin",
+                "label": "Banyak kemungkinan",
+                "ikon": "🔀",
+                "isi": "100 buku bisa 60 dan 40.",
+                "suara": "Bila hanya jumlahnya yang diketahui, jawabannya banyak. Seratus buku bisa enam puluh dipinjam dan empat puluh tersisa, atau tujuh puluh lima dan dua puluh lima, atau lima puluh lima dan empat puluh lima.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "… + … = 100",
+                  "kepala": [
+                    "Pasangan",
+                    "Jumlah"
+                  ],
+                  "baris": [
+                    [
+                      "60 + 40",
+                      100
+                    ],
+                    [
+                      "75 + 25",
+                      100
+                    ],
+                    [
+                      "55 + 45",
+                      100
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Kalimat Matematika Pengurangan",
+          "ikon": "➖",
+          "suara": "Ini peta kalimat Matematika pengurangan. Pak Slamet menjual sebagian ayamnya. Kita belajar mencari bilangan yang dikurangkan dan bilangan awal. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "tiga-bilangan",
+            "judul": "Awal, dikurangkan, sisa",
+            "ikon": "🐔",
+            "ringkas": "Bilangan awal dikurangi sebagian, tinggal sisa.",
+            "suara": "Awal, dikurangkan, sisa. Pada pengurangan ada tiga bilangan. Delapan puluh ayam adalah bilangan awal. Tiga puluh lima ayam yang dijual adalah bilangan yang dikurangkan. Empat puluh lima ayam adalah sisanya."
+          },
+          {
+            "id": "tengah",
+            "judul": "Titik-titik di tengah",
+            "ikon": "➖",
+            "ringkas": "Awal dikurangi sisa.",
+            "suara": "Titik-titik di tengah. Delapan puluh kurang titik-titik sama dengan empat puluh lima. Yang belum diketahui adalah bilangan yang dikurangkan. Caranya: kurangi bilangan awal dengan sisanya. Delapan puluh dikurangi empat puluh lima sama dengan tiga puluh lima."
+          },
+          {
+            "id": "depan",
+            "judul": "Titik-titik di depan",
+            "ikon": "➕",
+            "ringkas": "Dikurangkan ditambah sisa.",
+            "suara": "Titik-titik di depan. Titik-titik kurang empat puluh lima sama dengan dua puluh tujuh. Yang belum diketahui adalah bilangan awal. Caranya: tambahkan bilangan yang dikurangkan dengan sisanya. Empat puluh lima tambah dua puluh tujuh sama dengan tujuh puluh dua."
+          },
+          {
+            "id": "periksa-banyak",
+            "judul": "Periksa dan kemungkinan",
+            "ikon": "✅",
+            "ringkas": "Kurangkan lagi. Kadang jawabannya banyak.",
+            "suara": "Periksa dan kemungkinan. Periksa jawabanmu dengan mengurangkan lagi: tujuh puluh dua dikurangi empat puluh lima sama dengan dua puluh tujuh. Bila hanya bilangan awal yang diketahui, seperti seratus telur, banyak pasangan terjual dan sisa yang mungkin."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-ayam",
+            "teks": "80 − 35 = 45",
+            "ikon": "🐔",
+            "cabang": "tiga-bilangan",
+            "petunjuk": "Kalimat lengkap ayam Pak Slamet memuat awal, dikurangkan, dan sisa. Coba cabang lain."
+          },
+          {
+            "id": "b-tukar",
+            "teks": "Tidak boleh ditukar tempat",
+            "ikon": "🚫",
+            "cabang": "tiga-bilangan",
+            "petunjuk": "Bilangan awal harus di depan. Itu soal awal, dikurangkan, dan sisa. Coba cabang lain."
+          },
+          {
+            "id": "b-tengah-kalimat",
+            "teks": "80 − … = 45",
+            "ikon": "❓",
+            "cabang": "tengah",
+            "petunjuk": "Pada kalimat ini titik-titiknya di tengah. Coba cabang lain."
+          },
+          {
+            "id": "b-tengah-cara",
+            "teks": "80 − 45 = 35",
+            "ikon": "➖",
+            "cabang": "tengah",
+            "petunjuk": "Awal dikurangi sisa itu cara untuk titik-titik di tengah. Coba cabang lain."
+          },
+          {
+            "id": "b-depan-kalimat",
+            "teks": "… − 45 = 27",
+            "ikon": "❓",
+            "cabang": "depan",
+            "petunjuk": "Pada kalimat ini titik-titiknya di depan. Coba cabang lain."
+          },
+          {
+            "id": "b-depan-cara",
+            "teks": "45 + 27 = 72",
+            "ikon": "➕",
+            "cabang": "depan",
+            "petunjuk": "Menambahkan itu cara untuk titik-titik di depan. Coba cabang lain."
+          },
+          {
+            "id": "b-periksa",
+            "teks": "Periksa: 72 − 45 = 27",
+            "ikon": "✅",
+            "cabang": "periksa-banyak",
+            "petunjuk": "Mengurangkan lagi itu cara memeriksa. Coba cabang lain."
+          },
+          {
+            "id": "b-telur",
+            "teks": "100 telur: terjual 45, sisa 55",
+            "ikon": "🥚",
+            "cabang": "periksa-banyak",
+            "petunjuk": "Terjual dan sisa bisa bermacam-macam. Itu soal kemungkinan. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Kalimat Matematika Pengurangan",
+        "suara": "Ini tiga panel tentang kalimat Matematika pengurangan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "b-tiga",
+            "tipe": "buka",
+            "judul": "Tiga bilangan pada pengurangan",
+            "ide": "Awal, dikurangkan, dan sisa.",
+            "suara": "Pengurangan punya tiga bilangan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "awal",
+                "label": "Bilangan awal",
+                "ikon": "🐔",
+                "isi": "Ayam mula-mula 80 ekor.",
+                "suara": "Bilangan awal adalah banyak benda mula-mula. Pak Slamet mula-mula punya delapan puluh ekor ayam.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "80 − 35 = 45",
+                  "kepala": [
+                    "Bagian",
+                    "Banyak"
+                  ],
+                  "baris": [
+                    [
+                      "Awal",
+                      80
+                    ],
+                    [
+                      "Dijual",
+                      35
+                    ],
+                    [
+                      "Sisa",
+                      45
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "dikurangkan",
+                "label": "Yang dikurangkan",
+                "ikon": "🛒",
+                "isi": "Ayam yang dijual 35 ekor.",
+                "suara": "Bilangan yang dikurangkan adalah banyak benda yang diambil. Ayam yang dijual ke pasar ada tiga puluh lima ekor.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "80 − 35 = 45"
+                }
+              },
+              {
+                "id": "sisa",
+                "label": "Sisa",
+                "ikon": "🏠",
+                "isi": "Ayam di kandang tinggal 45.",
+                "suara": "Sisa adalah banyak benda yang masih ada. Ayam di kandang tinggal empat puluh lima ekor. Dijual ditambah sisa sama dengan bilangan awal.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "35 + 45 = 80"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-letak",
+            "tipe": "banding",
+            "judul": "Titik-titik di tengah atau di depan",
+            "ide": "Letak berbeda, caranya berbeda.",
+            "suara": "Bandingkan titik-titik di tengah dan titik-titik di depan. Pada pengurangan, caranya tidak sama.",
+            "sisi": [
+              {
+                "id": "tengah",
+                "nama": "Di tengah",
+                "ikon": "➖",
+                "catatan": "80 − … = 45, dicari dengan 80 − 45.",
+                "suara": "Delapan puluh kurang titik-titik sama dengan empat puluh lima. Yang dicari bilangan yang dikurangkan. Kurangi bilangan awal dengan sisa: delapan puluh dikurangi empat puluh lima sama dengan tiga puluh lima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "80 − … = 45 → 80 − 45 = 35"
+                }
+              },
+              {
+                "id": "depan",
+                "nama": "Di depan",
+                "ikon": "➕",
+                "catatan": "… − 45 = 27, dicari dengan 45 + 27.",
+                "suara": "Titik-titik kurang empat puluh lima sama dengan dua puluh tujuh. Yang dicari bilangan awal. Tambahkan bilangan yang dikurangkan dengan sisa: empat puluh lima tambah dua puluh tujuh sama dengan tujuh puluh dua.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "… − 45 = 27 → 45 + 27 = 72"
+                }
+              }
+            ],
+            "kesimpulan": "Titik-titik di tengah: kurangkan. Titik-titik di depan: tambahkan. Lihat letaknya dulu."
+          },
+          {
+            "id": "b-jaga",
+            "tipe": "buka",
+            "judul": "Periksa, urutan, dan kemungkinan",
+            "ide": "Periksa, jaga urutan, pikirkan kemungkinan.",
+            "suara": "Ada tiga hal yang perlu dijaga pada kalimat pengurangan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "periksa",
+                "label": "Periksa",
+                "ikon": "✅",
+                "isi": "Kurangkan lagi: 72 − 45 = 27.",
+                "suara": "Periksa jawabanmu dengan mengurangkan lagi. Tujuh puluh dua dikurangi empat puluh lima sama dengan dua puluh tujuh. Hasilnya sama dengan sisa semula, jadi jawabannya benar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "72 − 45 = 27 ✔"
+                }
+              },
+              {
+                "id": "urutan",
+                "label": "Jaga urutan",
+                "ikon": "🚫",
+                "isi": "Bilangan awal selalu di depan.",
+                "suara": "Penjumlahan boleh ditukar tempat, tetapi pengurangan tidak. Delapan puluh dikurangi tiga puluh lima bisa dihitung. Tiga puluh lima dikurangi delapan puluh tidak bisa, karena hasilnya di bawah nol.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "80 − 35 ✔   35 − 80 ✘"
+                }
+              },
+              {
+                "id": "mungkin",
+                "label": "Banyak kemungkinan",
+                "ikon": "🥚",
+                "isi": "100 telur: terjual dan sisa bermacam-macam.",
+                "suara": "Pedagang punya seratus telur. Bila hanya bilangan awal yang diketahui, banyak pasangan terjual dan sisa yang mungkin: empat puluh lima dan lima puluh lima, enam puluh dan empat puluh, atau tujuh puluh dua dan dua puluh delapan.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "100 − … = …",
+                  "kepala": [
+                    "Terjual",
+                    "Sisa"
+                  ],
+                  "baris": [
+                    [
+                      "45",
+                      55
+                    ],
+                    [
+                      "60",
+                      40
+                    ],
+                    [
+                      "72",
+                      28
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
