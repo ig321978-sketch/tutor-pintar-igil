@@ -2,6 +2,7 @@
  * Definisi Mesin Bertahap Kelas 4 Bab 5, dijalankan mesin berstasiun mesin-bertahap-k3b1.ts.
  * Semua pertanyaan, kunci, dan pengecoh DIHITUNG dari koordinat titik sudut kasusnya (bilangan bulat).
  *  - MESIN_CIRI (A): Sisi → Sudut → Sejajar → Nama   (penggaris segitiga, jendela, meja)
+ *  - MESIN_SUSUN (B): Jenis → Bagian → Nama → Luas    (kertas persegi, hiasan segienam, susunan trapesium)
  * Pengecoh bersumber dari kesalahan umum: menghitung semua sudut sebagai siku-siku, salah hitung sisi satu, mengira
  * trapesium punya dua pasang sisi sejajar, dan mengira persegi panjang sebagai persegi. Teks dieja ejaK3 (bilangan
  * sampai 9.999), jadi tanpa lambang derajat. Murni: tanpa React, tanpa jaringan. Hanya impor tipe.
@@ -116,4 +117,136 @@ export const MESIN_CIRI: DefMesin = {
   kasus: KASUS_CIRI.map(kasusMesinCiri),
 };
 
-export const SEMUA_MESIN_K4B5 = [MESIN_CIRI];
+/* ------------------------------ B: Mesin Susun-Urai ------------------------------ */
+
+type T2 = [number, number];
+/** Kisi persegi (x, y) atau kisi segitiga (a, b): titik a·(1, 0) + b·(½, ½√3). */
+export type KasusSusun = {
+  id: string;
+  benda: string;
+  arah: "susun" | "urai";
+  kisi: "persegi" | "segitiga";
+  utuh: T2[];
+  bagian: T2[][];
+  /** Nama yang sering tertukar; yang sama dengan nama hasil hitung dibuang. */
+  tertukar: string[];
+};
+const HEKS: T2[] = [[2, 0], [0, 2], [-2, 2], [-2, 0], [0, -2], [2, -2]];
+export const KASUS_SUSUN: KasusSusun[] = [
+  {
+    id: "kertas",
+    benda: "kertas persegi Helen",
+    arah: "urai",
+    kisi: "persegi",
+    utuh: [[0, 0], [4, 0], [4, 4], [0, 4]],
+    bagian: [[[0, 0], [4, 0], [4, 4]], [[0, 0], [4, 4], [0, 4]]],
+    tertukar: ["persegi panjang", "segitiga sama sisi", "segitiga siku-siku"],
+  },
+  {
+    id: "hiasan",
+    benda: "hiasan segienam",
+    arah: "urai",
+    kisi: "segitiga",
+    utuh: HEKS,
+    bagian: HEKS.map((t, i) => [[0, 0], t, HEKS[(i + 1) % 6]] as T2[]),
+    tertukar: ["segitiga siku-siku", "persegi", "segitiga sama sisi"],
+  },
+  {
+    id: "trapesium",
+    benda: "susunan segitiga sama sisi",
+    arah: "susun",
+    kisi: "segitiga",
+    utuh: [[0, 0], [4, 0], [2, 2], [0, 2]],
+    bagian: [[[0, 0], [2, 0], [0, 2]], [[2, 0], [2, 2], [0, 2]], [[2, 0], [4, 0], [2, 2]]],
+    tertukar: ["jajargenjang", "segienam", "trapesium"],
+  },
+];
+
+export const STASIUN_SUSUN: StasiunDef[] = [
+  { id: "jenis", nama: "Jenis", ikon: "🧩" },
+  { id: "bagian", nama: "Bagian", ikon: "🔢" },
+  { id: "nama", nama: "Nama", ikon: "🏷️" },
+  { id: "luas", nama: "Luas", ikon: "⚖️" },
+];
+
+/** Hasil kali titik menurut kisi (×2 untuk kisi segitiga agar tetap bulat). */
+const titikKisi = (k: KasusSusun["kisi"], u: T2, v: T2): number => (k === "persegi" ? u[0] * v[0] + u[1] * v[1] : 2 * u[0] * v[0] + u[0] * v[1] + u[1] * v[0] + 2 * u[1] * v[1]);
+/** Dua kali luas (rumus tali sepatu) dalam satuan kisi. */
+export const luasKisi = (p: T2[]): number => Math.abs(p.reduce((s, a, i) => s + a[0] * p[(i + 1) % p.length][1] - a[1] * p[(i + 1) % p.length][0], 0));
+
+/** Nama bangun dari titik sudut dan kisinya (hanya segitiga, segiempat, segienam yang dipakai mesin). */
+export function namaKisi(k: KasusSusun["kisi"], p: T2[]): string {
+  const n = p.length;
+  const v = Array.from({ length: n }, (_, i) => [p[(i + 1) % n][0] - p[i][0], p[(i + 1) % n][1] - p[i][1]] as T2);
+  const pj = v.map((x) => titikKisi(k, x, x));
+  const siku = v.filter((x, i) => titikKisi(k, v[(i - 1 + n) % n], x) === 0).length;
+  const sama = pj.every((x) => x === pj[0]);
+  if (n === 3) return siku > 0 ? "segitiga siku-siku" : sama ? "segitiga sama sisi" : "segitiga";
+  if (n === 4) {
+    const sejajar = [0, 1].filter((i) => v[i][0] * v[i + 2][1] - v[i][1] * v[i + 2][0] === 0).length;
+    if (sejajar === 2) return siku === 4 ? (sama ? "persegi" : "persegi panjang") : sama ? "belah ketupat" : "jajargenjang";
+    return sejajar === 1 ? "trapesium" : "segiempat";
+  }
+  return n === 6 ? (sama ? "segienam beraturan" : "segienam") : `segi banyak ${n} sisi`;
+}
+
+const kataJenis = (a: KasusSusun["arah"]): string => (a === "susun" ? "komposisi" : "dekomposisi");
+
+export function kasusMesinSusun(k: KasusSusun, idx: number): KasusMesin {
+  const jenis = kataJenis(k.arah);
+  const n = k.bagian.length;
+  const namaBagian = [...new Set(k.bagian.map((b) => namaKisi(k.kisi, b)))];
+  const namaUtuh = namaKisi(k.kisi, k.utuh);
+  const target = k.arah === "urai" ? namaBagian[0] : namaUtuh;
+  const jumlahLuas = k.bagian.reduce((s, b) => s + luasKisi(b), 0);
+  const hasilLuas = banding(jumlahLuas, luasKisi(k.utuh));
+  const kalimat = k.arah === "urai" ? `${kapital(k.benda)} diurai menjadi ${n} bagian` : `${n} segitiga sama sisi disusun menjadi satu bangun`;
+  const langkah: LangkahMesin[] = [
+    {
+      stasiun: "jenis",
+      tanya: `${kalimat}. Kegiatan ini disebut…`,
+      opsi: susunOpsi(jenis, ["komposisi", "dekomposisi", "pengukuran"].filter((o) => o !== jenis), idx),
+      benar: jenis,
+      petunjuk: "Menyusun bagian menjadi satu bangun disebut komposisi. Mengurai satu bangun menjadi bagian disebut dekomposisi.",
+    },
+    {
+      stasiun: "bagian",
+      tanya: k.arah === "urai" ? `Berapa bagian hasil uraian ${k.benda}?` : `Berapa segitiga yang disusun?`,
+      opsi: susunOpsi(String(n), angkaPengecoh(n, [n + 1, n - 1, n * 2]), idx + 1),
+      benar: String(n),
+      petunjuk: "Hitung bagiannya satu per satu. Tiap bagian dihitung satu kali.",
+    },
+    {
+      stasiun: "nama",
+      tanya: k.arah === "urai" ? `Tiap bagian berbentuk…` : `Bangun hasil susunan berbentuk…`,
+      opsi: susunOpsi(target, duaPengecoh(target, k.tertukar), idx + 2),
+      benar: target,
+      petunjuk: k.arah === "urai" ? "Hitung sisi tiap bagian dan periksa sudutnya." : "Hitung sisi bangun hasil susunan, lalu cari sisi yang sejajar.",
+    },
+    {
+      stasiun: "luas",
+      tanya: `Jumlah luas semua bagian dibanding luas bangun utuh…`,
+      opsi: susunOpsi(hasilLuas, BANDING.filter((b) => b !== hasilLuas), idx),
+      benar: hasilLuas,
+      petunjuk: "Tidak ada bagian yang dibuang atau ditambah. Bagian hanya disusun atau diurai, jadi luas totalnya tidak berubah.",
+    },
+  ];
+  const ringkas =
+    k.arah === "urai"
+      ? `${kapital(k.benda)} diurai menjadi ${n} ${namaBagian.join(" dan ")}. Luas totalnya tetap. Ini dekomposisi.`
+      : `${n} segitiga sama sisi disusun menjadi ${namaUtuh}. Luas totalnya tetap. Ini komposisi.`;
+  return { id: k.id, nama: k.benda, ringkas, langkah };
+}
+
+const BANDING = ["sama", "lebih besar", "lebih kecil"];
+const banding = (a: number, b: number): string => (a === b ? "sama" : a > b ? "lebih besar" : "lebih kecil");
+
+export const MESIN_SUSUN: DefMesin = {
+  id: "mesin-susun-k4b5",
+  judul: "Mesin Susun-Urai",
+  selesaiId: "mesin-susun",
+  stasiun: STASIUN_SUSUN,
+  kasus: KASUS_SUSUN.map(kasusMesinSusun),
+};
+
+export const SEMUA_MESIN_K4B5 = [MESIN_CIRI, MESIN_SUSUN];

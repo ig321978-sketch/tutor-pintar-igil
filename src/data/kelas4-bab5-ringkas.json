@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-tutup", "teks": "Tertutup, tepi lurus", "ikon": "🔷", "cabang": "segi", "petunjuk": "Tertutup dan lurus itu syarat segi banyak. Coba cabang lain." },
-          { "id": "a-lingkaran", "teks": "Lingkaran bukan segi banyak", "ikon": "⭕", "cabang": "segi", "petunjuk": "Lingkaran bertepi lengkung, itu soal syarat segi banyak. Coba cabang lain." },
-          { "id": "a-persegi", "teks": "Persegi itu beraturan", "ikon": "🟨", "cabang": "beraturan", "petunjuk": "Sisi dan sudut persegi sama semua. Itu soal beraturan. Coba cabang lain." },
-          { "id": "a-belah", "teks": "Belah ketupat: sisi sama, sudut beda", "ikon": "🔶", "cabang": "beraturan", "petunjuk": "Sisi sama tetapi sudut berbeda itu soal beraturan atau tidak. Coba cabang lain." },
-          { "id": "a-siku", "teks": "Satu sudut siku-siku", "ikon": "📐", "cabang": "segitiga", "petunjuk": "Segitiga siku-siku dikelompokkan menurut sudut. Coba cabang lain." },
-          { "id": "a-kaki", "teks": "Dua sisi sama: sama kaki", "ikon": "🔺", "cabang": "segitiga", "petunjuk": "Sama kaki itu jenis segitiga menurut sisi. Coba cabang lain." },
-          { "id": "a-trapesium", "teks": "Trapesium: 1 pasang sejajar", "ikon": "🛤️", "cabang": "segiempat", "petunjuk": "Sisi sejajar trapesium itu ciri segiempat. Coba cabang lain." },
-          { "id": "a-jajar", "teks": "Jajargenjang: 2 pasang sejajar", "ikon": "▱", "cabang": "segiempat", "petunjuk": "Dua pasang sisi sejajar itu ciri segiempat. Coba cabang lain." }
+          {
+            "id": "a-tutup",
+            "teks": "Tertutup, tepi lurus",
+            "ikon": "🔷",
+            "cabang": "segi",
+            "petunjuk": "Tertutup dan lurus itu syarat segi banyak. Coba cabang lain."
+          },
+          {
+            "id": "a-lingkaran",
+            "teks": "Lingkaran bukan segi banyak",
+            "ikon": "⭕",
+            "cabang": "segi",
+            "petunjuk": "Lingkaran bertepi lengkung, itu soal syarat segi banyak. Coba cabang lain."
+          },
+          {
+            "id": "a-persegi",
+            "teks": "Persegi itu beraturan",
+            "ikon": "🟨",
+            "cabang": "beraturan",
+            "petunjuk": "Sisi dan sudut persegi sama semua. Itu soal beraturan. Coba cabang lain."
+          },
+          {
+            "id": "a-belah",
+            "teks": "Belah ketupat: sisi sama, sudut beda",
+            "ikon": "🔶",
+            "cabang": "beraturan",
+            "petunjuk": "Sisi sama tetapi sudut berbeda itu soal beraturan atau tidak. Coba cabang lain."
+          },
+          {
+            "id": "a-siku",
+            "teks": "Satu sudut siku-siku",
+            "ikon": "📐",
+            "cabang": "segitiga",
+            "petunjuk": "Segitiga siku-siku dikelompokkan menurut sudut. Coba cabang lain."
+          },
+          {
+            "id": "a-kaki",
+            "teks": "Dua sisi sama: sama kaki",
+            "ikon": "🔺",
+            "cabang": "segitiga",
+            "petunjuk": "Sama kaki itu jenis segitiga menurut sisi. Coba cabang lain."
+          },
+          {
+            "id": "a-trapesium",
+            "teks": "Trapesium: 1 pasang sejajar",
+            "ikon": "🛤️",
+            "cabang": "segiempat",
+            "petunjuk": "Sisi sejajar trapesium itu ciri segiempat. Coba cabang lain."
+          },
+          {
+            "id": "a-jajar",
+            "teks": "Jajargenjang: 2 pasang sejajar",
+            "ikon": "▱",
+            "cabang": "segiempat",
+            "petunjuk": "Dua pasang sisi sejajar itu ciri segiempat. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -66,16 +114,60 @@
             "ide": "Nama segi banyak mengikuti banyak sisi.",
             "suara": "Ada tiga hal tentang segi banyak. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "tutup", "label": "Tertutup", "ikon": "🔷", "isi": "Tepi lurus dan ujungnya bertemu.", "suara": "Segi banyak tertutup dan dibatasi ruas garis lurus. Lingkaran bukan segi banyak.", "visual": { "jenis": "teks", "isi": "tertutup + lurus" } },
+              {
+                "id": "tutup",
+                "label": "Tertutup",
+                "ikon": "🔷",
+                "isi": "Tepi lurus dan ujungnya bertemu.",
+                "suara": "Segi banyak tertutup dan dibatasi ruas garis lurus. Lingkaran bukan segi banyak.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "tertutup + lurus"
+                }
+              },
               {
                 "id": "nama",
                 "label": "Nama",
                 "ikon": "🏷️",
                 "isi": "Banyak sisi memberi nama.",
                 "suara": "Tiga sisi segitiga, empat sisi segiempat, lima sisi segilima, enam sisi segienam.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Bangun", "Sisi"], "baris": [["segitiga", 3], ["segiempat", 4], ["segilima", 5], ["segienam", 6]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Bangun",
+                    "Sisi"
+                  ],
+                  "baris": [
+                    [
+                      "segitiga",
+                      3
+                    ],
+                    [
+                      "segiempat",
+                      4
+                    ],
+                    [
+                      "segilima",
+                      5
+                    ],
+                    [
+                      "segienam",
+                      6
+                    ]
+                  ]
+                }
               },
-              { "id": "beraturan", "label": "Beraturan", "ikon": "✅", "isi": "Semua sisi dan sudut sama.", "suara": "Segi banyak beraturan punya sisi yang sama panjang dan sudut yang sama besar.", "visual": { "jenis": "teks", "isi": "sisi sama, sudut sama" } }
+              {
+                "id": "beraturan",
+                "label": "Beraturan",
+                "ikon": "✅",
+                "isi": "Semua sisi dan sudut sama.",
+                "suara": "Segi banyak beraturan punya sisi yang sama panjang dan sudut yang sama besar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "sisi sama, sudut sama"
+                }
+              }
             ]
           },
           {
@@ -85,8 +177,28 @@
             "ide": "Keduanya punya empat sudut siku-siku.",
             "suara": "Bandingkan persegi dan persegi panjang.",
             "sisi": [
-              { "id": "persegi", "nama": "Persegi", "ikon": "🟨", "catatan": "Semua sisi sama panjang.", "suara": "Persegi punya empat sudut siku-siku dan semua sisinya sama panjang.", "visual": { "jenis": "teks", "isi": "4 sisi sama" } },
-              { "id": "pp", "nama": "Persegi panjang", "ikon": "🟧", "catatan": "Sisi berhadapan sama panjang.", "suara": "Persegi panjang punya empat sudut siku-siku dan sisi yang berhadapan sama panjang.", "visual": { "jenis": "teks", "isi": "berhadapan sama" } }
+              {
+                "id": "persegi",
+                "nama": "Persegi",
+                "ikon": "🟨",
+                "catatan": "Semua sisi sama panjang.",
+                "suara": "Persegi punya empat sudut siku-siku dan semua sisinya sama panjang.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 sisi sama"
+                }
+              },
+              {
+                "id": "pp",
+                "nama": "Persegi panjang",
+                "ikon": "🟧",
+                "catatan": "Sisi berhadapan sama panjang.",
+                "suara": "Persegi panjang punya empat sudut siku-siku dan sisi yang berhadapan sama panjang.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "berhadapan sama"
+                }
+              }
             ],
             "kesimpulan": "Keduanya punya 4 sudut siku-siku dan 2 pasang sisi sejajar."
           },
@@ -97,9 +209,293 @@
             "ide": "Lihat sudut terbesar segitiga.",
             "suara": "Ada tiga jenis segitiga menurut sudut. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "lancip", "label": "Lancip", "ikon": "🔺", "isi": "Semua sudut lebih kecil dari siku.", "suara": "Segitiga lancip. Semua sudutnya lebih kecil dari sudut siku-siku.", "visual": { "jenis": "teks", "isi": "semua < 90°" } },
-              { "id": "siku", "label": "Siku-siku", "ikon": "📐", "isi": "Satu sudut pas pojok buku.", "suara": "Segitiga siku-siku. Satu sudutnya sembilan puluh derajat, pas dengan pojok buku.", "visual": { "jenis": "teks", "isi": "satu = 90°" } },
-              { "id": "tumpul", "label": "Tumpul", "ikon": "📏", "isi": "Satu sudut lebih besar dari siku.", "suara": "Segitiga tumpul. Satu sudutnya lebih besar dari sudut siku-siku.", "visual": { "jenis": "teks", "isi": "satu > 90°" } }
+              {
+                "id": "lancip",
+                "label": "Lancip",
+                "ikon": "🔺",
+                "isi": "Semua sudut lebih kecil dari siku.",
+                "suara": "Segitiga lancip. Semua sudutnya lebih kecil dari sudut siku-siku.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "semua < 90°"
+                }
+              },
+              {
+                "id": "siku",
+                "label": "Siku-siku",
+                "ikon": "📐",
+                "isi": "Satu sudut pas pojok buku.",
+                "suara": "Segitiga siku-siku. Satu sudutnya sembilan puluh derajat, pas dengan pojok buku.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "satu = 90°"
+                }
+              },
+              {
+                "id": "tumpul",
+                "label": "Tumpul",
+                "ikon": "📏",
+                "isi": "Satu sudut lebih besar dari siku.",
+                "suara": "Segitiga tumpul. Satu sudutnya lebih besar dari sudut siku-siku.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "satu > 90°"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Komposisi dan Dekomposisi",
+          "ikon": "🧩",
+          "suara": "Ini peta komposisi dan dekomposisi bangun datar. Kita belajar menyusun, mengurai, banyak cara, dan tangram. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "komposisi",
+            "judul": "Komposisi",
+            "ikon": "🧱",
+            "ringkas": "Menyusun bagian menjadi satu bangun.",
+            "suara": "Komposisi. Menyusun beberapa bangun menjadi satu bangun baru, rapat tanpa celah dan tidak bertumpuk."
+          },
+          {
+            "id": "dekomposisi",
+            "judul": "Dekomposisi",
+            "ikon": "✂️",
+            "ringkas": "Mengurai satu bangun menjadi bagian.",
+            "suara": "Dekomposisi. Mengurai satu bangun menjadi beberapa bangun yang kita kenal."
+          },
+          {
+            "id": "cara",
+            "judul": "Banyak cara",
+            "ikon": "🔀",
+            "ringkas": "Satu bangun, banyak cara mengurai.",
+            "suara": "Banyak cara. Persegi bisa diurai menjadi dua segitiga atau dua persegi panjang. Luas totalnya tetap."
+          },
+          {
+            "id": "tangram",
+            "judul": "Tangram",
+            "ikon": "🪁",
+            "ringkas": "Tujuh keping menyusun banyak siluet.",
+            "suara": "Tangram. Tujuh keping yang bisa disusun menjadi persegi, segitiga, dan banyak siluet lain."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-dua-persegi",
+            "teks": "2 segitiga → persegi",
+            "ikon": "🟨",
+            "cabang": "komposisi",
+            "petunjuk": "Dua segitiga disusun menjadi persegi itu menyusun. Coba cabang lain."
+          },
+          {
+            "id": "b-rumah",
+            "teks": "Persegi + segitiga → rumah",
+            "ikon": "🏠",
+            "cabang": "komposisi",
+            "petunjuk": "Membuat rumah dari bangun itu menyusun. Coba cabang lain."
+          },
+          {
+            "id": "b-enam",
+            "teks": "Segienam → 6 segitiga",
+            "ikon": "⬡",
+            "cabang": "dekomposisi",
+            "petunjuk": "Segienam dibagi menjadi segitiga itu mengurai. Coba cabang lain."
+          },
+          {
+            "id": "b-peta",
+            "teks": "Peta dibagi jadi bangun",
+            "ikon": "🗺️",
+            "cabang": "dekomposisi",
+            "petunjuk": "Membagi peta menjadi bangun itu mengurai. Coba cabang lain."
+          },
+          {
+            "id": "b-dua-cara",
+            "teks": "Persegi: 2 segitiga atau 2 persegi panjang",
+            "ikon": "🔀",
+            "cabang": "cara",
+            "petunjuk": "Dua hasil berbeda dari satu persegi itu soal banyak cara. Coba cabang lain."
+          },
+          {
+            "id": "b-luas",
+            "teks": "Luas total tetap",
+            "ikon": "⚖️",
+            "cabang": "cara",
+            "petunjuk": "Apa pun caranya, luas totalnya tetap. Itu soal banyak cara. Coba cabang lain."
+          },
+          {
+            "id": "b-tujuh",
+            "teks": "Tujuh keping",
+            "ikon": "7️⃣",
+            "cabang": "tangram",
+            "petunjuk": "Tujuh keping itu ciri tangram. Coba cabang lain."
+          },
+          {
+            "id": "b-siluet",
+            "teks": "Tutup siluet tanpa celah",
+            "ikon": "🪁",
+            "cabang": "tangram",
+            "petunjuk": "Menutup siluet dengan keping itu permainan tangram. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Komposisi dan Dekomposisi",
+        "suara": "Ini tiga panel tentang menyusun dan mengurai bangun. Ketuk kotaknya untuk membuka, lalu bandingkan dua kegiatan.",
+        "panel": [
+          {
+            "id": "b-banding-info",
+            "tipe": "banding",
+            "judul": "Susun dan urai",
+            "ide": "Menyusun dan mengurai adalah kebalikan.",
+            "suara": "Bandingkan komposisi dan dekomposisi.",
+            "sisi": [
+              {
+                "id": "komposisi",
+                "nama": "Komposisi",
+                "ikon": "🧱",
+                "catatan": "Bagian menjadi satu bangun.",
+                "suara": "Komposisi. Dua segitiga disusun menjadi satu persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 segitiga → persegi"
+                }
+              },
+              {
+                "id": "dekomposisi",
+                "nama": "Dekomposisi",
+                "ikon": "✂️",
+                "catatan": "Satu bangun menjadi bagian.",
+                "suara": "Dekomposisi. Satu persegi diurai menjadi dua segitiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "persegi → 2 segitiga"
+                }
+              }
+            ],
+            "kesimpulan": "Luas total tetap, baik disusun maupun diurai."
+          },
+          {
+            "id": "b-urai-info",
+            "tipe": "buka",
+            "judul": "Urai bangun",
+            "ide": "Bangun diurai menjadi bangun yang dikenal.",
+            "suara": "Ada tiga contoh mengurai bangun. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "persegi",
+                "label": "Persegi",
+                "ikon": "🟨",
+                "isi": "Potong diagonal, jadi dua segitiga.",
+                "suara": "Persegi dipotong dari pojok ke pojok menjadi dua segitiga siku-siku.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 segitiga"
+                }
+              },
+              {
+                "id": "hasil",
+                "label": "Banyak bagian",
+                "ikon": "🔢",
+                "isi": "Bangun dan banyak segitiganya.",
+                "suara": "Persegi menjadi dua segitiga, trapesium menjadi tiga segitiga sama sisi, segienam beraturan menjadi enam segitiga sama sisi.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Bangun",
+                    "Segitiga"
+                  ],
+                  "baris": [
+                    [
+                      "persegi",
+                      2
+                    ],
+                    [
+                      "trapesium",
+                      3
+                    ],
+                    [
+                      "segienam",
+                      6
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "peta",
+                "label": "Peta",
+                "ikon": "🗺️",
+                "isi": "Peta dibagi menjadi bangun datar.",
+                "suara": "Bentuk peta bisa dibagi menjadi persegi, segitiga, dan trapesium.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "peta → bangun"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-tangram-info",
+            "tipe": "buka",
+            "judul": "Tangram",
+            "ide": "Tujuh keping menyusun banyak siluet.",
+            "suara": "Ada tiga hal tentang tangram. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "keping",
+                "label": "Keping",
+                "ikon": "🪁",
+                "isi": "Lima segitiga, satu persegi, satu jajargenjang.",
+                "suara": "Tangram punya lima segitiga, satu persegi, dan satu jajargenjang.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Keping",
+                    "Banyak"
+                  ],
+                  "baris": [
+                    [
+                      "segitiga",
+                      5
+                    ],
+                    [
+                      "persegi",
+                      1
+                    ],
+                    [
+                      "jajargenjang",
+                      1
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "putar",
+                "label": "Putar",
+                "ikon": "🔄",
+                "isi": "Keping boleh diputar dan dibalik.",
+                "suara": "Keping boleh diputar, dan jajargenjang boleh dibalik, supaya pas di siluet.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "putar, balik"
+                }
+              },
+              {
+                "id": "siluet",
+                "label": "Siluet",
+                "ikon": "⬛",
+                "isi": "Tutup siluet tanpa celah.",
+                "suara": "Siluet ditutup rapat tanpa celah dan tanpa bertumpuk.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "tanpa celah"
+                }
+              }
             ]
           }
         ]
