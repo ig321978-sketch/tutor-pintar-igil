@@ -17,6 +17,7 @@ import { SKENARIO_K3B4A, SKENARIO_K3B4B, SKENARIO_K3B4C } from "../src/component
 import { SKENARIO_K3B5A, SKENARIO_K3B5B } from "../src/components/modul/skenario-k3b5.ts";
 import { SKENARIO_K4B1A, SKENARIO_K4B1B, SKENARIO_K4B1C, SKENARIO_K4B1D } from "../src/components/modul/skenario-k4b1-bilangan.ts";
 import { SKENARIO_K4B1E, SKENARIO_K4B1F } from "../src/components/modul/skenario-k4b1-hitung.ts";
+import { SKENARIO_K4B1G, SKENARIO_K4B1H, SKENARIO_K4B1I } from "../src/components/modul/skenario-k4b1-bagi.ts";
 
 let gagal = 0;
 let lulus = 0;
@@ -70,6 +71,9 @@ const SEMUA = [
   ["K4 Bab 1D", SKENARIO_K4B1D, 10000],
   ["K4 Bab 1E", SKENARIO_K4B1E, 1000],
   ["K4 Bab 1F", SKENARIO_K4B1F, 1000],
+  ["K4 Bab 1G", SKENARIO_K4B1G, 1000],
+  ["K4 Bab 1H", SKENARIO_K4B1H, 1000],
+  ["K4 Bab 1I", SKENARIO_K4B1I, 10000],
 ];
 
 const OBJEK_SAH = new Set(["pesawat", "mobil", "boneka", "bola", "gasing", "bola-merah", "bola-kuning", "bola-hijau", "bola-biru", "kelereng-merah", "kelereng-kuning", "kelereng-hijau", "kelereng-biru", "jagung", "wortel", "brokoli", "kol", "jeruk", "apel", "mangga", "belimbing", "ayam", "bebek", "kelinci", "karet", "stik"]);

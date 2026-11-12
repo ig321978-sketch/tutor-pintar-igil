@@ -9,6 +9,9 @@
  *  D Komposisi, dekomposisi: Lab Susun-Urai (Susun, Urai, Uang)        + Mesin Susun   + Uang Helen
  *  E Penjumlahan sampai 1.000: Lab Jumlah Bersusun (Bersusun, Cara Panjang) + Mesin Jumlah + Jeruk Pak Toni
  *  F Pengurangan sampai 1.000: Lab Kurang Bersusun (Bersusun, Cara Panjang, Periksa) + Mesin Kurang + Buku Perpustakaan
+ *  G Perkalian sampai 100    : Lab Kali (Array, Belah, Bersusun)          + Mesin Kali    + Donat dan Koperasi
+ *  H Pembagian sampai 100    : Lab Bagi (Wadah, Bersusun, Periksa)        + Mesin Bagi    + Permen Pak Wicak
+ *  I Faktor dan kelipatan    : Lab Faktor (Faktor, Kelipatan)             + Mesin Faktor  + Pameran Kelas 4 (pencapaian bab)
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
@@ -19,9 +22,12 @@ import type { KeadaanBandingK4B1C } from "./lab-banding-k4b1c";
 import type { KeadaanSusunK4B1D } from "./lab-susun-k4b1d";
 import type { KeadaanJumlahK4B1E } from "./lab-jumlah-k4b1e";
 import type { KeadaanKurangK4B1F } from "./lab-kurang-k4b1f";
+import type { KeadaanKaliK4B1G } from "./lab-kali-k4b1g";
+import type { KeadaanBagiK4B1H } from "./lab-bagi-k4b1h";
+import type { KeadaanFaktorK4B1I } from "./lab-faktor-k4b1i";
 
-export type KeadaanK4Bab1 = KeadaanKemasanK4B1A | KeadaanNilaiK4B1B | KeadaanBandingK4B1C | KeadaanSusunK4B1D | KeadaanJumlahK4B1E | KeadaanKurangK4B1F | KeadaanSelesai;
-export type HurufMisiK4B1 = "A" | "B" | "C" | "D" | "E" | "F";
+export type KeadaanK4Bab1 = KeadaanKemasanK4B1A | KeadaanNilaiK4B1B | KeadaanBandingK4B1C | KeadaanSusunK4B1D | KeadaanJumlahK4B1E | KeadaanKurangK4B1F | KeadaanKaliK4B1G | KeadaanBagiK4B1H | KeadaanFaktorK4B1I | KeadaanSelesai;
+export type HurufMisiK4B1 = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I";
 
 const selesai = (k: KeadaanK4Bab1, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
@@ -30,8 +36,8 @@ const pernah = (k: KeadaanK4Bab1, alat: string, ...id: string[]) => k.alat === a
 const banyakAwalan = (k: KeadaanK4Bab1, alat: string, awalan: string) => (k.alat === alat && "pernah" in k ? k.pernah.filter((p) => p.startsWith(awalan)).length : 0);
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K4B1 = { A: "helen-minimarket", B: "struk-azizah", C: "harga-pasar", D: "uang-helen", E: "jeruk-pak-toni", F: "buku-perpustakaan" } as const;
-export const ID_MESIN_K4B1 = { A: "mesin-baca", B: "mesin-nilai", C: "mesin-banding", D: "mesin-susun", E: "mesin-jumlah", F: "mesin-kurang" } as const;
+export const ID_SKENARIO_K4B1 = { A: "helen-minimarket", B: "struk-azizah", C: "harga-pasar", D: "uang-helen", E: "jeruk-pak-toni", F: "buku-perpustakaan", G: "donat-koperasi", H: "permen-wicak", I: "pameran-kelas4" } as const;
+export const ID_MESIN_K4B1 = { A: "mesin-baca", B: "mesin-nilai", C: "mesin-banding", D: "mesin-susun", E: "mesin-jumlah", F: "mesin-kurang", G: "mesin-kali", H: "mesin-bagi", I: "mesin-faktor" } as const;
 
 export const MISI_A: DefMisi<KeadaanK4Bab1>[] = [
   { id: "a-tukar", teks: "Di Rakit, tambah dus sampai sepuluh dan lihat sepuluh dus ditukar menjadi satu peti.", wajib: true, cek: (k) => pernah(k, "kemasan", "tukar:dus") },
@@ -111,5 +117,44 @@ export const MISI_F: DefMisi<KeadaanK4Bab1>[] = [
   { id: "f-seribu", teks: "Selesaikan 1.000 − 1. Berapa kali mengambil?", wajib: false, cek: (k) => pernah(k, "kurang", "kurang:1000-1") },
 ];
 
-const DAFTAR: Record<HurufMisiK4B1, DefMisi<KeadaanK4Bab1>[]> = { A: MISI_A, B: MISI_B, C: MISI_C, D: MISI_D, E: MISI_E, F: MISI_F };
+export const MISI_G: DefMisi<KeadaanK4Bab1>[] = [
+  { id: "g-array", teks: "Di Array, atur 12 kotak donat berisi 4 donat. Baca penjumlahan berulangnya.", wajib: true, cek: (k) => pernah(k, "kali", "array:12x4") },
+  { id: "g-cerita", teks: "Atur array 12 pak pensil berisi 8 batang. Berapa batang seluruhnya?", wajib: true, cek: (k) => pernah(k, "kali", "array:12x8") },
+  { id: "g-panjang", teks: "Di Belah, nyalakan cara panjang untuk 12 × 4 dan baca uraiannya.", wajib: true, cek: (k) => pernah(k, "kali", "belah:12x4") },
+  { id: "g-bersusun", teks: "Di Bersusun, selesaikan 14 × 5 kolom demi kolom.", wajib: true, cek: (k) => pernah(k, "kali", "kali:14x5") },
+  { id: "g-lupa", teks: "Pada kolom satuan 14 × 5, coba tekan Tulis tanpa simpanan. Baca penjelasan lab.", wajib: true, cek: (k) => pernah(k, "kali", "lupa-simpan") },
+  { id: "g-mesin", teks: "Selesaikan Mesin Kali sampai semua soal diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B1.G) },
+  { id: "g-skenario", teks: "Selesaikan skenario Donat dan Koperasi sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B1.G) },
+  { id: "g-seratus", teks: "Selesaikan perkalian bersusun yang hasilnya tepat 100. Berapa simpanannya?", wajib: false, cek: (k) => pernah(k, "kali", "kali-100") },
+  { id: "g-45", teks: "Selesaikan 45 × 2 bersusun. Berapa simpanan di kolom satuan?", wajib: false, cek: (k) => pernah(k, "kali", "kali:45x2") },
+  { id: "g-16", teks: "Nyalakan cara panjang untuk 16 × 6. Bandingkan dengan hasil bersusun.", wajib: false, cek: (k) => pernah(k, "kali", "belah:16x6") },
+];
+
+export const MISI_H: DefMisi<KeadaanK4Bab1>[] = [
+  { id: "h-habis", teks: "Di Wadah, bagikan 48 permen ke 4 wadah sampai habis. Berapa tiap wadah?", wajib: true, cek: (k) => pernah(k, "bagi", "habis:48:4") },
+  { id: "h-percobaan", teks: "Bagikan 48 permen ke 2, 3, 4, 6, dan 8 wadah. Catat mana yang habis.", wajib: true, cek: (k) => pernah(k, "bagi", "wadah:48:2", "wadah:48:3", "wadah:48:4", "wadah:48:6", "wadah:48:8") },
+  { id: "h-sisa", teks: "Bagikan 48 permen ke 5 wadah. Berapa sisanya?", wajib: true, cek: (k) => pernah(k, "bagi", "bersisa:48:5") },
+  { id: "h-bersusun", teks: "Di Bersusun, selesaikan 48 : 4 dari puluhan ke satuan.", wajib: true, cek: (k) => pernah(k, "bagi", "bagi:48:4") },
+  { id: "h-periksa", teks: "Selesaikan 81 : 3, lalu tekan Periksa: hasil kali pembagi.", wajib: true, cek: (k) => pernah(k, "bagi", "periksa:81:3") },
+  { id: "h-mesin", teks: "Selesaikan Mesin Bagi sampai semua soal diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B1.H) },
+  { id: "h-skenario", teks: "Selesaikan skenario Permen Pak Wicak sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B1.H) },
+  { id: "h-cukup", teks: "Selesaikan 36 : 4. Mengapa hasil di puluhan 0?", wajib: false, cek: (k) => pernah(k, "bagi", "belum-cukup") },
+  { id: "h-47", teks: "Selesaikan 47 : 5 bersusun. Berapa sisanya?", wajib: false, cek: (k) => pernah(k, "bagi", "bagi:47:5") },
+  { id: "h-besar", teks: "Coba tulis hasil yang terlalu besar di Bersusun. Baca penjelasan lab.", wajib: false, cek: (k) => pernah(k, "bagi", "terlalu-besar") },
+];
+
+export const MISI_I: DefMisi<KeadaanK4Bab1>[] = [
+  { id: "i-dua-belas", teks: "Di Faktor, temukan semua faktor 12 dengan mencoba pembagi.", wajib: true, cek: (k) => pernah(k, "faktor", "lengkap:12") },
+  { id: "i-bukan", teks: "Coba pembagi 5 pada 12. Baca mengapa 5 bukan faktor 12.", wajib: true, cek: (k) => pernah(k, "faktor", "bukan:12:5") },
+  { id: "i-dua-puluh", teks: "Temukan semua faktor 20.", wajib: true, cek: (k) => pernah(k, "faktor", "lengkap:20") },
+  { id: "i-deret", teks: "Di Kelipatan, lompat 7 kali dengan lompatan 2, seperti Karel.", wajib: true, cek: (k) => pernah(k, "faktor", "deret:2:7") },
+  { id: "i-rentang", teks: "Nyalakan Rentang: kelipatan 5 yang lebih dari 17 dan kurang dari 35.", wajib: true, cek: (k) => pernah(k, "faktor", "rentang:5:17:35") },
+  { id: "i-mesin", teks: "Selesaikan Mesin Faktor sampai semua bilangan diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B1.I) },
+  { id: "i-skenario", teks: "Selesaikan skenario Pameran Kelas 4 sampai adegan akhir. Ini misi penutup bab.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B1.I) },
+  { id: "i-dua-empat", teks: "Temukan semua faktor 24. Ada berapa faktornya?", wajib: false, cek: (k) => pernah(k, "faktor", "lengkap:24") },
+  { id: "i-tiga-belas", teks: "Temukan semua faktor 13. Mengapa hanya dua faktor?", wajib: false, cek: (k) => pernah(k, "faktor", "dua-faktor") },
+  { id: "i-enam", teks: "Atur Rentang 0 sampai 40 untuk kelipatan 6. Bilangan mana yang masuk?", wajib: false, cek: (k) => pernah(k, "faktor", "rentang:6:0:40") },
+];
+
+const DAFTAR: Record<HurufMisiK4B1, DefMisi<KeadaanK4Bab1>[]> = { A: MISI_A, B: MISI_B, C: MISI_C, D: MISI_D, E: MISI_E, F: MISI_F, G: MISI_G, H: MISI_H, I: MISI_I };
 export const daftarMisiK4Bab1 = (huruf: string): DefMisi<KeadaanK4Bab1>[] => DAFTAR[huruf as HurufMisiK4B1] ?? MISI_A;

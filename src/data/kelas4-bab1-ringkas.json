@@ -335,6 +335,171 @@
           }
         ]
       }
+    },
+    "G": {
+      "peta": {
+        "pusat": { "judul": "Perkalian sampai 100", "ikon": "✖️", "suara": "Ini peta perkalian sampai seratus. Kita belajar array, penjumlahan berulang, cara panjang, dan perkalian bersusun dengan menyimpan. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "array", "judul": "Array", "ikon": "🍩", "ringkas": "Baris dan kolom benda menunjukkan perkalian.", "suara": "Array. Dua belas kotak donat, tiap kotak berisi empat donat, disusun dalam baris dan kolom. Banyaknya dua belas kali empat." },
+          { "id": "berulang", "judul": "Penjumlahan berulang", "ikon": "➕", "ringkas": "Perkalian adalah penjumlahan berulang.", "suara": "Penjumlahan berulang. Empat ditambah empat sebanyak dua belas kali sama dengan empat puluh delapan. Ditulis dua belas kali empat sama dengan empat puluh delapan." },
+          { "id": "panjang", "judul": "Cara panjang", "ikon": "📜", "ringkas": "Urai puluhan dan satuan, kalikan, jumlahkan.", "suara": "Cara panjang. Uraikan dua belas menjadi sepuluh ditambah dua. Kalikan masing-masing dengan empat, lalu jumlahkan. Empat puluh ditambah delapan sama dengan empat puluh delapan." },
+          { "id": "bersusun", "judul": "Bersusun dan menyimpan", "ikon": "⬇️", "ringkas": "Kalikan dari satuan, simpan bila sepuluh atau lebih.", "suara": "Bersusun dan menyimpan. Kalikan dari satuan. Empat kali lima sama dengan dua puluh: tulis nol, simpan dua ke puluhan. Satu kali lima ditambah dua sama dengan tujuh. Hasilnya tujuh puluh." }
+        ],
+        "kartu": [
+          { "id": "g-12-4", "teks": "12 kotak, tiap kotak 4 donat", "ikon": "🍩", "cabang": "array", "petunjuk": "Kotak dan isinya yang tersusun itu soal array. Coba cabang lain." },
+          { "id": "g-baris-kolom", "teks": "Baris × kolom", "ikon": "🔲", "cabang": "array", "petunjuk": "Baris dan kolom benda itu soal array. Coba cabang lain." },
+          { "id": "g-4-4", "teks": "4 + 4 + 4 + … sebanyak 12 kali", "ikon": "➕", "cabang": "berulang", "petunjuk": "Menjumlahkan bilangan yang sama itu soal penjumlahan berulang. Coba cabang lain." },
+          { "id": "g-48", "teks": "12 × 4 = 48", "ikon": "🎯", "cabang": "berulang", "petunjuk": "Menulis dengan tanda kali itu soal penjumlahan berulang. Coba cabang lain." },
+          { "id": "g-10-2", "teks": "(10 + 2) × 4", "ikon": "📜", "cabang": "panjang", "petunjuk": "Menguraikan bilangan lebih dulu itu soal cara panjang. Coba cabang lain." },
+          { "id": "g-40-8", "teks": "40 + 8 = 48", "ikon": "➕", "cabang": "panjang", "petunjuk": "Menjumlahkan hasil tiap tempat itu soal cara panjang. Coba cabang lain." },
+          { "id": "g-simpan-2", "teks": "4 × 5 = 20: tulis 0, simpan 2", "ikon": "2️⃣", "cabang": "bersusun", "petunjuk": "Menyimpan ke puluhan itu soal bersusun. Coba cabang lain." },
+          { "id": "g-70", "teks": "14 × 5 = 70", "ikon": "7️⃣", "cabang": "bersusun", "petunjuk": "Hasil perkalian bersusun itu soal bersusun. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Perkalian sampai 100",
+        "suara": "Ini tiga panel tentang perkalian. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "g-donat", "tipe": "buka", "judul": "Donat 12 × 4", "ide": "Dua belas kotak, empat donat tiap kotak.",
+            "suara": "Ada tiga hal tentang donat. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "kotak", "label": "12 kotak", "ikon": "📦", "isi": "Tiap kotak berisi 4 donat.", "suara": "Ada dua belas kotak donat. Tiap kotak berisi empat donat.", "visual": { "jenis": "teks", "isi": "12 kotak × 4 donat" } },
+              { "id": "ulang", "label": "Jumlah berulang", "ikon": "➕", "isi": "4 ditambah 4, sebanyak 12 kali.", "suara": "Empat ditambah empat sebanyak dua belas kali sama dengan empat puluh delapan. Ini bisa ditulis dua belas kali empat.", "visual": { "jenis": "teks", "isi": "4 + 4 + … (12 kali) = 48" } },
+              { "id": "kali", "label": "Perkalian", "ikon": "✖️", "isi": "12 × 4 = 48.", "suara": "Dua belas kali empat sama dengan empat puluh delapan donat.", "visual": { "jenis": "teks", "isi": "12 × 4 = 48" } }
+            ]
+          },
+          {
+            "id": "g-simpan-banding", "tipe": "banding", "judul": "Kelereng 14 × 5", "ide": "Simpanan harus ikut dijumlahkan.",
+            "suara": "Bandingkan dua hasil empat belas kali lima. Hanya satu yang benar.",
+            "sisi": [
+              { "id": "simpan", "nama": "Dengan menyimpan", "ikon": "✅", "catatan": "Hasil 70. Benar.", "suara": "Empat kali lima sama dengan dua puluh. Tulis nol, simpan dua. Satu kali lima ditambah dua sama dengan tujuh. Hasilnya tujuh puluh.", "visual": { "jenis": "teks", "isi": "14 × 5 = 70" } },
+              { "id": "lupa", "nama": "Lupa menyimpan", "ikon": "❌", "catatan": "Hasil 50. Keliru.", "suara": "Kalau simpanan dua lupa ditambahkan, hasilnya lima puluh. Itu keliru.", "visual": { "jenis": "teks", "isi": "14 × 5 = 50 ✗" } }
+            ],
+            "kesimpulan": "Simpanan dari satuan selalu ikut dijumlahkan di puluhan."
+          },
+          {
+            "id": "g-cara", "tipe": "buka", "judul": "Dua cara, satu hasil", "ide": "Cara panjang dan bersusun sama hasilnya.",
+            "suara": "Ada tiga hal tentang cara menghitung. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "panjang", "label": "Cara panjang", "ikon": "📜", "isi": "(10 + 4) × 5.", "suara": "Empat belas diurai menjadi sepuluh ditambah empat. Sepuluh kali lima sama dengan lima puluh. Empat kali lima sama dengan dua puluh. Lima puluh ditambah dua puluh sama dengan tujuh puluh.", "visual": { "jenis": "teks", "isi": "50 + 20 = 70" } },
+              { "id": "susun", "label": "Bersusun", "ikon": "⬇️", "isi": "Satuan dulu, lalu puluhan.", "suara": "Bersusun: kalikan satuan dulu, lalu puluhan, dan jangan lupa simpanan.", "visual": { "jenis": "teks", "isi": "14 × 5 = 70" } },
+              { "id": "pensil", "label": "Pensil koperasi", "ikon": "✏️", "isi": "12 × 8 = 96.", "suara": "Delapan pak pensil, tiap pak dua belas batang. Dua belas kali delapan sama dengan sembilan puluh enam.", "visual": { "jenis": "teks", "isi": "12 × 8 = 96" } }
+            ]
+          }
+        ]
+      }
+    },
+    "H": {
+      "peta": {
+        "pusat": { "judul": "Pembagian sampai 100", "ikon": "➗", "suara": "Ini peta pembagian sampai seratus. Kita belajar membagi sama banyak, pembagian bersusun, sisa, dan memeriksa dengan perkalian. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "sama-banyak", "judul": "Bagi sama banyak", "ikon": "🍬", "ringkas": "Bagikan bergiliran sampai habis.", "suara": "Bagi sama banyak. Empat puluh delapan permen dibagikan bergiliran ke empat wadah. Tiap wadah mendapat dua belas permen." },
+          { "id": "bersusun", "judul": "Bersusun dari puluhan", "ikon": "⬇️", "ringkas": "Bagi puluhan dulu, lalu turunkan satuan.", "suara": "Bersusun dari puluhan. Empat dibagi empat sama dengan satu. Turunkan delapan. Delapan dibagi empat sama dengan dua. Hasilnya dua belas." },
+          { "id": "sisa", "judul": "Sisa", "ikon": "0️⃣", "ringkas": "Sisa nol berarti habis dibagi.", "suara": "Sisa. Bila sisanya nol, bilangan itu habis dibagi. Bila ada sisa, sisanya selalu lebih kecil dari pembagi." },
+          { "id": "periksa", "judul": "Periksa dengan kali", "ikon": "🔍", "ringkas": "Hasil kali pembagi ditambah sisa sama dengan awal.", "suara": "Periksa dengan kali. Dua belas kali empat sama dengan empat puluh delapan. Hasilnya harus kembali ke bilangan yang dibagi." }
+        ],
+        "kartu": [
+          { "id": "h-48-4", "teks": "48 permen, 4 wadah, tiap wadah 12", "ikon": "🍬", "cabang": "sama-banyak", "petunjuk": "Membagikan benda sama banyak itu soal bagi sama banyak. Coba cabang lain." },
+          { "id": "h-giliran", "teks": "Masukkan bergiliran", "ikon": "🔁", "cabang": "sama-banyak", "petunjuk": "Cara membagikan itu soal bagi sama banyak. Coba cabang lain." },
+          { "id": "h-4-4", "teks": "4 : 4 = 1, turunkan 8", "ikon": "⬇️", "cabang": "bersusun", "petunjuk": "Langkah dari puluhan itu soal bersusun. Coba cabang lain." },
+          { "id": "h-8-4", "teks": "8 : 4 = 2, hasil 12", "ikon": "2️⃣", "cabang": "bersusun", "petunjuk": "Langkah satuan itu soal bersusun. Coba cabang lain." },
+          { "id": "h-sisa-0", "teks": "Sisa 0: habis dibagi", "ikon": "0️⃣", "cabang": "sisa", "petunjuk": "Arti sisa nol itu soal sisa. Coba cabang lain." },
+          { "id": "h-sisa-3", "teks": "48 : 5 = 9 sisa 3", "ikon": "3️⃣", "cabang": "sisa", "petunjuk": "Pembagian yang bersisa itu soal sisa. Coba cabang lain." },
+          { "id": "h-12-4", "teks": "12 × 4 = 48", "ikon": "🔍", "cabang": "periksa", "petunjuk": "Memeriksa dengan kali itu soal periksa. Coba cabang lain." },
+          { "id": "h-27-3", "teks": "27 × 3 = 81", "ikon": "✅", "cabang": "periksa", "petunjuk": "Memeriksa dengan kali itu soal periksa. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Pembagian sampai 100",
+        "suara": "Ini tiga panel tentang pembagian. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "h-susun", "tipe": "buka", "judul": "Bersusun 48 : 4", "ide": "Puluhan dulu, lalu satuan.",
+            "suara": "Ada tiga langkah pembagian empat puluh delapan dibagi empat. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "puluhan", "label": "Puluhan", "ikon": "🔵", "isi": "4 : 4 = 1.", "suara": "Puluhan: empat dibagi empat sama dengan satu. Tulis satu di hasil.", "visual": { "jenis": "teks", "isi": "4 : 4 = 1, sisa 0" } },
+              { "id": "turun", "label": "Turunkan", "ikon": "⬇️", "isi": "Turunkan angka 8.", "suara": "Turunkan angka delapan di satuan.", "visual": { "jenis": "teks", "isi": "turunkan 8" } },
+              { "id": "satuan", "label": "Satuan", "ikon": "🔴", "isi": "8 : 4 = 2. Hasil 12.", "suara": "Satuan: delapan dibagi empat sama dengan dua. Hasilnya dua belas, sisa nol.", "visual": { "jenis": "teks", "isi": "48 : 4 = 12" } }
+            ]
+          },
+          {
+            "id": "h-sisa-banding", "tipe": "banding", "judul": "Habis atau bersisa", "ide": "Sisa nol berarti habis dibagi.",
+            "suara": "Bandingkan empat puluh delapan permen dibagi ke empat wadah dan ke lima wadah.",
+            "sisi": [
+              { "id": "habis", "nama": "4 wadah", "ikon": "✅", "catatan": "Tiap wadah 12, sisa 0.", "suara": "Empat puluh delapan dibagi empat sama dengan dua belas, sisa nol. Habis dibagi.", "visual": { "jenis": "teks", "isi": "48 : 4 = 12 sisa 0" } },
+              { "id": "bersisa", "nama": "5 wadah", "ikon": "➖", "catatan": "Tiap wadah 9, sisa 3.", "suara": "Empat puluh delapan dibagi lima sama dengan sembilan, sisa tiga. Tidak habis dibagi.", "visual": { "jenis": "teks", "isi": "48 : 5 = 9 sisa 3" } }
+            ],
+            "kesimpulan": "Sisa nol berarti habis dibagi. Sisa tiga berarti masih ada yang tersisa."
+          },
+          {
+            "id": "h-cerita", "tipe": "buka", "judul": "Cerita bagi", "ide": "Periksa dengan perkalian.",
+            "suara": "Ada tiga cerita pembagian. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "kue", "label": "81 kue", "ikon": "🧁", "isi": "81 : 3 = 27 kotak.", "suara": "Delapan puluh satu kue, tiap kotak tiga kue. Delapan puluh satu dibagi tiga sama dengan dua puluh tujuh kotak.", "visual": { "jenis": "teks", "isi": "81 : 3 = 27" } },
+              { "id": "kunci", "label": "55 gantungan", "ikon": "🔑", "isi": "55 : 5 = 11.", "suara": "Lima puluh lima gantungan dibagi lima teman. Tiap teman mendapat sebelas.", "visual": { "jenis": "teks", "isi": "55 : 5 = 11" } },
+              { "id": "periksa", "label": "Periksa", "ikon": "🔍", "isi": "11 × 5 = 55.", "suara": "Periksa dengan kali. Sebelas kali lima sama dengan lima puluh lima.", "visual": { "jenis": "teks", "isi": "11 × 5 = 55" } }
+            ]
+          }
+        ]
+      }
+    },
+    "I": {
+      "peta": {
+        "pusat": { "judul": "Faktor dan Kelipatan", "ikon": "🔁", "suara": "Ini peta faktor dan kelipatan. Kita belajar faktor, pasangan faktor, bilangan yang bukan faktor, dan kelipatan. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "faktor", "judul": "Faktor", "ikon": "➗", "ringkas": "Pembagi yang habis, sisanya nol.", "suara": "Faktor. Faktor adalah pembagi yang habis membagi, sisanya nol. Dua belas pensil bisa dibagi ke satu, dua, tiga, empat, enam, atau dua belas siswa." },
+          { "id": "pasangan", "judul": "Pasangan faktor", "ikon": "🔗", "ringkas": "Faktor kali pasangannya sama dengan bilangan.", "suara": "Pasangan faktor. Satu kali dua belas, dua kali enam, dan tiga kali empat semuanya sama dengan dua belas." },
+          { "id": "bukan", "judul": "Bukan faktor", "ikon": "🚫", "ringkas": "Ada sisa berarti bukan faktor.", "suara": "Bukan faktor. Dua belas dibagi lima sama dengan dua sisa dua. Karena ada sisa, lima bukan faktor dua belas." },
+          { "id": "kelipatan", "judul": "Kelipatan", "ikon": "📶", "ringkas": "Hasil kali berulang, melompat sama jauh.", "suara": "Kelipatan. Kelipatan dua adalah dua, empat, enam, delapan, dan seterusnya. Kelipatan didapat dari penjumlahan berulang." }
+        ],
+        "kartu": [
+          { "id": "i-12-4", "teks": "12 : 4 = 3, sisa 0", "ikon": "➗", "cabang": "faktor", "petunjuk": "Pembagi yang habis itu soal faktor. Coba cabang lain." },
+          { "id": "i-faktor-12", "teks": "Faktor 12: 1, 2, 3, 4, 6, 12", "ikon": "📋", "cabang": "faktor", "petunjuk": "Daftar pembagi yang habis itu soal faktor. Coba cabang lain." },
+          { "id": "i-3-4", "teks": "3 × 4 = 12", "ikon": "🔗", "cabang": "pasangan", "petunjuk": "Faktor dikalikan pasangannya itu soal pasangan faktor. Coba cabang lain." },
+          { "id": "i-2-6", "teks": "2 × 6 = 12", "ikon": "🔗", "cabang": "pasangan", "petunjuk": "Faktor dikalikan pasangannya itu soal pasangan faktor. Coba cabang lain." },
+          { "id": "i-12-5", "teks": "12 : 5 = 2 sisa 2", "ikon": "🚫", "cabang": "bukan", "petunjuk": "Pembagian yang bersisa itu soal bukan faktor. Coba cabang lain." },
+          { "id": "i-bukan-5", "teks": "5 bukan faktor 12", "ikon": "❌", "cabang": "bukan", "petunjuk": "Pembagi yang bersisa itu soal bukan faktor. Coba cabang lain." },
+          { "id": "i-2-4-6", "teks": "Kelipatan 2: 2, 4, 6, 8", "ikon": "🔵", "cabang": "kelipatan", "petunjuk": "Deret hasil kali berulang itu soal kelipatan. Coba cabang lain." },
+          { "id": "i-rentang", "teks": "Kelipatan 5 di antara 17 dan 35", "ikon": "📏", "cabang": "kelipatan", "petunjuk": "Kelipatan dalam batas itu soal kelipatan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Faktor dan Kelipatan",
+        "suara": "Ini tiga panel tentang faktor dan kelipatan. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "i-pasangan", "tipe": "buka", "judul": "Faktor 12", "ide": "Enam faktor dari tiga pasangan.",
+            "suara": "Ada tiga pasangan faktor dua belas. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "pasangan-1", "label": "1 × 12", "ikon": "1️⃣", "isi": "Faktor 1 dan 12.", "suara": "Satu kali dua belas sama dengan dua belas. Satu dan dua belas adalah faktor.", "visual": { "jenis": "teks", "isi": "1 × 12 = 12" } },
+              { "id": "pasangan-2", "label": "2 × 6", "ikon": "2️⃣", "isi": "Faktor 2 dan 6.", "suara": "Dua kali enam sama dengan dua belas. Dua dan enam adalah faktor.", "visual": { "jenis": "teks", "isi": "2 × 6 = 12" } },
+              { "id": "pasangan-3", "label": "3 × 4", "ikon": "3️⃣", "isi": "Faktor 3 dan 4.", "suara": "Tiga kali empat sama dengan dua belas. Tiga dan empat adalah faktor.", "visual": { "jenis": "tabel-menurun", "kepala": ["Pasangan", "Hasil"], "baris": [["1 × 12", 12], ["2 × 6", 12], ["3 × 4", 12]] } }
+            ]
+          },
+          {
+            "id": "i-faktor-banding", "tipe": "banding", "judul": "Faktor atau bukan", "ide": "Faktor bila sisanya nol.",
+            "suara": "Bandingkan dua belas dibagi empat dan dua belas dibagi lima.",
+            "sisi": [
+              { "id": "faktor", "nama": "12 : 4", "ikon": "✅", "catatan": "Sisa 0: 4 faktor 12.", "suara": "Dua belas dibagi empat sama dengan tiga, sisa nol. Empat adalah faktor dua belas.", "visual": { "jenis": "teks", "isi": "12 : 4 = 3 sisa 0" } },
+              { "id": "bukan", "nama": "12 : 5", "ikon": "❌", "catatan": "Sisa 2: 5 bukan faktor.", "suara": "Dua belas dibagi lima sama dengan dua, sisa dua. Lima bukan faktor dua belas.", "visual": { "jenis": "teks", "isi": "12 : 5 = 2 sisa 2" } }
+            ],
+            "kesimpulan": "Faktor harus habis membagi. Bila ada sisa, bukan faktor."
+          },
+          {
+            "id": "i-kelipatan-info", "tipe": "buka", "judul": "Kelipatan", "ide": "Melompat sama jauh, berulang.",
+            "suara": "Ada tiga hal tentang kelipatan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "dua", "label": "Kelipatan 2", "ikon": "🔵", "isi": "2, 4, 6, 8, 10, 12, 14.", "suara": "Karel membeli dua kelereng tiap hari. Kelipatan dua adalah dua, empat, enam, delapan, sepuluh, dua belas, dan empat belas.", "visual": { "jenis": "teks", "isi": "2, 4, 6, 8, 10, 12, 14" } },
+              { "id": "tiga", "label": "Kelipatan 3", "ikon": "🟢", "isi": "3, 6, 9, 12, 15, 18, 21.", "suara": "Kelipatan tiga adalah tiga, enam, sembilan, dua belas, lima belas, delapan belas, dan dua puluh satu.", "visual": { "jenis": "teks", "isi": "3, 6, 9, 12, 15, 18, 21" } },
+              { "id": "rentang", "label": "Dalam batas", "ikon": "📏", "isi": "Kelipatan 5 di antara 17 dan 35.", "suara": "Kelipatan lima lebih dari tujuh belas dan kurang dari tiga puluh lima adalah dua puluh, dua puluh lima, dan tiga puluh.", "visual": { "jenis": "teks", "isi": "20, 25, 30" } }
+            ]
+          }
+        ]
+      }
     }
   }
 }

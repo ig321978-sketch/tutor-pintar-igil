@@ -13,6 +13,11 @@ import * as J from "../src/components/modul/lab-jumlah-k4b1e.ts";
 import * as KR from "../src/components/modul/lab-kurang-k4b1f.ts";
 import * as MH from "../src/components/modul/mesin-data-k4b1-hitung.ts";
 import * as SH from "../src/components/modul/skenario-k4b1-hitung.ts";
+import * as KL from "../src/components/modul/lab-kali-k4b1g.ts";
+import * as BG from "../src/components/modul/lab-bagi-k4b1h.ts";
+import * as FK from "../src/components/modul/lab-faktor-k4b1i.ts";
+import * as MG from "../src/components/modul/mesin-data-k4b1-bagi.ts";
+import * as SG from "../src/components/modul/skenario-k4b1-bagi.ts";
 import * as ME from "../src/components/modul/mesin-bertahap-k3b1.ts";
 import * as MB from "../src/components/modul/mesin-data-k4b1-bilangan.ts";
 import * as SB from "../src/components/modul/skenario-k4b1-bilangan.ts";
@@ -629,6 +634,331 @@ const stateF = (x, a, b) => ({ ...x, a, b, atas: [0, 1, 2, 3].map((c) => Math.fl
   cek(ok, "fuzz 20.000 aksi lab kurang: atas >= bawah, nilai bilangan atas tetap utuh walau mengambil, digit dalam batas, riwayat tidak dicabut");
 }
 
+/* ------------------------------ Lab Kali (G) ------------------------------ */
+const gg = (x, ...ak) => ak.reduce((s, a) => KL.langkahKaliK4B1G(s, a), x);
+const kg = KL.keadaanKaliK4B1G;
+function aturG(x, aksi, target, baca) {
+  let s = x;
+  for (let g = 0; g < 10 && baca(s) !== target; g += 1) s = gg(s, { t: aksi, d: 1 });
+  return s;
+}
+function selesaikanG(x) {
+  let s = x;
+  for (let g = 0; g < 3 && !KL.selesaiG(s); g += 1) {
+    const p = s.n * s.k;
+    const digit = s.kolom === 0 ? p % 10 : Math.floor(p / 10) % 10;
+    const simpan = s.kolom === 0 ? Math.floor(((s.n % 10) * s.k) / 10) : Math.floor(p / 100);
+    s = gg(aturG(aturG(s, "DIGIT", digit, (q) => q.digit), "SIMPAN", simpan, (q) => q.simpan), { t: "TULIS" });
+  }
+  return s;
+}
+const pilihG = (x, n, k) => gg(x, { t: "SOAL", i: KL.SOAL_G.findIndex(([p, q]) => p === n && q === k) });
+const stateG = (x, n, k) => ({ ...x, n, k, kolom: 0, tulis: [null, null, null], digit: 0, simpan: 0 });
+{
+  const g0 = KL.awalKaliK4B1G();
+  cek(g0.kotak === 3 && g0.isi === 4 && g0.n === 12 && g0.k === 4 && !g0.belah && g0.kolom === 0 && g0.pernah.length === 0, "G awal: array 3 x 4, soal 12 x 4, tanpa riwayat");
+  // Batas array: semua kotak 1..25 dan isi 1..10 dengan hasil <= 100.
+  let okArr = true;
+  for (let kotak = 1; kotak <= 25; kotak += 1)
+    for (let isi = 1; isi <= 10; isi += 1) {
+      if (kotak * isi > 100) continue;
+      const s = { ...g0, kotak, isi };
+      const naikK = gg(s, { t: "KOTAK", d: 1 });
+      const naikI = gg(s, { t: "ISI", d: 1 });
+      const harusK = kotak + 1 <= 25 && (kotak + 1) * isi <= 100;
+      const harusI = isi + 1 <= 10 && kotak * (isi + 1) <= 100;
+      if ((naikK.kotak === kotak + 1) !== harusK || (!harusK && naikK.pesan.length < 10)) okArr = false;
+      if ((naikI.isi === isi + 1) !== harusI || (!harusI && naikI.pesan.length < 10)) okArr = false;
+      if ((gg(s, { t: "KOTAK", d: -1 }).kotak === kotak - 1) !== (kotak > 1) || (gg(s, { t: "ISI", d: -1 }).isi === isi - 1) !== (isi > 1)) okArr = false;
+    }
+  cek(okArr, "array: kotak 1 sampai 25, isi 1 sampai 10, hasil paling banyak 100 untuk semua kombinasi");
+  const a12 = gg(g0, ...Array.from({ length: 9 }, () => ({ t: "KOTAK", d: 1 })));
+  cek(a12.kotak === 12 && a12.pernah.includes("array:12x4"), "array 12 kotak berisi 4 tercatat");
+  cek(gg(a12, ...Array.from({ length: 4 }, () => ({ t: "ISI", d: 1 }))).pernah.includes("array:12x8"), "array 12 kotak berisi 8 (96) tercatat");
+  sama(KL.teksBerulang(3, 4), "4 + 4 + 4 = 12", "penjumlahan berulang 3 x 4");
+  sama(KL.teksBerulang(12, 4), "4 + 4 + 4 + 4 + … (12 kali) = 48", "penjumlahan berulang 12 x 4");
+  // Cara panjang dan rincian bersusun untuk semua n 10..99, k 2..9 dengan hasil <= 100.
+  let okCp = true;
+  let okRinci = true;
+  let pasangan = 0;
+  for (let n = 10; n <= 99; n += 1)
+    for (let k = 2; k <= 9 && n * k <= 100; k += 1) {
+      pasangan += 1;
+      const c = KL.caraPanjangG(n, k);
+      const b1 = c.baris[0].match(/^(\d+) × (\d+) = (\d+)$/);
+      const b2 = c.baris[1].match(/^(\d+) × (\d+) = (\d+)$/);
+      const gb = c.gabung.match(/^(\d+) \+ (\d+) = (\d+)$/);
+      const p = n - (n % 10);
+      if (!b1 || !b2 || !gb || Number(b1[1]) !== p || Number(b2[1]) !== n % 10 || Number(b1[3]) !== p * k || Number(b2[3]) !== (n % 10) * k) okCp = false;
+      if (gb && (Number(gb[1]) + Number(gb[2]) !== n * k || Number(gb[3]) !== n * k)) okCp = false;
+      if (c.uraian !== `(${p} + ${n % 10}) × ${k}`) okCp = false;
+      const r = KL.rincianKali(n, k);
+      if (r[0].tulis + r[1].tulis * 10 + r[1].keluar * 100 !== n * k) okRinci = false;
+    }
+  cek(okCp, `cara panjang: ${pasangan} soal, puluhan x pengali + satuan x pengali = hasil`);
+  cek(okRinci, `rincian bersusun: ${pasangan} soal, angka yang ditulis dan simpanan menyusun hasil kali`);
+  // Menyelesaikan lewat tombol untuk semua soal.
+  let okSolve = true;
+  for (let n = 10; n <= 99; n += 1)
+    for (let k = 2; k <= 9 && n * k <= 100; k += 1) {
+      const s = selesaikanG(stateG(g0, n, k));
+      const tulis = s.tulis[0] + s.tulis[1] * 10 + (s.tulis[2] ?? 0) * 100;
+      if (!KL.selesaiG(s) || tulis !== n * k || !s.pernah.includes(`kali:${n}x${k}`) || s.pernah.includes("kali-100") !== (n * k === 100)) okSolve = false;
+    }
+  cek(okSolve, `${pasangan} soal diselesaikan lewat tombol: hasil benar, riwayat kali dan kali-100 benar`);
+  // Per kolom: tepat satu (angka, simpanan) yang diterima.
+  for (const [n, k] of KL.SOAL_G)
+    for (let c = 0; c < 2; c += 1) {
+      const awal = c === 0 ? stateG(g0, n, k) : gg(aturG(aturG(stateG(g0, n, k), "DIGIT", ((n % 10) * k) % 10, (q) => q.digit), "SIMPAN", Math.floor(((n % 10) * k) / 10), (q) => q.simpan), { t: "TULIS" });
+      const p = n * k;
+      const hDigit = c === 0 ? p % 10 : Math.floor(p / 10) % 10;
+      const hSimpan = c === 0 ? Math.floor(((n % 10) * k) / 10) : Math.floor(p / 100);
+      let diterima = 0;
+      let okPesan = true;
+      for (let d = 0; d <= 9; d += 1)
+        for (let sm = 0; sm <= 9; sm += 1) {
+          const t = gg({ ...awal, digit: d, simpan: sm }, { t: "TULIS" });
+          const benar = d === hDigit && sm === hSimpan;
+          if (t.kolom === c + 1) diterima += benar ? 1 : 100;
+          else if (benar || t.kolom !== c || t.pesan.length < 10) okPesan = false;
+          if (d === hDigit && sm < hSimpan && !t.pernah.includes("lupa-simpan")) okPesan = false;
+          if (d === hDigit && sm > hSimpan && hSimpan === 0 && !/Kurang dari sepuluh/.test(t.pesan)) okPesan = false;
+          if (d === hDigit && sm > hSimpan && hSimpan > 0 && !/Yang disimpan hanya/.test(t.pesan)) okPesan = false;
+        }
+      cek(diterima === 1 && okPesan, `${n} x ${k} kolom ${KL.TEMPAT_G[c]}: tepat satu pasangan angka dan simpanan diterima, lupa menyimpan tercatat`);
+    }
+  // ATUR dan batas.
+  cek(gg(pilihG(g0, 12, 8), { t: "ATUR", bagian: "pengali", d: 1 }).pesan.includes("paling banyak 100"), "12 x 9 = 108 ditolak");
+  const k2 = gg(g0, { t: "ATUR", bagian: "pengali", d: -1 }, { t: "ATUR", bagian: "pengali", d: -1 });
+  cek(k2.k === 2 && gg(k2, { t: "ATUR", bagian: "pengali", d: -1 }).pesan.includes("Pengali 2 sampai 9"), "pengali tidak kurang dari 2");
+  cek(gg(g0, { t: "ATUR", bagian: "puluhan", d: -1 }).pesan.includes("paling sedikit 10") && gg(g0, { t: "ATUR", bagian: "puluhan", d: -1 }).n === 12, "bilangan di bawah 10 ditolak");
+  cek(gg(pilihG(g0, 45, 2), { t: "ATUR", bagian: "pengali", d: 1 }).k === 2, "45 x 3 = 135 ditolak");
+  cek(gg(selesaikanG(g0), { t: "TULIS" }).pesan.includes("Semua kolom sudah ditulis"), "menulis lagi setelah selesai ditolak");
+  // Fuzz.
+  let x = g0;
+  let ok = true;
+  const af = acakDari(91);
+  for (let n = 0; n < 20000; n += 1) {
+    const sebelum = x;
+    x = KL.langkahKaliK4B1G(x, [{ t: "KOTAK", d: af(2) ? 1 : -1 }, { t: "ISI", d: af(2) ? 1 : -1 }, { t: "SOAL", i: af(6) }, { t: "ATUR", bagian: ["puluhan", "satuan", "pengali"][af(3)], d: af(2) ? 1 : -1 }, { t: "BELAH" }, { t: "DIGIT", d: 1 }, { t: "SIMPAN", d: 1 }, { t: "TULIS" }][af(8)]);
+    if (x.kotak < 1 || x.kotak > 25 || x.isi < 1 || x.isi > 10 || x.kotak * x.isi > 100 || x.n < 10 || x.n > 99 || x.k < 2 || x.k > 9 || x.n * x.k > 100 || x.kolom < 0 || x.kolom > 2 || x.digit > 9 || x.simpan > 9) ok = false;
+    if (!sebelum.pernah.every((p) => x.pernah.includes(p))) ok = false;
+  }
+  cek(ok, "fuzz 20.000 aksi lab kali: array dan soal dalam batas, hasil <= 100, riwayat tidak dicabut");
+}
+
+/* ------------------------------ Lab Bagi (H) ------------------------------ */
+const bj = (x, ...ak) => ak.reduce((s, a) => BG.langkahBagiK4B1H(s, a), x);
+const kbg = BG.keadaanBagiK4B1H;
+function aturBg(x, aksi, target, baca) {
+  let s = x;
+  for (let g = 0; g < 10 && baca(s) !== target; g += 1) s = bj(s, { t: aksi, d: 1 });
+  return s;
+}
+/** Nilai langkah bersusun dihitung mandiri dengan operator % dan pembagian lantai. */
+function langkahMandiri(n, d) {
+  const t = Math.floor(n / 10);
+  const cur2 = (t % d) * 10 + (n % 10);
+  return [
+    { cur: t, q: Math.floor(t / d), r: t % d },
+    { cur: cur2, q: Math.floor(cur2 / d), r: cur2 % d },
+  ];
+}
+function selesaikanH(x) {
+  let s = x;
+  for (let g = 0; g < 3 && !BG.selesaiH(s); g += 1) {
+    const m = langkahMandiri(s.n, s.d)[s.langkah];
+    s = bj(aturBg(aturBg(s, "DIGIT", m.q, (q) => q.digit), "SISA", m.r, (q) => q.sisa), { t: "TULIS" });
+  }
+  return s;
+}
+const pilihH = (x, n, d) => bj(x, { t: "SOAL", i: BG.SOAL_H.findIndex(([p, q]) => p === n && q === d) });
+const stateH = (x, n, d) => ({ ...x, n, d, langkah: 0, hasil: [null, null], digit: 0, sisa: 0, periksa: false });
+const wadahH = (x, n, w) => {
+  let s = x;
+  for (let g = 0; g < 3 && s.nWadah !== n; g += 1) s = bj(s, { t: "BENDA", d: 1 });
+  for (let g = 0; g < 10 && s.w !== w; g += 1) s = bj(s, { t: "WADAH", d: s.w < w ? 1 : -1 });
+  return s;
+};
+{
+  const h0 = BG.awalBagiK4B1H();
+  cek(h0.nWadah === 48 && h0.w === 3 && h0.sisaBenda === 48 && h0.putaran === 0 && h0.n === 48 && h0.d === 4 && h0.pernah.length === 0, "H awal: 48 benda, 3 wadah, soal 48 : 4, tanpa riwayat");
+  // Wadah: HABIS dan PUTARAN berulang sama dengan hitungan mandiri.
+  let okW = true;
+  let banyakW = 0;
+  for (const n of BG.BENDA_WADAH)
+    for (let w = 2; w <= 9; w += 1) {
+      banyakW += 1;
+      const awal = wadahH(h0, n, w);
+      const h = bj(awal, { t: "HABIS" });
+      if (h.putaran !== Math.floor(n / w) || h.sisaBenda !== n % w || !h.pernah.includes(`wadah:${n}:${w}`) || h.pernah.includes(`${n % w === 0 ? "habis" : "bersisa"}:${n}:${w}`) === false || h.pernah.includes(`${n % w === 0 ? "bersisa" : "habis"}:${n}:${w}`)) okW = false;
+      let s = awal;
+      let g = 0;
+      while (!BG.wadahSelesai(s) && g < 200) {
+        s = bj(s, { t: "PUTARAN" });
+        g += 1;
+      }
+      if (s.putaran !== Math.floor(n / w) || s.sisaBenda !== n % w || g !== Math.floor(n / w) || s.putaran * w + s.sisaBenda !== n) okW = false;
+      if (!bj(s, { t: "PUTARAN" }).pesan.includes("kurang dari")) okW = false;
+      const tb = BG.tabelPercobaan(n).find((r) => r.w === w);
+      if (tb.isi !== Math.floor(n / w) || tb.sisa !== n % w || tb.isi * w + tb.sisa !== n) okW = false;
+    }
+  cek(okW, `wadah: ${banyakW} kombinasi benda dan wadah, isi tiap wadah dan sisa benar lewat HABIS maupun putaran demi putaran`);
+  cek(bj(wadahH(h0, 48, 4), { t: "PUTARAN" }).pernah.length === 0, "satu putaran belum mencatat apa pun (belum habis)");
+  cek(BG.tabelPercobaan(48).filter((r) => r.sisa === 0).map((r) => r.w).join() === "2,3,4,6,8", "tabel percobaan 48: habis pada 2, 3, 4, 6, dan 8 wadah");
+  // Bersusun: semua n 10..99 dan d 2..9.
+  let okLangkah = true;
+  let okSolve = true;
+  let okPeriksa = true;
+  let pasangan = 0;
+  for (let n = 10; n <= 99; n += 1)
+    for (let d = 2; d <= 9; d += 1) {
+      pasangan += 1;
+      const l = BG.langkahBagi(n, d);
+      const m = langkahMandiri(n, d);
+      if (JSON.stringify(l) !== JSON.stringify(m)) okLangkah = false;
+      if (l[0].q * 10 + l[1].q !== Math.floor(n / d) || l[1].r !== n % d || l[0].r >= d || l[1].r >= d || l[1].q > 9) okLangkah = false;
+      const s = selesaikanH(stateH(h0, n, d));
+      if (!BG.selesaiH(s) || BG.hasilTulisH(s) !== Math.floor(n / d) || !s.pernah.includes(`bagi:${n}:${d}`) || s.pernah.includes("belum-cukup") !== (Math.floor(n / 10) < d)) okSolve = false;
+      const p = bj(s, { t: "PERIKSA" });
+      if (!p.pernah.includes(`periksa:${n}:${d}`) || !BG.kalimatPeriksaH(p).includes("Benar!") || Math.floor(n / d) * d + (n % d) !== n) okPeriksa = false;
+    }
+  cek(okLangkah, `langkah bersusun: ${pasangan} soal sama dengan hitungan mandiri (hasil, sisa, sisa < pembagi)`);
+  cek(okSolve, `${pasangan} soal diselesaikan lewat tombol: hasil, riwayat bagi, dan belum-cukup benar`);
+  cek(okPeriksa, `periksa: ${pasangan} soal, hasil x pembagi + sisa = bilangan awal dan kalimat Benar`);
+  // Per langkah: tepat satu (hasil, sisa) yang diterima, dan pesan sesuai jenis kesalahan.
+  for (const [n, d] of BG.SOAL_H)
+    for (let c = 0; c < 2; c += 1) {
+      const m = langkahMandiri(n, d);
+      const awal = c === 0 ? stateH(h0, n, d) : bj(aturBg(aturBg(stateH(h0, n, d), "DIGIT", m[0].q, (q) => q.digit), "SISA", m[0].r, (q) => q.sisa), { t: "TULIS" });
+      let diterima = 0;
+      let okPesan = true;
+      for (let q = 0; q <= 9; q += 1)
+        for (let r = 0; r <= 9; r += 1) {
+          const t = bj({ ...awal, digit: q, sisa: r }, { t: "TULIS" });
+          const benar = q === m[c].q && r === m[c].r;
+          if (t.langkah === c + 1) diterima += benar ? 1 : 100;
+          else if (benar) okPesan = false;
+          else {
+            const cur = m[c].cur;
+            const jenis = q * d > cur ? "terlalu besar" : r !== cur - q * d ? "Sisa =" : "masih bisa dibagi";
+            if (!t.pesan.includes(jenis)) okPesan = false;
+            if ((q * d > cur) !== t.pernah.includes("terlalu-besar") && q * d > cur) okPesan = false;
+          }
+        }
+      cek(diterima === 1 && okPesan, `${n} : ${d} langkah ${c === 0 ? "puluhan" : "satuan"}: tepat satu pasangan hasil dan sisa diterima, pesan sesuai kesalahan`);
+    }
+  const s36 = selesaikanH(pilihH(h0, 36, 4));
+  cek(s36.pernah.includes("belum-cukup") && BG.langkahBagi(36, 4)[0].q === 0 && BG.hasilTulisH(s36) === 9, "36 : 4: puluhan belum cukup (hasil 0), hasil akhir 9");
+  cek(bj(selesaikanH(h0), { t: "TULIS" }).pesan.includes("Semua langkah sudah ditulis") && bj(h0, { t: "PERIKSA" }).pesan.includes("Selesaikan dulu"), "menulis setelah selesai dan memeriksa sebelum selesai ditolak");
+  // Fuzz.
+  let x = h0;
+  let ok = true;
+  const af = acakDari(93);
+  for (let n = 0; n < 20000; n += 1) {
+    const sebelum = x;
+    x = BG.langkahBagiK4B1H(x, [{ t: "BENDA", d: 1 }, { t: "WADAH", d: af(2) ? 1 : -1 }, { t: "PUTARAN" }, { t: "HABIS" }, { t: "ULANG_WADAH" }, { t: "SOAL", i: af(7) }, { t: "DIGIT", d: 1 }, { t: "SISA", d: 1 }, { t: "TULIS" }, { t: "PERIKSA" }][af(10)]);
+    if (x.w < 2 || x.w > 9 || x.sisaBenda < 0 || x.sisaBenda > x.nWadah || x.putaran * x.w + x.sisaBenda !== x.nWadah && x.putaran !== Math.floor(x.nWadah / x.w) || x.langkah < 0 || x.langkah > 2 || x.digit > 9 || x.sisa > 9) ok = false;
+    if (x.putaran * x.w + x.sisaBenda !== x.nWadah) ok = false;
+    if (!sebelum.pernah.every((p) => x.pernah.includes(p))) ok = false;
+  }
+  cek(ok, "fuzz 20.000 aksi lab bagi: banyak benda tetap utuh (isi x wadah + sisa), wadah 2 sampai 9, riwayat tidak dicabut");
+}
+
+/* ------------------------------ Lab Faktor (I) ------------------------------ */
+const fx = (x, ...ak) => ak.reduce((s, a) => FK.langkahFaktorK4B1I(s, a), x);
+const kfx = FK.keadaanFaktorK4B1I;
+const pilihN = (x, n) => fx(x, { t: "N", i: FK.DAFTAR_N.indexOf(n) });
+const cobaSemua = (x, daftar) => fx(x, ...daftar.map((d) => ({ t: "COBA", d })));
+const faktorMandiri = (n) => {
+  const h = new Set();
+  for (let a = 1; a <= n; a += 1) for (let b = 1; b <= n; b += 1) if (a * b === n) h.add(a);
+  return [...h].sort((p, q) => p - q);
+};
+{
+  const i0 = FK.awalFaktorK4B1I();
+  cek(i0.n === 12 && i0.dicoba.length === 0 && i0.k === 2 && i0.m === 0 && !i0.rentang && i0.pernah.length === 0, "I awal: bilangan 12, belum ada yang dicoba, lompatan 2 tanpa lompat");
+  let okFaktor = true;
+  let okCoba = true;
+  for (let n = 1; n <= 100; n += 1) {
+    if (JSON.stringify(FK.faktorDari(n)) !== JSON.stringify(faktorMandiri(n))) okFaktor = false;
+    for (let d = 1; d <= n && n <= 50; d += 1) {
+      const c = FK.cobaPembagi(n, d);
+      if (c.hasil * d + c.sisa !== n || c.sisa >= d || c.faktor !== (c.sisa === 0) || (c.faktor && c.pasangan * d !== n) || (!c.faktor && c.pasangan !== null)) okCoba = false;
+    }
+  }
+  cek(okFaktor, "faktor 1 sampai 100 sama dengan pencarian pasangan a x b = n (hitungan mandiri)");
+  cek(okCoba, "mencoba pembagi: n = hasil x d + sisa, sisa < d, pasangan x d = n bila faktor");
+  sama(FK.faktorDari(12), [1, 2, 3, 4, 6, 12], "faktor 12");
+  sama(FK.faktorDari(20), [1, 2, 4, 5, 10, 20], "faktor 20");
+  sama(FK.faktorDari(24).length, 8, "faktor 24 ada 8");
+  sama(FK.faktorDari(13), [1, 13], "faktor 13 hanya dua");
+  // Lab: lengkap hanya setelah semua faktor dicoba.
+  for (const n of FK.DAFTAR_N) {
+    const f = faktorMandiri(n);
+    const semua = cobaSemua(pilihN(i0, n), f);
+    cek(semua.pernah.includes(`lengkap:${n}`) && semua.pernah.includes("dua-faktor") === (f.length === 2), `faktor ${n}: lengkap setelah semua ${f.length} faktor dicoba`);
+    const kurang = cobaSemua(pilihN(i0, n), f.slice(0, -1));
+    cek(!kurang.pernah.includes(`lengkap:${n}`), `faktor ${n}: kurang satu faktor belum lengkap`);
+    const dengan = cobaSemua(pilihN(i0, n), Array.from({ length: n }, (_, i) => i + 1));
+    cek(dengan.pernah.includes(`lengkap:${n}`) && FK.faktorDitemukan(dengan).join() === f.join(), `faktor ${n}: mencoba semua pembagi 1 sampai ${n} juga lengkap, faktor yang ditemukan benar`);
+    const bukan = Array.from({ length: n }, (_, i) => i + 1).filter((d) => n % d !== 0);
+    const hanyaBukan = cobaSemua(pilihN(i0, n), bukan);
+    cek(!hanyaBukan.pernah.includes(`lengkap:${n}`) && hanyaBukan.pernah.every((p) => !p.startsWith("faktor:")), `faktor ${n}: mencoba bukan faktor saja tidak lengkap`);
+  }
+  const c5 = fx(i0, { t: "COBA", d: 5 });
+  cek(c5.pernah.includes("bukan:12:5") && c5.pesan.includes("bukan faktor") && c5.pesan.includes("sisa 2"), "12 : 5 = 2 sisa 2, 5 bukan faktor 12");
+  const c4 = fx(i0, { t: "COBA", d: 4 });
+  cek(c4.pernah.includes("faktor:12:4") && c4.pesan.includes("4 × 3 = 12"), "4 faktor 12 dengan pasangan 4 x 3");
+  cek(fx(c4, { t: "COBA", d: 4 }).pesan.includes("sudah dicoba") && fx(i0, { t: "COBA", d: 13 }).dicoba.length === 0 && fx(i0, { t: "COBA", d: 0 }).dicoba.length === 0, "pembagi yang sama atau di luar 1 sampai n ditolak");
+  sama(FK.pasanganDitemukan(cobaSemua(i0, [1, 2, 3, 4, 6, 12])), ["1 × 12 = 12", "2 × 6 = 12", "3 × 4 = 12"], "tiga pasangan faktor 12");
+  // Kelipatan dan rentang: semua k, a, b dibandingkan hitungan mandiri.
+  let okKel = true;
+  let okRentang = true;
+  let banyakR = 0;
+  for (let k = 2; k <= 9; k += 1) {
+    const maks = FK.maksLompatan(k);
+    let hitung = 0;
+    for (let v = 1; v <= 100; v += 1) if (v % k === 0) hitung += 1;
+    if (maks !== hitung || FK.kelipatanDari(k, 5).some((v, i) => v !== k * (i + 1))) okKel = false;
+    for (let a = 0; a <= 90; a += 1)
+      for (let b = a + 1; b <= 100; b += 1) {
+        banyakR += 1;
+        const harus = [];
+        for (let v = a + 1; v < b; v += 1) if (v % k === 0) harus.push(v);
+        if (JSON.stringify(FK.dalamRentang(k, a, b)) !== JSON.stringify(harus)) okRentang = false;
+      }
+  }
+  cek(okKel, "kelipatan 2 sampai 9: banyak lompatan maksimum dan i x k benar");
+  cek(okRentang, `rentang: ${banyakR} kombinasi k, a, b sama dengan pencarian mandiri (a dan b sendiri tidak ikut)`);
+  sama(FK.dalamRentang(5, 17, 35), [20, 25, 30], "kelipatan 5 di antara 17 dan 35");
+  sama(FK.dalamRentang(5, 20, 30), [25], "kelipatan 5 di antara 20 dan 30: batas tidak ikut");
+  sama(FK.dalamRentang(6, 0, 40), [6, 12, 18, 24, 30, 36], "kelipatan 6 di antara 0 dan 40");
+  // Lab lompat.
+  const lompat = (x, m) => fx(x, ...Array.from({ length: m }, () => ({ t: "LOMPAT", d: 1 })));
+  cek(lompat(i0, 7).pernah.includes("deret:2:7") && !lompat(i0, 6).pernah.includes("deret:2:7"), "kelipatan 2 sampai 7 lompatan tercatat");
+  const lewat = lompat(i0, 50);
+  cek(lewat.m === 50 && fx(lewat, { t: "LOMPAT", d: 1 }).pesan.includes("batas 100"), "lompatan 2 paling banyak 50 kali (sampai 100)");
+  cek(fx(i0, { t: "LOMPAT", d: -1 }).m === 0 && fx(lompat(i0, 3), { t: "K", d: 1 }).m === 0, "tidak bisa mundur dari 0, mengganti lompatan mengulang dari 0");
+  cek(fx(i0, { t: "K", d: -1 }).pesan.includes("Lompatan 2 sampai 9"), "lompatan tidak kurang dari 2");
+  const r5 = fx(i0, ...Array.from({ length: 3 }, () => ({ t: "K", d: 1 })), ...Array.from({ length: 7 }, () => ({ t: "A", d: 1 })), ...Array.from({ length: 5 }, () => ({ t: "B", d: 1 })), { t: "RENTANG" });
+  cek(r5.k === 5 && r5.a === 17 && r5.b === 35 && r5.pernah.includes("rentang:5:17:35"), "rentang kelipatan 5 antara 17 dan 35 tercatat");
+  cek(!fx(r5, { t: "A", d: 1 }).pernah.includes("rentang:5:18:35") === false, "mengubah batas bawah setelah Rentang menyala mencatat rentang baru");
+  cek(fx(i0, { t: "A", d: -1 }, ...Array.from({ length: 10 }, () => ({ t: "A", d: -1 }))).a === 0 && fx(i0, ...Array.from({ length: 30 }, () => ({ t: "A", d: 1 }))).a < FK.awalFaktorK4B1I().b, "batas bawah antara 0 dan di bawah batas atas");
+  cek(fx(i0, ...Array.from({ length: 80 }, () => ({ t: "B", d: 1 }))).b === 100 && fx(i0, ...Array.from({ length: 80 }, () => ({ t: "B", d: -1 }))).b === 11, "batas atas paling besar 100 dan selalu di atas batas bawah");
+  // Fuzz.
+  let x = i0;
+  let ok = true;
+  const af = acakDari(95);
+  for (let n = 0; n < 20000; n += 1) {
+    const sebelum = x;
+    x = FK.langkahFaktorK4B1I(x, [{ t: "N", i: af(6) }, { t: "COBA", d: 1 + af(50) }, { t: "K", d: af(2) ? 1 : -1 }, { t: "LOMPAT", d: af(3) ? 1 : -1 }, { t: "RENTANG" }, { t: "A", d: af(2) ? 1 : -1 }, { t: "B", d: af(2) ? 1 : -1 }][af(7)]);
+    if (!FK.DAFTAR_N.includes(x.n) || new Set(x.dicoba).size !== x.dicoba.length || x.dicoba.some((d) => d < 1 || d > x.n) || x.k < 2 || x.k > 9 || x.m < 0 || x.m > FK.maksLompatan(x.k) || x.a < 0 || x.b > 100 || x.a >= x.b) ok = false;
+    if (!sebelum.pernah.every((p) => x.pernah.includes(p))) ok = false;
+  }
+  cek(ok, "fuzz 20.000 aksi lab faktor: pembagi unik dan dalam 1 sampai n, lompatan dan rentang dalam batas, riwayat tidak dicabut");
+}
+
 /* ------------------------------ Mesin Bertahap ------------------------------ */
 {
   const posisi = [];
@@ -821,6 +1151,118 @@ const stateF = (x, a, b) => ({ ...x, a, b, atas: [0, 1, 2, 3].map((c) => Math.fl
   sama(nAmbil, "0,1,2", "mesin kurang: tanpa mengambil, satu kali, dan dua kali");
 }
 
+/* ------------------------------ Mesin Kali, Bagi, Faktor (G, H, I) ------------------------------ */
+{
+  cek(MG.SEMUA_MESIN_K4B1_BAGI.length === 3, "ada tiga mesin (G, H, I)");
+  for (const def of MG.SEMUA_MESIN_K4B1_BAGI) {
+    cek(def.stasiun.length === 4 && def.kasus.length === 3, `${def.id}: 4 stasiun, 3 kasus`);
+    const lokal = [];
+    for (const kasus of def.kasus) {
+      cek(kasus.langkah.length === 4, `${def.id}/${kasus.id}: satu langkah per stasiun`);
+      kasus.langkah.forEach((l, i) => {
+        cek(l.stasiun === def.stasiun[i].id, `${kasus.id}: stasiun ${i} bernama ${def.stasiun[i].id}`);
+        cek(l.opsi.length === 3 && new Set(l.opsi).size === 3 && l.opsi.filter((o) => o === l.benar).length === 1, `${def.id}/${kasus.id}/${l.stasiun}: tiga pilihan unik, satu kunci (${JSON.stringify(l.opsi)})`);
+        cek(l.petunjuk.length > 20 && l.tanya.length > 5, `${kasus.id}/${l.stasiun}: tanya dan petunjuk ada`);
+        lokal.push(l.opsi.indexOf(l.benar));
+      });
+    }
+    cek(new Set(lokal).size === 3, `${def.id}: letak kunci bervariasi (${lokal.join("")})`);
+    let x = ME.awalMesin(def);
+    for (let mi = 0; mi < def.kasus.length; mi += 1) {
+      for (let i = 0; i < 4; i += 1) {
+        const l = ME.langkahAktif(x);
+        const lompat = ME.langkahMesin(x, { t: "LOMPAT", ke: i + 1 });
+        cek(lompat.ke === x.ke && lompat.ditolak === x.ditolak + 1, `${def.id}: lompat stasiun ditolak`);
+        for (const s of l.opsi.filter((o) => o !== l.benar)) {
+          const t = ME.langkahMesin(x, { t: "JAWAB", nilai: s });
+          cek(t.ke === x.ke && t.pesan === l.petunjuk, `${def.id}: "${s}" ditolak dengan petunjuk`);
+        }
+        x = ME.langkahMesin(x, { t: "JAWAB", nilai: l.benar });
+      }
+      cek(x.fase === "sudah", `${def.id}: kasus ${mi} selesai`);
+      x = ME.langkahMesin(x, { t: "LANJUT" });
+    }
+    cek(x.selesai, `${def.id}: semua kasus selesai`);
+  }
+  sama(MG.SEMUA_MESIN_K4B1_BAGI.map((d) => d.selesaiId), [K4.ID_MESIN_K4B1.G, K4.ID_MESIN_K4B1.H, K4.ID_MESIN_K4B1.I], "selesaiId mesin G, H, I sama dengan id misi");
+
+  // Mesin Kali.
+  const tulisSimpan = (t) => {
+    const m = t.match(/^tulis (\d+), (?:simpan (\d+)|tidak menyimpan)$/);
+    return m ? [Number(m[1]), m[2] ? Number(m[2]) : 0] : null;
+  };
+  const uraiSuku = (t) => {
+    const m = t.match(/^(\d+) \+ (\d+) = (\d+)$/);
+    return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : null;
+  };
+  MG.KASUS_KALI.forEach((k, idx) => {
+    const [array, urai, bersusun, periksa] = MG.MESIN_KALI.kasus[idx].langkah;
+    const p = k.n * k.k;
+    const puluh = k.n - (k.n % 10);
+    cek(array.benar === String(p) && array.tanya.includes(`${k.n} kotak`) && array.tanya.includes(`berisi ${k.k}`), `${k.id}: array ${p}`);
+    for (const o of array.opsi.filter((q) => q !== array.benar)) cek(Number(o) !== p, `${k.id}: pengecoh array ${o} salah`);
+    sama(uraiSuku(urai.benar), [puluh * k.k, (k.n % 10) * k.k, p], `${k.id}: cara panjang`);
+    for (const o of urai.opsi.filter((q) => q !== urai.benar)) {
+      const s = uraiSuku(o);
+      cek(s !== null && !(s[0] === puluh * k.k && s[1] === (k.n % 10) * k.k), `${k.id}: pengecoh urai "${o}" salah langkah`);
+    }
+    const ones = (k.n % 10) * k.k;
+    sama(tulisSimpan(bersusun.benar), [ones % 10, Math.floor(ones / 10)], `${k.id}: kolom satuan ${ones}`);
+    for (const o of bersusun.opsi.filter((q) => q !== bersusun.benar)) {
+      const s = tulisSimpan(o);
+      cek(s !== null && !(s[0] === ones % 10 && s[1] === Math.floor(ones / 10)), `${k.id}: pengecoh bersusun "${o}" salah`);
+    }
+    cek(periksa.benar === String(p), `${k.id}: periksa ${p}`);
+    for (const o of periksa.opsi.filter((q) => q !== periksa.benar)) cek(Number(o) !== p, `${k.id}: pengecoh periksa ${o} salah`);
+  });
+  cek(MG.KASUS_KALI.some((k) => (k.n % 10) * k.k < 10) && MG.KASUS_KALI.some((k) => (k.n % 10) * k.k >= 10), "mesin kali: ada yang tanpa menyimpan dan ada yang menyimpan");
+
+  // Mesin Bagi.
+  const bagiTuple = (t) => {
+    const m = t.match(/^(\d+) : (\d+) = (\d+), sisa (\d+)$/);
+    return m ? m.slice(1).map(Number) : null;
+  };
+  MG.KASUS_BAGI.forEach((k, idx) => {
+    const [puluhan, satuan, sisa, periksa] = MG.MESIN_BAGI.kasus[idx].langkah;
+    const m = langkahMandiri(k.n, k.d);
+    sama(bagiTuple(puluhan.benar), [m[0].cur, k.d, m[0].q, m[0].r], `${k.id}: langkah puluhan`);
+    for (const o of puluhan.opsi.filter((q) => q !== puluhan.benar)) cek(bagiTuple(o) !== null && JSON.stringify(bagiTuple(o)) !== JSON.stringify([m[0].cur, k.d, m[0].q, m[0].r]), `${k.id}: pengecoh puluhan "${o}" salah`);
+    sama(bagiTuple(satuan.benar), [m[1].cur, k.d, m[1].q, m[1].r], `${k.id}: langkah satuan`);
+    for (const o of satuan.opsi.filter((q) => q !== satuan.benar)) cek(bagiTuple(o) !== null && JSON.stringify(bagiTuple(o)) !== JSON.stringify([m[1].cur, k.d, m[1].q, m[1].r]), `${k.id}: pengecoh satuan "${o}" salah`);
+    cek(satuan.tanya.includes(`${m[1].cur} dibagi ${k.d}`) && !/\b0\d\b/.test(satuan.tanya), `${k.id}: pertanyaan satuan menyebut ${m[1].cur} dibagi ${k.d} tanpa angka berawalan nol`);
+    cek(sisa.benar === String(k.n % k.d), `${k.id}: sisa ${k.n % k.d}`);
+    for (const o of sisa.opsi.filter((q) => q !== sisa.benar)) cek(Number(o) !== k.n % k.d && Number(o) >= 0 && Number(o) < 10, `${k.id}: pengecoh sisa ${o} salah`);
+    cek(periksa.benar === String(k.n) && periksa.tanya.includes(`${Math.floor(k.n / k.d)} × ${k.d}`), `${k.id}: periksa kembali ke ${k.n}`);
+    for (const o of periksa.opsi.filter((q) => q !== periksa.benar)) cek(Number(o) !== k.n, `${k.id}: pengecoh periksa ${o} salah`);
+  });
+  cek(MG.KASUS_BAGI.some((k) => k.n % k.d === 0) && MG.KASUS_BAGI.some((k) => k.n % k.d !== 0), "mesin bagi: ada yang habis dibagi dan ada yang bersisa");
+
+  // Mesin Faktor.
+  const kali = (t) => {
+    const m = t.match(/^(\d+) ([×+]) (\d+) = (\d+)$/);
+    return m ? { a: Number(m[1]), op: m[2], b: Number(m[3]), c: Number(m[4]) } : null;
+  };
+  MG.KASUS_FAKTOR.forEach((k, idx) => {
+    const [bagi, sisa, pasangan, kelipatan] = MG.MESIN_FAKTOR.kasus[idx].langkah;
+    cek(k.n % k.faktorD === 0 && k.n % k.bukanD !== 0, `${k.id}: ${k.faktorD} faktor dan ${k.bukanD} bukan faktor ${k.n} (hitungan mandiri)`);
+    sama(bagiTuple(bagi.benar), [k.n, k.faktorD, k.n / k.faktorD, 0], `${k.id}: ${k.n} : ${k.faktorD}`);
+    for (const o of bagi.opsi.filter((q) => q !== bagi.benar)) cek(bagiTuple(o) !== null && JSON.stringify(bagiTuple(o)) !== JSON.stringify([k.n, k.faktorD, k.n / k.faktorD, 0]), `${k.id}: pengecoh bagi "${o}" salah`);
+    cek(sisa.benar === `sisa ${k.n % k.bukanD}, jadi ${k.bukanD} bukan faktor ${k.n}` && sisa.tanya.includes(`sisa ${k.n % k.bukanD}`), `${k.id}: arti sisa ${k.n % k.bukanD}`);
+    for (const o of sisa.opsi.filter((q) => q !== sisa.benar)) cek(!/bukan faktor/.test(o), `${k.id}: pengecoh sisa "${o}" menyebut ${k.bukanD} faktor (salah)`);
+    const kp = kali(pasangan.benar);
+    cek(kp && kp.op === "×" && kp.a === k.faktorD && kp.b === k.n / k.faktorD && kp.a * kp.b === kp.c && kp.c === k.n, `${k.id}: pasangan ${pasangan.benar}`);
+    for (const o of pasangan.opsi.filter((q) => q !== pasangan.benar)) {
+      const q = kali(o);
+      cek(q !== null && !(q.op === "×" && q.a * q.b === q.c && q.c === k.n && q.a === k.faktorD), `${k.id}: pengecoh pasangan "${o}" salah`);
+    }
+    const harus = [];
+    for (let v = k.a + 1; v < k.b; v += 1) if (v % k.k === 0 && v <= 100) harus.push(v);
+    cek(kelipatan.benar === harus.join(", ") && harus.length >= 3, `${k.id}: kelipatan ${k.k} antara ${k.a} dan ${k.b} = ${harus.join(", ")}`);
+    for (const o of kelipatan.opsi.filter((q) => q !== kelipatan.benar)) cek(o !== harus.join(", "), `${k.id}: pengecoh kelipatan "${o}" salah`);
+  });
+  cek(MG.KASUS_FAKTOR.every((k) => MG.faktorMesin(k.n).join() === faktorMandiri(k.n).join()), "mesin faktor: daftar faktor sama dengan hitungan mandiri");
+}
+
 /* ------------------------------ Skenario (kunci dihitung mandiri) ------------------------------ */
 {
   const semua = [SB.SKENARIO_K4B1A, SB.SKENARIO_K4B1B, SB.SKENARIO_K4B1C, SB.SKENARIO_K4B1D];
@@ -907,11 +1349,68 @@ const stateF = (x, a, b) => ({ ...x, a, b, atas: [0, 1, 2, 3].map((c) => Math.fl
   cek(112 + 129 === 241 && benar(F, "periksa").includes("241"), "F: 112 + 129 = 241");
 }
 
+/* ------------------------------ Skenario G, H, I ------------------------------ */
+{
+  const SKG = SG.SKENARIO_K4B1G;
+  const SKH = SG.SKENARIO_K4B1H;
+  const SKI = SG.SKENARIO_K4B1I;
+  for (const s of [SKG, SKH, SKI]) {
+    cek(s.adegan.length >= 5 && s.adegan.length <= 8 && new Set(s.adegan.map((a) => a.jenis)).size >= 4, `${s.id}: 5-8 adegan (${s.adegan.length}), minimal 4 jenis`);
+    for (const a of s.adegan.filter((q) => q.jenis === "pilih")) cek(a.opsi.length === 3 && a.opsi.filter((o) => o.benar).length === 1, `${s.id}/${a.id}: tiga pilihan, satu benar`);
+    for (const a of s.adegan.filter((q) => q.jenis === "soal")) for (const q of a.soal) cek(q.opsi.length === 3 && new Set(q.opsi).size === 3 && q.opsi.includes(q.jawaban), `${s.id}/${a.id}: "${q.teks}" tiga pilihan memuat jawaban`);
+  }
+  const ad = (s, id) => s.adegan.find((a) => a.id === id);
+  const benar = (s, id) => ad(s, id).opsi.find((o) => o.benar).teks;
+  const hitung = (teks, op) => {
+    const m = teks.match(new RegExp(`^(\\d+) ${op === "+" ? "\\+" : op} (\\d+) = \\u2026$`));
+    if (!m) return null;
+    const [a, b] = [Number(m[1]), Number(m[2])];
+    return op === "×" ? a * b : op === ":" ? (a % b === 0 ? a / b : NaN) : op === "−" ? a - b : a + b;
+  };
+  // G
+  for (const q of ad(SKG, "kali").soal) {
+    cek(hitung(q.teks, "×") === Number(q.jawaban), `G: ${q.teks} = ${q.jawaban}`);
+    for (const o of q.opsi.filter((v) => v !== q.jawaban)) cek(hitung(q.teks, "×") !== Number(o), `G: pengecoh ${o} untuk ${q.teks} salah`);
+  }
+  cek(ad(SKG, "baris").jumlah === 4 && ad(SKG, "baris").cerita.includes("ada 4"), "G: 4 donat per baris");
+  const bp = benar(SKG, "panjang").match(/^(\d+) × (\d+) = (\d+) dan (\d+) × (\d+) = (\d+), lalu (\d+) \+ (\d+) = (\d+)$/);
+  cek(bp && Number(bp[1]) === 10 && Number(bp[2]) === 4 && Number(bp[3]) === 40 && Number(bp[4]) === 2 && Number(bp[5]) === 4 && Number(bp[6]) === 8 && Number(bp[7]) + Number(bp[8]) === Number(bp[9]) && Number(bp[9]) === 12 * 4, "G: cara panjang benar 10 x 4 + 2 x 4 = 48");
+  cek(benar(SKG, "simpan") === `Tulis ${(4 * 5) % 10}, simpan ${Math.floor((4 * 5) / 10)} ke puluhan`, "G: 4 x 5 = 20 ditulis 0 dan simpan 2");
+  cek(1 * 5 + 2 === 7 && 14 * 5 === 70, "G: 1 x 5 + 2 = 7, hasil 70");
+  cek(ad(SKG, "pak").target === Math.floor((12 * 8) / 10) % 10 && ad(SKG, "pak").cerita.includes(String(12 * 8)), "G: puluhan pada 96 adalah 9");
+  // H
+  for (const q of ad(SKH, "bagi").soal) {
+    const h = hitung(q.teks, ":");
+    cek(h === Number(q.jawaban), `H: ${q.teks} = ${q.jawaban}`);
+    for (const o of q.opsi.filter((v) => v !== q.jawaban)) cek(h !== Number(o), `H: pengecoh ${o} untuk ${q.teks} salah`);
+  }
+  cek(ad(SKH, "wadah").jumlah === 4, "H: empat wadah");
+  cek(Math.floor(48 / 5) === 9 && 48 % 5 === 3 && ad(SKH, "sisa").cerita.includes("48 : 5 = 9 sisa 3") && benar(SKH, "sisa").includes("sisa 3"), "H: 48 : 5 = 9 sisa 3, tidak habis dibagi");
+  cek(ad(SKH, "kotak").target === (81 / 3) % 10 && 81 % 3 === 0 && ad(SKH, "kotak").cerita.includes("27"), "H: 81 : 3 = 27, satuan 7");
+  const pk = benar(SKH, "periksa").match(/^(\d+) × (\d+) = (\d+),/);
+  cek(pk && Number(pk[1]) * Number(pk[2]) === Number(pk[3]) && Number(pk[3]) === 55 && 55 / 5 === 11, "H: periksa 11 x 5 = 55");
+  // I (pencapaian bab)
+  const [i1, i2, i3] = ad(SKI, "bilangan").soal;
+  cek(i1.jawaban === "dua" && bacaMandiri(6002) === "enam ribu dua", "I: 6.002 dibaca enam ribu dua");
+  cek(i2.jawaban === String(dig(8463)[2] * 10) && i2.teks.includes("8.463"), "I: 6 di puluhan pada 8.463 bernilai 60");
+  cek(i3.jawaban === (4352 < 4365 ? "<" : ">"), "I: 4.352 < 4.365");
+  const [o1, o2, o3] = ad(SKI, "operasi").soal;
+  cek(hitung(o1.teks, "+") === 434 && o1.jawaban === "434" && hitung(o2.teks, "−") === 112 && o2.jawaban === "112" && hitung(o3.teks, "×") === 70 && o3.jawaban === "70", "I: 189 + 245 = 434, 241 - 129 = 112, 14 x 5 = 70");
+  cek(jumlahSuku(benar(SKI, "uraian")) === 7020 && benar(SKI, "uraian").split(" + ").length === 4, "I: uraian 7.020 menurut tempat berjumlah 7.020");
+  for (const o of ad(SKI, "uraian").opsi.filter((q) => !q.benar)) cek(!(jumlahSuku(o.teks) === 7020 && o.teks.split(" + ").length === 4), `I: pengecoh uraian "${o.teks}" bukan uraian menurut tempat`);
+  cek(ad(SKI, "bagi").jumlah === 48 / 4 && 12 * 4 === 48, "I: 48 : 4 = 12 kursi per baris");
+  cek(12 % 5 === 2 && 12 % 4 === 0 && 12 % 6 === 0 && benar(SKI, "faktor").startsWith("5,") && ad(SKI, "faktor").opsi.filter((o) => !o.benar).every((o) => /sisa 0/.test(o.teks)), "I: 5 bukan faktor 12, 4 dan 6 faktor 12");
+  const [k1, k2, k3] = ad(SKI, "kelipatan").soal;
+  cek(k1.jawaban === String(2 * 4) && k2.jawaban === String([20, 25, 30].length) && k3.jawaban === String(12 + 3), "I: kelipatan 2 keempat 8, tiga kelipatan 5 antara 17 dan 35, setelah 12 adalah 15");
+  cek([5, 10, 15, 20, 25, 30, 35, 40].filter((v) => v > 17 && v < 35).length === 3, "I: kelipatan 5 antara 17 dan 35 ada tiga");
+  cek(/6\.002/.test(JSON.stringify(SKI)) && /241/.test(JSON.stringify(SKI)) && /48 : 4/.test(JSON.stringify(SKI)) === false || /kursi/.test(JSON.stringify(SKI)), "I: pencapaian bab mengulang bilangan, operasi, pembagian, faktor, dan kelipatan");
+}
+
 /* ------------------------------ Misi ------------------------------ */
-const keadaanAwal = [ka(A.awalKemasanK4B1A()), kb(B.awalNilaiK4B1B()), kc(C.awalBandingK4B1C()), kd(D.awalSusunK4B1D()), kj(J.awalJumlahK4B1E()), kk(KR.awalKurangK4B1F())];
+const keadaanAwal = [ka(A.awalKemasanK4B1A()), kb(B.awalNilaiK4B1B()), kc(C.awalBandingK4B1C()), kd(D.awalSusunK4B1D()), kj(J.awalJumlahK4B1E()), kk(KR.awalKurangK4B1F()), kg(KL.awalKaliK4B1G()), kbg(BG.awalBagiK4B1H()), kfx(FK.awalFaktorK4B1I())];
 const SEMUA_ID = [...Object.values(K4.ID_MESIN_K4B1), ...Object.values(K4.ID_SKENARIO_K4B1), "x", "mesin-urut"];
 const HURUF = ["A", "B", "C", "D"];
-const HURUF_ALL = ["A", "B", "C", "D", "E", "F"];
+const HURUF_ALL = ["A", "B", "C", "D", "E", "F", "G", "H", "I"];
 for (const h of HURUF_ALL) {
   const daftar = K4.daftarMisiK4Bab1(h);
   cek(daftar.filter((m) => m.wajib).length === 7 && daftar.filter((m) => !m.wajib).length === 3, `sub-bab ${h}: 7 misi wajib dan 3 tantangan bebas`);
@@ -1112,6 +1611,117 @@ const AKSI_WAJIB = {};
   for (const m of K4.MISI_F.filter((q) => q.wajib && !/mesin|skenario/.test(q.id))) penuh("F", m.id, kf(s));
   for (const ke2 of keadaanAwal.filter((q) => q.alat !== "kurang")) for (const m of K4.MISI_F) belum("F", m.id, ke2, `alat ${ke2.alat} bukan lab kurang`);
 }
+// Sub-Bab G
+{
+  const g0 = KL.awalKaliK4B1G();
+  const kx = (x) => kg(x);
+  const ulang = (n, aksi) => Array.from({ length: n }, () => aksi);
+  const a12 = gg(g0, ...ulang(9, { t: "KOTAK", d: 1 }));
+  penuh("G", "g-array", kx(a12));
+  belum("G", "g-array", kx(g0), "3 x 4");
+  belum("G", "g-array", kx(gg(g0, ...ulang(8, { t: "KOTAK", d: 1 }))), "11 x 4");
+  const a96 = gg(a12, ...ulang(4, { t: "ISI", d: 1 }));
+  penuh("G", "g-cerita", kx(a96));
+  belum("G", "g-cerita", kx(a12), "12 x 4");
+  belum("G", "g-cerita", kx(gg(g0, ...ulang(4, { t: "ISI", d: 1 }))), "3 x 8");
+  penuh("G", "g-panjang", kx(gg(g0, { t: "BELAH" })));
+  belum("G", "g-panjang", kx(gg(pilihG(g0, 14, 5), { t: "BELAH" })), "belah 14 x 5");
+  belum("G", "g-panjang", kx(g0), "Cara Panjang mati");
+  penuh("G", "g-bersusun", kx(selesaikanG(pilihG(g0, 14, 5))));
+  belum("G", "g-bersusun", kx(selesaikanG(g0)), "12 x 4");
+  belum("G", "g-bersusun", kx(gg(aturG(aturG(pilihG(g0, 14, 5), "DIGIT", 0, (q) => q.digit), "SIMPAN", 2, (q) => q.simpan), { t: "TULIS" })), "baru kolom satuan");
+  const lupa = gg(pilihG(g0, 14, 5), { t: "TULIS" });
+  penuh("G", "g-lupa", kx(lupa));
+  belum("G", "g-lupa", kx(gg(aturG(aturG(pilihG(g0, 14, 5), "DIGIT", 0, (q) => q.digit), "SIMPAN", 2, (q) => q.simpan), { t: "TULIS" })), "angka dan simpanan benar");
+  belum("G", "g-lupa", kx(gg(aturG(pilihG(g0, 14, 5), "DIGIT", 3, (q) => q.digit), { t: "TULIS" })), "angka keliru");
+  belum("G", "g-lupa", kx(selesaikanG(g0)), "12 x 4 tidak perlu menyimpan");
+  penuh("G", "g-seratus", kx(selesaikanG(pilihG(g0, 25, 4))));
+  belum("G", "g-seratus", kx(selesaikanG(pilihG(g0, 12, 8))), "96");
+  penuh("G", "g-45", kx(selesaikanG(pilihG(g0, 45, 2))));
+  belum("G", "g-45", kx(selesaikanG(pilihG(g0, 14, 5))), "14 x 5");
+  penuh("G", "g-16", kx(gg(pilihG(g0, 16, 6), { t: "BELAH" })));
+  belum("G", "g-16", kx(gg(g0, { t: "BELAH" })), "belah 12 x 4");
+  let s = gg(a96, { t: "BELAH" });
+  s = selesaikanG(gg(pilihG(s, 14, 5), { t: "TULIS" }));
+  AKSI_WAJIB.G = [kx(s)];
+  for (const m of K4.MISI_G.filter((q) => q.wajib && !/mesin|skenario/.test(q.id))) penuh("G", m.id, kx(s));
+  for (const ke2 of keadaanAwal.filter((q) => q.alat !== "kali")) for (const m of K4.MISI_G) belum("G", m.id, ke2, `alat ${ke2.alat} bukan lab kali`);
+}
+// Sub-Bab H
+{
+  const h0 = BG.awalBagiK4B1H();
+  const kx = (x) => kbg(x);
+  penuh("H", "h-habis", kx(bj(wadahH(h0, 48, 4), { t: "HABIS" })));
+  belum("H", "h-habis", kx(bj(wadahH(h0, 48, 3), { t: "HABIS" })), "3 wadah");
+  belum("H", "h-habis", kx(bj(wadahH(h0, 48, 4), { t: "PUTARAN" })), "baru satu putaran");
+  belum("H", "h-habis", kx(bj(wadahH(h0, 36, 4), { t: "HABIS" })), "36 benda");
+  const ws = [2, 3, 4, 6, 8];
+  const coba = (n, daftar) => daftar.reduce((q, w) => bj(wadahH(q, n, w), { t: "HABIS" }), h0);
+  penuh("H", "h-percobaan", kx(coba(48, ws)));
+  belum("H", "h-percobaan", kx(coba(48, [2, 3, 4, 6])), "kurang 8 wadah");
+  belum("H", "h-percobaan", kx(coba(36, ws)), "36 benda, bukan 48");
+  penuh("H", "h-sisa", kx(bj(wadahH(h0, 48, 5), { t: "HABIS" })));
+  belum("H", "h-sisa", kx(bj(wadahH(h0, 48, 4), { t: "HABIS" })), "48 : 4 habis");
+  belum("H", "h-sisa", kx(bj(wadahH(h0, 36, 5), { t: "HABIS" })), "36 benda");
+  penuh("H", "h-bersusun", kx(selesaikanH(h0)));
+  belum("H", "h-bersusun", kx(selesaikanH(pilihH(h0, 81, 3))), "81 : 3");
+  belum("H", "h-bersusun", kx(bj(aturBg(aturBg(h0, "DIGIT", 1, (q) => q.digit), "SISA", 0, (q) => q.sisa), { t: "TULIS" })), "baru langkah puluhan");
+  penuh("H", "h-periksa", kx(bj(selesaikanH(pilihH(h0, 81, 3)), { t: "PERIKSA" })));
+  belum("H", "h-periksa", kx(selesaikanH(pilihH(h0, 81, 3))), "belum Periksa");
+  belum("H", "h-periksa", kx(bj(selesaikanH(h0), { t: "PERIKSA" })), "periksa 48 : 4");
+  penuh("H", "h-cukup", kx(selesaikanH(pilihH(h0, 36, 4))));
+  belum("H", "h-cukup", kx(selesaikanH(h0)), "48 : 4 puluhan cukup");
+  penuh("H", "h-47", kx(selesaikanH(pilihH(h0, 47, 5))));
+  belum("H", "h-47", kx(selesaikanH(pilihH(h0, 55, 5))), "55 : 5");
+  penuh("H", "h-besar", kx(bj(aturBg(h0, "DIGIT", 9, (q) => q.digit), { t: "TULIS" })));
+  belum("H", "h-besar", kx(bj(h0, { t: "TULIS" })), "hasil 0 sisa 0 keliru tetapi tidak terlalu besar");
+  let s = bj(wadahH(h0, 48, 4), { t: "HABIS" });
+  s = coba(48, ws).pernah.length ? { ...s, pernah: [...new Set([...s.pernah, ...coba(48, ws).pernah])] } : s;
+  s = bj(wadahH(s, 48, 5), { t: "HABIS" });
+  s = bj(selesaikanH(pilihH(selesaikanH(s), 81, 3)), { t: "PERIKSA" });
+  AKSI_WAJIB.H = [kx(s)];
+  for (const m of K4.MISI_H.filter((q) => q.wajib && !/mesin|skenario/.test(q.id))) penuh("H", m.id, kx(s));
+  for (const ke2 of keadaanAwal.filter((q) => q.alat !== "bagi")) for (const m of K4.MISI_H) belum("H", m.id, ke2, `alat ${ke2.alat} bukan lab bagi`);
+}
+// Sub-Bab I
+{
+  const i0 = FK.awalFaktorK4B1I();
+  const kx = (x) => kfx(x);
+  const ulang = (n, aksi) => Array.from({ length: n }, () => aksi);
+  const rentang = (k, naikA, naikB) => fx(i0, ...ulang(k - 2, { t: "K", d: 1 }), ...ulang(naikA, { t: "A", d: 1 }), ...ulang(naikB, { t: "B", d: 1 }), { t: "RENTANG" });
+  penuh("I", "i-dua-belas", kx(cobaSemua(i0, [1, 2, 3, 4, 6, 12])));
+  belum("I", "i-dua-belas", kx(cobaSemua(i0, [1, 2, 3, 4, 6])), "kurang 12");
+  belum("I", "i-dua-belas", kx(cobaSemua(pilihN(i0, 20), [1, 2, 4, 5, 10, 20])), "faktor 20, bukan 12");
+  penuh("I", "i-bukan", kx(fx(i0, { t: "COBA", d: 5 })));
+  belum("I", "i-bukan", kx(fx(i0, { t: "COBA", d: 4 })), "4 faktor 12");
+  belum("I", "i-bukan", kx(fx(pilihN(i0, 20), { t: "COBA", d: 3 })), "3 bukan faktor 20, bukan 5 pada 12");
+  penuh("I", "i-dua-puluh", kx(cobaSemua(pilihN(i0, 20), [1, 2, 4, 5, 10, 20])));
+  belum("I", "i-dua-puluh", kx(cobaSemua(i0, [1, 2, 3, 4, 6, 12])), "faktor 12");
+  belum("I", "i-dua-puluh", kx(cobaSemua(pilihN(i0, 20), [1, 2, 4, 5, 10])), "kurang 20");
+  const lompat = (x, m) => fx(x, ...ulang(m, { t: "LOMPAT", d: 1 }));
+  penuh("I", "i-deret", kx(lompat(i0, 7)));
+  belum("I", "i-deret", kx(lompat(i0, 6)), "6 lompatan");
+  belum("I", "i-deret", kx(lompat(fx(i0, { t: "K", d: 1 }), 7)), "lompatan 3");
+  penuh("I", "i-rentang", kx(rentang(5, 7, 5)));
+  belum("I", "i-rentang", kx(rentang(5, 6, 5)), "batas bawah 16");
+  belum("I", "i-rentang", kx(rentang(5, 7, 4)), "batas atas 34");
+  belum("I", "i-rentang", kx(fx(i0, ...ulang(3, { t: "K", d: 1 }), ...ulang(7, { t: "A", d: 1 }), ...ulang(5, { t: "B", d: 1 }))), "Rentang belum menyala");
+  belum("I", "i-rentang", kx(fx(i0, ...ulang(7, { t: "A", d: 1 }), ...ulang(5, { t: "B", d: 1 }), { t: "RENTANG" })), "lompatan 2, bukan 5");
+  penuh("I", "i-dua-empat", kx(cobaSemua(pilihN(i0, 24), [1, 2, 3, 4, 6, 8, 12, 24])));
+  belum("I", "i-dua-empat", kx(cobaSemua(pilihN(i0, 24), [1, 2, 3, 4, 6, 8, 12])), "kurang 24");
+  penuh("I", "i-tiga-belas", kx(cobaSemua(pilihN(i0, 13), [1, 13])));
+  belum("I", "i-tiga-belas", kx(cobaSemua(pilihN(i0, 13), [1])), "baru 1");
+  belum("I", "i-tiga-belas", kx(cobaSemua(i0, [1, 2, 3, 4, 6, 12])), "12 punya enam faktor");
+  penuh("I", "i-enam", kx(fx(i0, ...ulang(4, { t: "K", d: 1 }), ...ulang(10, { t: "A", d: -1 }), ...ulang(10, { t: "B", d: 1 }), { t: "RENTANG" })));
+  belum("I", "i-enam", kx(fx(i0, ...ulang(4, { t: "K", d: 1 }), ...ulang(10, { t: "A", d: -1 }), { t: "RENTANG" })), "batas atas 30");
+  let s = cobaSemua(i0, [1, 2, 3, 4, 5, 6, 12]);
+  s = cobaSemua(pilihN(s, 20), [1, 2, 4, 5, 10, 20]);
+  s = lompat(s, 7);
+  s = fx(s, ...ulang(3, { t: "K", d: 1 }), ...ulang(7, { t: "A", d: 1 }), ...ulang(5, { t: "B", d: 1 }), { t: "RENTANG" });
+  AKSI_WAJIB.I = [kx(s)];
+  for (const m of K4.MISI_I.filter((q) => q.wajib && !/mesin|skenario/.test(q.id))) penuh("I", m.id, kx(s));
+  for (const ke2 of keadaanAwal.filter((q) => q.alat !== "faktor")) for (const m of K4.MISI_I) belum("I", m.id, ke2, `alat ${ke2.alat} bukan lab faktor`);
+}
 // Misi alat sub-bab lain tidak tercapai oleh alat yang salah.
 for (const h of HURUF_ALL) for (const m of K4.daftarMisiK4Bab1(h)) for (const [g, kes] of Object.entries(AKSI_WAJIB)) if (g !== h) for (const ke of kes) cek(!m.cek(ke), `misi ${m.id} tidak tercapai oleh alat sub-bab ${g}`);
 
@@ -1220,6 +1830,46 @@ for (const h of HURUF_ALL) {
     if (!bocorF && BOCOR_F.test(t)) bocorF = t;
   }
   cek(!bocorF, `ucapan dan pesan lab F bebas konsep sub-bab berikutnya ${bocorF}`);
+}
+
+/* ---- Konsep Sub-Bab H dan sesudahnya tidak dipakai di G, dan faktor serta kelipatan tidak dipakai di H ---- */
+{
+  const BOCOR_G = /(pembagian|dibagi|membagi|sisa|faktor|kelipatan| : )/i;
+  const BOCOR_H = /(faktor|kelipatan)/i;
+  const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas4-bab1-ringkas.json", import.meta.url), "utf8"));
+  const dataGH = {
+    G: { r: BOCOR_G, misi: [TK.MISI_K4B1.G, TK.NAMA_SIM_K4B1.G, ...K4.MISI_G.map((m) => m.teks)], sk: SG.SKENARIO_K4B1G, ms: MG.MESIN_KALI, komp: "SimulasiLabKaliK4", kompRe: /(pembagian|dibagi|membagi|sisa|faktor|kelipatan)/i },
+    H: { r: BOCOR_H, misi: [TK.MISI_K4B1.H, TK.NAMA_SIM_K4B1.H, ...K4.MISI_H.map((m) => m.teks)], sk: SG.SKENARIO_K4B1H, ms: MG.MESIN_BAGI, komp: "SimulasiLabBagiK4", kompRe: /(faktor|kelipatan)/i },
+  };
+  for (const [h, d] of Object.entries(dataGH)) {
+    cek(!d.r.test(d.misi.join(" ")), `misi ${h} bebas konsep sub-bab berikutnya (${d.misi.join(" ").match(d.r)?.[0]})`);
+    cek(!d.r.test(JSON.stringify(d.sk)), `skenario ${h} bebas konsep sub-bab berikutnya (${JSON.stringify(d.sk).match(d.r)?.[0]})`);
+    cek(!d.r.test(JSON.stringify(d.ms)), `mesin ${h} bebas konsep sub-bab berikutnya (${JSON.stringify(d.ms).match(d.r)?.[0]})`);
+    cek(!d.r.test(JSON.stringify(ringkas.subBab[h])), `ringkas ${h} bebas konsep sub-bab berikutnya (${JSON.stringify(ringkas.subBab[h]).match(d.r)?.[0]})`);
+    const sumber = readFileSync(new URL(`../src/components/modul/${d.komp}.tsx`, import.meta.url), "utf8")
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/^\s*\/\/.*$/gm, "")
+      .replace(/import[\s\S]*?from "[^"]+";/g, "");
+    cek(!d.kompRe.test(sumber), `komponen ${d.komp} bebas konsep sub-bab berikutnya (${sumber.match(d.kompRe)?.[0]})`);
+  }
+  const ac = acakDari(97);
+  let s = KL.awalKaliK4B1G();
+  let bocorG = "";
+  for (let n = 0; n < 5000; n += 1) {
+    s = KL.langkahKaliK4B1G(s, [{ t: "KOTAK", d: ac(2) ? 1 : -1 }, { t: "ISI", d: ac(2) ? 1 : -1 }, { t: "SOAL", i: ac(6) }, { t: "ATUR", bagian: ["puluhan", "satuan", "pengali"][ac(3)], d: ac(2) ? 1 : -1 }, { t: "BELAH" }, { t: "DIGIT", d: 1 }, { t: "SIMPAN", d: 1 }, { t: "TULIS" }][ac(8)]);
+    const c = KL.caraPanjangG(s.n, s.k);
+    const t = [s.pesan, KL.ucapArrayG(s), KL.ucapBelahG(s), KL.ucapBersusunG(s), c.uraian, ...c.baris, c.gabung, KL.teksBerulang(s.kotak, s.isi)].join(" ");
+    if (!bocorG && BOCOR_G.test(t)) bocorG = t;
+  }
+  cek(!bocorG, `ucapan dan pesan lab G bebas konsep sub-bab berikutnya ${bocorG}`);
+  let h = BG.awalBagiK4B1H();
+  let bocorH = "";
+  for (let n = 0; n < 5000; n += 1) {
+    h = BG.langkahBagiK4B1H(h, [{ t: "BENDA", d: 1 }, { t: "WADAH", d: ac(2) ? 1 : -1 }, { t: "PUTARAN" }, { t: "HABIS" }, { t: "SOAL", i: ac(7) }, { t: "DIGIT", d: 1 }, { t: "SISA", d: 1 }, { t: "TULIS" }, { t: "PERIKSA" }][ac(9)]);
+    const t = [h.pesan, BG.ucapWadahH(h), BG.ucapBersusunH(h), BG.kalimatPeriksaH(h)].join(" ");
+    if (!bocorH && BOCOR_H.test(t)) bocorH = t;
+  }
+  cek(!bocorH, `ucapan dan pesan lab H bebas konsep sub-bab berikutnya ${bocorH}`);
 }
 
 console.log(`Lulus ${lulus}, gagal ${gagal}`);
