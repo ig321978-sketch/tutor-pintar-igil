@@ -1,0 +1,120 @@
+{
+  "chapter_id": "mtk-3-bab5",
+  "phase_code": "FASE_B",
+  "grade": 3,
+  "subject": "Matematika",
+  "title": "Penyajian Data dalam Tabel",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": { "judul": "Mengurutkan dan Membandingkan Data", "ikon": "📶", "suara": "Ini peta mengurutkan dan membandingkan data. Kita belajar mengurutkan data, mencari data terkecil dan terbesar, menghitung jangkauan, dan mencacah banyak nilai dengan turus. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "urutkan", "judul": "Mengurutkan data", "ikon": "📶", "ringkas": "Dari terkecil atau dari terbesar.", "suara": "Mengurutkan data. Data disusun dari yang terkecil ke yang terbesar, atau dari yang terbesar ke yang terkecil. Data yang sudah urut mudah dibaca." },
+          { "id": "ujung", "judul": "Terkecil dan terbesar", "ikon": "⬆️", "ringkas": "Nilai paling kecil dan paling besar.", "suara": "Data terkecil dan terbesar. Data terkecil adalah nilai paling kecil. Data terbesar adalah nilai paling besar. Pada nilai ulangan, data terkecil lima dan data terbesar sepuluh." },
+          { "id": "jangkauan", "judul": "Jangkauan", "ikon": "📏", "ringkas": "Terbesar dikurangi terkecil.", "suara": "Jangkauan. Jangkauan adalah selisih data terbesar dan data terkecil. Pada nilai ulangan, sepuluh dikurangi lima sama dengan lima." },
+          { "id": "banyak-nilai", "judul": "Banyak nilai", "ikon": "5️⃣", "ringkas": "Cacah dengan turus, satu garis satu data.", "suara": "Banyak nilai. Kita mencacah berapa kali sebuah nilai muncul dengan turus. Satu garis untuk satu data. Pada nilai ulangan, nilai sembilan muncul lima kali dan nilai sepuluh muncul dua kali." }
+        ],
+        "kartu": [
+          { "id": "a-dari-kecil", "teks": "3, 4, 6, 8: dari terkecil", "ikon": "📶", "cabang": "urutkan", "petunjuk": "Menyusun data berurutan itu soal mengurutkan data. Coba cabang lain." },
+          { "id": "a-dari-besar", "teks": "8, 6, 4, 3: dari terbesar", "ikon": "🔽", "cabang": "urutkan", "petunjuk": "Menyusun data berurutan itu soal mengurutkan data. Coba cabang lain." },
+          { "id": "a-terkecil", "teks": "Data terkecil: nilai 5", "ikon": "⬇️", "cabang": "ujung", "petunjuk": "Nilai paling kecil itu soal data terkecil dan terbesar. Coba cabang lain." },
+          { "id": "a-terbesar", "teks": "Data terbesar: nilai 10", "ikon": "⬆️", "cabang": "ujung", "petunjuk": "Nilai paling besar itu soal data terkecil dan terbesar. Coba cabang lain." },
+          { "id": "a-rumus", "teks": "Terbesar − terkecil", "ikon": "➖", "cabang": "jangkauan", "petunjuk": "Mengurangkan dua ujung data itu soal jangkauan. Coba cabang lain." },
+          { "id": "a-sepuluh-lima", "teks": "10 − 5 = 5", "ikon": "📏", "cabang": "jangkauan", "petunjuk": "Selisih nilai terbesar dan terkecil itu soal jangkauan. Coba cabang lain." },
+          { "id": "a-turus", "teks": "Satu garis turus, satu data", "ikon": "✏️", "cabang": "banyak-nilai", "petunjuk": "Turus dipakai untuk mencacah. Itu soal banyak nilai. Coba cabang lain." },
+          { "id": "a-sembilan", "teks": "Nilai 9 muncul 5 kali", "ikon": "9️⃣", "cabang": "banyak-nilai", "petunjuk": "Berapa kali nilai muncul itu soal banyak nilai. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengurutkan dan Membandingkan Data",
+        "suara": "Ini tiga panel tentang mengurutkan dan membandingkan data. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-urut-ujung", "tipe": "buka", "judul": "Urutkan dulu", "ide": "Data urut mudah dibaca ujungnya.",
+            "suara": "Ada tiga hal tentang data yang diurutkan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "urut", "label": "Dari terkecil", "ikon": "📶", "isi": "Susun dari yang paling kecil.", "suara": "Data tujuh, tiga, sembilan, lima diurutkan dari terkecil menjadi tiga, lima, tujuh, sembilan.", "visual": { "jenis": "teks", "isi": "7, 3, 9, 5 → 3, 5, 7, 9" } },
+              { "id": "terkecil", "label": "Data terkecil", "ikon": "⬇️", "isi": "Ada di ujung awal.", "suara": "Setelah diurutkan dari terkecil, data terkecil ada di ujung awal, yaitu tiga.", "visual": { "jenis": "teks", "isi": "terkecil = 3" } },
+              { "id": "terbesar", "label": "Data terbesar", "ikon": "⬆️", "isi": "Ada di ujung akhir.", "suara": "Data terbesar ada di ujung akhir, yaitu sembilan.", "visual": { "jenis": "teks", "isi": "terbesar = 9" } }
+            ]
+          },
+          {
+            "id": "a-jangkauan-banding", "tipe": "banding", "judul": "Jangkauan: kurang, bukan tambah", "ide": "Terbesar dikurangi terkecil.",
+            "suara": "Bandingkan dua cara menghitung jangkauan nilai ulangan. Hanya satu yang benar.",
+            "sisi": [
+              { "id": "kurang", "nama": "Dikurangi", "ikon": "✅", "catatan": "10 − 5 = 5. Benar.", "suara": "Jangkauan adalah data terbesar dikurangi data terkecil. Sepuluh dikurangi lima sama dengan lima. Ini benar.", "visual": { "jenis": "teks", "isi": "10 − 5 = 5" } },
+              { "id": "tambah", "nama": "Ditambah", "ikon": "❌", "catatan": "10 + 5 = 15. Keliru.", "suara": "Kalau sepuluh ditambah lima, hasilnya lima belas. Itu bukan jangkauan. Jangkauan adalah selisih, jadi harus dikurangi.", "visual": { "jenis": "teks", "isi": "10 + 5 = 15 ✗" } }
+            ],
+            "kesimpulan": "Jangkauan adalah selisih, jadi terbesar dikurangi terkecil."
+          },
+          {
+            "id": "a-cacah", "tipe": "buka", "judul": "Mencacah dengan turus", "ide": "Satu garis turus untuk satu data.",
+            "suara": "Ada tiga hal tentang mencacah nilai ulangan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "nilai-9", "label": "Nilai 9", "ikon": "9️⃣", "isi": "Muncul 5 kali.", "suara": "Nilai sembilan muncul lima kali. Turusnya empat garis tegak dan satu garis miring.", "visual": { "jenis": "turus", "n": 5 } },
+              { "id": "nilai-10", "label": "Nilai 10", "ikon": "🔟", "isi": "Muncul 2 kali.", "suara": "Nilai sepuluh muncul dua kali. Turusnya dua garis.", "visual": { "jenis": "turus", "n": 2 } },
+              { "id": "enam-macam", "label": "Enam macam nilai", "ikon": "6️⃣", "isi": "Nilai 5 sampai 10.", "suara": "Ada enam macam nilai: lima, enam, tujuh, delapan, sembilan, dan sepuluh. Semuanya ada dua puluh data.", "visual": { "jenis": "teks", "isi": "5, 6, 7, 8, 9, 10" } }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": { "judul": "Menyajikan Data dalam Tabel", "ikon": "📋", "suara": "Ini peta menyajikan data dalam tabel. Kita belajar turus kelompok lima, tabel tiga kolom, mencacah benda dan huruf, dan membaca tabel. Ketuk empat cabangnya satu per satu." },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          { "id": "kelompok-lima", "judul": "Turus kelompok lima", "ikon": "✋", "ringkas": "Empat tegak dicoret satu miring.", "suara": "Turus kelompok lima. Empat garis tegak dicoret satu garis miring menjadi lima. Dua kelompok lima sama dengan sepuluh. Dua kelompok lima dan tiga garis sama dengan tiga belas." },
+          { "id": "tiga-kolom", "judul": "Tabel tiga kolom", "ikon": "📋", "ringkas": "Kategori, turus, dan banyak.", "suara": "Tabel tiga kolom. Kolom pertama kategori atau nilai. Kolom kedua turus. Kolom ketiga banyak, ditulis dengan angka." },
+          { "id": "benda-huruf", "judul": "Dari benda ke tabel", "ikon": "🔴", "ringkas": "Cacah manik atau huruf satu per satu.", "suara": "Dari benda ke tabel. Manik atau huruf dicacah satu per satu. Tiap benda menjadi satu turus pada barisnya. Lalu banyaknya ditulis angka. Pada kata STATISTIKA, huruf T muncul tiga kali." },
+          { "id": "baca-tabel", "judul": "Membaca tabel", "ikon": "👀", "ringkas": "Terbanyak, tersedikit, lebih, dan kurang.", "suara": "Membaca tabel. Lihat kolom banyak untuk mencari yang terbanyak dan tersedikit. Untuk lebih dari tujuh, jumlahkan baris nilai delapan, sembilan, dan sepuluh. Nilai tujuh sendiri tidak ikut." }
+        ],
+        "kartu": [
+          { "id": "b-lima", "teks": "4 tegak + 1 miring = 5", "ikon": "✋", "cabang": "kelompok-lima", "petunjuk": "Cara menulis lima turus itu soal turus kelompok lima. Coba cabang lain." },
+          { "id": "b-tiga-belas", "teks": "Dua kelompok lima dan 3 = 13", "ikon": "🔢", "cabang": "kelompok-lima", "petunjuk": "Menghitung kelompok lima dan sisanya itu soal turus kelompok lima. Coba cabang lain." },
+          { "id": "b-kolom-turus", "teks": "Kolom kedua: turus", "ikon": "✏️", "cabang": "tiga-kolom", "petunjuk": "Susunan kolom itu soal tabel tiga kolom. Coba cabang lain." },
+          { "id": "b-kolom-banyak", "teks": "Kolom ketiga: banyak", "ikon": "🔢", "cabang": "tiga-kolom", "petunjuk": "Susunan kolom itu soal tabel tiga kolom. Coba cabang lain." },
+          { "id": "b-manik", "teks": "Tiap manik satu turus", "ikon": "🔴", "cabang": "benda-huruf", "petunjuk": "Mencacah benda itu soal dari benda ke tabel. Coba cabang lain." },
+          { "id": "b-huruf-t", "teks": "STATISTIKA: T ada 3", "ikon": "🔤", "cabang": "benda-huruf", "petunjuk": "Mencacah huruf itu soal dari benda ke tabel. Coba cabang lain." },
+          { "id": "b-lebih", "teks": "Lebih dari 7: nilai 8, 9, 10", "ikon": "➕", "cabang": "baca-tabel", "petunjuk": "Menjumlahkan baris di atas acuan itu soal membaca tabel. Coba cabang lain." },
+          { "id": "b-terbanyak", "teks": "Cari angka terbesar di kolom banyak", "ikon": "👀", "cabang": "baca-tabel", "petunjuk": "Mencari yang terbanyak itu soal membaca tabel. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Turus dan Tabel",
+        "suara": "Ini tiga panel tentang turus dan tabel. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "b-turus", "tipe": "buka", "judul": "Turus kelompok lima", "ide": "Garis kelima dicoret miring.",
+            "suara": "Ada tiga hal tentang turus kelompok lima. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "empat", "label": "Empat tegak", "ikon": "4️⃣", "isi": "Empat garis untuk empat data.", "suara": "Empat garis tegak menyatakan empat data.", "visual": { "jenis": "turus", "n": 4 } },
+              { "id": "lima", "label": "Kelompok lima", "ikon": "✋", "isi": "Garis kelima miring.", "suara": "Garis kelima dicoret miring di atas empat garis tegak. Itulah turus kelompok lima.", "visual": { "jenis": "turus", "n": 5 } },
+              { "id": "tiga-belas", "label": "Tiga belas", "ikon": "🔢", "isi": "Dua kelompok lima dan 3.", "suara": "Dua kelompok lima sama dengan sepuluh. Ditambah tiga garis menjadi tiga belas.", "visual": { "jenis": "teks", "isi": "5 + 5 + 3 = 13" } }
+            ]
+          },
+          {
+            "id": "b-lebih-kurang", "tipe": "banding", "judul": "Lebih dari 7 dan kurang dari 7", "ide": "Nilai acuan tidak ikut dihitung.",
+            "suara": "Bandingkan banyak siswa bernilai lebih dari tujuh dan kurang dari tujuh pada data ulangan.",
+            "sisi": [
+              { "id": "lebih", "nama": "Lebih dari 7", "ikon": "⬆️", "catatan": "3 + 5 + 2 = 10 siswa.", "suara": "Lebih dari tujuh adalah nilai delapan, sembilan, dan sepuluh. Tiga ditambah lima ditambah dua sama dengan sepuluh siswa.", "visual": { "jenis": "tabel-menurun", "kepala": ["Nilai", "Banyak"], "baris": [["8", 3], ["9", 5], ["10", 2]] } },
+              { "id": "kurang", "nama": "Kurang dari 7", "ikon": "⬇️", "catatan": "1 + 4 = 5 siswa.", "suara": "Kurang dari tujuh adalah nilai lima dan enam. Satu ditambah empat sama dengan lima siswa.", "visual": { "jenis": "tabel-menurun", "kepala": ["Nilai", "Banyak"], "baris": [["5", 1], ["6", 4]] } }
+            ],
+            "kesimpulan": "Nilai 7 sendiri tidak ikut, baik lebih dari maupun kurang dari."
+          },
+          {
+            "id": "b-tabel", "tipe": "buka", "judul": "Tabel tiga kolom", "ide": "Kategori, turus, lalu angka banyaknya.",
+            "suara": "Ada tiga hal tentang tabel. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "kolom", "label": "Tiga kolom", "ikon": "📋", "isi": "Kategori, turus, dan banyak.", "suara": "Tabel punya tiga kolom: kategori atau nilai, turus, dan banyak.", "visual": { "jenis": "teks", "isi": "Kategori | Turus | Banyak" } },
+              { "id": "manik", "label": "Tabel manik", "ikon": "🔴", "isi": "Satu warna satu baris.", "suara": "Manik merah ada enam, biru empat, dan hitam tiga. Tiap warna satu baris. Semuanya tiga belas manik.", "visual": { "jenis": "tabel-menurun", "kepala": ["Warna", "Banyak"], "baris": [["Merah", 6], ["Biru", 4], ["Hitam", 3]] } },
+              { "id": "huruf", "label": "Huruf T", "ikon": "🔤", "isi": "STATISTIKA: T muncul 3 kali.", "suara": "Pada kata STATISTIKA, huruf T muncul tiga kali. Itu yang terbanyak. Huruf K hanya satu kali.", "visual": { "jenis": "teks", "isi": "S-T-A-T-I-S-T-I-K-A: T = 3" } }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
