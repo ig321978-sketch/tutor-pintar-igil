@@ -1,0 +1,123 @@
+{
+  "chapter_id": "mtk-5-bab5",
+  "phase_code": "FASE_C",
+  "grade": 5,
+  "subject": "Matematika",
+  "title": "Luas Daerah Bangun Datar",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Luas",
+          "ikon": "🟨",
+          "suara": "Ini peta luas daerah. Kita belajar daerah di dalam bangun, petak satuan, baris dan kolom, serta memotong lalu menempel tanpa mengubah luas. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "dalam",
+            "judul": "Daerah dalam",
+            "ikon": "🟨",
+            "ringkas": "Ukuran daerah di dalam bangun.",
+            "suara": "Daerah dalam. Luas adalah ukuran daerah di dalam batas bangun. Makin besar daerahnya, makin banyak ubin yang menutupnya."
+          },
+          {
+            "id": "petak",
+            "judul": "Petak satuan",
+            "ikon": "🔲",
+            "ringkas": "Tutup rapat, hitung petaknya.",
+            "suara": "Petak satuan. Tutup daerah dengan petak yang sama besar, rapat tanpa celah. Banyak petak itulah luasnya. Satuannya sentimeter persegi atau meter persegi."
+          },
+          {
+            "id": "baris",
+            "judul": "Baris dan kolom",
+            "ikon": "🔢",
+            "ringkas": "Petak tiap baris kali banyak baris.",
+            "suara": "Baris dan kolom. Petak yang tersusun rapi dalam baris dan kolom dihitung dengan petak tiap baris dikali banyak baris."
+          },
+          {
+            "id": "pindah",
+            "judul": "Potong dan tempel",
+            "ikon": "✂️",
+            "ringkas": "Dipindah, luas tetap.",
+            "suara": "Potong dan tempel. Cara Yohana memindahkan petak yang menonjol ke lubang. Luasnya tetap sama, karena tidak ada petak yang hilang atau bertambah."
+          }
+        ],
+        "kartu": [
+          { "id": "a-arti", "teks": "Ukuran daerah di dalam bangun", "ikon": "🟨", "cabang": "dalam", "petunjuk": "Arti luas itu soal daerah dalam. Coba cabang lain." },
+          { "id": "a-ubin", "teks": "Lantai ditutup ubin sampai rapat", "ikon": "🧱", "cabang": "dalam", "petunjuk": "Menutup daerah itu soal daerah dalam. Coba cabang lain." },
+          { "id": "a-satuan", "teks": "1 cm × 1 cm luasnya 1 cm²", "ikon": "🔲", "cabang": "petak", "petunjuk": "Petak satuan dan satuannya itu soal petak satuan. Coba cabang lain." },
+          { "id": "a-rapat", "teks": "Tutup rapat tanpa celah", "ikon": "✅", "cabang": "petak", "petunjuk": "Menutup rapat itu soal petak satuan. Coba cabang lain." },
+          { "id": "a-lima", "teks": "5 petak tiap baris, 2 baris = 10", "ikon": "🔢", "cabang": "baris", "petunjuk": "Petak tiap baris itu soal baris dan kolom. Coba cabang lain." },
+          { "id": "a-tiga", "teks": "3 × 3 = 9 petak", "ikon": "3️⃣", "cabang": "baris", "petunjuk": "Baris kali kolom itu soal baris dan kolom. Coba cabang lain." },
+          { "id": "a-yohana", "teks": "Cara Yohana: potong lalu tempel", "ikon": "✂️", "cabang": "pindah", "petunjuk": "Memotong dan menempel itu soal potong dan tempel. Coba cabang lain." },
+          { "id": "a-tetap", "teks": "Tangga 6 petak jadi 2 × 3, luas 6", "ikon": "⚖️", "cabang": "pindah", "petunjuk": "Luas yang tetap itu soal potong dan tempel. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Apakah Luas Itu?",
+        "suara": "Ini tiga panel tentang luas daerah. Ketuk kotaknya untuk membuka, lalu lihat menutup dengan petak, luas sebelum dan sesudah dipindah, serta satuan luas.",
+        "panel": [
+          {
+            "id": "a-petak-info",
+            "tipe": "buka",
+            "judul": "Menutup dengan petak",
+            "ide": "Tutup rapat, lalu hitung petaknya.",
+            "suara": "Ada tiga hal tentang menutup daerah. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "satuan",
+                "label": "Satuan",
+                "ikon": "🔲",
+                "isi": "Petak yang sama besar.",
+                "suara": "Pakai petak yang sama besar sebagai satuan. Satu petak satu sentimeter kali satu sentimeter luasnya satu sentimeter persegi.",
+                "visual": { "jenis": "teks", "isi": "1 cm²" }
+              },
+              {
+                "id": "rapat",
+                "label": "Rapat",
+                "ikon": "🧱",
+                "isi": "Tanpa celah.",
+                "suara": "Tutup daerah sampai rapat. Daerah lima petak ke samping dan dua petak ke bawah punya baris pertama lima petak dan baris kedua lima petak.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Baris", "Petak"], "baris": [["pertama", 5], ["kedua", 5]] }
+              },
+              {
+                "id": "hitung",
+                "label": "Hitung",
+                "ikon": "🔢",
+                "isi": "Jumlah semua petak.",
+                "suara": "Jumlahkan petak semua baris. Lima ditambah lima sama dengan sepuluh, jadi luasnya sepuluh sentimeter persegi.",
+                "visual": { "jenis": "teks", "isi": "5 + 5 = 10" }
+              }
+            ]
+          },
+          {
+            "id": "a-pindah-info",
+            "tipe": "banding",
+            "judul": "Sebelum dan sesudah dipindah",
+            "ide": "Dipindah, luas tetap.",
+            "suara": "Lihat bangun tangga sebelum dan sesudah petaknya dipindah.",
+            "sisi": [
+              { "id": "sebelum", "nama": "Sebelum", "ikon": "🪜", "catatan": "Tangga, ada petak menonjol.", "suara": "Sebelum dipindah, bangun tangga punya enam petak.", "visual": { "jenis": "teks", "isi": "6 petak" } },
+              { "id": "sesudah", "nama": "Sesudah", "ikon": "▭", "catatan": "Persegi panjang 2 × 3.", "suara": "Sesudah dipindah, persegi panjang dua baris tiga kolom tetap punya enam petak.", "visual": { "jenis": "teks", "isi": "6 petak" } }
+            ],
+            "kesimpulan": "Luas tidak berubah."
+          },
+          {
+            "id": "a-satuan-info",
+            "tipe": "buka",
+            "judul": "Satuan luas",
+            "ide": "Satuan luas memakai persegi.",
+            "suara": "Ada tiga contoh satuan dan susunan petak. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "cm", "label": "cm²", "ikon": "📏", "isi": "Petak 1 cm kali 1 cm.", "suara": "Sentimeter persegi dipakai untuk daerah yang kecil, seperti kertas.", "visual": { "jenis": "teks", "isi": "1 cm × 1 cm = 1 cm²" } },
+              { "id": "m", "label": "m²", "ikon": "🏠", "isi": "Ubin 1 m kali 1 m.", "suara": "Meter persegi dipakai untuk daerah yang besar, seperti lantai Alun-Alun.", "visual": { "jenis": "teks", "isi": "1 m × 1 m = 1 m²" } },
+              { "id": "array", "label": "Baris", "ikon": "🔢", "isi": "Baris kali petak tiap baris.", "suara": "Tiga baris dengan empat petak tiap baris menutup dua belas petak.", "visual": { "jenis": "teks", "isi": "3 × 4 = 12" } }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
