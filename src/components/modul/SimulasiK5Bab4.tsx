@@ -1,0 +1,97 @@
+"use client";
+
+import React from "react";
+import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
+import LabBertahap, { type TabLab } from "./LabBertahap";
+import SimulasiLabJalurK5B4 from "./SimulasiLabJalurK5B4";
+import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
+import SimulasiSkenario from "./SimulasiSkenario";
+import { SKENARIO_K5B4A } from "./skenario-k5b4";
+import { MESIN_JALUR } from "./mesin-data-k5b4";
+import { ejaK5B4 } from "./eja-k5b4";
+import type { DefSkenario } from "./skenario-umum";
+import type { DefMesin } from "./mesin-bertahap-k3b1";
+import { daftarMisiK5Bab4, ID_SKENARIO_K5B4, type KeadaanK5Bab4 } from "./misi-k5bab4";
+import { laporMisi, tampilMisi } from "./misi-simulasi";
+import { MISI_K5B4, NAMA_SIM_K5B4, hurufK5B4, misiAwalK5Bab4, type HurufK5B4 } from "./misi-teks-k5b4";
+
+/* ======================================================================== */
+/* Simulasi Kelas 5 Bab 4 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
+/* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k5bab4.ts. */
+/*   A Jalur : Lab Jalur + Mesin Jalur + Pagar dan Bingkai                  */
+/* ======================================================================== */
+
+const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
+
+const SKENARIO: Record<HurufK5B4, DefSkenario> = { A: SKENARIO_K5B4A };
+const MESIN: Record<HurufK5B4, DefMesin> = { A: MESIN_JALUR };
+
+const COBA_MESIN: Record<HurufK5B4, string[]> = {
+  A: ["Ketuk stasiun Beda sebelum Jalur. Apa kata mesin?", "Mengapa pagar dan bingkai memakai jalur tepi, bukan isi petak?", "Apa bedanya jalur tepi dan isi petak?"],
+};
+
+const LAB: Record<HurufK5B4, { id: string; nama: string }> = {
+  A: { id: "jalur", nama: "Lab Jalur" },
+};
+
+function LabSub({ speakGuru, lapor }: { huruf: HurufK5B4; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab4) => void }) {
+  return <SimulasiLabJalurK5B4 speakGuru={speakGuru} onKeadaan={lapor} />;
+}
+
+const langkahK5Bab4 = (sub: string): LangkahSim[] => {
+  const huruf = hurufK5B4(sub);
+  const daftar = daftarMisiK5Bab4(huruf);
+  return [
+    {
+      metode: "PhET",
+      sub: NAMA_SIM_K5B4[huruf],
+      petunjuk: MAINKAN_DULU,
+      misi: MISI_K5B4[huruf],
+      misiDaftar: tampilMisi(daftar),
+      mode: "sentuh",
+      render: (a) => {
+        const lapor = (k: KeadaanK5Bab4) => laporMisi(daftar, k, a.capai);
+        const selesai = (id: string) => lapor({ alat: "selesai", id });
+        const lab: TabLab = { ...LAB[huruf], render: () => <LabSub huruf={huruf} speakGuru={a.speakGuru} lapor={lapor} /> };
+        const def = MESIN[huruf];
+        const mesin: TabLab = {
+          id: "mesin",
+          nama: def.judul,
+          render: () => <SimulasiMesinBertahapK3 def={def} coba={COBA_MESIN[huruf]} speakGuru={a.speakGuru} onTuntas={selesai} eja={ejaK5B4} />,
+        };
+        const skenario: TabLab = {
+          id: "skenario",
+          nama: SKENARIO[huruf].judul,
+          render: () => <SimulasiSkenario def={SKENARIO[huruf]} speakGuru={a.speakGuru} onTuntas={() => selesai(ID_SKENARIO_K5B4[huruf])} />,
+        };
+        return <LabBertahap tab={[lab, mesin, skenario]} label="Alat laboratorium keliling" />;
+      },
+    },
+  ];
+};
+
+export { misiAwalK5Bab4 };
+
+export default function SimulasiK5Bab4Materi({
+  sub,
+  speakGuru,
+  onSelesai,
+  teksAkhir,
+}: {
+  sub: string;
+  speakGuru: (t: string) => void;
+  onSelesai: () => void;
+  teksAkhir: string;
+}) {
+  const huruf = hurufK5B4(sub);
+  return (
+    <SimulasiAlur
+      judulBab={`Kelas 5 Bab 4 · Sub-Bab ${huruf}`}
+      langkah={langkahK5Bab4(sub)}
+      speakGuru={speakGuru}
+      onSelesai={onSelesai}
+      teksAkhir={teksAkhir}
+      dalamPopup
+    />
+  );
+}

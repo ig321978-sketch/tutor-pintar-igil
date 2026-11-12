@@ -1,0 +1,123 @@
+{
+  "chapter_id": "mtk-5-bab4",
+  "phase_code": "FASE_C",
+  "grade": 5,
+  "subject": "Matematika",
+  "title": "Keliling Bangun Datar",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Keliling",
+          "ikon": "📏",
+          "suara": "Ini peta keliling. Kita belajar jalur di tepi bangun, pagar dan bingkai, perbedaan keliling dan isi, serta cara menjumlah semua sisi. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "jalur",
+            "judul": "Jalur tepi",
+            "ikon": "🚶",
+            "ringkas": "Berjalan di tepi sampai kembali.",
+            "suara": "Jalur tepi. Bayangkan berjalan di tepi bangun dari satu sudut sampai kembali ke sudut itu. Panjang jalannya adalah keliling."
+          },
+          {
+            "id": "pagar",
+            "judul": "Pagar dan bingkai",
+            "ikon": "🧱",
+            "ringkas": "Dipasang di tepi, memakai keliling.",
+            "suara": "Pagar dan bingkai. Pagar kebun dan bingkai foto dipasang di tepi, jadi panjangnya sama dengan keliling."
+          },
+          {
+            "id": "isi",
+            "judul": "Bukan isi",
+            "ikon": "🟨",
+            "ringkas": "Isi dihitung dengan petak di dalam.",
+            "suara": "Keliling bukan isi. Isi dihitung dengan petak di dalam bangun. Dua bangun bisa punya jalur tepi sama tetapi isi berbeda."
+          },
+          {
+            "id": "jumlah",
+            "judul": "Jumlah sisi",
+            "ikon": "🔢",
+            "ringkas": "Jumlahkan panjang semua sisi.",
+            "suara": "Jumlah sisi. Untuk mencari keliling, jumlahkan panjang semua sisi di tepi sampai kembali ke awal."
+          }
+        ],
+        "kartu": [
+          { "id": "a-awal", "teks": "Mulai dan berhenti di sudut awal", "ikon": "🚶", "cabang": "jalur", "petunjuk": "Berjalan sampai kembali itu soal jalur tepi. Coba cabang lain." },
+          { "id": "a-keliling", "teks": "Jalur tepi disebut keliling", "ikon": "📏", "cabang": "jalur", "petunjuk": "Nama jalur di tepi itu soal jalur tepi. Coba cabang lain." },
+          { "id": "a-pagar", "teks": "Pagar kebun mengelilingi tepi", "ikon": "🧱", "cabang": "pagar", "petunjuk": "Pagar itu soal pagar dan bingkai. Coba cabang lain." },
+          { "id": "a-bingkai", "teks": "Bingkai foto: kayu di tepi", "ikon": "🖼️", "cabang": "pagar", "petunjuk": "Bingkai itu soal pagar dan bingkai. Coba cabang lain." },
+          { "id": "a-isi", "teks": "Isi dihitung dengan petak", "ikon": "🟨", "cabang": "isi", "petunjuk": "Petak di dalam itu soal isi. Coba cabang lain." },
+          { "id": "a-sama", "teks": "Jalur sama, isi bisa beda", "ikon": "⚖️", "cabang": "isi", "petunjuk": "Jalur dan isi yang dibedakan itu soal isi. Coba cabang lain." },
+          { "id": "a-lima", "teks": "5 + 3 + 5 + 3 = 16", "ikon": "🔢", "cabang": "jumlah", "petunjuk": "Menjumlah sisi itu soal jumlah sisi. Coba cabang lain." },
+          { "id": "a-empat", "teks": "4 + 4 + 4 + 4 = 16", "ikon": "4️⃣", "cabang": "jumlah", "petunjuk": "Menjumlah sisi itu soal jumlah sisi. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Apakah Keliling Itu?",
+        "suara": "Ini tiga panel tentang keliling. Ketuk kotaknya untuk membuka, lalu lihat jalur di tepi, beda keliling dan isi, serta pagar dan bingkai.",
+        "panel": [
+          {
+            "id": "a-jalur-info",
+            "tipe": "buka",
+            "judul": "Berjalan di tepi bangun",
+            "ide": "Mulai dan berhenti di sudut awal.",
+            "suara": "Ada tiga hal tentang jalur tepi. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "awal",
+                "label": "Awal",
+                "ikon": "📍",
+                "isi": "Mulai dari satu sudut.",
+                "suara": "Pilih satu sudut sebagai awal. Dari situ kamu berjalan di tepi bangun.",
+                "visual": { "jenis": "teks", "isi": "sudut awal" }
+              },
+              {
+                "id": "sisi",
+                "label": "Sisi",
+                "ikon": "🚶",
+                "isi": "Susuri sisi satu per satu.",
+                "suara": "Susuri keempat sisi satu per satu. Persegi panjang ini sisinya lima, tiga, lima, dan tiga sentimeter.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Sisi", "Panjang"], "baris": [["pertama", 5], ["kedua", 3], ["ketiga", 5], ["keempat", 3]] }
+              },
+              {
+                "id": "kembali",
+                "label": "Kembali",
+                "ikon": "🏁",
+                "isi": "Berhenti saat kembali ke awal.",
+                "suara": "Setelah kembali ke sudut awal, jumlahkan semua jalan yang kamu tempuh. Lima ditambah tiga ditambah lima ditambah tiga sama dengan enam belas sentimeter.",
+                "visual": { "jenis": "teks", "isi": "5 + 3 + 5 + 3 = 16" }
+              }
+            ]
+          },
+          {
+            "id": "a-banding-info",
+            "tipe": "banding",
+            "judul": "Jalur tepi dan isi",
+            "ide": "Keliling bukan isi.",
+            "suara": "Lihat dua hal yang berbeda pada bangun yang sama.",
+            "sisi": [
+              { "id": "jalur", "nama": "Jalur tepi", "ikon": "📏", "catatan": "Panjang semua sisi di tepi.", "suara": "Jalur tepi bangun lima petak panjang dan tiga petak lebar adalah enam belas sentimeter.", "visual": { "jenis": "teks", "isi": "16 cm" } },
+              { "id": "isi", "nama": "Isi petak", "ikon": "🟨", "catatan": "Banyak petak di dalam.", "suara": "Isi bangun yang sama adalah lima belas petak.", "visual": { "jenis": "teks", "isi": "15 petak" } }
+            ],
+            "kesimpulan": "Pagar memakai jalur tepi, bukan isi."
+          },
+          {
+            "id": "a-pagar-info",
+            "tipe": "buka",
+            "judul": "Pagar, bingkai, benteng",
+            "ide": "Dipasang di tepi, jadi keliling.",
+            "suara": "Ada tiga contoh keliling dalam kehidupan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "pagar", "label": "Pagar", "ikon": "🧱", "isi": "Pagar kebun enam dan empat meter.", "suara": "Pagar kebun enam meter dan empat meter. Jalurnya enam, empat, enam, empat, jadi dua puluh meter.", "visual": { "jenis": "teks", "isi": "6 + 4 + 6 + 4 = 20" } },
+              { "id": "bingkai", "label": "Bingkai", "ikon": "🖼️", "isi": "Bingkai foto persegi tiga sentimeter.", "suara": "Bingkai foto persegi bersisi tiga sentimeter. Kayunya tiga, tiga, tiga, tiga, jadi dua belas sentimeter.", "visual": { "jenis": "teks", "isi": "3 + 3 + 3 + 3 = 12" } },
+              { "id": "benteng", "label": "Benteng", "ikon": "🏰", "isi": "Dinding Benteng Baluwarti di tepi.", "suara": "Saat Benteng Baluwarti dipugar, petugas menghitung panjang dinding di tepi, bukan isi halamannya.", "visual": { "jenis": "teks", "isi": "Baluwarti" } }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
