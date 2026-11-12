@@ -104,6 +104,105 @@
           }
         ]
       }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Banding dan Urut",
+          "ikon": "⚖️",
+          "suara": "Ini peta membandingkan dan mengurutkan. Kita belajar membandingkan dari kiri, tanda, garis bilangan dengan acuan, dan urut naik turun. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "kiri",
+            "judul": "Dari kiri",
+            "ikon": "⬅️",
+            "ringkas": "Mulai dari tempat terbesar di kiri.",
+            "suara": "Bandingkan dari kiri. Mulai dari puluh ribuan. Bila sama, geser satu tempat ke kanan sampai ketemu digit yang berbeda."
+          },
+          {
+            "id": "tanda",
+            "judul": "Tanda",
+            "ikon": "⚖️",
+            "ringkas": "Lebih kecil, lebih besar, atau sama.",
+            "suara": "Tanda. Kurang dari, lebih dari, atau sama dengan. Pilih tanda setelah penentunya ketemu."
+          },
+          {
+            "id": "garis",
+            "judul": "Garis dan acuan",
+            "ikon": "📏",
+            "ringkas": "Yang lebih kanan lebih besar.",
+            "suara": "Garis bilangan. Yang lebih kanan lebih besar. Bilangan acuan seperti sepuluh ribu dan lima puluh ribu membantu menempatkan bilangan."
+          },
+          {
+            "id": "urut",
+            "judul": "Urut",
+            "ikon": "📶",
+            "ringkas": "Naik dari terkecil, turun dari terbesar.",
+            "suara": "Urut naik dimulai dari yang terkecil. Urut turun dimulai dari yang terbesar."
+          }
+        ],
+        "kartu": [
+          { "id": "b-puluh-ribuan", "teks": "Mulai dari puluh ribuan", "ikon": "⬅️", "cabang": "kiri", "petunjuk": "Tempat mulai membandingkan itu soal dari kiri. Coba cabang lain." },
+          { "id": "b-geser", "teks": "Sama? Geser ke kanan", "ikon": "➡️", "cabang": "kiri", "petunjuk": "Bergeser bila digit sama itu soal dari kiri. Coba cabang lain." },
+          { "id": "b-kurang-dari", "teks": "45.230 < 46.001", "ikon": "⚖️", "cabang": "tanda", "petunjuk": "Kalimat dengan lambang itu soal tanda. Coba cabang lain." },
+          { "id": "b-sama-dengan", "teks": "13.234 = 13.234", "ikon": "🟰", "cabang": "tanda", "petunjuk": "Dua bilangan kembar memakai tanda. Coba cabang lain." },
+          { "id": "b-kanan", "teks": "Lebih kanan, lebih besar", "ikon": "📏", "cabang": "garis", "petunjuk": "Letak kiri kanan itu soal garis bilangan. Coba cabang lain." },
+          { "id": "b-acuan", "teks": "Acuan 40.000", "ikon": "📍", "cabang": "garis", "petunjuk": "Bilangan patokan itu soal garis dan acuan. Coba cabang lain." },
+          { "id": "b-naik", "teks": "Naik: terkecil dulu", "ikon": "📶", "cabang": "urut", "petunjuk": "Arah naik itu soal mengurutkan. Coba cabang lain." },
+          { "id": "b-turun", "teks": "Turun: terbesar dulu", "ikon": "📉", "cabang": "urut", "petunjuk": "Arah turun itu soal mengurutkan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Banding dan Urut",
+        "suara": "Ini tiga panel tentang membandingkan dan mengurutkan. Ketuk kotaknya untuk membuka, lalu bandingkan urut naik dan urut turun.",
+        "panel": [
+          {
+            "id": "b-kiri-info",
+            "tipe": "buka",
+            "judul": "Banding dari kiri",
+            "ide": "Penentu adalah digit pertama yang berbeda.",
+            "suara": "Ada tiga langkah membandingkan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "sejajar", "label": "Sejajar", "ikon": "📏", "isi": "Tulis kedua bilangan rata kanan.", "suara": "Empat puluh lima ribu dua ratus tiga puluh dan empat puluh enam ribu satu ditulis sejajar.", "visual": { "jenis": "teks", "isi": "45.230 | 46.001" } },
+              { "id": "sama", "label": "Sama", "ikon": "➡️", "isi": "Puluh ribuan sama, geser ke kanan.", "suara": "Di puluh ribuan sama-sama empat. Geser ke ribuan.", "visual": { "jenis": "teks", "isi": "4 dan 4" } },
+              { "id": "penentu", "label": "Penentu", "ikon": "🔍", "isi": "Di ribuan berbeda: lima dan enam.", "suara": "Di ribuan lima lebih kecil dari enam, jadi empat puluh lima ribu dua ratus tiga puluh lebih kecil.", "visual": { "jenis": "teks", "isi": "45.230 < 46.001" } }
+            ]
+          },
+          {
+            "id": "b-urut-info",
+            "tipe": "banding",
+            "judul": "Urut naik dan urut turun",
+            "ide": "Baca arah urutan sebelum menyusun.",
+            "suara": "Bandingkan urut naik dan urut turun untuk skor dakon.",
+            "sisi": [
+              { "id": "naik", "nama": "Naik", "ikon": "📶", "catatan": "Dari yang terkecil.", "suara": "Urut naik dimulai dari skor terkecil, lima puluh enam ribu lima ratus enam puluh.", "visual": { "jenis": "teks", "isi": "56.560 → 75.360" } },
+              { "id": "turun", "nama": "Turun", "ikon": "📉", "catatan": "Dari yang terbesar.", "suara": "Urut turun dimulai dari skor terbesar, tujuh puluh lima ribu tiga ratus enam puluh.", "visual": { "jenis": "teks", "isi": "75.360 → 56.560" } }
+            ],
+            "kesimpulan": "Naik dari terkecil, turun dari terbesar. Periksa tiap pasangan."
+          },
+          {
+            "id": "b-garis-info",
+            "tipe": "buka",
+            "judul": "Garis dan acuan",
+            "ide": "Di garis, yang lebih kanan lebih besar.",
+            "suara": "Ada tiga hal tentang garis bilangan dan acuan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "acuan", "label": "Acuan", "ikon": "📍", "isi": "Empat puluh ribu sebagai patokan.", "suara": "Tiga puluh delapan ribu lima ratus dan tiga puluh sembilan ribu sembilan ratus sembilan puluh sembilan di kiri empat puluh ribu. Empat puluh ribu dua ratus di kanannya.", "visual": { "jenis": "teks", "isi": "38.500 < 39.999 < 40.200" } },
+              { "id": "kanan", "label": "Kanan", "ikon": "➡️", "isi": "Lebih kanan berarti lebih besar.", "suara": "Di garis bilangan, bilangan yang lebih kanan selalu lebih besar.", "visual": { "jenis": "teks", "isi": "0 … 50.000 … 100.000" } },
+              {
+                "id": "dakon",
+                "label": "Skor dakon",
+                "ikon": "🏆",
+                "isi": "Skor dakon diurutkan turun.",
+                "suara": "Skor dakon dari yang terbesar: tujuh puluh lima ribu tiga ratus enam puluh, enam puluh lima ribu tujuh ratus lima puluh, lima puluh tujuh ribu, dan lima puluh enam ribu lima ratus enam puluh.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Urutan", "Skor"], "baris": [["pertama", 75360], ["kedua", 65750], ["ketiga", 57000], ["keempat", 56560]] }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

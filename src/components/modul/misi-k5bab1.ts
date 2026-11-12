@@ -4,22 +4,24 @@
  *
  * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
  *  A Nilai tempat : Lab Nilai Tempat (Tulis, Baca, Nilai) + Mesin Nilai Tempat + Papan Data Desa
+ *  B Banding-urut : Lab Banding (Banding, Garis, Urut)      + Mesin Banding      + Lomba Dakon
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanTempatK5B1A } from "./lab-tempat-k5b1a";
+import type { KeadaanBandingK5B1B } from "./lab-banding-k5b1b";
 
-export type KeadaanK5Bab1 = KeadaanTempatK5B1A | KeadaanSelesai;
-export type HurufMisiK5B1 = "A";
+export type KeadaanK5Bab1 = KeadaanTempatK5B1A | KeadaanBandingK5B1B | KeadaanSelesai;
+export type HurufMisiK5B1 = "A" | "B";
 
 const selesai = (k: KeadaanK5Bab1, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
 const pernah = (k: KeadaanK5Bab1, alat: string, ...id: string[]) => k.alat === alat && "pernah" in k && id.every((p) => k.pernah.includes(p));
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K5B1 = { A: "data-desa" } as const;
-export const ID_MESIN_K5B1 = { A: "mesin-tempat" } as const;
+export const ID_SKENARIO_K5B1 = { A: "data-desa", B: "lomba-dakon" } as const;
+export const ID_MESIN_K5B1 = { A: "mesin-tempat", B: "mesin-banding" } as const;
 
 export const MISI_A: DefMisi<KeadaanK5Bab1>[] = [
   { id: "a-yohana", teks: "Di Tulis, tulis empat belas ribu lima ratus di tabel nilai tempat, lalu periksa.", wajib: true, cek: (k) => pernah(k, "nilai-tempat", "tulis:14500") },
@@ -34,5 +36,18 @@ export const MISI_A: DefMisi<KeadaanK5Bab1>[] = [
   { id: "a-nolsatuan", teks: "Di Nilai, ketuk nol di tempat satuan pada bilangan kedua. Berapa nilainya?", wajib: false, cek: (k) => pernah(k, "nilai-tempat", "nilai:40350:4") },
 ];
 
-const DAFTAR: Record<HurufMisiK5B1, DefMisi<KeadaanK5Bab1>[]> = { A: MISI_A };
+export const MISI_B: DefMisi<KeadaanK5Bab1>[] = [
+  { id: "b-tempat", teks: "Di Banding, periksa pasangan pertama dari kiri sampai ketemu penentunya, lalu pilih tandanya.", wajib: true, cek: (k) => pernah(k, "banding", "banding:78897-87897") },
+  { id: "b-ribuan", teks: "Di Banding, bandingkan skor dakon pada pasangan kedua. Penentunya bukan di puluh ribuan.", wajib: true, cek: (k) => pernah(k, "banding", "banding:56560-57000") },
+  { id: "b-garis", teks: "Di Garis, letakkan tiga bilangan di sekitar acuan empat puluh ribu pada ruasnya, lalu periksa.", wajib: true, cek: (k) => pernah(k, "banding", "garis:sekitar40") },
+  { id: "b-dakon", teks: "Di Urut, urutkan skor dakon dari yang terkecil, lalu periksa.", wajib: true, cek: (k) => pernah(k, "banding", "urut:dakon") },
+  { id: "b-turun", teks: "Di Urut, urutkan empat bilangan dari yang terbesar, lalu periksa.", wajib: true, cek: (k) => pernah(k, "banding", "urut:empat") },
+  { id: "b-mesin", teks: "Selesaikan Mesin Banding sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K5B1.B) },
+  { id: "b-skenario", teks: "Selesaikan skenario Lomba Dakon sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K5B1.B) },
+  { id: "b-satuan", teks: "Di Banding, coba periksa kolom satuan lebih dulu. Baca penjelasan lab.", wajib: false, cek: (k) => pernah(k, "banding", "dari-satuan") },
+  { id: "b-sama", teks: "Di Banding, bandingkan dua bilangan yang kembar pada pasangan terakhir.", wajib: false, cek: (k) => pernah(k, "banding", "banding:13234-13234") },
+  { id: "b-tengah", teks: "Di Urut, urutkan tiga bilangan dari yang terkecil. Mana bilangan tengahnya?", wajib: false, cek: (k) => pernah(k, "banding", "urut:tengah") },
+];
+
+const DAFTAR: Record<HurufMisiK5B1, DefMisi<KeadaanK5Bab1>[]> = { A: MISI_A, B: MISI_B };
 export const daftarMisiK5Bab1 = (huruf: string): DefMisi<KeadaanK5Bab1>[] => DAFTAR[huruf as HurufMisiK5B1] ?? MISI_A;
