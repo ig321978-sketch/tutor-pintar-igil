@@ -23,6 +23,7 @@ import { SKENARIO_K4B2D, SKENARIO_K4B2E } from "../src/components/modul/skenario
 import { SKENARIO_K4B3A, SKENARIO_K4B3B } from "../src/components/modul/skenario-k4b3.ts";
 import { SKENARIO_K4B4A, SKENARIO_K4B4B } from "../src/components/modul/skenario-k4b4.ts";
 import { SKENARIO_K4B5A, SKENARIO_K4B5B } from "../src/components/modul/skenario-k4b5.ts";
+import { SKENARIO_K4B6A } from "../src/components/modul/skenario-k4b6.ts";
 
 let gagal = 0;
 let lulus = 0;
@@ -90,6 +91,7 @@ const SEMUA = [
   ["K4 Bab 4B", SKENARIO_K4B4B, 100],
   ["K4 Bab 5A", SKENARIO_K4B5A, 20],
   ["K4 Bab 5B", SKENARIO_K4B5B, 20],
+  ["K4 Bab 6A", SKENARIO_K4B6A, 50],
 ];
 
 const OBJEK_SAH = new Set(["pesawat", "mobil", "boneka", "bola", "gasing", "bola-merah", "bola-kuning", "bola-hijau", "bola-biru", "kelereng-merah", "kelereng-kuning", "kelereng-hijau", "kelereng-biru", "jagung", "wortel", "brokoli", "kol", "jeruk", "apel", "mangga", "belimbing", "ayam", "bebek", "kelinci", "karet", "stik"]);

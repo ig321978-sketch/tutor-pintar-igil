@@ -1,0 +1,109 @@
+{
+  "chapter_id": "mtk-4-bab6",
+  "phase_code": "FASE_B",
+  "grade": 4,
+  "subject": "Matematika",
+  "title": "Piktogram dan Diagram Batang",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Piktogram",
+          "ikon": "🖼️",
+          "suara": "Ini peta piktogram. Kita belajar arti piktogram, mencatat dengan turus, keterangan simbol, dan membaca lalu membandingkan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "arti",
+            "judul": "Arti piktogram",
+            "ikon": "🖼️",
+            "ringkas": "Diagram yang memakai simbol untuk banyak.",
+            "suara": "Piktogram disebut juga diagram gambar. Simbol yang sama dipakai untuk menunjukkan banyak tiap kategori."
+          },
+          {
+            "id": "turus",
+            "judul": "Turus",
+            "ikon": "✏️",
+            "ringkas": "Satu benda dicatat dengan satu turus.",
+            "suara": "Turus. Catat tiap benda dengan satu garis. Kelompok lima diberi garis miring agar mudah dihitung."
+          },
+          {
+            "id": "skala",
+            "judul": "Keterangan",
+            "ikon": "🔑",
+            "ringkas": "Satu simbol bisa mewakili beberapa benda.",
+            "suara": "Keterangan memberi tahu satu simbol mewakili berapa. Kadang satu, kadang empat. Nilai sama dengan banyak simbol dikali skala."
+          },
+          {
+            "id": "baca",
+            "judul": "Baca dan banding",
+            "ikon": "⚖️",
+            "ringkas": "Cari paling banyak, selisih, dan jumlah.",
+            "suara": "Baca dan banding. Simbol paling banyak berarti nilai paling besar. Selisih berarti dikurangi, jumlah berarti ditambah semua."
+          }
+        ],
+        "kartu": [
+          { "id": "a-diagram-gambar", "teks": "Disebut juga diagram gambar", "ikon": "🖼️", "cabang": "arti", "petunjuk": "Nama lain piktogram itu soal artinya. Coba cabang lain." },
+          { "id": "a-simbol-sama", "teks": "Simbol tiap baris sama", "ikon": "⚪", "cabang": "arti", "petunjuk": "Simbol yang sama adalah ciri piktogram. Coba cabang lain." },
+          { "id": "a-satu-garis", "teks": "Satu benda, satu garis", "ikon": "✏️", "cabang": "turus", "petunjuk": "Mencatat dengan garis itu cara turus. Coba cabang lain." },
+          { "id": "a-lima", "teks": "Lima diberi garis miring", "ikon": "🖊️", "cabang": "turus", "petunjuk": "Kelompok lima itu cara menulis turus. Coba cabang lain." },
+          { "id": "a-empat", "teks": "1 simbol = 4 siswa", "ikon": "🔑", "cabang": "skala", "petunjuk": "Satu simbol mewakili berapa itu soal keterangan. Coba cabang lain." },
+          { "id": "a-kali", "teks": "Nilai = simbol × skala", "ikon": "✖️", "cabang": "skala", "petunjuk": "Mengalikan dengan skala itu soal keterangan. Coba cabang lain." },
+          { "id": "a-terbanyak", "teks": "Simbol terbanyak, nilai terbesar", "ikon": "🏆", "cabang": "baca", "petunjuk": "Mencari paling banyak itu soal membaca dan membandingkan. Coba cabang lain." },
+          { "id": "a-selisih", "teks": "Selisih: dikurangi", "ikon": "➖", "cabang": "baca", "petunjuk": "Selisih itu soal membandingkan. Coba cabang lain." }
+        ]
+      },
+      "infografis": {
+        "judul": "Piktogram",
+        "suara": "Ini tiga panel tentang piktogram. Ketuk kotaknya untuk membuka, lalu bandingkan dua keterangan.",
+        "panel": [
+          {
+            "id": "a-sajikan-info",
+            "tipe": "buka",
+            "judul": "Dari data ke piktogram",
+            "ide": "Catat dengan turus, gambar dengan simbol.",
+            "suara": "Ada tiga langkah menyajikan data. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "turus", "label": "Turus", "ikon": "✏️", "isi": "Satu benda, satu garis.", "suara": "Catat tiap benda dengan satu turus. Kelompok lima diberi garis miring.", "visual": { "jenis": "teks", "isi": "IIII / = 5" } },
+              {
+                "id": "tabel",
+                "label": "Tabel",
+                "ikon": "📋",
+                "isi": "Hitung turus tiap warna.",
+                "suara": "Warna kesukaan: ungu empat, kuning dua, hitam satu, merah lima.",
+                "visual": { "jenis": "tabel-menurun", "kepala": ["Warna", "Siswa"], "baris": [["ungu", 4], ["kuning", 2], ["hitam", 1], ["merah", 5]] }
+              },
+              { "id": "simbol", "label": "Simbol", "ikon": "⚪", "isi": "Gambar simbol sebanyak datanya.", "suara": "Gambar simbol yang sama di tiap baris, lalu tulis keterangannya.", "visual": { "jenis": "teks", "isi": "● ● ● ●" } }
+            ]
+          },
+          {
+            "id": "a-skala-info",
+            "tipe": "banding",
+            "judul": "Skala satu dan skala empat",
+            "ide": "Baca keterangan sebelum menghitung simbol.",
+            "suara": "Bandingkan dua keterangan piktogram.",
+            "sisi": [
+              { "id": "satu", "nama": "1 simbol = 1", "ikon": "1️⃣", "catatan": "Empat simbol berarti empat.", "suara": "Kalau satu simbol mewakili satu siswa, empat simbol berarti empat siswa.", "visual": { "jenis": "teks", "isi": "4 × 1 = 4" } },
+              { "id": "empat", "nama": "1 simbol = 4", "ikon": "4️⃣", "catatan": "Tiga simbol berarti dua belas.", "suara": "Kalau satu simbol mewakili empat siswa, tiga simbol berarti dua belas siswa.", "visual": { "jenis": "teks", "isi": "3 × 4 = 12" } }
+            ],
+            "kesimpulan": "Nilai = banyak simbol × skala. Skala besar menghemat simbol."
+          },
+          {
+            "id": "a-baca-info",
+            "tipe": "buka",
+            "judul": "Membaca piktogram",
+            "ide": "Bandingkan banyak simbol antar baris.",
+            "suara": "Ada tiga hal yang bisa dibaca dari piktogram. Ketuk kotaknya satu per satu.",
+            "butir": [
+              { "id": "terbanyak", "label": "Paling banyak", "ikon": "🏆", "isi": "Baris dengan simbol terbanyak.", "suara": "Mainan Karel paling banyak kelereng, sembilan buah.", "visual": { "jenis": "teks", "isi": "kelereng 9" } },
+              { "id": "jumlah", "label": "Jumlah", "ikon": "➕", "isi": "Tambahkan nilai semua baris.", "suara": "Mainan Karel semuanya dua puluh tiga.", "visual": { "jenis": "teks", "isi": "6 + 4 + 3 + 1 + 9 = 23" } },
+              { "id": "selisih", "label": "Selisih", "ikon": "➖", "isi": "Kurangi nilai yang besar.", "suara": "Selisih kelereng dan puzzle adalah delapan.", "visual": { "jenis": "teks", "isi": "9 − 1 = 8" } }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
