@@ -4,7 +4,6 @@ import React from "react";
 import { Muncul } from "./video-cerita";
 import {
   BatangPecahanSvg,
-  KubusSvg,
   LabelSvg,
   PizzaSvg,
   RasioBatangSvg,
@@ -14,7 +13,7 @@ import {
   HIJAU,
   ORANYE,
 } from "./video-visual-kit";
-import { BIRU, EMAS } from "./CeritaBandingB";
+import { BIRU } from "./CeritaBandingB";
 
 /** Koreografi visual Story Kelas 6 — seirama ketukan `k` + waktu suara `t`. */
 export function visualK6(kode: string, v: number, a: number, k: number, t = 0): React.ReactNode {
@@ -93,51 +92,6 @@ export function visualK6(kode: string, v: number, a: number, k: number, t = 0): 
     );
   }
 
-  if (bab === "k6b3") {
-    if (sub === "a") {
-      return (
-        <>
-          <KubusSvg k={Math.min(3, k + (p > 0.4 ? 1 : 0))} balok={a >= 1 || v >= 1} />
-          {k >= 2 ? <LabelSvg x={95} y={165} w={110} teks={a >= 1 ? "balok" : "kubus"} ukuran={13} warna={HIJAU} /> : null}
-        </>
-      );
-    }
-    if (sub === "b") {
-      const nyala = nyalaSeirama(k, t, 12, 0.9);
-      return (
-        <>
-          {Array.from({ length: 3 }, (_, r) =>
-            Array.from({ length: 4 }, (_, c) => {
-              const i = r * 4 + c;
-              if (i >= nyala) return null;
-              return <rect key={`${r}-${c}`} x={70 + c * 40} y={50 + r * 40} width={36} height={36} rx="4" fill="#BFDBFE" stroke={BIRU} strokeWidth="2" />;
-            }),
-          )}
-          {k >= 2 || p > 0.6 ? <LabelSvg x={95} y={175} w={110} teks="tampak atas" ukuran={12} /> : null}
-        </>
-      );
-    }
-    const jejak = Math.min(1, k === 0 ? p * 0.35 : k === 1 ? 0.35 + p * 0.4 : k === 2 ? 0.75 + p * 0.25 : 1);
-    return (
-      <>
-        <rect x="40" y="50" width="220" height="120" fill="#ECFDF5" stroke={BIRU} strokeWidth="2" rx="8" />
-        <polyline
-          points="70,90 150,90 150,140 230,140"
-          fill="none"
-          stroke={EMAS}
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          pathLength={1}
-          strokeDasharray={1}
-          strokeDashoffset={1 - jejak}
-        />
-        <circle cx="70" cy="90" r="10" fill={EMAS} stroke={BIRU} strokeWidth="2" />
-        {jejak > 0.85 ? <circle cx="230" cy="140" r="10" fill="#86EFAC" stroke={BIRU} strokeWidth="2" /> : null}
-        {k >= 3 ? <LabelSvg x={95} y={175} w={110} teks="jalur terpendek" ukuran={11} /> : null}
-      </>
-    );
-  }
 
   return null;
 }
