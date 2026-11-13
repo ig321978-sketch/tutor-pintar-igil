@@ -1,0 +1,230 @@
+{
+  "chapter_id": "mtk-6-bab2",
+  "phase_code": "FASE_C",
+  "grade": 6,
+  "subject": "Matematika",
+  "title": "Rasio",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Konsep Rasio",
+          "ikon": "⚖️",
+          "suara": "Ini peta konsep rasio. Kita belajar menulis rasio dua benda sejenis, membacanya dengan kalimat setiap ada, menyederhanakannya dengan FPB, dan menjaga arahnya. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "tulis",
+            "judul": "Tulis rasio",
+            "ikon": "✏️",
+            "ringkas": "Dua benda sejenis jadi a titik dua b.",
+            "suara": "Tulis rasio. Hitung dua jenis benda yang sejenis, lalu tulis jumlahnya dipisah titik dua. Benda yang disebut lebih dulu ditulis di kiri."
+          },
+          {
+            "id": "baca",
+            "judul": "Baca rasio",
+            "ikon": "🗣️",
+            "ringkas": "Setiap a ada b.",
+            "suara": "Baca rasio. Empat banding enam dibaca setiap empat pucuk merah ada enam cemara. Angka kiri untuk benda pertama dan angka kanan untuk benda kedua."
+          },
+          {
+            "id": "sederhana",
+            "judul": "Sederhanakan",
+            "ikon": "➗",
+            "ringkas": "Bagi kedua suku dengan FPB.",
+            "suara": "Sederhanakan rasio. Cari FPB, yaitu pembagi terbesar yang membagi habis kedua suku, lalu bagi suku kiri dan suku kanan. Empat banding enam menjadi dua banding tiga."
+          },
+          {
+            "id": "arah",
+            "judul": "Jaga arah",
+            "ikon": "↔️",
+            "ringkas": "a banding b bukan b banding a.",
+            "suara": "Jaga arah. Dua banding tiga tidak sama dengan tiga banding dua. Urutan mengikuti kata terhadap, jadi maknanya berubah bila urutannya dibalik."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "a-hitung",
+            "teks": "Hitung tiap jenis benda",
+            "ikon": "🔢",
+            "cabang": "tulis",
+            "petunjuk": "Menghitung dua jenis benda itu soal tulis rasio. Coba cabang lain."
+          },
+          {
+            "id": "a-kiri",
+            "teks": "Benda pertama di kiri",
+            "ikon": "⬅️",
+            "cabang": "tulis",
+            "petunjuk": "Menaruh benda pertama di kiri itu soal tulis rasio. Coba cabang lain."
+          },
+          {
+            "id": "a-setiap",
+            "teks": "Setiap empat ada enam",
+            "ikon": "💬",
+            "cabang": "baca",
+            "petunjuk": "Membaca dengan kalimat setiap ada itu soal baca rasio. Coba cabang lain."
+          },
+          {
+            "id": "a-banding",
+            "teks": "Dibaca empat banding enam",
+            "ikon": "🗣️",
+            "cabang": "baca",
+            "petunjuk": "Mengucapkan banding itu soal baca rasio. Coba cabang lain."
+          },
+          {
+            "id": "a-fpb",
+            "teks": "Cari FPB kedua suku",
+            "ikon": "🔍",
+            "cabang": "sederhana",
+            "petunjuk": "Mencari FPB itu soal sederhanakan rasio. Coba cabang lain."
+          },
+          {
+            "id": "a-dua",
+            "teks": "Bagi suku kiri dan kanan",
+            "ikon": "✂️",
+            "cabang": "sederhana",
+            "petunjuk": "Membagi kedua suku itu soal sederhanakan rasio. Coba cabang lain."
+          },
+          {
+            "id": "a-balik",
+            "teks": "Balik urutan, makna berubah",
+            "ikon": "🔄",
+            "cabang": "arah",
+            "petunjuk": "Membalik urutan rasio itu soal arah rasio. Coba cabang lain."
+          },
+          {
+            "id": "a-terhadap",
+            "teks": "Ikuti kata terhadap",
+            "ikon": "📍",
+            "cabang": "arah",
+            "petunjuk": "Mengikuti kata terhadap itu soal arah rasio. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Konsep Rasio",
+        "suara": "Ini tiga panel tentang konsep rasio. Ketuk kotaknya untuk membuka, lalu lihat cara menulis dan membaca rasio, dua arah rasio, serta cara menyederhanakannya.",
+        "panel": [
+          {
+            "id": "a-tulis-info",
+            "tipe": "buka",
+            "judul": "Tulis dan baca",
+            "ide": "Dua benda sejenis, satu rasio.",
+            "suara": "Ada tiga hal tentang menulis dan membaca rasio. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "kelompok",
+                "label": "Dua kelompok",
+                "ikon": "🌲",
+                "isi": "Pucuk merah dan cemara.",
+                "suara": "Di lahan ada empat pucuk merah dan enam cemara. Keduanya sejenis, yaitu sama-sama bibit.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 pucuk, 6 cemara"
+                }
+              },
+              {
+                "id": "tulis",
+                "label": "Tulis rasio",
+                "ikon": "✏️",
+                "isi": "Pucuk di kiri, cemara di kanan.",
+                "suara": "Rasio pucuk merah terhadap cemara ditulis empat banding enam. Pucuk merah disebut lebih dulu, jadi ditulis di kiri.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 : 6"
+                }
+              },
+              {
+                "id": "baca",
+                "label": "Baca rasio",
+                "ikon": "🗣️",
+                "isi": "Setiap empat ada enam.",
+                "suara": "Empat banding enam dibaca setiap empat pucuk merah ada enam cemara.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "setiap 4 ada 6"
+                }
+              }
+            ]
+          },
+          {
+            "id": "a-arah-info",
+            "tipe": "banding",
+            "judul": "Dua arah",
+            "ide": "Urutan mengubah makna.",
+            "suara": "Lihat dua rasio dari benda yang sama.",
+            "sisi": [
+              {
+                "id": "pucuk",
+                "nama": "Pucuk terhadap cemara",
+                "ikon": "🌲",
+                "catatan": "Pucuk di kiri.",
+                "suara": "Rasio pucuk merah terhadap cemara adalah dua banding tiga. Setiap dua pucuk merah ada tiga cemara.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 : 3"
+                }
+              },
+              {
+                "id": "cemara",
+                "nama": "Cemara terhadap pucuk",
+                "ikon": "🌳",
+                "catatan": "Cemara di kiri.",
+                "suara": "Rasio cemara terhadap pucuk merah adalah tiga banding dua. Setiap tiga cemara ada dua pucuk merah.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 : 2"
+                }
+              }
+            ],
+            "kesimpulan": "Arah mengubah makna."
+          },
+          {
+            "id": "a-sederhana-info",
+            "tipe": "buka",
+            "judul": "Sederhanakan",
+            "ide": "Bagi kedua suku dengan FPB.",
+            "suara": "Ada tiga hal tentang menyederhanakan rasio. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "fpb",
+                "label": "Cari FPB",
+                "ikon": "🔍",
+                "isi": "Pembagi terbesar kedua suku.",
+                "suara": "FPB empat dan enam adalah dua, karena dua membagi habis keduanya dan tidak ada pembagi bersama yang lebih besar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "FPB 4 dan 6 = 2"
+                }
+              },
+              {
+                "id": "bagi",
+                "label": "Bagi keduanya",
+                "ikon": "✂️",
+                "isi": "Kiri dan kanan dibagi dua.",
+                "suara": "Empat dibagi dua sama dengan dua, enam dibagi dua sama dengan tiga. Jadi empat banding enam sama dengan dua banding tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 : 6 = 2 : 3"
+                }
+              },
+              {
+                "id": "sembilan",
+                "label": "Contoh lain",
+                "ikon": "➗",
+                "isi": "Enam banding sembilan.",
+                "suara": "Enam banding sembilan dibagi FPB tiga menjadi dua banding tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 : 9 = 2 : 3"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
