@@ -4,6 +4,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Skenario Kelas 6 Bab 4 (Peluang). Tanpa jaringan, tanpa model bahasa.
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k6b4.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K6B4A: Dhien dan Poster Lomba (Qualitative Probability Language, Likelihood Spectrum Scale, Impossible-Certain Continuum, dan Experimental Relative Frequency)
+ *  - SKENARIO_K6B4B: Dhien dan Kotak Hadiah (Favorable-to-Total Ratio, Comparative Probability Ratio, Relative Likelihood Decision, dan Fair Game Equal Chance Principle)
  */
 
 export const SKENARIO_K6B4A: DefSkenario = {
@@ -88,6 +89,92 @@ export const SKENARIO_K6B4A: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Qualitative Probability Language: kata kurang mungkin, mungkin, dan sangat mungkin membantu prediksi. Likelihood Spectrum Scale: ada lima tangga dari tidak mungkin sampai pasti. Impossible-Certain Continuum: ujung kiri nol, ujung kanan semuanya. Experimental Relative Frequency: catat hasil percobaan dan cocokkan dengan prediksi.",
+    },
+  ],
+};
+
+export const SKENARIO_K6B4B: DefSkenario = {
+  id: "dhien-hadiah-k6b4",
+  judul: "Dhien dan Kotak Hadiah",
+  latar: "Bantu Dhien menghitung dan membandingkan peluang, lalu menilai apakah permainan adil.",
+  tokoh: "👧",
+  nama: "Dhien",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Dhien. Di lomba menyanyi ada 12 peserta SD, 35 peserta SMP, dan 27 peserta SMA. Di kategori mana peluangku menang lebih besar? Ayo kita hitung peluang dari hasil menguntungkan dan semua hasil, lalu kita bandingkan dan putuskan dengan bijak!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "rasio",
+      jenis: "pilih",
+      cerita: "Favorable-to-Total Ratio: peluang adalah hasil menguntungkan dibanding semua hasil yang mungkin. Aku melempar dadu enam sisi dan ingin muncul angka 6. Bagaimana peluangnya ditulis?",
+      opsi: [
+        { teks: "6 dari 1", benar: false, umpan: "Terbalik. Hasil menguntungkan ditulis lebih dulu, yaitu hanya satu sisi angka 6." },
+        { teks: "1 dari 5", benar: false, umpan: "Semua hasil mencakup enam sisi dadu, bukan lima. Angka 6 juga termasuk." },
+        { teks: "1 dari 6", benar: true, umpan: "Betul! Satu sisi angka 6 dari enam sisi dadu, ditulis 1/6." },
+      ],
+    },
+    {
+      id: "kotak",
+      jenis: "soal",
+      cerita: "Kotak Mantap berisi 7 piring: 4 piring biru dan 3 piring putih. Aku mengambil satu piring tanpa melihat dan berharap mendapat yang biru.",
+      soal: [
+        { teks: "Hasil menguntungkan, yaitu piring biru, ada … piring.", jawaban: "4", opsi: ["3", "7", "4"] },
+        { teks: "Semua hasil yang mungkin ada … piring.", jawaban: "7", opsi: ["7", "4", "3"] },
+        { teks: "Peluang mendapat piring biru ditulis …", jawaban: "4/7", opsi: ["3/7", "4/7", "7/4"] },
+      ],
+      sukses: "Betul! Peluang piring biru dari kotak Mantap adalah 4 dari 7, ditulis 4/7. Masih ada 3 piring putih, jadi peluang besar belum berarti pasti.",
+      salah: "Hmm, hitung dulu piring biru, lalu semua piring. Peluang ditulis hasil menguntungkan per semua hasil.",
+    },
+    {
+      id: "hitung",
+      jenis: "hitung",
+      cerita: "Tiap piring biru di kotak Mantap kutandai dengan satu stik, supaya tidak ada yang terlewat.",
+      tanya: "Ketuk semua stik. Ada berapa piring biru di kotak Mantap?",
+      objek: "stik",
+      jumlah: 4,
+      sukses: "Betul! Ada 4 piring biru dari 7 piring.",
+      salah: "Hmm, ketuk tiap stik sekali saja untuk satu piring biru, lalu hitung lagi.",
+    },
+    {
+      id: "samakan",
+      jenis: "isi",
+      cerita: "Comparative Probability Ratio: samakan total sebelum membandingkan. Koin gambar 1 dari 2, dadu angka 6 1 dari 6. Total bersama paling kecil adalah 6, jadi koin gambar menjadi … dari 6. Masukkan satu stik untuk tiap hasil menguntungkan koin pada total 6.",
+      objek: "stik",
+      target: 3,
+      maks: 12,
+      sukses: "Betul! 1 dari 2 sama dengan 3 dari 6, karena 1 × 3 = 3. Dadu tetap 1 dari 6, jadi koin 3 lebih banyak dari dadu 1: koin lebih mungkin.",
+      kurang: "Stiknya masih kurang. Kalikan hasil menguntungkan koin dengan faktor yang mengubah 2 menjadi 6.",
+      lebih: "Stiknya kelebihan. Kurangi sampai pas dengan hasil menguntungkan koin pada total 6.",
+    },
+    {
+      id: "putusan",
+      jenis: "soal",
+      cerita: "Relative Likelihood Decision: pilih yang peluangnya relatif lebih besar, tetapi ingat belum pasti menang. Kotak Mantap 4 dari 7, kotak Spektakuler 3 dari 7, dan aku ingin piring biru.",
+      soal: [
+        { teks: "Kotak yang lebih mungkin memberi piring biru adalah …", jawaban: "Mantap", opsi: ["Spektakuler", "Mantap", "Sama saja"] },
+        { teks: "Koin gambar 1 dari 2 dan dadu angka 6 1 dari 6. Yang lebih mungkin adalah …", jawaban: "Koin gambar", opsi: ["Koin gambar", "Dadu angka 6", "Sama saja"] },
+        { teks: "Peluang yang lebih besar berarti …", jawaban: "lebih mungkin, belum pasti menang", opsi: ["pasti menang", "tidak mungkin kalah", "lebih mungkin, belum pasti menang"] },
+      ],
+      sukses: "Betul! Mantap 4 dari 7 lebih besar dari Spektakuler 3 dari 7, dan koin lebih mungkin dari dadu. Tetapi peluang besar belum pasti: masih ada 3 piring putih di kotak Mantap.",
+      salah: "Hmm, samakan dulu totalnya, lalu lihat hasil menguntungkan yang lebih banyak. Ingat, peluang besar belum pasti terjadi.",
+    },
+    {
+      id: "adil",
+      jenis: "pilih",
+      cerita: "Fair Game Equal Chance Principle: permainan adil bila peluang tiap pemain sama. Dengan dadu enam sisi, aku menang bila muncul 6 dan Tigor menang bila muncul 1 sampai 5. Apakah permainan ini adil?",
+      opsi: [
+        { teks: "Kurang adil, Tigor punya 5 hasil dan aku hanya 1", benar: true, umpan: "Betul! Peluangku 1 dari 6 dan peluang Tigor 5 dari 6. Peluang tidak sama, jadi kurang adil." },
+        { teks: "Adil, karena keduanya memakai dadu yang sama", benar: false, umpan: "Dadunya sama, tetapi syarat menangnya beda. Yang dibandingkan adalah peluang tiap pemain." },
+        { teks: "Adil, karena aku melempar lebih dulu", benar: false, umpan: "Giliran melempar tidak mengubah peluang. Hitung hasil menang tiap pemain." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Favorable-to-Total Ratio: peluang adalah hasil menguntungkan per semua hasil. Comparative Probability Ratio: samakan total, lalu bandingkan hasil menguntungkannya. Relative Likelihood Decision: pilih yang lebih besar, tetapi belum pasti menang. Fair Game Equal Chance Principle: permainan adil bila peluang tiap pemain sama.",
     },
   ],
 };

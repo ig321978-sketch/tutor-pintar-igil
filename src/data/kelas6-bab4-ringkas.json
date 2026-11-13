@@ -225,6 +225,226 @@
           }
         ]
       }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Membandingkan Peluang",
+          "ikon": "⚖️",
+          "suara": "Ini peta konsep membandingkan peluang. Kita menghitung peluang sebagai hasil menguntungkan per semua hasil, menyamakan total sebelum membandingkan, menilai permainan adil atau kurang adil, dan mengambil keputusan dengan ingat bahwa peluang besar belum pasti. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "rasio",
+            "judul": "Rasio",
+            "ikon": "➗",
+            "ringkas": "Menguntungkan per semua hasil.",
+            "suara": "Rasio. Peluang adalah hasil menguntungkan per semua hasil yang mungkin. Empat piring biru dari tujuh piring ditulis empat per tujuh."
+          },
+          {
+            "id": "samakan",
+            "judul": "Samakan total",
+            "ikon": "🎯",
+            "ringkas": "Total sama, baru dibandingkan.",
+            "suara": "Samakan total. Sebelum membandingkan dua peluang, samakan dulu totalnya dengan bilangan terkecil yang habis dibagi kedua total. Satu dari dua sama dengan tiga dari enam."
+          },
+          {
+            "id": "adil",
+            "judul": "Adil",
+            "ikon": "⚖️",
+            "ringkas": "Peluang tiap pemain sama.",
+            "suara": "Adil. Permainan adil bila peluang tiap pemain sama, yaitu hasil menang kedua pemain sama banyak dari total yang sama."
+          },
+          {
+            "id": "putusan",
+            "judul": "Keputusan",
+            "ikon": "🧠",
+            "ringkas": "Besar belum pasti menang.",
+            "suara": "Keputusan. Pilih yang peluangnya lebih besar, tetapi ingat belum pasti menang. Masih ada hasil lain yang bisa muncul."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-untung",
+            "teks": "Piring biru 4 dari 7",
+            "ikon": "🍽️",
+            "cabang": "rasio",
+            "petunjuk": "Menghitung hasil menguntungkan per semua hasil itu soal rasio. Coba cabang lain."
+          },
+          {
+            "id": "b-tulis",
+            "teks": "Tulis 4/7",
+            "ikon": "✍️",
+            "cabang": "rasio",
+            "petunjuk": "Menulis peluang sebagai hasil menguntungkan per semua hasil itu soal rasio. Coba cabang lain."
+          },
+          {
+            "id": "b-kpk",
+            "teks": "Total bersama 6",
+            "ikon": "🔢",
+            "cabang": "samakan",
+            "petunjuk": "Mencari total bersama itu soal samakan total. Coba cabang lain."
+          },
+          {
+            "id": "b-setara",
+            "teks": "1 dari 2 sama dengan 3 dari 6",
+            "ikon": "🔄",
+            "cabang": "samakan",
+            "petunjuk": "Menyamakan total dua peluang itu soal samakan total. Coba cabang lain."
+          },
+          {
+            "id": "b-dadu",
+            "teks": "Satu hasil lawan lima hasil",
+            "ikon": "🎲",
+            "cabang": "adil",
+            "petunjuk": "Menilai hasil menang dua pemain itu soal permainan adil. Coba cabang lain."
+          },
+          {
+            "id": "b-sama",
+            "teks": "Hasil menang sama banyak",
+            "ikon": "🤝",
+            "cabang": "adil",
+            "petunjuk": "Menilai permainan yang sama banyak hasil menangnya itu soal permainan adil. Coba cabang lain."
+          },
+          {
+            "id": "b-lebih",
+            "teks": "Mantap lebih mungkin",
+            "ikon": "📈",
+            "cabang": "putusan",
+            "petunjuk": "Memilih peluang yang lebih besar itu soal keputusan. Coba cabang lain."
+          },
+          {
+            "id": "b-belum",
+            "teks": "Masih ada piring putih",
+            "ikon": "⚠️",
+            "cabang": "putusan",
+            "petunjuk": "Mengingat peluang besar belum pasti itu soal keputusan. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Membandingkan Peluang",
+        "suara": "Ini tiga panel tentang membandingkan peluang. Ketuk kotaknya untuk membuka, lalu lihat cara menulis peluang, cara menyamakan total, dan kapan permainan adil.",
+        "panel": [
+          {
+            "id": "b-rasio-info",
+            "tipe": "buka",
+            "judul": "Menulis peluang",
+            "ide": "Menguntungkan per semua hasil.",
+            "suara": "Ada tiga hal tentang menulis peluang. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "untung",
+                "label": "Menguntungkan",
+                "ikon": "✅",
+                "isi": "Hasil yang kita harapkan.",
+                "suara": "Piring biru di kotak Mantap ada empat. Itu hasil menguntungkan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 piring biru"
+                }
+              },
+              {
+                "id": "total",
+                "label": "Semua hasil",
+                "ikon": "📦",
+                "isi": "Semua yang mungkin terjadi.",
+                "suara": "Kotak Mantap berisi tujuh piring. Itu semua hasil yang mungkin.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7 piring"
+                }
+              },
+              {
+                "id": "tulis",
+                "label": "Peluang",
+                "ikon": "➗",
+                "isi": "Menguntungkan per semua hasil.",
+                "suara": "Peluang piring biru ditulis empat per tujuh. Tiga piring putih berarti hasil lain masih bisa muncul.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4/7"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-samakan-info",
+            "tipe": "banding",
+            "judul": "Samakan total",
+            "ide": "Total sama, baru dibandingkan.",
+            "suara": "Lihat dua peluang. Samakan dulu totalnya. Mana yang lebih mungkin?",
+            "sisi": [
+              {
+                "id": "koin",
+                "nama": "Koin gambar",
+                "ikon": "🔵",
+                "catatan": "Satu dari dua.",
+                "suara": "Koin gambar satu dari dua sama dengan tiga dari enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1/2 = 3/6"
+                }
+              },
+              {
+                "id": "dadu",
+                "nama": "Dadu angka enam",
+                "ikon": "🎲",
+                "catatan": "Satu dari enam.",
+                "suara": "Dadu angka enam satu dari enam. Tiga lebih banyak dari satu, jadi koin lebih mungkin.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1/6"
+                }
+              }
+            ],
+            "kesimpulan": "Total sama, lihat yang banyak."
+          },
+          {
+            "id": "b-adil-info",
+            "tipe": "buka",
+            "judul": "Adil atau tidak",
+            "ide": "Peluang tiap pemain sama.",
+            "suara": "Ada tiga hal tentang permainan dua pemain. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "adil",
+                "label": "Adil",
+                "ikon": "⚖️",
+                "isi": "Hasil menang sama banyak.",
+                "suara": "Dadu enam sisi, pemain A menang bila ganjil dan pemain B bila genap. Tiga dari enam untuk masing-masing, jadi adil.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 dan 3"
+                }
+              },
+              {
+                "id": "kurang",
+                "label": "Kurang adil",
+                "ikon": "⚠️",
+                "isi": "Hasil menang berbeda banyak.",
+                "suara": "Pemain A menang bila muncul enam, pemain B bila muncul satu sampai lima. Satu lawan lima, jadi kurang adil.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 dan 5"
+                }
+              },
+              {
+                "id": "belum",
+                "label": "Belum pasti",
+                "ikon": "🧠",
+                "isi": "Besar bukan berarti pasti.",
+                "suara": "Peluang lebih besar berarti lebih mungkin, bukan pasti menang. Hasil lain masih bisa muncul.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "besar bukan pasti"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }
