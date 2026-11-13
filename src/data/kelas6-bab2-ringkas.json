@@ -445,6 +445,226 @@
           }
         ]
       }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Penerapan Rasio",
+          "ikon": "🧮",
+          "suara": "Ini peta penerapan rasio. Kita belajar menjumlahkan suku rasio untuk mendapat banyak bagian, mencari nilai satu bagian, menulis bagian terhadap seluruhnya, dan menyamakan satuan waktu. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "jumlah",
+            "judul": "Jumlah bagian",
+            "ikon": "➕",
+            "ringkas": "Jumlahkan suku rasio.",
+            "suara": "Jumlah bagian. Empat banding lima berarti empat tambah lima, yaitu sembilan bagian seluruhnya."
+          },
+          {
+            "id": "satu",
+            "judul": "Satu bagian",
+            "ikon": "➗",
+            "ringkas": "Seluruhnya dibagi banyak bagian.",
+            "suara": "Satu bagian. Tujuh puluh dua dibagi sembilan sama dengan delapan. Kalikan delapan dengan suku untuk mendapat tiap benda."
+          },
+          {
+            "id": "seluruh",
+            "judul": "Terhadap seluruhnya",
+            "ikon": "⚖️",
+            "ringkas": "Empat banding sembilan, bukan lima.",
+            "suara": "Bagian terhadap seluruhnya. Bibit hias terhadap seluruhnya adalah empat banding sembilan, berbeda dari empat banding lima."
+          },
+          {
+            "id": "waktu",
+            "judul": "Samakan waktu",
+            "ikon": "⏱️",
+            "ringkas": "Satu jam, enam puluh menit.",
+            "suara": "Samakan waktu. Satu jam sama dengan enam puluh menit. Satu kilometer dalam tiga puluh menit sama dengan dua kilometer per jam."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "c-tambah",
+            "teks": "Empat tambah lima",
+            "ikon": "➕",
+            "cabang": "jumlah",
+            "petunjuk": "Menjumlahkan suku rasio itu soal jumlah bagian. Coba cabang lain."
+          },
+          {
+            "id": "c-sembilan",
+            "teks": "Sembilan bagian seluruhnya",
+            "ikon": "🧩",
+            "cabang": "jumlah",
+            "petunjuk": "Menghitung banyak bagian itu soal jumlah bagian. Coba cabang lain."
+          },
+          {
+            "id": "c-bagi",
+            "teks": "Seluruhnya dibagi sembilan",
+            "ikon": "➗",
+            "cabang": "satu",
+            "petunjuk": "Membagi seluruhnya itu soal nilai satu bagian. Coba cabang lain."
+          },
+          {
+            "id": "c-kali",
+            "teks": "Satu bagian dikali suku",
+            "ikon": "✖️",
+            "cabang": "satu",
+            "petunjuk": "Mengalikan satu bagian dengan suku itu soal nilai satu bagian. Coba cabang lain."
+          },
+          {
+            "id": "c-empat-sembilan",
+            "teks": "Empat banding sembilan",
+            "ikon": "📊",
+            "cabang": "seluruh",
+            "petunjuk": "Menulis bagian terhadap seluruhnya itu soal bagian terhadap seluruhnya. Coba cabang lain."
+          },
+          {
+            "id": "c-beda",
+            "teks": "Bukan empat banding lima",
+            "ikon": "🚫",
+            "cabang": "seluruh",
+            "petunjuk": "Membedakan dua macam rasio itu soal bagian terhadap seluruhnya. Coba cabang lain."
+          },
+          {
+            "id": "c-enam-puluh",
+            "teks": "Satu jam enam puluh menit",
+            "ikon": "🕐",
+            "cabang": "waktu",
+            "petunjuk": "Mengubah jam ke menit itu soal samakan satuan waktu. Coba cabang lain."
+          },
+          {
+            "id": "c-skala",
+            "teks": "Kedua suku dikali sama",
+            "ikon": "🔗",
+            "cabang": "waktu",
+            "petunjuk": "Menskala jarak dan waktu itu soal samakan satuan waktu. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Penerapan Rasio",
+        "suara": "Ini tiga panel tentang penerapan rasio. Ketuk kotaknya untuk membuka, lalu lihat cara membagi menurut rasio, dua macam rasio, dan cara menyamakan satuan waktu.",
+        "panel": [
+          {
+            "id": "c-bagi-info",
+            "tipe": "buka",
+            "judul": "Bagi menurut rasio",
+            "ide": "Jumlahkan suku, bagi, lalu kalikan.",
+            "suara": "Ada tiga hal tentang membagi menurut rasio. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "jumlah",
+                "label": "Jumlah bagian",
+                "ikon": "➕",
+                "isi": "Empat tambah lima.",
+                "suara": "Rasio bibit hias terhadap bibit obat empat banding lima, jadi seluruhnya sembilan bagian.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 + 5 = 9"
+                }
+              },
+              {
+                "id": "satu",
+                "label": "Satu bagian",
+                "ikon": "➗",
+                "isi": "Tujuh puluh dua dibagi sembilan.",
+                "suara": "Seluruhnya tujuh puluh dua bibit dibagi sembilan bagian, jadi satu bagian delapan bibit.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "72 ÷ 9 = 8"
+                }
+              },
+              {
+                "id": "hasil",
+                "label": "Tiap benda",
+                "ikon": "🧩",
+                "isi": "Hias tiga puluh dua, obat empat puluh.",
+                "suara": "Bibit hias empat kali delapan sama dengan tiga puluh dua. Bibit obat lima kali delapan sama dengan empat puluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "32 dan 40"
+                }
+              }
+            ]
+          },
+          {
+            "id": "c-dua-info",
+            "tipe": "banding",
+            "judul": "Dua macam rasio",
+            "ide": "Pembandingnya berbeda.",
+            "suara": "Lihat dua rasio dari bibit yang sama.",
+            "sisi": [
+              {
+                "id": "bagian",
+                "nama": "Bagian dan bagian",
+                "ikon": "📊",
+                "catatan": "Hias terhadap obat.",
+                "suara": "Bibit hias terhadap bibit obat adalah empat banding lima. Pembandingnya bibit obat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 : 5"
+                }
+              },
+              {
+                "id": "seluruh",
+                "nama": "Bagian dan seluruh",
+                "ikon": "⚖️",
+                "catatan": "Hias terhadap seluruhnya.",
+                "suara": "Bibit hias terhadap seluruhnya adalah empat banding sembilan. Pembandingnya semua bibit.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 : 9"
+                }
+              }
+            ],
+            "kesimpulan": "Pembanding menentukan makna."
+          },
+          {
+            "id": "c-waktu-info",
+            "tipe": "buka",
+            "judul": "Samakan waktu",
+            "ide": "Satu jam, enam puluh menit.",
+            "suara": "Ada tiga hal tentang menyamakan satuan waktu. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "jam",
+                "label": "Satu jam",
+                "ikon": "🕐",
+                "isi": "Enam puluh menit.",
+                "suara": "Satu jam sama dengan enam puluh menit. Samakan satuan waktu dulu sebelum menghitung.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 jam = 60 menit"
+                }
+              },
+              {
+                "id": "laju",
+                "label": "Laju per jam",
+                "ikon": "🏃",
+                "isi": "Dua kali tiga puluh menit.",
+                "suara": "Banyu berlari satu kilometer dalam tiga puluh menit. Enam puluh menit adalah dua kali tiga puluh menit, jadi dua kilometer per jam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 km : 30 menit = 2 km per jam"
+                }
+              },
+              {
+                "id": "target",
+                "label": "Untuk sembilan km",
+                "ikon": "🎯",
+                "isi": "Dua ratus tujuh puluh menit.",
+                "suara": "Sembilan kilometer sama dengan sembilan kali satu kilometer, jadi sembilan kali tiga puluh menit, yaitu dua ratus tujuh puluh menit.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "9 km = 270 menit"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

@@ -5,6 +5,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k6b2.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K6B2A: Artus dan Lahan Bibit (Part-to-Part Ratio Language, GCF Simplify Ratio, dan Ordered-Ratio Protocol)
  *  - SKENARIO_K6B2B: Artus, Resep, dan Paket Bibit (Equivalent Ratio Table, Fraction-Equivalence Bridge, dan Unit Rate Method)
+ *  - SKENARIO_K6B2C: Artus, Pasar Malam, dan Lomba Jalan (Additive Parts Sum, Part-to-Whole Ratio, dan Time-Rate Conversion)
  */
 
 export const SKENARIO_K6B2A: DefSkenario = {
@@ -169,6 +170,90 @@ export const SKENARIO_K6B2B: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Equivalent Ratio Table: kalikan atau bagi kedua suku dengan bilangan yang sama. Fraction-Equivalence Bridge: kesamaan rasio adalah pecahan senilai, dicek dengan perkalian silang. Unit Rate Method: cari nilai untuk satu satuan agar perbandingan adil, dan tulis satuannya.",
+    },
+  ],
+};
+
+export const SKENARIO_K6B2C: DefSkenario = {
+  id: "artus-pasar-k6b2",
+  judul: "Artus, Pasar Malam, dan Lomba Jalan",
+  latar: "Bantu Artus membagi jumlah menurut rasio dan menghitung laju dalam jam dan menit.",
+  tokoh: "👨",
+  nama: "Artus",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Artus. Hari ini aku menjual 72 bibit dengan rasio bibit hias terhadap bibit obat 4 : 5. Dengan rasio, jumlah seluruhnya bisa dibagi menurut bagiannya, dan laju bisa dihitung per jam. Ayo kita belajar penerapan rasio!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "bagian",
+      jenis: "pilih",
+      cerita: "Additive Parts Sum: jumlahkan suku rasio untuk mendapat banyak bagian seluruhnya. Rasio 4 : 5 berarti seluruhnya terbagi menjadi berapa bagian?",
+      opsi: [
+        { teks: "20 bagian", benar: false, umpan: "Itu hasil mengalikan 4 dengan 5. Suku rasio dijumlahkan, bukan dikali." },
+        { teks: "9 bagian", benar: true, umpan: "Betul! 4 + 5 = 9 bagian seluruhnya. Satu bagian bernilai 72 ÷ 9 = 8." },
+        { teks: "4 bagian", benar: false, umpan: "Itu hanya bagian untuk bibit hias. Seluruhnya adalah 4 ditambah 5." },
+      ],
+    },
+    {
+      id: "hitung",
+      jenis: "hitung",
+      cerita: "Aku membagi 72 bibit ke dalam bagian-bagian sama besar. Satu stik mewakili satu bagian.",
+      tanya: "Ketuk semua stik. Ada berapa bagian seluruhnya?",
+      objek: "stik",
+      jumlah: 9,
+      sukses: "Betul! 9 bagian, dan 72 ÷ 9 = 8 bibit untuk tiap bagian. Bibit hias 4 × 8 = 32 dan bibit obat 5 × 8 = 40.",
+      salah: "Hmm, ketuk tiap stik sekali saja untuk satu bagian, lalu hitung lagi.",
+    },
+    {
+      id: "seluruh",
+      jenis: "soal",
+      cerita: "Part-to-Whole Ratio: rasio bagian terhadap seluruhnya berbeda dari rasio bagian terhadap bagian.",
+      soal: [
+        { teks: "Hias : obat = 4 : 5. Hias terhadap seluruhnya = 4 : …", jawaban: "9", opsi: ["5", "9", "20"] },
+        { teks: "Satu bagian 8, jadi bibit hias = 8 × 4 = …", jawaban: "32", opsi: ["32", "40", "36"] },
+      ],
+      sukses: "Hebat! 4 : 9 adalah bibit hias terhadap seluruhnya, dan bibit hias ada 32. Rasio 4 : 5 dan 4 : 9 berbeda makna.",
+      salah: "Hmm, seluruhnya ada 4 + 5 bagian. Coba lagi.",
+    },
+    {
+      id: "pasar",
+      jenis: "pilih",
+      cerita: "Di pasar malam, rasio anak-anak terhadap orang dewasa adalah 9 : 4 dan seluruh pengunjung ada 390. Berapa anak-anak?",
+      opsi: [
+        { teks: "120 anak-anak", benar: false, umpan: "Itu banyak orang dewasa, yaitu 4 × 30. Anak-anak mendapat 9 bagian." },
+        { teks: "90 anak-anak", benar: false, umpan: "Itu bukan hasil 9 × 30. Hitung dulu satu bagian: 390 ÷ 13 = 30." },
+        { teks: "270 anak-anak", benar: true, umpan: "Betul! 9 + 4 = 13 bagian, satu bagian 390 ÷ 13 = 30, jadi anak-anak 9 × 30 = 270." },
+      ],
+    },
+    {
+      id: "jalan",
+      jenis: "isi",
+      cerita: "Time-Rate Conversion: Banyu berlari 1 km dalam 30 menit. Satu jam sama dengan 60 menit. Masukkan satu stik untuk tiap kilometer yang ditempuh Banyu dalam satu jam.",
+      objek: "stik",
+      target: 2,
+      maks: 6,
+      sukses: "Betul! 60 menit adalah 2 kali 30 menit, jadi jaraknya 2 km per jam. Samakan satuan waktu dulu.",
+      kurang: "Kilometernya masih kurang. Tambah lagi sampai 2.",
+      lebih: "Kilometernya kelebihan. Kurangi sampai 2.",
+    },
+    {
+      id: "waktu",
+      jenis: "soal",
+      cerita: "Dengan laju yang sama, kedua suku rasio dikali bilangan yang sama. Samakan dulu satuan waktu, lalu skala jarak atau kata.",
+      soal: [
+        { teks: "Banyu 1 km per 30 menit. Untuk 9 km: 9 × 30 = … menit", jawaban: "270", opsi: ["270", "39", "9"] },
+        { teks: "Mengetik 1200 kata per jam. Dalam 180 menit, yaitu 3 jam, ada 3 × 1200 = … kata", jawaban: "3600", opsi: ["1200", "3600", "3000"] },
+      ],
+      sukses: "Tepat! 9 km butuh 270 menit, dan 3 jam mengetik menghasilkan 3600 kata. Satuan waktunya sudah disamakan.",
+      salah: "Hmm, kalikan kedua suku dengan bilangan yang sama dan jaga satuan waktunya. Coba lagi.",
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Additive Parts Sum: jumlahkan suku rasio untuk mendapat banyak bagian, bagi seluruhnya, lalu kalikan. Part-to-Whole Ratio: bagian terhadap seluruhnya ditulis 4 : 9, berbeda dari 4 : 5. Time-Rate Conversion: samakan satuan waktu dulu, lalu skala jarak atau kata.",
     },
   ],
 };
