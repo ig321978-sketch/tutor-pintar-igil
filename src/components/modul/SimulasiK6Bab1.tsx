@@ -4,10 +4,12 @@ import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
 import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiLabKaliK6B1 from "./SimulasiLabKaliK6B1";
+import SimulasiLabBagiK6B1 from "./SimulasiLabBagiK6B1";
 import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
 import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K6B1A } from "./skenario-k6b1";
+import { SKENARIO_K6B1A, SKENARIO_K6B1B } from "./skenario-k6b1";
 import { MESIN_KALI } from "./mesin-kali-k6b1";
+import { MESIN_BAGI } from "./mesin-bagi-k6b1";
 import { ejaK6B1 } from "./eja-k6b1";
 import type { DefSkenario } from "./skenario-umum";
 import type { DefMesin } from "./mesin-bertahap-k3b1";
@@ -19,22 +21,26 @@ import { MISI_K6B1, NAMA_SIM_K6B1, hurufK6B1, misiAwalK6Bab1, type HurufK6B1 } f
 /* Simulasi Kelas 6 Bab 1 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
 /* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k6bab1.ts. */
 /*   A Perkalian Pecahan : Lab Kali Pecahan + Mesin Kali Pecahan + Agam dan Kebun Ayah */
+/*   B Pembagian Pecahan : Lab Bagi Pecahan + Mesin Bagi Pecahan + Agam, Gelas, dan Sirup */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
-const SKENARIO: Record<HurufK6B1, DefSkenario> = { A: SKENARIO_K6B1A };
-const MESIN: Record<HurufK6B1, DefMesin> = { A: MESIN_KALI };
+const SKENARIO: Record<HurufK6B1, DefSkenario> = { A: SKENARIO_K6B1A, B: SKENARIO_K6B1B };
+const MESIN: Record<HurufK6B1, DefMesin> = { A: MESIN_KALI, B: MESIN_BAGI };
 
 const COBA_MESIN: Record<HurufK6B1, string[]> = {
   A: ["Ketuk stasiun Hasil sebelum Tulis. Apa kata mesin?", "Mengapa bilangan asli ditulis berpenyebut satu?", "Mengapa penyebut hasil tidak ikut berubah ukurannya?"],
+  B: ["Ketuk stasiun Cek sebelum Kebalikan. Apa kata mesin?", "Mengapa pembagi harus dibalik sebelum dikali?", "Mengapa hasil dikali pembagi kembali ke bilangan awal?"],
 };
 
 const LAB: Record<HurufK6B1, { id: string; nama: string }> = {
   A: { id: "kali", nama: "Lab Kali Pecahan" },
+  B: { id: "bagi", nama: "Lab Bagi Pecahan" },
 };
 
-function LabSub({ speakGuru, lapor }: { huruf: HurufK6B1; speakGuru: (t: string) => void; lapor: (k: KeadaanK6Bab1) => void }) {
+function LabSub({ huruf, speakGuru, lapor }: { huruf: HurufK6B1; speakGuru: (t: string) => void; lapor: (k: KeadaanK6Bab1) => void }) {
+  if (huruf === "B") return <SimulasiLabBagiK6B1 speakGuru={speakGuru} onKeadaan={lapor} />;
   return <SimulasiLabKaliK6B1 speakGuru={speakGuru} onKeadaan={lapor} />;
 }
 

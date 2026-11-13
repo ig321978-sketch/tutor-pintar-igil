@@ -225,6 +225,226 @@
           }
         ]
       }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Pembagian Pecahan",
+          "ikon": "➗",
+          "suara": "Ini peta pembagian pecahan. Kita belajar memotong pecahan lagi, membalik pembagi, panah silang, dan menghitung berapa kali pembagi muat. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "potong",
+            "judul": "Potong lagi",
+            "ikon": "✂️",
+            "ringkas": "Pecahan dipotong, penyebut dikali.",
+            "suara": "Potong lagi. Pecahan dibagi bilangan asli berarti tiap potongan dipotong lagi menjadi beberapa bagian sama, jadi penyebutnya dikali bilangan itu."
+          },
+          {
+            "id": "balik",
+            "judul": "Kebalikan",
+            "ikon": "🔁",
+            "ringkas": "Tukar pembilang dan penyebut.",
+            "suara": "Kebalikan. Kebalikan sebuah pecahan ditulis dengan menukar pembilang dan penyebutnya. Kebalikan tiga per satu adalah satu per tiga."
+          },
+          {
+            "id": "silang",
+            "judul": "Panah silang",
+            "ikon": "✖️",
+            "ringkas": "Bagi jadi kali dengan kebalikan.",
+            "suara": "Panah silang. Pembagian diganti perkalian dengan kebalikan pembagi. Lalu atas dikali atas dan bawah dikali bawah, dan hasilnya disederhanakan bila bisa."
+          },
+          {
+            "id": "muat",
+            "judul": "Berapa muat",
+            "ikon": "🥤",
+            "ringkas": "Asli dibagi pecahan makin besar.",
+            "suara": "Berapa muat. Bilangan asli dibagi pecahan kecil menghitung berapa kali pembagi muat. Pembagi lebih kecil dari satu, jadi hasilnya lebih besar. Cek dengan perkalian."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-bagian",
+            "teks": "Tiap potongan dipotong lagi",
+            "ikon": "🔪",
+            "cabang": "potong",
+            "petunjuk": "Memotong potongan itu soal potong lagi. Coba cabang lain."
+          },
+          {
+            "id": "b-peny",
+            "teks": "Penyebut dikali bilangan asli",
+            "ikon": "✖️",
+            "cabang": "potong",
+            "petunjuk": "Menghitung penyebut hasil itu soal potong lagi. Coba cabang lain."
+          },
+          {
+            "id": "b-tukar",
+            "teks": "Tukar atas dan bawah",
+            "ikon": "🔃",
+            "cabang": "balik",
+            "petunjuk": "Menukar pembilang dan penyebut itu soal kebalikan. Coba cabang lain."
+          },
+          {
+            "id": "b-asli",
+            "teks": "Asli ditulis berpenyebut satu",
+            "ikon": "1️⃣",
+            "cabang": "balik",
+            "petunjuk": "Menulis bilangan asli itu soal kebalikan. Coba cabang lain."
+          },
+          {
+            "id": "b-ganti",
+            "teks": "Bagi diganti kali",
+            "ikon": "🔁",
+            "cabang": "silang",
+            "petunjuk": "Mengganti pembagian dengan perkalian itu soal panah silang. Coba cabang lain."
+          },
+          {
+            "id": "b-rapi",
+            "teks": "Atas kali atas, bawah kali bawah",
+            "ikon": "➡️",
+            "cabang": "silang",
+            "petunjuk": "Mengalikan atas dan bawah itu soal panah silang. Coba cabang lain."
+          },
+          {
+            "id": "b-besar",
+            "teks": "Hasil lebih besar dari asli",
+            "ikon": "📈",
+            "cabang": "muat",
+            "petunjuk": "Hasil yang membesar itu soal berapa kali muat. Coba cabang lain."
+          },
+          {
+            "id": "b-cek",
+            "teks": "Cek dengan perkalian",
+            "ikon": "🔎",
+            "cabang": "muat",
+            "petunjuk": "Memeriksa hasil itu soal berapa kali muat. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Pembagian Pecahan",
+        "suara": "Ini tiga panel tentang pembagian pecahan. Ketuk kotaknya untuk membuka, lalu lihat cara memotong, dua cara dengan hasil yang sama, serta bilangan asli dibagi pecahan.",
+        "panel": [
+          {
+            "id": "b-potong-info",
+            "tipe": "buka",
+            "judul": "Potong lagi",
+            "ide": "Potongan dipotong, penyebut dikali.",
+            "suara": "Ada tiga hal tentang memotong pecahan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "setengah",
+                "label": "Setengah liter",
+                "ikon": "🥛",
+                "isi": "Untuk tiga gelas.",
+                "suara": "Ada setengah liter sirup untuk tiga gelas sama banyak.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1/2 : 3"
+                }
+              },
+              {
+                "id": "potong",
+                "label": "Potong tiga",
+                "ikon": "✂️",
+                "isi": "Tiap bagian jadi tiga.",
+                "suara": "Setengah dipotong menjadi tiga bagian sama. Potongan baru berukuran satu per enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1/2 : 3 = 1/6"
+                }
+              },
+              {
+                "id": "kecil",
+                "label": "Makin kecil",
+                "ikon": "🔬",
+                "isi": "Penyebut makin besar.",
+                "suara": "Bagian makin kecil, jadi penyebut makin besar. Dua dikali tiga sama dengan enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 × 3 = 6"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-dua-info",
+            "tipe": "banding",
+            "judul": "Dua cara, satu hasil",
+            "ide": "Potong dan kali kebalikan sama.",
+            "suara": "Lihat dua cara menghitung hal yang sama.",
+            "sisi": [
+              {
+                "id": "potong",
+                "nama": "Potong",
+                "ikon": "✂️",
+                "catatan": "Potong tiap bagian.",
+                "suara": "Dengan memotong, setengah dibagi tiga sama dengan satu per enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1/6"
+                }
+              },
+              {
+                "id": "silang",
+                "nama": "Silang",
+                "ikon": "✖️",
+                "catatan": "Kali kebalikan.",
+                "suara": "Dengan kebalikan, setengah kali satu per tiga sama dengan satu per enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1/2 × 1/3 = 1/6"
+                }
+              }
+            ],
+            "kesimpulan": "Dua cara, satu hasil."
+          },
+          {
+            "id": "b-muat-info",
+            "tipe": "buka",
+            "judul": "Berapa kali muat",
+            "ide": "Dibagi pecahan kecil, hasil membesar.",
+            "suara": "Ada tiga hal tentang bilangan asli dibagi pecahan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "gelas",
+                "label": "Tiga liter",
+                "ikon": "🥤",
+                "isi": "Gelas seperempat liter.",
+                "suara": "Tiga liter air dituang ke gelas yang berisi seperempat liter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 : 1/4"
+                }
+              },
+              {
+                "id": "balik",
+                "label": "Kali kebalikan",
+                "ikon": "🔁",
+                "isi": "Seperempat jadi empat per satu.",
+                "suara": "Kebalikan seperempat adalah empat per satu. Tiga dikali empat sama dengan dua belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 × 4/1 = 12"
+                }
+              },
+              {
+                "id": "besar",
+                "label": "Hasil membesar",
+                "ikon": "📈",
+                "isi": "Dua belas gelas.",
+                "suara": "Hasilnya dua belas gelas, lebih besar dari tiga, karena gelasnya kecil. Cek: dua belas kali seperempat sama dengan tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 × 1/4 = 3"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }
