@@ -50,3 +50,4 @@ Migrasi Kelas 5: Bab 7 sudah (`SimulasiK5Bab7`, dua sub-bab A dan B: membandingk
 Migrasi Kelas 5: Bab 8 sudah (`SimulasiK5Bab8`, tiga sub-bab A, B, dan C: mengumpulkan data, piktogram, dan diagram batang; dimuat malas lewat `next/dynamic` di registri).
 Migrasi Kelas 5: Bab 9 sudah (`SimulasiK5Bab9`, tiga sub-bab A, B, dan C: membaca, menulis, dan nilai tempat, membandingkan dan mengurutkan, serta komposisi dan dekomposisi bilangan sampai 1.000.000; dimuat malas lewat `next/dynamic` di registri).
 Migrasi Kelas 6: Bab 1 sudah (`SimulasiK6Bab1`, tiga sub-bab A, B, dan C: perkalian pecahan, pembagian pecahan, dan bilangan desimal; dimuat malas lewat `next/dynamic` di registri).
+Migrasi Kelas 6: Bab 3 sudah (`SimulasiK6Bab3`, tiga sub-bab A, B, dan C: mengonstruksi dan mengurai kubus, visualisasi spasial tiga tampak, dan lokasi pada kisi berpetak; dimuat malas lewat `next/dynamic` di registri).

@@ -381,6 +381,194 @@
           }
         ]
       }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Lokasi",
+          "ikon": "📍",
+          "suara": "Ini peta konsep lokasi pada kisi berpetak. Kita menulis letak dengan huruf lebih dulu lalu angka, menghitung jarak dari selisih huruf ditambah selisih angka, dan mencari jalur terpendek yang tidak serong. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "letak",
+            "judul": "Tulis letak",
+            "ikon": "📍",
+            "ringkas": "Huruf baris, lalu angka kolom.",
+            "suara": "Tulis letak. Huruf menunjukkan baris yang menurun dan angka menunjukkan kolom yang mendatar. Kota Makassar di peta ditulis C dua."
+          },
+          {
+            "id": "jarak",
+            "judul": "Hitung jarak",
+            "ikon": "📏",
+            "ringkas": "Selisih huruf tambah selisih angka.",
+            "suara": "Hitung jarak. Dari A tiga ke E lima, selisih huruf empat ditambah selisih angka dua sama dengan enam langkah."
+          },
+          {
+            "id": "arah",
+            "judul": "Empat arah",
+            "ikon": "🧭",
+            "ringkas": "Kanan, kiri, naik, turun saja.",
+            "suara": "Empat arah. Tiap langkah hanya kanan, kiri, naik, atau turun. Gerak serong tidak diizinkan, jadi serong dihitung dua langkah."
+          },
+          {
+            "id": "jalur",
+            "judul": "Jalur terpendek",
+            "ikon": "🛤️",
+            "ringkas": "Banyak jalur bisa sama pendek.",
+            "suara": "Jalur terpendek. Beberapa urutan gerak bisa sama pendek. Dari A satu ke B tiga ada tiga jalur terpendek, dihitung dengan menambah dua tetangga di tiap petak."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "c-huruf",
+            "teks": "Huruf ditulis dulu",
+            "ikon": "🔤",
+            "cabang": "letak",
+            "petunjuk": "Menulis huruf lebih dulu itu soal tulis letak. Coba cabang lain."
+          },
+          {
+            "id": "c-baris-kolom",
+            "teks": "Baris dan kolom",
+            "ikon": "🔢",
+            "cabang": "letak",
+            "petunjuk": "Membaca baris dan kolom itu soal tulis letak. Coba cabang lain."
+          },
+          {
+            "id": "c-selisih",
+            "teks": "Selisih huruf dan angka",
+            "ikon": "➖",
+            "cabang": "jarak",
+            "petunjuk": "Mencari selisih huruf dan angka itu soal hitung jarak. Coba cabang lain."
+          },
+          {
+            "id": "c-jumlah",
+            "teks": "Jumlahkan kedua selisih",
+            "ikon": "➕",
+            "cabang": "jarak",
+            "petunjuk": "Menjumlahkan kedua selisih itu soal hitung jarak. Coba cabang lain."
+          },
+          {
+            "id": "c-lurus",
+            "teks": "Hanya gerak lurus",
+            "ikon": "⬆️",
+            "cabang": "arah",
+            "petunjuk": "Gerak lurus saja itu soal empat arah. Coba cabang lain."
+          },
+          {
+            "id": "c-serong",
+            "teks": "Serong dua langkah",
+            "ikon": "↗️",
+            "cabang": "arah",
+            "petunjuk": "Serong yang dihitung dua langkah itu soal empat arah. Coba cabang lain."
+          },
+          {
+            "id": "c-banyak",
+            "teks": "Banyak jalur sama pendek",
+            "ikon": "🔀",
+            "cabang": "jalur",
+            "petunjuk": "Banyak jalur yang sama pendek itu soal jalur terpendek. Coba cabang lain."
+          },
+          {
+            "id": "c-tetangga",
+            "teks": "Tambah dua tetangga",
+            "ikon": "🧮",
+            "cabang": "jalur",
+            "petunjuk": "Menambah dua tetangga itu soal jalur terpendek. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Lokasi",
+        "suara": "Ini tiga panel tentang lokasi pada kisi. Ketuk kotaknya untuk membuka, lalu lihat cara menulis letak, menghitung jarak, dan mencari jalur.",
+        "panel": [
+          {
+            "id": "c-letak-info",
+            "tipe": "buka",
+            "judul": "Tulis letak",
+            "ide": "Huruf dulu, lalu angka.",
+            "suara": "Ada dua hal tentang menulis letak. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "makassar",
+                "label": "Makassar",
+                "ikon": "📍",
+                "isi": "Baris C, kolom 2.",
+                "suara": "Kota Makassar di peta berada di baris C dan kolom dua, ditulis C dua.",
+                "visual": { "jenis": "teks", "isi": "C2" }
+              },
+              {
+                "id": "terbalik",
+                "label": "Jangan terbalik",
+                "ikon": "🔄",
+                "isi": "Huruf dulu, bukan angka.",
+                "suara": "Letak ditulis huruf lebih dulu lalu angka. Dua C bukan letak yang benar.",
+                "visual": { "jenis": "teks", "isi": "C2, bukan 2C" }
+              }
+            ]
+          },
+          {
+            "id": "c-jarak-info",
+            "tipe": "buka",
+            "judul": "Hitung jarak",
+            "ide": "Selisih huruf tambah selisih angka.",
+            "suara": "Ada tiga hal tentang menghitung jarak. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "huruf",
+                "label": "Selisih huruf",
+                "ikon": "🔤",
+                "isi": "A ke E: 4 langkah.",
+                "suara": "Dari baris A ke baris E ada empat langkah petak.",
+                "visual": { "jenis": "teks", "isi": "A ke E = 4" }
+              },
+              {
+                "id": "angka",
+                "label": "Selisih angka",
+                "ikon": "🔢",
+                "isi": "3 ke 5: 2 langkah.",
+                "suara": "Dari kolom tiga ke kolom lima ada dua langkah petak.",
+                "visual": { "jenis": "teks", "isi": "3 ke 5 = 2" }
+              },
+              {
+                "id": "jumlah",
+                "label": "Jarak",
+                "ikon": "📏",
+                "isi": "Jumlahnya 6 langkah.",
+                "suara": "Empat ditambah dua sama dengan enam langkah dari A tiga ke E lima.",
+                "visual": { "jenis": "teks", "isi": "4 + 2 = 6" }
+              }
+            ]
+          },
+          {
+            "id": "c-jalur-info",
+            "tipe": "banding",
+            "judul": "Serong dan lurus",
+            "ide": "Serong tidak diizinkan.",
+            "suara": "Lihat dua cara bergerak dari A tiga ke B empat.",
+            "sisi": [
+              {
+                "id": "serong",
+                "nama": "Serong",
+                "ikon": "🚫",
+                "catatan": "Tidak diizinkan.",
+                "suara": "Gerak serong dari A tiga langsung ke B empat tidak diizinkan.",
+                "visual": { "jenis": "teks", "isi": "serong" }
+              },
+              {
+                "id": "lurus",
+                "nama": "Lurus",
+                "ikon": "✅",
+                "catatan": "Turun satu, kanan satu.",
+                "suara": "Dari A tiga ke B empat, turun satu langkah lalu kanan satu langkah, jadi jaraknya dua langkah.",
+                "visual": { "jenis": "teks", "isi": "turun 1, kanan 1 = 2" }
+              }
+            ],
+            "kesimpulan": "Jarak dihitung lewat gerak lurus."
+          }
+        ]
+      }
     }
   }
 }

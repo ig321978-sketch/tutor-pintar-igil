@@ -3,19 +3,21 @@
  * agar registri (diimpor pemutar semua bab) tidak menarik seluruh komponen laboratorium ke bundel awal.
  */
 
-export type HurufK6B3 = "A" | "B";
-const HURUF: HurufK6B3[] = ["A", "B"];
+export type HurufK6B3 = "A" | "B" | "C";
+const HURUF: HurufK6B3[] = ["A", "B", "C"];
 
 export const hurufK6B3 = (sub: string): HurufK6B3 => (HURUF.includes(sub as HurufK6B3) ? (sub as HurufK6B3) : "A");
 
 export const MISI_K6B3: Record<HurufK6B3, string> = {
   A: "Di Lab Susunan, susun lalu urai kubus sambil menghitung lantai demi lantai, hitung seluruh kubus balok termasuk yang tertutup, dan periksa agar tidak ada kubus yang melayang. Periksa dengan Mesin Susunan, lalu selesaikan skenario Tigor dan Tenri Susun Rumah Kubus. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
   B: "Di Lab Tampak, catat tinggi tiap petak alas dalam matriks, ambil tinggi terbesar tiap kolom atau baris untuk tampak depan dan samping, hitung petak terisi untuk tampak atas, lalu cocokkan ketiga tampak. Periksa dengan Mesin Tampak, lalu selesaikan skenario Anike Menggambar Tiga Arah. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
+  C: "Di Lab Petak, tulis letak titik pada kisi dengan huruf baris lebih dulu lalu angka kolom, hitung jarak dari selisih huruf ditambah selisih angka tanpa gerak serong, lalu cari langkah terpendek dan hitung banyak jalur yang sama pendek. Periksa dengan Mesin Petak, lalu selesaikan skenario Tigor dan Tenri di Denah Kelas. Selesaikan semua misi wajib, boleh mulai dari mana saja.",
 };
 
 export const NAMA_SIM_K6B3: Record<HurufK6B3, string> = {
   A: "Lab Susunan, Mesin Susunan, dan Tigor dan Tenri Susun Rumah Kubus",
   B: "Lab Tampak, Mesin Tampak, dan Anike Menggambar Tiga Arah",
+  C: "Lab Petak, Mesin Petak, dan Tigor dan Tenri di Denah Kelas",
 };
 
 /** Misi simulasi pertama sub-bab, digabung ke ucapan saat tahap Simulasi dibuka. */

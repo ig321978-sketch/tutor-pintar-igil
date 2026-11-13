@@ -38,6 +38,7 @@ export function kataK6B3(n: number): string {
 /** Ubah kalimat berangka menjadi kalimat yang enak dibaca suara guru. */
 export function ejaK6B3(teks: string): string {
   return teks
+    .replace(/(\d)([A-H])(?![A-Za-z0-9])/g, "$1 $2")
     .replace(/\b([A-H])(?=\d)/g, (_, h: string) => `${NAMA_HURUF_K6B3[h]} `)
     .replace(/(?<![A-Za-z0-9])([A-H])(?![A-Za-z0-9])/g, (_, h: string) => NAMA_HURUF_K6B3[h])
     .replace(/ ?× ?/g, " kali ")

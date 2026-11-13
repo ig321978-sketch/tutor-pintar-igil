@@ -5,6 +5,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k6b3.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K6B3A: Tigor dan Tenri Susun Rumah Kubus (Construct-Decompose Protocol, Layer Counting Method, dan Hidden Support Rule)
  *  - SKENARIO_K6B3B: Anike Menggambar Tiga Arah (Orthographic Projection Protocol, Height-Matrix Silhouette, dan Occlusion Max Rule)
+ *  - SKENARIO_K6B3C: Tigor dan Tenri di Denah Kelas (Grid Coordinate Naming, Manhattan Path Distance, dan Shortest Grid Path)
  */
 
 export const SKENARIO_K6B3A: DefSkenario = {
@@ -171,6 +172,90 @@ export const SKENARIO_K6B3B: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Orthographic Projection Protocol: gambar tampak depan, samping, dan atas tanpa perspektif, dan dari atas tinggi tidak terlihat. Height-Matrix Silhouette: catat tinggi tiap petak alas dalam matriks. Occlusion Max Rule: dari depan atau samping, tiap kolom atau baris menampilkan tinggi terbesarnya.",
+    },
+  ],
+};
+
+export const SKENARIO_K6B3C: DefSkenario = {
+  id: "tigor-denah-k6b3",
+  judul: "Tigor dan Tenri di Denah Kelas",
+  latar: "Bantu Tigor dan Tenri menulis letak dan menghitung jarak di denah kelas berpetak.",
+  tokoh: "👦",
+  nama: "Tigor",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Tigor, bersama Tenri. Denah kelas kami berpetak: huruf A sampai F menurun, dan angka 1 sampai 6 mendatar. Kursiku di C2, seperti kota Makassar di peta. Ayo kita tulis letak, hitung jarak, dan cari jalur terpendek!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "nama",
+      jenis: "pilih",
+      cerita: "Grid Coordinate Naming: tulis huruf baris lebih dulu, lalu angka kolom. Kursi Tenri ada di baris E dan kolom 5. Letaknya ditulis …",
+      opsi: [
+        { teks: "5E", benar: false, umpan: "Urutannya terbalik. Huruf baris ditulis lebih dulu, lalu angka kolom." },
+        { teks: "E5", benar: true, umpan: "Betul! Baris E dan kolom 5 ditulis E5: huruf dulu, lalu angka." },
+        { teks: "C2", benar: false, umpan: "C2 adalah kursiku. Kursi Tenri ada di baris E dan kolom 5." },
+      ],
+    },
+    {
+      id: "hitung",
+      jenis: "hitung",
+      cerita: "Aku berjalan lurus di baris A dari kolom 1 ke kolom 5. Satu stik mewakili satu langkah petak.",
+      tanya: "Ketuk satu stik tiap langkah. Dari A1 ke A5, ada berapa langkah?",
+      objek: "stik",
+      jumlah: 4,
+      sukses: "Betul! Dari kolom 1 ke kolom 5 ada 4 langkah petak.",
+      salah: "Hmm, ketuk satu stik tiap langkah dari satu petak ke petak berikutnya, lalu hitung lagi.",
+    },
+    {
+      id: "jarak",
+      jenis: "soal",
+      cerita: "Manhattan Path Distance: jarak adalah selisih huruf ditambah selisih angka. Dari A3 ke E5, Tenri hanya boleh bergerak kanan, kiri, naik, atau turun.",
+      soal: [
+        { teks: "Selisih huruf dari baris A ke baris E ada … langkah.", jawaban: "4", opsi: ["4", "2", "6"] },
+        { teks: "Jarak dari A3 ke E5 ada … langkah.", jawaban: "6", opsi: ["2", "6", "8"] },
+      ],
+      sukses: "Hebat! Selisih huruf 4 ditambah selisih angka 2 sama dengan 6 langkah.",
+      salah: "Hmm, hitung selisih huruf, lalu selisih angka, kemudian jumlahkan. Coba lagi.",
+    },
+    {
+      id: "serong",
+      jenis: "pilih",
+      cerita: "Tenri ingin melompat serong dari A3 langsung ke B4 dengan satu langkah. Apakah boleh?",
+      opsi: [
+        { teks: "Tidak boleh, serong dihitung dua langkah", benar: true, umpan: "Betul! Dari A3 ke B4 ada selisih huruf 1 dan selisih angka 1, jadi jaraknya 2 langkah." },
+        { teks: "Boleh, serong dihitung satu langkah", benar: false, umpan: "Serong tidak diizinkan. Tiap langkah hanya kanan, kiri, naik, atau turun." },
+        { teks: "Boleh, asalkan hurufnya sama", benar: false, umpan: "Soal serong bukan tentang huruf yang sama. Tiap langkah hanya satu arah lurus." },
+      ],
+    },
+    {
+      id: "kubus",
+      jenis: "isi",
+      cerita: "Sebuah kubus dipindah dari F1 ke D2. Selisih huruf 2 dan selisih angka 1. Masukkan satu stik untuk tiap langkah minimal.",
+      objek: "stik",
+      target: 3,
+      maks: 8,
+      sukses: "Betul! F1 ke D2 butuh 2 + 1 = 3 langkah minimal.",
+      kurang: "Langkahnya masih kurang. Tambah lagi sampai pas jarak minimalnya.",
+      lebih: "Langkahnya kelebihan. Kurangi sampai pas jarak minimalnya.",
+    },
+    {
+      id: "jalur",
+      jenis: "soal",
+      cerita: "Shortest Grid Path: beberapa jalur bisa sama pendek. Dari A1 ke B3, ada selisih huruf 1 dan selisih angka 2.",
+      soal: [
+        { teks: "Langkah terpendek dari A1 ke B3 ada … langkah.", jawaban: "3", opsi: ["2", "3", "4"] },
+        { teks: "Banyak jalur terpendek dari A1 ke B3 ada … jalur.", jawaban: "3", opsi: ["6", "3", "2"] },
+      ],
+      sukses: "Betul! Jaraknya 3 langkah, dan ada 3 urutan gerak yang sama pendek: turun lebih dulu, di tengah, atau di akhir.",
+      salah: "Hmm, jumlahkan selisih huruf dan selisih angka untuk langkah, lalu hitung urutan gerak yang berbeda. Coba lagi.",
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Grid Coordinate Naming: tulis letak dengan huruf dulu, lalu angka. Manhattan Path Distance: jarak sama dengan selisih huruf ditambah selisih angka, tanpa serong. Shortest Grid Path: beberapa jalur bisa sama pendek.",
     },
   ],
 };
