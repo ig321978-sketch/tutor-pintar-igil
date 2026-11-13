@@ -4,14 +4,12 @@ import React from "react";
 
 import {
   BandingSvg,
-  BangunKeliling,
   BangunLuas,
   BatangPecahanSvg,
   DeretSvg,
   LabelSvg,
   PapanDigit,
   PizzaSvg,
-  SegitigaKeliling,
   SudutSvg,
   SusunSvg,
   progresDari,
@@ -153,59 +151,6 @@ export function visualK5(kode: string, v: number, a: number, k: number, t = 0): 
         {k >= 2 ? (
           <LabelSvg x={40} y={40} w={120} teks={deg === 90 ? "siku-siku" : deg > 90 ? "tumpul" : "lancip"} ukuran={12} warna={ORANYE} />
         ) : null}
-      </>
-    );
-  }
-
-  if (bab === "k5b7") {
-    if (sub === "a") {
-      // Video A: klasifikasi sudut & sisi — bentuk harus cocok teks
-      if (v === 0) {
-        if (k <= 1) return <SegitigaKeliling sisi={[5, 5, 5]} tandaSama jalan={k === 0 ? p : 1} tampilJumlah={false} />;
-        if (k === 2) {
-          const ganti = p < 0.5;
-          return (
-            <>
-              <SegitigaKeliling sisi={ganti ? [5, 5, 5] : [6, 6, 4]} tandaSama jalan={1} tampilJumlah={false} />
-              <LabelSvg x={80} y={175} w={140} teks={ganti ? "sama sisi?" : "sama kaki?"} ukuran={12} warna={HIJAU} />
-            </>
-          );
-        }
-        return <SegitigaKeliling sisi={[5, 4, 6]} jalan={1} tampilJumlah={false} />;
-      }
-      if (v === 1) {
-        // lancip → siku → tumpul
-        if (k <= 1) return <SegitigaKeliling sisi={[6, 5, 4]} jalan={progresDari(t, 5)} tampilJumlah={false} />;
-        if (k === 2) return <SegitigaKeliling sisi={[3, 4, 5]} jalan={1} tampilJumlah={false} tandaSiku />;
-        return (
-          <>
-            <SegitigaKeliling sisi={[2, 5, 6]} jalan={1} tampilJumlah={false} />
-            <LabelSvg x={80} y={175} w={140} teks="tumpul" ukuran={12} warna={ORANYE} />
-          </>
-        );
-      }
-      // v2: sama kaki / sama sisi / sembarang / hierarki
-      if (k === 0) return <SegitigaKeliling sisi={[6, 6, 4]} tandaSama jalan={p} tampilJumlah={false} />;
-      if (k === 1) return <SegitigaKeliling sisi={[5, 5, 5]} tandaSama jalan={1} tampilJumlah={false} />;
-      if (k === 2) {
-        return (
-          <>
-            <SegitigaKeliling sisi={[6, 5, 4]} jalan={1} tampilJumlah={false} />
-            <LabelSvg x={80} y={175} w={140} teks="sembarang" ukuran={12} />
-          </>
-        );
-      }
-      return (
-        <>
-          <SegitigaKeliling sisi={[5, 5, 5]} tandaSama jalan={1} tampilJumlah={false} />
-          <LabelSvg x={70} y={40} w={160} teks="sama sisi ⊂ sama kaki" ukuran={11} warna={HIJAU} />
-        </>
-      );
-    }
-    return (
-      <>
-        <BangunKeliling sisi={[4, 6, 4, 6]} w={140} h={70} x={80} y={50} jalan={k === 0 ? p : k >= 2 ? 1 : progresDari(t, 5.5)} tampilJumlah={k >= 2} />
-        {k >= 3 ? <LabelSvg x={90} y={160} w={120} teks="segi empat" ukuran={12} /> : null}
       </>
     );
   }
