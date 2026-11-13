@@ -5,6 +5,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k6b1.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K6B1A: Agam dan Kebun Ayah (Area Model, Whole-as-Fraction, Panah Lurus, dan urutan kali)
  *  - SKENARIO_K6B1B: Agam, Gelas, dan Sirup (Partition Division, Reciprocal, Cross-Arrow Divide, dan Measurement Division)
+ *  - SKENARIO_K6B1C: Agam, Timbangan, dan Lompat Jauh (Equivalent Fraction to Tenths/Hundredths, Grid Tenths-Hundredths Link, Decimal Place-Value Chart, dan Decimal Compare-and-Order)
  */
 
 export const SKENARIO_K6B1A: DefSkenario = {
@@ -171,6 +172,90 @@ export const SKENARIO_K6B1B: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Pecahan dibagi bilangan asli dipotong lagi, penyebutnya dikali. Pembagi dibalik, pembagian menjadi perkalian, atas dikali atas dan bawah dikali bawah. Bilangan asli dibagi pecahan muat lebih banyak kali, jadi hasilnya membesar, dan hasil bisa dicek dengan perkalian.",
+    },
+  ],
+};
+
+export const SKENARIO_K6B1C: DefSkenario = {
+  id: "agam-timbangan-k6b1",
+  judul: "Agam, Timbangan, dan Lompat Jauh",
+  latar: "Bantu Agam membaca desimal di timbangan pasar dan lomba lompat jauh.",
+  tokoh: "👦",
+  nama: "Agam",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Agam. Di pasar, timbangan menulis 0,50 untuk 1/2 kilogram jeruk. Desimal hanyalah cara lain menulis pecahan. Ayo ubah pecahan menjadi desimal, baca tempatnya, lalu bandingkan dan urutkan!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "setengah",
+      jenis: "pilih",
+      cerita: "Equivalent Fraction to Tenths: 1/2 × 5/5 = 5/10. Penyebut 10 berarti satu angka di belakang koma. Bagaimana menulis 5/10 sebagai desimal?",
+      opsi: [
+        { teks: "5,0", benar: false, umpan: "Itu bilangan lima. 5/10 kurang dari satu, jadi bagian bulatnya nol." },
+        { teks: "0,5", benar: true, umpan: "Betul! 1/2 = 5/10 = 0,5. Satu angka di belakang koma karena penyebutnya 10." },
+        { teks: "0,05", benar: false, umpan: "Itu perseratusan. Penyebut 10 berarti persepuluhan, bukan perseratusan." },
+      ],
+    },
+    {
+      id: "kisi",
+      jenis: "hitung",
+      cerita: "Grid Tenths-Hundredths Link: satu utuh dibagi menjadi 10 bagian sama. Satu stik mewakili satu bagian.",
+      tanya: "Ketuk semua stik. Ada berapa bagian sama dalam satu utuh?",
+      objek: "stik",
+      jumlah: 10,
+      sukses: "Betul! 10 bagian sama, tiap bagian 1/10 = 0,1. Lima bagian terarsir sama dengan 5/10 = 0,5.",
+      salah: "Hmm, ketuk tiap stik sekali saja untuk satu bagian, lalu hitung lagi.",
+    },
+    {
+      id: "tempat",
+      jenis: "soal",
+      cerita: "Decimal Place-Value Chart: kolomnya satuan, koma, persepuluhan, dan perseratusan. Pada 3,7 ada 3 satuan dan 7 persepuluhan.",
+      soal: [
+        { teks: "Pada 3,7, angka 7 ada di tempat …", jawaban: "persepuluhan", opsi: ["satuan", "persepuluhan", "perseratusan"] },
+        { teks: "0,25 dibaca …", jawaban: "nol koma dua lima", opsi: ["nol koma dua lima", "nol koma dua puluh lima", "dua puluh lima koma nol"] },
+      ],
+      sukses: "Hebat! 7 ada di persepuluhan, bernilai 7 × 1/10 = 7/10, dan 0,25 dibaca nol koma dua lima.",
+      salah: "Hmm, kiri koma adalah satuan, lalu persepuluhan, lalu perseratusan. Baca angka di belakang koma satu per satu. Coba lagi.",
+    },
+    {
+      id: "ubah",
+      jenis: "soal",
+      cerita: "Pecahan dengan penyebut 2, 5, atau kelipatannya mudah diubah ke penyebut 10 atau 100 dengan mengalikan pembilang dan penyebut.",
+      soal: [
+        { teks: "1/5 = 1/5 × 2/2 = 2/10 = …", jawaban: "0,2", opsi: ["2,0", "0,02", "0,2"] },
+        { teks: "1/4 = 1/4 × 25/25 = 25/100 = …", jawaban: "0,25", opsi: ["0,25", "2,5", "0,025"] },
+      ],
+      sukses: "Tepat! 1/5 = 0,2 dan 1/4 = 0,25. Penyebut 10 memberi satu angka, penyebut 100 memberi dua angka di belakang koma.",
+      salah: "Hmm, ubah penyebut menjadi 10 atau 100, lalu hitung angka di belakang koma. Coba lagi.",
+    },
+    {
+      id: "lompat",
+      jenis: "isi",
+      cerita: "Didi melompat 4,05 meter. Angka 5 ada di tempat perseratusan, jadi ada 5 perseratusan. Masukkan satu stik untuk tiap perseratusan.",
+      objek: "stik",
+      target: 5,
+      maks: 9,
+      sukses: "Betul! 4,05 punya 4 satuan, 0 persepuluhan, dan 5 perseratusan.",
+      kurang: "Perseratusannya masih kurang. Tambah lagi sampai 5.",
+      lebih: "Perseratusannya kelebihan. Kurangi sampai 5.",
+    },
+    {
+      id: "banding",
+      jenis: "pilih",
+      cerita: "Decimal Compare-and-Order: Arman melompat 4,5 meter dan Bayu 4,05 meter. Samakan dulu angka di belakang koma: 4,5 = 4,50. Siapa melompat lebih jauh?",
+      opsi: [
+        { teks: "Arman, karena 4,50 lebih besar dari 4,05", benar: true, umpan: "Betul! Bandingkan dari kiri: satuan sama, persepuluhan 5 lebih besar dari 0. Jadi 4,5 > 4,05." },
+        { teks: "Bayu, karena 4,05 punya angka lebih panjang", benar: false, umpan: "Panjang angka bukan besar nilai. Samakan 4,5 menjadi 4,50 lalu bandingkan dari kiri." },
+        { teks: "Sama jauh", benar: false, umpan: "Tidak sama. 4,5 sama dengan 4,50, sedangkan 4,05 berbeda di persepuluhan." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Pecahan diubah ke penyebut 10 atau 100 lalu ditulis sebagai desimal. Kolom desimal: satuan, persepuluhan, perseratusan, dan dibaca angka demi angka setelah koma. Untuk membandingkan, samakan banyak angka di belakang koma lalu bandingkan dari kiri.",
     },
   ],
 };

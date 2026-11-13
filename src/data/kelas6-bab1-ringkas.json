@@ -445,6 +445,226 @@
           }
         ]
       }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Bilangan Desimal",
+          "ikon": "🔢",
+          "suara": "Ini peta bilangan desimal. Kita belajar mengubah pecahan ke desimal, tabel tempat, membaca desimal, serta membandingkan dan mengurutkan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "ubah",
+            "judul": "Ubah ke desimal",
+            "ikon": "🔄",
+            "ringkas": "Penyebut jadi sepuluh atau seratus.",
+            "suara": "Ubah ke desimal. Pecahan diubah menjadi penyebut sepuluh atau seratus dengan mengalikan pembilang dan penyebut, lalu ditulis sebagai desimal. Setengah sama dengan lima per sepuluh sama dengan nol koma lima."
+          },
+          {
+            "id": "tempat",
+            "judul": "Tabel tempat",
+            "ikon": "🧮",
+            "ringkas": "Satuan, persepuluhan, perseratusan.",
+            "suara": "Tabel tempat. Kolomnya satuan, koma, persepuluhan, dan perseratusan. Pada tiga koma tujuh, ada tiga satuan dan tujuh persepuluhan."
+          },
+          {
+            "id": "baca",
+            "judul": "Baca desimal",
+            "ikon": "📖",
+            "ringkas": "Angka setelah koma satu per satu.",
+            "suara": "Baca desimal. Baca bagian bulat, ucapkan koma, lalu baca tiap angka di belakang koma satu per satu. Nol koma dua lima dibaca nol koma dua lima."
+          },
+          {
+            "id": "urut",
+            "judul": "Banding dan urut",
+            "ikon": "⚖️",
+            "ringkas": "Samakan angka, banding dari kiri.",
+            "suara": "Banding dan urut. Samakan banyak angka di belakang koma, lalu bandingkan dari kiri: satuan, persepuluhan, perseratusan."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "c-kali",
+            "teks": "Kali pembilang dan penyebut",
+            "ikon": "✖️",
+            "cabang": "ubah",
+            "petunjuk": "Mengubah penyebut itu soal ubah ke desimal. Coba cabang lain."
+          },
+          {
+            "id": "c-sepuluh",
+            "teks": "Penyebut sepuluh atau seratus",
+            "ikon": "🔟",
+            "cabang": "ubah",
+            "petunjuk": "Memilih penyebut tujuan itu soal ubah ke desimal. Coba cabang lain."
+          },
+          {
+            "id": "c-sat",
+            "teks": "Satuan, persepuluhan, perseratusan",
+            "ikon": "🧮",
+            "cabang": "tempat",
+            "petunjuk": "Nama kolom itu soal tabel tempat. Coba cabang lain."
+          },
+          {
+            "id": "c-nilai",
+            "teks": "Nilai angka kali nilai tempat",
+            "ikon": "💎",
+            "cabang": "tempat",
+            "petunjuk": "Nilai angka itu soal tabel tempat. Coba cabang lain."
+          },
+          {
+            "id": "c-koma",
+            "teks": "Ucapkan kata koma",
+            "ikon": "🗣️",
+            "cabang": "baca",
+            "petunjuk": "Ucapan koma itu soal baca desimal. Coba cabang lain."
+          },
+          {
+            "id": "c-satu",
+            "teks": "Angka setelah koma satu per satu",
+            "ikon": "1️⃣",
+            "cabang": "baca",
+            "petunjuk": "Membaca angka itu soal baca desimal. Coba cabang lain."
+          },
+          {
+            "id": "c-sama",
+            "teks": "Samakan angka di belakang koma",
+            "ikon": "📏",
+            "cabang": "urut",
+            "petunjuk": "Menyamakan panjang itu soal banding dan urut. Coba cabang lain."
+          },
+          {
+            "id": "c-kiri",
+            "teks": "Banding dari kiri",
+            "ikon": "⬅️",
+            "cabang": "urut",
+            "petunjuk": "Membandingkan dari kiri itu soal banding dan urut. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Bilangan Desimal",
+        "suara": "Ini tiga panel tentang bilangan desimal. Ketuk kotaknya untuk membuka, lalu lihat cara mengubah pecahan, bilangan yang nilainya sama, serta cara membandingkan dan mengurutkan.",
+        "panel": [
+          {
+            "id": "c-ubah-info",
+            "tipe": "buka",
+            "judul": "Pecahan ke desimal",
+            "ide": "Penyebut sepuluh, lalu tulis desimal.",
+            "suara": "Ada tiga hal tentang mengubah pecahan ke desimal. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "kali",
+                "label": "Kali sama",
+                "ikon": "✖️",
+                "isi": "Atas dan bawah dikali lima.",
+                "suara": "Setengah dikali lima per lima sama dengan lima per sepuluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1/2 × 5/5 = 5/10"
+                }
+              },
+              {
+                "id": "tulis",
+                "label": "Tulis desimal",
+                "ikon": "✏️",
+                "isi": "Lima persepuluh jadi nol koma lima.",
+                "suara": "Lima per sepuluh ditulis nol koma lima. Satu angka di belakang koma karena penyebutnya sepuluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5/10 = 0,5"
+                }
+              },
+              {
+                "id": "kisi",
+                "label": "Kisi seratus",
+                "ikon": "🔲",
+                "isi": "Seperempat sama dengan dua puluh lima.",
+                "suara": "Seperempat sama dengan dua puluh lima per seratus, ditulis nol koma dua lima. Dua angka di belakang koma.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1/4 = 25/100 = 0,25"
+                }
+              }
+            ]
+          },
+          {
+            "id": "c-sama-info",
+            "tipe": "banding",
+            "judul": "Nilai yang sama",
+            "ide": "Nol di ujung tidak mengubah nilai.",
+            "suara": "Lihat dua tulisan dengan nilai yang sama.",
+            "sisi": [
+              {
+                "id": "satu",
+                "nama": "Satu angka",
+                "ikon": "1️⃣",
+                "catatan": "Persepuluhan saja.",
+                "suara": "Nol koma lima punya satu angka di belakang koma.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "0,5"
+                }
+              },
+              {
+                "id": "dua",
+                "nama": "Dua angka",
+                "ikon": "2️⃣",
+                "catatan": "Nol di ujung.",
+                "suara": "Nol koma lima nol punya dua angka di belakang koma. Nilainya sama dengan nol koma lima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "0,50"
+                }
+              }
+            ],
+            "kesimpulan": "Nilainya sama."
+          },
+          {
+            "id": "c-urut-info",
+            "tipe": "buka",
+            "judul": "Banding dan urut",
+            "ide": "Samakan angka, banding dari kiri.",
+            "suara": "Ada tiga hal tentang membandingkan desimal. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "samakan",
+                "label": "Samakan",
+                "ikon": "📏",
+                "isi": "Empat koma lima jadi empat koma lima nol.",
+                "suara": "Empat koma lima ditulis empat koma lima nol supaya panjang angka sama.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4,5 = 4,50"
+                }
+              },
+              {
+                "id": "kiri",
+                "label": "Dari kiri",
+                "ikon": "⬅️",
+                "isi": "Satuan, lalu persepuluhan.",
+                "suara": "Bandingkan dari kiri. Satuannya sama, persepuluhan lima lebih besar dari nol, jadi empat koma lima nol lebih besar dari empat koma nol lima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4,50 > 4,05"
+                }
+              },
+              {
+                "id": "urut",
+                "label": "Urutkan",
+                "ikon": "📶",
+                "isi": "Dari kecil ke besar.",
+                "suara": "Urutan dari kecil ke besar: dua koma delapan lima, dua koma sembilan, tiga koma nol tujuh, tiga koma tujuh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2,85 < 2,9 < 3,07 < 3,7"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

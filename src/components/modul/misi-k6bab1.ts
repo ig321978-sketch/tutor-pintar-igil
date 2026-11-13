@@ -5,15 +5,17 @@
  * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
  *  A Perkalian Pecahan : Lab Kali Pecahan (Luas, Panah, Tukar) + Mesin Kali Pecahan + Agam dan Kebun Ayah
  *  B Pembagian Pecahan : Lab Bagi Pecahan (Potong, Silang, Muat) + Mesin Bagi Pecahan + Agam, Gelas, dan Sirup
+ *  C Bilangan Desimal  : Lab Desimal (Ubah, Tempat, Urut) + Mesin Desimal + Agam, Timbangan, dan Lompat Jauh
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanKaliK6B1A } from "./lab-kali-k6b1a";
 import type { KeadaanBagiK6B1B } from "./lab-bagi-k6b1b";
+import type { KeadaanDesK6B1C } from "./lab-desimal-k6b1c";
 
-export type KeadaanK6Bab1 = KeadaanKaliK6B1A | KeadaanBagiK6B1B | KeadaanSelesai;
-export type HurufMisiK6B1 = "A" | "B";
+export type KeadaanK6Bab1 = KeadaanKaliK6B1A | KeadaanBagiK6B1B | KeadaanDesK6B1C | KeadaanSelesai;
+export type HurufMisiK6B1 = "A" | "B" | "C";
 
 const selesai = (k: KeadaanK6Bab1, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
@@ -21,8 +23,8 @@ const pernah = (k: KeadaanK6Bab1, alat: string, ...id: string[]) => k.alat === a
 const semua = (awalan: string) => [0, 1, 2, 3, 4, 5].map((i) => `${awalan}:${i}`);
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K6B1 = { A: "agam-kebun", B: "agam-sirup" } as const;
-export const ID_MESIN_K6B1 = { A: "mesin-kali", B: "mesin-bagi" } as const;
+export const ID_SKENARIO_K6B1 = { A: "agam-kebun", B: "agam-sirup", C: "agam-timbangan" } as const;
+export const ID_MESIN_K6B1 = { A: "mesin-kali", B: "mesin-bagi", C: "mesin-desimal" } as const;
 
 export const MISI_A: DefMisi<KeadaanK6Bab1>[] = [
   { id: "a-luas", teks: "Di Luas, pakai dua ember kecil pada petak berisi lima kotak sampai hasil dua kali tiga per lima ketemu.", wajib: true, cek: (k) => pernah(k, "kali", "luas:0") },
@@ -50,5 +52,18 @@ export const MISI_B: DefMisi<KeadaanK6Bab1>[] = [
   { id: "b-muat-semua", teks: "Di Muat, selesaikan keenam soal dan cek semuanya sampai benar.", wajib: false, cek: (k) => pernah(k, "bagi", ...semua("muat")) },
 ];
 
-const DAFTAR: Record<HurufMisiK6B1, DefMisi<KeadaanK6Bab1>[]> = { A: MISI_A, B: MISI_B };
+export const MISI_C: DefMisi<KeadaanK6Bab1>[] = [
+  { id: "c-ubah", teks: "Di Ubah, ubah setengah menjadi penyebut sepuluh lalu tulis sebagai desimal.", wajib: true, cek: (k) => pernah(k, "desimal", "ubah:0") },
+  { id: "c-ubah-lima", teks: "Di Ubah, ubah seperlima menjadi penyebut sepuluh lalu tulis sebagai desimal.", wajib: true, cek: (k) => pernah(k, "desimal", "ubah:1") },
+  { id: "c-tempat", teks: "Di Tempat, tentukan tempat, nilai, dan bacaan angka tujuh pada tiga koma tujuh.", wajib: true, cek: (k) => pernah(k, "desimal", "tempat:0") },
+  { id: "c-tempat-seratus", teks: "Di Tempat, tentukan tempat, nilai, dan bacaan angka lima pada dua koma delapan lima.", wajib: true, cek: (k) => pernah(k, "desimal", "tempat:1") },
+  { id: "c-urut", teks: "Di Urut, samakan angka di belakang koma, cari yang terkecil, lalu urutkan empat desimal dari kecil ke besar.", wajib: true, cek: (k) => pernah(k, "desimal", "urut:0") },
+  { id: "c-mesin", teks: "Selesaikan Mesin Desimal sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K6B1.C) },
+  { id: "c-skenario", teks: "Selesaikan skenario Agam, Timbangan, dan Lompat Jauh sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K6B1.C) },
+  { id: "c-ubah-semua", teks: "Di Ubah, selesaikan keenam soal sampai semuanya benar.", wajib: false, cek: (k) => pernah(k, "desimal", ...semua("ubah")) },
+  { id: "c-tempat-semua", teks: "Di Tempat, selesaikan keenam soal sampai semuanya benar.", wajib: false, cek: (k) => pernah(k, "desimal", ...semua("tempat")) },
+  { id: "c-urut-semua", teks: "Di Urut, selesaikan keenam soal, dari kecil ke besar dan dari besar ke kecil, sampai semuanya benar.", wajib: false, cek: (k) => pernah(k, "desimal", ...semua("urut")) },
+];
+
+const DAFTAR: Record<HurufMisiK6B1, DefMisi<KeadaanK6Bab1>[]> = { A: MISI_A, B: MISI_B, C: MISI_C };
 export const daftarMisiK6Bab1 = (huruf: string): DefMisi<KeadaanK6Bab1>[] => DAFTAR[huruf as HurufMisiK6B1] ?? MISI_A;

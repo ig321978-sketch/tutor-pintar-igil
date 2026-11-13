@@ -12,6 +12,8 @@ import * as ME from "../src/components/modul/mesin-bertahap-k3b1.ts";
 import * as EJ from "../src/components/modul/eja-k6b1.ts";
 import * as BG from "../src/components/modul/lab-bagi-k6b1b.ts";
 import * as MB from "../src/components/modul/mesin-bagi-k6b1.ts";
+import * as DC from "../src/components/modul/lab-desimal-k6b1c.ts";
+import * as MC from "../src/components/modul/mesin-desimal-k6b1.ts";
 
 let lulus = 0;
 let gagal = 0;
@@ -764,8 +766,8 @@ const catatPesan = (s) => globalThis.__pesanA.push(s.pesan);
 
 /* ------------------------------ Misi ------------------------------ */
 {
-  sama(Object.keys(TK.MISI_K6B1), ["A", "B"], "teks misi untuk A dan B");
-  sama(Object.keys(TK.NAMA_SIM_K6B1), ["A", "B"], "nama simulasi untuk A dan B");
+  sama(Object.keys(TK.MISI_K6B1), ["A", "B", "C"], "teks misi untuk A, B, dan C");
+  sama(Object.keys(TK.NAMA_SIM_K6B1), ["A", "B", "C"], "nama simulasi untuk A, B, dan C");
   cek(TK.hurufK6B1("Z") === "A" && TK.hurufK6B1("A") === "A", "huruf tak dikenal jatuh ke A");
   cek(TK.misiAwalK6Bab1("A").startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK6Bab1("A")), "misi awal dan dapat dieja");
   const daftar = K1.daftarMisiK6Bab1("A");
@@ -1347,7 +1349,604 @@ const bentukMandiri = (p, q) => {
   sama(isi(p3, "besar"), "12 × 1/4 = 3", "ringkas B: cek perkalian");
   cek(12 * 1 * 1 === 3 * 4 * 1, "ringkas B: 12 × 1/4 = 3 benar (perkalian silang)");
   cek(!/[<>]/.test(JSON.stringify(B0)), "ringkas B: tanpa tanda banding");
-  cek(Object.keys(ringkas.subBab).join() === "A,B", "ringkas: Sub-Bab A dan B (C menyusul)");
+}
+
+/* ======================================================================================== */
+/* ====================== Sub-Bab C: Bilangan Desimal (Lab Desimal) ========================= */
+/* ======================================================================================== */
+globalThis.__pesanC = [];
+const LC = DC.langkahDesK6B1C;
+const z0 = DC.awalDesK6B1C();
+// Desimal MANDIRI: lewat pecahan desimal JavaScript dan toFixed (kode memakai bilangan bulat dikali 100 dan sisa pembagian).
+const desMin = (v100) => {
+  let t = (v100 / 100).toFixed(2);
+  if (t.endsWith(".00")) t = t.slice(0, -3);
+  else if (t.endsWith("0")) t = t.slice(0, -1);
+  return t.replace(".", ",");
+};
+const desTetap = (v100) => (v100 / 100).toFixed(2).replace(".", ",");
+const nilaiDes = (teks) => Math.round(parseFloat(teks.replace(",", ".")) * 100);
+const eja1 = (t) => t.split("").map((c) => SATU[Number(c)]).join(" ");
+const bacaDesMandiri = (v100) => {
+  const [b, f] = desMin(v100).split(",");
+  return f === undefined ? bacaMandiri(Number(b)) : `${bacaMandiri(Number(b))} koma ${eja1(f)}`;
+};
+const pengecohBacaMandiri = (v100) => {
+  const [b, f] = desMin(v100).split(",");
+  const sbBil = `${bacaMandiri(Number(b))} koma ${bacaMandiri(Number(f))}`;
+  return [sbBil !== bacaDesMandiri(v100) ? sbBil : `${bacaMandiri(Number(b))} ${eja1(f)}`, `${eja1(f)} koma ${bacaMandiri(Number(b))}`];
+};
+const RENCANA_UBAH = [
+  { a: 1, b: 2, t: 10, salah: ["0,05", "5,0"] },
+  { a: 1, b: 5, t: 10, salah: ["0,02", "2,0"] },
+  { a: 1, b: 4, t: 100, salah: ["2,5", "0,025"] },
+  { a: 3, b: 5, t: 10, salah: ["0,06", "6,0"] },
+  { a: 3, b: 4, t: 100, salah: ["7,5", "0,075"] },
+  { a: 1, b: 20, t: 100, salah: ["0,5", "0,005"] },
+];
+const RENCANA_TEMPAT = [
+  { v: 370, d: 7, k: 1 },
+  { v: 285, d: 5, k: 2 },
+  { v: 60, d: 6, k: 1 },
+  { v: 25, d: 5, k: 2 },
+  { v: 405, d: 4, k: 0 },
+  { v: 650, d: 6, k: 0 },
+];
+const RENCANA_URUT = [
+  { v: [370, 290, 307, 285], dari: "kecil" },
+  { v: [50, 25, 37, 10], dari: "besar" },
+  { v: [260, 310, 206, 301], dari: "kecil" },
+  { v: [60, 5, 16, 61], dari: "kecil" },
+  { v: [405, 450, 415, 425], dari: "besar" },
+  { v: [120, 102, 112, 90], dari: "kecil" },
+];
+const ALAT_C = ["ubah", "tempat", "urut"];
+const KOLOM = ["satuan", "persepuluhan", "perseratusan"];
+const SUF = ["", "/10", "/100"];
+const urutMandiri = (r) => {
+  const teks = r.v.map(desMin);
+  const naik = [...teks].sort((p, q) => parseFloat(p.replace(",", ".")) - parseFloat(q.replace(",", ".")));
+  return r.dari === "kecil" ? naik : [...naik].reverse();
+};
+const rencanaLangkahC = (alat, i) => {
+  if (alat === "ubah") {
+    const { a, b, t, salah } = RENCANA_UBAH[i];
+    const p = t / b;
+    const n = a * p;
+    const des = desMin(Math.round((n / t) * 100));
+    return [
+      { nama: "tujuan", kunci: String(t), himpunan: [t, t === 10 ? 100 : 10, b].map(String) },
+      { nama: "pengali", kunci: String(p), himpunan: [p, b, t].map(String) },
+      { nama: "pemb", kunci: String(n), himpunan: [n, a, a + p].map(String) },
+      { nama: "desimal", kunci: des, himpunan: [des, ...salah] },
+    ];
+  }
+  if (alat === "tempat") {
+    const { v, d, k } = RENCANA_TEMPAT[i];
+    const [d1, d2] = pengecohBacaMandiri(v);
+    return [
+      { nama: "tempat", kunci: KOLOM[k], himpunan: [...KOLOM] },
+      { nama: "nilai", kunci: `${d}${SUF[k]}`, himpunan: [0, 1, 2].map((q) => `${d}${SUF[q]}`) },
+      { nama: "baca", kunci: bacaDesMandiri(v), himpunan: [bacaDesMandiri(v), d1, d2] },
+    ];
+  }
+  const r = RENCANA_URUT[i];
+  const urut = urutMandiri(r);
+  const sym = r.dari === "kecil" ? " < " : " > ";
+  const x = r.v.map(desMin).find((t) => t.split(",")[1]?.length === 1);
+  const [xb, xf] = x.split(",");
+  const balik = [...urut].reverse().join(sym);
+  const bulat = [...r.v.map(desMin)].sort((p, q) => (r.dari === "kecil" ? Number(p.replace(",", "")) - Number(q.replace(",", "")) : Number(q.replace(",", "")) - Number(p.replace(",", "")))).join(sym);
+  return [
+    { nama: "samakan", kunci: `${x}0`, himpunan: [`${x}0`, `${xb},0${xf}`, `${xb}${xf},0`.replace(/^0(?=\d)/, "")] },
+    { nama: "ekstrem", kunci: urut[0], himpunan: [urut[0], urut[3], urut[1]] },
+    { nama: "urutan", kunci: urut.join(sym), himpunan: [urut.join(sym), balik, bulat] },
+  ];
+};
+const seqC = (alat, i, sampai = 99) => {
+  const l = rencanaLangkahC(alat, i);
+  const daftar = DC.daftarLangkahDes(alat, i);
+  return [{ t: "DATA", alat, i }, ...l.map((s, k) => ({ t: "JAWAB", alat, langkah: s.nama, o: daftar[k].opsi.indexOf(s.kunci) }))].slice(0, sampai);
+};
+
+/* ------------------------------ Data C sama dengan rencana ------------------------------ */
+{
+  sama(DC.SOAL_UBAH.map((s) => [s.a, s.b, s.t, s.salah]), RENCANA_UBAH.map((r) => [r.a, r.b, r.t, r.salah]), "enam soal Ubah sesuai rencana");
+  sama(DC.SOAL_TEMPAT.map((s) => [s.v, s.d, s.k]), RENCANA_TEMPAT.map((r) => [r.v, r.d, r.k]), "enam soal Tempat sesuai rencana");
+  sama(DC.SOAL_URUT.map((s) => [s.v, s.dari]), RENCANA_URUT.map((r) => [r.v, r.dari]), "enam soal Urut sesuai rencana");
+  cek(DC.SOAL_UBAH.every((s) => 100 % s.b === 0 && s.t % s.b === 0 && (s.t === 10 || s.t === 100) && s.t === (10 % s.b === 0 ? 10 : 100)), "Ubah: penyebut membagi 100, tujuan 10 bila bisa lalu 100");
+  cek(DC.SOAL_TEMPAT.every((s) => desMin(s.v).split(",")[0].length === 1) && DC.SOAL_TEMPAT.map((s) => s.k).join("").length === 6 && new Set(DC.SOAL_TEMPAT.map((s) => s.k)).size === 3, "Tempat: ketiga kolom dipakai");
+  cek(DC.SOAL_URUT.every((s) => new Set(s.v).size === 4) && DC.SOAL_URUT.some((s) => s.dari === "kecil") && DC.SOAL_URUT.some((s) => s.dari === "besar"), "Urut: empat bilangan beda, naik dan turun dipakai");
+  cek(DC.SOAL_URUT.every((s) => s.v.some((q) => q % 10 === 0 && q % 100 !== 0)), "Urut: tiap kumpulan punya bilangan satu angka di belakang koma");
+  cek(new Set([...DC.SOAL_UBAH, ...DC.SOAL_TEMPAT, ...DC.SOAL_URUT].map((s) => s.nama)).size === 18, "nama 18 soal unik");
+  // Teks desimal kode sama dengan teks mandiri (toFixed) untuk semua v 0 sampai 999.
+  let okT = true;
+  for (let v = 0; v <= 999; v += 1) {
+    if (DC.teksDes(v) !== desMin(v) || DC.teksDes(v, true) !== desTetap(v)) {
+      okT = false;
+      console.log("beda teksDes", v, DC.teksDes(v), desMin(v));
+    }
+    if (nilaiDes(DC.teksDes(v)) !== v || nilaiDes(DC.teksDes(v, true)) !== v) {
+      okT = false;
+      console.log("beda nilai", v);
+    }
+    if (v % 100 !== 0 && DC.bacaDes(v) !== bacaDesMandiri(v)) {
+      okT = false;
+      console.log("beda baca", v, DC.bacaDes(v), bacaDesMandiri(v));
+    }
+    const [p1, p2] = v % 100 !== 0 ? DC.pengecohBaca(v) : ["", ""];
+    const [q1, q2] = v % 100 !== 0 ? pengecohBacaMandiri(v) : ["", ""];
+    if (v % 100 !== 0 && desMin(v).split(",")[0] !== desMin(v).split(",")[1] && (p1 !== q1 || p2 !== q2 || p1 === DC.bacaDes(v) || p2 === DC.bacaDes(v) || p1 === p2)) {
+      okT = false;
+      console.log("beda pengecoh baca", v, p1, p2, q1, q2);
+    }
+    for (const k of [0, 1, 2]) {
+      const t = desTetap(v).replace(",", "");
+      const harap = k === 0 ? Number(t.slice(0, -2)) : Number(t[t.length - 3 + k]);
+      if (DC.digitDes(v, k) !== harap) {
+        okT = false;
+        console.log("beda digit", v, k);
+      }
+    }
+  }
+  cek(okT, "tulisan, bacaan, pengecoh bacaan, dan angka per kolom untuk semua desimal 0 sampai 9,99 sama dengan hitungan mandiri");
+  // Pembaca dan penulis desimal di mesin (berkas terpisah) sama dengan hitungan mandiri untuk semua desimal 0 sampai 9,99.
+  let okM = true;
+  for (let v = 0; v <= 999; v += 1) {
+    if (MC.teksDesimal(v) !== desMin(v)) {
+      okM = false;
+      console.log("beda teksDesimal mesin", v, MC.teksDesimal(v), desMin(v));
+    }
+    if (v % 100 !== 0 && MC.bacaDesimal(v) !== bacaDesMandiri(v)) {
+      okM = false;
+      console.log("beda bacaDesimal mesin", v, MC.bacaDesimal(v), bacaDesMandiri(v));
+    }
+    if (v % 100 !== 0 && desMin(v).split(",")[0] !== desMin(v).split(",")[1]) {
+      const [m1, m2] = MC.pengecohBaca(v);
+      const [q1, q2] = pengecohBacaMandiri(v);
+      if (m1 !== q1 || m2 !== q2) {
+        okM = false;
+        console.log("beda pengecohBaca mesin", v, m1, m2, q1, q2);
+      }
+    }
+  }
+  cek(okM, "tulisan dan bacaan desimal di mesin sama dengan hitungan mandiri untuk semua desimal 0 sampai 9,99");
+  for (const v of [12, 11, 19, 20, 21, 30, 99, 10, 1, 9]) cek(DC.bacaDes(v) === bacaDesMandiri(v) || v % 100 === 0, `bacaan desimal ${desMin(v)} di lab`);
+  // Nilai hasil ubah: a/b = n/t = desimal, dicek lewat perkalian silang dan nilai desimal.
+  for (const [i, r] of RENCANA_UBAH.entries()) {
+    const s = DC.SOAL_UBAH[i];
+    const n = DC.pembilangBaru(s);
+    cek(r.a * r.t === r.b * n && DC.pengaliUbah(s) * r.b === r.t, `ubah ${i}: ${r.a}/${r.b} = ${n}/${r.t} (perkalian silang)`);
+    cek(DC.nilaiUbah(s) * r.b === r.a * 100 && DC.teksDes(DC.nilaiUbah(s)) === desMin(Math.round((r.a / r.b) * 100)), `ubah ${i}: nilai desimal ${DC.teksDes(DC.nilaiUbah(s))} sama dengan a/b`);
+    cek(!r.salah.some((t) => nilaiDes(t) === DC.nilaiUbah(s)), `ubah ${i}: pengecoh desimal beda nilai`);
+  }
+  for (const [i, r] of RENCANA_URUT.entries()) {
+    const s = DC.SOAL_URUT[i];
+    sama(DC.urutanSet(s).map((v) => desMin(v)), urutMandiri(r), `urut ${i}: urutan mandiri (pecahan desimal) sama dengan urutan kode`);
+    cek(desMin(DC.satuAngka(s)).split(",")[1].length === 1, `urut ${i}: bilangan satu angka`);
+  }
+  sama([DC.tandaUrut(DC.SOAL_URUT[0]), DC.tandaUrut(DC.SOAL_URUT[1])], [" < ", " > "], "tanda urut");
+}
+
+/* ------------------------------ Opsi C sama dengan himpunan mandiri ------------------------------ */
+{
+  const posisiRotasi = (i, r) => (3 - ((i + r) % 3)) % 3;
+  const offset = { ubah: { tujuan: 0, pengali: 1, pemb: 2, desimal: 3 }, tempat: { tempat: 0, nilai: 1, baca: 2 }, urut: { samakan: 0, ekstrem: 1, urutan: 2 } };
+  for (const alat of ALAT_C) {
+    for (let i = 0; i < 6; i += 1) {
+      const rc = rencanaLangkahC(alat, i);
+      const daftar = DC.daftarLangkahDes(alat, i);
+      cek(daftar.length === rc.length && daftar.every((l, k) => l.nama === rc[k].nama), `${alat} ${i}: urutan langkah ${rc.map((s) => s.nama).join(">")}`);
+      daftar.forEach((l, k) => {
+        sama([...l.opsi].sort(), [...rc[k].himpunan].sort(), `${alat} ${i}/${l.nama}: himpunan pilihan`);
+        cek(l.opsi[l.benar] === rc[k].kunci && new Set(l.opsi).size === 3, `${alat} ${i}/${l.nama}: kunci ${rc[k].kunci} dan tiga pilihan unik`);
+        cek(l.benar === posisiRotasi(i, offset[alat][l.nama]), `${alat} ${i}/${l.nama}: letak kunci eksak`);
+        cek(l.ok.startsWith("✅") && l.judul.length > 10 && l.awalan.length > 2, `${alat} ${i}/${l.nama}: pesan benar diawali centang dan judul ada`);
+        cek(l.opsi.every((o, n) => n === l.benar || (!l.salah(n).startsWith("✅") && l.salah(n).includes("belum tepat") && l.salah(n).length > 25)), `${alat} ${i}/${l.nama}: pesan salah jelas dan bukan sukses`);
+        globalThis.__pesanC.push(l.ok, l.judul, ...l.opsi.map((_, n) => l.salah(n)));
+      });
+    }
+    const letak = [0, 1, 2, 3, 4, 5].map((i) => DC.daftarLangkahDes(alat, i)[0].benar);
+    cek(new Set(letak).size === 3, `letak kunci langkah pertama ${alat} bervariasi (${letak.join("")})`);
+  }
+  // Pilihan yang berbeda nilainya dari kunci (tidak ada pengecoh yang sebenarnya benar).
+  for (let i = 0; i < 6; i += 1) {
+    const l = DC.langkahUbah(i)[3];
+    cek(l.opsi.filter((o) => nilaiDes(o) === nilaiDes(l.opsi[l.benar])).length === 1, `ubah ${i}: hanya satu pilihan desimal bernilai benar`);
+    const u = DC.langkahTempat(i)[2];
+    cek(new Set(u.opsi).size === 3, `tempat ${i}: tiga bacaan beda`);
+    const w = DC.langkahUrut(i)[0];
+    cek(w.opsi.filter((o) => nilaiDes(o) === nilaiDes(w.opsi[w.benar])).length === 1, `urut ${i}: hanya satu pilihan hasil samakan yang bernilai sama (${w.opsi.join(" | ")})`);
+  }
+  const ur0 = DC.langkahUrut(0)[2].opsi;
+  cek(ur0.includes("2,85 < 2,9 < 3,07 < 3,7") && ur0.includes("3,7 < 3,07 < 2,9 < 2,85") && ur0.includes("2,9 < 3,7 < 2,85 < 3,07"), "urut 0: pengecoh terbalik dan koma dihilangkan");
+}
+
+/* ------------------------------ Lab C ------------------------------ */
+{
+  sama(DC.keadaanDesK6B1C(z0), { alat: "desimal", pernah: [] }, "keadaan awal C");
+  cek(z0.pernah.length === 0 && z0.pesan === "" && ALAT_C.every((a) => z0[a].data === 0 && z0[a].tahap === 0), "awal C: kosong");
+  for (const alat of ALAT_C) {
+    for (let i = 0; i < 6; i += 1) {
+      const rc = rencanaLangkahC(alat, i);
+      const urut = seqC(alat, i);
+      let z = z0;
+      const rekam = [];
+      for (const a of urut) {
+        z = LC(z, a);
+        globalThis.__pesanC.push(z.pesan);
+        rekam.push(z);
+      }
+      cek(z.pernah.join() === `${alat}:${i}` && DC.tahapSelesaiDes(z, alat) && z[alat].tahap === rc.length, `${alat} ${i}: urutan benar menambah ${alat}:${i}`);
+      cek(!rekam.slice(0, -1).some((s) => s.pernah.length > 0), `${alat} ${i}: riwayat baru muncul di langkah terakhir`);
+      cek(rekam.slice(1).every((s, k) => s.pesan.startsWith("✅") && s[alat].tahap === k + 1), `${alat} ${i}: tiap langkah benar maju satu tahap dengan pesan sukses`);
+      const akhir = rekam[rekam.length - 1].pesan;
+      if (alat === "ubah") {
+        const r = RENCANA_UBAH[i];
+        const n = r.a * (r.t / r.b);
+        cek(rekam[1].pesan.includes(r.t === 10 ? "yaitu persepuluhan" : "yaitu perseratusan") && !rekam[1].pesan.includes(r.t === 10 ? "perseratusan" : "persepuluhan") && akhir.includes(r.t === 10 ? "Satu angka di belakang koma, yaitu persepuluhan." : "Dua angka di belakang koma, yaitu perseratusan.") && DC.langkahUbah(i)[3].salah((DC.langkahUbah(i)[3].benar + 1) % 3).includes(r.t === 10 ? "Penyebut 10: satu angka" : "Penyebut 100: dua angka"), `ubah ${i}: pesan menyebut persepuluhan atau perseratusan sesuai penyebut tujuan`);
+        cek(akhir.includes(`${r.a}/${r.b} = ${n}/${r.t} = ${rc[3].kunci}`) && rekam[1].pesan.includes(`${r.t}`) && rekam[2].pesan.includes(`${r.b} × ${r.t / r.b} = ${r.t}`) && rekam[3].pesan.includes(`${r.a} × ${r.t / r.b} = ${n}`), `ubah ${i}: pesan memuat hitungan mandiri ${n}/${r.t} = ${rc[3].kunci}`);
+      } else if (alat === "tempat") {
+        const r = RENCANA_TEMPAT[i];
+        cek(rekam[1].pesan.includes(`ada di tempat ${KOLOM[r.k]}`) && rekam[2].pesan.includes(`${r.d} × ${["1", "1/10", "1/100"][r.k]} = ${r.d}${SUF[r.k]}`) && akhir.includes(`${desMin(r.v)} dibaca ${bacaDesMandiri(r.v)}`), `tempat ${i}: pesan memuat tempat, nilai, dan bacaan mandiri`);
+      } else {
+        cek(akhir.includes(rc[2].kunci) && rekam[1].pesan.includes(`${rc[0].kunci}`) && rekam[2].pesan.includes(rc[1].kunci), `urut ${i}: pesan memuat tulisan disamakan, ekstrem, dan urutan mandiri`);
+      }
+      rc.forEach((s, k) => {
+        const awal = jalan(z0, LC, urut.slice(0, 1 + k));
+        cek(awal[alat].tahap === k, `${alat} ${i}: awal langkah ${s.nama} di tahap ${k}`);
+        const daftar = DC.daftarLangkahDes(alat, i);
+        for (let o = 0; o < 3; o += 1) {
+          const y = LC(awal, { t: "JAWAB", alat, langkah: s.nama, o });
+          const benar = daftar[k].opsi[o] === s.kunci;
+          if (benar) cek(y[alat].tahap === k + 1 && y.pesan.startsWith("✅"), `${alat} ${i}/${s.nama}: pilihan ${o} benar maju`);
+          else cek(y[alat].tahap === k && y.pernah.length === 0 && !y.pesan.startsWith("✅") && y.pesan.includes("belum tepat"), `${alat} ${i}/${s.nama}: pilihan ${o} salah ditolak`);
+          globalThis.__pesanC.push(y.pesan);
+        }
+        rc.forEach((s2, k2) => {
+          if (k2 === k) return;
+          const y = LC(awal, { t: "JAWAB", alat, langkah: s2.nama, o: 0 });
+          if (k2 < k) cek(y === awal, `${alat} ${i}: langkah ${s2.nama} yang sudah lewat tidak mengubah apa pun`);
+          else {
+            cek(y[alat].tahap === k && y.pernah.length === 0 && !y.pesan.startsWith("✅") && y.pesan.length > 10, `${alat} ${i}: langkah ${s2.nama} sebelum waktunya ditolak di tahap ${k}`);
+            globalThis.__pesanC.push(y.pesan);
+          }
+        });
+      });
+      const sudah = z;
+      for (const s of rc) for (let o = 0; o < 3; o += 1) cek(JSON.stringify(LC(sudah, { t: "JAWAB", alat, langkah: s.nama, o })) === JSON.stringify(sudah), `${alat} ${i}: setelah selesai ${s.nama}/${o} tidak mengubah`);
+    }
+  }
+  // Langkah milik tampilan lain tidak ada pada soal ini dan diabaikan.
+  {
+    const awal = jalan(z0, LC, seqC("ubah", 0, 2));
+    for (const nm of ["tempat", "nilai", "baca", "samakan", "ekstrem", "urutan"]) cek(LC(awal, { t: "JAWAB", alat: "ubah", langkah: nm, o: 0 }) === awal, `ubah: langkah ${nm} milik tampilan lain diabaikan`);
+  }
+  {
+    const y = jalan(z0, LC, [...seqC("tempat", 0), ...seqC("urut", 0, 2), { t: "DATA", alat: "tempat", i: 3 }]);
+    cek(y.tempat.data === 3 && y.tempat.tahap === 0 && y.pernah.join() === "tempat:0" && y.pesan === "" && y.urut.tahap === 1, "ganti soal Tempat mengosongkan tahap Tempat saja, riwayat tetap");
+    const ulang = jalan(z0, LC, [...seqC("ubah", 1), { t: "DATA", alat: "ubah", i: 1 }]);
+    cek(ulang.ubah.tahap === 0 && ulang.pernah.join() === "ubah:1", "soal yang sama bisa diulang, riwayat tetap");
+  }
+  const asingC = [
+    ...[-1, 6, 1.5, NaN, "1", null, undefined].flatMap((i) => ALAT_C.map((alat) => ({ t: "DATA", alat, i }))),
+    { t: "DATA", alat: "lain", i: 0 }, { t: "DATA", alat: "__proto__", i: 0 }, { t: "DATA", alat: "pernah", i: 0 }, { t: "DATA", alat: undefined, i: 0 },
+    ...[-1, 3, 7, 0.5, NaN, "1", null, undefined].flatMap((o) => ALAT_C.map((alat) => ({ t: "JAWAB", alat, langkah: DC.daftarLangkahDes(alat, 0)[0].nama, o }))),
+    { t: "JAWAB", alat: "lain", langkah: "tujuan", o: 0 }, { t: "JAWAB", alat: "pernah", langkah: "tujuan", o: 0 }, { t: "JAWAB", alat: "ubah", langkah: "tidak-ada", o: 0 }, { t: "JAWAB", alat: "ubah", langkah: undefined, o: 0 },
+    { t: "TIDAK_ADA" },
+  ];
+  const siapC = z0;
+  for (const a of asingC) cek(LC(siapC, a) === siapC, `aksi asing C diabaikan: ${JSON.stringify(a)}`);
+  sama(LC(jalan(z0, LC, seqC("ubah", 0, 3)), { t: "RESET" }), z0, "RESET C kembali ke awal");
+  cek(LC(jalan(z0, LC, seqC("ubah", 0)), { t: "PESAN_KOSONG" }).pesan === "" && LC(jalan(z0, LC, seqC("ubah", 0)), { t: "PESAN_KOSONG" }).pernah.length === 1, "PESAN_KOSONG C hanya mengosongkan pesan");
+  const aktifTes = jalan(z0, LC, seqC("ubah", 0, 3));
+  cek(DC.langkahAktifDes(aktifTes, "ubah").nama === "pemb" && DC.sudahLangkahDes(aktifTes, "ubah", "tujuan") && DC.sudahLangkahDes(aktifTes, "ubah", "pengali") && !DC.sudahLangkahDes(aktifTes, "ubah", "pemb") && !DC.sudahLangkahDes(aktifTes, "ubah", "baca"), "langkah aktif dan sudah ditempuh");
+  cek(DC.langkahAktifDes(jalan(z0, LC, seqC("urut", 0)), "urut") === null && DC.tahapSelesaiDes(jalan(z0, LC, seqC("urut", 0)), "urut"), "soal selesai: tidak ada langkah aktif");
+}
+
+/* ------------------------------ Fuzz C 20.000 aksi dengan orakel mandiri ------------------------------ */
+{
+  const acak = acakDari(20261114);
+  const o = { ubah: { data: 0, tahap: 0 }, tempat: { data: 0, tahap: 0 }, urut: { data: 0, tahap: 0 }, pernah: new Set() };
+  let z = z0;
+  const NAMA = ["tujuan", "pengali", "pemb", "desimal", "tempat", "nilai", "baca", "samakan", "ekstrem", "urutan"];
+  const terapkan = (a) => {
+    const sebelum = new Set(o.pernah);
+    const sahI = (i) => Number.isInteger(i) && i >= 0 && i < 6;
+    if (a.t === "DATA" && ALAT_C.includes(a.alat) && sahI(a.i)) o[a.alat] = { data: a.i, tahap: 0 };
+    if (a.t === "JAWAB" && ALAT_C.includes(a.alat) && Number.isInteger(a.o) && a.o >= 0 && a.o < 3) {
+      const rc = rencanaLangkahC(a.alat, o[a.alat].data);
+      const k = rc.findIndex((s) => s.nama === a.langkah);
+      if (k >= 0 && o[a.alat].tahap === k && DC.daftarLangkahDes(a.alat, o[a.alat].data)[k].opsi[a.o] === rc[k].kunci) {
+        o[a.alat].tahap += 1;
+        if (o[a.alat].tahap === rc.length) o.pernah.add(`${a.alat}:${o[a.alat].data}`);
+      }
+    }
+    if (a.t === "RESET") {
+      o.ubah = { data: 0, tahap: 0 };
+      o.tempat = { data: 0, tahap: 0 };
+      o.urut = { data: 0, tahap: 0 };
+      o.pernah = new Set();
+    }
+    return [...o.pernah].filter((v) => !sebelum.has(v));
+  };
+  const benarBerikut = (alat) => {
+    const rc = rencanaLangkahC(alat, o[alat].data);
+    const k = o[alat].tahap;
+    if (k >= rc.length) return { t: "DATA", alat, i: acak(6) };
+    return { t: "JAWAB", alat, langkah: rc[k].nama, o: DC.daftarLangkahDes(alat, o[alat].data)[k].opsi.indexOf(rc[k].kunci) };
+  };
+  const nilaiAcak = () => [0, 1, 2, 0, 1, 2, -1, 3, 1.5, NaN, 99][acak(11)];
+  let ok = true;
+  const selesai = { ubah: 0, tempat: 0, urut: 0 };
+  for (let n = 0; n < 20000 && ok; n += 1) {
+    let a;
+    if (acak(10) < 5) a = benarBerikut(ALAT_C[acak(3)]);
+    else {
+      const alat = [...ALAT_C, "lain", "pernah"][acak(5)];
+      const jenis = acak(8);
+      if (jenis === 0) a = { t: "DATA", alat, i: [0, 1, 2, 3, 4, 5, -1, 6, 2.5, NaN][acak(10)] };
+      else if (jenis === 7) a = acak(10) === 0 ? { t: "RESET" } : { t: "PESAN_KOSONG" };
+      else a = { t: "JAWAB", alat, langkah: NAMA[acak(NAMA.length)], o: nilaiAcak() };
+    }
+    const baru = terapkan(a);
+    const sebelum = z.pernah.length;
+    const sebelumZ = z;
+    z = LC(z, a);
+    if (a.t === "JAWAB" && !(Number.isInteger(a.o) && a.o >= 0 && a.o < 3)) cek(z === sebelumZ, `fuzz C ${n}: pilihan di luar batas tidak mengubah apa pun`);
+    globalThis.__pesanC.push(z.pesan);
+    if (a.t === "RESET") ok = ok && z.pernah.length === 0 && z.pesan === "";
+    else cek(z.pernah.length >= sebelum, `fuzz C ${n}: riwayat tidak dicabut`);
+    const cocok = ALAT_C.every((al) => z[al].data === o[al].data && z[al].tahap === o[al].tahap) && JSON.stringify([...z.pernah].sort()) === JSON.stringify([...o.pernah].sort());
+    if (!cocok) {
+      ok = false;
+      console.log("fuzz C beda dari orakel di langkah", n, JSON.stringify(a), JSON.stringify(z), JSON.stringify({ ...o, pernah: [...o.pernah] }));
+    }
+    if (baru.length > 0) {
+      cek(z.pesan.startsWith("✅"), `fuzz C ${n}: id baru ${baru.join()} diawali pesan sukses`);
+      selesai[baru[0].split(":")[0]] += 1;
+    }
+    cek(ALAT_C.every((al) => z[al].tahap >= 0 && z[al].tahap <= DC.daftarLangkahDes(al, z[al].data).length), `fuzz C ${n}: batas terjaga`);
+  }
+  cek(ok, "fuzz C 20.000 aksi: keadaan sama dengan orakel mandiri");
+  cek(selesai.ubah > 10 && selesai.tempat > 10 && selesai.urut > 10, `fuzz C: tiap tampilan selesai berkali-kali (${selesai.ubah}, ${selesai.tempat}, ${selesai.urut})`);
+  cek(z.pernah.every((v) => /^(ubah|tempat|urut):[0-5]$/.test(v)), "fuzz C: semua id riwayat berbentuk sah");
+}
+
+/* ------------------------------ Mesin C ------------------------------ */
+{
+  const def = MC.MESIN_DESIMAL;
+  cek(def.stasiun.length === 4 && def.kasus.length === 3, `${def.id}: empat stasiun, tiga kasus`);
+  sama(def.stasiun.map((s) => s.id), ["ubah", "baca", "tempat", "banding"], "stasiun mesin C");
+  const posisi = [];
+  for (const kasus of def.kasus) {
+    cek(kasus.langkah.length === 4, `${def.id}/${kasus.id}: empat langkah`);
+    kasus.langkah.forEach((l, i) => {
+      cek(l.stasiun === def.stasiun[i].id, `${def.id}/${kasus.id}: langkah ${i + 1} di stasiun ${def.stasiun[i].id}`);
+      cek(l.opsi.length === 3 && new Set(l.opsi).size === 3 && l.opsi.filter((v) => v === l.benar).length === 1, `${def.id}/${kasus.id}/${l.stasiun}: tiga pilihan unik, satu kunci`);
+      cek([l.tanya, l.petunjuk, ...l.opsi].every(tanpaAngka), `${def.id}/${kasus.id}/${l.stasiun}: dapat dieja`);
+      posisi.push(l.opsi.indexOf(l.benar));
+    });
+    cek(tanpaAngka(kasus.nama) && tanpaAngka(kasus.ringkas), `${def.id}/${kasus.id}: nama dan ringkas dapat dieja`);
+  }
+  cek(new Set(posisi).size === 3, `${def.id}: letak kunci bervariasi (${posisi.join("")})`);
+  for (const [s, offset] of [[0, 0], [1, 1], [2, 2], [3, 3]]) sama(def.kasus.map((k) => k.langkah[s].opsi.indexOf(k.langkah[s].benar)), [0, 1, 2].map((i) => (3 - ((i + offset) % 3)) % 3), `${def.id}: letak kunci eksak stasiun ${def.stasiun[s].id}`);
+  let x = ME.awalMesin(def);
+  let n = 0;
+  while (!x.selesai && n < 100) {
+    n += 1;
+    const l = ME.langkahAktif(x);
+    x = l ? ME.langkahMesin(x, { t: "JAWAB", nilai: l.benar }) : ME.langkahMesin(x, { t: "LANJUT" });
+  }
+  cek(x.selesai && def.selesaiId === K1.ID_MESIN_K6B1.C, `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
+  const yy = ME.awalMesin(def);
+  const l0 = ME.langkahAktif(yy);
+  const zz = ME.langkahMesin(yy, { t: "JAWAB", nilai: l0.opsi.find((v) => v !== l0.benar) });
+  cek(zz.ke === 0 && zz.ditolak === 1 && zz.pesan === l0.petunjuk, `${def.id}: jawaban salah ditolak dengan petunjuk`);
+
+  const RENCANA_M = [
+    { id: "timbangan", satuan: "kilogram", a: 1, b: 2, t: 10, salah: ["0,05", "5,0"], y: 370, d: 7, k: 1, v1: 50, v2: 50, w1: "0,5", w2: "0,50" },
+    { id: "lari", satuan: "kilometer", a: 3, b: 5, t: 10, salah: ["0,06", "6,0"], y: 285, d: 5, k: 2, v1: 260, v2: 310, w1: "2,6", w2: "3,1" },
+    { id: "lompat", satuan: "meter", a: 1, b: 4, t: 100, salah: ["2,5", "0,025"], y: 405, d: 4, k: 0, v1: 450, v2: 405, w1: "4,5", w2: "4,05" },
+  ];
+  sama(MC.KASUS_DESIMAL.map((k) => [k.id, k.satuan, k.a, k.b, k.t, k.salah, k.y, k.d, k.k, k.v1, k.v2, k.w1, k.w2]), RENCANA_M.map((r) => [r.id, r.satuan, r.a, r.b, r.t, r.salah, r.y, r.d, r.k, r.v1, r.v2, r.w1, r.w2]), "Mesin C: data tiga kasus sesuai rencana");
+  for (const [i, r] of RENCANA_M.entries()) {
+    const c = def.kasus[i];
+    const [ub, ba, te, bd] = c.langkah;
+    const n2 = r.a * (r.t / r.b);
+    const x2 = Math.round((n2 / r.t) * 100);
+    const des = desMin(x2);
+    cek(r.a * r.t === r.b * n2 && nilaiDes(r.w1) === r.v1 && nilaiDes(r.w2) === r.v2, `Mesin C ${r.id}: pecahan senilai dan tulisan banding cocok dengan nilainya`);
+    cek(ub.benar === des && ub.tanya.includes(`${r.a}/${r.b} ${r.satuan}`), `Mesin C ${r.id}: ubah ${r.a}/${r.b} = ${des}`);
+    cek(ub.tanya.includes(r.t === 10 ? "(lewat penyebut 10)" : "(lewat penyebut 100)") && ub.petunjuk.includes(`menjadi ${r.t} dengan`) && ub.petunjuk.includes(r.t === 10 ? "Satu angka" : "Dua angka"), `Mesin C ${r.id}: tanya dan petunjuk ubah sesuai penyebut ${r.t}`);
+    sama(sortir(ub.opsi), sortir([des, ...r.salah]), `Mesin C ${r.id}: pengecoh ubah`);
+    cek(!r.salah.some((t) => nilaiDes(t) === nilaiDes(des)), `Mesin C ${r.id}: pengecoh ubah beda nilai`);
+    cek(ba.benar === bacaDesMandiri(x2) && ba.tanya.includes(`${n2}/${r.t}`), `Mesin C ${r.id}: baca ${bacaDesMandiri(x2)}`);
+    sama(sortir(ba.opsi), sortir([bacaDesMandiri(x2), ...pengecohBacaMandiri(x2)]), `Mesin C ${r.id}: pengecoh baca`);
+    cek(te.benar === KOLOM[r.k] && te.tanya.includes(`Pada ${desMin(r.y)}, angka ${r.d}`), `Mesin C ${r.id}: tempat angka ${r.d} di ${KOLOM[r.k]}`);
+    sama(sortir(te.opsi), sortir(KOLOM), `Mesin C ${r.id}: tiga nama tempat`);
+    const kunciB = r.v1 === r.v2 ? "sama besar" : r.v1 > r.v2 ? `${r.w1} lebih besar` : `${r.w2} lebih besar`;
+    cek(bd.benar === kunciB && bd.tanya.includes(`${r.w1} dibandingkan dengan ${r.w2}`), `Mesin C ${r.id}: banding ${kunciB}`);
+    sama(sortir(bd.opsi), sortir([`${r.w1} lebih besar`, `${r.w2} lebih besar`, "sama besar"]), `Mesin C ${r.id}: pilihan banding`);
+    sama(c.ringkas, `${r.a}/${r.b} = ${n2}/${r.t} = ${des}, dibaca ${bacaDesMandiri(x2)}. Pada ${desMin(r.y)}, angka ${r.d} ada di tempat ${KOLOM[r.k]}. ${r.w1} dan ${r.w2}: ${kunciB}.`, `Mesin C ${r.id}: ringkas eksak`);
+  }
+  cek(def.kasus.map((k) => k.langkah[3].benar).includes("sama besar") && def.kasus.some((k) => k.langkah[3].benar === "4,5 lebih besar"), "Mesin C: ada kasus sama besar dan kasus jebakan 4,5 dan 4,05");
+}
+
+/* ------------------------------ Skenario C ------------------------------ */
+{
+  const S = SK.SKENARIO_K6B1C;
+  cek(S.adegan.length >= 5 && S.adegan.length <= 8, `${S.id}: 5 sampai 8 adegan`);
+  cek(S.adegan[0].jenis === "narasi" && S.adegan[S.adegan.length - 1].jenis === "akhir", `${S.id}: buka dan tutup`);
+  cek(new Set(S.adegan.map((a) => a.jenis)).size >= 4, `${S.id}: paling sedikit empat jenis adegan`);
+  const semuaTeks = [];
+  for (const a of S.adegan) {
+    semuaTeks.push(a.cerita);
+    for (const op of a.opsi ?? []) semuaTeks.push(op.teks, op.umpan);
+    for (const q of a.soal ?? []) semuaTeks.push(q.teks, ...q.opsi);
+    for (const f of ["tanya", "sukses", "salah", "kurang", "lebih"]) if (a[f]) semuaTeks.push(a[f]);
+  }
+  cek(semuaTeks.every(tanpaAngka), `${S.id}: semua teks dapat dieja`);
+  sama(S.id.replace(/-k6b1$/, ""), K1.ID_SKENARIO_K6B1.C, "id skenario C sesuai id misi");
+  const adegan = (id) => S.adegan.find((a) => a.id === id);
+  const setengah = adegan("setengah");
+  const kb = setengah.opsi.filter((op) => op.benar);
+  cek(kb.length === 1 && kb[0].teks === desMin(Math.round((5 / 10) * 100)) && 1 * 5 === 2 * 5 / 2 && setengah.cerita.includes("1/2 × 5/5 = 5/10"), "setengah: 5/10 = 0,5 (hitungan mandiri)");
+  cek(setengah.opsi.length === 3 && new Set(setengah.opsi.map((op) => op.teks)).size === 3 && setengah.opsi.every((op) => op.benar || nilaiDes(op.teks) !== 50), "setengah: tiga pilihan unik, pengecoh bernilai lain");
+  const kisi = adegan("kisi");
+  cek(kisi.jumlah === 10 && kisi.objek === "stik" && kisi.sukses.includes("5/10 = 0,5"), "kisi: ketuk 10 stik, 5/10 = 0,5");
+  const tempat = adegan("tempat");
+  cek(tempat.soal[0].jawaban === KOLOM[1] && tempat.soal[0].teks.includes("3,7") && "3,7".split(",")[1] === "7" && tempat.soal[1].jawaban === bacaDesMandiri(25) && tempat.soal[1].teks.includes("0,25"), "tempat: 7 di persepuluhan dan 0,25 dibaca nol koma dua lima");
+  const ubah = adegan("ubah");
+  cek(ubah.soal[0].jawaban === desMin(Math.round((2 / 10) * 100)) && ubah.soal[0].teks.includes("2/10") && ubah.soal[1].jawaban === desMin(25) && ubah.soal[1].teks.includes("25/100") && 1 * 10 === 5 * 2 && 1 * 100 === 4 * 25, "ubah: 1/5 = 2/10 = 0,2 dan 1/4 = 25/100 = 0,25");
+  for (const q of [...tempat.soal, ...ubah.soal]) cek(q.opsi.length === 3 && q.opsi.filter((v) => v === q.jawaban).length === 1 && new Set(q.opsi).size === 3, `soal "${q.teks}": tiga pilihan satu kunci`);
+  for (const q of ubah.soal) cek(q.opsi.every((v) => v === q.jawaban || nilaiDes(v) !== nilaiDes(q.jawaban)), `soal "${q.teks}": pengecoh bernilai lain`);
+  const lompat = adegan("lompat");
+  cek(lompat.target === Number(desTetap(405).split(",")[1][1]) && lompat.maks > lompat.target && lompat.objek === "stik" && lompat.cerita.includes("4,05"), "lompat: 4,05 punya 5 perseratusan");
+  const banding = adegan("banding");
+  cek(banding.opsi.filter((op) => op.benar).length === 1 && banding.opsi.find((op) => op.benar).teks.startsWith("Arman") && 450 > 405 && desTetap(450) === "4,50" && banding.opsi.find((op) => op.benar).umpan.includes("4,5 > 4,05"), "banding: 4,5 = 4,50 lebih besar dari 4,05");
+  const posisi = S.adegan.filter((a) => a.jenis === "pilih").map((a) => a.opsi.findIndex((op) => op.benar));
+  cek(new Set(posisi).size === posisi.length, `letak jawaban pilih C bervariasi (${posisi.join("")})`);
+  for (const id of ["tempat", "ubah"]) {
+    const ps = adegan(id).soal.map((q) => q.opsi.indexOf(q.jawaban));
+    cek(ps.every((p) => p >= 0) && new Set(ps).size === ps.length, `letak jawaban soal ${id} bervariasi (${ps.join("")})`);
+  }
+  cek(S.adegan.filter((a) => a.jenis === "pilih").every((a) => a.opsi.length === 3 && a.opsi.filter((op) => op.benar).length === 1), "setiap pilih C: tiga opsi, satu benar");
+  const metode = S.adegan.map((a) => a.cerita).join(" ");
+  cek(/Equivalent Fraction to Tenths/.test(metode) && /Grid Tenths-Hundredths Link/.test(metode) && /Decimal Place-Value Chart/.test(metode) && /Decimal Compare-and-Order/.test(metode), "skenario C memuat empat metode luar berlabel");
+}
+
+/* ------------------------------ Misi C ------------------------------ */
+{
+  const daftar = K1.daftarMisiK6Bab1("C");
+  cek(daftar === K1.MISI_C && K1.daftarMisiK6Bab1("A") === K1.MISI_A && K1.daftarMisiK6Bab1("B") === K1.MISI_B, "daftar misi A, B, dan C terpisah");
+  cek(TK.hurufK6B1("C") === "C" && TK.misiAwalK6Bab1("C").startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK6Bab1("C")), "misi awal C dan dapat dieja");
+  cek(daftar.filter((m) => m.wajib).length === 7 && daftar.filter((m) => !m.wajib).length === 3, "C: tujuh misi wajib dan tiga tantangan bebas");
+  cek(new Set(daftar.map((m) => m.id)).size === 10 && daftar.every((m) => m.id.startsWith("c-")), "C: id misi unik berawalan huruf");
+  const kosong = [{ alat: "desimal", pernah: [] }, { alat: "lain", pernah: [] }, sel("tidak-ada"), DC.keadaanDesK6B1C(DC.awalDesK6B1C()), A.keadaanKaliK6B1A(A.awalKaliK6B1A()), BG.keadaanBagiK6B1B(BG.awalBagiK6B1B())];
+  cek(kosong.every((k) => M0.misiBaru(daftar, k, new Set()).length === 0), "C: keadaan awal alat tidak memenuhi misi mana pun");
+  cek(daftar.every((m) => m.teks.length > 20 && tanpaAngka(m.teks)), "C: teks misi jelas dan dapat dieja");
+  const baru = (k) => M0.misiBaru(daftar, k, new Set());
+  cek(baru(sel(K1.ID_MESIN_K6B1.C)).join() === "c-mesin" && baru(sel(K1.ID_SKENARIO_K6B1.C)).join() === "c-skenario", "C: id mesin dan skenario memenuhi misinya");
+  cek(baru(sel(K1.ID_MESIN_K6B1.A)).length === 0 && baru(sel(K1.ID_MESIN_K6B1.B)).length === 0 && baru(sel(K1.ID_SKENARIO_K6B1.B)).length === 0, "C: id mesin dan skenario A dan B tidak memenuhi misi C");
+  cek(baru({ alat: "bagi", pernah: ["ubah:0", "ubah:1", "tempat:0", "tempat:1", "urut:0"] }).length === 0 && baru({ alat: "kali", pernah: ["ubah:0", "urut:0"] }).length === 0, "C: riwayat alat lain tidak memenuhi misi C");
+  cek(M0.misiBaru(K1.MISI_B, { alat: "desimal", pernah: ["potong:0", "silang:0", "silang:2", "muat:0", "muat:1"] }, new Set()).length === 0 && M0.misiBaru(K1.MISI_A, { alat: "desimal", pernah: ["luas:0", "panah:0"] }, new Set()).length === 0, "A dan B: riwayat alat desimal tidak memenuhi misi A dan B");
+  const capai = (aksi) => baru(DC.keadaanDesK6B1C(jalan(DC.awalDesK6B1C(), LC, aksi)));
+  const sem = [0, 1, 2, 3, 4, 5];
+  cek(capai(seqC("ubah", 0)).join() === "c-ubah", "C: Ubah 1/2 memenuhi c-ubah");
+  cek(capai(seqC("ubah", 1)).join() === "c-ubah-lima", "C: Ubah 1/5 memenuhi c-ubah-lima");
+  cek(capai([...seqC("ubah", 0), ...seqC("ubah", 1)]).join() === "c-ubah,c-ubah-lima", "C: dua soal Ubah memenuhi dua misi");
+  cek(capai(seqC("ubah", 2)).length === 0 && capai(seqC("ubah", 5)).length === 0, "C: Ubah soal lain tidak memenuhi misi wajib");
+  for (let s = 1; s < 5; s += 1) cek(capai(seqC("ubah", 0, s)).length === 0, `C: Ubah berhenti setelah langkah ${s} belum memenuhi`);
+  cek(capai([{ t: "DATA", alat: "ubah", i: 0 }, { t: "JAWAB", alat: "ubah", langkah: "desimal", o: DC.langkahUbah(0)[3].benar }]).length === 0, "C: Ubah melompat ke desimal tidak memenuhi");
+  cek(capai(seqC("tempat", 0)).join() === "c-tempat", "C: Tempat 3,7 memenuhi c-tempat");
+  cek(capai(seqC("tempat", 1)).join() === "c-tempat-seratus", "C: Tempat 2,85 memenuhi c-tempat-seratus");
+  cek(capai([...seqC("tempat", 0), ...seqC("tempat", 1)]).join() === "c-tempat,c-tempat-seratus", "C: dua soal Tempat memenuhi dua misi");
+  cek(capai(seqC("tempat", 2)).length === 0 && capai(seqC("tempat", 5)).length === 0, "C: Tempat soal lain tidak memenuhi misi wajib");
+  for (let s = 1; s < 4; s += 1) cek(capai(seqC("tempat", 0, s)).length === 0, `C: Tempat berhenti setelah langkah ${s} belum memenuhi (bacaan wajib)`);
+  cek(capai(seqC("urut", 0)).join() === "c-urut", "C: Urut 3,7; 2,9; 3,07; 2,85 memenuhi c-urut");
+  cek(capai(seqC("urut", 1)).length === 0 && capai(seqC("urut", 3)).length === 0, "C: Urut soal lain tidak memenuhi misi wajib");
+  for (let s = 1; s < 4; s += 1) cek(capai(seqC("urut", 0, s)).length === 0, `C: Urut berhenti setelah langkah ${s} belum memenuhi (urutan wajib)`);
+  cek(capai([{ t: "DATA", alat: "urut", i: 0 }, { t: "JAWAB", alat: "urut", langkah: "urutan", o: DC.langkahUrut(0)[2].benar }]).length === 0, "C: Urut melompat ke urutan tidak memenuhi");
+  cek(capai(sem.flatMap((i) => seqC("ubah", i))).join() === "c-ubah,c-ubah-lima,c-ubah-semua", "C: keenam Ubah memenuhi dua misi dan tantangan");
+  cek(capai([0, 1, 2, 3, 4].flatMap((i) => seqC("ubah", i))).join() === "c-ubah,c-ubah-lima", "C: lima Ubah belum memenuhi tantangan");
+  cek(capai(sem.flatMap((i) => seqC("tempat", i))).join() === "c-tempat,c-tempat-seratus,c-tempat-semua", "C: keenam Tempat memenuhi dua misi dan tantangan");
+  cek(capai([0, 1, 2, 3, 4].flatMap((i) => seqC("tempat", i))).join() === "c-tempat,c-tempat-seratus", "C: lima Tempat belum memenuhi tantangan");
+  cek(capai(sem.flatMap((i) => seqC("urut", i))).join() === "c-urut,c-urut-semua", "C: keenam Urut memenuhi misi dan tantangan");
+  cek(capai([0, 1, 2, 3, 4].flatMap((i) => seqC("urut", i))).join() === "c-urut", "C: lima Urut belum memenuhi tantangan");
+  cek(capai([...seqC("ubah", 4), ...seqC("tempat", 4), ...seqC("urut", 4)]).length === 0, "C: riwayat pada soal lain, tidak ada misi yang terpenuhi");
+  const tampil = M0.tampilMisi(daftar);
+  const wajibIds = tampil.filter((m) => m.wajib).map((m) => m.id);
+  cek(!M0.wajibSelesai(tampil, new Set(wajibIds.slice(0, 6))) && M0.wajibSelesai(tampil, new Set(wajibIds)), "C: tujuh wajib membuka gerbang, enam belum");
+}
+
+/* ------------------------------ Konsep tidak bocor ke bab berikutnya, dan C memakai A dan B ------------------------------ */
+{
+  const baca = (nama, ekstensi) => readFileSync(new URL(`../src/components/modul/${nama}.${ekstensi}`, import.meta.url), "utf8");
+  const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas6-bab1-ringkas.json", import.meta.url), "utf8"));
+  const tanpaKomentar = (s) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const teksDari = (obj) => {
+    const hasil = [];
+    JSON.stringify(obj, (k, v) => {
+      if (typeof v === "string" && k !== "tipe" && k !== "jenis") hasil.push(v);
+      return v;
+    });
+    return hasil.join(" | ");
+  };
+  // Sub-Bab C boleh menyentuh perkalian (A) dan pembagian (B). Bab berikutnya (Rasio) tidak disentuh.
+  const BOCOR_C = /(\brasio\b|\bskala\b|\bperbandingan\b|\bkecepatan\b|\bdebit\b|\bperbandingan senilai\b)/i;
+  const catat = (teks, apa) => {
+    const m = BOCOR_C.exec(teks);
+    cek(!m, `C: ${apa} bebas konsep Bab 2 Rasio (${m ? m[0] : ""} di "${String(teks).slice(Math.max(0, (m?.index ?? 0) - 30), (m?.index ?? 0) + 40)}")`);
+  };
+  for (const t of [TK.MISI_K6B1.C, TK.NAMA_SIM_K6B1.C, ...K1.MISI_C.map((m) => m.teks)]) catat(t, "teks misi");
+  for (const [nama, obj] of [["mesin", MC.MESIN_DESIMAL], ["skenario", SK.SKENARIO_K6B1C], ["peta dan infografis ringkas", ringkas.subBab.C]]) catat(teksDari(obj), nama);
+  for (const [f, e] of [["SimulasiLabDesimalK6B1", "tsx"], ["model-desimal-k6b1", "tsx"], ["lab-desimal-k6b1c", "ts"]]) catat(tanpaKomentar(baca(f, e)).replace(/ ([-=+] |=> )/g, " "), `${f} (tanpa komentar)`);
+  for (const p of globalThis.__pesanC) catat(p, "pesan lab dari fuzz");
+  for (const u of [DC.ucapUbahK6B1C(z0), DC.ucapTempatK6B1C(z0), DC.ucapUrutK6B1C(z0)]) catat(u, "ucapan lab");
+  cek(globalThis.__pesanC.length > 20000, `pesan C terkumpul (${globalThis.__pesanC.length})`);
+
+  for (const f of ["SimulasiLabDesimalK6B1", "model-desimal-k6b1"]) {
+    const s = baca(f, "tsx");
+    cek(!/correct_index|explanation/.test(s), `${f}: tidak memuat correct_index atau explanation`);
+    cek(!/fetch\(|XMLHttpRequest|api\/|openai|anthropic|gemini/i.test(s), `${f}: tanpa jaringan atau model bahasa`);
+  }
+  for (const f of ["lab-desimal-k6b1c", "mesin-desimal-k6b1"]) {
+    const s = baca(f, "ts");
+    cek(!/fetch\(|XMLHttpRequest|from "react"|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: murni`);
+    cek((s.match(/^import .+$/gm) ?? []).every((l) => l.startsWith("import type")), `${f}: hanya mengimpor tipe`);
+  }
+  cek((baca("lab-desimal-k6b1c", "ts").match(/^import /gm) ?? []).length === 0, "lab C tanpa impor sama sekali");
+  cek(!/\.toFixed|parseFloat|Math\.(round|floor|ceil|random)|\d\.\d/.test(tanpaKomentar(baca("lab-desimal-k6b1c", "ts"))), "logika lab C: hanya bilangan bulat (tanpa pecahan desimal JavaScript, toFixed, atau Math)");
+  {
+    const s = baca("SimulasiLabDesimalK6B1", "tsx");
+    cek(/useEffect\(\(\) => \{\s*onKeadaan\?\.\(keadaan\w+\(x\)\);\s*\}, \[onKeadaan, x\]\);/.test(s), "lab C: lapor keadaan lewat useEffect");
+    cek(/setLihat\(v\);\s*kirim\(\{ t: "PESAN_KOSONG" \}\);/.test(s), "lab C: ganti tampilan mengosongkan pesan");
+    const catatan = [...s.matchAll(/^\s*"([^"]+)",$/gm)].map((m) => m[1]);
+    cek(catatan.length >= 3 && catatan.every(tanpaAngka), "lab C: Coba ini dapat dieja");
+    cek(s.includes("aria-label={`${l.awalan} ${ejaK6B1(v)}`}"), "lab C: label pilihan dieja");
+    for (const awalan of ["Pilih soal ubah ", "Pilih soal tempat ", "Pilih soal urut "]) cek(s.includes(`label={\`${awalan}`), `lab C: pilihan soal berlabel ${awalan.trim()}`);
+    for (const aksi of ['t: "DATA", alat: "ubah"', 't: "DATA", alat: "tempat"', 't: "DATA", alat: "urut"', 't: "JAWAB", alat, langkah: aktif.nama, o', 't: "RESET"']) cek(s.includes(aksi), `lab C: aksi ${aksi} terhubung`);
+    cek(/jawab\("ubah"\)/.test(s) && /jawab\("tempat"\)/.test(s) && /jawab\("urut"\)/.test(s), "lab C: tiga tampilan memakai pilihan langkah aktif");
+    cek(/aktif \? <PilihTiga/.test(s) && /langkahAktifDes\(x, lihat\)/.test(s), "lab C: hanya langkah aktif yang ditanyakan");
+    cek(/sd\("ubah", "tujuan"\)/.test(s) && /sd\("ubah", "pemb"\)/.test(s) && /sd\("ubah", "desimal"\)/.test(s) && /disamakan/.test(s), "lab C: hasil tampil bertahap sesuai langkah yang ditempuh");
+    cek(/role="img"/.test(s), "lab C: persamaan berlabel bacaan");
+    const m = baca("model-desimal-k6b1", "tsx");
+    cek(/role="img"/.test(m) && /aria-label=\{`Kisi /.test(m) && /aria-label=\{`Tabel nilai tempat desimal /.test(m) && /repeat\(10, minmax\(0, 1fr\)\)/.test(m), "model C: kisi dan tabel berlabel, kisi tidak meluap");
+  }
+  const pembungkus = baca("SimulasiK6Bab1", "tsx");
+  cek(/SimulasiLabDesimalK6B1/.test(pembungkus) && /MESIN_DESIMAL/.test(pembungkus) && /SKENARIO_K6B1C/.test(pembungkus) && /huruf === "C"/.test(pembungkus), "pembungkus: lab, mesin, dan skenario C terhubung");
+  const cobaC = [...pembungkus.matchAll(/"([^"]*\?)"/g)].map((m) => m[1]);
+  cek(cobaC.length >= 9 && cobaC.every(tanpaAngka), "Coba ini mesin A, B, dan C dapat dieja");
+  const ucapanC = [];
+  for (let i = 0; i < 6; i += 1) ucapanC.push(DC.ucapUbahK6B1C(LC(z0, { t: "DATA", alat: "ubah", i })), DC.ucapTempatK6B1C(LC(z0, { t: "DATA", alat: "tempat", i })), DC.ucapUrutK6B1C(LC(z0, { t: "DATA", alat: "urut", i })));
+  cek(ucapanC.length === 18 && ucapanC.every(tanpaAngka), "semua 18 ucapan lab C dieja menjadi kata");
+  cek(ucapanC.every((u) => /per|setengah|seperempat|perempat|koma/.test(EJ.ejaK6B1(u))), "ucapan lab C memuat bacaan pecahan atau desimal");
+  for (let i = 0; i < 6; i += 1) {
+    const u = DC.ucapUrutK6B1C(LC(z0, { t: "DATA", alat: "urut", i }));
+    const kecil = RENCANA_URUT[i].dari === "kecil";
+    cek(u.includes(kecil ? "terkecil" : "terbesar") && !u.includes(kecil ? "terbesar" : "terkecil") && u.includes(kecil ? "dari kecil ke besar" : "dari besar ke kecil") && u.includes(RENCANA_URUT[i].v.map(desMin).join(", ")), `ucapan Urut ${i}: arah ${kecil ? "kecil ke besar" : "besar ke kecil"} dan bilangan`);
+  }
+
+  // Data ringkas C.
+  const C0 = ringkas.subBab.C;
+  const [p1, p2, p3] = C0.infografis.panel;
+  cek(C0.infografis.panel.length === 3 && p1.butir.length >= 2 && p2.sisi.length >= 2 && p3.butir.length >= 2, "ringkas C: tiga panel dengan isi");
+  sama(C0.peta.cabang.map((c) => c.id), ["ubah", "tempat", "baca", "urut"], "ringkas C: empat cabang");
+  cek(C0.peta.kartu.length === 8 && C0.peta.kartu.every((k) => C0.peta.cabang.some((c) => c.id === k.cabang)), "ringkas C: delapan kartu, tiap kartu menunjuk cabang yang ada");
+  cek(C0.peta.cabang.every((c) => C0.peta.kartu.filter((k) => k.cabang === c.id).length >= 2), "ringkas C: tiap cabang punya dua kartu atau lebih");
+  cek([p1.ide, p2.ide, p3.ide].every((t) => t.split(/\s+/).length <= 8), "ringkas C: ide paling banyak delapan kata");
+  const isi = (panel, id) => (panel.butir ?? panel.sisi).find((b) => b.id === id).visual.isi;
+  sama(isi(p1, "kali"), `1/2 × 5/5 = ${1 * 5}/${2 * 5}`, "ringkas C: 1/2 × 5/5 dihitung mandiri");
+  sama(isi(p1, "tulis"), `5/10 = ${desMin(50)}`, "ringkas C: 5/10 = 0,5");
+  sama(isi(p1, "kisi"), `1/4 = ${1 * 25}/${4 * 25} = ${desMin(25)}`, "ringkas C: 1/4 = 25/100 = 0,25");
+  sama([isi(p2, "satu"), isi(p2, "dua")], [desMin(50), desTetap(50)], "ringkas C: 0,5 dan 0,50");
+  cek(nilaiDes(isi(p2, "satu")) === nilaiDes(isi(p2, "dua")), "ringkas C: 0,5 dan 0,50 bernilai sama");
+  sama(isi(p3, "samakan"), `${desMin(450)} = ${desTetap(450)}`, "ringkas C: 4,5 = 4,50");
+  sama(isi(p3, "kiri"), `${desTetap(450)} > ${desMin(405)}`, "ringkas C: 4,50 > 4,05");
+  cek(450 > 405, "ringkas C: 4,50 benar lebih besar dari 4,05");
+  sama(isi(p3, "urut"), urutMandiri(RENCANA_URUT[0]).join(" < "), "ringkas C: urutan 2,85 < 2,9 < 3,07 < 3,7 mandiri");
+  cek(Object.keys(ringkas.subBab).join() === "A,B,C", "ringkas: Sub-Bab A, B, dan C");
 }
 
 /* ------------------------------ Konsep tidak bocor ke Sub-Bab A ------------------------------ */
@@ -1426,15 +2025,15 @@ const bentukMandiri = (p, q) => {
 
 /* ------------------------------ Emoji paling tinggi Emoji 12 ------------------------------ */
 {
-  const berkas = ["SimulasiLabKaliK6B1.tsx", "SimulasiK6Bab1.tsx", "model-kali-k6b1.tsx", "lab-kali-k6b1a.ts", "mesin-kali-k6b1.ts", "skenario-k6b1.ts", "misi-k6bab1.ts", "misi-teks-k6b1.ts", "eja-k6b1.ts", "SimulasiLabBagiK6B1.tsx", "model-bagi-k6b1.tsx", "lab-bagi-k6b1b.ts", "mesin-bagi-k6b1.ts"];
+  const berkas = ["SimulasiLabKaliK6B1.tsx", "SimulasiK6Bab1.tsx", "model-kali-k6b1.tsx", "lab-kali-k6b1a.ts", "mesin-kali-k6b1.ts", "skenario-k6b1.ts", "misi-k6bab1.ts", "misi-teks-k6b1.ts", "eja-k6b1.ts", "SimulasiLabBagiK6B1.tsx", "model-bagi-k6b1.tsx", "lab-bagi-k6b1b.ts", "mesin-bagi-k6b1.ts", "SimulasiLabDesimalK6B1.tsx", "model-desimal-k6b1.tsx", "lab-desimal-k6b1c.ts", "mesin-desimal-k6b1.ts"];
   let ok = true;
   for (const f of berkas) {
     const s = readFileSync(new URL(`../src/components/modul/${f}`, import.meta.url), "utf8");
     cek(s.charCodeAt(0) !== 0xfeff && !s.includes("\r"), `${f}: UTF-8 tanpa BOM dan akhir baris LF`);
-    for (const c of s) if (c.codePointAt(0) > 0x1fa95) ok = false;
+    for (const c of s) if (c.codePointAt(0) > 0x1fa95 || c.codePointAt(0) === 0x1f7f0) ok = false;
   }
   const r = readFileSync(new URL("../src/data/kelas6-bab1-ringkas.json", import.meta.url), "utf8");
-  for (const c of r) if (c.codePointAt(0) > 0x1fa95) ok = false;
+  for (const c of r) if (c.codePointAt(0) > 0x1fa95 || c.codePointAt(0) === 0x1f7f0) ok = false;
   cek(ok && r.charCodeAt(0) !== 0xfeff && !r.includes("\r"), "emoji paling tinggi Emoji 12 dan data ringkas UTF-8 tanpa BOM");
 }
 
