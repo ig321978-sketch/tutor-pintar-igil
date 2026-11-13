@@ -4,10 +4,12 @@ import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
 import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiLabNilaiK5B9 from "./SimulasiLabNilaiK5B9";
+import SimulasiLabBandingK5B9 from "./SimulasiLabBandingK5B9";
 import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
 import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K5B9A } from "./skenario-k5b9";
+import { SKENARIO_K5B9A, SKENARIO_K5B9B } from "./skenario-k5b9";
 import { MESIN_NILAI } from "./mesin-nilai-k5b9";
+import { MESIN_BANDING } from "./mesin-banding-k5b9";
 import { ejaK5B9 } from "./eja-k5b9";
 import type { DefSkenario } from "./skenario-umum";
 import type { DefMesin } from "./mesin-bertahap-k3b1";
@@ -19,22 +21,26 @@ import { MISI_K5B9, NAMA_SIM_K5B9, hurufK5B9, misiAwalK5Bab9, type HurufK5B9 } f
 /* Simulasi Kelas 5 Bab 9 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
 /* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k5bab9.ts. */
 /*   A Baca, tulis, nilai tempat : Lab Nilai Tempat + Mesin Nilai Tempat + Nisa dan Lemari Jepara */
+/*   B Banding dan urut : Lab Banding + Mesin Banding + Lukas dan Sepatu */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
-const SKENARIO: Record<HurufK5B9, DefSkenario> = { A: SKENARIO_K5B9A };
-const MESIN: Record<HurufK5B9, DefMesin> = { A: MESIN_NILAI };
+const SKENARIO: Record<HurufK5B9, DefSkenario> = { A: SKENARIO_K5B9A, B: SKENARIO_K5B9B };
+const MESIN: Record<HurufK5B9, DefMesin> = { A: MESIN_NILAI, B: MESIN_BANDING };
 
 const COBA_MESIN: Record<HurufK5B9, string[]> = {
   A: ["Ketuk stasiun Nilai sebelum Baca. Apa kata mesin?", "Mengapa nol tetap ditulis walaupun tidak diucapkan?", "Mengapa nilai angka adalah angka dikali nilai tempatnya?"],
+  B: ["Ketuk stasiun Simbol sebelum Kolom. Apa kata mesin?", "Mengapa membandingkan harus mulai dari kolom paling kiri?", "Mengapa urut naik berbeda dengan urut turun?"],
 };
 
 const LAB: Record<HurufK5B9, { id: string; nama: string }> = {
   A: { id: "nilai", nama: "Lab Nilai Tempat" },
+  B: { id: "banding", nama: "Lab Banding" },
 };
 
-function LabSub({ speakGuru, lapor }: { huruf: HurufK5B9; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab9) => void }) {
+function LabSub({ huruf, speakGuru, lapor }: { huruf: HurufK5B9; speakGuru: (t: string) => void; lapor: (k: KeadaanK5Bab9) => void }) {
+  if (huruf === "B") return <SimulasiLabBandingK5B9 speakGuru={speakGuru} onKeadaan={lapor} />;
   return <SimulasiLabNilaiK5B9 speakGuru={speakGuru} onKeadaan={lapor} />;
 }
 

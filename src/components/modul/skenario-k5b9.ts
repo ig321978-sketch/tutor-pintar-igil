@@ -4,6 +4,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Skenario Kelas 5 Bab 9 (Bilangan Cacah sampai 1.000.000). Tanpa jaringan, tanpa model bahasa.
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b9.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K5B9A: Nisa dan Lemari Jepara (membaca, menulis, nilai tempat, nilai angka, dan satu juta)
+ *  - SKENARIO_K5B9B: Lukas dan Sepatu (membandingkan dari kolom paling kiri, geser bila sama, mengurutkan, dan tanda; menyentuh nilai tempat dari A)
  */
 
 export const SKENARIO_K5B9A: DefSkenario = {
@@ -86,6 +87,90 @@ export const SKENARIO_K5B9A: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Bilangan dibaca dari kiri, kelompok sebelum titik diikuti kata ribu. Tiap angka mengisi satu kolom tempat, dan nol tetap ditulis. Nilai angka sama dengan angkanya dikali nilai tempat, dan 999.999 ditambah 1 menjadi satu juta.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B9B: DefSkenario = {
+  id: "lukas-sepatu-k5b9",
+  judul: "Lukas dan Sepatu",
+  latar: "Bantu Lukas membandingkan dan mengurutkan harga sepatu.",
+  tokoh: "👦",
+  nama: "Lukas",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Lukas. Aku, Komang, dan Nisa membeli sepatu. Harganya bilangan besar, jadi kita harus pintar membandingkan. Ingat tabel nilai tempat dari tadi? Kita akan memakainya!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "mulai",
+      jenis: "pilih",
+      cerita: "Harga sepatuku 432.543 dan harga sepatu Komang 342.231. Dari kolom mana kita mulai membandingkan?",
+      opsi: [
+        { teks: "dari kolom satuan, paling kanan", benar: false, umpan: "Satuan nilainya paling kecil, jadi belum tentu menentukan. Mulailah dari kolom paling kiri." },
+        { teks: "dari kolom paling kiri, yaitu ratus ribuan", benar: true, umpan: "Betul! Kolom paling kiri nilainya paling besar, jadi dibandingkan lebih dulu." },
+        { teks: "dari kolom mana saja, bebas", benar: false, umpan: "Kalau asal memilih, hasilnya bisa keliru. Selalu mulai dari kolom paling kiri." },
+      ],
+    },
+    {
+      id: "sepatu",
+      jenis: "soal",
+      cerita: "Harga tiga sepatu: Lukas 432.543, Komang 342.231, dan Nisa 232.231. Angka ratus ribuannya 4, 3, dan 2.",
+      soal: [
+        { teks: "Sepatu yang paling mahal milik …", jawaban: "Lukas", opsi: ["Komang", "Nisa", "Lukas"] },
+        { teks: "Sepatu yang paling murah milik …", jawaban: "Nisa", opsi: ["Nisa", "Komang", "Lukas"] },
+      ],
+      sukses: "Tepat! Ratus ribuan 4 paling besar dan 2 paling kecil, jadi Lukas paling mahal dan Nisa paling murah.",
+      salah: "Hmm, lihat angka di kolom ratus ribuan masing-masing. Coba lagi.",
+    },
+    {
+      id: "kolom",
+      jenis: "hitung",
+      cerita: "Dua ponsel berharga 599.198 dan 599.047. Ketuk satu stik untuk tiap kolom yang diperiksa dari kiri sampai ketemu kolom yang berbeda, termasuk kolom yang berbeda itu.",
+      tanya: "Ketuk semua stik. Ada berapa kolom yang diperiksa?",
+      objek: "stik",
+      jumlah: 4,
+      sukses: "Betul! Ratus ribuan, puluh ribuan, dan ribuan sama, lalu ratusan berbeda: 1 lawan 0. Jadi ada 4 kolom yang diperiksa.",
+      salah: "Hmm, periksa dari kiri: tiga kolom pertama sama, kolom keempat berbeda. Hitung lagi.",
+    },
+    {
+      id: "beda",
+      jenis: "soal",
+      cerita: "Pada 599.198 dan 599.047, kolom ratusan berbeda: 1 dan 0.",
+      soal: [
+        { teks: "Bilangan yang lebih besar adalah …", jawaban: "599.198", opsi: ["599.198", "599.047", "sama besar"] },
+        { teks: "Kolom yang menentukan adalah …", jawaban: "ratusan", opsi: ["satuan", "ribuan", "ratusan"] },
+      ],
+      sukses: "Hebat! 599.198 lebih besar dari 599.047, karena di kolom ratusan 1 lebih besar dari 0.",
+      salah: "Hmm, cari kolom pertama yang berbeda dari kiri. Coba lagi.",
+    },
+    {
+      id: "puluhan",
+      jenis: "pilih",
+      cerita: "Nomor undian 789.876 dan 789.867. Satuannya 6 dan 7, jadi Nisa mengira 789.867 lebih besar. Benarkah?",
+      opsi: [
+        { teks: "salah, karena puluhan 7 lebih besar dari 6, jadi 789.876 lebih besar", benar: true, umpan: "Betul! Kolom pertama yang berbeda dari kiri adalah puluhan: 7 lebih besar dari 6." },
+        { teks: "benar, karena satuan 7 lebih besar dari 6", benar: false, umpan: "Satuan bukan penentu. Kolom puluhan lebih dulu berbeda dari kiri." },
+        { teks: "sama besar, karena enam angka pertamanya mirip", benar: false, umpan: "Mirip belum tentu sama. Puluhannya berbeda, jadi besarnya berbeda." },
+      ],
+    },
+    {
+      id: "urut",
+      jenis: "soal",
+      cerita: "Lukas mengurutkan harga sepatu dari yang paling murah: Nisa 232.231, Komang 342.231, Lukas 432.543. Ia membandingkan dua bilangan bertetangga berulang kali.",
+      soal: [
+        { teks: "Urutan naik, dari paling kecil ke paling besar, adalah …", jawaban: "232.231, 342.231, 432.543", opsi: ["432.543, 342.231, 232.231", "232.231, 342.231, 432.543", "342.231, 232.231, 432.543"] },
+        { teks: "Tanda yang tepat untuk 342.231 … 432.543 adalah …", jawaban: "lebih kecil dari", opsi: ["lebih besar dari", "sama dengan", "lebih kecil dari"] },
+      ],
+      sukses: "Betul! Urut naik berarti dari kecil ke besar, dan 342.231 lebih kecil dari 432.543.",
+      salah: "Hmm, bandingkan dari kolom paling kiri yang berbeda. Coba lagi.",
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Bandingkan mulai dari kolom paling kiri dan geser ke kanan bila angkanya sama. Kolom pertama yang berbeda menentukan bilangan yang lebih besar. Dengan membandingkan berulang, bilangan bisa diurutkan naik atau turun.",
     },
   ],
 };

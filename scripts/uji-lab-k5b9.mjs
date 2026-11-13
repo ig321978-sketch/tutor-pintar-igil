@@ -6,7 +6,9 @@ import * as M0 from "../src/components/modul/misi-simulasi.ts";
 import * as K9 from "../src/components/modul/misi-k5bab9.ts";
 import * as TK from "../src/components/modul/misi-teks-k5b9.ts";
 import * as A from "../src/components/modul/lab-nilai-k5b9a.ts";
+import * as B from "../src/components/modul/lab-banding-k5b9b.ts";
 import * as MS from "../src/components/modul/mesin-nilai-k5b9.ts";
+import * as MSB from "../src/components/modul/mesin-banding-k5b9.ts";
 import * as SK from "../src/components/modul/skenario-k5b9.ts";
 import * as ME from "../src/components/modul/mesin-bertahap-k3b1.ts";
 import * as EJ from "../src/components/modul/eja-k5b9.ts";
@@ -537,8 +539,8 @@ const RENCANA = [
 
 /* ------------------------------ Misi ------------------------------ */
 {
-  sama(Object.keys(TK.MISI_K5B9), ["A"], "teks misi untuk A");
-  sama(Object.keys(TK.NAMA_SIM_K5B9), ["A"], "nama simulasi untuk A");
+  sama(Object.keys(TK.MISI_K5B9), ["A", "B"], "teks misi untuk A dan B");
+  sama(Object.keys(TK.NAMA_SIM_K5B9), ["A", "B"], "nama simulasi untuk A dan B");
   cek(TK.hurufK5B9("Z") === "A" && TK.hurufK5B9("A") === "A", "huruf tak dikenal jatuh ke A");
   cek(TK.misiAwalK5Bab9("A").startsWith("Simulasi 1. Misi: ") && tanpaAngka(TK.misiAwalK5Bab9("A")), "misi awal dan dapat dieja");
   const daftar = K9.daftarMisiK5Bab9("A");
@@ -707,7 +709,558 @@ const RENCANA = [
   cek(teks.includes("500.040") && teks.includes(bacaMandiri(500040)), "ringkas A: 500.040 dibaca lima ratus ribu empat puluh");
   const tabel = p3.butir.map((b) => b.visual).find((v) => v.jenis === "tabel-menurun");
   sama(tabel.baris.map((b) => [b[0].toLowerCase(), b[1]]), TEMPAT.slice(0, 4).map((nm, k) => [nm, nilaiTempatMandiri(k)]), "ringkas A: tabel nilai tempat dihitung mandiri");
-  cek(Object.keys(ringkas.subBab).join() === "A", "ringkas: Sub-Bab A (B dan C menyusul)");
+}
+
+
+/* ====================================================================== */
+/* Sub-Bab B: Lab Banding                                                  */
+/* ====================================================================== */
+
+/* ------------------------------ Hitungan MANDIRI B ------------------------------ */
+// Kode membandingkan kolom demi kolom. Di sini selisih bilangan dipakai (tanda selisih), urutan lewat sortir numerik,
+// dan kolom pertama yang beda dicari dari teks bilangan berpanjang enam.
+const cmpMandiri = (a, b) => Math.sign(a - b);
+const kolomPertamaMandiri = (a, b) => {
+  const s = String(a).padStart(6, "0");
+  const t = String(b).padStart(6, "0");
+  for (let k = 0; k < 6; k += 1) if (s[k] !== t[k]) return k;
+  return -1;
+};
+const satuanMenyesatkanMandiri = (a, b) => Math.sign(Number(String(a).slice(-1)) - Number(String(b).slice(-1))) !== cmpMandiri(a, b);
+const urutMandiri = (daftar, arah) => [...daftar].sort((p, q) => (arah === "naik" ? p - q : q - p));
+const RENCANA_B = [
+  { nama: "harga dua ponsel", a: 599198, b: 599047 },
+  { nama: "harga sepatu Lukas dan Komang", a: 432543, b: 342231 },
+  { nama: "penduduk dua desa", a: 789867, b: 789876 },
+  { nama: "harga dua motor", a: 786897, b: 789876 },
+  { nama: "dua tabungan", a: 250105, b: 250015 },
+  { nama: "dua kiriman paket", a: 860209, b: 860290 },
+];
+const URUT_RENCANA = [
+  { awal: [432543, 232231, 342231], arah: "naik" },
+  { awal: [599047, 432543, 599198], arah: "turun" },
+  { awal: [789867, 676785, 789876], arah: "naik" },
+  { awal: [786897, 676785, 789876, 789867], arah: "turun" },
+  { awal: [250105, 250015, 205999], arah: "naik" },
+  { awal: [860290, 860209, 806999, 860902], arah: "turun" },
+];
+const SIMBOL_RENCANA = [[676785, 786897], [500040, 500040], [599047, 599198], [789876, 789867], [408906, 408906], [860290, 860209]];
+const KATA_HUBUNGAN = ["lebih kecil dari", "sama dengan", "lebih besar dari"];
+const LB = B.langkahBandingK5B9B;
+const y0 = B.awalBandingK5B9B();
+
+{
+  sama(B.PASANGAN_B.map((p) => [p.nama, p.a, p.b]), RENCANA_B.map((p) => [p.nama, p.a, p.b]), "B: enam pasangan sesuai rencana");
+  sama(B.URUT_B.map((u) => [u.awal, u.arah]), URUT_RENCANA.map((u) => [u.awal, u.arah]), "B: enam kelompok urut sesuai rencana");
+  sama(B.SIMBOL_B.map((p) => [p.a, p.b]), SIMBOL_RENCANA, "B: enam pasangan simbol sesuai rencana");
+  cek(B.PASANGAN_B.every((p) => p.a !== p.b && p.a > 99999 && p.a < 1000000 && p.b > 99999 && p.b < 1000000), "B: pasangan berbeda dan enam digit");
+  sama(B.PASANGAN_B.map((p) => kolomPertamaMandiri(p.a, p.b)), [3, 0, 4, 2, 3, 4], "B: kolom pertama yang beda tiap pasangan");
+  cek(new Set(B.PASANGAN_B.map((p) => cmpMandiri(p.a, p.b))).size === 2, "B: pasangan memuat atas lebih besar dan bawah lebih besar");
+  cek(B.URUT_B.every((u) => JSON.stringify(u.awal) !== JSON.stringify(urutMandiri(u.awal, u.arah)) && new Set(u.awal).size === u.awal.length), "B: susunan awal belum urut dan bilangan berbeda");
+  cek(B.URUT_B.some((u) => u.arah === "naik") && B.URUT_B.some((u) => u.arah === "turun") && B.URUT_B.some((u) => u.awal.length === 4), "B: ada naik, turun, dan empat bilangan");
+  sama(B.SIMBOL_B.map((p) => cmpMandiri(p.a, p.b)), [-1, 0, -1, 1, 0, 1], "B: hubungan enam pasangan simbol");
+  sama(B.PASANGAN_B.map((p) => B.kolomBedaPertama(p.a, p.b)), [3, 0, 4, 2, 3, 4], "B: kolomBedaPertama sama");
+  cek(B.kolomBedaPertama(500040, 500040) === -1 && B.bandingKolom(500040, 500040) === 0, "B: dua bilangan sama tidak punya kolom beda");
+  // Pasangan yang hanya beda di satuan, dan perbandingan dari satuan untuk pasangan yang satuannya lebih kecil, sama, atau lebih besar.
+  cek(B.kolomBedaPertama(123456, 123457) === 5 && B.bandingKolom(123456, 123457) === -1 && B.bandingKolom(123459, 123451) === 1 && kolomPertamaMandiri(123456, 123457) === 5, "B: pasangan yang hanya beda di satuan");
+  cek(B.bandingSatuan(123451, 123459) === -1 && B.bandingSatuan(123459, 123451) === 1 && B.bandingSatuan(123455, 999995) === 0, "B: banding dari satuan: lebih kecil, lebih besar, dan sama");
+  let ok = true;
+  for (let n = 0; n < 40000; n += 1) {
+    const a = (n * 7919 + 13) % 1000000;
+    const b = n % 5 === 0 ? a : (n * 104729 + (n % 9) * 1000 + 7) % 1000000;
+    if (B.bandingKolom(a, b) !== cmpMandiri(a, b)) ok = false;
+    if (B.kolomBedaPertama(a, b) !== kolomPertamaMandiri(a, b)) ok = false;
+  }
+  cek(ok, "B: bandingKolom dan kolomBedaPertama sama dengan selisih dan teks, 40.000 pasangan acak");
+  cek(B.PASANGAN_B.every((p, i) => B.satuanMenyesatkan(i) === satuanMenyesatkanMandiri(p.a, p.b)), "B: satuan menyesatkan dihitung mandiri");
+  sama(B.PASANGAN_B.map((_, i) => B.satuanMenyesatkan(i)), [false, false, true, true, true, true], "B: pasangan 2 sampai 5 menyesatkan bila dari satuan");
+  for (const u of B.URUT_B) sama(B.urutBenar(u.awal, u.arah), urutMandiri(u.awal, u.arah), `B: urut ${u.nama} dihitung mandiri`);
+  cek(B.TEKS_SIMBOL.join() === "lebih besar dari,lebih kecil dari,sama dengan" && B.TANDA_SIMBOL.join("") === "><=", "B: teks dan tanda simbol");
+}
+
+/* ------------------------------ Lab B ------------------------------ */
+{
+  sama(B.keadaanBandingK5B9B(y0), { alat: "banding", pernah: [] }, "B: keadaan awal");
+  cek(y0.pernah.length === 0 && y0.pesan === "" && y0.banding.kolom === 0 && !y0.banding.berhenti && JSON.stringify(y0.urut.daftar) === JSON.stringify(URUT_RENCANA[0].awal), "B awal: kosong");
+  cek(y0.urut.daftar !== B.URUT_B[0].awal, "B awal: daftar urut salinan, bukan data asli");
+
+  const posBanding = [];
+  const posSimbol = [];
+  const hubunganTeks = (h) => (h > 0 ? "Atas lebih besar" : h < 0 ? "Bawah lebih besar" : "Sama besar");
+  for (const [i, r] of RENCANA_B.entries()) {
+    const k = kolomPertamaMandiri(r.a, r.b);
+    const ob = B.opsiBanding(i);
+    cek(new Set(ob.opsi).size === 3 && ob.opsi[ob.benar] === hubunganTeks(cmpMandiri(r.a, r.b)) && [...ob.opsi].sort().join() === [...B.TEKS_BANDING].sort().join(), `Banding ${i}: tiga pilihan unik, kunci ${hubunganTeks(cmpMandiri(r.a, r.b))}`);
+    posBanding.push(ob.benar);
+    const awal = LB(y0, { t: "G_DATA", i });
+    cek(awal.banding.data === i && awal.banding.kolom === 0 && !awal.banding.berhenti, `Banding ${i}: pilih pasangan`);
+    // Berhenti terlalu dini ditolak, tiap kolom sebelum kolom beda.
+    let s = awal;
+    for (let c = 0; c < k; c += 1) {
+      const dini = LB(s, { t: "G_BERHENTI" });
+      cek(!dini.banding.berhenti && dini.pernah.length === 0 && dini.pesan.includes(["ratus ribuan", "puluh ribuan", "ribuan", "ratusan", "puluhan", "satuan"][c]) && dini.pesan.includes("sama"), `Banding ${i}: berhenti di kolom ${c} (masih sama) ditolak`);
+      // Memilih hasil sebelum berhenti ditolak walaupun kunci.
+      const cepat = LB(s, { t: "G_PILIH", o: ob.benar });
+      cek(cepat.pernah.length === 0 && !cepat.pesan.startsWith("✅") && cepat.pesan.includes("kolom"), `Banding ${i}: memilih di kolom ${c} sebelum berhenti ditolak`);
+      s = LB(s, { t: "G_GESER" });
+      cek(s.banding.kolom === c + 1 && s.pesan.startsWith("✅ Kolom") && !s.banding.berhenti, `Banding ${i}: geser ke kolom ${c + 1}`);
+    }
+    cek(s.banding.kolom === k, `Banding ${i}: penunjuk sampai kolom beda ${k} setelah ${k} geseran`);
+    // Menggeser dari kolom beda ditolak.
+    const lewat = LB(s, { t: "G_GESER" });
+    cek(lewat.banding.kolom === k && lewat.pesan.includes("Berhenti di sini"), `Banding ${i}: geser dari kolom beda ditolak`);
+    const stop = LB(s, { t: "G_BERHENTI" });
+    cek(stop.banding.berhenti && stop.pesan.startsWith("✅") && stop.pernah.length === 0, `Banding ${i}: berhenti di kolom beda`);
+    // Hasil salah ditolak, benar diterima.
+    for (let o = 0; o < 3; o += 1) {
+      const t = LB(stop, { t: "G_PILIH", o });
+      const benar = ob.opsi[o] === hubunganTeks(cmpMandiri(r.a, r.b));
+      cek(benar ? t.pernah.join() === `banding:${i}` && t.pesan.startsWith("✅") : t.pernah.length === 0 && !t.pesan.startsWith("✅"), `Banding ${i}: pilihan ${ob.opsi[o]} ${benar ? "benar" : "salah"}`);
+    }
+    const benarT = LB(stop, { t: "G_PILIH", o: ob.benar });
+    cek(benarT.pesan.includes(`${String(r.a).replace(/\B(?=(\d{3})+(?!\d))/g, ".")} ${cmpMandiri(r.a, r.b) > 0 ? ">" : "<"} ${String(r.b).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`), `Banding ${i}: pesan memuat ${r.a} dan ${r.b} dengan tanda mandiri`);
+    // Berhenti lalu geser: ditolak.
+    cek(LB(stop, { t: "G_GESER" }).banding.kolom === k, `Banding ${i}: sesudah berhenti tidak bisa geser`);
+    // Satuan.
+    const sat = LB(awal, { t: "G_SATUAN" });
+    const mesti = satuanMenyesatkanMandiri(r.a, r.b);
+    cek(mesti ? sat.pernah.join() === `satuan:${i}` && sat.pesan.startsWith("✅") : sat.pernah.length === 0 && !sat.pesan.startsWith("✅"), `Satuan ${i}: ${mesti ? "menyesatkan dan dicatat" : "kebetulan sama, tidak dicatat"}`);
+  }
+  cek(new Set(posBanding).size === 3, `Banding: letak kunci bervariasi (${posBanding.join("")})`);
+  cek(LB(y0, { t: "G_DATA", i: 1 }).banding.kolom === 0 && LB(LB(LB(y0, { t: "G_DATA", i: 0 }), { t: "G_GESER" }), { t: "G_DATA", i: 0 }).banding.kolom === 0, "Banding: ganti pasangan mengulang dari kolom kiri");
+
+  // Urut.
+  for (const [i, u] of URUT_RENCANA.entries()) {
+    const sortir = urutMandiri(u.awal, u.arah);
+    const awal = LB(y0, { t: "U_DATA", i });
+    sama(awal.urut.daftar, u.awal, `Urut ${i}: susunan awal`);
+    const ditolak = LB(awal, { t: "U_PERIKSA" });
+    cek(ditolak.pernah.length === 0 && !ditolak.pesan.startsWith("✅") && ditolak.pesan.includes(`urut ${u.arah}`), `Urut ${i}: susunan awal belum urut ${u.arah} ditolak`);
+    // Pasangan pertama yang salah disebut.
+    let k = -1;
+    for (let j = 0; j < u.awal.length - 1; j += 1) {
+      const salah = u.arah === "naik" ? u.awal[j] > u.awal[j + 1] : u.awal[j] < u.awal[j + 1];
+      if (salah) { k = j; break; }
+    }
+    const titik = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    cek(k >= 0 && ditolak.pesan.startsWith(`${titik(u.awal[k])} dan ${titik(u.awal[k + 1])}`), `Urut ${i}: pesan menyebut pasangan tetangga pertama yang salah`);
+    // Penyelesai mandiri: gelembung lewat aksi turun.
+    let s = awal;
+    const arr = [...u.awal];
+    for (let putar = 0; putar < arr.length; putar += 1) {
+      for (let j = 0; j < arr.length - 1; j += 1) {
+        const salah = u.arah === "naik" ? arr[j] > arr[j + 1] : arr[j] < arr[j + 1];
+        if (salah) {
+          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          s = LB(s, { t: "U_TURUN", k: j });
+        }
+      }
+    }
+    sama(s.urut.daftar, sortir, `Urut ${i}: gelembung lewat aksi menghasilkan urutan mandiri`);
+    const bagus = LB(s, { t: "U_PERIKSA" });
+    cek(bagus.pernah.join() === `urut:${i}` && bagus.pesan.startsWith("✅") && bagus.pesan.includes(sortir.map(titik).join(", ")), `Urut ${i}: urutan ${u.arah} benar diterima`);
+    // Urutan kebalikan ditolak.
+    let balik = s;
+    for (let putar = 0; putar < arr.length; putar += 1) for (let j = 0; j < arr.length - 1; j += 1) balik = LB(balik, { t: "U_TURUN", k: j });
+    cek(LB(balik, { t: "U_PERIKSA" }).pernah.length === 0 || JSON.stringify(balik.urut.daftar) === JSON.stringify(sortir), `Urut ${i}: kebalikan ditolak`);
+    // Mengurutkan untuk arah yang berlawanan ditolak.
+    const lawan = [...sortir].reverse();
+    let t = awal;
+    const arr2 = [...u.awal];
+    const tujuan = lawan;
+    for (let putar = 0; putar < arr2.length; putar += 1) for (let j = 0; j < arr2.length - 1; j += 1) if (tujuan.indexOf(arr2[j]) > tujuan.indexOf(arr2[j + 1])) { [arr2[j], arr2[j + 1]] = [arr2[j + 1], arr2[j]]; t = LB(t, { t: "U_TURUN", k: j }); }
+    cek(JSON.stringify(t.urut.daftar) === JSON.stringify(lawan) && LB(t, { t: "U_PERIKSA" }).pernah.length === 0, `Urut ${i}: urutan arah berlawanan ditolak`);
+    // Indeks di luar batas diabaikan.
+    for (const kk of [-1, u.awal.length - 1, u.awal.length, 1.5, NaN, undefined]) cek(LB(awal, { t: "U_TURUN", k: kk }) === awal, `Urut ${i}: turunkan indeks ${kk} diabaikan`);
+    // Daftar tetap permutasi.
+    cek([...LB(awal, { t: "U_TURUN", k: 0 }).urut.daftar].sort((p, q) => p - q).join() === [...u.awal].sort((p, q) => p - q).join(), `Urut ${i}: tetap memuat bilangan yang sama`);
+  }
+
+  // Simbol.
+  for (const [i, [a, b]] of SIMBOL_RENCANA.entries()) {
+    const os = B.opsiSimbol(i);
+    const h = cmpMandiri(a, b);
+    posSimbol.push(os.benar);
+    cek(new Set(os.opsi).size === 3 && os.opsi[os.benar] === KATA_HUBUNGAN[h + 1] && [...os.opsi].sort().join() === [...KATA_HUBUNGAN].sort().join(), `Simbol ${i}: kunci ${KATA_HUBUNGAN[h + 1]}`);
+    const awal = LB(y0, { t: "S_DATA", i });
+    for (let o = 0; o < 3; o += 1) {
+      const t = LB(awal, { t: "S_PILIH", o });
+      const benar = os.opsi[o] === KATA_HUBUNGAN[h + 1];
+      cek(benar ? t.pernah.join() === `simbol:${i}` && t.pesan.startsWith("✅") && t.pesan.includes(os.opsi[o]) : t.pernah.length === 0 && !t.pesan.startsWith("✅") && (h === 0 ? t.pesan.includes("sama besar") : t.pesan.includes("kiri")), `Simbol ${i}: pilihan ${os.opsi[o]} ${benar ? "benar" : "salah"}`);
+    }
+    const t = LB(awal, { t: "S_PILIH", o: os.benar });
+    cek(t.pesan.includes(h > 0 ? " > " : h < 0 ? " < " : " = "), `Simbol ${i}: pesan memuat tanda ${h > 0 ? ">" : h < 0 ? "<" : "="}`);
+  }
+  cek(new Set(posSimbol).size === 3, `Simbol: letak kunci bervariasi (${posSimbol.join("")})`);
+  for (let i = 0; i < 6; i += 1) {
+    sama(B.opsiSimbol(i).opsi, [0, 1, 2].map((j) => B.TEKS_SIMBOL[(j + i + 1) % 3]), `Simbol ${i}: urutan pilihan berputar menurut nomor pasangan`);
+    sama(B.opsiBanding(i).opsi, [0, 1, 2].map((j) => B.TEKS_BANDING[(j + i) % 3]), `Banding ${i}: urutan pilihan berputar menurut nomor pasangan`);
+  }
+  {
+    const sudah = jalan(y0, LB, [{ t: "G_DATA", i: 1 }, { t: "G_BERHENTI" }]);
+    const dua = LB(sudah, { t: "G_BERHENTI" });
+    cek(sudah.banding.berhenti && dua.banding.berhenti && dua.pesan.includes("sudah ketemu") && !dua.pesan.startsWith("✅") && dua.pernah.length === 0, "Banding: berhenti dua kali tidak mengulang pesan sukses");
+    const geserLagi = LB(sudah, { t: "G_GESER" });
+    cek(geserLagi.pesan.includes("sudah ketemu") && geserLagi.banding.kolom === sudah.banding.kolom, "Banding: geser sesudah berhenti ditolak dengan pesan sudah ketemu");
+  }
+
+  // Indeks tak sah.
+  {
+    let ok = true;
+    const dasar = jalan(y0, LB, [{ t: "G_DATA", i: 0 }, { t: "G_GESER" }, { t: "U_DATA", i: 1 }, { t: "S_DATA", i: 2 }]);
+    for (const v of [-1, 1.5, 99, NaN, undefined, "1", 6]) {
+      for (const a of [{ t: "G_DATA", i: v }, { t: "U_DATA", i: v }, { t: "S_DATA", i: v }, { t: "G_PILIH", o: v }, { t: "S_PILIH", o: v }, { t: "U_TURUN", k: v }]) {
+        if (JSON.stringify(LB(dasar, a)) !== JSON.stringify(dasar)) ok = false;
+      }
+    }
+    for (const v of [3, 4]) for (const a of [{ t: "G_PILIH", o: v }, { t: "S_PILIH", o: v }]) if (JSON.stringify(LB(dasar, a)) !== JSON.stringify(dasar)) ok = false;
+    cek(ok, "B: indeks pecahan, negatif, di luar batas, bukan bilangan: diabaikan");
+    sama(LB(jalan(y0, LB, [{ t: "G_SATUAN" }]), { t: "RESET" }), B.awalBandingK5B9B(), "B: reset kembali ke awal");
+    cek(LB({ ...y0, pesan: "x" }, { t: "PESAN_KOSONG" }).pesan === "", "B: pesan dikosongkan");
+  }
+
+  // Fuzz.
+  {
+    const acak = acakDari(5150);
+    let s = y0;
+    let ok = true;
+    const pesanSemua = new Set();
+    const riwayatSemua = new Set();
+    const teksHub = (h) => hubunganTeks(h);
+    const buat = () => {
+      const r = acak(20);
+      const g = s.banding.data;
+      if (r === 0) return { t: "G_DATA", i: acak(8) - 1 };
+      if (r === 1 || r === 2 || r === 3) return { t: "G_GESER" };
+      if (r === 4 || r === 5) return { t: "G_BERHENTI" };
+      if (r === 6) return { t: "G_PILIH", o: acak(5) - 1 };
+      if (r === 7) return { t: "G_PILIH", o: B.opsiBanding(g).benar };
+      if (r === 8) return { t: "G_SATUAN" };
+      if (r === 9) return { t: "U_DATA", i: acak(8) - 1 };
+      if (r === 10 || r === 11) return { t: "U_TURUN", k: acak(6) - 1 };
+      if (r === 12) {
+        // Langkah gelembung yang benar menuju urutan mandiri.
+        const u = URUT_RENCANA[s.urut.data];
+        for (let j = 0; j < s.urut.daftar.length - 1; j += 1) {
+          const salah = u.arah === "naik" ? s.urut.daftar[j] > s.urut.daftar[j + 1] : s.urut.daftar[j] < s.urut.daftar[j + 1];
+          if (salah) return { t: "U_TURUN", k: j };
+        }
+        return { t: "U_PERIKSA" };
+      }
+      if (r === 13) return { t: "U_PERIKSA" };
+      if (r === 14) return { t: "S_DATA", i: acak(8) - 1 };
+      if (r === 15) return { t: "S_PILIH", o: acak(5) - 1 };
+      if (r === 16) return { t: "S_PILIH", o: B.opsiSimbol(s.simbol.data).benar };
+      if (r === 17) return { t: "PESAN_KOSONG" };
+      if (r === 18 && acak(60) === 0) return { t: "RESET" };
+      return { t: "G_GESER" };
+    };
+    for (let n = 0; n < 20000; n += 1) {
+      const a = buat();
+      const sebelum = s;
+      s = LB(s, a);
+      pesanSemua.add(s.pesan);
+      const gb = s.banding;
+      const kb = kolomPertamaMandiri(RENCANA_B[gb.data].a, RENCANA_B[gb.data].b);
+      const batas =
+        [gb.data, s.urut.data, s.simbol.data].every((v) => Number.isInteger(v) && v >= 0 && v < 6) &&
+        gb.kolom >= 0 && gb.kolom <= kb && (!gb.berhenti || gb.kolom === kb) &&
+        [...s.urut.daftar].sort((p, q) => p - q).join() === [...URUT_RENCANA[s.urut.data].awal].sort((p, q) => p - q).join() &&
+        new Set(s.pernah).size === s.pernah.length;
+      if (!batas) ok = false;
+      if (a.t === "RESET") {
+        if (s.pernah.length !== 0) ok = false;
+        continue;
+      }
+      if (!sebelum.pernah.every((p) => s.pernah.includes(p))) ok = false;
+      const baru = s.pernah.filter((p) => !sebelum.pernah.includes(p));
+      if (baru.length > 1) ok = false;
+      for (const b of baru) {
+        const [alat, idx] = b.split(":");
+        const i = Number(idx);
+        riwayatSemua.add(alat);
+        if (alat === "banding") {
+          const r = RENCANA_B[i];
+          const benar = a.t === "G_PILIH" && sebelum.banding.data === i && sebelum.banding.berhenti && sebelum.banding.kolom === kolomPertamaMandiri(r.a, r.b) && B.opsiBanding(i).opsi[a.o] === teksHub(cmpMandiri(r.a, r.b));
+          if (!benar) ok = false;
+        } else if (alat === "satuan") {
+          const r = RENCANA_B[i];
+          if (!(a.t === "G_SATUAN" && sebelum.banding.data === i && satuanMenyesatkanMandiri(r.a, r.b))) ok = false;
+        } else if (alat === "urut") {
+          const u = URUT_RENCANA[i];
+          if (!(a.t === "U_PERIKSA" && sebelum.urut.data === i && JSON.stringify(sebelum.urut.daftar) === JSON.stringify(urutMandiri(u.awal, u.arah)))) ok = false;
+        } else if (alat === "simbol") {
+          const [p, q] = SIMBOL_RENCANA[i];
+          if (!(a.t === "S_PILIH" && sebelum.simbol.data === i && B.opsiSimbol(i).opsi[a.o] === KATA_HUBUNGAN[cmpMandiri(p, q) + 1])) ok = false;
+        } else ok = false;
+      }
+    }
+    cek(ok, "fuzz 20.000 aksi Lab Banding: batas terjaga, riwayat tidak dicabut dan hanya bila tercapai (orakel mandiri)");
+    cek(pesanSemua.size > 40 && [...pesanSemua].every(tanpaAngka), `fuzz Lab Banding: semua ${pesanSemua.size} pesan dieja menjadi kata`);
+    cek(riwayatSemua.size === 4, `fuzz Lab Banding: riwayat terkumpul (${[...riwayatSemua].sort().join(" ")})`);
+    globalThis.__pesanB = [...pesanSemua];
+  }
+}
+
+/* ------------------------------ Mesin B ------------------------------ */
+{
+  const def = MSB.MESIN_BANDING;
+  cek(def.stasiun.length === 4 && def.kasus.length === 3, `${def.id}: empat stasiun, tiga kasus`);
+  sama(def.stasiun.map((s) => s.id), ["kolom", "banding", "urut", "simbol"], "stasiun mesin B");
+  const posisi = [];
+  for (const kasus of def.kasus) {
+    cek(kasus.langkah.length === 4, `${def.id}/${kasus.id}: empat langkah`);
+    kasus.langkah.forEach((l, i) => {
+      cek(l.stasiun === def.stasiun[i].id, `${def.id}/${kasus.id}: langkah ${i + 1} di stasiun ${def.stasiun[i].id}`);
+      cek(l.opsi.length === 3 && new Set(l.opsi).size === 3 && l.opsi.filter((o) => o === l.benar).length === 1, `${def.id}/${kasus.id}/${l.stasiun}: tiga pilihan unik, satu kunci`);
+      cek([l.tanya, l.petunjuk, ...l.opsi].every(tanpaAngka), `${def.id}/${kasus.id}/${l.stasiun}: dapat dieja`);
+      posisi.push(l.opsi.indexOf(l.benar));
+    });
+    cek(tanpaAngka(kasus.nama) && tanpaAngka(kasus.ringkas), `${def.id}/${kasus.id}: nama dan ringkas dapat dieja`);
+  }
+  cek(new Set(posisi).size === 3, `${def.id}: letak kunci bervariasi (${posisi.join("")})`);
+  let x = ME.awalMesin(def);
+  let n = 0;
+  while (!x.selesai && n < 100) {
+    n += 1;
+    const l = ME.langkahAktif(x);
+    x = l ? ME.langkahMesin(x, { t: "JAWAB", nilai: l.benar }) : ME.langkahMesin(x, { t: "LANJUT" });
+  }
+  cek(x.selesai && def.selesaiId === K9.ID_MESIN_K5B9.B, `${def.id}: bisa diselesaikan, id selesai sesuai misi`);
+  const y = ME.awalMesin(def);
+  const l0 = ME.langkahAktif(y);
+  const z = ME.langkahMesin(y, { t: "JAWAB", nilai: l0.opsi.find((o) => o !== l0.benar) });
+  cek(z.ke === 0 && z.ditolak === 1 && z.pesan === l0.petunjuk, `${def.id}: jawaban salah ditolak dengan petunjuk`);
+
+  const RENCANA_MB = [
+    { id: "sepatu", a: 432543, b: 342231, urut: [432543, 232231, 342231], arah: "naik" },
+    { id: "ratusan", a: 599198, b: 599047, urut: [599047, 432543, 599198], arah: "turun" },
+    { id: "puluhan", a: 789867, b: 789876, urut: [789867, 676785, 789876], arah: "naik" },
+  ];
+  sama(MSB.KASUS_BANDING.map((k) => [k.id, k.a, k.b, k.urut, k.arah]), RENCANA_MB.map((r) => [r.id, r.a, r.b, r.urut, r.arah]), "Mesin B: data tiga kasus sesuai rencana");
+  const T = ["ratus ribuan", "puluh ribuan", "ribuan", "ratusan", "puluhan", "satuan"];
+  const titik = (v) => String(v).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  for (const [i, r] of RENCANA_MB.entries()) {
+    const c = def.kasus[i];
+    const [ko, ba, ur, si] = c.langkah;
+    const k = kolomPertamaMandiri(r.a, r.b);
+    cek(ko.benar === T[k] && ko.opsi.every((o) => T.includes(o)) && ko.tanya.includes(titik(r.a)) && ko.tanya.includes(titik(r.b)), `Mesin B ${r.id}: kolom pertama beda ${T[k]}`);
+    cek(ko.opsi.filter((o) => o !== ko.benar).every((o) => [k - 1, k + 1, 5, 0].includes(T.indexOf(o))), `Mesin B ${r.id}: pengecoh kolom adalah tetangga, satuan, atau kolom paling kiri`);
+    const besar = Math.max(r.a, r.b);
+    cek(ba.benar === titik(besar) && ba.opsi.includes(titik(Math.min(r.a, r.b))) && ba.opsi.includes("sama besar"), `Mesin B ${r.id}: yang lebih besar ${besar}`);
+    cek(ba.tanya.includes(T[k]) , `Mesin B ${r.id}: soal banding menyebut kolom penentu`);
+    const sortir = urutMandiri(r.urut, r.arah);
+    cek(ur.benar === sortir.map(titik).join(", ") && ur.tanya.includes(r.arah), `Mesin B ${r.id}: urut ${r.arah} ${sortir.join(" ")}`);
+    sama([...ur.opsi].sort(), [sortir.map(titik).join(", "), [...sortir].reverse().map(titik).join(", "), [sortir[1], sortir[0], ...sortir.slice(2)].map(titik).join(", ")].sort(), `Mesin B ${r.id}: pengecoh urut kebalikan dan dua pertama berpindah`);
+    cek(!ur.tanya.includes(sortir.map(titik).join(", ")) , `Mesin B ${r.id}: soal urut tidak membocorkan jawaban`);
+    const h = cmpMandiri(r.b, r.a);
+    cek(si.benar === KATA_HUBUNGAN[h + 1] && si.tanya.includes(`${titik(r.b)} … ${titik(r.a)}`) && [...si.opsi].sort().join() === [...KATA_HUBUNGAN].sort().join(), `Mesin B ${r.id}: simbol ${KATA_HUBUNGAN[h + 1]} (urutan b lalu a)`);
+    cek(EJ.ejaK5B9(c.ringkas).includes(EJ.kataK5B9(besar)) && c.ringkas.includes(`kolom ${T[k]}`), `Mesin B ${r.id}: ringkas memuat bilangan dan kolom`);
+  }
+  sama(MSB.KASUS_BANDING.map((k) => kolomPertamaMandiri(k.a, k.b)), [0, 3, 4], "Mesin B: kolom beda 0, 3, dan 4");
+}
+
+/* ------------------------------ Skenario B ------------------------------ */
+{
+  const S = SK.SKENARIO_K5B9B;
+  cek(S.adegan.length >= 5 && S.adegan.length <= 8, `${S.id}: 5 sampai 8 adegan`);
+  cek(S.adegan[0].jenis === "narasi" && S.adegan[S.adegan.length - 1].jenis === "akhir", `${S.id}: buka dan tutup`);
+  cek(new Set(S.adegan.map((a) => a.jenis)).size >= 4, `${S.id}: paling sedikit empat jenis adegan`);
+  const semuaTeks = [];
+  for (const a of S.adegan) {
+    semuaTeks.push(a.cerita);
+    for (const o of a.opsi ?? []) semuaTeks.push(o.teks, o.umpan);
+    for (const q of a.soal ?? []) semuaTeks.push(q.teks, ...q.opsi);
+    for (const f of ["tanya", "sukses", "salah", "kurang", "lebih"]) if (a[f]) semuaTeks.push(a[f]);
+  }
+  cek(semuaTeks.every(tanpaAngka), `${S.id}: semua teks dapat dieja`);
+  sama(S.id.replace(/-k5b9$/, ""), K9.ID_SKENARIO_K5B9.B, "id skenario B sesuai id misi");
+  const adegan = (id) => S.adegan.find((a) => a.id === id);
+  const titik = (v) => String(v).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  const mulai = adegan("mulai");
+  cek(mulai.opsi.filter((o) => o.benar).length === 1 && /paling kiri/.test(mulai.opsi.find((o) => o.benar).teks) && mulai.opsi.some((o) => /satuan/.test(o.teks) && !o.benar), "mulai: mulai dari kolom paling kiri, pengecoh satuan");
+  const sepatu = adegan("sepatu");
+  const harga = { Lukas: 432543, Komang: 342231, Nisa: 232231 };
+  const termahal = Object.entries(harga).sort((p, q) => q[1] - p[1])[0][0];
+  const termurah = Object.entries(harga).sort((p, q) => p[1] - q[1])[0][0];
+  cek(sepatu.soal[0].jawaban === termahal && sepatu.soal[1].jawaban === termurah && Object.values(harga).every((h) => sepatu.cerita.includes(titik(h))), "sepatu: termahal Lukas dan termurah Nisa (urut mandiri)");
+  const kolom = adegan("kolom");
+  const diperiksa = kolomPertamaMandiri(599198, 599047) + 1;
+  cek(kolom.jumlah === diperiksa && diperiksa === 4 && kolom.jumlah <= 12 && kolom.cerita.includes("599.198") && kolom.cerita.includes("599.047"), "kolom: empat kolom diperiksa (tiga sama dan satu beda)");
+  const beda = adegan("beda");
+  cek(beda.soal[0].jawaban === titik(Math.max(599198, 599047)) && beda.soal[1].jawaban === "ratusan" && beda.soal[1].jawaban === ["ratus ribuan", "puluh ribuan", "ribuan", "ratusan", "puluhan", "satuan"][kolomPertamaMandiri(599198, 599047)], "beda: 599.198 lebih besar, kolom ratusan");
+  const puluhan = adegan("puluhan");
+  const bp = puluhan.opsi.find((o) => o.benar);
+  cek(puluhan.opsi.filter((o) => o.benar).length === 1 && /puluhan/.test(bp.teks) && /789\.876 lebih besar/.test(bp.teks) && 789876 > 789867 && kolomPertamaMandiri(789876, 789867) === 4 && puluhan.opsi.some((o) => /satuan/.test(o.teks) && !o.benar), "puluhan: 789.876 lebih besar, satuan menyesatkan");
+  const urut = adegan("urut");
+  cek(urut.soal[0].jawaban === urutMandiri([232231, 342231, 432543], "naik").map(titik).join(", ") && urut.soal[1].jawaban === KATA_HUBUNGAN[cmpMandiri(342231, 432543) + 1] && urut.soal[1].teks.includes("342.231 … 432.543"), "urut: naik 232.231, 342.231, 432.543 dan lebih kecil dari");
+  const posisi = S.adegan.filter((a) => a.jenis === "pilih").map((a) => a.opsi.findIndex((o) => o.benar));
+  cek(new Set(posisi).size === posisi.length, `letak jawaban pilih bervariasi (${posisi.join("")})`);
+  for (const id of ["sepatu", "beda", "urut"]) {
+    const ps = adegan(id).soal.map((q) => q.opsi.indexOf(q.jawaban));
+    cek(ps.every((p) => p >= 0) && new Set(ps).size === ps.length && adegan(id).soal.every((q) => q.opsi.length === 3 && new Set(q.opsi).size === 3), `letak jawaban soal ${id} bervariasi (${ps.join("")})`);
+  }
+  cek(S.adegan.filter((a) => a.jenis === "pilih").every((a) => a.opsi.length === 3 && a.opsi.filter((o) => o.benar).length === 1), "setiap pilih: tiga opsi, satu benar");
+  cek(/tabel nilai tempat/.test(S.adegan[0].cerita), "B menyentuh tabel nilai tempat dari Sub-Bab A");
+}
+
+/* ------------------------------ Misi B ------------------------------ */
+{
+  const daftar = K9.daftarMisiK5Bab9("B");
+  cek(TK.hurufK5B9("B") === "B" && TK.misiAwalK5Bab9("B").includes("Lab Banding") && tanpaAngka(TK.misiAwalK5Bab9("B")), "B: teks misi awal dan huruf");
+  cek([TK.MISI_K5B9.B, TK.NAMA_SIM_K5B9.B].every(tanpaAngka), "B: teks misi dan nama dapat dieja");
+  cek(daftar === K9.MISI_B && daftar.filter((m) => m.wajib).length === 7 && daftar.filter((m) => !m.wajib).length === 3, "B: tujuh misi wajib dan tiga tantangan bebas");
+  cek(new Set(daftar.map((m) => m.id)).size === 10 && daftar.every((m) => m.id.startsWith("b-")), "B: id misi unik berawalan huruf");
+  const baru = (k) => M0.misiBaru(daftar, k, new Set());
+  const kosong = [{ alat: "banding", pernah: [] }, { alat: "nilai", pernah: [] }, sel("tidak-ada"), B.keadaanBandingK5B9B(B.awalBandingK5B9B()), A.keadaanNilaiK5B9A(A.awalNilaiK5B9A())];
+  cek(kosong.every((k) => baru(k).length === 0), "B: keadaan awal alat tidak memenuhi misi mana pun");
+  cek(daftar.every((m) => m.teks.length > 20 && tanpaAngka(m.teks)), "B: teks misi jelas dan dapat dieja");
+  cek(baru(sel(K9.ID_MESIN_K5B9.B)).join() === "b-mesin" && baru(sel(K9.ID_SKENARIO_K5B9.B)).join() === "b-skenario", "B: id mesin dan skenario memenuhi misinya");
+  cek(baru(sel(K9.ID_MESIN_K5B9.A)).length === 0 && baru(sel(K9.ID_SKENARIO_K5B9.A)).length === 0, "B: id mesin dan skenario A tidak memenuhi misi B");
+  cek(M0.misiBaru(K9.MISI_A, sel(K9.ID_MESIN_K5B9.B), new Set()).length === 0, "A: id mesin B tidak memenuhi misi A");
+  cek(baru({ alat: "nilai", pernah: ["banding:0", "banding:1", "satuan:2", "urut:0", "urut:1", "simbol:0", "simbol:1"] }).length === 0, "B: riwayat alat lain tidak memenuhi misi B");
+  cek(M0.misiBaru(K9.MISI_A, { alat: "banding", pernah: ["baca:0", "baca:2", "tabel:0", "salah:0", "nilai:0", "juta"] }, new Set()).length === 0, "A: riwayat alat banding tidak memenuhi misi A");
+
+  const capai = (aksi) => baru(B.keadaanBandingK5B9B(jalan(B.awalBandingK5B9B(), LB, aksi)));
+  const banding = (i) => {
+    const r = RENCANA_B[i];
+    const k = kolomPertamaMandiri(r.a, r.b);
+    const teks = cmpMandiri(r.a, r.b) > 0 ? "Atas lebih besar" : "Bawah lebih besar";
+    return [{ t: "G_DATA", i }, ...Array.from({ length: k }, () => ({ t: "G_GESER" })), { t: "G_BERHENTI" }, { t: "G_PILIH", o: B.opsiBanding(i).opsi.indexOf(teks) }];
+  };
+  const urut = (i) => {
+    const u = URUT_RENCANA[i];
+    const aksi = [{ t: "U_DATA", i }];
+    const arr = [...u.awal];
+    for (let p = 0; p < arr.length; p += 1) for (let j = 0; j < arr.length - 1; j += 1) if (u.arah === "naik" ? arr[j] > arr[j + 1] : arr[j] < arr[j + 1]) { [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; aksi.push({ t: "U_TURUN", k: j }); }
+    return [...aksi, { t: "U_PERIKSA" }];
+  };
+  const simbol = (i) => {
+    const [p, q] = SIMBOL_RENCANA[i];
+    return [{ t: "S_DATA", i }, { t: "S_PILIH", o: B.opsiSimbol(i).opsi.indexOf(KATA_HUBUNGAN[cmpMandiri(p, q) + 1]) }];
+  };
+  const satuan = (i) => [{ t: "G_DATA", i }, { t: "G_SATUAN" }];
+
+  cek(capai(banding(1)).join() === "b-langsung", "B: banding sepatu Lukas dan Komang memenuhi b-langsung");
+  cek(capai(banding(0)).join() === "b-geser", "B: banding ponsel dengan geser memenuhi b-geser");
+  cek(capai([...banding(1), ...banding(0)]).join() === "b-langsung,b-geser", "B: dua banding memenuhi dua misi");
+  cek(capai([...banding(2), ...banding(3), ...banding(4), ...banding(5)]).length === 0, "B: banding pasangan lain tidak memenuhi misi wajib");
+  cek(capai(banding(0).slice(0, -1)).length === 0 && capai(banding(1).slice(0, -1)).length === 0, "B: berhenti tanpa memilih hasil belum memenuhi");
+  cek(capai([{ t: "G_DATA", i: 1 }, { t: "G_PILIH", o: B.opsiBanding(1).benar }]).length === 0, "B: memilih hasil sebelum berhenti tidak memenuhi");
+  cek(capai([{ t: "G_DATA", i: 0 }, { t: "G_BERHENTI" }, { t: "G_GESER" }, { t: "G_PILIH", o: B.opsiBanding(0).benar }]).length === 0, "B: berhenti terlalu dini di kolom yang sama tidak memenuhi");
+  cek(capai(satuan(2)).join() === "b-satuan", "B: mencoba dari satuan pada undian memenuhi b-satuan");
+  cek(capai(satuan(0)).length === 0 && capai(satuan(1)).length === 0 && capai(satuan(3)).length === 0, "B: satuan pada pasangan lain tidak memenuhi b-satuan");
+  cek(capai([...urut(0)]).join() === "" && capai([...urut(1)]).join() === "", "B: satu urutan saja belum memenuhi b-urut");
+  cek(capai([...urut(0), ...urut(1)]).join() === "b-urut", "B: urut naik dan turun memenuhi b-urut");
+  cek(capai([...urut(0), ...urut(2)]).length === 0, "B: dua urutan naik belum memenuhi b-urut");
+  cek(capai([{ t: "U_DATA", i: 0 }, { t: "U_PERIKSA" }, ...urut(1)]).length === 0, "B: periksa susunan awal tidak memenuhi");
+  cek(capai([...simbol(0), ...simbol(1)]).join() === "b-simbol", "B: tanda lebih kecil dan sama dengan memenuhi b-simbol");
+  cek(capai(simbol(0)).length === 0 && capai(simbol(1)).length === 0 && capai([...simbol(2), ...simbol(3)]).length === 0, "B: satu tanda atau pasangan lain tidak memenuhi b-simbol");
+  cek(capai([{ t: "S_DATA", i: 0 }, { t: "S_PILIH", o: (B.opsiSimbol(0).benar + 1) % 3 }, { t: "S_DATA", i: 1 }, { t: "S_PILIH", o: (B.opsiSimbol(1).benar + 2) % 3 }]).length === 0, "B: tanda salah tidak memenuhi");
+  // Tantangan.
+  const enam = [0, 1, 2, 3, 4, 5];
+  cek(capai(enam.flatMap(banding)).join() === "b-langsung,b-geser,b-banding-semua", "B: keenam banding memenuhi dua misi dan tantangan");
+  cek(capai([0, 1, 2, 3, 4].flatMap(banding)).join() === "b-langsung,b-geser", "B: lima banding belum memenuhi tantangan");
+  cek(capai(enam.flatMap(urut)).join() === "b-urut,b-urut-semua", "B: keenam urut memenuhi misi dan tantangan");
+  cek(capai([0, 1, 2, 3, 4].flatMap(urut)).join() === "b-urut", "B: lima urut belum memenuhi tantangan");
+  cek(capai(enam.flatMap(simbol)).join() === "b-simbol,b-simbol-semua", "B: keenam simbol memenuhi misi dan tantangan");
+  cek(capai([0, 1, 2, 3, 4].flatMap(simbol)).join() === "b-simbol", "B: lima simbol belum memenuhi tantangan");
+  cek(capai([...banding(2), ...urut(3), ...simbol(5)]).length === 0, "B: riwayat pada pasangan lain, tidak ada misi yang terpenuhi");
+  // Gerbang.
+  const tampil = M0.tampilMisi(daftar);
+  const wajibIds = tampil.filter((m) => m.wajib).map((m) => m.id);
+  cek(!M0.wajibSelesai(tampil, new Set(wajibIds.slice(0, 6))) && M0.wajibSelesai(tampil, new Set(wajibIds)), "B: enam dari tujuh wajib belum membuka gerbang, tujuh membuka");
+}
+
+/* ------------------------------ Konsep tidak bocor ke Sub-Bab B ------------------------------ */
+{
+  const baca = (nama, ekstensi) => readFileSync(new URL(`../src/components/modul/${nama}.${ekstensi}`, import.meta.url), "utf8");
+  const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas5-bab9-ringkas.json", import.meta.url), "utf8"));
+  const tanpaKomentar = (s) => s.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const teksDari = (o) => {
+    const hasil = [];
+    JSON.stringify(o, (k, v) => {
+      if (typeof v === "string" && k !== "tipe" && k !== "jenis") hasil.push(v);
+      return v;
+    });
+    return hasil.join(" | ");
+  };
+  // Sub-Bab B memakai nilai tempat dan bacaan dari A. Menyusun dan menguraikan bilangan milik Sub-Bab C.
+  const BOCOR_B = /(susun|menyusun|komposisi|dekomposisi|\burai|menguraikan|uraian|bentuk panjang|bentuk baku|penukaran|menukar|tukar|expanded|part-whole|flexible|decompos|compos|cara lain|jumlah nilai tempat|bagian nilai tempat|1 ratus ribuan = 10)/i;
+  const catat = (teks, apa) => {
+    const m = BOCOR_B.exec(teks);
+    cek(!m, `B: ${apa} bebas konsep susun, urai, dan penukaran tempat (${m ? m[0] : ""} di "${String(teks).slice(Math.max(0, (m?.index ?? 0) - 30), (m?.index ?? 0) + 40)}")`);
+  };
+  for (const t of [TK.MISI_K5B9.B, TK.NAMA_SIM_K5B9.B, ...K9.MISI_B.map((m) => m.teks)]) catat(t, "teks misi");
+  for (const [nama, o] of [["mesin", MSB.MESIN_BANDING], ["skenario", SK.SKENARIO_K5B9B], ["peta dan infografis ringkas", ringkas.subBab.B]]) catat(teksDari(o), nama);
+  for (const [f, e] of [["SimulasiLabBandingK5B9", "tsx"], ["model-banding-k5b9", "tsx"], ["lab-banding-k5b9b", "ts"], ["mesin-banding-k5b9", "ts"]]) catat(tanpaKomentar(baca(f, e)), `${f} (tanpa komentar)`);
+  for (const p of globalThis.__pesanB) catat(p, "pesan lab dari fuzz");
+  for (const u of [B.ucapBandingK5B9B(y0), B.ucapUrutK5B9B(y0), B.ucapSimbolK5B9B(y0)]) catat(u, "ucapan lab");
+  // Kode lab B tidak menyebut nama tampilan atau fungsi Sub-Bab C.
+
+  for (const f of ["SimulasiLabBandingK5B9", "model-banding-k5b9"]) {
+    const s = baca(f, "tsx");
+    cek(!/correct_index|explanation/.test(s), `${f}: tidak memuat correct_index atau explanation`);
+    cek(!/fetch\(|XMLHttpRequest|api\/|openai|anthropic|gemini/i.test(s), `${f}: tanpa jaringan atau model bahasa`);
+  }
+  for (const f of ["lab-banding-k5b9b", "mesin-banding-k5b9"]) {
+    const s = baca(f, "ts");
+    cek(!/fetch\(|XMLHttpRequest|from "react"|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: murni`);
+    const impor = s.match(/^import .+$/gm) ?? [];
+    cek(impor.every((l) => l.startsWith("import type")), `${f}: hanya mengimpor tipe`);
+  }
+  cek((baca("lab-banding-k5b9b", "ts").match(/^import /gm) ?? []).length === 0, "lab banding tanpa impor sama sekali");
+  {
+    const s = baca("SimulasiLabBandingK5B9", "tsx");
+    cek(/useEffect\(\(\) => \{\s*onKeadaan\?\.\(keadaan\w+\(x\)\);\s*\}, \[onKeadaan, x\]\);/.test(s), "lab B: lapor keadaan lewat useEffect");
+    cek(/setLihat\(v\);\s*kirim\(\{ t: "PESAN_KOSONG" \}\);/.test(s), "lab B: ganti tampilan mengosongkan pesan");
+    const catatan = [...s.matchAll(/^\s*"([^"]+)",$/gm)].map((m) => m[1]);
+    cek(catatan.length >= 3 && catatan.every(tanpaAngka), "lab B: Coba ini dapat dieja");
+    for (const lab of ["Geser ke kanan", "Berhenti di kolom ini", "Bandingkan dari satuan", "Periksa urutan"]) cek(s.includes(`aria-label="${lab}"`), `lab B: tombol berlabel ${lab}`);
+    for (const awalan of ["Hasil ", "Turunkan ", "Tanda "]) cek(s.includes(`aria-label={\`${awalan}`), `lab B: tombol berlabel ${awalan.trim()}`);
+    for (const awalan of ["Pilih pasangan ", "Pilih urutan ", "Pilih simbol pasangan "]) cek(s.includes(`label={\`${awalan}`), `lab B: pilihan data berlabel ${awalan.trim()}`);
+    for (const aksi of ["G_GESER", "G_BERHENTI", "G_SATUAN", "G_PILIH", "U_TURUN", "U_PERIKSA", "S_PILIH", "G_DATA", "U_DATA", "S_DATA", "RESET"]) cek(s.includes(`t: "${aksi}"`), `lab B: aksi ${aksi} terhubung ke tombol`);
+    cek(/x\.banding\.berhenti \? \(/.test(s), "lab B: pilihan hasil hanya tampil setelah berhenti di kolom beda");
+    const m = baca("model-banding-k5b9", "tsx");
+    cek(/role="img"/.test(m) && /aria-label=\{`Tabel banding /.test(m), "model B: gambar tabel banding berlabel");
+  }
+  const pembungkus = baca("SimulasiK5Bab9", "tsx");
+  cek(/B: \{ id: "banding", nama: "Lab Banding" \}/.test(pembungkus) && /SKENARIO_K5B9B/.test(pembungkus) && /MESIN_BANDING/.test(pembungkus) && /huruf === "B"/.test(pembungkus), "pembungkus: Sub-Bab B terhubung (lab, mesin, skenario)");
+  const coba = [...pembungkus.matchAll(/"([^"]*\?)"/g)].map((m) => m[1]);
+  cek(coba.length >= 6 && coba.every(tanpaAngka), "Coba ini mesin A dan B dapat dieja");
+  const ucapan = [];
+  for (let i = 0; i < 6; i += 1) ucapan.push(B.ucapBandingK5B9B(LB(y0, { t: "G_DATA", i })), B.ucapUrutK5B9B(LB(y0, { t: "U_DATA", i })), B.ucapSimbolK5B9B(LB(y0, { t: "S_DATA", i })));
+  cek(ucapan.length === 18 && ucapan.every(tanpaAngka), `semua ${ucapan.length} ucapan lab B dieja menjadi kata`);
+}
+
+/* ------------------------------ Emoji dan data ringkas B ------------------------------ */
+{
+  const berkas = ["SimulasiLabBandingK5B9.tsx", "model-banding-k5b9.tsx", "lab-banding-k5b9b.ts", "mesin-banding-k5b9.ts"];
+  let ok = true;
+  for (const f of berkas) {
+    const s = readFileSync(new URL(`../src/components/modul/${f}`, import.meta.url), "utf8");
+    cek(s.charCodeAt(0) !== 0xfeff && !s.includes("\r"), `${f}: UTF-8 tanpa BOM dan akhir baris LF`);
+    for (const c of s) if (c.codePointAt(0) > 0x1fa95) ok = false;
+  }
+  cek(ok, "B: emoji paling tinggi Emoji 12 pada berkas simulasi");
+  const ringkas = JSON.parse(readFileSync(new URL("../src/data/kelas5-bab9-ringkas.json", import.meta.url), "utf8"));
+  const B0 = ringkas.subBab.B;
+  const [p1, p2, p3] = B0.infografis.panel;
+  cek(B0.infografis.panel.length === 3 && p1.butir.length >= 2 && p2.sisi.length >= 2 && p3.butir.length >= 2, "ringkas B: tiga panel dengan isi");
+  sama(B0.peta.cabang.map((c) => c.id), ["kiri", "geser", "tanda", "urut"], "ringkas B: empat cabang");
+  cek(B0.peta.kartu.length === 8 && B0.peta.kartu.every((k) => B0.peta.cabang.some((c) => c.id === k.cabang)), "ringkas B: delapan kartu, tiap kartu menunjuk cabang yang ada");
+  cek(B0.peta.cabang.every((c) => B0.peta.kartu.filter((k) => k.cabang === c.id).length >= 2), "ringkas B: tiap cabang punya dua kartu atau lebih");
+  cek([p1.ide, p2.ide, p3.ide].every((t) => t.split(/\s+/).length <= 8) && B0.peta.cabang.every((c) => c.ringkas.split(/\s+/).length <= 8), "ringkas B: ide dan ringkas paling banyak delapan kata");
+  const titikM = (v) => String(v).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  const isi = (panel, id) => panel.butir.find((b) => b.id === id).visual.isi;
+  sama(isi(p1, "hasil"), `${titikM(432543)} ${cmpMandiri(432543, 342231) > 0 ? ">" : "<"} ${titikM(342231)}`, "ringkas B: hasil banding dihitung mandiri");
+  sama(isi(p3, "besar"), `${titikM(432543)} > ${titikM(342231)}`, "ringkas B: tanda lebih besar");
+  sama(isi(p3, "kecil"), `${titikM(342231)} ${cmpMandiri(342231, 432543) < 0 ? "<" : ">"} ${titikM(432543)}`, "ringkas B: tanda lebih kecil");
+  sama(isi(p3, "naik"), urutMandiri([432543, 342231, 232231], "naik").map(titikM).join(", "), "ringkas B: urut naik dihitung mandiri");
+  sama(p2.sisi.find((s) => s.id === "kiri").visual.isi, `${titikM(789876)} ${cmpMandiri(789876, 789867) > 0 ? ">" : "<"} ${titikM(789867)}`, "ringkas B: dari kiri dihitung mandiri");
+  cek(kolomPertamaMandiri(432543, 342231) === 0 && isi(p1, "beda") === "4 dan 3" && 4 > 3, "ringkas B: kolom beda 4 dan 3");
+  cek(Object.keys(ringkas.subBab).join() === "A,B", "ringkas: Sub-Bab A dan B (C menyusul)");
+  cek(JSON.stringify(ringkas).indexOf("\r") < 0 && JSON.stringify(ringkas).split("").every((c) => c.codePointAt(0) <= 0x1fa95), "ringkas: emoji paling tinggi Emoji 12");
 }
 
 console.log(`\nLulus: ${lulus}, Gagal: ${gagal}`);

@@ -120,7 +120,10 @@
                 "ikon": "🔹",
                 "isi": "Titik memisahkan kelompok tiga angka.",
                 "suara": "Titik memisahkan ribuan agar mudah dibaca. Bilangan 979.875 punya dua kelompok tiga angka.",
-                "visual": { "jenis": "teks", "isi": "979.875" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "979.875"
+                }
               },
               {
                 "id": "ribu",
@@ -128,7 +131,10 @@
                 "ikon": "📖",
                 "isi": "Kelompok kiri diikuti ribu.",
                 "suara": "Kelompok di kiri titik dibaca sembilan ratus tujuh puluh sembilan, lalu diikuti kata ribu.",
-                "visual": { "jenis": "teks", "isi": "979 ribu" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "979 ribu"
+                }
               },
               {
                 "id": "kanan",
@@ -136,7 +142,10 @@
                 "ikon": "➡️",
                 "isi": "Lalu baca tiga angka terakhir.",
                 "suara": "Setelah kata ribu, baca kelompok di kanan titik: delapan ratus tujuh puluh lima.",
-                "visual": { "jenis": "teks", "isi": "875" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "875"
+                }
               }
             ]
           },
@@ -153,7 +162,10 @@
                 "ikon": "📝",
                 "catatan": "Lima ratus ribu empat puluh.",
                 "suara": "Dengan kata, bilangan ini ditulis lima ratus ribu empat puluh. Nol tidak diucapkan.",
-                "visual": { "jenis": "teks", "isi": "lima ratus ribu empat puluh" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "lima ratus ribu empat puluh"
+                }
               },
               {
                 "id": "angka",
@@ -161,7 +173,10 @@
                 "ikon": "🔢",
                 "catatan": "Nol tetap ditulis.",
                 "suara": "Dengan angka, bilangan ini ditulis lima ratus ribu empat puluh, yaitu 500.040. Nol tetap ditulis supaya angka lain tidak bergeser.",
-                "visual": { "jenis": "teks", "isi": "500.040" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "500.040"
+                }
               }
             ],
             "kesimpulan": "Nol tetap ditulis di angka."
@@ -179,7 +194,31 @@
                 "ikon": "🧮",
                 "isi": "Ratus ribuan sampai satuan.",
                 "suara": "Tabel tempat punya enam kolom: ratus ribuan, puluh ribuan, ribuan, ratusan, puluhan, dan satuan.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Tempat", "Nilai"], "baris": [["Ratus ribuan", 100000], ["Puluh ribuan", 10000], ["Ribuan", 1000], ["Ratusan", 100]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Tempat",
+                    "Nilai"
+                  ],
+                  "baris": [
+                    [
+                      "Ratus ribuan",
+                      100000
+                    ],
+                    [
+                      "Puluh ribuan",
+                      10000
+                    ],
+                    [
+                      "Ribuan",
+                      1000
+                    ],
+                    [
+                      "Ratusan",
+                      100
+                    ]
+                  ]
+                }
               },
               {
                 "id": "nilai",
@@ -187,7 +226,10 @@
                 "ikon": "💎",
                 "isi": "Angka 9 di ratus ribuan.",
                 "suara": "Angka 9 di tempat ratus ribuan bernilai sembilan dikali seratus ribu, sama dengan sembilan ratus ribu.",
-                "visual": { "jenis": "teks", "isi": "9 × 100.000 = 900.000" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "9 × 100.000 = 900.000"
+                }
               },
               {
                 "id": "juta",
@@ -195,7 +237,230 @@
                 "ikon": "➕",
                 "isi": "Tambah 1, semua kolom jadi nol.",
                 "suara": "Sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan ditambah satu sama dengan satu juta.",
-                "visual": { "jenis": "teks", "isi": "999.999 + 1 = 1.000.000" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "999.999 + 1 = 1.000.000"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Banding dan Urut",
+          "ikon": "⚖️",
+          "suara": "Ini peta membandingkan dan mengurutkan bilangan. Kita belajar mulai dari kolom paling kiri, bergeser ke kanan bila angkanya sama, memakai tanda, dan mengurutkan naik atau turun. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "kiri",
+            "judul": "Mulai dari kiri",
+            "ikon": "📍",
+            "ringkas": "Kolom paling kiri dibandingkan dulu.",
+            "suara": "Mulai dari kiri. Bandingkan angka di kolom paling kiri lebih dulu, karena nilai tempatnya paling besar. Jangan mulai dari satuan."
+          },
+          {
+            "id": "geser",
+            "judul": "Geser jika sama",
+            "ikon": "➡️",
+            "ringkas": "Angka sama, geser ke kanan.",
+            "suara": "Geser jika sama. Bila angka di satu kolom sama, geser ke kolom di kanannya. Berhenti di kolom pertama yang angkanya berbeda, karena kolom itu yang menentukan."
+          },
+          {
+            "id": "tanda",
+            "judul": "Tanda",
+            "ikon": "🔣",
+            "ringkas": "Lebih besar, lebih kecil, sama dengan.",
+            "suara": "Tanda. Bilangan yang lebih besar memakai tanda lebih besar dari, yang lebih kecil memakai tanda lebih kecil dari, dan bila semua kolom sama dipakai tanda sama dengan."
+          },
+          {
+            "id": "urut",
+            "judul": "Urut",
+            "ikon": "📊",
+            "ringkas": "Naik kecil ke besar, turun sebaliknya.",
+            "suara": "Urut. Urut naik berarti dari yang paling kecil ke yang paling besar. Urut turun berarti sebaliknya. Bandingkan bilangan bertetangga berulang kali."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-kiri",
+            "teks": "Mulai dari kolom paling kiri",
+            "ikon": "📍",
+            "cabang": "kiri",
+            "petunjuk": "Titik awal membandingkan itu soal mulai dari kiri. Coba cabang lain."
+          },
+          {
+            "id": "b-besar",
+            "teks": "Kolom kiri nilainya paling besar",
+            "ikon": "💎",
+            "cabang": "kiri",
+            "petunjuk": "Alasan mulai dari kiri itu soal mulai dari kiri. Coba cabang lain."
+          },
+          {
+            "id": "b-sama",
+            "teks": "Angka sama, geser ke kanan",
+            "ikon": "➡️",
+            "cabang": "geser",
+            "petunjuk": "Menggeser kolom itu soal geser jika sama. Coba cabang lain."
+          },
+          {
+            "id": "b-beda",
+            "teks": "Berhenti di kolom pertama beda",
+            "ikon": "🛑",
+            "cabang": "geser",
+            "petunjuk": "Tempat berhenti itu soal geser jika sama. Coba cabang lain."
+          },
+          {
+            "id": "b-lebih",
+            "teks": "432.543 > 342.231",
+            "ikon": "🔣",
+            "cabang": "tanda",
+            "petunjuk": "Tanda lebih besar itu soal tanda. Coba cabang lain."
+          },
+          {
+            "id": "b-semua",
+            "teks": "Semua kolom sama berarti =",
+            "ikon": "🟰",
+            "cabang": "tanda",
+            "petunjuk": "Tanda sama dengan itu soal tanda. Coba cabang lain."
+          },
+          {
+            "id": "b-naik",
+            "teks": "Naik: kecil ke besar",
+            "ikon": "📈",
+            "cabang": "urut",
+            "petunjuk": "Urut naik itu soal urut. Coba cabang lain."
+          },
+          {
+            "id": "b-turun",
+            "teks": "Turun: besar ke kecil",
+            "ikon": "📉",
+            "cabang": "urut",
+            "petunjuk": "Urut turun itu soal urut. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Membandingkan dan Mengurutkan",
+        "suara": "Ini tiga panel tentang membandingkan bilangan. Ketuk kotaknya untuk membuka, lalu lihat cara mulai dari kiri, perbedaan dari kiri dan dari satuan, serta tanda dan urutan.",
+        "panel": [
+          {
+            "id": "b-kiri-info",
+            "tipe": "buka",
+            "judul": "Mulai dari kiri",
+            "ide": "Berhenti di kolom pertama yang beda.",
+            "suara": "Ada tiga hal tentang membandingkan dari kiri. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "awal",
+                "label": "Kolom paling kiri",
+                "ikon": "📍",
+                "isi": "Mulai dari ratus ribuan.",
+                "suara": "Bilangan empat ratus tiga puluh dua ribu lima ratus empat puluh tiga dan tiga ratus empat puluh dua ribu dua ratus tiga puluh satu dibandingkan mulai dari kolom ratus ribuan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "432.543 dan 342.231"
+                }
+              },
+              {
+                "id": "beda",
+                "label": "Kolom beda",
+                "ikon": "🛑",
+                "isi": "Ratus ribuan: 4 dan 3.",
+                "suara": "Di kolom ratus ribuan angkanya empat dan tiga. Kolom ini sudah berbeda, jadi kita berhenti di sini.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 dan 3"
+                }
+              },
+              {
+                "id": "hasil",
+                "label": "Hasil",
+                "ikon": "✅",
+                "isi": "Empat lebih besar dari tiga.",
+                "suara": "Angka empat lebih besar dari tiga, jadi empat ratus tiga puluh dua ribu lima ratus empat puluh tiga lebih besar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "432.543 > 342.231"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-cara-info",
+            "tipe": "banding",
+            "judul": "Dari kiri atau satuan",
+            "ide": "Kolom paling kiri yang beda menentukan.",
+            "suara": "Lihat dua cara membandingkan bilangan yang sama.",
+            "sisi": [
+              {
+                "id": "kiri",
+                "nama": "Dari kiri",
+                "ikon": "✅",
+                "catatan": "Cara yang benar.",
+                "suara": "Dari kiri, tujuh ratus delapan puluh sembilan ribu delapan ratus tujuh puluh enam dibandingkan dengan tujuh ratus delapan puluh sembilan ribu delapan ratus enam puluh tujuh. Puluhannya berbeda, tujuh dan enam, jadi yang pertama lebih besar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "789.876 > 789.867"
+                }
+              },
+              {
+                "id": "satuan",
+                "nama": "Dari satuan",
+                "ikon": "⚠️",
+                "catatan": "Cara yang menyesatkan.",
+                "suara": "Dari satuan, enam dan tujuh tampak membuat yang kedua lebih besar. Itu keliru, karena puluhan lebih menentukan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "satuan 6 dan 7: keliru"
+                }
+              }
+            ],
+            "kesimpulan": "Mulai dari kolom paling kiri."
+          },
+          {
+            "id": "b-tanda-info",
+            "tipe": "buka",
+            "judul": "Tanda dan urutan",
+            "ide": "Banding berulang untuk mengurutkan.",
+            "suara": "Ada tiga hal tentang tanda dan urutan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "besar",
+                "label": "Lebih besar",
+                "ikon": "🔣",
+                "isi": "Besar di kiri tanda.",
+                "suara": "Empat ratus tiga puluh dua ribu lima ratus empat puluh tiga lebih besar dari tiga ratus empat puluh dua ribu dua ratus tiga puluh satu.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "432.543 > 342.231"
+                }
+              },
+              {
+                "id": "kecil",
+                "label": "Lebih kecil",
+                "ikon": "🔣",
+                "isi": "Kecil di kiri tanda.",
+                "suara": "Tiga ratus empat puluh dua ribu dua ratus tiga puluh satu lebih kecil dari empat ratus tiga puluh dua ribu lima ratus empat puluh tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "342.231 < 432.543"
+                }
+              },
+              {
+                "id": "naik",
+                "label": "Urut naik",
+                "ikon": "📈",
+                "isi": "Dari kecil ke besar.",
+                "suara": "Urut naik dari yang paling kecil: dua ratus tiga puluh dua ribu dua ratus tiga puluh satu, tiga ratus empat puluh dua ribu dua ratus tiga puluh satu, lalu empat ratus tiga puluh dua ribu lima ratus empat puluh tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "232.231, 342.231, 432.543"
+                }
               }
             ]
           }
