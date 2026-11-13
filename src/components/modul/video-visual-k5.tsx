@@ -6,12 +6,10 @@ import {
   BandingSvg,
   BangunKeliling,
   BangunLuas,
-  BatangDataSvg,
   BatangPecahanSvg,
   DeretSvg,
   LabelSvg,
   PapanDigit,
-  PiktogramSvg,
   PizzaSvg,
   SegitigaKeliling,
   SudutSvg,
@@ -208,39 +206,6 @@ export function visualK5(kode: string, v: number, a: number, k: number, t = 0): 
       <>
         <BangunKeliling sisi={[4, 6, 4, 6]} w={140} h={70} x={80} y={50} jalan={k === 0 ? p : k >= 2 ? 1 : progresDari(t, 5.5)} tampilJumlah={k >= 2} />
         {k >= 3 ? <LabelSvg x={90} y={160} w={120} teks="segi empat" ukuran={12} /> : null}
-      </>
-    );
-  }
-
-  if (bab === "k5b8") {
-    if (sub === "a") {
-      return (
-        <>
-          <PiktogramSvg k={nyalaSeirama(k, t, 3, 1.4) - 1} e="👤" baris={[3, 5, 4]} label={["Merah", "Biru", "Hijau"]} />
-          {k >= 2 ? <LabelSvg x={90} y={165} w={120} teks="baca piktogram" ukuran={11} /> : null}
-        </>
-      );
-    }
-    if (sub === "b") {
-      return (
-        <>
-          <PiktogramSvg k={nyalaSeirama(k, t, 3, 1.4) - 1} e="🚗" baris={[2, 6, 3]} label={["Sen", "Sel", "Rab"]} />
-          {k >= 2 ? <LabelSvg x={90} y={165} w={120} teks="1 ikon = banyak" ukuran={11} /> : null}
-        </>
-      );
-    }
-    return (
-      <>
-        <BatangDataSvg
-          k={nyalaSeirama(k, t, 4, 1.3) - 1}
-          data={[
-            { n: 5, label: "A" },
-            { n: 8, label: "B" },
-            { n: 3, label: "C" },
-            { n: 6, label: "D" },
-          ]}
-        />
-        {k >= 2 ? <LabelSvg x={90} y={40} w={120} teks="banding batang" ukuran={12} warna={HIJAU} /> : null}
       </>
     );
   }
