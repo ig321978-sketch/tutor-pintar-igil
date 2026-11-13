@@ -4,10 +4,12 @@ import React from "react";
 import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
 import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiLabSusunanK6B3 from "./SimulasiLabSusunanK6B3";
+import SimulasiLabTampakK6B3 from "./SimulasiLabTampakK6B3";
 import SimulasiMesinBertahapK3 from "./SimulasiMesinBertahapK3";
 import SimulasiSkenario from "./SimulasiSkenario";
-import { SKENARIO_K6B3A } from "./skenario-k6b3";
+import { SKENARIO_K6B3A, SKENARIO_K6B3B } from "./skenario-k6b3";
 import { MESIN_SUSUNAN } from "./mesin-susunan-k6b3";
+import { MESIN_TAMPAK } from "./mesin-tampak-k6b3";
 import { ejaK6B3 } from "./eja-k6b3";
 import type { DefSkenario } from "./skenario-umum";
 import type { DefMesin } from "./mesin-bertahap-k3b1";
@@ -19,23 +21,26 @@ import { MISI_K6B3, NAMA_SIM_K6B3, hurufK6B3, misiAwalK6Bab3, type HurufK6B3 } f
 /* Simulasi Kelas 6 Bab 3 di dalam Materi (tahap 4 SMISCPA). Pola hibrida:  */
 /* tiap sub-bab satu laboratorium bertahap (tiga alat), misi di misi-k6bab3.ts. */
 /*   A Mengonstruksi dan Mengurai: Lab Susunan + Mesin Susunan + Tigor dan Tenri Susun Rumah Kubus */
+/*   B Visualisasi Spasial       : Lab Tampak + Mesin Tampak + Anike Menggambar Tiga Arah */
 /* ======================================================================== */
 
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
-const SKENARIO: Record<HurufK6B3, DefSkenario> = { A: SKENARIO_K6B3A };
-const MESIN: Record<HurufK6B3, DefMesin> = { A: MESIN_SUSUNAN };
+const SKENARIO: Record<HurufK6B3, DefSkenario> = { A: SKENARIO_K6B3A, B: SKENARIO_K6B3B };
+const MESIN: Record<HurufK6B3, DefMesin> = { A: MESIN_SUSUNAN, B: MESIN_TAMPAK };
 
 const COBA_MESIN: Record<HurufK6B3, string[]> = {
   A: ["Ketuk stasiun Urai sebelum Hitung. Apa kata mesin?", "Mengapa seluruh kubus balok dihitung dari kubus satu lantai dikali banyak lantai?", "Mengapa kubus lantai kedua tidak boleh melayang?"],
+  B: ["Ketuk stasiun Atas sebelum Matriks. Apa kata mesin?", "Mengapa dari depan hanya tinggi terbesar tiap kolom yang dihitung?", "Mengapa dari atas tinggi tumpukan tidak terlihat?"],
 };
 
 const LAB: Record<HurufK6B3, { id: string; nama: string }> = {
   A: { id: "susunan", nama: "Lab Susunan" },
+  B: { id: "tampak", nama: "Lab Tampak" },
 };
 
 function LabSub({ huruf, speakGuru, lapor }: { huruf: HurufK6B3; speakGuru: (t: string) => void; lapor: (k: KeadaanK6Bab3) => void }) {
-  void huruf;
+  if (huruf === "B") return <SimulasiLabTampakK6B3 speakGuru={speakGuru} onKeadaan={lapor} />;
   return <SimulasiLabSusunanK6B3 speakGuru={speakGuru} onKeadaan={lapor} />;
 }
 

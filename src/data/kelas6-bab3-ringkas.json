@@ -193,6 +193,194 @@
           }
         ]
       }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Visualisasi Spasial",
+          "ikon": "👀",
+          "suara": "Ini peta konsep visualisasi spasial. Kita mencatat tinggi tiap petak dalam matriks, membaca tampak depan dan samping dengan mengambil tinggi terbesar, dan membaca tampak atas dari petak yang terisi. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "matriks",
+            "judul": "Matriks tinggi",
+            "ikon": "🔢",
+            "ringkas": "Catat tinggi tiap petak alas.",
+            "suara": "Matriks tinggi. Catat tinggi tumpukan kubus di tiap petak alas, baris depan dulu. Jumlah semua tinggi adalah seluruh kubus."
+          },
+          {
+            "id": "depan",
+            "judul": "Tampak depan",
+            "ikon": "👀",
+            "ringkas": "Tinggi terbesar tiap kolom.",
+            "suara": "Tampak depan. Tumpukan yang lebih rendah di belakang tertutup, jadi tiap kolom menampilkan tinggi terbesarnya. Jumlahkan tinggi terbesar tiap kolom."
+          },
+          {
+            "id": "samping",
+            "judul": "Tampak samping",
+            "ikon": "➡️",
+            "ringkas": "Tinggi terbesar tiap baris.",
+            "suara": "Tampak samping. Tiap baris menampilkan tinggi terbesarnya. Jumlahkan tinggi terbesar tiap baris."
+          },
+          {
+            "id": "atas",
+            "judul": "Tampak atas",
+            "ikon": "⬆️",
+            "ringkas": "Hanya petak terisi, bukan tinggi.",
+            "suara": "Tampak atas. Dari atas kita hanya tahu petak mana yang terisi. Empat kubus yang ditumpuk lurus hanya tampak satu petak dari atas."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-tinggi",
+            "teks": "Tinggi tiap petak",
+            "ikon": "📏",
+            "cabang": "matriks",
+            "petunjuk": "Mencatat tinggi tiap petak itu soal matriks tinggi. Coba cabang lain."
+          },
+          {
+            "id": "b-jumlah",
+            "teks": "Jumlah semua tinggi",
+            "ikon": "➕",
+            "cabang": "matriks",
+            "petunjuk": "Menjumlahkan semua tinggi itu soal matriks tinggi. Coba cabang lain."
+          },
+          {
+            "id": "b-kolom",
+            "teks": "Terbesar tiap kolom",
+            "ikon": "🏛️",
+            "cabang": "depan",
+            "petunjuk": "Mengambil tinggi terbesar tiap kolom itu soal tampak depan. Coba cabang lain."
+          },
+          {
+            "id": "b-tertutup",
+            "teks": "Yang rendah tertutup",
+            "ikon": "🙈",
+            "cabang": "depan",
+            "petunjuk": "Tumpukan rendah yang tertutup itu soal tampak depan. Coba cabang lain."
+          },
+          {
+            "id": "b-baris",
+            "teks": "Terbesar tiap baris",
+            "ikon": "📊",
+            "cabang": "samping",
+            "petunjuk": "Mengambil tinggi terbesar tiap baris itu soal tampak samping. Coba cabang lain."
+          },
+          {
+            "id": "b-samping-jumlah",
+            "teks": "Jumlah tinggi terbesar",
+            "ikon": "🧮",
+            "cabang": "samping",
+            "petunjuk": "Menjumlahkan tinggi terbesar tiap baris itu soal tampak samping. Coba cabang lain."
+          },
+          {
+            "id": "b-terisi",
+            "teks": "Hitung petak terisi",
+            "ikon": "🔲",
+            "cabang": "atas",
+            "petunjuk": "Menghitung petak terisi itu soal tampak atas. Coba cabang lain."
+          },
+          {
+            "id": "b-tumpuk",
+            "teks": "Tumpuk empat, satu petak",
+            "ikon": "🗼",
+            "cabang": "atas",
+            "petunjuk": "Tumpukan empat yang hanya tampak satu petak itu soal tampak atas. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Visualisasi Spasial",
+        "suara": "Ini tiga panel tentang tampak kubus. Ketuk kotaknya untuk membuka, lalu lihat matriks tinggi, tampak depan, dan tampak atas.",
+        "panel": [
+          {
+            "id": "b-matriks-info",
+            "tipe": "buka",
+            "judul": "Matriks tinggi",
+            "ide": "Catat tinggi tiap petak alas.",
+            "suara": "Ada dua hal tentang matriks tinggi. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "baris",
+                "label": "Dua baris",
+                "ikon": "📋",
+                "isi": "Depan 2 dan 1, belakang 3 dan 4.",
+                "suara": "Susunan dua kali dua punya baris depan dengan tinggi dua dan satu, dan baris belakang dengan tinggi tiga dan empat.",
+                "visual": { "jenis": "teks", "isi": "depan 2 1, belakang 3 4" }
+              },
+              {
+                "id": "total",
+                "label": "Seluruh kubus",
+                "ikon": "🧊",
+                "isi": "Jumlahkan semua tinggi.",
+                "suara": "Dua tambah satu tambah tiga tambah empat sama dengan sepuluh kubus seluruhnya.",
+                "visual": { "jenis": "teks", "isi": "2 + 1 + 3 + 4 = 10" }
+              }
+            ]
+          },
+          {
+            "id": "b-depan-info",
+            "tipe": "buka",
+            "judul": "Tampak depan",
+            "ide": "Ambil tinggi terbesar tiap kolom.",
+            "suara": "Ada tiga hal tentang tampak depan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "satu-tiga",
+                "label": "Satu dan tiga",
+                "ikon": "👀",
+                "isi": "Depan 1, belakang 3: tampak 3.",
+                "suara": "Kolom dengan tumpukan satu di depan dan tiga di belakang menampilkan tinggi tiga dari depan.",
+                "visual": { "jenis": "teks", "isi": "1 dan 3, tampak 3" }
+              },
+              {
+                "id": "kiri-kanan",
+                "label": "Dua kolom",
+                "ikon": "↔️",
+                "isi": "Kiri 3, kanan 4.",
+                "suara": "Pada susunan contoh, kolom kiri menampilkan tiga dan kolom kanan menampilkan empat dari depan.",
+                "visual": { "jenis": "teks", "isi": "3 dan 4" }
+              },
+              {
+                "id": "jumlah",
+                "label": "Tampak depan",
+                "ikon": "🧮",
+                "isi": "Tujuh petak.",
+                "suara": "Tiga ditambah empat sama dengan tujuh petak pada tampak depan, bukan sepuluh.",
+                "visual": { "jenis": "teks", "isi": "3 + 4 = 7" }
+              }
+            ]
+          },
+          {
+            "id": "b-atas-info",
+            "tipe": "banding",
+            "judul": "Atas dan depan",
+            "ide": "Atas tidak memberi tahu tinggi.",
+            "suara": "Lihat tumpukan empat kubus dari dua arah.",
+            "sisi": [
+              {
+                "id": "depan",
+                "nama": "Dari depan",
+                "ikon": "👀",
+                "catatan": "Tinggi terlihat.",
+                "suara": "Empat kubus yang ditumpuk lurus tampak setinggi empat petak dari depan.",
+                "visual": { "jenis": "teks", "isi": "4 petak" }
+              },
+              {
+                "id": "atas",
+                "nama": "Dari atas",
+                "ikon": "⬆️",
+                "catatan": "Hanya satu petak.",
+                "suara": "Empat kubus yang ditumpuk lurus hanya tampak satu petak dari atas, karena tinggi tidak terlihat.",
+                "visual": { "jenis": "teks", "isi": "1 petak" }
+              }
+            ],
+            "kesimpulan": "Dari atas tinggi tidak terlihat."
+          }
+        ]
+      }
     }
   }
 }

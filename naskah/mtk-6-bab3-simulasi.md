@@ -4,7 +4,7 @@ Bab: Kubus dan Balok (`mtk-6-bab3`, `FASE_C`, kelas 6; kode data Materi `k6-mat-
 
 Bab ini punya **tiga sub-bab**: A (Mengonstruksi dan Mengurai, hlm. 94-98), B (Visualisasi Spasial, hlm. 99-104), dan C (Lokasi, hlm. 105-112). Dikerjakan dalam tiga gelombang, satu sub-bab per gelombang. Gelombang A dan B tidak mendaftarkan bab; gelombang C mendaftarkan bab dan menjadi pencapaian bab.
 
-**Status: gelombang A selesai (Mengonstruksi dan Mengurai). Bab `mtk-6-bab3` BELUM terdaftar di `registri-simulasi.ts` (didaftarkan di gelombang C).**
+**Status: gelombang A (Mengonstruksi dan Mengurai) dan B (Visualisasi Spasial) selesai. Bab `mtk-6-bab3` BELUM terdaftar di `registri-simulasi.ts` (didaftarkan di gelombang C).**
 
 Berkas Materi bab ini tidak diubah (`SubBabK6B3A-C.tsx`, `naskah-k6b3.ts`, `data-k6b3.ts`, `paket-k6b3.ts`, dan lainnya). Pengeja suara memakai `ejaK6B3` (berkas baru `eja-k6b3.ts`) lewat prop `eja` mesin dan di lab.
 
@@ -27,10 +27,13 @@ Bilangan 0 sampai 9.999 diuji terhadap hitungan mandiri per digit di skrip uji. 
 | Sub-bab | Lab (tampilan) | Berkas | Mesin | Skenario |
 |---------|----------------|--------|-------|----------|
 | A | Lab Susunan (Susun, Lapisan, Penyangga) | `SimulasiLabSusunanK6B3.tsx` + `lab-susunan-k6b3a.ts` | Mesin Susunan | Tigor dan Tenri Susun Rumah Kubus (8 adegan) |
+| B | Lab Tampak (Matriks, Tampak, Atas) | `SimulasiLabTampakK6B3.tsx` + `lab-tampak-k6b3b.ts` | Mesin Tampak | Anike Menggambar Tiga Arah (8 adegan) |
 
-Mesin: `mesin-susunan-k6b3.ts`, dijalankan `SimulasiMesinBertahapK3.tsx` dan `mesin-bertahap-k3b1.ts`. Skenario: `skenario-k6b3.ts`, dijalankan `SimulasiSkenario.tsx`. Model gambar: `model-susunan-k6b3.tsx` (tumpukan kubus isometrik dengan tiap kubus digambar satu per satu, kisi per lantai, garis putus merah untuk kubus yang melayang, dan pilihan tiga jawaban). Data ringkas Mind-Map dan Infografis: `src/data/kelas6-bab3-ringkas.json`. Uji: `scripts/uji-lab-k6b3.mjs`.
+Mesin: `mesin-susunan-k6b3.ts`, dijalankan `SimulasiMesinBertahapK3.tsx` dan `mesin-bertahap-k3b1.ts`. Skenario: `skenario-k6b3.ts`, dijalankan `SimulasiSkenario.tsx`. Model gambar: `model-susunan-k6b3.tsx` (tumpukan kubus isometrik dengan tiap kubus digambar satu per satu, kisi per lantai, garis putus merah untuk kubus yang melayang, dan pilihan tiga jawaban). Model gambar B: `model-tampak-k6b3.tsx` (tumpukan kubus isometrik dari matriks tinggi dengan baris depan paling dekat, kisi tinggi tiap petak, dan tiga tampak datar yang dibangun dari himpunan petak kubus). Mesin B: `mesin-tampak-k6b3.ts`. Data ringkas Mind-Map dan Infografis: `src/data/kelas6-bab3-ringkas.json`. Uji: `scripts/uji-lab-k6b3.mjs`.
 
 Metode luar buku yang dianyam. A: Construct-Decompose Protocol (Susun: hitung semua kubus yang tersusun termasuk yang tertutup, cari kubus yang kurang untuk kubus atau balok target, lalu urai lantai teratas dan hitung sisanya), Layer Counting Method (Lapisan: kubus satu lantai penuh p × l, seluruh kubus dikali banyak lantai, lalu sisa bila satu lantai dilepas), dan Hidden Support Rule (Penyangga: cacah kubus lantai kedua yang melayang, putuskan boleh dibangun atau tambah penyangga dulu, lalu hitung seluruh kubus sesudah susunan sah).
+
+Metode luar B: Height-Matrix Silhouette (Matriks: catat tinggi baris depan, baris belakang, lalu jumlahkan semua tinggi), Occlusion Max Rule (Tampak: dari depan tiap kolom, dari samping tiap baris menampilkan tinggi terbesar, lalu jumlahkan), dan Orthographic Projection Protocol (Atas: dari atas hanya petak terisi yang terlihat, tinggi tidak, lalu pilih susunan yang cocok dengan ketiga tampak).
 
 ## Pola hibrida
 
@@ -39,8 +42,9 @@ Satu laboratorium per sub-bab, tiga alat. Gerbang LANJUTKAN KE CONCRETE aktif bi
 | Sub-bab | Misi wajib dari lab | Tantangan bebas |
 |---------|---------------------|-----------------|
 | A | Susun: bentuk L (3 kubus, kurang 5 untuk 2 × 2 × 2, sisa 2 sesudah lantai teratas dilepas); Lapisan: kubus kecil 2 × 2 × 2 (4 per lantai, 8, sisa 4); Lapisan: balok kardus 5 × 3 × 2 (15 per lantai, 30, sisa 15); Penyangga: dua kubus bertumpu (sah, 3 kubus); Penyangga: kubus di sudut kosong (1 melayang, tambah penyangga, 5 kubus) | Susun: keenam soal; Lapisan: keenam soal; Penyangga: keenam soal |
+| B | Matriks: contoh Anike [[2,1],[3,4]] (10 kubus); Tampak: depan [[1,2],[3,1]] (3 dan 2, 5 petak); Tampak: samping [[2,1],[1,2]] (2 dan 2, 4 petak); Atas: empat kubus ditumpuk (1 petak dari atas, 4 kubus); Atas: rekonstruksi contoh Anike (depan 7, samping 6, atas 4) | Matriks: keenam soal; Tampak: keenam soal; Atas: keenam soal |
 
-Tujuh misi wajib A: lima dari lab di atas, Mesin Susunan, dan skenario Tigor dan Tenri Susun Rumah Kubus. Near-miss tidak memenuhi misi: soal lain pada tampilan yang sama, soal bernomor sama pada tampilan lain, riwayat kosong, alat lain dengan id sama, dan keadaan selesai dengan id sama.
+Tujuh misi wajib tiap sub-bab: lima dari lab di atas, mesinnya (Mesin Susunan, Mesin Tampak), dan skenarionya (Tigor dan Tenri Susun Rumah Kubus, Anike Menggambar Tiga Arah). Near-miss tidak memenuhi misi: soal lain pada tampilan yang sama, soal bernomor sama pada tampilan lain, riwayat kosong, alat lain dengan id sama, dan keadaan selesai dengan id sama.
 
 ## Soal lab A (enam per tampilan, id `susun:0-5`, `lapisan:0-5`, `penyangga:0-5`)
 
@@ -52,17 +56,31 @@ Tujuh misi wajib A: lima dari lab di atas, Mesin Susunan, dan skenario Tigor dan
 
 Pengecoh dihitung dari kesalahan khas: hanya lantai dasar, tanpa lantai teratas, atau satu lebih (Hitung); ukuran target utuh atau kubus yang sudah ada (Kurang); total semula atau lantai teratas (Urai); jumlah ukuran atau ukuran kali tinggi (Dasar); lantai dasar saja atau jumlah ketiga ukuran (Total); jumlah mentah tanpa penyangga (Total penyangga). Bila calon habis atau ganda, dipakai bilangan di sekitar kunci, sehingga tidak pernah ada pilihan ganda. Letak kunci diputar (seed berbeda tiap tahap) dan diuji eksak.
 
+## Soal lab B (enam per tampilan, id `matriks:0-5`, `tampak:0-5`, `atas:0-5`)
+
+Baris pertama matriks paling depan, kolom pertama paling kiri, tinggi 0 berarti petak kosong. Tampak depan = jumlah tinggi terbesar tiap kolom, tampak samping = jumlah tinggi terbesar tiap baris, tampak atas = banyak petak terisi.
+
+| Tampilan | Soal | Tiga tahap |
+|----------|------|------------|
+| Matriks | [[2,1],[3,4]] (10), [[1,3],[2,1]] (7), [[2,2],[2,2]] (8), [[2,0],[2,2]] (6), [[3,1],[1,2]] (7), [[1,2],[4,1]] (8) | tinggi baris depan, tinggi baris belakang, seluruh kubus |
+| Tampak | tiga soal dari depan dan tiga dari samping (5, 4, 7 dan 4, 5, 6) | tinggi terbesar garis pertama, garis kedua, jumlah petak tampak |
+| Atas | [[4]], [[2,0],[2,2]], [[1,3],[2,1]], [[2,1],[3,4]], [[3,1],[0,2]], [[1,2],[2,1]] | petak terisi dari atas, seluruh kubus, susunan yang cocok dengan ketiga tampak |
+
+Pengecoh: pasangan tinggi terbalik atau satu lebih (Matriks); jumlah mentah, tinggi terkecil (Tampak); seluruh kubus dan tampak lain (Atas, Total). Rekonstruksi: tiap soal punya tiga calon susunan, satu cocok pada ketiga tampak dan dua cocok pada dua dari tiga tampak (near-miss, dicek dengan proyeksi kubus). Susunan kunci disembunyikan selama rekonstruksi.
+
 ## Mesin berstasiun
 
 | Mesin | Stasiun | Kasus |
 |-------|---------|-------|
 | Mesin Susunan (A) | Hitung → Lapisan → Penyangga → Urai | Rumah Dadu (3 × 2 × 2: 6 per lantai, 12, 1 dari 3 melayang, sisa 6), Gudang Kardus (4 × 3 × 2: 12, 24, 2 dari 5 melayang, sisa 12), Menara Balok (2 × 2 × 3: 4, 12, 2 dari 3 melayang, sisa 8) |
+| Mesin Tampak (B) | Matriks → Depan → Samping → Atas | Susunan Anike ([[2,1],[3,4]]: 10 kubus, depan 7, samping 6, atas 4), Tumpukan Empat ([[4]]: 4, 4, 4, 1), Pagar Kubus ([[2,0],[2,2]]: 6, 4, 4, 3) |
 
 ## Skenario
 
 | Skenario | Adegan | Isi |
 |----------|--------|-----|
 | Tigor dan Tenri Susun Rumah Kubus (A) | 8 | Narasi rumah kubus; Construct-Decompose Protocol (bentuk L: dua kubus berdampingan dan satu naik); ketuk 3 stik; Layer Counting Method (lantai 3 × 2 = 6 dan dua lantai = 12); isi 6 stik untuk lantai kedua; Hidden Support Rule (tambah penyangga dulu); menara 4 + 2 = 6 kubus dan sisa 4 sesudah lantai teratas dilepas; penutup memuat tiga metode luar |
+| Anike Menggambar Tiga Arah (B) | 8 | Narasi susunan 2 kali 2; Orthographic Projection Protocol (dari atas hanya petak terisi); ketuk 4 stik (tumpuk empat, 1 petak dari atas); Height-Matrix Silhouette (10 kubus, 4 petak dari atas); Occlusion Max Rule (kolom kiri 3, tampak depan 7); kesalahan menjumlahkan semua tinggi (10, benar 7); isi 7 stik tampak depan; penutup memuat tiga metode luar |
 
 Jenis adegan: narasi, pilih, hitung, soal, isi, akhir (6 jenis); batas jawaban numerik di `uji-skenario-umum.mjs` 100. Letak jawaban benar bervariasi.
 
@@ -73,9 +91,12 @@ Jenis adegan: narasi, pilih, hitung, soal, isi, akhir (6 jenis); batas jawaban n
 - Penyangga: urutan wajib melayang, keputusan, total; riwayat setelah total benar. Hitungan mandiri di uji: tiap kubus diperiksa apakah kubus di bawahnya ada (himpunan), penyangga ditambah per kubus, lalu dicacah ulang. Keputusan benar bergantung pada jumlah melayang (0 = boleh dibangun).
 - Konsep Sub-Bab B dan C tidak dipakai di Sub-Bab A (diuji pada misi, mesin, skenario, data ringkas, kode tampilan, model, logika, pesan lab hasil fuzz, dan ucapan): tanpa tampak depan, samping, dan atas, siluet, proyeksi, matriks, maksimum, koordinat dan huruf-angka, jarak, jalur, denah, dan lokasi. Lantai atas disebut "lantai teratas" atau "lantai kedua".
 - Fuzz 20.000 aksi Lab Susunan: batas terjaga, riwayat tidak dicabut dan hanya bila tercapai (orakel mandiri mencatat tiap tahap dari cacahan kubus). Indeks pecahan, negatif, di luar batas, `NaN`, dan bukan angka diabaikan (keadaan identik). Pesan sukses lab diawali "✅ " dan hanya bila langkah benar; pesan petunjuk tidak diawali "✅".
+- Matriks: urutan wajib baris depan, baris belakang, total; riwayat setelah total benar. Tampak: urutan wajib garis pertama, garis kedua, jumlah. Atas: urutan wajib petak terisi, seluruh kubus, rekonstruksi; riwayat setelah rekonstruksi benar. Hitungan mandiri di uji: kubus dicacah satu per satu pada (kolom, baris, lantai) dan tampak adalah banyak pasangan berbeda yang terlihat dari satu arah ((kolom, lantai) untuk depan, (baris, lantai) untuk samping, (kolom, baris) untuk atas), bukan rumus maksimum di kode.
+- Konsep Sub-Bab C tidak dipakai di Sub-Bab B (diuji pada misi, mesin, skenario, data ringkas, kode tampilan, model, logika, pesan lab hasil fuzz, dan ucapan): tanpa koordinat, lokasi, huruf, jarak, jalur, denah, diagonal, dan petak berhuruf (C2).
+- Fuzz 20.000 aksi Lab Tampak dengan orakel mandiri, sama seperti Lab Susunan.
 - Emoji: paling baru Emoji 12 dan tanpa urutan ZWJ (diuji pada semua berkas simulasi dan data ringkas). Materi Bab 3 bersih dari emoji di atas Emoji 12.
 - Temuan Materi (hanya dilaporkan, tidak diubah): infografis A "Siap B" memuat sisa templat peluang; ronde sortir B memakai label bin "lancip/tumpul" (sisa templat sudut); glyph "ʟ" (U+029F) bukan emoji; Sub-Bab C memakai |E−A| tanpa menyatakan A = 1.
 
 ## Uji
 
-`node --no-warnings scripts/uji-lab-k6b3.mjs`: data soal diketik ulang dan dicacah mandiri, pengecoh persis dari calon kesalahan khas, letak kunci eksak, alur tiap soal (salah, melompat, indeks tak sah, sesudah selesai), fuzz 20.000 aksi, mesin, skenario, misi (near-miss, tantangan, gerbang), pengeja (0 sampai 9.999), data ringkas, konsep tidak bocor, emoji dan akhir baris. Uji mutasi dijalankan lewat skrip sementara (di luar repo) pada pohon salinan.
+`node --no-warnings scripts/uji-lab-k6b3.mjs`: data soal diketik ulang dan dicacah mandiri, pengecoh persis dari calon kesalahan khas, letak kunci eksak, alur tiap soal (salah, melompat, indeks tak sah, sesudah selesai), fuzz 20.000 aksi, mesin, skenario, misi (near-miss, tantangan, gerbang), pengeja (0 sampai 9.999), data ringkas, konsep tidak bocor, emoji dan akhir baris. Uji mutasi dijalankan lewat skrip sementara (di luar repo) pada pohon salinan: A 64 dari 64 mutan terbunuh (satu mutan setara dilaporkan), B 58 dari 58 terbunuh (dua yang awalnya selamat ditutup dengan uji nama garis dan label metode per adegan).

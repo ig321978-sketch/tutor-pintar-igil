@@ -4,6 +4,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Skenario Kelas 6 Bab 3 (Kubus dan Balok). Tanpa jaringan, tanpa model bahasa.
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k6b3.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K6B3A: Tigor dan Tenri Susun Rumah Kubus (Construct-Decompose Protocol, Layer Counting Method, dan Hidden Support Rule)
+ *  - SKENARIO_K6B3B: Anike Menggambar Tiga Arah (Orthographic Projection Protocol, Height-Matrix Silhouette, dan Occlusion Max Rule)
  */
 
 export const SKENARIO_K6B3A: DefSkenario = {
@@ -86,6 +87,90 @@ export const SKENARIO_K6B3A: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Construct-Decompose Protocol: susun atau urai kubus, jumlahnya tetap bisa dihitung. Layer Counting Method: hitung lantai dasar dulu, lalu semua lantai, termasuk yang tertutup. Hidden Support Rule: kubus lantai kedua selalu punya kubus penyangga di bawahnya.",
+    },
+  ],
+};
+
+export const SKENARIO_K6B3B: DefSkenario = {
+  id: "anike-tampak-k6b3",
+  judul: "Anike Menggambar Tiga Arah",
+  latar: "Bantu Anike menggambar susunan kubus dari depan, samping, dan atas.",
+  tokoh: "👧",
+  nama: "Anike",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Anike. Aku menyusun kubus pada alas dua kali dua, lalu menggambarnya dari tiga arah. Baris depan tingginya 2 dan 1, baris belakang tingginya 3 dan 4. Ayo kita catat tinggi tiap petak dan baca tampaknya!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "tiga-arah",
+      jenis: "pilih",
+      cerita: "Orthographic Projection Protocol: gambar tampak depan, samping, dan atas tanpa perspektif, jadi hanya petak datar. Apa yang terlihat dari atas?",
+      opsi: [
+        { teks: "Tinggi tiap tumpukan kubus", benar: false, umpan: "Tinggi tidak terlihat dari atas. Yang terlihat hanya alas tiap tumpukan." },
+        { teks: "Hanya petak yang terisi, tinggi tidak terlihat", benar: true, umpan: "Betul! Dari atas kita tahu petak mana yang terisi, tetapi tidak tahu setinggi apa tumpukannya." },
+        { teks: "Seluruh kubus, termasuk yang tertutup", benar: false, umpan: "Kubus yang tertumpuk tidak terlihat dari atas, jadi tidak bisa dihitung dari gambar atas saja." },
+      ],
+    },
+    {
+      id: "hitung",
+      jenis: "hitung",
+      cerita: "Aku menumpuk kubus lurus ke atas di satu petak. Satu stik mewakili satu kubus.",
+      tanya: "Ketuk semua stik. Ada berapa kubus pada tumpukan itu?",
+      objek: "stik",
+      jumlah: 4,
+      sukses: "Betul! Ada 4 kubus ditumpuk. Dari atas, tumpukan itu hanya tampak 1 petak.",
+      salah: "Hmm, ketuk tiap stik sekali saja untuk satu kubus, lalu hitung lagi.",
+    },
+    {
+      id: "matriks",
+      jenis: "soal",
+      cerita: "Height-Matrix Silhouette: catat tinggi tiap petak alas dalam matriks. Susunanku: baris depan 2 dan 1, baris belakang 3 dan 4.",
+      soal: [
+        { teks: "Seluruh kubus pada susunanku ada … kubus.", jawaban: "10", opsi: ["7", "9", "10"] },
+        { teks: "Dari atas, tampak … petak terisi.", jawaban: "4", opsi: ["4", "10", "2"] },
+      ],
+      sukses: "Hebat! Seluruhnya 2 + 1 + 3 + 4 = 10 kubus, dan keempat petak terisi, jadi dari atas tampak 4 petak.",
+      salah: "Hmm, jumlahkan semua tinggi pada matriks untuk seluruh kubus, dan hitung petak yang terisi untuk tampak atas.",
+    },
+    {
+      id: "maks",
+      jenis: "soal",
+      cerita: "Occlusion Max Rule: dari depan, tumpukan yang lebih rendah di belakang tertutup. Tiap kolom menampilkan tinggi terbesarnya.",
+      soal: [
+        { teks: "Kolom kiri tingginya 2 dan 3. Yang terlihat dari depan adalah tinggi …", jawaban: "3", opsi: ["5", "2", "3"] },
+        { teks: "Tampak depan susunanku, dari kolom kiri 3 dan kolom kanan 4, memuat … petak.", jawaban: "7", opsi: ["7", "10", "6"] },
+      ],
+      sukses: "Betul! Kolom kiri menampilkan 3 dan kolom kanan menampilkan 4, jadi tampak depan memuat 7 petak.",
+      salah: "Hmm, ambil tinggi terbesar tiap kolom, lalu jumlahkan. Coba lagi.",
+    },
+    {
+      id: "salah",
+      jenis: "pilih",
+      cerita: "Adikku menghitung tampak depan dengan menjumlahkan semua tinggi susunanku dan mendapat 10. Apa yang salah dari caranya?",
+      opsi: [
+        { teks: "Ia menghitung kubus yang tertutup, padahal dari depan hanya tinggi terbesar tiap kolom yang terlihat", benar: true, umpan: "Betul! Tampak depan memuat 3 + 4 = 7 petak, bukan jumlah semua tinggi." },
+        { teks: "Ia seharusnya menjumlahkan 2 dan 1 saja", benar: false, umpan: "Baris depan saja tidak cukup. Tumpukan di belakang yang lebih tinggi juga terlihat." },
+        { teks: "Tidak ada yang salah, tampak depan sama dengan seluruh kubus", benar: false, umpan: "Tampak depan dan seluruh kubus berbeda: kubus yang tertutup tidak terlihat dari depan." },
+      ],
+    },
+    {
+      id: "warna",
+      jenis: "isi",
+      cerita: "Aku mewarnai tampak depan di kertas kotak-kotak. Masukkan satu stik untuk tiap petak yang tampak dari depan, yaitu 3 petak di kolom kiri dan 4 petak di kolom kanan.",
+      objek: "stik",
+      target: 7,
+      maks: 12,
+      sukses: "Betul! Tampak depan memuat 3 + 4 = 7 petak berwarna.",
+      kurang: "Petak yang diwarnai masih kurang. Tambah lagi sampai pas.",
+      lebih: "Petak yang diwarnai kelebihan. Kurangi sampai pas.",
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Orthographic Projection Protocol: gambar tampak depan, samping, dan atas tanpa perspektif, dan dari atas tinggi tidak terlihat. Height-Matrix Silhouette: catat tinggi tiap petak alas dalam matriks. Occlusion Max Rule: dari depan atau samping, tiap kolom atau baris menampilkan tinggi terbesarnya.",
     },
   ],
 };
