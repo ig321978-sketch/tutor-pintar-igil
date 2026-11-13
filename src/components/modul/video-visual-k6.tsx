@@ -10,7 +10,6 @@ import {
   LabelSvg,
   PizzaSvg,
   RasioBatangSvg,
-  RodaSvg,
   SkalaPeluangSvg,
   progresDari,
   nyalaDariWaktu,
@@ -145,38 +144,6 @@ export function visualK6(kode: string, v: number, a: number, k: number, t = 0): 
   }
 
   if (bab === "k6b4") {
-    if (sub === "a") {
-      if (v === 0) {
-        return (
-          <>
-            <SkalaPeluangSvg k={Math.min(4, k + (p > 0.4 ? 1 : 0))} aktif={Math.min(4, 1 + k)} />
-            {k >= 2 ? <LabelSvg x={90} y={40} w={120} teks="mustahil → pasti" ukuran={11} /> : null}
-          </>
-        );
-      }
-      if (v === 1) {
-        return (
-          <>
-            {a === 0 ? <KoinSvg k={Math.min(3, k + (p > 0.35 ? 1 : 0))} /> : null}
-            {a === 1 ? <DaduSvg k={Math.min(3, k + (p > 0.35 ? 1 : 0))} sisi={6} /> : null}
-            {a >= 2 ? <RodaSvg k={Math.min(3, k + (p > 0.35 ? 1 : 0))} /> : null}
-            {k >= 2 ? (
-              <LabelSvg x={90} y={40} w={120} teks={a === 0 ? "1/2" : a === 1 ? "1/6" : "roda"} ukuran={13} warna={HIJAU} />
-            ) : null}
-          </>
-        );
-      }
-      return (
-        <>
-          <RodaSvg k={Math.min(3, k + (p > 0.4 ? 1 : 0))} />
-          {k >= 2 ? (
-            <Muncul>
-              <LabelSvg x={95} y={40} w={110} teks="prediksi → catat" ukuran={11} />
-            </Muncul>
-          ) : null}
-        </>
-      );
-    }
     if (v === 0) {
       return (
         <>

@@ -41,7 +41,13 @@ cek("pemutar: SIMULASI_BAB tidak memuat mtk-6-bab4", !/"mtk-6-bab4"/.test(baca("
 cek("naskah: laju 0,70 dan nada 1", N.K6B4_META.suaraLaju === 0.7 && N.K6B4_META.suaraNada === 1);
 cek("video: mulaiLangsung bawaan false", /mulaiLangsung = false/.test(baca("src/components/modul/video-cerita.tsx")));
 
-for (const [kode, berkas, sub] of [["A", "video-k6b4a.tsx", N.SUB_A64], ["B", "video-k6b4b.tsx", N.SUB_B64]]) {
+{
+  // Sub-Bab A: dua video baru (materi kurikulum dan metode luar), diuji lengkap di scripts/uji-story-k6b4a.mjs.
+  const t = baca("src/components/modul/video-k6b4a.tsx");
+  cek("video A: DaftarVideoCerita tanpa mulaiLangsung", /DaftarVideoCerita/.test(t) && !/mulaiLangsung/.test(t));
+  cek("video A: dua video baru dari mesin Story", /VIDEO_MATERI_K6B4A/.test(t) && /VIDEO_LUAR_K6B4A/.test(t) && !/SUB_A64/.test(t));
+}
+for (const [kode, berkas, sub] of [["B", "video-k6b4b.tsx", N.SUB_B64]]) {
   const t = baca(`src/components/modul/${berkas}`);
   const adegan = sub.videos.flatMap((v) => v.adegan);
   cek(`video ${kode}: 9 adegan di naskah`, adegan.length === 9);
