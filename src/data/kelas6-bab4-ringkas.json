@@ -1,0 +1,230 @@
+{
+  "chapter_id": "mtk-6-bab4",
+  "phase_code": "FASE_C",
+  "grade": 6,
+  "subject": "Matematika",
+  "title": "Peluang",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Skala Peluang",
+          "ikon": "📶",
+          "suara": "Ini peta konsep skala peluang. Kita menghitung kejadian yang cocok dan semua yang ada, menempatkannya di lima tangga dari tidak mungkin sampai pasti, mengenali dua ujung tangga, lalu menguji prediksi dengan percobaan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "hitung",
+            "judul": "Hitung",
+            "ikon": "🔢",
+            "ringkas": "Yang cocok dan semua yang ada.",
+            "suara": "Hitung. Hitung dulu kejadian yang cocok, lalu semua yang ada. Enam buku merah dari sepuluh buku dibaca enam dari sepuluh."
+          },
+          {
+            "id": "tangga",
+            "judul": "Lima tangga",
+            "ikon": "📶",
+            "ringkas": "Tidak mungkin sampai pasti.",
+            "suara": "Lima tangga. Tidak mungkin, kurang mungkin, mungkin, sangat mungkin, dan pasti. Lihat dua kali yang cocok, apakah kurang dari, sama dengan, atau lebih dari semua yang ada."
+          },
+          {
+            "id": "ujung",
+            "judul": "Dua ujung",
+            "ikon": "🏁",
+            "ringkas": "Nol atau semuanya.",
+            "suara": "Dua ujung. Ujung kiri adalah tidak mungkin, yaitu nol yang cocok. Ujung kanan adalah pasti, yaitu semuanya cocok."
+          },
+          {
+            "id": "percobaan",
+            "judul": "Percobaan",
+            "ikon": "🎡",
+            "ringkas": "Prediksi dulu, lalu catat.",
+            "suara": "Percobaan. Buat prediksi sebelum memutar roda, catat hasil putaran, lalu cocokkan catatan dengan prediksi. Makin banyak putaran, catatan biasanya makin dekat dengan prediksi."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "a-merah",
+            "teks": "Buku merah 6 dari 10",
+            "ikon": "📕",
+            "cabang": "hitung",
+            "petunjuk": "Menghitung yang cocok dan semua yang ada itu soal hitung. Coba cabang lain."
+          },
+          {
+            "id": "a-semua",
+            "teks": "Hitung semua yang ada",
+            "ikon": "🧮",
+            "cabang": "hitung",
+            "petunjuk": "Menghitung semua yang ada itu soal hitung. Coba cabang lain."
+          },
+          {
+            "id": "a-sangat",
+            "teks": "Sangat mungkin",
+            "ikon": "📈",
+            "cabang": "tangga",
+            "petunjuk": "Nama satu anak tangga itu soal lima tangga. Coba cabang lain."
+          },
+          {
+            "id": "a-kurang",
+            "teks": "Kurang mungkin",
+            "ikon": "📉",
+            "cabang": "tangga",
+            "petunjuk": "Nama satu anak tangga itu soal lima tangga. Coba cabang lain."
+          },
+          {
+            "id": "a-nol",
+            "teks": "Bola hijau 0 dari 10",
+            "ikon": "🚫",
+            "cabang": "ujung",
+            "petunjuk": "Nol yang cocok itu soal dua ujung. Coba cabang lain."
+          },
+          {
+            "id": "a-pasti",
+            "teks": "Dadu semua sisi lima",
+            "ikon": "✅",
+            "cabang": "ujung",
+            "petunjuk": "Semuanya cocok itu soal dua ujung. Coba cabang lain."
+          },
+          {
+            "id": "a-prediksi",
+            "teks": "Prediksi sebelum memutar",
+            "ikon": "🔮",
+            "cabang": "percobaan",
+            "petunjuk": "Membuat prediksi sebelum percobaan itu soal percobaan. Coba cabang lain."
+          },
+          {
+            "id": "a-catat",
+            "teks": "Catat hasil putaran",
+            "ikon": "📝",
+            "cabang": "percobaan",
+            "petunjuk": "Mencatat hasil putaran itu soal percobaan. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Skala Peluang",
+        "suara": "Ini tiga panel tentang skala peluang. Ketuk kotaknya untuk membuka, lalu lihat lima tangga, dua ujungnya, dan cara menguji prediksi dengan percobaan.",
+        "panel": [
+          {
+            "id": "a-ujung-info",
+            "tipe": "buka",
+            "judul": "Dua ujung",
+            "ide": "Nol atau semuanya.",
+            "suara": "Ada tiga hal tentang tangga peluang. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "tidak",
+                "label": "Tidak mungkin",
+                "ikon": "🚫",
+                "isi": "Nol yang cocok.",
+                "suara": "Bola hijau di tas yang tidak berisi bola hijau tidak mungkin terambil. Nol dari sepuluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "0 dari 10"
+                }
+              },
+              {
+                "id": "sangat",
+                "label": "Sangat mungkin",
+                "ikon": "📈",
+                "isi": "Lebih dari separuh.",
+                "suara": "Buku merah enam dari sepuluh sangat mungkin terambil, karena dua kali enam lebih dari sepuluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 dari 10"
+                }
+              },
+              {
+                "id": "pasti",
+                "label": "Pasti",
+                "ikon": "✅",
+                "isi": "Semuanya cocok.",
+                "suara": "Dadu delapan sisi yang semua sisinya angka lima pasti menghasilkan angka lima. Delapan dari delapan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "8 dari 8"
+                }
+              }
+            ]
+          },
+          {
+            "id": "a-tengah-info",
+            "tipe": "banding",
+            "judul": "Tangga tengah",
+            "ide": "Kurang, tepat separuh, atau lebih.",
+            "suara": "Lihat dua contoh di tengah tangga. Mana yang kurang mungkin dan mana yang mungkin?",
+            "sisi": [
+              {
+                "id": "kurang",
+                "nama": "Kurang mungkin",
+                "ikon": "📉",
+                "catatan": "Kurang dari separuh.",
+                "suara": "Buku kuning satu dari sepuluh. Dua kali satu kurang dari sepuluh, jadi kurang mungkin.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 dari 10"
+                }
+              },
+              {
+                "id": "mungkin",
+                "nama": "Mungkin",
+                "ikon": "⚖️",
+                "catatan": "Tepat separuh.",
+                "suara": "Koin dua sisi, sisi gambar satu dari dua. Dua kali satu sama dengan dua, jadi mungkin.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 dari 2"
+                }
+              }
+            ],
+            "kesimpulan": "Lihat dua kali yang cocok."
+          },
+          {
+            "id": "a-percobaan-info",
+            "tipe": "buka",
+            "judul": "Percobaan",
+            "ide": "Prediksi dulu, lalu catat.",
+            "suara": "Ada tiga hal tentang percobaan roda putar. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "prediksi",
+                "label": "Prediksi",
+                "ikon": "🔮",
+                "isi": "Dibuat sebelum memutar.",
+                "suara": "Roda delapan juring dengan satu juring kuning: prediksinya kurang mungkin.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 dari 8"
+                }
+              },
+              {
+                "id": "catat",
+                "label": "Catat putaran",
+                "ikon": "📝",
+                "isi": "Hitung hasil yang cocok.",
+                "suara": "Diputar dua puluh kali, kuning muncul tiga kali. Tiga dari dua puluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 dari 20"
+                }
+              },
+              {
+                "id": "banyak",
+                "label": "Makin banyak",
+                "ikon": "🎡",
+                "isi": "Catatan makin dekat prediksi.",
+                "suara": "Empat putaran bisa menyimpang dari prediksi. Dua puluh putaran biasanya lebih dekat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 lalu 20 putaran"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
