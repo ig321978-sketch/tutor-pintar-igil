@@ -1,0 +1,230 @@
+{
+  "chapter_id": "mtk-6-bab1",
+  "phase_code": "FASE_C",
+  "grade": 6,
+  "subject": "Matematika",
+  "title": "Pecahan dan Desimal",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Perkalian Pecahan",
+          "ikon": "✖️",
+          "suara": "Ini peta perkalian pecahan. Kita belajar model luas, menulis bilangan asli sebagai pecahan berpenyebut satu, panah lurus, dan menukar urutan kali. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "luas",
+            "judul": "Model luas",
+            "ikon": "🟩",
+            "ringkas": "Ember demi ember, penyebut tetap.",
+            "suara": "Model luas. Satu petak berisi kotak sama besar. Tiap ember mengarsir beberapa kotak, jadi pembilang bertambah, sedangkan penyebut tetap karena ukuran kotak tidak berubah."
+          },
+          {
+            "id": "tulis",
+            "judul": "Tulis a per satu",
+            "ikon": "✏️",
+            "ringkas": "Bilangan asli berpenyebut satu.",
+            "suara": "Tulis bilangan asli sebagai pecahan. Bilangan asli ditulis dengan penyebut satu dan diberi kotak merah, misalnya dua menjadi dua per satu."
+          },
+          {
+            "id": "panah",
+            "judul": "Panah lurus",
+            "ikon": "➡️",
+            "ringkas": "Atas kali atas, bawah kali bawah.",
+            "suara": "Panah lurus. Pembilang dikali pembilang, penyebut dikali penyebut. Sederhanakan hasilnya bila bisa."
+          },
+          {
+            "id": "tukar",
+            "judul": "Tukar urutan",
+            "ikon": "🔄",
+            "ringkas": "Urutan kali tak mengubah hasil.",
+            "suara": "Tukar urutan. Pecahan kali bilangan asli sama dengan bilangan asli kali pecahan. Hasilnya tetap sama, jadi urutan bisa dipakai untuk mengecek."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "a-ember",
+            "teks": "Tiap ember menambah kotak",
+            "ikon": "➕",
+            "cabang": "luas",
+            "petunjuk": "Menambah kotak terarsir itu soal model luas. Coba cabang lain."
+          },
+          {
+            "id": "a-kotak",
+            "teks": "Ukuran kotak tetap",
+            "ikon": "🔲",
+            "cabang": "luas",
+            "petunjuk": "Ukuran kotak itu soal model luas. Coba cabang lain."
+          },
+          {
+            "id": "a-asli",
+            "teks": "Bilangan asli jadi a per satu",
+            "ikon": "1️⃣",
+            "cabang": "tulis",
+            "petunjuk": "Menulis bilangan asli itu soal tulis bilangan asli. Coba cabang lain."
+          },
+          {
+            "id": "a-merah",
+            "teks": "Beri kotak merah",
+            "ikon": "🟥",
+            "cabang": "tulis",
+            "petunjuk": "Tanda kotak merah itu soal tulis bilangan asli. Coba cabang lain."
+          },
+          {
+            "id": "a-atas",
+            "teks": "Atas kali atas",
+            "ikon": "⬆️",
+            "cabang": "panah",
+            "petunjuk": "Mengalikan pembilang itu soal panah lurus. Coba cabang lain."
+          },
+          {
+            "id": "a-bawah",
+            "teks": "Bawah kali bawah",
+            "ikon": "⬇️",
+            "cabang": "panah",
+            "petunjuk": "Mengalikan penyebut itu soal panah lurus. Coba cabang lain."
+          },
+          {
+            "id": "a-balik",
+            "teks": "Balik urutan, hasil sama",
+            "ikon": "🔁",
+            "cabang": "tukar",
+            "petunjuk": "Membalik urutan itu soal tukar urutan. Coba cabang lain."
+          },
+          {
+            "id": "a-rapi",
+            "teks": "Sederhanakan hasil",
+            "ikon": "✂️",
+            "cabang": "tukar",
+            "petunjuk": "Menyederhanakan hasil itu soal tukar urutan. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Perkalian Pecahan",
+        "suara": "Ini tiga panel tentang perkalian pecahan. Ketuk kotaknya untuk membuka, lalu lihat model luas, dua cara dengan hasil yang sama, serta panah lurus dan urutan kali.",
+        "panel": [
+          {
+            "id": "a-luas-info",
+            "tipe": "buka",
+            "judul": "Model luas",
+            "ide": "Ember menambah pembilang saja.",
+            "suara": "Ada tiga hal tentang model luas. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "petak",
+                "label": "Satu petak",
+                "ikon": "🔲",
+                "isi": "Lima kotak sama besar.",
+                "suara": "Satu petak berisi lima kotak sama besar. Satu ember mengarsir tiga kotak, yaitu tiga per lima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3/5"
+                }
+              },
+              {
+                "id": "ember",
+                "label": "Dua ember",
+                "ikon": "➕",
+                "isi": "Enam kotak terarsir.",
+                "suara": "Dua ember mengarsir enam kotak. Dua dikali tiga per lima sama dengan enam per lima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 × 3/5 = 6/5"
+                }
+              },
+              {
+                "id": "tetap",
+                "label": "Penyebut tetap",
+                "ikon": "🔒",
+                "isi": "Kotak tetap per lima.",
+                "suara": "Ukuran kotak tidak berubah, jadi penyebutnya tetap lima. Hasil lebih dari satu petak.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "lebih dari 1 petak"
+                }
+              }
+            ]
+          },
+          {
+            "id": "a-dua-info",
+            "tipe": "banding",
+            "judul": "Dua cara, satu hasil",
+            "ide": "Luas dan panah sama hasilnya.",
+            "suara": "Lihat dua cara menghitung hal yang sama.",
+            "sisi": [
+              {
+                "id": "luas",
+                "nama": "Luas",
+                "ikon": "🟩",
+                "catatan": "Hitung kotak terarsir.",
+                "suara": "Dengan model luas, dua ember mengarsir enam kotak dari petak berisi lima kotak, yaitu enam per lima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6/5"
+                }
+              },
+              {
+                "id": "panah",
+                "nama": "Panah",
+                "ikon": "➡️",
+                "catatan": "Atas kali atas.",
+                "suara": "Dengan panah lurus, dua per satu dikali tiga per lima sama dengan dua kali tiga per satu kali lima, yaitu enam per lima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2/1 × 3/5 = 6/5"
+                }
+              }
+            ],
+            "kesimpulan": "Dua cara, satu hasil."
+          },
+          {
+            "id": "a-panah-info",
+            "tipe": "buka",
+            "judul": "Panah lurus",
+            "ide": "Panah lurus, urutan bebas.",
+            "suara": "Ada tiga hal tentang panah lurus. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "asli",
+                "label": "Tulis a per satu",
+                "ikon": "1️⃣",
+                "isi": "Asli berpenyebut satu.",
+                "suara": "Bilangan asli ditulis dengan penyebut satu. Dua menjadi dua per satu.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 = 2/1"
+                }
+              },
+              {
+                "id": "lurus",
+                "label": "Panah lurus",
+                "ikon": "➡️",
+                "isi": "Atas kali atas, bawah kali bawah.",
+                "suara": "Panah lurus mengalikan atas dengan atas dan bawah dengan bawah. Dua kali tiga per satu kali lima sama dengan enam per lima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "(2×3)/(1×5) = 6/5"
+                }
+              },
+              {
+                "id": "tukar",
+                "label": "Tukar urutan",
+                "ikon": "🔄",
+                "isi": "Urutan boleh dibalik.",
+                "suara": "Dua per tiga kali lima belas sama dengan lima belas kali dua per tiga, yaitu sepuluh. Urutan tidak mengubah hasil.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2/3 × 15 = 15 × 2/3 = 10"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
