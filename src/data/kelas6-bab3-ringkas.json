@@ -1,0 +1,198 @@
+{
+  "chapter_id": "mtk-6-bab3",
+  "phase_code": "FASE_C",
+  "grade": 6,
+  "subject": "Matematika",
+  "title": "Kubus dan Balok",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Mengonstruksi dan Mengurai",
+          "ikon": "🧊",
+          "suara": "Ini peta konsep menyusun dan mengurai kubus. Kita menyusun kubus berdampingan atau bertingkat, menghitung lantai demi lantai, menjaga agar tidak ada kubus melayang, dan mengurai kembali. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "susun",
+            "judul": "Susun",
+            "ikon": "🧱",
+            "ringkas": "Kubus berdampingan atau bertingkat.",
+            "suara": "Susun. Kubus bisa dipasang berdampingan atau ditumpuk. Bentuk L dari tiga kubus punya dua kubus mendatar dan satu kubus yang naik."
+          },
+          {
+            "id": "lapisan",
+            "judul": "Hitung lapisan",
+            "ikon": "📚",
+            "ringkas": "Lantai dasar dulu, lalu semua lantai.",
+            "suara": "Hitung lapisan. Hitung kubus lantai dasar dulu, yaitu panjang kali lebar, lalu kalikan dengan banyak lantai. Jangan hanya menghitung kubus yang kelihatan."
+          },
+          {
+            "id": "penyangga",
+            "judul": "Penyangga",
+            "ikon": "⬇️",
+            "ringkas": "Kubus lantai atas tidak melayang.",
+            "suara": "Penyangga. Kubus di lantai atas tidak boleh melayang. Di bawahnya harus ada kubus yang menopang."
+          },
+          {
+            "id": "urai",
+            "judul": "Urai",
+            "ikon": "🧩",
+            "ringkas": "Lepas satu lantai, hitung sisanya.",
+            "suara": "Urai. Bila satu lantai dilepas, kubus yang tersisa dihitung dari lantai yang masih tersusun. Susun lalu urai, jumlahnya tetap bisa dihitung."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "a-berdampingan",
+            "teks": "Dua kubus berdampingan",
+            "ikon": "🔲",
+            "cabang": "susun",
+            "petunjuk": "Memasang kubus berdampingan itu soal susun. Coba cabang lain."
+          },
+          {
+            "id": "a-bentuk-l",
+            "teks": "Bentuk L tiga kubus",
+            "ikon": "🧱",
+            "cabang": "susun",
+            "petunjuk": "Membuat bentuk L itu soal susun. Coba cabang lain."
+          },
+          {
+            "id": "a-dasar",
+            "teks": "Panjang kali lebar",
+            "ikon": "✖️",
+            "cabang": "lapisan",
+            "petunjuk": "Menghitung kubus satu lantai itu soal lapisan. Coba cabang lain."
+          },
+          {
+            "id": "a-tertutup",
+            "teks": "Kubus tertutup ikut dihitung",
+            "ikon": "🔢",
+            "cabang": "lapisan",
+            "petunjuk": "Menghitung kubus yang tertutup itu soal lapisan. Coba cabang lain."
+          },
+          {
+            "id": "a-melayang",
+            "teks": "Kubus tidak boleh melayang",
+            "ikon": "🚫",
+            "cabang": "penyangga",
+            "petunjuk": "Melarang kubus melayang itu soal penyangga. Coba cabang lain."
+          },
+          {
+            "id": "a-tambah",
+            "teks": "Tambah kubus di bawahnya",
+            "ikon": "➕",
+            "cabang": "penyangga",
+            "petunjuk": "Menambah kubus penopang itu soal penyangga. Coba cabang lain."
+          },
+          {
+            "id": "a-lepas",
+            "teks": "Lepas satu lantai",
+            "ikon": "🧩",
+            "cabang": "urai",
+            "petunjuk": "Melepas satu lantai itu soal urai. Coba cabang lain."
+          },
+          {
+            "id": "a-sisa",
+            "teks": "Hitung sisa kubus",
+            "ikon": "➖",
+            "cabang": "urai",
+            "petunjuk": "Menghitung sisa kubus itu soal urai. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Mengonstruksi dan Mengurai",
+        "suara": "Ini tiga panel tentang kubus dan balok. Ketuk kotaknya untuk membuka, lalu lihat cara menghitung lantai demi lantai, aturan penyangga, dan cara mengurai.",
+        "panel": [
+          {
+            "id": "a-lantai-info",
+            "tipe": "buka",
+            "judul": "Hitung lantai",
+            "ide": "Satu lantai dulu, lalu semua lantai.",
+            "suara": "Ada tiga hal tentang menghitung kubus. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "dasar",
+                "label": "Lantai dasar",
+                "ikon": "🧱",
+                "isi": "Panjang kali lebar.",
+                "suara": "Lantai dasar balok lima kali tiga berisi lima belas kubus.",
+                "visual": { "jenis": "teks", "isi": "5 × 3 = 15" }
+              },
+              {
+                "id": "semua",
+                "label": "Semua lantai",
+                "ikon": "📚",
+                "isi": "Kalikan banyak lantai.",
+                "suara": "Balok lima kali tiga kali dua berisi tiga puluh kubus, termasuk yang tertutup.",
+                "visual": { "jenis": "teks", "isi": "5 × 3 × 2 = 30" }
+              },
+              {
+                "id": "kecil",
+                "label": "Kubus kecil",
+                "ikon": "🧊",
+                "isi": "Dua kali dua kali dua.",
+                "suara": "Kubus besar dua kali dua kali dua berisi delapan kubus satuan.",
+                "visual": { "jenis": "teks", "isi": "2 × 2 × 2 = 8" }
+              }
+            ]
+          },
+          {
+            "id": "a-penyangga-info",
+            "tipe": "banding",
+            "judul": "Penyangga",
+            "ide": "Melayang tidak boleh.",
+            "suara": "Lihat dua susunan kubus. Mana yang boleh dibangun?",
+            "sisi": [
+              {
+                "id": "bertumpu",
+                "nama": "Bertumpu",
+                "ikon": "✅",
+                "catatan": "Ada kubus di bawahnya.",
+                "suara": "Kubus di lantai kedua berada tepat di atas kubus lantai dasar. Susunan ini sah.",
+                "visual": { "jenis": "teks", "isi": "ada penyangga" }
+              },
+              {
+                "id": "melayang",
+                "nama": "Melayang",
+                "ikon": "🚫",
+                "catatan": "Tidak ada kubus di bawahnya.",
+                "suara": "Kubus di lantai kedua berada di atas petak yang kosong. Susunan ini tidak sah, tambah penyangga dulu.",
+                "visual": { "jenis": "teks", "isi": "tanpa penyangga" }
+              }
+            ],
+            "kesimpulan": "Kubus atas butuh penyangga."
+          },
+          {
+            "id": "a-urai-info",
+            "tipe": "buka",
+            "judul": "Urai",
+            "ide": "Lepas lantai, hitung sisanya.",
+            "suara": "Ada tiga hal tentang mengurai susunan kubus. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "bentuk-l",
+                "label": "Bentuk L",
+                "ikon": "🧱",
+                "isi": "Tiga kubus.",
+                "suara": "Bentuk L punya dua kubus mendatar dan satu kubus naik, jadi seluruhnya tiga kubus.",
+                "visual": { "jenis": "teks", "isi": "2 + 1 = 3" }
+              },
+              {
+                "id": "lepas",
+                "label": "Lepas lantai",
+                "ikon": "🧩",
+                "isi": "Kurangi lantai yang dilepas.",
+                "suara": "Menara dua lantai berisi empat kubus di bawah dan dua kubus di atas. Bila lantai teratas dilepas, tersisa empat kubus.",
+                "visual": { "jenis": "teks", "isi": "6 − 2 = 4" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
