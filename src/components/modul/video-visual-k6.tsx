@@ -6,14 +6,12 @@ import {
   BatangPecahanSvg,
   LabelSvg,
   PizzaSvg,
-  RasioBatangSvg,
   progresDari,
   nyalaDariWaktu,
   nyalaSeirama,
   HIJAU,
   ORANYE,
 } from "./video-visual-kit";
-import { BIRU } from "./CeritaBandingB";
 
 /** Koreografi visual Story Kelas 6 — seirama ketukan `k` + waktu suara `t`. */
 export function visualK6(kode: string, v: number, a: number, k: number, t = 0): React.ReactNode {
@@ -58,40 +56,6 @@ export function visualK6(kode: string, v: number, a: number, k: number, t = 0): 
       </>
     );
   }
-
-  if (bab === "k6b2") {
-    if (v === 0 || sub === "a") {
-      return (
-        <>
-          <RasioBatangSvg a={2} b={3} k={Math.min(3, k + (p > 0.4 ? 1 : 0))} />
-          {k >= 2 ? <LabelSvg x={95} y={40} w={110} teks="2 : 3" ukuran={14} warna={HIJAU} /> : null}
-        </>
-      );
-    }
-    if (v === 1 || sub === "b") {
-      return (
-        <>
-          <RasioBatangSvg a={2} b={3} k={Math.min(2, k + (p > 0.35 ? 1 : 0))} />
-          {k >= 1 || p > 0.5 ? (
-            <Muncul>
-              <text x="150" y="50" textAnchor="middle" fontSize="16" fontWeight="900" fill={BIRU}>
-                {k >= 2 ? "2:3 = 4:6" : "perbesar rasio"}
-              </text>
-            </Muncul>
-          ) : null}
-          {k >= 3 ? <LabelSvg x={90} y={165} w={120} teks="setara" ukuran={12} warna={HIJAU} /> : null}
-        </>
-      );
-    }
-    return (
-      <>
-        <RasioBatangSvg a={3} b={5} k={Math.min(3, k + (p > 0.4 ? 1 : 0))} />
-        {k >= 2 ? <LabelSvg x={85} y={40} w={130} teks="terapkan rasio" ukuran={12} /> : null}
-        {k >= 3 ? <LabelSvg x={90} y={165} w={120} teks="skala resep" ukuran={11} warna={ORANYE} /> : null}
-      </>
-    );
-  }
-
 
   return null;
 }
