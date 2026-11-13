@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Muncul } from "./video-cerita";
+
 import {
   BandingSvg,
   BangunKeliling,
@@ -241,38 +241,6 @@ export function visualK5(kode: string, v: number, a: number, k: number, t = 0): 
           ]}
         />
         {k >= 2 ? <LabelSvg x={90} y={40} w={120} teks="banding batang" ukuran={12} warna={HIJAU} /> : null}
-      </>
-    );
-  }
-
-  if (bab === "k5b9") {
-    if (sub === "a") {
-      return (
-        <>
-          <PapanDigit digits="908070" nyala={nyalaSeirama(k, t, 6, 1.1)} lebar={34} x={35} />
-          {k >= 2 ? <LabelSvg x={70} y={145} w={160} teks="ratus ribuan" ukuran={12} /> : null}
-        </>
-      );
-    }
-    if (sub === "b") {
-      return (
-        <>
-          <BandingSvg a={120500} b={119999} k={Math.min(3, k + (p > 0.5 ? 1 : 0))} />
-          {k >= 2 ? <LabelSvg x={90} y={165} w={120} teks="dekat tapi beda" ukuran={11} warna={ORANYE} /> : null}
-        </>
-      );
-    }
-    return (
-      <>
-        <PapanDigit digits="450000" nyala={nyalaSeirama(k, t, 6, 1.1)} lebar={34} x={35} />
-        {k >= 2 || p > 0.5 ? <LabelSvg x={70} y={145} w={160} teks="urai nilai tempat" ukuran={11} /> : null}
-        {k >= 3 ? (
-          <Muncul>
-            <text x="150" y="180" textAnchor="middle" fontSize="13" fontWeight="900" fill={HIJAU}>
-              4×100.000 + 5×10.000
-            </text>
-          </Muncul>
-        ) : null}
       </>
     );
   }
