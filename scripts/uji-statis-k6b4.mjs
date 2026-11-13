@@ -47,12 +47,12 @@ cek("video: mulaiLangsung bawaan false", /mulaiLangsung = false/.test(baca("src/
   cek("video A: DaftarVideoCerita tanpa mulaiLangsung", /DaftarVideoCerita/.test(t) && !/mulaiLangsung/.test(t));
   cek("video A: dua video baru dari mesin Story", /VIDEO_MATERI_K6B4A/.test(t) && /VIDEO_LUAR_K6B4A/.test(t) && !/SUB_A64/.test(t));
 }
-for (const [kode, berkas, sub] of [["B", "video-k6b4b.tsx", N.SUB_B64]]) {
-  const t = baca(`src/components/modul/${berkas}`);
-  const adegan = sub.videos.flatMap((v) => v.adegan);
-  cek(`video ${kode}: 9 adegan di naskah`, adegan.length === 9);
-  cek(`video ${kode}: DaftarVideoCerita tanpa mulaiLangsung di berkas`, /DaftarVideoCerita/.test(t) && !/mulaiLangsung/.test(t));
-  cek(`video ${kode}: satu sumber naskah`, t.includes(`SUB_${kode}64.videos`));
+{
+  // Sub-Bab B: dua video baru, diuji lengkap di scripts/uji-story-k6b4b.mjs. Naskah video lama dihapus.
+  const tb = baca("src/components/modul/video-k6b4b.tsx");
+  cek("video B: DaftarVideoCerita tanpa mulaiLangsung", /DaftarVideoCerita/.test(tb) && !/mulaiLangsung/.test(tb));
+  cek("video B: dua video baru dari mesin Story", /VIDEO_MATERI_K6B4B/.test(tb) && /VIDEO_LUAR_K6B4B/.test(tb) && !/SUB_B64/.test(tb));
+  cek("naskah: video lama dihapus (videos kosong)", N.SUB_A64.videos.length === 0 && N.SUB_B64.videos.length === 0);
 }
 
 const json = JSON.parse(baca("src/data/kelas6-bab4.json"));
@@ -63,7 +63,7 @@ cek("JSON: tanpa simulasi", !/simulasi/i.test(JSON.stringify(json)));
 cek("JSON: chapter_id FASE_C grade 6", json.chapter_id === "k6-mat-bab4" && json.phase_code === "FASE_C" && json.grade === 6);
 cek("JSON: suara 0.7 / 1 perangkat", json.suaraLaju === 0.7 && json.suaraNada === 1 && json.suaraPerangkatSaja === true);
 cek("JSON: sub-bab A–B", Object.keys(json.subBabs).join() === "A,B");
-cek("JSON: tiap sub-bab 30 permainan", Object.values(json.subBabs).every((s) => s.interactiveGames.length === 30 && s.stories.length === 9));
+cek("JSON: tiap sub-bab 30 permainan", Object.values(json.subBabs).every((s) => s.interactiveGames.length === 30));
 cek("seed tidak dibuat", !fs.existsSync("supabase/seed/02_kelas6_bab4_keys.sql"));
 
 console.log(`uji-statis-k6b4: ${lulus} lulus, ${gagal} gagal`);

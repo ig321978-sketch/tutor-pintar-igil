@@ -4,18 +4,14 @@ import React from "react";
 import { Muncul } from "./video-cerita";
 import {
   BatangPecahanSvg,
-  DaduSvg,
-  KoinSvg,
   KubusSvg,
   LabelSvg,
   PizzaSvg,
   RasioBatangSvg,
-  SkalaPeluangSvg,
   progresDari,
   nyalaDariWaktu,
   nyalaSeirama,
   HIJAU,
-  MERAH,
   ORANYE,
 } from "./video-visual-kit";
 import { BIRU, EMAS } from "./CeritaBandingB";
@@ -143,55 +139,5 @@ export function visualK6(kode: string, v: number, a: number, k: number, t = 0): 
     );
   }
 
-  if (bab === "k6b4") {
-    if (v === 0) {
-      return (
-        <>
-          <KoinSvg x={90} y={95} k={Math.min(3, k + (p > 0.3 ? 1 : 0))} sisi="A" />
-          <DaduSvg x={180} y={65} k={k >= 1 ? Math.min(3, k + (p > 0.3 ? 1 : 0)) : 0} sisi={6} />
-          {k >= 2 || p > 0.7 ? (
-            <Muncul>
-              <text x="150" y="175" textAnchor="middle" fontSize="14" fontWeight="900" fill={HIJAU}>
-                1/2 &gt; 1/6
-              </text>
-            </Muncul>
-          ) : null}
-        </>
-      );
-    }
-    if (v === 1) {
-      return (
-        <>
-          <SkalaPeluangSvg k={Math.min(4, k + (p > 0.4 ? 1 : 0))} aktif={k >= 2 ? 1 : 3} />
-          {k >= 2 ? (
-            <Muncul>
-              <LabelSvg x={80} y={40} w={140} teks="adil vs kurang adil" ukuran={11} warna={MERAH} />
-            </Muncul>
-          ) : null}
-        </>
-      );
-    }
-    const biru = nyalaDariWaktu(t, 4, 1.2);
-    const merah = k >= 1 ? nyalaDariWaktu(t, 3, 1.3) : 0;
-    return (
-      <>
-        {Array.from({ length: biru }, (_, i) => (
-          <circle key={`b${i}`} cx={70 + i * 28} cy={100} r="14" fill="#38BDF8" stroke={BIRU} strokeWidth="2" />
-        ))}
-        {Array.from({ length: merah }, (_, i) => (
-          <circle key={`r${i}`} cx={70 + i * 28} cy={140} r="14" fill="#F87171" stroke={BIRU} strokeWidth="2" />
-        ))}
-        {k >= 2 || (biru >= 4 && merah >= 2) ? (
-          <Muncul>
-            <text x="200" y="120" fontSize="16" fontWeight="900" fill={HIJAU}>
-              4/7 &gt; 3/7
-            </text>
-          </Muncul>
-        ) : null}
-        {k >= 3 ? <LabelSvg x={85} y={165} w={130} teks="besar ≠ pasti" ukuran={12} /> : null}
-      </>
-    );
-  }
-
-  return <SkalaPeluangSvg k={Math.min(4, k + (p > 0.4 ? 1 : 0))} />;
+  return null;
 }

@@ -1,0 +1,89 @@
+import type { AdeganStory } from "./logika-story";
+import { W, bulat, emo, garis, kotak, panah, skala, tasBola, teks } from "./k6b4a-gambar"
+import { bersih, k, redamkan, sorotkan, tambah, ubah } from "./k6b4a-bantu"
+import { WARNA_PERMEN, barang, daduTitik, permen } from "./k6b4b-gambar";
+
+/* ------------------------------ 7. Permen kelompok Dhien dan kotak hadiah Toko Sukamaju (hlm. 122 dan 123) ------------------------------ */
+const BOLA_MANTAP = [..."bbbbooo"].map((c) => (c === "b" ? "#3B82F6" : "#F59E0B"));
+const BOLA_SPEKTA = [..."bbboooo"].map((c) => (c === "b" ? "#3B82F6" : "#F59E0B"));
+
+export const ADEGAN_HADIAH: AdeganStory = {
+  id: "kotak-hadiah",
+  judul: "Permen kelompok Dhien dan kotak hadiah Toko Sukamaju",
+  sumber: "Buku Siswa hlm. 122–123; Buku Panduan Guru hlm. 130",
+  latar: "#E8F7EE",
+  kutipan: ["Kotak Hadiah Mantap", "Ada 4 bola berwarna biru dan jumlah total bola ada 7", "Toko Sukamaju"],
+  ketukan: [
+    k("Kelompok Dhien mendapat 6 permen: 3 merah, 1 kuning, 1 oranye, dan 1 merah muda.", tambah(0, teks("jud", 150, 26, "Permen kelompok Dhien", 11, W.ungu)), tambah("6", teks("t6", 150, 50, "6 permen", 10, W.merah)), tambah("3", ...permen("pm0", 60, 90, WARNA_PERMEN.merah), ...permen("pm1", 110, 90, WARNA_PERMEN.merah), ...permen("pm2", 160, 90, WARNA_PERMEN.merah), teks("t3", 110, 112, "3 merah", 9)), tambah("kuning,", ...permen("pm3", 210, 90, WARNA_PERMEN.kuning), teks("t1", 210, 112, "1 kuning", 9)), tambah("oranye,", ...permen("pm4", 85, 140, WARNA_PERMEN.oranye), teks("t2", 85, 162, "1 oranye", 9)), tambah("muda.", ...permen("pm5", 160, 140, WARNA_PERMEN.muda), teks("t4", 160, 162, "1 merah muda", 9))),
+    k("Peluang mendapatkan warna merah ketika mengambil secara acak paling besar, karena ada 3 permen yang berwarna merah.", sorotkan("paling", "pm0-b", "pm1-b", "pm2-b"), tambah("karena", teks("tg", 150, 176, "merah: 3 dari 6 permen", 11, W.merah, { garis: W.putih }))),
+    k("Memahami peluang kejadian berguna saat kita membandingkan dua atau lebih kejadian dalam kehidupan sehari-hari.", bersih(0), tambah("membandingkan", emo("a", 80, 90, "🅰️", 40), emo("b", 220, 90, "🅱️", 40), teks("vs", 150, 100, "lawan", 14, W.merah)), tambah("sehari-hari.", teks("sh", 150, 160, "memilih yang peluangnya lebih besar", 10, W.hijau))),
+    k("Ibu Dhien sering belanja di Toko Sukamaju. Sebagai pelanggan setia, Ibu mendapat hadiah bonus bulan ini: ambil acak hadiah dari salah satu kotak.", bersih(0), tambah("Toko", kotak("papan", 70, 26, 160, 28, "#16A34A", W.biru, { rx: 6 }), teks("pt", 150, 46, "TOKO SUKAMAJU", 13, W.putih)), tambah("Ibu", emo("ibu", 40, 120, "👩", 38)), tambah("hadiah", kotak("t1", 100, 90, 70, 60, W.putih, W.biru, { rx: 8 }), teks("t1t", 135, 124, "MANTAP", 9, W.hijau), kotak("t2", 190, 90, 70, 60, W.putih, W.biru, { rx: 8 }), teks("t2t", 225, 124, "SPEKTAKULER", 7, W.biruMuda)), tambah("kotak.", teks("pl", 180, 176, "ambil acak dari salah satu kotak", 8.5, W.ungu))),
+    k("Dengan menghitung rasio peluang mendapatkan piring saat mengambil bola di kedua kotak, kita bisa membantu Ibu Dhien membuat keputusan. Kantong mana yang harus Ibu pilih?", bersih(0), tambah("rasio", teks("r", 150, 56, "rasio peluang", 18, W.ungu, { garis: W.emas })), tambah("piring", emo("piring", 150, 106, "🍽️", 36)), tambah("keputusan.", panah("pk", 150, 128, 0, 18, W.biru, 3, { gambar: true }), teks("kp", 150, 168, "keputusan", 14, W.merah)), tambah("Kantong", emo("tanya", 150, 196, "❓", 20))),
+    k("Kotak Hadiah Mantap: ada 4 bola berwarna biru dan jumlah total bola ada 7. Kotak Hadiah Spektakuler: ada 3 bola berwarna biru dan jumlah total bola ada 7.", bersih(0), tambah("Mantap:", teks("m", 80, 34, "Kotak Hadiah Mantap", 8.5, W.hijau), ...tasBola("tm", 40, 70, BOLA_MANTAP)), tambah("4", teks("m4", 80, 134, "4 bola biru", 10, W.biruMuda)), tambah("total", teks("m7", 80, 150, "total 7 bola", 10)), tambah("Spektakuler:", teks("s", 220, 34, "Kotak Hadiah Spektakuler", 8, W.biruMuda), ...tasBola("ts", 180, 70, BOLA_SPEKTA)), tambah("3", teks("s3", 220, 134, "3 bola biru", 10, W.biruMuda)), tambah("7@2", teks("s7", 220, 150, "total 7 bola", 10))),
+    k("Kemungkinan mendapat bola biru lebih besar di Kotak Hadiah Mantap, karena 4 dari 7 lebih besar daripada 3 dari 7. Jadi, sarankan Ibu Dhien memilih Kotak Hadiah Mantap.", sorotkan("lebih", "tm-b0", "tm-b1", "tm-b2", "tm-b3"), tambah("karena", teks("bd", 150, 184, "4 dari 7  >  3 dari 7", 13, W.merah)), tambah("sarankan", emo("saran", 150, 110, "👍", 30))),
+    k("Ayo bernalar: dengan memilih Kotak Hadiah Mantap, apakah Ibu Dhien akan pasti mendapatkan piring? Belum pasti, karena masih ada 3 bola yang bukan biru.", bersih(0), tambah(0, ...tasBola("tm", 100, 80, BOLA_MANTAP)), tambah("pasti?", teks("tn", 150, 40, "pasti dapat piring?", 12, W.ungu)), tambah("Belum", teks("bp", 150, 150, "BELUM PASTI", 16, W.merah)), sorotkan("karena", "tm-b4", "tm-b5", "tm-b6"), tambah("3", teks("t3", 150, 172, "3 bola bukan biru masih bisa terambil", 9, W.merah))),
+    k("Buku Panduan Guru mengingatkan: peluang besar bukan berarti pasti. Peluang besar artinya masih ada kemungkinan kejadian itu tidak terjadi. Ingat beda sangat mungkin dan pasti.", bersih(0), tambah(0, ...skala("sk", 30, 40, 240).semua), sorotkan("sangat", "sk-b3-k"), sorotkan("pasti.", "sk-b4-k"), tambah("besar", teks("bb", 150, 120, "peluang besar", 12, W.hijau)), tambah("bukan", teks("bk", 150, 142, "BUKAN pasti", 16, W.merah)), tambah("tidak", teks("tt", 150, 170, "masih ada kemungkinan tidak terjadi", 9.5, W.ungu))),
+  ],
+};
+
+/* ------------------------------ 8. Latihan 4.3 (hlm. 124 dan 125) ------------------------------ */
+const isiKotak = (p: string, x0: number, jumlah: [number, number, number]) => {
+  const baris = (jenis: "set" | "pensil" | "buku", n: number, y: number) => Array.from({ length: n }, (_, i) => barang(`${p}-${jenis}${i}`, x0 + 20 + i * 20, y, jenis)).flat();
+  return [kotak(`${p}-kotak`, x0, 38, 130, 112, "#FEF3C7", W.coklat, { rx: 8, tebal: 2 }), teks(`${p}-l0`, x0 + 6, 52, `${jumlah[0]} set pensil`, 6.6, W.biru, { anchor: "start" }), ...baris("set", jumlah[0], 70), teks(`${p}-l1`, x0 + 6, 84, `${jumlah[1]} pensil + penghapus`, 6.6, W.biru, { anchor: "start" }), ...baris("pensil", jumlah[1], 102), teks(`${p}-l2`, x0 + 6, 116, `${jumlah[2]} buku bacaan`, 6.6, W.biru, { anchor: "start" }), ...baris("buku", jumlah[2], 132)];
+};
+const idKotak = (p: string, jenis: string, n: number) => Array.from({ length: n }, (_, i) => `${p}-${jenis}${i}-b`);
+
+export const ADEGAN_LATIHAN43: AdeganStory = {
+  id: "latihan-43",
+  judul: "Latihan 4.3: memilih kotak dengan peluang terbesar",
+  sumber: "Buku Siswa hlm. 124–125; Buku Panduan Guru hlm. 131",
+  latar: "#F5F0FF",
+  kutipan: ["Latihan 4.3", "Apa warna dengan peluang paling besar saat barang diambil secara acak", "Sekolah Dhien sedang membagikan bingkisan berupa peralatan tulis"],
+  ketukan: [
+    k("Latihan 4.3 nomor 1: warna apa yang peluangnya paling besar saat barang diambil secara acak? Kotak A berisi cokelat mini, kotak B berisi sedotan.", tambah(0, teks("jud", 150, 24, "Latihan 4.3 nomor 1: warna terbesar", 10, W.ungu)), tambah("Kotak", kotak("ka", 20, 40, 120, 90, "#FEF3C7", W.coklat, { rx: 8 }), teks("kat", 80, 56, "Kotak A", 9, W.ungu), emo("coklat", 80, 100, "🍫", 36)), tambah("sedotan.", kotak("kb", 160, 40, 120, 90, "#FEF3C7", W.coklat, { rx: 8 }), teks("kbt", 220, 56, "Kotak B", 9, W.ungu), garis("s1", 186, 100, 36, -26, "#38BDF8", 4), garis("s2", 190, 112, 40, -10, "#FACC15", 4), garis("s3", 200, 84, 30, 24, "#38BDF8", 4))),
+    k("Jawaban dari Buku Panduan Guru: di kotak A warna silver paling besar peluangnya, dan di kotak B warna biru.", tambah("silver", teks("ja", 80, 160, "warna silver", 11, "#64748B", { garis: W.putih })), tambah("biru.", teks("jb", 220, 160, "warna biru", 11, "#0284C7", { garis: W.putih })), tambah("Panduan", emo("ok1", 80, 186, "✅", 18), emo("ok2", 220, 186, "✅", 18))),
+    k("Nomor 2: sekolah Dhien membagikan bingkisan alat tulis ke panti asuhan. Setiap anak memilih secara acak salah satu dari dua kotak.", bersih(0), tambah("dua", teks("jud", 150, 26, "Pilih satu dari dua kotak", 11, W.ungu), kotak("k1", 10, 38, 130, 112, "#FEF3C7", W.coklat, { rx: 8, tebal: 2 }), teks("k1t", 75, 166, "Kotak 1", 10), kotak("k2", 160, 38, 130, 112, "#FEF3C7", W.coklat, { rx: 8, tebal: 2 }), teks("k2t", 225, 166, "Kotak 2", 10)), tambah("Setiap", emo("anak", 150, 94, "🧒", 30))),
+    k(
+      "Kotak 1 berisi 2 set pensil, 3 pensil dengan penghapus, dan 5 buku bacaan, jumlahnya 10 barang. Kotak 2 berisi 4 set pensil, 4 pensil dengan penghapus, dan 3 buku bacaan, jumlahnya 11 barang.",
+      bersih(0),
+      tambah(0, isiKotak("k1", 10, [2, 3, 5])),
+      tambah("10", teks("n1", 75, 172, "Kotak 1: total 10", 10, W.merah)),
+      tambah("Kotak@2", isiKotak("k2", 160, [4, 4, 3])),
+      tambah("11", teks("n2", 225, 172, "Kotak 2: total 11", 10, W.merah)),
+    ),
+    k("Anak yang ingin set pensil memilih kotak 2, karena 4 dari 11 lebih besar daripada 2 dari 10.", sorotkan("set", ...idKotak("k1", "set", 2), ...idKotak("k2", "set", 4)), tambah("kotak", teks("a", 150, 192, "set pensil: 4 dari 11 > 2 dari 10", 9.5, W.hijau)), tambah("2,", emo("ok", 225, 24, "✅", 16))),
+    k("Anak yang ingin buku bacaan memilih kotak 1, karena 5 dari 10 lebih besar daripada 3 dari 11.", redamkan(0, ...idKotak("k1", "set", 2), ...idKotak("k2", "set", 4)), ubah(0, { id: "a", isi: "buku bacaan: 5 dari 10 > 3 dari 11" }), sorotkan("buku", ...idKotak("k1", "buku", 5), ...idKotak("k2", "buku", 3)), tambah("1,", emo("ok", 75, 24, "✅", 16))),
+    k("Anak yang ingin pensil dan penghapus memilih kotak 2, karena 4 dari 11 lebih besar daripada 3 dari 10.", redamkan(0, ...idKotak("k1", "buku", 5), ...idKotak("k2", "buku", 3)), ubah(0, { id: "a", isi: "pensil dan penghapus: 4 dari 11 > 3 dari 10" }), sorotkan("pensil", ...idKotak("k1", "pensil", 3), ...idKotak("k2", "pensil", 4)), tambah("2,", emo("ok2", 225, 24, "✅", 16))),
+    k("Perhatikan: kotak yang barangnya paling banyak belum tentu benar. Yang dibandingkan adalah peluang, yaitu jumlah yang diinginkan dibanding isi seluruh kotak.", bersih(0), tambah("belum", kotak("c", 16, 36, 268, 70, W.putih, W.merah, { rx: 12 }), teks("c1", 150, 62, "banyak barang  ≠  peluang besar", 12, W.merah)), tambah("peluang,", teks("c2", 150, 90, "peluang = yang diinginkan : seluruh isi", 10, W.hijau)), tambah("kotak.", emo("tim", 150, 150, "⚖️", 34))),
+  ],
+};
+
+/* ------------------------------ 9. Refleksi, Uji Kompetensi, dan Penuhi Lingkaran (hlm. 126 sampai 129) ------------------------------ */
+const RUBRIK = [
+  ["1", "kurang paham", "#FECACA"],
+  ["2", "paham, masih ada pertanyaan", "#FED7AA"],
+  ["3", "paham seluruh konsep", "#D9F99D"],
+  ["4", "paham dan bisa membantu teman", "#A5F3FC"],
+] as const;
+const MUKA3 = [1, 1, 3, 3, 6, 6];
+
+export const ADEGAN_UJI: AdeganStory = {
+  id: "refleksi-uji",
+  judul: "Refleksi, Uji Kompetensi, dan permainan Penuhi Lingkaran",
+  sumber: "Buku Siswa hlm. 126–129; Buku Panduan Guru hlm. 131–135",
+  latar: "#EEFDF9",
+  kutipan: ["Uji Kompetensi", "Penuhi Lingkaran", "Cara bermain"],
+  ketukan: [
+    k("Refleksi akhir bab: nilai pemahamanmu dari 1 sampai 4. Satu berarti kurang paham, dua paham tetapi masih bertanya, tiga paham keseluruhan, empat paham dan bisa membantu teman.", tambah(0, teks("jud", 150, 24, "Refleksi: nilai pemahamanmu", 11, W.ungu)), ...RUBRIK.map(([n, isi, w], i) => tambah(["Satu", "dua", "tiga", "empat"][i], kotak(`rb${i}`, 10, 38 + i * 36, 280, 30, w, W.biru, { rx: 10 }), teks(`rbn${i}`, 28, 59 + i * 36, n, 16, W.ungu), teks(`rbt${i}`, 46, 58 + i * 36, isi, 9, W.biru, { anchor: "start" })))),
+    k("Ada 4 pertanyaan refleksi: apakah kamu paham peluang, paham kegunaannya, bisa membedakan permainan adil dan kurang adil, dan bisa membandingkan peluang dua kejadian untuk mengambil keputusan?", bersih(0), tambah("paham", kotak("q1", 10, 34, 134, 56, W.putih, W.ungu, { rx: 8 }), teks("q1t", 77, 66, "1. paham peluang?", 8.5)), tambah("kegunaannya,", kotak("q2", 156, 34, 134, 56, W.putih, W.ungu, { rx: 8 }), teks("q2t", 223, 66, "2. paham kegunaannya?", 8)), tambah("membedakan", kotak("q3", 10, 100, 134, 56, W.putih, W.ungu, { rx: 8 }), teks("q3t", 77, 125, "3. beda adil dan", 8.5), teks("q3u", 77, 137, "kurang adil?", 8.5)), tambah("membandingkan", kotak("q4", 156, 100, 134, 56, W.putih, W.ungu, { rx: 8 }), teks("q4t", 223, 125, "4. bandingkan dua", 8.5), teks("q4u", 223, 137, "peluang?", 8.5))),
+    k("Uji Kompetensi nomor 1: manfaat peluang. Contoh dari Buku Panduan Guru: memilih waktu perjalanan ke kampung untuk menghindari macet, dan memecahkan teka-teki saat petunjuknya sedikit.", bersih(0), tambah(0, teks("jud", 150, 24, "Manfaat peluang", 11, W.ungu)), tambah("memilih", emo("jalan", 80, 90, "🚗", 40), teks("j1", 80, 124, "pilih waktu perjalanan", 8), teks("j2", 80, 136, "hindari macet", 8, W.hijau)), tambah("teka-teki", emo("puzzle", 220, 90, "🧩", 40), teks("p1", 220, 124, "pecahkan teka-teki", 8), teks("p2", 220, 136, "dari sedikit petunjuk", 8, W.hijau))),
+    k("Nomor 2: tiga pemain melempar satu dadu bergiliran dengan syarat menang masing-masing. Pemain ketiga punya peluang paling besar, dan permainannya kurang adil karena peluang tiap pemain berbeda.", bersih(0), tambah("tiga", ...[1, 2, 3].map((n) => [emo(`o${n}`, 50 + (n - 1) * 100, 70, "🧒", 30), teks(`on${n}`, 50 + (n - 1) * 100, 92, `pemain ${n}`, 8.5)]).flat()), tambah("ketiga", emo("mahkota", 250, 44, "👑", 20)), sorotkan("ketiga", "o3"), tambah("kurang", kotak("ka", 40, 120, 220, 36, "#FECACA", W.merah, { rx: 10 }), teks("kat", 150, 143, "kurang adil: peluang berbeda", 10, W.merah))),
+    k("Nomor 4: pilih dadu agar peluang mendapat angka 3 paling besar. Dadu dengan sisi 1, 1, 3, 3, 6, 6 punya 2 angka 3, lebih baik daripada dadu biasa yang hanya punya 1 angka 3.", bersih(0), tambah(0, teks("jud", 150, 24, "Syarat menang: angka 3", 11, W.ungu)), ...MUKA3.map((n, i) => tambah(i < 2 ? "1," : i < 4 ? "3," : "6,", ...daduTitik(`d${i}`, 34 + i * 46, 70, n, 36, n === 3 ? "#FDE68A" : W.putih))), tambah("2", teks("a", 150, 112, "2 angka 3 dari 6 sisi", 11, W.hijau)), tambah("biasa", teks("b", 150, 134, "dadu biasa: 1 angka 3 dari 6 sisi", 9.5, W.merah))),
+    k("Pilihan lain: dadu 3, 3, 3, 4, 5, 6 punya 3 angka 3 dari 6, sama baik dengan dadu 3, 5, 3, 5, 3, 5.", bersih(0), tambah("3,", kotak("p1", 10, 50, 134, 70, W.putih, W.hijau, { rx: 8 }), teks("p1t", 77, 80, "3, 3, 3, 4, 5, 6", 10), teks("p1u", 77, 102, "3 dari 6", 12, W.hijau)), tambah("5,", kotak("p2", 156, 50, 134, 70, W.putih, W.hijau, { rx: 8 }), teks("p2t", 223, 80, "3, 5, 3, 5, 3, 5", 10), teks("p2u", 223, 102, "3 dari 6", 12, W.hijau)), tambah("sama", teks("eq", 150, 150, "=  sama baik", 12, W.hijau))),
+    k("Dadu piramida 1, 2, 3, 4 punya 1 angka 3 dari 4, lebih baik daripada dadu biasa, yaitu 1 dari 6.", bersih(0), tambah("piramida", kotak("p3", 80, 50, 140, 70, "#FDE68A", W.merah, { rx: 8 }), teks("p3t", 150, 80, "piramida 1, 2, 3, 4", 10), teks("p3u", 150, 102, "1 dari 4", 14, W.merah)), tambah("biasa,", teks("p4", 150, 150, "dadu biasa: 1 dari 6", 12, W.biruMuda)), tambah("baik", teks("p5", 150, 180, "1 dari 4  >  1 dari 6", 13, W.hijau))),
+    k("Nomor 5: satu dadu angka 3 melawan satu dadu angka 6 adil. Satu dadu angka 3 melawan dua dadu angka 6 kurang adil. Angka 1 atau 3 melawan angka 5 atau 6 adil.", bersih(0), tambah("satu", kotak("s1", 10, 34, 280, 40, W.putih, W.hijau, { rx: 8 }), teks("s1t", 150, 59, "angka 3  lawan  angka 6:  ADIL", 10, W.hijau)), tambah("kurang", kotak("s2", 10, 84, 280, 40, W.putih, W.merah, { rx: 8 }), teks("s2t", 150, 109, "1 dadu angka 3  lawan  2 dadu angka 6:  KURANG ADIL", 8.2, W.merah)), tambah("Angka", kotak("s3", 10, 134, 280, 40, W.putih, W.hijau, { rx: 8 }), teks("s3t", 150, 159, "angka 1 atau 3  lawan  angka 5 atau 6:  ADIL", 9, W.hijau))),
+    k("Ayo bereksplorasi, permainan Penuhi Lingkaran: lempar dadu, bilangan yang muncul menentukan berapa lingkaran ditutup kancing, catat dengan turus, ulangi sampai semua lingkaran penuh.", bersih(0), tambah("lempar", ...daduTitik("dd", 60, 80, 5, 40)), tambah("lingkaran", ...[0, 1, 2, 3, 4].map((i) => bulat(`ln${i}`, 130 + i * 24, 80, 9, "#FDE68A"))), tambah("kancing,", ...[0, 1, 2, 3, 4].map((i) => bulat(`kc${i}`, 130 + i * 24, 80, 5, W.hijau))), tambah("turus,", ...[0, 1, 2, 3].map((i) => garis(`tr${i}`, 120 + i * 8, 130, 0, 26, W.biru, 2.5, { gambar: true })), garis("tr4", 114, 150, 44, -18, W.biru, 2.5, { gambar: true })), tambah("penuh.", teks("pn", 230, 140, "sampai penuh", 10, W.hijau))),
+    k("Berapa kali kalian harus melempar dadu? Jawabannya bervariasi. Buku Panduan Guru: paling sedikit 5 kali lempar, dan paling banyak 25 kali lempar.", bersih(0), tambah(0, emo("tanya", 150, 50, "🤔", 30)), tambah("bervariasi.", teks("bv", 150, 96, "jawabannya bervariasi", 11, W.ungu)), tambah("sedikit", kotak("mn", 30, 114, 110, 50, "#BBF7D0", W.hijau, { rx: 10 }), teks("mnt", 85, 136, "paling sedikit", 9), teks("mnu", 85, 154, "5 kali", 14, W.hijau)), tambah("banyak", kotak("mx", 160, 114, 110, 50, "#FECACA", W.merah, { rx: 10 }), teks("mxt", 215, 136, "paling banyak", 9), teks("mxu", 215, 154, "25 kali", 14, W.merah))),
+    k("Pengayaan: Dhien membuat sandi. Pilihan 1, pin 3 digit angka. Pilihan 2, pin 5 digit angka dan huruf. Sandi dengan lebih banyak karakter dan jenis karakter punya lebih banyak variasi, jadi lebih sulit ditebak.", bersih(0), tambah("sandi.", emo("kunci", 150, 44, "🔐", 30)), tambah("1,", kotak("w1", 20, 70, 120, 56, W.putih, W.biru, { rx: 8 }), teks("w1t", 80, 94, "pilihan 1", 9, W.ungu), teks("w1u", 80, 112, "3 digit angka", 10)), tambah("2,", kotak("w2", 160, 70, 120, 56, W.putih, W.hijau, { rx: 8 }), teks("w2t", 220, 94, "pilihan 2", 9, W.ungu), teks("w2u", 220, 112, "5 digit angka+huruf", 8.5)), tambah("lebih@2", teks("sw", 150, 160, "lebih banyak karakter, lebih aman", 10, W.hijau))),
+  ],
+};

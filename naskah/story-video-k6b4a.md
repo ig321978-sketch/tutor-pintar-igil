@@ -1,4 +1,4 @@
-# Video Story Kelas 6 Bab 4 Sub-Bab A (Skala Peluang): percontohan mesin Story baru
+# Video Story Kelas 6 Bab 4 (Sub-Bab A Skala Peluang dan Sub-Bab B Membandingkan Peluang): mesin Story baru
 
 Tiap sub-bab memuat **dua video terpisah**: **Video Materi Kurikulum** (isi Buku Siswa, dilengkapi Buku Panduan Guru) dan **Video Metode Luar**. Berkas: `src/components/modul/story/` dan `video-k6b4a.tsx`. Uji: `node --no-warnings scripts/uji-story-k6b4a.mjs`.
 
@@ -15,4 +15,10 @@ Tiap sub-bab memuat **dua video terpisah**: **Video Materi Kurikulum** (isi Buku
 ## Catatan temuan
 - Buku menaruh buku putih 3 dari 10 di "mungkin" (penilaian relatif antarwarna, hlm. 108). Simulasi Lab Skala (live) memakai aturan separuh dan menaruhnya di "kurang mungkin". Video metode luar menjelaskan perbedaan itu secara terbuka.
 - Buku Panduan Guru: kategori skala boleh ditambah atau dikurangi; yang wajib hanya titik pasti dan titik tidak mungkin.
-- Naskah video lama Sub-Bab A (`SUB_A64.videos`, `kelas6-bab4.json`) tidak lagi dipakai; dihapus bersama Sub-Bab B bila pemilik menyetujui gaya ini.
+- Naskah video lama dihapus: `videos` pada `SUB_A64` dan `SUB_B64` (kini `[]`), `videos` dan `stories` pada `kelas6-bab4.json`, serta cabang `k6b4` di `video-visual-k6.tsx`. Bila generator `buat-k6-bab4.mjs` dijalankan lagi, isinya akan kembali dan harus dibuang lagi.
+
+## Sub-Bab B (Membandingkan Peluang Kejadian), berkas `k6b4b-*`
+- Video Materi (9 adegan, Buku Siswa hlm. 115–129 dan Buku Panduan Guru): jumlah peserta lomba, Eksplorasi 4.2 koin dan dadu, membandingkan peluang dalam permainan, dua contoh permainan kurang adil, Latihan 4.2, Eksplorasi 4.3 permen, kotak hadiah Toko Sukamaju, Latihan 4.3, refleksi dan Uji Kompetensi dan Penuhi Lingkaran dan pengayaan sandi.
+- Video Metode Luar (9 adegan): Favorable-to-Total Ratio, Comparative Probability Ratio (total bersama paling kecil dan silang kali), Fair Game Equal Chance Principle (36 pasangan dua dadu), Relative Likelihood Decision, ringkasan. Contoh memakai angka buku: 1/12 lawan 1/35 (total 420), Latihan 4.3 (total 110).
+- Uji: `node --no-warnings scripts/uji-story-k6b4b.mjs`.
+- Catatan buku: kunci Buku Panduan Guru untuk soal tantangan Latihan 4.3 nomor 3 (semua "Kotak X") tampak tidak cocok dengan gambar (set pensil dan pensil dengan penghapus lebih besar peluangnya di Kotak Y); soal itu tidak dipakai di video. Alasan Buku Panduan Guru untuk Uji Kompetensi 4c ("dadu 2 memiliki total kemungkinan lebih banyak") terbalik; video memakai alasan yang benar (1 dari 4 lebih besar dari 1 dari 6).
