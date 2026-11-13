@@ -4,6 +4,7 @@ import type { DefSkenario } from "./skenario-umum";
  * Skenario Kelas 6 Bab 2 (Rasio). Tanpa jaringan, tanpa model bahasa.
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k6b2.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K6B2A: Artus dan Lahan Bibit (Part-to-Part Ratio Language, GCF Simplify Ratio, dan Ordered-Ratio Protocol)
+ *  - SKENARIO_K6B2B: Artus, Resep, dan Paket Bibit (Equivalent Ratio Table, Fraction-Equivalence Bridge, dan Unit Rate Method)
  */
 
 export const SKENARIO_K6B2A: DefSkenario = {
@@ -85,6 +86,89 @@ export const SKENARIO_K6B2A: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Part-to-Part Ratio Language: 4 : 6 dibaca setiap 4 pucuk merah ada 6 cemara. GCF Simplify Ratio: bagi kedua suku dengan FPB, sehingga 4 : 6 menjadi 2 : 3. Ordered-Ratio Protocol: 2 : 3 tidak sama dengan 3 : 2, jadi jaga arahnya.",
+    },
+  ],
+};
+
+export const SKENARIO_K6B2B: DefSkenario = {
+  id: "artus-paket-k6b2",
+  judul: "Artus, Resep, dan Paket Bibit",
+  latar: "Bantu Artus menjaga rasio tetap senilai dan memilih paket bibit yang hemat.",
+  tokoh: "👨",
+  nama: "Artus",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Artus. Lahan 10 m² memuat 12 bibit, jadi rasio lahan terhadap bibit adalah 10 : 12. Kalau lahannya diperluas, bibitnya harus ikut berubah dengan rasio yang senilai. Ayo kita pakai tabel, pecahan senilai, dan nilai satuan!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "tabel",
+      jenis: "pilih",
+      cerita: "Equivalent Ratio Table: kalikan kedua suku dengan bilangan yang sama. Lahan 10 m² dengan 12 bibit dikali 5. Baris baru yang senilai adalah …",
+      opsi: [
+        { teks: "15 m² dengan 17 bibit", benar: false, umpan: "Itu hasil menambah 5 pada kedua suku. Menambah bilangan sama tidak menjaga rasio. Kalikan, jangan tambah." },
+        { teks: "50 m² dengan 60 bibit", benar: true, umpan: "Betul! 10 × 5 = 50 dan 12 × 5 = 60, jadi 10 : 12 senilai dengan 50 : 60." },
+        { teks: "50 m² dengan 12 bibit", benar: false, umpan: "Hanya suku kiri yang dikali. Suku kanan, yaitu 12, juga harus dikali 5." },
+      ],
+    },
+    {
+      id: "kelompok",
+      jenis: "hitung",
+      cerita: "Baris baru itu sama dengan 5 kelompok yang masing-masing berisi 10 m² dan 12 bibit. Satu stik mewakili satu kelompok.",
+      tanya: "Ketuk semua stik. Ada berapa kelompok?",
+      objek: "stik",
+      jumlah: 5,
+      sukses: "Betul! 5 kelompok, jadi 10 : 12 menjadi 50 : 60. Kedua suku dikali 5, dan rasionya tetap senilai.",
+      salah: "Hmm, ketuk tiap stik sekali saja untuk satu kelompok, lalu hitung lagi.",
+    },
+    {
+      id: "jembatan",
+      jenis: "soal",
+      cerita: "Fraction-Equivalence Bridge: kesamaan rasio sama dengan pecahan senilai. 10/12 dan 30/36 dihubungkan pengali yang sama pada pembilang dan penyebut.",
+      soal: [
+        { teks: "10/12 = (10×3)/(12×3) = 30/…", jawaban: "36", opsi: ["15", "36", "22"] },
+        { teks: "10/12 disederhanakan dengan FPB 2 menjadi …", jawaban: "5/6", opsi: ["5/6", "6/5", "10/6"] },
+      ],
+      sukses: "Hebat! 10/12 = 30/36 dan 10/12 = 5/6. Kalikan atau bagi pembilang dan penyebut dengan bilangan yang sama.",
+      salah: "Hmm, pembilang dan penyebut memakai pengali yang sama. Coba lagi.",
+    },
+    {
+      id: "satuan",
+      jenis: "pilih",
+      cerita: "Unit Rate Method: cari nilai untuk satu satuan agar perbandingan adil. Paket 5 bibit harganya Rp40.000. Berapa harga untuk satu bibit?",
+      opsi: [
+        { teks: "Rp40.000 per bibit", benar: false, umpan: "Itu harga seluruh paket. Nilai satuan didapat dengan membagi harga dengan banyak bibit." },
+        { teks: "Rp5.000 per bibit", benar: false, umpan: "Itu bukan hasil Rp40.000 dibagi 5. Coba bagi lagi." },
+        { teks: "Rp8.000 per bibit", benar: true, umpan: "Betul! Rp40.000 dibagi 5 bibit sama dengan Rp8.000 per bibit. Satuannya Rp per bibit." },
+      ],
+    },
+    {
+      id: "kemasan",
+      jenis: "isi",
+      cerita: "Di gudang, 12 bibit dikemas dalam 3 jam, jadi 4 bibit per jam. Untuk satu jam, masukkan satu stik untuk tiap bibit yang dikemas.",
+      objek: "stik",
+      target: 4,
+      maks: 8,
+      sukses: "Betul! 12 bibit dalam 3 jam sama dengan 4 bibit per jam. Dalam 4 jam jadi 4 × 4 = 16 bibit.",
+      kurang: "Bibitnya masih kurang. Tambah lagi sampai 4.",
+      lebih: "Bibitnya kelebihan. Kurangi sampai 4.",
+    },
+    {
+      id: "salah",
+      jenis: "pilih",
+      cerita: "Adikku mengubah 4 : 6 menjadi 6 : 8 dengan menambah 2 pada kedua suku. Apa yang salah dari caranya?",
+      opsi: [
+        { teks: "Menambah tidak menjaga rasio, harus dikali atau dibagi dengan bilangan sama", benar: true, umpan: "Betul! 4 : 6 senilai dengan 8 : 12 (dikali 2), bukan 6 : 8." },
+        { teks: "Bilangan 2 harus diganti 3", benar: false, umpan: "Bukan soal angkanya. Yang salah adalah operasinya: menambah tidak menjaga rasio." },
+        { teks: "Hanya suku kiri yang boleh dikali", benar: false, umpan: "Kedua suku harus diperlakukan sama, kiri dan kanan." },
+      ],
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Equivalent Ratio Table: kalikan atau bagi kedua suku dengan bilangan yang sama. Fraction-Equivalence Bridge: kesamaan rasio adalah pecahan senilai, dicek dengan perkalian silang. Unit Rate Method: cari nilai untuk satu satuan agar perbandingan adil, dan tulis satuannya.",
     },
   ],
 };

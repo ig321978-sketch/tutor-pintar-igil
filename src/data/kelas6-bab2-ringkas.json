@@ -225,6 +225,226 @@
           }
         ]
       }
+    },
+    "B": {
+      "peta": {
+        "pusat": {
+          "judul": "Kesamaan Rasio",
+          "ikon": "⚖️",
+          "suara": "Ini peta kesamaan rasio. Kita belajar tabel rasio yang dikali dengan bilangan sama, pecahan senilai, perkalian silang, dan nilai untuk satu satuan. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "tabel",
+            "judul": "Tabel rasio",
+            "ikon": "▦",
+            "ringkas": "Kalikan kedua suku sama.",
+            "suara": "Tabel rasio. Kalikan kedua suku dengan bilangan yang sama, misalnya sepuluh banding dua belas dikali lima menjadi lima puluh banding enam puluh. Menambah bilangan sama tidak menjaga rasio."
+          },
+          {
+            "id": "jembatan",
+            "judul": "Pecahan senilai",
+            "ikon": "½",
+            "ringkas": "Rasio sama dengan pecahan senilai.",
+            "suara": "Pecahan senilai. Kesamaan rasio sama dengan pecahan senilai. Sepuluh per dua belas sama dengan tiga puluh per tiga puluh enam, karena pembilang dan penyebut dikali tiga."
+          },
+          {
+            "id": "silang",
+            "judul": "Perkalian silang",
+            "ikon": "✖️",
+            "ringkas": "Hasil kali silang harus sama.",
+            "suara": "Perkalian silang. Dua pecahan senilai bila hasil kali silangnya sama. Empat per sepuluh dan satu per dua tidak senilai, karena hasil kali silangnya berbeda."
+          },
+          {
+            "id": "satuan",
+            "judul": "Nilai satuan",
+            "ikon": "1️⃣",
+            "ringkas": "Nilai untuk satu satuan.",
+            "suara": "Nilai satuan. Bagi nilai seluruhnya dengan banyak satuan, lalu tulis satuannya. Dengan nilai satuan, dua paket bisa dibandingkan dengan adil."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "b-kali",
+            "teks": "Kalikan kedua suku",
+            "ikon": "✖️",
+            "cabang": "tabel",
+            "petunjuk": "Mengalikan kedua suku itu soal tabel rasio. Coba cabang lain."
+          },
+          {
+            "id": "b-tambah",
+            "teks": "Tambah sama tidak senilai",
+            "ikon": "➕",
+            "cabang": "tabel",
+            "petunjuk": "Menolak tambah sama itu soal tabel rasio. Coba cabang lain."
+          },
+          {
+            "id": "b-bridge",
+            "teks": "Cari pecahan senilai",
+            "ikon": "½",
+            "cabang": "jembatan",
+            "petunjuk": "Mencari pecahan senilai itu soal pecahan senilai. Coba cabang lain."
+          },
+          {
+            "id": "b-pengali",
+            "teks": "Pembilang dan penyebut satu pengali",
+            "ikon": "🔗",
+            "cabang": "jembatan",
+            "petunjuk": "Memakai satu pengali itu soal pecahan senilai. Coba cabang lain."
+          },
+          {
+            "id": "b-silang",
+            "teks": "Hasil kali silang sama",
+            "ikon": "⚖️",
+            "cabang": "silang",
+            "petunjuk": "Membandingkan hasil kali silang itu soal perkalian silang. Coba cabang lain."
+          },
+          {
+            "id": "b-beda",
+            "teks": "Silang berbeda, tidak senilai",
+            "ikon": "🚫",
+            "cabang": "silang",
+            "petunjuk": "Menolak pecahan tak senilai itu soal perkalian silang. Coba cabang lain."
+          },
+          {
+            "id": "b-harga",
+            "teks": "Harga satu bibit",
+            "ikon": "💰",
+            "cabang": "satuan",
+            "petunjuk": "Mencari harga satu bibit itu soal nilai satuan. Coba cabang lain."
+          },
+          {
+            "id": "b-laju",
+            "teks": "Bibit per jam",
+            "ikon": "⏱️",
+            "cabang": "satuan",
+            "petunjuk": "Mencari bibit per jam itu soal nilai satuan. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Kesamaan Rasio",
+        "suara": "Ini tiga panel tentang kesamaan rasio. Ketuk kotaknya untuk membuka, lalu lihat tabel rasio, beda kali dan tambah, serta nilai satuan.",
+        "panel": [
+          {
+            "id": "b-tabel-info",
+            "tipe": "buka",
+            "judul": "Tabel rasio",
+            "ide": "Kali kedua suku, rasio senilai.",
+            "suara": "Ada tiga hal tentang tabel rasio. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "awal",
+                "label": "Baris awal",
+                "ikon": "🌱",
+                "isi": "Lahan dan bibit.",
+                "suara": "Lahan sepuluh meter persegi memuat dua belas bibit, jadi rasionya sepuluh banding dua belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 : 12"
+                }
+              },
+              {
+                "id": "kali",
+                "label": "Dikali lima",
+                "ikon": "✖️",
+                "isi": "Kedua suku dikali lima.",
+                "suara": "Sepuluh dikali lima sama dengan lima puluh dan dua belas dikali lima sama dengan enam puluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "50 : 60"
+                }
+              },
+              {
+                "id": "senilai",
+                "label": "Senilai",
+                "ikon": "⚖️",
+                "isi": "Sama-sama menjadi lima banding enam.",
+                "suara": "Sepuluh banding dua belas dan lima puluh banding enam puluh sama-sama menjadi lima banding enam, jadi senilai.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 : 12 = 5 : 6"
+                }
+              }
+            ]
+          },
+          {
+            "id": "b-kali-info",
+            "tipe": "banding",
+            "judul": "Kali, bukan tambah",
+            "ide": "Kali menjaga rasio, tambah tidak.",
+            "suara": "Lihat dua cara mengubah empat banding enam.",
+            "sisi": [
+              {
+                "id": "kali",
+                "nama": "Dikali dua",
+                "ikon": "✖️",
+                "catatan": "Kedua suku dikali.",
+                "suara": "Empat banding enam dikali dua menjadi delapan banding dua belas. Rasionya senilai.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 : 6 = 8 : 12"
+                }
+              },
+              {
+                "id": "tambah",
+                "nama": "Ditambah dua",
+                "ikon": "➕",
+                "catatan": "Kedua suku ditambah.",
+                "suara": "Empat banding enam ditambah dua menjadi enam banding delapan. Rasionya tidak senilai.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 : 6 ≠ 6 : 8"
+                }
+              }
+            ],
+            "kesimpulan": "Kali menjaga rasio."
+          },
+          {
+            "id": "b-satuan-info",
+            "tipe": "buka",
+            "judul": "Nilai satuan",
+            "ide": "Bagi, lalu bandingkan paket.",
+            "suara": "Ada tiga hal tentang nilai satuan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "harga",
+                "label": "Harga satu bibit",
+                "ikon": "💰",
+                "isi": "Harga dibagi banyak bibit.",
+                "suara": "Paket lima bibit harganya empat puluh ribu rupiah, jadi satu bibit delapan ribu rupiah.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Rp40.000 : 5 = Rp8.000"
+                }
+              },
+              {
+                "id": "laju",
+                "label": "Bibit per jam",
+                "ikon": "⏱️",
+                "isi": "Dua belas bibit dalam tiga jam.",
+                "suara": "Dua belas bibit dikemas dalam tiga jam, jadi empat bibit per jam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 : 3 = 4 per jam"
+                }
+              },
+              {
+                "id": "hemat",
+                "label": "Pilih hemat",
+                "ikon": "✅",
+                "isi": "Nilai satuan lebih kecil, lebih hemat.",
+                "suara": "Paket A delapan ribu rupiah per bibit, paket B tujuh ribu rupiah per bibit. Paket B lebih hemat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Rp7.000 < Rp8.000"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }
