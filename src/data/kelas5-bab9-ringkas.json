@@ -466,6 +466,226 @@
           }
         ]
       }
+    },
+    "C": {
+      "peta": {
+        "pusat": {
+          "judul": "Susun dan Urai",
+          "ikon": "🧩",
+          "suara": "Ini peta komposisi dan dekomposisi bilangan. Kita belajar menyusun bagian nilai tempat menjadi bilangan, menguraikan bilangan menjadi bagian, menjaga nol penyangga, dan mencari cara lain dengan memecah satu tempat. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu pasang kartunya di cabangnya!",
+        "cabang": [
+          {
+            "id": "susun",
+            "judul": "Susun",
+            "ikon": "🧩",
+            "ringkas": "Bagian menjadi bilangan utuh.",
+            "suara": "Susun, atau komposisi. Bagian nilai tempat disusun menjadi satu bilangan utuh, misalnya tiga ratus ribuan, dua puluh ribuan, tujuh ribuan, dan satu ratusan menjadi tiga ratus dua puluh tujuh ribu seratus."
+          },
+          {
+            "id": "urai",
+            "judul": "Urai",
+            "ikon": "🔬",
+            "ringkas": "Bilangan menjadi jumlah bagian.",
+            "suara": "Urai, atau dekomposisi. Bilangan utuh diuraikan menjadi jumlah nilai tiap tempat. Jumlah uraian harus kembali menjadi bilangan awal."
+          },
+          {
+            "id": "nol",
+            "judul": "Nol penyangga",
+            "ikon": "⭕",
+            "ringkas": "Tempat kosong tetap ditulis nol.",
+            "suara": "Nol penyangga. Tempat yang tidak disebut tetap diisi nol supaya angka lain tidak bergeser dari tempatnya."
+          },
+          {
+            "id": "cara",
+            "judul": "Cara lain",
+            "ikon": "🔁",
+            "ringkas": "Satu tempat jadi sepuluh di kanan.",
+            "suara": "Cara lain. Satu satuan tempat bisa dipecah menjadi sepuluh satuan tempat di kanannya, dan totalnya tetap sama."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "c-bagian",
+            "teks": "Bagian disusun jadi satu bilangan",
+            "ikon": "🧩",
+            "cabang": "susun",
+            "petunjuk": "Menggabung bagian itu soal susun. Coba cabang lain."
+          },
+          {
+            "id": "c-327",
+            "teks": "300.000 + 20.000 + 7.000 + 100 = 327.100",
+            "ikon": "➕",
+            "cabang": "susun",
+            "petunjuk": "Hasil susun itu soal susun. Coba cabang lain."
+          },
+          {
+            "id": "c-urai",
+            "teks": "Bilangan diurai jadi jumlah nilai",
+            "ikon": "🔬",
+            "cabang": "urai",
+            "petunjuk": "Memecah bilangan itu soal urai. Coba cabang lain."
+          },
+          {
+            "id": "c-cek",
+            "teks": "Jumlah uraian kembali ke awal",
+            "ikon": "🔄",
+            "cabang": "urai",
+            "petunjuk": "Cek uraian itu soal urai. Coba cabang lain."
+          },
+          {
+            "id": "c-tulis",
+            "teks": "Tempat tidak disebut ditulis 0",
+            "ikon": "⭕",
+            "cabang": "nol",
+            "petunjuk": "Tempat kosong itu soal nol penyangga. Coba cabang lain."
+          },
+          {
+            "id": "c-203",
+            "teks": "203.305, bukan 2.335",
+            "ikon": "0️⃣",
+            "cabang": "nol",
+            "petunjuk": "Contoh nol itu soal nol penyangga. Coba cabang lain."
+          },
+          {
+            "id": "c-sepuluh",
+            "teks": "1 ratus ribuan = 10 puluh ribuan",
+            "ikon": "🔁",
+            "cabang": "cara",
+            "petunjuk": "Memecah tempat itu soal cara lain. Coba cabang lain."
+          },
+          {
+            "id": "c-total",
+            "teks": "Total tetap sama",
+            "ikon": "⚖️",
+            "cabang": "cara",
+            "petunjuk": "Total bilangan itu soal cara lain. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Menyusun dan Menguraikan",
+        "suara": "Ini tiga panel tentang menyusun dan menguraikan bilangan. Ketuk kotaknya untuk membuka, lalu lihat cara menyusun, hubungan susun dengan urai, serta cara lain memecah tempat.",
+        "panel": [
+          {
+            "id": "c-susun-info",
+            "tipe": "buka",
+            "judul": "Menyusun bilangan",
+            "ide": "Bagian disusun jadi bilangan utuh.",
+            "suara": "Ada tiga hal tentang menyusun bilangan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "bagian",
+                "label": "Bagian disebut",
+                "ikon": "🧩",
+                "isi": "Nilai tiap tempat yang disebut.",
+                "suara": "Bagian yang disebut adalah tiga ratus ribu, dua puluh ribu, tujuh ribu, dan seratus.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "300.000 + 20.000 + 7.000 + 100"
+                }
+              },
+              {
+                "id": "nol",
+                "label": "Tempat kosong",
+                "ikon": "⭕",
+                "isi": "Puluhan dan satuan diisi nol.",
+                "suara": "Puluhan dan satuan tidak disebut, jadi keduanya diisi nol supaya angka lain tidak bergeser.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "puluhan 0, satuan 0"
+                }
+              },
+              {
+                "id": "hasil",
+                "label": "Hasil susun",
+                "ikon": "✅",
+                "isi": "Bilangan utuhnya.",
+                "suara": "Hasil susunnya tiga ratus dua puluh tujuh ribu seratus.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "327.100"
+                }
+              }
+            ]
+          },
+          {
+            "id": "c-urai-info",
+            "tipe": "banding",
+            "judul": "Susun dan urai",
+            "ide": "Dua arah yang saling mengecek.",
+            "suara": "Lihat dua arah untuk bilangan yang sama.",
+            "sisi": [
+              {
+                "id": "susun",
+                "nama": "Susun",
+                "ikon": "🧩",
+                "catatan": "Dari bagian ke bilangan utuh.",
+                "suara": "Menyusun berarti menjumlahkan bagian menjadi bilangan utuh: tiga ratus ribu ditambah dua puluh ribu ditambah tujuh ribu ditambah seratus sama dengan tiga ratus dua puluh tujuh ribu seratus.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "300.000 + 20.000 + 7.000 + 100 = 327.100"
+                }
+              },
+              {
+                "id": "urai",
+                "nama": "Urai",
+                "ikon": "🔬",
+                "catatan": "Dari bilangan utuh ke bagian.",
+                "suara": "Menguraikan berarti memecah bilangan utuh menjadi bagian nilai tempat. Bila dijumlahkan kembali, hasilnya bilangan awal.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "327.100 = 300.000 + 20.000 + 7.000 + 100"
+                }
+              }
+            ],
+            "kesimpulan": "Susun dan urai saling mengecek."
+          },
+          {
+            "id": "c-cara-info",
+            "tipe": "buka",
+            "judul": "Cara lain",
+            "ide": "Pecah tempat, total tetap sama.",
+            "suara": "Ada tiga hal tentang cara lain menguraikan bilangan. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "pecah",
+                "label": "Pecah satu tempat",
+                "ikon": "🔁",
+                "isi": "Satu jadi sepuluh di kanan.",
+                "suara": "Satu ratus ribuan sama dengan sepuluh puluh ribuan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 ratus ribuan = 10 puluh ribuan"
+                }
+              },
+              {
+                "id": "gabung",
+                "label": "Gabung kembali",
+                "ikon": "🔄",
+                "isi": "Sepuluh jadi satu di kiri.",
+                "suara": "Sepuluh puluh ribuan bisa digabung kembali menjadi satu ratus ribuan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 puluh ribuan = 1 ratus ribuan"
+                }
+              },
+              {
+                "id": "total",
+                "label": "Total tetap",
+                "ikon": "⚖️",
+                "isi": "Bilangannya tidak berubah.",
+                "suara": "Setelah dipecah atau digabung, total bilangannya tetap lima ratus sembilan puluh sembilan ribu seratus sembilan puluh delapan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "599.198 tetap 599.198"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

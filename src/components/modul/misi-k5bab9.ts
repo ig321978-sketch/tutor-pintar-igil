@@ -5,15 +5,17 @@
  * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
  *  A Baca, tulis, nilai tempat : Lab Nilai Tempat (Baca, Tabel, Nilai) + Mesin Nilai Tempat + Nisa dan Lemari Jepara
  *  B Banding dan urut : Lab Banding (Banding, Urut, Simbol) + Mesin Banding + Lukas dan Sepatu
+ *  C Komposisi dan dekomposisi : Lab Susun (Susun, Urai, Cara Lain) + Mesin Susun + Nisa dan Harga Komputer
  */
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
 import type { KeadaanNilaiK5B9A } from "./lab-nilai-k5b9a";
 import type { KeadaanBandingK5B9B } from "./lab-banding-k5b9b";
+import type { KeadaanSusunK5B9C } from "./lab-susun-k5b9c";
 
-export type KeadaanK5Bab9 = KeadaanNilaiK5B9A | KeadaanBandingK5B9B | KeadaanSelesai;
-export type HurufMisiK5B9 = "A" | "B";
+export type KeadaanK5Bab9 = KeadaanNilaiK5B9A | KeadaanBandingK5B9B | KeadaanSusunK5B9C | KeadaanSelesai;
+export type HurufMisiK5B9 = "A" | "B" | "C";
 
 const selesai = (k: KeadaanK5Bab9, id: string) => k.alat === "selesai" && k.id === id;
 /** Riwayat alat tertentu memuat semua id. */
@@ -21,8 +23,8 @@ const pernah = (k: KeadaanK5Bab9, alat: string, ...id: string[]) => k.alat === a
 const semua = (awalan: string) => [0, 1, 2, 3, 4, 5].map((i) => `${awalan}:${i}`);
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K5B9 = { A: "nisa-lemari", B: "lukas-sepatu" } as const;
-export const ID_MESIN_K5B9 = { A: "mesin-nilai", B: "mesin-banding" } as const;
+export const ID_SKENARIO_K5B9 = { A: "nisa-lemari", B: "lukas-sepatu", C: "nisa-komputer" } as const;
+export const ID_MESIN_K5B9 = { A: "mesin-nilai", B: "mesin-banding", C: "mesin-susun" } as const;
 
 export const MISI_A: DefMisi<KeadaanK5Bab9>[] = [
   { id: "a-baca", teks: "Di Baca, baca harga lemari 979.875 dari kiri: kelompok sebelum titik dengan kata ribu, lalu kelompok sesudahnya.", wajib: true, cek: (k) => pernah(k, "nilai", "baca:0") },
@@ -50,5 +52,18 @@ export const MISI_B: DefMisi<KeadaanK5Bab9>[] = [
   { id: "b-simbol-semua", teks: "Di Simbol, pilih tanda yang tepat untuk keenam pasangan, termasuk dua pasangan yang sama.", wajib: false, cek: (k) => pernah(k, "banding", ...semua("simbol")) },
 ];
 
-const DAFTAR: Record<HurufMisiK5B9, DefMisi<KeadaanK5Bab9>[]> = { A: MISI_A, B: MISI_B };
+export const MISI_C: DefMisi<KeadaanK5Bab9>[] = [
+  { id: "c-susun", teks: "Di Susun, susun harga komputer dari bagiannya (3 ratus ribuan, 2 puluh ribuan, 7 ribuan, dan 1 ratusan) menjadi satu bilangan utuh dengan tempat yang tidak disebut diisi nol.", wajib: true, cek: (k) => pernah(k, "susun", "susun:0") },
+  { id: "c-nol", teks: "Di Susun, susun harga sepeda yang punya nol penyangga di tengah sampai benar, tanpa menghapus nolnya.", wajib: true, cek: (k) => pernah(k, "susun", "susun:1") },
+  { id: "c-urai", teks: "Di Urai, uraikan harga televisi menjadi jumlah nilai tiap tempat sampai jumlahnya kembali sama dengan bilangan awal.", wajib: true, cek: (k) => pernah(k, "susun", "urai:4") },
+  { id: "c-cara", teks: "Di Cara Lain, pecah 1 ratus ribuan harga televisi menjadi 10 puluh ribuan dan lihat bahwa totalnya tetap sama.", wajib: true, cek: (k) => pernah(k, "susun", "cara:4") },
+  { id: "c-tolak", teks: "Di Cara Lain, coba menambah isi sebuah kolom begitu saja pada harga televisi, lalu lihat mengapa penambahan itu ditolak.", wajib: true, cek: (k) => pernah(k, "susun", "tolak:4") },
+  { id: "c-mesin", teks: "Selesaikan Mesin Susun sampai semua kasus diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K5B9.C) },
+  { id: "c-skenario", teks: "Selesaikan skenario Nisa dan Harga Komputer sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K5B9.C) },
+  { id: "c-susun-semua", teks: "Di Susun, susun keenam bilangan dari bagiannya sampai semuanya benar.", wajib: false, cek: (k) => pernah(k, "susun", ...semua("susun")) },
+  { id: "c-urai-semua", teks: "Di Urai, uraikan keenam bilangan sampai jumlahnya kembali ke bilangan awal.", wajib: false, cek: (k) => pernah(k, "susun", ...semua("urai")) },
+  { id: "c-cara-semua", teks: "Di Cara Lain, temukan cara lain untuk keenam bilangan dengan memecah satu tempat menjadi sepuluh tempat di kanannya.", wajib: false, cek: (k) => pernah(k, "susun", ...semua("cara")) },
+];
+
+const DAFTAR: Record<HurufMisiK5B9, DefMisi<KeadaanK5Bab9>[]> = { A: MISI_A, B: MISI_B, C: MISI_C };
 export const daftarMisiK5Bab9 = (huruf: string): DefMisi<KeadaanK5Bab9>[] => DAFTAR[huruf as HurufMisiK5B9] ?? MISI_A;

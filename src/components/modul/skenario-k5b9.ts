@@ -5,6 +5,8 @@ import type { DefSkenario } from "./skenario-umum";
  * Kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k5b9.mjs (dihitung ulang mandiri).
  *  - SKENARIO_K5B9A: Nisa dan Lemari Jepara (membaca, menulis, nilai tempat, nilai angka, dan satu juta)
  *  - SKENARIO_K5B9B: Lukas dan Sepatu (membandingkan dari kolom paling kiri, geser bila sama, mengurutkan, dan tanda; menyentuh nilai tempat dari A)
+ *  - SKENARIO_K5B9C: Nisa dan Harga Komputer (menyusun bagian nilai tempat, nol penyangga, menguraikan, memecah satu tempat menjadi sepuluh di kanannya;
+ *    pencapaian bab, menyentuh membaca dari A dan membandingkan dari B)
  */
 
 export const SKENARIO_K5B9A: DefSkenario = {
@@ -171,6 +173,91 @@ export const SKENARIO_K5B9B: DefSkenario = {
       id: "tutup",
       jenis: "akhir",
       cerita: "Terima kasih! Bandingkan mulai dari kolom paling kiri dan geser ke kanan bila angkanya sama. Kolom pertama yang berbeda menentukan bilangan yang lebih besar. Dengan membandingkan berulang, bilangan bisa diurutkan naik atau turun.",
+    },
+  ],
+};
+
+export const SKENARIO_K5B9C: DefSkenario = {
+  id: "nisa-komputer-k5b9",
+  judul: "Nisa dan Harga Komputer",
+  latar: "Bantu Nisa menyusun dan menguraikan harga komputer.",
+  tokoh: "👧",
+  nama: "Nisa",
+  adegan: [
+    {
+      id: "buka",
+      jenis: "narasi",
+      cerita: "Halo! Aku Nisa lagi. Di toko komputer, harga ditulis dengan bagian nilai tempat, misalnya 3 ratus ribuan, 2 puluh ribuan, dan seterusnya. Kita akan menyusun bagian-bagian itu menjadi satu bilangan, lalu menguraikannya kembali. Kita juga memakai bacaan dan perbandingan dari tadi!",
+      tombol: "Ayo mulai! ➡",
+    },
+    {
+      id: "arti",
+      jenis: "pilih",
+      cerita: "Menyusun bagian-bagian nilai tempat menjadi satu bilangan disebut komposisi. Lalu apa arti menguraikan bilangan, atau dekomposisi?",
+      opsi: [
+        { teks: "menguraikan bilangan menjadi jumlah nilai tiap tempatnya", benar: true, umpan: "Betul! Komposisi menyusun bagian menjadi bilangan, dekomposisi menguraikan bilangan menjadi bagian. Keduanya saling mengecek." },
+        { teks: "menghapus angka di kolom paling kiri", benar: false, umpan: "Menghapus angka mengubah bilangannya. Menguraikan menjaga totalnya tetap sama." },
+        { teks: "membaca bilangan dari kanan ke kiri", benar: false, umpan: "Itu bukan menguraikan. Menguraikan memecah bilangan menjadi nilai tiap tempat." },
+      ],
+    },
+    {
+      id: "bagian",
+      jenis: "hitung",
+      cerita: "Harga komputer: 3 ratus ribuan, 2 puluh ribuan, 7 ribuan, dan 1 ratusan. Ketuk satu stik untuk tiap bagian yang disebut.",
+      tanya: "Ketuk semua stik. Ada berapa bagian yang disebut?",
+      objek: "stik",
+      jumlah: 4,
+      sukses: "Betul! Ada 4 bagian. Puluhan dan satuan tidak disebut, jadi nanti diisi nol.",
+      salah: "Hmm, hitung bagian yang disebut saja, satu stik untuk satu bagian. Coba lagi.",
+    },
+    {
+      id: "susun",
+      jenis: "soal",
+      cerita: "Nisa menyusun bagian-bagian itu ke enam kolom. Tempat yang tidak disebut diisi nol.",
+      soal: [
+        { teks: "3 ratus ribuan + 2 puluh ribuan + 7 ribuan + 1 ratusan tersusun menjadi …", jawaban: "327.100", opsi: ["3.271", "327.100", "327.010"] },
+        { teks: "Kasir menyusun 2 ratus ribuan + 3 ribuan + 3 ratusan + 5 satuan. Hasilnya …", jawaban: "203.305", opsi: ["203.305", "2.335", "230.305"] },
+      ],
+      sukses: "Tepat! Nol penyangga menjaga tiap angka tetap di tempatnya, jadi 203.305 dan bukan 2.335.",
+      salah: "Hmm, isi enam kolom satu per satu. Kolom yang tidak disebut diisi 0. Coba lagi.",
+    },
+    {
+      id: "urai",
+      jenis: "soal",
+      cerita: "Sekarang sebaliknya. Nisa menguraikan harga televisi 599.198 menjadi jumlah nilai tiap tempat.",
+      soal: [
+        { teks: "599.198 = 500.000 + 90.000 + 9.000 + 100 + 90 + …", jawaban: "8", opsi: ["8", "80", "800"] },
+        { teks: "Setelah diuraikan, uraian itu dijumlahkan kembali supaya …", jawaban: "hasilnya sama dengan bilangan awal", opsi: ["hasilnya menjadi lebih kecil", "hasilnya sama dengan bilangan awal", "angkanya dihapus satu"] },
+      ],
+      sukses: "Hebat! 500.000 + 90.000 + 9.000 + 100 + 90 + 8 = 599.198. Menyusun dan menguraikan saling mengecek.",
+      salah: "Hmm, kalikan tiap angka dengan nilai tempatnya, lalu jumlahkan kembali. Coba lagi.",
+    },
+    {
+      id: "pecah",
+      jenis: "isi",
+      cerita: "Cara lain menguraikan: 1 ratus ribuan dipecah menjadi puluh ribuan. Masukkan satu stik untuk tiap puluh ribuan hasil pemecahannya.",
+      objek: "stik",
+      target: 10,
+      maks: 12,
+      sukses: "Pas! 1 ratus ribuan sama dengan 10 puluh ribuan, dan total bilangannya tetap sama.",
+      kurang: "Stiknya masih kurang. Satu ratus ribuan sama dengan sepuluh puluh ribuan.",
+      lebih: "Stiknya kebanyakan. Satu ratus ribuan sama dengan tepat sepuluh puluh ribuan.",
+    },
+    {
+      id: "cek",
+      jenis: "soal",
+      cerita: "Nisa memakai hasil susunnya untuk dua cek: membandingkan dan membaca.",
+      soal: [
+        { teks: "327.100 … 203.305. Hubungan yang tepat adalah …", jawaban: "lebih besar dari", opsi: ["lebih kecil dari", "sama dengan", "lebih besar dari"] },
+        { teks: "203.305 dibaca …", jawaban: "dua ratus tiga ribu tiga ratus lima", opsi: ["dua ratus tiga ribu tiga ratus lima", "dua ratus tiga puluh ribu tiga ratus lima", "dua ratus tiga ribu tiga puluh lima"] },
+      ],
+      sukses: "Betul! Ratus ribuan 3 lebih besar dari 2, dan nol di puluh ribuan tidak diucapkan.",
+      salah: "Hmm, bandingkan dari kolom paling kiri dan baca dari kiri. Coba lagi.",
+    },
+    {
+      id: "tutup",
+      jenis: "akhir",
+      cerita: "Terima kasih! Komposisi menyusun bagian nilai tempat menjadi bilangan, dan nol penyangga tetap ditulis. Dekomposisi menguraikan bilangan menjadi jumlah nilai tempat, dan jumlahnya kembali ke bilangan awal. Satu tempat bisa dipecah menjadi sepuluh tempat di kanannya tanpa mengubah total.",
     },
   ],
 };
