@@ -4,11 +4,9 @@ import React from "react";
 import { Muncul } from "./video-cerita";
 import {
   BandingSvg,
-  BatangPecahanSvg,
   GarisBilanganSvg,
   LabelSvg,
   PapanDigit,
-  PizzaSvg,
   SusunSvg,
   progresDari,
   nyalaDariWaktu,
@@ -86,37 +84,6 @@ export function visualK4(kode: string, v: number, a: number, k: number, t = 0): 
       <>
         <GarisBilanganSvg dari={0} sampai={10} sorot={k >= 1 ? [3, 7] : p > 0.3 ? [3] : [0]} panah={k >= 2 ? [3, 7] : null} />
         {k >= 2 || p > 0.7 ? <LabelSvg x={90} y={155} w={120} teks="cerita bilangan" ukuran={11} /> : null}
-      </>
-    );
-  }
-
-  if (bab === "k4b2") {
-    if (v === 0) {
-      const q = a === 0 ? 4 : a === 1 ? 8 : 3;
-      const pp = a === 0 ? 1 : a === 1 ? 3 : 2;
-      const slices = k === 0 ? nyalaDariWaktu(t, q, 1.2) : Math.min(q, Math.max(k + 1, nyalaDariWaktu(t, q, 1.0)));
-      return (
-        <>
-          <PizzaSvg q={q} p={pp} k={Math.max(0, slices - 1)} />
-          {k >= 2 ? <LabelSvg x={100} y={170} w={100} teks={`${pp}/${q}`} ukuran={14} warna={HIJAU} /> : null}
-        </>
-      );
-    }
-    if (v === 1) {
-      const q = a === 0 ? 4 : 6;
-      const pp = a === 0 ? 3 : 5;
-      return (
-        <>
-          <BatangPecahanSvg q={q} p={pp} k={nyalaSeirama(k, t, q, 1.1) - 1} />
-          {k >= 2 ? <LabelSvg x={90} y={155} w={120} teks="bagian sama" ukuran={12} /> : null}
-        </>
-      );
-    }
-    return (
-      <>
-        <PizzaSvg x={90} y={100} q={2} p={1} r={40} k={Math.min(1, nyalaDariWaktu(t, 2, 1.5) - 1)} />
-        <PizzaSvg x={210} y={100} q={4} p={1} r={40} k={k >= 1 ? Math.min(3, nyalaDariWaktu(t, 4, 1.2) - 1) : -1} />
-        {k >= 2 || p > 0.6 ? <LabelSvg x={95} y={160} w={110} teks="1/2 > 1/4" ukuran={13} warna={HIJAU} /> : null}
       </>
     );
   }
