@@ -168,10 +168,23 @@ for (const v of [M, U]) for (const a of v.adegan) for (const [i, kt] of a.ketuka
   for (const m of [...METODE, ...NAMA_ID]) cek(luar.includes(m), `video metode luar memuat ${m}`);
   sama(U1.NAMA_METODE, METODE, "nama metode di berkas luar-1");
   sama(U1.NAMA_METODE_ID, NAMA_ID, "nama Indonesia metode luar");
-  cek(M.adegan.every((a) => /(Buku Siswa|Panduan Guru) hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
+  cek(M.adegan.every((a) => /^Materi: /.test(a.sumber)), "video materi: tiap adegan berlabel pelajaran netral (Materi: ...)");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
   cek(U.adegan.every((a) => a.sumber.length <= 46), "video metode luar: label sumber cukup pendek untuk kanvas 300 lebar");
-  cek(M.adegan.every((a) => a.sumber.length <= 52), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
+  cek(M.adegan.every((a) => a.sumber.length <= 46), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
+  cek(M.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: tanpa nomor halaman, buku, atau angka dari buku");
+  // Video bergaya guru: tidak ada rujukan sumber buku pada yang diputar (suara, teks terlihat, label sumber, judul adegan, judul dan subjudul video).
+  const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan/i;
+  for (const v of [M, U]) {
+    cek(!TERLARANG.test(v.judul) && !TERLARANG.test(v.subjudul), `${v.id}: judul dan subjudul video tanpa kata sumber buku`);
+    for (const a of v.adegan) {
+      cek(!TERLARANG.test(a.sumber) && !TERLARANG.test(a.judul), `${v.id}/${a.id}: sumber dan judul adegan tanpa kata sumber buku`);
+      a.ketukan.forEach((kt, i) => {
+        cek(!TERLARANG.test(kt.suara), `${v.id}/${a.id}#${i + 1}: suara tanpa kata sumber buku`);
+        cek(!TERLARANG.test(L.teksTerlihat(L.keadaanStory(a, i, 9999))), `${v.id}/${a.id}#${i + 1}: teks terlihat tanpa kata sumber buku`);
+      });
+    }
+  }
   for (const kata of ["Peta konsep", "Kata kunci", "Apersepsi", "Ayo Berlatih", "Ayo Berpikir", "Miskonsepsi", "Diferensiasi", "Refleksi", "Subbab", "Tujuan pembelajaran", "Panduan guru", "Aktivitas"]) cek(!new RegExp(kata, "i").test(luar), `video metode luar tidak memuat "${kata}" milik materi`);
   cek(U.adegan.map((a) => a.id).join() === "luar-pembuka,luar-bagi-rata,luar-bagi-rata-terapan,luar-bagi-ukur,luar-bagi-ukur-terapan,luar-kali-balik,luar-kali-balik-terapan,luar-kurang-ulang,luar-kurang-ulang-terapan,luar-ringkas", "urutan adegan metode luar: pembuka, empat metode (konsep dan penerapan), ringkasan");
   cek(M.adegan.map((a) => a.id).join() === "pembuka-h,pemantik,aktivitas-lima,tabel-wadah,susun-istilah,susun-langkah,berlatih-satu,cerita-bagi,cerita-kotak,miskonsepsi", "urutan adegan materi");
@@ -383,7 +396,7 @@ sama([...G.ANAK], ["Andi", "Azizah", "Drio", "Candra"], "empat anak Pak Wicak");
   const dariBuku = nilaiId(pt, "pt1-t0").match(/\d+/g).map(Number);
   const tambahan = nilaiId(pt, "pt2-t0").match(/\d+/g).map(Number);
   sama([...dariBuku, ...tambahan].sort((a, b) => a - b), semuaPembagi, "temuan: pembagi buku dan tambahan video = semua pembagi 48");
-  sama(nilaiId(pt, "pt3-t0"), "10 pembagi, buku menyebut 5", "temuan: buku menyebut 5 dari 10 pembagi");
+  sama(nilaiId(pt, "pt3-t0"), "semuanya ada 10 pembagi", "pembagi 48 seluruhnya ada sepuluh");
   // Soal cerita: orang dan benda.
   const cb = T(M, "cerita-bagi", 1);
   sama([0, 1, 2].filter((i) => objAda(cb, `tg${i}`)).length + (objAda(cb, "pb") ? 1 : 0), 4, "soal b: 3 tetangga + Pak Bejo = 4 pihak");

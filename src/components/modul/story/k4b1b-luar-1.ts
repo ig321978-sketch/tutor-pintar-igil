@@ -11,15 +11,15 @@ const IKON_METODE = ["🔢", "🧱", "➕", "🔵"];
 const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana kita menentukan nilai setiap angka pada sebuah bilangan, misalnya angka dua pada dua ribu seratus lima puluh? Guru di berbagai negara punya cara berbeda. Video ini memperlihatkan empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana kita menentukan nilai setiap angka pada sebuah bilangan, misalnya angka dua pada dua ribu seratus lima puluh? Guru di berbagai negara punya cara berbeda. Kita akan melihat empat metode dari luar, dengan angka-angka yang tadi kita pakai.";
 const SUARA_O2 = "Empat metode itu: Place Value, Dienes Trade, Expanded Form, dan Place Value Disks.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Nilai Tempat, Tukar Sepuluh, Bentuk Uraian, dan Cakram Nilai Tempat. Metode keempat adalah tambahan yang cocok dengan angka di buku.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Nilai Tempat, Tukar Sepuluh, Bentuk Uraian, dan Cakram Nilai Tempat. Metode keempat adalah tambahan yang cocok dengan angka-angka kita.";
 const SUARA_O4 = "Semuanya menjawab satu pertanyaan: setiap angka bernilai berapa? Dengan mengalikan angka dan nilai tempatnya, menukar sepuluh dengan satu, menguraikan menjadi penjumlahan, dan menghitung cakram pada papan.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk nilai tempat",
-  sumber: "Metode luar: pembuka; BS hlm. 12–15",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -109,14 +109,14 @@ export const ADEGAN_LUAR_NILAI: AdeganStory = {
 /* ------------------------------ 3. Place Value: penerapan ------------------------------ */
 const SUARA_NT1 = "Terapkan pada struk: dua ribu seratus lima puluh. Angka dua di ribuan bernilai dua kali seribu, yaitu dua ribu. Angka satu di ratusan bernilai satu kali seratus, yaitu seratus.";
 const SUARA_NT2 = "Angka lima di puluhan bernilai lima kali sepuluh, yaitu lima puluh. Angka nol di satuan bernilai nol kali satu, yaitu nol.";
-const SUARA_NT3 = "Nomor dua di buku: empat ribu enam ratus tujuh puluh lima. Angka enam di ratusan, jadi bernilai enam kali seratus, yaitu enam ratus.";
+const SUARA_NT3 = "Sekarang bilangan lain: empat ribu enam ratus tujuh puluh lima. Angka enam di ratusan, jadi bernilai enam kali seratus, yaitu enam ratus.";
 const SUARA_NT4 = "Delapan ribu empat ratus enam puluh tiga: angka enam di puluhan, jadi bernilai enam kali sepuluh, yaitu enam puluh.";
 const SUARA_NT5 = "Dua bilangan lain: enam ribu tujuh ratus delapan puluh sembilan, angka enam di ribuan, bernilai enam ribu. Seribu dua ratus tiga puluh enam, angka enam di satuan, bernilai enam.";
 
 export const ADEGAN_LUAR_NILAI_TERAPAN: AdeganStory = {
   id: "luar-nilai-terapan",
-  judul: "Place Value pada angka-angka buku",
-  sumber: "Metode luar: Place Value (angka buku)",
+  judul: "Place Value pada angka-angka kita",
+  sumber: "Metode luar: Place Value (penerapan)",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -225,8 +225,8 @@ const SUARA_DT4 = "Untuk sembilan ribu lima ratus: ada sembilan puluh lima lempe
 
 export const ADEGAN_LUAR_TUKAR_TERAPAN: AdeganStory = {
   id: "luar-tukar-terapan",
-  judul: "Dienes Trade pada angka-angka buku",
-  sumber: "Metode luar: Dienes Trade (angka buku)",
+  judul: "Dienes Trade pada angka-angka kita",
+  sumber: "Metode luar: Dienes Trade (penerapan)",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -316,12 +316,12 @@ export const ADEGAN_LUAR_CAKRAM: AdeganStory = {
 const SUARA_CT1 = "Letakkan cakram untuk dua ribu seratus lima puluh: dua cakram seribu, satu cakram seratus, lima cakram sepuluh, dan kolom satuan kosong. Totalnya delapan cakram.";
 const SUARA_CT2 = "Periksa dengan menjumlah nilai cakram: seribu ditambah seribu ditambah seratus, lalu lima kali sepuluh. Jumlahnya dua ribu seratus lima puluh.";
 const SUARA_CT3 = "Untuk tujuh ribu tiga ratus lima puluh perlu lima belas cakram, dan untuk sembilan ribu lima ratus perlu empat belas cakram.";
-const SUARA_CT4 = "Terakhir nomor dua: pada delapan ribu empat ratus enam puluh tiga, ada enam cakram sepuluh, jadi bernilai enam puluh. Pada empat ribu enam ratus tujuh puluh lima, ada enam cakram seratus, jadi bernilai enam ratus.";
+const SUARA_CT4 = "Terakhir: pada delapan ribu empat ratus enam puluh tiga, ada enam cakram sepuluh, jadi bernilai enam puluh. Pada empat ribu enam ratus tujuh puluh lima, ada enam cakram seratus, jadi bernilai enam ratus.";
 
 export const ADEGAN_LUAR_CAKRAM_TERAPAN: AdeganStory = {
   id: "luar-cakram-terapan",
-  judul: "Place Value Disks pada angka-angka buku",
-  sumber: "Metode luar: Place Value Disks (angka buku)",
+  judul: "Place Value Disks pada angka-angka kita",
+  sumber: "Metode luar: Place Value Disks (penerapan)",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -353,7 +353,7 @@ export const ADEGAN_LUAR_CAKRAM_TERAPAN: AdeganStory = {
     k(
       SUARA_CT4,
       bersih(0),
-      tambah(0, judul("Angka 6 pada nomor dua")),
+      tambah(0, judul("Angka 6 pada dua bilangan")),
       tambah(0, ...kartu("hd", 6, 26, 288, 24, W.pink, ["Place Value Disks · Cakram Nilai Tempat"], 8.8)),
       tambah("delapan", ...kartu("s1", 14, 64, 272, 46, W.hijauMuda, ["8.463: 6 cakram sepuluh", "6 × 10 = 60"], 9.4)),
       tambah(idx(SUARA_CT4, "Pada", 2), ...kartu("s2", 14, 122, 272, 46, W.langit, ["4.675: 6 cakram seratus", "6 × 100 = 600"], 9.4)),

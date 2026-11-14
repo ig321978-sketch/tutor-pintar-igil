@@ -8,7 +8,7 @@ const ambil = (objs: Obj[], re: RegExp): Obj[] => objs.filter((o) => re.test(o.i
 
 /* ------------------------------ 6. Inverse of Multiply: konsep ------------------------------ */
 const SUARA_T1 = "Metode ketiga, Inverse of Multiply, atau Kebalikan Kali. Pembagian adalah kebalikan perkalian, jadi soal bagi dijawab dengan mencari pasangan kalinya.";
-const SUARA_T2 = "Ambil tiga bilangan dari buku: empat, dua belas, dan empat puluh delapan. Mereka satu keluarga fakta.";
+const SUARA_T2 = "Ambil tiga bilangan: empat, dua belas, dan empat puluh delapan. Mereka satu keluarga fakta.";
 const SUARA_T3 = "Dari keluarga ini lahir empat kalimat: empat dikali dua belas, dua belas dikali empat, empat puluh delapan dibagi empat, dan empat puluh delapan dibagi dua belas.";
 const SUARA_T4 = "Jadi untuk empat puluh delapan dibagi empat, tanyakan: berapa dikali empat sama dengan empat puluh delapan? Jawabannya dua belas.";
 
@@ -61,10 +61,10 @@ export const ADEGAN_LUAR_KALI_BALIK: AdeganStory = {
 };
 
 /* ------------------------------ 7. Inverse of Multiply: penerapan (memeriksa kunci) ------------------------------ */
-const SUARA_U1 = "Gunakan Kebalikan Kali untuk memeriksa kunci buku. Soal c: sembilan puluh enam dibagi enam hasilnya enam belas, dan enam belas dikali enam memang sembilan puluh enam.";
+const SUARA_U1 = "Gunakan Kebalikan Kali untuk memeriksa hasil pembagian. Soal c: sembilan puluh enam dibagi enam hasilnya enam belas, dan enam belas dikali enam memang sembilan puluh enam.";
 const SUARA_U2 = "Soal d: tujuh puluh dua dibagi tiga hasilnya dua puluh empat, sebab dua puluh empat dikali tiga adalah tujuh puluh dua.";
 const SUARA_U3 = "Soal e: tujuh puluh lima dibagi lima hasilnya lima belas, sebab lima belas dikali lima adalah tujuh puluh lima. Soal cerita b: enam belas dikali empat adalah enam puluh empat.";
-const SUARA_U4 = "Semua kunci lolos pemeriksaan. Kali balik bukan hanya cara menghitung, tetapi juga cara memeriksa pembagian.";
+const SUARA_U4 = "Semua hasil lolos pemeriksaan. Kali balik bukan hanya cara menghitung, tetapi juga cara memeriksa pembagian.";
 
 const KOL_U = [46, 74, 50, 110];
 const BARIS_U: [string, string, string, string][] = [
@@ -76,13 +76,13 @@ const BARIS_U: [string, string, string, string][] = [
 
 export const ADEGAN_LUAR_KALI_BALIK_TERAPAN: AdeganStory = {
   id: "luar-kali-balik-terapan",
-  judul: "Inverse of Multiply: memeriksa kunci buku dengan perkalian",
+  judul: "Inverse of Multiply: memeriksa hasil dengan perkalian",
   sumber: "Metode luar: Inverse of Multiply",
   latar: "#FEFCE8",
   ketukan: [
     k(
       SUARA_U1,
-      tambah(0, judul("Periksa kunci dengan kali")),
+      tambah(0, judul("Periksa hasil dengan kali")),
       tambah("Gunakan", kepala(2)),
       tambah("Gunakan", ...barisTabel("uh", 10, 56, KOL_U, ["soal", "bagi", "hasil", "cek kali"], 20, 8.4, true)),
       tambah("Soal", ...barisTabel("ur0", 10, 76, KOL_U, BARIS_U[0], 22, 9)),
@@ -104,7 +104,7 @@ export const ADEGAN_LUAR_KALI_BALIK_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 8. Repeated Subtraction: konsep ------------------------------ */
 const SUARA_V1 = "Metode keempat, Repeated Subtraction, atau Pengurangan Berulang. Kurangi bilangan yang dibagi dengan pembagi, ulangi sampai habis, lalu hitung berapa kali mengurangi.";
-const SUARA_V2 = "Contoh dari buku: sepuluh kelereng dibagi lima. Sepuluh dikurangi lima sisa lima, dikurangi lima lagi sisa nol.";
+const SUARA_V2 = "Contoh: sepuluh kelereng dibagi lima. Sepuluh dikurangi lima sisa lima, dikurangi lima lagi sisa nol.";
 const SUARA_V3 = "Mengurangi dua kali sampai habis, jadi sepuluh dibagi lima sama dengan dua.";
 const SUARA_V4 = "Kalau tidak habis: sepuluh dikurangi tiga, tiga kali, menyisakan satu. Hasil bagi tiga, sisa satu.";
 
@@ -128,7 +128,7 @@ export const ADEGAN_LUAR_KURANG_ULANG: AdeganStory = {
     k(
       SUARA_V2,
       bersih(0),
-      tambah(0, judul("Contoh buku: 10 dibagi 5")),
+      tambah(0, judul("Contoh: 10 dibagi 5")),
       tambah(0, kepala(3)),
       tambah("Contoh", teks("vq", 150, 80, "10 : 5 = ?", 16, W.biru)),
       tambah("Sepuluh@2", ...ambil(RC, /^rc-k0(-|$)/)),
@@ -145,7 +145,7 @@ export const ADEGAN_LUAR_KURANG_ULANG: AdeganStory = {
     k(
       SUARA_V4,
       bersih(0),
-      tambah(0, judul("Bila tidak habis: tambahan video")),
+      tambah(0, judul("Bila tidak habis: ada sisa")),
       tambah(0, kepala(3)),
       tambah("Kalau", ...RS.filter((o) => /^rs-k0(-|$)/.test(o.id))),
       tambah("dikurangi", ...RS.filter((o) => /^rs-(p0|l0|k1)(-|$)/.test(o.id))),
@@ -168,7 +168,7 @@ const RK = rantai("rk", 5, 96, 50, 30, [81, 51, 21, 0], ["− 30", "− 30", "�
 
 export const ADEGAN_LUAR_KURANG_ULANG_TERAPAN: AdeganStory = {
   id: "luar-kurang-ulang-terapan",
-  judul: "Repeated Subtraction pada soal buku: 48, 96, dan 81",
+  judul: "Repeated Subtraction pada soal 48, 96, dan 81",
   sumber: "Metode luar: Repeated Subtraction",
   latar: "#FFF1F2",
   ketukan: [
@@ -209,7 +209,7 @@ export const ADEGAN_LUAR_KURANG_ULANG_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 10. Ringkasan empat metode ------------------------------ */
 const SUARA_X1 = "Ringkasan empat metode. Bagi Rata mencari isi tiap kelompok, Bagi Ukur mencari banyak kelompok, Kebalikan Kali mencari pasangan kali, Pengurangan Berulang menghitung banyak pengurangan.";
-const SUARA_X2 = "Keempatnya memberi jawaban yang sama. Ambil soal d, sembilan puluh enam telur dengan delapan telur per kotak: semua metode berujung pada dua belas, cocok dengan kunci buku.";
+const SUARA_X2 = "Keempatnya memberi jawaban yang sama. Ambil soal d, sembilan puluh enam telur dengan delapan telur per kotak: semua metode berujung pada dua belas.";
 const SUARA_X3 = "Pilih cara yang masuk akal: berbagi kepada orang cocok dengan Bagi Rata, berapa kotak cocok dengan Bagi Ukur, memeriksa jawaban cocok dengan Kebalikan Kali, dan menghitung langkah cocok dengan Pengurangan Berulang.";
 
 const KOL_X = [100, 110, 70];
@@ -230,13 +230,13 @@ const ISI_X: [string, string][] = [
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan: empat metode, satu hasil",
-  sumber: "Ringkasan metode luar; angka dari buku",
+  sumber: "Ringkasan empat metode luar",
   latar: "#F5F3FF",
   ketukan: [
     k(
       SUARA_X1,
       tambah(0, judul("Ringkasan empat metode")),
-      tambah("Ringkasan", ...barisTabel("xh", 10, 34, KOL_X, ["metode", "yang dicari", "contoh buku"], 22, 8.4, true)),
+      tambah("Ringkasan", ...barisTabel("xh", 10, 34, KOL_X, ["metode", "yang dicari", "contoh soal"], 22, 8.4, true)),
       ...BARIS_X.map((b, i) => tambah(idx(SUARA_X1, ["Rata", "Ukur", "Kebalikan", "Pengurangan"][i]), ...barisTabel(`xr${i}`, 10, 56 + i * 26, KOL_X, b, 26, 8.4))),
     ),
     k(

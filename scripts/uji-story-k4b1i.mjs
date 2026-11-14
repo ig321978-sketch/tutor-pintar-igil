@@ -238,9 +238,21 @@ const seluruhTeks = (v) => v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map
   const luar = teksVideo(U);
   cek(!NAMA_METODE.test(materi) && !KATA_METODE.test(materi), "video materi tidak memuat nama metode luar");
   for (const m of ["Factor Pairs", "Pasangan Faktor", "Skip Counting Multiples", "Kelipatan Lompat Hitung", "Divisibility", "Keterbagian", "Sieve of Eratosthenes", "Saringan Eratosthenes"]) cek(luar.includes(m), `video metode luar memuat ${m}`);
-  cek(M.adegan.every((a) => /(Buku Siswa|Panduan Guru) hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
-  cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Sub-Bab I", "Ayo Mengamati", "Ayo Mencoba", "Ayo Berlatih", "Uji Kompetensi", "Pengayaan", "Refleksi", "orang tua", "Panduan Guru", "Rubrik", "remedial", "Diferensiasi", "Miskonsepsi", "faktor", "kelipatan"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat "${kata}"`);
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber)), "video materi: tiap adegan berlabel pelajaran netral (Materi: ...)");
+  cek(U.adegan.every((a) => /^Metode luar: /.test(a.sumber)), "video metode luar: tiap adegan berlabel Metode luar: ...");
+  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
+  // Kata terlarang (sumber buku) tidak boleh terdengar atau terlihat pada adegan yang diputar.
+  const TERLARANG = /\bbuku\b|panduan guru|\bhlm\b|halaman|\bkunci\b|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan/i;
+  const NOMOR_SOAL = /\bsoal (nomor|no\b|\d|satu\b|dua\b|tiga\b|empat\b|lima\b|enam\b|tujuh\b|delapan\b|sembilan\b|sepuluh\b|sebelas\b)|\bnomor\b|\bUji Kompetensi\b|\bAyo (Berlatih|Mencoba|Mengamati)\b/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(v.judul) && !TERLARANG.test(v.subjudul), `${v.id}: judul dan subjudul tanpa kata sumber buku`);
+    for (const a of v.adegan) {
+      const semua = JSON.stringify([a.judul, a.sumber, a.ketukan.map((kt, i) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, i, 9999))])]);
+      cek(!TERLARANG.test(semua), `${v.id}/${a.id}: tanpa kata sumber buku (${semua.match(TERLARANG)?.[0]})`);
+      cek(!NOMOR_SOAL.test(semua), `${v.id}/${a.id}: tanpa rujukan soal bernomor atau nama bagian buku (${semua.match(NOMOR_SOAL)?.[0]})`);
+    }
+  }
+  for (const kata of ["Sub-Bab I", "Pengayaan", "Refleksi", "orang tua", "Panduan Guru", "Rubrik", "remedial", "Diferensiasi", "Miskonsepsi", "faktor", "kelipatan"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-fp", "luar-fp-terapan", "luar-sk", "luar-sk-terapan", "luar-dv", "luar-dv-terapan", "luar-sv", "luar-sv-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
   cek(M_VIDEO.adegan.length === 16 && U.adegan.length === 10, "16 adegan materi dan 10 adegan metode luar");

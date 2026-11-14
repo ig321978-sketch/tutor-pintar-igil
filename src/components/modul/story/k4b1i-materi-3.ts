@@ -118,8 +118,8 @@ const D_MANGGA = deret("kb", 6, 90, ["570", "1.140", "1.710", "2.280", "2.850", 
 const B_MANGGA = busurSemua("kb", 6, 90, ["+570", "+570", "+570", "+570", "+570", "+570"], { ...BB, tinggi: 10 });
 export const ADEGAN_PENGAYAAN_1: AdeganStory = {
   id: "pengayaan-1",
-  judul: "Remedial dan Pengayaan 1 sampai 3",
-  sumber: "Panduan Guru hlm. 83–85",
+  judul: "Remedial dan pengayaan: tantangan 1 sampai 3",
+  sumber: "Materi: tantangan 1 sampai 3",
   latar: "#F0FDF4",
   kutipan: [
     "Panduan untuk Remedial",
@@ -135,25 +135,25 @@ export const ADEGAN_PENGAYAAN_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Murid yang pemahamannya kurang menjalani remedial: contoh lain lewat tugas rumah berupa data di sekitar rumah. Murid yang cukup paham lanjut ke pengayaan, lima soal.",
+      "Bagi yang masih kesulitan, ada remedial: contoh lain lewat tugas rumah berupa data di sekitar rumah. Bagi yang sudah paham, lanjut ke pengayaan, lima soal.",
       ...daftar("rm", "Remedial dan pengayaan", [
         { at: "remedial", t: "remedial: contoh lain, data di sekitar rumah", w: W.merahMuda, u: 8.8 },
         { at: "pengayaan.", t: "pengayaan: soal operasi bilangan cacah", w: W.hijauMuda, u: 9 },
       ]),
     ),
     k(
-      "Pengayaan satu: truk mengangkut lima ratus tujuh puluh mangga tiap hari. Seminggu tujuh hari: lima ratus tujuh puluh kali tujuh sama dengan tiga ribu sembilan ratus sembilan puluh.",
+      "Tantangan satu: truk mengangkut lima ratus tujuh puluh mangga tiap hari. Seminggu tujuh hari: lima ratus tujuh puluh kali tujuh sama dengan tiga ribu sembilan ratus sembilan puluh.",
       bersih(0),
-      tambah(0, judul("Pengayaan 1: mangga seminggu")),
+      tambah(0, judul("Tantangan 1: mangga seminggu")),
       tambah("mengangkut", ...kartu("p1a", 20, 34, 260, 26, W.krem, ["570 mangga tiap hari"], 9.6)),
       tambah("Seminggu", ...[0, 1, 2, 3, 4, 5, 6].flatMap((i) => suku(D_MANGGA, i))),
       tambah("Seminggu", ...B_MANGGA.flat()),
       tambah("sama", ...kartu("p1b", 20, 130, 260, 30, W.hijauMuda, ["570 × 7 = 3.990"], 11)),
     ),
     k(
-      "Pengayaan dua: penjual jus butuh tiga ratus empat puluh kilogram mangga, dua ratus tiga puluh lima apel, dan seratus lima puluh melon. Jumlahnya tujuh ratus dua puluh lima kilogram.",
+      "Tantangan dua: penjual jus butuh tiga ratus empat puluh kilogram mangga, dua ratus tiga puluh lima apel, dan seratus lima puluh melon. Jumlahnya tujuh ratus dua puluh lima kilogram.",
       bersih(0),
-      tambah(0, judul("Pengayaan 2: buah penjual jus")),
+      tambah(0, judul("Tantangan 2: buah penjual jus")),
       tambah("mangga,", emo("p2a", 60, 62, "🥭", 28)),
       tambah("apel,", emo("p2b", 150, 62, "🍎", 28)),
       tambah("melon.", emo("p2c", 240, 62, "🍈", 28)),
@@ -162,9 +162,9 @@ export const ADEGAN_PENGAYAAN_1: AdeganStory = {
       tambah("kilogram.", ...kartu("p2f", 20, 154, 260, 28, W.hijauMuda, ["jumlah buah 725 kg"], 10.4)),
     ),
     k(
-      "Pengayaan tiga: satu dus berisi dua belas pak, tiap pak delapan pensil. Sepuluh kali delapan delapan puluh, dua kali delapan enam belas, jumlahnya sembilan puluh enam.",
+      "Tantangan tiga: satu dus berisi dua belas pak, tiap pak delapan pensil. Sepuluh kali delapan delapan puluh, dua kali delapan enam belas, jumlahnya sembilan puluh enam.",
       bersih(0),
-      tambah(0, judul("Pengayaan 3: pensil satu dus")),
+      tambah(0, judul("Tantangan 3: pensil satu dus")),
       tambah("dus", ...kartu("p3a", 20, 34, 260, 28, W.krem, ["12 pak × 8 pensil tiap pak"], 10)),
       tambah("sepuluh", ...kartu("p3b", 20, 74, 260, 28, W.langit, ["10 × 8 = 80"], 10.4)),
       tambah("dua@2", ...kartu("p3c", 20, 108, 260, 28, W.langit, ["2 × 8 = 16"], 10.4)),
@@ -176,8 +176,8 @@ export const ADEGAN_PENGAYAAN_1: AdeganStory = {
 /* ------------------------------ 18. Pengayaan 4-5 (Panduan Guru hlm. 83-87) ------------------------------ */
 export const ADEGAN_PENGAYAAN_2: AdeganStory = {
   id: "pengayaan-2",
-  judul: "Pengayaan 4 dan 5",
-  sumber: "Panduan Guru hlm. 83–87",
+  judul: "Pengayaan: tantangan 4 dan 5",
+  sumber: "Materi: tantangan 4 dan 5",
   latar: "#FEFCE8",
   kutipan: [
     "terdapat 59 buah apel yang busuk dan 97 buah apel yang cacat",
@@ -190,9 +190,9 @@ export const ADEGAN_PENGAYAAN_2: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Pengayaan empat: dari tujuh ratus delapan puluh lima apel, lima puluh sembilan busuk dan sembilan puluh tujuh cacat. Dikurangi bertahap: tujuh ratus dua puluh enam, lalu enam ratus dua puluh sembilan apel bagus.",
+      "Tantangan empat: dari tujuh ratus delapan puluh lima apel, lima puluh sembilan busuk dan sembilan puluh tujuh cacat. Dikurangi bertahap: tujuh ratus dua puluh enam, lalu enam ratus dua puluh sembilan apel bagus.",
       bersih(0),
-      tambah(0, judul("Pengayaan 4: apel petani")),
+      tambah(0, judul("Tantangan 4: apel petani")),
       tambah(2, emo("p4e", 40, 62, "🍎", 26)),
       tambah("tujuh", ...kartu("p4a", 80, 34, 200, 26, W.krem, ["785 apel dipanen"], 9.6)),
       tambah("busuk", ...kartu("p4b", 20, 74, 260, 28, W.merahMuda, ["785 − 59 = 726"], 11)),
@@ -200,18 +200,18 @@ export const ADEGAN_PENGAYAAN_2: AdeganStory = {
       tambah("bagus.", ...kartu("p4d", 20, 148, 260, 28, W.hijauMuda, ["apel bagus: 629"], 10.4)),
     ),
     k(
-      "Pengayaan lima, kelas empat memiliki empat puluh delapan siswa. Soal membentuk kelompok delapan siswa, jadi enam kelompok. Kunci memakai empat siswa, jadi dua belas kelompok.",
+      "Tantangan lima, kelas empat memiliki empat puluh delapan siswa. Jika tiap kelompok delapan siswa, jadi enam kelompok. Jika tiap kelompok empat siswa, jadi dua belas kelompok.",
       bersih(0),
-      tambah(0, judul("Pengayaan 5a: kelompok belajar")),
+      tambah(0, judul("Tantangan 5: kelompok belajar")),
       tambah("memiliki", ...kartu("p5a", 20, 34, 260, 26, W.krem, ["48 siswa di kelas IV"], 9.6)),
-      tambah("Soal", ...kartu("p5b", 20, 72, 260, 30, W.hijauMuda, ["soal: 8 siswa, 48 : 8 = 6 kelompok"], 9.6)),
-      tambah("Kunci", ...kartu("p5c", 20, 114, 260, 30, W.merahMuda, ["kunci: 4 siswa, 48 : 4 = 12 kelompok"], 9.2)),
-      tambah("jadi@2", ...kartu("p5d", 20, 156, 260, 28, W.krem, ["soal dan kunci tidak cocok"], 9.6)),
+      tambah("Jika", ...kartu("p5b", 20, 72, 260, 30, W.hijauMuda, ["tiap kelompok 8 siswa: 48 : 8 = 6"], 9.6)),
+      tambah("Jika@2", ...kartu("p5c", 20, 114, 260, 30, W.langit, ["tiap kelompok 4 siswa: 48 : 4 = 12"], 9.2)),
+      tambah("jadi@2", ...kartu("p5d", 20, 156, 260, 28, W.krem, ["kelompok lebih kecil, lebih banyak kelompok"], 9.6)),
     ),
     k(
-      "Soal lima b: sembilan puluh enam lembar dibagi rata kepada empat puluh delapan siswa, jadi dua lembar tiap siswa, cocok dengan kunci.",
+      "Tantangan lain: sembilan puluh enam lembar dibagi rata kepada empat puluh delapan siswa, jadi dua lembar tiap siswa.",
       bersih(0),
-      tambah(0, judul("Pengayaan 5b: kertas")),
+      tambah(0, judul("Tantangan 5b: kertas")),
       tambah("lembar", ...kartu("p5e", 20, 40, 260, 30, W.krem, ["96 lembar kertas, 48 siswa"], 10)),
       tambah("dibagi", ...kartu("p5f", 20, 86, 260, 32, W.hijauMuda, ["96 : 48 = 2"], 11)),
       tambah("dua", ...kartu("p5g", 20, 134, 260, 30, W.pink, ["tiap siswa 2 lembar"], 10)),

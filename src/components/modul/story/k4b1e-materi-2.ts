@@ -1,17 +1,17 @@
 import type { AdeganStory } from "./logika-story";
 import { CONTOH, JAWAB_EMPAT_KANAN, LATIHAN_DUA, LATIHAN_EMPAT, W, angkaSel, barisTabel, bil, emo, garis, judul, kartu, kotak, ln, simpanSel, susunAwal, susunLangkah, teks } from "./k4b1e-gambar";
-import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1e-bantu";
+import { bersih, hapus, idx, k, tambah, ubah } from "./k4b1e-bantu";
 
 /* ------------------------------ 7. Panduan Guru: Ayo Mengamati (Panduan Guru hlm. 50) ------------------------------ */
-const SUARA_G1 = "Panduan guru untuk Ayo Mengamati: guru meminta peserta didik memperhatikan masalah dan penyelesaiannya pada percakapan. Untuk cara susun panjang, guru sebaiknya mengulang dengan menuliskannya di papan tulis.";
-const SUARA_G2 = "Untuk cara susun pendek, guru mengingatkan kembali materi nilai tempat. Melalui diskusi, guru dapat memberikan contoh yang lain.";
-const SUARA_G3 = "Untuk susun panjang dengan menyimpan, guru mengingatkan kembali materi dekomposisi bilangan. Langkahnya dapat dijelaskan dengan contoh yang lain.";
-const SUARA_G4 = "Untuk susun pendek dengan menyimpan, guru mengingatkan kembali nilai tempat. Contoh lain dalam video: dua ratus sembilan belas ditambah seratus tujuh belas sama dengan tiga ratus tiga puluh enam.";
+const SUARA_G1 = "Sekarang kita ulang cara-cara tadi. Perhatikan masalah dan penyelesaiannya pada percakapan tadi. Untuk cara susun panjang, kita tulis ulang di papan tulis.";
+const SUARA_G2 = "Untuk cara susun pendek, kita ingat kembali nilai tempat. Lewat diskusi, kita coba contoh yang lain.";
+const SUARA_G3 = "Untuk susun panjang dengan menyimpan, kita ingat kembali dekomposisi bilangan. Langkahnya kita jelaskan dengan contoh yang lain.";
+const SUARA_G4 = "Untuk susun pendek dengan menyimpan, kita ingat kembali nilai tempat. Contoh lain: dua ratus sembilan belas ditambah seratus tujuh belas sama dengan tiga ratus tiga puluh enam.";
 
 export const ADEGAN_PANDUAN_AMATI: AdeganStory = {
   id: "panduan-amati",
-  judul: "Panduan Guru untuk Ayo Mengamati",
-  sumber: "Panduan Guru hlm. 50",
+  judul: "Mengulang empat cara",
+  sumber: "Materi: mengulang empat cara",
   latar: "#F5F3FF",
   kutipan: [
     "Aktivitas Pembelajaran",
@@ -29,41 +29,41 @@ export const ADEGAN_PANDUAN_AMATI: AdeganStory = {
   ketukan: [
     k(
       SUARA_G1,
-      tambah(0, judul("Panduan guru: Ayo Mengamati")),
-      tambah("Untuk", ...barisTabel("pg0", 10, 32, [100, 180], ["cara", "yang dilakukan guru"], 24, 8.6, true)),
-      tambah("memperhatikan", ...kartu("pgc", 10, 164, 280, 30, W.krem, ["murid memperhatikan masalah dan penyelesaian", "pada percakapan di buku"], 8.2)),
-      tambah(idx(SUARA_G1, "susun"), ...barisTabel("pg1", 10, 56, [100, 180], ["susun panjang", "ulang di papan tulis"], 24, 8.6)),
+      tambah(0, judul("Mengulang empat cara")),
+      tambah("Untuk", ...barisTabel("pg0", 10, 32, [100, 180], ["cara", "yang kita lakukan"], 24, 8.6, true)),
+      tambah("Perhatikan", ...kartu("pgc", 10, 164, 280, 30, W.krem, ["kita perhatikan masalah dan penyelesaian", "pada percakapan tadi"], 8.2)),
+      tambah(idx(SUARA_G1, "susun"), ...barisTabel("pg1", 10, 56, [100, 180], ["susun panjang", "tulis ulang di papan tulis"], 24, 8.6)),
     ),
     k(
       SUARA_G2,
-      tambah("pendek,", ...barisTabel("pg2", 10, 80, [100, 180], ["susun pendek", "ingatkan nilai tempat + diskusi"], 24, 8.6)),
+      tambah("pendek,", ...barisTabel("pg2", 10, 80, [100, 180], ["susun pendek", "ingat nilai tempat, diskusi"], 24, 8.6)),
     ),
     k(
       SUARA_G3,
-      tambah("panjang", ...barisTabel("pg3", 10, 104, [100, 180], ["panjang + simpan", "ingatkan dekomposisi + contoh lain"], 24, 8.6)),
+      tambah("panjang", ...barisTabel("pg3", 10, 104, [100, 180], ["panjang + simpan", "ingat dekomposisi, contoh lain"], 24, 8.6)),
     ),
     k(
       SUARA_G4,
       hapus(0, "pgc-k", "pgc-t0", "pgc-t1"),
-      tambah("pendek", ...barisTabel("pg4", 10, 128, [100, 180], ["pendek + simpan", "ingatkan nilai tempat + contoh lain"], 24, 8.6)),
-      tambah("contoh", ...kartu("pgd", 14, 160, 272, 34, W.emas, ["219 + 117 = 336 (contoh video)", "9 + 7 = 16, simpan 1; 1 + 1 + 1 = 3; 2 + 1 = 3"], 8.4)),
+      tambah("pendek", ...barisTabel("pg4", 10, 128, [100, 180], ["pendek + simpan", "ingat nilai tempat, contoh lain"], 24, 8.6)),
+      tambah("contoh", ...kartu("pgd", 14, 160, 272, 34, W.emas, ["219 + 117 = 336", "9 + 7 = 16, simpan 1; 1 + 1 + 1 = 3; 2 + 1 = 3"], 8.4)),
     ),
   ],
 };
 
 /* ------------------------------ 8. Ayo Berlatih nomor 1 (Buku Siswa hlm. 32; Panduan Guru hlm. 50) ------------------------------ */
-const SUARA_H1 = "Ayo Berlatih nomor satu: gunakan cara susun panjang. Bagian a: tiga ratus tiga puluh tiga ditambah dua ratus lima. Uraikan masing-masing menjadi ratusan, puluhan, dan satuan.";
-const SUARA_H2 = "Jumlahkan tiap nilai tempat: lima ratus ditambah tiga puluh ditambah delapan, sama dengan lima ratus tiga puluh delapan. Kunci Panduan Guru cocok dengan hitungan kita.";
+const SUARA_H1 = "Sekarang giliran kalian berlatih. Gunakan cara susun panjang. Bagian a: tiga ratus tiga puluh tiga ditambah dua ratus lima. Uraikan masing-masing menjadi ratusan, puluhan, dan satuan.";
+const SUARA_H2 = "Jumlahkan tiap nilai tempat: lima ratus ditambah tiga puluh ditambah delapan, sama dengan lima ratus tiga puluh delapan. Mudah, bukan?";
 const SUARA_H3 = "Bagian b: delapan ratus dua belas ditambah seratus enam belas. Uraikan menjadi delapan ratus ditambah sepuluh ditambah dua, dan seratus ditambah sepuluh ditambah enam.";
-const SUARA_H4 = "Jumlahkan: sembilan ratus ditambah dua puluh ditambah delapan, sama dengan sembilan ratus dua puluh delapan. Tetapi kunci Panduan Guru menuliskan sembilan ratus dua puluh dua.";
-const SUARA_H5 = "Periksa satuannya: dua ditambah enam sama dengan delapan, bukan dua. Kunci buku perlu dikoreksi.";
+const SUARA_H4 = "Jumlahkan: sembilan ratus ditambah dua puluh ditambah delapan, sama dengan sembilan ratus dua puluh delapan.";
+const SUARA_H5 = "Periksa satuannya: dua ditambah enam sama dengan delapan. Jadi hasil bagian b adalah sembilan ratus dua puluh delapan.";
 const SUARA_H6 = "Bagian c: lima ratus tujuh puluh enam ditambah seratus empat puluh delapan. Uraikan, lalu kelompokkan: enam ratus ditambah seratus ditambah sepuluh ditambah empat belas.";
-const SUARA_H7 = "Lanjutkan: tujuh ratus ditambah sepuluh ditambah sepuluh ditambah empat, lalu tujuh ratus ditambah dua puluh ditambah empat. Hasilnya tujuh ratus dua puluh empat, sama dengan kunci buku.";
+const SUARA_H7 = "Lanjutkan: tujuh ratus ditambah sepuluh ditambah sepuluh ditambah empat, lalu tujuh ratus ditambah dua puluh ditambah empat. Hasilnya tujuh ratus dua puluh empat.";
 
 export const ADEGAN_BERLATIH_SATU: AdeganStory = {
   id: "berlatih-satu",
-  judul: "Ayo Berlatih nomor 1: susun panjang",
-  sumber: "Buku Siswa hlm. 32; Panduan Guru hlm. 50",
+  judul: "Latihan: susun panjang",
+  sumber: "Materi: latihan susun panjang",
   latar: "#FFF7ED",
   kutipan: [
     "Ayo Berlatih",
@@ -83,7 +83,7 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
   ketukan: [
     k(
       SUARA_H1,
-      tambah(0, judul("Berlatih 1: susun panjang")),
+      tambah(0, judul("Latihan: susun panjang")),
       tambah("Bagian", teks("ha", 12, 52, "a.", 9.6, W.ungu, { anchor: "start" })),
       tambah("tiga", bil("h1", 52, "333", 9.5, { x: 36 }), bil("h2", 66, "205 +", 9.5, { x: 36 })),
       tambah("Uraikan", ln("h3", 52, "= 300 + 30 + 3", 80), ln("h4", 66, "= 200 + 0 + 5 +", 80)),
@@ -92,12 +92,12 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
       SUARA_H2,
       tambah("Jumlahkan", ln("h5", 84, "= 500 + 30 + 8", 80)),
       tambah(idx(SUARA_H2, "sama"), ln("h6", 98, "= 538", 80, 9.6, { warna: W.merah })),
-      tambah("Kunci", ...kartu("hk", 170, 82, 116, 28, W.hijauMuda, ["kunci buku 538: cocok"], 8)),
+      tambah("Mudah,", ...kartu("hk", 170, 82, 116, 28, W.hijauMuda, ["hasil a: 538"], 8)),
     ),
     k(
       SUARA_H3,
       bersih(0),
-      tambah(0, judul("Berlatih 1 bagian b")),
+      tambah(0, judul("Latihan: bagian b")),
       tambah(0, teks("hb", 12, 52, "b.", 9.6, W.ungu, { anchor: "start" }), bil("i1", 52, "812", 9.5, { x: 36 }), bil("i2", 66, "116 +", 9.5, { x: 36 })),
       tambah("Uraikan", ln("i3", 52, "= 800 + 10 + 2", 80), ln("i4", 66, "= 100 + 10 + 6 +", 80)),
     ),
@@ -105,18 +105,16 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
       SUARA_H4,
       tambah("Jumlahkan:", ln("i5", 84, "= 900 + 20 + 8", 80)),
       tambah(idx(SUARA_H4, "sama"), ln("i6", 98, "= 928", 80, 9.6, { warna: W.hijau })),
-      tambah("Tetapi", ...kartu("ik", 170, 82, 116, 32, W.merahMuda, ["kunci buku: 922", "(keliru)"], 8.4)),
     ),
     k(
       SUARA_H5,
       tambah(0, teks("i7", 150, 140, "2 + 6 = 8", 11, W.merah)),
-      tambah("Kunci", ...kartu("im", 40, 154, 220, 34, W.emas, ["catatan guru: kunci benar 928"], 9.4)),
-      sorotkan("Kunci", "ik-k"),
+      tambah("Jadi", ...kartu("im", 40, 154, 220, 34, W.emas, ["hasil bagian b: 928"], 9.4)),
     ),
     k(
       SUARA_H6,
       bersih(0),
-      tambah(0, judul("Berlatih 1 bagian c")),
+      tambah(0, judul("Latihan: bagian c")),
       tambah(0, teks("hc", 12, 50, "c.", 9.6, W.ungu, { anchor: "start" }), bil("j1", 50, "576", 9.5, { x: 36 }), bil("j2", 64, "148 +", 9.5, { x: 36 })),
       tambah("Uraikan,", ln("j3", 50, "= 500 + 70 + 6", 80), ln("j4", 64, "= 100 + 40 + 8 +", 80)),
       tambah("kelompokkan:", ln("j5", 82, "= (500 + 100) + (70 + 40) + (6 + 8)", 36), ln("j6", 98, "= 600 + 100 + 10 + 14", 36)),
@@ -125,7 +123,7 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
       SUARA_H7,
       tambah("Lanjutkan:", ln("j7", 114, "= 700 + 10 + 10 + 4", 36)),
       tambah("lalu", ln("j8", 130, "= 700 + 20 + 4", 36)),
-      tambah("Hasilnya", ln("j9", 146, "= 724", 36, 9.6, { warna: W.merah }), ...kartu("jk", 170, 138, 116, 28, W.hijauMuda, ["kunci buku 724: cocok"], 8)),
+      tambah("Hasilnya", ln("j9", 146, "= 724", 36, 9.6, { warna: W.merah }), ...kartu("jk", 170, 138, 116, 28, W.hijauMuda, ["hasil c: 724"], 8)),
     ),
   ],
 };
@@ -150,7 +148,7 @@ function soalDua(p: string, bilangan: readonly number[], pemicu: { awal: string 
   ];
 }
 
-const SUARA_I1 = "Nomor dua, bagian a: tiga ratus tujuh puluh tiga ditambah dua ratus delapan. Satuan: tiga ditambah delapan jadi sebelas, simpan satu. Puluhan: satu, tujuh, nol, jadi delapan. Ratusan: tiga ditambah dua jadi lima. Hasilnya lima ratus delapan puluh satu.";
+const SUARA_I1 = "Susun pendek. Bagian a: tiga ratus tujuh puluh tiga ditambah dua ratus delapan. Satuan: tiga ditambah delapan jadi sebelas, simpan satu. Puluhan: satu, tujuh, nol, jadi delapan. Ratusan: tiga ditambah dua jadi lima. Hasilnya lima ratus delapan puluh satu.";
 const SUARA_I2 = "Bagian b: dua ratus tujuh puluh tujuh ditambah seratus empat puluh enam. Satuan: tujuh ditambah enam jadi tiga belas. Puluhan: satu, tujuh, empat jadi dua belas. Ratusan: satu, dua, satu jadi empat. Hasilnya empat ratus dua puluh tiga.";
 const SUARA_I3 = "Bagian c: enam ratus dua puluh tujuh ditambah sembilan puluh dua. Satuan: tujuh ditambah dua jadi sembilan. Puluhan: dua ditambah sembilan jadi sebelas, simpan satu. Ratusan: satu ditambah enam jadi tujuh. Hasilnya tujuh ratus sembilan belas.";
 const SUARA_J1 = "Bagian d: dua ratus tiga puluh empat ditambah dua ratus tujuh puluh sembilan ditambah empat ratus empat puluh empat. Satuan: empat, sembilan, empat jadi tujuh belas. Puluhan: satu, tiga, tujuh, empat jadi lima belas. Hasilnya sembilan ratus lima puluh tujuh.";
@@ -162,8 +160,8 @@ const lastIdx = (s: string): number => s.split(/\s+/).filter(Boolean).length - 1
 
 export const ADEGAN_BERLATIH_DUA_SATU: AdeganStory = {
   id: "berlatih-dua-satu",
-  judul: "Ayo Berlatih nomor 2: bagian a sampai c",
-  sumber: "Buku Siswa hlm. 32–33; Panduan Guru hlm. 51",
+  judul: "Latihan susun pendek: bagian a sampai c",
+  sumber: "Materi: latihan susun pendek",
   latar: "#F0F9FF",
   kutipan: [
     "2. Gunakan cara susun pendek untuk penjumlahan berikut!",
@@ -182,8 +180,8 @@ export const ADEGAN_BERLATIH_DUA_SATU: AdeganStory = {
 
 export const ADEGAN_BERLATIH_DUA_DUA: AdeganStory = {
   id: "berlatih-dua-dua",
-  judul: "Ayo Berlatih nomor 2: bagian d sampai f",
-  sumber: "Buku Siswa hlm. 32–33; Panduan Guru hlm. 51",
+  judul: "Latihan susun pendek: bagian d sampai f",
+  sumber: "Materi: latihan susun pendek lanjutan",
   latar: "#F0F9FF",
   kutipan: [
     "d. 234 + 279 + 444 = …..",
@@ -201,10 +199,10 @@ export const ADEGAN_BERLATIH_DUA_DUA: AdeganStory = {
 };
 
 /* ------------------------------ 11. Ayo Berlatih nomor 3 dan 4 (Buku Siswa hlm. 33; Panduan Guru hlm. 52) ------------------------------ */
-const SUARA_K1 = "Nomor tiga: pakai cara yang menurut kalian mudah. Bagian a: tiga ratus tiga puluh tiga ditambah lima ratus sembilan belas sama dengan delapan ratus lima puluh dua. Cocok dengan kunci.";
+const SUARA_K1 = "Sekarang pakai cara yang menurut kalian mudah. Bagian a: tiga ratus tiga puluh tiga ditambah lima ratus sembilan belas sama dengan delapan ratus lima puluh dua. Hasilnya benar.";
 const SUARA_K2 = "Bagian b: empat ratus dua puluh sembilan ditambah sembilan belas sama dengan empat ratus empat puluh delapan. Bagian c: delapan ratus dua puluh satu ditambah sembilan puluh delapan sama dengan sembilan ratus sembilan belas.";
 const SUARA_K3 = "Bagian d: tujuh ratus ditambah seratus tiga puluh sembilan sama dengan delapan ratus tiga puluh sembilan. Bagian e: enam ratus dua puluh satu ditambah tiga puluh tujuh ditambah seratus dua puluh delapan sama dengan tujuh ratus delapan puluh enam.";
-const SUARA_K4 = "Nomor empat: tarik garis ke jawaban yang sesuai. Bagian a: enam ratus dua puluh sembilan ditambah seratus dua puluh tiga, hasilnya tujuh ratus lima puluh dua.";
+const SUARA_K4 = "Sekarang tarik garis ke jawaban yang sesuai. Bagian a: enam ratus dua puluh sembilan ditambah seratus dua puluh tiga, hasilnya tujuh ratus lima puluh dua.";
 const SUARA_K5 = "Bagian b: tiga ratus tujuh puluh tujuh ditambah tiga ratus tiga puluh ditambah dua puluh sembilan, hasilnya tujuh ratus tiga puluh enam. Bagian c: empat ratus dua puluh tiga ditambah tiga ratus sembilan puluh, hasilnya delapan ratus tiga belas.";
 const SUARA_K6 = "Bagian d: tiga puluh sembilan ditambah delapan ratus dua puluh satu, hasilnya delapan ratus enam puluh. Bagian e: enam ratus sembilan puluh ditambah lima puluh enam ditambah dua ratus delapan belas, hasilnya sembilan ratus enam puluh empat.";
 
@@ -228,8 +226,8 @@ const garis4 = (i: number) => {
 
 export const ADEGAN_BERLATIH_TIGA_EMPAT: AdeganStory = {
   id: "berlatih-tiga-empat",
-  judul: "Ayo Berlatih nomor 3 dan 4",
-  sumber: "Buku Siswa hlm. 33; Panduan Guru hlm. 52",
+  judul: "Latihan: pilih cara dan tarik garis",
+  sumber: "Materi: latihan memilih cara",
   latar: "#FEFCE8",
   kutipan: [
     "3. Gunakan cara yang menurut kalian mudah untuk menyelesaikan operasi",
@@ -252,10 +250,10 @@ export const ADEGAN_BERLATIH_TIGA_EMPAT: AdeganStory = {
     "629 + 123 =",
   ],
   ketukan: [
-    k(SUARA_K1, tambah(0, judul("Berlatih 3: pilih cara yang mudah")), tambah("Bagian", ...baris3(0, KIRI_Y[0] + 14).slice(0, 2)), tambah("Cocok", baris3(0, KIRI_Y[0] + 14)[2])),
+    k(SUARA_K1, tambah(0, judul("Latihan: pilih cara yang mudah")), tambah("Bagian", ...baris3(0, KIRI_Y[0] + 14).slice(0, 2)), tambah("benar.", baris3(0, KIRI_Y[0] + 14)[2])),
     k(SUARA_K2, tambah("Bagian", ...baris3(1, KIRI_Y[1] + 14).slice(0, 2)), tambah(idx(SUARA_K2, "delapan"), baris3(1, KIRI_Y[1] + 14)[2]), tambah(idx(SUARA_K2, "c:"), ...baris3(2, KIRI_Y[2] + 14).slice(0, 2)), tambah(lastIdx(SUARA_K2), baris3(2, KIRI_Y[2] + 14)[2])),
     k(SUARA_K3, tambah("Bagian", ...baris3(3, KIRI_Y[3] + 14).slice(0, 2)), tambah(idx(SUARA_K3, "delapan"), baris3(3, KIRI_Y[3] + 14)[2]), tambah(idx(SUARA_K3, "e:"), ...baris3(4, KIRI_Y[4] + 14).slice(0, 2)), tambah(lastIdx(SUARA_K3), baris3(4, KIRI_Y[4] + 14)[2])),
-    k(SUARA_K4, bersih(0), tambah(0, judul("Berlatih 4: tarik garis")), tambah("Nomor", ...kolom4()), tambah("hasilnya", garis4(0))),
+    k(SUARA_K4, bersih(0), tambah(0, judul("Latihan: tarik garis")), tambah("tarik", ...kolom4()), tambah("hasilnya", garis4(0))),
     k(SUARA_K5, tambah("hasilnya", garis4(1)), tambah(idx(SUARA_K5, "hasilnya", 2), garis4(2))),
     k(SUARA_K6, tambah("hasilnya", garis4(3)), tambah(idx(SUARA_K6, "hasilnya", 2), garis4(4))),
   ],
@@ -266,7 +264,7 @@ const SUARA_L1 = "Soal cerita a: kebun A menghasilkan tiga ratus dua puluh delap
 const SUARA_L2 = "Soal b: tiga kolam ikan lele milik Pak Rahmad, Pak Sudi, dan Pak Jaya. Jawab: seratus tujuh belas ditambah seratus lima ditambah dua ratus empat puluh dua sama dengan empat ratus enam puluh empat ikan.";
 const SUARA_L3 = "Soal c: SD Pelangi mengirim siswa ke tiga lomba. Jawab: seratus dua puluh satu ditambah dua puluh sembilan ditambah sembilan puluh delapan sama dengan dua ratus empat puluh delapan siswa.";
 const SUARA_L4 = "Soal d: Helen punya stiker kartun, bunga, dan boneka. Jawab: seratus sebelas ditambah tujuh puluh tujuh ditambah delapan puluh sembilan sama dengan dua ratus tujuh puluh tujuh stiker.";
-const SUARA_L5 = "Keempat kunci cocok dengan hitungan mandiri. Soal cerita ini ada di halaman tiga puluh empat Buku Siswa.";
+const SUARA_L5 = "Mari kita rangkum jawaban keempat soal cerita tadi: sembilan ratus tujuh, empat ratus enam puluh empat, dua ratus empat puluh delapan, dan dua ratus tujuh puluh tujuh.";
 
 const cerita = (p: string, nama: string, baris: string[], bilangan: readonly number[], satuan: string) => {
   const total = bilangan.reduce((s, v) => s + v, 0);
@@ -283,8 +281,8 @@ const C4 = cerita("cd", "Soal cerita d: stiker Helen", ["diketahui:", "kartun 11
 
 export const ADEGAN_BERLATIH_LIMA: AdeganStory = {
   id: "berlatih-lima",
-  judul: "Ayo Berlatih nomor 5: soal cerita",
-  sumber: "Buku Siswa hlm. 34; Panduan Guru hlm. 52–53",
+  judul: "Latihan: soal cerita",
+  sumber: "Materi: soal cerita",
   latar: "#F0FDF4",
   kutipan: [
     "5. Kerjakan soal cerita berikut!",
@@ -309,24 +307,24 @@ export const ADEGAN_BERLATIH_LIMA: AdeganStory = {
     k(
       SUARA_L5,
       bersih(0),
-      tambah(0, judul("Kunci soal cerita")),
-      tambah("Keempat", ...barisTabel("kr0", 14, 32, [40, 150, 78], ["soal", "penjumlahan", "kunci"], 20, 8.6, true)),
+      tambah(0, judul("Rangkuman soal cerita")),
+      tambah("rangkum", ...barisTabel("kr0", 14, 32, [40, 150, 78], ["soal", "penjumlahan", "hasil"], 20, 8.6, true)),
       ...[["a", "328 + 579", "907"], ["b", "117 + 105 + 242", "464"], ["c", "121 + 29 + 98", "248"], ["d", "111 + 77 + 89", "277"]].map((r, i) => tambah(0, ...barisTabel(`kr${i + 1}`, 14, 52 + i * 22, [40, 150, 78], r, 22, 9))),
-      tambah("halaman", ...kartu("kh5", 14, 146, 272, 40, W.krem, ["Buku Siswa hlm. 34 (bagian atas)", "kunci: Panduan Guru hlm. 52–53"], 9)),
+      tambah("keempat", ...kartu("kh5", 14, 146, 272, 40, W.krem, ["semua soal cerita diselesaikan", "dengan penjumlahan"], 9)),
     ),
   ],
 };
 
 /* ------------------------------ 13. Miskonsepsi dan diferensiasi (Panduan Guru hlm. 54) ------------------------------ */
-const SUARA_M1 = "Miskonsepsi: penjumlahan dua bilangan sering dimulai dari angka terdepan, padahal seharusnya dimulai dari nilai tempat satuan. Contoh video: seratus delapan puluh sembilan ditambah dua ratus empat puluh lima.";
+const SUARA_M1 = "Hati-hati, kesalahan yang sering terjadi: penjumlahan dua bilangan dimulai dari angka terdepan, padahal seharusnya dimulai dari nilai tempat satuan. Perhatikan contoh: seratus delapan puluh sembilan ditambah dua ratus empat puluh lima.";
 const SUARA_M2 = "Jika dimulai dari ratusan, satu ditambah dua sama dengan tiga. Tetapi simpanan dari puluhan membuat ratusan menjadi empat. Dimulai dari satuan, hasil tiap kolom tidak perlu diubah lagi.";
-const SUARA_M3 = "Diferensiasi: peserta didik yang cepat mengerjakan Latihan tanpa bantuan dan boleh diberi soal tambahan. Pada saat yang sama, guru mendampingi peserta didik yang mengalami kesulitan.";
-const SUARA_M4 = "Metode yang disarankan adalah Diskusi dan Drill. Kelompok dibentuk dari keberagaman peserta didik; ketua berkemampuan tinggi, anggota sedang atau kurang. Bila tidak ada yang tinggi, anggota bekerja sama lewat diskusi.";
+const SUARA_M3 = "Bagi kalian yang cepat, silakan mengerjakan latihan tanpa bantuan dan boleh mencoba soal tambahan. Pada saat yang sama, guru mendampingi teman-teman yang mengalami kesulitan.";
+const SUARA_M4 = "Kita belajar dengan diskusi dan latihan berulang. Kelompok dibentuk dari teman yang beragam; ketua berkemampuan tinggi, anggota sedang atau kurang. Bila tidak ada yang tinggi, anggota bekerja sama lewat diskusi.";
 
 export const ADEGAN_MISKONSEPSI: AdeganStory = {
   id: "miskonsepsi",
-  judul: "Miskonsepsi dan diferensiasi",
-  sumber: "Panduan Guru hlm. 54 (bagian atas)",
+  judul: "Hati-hati dan belajar bersama",
+  sumber: "Materi: kesalahan umum dan kelompok",
   latar: "#FDF2F8",
   kutipan: [
     "Miskonsepsi",
@@ -345,9 +343,9 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   ketukan: [
     k(
       SUARA_M1,
-      tambah(0, judul("Miskonsepsi: mulai dari mana?")),
-      tambah("Miskonsepsi:", ...kartu("mk", 14, 28, 272, 28, W.merahMuda, ["keliru: mulai dari angka terdepan"], 9.2)),
-      tambah("Contoh", ...susunAwal("ms", 14, 74, CONTOH.jeruk), teks("msl", 200, 66, "contoh video: 189 + 245", 8.6, W.hitam)),
+      tambah(0, judul("Hati-hati: mulai dari mana?")),
+      tambah("kesalahan", ...kartu("mk", 14, 28, 272, 28, W.merahMuda, ["keliru: mulai dari angka terdepan"], 9.2)),
+      tambah("Contoh", ...susunAwal("ms", 14, 74, CONTOH.jeruk), teks("msl", 200, 66, "contoh: 189 + 245", 8.6, W.hitam)),
       tambah("satuan.", ...kartu("mb", 150, 82, 136, 28, W.hijauMuda, ["benar: mulai dari satuan"], 8.4)),
     ),
     k(
@@ -360,16 +358,16 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
     k(
       SUARA_M3,
       bersih(0),
-      tambah(0, judul("Diferensiasi")),
-      tambah("peserta", ...kartu("df1", 14, 34, 272, 50, W.hijauMuda, ["cepat (advanced):", "Latihan tanpa bantuan, soal tambahan"], 9.2)),
+      tambah(0, judul("Belajar sesuai kecepatan")),
+      tambah("cepat,", ...kartu("df1", 14, 34, 272, 50, W.hijauMuda, ["yang cepat:", "latihan mandiri, soal tambahan"], 9.2)),
       tambah("guru", ...kartu("df2", 14, 98, 272, 50, W.langit, ["yang kesulitan:", "didampingi guru"], 9.2)),
     ),
     k(
       SUARA_M4,
       bersih(0),
-      tambah(0, judul("Metode dan kelompok")),
-      tambah("Metode", ...kartu("kl1", 14, 30, 272, 32, W.emas, ["metode: Diskusi dan Drill"], 9.6)),
-      tambah("Kelompok", ...kartu("kl2", 14, 72, 272, 44, W.hijauMuda, ["kelompok dari keberagaman peserta didik", "ketua tinggi; anggota sedang atau kurang"], 8.8)),
+      tambah(0, judul("Belajar dalam kelompok")),
+      tambah("Kita", ...kartu("kl1", 14, 30, 272, 32, W.emas, ["belajar: diskusi dan latihan"], 9.6)),
+      tambah("Kelompok", ...kartu("kl2", 14, 72, 272, 44, W.hijauMuda, ["kelompok dari teman yang beragam", "ketua tinggi; anggota sedang atau kurang"], 8.8)),
       tambah("Bila", ...kartu("kl3", 14, 126, 272, 44, W.langit, ["tanpa peserta berkemampuan tinggi:", "semua anggota bekerja sama lewat diskusi"], 8.8)),
     ),
   ],

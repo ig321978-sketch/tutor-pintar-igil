@@ -7,8 +7,8 @@ import { ADEGAN_LUAR_MAJU, ADEGAN_LUAR_MAJU_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN
 /** Kelas 4 Bab 1 Sub-Bab E (Penjumlahan Bilangan Cacah sampai 1.000): video materi kurikulum dan video metode luar, dua video terpisah. */
 export const VIDEO_MATERI_K4B1E: VideoStory = {
   id: "k4b1e-materi",
-  judul: "Penjumlahan Bilangan Cacah sampai 1.000 menurut Buku",
-  subjudul: "Materi kurikulum · Buku Siswa hlm. 28–34 · Panduan Guru hlm. 49–54",
+  judul: "Penjumlahan Bilangan Cacah sampai 1.000",
+  subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
     ADEGAN_TONI_PANJANG,
@@ -29,7 +29,7 @@ export const VIDEO_MATERI_K4B1E: VideoStory = {
 export const VIDEO_LUAR_K4B1E: VideoStory = {
   id: "k4b1e-luar",
   judul: "Penjumlahan sampai 1.000: Metode dari Luar",
-  subjudul: "Empat metode luar · angka dari buku",
+  subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
     ADEGAN_LUAR_PEMBUKA,

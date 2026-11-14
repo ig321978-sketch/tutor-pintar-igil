@@ -13,7 +13,7 @@ const lompat = (objs: ReturnType<typeof garisLompat>, i: number) => objs.filter(
 /* ------------------------------ 6. Counting Up: konsep ------------------------------ */
 const SUARA_N1 = "Metode ketiga, Counting Up, atau Menghitung Naik. Alih-alih mengurangi, kita menghitung dari bilangan yang dikurangi, naik sampai bilangan awal. Jumlah semua lompatan adalah selisihnya.";
 const SUARA_N2 = "Contoh: dua ratus empat puluh satu dikurangi seratus dua puluh sembilan. Mulai dari seratus dua puluh sembilan. Lompat satu ke seratus tiga puluh, lompat tujuh puluh ke dua ratus, lompat empat puluh satu ke dua ratus empat puluh satu.";
-const SUARA_N3 = "Jumlahkan semua lompatan: satu ditambah tujuh puluh ditambah empat puluh satu sama dengan seratus dua belas. Jadi selisihnya seratus dua belas, sama dengan hasil cara susun panjang di buku.";
+const SUARA_N3 = "Jumlahkan semua lompatan: satu ditambah tujuh puluh ditambah empat puluh satu sama dengan seratus dua belas. Jadi selisihnya seratus dua belas, sama dengan hasil cara susun panjang tadi.";
 const SUARA_N4 = "Kuncinya, pilih titik singgah yang mudah, yaitu angka bulat puluhan atau ratusan. Semakin mudah titik singgahnya, semakin mudah menjumlahkan lompatannya.";
 
 const GN = garisLompat("gn", 30, 110, 240, [129, 130, 200, 241]);
@@ -64,7 +64,7 @@ export const ADEGAN_LUAR_NAIK: AdeganStory = {
 };
 
 /* ------------------------------ 7. Counting Up: penerapan dengan angka buku ------------------------------ */
-const SUARA_P1 = "Terapkan pada soal latihan nomor empat. Tiga ratus dikurangi tiga puluh empat. Mulai dari tiga puluh empat: lompat enam ke empat puluh, lompat dua ratus enam puluh ke tiga ratus. Jumlahnya dua ratus enam puluh enam.";
+const SUARA_P1 = "Terapkan pada soal berikut. Tiga ratus dikurangi tiga puluh empat. Mulai dari tiga puluh empat: lompat enam ke empat puluh, lompat dua ratus enam puluh ke tiga ratus. Jumlahnya dua ratus enam puluh enam.";
 const SUARA_P2 = "Enam ratus dikurangi dua ratus tiga puluh lima. Mulai dari dua ratus tiga puluh lima: lompat enam puluh lima ke tiga ratus, lompat tiga ratus ke enam ratus. Jumlahnya tiga ratus enam puluh lima.";
 const SUARA_P3 = "Lima ratus lima dikurangi tujuh puluh tujuh. Mulai dari tujuh puluh tujuh: lompat tiga ke delapan puluh, lompat empat ratus dua puluh ke lima ratus, lompat lima ke lima ratus lima. Jumlahnya empat ratus dua puluh delapan.";
 const SUARA_P4 = "Tujuh ratus dua belas dikurangi delapan puluh sembilan. Mulai dari delapan puluh sembilan: lompat sebelas ke seratus, lompat enam ratus ke tujuh ratus, lompat dua belas ke tujuh ratus dua belas. Jumlahnya enam ratus dua puluh tiga.";
@@ -76,8 +76,8 @@ const G4 = garisLompat("gp", 30, 100, 240, [89, 100, 700, 712]);
 
 export const ADEGAN_LUAR_NAIK_TERAPAN: AdeganStory = {
   id: "luar-naik-terapan",
-  judul: "Counting Up pada soal buku",
-  sumber: "Metode luar: Counting Up; BS hlm. 38",
+  judul: "Counting Up pada soal latihan",
+  sumber: "Metode luar: Counting Up",
   latar: "#FEF9C3",
   ketukan: [
     k(
@@ -173,8 +173,8 @@ export const ADEGAN_LUAR_KOMPENSASI: AdeganStory = {
 };
 
 /* ------------------------------ 9. Compensation: penerapan dengan angka buku ------------------------------ */
-const SUARA_Q1 = "Soal nomor tiga: lima ratus lima dikurangi tujuh puluh tujuh. Bulatkan tujuh puluh tujuh menjadi delapan puluh, lebih tiga. Lima ratus lima dikurangi delapan puluh sama dengan empat ratus dua puluh lima, tambah tiga jadi empat ratus dua puluh delapan.";
-const SUARA_Q2 = "Nomor empat: sembilan ratus dua belas dikurangi enam puluh tujuh. Bulatkan menjadi tujuh puluh, lebih tiga. Sembilan ratus dua belas dikurangi tujuh puluh sama dengan delapan ratus empat puluh dua, tambah tiga jadi delapan ratus empat puluh lima.";
+const SUARA_Q1 = "Soal pertama: lima ratus lima dikurangi tujuh puluh tujuh. Bulatkan tujuh puluh tujuh menjadi delapan puluh, lebih tiga. Lima ratus lima dikurangi delapan puluh sama dengan empat ratus dua puluh lima, tambah tiga jadi empat ratus dua puluh delapan.";
+const SUARA_Q2 = "Soal kedua: sembilan ratus dua belas dikurangi enam puluh tujuh. Bulatkan menjadi tujuh puluh, lebih tiga. Sembilan ratus dua belas dikurangi tujuh puluh sama dengan delapan ratus empat puluh dua, tambah tiga jadi delapan ratus empat puluh lima.";
 const SUARA_Q3 = "Tujuh ratus dua puluh dikurangi delapan puluh sembilan. Bulatkan menjadi sembilan puluh, lebih satu. Tujuh ratus dua puluh dikurangi sembilan puluh sama dengan enam ratus tiga puluh, tambah satu jadi enam ratus tiga puluh satu.";
 const SUARA_Q4 = "Tiga ratus dikurangi tiga puluh empat. Bulatkan menjadi empat puluh, lebih enam. Tiga ratus dikurangi empat puluh sama dengan dua ratus enam puluh, tambah enam jadi dua ratus enam puluh enam.";
 
@@ -200,12 +200,12 @@ const langkahKomp = (i: number, pre: string, at: (string | number)[]) => {
 
 export const ADEGAN_LUAR_KOMPENSASI_TERAPAN: AdeganStory = {
   id: "luar-kompensasi-terapan",
-  judul: "Compensation pada soal buku",
-  sumber: "Metode luar: Compensation; BS hlm. 38",
+  judul: "Compensation pada soal latihan",
+  sumber: "Metode luar: Compensation",
   latar: "#FCE7F3",
   ketukan: [
     k(SUARA_Q1, tambah(0, judul("Compensation: 505 − 77")), ...langkahKomp(0, "qa", ["Soal", "Bulatkan", idx(SUARA_Q1, "sama", 1), "tambah"])),
-    k(SUARA_Q2, bersih(0), tambah(0, judul("Compensation: 912 − 67")), ...langkahKomp(1, "qb", ["Nomor", "Bulatkan", idx(SUARA_Q2, "sama", 1), "tambah"])),
+    k(SUARA_Q2, bersih(0), tambah(0, judul("Compensation: 912 − 67")), ...langkahKomp(1, "qb", ["Soal", "Bulatkan", idx(SUARA_Q2, "sama", 1), "tambah"])),
     k(SUARA_Q3, bersih(0), tambah(0, judul("Compensation: 720 − 89")), ...langkahKomp(2, "qc", ["Tujuh", "Bulatkan", idx(SUARA_Q3, "sama", 1), "tambah"])),
     k(SUARA_Q4, bersih(0), tambah(0, judul("Compensation: 300 − 34")), ...langkahKomp(3, "qd", ["Tiga", "Bulatkan", idx(SUARA_Q4, "sama", 1), "tambah"])),
   ],
@@ -213,7 +213,7 @@ export const ADEGAN_LUAR_KOMPENSASI_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 10. Ringkasan metode luar ------------------------------ */
 const SUARA_Z1 = "Ringkasnya, empat metode: Standard Subtraction untuk menyusun dan mengurangi tiap kolom, Borrowing untuk meminjam saat angka atas kurang, Counting Up untuk melompat naik, dan Compensation untuk membulatkan lalu menyesuaikan.";
-const SUARA_Z2 = "Angka buku yang dipakai ada di tabel: contoh bersusun dan meminjam dari uraian buku, lalu soal latihan nomor satu sampai empat.";
+const SUARA_Z2 = "Angka yang kita pakai ada di tabel: contoh bersusun dan meminjam, lalu soal latihan satu sampai empat.";
 const SUARA_Z3 = "Memilih metode: tanpa mengambil, pakai bersusun. Bila angka atas kurang, pinjam. Bila selisihnya dekat atau ada angka nol, hitung naik. Bila pengurang hampir bulat, pakai kompensasi. Selalu periksa dengan penjumlahan.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
@@ -230,8 +230,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_Z2,
       bersih(0),
-      tambah(0, judul("Angka buku yang dipakai")),
-      tambah("Angka", ...barisTabel("rt0", 8, 32, [92, 192], ["metode", "angka buku"], 24, 8.4, true)),
+      tambah(0, judul("Angka yang kita pakai")),
+      tambah("Angka", ...barisTabel("rt0", 8, 32, [92, 192], ["metode", "angka yang dipakai"], 24, 8.4, true)),
       tambah("bersusun", ...barisTabel("rt1", 8, 56, [92, 192], [NAMA_METODE[0], "633−211, 879−436, 573−268"], 24, 8)),
       tambah("meminjam", ...barisTabel("rt2", 8, 80, [92, 192], [NAMA_METODE[1], "253−176, 623−292, 344−279"], 24, 8)),
       tambah("soal@1", ...barisTabel("rt3", 8, 104, [92, 192], [NAMA_METODE[2], "300−34, 600−235, 505−77, 712−89"], 24, 7.6)),

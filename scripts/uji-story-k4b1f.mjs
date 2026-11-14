@@ -166,7 +166,21 @@ const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.
   for (const m of [...METODE, ...NAMA_ID]) cek(luar.includes(m), `video metode luar memuat ${m}`);
   sama(U1.NAMA_METODE, METODE, "nama metode di berkas luar-1");
   sama(U1.NAMA_METODE_ID, NAMA_ID, "nama Indonesia metode luar");
-  cek(M.adegan.every((a) => /(Buku Siswa|Panduan Guru) hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
+  cek(M.adegan.every((a) => /^(Materi|Pesan guru): /.test(a.sumber)), "video materi: tiap adegan berlabel pelajaran netral (Materi: ... atau Pesan guru: ...)");
+  cek(M.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: tanpa nomor halaman dan tanpa kata buku");
+  // Video bergaya guru: suara, teks terlihat, label sumber, judul adegan, dan subjudul tidak menyebut sumber buku.
+  const TERLARANG = /\bbuku\b|panduan guru|\bhlm\b|halaman|\bkunci\b|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan/i;
+  for (const v of VIDEO) {
+    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul tanpa kata terlarang`);
+    for (const a of v.adegan) {
+      cek(!TERLARANG.test(`${a.judul} ${a.sumber}`), `${v.id}/${a.id}: judul adegan dan sumber tanpa kata terlarang`);
+      a.ketukan.forEach((kt, i) => {
+        const terlihat = L.teksTerlihat(L.keadaanStory(a, i, 9999));
+        cek(!TERLARANG.test(kt.suara), `${v.id}/${a.id}/${i}: suara tanpa kata terlarang`);
+        cek(!TERLARANG.test(JSON.stringify(terlihat)), `${v.id}/${a.id}/${i}: teks terlihat tanpa kata terlarang`);
+      });
+    }
+  }
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
   cek(U.adegan.every((a) => a.sumber.length <= 46), "video metode luar: label sumber cukup pendek untuk kanvas 300 lebar");
   cek(M.adegan.every((a) => a.sumber.length <= 52), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
@@ -364,7 +378,7 @@ const lompatOk = (nama, objs, id, stops, selisih) => {
   tabelOk("stimulus", st, "st", 27, 19, false);
   sama(angkaBaris(st, "str2"), 12, "stimulus: tabel menampilkan jawaban siswa 12");
   sama(nilaiId(T(M, "apersepsi-stimulus", 4), "g3-t0"), "27 − 19 = 8", "hitungan mandiri video: 27 dikurangi 19 sama dengan 8");
-  sama(nilaiId(T(M, "apersepsi-stimulus", 4), "g2-t0"), "tambahan video: hitungan mandiri", "stimulus: hitungan mandiri diberi label tambahan video");
+  sama(nilaiId(T(M, "apersepsi-stimulus", 4), "g2-t0"), "kita hitung bersama", "stimulus: hitungan dilakukan bersama guru");
   // Ayo Mengamati: 265 dikurangi 132.
   tabelOk("amati susun pendek", T(M, "amati-buku", 5), "tp", 265, 132);
   sama(blokJumlah(T(M, "amati-buku", 4), "hb"), { r: 1, p: 3, s: 3, nilai: 133 }, "balok sisa buku: 1 ratusan, 3 puluhan, 3 satuan");
@@ -381,15 +395,13 @@ const lompatOk = (nama, objs, id, stops, selisih) => {
   sama([sel(pd, "po-m0"), sel(pd, "pm-m1"), sel(pd, "pm-m2")].join(), [String(2 - 1), String(4 - 1), String(1 + 10)].join(), "penanda buku: ratusan 1, puluhan 3, satuan 11");
   // Ayo Berlatih 2: tabel susun pendek dan penanda mengambil sama dengan kunci Panduan Guru hlm. 57 (dibaca dari gambar PDF).
   const KUNCI_TANDA = { a: ["", "6", "13"], b: ["3", "11", "12"], c: ["5", "12", ""], d: ["2", "13", "14"] };
-  [["a", 1, 573, 268], ["b", 2, 422, 146], ["c", 4, 623, 292], ["d", 5, 344, 279]].forEach(([h, ke, a, b]) => {
+  [["a", 1, 573, 268], ["b", 2, 422, 146], ["c", 3, 623, 292], ["d", 4, 344, 279]].forEach(([h, ke, a, b]) => {
     const o = T(M, "berlatih-dua", ke);
     tabelOk(`nomor 2${h}`, o, "q", a, b);
     sama(tandaBaris(o, "qm"), KUNCI_TANDA[h], `nomor 2${h}: penanda mengambil sama dengan kunci buku`);
     sama(efektifTes(a, b), KUNCI_TANDA[h], `nomor 2${h}: penanda dihitung mandiri`);
     sama(nilaiId(o, "q-eq"), `${a} − ${b} = ${a - b}`, `nomor 2${h}: persamaan penutup`);
   });
-  const cat = T(M, "berlatih-dua", 3);
-  sama([nilaiId(cat, "g3"), nilaiId(cat, "g4")], ["422 − 146 = 276", "422 − 145 = 277"], "catatan salah ketik kunci 2b");
   // Ayo Berlatih 1: bentuk uraian dan kurang tiap bagian.
   sama(nilaiId(T(M, "berlatih-satu", 0), "e4-t0"), "633 − 211 = 422", "nomor 1a");
   sama(nilaiId(T(M, "berlatih-satu", 1), "e10-t0"), "400 + 40 + 3 = 443", "nomor 1b");

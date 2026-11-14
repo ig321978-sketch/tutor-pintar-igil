@@ -254,10 +254,19 @@ const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.
   for (const m of [...METODE, ...NAMA_ID]) cek(luar.includes(m), `video metode luar memuat ${m}`);
   sama(U1.NAMA_METODE, METODE, "nama metode di berkas luar-1");
   sama(U1.NAMA_METODE_ID, NAMA_ID, "nama Indonesia metode luar");
-  cek(M.adegan.every((a) => /(Buku Siswa|Panduan Guru) hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber)), "video materi: tiap adegan berlabel pelajaran netral (Materi: ...)");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
   cek(U.adegan.every((a) => a.sumber.length <= 46), "video metode luar: label sumber cukup pendek untuk kanvas 300 lebar");
-  cek(M.adegan.every((a) => a.sumber.length <= 52), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
+  cek(M_VIDEO.adegan.every((a) => a.sumber.length <= 46), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
+  // Video bergaya guru: suara, teks terlihat, label, judul adegan, dan subjudul video yang diputar tidak menyebut sumber buku.
+  const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul video tanpa kata sumber buku`);
+    for (const a of v.adegan) {
+      const ada = TERLARANG.exec(`${a.judul} ${a.sumber} ${teksAdegan(a)}`);
+      cek(!ada, `${v.id}/${a.id}: suara, teks terlihat, sumber, dan judul tanpa kata sumber buku (${ada?.[0]})`);
+    }
+  }
   for (const kata of ["Peta konsep", "Kata kunci", "Apersepsi", "Ayo Berlatih", "Ayo Berpikir", "Miskonsepsi", "Diferensiasi", "Refleksi", "Subbab", "Tujuan pembelajaran", "Panduan guru", "Aktivitas"]) cek(!luar.includes(kata), `video metode luar tidak memuat "${kata}" milik materi`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-kiri", "luar-kiri-terapan", "luar-garis", "luar-garis-terapan", "luar-himpunan", "luar-himpunan-terapan", "luar-batang", "luar-batang-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
@@ -406,7 +415,7 @@ for (const v of [M, U]) {
     const luas = Array.from({ length: 10 }, (_, i) => obj(a, `pa${i}-k`)).every((o) => o.w === obj(a, "pa0-k").w && o.h === obj(a, "pa0-k").h);
     cek(luas && Array.from({ length: 10 }, (_, i) => obj(a, `pa${i}-k`).x).every((x, i, arr) => i === 0 || x > arr[i - 1]), "kartu: sepuluh kartu sama ukuran, berurutan dari kiri");
     const c = T(M, "kartu", 2);
-    sama([nilaiId(c, "kbs-t1"), nilaiId(c, "kbg-t1")], ["10 buah", "20 buah"], "kartu: Buku Siswa 10 buah, Panduan Guru 20 buah");
+    sama([nilaiId(c, "kbs-t1"), nilaiId(c, "kbg-t1")], ["10 kartu", "20 kartu"], "kartu: satu paket 10 kartu, dua paket 20 kartu");
     cek(2 * 10 === 20, "dua paket kartu 0 sampai 9 butuh 20 kartu");
   }
   /* ----- Papan spon ----- */
@@ -490,7 +499,7 @@ for (const v of [M, U]) {
       const [y1, y2] = [[44, 70], [100, 126], [156, 182]][i];
       sama([nilaiId(a, `${id}w`), obj(a, `${id}w`).y], ["✅", l.a > l.b ? y1 : y2], `latih 1: tanda centang di bilangan yang lebih besar soal ${"abc"[i]} (${l.besar})`);
     });
-    sama(nilaiId(a, "jud"), "Kunci: 5.734; 5.614; 7.197", "latih 1: kunci Panduan Guru");
+    sama(nilaiId(a, "jud"), "Jawaban: 5.734; 5.614; 7.197", "latih 1: jawaban akhir");
   }
   /* ----- Berlatih 2 ----- */
   {
@@ -542,7 +551,7 @@ for (const v of [M, U]) {
   {
     const a = T(M, "berpikir", 0);
     sama([0, 1, 2, 3].map((i) => nilaiId(a, `ya${i}-t0`)), ["1", "5", "9", "2"], "berpikir: empat angka 1, 5, 9, 2");
-    cek(nilaiId(a, "yb-t0") === "Buku Siswa hlm. 24", "berpikir: Buku Siswa hlm. 24 (PDF 36)");
+    cek(nilaiId(a, "yb-t0") === "susun bilangan empat angka", "berpikir: kartu soal susunan empat angka");
     const b = T(M, "berpikir", 1);
     sama([0, 1, 2, 3, 4].map((i) => nilaiId(b, `ye${i}-t0`)), G.CONTOH_A.map(fmt), "berpikir: contoh jawaban a");
     sama([...G.CONTOH_A].map((n) => [...String(n)].sort().join("")), Array(5).fill("1259"), "berpikir: tiap contoh memakai angka 1, 2, 5, 9");

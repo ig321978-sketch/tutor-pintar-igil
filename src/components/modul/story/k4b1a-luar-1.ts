@@ -10,15 +10,15 @@ export const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
 export const kepala = (i: number) => kartu("hd", 6, 26, 288, 22, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana kita membaca dan menulis bilangan empat angka dengan benar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana kita membaca dan menulis bilangan empat angka dengan benar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, dengan angka yang sama seperti pelajaran kita.";
 const SUARA_O2 = "Empat metode itu: Dienes Blocks, Place-Value Chart, Zero as Placeholder, dan Say-Write-Show.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Balok Dienes Empat Tingkat, Papan Nilai Tempat, Nol Penjaga Tempat, dan Ucap, Tulis, Tunjuk. Metode keempat adalah tambahan yang cocok dengan kartu angka di buku.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Balok Dienes Empat Tingkat, Papan Nilai Tempat, Nol Penjaga Tempat, dan Ucap, Tulis, Tunjuk. Metode keempat cocok dipakai bersama kartu angka kita.";
 const SUARA_O4 = "Semuanya menjawab satu pertanyaan: bagaimana menyebut dan menuliskan bilangan? Dengan membangun balok, mengisi papan, menjaga nol, dan melatih ucapan, tulisan, serta tunjukan kartu.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk membaca dan menulis bilangan",
-  sumber: "Metode luar: pembuka; BS hlm. 4–12",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -39,7 +39,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       bersih(0),
       tambah(0, judul("Nama dalam bahasa Indonesia")),
       ...NAMA_METODE_ID.map((m, i) => tambah(["Balok", "Papan", "Nol", "Ucap,"][i], ...kartu(`n${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
-      tambah("tambahan", emo("n4", 268, 160, "⭐", 18)),
+      tambah("keempat", emo("n4", 268, 160, "⭐", 18)),
     ),
     k(
       SUARA_O4,
@@ -115,7 +115,7 @@ const judulKolom = (id: string, i: number, t: string) => teks(id, kolomX(i) + 30
 export const ADEGAN_LUAR_DIENES_TERAPAN: AdeganStory = {
   id: "luar-dienes-terapan",
   judul: "Dienes Blocks: membangun 3.286 dan 6.750",
-  sumber: "Metode luar: Dienes Blocks, BS hlm. 5",
+  sumber: "Metode luar: Dienes Blocks, terapan",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -196,7 +196,7 @@ export const ADEGAN_LUAR_PAPAN: AdeganStory = {
 };
 
 /* ------------------------------ 5. Place-Value Chart: penerapan ------------------------------ */
-const SUARA_Q1 = "Terapan dengan contoh buku: dua ribu enam ratus tiga puluh empat. Isi papan: ribuan dua, ratusan enam, puluhan tiga, satuan empat.";
+const SUARA_Q1 = "Terapan dengan bilangan dua ribu enam ratus tiga puluh empat. Isi papan: ribuan dua, ratusan enam, puluhan tiga, satuan empat.";
 const SUARA_Q2 = "Baca kolom demi kolom: ribuan dua dibaca dua ribu, ratusan enam dibaca enam ratus, puluhan tiga dibaca tiga puluh, dan satuan empat dibaca empat.";
 const SUARA_Q3 = "Sekarang menulis: nama bilangan tiga ribu dua ratus lima puluh empat. Dengar ribu, tiga. Ratus, dua. Puluh, lima. Sisanya empat.";
 const SUARA_Q4 = "Isi papan dari kiri ke kanan menghasilkan tiga, dua, lima, empat. Baca papan: tiga ribu dua ratus lima puluh empat, cocok dengan nama tadi.";
@@ -204,7 +204,7 @@ const SUARA_Q4 = "Isi papan dari kiri ke kanan menghasilkan tiga, dua, lima, emp
 export const ADEGAN_LUAR_PAPAN_TERAPAN: AdeganStory = {
   id: "luar-papan-terapan",
   judul: "Place-Value Chart: membaca 2.634 dan menulis 3.254",
-  sumber: "Metode luar: Place-Value Chart, BS hlm. 6–8",
+  sumber: "Metode luar: Place-Value Chart, terapan",
   latar: "#EFF6FF",
   ketukan: [
     k(

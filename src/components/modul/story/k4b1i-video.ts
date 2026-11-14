@@ -17,8 +17,8 @@ import { ADEGAN_LUAR_DV, ADEGAN_LUAR_DV_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_LUA
 /** Kelas 4 Bab 1 Sub-Bab I (Faktor dan Kelipatan), penutup bab: video materi kurikulum dan video metode luar, dua video terpisah. */
 export const VIDEO_MATERI_K4B1I: VideoStory = {
   id: "k4b1i-materi",
-  judul: "Faktor dan Kelipatan menurut Buku",
-  subjudul: "Materi kurikulum · Buku Siswa hlm. 48–54 dan Panduan Guru hlm. 70–88",
+  judul: "Faktor dan Kelipatan",
+  subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
     ADEGAN_PEMBUKA_I,
@@ -43,7 +43,7 @@ export const VIDEO_MATERI_K4B1I: VideoStory = {
 export const VIDEO_LUAR_K4B1I: VideoStory = {
   id: "k4b1i-luar",
   judul: "Faktor dan Kelipatan: Metode dari Luar",
-  subjudul: "Empat metode luar · angka dari buku",
+  subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
     ADEGAN_LUAR_PEMBUKA,

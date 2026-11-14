@@ -52,14 +52,14 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
 };
 
 /* ------------------------------ 2. Pertanyaan pemantik dan pemanasan telur (Panduan Guru hlm. 61) ------------------------------ */
-const SUARA_Q1 = "Panduan guru memuat tiga pertanyaan pemantik: bagaimana perkalian cara panjang, cara susun tanpa menyimpan, dan cara susun dengan menyimpan.";
-const SUARA_Q2 = "Untuk pemanasan, guru bercerita: ada dua belas kardus, masing-masing berisi sepuluh butir telur. Apakah telur harus dihitung satu per satu? Gambar telurnya adalah tambahan video.";
-const SUARA_Q3 = "Guru tidak perlu menjawab dulu, sebab murid akan menemukannya lewat aktivitas. Hitungan mandiri: dua belas kali sepuluh sama dengan seratus dua puluh butir, tambahan video dan bukan dari buku.";
+const SUARA_Q1 = "Sebelum mulai, ada tiga pertanyaan untuk kita pikirkan: bagaimana perkalian cara panjang, cara susun tanpa menyimpan, dan cara susun dengan menyimpan.";
+const SUARA_Q2 = "Untuk pemanasan, bayangkan ada dua belas kardus, masing-masing berisi sepuluh butir telur. Apakah telur harus dihitung satu per satu?";
+const SUARA_Q3 = "Kita tidak perlu menjawab dulu, sebab nanti kamu akan menemukannya lewat kegiatan. Hitungannya: dua belas kali sepuluh sama dengan seratus dua puluh butir.";
 
 export const ADEGAN_PEMANTIK: AdeganStory = {
   id: "pemantik",
   judul: "Pertanyaan pemantik dan pemanasan",
-  sumber: "Panduan Guru hlm. 61",
+  sumber: "Materi: pertanyaan pemantik",
   latar: "#F0FDF4",
   kutipan: [
     "Pertanyaan Esensi/Pemantik",
@@ -85,27 +85,24 @@ export const ADEGAN_PEMANTIK: AdeganStory = {
       tambah("kardus,", ...kelompok("tl", 22, 36, 12, 10, 6, 40, 30, 5, W.putih, W.jingga)),
       tambah("sepuluh", teks("tlt", 150, 128, "12 kardus × 10 butir telur", 10, W.biru)),
       tambah("Apakah", emo("tlq", 150, 168, "❓", 26)),
-      tambah("tambahan", teks("tln", 150, 192, "gambar: tambahan video", 8.2, W.coklat)),
     ),
     k(
       SUARA_Q3,
-      hapus("Guru", "tlq"),
-      tambah("Hitungan", teks("tlh", 150, 160, "12 × 10 = 120 butir", 13, W.hijau)),
-      ubah("tambahan", { id: "tln", isi: "hitungan tambahan video, bukan dari buku", warna: W.merah }),
+      hapus("Kita", "tlq"),
+      tambah("Hitungannya", teks("tlh", 150, 160, "12 × 10 = 120 butir", 13, W.hijau)),
     ),
   ],
 };
 
 /* ------------------------------ 3. Ayo Mengamati: kotak donat (Buku Siswa hlm. 39) ------------------------------ */
-const SUARA_D1 = "Subbab G dimulai dengan Ayo Mengamati. Gambarnya dua belas kotak donat, dua baris, masing-masing enam kotak.";
-const SUARA_D2 = "Tiap kotak berisi empat donat. Untuk mengetahui jumlah seluruhnya, buku menambahkan empat sebanyak dua belas kali.";
-const SUARA_D3 = "Hasilnya empat puluh delapan. Jadi jumlah donat pada gambar ada dua belas kotak atau empat puluh delapan buah donat.";
-const SUARA_D4 = "Catatan: di Buku Siswa kata donat tertulis donal pada suku ketiga di baris pertama dan di baris kedua. Itu salah ketik, isi hitungannya tidak berubah.";
+const SUARA_D1 = "Kita mulai dengan mengamati. Gambarnya dua belas kotak donat, dua baris, masing-masing enam kotak.";
+const SUARA_D2 = "Tiap kotak berisi empat donat. Untuk mengetahui jumlah seluruhnya, kita tambahkan empat sebanyak dua belas kali.";
+const SUARA_D3 = "Hasilnya empat puluh delapan. Jadi ada dua belas kotak atau empat puluh delapan buah donat.";
 
 export const ADEGAN_AMATI_DONAT: AdeganStory = {
   id: "amati-donat",
-  judul: "Ayo Mengamati: dua belas kotak donat",
-  sumber: "Buku Siswa hlm. 39",
+  judul: "Mengamati dua belas kotak donat",
+  sumber: "Materi: penjumlahan berulang",
   latar: "#FFF1F2",
   kutipan: [
     "G. Perkalian Bilangan Cacah Sampai 100",
@@ -119,14 +116,14 @@ export const ADEGAN_AMATI_DONAT: AdeganStory = {
   ketukan: [
     k(
       SUARA_D1,
-      tambah(0, judul("Ayo Mengamati: kotak donat")),
+      tambah(0, judul("Mengamati: kotak donat")),
       tambah("Gambarnya", ...kelompok("dn", 22, 34, 12, 4, 6, 40, 30, 2, W.pink, W.krem)),
       tambah("baris,", teks("dnk", 150, 120, "12 kotak donat (6 + 6)", 10, W.biru)),
     ),
     k(
       SUARA_D2,
       tambah("berisi", teks("dnb", 150, 142, "tiap kotak: 4 donat", 9.6, W.coklat)),
-      tambah("menambahkan", teks("dns", 150, 168, "4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4", 8, W.biru)),
+      tambah("tambahkan", teks("dns", 150, 168, "4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4", 8, W.biru)),
       tambah("sebanyak", teks("dnj", 150, 188, "empat ditambahkan 12 kali", 8.6, W.coklat)),
     ),
     k(
@@ -135,19 +132,11 @@ export const ADEGAN_AMATI_DONAT: AdeganStory = {
       hapus("Hasilnya", "dnj"),
       tambah("Jadi", ...kartu("dnh", 80, 172, 140, 24, W.emas, ["48 buah donat"], 10)),
     ),
-    k(
-      SUARA_D4,
-      bersih(0),
-      tambah(0, judul("Catatan salah ketik")),
-      tambah("Catatan:", ...kartu("dz", 14, 40, 272, 70, W.merahMuda, ["Buku Siswa menulis \"4 donal\"", "pada suku ketiga di dua baris", "seharusnya \"4 donat\""], 9.2)),
-      tambah("Itu", emo("dze", 150, 140, "📝", 28)),
-      tambah("hitungannya", ...kartu("dzk", 40, 154, 220, 32, W.hijauMuda, ["jumlah tetap 48 donat"], 9.6)),
-    ),
   ],
 };
 
 /* ------------------------------ 4. Perkalian cara panjang: donat (Buku Siswa hlm. 40) ------------------------------ */
-const SUARA_C1 = "Menurut buku, dengan perkalian kita lebih mudah menghitung donat. Cara pertama adalah cara panjang: ada dua belas kotak donat, setiap kotak berisi empat donat.";
+const SUARA_C1 = "Dengan perkalian kita lebih mudah menghitung donat. Cara pertama adalah cara panjang: ada dua belas kotak donat, setiap kotak berisi empat donat.";
 const SUARA_C2 = "Langkah satu: ubah dua belas menjadi sepuluh tambah dua, lalu tulis dikali empat.";
 const SUARA_C3 = "Langkah dua: sepuluh dikali empat, dan dua dikali empat. Jadi dua belas kali empat sama dengan sepuluh kali empat ditambah dua kali empat.";
 const SUARA_C4 = "Langkah tiga: empat puluh tambah delapan sama dengan empat puluh delapan. Jadi banyaknya donat adalah empat puluh delapan donat.";
@@ -155,7 +144,7 @@ const SUARA_C4 = "Langkah tiga: empat puluh tambah delapan sama dengan empat pul
 export const ADEGAN_CARA_PANJANG: AdeganStory = {
   id: "cara-panjang",
   judul: "Perkalian cara panjang: donat",
-  sumber: "Buku Siswa hlm. 40",
+  sumber: "Metode: perkalian cara panjang",
   latar: "#FFFBEB",
   kutipan: [
     "Anak-anak, dengan menggunakan perkalian kita akan mudah menghitung banyak donat tersebut.",

@@ -168,10 +168,23 @@ const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.
   for (const m of [...METODE, ...NAMA_ID]) cek(luar.includes(m), `video metode luar memuat ${m}`);
   sama(U1.NAMA_METODE, METODE, "nama metode di berkas luar-1");
   sama(U1.NAMA_METODE_ID, NAMA_ID, "nama Indonesia metode luar");
-  cek(M.adegan.every((a) => /(Buku Siswa|Panduan Guru) hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
+  // Video bergaya guru: suara, teks terlihat, label sumber, judul adegan, dan subjudul adegan yang diputar tidak menyebut sumber buku.
+  const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul video tanpa kata sumber buku`);
+    for (const a of v.adegan) {
+      cek(!TERLARANG.test(`${a.judul} ${a.sumber}`), `${v.id}/${a.id}: judul dan sumber adegan tanpa kata sumber buku`);
+      a.ketukan.forEach((kt, i) => {
+        const m = kt.suara;
+        cek(!TERLARANG.test(m), `${v.id}/${a.id}#${i + 1}: suara tanpa kata sumber buku`);
+        for (let p = 0; p < L.kataDari(kt.suara).length; p += 1) for (const t of L.teksTerlihat(L.keadaanStory(a, i, p))) cek(!TERLARANG.test(t), `${v.id}/${a.id}#${i + 1}: teks gambar "${t}" tanpa kata sumber buku`);
+      });
+    }
+  }
+  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
+  cek(M_VIDEO.adegan.every((a) => /^(Materi|Metode): /.test(a.sumber) && a.sumber.length <= 46), "video materi: sumber adegan berupa label pelajaran netral");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
   cek(U.adegan.every((a) => a.sumber.length <= 46), "video metode luar: label sumber cukup pendek untuk kanvas 300 lebar");
-  cek(M.adegan.every((a) => a.sumber.length <= 52), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
   for (const kata of ["Peta konsep", "Kata kunci", "Apersepsi", "Ayo Berlatih", "Ayo Berpikir", "Ayo Mencoba", "Ayo Mengamati", "Miskonsepsi", "Diferensiasi", "Refleksi", "Subbab", "Tujuan pembelajaran", "Panduan guru", "Aktivitas"]) cek(!luar.toLowerCase().includes(kata.toLowerCase()), `video metode luar tidak memuat "${kata}" milik materi`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-kelompok", "luar-kelompok-terapan", "luar-susunan", "luar-susunan-terapan", "luar-fakta", "luar-fakta-terapan", "luar-ganda", "luar-ganda-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
@@ -453,7 +466,7 @@ const deretInfo = (objs, id) => {
   cek(kelompokOk(d2d, "kd", 21, 4, [7, 7, 7]) && nilaiId(d2d, "kdh") === "21 × 4 = 84 kaki", "2 d: 21 kucing, tiap kucing 4 kaki = 84");
   const d2e = T(M, "berlatih-dua-b", 2);
   cek(kelompokAngkaOk(d2e, "ks", 6, "13") && nilaiId(d2e, "ksh") === "13 × 6 = 78 siswa", "2 e: 6 kelas (dari Panduan Guru), tiap kelas 13 siswa = 78");
-  cek(nilaiId(T(M, "berlatih-dua-b", 1), "e2-t1") === "tidak ditulis" && !objAda(T(M, "berlatih-dua-b", 1), "ks-g0"), "2 e di Buku Siswa: banyak kelas tidak ditulis");
+  cek(nilaiId(T(M, "berlatih-dua-b", 1), "e2-t1") === "6 kelas" && !objAda(T(M, "berlatih-dua-b", 1), "ks-g0"), "2 e: banyak kelas 6 ditampilkan lebih dulu, lalu gambar kelompok");
   // Miskonsepsi 2: contoh 37 kali 2.
   const mk = T(M, "miskonsepsi", 3);
   cek(susunInfo(mk, "mk").a === 37 && susunInfo(mk, "mk").b === 2 && susunInfo(mk, "mk").hasil === "4" && mk.find((o) => o.id === "mk-s")?.isi === "1", "miskonsepsi penyimpanan: 37 kali 2, ditulis 4, disimpan 1");

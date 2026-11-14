@@ -47,10 +47,10 @@ export const ADEGAN_LUAR_MAJU: AdeganStory = {
 };
 
 /* ------------------------------ 7. Counting On: penerapan dengan angka buku ------------------------------ */
-const SUARA_V1 = "Nomor tiga bagian b: empat ratus dua puluh sembilan ditambah sembilan belas. Mulai dari empat ratus dua puluh sembilan, maju sepuluh jadi empat ratus tiga puluh sembilan.";
-const SUARA_V2 = "Lalu maju sembilan lagi, sampai empat ratus empat puluh delapan. Jadi empat ratus dua puluh sembilan ditambah sembilan belas sama dengan empat ratus empat puluh delapan, sama dengan kunci buku.";
-const SUARA_V3 = "Nomor empat bagian c: tiga puluh sembilan ditambah delapan ratus dua puluh satu. Mulai dari yang lebih besar, delapan ratus dua puluh satu. Maju tiga puluh jadi delapan ratus lima puluh satu, lalu maju sembilan jadi delapan ratus enam puluh.";
-const SUARA_V4 = "Nomor tiga bagian c: delapan ratus dua puluh satu ditambah sembilan puluh delapan. Maju sembilan puluh jadi sembilan ratus sebelas, lalu maju delapan jadi sembilan ratus sembilan belas, sama dengan kunci buku.";
+const SUARA_V1 = "Soal pertama: empat ratus dua puluh sembilan ditambah sembilan belas. Mulai dari empat ratus dua puluh sembilan, maju sepuluh jadi empat ratus tiga puluh sembilan.";
+const SUARA_V2 = "Lalu maju sembilan lagi, sampai empat ratus empat puluh delapan. Jadi empat ratus dua puluh sembilan ditambah sembilan belas sama dengan empat ratus empat puluh delapan.";
+const SUARA_V3 = "Soal kedua: tiga puluh sembilan ditambah delapan ratus dua puluh satu. Mulai dari yang lebih besar, delapan ratus dua puluh satu. Maju tiga puluh jadi delapan ratus lima puluh satu, lalu maju sembilan jadi delapan ratus enam puluh.";
+const SUARA_V4 = "Soal ketiga: delapan ratus dua puluh satu ditambah sembilan puluh delapan. Maju sembilan puluh jadi sembilan ratus sebelas, lalu maju delapan jadi sembilan ratus sembilan belas.";
 
 const GL1 = garisLompat("m1", 40, 118, [{ v: 429, lompat: "+10" }, { v: 439, lompat: "+9" }, { v: 448 }], 11);
 const GL3 = garisLompat("m3", 30, 118, [{ v: 821, lompat: "+30" }, { v: 851, lompat: "+9" }, { v: 860 }], 6);
@@ -58,14 +58,14 @@ const GL4 = garisLompat("m4", 30, 118, [{ v: 821, lompat: "+90" }, { v: 911, lom
 
 export const ADEGAN_LUAR_MAJU_TERAPAN: AdeganStory = {
   id: "luar-maju-terapan",
-  judul: "Counting On pada angka buku",
-  sumber: "Metode luar: Counting On; BS hlm. 33",
+  judul: "Counting On pada tiga contoh",
+  sumber: "Metode luar: Counting On (contoh)",
   latar: "#FEF9C3",
   ketukan: [
     k(
       SUARA_V1,
-      tambah(0, judul("Menghitung Maju: nomor 3b")),
-      tambah("Nomor", kepala(2), teks("m1l", 150, 68, "429 + 19", 9.6, W.hitam)),
+      tambah(0, judul("Menghitung Maju: contoh pertama")),
+      tambah("Soal", kepala(2), teks("m1l", 150, 68, "429 + 19", 9.6, W.hitam)),
       tambah("Mulai", ...ambil(GL1, "m1-g", "m1-k0", "m1-v0")),
       tambah("maju", ...ambil(GL1, "m1-j0", "m1-l0", "m1-k1", "m1-v1")),
     ),
@@ -78,7 +78,7 @@ export const ADEGAN_LUAR_MAJU_TERAPAN: AdeganStory = {
     k(
       SUARA_V3,
       bersih(0),
-      tambah(0, judul("Menghitung Maju: nomor 4c")),
+      tambah(0, judul("Menghitung Maju: contoh kedua")),
       tambah(0, kepala(2)),
       tambah("yang", ...ambil(GL3, "m3-g", "m3-k0", "m3-v0")),
       tambah(idx(SUARA_V3, "Maju"), ...ambil(GL3, "m3-j0", "m3-l0", "m3-k1", "m3-v1")),
@@ -88,7 +88,7 @@ export const ADEGAN_LUAR_MAJU_TERAPAN: AdeganStory = {
     k(
       SUARA_V4,
       bersih(0),
-      tambah(0, judul("Menghitung Maju: nomor 3c")),
+      tambah(0, judul("Menghitung Maju: contoh ketiga")),
       tambah(0, kepala(2)),
       tambah("delapan", ...ambil(GL4, "m4-g", "m4-k0", "m4-v0")),
       tambah(idx(SUARA_V4, "Maju"), ...ambil(GL4, "m4-j0", "m4-l0", "m4-k1", "m4-v1")),
@@ -101,7 +101,7 @@ export const ADEGAN_LUAR_MAJU_TERAPAN: AdeganStory = {
 /* ------------------------------ 8. Partial Sums: konsep ------------------------------ */
 const SUARA_P1 = "Metode keempat, Partial Sums, atau Jumlah Sebagian. Jumlahkan tiap nilai tempat secara terpisah, tulis tiap hasilnya sebagai jumlah sebagian, lalu jumlahkan semua jumlah sebagian itu.";
 const SUARA_P2 = "Bedanya dengan susun pendek: tidak ada angka yang disimpan, jadi boleh mulai dari ratusan. Hasil tiap kolom ditulis utuh, bahkan bila sepuluh atau lebih.";
-const SUARA_P3 = "Dibandingkan susun panjang di buku, Jumlah Sebagian tidak menguraikan tiap bilangan dulu. Keunggulannya: tidak perlu mengingat simpanan, dan setiap baris mudah diperiksa.";
+const SUARA_P3 = "Dibandingkan susun panjang tadi, Jumlah Sebagian tidak menguraikan tiap bilangan dulu. Keunggulannya: tidak perlu mengingat simpanan, dan setiap baris mudah diperiksa.";
 
 export const ADEGAN_LUAR_SEBAGIAN: AdeganStory = {
   id: "luar-sebagian",
@@ -137,10 +137,10 @@ export const ADEGAN_LUAR_SEBAGIAN: AdeganStory = {
 };
 
 /* ------------------------------ 9. Partial Sums: penerapan dengan angka buku ------------------------------ */
-const SUARA_Q1 = "Nomor tiga, bagian a: tiga ratus tiga puluh tiga ditambah lima ratus sembilan belas. Ratusan: tiga ratus ditambah lima ratus jadi delapan ratus. Puluhan: tiga puluh ditambah sepuluh jadi empat puluh. Satuan: tiga ditambah sembilan jadi dua belas.";
-const SUARA_Q2 = "Jumlahkan semua jumlah sebagian: delapan ratus ditambah empat puluh ditambah dua belas sama dengan delapan ratus lima puluh dua. Cocok dengan kunci buku.";
-const SUARA_Q3 = "Satu lagi dari nomor satu bagian c di latihan buku: lima ratus tujuh puluh enam ditambah seratus empat puluh delapan. Ratusan jadi enam ratus, puluhan jadi seratus sepuluh, satuan jadi empat belas.";
-const SUARA_Q4 = "Jumlahnya: enam ratus ditambah seratus sepuluh ditambah empat belas sama dengan tujuh ratus dua puluh empat, sama dengan kunci buku.";
+const SUARA_Q1 = "Soal pertama: tiga ratus tiga puluh tiga ditambah lima ratus sembilan belas. Ratusan: tiga ratus ditambah lima ratus jadi delapan ratus. Puluhan: tiga puluh ditambah sepuluh jadi empat puluh. Satuan: tiga ditambah sembilan jadi dua belas.";
+const SUARA_Q2 = "Jumlahkan semua jumlah sebagian: delapan ratus ditambah empat puluh ditambah dua belas sama dengan delapan ratus lima puluh dua. Hasilnya tepat.";
+const SUARA_Q3 = "Satu lagi: lima ratus tujuh puluh enam ditambah seratus empat puluh delapan. Ratusan jadi enam ratus, puluhan jadi seratus sepuluh, satuan jadi empat belas.";
+const SUARA_Q4 = "Jumlahnya: enam ratus ditambah seratus sepuluh ditambah empat belas sama dengan tujuh ratus dua puluh empat.";
 
 const tabelSebagian = (p: string, baris: string[]): Obj[][] => baris.map((isi, i) => barisTabel(`${p}${i}`, 14, 90 + i * 20, [64, 212], isi.split("|"), 20, 8.8));
 const QA = tabelSebagian("qa", ["ratusan|300 + 500 = 800", "puluhan|30 + 10 = 40", "satuan|3 + 9 = 12", "jumlah|800 + 40 + 12 = 852"]);
@@ -148,15 +148,15 @@ const QC = tabelSebagian("qc", ["ratusan|500 + 100 = 600", "puluhan|70 + 40 = 11
 
 export const ADEGAN_LUAR_SEBAGIAN_TERAPAN: AdeganStory = {
   id: "luar-sebagian-terapan",
-  judul: "Partial Sums pada angka buku",
-  sumber: "Metode luar: Partial Sums; BS hlm. 32–33",
+  judul: "Partial Sums pada dua contoh",
+  sumber: "Metode luar: Partial Sums (contoh)",
   latar: "#FDF2F8",
   ketukan: [
     k(
       SUARA_Q1,
-      tambah(0, judul("Jumlah Sebagian: nomor 3a")),
+      tambah(0, judul("Jumlah Sebagian: contoh pertama")),
       tambah(0, kepala(3)),
-      tambah("Nomor", teks("qal", 150, 66, "333 + 519", 10, W.hitam), ...barisTabel("qh", 14, 70, [64, 212], ["tempat", "jumlah sebagian"], 20, 8.8, true)),
+      tambah("Soal", teks("qal", 150, 66, "333 + 519", 10, W.hitam), ...barisTabel("qh", 14, 70, [64, 212], ["tempat", "jumlah sebagian"], 20, 8.8, true)),
       tambah("Ratusan:", ...QA[0]),
       tambah("Puluhan:", ...QA[1]),
       tambah("Satuan:", ...QA[2]),
@@ -170,7 +170,7 @@ export const ADEGAN_LUAR_SEBAGIAN_TERAPAN: AdeganStory = {
     k(
       SUARA_Q3,
       bersih(0),
-      tambah(0, judul("Jumlah Sebagian: nomor 1c")),
+      tambah(0, judul("Jumlah Sebagian: contoh kedua")),
       tambah(0, kepala(3)),
       tambah("Satu", teks("qcl", 150, 66, "576 + 148", 10, W.hitam), ...barisTabel("qh", 14, 70, [64, 212], ["tempat", "jumlah sebagian"], 20, 8.8, true)),
       tambah("Ratusan", ...QC[0]),
@@ -188,7 +188,7 @@ export const ADEGAN_LUAR_SEBAGIAN_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 10. Ringkasan ------------------------------ */
 const SUARA_Z1 = "Ringkasan empat metode: Standard Addition menjumlahkan kolom demi kolom, Regrouping menukar sepuluh menjadi satu di kolom kiri, Counting On melompat di garis bilangan, Partial Sums menjumlahkan tiap nilai tempat terpisah.";
-const SUARA_Z2 = "Angka dari buku yang dipakai tiap metode: tiga perpustakaan dan satu soal dengan simpan, dua keranjang jeruk, latihan nomor tiga dan empat, serta nomor satu dan tiga.";
+const SUARA_Z2 = "Angka yang dipakai tiap metode: tiga perpustakaan dan satu soal dengan simpan, dua keranjang jeruk, beberapa soal latihan, serta soal lain.";
 const SUARA_Z3 = "Memilih metode: untuk kolom rapi pakai Standard Addition, untuk memahami tukar pakai Regrouping, untuk hitung di kepala pakai Counting On, dan untuk menguraikan pakai Partial Sums. Hasil semuanya sama.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
@@ -205,8 +205,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_Z2,
       bersih(0),
-      tambah(0, judul("Angka buku yang dipakai")),
-      tambah("Angka", ...barisTabel("rt0", 14, 32, [92, 188], ["metode", "angka buku"], 24, 8.4, true)),
+      tambah(0, judul("Angka yang dipakai")),
+      tambah("Angka", ...barisTabel("rt0", 14, 32, [92, 188], ["metode", "angka yang dipakai"], 24, 8.4, true)),
       tambah("tiga", ...barisTabel("rt1", 14, 56, [92, 188], ["Standard Addition", "124 + 411 + 363; 277 + 146"], 24, 8.2)),
       tambah("dua", ...barisTabel("rt2", 14, 80, [92, 188], ["Regrouping", "189 + 245"], 24, 8.2)),
       tambah("latihan", ...barisTabel("rt3", 14, 104, [92, 188], ["Counting On", "429 + 19; 39 + 821; 821 + 98"], 24, 8.2)),

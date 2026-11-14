@@ -14,15 +14,15 @@ const daftar = (awal: string, n: number, mulai = 0): string[] => Array.from({ le
 export const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana kita menjumlahkan bilangan sampai seribu? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana kita menjumlahkan bilangan sampai seribu? Guru di berbagai negara punya cara berbeda. Hari ini kita lihat empat metode dari luar, dengan angka-angka yang sudah kita kenal.";
 const SUARA_O2 = "Empat metode itu: Standard Addition, Regrouping, Counting On, dan Partial Sums.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Penjumlahan Bersusun, Menyimpan, Menghitung Maju, dan Jumlah Sebagian. Metode keempat adalah tambahan yang cocok dengan soal buku, karena menjumlahkan tiap nilai tempat secara terpisah.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Penjumlahan Bersusun, Menyimpan, Menghitung Maju, dan Jumlah Sebagian. Metode keempat cocok dengan soal-soal kita, karena menjumlahkan tiap nilai tempat secara terpisah.";
 const SUARA_O4 = "Semuanya menjawab satu pertanyaan: berapa jumlah dua atau tiga bilangan? Ada yang memakai kolom, menukar sepuluh satuan, melompat pada garis bilangan, atau menjumlahkan tiap nilai tempat secara terpisah.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk menjumlahkan",
-  sumber: "Metode luar: pembuka; BS hlm. 28–34",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -31,7 +31,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("menjumlahkan", ...kartu("po1", 14, 40, 120, 30, W.hijauMuda, ["131 + 321"], 10), ...kartu("po2", 166, 40, 120, 30, W.langit, ["189 + 245"], 10)),
       tambah("berbagai", emo("gl", 40, 128, "🌍", 30)),
       tambah("empat", ...kartu("po3", 80, 90, 140, 30, W.krem, ["124 + 411 + 363"], 10)),
-      tambah("angka", ...kartu("pk4", 70, 150, 160, 34, W.emas, ["4 metode, angka dari buku", "sampai 1.000"], 8.8)),
+      tambah("angka", ...kartu("pk4", 70, 150, 160, 34, W.emas, ["4 metode dari luar", "sampai 1.000"], 8.8)),
     ),
     k(
       SUARA_O2,
@@ -44,7 +44,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       bersih(0),
       tambah(0, judul("Nama dalam bahasa Indonesia")),
       ...NAMA_METODE_ID.map((m, i) => tambah(idx(SUARA_O3, ["Bersusun,", "Menyimpan,", "Maju,", "Sebagian."][i].replace(/[^A-Za-z]/g, "")), ...kartu(`n${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
-      tambah("tambahan", emo("n4", 266, 164, "⭐", 20)),
+      tambah("keempat", emo("n4", 266, 164, "⭐", 20)),
     ),
     k(
       SUARA_O4,
@@ -95,21 +95,21 @@ export const ADEGAN_LUAR_STANDAR: AdeganStory = {
 };
 
 /* ------------------------------ 3. Standard Addition: penerapan dengan angka buku ------------------------------ */
-const SUARA_T1 = "Tiga perpustakaan di buku: seratus dua puluh empat, empat ratus sebelas, dan tiga ratus enam puluh tiga. Satuan: empat, satu, tiga jadi delapan. Puluhan: dua, satu, enam jadi sembilan. Ratusan jadi delapan.";
-const SUARA_T2 = "Contoh dengan simpan, dari latihan buku: dua ratus tujuh puluh tujuh ditambah seratus empat puluh enam. Satuan: tujuh ditambah enam jadi tiga belas, tulis tiga simpan satu. Puluhan jadi dua belas, ratusan jadi empat.";
+const SUARA_T1 = "Tiga perpustakaan tadi: seratus dua puluh empat, empat ratus sebelas, dan tiga ratus enam puluh tiga. Satuan: empat, satu, tiga jadi delapan. Puluhan: dua, satu, enam jadi sembilan. Ratusan jadi delapan.";
+const SUARA_T2 = "Contoh dengan simpan: dua ratus tujuh puluh tujuh ditambah seratus empat puluh enam. Satuan: tujuh ditambah enam jadi tiga belas, tulis tiga simpan satu. Puluhan jadi dua belas, ratusan jadi empat.";
 const SUARA_T3 = "Hasilnya empat ratus dua puluh tiga. Pemeriksaan kira-kira: tiga ratus ditambah seratus lima puluh sekitar empat ratus lima puluh, dekat dengan hasilnya.";
 const BUKU3 = CONTOH.buku;
 const DUA_B = LATIHAN_DUA[1];
 
 export const ADEGAN_LUAR_STANDAR_TERAPAN: AdeganStory = {
   id: "luar-standar-terapan",
-  judul: "Standard Addition pada angka buku",
-  sumber: "Metode luar: Standard Addition; BS hlm. 30, 32",
+  judul: "Standard Addition: contoh angka",
+  sumber: "Metode luar: Standard Addition (contoh)",
   latar: "#F0FDF4",
   ketukan: [
     k(
       SUARA_T1,
-      tambah(0, judul("Penjumlahan Bersusun: soal buku")),
+      tambah(0, judul("Penjumlahan Bersusun: tiga bilangan")),
       tambah("Tiga", kepala(0)),
       tambah("seratus", ...susunAwal("st", 14, 62, BUKU3)),
       tambah("Satuan:", susunLangkah("st", 14, 62, BUKU3, 2).label, susunLangkah("st", 14, 62, BUKU3, 2).eq),
@@ -192,19 +192,19 @@ export const ADEGAN_LUAR_SIMPAN: AdeganStory = {
 
 
 /* ------------------------------ 5. Regrouping: penerapan dengan angka buku ------------------------------ */
-const SUARA_U1 = "Dua keranjang jeruk di buku: seratus delapan puluh sembilan ditambah dua ratus empat puluh lima. Satuan: sembilan ditambah lima jadi empat belas. Tukar sepuluh menjadi satu puluhan, sisa empat.";
+const SUARA_U1 = "Dua keranjang jeruk tadi: seratus delapan puluh sembilan ditambah dua ratus empat puluh lima. Satuan: sembilan ditambah lima jadi empat belas. Tukar sepuluh menjadi satu puluhan, sisa empat.";
 const SUARA_U2 = "Puluhan: delapan puluhan ditambah empat puluhan ditambah satu puluhan baru jadi tiga belas puluhan. Tukar sepuluh puluhan menjadi satu ratusan, sisa tiga puluhan.";
-const SUARA_U3 = "Ratusan: satu ditambah dua ditambah satu ratusan baru jadi empat. Hasilnya empat ratus tiga puluh empat jeruk, sama dengan hasil buku.";
+const SUARA_U3 = "Ratusan: satu ditambah dua ditambah satu ratusan baru jadi empat. Hasilnya empat ratus tiga puluh empat jeruk, sama dengan cara susun panjang tadi.";
 
 export const ADEGAN_LUAR_SIMPAN_TERAPAN: AdeganStory = {
   id: "luar-simpan-terapan",
   judul: "Regrouping pada dua keranjang jeruk",
-  sumber: "Metode luar: Regrouping; BS hlm. 31",
+  sumber: "Metode luar: Regrouping (contoh)",
   latar: "#EFF6FF",
   ketukan: [
     k(
       SUARA_U1,
-      tambah(0, judul("Menyimpan: jeruk di buku")),
+      tambah(0, judul("Menyimpan: dua keranjang jeruk")),
       tambah("Dua", kepala(1)),
       tambah("seratus", teks("ul", 150, 62, "189 + 245", 9.6, W.hitam)),
       tambah("Satuan:", ...balokSatuan("rj", 20, 82, 14, 7, 12, 3, W.merahMuda), teks("rje", 80, 130, "9 + 5 = 14 satuan", 9, W.merah)),

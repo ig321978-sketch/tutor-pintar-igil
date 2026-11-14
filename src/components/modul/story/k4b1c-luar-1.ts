@@ -26,7 +26,7 @@ export const kolomL = (id: string, c: number, warna: string = W.arsir) => kotak(
 const tandaDari = (a: number, b: number) => (a > b ? ">" : a < b ? "<" : "=");
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana kita memutuskan bilangan mana yang lebih besar, lalu mengurutkannya? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana kita memutuskan bilangan mana yang lebih besar, lalu mengurutkannya? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari pelajaran kita.";
 const SUARA_O2 = "Empat metode itu: Compare Leftmost, Number Line Order, Ordering Sets, dan Bar Model Compare.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Banding dari Kiri, Urutan Garis Bilangan, Mengurutkan Himpunan, dan Banding Batang.";
 const SUARA_O4 = "Semuanya menjawab dua pertanyaan: mana yang lebih besar, dan bagaimana urutannya. Ada yang membaca dari kiri, memakai garis, memilih satu per satu, atau mengukur panjang batang.";
@@ -34,7 +34,7 @@ const SUARA_O4 = "Semuanya menjawab dua pertanyaan: mana yang lebih besar, dan b
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk membandingkan dan mengurutkan",
-  sumber: "Metode luar: pembuka; BS hlm. 16–23",
+  sumber: "Metode luar: empat cara membandingkan",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -115,7 +115,7 @@ export const ADEGAN_LUAR_KIRI: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Compare Leftmost: penerapan pada soal buku ------------------------------ */
+/* ------------------------------ 3. Compare Leftmost: penerapan pada soal latihan ------------------------------ */
 const SUARA_M1 = "Delapan ribu tujuh ratus lima puluh dan tujuh ribu lima ratus. Angka paling kiri langsung berbeda: delapan lawan tujuh, jadi yang pertama lebih besar.";
 const SUARA_M2 = "Lima ribu enam ratus empat belas dan lima ribu tiga ratus enam puluh delapan. Kiri sama, ratusan enam lawan tiga, jadi yang pertama lebih besar.";
 const SUARA_M3 = "Tujuh ribu seratus dua puluh empat dan tujuh ribu seratus sembilan puluh tujuh. Dua tempat pertama sama, puluhan dua lawan sembilan, jadi yang kedua lebih besar.";
@@ -138,8 +138,8 @@ function ketukanKiri(suara: string, id: string, a: number, b: number) {
 }
 export const ADEGAN_LUAR_KIRI_TERAPAN: AdeganStory = {
   id: "luar-kiri-terapan",
-  judul: "Compare Leftmost pada soal buku",
-  sumber: "Metode luar: Compare Leftmost; BS hlm. 18–20",
+  judul: "Compare Leftmost pada soal latihan",
+  sumber: "Metode luar: Compare Leftmost",
   latar: "#ECFDF5",
   ketukan: [ketukanKiri(SUARA_M1, "ma", 8750, 7500), ketukanKiri(SUARA_M2, "mb", 5614, 5368), ketukanKiri(SUARA_M3, "mc", 7124, 7197), ketukanKiri(SUARA_M4, "md", 9999, 9998)],
 };
@@ -190,8 +190,8 @@ export const ADEGAN_LUAR_GARIS: AdeganStory = {
 /* ------------------------------ 5. Number Line Order: penerapan pada gunung dan Ayo Berlatih ------------------------------ */
 const SUARA_P1 = "Sinabung, Semeru, dan Rinjani ditandai pada garis dari dua ribu sampai empat ribu. Sinabung, dua ribu empat ratus enam puluh, paling kiri.";
 const SUARA_P2 = "Semeru, tiga ribu enam ratus tujuh puluh enam, jauh di kanan. Rinjani, tiga ribu tujuh ratus dua puluh enam, sedikit lebih kanan lagi, jadi lebih besar daripada Semeru.";
-const SUARA_P3 = "Baca dari kiri: Sinabung, Semeru, Rinjani. Itulah urutan dari terkecil ke terbesar, sama dengan hasil buku: dua ribu empat ratus enam puluh, tiga ribu enam ratus tujuh puluh enam, tiga ribu tujuh ratus dua puluh enam.";
-const SUARA_P4 = "Garis bilangan untuk soal latihan buku: tandai tujuh ribu lima ratus tujuh puluh, lima ribu dua ratus empat puluh, tiga ribu empat puluh satu, dan sembilan ribu sembilan ratus empat puluh satu.";
+const SUARA_P3 = "Baca dari kiri: Sinabung, Semeru, Rinjani. Itulah urutan dari terkecil ke terbesar, sama dengan hasil tadi: dua ribu empat ratus enam puluh, tiga ribu enam ratus tujuh puluh enam, tiga ribu tujuh ratus dua puluh enam.";
+const SUARA_P4 = "Garis bilangan untuk soal latihan: tandai tujuh ribu lima ratus tujuh puluh, lima ribu dua ratus empat puluh, tiga ribu empat puluh satu, dan sembilan ribu sembilan ratus empat puluh satu.";
 
 /** Garis dua ribu sampai empat ribu untuk tinggi gunung, x 30 ke 270 di y 120, tanda tiap lima ratus. */
 export const GG = { x0: 30, x1: 270, y: 120, dari: 2000, sampai: 4000, langkah: 500 } as const;
@@ -209,7 +209,7 @@ const xl = (n: number) => xGaris(n, GK.x0, GK.x1, GK.dari, GK.sampai);
 export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
   id: "luar-garis-terapan",
   judul: "Number Line Order pada tinggi gunung dan soal latihan",
-  sumber: "Metode luar: Number Line Order; BS hlm. 21–23",
+  sumber: "Metode luar: Number Line Order",
   latar: "#E0F2FE",
   ketukan: [
     k(

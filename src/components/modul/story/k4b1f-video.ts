@@ -8,8 +8,8 @@ import { ADEGAN_LUAR_KOMPENSASI, ADEGAN_LUAR_KOMPENSASI_TERAPAN, ADEGAN_LUAR_NAI
 /** Kelas 4 Bab 1 Sub-Bab F (Pengurangan Bilangan Cacah sampai 1.000): video materi kurikulum dan video metode luar, dua video terpisah. */
 export const VIDEO_MATERI_K4B1F: VideoStory = {
   id: "k4b1f-materi",
-  judul: "Pengurangan Bilangan Cacah sampai 1.000 menurut Buku",
-  subjudul: "Materi kurikulum · Buku Siswa hlm. 34–39",
+  judul: "Pengurangan Bilangan Cacah sampai 1.000",
+  subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
     ADEGAN_APERSEPSI,
@@ -29,7 +29,7 @@ export const VIDEO_MATERI_K4B1F: VideoStory = {
 export const VIDEO_LUAR_K4B1F: VideoStory = {
   id: "k4b1f-luar",
   judul: "Pengurangan sampai 1.000: Metode dari Luar",
-  subjudul: "Empat metode luar · angka dari buku",
+  subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
     ADEGAN_LUAR_PEMBUKA,

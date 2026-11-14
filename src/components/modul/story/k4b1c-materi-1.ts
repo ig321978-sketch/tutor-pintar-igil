@@ -75,13 +75,13 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
 /* ------------------------------ 2. Ayo Mengamati: di pasar tradisional (Buku Siswa hlm. 16-17; Panduan Guru hlm. 41) ------------------------------ */
 const SUARA_M1 = "Ayo Mengamati. Slamet dan Ibu akan membuat jus buah. Mereka pergi ke pasar tradisional untuk membeli buah manggis dan apel.";
 const SUARA_M2 = "Ibu Slamet membeli setengah kilogram manggis dengan harga tujuh ribu lima ratus rupiah, dan seperempat kilogram apel dengan harga enam ribu tujuh ratus lima puluh rupiah.";
-const SUARA_M3 = "Pertanyaan di buku: harga bengkoang di kios A tujuh ribu lima ratus rupiah, dan di kios B delapan ribu tujuh ratus lima puluh rupiah. Kios manakah yang kalian putuskan untuk membeli, dan mengapa?";
-const SUARA_M4 = "Untuk memutuskan, buku memberi percakapan: apakah delapan ribu tujuh ratus lima puluh lebih dari tujuh ribu lima ratus? Jawabannya kita cari lewat aktivitas dan nilai tempat.";
+const SUARA_M3 = "Pertanyaannya: harga bengkoang di kios A tujuh ribu lima ratus rupiah, dan di kios B delapan ribu tujuh ratus lima puluh rupiah. Kios manakah yang kalian putuskan untuk membeli, dan mengapa?";
+const SUARA_M4 = "Untuk memutuskan, kita tanyakan: apakah delapan ribu tujuh ratus lima puluh lebih dari tujuh ribu lima ratus? Jawabannya kita cari lewat aktivitas dan nilai tempat.";
 
 export const ADEGAN_PASAR: AdeganStory = {
   id: "pasar",
   judul: "Ayo Mengamati: harga buah di pasar",
-  sumber: "Buku Siswa hlm. 16–17; Panduan Guru hlm. 41",
+  sumber: "Materi: harga buah di pasar",
   latar: "#FFFBEB",
   kutipan: [
     "Ayo Mengamati",
@@ -125,8 +125,8 @@ export const ADEGAN_PASAR: AdeganStory = {
     k(
       SUARA_M4,
       bersih(0),
-      tambah(0, judul("Percakapan di buku")),
-      tambah("percakapan:", emo("pb", 60, 84, "🤔", 38)),
+      tambah(0, judul("Percakapan untuk memutuskan")),
+      tambah("tanyakan:", emo("pb", 60, 84, "🤔", 38)),
       tambah("apakah", ...kartu("pc", 100, 56, 190, 56, W.langit, ["Apakah 8.750", "lebih dari 7.500?"], 10.4)),
       tambah("aktivitas", ...kartu("pd", 30, 134, 240, 34, W.hijauMuda, ["jawab lewat aktivitas dan nilai tempat"], 8.6)),
     ),
@@ -135,14 +135,14 @@ export const ADEGAN_PASAR: AdeganStory = {
 
 /* ------------------------------ 3. Aktivitas 3: alat, kelompok, dan kartu bilangan (Buku Siswa hlm. 17; Panduan Guru hlm. 41) ------------------------------ */
 const SUARA_K1 = "Ayo Beraktivitas. Aktivitas tiga berjudul Membandingkan Bilangan. Alat dan bahannya: kertas karton, cutter atau gunting, penggaris, spidol, papan spon, dan delapan buah paku.";
-const SUARA_K2 = "Langkah satu: buat kelompok kerja tiga sampai lima orang. Panduan guru menyarankan kelompok heterogen, campuran karakteristik dan kemampuan murid, supaya tumbuh gotong royong.";
-const SUARA_K3 = "Langkah dua: siapkan kertas karton sepuluh sentimeter kali sepuluh sentimeter sebanyak sepuluh buah, berlubang di atas. Panduan guru menyebut dua puluh buah, jadi kedua angka kita catat.";
+const SUARA_K2 = "Langkah satu: buat kelompok kerja tiga sampai lima orang. Sebaiknya kelompoknya heterogen, campuran karakteristik dan kemampuan murid, supaya tumbuh gotong royong.";
+const SUARA_K3 = "Langkah dua: siapkan kertas karton sepuluh sentimeter kali sepuluh sentimeter berlubang di atas. Satu paket sepuluh kartu, dua paket jadi dua puluh kartu, jadi siapkan dua puluh buah.";
 const SUARA_K4 = "Langkah tiga sampai lima: tulis angka nol sampai sembilan pada kartu dengan warna spidol berbeda, lalu gunting menjadi kartu bilangan. Hasilnya kalian mempunyai dua paket kartu bilangan.";
 
 export const ADEGAN_KARTU: AdeganStory = {
   id: "kartu",
   judul: "Aktivitas 3: alat, kelompok, dan kartu bilangan",
-  sumber: "Buku Siswa hlm. 17; Panduan Guru hlm. 41",
+  sumber: "Materi: alat, kelompok, kartu bilangan",
   latar: "#F0FDF4",
   kutipan: [
     "Ayo Beraktivitas",
@@ -186,9 +186,9 @@ export const ADEGAN_KARTU: AdeganStory = {
       bersih(0),
       tambah(0, judul("Langkah 2: kartu karton")),
       tambah("kertas", ...kartuAngka("kt", 124, 40, "", W.krem, 52, 52), teks("kts", 150, 108, "10 cm × 10 cm", 9, W.biru)),
-      tambah("sepuluh@3", ...kartu("kbs", 14, 124, 130, 34, W.hijauMuda, ["Buku Siswa:", "10 buah"], 9)),
-      tambah("Panduan", ...kartu("kbg", 156, 124, 130, 34, W.langit, ["Panduan Guru:", "20 buah"], 9)),
-      tambah("catat.", teks("kcc", 150, 180, "dua paket butuh 20 kartu", 9.4, W.merah)),
+      tambah("sepuluh@3", ...kartu("kbs", 14, 124, 130, 34, W.hijauMuda, ["satu paket:", "10 kartu"], 9)),
+      tambah("jadi", ...kartu("kbg", 156, 124, 130, 34, W.langit, ["dua paket:", "20 kartu"], 9)),
+      tambah("buah.", teks("kcc", 150, 180, "dua paket butuh 20 kartu", 9.4, W.merah)),
     ),
     k(
       SUARA_K4,
@@ -204,7 +204,7 @@ export const ADEGAN_KARTU: AdeganStory = {
 
 /* ------------------------------ 4. Aktivitas 3: papan spon dan membandingkan kartu (Buku Siswa hlm. 18; Panduan Guru hlm. 42) ------------------------------ */
 const SUARA_L1 = "Langkah enam dan tujuh: potong papan spon delapan puluh sentimeter kali dua puluh sentimeter, beri pemisah menjadi bagian kiri dan kanan, lalu tancapkan empat paku di tiap bagian.";
-const SUARA_L2 = "Langkah delapan: letakkan kartu bilangan pada paku. Panduan guru: tiap bagian empat kartu. Kita pasang delapan, tujuh, lima, nol di kiri, dan tujuh, lima, nol, nol di kanan.";
+const SUARA_L2 = "Langkah delapan: letakkan kartu bilangan pada paku. Tiap bagian empat kartu. Kita pasang delapan, tujuh, lima, nol di kiri, dan tujuh, lima, nol, nol di kanan.";
 const SUARA_L3 = "Langkah sembilan: sebutkan nilai tempat tiap kartu, dari kiri ke kanan: ribuan, ratusan, puluhan, dan satuan.";
 const SUARA_L4 = "Langkah sepuluh: ambil kartu di tempat ribuan dan bandingkan. Jika kedua kartu bernilai sama, ambil dua kartu di tempat ratusan, seterusnya sampai tempat satuan.";
 const SUARA_L5 = "Langkah sebelas: nyatakan perbandingannya. Delapan lebih dari tujuh, jadi bilangan di kiri, delapan ribu tujuh ratus lima puluh, lebih dari bilangan di kanan, tujuh ribu lima ratus.";
@@ -220,7 +220,7 @@ const kartuPapan = (sisi: "l" | "r", i: number, d: number) => kartuAngka(`p${sis
 export const ADEGAN_PAPAN: AdeganStory = {
   id: "papan",
   judul: "Aktivitas 3: papan spon dan membandingkan kartu",
-  sumber: "Buku Siswa hlm. 18; Panduan Guru hlm. 42",
+  sumber: "Materi: papan spon, bandingkan kartu",
   latar: "#ECFDF5",
   kutipan: [
     "Potong papan spon dengan panjang 80 cm x 20 cm, kemudian diberi tanda",

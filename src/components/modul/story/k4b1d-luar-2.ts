@@ -12,7 +12,7 @@ const SUARA_F4 = "Atau tujuh puluh tiga ratusan, sebab tujuh puluh tiga kali ser
 export const ADEGAN_LUAR_KELOMPOK: AdeganStory = {
   id: "luar-kelompok",
   judul: "Flexible Grouping: menukar kelompok, nilai tetap",
-  sumber: "Metode luar: Flexible Grouping (contoh video)",
+  sumber: "Metode luar: Flexible Grouping",
   latar: "#FEFCE8",
   ketukan: [
     k(
@@ -47,7 +47,7 @@ export const ADEGAN_LUAR_KELOMPOK: AdeganStory = {
 };
 
 /* ------------------------------ 2. Flexible Grouping: penerapan pada uang Helen ------------------------------ */
-const SUARA_FT1 = "Terapan pada uang Helen di buku. Mulai dari tujuh ribu tiga ratus rupiah: tiga lembar dua ribu, satu keping seribu, dan tiga keping seratus.";
+const SUARA_FT1 = "Sekarang kita pakai pada uang Helen. Mulai dari tujuh ribu tiga ratus rupiah: tiga lembar dua ribu, satu keping seribu, dan tiga keping seratus.";
 const SUARA_FT2 = "Tukar satu lembar dua ribu dengan dua keping seribu. Nilainya tetap, tetapi pengelompokannya berubah.";
 const SUARA_FT3 = "Tukar lagi satu lembar dua ribu dengan dua keping seribu. Kini ada lima keping seribu, persis jumlah seribu milik Helen.";
 const SUARA_FT4 = "Sepuluh ribu rupiah dimulai dari lima lembar dua ribu. Tukar satu lembar dua ribu dengan satu keping seribu dan dua keping lima ratus.";
@@ -61,7 +61,7 @@ const H2 = deretUang("h2", 78, URAIAN_10000[2]);
 export const ADEGAN_LUAR_KELOMPOK_TERAPAN: AdeganStory = {
   id: "luar-kelompok-terapan",
   judul: "Flexible Grouping pada uang Helen",
-  sumber: "Metode luar: Flexible Grouping (uang buku)",
+  sumber: "Metode luar: Flexible Grouping (uang)",
   latar: "#FEFCE8",
   ketukan: [
     k(
@@ -97,13 +97,13 @@ export const ADEGAN_LUAR_KELOMPOK_TERAPAN: AdeganStory = {
 /* ------------------------------ 3. Number Bonds: konsep ------------------------------ */
 const SUARA_I1 = "Number Bonds, atau Ikatan Bilangan, menggambar satu bilangan utuh yang terikat pada dua bagiannya.";
 const SUARA_I2 = "Utuh sama dengan bagian ditambah bagian. Jika utuh dan satu bagian sudah diketahui, bagian lainnya dicari dengan bertanya: perlu ditambah berapa agar menjadi utuh?";
-const SUARA_I3 = "Contoh dari buku: enam ribu delapan ratus empat puluh sembilan terikat pada enam ribu dan satu bagian lain yang belum diketahui.";
+const SUARA_I3 = "Contohnya: enam ribu delapan ratus empat puluh sembilan terikat pada enam ribu dan satu bagian lain yang belum diketahui.";
 const SUARA_I4 = "Cari bagian yang hilang: enam ribu ditambah berapa agar menjadi enam ribu delapan ratus empat puluh sembilan? Jawabnya delapan ratus empat puluh sembilan.";
 
 export const ADEGAN_LUAR_IKATAN: AdeganStory = {
   id: "luar-ikatan",
   judul: "Number Bonds: utuh dan bagian yang terikat",
-  sumber: "Metode luar: Number Bonds (contoh video)",
+  sumber: "Metode luar: Number Bonds",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -119,7 +119,7 @@ export const ADEGAN_LUAR_IKATAN: AdeganStory = {
     k(
       SUARA_I3,
       bersih(0),
-      tambah(0, judul("Ikatan dari angka buku"), kepala(3), ...ikatan("ib", 150, 76, 66, 58, 24, "", "", "", 8.6)),
+      tambah(0, judul("Ikatan dari angka contoh"), kepala(3), ...ikatan("ib", 150, 76, 66, 58, 24, "", "", "", 8.6)),
       tambah(idx(SUARA_I3, "sembilan"), teks("ib-ut", 150, 79, "6.849", 8.6, W.biru)),
       tambah(idx(SUARA_I3, "enam", 2), teks("ib-lt", 84, 137, "6.000", 8.6, W.biru)),
       tambah(idx(SUARA_I3, "belum"), teks("ib-rt", 216, 138, "?", 14, W.merah)),
@@ -134,14 +134,14 @@ export const ADEGAN_LUAR_IKATAN: AdeganStory = {
 
 /* ------------------------------ 4. Number Bonds: penerapan ------------------------------ */
 const SUARA_IT1 = "Terapan pada uang Helen. Slamet membeli seharga tujuh ribu tiga ratus rupiah dan membayar sepuluh ribu rupiah. Berapa kembaliannya?";
-const SUARA_IT2 = "Bagian yang hilang: tujuh ribu tiga ratus ditambah berapa agar menjadi sepuluh ribu? Jawabnya dua ribu tujuh ratus rupiah. Ini tambahan video, bukan soal buku.";
+const SUARA_IT2 = "Bagian yang hilang: tujuh ribu tiga ratus ditambah berapa agar menjadi sepuluh ribu? Jawabnya dua ribu tujuh ratus rupiah.";
 const SUARA_IT3 = "Ikatan juga bertingkat. Bilangan enam ribu tiga puluh lima terikat pada enam ribu dan tiga puluh lima, lalu tiga puluh lima terikat pada tiga puluh dan lima.";
 const SUARA_IT4 = "Periksa dengan menjumlahkan: tiga puluh ditambah lima sama dengan tiga puluh lima, dan enam ribu ditambah tiga puluh lima sama dengan enam ribu tiga puluh lima.";
 
 export const ADEGAN_LUAR_IKATAN_TERAPAN: AdeganStory = {
   id: "luar-ikatan-terapan",
   judul: "Number Bonds pada uang Helen dan 6.035",
-  sumber: "Metode luar: Number Bonds (buku + tambahan)",
+  sumber: "Metode luar: Number Bonds (terapan)",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -180,7 +180,7 @@ const SUARA_Z1 = "Ringkasan. Composition menyusun bilangan dari kartu nilai, sep
 const SUARA_Z2 = "Decomposition mengupas bilangan dari kiri, enam ribu delapan ratus empat puluh sembilan menjadi enam ribu, delapan ratus, empat puluh, dan sembilan.";
 const SUARA_Z3 = "Flexible Grouping menukar kelompok tanpa mengubah nilai, misalnya sepuluh puluhan ditukar satu ratusan, atau tujuh ribu tiga ratus menjadi tujuh puluh tiga ratusan.";
 const SUARA_Z4 = "Number Bonds mengikat bilangan utuh dengan bagiannya, sehingga bagian yang hilang dicari dengan bertanya perlu ditambah berapa, seperti tujuh ribu tiga ratus ditambah dua ribu tujuh ratus sama dengan sepuluh ribu.";
-const SUARA_Z5 = "Keempat cara menjawab pertanyaan yang sama dari buku: bilangan apa yang terbentuk, dan bagaimana mengurainya. Pilih cara yang paling cocok dengan soalnya.";
+const SUARA_Z5 = "Keempat cara menjawab pertanyaan yang sama: bilangan apa yang terbentuk, dan bagaimana mengurainya. Pilih cara yang paling cocok dengan soalnya.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",

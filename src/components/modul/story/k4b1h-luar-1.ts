@@ -11,15 +11,15 @@ const IKON_METODE = ["🍬", "📏", "🔁", "➖"];
 export const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana membagi empat puluh delapan permen kepada empat anak? Guru di berbagai negara punya cara berbeda. Di video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana membagi empat puluh delapan permen kepada empat anak? Guru di berbagai negara punya cara berbeda. Di video ini kita lihat empat metode dari luar, memakai soal pembagian yang sama.";
 const SUARA_O2 = "Empat metode itu: Fair Share, Measurement Division, Inverse of Multiply, dan Repeated Subtraction.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Bagi Rata, Bagi Ukur, Kebalikan Kali, dan Pengurangan Berulang. Metode keempat adalah tambahan yang cocok dengan soal pembagian di buku.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Bagi Rata, Bagi Ukur, Kebalikan Kali, dan Pengurangan Berulang. Metode keempat cocok sekali dengan soal pembagian bilangan cacah.";
 const SUARA_O4 = "Semuanya menjawab pertanyaan yang sama dengan cara berbeda: berapa tiap anak, atau berapa kotak, ketika benda dibagi sama banyak.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk pembagian sampai 100",
-  sumber: "Metode luar: pembuka; BS hlm. 44–47",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -41,7 +41,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       bersih(0),
       tambah(0, judul("Nama dalam bahasa Indonesia")),
       ...NAMA_METODE_ID.map((m, i) => tambah(idx(SUARA_O3, ["Rata", "Ukur", "Kebalikan", "Pengurangan"][i]), ...kartu(`n${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
-      tambah("tambahan", emo("n4", 268, 148, "⭐", 20)),
+      tambah("keempat", emo("n4", 268, 148, "⭐", 20)),
     ),
     k(
       SUARA_O4,
@@ -57,7 +57,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 
 /* ------------------------------ 2. Fair Share: konsep ------------------------------ */
 const SUARA_P1 = "Metode pertama, Fair Share, atau Bagi Rata. Yang diketahui banyak benda dan banyak kelompok, yang dicari isi tiap kelompok.";
-const SUARA_P2 = "Bagikan satu per satu secara bergantian ke tiap wadah, seperti membagi kartu. Contoh dari buku: sepuluh kelereng untuk lima orang.";
+const SUARA_P2 = "Bagikan satu per satu secara bergantian ke tiap wadah, seperti membagi kartu. Contoh: sepuluh kelereng untuk lima orang.";
 const SUARA_P3 = "Putaran kedua: tiap wadah kembali mendapat satu. Sepuluh kelereng habis, dan setiap wadah berisi dua.";
 const SUARA_P4 = "Aturannya: semua benda harus terbagi, dan tiap wadah harus sama banyak. Kalau ada sisa, benda itu tidak habis dibagi rata.";
 
@@ -106,16 +106,16 @@ export const ADEGAN_LUAR_BAGI_RATA: AdeganStory = {
 /* ------------------------------ 3. Fair Share: penerapan (permen Pak Wicak, soal a dan e) ------------------------------ */
 const SUARA_Q1 = "Terapkan pada permen Pak Wicak: empat puluh delapan permen untuk empat anak. Bagikan bergiliran, setiap putaran memberi satu permen kepada tiap anak.";
 const SUARA_Q2 = "Setelah dua belas putaran permen habis. Setiap anak mendapat dua belas permen, jadi empat puluh delapan dibagi empat sama dengan dua belas.";
-const SUARA_Q3 = "Soal buku a: tiga puluh enam permen untuk dua anak. Bagi bergiliran sampai habis, tiap anak mendapat delapan belas. Tini menerima delapan belas.";
-const SUARA_Q4 = "Soal buku e: lima puluh lima gantungan kunci untuk lima orang. Setiap orang mendapat sebelas, jadi Asep mendapat sebelas.";
+const SUARA_Q3 = "Soal pertama: tiga puluh enam permen untuk dua anak. Bagi bergiliran sampai habis, tiap anak mendapat delapan belas. Tini menerima delapan belas.";
+const SUARA_Q4 = "Soal berikutnya: lima puluh lima gantungan kunci untuk lima orang. Setiap orang mendapat sebelas, jadi Asep mendapat sebelas.";
 
 const WD4 = [0, 1, 2, 3];
 const NAMA5 = ["Azizah", "Karel", "Slamet", "Asep", "Helen"];
 
 export const ADEGAN_LUAR_BAGI_RATA_TERAPAN: AdeganStory = {
   id: "luar-bagi-rata-terapan",
-  judul: "Fair Share pada soal buku: 48 permen, Tini, dan Asep",
-  sumber: "Metode luar: Fair Share; BS hlm. 44, 47",
+  judul: "Fair Share pada soal: 48 permen, Tini, dan Asep",
+  sumber: "Metode luar: Fair Share, 48 permen",
   latar: "#FEFCE8",
   ketukan: [
     k(
@@ -136,7 +136,7 @@ export const ADEGAN_LUAR_BAGI_RATA_TERAPAN: AdeganStory = {
     k(
       SUARA_Q3,
       bersih(0),
-      tambah(0, judul("Soal buku a: 36 permen")),
+      tambah(0, judul("Soal a: 36 permen")),
       tambah("Soal", ...kaleng("ka", 16, 62, 44, 52), teks("kat", 38, 94, "36", 15, W.putih)),
       tambah("dua", ...kartu("ta", 84, 46, 96, 60, W.hijauMuda, ["Tono", "?"], 11)),
       tambah("dua", ...kartu("ti", 190, 46, 96, 60, W.pink, ["Tini", "?"], 11)),
@@ -147,7 +147,7 @@ export const ADEGAN_LUAR_BAGI_RATA_TERAPAN: AdeganStory = {
     k(
       SUARA_Q4,
       bersih(0),
-      tambah(0, judul("Soal buku e: 55 gantungan")),
+      tambah(0, judul("Soal e: 55 gantungan")),
       tambah("gantungan", ...NAMA5.flatMap((n, i) => kartu(`ge${i}`, 6 + i * 58, 50, 54, 56, [W.hijauMuda, W.langit, W.krem, W.pink, W.lavender][i], [n, "?"], 8.4))),
       tambah("Setiap", teks("qf", 150, 140, "55 : 5 = ?", 20, W.biru)),
       ubah("sebelas", { id: "qf", isi: "55 : 5 = 11" }, ...NAMA5.map((_, i) => ({ id: `ge${i}-t1`, isi: "11" }))),
@@ -209,15 +209,15 @@ export const ADEGAN_LUAR_BAGI_UKUR: AdeganStory = {
 };
 
 /* ------------------------------ 5. Measurement Division: penerapan (soal c dan d) ------------------------------ */
-const SUARA_S1 = "Soal buku c: delapan puluh satu kue, tiap kotak berisi tiga kue. Yang dicari bukan isi kotak, melainkan banyak kotak.";
+const SUARA_S1 = "Soal c: delapan puluh satu kue, tiap kotak berisi tiga kue. Yang dicari bukan isi kotak, melainkan banyak kotak.";
 const SUARA_S2 = "Ukur tiga kue demi tiga kue. Setiap petak di batang ini satu kotak berisi tiga kue, sampai delapan puluh satu habis.";
-const SUARA_S3 = "Petak dihitung, ada dua puluh tujuh. Jadi dua puluh tujuh kotak, cocok dengan kunci buku.";
-const SUARA_S4 = "Soal buku d: sembilan puluh enam telur, tiap kotak delapan telur. Batangnya punya dua belas petak, jadi dua belas kotak, cocok dengan kunci buku.";
+const SUARA_S3 = "Petak dihitung, ada dua puluh tujuh. Jadi dua puluh tujuh kotak, dan ini cocok dengan hitungan perkalian.";
+const SUARA_S4 = "Soal d: sembilan puluh enam telur, tiap kotak delapan telur. Batangnya punya dua belas petak, jadi dua belas kotak, dan itu benar.";
 
 export const ADEGAN_LUAR_BAGI_UKUR_TERAPAN: AdeganStory = {
   id: "luar-bagi-ukur-terapan",
   judul: "Measurement Division pada soal buku c dan d",
-  sumber: "Metode luar: Measurement Division; BS 47",
+  sumber: "Metode luar: Measurement Division",
   latar: "#F0F9FF",
   ketukan: [
     k(

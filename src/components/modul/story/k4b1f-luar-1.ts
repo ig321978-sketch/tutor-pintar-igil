@@ -14,15 +14,15 @@ export const kepala = (i: number) => kartu("hd", 6, 24, 288, 22, WARNA_METODE[i]
 const akhir = (suara: string): number => suara.split(/\s+/).filter(Boolean).length - 1;
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana kita mengurangi bilangan sampai seribu dengan tepat? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana kita mengurangi bilangan sampai seribu dengan tepat? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, dengan angka-angka yang sudah kita pelajari.";
 const SUARA_O2 = "Empat metode itu: Standard Subtraction, Borrowing, Counting Up, dan Compensation.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Pengurangan Bersusun, Meminjam, Menghitung Naik, dan Kompensasi. Metode keempat adalah tambahan yang cocok dengan soal cara yang lebih mudah di buku.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Pengurangan Bersusun, Meminjam, Menghitung Naik, dan Kompensasi. Metode keempat melengkapi tiga cara yang kita pelajari di kelas.";
 const SUARA_O4 = "Semuanya menjawab satu pertanyaan: berapa selisih dua bilangan? Dengan menulis bersusun, membuka puluhan, melompat naik, atau menyesuaikan angka agar lebih bulat.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk pengurangan",
-  sumber: "Metode luar: pembuka; BS hlm. 34–39",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -44,7 +44,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       bersih(0),
       tambah(0, judul("Nama dalam bahasa Indonesia")),
       ...NAMA_METODE_ID.map((m, i) => tambah(idx(SUARA_O3, ["Bersusun", "Meminjam", "Naik", "Kompensasi"][i]), ...kartu(`n${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
-      tambah("tambahan", emo("n4", 270, 20, "⭐", 18)),
+      tambah("melengkapi", emo("n4", 270, 20, "⭐", 18)),
     ),
     k(
       SUARA_O4,
@@ -114,10 +114,10 @@ export const ADEGAN_LUAR_STANDAR: AdeganStory = {
 };
 
 /* ------------------------------ 3. Standard Subtraction: penerapan dengan angka buku ------------------------------ */
-const SUARA_T1 = "Soal latihan nomor satu: enam ratus tiga puluh tiga dikurangi dua ratus sebelas. Satuan tiga kurang satu sama dengan dua, puluhan tiga kurang satu sama dengan dua, ratusan enam kurang dua sama dengan empat. Hasilnya empat ratus dua puluh dua.";
+const SUARA_T1 = "Coba hitung enam ratus tiga puluh tiga dikurangi dua ratus sebelas. Satuan tiga kurang satu sama dengan dua, puluhan tiga kurang satu sama dengan dua, ratusan enam kurang dua sama dengan empat. Hasilnya empat ratus dua puluh dua.";
 const SUARA_T2 = "Soal berikutnya: delapan ratus tujuh puluh sembilan dikurangi empat ratus tiga puluh enam. Satuan sembilan kurang enam sama dengan tiga, puluhan tujuh kurang tiga sama dengan empat, ratusan delapan kurang empat sama dengan empat. Hasilnya empat ratus empat puluh tiga.";
 const SUARA_T3 = "Soal dengan angka atas lebih kecil: lima ratus tujuh puluh tiga dikurangi dua ratus enam puluh delapan. Tiga kurang delapan tidak bisa, jadi di sini metode ini perlu bantuan meminjam. Hasil akhirnya tiga ratus lima.";
-const SUARA_T4 = "Periksa dengan kunci buku: empat ratus dua puluh dua, empat ratus empat puluh tiga, dan tiga ratus lima cocok semua. Standard Subtraction cukup untuk soal yang tidak perlu mengambil.";
+const SUARA_T4 = "Kita periksa hasilnya: empat ratus dua puluh dua, empat ratus empat puluh tiga, dan tiga ratus lima. Semuanya benar. Standard Subtraction cukup untuk soal yang tidak perlu mengambil.";
 
 const TS1 = soalNT("ta", 633, 211);
 const TS2 = soalNT("ta", 879, 436);
@@ -125,14 +125,14 @@ const TS3 = soalNT("ta", 573, 268);
 
 export const ADEGAN_LUAR_STANDAR_TERAPAN: AdeganStory = {
   id: "luar-standar-terapan",
-  judul: "Standard Subtraction pada soal buku",
-  sumber: "Metode luar: Standard Subtraction; BS 37–38",
+  judul: "Standard Subtraction pada soal latihan",
+  sumber: "Metode luar: Standard Subtraction",
   latar: "#ECFDF5",
   ketukan: [
     k(
       SUARA_T1,
       tambah(0, judul("Standard Subtraction: 633 − 211")),
-      tambah("Soal", ...TS1.dasar),
+      tambah("Coba", ...TS1.dasar),
       tambah(idx(SUARA_T1, "sama", 1), TS1.hasil(2)),
       tambah(idx(SUARA_T1, "sama", 2), TS1.hasil(1)),
       tambah(idx(SUARA_T1, "sama", 3), TS1.hasil(0)),
@@ -160,7 +160,7 @@ export const ADEGAN_LUAR_STANDAR_TERAPAN: AdeganStory = {
     k(
       SUARA_T4,
       bersih(0),
-      tambah(0, judul("Periksa dengan kunci buku")),
+      tambah(0, judul("Periksa hasilnya")),
       tambah("Periksa", ...[["633 − 211", "422"], ["879 − 436", "443"], ["573 − 268", "305"]].flatMap(([s, h], i) => [...kartu(`tp${i}`, 20, 34 + i * 38, 260, 30, W.hijauMuda, [`${s} = ${h}`], 12)])),
       tambah("cukup", ...kartu("tq", 20, 150, 260, 36, W.emas, ["tanpa mengambil: cukup", "Standard Subtraction"], 9.8)),
     ),
@@ -168,7 +168,7 @@ export const ADEGAN_LUAR_STANDAR_TERAPAN: AdeganStory = {
 };
 
 /* ------------------------------ 4. Borrowing: konsep ------------------------------ */
-const SUARA_B1 = "Metode kedua, Borrowing, atau Meminjam. Bila angka atas lebih kecil daripada angka bawah, kita meminjam satu dari kolom di sebelah kirinya. Di buku, tindakan ini disebut mengambil.";
+const SUARA_B1 = "Metode kedua, Borrowing, atau Meminjam. Bila angka atas lebih kecil daripada angka bawah, kita meminjam satu dari kolom di sebelah kirinya. Di kelas kita, tindakan ini disebut mengambil.";
 const SUARA_B2 = "Satu puluhan bernilai sepuluh satuan. Jadi satu batang puluhan dibuka menjadi sepuluh kotak satuan. Dua ratus empat puluh satu menjadi dua ratus, tiga puluh, dan sebelas satuan.";
 const SUARA_B3 = "Sekarang satuannya sebelas, cukup untuk dikurangi sembilan: sebelas kurang sembilan sama dengan dua. Puluhan tinggal tiga, kurang dua sama dengan satu. Ratusan dua kurang satu sama dengan satu. Hasilnya seratus dua belas.";
 const SUARA_B4 = "Bila puluhan juga tidak cukup, pinjam lagi dari ratusan. Satu ratusan dibuka menjadi sepuluh puluhan. Meminjam dua kali dilakukan bergantian, mulai dari kanan.";
@@ -185,7 +185,7 @@ export const ADEGAN_LUAR_PINJAM: AdeganStory = {
       tambah("kedua,", kepala(1)),
       tambah("lebih", teks("bp1", 150, 74, "241 − 129", 14, W.biru), teks("bp2", 150, 98, "1 < 9: satuan tidak cukup", 10.4, W.merah)),
       tambah("meminjam", ...kartu("bp3", 30, 112, 240, 30, W.krem, ["pinjam 1 dari kolom kiri"], 10.4), panah("bp4", 150, 160, -80, 0, W.merah, 2)),
-      tambah("mengambil.", ...kartu("bp5", 40, 168, 220, 26, W.emas, ["di buku: mengambil"], 10.4)),
+      tambah("mengambil.", ...kartu("bp5", 40, 168, 220, 26, W.emas, ["di kelas: mengambil"], 10.4)),
     ),
     k(
       SUARA_B2,
@@ -228,8 +228,8 @@ const TB3 = soalNT("td", 344, 279);
 
 export const ADEGAN_LUAR_PINJAM_TERAPAN: AdeganStory = {
   id: "luar-pinjam-terapan",
-  judul: "Borrowing pada soal buku",
-  sumber: "Metode luar: Borrowing; BS hlm. 36–38",
+  judul: "Borrowing pada soal latihan",
+  sumber: "Metode luar: Borrowing",
   latar: "#DBEAFE",
   ketukan: [
     k(

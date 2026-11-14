@@ -3,16 +3,16 @@ import { W, barisNT, blok, bulat, emo, garis, judul, kartu, kepalaNT, panah, tek
 import { bersih, idx, k, sorotkan, tambah, ubah } from "./k4b1f-bantu";
 
 /* ------------------------------ 1. Pengalaman belajar, sarana, apersepsi, pemantik, stimulus (Panduan Guru hlm. 54-55) ------------------------------ */
-const SUARA_P1 = "Subbab F: Pengurangan Bilangan Cacah sampai seribu. Pengalaman belajarnya, peserta didik mampu memahami konsep pengurangan bilangan cacah sampai seribu.";
-const SUARA_P2 = "Sarana: permen, kerikil, kelereng, atau manik-manik. Apersepsinya, pengurangan paling mudah diajarkan dengan benda konkret, dan masalahnya sering kita jumpai sehari-hari.";
-const SUARA_P3 = "Dua pertanyaan pemantik. Pertama, bagaimana pengurangan tanpa mengambil? Kedua, bagaimana pengurangan dengan mengambil? Jawabannya kita temukan lewat contoh di buku.";
-const SUARA_P4 = "Stimulus Panduan Guru: bagaimana kalian mengurangi dua puluh tujuh dikurangi sembilan belas? Siswa mungkin menjawab: tujuh kurang sembilan dua, dua kurang satu satu, jadi hasilnya dua belas.";
-const SUARA_P5 = "Guru tidak langsung memberi jawaban benar; siswa menemukannya lewat aktivitas. Hitungan mandiri video: dua puluh tujuh dikurangi sembilan belas sama dengan delapan, bukan dua belas.";
+const SUARA_P1 = "Hari ini kita belajar pengurangan bilangan cacah sampai seribu. Setelah belajar, kamu mampu memahami konsep pengurangan sampai seribu.";
+const SUARA_P2 = "Kita memakai benda nyata: permen, kerikil, kelereng, atau manik-manik. Pengurangan paling mudah dipelajari dengan benda nyata, dan masalahnya sering kita temui sehari-hari.";
+const SUARA_P3 = "Dua pertanyaan untuk dipikirkan. Pertama, bagaimana pengurangan tanpa mengambil? Kedua, bagaimana pengurangan dengan mengambil? Jawabannya kita temukan lewat contoh sebentar lagi.";
+const SUARA_P4 = "Ayo pemanasan. Bagaimana kamu menghitung dua puluh tujuh dikurangi sembilan belas? Mungkin ada yang menjawab: tujuh kurang sembilan dua, dua kurang satu satu, jadi hasilnya dua belas.";
+const SUARA_P5 = "Sekarang kita periksa bersama. Hitungannya begini: dua puluh tujuh dikurangi sembilan belas sama dengan delapan, bukan dua belas. Sebabnya kamu temukan lewat contoh-contoh berikut.";
 
 export const ADEGAN_APERSEPSI: AdeganStory = {
   id: "apersepsi-stimulus",
   judul: "Pengalaman belajar, apersepsi, dan stimulus",
-  sumber: "Panduan Guru hlm. 54–55",
+  sumber: "Materi: pengantar pengurangan",
   latar: "#FFF7ED",
   kutipan: [
     "F. Pengurangan Bilangan Cacah sampai 1.000",
@@ -30,26 +30,26 @@ export const ADEGAN_APERSEPSI: AdeganStory = {
   ketukan: [
     k(
       SUARA_P1,
-      tambah(0, judul("Subbab F: Pengurangan")),
-      tambah("Pengalaman", ...kartu("pa", 20, 40, 260, 40, W.emas, ["Pengurangan Bilangan Cacah", "sampai 1.000"], 10.4)),
-      tambah("mampu", ...kartu("pb", 20, 96, 260, 44, W.hijauMuda, ["peserta didik mampu memahami", "konsep operasi pengurangan"], 9.2)),
+      tambah(0, judul("Belajar pengurangan")),
+      tambah("Hari", ...kartu("pa", 20, 40, 260, 40, W.emas, ["Pengurangan Bilangan Cacah", "sampai 1.000"], 10.4)),
+      tambah("mampu", ...kartu("pb", 20, 96, 260, 44, W.hijauMuda, ["kamu mampu memahami", "konsep pengurangan"], 9.2)),
       tambah("seribu@2", emo("pc", 150, 176, "🎯", 26)),
     ),
     k(
       SUARA_P2,
       bersih(0),
-      tambah(0, judul("Sarana: benda konkret")),
+      tambah(0, judul("Benda nyata untuk belajar")),
       tambah("permen,", emo("sa1", 45, 70, "🍬", 28), teks("sa1t", 45, 96, "permen", 8.4, W.biru)),
       tambah("kerikil,", bulat("sa2a", 112, 62, 7, W.abu, W.hitam), bulat("sa2b", 124, 70, 6, W.abu, W.hitam), bulat("sa2c", 106, 74, 5, W.abu, W.hitam), teks("sa2t", 112, 96, "kerikil", 8.4, W.biru)),
       tambah("kelereng,", bulat("sa3", 185, 70, 10, W.biruMuda, W.biru), bulat("sa3b", 181, 66, 3, W.putih, undefined, { op: 0.8 }), teks("sa3t", 185, 96, "kelereng", 8.4, W.biru)),
       tambah("manik-manik.", ...[0, 1, 2, 3].map((i) => bulat(`sa4-${i}`, 247 + (i % 2) * 9, 63 + Math.floor(i / 2) * 9, 3.6, [W.merah, W.emas, W.hijau, W.ungu][i], W.hitam, { tebal: 0.8 })), teks("sa4t", 255, 96, "manik-manik", 8.4, W.biru)),
-      tambah("Apersepsinya,", ...kartu("sak", 20, 122, 260, 56, W.langit, ["pengurangan paling mudah", "diajarkan dengan benda konkret"], 9.2)),
+      tambah("Pengurangan", ...kartu("sak", 20, 122, 260, 56, W.langit, ["pengurangan paling mudah", "dipelajari dengan benda nyata"], 9.2)),
       tambah("sehari-hari.", emo("sae", 150, 196, "🏠", 18)),
     ),
     k(
       SUARA_P3,
       bersih(0),
-      tambah(0, judul("Dua pertanyaan pemantik")),
+      tambah(0, judul("Dua pertanyaan untuk dipikirkan")),
       tambah("Pertama,", ...kartu("pm1", 14, 38, 272, 46, W.hijauMuda, ["1. pengurangan", "tanpa mengambil?"], 9.6)),
       tambah("Kedua,", ...kartu("pm2", 14, 98, 272, 46, W.krem, ["2. pengurangan", "dengan mengambil?"], 9.6)),
       tambah("Jawabannya", emo("pm3", 150, 180, "🔍", 24)),
@@ -57,8 +57,8 @@ export const ADEGAN_APERSEPSI: AdeganStory = {
     k(
       SUARA_P4,
       bersih(0),
-      tambah(0, judul("Stimulus pemanasan")),
-      tambah("Stimulus", ...kartu("st0", 70, 30, 160, 28, W.emas, ["27 − 19 = ?"], 12)),
+      tambah(0, judul("Pemanasan")),
+      tambah("pemanasan.", ...kartu("st0", 70, 30, 160, 28, W.emas, ["27 − 19 = ?"], 12)),
       tambah("tujuh", ...kepalaNT("stn", 78, 70, 48, 15, 7.4), ...barisNT("str0", 78, 85, ["", "2", "7"], 48, 20, 11), ...barisNT("str1", 78, 105, ["", "1", "9"], 48, 20, 11)),
       tambah("jadi", ...barisNT("str2", 78, 125, ["", "1", "2"], 48, 20, 11, W.merah)),
       tambah("hasilnya", ...kartu("st1", 40, 156, 220, 30, W.merahMuda, ["hasil siswa: 12?"], 10.4)),
@@ -66,9 +66,9 @@ export const ADEGAN_APERSEPSI: AdeganStory = {
     k(
       SUARA_P5,
       bersih(0),
-      tambah(0, judul("Guru tidak langsung menjawab")),
-      tambah("Guru", ...kartu("g1", 14, 32, 272, 38, W.langit, ["jawaban benar ditemukan siswa", "lewat aktivitas"], 9.4)),
-      tambah("Hitungan", ...kartu("g2", 14, 82, 272, 26, W.krem, ["tambahan video: hitungan mandiri"], 8.8)),
+      tambah(0, judul("Kita periksa bersama")),
+      tambah("Sekarang", ...kartu("g1", 14, 32, 272, 38, W.langit, ["sebabnya kamu temukan", "lewat contoh berikut"], 9.4)),
+      tambah("Hitungannya", ...kartu("g2", 14, 82, 272, 26, W.krem, ["kita hitung bersama"], 8.8)),
       tambah("delapan,", ...kartu("g3", 60, 122, 180, 34, W.hijauMuda, ["27 − 19 = 8"], 13)),
       tambah("bukan", teks("g4", 150, 178, "bukan 12", 12, W.merah)),
     ),
@@ -76,17 +76,17 @@ export const ADEGAN_APERSEPSI: AdeganStory = {
 };
 
 /* ------------------------------ 2. Ayo Mengamati: 265 dikurangi 132 (Buku Siswa hlm. 34-35; Panduan Guru hlm. 55-56) ------------------------------ */
-const SUARA_A1 = "Ayo Mengamati. Buku pelajaran di perpustakaan dua ratus enam puluh lima buku. Siswa meminjam seratus tiga puluh dua buku. Berapa buku yang masih ada?";
-const SUARA_A2 = "Panduan Guru mengingatkan nilai tempat: ratusan dengan ratusan, puluhan dengan puluhan, satuan dengan satuan.";
+const SUARA_A1 = "Ayo Mengamati. Perpustakaan sekolah punya dua ratus enam puluh lima bacaan. Pada tahun ajaran baru, siswa meminjam seratus tiga puluh dua bacaan. Berapa bacaan yang masih ada?";
+const SUARA_A2 = "Perhatikan nilai tempat: ratusan dengan ratusan, puluhan dengan puluhan, satuan dengan satuan. Angkanya harus sejajar.";
 const SUARA_A3 = "Langkah satu: uraikan masing-masing bilangan. Dua ratus enam puluh lima sama dengan dua ratus ditambah enam puluh ditambah lima. Seratus tiga puluh dua sama dengan seratus ditambah tiga puluh ditambah dua.";
 const SUARA_A4 = "Langkah dua dan tiga: kurangkan mulai dari kanan ke kiri. Lima dikurangi dua sama dengan tiga. Enam puluh dikurangi tiga puluh sama dengan tiga puluh. Dua ratus dikurangi seratus sama dengan seratus.";
-const SUARA_A5 = "Hasilnya seratus ditambah tiga puluh ditambah tiga, yaitu seratus tiga puluh tiga. Jadi sisa buku seratus tiga puluh tiga, tanpa mengambil.";
+const SUARA_A5 = "Hasilnya seratus ditambah tiga puluh ditambah tiga, yaitu seratus tiga puluh tiga. Jadi sisa bacaan seratus tiga puluh tiga, tanpa mengambil.";
 const SUARA_A6 = "Cara susun pendek: tulis angkanya pada tabel ratusan, puluhan, satuan, lalu kurangkan tiap kolom. Hasilnya sama, seratus tiga puluh tiga.";
 
 export const ADEGAN_AMATI_BUKU: AdeganStory = {
   id: "amati-buku",
-  judul: "Ayo Mengamati: buku di perpustakaan",
-  sumber: "Buku Siswa hlm. 34–35; Panduan Guru hlm. 55–56",
+  judul: "Ayo Mengamati: bacaan di perpustakaan",
+  sumber: "Materi: susun panjang tanpa mengambil",
   latar: "#F0FDF4",
   kutipan: [
     "Banyaknya buku pelajaran di perpustakaan adalah 265 buku.",
@@ -105,9 +105,9 @@ export const ADEGAN_AMATI_BUKU: AdeganStory = {
     k(
       SUARA_A1,
       tambah(0, judul("Ayo Mengamati")),
-      tambah("perpustakaan", emo("am1", 60, 80, "📚", 38), ...kartu("am2", 108, 52, 176, 34, W.langit, ["265 buku di perpustakaan"], 9.6)),
-      tambah("meminjam", emo("am3", 60, 136, "🧒", 32), ...kartu("am4", 108, 112, 176, 34, W.merahMuda, ["132 buku dipinjam siswa"], 9.6)),
-      tambah("Berapa", ...kartu("am5", 60, 160, 180, 30, W.emas, ["sisa buku: ?"], 10.8)),
+      tambah("perpustakaan", emo("am1", 60, 80, "📚", 38), ...kartu("am2", 108, 52, 176, 34, W.langit, ["265 bacaan di perpustakaan"], 9.6)),
+      tambah("meminjam", emo("am3", 60, 136, "🧒", 32), ...kartu("am4", 108, 112, 176, 34, W.merahMuda, ["132 bacaan dipinjam siswa"], 9.6)),
+      tambah("Berapa", ...kartu("am5", 60, 160, 180, 30, W.emas, ["sisa bacaan: ?"], 10.8)),
     ),
     k(
       SUARA_A2,
@@ -118,7 +118,7 @@ export const ADEGAN_AMATI_BUKU: AdeganStory = {
       sorotkan("ratusan", "ntr0-s0", "ntr1-s0"),
       sorotkan("puluhan,", "ntr0-s1", "ntr1-s1"),
       sorotkan(idx(SUARA_A2, "satuan", 1), "ntr0-s2", "ntr1-s2"),
-      tambah("mengingatkan", ...kartu("nk", 30, 124, 240, 34, W.emas, ["ratusan, puluhan, satuan", "sejajar sesuai nilai tempat"], 9)),
+      tambah("sejajar.", ...kartu("nk", 30, 124, 240, 34, W.emas, ["ratusan, puluhan, satuan", "sejajar sesuai nilai tempat"], 9)),
     ),
     k(
       SUARA_A3,
@@ -142,7 +142,7 @@ export const ADEGAN_AMATI_BUKU: AdeganStory = {
       bersih(0),
       tambah(0, judul("Hasil: tanpa mengambil")),
       tambah("Hasilnya", teks("h1", 150, 52, "100 + 30 + 3 = 133", 13, W.hijau)),
-      tambah("Jadi", ...blok("hb", 78, 82, 1, 3, 3, 1.0), teks("h2", 150, 134, "133 buku masih ada", 10.4, W.biru)),
+      tambah("Jadi", ...blok("hb", 78, 82, 1, 3, 3, 1.0), teks("h2", 150, 134, "133 bacaan masih ada", 10.4, W.biru)),
       tambah("tanpa", ...kartu("h3", 50, 150, 200, 32, W.hijauMuda, ["tanpa mengambil"], 11)),
     ),
     k(
@@ -167,7 +167,7 @@ const SUARA_B5 = "Selanjutnya puluhan: tiga puluh dikurangi dua puluh sama denga
 export const ADEGAN_SEKALI: AdeganStory = {
   id: "sekali-mengambil",
   judul: "Susun panjang dengan satu kali mengambil",
-  sumber: "Buku Siswa hlm. 35; Panduan Guru hlm. 56",
+  sumber: "Materi: mengambil satu kali",
   latar: "#EFF6FF",
   kutipan: [
     "Pengurangan cara susun panjang dengan satu kali mengambil",

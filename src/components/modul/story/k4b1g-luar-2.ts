@@ -37,9 +37,9 @@ export const ADEGAN_LUAR_FAKTA: AdeganStory = {
 };
 
 /* ------------------------------ 7. Times Table Fluency: penerapan ------------------------------ */
-const SUARA_D1 = "Terapan pada soal e, empat puluh delapan kali tujuh. Satuan: delapan kali tujuh adalah fakta, lima puluh enam. Tulis enam, simpan lima.";
+const SUARA_D1 = "Terapan: empat puluh delapan kali tujuh. Satuan: delapan kali tujuh adalah fakta, lima puluh enam. Tulis enam, simpan lima.";
 const SUARA_D2 = "Puluhan: empat kali tujuh adalah fakta, dua puluh delapan. Tambah lima yang disimpan, hasilnya tiga puluh tiga. Tiga ditulis di puluhan, tiga lagi di ratusan.";
-const SUARA_D3 = "Hasilnya tiga ratus tiga puluh enam, cocok dengan kunci buku. Karena faktanya lancar, dua langkah itu berjalan cepat.";
+const SUARA_D3 = "Hasilnya tiga ratus tiga puluh enam, Karena faktanya lancar, dua langkah itu berjalan cepat.";
 
 const TF = susunSoal("tf", 70, 88, 48, 7);
 const TFH = susunHasil("tf", 70, 88, "336");
@@ -47,13 +47,13 @@ const TFH = susunHasil("tf", 70, 88, "336");
 export const ADEGAN_LUAR_FAKTA_TERAPAN: AdeganStory = {
   id: "luar-fakta-terapan",
   judul: "Times Table Fluency: empat puluh delapan kali tujuh",
-  sumber: "Metode luar: Times Table Fluency, soal buku",
+  sumber: "Metode luar: Times Table Fluency, terapan",
   latar: "#FEFCE8",
   ketukan: [
     k(
       SUARA_D1,
       tambah(0, kepala(2)),
-      tambah(0, sisi("tfn", 130, 68, "soal e: 48 × 7", 9.4, W.coklat)),
+      tambah(0, sisi("tfn", 130, 68, "contoh: 48 × 7", 9.4, W.coklat)),
       tambah(idx(SUARA_D1, "empat"), TF[0], TF[1]),
       tambah(idx(SUARA_D1, "tujuh"), TF[3], TF[2], TF[4]),
       tambah("Satuan:", ...kartu("tff1", 128, 92, 156, 26, W.langit, ["fakta: 8 × 7 = 56"], 9.6)),
@@ -70,7 +70,7 @@ export const ADEGAN_LUAR_FAKTA_TERAPAN: AdeganStory = {
     k(
       SUARA_D3,
       sorotkan("Hasilnya", "tf-h0", "tf-h1", "tf-h2"),
-      tambah("kunci", ...kartu("tfk", 14, 160, 106, 28, W.emas, ["48 × 7 = 336"], 10)),
+      tambah("Karena", ...kartu("tfk", 14, 160, 106, 28, W.emas, ["48 × 7 = 336"], 10)),
       tambah("lancar,", emo("tfe", 262, 188, "✅", 22)),
     ),
   ],
@@ -79,7 +79,7 @@ export const ADEGAN_LUAR_FAKTA_TERAPAN: AdeganStory = {
 /* ------------------------------ 8. Doubling: konsep ------------------------------ */
 const SUARA_E1 = "Metode keempat, Doubling, atau Penggandaan. Menggandakan berarti menambah bilangan dengan dirinya sendiri, sama dengan mengalikan dua. Gandakan dua kali untuk kali empat, tiga kali untuk kali delapan.";
 const SUARA_E2 = "Contoh donat: dua belas dikali empat. Gandakan dua belas menjadi dua puluh empat, lalu gandakan lagi menjadi empat puluh delapan.";
-const SUARA_E3 = "Jadi dua belas kali empat sama dengan menggandakan dua kali. Hasilnya empat puluh delapan, sama dengan penjumlahan berulang di buku.";
+const SUARA_E3 = "Jadi dua belas kali empat sama dengan menggandakan dua kali. Hasilnya empat puluh delapan, sama dengan hasil penjumlahan berulang tadi.";
 
 const SKALA = 2.8;
 /** Batang bernilai di (14, y) dengan angkanya di dalam batang. Id batang `${id}`, angka `${id}t`. */
@@ -117,13 +117,13 @@ export const ADEGAN_LUAR_GANDA: AdeganStory = {
 /* ------------------------------ 9. Doubling: penerapan ------------------------------ */
 const SUARA_F1 = "Terapan: delapan pak pensil, tiap pak dua belas batang. Delapan sama dengan dua kali dua kali dua, jadi gandakan tiga kali, mulai dari dua belas.";
 const SUARA_F2 = "Gandakan pertama: dua belas menjadi dua puluh empat. Gandakan kedua: dua puluh empat menjadi empat puluh delapan.";
-const SUARA_F3 = "Gandakan ketiga: empat puluh delapan menjadi sembilan puluh enam. Jadi dua belas kali delapan sama dengan sembilan puluh enam pensil, cocok dengan kunci buku.";
-const SUARA_F4 = "Cara serupa pada kucing Azizah: dua puluh satu kali empat. Dua puluh satu menjadi empat puluh dua, lalu delapan puluh empat, cocok dengan kunci kaki kucing.";
+const SUARA_F3 = "Gandakan ketiga: empat puluh delapan menjadi sembilan puluh enam. Jadi dua belas kali delapan sama dengan sembilan puluh enam pensil.";
+const SUARA_F4 = "Cara serupa pada kucing Azizah: dua puluh satu kali empat. Dua puluh satu menjadi empat puluh dua, lalu delapan puluh empat kaki.";
 
 export const ADEGAN_LUAR_GANDA_TERAPAN: AdeganStory = {
   id: "luar-ganda-terapan",
   judul: "Doubling: pensil dan kaki kucing",
-  sumber: "Metode luar: Doubling, soal buku",
+  sumber: "Metode luar: Doubling, penerapan",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -150,14 +150,14 @@ export const ADEGAN_LUAR_GANDA_TERAPAN: AdeganStory = {
       tambah("Cara", ...bar("fk0", 64, 21, W.hijauMuda)),
       tambah(idx(SUARA_F4, "dua", 3), ...bar("fk1", 90, 42, W.langit), sisi("fh1", 138, 103, "21 × 2 = 42", 9.4, W.coklat)),
       tambah(idx(SUARA_F4, "puluh", 4), ...bar("fk2", 116, 84, W.krem), sisi("fh2", 14, 150, "42 × 2 = 84", 9.4, W.coklat)),
-      tambah("cocok", ...kartu("fkk", 70, 164, 160, 28, W.emas, ["21 × 4 = 84 kaki"], 10)),
+      tambah("kaki", ...kartu("fkk", 70, 164, 160, 28, W.emas, ["21 × 4 = 84 kaki"], 10)),
     ),
   ],
 };
 
 /* ------------------------------ 10. Ringkasan metode luar ------------------------------ */
 const SUARA_Z1 = "Ringkasnya, empat metode: Equal Groups menambah kelompok sama banyak, Array Model membaca baris dan kolom, Times Table Fluency memakai fakta hafalan, dan Doubling menggandakan bilangan.";
-const SUARA_Z2 = "Angka buku yang dipakai: dua belas kotak donat, empat belas baju berkancing, delapan pak pensil, dan soal e, empat puluh delapan kali tujuh.";
+const SUARA_Z2 = "Angka yang dipakai: dua belas kotak donat, empat belas baju berkancing, delapan pak pensil, dan empat puluh delapan kali tujuh.";
 const SUARA_Z3 = "Memilih metode: untuk menjumlahkan kelompok, pakai Equal Groups. Untuk membaca baris dan kolom, pakai Array Model. Untuk bilangan yang dikali dua, empat, atau delapan, gandakan. Fakta kali yang hafal membantu semuanya.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
@@ -174,11 +174,11 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_Z2,
       bersih(0),
-      tambah(0, judul("Angka buku yang dipakai")),
-      tambah("Angka", ...barisTabel("rt0", 14, 34, [110, 162], ["metode", "angka buku"], 24, 8.4, true)),
+      tambah(0, judul("Angka yang dipakai")),
+      tambah("Angka", ...barisTabel("rt0", 14, 34, [110, 162], ["metode", "angka soal"], 24, 8.4, true)),
       tambah("kotak", ...barisTabel("rt1", 14, 58, [110, 162], ["Equal Groups", "12 × 4, 12 × 3, 21 × 4"], 24, 8.2)),
       tambah("empat", ...barisTabel("rt2", 14, 82, [110, 162], ["Array Model", "12 × 4, 14 × 7"], 24, 8.2)),
-      tambah("soal", ...barisTabel("rt3", 14, 106, [110, 162], ["Times Table Fluency", "48 × 7"], 24, 8.2)),
+      tambah("dan", ...barisTabel("rt3", 14, 106, [110, 162], ["Times Table Fluency", "48 × 7"], 24, 8.2)),
       tambah("pensil,", ...barisTabel("rt4", 14, 130, [110, 162], ["Doubling", "12 × 4, 12 × 8, 21 × 4"], 24, 8.2)),
     ),
     k(

@@ -5,7 +5,7 @@ import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1c-bantu";
 /* ------------------------------ 10. Ayo Mengamati: tinggi tiga gunung (Buku Siswa hlm. 21-22; Panduan Guru hlm. 42-43) ------------------------------ */
 const SUARA_G1 = "Ayo Mengamati: mengurutkan bilangan dari terkecil ke terbesar. Indonesia adalah negara kepulauan, dan beberapa pulaunya memiliki gunung.";
 const SUARA_G2 = "Pulau Sumatra memiliki Gunung Sinabung, Pulau Jawa memiliki Gunung Semeru, dan Pulau Lombok memiliki Gunung Rinjani. Ketiga gunung itu memiliki ketinggian yang berbeda.";
-const SUARA_G3 = "Peta di buku menuliskan tinggi tiap gunung dalam meter di atas permukaan laut: Sinabung dua ribu empat ratus enam puluh, Semeru tiga ribu enam ratus tujuh puluh enam, Rinjani tiga ribu tujuh ratus dua puluh enam.";
+const SUARA_G3 = "Peta menuliskan tinggi tiap gunung dalam meter di atas permukaan laut: Sinabung dua ribu empat ratus enam puluh, Semeru tiga ribu enam ratus tujuh puluh enam, Rinjani tiga ribu tujuh ratus dua puluh enam.";
 const SUARA_G4 = "Gunung manakah yang tertinggi, dan dapatkah kalian mengurutkannya dari yang terendah? Kita harus memperhatikan nilai tempat ribuan, ratusan, puluhan, dan satuan.";
 const SUARA_G5 = "Bandingkan ribuannya: dua kurang dari tiga. Jadi dua ribu empat ratus enam puluh kurang dari tiga ribu enam ratus tujuh puluh enam, dan kurang dari tiga ribu tujuh ratus dua puluh enam.";
 
@@ -17,7 +17,7 @@ const urutBuku = [GUNUNG[1], GUNUNG[0], GUNUNG[2]] as const;
 export const ADEGAN_GUNUNG: AdeganStory = {
   id: "gunung",
   judul: "Ayo Mengamati: tinggi tiga gunung",
-  sumber: "Buku Siswa hlm. 21–22; Panduan Guru hlm. 42–43",
+  sumber: "Materi: tinggi tiga gunung",
   latar: "#F0FDF4",
   kutipan: [
     "Mengurutkan bilangan dari terkecil ke terbesar",
@@ -77,7 +77,7 @@ export const ADEGAN_GUNUNG: AdeganStory = {
 const SUARA_V1 = "Selanjutnya bandingkan ratusan untuk tiga ribu enam ratus tujuh puluh enam dan tiga ribu tujuh ratus dua puluh enam, yang ribuannya sama. Enam kurang dari tujuh, jadi yang pertama lebih kecil.";
 const SUARA_V2 = "Urutan dari terkecil ke terbesar: dua ribu empat ratus enam puluh, lalu tiga ribu enam ratus tujuh puluh enam, lalu tiga ribu tujuh ratus dua puluh enam. Gunung tertinggi adalah Rinjani.";
 const SUARA_V3 = "Ayo Berlatih: isi tabel sesuai nilai tempat, lalu urutkan tujuh ribu lima ratus tujuh puluh, lima ribu dua ratus empat puluh, tiga ribu empat puluh satu, dan sembilan ribu sembilan ratus empat puluh satu.";
-const SUARA_V4 = "Kunci panduan guru: tabel kedua berisi lima, dua, empat, nol. Tabel ketiga berisi tiga, nol, empat, satu. Tabel keempat berisi sembilan, sembilan, empat, satu.";
+const SUARA_V4 = "Sekarang isi tabelnya: tabel kedua berisi lima, dua, empat, nol. Tabel ketiga berisi tiga, nol, empat, satu. Tabel keempat berisi sembilan, sembilan, empat, satu.";
 const SUARA_V6 = "Jadi urutan dari terkecil ke terbesar: tiga ribu empat puluh satu, lima ribu dua ratus empat puluh, tujuh ribu lima ratus tujuh puluh, lalu sembilan ribu sembilan ratus empat puluh satu.";
 
 const isiKolom = (at: string | number, id: string, n: number) => ubah(at, ...String(n).split("").map((d, c) => ({ id: `${id}-t${c}`, isi: d })));
@@ -86,7 +86,7 @@ const POS_URUT = [[14, 44], [174, 44], [14, 118], [174, 118]] as const;
 export const ADEGAN_URUT: AdeganStory = {
   id: "urut",
   judul: "Mengurutkan bilangan dan Ayo Berlatih",
-  sumber: "Buku Siswa hlm. 23; Panduan Guru hlm. 43",
+  sumber: "Materi: mengurutkan bilangan",
   latar: "#FFFBEB",
   kutipan: [
     "Selanjutnya, kita membandingkan untuk nilai tempat ratusan dari bilangan",
@@ -139,7 +139,7 @@ export const ADEGAN_URUT: AdeganStory = {
     k(
       SUARA_V6,
       bersih(0),
-      tambah(0, judul("Kunci urutan: terkecil ke terbesar")),
+      tambah(0, judul("Urutan: terkecil ke terbesar")),
       ...URUT_KUNCI.map((n, i) => tambah(["tiga", "lima", "tujuh", "sembilan"][i], ...kartu(`vk${i}`, 8 + i * 74, 70, 68, 44, [W.hijauMuda, W.krem, W.pink, W.langit][i], [fmt(n)], 11.4))),
       tambah(idx(SUARA_V6, "satu", 2), teks("vm", 150, 150, "3.041 < 5.240 < 7.570 < 9.941", 12, W.merah)),
     ),
@@ -147,13 +147,13 @@ export const ADEGAN_URUT: AdeganStory = {
 };
 
 /* ------------------------------ 12. Ayo Berpikir: empat angka satu, lima, sembilan, dua (Panduan Guru hlm. 43-44) ------------------------------ */
-const SUARA_Y1 = "Ayo Berpikir, Buku Siswa halaman dua puluh empat, dengan kunci di panduan guru: angka satu, lima, sembilan, dan dua disusun menjadi bilangan empat angka tanpa berulang.";
-const SUARA_Y2 = "Contoh jawaban buku: seribu lima ratus sembilan puluh dua, dua ribu sembilan ratus lima puluh satu, lima ribu sembilan ratus dua puluh satu, sembilan ribu dua ratus lima belas, dan lima ribu seratus dua puluh sembilan.";
-const SUARA_Y3 = "Soal b: kunci buku dari contoh a menyebut terbesar sembilan ribu dua ratus lima belas, dan terkecil seribu lima ratus sembilan puluh dua.";
-const SUARA_Y4 = "Hitungan mandiri: dari semua susunan, bilangan terbesar sebenarnya sembilan ribu lima ratus dua puluh satu, dan terkecil seribu dua ratus lima puluh sembilan.";
-const SUARA_Y5 = "Soal c, kunci buku: contoh a diurutkan dari terkecil, yaitu seribu lima ratus sembilan puluh dua sampai sembilan ribu dua ratus lima belas.";
-const SUARA_Y6 = "Soal d dan e: angka boleh berulang. Kunci buku dari contoh d: terbesar sembilan ribu sembilan ratus dua puluh lima, terkecil seribu seratus lima puluh lima.";
-const SUARA_Y7 = "Soal f: kunci buku menyebut yang lebih besar adalah sembilan ribu sembilan ratus sembilan puluh sembilan, karena angka boleh berulang. Hitungan mandiri: terkecil bila berulang adalah seribu seratus sebelas.";
+const SUARA_Y1 = "Ayo Berpikir: angka satu, lima, sembilan, dan dua disusun menjadi bilangan empat angka tanpa berulang.";
+const SUARA_Y2 = "Contoh susunan yang bisa kita buat: seribu lima ratus sembilan puluh dua, dua ribu sembilan ratus lima puluh satu, lima ribu sembilan ratus dua puluh satu, sembilan ribu dua ratus lima belas, dan lima ribu seratus dua puluh sembilan.";
+const SUARA_Y3 = "Soal b: dari susunan tadi, yang terbesar sembilan ribu dua ratus lima belas, dan yang terkecil seribu lima ratus sembilan puluh dua.";
+const SUARA_Y4 = "Tetapi bila kita periksa semua susunan yang mungkin, bilangan terbesar sebenarnya sembilan ribu lima ratus dua puluh satu, dan terkecil seribu dua ratus lima puluh sembilan.";
+const SUARA_Y5 = "Soal c: susunan tadi diurutkan dari terkecil, yaitu seribu lima ratus sembilan puluh dua sampai sembilan ribu dua ratus lima belas.";
+const SUARA_Y6 = "Soal d dan e: angka boleh berulang. Contoh susunan d: terbesar sembilan ribu sembilan ratus dua puluh lima, terkecil seribu seratus lima puluh lima.";
+const SUARA_Y7 = "Soal f: bilangan terbesar yang bisa dibuat adalah sembilan ribu sembilan ratus sembilan puluh sembilan, karena angka boleh berulang. Terkecil bila berulang adalah seribu seratus sebelas.";
 
 /** Kotak sorot setinggi dua deret contoh miskonsepsi (deret di x 70, baris y 66 dan 106, lebar kolom 26) di kolom `c`. */
 const kolom = (id: string, c: number, warna: string) => kotak(id, 70 + c * 26 - 13, 48, 26, 64, warna, W.merah, { rx: 4, tebal: 1.4, z: -1 });
@@ -164,7 +164,7 @@ const WARNA5 = [W.hijauMuda, W.krem, W.pink, W.langit, W.lavender];
 export const ADEGAN_BERPIKIR: AdeganStory = {
   id: "berpikir",
   judul: "Ayo Berpikir: menyusun bilangan dari empat angka",
-  sumber: "Buku Siswa hlm. 24; Panduan Guru hlm. 43–44",
+  sumber: "Materi: menyusun bilangan dari angka",
   latar: "#F5F3FF",
   kutipan: [
     "Ayo Berpikir",
@@ -184,18 +184,18 @@ export const ADEGAN_BERPIKIR: AdeganStory = {
     k(
       SUARA_Y1,
       tambah(0, judul("Ayo Berpikir: 1, 5, 9, 2")),
-      ...ANGKA_BERPIKIR.map((d, i) => tambah([idx(SUARA_Y1, "satu"), idx(SUARA_Y1, "lima"), idx(SUARA_Y1, "sembilan"), idx(SUARA_Y1, "dua", 2)][i], ...kartu(`ya${i}`, 40 + i * 60, 50, 40, 40, [W.hijauMuda, W.krem, W.pink, W.langit][i], [String(d)], 18))),
-      tambah("halaman", ...kartu("yb", 40, 112, 220, 44, W.emas, ["Buku Siswa hlm. 24", "kunci: Panduan Guru hlm. 43–44"], 9)),
+      ...ANGKA_BERPIKIR.map((d, i) => tambah([idx(SUARA_Y1, "satu"), idx(SUARA_Y1, "lima"), idx(SUARA_Y1, "sembilan"), idx(SUARA_Y1, "dua", 1)][i], ...kartu(`ya${i}`, 40 + i * 60, 50, 40, 40, [W.hijauMuda, W.krem, W.pink, W.langit][i], [String(d)], 18))),
+      tambah("tanpa", ...kartu("yb", 40, 112, 220, 44, W.emas, ["susun bilangan empat angka", "tanpa angka berulang"], 9)),
     ),
     k(
       SUARA_Y2,
       bersih(0),
-      tambah(0, judul("Contoh jawaban a (buku)")),
+      tambah(0, judul("Contoh susunan a")),
       ...CONTOH_A.map((n, i) => tambah([idx(SUARA_Y2, "seribu"), idx(SUARA_Y2, "dua", 2), idx(SUARA_Y2, "lima", 3), idx(SUARA_Y2, "sembilan", 4), idx(SUARA_Y2, "dan")][i], ...kartu(`ye${i}`, XA[i], 60, 50, 30, WARNA5[i], [fmt(n)], 9.6))),
     ),
     k(
       SUARA_Y3,
-      ubah(0, { id: "jud", isi: "Soal b: kunci dari contoh a" }),
+      ubah(0, { id: "jud", isi: "Soal b: terbesar dan terkecil" }),
       sorotkan("terbesar", "ye3-k"),
       sorotkan("terkecil", "ye0-k"),
       tambah("terbesar", teks("yt", 182 + 25, 108, "terbesar", 9.4, W.merah)),
@@ -204,7 +204,7 @@ export const ADEGAN_BERPIKIR: AdeganStory = {
     k(
       SUARA_Y4,
       hapus(0, "yt", "yu"),
-      tambah(0, ...kartu("yh", 14, 124, 272, 28, W.merahMuda, ["catatan guru (hitungan mandiri)"], 9)),
+      tambah(0, ...kartu("yh", 14, 124, 272, 28, W.merahMuda, ["semua susunan yang mungkin"], 9)),
       tambah("terbesar", ...kartu("yi", 14, 160, 130, 34, W.hijauMuda, ["terbesar", fmt(9521)], 10.4)),
       tambah("terkecil", ...kartu("yj", 156, 160, 130, 34, W.langit, ["terkecil", fmt(1259)], 10.4)),
     ),
@@ -229,23 +229,23 @@ export const ADEGAN_BERPIKIR: AdeganStory = {
       SUARA_Y7,
       bersih(0),
       tambah(0, judul("Soal f: boleh berulang")),
-      tambah("sembilan@1", ...kartu("yf", 30, 44, 240, 40, W.hijauMuda, ["kunci buku: terbesar", fmt(9999)], 10.4)),
-      tambah("Hitungan", ...kartu("yg", 30, 104, 240, 40, W.langit, ["hitungan mandiri: terkecil", fmt(1111)], 10.4)),
+      tambah("sembilan@1", ...kartu("yf", 30, 44, 240, 40, W.hijauMuda, ["terbesar", fmt(9999)], 10.4)),
+      tambah("Terkecil", ...kartu("yg", 30, 104, 240, 40, W.langit, ["terkecil", fmt(1111)], 10.4)),
     ),
   ],
 };
 
 /* ------------------------------ 13. Miskonsepsi, diferensiasi, dan ringkasan (Panduan Guru hlm. 44) ------------------------------ */
-const SUARA_C1 = "Miskonsepsi menurut panduan guru: murid membandingkan bilangan empat angka mulai dari satuan, puluhan, ratusan, baru ribuan. Cara itu keliru.";
-const SUARA_C2 = "Contoh tambahan video: seribu sembilan ratus delapan puluh tujuh dan dua ribu empat puluh lima. Dari satuan, tujuh lebih dari lima, jadi yang pertama dikira lebih besar. Padahal ribuannya lebih kecil.";
+const SUARA_C1 = "Hati-hati, kesalahan yang sering terjadi: membandingkan bilangan empat angka mulai dari satuan, puluhan, ratusan, baru ribuan. Cara itu keliru.";
+const SUARA_C2 = "Perhatikan contoh ini: seribu sembilan ratus delapan puluh tujuh dan dua ribu empat puluh lima. Dari satuan, tujuh lebih dari lima, jadi yang pertama dikira lebih besar. Padahal ribuannya lebih kecil.";
 const SUARA_C3 = "Yang benar mulai dari ribuan. Satu kurang dari dua, jadi seribu sembilan ratus delapan puluh tujuh kurang dari dua ribu empat puluh lima, walau satuannya lebih besar.";
-const SUARA_C4 = "Diferensiasi: murid cepat mengerjakan latihan sendiri dan boleh diberi soal tambahan, sementara guru mendampingi yang kesulitan. Metode yang disarankan: diskusi dan tanya jawab, juga bila kelas tanpa murid berkemampuan tinggi.";
+const SUARA_C4 = "Bagi yang cepat selesai, kerjakan latihan sendiri dan coba soal tambahan, sementara guru mendampingi yang kesulitan. Kita belajar lewat diskusi dan tanya jawab, dan saling bekerja sama dalam kelompok.";
 const SUARA_C5 = "Ringkasnya: bandingkan dari ribuan ke satuan, tulis tanda lebih dari, kurang dari, atau sama dengan, dan urutkan bilangan dengan membandingkan nilai tempatnya.";
 
 export const ADEGAN_CATATAN: AdeganStory = {
   id: "catatan",
-  judul: "Miskonsepsi, diferensiasi, dan ringkasan",
-  sumber: "Panduan Guru hlm. 44–45; contoh tambahan video",
+  judul: "Pesan guru dan ringkasan",
+  sumber: "Materi: pesan guru dan ringkasan",
   latar: "#FEF2F2",
   kutipan: [
     "Miskonsepsi",
@@ -262,7 +262,7 @@ export const ADEGAN_CATATAN: AdeganStory = {
   ketukan: [
     k(
       SUARA_C1,
-      tambah(0, judul("Miskonsepsi: mulai dari satuan")),
+      tambah(0, judul("Hati-hati: jangan mulai dari satuan")),
       tambah("satuan,", ...kartu("m1", 14, 40, 272, 30, W.merahMuda, ["keliru: satuan, puluhan, ratusan, ribuan"], 8.8)),
       tambah("ribuan.", teks("m2", 150, 112, "4  ←  3  ←  5  ←  2", 18, W.merah), teks("m3", 150, 140, "ribuan ← ratusan ← puluhan ← satuan", 8.8, W.merah)),
       tambah("keliru.", emo("m4", 150, 180, "❌", 24)),
@@ -270,7 +270,7 @@ export const ADEGAN_CATATAN: AdeganStory = {
     k(
       SUARA_C2,
       bersih(0),
-      tambah(0, judul("Contoh tambahan: salah langkah")),
+      tambah(0, judul("Contoh: salah langkah")),
       tambah(idx(SUARA_C2, "tujuh", 2), ...deret("ma", 70, 66, 1987, 26, 20), ...deret("mb", 70, 106, 2045, 26, 20), teks("mac", 230, 66, "1.987", 11, W.hijau), teks("mbc", 230, 106, "2.045", 11, W.hijau)),
       tambah("satuan,", kolom("mc", 3, W.merahMuda)),
       tambah("dikira", teks("md", 150, 150, "7 > 5, dikira 1.987 lebih besar", 10, W.merah)),
@@ -286,11 +286,11 @@ export const ADEGAN_CATATAN: AdeganStory = {
     k(
       SUARA_C4,
       bersih(0),
-      tambah(0, judul("Diferensiasi dan metode")),
+      tambah(0, judul("Belajar sesuai kebutuhan")),
       tambah("cepat", ...kartu("d1", 14, 40, 272, 36, W.hijauMuda, ["cepat: latihan mandiri,", "soal tambahan"], 9)),
       tambah("kesulitan.", ...kartu("d2", 14, 86, 272, 36, W.krem, ["butuh bantuan: didampingi guru"], 9)),
       tambah("diskusi", ...kartu("d3", 14, 128, 272, 32, W.langit, ["metode: diskusi dan tanya jawab"], 9)),
-      tambah("tanpa", ...kartu("d4", 14, 166, 272, 30, W.pink, ["tanpa murid tinggi: kerja sama kelompok"], 8.6)),
+      tambah("kelompok.", ...kartu("d4", 14, 166, 272, 30, W.pink, ["kerja sama dalam kelompok"], 8.6)),
     ),
     k(
       SUARA_C5,

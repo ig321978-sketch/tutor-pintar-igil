@@ -3,7 +3,7 @@ import { W, barisTabel, emo, judul, kartu, kepalaTempat, selTempat, teks } from 
 import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1b-bantu";
 
 /* ------------------------------ 9. Ayo Berlatih nomor 3: Slamet membeli kue (Buku Siswa hlm. 15; Panduan Guru hlm. 37–38) ------------------------------ */
-const SUARA_T1 = "Nomor tiga: Azizah membantu Ibu menjual kue. Slamet membeli kue seharga tujuh ribu tiga ratus lima puluh rupiah, dan membayar dengan uang sembilan ribu lima ratus rupiah. Sisa uangnya dua ribu seratus lima puluh rupiah.";
+const SUARA_T1 = "Sekarang soal cerita: Azizah membantu Ibu menjual kue. Slamet membeli kue seharga tujuh ribu tiga ratus lima puluh rupiah, dan membayar dengan uang sembilan ribu lima ratus rupiah. Sisa uangnya dua ribu seratus lima puluh rupiah.";
 const SUARA_T2 = "Soal a, bilangan tujuh ribu tiga ratus lima puluh. Angka tujuh di ribuan, angka tiga di ratusan, angka lima di puluhan, dan angka nol di satuan.";
 const SUARA_T3 = "Soal b, bilangan sembilan ribu lima ratus. Angka sembilan di ribuan, angka lima di ratusan, dan angka nol di puluhan maupun di satuan.";
 const SUARA_T4 = "Soal c, dua ribu seratus lima puluh, sama dengan struk: dua di ribuan, satu di ratusan, lima di puluhan, nol di satuan. Hitung: sembilan ribu lima ratus dikurangi tujuh ribu tiga ratus lima puluh, hasilnya dua ribu seratus lima puluh.";
@@ -17,8 +17,8 @@ const tabelSoal = (suara: string, bilangan: string, angka: (string | number)[], 
 
 export const ADEGAN_LATIH_TIGA: AdeganStory = {
   id: "berlatih-tiga",
-  judul: "Ayo Berlatih nomor 3: Slamet membeli kue",
-  sumber: "Buku Siswa hlm. 15; Panduan Guru hlm. 37–38",
+  judul: "Soal cerita: Slamet membeli kue",
+  sumber: "Materi: soal cerita Slamet membeli kue",
   latar: "#FDF2F8",
   kutipan: [
     "Azizah membantu Ibu menjual kue buatan Ibu ke temannya.",
@@ -35,7 +35,7 @@ export const ADEGAN_LATIH_TIGA: AdeganStory = {
   ketukan: [
     k(
       SUARA_T1,
-      tambah(0, judul("Nomor 3: Slamet membeli kue")),
+      tambah(0, judul("Soal cerita: Slamet membeli kue")),
       tambah("menjual", emo("ke", 36, 80, "🧁", 34)),
       tambah("seharga", ...kartu("hg", 70, 34, 216, 36, W.hijauMuda, ["harga kue: Rp7.350,00"], 10)),
       tambah("membayar", ...kartu("um", 70, 78, 216, 36, W.langit, ["uang Slamet: Rp9.500,00"], 10)),
@@ -44,20 +44,20 @@ export const ADEGAN_LATIH_TIGA: AdeganStory = {
     k(
       SUARA_T2,
       bersih(0),
-      tambah(0, judul("Nomor 3a: 7.350")),
+      tambah(0, judul("Soal a: 7.350")),
       ...tabelSoal(SUARA_T2, "7.350", [7, 3, 5, 0], ["ribuan", "ratusan", "puluhan", "satuan"]),
     ),
     k(
       SUARA_T3,
       bersih(0),
-      tambah(0, judul("Nomor 3b: 9.500")),
+      tambah(0, judul("Soal b: 9.500")),
       ...tabelSoal(SUARA_T3, "9.500", [9, 5, 0, 0], ["ribuan", "ratusan", "puluhan", "satuan"]),
       tambah("maupun", ...kartu("nn", 40, 130, 220, 30, W.pink, ["dua nol: di puluhan dan di satuan"], 9)),
     ),
     k(
       SUARA_T4,
       bersih(0),
-      tambah(0, judul("Nomor 3c: 2.150")),
+      tambah(0, judul("Soal c: 2.150")),
       ...tabelSoal(SUARA_T4, "2.150", [2, 1, 5, 0], ["ribuan", "ratusan", "puluhan", "satuan"]),
       tambah("Hitung:", ...kartu("hm", 30, 130, 240, 36, W.hijauMuda, ["9.500 − 7.350 = 2.150"], 12)),
       tambah("hasilnya", emo("ok", 150, 190, "✅", 18)),
@@ -66,10 +66,10 @@ export const ADEGAN_LATIH_TIGA: AdeganStory = {
 };
 
 /* ------------------------------ 10. Kunci Panduan Guru nomor 4 (Panduan Guru hlm. 38) ------------------------------ */
-const SUARA_N1 = "Panduan Guru menutup kunci subbab B dengan nomor empat: salin tabel lalu lengkapi dengan bilangan. Catatan video: soal nomor empat ini tidak kami temukan di halaman murid subbab B, yang hanya memuat nomor satu sampai tiga.";
+const SUARA_N1 = "Sekarang salin tabel ini, lalu lengkapi dengan bilangan. Perhatikan, tiap bilangan terdiri atas empat angka, dari ribuan sampai satuan.";
 const SUARA_N2 = "Bilangan pertama enam ribu seratus sembilan puluh dua. Angka enam di ribuan, satu di ratusan, sembilan di puluhan, dan dua di satuan.";
 const SUARA_N3 = "Bilangan kedua dua ribu sembilan ratus sepuluh. Bilangan ketiga empat ribu seratus dua puluh delapan.";
-const SUARA_N4 = "Bilangan keempat sembilan ribu dua ratus tujuh belas. Hitungan mandiri: tiap baris punya empat angka, dan membaca dari kiri ke kanan mengembalikan lambang bilangannya. Semua kunci cocok.";
+const SUARA_N4 = "Bilangan keempat sembilan ribu dua ratus tujuh belas. Periksa: tiap baris punya empat angka, dan membaca dari kiri ke kanan mengembalikan lambang bilangannya. Semua baris cocok.";
 
 const KOL = [16, 64, 50, 50, 50, 50];
 const BARIS: [number, string, number[]][] = [
@@ -82,8 +82,8 @@ const baris = (i: number) => barisTabel(`r${i}`, 10, 58 + i * 24, KOL, [String(B
 
 export const ADEGAN_KUNCI_EMPAT: AdeganStory = {
   id: "kunci-empat",
-  judul: "Panduan Guru: kunci nomor 4 (tabel bilangan)",
-  sumber: "Panduan Guru hlm. 38",
+  judul: "Melengkapi tabel bilangan",
+  sumber: "Materi: tabel bilangan",
   latar: "#F0FDF4",
   kutipan: [
     "Salin tabel berikut lalu lengkapilah dengan bilangan!",
@@ -96,15 +96,15 @@ export const ADEGAN_KUNCI_EMPAT: AdeganStory = {
   ketukan: [
     k(
       SUARA_N1,
-      tambah(0, judul("Kunci nomor 4 (Panduan Guru)")),
+      tambah(0, judul("Melengkapi tabel")),
       tambah("salin", ...kartu("q", 14, 32, 272, 46, W.langit, ["4. salin tabel, lalu lengkapi", "dengan bilangan"], 9.4)),
-      tambah("Catatan", ...kartu("ct", 14, 92, 272, 76, W.emas, ["catatan video:", "Buku Siswa subbab B hanya memuat", "nomor 1 sampai 3; nomor 4 tidak ada", "di halaman murid"], 8.6)),
-      sorotkan("hanya", "ct-k"),
+      tambah("Perhatikan,", ...kartu("ct", 14, 92, 272, 76, W.emas, ["tiap bilangan terdiri atas", "4 angka, dari ribuan", "sampai satuan"], 9)),
+      sorotkan("satuan.", "ct-k"),
     ),
     k(
       SUARA_N2,
       bersih(0),
-      tambah(0, judul("Kunci nomor 4: tabel bilangan")),
+      tambah(0, judul("Tabel bilangan")),
       tambah(0, ...barisTabel("kh", 10, 34, KOL, ["No", "Lambang", "Ribuan", "Ratusan", "Puluhan", "Satuan"], 22, 7, true)),
       tambah("pertama", ...baris(0)),
       sorotkan(idx(SUARA_N2, "ribuan"), "r0-s2"),
@@ -120,22 +120,22 @@ export const ADEGAN_KUNCI_EMPAT: AdeganStory = {
     k(
       SUARA_N4,
       tambah("keempat", ...baris(3)),
-      tambah("Hitungan", ...kartu("ok", 40, 168, 220, 26, W.hijauMuda, ["tiap baris: 4 angka, kiri ke kanan"], 8.6)),
+      tambah("Periksa:", ...kartu("ok", 40, 168, 220, 26, W.hijauMuda, ["tiap baris: 4 angka, kiri ke kanan"], 8.6)),
       tambah("Semua", emo("yy", 266, 188, "✅", 18)),
     ),
   ],
 };
 
 /* ------------------------------ 11. Miskonsepsi (Panduan Guru hlm. 39) ------------------------------ */
-const SUARA_X1 = "Miskonsepsi pertama: murid membaca bilangan sesuai nilai tempatnya. Misalnya dua ribu tiga ratus empat puluh lima dibaca dua ribuan tiga ratusan empat puluhan lima.";
+const SUARA_X1 = "Hati-hati, kesalahan yang sering terjadi: membaca bilangan sesuai nilai tempatnya. Misalnya dua ribu tiga ratus empat puluh lima dibaca dua ribuan tiga ratusan empat puluhan lima.";
 const SUARA_X2 = "Seharusnya dibaca dua ribu tiga ratus empat puluh lima, tanpa imbuhan an pada tiap tempat.";
-const SUARA_X3 = "Kesalahan kedua ada di tabel. Untuk bilangan seribu dua ratus tiga puluh empat, murid menuliskan nilainya: seribu, dua ratus, tiga puluh, dan empat.";
+const SUARA_X3 = "Kesalahan kedua ada di tabel. Untuk bilangan seribu dua ratus tiga puluh empat, jangan kamu tuliskan nilainya: seribu, dua ratus, tiga puluh, dan empat.";
 const SUARA_X4 = "Seharusnya tabel diisi angkanya saja: satu, dua, tiga, dan empat. Nilai tempat sudah ditunjukkan oleh kolomnya.";
 
 export const ADEGAN_MISKONSEPSI: AdeganStory = {
   id: "miskonsepsi",
-  judul: "Miskonsepsi: membaca dan mengisi tabel nilai tempat",
-  sumber: "Panduan Guru hlm. 39",
+  judul: "Hati-hati: membaca dan mengisi tabel nilai tempat",
+  sumber: "Materi: kesalahan yang sering terjadi",
   latar: "#FEF2F2",
   kutipan: [
     "Miskonsepsi pada materi nilai tempat adalah",
@@ -149,7 +149,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   ketukan: [
     k(
       SUARA_X1,
-      tambah(0, judul("Miskonsepsi 1: cara membaca")),
+      tambah(0, judul("Hati-hati 1: cara membaca")),
       tambah("Misalnya", teks("bx", 150, 54, "2.345", 30, W.merah)),
       tambah("dibaca", ...kartu("sl", 14, 76, 272, 50, W.merahMuda, ["dibaca: dua ribuan tiga ratusan", "empat puluhan lima"], 9.2)),
       tambah("dibaca", emo("sx", 150, 154, "❌", 26)),
@@ -163,7 +163,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
     k(
       SUARA_X3,
       bersih(0),
-      tambah(0, judul("Miskonsepsi 2: isi tabel")),
+      tambah(0, judul("Hati-hati 2: isi tabel")),
       tambah("bilangan", teks("tb", 150, 52, "1.234", 22, W.merah)),
       tambah(0, ...kepalaTempat("sl", 26, 66, 62, 18, 9)),
       tambah(idx(SUARA_X3, "seribu", 2), ...selTempat("sl", 26, 84, 62, 0, "1.000", 28, 12, W.merahMuda)),
@@ -181,14 +181,14 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
 };
 
 /* ------------------------------ 12. Diferensiasi dan metode yang disarankan (Panduan Guru hlm. 39) ------------------------------ */
-const SUARA_F1 = "Diferensiasi: murid yang cepat belajar, atau advanced, mengerjakan latihan tanpa bantuan dan boleh diberi soal tambahan, sementara guru mendampingi murid yang mengalami kesulitan.";
-const SUARA_F2 = "Metode yang disarankan untuk subbab ini adalah Diskusi dan Tanya Jawab, yang mengutamakan produk hasil karya murid bersama kelompoknya.";
-const SUARA_F3 = "Kelompok dibentuk menurut keberagaman murid. Ketua kelompok murid berkemampuan tinggi, anggotanya berkemampuan sedang atau kurang. Bila tidak ada murid berkemampuan tinggi, semua anggota bekerja sama lewat diskusi dan tanya jawab.";
+const SUARA_F1 = "Pesan belajar: kalau kamu cepat belajar, kerjakan latihan tanpa bantuan dan boleh mencoba soal tambahan, sementara guru mendampingi teman yang mengalami kesulitan.";
+const SUARA_F2 = "Subbab ini kita pelajari dengan Diskusi dan Tanya Jawab, yang mengutamakan produk hasil karya kalian bersama kelompoknya.";
+const SUARA_F3 = "Kelompok dibentuk menurut keberagaman. Ketua kelompok adalah teman berkemampuan tinggi, anggotanya berkemampuan sedang atau kurang. Bila tidak ada yang berkemampuan tinggi, semua anggota bekerja sama lewat diskusi dan tanya jawab.";
 
 export const ADEGAN_DIFERENSIASI: AdeganStory = {
   id: "diferensiasi",
-  judul: "Diferensiasi dan metode yang disarankan",
-  sumber: "Panduan Guru hlm. 39",
+  judul: "Pesan belajar dan metode kelompok",
+  sumber: "Materi: belajar bersama kelompok",
   latar: "#F5F3FF",
   kutipan: [
     "Diferensiasi",
@@ -203,16 +203,16 @@ export const ADEGAN_DIFERENSIASI: AdeganStory = {
   ketukan: [
     k(
       SUARA_F1,
-      tambah(0, judul("Diferensiasi")),
+      tambah(0, judul("Pesan belajar")),
       tambah("cepat", emo("rk", 60, 62, "🚀", 30), ...kartu("d1", 14, 78, 132, 70, W.hijauMuda, ["cepat belajar:", "latihan tanpa bantuan", "dan soal tambahan"], 8.2)),
       tambah("mendampingi", emo("hd", 240, 62, "🤝", 30), ...kartu("d2", 154, 78, 132, 70, W.langit, ["guru mendampingi", "murid yang", "mengalami kesulitan"], 8.2)),
     ),
     k(
       SUARA_F2,
       bersih(0),
-      tambah(0, judul("Metode yang disarankan")),
+      tambah(0, judul("Belajar dengan diskusi")),
       tambah("Diskusi", emo("dk", 150, 66, "💬", 30), ...kartu("m1", 40, 80, 220, 36, W.krem, ["Diskusi dan Tanya Jawab"], 11)),
-      tambah("produk", ...kartu("m2", 14, 132, 272, 40, W.hijauMuda, ["produk hasil karya murid", "bersama kelompoknya"], 9)),
+      tambah("produk", ...kartu("m2", 14, 132, 272, 40, W.hijauMuda, ["produk hasil karya kalian", "bersama kelompoknya"], 9)),
     ),
     k(
       SUARA_F3,

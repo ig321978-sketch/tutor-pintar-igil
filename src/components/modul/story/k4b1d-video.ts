@@ -8,8 +8,8 @@ import { ADEGAN_LUAR_IKATAN, ADEGAN_LUAR_IKATAN_TERAPAN, ADEGAN_LUAR_KELOMPOK, A
 /** Kelas 4 Bab 1 Sub-Bab D (Komposisi dan Dekomposisi Bilangan Cacah sampai 10.000): video materi kurikulum dan video metode luar, dua video terpisah. */
 export const VIDEO_MATERI_K4B1D: VideoStory = {
   id: "k4b1d-materi",
-  judul: "Komposisi dan Dekomposisi Bilangan menurut Buku",
-  subjudul: "Materi kurikulum · Buku Siswa hlm. 24–28; Panduan Guru hlm. 45–49",
+  judul: "Komposisi dan Dekomposisi Bilangan",
+  subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
     ADEGAN_KOMPOSISI_AMATI,
@@ -27,7 +27,7 @@ export const VIDEO_MATERI_K4B1D: VideoStory = {
 export const VIDEO_LUAR_K4B1D: VideoStory = {
   id: "k4b1d-luar",
   judul: "Menyusun dan Mengurai Bilangan: Metode dari Luar",
-  subjudul: "Empat metode luar · angka dari buku",
+  subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
     ADEGAN_LUAR_PEMBUKA,

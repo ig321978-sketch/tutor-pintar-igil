@@ -4,9 +4,9 @@ import { bersih, hapus, idx, k, sorotkan, tambah, warnai } from "./k4b1g-bantu";
 
 /* ------------------------------ 5. Cara bersusun tanpa menyimpan (Buku Siswa hlm. 41) ------------------------------ */
 const SUARA_S1 = "Cara kedua, bersusun tanpa menyimpan. Dua belas ditulis di atas, empat di bawahnya sejajar angka satuan, lalu tanda kali dan garis.";
-const SUARA_S2 = "Buku menulis dua langkah. Satu kali empat sama dengan empat, dan dua kali empat sama dengan delapan.";
+const SUARA_S2 = "Ada dua langkah. Satu kali empat sama dengan empat, dan dua kali empat sama dengan delapan.";
 const SUARA_S3 = "Hasilnya empat puluh delapan, jadi ada empat puluh delapan donat. Tidak ada yang disimpan, karena setiap hasil kali masih satu angka.";
-const SUARA_S4 = "Perhatikan urutannya: buku mencatat puluhan lebih dulu, satu kali empat, baru satuan. Karena tidak ada yang disimpan, urutan tidak mengubah hasil. Saat menyimpan, mulailah dari satuan.";
+const SUARA_S4 = "Perhatikan urutannya: puluhan lebih dulu, satu kali empat, baru satuan. Karena tidak ada yang disimpan, urutan tidak mengubah hasil. Saat menyimpan, mulailah dari satuan.";
 
 const SB = susunSoal("sb", 70, 70, 12, 4);
 const SBH = susunHasil("sb", 70, 70, "48");
@@ -14,7 +14,7 @@ const SBH = susunHasil("sb", 70, 70, "48");
 export const ADEGAN_SUSUN_TANPA: AdeganStory = {
   id: "susun-tanpa-simpan",
   judul: "Perkalian cara bersusun tanpa menyimpan",
-  sumber: "Buku Siswa hlm. 41",
+  sumber: "Metode: bersusun tanpa menyimpan",
   latar: "#F0F9FF",
   kutipan: [
     "Perkalian cara bersusun tanpa menyimpan",
@@ -65,7 +65,7 @@ const IDK = (a: number, b: number): string[] => Array.from({ length: b - a }, (_
 export const ADEGAN_KELERENG: AdeganStory = {
   id: "kelereng-panjang",
   judul: "Cara panjang: empat belas tumpuk kelereng",
-  sumber: "Buku Siswa hlm. 41",
+  sumber: "Metode: cara panjang, kelereng",
   latar: "#F5F3FF",
   kutipan: [
     "Perkalian cara panjang",
@@ -113,7 +113,7 @@ const SMH = susunHasil("sm", 70, 70, "70");
 export const ADEGAN_SUSUN_SIMPAN: AdeganStory = {
   id: "susun-menyimpan",
   judul: "Perkalian cara bersusun dengan menyimpan",
-  sumber: "Buku Siswa hlm. 42",
+  sumber: "Metode: bersusun dengan menyimpan",
   latar: "#ECFEFF",
   kutipan: [
     "Perkalian cara bersusun dengan menyimpan",
@@ -155,18 +155,18 @@ export const ADEGAN_SUSUN_SIMPAN: AdeganStory = {
 };
 
 /* ------------------------------ 8. Ayo Mencoba: pensil (Buku Siswa hlm. 42; Panduan Guru hlm. 62) ------------------------------ */
-const SUARA_Y1 = "Ayo Mencoba: koperasi sekolah membeli delapan pak pensil tulis, setiap pak berisi dua belas batang. Berapa pensil yang dijual seluruhnya?";
+const SUARA_Y1 = "Sekarang kita mencoba: koperasi sekolah membeli delapan pak pensil tulis, setiap pak berisi dua belas batang. Berapa pensil yang dijual seluruhnya?";
 const SUARA_Y2 = "Cara bersusun pendek: dua belas di atas, delapan di bawah. Satuan dulu: dua kali delapan sama dengan enam belas. Tulis enam, simpan satu.";
 const SUARA_Y3 = "Lalu satu kali delapan sama dengan delapan, ditambah satu yang disimpan, hasilnya sembilan.";
-const SUARA_Y4 = "Kunci panduan guru: sembilan puluh enam pensil. Hitungan mandiri cocok, dua belas kali delapan sama dengan sembilan puluh enam.";
+const SUARA_Y4 = "Jadi ada sembilan puluh enam pensil, karena dua belas kali delapan sama dengan sembilan puluh enam.";
 
 const SP = susunSoal("sp", 70, 70, 12, 8);
 const SPH = susunHasil("sp", 70, 70, "96");
 
 export const ADEGAN_AYO_MENCOBA: AdeganStory = {
   id: "ayo-mencoba",
-  judul: "Ayo Mencoba: delapan pak pensil",
-  sumber: "Buku Siswa hlm. 42; Panduan Guru hlm. 62",
+  judul: "Mencoba: delapan pak pensil",
+  sumber: "Materi: bersusun pendek",
   latar: "#FEFCE8",
   kutipan: [
     "Ayo Mencoba",
@@ -180,7 +180,7 @@ export const ADEGAN_AYO_MENCOBA: AdeganStory = {
   ketukan: [
     k(
       SUARA_Y1,
-      tambah(0, judul("Ayo Mencoba: pensil")),
+      tambah(0, judul("Mencoba: pensil")),
       tambah("delapan", ...kelompokAngka("pk", 20, 34, 8, 4, 62, 34, "12 batang", W.langit, 9)),
       tambah("setiap", teks("pkt", 150, 134, "8 pak × 12 batang", 11, W.biru)),
       tambah("Berapa", emo("pkq", 150, 172, "❓", 28)),
@@ -203,8 +203,8 @@ export const ADEGAN_AYO_MENCOBA: AdeganStory = {
     ),
     k(
       SUARA_Y4,
-      sorotkan("Kunci", "sp-h0", "sp-h1"),
-      tambah("Kunci", ...kartu("spk", 128, 142, 156, 44, W.emas, ["kunci: 96 pensil", "12 × 8 = 96"], 9.4)),
+      sorotkan("Jadi", "sp-h0", "sp-h1"),
+      tambah("karena", ...kartu("spk", 128, 142, 156, 44, W.emas, ["96 pensil", "12 × 8 = 96"], 9.4)),
     ),
   ],
 };

@@ -172,10 +172,25 @@ const titik = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   for (const m of [...METODE, ...NAMA_ID]) cek(luar.includes(m), `video metode luar memuat ${m}`);
   sama(U1.NAMA_METODE, METODE, "nama metode di berkas luar-1");
   sama(U1.NAMA_METODE_ID, NAMA_ID, "nama Indonesia metode luar");
-  cek(M.adegan.every((a) => /(Buku Siswa|Panduan Guru) hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber)), "video materi: tiap adegan berlabel pelajaran netral (Materi: ...)");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
   cek(U.adegan.every((a) => a.sumber.length <= 46), "video metode luar: label sumber cukup pendek untuk kanvas 300 lebar");
-  cek(M.adegan.every((a) => a.sumber.length <= 52), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
+  cek(M_VIDEO.adegan.every((a) => a.sumber.length <= 46), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
+  // Video berbicara sebagai guru: suara, teks terlihat, label sumber, judul adegan, dan subjudul tidak menyebut sumber buku (hanya adegan yang diputar).
+  const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul video tanpa sebutan sumber buku`);
+    cek(v.subjudul === (v.jenis === "materi" ? "Materi kurikulum" : "Empat metode luar"), `${v.id}: subjudul netral`);
+    for (const a of v.adegan) {
+      cek(!TERLARANG.test(`${a.judul} ${a.sumber}`), `${v.id}/${a.id}: judul dan sumber adegan tanpa sebutan sumber buku`);
+      a.ketukan.forEach((kt, i) => {
+        cek(!TERLARANG.test(kt.suara), `${v.id}/${a.id}#${i + 1}: suara tanpa sebutan sumber buku`);
+        cek(!/nomor (satu|dua|tiga|empat|\d)|no\. ?\d|Ayo Berlatih/i.test(kt.suara), `${v.id}/${a.id}#${i + 1}: suara tanpa rujukan nomor soal buku`);
+        for (let p = 0; p < L.kataDari(kt.suara).length; p += 1)
+          for (const o of L.keadaanStory(a, i, p)) if (o.t === "teks" && o.isi) cek(!TERLARANG.test(o.isi) && !/Panduan|Buku Siswa|catatan video/i.test(o.isi), `${v.id}/${a.id}#${i + 1}: teks gambar "${o.isi}" tanpa sebutan sumber buku`);
+      });
+    }
+  }
   for (const kata of ["Peta konsep", "Kata kunci", "Apersepsi", "Ayo Berlatih", "Ayo Berpikir", "Miskonsepsi", "Diferensiasi", "Refleksi", "Subbab", "Tujuan pembelajaran", "Panduan guru", "Aktivitas"]) cek(!luar.includes(kata), `video metode luar tidak memuat "${kata}" milik materi`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-nilai", "luar-nilai-terapan", "luar-tukar", "luar-tukar-terapan", "luar-uraian", "luar-uraian-terapan", "luar-cakram", "luar-cakram-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");

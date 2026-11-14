@@ -8,8 +8,8 @@ import { ADEGAN_LUAR_KALI_BALIK, ADEGAN_LUAR_KALI_BALIK_TERAPAN, ADEGAN_LUAR_KUR
 /** Kelas 4 Bab 1 Sub-Bab H (Pembagian Bilangan Cacah sampai 100): video materi kurikulum dan video metode luar, dua video terpisah. */
 export const VIDEO_MATERI_K4B1H: VideoStory = {
   id: "k4b1h-materi",
-  judul: "Pembagian Bilangan Cacah sampai 100 menurut Buku",
-  subjudul: "Materi kurikulum · Buku Siswa hlm. 44–47 (Aktivitas 5)",
+  judul: "Pembagian Bilangan Cacah sampai 100",
+  subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
     ADEGAN_PEMBUKA_H,
@@ -28,7 +28,7 @@ export const VIDEO_MATERI_K4B1H: VideoStory = {
 export const VIDEO_LUAR_K4B1H: VideoStory = {
   id: "k4b1h-luar",
   judul: "Pembagian sampai 100: Metode dari Luar",
-  subjudul: "Empat metode luar · angka dari buku",
+  subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
     ADEGAN_LUAR_PEMBUKA,

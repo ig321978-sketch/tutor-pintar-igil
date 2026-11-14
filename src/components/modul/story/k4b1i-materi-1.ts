@@ -6,7 +6,7 @@ import { bersih, hapus, k, tambah, ubah } from "./k4b1i-bantu";
 export const ADEGAN_PEMBUKA_I: AdeganStory = {
   id: "pembuka-i",
   judul: "Sub-Bab I: Faktor dan Kelipatan",
-  sumber: "Buku Siswa hlm. 48; Panduan Guru hlm. 70–71",
+  sumber: "Materi: faktor dan kelipatan",
   latar: "#FDF2F8",
   kutipan: [
     "I. Faktor dan Kelipatan",
@@ -23,20 +23,20 @@ export const ADEGAN_PEMBUKA_I: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Sub-Bab I, Faktor dan Kelipatan. Pengalaman belajarnya dua: memahami faktor dari bilangan cacah, dan memahami kelipatan dari bilangan cacah.",
+      "Sekarang kita belajar faktor dan kelipatan. Ada dua hal yang akan kamu pahami: faktor dari bilangan cacah, dan kelipatan dari bilangan cacah.",
       bersih(0),
       tambah(0, judul("Faktor dan Kelipatan")),
       tambah("faktor@2", ...kartu("pe1", 30, 56, 240, 34, W.hijauMuda, ["1. konsep faktor bilangan cacah"], 9.6)),
       tambah("kelipatan@2", ...kartu("pe2", 30, 108, 240, 34, W.pink, ["2. konsep kelipatan bilangan cacah"], 9.6)),
     ),
     k(
-      "Sarananya pensil, buku tulis, dan kelereng. Apersepsi: faktor dan kelipatan berkembang dari pembagian dan perkalian.",
+      "Siapkan pensil, kertas, dan kelereng. Ingat dulu: faktor dan kelipatan berkembang dari pembagian dan perkalian.",
       bersih(0),
       tambah(0, judul("Sarana dan apersepsi")),
       tambah("pensil,", emo("sr1", 70, 74, "✏", 34)),
-      tambah("buku", emo("sr2", 150, 74, "📓", 34)),
+      tambah("kertas", emo("sr2", 150, 74, "📄", 34)),
       tambah("kelereng.", emo("sr3", 230, 74, "🔵", 34)),
-      tambah("apersepsi:", ...kartu("ap", 20, 108, 260, 26, W.krem, ["berkembang dari konsep:"], 9.6)),
+      tambah("ingat", ...kartu("ap", 20, 108, 260, 26, W.krem, ["berkembang dari konsep:"], 9.6)),
       tambah("pembagian", ...kartu("ap1", 30, 146, 110, 28, W.langit, ["pembagian"], 10)),
       tambah("perkalian.", ...kartu("ap2", 160, 146, 110, 28, W.hijauMuda, ["perkalian"], 10)),
     ),
@@ -50,7 +50,7 @@ export const ADEGAN_PEMBUKA_I: AdeganStory = {
       tambah("hasil", ...kartu("de4", 12, 148, 276, 28, W.krem, ["contoh: 2 × 4 = 8"], 9.4)),
     ),
     k(
-      "Pertanyaan pemantik: bagaimana menentukan faktor, dan bagaimana menentukan kelipatan? Pemanasan: permen dibagi rata kepada dua, tiga, atau empat orang, tanpa membocorkan jawaban.",
+      "Coba pikirkan: bagaimana menentukan faktor, dan bagaimana menentukan kelipatan? Sebagai pemanasan, bayangkan permen dibagi rata kepada dua, tiga, atau empat orang.",
       bersih(0),
       tambah(0, judul("Pertanyaan pemantik")),
       tambah("faktor", ...kartu("pm1", 12, 34, 276, 28, W.hijauMuda, ["bagaimana menentukan faktor?"], 9.6)),
@@ -63,7 +63,7 @@ export const ADEGAN_PEMBUKA_I: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 2. Ayo Mengamati: faktor dari 12 (Buku Siswa hlm. 48; Panduan Guru hlm. 71) ------------------------------ */
+/* ------------------------------ 2. Mengamati: faktor dari 12 (Buku Siswa hlm. 48; Panduan Guru hlm. 71) ------------------------------ */
 const PEN = (id: string, orang: number): Obj[] => bagiBenda(id, 30, 40, 12, orang, 240);
 const TAB_F12 = tabel(
   "t12",
@@ -84,8 +84,8 @@ const TAB_F12 = tabel(
 const D_F12 = deret("f12", 17, 78, ["1", "2", "3", "4", "6", "12"], { bw: 36, gap: 10 });
 export const ADEGAN_FAKTOR_12: AdeganStory = {
   id: "faktor-12",
-  judul: "Ayo Mengamati: faktor dari 12",
-  sumber: "Buku Siswa hlm. 48; Panduan Guru hlm. 71",
+  judul: "Mengamati: faktor dari 12",
+  sumber: "Materi: faktor dari 12",
   latar: "#FFFBEB",
   kutipan: [
     "Pak Guru mempunyai 12 buah pensil tulis",
@@ -99,9 +99,9 @@ export const ADEGAN_FAKTOR_12: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo mengamati. Pak Guru punya dua belas pensil untuk dibagikan. Jika hanya untuk Azizah, dua belas bagi satu sama dengan dua belas.",
+      "Perhatikan. Ada dua belas pensil yang akan dibagikan. Jika hanya untuk Azizah, dua belas bagi satu sama dengan dua belas.",
       bersih(0),
-      tambah(0, judul("Ayo Mengamati")),
+      tambah(0, judul("Mengamati")),
       tambah("pensil", ...PEN("p1", 1)),
       tambah("Azizah,", ...kartu("e1", 60, 84, 180, 28, W.krem, ["untuk Azizah saja"], 9.6)),
       tambah("sama", ...kartu("q1", 60, 124, 180, 30, W.hijauMuda, ["12 : 1 = 12"], 11)),
@@ -109,7 +109,7 @@ export const ADEGAN_FAKTOR_12: AdeganStory = {
     k(
       "Dibagikan kepada Azizah dan Putu: dua belas bagi dua sama dengan enam. Lalu kepada Azizah, Putu, dan Helen: dua belas bagi tiga sama dengan empat.",
       bersih(0),
-      tambah(0, judul("Ayo Mengamati")),
+      tambah(0, judul("Mengamati")),
       tambah("Putu:", ...PEN("p2", 2)),
       tambah("enam.", ...kartu("q2", 60, 84, 180, 30, W.hijauMuda, ["12 : 2 = 6"], 11)),
       tambah("enam.", ...kartu("r2", 60, 124, 180, 28, W.krem, ["tiap anak 6 pensil"], 9.6)),
@@ -121,7 +121,7 @@ export const ADEGAN_FAKTOR_12: AdeganStory = {
     k(
       "Kepada empat siswa, dua belas bagi empat sama dengan tiga. Kepada enam siswa, dua belas bagi enam sama dengan dua. Semuanya habis tanpa sisa.",
       bersih(0),
-      tambah(0, judul("Ayo Mengamati")),
+      tambah(0, judul("Mengamati")),
       tambah("empat", ...PEN("p4", 4)),
       tambah("tiga.", ...kartu("q4", 60, 84, 180, 30, W.hijauMuda, ["12 : 4 = 3"], 11)),
       tambah("tiga.", ...kartu("r4", 60, 124, 180, 28, W.krem, ["tiap anak 3 pensil"], 9.6)),
@@ -155,10 +155,10 @@ export const ADEGAN_FAKTOR_12: AdeganStory = {
       tambah("belas.", ...kartu("fk", 40, 132, 220, 28, W.hijauMuda, ["faktor 12: 1, 2, 3, 4, 6, 12"], 10)),
     ),
     k(
-      "Panduan Guru: siapkan benda nyata, lalu setelah faktor dipahami, kenalkan bilangan prima.",
-      ...daftar("pg", "Panduan Guru: Ayo Mengamati", [
-        { at: "siapkan", t: "siapkan benda nyata: permen, kerikil", w: W.krem, u: 9 },
-        { at: "prima.", t: "lalu tarik karakteristik bilangan prima", w: W.pink, u: 9 },
+      "Boleh menyiapkan benda nyata, seperti permen atau kerikil. Setelah faktor dipahami, kita kenali bilangan prima.",
+      ...daftar("pg", "Tips belajar", [
+        { at: "menyiapkan", t: "siapkan benda nyata: permen, kerikil", w: W.krem, u: 9 },
+        { at: "prima.", t: "lalu kenali bilangan prima", w: W.pink, u: 9 },
       ]),
     ),
   ],
@@ -185,7 +185,7 @@ const D_F20 = deret("f20", 17, 60, ["1", "2", "4", "5", "10", "20"], { bw: 36, g
 export const ADEGAN_BUKAN_FAKTOR: AdeganStory = {
   id: "bukan-faktor",
   judul: "Mengapa 5 bukan faktor dari 12?",
-  sumber: "Buku Siswa hlm. 48–49",
+  sumber: "Materi: bukan faktor dan faktor 20",
   latar: "#F0F9FF",
   kutipan: [
     "Mengapa 5 bukan merupakan faktor atau pembagi dari 12?",
@@ -194,11 +194,11 @@ export const ADEGAN_BUKAN_FAKTOR: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Pak Guru bertanya: mengapa lima bukan faktor atau pembagi dari dua belas? Azizah menjawab: karena sisa bagi dua belas dengan lima tidak sama dengan nol.",
+      "Coba jawab: mengapa lima bukan faktor atau pembagi dari dua belas? Karena sisa bagi dua belas dengan lima tidak sama dengan nol.",
       bersih(0),
       tambah(0, judul("Mengapa 5 bukan faktor 12?")),
-      tambah("bertanya:", ...kartu("bf1", 20, 40, 260, 30, W.langit, ["Pak Guru: mengapa 5 bukan faktor 12?"], 9.2)),
-      tambah("Azizah", ...kartu("bf2", 20, 84, 260, 30, W.krem, ["12 : 5 = 2 sisa 2"], 11)),
+      tambah("jawab:", ...kartu("bf1", 20, 40, 260, 30, W.langit, ["pertanyaan: mengapa 5 bukan faktor 12?"], 9.2)),
+      tambah("Karena", ...kartu("bf2", 20, 84, 260, 30, W.krem, ["12 : 5 = 2 sisa 2"], 11)),
       tambah("nol.", ...kartu("bf3", 20, 130, 260, 36, W.merahMuda, ["sisa bukan 0, maka 5 bukan faktor"], 9.6)),
     ),
     k(
@@ -227,15 +227,15 @@ export const ADEGAN_BUKAN_FAKTOR: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 4. Ayo Berlatih 1: tabel faktor 20 dan 48 (Buku Siswa hlm. 49; Panduan Guru hlm. 71-72) ------------------------------ */
+/* ------------------------------ 4. Latihan 1: tabel faktor 20 dan 48 (Buku Siswa hlm. 49; Panduan Guru hlm. 71-72) ------------------------------ */
 const TA = tabel("ta", 30, 40, [50, 50], [["a. 20", "pasangan"], ["1", "20"], ["2", "...."], ["4", "...."], ["5", "...."], ["....", "2"]], 17, 8.6);
 const TB = tabel("tb", 170, 40, [50, 50], [["b. 48", "pasangan"], ["1", "48"], ["2", "...."], ["3", "...."], ["4", "...."], ["....", "8"], ["....", "6"]], 17, 8.6);
 const D_F48 = deret("f48", 16.5, 70, ["1", "2", "3", "4", "6", "8", "12", "16", "24", "48"], { bw: 24, gap: 3, u: 9.6 });
 const isiSel = (at: string | number, id: string, r: number, c: number, nilai: string) => ubah(at, { id: `${id}-t${r}${c}`, isi: nilai, warna: W.hijau });
 export const ADEGAN_BERLATIH_FAKTOR_1: AdeganStory = {
   id: "berlatih-faktor-1",
-  judul: "Ayo Berlatih 1: tabel faktor 20 dan 48",
-  sumber: "Buku Siswa hlm. 49; Panduan Guru hlm. 71–72",
+  judul: "Latihan 1: tabel faktor 20 dan 48",
+  sumber: "Materi: tabel faktor 20 dan 48",
   latar: "#F0FDF4",
   kutipan: [
     "Isilah titik-titik pada tabel berikut dengan pembagi atau faktor dari bilangan 20 dan 48",
@@ -246,12 +246,12 @@ export const ADEGAN_BERLATIH_FAKTOR_1: AdeganStory = {
     k(
       "Latihan satu: isilah titik-titik pada tabel dengan faktor dari dua puluh dan empat puluh delapan.",
       bersih(0),
-      tambah(0, judul("Ayo Berlatih 1")),
+      tambah(0, judul("Latihan 1")),
       tambah("dua", ...TA),
       tambah("empat", ...TB),
     ),
     k(
-      "Dua puluh bagi dua sepuluh, bagi empat lima, bagi lima empat, dan baris terakhir sepuluh. Cocok dengan kunci.",
+      "Dua puluh bagi dua sepuluh, bagi empat lima, bagi lima empat, dan baris terakhir sepuluh. Semuanya benar.",
       isiSel("sepuluh,", "ta", 2, 1, "10"),
       isiSel("lima,", "ta", 3, 1, "5"),
       isiSel("empat@2", "ta", 4, 1, "4"),
@@ -266,30 +266,30 @@ export const ADEGAN_BERLATIH_FAKTOR_1: AdeganStory = {
       isiSel(20, "tb", 6, 0, "8"),
     ),
     k(
-      "Faktor empat puluh delapan ada sepuluh: satu, dua, tiga, empat, enam, delapan, dua belas, enam belas, dua puluh empat, empat puluh delapan. Kunci menulis huruf b dua kali, maksudnya a sampai e.",
+      "Faktor empat puluh delapan ada sepuluh: satu, dua, tiga, empat, enam, delapan, dua belas, enam belas, dua puluh empat, empat puluh delapan. Perhatikan, semuanya habis membagi empat puluh delapan.",
       bersih(0),
       tambah(0, judul("Faktor dari 48")),
       ...[6, 7, 8, 9, 10, 11, 13, 15, 18, 21].map((p, i) => tambah(p, ...suku(D_F48, i))),
-      tambah("Kunci", ...kartu("fk8", 20, 124, 260, 34, W.krem, ["kunci: b, b, c, d, e → maksud: a, b, c, d, e"], 8.8)),
+      tambah("Perhatikan", ...kartu("fk8", 20, 124, 260, 34, W.krem, ["10 faktor, semuanya habis membagi 48"], 9.2)),
     ),
   ],
 };
 
-/* ------------------------------ 5. Ayo Berlatih 2: faktor 24, 25, 52 (Buku Siswa hlm. 50; Panduan Guru hlm. 72) ------------------------------ */
+/* ------------------------------ 5. Latihan 2: faktor 24, 25, 52 (Buku Siswa hlm. 50; Panduan Guru hlm. 72) ------------------------------ */
 const D_24 = deret("fa", 17, 44, ["1", "2", "3", "4", "6", "8", "12", "24"], { bw: 28, gap: 6 });
 const D_25 = deret("fb", 55, 98, ["1", "5", "25"], { bw: 50, gap: 20 });
 const D_52 = deret("fc", 17, 152, ["1", "2", "4", "13", "26", "52"], { bw: 36, gap: 10 });
 export const ADEGAN_BERLATIH_FAKTOR_2: AdeganStory = {
   id: "berlatih-faktor-2",
-  judul: "Ayo Berlatih 2: faktor 24, 25, dan 52",
-  sumber: "Buku Siswa hlm. 50; Panduan Guru hlm. 72",
+  judul: "Latihan 2: faktor 24, 25, dan 52",
+  sumber: "Materi: faktor 24, 25, dan 52",
   latar: "#FEFCE8",
   kutipan: ["Tuliskan semua faktor dari", "Faktor dari 24 adalah 1,2,3,4,6,8,12,24", "Faktor dari 25 adalah 1,5,25", "Faktor dari 52 adalah 1,2,4,13,26,52"],
   ketukan: [
     k(
       "Latihan dua: tuliskan semua faktor dari dua puluh empat, dua puluh lima, dan lima puluh dua.",
       bersih(0),
-      tambah(0, judul("Ayo Berlatih 2")),
+      tambah(0, judul("Latihan 2")),
       tambah("empat,", ...kartu("l1", 20, 44, 260, 30, W.krem, ["a. 24"], 11)),
       tambah("lima,", ...kartu("l2", 20, 90, 260, 30, W.krem, ["b. 25"], 11)),
       tambah("dua@4", ...kartu("l3", 20, 136, 260, 30, W.krem, ["c. 52"], 11)),
@@ -313,7 +313,7 @@ export const ADEGAN_BERLATIH_FAKTOR_2: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 6. Ayo Berlatih 3: beras 10 kg (Buku Siswa hlm. 50; Panduan Guru hlm. 72) ------------------------------ */
+/* ------------------------------ 6. Latihan 3: beras 10 kg (Buku Siswa hlm. 50; Panduan Guru hlm. 72) ------------------------------ */
 const BERAS: [string, string, string][] = [
   ["1 kg", "10 orang", "0"],
   ["2 kg", "5 orang", "0"],
@@ -329,8 +329,8 @@ const BERAS: [string, string, string][] = [
 const TAB_BERAS = tabel("br", 10, 30, [70, 66, 48], [["Berat/orang", "Orang", "Sisa"], ...BERAS], 14.4, 8);
 export const ADEGAN_BERAS: AdeganStory = {
   id: "beras",
-  judul: "Ayo Berlatih 3: membagi beras sepuluh kilogram",
-  sumber: "Buku Siswa hlm. 50; Panduan Guru hlm. 72",
+  judul: "Latihan 3: membagi beras sepuluh kilogram",
+  sumber: "Materi: membagi 10 kg beras",
   latar: "#FFF7ED",
   kutipan: [
     "Slamet membantu ibu membagikan beras kepada masyarakat kurang mampu",
@@ -342,16 +342,16 @@ export const ADEGAN_BERAS: AdeganStory = {
     k(
       "Latihan tiga. Slamet membagikan sepuluh kilogram beras kepada beberapa orang dengan berat sama. Berapa kemungkinan banyaknya orang?",
       bersih(0),
-      tambah(0, judul("Ayo Berlatih 3")),
+      tambah(0, judul("Latihan 3")),
       tambah("beras", emo("bs0", 150, 78, "🌾", 40)),
       tambah("sepuluh", ...kartu("bs1", 40, 96, 220, 30, W.krem, ["10 kg beras"], 11)),
       tambah("berat", ...kartu("bs2", 40, 138, 220, 30, W.hijauMuda, ["dibagi rata, berat sama"], 9.6)),
     ),
     k(
-      "Panduan Guru mencoba tiap berat. Satu kilogram: sepuluh orang, sisa nol. Dua kilogram: lima orang, sisa nol. Tiga kilogram: tiga orang, sisa satu. Empat kilogram: dua orang, sisa dua.",
+      "Mari kita coba tiap berat. Satu kilogram: sepuluh orang, sisa nol. Dua kilogram: lima orang, sisa nol. Tiga kilogram: tiga orang, sisa satu. Empat kilogram: dua orang, sisa dua.",
       bersih(0),
       tambah(0, judul("Mencoba tiap berat")),
-      tambah("Panduan", ...barisTabel(TAB_BERAS, "br", 0)),
+      tambah("Mari", ...barisTabel(TAB_BERAS, "br", 0)),
       tambah("Satu", ...barisTabel(TAB_BERAS, "br", 1)),
       tambah("Dua", ...barisTabel(TAB_BERAS, "br", 2)),
       tambah("Tiga", ...barisTabel(TAB_BERAS, "br", 3)),

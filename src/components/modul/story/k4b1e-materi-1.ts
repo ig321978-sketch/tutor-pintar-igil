@@ -70,7 +70,7 @@ function susunNilai() {
 
 /* ------------------------------ 2. Pak Toni: cara susun panjang (Buku Siswa hlm. 28–29; Panduan Guru hlm. 50) ------------------------------ */
 const SUARA_B1 = "Pak Toni mempunyai seratus tiga puluh satu pohon jeruk di Kota Jember dan tiga ratus dua puluh satu pohon di Kota Banyuwangi. Berapa pohon jeruk Pak Toni seluruhnya?";
-const SUARA_B2 = "Pak Toni menjelaskan dua cara: susun panjang dan susun pendek. Cara susun panjang: tulis bilangan bersusun menurut nilai tempat, lalu uraikan menjadi ratusan, puluhan, dan satuan.";
+const SUARA_B2 = "Ada dua cara: susun panjang dan susun pendek. Perhatikan dulu cara susun panjang: tulis bilangan bersusun menurut nilai tempat, lalu uraikan menjadi ratusan, puluhan, dan satuan.";
 const SUARA_B3 = "Uraikan seratus tiga puluh satu menjadi seratus ditambah tiga puluh ditambah satu. Tiga ratus dua puluh satu menjadi tiga ratus ditambah dua puluh ditambah satu.";
 const SUARA_B4 = "Langkah ketiga: kelompokkan bilangan dengan nilai tempat yang sama. Seratus ditambah tiga ratus, tiga puluh ditambah dua puluh, dan satu ditambah satu.";
 const SUARA_B5 = "Hasilnya empat ratus ditambah lima puluh ditambah dua, yaitu empat ratus lima puluh dua pohon jeruk.";
@@ -78,7 +78,7 @@ const SUARA_B5 = "Hasilnya empat ratus ditambah lima puluh ditambah dua, yaitu e
 export const ADEGAN_TONI_PANJANG: AdeganStory = {
   id: "toni-panjang",
   judul: "Pohon jeruk Pak Toni: susun panjang",
-  sumber: "Buku Siswa hlm. 28–29; Panduan Guru hlm. 50",
+  sumber: "Materi: susun panjang",
   latar: "#FFF7ED",
   kutipan: [
     "Ayo Mengamati",
@@ -147,7 +147,7 @@ const langkah = (id: string, x: number, y: number, bilangan: readonly number[], 
 export const ADEGAN_TONI_PENDEK: AdeganStory = {
   id: "toni-pendek",
   judul: "Pohon jeruk Pak Toni: susun pendek",
-  sumber: "Buku Siswa hlm. 29; Panduan Guru hlm. 50",
+  sumber: "Materi: susun pendek tanpa menyimpan",
   latar: "#F0F9FF",
   kutipan: [
     "Bagaimana kalau menggunakan cara",
@@ -193,17 +193,17 @@ export const ADEGAN_TONI_PENDEK: AdeganStory = {
 };
 
 /* ------------------------------ 4. Tiga perpustakaan (Buku Siswa hlm. 30; Panduan Guru hlm. 50) ------------------------------ */
-const SUARA_D1 = "Perpustakaan SD Gebang satu memiliki seratus dua puluh empat buku, Gebang dua memiliki empat ratus sebelas buku, dan Gebang lima memiliki tiga ratus enam puluh tiga buku. Berapa buku seluruhnya?";
-const SUARA_D2 = "Murid bertanya: bolehkah cara susun panjang dipakai untuk tiga bilangan? Boleh. Uraikan seratus dua puluh empat menjadi seratus ditambah dua puluh ditambah empat.";
+const SUARA_D1 = "Perpustakaan SD Gebang satu memiliki seratus dua puluh empat bacaan, Gebang dua memiliki empat ratus sebelas bacaan, dan Gebang lima memiliki tiga ratus enam puluh tiga bacaan. Berapa bacaan seluruhnya?";
+const SUARA_D2 = "Mungkin ada yang bertanya: bolehkah cara susun panjang dipakai untuk tiga bilangan? Boleh. Uraikan seratus dua puluh empat menjadi seratus ditambah dua puluh ditambah empat.";
 const SUARA_D3 = "Uraikan empat ratus sebelas menjadi empat ratus ditambah sepuluh ditambah satu, dan tiga ratus enam puluh tiga menjadi tiga ratus ditambah enam puluh ditambah tiga.";
 const SUARA_D4 = "Kelompokkan ratusan: seratus, empat ratus, dan tiga ratus. Puluhan: dua puluh, sepuluh, dan enam puluh. Satuan: empat, satu, dan tiga.";
-const SUARA_D5 = "Jumlahnya delapan ratus ditambah sembilan puluh ditambah delapan, yaitu delapan ratus sembilan puluh delapan. Jadi ada delapan ratus sembilan puluh delapan buku.";
+const SUARA_D5 = "Jumlahnya delapan ratus ditambah sembilan puluh ditambah delapan, yaitu delapan ratus sembilan puluh delapan. Jadi ada delapan ratus sembilan puluh delapan bacaan.";
 const SUARA_D6 = "Cara susun pendek: satuan, empat ditambah satu ditambah tiga sama dengan delapan. Puluhan, dua ditambah satu ditambah enam sama dengan sembilan. Ratusan, satu ditambah empat ditambah tiga sama dengan delapan.";
 
 export const ADEGAN_BUKU_TIGA: AdeganStory = {
   id: "buku-tiga",
   judul: "Tiga perpustakaan: tiga bilangan dijumlahkan",
-  sumber: "Buku Siswa hlm. 30; Panduan Guru hlm. 50",
+  sumber: "Materi: tiga bilangan",
   latar: "#FEFCE8",
   kutipan: [
     "Perpustakaan SD Gebang 1 memiliki 124 buku, Perpustakaan SD",
@@ -225,16 +225,16 @@ export const ADEGAN_BUKU_TIGA: AdeganStory = {
     k(
       SUARA_D1,
       tambah(0, judul("Tiga perpustakaan SD Gebang")),
-      tambah("satu", ...kartu("g1", 8, 34, 88, 50, W.hijauMuda, ["SD Gebang 1", "124 buku"], 9)),
-      tambah("dua", ...kartu("g2", 106, 34, 88, 50, W.langit, ["SD Gebang 2", "411 buku"], 9)),
-      tambah("lima", ...kartu("g5", 204, 34, 88, 50, W.pink, ["SD Gebang 5", "363 buku"], 9)),
-      tambah("Berapa", emo("gb", 150, 126, "📚", 28), ...kartu("gq", 50, 148, 200, 34, W.emas, ["berapa buku seluruhnya?"], 10)),
+      tambah("satu", ...kartu("g1", 8, 34, 88, 50, W.hijauMuda, ["SD Gebang 1", "124 bacaan"], 9)),
+      tambah("dua", ...kartu("g2", 106, 34, 88, 50, W.langit, ["SD Gebang 2", "411 bacaan"], 9)),
+      tambah("lima", ...kartu("g5", 204, 34, 88, 50, W.pink, ["SD Gebang 5", "363 bacaan"], 9)),
+      tambah("Berapa", emo("gb", 150, 126, "📚", 28), ...kartu("gq", 50, 148, 200, 34, W.emas, ["berapa bacaan seluruhnya?"], 10)),
     ),
     k(
       SUARA_D2,
       bersih(0),
       tambah(0, judul("Susun panjang: tiga bilangan")),
-      tambah("Murid", ...kartu("gt", 14, 28, 272, 24, W.krem, ["murid: boleh susun panjang untuk tiga bilangan?"], 8.4)),
+      tambah("Mungkin", ...kartu("gt", 14, 28, 272, 24, W.krem, ["boleh susun panjang untuk tiga bilangan?"], 8.4)),
       tambah("Uraikan", bil("v1", 76, "124"), bil("v2", 90, "411"), bil("v3", 104, "363 +")),
       tambah(idx(SUARA_D2, "seratus", 2), ln("w1", 76, "= 100 + 20 + 4")),
       sorotkan("Boleh.", "gt-k"),
@@ -253,7 +253,7 @@ export const ADEGAN_BUKU_TIGA: AdeganStory = {
       SUARA_D5,
       tambah(0, ln("w5", 138, "= 800 + 90 + 8", 14)),
       tambah(idx(SUARA_D5, "yaitu"), ln("w6", 152, "= 898", 14, 9.6, { warna: W.merah })),
-      tambah("Jadi", ...kartu("w7", 150, 160, 136, 30, W.emas, ["898 buku"], 10)),
+      tambah("Jadi", ...kartu("w7", 150, 160, 136, 30, W.emas, ["898 bacaan"], 10)),
     ),
     k(
       SUARA_D6,
@@ -281,7 +281,7 @@ const SUARA_E6 = "Hasilnya empat ratus ditambah tiga puluh ditambah empat, yaitu
 export const ADEGAN_SIMPAN_PANJANG: AdeganStory = {
   id: "simpan-panjang",
   judul: "Dua keranjang jeruk: susun panjang dengan menyimpan",
-  sumber: "Buku Siswa hlm. 31; Panduan Guru hlm. 50",
+  sumber: "Materi: susun panjang dengan menyimpan",
   latar: "#FFF7ED",
   kutipan: [
     "Seorang Pedagang buah di depan sekolah memikul 2",
@@ -352,7 +352,7 @@ const SUARA_F4 = "Ratusan: satu ditambah satu ditambah dua sama dengan empat. Le
 export const ADEGAN_SIMPAN_PENDEK: AdeganStory = {
   id: "simpan-pendek",
   judul: "Dua keranjang jeruk: susun pendek dengan menyimpan",
-  sumber: "Buku Siswa hlm. 31; Panduan Guru hlm. 50",
+  sumber: "Materi: susun pendek dengan menyimpan",
   latar: "#F0F9FF",
   kutipan: [
     "Penjumlahan cara susun pendek dengan menyimpan",

@@ -1,15 +1,15 @@
 import type { AdeganStory } from "./logika-story";
 import { LATIHAN_DUA, LATIHAN_SATU, LATIHAN_TIGA, TABEL_EMPAT, TEMPAT, W, barisTabel, emo, garis, judul, kartu, kotak, papanIsi, papanKepala, rb, teks } from "./k4b1a-gambar";
-import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b1a-bantu";
+import { bersih, hapus, k, sorotkan, tambah } from "./k4b1a-bantu";
 
 /* ------------------------------ 9. Menulis angka menjadi nama bilangan (Buku Siswa hlm. 9) ------------------------------ */
-const SUARA_N1 = "Sekarang arah sebaliknya: buku mengubah angka menjadi nama bilangan. Contoh pertama, angka empat, tiga, dua, dan tujuh pada ribuan, ratusan, puluhan, dan satuan.";
+const SUARA_N1 = "Sekarang arah sebaliknya: kita mengubah angka menjadi nama bilangan. Contoh pertama, angka empat, tiga, dua, dan tujuh pada ribuan, ratusan, puluhan, dan satuan.";
 const SUARA_N2 = "Ribuan empat ditulis empat ribu. Ratusan tiga ditulis tiga ratus. Puluhan dua ditulis dua puluh. Satuan tujuh ditulis tujuh.";
 const SUARA_N3 = "Sehingga nama bilangannya adalah empat ribu tiga ratus dua puluh tujuh.";
 const SUARA_N4 = "Contoh kedua: angka satu, nol, dua, dan lima. Ribuan satu ditulis seribu, bukan satu ribu. Ratusan bernilai nol, jadi tidak dituliskan.";
 const SUARA_N5 = "Puluhan dua ditulis dua puluh, satuan lima ditulis lima. Jadi nama bilangannya seribu dua puluh lima.";
-const SUARA_N6 = "Aturan terakhir: jika ratusan, puluhan, dan satuan semuanya nol, bagian itu tidak dituliskan. Contoh tambahan video: dua ribu dibaca dua ribu saja.";
-const SUARA_N7 = "Catatan video: buku menulis seribu dengan huruf besar di tengah, lalu menulisnya dengan benar di akhir. Pada langkah puluhan tertulis kata yaitu lalu kosong; angka yang hilang itu dua.";
+const SUARA_N6 = "Aturan terakhir: jika ratusan, puluhan, dan satuan semuanya nol, bagian itu tidak dituliskan. Contohnya, dua ribu dibaca dua ribu saja.";
+const SUARA_N7 = "Hati-hati menulis nama bilangan. Seribu ditulis dalam satu kata, bukan satu ribu. Puluhan dua ditulis dua puluh, jangan sampai angka dua terlewat.";
 
 const NILAI_N = ["4.000", "300", "20", "7"];
 const NAMA_N = ["empat ribu", "tiga ratus", "dua puluh", "tujuh"];
@@ -17,7 +17,7 @@ const NAMA_N = ["empat ribu", "tiga ratus", "dua puluh", "tujuh"];
 export const ADEGAN_NAMA: AdeganStory = {
   id: "nama-bilangan",
   judul: "Mengubah angka menjadi nama bilangan, termasuk nol",
-  sumber: "Buku Siswa hlm. 9",
+  sumber: "Materi: nama bilangan dan nol",
   latar: "#FDF4FF",
   kutipan: [
     "Cara menulis bilangan 4.327 ke dalam nama bilangan",
@@ -78,22 +78,22 @@ export const ADEGAN_NAMA: AdeganStory = {
       tambah("ratusan,", ...papanKepala("no", 30, 34, 240, TEMPAT, 8.4, 18), ...papanIsi("no", 30, 52, 240, "2000", 30, 20)),
       tambah("semuanya", ...kartu("np", 20, 98, 260, 28, W.langit, ["ratusan, puluhan, satuan semuanya nol"], 8.8)),
       tambah("tidak", teks("nq", 150, 142, "bagian itu tidak dituliskan", 9.4, W.merah)),
-      tambah("tambahan", ...kartu("nr", 20, 156, 260, 30, W.emas, ["contoh tambahan video: 2.000 = dua ribu"], 9)),
+      tambah("Contohnya,", ...kartu("nr", 20, 156, 260, 30, W.emas, ["contoh: 2.000 = dua ribu"], 9)),
     ),
     k(
       SUARA_N7,
       bersih(0),
-      tambah(0, judul("Catatan video: dua salah ketik", W.merah)),
-      tambah("seribu", ...kartu("ns1", 14, 34, 272, 34, W.merahMuda, ["buku menulis SeRibu, lalu Seribu"], 9.4)),
-      tambah("benar", ...kartu("ns2", 14, 74, 272, 30, W.hijauMuda, ["ejaan benar: seribu, satu kata"], 9.4)),
-      tambah("puluhan", ...kartu("ns3", 14, 112, 272, 34, W.merahMuda, ["yaitu ..., ditulis Dua Puluh"], 9.4)),
-      tambah("dua.", ...kartu("ns4", 14, 152, 272, 30, W.emas, ["angka yang hilang: 2"], 9.4)),
+      tambah(0, judul("Hati-hati menulis nama bilangan", W.merah)),
+      tambah("Seribu", ...kartu("ns1", 14, 34, 272, 34, W.hijauMuda, ["seribu ditulis satu kata (1.000)"], 9.4)),
+      tambah("bukan", ...kartu("ns2", 14, 74, 272, 30, W.merahMuda, ["bukan: satu ribu"], 9.4)),
+      tambah("Puluhan", ...kartu("ns3", 14, 112, 272, 34, W.langit, ["puluhan 2: dua puluh (20)"], 9.4)),
+      tambah("terlewat.", ...kartu("ns4", 14, 152, 272, 30, W.emas, ["jangan sampai angka 2 terlewat"], 9.4)),
     ),
   ],
 };
 
 /* ------------------------------ 10. Ayo Berlatih nomor 1 (Buku Siswa hlm. 10–11; Panduan Guru hlm. 33) ------------------------------ */
-const SUARA_L1 = "Ayo Berlatih. Nomor satu: tuliskan bilangan pada gambar di bawah ini serta cara membacanya. Ada empat gambar.";
+const SUARA_L1 = "Sekarang kita berlatih. Latihan pertama: tuliskan bilangan pada gambar di bawah ini serta cara membacanya. Ada empat gambar.";
 const SUARA_L2 = "Gambar a: penghitung pada sepeda motor menunjukkan angka lima, nol, sembilan, satu. Dibaca lima ribu sembilan puluh satu.";
 const SUARA_L3 = "Gambar b: puncak gunung bertuliskan mdpl, yaitu meter di atas permukaan laut. Dibaca empat ribu delapan ratus delapan puluh empat.";
 const SUARA_L4 = "Gambar c: peta pulau bertuliskan kilometer persegi. Dibaca lima ribu tujuh ratus delapan puluh.";
@@ -104,8 +104,8 @@ const IKON_LATIHAN = ["🛵", "🏔", "🗺", "🏫"];
 
 export const ADEGAN_LATIHAN_SATU: AdeganStory = {
   id: "berlatih-satu",
-  judul: "Ayo Berlatih nomor 1: empat gambar bilangan",
-  sumber: "Buku Siswa hlm. 10–11; Panduan Guru hlm. 33",
+  judul: "Latihan membaca bilangan: empat gambar",
+  sumber: "Materi: latihan membaca bilangan",
   latar: "#EFF6FF",
   kutipan: [
     "Ayo Berlatih",
@@ -119,7 +119,7 @@ export const ADEGAN_LATIHAN_SATU: AdeganStory = {
   ketukan: [
     k(
       SUARA_L1,
-      tambah(0, judul("Ayo Berlatih nomor 1")),
+      tambah(0, judul("Latihan pertama")),
       tambah("tuliskan", ...kartu("p0", 14, 30, 272, 28, W.krem, ["tulis bilangan pada gambar + cara membacanya"], 8.8)),
       ...IKON_LATIHAN.map((e, i) => tambah("Ada", emo(`pi${i}`, 45 + i * 70, 118, e, 34))),
       tambah("empat", teks("pq", 150, 160, "a    b    c    d", 12, W.merah)),
@@ -173,11 +173,11 @@ export const ADEGAN_LATIHAN_SATU: AdeganStory = {
 };
 
 /* ------------------------------ 11. Ayo Berlatih nomor 2 dan 3 (Buku Siswa hlm. 11; Panduan Guru hlm. 33) ------------------------------ */
-const SUARA_D1 = "Nomor dua: Slamet membeli makanan ringan seharga tujuh ribu tiga ratus lima puluh rupiah. Uang Slamet sembilan ribu lima ratus rupiah, dan kembaliannya dua ribu seratus lima puluh rupiah.";
-const SUARA_D2 = "Soalnya meminta kita membaca tiga bilangan itu. Kunci panduan guru: tujuh ribu tiga ratus lima puluh, sembilan ribu lima ratus, dan dua ribu seratus lima puluh.";
-const SUARA_D3 = "Hitungan mandiri video: harga ditambah kembalian harus sama dengan uang Slamet. Tujuh ribu tiga ratus lima puluh ditambah dua ribu seratus lima puluh sama dengan sembilan ribu lima ratus. Cocok.";
-const SUARA_D4 = "Nomor tiga: hubungkan bilangan dengan cara membacanya. Ada empat bilangan dan empat nama, urutannya diacak.";
-const SUARA_D5 = "Kunci panduan guru: dua ribu sembilan ratus tiga dihubungkan dengan bilangan pertama. Dua ribu seratus empat puluh lima dihubungkan dengan bilangan kedua.";
+const SUARA_D1 = "Latihan kedua: Slamet membeli makanan ringan seharga tujuh ribu tiga ratus lima puluh rupiah. Uang Slamet sembilan ribu lima ratus rupiah, dan kembaliannya dua ribu seratus lima puluh rupiah.";
+const SUARA_D2 = "Sekarang kita baca tiga bilangan itu. Tujuh ribu tiga ratus lima puluh, sembilan ribu lima ratus, dan dua ribu seratus lima puluh.";
+const SUARA_D3 = "Mari kita periksa: harga ditambah kembalian harus sama dengan uang Slamet. Tujuh ribu tiga ratus lima puluh ditambah dua ribu seratus lima puluh sama dengan sembilan ribu lima ratus. Cocok.";
+const SUARA_D4 = "Latihan ketiga: hubungkan bilangan dengan cara membacanya. Ada empat bilangan dan empat nama, urutannya diacak.";
+const SUARA_D5 = "Kita hubungkan: dua ribu sembilan ratus tiga dihubungkan dengan bilangan pertama. Dua ribu seratus empat puluh lima dihubungkan dengan bilangan kedua.";
 const SUARA_D6 = "Lalu enam ribu dua dihubungkan dengan bilangan ketiga, dan sembilan ribu empat puluh lima dengan bilangan keempat. Pada enam ribu dua, nol di ratusan dan puluhan tetap menjaga tempat.";
 
 /** Urutan nama di kolom kanan Buku Siswa hlm. 11 (diacak): indeks ke LATIHAN_TIGA. */
@@ -185,8 +185,8 @@ const URUT_KANAN = [3, 0, 1, 2];
 
 export const ADEGAN_LATIHAN_DUA: AdeganStory = {
   id: "berlatih-dua-tiga",
-  judul: "Ayo Berlatih nomor 2 dan 3: membaca dan menghubungkan",
-  sumber: "Buku Siswa hlm. 11; Panduan Guru hlm. 33",
+  judul: "Latihan membaca dan menghubungkan bilangan",
+  sumber: "Materi: membaca dan menghubungkan",
   latar: "#F0FDF4",
   kutipan: [
     "Helen membantu Ibu menjual makanan ringan di warung.",
@@ -204,7 +204,7 @@ export const ADEGAN_LATIHAN_DUA: AdeganStory = {
   ketukan: [
     k(
       SUARA_D1,
-      tambah(0, judul("Nomor 2: Slamet di warung")),
+      tambah(0, judul("Slamet di warung")),
       tambah("Slamet", emo("sl", 40, 96, "🧒", 36)),
       tambah("seharga", ...kartu("d1", 76, 34, 210, 30, W.hijauMuda, [`harga makanan: Rp${rb(LATIHAN_DUA[0][0])}`], 9.4)),
       tambah("Uang", ...kartu("d2", 76, 74, 210, 30, W.langit, [`uang Slamet: Rp${rb(LATIHAN_DUA[1][0])}`], 9.4)),
@@ -213,7 +213,7 @@ export const ADEGAN_LATIHAN_DUA: AdeganStory = {
     k(
       SUARA_D2,
       bersih(0),
-      tambah(0, judul("Kunci nomor 2")),
+      tambah(0, judul("Cara membaca tiga bilangan")),
       tambah("tujuh", ...kartu("e1", 14, 34, 272, 38, W.hijauMuda, ["7.350 dibaca:", LATIHAN_DUA[0][1]], 8.8)),
       tambah("sembilan", ...kartu("e2", 14, 80, 272, 38, W.langit, ["9.500 dibaca:", LATIHAN_DUA[1][1]], 8.8)),
       tambah("dua", ...kartu("e3", 14, 126, 272, 38, W.krem, ["2.150 dibaca:", LATIHAN_DUA[2][1]], 8.8)),
@@ -221,7 +221,7 @@ export const ADEGAN_LATIHAN_DUA: AdeganStory = {
     k(
       SUARA_D3,
       bersih(0),
-      tambah(0, judul("Hitungan mandiri video", W.hijau)),
+      tambah(0, judul("Kita periksa hitungannya", W.hijau)),
       tambah("harga", teks("f1", 150, 56, "harga + kembalian = uang Slamet", 9.4, W.coklat)),
       tambah("Tujuh", teks("f2", 150, 98, "7.350 + 2.150 = 9.500", 17, W.merah)),
       tambah("Cocok.", emo("f3", 150, 150, "✅", 34)),
@@ -229,7 +229,7 @@ export const ADEGAN_LATIHAN_DUA: AdeganStory = {
     k(
       SUARA_D4,
       bersih(0),
-      tambah(0, judul("Nomor 3: hubungkan")),
+      tambah(0, judul("Hubungkan bilangan dan namanya")),
       tambah("bilangan", ...LATIHAN_TIGA.flatMap(([n], i) => kartu(`kl${i}`, 14, 32 + i * 40, 76, 32, W.hijauMuda, [rb(n)], 12))),
       tambah("nama", ...URUT_KANAN.flatMap((j, i) => kartu(`kr${i}`, 130, 32 + i * 40, 160, 32, W.langit, [LATIHAN_TIGA[j][1]], 7.8))),
     ),
@@ -248,20 +248,20 @@ export const ADEGAN_LATIHAN_DUA: AdeganStory = {
 };
 
 /* ------------------------------ 12. Ayo Berlatih nomor 4, miskonsepsi, diferensiasi (Buku Siswa hlm. 12; Panduan Guru hlm. 33–35) ------------------------------ */
-const SUARA_E1 = "Nomor empat: ambil kartu bilangan dengan empat angka berbeda dari nol sampai sembilan. Susun empat bilangan yang mungkin, lalu isi tabel: bilangan empat angka, ditulis, dan nama bilangan.";
-const SUARA_E2 = "Panduan guru memberi contoh jawaban, dan masih ada kemungkinan lain. Baris pertama: kartu empat, enam, delapan, nol, dibaca empat ribu enam ratus delapan puluh.";
-const SUARA_E3 = "Baris berikutnya: delapan ribu delapan ratus delapan puluh delapan, tujuh ribu tiga puluh, dan tujuh ribu dua ratus satu.";
-const SUARA_E4 = "Dua baris terakhir diawali nol: enam ratus sembilan puluh empat dan tiga puluh enam. Nol di depan tidak membuatnya bilangan ribuan.";
-const SUARA_E5 = "Catatan video: soal meminta empat angka berbeda, tetapi contoh delapan ribu delapan ratus delapan puluh delapan, tujuh ribu tiga puluh, dan tiga puluh enam mengulang angka yang sama. Jadi contoh itu hanya kemungkinan jawaban, bukan semuanya memenuhi syarat.";
-const SUARA_E6 = "Miskonsepsi yang diwaspadai: kesalahan bila ada angka nol pada ratusan atau puluhan. Karena itu nol harus dijaga di tempatnya.";
-const SUARA_E7 = "Diferensiasi: peserta didik yang cepat belajar mengerjakan latihan tanpa bantuan dan boleh diberi soal tambahan, sementara guru mendampingi yang kesulitan. Metode yang disarankan adalah diskusi dan tanya jawab.";
-const SUARA_E8 = "Untuk kelompok, ketua dipilih dari peserta didik berkemampuan tinggi, anggotanya sedang atau kurang. Bila tidak ada yang tinggi, semua anggota bekerja sama lewat diskusi.";
+const SUARA_E1 = "Latihan terakhir: ambil kartu bilangan dengan empat angka berbeda dari nol sampai sembilan. Susun beberapa bilangan yang mungkin, lalu isi tabel: bilangan empat angka, ditulis, dan nama bilangan.";
+const SUARA_E2 = "Perhatikan contoh pertama: kartu empat, enam, delapan, nol, dibaca empat ribu enam ratus delapan puluh.";
+const SUARA_E3 = "Contoh kedua: kartu tujuh, dua, nol, satu, dibaca tujuh ribu dua ratus satu.";
+const SUARA_E4 = "Contoh ketiga diawali nol: kartu nol, enam, sembilan, empat. Nol di depan tidak membuatnya bilangan ribuan, hanya enam ratus sembilan puluh empat.";
+const SUARA_E5 = "Hati-hati, syaratnya empat angka berbeda. Kartu delapan, delapan, delapan, delapan tidak boleh, karena angkanya berulang. Pilih empat kartu yang angkanya tidak sama.";
+const SUARA_E6 = "Hati-hati, kesalahan yang sering terjadi: nol pada ratusan atau puluhan terlupa ditulis. Karena itu nol harus dijaga di tempatnya.";
+const SUARA_E7 = "Bagi kalian yang cepat belajar, kerjakan latihan tanpa bantuan dan boleh mencoba soal tambahan. Bagi yang masih kesulitan, guru akan mendampingi. Kita belajar lewat diskusi dan tanya jawab.";
+const SUARA_E8 = "Untuk kerja kelompok, ketua dipilih dari teman yang paling mahir, anggotanya teman yang lain. Bila semua sama mahir, kita bekerja sama lewat diskusi.";
 
 const KOLOM_E = [62, 50, 176];
 export const ADEGAN_LATIHAN_EMPAT: AdeganStory = {
   id: "berlatih-empat",
-  judul: "Ayo Berlatih nomor 4, miskonsepsi, dan diferensiasi",
-  sumber: "Buku Siswa hlm. 12; Panduan Guru hlm. 33–35",
+  judul: "Latihan terakhir, kesalahan umum, dan kerja kelompok",
+  sumber: "Materi: latihan terakhir dan pesan guru",
   latar: "#FFF7ED",
   kutipan: [
     "Ambil kartu bilangan dengan 4 angka yang berbeda dari 0, 1, … sampai 9.",
@@ -282,56 +282,53 @@ export const ADEGAN_LATIHAN_EMPAT: AdeganStory = {
   ketukan: [
     k(
       SUARA_E1,
-      tambah(0, judul("Nomor 4: tabel kartu bilangan")),
+      tambah(0, judul("Tabel kartu bilangan")),
       tambah("ambil", ...kartu("kk", 14, 26, 272, 22, W.krem, ["4 angka berbeda dari 0 sampai 9"], 8.6)),
       tambah("tabel:", ...barisTabel("rh", 6, 56 - 0, KOLOM_E, ["Bilangan 4 angka", "Ditulis", "Nama bilangan"], 15, 6.4, true)),
     ),
     k(
       SUARA_E2,
       bersih(0),
-      tambah(0, judul("Contoh jawaban Panduan Guru")),
+      tambah(0, judul("Contoh pengisian tabel")),
       tambah(0, ...barisTabel("rh", 6, 34, KOLOM_E, ["Bilangan 4 angka", "Ditulis", "Nama bilangan"], 15, 6.4, true)),
-      tambah("Baris", ...[0].flatMap((i) => barisTabel(`r${i}`, 6, 49, KOLOM_E, [TABEL_EMPAT[i][0].split("").join(" "), rb(TABEL_EMPAT[i][1]), TABEL_EMPAT[i][2]], 15, 6.4))),
+      tambah("contoh", ...[0].flatMap((i) => barisTabel(`r${i}`, 6, 49, KOLOM_E, [TABEL_EMPAT[i][0].split("").join(" "), rb(TABEL_EMPAT[i][1]), TABEL_EMPAT[i][2]], 15, 6.4))),
     ),
     k(
       SUARA_E3,
-      tambah("delapan", ...barisTabel("r1", 6, 64, KOLOM_E, [TABEL_EMPAT[1][0].split("").join(" "), rb(TABEL_EMPAT[1][1]), TABEL_EMPAT[1][2]], 15, 6.4)),
-      tambah("tujuh", ...barisTabel("r2", 6, 79, KOLOM_E, [TABEL_EMPAT[2][0].split("").join(" "), rb(TABEL_EMPAT[2][1]), TABEL_EMPAT[2][2]], 15, 6.4)),
-      tambah("dan", ...barisTabel("r3", 6, 94, KOLOM_E, [TABEL_EMPAT[3][0].split("").join(" "), rb(TABEL_EMPAT[3][1]), TABEL_EMPAT[3][2]], 15, 6.4)),
+      tambah("kedua:", ...barisTabel("r1", 6, 64, KOLOM_E, [TABEL_EMPAT[3][0].split("").join(" "), rb(TABEL_EMPAT[3][1]), TABEL_EMPAT[3][2]], 15, 6.4)),
     ),
     k(
       SUARA_E4,
-      tambah("enam", ...barisTabel("r4", 6, 109, KOLOM_E, [TABEL_EMPAT[4][0].split("").join(" "), rb(TABEL_EMPAT[4][1]), TABEL_EMPAT[4][2]], 15, 6.4)),
-      tambah("tiga", ...barisTabel("r5", 6, 124, KOLOM_E, [TABEL_EMPAT[5][0].split("").join(" "), rb(TABEL_EMPAT[5][1]), TABEL_EMPAT[5][2]], 15, 6.4)),
-      tambah("Nol@2", ...kartu("nx", 14, 150, 272, 30, W.emas, ["0 di depan: bukan bilangan ribuan"], 9.4)),
+      tambah("ketiga", ...barisTabel("r2", 6, 79, KOLOM_E, [TABEL_EMPAT[4][0].split("").join(" "), rb(TABEL_EMPAT[4][1]), TABEL_EMPAT[4][2]], 15, 6.4)),
+      tambah("ribuan,", ...kartu("nx", 14, 150, 272, 30, W.emas, ["0 di depan: bukan bilangan ribuan"], 9.4)),
     ),
     k(
       SUARA_E5,
-      hapus("soal", "nx-k", "nx-t0"),
-      ubah("soal", ...["r1", "r2", "r5"].flatMap((r) => [0, 1, 2].map((c) => ({ id: `${r}-s${c}`, warna: W.merahMuda })))),
-      tambah("mengulang", ...kartu("ny", 14, 150, 272, 36, W.merahMuda, ["angka berulang pada baris merah:", "tidak memenuhi syarat berbeda"], 8.4)),
+      hapus(0, "nx-k", "nx-t0"),
+      tambah("Kartu", ...kartu("ny", 14, 150, 272, 36, W.merahMuda, ["8 8 8 8: angka berulang,", "tidak memenuhi syarat berbeda"], 8.4)),
+      tambah("berulang,", emo("nz", 262, 140, "❌", 18)),
     ),
     k(
       SUARA_E6,
       bersih(0),
-      tambah(0, judul("Miskonsepsi (Panduan Guru)")),
+      tambah(0, judul("Hati-hati: kesalahan yang sering terjadi")),
       tambah("kesalahan", ...kartu("m1", 14, 40, 272, 44, W.merahMuda, ["kesalahan bila ada 0", "pada ratusan atau puluhan"], 9.4)),
       tambah("nol@2", ...kartu("m2", 14, 100, 272, 44, W.hijauMuda, ["0 tidak dibaca,", "tetapi harus dijaga tempatnya"], 9.4)),
     ),
     k(
       SUARA_E7,
       bersih(0),
-      tambah(0, judul("Diferensiasi")),
+      tambah(0, judul("Belajar sesuai kemampuan")),
       tambah("cepat", ...kartu("df1", 14, 34, 272, 44, W.hijauMuda, ["cepat belajar: latihan tanpa bantuan,", "boleh diberi soal tambahan"], 8.8)),
       tambah("guru", ...kartu("df2", 14, 88, 272, 34, W.langit, ["guru mendampingi yang kesulitan"], 9)),
-      tambah("Metode", ...kartu("df3", 14, 132, 272, 34, W.emas, ["metode: diskusi dan tanya jawab"], 9)),
+      tambah("diskusi", ...kartu("df3", 14, 132, 272, 34, W.emas, ["belajar: diskusi dan tanya jawab"], 9)),
     ),
     k(
       SUARA_E8,
       bersih(0),
       tambah(0, judul("Pembentukan kelompok")),
-      tambah("ketua", ...kartu("kg1", 14, 34, 272, 40, W.hijauMuda, ["ketua: kemampuan tinggi", "anggota: sedang atau kurang"], 9)),
-      tambah("Bila", ...kartu("kg2", 14, 86, 272, 40, W.krem, ["bila tidak ada yang tinggi:", "semua bekerja sama lewat diskusi"], 9)),
+      tambah("ketua", ...kartu("kg1", 14, 34, 272, 40, W.hijauMuda, ["ketua: teman yang paling mahir", "anggota: teman yang lain"], 9)),
+      tambah("Bila", ...kartu("kg2", 14, 86, 272, 40, W.krem, ["bila semua sama mahir:", "bekerja sama lewat diskusi"], 9)),
       tambah("kelompok", emo("kg3", 150, 168, "👥", 26)),
     ),
   ],

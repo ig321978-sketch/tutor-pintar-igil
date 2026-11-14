@@ -59,12 +59,12 @@ export const ADEGAN_LUAR_NOL: AdeganStory = {
 const SUARA_Y1 = "Terapan pertama, tujuh ribu tiga. Ratusan dan puluhan tidak disebut, jadi keduanya diisi nol: tujuh, nol, nol, tiga.";
 const SUARA_Y2 = "Terapan kedua, enam ribu lima ratus tujuh puluh. Satuan tidak disebut, jadi satuan diisi nol: enam, lima, tujuh, nol.";
 const SUARA_Y3 = "Terapan ketiga, seribu dua puluh lima. Ratusan tidak disebut, jadi diisi nol: satu, nol, dua, lima.";
-const SUARA_Y4 = "Terapan keempat dari latihan buku: enam ribu dua. Ratusan dan puluhan nol: enam, nol, nol, dua. Tanpa nol penjaga, tulisannya menjadi enam puluh dua.";
+const SUARA_Y4 = "Terapan keempat: enam ribu dua. Ratusan dan puluhan nol: enam, nol, nol, dua. Tanpa nol penjaga, tulisannya menjadi enam puluh dua.";
 
 export const ADEGAN_LUAR_NOL_TERAPAN: AdeganStory = {
   id: "luar-nol-terapan",
   judul: "Zero as Placeholder: 7.003, 6.570, 1.025, 6.002",
-  sumber: "Metode luar: Zero as Placeholder, BS hlm. 6–11",
+  sumber: "Metode luar: Zero as Placeholder, terapan",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -105,7 +105,7 @@ export const ADEGAN_LUAR_NOL_TERAPAN: AdeganStory = {
 const SUARA_U1 = "Metode keempat, Say-Write-Show, atau Ucap, Tulis, Tunjuk. Dua teman berpasangan dan melakukan tiga gerakan berurutan.";
 const SUARA_U2 = "Gerakan pertama, ucap: satu teman menyebut nama bilangan dengan jelas. Gerakan kedua, tulis: teman lain menuliskannya dengan angka.";
 const SUARA_U3 = "Gerakan ketiga, tunjuk: keduanya menata kartu angka sesuai tulisan. Bila ucapan, tulisan, dan kartu cocok, jawabannya benar. Bila tidak, mereka berdiskusi.";
-const SUARA_U4 = "Lalu peran ditukar. Dengan begitu kedua teman sama-sama melatih membaca dan menulis bilangan, seperti kerja kelompok dengan kartu bilangan di buku.";
+const SUARA_U4 = "Lalu peran ditukar. Dengan begitu kedua teman sama-sama melatih membaca dan menulis bilangan, seperti kerja kelompok dengan kartu bilangan kita.";
 
 export const ADEGAN_LUAR_UCAP: AdeganStory = {
   id: "luar-ucap",
@@ -147,7 +147,7 @@ export const ADEGAN_LUAR_UCAP: AdeganStory = {
 };
 
 /* ------------------------------ 9. Say-Write-Show: penerapan ------------------------------ */
-const SUARA_V1 = "Terapan dengan nomor tiga di buku. Teman pertama mengucap: sembilan ribu empat puluh lima.";
+const SUARA_V1 = "Terapan dengan bilangan lain. Teman pertama mengucap: sembilan ribu empat puluh lima.";
 const SUARA_V2 = "Teman kedua menulis: sembilan, nol, empat, lima. Tulisannya sama dengan bilangan yang diucapkan.";
 const SUARA_V3 = "Keduanya menunjuk kartu angka sembilan, nol, empat, dan lima, lalu membaca kartu itu. Ucapan, tulisan, dan kartu cocok.";
 const SUARA_V4 = "Giliran tukar: teman kedua mengucap enam ribu dua. Bila hanya menulis enam dua, kartu menunjukkan nol di ratusan dan puluhan hilang. Yang benar enam, nol, nol, dua.";
@@ -155,7 +155,7 @@ const SUARA_V4 = "Giliran tukar: teman kedua mengucap enam ribu dua. Bila hanya 
 export const ADEGAN_LUAR_UCAP_TERAPAN: AdeganStory = {
   id: "luar-ucap-terapan",
   judul: "Say-Write-Show: 9.045 dan 6.002",
-  sumber: "Metode luar: Say-Write-Show, BS hlm. 11",
+  sumber: "Metode luar: Say-Write-Show, terapan",
   latar: "#FDF2F8",
   ketukan: [
     k(

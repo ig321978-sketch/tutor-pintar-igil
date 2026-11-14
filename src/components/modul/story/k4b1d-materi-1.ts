@@ -60,14 +60,14 @@ export const ADEGAN_PEMBUKA_D: AdeganStory = {
 };
 
 /* ------------------------------ 2. Komposisi: Ayo Mengamati (Buku Siswa hlm. 24; Panduan Guru hlm. 46) ------------------------------ */
-const SUARA_A1 = "Komposisi bilangan cacah sampai sepuluh ribu. Ayo Mengamati: kalian sudah mengenal nilai tempat dari suatu bilangan.";
+const SUARA_A1 = "Sekarang kita belajar komposisi bilangan cacah sampai sepuluh ribu. Coba amati: kalian sudah mengenal nilai tempat dari suatu bilangan.";
 const SUARA_A2 = "Diberikan bilangan empat angka. Angka enam menempati nilai tempat ribuan, angka tiga menempati ratusan, angka empat menempati puluhan, dan angka delapan menempati satuan.";
-const SUARA_A3 = "Bilangan berapakah yang terbentuk? Anak di buku bertanya begitu. Menurut panduan guru, komposisi berarti menyusun bilangan, dan dapat memakai nilai tempat.";
+const SUARA_A3 = "Bilangan berapakah yang terbentuk? Itulah pertanyaan kita. Ingat, komposisi berarti menyusun bilangan, dan dapat memakai nilai tempat.";
 
 export const ADEGAN_KOMPOSISI_AMATI: AdeganStory = {
   id: "komposisi-amati",
-  judul: "Komposisi: Ayo Mengamati",
-  sumber: "Buku Siswa hlm. 24; Panduan Guru hlm. 46",
+  judul: "Komposisi: mari mengamati",
+  sumber: "Materi: komposisi, mengamati nilai tempat",
   latar: "#F0FDF4",
   kutipan: [
     "Komposisi bilangan cacah sampai 10.000",
@@ -114,7 +114,7 @@ const SB_N = susunBagian("sb", 40, BAGIAN_NILAI);
 export const ADEGAN_KOMPOSISI_NILAI: AdeganStory = {
   id: "komposisi-nilai",
   judul: "Komposisi: nilai tiap angka dan bilangan 6.348",
-  sumber: "Buku Siswa hlm. 25",
+  sumber: "Materi: nilai tiap angka dan bilangan",
   latar: "#FFF7ED",
   kutipan: [
     "Angka 6 menempati tempat ribuan, nilainya 6.000",
@@ -164,10 +164,10 @@ export const ADEGAN_KOMPOSISI_NILAI: AdeganStory = {
 };
 
 /* ------------------------------ 4. Komposisi: Ayo Berlatih (Buku Siswa hlm. 25; Panduan Guru hlm. 46-47) ------------------------------ */
-const SUARA_L1 = "Ayo Berlatih. Isilah titik-titik. Papan pertama berisi angka enam, empat, delapan, dan dua, dari ribuan sampai satuan.";
-const SUARA_L2 = "Kunci panduan guru: enam ribuan, empat ratusan, delapan puluhan, dua satuan, sama dengan enam ribu empat ratus delapan puluh dua.";
-const SUARA_L3 = "Papan kedua berisi enam, nol, empat, dan nol. Kuncinya: enam ribuan, nol ratusan, empat puluhan, nol satuan, sama dengan enam ribu empat puluh.";
-const SUARA_L4 = "Papan ketiga di buku masih kosong, jadi murid mengisinya sendiri. Panduan guru memberi contoh empat, lima, tiga, nol, yaitu empat ribu lima ratus tiga puluh.";
+const SUARA_L1 = "Sekarang berlatih. Isilah titik-titik. Papan pertama berisi angka enam, empat, delapan, dan dua, dari ribuan sampai satuan.";
+const SUARA_L2 = "Jawabannya: enam ribuan, empat ratusan, delapan puluhan, dua satuan, sama dengan enam ribu empat ratus delapan puluh dua.";
+const SUARA_L3 = "Papan kedua berisi enam, nol, empat, dan nol. Jawabannya: enam ribuan, nol ratusan, empat puluhan, nol satuan, sama dengan enam ribu empat puluh.";
+const SUARA_L4 = "Papan ketiga masih kosong, jadi kamu boleh mengisinya sendiri. Sebagai contoh, isilah empat, lima, tiga, nol, yaitu empat ribu lima ratus tiga puluh.";
 const SUARA_L5 = "Periksa dengan hitungan mandiri: empat ribu ditambah lima ratus ditambah tiga puluh ditambah nol sama dengan empat ribu lima ratus tiga puluh, cocok dengan contoh.";
 
 const kosong = ["… ribuan", "… ratusan", "… puluhan", "… satuan"];
@@ -176,8 +176,8 @@ const SB_L4 = susunBagian("le", 84, ["4 ribuan", "5 ratusan", "3 puluhan", "0 sa
 
 export const ADEGAN_KOMPOSISI_BERLATIH: AdeganStory = {
   id: "komposisi-berlatih",
-  judul: "Komposisi: Ayo Berlatih",
-  sumber: "Buku Siswa hlm. 25; Panduan Guru hlm. 46–47",
+  judul: "Komposisi: latihan",
+  sumber: "Materi: latihan komposisi",
   latar: "#EFF6FF",
   kutipan: [
     "Ayo Berlatih",
@@ -190,7 +190,7 @@ export const ADEGAN_KOMPOSISI_BERLATIH: AdeganStory = {
   ketukan: [
     k(
       SUARA_L1,
-      tambah(0, judul("Ayo Berlatih: isi titik-titik"), ...papan("l1", 30, 30, 60)),
+      tambah(0, judul("Latihan: isi titik-titik"), ...papan("l1", 30, 30, 60)),
       tambah(idx(SUARA_L1, "enam"), angka("l1", 30, 30, 60, 0, KOMPOSISI_LATIHAN[0][0])),
       tambah(idx(SUARA_L1, "empat"), angka("l1", 30, 30, 60, 1, KOMPOSISI_LATIHAN[0][1])),
       tambah(idx(SUARA_L1, "delapan"), angka("l1", 30, 30, 60, 2, KOMPOSISI_LATIHAN[0][2])),

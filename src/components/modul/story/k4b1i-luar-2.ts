@@ -67,8 +67,8 @@ function ketukanDV(c: KasusDV) {
 }
 export const ADEGAN_LUAR_DV_TERAPAN: AdeganStory = {
   id: "luar-dv-terapan",
-  judul: "Divisibility diterapkan pada angka buku",
-  sumber: "Metode luar: Divisibility pada soal Buku Siswa",
+  judul: "Divisibility diterapkan pada bilangan tadi",
+  sumber: "Metode luar: Divisibility, penerapan",
   latar: "#FEFCE8",
   ketukan: [
     ketukanDV({
@@ -154,14 +154,14 @@ const SOROT_3 = [3, 6, 9, 12, 15, 18, 21, 24, 27];
 export const SOROT_BUKU = { sw1: SOROT_3, sw2: [8, 12, 16, 20, 24], sw3: [20, 25, 30] };
 export const ADEGAN_LUAR_SV_TERAPAN: AdeganStory = {
   id: "luar-sv-terapan",
-  judul: "Sieve of Eratosthenes diterapkan pada angka buku",
-  sumber: "Metode luar: Sieve pada soal Buku Siswa",
+  judul: "Sieve of Eratosthenes diterapkan pada bilangan tadi",
+  sumber: "Metode luar: Sieve, penerapan",
   latar: "#F5F3FF",
   ketukan: [
     k(
-      "Pakai kisi untuk soal tujuh: kelipatan tiga yang kurang dari tiga puluh. Sorot tiga, enam, sembilan, dan seterusnya sampai dua puluh tujuh; tiga puluh tidak ikut.",
+      "Pakai kisi untuk menjawab ini: kelipatan tiga yang kurang dari tiga puluh. Sorot tiga, enam, sembilan, dan seterusnya sampai dua puluh tujuh; tiga puluh tidak ikut.",
       bersih(0),
-      tambah(0, judul("Soal 7: kelipatan 3 < 30")),
+      tambah(0, judul("Kelipatan 3 kurang dari 30")),
       tambah(1, ...KISI("sw")),
       coret(13, "sw", [3], "sorot"),
       coret(14, "sw", [6], "sorot"),
@@ -170,17 +170,17 @@ export const ADEGAN_LUAR_SV_TERAPAN: AdeganStory = {
       tambah(25, ...kartuKisi("swc", "jawab: 3, 6, 9, ..., 27", W.hijauMuda)),
     ),
     k(
-      "Soal empat belas: kelipatan empat lebih dari tujuh dan kurang dari dua puluh lima. Sorot delapan, dua belas, enam belas, dua puluh, dan dua puluh empat.",
+      "Sekarang kita cari kelipatan empat lebih dari tujuh dan kurang dari dua puluh lima. Sorot delapan, dua belas, enam belas, dua puluh, dan dua puluh empat.",
       bersih(0),
-      tambah(0, judul("Soal 14: kelipatan 4, 7 sampai 25")),
+      tambah(0, judul("Kelipatan 4 dari 7 sampai 25")),
       tambah(0, ...KISI("sw")),
       coret(14, "sw", SOROT_BUKU.sw2, "sorot"),
       tambah(14, ...kartuKisi("swc", "jawab: 8, 12, 16, 20, 24", W.hijauMuda)),
     ),
     k(
-      "Latihan tiga: kelipatan lima lebih dari tujuh belas dan kurang dari tiga puluh lima. Sorot dua puluh, dua puluh lima, dan tiga puluh.",
+      "Terakhir cari kelipatan lima lebih dari tujuh belas dan kurang dari tiga puluh lima. Sorot dua puluh, dua puluh lima, dan tiga puluh.",
       bersih(0),
-      tambah(0, judul("Latihan 3: kelipatan 5, 17 sampai 35")),
+      tambah(0, judul("Kelipatan 5 dari 17 sampai 35")),
       tambah(0, ...KISI("sw")),
       coret(14, "sw", SOROT_BUKU.sw3, "sorot"),
       tambah(14, ...kartuKisi("swc", "jawab: 20, 25, 30", W.hijauMuda)),
@@ -204,7 +204,7 @@ export const ADEGAN_LUAR_SV_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan empat metode dari luar",
-  sumber: "Ringkasan metode luar; Buku Siswa hlm. 48–54",
+  sumber: "Metode luar: ringkasan",
   latar: "#FFF7ED",
   ketukan: [
     k(

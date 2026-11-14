@@ -8,14 +8,14 @@ const uangKe = (objs: Obj[], id: string, dari: number, sampai: number): Obj[] =>
 const tulisUraian = (total: number, nilai: readonly number[]): string => `${rb(total)} = ${nilai.map(rb).join(" + ")}`;
 
 /* ------------------------------ 9. Ayo Berlatih nomor 2: uang Helen (Buku Siswa hlm. 28; Panduan Guru hlm. 48) ------------------------------ */
-const SUARA_H1 = "Nomor dua: Helen membantu Ibu menjual makanan ringan di warung. Uang Helen: empat keping seratus rupiah, dua keping lima ratus rupiah, lima keping seribu rupiah, dan tujuh lembar dua ribu rupiah.";
+const SUARA_H1 = "Sekarang soal cerita: Helen membantu Ibu menjual makanan ringan di warung. Uang Helen: empat keping seratus rupiah, dua keping lima ratus rupiah, lima keping seribu rupiah, dan tujuh lembar dua ribu rupiah.";
 const SUARA_H2 = "Slamet membeli makanan ringan seharga tujuh ribu tiga ratus rupiah, dan membayar dengan uang sepuluh ribu rupiah.";
 const SUARA_H3 = "Soal a: uraikan uang tujuh ribu tiga ratus rupiah dengan pecahan uang Helen. Contoh pertama: tiga lembar dua ribu, satu keping seribu, dan tiga keping seratus.";
 const SUARA_H4 = "Contoh kedua: dua lembar dua ribu, tiga keping seribu, dan tiga keping seratus. Jumlahnya tetap tujuh ribu tiga ratus.";
 const SUARA_H5 = "Contoh ketiga memakai satu lembar dua ribu, lima keping seribu, dan tiga keping seratus. Lima keping seribu itu persis semua seribu milik Helen.";
 const SUARA_H6 = "Soal b: uraikan uang sepuluh ribu rupiah. Contoh pertama: lima lembar dua ribu. Contoh kedua: tiga lembar dua ribu dan empat keping seribu.";
 const SUARA_H7 = "Contoh ketiga: empat lembar dua ribu, satu keping seribu, dan dua keping lima ratus. Jumlahnya sepuluh ribu rupiah, dan semuanya ada dalam uang Helen.";
-const SUARA_H8 = "Catatan video: kunci panduan guru menulis sepuluh ribu sebagai satu nol nol nol nol. Itu salah ketik. Sepuluh ribu yang benar, dan semua contohnya sudah dihitung ulang, cocok.";
+const SUARA_H8 = "Sekarang kita periksa. Sepuluh ribu rupiah ditulis dengan angka satu, titik, lalu tiga nol. Semua contoh sudah kita hitung ulang, dan hasilnya cocok.";
 
 const A1 = deretUang("a1", 50, URAIAN_7300[0]);
 const A2 = deretUang("a2", 50, URAIAN_7300[1]);
@@ -26,8 +26,8 @@ const B3 = deretUang("b3", 158, URAIAN_10000[2]);
 
 export const ADEGAN_BERLATIH_UANG: AdeganStory = {
   id: "berlatih-uang",
-  judul: "Ayo Berlatih nomor 2: uang Helen",
-  sumber: "Buku Siswa hlm. 28; Panduan Guru hlm. 48",
+  judul: "Latihan soal cerita: uang Helen",
+  sumber: "Materi: latihan uang Helen",
   latar: "#FFFBEB",
   kutipan: [
     "Helen membantu Ibu menjual makanan ringan di warung.",
@@ -46,7 +46,7 @@ export const ADEGAN_BERLATIH_UANG: AdeganStory = {
   ketukan: [
     k(
       SUARA_H1,
-      tambah(0, judul("Nomor 2: uang Helen")),
+      tambah(0, judul("Soal cerita: uang Helen")),
       tambah(idx(SUARA_H1, "seratus"), ...kartu("h1", 14, 32, 272, 22, W.jingga, ["4 keping uang Rp100"], 9)),
       tambah(idx(SUARA_H1, "ratus"), ...kartu("h2", 14, 58, 272, 22, W.krem, ["2 keping uang Rp500"], 9)),
       tambah(idx(SUARA_H1, "seribu"), ...kartu("h3", 14, 84, 272, 22, W.hijauMuda, ["5 keping uang Rp1.000"], 9)),
@@ -100,27 +100,27 @@ export const ADEGAN_BERLATIH_UANG: AdeganStory = {
     k(
       SUARA_H8,
       bersih(0),
-      tambah(0, judul("Catatan kunci Panduan Guru")),
-      tambah(idx(SUARA_H8, "menulis"), ...kartu("c1", 14, 38, 272, 32, W.merahMuda, ["tertulis di kunci: 1.0000", "(satu nol nol nol nol)"], 9.4)),
-      tambah(idx(SUARA_H8, "benar,"), ...kartu("c2", 14, 84, 272, 32, W.hijauMuda, ["yang benar: 10.000", "(sepuluh ribu)"], 9.4)),
+      tambah(0, judul("Periksa penulisan")),
+      tambah(idx(SUARA_H8, "ditulis"), ...kartu("c1", 14, 38, 272, 32, W.merahMuda, ["sepuluh ribu ditulis", "10.000"], 9.4)),
+      tambah(idx(SUARA_H8, "titik,"), ...kartu("c2", 14, 84, 272, 32, W.hijauMuda, ["satu, titik,", "lalu tiga nol"], 9.4)),
       tambah(idx(SUARA_H8, "cocok."), ...kartu("c3", 14, 130, 272, 32, W.krem, ["semua contoh dihitung ulang: cocok"], 9)),
-      sorotkan(idx(SUARA_H8, "salah"), "c1-k"),
+      sorotkan(idx(SUARA_H8, "Sepuluh"), "c1-k"),
     ),
   ],
 };
 
 /* ------------------------------ 10. Miskonsepsi, diferensiasi, metode, rangkuman (Panduan Guru hlm. 48) ------------------------------ */
-const SUARA_M1 = "Miskonsepsi yang diwaspadai panduan guru: murid masih bingung antara menyusun, yaitu komposisi, dan mengurai, yaitu dekomposisi.";
-const SUARA_M2 = "Cara membedakan, sebagai tambahan video: komposisi dimulai dari bagian lalu menyusun bilangan, dekomposisi dimulai dari bilangan lalu mengurai menjadi bagian.";
-const SUARA_M3 = "Diferensiasi: murid yang cepat belajar, atau advanced, mengerjakan latihan tanpa bantuan dan boleh mendapat soal tambahan, sementara guru mendampingi murid yang kesulitan.";
-const SUARA_M4 = "Metode yang disarankan untuk subbab ini adalah diskusi dan tanya jawab, yang mengutamakan hasil karya murid bersama kelompoknya.";
+const SUARA_M1 = "Hati-hati, kesalahan yang sering terjadi: murid masih bingung antara menyusun, yaitu komposisi, dan mengurai, yaitu dekomposisi.";
+const SUARA_M2 = "Cara membedakannya: komposisi dimulai dari bagian lalu menyusun bilangan, dekomposisi dimulai dari bilangan lalu mengurai menjadi bagian.";
+const SUARA_M3 = "Belajar sesuai kemampuan: murid yang cepat belajar, atau advanced, mengerjakan latihan tanpa bantuan dan boleh mendapat soal tambahan, sementara guru mendampingi teman yang kesulitan.";
+const SUARA_M4 = "Di subbab ini kita belajar lewat diskusi dan tanya jawab, yang mengutamakan hasil karya murid bersama kelompoknya.";
 const SUARA_M5 = "Kelompok dibentuk menurut karakteristik atau keberagaman murid. Ketua kelompok adalah murid berkemampuan tinggi, dengan anggota berkemampuan sedang atau kurang. Bila kelas tidak punya murid berkemampuan tinggi, semua anggota bekerja sama lewat diskusi dan tanya jawab.";
 const SUARA_M6 = "Rangkuman subbab D: komposisi menyusun bilangan dari nilai tempat, dekomposisi mengurai bilangan menjadi nilai tempat, dan nol tetap menjaga tempatnya.";
 
 export const ADEGAN_MISKONSEPSI: AdeganStory = {
   id: "miskonsepsi-diferensiasi",
-  judul: "Miskonsepsi, diferensiasi, metode, dan rangkuman",
-  sumber: "Panduan Guru hlm. 48–49",
+  judul: "Hati-hati, belajar bersama, dan rangkuman",
+  sumber: "Materi: pesan guru dan rangkuman",
   latar: "#F0FDF4",
   kutipan: [
     "Miskonsepsi",
@@ -138,7 +138,7 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   ketukan: [
     k(
       SUARA_M1,
-      tambah(0, judul("Miskonsepsi")),
+      tambah(0, judul("Hati-hati")),
       tambah(idx(SUARA_M1, "menyusun,"), ...kartu("m1", 14, 44, 120, 44, W.hijauMuda, ["menyusun", "= komposisi"], 9.6)),
       tambah(idx(SUARA_M1, "bingung"), teks("mq", 150, 76, "?", 34, W.merah)),
       tambah(idx(SUARA_M1, "mengurai,"), ...kartu("m2", 166, 44, 120, 44, W.langit, ["mengurai", "= dekomposisi"], 9.6)),
@@ -151,14 +151,14 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
     k(
       SUARA_M3,
       bersih(0),
-      tambah(0, judul("Diferensiasi")),
+      tambah(0, judul("Sesuai kemampuan")),
       tambah(idx(SUARA_M3, "cepat"), ...kartu("d1", 10, 40, 135, 70, W.hijauMuda, ["cepat belajar", "(advanced):", "latihan mandiri", "dan soal tambahan"], 8.4)),
       tambah(idx(SUARA_M3, "kesulitan."), ...kartu("d2", 155, 40, 135, 70, W.krem, ["murid yang", "kesulitan:", "didampingi guru"], 8.8)),
     ),
     k(
       SUARA_M4,
       bersih(0),
-      tambah(0, judul("Metode yang disarankan")),
+      tambah(0, judul("Cara belajar kita")),
       tambah(idx(SUARA_M4, "diskusi"), ...kartu("e1", 20, 44, 260, 44, W.emas, ["Diskusi dan Tanya Jawab"], 12)),
       tambah(idx(SUARA_M4, "hasil"), ...kartu("e2", 20, 104, 260, 40, W.langit, ["hasil karya murid", "bersama kelompoknya"], 9.6)),
     ),

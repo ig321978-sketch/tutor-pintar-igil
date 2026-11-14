@@ -8,8 +8,8 @@ import { ADEGAN_LUAR_BATANG, ADEGAN_LUAR_BATANG_TERAPAN, ADEGAN_LUAR_HIMPUNAN, A
 /** Kelas 4 Bab 1 Sub-Bab C (Membandingkan dan Mengurutkan Bilangan Cacah sampai 10.000): video materi kurikulum dan video metode luar, dua video terpisah. */
 export const VIDEO_MATERI_K4B1C: VideoStory = {
   id: "k4b1c-materi",
-  judul: "Membandingkan dan Mengurutkan Bilangan menurut Buku",
-  subjudul: "Materi kurikulum · Buku Siswa hlm. 16–23 (Aktivitas 3)",
+  judul: "Membandingkan dan Mengurutkan Bilangan",
+  subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
     ADEGAN_PASAR,
@@ -30,7 +30,7 @@ export const VIDEO_MATERI_K4B1C: VideoStory = {
 export const VIDEO_LUAR_K4B1C: VideoStory = {
   id: "k4b1c-luar",
   judul: "Membandingkan dan Mengurutkan: Metode dari Luar",
-  subjudul: "Empat metode luar · angka dari buku",
+  subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
     ADEGAN_LUAR_PEMBUKA,

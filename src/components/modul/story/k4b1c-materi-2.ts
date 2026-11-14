@@ -3,15 +3,15 @@ import { LATIHAN_DUA, LATIHAN_SATU, W, deret, emo, fmt, judul, kartu, kotak, sel
 import { bersih, hapus, idx, k, sorotkan, tambah, ubah } from "./k4b1c-bantu";
 
 /* ------------------------------ 5. Membandingkan dari ribuan (Buku Siswa hlm. 18; Panduan Guru hlm. 41) ------------------------------ */
-const SUARA_R1 = "Setelah aktivitas tiga, perhatikan penjelasan buku. Bilangan delapan ribu tujuh ratus lima puluh kita tulis pada tabel nilai tempat: ribuan delapan, ratusan tujuh, puluhan lima, satuan nol.";
+const SUARA_R1 = "Setelah aktivitas tiga, perhatikan penjelasan ini. Bilangan delapan ribu tujuh ratus lima puluh kita tulis pada tabel nilai tempat: ribuan delapan, ratusan tujuh, puluhan lima, satuan nol.";
 const SUARA_R2 = "Bilangan tujuh ribu lima ratus juga kita tulis pada tabel: ribuan tujuh, ratusan lima, puluhan nol, satuan nol.";
 const SUARA_R3 = "Bandingkan angka pada tempat ribuan. Angka ribuan untuk delapan ribu tujuh ratus lima puluh adalah delapan, dan angka ribuan untuk tujuh ribu lima ratus adalah tujuh.";
-const SUARA_R4 = "Karena delapan lebih dari tujuh, jadi delapan ribu tujuh ratus lima puluh lebih dari tujuh ribu lima ratus. Keterangan buku: tanda ini dibaca lebih dari.";
+const SUARA_R4 = "Karena delapan lebih dari tujuh, jadi delapan ribu tujuh ratus lima puluh lebih dari tujuh ribu lima ratus. Tanda ini dibaca lebih dari.";
 
 export const ADEGAN_RIBUAN: AdeganStory = {
   id: "ribuan",
   judul: "Membandingkan dua bilangan mulai dari ribuan",
-  sumber: "Buku Siswa hlm. 18; Panduan Guru hlm. 41",
+  sumber: "Materi: bandingkan mulai dari ribuan",
   latar: "#EFF6FF",
   kutipan: [
     "Setelah melakukan aktivitas 3, perhatikan penjelasan berikut dengan cermat.",
@@ -51,7 +51,7 @@ export const ADEGAN_RIBUAN: AdeganStory = {
       hapus(0, "ca", "cb"),
       tambah(0, teks("cm", 150, 124, "8 > 7", 20, W.merah)),
       tambah("jadi", teks("cs", 150, 154, "8.750 > 7.500", 20, W.merah)),
-      tambah("Keterangan", ...kartu("ck", 40, 164, 220, 28, W.emas, ["tanda > dibaca lebih dari"], 9.6)),
+      tambah("Tanda", ...kartu("ck", 40, 164, 220, 28, W.emas, ["tanda > dibaca lebih dari"], 9.6)),
     ),
   ],
 };
@@ -66,7 +66,7 @@ const SUARA_B5 = "Satuan bilangan pertama dua, bilangan kedua lima. Karena dua k
 export const ADEGAN_LANJUT: AdeganStory = {
   id: "lanjut",
   judul: "Ribuan sama: bandingkan puluhan atau satuan",
-  sumber: "Buku Siswa hlm. 19; Panduan Guru hlm. 42",
+  sumber: "Materi: ribuan sama, lanjut ke kanan",
   latar: "#FFFBEB",
   kutipan: [
     "Perhatikan bilangan 4.352 dan 4.365, selanjutnya kita bandingkan nilai tempat",
@@ -130,13 +130,13 @@ export const ADEGAN_LANJUT: AdeganStory = {
 /* ------------------------------ 7. Bilangan sama dan aturan membandingkan (Buku Siswa hlm. 20; Panduan Guru hlm. 40) ------------------------------ */
 const SUARA_S1 = "Perhatikan empat ribu tiga ratus lima puluh dua dan empat ribu tiga ratus lima puluh dua. Angka pada ribuan, ratusan, puluhan, dan satuan semuanya sama.";
 const SUARA_S2 = "Jadi empat ribu tiga ratus lima puluh dua sama dengan empat ribu tiga ratus lima puluh dua. Dapat ditulis dengan tanda sama dengan.";
-const SUARA_S3 = "Sekarang kalian sudah membandingkan dua bilangan memakai tiga notasi buku: lebih dari, kurang dari, dan sama dengan.";
+const SUARA_S3 = "Sekarang kalian sudah membandingkan dua bilangan memakai tiga notasi: lebih dari, kurang dari, dan sama dengan.";
 const SUARA_S4 = "Aturannya: bandingkan ribuan dulu. Jika sama, bandingkan ratusan. Jika sama, bandingkan puluhan. Jika puluhan sama pula, bandingkan satuan.";
 
 export const ADEGAN_SAMA: AdeganStory = {
   id: "sama",
   judul: "Bilangan sama dan aturan membandingkan",
-  sumber: "Buku Siswa hlm. 20; Panduan Guru hlm. 40",
+  sumber: "Materi: bilangan sama dan aturan",
   latar: "#F5F3FF",
   kutipan: [
     "Perhatikan bilangan 4.352 dan 4.352, selanjutnya kita bandingkan nilai tempat",
@@ -183,10 +183,10 @@ export const ADEGAN_SAMA: AdeganStory = {
 };
 
 /* ------------------------------ 8. Ayo Berlatih nomor 1: mana yang lebih besar (Buku Siswa hlm. 20; Panduan Guru hlm. 42) ------------------------------ */
-const SUARA_T1 = "Ayo Berlatih nomor satu: bandingkan bilangan berikut dan temukan yang lebih besar. Soal a, lima ribu tujuh ratus tiga puluh empat dan empat ribu tiga ratus dua belas.";
-const SUARA_T2 = "Ribuannya lima lawan empat, jadi yang lebih besar adalah lima ribu tujuh ratus tiga puluh empat, sesuai kunci. Soal b: lima ribu enam ratus empat belas dan lima ribu tiga ratus enam puluh delapan.";
+const SUARA_T1 = "Sekarang kita berlatih: bandingkan bilangan berikut dan temukan yang lebih besar. Soal a, lima ribu tujuh ratus tiga puluh empat dan empat ribu tiga ratus dua belas.";
+const SUARA_T2 = "Ribuannya lima lawan empat, jadi yang lebih besar adalah lima ribu tujuh ratus tiga puluh empat. Soal b: lima ribu enam ratus empat belas dan lima ribu tiga ratus enam puluh delapan.";
 const SUARA_T3 = "Ribuannya sama, ratusannya enam lawan tiga, jadi yang lebih besar adalah lima ribu enam ratus empat belas. Soal c: tujuh ribu seratus dua puluh empat dan tujuh ribu seratus sembilan puluh tujuh.";
-const SUARA_T4 = "Ribuan dan ratusan sama, puluhannya dua lawan sembilan, jadi tujuh ribu seratus sembilan puluh tujuh lebih besar. Ketiga jawaban ini sama dengan kunci panduan guru.";
+const SUARA_T4 = "Ribuan dan ratusan sama, puluhannya dua lawan sembilan, jadi tujuh ribu seratus sembilan puluh tujuh lebih besar. Itulah ketiga jawabannya.";
 
 /** Dua deret angka (soal a, b, atau c) pada satu bidang: bilangan pertama di y1, kedua di y2, kolom paling kiri di x 108. Huruf soal `${id}h`. */
 const LATIH_X0 = 108;
@@ -199,8 +199,8 @@ const [A, B, C] = LATIHAN_SATU;
 
 export const ADEGAN_LATIH_SATU: AdeganStory = {
   id: "latih-satu",
-  judul: "Ayo Berlatih nomor 1: temukan yang lebih besar",
-  sumber: "Buku Siswa hlm. 20; Panduan Guru hlm. 42",
+  judul: "Latihan 1: temukan yang lebih besar",
+  sumber: "Materi: latihan membandingkan",
   latar: "#FFF7ED",
   kutipan: [
     "Ayo Berlatih",
@@ -216,7 +216,7 @@ export const ADEGAN_LATIH_SATU: AdeganStory = {
   ketukan: [
     k(
       SUARA_T1,
-      tambah(0, judul("Nomor 1: mana yang lebih besar?")),
+      tambah(0, judul("Latihan 1: mana yang lebih besar?")),
       tambah(idx(SUARA_T1, "empat", 2), ...pasang("n1", "a.", A.a, A.b, 44, 70)),
       tambah(idx(SUARA_T1, "belas", 1), sorotPasang("n1s", 0, 44, 70)),
     ),
@@ -235,13 +235,13 @@ export const ADEGAN_LATIH_SATU: AdeganStory = {
       SUARA_T4,
       tambah(0, sorotPasang("n3s", 2, 156, 182)),
       tambah(idx(SUARA_T4, "tujuh", 2), menang("n3", C.a, C.b, 156, 182)),
-      ubah("Kunci", { id: "jud", isi: "Kunci: 5.734; 5.614; 7.197", warna: W.merah }),
+      ubah("Itulah", { id: "jud", isi: "Jawaban: 5.734; 5.614; 7.197", warna: W.merah }),
     ),
   ],
 };
 
 /* ------------------------------ 9. Ayo Berlatih nomor 2: isi tanda (Buku Siswa hlm. 20-21; Panduan Guru hlm. 42) ------------------------------ */
-const SUARA_U1 = "Nomor dua: isi kotak dengan tanda lebih dari, kurang dari, atau sama dengan. Soal a, empat ribu empat ratus tiga puluh lima dan tiga ribu tiga ratus empat puluh lima. Ribuan empat lebih dari tiga, jadi lebih dari.";
+const SUARA_U1 = "Latihan kedua: isi kotak dengan tanda lebih dari, kurang dari, atau sama dengan. Soal a, empat ribu empat ratus tiga puluh lima dan tiga ribu tiga ratus empat puluh lima. Ribuan empat lebih dari tiga, jadi lebih dari.";
 const SUARA_U2 = "Soal b: sembilan ribu sembilan ratus sembilan puluh sembilan dan sembilan ribu sembilan ratus sembilan puluh delapan. Tiga angka pertama sama, dan satuan sembilan lebih dari delapan, jadi lebih dari.";
 const SUARA_U3 = "Soal c: seribu satu dan seribu dua. Satuan satu kurang dari dua, jadi kurang dari. Soal d: delapan ribu tujuh ratus enam puluh lima dan bilangan yang sama persis, jadi sama dengan.";
 const SUARA_U4 = "Soal e: empat ribu lima ratus enam puluh tujuh dan lima ribu tujuh ratus delapan puluh tujuh, ribuan kurang dari. Soal f: tujuh ribu enam ratus lima puluh empat dan tujuh ribu tujuh ratus tujuh puluh tujuh, ratusan kurang dari.";
@@ -254,8 +254,8 @@ const isiTanda = (at: string | number, i: number) => ubah(at, { id: `u${i}-s`, i
 
 export const ADEGAN_LATIH_DUA: AdeganStory = {
   id: "latih-dua",
-  judul: "Ayo Berlatih nomor 2: isi tanda perbandingan",
-  sumber: "Buku Siswa hlm. 20–21; Panduan Guru hlm. 42",
+  judul: "Latihan 2: isi tanda perbandingan",
+  sumber: "Materi: latihan isi tanda",
   latar: "#FEF2F2",
   kutipan: [
     "2. Isilah dengan tanda",
@@ -278,7 +278,7 @@ export const ADEGAN_LATIH_DUA: AdeganStory = {
     "e. 4.567 < 5.787",
   ],
   ketukan: [
-    k(SUARA_U1, tambah(0, judul("Nomor 2: tanda > < =")), tambah(idx(SUARA_U1, "lima", 2), ...barisU(0)), isiTanda("jadi", 0)),
+    k(SUARA_U1, tambah(0, judul("Latihan 2: tanda > < =")), tambah(idx(SUARA_U1, "lima", 2), ...barisU(0)), isiTanda("jadi", 0)),
     k(SUARA_U2, tambah(idx(SUARA_U2, "delapan", 1), ...barisU(1)), isiTanda("jadi", 1)),
     k(SUARA_U3, tambah(idx(SUARA_U3, "dua", 1), ...barisU(2)), isiTanda(idx(SUARA_U3, "jadi", 1), 2), tambah(idx(SUARA_U3, "lima", 1), ...barisU(3)), isiTanda(idx(SUARA_U3, "jadi", 2), 3)),
     k(SUARA_U4, tambah(idx(SUARA_U4, "tujuh", 3), ...barisU(4)), isiTanda(idx(SUARA_U4, "kurang", 1), 4), tambah(idx(SUARA_U4, "tujuh", 8), ...barisU(5)), isiTanda(idx(SUARA_U4, "kurang", 2), 5), sorotkan(idx(SUARA_U4, "kurang", 2), "u5-s")),

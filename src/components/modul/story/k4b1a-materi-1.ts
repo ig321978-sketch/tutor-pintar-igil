@@ -229,15 +229,15 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
 };
 
 /* ------------------------------ 4. Cerita Helen di minimarket (Buku Siswa hlm. 4) ------------------------------ */
-const SUARA_C1 = "Buku Siswa halaman empat. Helen dan Ibu pergi ke minimarket. Helen mengantar Ibu untuk membeli bahan baku pembuatan kue.";
+const SUARA_C1 = "Selamat belajar, anak-anak. Perhatikan cerita ini: Helen dan Ibu pergi ke minimarket. Helen mengantar Ibu untuk membeli bahan baku pembuatan kue.";
 const SUARA_C2 = "Saat berbelanja, Helen meminta dibelikan minuman oleh Ibu seharga enam ribu tujuh ratus lima puluh rupiah.";
 const SUARA_C3 = "Di gambar tampak deretan label harga di rak: sembilan belas ribu rupiah, lima ribu rupiah, dan enam ribu tujuh ratus lima puluh rupiah.";
-const SUARA_C4 = "Buku bertanya: pernahkah kalian mengamati harga di label rak makanan? Ayo, kita cari tahu tentang bilangan empat angka. Mudahkah kalian menemukannya?";
+const SUARA_C4 = "Sekarang coba jawab: pernahkah kalian mengamati harga di label rak makanan? Ayo, kita cari tahu tentang bilangan empat angka. Mudahkah kalian menemukannya?";
 
 export const ADEGAN_CERITA: AdeganStory = {
   id: "cerita-minimarket",
   judul: "Helen dan Ibu di minimarket",
-  sumber: "Buku Siswa hlm. 4",
+  sumber: "Materi: cerita di minimarket",
   latar: "#FEF3C7",
   kutipan: [
     "A. Membaca dan Menulis Bilangan Cacah sampai",
@@ -275,13 +275,13 @@ export const ADEGAN_CERITA: AdeganStory = {
       tambah("sembilan", ...kartu("lb1", 14, 76, 84, 40, W.putih, ["Rp19.000"], 10.5)),
       tambah("lima", ...kartu("lb2", 108, 76, 84, 40, W.putih, ["Rp5.000"], 10.5)),
       tambah("enam", ...kartu("lb3", 202, 76, 84, 40, W.emas, ["Rp6.750"], 10.5)),
-      tambah("rak:", teks("lbc", 150, 150, "label di buku sebagian terpotong", 8, W.coklat)),
+      tambah("rak:", teks("lbc", 150, 150, "tiga label harga di rak", 8, W.coklat)),
     ),
     k(
       SUARA_C4,
       bersih(0),
       tambah(0, judul("Ayo cari tahu bilangan empat angka")),
-      tambah("bertanya:", emo("t1", 60, 100, "🤔", 38)),
+      tambah("jawab:", emo("t1", 60, 100, "🤔", 38)),
       tambah("harga", ...kartu("t2", 110, 56, 176, 30, W.langit, ["harga di label rak makanan?"], 9)),
       tambah("Ayo,", ...kartu("t3", 110, 96, 176, 30, W.hijauMuda, ["banyak bilangan di label"], 9)),
       tambah("Mudahkah", ...kartu("t4", 40, 146, 220, 34, W.emas, ["bilangan empat angka"], 10.4)),

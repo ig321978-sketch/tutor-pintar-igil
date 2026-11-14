@@ -8,8 +8,8 @@ import { ADEGAN_LUAR_NOL, ADEGAN_LUAR_NOL_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEGAN_L
 /** Kelas 4 Bab 1 Sub-Bab A (Membaca dan Menulis Bilangan Cacah sampai 10.000), termasuk pembuka bab: video materi kurikulum dan video metode luar, dua video terpisah. */
 export const VIDEO_MATERI_K4B1A: VideoStory = {
   id: "k4b1a-materi",
-  judul: "Membaca dan Menulis Bilangan Cacah menurut Buku",
-  subjudul: "Materi kurikulum · Buku Siswa hlm. 1–12",
+  judul: "Membaca dan Menulis Bilangan Cacah",
+  subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
     ADEGAN_CERITA,
@@ -27,7 +27,7 @@ export const VIDEO_MATERI_K4B1A: VideoStory = {
 export const VIDEO_LUAR_K4B1A: VideoStory = {
   id: "k4b1a-luar",
   judul: "Membaca dan Menulis Bilangan Empat Angka: Metode dari Luar",
-  subjudul: "Empat metode luar · angka dari buku",
+  subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
     ADEGAN_LUAR_PEMBUKA,

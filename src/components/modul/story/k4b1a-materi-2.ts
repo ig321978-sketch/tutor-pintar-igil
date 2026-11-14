@@ -1,17 +1,17 @@
 import type { AdeganStory } from "./logika-story";
 import { W, TEMPAT, emo, judul, kartu, kartuAngka, kotak, panah, papanIsi, papanKepala, papanKolom, teks } from "./k4b1a-gambar";
-import { bersih, idx, k, sorotkan, tambah } from "./k4b1a-bantu";
+import { bersih, k, sorotkan, tambah } from "./k4b1a-bantu";
 
 /* ------------------------------ 5. Jarak rumah Helen (Buku Siswa hlm. 5) ------------------------------ */
-const SUARA_J1 = "Seorang siswa di gambar bertanya: dapatkah kalian membaca bilangan yang tertulis pada label harga? Label botol minuman itu bertuliskan enam ribu tujuh ratus lima puluh.";
+const SUARA_J1 = "Perhatikan gambar ini. Seorang siswa bertanya: dapatkah kalian membaca bilangan yang tertulis pada label harga? Label botol minuman itu bertuliskan enam ribu tujuh ratus lima puluh.";
 const SUARA_J2 = "Setelah berbelanja, Helen dan Ibu pulang ke rumah. Jarak dari minimarket ke rumah adalah tiga ribu dua ratus delapan puluh enam meter.";
-const SUARA_J3 = "Buku bertanya: tahukah kalian cara membaca bilangan di kotak hasil? Untuk mengetahui nama bilangan itu, ayo berkreasi dengan kartu.";
-const SUARA_J4 = "Catatan video: di gambar buku, tulisan pada panah jarak tertera tiga ribu dua ratus enam puluh delapan, sedangkan kotak hasil dan kalimat buku tertulis tiga ribu dua ratus delapan puluh enam. Kita memakai bilangan dari kalimat buku.";
+const SUARA_J3 = "Sekarang pertanyaan untuk kalian: tahukah kalian cara membaca bilangan di kotak hasil? Untuk mengetahui nama bilangan itu, ayo berkreasi dengan kartu.";
+const SUARA_J4 = "Hati-hati dengan urutan angka. Tiga ribu dua ratus delapan puluh enam berbeda dengan tiga ribu dua ratus enam puluh delapan. Jarak rumah Helen adalah tiga ribu dua ratus delapan puluh enam. Periksa urutannya dengan teliti.";
 
 export const ADEGAN_JARAK: AdeganStory = {
   id: "jarak-rumah",
   judul: "Label harga dan jarak rumah Helen",
-  sumber: "Buku Siswa hlm. 5",
+  sumber: "Materi: label harga dan jarak",
   latar: "#F0F9FF",
   kutipan: [
     "Dapatkah kalian membaca bilangan yang tertulis pada label harga pada gambar?",
@@ -50,27 +50,27 @@ export const ADEGAN_JARAK: AdeganStory = {
     k(
       SUARA_J4,
       bersih(0),
-      tambah(0, judul("Catatan video: dua tulisan berbeda", W.merah)),
-      tambah("panah", ...kartu("c1", 14, 34, 272, 36, W.merahMuda, ["tulisan pada panah di gambar: 3.268"], 9.4)),
-      tambah("sedangkan", ...kartu("c2", 14, 80, 272, 36, W.hijauMuda, ["kotak hasil dan kalimat buku: 3.286"], 9.4)),
-      tambah("Kita", ...kartu("c3", 14, 126, 272, 36, W.emas, ["yang dipakai video: 3.286"], 10)),
+      tambah(0, judul("Hati-hati urutan angka", W.merah)),
+      tambah("berbeda", ...kartu("c1", 14, 34, 272, 36, W.merahMuda, ["bukan: 3.268 (enam puluh delapan)"], 9.4)),
+      tambah("Jarak", ...kartu("c2", 14, 80, 272, 36, W.hijauMuda, ["jarak rumah Helen: 3.286 (delapan puluh enam)"], 9.4)),
+      tambah("teliti.", ...kartu("c3", 14, 126, 272, 36, W.emas, ["periksa urutan angka dengan teliti"], 10)),
     ),
   ],
 };
 
 /* ------------------------------ 6. Aktivitas 1: kartu bilangan (Buku Siswa hlm. 5–6; Panduan Guru hlm. 32–33) ------------------------------ */
-const SUARA_A1 = "Ayo Beraktivitas: Aktivitas satu, Membaca Bilangan. Alat dan bahannya adalah kertas karton, gunting, dan spidol warna.";
+const SUARA_A1 = "Sekarang kita beraktivitas: membuat kartu bilangan untuk membaca bilangan. Alat dan bahannya adalah kertas karton, gunting, dan spidol warna.";
 const SUARA_A2 = "Langkah satu: buat kelompok kerja tiga sampai lima orang. Langkah dua: siapkan kertas karton, lalu buat sepuluh kotak berukuran sepuluh sentimeter kali sepuluh sentimeter.";
 const SUARA_A3 = "Langkah tiga: tulis angka nol, satu, sampai sembilan pada setiap kotak dengan spidol warna berbeda. Langkah empat: gunting kotak itu menjadi kartu bilangan.";
 const SUARA_A4 = "Langkah lima: kalian punya satu paket kartu bilangan. Ambil kartu sesuai angka pada jarak rumah Helen dan minimarket, yaitu tiga, dua, delapan, dan enam. Langkah enam: nyatakan nama bilangan itu.";
-const SUARA_A5 = "Panduan guru menambahkan: guru membentuk kelompok heterogen, memberi contoh kotak, dan memandu percobaan jarak rumah Helen. Lalu guru menyebut bilangan empat angka, dan kelompok menunjukkannya dengan kartu bilangan.";
+const SUARA_A5 = "Sekarang kita membentuk kelompok campuran. Guru memberi contoh kotak, lalu memandu percobaan jarak rumah Helen. Kemudian guru menyebut bilangan empat angka, dan kelompok menunjukkannya dengan kartu bilangan.";
 
 const WARNA_KARTU = [W.merahMuda, W.langit, W.hijauMuda, W.krem, W.pink, W.lavender, W.jingga, W.hijauMuda, W.langit, W.krem];
 
 export const ADEGAN_AKTIVITAS: AdeganStory = {
   id: "aktivitas-satu",
   judul: "Aktivitas 1: membuat dan memakai kartu bilangan",
-  sumber: "Buku Siswa hlm. 5–6; Panduan Guru hlm. 32–33",
+  sumber: "Materi: kartu bilangan",
   latar: "#FFFBEB",
   kutipan: [
     "Ayo Beraktivitas",
@@ -131,8 +131,8 @@ export const ADEGAN_AKTIVITAS: AdeganStory = {
     k(
       SUARA_A5,
       bersih(0),
-      tambah(0, judul("Tambahan dari Panduan Guru")),
-      tambah("kelompok", ...kartu("gk", 14, 30, 272, 28, W.hijauMuda, ["guru: kelompok heterogen, beri contoh kotak"], 8.4)),
+      tambah(0, judul("Kerja kelompok")),
+      tambah("kelompok", ...kartu("gk", 14, 30, 272, 28, W.hijauMuda, ["kelompok campuran, guru beri contoh kotak"], 8.4)),
       tambah("memandu", ...kartu("gm", 14, 66, 272, 28, W.langit, ["guru memandu percobaan jarak rumah Helen"], 8.4)),
       tambah("menyebut", emo("gg", 50, 136, "👩", 34), ...kartu("gs", 78, 112, 100, 30, W.krem, ["menyebut bilangan"], 8.6)),
       tambah("kelompok@2", emo("gh", 205, 136, "🧒", 30), ...kartu("gt2", 186, 150, 100, 30, W.pink, ["tunjuk kartu"], 8.6)),
@@ -141,9 +141,9 @@ export const ADEGAN_AKTIVITAS: AdeganStory = {
 };
 
 /* ------------------------------ 7. Cara membaca bilangan (Buku Siswa hlm. 6) ------------------------------ */
-const SUARA_B1 = "Buku mengajarkan cara menyatakan nama bilangan. Tabelnya punya empat kolom: ribuan, ratusan, puluhan, dan satuan, ditandai huruf A, B, C, dan D dari kiri.";
-const SUARA_B2 = "Aturannya: huruf A, satuan cukup ditulis angkanya saja. Huruf B, puluhan ditulis angka ditambah kata puluh. Huruf C, ratusan angka ditambah ratus. Huruf D, ribuan angka ditambah ribu.";
-const SUARA_B3 = "Catatan video: di tabel buku, huruf A sampai D berurutan dari ribuan, tetapi aturan memakai A untuk satuan dan D untuk ribuan. Jadi pakailah nama tempatnya, bukan hurufnya.";
+const SUARA_B1 = "Sekarang kita belajar cara menyatakan nama bilangan. Tabelnya punya empat kolom: ribuan, ratusan, puluhan, dan satuan, dari kiri ke kanan.";
+const SUARA_B2 = "Aturannya: satuan cukup ditulis angkanya saja. Puluhan ditulis angka ditambah kata puluh. Ratusan, angka ditambah ratus. Ribuan, angka ditambah ribu.";
+const SUARA_B3 = "Hati-hati, kesalahan yang sering terjadi adalah tertukar tempat, misalnya puluhan dibaca sebagai ratusan. Selalu lihat nama tempatnya dulu. Ribuan selalu berada di paling kiri.";
 const SUARA_B4 = "Baca nama bilangan dari kiri ke kanan. Jika menemukan angka nol, nol itu tidak perlu dibaca.";
 const SUARA_B5 = "Untuk jarak rumah Helen: ribuan tiga, ratusan dua, puluhan delapan, satuan enam. Dibaca: tiga ribu dua ratus delapan puluh enam.";
 const SUARA_B6 = "Contoh pertama: bilangan pada papan pertama dibaca dua ribu enam ratus tiga puluh empat. Contoh kedua dibaca tujuh ribu tiga, karena ratusan dan puluhan bernilai nol dan tidak dibaca.";
@@ -152,7 +152,7 @@ const SUARA_B7 = "Contoh ketiga dibaca enam ribu lima ratus tujuh puluh. Satuann
 export const ADEGAN_CARA_BACA: AdeganStory = {
   id: "cara-membaca",
   judul: "Cara membaca nama bilangan",
-  sumber: "Buku Siswa hlm. 6",
+  sumber: "Materi: cara membaca bilangan",
   latar: "#F0FDF4",
   kutipan: [
     "Ayo pelajari cara menyatakan nama bilangan 3.286 sebagai berikut.",
@@ -174,28 +174,26 @@ export const ADEGAN_CARA_BACA: AdeganStory = {
       SUARA_B1,
       tambah(0, judul("Tabel nama bilangan")),
       tambah("empat", ...papanKepala("pp", 30, 50, 240, TEMPAT, 8.4, 18)),
-      ...["A", "B", "C", "D"].map((h, i) => tambah(idx(SUARA_B1, h), teks(`pl${i}`, 60 + i * 60, 90, h, 14, W.merah))),
-      tambah("ditandai", teks("pm", 150, 130, "huruf A, B, C, D dari kiri", 9.4, W.coklat)),
+      tambah("kiri", teks("pm", 40, 112, "kiri", 9.4, W.coklat)),
+      tambah("kanan.", panah("pn", 40, 124, 220, 0, W.biru, 3), teks("po", 260, 112, "kanan", 9.4, W.coklat)),
     ),
     k(
       SUARA_B2,
       bersih(0),
-      tambah(0, judul("Aturan dari buku")),
-      tambah(idx(SUARA_B2, "a"), ...kartu("ra", 14, 30, 272, 28, W.krem, ["A  satuan: cukup angkanya saja"], 9)),
-      tambah(idx(SUARA_B2, "b"), ...kartu("rb", 14, 64, 272, 28, W.hijauMuda, ["B  puluhan: angka + kata puluh"], 9)),
-      tambah(idx(SUARA_B2, "c"), ...kartu("rc", 14, 98, 272, 28, W.langit, ["C  ratusan: angka + kata ratus"], 9)),
-      tambah(idx(SUARA_B2, "d"), ...kartu("rd", 14, 132, 272, 28, W.merahMuda, ["D  ribuan: angka + kata ribu (1.000)"], 9)),
+      tambah(0, judul("Aturan menyatakan nama bilangan")),
+      tambah("satuan", ...kartu("ra", 14, 30, 272, 28, W.krem, ["satuan: cukup angkanya saja"], 9)),
+      tambah("Puluhan", ...kartu("rb", 14, 64, 272, 28, W.hijauMuda, ["puluhan: angka + kata puluh"], 9)),
+      tambah("Ratusan,", ...kartu("rc", 14, 98, 272, 28, W.langit, ["ratusan: angka + kata ratus"], 9)),
+      tambah("Ribuan,", ...kartu("rd", 14, 132, 272, 28, W.merahMuda, ["ribuan: angka + kata ribu (1.000)"], 9)),
     ),
     k(
       SUARA_B3,
       bersih(0),
-      tambah(0, judul("Catatan video: urutan huruf", W.merah)),
+      tambah(0, judul("Hati-hati: jangan tertukar tempat", W.merah)),
       tambah(0, ...papanKepala("pc", 30, 30, 240, TEMPAT, 8.4, 18)),
-      ...["A", "B", "C", "D"].map((h, i) => tambah("tabel", teks(`pcl${i}`, 60 + i * 60, 66, h, 14, W.merah))),
-      tambah("tabel", teks("pcm", 150, 84, "huruf pada tabel buku", 8.4, W.coklat)),
-      ...["D", "C", "B", "A"].map((h, i) => tambah("aturan", teks(`pcr${i}`, 60 + i * 60, 118, h, 14, W.hijau))),
-      tambah("aturan", teks("pcs", 150, 136, "huruf menurut aturan", 8.4, W.coklat)),
-      tambah("Jadi", ...kartu("pcn", 40, 152, 220, 30, W.emas, ["pakai nama tempat, bukan huruf"], 9.4)),
+      tambah("tertukar", ...kartu("pcm", 14, 62, 272, 34, W.merahMuda, ["kesalahan: puluhan dibaca ratusan"], 9.4)),
+      tambah("Selalu", ...kartu("pcn", 14, 108, 272, 34, W.hijauMuda, ["benar: lihat nama tempatnya"], 9.4)),
+      tambah("Ribuan", teks("pcs", 150, 168, "ribuan selalu di paling kiri", 9.4, W.coklat)),
     ),
     k(
       SUARA_B4,
@@ -220,7 +218,7 @@ export const ADEGAN_CARA_BACA: AdeganStory = {
     k(
       SUARA_B6,
       bersih(0),
-      tambah(0, judul("Contoh dari buku")),
+      tambah(0, judul("Contoh membaca bilangan")),
       tambah("pertama:", ...papanKepala("e1", 50, 30, 200, TEMPAT, 7.6, 14), ...papanIsi("e1", 50, 44, 200, "2634", 22, 15), teks("e1n", 276, 60, "2.634", 9, W.merah)),
       tambah("dibaca", teks("e1b", 150, 84, "dua ribu enam ratus tiga puluh empat", 8.8, W.hijau)),
       tambah("kedua", ...papanKepala("e2", 50, 100, 200, TEMPAT, 7.6, 14), ...papanIsi("e2", 50, 114, 200, "7003", 22, 15), teks("e2n", 276, 130, "7.003", 9, W.merah)),
@@ -243,14 +241,14 @@ export const ADEGAN_CARA_BACA: AdeganStory = {
 const SUARA_M1 = "Menulis bilangan cacah sampai sepuluh ribu. Indonesia punya gunung berapi terbanyak di dunia, sekitar lima ratus gunung berapi tersebar di seluruh negeri.";
 const SUARA_M2 = "Salah satunya Gunung Semeru di Jawa Timur, gunung tertinggi di Pulau Jawa. Puncaknya, Mahameru, setinggi tiga ribu enam ratus tujuh puluh enam meter di atas permukaan laut.";
 const SUARA_M3 = "Cara menulisnya: tiga ribu enam ratus tujuh puluh enam. Tiga ribu menjadi angka ribuan, enam ratus menjadi angka ratusan, tujuh puluh menjadi puluhan, dan enam menjadi satuan.";
-const SUARA_M4 = "Catatan video: di buku, kalimat contoh itu berakhir dengan kata rupiah, padahal tinggi gunung diukur dalam meter. Satuan yang benar adalah meter.";
-const SUARA_M5 = "Di halaman delapan, seorang siswa bertanya cara menulis bilangan tiga ribu dua ratus lima puluh empat. Pak guru menuntun: ribuan tiga, ratusan dua, puluhan lima, satuan empat.";
+const SUARA_M4 = "Perhatikan satuannya. Tinggi gunung diukur dengan meter, bukan rupiah. Jadi bilangan itu ditulis bersama satuan meter.";
+const SUARA_M5 = "Sekarang perhatikan percakapan ini. Seorang siswa bertanya cara menulis bilangan tiga ribu dua ratus lima puluh empat. Pak guru menuntun: ribuan tiga, ratusan dua, puluhan lima, satuan empat.";
 const SUARA_M6 = "Sehingga bilangan tersebut adalah tiga ribu dua ratus lima puluh empat, ditulis dengan angka tiga, dua, lima, empat berurutan.";
 
 export const ADEGAN_MENULIS: AdeganStory = {
   id: "menulis-bilangan",
   judul: "Menulis bilangan: Gunung Semeru dan percakapan Pak guru",
-  sumber: "Buku Siswa hlm. 7–8",
+  sumber: "Materi: menulis bilangan",
   latar: "#FFF1F2",
   kutipan: [
     "Menulis bilangan cacah sampai 10.000",
@@ -296,10 +294,10 @@ export const ADEGAN_MENULIS: AdeganStory = {
     k(
       SUARA_M4,
       bersih(0),
-      tambah(0, judul("Catatan video: satuan", W.merah)),
-      tambah("kalimat", ...kartu("sa", 14, 36, 272, 40, W.merahMuda, ["kalimat buku: ... tujuh puluh enam rupiah"], 9)),
-      tambah("padahal", emo("sb", 150, 112, "🌋", 30)),
-      tambah("Satuan", ...kartu("sc", 14, 130, 272, 40, W.hijauMuda, ["tinggi gunung: 3.676 meter (mdpl)"], 9.4)),
+      tambah(0, judul("Perhatikan satuannya", W.merah)),
+      tambah("Perhatikan", ...kartu("sa", 14, 36, 272, 40, W.merahMuda, ["tinggi diukur dengan meter, bukan rupiah"], 9)),
+      tambah("gunung", emo("sb", 150, 112, "🌋", 30)),
+      tambah("Jadi", ...kartu("sc", 14, 130, 272, 40, W.hijauMuda, ["tinggi gunung: 3.676 meter (mdpl)"], 9.4)),
     ),
     k(
       SUARA_M5,

@@ -6,15 +6,15 @@ import { bersih, hapus, k, tambah, ubah } from "./k4b1i-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk faktor dan kelipatan",
-  sumber: "Metode luar: pembuka; Buku Siswa hlm. 48–54",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana belajar faktor dan kelipatan dengan baik? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.",
+      "Bagaimana belajar faktor dan kelipatan dengan baik? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari pelajaran.",
       bersih(0),
       tambah(0, judul("Empat metode dari luar")),
       tambah("berbagai", emo("gl", 150, 100, "🌍", 56)),
-      tambah("empat", ...kartu("pa", 30, 128, 240, 34, W.krem, ["faktor dan kelipatan: angka dari buku"], 9.2)),
+      tambah("empat", ...kartu("pa", 30, 128, 240, 34, W.krem, ["faktor dan kelipatan: angka pelajaran"], 9.2)),
     ),
     k(
       "Empat metode itu: Factor Pairs, Skip Counting Multiples, Divisibility, dan Sieve of Eratosthenes.",
@@ -86,23 +86,23 @@ function ketukanFP(c: Kasus) {
 }
 export const ADEGAN_LUAR_FP_TERAPAN: AdeganStory = {
   id: "luar-fp-terapan",
-  judul: "Factor Pairs diterapkan pada angka buku",
-  sumber: "Metode luar: Factor Pairs pada soal Buku Siswa",
+  judul: "Factor Pairs diterapkan pada bilangan tadi",
+  sumber: "Metode luar: Factor Pairs, penerapan",
   latar: "#F0FDF4",
   ketukan: [
     ketukanFP({
       id: "pa",
-      judul: "Faktor 24 (Ayo Berlatih 2a)",
+      judul: "Faktor 24",
       n: 24,
       pasang: [[1, 24], [2, 12], [3, 8], [4, 6]],
-      suara: "Faktor dua puluh empat dari Ayo Berlatih dua: satu kali dua puluh empat, dua kali dua belas, tiga kali delapan, empat kali enam. Delapan faktor.",
+      suara: "Faktor dua puluh empat, kita cari semua pasangannya: satu kali dua puluh empat, dua kali dua belas, tiga kali delapan, empat kali enam. Delapan faktor.",
       at: [12, 16, 19, 22],
       hasil: "faktor 24: 1, 2, 3, 4, 6, 8, 12, 24",
       hasilAt: "faktor@2",
     }),
     ketukanFP({
       id: "pb",
-      judul: "Faktor 25 (Ayo Berlatih 2b)",
+      judul: "Faktor 25",
       n: 25,
       pasang: [[1, 25], [5, 5]],
       suara: "Dua puluh lima: satu kali dua puluh lima, lalu lima kali lima. Pasangan kembar, jadi lima ditulis sekali. Tiga faktor.",
@@ -113,7 +113,7 @@ export const ADEGAN_LUAR_FP_TERAPAN: AdeganStory = {
     }),
     ketukanFP({
       id: "pc",
-      judul: "Faktor 52 (Ayo Berlatih 2c)",
+      judul: "Faktor 52",
       n: 52,
       pasang: [[1, 52], [2, 26], [4, 13]],
       suara: "Lima puluh dua: satu kali lima puluh dua, dua kali dua puluh enam, empat kali tiga belas. Enam faktor.",
@@ -123,10 +123,10 @@ export const ADEGAN_LUAR_FP_TERAPAN: AdeganStory = {
     }),
     ketukanFP({
       id: "pd",
-      judul: "Faktor 27 (Uji Kompetensi 8a)",
+      judul: "Faktor 27",
       n: 27,
       pasang: [[1, 27], [3, 9]],
-      suara: "Dua puluh tujuh dari Uji Kompetensi delapan: satu kali dua puluh tujuh, tiga kali sembilan. Empat faktor.",
+      suara: "Dua puluh tujuh, kita cari semua pasangannya: satu kali dua puluh tujuh, tiga kali sembilan. Empat faktor.",
       at: [11, 14],
       hasil: "faktor 27: 1, 3, 9, 27",
       hasilAt: 16,
@@ -198,14 +198,14 @@ function ketukanSK(c: KasusSK) {
 }
 export const ADEGAN_LUAR_SK_TERAPAN: AdeganStory = {
   id: "luar-sk-terapan",
-  judul: "Skip Counting Multiples diterapkan pada angka buku",
-  sumber: "Metode luar: Skip Counting pada soal Buku Siswa",
+  judul: "Skip Counting Multiples diterapkan pada bilangan tadi",
+  sumber: "Metode luar: Skip Counting, penerapan",
   latar: "#EFF6FF",
   ketukan: [
     ketukanSK({
       L: "sa",
       judul: "Kelipatan 6 kurang dari 40",
-      suara: "Latihan dua: kelipatan enam kurang dari empat puluh. Dari nol lompat enam: enam, dua belas, delapan belas, dua puluh empat, tiga puluh, tiga puluh enam. Empat puluh dua sudah lewat.",
+      suara: "Sekarang cari kelipatan enam kurang dari empat puluh. Dari nol lompat enam: enam, dua belas, delapan belas, dua puluh empat, tiga puluh, tiga puluh enam. Empat puluh dua sudah lewat.",
       at: [9, 12, 14, 16, 19, 21, 24, 27],
       kartuAt: "lewat.",
       kartu: "6, 12, 18, 24, 30, 36 (42 lewat dari 40)",
@@ -214,7 +214,7 @@ export const ADEGAN_LUAR_SK_TERAPAN: AdeganStory = {
     ketukanSK({
       L: "sb",
       judul: "Kelipatan 5 antara 17 dan 35",
-      suara: "Latihan tiga: kelipatan lima antara tujuh belas dan tiga puluh lima. Dari lima belas lompat lima: dua puluh, dua puluh lima, tiga puluh. Tiga puluh lima sudah batas, tidak dihitung.",
+      suara: "Lalu cari kelipatan lima antara tujuh belas dan tiga puluh lima. Dari lima belas lompat lima: dua puluh, dua puluh lima, tiga puluh. Tiga puluh lima sudah batas, tidak dihitung.",
       at: [13, 17, 20, 22, 25],
       kartuAt: "batas,",
       kartu: "jawab: 20, 25, 30",
@@ -223,7 +223,7 @@ export const ADEGAN_LUAR_SK_TERAPAN: AdeganStory = {
     ketukanSK({
       L: "sc",
       judul: "Kelipatan 4 antara 7 dan 25",
-      suara: "Soal empat belas: kelipatan empat lebih dari tujuh dan kurang dari dua puluh lima. Lompat empat dari empat: delapan, dua belas, enam belas, dua puluh, dua puluh empat. Dua puluh delapan terlalu besar.",
+      suara: "Sekarang kita cari kelipatan empat lebih dari tujuh dan kurang dari dua puluh lima. Lompat empat dari empat: delapan, dua belas, enam belas, dua puluh, dua puluh empat. Dua puluh delapan terlalu besar.",
       at: [17, 18, 20, 22, 24, 27, 30],
       kartuAt: "terlalu",
       kartu: "jawab: 8, 12, 16, 20, 24",
@@ -232,7 +232,7 @@ export const ADEGAN_LUAR_SK_TERAPAN: AdeganStory = {
     ketukanSK({
       L: "sd",
       judul: "Kelipatan 3 kurang dari 30",
-      suara: "Soal tujuh: kelipatan tiga kurang dari tiga puluh. Dari nol lompat tiga sembilan kali: tiga sampai dua puluh tujuh. Tiga puluh tidak termasuk.",
+      suara: "Terakhir cari kelipatan tiga kurang dari tiga puluh. Dari nol lompat tiga sembilan kali: tiga sampai dua puluh tujuh. Tiga puluh tidak termasuk.",
       at: [9, 12, 12, 12, 12, 12, 12, 12, 12, 12, 22],
       kartuAt: "termasuk.",
       kartu: "jawab: 3, 6, 9, ..., 27 (9 bilangan)",

@@ -8,8 +8,8 @@ import { ADEGAN_LUAR_FAKTA, ADEGAN_LUAR_FAKTA_TERAPAN, ADEGAN_LUAR_GANDA, ADEGAN
 /** Kelas 4 Bab 1 Sub-Bab G (Perkalian Bilangan Cacah sampai 100): video materi kurikulum dan video metode luar, dua video terpisah. */
 export const VIDEO_MATERI_K4B1G: VideoStory = {
   id: "k4b1g-materi",
-  judul: "Perkalian sampai 100 menurut Buku",
-  subjudul: "Materi kurikulum · Buku Siswa hlm. 39–43",
+  judul: "Perkalian sampai 100",
+  subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
     ADEGAN_PEMANTIK,
@@ -29,7 +29,7 @@ export const VIDEO_MATERI_K4B1G: VideoStory = {
 export const VIDEO_LUAR_K4B1G: VideoStory = {
   id: "k4b1g-luar",
   judul: "Perkalian sampai 100: Metode dari Luar",
-  subjudul: "Empat metode luar · angka dari buku",
+  subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
     ADEGAN_LUAR_PEMBUKA,

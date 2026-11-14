@@ -169,10 +169,17 @@ const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.
   for (const m of [...METODE, ...NAMA_ID]) cek(luar.includes(m), `video metode luar memuat ${m}`);
   sama(U1.NAMA_METODE, METODE, "nama metode di berkas luar-1");
   sama(U1.NAMA_METODE_ID, NAMA_ID, "nama Indonesia metode luar");
-  cek(M.adegan.every((a) => /(Buku Siswa|Panduan Guru) hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber)), "video materi: tiap label sumber berupa label pelajaran netral (Materi: ...)");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
+  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
+  // Video bergaya guru: tak ada rujukan sumber buku pada suara, teks terlihat, sumber, judul adegan, judul dan subjudul (hanya adegan yang diputar).
+  const TERLARANG = /\bbuku\b|panduan guru|\bhlm\b|halaman|\bkunci\b|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul tanpa kata terlarang`);
+    for (const a of v.adegan) cek(!TERLARANG.test(`${a.sumber} ${teksAdegan(a)}`), `${v.id}/${a.id}: suara, teks terlihat, sumber, dan judul adegan tanpa kata terlarang`);
+  }
   cek(U.adegan.every((a) => a.sumber.length <= 46), "video metode luar: label sumber cukup pendek untuk kanvas 300 lebar");
-  cek(M.adegan.every((a) => a.sumber.length <= 52), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
+  cek(M_VIDEO.adegan.every((a) => a.sumber.length <= 46), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
   for (const kata of ["Peta konsep", "Kata kunci", "Apersepsi", "Ayo Berlatih", "Ayo Berpikir", "Ayo Mengamati", "Miskonsepsi", "Diferensiasi", "Refleksi", "Subbab", "Tujuan pembelajaran", "Panduan guru", "Aktivitas"]) cek(!luar.includes(kata), `video metode luar tidak memuat "${kata}" milik materi`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-komposisi", "luar-komposisi-terapan", "luar-dekomposisi", "luar-dekomposisi-terapan", "luar-kelompok", "luar-kelompok-terapan", "luar-ikatan", "luar-ikatan-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
@@ -444,7 +451,7 @@ const utuhKiri = (s) => {
   cek(uangOk(B3, "b1", BUKU_10000[0]) && uangOk(B3, "b2", BUKU_10000[1]) && uangOk(B3, "b3", BUKU_10000[2]), "uang Helen 10.000: tiga contoh jawaban Panduan Guru tergambar sama");
   [["b1e", BUKU_10000[0]], ["b2e", BUKU_10000[1]], ["b3e", BUKU_10000[2]]].forEach(([id, u], i) => sama(nilaiId(B3, id), `10.000 = ${u.map(rbk).join(" + ")}`, `uang Helen 10.000: persamaan contoh ${i + 1} cocok dengan uang di gambar`));
   const cc = T(M, "berlatih-uang", 7);
-  sama([nilaiId(cc, "c1-t0"), nilaiId(cc, "c2-t0")], ["tertulis di kunci: 1.0000", "yang benar: 10.000"], "catatan kunci: 1.0000 salah ketik, yang benar 10.000");
+  sama([nilaiId(cc, "c1-t0"), nilaiId(cc, "c1-t1"), nilaiId(cc, "c2-t0"), nilaiId(cc, "c2-t1")], ["sepuluh ribu ditulis", "10.000", "satu, titik,", "lalu tiga nol"], "pemeriksaan penulisan: sepuluh ribu ditulis 10.000 (satu, titik, tiga nol)");
   cek(Number("1.0000".replace(/\./g, "")) === 10000 && 10000 === 10 * 1000, "1.0000 dengan titik dibuang tetap 10000 (angka salah ketik titik)");
   // 10. Miskonsepsi dan rangkuman.
   const ms = T(M, "miskonsepsi-diferensiasi", 0);

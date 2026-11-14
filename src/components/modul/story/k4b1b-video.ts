@@ -8,8 +8,8 @@ import { ADEGAN_LUAR_RINGKAS, ADEGAN_LUAR_URAIAN, ADEGAN_LUAR_URAIAN_TERAPAN } f
 /** Kelas 4 Bab 1 Sub-Bab B (Menentukan dan Menggunakan Nilai Tempat): video materi kurikulum dan video metode luar, dua video terpisah. */
 export const VIDEO_MATERI_K4B1B: VideoStory = {
   id: "k4b1b-materi",
-  judul: "Menentukan dan Menggunakan Nilai Tempat menurut Buku",
-  subjudul: "Materi kurikulum · Buku Siswa hlm. 12–15 (Aktivitas 2)",
+  judul: "Menentukan dan Menggunakan Nilai Tempat",
+  subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
     ADEGAN_STRUK,
@@ -29,7 +29,7 @@ export const VIDEO_MATERI_K4B1B: VideoStory = {
 export const VIDEO_LUAR_K4B1B: VideoStory = {
   id: "k4b1b-luar",
   judul: "Nilai Tempat Bilangan: Metode dari Luar",
-  subjudul: "Empat metode luar · angka dari buku",
+  subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
     ADEGAN_LUAR_PEMBUKA,

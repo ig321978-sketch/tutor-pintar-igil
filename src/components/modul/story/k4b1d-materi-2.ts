@@ -3,9 +3,9 @@ import { W, angka, bagianKe, barisTabel, emo, garis, judul, kartu, kotak, panah,
 import { bersih, idx, k, sorotkan, tambah, ubah } from "./k4b1d-bantu";
 
 /* ------------------------------ 5. Dekomposisi: Ayo Mengamati (Buku Siswa hlm. 26; Panduan Guru hlm. 47) ------------------------------ */
-const SUARA_D1 = "Dekomposisi bilangan cacah sampai sepuluh ribu. Ayo Mengamati: kalian sudah mengenal nilai tempat. Misalkan bilangan enam ribu tujuh ratus delapan puluh sembilan.";
-const SUARA_D2 = "Sembilan menempati nilai tempat satuan, delapan menempati puluhan, tujuh menempati ratusan, dan enam menempati ribuan. Buku menunjukkannya dengan garis dari tiap angka.";
-const SUARA_D3 = "Panduan guru: guru memberi contoh bilangan empat angka, mengingatkan nilai tempat serta nilai angka pada tiap nilai tempat, misalnya enam di tempat ribuan bernilai enam ribu. Contoh lain boleh ditambah guru.";
+const SUARA_D1 = "Sekarang dekomposisi bilangan cacah sampai sepuluh ribu. Coba amati: kalian sudah mengenal nilai tempat. Misalkan bilangan enam ribu tujuh ratus delapan puluh sembilan.";
+const SUARA_D2 = "Sembilan menempati nilai tempat satuan, delapan menempati puluhan, tujuh menempati ratusan, dan enam menempati ribuan. Perhatikan garis dari tiap angka yang menunjukkannya.";
+const SUARA_D3 = "Ingat kembali nilai tempat serta nilai angka pada tiap nilai tempat, misalnya enam di tempat ribuan bernilai enam ribu. Coba kamu cari contoh bilangan empat angka yang lain.";
 const SUARA_D4 = "Diberikan bilangan enam ribu delapan ratus empat puluh sembilan. Tabelnya: ribuan enam, ratusan delapan, puluhan empat, satuan sembilan.";
 
 /** Letak angka 6.789: kotak angka (kiri ke kanan: ribuan sampai satuan) dan baris label (satuan paling atas), seperti garis penunjuk di buku. */
@@ -15,8 +15,8 @@ const BARIS_LETAK = [90, 112, 134, 156];
 
 export const ADEGAN_DEKOMPOSISI_AMATI: AdeganStory = {
   id: "dekomposisi-amati",
-  judul: "Dekomposisi: Ayo Mengamati",
-  sumber: "Buku Siswa hlm. 26; Panduan Guru hlm. 47",
+  judul: "Dekomposisi: mari mengamati",
+  sumber: "Materi: dekomposisi, mengamati nilai tempat",
   latar: "#F0FDF4",
   kutipan: [
     "Dekomposisi bilangan cacah sampai 10.000",
@@ -55,9 +55,9 @@ export const ADEGAN_DEKOMPOSISI_AMATI: AdeganStory = {
     k(
       SUARA_D3,
       bersih(0),
-      tambah(0, judul("Contoh dari guru")),
+      tambah(0, judul("Ingat nilai tempat")),
       tambah(idx(SUARA_D3, "misalnya"), ...kartu("gk", 14, 40, 272, 40, W.hijauMuda, ["angka 6 di tempat ribuan", "nilainya 6.000"], 9.6)),
-      tambah(idx(SUARA_D3, "Contoh", 2), ...kartu("gl", 14, 100, 272, 40, W.krem, ["contoh bilangan 4 angka", "boleh ditambah guru"], 9.6)),
+      tambah(idx(SUARA_D3, "Coba"), ...kartu("gl", 14, 100, 272, 40, W.krem, ["coba cari bilangan 4 angka", "yang lain"], 9.6)),
     ),
     k(
       SUARA_D4,
@@ -77,7 +77,7 @@ export const ADEGAN_DEKOMPOSISI_AMATI: AdeganStory = {
 const SUARA_U1 = "Berdasarkan tabel, angka enam di ribuan bernilai enam ribu, dan angka delapan di ratusan bernilai delapan ratus.";
 const SUARA_U2 = "Angka empat di puluhan bernilai empat puluh, dan angka sembilan di satuan bernilai sembilan.";
 const SUARA_U3 = "Jadi enam ribu delapan ratus empat puluh sembilan sama dengan enam ribuan ditambah delapan ratusan ditambah empat puluhan ditambah sembilan satuan.";
-const SUARA_U4 = "Bentuk kedua di buku: enam ribu ditambah delapan ratus ditambah empat puluh ditambah sembilan.";
+const SUARA_U4 = "Bentuk kedua: enam ribu ditambah delapan ratus ditambah empat puluh ditambah sembilan.";
 const SUARA_U5 = "Itulah dekomposisi bilangan: mengurai bilangan menjadi nilai tempat tiap angkanya. Arahnya kebalikan dari komposisi, yang menyusun.";
 
 const SB_U = susunBagian("ub", 60, ["6 ribuan", "8 ratusan", "4 puluhan", "9 satuan"]);
@@ -85,7 +85,7 @@ const SB_U = susunBagian("ub", 60, ["6 ribuan", "8 ratusan", "4 puluhan", "9 sat
 export const ADEGAN_DEKOMPOSISI_URAIAN: AdeganStory = {
   id: "dekomposisi-uraian",
   judul: "Dekomposisi: uraian 6.849",
-  sumber: "Buku Siswa hlm. 26",
+  sumber: "Materi: uraian bilangan 6.849",
   latar: "#FFF7ED",
   kutipan: [
     "Berdasarkan penjelasan di atas, diperoleh bahwa",
@@ -139,19 +139,19 @@ export const ADEGAN_DEKOMPOSISI_URAIAN: AdeganStory = {
 };
 
 /* ------------------------------ 7. Dekomposisi dengan nol: 6.035 (Buku Siswa hlm. 27; Panduan Guru hlm. 45) ------------------------------ */
-const SUARA_Z1 = "Anak di buku bertanya: bagaimana halnya dengan dekomposisi dari bilangan enam ribu tiga puluh lima?";
+const SUARA_Z1 = "Sekarang, bagaimana halnya dengan dekomposisi dari bilangan enam ribu tiga puluh lima?";
 const SUARA_Z2 = "Tabelnya: ribuan enam, ratusan nol, puluhan tiga, satuan lima. Tempat ratusan berisi nol, artinya tidak ada ratusan.";
 const SUARA_Z3 = "Dalam bentuk panjang: enam ribuan ditambah nol ratusan ditambah tiga puluhan ditambah lima satuan, sama dengan enam ribu tiga puluh lima.";
-const SUARA_Z4 = "Bentuk kedua di buku: enam ribu ditambah nol nol nol ditambah tiga puluh ditambah lima.";
-const SUARA_Z5 = "Panduan guru mengatur penulisannya: ratusan nol ditulis tiga nol, puluhan nol ditulis dua nol, dan satuan nol ditulis satu nol.";
-const SUARA_Z6 = "Catatan video: tiga nol itu hanya cara menulis. Nilainya tetap nol, jadi enam ribu ditambah nol ditambah tiga puluh ditambah lima tetap sama dengan enam ribu tiga puluh lima.";
+const SUARA_Z4 = "Bentuk kedua: enam ribu ditambah nol nol nol ditambah tiga puluh ditambah lima.";
+const SUARA_Z5 = "Ada aturan penulisannya: ratusan nol ditulis tiga nol, puluhan nol ditulis dua nol, dan satuan nol ditulis satu nol.";
+const SUARA_Z6 = "Ingat: tiga nol itu hanya cara menulis. Nilainya tetap nol, jadi enam ribu ditambah nol ditambah tiga puluh ditambah lima tetap sama dengan enam ribu tiga puluh lima.";
 
 const SB_Z = susunBagian("zb", 76, ["6 ribuan", "0 ratusan", "3 puluhan", "5 satuan"]);
 
 export const ADEGAN_DEKOMPOSISI_NOL: AdeganStory = {
   id: "dekomposisi-nol",
   judul: "Dekomposisi dengan nol: 6.035",
-  sumber: "Buku Siswa hlm. 27; Panduan Guru hlm. 45",
+  sumber: "Materi: dekomposisi dengan nol",
   latar: "#EFF6FF",
   kutipan: [
     "Bagaimana halnya dengan dekomposisi dari bilangan 6.035?",
@@ -202,7 +202,7 @@ export const ADEGAN_DEKOMPOSISI_NOL: AdeganStory = {
     k(
       SUARA_Z5,
       bersih(0),
-      tambah(0, judul("Penulisan nol (Panduan Guru)")),
+      tambah(0, judul("Aturan penulisan nol")),
       tambah("ratusan", ...kartu("zr", 30, 40, 240, 30, W.hijauMuda, ["ratusan 0 ditulis 000"], 10)),
       tambah("puluhan", ...kartu("zp", 30, 82, 240, 30, W.krem, ["puluhan 0 ditulis 00"], 10)),
       tambah("satuan", ...kartu("zs", 30, 124, 240, 30, W.pink, ["satuan 0 ditulis 0"], 10)),
@@ -210,7 +210,7 @@ export const ADEGAN_DEKOMPOSISI_NOL: AdeganStory = {
     k(
       SUARA_Z6,
       bersih(0),
-      tambah(0, judul("Catatan: nol tetap nol")),
+      tambah(0, judul("Ingat: nol tetap nol")),
       tambah("tiga", ...kartu("zc", 20, 38, 260, 32, W.merahMuda, ["000 hanya cara menulis", "nilainya tetap nol"], 9.4)),
       tambah("enam", teks("zi", 150, 120, "6.000 + 0 + 30 + 5 = 6.035", 12.5, W.biru)),
       tambah("sama", emo("zj", 150, 170, "✅", 26)),
@@ -219,7 +219,7 @@ export const ADEGAN_DEKOMPOSISI_NOL: AdeganStory = {
 };
 
 /* ------------------------------ 8. Dekomposisi: Ayo Berlatih nomor 1 (Buku Siswa hlm. 27-28; Panduan Guru hlm. 47) ------------------------------ */
-const SUARA_B1 = "Ayo Berlatih nomor satu: isilah titik-titik dengan benar. Bilangan pertama, enam ribu empat ratus delapan puluh dua, sudah diisi sebagai contoh di buku.";
+const SUARA_B1 = "Sekarang berlatih: isilah titik-titik dengan benar. Bilangan pertama, enam ribu empat ratus delapan puluh dua, sudah diisi sebagai contoh.";
 const SUARA_B2 = "Tujuh ribu dua puluh. Tujuh ribuan, nol ratusan, dua puluhan, nol satuan.";
 const SUARA_B3 = "Dua ribu satu. Dua ribuan, nol ratusan, nol puluhan, satu satuan.";
 const SUARA_B4 = "Tujuh ribu. Tujuh ribuan, sedangkan ratusan, puluhan, dan satuan semuanya nol.";
@@ -237,8 +237,8 @@ const KEPALA = () => barisTabel("th", 30, 30, KOL_TABEL, ["Bilangan", "Ribuan", 
 
 export const ADEGAN_BERLATIH_SATU: AdeganStory = {
   id: "berlatih-satu",
-  judul: "Dekomposisi: Ayo Berlatih nomor 1",
-  sumber: "Buku Siswa hlm. 27–28; Panduan Guru hlm. 47",
+  judul: "Dekomposisi: latihan mengisi titik-titik",
+  sumber: "Materi: latihan dekomposisi",
   latar: "#F0FDF4",
   kutipan: [
     "Ayo Berlatih",
@@ -254,7 +254,7 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
   ketukan: [
     k(
       SUARA_B1,
-      tambah(0, judul("Ayo Berlatih nomor 1"), ...KEPALA()),
+      tambah(0, judul("Latihan: isi titik-titik"), ...KEPALA()),
       tambah(idx(SUARA_B1, "Bilangan"), ...labelBaris(0)),
       tambah(idx(SUARA_B1, "contoh"), ...[0, 1, 2, 3].map((c) => selBaris(0, c))),
     ),

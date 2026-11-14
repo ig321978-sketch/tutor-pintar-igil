@@ -13,10 +13,10 @@ export const kepala = (i: number): Obj[] => kartu("hd", 6, 26, 288, 24, WARNA_ME
 const kartuNilai = (id: string, c: number, y: number, isi: string, h = 36): Obj[] => kartu(`${id}${c}`, 14 + c * 70, y, 62, h, [W.langit, W.hijauMuda, W.krem, W.pink][c], [isi], 10);
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana cara menyusun dan mengurai bilangan empat angka? Di video ini ada empat cara dari luar buku. Angkanya tetap dari buku, yaitu enam ribu tiga ratus empat puluh delapan dan enam ribu delapan ratus empat puluh sembilan.";
+const SUARA_O1 = "Bagaimana cara menyusun dan mengurai bilangan empat angka? Di video ini ada empat cara lain. Kita pakai dua bilangan, yaitu enam ribu tiga ratus empat puluh delapan dan enam ribu delapan ratus empat puluh sembilan.";
 const SUARA_O2 = "Cara pertama bernama Composition, atau Komposisi Bilangan: menyusun bilangan dari bagian nilai tempatnya. Cara kedua bernama Decomposition, atau Dekomposisi Bilangan: mengurai bilangan menjadi bagian yang lebih kecil.";
 const SUARA_O3 = "Cara ketiga bernama Flexible Grouping, atau Pengelompokan Fleksibel: satu ratusan bisa menjadi sepuluh puluhan. Cara keempat bernama Number Bonds, atau Ikatan Bilangan: bilangan utuh dan bagiannya saling terikat.";
-const SUARA_O4 = "Tiap cara dijelaskan konsepnya lebih dulu, lalu dipakai pada angka dan gambar dari bab satu. Pilih cara yang paling cocok dengan soalnya.";
+const SUARA_O4 = "Tiap cara dijelaskan konsepnya lebih dulu, lalu dipakai pada contoh soal. Pilih cara yang paling cocok dengan soalnya.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
@@ -29,7 +29,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah(0, judul("Empat cara dari luar")),
       tambah(idx(SUARA_O1, "enam"), teks("po1", 80, 88, "6.348", 30, W.hijau)),
       tambah(idx(SUARA_O1, "enam", 2), teks("po2", 220, 88, "6.849", 30, W.merah)),
-      tambah(idx(SUARA_O1, "empat", 2), ...kartu("po3", 40, 130, 220, 30, W.emas, ["4 cara dari luar buku"], 9.6)),
+      tambah(idx(SUARA_O1, "empat", 2), ...kartu("po3", 40, 130, 220, 30, W.emas, ["4 cara lain"], 9.6)),
     ),
     k(
       SUARA_O2,
@@ -49,7 +49,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       bersih(0),
       tambah(0, judul("Konsep lalu penerapan")),
       tambah("konsepnya", ...kartu("q1", 14, 50, 110, 50, W.hijauMuda, ["1. konsep", "cara kerja"], 10)),
-      tambah("dipakai", panah("q2", 130, 75, 40, 0, W.biru, 2.4), ...kartu("q3", 176, 50, 110, 50, W.langit, ["2. penerapan", "angka buku"], 10)),
+      tambah("dipakai", panah("q2", 130, 75, 40, 0, W.biru, 2.4), ...kartu("q3", 176, 50, 110, 50, W.langit, ["2. penerapan", "contoh soal"], 10)),
       tambah("Pilih", ...kartu("q4", 40, 126, 220, 34, W.emas, ["pilih cara yang cocok dengan soal"], 9.6)),
     ),
   ],
@@ -98,15 +98,15 @@ export const ADEGAN_LUAR_KOMPOSISI: AdeganStory = {
 };
 
 /* ------------------------------ 3. Composition: penerapan pada angka buku ------------------------------ */
-const SUARA_CT1 = "Terapan pada soal latihan di buku. Papan pertama berisi enam, empat, delapan, dua, jadi kartunya enam ribu, empat ratus, delapan puluh, dan dua.";
+const SUARA_CT1 = "Sekarang kita pakai pada soal latihan. Papan pertama berisi enam, empat, delapan, dua, jadi kartunya enam ribu, empat ratus, delapan puluh, dan dua.";
 const SUARA_CT2 = "Susun kartunya, hasilnya bilangan enam ribu empat ratus delapan puluh dua.";
 const SUARA_CT3 = "Papan kedua berisi enam, nol, empat, nol. Kartu nol tidak perlu diambil, jadi cukup kartu enam ribu dan empat puluh. Hasilnya enam ribu empat puluh.";
-const SUARA_CT4 = "Contoh dari kunci di buku: empat ribu, lima ratus, tiga puluh, tanpa satuan, menjadi empat ribu lima ratus tiga puluh.";
+const SUARA_CT4 = "Contoh lain: empat ribu, lima ratus, tiga puluh, tanpa satuan, menjadi empat ribu lima ratus tiga puluh.";
 
 export const ADEGAN_LUAR_KOMPOSISI_TERAPAN: AdeganStory = {
   id: "luar-komposisi-terapan",
-  judul: "Composition pada angka latihan buku",
-  sumber: "Metode luar: Composition (angka buku)",
+  judul: "Composition pada angka latihan",
+  sumber: "Metode luar: Composition (contoh soal)",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -142,7 +142,7 @@ export const ADEGAN_LUAR_KOMPOSISI_TERAPAN: AdeganStory = {
     k(
       SUARA_CT4,
       bersih(0),
-      tambah(0, judul("Composition: contoh guru"), kepala(0), ...papan("vp", 10, 56, 70, KOMPOSISI_LATIHAN[2])),
+      tambah(0, judul("Composition: contoh lain"), kepala(0), ...papan("vp", 10, 56, 70, KOMPOSISI_LATIHAN[2])),
       tambah(idx(SUARA_CT4, "ribu,"), kartuNilai("vc", 0, 110, "4.000")),
       tambah(idx(SUARA_CT4, "ratus,"), kartuNilai("vc", 1, 110, "500")),
       tambah(idx(SUARA_CT4, "puluh,"), kartuNilai("vc", 2, 110, "30")),
@@ -184,7 +184,7 @@ export const ADEGAN_LUAR_DEKOMPOSISI: AdeganStory = {
 };
 
 /* ------------------------------ 5. Decomposition: penerapan pada angka buku ------------------------------ */
-const SUARA_DT1 = "Terapan pada bilangan buku, enam ribu tiga puluh lima. Kupas enam ribu, sisanya tiga puluh lima.";
+const SUARA_DT1 = "Sekarang kita pakai bilangan enam ribu tiga puluh lima. Kupas enam ribu, sisanya tiga puluh lima.";
 const SUARA_DT2 = "Tidak ada ratusan, jadi ratusan dilewati. Kupas tiga puluh, sisanya lima.";
 const SUARA_DT3 = "Bilangan tujuh ribu dua puluh. Kupas tujuh ribu, ratusan nol, lalu dua puluh, satuan nol. Hasilnya tujuh ribu ditambah dua puluh.";
 const SUARA_DT4 = "Dua ribu satu menjadi dua ribu ditambah satu. Tujuh ribu tinggal tujuh ribu, tanpa bagian lain.";
@@ -192,8 +192,8 @@ const SUARA_DT5 = "Sembilan ribu sembilan ratus sembilan puluh sembilan menjadi 
 
 export const ADEGAN_LUAR_DEKOMPOSISI_TERAPAN: AdeganStory = {
   id: "luar-dekomposisi-terapan",
-  judul: "Decomposition pada angka buku",
-  sumber: "Metode luar: Decomposition (angka buku)",
+  judul: "Decomposition pada bilangan latihan",
+  sumber: "Metode luar: Decomposition (contoh soal)",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -205,7 +205,7 @@ export const ADEGAN_LUAR_DEKOMPOSISI_TERAPAN: AdeganStory = {
     k(
       SUARA_DT2,
       ubah(idx(SUARA_DT2, "tiga"), { id: "eb", isi: "6.000 + 30 + 5", u: 22 }),
-      tambah(idx(SUARA_DT2, "dilewati."), ...kartu("ec", 20, 150, 260, 34, W.krem, ["nol ratusan dilewati;", "buku menulisnya 000"], 8.8)),
+      tambah(idx(SUARA_DT2, "dilewati."), ...kartu("ec", 20, 150, 260, 34, W.krem, ["nol ratusan dilewati;", "boleh ditulis 000"], 8.8)),
     ),
     k(
       SUARA_DT3,

@@ -11,15 +11,15 @@ export const IKON_METODE = ["🍩", "🧮", "🔢", "🔁"];
 export const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana kita menghitung benda yang tersusun dalam kelompok sama, seperti dua belas kotak donat berisi empat donat? Guru di berbagai negara punya cara berbeda. Video ini memperlihatkan empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana kita menghitung benda yang tersusun dalam kelompok sama, seperti dua belas kotak donat berisi empat donat? Guru di berbagai negara punya cara berbeda. Video ini memperlihatkan empat metode dari luar untuk soal yang sama.";
 const SUARA_O2 = "Empat metode itu: Equal Groups, Array Model, Times Table Fluency, dan Doubling.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Kelompok Sama Banyak, Model Susunan, Kefasihan Tabel Kali, dan Penggandaan. Metode keempat adalah tambahan yang cocok dengan soal pensil dan donat di buku.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Kelompok Sama Banyak, Model Susunan, Kefasihan Tabel Kali, dan Penggandaan. Metode keempat adalah tambahan yang cocok dengan soal pensil dan donat.";
 const SUARA_O4 = "Semuanya menjawab satu pertanyaan: berapa jumlah seluruhnya? Dengan menjumlahkan kelompok sama, membaca baris dan kolom, mengingat fakta kali, dan menggandakan angka.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk perkalian",
-  sumber: "Metode luar: pembuka; BS hlm. 39–43",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -96,12 +96,12 @@ export const ADEGAN_LUAR_KELOMPOK: AdeganStory = {
 const SUARA_H1 = "Terapan: soal ayam Asep. Ada dua belas kelompok ayam, tiap kelompok menghabiskan tiga mangkok makanan.";
 const SUARA_H2 = "Tambahkan tiga sebanyak dua belas kali, hasilnya tiga puluh enam mangkok.";
 const SUARA_H3 = "Sekarang soal kucing Azizah: dua puluh satu kelompok, tiap kelompok empat kaki. Empat ditambah berulang dua puluh satu kali sama dengan delapan puluh empat.";
-const SUARA_H4 = "Dalam perkalian, tulis dua puluh satu kali empat. Hasilnya delapan puluh empat kaki, cocok dengan kunci buku.";
+const SUARA_H4 = "Dalam perkalian, tulis dua puluh satu kali empat. Hasilnya delapan puluh empat kaki.";
 
 export const ADEGAN_LUAR_KELOMPOK_TERAPAN: AdeganStory = {
   id: "luar-kelompok-terapan",
   judul: "Equal Groups: ayam Asep dan kucing Azizah",
-  sumber: "Metode luar: Equal Groups, soal buku",
+  sumber: "Metode luar: Equal Groups, penerapan",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -171,12 +171,12 @@ export const ADEGAN_LUAR_SUSUNAN: AdeganStory = {
 /* ------------------------------ 5. Array Model: penerapan ------------------------------ */
 const SUARA_B1 = "Terapan: kancing baju seragam. Empat belas baju, tiap baju tujuh kancing. Susun tujuh baris dan empat belas kolom.";
 const SUARA_B2 = "Pisahkan empat belas kolom menjadi sepuluh dan empat. Sepuluh kali tujuh sama dengan tujuh puluh, empat kali tujuh sama dengan dua puluh delapan.";
-const SUARA_B3 = "Jumlahkan: tujuh puluh tambah dua puluh delapan sama dengan sembilan puluh delapan kancing, sama dengan kunci buku.";
+const SUARA_B3 = "Jumlahkan: tujuh puluh tambah dua puluh delapan sama dengan sembilan puluh delapan kancing.";
 
 export const ADEGAN_LUAR_SUSUNAN_TERAPAN: AdeganStory = {
   id: "luar-susunan-terapan",
   judul: "Array Model: kancing baju seragam",
-  sumber: "Metode luar: Array Model, soal buku",
+  sumber: "Metode luar: Array Model, penerapan",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -195,7 +195,7 @@ export const ADEGAN_LUAR_SUSUNAN_TERAPAN: AdeganStory = {
     k(
       SUARA_B3,
       tambah("Jumlahkan:", teks("ak3", 150, 196, "70 + 28 = 98", 14, W.hijau)),
-      sorotkan("kunci", "ak1", "ak2"),
+      sorotkan("kancing.", "ak1", "ak2"),
     ),
   ],
 };

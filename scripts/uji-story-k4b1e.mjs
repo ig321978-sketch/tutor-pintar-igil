@@ -1,5 +1,5 @@
 // Uji Story Kelas 4 Bab 1 Sub-Bab E (Penjumlahan Bilangan Cacah sampai 1.000): dua video (materi kurikulum dan metode luar) dengan mesin animasi baru.
-// Memeriksa: pemicu kata, perubahan gambar tiap ketukan, keunikan antaradegan, batas kanvas, teks bertumpuk, suara tanpa digit (bilangan ditulis dengan kata) yang tampak sebagai angka di gambar,
+// Memeriksa: video bergaya guru (tanpa kata sumber buku pada suara, teks terlihat, label, judul, subjudul), pemicu kata, perubahan gambar tiap ketukan, keunikan antaradegan, batas kanvas, teks bertumpuk, suara tanpa digit (bilangan ditulis dengan kata) yang tampak sebagai angka di gambar,
 // pemisahan materi dan metode luar, tidak membocorkan sub-bab lain, kutipan buku terhadap teks PDF (pdftotext, atau PyMuPDF bila tidak ada), tabel susun (bilangan, hasil, tanda simpan, persamaan langkah),
 // uraian susun panjang, balok satuan dan batang puluhan, garis bilangan berskala, jumlah sebagian, serta hitungan mandiri semua kunci Panduan Guru (termasuk kunci nomor 1b yang keliru),
 // emoji paling tinggi Emoji 12, dan kemurnian berkas.
@@ -168,10 +168,23 @@ const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.
   for (const m of [...METODE, ...NAMA_ID]) cek(luar.includes(m), `video metode luar memuat ${m}`);
   sama(U1.NAMA_METODE, METODE, "nama metode di berkas luar-1");
   sama(U1.NAMA_METODE_ID, NAMA_ID, "nama Indonesia metode luar");
-  cek(M.adegan.every((a) => /(Buku Siswa|Panduan Guru) hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber)), "video materi: tiap adegan berlabel pelajaran netral (Materi: ...)");
+  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
+  // Video diputar sebagai guru: tidak ada rujukan sumber buku pada suara, teks terlihat, label sumber, judul adegan, dan judul/subjudul video.
+  const TERLARANG = /\bbuku\b|panduan guru|\bhlm\b|halaman|\bkunci\b|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(v.judul) && !TERLARANG.test(v.subjudul), `${v.id}: judul dan subjudul video tanpa kata sumber buku`);
+    for (const a of v.adegan) {
+      cek(!TERLARANG.test(a.sumber) && !TERLARANG.test(a.judul), `${v.id}/${a.id}: sumber dan judul adegan tanpa kata sumber buku`);
+      a.ketukan.forEach((kt, i) => {
+        cek(!TERLARANG.test(kt.suara), `${v.id}/${a.id}#${i + 1}: suara tanpa kata sumber buku`);
+        for (let p = 0; p < L.kataDari(kt.suara).length; p += 1) for (const o of L.keadaanStory(a, i, p)) if (o.t === "teks" && o.isi) cek(!TERLARANG.test(o.isi), `${v.id}/${a.id}#${i + 1}: teks terlihat "${o.isi}" tanpa kata sumber buku`);
+      });
+    }
+  }
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
   cek(U.adegan.every((a) => a.sumber.length <= 46), "video metode luar: label sumber cukup pendek untuk kanvas 300 lebar");
-  cek(M.adegan.every((a) => a.sumber.length <= 52), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
+  cek(M_VIDEO.adegan.every((a) => a.sumber.length <= 46), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
   for (const kata of ["Peta konsep", "Kata kunci", "Apersepsi", "Ayo Berlatih", "Ayo Berpikir", "Miskonsepsi", "Diferensiasi", "Refleksi", "Subbab", "Tujuan pembelajaran", "Panduan guru", "Aktivitas"]) cek(!luar.includes(kata), `video metode luar tidak memuat "${kata}" milik materi`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-standar", "luar-standar-terapan", "luar-simpan", "luar-simpan-terapan", "luar-maju", "luar-maju-terapan", "luar-sebagian", "luar-sebagian-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
@@ -388,7 +401,7 @@ const kataPos = (kt, kata) => L.posisiKata(kt.suara, kata);
   }
   {
     const pd = T(M, "panduan-amati", 3);
-    sama(nilaiId(pd, "pgd-t0"), "219 + 117 = 336 (contoh video)", "contoh video: 219 + 117 = 336");
+    sama(nilaiId(pd, "pgd-t0"), "219 + 117 = 336", "contoh lain: 219 + 117 = 336");
     sama(nilaiId(pd, "pgd-t1"), (() => { const p = [2, 1, 0].map((c) => `${G.kolomJumlah([219, 117], c).suku.join(" + ")} = ${G.kolomJumlah([219, 117], c).jumlah}`); return `${p[0]}, simpan 1; ${p[1]}; ${p[2]}`; })(), "contoh video: langkah kolom 219 + 117");
   }
 
@@ -415,7 +428,6 @@ const kataPos = (kt, kata) => L.posisiKata(kt.suara, kata);
     uraiOk(s2, "i1", "i3", "latihan 1b 812");
     uraiOk(s2, "i2", "i4", "latihan 1b 116");
     rantaiOk(s2, ["i5", "i6"], 928, "latihan 1b");
-    sama(nilaiId(s2, "ik-t0"), "kunci buku: 922", "latihan 1b: kunci buku tertulis 922");
     sama(nilaiId(T(M, "berlatih-satu", 4), "i7"), "2 + 6 = 8", "latihan 1b: satuan 2 + 6 = 8");
     const s3 = T(M, "berlatih-satu", 6);
     uraiOk(s3, "j1", "j3", "latihan 1c 576");

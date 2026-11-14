@@ -227,132 +227,123 @@
       },
       "petaSusun": {
         "pusat": {
-          "judul": "Bilangan sampai 10.000",
+          "judul": "Membaca dan Menulis Bilangan",
           "ikon": "🔢",
-          "suara": "Ini peta membaca dan menulis bilangan sampai sepuluh ribu. Ada nilai tempat, cara membaca, dan cara menulis."
+          "suara": "Ini peta tentang membaca dan menulis bilangan. Ada metode yang dipakai, cara melakukannya, dan hasil yang diharapkan."
         },
-        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta konsepnya.",
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
         "simpul": [
           {
-            "id": "tempat",
+            "id": "metode",
             "nomor": 1,
             "induk": null,
-            "teks": "Nilai tempat",
-            "ikon": "🏷️",
-            "petunjuk": "Ini nama kelompok empat tempat angka. Coba nomor lain."
+            "teks": "Ada tiga metode",
+            "ikon": "🧰",
+            "petunjuk": "Ini kelompok nama-nama cara belajar, bukan langkahnya."
           },
           {
-            "id": "ribuan",
+            "id": "kartu",
             "nomor": 2,
-            "induk": "tempat",
-            "teks": "Ribuan = peti",
-            "petunjuk": "Tempat paling kiri berisi satu peti."
+            "induk": "metode",
+            "teks": "Kartu bilangan",
+            "petunjuk": "Metode ini memakai kertas karton yang digunting."
           },
           {
-            "id": "ratusan",
+            "id": "tabel",
             "nomor": 3,
-            "induk": "tempat",
-            "teks": "Ratusan = dus"
+            "induk": "metode",
+            "teks": "Tabel empat tempat"
           },
           {
-            "id": "puluhan",
+            "id": "nol",
             "nomor": 4,
-            "induk": "tempat",
-            "teks": "Puluhan = bungkus"
+            "induk": "metode",
+            "teks": "Aturan nol"
           },
           {
-            "id": "satuan",
+            "id": "cara",
             "nomor": 5,
-            "induk": "tempat",
-            "teks": "Satuan = benda"
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap metode."
           },
           {
-            "id": "baca",
+            "id": "cara-kartu",
             "nomor": 6,
-            "induk": null,
-            "teks": "Cara membaca",
-            "ikon": "🗣️"
+            "induk": "cara",
+            "teks": "Susun kartu angka",
+            "petunjuk": "Langkah untuk metode yang memakai kartu."
           },
           {
-            "id": "kiri",
+            "id": "cara-tabel",
             "nomor": 7,
-            "induk": "baca",
-            "teks": "Baca dari kiri"
+            "induk": "cara",
+            "teks": "Isi tiap tempat, baca kiri",
+            "petunjuk": "Langkah untuk metode yang memakai tabel."
           },
           {
-            "id": "nol-baca",
+            "id": "cara-nol",
             "nomor": 8,
-            "induk": "baca",
-            "teks": "Nol tidak dibaca"
+            "induk": "cara",
+            "teks": "Nol dilewati, tapi ditulis",
+            "petunjuk": "Langkah untuk aturan tentang angka nol."
           },
           {
-            "id": "seribu",
+            "id": "hasil",
             "nomor": 9,
-            "induk": "baca",
-            "teks": "Seribu, bukan satu ribu"
-          },
-          {
-            "id": "tulis",
-            "nomor": 10,
             "induk": null,
-            "teks": "Cara menulis",
-            "ikon": "✍️"
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
           },
           {
-            "id": "angka-tempat",
+            "id": "hasil-baca",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa membaca bilangan"
+          },
+          {
+            "id": "hasil-tulis",
             "nomor": 11,
-            "induk": "tulis",
-            "teks": "Angka tiap tempat"
-          },
-          {
-            "id": "nol-jaga",
-            "nomor": 12,
-            "induk": "tulis",
-            "teks": "Nol menjaga tempat"
+            "induk": "hasil",
+            "teks": "Bisa menulis bilangan"
           }
         ]
       },
       "tabelSusun": {
-        "judul": "Empat tempat pada 3.286",
+        "judul": "Tiga metode membaca dan menulis",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel empat tempat pada bilangan tiga ribu dua ratus delapan puluh enam.",
-        "pojok": "Tempat",
+        "suara": "Tabel ini memuat tiga metode, cara melakukannya, contoh bilangan, dan hasil yang diharapkan.",
+        "pojok": "Metode",
         "kolom": [
-          "Kemasan",
-          "Nilai satu",
-          "Angka di 3.286"
+          "Cara melakukannya",
+          "Contoh",
+          "Hasil yang diharapkan"
         ],
         "baris": [
           {
-            "label": "Ribuan",
+            "label": "Kartu bilangan",
             "sel": [
-              "Peti",
-              "1.000",
-              "3"
+              "Susun kartu angka",
+              "3.286",
+              "Bisa membaca bilangan"
             ]
           },
           {
-            "label": "Ratusan",
+            "label": "Tabel empat tempat",
             "sel": [
-              "Dus",
-              "100",
-              "2"
+              "Isi tiap tempat, baca kiri",
+              "2.634",
+              "Bisa menulis bilangan"
             ]
           },
           {
-            "label": "Puluhan",
+            "label": "Aturan nol",
             "sel": [
-              "Bungkus",
-              "10",
-              "8"
-            ]
-          },
-          {
-            "label": "Satuan",
-            "sel": [
-              "Benda",
-              "1",
-              "6"
+              "Nol dilewati, tapi ditulis",
+              "7.003",
+              "Bisa membaca & menulis nol"
             ]
           }
         ]
@@ -600,148 +591,127 @@
       },
       "petaSusun": {
         "pusat": {
-          "judul": "Nilai tempat bilangan",
+          "judul": "Menentukan dan Menggunakan Nilai Tempat",
           "ikon": "🗃️",
-          "suara": "Ini peta nilai tempat bilangan. Ada kardus tempat angka, contoh satu bilangan, dan kesalahan yang perlu dihindari."
+          "suara": "Ini peta tentang masalah nilai tempat. Ada metode yang dipakai, cara melakukannya, dan hasil yang diharapkan."
         },
         "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta konsepnya.",
         "simpul": [
           {
-            "id": "kardus",
+            "id": "metode",
             "nomor": 1,
             "induk": null,
-            "teks": "Empat kardus tempat",
-            "ikon": "📦",
-            "petunjuk": "Kardus disusun dari kiri ke kanan."
+            "teks": "Metode yang dipakai",
+            "ikon": "🧰",
+            "petunjuk": "Nama-nama cara yang diajarkan."
           },
           {
-            "id": "ribuan",
+            "id": "m-kardus",
             "nomor": 2,
-            "induk": "kardus",
-            "teks": "Ribuan: kardus biru",
-            "petunjuk": "Kardus paling kiri."
+            "induk": "metode",
+            "teks": "Kardus nilai tempat",
+            "petunjuk": "Memakai wadah dan kartu."
           },
           {
-            "id": "ratusan",
+            "id": "m-tabel",
             "nomor": 3,
-            "induk": "kardus",
-            "teks": "Ratusan: kardus oranye",
-            "petunjuk": "Kardus kedua dari kiri."
+            "induk": "metode",
+            "teks": "Tabel nilai tempat",
+            "petunjuk": "Memakai kolom bernama."
           },
           {
-            "id": "puluhan",
+            "id": "m-nilai",
             "nomor": 4,
-            "induk": "kardus",
-            "teks": "Puluhan: kardus hijau",
-            "petunjuk": "Kardus ketiga dari kiri."
+            "induk": "metode",
+            "teks": "Angka dikali tempatnya",
+            "petunjuk": "Mencari nilai satu angka."
           },
           {
-            "id": "satuan",
+            "id": "cara",
             "nomor": 5,
-            "induk": "kardus",
-            "teks": "Satuan: kardus merah",
-            "petunjuk": "Kardus paling kanan."
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🛠️",
+            "petunjuk": "Langkah tiap metode, sejajar dengan metodenya."
           },
           {
-            "id": "contoh",
+            "id": "c-kardus",
             "nomor": 6,
-            "induk": null,
-            "teks": "Contoh 7.508",
-            "ikon": "🃏",
-            "petunjuk": "Satu kartu dari tiap kardus."
+            "induk": "cara",
+            "teks": "Ambil kartu tiap kardus",
+            "petunjuk": "Langkah untuk wadah dan kartu."
           },
           {
-            "id": "c-ribuan",
+            "id": "c-tabel",
             "nomor": 7,
-            "induk": "contoh",
-            "teks": "Angka 7 di ribuan",
-            "petunjuk": "Angka paling kiri."
+            "induk": "cara",
+            "teks": "Isi kolom dengan angkanya",
+            "petunjuk": "Langkah untuk kolom bernama."
           },
           {
-            "id": "c-ratusan",
+            "id": "c-nilai",
             "nomor": 8,
-            "induk": "contoh",
-            "teks": "Angka 5 di ratusan",
-            "petunjuk": "Angka kedua dari kiri."
+            "induk": "cara",
+            "teks": "Kalikan angka dan tempat",
+            "petunjuk": "Langkah untuk mencari nilai satu angka."
           },
           {
-            "id": "c-puluhan",
+            "id": "hasil",
             "nomor": 9,
-            "induk": "contoh",
-            "teks": "Angka 0 di puluhan",
-            "petunjuk": "Angka ketiga dari kiri."
-          },
-          {
-            "id": "c-satuan",
-            "nomor": 10,
-            "induk": "contoh",
-            "teks": "Angka 8 di satuan",
-            "petunjuk": "Angka paling kanan."
-          },
-          {
-            "id": "salah",
-            "nomor": 11,
             "induk": null,
-            "teks": "Kesalahan yang dihindari",
-            "ikon": "⚠️"
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Kemampuan yang diperoleh."
           },
           {
-            "id": "salah-baca",
-            "nomor": 12,
-            "induk": "salah",
-            "teks": "Baca tanpa akhiran -an",
-            "petunjuk": "Bukan dua ribuan tiga ratusan."
+            "id": "h-tempat",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu tempat tiap angka",
+            "petunjuk": "Hasil tentang letak angka."
           },
           {
-            "id": "salah-tabel",
-            "nomor": 13,
-            "induk": "salah",
-            "teks": "Tabel diisi angkanya saja",
-            "petunjuk": "Bukan 1.000, 200, 30, 4."
+            "id": "h-nilai",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu nilai tiap angka",
+            "petunjuk": "Hasil tentang besar nilai angka."
           }
         ]
       },
       "tabelSusun": {
-        "judul": "Angka 6 pada empat bilangan",
+        "judul": "Tiga metode nilai tempat",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel tempat dan nilai angka enam, serta angka di ribuan, pada empat bilangan.",
-        "pojok": "Bilangan",
+        "suara": "Tabel ini merangkum tiap metode nilai tempat, cara melakukannya, hasilnya, dan satu contoh.",
+        "pojok": "Metode",
         "kolom": [
-          "Tempat angka 6",
-          "Nilai angka 6",
-          "Angka di ribuan"
+          "Cara melakukannya",
+          "Hasil yang diharapkan",
+          "Contoh"
         ],
         "baris": [
           {
-            "label": "8.463",
+            "label": "Kardus nilai tempat",
             "sel": [
-              "Puluhan",
-              "60",
-              "8"
+              "Ambil kartu tiap kardus",
+              "Tahu tempat tiap angka",
+              "7.508 dari empat kartu"
             ]
           },
           {
-            "label": "4.675",
+            "label": "Tabel nilai tempat",
             "sel": [
-              "Ratusan",
-              "600",
-              "4"
+              "Isi kolom dengan angkanya",
+              "Tahu tempat angka",
+              "7.812: 7, 8, 1, 2"
             ]
           },
           {
-            "label": "6.789",
+            "label": "Angka dikali tempatnya",
             "sel": [
-              "Ribuan",
-              "6.000",
-              "6"
-            ]
-          },
-          {
-            "label": "1.236",
-            "sel": [
-              "Satuan",
-              "6",
-              "1"
+              "Kalikan angka dan tempat",
+              "Tahu nilai tiap angka",
+              "6 di puluhan = 60"
             ]
           }
         ]
@@ -970,156 +940,125 @@
         "pusat": {
           "judul": "Membandingkan dan Mengurutkan",
           "ikon": "⚖️",
-          "suara": "Ini peta membandingkan dan mengurutkan bilangan sampai sepuluh ribu. Ada cara membandingkan, tiga tanda, dan cara mengurutkan."
+          "suara": "Ini peta membandingkan dan mengurutkan bilangan sampai sepuluh ribu. Ada tiga metode, cara melakukannya, dan hasil yang diharapkan."
         },
         "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta konsepnya.",
         "simpul": [
           {
-            "id": "cara",
+            "id": "metode",
             "nomor": 1,
             "induk": null,
-            "teks": "Cara membandingkan",
-            "ikon": "🔍",
-            "petunjuk": "Ini nama kelompok langkah membandingkan. Coba nomor lain."
+            "teks": "Ada tiga metode",
+            "ikon": "🧭",
+            "petunjuk": "Ini nama kelompok metode yang diajarkan. Coba nomor lain."
           },
           {
-            "id": "ribuan",
+            "id": "m-tempat",
             "nomor": 2,
-            "induk": "cara",
-            "teks": "Mulai dari ribuan",
-            "petunjuk": "Ini langkah pertama membandingkan."
+            "induk": "metode",
+            "teks": "Nilai tempat",
+            "petunjuk": "Ini metode membandingkan lewat tempat angka."
           },
           {
-            "id": "lanjut",
+            "id": "m-tanda",
             "nomor": 3,
-            "induk": "cara",
-            "teks": "Sama? lanjut ke ratusan, dst.",
-            "petunjuk": "Ini langkah kedua, bila langkah pertama hasilnya sama."
+            "induk": "metode",
+            "teks": "Tanda perbandingan",
+            "petunjuk": "Ini metode menulis hasil perbandingan dengan lambang."
           },
           {
-            "id": "satuan",
+            "id": "m-urut",
             "nomor": 4,
-            "induk": "cara",
-            "teks": "Jangan mulai dari satuan",
-            "petunjuk": "Ini kekeliruan yang sering terjadi saat membandingkan."
+            "induk": "metode",
+            "teks": "Mengurutkan bilangan",
+            "petunjuk": "Ini metode menyusun beberapa bilangan."
           },
           {
-            "id": "tanda",
+            "id": "cara",
             "nomor": 5,
             "induk": null,
-            "teks": "Tiga tanda",
-            "ikon": "🔣",
-            "petunjuk": "Ini nama kelompok tiga lambang. Coba nomor lain."
+            "teks": "Cara melakukannya",
+            "ikon": "🛠️",
+            "petunjuk": "Ini nama kelompok langkah tiap metode. Coba nomor lain."
           },
           {
-            "id": "lebih",
+            "id": "c-tempat",
             "nomor": 6,
-            "induk": "tanda",
-            "teks": "> berarti lebih dari",
-            "petunjuk": "Ini salah satu dari tiga tanda. Lihat arah ujung tanda."
+            "induk": "cara",
+            "teks": "Bandingkan dari ribuan",
+            "petunjuk": "Ini langkah untuk metode yang pertama."
           },
           {
-            "id": "kurang",
+            "id": "c-tanda",
             "nomor": 7,
-            "induk": "tanda",
-            "teks": "< berarti kurang dari",
-            "petunjuk": "Ini salah satu dari tiga tanda. Lihat arah ujung tanda."
+            "induk": "cara",
+            "teks": "Pilih tanda: > < =",
+            "petunjuk": "Ini langkah untuk metode yang kedua."
           },
           {
-            "id": "sama",
+            "id": "c-urut",
             "nomor": 8,
-            "induk": "tanda",
-            "teks": "= berarti sama dengan",
-            "petunjuk": "Ini salah satu dari tiga tanda. Cocok untuk dua bilangan yang persis sama."
+            "induk": "cara",
+            "teks": "Urut dari yang terkecil",
+            "petunjuk": "Ini langkah untuk metode yang ketiga."
           },
           {
-            "id": "urut",
+            "id": "hasil",
             "nomor": 9,
             "induk": null,
-            "teks": "Mengurutkan",
-            "ikon": "📶",
-            "petunjuk": "Ini nama kelompok cara mengurutkan. Coba nomor lain."
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini nama kelompok kemampuan yang diperoleh. Coba nomor lain."
           },
           {
-            "id": "kecil-besar",
+            "id": "h-banding",
             "nomor": 10,
-            "induk": "urut",
-            "teks": "Terkecil ke terbesar",
-            "petunjuk": "Ini aturan arah urutan. Coba nomor lain."
+            "induk": "hasil",
+            "teks": "Bisa membandingkan bilangan",
+            "petunjuk": "Ini kemampuan dari dua metode yang pertama."
           },
           {
-            "id": "gunung",
+            "id": "h-urut",
             "nomor": 11,
-            "induk": "kecil-besar",
-            "teks": "2.460 < 3.676 < 3.726",
-            "petunjuk": "Ini urutan tinggi tiga gunung."
-          },
-          {
-            "id": "latihan",
-            "nomor": 12,
-            "induk": "kecil-besar",
-            "teks": "3.041 < 5.240 < 7.570 < 9.941",
-            "petunjuk": "Ini urutan empat bilangan pada latihan."
+            "induk": "hasil",
+            "teks": "Bisa menyusun bilangan urut",
+            "petunjuk": "Ini kemampuan dari metode yang terakhir."
           }
         ]
       },
       "tabelSusun": {
-        "judul": "Membandingkan enam pasang bilangan",
+        "judul": "Tiga metode membandingkan",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel membandingkan enam pasang bilangan. Isi tempat yang menentukan, tandanya, dan bilangan yang lebih besar.",
-        "pojok": "Pasangan",
+        "suara": "Tabel tiga metode. Tiap metode punya cara melakukannya, hasil yang diharapkan, dan contoh.",
+        "pojok": "Metode",
         "kolom": [
-          "Tempat penentu",
-          "Tanda",
-          "Yang lebih besar"
+          "Cara melakukannya",
+          "Hasil yang diharapkan",
+          "Contoh"
         ],
         "baris": [
           {
-            "label": "8.750 dan 7.500",
+            "label": "Nilai tempat",
             "sel": [
-              "Ribuan",
-              ">",
-              "8.750"
+              "Bandingkan dari ribuan",
+              "Tahu bilangan terbesar",
+              "8.750 lebih dari 7.500"
             ]
           },
           {
-            "label": "3.676 dan 3.726",
+            "label": "Tanda perbandingan",
             "sel": [
-              "Ratusan",
-              "<",
-              "3.726"
+              "Pilih tanda: > < =",
+              "Bisa memakai tanda > < =",
+              "4.352 < 4.365"
             ]
           },
           {
-            "label": "4.352 dan 4.365",
+            "label": "Mengurutkan bilangan",
             "sel": [
-              "Puluhan",
-              "<",
-              "4.365"
-            ]
-          },
-          {
-            "label": "4.352 dan 4.355",
-            "sel": [
-              "Satuan",
-              "<",
-              "4.355"
-            ]
-          },
-          {
-            "label": "4.352 dan 4.352",
-            "sel": [
-              "Semua tempat sama",
-              "=",
-              "Sama besar"
-            ]
-          },
-          {
-            "label": "1.987 dan 2.045",
-            "sel": [
-              "Ribuan",
-              "<",
-              "2.045"
+              "Urut dari yang terkecil",
+              "Bilangan tersusun urut",
+              "2.460 < 3.676 < 3.726"
             ]
           }
         ]
@@ -1365,129 +1304,125 @@
         "pusat": {
           "judul": "Komposisi dan Dekomposisi",
           "ikon": "🧩",
-          "suara": "Ini peta menyusun dan mengurai bilangan sampai sepuluh ribu. Ada komposisi, dekomposisi, dan angka nol."
+          "suara": "Ini peta masalah komposisi dan dekomposisi bilangan sampai sepuluh ribu. Ada metode yang dipakai, cara melakukannya, dan hasil yang diharapkan."
         },
-        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta konsepnya.",
+        "petunjuk": "Seret tab ke nomor yang cocok. Ingat urutan metode dan caranya.",
         "simpul": [
           {
-            "id": "komposisi",
+            "id": "metode",
             "nomor": 1,
             "induk": null,
-            "teks": "Komposisi",
-            "ikon": "🧱",
-            "petunjuk": "Ini nama cara menyusun. Coba nomor lain."
+            "teks": "Ada tiga metode",
+            "ikon": "🛠️",
+            "petunjuk": "Ini nama kelompok metode. Coba nomor lain."
           },
           {
-            "id": "susun",
+            "id": "m-komposisi",
             "nomor": 2,
-            "induk": "komposisi",
-            "teks": "Menyusun bilangan",
-            "petunjuk": "Arahnya dari bagian menuju bilangan."
+            "induk": "metode",
+            "teks": "Komposisi",
+            "petunjuk": "Metode yang menyusun bagian menjadi bilangan."
           },
           {
-            "id": "bagian-susun",
+            "id": "m-dekomposisi",
             "nomor": 3,
-            "induk": "komposisi",
-            "teks": "6.000 + 300 + 40 + 8",
-            "petunjuk": "Ini bagian-bagian yang disusun."
+            "induk": "metode",
+            "teks": "Dekomposisi",
+            "petunjuk": "Metode yang mengurai bilangan menjadi bagian."
           },
           {
-            "id": "hasil-susun",
+            "id": "m-uang",
             "nomor": 4,
-            "induk": "komposisi",
-            "teks": "Hasilnya 6.348"
+            "induk": "metode",
+            "teks": "Uraian uang",
+            "petunjuk": "Metode ini memakai pecahan uang."
           },
           {
-            "id": "dekomposisi",
+            "id": "cara",
             "nomor": 5,
             "induk": null,
-            "teks": "Dekomposisi",
-            "ikon": "🔍",
-            "petunjuk": "Ini nama cara mengurai. Coba nomor lain."
+            "teks": "Cara melakukannya",
+            "ikon": "📝",
+            "petunjuk": "Ini nama kelompok langkah. Coba nomor lain."
           },
           {
-            "id": "urai",
+            "id": "c-komposisi",
             "nomor": 6,
-            "induk": "dekomposisi",
-            "teks": "Mengurai bilangan",
-            "petunjuk": "Arahnya dari bilangan menuju bagian."
+            "induk": "cara",
+            "teks": "Susun dari nilai tempat",
+            "petunjuk": "Langkah ini sejajar dengan metode pertama."
           },
           {
-            "id": "hasil-urai",
+            "id": "c-dekomposisi",
             "nomor": 7,
-            "induk": "dekomposisi",
-            "teks": "6.849 → 6.000 + 800 + 40 + 9",
-            "petunjuk": "Ini bilangan yang diurai."
+            "induk": "cara",
+            "teks": "Urai jadi nilai tempat",
+            "petunjuk": "Langkah ini sejajar dengan metode kedua."
           },
           {
-            "id": "nol",
+            "id": "c-uang",
             "nomor": 8,
-            "induk": null,
-            "teks": "Angka nol",
-            "ikon": "0️⃣"
+            "induk": "cara",
+            "teks": "Urai dengan pecahan uang",
+            "petunjuk": "Langkah ini sejajar dengan metode ketiga."
           },
           {
-            "id": "nol-jaga",
+            "id": "hasil",
             "nomor": 9,
-            "induk": "nol",
-            "teks": "Nol menjaga tempat"
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini nama kelompok hasil. Coba nomor lain."
           },
           {
-            "id": "nol-tulis",
+            "id": "h-susun",
             "nomor": 10,
-            "induk": "nol",
-            "teks": "Ratusan nol ditulis 000"
+            "induk": "hasil",
+            "teks": "Bisa menyusun bilangan",
+            "petunjuk": "Hasil dari kegiatan menyusun."
           },
           {
-            "id": "nol-nilai",
+            "id": "h-urai",
             "nomor": 11,
-            "induk": "nol-tulis",
-            "teks": "Nilainya tetap nol",
-            "petunjuk": "Ini yang berlaku untuk 000."
+            "induk": "hasil",
+            "teks": "Bisa mengurai bilangan",
+            "petunjuk": "Hasil dari kegiatan mengurai."
           }
         ]
       },
       "tabelSusun": {
-        "judul": "Menyusun, mengurai, dan nol",
+        "judul": "Metode, cara, dan hasilnya",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel ini membandingkan komposisi, dekomposisi, bilangan yang memuat nol, dan nilai tiap angka.",
-        "pojok": "Konsep",
+        "suara": "Tabel ini merangkum metode, cara melakukannya, hasil yang diharapkan, dan contohnya.",
+        "pojok": "Metode",
         "kolom": [
-          "Artinya",
-          "Aturan",
+          "Cara melakukannya",
+          "Hasil yang diharapkan",
           "Contoh"
         ],
         "baris": [
           {
             "label": "Komposisi",
             "sel": [
-              "Menyusun bilangan",
-              "Bagian → bilangan",
-              "6.000+300+40+8 = 6.348"
+              "Susun dari nilai tempat",
+              "Bisa menyusun bilangan",
+              "6.000 + 300 + 40 + 8"
             ]
           },
           {
             "label": "Dekomposisi",
             "sel": [
-              "Mengurai bilangan",
-              "Bilangan → bagian",
-              "6.849 = 6.000+800+40+9"
+              "Urai jadi nilai tempat",
+              "Bisa mengurai bilangan",
+              "6.035 = 6.000 + 30 + 5"
             ]
           },
           {
-            "label": "Bilangan memuat nol",
+            "label": "Uraian uang",
             "sel": [
-              "Nol menjaga tempat",
-              "Ratusan nol ditulis 000",
-              "6.035 = 6.000+000+30+5"
-            ]
-          },
-          {
-            "label": "Nilai tiap angka",
-            "sel": [
-              "Nilai menurut tempatnya",
-              "6 di ribuan bernilai 6.000",
-              "8 di ratusan bernilai 800"
+              "Urai dengan pecahan uang",
+              "Bisa mengurai bilangan",
+              "Rp10.000 = 5 lembar 2.000"
             ]
           }
         ]
@@ -1716,130 +1651,125 @@
         "pusat": {
           "judul": "Penjumlahan sampai 1.000",
           "ikon": "➕",
-          "suara": "Ini peta penjumlahan bilangan sampai seribu. Ada cara menulis, langkah menjumlahkan, dan cara menyimpan."
+          "suara": "Ini peta penjumlahan bilangan sampai seribu. Ada metode yang dipakai, cara melakukannya, dan hasil yang diharapkan."
         },
         "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta konsepnya.",
         "simpul": [
           {
-            "id": "cara",
+            "id": "metode",
             "nomor": 1,
             "induk": null,
-            "teks": "Dua cara menulis",
-            "ikon": "✍️"
+            "teks": "Ada tiga metode",
+            "ikon": "🧰",
+            "petunjuk": "Ini nama kelompok metode. Coba nomor lain."
           },
           {
             "id": "panjang",
             "nomor": 2,
-            "induk": "cara",
+            "induk": "metode",
             "teks": "Susun panjang",
-            "petunjuk": "Nilai tempat ditulis terurai satu per satu."
+            "petunjuk": "Bilangan diurai satu per satu."
           },
           {
             "id": "pendek",
             "nomor": 3,
-            "induk": "cara",
+            "induk": "metode",
             "teks": "Susun pendek",
-            "petunjuk": "Bilangan ditumpuk dan dijumlah per kolom."
-          },
-          {
-            "id": "langkah",
-            "nomor": 4,
-            "induk": null,
-            "teks": "Langkah menjumlahkan",
-            "ikon": "👣"
-          },
-          {
-            "id": "satuan",
-            "nomor": 5,
-            "induk": "langkah",
-            "teks": "Mulai dari satuan",
-            "petunjuk": "Langkah pertama, dari kolom paling kanan."
-          },
-          {
-            "id": "puluhan",
-            "nomor": 6,
-            "induk": "langkah",
-            "teks": "Lalu puluhan",
-            "petunjuk": "Langkah kedua."
-          },
-          {
-            "id": "ratusan",
-            "nomor": 7,
-            "induk": "langkah",
-            "teks": "Terakhir ratusan",
-            "petunjuk": "Langkah ketiga, kolom paling kiri."
+            "petunjuk": "Bilangan ditumpuk menurut nilai tempat."
           },
           {
             "id": "simpan",
-            "nomor": 8,
-            "induk": null,
+            "nomor": 4,
+            "induk": "metode",
             "teks": "Menyimpan",
-            "ikon": "🎒"
+            "petunjuk": "Dipakai saat jumlah satu kolom besar."
           },
           {
-            "id": "kapan",
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "👣",
+            "petunjuk": "Ini nama kelompok langkah. Coba nomor lain."
+          },
+          {
+            "id": "c-panjang",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Uraikan, lalu kelompokkan",
+            "petunjuk": "Langkah untuk bilangan yang diurai."
+          },
+          {
+            "id": "c-pendek",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Tumpuk, jumlah tiap kolom",
+            "petunjuk": "Langkah untuk bilangan yang ditumpuk."
+          },
+          {
+            "id": "c-simpan",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tulis satuan, simpan puluhan",
+            "petunjuk": "Langkah saat jumlah kolom sepuluh atau lebih."
+          },
+          {
+            "id": "hasil",
             "nomor": 9,
-            "induk": "simpan",
-            "teks": "Kolom berjumlah 10 atau lebih",
-            "petunjuk": "Ini syarat kapan kita menyimpan."
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini nama kelompok hasil. Coba nomor lain."
           },
           {
-            "id": "cara-simpan",
+            "id": "h-paham",
             "nomor": 10,
-            "induk": "simpan",
-            "teks": "Tulis satuannya, simpan puluhannya",
-            "petunjuk": "Ini aturan umum, bukan contoh angka."
+            "induk": "hasil",
+            "teks": "Paham arti nilai tempat",
+            "petunjuk": "Hasil dari bilangan yang diurai."
           },
           {
-            "id": "contoh",
+            "id": "h-cepat",
             "nomor": 11,
-            "induk": "simpan",
-            "teks": "9 + 5 = 14: tulis 4, simpan 1",
-            "petunjuk": "Ini contoh angka dari buku."
+            "induk": "hasil",
+            "teks": "Hitung cepat dan tepat",
+            "petunjuk": "Hasil dari jumlah per kolom."
           }
         ]
       },
       "tabelSusun": {
-        "judul": "Empat contoh penjumlahan",
+        "judul": "Tiga metode penjumlahan",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel empat contoh penjumlahan. Cari hasilnya, jumlah satuannya, dan apakah perlu menyimpan.",
-        "pojok": "Soal",
+        "suara": "Tabel tiga metode penjumlahan. Lihat cara melakukannya, hasil yang diharapkan, dan contoh soalnya.",
+        "pojok": "Metode",
         "kolom": [
-          "Hasil",
-          "Jumlah satuan",
-          "Menyimpan?"
+          "Cara melakukannya",
+          "Hasil yang diharapkan",
+          "Contoh"
         ],
         "baris": [
           {
-            "label": "131 + 321",
+            "label": "Susun panjang",
             "sel": [
-              "452",
-              "1 + 1 = 2",
-              "Tidak"
+              "Uraikan, lalu kelompokkan",
+              "Paham arti nilai tempat",
+              "131 + 321"
             ]
           },
           {
-            "label": "124 + 411 + 363",
+            "label": "Susun pendek",
             "sel": [
-              "898",
-              "4 + 1 + 3 = 8",
-              "Tidak"
+              "Tumpuk, jumlah tiap kolom",
+              "Hitung cepat dan tepat",
+              "124 + 411 + 363"
             ]
           },
           {
-            "label": "277 + 146",
+            "label": "Menyimpan",
             "sel": [
-              "423",
-              "7 + 6 = 13",
-              "Ya"
-            ]
-          },
-          {
-            "label": "189 + 245",
-            "sel": [
-              "434",
-              "9 + 5 = 14",
-              "Ya"
+              "Tulis satuan, simpan 1",
+              "Tepat, juga saat menyimpan",
+              "189 + 245"
             ]
           }
         ]
@@ -2068,134 +1998,117 @@
         "pusat": {
           "judul": "Pengurangan sampai 1.000",
           "ikon": "➖",
-          "suara": "Ini peta pengurangan bilangan cacah sampai seribu. Ada cara susun panjang, cara susun pendek, kapan harus mengambil, dan kesalahan yang sering terjadi."
+          "suara": "Ini peta masalah pengurangan bilangan cacah sampai seribu. Dari pusat ada tiga cabang: metode yang dipakai, cara melakukannya, dan hasil yang diharapkan."
         },
-        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta konsepnya.",
+        "petunjuk": "Seret tab ke nomor yang cocok. Baca dulu cabangnya, baru anaknya.",
         "simpul": [
           {
-            "id": "panjang",
+            "id": "metode",
             "nomor": 1,
             "induk": null,
-            "teks": "Cara susun panjang",
-            "ikon": "📝"
+            "teks": "Ada tiga metode",
+            "ikon": "🧰",
+            "petunjuk": "Cabang ini berisi nama-nama cara yang kita pelajari."
           },
           {
-            "id": "tanpa",
+            "id": "m-panjang",
             "nomor": 2,
-            "induk": "panjang",
-            "teks": "Tanpa mengambil",
-            "petunjuk": "Contohnya 265 − 132 = 133. Semua angka atas lebih besar."
+            "induk": "metode",
+            "teks": "Susun panjang"
           },
           {
-            "id": "dua-kali",
+            "id": "m-pendek",
             "nomor": 3,
-            "induk": "panjang",
-            "teks": "Dua kali mengambil",
-            "petunjuk": "Contohnya 253 − 176 = 77."
+            "induk": "metode",
+            "teks": "Susun pendek"
           },
           {
-            "id": "pendek",
+            "id": "m-ambil",
             "nomor": 4,
-            "induk": null,
-            "teks": "Cara susun pendek",
-            "ikon": "📋"
+            "induk": "metode",
+            "teks": "Mengambil puluhan",
+            "petunjuk": "Dipakai kalau angka atas lebih kecil."
           },
           {
-            "id": "tabel",
+            "id": "cara",
             "nomor": 5,
-            "induk": "pendek",
-            "teks": "Tabel ratusan, puluhan, satuan"
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Isinya langkah tiap metode, urutannya sama dengan metode."
           },
           {
-            "id": "kanan",
+            "id": "c-panjang",
             "nomor": 6,
-            "induk": "pendek",
-            "teks": "Mulai dari satuan (kanan)"
+            "induk": "cara",
+            "teks": "Uraikan lalu kurangkan"
           },
           {
-            "id": "kapan",
+            "id": "c-pendek",
             "nomor": 7,
-            "induk": null,
-            "teks": "Kapan mengambil?",
-            "ikon": "🔄",
-            "petunjuk": "Ini induk dari tiga simpul tentang kapan dan dari mana mengambil."
+            "induk": "cara",
+            "teks": "Tabel, kurangkan per kolom"
           },
           {
-            "id": "lebih-kecil",
+            "id": "c-ambil",
             "nomor": 8,
-            "induk": "kapan",
-            "teks": "Angka atas lebih kecil"
+            "induk": "cara",
+            "teks": "Ambil 1 puluhan, jadi 10"
           },
           {
-            "id": "dari-puluhan",
+            "id": "hasil",
             "nomor": 9,
-            "induk": "kapan",
-            "teks": "Satuan ambil 1 puluhan",
-            "petunjuk": "Tempat yang paling kanan lebih dulu."
-          },
-          {
-            "id": "dari-ratusan",
-            "nomor": 10,
-            "induk": "kapan",
-            "teks": "Puluhan ambil 1 ratusan"
-          },
-          {
-            "id": "salah",
-            "nomor": 11,
             "induk": null,
-            "teks": "Kesalahan umum",
-            "ikon": "⚠️"
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯"
           },
           {
-            "id": "lupa",
-            "nomor": 12,
-            "induk": "salah",
-            "teks": "Lupa mengambil: 7 − 9 = 2",
-            "petunjuk": "Itu menghasilkan 27 − 19 = 12, padahal benarnya 8."
+            "id": "h-benar",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Hitungan benar dan teliti"
+          },
+          {
+            "id": "h-tahu",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu kapan harus mengambil"
           }
         ]
       },
       "tabelSusun": {
-        "judul": "Empat contoh pengurangan",
+        "judul": "Tiga metode pengurangan",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel empat contoh pengurangan. Ada soalnya, hitungan di tempat satuan, dan hasilnya.",
-        "pojok": "Contoh",
+        "suara": "Tabel tiga metode pengurangan. Ada cara melakukannya, hasil yang diharapkan, dan contoh soalnya.",
+        "pojok": "Metode",
         "kolom": [
-          "Soal",
-          "Hitungan satuan",
-          "Hasil"
+          "Cara melakukannya",
+          "Hasil yang diharapkan",
+          "Contoh"
         ],
         "baris": [
           {
-            "label": "Buku perpustakaan",
+            "label": "Susun panjang",
             "sel": [
-              "265 − 132",
-              "5 − 2 = 3",
-              "133"
-            ]
-          },
-          {
-            "label": "Dua kali mengambil",
-            "sel": [
-              "253 − 176",
-              "13 − 6 = 7",
-              "77"
+              "Uraikan lalu kurangkan",
+              "Hitungan benar dan teliti",
+              "265 − 132"
             ]
           },
           {
             "label": "Susun pendek",
             "sel": [
-              "241 − 175",
-              "11 − 5 = 6",
-              "66"
+              "Tabel, kurangkan per kolom",
+              "Hitungan benar",
+              "241 − 175"
             ]
           },
           {
-            "label": "Latihan nomor 4",
+            "label": "Mengambil puluhan",
             "sel": [
-              "912 − 67",
-              "12 − 7 = 5",
-              "845"
+              "Ambil 1 puluhan, jadi 10",
+              "Tahu kapan harus mengambil",
+              "253 − 176"
             ]
           }
         ]
@@ -2424,140 +2337,119 @@
         "pusat": {
           "judul": "Perkalian sampai 100",
           "ikon": "✖️",
-          "suara": "Ini peta perkalian sampai seratus. Ada cara panjang, cara bersusun tanpa menyimpan, dan cara bersusun dengan menyimpan."
+          "suara": "Ini peta masalah perkalian bilangan cacah sampai seratus. Dari pusat ada tiga cabang: metode yang dipakai, cara melakukannya, dan hasil yang diharapkan."
         },
-        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta konsepnya.",
+        "petunjuk": "Seret tab ke nomor yang cocok. Baca dulu cabangnya, baru anaknya.",
         "simpul": [
           {
-            "id": "panjang",
+            "id": "metode",
             "nomor": 1,
             "induk": null,
-            "teks": "Cara panjang",
-            "ikon": "📏",
-            "petunjuk": "Ini cara yang bilangannya diurai lebih dulu."
+            "teks": "Ada tiga metode",
+            "ikon": "🧰",
+            "petunjuk": "Cabang ini berisi nama-nama cara yang kita pelajari."
           },
           {
-            "id": "uraikan",
+            "id": "m-panjang",
             "nomor": 2,
-            "induk": "panjang",
-            "teks": "Uraikan 12 jadi 10 + 2",
-            "petunjuk": "Langkah pertama cara panjang."
+            "induk": "metode",
+            "teks": "Cara panjang"
           },
           {
-            "id": "kalikan",
+            "id": "m-tanpa",
             "nomor": 3,
-            "induk": "panjang",
-            "teks": "10 × 4 dan 2 × 4"
+            "induk": "metode",
+            "teks": "Susun tanpa menyimpan",
+            "petunjuk": "Hasil kali tiap angka masih satu angka."
           },
           {
-            "id": "jumlah",
+            "id": "m-simpan",
             "nomor": 4,
-            "induk": "panjang",
-            "teks": "40 + 8 = 48"
+            "induk": "metode",
+            "teks": "Susun dengan menyimpan",
+            "petunjuk": "Ada angka yang dibawa ke puluhan."
           },
           {
-            "id": "tanpa",
+            "id": "cara",
             "nomor": 5,
             "induk": null,
-            "teks": "Bersusun tanpa menyimpan",
-            "ikon": "📋"
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Isinya langkah tiap metode, urutannya sama dengan metode."
           },
           {
-            "id": "bebas",
+            "id": "c-panjang",
             "nomor": 6,
-            "induk": "tanpa",
-            "teks": "Urutan angka bebas"
+            "induk": "cara",
+            "teks": "Uraikan, kali, jumlahkan"
           },
           {
-            "id": "contoh-tanpa",
+            "id": "c-tanpa",
             "nomor": 7,
-            "induk": "tanpa",
-            "teks": "1 × 4 = 4 dan 2 × 4 = 8",
-            "petunjuk": "Hasil tiap kali masih satu angka."
+            "induk": "cara",
+            "teks": "Kali satuan, lalu puluhan"
           },
           {
-            "id": "simpan",
+            "id": "c-simpan",
             "nomor": 8,
-            "induk": null,
-            "teks": "Bersusun menyimpan",
-            "ikon": "🧮"
+            "induk": "cara",
+            "teks": "Mulai satuan, lalu simpan",
+            "petunjuk": "Dikerjakan dari angka paling kanan."
           },
           {
-            "id": "satuan",
+            "id": "hasil",
             "nomor": 9,
-            "induk": "simpan",
-            "teks": "Mulai dari satuan"
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯"
           },
           {
-            "id": "tulis",
+            "id": "h-paham",
             "nomor": 10,
-            "induk": "simpan",
-            "teks": "Tulis satuan, simpan puluhan",
-            "petunjuk": "Contohnya 20: tulis 0, simpan 2."
+            "induk": "hasil",
+            "teks": "Paham kali = tambah berulang"
           },
           {
-            "id": "tambah",
+            "id": "h-benar",
             "nomor": 11,
-            "induk": "simpan",
-            "teks": "Tambah angka yang disimpan"
-          },
-          {
-            "id": "contoh-simpan",
-            "nomor": 12,
-            "induk": "simpan",
-            "teks": "14 × 5 = 70"
+            "induk": "hasil",
+            "teks": "Hitungan benar dan teliti"
           }
         ]
       },
       "tabelSusun": {
-        "judul": "Langkah bersusun pendek",
+        "judul": "Tiga metode perkalian",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel langkah perkalian bersusun pendek. Satuan dihitung lebih dulu, lalu puluhan, sampai ketemu hasilnya.",
-        "pojok": "Soal",
+        "suara": "Tabel tiga metode perkalian. Ada cara melakukannya, hasil yang diharapkan, dan contoh soalnya.",
+        "pojok": "Metode",
         "kolom": [
-          "Satuan",
-          "Puluhan",
-          "Hasil"
+          "Cara melakukannya",
+          "Hasil yang diharapkan",
+          "Contoh"
         ],
         "baris": [
           {
-            "label": "14 × 5",
+            "label": "Cara panjang",
             "sel": [
-              "4 × 5 = 20, simpan 2",
-              "1 × 5 + 2 = 7",
-              "70"
+              "Uraikan, kali, jumlahkan",
+              "Paham tambah berulang",
+              "14 × 5"
             ]
           },
           {
-            "label": "12 × 8",
+            "label": "Susun tanpa menyimpan",
             "sel": [
-              "2 × 8 = 16, simpan 1",
-              "1 × 8 + 1 = 9",
-              "96"
+              "Kali satuan, lalu puluhan",
+              "Hitungan benar",
+              "12 × 4"
             ]
           },
           {
-            "label": "37 × 2",
+            "label": "Susun dengan menyimpan",
             "sel": [
-              "7 × 2 = 14, simpan 1",
-              "3 × 2 + 1 = 7",
-              "74"
-            ]
-          },
-          {
-            "label": "48 × 7",
-            "sel": [
-              "8 × 7 = 56, simpan 5",
-              "4 × 7 + 5 = 33",
-              "336"
-            ]
-          },
-          {
-            "label": "32 × 3",
-            "sel": [
-              "2 × 3 = 6",
-              "3 × 3 = 9",
-              "96"
+              "Mulai satuan, lalu simpan",
+              "Hitungan benar dan teliti",
+              "12 × 8"
             ]
           }
         ]
@@ -2786,149 +2678,125 @@
         "pusat": {
           "judul": "Pembagian sampai 100",
           "ikon": "➗",
-          "suara": "Ini peta pembagian bersusun. Ada nama tiap bagian, langkah mengerjakan, dan dua jenis soal cerita."
+          "suara": "Ini peta tentang masalah pembagian sampai seratus. Ada metode yang dipakai, cara melakukannya, dan hasil yang diharapkan."
         },
         "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta konsepnya.",
         "simpul": [
           {
-            "id": "bagian",
+            "id": "metode",
             "nomor": 1,
             "induk": null,
-            "teks": "Nama bagian",
-            "ikon": "🏷️",
-            "petunjuk": "Ini nama tiga bagian yang ditulis dalam susunan."
+            "teks": "Ada tiga metode",
+            "ikon": "🧰",
+            "petunjuk": "Nama-nama cara yang diajarkan."
           },
           {
-            "id": "dibagi",
+            "id": "m-wadah",
             "nomor": 2,
-            "induk": "bagian",
-            "teks": "Yang dibagi = 48",
-            "petunjuk": "Bilangan besar yang akan dibagikan."
+            "induk": "metode",
+            "teks": "Bagi ke wadah",
+            "petunjuk": "Memakai permen dan wadah."
           },
           {
-            "id": "pembagi",
+            "id": "m-tabel",
             "nomor": 3,
-            "induk": "bagian",
-            "teks": "Pembagi = 4",
-            "petunjuk": "Jumlah anak yang menerima."
+            "induk": "metode",
+            "teks": "Tabel pembagian",
+            "petunjuk": "Memakai kolom dan baris."
+          },
+          {
+            "id": "m-susun",
+            "nomor": 4,
+            "induk": "metode",
+            "teks": "Pembagian bersusun",
+            "petunjuk": "Memakai garis bagi."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🛠️",
+            "petunjuk": "Langkah tiap metode, sejajar dengan metodenya."
+          },
+          {
+            "id": "c-wadah",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Bagi satu per satu",
+            "petunjuk": "Langkah untuk permen dan wadah."
+          },
+          {
+            "id": "c-tabel",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Isi wadah dan sisanya",
+            "petunjuk": "Langkah untuk kolom dan baris."
+          },
+          {
+            "id": "c-susun",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Bagi dari puluhan",
+            "petunjuk": "Langkah untuk garis bagi."
           },
           {
             "id": "hasil",
-            "nomor": 4,
-            "induk": "bagian",
-            "teks": "Hasil bagi di atas garis"
-          },
-          {
-            "id": "langkah",
-            "nomor": 5,
-            "induk": null,
-            "teks": "Langkah bersusun",
-            "ikon": "🪜"
-          },
-          {
-            "id": "puluhan",
-            "nomor": 6,
-            "induk": "langkah",
-            "teks": "Bagi dari puluhan",
-            "petunjuk": "Ini langkah yang pertama."
-          },
-          {
-            "id": "kali",
-            "nomor": 7,
-            "induk": "langkah",
-            "teks": "Kali, lalu kurangkan"
-          },
-          {
-            "id": "turun",
-            "nomor": 8,
-            "induk": "langkah",
-            "teks": "Turunkan satuan"
-          },
-          {
-            "id": "cek",
             "nomor": 9,
-            "induk": "langkah",
-            "teks": "Cek: hasil × pembagi",
-            "petunjuk": "Ini cara memeriksa jawaban di akhir."
-          },
-          {
-            "id": "cerita",
-            "nomor": 10,
             "induk": null,
-            "teks": "Soal cerita",
-            "ikon": "📖"
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Kemampuan yang diperoleh."
           },
           {
-            "id": "rata",
+            "id": "h-wadah",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu isi tiap wadah",
+            "petunjuk": "Hasil dari membagi permen."
+          },
+          {
+            "id": "h-bagi",
             "nomor": 11,
-            "induk": "cerita",
-            "teks": "Hasil = jatah tiap anak",
-            "petunjuk": "Soal permen, alpukat, dan gantungan kunci."
-          },
-          {
-            "id": "ukur",
-            "nomor": 12,
-            "induk": "cerita",
-            "teks": "Hasil = banyak kotak",
-            "petunjuk": "Soal kue dan telur."
+            "induk": "hasil",
+            "teks": "Tahu hasil bagi dan sisa",
+            "petunjuk": "Hasil dari pembagian bersusun."
           }
         ]
       },
       "tabelSusun": {
-        "judul": "Soal cerita pembagian",
+        "judul": "Tiga metode pembagian",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel lima soal cerita pembagian. Isi bilangan yang dibagi, pembagi, hasil bagi, dan arti hasil bagi.",
-        "pojok": "Soal",
+        "suara": "Tabel ini merangkum tiap metode pembagian, cara melakukannya, hasilnya, dan satu contoh.",
+        "pojok": "Metode",
         "kolom": [
-          "Dibagi",
-          "Pembagi",
-          "Hasil bagi",
-          "Arti hasil bagi"
+          "Cara melakukannya",
+          "Hasil yang diharapkan",
+          "Contoh"
         ],
         "baris": [
           {
-            "label": "Permen Pak Wicak",
+            "label": "Bagi ke wadah",
             "sel": [
-              "48",
-              "4",
-              "12",
-              "Permen tiap anak"
+              "Bagi satu per satu",
+              "Tahu isi tiap wadah",
+              "48 permen, tiga wadah"
             ]
           },
           {
-            "label": "Alpukat Pak Bejo",
+            "label": "Tabel pembagian",
             "sel": [
-              "64",
-              "4",
-              "16",
-              "Alpukat tiap keluarga"
+              "Isi wadah dan sisanya",
+              "Tahu pembagi yang habis",
+              "48 : 8 = 6, sisa 0"
             ]
           },
           {
-            "label": "Kue Ibu",
+            "label": "Pembagian bersusun",
             "sel": [
-              "81",
-              "3",
-              "27",
-              "Banyak kotak kue"
-            ]
-          },
-          {
-            "label": "Telur peternak",
-            "sel": [
-              "96",
-              "8",
-              "12",
-              "Banyak kotak telur"
-            ]
-          },
-          {
-            "label": "Gantungan Putu",
-            "sel": [
-              "55",
-              "5",
-              "11",
-              "Gantungan tiap anak"
+              "Bagi dari puluhan",
+              "Tahu hasil bagi dan sisa",
+              "48 : 4 = 12"
             ]
           }
         ]
@@ -3172,147 +3040,127 @@
       },
       "petaSusun": {
         "pusat": {
-          "judul": "Faktor dan kelipatan",
+          "judul": "Faktor dan Kelipatan",
           "ikon": "🧮",
-          "suara": "Ini peta faktor dan kelipatan. Ada faktor, kelipatan, dan aturan penting yang perlu diingat."
+          "suara": "Ini peta masalah faktor dan kelipatan. Ada metode yang dipakai, cara melakukannya, dan hasil yang diharapkan."
         },
-        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta konsepnya.",
+        "petunjuk": "Seret tab ke nomor yang cocok. Ingat urutan metode dan caranya.",
         "simpul": [
           {
-            "id": "faktor",
+            "id": "metode",
             "nomor": 1,
             "induk": null,
-            "teks": "Faktor",
-            "ikon": "➗",
-            "petunjuk": "Ini cabang tentang pembagi. Coba nomor lain."
+            "teks": "Ada tiga metode",
+            "ikon": "🛠️",
+            "petunjuk": "Ini nama kelompok metode. Coba nomor lain."
           },
           {
-            "id": "habis",
+            "id": "m-tabel",
             "nomor": 2,
-            "induk": "faktor",
-            "teks": "Habis membagi tanpa sisa"
+            "induk": "metode",
+            "teks": "Tabel pembagian",
+            "petunjuk": "Metode untuk mencari faktor."
           },
           {
-            "id": "contoh-bagi",
+            "id": "m-tambah",
             "nomor": 3,
-            "induk": "habis",
-            "teks": "Contoh: 12 : 3 = 4",
-            "petunjuk": "Contoh dari arti faktor, bukan daftar faktornya."
+            "induk": "metode",
+            "teks": "Penjumlahan berulang",
+            "petunjuk": "Metode kelipatan yang memakai tanda tambah."
           },
           {
-            "id": "f12",
+            "id": "m-kali",
             "nomor": 4,
-            "induk": "faktor",
-            "teks": "Faktor 12: 1, 2, 3, 4, 6, 12",
-            "petunjuk": "Daftar lengkap semua pembagi 12."
+            "induk": "metode",
+            "teks": "Perkalian bilangan asli",
+            "petunjuk": "Metode kelipatan yang memakai tanda kali."
           },
           {
-            "id": "bukan",
+            "id": "cara",
             "nomor": 5,
-            "induk": "faktor",
-            "teks": "5 bukan faktor 12",
-            "petunjuk": "Bilangan yang tidak habis membagi."
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📝",
+            "petunjuk": "Ini nama kelompok langkah. Coba nomor lain."
           },
           {
-            "id": "kelipatan",
+            "id": "c-tabel",
             "nomor": 6,
-            "induk": null,
-            "teks": "Kelipatan",
-            "ikon": "✖️",
-            "petunjuk": "Ini cabang tentang hasil kali. Coba nomor lain."
+            "induk": "cara",
+            "teks": "Bagi sampai sisa nol",
+            "petunjuk": "Langkah ini sejajar dengan metode pertama."
           },
           {
-            "id": "hasil-kali",
+            "id": "c-tambah",
             "nomor": 7,
-            "induk": "kelipatan",
-            "teks": "Hasil kali dengan bilangan asli"
+            "induk": "cara",
+            "teks": "Tambah bilangan yang sama",
+            "petunjuk": "Langkah ini sejajar dengan metode kedua."
           },
           {
-            "id": "contoh-kali",
+            "id": "c-kali",
             "nomor": 8,
-            "induk": "hasil-kali",
-            "teks": "Contoh: 2 × 4 = 8",
-            "petunjuk": "Contoh dari arti kelipatan, bukan daftar kelipatannya."
+            "induk": "cara",
+            "teks": "Kali dengan 1, 2, 3, ...",
+            "petunjuk": "Langkah ini sejajar dengan metode ketiga."
           },
           {
-            "id": "k3",
+            "id": "hasil",
             "nomor": 9,
-            "induk": "kelipatan",
-            "teks": "Kelipatan 3: 3, 6, 9, 12, ...",
-            "petunjuk": "Deretan bilangan yang terus bertambah."
-          },
-          {
-            "id": "aturan",
-            "nomor": 10,
             "induk": null,
-            "teks": "Aturan penting",
-            "ikon": "⭐"
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini nama kelompok hasil. Coba nomor lain."
           },
           {
-            "id": "satu-diri",
+            "id": "h-faktor",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menentukan faktor",
+            "petunjuk": "Hasil dari tabel pembagian."
+          },
+          {
+            "id": "h-kelipatan",
             "nomor": 11,
-            "induk": "aturan",
-            "teks": "1 dan dirinya juga faktor",
-            "petunjuk": "Aturan tentang faktor."
-          },
-          {
-            "id": "tak-hingga",
-            "nomor": 12,
-            "induk": "aturan",
-            "teks": "Kelipatan tidak berhingga",
-            "petunjuk": "Aturan tentang kelipatan."
+            "induk": "hasil",
+            "teks": "Bisa menentukan kelipatan",
+            "petunjuk": "Hasil dari tambah berulang dan kali."
           }
         ]
       },
       "tabelSusun": {
-        "judul": "Faktor beberapa bilangan",
+        "judul": "Metode, cara, dan hasilnya",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel faktor dari beberapa bilangan. Lihat semua faktor, banyaknya, dan pasangan faktor di tengah.",
-        "pojok": "Bilangan",
+        "suara": "Tabel ini merangkum metode, cara melakukannya, hasil yang diharapkan, dan contohnya.",
+        "pojok": "Metode",
         "kolom": [
-          "Semua faktor",
-          "Banyak faktor",
-          "Pasangan tengah"
+          "Cara melakukannya",
+          "Hasil yang diharapkan",
+          "Contoh"
         ],
         "baris": [
           {
-            "label": "12",
+            "label": "Tabel pembagian",
             "sel": [
-              "1, 2, 3, 4, 6, 12",
-              "6 faktor",
-              "3 × 4"
+              "Bagi sampai sisa nol",
+              "Bisa menentukan faktor",
+              "12 : 3 = 4, sisa 0"
             ]
           },
           {
-            "label": "13",
+            "label": "Penjumlahan berulang",
             "sel": [
-              "1, 13",
-              "2 faktor",
-              "1 × 13"
+              "Tambah bilangan yang sama",
+              "Bisa menentukan kelipatan",
+              "3 + 3 + 3 = 9"
             ]
           },
           {
-            "label": "25",
+            "label": "Perkalian bilangan asli",
             "sel": [
-              "1, 5, 25",
-              "3 faktor",
-              "5 × 5"
-            ]
-          },
-          {
-            "label": "27",
-            "sel": [
-              "1, 3, 9, 27",
-              "4 faktor",
-              "3 × 9"
-            ]
-          },
-          {
-            "label": "52",
-            "sel": [
-              "1, 2, 4, 13, 26, 52",
-              "6 faktor",
-              "4 × 13"
+              "Kali dengan 1, 2, 3, ...",
+              "Bisa menentukan kelipatan",
+              "3 × 4 = 12"
             ]
           }
         ]

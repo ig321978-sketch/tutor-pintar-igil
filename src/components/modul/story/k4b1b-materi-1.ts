@@ -7,17 +7,17 @@ const idKartu = (id: string, n = 1): string[] => [`${id}-k`, ...Array.from({ len
 const kardusPolos = (id: string, x: number, y: number, w: number, h: number, i: number) => kardus(id, x, y, w, h, i).map((o) => (o.id.endsWith("-t") ? { ...o, warna: W.hitam } : o));
 
 /* ------------------------------ 1. Pembuka Sub-Bab B dan Ayo Mengamati: struk belanja (Buku Siswa hlm. 12; Panduan Guru hlm. 35) ------------------------------ */
-const SUARA_S1 = "Subbab B: Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai sepuluh ribu. Buku Siswa membukanya dengan Ayo Mengamati: perhatikan gambar dengan cermat.";
+const SUARA_S1 = "Subbab B: Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai sepuluh ribu. Kita mulai dengan Ayo Mengamati: perhatikan gambar dengan cermat.";
 const SUARA_S2 = "Gambarnya sehelai struk belanja. Tokonya Mini Mart di Jalan Ciliwung nomor tiga puluh sembilan, tanggal sembilan bulan sembilan tahun dua ribu dua puluh dua.";
 const SUARA_S3 = "Barang yang dibeli makanan ringan satu buah, harganya dua ribu seratus lima puluh. Totalnya juga dua ribu seratus lima puluh rupiah.";
-const SUARA_S4 = "Buku menjelaskan: bilangan juga memiliki nilai tempat. Beberapa angka yang bergabung dalam bilangan memiliki nilai tempat masing-masing. Sebelum memahami lebih jauh, kita lakukan aktivitas berikut.";
+const SUARA_S4 = "Ingat ya: bilangan juga memiliki nilai tempat. Beberapa angka yang bergabung dalam bilangan memiliki nilai tempat masing-masing. Sebelum memahami lebih jauh, kita lakukan aktivitas berikut.";
 
 const ST = struk("st", 20, 34);
 
 export const ADEGAN_STRUK: AdeganStory = {
   id: "struk-belanja",
   judul: "Subbab B dan Ayo Mengamati: struk belanja",
-  sumber: "Buku Siswa hlm. 12; Panduan Guru hlm. 35",
+  sumber: "Materi: nilai tempat dari struk",
   latar: "#F0F9FF",
   kutipan: [
     "B. Menentukan dan Menggunakan Nilai Tempat Bilangan Cacah sampai 10.000",
@@ -131,16 +131,16 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
 
 /* ------------------------------ 3. Aktivitas 2: alat, kelompok, empat kardus (Buku Siswa hlm. 13; Panduan Guru hlm. 36) ------------------------------ */
 const SUARA_A1 = "Aktivitas dua: Nilai Tempat. Alat dan bahan: empat kardus bekas atau wadah berbentuk kotak, kertas karton, gunting, dan spidol warna.";
-const SUARA_A2 = "Langkah satu: buat kelompok kerja tiga sampai lima orang. Guru membentuk kelompok heterogen, yaitu campuran murid dengan kemampuan berbeda, supaya mereka bergotong royong.";
+const SUARA_A2 = "Langkah satu: buat kelompok kerja tiga sampai lima orang. Kita bentuk kelompok heterogen, yaitu campuran teman dengan kemampuan berbeda, supaya kalian bergotong royong.";
 const SUARA_A3 = "Langkah dua: beri label pada empat kardus, yaitu ribuan, ratusan, puluhan, dan satuan. Tulis dengan spidol berwarna biru, oranye, hijau, dan merah.";
-const SUARA_A4 = "Langkah tiga: letakkan kardus berurutan dari kiri ke kanan, yaitu ribuan, ratusan, puluhan, lalu satuan. Guru boleh mengganti kardus dengan tempat lain yang mudah diperoleh.";
+const SUARA_A4 = "Langkah tiga: letakkan kardus berurutan dari kiri ke kanan, yaitu ribuan, ratusan, puluhan, lalu satuan. Kita boleh mengganti kardus dengan tempat lain yang mudah diperoleh.";
 
 const KARDUS_X = [10, 83, 156, 229];
 
 export const ADEGAN_AKTIVITAS_ALAT: AdeganStory = {
   id: "aktivitas-alat",
   judul: "Aktivitas 2: alat, kelompok, dan empat kardus",
-  sumber: "Buku Siswa hlm. 13; Panduan Guru hlm. 36",
+  sumber: "Materi: alat dan kardus nilai tempat",
   latar: "#F0FDF4",
   kutipan: [
     "Aktivitas 2. Nilai Tempat",
@@ -195,7 +195,7 @@ export const ADEGAN_AKTIVITAS_ALAT: AdeganStory = {
 };
 
 /* ------------------------------ 4. Aktivitas 2: kartu bilangan (Buku Siswa hlm. 13; Panduan Guru hlm. 36–37) ------------------------------ */
-const SUARA_K1 = "Langkah empat: siapkan kertas karton, lalu buat kotak berukuran sepuluh sentimeter kali sepuluh sentimeter sebanyak empat puluh kotak. Guru boleh memberi contoh terlebih dahulu.";
+const SUARA_K1 = "Langkah empat: siapkan kertas karton, lalu buat kotak berukuran sepuluh sentimeter kali sepuluh sentimeter sebanyak empat puluh kotak. Mari lihat contoh terlebih dahulu.";
 const SUARA_K2 = "Langkah lima: tulis angka nol sampai sembilan pada tiap kotak. Satu paket berisi sepuluh kartu, ada empat paket, jadi empat kali sepuluh sama dengan empat puluh kartu.";
 const SUARA_K3 = "Langkah enam dan tujuh: gunting menjadi kartu bilangan, sehingga ada empat paket. Paket satu bertulisan biru, paket dua oranye, paket tiga hijau, dan paket empat merah.";
 const SUARA_K4 = "Langkah delapan: masukkan tiap paket ke kardus yang sesuai warna tulisannya, dan pastikan semua kardus terisi kartu bilangan. Biru ke ribuan, oranye ke ratusan, hijau ke puluhan, merah ke satuan.";
@@ -206,7 +206,7 @@ const GRID = kisiKartu("kt", 10, 56, 10, 4, 22, 22);
 export const ADEGAN_AKTIVITAS_KARTU: AdeganStory = {
   id: "aktivitas-kartu",
   judul: "Aktivitas 2: empat paket kartu bilangan",
-  sumber: "Buku Siswa hlm. 13; Panduan Guru hlm. 36–37",
+  sumber: "Materi: kartu bilangan",
   latar: "#FFF7ED",
   kutipan: [
     "Siapkan kertas karton, buatlah kotak-kotak berukuran 10 cm x 10 cm sebanyak 40 kotak.",
@@ -228,7 +228,7 @@ export const ADEGAN_AKTIVITAS_KARTU: AdeganStory = {
       tambah("sepuluh", ...kartu("uk", 14, 28, 272, 20, W.krem, ["setiap kotak 10 cm × 10 cm"], 8.4)),
       tambah("empat@2", ...GRID),
       tambah("empat@2", teks("jk", 150, 160, "40 kotak", 14, W.merah)),
-      tambah("contoh", teks("cx", 150, 184, "guru boleh memberi contoh dahulu", 8.2, W.coklat)),
+      tambah("contoh", teks("cx", 150, 184, "lihat contoh dahulu", 8.2, W.coklat)),
     ),
     k(
       SUARA_K2,

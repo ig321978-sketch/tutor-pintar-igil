@@ -39,7 +39,7 @@ export const ADEGAN_LUAR_URAIAN: AdeganStory = {
       bersih(0),
       tambah(0, judul("Contoh kecil")),
       tambah(0, kepala(2)),
-      tambah("Contoh", ...kartu("cv", 80, 60, 140, 24, W.emas, ["contoh video"], 9)),
+      tambah("Contoh", ...kartu("cv", 80, 60, 140, 24, W.emas, ["contoh kecil"], 9)),
       tambah("ditulis", teks("ek", 150, 116, "30 + 2 = 32", 24, W.merah)),
       tambah("puluhan,", teks("ep", 150, 156, "angka 3 di puluhan bernilai 30", 9.6, W.hijau)),
     ),
@@ -59,13 +59,13 @@ export const ADEGAN_LUAR_URAIAN: AdeganStory = {
 /* ------------------------------ 2. Expanded Form: penerapan ------------------------------ */
 const SUARA_UT1 = "Uraikan dua ribu seratus lima puluh: dua ribu ditambah seratus ditambah lima puluh. Nolnya tidak perlu ditulis, dan jumlahnya kembali dua ribu seratus lima puluh.";
 const SUARA_UT2 = "Uraikan tujuh ribu tiga ratus lima puluh: tujuh ribu ditambah tiga ratus ditambah lima puluh. Uraikan sembilan ribu lima ratus: sembilan ribu ditambah lima ratus.";
-const SUARA_UT3 = "Uraikan tujuh ribu delapan ratus dua belas, jawaban nomor satu a: tujuh ribu ditambah delapan ratus ditambah sepuluh ditambah dua.";
-const SUARA_UT4 = "Uraikan enam ribu seratus sembilan puluh dua dari kunci nomor empat: enam ribu ditambah seratus ditambah sembilan puluh ditambah dua.";
+const SUARA_UT3 = "Uraikan tujuh ribu delapan ratus dua belas, bilangan latihan tadi: tujuh ribu ditambah delapan ratus ditambah sepuluh ditambah dua.";
+const SUARA_UT4 = "Uraikan enam ribu seratus sembilan puluh dua dari tabel tadi: enam ribu ditambah seratus ditambah sembilan puluh ditambah dua.";
 
 export const ADEGAN_LUAR_URAIAN_TERAPAN: AdeganStory = {
   id: "luar-uraian-terapan",
-  judul: "Expanded Form pada angka-angka buku",
-  sumber: "Metode luar: Expanded Form (angka buku)",
+  judul: "Expanded Form pada angka-angka kita",
+  sumber: "Metode luar: Expanded Form (penerapan)",
   latar: "#FEFCE8",
   ketukan: [
     k(
@@ -85,22 +85,22 @@ export const ADEGAN_LUAR_URAIAN_TERAPAN: AdeganStory = {
       SUARA_UT3,
       hapus(0, "q2", "q3"),
       tambah("Uraikan", teks("q4", 150, 100, "7.000 + 800 + 10 + 2 = 7.812", 12, W.hijau)),
-      tambah("jawaban", ...kartu("jb", 40, 130, 220, 30, W.emas, ["jawaban nomor 1a"], 9)),
+      tambah("latihan", ...kartu("jb", 40, 130, 220, 30, W.emas, ["bilangan dari latihan tadi"], 9)),
     ),
     k(
       SUARA_UT4,
       hapus(0, "q4", "jb-k", "jb-t0"),
       tambah("Uraikan", teks("q5", 150, 100, "6.000 + 100 + 90 + 2 = 6.192", 12, W.hijau)),
-      tambah("kunci", ...kartu("kn", 40, 130, 220, 30, W.emas, ["kunci nomor 4"], 9)),
+      tambah("tabel", ...kartu("kn", 40, 130, 220, 30, W.emas, ["bilangan dari tabel tadi"], 9)),
     ),
   ],
 };
 
 /* ------------------------------ 3. Ringkasan ------------------------------ */
-const SUARA_R1 = "Ringkasan empat metode, dengan angka buku yang dipakai. Nilai Tempat memakai dua ribu seratus lima puluh serta empat bilangan nomor dua. Tukar Sepuluh memakai dua ribu seratus lima puluh dan sembilan ribu lima ratus.";
+const SUARA_R1 = "Ringkasan empat metode, dengan angka yang dipakai. Nilai Tempat memakai dua ribu seratus lima puluh serta empat bilangan latihan tadi. Tukar Sepuluh memakai dua ribu seratus lima puluh dan sembilan ribu lima ratus.";
 const SUARA_R2 = "Bentuk Uraian memakai tujuh ribu tiga ratus lima puluh, sembilan ribu lima ratus, tujuh ribu delapan ratus dua belas, dan enam ribu seratus sembilan puluh dua.";
-const SUARA_R3 = "Cakram Nilai Tempat memakai dua ribu seratus lima puluh, tujuh ribu tiga ratus lima puluh, sembilan ribu lima ratus, serta dua bilangan nomor dua.";
-const SUARA_R4 = "Keempat metode menjawab pertanyaan yang sama, dengan jawaban yang sama: nilai sebuah angka ditentukan oleh tempatnya. Buku sendiri memakai kardus, kartu, dan tabel nilai tempat.";
+const SUARA_R3 = "Cakram Nilai Tempat memakai dua ribu seratus lima puluh, tujuh ribu tiga ratus lima puluh, sembilan ribu lima ratus, serta dua bilangan latihan tadi.";
+const SUARA_R4 = "Keempat metode menjawab pertanyaan yang sama, dengan jawaban yang sama: nilai sebuah angka ditentukan oleh tempatnya. Pelajaran kita sendiri memakai kardus, kartu, dan tabel nilai tempat.";
 
 /** Isi ringkasan: nama metode dan angka buku yang dipakainya. */
 export const ANGKA_METODE: readonly (readonly [string, string])[] = [
@@ -113,7 +113,7 @@ const kartuRingkas = (i: number) => kartu(`rt${i + 1}`, 14, 30 + i * 42, 272, 36
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode dan angka buku",
+  judul: "Ringkasan empat metode dan angka yang dipakai",
   sumber: "Ringkasan empat metode luar",
   latar: "#F5F3FF",
   ketukan: [
@@ -141,7 +141,7 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("metode", emo("e2", 112, 126, "🧱", 26), teks("e2t", 112, 148, "Tukar Sepuluh", 7.8, W.biru)),
       tambah("metode", emo("e3", 188, 126, "➕", 26), teks("e3t", 188, 148, "Bentuk Uraian", 7.8, W.biru)),
       tambah("metode", emo("e4", 258, 126, "🔵", 26), teks("e4t", 258, 148, "Cakram", 7.8, W.biru)),
-      tambah("Buku", ...kartu("bk", 30, 162, 240, 28, W.krem, ["buku: kardus, kartu, tabel nilai tempat"], 8.6)),
+      tambah("Pelajaran", ...kartu("bk", 30, 162, 240, 28, W.krem, ["pelajaran: kardus, kartu, tabel nilai"], 8.6)),
     ),
   ],
 };

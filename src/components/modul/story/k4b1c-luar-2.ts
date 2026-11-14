@@ -55,11 +55,11 @@ export const ADEGAN_LUAR_HIMPUNAN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 7. Ordering Sets: penerapan pada himpunan soal latihan buku ------------------------------ */
-const SUARA_Q1 = "Himpunan dari soal latihan buku: tujuh ribu lima ratus tujuh puluh, lima ribu dua ratus empat puluh, tiga ribu empat puluh satu, dan sembilan ribu sembilan ratus empat puluh satu.";
+/* ------------------------------ 7. Ordering Sets: penerapan pada himpunan soal latihan ------------------------------ */
+const SUARA_Q1 = "Himpunan dari soal latihan: tujuh ribu lima ratus tujuh puluh, lima ribu dua ratus empat puluh, tiga ribu empat puluh satu, dan sembilan ribu sembilan ratus empat puluh satu.";
 const SUARA_Q2 = "Putaran pertama: yang terkecil adalah tiga ribu empat puluh satu, karena ribuannya tiga. Pindahkan ke hasil, lalu coret.";
 const SUARA_Q3 = "Putaran kedua dan ketiga: dari sisanya yang terkecil lima ribu dua ratus empat puluh, lalu tujuh ribu lima ratus tujuh puluh. Keduanya dipindahkan dan dicoret.";
-const SUARA_Q4 = "Tinggal satu, sembilan ribu sembilan ratus empat puluh satu, masuk paling akhir. Hasil urutannya sama dengan kunci buku.";
+const SUARA_Q4 = "Tinggal satu, sembilan ribu sembilan ratus empat puluh satu, masuk paling akhir. Hasil urutannya sama dengan hasil tadi.";
 
 const SOAL = [7570, 5240, 3041, 9941] as const;
 const X4 = [8, 80, 152, 224] as const;
@@ -67,7 +67,7 @@ const X4 = [8, 80, 152, 224] as const;
 export const ADEGAN_LUAR_HIMPUNAN_TERAPAN: AdeganStory = {
   id: "luar-himpunan-terapan",
   judul: "Ordering Sets pada himpunan soal latihan",
-  sumber: "Metode luar: Ordering Sets; BS hlm. 23",
+  sumber: "Metode luar: Ordering Sets",
   latar: "#FEF9C3",
   ketukan: [
     k(
@@ -151,8 +151,8 @@ const SUARA_R4 = "Empat batang soal latihan disusun dari terpendek: tiga ribu em
 
 export const ADEGAN_LUAR_BATANG_TERAPAN: AdeganStory = {
   id: "luar-batang-terapan",
-  judul: "Bar Model Compare pada bilangan buku",
-  sumber: "Metode luar: Bar Model Compare; BS hlm. 18–23",
+  judul: "Bar Model Compare pada bilangan latihan",
+  sumber: "Metode luar: Bar Model Compare",
   latar: "#FCE7F3",
   ketukan: [
     k(
@@ -193,7 +193,7 @@ export const ADEGAN_LUAR_BATANG_TERAPAN: AdeganStory = {
 /* ------------------------------ 10. Ringkasan empat metode ------------------------------ */
 const SUARA_Y1 = "Ringkasan empat metode. Banding dari Kiri membaca angka dari kiri. Urutan Garis Bilangan menaruh titik, makin ke kanan makin besar.";
 const SUARA_Y2 = "Mengurutkan Himpunan memilih yang terkecil satu per satu. Banding Batang menggambar panjang, lalu memperbesar sisa bila hampir sama.";
-const SUARA_Y3 = "Apa pun metodenya, hasilnya sama, dan kuncinya tetap nilai tempat: bandingkan ribuan dulu. Pilih cara yang paling cocok bagi kalian.";
+const SUARA_Y3 = "Apa pun metodenya, hasilnya sama, dan pegangannya tetap nilai tempat: bandingkan ribuan dulu. Pilih cara yang paling cocok bagi kalian.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
@@ -215,7 +215,7 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_Y3,
       bersih(0),
-      tambah(0, judul("Satu kunci: nilai tempat")),
+      tambah(0, judul("Satu pegangan: nilai tempat")),
       tambah("hasilnya", emo("rk", 150, 76, "🎯", 40)),
       tambah("ribuan", ...kartu("rk1", 40, 100, 220, 34, W.emas, ["ribuan dulu, lalu ke kanan"], 10)),
       tambah("Pilih", ...kartu("rk2", 40, 144, 220, 34, W.hijauMuda, ["pilih cara yang cocok"], 10)),
