@@ -187,7 +187,11 @@ for (const v of VIDEO) {
 
 
 /* ------------------------------ Pemisahan materi dan metode luar ------------------------------ */
-const M = V.VIDEO_MATERI_K4B4B;
+const M_VIDEO = V.VIDEO_MATERI_K4B4B;
+// Adegan administratif (pembuka, tujuan, peta konsep, panduan awal; di B: penilaian, refleksi, penutup bab) tidak lagi diputar di video materi.
+// Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
+const MODUL_MATERI = Object.assign({}, await import("../src/components/modul/story/k4b4b-materi-1.ts"), await import("../src/components/modul/story/k4b4b-materi-2.ts"), await import("../src/components/modul/story/k4b4b-materi-3.ts"));
+const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_PEMBUKA_B, MODUL_MATERI.ADEGAN_AKTIVITAS_3, MODUL_MATERI.ADEGAN_SABUN, MODUL_MATERI.ADEGAN_BERLATIH_1, MODUL_MATERI.ADEGAN_SATUAN_BAKU, MODUL_MATERI.ADEGAN_BERLATIH_KONVERSI, MODUL_MATERI.ADEGAN_BERLATIH_HITUNG, MODUL_MATERI.ADEGAN_AKTIVITAS_4, MODUL_MATERI.ADEGAN_CM3_M3, MODUL_MATERI.ADEGAN_KUBUS_MENCOBA, MODUL_MATERI.ADEGAN_KUBUS_BERLATIH, MODUL_MATERI.ADEGAN_UK_1, MODUL_MATERI.ADEGAN_UK_2, MODUL_MATERI.ADEGAN_PENGAYAAN_LUAS, MODUL_MATERI.ADEGAN_PENGAYAAN_VOLUME, MODUL_MATERI.ADEGAN_PENUTUP_B] };
 const U = V.VIDEO_LUAR_K4B4B;
 const adegan = (v, id) => v.adegan.find((a) => a.id === id);
 const akhirAdegan = (a, ke = a.ketukan.length - 1) => L.keadaanStory(a, ke, 9999);
@@ -205,18 +209,38 @@ const seluruhTeks = (v) => v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map
   cek(!NAMA_METODE.test(materi) && !KATA_METODE.test(materi), "video materi tidak memuat nama metode luar");
   for (const m of ["Volume as Filling", "Layer Model", "Displacement Idea", "Benchmark Referents", "Volume sebagai Mengisi", "Model Lapisan", "Ide Pemindahan Air", "Patokan Benda Sehari-hari"]) cek(luar.includes(m), `video metode luar memuat ${m}`);
   cek(!METODE_A.test(materi + luar), "tidak memuat metode luar Sub-Bab A");
-  cek(M.adegan.every((a) => /(Buku Siswa|Panduan Guru) hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
-  cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Sub-Bab B", "Aktivitas 3", "Aktivitas 4", "Ayo berlatih", "Uji Kompetensi", "Miskonsepsi", "Pengayaan", "Refleksi", "orang tua", "Panduan Guru", "Rubrik", "kapasitas", "liter", "mililiter", "sentimeter kubik", "meter kubik"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat "${kata}"`);
+  // Video diputar sebagai guru yang mengajar: tidak ada penyebutan sumber buku di suara, teks terlihat, label sumber, judul adegan, dan subjudul.
+  const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul video tanpa kata terlarang`);
+    cek(!/nomor|no\./i.test(v.subjudul) && v.subjudul.length <= 40, `${v.id}: subjudul pendek tanpa nomor halaman`);
+    for (const a of v.adegan) {
+      const semua = [a.judul, a.sumber];
+      a.ketukan.forEach((kt, i) => {
+        semua.push(kt.suara);
+        for (let p = 0; p < L.kataDari(kt.suara).length; p += 1) semua.push(...L.teksTerlihat(L.keadaanStory(a, i, p)));
+      });
+      const kena = semua.filter((t) => TERLARANG.test(t) || /soal nomor|Ayo Berlatih nomor|nomor [1-4]|catatan video|menurut buku/i.test(t));
+      cek(kena.length === 0, `${v.id}/${a.id}: tanpa penyebutan buku atau catatan sumber (${kena.slice(0, 2).join(" | ")})`);
+      cek(!/Uji Kompetensi|Pengayaan|Ayo Berlatih|soal \d|Soal \d/.test(semua.join(" | ")), `${v.id}/${a.id}: latihan disajikan sebagai Latihan, Uji, atau Tantangan`);
+    }
+  }
+  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber)), "video materi: label sumber berbentuk Materi: ...");
+  cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
+  cek(U.adegan.every((a) => a.sumber.length <= 46) && M_VIDEO.adegan.every((a) => a.sumber.length <= 46), "label sumber cukup pendek untuk kanvas 300 lebar");
+  for (const kata of ["Latihan", "Uji 1", "Tantangan", "Percobaan", "Hati-hati", "liter", "mililiter", "sentimeter kubik", "meter kubik"]) cek(new RegExp(kata, "i").test(teksVideo(M_VIDEO)), `video materi memuat "${kata}"`);
+  cek(!/Sub-Bab B|Panduan Guru|Refleksi|orang tua/.test(teksVideo(M_VIDEO)), "video materi yang diputar tanpa adegan administratif (pembuka, penilaian, refleksi)");
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-vf", "luar-vf-terapan", "luar-lm", "luar-lm-terapan", "luar-di", "luar-di-terapan", "luar-br", "luar-br-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
-  cek(M.adegan.length === 16 && U.adegan.length === 10, "16 adegan materi dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 14 && U.adegan.length === 10, "14 adegan materi diputar dan 10 adegan metode luar");
   cek(!/piktogram|diagram batang|pecahan|bangun datar|jaring-jaring|bab lima|bab enam|bab tiga/i.test(materi + luar), `tidak membahas bab lain (${(materi + luar).match(/piktogram|diagram batang|pecahan|bangun datar|jaring-jaring/i)?.[0]})`);
-  cek(totalKetukan >= 90, `total ketukan cukup dalam (${totalKetukan})`);
+  cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
   // metode luar memakai angka dan bangun dari buku
   for (const kata of ["A = 4 satuan botol B", "A = 10 satuan botol C", "1 botol = 8 satuan", "18 = 2 × 9", "4 × 2 = 8 cm³", "C: 6 × 2 = 12", "D: 9 × 2 = 18", "12 + 6 + 6 = 24 cm³", "12 + 2 = 14 cm³", "109 − 100 = 9", "118 − 100 = 18", "124 − 100 = 24", "5 ml", "240 ml", "330 ml", "ember 10 l = 10 botol × 1 l", "tong 150 l ÷ 10 = 15 ember", "4 × 256 = 1.024 ml", "2.200 − 1.000 ≈ 1.200 l", "1.249 l 675 ml"]) cek(luar.includes(kata), `video metode luar memuat "${kata}"`);
-  // temuan buku tampak di video materi
-  for (const kata of ["kunci buku: 0,623 m² ✖", "6.350 ÷ 10.000 = 0,635 m²", "12 × 900 = 10.800 ml", "kunci buku: 11.700 ml ✖", "12.156 − 10.800 = 1.356 ml", "kunci buku: 436 ml ✖", "kunci buku: 95", "10 × 15 = 150", "butir 5: bobot kosong di buku", "butir 3: tidak menjawab = skor 5"]) cek(materi.includes(kata), `video materi memuat temuan "${kata}"`);
+  // jawaban yang benar menurut hitungan sendiri disajikan di video materi (tanpa menyinggung kesalahan buku)
+  const materiPutar = teksVideo(M_VIDEO);
+  for (const kata of ["6.350 ÷ 10.000 = 0,635 m²", "12 × 900 = 10.800 ml", "12.156 − 10.800 = 1.356 ml", "10 × 15 = 150", "36 − 15 − 14 = 7 m²"]) cek(materiPutar.includes(kata), `video materi memuat hitungan benar "${kata}"`);
 }
 
 

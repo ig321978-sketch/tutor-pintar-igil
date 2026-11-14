@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-rapat", "teks": "Rapat tanpa celah", "ikon": "🧩", "cabang": "tutup", "petunjuk": "Menyusun rapat itu soal cara menutup. Coba cabang lain." },
-          { "id": "a-tumpuk", "teks": "Tidak boleh bertumpuk", "ikon": "🚫", "cabang": "tutup", "petunjuk": "Larangan bertumpuk itu soal cara menutup. Coba cabang lain." },
-          { "id": "a-uang", "teks": "Meja = 12 uang kertas", "ikon": "💵", "cabang": "tidak-baku", "petunjuk": "Uang kertas itu satuan tidak baku. Coba cabang lain." },
-          { "id": "a-beda", "teks": "Ubin beda, banyaknya beda", "ikon": "🟨", "cabang": "tidak-baku", "petunjuk": "Hasil berbeda karena ubin berbeda itu soal satuan tidak baku. Coba cabang lain." },
-          { "id": "a-cm2", "teks": "1 cm × 1 cm = 1 cm²", "ikon": "🟦", "cabang": "baku", "petunjuk": "Sentimeter persegi itu satuan baku. Coba cabang lain." },
-          { "id": "a-m2", "teks": "Lantai memakai m²", "ikon": "🏫", "cabang": "baku", "petunjuk": "Meter persegi itu satuan baku. Coba cabang lain." },
-          { "id": "a-sepuluh-ribu", "teks": "1 m² = 10.000 cm²", "ikon": "🔟", "cabang": "ubah", "petunjuk": "Sepuluh ribu itu soal mengubah satuan. Coba cabang lain." },
-          { "id": "a-seratus", "teks": "100 × 100, bukan 100", "ikon": "✖️", "cabang": "ubah", "petunjuk": "Seratus kali seratus itu soal mengubah satuan. Coba cabang lain." }
+          {
+            "id": "a-rapat",
+            "teks": "Rapat tanpa celah",
+            "ikon": "🧩",
+            "cabang": "tutup",
+            "petunjuk": "Menyusun rapat itu soal cara menutup. Coba cabang lain."
+          },
+          {
+            "id": "a-tumpuk",
+            "teks": "Tidak boleh bertumpuk",
+            "ikon": "🚫",
+            "cabang": "tutup",
+            "petunjuk": "Larangan bertumpuk itu soal cara menutup. Coba cabang lain."
+          },
+          {
+            "id": "a-uang",
+            "teks": "Meja = 12 uang kertas",
+            "ikon": "💵",
+            "cabang": "tidak-baku",
+            "petunjuk": "Uang kertas itu satuan tidak baku. Coba cabang lain."
+          },
+          {
+            "id": "a-beda",
+            "teks": "Ubin beda, banyaknya beda",
+            "ikon": "🟨",
+            "cabang": "tidak-baku",
+            "petunjuk": "Hasil berbeda karena ubin berbeda itu soal satuan tidak baku. Coba cabang lain."
+          },
+          {
+            "id": "a-cm2",
+            "teks": "1 cm × 1 cm = 1 cm²",
+            "ikon": "🟦",
+            "cabang": "baku",
+            "petunjuk": "Sentimeter persegi itu satuan baku. Coba cabang lain."
+          },
+          {
+            "id": "a-m2",
+            "teks": "Lantai memakai m²",
+            "ikon": "🏫",
+            "cabang": "baku",
+            "petunjuk": "Meter persegi itu satuan baku. Coba cabang lain."
+          },
+          {
+            "id": "a-sepuluh-ribu",
+            "teks": "1 m² = 10.000 cm²",
+            "ikon": "🔟",
+            "cabang": "ubah",
+            "petunjuk": "Sepuluh ribu itu soal mengubah satuan. Coba cabang lain."
+          },
+          {
+            "id": "a-seratus",
+            "teks": "100 × 100, bukan 100",
+            "ikon": "✖️",
+            "cabang": "ubah",
+            "petunjuk": "Seratus kali seratus itu soal mengubah satuan. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -66,9 +114,39 @@
             "ide": "Luas diukur dengan menutup tanpa celah.",
             "suara": "Ada tiga hal tentang menutup meja. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "rapat", "label": "Rapat", "ikon": "🧩", "isi": "Tanpa celah, tanpa bertumpuk.", "suara": "Uang kertas disusun rapat, tanpa celah dan tanpa bertumpuk.", "visual": { "jenis": "teks", "isi": "tanpa celah" } },
-              { "id": "uang", "label": "Uang kertas", "ikon": "💵", "isi": "Meja tertutup dua belas uang kertas.", "suara": "Meja lipat tertutup dua belas lembar uang kertas.", "visual": { "jenis": "teks", "isi": "12 uang kertas" } },
-              { "id": "origami", "label": "Origami", "ikon": "🟨", "isi": "Meja yang sama, enam origami.", "suara": "Meja yang sama tertutup enam lembar origami, karena origami lebih besar.", "visual": { "jenis": "teks", "isi": "6 origami" } }
+              {
+                "id": "rapat",
+                "label": "Rapat",
+                "ikon": "🧩",
+                "isi": "Tanpa celah, tanpa bertumpuk.",
+                "suara": "Uang kertas disusun rapat, tanpa celah dan tanpa bertumpuk.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "tanpa celah"
+                }
+              },
+              {
+                "id": "uang",
+                "label": "Uang kertas",
+                "ikon": "💵",
+                "isi": "Meja tertutup dua belas uang kertas.",
+                "suara": "Meja lipat tertutup dua belas lembar uang kertas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 uang kertas"
+                }
+              },
+              {
+                "id": "origami",
+                "label": "Origami",
+                "ikon": "🟨",
+                "isi": "Meja yang sama, enam origami.",
+                "suara": "Meja yang sama tertutup enam lembar origami, karena origami lebih besar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 origami"
+                }
+              }
             ]
           },
           {
@@ -78,8 +156,28 @@
             "ide": "Permukaan kecil cm², permukaan besar m².",
             "suara": "Bandingkan sentimeter persegi dan meter persegi.",
             "sisi": [
-              { "id": "cm2", "nama": "cm²", "ikon": "🟦", "catatan": "Persegi bersisi satu sentimeter.", "suara": "Satu sentimeter persegi adalah persegi bersisi satu sentimeter. Cocok untuk bingkai foto.", "visual": { "jenis": "teks", "isi": "1 cm × 1 cm" } },
-              { "id": "m2", "nama": "m²", "ikon": "🏫", "catatan": "Persegi bersisi satu meter.", "suara": "Satu meter persegi adalah persegi bersisi satu meter. Cocok untuk lantai kelas.", "visual": { "jenis": "teks", "isi": "1 m × 1 m" } }
+              {
+                "id": "cm2",
+                "nama": "cm²",
+                "ikon": "🟦",
+                "catatan": "Persegi bersisi satu sentimeter.",
+                "suara": "Satu sentimeter persegi adalah persegi bersisi satu sentimeter. Cocok untuk bingkai foto.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 cm × 1 cm"
+                }
+              },
+              {
+                "id": "m2",
+                "nama": "m²",
+                "ikon": "🏫",
+                "catatan": "Persegi bersisi satu meter.",
+                "suara": "Satu meter persegi adalah persegi bersisi satu meter. Cocok untuk lantai kelas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 m × 1 m"
+                }
+              }
             ],
             "kesimpulan": "1 m² = 100 × 100 = 10.000 cm²."
           },
@@ -90,16 +188,191 @@
             "ide": "Hitung persegi satuan yang diarsir.",
             "suara": "Ada tiga hal tentang kertas berpetak. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "hitung", "label": "Hitung sel", "ikon": "🔢", "isi": "Tiap sel satu sentimeter persegi.", "suara": "Tiap sel bersisi satu sentimeter. Luasnya satu sentimeter persegi.", "visual": { "jenis": "teks", "isi": "1 sel = 1 cm²" } },
+              {
+                "id": "hitung",
+                "label": "Hitung sel",
+                "ikon": "🔢",
+                "isi": "Tiap sel satu sentimeter persegi.",
+                "suara": "Tiap sel bersisi satu sentimeter. Luasnya satu sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 sel = 1 cm²"
+                }
+              },
               {
                 "id": "susunan",
                 "label": "Susunan",
                 "ikon": "🟧",
                 "isi": "Tiga baris, tiap baris empat.",
                 "suara": "Persegi panjang tiga baris, tiap baris empat persegi. Tiga kali empat sama dengan dua belas sentimeter persegi.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Baris", "Persegi"], "baris": [["ke-1", 4], ["ke-2", 4], ["ke-3", 4]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Baris",
+                    "Persegi"
+                  ],
+                  "baris": [
+                    [
+                      "ke-1",
+                      4
+                    ],
+                    [
+                      "ke-2",
+                      4
+                    ],
+                    [
+                      "ke-3",
+                      4
+                    ]
+                  ]
+                }
               },
-              { "id": "sama", "label": "Bentuk beda", "ikon": "🔀", "isi": "Beda bentuk, luasnya bisa sama.", "suara": "Dua bangun berbeda bentuk bisa sama-sama tiga belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "13 cm² = 13 cm²" } }
+              {
+                "id": "sama",
+                "label": "Bentuk beda",
+                "ikon": "🔀",
+                "isi": "Beda bentuk, luasnya bisa sama.",
+                "suara": "Dua bangun berbeda bentuk bisa sama-sama tiga belas sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "13 cm² = 13 cm²"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Menentukan Luas Daerah",
+          "ikon": "🟧",
+          "suara": "Ini peta tentang menentukan luas daerah. Ada metode yang dipakai, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "metode",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Ada tiga metode",
+            "ikon": "🧰",
+            "petunjuk": "Ini kelompok nama-nama cara, bukan langkahnya."
+          },
+          {
+            "id": "tak-baku",
+            "nomor": 2,
+            "induk": "metode",
+            "teks": "Satuan tidak baku",
+            "petunjuk": "Metode ini memakai uang kertas atau origami."
+          },
+          {
+            "id": "baku",
+            "nomor": 3,
+            "induk": "metode",
+            "teks": "Satuan baku",
+            "petunjuk": "Metode ini memakai sentimeter persegi dan meter persegi."
+          },
+          {
+            "id": "ubah",
+            "nomor": 4,
+            "induk": "metode",
+            "teks": "Ubah satuan luas",
+            "petunjuk": "Metode ini memindahkan satuan besar ke satuan kecil."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap metode."
+          },
+          {
+            "id": "cara-tutup",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tutup rapat lalu hitung",
+            "petunjuk": "Langkah untuk metode yang memakai benda penutup."
+          },
+          {
+            "id": "cara-petak",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Hitung petak sentimeter",
+            "petunjuk": "Langkah untuk metode yang memakai satuan resmi."
+          },
+          {
+            "id": "cara-kali",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Kalikan seratus kali seratus",
+            "petunjuk": "Langkah untuk metode yang mengubah satuan."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-luas",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menentukan luas",
+            "petunjuk": "Kemampuan menghitung luas sebuah daerah."
+          },
+          {
+            "id": "hasil-satuan",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa memilih satuan tepat",
+            "petunjuk": "Kemampuan memilih sentimeter persegi atau meter persegi."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Luas empat bangun berpetak",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel luas empat bangun berpetak. Pasang petak tiap baris, luas, dan keterangan untuk tiap bangun.",
+        "pojok": "Bangun",
+        "kolom": [
+          "Petak tiap baris",
+          "Luas",
+          "Keterangan"
+        ],
+        "baris": [
+          {
+            "label": "A",
+            "sel": [
+              "1, 1, 2, 3, 3, 3",
+              "13",
+              "sama dengan B"
+            ]
+          },
+          {
+            "label": "B",
+            "sel": [
+              "1, 2, 4, 5, 1",
+              "13",
+              "sama dengan A"
+            ]
+          },
+          {
+            "label": "C",
+            "sel": [
+              "1, 2, 4, 2, 2",
+              "11",
+              "paling sempit"
+            ]
+          },
+          {
+            "label": "D",
+            "sel": [
+              "3, 2, 2, 2, 1, 5",
+              "15",
+              "paling luas"
             ]
           }
         ]
@@ -144,14 +417,62 @@
           }
         ],
         "kartu": [
-          { "id": "b-empat", "teks": "A = 4 botol B", "ikon": "4️⃣", "cabang": "isi", "petunjuk": "Botol B itu takaran untuk mengisi. Coba cabang lain." },
-          { "id": "b-sepuluh", "teks": "A = 10 botol C", "ikon": "🔟", "cabang": "isi", "petunjuk": "Botol C itu takaran untuk mengisi. Coba cabang lain." },
-          { "id": "b-liter", "teks": "1 l = 1.000 ml", "ikon": "🥛", "cabang": "cair", "petunjuk": "Liter dan mililiter itu satuan cairan. Coba cabang lain." },
-          { "id": "b-sendok", "teks": "Sendok 5 ml", "ikon": "🥄", "cabang": "cair", "petunjuk": "Sendok berisi cairan. Coba cabang lain." },
-          { "id": "b-lapisan", "teks": "2 lapisan × 12 kubus", "ikon": "🧊", "cabang": "kubus", "petunjuk": "Lapisan kubus itu soal kubus satuan. Coba cabang lain." },
-          { "id": "b-dadu", "teks": "Dadu pejal memakai cm³", "ikon": "🎲", "cabang": "kubus", "petunjuk": "Benda pejal kecil itu soal kubus satuan. Coba cabang lain." },
-          { "id": "b-cm3", "teks": "1 cm³ = 1 ml", "ikon": "🔄", "cabang": "ubah", "petunjuk": "Sentimeter kubik ke mililiter itu soal mengubah satuan. Coba cabang lain." },
-          { "id": "b-m3", "teks": "1 m³ = 1.000 l", "ikon": "🛁", "cabang": "ubah", "petunjuk": "Meter kubik ke liter itu soal mengubah satuan. Coba cabang lain." }
+          {
+            "id": "b-empat",
+            "teks": "A = 4 botol B",
+            "ikon": "4️⃣",
+            "cabang": "isi",
+            "petunjuk": "Botol B itu takaran untuk mengisi. Coba cabang lain."
+          },
+          {
+            "id": "b-sepuluh",
+            "teks": "A = 10 botol C",
+            "ikon": "🔟",
+            "cabang": "isi",
+            "petunjuk": "Botol C itu takaran untuk mengisi. Coba cabang lain."
+          },
+          {
+            "id": "b-liter",
+            "teks": "1 l = 1.000 ml",
+            "ikon": "🥛",
+            "cabang": "cair",
+            "petunjuk": "Liter dan mililiter itu satuan cairan. Coba cabang lain."
+          },
+          {
+            "id": "b-sendok",
+            "teks": "Sendok 5 ml",
+            "ikon": "🥄",
+            "cabang": "cair",
+            "petunjuk": "Sendok berisi cairan. Coba cabang lain."
+          },
+          {
+            "id": "b-lapisan",
+            "teks": "2 lapisan × 12 kubus",
+            "ikon": "🧊",
+            "cabang": "kubus",
+            "petunjuk": "Lapisan kubus itu soal kubus satuan. Coba cabang lain."
+          },
+          {
+            "id": "b-dadu",
+            "teks": "Dadu pejal memakai cm³",
+            "ikon": "🎲",
+            "cabang": "kubus",
+            "petunjuk": "Benda pejal kecil itu soal kubus satuan. Coba cabang lain."
+          },
+          {
+            "id": "b-cm3",
+            "teks": "1 cm³ = 1 ml",
+            "ikon": "🔄",
+            "cabang": "ubah",
+            "petunjuk": "Sentimeter kubik ke mililiter itu soal mengubah satuan. Coba cabang lain."
+          },
+          {
+            "id": "b-m3",
+            "teks": "1 m³ = 1.000 l",
+            "ikon": "🛁",
+            "cabang": "ubah",
+            "petunjuk": "Meter kubik ke liter itu soal mengubah satuan. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -165,9 +486,39 @@
             "ide": "Isi wadah sampai penuh dengan takaran.",
             "suara": "Ada tiga hal tentang botol sabun. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "b", "label": "Botol B", "ikon": "🧴", "isi": "Botol A penuh dengan empat botol B.", "suara": "Botol A penuh dengan empat botol B.", "visual": { "jenis": "teks", "isi": "A = 4 B" } },
-              { "id": "c", "label": "Botol C", "ikon": "🧴", "isi": "Botol A penuh dengan sepuluh botol C.", "suara": "Botol A penuh dengan sepuluh botol C, karena botol C lebih kecil.", "visual": { "jenis": "teks", "isi": "A = 10 C" } },
-              { "id": "sanitizer", "label": "Sanitizer", "ikon": "🧼", "isi": "Satu botol besar, delapan botol kecil.", "suara": "Botol besar sanitizer sama dengan delapan botol kecil.", "visual": { "jenis": "teks", "isi": "1 besar = 8 kecil" } }
+              {
+                "id": "b",
+                "label": "Botol B",
+                "ikon": "🧴",
+                "isi": "Botol A penuh dengan empat botol B.",
+                "suara": "Botol A penuh dengan empat botol B.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "A = 4 B"
+                }
+              },
+              {
+                "id": "c",
+                "label": "Botol C",
+                "ikon": "🧴",
+                "isi": "Botol A penuh dengan sepuluh botol C.",
+                "suara": "Botol A penuh dengan sepuluh botol C, karena botol C lebih kecil.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "A = 10 C"
+                }
+              },
+              {
+                "id": "sanitizer",
+                "label": "Sanitizer",
+                "ikon": "🧼",
+                "isi": "Satu botol besar, delapan botol kecil.",
+                "suara": "Botol besar sanitizer sama dengan delapan botol kecil.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 besar = 8 kecil"
+                }
+              }
             ]
           },
           {
@@ -177,8 +528,28 @@
             "ide": "Cairan memakai ml, pejal memakai cm³.",
             "suara": "Bandingkan satuan untuk cairan dan untuk benda pejal.",
             "sisi": [
-              { "id": "cair", "nama": "Cairan", "ikon": "🥛", "catatan": "Mililiter dan liter.", "suara": "Susu dan air diukur dengan mililiter dan liter. Seribu mililiter sama dengan satu liter.", "visual": { "jenis": "teks", "isi": "1.000 ml = 1 l" } },
-              { "id": "pejal", "nama": "Pejal", "ikon": "🎲", "catatan": "Sentimeter kubik dan meter kubik.", "suara": "Dadu dan balok diukur dengan sentimeter kubik. Ruang besar diukur dengan meter kubik.", "visual": { "jenis": "teks", "isi": "1 m³ = 1.000 l" } }
+              {
+                "id": "cair",
+                "nama": "Cairan",
+                "ikon": "🥛",
+                "catatan": "Mililiter dan liter.",
+                "suara": "Susu dan air diukur dengan mililiter dan liter. Seribu mililiter sama dengan satu liter.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1.000 ml = 1 l"
+                }
+              },
+              {
+                "id": "pejal",
+                "nama": "Pejal",
+                "ikon": "🎲",
+                "catatan": "Sentimeter kubik dan meter kubik.",
+                "suara": "Dadu dan balok diukur dengan sentimeter kubik. Ruang besar diukur dengan meter kubik.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 m³ = 1.000 l"
+                }
+              }
             ],
             "kesimpulan": "1 cm³ = 1 ml: balok yang dicelup menaikkan air."
           },
@@ -189,16 +560,191 @@
             "ide": "Hitung satu lapisan, lalu semua lapisan.",
             "suara": "Ada tiga hal tentang kubus satuan. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "satu", "label": "Satu kubus", "ikon": "🧊", "isi": "Sisi satu sentimeter, satu sentimeter kubik.", "suara": "Kubus bersisi satu sentimeter volumenya satu sentimeter kubik.", "visual": { "jenis": "teks", "isi": "1 kubus = 1 cm³" } },
+              {
+                "id": "satu",
+                "label": "Satu kubus",
+                "ikon": "🧊",
+                "isi": "Sisi satu sentimeter, satu sentimeter kubik.",
+                "suara": "Kubus bersisi satu sentimeter volumenya satu sentimeter kubik.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 kubus = 1 cm³"
+                }
+              },
               {
                 "id": "lapisan",
                 "label": "Lapisan",
                 "ikon": "🧱",
                 "isi": "Tiap lapisan dua belas kubus.",
                 "suara": "Alas tiga baris, tiap baris empat kubus. Satu lapisan dua belas kubus. Dua lapisan dua puluh empat kubus.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Lapisan", "Kubus"], "baris": [["ke-1", 12], ["ke-2", 12]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Lapisan",
+                    "Kubus"
+                  ],
+                  "baris": [
+                    [
+                      "ke-1",
+                      12
+                    ],
+                    [
+                      "ke-2",
+                      12
+                    ]
+                  ]
+                }
               },
-              { "id": "jumlah", "label": "Volume", "ikon": "✅", "isi": "Dua puluh empat sentimeter kubik.", "suara": "Dua belas ditambah dua belas sama dengan dua puluh empat. Volumenya dua puluh empat sentimeter kubik.", "visual": { "jenis": "teks", "isi": "12 + 12 = 24 cm³" } }
+              {
+                "id": "jumlah",
+                "label": "Volume",
+                "ikon": "✅",
+                "isi": "Dua puluh empat sentimeter kubik.",
+                "suara": "Dua belas ditambah dua belas sama dengan dua puluh empat. Volumenya dua puluh empat sentimeter kubik.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 + 12 = 24 cm³"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Pengukuran Volume",
+          "ikon": "🧴",
+          "suara": "Ini peta tentang pengukuran volume. Ada metode yang dipakai, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "metode",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Ada tiga metode",
+            "ikon": "🧰",
+            "petunjuk": "Ini kelompok nama-nama cara mengukur, bukan langkahnya."
+          },
+          {
+            "id": "tak-baku",
+            "nomor": 2,
+            "induk": "metode",
+            "teks": "Satuan tidak baku",
+            "petunjuk": "Mengukur dengan botol atau gelas yang ukurannya bisa berbeda."
+          },
+          {
+            "id": "baku",
+            "nomor": 3,
+            "induk": "metode",
+            "teks": "Satuan baku",
+            "petunjuk": "Mengukur dengan satuan yang sama di mana saja."
+          },
+          {
+            "id": "kubus",
+            "nomor": 4,
+            "induk": "metode",
+            "teks": "Kubus satuan"
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap metode."
+          },
+          {
+            "id": "cara-tak-baku",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Isi dengan botol, hitung",
+            "petunjuk": "Langkah untuk metode yang memakai botol sebagai takaran."
+          },
+          {
+            "id": "cara-baku",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Baca liter dan mililiter",
+            "petunjuk": "Langkah untuk metode yang memakai satuan cairan."
+          },
+          {
+            "id": "cara-kubus",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Hitung kubus tiap lapisan",
+            "petunjuk": "Langkah untuk metode yang menyusun kubus."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-volume",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menentukan volume benda",
+            "petunjuk": "Kemampuan mencari berapa isi sebuah benda."
+          },
+          {
+            "id": "hasil-ubah",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa mengubah satuan volume",
+            "petunjuk": "Kemampuan menukar satuan, misalnya mililiter ke liter."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Mengubah mililiter ke liter",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel mengubah mililiter ke liter. Pasang liter, sisa mililiter, dan tulisan lengkapnya untuk tiap contoh.",
+        "pojok": "Contoh",
+        "kolom": [
+          "Dalam ml",
+          "Liter",
+          "Sisa ml",
+          "Ditulis"
+        ],
+        "baris": [
+          {
+            "label": "Contoh 1",
+            "sel": [
+              "1.450 ml",
+              "1 l",
+              "450 ml",
+              "1 l 450 ml"
+            ]
+          },
+          {
+            "label": "Contoh 2",
+            "sel": [
+              "9.485 ml",
+              "9 l",
+              "485 ml",
+              "9 l 485 ml"
+            ]
+          },
+          {
+            "label": "Contoh 3",
+            "sel": [
+              "23.456 ml",
+              "23 l",
+              "456 ml",
+              "23 l 456 ml"
+            ]
+          },
+          {
+            "label": "Contoh 4",
+            "sel": [
+              "6.340 ml",
+              "6 l",
+              "340 ml",
+              "6 l 340 ml"
             ]
           }
         ]

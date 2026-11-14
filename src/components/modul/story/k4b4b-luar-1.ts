@@ -6,11 +6,11 @@ import { bersih, k, tambah } from "./k4b4b-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk mengukur volume",
-  sumber: "Metode luar: pembuka; bangun dan angka Buku Siswa hlm. 122–138",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana belajar mengukur volume dengan benar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai bangun dan angka dari buku.",
+      "Bagaimana belajar mengukur volume dengan benar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai bangun dan angka yang sudah kita pelajari.",
       bersih(0),
       tambah(0, judul("Empat metode dari luar")),
       tambah("berbagai", emo("gl", 150, 100, "🌍", 56)),
@@ -48,7 +48,7 @@ function wadahIsi(id: string, x: number, y: number, kolom: number, baris: number
 export const ADEGAN_LUAR_VF: AdeganStory = {
   id: "luar-vf",
   judul: "Volume as Filling (Volume sebagai Mengisi)",
-  sumber: "Metode luar: Volume as Filling (Volume sebagai Mengisi)",
+  sumber: "Metode luar: Volume as Filling",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -82,8 +82,8 @@ export const ADEGAN_LUAR_VF: AdeganStory = {
 /* ------------------------------ 3. Volume as Filling: penerapan ------------------------------ */
 export const ADEGAN_LUAR_VF_TERAPAN: AdeganStory = {
   id: "luar-vf-terapan",
-  judul: "Volume as Filling diterapkan pada angka buku",
-  sumber: "Metode luar: Volume as Filling pada botol sabun dan kubus, Buku Siswa hlm. 123–136",
+  judul: "Volume as Filling pada botol dan kubus",
+  sumber: "Metode luar: Volume as Filling terapan",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -126,7 +126,7 @@ export const ADEGAN_LUAR_VF_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_LM: AdeganStory = {
   id: "luar-lm",
   judul: "Layer Model (Model Lapisan)",
-  sumber: "Metode luar: Layer Model (Model Lapisan)",
+  sumber: "Metode luar: Layer Model",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -160,8 +160,8 @@ export const ADEGAN_LUAR_LM: AdeganStory = {
 /* ------------------------------ 5. Layer Model: penerapan ------------------------------ */
 export const ADEGAN_LUAR_LM_TERAPAN: AdeganStory = {
   id: "luar-lm-terapan",
-  judul: "Layer Model diterapkan pada bangun buku",
-  sumber: "Metode luar: Layer Model pada bangun Buku Siswa hlm. 135–137",
+  judul: "Layer Model pada bangun kubus",
+  sumber: "Metode luar: Layer Model terapan",
   latar: "#EFF6FF",
   ketukan: [
     k(

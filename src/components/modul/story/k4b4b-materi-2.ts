@@ -5,8 +5,8 @@ import { bersih, k, tambah } from "./k4b4b-bantu";
 /* ------------------------------ 6. Ayo Berlatih: jumlah dan konversi (Buku Siswa hlm. 132; Panduan Guru hlm. 158-159) ------------------------------ */
 export const ADEGAN_BERLATIH_KONVERSI: AdeganStory = {
   id: "berlatih-konversi",
-  judul: "Ayo Berlatih: jumlah volume dan konversi",
-  sumber: "Buku Siswa hlm. 132; Panduan Guru hlm. 158–159",
+  judul: "Latihan: jumlah volume dan konversi",
+  sumber: "Materi: jumlah dan konversi volume",
   latar: "#FEFCE8",
   kutipan: [
     "Pada gambar di atas, sebutkan volume dari ketiga kotak susu tersebut?",
@@ -22,7 +22,7 @@ export const ADEGAN_BERLATIH_KONVERSI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo berlatih satu: tiga kotak susu bertuliskan dua ratus mililiter, dua ratus lima puluh mililiter, dan seribu mililiter. Jumlahkan dalam mililiter.",
+      "Latihan satu: tiga kotak susu bertuliskan dua ratus mililiter, dua ratus lima puluh mililiter, dan seribu mililiter. Jumlahkan dalam mililiter.",
       bersih(0),
       tambah(0, judul("Tiga kotak susu")),
       tambah("dua", emo("s1", 60, 100, "🥛", 36), teks("s1t", 60, 124, "200 ml", 10, W.biru)),
@@ -39,9 +39,9 @@ export const ADEGAN_BERLATIH_KONVERSI: AdeganStory = {
       tambah("satu", ...kartu("t3", 12, 140, 276, 34, W.langit, ["= 1 l 450 ml"], 11)),
     ),
     k(
-      "Soal dua: ubah ke liter dan mililiter. Tujuh puluh lima ribu menjadi tujuh puluh lima liter. Sembilan ribu empat ratus delapan puluh lima menjadi sembilan liter empat ratus delapan puluh lima mililiter.",
+      "Latihan dua: ubah ke liter dan mililiter. Tujuh puluh lima ribu menjadi tujuh puluh lima liter. Sembilan ribu empat ratus delapan puluh lima menjadi sembilan liter empat ratus delapan puluh lima mililiter.",
       bersih(0),
-      tambah(0, judul("Soal 2: konversi")),
+      tambah(0, judul("Latihan 2: konversi")),
       tambah("Tujuh", ...kartu("u1", 12, 40, 276, 34, W.krem, ["75.000 ml = 75 × 1.000 ml = 75 l"], 10.4)),
       tambah("Sembilan", ...kartu("u2", 12, 84, 276, 34, W.hijauMuda, ["9.485 ml = 9.000 ml + 485 ml"], 10.4)),
       tambah("menjadi@2", ...kartu("u3", 12, 128, 276, 34, W.langit, ["9.485 ml = 9 l 485 ml"], 10.4)),
@@ -49,18 +49,10 @@ export const ADEGAN_BERLATIH_KONVERSI: AdeganStory = {
     k(
       "Dua puluh tiga ribu empat ratus lima puluh enam mililiter menjadi dua puluh tiga liter empat ratus lima puluh enam mililiter. Ribuannya menjadi liter, sisanya tetap mililiter.",
       bersih(0),
-      tambah(0, judul("Soal 2c")),
+      tambah(0, judul("Latihan 2c")),
       tambah("Dua", ...kartu("v1", 12, 40, 276, 34, W.krem, ["23.456 ml = 23.000 ml + 456 ml"], 10.4)),
       tambah("Ribuannya", ...kartu("v2", 12, 90, 276, 34, W.hijauMuda, ["= 23 × 1.000 ml + 456 ml"], 10.4)),
       tambah("sisanya", ...kartu("v3", 12, 140, 276, 34, W.langit, ["= 23 l 456 ml"], 11)),
-    ),
-    k(
-      "Dua puluh tiga ribu empat ratus lima puluh enam mililiter menjadi dua puluh tiga liter empat ratus lima puluh enam mililiter. Caranya sama: ribuannya menjadi liter, sisanya tetap mililiter.",
-      bersih(0),
-      tambah(0, judul("Soal 2c")),
-      tambah("Dua", ...kartu("v1", 12, 40, 276, 34, W.krem, ["23.456 ml = 23.000 ml + 456 ml"], 10.4)),
-      tambah("menjadi", ...kartu("v2", 12, 84, 276, 34, W.hijauMuda, ["= 23 × 1.000 ml + 456 ml"], 10.4)),
-      tambah("Caranya", ...kartu("v3", 12, 128, 276, 34, W.langit, ["= 23 l 456 ml"], 11)),
     ),
   ],
 };
@@ -68,8 +60,8 @@ export const ADEGAN_BERLATIH_KONVERSI: AdeganStory = {
 /* ------------------------------ 7. Ayo Berlatih: tangki dan penjual susu (Buku Siswa hlm. 132; Panduan Guru hlm. 159) ------------------------------ */
 export const ADEGAN_BERLATIH_HITUNG: AdeganStory = {
   id: "berlatih-hitung",
-  judul: "Ayo Berlatih: tangki air dan penjual susu",
-  sumber: "Buku Siswa hlm. 132; Panduan Guru hlm. 159",
+  judul: "Latihan: tangki air dan penjual susu",
+  sumber: "Materi: hitungan liter dan mililiter",
   latar: "#F5F3FF",
   kutipan: [
     "Sebuah tangki air berisi 2.225 liter air.",
@@ -86,9 +78,9 @@ export const ADEGAN_BERLATIH_HITUNG: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal tiga: tangki berisi dua ribu dua ratus dua puluh lima liter air. Dipompa keluar sembilan ratus tujuh puluh lima liter tiga ratus dua puluh lima mililiter. Berapa sisanya?",
+      "Latihan tiga: tangki berisi dua ribu dua ratus dua puluh lima liter air. Dipompa keluar sembilan ratus tujuh puluh lima liter tiga ratus dua puluh lima mililiter. Berapa sisanya?",
       bersih(0),
-      tambah(0, judul("Soal 3: tangki air")),
+      tambah(0, judul("Latihan 3: tangki air")),
       tambah("dua", ...kartu("w1", 12, 40, 276, 34, W.langit, ["tangki berisi 2.225 l"], 10.4)),
       tambah("sembilan", ...kartu("w2", 12, 90, 276, 34, W.merahMuda, ["dipompa keluar 975 l 325 ml"], 10.4)),
       tambah("sisanya?", ...kartu("w3", 12, 140, 276, 34, W.krem, ["sisa air = ?"], 11)),
@@ -109,9 +101,9 @@ export const ADEGAN_BERLATIH_HITUNG: AdeganStory = {
       tambah("enam", ...kartu("y3", 12, 112, 276, 34, W.hijauMuda, ["sisa: 1.249 l 675 ml"], 11)),
     ),
     k(
-      "Soal empat: tukang susu menjual lima puluh lima liter lima ratus tujuh puluh lima mililiter, empat puluh liter empat ratus delapan puluh mililiter, dan enam puluh liter delapan ratus dua puluh lima mililiter.",
+      "Latihan empat: tukang susu menjual lima puluh lima liter lima ratus tujuh puluh lima mililiter, empat puluh liter empat ratus delapan puluh mililiter, dan enam puluh liter delapan ratus dua puluh lima mililiter.",
       bersih(0),
-      tambah(0, judul("Soal 4: tukang susu")),
+      tambah(0, judul("Latihan 4: tukang susu")),
       tambah("lima", ...kartu("q1", 12, 46, 276, 30, W.krem, ["hari 1: 55 l 575 ml"], 10)),
       tambah("empat@2", ...kartu("q2", 12, 84, 276, 30, W.hijauMuda, ["hari 2: 40 l 480 ml"], 10)),
       tambah("enam", ...kartu("q3", 12, 122, 276, 30, W.langit, ["hari 3: 60 l 825 ml"], 10)),
@@ -131,8 +123,8 @@ export const ADEGAN_BERLATIH_HITUNG: AdeganStory = {
 /* ------------------------------ 8. Aktivitas 4: kubus satuan (Buku Siswa hlm. 132-134; Panduan Guru hlm. 160) ------------------------------ */
 export const ADEGAN_AKTIVITAS_4: AdeganStory = {
   id: "aktivitas-4",
-  judul: "Aktivitas 4: konsep volume dengan kubus satuan",
-  sumber: "Buku Siswa hlm. 132–134; Panduan Guru hlm. 160",
+  judul: "Percobaan: volume dengan kubus satuan",
+  sumber: "Materi: volume dengan kubus satuan",
   latar: "#F0FDF4",
   kutipan: [
     "Aktivitas 4 : Konsep Volume dengan Kubus Satuan",
@@ -148,9 +140,9 @@ export const ADEGAN_AKTIVITAS_4: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Aktivitas empat, kubus satuan. Kelompok memasukkan kubus ke dalam kardus sampai penuh, lalu menyusunnya menjadi berbagai bangun. Apakah susunannya berbeda?",
+      "Percobaan kedua, kubus satuan. Kelompok memasukkan kubus ke dalam kardus sampai penuh, lalu menyusunnya menjadi berbagai bangun. Apakah susunannya berbeda?",
       bersih(0),
-      tambah(0, judul("Aktivitas 4: kubus satuan")),
+      tambah(0, judul("Percobaan: kubus satuan")),
       tambah("kardus", emo("k1", 60, 100, "📦", 48)),
       tambah("kubus", ...kubusDi("k2", "d", 205, 100, 12)),
       tambah("Apakah", ...kartu("k3", 30, 134, 240, 36, W.krem, ["kubus dalam kardus penuh", "disusun jadi berbagai bangun"], 8.6)),
@@ -179,7 +171,7 @@ export const ADEGAN_AKTIVITAS_4: AdeganStory = {
 export const ADEGAN_CM3_M3: AdeganStory = {
   id: "cm3-m3",
   judul: "Sentimeter kubik dan meter kubik",
-  sumber: "Buku Siswa hlm. 134–135; Panduan Guru hlm. 160 dan 162",
+  sumber: "Materi: sentimeter kubik dan meter kubik",
   latar: "#EFF6FF",
   kutipan: [
     "Volume kubus satuan di atas adalah 1 cm³.",
@@ -218,7 +210,7 @@ export const ADEGAN_CM3_M3: AdeganStory = {
       tambah("seribu", ...kartu("d6", 12, 150, 276, 30, W.krem, ["1 m³ = 1.000 l"], 11)),
     ),
     k(
-      "Panduan Guru: dari kilometer sampai milimeter, satuan panjang dipangkatkan tiga menjadi satuan volume. Liter juga dikaitkan dengan satuan pangkat tiga itu.",
+      "Perhatikan deret satuan panjang dari kilometer sampai milimeter. Jika dipangkatkan tiga, ia menjadi satuan volume. Liter juga dikaitkan dengan satuan pangkat tiga itu.",
       bersih(0),
       tambah(0, judul("Satuan panjang → volume")),
       tambah("dari", ...kartu("e1", 12, 40, 276, 30, W.langit, ["km  hm  dam  m  dm  cm  mm"], 10.4)),
@@ -226,9 +218,9 @@ export const ADEGAN_CM3_M3: AdeganStory = {
       tambah("Liter", teks("e3", 150, 142, "satuan panjang dipangkatkan tiga", 9, W.coklat)),
     ),
     k(
-      "Miskonsepsi: satu meter seratus sentimeter, lalu murid mengira satu meter kubik seratus sentimeter kubik. Yang benar seratus kali seratus kali seratus, yaitu satu juta sentimeter kubik.",
+      "Hati-hati, kesalahan yang sering terjadi: satu meter seratus sentimeter, lalu mengira satu meter kubik seratus sentimeter kubik. Yang benar seratus kali seratus kali seratus, yaitu satu juta sentimeter kubik.",
       bersih(0),
-      tambah(0, judul("Miskonsepsi konversi")),
+      tambah(0, judul("Hati-hati: konversi satuan")),
       tambah("satu", ...kartu("f1", 12, 36, 276, 30, W.langit, ["1 m = 100 cm"], 10.4)),
       tambah("mengira", ...kartu("f2", 12, 74, 276, 30, W.merahMuda, ["1 m³ bukan 100 cm³"], 10.4)),
       tambah("benar", ...kartu("f3", 12, 112, 276, 30, W.hijauMuda, ["100 × 100 × 100 = 1.000.000"], 10.4)),
@@ -243,7 +235,7 @@ const PUSAT_ABCD = [44, 110, 176, 250];
 export const ADEGAN_KUBUS_MENCOBA: AdeganStory = {
   id: "kubus-mencoba",
   judul: "Menghitung kubus satuan",
-  sumber: "Buku Siswa hlm. 135–136; Panduan Guru hlm. 161",
+  sumber: "Materi: menghitung kubus satuan",
   latar: "#FFFBEB",
   kutipan: [
     "Tentukan volume bangun berikut dengan cermat.",
@@ -273,7 +265,7 @@ export const ADEGAN_KUBUS_MENCOBA: AdeganStory = {
       tambah("Jadi", ...kartu("h2", 30, 140, 240, 34, W.krem, ["3 + 2 + 4 = 9 cm³"], 11)),
     ),
     k(
-      "Ayo berlatih: volume bangun A sembilan, B delapan, C dua belas, dan D delapan belas sentimeter kubik. Tidak ada dua bangun yang volumenya sama.",
+      "Latihan: volume bangun A sembilan, B delapan, C dua belas, dan D delapan belas sentimeter kubik. Tidak ada dua bangun yang volumenya sama.",
       bersih(0),
       tambah(0, judul("Bangun A, B, C, D")),
       ...BARIS_ABCD.map((h, i) => tambah(["sembilan", "delapan", "dua", "delapan@2"][i], ...kubusDi(`m${h}`, h, PUSAT_ABCD[i], 100, 9), teks(`m${h}t`, PUSAT_ABCD[i], 120, `${h}: ${["9", "8", "12", "18"][i]} cm³`, 9.2, W.biru))),

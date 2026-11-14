@@ -11,7 +11,7 @@ const IKON_METODE = ["🟩", "🪑", "📏", "🔢"];
 const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana cara mengukur luas? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana cara mengukur luas? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari materi tadi.";
 const SUARA_O2 = "Empat metode itu: Area as Covering, Array Area, Nonstandard then Standard, dan Grid Count.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Luas sebagai Menutupi, Luas Susunan, Tak Baku ke Baku, dan Hitung Petak.";
 const SUARA_O4 = "Semuanya menjawab satu pertanyaan, berapa luasnya? Dengan menutupi daerah, menyusun baris dan kolom, berpindah ke satuan baku, dan menghitung petak.";
@@ -19,7 +19,7 @@ const SUARA_O4 = "Semuanya menjawab satu pertanyaan, berapa luasnya? Dengan menu
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk mengukur luas",
-  sumber: "Metode luar: pembuka; angka Buku Siswa hlm. 105–121",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -101,8 +101,8 @@ export const ADEGAN_LUAR_COVER: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Area as Covering: penerapan pada bangun A sampai D (Buku Siswa hlm. 114) ------------------------------ */
-const SUARA_D1 = "Terapkan pada mainan bongkar pasang di buku. Bangun C ditutupi persegi satuan yang sama besar, rapat, tanpa celah.";
+/* ------------------------------ 3. Area as Covering: penerapan pada bangun A sampai D ------------------------------ */
+const SUARA_D1 = "Terapkan pada mainan bongkar pasang tadi. Bangun C ditutupi persegi satuan yang sama besar, rapat, tanpa celah.";
 const SUARA_D2 = "Hitung penutupnya: satu, dua, empat, dua, dan dua, jadi sebelas satuan. Luas bangun C adalah sebelas persegi satuan.";
 const SUARA_D3 = "Bangun lain dengan satuan yang sama: A tiga belas, B tiga belas, C sebelas, dan D lima belas. Makin banyak penutupnya, makin luas bangunnya.";
 const SUARA_D4 = "Bandingkan dengan meja guru. Ditutup uang kertas, ada dua puluh satu. Ditutup kertas origami, ada dua belas. Satuannya berbeda, banyaknya berbeda.";
@@ -110,7 +110,7 @@ const SUARA_D4 = "Bandingkan dengan meja guru. Ditutup uang kertas, ada dua pulu
 export const ADEGAN_LUAR_COVER_TERAPAN: AdeganStory = {
   id: "luar-cover-terapan",
   judul: "Area as Covering pada bangun C dan meja guru",
-  sumber: "Metode luar: Area as Covering; Buku Siswa hlm. 108, 109, 114",
+  sumber: "Metode luar: Area as Covering",
   latar: "#ECFDF5",
   ketukan: [
     k(
@@ -195,7 +195,7 @@ export const ADEGAN_LUAR_SUSUN: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 5. Array Area: penerapan pada meja dan kertas lipat (Buku Siswa hlm. 108, 109, 114) ------------------------------ */
+/* ------------------------------ 5. Array Area: penerapan pada meja dan kertas lipat ------------------------------ */
 const SUARA_F1 = "Meja lipat kecil: dua kolom dan empat baris uang kertas. Luasnya dua dikali empat, sama dengan delapan satuan.";
 const SUARA_F2 = "Meja guru: tiga kolom dan tujuh baris. Luasnya tiga dikali tujuh, sama dengan dua puluh satu satuan.";
 const SUARA_F3 = "Kertas lipat: dua baris dan dua kolom menghasilkan empat petak. Empat baris dan empat kolom menghasilkan enam belas petak.";
@@ -204,7 +204,7 @@ const SUARA_F4 = "Satu meter persegi: seratus baris dan seratus kolom sentimeter
 export const ADEGAN_LUAR_SUSUN_TERAPAN: AdeganStory = {
   id: "luar-susun-terapan",
   judul: "Array Area pada meja, kertas lipat, dan meter persegi",
-  sumber: "Metode luar: Array Area; Buku Siswa hlm. 108, 109, 113, 117",
+  sumber: "Metode luar: Array Area",
   latar: "#F5F3FF",
   ketukan: [
     k(

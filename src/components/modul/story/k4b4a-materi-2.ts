@@ -12,12 +12,12 @@ export const MEJA = {
 const SUARA_M1 = "Ayo Mengamati. Ukuran permukaan meja lipat kecil dan meja guru berbeda. Helen mengukur luas permukaan keduanya dengan satuan tidak baku, memakai benda yang ukurannya sama.";
 const SUARA_M2 = "Bendanya boleh uang kertas, kertas origami, atau kartu bergambar hewan. Yang penting, semua benda yang dipakai untuk mengukur berukuran sama.";
 const SUARA_M3 = "Dalam percakapan, Bapak guru bertanya: dapatkah Helen menentukan luas permukaan meja siswa dan meja guru? Helen menjawab: bisa, dengan uang kertas.";
-const SUARA_M4 = "Panduan guru menekankan bahwa satuan tidak baku itu banyak, tidak tunggal. Guru boleh meminta murid menyebut benda lain, misalnya sampul CD.";
+const SUARA_M4 = "Ingat, satuan tidak baku itu banyak, tidak tunggal. Coba sebutkan benda lain yang bisa dipakai, misalnya sampul CD.";
 
 export const ADEGAN_AMATI_SATUAN: AdeganStory = {
   id: "amati-satuan",
   judul: "Ayo Mengamati: mengukur meja dengan satuan tidak baku",
-  sumber: "Buku Siswa hlm. 107; Panduan Guru hlm. 150",
+  sumber: "Materi: mengukur meja, satuan tidak baku",
   latar: "#F0F9FF",
   kutipan: [
     "Ayo Mengamati",
@@ -62,9 +62,9 @@ export const ADEGAN_AMATI_SATUAN: AdeganStory = {
     k(
       SUARA_M4,
       bersih(0),
-      tambah(0, judul("Catatan untuk guru")),
+      tambah(0, judul("Satuan tidak baku itu banyak")),
       tambah("banyak,", ...kartu("c1", 20, 34, 260, 40, W.hijauMuda, ["satuan tidak baku itu banyak,", "tidak tunggal"], 9)),
-      tambah("benda", ...kartu("c2", 20, 88, 260, 34, W.krem, ["minta murid menyebut benda lain"], 9)),
+      tambah("benda", ...kartu("c2", 20, 88, 260, 34, W.krem, ["sebutkan benda lain yang bisa dipakai"], 9)),
       tambah("CD.", emo("c3", 150, 168, "💿", 30)),
     ),
   ],
@@ -79,7 +79,7 @@ const SUARA_A4 = "Jadi satu uang kertas dapat juga disebut satu satuan luas. Lua
 export const ADEGAN_KEGIATAN_A1: AdeganStory = {
   id: "kegiatan-a1",
   judul: "Kegiatan A.1: uang kertas sebagai satuan luas",
-  sumber: "Buku Siswa hlm. 108",
+  sumber: "Materi: uang kertas sebagai satuan luas",
   latar: "#F0FDF4",
   kutipan: [
     "Perhatikan Kegiatan A.1 berikut dengan cermat.",
@@ -132,15 +132,15 @@ export const ADEGAN_KEGIATAN_A1: AdeganStory = {
 /* ------------------------------ 7. Kegiatan A.2: kertas origami, kesimpulan, dan satuan luas (Buku Siswa hlm. 109–111) ------------------------------ */
 const SUARA_B1 = "Kegiatan A dua memakai kertas origami sebagai satuan luas. Meja lipat kecil ditutupi dua kolom dan dua baris origami, jadi ada empat kertas origami.";
 const SUARA_B2 = "Meja guru ditutupi tiga kolom dan empat baris origami, jadi ada dua belas kertas origami. Satu kertas origami juga disebut satu satuan luas.";
-const SUARA_B3 = "Kesimpulan buku: mejanya sama, jadi luasnya sama. Kegiatan A satu: delapan dan dua puluh satu satuan luas. Kegiatan A dua: empat dan dua belas.";
+const SUARA_B3 = "Kesimpulan: mejanya sama, jadi luasnya sama. Kegiatan A satu: delapan dan dua puluh satu satuan luas. Kegiatan A dua: empat dan dua belas.";
 const SUARA_B4 = "Helen dan Slamet menjelaskan: bilangannya berbeda karena satuan luasnya berbeda, uang kertas dan kertas origami. Daerah yang sama dapat punya luas berbeda bila satuannya berbeda.";
 const SUARA_B5 = "Luas suatu permukaan dinyatakan dengan banyaknya satu satuan luas yang menutupinya tanpa celah. Satu uang kertas dan satu kertas origami masing-masing satu satuan luas.";
-const SUARA_B6 = "Catatan hitungan mandiri: pada meja kecil satu origami sama dengan dua uang kertas. Maka meja guru semestinya dua puluh empat uang kertas, bukan dua puluh satu. Gambar buku tidak seukuran.";
+const SUARA_B6 = "Perhatikan pola ini: satuan yang lebih besar, banyaknya lebih sedikit. Origami lebih besar daripada uang kertas, jadi untuk meja yang sama perlu lebih sedikit origami.";
 
 export const ADEGAN_KEGIATAN_A2: AdeganStory = {
   id: "kegiatan-a2",
   judul: "Kegiatan A.2: kertas origami dan kesimpulan",
-  sumber: "Buku Siswa hlm. 109–111",
+  sumber: "Materi: kertas origami dan kesimpulan",
   latar: "#FDF2F8",
   kutipan: [
     "Kegiatan A.2",
@@ -204,27 +204,26 @@ export const ADEGAN_KEGIATAN_A2: AdeganStory = {
     k(
       SUARA_B6,
       bersih(0),
-      tambah(0, judul("Catatan: dua meja tidak cocok")),
-      tambah("meja", ...kartu("f1", 14, 34, 272, 28, W.krem, ["meja kecil: 4 origami = 8 uang kertas"], 8.8)),
-      tambah("kecil", teks("f1b", 150, 80, "1 origami = 2 uang kertas", 9, W.biru)),
-      tambah("guru", ...kartu("f2", 14, 94, 272, 28, W.langit, ["meja guru: 12 origami"], 8.8)),
-      tambah("semestinya", teks("f3", 150, 148, "12 × 2 = 24 uang kertas", 10.4, W.hijau)),
-      tambah("satu@2", teks("f4", 150, 174, "buku menulis 21, bukan 24", 9, W.merah)),
+      tambah(0, judul("Satuan besar, hitungan sedikit")),
+      tambah("satuan", ...kartu("f1", 14, 34, 272, 28, W.krem, ["satuan lebih besar: banyaknya lebih sedikit"], 8.8)),
+      tambah("Origami", teks("f1b", 150, 80, "origami lebih besar dari uang kertas", 9, W.biru)),
+      tambah("sedikit", ...kartu("f2", 14, 94, 272, 28, W.langit, ["meja kecil: 4 origami, 8 uang kertas"], 8.8)),
+      tambah("perlu", teks("f3", 150, 148, "meja guru: 12 origami, 21 uang kertas", 9.4, W.hijau)),
     ),
   ],
 };
 
 /* ------------------------------ 8. Persegi satuan dan Aktivitas 2 (Buku Siswa hlm. 112–114; Panduan Guru hlm. 150–151) ------------------------------ */
 const SUARA_C1 = "Uang kertas dan kertas origami adalah satuan luas tidak baku. Satuan tidak baku juga dapat berupa persegi satuan, dan satuan yang dipakai harus seragam.";
-const SUARA_C2 = "Aktivitas dua, Konsep Luas dengan Persegi Satuan. Kelompok menyiapkan kertas HVS, buku tulis, gunting, dan penggaris, lalu memotong kertas HVS menjadi persegi.";
+const SUARA_C2 = "Aktivitas dua, Konsep Luas dengan Persegi Satuan. Kelompok menyiapkan kertas HVS, pensil, gunting, dan penggaris, lalu memotong kertas HVS menjadi persegi.";
 const SUARA_C3 = "Pertama, lipat kertas persegi menjadi empat bagian yang sama. Kedua, lipat menjadi enam belas bagian. Lalu coba persegi satuan yang lebih kecil lagi.";
-const SUARA_C4 = "Menurut buku, luas kertas pada langkah lima adalah empat persegi satuan, dan pada langkah enam enam belas persegi satuan.";
-const SUARA_C5 = "Panduan guru menegaskan: kertas HVS itu luasnya berbeda menurut persegi satuannya, misalnya empat atau enam belas persegi satuan.";
+const SUARA_C4 = "Amati luas kertasnya. Pada lipatan pertama luasnya empat persegi satuan, dan pada lipatan kedua enam belas persegi satuan.";
+const SUARA_C5 = "Jadi satu kertas HVS luasnya berbeda menurut persegi satuannya, misalnya empat atau enam belas persegi satuan.";
 
 export const ADEGAN_SATUAN_PERSEGI: AdeganStory = {
   id: "satuan-persegi",
   judul: "Persegi satuan dan Aktivitas 2",
-  sumber: "Buku Siswa hlm. 112–114; Panduan Guru hlm. 150–151",
+  sumber: "Materi: persegi satuan",
   latar: "#FFFBEB",
   kutipan: [
     "Uang kertas dan kertas origami merupakan satuan luas tidak baku.",
@@ -256,7 +255,7 @@ export const ADEGAN_SATUAN_PERSEGI: AdeganStory = {
       bersih(0),
       tambah(0, judul("Aktivitas 2: persegi satuan")),
       tambah("HVS,", ...kartu("q1", 10, 32, 136, 26, W.krem, ["kertas HVS"], 8.4)),
-      tambah("buku", ...kartu("q2", 154, 32, 136, 26, W.langit, ["buku tulis"], 8.4)),
+      tambah("pensil", ...kartu("q2", 154, 32, 136, 26, W.langit, ["pensil"], 8.4)),
       tambah("gunting,", ...kartu("q3", 10, 64, 136, 26, W.pink, ["gunting"], 8.4)),
       tambah("penggaris,", ...kartu("q4", 154, 64, 136, 26, W.hijauMuda, ["penggaris"], 8.4)),
       tambah("persegi.", ...sel("q5", 110, 104, penuh(1, 1), 80, W.krem), teks("q5t", 150, 150, "kertas HVS dipotong persegi", 8.4, W.biru)),
@@ -273,9 +272,9 @@ export const ADEGAN_SATUAN_PERSEGI: AdeganStory = {
       SUARA_C4,
       bersih(0),
       tambah(0, judul("Luas kertas lipatan")),
-      tambah("langkah", ...sel("s1", 40, 40, penuh(2, 2), 30, W.krem), teks("s3", 70, 118, "langkah 5", 8.4, W.coklat)),
+      tambah("lipatan", ...sel("s1", 40, 40, penuh(2, 2), 30, W.krem), teks("s3", 70, 118, "lipatan 1", 8.4, W.coklat)),
       tambah("empat", teks("s1t", 70, 130, "4 persegi satuan", 8.4, W.hijau)),
-      tambah("langkah@2", ...sel("s2", 180, 40, penuh(4, 4), 15, W.hijauMuda), teks("s4", 210, 118, "langkah 6", 8.4, W.coklat)),
+      tambah("lipatan@2", ...sel("s2", 180, 40, penuh(4, 4), 15, W.hijauMuda), teks("s4", 210, 118, "lipatan 2", 8.4, W.coklat)),
       tambah("belas", teks("s2t", 210, 130, "16 persegi satuan", 8.4, W.hijau)),
     ),
     k(

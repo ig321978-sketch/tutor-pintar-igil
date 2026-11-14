@@ -206,16 +206,16 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
 };
 
 /* ------------------------------ 4. Aktivitas 1: Konsep Luas (Buku Siswa hlm. 105–106; Panduan Guru hlm. 149–150) ------------------------------ */
-const SUARA_AK1 = "Aktivitas satu, Konsep Luas. Buat kelompok tiga sampai empat orang. Kertas origami, buku tulis, dan uang kertas mainan dipakai menutupi karton kecil dan besar.";
-const SUARA_AK2 = "Langkah dua sampai empat: letakkan kertas origami pada karton kecil sampai menutupinya tanpa celah. Ulangi dengan buku tulis, lalu uang kertas mainan.";
-const SUARA_AK3 = "Langkah lima dan enam: ulangi pada karton besar, hitung banyaknya tiap benda, lalu catat dalam tabel. Isinya hasil kelompok sendiri, jadi tidak ada kunci angka.";
-const SUARA_AK4 = "Langkah tujuh: bandingkan banyaknya origami, buku tulis, dan uang kertas pada karton kecil, lalu karton besar. Apakah sama? Kelompok menulis kesimpulan.";
-const SUARA_AK5 = "Panduan guru menekankan: satuan harus menutupi seluruh karton tanpa celah, dan satuan yang dipilih harus seragam. Terakhir, hasil dipresentasikan.";
+const SUARA_AK1 = "Aktivitas satu, Konsep Luas. Buat kelompok tiga sampai empat orang. Kertas origami, kartu pos, dan uang kertas mainan dipakai menutupi karton kecil dan besar.";
+const SUARA_AK2 = "Pertama, letakkan kertas origami pada karton kecil sampai menutupinya tanpa celah. Ulangi dengan kartu pos, lalu uang kertas mainan.";
+const SUARA_AK3 = "Berikutnya, ulangi pada karton besar, hitung banyaknya tiap benda, lalu catat dalam tabel. Isinya hasil kelompok sendiri, jadi angkanya boleh berbeda antar kelompok.";
+const SUARA_AK4 = "Sekarang bandingkan banyaknya origami, kartu pos, dan uang kertas pada karton kecil, lalu karton besar. Apakah sama? Kelompok menulis kesimpulan.";
+const SUARA_AK5 = "Ingat dua hal: satuan harus menutupi seluruh karton tanpa celah, dan satuan yang dipilih harus seragam. Terakhir, hasil dipresentasikan.";
 
 export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
   id: "aktivitas-satu",
   judul: "Aktivitas 1: Konsep Luas",
-  sumber: "Buku Siswa hlm. 105–106; Panduan Guru hlm. 149–150",
+  sumber: "Materi: Konsep Luas",
   latar: "#F0F9FF",
   kutipan: [
     "Aktivitas 1 : Konsep Luas",
@@ -240,7 +240,7 @@ export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
       tambah(0, judul("Aktivitas 1: Konsep Luas")),
       tambah("kelompok", emo("ag", 150, 66, "👥", 30)),
       tambah("origami,", ...kartu("a1", 10, 90, 86, 26, W.pink, ["kertas origami"], 8)),
-      tambah("buku", ...kartu("a2", 107, 90, 86, 26, W.krem, ["buku tulis"], 8)),
+      tambah("kartu", ...kartu("a2", 107, 90, 86, 26, W.krem, ["kartu pos"], 8)),
       tambah("mainan", ...kartu("a3", 204, 90, 86, 26, W.hijauMuda, ["uang mainan"], 8)),
       tambah("karton", ...kartu("a4", 40, 130, 220, 34, W.jingga, ["karton kecil dan karton besar"], 9)),
     ),
@@ -249,15 +249,15 @@ export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
       bersih(0),
       tambah(0, judul("Menutupi karton kecil")),
       tambah("origami", kotak("ka", 20, 40, 100, 70, W.jingga, W.coklat), ...[0, 1, 2, 3, 4, 5].map((n) => kotak(`ko${n}`, 20 + (n % 3) * 33.3, 40 + Math.floor(n / 3) * 35, 33.3, 35, W.pink, W.biru, { rx: 0, tebal: 0.8 }))),
-      tambah("buku", kotak("kb", 180, 40, 100, 70, W.jingga, W.coklat), ...[0, 1].map((n) => kotak(`kbu${n}`, 180 + n * 50, 40, 50, 70, W.krem, W.biru, { rx: 0, tebal: 0.8 }))),
-      tambah("uang", teks("kt1", 70, 128, "origami", 8.6, W.biru), teks("kt2", 230, 128, "buku tulis", 8.6, W.biru)),
+      tambah("kartu", kotak("kb", 180, 40, 100, 70, W.jingga, W.coklat), ...[0, 1].map((n) => kotak(`kbu${n}`, 180 + n * 50, 40, 50, 70, W.krem, W.biru, { rx: 0, tebal: 0.8 }))),
+      tambah("uang", teks("kt1", 70, 128, "origami", 8.6, W.biru), teks("kt2", 230, 128, "kartu pos", 8.6, W.biru)),
       tambah("celah.", teks("kt3", 150, 168, "tanpa celah", 10, W.hijau)),
     ),
     k(
       SUARA_AK3,
       bersih(0),
       tambah(0, judul("Hasil dicatat dalam tabel")),
-      tambah("karton", ...tabel("tb", 10, 36, [58, 70, 70, 82], [["Karton", "Origami", "Buku tulis", "Uang mainan"], ["Kecil", "?", "?", "?"], ["Besar", "?", "?", "?"]], 22, 8.4)),
+      tambah("karton", ...tabel("tb", 10, 36, [58, 70, 70, 82], [["Karton", "Origami", "Kartu pos", "Uang mainan"], ["Kecil", "?", "?", "?"], ["Besar", "?", "?", "?"]], 22, 8.4)),
       tambah("catat", emo("ta", 150, 130, "📝", 30)),
       tambah("sendiri,", teks("tc", 150, 166, "isi tabel = hasil kelompok", 9, W.merah)),
     ),
@@ -273,7 +273,7 @@ export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
     k(
       SUARA_AK5,
       bersih(0),
-      tambah(0, judul("Pesan untuk guru")),
+      tambah(0, judul("Dua hal yang diingat")),
       tambah("seluruh", ...kartu("pc1", 10, 34, 136, 56, W.hijauMuda, ["menutupi seluruh", "karton:", "tanpa celah"], 8.6)),
       tambah("seragam.", ...kartu("pc2", 154, 34, 136, 56, W.langit, ["satuan yang dipilih", "harus seragam"], 8.6)),
       tambah("Terakhir,", ...kartu("pc3", 40, 108, 220, 32, W.krem, ["presentasi hasil di depan kelas"], 9)),

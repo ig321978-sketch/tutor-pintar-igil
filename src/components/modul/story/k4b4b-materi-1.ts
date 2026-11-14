@@ -54,8 +54,8 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
 /* ------------------------------ 2. Aktivitas 3: konsep volume (Buku Siswa hlm. 122; Panduan Guru hlm. 156) ------------------------------ */
 export const ADEGAN_AKTIVITAS_3: AdeganStory = {
   id: "aktivitas-3",
-  judul: "Aktivitas 3: konsep volume",
-  sumber: "Buku Siswa hlm. 122; Panduan Guru hlm. 156",
+  judul: "Percobaan: konsep volume",
+  sumber: "Materi: konsep volume",
   latar: "#FFFBEB",
   kutipan: [
     "Aktivitas 3 : Konsep Volume",
@@ -70,9 +70,9 @@ export const ADEGAN_AKTIVITAS_3: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Aktivitas tiga, Konsep Volume. Kelompok tiga sampai empat orang menyiapkan botol minum, gelas, kotak makan, ember, dan air. Air dituang ke kotak makan memakai gelas sampai penuh.",
+      "Percobaan pertama, konsep volume. Kelompok tiga sampai empat orang menyiapkan botol minum, gelas, kotak makan, ember, dan air. Air dituang ke kotak makan memakai gelas sampai penuh.",
       bersih(0),
-      tambah(0, judul("Aktivitas 3: Konsep Volume")),
+      tambah(0, judul("Percobaan: Konsep Volume")),
       tambah("botol", emo("a1", 40, 84, "🍼", 30), emo("a2", 100, 84, "🥛", 30), emo("a3", 160, 84, "📦", 30), emo("a4", 220, 84, "💧", 30)),
       tambah("botol", teks("a1t", 40, 100, "botol", 8, W.coklat), teks("a2t", 100, 100, "gelas", 8, W.coklat), teks("a3t", 160, 100, "kotak makan", 8, W.coklat), teks("a4t", 220, 100, "air", 8, W.coklat)),
       tambah("gelas", ...kartu("a5", 30, 130, 240, 34, W.langit, ["tuang air memakai gelas", "sampai kotak makan penuh"], 8.6)),
@@ -86,10 +86,10 @@ export const ADEGAN_AKTIVITAS_3: AdeganStory = {
       tambah("sama?", ...kartu("b3", 40, 120, 220, 36, W.pink, ["banyak tuangan sama?"], 10)),
     ),
     k(
-      "Panduan Guru: uji coba dulu ukuran gelas dan botol, lalu presentasikan hasilnya.",
+      "Sebelum mulai, coba dulu ukuran gelas dan botol agar pas, lalu presentasikan hasilnya di depan kelas.",
       ...daftar("c", "Hasil kelompok", [
-        { at: "uji", t: "Guru: uji coba ukuran lebih dulu", w: W.krem, u: 8.8 },
-                { at: "presentasikan", t: "presentasikan di depan kelas", w: W.hijauMuda, u: 9 },
+        { at: "coba", t: "coba ukuran gelas lebih dulu", w: W.krem, u: 8.8 },
+        { at: "presentasikan", t: "presentasikan di depan kelas", w: W.hijauMuda, u: 9 },
       ]),
     ),
   ],
@@ -99,7 +99,7 @@ export const ADEGAN_AKTIVITAS_3: AdeganStory = {
 export const ADEGAN_SABUN: AdeganStory = {
   id: "sabun",
   judul: "Botol sabun A, B, dan C: satuan tidak baku",
-  sumber: "Buku Siswa hlm. 123–125; Panduan Guru hlm. 157",
+  sumber: "Materi: satuan tidak baku",
   latar: "#F0FDF4",
   kutipan: [
     "Ibu Helen memiliki 3 macam botol sabun cair.",
@@ -122,17 +122,17 @@ export const ADEGAN_SABUN: AdeganStory = {
       tambah("kecil", emo("sc", 238, 100, "🧴", 22), teks("scl", 238, 142, "C", 12, W.biru)),
     ),
     k(
-      "Kegiatan B satu: botol A diisi dengan sabun dari botol B. Volume botol A sama dengan empat buah botol B.",
+      "Pertama, botol A diisi dengan sabun dari botol B. Volume botol A sama dengan empat buah botol B.",
       bersih(0),
-      tambah(0, judul("Kegiatan B.1")),
+      tambah(0, judul("Isi dengan botol B")),
       tambah(0, emo("ka", 44, 110, "🧴", 54), teks("kal", 44, 134, "A", 11, W.biru)),
       tambah("empat", ...[0, 1, 2, 3].map((i) => emo(`kb${i}`, 118 + i * 38, 100, "🧴", 30)), teks("kbl", 192, 124, "4 botol B", 10, W.biru)),
       tambah("sama", ...kartu("kk", 50, 150, 200, 30, W.krem, ["A = 4 botol B"], 10.4)),
     ),
     k(
-      "Kegiatan B dua: botol A diisi dari botol C. Volume botol A sama dengan sepuluh buah botol C.",
+      "Kedua, botol A diisi dari botol C. Volume botol A sama dengan sepuluh buah botol C.",
       bersih(0),
-      tambah(0, judul("Kegiatan B.2")),
+      tambah(0, judul("Isi dengan botol C")),
       tambah(0, emo("la", 44, 110, "🧴", 54), teks("lal", 44, 134, "A", 11, W.biru)),
       tambah("sepuluh", ...[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => emo(`lc${i}`, 108 + (i % 5) * 34, 78 + Math.floor(i / 5) * 40, "🧴", 22)), teks("lcl", 190, 148, "10 botol C", 10, W.biru)),
       tambah("sama", ...kartu("lk", 50, 160, 200, 30, W.krem, ["A = 10 botol C"], 10.4)),
@@ -165,8 +165,8 @@ const BARIS_LATIH = SATUAN.flatMap((s, i) => [
 ]);
 export const ADEGAN_BERLATIH_1: AdeganStory = {
   id: "berlatih-1",
-  judul: "Ayo Berlatih: botol besar dan botol kecil",
-  sumber: "Buku Siswa hlm. 126–128; Panduan Guru hlm. 157",
+  judul: "Latihan: botol besar dan botol kecil",
+  sumber: "Materi: satuan tidak baku",
   latar: "#FFF7ED",
   kutipan: [
     "Ibu Helen mempunyai satu botol besar hand sanitizer.",
@@ -180,7 +180,7 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo berlatih. Ibu Helen menuang satu botol besar hand sanitizer ke botol kecil sampai habis. Hasilnya delapan botol kecil terisi penuh, jadi volume botol besar adalah delapan satuan volume.",
+      "Latihan satu. Ibu Helen menuang satu botol besar hand sanitizer ke botol kecil sampai habis. Hasilnya delapan botol kecil terisi penuh, jadi volume botol besar adalah delapan satuan volume.",
       bersih(0),
       tambah(0, judul("Hand sanitizer")),
       tambah("botol@1", emo("hs0", 50, 118, "🧴", 60)),
@@ -190,17 +190,17 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
       tambah("jadi", ...kartu("hu", 30, 168, 240, 28, W.krem, ["1 botol besar = 8 satuan volume"], 9.4)),
     ),
     k(
-      "Soal satu: hubungkan botol berlabel lima, tujuh, tiga, satu, dan dua satuan volume dengan kelompok botol kecil sebanyak itu.",
+      "Sekarang hubungkan botol berlabel lima, tujuh, tiga, satu, dan dua satuan volume dengan kelompok botol kecil sebanyak itu.",
       bersih(0),
-      tambah(0, judul("Soal 1: hubungkan")),
+      tambah(0, judul("Latihan 1: hubungkan")),
       tambah("lima,", ...BARIS_LATIH.filter((o) => o.id.endsWith("0"))),
       tambah("tujuh,", ...BARIS_LATIH.filter((o) => o.id.endsWith("1"))),
       tambah("tiga,", ...BARIS_LATIH.filter((o) => o.id.endsWith("2"))),
-      tambah("satu@2", ...BARIS_LATIH.filter((o) => o.id.endsWith("3"))),
+      tambah("satu", ...BARIS_LATIH.filter((o) => o.id.endsWith("3"))),
       tambah("dua", ...BARIS_LATIH.filter((o) => o.id.endsWith("4"))),
     ),
     k(
-      "Soal dua dan tiga: paling sedikit satu satuan, yaitu d, paling banyak tujuh satuan, yaitu b. Urutannya d, e, c, a, lalu b.",
+      "Sekarang cari yang paling sedikit: satu satuan, yaitu d. Yang paling banyak tujuh satuan, yaitu b. Urutannya d, e, c, a, lalu b.",
       ubah("sedikit", { id: "lbd3", warna: W.hijau, sorot: true }, { id: "lbn3", warna: W.hijau }),
       ubah("banyak", { id: "lbd1", warna: W.merah, sorot: true }, { id: "lbn1", warna: W.merah }),
       tambah("Urutannya", teks("lbu", 150, 192, "d, e, c, a, b: 1, 2, 3, 5, 7", 9.4, W.ungu)),
@@ -212,7 +212,7 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
 export const ADEGAN_SATUAN_BAKU: AdeganStory = {
   id: "satuan-baku",
   judul: "Satuan baku: liter dan mililiter",
-  sumber: "Buku Siswa hlm. 128–131; Panduan Guru hlm. 158",
+  sumber: "Materi: satuan baku liter dan mililiter",
   latar: "#EFF6FF",
   kutipan: [
     "Pengukuran volume dengan menggunakan satuan baku",

@@ -54,15 +54,15 @@ export const ADEGAN_LUAR_TAK_BAKU: AdeganStory = {
 };
 
 /* ------------------------------ 7. Nonstandard then Standard: penerapan (Buku Siswa hlm. 115, 118, 120) ------------------------------ */
-const SUARA_H1 = "Di buku, gambar a memakai petak kecil dan luasnya tiga belas satuan. Gambar b memakai petak besar dan luasnya empat satuan. Karena satuannya berbeda, kita tidak bisa menyebut mana yang lebih luas.";
-const SUARA_H2 = "Ganti dengan satuan baku: tiap petak satu sentimeter persegi. Dua bangun pada soal di buku sama-sama tiga belas sentimeter persegi, jadi bisa dibandingkan.";
-const SUARA_H3 = "Pilih satuan baku yang cocok. Lapangan bola dan kolam renang memakai meter persegi, sedangkan bingkai dan buku tulis memakai sentimeter persegi.";
+const SUARA_H1 = "Perhatikan, gambar a memakai petak kecil dan luasnya tiga belas satuan. Gambar b memakai petak besar dan luasnya empat satuan. Karena satuannya berbeda, kita tidak bisa menyebut mana yang lebih luas.";
+const SUARA_H2 = "Ganti dengan satuan baku: tiap petak satu sentimeter persegi. Dua bangun pada latihan tadi sama-sama tiga belas sentimeter persegi, jadi bisa dibandingkan.";
+const SUARA_H3 = "Pilih satuan baku yang cocok. Lapangan bola dan kolam renang memakai meter persegi, sedangkan bingkai dan kartu pos memakai sentimeter persegi.";
 const SUARA_H4 = "Pindah satuan: dua meter persegi sama dengan dua puluh ribu sentimeter persegi. Dikali seratus saja belum benar, harus dikali seratus sebanyak dua kali.";
 
 export const ADEGAN_LUAR_TAK_BAKU_TERAPAN: AdeganStory = {
   id: "luar-tak-baku-terapan",
-  judul: "Tak Baku ke Baku pada bangun di buku",
-  sumber: "Metode luar: Nonstandard then Standard; Buku Siswa hlm. 115, 117–118, 120",
+  judul: "Tak Baku ke Baku pada bangun berpetak",
+  sumber: "Metode luar: Nonstandard then Standard",
   latar: "#FEF3C7",
   ketukan: [
     k(
@@ -86,7 +86,7 @@ export const ADEGAN_LUAR_TAK_BAKU_TERAPAN: AdeganStory = {
       tambah(0, judul("Pilih satuan yang cocok")),
       tambah("Lapangan", emo("j1", 40, 70, "⚽", 30), emo("j2", 100, 70, "🏊", 30)),
       tambah("meter", ...kartu("jm", 20, 90, 110, 30, W.hijauMuda, ["meter persegi"], 8.8)),
-      tambah("bingkai", emo("j3", 190, 70, "🖼", 30), emo("j4", 250, 70, "📓", 30)),
+      tambah("bingkai", emo("j3", 190, 70, "🖼", 30), emo("j4", 250, 70, "📮", 30)),
       tambah("sentimeter", ...kartu("jc", 170, 90, 110, 30, W.krem, ["sentimeter persegi"], 8.8)),
     ),
     k(
@@ -146,15 +146,15 @@ export const ADEGAN_LUAR_PETAK: AdeganStory = {
 };
 
 /* ------------------------------ 9. Grid Count: penerapan (Buku Siswa hlm. 118 dan 121) ------------------------------ */
-const SUARA_J1 = "Bangun kedua pada soal di buku. Beri nomor satu sampai tiga belas. Nomor terakhir, tiga belas, adalah luasnya dalam sentimeter persegi.";
-const SUARA_J2 = "Soal nomor dua di buku, bangun yang diarsir. Nomor dari kiri ke kanan berakhir di dua belas, jadi luasnya dua belas sentimeter persegi.";
-const SUARA_J3 = "Soal nomor tiga di buku, segitiga pada kisi. Petak penuh ada enam, dan setengah petak ada enam.";
-const SUARA_J4 = "Enam setengah petak digabung menjadi tiga petak penuh. Enam ditambah tiga sama dengan sembilan sentimeter persegi, sama dengan kunci buku.";
+const SUARA_J1 = "Bangun kedua pada latihan tadi. Beri nomor satu sampai tiga belas. Nomor terakhir, tiga belas, adalah luasnya dalam sentimeter persegi.";
+const SUARA_J2 = "Latihan dua tadi, bangun yang diarsir. Nomor dari kiri ke kanan berakhir di dua belas, jadi luasnya dua belas sentimeter persegi.";
+const SUARA_J3 = "Latihan tiga tadi, segitiga pada kisi. Petak penuh ada enam, dan setengah petak ada enam.";
+const SUARA_J4 = "Enam setengah petak digabung menjadi tiga petak penuh. Enam ditambah tiga sama dengan sembilan sentimeter persegi, sama seperti hitungan tadi.";
 
 export const ADEGAN_LUAR_PETAK_TERAPAN: AdeganStory = {
   id: "luar-petak-terapan",
-  judul: "Grid Count pada bangun hlm. 118 dan 121",
-  sumber: "Metode luar: Grid Count; Buku Siswa hlm. 118, 121",
+  judul: "Grid Count pada bangun berpetak",
+  sumber: "Metode luar: Grid Count",
   latar: "#FFF1F2",
   ketukan: [
     k(
@@ -186,14 +186,14 @@ export const ADEGAN_LUAR_PETAK_TERAPAN: AdeganStory = {
       tambah(0, judul("Gabungkan setengah petak")),
       tambah("Enam", ...kartu("ug1", 20, 40, 260, 34, W.krem, ["6 setengah petak = 3 petak penuh"], 9)),
       tambah("ditambah", teks("ug2", 150, 108, "6 + 3 = 9 cm²", 14, W.hijau)),
-      tambah("kunci", ...kartu("ug3", 50, 134, 200, 32, W.hijauMuda, ["sama dengan kunci buku: 9 cm²"], 9)),
+      tambah("hitungan", ...kartu("ug3", 50, 134, 200, 32, W.hijauMuda, ["sama seperti hitungan tadi: 9 cm²"], 9)),
     ),
   ],
 };
 
 /* ------------------------------ 10. Ringkasan metode luar ------------------------------ */
 const SUARA_R1 = "Ringkasnya, empat metode dari luar: menutupi daerah, menyusun baris dan kolom, berpindah dari satuan tak baku ke baku, dan menghitung petak.";
-const SUARA_R2 = "Angka buku yang dipakai tadi: bangun A sampai D tiga belas, tiga belas, sebelas, dan lima belas; kunci dua belas dan sembilan sentimeter persegi; serta satu meter persegi sama dengan sepuluh ribu sentimeter persegi.";
+const SUARA_R2 = "Angka yang dipakai tadi: bangun A sampai D tiga belas, tiga belas, sebelas, dan lima belas; bangun diarsir dua belas dan segitiga sembilan sentimeter persegi; serta satu meter persegi sama dengan sepuluh ribu sentimeter persegi.";
 const SUARA_R3 = "Pilih metode menurut bentuknya: susunan penuh pakai baris dikali kolom, bentuk bebas pakai hitung petak, dan selalu sebutkan satuannya.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
@@ -210,8 +210,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_R2,
       bersih(0),
-      tambah(0, judul("Angka buku yang dipakai")),
-      tambah("bangun", ...tabel("rt", 20, 34, [140, 120], [["bangun", "luas"], ["A, B, C, D", "13, 13, 11, 15"], ["diarsir (nomor 2)", "12 cm²"], ["segitiga (nomor 3)", "9 cm²"], ["1 m²", "10.000 cm²"]], 22, 8.6)),
+      tambah(0, judul("Angka yang dipakai")),
+      tambah("bangun", ...tabel("rt", 20, 34, [140, 120], [["bangun", "luas"], ["A, B, C, D", "13, 13, 11, 15"], ["bangun diarsir", "12 cm²"], ["segitiga", "9 cm²"], ["1 m²", "10.000 cm²"]], 22, 8.6)),
     ),
     k(
       SUARA_R3,

@@ -18,7 +18,7 @@ const naikkan = (at: string | number, id: string, x: number, y: number, level: n
 export const ADEGAN_LUAR_DI: AdeganStory = {
   id: "luar-di",
   judul: "Displacement Idea (Ide Pemindahan Air)",
-  sumber: "Metode luar: Displacement Idea (Ide Pemindahan Air)",
+  sumber: "Metode luar: Displacement Idea",
   latar: "#ECFEFF",
   ketukan: [
     k(
@@ -75,15 +75,15 @@ const ketukanDI = (i: number) => {
 };
 export const ADEGAN_LUAR_DI_TERAPAN: AdeganStory = {
   id: "luar-di-terapan",
-  judul: "Displacement Idea diterapkan pada bangun buku",
-  sumber: "Metode luar: Displacement Idea pada bangun Buku Siswa hlm. 135–136",
+  judul: "Displacement Idea pada bangun kubus",
+  sumber: "Metode luar: Displacement Idea terapan",
   latar: "#ECFEFF",
   ketukan: [
     ketukanDI(0),
     ketukanDI(1),
     ketukanDI(2),
     k(
-      "Dari kenaikan air kita membaca volume benda. Dua puluh empat mililiter berarti dua puluh empat sentimeter kubik, cocok dengan hitungan kubus di buku.",
+      "Dari kenaikan air kita membaca volume benda. Dua puluh empat mililiter berarti dua puluh empat sentimeter kubik, cocok dengan hitungan kubus tadi.",
       ...daftar("gf", "Kenaikan air = volume", [
         { at: "membaca", t: "A: 109 − 100 = 9 cm³", w: W.krem, u: 10.4 },
         { at: "Dua", t: "D: 118 − 100 = 18 cm³", w: W.hijauMuda, u: 10.4 },
@@ -98,7 +98,7 @@ export const ADEGAN_LUAR_DI_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_BR: AdeganStory = {
   id: "luar-br",
   judul: "Benchmark Referents (Patokan Benda Sehari-hari)",
-  sumber: "Metode luar: Benchmark Referents (Patokan Benda Sehari-hari)",
+  sumber: "Metode luar: Benchmark Referents",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -110,9 +110,9 @@ export const ADEGAN_LUAR_BR: AdeganStory = {
       tambah("bandingkan", emo("b3", 230, 112, "🥛", 40), teks("b3t", 230, 132, "mirip patokan?", 10, W.coklat)),
     ),
     k(
-      "Patokan dari buku: satu sendok lima mililiter, secangkir kopi dua ratus empat puluh mililiter, botol minuman tiga ratus tiga puluh mililiter, dan botol air mineral satu liter.",
+      "Beberapa patokan: satu sendok lima mililiter, secangkir kopi dua ratus empat puluh mililiter, botol minuman tiga ratus tiga puluh mililiter, dan botol air mineral satu liter.",
       bersih(0),
-      tambah(0, judul("Patokan dari buku")),
+      tambah(0, judul("Patokan benda sehari-hari")),
       tambah("sendok", emo("c1", 40, 100, "🥄", 34), teks("c1t", 40, 122, "5 ml", 10, W.biru)),
       tambah("secangkir", emo("c2", 112, 100, "☕", 34), teks("c2t", 112, 122, "240 ml", 10, W.biru)),
       tambah("minuman", emo("c3", 188, 100, "🥤", 34), teks("c3t", 188, 122, "330 ml", 10, W.biru)),
@@ -131,8 +131,8 @@ export const ADEGAN_LUAR_BR: AdeganStory = {
 /* ------------------------------ 9. Benchmark Referents: penerapan ------------------------------ */
 export const ADEGAN_LUAR_BR_TERAPAN: AdeganStory = {
   id: "luar-br-terapan",
-  judul: "Benchmark Referents diterapkan pada angka buku",
-  sumber: "Metode luar: Benchmark Referents, Buku Siswa hlm. 128–132",
+  judul: "Benchmark Referents pada ember dan susu",
+  sumber: "Metode luar: Benchmark Referents terapan",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -166,7 +166,7 @@ export const ADEGAN_LUAR_BR_TERAPAN: AdeganStory = {
 /* ------------------------------ 10. Ringkasan ------------------------------ */
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode dan kaitannya dengan buku",
+  judul: "Ringkasan empat metode dan satuan baku",
   sumber: "Ringkasan metode luar Sub-Bab B",
   latar: "#F0F9FF",
   ketukan: [
@@ -187,11 +187,11 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("Metodenya", ...kartu("s2", 20, 98, 260, 36, W.hijauMuda, ["metode beda, volume tetap sama"], 10)),
     ),
     k(
-      "Pakailah metode luar sebagai alat bantu, tetapi tetap pegang istilah dan satuan di Buku Siswa: mililiter, liter, sentimeter kubik, dan meter kubik.",
+      "Pakailah metode luar sebagai alat bantu, tetapi tetap pegang istilah dan satuan baku: mililiter, liter, sentimeter kubik, dan meter kubik.",
       bersih(0),
-      tambah(0, judul("Kembali ke buku")),
+      tambah(0, judul("Kembali ke satuan baku")),
       tambah("Pakailah", emo("rk", 150, 80, "📖", 44)),
-      tambah("satuan", ...kartu("rk1", 20, 100, 260, 32, W.langit, ["satuan di Buku Siswa"], 9.6)),
+      tambah("satuan", ...kartu("rk1", 20, 100, 260, 32, W.langit, ["satuan baku volume"], 9.6)),
       tambah("mililiter,", ...kartu("rk2", 20, 142, 260, 32, W.krem, ["ml · l · cm³ · m³"], 11)),
     ),
   ],
