@@ -1,30 +1,11 @@
 "use client";
 import React from "react";
-import { Papan, type PropsAdegan } from "./video-cerita";
-import { DaftarVideoCerita, buatAdegan, type VideoSiap } from "./video-k4b2-umum";
-import { AdeganVisual } from "./video-visual-adegan";
-import { SUB_B44 } from "./naskah-k4b4";
+import { DaftarVideoCerita } from "./daftar-video-cerita";
+import { keVideoSiap } from "./story/mesin-story";
+import { VIDEO_LUAR_K4B4B, VIDEO_MATERI_K4B4B } from "./story/k4b4b-video";
 
-/* Visual diagram/animasi seirama ketukan suara — AdeganVisual (bukan teks besar). */
-const KODE = "k4b4b";
-const papan = (v: number, a: number) => SUB_B44.videos[v].adegan[a].papan;
-
-function Adegan({ v, a }: { v: number; a: number }) {
-  return function Komponen({ k, t }: PropsAdegan) {
-    return (
-      <>
-        <Papan teks={papan(v, a)[k] ?? ""} />
-        <AdeganVisual kode={KODE} v={v} a={a} k={k} t={t} />
-      </>
-    );
-  };
-}
-
-const VIDEO: VideoSiap[] = [0, 1, 2].map((vi) => ({
-  naskah: SUB_B44.videos[vi],
-  poster: { a: 0, k: Math.min(2, SUB_B44.videos[vi].adegan[0].ketukan.length - 1) },
-  adegan: SUB_B44.videos[vi].adegan.map((ad, ai) => buatAdegan(ad, Adegan({ v: vi, a: ai }), { waktu: true, minimal: { 0: 3.5, 1: 5.5, 2: 4.5, 3: 4 } })),
-}));
+/* Sub-Bab B (Pengukuran Volume, penutup bab): dua video terpisah, Materi Kurikulum dan Metode Luar, dengan mesin animasi Story baru. */
+const VIDEO = [keVideoSiap(VIDEO_MATERI_K4B4B, { a: 0, k: 0 }), keVideoSiap(VIDEO_LUAR_K4B4B, { a: 1, k: 3 })];
 
 export function VideoK4B4B({ speakGuru }: { speakGuru: (teks: string) => void }) {
   return <DaftarVideoCerita videos={VIDEO} speakGuru={speakGuru} />;

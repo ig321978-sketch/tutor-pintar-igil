@@ -4,7 +4,6 @@ import React from "react";
 import { Muncul } from "./video-cerita";
 import {
   BandingSvg,
-  BangunLuas,
   BatangPecahanSvg,
   DeretSvg,
   GarisBilanganSvg,
@@ -13,7 +12,6 @@ import {
   PizzaSvg,
   PolaBentukSvg,
   SusunSvg,
-  VolumePetakSvg,
   progresDari,
   nyalaDariWaktu,
   nyalaSeirama,
@@ -139,28 +137,6 @@ export function visualK4(kode: string, v: number, a: number, k: number, t = 0): 
       <>
         <DeretSvg isi={deret} k={nyalaSeirama(k, t, deret.length, 1.2) - 1} judul={v === 1 ? "pola +2" : "pola +5"} />
         {k >= 3 ? <LabelSvg x={90} y={165} w={120} teks="suku berikutnya" ukuran={11} /> : null}
-      </>
-    );
-  }
-
-  if (bab === "k4b4") {
-    if (sub === "a" || v === 0) {
-      const kol = 4;
-      const bar = 3;
-      const total = kol * bar;
-      const nyala = k === 0 ? Math.max(1, Math.floor(p * total)) : k === 1 ? Math.min(total, 6 + Math.floor(p * 6)) : total;
-      return (
-        <>
-          <BangunLuas kolom={kol} baris={bar} nyala={nyala} />
-          {k >= 2 ? <LabelSvg x={95} y={160} w={110} teks="luas = petak" ukuran={12} warna={HIJAU} /> : null}
-          {k >= 3 ? <LabelSvg x={100} y={40} w={100} teks="4×3=12" ukuran={13} warna={MERAH} /> : null}
-        </>
-      );
-    }
-    return (
-      <>
-        <VolumePetakSvg k={Math.min(3, k + (p > 0.45 ? 1 : 0))} p={3} l={2} t={2} />
-        {k >= 2 ? <LabelSvg x={90} y={165} w={120} teks="volume petak" ukuran={12} /> : null}
       </>
     );
   }
