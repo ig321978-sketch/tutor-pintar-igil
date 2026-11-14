@@ -4,7 +4,6 @@ import React from "react";
 
 import {
   BandingSvg,
-  BangunLuas,
   BatangPecahanSvg,
   DeretSvg,
   LabelSvg,
@@ -110,36 +109,6 @@ export function visualK5(kode: string, v: number, a: number, k: number, t = 0): 
   }
 
   if (bab === "k5b4") return visualK5B4(sub, v, a, k, t);
-
-  if (bab === "k5b5") {
-    if (v === 0 || sub === "a") {
-      const total = 15;
-      const nyala = k === 0 ? Math.max(1, Math.floor(p * 8)) : k === 1 ? Math.min(total, 8 + Math.floor(p * 7)) : total;
-      return (
-        <>
-          <BangunLuas kolom={5} baris={3} nyala={nyala} />
-          {k >= 2 ? <LabelSvg x={95} y={155} w={110} teks="luas = isi" ukuran={12} warna={HIJAU} /> : null}
-          {k >= 3 ? <LabelSvg x={100} y={40} w={100} teks="bukan keliling" ukuran={11} warna={MERAH} /> : null}
-        </>
-      );
-    }
-    if (sub === "b") {
-      const nyala = k >= 2 ? 24 : Math.min(24, (k + 1) * 6 + Math.floor(p * 6));
-      return (
-        <>
-          <BangunLuas kolom={6} baris={4} nyala={nyala} ukuran={18} x={70} y={45} />
-          {k >= 2 || p > 0.7 ? <LabelSvg x={95} y={160} w={110} teks="p × l" ukuran={14} warna={HIJAU} /> : null}
-        </>
-      );
-    }
-    return (
-      <>
-        <BangunLuas kolom={4} baris={3} nyala={Math.min(12, k >= 1 ? 12 : Math.floor(p * 12))} x={40} y={50} ukuran={20} />
-        <BangunLuas kolom={3} baris={2} nyala={k >= 2 ? 6 : k >= 1 ? Math.floor(p * 6) : 0} x={160} y={70} ukuran={20} />
-        {k >= 3 ? <LabelSvg x={90} y={160} w={120} teks="luas gabungan" ukuran={12} /> : null}
-      </>
-    );
-  }
 
   return <PizzaSvg k={Math.max(0, nyalaDariWaktu(t, 4, 1.2) - 1)} q={4} p={1} />;
 }
