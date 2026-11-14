@@ -4,7 +4,6 @@ import React from "react";
 import { Muncul } from "./video-cerita";
 import {
   BandingSvg,
-  BangunKeliling,
   BangunLuas,
   BatangPecahanSvg,
   DeretSvg,
@@ -13,7 +12,6 @@ import {
   PapanDigit,
   PizzaSvg,
   PolaBentukSvg,
-  SegitigaKeliling,
   SusunSvg,
   VolumePetakSvg,
   progresDari,
@@ -163,28 +161,6 @@ export function visualK4(kode: string, v: number, a: number, k: number, t = 0): 
       <>
         <VolumePetakSvg k={Math.min(3, k + (p > 0.45 ? 1 : 0))} p={3} l={2} t={2} />
         {k >= 2 ? <LabelSvg x={90} y={165} w={120} teks="volume petak" ukuran={12} /> : null}
-      </>
-    );
-  }
-
-  if (bab === "k4b5") {
-    if (k === 0) {
-      return <BangunKeliling w={110} h={110} x={95} y={45} sisi={[1, 1, 1, 1]} label={false} tampilJumlah={false} outlineSaja jalan={p} />;
-    }
-    if (k === 1) {
-      return (
-        <>
-          <BangunKeliling x={40} y={55} w={90} h={90} sisi={[3, 3, 3, 3]} jalan={progresDari(t, 6)} tampilJumlah={p > 0.9} />
-          {p > 0.5 ? <LabelSvg x={40} y={165} w={90} teks="4 sisi" ukuran={12} /> : null}
-        </>
-      );
-    }
-    return (
-      <>
-        <BangunKeliling x={30} y={55} w={80} h={80} jalan={1} sisi={[3, 3, 3, 3]} tampilJumlah={false} />
-        <SegitigaKeliling sisi={[3, 4, 5]} jalan={progresDari(t, 5)} tampilJumlah={false} tandaSiku />
-        {k >= 2 ? <LabelSvg x={90} y={40} w={120} teks="3 sisi · siku" ukuran={11} /> : null}
-        {k >= 3 ? <LabelSvg x={80} y={40} w={140} teks="ciri bangun" ukuran={12} warna={HIJAU} /> : null}
       </>
     );
   }
