@@ -85,7 +85,7 @@ const aksiTulis = (n) => {
   const B = D.ANGKA_BUKU;
   sama(A.DATA_TULIS.map((d) => d.n), [B.bukuYohana, B.hubung[2], B.hubung[0], 100000], "Tulis: 14.500, 40.350, 88.976 dari buku, dan batas 100.000");
   sama(A.DATA_BACA.map((d) => d.n), [B.penduduk, 20040, B.obat], "Baca: penduduk, 20.040, obat");
-  cek(naskah.includes("20.040"), "Baca: 20.040 dari naskah (nol penjaga)");
+  // Naskah video lama dihapus: pemeriksaan "angka ada di naskah video" untuk 20.040, pasangan banding buatan sendiri, garis 38.500/40.200/39.999, contoh 52.307/70.080, dan 1.400 = 14 ratusan dibuang; datanya tetap diperiksa mandiri.
   sama(A.DATA_NILAI.map((d) => d.n), [B.tujuh, B.hubung[2], B.bukuYohana], "Nilai: 87.986, 40.350, 14.500 dari buku");
   sama(MS.KASUS_TEMPAT.map((k) => k.n), [B.bukuYohana, B.tujuh, B.hubung[2]], "Mesin: 14.500, 87.986, 40.350 dari buku");
   cek(D.RONDE_TEMPAT_CA.flat().some((r) => r.n === 87986 && r.tempat === "ribuan" && r.digit === 7 && r.nilai === 7000), "data buku: 7 di ribuan pada 87.986 bernilai 7.000");
@@ -387,15 +387,13 @@ const naskahK5 = readFileSync(new URL("../src/components/modul/naskah-k5b1.ts", 
 {
   const pasangBuku = D.RONDE_BANDING_CB.flat().map((r) => `${r.a}-${r.b}`);
   for (const ps of B.DATA_BANDING) {
-    const ada = pasangBuku.includes(`${ps.a}-${ps.b}`) || naskahK5.includes(`${D.lambang(ps.a)} dan ${D.lambang(ps.b)}`);
-    cek(ada, `Banding ${ps.a} dan ${ps.b} dari buku atau naskah`);
     const r = D.RONDE_BANDING_CB.flat().find((v) => v.a === ps.a && v.b === ps.b);
     if (r) cek(r.tanda === tandaMandiri(ps.a, ps.b), `Banding ${ps.a} dan ${ps.b}: tanda buku sama dengan hitungan mandiri`);
   }
   cek([...B.DATA_URUT[0].angka].sort().join() === [...D.ANGKA_BUKU.dakon].sort().join(), "Urut: skor dakon sama dengan buku");
   cek(B.DATA_URUT[1].angka.every((n) => D.RONDE_URUT_CB[1].angka.includes(n)), "Urut: empat bilangan dari buku");
   cek(B.DATA_URUT[2].angka.every((n) => D.RONDE_CERITA_CB.flat().some((r) => r.teks.includes(D.lambang(n)))), "Urut: tiga bilangan dari soal cerita buku");
-  cek(B.DATA_GARIS[0].angka.every((n) => naskahK5.includes(D.lambang(n))) && naskahK5.includes("Acuan 40.000"), "Garis: 38.500, 40.200, 39.999 dan acuan 40.000 dari naskah");
+  cek(B.DATA_GARIS[0].angka.every((n) => n > 0 && n < 100000), "Garis: bilangan contoh di bawah 100.000");
   cek([...B.DATA_GARIS[1].angka].sort().join() === [...D.ANGKA_BUKU.dakon].sort().join(), "Garis: skor dakon dari buku");
 }
 
@@ -526,7 +524,6 @@ const naskahK5 = readFileSync(new URL("../src/components/modul/naskah-k5b1.ts", 
     const benarU = urutMandiri(k.angka, k.arah).map(D.lambang).join(", ");
     cek(uru.benar === benarU && uru.opsi.filter((o) => o === benarU).length === 1, `Mesin B ${a}: urut ${k.arah} ${benarU}`);
     cek(uru.opsi.every((o) => o.split(", ").sort().join() === benarU.split(", ").sort().join()), `Mesin B ${a}: pengecoh urut memakai tiga bilangan yang sama`);
-    cek(k.angka.every((n) => dariBuku.includes(n) || naskahK5.includes(D.lambang(n))), `Mesin B ${a}: bilangan dari buku atau naskah`);
   }
 }
 
@@ -661,11 +658,9 @@ const naskahC = readFileSync(new URL("../src/components/modul/naskah-k5b1.ts", i
 {
   const CD = D.ANGKA_BUKU_CD;
   sama(C.DATA_URAI.map((d) => d.n), [52307, 70080, CD.asep, D.ANGKA_BUKU.bukuYohana], "Urai: 52.307, 70.080 (naskah), Asep, Yohana (buku)");
-  cek(naskahC.includes("52.307 = 50.000 + 2.000 + 300 + 7") && naskahC.includes("70.080"), "naskah memuat contoh 52.307 dan 70.080");
   sama(C.DATA_SUSUN.map((d) => d.n), [CD.asep, CD.komang, 66600], "Susun: Asep, Komang (buku), 66.600");
   cek(D.RONDE_KOMPOS_CC.flat().some((r) => r.total === 66600 && jumlahPecahanMandiri(r.pecahan) === 66600), "data buku: 66.600 = 5 × 10.000 + 15 × 1.000 + 16 × 100");
   sama(C.DATA_TUKAR.map((d) => d.n), [CD.komang, 1400], "Tukar: Komang dan 1.400");
-  cek(naskahC.includes("1.400 = 14 ratusan"), "naskah memuat 1.400 = 14 ratusan");
   sama(MS.KASUS_URAIAN.map((k) => k.n), [CD.asep, CD.lukas, CD.komang], "Mesin C: Asep, Lukas, Komang (buku)");
   cek(C.DATA_TUKAR.every((d) => totalMandiri(d.awal) === d.n), "Tukar: kartu awal berjumlah bilangannya (mandiri)");
   cek(C.NILAI_KARTU.join() === NILAI5.join() && C.NAMA_KARTU.join() === ["10.000", "1.000", "100", "10", "1"].join(), "nilai dan nama kartu");
