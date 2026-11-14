@@ -21,7 +21,7 @@ const CB = diagramMendatar(
 export const ADEGAN_LUAR_CB: AdeganStory = {
   id: "luar-cb",
   judul: "Metode 3: Compare Bars (Banding Batang)",
-  sumber: "Metode luar: Compare Bars; angka Buku Siswa hlm. 193",
+  sumber: "Metode luar: Compare Bars",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -46,9 +46,9 @@ export const ADEGAN_LUAR_CB: AdeganStory = {
       ubah("Menyanyi", { id: "cc-t0", isi: "selisih: 8 − 5 = 3" }, { id: "cc-k", warna: W.langit }),
     ),
     k(
-      "Tiga kata kunci membandingkan: lebih banyak untuk batang yang lebih panjang, lebih sedikit untuk batang yang lebih pendek, dan selisih untuk beda panjangnya.",
+      "Tiga kata penting membandingkan: lebih banyak untuk batang yang lebih panjang, lebih sedikit untuk batang yang lebih pendek, dan selisih untuk beda panjangnya.",
       bersih(0),
-      tambah(0, judul("Kata kunci membandingkan")),
+      tambah(0, judul("Kata penting membandingkan")),
       tambah("banyak", ...kartu("kk1", 14, 34, 272, 30, W.hijauMuda, ["lebih banyak = batang lebih panjang"], 9.2)),
       tambah("sedikit", ...kartu("kk2", 14, 74, 272, 30, W.merahMuda, ["lebih sedikit = batang lebih pendek"], 9.2)),
       tambah("selisih", ...kartu("kk3", 14, 114, 272, 30, W.langit, ["selisih = beda panjang batang"], 9.2)),
@@ -78,11 +78,11 @@ const PORSENI = diagramMendatar(
 export const ADEGAN_LUAR_CB_TERAPAN: AdeganStory = {
   id: "luar-cb-terapan",
   judul: "Compare Bars: lomba PORSENI tingkat kabupaten",
-  sumber: "Metode luar: Compare Bars; angka Buku Siswa hlm. 193–194",
+  sumber: "Metode luar: Compare Bars",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      "Terapan pada Uji Kompetensi nomor tiga, lomba PORSENI. Enam batang mendatar dengan skala nol sampai sembilan. Kita bandingkan semuanya hanya dari panjang batang.",
+      "Terapan pada Uji tiga, lomba PORSENI. Enam batang mendatar dengan skala nol sampai sembilan. Kita bandingkan semuanya hanya dari panjang batang.",
       tambah(0, judul("Banding enam batang")),
       tambah("batang", ...PORSENI.sumbu, ...PORSENI.nama),
       tambah("Kita", ...PORSENI.batang.flat()),
@@ -119,7 +119,7 @@ export const ADEGAN_LUAR_CB_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 8. Table to Bar: konsep ------------------------------ */
 const MEJA = [
-  { nama: "Buku", nilai: 4 },
+  { nama: "Komik", nilai: 4 },
   { nama: "Taplak Meja", nilai: 1 },
   { nama: "Spidol", nilai: 3 },
   { nama: "Penghapus", nilai: 1 },
@@ -129,14 +129,14 @@ const TB = diagramTegak("tb", 38, 40, 232, 100, MEJA, 4, 1, { judulNilai: "Banya
 export const ADEGAN_LUAR_TB: AdeganStory = {
   id: "luar-tb",
   judul: "Metode 4: Table to Bar (Tabel ke Batang)",
-  sumber: "Metode luar: Table to Bar; angka Buku Siswa hlm. 192",
+  sumber: "Metode luar: Table to Bar",
   latar: "#FDF2F8",
   ketukan: [
     k(
-      "Metode keempat, Table to Bar atau Tabel ke Batang. Mulai dari tabel data benda di atas meja guru: buku empat, taplak meja satu, spidol tiga, penghapus satu, pulpen dua.",
+      "Metode keempat, Table to Bar atau Tabel ke Batang. Mulai dari tabel data benda di atas meja guru: komik empat, taplak meja satu, spidol tiga, penghapus satu, pulpen dua.",
       tambah(0, judul("Table to Bar")),
-      tambah("tabel", ...tabel("tt", 14, 56, [56, 62, 48, 56, 50], [["Buku", "Taplak meja", "Spidol", "Penghapus", "Pulpen"], ["4", "1", "3", "1", "2"]], 24, 7.4, W.langit)),
-      tambah("buku", ...kartu("tt9", 40, 124, 220, 30, W.krem, ["tabel data: nama dan jumlah"], 9.6)),
+      tambah("tabel", ...tabel("tt", 14, 56, [56, 62, 48, 56, 50], [["Komik", "Taplak meja", "Spidol", "Penghapus", "Pulpen"], ["4", "1", "3", "1", "2"]], 24, 7.4, W.langit)),
+      tambah("komik", ...kartu("tt9", 40, 124, 220, 30, W.krem, ["tabel data: nama dan jumlah"], 9.6)),
     ),
     k(
       "Langkah satu, pilih skala dari nilai terbesar. Terbesarnya empat, jadi sumbu cukup dari nol sampai empat, naik satu-satu. Langkah dua, gambar sumbu dan beri label.",
@@ -181,11 +181,11 @@ const SUKU = diagramTegak(
 export const ADEGAN_LUAR_TB_TERAPAN: AdeganStory = {
   id: "luar-tb-terapan",
   judul: "Table to Bar: suku bangsa siswa kelas IV",
-  sumber: "Metode luar: Table to Bar; angka Panduan Guru hlm. 232, 235–236",
+  sumber: "Metode luar: Table to Bar",
   latar: "#FDF2F8",
   ketukan: [
     k(
-      "Terapan pada pengayaan dua: suku bangsa dua puluh empat siswa kelas empat. Datanya masih berupa daftar nama, jadi hitung dulu dengan turus untuk membuat tabel.",
+      "Terapan pada Tantangan dua: suku bangsa dua puluh empat siswa kelas empat. Datanya masih berupa daftar nama, jadi hitung dulu dengan turus untuk membuat tabel.",
       tambah(0, judul("Dari daftar ke tabel")),
       tambah("daftar", teks("dl1", 14, 44, "Jawa, Melayu, Minang, Melayu, Jawa, Minang, Jawa, Melayu, Jawa, Jawa,", 6.6, W.hitam, { anchor: "start" })),
       tambah("daftar", teks("dl2", 14, 56, "Melayu, Melayu, Jawa, Minang, Minang, Minang, Melayu, Jawa, Minang,", 6.6, W.hitam, { anchor: "start" })),
@@ -239,7 +239,7 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("Table", ...kartu("rg4", 14, 84, 272, 40, W.pink, ["Table to Bar", "tabel menjadi batang, 4 langkah"], 9.4)),
     ),
     k(
-      "Keempatnya melengkapi cara di buku. Baca skala, baca label, bandingkan, dan buat dari tabel, lalu selalu periksa hasilnya dengan angka.",
+      "Keempatnya melengkapi cara belajar kita. Baca skala, baca label, bandingkan, dan buat dari tabel, lalu selalu periksa hasilnya dengan angka.",
       bersih(0),
       tambah(0, judul("Satu tujuan")),
       tambah("Keempatnya", emo("rs", 150, 80, "📊", 52)),

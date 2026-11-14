@@ -65,8 +65,8 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
 /* ------------------------------ 2. Aktivitas 3: penyajian diagram batang tegak (Buku Siswa hlm. 187–188; Panduan Guru hlm. 225) ------------------------------ */
 export const ADEGAN_AKTIVITAS_3: AdeganStory = {
   id: "aktivitas-3",
-  judul: "Aktivitas 3: penyajian diagram batang tegak",
-  sumber: "Buku Siswa hlm. 187–188; Panduan Guru hlm. 225",
+  judul: "Kegiatan: penyajian diagram batang tegak",
+  sumber: "Materi: diagram batang tegak",
   latar: "#FFF7ED",
   kutipan: [
     "Aktivitas 3. Penyajian Diagram Batang Tegak",
@@ -84,21 +84,21 @@ export const ADEGAN_AKTIVITAS_3: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Aktivitas tiga, penyajian diagram batang tegak. Perlengkapannya alat tulis yang dibawa. Guru membuat kelompok heterogen, tiga sampai empat anak, lalu setiap anak mengeluarkan alat tulis dari tas sekolah.",
-      tambah(0, judul("Aktivitas 3")),
+      "Sekarang kita membuat diagram batang tegak. Siapkan alat tulis yang kalian bawa. Bentuklah kelompok, tiga sampai empat anak, lalu setiap anak mengeluarkan alat tulis dari tas sekolah.",
+      tambah(0, judul("Kegiatan: batang tegak")),
       tambah("kelompok", emo("an1", 60, 70, "🧑", 28), emo("an2", 105, 70, "🧑", 28), emo("an3", 150, 70, "🧑", 28), emo("an4", 195, 70, "🧑", 28)),
       tambah("empat", teks("an5", 128, 96, "kelompok 3 sampai 4 anak", 9, W.biru)),
       tambah("mengeluarkan", emo("an6", 245, 70, "🎒", 30), emo("an7", 245, 110, "✏", 26)),
       tambah("sekolah", ...kartu("an8", 40, 126, 220, 34, W.krem, ["keluarkan alat tulis dari tas"], 9.4)),
     ),
     k(
-      "Langkah berikutnya: catat semua benda dan tulis juga jumlahnya. Data dari kelompok inilah yang nanti disajikan dalam diagram batang.",
+      "Langkah berikutnya: catat semua benda dan tulis juga jumlahnya. Data dari kelompok inilah yang nanti kita gambar menjadi diagram batang.",
       bersih(0),
       tambah(0, judul("Catat benda dan jumlahnya")),
       tambah("catat", ...kartu("ct1", 40, 40, 100, 24, W.krem, ["nama alat tulis"], 8.8), ...kartu("ct2", 150, 40, 110, 24, W.krem, ["banyaknya"], 8.8)),
       tambah("benda", ...kartu("ct3", 40, 72, 100, 24, W.putih, ["..."], 9), ...kartu("ct4", 150, 72, 110, 24, W.putih, ["..."], 9)),
       tambah("jumlahnya.", ...kartu("ct5", 40, 104, 100, 24, W.putih, ["..."], 9), ...kartu("ct6", 150, 104, 110, 24, W.putih, ["..."], 9)),
-      tambah("disajikan", ...kartu("ct7", 40, 146, 220, 28, W.hijauMuda, ["data ini yang akan digambar"], 9.2)),
+      tambah("gambar", ...kartu("ct7", 40, 146, 220, 28, W.hijauMuda, ["data ini yang akan digambar"], 9.2)),
     ),
     k(
       "Buat garis tegak, disebut sumbu tegak, yang tegak lurus dengan garis mendatar, disebut sumbu datar. Sumbu tegak menunjukkan banyak alat tulis, dengan skala. Sumbu datar menunjukkan nama alat tulis.",
@@ -111,13 +111,13 @@ export const ADEGAN_AKTIVITAS_3: AdeganStory = {
       tambah("tulis@2", kotak("sa", 84, 70, 170, 80, W.krem, W.coklat, { putus: true, rx: 4, op: 0.8, z: -1 }), teks("sat", 169, 106, "tempat menggambar", 8.6, W.coklat), teks("sat2", 169, 118, "batang persegi panjang", 8.6, W.coklat)),
     ),
     k(
-      "Terakhir, buat batang persegi panjang sesuai banyak alat tulis. Hasil akhirnya disebut diagram batang: diagram yang memakai persegi panjang untuk menunjukkan banyak tiap kategori. Guru boleh meminta satu kelompok mempresentasikannya.",
+      "Terakhir, buat batang persegi panjang sesuai banyak alat tulis. Hasil akhirnya kita sebut diagram batang: diagram yang memakai persegi panjang untuk menunjukkan banyak tiap kategori. Coba satu kelompok menjelaskan hasilnya di depan kelas.",
       bersih(0),
       tambah(0, judul("Hasil: diagram batang")),
       tambah("Terakhir,", kotak("hb1", 60, 70, 28, 80, W.batang, W.biru, { rx: 0 }), kotak("hb2", 110, 100, 28, 50, W.batang, W.biru, { rx: 0 }), kotak("hb3", 160, 120, 28, 30, W.batang, W.biru, { rx: 0 }), garis("hbx", 46, 150, 160, 0, W.hitam, 1.6), garis("hby", 46, 52, 0, 98, W.hitam, 1.6)),
       tambah("diagram", ...kartu("hb4", 214, 66, 78, 52, W.hijauMuda, ["Diagram", "batang"], 9.2)),
       tambah("persegi@2", ...kartu("hb5", 214, 126, 78, 36, W.krem, ["persegi", "panjang"], 8.4)),
-      tambah("presentasi", teks("hb6", 150, 184, "satu kelompok mempresentasikan hasilnya", 8.4, W.coklat)),
+      tambah("menjelaskan", teks("hb6", 150, 184, "satu kelompok mempresentasikan hasilnya", 8.4, W.coklat)),
     ),
   ],
 };
@@ -142,8 +142,8 @@ const EKS = diagramTegak(
 );
 export const ADEGAN_MENGAMATI: AdeganStory = {
   id: "ayo-mengamati",
-  judul: "Ayo Mengamati: diagram batang ekstrakurikuler",
-  sumber: "Buku Siswa hlm. 188–189; Panduan Guru hlm. 225–226",
+  judul: "Mengamati diagram batang ekstrakurikuler",
+  sumber: "Materi: diagram batang tegak",
   latar: "#F0FDF4",
   kutipan: [
     "Perhatikan diagram batang untuk data banyaknya siswa yang mengikuti ekstrakurikuler.",
@@ -161,8 +161,8 @@ export const ADEGAN_MENGAMATI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Mengamati. Perhatikan diagram batang untuk data banyaknya siswa yang mengikuti ekstrakurikuler. Sumbu tegak menunjukkan banyak siswa dari nol sampai sepuluh, sumbu datar menunjukkan nama ekstrakurikuler.",
-      tambah(0, judul("Ayo Mengamati")),
+      "Sekarang perhatikan diagram batang untuk data banyaknya siswa yang mengikuti ekstrakurikuler. Sumbu tegak menunjukkan banyak siswa dari nol sampai sepuluh, sumbu datar menunjukkan nama ekstrakurikuler.",
+      tambah(0, judul("Mengamati")),
       tambah("diagram", ...EKS.sumbu),
       tambah("nama", ...EKS.nama),
       sorotkan("tegak", "ek-jv"),
@@ -176,8 +176,8 @@ export const ADEGAN_MENGAMATI: AdeganStory = {
       tambah("basket", ...EKS.batang[4]),
     ),
     k(
-      "Dalam percakapan, guru bertanya: berapa banyak siswa yang mengikuti catur? Jawabannya, batang catur menunjukkan dua siswa.",
-      ubah("guru", { id: "ek-jv", sorot: false }),
+      "Sekarang coba jawab: berapa banyak siswa yang mengikuti catur? Jawabannya, batang catur menunjukkan dua siswa.",
+      ubah("coba", { id: "ek-jv", sorot: false }),
       sorotkan("catur", "ek-b3"),
       tambah("Jawabannya,", ...kartu("pc", 14, 174, 272, 22, W.krem, ["catur: 2 siswa"], 9.6)),
     ),
@@ -191,13 +191,13 @@ export const ADEGAN_MENGAMATI: AdeganStory = {
       ubah("sedikit,", { id: "pc-t0", isi: "paling sedikit: tari, 1 siswa" }, { id: "pc-k", warna: W.merahMuda }),
     ),
     k(
-      "Ayo Mencoba untuk data alat tulis kelompok: alat tulis apa yang paling banyak, yang paling sedikit, berapa jumlah keseluruhannya, dan berapa buku tulis yang dibawa?",
+      "Sekarang coba kerjakan untuk data alat tulis kelompokmu: alat tulis apa yang paling banyak, yang paling sedikit, berapa jumlah keseluruhannya, dan berapa pensil yang dibawa?",
       bersih(0),
-      tambah(0, judul("Ayo Mencoba")),
+      tambah(0, judul("Coba sendiri")),
       tambah("paling", ...kartu("ym1", 14, 30, 272, 22, W.langit, ["a. alat tulis paling banyak?"], 8.8)),
       tambah("sedikit,", ...kartu("ym2", 14, 58, 272, 22, W.krem, ["b. alat tulis paling sedikit?"], 8.8)),
       tambah("keseluruhannya,", ...kartu("ym3", 14, 86, 272, 22, W.hijauMuda, ["c. jumlah keseluruhan alat tulis?"], 8.8)),
-      tambah("buku", ...kartu("ym4", 14, 114, 272, 22, W.pink, ["d. berapa buku tulis?"], 8.8)),
+      tambah("pensil", ...kartu("ym4", 14, 114, 272, 22, W.pink, ["d. berapa pensil?"], 8.8)),
     ),
     k(
       "Contoh dari data ekstrakurikuler tadi, jumlah seluruhnya: sembilan tambah satu tambah lima tambah dua tambah enam sama dengan dua puluh tiga siswa.",
@@ -213,8 +213,8 @@ export const ADEGAN_MENGAMATI: AdeganStory = {
 /* ------------------------------ 4. Aktivitas 4: diagram batang mendatar (Buku Siswa hlm. 190–191; Panduan Guru hlm. 226) ------------------------------ */
 export const ADEGAN_AKTIVITAS_4: AdeganStory = {
   id: "aktivitas-4",
-  judul: "Aktivitas 4: penyajian diagram batang mendatar",
-  sumber: "Buku Siswa hlm. 190–191; Panduan Guru hlm. 226",
+  judul: "Kegiatan: penyajian diagram batang mendatar",
+  sumber: "Materi: diagram batang mendatar",
   latar: "#FDF2F8",
   kutipan: [
     "Aktivitas 4. Penyajian Diagram Batang Mendatar",
@@ -234,11 +234,11 @@ export const ADEGAN_AKTIVITAS_4: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Aktivitas empat, penyajian diagram batang mendatar. Kelompok tetap sama, lalu belajar di luar kelas. Perlengkapannya bunga di halaman sekolah atau depan kelas. Jika tidak ada bunga, guru boleh memakai benda lain.",
-      tambah(0, judul("Aktivitas 4")),
+      "Kegiatan berikutnya, membuat diagram batang mendatar. Kelompok tetap sama, lalu kita belajar di luar kelas. Siapkan bunga di kebun sekolah atau depan kelas. Jika tidak ada bunga, boleh memakai benda lain.",
+      tambah(0, judul("Kegiatan: batang mendatar")),
       tambah("bunga", emo("bn1", 50, 74, "🌹", 30), emo("bn2", 100, 74, "🌼", 30), emo("bn3", 150, 74, "🌷", 30), emo("bn4", 200, 74, "🌻", 30), emo("bn5", 250, 74, "🌸", 30)),
       tambah("luar", ...kartu("bn6", 40, 104, 220, 30, W.hijauMuda, ["belajar di luar kelas"], 9.6)),
-      tambah("halaman", teks("bn7", 150, 156, "bunga di halaman atau depan kelas", 8.8, W.biru)),
+      tambah("kebun", teks("bn7", 150, 156, "bunga di kebun atau depan kelas", 8.8, W.biru)),
       tambah("benda", teks("bn8", 150, 176, "tidak ada bunga: pakai benda lain", 8.2, W.coklat)),
     ),
     k(
@@ -253,14 +253,14 @@ export const ADEGAN_AKTIVITAS_4: AdeganStory = {
     k(
       "Lalu jawab: warna bunga apa yang paling banyak, apa yang paling sedikit, dan berapa jumlah keseluruhan bunga? Gunakan cara membaca yang sama seperti pada diagram tegak.",
       bersih(0),
-      tambah(0, judul("Pertanyaan Aktivitas 4")),
+      tambah(0, judul("Pertanyaan kegiatan")),
       tambah("paling@1", ...kartu("lq1", 14, 40, 272, 28, W.hijauMuda, ["a. warna bunga paling banyak?"], 9.2)),
       tambah("sedikit,", ...kartu("lq2", 14, 80, 272, 28, W.merahMuda, ["b. warna bunga paling sedikit?"], 9.2)),
       tambah("keseluruhan", ...kartu("lq3", 14, 120, 272, 28, W.langit, ["c. jumlah keseluruhan bunga?"], 9.2)),
       tambah("Gunakan", teks("lq4", 150, 172, "caranya sama dengan diagram tegak", 8.8, W.coklat)),
     ),
     k(
-      "Hasil akhirnya disebut diagram batang mendatar. Pada diagram tegak, kita membaca dengan memperhatikan tinggi persegi panjang. Pada diagram mendatar, kita memperhatikan lebar persegi panjang. Guru dapat menjelaskan perbedaannya.",
+      "Hasil akhirnya disebut diagram batang mendatar. Pada diagram tegak, kita membaca dengan memperhatikan tinggi persegi panjang. Pada diagram mendatar, kita memperhatikan lebar persegi panjang. Ingat perbedaannya ya.",
       bersih(0),
       tambah(0, judul("Tegak: tinggi. Mendatar: lebar.")),
       tambah("tegak,", kotak("tg1", 36, 56, 24, 80, W.batang, W.biru, { rx: 0 }), kotak("tg2", 70, 86, 24, 50, W.batang, W.biru, { rx: 0 }), garis("tgx", 28, 136, 80, 0, W.hitam, 1.4)),

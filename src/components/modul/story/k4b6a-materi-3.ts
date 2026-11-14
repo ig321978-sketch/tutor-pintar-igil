@@ -20,15 +20,15 @@ export const PKL: Pikto = {
   label: NAMA_KELERENG,
   kepala: ["Nama", "Banyak Kelereng"],
 };
-const SUARA_L1 = "Ayo berlatih, soal satu. Data banyak kelereng yang dimiliki Slamet dan teman-temannya disajikan dalam tabel. Buatlah piktogram dengan gambar bulat yang menyatakan satu kelereng.";
+const SUARA_L1 = "Sekarang kita berlatih. Latihan satu: data banyak kelereng yang dimiliki Slamet dan teman-temannya disajikan dalam tabel. Buatlah piktogram dengan gambar bulat yang menyatakan satu kelereng.";
 const SUARA_L2 = "Datanya: Azizah lima, Karel enam, Putu dua, Slamet delapan, Asep lima, dan Helen empat.";
-const SUARA_L3 = "Kunci jawaban di panduan guru memakai titik bulat untuk satu kelereng. Azizah lima titik, Karel enam, Putu dua, Slamet delapan, Asep lima, dan Helen empat titik.";
-const SUARA_L4 = "Cocokkan dengan tabel: jumlah titik tiap baris sama dengan angkanya. Paling banyak Slamet, paling sedikit Putu. Jumlah semua kelereng, hitungan kita sendiri: lima, enam, dua, delapan, lima, empat, sama dengan tiga puluh.";
+const SUARA_L3 = "Jawabannya memakai titik bulat untuk satu kelereng. Azizah lima titik, Karel enam, Putu dua, Slamet delapan, Asep lima, dan Helen empat titik.";
+const SUARA_L4 = "Cocokkan dengan tabel: jumlah titik tiap baris sama dengan angkanya. Paling banyak Slamet, paling sedikit Putu. Jumlah semua kelereng: lima, enam, dua, delapan, lima, empat, sama dengan tiga puluh.";
 
 export const ADEGAN_BERLATIH_1: AdeganStory = {
   id: "berlatih-satu",
-  judul: "Ayo Berlatih nomor 1: piktogram kelereng",
-  sumber: "Buku Siswa hlm. 185; Panduan Guru hlm. 222",
+  judul: "Latihan 1: piktogram kelereng",
+  sumber: "Materi: piktogram kelereng",
   latar: "#EFF6FF",
   kutipan: [
     "Ayo Berlatih",
@@ -53,8 +53,8 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   ketukan: [
     k(
       SUARA_L1,
-      tambah(0, judul("Ayo Berlatih 1")),
-      tambah("Ayo", ...kartu("q1", 20, 34, 260, 40, W.krem, ["Data banyak kelereng Slamet", "dan teman-temannya"], 9.2)),
+      tambah(0, judul("Latihan 1")),
+      tambah("Sekarang", ...kartu("q1", 20, 34, 260, 40, W.krem, ["Data banyak kelereng Slamet", "dan teman-temannya"], 9.2)),
       tambah("Buatlah", ...kartu("q2", 20, 86, 260, 40, W.hijauMuda, ["Buat piktogram dari data itu"], 9.4)),
       tambah("bulat", emo("q3", 90, 160, "🔵", 36)),
       tambah("satu@2", teks("q4", 190, 166, "= 1 kelereng", 11, W.merah)),
@@ -69,8 +69,8 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
     k(
       SUARA_L3,
       bersih(0),
-      tambah(0, judul("Kunci: piktogram kelereng")),
-      tambah("Kunci", rangkaPikto({ ...PKL, kepala: ["Nama", "Banyak Kelereng"] })),
+      tambah(0, judul("Jawaban: piktogram kelereng")),
+      tambah("Jawabannya", rangkaPikto({ ...PKL, kepala: ["Nama", "Banyak Kelereng"] })),
       ...NAMA_KELERENG.map((n, i) => tambah(idx(SUARA_L3, n, 1), ...barisPikto(PKL, i, KELERENG[i]))),
     ),
     k(
@@ -100,18 +100,18 @@ export const PBUKU: Pikto = {
   st: 15,
   ikon: { jenis: "kotak", warna: "#E8735F" },
   label: HARI,
-  kepala: ["Hari", "Banyak Buku"],
+  kepala: ["Hari", "Banyak Bacaan"],
 };
-const SUARA_M1 = "Soal dua. Buku yang dipinjam dari perpustakaan sekolah setiap harinya disajikan dalam piktogram. Setiap kotak menyatakan satu buku. Mari kita hitung kotak pada tiap hari.";
-const SUARA_M2 = "Hasil hitungan kotak: Senin dua belas buku, Selasa enam, Rabu sembilan, Kamis tiga, Jumat dua belas, dan Sabtu empat belas.";
-const SUARA_M3 = "Soal a: hari paling banyak dipinjam adalah Sabtu. Soal b: hari Selasa dipinjam enam buku. Soal c: hari paling sedikit adalah Kamis.";
-const SUARA_M4 = "Soal d: hari dengan empat belas buku adalah Sabtu. Soal e: buku pada hari Kamis dan Jumat, tiga ditambah dua belas, sama dengan lima belas buku.";
-const SUARA_M5 = "Soal f: jumlah total selama seminggu. Kunci panduan guru: lima puluh enam buku. Hitungan mandiri kita: dua belas, enam, sembilan, tiga, dua belas, dan empat belas juga lima puluh enam. Kunci benar.";
+const SUARA_M1 = "Latihan dua. Bacaan yang dipinjam dari perpustakaan sekolah setiap harinya disajikan dalam piktogram. Setiap kotak menyatakan satu bacaan. Mari kita hitung kotak pada tiap hari.";
+const SUARA_M2 = "Hasil hitungan kotak: Senin dua belas bacaan, Selasa enam, Rabu sembilan, Kamis tiga, Jumat dua belas, dan Sabtu empat belas.";
+const SUARA_M3 = "Pertanyaan a: hari paling banyak dipinjam adalah Sabtu. Pertanyaan b: hari Selasa dipinjam enam bacaan. Pertanyaan c: hari paling sedikit adalah Kamis.";
+const SUARA_M4 = "Pertanyaan d: hari dengan empat belas bacaan adalah Sabtu. Pertanyaan e: bacaan pada hari Kamis dan Jumat, tiga ditambah dua belas, sama dengan lima belas bacaan.";
+const SUARA_M5 = "Pertanyaan f: jumlah total selama seminggu. Jawabannya lima puluh enam bacaan. Buktinya, dua belas, enam, sembilan, tiga, dua belas, dan empat belas juga berjumlah lima puluh enam. Benar sekali.";
 
 export const ADEGAN_BERLATIH_2: AdeganStory = {
   id: "berlatih-dua",
-  judul: "Ayo Berlatih nomor 2: buku yang dipinjam",
-  sumber: "Buku Siswa hlm. 185; Panduan Guru hlm. 222",
+  judul: "Latihan 2: bacaan yang dipinjam",
+  sumber: "Materi: bacaan yang dipinjam",
   latar: "#FFF7ED",
   kutipan: [
     "2. Banyaknya buku yang dipinjam dari perpustakaan sekolah setiap harinya",
@@ -132,7 +132,7 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
     "56",
   ],
   ketukan: [
-    k(SUARA_M1, tambah(0, judul("Buku dipinjam per hari")), tambah("Soal", rangkaPikto(PBUKU)), tambah("kotak", ...kunciPikto(PBUKU, 6, { jenis: "kotak", warna: "#E8735F" }, "menyatakan 1 buku"))),
+    k(SUARA_M1, tambah(0, judul("Bacaan dipinjam per hari")), tambah("Latihan", rangkaPikto(PBUKU)), tambah("kotak", ...kunciPikto(PBUKU, 6, { jenis: "kotak", warna: "#E8735F" }, "menyatakan 1 bacaan"))),
     k(
       SUARA_M2,
       ...HARI.map((h, i) => tambah(h, ...barisPikto(PBUKU, i, BUKU[i]), jumlahBaris(PBUKU, i, BUKU[i]))),
@@ -140,29 +140,29 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
     k(
       SUARA_M3,
       bersih(0),
-      tambah(0, judul("Soal a, b, dan c")),
-      tambah(idx(SUARA_M3, "Soal", 1), ...kartu("a1", 14, 34, 272, 34, W.hijauMuda, ["a. paling banyak: Sabtu (14 kotak)"], 9)),
-      tambah(idx(SUARA_M3, "Soal", 2), ...kartu("a2", 14, 76, 272, 34, W.langit, ["b. hari Selasa: 6 buku"], 9)),
-      tambah(idx(SUARA_M3, "Soal", 3), ...kartu("a3", 14, 118, 272, 34, W.krem, ["c. paling sedikit: Kamis (3 kotak)"], 9)),
+      tambah(0, judul("Pertanyaan a, b, dan c")),
+      tambah(idx(SUARA_M3, "Pertanyaan", 1), ...kartu("a1", 14, 34, 272, 34, W.hijauMuda, ["a. paling banyak: Sabtu (14 kotak)"], 9)),
+      tambah(idx(SUARA_M3, "Pertanyaan", 2), ...kartu("a2", 14, 76, 272, 34, W.langit, ["b. hari Selasa: 6 bacaan"], 9)),
+      tambah(idx(SUARA_M3, "Pertanyaan", 3), ...kartu("a3", 14, 118, 272, 34, W.krem, ["c. paling sedikit: Kamis (3 kotak)"], 9)),
       tambah("Kamis.", emo("a4", 150, 184, "📚", 24)),
     ),
     k(
       SUARA_M4,
       bersih(0),
-      tambah(0, judul("Soal d dan e")),
-      tambah(idx(SUARA_M4, "Soal", 1), ...kartu("d1", 14, 34, 272, 34, W.hijauMuda, ["d. 14 buku: hari Sabtu"], 9)),
-      tambah(idx(SUARA_M4, "Soal", 2), ...kartu("d2", 14, 76, 272, 34, W.langit, ["e. Kamis dan Jumat"], 9)),
+      tambah(0, judul("Pertanyaan d dan e")),
+      tambah(idx(SUARA_M4, "Pertanyaan", 1), ...kartu("d1", 14, 34, 272, 34, W.hijauMuda, ["d. 14 bacaan: hari Sabtu"], 9)),
+      tambah(idx(SUARA_M4, "Pertanyaan", 2), ...kartu("d2", 14, 76, 272, 34, W.langit, ["e. Kamis dan Jumat"], 9)),
       tambah("tiga", teks("d3", 150, 140, "3 + 12 = 15", 13, W.merah)),
-      tambah("lima", teks("d4", 150, 164, "15 buku", 11, W.hijau)),
+      tambah("lima", teks("d4", 150, 164, "15 bacaan", 11, W.hijau)),
     ),
     k(
       SUARA_M5,
       bersih(0),
-      tambah(0, judul("Soal f: jumlah seminggu")),
-      tambah("Kunci", ...kartu("f1", 40, 32, 220, 30, W.krem, ["kunci buku: 56 buku"], 10)),
-      tambah("mandiri", teks("f2", 150, 100, "12 + 6 + 9 + 3 + 12 + 14", 11, W.biru)),
+      tambah(0, judul("Pertanyaan f: jumlah seminggu")),
+      tambah("Jawabannya", ...kartu("f1", 40, 32, 220, 30, W.krem, ["jawaban: 56 bacaan"], 10)),
+      tambah("Buktinya,", teks("f2", 150, 100, "12 + 6 + 9 + 3 + 12 + 14", 11, W.biru)),
       tambah("juga", teks("f3", 150, 124, "= 56", 13, W.merah)),
-      tambah("benar.", emo("f4", 150, 168, "✅", 26)),
+      tambah("Benar", emo("f4", 150, 168, "✅", 26)),
     ),
   ],
 };
@@ -185,16 +185,16 @@ export const PS: Pikto = {
   label: NAMA_KELAS,
   kepala: ["Kelas", "Banyak Siswa"],
 };
-const SUARA_N1 = "Ayo berpikir. Banyak siswa tiap kelas disajikan dalam piktogram, dari kelas satu, dua, tiga, empat, lima, sampai enam. Perhatikan keterangannya: satu gambar siswa menyatakan empat siswa, bukan satu.";
-const SUARA_N2 = "Soal a dan b. Kelas yang siswanya paling sedikit adalah kelas lima, karena hanya lima gambar. Paling banyak adalah kelas empat, dengan delapan gambar.";
-const SUARA_N3 = "Soal c: banyak siswa kelas empat. Ada delapan gambar, satu gambar menyatakan empat siswa, jadi delapan kali empat sama dengan tiga puluh dua siswa.";
-const SUARA_N4 = "Soal d: kelas dengan dua puluh empat siswa. Enam gambar kali empat sama dengan dua puluh empat, jadi kelas satu dan kelas dua, karena keduanya punya enam gambar.";
-const SUARA_N5 = "Soal e: seluruh siswa. Jumlah gambarnya tiga puluh sembilan, dan tiga puluh sembilan kali empat sama dengan seratus lima puluh enam siswa. Kunci benar, dan hitungan baris demi baris juga sama.";
+const SUARA_N1 = "Berpikir dulu. Banyak siswa tiap kelas disajikan dalam piktogram, dari kelas satu, dua, tiga, empat, lima, sampai enam. Perhatikan keterangannya: satu gambar siswa menyatakan empat siswa, bukan satu.";
+const SUARA_N2 = "Pertanyaan a dan b. Kelas yang siswanya paling sedikit adalah kelas lima, karena hanya lima gambar. Paling banyak adalah kelas empat, dengan delapan gambar.";
+const SUARA_N3 = "Pertanyaan c: banyak siswa kelas empat. Ada delapan gambar, satu gambar menyatakan empat siswa, jadi delapan kali empat sama dengan tiga puluh dua siswa.";
+const SUARA_N4 = "Pertanyaan d: kelas dengan dua puluh empat siswa. Enam gambar kali empat sama dengan dua puluh empat, jadi kelas satu dan kelas dua, karena keduanya punya enam gambar.";
+const SUARA_N5 = "Pertanyaan e: seluruh siswa. Jumlah gambarnya tiga puluh sembilan, dan tiga puluh sembilan kali empat sama dengan seratus lima puluh enam siswa. Kita cek, hitungan baris demi baris juga sama.";
 
 export const ADEGAN_BERPIKIR: AdeganStory = {
   id: "ayo-berpikir",
-  judul: "Ayo Berpikir: siswa tiap kelas",
-  sumber: "Buku Siswa hlm. 186; Panduan Guru hlm. 223",
+  judul: "Berpikir: siswa tiap kelas",
+  sumber: "Materi: skala pada piktogram",
   latar: "#F5F3FF",
   kutipan: [
     "Ayo Berpikir",
@@ -218,7 +218,7 @@ export const ADEGAN_BERPIKIR: AdeganStory = {
   ketukan: [
     k(
       SUARA_N1,
-      tambah(0, judul("Ayo Berpikir: skala empat")),
+      tambah(0, judul("Berpikir: skala empat")),
       tambah("siswa", rangkaPikto(PS)),
       ...GAMBAR_KELAS.map((n, i) => tambah(idx(SUARA_N1, ["satu", "dua", "tiga", "empat", "lima", "enam"][i], 1), ...barisPikto(PS, i, n))),
       tambah("keterangannya:", ...kunciPikto(PS, 6, { jenis: "emoji", e: "👤" }, "menyatakan 4 siswa")),
@@ -247,26 +247,26 @@ export const ADEGAN_BERPIKIR: AdeganStory = {
     k(
       SUARA_N5,
       bersih(0),
-      tambah(0, judul("Soal e: seluruh siswa")),
+      tambah(0, judul("Pertanyaan e: seluruh siswa")),
       tambah("Jumlah", ...kartu("e1", 20, 34, 260, 30, W.hijauMuda, ["6+6+7+8+5+7 = 39 gambar"], 9.6)),
       tambah("kali", ...kartu("e2", 20, 72, 260, 30, W.langit, ["39 × 4 = 156 siswa"], 10)),
-      tambah("Kunci", ...kartu("e3", 20, 110, 260, 30, W.krem, ["kunci buku: 156 (benar)"], 9.6)),
+      tambah("cek", ...kartu("e3", 20, 110, 260, 30, W.krem, ["dicek ulang: 156 siswa (benar)"], 9.6)),
       tambah("baris", ...kartu("e4", 20, 148, 260, 40, W.pink, ["24+24+28+32+20+28", "= 156 siswa juga"], 9.2)),
     ),
   ],
 };
 
 /* ------------------------------ 12. Penutup subbab: miskonsepsi, diferensiasi, refleksi, catatan buku ------------------------------ */
-const SUARA_T1 = "Panduan guru mencatat miskonsepsi: piktogram disebut juga diagram gambar. Ada anak yang mengira piktogram bukan diagram gambar. Padahal keduanya adalah satu hal yang sama.";
-const SUARA_T2 = "Untuk diferensiasi, model yang disarankan adalah Project Based Learning, yang mengutamakan produk hasil karya kelompok. Bila kelas belum memungkinkan, guru boleh memakai metode diskusi.";
-const SUARA_T3 = "Refleksi: adakah bagian yang masih dirasa sulit? Bila ada, diskusikan dengan teman, minta bantuan guru, dan perbanyak latihan soal. Kalian sudah bisa menentukan data paling banyak dan paling sedikit.";
-const SUARA_T4 = "Catatan dari memeriksa buku: semua kunci subbab ini benar. Tetapi panduan guru menyebut skala hanya satu satuan, padahal Ayo Berpikir memakai satu gambar untuk empat siswa.";
+const SUARA_T1 = "Hati-hati, ada kesalahan yang sering terjadi. Piktogram disebut juga diagram gambar. Ada anak yang mengira piktogram bukan diagram gambar. Padahal keduanya adalah satu hal yang sama.";
+const SUARA_T2 = "Tantangan untuk kalian: belajar lewat proyek, yaitu membuat piktogram sebagai hasil karya kelompok. Dalam kelompok, teman yang sudah paham boleh membantu temannya. Bila waktu terbatas, kita cukup berdiskusi.";
+const SUARA_T3 = "Renungkan: adakah bagian yang masih dirasa sulit? Bila ada, diskusikan dengan teman, minta bantuan guru, dan perbanyak latihan. Kalian sudah bisa menentukan data paling banyak dan paling sedikit.";
+const SUARA_T4 = "Ingat juga, skala tidak selalu satu. Pada kegiatan bunga, satu gambar menyatakan satu bunga. Tetapi pada siswa tiap kelas, satu gambar menyatakan empat siswa.";
 const SUARA_T5 = "Ringkasan subbab A: piktogram memakai gambar untuk menyatakan banyak data. Baca keterangan, hitung gambar, lalu tentukan paling banyak, paling sedikit, dan jumlahnya.";
 
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup-subbab",
-  judul: "Miskonsepsi, diferensiasi, refleksi, dan catatan buku",
-  sumber: "Panduan Guru hlm. 223; Buku Siswa hlm. 194",
+  judul: "Hati-hati, tantangan, dan renungan",
+  sumber: "Materi: hati-hati, tantangan, renungan",
   latar: "#FFF7ED",
   kutipan: [
     "Miskonsepsi",
@@ -288,7 +288,7 @@ export const ADEGAN_PENUTUP: AdeganStory = {
   ketukan: [
     k(
       SUARA_T1,
-      tambah(0, judul("Miskonsepsi")),
+      tambah(0, judul("Hati-hati")),
       tambah("Piktogram", ...kartu("x1", 14, 34, 120, 36, W.pink, ["piktogram"], 10.4)),
       tambah("diagram", ...kartu("x2", 166, 34, 120, 36, W.hijauMuda, ["diagram gambar"], 10)),
       tambah("mengira", teks("x3", 150, 58, "≠", 20, W.merah)),
@@ -298,27 +298,27 @@ export const ADEGAN_PENUTUP: AdeganStory = {
     k(
       SUARA_T2,
       bersih(0),
-      tambah(0, judul("Diferensiasi")),
-      tambah("Project", ...kartu("y1", 14, 34, 272, 40, W.hijauMuda, ["Project Based Learning", "produk hasil karya kelompok"], 9)),
-      tambah("kelompok.", ...kartu("y2", 14, 84, 272, 30, W.langit, ["ketua kelompok: kemampuan tinggi"], 8.8)),
-      tambah("metode", ...kartu("y3", 14, 124, 272, 30, W.krem, ["bila perlu: metode diskusi"], 8.8)),
+      tambah(0, judul("Tantangan")),
+      tambah("proyek", ...kartu("y1", 14, 34, 272, 40, W.hijauMuda, ["Belajar lewat proyek", "hasil karya kelompok"], 9)),
+      tambah("membantu", ...kartu("y2", 14, 84, 272, 30, W.langit, ["teman yang paham boleh membantu"], 8.8)),
+      tambah("diskusi", ...kartu("y3", 14, 124, 272, 30, W.krem, ["bila waktu terbatas: berdiskusi"], 8.8)),
     ),
     k(
       SUARA_T3,
       bersih(0),
-      tambah(0, judul("Refleksi")),
+      tambah(0, judul("Renungkan")),
       tambah("adakah", ...kartu("r1", 14, 34, 272, 30, W.hijauMuda, ["adakah bagian yang masih sulit?"], 9)),
       tambah("diskusikan", ...kartu("r2", 14, 72, 272, 30, W.langit, ["diskusikan dengan teman"], 9)),
       tambah("guru,", ...kartu("r3", 14, 110, 272, 30, W.krem, ["minta bantuan guru"], 9)),
-      tambah("perbanyak", ...kartu("r4", 14, 148, 272, 30, W.pink, ["perbanyak latihan soal"], 9)),
+      tambah("perbanyak", ...kartu("r4", 14, 148, 272, 30, W.pink, ["perbanyak latihan"], 9)),
     ),
     k(
       SUARA_T4,
       bersih(0),
-      tambah(0, judul("Catatan dari buku")),
-      tambah("kunci", ...kartu("c1", 14, 34, 272, 34, W.hijauMuda, ["semua kunci subbab ini benar"], 9)),
-      tambah("hanya", ...kartu("c2", 14, 76, 272, 44, W.krem, ["Panduan Guru: skala hanya satu satuan"], 8.6)),
-      tambah("empat", ...kartu("c3", 14, 130, 272, 44, W.pink, ["Ayo Berpikir: satu gambar = 4 siswa"], 8.6)),
+      tambah(0, judul("Ingat juga: skala")),
+      tambah("skala", ...kartu("c1", 14, 34, 272, 34, W.hijauMuda, ["skala tidak selalu satu"], 9)),
+      tambah("bunga,", ...kartu("c2", 14, 76, 272, 44, W.krem, ["bunga: satu gambar = 1 bunga"], 8.6)),
+      tambah("empat", ...kartu("c3", 14, 130, 272, 44, W.pink, ["siswa tiap kelas: satu gambar = 4 siswa"], 8.6)),
     ),
     k(
       SUARA_T5,

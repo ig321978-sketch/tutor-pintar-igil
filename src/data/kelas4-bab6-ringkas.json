@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-diagram-gambar", "teks": "Disebut juga diagram gambar", "ikon": "🖼️", "cabang": "arti", "petunjuk": "Nama lain piktogram itu soal artinya. Coba cabang lain." },
-          { "id": "a-simbol-sama", "teks": "Simbol tiap baris sama", "ikon": "⚪", "cabang": "arti", "petunjuk": "Simbol yang sama adalah ciri piktogram. Coba cabang lain." },
-          { "id": "a-satu-garis", "teks": "Satu benda, satu garis", "ikon": "✏️", "cabang": "turus", "petunjuk": "Mencatat dengan garis itu cara turus. Coba cabang lain." },
-          { "id": "a-lima", "teks": "Lima diberi garis miring", "ikon": "🖊️", "cabang": "turus", "petunjuk": "Kelompok lima itu cara menulis turus. Coba cabang lain." },
-          { "id": "a-empat", "teks": "1 simbol = 4 siswa", "ikon": "🔑", "cabang": "skala", "petunjuk": "Satu simbol mewakili berapa itu soal keterangan. Coba cabang lain." },
-          { "id": "a-kali", "teks": "Nilai = simbol × skala", "ikon": "✖️", "cabang": "skala", "petunjuk": "Mengalikan dengan skala itu soal keterangan. Coba cabang lain." },
-          { "id": "a-terbanyak", "teks": "Simbol terbanyak, nilai terbesar", "ikon": "🏆", "cabang": "baca", "petunjuk": "Mencari paling banyak itu soal membaca dan membandingkan. Coba cabang lain." },
-          { "id": "a-selisih", "teks": "Selisih: dikurangi", "ikon": "➖", "cabang": "baca", "petunjuk": "Selisih itu soal membandingkan. Coba cabang lain." }
+          {
+            "id": "a-diagram-gambar",
+            "teks": "Disebut juga diagram gambar",
+            "ikon": "🖼️",
+            "cabang": "arti",
+            "petunjuk": "Nama lain piktogram itu soal artinya. Coba cabang lain."
+          },
+          {
+            "id": "a-simbol-sama",
+            "teks": "Simbol tiap baris sama",
+            "ikon": "⚪",
+            "cabang": "arti",
+            "petunjuk": "Simbol yang sama adalah ciri piktogram. Coba cabang lain."
+          },
+          {
+            "id": "a-satu-garis",
+            "teks": "Satu benda, satu garis",
+            "ikon": "✏️",
+            "cabang": "turus",
+            "petunjuk": "Mencatat dengan garis itu cara turus. Coba cabang lain."
+          },
+          {
+            "id": "a-lima",
+            "teks": "Lima diberi garis miring",
+            "ikon": "🖊️",
+            "cabang": "turus",
+            "petunjuk": "Kelompok lima itu cara menulis turus. Coba cabang lain."
+          },
+          {
+            "id": "a-empat",
+            "teks": "1 simbol = 4 siswa",
+            "ikon": "🔑",
+            "cabang": "skala",
+            "petunjuk": "Satu simbol mewakili berapa itu soal keterangan. Coba cabang lain."
+          },
+          {
+            "id": "a-kali",
+            "teks": "Nilai = simbol × skala",
+            "ikon": "✖️",
+            "cabang": "skala",
+            "petunjuk": "Mengalikan dengan skala itu soal keterangan. Coba cabang lain."
+          },
+          {
+            "id": "a-terbanyak",
+            "teks": "Simbol terbanyak, nilai terbesar",
+            "ikon": "🏆",
+            "cabang": "baca",
+            "petunjuk": "Mencari paling banyak itu soal membaca dan membandingkan. Coba cabang lain."
+          },
+          {
+            "id": "a-selisih",
+            "teks": "Selisih: dikurangi",
+            "ikon": "➖",
+            "cabang": "baca",
+            "petunjuk": "Selisih itu soal membandingkan. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -66,16 +114,60 @@
             "ide": "Catat dengan turus, gambar dengan simbol.",
             "suara": "Ada tiga langkah menyajikan data. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "turus", "label": "Turus", "ikon": "✏️", "isi": "Satu benda, satu garis.", "suara": "Catat tiap benda dengan satu turus. Kelompok lima diberi garis miring.", "visual": { "jenis": "teks", "isi": "IIII / = 5" } },
+              {
+                "id": "turus",
+                "label": "Turus",
+                "ikon": "✏️",
+                "isi": "Satu benda, satu garis.",
+                "suara": "Catat tiap benda dengan satu turus. Kelompok lima diberi garis miring.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "IIII / = 5"
+                }
+              },
               {
                 "id": "tabel",
                 "label": "Tabel",
                 "ikon": "📋",
                 "isi": "Hitung turus tiap warna.",
                 "suara": "Warna kesukaan: ungu empat, kuning dua, hitam satu, merah lima.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Warna", "Siswa"], "baris": [["ungu", 4], ["kuning", 2], ["hitam", 1], ["merah", 5]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Warna",
+                    "Siswa"
+                  ],
+                  "baris": [
+                    [
+                      "ungu",
+                      4
+                    ],
+                    [
+                      "kuning",
+                      2
+                    ],
+                    [
+                      "hitam",
+                      1
+                    ],
+                    [
+                      "merah",
+                      5
+                    ]
+                  ]
+                }
               },
-              { "id": "simbol", "label": "Simbol", "ikon": "⚪", "isi": "Gambar simbol sebanyak datanya.", "suara": "Gambar simbol yang sama di tiap baris, lalu tulis keterangannya.", "visual": { "jenis": "teks", "isi": "● ● ● ●" } }
+              {
+                "id": "simbol",
+                "label": "Simbol",
+                "ikon": "⚪",
+                "isi": "Gambar simbol sebanyak datanya.",
+                "suara": "Gambar simbol yang sama di tiap baris, lalu tulis keterangannya.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "● ● ● ●"
+                }
+              }
             ]
           },
           {
@@ -85,8 +177,28 @@
             "ide": "Baca keterangan sebelum menghitung simbol.",
             "suara": "Bandingkan dua keterangan piktogram.",
             "sisi": [
-              { "id": "satu", "nama": "1 simbol = 1", "ikon": "1️⃣", "catatan": "Empat simbol berarti empat.", "suara": "Kalau satu simbol mewakili satu siswa, empat simbol berarti empat siswa.", "visual": { "jenis": "teks", "isi": "4 × 1 = 4" } },
-              { "id": "empat", "nama": "1 simbol = 4", "ikon": "4️⃣", "catatan": "Tiga simbol berarti dua belas.", "suara": "Kalau satu simbol mewakili empat siswa, tiga simbol berarti dua belas siswa.", "visual": { "jenis": "teks", "isi": "3 × 4 = 12" } }
+              {
+                "id": "satu",
+                "nama": "1 simbol = 1",
+                "ikon": "1️⃣",
+                "catatan": "Empat simbol berarti empat.",
+                "suara": "Kalau satu simbol mewakili satu siswa, empat simbol berarti empat siswa.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 × 1 = 4"
+                }
+              },
+              {
+                "id": "empat",
+                "nama": "1 simbol = 4",
+                "ikon": "4️⃣",
+                "catatan": "Tiga simbol berarti dua belas.",
+                "suara": "Kalau satu simbol mewakili empat siswa, tiga simbol berarti dua belas siswa.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 × 4 = 12"
+                }
+              }
             ],
             "kesimpulan": "Nilai = banyak simbol × skala. Skala besar menghemat simbol."
           },
@@ -97,9 +209,174 @@
             "ide": "Bandingkan banyak simbol antar baris.",
             "suara": "Ada tiga hal yang bisa dibaca dari piktogram. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "terbanyak", "label": "Paling banyak", "ikon": "🏆", "isi": "Baris dengan simbol terbanyak.", "suara": "Mainan Karel paling banyak kelereng, sembilan buah.", "visual": { "jenis": "teks", "isi": "kelereng 9" } },
-              { "id": "jumlah", "label": "Jumlah", "ikon": "➕", "isi": "Tambahkan nilai semua baris.", "suara": "Mainan Karel semuanya dua puluh tiga.", "visual": { "jenis": "teks", "isi": "6 + 4 + 3 + 1 + 9 = 23" } },
-              { "id": "selisih", "label": "Selisih", "ikon": "➖", "isi": "Kurangi nilai yang besar.", "suara": "Selisih kelereng dan puzzle adalah delapan.", "visual": { "jenis": "teks", "isi": "9 − 1 = 8" } }
+              {
+                "id": "terbanyak",
+                "label": "Paling banyak",
+                "ikon": "🏆",
+                "isi": "Baris dengan simbol terbanyak.",
+                "suara": "Mainan Karel paling banyak kelereng, sembilan buah.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "kelereng 9"
+                }
+              },
+              {
+                "id": "jumlah",
+                "label": "Jumlah",
+                "ikon": "➕",
+                "isi": "Tambahkan nilai semua baris.",
+                "suara": "Mainan Karel semuanya dua puluh tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 + 4 + 3 + 1 + 9 = 23"
+                }
+              },
+              {
+                "id": "selisih",
+                "label": "Selisih",
+                "ikon": "➖",
+                "isi": "Kurangi nilai yang besar.",
+                "suara": "Selisih kelereng dan puzzle adalah delapan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "9 − 1 = 8"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Data Jadi Gambar",
+          "ikon": "🖼️",
+          "suara": "Ini peta tentang menyajikan data dengan gambar, yaitu piktogram. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-sajikan",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Menyajikan data jadi gambar",
+            "petunjuk": "Mengubah data benda menjadi deretan gambar."
+          },
+          {
+            "id": "hal-skala",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Piktogram dengan skala",
+            "petunjuk": "Satu gambar mewakili lebih dari satu."
+          },
+          {
+            "id": "hal-banding",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Membandingkan data",
+            "petunjuk": "Mencari paling banyak, paling sedikit, dan jumlah."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-gambar",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Gambar sebanyak bendanya",
+            "petunjuk": "Langkah untuk menyajikan data jadi gambar."
+          },
+          {
+            "id": "cara-skala",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Baca keterangan, kali skala",
+            "petunjuk": "Langkah untuk piktogram dengan skala."
+          },
+          {
+            "id": "cara-banding",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Baca gambar, lalu banding",
+            "petunjuk": "Langkah untuk membandingkan data."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-buat",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa membuat piktogram",
+            "petunjuk": "Kemampuan menyajikan data jadi gambar."
+          },
+          {
+            "id": "hasil-baca",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa membaca piktogram",
+            "petunjuk": "Kemampuan menafsirkan data dari gambar."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Gambar dikali skala",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel gambar dikali skala. Pasang banyak gambar, nilai satu gambar, dan jumlah siswa untuk tiap data. Jumlah sama dengan banyak gambar dikali nilai satu gambar.",
+        "pojok": "Data",
+        "kolom": [
+          "Gambar",
+          "Skala",
+          "Jumlah"
+        ],
+        "baris": [
+          {
+            "label": "Merah",
+            "sel": [
+              "5 gambar",
+              "1 siswa",
+              "5 siswa"
+            ]
+          },
+          {
+            "label": "Kelas I",
+            "sel": [
+              "6 gambar",
+              "4 siswa",
+              "24 siswa"
+            ]
+          },
+          {
+            "label": "Kelas IV",
+            "sel": [
+              "8 gambar",
+              "4 siswa",
+              "32 siswa"
+            ]
+          },
+          {
+            "label": "Kelas V",
+            "sel": [
+              "5 gambar",
+              "4 siswa",
+              "20 siswa"
             ]
           }
         ]
@@ -144,14 +421,62 @@
           }
         ],
         "kartu": [
-          { "id": "b-persegi", "teks": "Batang persegi panjang", "ikon": "▮", "cabang": "bentuk", "petunjuk": "Bentuk batang itu soal bentuk diagram. Coba cabang lain." },
-          { "id": "b-panjang", "teks": "Lebih panjang, lebih banyak", "ikon": "📈", "cabang": "bentuk", "petunjuk": "Panjang batang menunjukkan banyak. Coba cabang lain." },
-          { "id": "b-judul", "teks": "Judul di atas diagram", "ikon": "🏷️", "cabang": "label", "petunjuk": "Judul itu bagian dari label diagram. Coba cabang lain." },
-          { "id": "b-nama", "teks": "Sumbu berlabel nama kategori", "ikon": "🔤", "cabang": "label", "petunjuk": "Menulis nama di sumbu itu soal label. Coba cabang lain." },
-          { "id": "b-nol", "teks": "Sumbu mulai dari nol", "ikon": "0️⃣", "cabang": "skala", "petunjuk": "Titik mulai sumbu itu soal langkah sumbu. Coba cabang lain." },
-          { "id": "b-garis", "teks": "Garis × langkah = nilai", "ikon": "✖️", "cabang": "skala", "petunjuk": "Membaca garis itu soal langkah sumbu. Coba cabang lain." },
-          { "id": "b-tidur", "teks": "Batang mendatar ke samping", "ikon": "➡️", "cabang": "arah", "petunjuk": "Arah ke samping itu soal tegak dan mendatar. Coba cabang lain." },
-          { "id": "b-tetap", "teks": "Arah berubah, nilai tetap", "ikon": "🔁", "cabang": "arah", "petunjuk": "Nilai yang tetap saat arah berubah itu soal arah batang. Coba cabang lain." }
+          {
+            "id": "b-persegi",
+            "teks": "Batang persegi panjang",
+            "ikon": "▮",
+            "cabang": "bentuk",
+            "petunjuk": "Bentuk batang itu soal bentuk diagram. Coba cabang lain."
+          },
+          {
+            "id": "b-panjang",
+            "teks": "Lebih panjang, lebih banyak",
+            "ikon": "📈",
+            "cabang": "bentuk",
+            "petunjuk": "Panjang batang menunjukkan banyak. Coba cabang lain."
+          },
+          {
+            "id": "b-judul",
+            "teks": "Judul di atas diagram",
+            "ikon": "🏷️",
+            "cabang": "label",
+            "petunjuk": "Judul itu bagian dari label diagram. Coba cabang lain."
+          },
+          {
+            "id": "b-nama",
+            "teks": "Sumbu berlabel nama kategori",
+            "ikon": "🔤",
+            "cabang": "label",
+            "petunjuk": "Menulis nama di sumbu itu soal label. Coba cabang lain."
+          },
+          {
+            "id": "b-nol",
+            "teks": "Sumbu mulai dari nol",
+            "ikon": "0️⃣",
+            "cabang": "skala",
+            "petunjuk": "Titik mulai sumbu itu soal langkah sumbu. Coba cabang lain."
+          },
+          {
+            "id": "b-garis",
+            "teks": "Garis × langkah = nilai",
+            "ikon": "✖️",
+            "cabang": "skala",
+            "petunjuk": "Membaca garis itu soal langkah sumbu. Coba cabang lain."
+          },
+          {
+            "id": "b-tidur",
+            "teks": "Batang mendatar ke samping",
+            "ikon": "➡️",
+            "cabang": "arah",
+            "petunjuk": "Arah ke samping itu soal tegak dan mendatar. Coba cabang lain."
+          },
+          {
+            "id": "b-tetap",
+            "teks": "Arah berubah, nilai tetap",
+            "ikon": "🔁",
+            "cabang": "arah",
+            "petunjuk": "Nilai yang tetap saat arah berubah itu soal arah batang. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -165,16 +490,60 @@
             "ide": "Ikuti ujung batang ke angka sumbu.",
             "suara": "Ada tiga hal untuk membaca diagram batang. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "sumbu", "label": "Sumbu", "ikon": "📐", "isi": "Satu sumbu nama, satu sumbu banyak.", "suara": "Pada diagram tegak, sumbu tegak menunjukkan banyak dan sumbu datar menunjukkan nama kategori.", "visual": { "jenis": "teks", "isi": "tegak = banyak" } },
+              {
+                "id": "sumbu",
+                "label": "Sumbu",
+                "ikon": "📐",
+                "isi": "Satu sumbu nama, satu sumbu banyak.",
+                "suara": "Pada diagram tegak, sumbu tegak menunjukkan banyak dan sumbu datar menunjukkan nama kategori.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "tegak = banyak"
+                }
+              },
               {
                 "id": "data",
                 "label": "Data",
                 "ikon": "🚲",
                 "isi": "Alat transportasi ke sekolah.",
                 "suara": "Jalan kaki delapan, sepeda lima, motor tujuh, lainnya tiga.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Alat", "Siswa"], "baris": [["jalan kaki", 8], ["sepeda", 5], ["motor", 7], ["lainnya", 3]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Alat",
+                    "Siswa"
+                  ],
+                  "baris": [
+                    [
+                      "jalan kaki",
+                      8
+                    ],
+                    [
+                      "sepeda",
+                      5
+                    ],
+                    [
+                      "motor",
+                      7
+                    ],
+                    [
+                      "lainnya",
+                      3
+                    ]
+                  ]
+                }
               },
-              { "id": "langkah", "label": "Langkah", "ikon": "📏", "isi": "Garis dikali langkah sumbu.", "suara": "Kalau tiap garis bernilai dua, batang yang sampai garis ketujuh bernilai empat belas.", "visual": { "jenis": "teks", "isi": "7 × 2 = 14" } }
+              {
+                "id": "langkah",
+                "label": "Langkah",
+                "ikon": "📏",
+                "isi": "Garis dikali langkah sumbu.",
+                "suara": "Kalau tiap garis bernilai dua, batang yang sampai garis ketujuh bernilai empat belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7 × 2 = 14"
+                }
+              }
             ]
           },
           {
@@ -184,8 +553,28 @@
             "ide": "Arah berubah, nilai dan arti tetap.",
             "suara": "Bandingkan diagram batang tegak dan mendatar.",
             "sisi": [
-              { "id": "tegak", "nama": "Tegak", "ikon": "⬆️", "catatan": "Batang naik ke atas.", "suara": "Diagram tegak. Batang naik ke atas, nama kategori di bawah, banyak di sumbu tegak.", "visual": { "jenis": "teks", "isi": "kategori di bawah" } },
-              { "id": "mendatar", "nama": "Mendatar", "ikon": "➡️", "catatan": "Batang memanjang ke samping.", "suara": "Diagram mendatar. Batang memanjang ke samping, nama kategori di kiri, banyak di sumbu datar.", "visual": { "jenis": "teks", "isi": "kategori di kiri" } }
+              {
+                "id": "tegak",
+                "nama": "Tegak",
+                "ikon": "⬆️",
+                "catatan": "Batang naik ke atas.",
+                "suara": "Diagram tegak. Batang naik ke atas, nama kategori di bawah, banyak di sumbu tegak.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "kategori di bawah"
+                }
+              },
+              {
+                "id": "mendatar",
+                "nama": "Mendatar",
+                "ikon": "➡️",
+                "catatan": "Batang memanjang ke samping.",
+                "suara": "Diagram mendatar. Batang memanjang ke samping, nama kategori di kiri, banyak di sumbu datar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "kategori di kiri"
+                }
+              }
             ],
             "kesimpulan": "Nilai sama, hanya arah batang dan letak label yang bertukar."
           },
@@ -196,9 +585,182 @@
             "ide": "Batang lebih panjang berarti lebih banyak.",
             "suara": "Ada tiga cara membandingkan batang. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "terbanyak", "label": "Paling banyak", "ikon": "🏆", "isi": "Batang paling panjang.", "suara": "Jalan kaki paling banyak dipakai, delapan siswa.", "visual": { "jenis": "teks", "isi": "jalan kaki 8" } },
-              { "id": "selisih", "label": "Selisih", "ikon": "➖", "isi": "Panjang dikurangi pendek.", "suara": "Buku dipinjam hari Rabu empat belas, Sabtu lima. Selisihnya sembilan.", "visual": { "jenis": "teks", "isi": "14 − 5 = 9" } },
-              { "id": "jumlah", "label": "Jumlah", "ikon": "➕", "isi": "Tambahkan nilai semua batang.", "suara": "Semua alat transportasi berjumlah dua puluh tiga siswa.", "visual": { "jenis": "teks", "isi": "8 + 5 + 7 + 3 = 23" } }
+              {
+                "id": "terbanyak",
+                "label": "Paling banyak",
+                "ikon": "🏆",
+                "isi": "Batang paling panjang.",
+                "suara": "Jalan kaki paling banyak dipakai, delapan siswa.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "jalan kaki 8"
+                }
+              },
+              {
+                "id": "selisih",
+                "label": "Selisih",
+                "ikon": "➖",
+                "isi": "Panjang dikurangi pendek.",
+                "suara": "Buku dipinjam hari Rabu empat belas, Sabtu lima. Selisihnya sembilan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "14 − 5 = 9"
+                }
+              },
+              {
+                "id": "jumlah",
+                "label": "Jumlah",
+                "ikon": "➕",
+                "isi": "Tambahkan nilai semua batang.",
+                "suara": "Semua alat transportasi berjumlah dua puluh tiga siswa.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "8 + 5 + 7 + 3 = 23"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Diagram Batang",
+          "ikon": "📊",
+          "suara": "Ini peta tentang diagram batang. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok nama-nama hal yang kita pelajari, bukan langkahnya."
+          },
+          {
+            "id": "hal-tegak",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Batang tegak",
+            "petunjuk": "Batang berdiri ke atas dari garis dasar."
+          },
+          {
+            "id": "hal-datar",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Batang mendatar",
+            "petunjuk": "Batang berbaring ke samping dari garis tepi."
+          },
+          {
+            "id": "hal-baca",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Membaca diagram",
+            "petunjuk": "Mencari yang paling banyak, paling sedikit, dan jumlahnya."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal."
+          },
+          {
+            "id": "cara-tegak",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tarik batang ke atas",
+            "petunjuk": "Langkah untuk batang yang berdiri."
+          },
+          {
+            "id": "cara-datar",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Tarik batang ke samping",
+            "petunjuk": "Langkah untuk batang yang berbaring."
+          },
+          {
+            "id": "cara-baca",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Baca angka di ujung batang",
+            "petunjuk": "Langkah untuk menjawab pertanyaan dari diagram."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-buat",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa membuat diagram batang",
+            "petunjuk": "Kemampuan menggambar diagram dari data."
+          },
+          {
+            "id": "hasil-banding",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa membandingkan data",
+            "petunjuk": "Kemampuan menentukan mana yang lebih banyak dan selisihnya."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Banding dengan sepak bola",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel lima kegiatan ekstrakurikuler. Pasang banyak siswa, urutan, dan selisih dengan sepak bola untuk tiap kegiatan.",
+        "pojok": "Kegiatan",
+        "kolom": [
+          "Banyak",
+          "Urutan",
+          "Selisih"
+        ],
+        "baris": [
+          {
+            "label": "Sepak Bola",
+            "sel": [
+              "9",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "label": "Tari",
+            "sel": [
+              "1",
+              "5",
+              "8"
+            ]
+          },
+          {
+            "label": "Menyanyi",
+            "sel": [
+              "5",
+              "3",
+              "4"
+            ]
+          },
+          {
+            "label": "Catur",
+            "sel": [
+              "2",
+              "4",
+              "7"
+            ]
+          },
+          {
+            "label": "Basket",
+            "sel": [
+              "6",
+              "2",
+              "3"
             ]
           }
         ]

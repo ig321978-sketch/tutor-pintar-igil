@@ -55,11 +55,11 @@ export const ADEGAN_LUAR_BACA: AdeganStory = {
 };
 
 /* ------------------------------ 7. Read then Compare: penerapan pada buku yang dipinjam (Buku Siswa hlm. 185) ------------------------------ */
-const SUARA_BT1 = "Terapkan pada buku perpustakaan. Langkah baca: Senin dua belas, Selasa enam, Rabu sembilan, Kamis tiga, Jumat dua belas, dan Sabtu empat belas.";
+const SUARA_BT1 = "Terapkan pada bacaan yang dipinjam dari perpustakaan. Langkah baca: Senin dua belas, Selasa enam, Rabu sembilan, Kamis tiga, Jumat dua belas, dan Sabtu empat belas.";
 const SUARA_BT2 = "Langkah banding: yang terbesar empat belas, yaitu hari Sabtu. Yang terkecil tiga, yaitu hari Kamis.";
 const SUARA_BT3 = "Perhatikan, Senin dan Jumat sama-sama dua belas. Bila ditanya hari yang sama banyak, jawabannya dua hari itu.";
-const SUARA_BT4 = "Selisih terbanyak dan tersedikit, hitungan kita sendiri: empat belas dikurangi tiga, sama dengan sebelas buku.";
-const SUARA_BT5 = "Jawaban ini sama dengan kunci panduan guru: Sabtu paling banyak, Kamis paling sedikit, dan buku pada hari Kamis dan Jumat adalah tiga ditambah dua belas, sama dengan lima belas buku.";
+const SUARA_BT4 = "Selisih terbanyak dan tersedikit, hitungan kita sendiri: empat belas dikurangi tiga, sama dengan sebelas bacaan.";
+const SUARA_BT5 = "Jawaban ini sama dengan hitungan tadi: Sabtu paling banyak, Kamis paling sedikit, dan bacaan pada hari Kamis dan Jumat adalah tiga ditambah dua belas, sama dengan lima belas bacaan.";
 const yBar = (i: number) => 32 + i * 24;
 const barBuku = (i: number) => [
   teks(`bl${i}`, 14, yBar(i) + 11, HARI[i], 8.6, W.biru, { anchor: "start" }),
@@ -69,8 +69,8 @@ const barBuku = (i: number) => [
 
 export const ADEGAN_LUAR_BACA_TERAPAN: AdeganStory = {
   id: "luar-baca-terapan",
-  judul: "Read then Compare pada buku yang dipinjam",
-  sumber: "Metode luar: Read then Compare; angka Buku Siswa hlm. 185",
+  judul: "Read then Compare pada bacaan yang dipinjam",
+  sumber: "Metode luar: Read then Compare",
   latar: "#FEFCE8",
   ketukan: [
     k(SUARA_BT1, tambah(0, judul("Langkah baca")), ...HARI.map((h, i) => tambah(h, ...barBuku(i)))),
@@ -91,15 +91,15 @@ export const ADEGAN_LUAR_BACA_TERAPAN: AdeganStory = {
       redamkan(0, "bb0", "bb4"),
       sorotkan("empat", "bb5"),
       sorotkan("tiga,", "bb3"),
-      tambah("sama", teks("bt2", 150, 176, "14 − 3 = 11 buku", 11, W.merah)),
+      tambah("sama", teks("bt2", 150, 176, "14 − 3 = 11 bacaan", 11, W.merah)),
     ),
     k(
       SUARA_BT5,
       bersih(0),
-      tambah(0, judul("Cocok dengan kunci buku")),
+      tambah(0, judul("Cocok dengan hitungan tadi")),
       tambah("Sabtu", ...kartu("bk1", 20, 36, 260, 30, W.hijauMuda, ["paling banyak: Sabtu"], 9.6)),
       tambah("Kamis", ...kartu("bk2", 20, 76, 260, 30, W.langit, ["paling sedikit: Kamis"], 9.6)),
-      tambah("tiga", ...kartu("bk3", 20, 116, 260, 30, W.krem, ["3 + 12 = 15 buku"], 10.4)),
+      tambah("tiga", ...kartu("bk3", 20, 116, 260, 30, W.krem, ["3 + 12 = 15 bacaan"], 10.4)),
       tambah("lima", emo("bk4", 150, 184, "✅", 26)),
     ),
   ],
@@ -152,7 +152,7 @@ export const ADEGAN_LUAR_SKALA: AdeganStory = {
 };
 
 /* ------------------------------ 9. Scale Multiply: penerapan pada siswa tiap kelas (Buku Siswa hlm. 186) ------------------------------ */
-const SUARA_ST1 = "Terapkan pada siswa tiap kelas di buku. Keterangannya: satu gambar menyatakan empat siswa. Jadi tiap gambar bernilai empat. Gambar tiap kelas tampak seperti ini.";
+const SUARA_ST1 = "Terapkan pada siswa tiap kelas tadi. Keterangannya: satu gambar menyatakan empat siswa. Jadi tiap gambar bernilai empat. Gambar tiap kelas tampak seperti ini.";
 const SUARA_ST2 = "Kelas empat punya delapan gambar. Delapan kali empat sama dengan tiga puluh dua siswa.";
 const SUARA_ST3 = "Kelas satu dan kelas dua masing-masing enam gambar. Enam kali empat sama dengan dua puluh empat siswa tiap kelas.";
 const SUARA_ST4 = "Jumlah semua siswa dihitung dua cara. Tiga puluh sembilan gambar kali empat, dan penjumlahan tiap kelas, keduanya sama dengan seratus lima puluh enam.";
@@ -161,7 +161,7 @@ const yK = (i: number) => PS.y + PS.hh + i * PS.rh + PS.rh / 2 + 3.4;
 export const ADEGAN_LUAR_SKALA_TERAPAN: AdeganStory = {
   id: "luar-skala-terapan",
   judul: "Scale Multiply pada siswa tiap kelas",
-  sumber: "Metode luar: Scale Multiply; angka Buku Siswa hlm. 186",
+  sumber: "Metode luar: Scale Multiply",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -189,16 +189,16 @@ export const ADEGAN_LUAR_SKALA_TERAPAN: AdeganStory = {
       tambah(0, judul("Dua cara, hasil sama")),
       tambah("Tiga", ...kartu("sz1", 20, 34, 260, 34, W.hijauMuda, ["39 gambar × 4 = 156 siswa"], 10)),
       tambah("penjumlahan", ...kartu("sz2", 20, 78, 260, 44, W.langit, ["24 + 24 + 28 + 32 + 20 + 28", "= 156 siswa"], 9.2)),
-      tambah("seratus", ...kartu("sz3", 40, 134, 220, 34, W.emas, ["cocok dengan kunci buku"], 9.6)),
+      tambah("seratus", ...kartu("sz3", 40, 134, 220, 34, W.emas, ["cocok dengan hitungan tadi"], 9.6)),
     ),
   ],
 };
 
 /* ------------------------------ 10. Ringkasan metode luar ------------------------------ */
 const SUARA_R1 = "Ringkasannya: Pictograph Key membaca keterangan lebih dulu. Categorical Tally menghitung data mentah dengan turus. Read then Compare membaca lalu membandingkan. Scale Multiply mengalikan gambar dengan skala.";
-const SUARA_R2 = "Kapan dipakai? Kunci dan kali skala saat gambar punya skala, turus saat data masih berupa daftar, dan baca lalu banding saat ditanya paling banyak atau paling sedikit.";
-const SUARA_R4 = "Cobalah memakai keempatnya pada data kelompok kalian sendiri, misalnya alat tulis dalam tas atau warna bunga di halaman. Satu data, empat cara, satu jawaban.";
-const SUARA_R3 = "Apa pun metodenya, hasil harus cocok dengan angka buku: dua puluh tiga mainan, lima puluh enam buku, dan seratus lima puluh enam siswa.";
+const SUARA_R2 = "Kapan dipakai? Keterangan dan kali skala saat gambar punya skala, turus saat data masih berupa daftar, dan baca lalu banding saat ditanya paling banyak atau paling sedikit.";
+const SUARA_R4 = "Cobalah memakai keempatnya pada data kelompok kalian sendiri, misalnya alat tulis dalam tas atau warna bunga di taman. Satu data, empat cara, satu jawaban.";
+const SUARA_R3 = "Apa pun metodenya, hasil harus cocok dengan hitungan tadi: dua puluh tiga mainan, lima puluh enam bacaan, dan seratus lima puluh enam siswa.";
 const RINGKAS = ["baca keterangan dulu", "turus untuk data mentah", "baca, banding, jawab", "gambar × skala"];
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
@@ -216,16 +216,16 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       SUARA_R2,
       bersih(0),
       tambah(0, judul("Kapan dipakai?")),
-      tambah("Kunci", ...kartu("kp0", 14, 34, 272, 34, W.hijauMuda, ["gambar punya skala: kunci, kali skala"], 8.6)),
+      tambah("Keterangan", ...kartu("kp0", 14, 34, 272, 34, W.hijauMuda, ["gambar punya skala: keterangan, kali skala"], 8.2)),
       tambah("turus", ...kartu("kp1", 14, 76, 272, 34, W.langit, ["data masih daftar: turus"], 8.6)),
       tambah("baca", ...kartu("kp2", 14, 118, 272, 34, W.krem, ["paling banyak, paling sedikit: baca lalu banding"], 8.2)),
     ),
     k(
       SUARA_R3,
       bersih(0),
-      tambah(0, judul("Cocok dengan buku")),
+      tambah(0, judul("Cocok dengan hitungan tadi")),
       tambah("mainan,", ...kartu("cb0", 14, 34, 272, 30, W.hijauMuda, ["mainan Karel: 23"], 9.6)),
-      tambah(idx(SUARA_R3, "buku", 2), ...kartu("cb1", 14, 72, 272, 30, W.langit, ["buku dipinjam seminggu: 56"], 9.6)),
+      tambah("bacaan,", ...kartu("cb1", 14, 72, 272, 30, W.langit, ["bacaan dipinjam seminggu: 56"], 9.6)),
       tambah("siswa.", ...kartu("cb2", 14, 110, 272, 30, W.krem, ["siswa seluruh kelas: 156"], 9.6)),
       tambah(idx(SUARA_R3, "seratus"), emo("cb3", 150, 180, "✅", 26)),
     ),

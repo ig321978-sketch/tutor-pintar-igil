@@ -22,8 +22,8 @@ const LOMBA = diagramTegak(
 );
 export const ADEGAN_BERLATIH_1: AdeganStory = {
   id: "berlatih-1",
-  judul: "Ayo Berlatih 1: siswa kelas IV yang mengikuti lomba",
-  sumber: "Buku Siswa hlm. 191; Panduan Guru hlm. 226",
+  judul: "Latihan 1: siswa kelas IV yang mengikuti lomba",
+  sumber: "Materi: membaca diagram batang",
   latar: "#F0F9FF",
   kutipan: [
     "Kerjakan soal berikut dengan cermat dan salin jawaban pada buku kalian.",
@@ -38,8 +38,8 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Berlatih nomor satu. Banyaknya siswa kelas empat yang mengikuti lomba disajikan dalam diagram batang. Sumbu tegak banyak siswa, skalanya naik dua-dua dari nol sampai enam belas. Sumbu datar nama lomba.",
-      tambah(0, judul("Ayo Berlatih 1")),
+      "Latihan satu. Banyaknya siswa kelas empat yang mengikuti lomba disajikan dalam diagram batang. Sumbu tegak banyak siswa, skalanya naik dua-dua dari nol sampai enam belas. Sumbu datar nama lomba.",
+      tambah(0, judul("Latihan 1")),
       tambah("diagram", ...LOMBA.sumbu),
       tambah("nama", ...LOMBA.nama),
       sorotkan("skalanya", "lm-y2", "lm-y4", "lm-y6", "lm-y8"),
@@ -71,10 +71,10 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
       ubah("lima", { id: "lc-t0", isi: "e. Matematika, 15 siswa" }, { id: "lc-k", warna: W.pink }),
     ),
     k(
-      "Catatan guru: kunci Panduan Guru benar semua. Puisi adalah jawaban b dan d sekaligus, karena puisi diikuti tiga siswa, paling sedikit di antara lima lomba.",
+      "Perhatikan, semua jawabannya sudah benar. Puisi adalah jawaban b dan d sekaligus, karena puisi diikuti tiga siswa, paling sedikit di antara lima lomba.",
       bersih(0),
-      tambah(0, judul("Kunci Panduan Guru: benar")),
-      tambah("Catatan", ...kartu("cg1", 14, 34, 272, 28, W.hijauMuda, ["a. Matematika   b. Puisi"], 9.4)),
+      tambah(0, judul("Semua jawaban benar")),
+      tambah("Perhatikan", ...kartu("cg1", 14, 34, 272, 28, W.hijauMuda, ["a. Matematika   b. Puisi"], 9.4)),
       tambah("benar", ...kartu("cg2", 14, 70, 272, 28, W.hijauMuda, ["c. 6 + 6 = 12 siswa   d. Puisi"], 9.4)),
       tambah("Puisi", ...kartu("cg3", 14, 106, 272, 28, W.krem, ["e. 15 siswa"], 9.4)),
       tambah("sedikit", teks("cg4", 150, 160, "puisi: 3 siswa, paling sedikit", 9.6, W.coklat)),
@@ -103,8 +103,8 @@ const BUNGA = diagramMendatar(
 );
 export const ADEGAN_BERLATIH_2: AdeganStory = {
   id: "berlatih-2",
-  judul: "Ayo Berlatih 2: bunga di taman bermain sekolah",
-  sumber: "Buku Siswa hlm. 192; Panduan Guru hlm. 227",
+  judul: "Latihan 2: bunga di taman bermain sekolah",
+  sumber: "Materi: diagram batang mendatar",
   latar: "#FDF2F8",
   kutipan: [
     "Di taman bermain sekolah terdapat beberapa jenis bunga antara lain",
@@ -121,8 +121,8 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Nomor dua. Di taman bermain sekolah ada lima bunga mawar, sembilan bunga kertas, empat bunga sepatu, tiga bunga matahari, delapan bunga melati, dan tujuh bunga anggrek. Soal a meminta data ini disajikan dalam diagram batang mendatar.",
-      tambah(0, judul("Ayo Berlatih 2")),
+      "Latihan dua. Di taman bermain sekolah ada lima bunga mawar, sembilan bunga kertas, empat bunga sepatu, tiga bunga matahari, delapan bunga melati, dan tujuh bunga anggrek. Pertama, sajikan data ini dalam diagram batang mendatar.",
+      tambah(0, judul("Latihan 2")),
       tambah("mawar,", ...tabel("dt", 14, 36, [66, 28, 66, 28, 66, 28], [["mawar", "5", "kertas", "9", "sepatu", "4"], ["matahari", "3", "melati", "8", "anggrek", "7"]], 18, 8.4, W.krem)),
       tambah("mendatar.", ...kartu("dt9", 40, 90, 220, 30, W.hijauMuda, ["sajikan dalam diagram batang mendatar"], 9)),
     ),
@@ -140,15 +140,15 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
       tambah("mawar", ...BUNGA.batang[5]),
     ),
     k(
-      "Soal b: bunga paling banyak adalah bunga kertas, batangnya paling lebar, sembilan. Soal c: bunga berjumlah delapan adalah melati.",
+      "Pertanyaan b: bunga paling banyak adalah bunga kertas, batangnya paling lebar, sembilan. Pertanyaan c: bunga berjumlah delapan adalah melati.",
       sorotkan("kertas,", "bg-b4"),
       tambah("kertas,", ...kartu("bc", 14, 178, 272, 20, W.hijauMuda, ["b. bunga kertas, 9"], 9)),
-      ubah("Soal@2", { id: "bg-b4", sorot: false }),
+      ubah("Pertanyaan@2", { id: "bg-b4", sorot: false }),
       sorotkan("melati.", "bg-b1"),
       ubah("melati.", { id: "bc-t0", isi: "c. bunga melati, 8" }, { id: "bc-k", warna: W.krem }),
     ),
     k(
-      "Soal d: bunga kertas dan bunga anggrek, sembilan tambah tujuh sama dengan enam belas bunga. Soal e: paling sedikit bunga matahari. Soal f: bunga mawar ada lima.",
+      "Pertanyaan d: bunga kertas dan bunga anggrek, sembilan tambah tujuh sama dengan enam belas bunga. Pertanyaan e: paling sedikit bunga matahari. Pertanyaan f: bunga mawar ada lima.",
       ubah(0, { id: "bg-b1", sorot: false }),
       sorotkan("kertas", "bg-b4", "bg-b0"),
       ubah("enam", { id: "bc-t0", isi: "d. 9 + 7 = 16 bunga" }, { id: "bc-k", warna: W.langit }),
@@ -159,10 +159,10 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
       ubah("mawar", { id: "bc-t0", isi: "f. bunga mawar, 5" }, { id: "bc-k", warna: W.pink }),
     ),
     k(
-      "Catatan guru: kunci Panduan Guru benar. Sebagai tambahan, jumlah seluruh bunga: lima tambah sembilan tambah empat tambah tiga tambah delapan tambah tujuh sama dengan tiga puluh enam bunga.",
+      "Sebagai tambahan, jumlah seluruh bunga: lima tambah sembilan tambah empat tambah tiga tambah delapan tambah tujuh sama dengan tiga puluh enam bunga.",
       bersih(0),
       tambah(0, judul("Jumlah seluruh bunga")),
-      tambah("Catatan", ...kartu("bb6", 14, 34, 272, 28, W.hijauMuda, ["kunci Panduan Guru: benar"], 9.6)),
+      tambah("tambahan", ...kartu("bb6", 14, 34, 272, 28, W.hijauMuda, ["tambahan: jumlah semua bunga"], 9.6)),
       tambah("jumlah", teks("bb7", 150, 108, "5 + 9 + 4 + 3 + 8 + 7 = 36", 17, W.hitam)),
       tambah("tiga@2", teks("bb8", 150, 140, "36 bunga", 14, W.hijau)),
     ),
@@ -228,7 +228,7 @@ export const ADEGAN_GURU_B: AdeganStory = {
 
 /* ------------------------------ 8. Uji Kompetensi nomor 1: benda di atas meja guru (Buku Siswa hlm. 192; Panduan Guru hlm. 228–229) ------------------------------ */
 const MEJA = [
-  { nama: "Buku", nilai: 4 },
+  { nama: "Komik", nilai: 4 },
   { nama: "Taplak Meja", nilai: 1 },
   { nama: "Spidol", nilai: 3 },
   { nama: "Penghapus", nilai: 1 },
@@ -239,8 +239,8 @@ const UM = diagramMendatar("um", 70, 40, 190, 110, MEJA, 4, 1, { judulNama: "Ben
 const UT = diagramTegak("ut", 38, 44, 232, 100, MEJA, 4, 1, { judulNilai: "Banyak", judulNama: "Benda", ukuranNama: 6.4 });
 export const ADEGAN_UK_1: AdeganStory = {
   id: "uk-1",
-  judul: "Uji Kompetensi 1: benda di atas meja guru",
-  sumber: "Buku Siswa hlm. 192; Panduan Guru hlm. 228–229",
+  judul: "Uji 1: benda di atas meja guru",
+  sumber: "Materi: piktogram dan diagram batang",
   latar: "#FFF7ED",
   kutipan: [
     "Uji Kompetensi",
@@ -254,38 +254,38 @@ export const ADEGAN_UK_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Uji Kompetensi nomor satu. Data benda di atas meja guru kelas empat: buku empat, taplak meja satu, spidol tiga, penghapus satu, dan pulpen dua. Soal meminta tiga penyajian: piktogram, diagram batang mendatar, dan diagram batang tegak.",
-      tambah(0, judul("Uji Kompetensi 1")),
-      tambah("buku", ...tabel("mj", 20, 40, [64, 52, 52, 56, 56], [["Buku", "Taplak meja", "Spidol", "Penghapus", "Pulpen"], ["4", "1", "3", "1", "2"]], 22, 7.2, W.langit)),
+      "Uji satu. Data benda di atas meja guru kelas empat: komik empat, taplak meja satu, spidol tiga, penghapus satu, dan pulpen dua. Sajikan data ini dalam tiga cara: piktogram, diagram batang mendatar, dan diagram batang tegak.",
+      tambah(0, judul("Uji 1")),
+      tambah("komik", ...tabel("mj", 20, 40, [64, 52, 52, 56, 56], [["Komik", "Taplak meja", "Spidol", "Penghapus", "Pulpen"], ["4", "1", "3", "1", "2"]], 22, 7.2, W.langit)),
       tambah("tiga@2", ...kartu("mj1", 14, 100, 272, 22, W.krem, ["a. piktogram"], 9)),
       tambah("diagram", ...kartu("mj2", 14, 128, 272, 22, W.hijauMuda, ["b. diagram batang mendatar"], 9)),
       tambah("tegak.", ...kartu("mj3", 14, 156, 272, 22, W.pink, ["c. diagram batang tegak"], 9)),
     ),
     k(
-      "Kunci a, piktogram: satu gambar menyatakan satu benda. Buku empat gambar, taplak meja satu, spidol tiga, penghapus satu, dan pulpen dua gambar.",
+      "Jawaban a, piktogram: satu gambar menyatakan satu benda. Komik empat gambar, taplak meja satu, spidol tiga, penghapus satu, dan pulpen dua gambar.",
       bersih(0),
       tambah(0, judul("a. Piktogram")),
-      ...UP.map((baris, i) => tambah(["Buku", "taplak", "spidol", "penghapus", "pulpen"][i], baris)),
+      ...UP.map((baris, i) => tambah(["Komik", "taplak", "spidol", "penghapus", "pulpen"][i], baris)),
       tambah("gambar@3", teks("up9", 150, 172, "1 gambar = 1 benda", 9, W.coklat)),
     ),
     k(
-      "Kunci b, diagram batang mendatar: nama benda di sumbu tegak, banyaknya di sumbu datar dari nol sampai empat. Panjang batang buku empat, spidol tiga, pulpen dua, taplak meja dan penghapus masing-masing satu.",
+      "Jawaban b, diagram batang mendatar: nama benda di sumbu tegak, banyaknya di sumbu datar dari nol sampai empat. Panjang batang komik empat, spidol tiga, pulpen dua, taplak meja dan penghapus masing-masing satu.",
       bersih(0),
       tambah(0, judul("b. Diagram batang mendatar")),
       tambah("nama", ...UM.sumbu, ...UM.nama),
-      tambah("buku", ...UM.batang[0]),
+      tambah("komik", ...UM.batang[0]),
       tambah("spidol", ...UM.batang[2]),
       tambah("pulpen", ...UM.batang[4]),
       tambah("taplak", ...UM.batang[1]),
       tambah("penghapus", ...UM.batang[3]),
     ),
     k(
-      "Kunci c, diagram batang tegak: tinggi batang sama dengan banyaknya benda. Catatan guru: gambar kunci memakai skala setengah-setengah sampai empat setengah, padahal datanya bulat; skala satu sudah cukup.",
+      "Jawaban c, diagram batang tegak: tinggi batang sama dengan banyaknya benda. Karena datanya bilangan bulat, cukup pakai skala satu-satu dari nol sampai empat.",
       bersih(0),
       tambah(0, judul("c. Diagram batang tegak")),
       tambah("tinggi", ...UT.sumbu, ...UT.nama),
       tambah("batang", ...UT.batang.flat()),
-      tambah("Catatan", teks("ut9", 150, 192, "kunci buku: skala 0,5; cukup skala 1", 8, W.coklat)),
+      tambah("Karena", teks("ut9", 150, 192, "data bulat: skala 1 cukup", 8, W.coklat)),
     ),
   ],
 };

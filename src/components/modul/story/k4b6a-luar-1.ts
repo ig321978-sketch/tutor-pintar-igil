@@ -8,15 +8,15 @@ const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
 const IKON_METODE = ["🔑", "📝", "🔎", "🧮"];
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana cara menyajikan dan membaca data dengan gambar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana cara menyajikan dan membaca data dengan gambar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari pelajaran tadi.";
 const SUARA_O2 = "Empat metode itu: Pictograph Key, Categorical Tally, Read then Compare, dan Scale Multiply.";
 const SUARA_O3 = "Semuanya menjawab pertanyaan yang sama, tetapi caranya berbeda: membaca keterangan, menghitung dengan turus, membaca lalu membandingkan, dan mengalikan dengan skala.";
-const SUARA_O4 = "Angkanya dari buku: warna kesukaan siswa, mainan Karel, buku yang dipinjam di perpustakaan, dan jumlah siswa tiap kelas.";
+const SUARA_O4 = "Angkanya dari pelajaran tadi: warna kesukaan siswa, mainan Karel, bacaan yang dipinjam di perpustakaan, dan jumlah siswa tiap kelas.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk piktogram",
-  sumber: "Metode luar: pembuka; angka Buku Siswa hlm. 180–186",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -24,7 +24,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah(0, judul("Empat metode dari luar")),
       tambah("menyajikan", emo("pg1", 54, 92, "🔵", 36), emo("pg2", 100, 92, "🔵", 36), emo("pg3", 146, 92, "🔵", 36)),
       tambah("berbagai", emo("gl", 235, 92, "🌍", 50)),
-      tambah("angka", teks("pa", 150, 150, "angka-angka dari buku", 9.6, W.biru), teks("pc", 150, 168, "Buku Siswa hlm. 180–186", 9, W.coklat)),
+      tambah("angka", teks("pa", 150, 150, "angka-angka dari pelajaran tadi", 9.6, W.biru), teks("pc", 150, 168, "warna, mainan, bacaan, siswa", 9, W.coklat)),
     ),
     k(
       SUARA_O2,
@@ -44,44 +44,44 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
     k(
       SUARA_O4,
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka dari pelajaran tadi")),
       tambah("warna", ...kartu("a1", 14, 34, 272, 30, W.hijauMuda, ["warna kesukaan: 4, 2, 1, 5 siswa"], 9)),
       tambah("Karel,", ...kartu("a2", 14, 72, 272, 30, W.langit, ["mainan Karel: 6, 4, 3, 1, 9"], 9)),
-      tambah("perpustakaan,", ...kartu("a3", 14, 110, 272, 30, W.krem, ["buku dipinjam: 12, 6, 9, 3, 12, 14"], 9)),
+      tambah("perpustakaan,", ...kartu("a3", 14, 110, 272, 30, W.krem, ["bacaan dipinjam: 12, 6, 9, 3, 12, 14"], 9)),
       tambah("kelas.", ...kartu("a4", 14, 148, 272, 30, W.pink, ["gambar siswa tiap kelas: 6, 6, 7, 8, 5, 7"], 8.6)),
     ),
   ],
 };
 
 /* ------------------------------ 2. Pictograph Key: konsep ------------------------------ */
-const SUARA_K1 = "Metode pertama, Pictograph Key, atau Kunci Piktogram. Sebelum membaca gambar, baca dulu keterangannya: satu gambar menyatakan berapa? Keterangan itu seperti kunci pada peta.";
-const SUARA_K2 = "Gambar yang sama bisa berarti satu, dua, atau lima. Tanpa kunci, banyaknya gambar belum punya arti.";
+const SUARA_K1 = "Metode pertama, Pictograph Key, atau Keterangan Piktogram. Sebelum membaca gambar, baca dulu keterangannya: satu gambar menyatakan berapa? Keterangan itu seperti legenda pada peta.";
+const SUARA_K2 = "Gambar yang sama bisa berarti satu, dua, atau lima. Tanpa keterangan, banyaknya gambar belum punya arti.";
 const SUARA_K3 = "Tiga langkahnya: temukan baris keterangan, catat nilai satu gambar, baru hitung gambarnya.";
-const SUARA_K4 = "Di buku, kunci selalu berada di baris terakhir tabel, misalnya menyatakan satu siswa, atau menyatakan satu buku.";
+const SUARA_K4 = "Keterangan biasanya berada di baris terakhir tabel, misalnya menyatakan satu siswa, atau menyatakan satu bacaan.";
 const tigaOrang = (id: string, y: number) => [0, 1, 2].map((j) => emo(`${id}${j}`, 36 + j * 22, y, "👤", 18));
 
 export const ADEGAN_LUAR_PK: AdeganStory = {
   id: "luar-kunci",
-  judul: "Pictograph Key: baca kuncinya dulu",
+  judul: "Pictograph Key: baca keterangannya dulu",
   sumber: "Metode luar: Pictograph Key",
   latar: "#F0FDF4",
   ketukan: [
     k(
       SUARA_K1,
       tambah(0, judul("Pictograph Key")),
-      tambah("Kunci", ...kartu("pk", 40, 34, 220, 30, W.hijauMuda, ["Kunci Piktogram"], 10.6)),
+      tambah("Keterangan", ...kartu("pk", 40, 34, 220, 30, W.hijauMuda, ["Keterangan Piktogram"], 10.6)),
       tambah("baca", emo("pk1", 70, 108, "👤", 34), teks("pk1t", 120, 114, "= berapa?", 12, W.merah)),
-      tambah("kunci@2", emo("pk2", 235, 108, "🔑", 34)),
-      tambah("peta.", teks("pk3", 150, 168, "keterangan = kunci pembaca", 9.4, W.coklat)),
+      tambah("legenda", emo("pk2", 235, 108, "🔑", 34)),
+      tambah("peta.", teks("pk3", 150, 168, "keterangan = penuntun pembaca", 9.4, W.coklat)),
     ),
     k(
       SUARA_K2,
       bersih(0),
       tambah(0, judul("Gambar sama, arti berbeda")),
-      tambah("satu,", ...tigaOrang("r1", 55), teks("r1t", 190, 60, "kunci 1: 3 siswa", 9.6, W.biru)),
-      tambah("dua,", ...tigaOrang("r2", 95), teks("r2t", 190, 100, "kunci 2: 6 siswa", 9.6, W.biru)),
-      tambah("lima.", ...tigaOrang("r3", 135), teks("r3t", 190, 140, "kunci 5: 15 siswa", 9.6, W.biru)),
-      tambah("Tanpa", teks("r4", 150, 186, "tanpa kunci, jumlah tak jelas", 9.4, W.merah)),
+      tambah("satu,", ...tigaOrang("r1", 55), teks("r1t", 190, 60, "skala 1: 3 siswa", 9.6, W.biru)),
+      tambah("dua,", ...tigaOrang("r2", 95), teks("r2t", 190, 100, "skala 2: 6 siswa", 9.6, W.biru)),
+      tambah("lima.", ...tigaOrang("r3", 135), teks("r3t", 190, 140, "skala 5: 15 siswa", 9.6, W.biru)),
+      tambah("Tanpa", teks("r4", 150, 186, "tanpa keterangan, jumlah tak jelas", 9.4, W.merah)),
     ),
     k(
       SUARA_K3,
@@ -94,32 +94,32 @@ export const ADEGAN_LUAR_PK: AdeganStory = {
     k(
       SUARA_K4,
       bersih(0),
-      tambah(0, judul("Kunci di buku")),
+      tambah(0, judul("Keterangan di tabel")),
       tambah("baris", ...kartu("b1", 14, 36, 272, 26, W.abu, ["baris terakhir tabel"], 9)),
       tambah("siswa,", emo("b2", 80, 100, "👤", 26), teks("b2t", 170, 106, "menyatakan 1 siswa", 10, W.biru)),
-      tambah(idx(SUARA_K4, "buku", 2), emo("b3", 80, 150, "📘", 26), teks("b3t", 170, 156, "menyatakan 1 buku", 10, W.biru)),
+      tambah(idx(SUARA_K4, "bacaan", 1), emo("b3", 80, 150, "📘", 26), teks("b3t", 170, 156, "menyatakan 1 bacaan", 10, W.biru)),
     ),
   ],
 };
 
 /* ------------------------------ 3. Pictograph Key: penerapan pada warna kesukaan (Buku Siswa hlm. 183) ------------------------------ */
-const SUARA_KT1 = "Terapkan pada warna kesukaan siswa di buku. Langkah pertama, baca kuncinya: satu gambar menyatakan satu siswa.";
+const SUARA_KT1 = "Terapkan pada warna kesukaan siswa tadi. Langkah pertama, baca keterangannya: satu gambar menyatakan satu siswa.";
 const SUARA_KT2 = "Langkah kedua, hitung gambar. Ungu empat, kuning dua, hitam satu, merah lima. Jumlahnya empat ditambah dua ditambah satu ditambah lima, sama dengan dua belas siswa.";
-const SUARA_KT3 = "Sekarang ganti kuncinya. Andaikan satu gambar menyatakan dua siswa. Gambarnya sama, tetapi ungu kini delapan siswa dan merah sepuluh siswa.";
-const SUARA_KT4 = "Gambar tidak berubah, tetapi artinya berubah: dua belas siswa menjadi dua puluh empat siswa. Itulah sebabnya kunci dibaca lebih dulu.";
+const SUARA_KT3 = "Sekarang ganti keterangannya. Andaikan satu gambar menyatakan dua siswa. Gambarnya sama, tetapi ungu kini delapan siswa dan merah sepuluh siswa.";
+const SUARA_KT4 = "Gambar tidak berubah, tetapi artinya berubah: dua belas siswa menjadi dua puluh empat siswa. Itulah sebabnya keterangan dibaca lebih dulu.";
 
 export const ADEGAN_LUAR_PK_TERAPAN: AdeganStory = {
   id: "luar-kunci-terapan",
   judul: "Pictograph Key pada warna kesukaan siswa",
-  sumber: "Metode luar: Pictograph Key; angka Buku Siswa hlm. 183",
+  sumber: "Metode luar: Pictograph Key",
   latar: "#F0FDF4",
   ketukan: [
     k(
       SUARA_KT1,
-      tambah(0, judul("Kunci: 1 gambar = 1 siswa")),
+      tambah(0, judul("Keterangan: 1 gambar = 1 siswa")),
       tambah("warna", rangkaPikto(PW)),
       tambah("baca", ...kunciPikto(PW, 4, { jenis: "emoji", e: "👤" }, "menyatakan 1 siswa")),
-      sorotkan("kuncinya:", "wk-kk"),
+      sorotkan("keterangannya:", "wk-kk"),
       tambah("satu@2", ...[0, 1, 2, 3].flatMap((i) => barisPikto(PW, i, WARNA[i]))),
     ),
     k(
@@ -143,16 +143,16 @@ export const ADEGAN_LUAR_PK_TERAPAN: AdeganStory = {
       SUARA_KT4,
       bersih(0),
       tambah(0, judul("Gambar sama, arti berbeda")),
-      tambah("Gambar", ...kartu("kz1", 14, 36, 272, 36, W.hijauMuda, ["kunci 1 gambar = 1 siswa: 12 siswa"], 9.4)),
-      tambah("menjadi", ...kartu("kz2", 14, 82, 272, 36, W.merahMuda, ["kunci 1 gambar = 2 siswa: 24 siswa"], 9.4)),
-      tambah("kunci", ...kartu("kz3", 40, 134, 220, 36, W.emas, ["baca kuncinya dulu"], 10)),
+      tambah("Gambar", ...kartu("kz1", 14, 36, 272, 36, W.hijauMuda, ["1 gambar = 1 siswa: 12 siswa"], 9.4)),
+      tambah("menjadi", ...kartu("kz2", 14, 82, 272, 36, W.merahMuda, ["1 gambar = 2 siswa: 24 siswa"], 9.4)),
+      tambah("keterangan", ...kartu("kz3", 40, 134, 220, 36, W.emas, ["baca keterangannya dulu"], 10)),
     ),
   ],
 };
 
 /* ------------------------------ 4. Categorical Tally: konsep ------------------------------ */
 const SUARA_T1 = "Metode kedua, Categorical Tally, atau Turus Kategori. Bila data masih berupa daftar, hitung dengan turus: setiap data yang muncul dicoret satu garis.";
-const SUARA_T2 = "Empat garis tegak, garis kelima menyilang, jadi satu kelompok berisi lima. Kelompok lima mudah dihitung dengan cepat.";
+const SUARA_T2 = "Empat garis berjajar, garis kelima menyilang, jadi satu kelompok berisi lima. Kelompok lima mudah dihitung dengan cepat.";
 const SUARA_T3 = "Contoh: dua kelompok lima dan tiga garis lagi berarti lima, lima, tiga, jumlahnya tiga belas.";
 const SUARA_T4 = "Setelah turus selesai, tiap kategori diubah menjadi gambar sebanyak turusnya, dan jadilah piktogram.";
 
@@ -174,7 +174,7 @@ export const ADEGAN_LUAR_TURUS: AdeganStory = {
       SUARA_T2,
       bersih(0),
       tambah(0, judul("Kelompok lima")),
-      ...turus("a", 134, 70, 5).map((o, i) => tambah(["Empat", "garis", "tegak,", "garis@2", "menyilang,"][i] ?? 0, o)),
+      ...turus("a", 134, 70, 5).map((o, i) => tambah(["Empat", "garis", "berjajar,", "garis@2", "menyilang,"][i] ?? 0, o)),
       tambah("kelompok", teks("tk", 150, 118, "5 garis = 1 kelompok", 10.4, W.biru)),
       tambah("mudah", teks("tm", 150, 150, "mudah dihitung cepat", 9.6, W.coklat)),
     ),
@@ -203,7 +203,7 @@ export const ADEGAN_LUAR_TURUS: AdeganStory = {
 /* ------------------------------ 5. Categorical Tally: penerapan pada mainan Karel (Buku Siswa hlm. 181) ------------------------------ */
 const SUARA_TT1 = "Terapkan pada mainan Karel. Daftar yang ia sebut: enam mobil, empat robot, tiga pesawat, satu puzzle, dan sembilan kelereng. Kita turuskan satu per satu.";
 const SUARA_TT2 = "Mobil: satu kelompok lima dan satu garis, jadi enam. Kelereng: satu kelompok lima dan empat garis, jadi sembilan.";
-const SUARA_TT3 = "Jumlah turus seluruhnya: enam, empat, tiga, satu, dan sembilan. Hasilnya dua puluh tiga, sama dengan hitungan buku.";
+const SUARA_TT3 = "Jumlah turus seluruhnya: enam, empat, tiga, satu, dan sembilan. Hasilnya dua puluh tiga, sama dengan hitungan tadi.";
 const SUARA_TT4 = "Dari turus ini, piktogram tinggal menggambar satu gambar untuk setiap garis. Kelereng sembilan turus menjadi sembilan gambar.";
 const NAMA_KAREL = ["Mobil", "Robot", "Pesawat", "Puzzle", "Kelereng"];
 const yBaris = (i: number) => 38 + i * 28;
@@ -212,7 +212,7 @@ const turusKarel = (i: number) => turus(`tk${i}`, 84, yBaris(i), KAREL[i]);
 export const ADEGAN_LUAR_TURUS_TERAPAN: AdeganStory = {
   id: "luar-turus-terapan",
   judul: "Categorical Tally pada mainan Karel",
-  sumber: "Metode luar: Categorical Tally; angka Buku Siswa hlm. 181",
+  sumber: "Metode luar: Categorical Tally",
   latar: "#EFF6FF",
   ketukan: [
     k(

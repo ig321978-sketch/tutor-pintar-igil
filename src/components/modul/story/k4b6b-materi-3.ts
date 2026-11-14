@@ -12,8 +12,8 @@ const TRANSPOR: [string, number][] = [
 const TP = piktogram("tp", 18, 44, TRANSPOR, "🧑", 12.5, 21);
 export const ADEGAN_UK_2: AdeganStory = {
   id: "uk-2",
-  judul: "Uji Kompetensi 2: alat transportasi siswa kelas IV",
-  sumber: "Buku Siswa hlm. 192–193; Panduan Guru hlm. 229, 230",
+  judul: "Uji 2: alat transportasi siswa kelas IV",
+  sumber: "Materi: membaca piktogram",
   latar: "#F0FDF4",
   kutipan: [
     "Diberikan piktogram untuk data transportasi yang digunakan siswa kelas IV ke sekolah.",
@@ -30,25 +30,25 @@ export const ADEGAN_UK_2: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal dua: piktogram alat transportasi siswa kelas empat. Satu gambar menyatakan satu siswa. Mobil tiga, sepeda motor empat belas, becak atau kendaraan lain lima, jalan kaki delapan.",
-      tambah(0, judul("Uji Kompetensi 2"), teks("tp9", 150, 150, "satu gambar menyatakan 1 siswa", 8.4, W.coklat)),
+      "Uji dua: piktogram alat transportasi siswa kelas empat. Satu gambar menyatakan satu siswa. Mobil tiga, sepeda motor empat belas, becak atau kendaraan lain lima, jalan kaki delapan.",
+      tambah(0, judul("Uji 2"), teks("tp9", 150, 150, "satu gambar menyatakan 1 siswa", 8.4, W.coklat)),
       tambah("Mobil", TP[0]),
       tambah("sepeda", TP[1]),
       tambah("becak", TP[2]),
       tambah("jalan", TP[3]),
     ),
     k(
-      "Kunci a sampai c: paling banyak sepeda motor, yang naik becak lima siswa, dan paling sedikit mobil. Kuncinya benar.",
-      tambah("Kunci", ...kartu("kc", 14, 160, 272, 22, W.hijauMuda, ["a. sepeda motor"], 9.2)),
+      "Jawaban a sampai c: paling banyak sepeda motor, yang naik becak lima siswa, dan paling sedikit mobil.",
+      tambah("Jawaban", ...kartu("kc", 14, 160, 272, 22, W.hijauMuda, ["a. sepeda motor"], 9.2)),
       sorotkan("sepeda", "tp-p1-0", "tp-p1-13"),
       ubah("becak", { id: "kc-t0", isi: "b. becak: 5 siswa" }, { id: "kc-k", warna: W.krem }),
       ubah("paling@2", { id: "kc-t0", isi: "c. paling sedikit: mobil" }, { id: "kc-k", warna: W.merahMuda }),
     ),
     k(
-      "Kunci d: mobil dan jalan kaki, tiga tambah delapan sama dengan sebelas siswa. Kunci e: tiga tambah empat belas tambah lima tambah delapan sama dengan tiga puluh siswa. Hitungan mandiri sama dengan kunci.",
-      ubah("Kunci", { id: "kc-t0", isi: "d. 3 + 8 = 11 siswa" }, { id: "kc-k", warna: W.langit }),
+      "Jawaban d: mobil dan jalan kaki, tiga tambah delapan sama dengan sebelas siswa. Jawaban e: tiga tambah empat belas tambah lima tambah delapan sama dengan tiga puluh siswa. Jumlah ini sama dengan seluruh siswa kelas empat.",
+      ubah("Jawaban", { id: "kc-t0", isi: "d. 3 + 8 = 11 siswa" }, { id: "kc-k", warna: W.langit }),
       ubah("tiga@2", { id: "kc-t0", isi: "e. 3 + 14 + 5 + 8 = 30 siswa" }, { id: "kc-k", warna: W.pink }),
-      tambah("Hitungan", teks("kc9", 150, 196, "hitungan mandiri sama dengan kunci", 7.8, W.coklat)),
+      tambah("Jumlah", teks("kc9", 150, 196, "jumlah sama dengan seluruh siswa", 7.8, W.coklat)),
     ),
   ],
 };
@@ -74,8 +74,8 @@ const PORSENI = diagramMendatar(
 );
 export const ADEGAN_UK_3: AdeganStory = {
   id: "uk-3",
-  judul: "Uji Kompetensi 3: lomba PORSENI tingkat kabupaten",
-  sumber: "Buku Siswa hlm. 193–194; Panduan Guru hlm. 229–231",
+  judul: "Uji 3: lomba PORSENI tingkat kabupaten",
+  sumber: "Materi: membaca diagram batang",
   latar: "#FFF7ED",
   kutipan: [
     "Diberikan diagram batang untuk data siswa yang mengikuti lomba PORSENI tingkat kabupaten.",
@@ -92,8 +92,8 @@ export const ADEGAN_UK_3: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal tiga: diagram batang mendatar lomba PORSENI tingkat kabupaten. Menyanyi delapan, renang dua, bulu tangkis lima, puisi tujuh, lari tiga, dan catur lima.",
-      tambah(0, judul("Uji Kompetensi 3")),
+      "Uji tiga: diagram batang mendatar lomba PORSENI tingkat kabupaten. Menyanyi delapan, renang dua, bulu tangkis lima, puisi tujuh, lari tiga, dan catur lima.",
+      tambah(0, judul("Uji 3")),
       tambah("diagram", ...PORSENI.sumbu, ...PORSENI.nama),
       tambah("Menyanyi", ...PORSENI.batang[0]),
       tambah("renang", ...PORSENI.batang[1]),
@@ -103,8 +103,8 @@ export const ADEGAN_UK_3: AdeganStory = {
       tambah("catur", ...PORSENI.batang[5]),
     ),
     k(
-      "Kunci a sampai c: paling banyak menyanyi, yang diikuti tiga siswa adalah lari, dan catur dengan renang lima tambah dua sama dengan tujuh siswa.",
-      tambah("Kunci", ...kartu("pc", 14, 174, 272, 22, W.hijauMuda, ["a. menyanyi, paling banyak"], 9.2)),
+      "Jawaban a sampai c: paling banyak menyanyi, yang diikuti tiga siswa adalah lari, dan catur dengan renang lima tambah dua sama dengan tujuh siswa.",
+      tambah("Jawaban", ...kartu("pc", 14, 174, 272, 22, W.hijauMuda, ["a. menyanyi, paling banyak"], 9.2)),
       sorotkan("menyanyi,", "pr-b0"),
       ubah("lari,", { id: "pr-b0", sorot: false }, { id: "pc-t0", isi: "b. lari, 3 siswa" }, { id: "pc-k", warna: W.krem }),
       sorotkan("lari,", "pr-b4"),
@@ -112,9 +112,9 @@ export const ADEGAN_UK_3: AdeganStory = {
       sorotkan("catur", "pr-b5", "pr-b1"),
     ),
     k(
-      "Kunci d dan e: paling sedikit renang, dan lomba puisi diikuti tujuh siswa. Semua kunci benar. Catur dan bulu tangkis sama panjang, masing-masing lima.",
+      "Jawaban d dan e: paling sedikit renang, dan lomba puisi diikuti tujuh siswa. Semua jawabannya benar. Catur dan bulu tangkis sama panjang, masing-masing lima.",
       ubah(0, { id: "pr-b5", sorot: false }, { id: "pr-b1", sorot: false }),
-      ubah("Kunci", { id: "pc-t0", isi: "d. renang, paling sedikit" }, { id: "pc-k", warna: W.merahMuda }),
+      ubah("Jawaban", { id: "pc-t0", isi: "d. renang, paling sedikit" }, { id: "pc-k", warna: W.merahMuda }),
       sorotkan("renang,", "pr-b1"),
       ubah("puisi", { id: "pr-b1", sorot: false }, { id: "pc-t0", isi: "e. puisi, 7 siswa" }, { id: "pc-k", warna: W.pink }),
       sorotkan("puisi", "pr-b3"),
@@ -160,8 +160,8 @@ const SUKU = diagramTegak(
 );
 export const ADEGAN_PENGAYAAN_12: AdeganStory = {
   id: "pengayaan-12",
-  judul: "Soal Pengayaan 1 dan 2: siswa SD Permata dan suku bangsa",
-  sumber: "Panduan Guru hlm. 232, 235–236",
+  judul: "Tantangan 1 dan 2: siswa SD Permata dan suku bangsa",
+  sumber: "Materi: membaca dan menghitung data",
   latar: "#F5F3FF",
   kutipan: [
     "Soal-soal Pengayaan",
@@ -179,8 +179,8 @@ export const ADEGAN_PENGAYAAN_12: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Pengayaan satu: siswa SD Permata. Kelas satu lima puluh tujuh, kelas tiga lima puluh delapan, kelas empat lima puluh enam, kelas lima enam puluh dua, kelas enam lima puluh sembilan. Kelas dua tidak ada batangnya.",
-      tambah(0, judul("Pengayaan 1: SD Permata")),
+      "Tantangan satu: siswa SD Permata. Kelas satu lima puluh tujuh, kelas tiga lima puluh delapan, kelas empat lima puluh enam, kelas lima enam puluh dua, kelas enam lima puluh sembilan. Kelas dua tidak ada batangnya.",
+      tambah(0, judul("Tantangan 1: SD Permata")),
       tambah("satu", ...SEKOLAH.sumbu, ...SEKOLAH.nama),
       tambah("tujuh,", ...SEKOLAH.batang[0]),
       tambah("delapan,", ...SEKOLAH.batang[2]),
@@ -198,17 +198,17 @@ export const ADEGAN_PENGAYAAN_12: AdeganStory = {
       tambah("Sisanya", ...SEKOLAH.batang[1]),
     ),
     k(
-      "Soal b dan c: paling sedikit kelas dua, paling banyak kelas lima. Catatan guru: kunci menulis tiga ratus enam puluh lima, bukan tiga ratus empat puluh enam. Hitungan dengan angka itu menghasilkan tujuh puluh tiga; lima puluh empat tetap benar.",
+      "Pertanyaan b dan c: paling sedikit kelas dua, paling banyak kelas lima. Cek sekali lagi: lima puluh empat ditambah dua ratus sembilan puluh dua sama dengan tiga ratus empat puluh enam.",
       sorotkan("kelas", "sp-b1"),
       ubah("paling@2", { id: "sp-b1", sorot: false }, { id: "sc-t0", isi: "b. kelas 2 (54)  c. kelas 5 (62)" }, { id: "sc-k", warna: W.pink }),
       sorotkan("lima,", "sp-b4"),
-      tambah("Catatan", teks("sc9", 150, 190, "kunci: 365 − 292 = 73, bukan 54", 8, W.merah)),
+      tambah("Cek", teks("sc9", 150, 190, "cek: 54 + 292 = 346", 8, W.merah)),
     ),
     k(
-      "Pengayaan dua: data suku bangsa dua puluh empat siswa kelas empat. Dihitung dengan turus: Jawa sepuluh, Melayu tujuh, Minang tujuh.",
+      "Tantangan dua: data suku bangsa dua puluh empat siswa kelas empat. Dihitung dengan turus: Jawa sepuluh, Melayu tujuh, Minang tujuh.",
       bersih(0),
-      tambah(0, judul("Pengayaan 2: suku bangsa")),
-      tambah("Pengayaan", ...tabel("tk", 40, 40, [70, 110, 40], [["Suku", "Turus", "Jumlah"]], 20, 8.4, W.krem)),
+      tambah(0, judul("Tantangan 2: suku bangsa")),
+      tambah("Tantangan", ...tabel("tk", 40, 40, [70, 110, 40], [["Suku", "Turus", "Jumlah"]], 20, 8.4, W.krem)),
       tambah("Jawa", ...tabel("tj", 40, 60, [70, 110, 40], [["Jawa", "||||| |||||", "10"]], 22, 9)),
       tambah("Melayu", ...tabel("tm", 40, 82, [70, 110, 40], [["Melayu", "||||| ||", "7"]], 22, 9)),
       tambah("Minang", ...tabel("tn", 40, 104, [70, 110, 40], [["Minang", "||||| ||", "7"]], 22, 9)),
@@ -244,7 +244,7 @@ const BUKU = diagramTegak(
   ],
   18,
   2,
-  { judulNilai: "Peminjaman Buku Perpustakaan Daerah", ukuranNama: 6.2 },
+  { judulNilai: "Peminjaman Komik Perpustakaan Daerah", ukuranNama: 6.2 },
 );
 const BUNGA_TANGKAI = piktogram(
   "bt",
@@ -277,8 +277,8 @@ const APEL = diagramTegak(
 );
 export const ADEGAN_PENGAYAAN_345: AdeganStory = {
   id: "pengayaan-345",
-  judul: "Soal Pengayaan 3, 4, dan 5: buku, tangkai bunga, dan panen apel",
-  sumber: "Panduan Guru hlm. 232–237",
+  judul: "Tantangan 3, 4, dan 5: komik, tangkai bunga, dan panen apel",
+  sumber: "Materi: membaca dan menghitung data",
   latar: "#F0F9FF",
   kutipan: [
     "Diagram berikut menunjukkan data peminjaman buku di Perpustakaan Daerah.",
@@ -301,9 +301,9 @@ export const ADEGAN_PENGAYAAN_345: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Pengayaan tiga: peminjaman buku tujuh hari. Dua belas, sembilan, tujuh belas, lima belas, sebelas, sembilan, dan tiga belas buku. Jumlah hari yang didata ada tujuh.",
-      tambah(0, judul("Pengayaan 3: peminjaman buku")),
-      tambah("Pengayaan", ...BUKU.sumbu, ...BUKU.nama),
+      "Tantangan tiga: peminjaman komik tujuh hari. Dua belas, sembilan, tujuh belas, lima belas, sebelas, sembilan, dan tiga belas komik. Jumlah hari yang didata ada tujuh.",
+      tambah(0, judul("Tantangan 3: peminjaman komik")),
+      tambah("Tantangan", ...BUKU.sumbu, ...BUKU.nama),
       tambah(6, ...BUKU.batang[0]),
       tambah(8, ...BUKU.batang[1]),
       tambah(9, ...BUKU.batang[2]),
@@ -313,15 +313,15 @@ export const ADEGAN_PENGAYAAN_345: AdeganStory = {
       tambah(16, ...BUKU.batang[6]),
     ),
     k(
-      "Lima hari pertama: dua belas tambah sembilan tambah tujuh belas tambah lima belas tambah sebelas sama dengan enam puluh empat buku. Hari terbanyak adalah hari ketiga, tujuh belas buku. Kunci benar.",
-      tambah("Lima", ...kartu("pq", 14, 174, 272, 22, W.hijauMuda, ["12 + 9 + 17 + 15 + 11 = 64 buku"], 9.2)),
+      "Lima hari pertama: dua belas tambah sembilan tambah tujuh belas tambah lima belas tambah sebelas sama dengan enam puluh empat komik. Hari terbanyak adalah hari ketiga, tujuh belas komik.",
+      tambah("Lima", ...kartu("pq", 14, 174, 272, 22, W.hijauMuda, ["12 + 9 + 17 + 15 + 11 = 64 komik"], 9.2)),
       sorotkan("terbanyak", "pb-b2"),
-      ubah("ketiga,", { id: "pq-t0", isi: "hari terbanyak: hari ke-3, 17 buku" }, { id: "pq-k", warna: W.krem }),
+      ubah("ketiga,", { id: "pq-t0", isi: "hari terbanyak: hari ke-3, 17 komik" }, { id: "pq-k", warna: W.krem }),
     ),
     k(
-      "Pengayaan empat: satu tangan mewakili lima tangkai bunga. Melati dua puluh empat tangan, mawar lima tangan, anggrek enam, sepatu tiga, dan bougenville dua tangan.",
+      "Tantangan empat: satu tangan mewakili lima tangkai bunga. Melati dua puluh empat tangan, mawar lima tangan, anggrek enam, sepatu tiga, dan bougenville dua tangan.",
       bersih(0),
-      tambah(0, judul("Pengayaan 4: tangkai bunga"), teks("bt9", 150, 178, "1 tangan = 5 tangkai, 2 tangan = 10 tangkai", 8.6, W.coklat)),
+      tambah(0, judul("Tantangan 4: tangkai bunga"), teks("bt9", 150, 178, "1 tangan = 5 tangkai, 2 tangan = 10 tangkai", 8.6, W.coklat)),
       tambah("Melati", BUNGA_TANGKAI[0]),
       tambah("mawar", BUNGA_TANGKAI[1]),
       tambah("anggrek", BUNGA_TANGKAI[2]),
@@ -329,16 +329,16 @@ export const ADEGAN_PENGAYAAN_345: AdeganStory = {
       tambah("bougenville", BUNGA_TANGKAI[4]),
     ),
     k(
-      "Pengayaan lima: apel besar mewakili lima belas kilogram, apel kecil sepuluh. Januari tiga apel besar dan dua apel kecil: tiga kali lima belas tambah dua kali sepuluh sama dengan enam puluh lima kilogram.",
+      "Tantangan lima: apel besar mewakili lima belas kilogram, apel kecil sepuluh. Januari tiga apel besar dan dua apel kecil: tiga kali lima belas tambah dua kali sepuluh sama dengan enam puluh lima kilogram.",
       bersih(0),
-      tambah(0, judul("Pengayaan 5: panen apel")),
+      tambah(0, judul("Tantangan 5: panen apel")),
       tambah("besar", ...kartu("ar", 14, 34, 130, 30, W.merahMuda, ["🍎🍎 = 15 kg"], 11)),
       tambah("kecil", ...kartu("as", 156, 34, 130, 30, W.krem, ["🍎 = 10 kg"], 11)),
       tambah("Januari", ...kartu("aj", 14, 78, 272, 34, W.langit, ["Januari: 3 besar, 2 kecil"], 9.6)),
       tambah("tiga@2", teks("ah", 150, 146, "3 × 15 + 2 × 10 = 65", 15, W.hitam)),
     ),
     k(
-      "Diagram batangnya memuat dua belas bulan. Tertinggi Februari seratus lima kilogram, terendah Juni empat puluh lima. Semua kunci panen cocok dengan gambar apel, dan jumlah setahun delapan ratus tujuh puluh kilogram.",
+      "Diagram batangnya memuat dua belas bulan. Tertinggi Februari seratus lima kilogram, terendah Juni empat puluh lima. Semua hasil panen cocok dengan gambar apel, dan jumlah setahun delapan ratus tujuh puluh kilogram.",
       bersih(0),
       tambah(0, judul("Diagram batang panen apel")),
       tambah("Diagram", ...APEL.sumbu, ...APEL.nama),

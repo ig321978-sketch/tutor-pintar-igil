@@ -212,17 +212,17 @@ export const ADEGAN_PEMANASAN: AdeganStory = {
 };
 
 /* ------------------------------ 4. Aktivitas 1: penyajian piktogram (Buku Siswa hlm. 179–180; Panduan Guru hlm. 219) ------------------------------ */
-const SUARA_A1 = "Subbab A dibuka dengan pertanyaan Ibu: kalau ibu punya beberapa benda yang dapat dihitung, bagaimana cara menyajikannya? Jawabannya ada di Aktivitas satu, penyajian piktogram.";
-const SUARA_A2 = "Alat dan bahannya adalah alat tulis dalam tas sekolah. Langkahnya: buat kelompok tiga sampai empat anak, keluarkan alat tulis dari tas, lalu catat semua benda dan jumlahnya.";
+const SUARA_A1 = "Perhatikan pertanyaan ini: kalau ibu punya beberapa benda yang dapat dihitung, bagaimana cara menyajikannya? Jawabannya ada pada kegiatan pertama kita, penyajian piktogram.";
+const SUARA_A2 = "Sekarang kita praktik. Alat dan bahannya adalah alat tulis dalam tas sekolah. Langkahnya: buat kelompok tiga sampai empat anak, keluarkan alat tulis dari tas, lalu catat semua benda dan jumlahnya.";
 const SUARA_A3 = "Langkah empat: gambar tabel dengan dua kolom. Kolom satu menyatakan alat tulis atau benda, dan kolom dua menyatakan banyaknya.";
-const SUARA_A4 = "Langkah lima: isi kolom satu dengan semua alat tulis dalam tas, misalnya buku paket dan buku tulis, lalu kolom dua digambar sebagai sketsa sebanyak jumlah benda itu.";
-const SUARA_A5 = "Panduan guru menambahkan: guru membentuk kelompok heterogen berdasarkan karakteristik dan keberagaman peserta didik, lalu memberi contoh mengisi beberapa baris tabel.";
-const PA1: Pikto = { id: "al", x: 24, y: 46, lw: 120, aw: 132, rh: 28, hh: 20, ik: 17, st: 22, ikon: { jenis: "emoji", e: "📘" }, label: ["Buku Paket", "Buku Tulis", "dan lainnya"], kepala: ["Nama Alat Tulis (Benda)", "Banyaknya"] };
+const SUARA_A4 = "Langkah lima: isi kolom satu dengan semua alat tulis dalam tas, misalnya pensil dan penghapus, lalu kolom dua digambar sebagai sketsa sebanyak jumlah benda itu.";
+const SUARA_A5 = "Sekarang kelompoknya dibentuk beragam, sesuai karakter dan kemampuan kalian. Setelah itu ibu guru memberi contoh cara mengisi beberapa baris tabel.";
+const PA1: Pikto = { id: "al", x: 24, y: 46, lw: 120, aw: 132, rh: 28, hh: 20, ik: 17, st: 22, ikon: { jenis: "emoji", e: "✏" }, label: ["Pensil", "Penghapus", "dan lainnya"], kepala: ["Nama Alat Tulis (Benda)", "Banyaknya"] };
 
 export const ADEGAN_AKTIVITAS1: AdeganStory = {
   id: "aktivitas-satu",
-  judul: "Aktivitas 1: penyajian piktogram",
-  sumber: "Buku Siswa hlm. 179–180; Panduan Guru hlm. 219",
+  judul: "Kegiatan: penyajian piktogram",
+  sumber: "Materi: penyajian piktogram",
   latar: "#FFF7ED",
   kutipan: [
     "A. Piktogram",
@@ -246,11 +246,11 @@ export const ADEGAN_AKTIVITAS1: AdeganStory = {
     "Guru memberikan contoh cara mengisi beberapa bagian pada tabel",
   ],
   ketukan: [
-    k(SUARA_A1, tambah(0, judul("A. Piktogram")), tambah("pertanyaan", emo("ib", 60, 90, "👩", 44)), tambah("beberapa", ...kartu("ib2", 100, 50, 180, 70, W.langit, ["Kalau ibu punya beberapa", "benda yang dapat dihitung,", "bagaimana menyajikannya?"], 8.6)), tambah("Aktivitas", ...kartu("ib3", 40, 140, 220, 34, W.emas, ["Aktivitas 1: penyajian piktogram"], 9.2))),
+    k(SUARA_A1, tambah(0, judul("A. Piktogram")), tambah("pertanyaan", emo("ib", 60, 90, "👩", 44)), tambah("beberapa", ...kartu("ib2", 100, 50, 180, 70, W.langit, ["Kalau ibu punya beberapa", "benda yang dapat dihitung,", "bagaimana menyajikannya?"], 8.6)), tambah("kegiatan", ...kartu("ib3", 40, 140, 220, 34, W.emas, ["Kegiatan: penyajian piktogram"], 9.2))),
     k(
       SUARA_A2,
       bersih(0),
-      tambah(0, judul("Aktivitas 1: langkah")),
+      tambah(0, judul("Kegiatan: langkah")),
       tambah("alat", emo("l0", 40, 78, "🎒", 34), emo("l0b", 80, 78, "✏", 28)),
       tambah("kelompok", ...kartu("l1", 110, 40, 180, 30, W.hijauMuda, ["1. kelompok 3 – 4 anak"], 8.6)),
       tambah("keluarkan", ...kartu("l2", 110, 78, 180, 30, W.langit, ["2. keluarkan alat tulis"], 8.6)),
@@ -271,18 +271,18 @@ export const ADEGAN_AKTIVITAS1: AdeganStory = {
       bersih(0),
       tambah(0, judul("Langkah 5: isi tabel")),
       tambah(0, rangkaPikto(PA1)),
-      tambah("buku", ...barisPikto(PA1, 0, 3)),
-      tambah(idx(SUARA_A4, "tulis", 2), ...barisPikto(PA1, 1, 2)),
+      tambah("pensil", ...barisPikto(PA1, 0, 3)),
+      tambah("penghapus", ...barisPikto(PA1, 1, 2)),
       tambah("sketsa", teks("ct", 150, 186, "gambar sketsa sebanyak bendanya (contoh)", 8, W.merah)),
     ),
     k(
       SUARA_A5,
       bersih(0),
-      tambah(0, judul("Peran guru")),
+      tambah(0, judul("Pembagian kelompok")),
       tambah("kelompok", emo("g1", 60, 80, "🧑", 30), emo("g2", 100, 80, "👦", 30), emo("g3", 140, 80, "👧", 30), emo("g4", 180, 80, "🧒", 30)),
-      tambah("heterogen", ...kartu("gh", 30, 108, 240, 28, W.hijauMuda, ["kelompok heterogen"], 9.4)),
-      tambah("karakteristik", teks("gk", 150, 154, "karakteristik dan keberagaman peserta didik", 8, W.biru)),
-      tambah("contoh", ...kartu("gc", 30, 164, 240, 28, W.krem, ["guru memberi contoh mengisi baris tabel"], 8.4)),
+      tambah("beragam", ...kartu("gh", 30, 108, 240, 28, W.hijauMuda, ["kelompok yang beragam"], 9.4)),
+      tambah("karakter", teks("gk", 150, 154, "sesuai karakter dan kemampuan kalian", 8, W.biru)),
+      tambah("contoh", ...kartu("gc", 30, 164, 240, 28, W.krem, ["ibu guru memberi contoh mengisi baris"], 8.4)),
     ),
   ],
 };

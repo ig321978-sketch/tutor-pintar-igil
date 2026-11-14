@@ -6,11 +6,11 @@ import { bersih, k, sorotkan, tambah, ubah } from "./k4b6b-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk membaca dan membuat diagram batang",
-  sumber: "Metode luar: pembuka; angka Buku Siswa hlm. 187–194",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana membaca dan membuat diagram batang dengan benar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka buku.",
+      "Bagaimana membaca dan membuat diagram batang dengan benar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari latihan tadi.",
       tambah(0, judul("Empat metode dari luar")),
       tambah("berbagai", emo("gl", 150, 100, "🌍", 56)),
       tambah("empat", ...kartu("pa", 40, 140, 220, 34, W.krem, ["diagram batang: baca dan buat"], 9.6)),
@@ -34,9 +34,9 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("bagaimana", emo("i4", 255, 80, "📊", 34), teks("i4t", 255, 112, "cara buat?", 8.6, W.biru)),
     ),
     k(
-      "Angkanya dari buku: ekstrakurikuler sembilan, lomba lima belas dan tiga, PORSENI delapan dan dua, benda di meja guru empat, satu, tiga, satu, dua, dan suku bangsa sepuluh, tujuh, tujuh.",
+      "Angkanya dari latihan kita: ekstrakurikuler sembilan, lomba lima belas dan tiga, PORSENI delapan dan dua, benda di meja guru empat, satu, tiga, satu, dua, dan suku bangsa sepuluh, tujuh, tujuh.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka dari latihan")),
       tambah("ekstrakurikuler", ...kartu("a1", 20, 34, 260, 26, W.hijauMuda, ["ekstrakurikuler: sepak bola 9"], 9.6)),
       tambah("lomba", ...kartu("a2", 20, 68, 260, 26, W.merahMuda, ["lomba: matematika 15, puisi 3"], 9.6)),
       tambah("PORSENI", ...kartu("a3", 20, 102, 260, 26, W.krem, ["PORSENI: menyanyi 8, renang 2"], 9.6)),
@@ -67,7 +67,7 @@ const EKS = diagramTegak(
 export const ADEGAN_LUAR_BS: AdeganStory = {
   id: "luar-bs",
   judul: "Metode 1: Bar Scale (Skala Batang)",
-  sumber: "Metode luar: Bar Scale; angka Buku Siswa hlm. 188",
+  sumber: "Metode luar: Bar Scale",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -120,11 +120,11 @@ const LOMBA = diagramTegak(
 export const ADEGAN_LUAR_BS_TERAPAN: AdeganStory = {
   id: "luar-bs-terapan",
   judul: "Bar Scale: membaca lomba kelas IV pada skala dua",
-  sumber: "Metode luar: Bar Scale; angka Buku Siswa hlm. 191",
+  sumber: "Metode luar: Bar Scale",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapan pada Ayo Berlatih nomor satu, lomba kelas empat. Skalanya naik dua-dua dari nol sampai enam belas. Batangnya kita baca dari ujung, tanpa melihat angkanya dulu.",
+      "Terapan pada Latihan satu, lomba kelas empat. Skalanya naik dua-dua dari nol sampai enam belas. Batangnya kita baca dari ujung, tanpa melihat angkanya dulu.",
       tambah(0, judul("Skala naik dua-dua"), ...LOMBA.sumbu, ...LOMBA.nama),
       tambah("Batangnya", ...LOMBA.batang.map((b) => b[0])),
     ),
@@ -184,7 +184,7 @@ const AL_POLOS = AL.sumbu.filter((o) => !/-j[vn]$/.test(o.id));
 export const ADEGAN_LUAR_AL: AdeganStory = {
   id: "luar-al",
   judul: "Metode 2: Axis Labels (Label Sumbu)",
-  sumber: "Metode luar: Axis Labels; angka Buku Siswa hlm. 188",
+  sumber: "Metode luar: Axis Labels",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -238,11 +238,11 @@ const BUNGA = diagramMendatar(
 export const ADEGAN_LUAR_AL_TERAPAN: AdeganStory = {
   id: "luar-al-terapan",
   judul: "Axis Labels: bunga di taman bermain sekolah",
-  sumber: "Metode luar: Axis Labels; angka Buku Siswa hlm. 192",
+  sumber: "Metode luar: Axis Labels",
   latar: "#EFF6FF",
   ketukan: [
     k(
-      "Terapan pada Ayo Berlatih nomor dua, diagram mendatar. Sumbu tegak diberi label bunga dan berisi nama enam bunga. Sumbu datar diberi label banyaknya bunga, dari nol sampai sepuluh.",
+      "Terapan pada Latihan dua, diagram mendatar. Sumbu tegak diberi label bunga dan berisi nama enam bunga. Sumbu datar diberi label banyaknya bunga, dari nol sampai sepuluh.",
       tambah(0, judul("Diagram mendatar berlabel")),
       tambah("Sumbu", ...BUNGA.sumbu.filter((o) => /-j[n]$/.test(o.id))),
       tambah("nama", ...BUNGA.nama),

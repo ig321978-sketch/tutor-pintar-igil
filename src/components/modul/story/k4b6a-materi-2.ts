@@ -19,15 +19,15 @@ export const PK: Pikto = {
   label: ["Papan Tulis", "Jam Dinding", "Lemari", "Hiasan Dinding"],
   kepala: ["Benda", "Banyak Benda"],
 };
-const SUARA_B1 = "Ayo mengamati. Informasi benda dalam kelas: dua papan tulis, satu jam dinding, satu lemari, dan delapan hiasan dinding. Semuanya disajikan dalam bentuk piktogram.";
-const SUARA_B2 = "Pertanyaan buku: benda apakah yang paling banyak dan paling sedikit? Paling banyak adalah hiasan dinding, sebanyak delapan. Paling sedikit adalah jam dinding dan lemari.";
-const SUARA_B3 = "Perhatikan, dua benda sama-sama paling sedikit, masing-masing satu, jadi keduanya disebut. Jumlah seluruh benda adalah dua ditambah satu ditambah satu ditambah delapan, hitungan kita sendiri, sama dengan dua belas.";
-const SUARA_B4 = "Panduan guru berpesan, kegiatan ini boleh diganti sesuai kondisi kelas, supaya yang disajikan benar-benar benda di sekitar peserta didik. Interpretasi kelas empat hanya tiga: paling banyak, paling sedikit, dan jumlah keseluruhan.";
+const SUARA_B1 = "Perhatikan benda di dalam kelas kita: dua papan tulis, satu jam dinding, satu lemari, dan delapan hiasan dinding. Semuanya disajikan dalam bentuk piktogram.";
+const SUARA_B2 = "Pertanyaannya: benda apakah yang paling banyak dan paling sedikit? Paling banyak adalah hiasan dinding, sebanyak delapan. Paling sedikit adalah jam dinding dan lemari.";
+const SUARA_B3 = "Perhatikan, dua benda sama-sama paling sedikit, masing-masing satu, jadi keduanya disebut. Jumlah seluruh benda adalah dua ditambah satu ditambah satu ditambah delapan, sama dengan dua belas.";
+const SUARA_B4 = "Ingat, kegiatan ini boleh kita ganti dengan benda di sekitar kalian sendiri. Pada kelas empat, kita menafsirkan data hanya dengan tiga cara: paling banyak, paling sedikit, dan jumlah keseluruhan.";
 
 export const ADEGAN_KELAS: AdeganStory = {
   id: "benda-kelas",
-  judul: "Ayo Mengamati: benda di dalam kelas",
-  sumber: "Buku Siswa hlm. 180; Panduan Guru hlm. 220",
+  judul: "Mengamati: benda di dalam kelas",
+  sumber: "Materi: benda di dalam kelas",
   latar: "#F0FDF4",
   kutipan: [
     "Ayo Mengamati",
@@ -49,7 +49,7 @@ export const ADEGAN_KELAS: AdeganStory = {
     k(
       SUARA_B1,
       tambah(0, judul("Benda di dalam kelas")),
-      tambah("Informasi", rangkaPikto(PK)),
+      tambah("Perhatikan", rangkaPikto(PK)),
       tambah("dua", ...barisPikto(PK, 0, 2)),
       tambah(idx(SUARA_B1, "satu", 1), ...barisPikto(PK, 1, 1)),
       tambah(idx(SUARA_B1, "satu", 2), ...barisPikto(PK, 2, 1)),
@@ -57,7 +57,7 @@ export const ADEGAN_KELAS: AdeganStory = {
     ),
     k(
       SUARA_B2,
-      tambah("pertanyaan", ...kartu("pq", 22, 160, 256, 30, W.krem, ["paling banyak? paling sedikit?"], 9.2)),
+      tambah("pertanyaannya", ...kartu("pq", 22, 160, 256, 30, W.krem, ["paling banyak? paling sedikit?"], 9.2)),
       sorotkan("hiasan", ...barisId(PK, 3, 8)),
       tambah("sebanyak", jumlahBaris(PK, 3, 8)),
       redamkan(idx(SUARA_B2, "sedikit", 2), ...barisId(PK, 3, 8)),
@@ -76,8 +76,8 @@ export const ADEGAN_KELAS: AdeganStory = {
     k(
       SUARA_B4,
       bersih(0),
-      tambah(0, judul("Pesan panduan guru")),
-      tambah("kegiatan", ...kartu("p1", 14, 34, 272, 40, W.hijauMuda, ["boleh diganti sesuai kondisi kelas", "benda di sekitar peserta didik"], 8.6)),
+      tambah(0, judul("Ingat baik-baik")),
+      tambah("kegiatan", ...kartu("p1", 14, 34, 272, 40, W.hijauMuda, ["boleh diganti dengan benda", "di sekitar kalian sendiri"], 8.6)),
       tambah("banyak,", ...kartu("p2", 14, 88, 272, 28, W.langit, ["1. paling banyak"], 9.4)),
       tambah("sedikit,", ...kartu("p3", 14, 122, 272, 28, W.krem, ["2. paling sedikit"], 9.4)),
       tambah("keseluruhan.", ...kartu("p4", 14, 156, 272, 28, W.pink, ["3. jumlah keseluruhan"], 9.4)),
@@ -102,16 +102,16 @@ export const PKAREL: Pikto = {
   label: ["Mobil", "Robot", "Pesawat", "Puzzle", "Kelereng"],
   kepala: ["Mainan", "Banyak Mainan"],
 };
-const SUARA_C1 = "Bu guru bertanya, Karel, berapa banyak mainan di rumahmu? Karel menjawab, enam mobil, empat robot, tiga pesawat, satu puzzle, dan sembilan kelereng.";
+const SUARA_C1 = "Sekarang kita kenalan dengan Karel. Bu guru bertanya, Karel, berapa banyak mainan di rumahmu? Karel menjawab, enam mobil, empat robot, tiga pesawat, satu puzzle, dan sembilan kelereng.";
 const SUARA_C2 = "Perhatikan, tiap jenis mainan punya gambarnya sendiri, tetapi satu gambar tetap berarti satu mainan. Yang kita hitung adalah banyaknya gambar pada tiap baris.";
 const SUARA_C3 = "Mainan Karel yang paling banyak adalah kelereng, sebanyak sembilan buah. Yang paling sedikit adalah puzzle, sebanyak satu buah.";
-const SUARA_C4 = "Jumlah seluruh mainan Karel: enam ditambah empat ditambah tiga ditambah satu ditambah sembilan, sama dengan dua puluh tiga buah mainan. Hitungan buku ini benar.";
-const SUARA_C5 = "Buku lalu meminta kalian memakai penyajian Aktivitas satu: alat tulis apa yang paling banyak dan paling sedikit, berapa jumlah seluruhnya, dan berapa buku tulis yang kalian bawa. Jawabannya tergantung isi tas kalian.";
+const SUARA_C4 = "Jumlah seluruh mainan Karel: enam ditambah empat ditambah tiga ditambah satu ditambah sembilan, sama dengan dua puluh tiga buah mainan.";
+const SUARA_C5 = "Sekarang giliran kalian. Pakai penyajian tadi untuk alat tulis dalam tas kalian: alat tulis apa yang paling banyak dan paling sedikit, berapa jumlah seluruhnya, dan berapa pensil yang kalian bawa. Jawabannya tergantung isi tas kalian.";
 
 export const ADEGAN_KAREL: AdeganStory = {
   id: "mainan-karel",
   judul: "Mainan Karel: membaca, membandingkan, menjumlahkan",
-  sumber: "Buku Siswa hlm. 181",
+  sumber: "Materi: mainan Karel",
   latar: "#FFF7ED",
   kutipan: [
     "Bagus Karel, berapa banyak mainan di rumahmu?",
@@ -172,24 +172,24 @@ export const ADEGAN_KAREL: AdeganStory = {
       tambah("paling", ...kartu("w1", 14, 34, 272, 28, W.hijauMuda, ["a. alat tulis apa yang paling banyak?"], 8.6)),
       tambah("sedikit", ...kartu("w2", 14, 68, 272, 28, W.langit, ["b. alat tulis apa yang paling sedikit?"], 8.6)),
       tambah("jumlah", ...kartu("w3", 14, 102, 272, 28, W.krem, ["c. berapa jumlah keseluruhan alat tulis?"], 8.6)),
-      tambah("berapa@2", ...kartu("w4", 14, 136, 272, 28, W.pink, ["d. berapa buku tulis yang kalian bawa?"], 8.6)),
+      tambah("berapa@2", ...kartu("w4", 14, 136, 272, 28, W.pink, ["d. berapa pensil yang kalian bawa?"], 8.6)),
       tambah(idx(SUARA_C5, "tas"), emo("w5", 150, 192, "🎒", 22)),
     ),
   ],
 };
 
 /* ------------------------------ 7. Aktivitas 2: penyajian piktogram dengan skala (Buku Siswa hlm. 182; Panduan Guru hlm. 220–221) ------------------------------ */
-const SUARA_D1 = "Aktivitas dua, penyajian piktogram dengan skala. Perlengkapannya adalah bunga di halaman sekolah. Panduan guru mengajak peserta didik belajar di luar kelas, dalam kelompok yang sama seperti Aktivitas satu.";
-const SUARA_D2 = "Langkahnya: perhatikan warna bunga di halaman sekolah atau depan kelas, catat warna dan banyaknya, lalu gambar tabel dua kolom, warna bunga dan banyak bunga.";
+const SUARA_D1 = "Kegiatan kedua, penyajian piktogram dengan skala. Perlengkapannya adalah bunga di taman sekolah. Kita belajar di luar kelas, dalam kelompok yang sama seperti tadi.";
+const SUARA_D2 = "Langkahnya: perhatikan warna bunga di taman sekolah atau depan kelas, catat warna dan banyaknya, lalu gambar tabel dua kolom, warna bunga dan banyak bunga.";
 const SUARA_D3 = "Langkah empat: isi kolom satu dengan warna, misalnya putih, merah, dan kuning, lalu gambar bunga di kolom dua sebanyak bunga yang ada. Gambar bunga harus sama untuk setiap baris.";
 const SUARA_D4 = "Tambahkan satu baris terakhir dan tulis: gambar bunga menyatakan satu bunga. Baris ini adalah keterangan, dan skalanya satu gambar untuk satu bunga.";
-const SUARA_D5 = "Panduan guru menegaskan, gambar bunga harus sama, dan satu gambar bunga menyatakan banyaknya satu bunga. Setelah itu salah satu kelompok menyajikan piktogram dari data yang mereka peroleh.";
+const SUARA_D5 = "Ingat, gambar bunga harus sama, dan satu gambar bunga menyatakan banyaknya satu bunga. Setelah itu salah satu kelompok menyajikan piktogram dari data yang mereka peroleh.";
 const PD: Pikto = { id: "bg", x: 26, y: 40, lw: 100, aw: 148, rh: 28, hh: 20, ik: 17, st: 22, ikon: { jenis: "emoji", e: "🌸" }, label: ["Putih", "Merah", "Kuning"], kepala: ["Warna Bunga", "Banyak Bunga"] };
 
 export const ADEGAN_AKTIVITAS2: AdeganStory = {
   id: "aktivitas-dua",
-  judul: "Aktivitas 2: piktogram dengan skala",
-  sumber: "Buku Siswa hlm. 182; Panduan Guru hlm. 220–221",
+  judul: "Kegiatan: piktogram dengan skala",
+  sumber: "Materi: piktogram dengan skala",
   latar: "#FDF2F8",
   kutipan: [
     "Aktivitas 2. Penyajian Piktogram dengan skala",
@@ -208,7 +208,7 @@ export const ADEGAN_AKTIVITAS2: AdeganStory = {
     "bahwa satu gambar bunga menyatakan banyaknya satu bunga.",
   ],
   ketukan: [
-    k(SUARA_D1, tambah(0, judul("Aktivitas 2: bunga")), tambah("Aktivitas", ...kartu("h1", 40, 34, 220, 30, W.emas, ["Aktivitas 2: skala"], 10.4)), tambah("bunga", emo("h2", 70, 110, "🌸", 36), emo("h3", 150, 110, "🌼", 36), emo("h4", 230, 110, "🌺", 36)), tambah("luar", ...kartu("h5", 30, 140, 240, 30, W.hijauMuda, ["belajar di luar kelas"], 9.4)), tambah("kelompok", ...kartu("h6", 30, 176, 240, 24, W.krem, ["kelompok yang sama"], 9))),
+    k(SUARA_D1, tambah(0, judul("Kegiatan: bunga")), tambah("Kegiatan", ...kartu("h1", 40, 34, 220, 30, W.emas, ["Kegiatan: skala"], 10.4)), tambah("bunga", emo("h2", 70, 110, "🌸", 36), emo("h3", 150, 110, "🌼", 36), emo("h4", 230, 110, "🌺", 36)), tambah("luar", ...kartu("h5", 30, 140, 240, 30, W.hijauMuda, ["belajar di luar kelas"], 9.4)), tambah("kelompok", ...kartu("h6", 30, 176, 240, 24, W.krem, ["kelompok yang sama"], 9))),
     k(
       SUARA_D2,
       bersih(0),
@@ -238,7 +238,7 @@ export const ADEGAN_AKTIVITAS2: AdeganStory = {
     k(
       SUARA_D5,
       bersih(0),
-      tambah(0, judul("Pesan panduan guru")),
+      tambah(0, judul("Ingat baik-baik")),
       tambah("sama,", ...kartu("n1", 14, 34, 272, 30, W.hijauMuda, ["gambar bunga harus sama"], 9.4)),
       tambah("satu@2", ...kartu("n2", 14, 72, 272, 30, W.langit, ["1 gambar bunga = 1 bunga"], 9.4)),
       tambah("kelompok", ...kartu("n3", 14, 110, 272, 30, W.krem, ["satu kelompok menyajikan piktogramnya"], 9)),
@@ -267,14 +267,14 @@ export const PW: Pikto = {
 const SUARA_E1 = "Ayo mengamati piktogram warna kesukaan siswa. Ada empat warna: ungu, kuning, hitam, dan merah. Di bawah tabel ada keterangan: satu gambar siswa menyatakan satu siswa.";
 const SUARA_E2 = "Berapa siswa yang menyukai warna hitam? Hanya ada satu gambar, jadi satu siswa. Warna apa yang paling banyak disukai? Merah, karena jumlahnya lima gambar.";
 const SUARA_E3 = "Sekarang hitung semuanya: ungu empat siswa, kuning dua, hitam satu, merah lima. Jumlahnya empat ditambah dua ditambah satu ditambah lima, sama dengan dua belas siswa.";
-const SUARA_E4 = "Buku kembali ke piktogram bunga kalian: warna bunga apa yang paling banyak dan paling sedikit, berapa jumlah seluruh bunga, dan berapa bunga yang berwarna merah. Jawabannya dari data kelompok kalian.";
+const SUARA_E4 = "Sekarang kembali ke piktogram bunga kalian: warna bunga apa yang paling banyak dan paling sedikit, berapa jumlah seluruh bunga, dan berapa bunga yang berwarna merah. Jawabannya dari data kelompok kalian.";
 const SUARA_E5 = "Inilah definisinya. Piktogram adalah diagram yang menggunakan gambar sebagai jumlah setiap kategori. Piktogram disebut juga diagram gambar.";
-const SUARA_E6 = "Pada Aktivitas satu, tiap alat digambar sesuai bendanya. Pada Aktivitas dua, gambarnya sama dan mewakili satu bunga. Membaca piktogram berarti memperhatikan banyaknya gambar.";
+const SUARA_E6 = "Pada kegiatan pertama, tiap alat digambar sesuai bendanya. Pada kegiatan kedua, gambarnya sama dan mewakili satu bunga. Membaca piktogram berarti memperhatikan banyaknya gambar.";
 
 export const ADEGAN_WARNA: AdeganStory = {
   id: "warna-kesukaan",
   judul: "Warna kesukaan siswa dan definisi piktogram",
-  sumber: "Buku Siswa hlm. 183–184; Panduan Guru hlm. 221",
+  sumber: "Materi: warna kesukaan dan piktogram",
   latar: "#FAF5FF",
   kutipan: [
     "Perhatikan piktogram warna kesukaan siswa berikut. Berapa",
@@ -345,9 +345,9 @@ export const ADEGAN_WARNA: AdeganStory = {
     k(
       SUARA_E6,
       bersih(0),
-      tambah(0, judul("Dua aktivitas, satu ide")),
-      tambah("satu", ...kartu("y1", 14, 34, 130, 60, W.hijauMuda, ["Aktivitas 1", "gambar sesuai benda"], 8.8), emo("y1e", 40, 124, "📘", 22), emo("y1f", 78, 124, "✏", 22), emo("y1g", 112, 124, "🎒", 22)),
-      tambah("dua@1", ...kartu("y2", 156, 34, 130, 60, W.pink, ["Aktivitas 2", "gambar sama, 1 bunga"], 8.8), emo("y2e", 178, 124, "🌸", 22), emo("y2f", 214, 124, "🌸", 22), emo("y2g", 250, 124, "🌸", 22)),
+      tambah(0, judul("Dua kegiatan, satu ide")),
+      tambah("pertama", ...kartu("y1", 14, 34, 130, 60, W.hijauMuda, ["Kegiatan pertama", "gambar sesuai benda"], 8.8), emo("y1e", 40, 124, "✏", 22), emo("y1f", 78, 124, "✏", 22), emo("y1g", 112, 124, "🎒", 22)),
+      tambah("kedua", ...kartu("y2", 156, 34, 130, 60, W.pink, ["Kegiatan kedua", "gambar sama, 1 bunga"], 8.8), emo("y2e", 178, 124, "🌸", 22), emo("y2f", 214, 124, "🌸", 22), emo("y2g", 250, 124, "🌸", 22)),
       tambah("Membaca", ...kartu("y3", 40, 150, 220, 34, W.emas, ["hitung banyaknya gambar"], 9.6)),
     ),
   ],
