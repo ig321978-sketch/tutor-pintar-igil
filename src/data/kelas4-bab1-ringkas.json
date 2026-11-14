@@ -693,38 +693,46 @@
         ]
       },
       "tabelSusun": {
-        "judul": "Tiga metode nilai tempat",
+        "judul": "Angka 6 pada empat bilangan",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel ini merangkum tiap metode nilai tempat, cara melakukannya, hasilnya, dan satu contoh.",
-        "pojok": "Metode",
+        "suara": "Tabel tempat dan nilai angka enam, serta angka di ribuan, pada empat bilangan.",
+        "pojok": "Bilangan",
         "kolom": [
-          "Cara melakukannya",
-          "Hasil yang diharapkan",
-          "Contoh"
+          "Tempat angka 6",
+          "Nilai angka 6",
+          "Angka di ribuan"
         ],
         "baris": [
           {
-            "label": "Kardus nilai tempat",
+            "label": "8.463",
             "sel": [
-              "Ambil kartu tiap kardus",
-              "Tahu tempat tiap angka",
-              "7.508 dari empat kartu"
+              "Puluhan",
+              "60",
+              "8"
             ]
           },
           {
-            "label": "Tabel nilai tempat",
+            "label": "4.675",
             "sel": [
-              "Isi kolom dengan angkanya",
-              "Tahu tempat angka",
-              "7.812: 7, 8, 1, 2"
+              "Ratusan",
+              "600",
+              "4"
             ]
           },
           {
-            "label": "Angka dikali tempatnya",
+            "label": "6.789",
             "sel": [
-              "Kalikan angka dan tempat",
-              "Tahu nilai tiap angka",
-              "6 di puluhan = 60"
+              "Ribuan",
+              "6.000",
+              "6"
+            ]
+          },
+          {
+            "label": "1.236",
+            "sel": [
+              "Satuan",
+              "6",
+              "1"
             ]
           }
         ]
@@ -1040,38 +1048,62 @@
         ]
       },
       "tabelSusun": {
-        "judul": "Tiga metode membandingkan",
+        "judul": "Membandingkan enam pasang bilangan",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel tiga metode. Tiap metode punya cara melakukannya, hasil yang diharapkan, dan contoh.",
-        "pojok": "Metode",
+        "suara": "Tabel membandingkan enam pasang bilangan. Isi tempat yang menentukan, tandanya, dan bilangan yang lebih besar.",
+        "pojok": "Pasangan",
         "kolom": [
-          "Cara melakukannya",
-          "Hasil yang diharapkan",
-          "Contoh"
+          "Tempat penentu",
+          "Tanda",
+          "Yang lebih besar"
         ],
         "baris": [
           {
-            "label": "Nilai tempat",
+            "label": "8.750 dan 7.500",
             "sel": [
-              "Bandingkan dari ribuan",
-              "Tahu bilangan terbesar",
-              "8.750 lebih dari 7.500"
+              "Ribuan",
+              ">",
+              "8.750"
             ]
           },
           {
-            "label": "Tanda perbandingan",
+            "label": "3.676 dan 3.726",
             "sel": [
-              "Pilih tanda: > < =",
-              "Bisa memakai tanda > < =",
-              "4.352 < 4.365"
+              "Ratusan",
+              "<",
+              "3.726"
             ]
           },
           {
-            "label": "Mengurutkan bilangan",
+            "label": "4.352 dan 4.365",
             "sel": [
-              "Urut dari yang terkecil",
-              "Bilangan tersusun urut",
-              "2.460 < 3.676 < 3.726"
+              "Puluhan",
+              "<",
+              "4.365"
+            ]
+          },
+          {
+            "label": "4.352 dan 4.355",
+            "sel": [
+              "Satuan",
+              "<",
+              "4.355"
+            ]
+          },
+          {
+            "label": "4.352 dan 4.352",
+            "sel": [
+              "Semua tempat sama",
+              "=",
+              "Sama besar"
+            ]
+          },
+          {
+            "label": "1.987 dan 2.045",
+            "sel": [
+              "Ribuan",
+              "<",
+              "2.045"
             ]
           }
         ]
@@ -1404,38 +1436,38 @@
         ]
       },
       "tabelSusun": {
-        "judul": "Metode, cara, dan hasilnya",
+        "judul": "Menguraikan tiga bilangan",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel ini merangkum metode, cara melakukannya, hasil yang diharapkan, dan contohnya.",
-        "pojok": "Metode",
+        "suara": "Tabel tiga bilangan yang diuraikan. Pasang uraian, banyak bagiannya, dan apakah ada angka nol.",
+        "pojok": "Bilangan",
         "kolom": [
-          "Cara melakukannya",
-          "Hasil yang diharapkan",
-          "Contoh"
+          "Uraian",
+          "Banyak bagian",
+          "Ada angka nol?"
         ],
         "baris": [
           {
-            "label": "Komposisi",
+            "label": "6.348",
             "sel": [
-              "Susun dari nilai tempat",
-              "Bisa menyusun bilangan",
-              "6.000 + 300 + 40 + 8"
+              "6.000 + 300 + 40 + 8",
+              "4",
+              "Tidak"
             ]
           },
           {
-            "label": "Dekomposisi",
+            "label": "6.849",
             "sel": [
-              "Urai jadi nilai tempat",
-              "Bisa mengurai bilangan",
-              "6.035 = 6.000 + 30 + 5"
+              "6.000 + 800 + 40 + 9",
+              "4",
+              "Tidak"
             ]
           },
           {
-            "label": "Uraian uang",
+            "label": "6.035",
             "sel": [
-              "Urai dengan pecahan uang",
-              "Bisa mengurai bilangan",
-              "Rp10.000 = 5 lembar 2.000"
+              "6.000 + 30 + 5",
+              "3",
+              "Ya"
             ]
           }
         ]
@@ -1751,38 +1783,46 @@
         ]
       },
       "tabelSusun": {
-        "judul": "Tiga metode penjumlahan",
+        "judul": "Empat contoh penjumlahan",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel tiga metode penjumlahan. Lihat cara melakukannya, hasil yang diharapkan, dan contoh soalnya.",
-        "pojok": "Metode",
+        "suara": "Tabel empat contoh penjumlahan. Cari hasilnya, jumlah satuannya, dan apakah perlu menyimpan.",
+        "pojok": "Soal",
         "kolom": [
-          "Cara melakukannya",
-          "Hasil yang diharapkan",
-          "Contoh"
+          "Hasil",
+          "Jumlah satuan",
+          "Menyimpan?"
         ],
         "baris": [
           {
-            "label": "Susun panjang",
+            "label": "131 + 321",
             "sel": [
-              "Uraikan, lalu kelompokkan",
-              "Paham arti nilai tempat",
-              "131 + 321"
+              "452",
+              "1 + 1 = 2",
+              "Tidak"
             ]
           },
           {
-            "label": "Susun pendek",
+            "label": "124 + 411 + 363",
             "sel": [
-              "Tumpuk, jumlah tiap kolom",
-              "Hitung cepat dan tepat",
-              "124 + 411 + 363"
+              "898",
+              "4 + 1 + 3 = 8",
+              "Tidak"
             ]
           },
           {
-            "label": "Menyimpan",
+            "label": "277 + 146",
             "sel": [
-              "Tulis satuan, simpan 1",
-              "Tepat, juga saat menyimpan",
-              "189 + 245"
+              "423",
+              "7 + 6 = 13",
+              "Ya"
+            ]
+          },
+          {
+            "label": "189 + 245",
+            "sel": [
+              "434",
+              "9 + 5 = 14",
+              "Ya"
             ]
           }
         ]
@@ -2090,38 +2130,46 @@
         ]
       },
       "tabelSusun": {
-        "judul": "Tiga metode pengurangan",
+        "judul": "Empat contoh pengurangan",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel tiga metode pengurangan. Ada cara melakukannya, hasil yang diharapkan, dan contoh soalnya.",
-        "pojok": "Metode",
+        "suara": "Tabel empat contoh pengurangan. Ada soalnya, hitungan di tempat satuan, dan hasilnya.",
+        "pojok": "Contoh",
         "kolom": [
-          "Cara melakukannya",
-          "Hasil yang diharapkan",
-          "Contoh"
+          "Soal",
+          "Hitungan satuan",
+          "Hasil"
         ],
         "baris": [
           {
-            "label": "Susun panjang",
+            "label": "Bacaan perpustakaan",
             "sel": [
-              "Uraikan lalu kurangkan",
-              "Hitungan benar dan teliti",
-              "265 − 132"
+              "265 − 132",
+              "5 − 2 = 3",
+              "133"
+            ]
+          },
+          {
+            "label": "Dua kali mengambil",
+            "sel": [
+              "253 − 176",
+              "13 − 6 = 7",
+              "77"
             ]
           },
           {
             "label": "Susun pendek",
             "sel": [
-              "Tabel, kurangkan per kolom",
-              "Hitungan benar",
-              "241 − 175"
+              "241 − 175",
+              "11 − 5 = 6",
+              "66"
             ]
           },
           {
-            "label": "Mengambil puluhan",
+            "label": "Latihan akhir",
             "sel": [
-              "Ambil 1 puluhan, jadi 10",
-              "Tahu kapan harus mengambil",
-              "253 − 176"
+              "912 − 67",
+              "12 − 7 = 5",
+              "845"
             ]
           }
         ]
@@ -2431,38 +2479,54 @@
         ]
       },
       "tabelSusun": {
-        "judul": "Tiga metode perkalian",
+        "judul": "Langkah bersusun pendek",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel tiga metode perkalian. Ada cara melakukannya, hasil yang diharapkan, dan contoh soalnya.",
-        "pojok": "Metode",
+        "suara": "Tabel langkah perkalian bersusun pendek. Satuan dihitung lebih dulu, lalu puluhan, sampai ketemu hasilnya.",
+        "pojok": "Soal",
         "kolom": [
-          "Cara melakukannya",
-          "Hasil yang diharapkan",
-          "Contoh"
+          "Satuan",
+          "Puluhan",
+          "Hasil"
         ],
         "baris": [
           {
-            "label": "Cara panjang",
+            "label": "14 × 5",
             "sel": [
-              "Uraikan, kali, jumlahkan",
-              "Paham tambah berulang",
-              "14 × 5"
+              "4 × 5 = 20, simpan 2",
+              "1 × 5 + 2 = 7",
+              "70"
             ]
           },
           {
-            "label": "Susun tanpa menyimpan",
+            "label": "12 × 8",
             "sel": [
-              "Kali satuan, lalu puluhan",
-              "Hitungan benar",
-              "12 × 4"
+              "2 × 8 = 16, simpan 1",
+              "1 × 8 + 1 = 9",
+              "96"
             ]
           },
           {
-            "label": "Susun dengan menyimpan",
+            "label": "37 × 2",
             "sel": [
-              "Mulai satuan, lalu simpan",
-              "Hitungan benar dan teliti",
-              "12 × 8"
+              "7 × 2 = 14, simpan 1",
+              "3 × 2 + 1 = 7",
+              "74"
+            ]
+          },
+          {
+            "label": "48 × 7",
+            "sel": [
+              "8 × 7 = 56, simpan 5",
+              "4 × 7 + 5 = 33",
+              "336"
+            ]
+          },
+          {
+            "label": "32 × 3",
+            "sel": [
+              "2 × 3 = 6",
+              "3 × 3 = 9",
+              "96"
             ]
           }
         ]
@@ -2778,38 +2842,60 @@
         ]
       },
       "tabelSusun": {
-        "judul": "Tiga metode pembagian",
+        "judul": "Soal cerita pembagian",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel ini merangkum tiap metode pembagian, cara melakukannya, hasilnya, dan satu contoh.",
-        "pojok": "Metode",
+        "suara": "Tabel lima soal cerita pembagian. Isi bilangan yang dibagi, pembagi, hasil bagi, dan arti hasil bagi.",
+        "pojok": "Soal",
         "kolom": [
-          "Cara melakukannya",
-          "Hasil yang diharapkan",
-          "Contoh"
+          "Dibagi",
+          "Pembagi",
+          "Hasil bagi",
+          "Arti hasil bagi"
         ],
         "baris": [
           {
-            "label": "Bagi ke wadah",
+            "label": "Permen Pak Wicak",
             "sel": [
-              "Bagi satu per satu",
-              "Tahu isi tiap wadah",
-              "48 permen, tiga wadah"
+              "48",
+              "4",
+              "12",
+              "Permen tiap anak"
             ]
           },
           {
-            "label": "Tabel pembagian",
+            "label": "Alpukat Pak Bejo",
             "sel": [
-              "Isi wadah dan sisanya",
-              "Tahu pembagi yang habis",
-              "48 : 8 = 6, sisa 0"
+              "64",
+              "4",
+              "16",
+              "Alpukat tiap keluarga"
             ]
           },
           {
-            "label": "Pembagian bersusun",
+            "label": "Kue Ibu",
             "sel": [
-              "Bagi dari puluhan",
-              "Tahu hasil bagi dan sisa",
-              "48 : 4 = 12"
+              "81",
+              "3",
+              "27",
+              "Banyak kotak kue"
+            ]
+          },
+          {
+            "label": "Telur peternak",
+            "sel": [
+              "96",
+              "8",
+              "12",
+              "Banyak kotak telur"
+            ]
+          },
+          {
+            "label": "Gantungan Putu",
+            "sel": [
+              "55",
+              "5",
+              "11",
+              "Gantungan tiap anak"
             ]
           }
         ]
@@ -3142,38 +3228,54 @@
         ]
       },
       "tabelSusun": {
-        "judul": "Metode, cara, dan hasilnya",
+        "judul": "Faktor beberapa bilangan",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel ini merangkum metode, cara melakukannya, hasil yang diharapkan, dan contohnya.",
-        "pojok": "Metode",
+        "suara": "Tabel faktor dari beberapa bilangan. Lihat semua faktor, banyaknya, dan pasangan faktor di tengah.",
+        "pojok": "Bilangan",
         "kolom": [
-          "Cara melakukannya",
-          "Hasil yang diharapkan",
-          "Contoh"
+          "Semua faktor",
+          "Banyak faktor",
+          "Pasangan tengah"
         ],
         "baris": [
           {
-            "label": "Tabel pembagian",
+            "label": "12",
             "sel": [
-              "Bagi sampai sisa nol",
-              "Bisa menentukan faktor",
-              "12 : 3 = 4, sisa 0"
+              "1, 2, 3, 4, 6, 12",
+              "6 faktor",
+              "3 × 4"
             ]
           },
           {
-            "label": "Penjumlahan berulang",
+            "label": "13",
             "sel": [
-              "Tambah bilangan yang sama",
-              "Bisa menentukan kelipatan",
-              "3 + 3 + 3 = 9"
+              "1, 13",
+              "2 faktor",
+              "1 × 13"
             ]
           },
           {
-            "label": "Perkalian bilangan asli",
+            "label": "25",
             "sel": [
-              "Kali dengan 1, 2, 3, ...",
-              "Bisa menentukan kelipatan",
-              "3 × 4 = 12"
+              "1, 5, 25",
+              "3 faktor",
+              "5 × 5"
+            ]
+          },
+          {
+            "label": "27",
+            "sel": [
+              "1, 3, 9, 27",
+              "4 faktor",
+              "3 × 9"
+            ]
+          },
+          {
+            "label": "52",
+            "sel": [
+              "1, 2, 4, 13, 26, 52",
+              "6 faktor",
+              "4 × 13"
             ]
           }
         ]
