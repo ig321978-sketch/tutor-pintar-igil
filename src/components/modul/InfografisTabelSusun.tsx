@@ -98,7 +98,8 @@ export default function InfografisTabelSusun({
   };
 
   const status = siap ? "🌟 Hebat! Tabelmu sudah lengkap." : `Kotak terisi: ${jumlahPasang(k)} dari ${total}`;
-  const kolomGrid = `minmax(4.5rem,0.9fr) repeat(${data.kolom.length}, minmax(0,1fr))`;
+  const rapat = data.kolom.length >= 4;
+  const kolomGrid = `minmax(0,0.78fr) repeat(${data.kolom.length}, minmax(0,1fr))`;
 
   return (
     <div data-igil-tabel-ui={IGIL_TABEL_SUSUN_UI} role="region" aria-label={`Infografis ${data.judul}`}>
@@ -139,7 +140,7 @@ export default function InfografisTabelSusun({
         <p className="text-center text-lg font-black leading-tight text-[#1C01A5]">{data.judul}</p>
 
         <div className="overflow-hidden rounded-2xl border-4 border-[#1C01A5] bg-white" role="table" aria-label={data.judul}>
-          <div role="row" className="grid bg-[#1C01A5] text-center text-xs font-black text-[#FFE566]" style={{ gridTemplateColumns: kolomGrid }}>
+          <div role="row" className={`grid bg-[#1C01A5] text-center font-black text-[#FFE566] ${rapat ? "text-[11px]" : "text-xs"}`} style={{ gridTemplateColumns: kolomGrid }}>
             <div role="columnheader" className="px-1 py-1.5 text-left">
               {data.pojok}
             </div>
@@ -151,7 +152,7 @@ export default function InfografisTabelSusun({
           </div>
           {data.baris.map((b, bi) => (
             <div key={b.label} role="row" className="grid border-t-2 border-[#1C01A5]/30" style={{ gridTemplateColumns: kolomGrid }}>
-              <div role="rowheader" className="flex items-center gap-1 bg-[#EEF2FF] px-1.5 py-1 text-xs font-black leading-tight text-[#1C01A5]">
+              <div role="rowheader" className={`flex min-w-0 items-center gap-1 break-words bg-[#EEF2FF] px-1 py-1 font-black leading-tight text-[#1C01A5] ${rapat ? "text-[11px]" : "text-xs"}`}>
                 {b.ikon ? <span aria-hidden="true">{b.ikon}</span> : null}
                 {b.label}
               </div>
@@ -165,7 +166,7 @@ export default function InfografisTabelSusun({
                       data-zona={`sel-${id}`}
                       aria-label={tab ? `${b.label}, ${data.kolom[ki]}: ${tab.teks}. Ketuk untuk mengembalikan tab` : `${b.label}, ${data.kolom[ki]}, kosong. Ketuk untuk menaruh tab yang dipegang`}
                       onClick={() => ketukSel(id)}
-                      className={`flex min-h-[2.6rem] w-full items-center justify-center rounded-xl border-2 px-1 py-0.5 text-center text-xs font-black leading-tight ${
+                      className={`flex min-h-[2.6rem] w-full items-center justify-center break-words rounded-xl border-2 px-0 py-0.5 text-center font-black leading-tight ${rapat ? "text-[11px]" : "text-xs"} ${
                         tab ? "igil-muncul border-[#16A34A] bg-[#DCFCE7] text-[#14532D]" : dipilih ? "border-dashed border-[#1C01A5]/60 bg-white text-[#1C01A5]/50" : "border-dashed border-[#1C01A5]/30 bg-white text-[#1C01A5]/40"
                       }`}
                     >
