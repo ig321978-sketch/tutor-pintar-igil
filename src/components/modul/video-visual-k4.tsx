@@ -2,92 +2,11 @@
 
 import React from "react";
 import { Muncul } from "./video-cerita";
-import {
-  BandingSvg,
-  GarisBilanganSvg,
-  LabelSvg,
-  PapanDigit,
-  SusunSvg,
-  progresDari,
-  nyalaDariWaktu,
-  nyalaSeirama,
-  HIJAU,
-  MERAH,
-} from "./video-visual-kit";
+import { LabelSvg } from "./video-visual-kit";
 
 /** Koreografi visual Story Kelas 4 — seirama ketukan `k` + waktu suara `t`. */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function visualK4(kode: string, v: number, a: number, k: number, t = 0): React.ReactNode {
-  const bab = kode.slice(0, 4);
-  const sub = kode.slice(4);
-  const p = progresDari(t);
-
-  if (bab === "k4b1") {
-    if (sub === "a" || sub === "b") {
-      const digit = sub === "a" ? (v === 0 ? "3286" : v === 1 ? "7504" : "1093") : v === 0 ? "2150" : "4080";
-      const n = k === 0 ? nyalaDariWaktu(t, digit.length, 1.3) : Math.min(digit.length, Math.max(k + 1, nyalaDariWaktu(t, digit.length, 1.2)));
-      const label =
-        k === 0 ? "baca digit" : k === 1 ? "nilai tempat" : k === 2 ? (sub === "a" ? "dari kiri" : "digit ≠ nilai") : "urai angka";
-      return (
-        <>
-          <PapanDigit digits={digit} nyala={Math.max(1, n)} x={54} />
-          {k >= 1 || p > 0.4 ? <LabelSvg x={70} y={140} w={160} teks={label} ukuran={12} /> : null}
-          {k >= 3 ? (
-            <Muncul>
-              <LabelSvg x={80} y={168} w={140} teks={sub === "a" ? "ribuan→satuan" : "nol menjaga"} ukuran={11} warna={HIJAU} />
-            </Muncul>
-          ) : null}
-        </>
-      );
-    }
-    if (sub === "c") {
-      const pairs = [
-        [8750, 7500],
-        [4321, 4312],
-        [9999, 10000],
-      ][Math.min(2, v)] as [number, number];
-      return (
-        <>
-          <BandingSvg a={pairs[0]} b={pairs[1]} k={Math.min(3, k + (p > 0.5 ? 1 : 0))} />
-          {k >= 2 ? <LabelSvg x={90} y={165} w={120} teks={a === 0 ? "banding kiri" : "> < ="} ukuran={12} warna={HIJAU} /> : null}
-        </>
-      );
-    }
-    if (sub === "d") {
-      const d = v === 0 ? "6348" : "5207";
-      return (
-        <>
-          <PapanDigit digits={d} nyala={nyalaSeirama(k, t, d.length, 1.2)} />
-          {k >= 1 ? <LabelSvg x={70} y={140} w={160} teks={k >= 2 ? "komposisi / urai" : "pecah nilai"} ukuran={12} /> : null}
-          {k >= 3 ? <LabelSvg x={80} y={168} w={140} teks="jumlah bagian" ukuran={11} warna={HIJAU} /> : null}
-        </>
-      );
-    }
-    if (sub === "e" || sub === "f") {
-      const ops = sub === "e" ? [189, 245, 434] : [356, 278, 634];
-      return (
-        <>
-          <SusunSvg atas={ops[0]} bawah={ops[1]} hasil={ops[2]} op="+" k={Math.min(3, k + (p > 0.55 ? 1 : 0))} />
-          {k >= 2 ? <LabelSvg x={95} y={165} w={110} teks="jumlahkan" ukuran={12} warna={HIJAU} /> : null}
-        </>
-      );
-    }
-    if (sub === "g" || sub === "h") {
-      const ops = sub === "g" ? [452, 178, 274] : [800, 356, 444];
-      return (
-        <>
-          <SusunSvg atas={ops[0]} bawah={ops[1]} hasil={ops[2]} op="−" k={Math.min(3, k + (p > 0.55 ? 1 : 0))} />
-          {k >= 2 ? <LabelSvg x={95} y={165} w={110} teks="kurangkan" ukuran={12} warna={MERAH} /> : null}
-        </>
-      );
-    }
-    return (
-      <>
-        <GarisBilanganSvg dari={0} sampai={10} sorot={k >= 1 ? [3, 7] : p > 0.3 ? [3] : [0]} panah={k >= 2 ? [3, 7] : null} />
-        {k >= 2 || p > 0.7 ? <LabelSvg x={90} y={155} w={120} teks="cerita bilangan" ukuran={11} /> : null}
-      </>
-    );
-  }
-
   return (
     <Muncul>
       <LabelSvg x={80} y={100} w={140} teks={kode.toUpperCase()} ukuran={14} />

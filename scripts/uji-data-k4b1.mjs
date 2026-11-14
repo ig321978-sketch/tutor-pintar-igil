@@ -31,7 +31,7 @@ for (const [nama, daftar] of Object.entries(D).filter(([k, v]) => k.startsWith("
 for (const sub of N.SUB_BAB_K4B1) {
   cek(`${sub.id}: 30 permainan`, sub.games.length === 30);
   cek(`${sub.id}: 10 Concrete/Picture/Abstract`, ["Concrete", "Picture", "Abstract"].every((st) => sub.games.filter((g) => g.stage === st).length === 10));
-  cek(`${sub.id}: 3 video × 3 adegan`, sub.videos.length === 3 && sub.videos.every((v) => v.adegan.length === 3 && v.adegan.every((a) => a.ketukan.length === 4)));
+  cek(`${sub.id}: video lama dihapus (videos kosong; video baru diuji di uji-story-k4b1)`, sub.videos.length === 0);
   cek(`${sub.id}: mindMaps & infografis`, sub.mindMaps.length >= 6 && sub.infografis.length >= 6);
 }
 cek("meta FASE_B grade 4", N.K4B1_META.phaseCode === "FASE_B" && N.K4B1_META.grade === 4 && N.K4B1_META.chapterId === "k4-mat-bab1");
