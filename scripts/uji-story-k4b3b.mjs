@@ -261,7 +261,7 @@ const seluruhTeks = (v) => v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map
   for (const kata of ["Sub-Bab B", "Ayo Mengamati", "Ayo Berpikir", "Kasus", "Ingat", "Latihan", "Uji", "Tantangan", "Refleksi", "orang tua", "Rubrik", "remedial", "membesar", "mengecil"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-as", "luar-as-terapan", "luar-fm", "luar-fm-terapan", "luar-tv", "luar-tv-terapan", "luar-nj", "luar-nj-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
-  cek(M_VIDEO.adegan.length === 13 && U.adegan.length === 10, "13 adegan materi diputar dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 14 && U.adegan.length === 11, "14 adegan materi diputar dan 11 adegan metode luar");
   cek(!/piktogram|diagram batang|pecahan|volume|bbab empat|bbab dua|bbab satu/i.test(materi + luar), `tidak membahas bab lain (${(materi + luar).match(/piktogram|diagram batang|pecahan|volume|bbab empat|bbab dua|bbab satu/i)?.[0]})`);
   cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
   // metode luar memakai angka buku
@@ -678,7 +678,7 @@ const semuaDeretAkhir = []; // untuk pencocokan terhadap kunci: { adegan, nilai[
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|k4b3b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b3b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b3b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b3b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

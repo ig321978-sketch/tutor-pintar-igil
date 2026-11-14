@@ -1,4 +1,5 @@
 import type { VideoStory } from "./logika-story";
+import { adeganSapaan } from "./sapaan";
 import { ADEGAN_KOMPOSISI_AMATI, ADEGAN_KOMPOSISI_BERLATIH, ADEGAN_KOMPOSISI_NILAI } from "./k4b1d-materi-1";
 import { ADEGAN_BERLATIH_SATU, ADEGAN_DEKOMPOSISI_AMATI, ADEGAN_DEKOMPOSISI_NOL, ADEGAN_DEKOMPOSISI_URAIAN } from "./k4b1d-materi-2";
 import { ADEGAN_BERLATIH_UANG, ADEGAN_MISKONSEPSI } from "./k4b1d-materi-3";
@@ -12,6 +13,7 @@ export const VIDEO_MATERI_K4B1D: VideoStory = {
   subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
+    adeganSapaan({ jenis: "materi", topik: "menyusun dan menguraikan bilangan", daftar: ["Komposisi","Dekomposisi","Uraian uang"] }),
     ADEGAN_KOMPOSISI_AMATI,
     ADEGAN_KOMPOSISI_NILAI,
     ADEGAN_KOMPOSISI_BERLATIH,
@@ -30,6 +32,7 @@ export const VIDEO_LUAR_K4B1D: VideoStory = {
   subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "menyusun dan menguraikan bilangan" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_KOMPOSISI,
     ADEGAN_LUAR_KOMPOSISI_TERAPAN,

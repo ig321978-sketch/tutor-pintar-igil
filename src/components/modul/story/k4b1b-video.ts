@@ -1,4 +1,5 @@
 import type { VideoStory } from "./logika-story";
+import { adeganSapaan } from "./sapaan";
 import { ADEGAN_AKTIVITAS_ALAT, ADEGAN_AKTIVITAS_KARTU, ADEGAN_STRUK } from "./k4b1b-materi-1";
 import { ADEGAN_AMBIL, ADEGAN_CONTOH, ADEGAN_LATIH_DUA, ADEGAN_LATIH_SATU } from "./k4b1b-materi-2";
 import { ADEGAN_DIFERENSIASI, ADEGAN_KUNCI_EMPAT, ADEGAN_LATIH_TIGA, ADEGAN_MISKONSEPSI } from "./k4b1b-materi-3";
@@ -12,6 +13,7 @@ export const VIDEO_MATERI_K4B1B: VideoStory = {
   subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
+    adeganSapaan({ jenis: "materi", topik: "nilai tempat", daftar: ["Kardus nilai tempat","Tabel nilai tempat","Angka dikali tempatnya"] }),
     ADEGAN_STRUK,
     ADEGAN_AKTIVITAS_ALAT,
     ADEGAN_AKTIVITAS_KARTU,
@@ -32,6 +34,7 @@ export const VIDEO_LUAR_K4B1B: VideoStory = {
   subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "nilai tempat" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_NILAI,
     ADEGAN_LUAR_NILAI_TERAPAN,

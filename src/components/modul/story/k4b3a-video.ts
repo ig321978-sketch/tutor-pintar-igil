@@ -1,4 +1,5 @@
 import type { VideoStory } from "./logika-story";
+import { adeganSapaan } from "./sapaan";
 import { ADEGAN_AKTIVITAS_SATU } from "./k4b3a-materi-1";
 import { ADEGAN_AKTIVITAS_DUA, ADEGAN_AKTIVITAS_SATU_HASIL, ADEGAN_AMATI_JERUK, ADEGAN_AMATI_PERMEN } from "./k4b3a-materi-2";
 import { ADEGAN_BERLATIH_LIMA, ADEGAN_BERLATIH_SATU_DUA, ADEGAN_BERLATIH_TIGA_EMPAT, ADEGAN_DIFERENSIASI } from "./k4b3a-materi-3";
@@ -12,6 +13,7 @@ export const VIDEO_MATERI_K4B3A: VideoStory = {
   subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
+    adeganSapaan({ jenis: "materi", topik: "pola gambar", daftar: ["Susun dan hitung benda","Bandingkan kumpulan","Catat dalam tabel"] }),
     ADEGAN_AKTIVITAS_SATU,
     ADEGAN_AKTIVITAS_SATU_HASIL,
     ADEGAN_AMATI_JERUK,
@@ -30,6 +32,7 @@ export const VIDEO_LUAR_K4B3A: VideoStory = {
   subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "pola gambar" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_ULANG,
     ADEGAN_LUAR_ULANG_TERAPAN,

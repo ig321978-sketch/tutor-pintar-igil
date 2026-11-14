@@ -1,4 +1,5 @@
 import type { VideoStory } from "./logika-story";
+import { adeganSapaan } from "./sapaan";
 import { ADEGAN_KARTU, ADEGAN_PAPAN, ADEGAN_PASAR } from "./k4b1c-materi-1";
 import { ADEGAN_LANJUT, ADEGAN_LATIH_DUA, ADEGAN_LATIH_SATU, ADEGAN_RIBUAN, ADEGAN_SAMA } from "./k4b1c-materi-2";
 import { ADEGAN_BERPIKIR, ADEGAN_CATATAN, ADEGAN_GUNUNG, ADEGAN_URUT } from "./k4b1c-materi-3";
@@ -12,6 +13,7 @@ export const VIDEO_MATERI_K4B1C: VideoStory = {
   subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
+    adeganSapaan({ jenis: "materi", topik: "membandingkan dan mengurutkan bilangan", daftar: ["Nilai tempat","Tanda perbandingan","Mengurutkan bilangan"] }),
     ADEGAN_PASAR,
     ADEGAN_KARTU,
     ADEGAN_PAPAN,
@@ -33,6 +35,7 @@ export const VIDEO_LUAR_K4B1C: VideoStory = {
   subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "membandingkan dan mengurutkan bilangan" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_KIRI,
     ADEGAN_LUAR_KIRI_TERAPAN,

@@ -190,15 +190,15 @@ const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.
   for (const kata of ["Peta konsep", "Kata kunci", "Apersepsi", "Ayo Berlatih", "Ayo Berpikir", "Miskonsepsi", "Diferensiasi", "Refleksi", "Subbab", "Tujuan pembelajaran", "Panduan guru", "Aktivitas"]) cek(!luar.includes(kata), `video metode luar tidak memuat "${kata}" milik materi`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-persepuluhan", "luar-persepuluhan-terapan", "luar-kisi", "luar-kisi-terapan", "luar-jembatan", "luar-jembatan-terapan", "luar-tempat", "luar-tempat-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
-  cek(U.adegan[0].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
-  cek(M_VIDEO.adegan.length === 10 && U.adegan.length === 10, "10 adegan materi diputar dan 10 adegan metode luar");
+  cek(U.adegan[1].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
+  cek(M_VIDEO.adegan.length === 11 && U.adegan.length === 11, "11 adegan materi diputar dan 11 adegan metode luar");
   // Sub-Bab D tidak membocorkan Sub-Bab E (persen). Adegan pembuka yang tidak diputar juga tidak menyebut persen.
   const BOCOR = /persen|%|diskon|potongan harga|swalayan|seperseratus|senilai|ekuivalen/i;
   for (const a of M.adegan) cek(!BOCOR.test(teksAdegan(a)), `materi ${a.id} tidak membocorkan Sub-Bab E`);
   for (const a of U.adegan) cek(!BOCOR.test(teksAdegan(a)), `metode luar ${a.id} tidak membocorkan Sub-Bab E`);
   cek(totalKetukan >= 80, `total ketukan cukup dalam (${totalKetukan})`);
-  cek(M_VIDEO.adegan.map((a) => a.id).join() === "amati-roti,tiga-persepuluh-biskuit,contoh-angka-koma,hati-hati-nol,berlatih-satu,berlatih-dua,berlatih-tiga,periksa-kunci,diferensiasi,catatan-buku", "urutan adegan materi");
-  cek(U.adegan.map((a) => a.id).join() === "luar-pembuka,luar-persepuluhan,luar-persepuluhan-terapan,luar-kisi,luar-kisi-terapan,luar-jembatan,luar-jembatan-terapan,luar-tempat,luar-tempat-terapan,luar-ringkas", "urutan adegan metode luar");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,amati-roti,tiga-persepuluh-biskuit,contoh-angka-koma,hati-hati-nol,berlatih-satu,berlatih-dua,berlatih-tiga,periksa-kunci,diferensiasi,catatan-buku", "urutan adegan materi");
+  cek(U.adegan.map((a) => a.id).join() === "sapaan,luar-pembuka,luar-persepuluhan,luar-persepuluhan-terapan,luar-kisi,luar-kisi-terapan,luar-jembatan,luar-jembatan-terapan,luar-tempat,luar-tempat-terapan,luar-ringkas", "urutan adegan metode luar");
   cek(M.id === "k4b2d-materi" && U.id === "k4b2d-luar", "id video: k4b2d-materi dan k4b2d-luar");
   // Nama metode baru dan tiga nama lama tidak bentrok dengan judul atau metode lain pada bab ini (naskah, lab, dan sub-bab lain).
   const baca = (n) => readFileSync(new URL(`../src/components/modul/${n}`, import.meta.url), "utf8");
@@ -575,7 +575,7 @@ const pecahanTeks = (objs, id) => [nilaiId(objs, `${id}-a`), nilaiId(objs, `${id
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|k4b2d-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2d sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b2d-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2d sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

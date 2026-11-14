@@ -1,4 +1,5 @@
 import type { VideoStory } from "./logika-story";
+import { adeganSapaan } from "./sapaan";
 import { ADEGAN_CONTOH_1E, ADEGAN_CONTOH_2E, ADEGAN_MENGAMATI_E } from "./k4b2e-materi-1";
 import { ADEGAN_BERLATIH_1E, ADEGAN_BERLATIH_2E, ADEGAN_GESER, ADEGAN_LANGSUNG } from "./k4b2e-materi-2";
 import { ADEGAN_PENGAYAAN_1E, ADEGAN_PENGAYAAN_2E, ADEGAN_UK_DESIMAL, ADEGAN_UK_PECAHAN, ADEGAN_UK_PERSEN } from "./k4b2e-materi-3";
@@ -12,6 +13,7 @@ export const VIDEO_MATERI_K4B2E: VideoStory = {
   subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
+    adeganSapaan({ jenis: "materi", topik: "desimal dan persen", daftar: ["Cara biasa","Cara langsung","Geser tanda koma"] }),
     ADEGAN_MENGAMATI_E,
     ADEGAN_CONTOH_1E,
     ADEGAN_CONTOH_2E,
@@ -33,6 +35,7 @@ export const VIDEO_LUAR_K4B2E: VideoStory = {
   subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "desimal dan persen" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_PH,
     ADEGAN_LUAR_PH_TERAPAN,

@@ -1,4 +1,5 @@
 import type { VideoStory } from "./logika-story";
+import { adeganSapaan } from "./sapaan";
 import { ADEGAN_AKTIVITAS_ALAT, ADEGAN_AKTIVITAS_HASIL, ADEGAN_AMATI_COKLAT } from "./k4b2c-materi-1";
 import { ADEGAN_BERLATIH_SATU, ADEGAN_BERPIKIR, ADEGAN_COKLAT_JAWAB, ADEGAN_TAHUKAH } from "./k4b2c-materi-2";
 import { ADEGAN_BERLATIH_DUA, ADEGAN_BERLATIH_TIGA, ADEGAN_CATATAN, ADEGAN_DIFERENSIASI } from "./k4b2c-materi-3";
@@ -12,6 +13,7 @@ export const VIDEO_MATERI_K4B2C: VideoStory = {
   subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
+    adeganSapaan({ jenis: "materi", topik: "pecahan senilai", daftar: ["Lipat kertas dan bandingkan","Dikali bilangan sama","Dibagi bilangan sama"] }),
     ADEGAN_AKTIVITAS_ALAT,
     ADEGAN_AKTIVITAS_HASIL,
     ADEGAN_AMATI_COKLAT,
@@ -32,6 +34,7 @@ export const VIDEO_LUAR_K4B2C: VideoStory = {
   subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "pecahan senilai" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_SENILAI,
     ADEGAN_LUAR_SENILAI_TERAPAN,

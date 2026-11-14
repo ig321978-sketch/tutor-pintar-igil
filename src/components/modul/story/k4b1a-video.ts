@@ -1,4 +1,5 @@
 import type { VideoStory } from "./logika-story";
+import { adeganSapaan } from "./sapaan";
 import { ADEGAN_CERITA } from "./k4b1a-materi-1";
 import { ADEGAN_AKTIVITAS, ADEGAN_CARA_BACA, ADEGAN_JARAK, ADEGAN_MENULIS } from "./k4b1a-materi-2";
 import { ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_EMPAT, ADEGAN_LATIHAN_SATU, ADEGAN_NAMA } from "./k4b1a-materi-3";
@@ -12,6 +13,7 @@ export const VIDEO_MATERI_K4B1A: VideoStory = {
   subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
+    adeganSapaan({ jenis: "materi", topik: "membaca dan menulis bilangan cacah", daftar: ["Kartu bilangan","Tabel empat tempat","Aturan nol"] }),
     ADEGAN_CERITA,
     ADEGAN_JARAK,
     ADEGAN_AKTIVITAS,
@@ -30,6 +32,7 @@ export const VIDEO_LUAR_K4B1A: VideoStory = {
   subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "membaca dan menulis bilangan cacah" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_DIENES,
     ADEGAN_LUAR_DIENES_TERAPAN,

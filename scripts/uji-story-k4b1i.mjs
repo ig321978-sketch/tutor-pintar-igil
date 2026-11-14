@@ -255,7 +255,7 @@ const seluruhTeks = (v) => v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map
   for (const kata of ["Sub-Bab I", "Pengayaan", "Refleksi", "orang tua", "Panduan Guru", "Rubrik", "remedial", "Diferensiasi", "Miskonsepsi", "faktor", "kelipatan"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-fp", "luar-fp-terapan", "luar-sk", "luar-sk-terapan", "luar-dv", "luar-dv-terapan", "luar-sv", "luar-sv-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
-  cek(M_VIDEO.adegan.length === 16 && U.adegan.length === 10, "16 adegan materi dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 17 && U.adegan.length === 11, "17 adegan materi dan 11 adegan metode luar");
   cek(!/piktogram|diagram batang|pecahan|volume|pola bilangan|pola gambar/i.test(materi + luar), `tidak membahas bab lain (${(materi + luar).match(/piktogram|diagram batang|pecahan|volume|pola bilangan|pola gambar/i)?.[0]})`);
   cek(totalKetukan >= 80, `total ketukan cukup dalam (${totalKetukan})`);
   for (const kata of ["12 : 1 = 12", "12 : 5 = 2 sisa 2", "2 + 2 + 2 + 2 = 8", "8 = 4 × 2", "3 × 4 = 12", "42 > 40"]) cek(materi.includes(kata), `video materi memuat "${kata}"`);
@@ -715,7 +715,7 @@ const semuaDeretAkhir = []; // { adegan, pre, nilai[] }
         cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
       }
     }
-    cek(M.adegan.every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi punya kutipan buku");
+    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi punya kutipan buku");
     // kunci yang dipakai video benar-benar ada di Panduan Guru
     const bgSaja = bersih(bagian[1]);
     for (const s of ["jawaban a = 10, b = 5, c = 4, dan d = 10", "jawaban b = 24, b = 16, c = 12, d = 6, dan e = 8", "faktor dari 24 adalah 1,2,3,4,6,8,12,24", "faktor dari 25 adalah 1,5,25", "faktor dari 52 adalah 1,2,4,13,26,52", "3,6,9,12,15,18,21", "kelipatan dari 3 adalah 3,6,9,12,15,18", "20,25,30", "12 kartu anime", "8.002", "delapan ribu dua", "898", "836", "741", "1.029", "388", "378", "223", "423", "84", "225", "132", "3, 6, 9, 12, 15, 18, 21, 24, 27", "8, 12, 16, 20, 24", "256 – 179 = 77", "36 + 111 – 54 = 93", "(128 + 76) : 6 = 34", "24 x 8 = 192", "(3 x 30) : 5 = 90 : 5 = 18", "3.990 buah mangga", "725 kilogram buah", "= 96 pensil tulis", "= 629", "18.10, 18.12, 18.14, 18.16"]) cek(bgSaja.includes(bersih(s)), `Panduan Guru memuat kunci "${s}"`);
@@ -743,7 +743,7 @@ const semuaDeretAkhir = []; // { adegan, pre, nilai[] }
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|k4b1i-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1i sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b1i-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1i sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

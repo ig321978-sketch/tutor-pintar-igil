@@ -194,8 +194,8 @@ const titik = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   for (const kata of ["Peta konsep", "Kata kunci", "Apersepsi", "Ayo Berlatih", "Ayo Berpikir", "Miskonsepsi", "Diferensiasi", "Refleksi", "Subbab", "Tujuan pembelajaran", "Panduan guru", "Aktivitas"]) cek(!luar.includes(kata), `video metode luar tidak memuat "${kata}" milik materi`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-nilai", "luar-nilai-terapan", "luar-tukar", "luar-tukar-terapan", "luar-uraian", "luar-uraian-terapan", "luar-cakram", "luar-cakram-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
-  cek(U.adegan[0].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
-  cek(M_VIDEO.adegan.length === 11 && U.adegan.length === 10, "11 adegan materi dan 10 adegan metode luar");
+  cek(U.adegan[1].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
+  cek(M_VIDEO.adegan.length === 12 && U.adegan.length === 11, "12 adegan materi dan 11 adegan metode luar");
   cek(M.id === "k4b1b-materi" && U.id === "k4b1b-luar", "id video k4b1b-materi dan k4b1b-luar");
   // Tidak membocorkan materi sub-bab lain (komposisi, pengurangan, pembagian, faktor, penutup bab). Membandingkan dan mengurutkan hanya muncul di kalimat pengalaman belajar Panduan Guru hlm. 35 (sub-bab B sendiri memakainya).
   const BOCOR = /komposisi|dekomposisi|pengurangan|pembagian|faktor|kelipatan|uji kompetensi|refleksi|pengayaan|remedial/i;
@@ -203,8 +203,8 @@ const titik = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   for (const a of [...M.adegan.filter((x) => x.id !== "panduan-awal"), ...U.adegan]) cek(!/membandingkan|mengurutkan|urutan bilangan/i.test(teksAdegan(a)), `${a.id} tidak membahas membandingkan atau mengurutkan (milik sub-bab lain)`);
   cek(/membandingkan dan mengurutkan/i.test(teksAdegan(adegan(M, "panduan-awal"))), "Panduan Guru hlm. 35: kalimat pengalaman belajar dicatat apa adanya");
   cek(totalKetukan >= 80, `total ketukan cukup dalam (${totalKetukan})`);
-  cek(M_VIDEO.adegan.map((a) => a.id).join() === "struk-belanja,aktivitas-alat,aktivitas-kartu,aktivitas-ambil,contoh-2150,berlatih-satu,berlatih-dua,berlatih-tiga,kunci-empat,miskonsepsi,diferensiasi", "urutan adegan materi");
-  cek(U.adegan.map((a) => a.id).join() === "luar-pembuka,luar-nilai,luar-nilai-terapan,luar-tukar,luar-tukar-terapan,luar-uraian,luar-uraian-terapan,luar-cakram,luar-cakram-terapan,luar-ringkas", "urutan adegan metode luar");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,struk-belanja,aktivitas-alat,aktivitas-kartu,aktivitas-ambil,contoh-2150,berlatih-satu,berlatih-dua,berlatih-tiga,kunci-empat,miskonsepsi,diferensiasi", "urutan adegan materi");
+  cek(U.adegan.map((a) => a.id).join() === "sapaan,luar-pembuka,luar-nilai,luar-nilai-terapan,luar-tukar,luar-tukar-terapan,luar-uraian,luar-uraian-terapan,luar-cakram,luar-cakram-terapan,luar-ringkas", "urutan adegan metode luar");
   // Tiga nama metode lama sama dengan naskah bab; nama metode baru belum dipakai naskah, judul, atau lab lain pada bab ini.
   const modul = new URL("../src/components/modul/", import.meta.url);
   const baca = (n) => readFileSync(new URL(n, modul), "utf8");
@@ -507,7 +507,7 @@ for (const v of [M, U]) {
     }
     stat.kutipan = n;
     cek(n >= 60, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(M.adegan.every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
+    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
     // Data tabel dan kunci dibaca langsung dari teks PDF, bukan dari data di berkas gambar.
     const guruB = bersih(ambil(bg, 50, 50));
     const rapat = (t) => t.replace(/\s+/g, " ");
@@ -548,7 +548,7 @@ for (const v of [M, U]) {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|k4b1b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b1b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

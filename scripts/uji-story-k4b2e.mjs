@@ -265,7 +265,7 @@ const seluruhTeks = (v) => v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map
   for (const kata of ["Ayo Mengamati", "Ayo Berpikir", "Ayo Berlatih", "Tahukah kamu", "Pengayaan", "Hati-hati", "cara biasa", "cara langsung", "persen", "desimal perseratusan"]) cek(new RegExp(kata, "i").test(materiDiputar), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-ph", "luar-ph-terapan", "luar-hg", "luar-hg-terapan", "luar-dp", "luar-dp-terapan", "luar-sb", "luar-sb-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
-  cek(M_VIDEO.adegan.length === 12 && U.adegan.length === 10, "12 adegan materi diputar dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 13 && U.adegan.length === 11, "13 adegan materi diputar dan 11 adegan metode luar");
   cek(!/volume|pola bilangan|diagram batang|piktogram/i.test(materi + luar), "tidak membahas bab lain");
   cek(totalKetukan >= 80, `total ketukan cukup dalam (${totalKetukan})`);
   // metode luar memakai angka buku
@@ -607,7 +607,7 @@ const periksaRantai = (t, nama) => {
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|k4b2e-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2e sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b2e-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b2e sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

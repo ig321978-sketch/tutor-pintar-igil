@@ -1,4 +1,5 @@
 import type { VideoStory } from "./logika-story";
+import { adeganSapaan } from "./sapaan";
 import { ADEGAN_BERAS, ADEGAN_BERLATIH_FAKTOR_1, ADEGAN_BERLATIH_FAKTOR_2, ADEGAN_BUKAN_FAKTOR, ADEGAN_FAKTOR_12, ADEGAN_PEMBUKA_I } from "./k4b1i-materi-1";
 import {
   ADEGAN_BERLATIH_KELIPATAN,
@@ -21,6 +22,7 @@ export const VIDEO_MATERI_K4B1I: VideoStory = {
   subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
+    adeganSapaan({ jenis: "materi", topik: "faktor dan kelipatan", daftar: ["Tabel pembagian","Penjumlahan berulang","Perkalian bilangan asli"] }),
     ADEGAN_PEMBUKA_I,
     ADEGAN_FAKTOR_12,
     ADEGAN_BUKAN_FAKTOR,
@@ -46,6 +48,7 @@ export const VIDEO_LUAR_K4B1I: VideoStory = {
   subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "faktor dan kelipatan" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_FP,
     ADEGAN_LUAR_FP_TERAPAN,

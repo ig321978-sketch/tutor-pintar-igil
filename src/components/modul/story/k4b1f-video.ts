@@ -1,4 +1,5 @@
 import type { VideoStory } from "./logika-story";
+import { adeganSapaan } from "./sapaan";
 import { ADEGAN_AMATI_BUKU, ADEGAN_APERSEPSI, ADEGAN_SEKALI } from "./k4b1f-materi-1";
 import { ADEGAN_DUA_KALI, ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_SATU, ADEGAN_PENDEK } from "./k4b1f-materi-2";
 import { ADEGAN_LATIHAN_EMPAT, ADEGAN_LATIHAN_LIMA, ADEGAN_LATIHAN_TIGA, ADEGAN_MISKONSEPSI } from "./k4b1f-materi-3";
@@ -12,6 +13,7 @@ export const VIDEO_MATERI_K4B1F: VideoStory = {
   subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
+    adeganSapaan({ jenis: "materi", topik: "pengurangan bilangan cacah", daftar: ["Susun panjang","Susun pendek","Mengambil puluhan"] }),
     ADEGAN_APERSEPSI,
     ADEGAN_AMATI_BUKU,
     ADEGAN_SEKALI,
@@ -32,6 +34,7 @@ export const VIDEO_LUAR_K4B1F: VideoStory = {
   subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "pengurangan bilangan cacah" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_STANDAR,
     ADEGAN_LUAR_STANDAR_TERAPAN,

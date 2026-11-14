@@ -1,4 +1,5 @@
 import type { VideoStory } from "./logika-story";
+import { adeganSapaan } from "./sapaan";
 import { ADEGAN_AMATI_ROTI, ADEGAN_CONTOH_KOMA, ADEGAN_TIGA_BISKUIT } from "./k4b2d-materi-1";
 import { ADEGAN_BERLATIH_DUA, ADEGAN_BERLATIH_SATU, ADEGAN_BERLATIH_TIGA, ADEGAN_HATI_HATI } from "./k4b2d-materi-2";
 import { ADEGAN_CATATAN_BUKU, ADEGAN_DIFERENSIASI, ADEGAN_PERIKSA_KUNCI } from "./k4b2d-materi-3";
@@ -12,6 +13,7 @@ export const VIDEO_MATERI_K4B2D: VideoStory = {
   subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
+    adeganSapaan({ jenis: "materi", topik: "pecahan desimal", daftar: ["Amati bagian pada gambar","Hitung angka sesudah koma","Tulis pembilang setelah koma"] }),
     ADEGAN_AMATI_ROTI,
     ADEGAN_TIGA_BISKUIT,
     ADEGAN_CONTOH_KOMA,
@@ -31,6 +33,7 @@ export const VIDEO_LUAR_K4B2D: VideoStory = {
   subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "pecahan desimal" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_TENTHS,
     ADEGAN_LUAR_TENTHS_TERAPAN,

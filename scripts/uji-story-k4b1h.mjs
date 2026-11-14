@@ -186,8 +186,8 @@ for (const v of [M, U]) for (const a of v.adegan) for (const [i, kt] of a.ketuka
     }
   }
   for (const kata of ["Peta konsep", "Kata kunci", "Apersepsi", "Ayo Berlatih", "Ayo Berpikir", "Miskonsepsi", "Diferensiasi", "Refleksi", "Subbab", "Tujuan pembelajaran", "Panduan guru", "Aktivitas"]) cek(!new RegExp(kata, "i").test(luar), `video metode luar tidak memuat "${kata}" milik materi`);
-  cek(U.adegan.map((a) => a.id).join() === "luar-pembuka,luar-bagi-rata,luar-bagi-rata-terapan,luar-bagi-ukur,luar-bagi-ukur-terapan,luar-kali-balik,luar-kali-balik-terapan,luar-kurang-ulang,luar-kurang-ulang-terapan,luar-ringkas", "urutan adegan metode luar: pembuka, empat metode (konsep dan penerapan), ringkasan");
-  cek(M.adegan.map((a) => a.id).join() === "pembuka-h,pemantik,aktivitas-lima,tabel-wadah,susun-istilah,susun-langkah,berlatih-satu,cerita-bagi,cerita-kotak,miskonsepsi", "urutan adegan materi");
+  cek(U.adegan.map((a) => a.id).join() === "sapaan,luar-pembuka,luar-bagi-rata,luar-bagi-rata-terapan,luar-bagi-ukur,luar-bagi-ukur-terapan,luar-kali-balik,luar-kali-balik-terapan,luar-kurang-ulang,luar-kurang-ulang-terapan,luar-ringkas", "urutan adegan metode luar: pembuka, empat metode (konsep dan penerapan), ringkasan");
+  cek(M.adegan.map((a) => a.id).join() === "sapaan,pembuka-h,pemantik,aktivitas-lima,tabel-wadah,susun-istilah,susun-langkah,berlatih-satu,cerita-bagi,cerita-kotak,miskonsepsi", "urutan adegan materi");
   cek(M.id === "k4b1h-materi" && U.id === "k4b1h-luar", "id video k4b1h-materi dan k4b1h-luar");
   cek(M.jenis === "materi" && U.jenis === "metode-luar", "jenis video materi dan metode-luar");
   // Tidak membocorkan materi sub-bab lain (faktor, kelipatan, pembulatan, penutup bab).
@@ -516,7 +516,7 @@ sama([...G.ANAK], ["Andi", "Azizah", "Drio", "Candra"], "empat anak Pak Wicak");
     }
     stat.kutipan = n;
     cek(n >= 70, `jumlah kutipan buku yang diperiksa (${n})`);
-    cek(M.adegan.every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
+    cek(M.adegan.filter((a) => a.id !== "sapaan").every((a) => (a.kutipan ?? []).length >= 3), "tiap adegan materi memuat paling sedikit 3 kutipan buku");
     // Kunci Panduan Guru nomor 1 dan 2 (dicocokkan dengan hitungan mandiri di atas).
     for (const kunci of ["a. 24 : 2 = 12", "b. 96 : 3 = 32", "c. 96 : 6 = 16", "d. 72 : 3 = 24", "e. 75 : 5 = 15", "jawab: 36 : 2 = 18", "jawab: 64 : 4 = 16", "jawab: 81 : 3 = 27", "jawab: 96 : 8 = 12", "jawab: 55 : 5 = 11"]) cek(guru.includes(kunci), `Panduan Guru memuat kunci "${kunci}"`);
     // Soal Buku Siswa nomor 1 dan 2.
@@ -547,7 +547,7 @@ sama([...G.ANAK], ["Andi", "Azizah", "Drio", "Candra"], "empat anak Pak Wicak");
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|k4b1h-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1h sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b1h-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b1h sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

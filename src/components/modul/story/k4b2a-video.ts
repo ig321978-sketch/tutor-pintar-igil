@@ -1,4 +1,5 @@
 import type { VideoStory } from "./logika-story";
+import { adeganSapaan } from "./sapaan";
 import { ADEGAN_AKTIVITAS_SATU } from "./k4b2a-materi-1";
 import { ADEGAN_AMATI_PIZZA, ADEGAN_BANDING_BESAR, ADEGAN_BERLATIH_BENTUK, ADEGAN_PEMBILANG } from "./k4b2a-materi-2";
 import { ADEGAN_BANDING_KECIL, ADEGAN_BERLATIH_BANDING_DUA, ADEGAN_BERLATIH_BANDING_SATU, ADEGAN_DIFERENSIASI } from "./k4b2a-materi-3";
@@ -12,6 +13,7 @@ export const VIDEO_MATERI_K4B2A: VideoStory = {
   subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
+    adeganSapaan({ jenis: "materi", topik: "pecahan dan cara membandingkannya", daftar: ["Bagi jadi bagian sama","Amati daerah arsir","Bandingkan penyebutnya"] }),
     ADEGAN_AKTIVITAS_SATU,
     ADEGAN_AMATI_PIZZA,
     ADEGAN_PEMBILANG,
@@ -30,6 +32,7 @@ export const VIDEO_LUAR_K4B2A: VideoStory = {
   subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "pecahan dan cara membandingkannya" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_SATUAN,
     ADEGAN_LUAR_SATUAN_TERAPAN,

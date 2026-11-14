@@ -233,7 +233,7 @@ const seluruhTeks = (v) => v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map
   cek(!/Sub-Bab B|Panduan Guru|Refleksi|orang tua/.test(teksVideo(M_VIDEO)), "video materi yang diputar tanpa adegan administratif (pembuka, penilaian, refleksi)");
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-vf", "luar-vf-terapan", "luar-lm", "luar-lm-terapan", "luar-di", "luar-di-terapan", "luar-br", "luar-br-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
-  cek(M_VIDEO.adegan.length === 14 && U.adegan.length === 10, "14 adegan materi diputar dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 15 && U.adegan.length === 11, "15 adegan materi diputar dan 11 adegan metode luar");
   cek(!/piktogram|diagram batang|pecahan|bangun datar|jaring-jaring|bab lima|bab enam|bab tiga/i.test(materi + luar), `tidak membahas bab lain (${(materi + luar).match(/piktogram|diagram batang|pecahan|bangun datar|jaring-jaring/i)?.[0]})`);
   cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
   // metode luar memakai angka dan bangun dari buku
@@ -566,7 +566,7 @@ const G = await import("../src/components/modul/story/k4b4b-gambar.ts");
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|k4b4b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b4b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b4b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b4b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

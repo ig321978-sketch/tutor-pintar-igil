@@ -31,22 +31,36 @@ import {
 export const IGIL_PETA_SUSUN_UI = "peta-susun-v1";
 
 const GARIS = "#1C01A5";
-const WARNA_TINGKAT = [
+/** Satu warna untuk tiap cabang dari pusat: simpul dan tab-nya sewarna, supaya siswa mudah mengelompokkan tab ke cabang yang benar. */
+const WARNA_CABANG = [
   { tepi: "#2563EB", isi: "#DBEAFE" },
+  { tepi: "#EA580C", isi: "#FFEDD5" },
   { tepi: "#7C3AED", isi: "#EDE9FE" },
-  { tepi: "#0F766E", isi: "#CCFBF1" },
+  { tepi: "#DB2777", isi: "#FCE7F3" },
 ];
+
+/** Nomor cabang (urutan di bawah pusat) untuk tiap simpul; anak mewarisi warna cabangnya. */
+function nomorCabang(d: DataPetaSusun): Record<string, number> {
+  const hasil: Record<string, number> = {};
+  const turun = (id: string, no: number) => {
+    hasil[id] = no;
+    for (const c of anak(d, id)) turun(c.id, no);
+  };
+  anak(d, null).forEach((s, i) => turun(s.id, i));
+  return hasil;
+}
 
 function anak(d: DataPetaSusun, id: string | null): SimpulPeta[] {
   return d.simpul.filter((s) => s.induk === id);
 }
 
-function TabKartu({ t, dipegang, kecil = false }: { t: TabSusun; dipegang?: boolean; kecil?: boolean }) {
+function TabKartu({ t, warna, dipegang, kecil = false }: { t: TabSusun; warna: { tepi: string; isi: string }; dipegang?: boolean; kecil?: boolean }) {
   return (
     <span
-      className={`flex items-center gap-1 rounded-full border-4 bg-[#FFF7CC] font-black text-[#1C01A5] shadow-[0_3px_0_rgba(28,1,165,0.2)] ${
+      className={`flex items-center gap-1 rounded-full border-4 font-black text-[#1C01A5] shadow-[0_3px_0_rgba(28,1,165,0.2)] ${
         kecil ? "px-2.5 py-1 text-xs" : "px-3 py-1.5 text-sm"
-      } ${dipegang ? "border-[#F0AB00] ring-4 ring-[#F0AB00]/60" : "border-[#1C01A5]"}`}
+      } ${dipegang ? "border-[#F0AB00] ring-4 ring-[#F0AB00]/60" : ""}`}
+      style={{ backgroundColor: warna.isi, ...(dipegang ? {} : { borderColor: warna.tepi }) }}
     >
       {t.ikon ? (
         <span className="text-lg leading-none" aria-hidden="true">
@@ -82,6 +96,9 @@ export default function PetaKonsepSusun({
   const urutBaki = useMemo(() => acakTab(tabs, benih), [tabs, benih]);
   const [k, setK] = useState<KeadaanSusun>(awalSusun);
   const [tegur, setTegur] = useState(false);
+
+  const cabang = useMemo(() => nomorCabang(data), [data]);
+  const warnaTab = (idTab: string) => WARNA_CABANG[(cabang[idTab.replace(/^t-/, "")] ?? 0) % WARNA_CABANG.length];
 
   const total = tempat.length;
   const siap = semuaPasang(tempat, k);
@@ -135,7 +152,7 @@ export default function PetaKonsepSusun({
 
   const renderNode = (s: SimpulPeta, tingkat: number): React.ReactNode => {
     const tab = tabDiTempat(tabs, k, s.id);
-    const warna = WARNA_TINGKAT[Math.min(tingkat, WARNA_TINGKAT.length) - 1];
+    const warna = WARNA_CABANG[(cabang[s.id] ?? 0) % WARNA_CABANG.length];
     const anakAnak = anak(data, s.id);
     return (
       <li key={s.id} className="relative">
@@ -146,17 +163,17 @@ export default function PetaKonsepSusun({
           aria-label={tab ? `Nomor ${s.nomor}: ${tab.teks}. Ketuk untuk mengembalikan tab` : `Nomor ${s.nomor}, kosong. Ketuk untuk menaruh tab yang dipegang`}
           onClick={() => ketukTempat(s.id)}
           className={`flex min-h-[2.4rem] max-w-full items-center gap-2 rounded-2xl border-4 px-2 py-1 text-left ${tab ? "igil-muncul" : dipilih ? "border-dashed" : ""}`}
-          style={{ borderColor: tab ? "#16A34A" : warna.tepi, backgroundColor: tab ? "#DCFCE7" : "#FFFFFF" }}
+          style={{ borderColor: warna.tepi, backgroundColor: tab ? warna.isi : "#FFFFFF" }}
         >
           <span
             className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-black text-white"
-            style={{ backgroundColor: tab ? "#16A34A" : warna.tepi }}
+            style={{ backgroundColor: warna.tepi }}
             aria-hidden="true"
           >
             {tab ? "✔" : s.nomor}
           </span>
           {tab ? (
-            <span className="text-sm font-black leading-tight text-[#14532D]">
+            <span className="text-sm font-black leading-tight text-[#1C01A5]">
               {tab.ikon ? <span aria-hidden="true">{tab.ikon} </span> : null}
               {tab.teks}
             </span>
@@ -246,7 +263,7 @@ export default function PetaKonsepSusun({
                 onLepas={lepasTab}
                 kelas="rounded-full"
               >
-                <TabKartu t={t} dipegang={k.dipilih === t.id} />
+                <TabKartu t={t} warna={warnaTab(t.id)} dipegang={k.dipilih === t.id} />
               </BendaSeret>
             ))}
           </div>
