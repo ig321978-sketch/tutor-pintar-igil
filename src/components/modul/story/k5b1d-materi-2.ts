@@ -5,8 +5,8 @@ import { bersih, k, tambah, ubah } from "./k5b1d-bantu";
 /* ------------------------------ 5. Eksplorasi 1.5 dan 1.6, Permasalahan 1: angpau (Buku Siswa hlm. 21 sampai 23) ------------------------------ */
 export const ADEGAN_ANGPAU_1: AdeganStory = {
   id: "angpau-1",
-  judul: "Eksplorasi 1.5 dan 1.6, Permasalahan 1: dua belas angpau",
-  sumber: "Buku Siswa hlm. 21–23",
+  judul: "Dua belas angpau",
+  sumber: "Materi: mengalikan uang angpau",
   latar: "#FEF2F2",
   kutipan: [
     "Ayo Berpikir Kreatif",
@@ -28,15 +28,15 @@ export const ADEGAN_ANGPAU_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Berpikir Kreatif: adakah cara lain untuk hitungan Ayo Berlatih? Tuliskan di buku tulis. Lalu kita beralih ke perkalian dan pembagian.",
-      tambah(0, judul("Ayo Berpikir Kreatif"), emo("bk", 150, 64, "💡", 30)),
-      tambah("Tuliskan", ...kartu("kc", 30, 80, 240, 34, W.krem, ["cara lain? tulis di buku tulis"], 9.4)),
+      "Berpikir kreatif: adakah cara lain untuk hitungan latihan tadi? Tuliskan di kertasmu. Lalu kita beralih ke perkalian dan pembagian.",
+      tambah(0, judul("Berpikir kreatif"), emo("bk", 150, 64, "💡", 30)),
+      tambah("Tuliskan", ...kartu("kc", 30, 80, 240, 34, W.krem, ["cara lain? tulis di kertas"], 9.4)),
       tambah("beralih", ...kartu("kd", 30, 130, 240, 34, W.langit, ["berikutnya: perkalian dan pembagian"], 9.4)),
     ),
     k(
-      "Eksplorasi satu titik lima. Yohana keturunan Tionghoa, dan tiap Imlek ia mendapat angpau, amplop berisi uang. Tahun ini dua belas angpau, tiap amplop lima ribu rupiah. Berapa jumlah uangnya?",
+      "Perhatikan cerita berikutnya. Yohana keturunan Tionghoa, dan tiap Imlek ia mendapat angpau, amplop berisi uang. Tahun ini dua belas angpau, tiap amplop lima ribu rupiah. Berapa jumlah uangnya?",
       bersih(0),
-      tambah(0, judul("Eksplorasi 1.5: angpau")),
+      tambah(0, judul("Cerita angpau")),
       tambah("amplop@1", emo("ap", 56, 96, "🧧", 40)),
       tambah("belas", ...kartu("a1", 110, 50, 170, 34, W.merahMuda, ["12 angpau"], 11)),
       tambah("ribu", ...kartu("a2", 110, 94, 170, 34, W.krem, ["Rp5.000 tiap amplop"], 10.4)),
@@ -70,8 +70,8 @@ export const ADEGAN_ANGPAU_1: AdeganStory = {
 /* ------------------------------ 6. Eksplorasi 1.6, Permasalahan 2: pembagian angpau (Buku Siswa hlm. 22 sampai 23) ------------------------------ */
 export const ADEGAN_ANGPAU_2: AdeganStory = {
   id: "angpau-2",
-  judul: "Eksplorasi 1.6, Permasalahan 2: membagi enam puluh empat ribu rupiah",
-  sumber: "Buku Siswa hlm. 22–23",
+  judul: "Membagi enam puluh empat ribu rupiah",
+  sumber: "Materi: membagi uang angpau",
   latar: "#F5F3FF",
   kutipan: [
     "Permasalahan 2",
@@ -84,14 +84,14 @@ export const ADEGAN_ANGPAU_2: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Permasalahan dua: orang tua Yohana punya uang enam puluh empat ribu rupiah dan meminta Yohana membagikannya kepada empat anak tetangga. Berapa uang yang diterima setiap anak?",
-      tambah(0, judul("Permasalahan 2")),
+      "Sekarang masalah kedua: orang tua Yohana punya uang enam puluh empat ribu rupiah dan meminta Yohana membagikannya kepada empat anak tetangga. Berapa uang yang diterima setiap anak?",
+      tambah(0, judul("Masalah kedua")),
       tambah("enam", ...kartu("b1", 90, 28, 120, 30, W.krem, ["Rp64.000"], 12)),
       tambah("empat@2", emo("c1", 60, 120, "🧒", 30), emo("c2", 120, 120, "🧒", 30), emo("c3", 180, 120, "🧒", 30), emo("c4", 240, 120, "🧒", 30)),
       tambah("Berapa", teks("b2", 150, 168, "tiap anak = ?", 13, W.merah)),
     ),
     k(
-      "Kalimat matematikanya: enam puluh empat ribu dibagi empat. Buku meminta kita berhitung dengan cara yang pernah dipelajari sebelumnya, yaitu pembagian bersusun.",
+      "Kalimat matematikanya: enam puluh empat ribu dibagi empat. Kita berhitung dengan cara yang pernah dipelajari sebelumnya, yaitu pembagian bersusun.",
       bersih(0),
       tambah(0, judul("Kalimat matematikanya")),
       tambah("Kalimat", teks("b3", 150, 78, "64.000 ÷ 4 = ?", 20, W.hitam)),
@@ -106,10 +106,10 @@ export const ADEGAN_ANGPAU_2: AdeganStory = {
       tambah("Periksa", teks("b11", 150, 178, "16.000 × 4 = 64.000", 11, W.hijau)),
     ),
     k(
-      "Ayo Berpikir Kritis: adakah cara lain untuk hitungan ini? Tuliskan caranya dan minta bantuan teman. Setiap anak menerima enam belas ribu rupiah.",
+      "Berpikir kritis: adakah cara lain untuk hitungan ini? Tuliskan caranya dan minta bantuan teman. Setiap anak menerima enam belas ribu rupiah.",
       bersih(0),
-      tambah(0, judul("Ayo Berpikir Kritis"), emo("tk", 150, 66, "🤔", 30)),
-      tambah("Tuliskan", ...kartu("kr", 30, 84, 240, 34, W.krem, ["cara lain? tulis di buku tulis"], 9.4)),
+      tambah(0, judul("Berpikir kritis"), emo("tk", 150, 66, "🤔", 30)),
+      tambah("Tuliskan", ...kartu("kr", 30, 84, 240, 34, W.krem, ["cara lain? tulis di kertas"], 9.4)),
       tambah("Setiap", ...kartu("kj", 30, 132, 240, 34, W.hijauMuda, ["tiap anak: Rp16.000"], 10.4)),
     ),
   ],
@@ -137,8 +137,8 @@ const chip = (i: number, benar: boolean) => [kotak(`ch${i}`, 236, 40 + i * 26 - 
 
 export const ADEGAN_BUAH: AdeganStory = {
   id: "berlatih-buah",
-  judul: "Ayo Berlatih 1: harga buah di toko Zafran",
-  sumber: "Buku Siswa hlm. 24; Panduan Guru hlm. 34",
+  judul: "Latihan 1: harga buah di toko Zafran",
+  sumber: "Materi: harga buah di toko Zafran",
   latar: "#FFF7ED",
   kutipan: [
     "Toko Zafran menjual beberapa jenis buah, di antaranya mangga, alpukat, jeruk, buah naga, dan kelengkeng.",
@@ -155,23 +155,23 @@ export const ADEGAN_BUAH: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Berlatih nomor satu dan dua memakai satu teks. Toko Zafran menjual mangga, alpukat, jeruk, buah naga, dan kelengkeng. Harga satu bungkus mangga dua puluh tiga ribu lima ratus, jeruk tujuh belas ribu.",
+      "Latihan satu dan dua memakai satu cerita. Toko Zafran menjual mangga, alpukat, jeruk, buah naga, dan kelengkeng. Harga satu bungkus mangga dua puluh tiga ribu lima ratus, jeruk tujuh belas ribu.",
       tambah(0, judul("Toko Zafran: harga satu bungkus")),
       tambah("menjual", ...HG.filter((o) => o.id.startsWith("hg-s") && !o.id.endsWith("1")), ...HG.filter((o) => /^hg-t\d0$/.test(o.id)), ...HG.filter((o) => o.id === "hg-s01" || o.id === "hg-t01")),
       tambah("mangga@2", ...sel(1, 1)),
       tambah("jeruk@2", ...sel(2, 1)),
     ),
     k(
-      "Lalu kelengkeng tiga puluh empat ribu rupiah, buah naga lima belas ribu, dan alpukat tiga puluh dua ribu. Nomor satu menilai pernyataan benar atau salah.",
+      "Lalu kelengkeng tiga puluh empat ribu rupiah, buah naga lima belas ribu, dan alpukat tiga puluh dua ribu. Latihan satu menilai pernyataan benar atau salah.",
       tambah("kelengkeng", ...sel(3, 1)),
       tambah("naga", ...sel(4, 1)),
       tambah("alpukat", ...sel(5, 1)),
-      tambah("nomor", ...kartu("hn", 30, 160, 240, 30, W.langit, ["nomor 1: benar atau salah?"], 9.6)),
+      tambah("Latihan", ...kartu("hn", 30, 160, 240, 30, W.langit, ["Latihan 1: benar atau salah?"], 9.6)),
     ),
     k(
       "Pernyataan a salah: kelengkeng tiga puluh empat ribu lebih mahal daripada alpukat tiga puluh dua ribu. Pernyataan b salah, sebab buah naga lebih murah daripada jeruk. Pernyataan c benar: buah naga paling murah.",
       bersih(0),
-      tambah(0, judul("Soal 1: benar atau salah")),
+      tambah(0, judul("Latihan 1: benar atau salah")),
       tambah("Pernyataan@1", baris(0)),
       tambah("salah:", ...chip(0, false)),
       tambah("kelengkeng", teks("bk", 150, 176, "34.000 > 32.000", 9.6, W.hitam)),
@@ -182,14 +182,14 @@ export const ADEGAN_BUAH: AdeganStory = {
       tambah("benar:", ...chip(2, true)),
     ),
     k(
-      "Pernyataan d salah: dua bungkus buah naga tiga puluh ribu, lebih murah daripada alpukat tiga puluh dua ribu. Pernyataan e salah: tiga bungkus jeruk lima puluh satu ribu, bukan tiga puluh empat ribu. Kunci cocok.",
+      "Pernyataan d salah: dua bungkus buah naga tiga puluh ribu, lebih murah daripada alpukat tiga puluh dua ribu. Pernyataan e salah: tiga bungkus jeruk lima puluh satu ribu, bukan tiga puluh empat ribu. Jadi jawabannya: salah, salah, benar, salah, salah.",
       tambah("Pernyataan@1", baris(3)),
       ubah("Pernyataan@1", { id: "bk", isi: "30.000 < 32.000" }),
       tambah("salah:", ...chip(3, false)),
       tambah("Pernyataan@2", baris(4)),
       ubah("Pernyataan@2", { id: "bk", isi: "51.000 > 34.000" }),
       tambah("salah@2", ...chip(4, false)),
-      tambah("Kunci", teks("kn", 150, 194, "kunci: salah, salah, benar, salah, salah", 9, W.hijau)),
+      tambah("Jadi", teks("kn", 150, 194, "jawaban: salah, salah, benar, salah, salah", 9, W.hijau)),
     ),
   ],
 };
@@ -215,8 +215,8 @@ const garisPasang = (i: number) => panah(`pg${i}`, 223, yBaris(i) + 8, 9, yChip(
 
 export const ADEGAN_PASANGAN: AdeganStory = {
   id: "berlatih-pasangan",
-  judul: "Ayo Berlatih 2: memasangkan Kolom A dengan Kolom B",
-  sumber: "Buku Siswa hlm. 25; Panduan Guru hlm. 35",
+  judul: "Latihan 2: memasangkan Kolom A dengan Kolom B",
+  sumber: "Materi: memasangkan hitungan dan hasil",
   latar: "#F0FDFA",
   kutipan: [
     "Pasangkan pernyataan di Kolom A dan pernyataan di Kolom B secara tepat, dengan cara memberi garis.",
@@ -236,8 +236,8 @@ export const ADEGAN_PASANGAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Nomor dua memasangkan Kolom A dengan Kolom B. Kolom B berisi enam harga: empat puluh sembilan ribu, seratus dua puluh satu ribu lima ratus, empat puluh tujuh ribu, enam puluh empat ribu, dua puluh tiga ribu, empat ribu.",
-      tambah(0, judul("Ayo Berlatih 2: pasangkan")),
+      "Latihan dua memasangkan Kolom A dengan Kolom B. Kolom B berisi enam harga: empat puluh sembilan ribu, seratus dua puluh satu ribu lima ratus, empat puluh tujuh ribu, enam puluh empat ribu, dua puluh tiga ribu, empat ribu.",
+      tambah(0, judul("Latihan 2: pasangkan")),
       tambah("sembilan", ...chipB(0)),
       tambah("seratus", ...chipB(1)),
       tambah("tujuh", ...chipB(2)),
@@ -260,12 +260,12 @@ export const ADEGAN_PASANGAN: AdeganStory = {
       tambah("jumlahnya", garisPasang(3)),
     ),
     k(
-      "Lukas membeli dua buah naga dan Nisa satu kelengkeng, selisihnya empat ribu. Ibu membagi seratus ribu untuk dua anak; tiap anak membayar satu jeruk dan dua buah naga, empat puluh tujuh ribu. Semua cocok dengan kunci.",
+      "Lukas membeli dua buah naga dan Nisa satu kelengkeng, selisihnya empat ribu. Ibu membagi seratus ribu untuk dua anak; tiap anak membayar satu jeruk dan dua buah naga, empat puluh tujuh ribu. Semua pasangan sudah cocok.",
       tambah("Lukas", ...pasang(4)),
       tambah("selisihnya", garisPasang(4)),
       tambah("Ibu", ...pasang(5)),
       tambah("tiap", garisPasang(5)),
-      ubah("Semua", { id: "jud", isi: "Semua pasangan cocok dengan kunci" }),
+      ubah("Semua", { id: "jud", isi: "Semua pasangan sudah cocok" }),
     ),
   ],
 };

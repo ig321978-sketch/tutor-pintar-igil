@@ -1,6 +1,6 @@
 import type { AdeganStory } from "./logika-story";
 import { W, barisUang, bingkai, emo, isiSel, judul, kartu, panah, satuUang, teks, type Grid } from "./k5b1c-gambar";
-import { bersih, hapus, k, tambah } from "./k5b1c-bantu";
+import { bersih, k, tambah } from "./k5b1c-bantu";
 
 /** Tabel komposisi dua baris (banyak lembar dan nilai) seperti di Buku Siswa hlm. 16. */
 export const G_KOMP: Grid = { x: 8, y: 34, labelW: 34, colW: 50, rowH: 22, headH: 16 };
@@ -10,8 +10,8 @@ const kiri = (id: string, y: number, isi: string, o: { warna?: string } = {}) =>
 
 export const ADEGAN_EKS13: AdeganStory = {
   id: "eks-13-uang",
-  judul: "Eksplorasi 1.3: uang Asep dan uang Lukas",
-  sumber: "Buku Siswa hlm. 15",
+  judul: "Uang Asep dan uang Lukas",
+  sumber: "Materi: uang Asep dan uang Lukas",
   latar: "#FDF4FF",
   kutipan: [
     "Eksplorasi 1.3",
@@ -22,8 +22,8 @@ export const ADEGAN_EKS13: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi satu titik tiga memakai uang Asep dan uang Lukas. Kita hitung dulu uang masing-masing.",
-      tambah(0, judul("Eksplorasi 1.3")),
+      "Hari ini kita memakai uang milik Asep dan uang milik Lukas. Perhatikan baik-baik, kita hitung dulu uang masing-masing.",
+      tambah(0, judul("Uang Asep dan Lukas")),
       tambah("Asep", emo("ea", 80, 92, "👦", 36), ...kartu("eak", 36, 106, 88, 28, W.langit, ["uang Asep"], 9.4)),
       tambah("Lukas", emo("el", 220, 92, "👦", 36), ...kartu("elk", 176, 106, 88, 28, W.pink, ["uang Lukas"], 9.4)),
     ),
@@ -66,7 +66,7 @@ export const ADEGAN_EKS13: AdeganStory = {
 export const ADEGAN_KOMPOSISI_ASEP: AdeganStory = {
   id: "komposisi-asep",
   judul: "Komposisi uang Asep",
-  sumber: "Buku Siswa hlm. 16",
+  sumber: "Materi: komposisi uang Asep",
   latar: "#EFF6FF",
   kutipan: ["Komposisi Uang Asep", "Puluh Ribuan Ribuan Ratusan Puluhan Satuan", "Jadi, uang Asep terbentuk"],
   ketukan: [
@@ -108,33 +108,30 @@ export const ADEGAN_KOMPOSISI_ASEP: AdeganStory = {
 export const ADEGAN_KOMPOSISI_LUKAS: AdeganStory = {
   id: "komposisi-lukas",
   judul: "Komposisi uang Lukas",
-  sumber: "Buku Siswa hlm. 16",
+  sumber: "Materi: komposisi uang Lukas",
   latar: "#FFF1F2",
   kutipan: ["Komposisi Uang Lukas", "Jadi, uang Lukas terbentuk"],
   ketukan: [
     k(
-      "Sekarang komposisi uang Lukas. Di buku tabelnya sudah terisi tiga di kolom puluh ribuan, dan tiga ribu di kolom ribuan.",
+      "Sekarang komposisi uang Lukas. Kita memakai tabel nilai tempat yang sama, dengan lima kolom, dari puluh ribuan sampai satuan.",
       tambah(0, judul("Komposisi uang Lukas")),
-      tambah(0, bingkai("tl", G_KOMP, 2, ["banyak", "nilai"])),
-      tambah("tiga", isiSel("tl", G_KOMP, 0, 0, "3", 9, W.merah)),
-      tambah("ribu", isiSel("tl", G_KOMP, 1, 1, "3.000", 8.6, W.hijau)),
+      tambah("tabel", bingkai("tl", G_KOMP, 2, ["banyak", "nilai"])),
+      tambah("lima", teks("kl", 150, 112, "5 kolom nilai tempat", 8.6, W.hitam)),
     ),
     k(
-      "Tetapi cerita Lukas mengatakan enam lembar di kolom puluh ribuan. Jadi angka tiga itu tidak cocok. Seharusnya enam.",
-      hapus("Jadi", "tl-v0-0"),
-      tambah("Seharusnya", isiSel("tl", G_KOMP, 0, 0, "6", 9, W.hijau)),
-      tambah("Seharusnya", teks("cat", 150, 114, "buku menulis 3, seharusnya 6", 8.6, W.merah)),
-    ),
-    k(
-      "Nilainya enam puluh ribu. Lalu ribuan: tiga lembar, nilainya tiga ribu, sama dengan yang tertulis di buku.",
+      "Lukas punya enam lembar di kolom puluh ribuan, jadi kita tulis enam. Nilainya enam puluh ribu.",
+      tambah("enam", isiSel("tl", G_KOMP, 0, 0, "6")),
       tambah("Nilainya", isiSel("tl", G_KOMP, 1, 0, "60.000", 8.6, W.hijau)),
+    ),
+    k(
+      "Lalu seribuan. Lukas punya tiga lembar, jadi di kolom ribuan kita tulis tiga. Nilainya tiga ribu.",
       tambah("tiga", isiSel("tl", G_KOMP, 0, 1, "3")),
+      tambah("Nilainya", isiSel("tl", G_KOMP, 1, 1, "3.000", 8.6, W.hijau)),
     ),
     k(
       "Ratusan ada lima lembar, nilainya lima ratus. Puluhan dan satuan tidak ada, jadi nol.",
       tambah("lima", isiSel("tl", G_KOMP, 0, 2, "5"), isiSel("tl", G_KOMP, 1, 2, "500", 8.6, W.hijau)),
       tambah("Puluhan", isiSel("tl", G_KOMP, 0, 3, "0"), isiSel("tl", G_KOMP, 1, 3, "0", 8.6, W.hijau), isiSel("tl", G_KOMP, 0, 4, "0"), isiSel("tl", G_KOMP, 1, 4, "0", 8.6, W.hijau)),
-      hapus("Puluhan", "cat"),
     ),
     k(
       "Enam puluh ribu, tiga ribu, dan lima ratus kita satukan. Jadi, uang Lukas terbentuk enam puluh tiga ribu lima ratus rupiah.",
@@ -156,8 +153,8 @@ export const ADEGAN_KOMPOSISI_LUKAS: AdeganStory = {
 /* ------------------------------ 8. Ayo Berdiskusi: uang Komang (Buku Siswa hlm. 16) ------------------------------ */
 export const ADEGAN_DISKUSI_KOMANG: AdeganStory = {
   id: "diskusi-komang",
-  judul: "Ayo Berdiskusi: uang Komang",
-  sumber: "Buku Siswa hlm. 16 dan 17",
+  judul: "Diskusi: uang Komang",
+  sumber: "Materi: uang Komang",
   latar: "#F0FDFA",
   kutipan: [
     "Ayo Berdiskusi",
@@ -170,8 +167,8 @@ export const ADEGAN_DISKUSI_KOMANG: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Berdiskusi. Komang membeli peralatan sekolah senilai empat puluh lima ribu enam ratus rupiah.",
-      tambah(0, judul("Ayo Berdiskusi")),
+      "Sekarang kita berdiskusi. Komang membeli peralatan sekolah senilai empat puluh lima ribu enam ratus rupiah.",
+      tambah(0, judul("Diskusi: uang Komang")),
       tambah("Komang", emo("dk", 150, 84, "🎒", 36)),
       tambah("senilai", ...kartu("dh", 70, 104, 160, 44, W.krem, ["harga Rp45.600"], 12)),
     ),
@@ -189,7 +186,15 @@ export const ADEGAN_DISKUSI_KOMANG: AdeganStory = {
       tambah("tepat", ...kartu("dt", 56, 156, 188, 34, W.krem, ["bayar tepat Rp45.600"], 10)),
     ),
     k(
-      "Buku menyediakan tabel dengan empat baris, yaitu Cara satu sampai Cara empat. Jadi buku mengharapkan empat cara berbeda.",
+      "Perhatikan syaratnya. Komang tidak boleh memakai lebih dari uang yang ia punya, yaitu paling banyak lima lembar sepuluh ribuan, lima belas lembar seribuan, dan enam belas keping seratusan.",
+      bersih(0),
+      tambah(0, judul("Syarat uang Komang", W.merah)),
+      tambah("lima", ...kartu("sy1", 16, 40, 268, 34, W.lembarP, ["paling banyak 5 lembar 10.000"], 9.4)),
+      tambah("belas", ...kartu("sy2", 16, 82, 268, 34, W.lembarR, ["paling banyak 15 lembar 1.000"], 9.4)),
+      tambah("enam", ...kartu("sy3", 16, 124, 268, 34, W.keping, ["paling banyak 16 keping 100"], 9.4)),
+    ),
+    k(
+      "Kita tulis hasilnya dalam tabel dengan empat baris, yaitu Cara satu sampai Cara empat. Jadi kita mencari empat cara berbeda.",
       bersih(0),
       tambah(0, judul("Tabel Cara 1 sampai Cara 4")),
       tambah("Cara", ...kartu("c1", 30, 50, 100, 38, W.langit, ["Cara 1"], 10)),
@@ -199,11 +204,12 @@ export const ADEGAN_DISKUSI_KOMANG: AdeganStory = {
       tambah("berbeda", teks("c5", 150, 166, "4 cara berbeda", 11, W.ungu)),
     ),
     k(
-      "Buku tidak memberi kunci untuk keempat cara ini, dan Buku Panduan Guru juga tidak. Jadi kita temukan sendiri pada adegan berikutnya.",
+      "Sebelum kita mencarinya bersama, coba kamu pikirkan dulu. Mulailah dari pecahan yang nilainya terbesar, lalu lanjutkan ke yang lebih kecil.",
       bersih(0),
-      tambah(0, judul("Kunci tidak tersedia")),
-      tambah("kunci", ...kartu("kk", 30, 56, 240, 46, W.merahMuda, ["buku dan Panduan Guru", "tidak memberi kunci"], 10)),
-      tambah("temukan", emo("kf", 150, 140, "🔎", 34)),
+      tambah(0, judul("Coba pikirkan dulu", W.merah)),
+      tambah("pikirkan", emo("kf", 150, 70, "🤔", 34)),
+      tambah("Mulailah", ...kartu("kk", 30, 100, 240, 46, W.krem, ["mulai dari pecahan", "yang terbesar"], 10)),
+      tambah("lebih", ...kartu("kl2", 60, 154, 180, 34, W.hijauMuda, ["lalu yang lebih kecil"], 9.4)),
     ),
   ],
 };

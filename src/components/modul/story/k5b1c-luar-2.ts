@@ -11,7 +11,7 @@ const kiri = (id: string, y: number, isi: string) => teks(id, 14, y + 8, isi, 9,
 export const ADEGAN_LUAR_LAZIM: AdeganStory = {
   id: "luar-lazim",
   judul: "Metode luar 3: Standard Form Return",
-  sumber: "Metode luar: Standard Form Return; angka uang Komang, Buku Siswa hlm. 16 dan 17",
+  sumber: "Metode luar: Standard Form Return",
   latar: "#FEFCE8",
   ketukan: [
     k(
@@ -50,8 +50,8 @@ export const ADEGAN_LUAR_LAZIM: AdeganStory = {
 /* ------------------------------ 7. Standard Form Return: penerapan ------------------------------ */
 export const ADEGAN_LUAR_LAZIM_TERAPAN: AdeganStory = {
   id: "luar-lazim-terapan",
-  judul: "Standard Form Return pada Cara 2, uang Asep, dan tabel Lukas",
-  sumber: "Metode luar: Standard Form Return, penerapan; angka Buku Siswa hlm. 15 sampai 17",
+  judul: "Standard Form Return pada Cara 2, uang Asep, dan uang Lukas",
+  sumber: "Metode luar: Standard Form Return, penerapan",
   latar: "#FEFCE8",
   ketukan: [
     k(
@@ -74,13 +74,13 @@ export const ADEGAN_LUAR_LAZIM_TERAPAN: AdeganStory = {
       tambah("kembali", ...kartu("py", 60, 150, 180, 34, W.hijauMuda, ["sama dengan bilangan Asep"], 9.6)),
     ),
     k(
-      "Metode ini juga menemukan kesalahan tabel Lukas di buku. Tiga puluh ribu, tiga ribu, dan lima ratus menjadi tiga puluh tiga ribu lima ratus, bukan enam puluh tiga ribu lima ratus.",
+      "Terakhir periksa uang Lukas. Enam puluh ribu, tiga ribu, dan lima ratus kembali menjadi enam puluh tiga ribu lima ratus.",
       bersih(0),
-      tambah(0, judul("Periksa tabel Lukas", W.merah)),
-      tambah("Tiga", ...kartu("q1", 30, 40, 240, 34, W.merahMuda, ["tabel di buku: 3 di puluh ribuan"], 9.4)),
-      tambah("Tiga", rumus("q2", 100, "30.000 + 3.000 + 500", 12, W.coklat)),
-      tambah("menjadi", rumus("q3", 128, "33.500", 18, W.merah)),
-      tambah("enam", ...kartu("q4", 30, 146, 240, 34, W.hijauMuda, ["cerita Lukas: 63.500"], 10)),
+      tambah(0, judul("Periksa uang Lukas")),
+      tambah("Terakhir", ...kartu("q1", 30, 40, 240, 34, W.pink, ["Lukas: 6 lembar, 3 lembar, 5 keping"], 9.4)),
+      tambah("Enam", rumus("q2", 100, "60.000 + 3.000 + 500", 12, W.coklat)),
+      tambah("menjadi", rumus("q3", 128, "63.500", 18, W.hijau)),
+      tambah("kembali", ...kartu("q4", 30, 146, 240, 34, W.hijauMuda, ["sama dengan bilangan Lukas"], 10)),
     ),
   ],
 };
@@ -91,7 +91,7 @@ const labelBaris = (awal: string, p: number, r: number, s: number) => [kiri(`${a
 export const ADEGAN_LUAR_UANG: AdeganStory = {
   id: "luar-uang",
   judul: "Metode luar 4: Money Composition",
-  sumber: "Metode luar: Money Composition; uang Asep dan Lukas, Buku Siswa hlm. 15 dan 16",
+  sumber: "Metode luar: Money Composition",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -143,7 +143,7 @@ export const ADEGAN_LUAR_UANG: AdeganStory = {
 export const ADEGAN_LUAR_UANG_TERAPAN: AdeganStory = {
   id: "luar-uang-terapan",
   judul: "Money Composition pada uang Komang",
-  sumber: "Metode luar: Money Composition, penerapan; angka Buku Siswa hlm. 16 dan 17",
+  sumber: "Metode luar: Money Composition, penerapan",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -191,7 +191,7 @@ export const ADEGAN_LUAR_UANG_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan empat metode dari luar",
-  sumber: "Ringkasan metode luar; angka Buku Siswa hlm. 15 sampai 17",
+  sumber: "Ringkasan metode luar",
   latar: "#F5F3FF",
   ketukan: [
     k(
@@ -209,7 +209,7 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       "Uang Asep tiga puluh delapan ribu enam ratus, uang Lukas enam puluh tiga ribu lima ratus, dan Komang punya empat cara untuk empat puluh lima ribu enam ratus.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka yang dipakai")),
       tambah("Asep", ...kartu("s1", 16, 50, 84, 52, W.langit, ["Asep", "38.600"], 10)),
       tambah("Lukas", ...kartu("s2", 108, 50, 84, 52, W.pink, ["Lukas", "63.500"], 10)),
       tambah("Komang", ...kartu("s3", 200, 50, 84, 52, W.hijauMuda, ["Komang", "45.600"], 10)),
@@ -225,10 +225,10 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("susun", ...kartu("y4", 156, 92, 128, 40, W.pink, ["susun dari uang", "uang terbatas"], 9.4)),
     ),
     k(
-      "Catatan buku: tabel Lukas menulis tiga di kolom puluh ribuan, seharusnya enam. Metode periksa kembali tadi menunjukkan kesalahan itu.",
+      "Hati-hati, angka harus ditulis di kolom yang tepat. Metode periksa kembali tadi membantu kita menemukan angka yang salah tempat.",
       bersih(0),
-      tambah(0, judul("Catatan buku", W.merah)),
-      tambah("tabel", ...kartu("t1", 30, 50, 240, 44, W.merahMuda, ["tabel Lukas: 3 puluh ribuan", "seharusnya 6"], 10)),
+      tambah(0, judul("Hati-hati", W.merah)),
+      tambah("angka", ...kartu("t1", 30, 50, 240, 44, W.merahMuda, ["tulis angka di kolom", "yang tepat"], 10)),
       tambah("periksa", emo("t2", 150, 134, "🔍", 34)),
     ),
   ],

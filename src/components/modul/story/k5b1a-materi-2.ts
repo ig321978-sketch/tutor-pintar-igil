@@ -17,7 +17,7 @@ const hargaJus = (i: number, isi: string) => kartu(`hj${i}`, 14 + i * 92, 158, 8
 export const ADEGAN_JUS: AdeganStory = {
   id: "jus-nisa",
   judul: "Harga tiga jus Nisa dan nilai tempatnya",
-  sumber: "Buku Siswa hlm. 4; Panduan Guru hlm. 20–21",
+  sumber: "Materi: harga tiga jus dan nilai tempat",
   latar: "#F0FDF4",
   kutipan: [
     "Nisa ingin membeli jus rasa mangga, jeruk, dan alpukat dari",
@@ -36,7 +36,7 @@ export const ADEGAN_JUS: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Nisa ingin membeli jus mangga, jeruk, dan alpukat dari sebuah toko online. Buku bertanya, bagaimana menuliskan angka harga tiga jus itu sesuai nilai tempatnya?",
+      "Nisa ingin membeli jus mangga, jeruk, dan alpukat dari sebuah toko online. Bagaimana menuliskan angka harga tiga jus itu sesuai nilai tempatnya?",
       tambah(0, judul("Tiga jus dari toko online")),
       tambah("mangga,", emo("j1", 60, 90, "🥭", 40), teks("j1t", 60, 110, "mangga", 9, W.biru)),
       tambah("jeruk,", emo("j2", 150, 90, "🍊", 40), teks("j2t", 150, 110, "jeruk", 9, W.biru)),
@@ -83,14 +83,14 @@ export const TB_KOMANG = { x: 20, y: 40, cw: 52, o: { ch: 30, u: 16 } };
 const KOSONG5 = [["", "", "", "", ""]];
 const angkaKomang = (j: number, d: string) => angkaTabel("km", TB_KOMANG.x, TB_KOMANG.y, TB_KOMANG.cw, 0, j, d, TB_KOMANG.o);
 const SUARA_Y2 = "Cara menulisnya: empat belas ribu lima ratus ditulis dengan angka, seperti tampak di layar, dengan titik setelah angka empat.";
-const SUARA_Y3 = "Eksplorasi satu titik satu. Cara Komang memakai tabel nilai tempat: puluh ribuan, ribuan, ratusan, puluhan, dan satuan. Dari kiri, angkanya satu, empat, lima, nol, nol.";
+const SUARA_Y3 = "Mari kita coba bersama. Cara Komang memakai tabel nilai tempat: puluh ribuan, ribuan, ratusan, puluhan, dan satuan. Dari kiri, angkanya satu, empat, lima, nol, nol.";
 const SUARA_Y4 = "Cara Yohana: pada kalimat empat belas ribu lima ratus, kata empat belas menjadi angka empat belas, dan kata lima menjadi angka lima.";
 const SUARA_Y5 = "Langkahnya: tentukan angka puluh ribuan, yaitu satu. Ribuan, yaitu empat. Ratusan, yaitu lima. Puluhan, yaitu nol. Satuan, yaitu nol. Jadi bilangannya empat belas ribu lima ratus.";
 
 export const ADEGAN_YOHANA: AdeganStory = {
   id: "menulis-yohana",
-  judul: "Menulis bilangan: buku tulis Yohana, Cara Komang dan Cara Yohana",
-  sumber: "Buku Siswa hlm. 5–6",
+  judul: "Menulis bilangan: empat pensil Yohana, cara Komang dan cara Yohana",
+  sumber: "Materi: menulis bilangan cacah",
   latar: "#FFFBEB",
   kutipan: [
     "1. Menulis Bilangan Cacah Sampai 100.000",
@@ -113,10 +113,10 @@ export const ADEGAN_YOHANA: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Bagian pertama: menulis bilangan cacah sampai seratus ribu. Yohana siswa baru di kelas lima SD Pancasila. Ibu membelikan empat buku tulis dengan harga empat belas ribu lima ratus rupiah.",
+      "Bagian pertama: menulis bilangan cacah sampai seratus ribu. Yohana siswa baru di kelas lima SD Pancasila. Ibu membelikan empat pensil dengan harga empat belas ribu lima ratus rupiah.",
       tambah(0, judul("1. Menulis bilangan")),
       tambah("seratus", teks("ms", 150, 40, "sampai 100.000", 10, W.biru)),
-      tambah("buku", emo("bk", 150, 90, "📚", 44)),
+      tambah("pensil", emo("bk", 150, 90, "✏", 44)),
       tambah("harga", ...kartu("hb", 40, 112, 220, 34, W.krem, ["empat belas ribu lima ratus"], 11)),
       tambah("rupiah.", teks("hr", 150, 172, "Rp14.500", 22, W.merah)),
     ),
@@ -132,14 +132,14 @@ export const ADEGAN_YOHANA: AdeganStory = {
     k(
       SUARA_Y3,
       bersih(0),
-      tambah(0, judul("Eksplorasi 1.1: Cara Komang")),
+      tambah(0, judul("Cara Komang")),
       tambah("tabel", ...tabelTempat("km", TB_KOMANG.x, TB_KOMANG.y, TB_KOMANG.cw, KOSONG5, TB_KOMANG.o)),
       tambah(20, angkaKomang(0, "1")),
       tambah(21, angkaKomang(1, "4")),
       tambah(22, angkaKomang(2, "5")),
       tambah(23, angkaKomang(3, "0")),
       tambah(24, angkaKomang(4, "0")),
-      tambah("Dari", ...kartu("kh", 40, 108, 220, 28, W.krem, ["harga buku tulis"], 9.6)),
+      tambah("Dari", ...kartu("kh", 40, 108, 220, 28, W.krem, ["harga empat pensil"], 9.6)),
     ),
     k(
       SUARA_Y4,
@@ -176,7 +176,7 @@ const angkaObat = (j: number, d: string) => angkaTabel("ob", TB_KOMANG.x, TB_KOM
 export const ADEGAN_OBAT: AdeganStory = {
   id: "membaca-obat",
   judul: "Membaca bilangan: harga obat batuk",
-  sumber: "Buku Siswa hlm. 7",
+  sumber: "Materi: membaca bilangan cacah",
   latar: "#F0F9FF",
   kutipan: [
     "2. Membaca Bilangan Cacah Sampai 100.000",
@@ -202,16 +202,16 @@ export const ADEGAN_OBAT: AdeganStory = {
     k(
       "Di apotek, harga obat batuk tertulis pada label dengan angka seperti tampak di layar. Dapatkah kalian membantu Asep membaca harga obatnya?",
       bersih(0),
-      tambah(0, judul("Gambar 1.4: harga obat batuk")),
+      tambah(0, judul("Harga obat batuk")),
       tambah("Di", teks("hs", 150, 56, "HARGA SPESIAL", 10, W.merah)),
       tambah("label", ...kartu("hl", 50, 66, 200, 44, W.emas, ["Rp66.500,00/botol"], 14)),
       tambah("Dapatkah", ...kartu("hq", 30, 130, 240, 36, W.krem, ["bagaimana membaca harganya?"], 9.6)),
     ),
     k(
-      "Buku menjawab: cara membaca bilangan itu adalah enam puluh enam ribu lima ratus.",
+      "Cara membacanya begini: bilangan itu dibaca enam puluh enam ribu lima ratus.",
       bersih(0),
       tambah(0, judul("Cara membaca 66.500")),
-      tambah("Buku", teks("rb", 150, 74, "66.500", 34, W.merah)),
+      tambah("Cara", teks("rb", 150, 74, "66.500", 34, W.merah)),
       tambah("enam@1", teks("rb1", 150, 112, "enam puluh enam ribu", 12, W.biru)),
       tambah("lima", teks("rb2", 150, 132, "lima ratus", 12, W.biru)),
     ),
@@ -242,8 +242,8 @@ const kartuBaca = (id: string, y: number, angka: string, kata: string, warna: st
 
 export const ADEGAN_KAYU: AdeganStory = {
   id: "kayu-tanam",
-  judul: "Ayo Berpikir Kritis: penduduk Kecamatan Kayu Tanam",
-  sumber: "Buku Siswa hlm. 7; Panduan Guru hlm. 23–24",
+  judul: "Berpikir kritis: penduduk Kecamatan Kayu Tanam",
+  sumber: "Materi: penduduk Kayu Tanam",
   latar: "#F5F3FF",
   kutipan: [
     "Ayo Berpikir Kritis",
@@ -263,7 +263,7 @@ export const ADEGAN_KAYU: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo berpikir kritis. Kecamatan Kayu Tanam ada di Sumatra Barat. Pada tahun dua ribu delapan belas penduduknya berjumlah seperti tampak di layar, terdiri atas laki-laki dan perempuan.",
+      "Mari berpikir kritis. Kecamatan Kayu Tanam ada di Sumatra Barat. Pada tahun dua ribu delapan belas penduduknya berjumlah seperti tampak di layar, terdiri atas laki-laki dan perempuan.",
       tambah(0, judul("Kecamatan Kayu Tanam")),
       tambah("Sumatra", ...kartu("kt", 14, 28, 272, 26, W.krem, ["Sumatra Barat, tahun 2018"], 9.6)),
       tambah("berjumlah", ...kartu("ks", 14, 62, 272, 28, W.hijauMuda, ["seluruhnya: 26.932 jiwa"], 10)),
@@ -271,10 +271,10 @@ export const ADEGAN_KAYU: AdeganStory = {
       tambah("perempuan.", ...kartu("kp", 14, 134, 272, 40, W.pink, ["perempuan: tiga belas ribu lima ratus", "tujuh puluh delapan jiwa"], 9)),
     ),
     k(
-      "Soal satu: jumlah seluruh penduduk adalah dua puluh enam ribu sembilan ratus tiga puluh dua jiwa. Nilai tempatnya: dua, enam, sembilan, tiga, dan dua.",
+      "Pertanyaan pertama: jumlah seluruh penduduk adalah dua puluh enam ribu sembilan ratus tiga puluh dua jiwa. Nilai tempatnya: dua, enam, sembilan, tiga, dan dua.",
       bersih(0),
-      tambah(0, judul("Soal 1: jumlah seluruh")),
-      tambah("Soal", ...tabelTempat("ky", TB_KAYU.x, TB_KAYU.y, TB_KAYU.cw, KOSONG5_3, TB_KAYU.o)),
+      tambah(0, judul("Nilai tempat jumlah penduduk")),
+      tambah("Pertanyaan", ...tabelTempat("ky", TB_KAYU.x, TB_KAYU.y, TB_KAYU.cw, KOSONG5_3, TB_KAYU.o)),
       tambah(18, angkaKayu(0, 0, "2")),
       tambah(19, angkaKayu(0, 1, "6")),
       tambah(20, angkaKayu(0, 2, "9")),
@@ -283,7 +283,7 @@ export const ADEGAN_KAYU: AdeganStory = {
       tambah(15, ...chipKayu("r0", "seluruh penduduk: 26.932 jiwa", W.hijauMuda)),
     ),
     k(
-      "Soal dua: penduduk perempuan tiga belas ribu lima ratus tujuh puluh delapan jiwa. Angkanya satu, tiga, lima, tujuh, dan delapan.",
+      "Pertanyaan kedua: penduduk perempuan tiga belas ribu lima ratus tujuh puluh delapan jiwa. Angkanya satu, tiga, lima, tujuh, dan delapan.",
       hapus(0, "r0-k", "r0-t0"),
       tambah("perempuan", ...chipKayu("r1", "perempuan: 13.578 jiwa", W.pink)),
       tambah(14, angkaKayu(1, 0, "1")),
@@ -293,7 +293,7 @@ export const ADEGAN_KAYU: AdeganStory = {
       tambah(19, angkaKayu(1, 4, "8")),
     ),
     k(
-      "Soal tiga: penduduk laki-laki tiga belas ribu tiga ratus lima puluh empat jiwa. Angkanya satu, tiga, tiga, lima, dan empat.",
+      "Pertanyaan ketiga: penduduk laki-laki tiga belas ribu tiga ratus lima puluh empat jiwa. Angkanya satu, tiga, tiga, lima, dan empat.",
       hapus(0, "r1-k", "r1-t0"),
       tambah("laki-laki", ...chipKayu("r2", "laki-laki: 13.354 jiwa", W.langit)),
       tambah(14, angkaKayu(2, 0, "1")),
@@ -303,13 +303,13 @@ export const ADEGAN_KAYU: AdeganStory = {
       tambah(19, angkaKayu(2, 4, "4")),
     ),
     k(
-      "Soal empat meminta cara membaca ketiganya, seperti tampak di layar. Catatan guru: jika laki-laki dan perempuan dijumlahkan, hasilnya dua puluh enam ribu sembilan ratus tiga puluh dua, cocok dengan jumlah seluruh penduduk.",
+      "Pertanyaan keempat meminta cara membaca ketiganya, seperti tampak di layar. Coba periksa: jika laki-laki dan perempuan dijumlahkan, hasilnya dua puluh enam ribu sembilan ratus tiga puluh dua, cocok dengan jumlah seluruh penduduk.",
       bersih(0),
-      tambah(0, judul("Soal 4: cara membaca")),
-      tambah("Soal", ...kartuBaca("b0", 30, "26.932", "dua puluh enam ribu sembilan ratus tiga puluh dua", W.hijauMuda)),
+      tambah(0, judul("Cara membaca ketiganya")),
+      tambah("Pertanyaan", ...kartuBaca("b0", 30, "26.932", "dua puluh enam ribu sembilan ratus tiga puluh dua", W.hijauMuda)),
       tambah("ketiganya,", ...kartuBaca("b1", 72, "13.578", "tiga belas ribu lima ratus tujuh puluh delapan", W.pink)),
       tambah("tampak", ...kartuBaca("b2", 114, "13.354", "tiga belas ribu tiga ratus lima puluh empat", W.langit)),
-      tambah("Catatan", teks("bq", 150, 172, "13.354 + 13.578 = 26.932", 12, W.merah)),
+      tambah("Coba", teks("bq", 150, 172, "13.354 + 13.578 = 26.932", 12, W.merah)),
     ),
   ],
 };

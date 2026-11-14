@@ -67,8 +67,8 @@ const pasang = (id: string, kiri: string, tanda: string, kanan: string, y: numbe
 
 export const ADEGAN_BERLATIH: AdeganStory = {
   id: "berlatih-1-2",
-  judul: "Ayo Berlatih nomor 1 dan 2",
-  sumber: "Buku Siswa hlm. 14–15; Panduan Guru hlm. 28",
+  judul: "Latihan 1 dan 2",
+  sumber: "Materi: membandingkan bilangan",
   latar: "#F0FDF4",
   kutipan: [
     "Ayo Berlatih",
@@ -89,8 +89,8 @@ export const ADEGAN_BERLATIH: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Berlatih nomor satu: temukan bilangan yang nilainya lebih kecil. Bagian a, lima puluh enam ribu empat ratus tujuh puluh lima dan empat puluh tiga ribu dua ratus tujuh belas.",
-      tambah(0, judul("Nomor 1: mana yang lebih kecil?")),
+      "Latihan satu: temukan bilangan yang nilainya lebih kecil. Bagian a, lima puluh enam ribu empat ratus tujuh puluh lima dan empat puluh tiga ribu dua ratus tujuh belas.",
+      tambah(0, judul("Latihan 1: mana yang lebih kecil?")),
       tambah("Bagian", ...kartu("n1", 24, 56, 100, 40, W.langit, ["56.475"], 14), ...kartu("n2", 176, 56, 100, 40, W.krem, ["43.217"], 14)),
       tambah("dan", teks("nq", 150, 84, "?", 24, W.merah)),
     ),
@@ -104,7 +104,7 @@ export const ADEGAN_BERLATIH: AdeganStory = {
     k(
       "Bagian b, tujuh puluh delapan ribu delapan ratus sembilan puluh tujuh dan delapan puluh tujuh ribu delapan ratus sembilan puluh tujuh. Tujuh lebih kecil dari delapan, jadi yang lebih kecil bilangan pertama.",
       bersih(0),
-      tambah(0, judul("Nomor 1 bagian b")),
+      tambah(0, judul("Latihan 1 bagian b")),
       tambah("Bagian", ...kartu("m1", 24, 56, 100, 40, W.langit, ["78.897"], 14), ...kartu("m2", 176, 56, 100, 40, W.krem, ["87.897"], 14)),
       tambah("Tujuh@5", teks("m3", 150, 130, "puluh ribuan: 7 dan 8", 11, W.biru)),
       tambah("pertama.", teks("m4", 150, 160, "lebih kecil: 78.897", 12, W.hijau)),
@@ -112,15 +112,15 @@ export const ADEGAN_BERLATIH: AdeganStory = {
     k(
       "Bagian c, sembilan puluh tujuh ribu tujuh ratus enam puluh delapan dan delapan puluh sembilan ribu delapan ratus tujuh puluh enam. Delapan lebih kecil dari sembilan, jadi yang lebih kecil bilangan kedua.",
       bersih(0),
-      tambah(0, judul("Nomor 1 bagian c")),
+      tambah(0, judul("Latihan 1 bagian c")),
       tambah("Bagian", ...kartu("o1", 24, 56, 100, 40, W.langit, ["97.768"], 14), ...kartu("o2", 176, 56, 100, 40, W.krem, ["89.876"], 14)),
       tambah("Delapan@4", teks("o3", 150, 130, "puluh ribuan: 9 dan 8", 11, W.biru)),
       tambah("kedua.", teks("o4", 150, 160, "lebih kecil: 89.876", 12, W.hijau)),
     ),
     k(
-      "Nomor dua. Pasangan pertama: tujuh puluh enam ribu enam ratus tujuh puluh lima dan enam puluh tujuh ribu tujuh ratus enam puluh lima. Tujuh lebih besar dari enam, jadi tandanya lebih dari.",
+      "Latihan dua. Pasangan pertama: tujuh puluh enam ribu enam ratus tujuh puluh lima dan enam puluh tujuh ribu tujuh ratus enam puluh lima. Tujuh lebih besar dari enam, jadi tandanya lebih dari.",
       bersih(0),
-      tambah(0, judul("Nomor 2: isi dengan tanda")),
+      tambah(0, judul("Latihan 2: isi dengan tanda")),
       tambah("Pasangan", ...pasang("p1", "76.675", "?", "67.765", 40)),
       ubah("jadi", { id: "p1s", isi: ">", warna: W.hijau }),
     ),
@@ -135,10 +135,10 @@ export const ADEGAN_BERLATIH: AdeganStory = {
       ubah("jadi", { id: "p3s", isi: "<", warna: W.hijau }),
     ),
     k(
-      "Pasangan keempat sama persis, tiga belas ribu dua ratus tiga puluh empat, jadi tandanya sama dengan. Keempat tanda ini cocok dengan kunci di panduan guru.",
+      "Pasangan keempat sama persis, tiga belas ribu dua ratus tiga puluh empat, jadi tandanya sama dengan. Keempat tanda ini sudah tepat.",
       tambah("Pasangan", ...pasang("p4", "13.234", "?", "13.234", 160)),
       ubah("jadi", { id: "p4s", isi: "=", warna: W.hijau }),
-      tambah("cocok", teks("p5", 150, 199, "cocok dengan kunci", 7.6, W.coklat)),
+      tambah("tepat.", teks("p5", 150, 199, "keempat tanda sudah tepat", 7.6, W.coklat)),
     ),
   ],
 };
@@ -153,21 +153,21 @@ const barisKotak = (id: string, y: number, isi: (string | null)[]): Obj[] =>
 
 export const ADEGAN_BARISAN: AdeganStory = {
   id: "berlatih-3",
-  judul: "Ayo Berlatih nomor 3: barisan bilangan",
-  sumber: "Buku Siswa hlm. 15; Panduan Guru hlm. 28",
+  judul: "Latihan 3: barisan bilangan",
+  sumber: "Materi: barisan bilangan",
   latar: "#EFF6FF",
   kutipan: ["Isilah dengan bilangan-bilangan yang sesuai.", "15.500 16.500", "19.500", "50.000 70.000", "85.350", "85.450", "85.550"],
   ketukan: [
     k(
-      "Nomor tiga: isilah kotak dengan bilangan-bilangan yang sesuai. Ada tiga barisan, bagian a, b, dan c.",
-      tambah(0, judul("Nomor 3: isi kotak yang kosong")),
-      tambah("Nomor", emo("bq", 150, 90, "🔢", 44)),
+      "Latihan tiga: isilah kotak dengan bilangan-bilangan yang sesuai. Ada tiga barisan, bagian a, b, dan c.",
+      tambah(0, judul("Latihan 3: isi kotak yang kosong")),
+      tambah("Latihan", emo("bq", 150, 90, "🔢", 44)),
       tambah("barisan,", teks("bq2", 150, 140, "tiga barisan: a, b, c", 11, W.coklat)),
     ),
     k(
       "Bagian a: lima belas ribu lima ratus, enam belas ribu lima ratus, dua kotak kosong, lalu sembilan belas ribu lima ratus.",
       bersih(0),
-      tambah(0, judul("Nomor 3 bagian a")),
+      tambah(0, judul("Latihan 3 bagian a")),
       tambah("Bagian", teks("la", 150, 44, "a.", 10, W.coklat), ...barisKotak("a", 50, ["15.500", "16.500", null, null, "19.500"])),
     ),
     k(
@@ -180,7 +180,7 @@ export const ADEGAN_BARISAN: AdeganStory = {
       ubah("sembilan", { id: "bt3", isi: "90.000", warna: W.hijau }),
     ),
     k(
-      "Bagian c naik lima puluh setiap langkah, mulai delapan puluh lima ribu tiga ratus lima puluh. Kotak yang kosong berisi delapan puluh lima ribu empat ratus dan delapan puluh lima ribu lima ratus. Semua cocok dengan kunci.",
+      "Bagian c naik lima puluh setiap langkah, mulai delapan puluh lima ribu tiga ratus lima puluh. Kotak yang kosong berisi delapan puluh lima ribu empat ratus dan delapan puluh lima ribu lima ratus. Semua sudah sesuai pola.",
       hapus(0, "bn"),
       tambah("Bagian", teks("lc", 150, 152, "c.", 10, W.coklat), ...barisKotak("c", 158, ["85.350", null, "85.450", null, "85.550"])),
       ubah("Kotak", { id: "ct1", isi: "85.400", warna: W.hijau }, { id: "ct3", isi: "85.500", warna: W.hijau }),
@@ -191,8 +191,8 @@ export const ADEGAN_BARISAN: AdeganStory = {
 /* ------------------------------ 12. Miskonsepsi, diferensiasi, dan Refleksi 4 dan 5 (Panduan Guru hlm. 28 dan 29; Buku Siswa hlm. 26) ------------------------------ */
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup-b",
-  judul: "Miskonsepsi, diferensiasi, dan Refleksi",
-  sumber: "Panduan Guru hlm. 28–29; Buku Siswa hlm. 26",
+  judul: "Hati-hati, tantangan, dan renungan",
+  sumber: "Materi: kesalahan umum dan renungan",
   latar: "#FFF7ED",
   kutipan: [
     "Kesalahan peserta didik yang mungkin terjadi adalah menganggap nilai",
@@ -207,8 +207,8 @@ export const ADEGAN_PENUTUP: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Miskonsepsi. Kesalahan yang mungkin terjadi: menganggap nilai terbesar dari angka belakang adalah bilangan yang lebih besar. Contohnya lima puluh enam ribu empat ratus tujuh puluh lima dan empat puluh tiga ribu dua ratus tujuh belas.",
-      tambah(0, judul("Miskonsepsi")),
+      "Hati-hati, kesalahan yang sering terjadi: menganggap nilai terbesar dari angka belakang adalah bilangan yang lebih besar. Contohnya lima puluh enam ribu empat ratus tujuh puluh lima dan empat puluh tiga ribu dua ratus tujuh belas.",
+      tambah(0, judul("Hati-hati")),
       tambah("Contohnya", ...kartu("x1", 24, 52, 100, 40, W.langit, ["56.475"], 14), ...kartu("x2", 176, 52, 100, 40, W.krem, ["43.217"], 14)),
       tambah("belakang", teks("x3", 150, 128, "satuan 7 lebih besar dari 5, jadi", 10, W.coklat), teks("x4", 150, 148, "43.217 lebih besar?", 12, W.merah)),
       tambah("belas", emo("x5", 150, 188, "❌", 22)),
@@ -222,25 +222,24 @@ export const ADEGAN_PENUTUP: AdeganStory = {
       tambah("Mulailah", emo("x8", 150, 188, "✅", 22)),
     ),
     k(
-      "Diferensiasi. Peserta didik yang cepat belajar mengerjakan latihan tanpa bantuan, atau menjelajahi berbagai angka yang sering mereka temui. Guru mendampingi yang mengalami kesulitan.",
+      "Tantangan. Kalau kamu cepat memahami, kerjakan latihan tanpa bantuan, atau jelajahi berbagai angka yang sering kamu temui. Kalau masih sulit, guru mendampingimu.",
       bersih(0),
-      tambah(0, judul("Diferensiasi")),
-      tambah("cepat", ...kartu("d1", 24, 44, 252, 44, W.hijauMuda, ["cepat belajar: latihan tanpa bantuan,", "menjelajahi angka sehari-hari"], 9.4)),
-      tambah("mendampingi", ...kartu("d2", 24, 108, 252, 44, W.krem, ["guru mendampingi yang", "mengalami kesulitan"], 9.4)),
+      tambah(0, judul("Tantangan")),
+      tambah("cepat", ...kartu("d1", 24, 44, 252, 44, W.hijauMuda, ["cepat paham: latihan tanpa bantuan,", "jelajahi angka sehari-hari"], 9.4)),
+      tambah("mendampingimu.", ...kartu("d2", 24, 108, 252, 44, W.krem, ["masih sulit: guru", "mendampingimu"], 9.4)),
     ),
     k(
-      "Refleksi, nomor empat dan lima. Aku dapat membandingkan dua bilangan cacah sampai seratus ribu, dan aku dapat mengurutkan beberapa bilangan cacah sampai seratus ribu. Peserta didik mencentang ya atau tidak.",
+      "Renungkan sendiri. Apakah aku dapat membandingkan dua bilangan cacah sampai seratus ribu? Apakah aku dapat mengurutkan beberapa bilangan cacah sampai seratus ribu?",
       bersih(0),
-      tambah(0, judul("Refleksi nomor 4 dan 5")),
-      tambah("membandingkan", ...kartu("f1", 14, 40, 200, 44, W.langit, ["4. Aku dapat membandingkan dua", "bilangan cacah sampai 100.000."], 8.4)),
-      tambah("mengurutkan", ...kartu("f2", 14, 100, 200, 44, W.hijauMuda, ["5. Aku dapat mengurutkan beberapa", "bilangan cacah sampai 100.000."], 8.4)),
-      tambah("mencentang", teks("f3", 252, 66, "Ya / Tidak", 9.4, W.coklat), teks("f4", 252, 126, "Ya / Tidak", 9.4, W.coklat)),
+      tambah(0, judul("Renungkan")),
+      tambah("membandingkan", ...kartu("f1", 14, 40, 200, 44, W.langit, ["Aku dapat membandingkan dua", "bilangan cacah sampai 100.000?"], 8.4)),
+      tambah("mengurutkan", ...kartu("f2", 14, 100, 200, 44, W.hijauMuda, ["Aku dapat mengurutkan beberapa", "bilangan cacah sampai 100.000?"], 8.4)),
     ),
     k(
-      "Guru menutup pembelajaran dengan pertanyaan refleksi tentang kemampuan membandingkan dan mengurutkan bilangan sampai seratus ribu. Dengan bekal ini, harga dan angka apa pun yang kurang dari seratus ribu siap kita bandingkan.",
+      "Kita tutup dengan pertanyaan renungan tentang kemampuan membandingkan dan mengurutkan bilangan sampai seratus ribu. Dengan bekal ini, harga dan angka apa pun yang kurang dari seratus ribu siap kita bandingkan.",
       bersih(0),
       tambah(0, judul("Siap membandingkan")),
-      tambah("Guru", emo("z1", 150, 80, "⚖", 44)),
+      tambah("Kita", emo("z1", 150, 80, "⚖", 44)),
       tambah("harga", teks("z2", 150, 130, "bandingkan dari tempat paling kiri", 11, W.ungu)),
       tambah("angka", teks("z3", 150, 160, "lalu urutkan dari kecil ke besar", 11, W.hijau)),
     ),

@@ -149,8 +149,8 @@ export const ADEGAN_PETA: AdeganStory = {
 /* ------------------------------ 3. Ayo Menyimak: Pasar Sukawati dan Covid (Buku Siswa hlm. 2 sampai 5; Panduan Guru hlm. 21) ------------------------------ */
 export const ADEGAN_MENYIMAK: AdeganStory = {
   id: "ayo-menyimak",
-  judul: "Ayo Menyimak: Pasar Sukawati dan bilangan lima angka",
-  sumber: "Buku Siswa hlm. 2–5; Panduan Guru hlm. 21",
+  judul: "Menyimak: Pasar Sukawati dan bilangan lima angka",
+  sumber: "Materi: Pasar Sukawati dan bilangan besar",
   latar: "#FFF1F2",
   kutipan: [
     "Gambar 1.1 Beberapa Barang Dagangan di Pasar Sukawati",
@@ -167,15 +167,15 @@ export const ADEGAN_MENYIMAK: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo menyimak. Gambar pertama menunjukkan barang dagangan di Pasar Sukawati, Bali: pakaian, lukisan, dan berbagai oleh-oleh lain.",
+      "Mari menyimak. Perhatikan gambar pertama: barang dagangan di Pasar Sukawati, Bali, yaitu pakaian, lukisan, dan berbagai oleh-oleh lain.",
       tambah(0, judul("Pasar Sukawati, Bali")),
       tambah("pakaian,", emo("e1", 60, 92, "👗", 36), teks("t1", 60, 112, "pakaian", 9, W.biru)),
       tambah("lukisan,", emo("e2", 150, 92, "🎨", 36), teks("t2", 150, 112, "lukisan", 9, W.biru)),
       tambah("oleh-oleh", emo("e3", 240, 92, "🎁", 36), teks("t3", 240, 112, "oleh-oleh", 9, W.biru)),
-      tambah("Bali:", ...kartu("pb", 50, 140, 200, 30, W.krem, ["Gambar 1.1: Pasar Sukawati"], 9.6)),
+      tambah("Bali:", ...kartu("pb", 50, 140, 200, 30, W.krem, ["Pasar Sukawati, Bali"], 9.6)),
     ),
     k(
-      "Di sana kita bisa membeli barang baru sampai barang bekas, dan makanan khas Bali. Buku bertanya, pernahkah kalian berwisata di Bali, atau di tempat wisata lain?",
+      "Di sana kita bisa membeli barang baru sampai barang bekas, dan makanan khas Bali. Pernahkah kalian berwisata di Bali, atau di tempat wisata lain?",
       bersih(0),
       tambah(0, judul("Pernah berwisata?")),
       tambah("baru", ...kartu("w1", 14, 34, 272, 30, W.hijauMuda, ["barang baru sampai barang bekas"], 9.6)),
@@ -184,7 +184,7 @@ export const ADEGAN_MENYIMAK: AdeganStory = {
       tambah("tempat", emo("wn", 210, 160, "🗺", 40)),
     ),
     k(
-      "Saat berwisata, kita sering membeli oleh-oleh. Buku bertanya, apakah kalian membandingkan harga dulu, dan dapatkah menentukan mana yang lebih murah? Pertanyaan itu menunggu giliran di subbab berikutnya.",
+      "Saat berwisata, kita sering membeli oleh-oleh. Coba pikirkan, apakah kalian membandingkan harga dulu, dan dapatkah menentukan mana yang lebih murah? Pertanyaan itu menunggu giliran di pelajaran berikutnya.",
       bersih(0),
       tambah(0, judul("Pertanyaan untuk nanti")),
       tambah("oleh-oleh.", emo("ol", 150, 80, "🛍", 44)),
@@ -192,17 +192,17 @@ export const ADEGAN_MENYIMAK: AdeganStory = {
       tambah("lebih", ...kartu("pr", 30, 140, 240, 30, W.pink, ["mana yang lebih murah?"], 9.6)),
     ),
     k(
-      "Berikutnya Gambar kedua tentang orang yang terpapar Covid tanggal empat belas Agustus dua ribu dua puluh. Buku bertanya, di mana letak bilangan dengan lima angka, dan bisakah kalian membacanya?",
+      "Berikutnya gambar kedua, tentang orang yang terpapar Covid pada tanggal empat belas Agustus dua ribu dua puluh. Di manakah letak bilangan dengan lima angka, dan bisakah kalian membacanya?",
       bersih(0),
-      tambah(0, judul("Gambar 1.2: Covid-19")),
+      tambah(0, judul("Kabar tentang Covid-19")),
       tambah("Covid", emo("cv", 150, 80, "😷", 44)),
       tambah("tanggal", ...kartu("cd", 60, 98, 180, 28, W.merahMuda, ["14 Agustus 2020"], 10)),
       tambah("lima", ...kartu("cl", 30, 138, 240, 30, W.emas, ["di mana bilangan lima angka?"], 9.6)),
     ),
     k(
-      "Panduan guru menyarankan, berdiskusilah dengan teman sebangku untuk mengenali gambar itu, lalu bersama-sama mencari bilangan yang terdiri atas empat angka, lima angka, dan enam angka.",
+      "Sekarang berdiskusilah dengan teman sebangku untuk mengenali gambar itu, lalu bersama-sama carilah bilangan yang terdiri atas empat angka, lima angka, dan enam angka.",
       bersih(0),
-      tambah(0, judul("Saran panduan guru")),
+      tambah(0, judul("Berdiskusi dengan teman")),
       tambah("teman", emo("tm", 150, 70, "👫", 40)),
       tambah("empat", ...kartu("a4", 14, 100, 86, 34, W.hijauMuda, ["4 angka"], 10)),
       tambah("lima", ...kartu("a5", 107, 100, 86, 34, W.langit, ["5 angka"], 10)),

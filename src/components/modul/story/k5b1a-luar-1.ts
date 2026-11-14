@@ -6,15 +6,15 @@ import { bersih, idx, k, sorotkan, tambah } from "./k5b1a-bantu";
 const NAMA_METODE = ["Place-Value Chart", "Extended Dienes", "Number Reading", "Period Grouping"];
 const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
 const IKON_METODE = ["📊", "🧱", "🗣", "🔢"];
-const SUARA_O1 = "Bagaimana kita membaca dan menulis bilangan besar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana kita membaca dan menulis bilangan besar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari cerita sehari-hari.";
 const SUARA_O2 = "Empat metode itu: Place-Value Chart, Extended Dienes, Number Reading, dan Period Grouping.";
 const SUARA_O3 = "Semuanya menjawab pertanyaan yang sama, yaitu bagaimana mengenali bilangan lima angka. Caranya berbeda: memakai tabel, balok, kata, atau titik pemisah.";
-const SUARA_O4 = "Angkanya dari buku: empat belas ribu lima ratus, enam puluh enam ribu lima ratus, dan dua puluh enam ribu sembilan ratus tiga puluh dua.";
+const SUARA_O4 = "Angkanya dari tiga cerita tadi: empat belas ribu lima ratus, enam puluh enam ribu lima ratus, dan dua puluh enam ribu sembilan ratus tiga puluh dua.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk membaca dan menulis bilangan besar",
-  sumber: "Metode luar: pembuka; angka Buku Siswa hlm. 5–8",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -22,7 +22,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah(0, judul("Empat metode dari luar")),
       tambah("bilangan", ...kartu("pb", 40, 40, 100, 44, W.krem, ["14.500"], 14)),
       tambah("berbagai", emo("gl", 215, 78, "🌍", 46)),
-      tambah("angka", teks("pa", 150, 136, "bilangan lima angka dari buku", 9.4, W.biru), teks("pc", 150, 154, "sampai 100.000", 9.4, W.biru)),
+      tambah("angka", teks("pa", 150, 136, "bilangan lima angka", 9.4, W.biru), teks("pc", 150, 154, "sampai 100.000", 9.4, W.biru)),
     ),
     k(
       SUARA_O2,
@@ -42,8 +42,8 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
     k(
       SUARA_O4,
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
-      tambah("belas", ...kartu("a1", 14, 34, 272, 32, W.hijauMuda, ["14.500: harga buku tulis Yohana"], 9.6)),
+      tambah(0, judul("Angka dari cerita tadi")),
+      tambah("belas", ...kartu("a1", 14, 34, 272, 32, W.hijauMuda, ["14.500: harga pensil Yohana"], 9.6)),
       tambah("enam@2", ...kartu("a2", 14, 76, 272, 32, W.langit, ["66.500: harga obat batuk"], 9.6)),
       tambah("dua@2", ...kartu("a3", 14, 118, 272, 32, W.krem, ["26.932: penduduk Kayu Tanam"], 9.6)),
     ),
@@ -111,7 +111,7 @@ const SUARA_PT4 = "Cek dengan membaca ulang dari kiri ke kanan: dua puluh enam r
 export const ADEGAN_LUAR_PV_TERAPAN: AdeganStory = {
   id: "luar-pv-terapan",
   judul: "Place-Value Chart pada 26.932 dan 14.500",
-  sumber: "Metode luar: Place-Value Chart; angka Buku Siswa hlm. 6–7",
+  sumber: "Metode luar: Place-Value Chart",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -229,7 +229,7 @@ const SUARA_ET3 = "Sekarang tiga belas ribu lima ratus tujuh puluh delapan, pend
 export const ADEGAN_LUAR_DIENES_TERAPAN: AdeganStory = {
   id: "luar-dienes-terapan",
   judul: "Extended Dienes pada 14.500 dan 13.578",
-  sumber: "Metode luar: Extended Dienes; angka Buku Siswa hlm. 6–7",
+  sumber: "Metode luar: Extended Dienes",
   latar: "#EFF6FF",
   ketukan: [
     k(

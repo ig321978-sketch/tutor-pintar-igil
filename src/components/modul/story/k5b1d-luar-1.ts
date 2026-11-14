@@ -6,11 +6,11 @@ import { bersih, k, tambah, ubah } from "./k5b1d-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk operasi hitung bilangan besar",
-  sumber: "Metode luar: pembuka; angka Buku Siswa hlm. 17–28",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana kita menghitung penjumlahan, pengurangan, perkalian, dan pembagian bilangan besar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka buku.",
+      "Bagaimana kita menghitung penjumlahan, pengurangan, perkalian, dan pembagian bilangan besar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka-angka dari pelajaran kita.",
       tambah(0, judul("Empat metode dari luar")),
       tambah("berbagai", emo("gl", 150, 100, "🌍", 56)),
       tambah("empat", ...kartu("pa", 40, 140, 220, 34, W.krem, ["operasi bilangan sampai 100.000"], 9.6)),
@@ -34,9 +34,9 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("kebalikan.", emo("i4", 255, 80, "✅", 34), teks("i4t", 255, 112, "periksa", 8.6, W.biru)),
     ),
     k(
-      "Angka-angkanya dari buku: uang bakti sosial Nisa, sisa uang Lukas, angpau Yohana, dan hitungan Uji Kompetensi. Semua berasal dari Eksplorasi satu titik empat sampai Uji Kompetensi.",
+      "Angka-angkanya dari pelajaran tadi: uang bakti sosial Nisa, sisa uang Lukas, angpau Yohana, dan hitungan Uji. Semua sudah kita kerjakan bersama.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka dari pelajaran tadi")),
       tambah("bakti", ...kartu("a1", 20, 34, 260, 30, W.hijauMuda, ["57.500 + 22.000"], 10.4)),
       tambah("Lukas,", ...kartu("a2", 20, 72, 260, 30, W.merahMuda, ["47.900 − 45.750"], 10.4)),
       tambah("angpau", ...kartu("a3", 20, 110, 260, 30, W.krem, ["12 × 5.000 dan 64.000 ÷ 4"], 10.4)),
@@ -50,7 +50,7 @@ const LA = susun("la", 150, 64, "+", 57500, 22000);
 export const ADEGAN_LUAR_SA: AdeganStory = {
   id: "luar-sa",
   judul: "Metode 1: Standard Algorithm (algoritma bersusun)",
-  sumber: "Metode luar: Standard Algorithm; angka Buku Siswa hlm. 17–18",
+  sumber: "Metode luar: Standard Algorithm",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -91,8 +91,8 @@ const SA2 = susun("sb", 108, 62, "+", 76598, 12456);
 const LANGKAH_SA = ["0 + 0 = 0", "0 + 0 = 0", "5 + 0 = 5", "7 + 2 = 9", "5 + 2 = 7"];
 export const ADEGAN_LUAR_SA_TERAPAN: AdeganStory = {
   id: "luar-sa-terapan",
-  judul: "Standard Algorithm pada uang bakti sosial dan Uji Kompetensi 4a",
-  sumber: "Metode luar: Standard Algorithm; angka Buku Siswa hlm. 17–18 dan hlm. 26",
+  judul: "Standard Algorithm pada uang bakti sosial dan Uji 4a",
+  sumber: "Metode luar: Standard Algorithm",
   latar: "#ECFDF5",
   ketukan: [
     k(
@@ -114,14 +114,14 @@ export const ADEGAN_LUAR_SA_TERAPAN: AdeganStory = {
       ubah("ribuan@2", { id: "st", isi: LANGKAH_SA[4] }),
     ),
     k(
-      "Hasilnya tujuh puluh sembilan ribu lima ratus rupiah, sama dengan hasil cara Yohana dan cara Lukas di buku.",
+      "Hasilnya tujuh puluh sembilan ribu lima ratus rupiah, sama dengan hasil cara Yohana dan cara Lukas tadi.",
       ubah("Hasilnya", { id: "kal", isi: "57.500 + 22.000 = 79.500", warna: W.hijau, u: 6.6 }),
       tambah("sama", ...kartu("cy", 160, 140, 130, 26, W.merahMuda, ["cara Yohana: 79.500"], 8.4), ...kartu("cl", 160, 172, 130, 26, W.hijauMuda, ["cara Lukas: 79.500"], 8.4)),
     ),
     k(
-      "Contoh kedua, Uji Kompetensi empat a: tujuh puluh enam ribu lima ratus sembilan puluh delapan ditambah dua belas ribu empat ratus lima puluh enam sama dengan delapan puluh sembilan ribu lima puluh empat. Angka merah kecil adalah simpanan.",
+      "Contoh kedua, Uji empat a: tujuh puluh enam ribu lima ratus sembilan puluh delapan ditambah dua belas ribu empat ratus lima puluh enam sama dengan delapan puluh sembilan ribu lima puluh empat. Angka merah kecil adalah simpanan.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 4a")),
+      tambah(0, judul("Uji 4a")),
       tambah(0, ...SA2.atas, ...SA2.bawah, ...SA2.alat),
       tambah("sama", ...kolomSusun(SA2, 0, 4)),
       tambah("delapan@2", kalimat("kb", 232, 100, 76598, "+", 12456, 89054, 6, W.hijau)),
@@ -133,7 +133,7 @@ export const ADEGAN_LUAR_SA_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RG: AdeganStory = {
   id: "luar-rg",
   judul: "Metode 2: Regrouping (menyimpan dan meminjam)",
-  sumber: "Metode luar: Regrouping; angka Buku Siswa hlm. 17–19",
+  sumber: "Metode luar: Regrouping",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -175,8 +175,8 @@ const RA = susun("ra", 108, 62, "+", 76598, 12456);
 const RB = susun("rb", 108, 62, "−", 70000, 53000);
 export const ADEGAN_LUAR_RG_TERAPAN: AdeganStory = {
   id: "luar-rg-terapan",
-  judul: "Regrouping pada Uji Kompetensi 4a dan uang Zafran dan Ula",
-  sumber: "Metode luar: Regrouping; angka Buku Siswa hlm. 26–28",
+  judul: "Regrouping pada Uji 4a dan uang Zafran dan Ula",
+  sumber: "Metode luar: Regrouping",
   latar: "#F0F9FF",
   ketukan: [
     k(

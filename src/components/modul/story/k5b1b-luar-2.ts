@@ -56,12 +56,12 @@ const xe = (n: number) => posisiBil(X0, PJ, 80000, 90000, n);
 
 export const ADEGAN_LUAR_ACUAN_TERAPAN: AdeganStory = {
   id: "luar-acuan-terapan",
-  judul: "Bilangan acuan: pasangan di Ayo Berlatih nomor 2",
-  sumber: "Metode luar: Benchmark Numbers; Buku Siswa hlm. 15",
+  judul: "Bilangan acuan: pasangan di Latihan 2",
+  sumber: "Metode luar: Benchmark Numbers",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      "Pasangan pertama nomor dua: tujuh puluh enam ribu enam ratus tujuh puluh lima dan enam puluh tujuh ribu tujuh ratus enam puluh lima. Pilih acuan tujuh puluh ribu.",
+      "Pasangan pertama Latihan dua: tujuh puluh enam ribu enam ratus tujuh puluh lima dan enam puluh tujuh ribu tujuh ratus enam puluh lima. Pilih acuan tujuh puluh ribu.",
       tambah(0, judul("Pasangan pertama, acuan 70.000")),
       tambah(0, ...kartu("t1", 18, 38, 100, 28, W.langit, ["76.675"], 12), ...kartu("t2", 182, 38, 100, 28, W.krem, ["67.765"], 12)),
       tambah("Pilih", ...GC, garis("ac", xc(70000), 96, 0, 30, W.merah, 2.6), teks("act", xc(70000), 90, "acuan 70.000", 9.4, W.merah)),
@@ -148,8 +148,8 @@ export const ADEGAN_LUAR_BULAT: AdeganStory = {
 /* ------------------------------ 9. Rounding Estimate Compare: penerapan (harga papan dakon dan Ayo Berlatih nomor 1) ------------------------------ */
 export const ADEGAN_LUAR_BULAT_TERAPAN: AdeganStory = {
   id: "luar-bulat-terapan",
-  judul: "Pembulatan: harga papan dakon dan Ayo Berlatih nomor 1",
-  sumber: "Metode luar: Rounding Estimate Compare; Buku Siswa hlm. 10 dan 14",
+  judul: "Pembulatan: harga papan dakon dan Latihan 1",
+  sumber: "Metode luar: Rounding Estimate Compare",
   latar: "#FDF4FF",
   ketukan: [
     k(
@@ -173,10 +173,10 @@ export const ADEGAN_LUAR_BULAT_TERAPAN: AdeganStory = {
       tambah("terpisah", teks("tz", 150, 168, "57.000 < 66.000 < 75.000", 12, W.biru)),
     ),
     k(
-      "Nomor satu bagian c juga bisa: sembilan puluh tujuh ribu tujuh ratus enam puluh delapan menjadi sembilan puluh delapan ribu, dan delapan puluh sembilan ribu delapan ratus tujuh puluh enam menjadi sembilan puluh ribu. Jadi yang pertama lebih besar.",
+      "Latihan satu bagian c juga bisa: sembilan puluh tujuh ribu tujuh ratus enam puluh delapan menjadi sembilan puluh delapan ribu, dan delapan puluh sembilan ribu delapan ratus tujuh puluh enam menjadi sembilan puluh ribu. Jadi yang pertama lebih besar.",
       bersih(0),
-      tambah(0, judul("Ayo Berlatih nomor 1 bagian c")),
-      tambah("Nomor", ...barisBulat("n", 44, "97.768", "98.000", "ratusan 7")),
+      tambah(0, judul("Latihan 1 bagian c")),
+      tambah("Latihan", ...barisBulat("n", 44, "97.768", "98.000", "ratusan 7")),
       tambah("delapan@3", ...barisBulat("m", 100, "89.876", "90.000", "ratusan 8")),
       tambah("Jadi", teks("nj", 150, 168, "98.000 > 90.000, jadi 97.768 > 89.876", 10.4, W.hijau)),
     ),
@@ -194,7 +194,7 @@ const URUT = [
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan empat metode dan urutan papan dakon",
-  sumber: "Ringkasan metode luar; Buku Siswa hlm. 13",
+  sumber: "Ringkasan metode luar",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -219,7 +219,7 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("mahal,", teks("zt1", 36, 140, "termurah", 9.4, W.hijau), teks("zt2", 264, 140, "termahal", 9.4, W.merah)),
     ),
     k(
-      "Semua metode memberi urutan yang sama, dan cocok dengan kunci buku. Pilih cara yang paling nyaman, tetapi kita selalu bisa kembali ke nilai tempat.",
+      "Semua metode memberi urutan yang sama, dan cocok dengan tabel urutan tadi. Pilih cara yang paling nyaman, tetapi kita selalu bisa kembali ke nilai tempat.",
       bersih(0),
       tambah(0, judul("Cara apa pun, hasilnya sama")),
       tambah("Semua", emo("zf", 150, 90, "✅", 44)),

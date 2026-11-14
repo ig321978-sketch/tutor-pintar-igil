@@ -15,11 +15,11 @@ const barisNilai = (id: string, nilai: string[]) => nilai.map((v, j) => isiSel(i
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk komposisi dan dekomposisi",
-  sumber: "Metode luar: pembuka; angka Buku Siswa hlm. 15 sampai 17",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana kita menyusun sebuah bilangan dari uang, atau menguraikannya kembali? Guru di berbagai negara punya cara berbeda. Di video ini ada empat metode, dengan angka dari buku.",
+      "Bagaimana kita menyusun sebuah bilangan dari uang, atau menguraikannya kembali? Guru di berbagai negara punya cara berbeda. Di video ini ada empat metode, dengan angka dari uang Asep, Lukas, dan Komang.",
       tambah(0, judul("4 metode dari luar")),
       tambah("menyusun", ...kartu("p1", 30, 40, 100, 44, W.krem, ["uang", "3, 8, 6"], 10)),
       tambah("menguraikannya", panah("pa", 134, 62, 32, 0, W.merah, 2.4), ...kartu("p2", 170, 40, 100, 44, W.hijauMuda, ["bilangan", "38.600"], 10)),
@@ -35,9 +35,9 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("Money", ...kartu("m4", 12, 148, 276, 30, W.pink, ["4. Money Composition"], 9.6)),
     ),
     k(
-      "Semuanya memakai uang di buku: Asep, Lukas, dan Komang. Uang Asep tiga puluh delapan ribu enam ratus, uang Lukas enam puluh tiga ribu lima ratus, dan Komang membayar empat puluh lima ribu enam ratus.",
+      "Semuanya memakai uang yang sama, milik Asep, Lukas, dan Komang. Uang Asep tiga puluh delapan ribu enam ratus, uang Lukas enam puluh tiga ribu lima ratus, dan Komang membayar empat puluh lima ribu enam ratus.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka yang dipakai")),
       tambah("Asep", ...kartu("b1", 16, 50, 84, 52, W.langit, ["Asep", "38.600"], 10)),
       tambah("Lukas", ...kartu("b2", 108, 50, 84, 52, W.pink, ["Lukas", "63.500"], 10)),
       tambah("Komang", ...kartu("b3", 200, 50, 84, 52, W.hijauMuda, ["Komang", "45.600"], 10)),
@@ -57,7 +57,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 export const ADEGAN_LUAR_URAIAN: AdeganStory = {
   id: "luar-uraian",
   judul: "Metode luar 1: Expanded Form",
-  sumber: "Metode luar: Expanded Form; angka uang Asep, Buku Siswa hlm. 15 dan 16",
+  sumber: "Metode luar: Expanded Form",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -67,7 +67,7 @@ export const ADEGAN_LUAR_URAIAN: AdeganStory = {
       tambah("uraian", ...kartu("kk", 50, 122, 200, 36, W.hijauMuda, ["bentuk uraian"], 11)),
     ),
     k(
-      "Ambil tiga puluh delapan ribu enam ratus, yang di buku tadi adalah uang Asep. Tiap angkanya punya tempat sendiri.",
+      "Ambil tiga puluh delapan ribu enam ratus, yang tadi adalah uang Asep. Tiap angkanya punya tempat sendiri.",
       bersih(0),
       tambah(0, judul("Expanded Form")),
       tambah("Ambil", bingkai("ud", G_KOMP, 2, ["angka", "nilai"]), teks("hb", 150, 118, "38.600", 14, W.hijau)),
@@ -95,7 +95,7 @@ export const ADEGAN_LUAR_URAIAN: AdeganStory = {
 export const ADEGAN_LUAR_URAIAN_TERAPAN: AdeganStory = {
   id: "luar-uraian-terapan",
   judul: "Expanded Form pada uang Lukas dan harga Komang",
-  sumber: "Metode luar: Expanded Form, penerapan; angka Buku Siswa hlm. 15 sampai 17",
+  sumber: "Metode luar: Expanded Form, penerapan",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -134,7 +134,7 @@ export const ADEGAN_LUAR_URAIAN_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_TUKAR: AdeganStory = {
   id: "luar-tukar",
   judul: "Metode luar 2: Flexible Grouping",
-  sumber: "Metode luar: Flexible Grouping; pecahan uang Buku Siswa hlm. 15 dan 16",
+  sumber: "Metode luar: Flexible Grouping",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -179,7 +179,7 @@ const baris = (id: string, i: number) => {
 export const ADEGAN_LUAR_TUKAR_TERAPAN: AdeganStory = {
   id: "luar-tukar-terapan",
   judul: "Flexible Grouping pada empat cara uang Komang",
-  sumber: "Metode luar: Flexible Grouping, penerapan; angka Buku Siswa hlm. 16 dan 17",
+  sumber: "Metode luar: Flexible Grouping, penerapan",
   latar: "#EFF6FF",
   ketukan: [
     k(

@@ -6,11 +6,11 @@ import { bersih, hapus, k, tambah, warnai } from "./k5b1b-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk membandingkan dan mengurutkan",
-  sumber: "Metode luar: pembuka; angka Buku Siswa hlm. 10–15",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana kita memutuskan bilangan mana yang lebih besar? Guru di berbagai negara punya cara yang berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.",
+      "Bagaimana kita memutuskan bilangan mana yang lebih besar? Guru di berbagai negara punya cara yang berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka harga papan dakon.",
       tambah(0, judul("Empat metode dari luar")),
       tambah("Bagaimana", ...kartu("q1", 24, 56, 100, 38, W.langit, ["56.560"], 13), ...kartu("q2", 176, 56, 100, 38, W.krem, ["57.000"], 13), teks("qq", 150, 84, "?", 24, W.merah)),
       tambah("berbeda.", emo("gl", 150, 150, "🌍", 40)),
@@ -34,12 +34,12 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("perkiraan.", emo("i4", 255, 80, "🎯", 34), teks("i4t", 255, 112, "dari perkiraan", 8.6, W.biru)),
     ),
     k(
-      "Angka yang kita pakai dari buku: harga empat papan dakon, tiga pasang bilangan di Ayo Berlatih nomor satu, dan empat pasang di nomor dua.",
+      "Angka yang kita pakai: harga empat papan dakon, tiga pasang bilangan di Latihan satu, dan empat pasang di Latihan dua.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka yang dipakai")),
       tambah("harga", ...kartu("a1", 14, 38, 272, 36, W.hijauMuda, ["harga 4 papan dakon: 56.560, 65.750,", "57.000, 75.360"], 8.6)),
-      tambah("tiga", ...kartu("a2", 14, 92, 128, 40, W.langit, ["nomor 1", "3 pasang bilangan"], 8.8)),
-      tambah("empat", ...kartu("a3", 158, 92, 128, 40, W.krem, ["nomor 2", "4 pasang bilangan"], 8.8)),
+      tambah("tiga", ...kartu("a2", 14, 92, 128, 40, W.langit, ["Latihan 1", "3 pasang bilangan"], 8.8)),
+      tambah("empat", ...kartu("a3", 158, 92, 128, 40, W.krem, ["Latihan 2", "4 pasang bilangan"], 8.8)),
     ),
   ],
 };
@@ -96,8 +96,8 @@ const LT3 = tabelTempat("lv", 10, 66, [{ nama: "1", n: 13234 }, { nama: "2", n: 
 
 export const ADEGAN_LUAR_KIRI_TERAPAN: AdeganStory = {
   id: "luar-kiri-terapan",
-  judul: "Banding dari kiri: angka dari buku",
-  sumber: "Metode luar: Leftmost Compare; Buku Siswa hlm. 10 dan 15",
+  judul: "Banding dari kiri: angka papan dakon",
+  sumber: "Metode luar: Leftmost Compare",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -114,9 +114,9 @@ export const ADEGAN_LUAR_KIRI_TERAPAN: AdeganStory = {
       tambah("mahal", emo("lt-e", 150, 190, "💰", 24)),
     ),
     k(
-      "Sekarang pasangan kedua nomor dua: delapan puluh enam ribu lima ratus enam puluh tujuh dan delapan puluh enam ribu lima ratus tujuh puluh enam. Tiga angka pertama sama, beda pertama di puluhan.",
+      "Sekarang pasangan kedua dari Latihan dua: delapan puluh enam ribu lima ratus enam puluh tujuh dan delapan puluh enam ribu lima ratus tujuh puluh enam. Tiga angka pertama sama, beda pertama di puluhan.",
       bersih(0),
-      tambah(0, judul("Nomor 2, pasangan kedua")),
+      tambah(0, judul("Latihan 2, pasangan kedua")),
       tambah(0, ...LT2),
       warnai("Tiga", W.hijauPita, ...selKolom("lu", 0, 2), ...selKolom("lu", 1, 2), ...selKolom("lu", 2, 2)),
       warnai("puluhan.", W.emas, ...selKolom("lu", 3, 2)),
@@ -184,7 +184,7 @@ const x2 = (n: number) => posisiBil(X0, PJ, 50000, 80000, n);
 export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
   id: "luar-garis-terapan",
   judul: "Garis bilangan: harga papan dakon",
-  sumber: "Metode luar: Number Line Order; Buku Siswa hlm. 10 dan 13",
+  sumber: "Metode luar: Number Line Order",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -204,7 +204,7 @@ export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
       tambah("Papan@4", bulat("pd", x2(75360), 116, 4.6, W.langit, W.biru), teks("pdt", x2(75360), 98, "d", 11, W.biru)),
     ),
     k(
-      "Bacalah dari kiri ke kanan: papan a, papan c, papan b, papan d. Itulah urutan dari termurah ke termahal, sama seperti tabel di buku.",
+      "Bacalah dari kiri ke kanan: papan a, papan c, papan b, papan d. Itulah urutan dari termurah ke termahal, sama seperti tabel tadi.",
       tambah("Bacalah", panah("ur", 40, 164, 220, 0, W.hijau, 2.4)),
       tambah("termurah", teks("u1", 150, 186, "a  →  c  →  b  →  d", 14, W.hijau)),
       tambah("termahal,", teks("u2", 60, 148, "termurah", 9.4, W.hijau), teks("u3", 240, 148, "termahal", 9.4, W.merah)),

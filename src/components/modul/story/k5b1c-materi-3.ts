@@ -22,7 +22,7 @@ const barisCara = (id: string, i: number): ReturnType<typeof isiSel>[] => {
 export const ADEGAN_CARA_KOMANG: AdeganStory = {
   id: "cara-komang",
   judul: "Empat cara uang Komang",
-  sumber: "Buku Siswa hlm. 16 dan 17",
+  sumber: "Materi: empat cara uang Komang",
   latar: "#F5F3FF",
   kutipan: ["Puluh Ribuan Ribuan Ratusan Puluhan Satuan", "Cara 1", "Cara 2", "Cara 3", "Cara 4", "Komang membeli peralatan sekolah senilai Rp45.600,00."],
   ketukan: [
@@ -139,14 +139,14 @@ export const ADEGAN_PERAN: AdeganStory = {
 /* ------------------------------ 11. Rangkuman subbab C (Panduan Guru hlm. 31, Akhir Pembelajaran) ------------------------------ */
 export const ADEGAN_RANGKUM: AdeganStory = {
   id: "rangkum-c",
-  judul: "Rangkuman subbab C",
-  sumber: "Buku Siswa hlm. 15 sampai 17; Panduan Guru hlm. 31",
+  judul: "Rangkuman komposisi dan dekomposisi",
+  sumber: "Materi: rangkuman komposisi",
   latar: "#F0F9FF",
   kutipan: ["Ajak peserta didik untuk menyimpulkan cara melakukan komposisi dan dekomposisi bilangan dengan menggunakan pecahan uang atau dengan menggunakan cara lain."],
   ketukan: [
     k(
       "Kita rangkum. Komposisi: banyak lembar dan keping uang kita tulis di tabel nilai tempat, lalu nilai tiap kolom dikumpulkan menjadi satu bilangan.",
-      tambah(0, judul("Rangkuman subbab C")),
+      tambah(0, judul("Rangkuman")),
       tambah("Komposisi", ...kartu("q1", 20, 44, 260, 56, W.hijauMuda, ["komposisi:", "lembar dan keping menjadi 1 bilangan"], 10)),
       tambah("tabel", emo("q2", 150, 150, "💰", 32)),
     ),
@@ -172,11 +172,53 @@ export const ADEGAN_RANGKUM: AdeganStory = {
       tambah("dihitung", teks("q7", 150, 142, "nilai tiap tempat dari banyak uang", 9, W.ungu)),
     ),
     k(
+      "Hati-hati, kesalahan yang sering terjadi adalah menulis angka di kolom yang salah. Angka tiga di kolom puluh ribuan bernilai tiga puluh ribu, tetapi angka tiga di kolom ribuan hanya bernilai tiga ribu.",
+      bersih(0),
+      tambah(0, judul("Hati-hati", W.merah)),
+      tambah("kesalahan", emo("hh", 150, 60, "⚠", 30)),
+      tambah("puluh", ...kartu("h1", 24, 80, 252, 40, W.merahMuda, ["3 di puluh ribuan: 30.000"], 10)),
+      tambah("ribuan@2", ...kartu("h2", 24, 130, 252, 40, W.krem, ["3 di ribuan: 3.000"], 10)),
+    ),
+    k(
+      "Sekarang giliran kamu. Latihan satu: Dina punya empat lembar sepuluh ribuan, tujuh lembar seribuan, dan dua keping seratusan. Berapa uang Dina? Coba hitung sendiri dulu.",
+      bersih(0),
+      tambah(0, judul("Latihan 1: uang Dina")),
+      tambah("empat", ...kartu("l1", 16, 40, 268, 34, W.lembarP, ["4 lembar 10.000"], 10)),
+      tambah("tujuh", ...kartu("l2", 16, 82, 268, 34, W.lembarR, ["7 lembar 1.000"], 10)),
+      tambah("dua", ...kartu("l3", 16, 124, 268, 34, W.keping, ["2 keping 100"], 10)),
+      tambah("Berapa", teks("l4", 150, 182, "uang Dina berapa?", 11, W.ungu)),
+    ),
+    k(
+      "Kita periksa bersama. Empat puluh ribu tambah tujuh ribu tambah dua ratus sama dengan empat puluh tujuh ribu dua ratus rupiah.",
+      bersih(0),
+      tambah(0, judul("Jawaban Latihan 1")),
+      tambah("Empat", teks("l5", 150, 80, "40.000 + 7.000 + 200 = 47.200", 11, W.coklat)),
+      tambah("empat@2", ...kartu("l6", 50, 104, 200, 44, W.hijauMuda, ["Dina: 47.200"], 12)),
+    ),
+    k(
+      "Sekarang tantangan satu. Uraikan lagi empat puluh tujuh ribu dua ratus dengan cara lain, yaitu tiga lembar sepuluh ribuan, tujuh belas lembar seribuan, dan dua keping seratusan. Coba periksa, apakah hasilnya sama?",
+      bersih(0),
+      tambah(0, judul("Tantangan 1: cara lain", W.hijau)),
+      tambah("Uraikan", teks("t0", 150, 56, "47.200", 26, W.hijau)),
+      tambah("tiga", ...kartu("t1", 16, 72, 268, 28, W.lembarP, ["3 lembar 10.000"], 9.4)),
+      tambah("tujuh", ...kartu("t2", 16, 106, 268, 28, W.lembarR, ["17 lembar 1.000"], 9.4)),
+      tambah("dua", ...kartu("t3", 16, 140, 268, 28, W.keping, ["2 keping 100"], 9.4)),
+      tambah("hasilnya", teks("t4", 150, 188, "30.000 + 17.000 + 200 = 47.200", 9.4, W.coklat)),
+    ),
+    k(
       "Pecahan uang hanyalah satu alat. Cara lain juga boleh dipakai selama hasilnya tetap benar.",
       bersih(0),
       tambah(0, judul("Satu alat, banyak cara")),
       tambah("alat", ...kartu("q8", 40, 52, 220, 40, W.hijauMuda, ["pecahan uang: satu alat"], 10.4)),
       tambah("Cara", ...kartu("q9", 40, 108, 220, 40, W.krem, ["cara lain: boleh, hasil tetap benar"], 9.4)),
+    ),
+    k(
+      "Terakhir, coba renungkan. Apa yang berubah, dan apa yang tetap sama, ketika selembar uang kita tukar dengan lembar lain? Ceritakan dengan kata-katamu sendiri.",
+      bersih(0),
+      tambah(0, judul("Coba renungkan")),
+      tambah("renungkan", emo("rn", 150, 66, "🤔", 32)),
+      tambah("berubah", ...kartu("r1", 24, 92, 252, 38, W.krem, ["yang berubah: banyak lembar"], 10)),
+      tambah("tetap", ...kartu("r2", 24, 140, 252, 38, W.hijauMuda, ["yang tetap: jumlah uang"], 10)),
     ),
   ],
 };

@@ -6,7 +6,7 @@ import { bersih, k, tambah } from "./k5b1d-bantu";
 export const ADEGAN_LUAR_EF: AdeganStory = {
   id: "luar-ef",
   judul: "Metode 3: Estimate First (perkiraan dulu)",
-  sumber: "Metode luar: Estimate First; angka Buku Siswa hlm. 26",
+  sumber: "Metode luar: Estimate First",
   latar: "#FEFCE8",
   ketukan: [
     k(
@@ -47,8 +47,8 @@ export const ADEGAN_LUAR_EF: AdeganStory = {
 /* ------------------------------ 7. Estimate First: penerapan ------------------------------ */
 export const ADEGAN_LUAR_EF_TERAPAN: AdeganStory = {
   id: "luar-ef-terapan",
-  judul: "Estimate First pada Uji Kompetensi 4a dan 4d",
-  sumber: "Metode luar: Estimate First; angka Buku Siswa hlm. 26–27",
+  judul: "Estimate First pada Uji 4a dan 4d",
+  sumber: "Metode luar: Estimate First",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -84,7 +84,7 @@ export const ADEGAN_LUAR_EF_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_IC: AdeganStory = {
   id: "luar-ic",
   judul: "Metode 4: Inverse Check (periksa dengan kebalikan)",
-  sumber: "Metode luar: Inverse Check; angka Buku Siswa hlm. 26–28",
+  sumber: "Metode luar: Inverse Check",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -121,12 +121,12 @@ export const ADEGAN_LUAR_IC: AdeganStory = {
 /* ------------------------------ 9. Inverse Check: penerapan ------------------------------ */
 export const ADEGAN_LUAR_IC_TERAPAN: AdeganStory = {
   id: "luar-ic-terapan",
-  judul: "Inverse Check pada empat hitungan buku",
-  sumber: "Metode luar: Inverse Check; angka Buku Siswa hlm. 19–20 dan hlm. 26",
+  judul: "Inverse Check pada empat hitungan kita",
+  sumber: "Metode luar: Inverse Check",
   latar: "#FFF1F2",
   ketukan: [
     k(
-      "Periksa penjumlahan Uji Kompetensi empat a. Hasilnya delapan puluh sembilan ribu lima puluh empat, dikurangi dua belas ribu empat ratus lima puluh enam, kembali ke tujuh puluh enam ribu lima ratus sembilan puluh delapan.",
+      "Periksa penjumlahan Uji empat a. Hasilnya delapan puluh sembilan ribu lima puluh empat, dikurangi dua belas ribu empat ratus lima puluh enam, kembali ke tujuh puluh enam ribu lima ratus sembilan puluh delapan.",
       tambah(0, judul("Periksa penjumlahan 4a")),
       tambah("Periksa", teks("h1", 150, 58, "76.598 + 12.456 = 89.054", 14, W.biru)),
       tambah("dikurangi", teks("h2", 150, 100, "89.054 − 12.456 = 76.598", 14, W.merah)),
@@ -150,12 +150,12 @@ export const ADEGAN_LUAR_IC_TERAPAN: AdeganStory = {
       tambah("kali@2", teks("j4", 150, 146, "16.000 × 4 = 64.000", 13, W.hijau)),
     ),
     k(
-      "Sekarang periksa kunci Panduan Guru. Lima ratus enam puluh tujuh dikali sembilan puluh delapan sama dengan lima puluh lima ribu lima ratus enam puluh enam. Dibagi sembilan puluh delapan, kembali ke lima ratus enam puluh tujuh.",
+      "Sekarang periksa hitungan Uji empat d. Lima ratus enam puluh tujuh dikali sembilan puluh delapan sama dengan lima puluh lima ribu lima ratus enam puluh enam. Dibagi sembilan puluh delapan, kembali ke lima ratus enam puluh tujuh.",
       bersih(0),
-      tambah(0, judul("Periksa kunci 4d")),
+      tambah(0, judul("Periksa Uji 4d")),
       tambah("Lima", teks("m1", 150, 58, "567 × 98 = 55.566", 15, W.biru)),
       tambah("Dibagi", teks("m2", 150, 100, "55.566 ÷ 98 = 567", 15, W.hijau)),
-      tambah("kembali", ...kartu("m3", 60, 130, 180, 34, W.krem, ["kunci Panduan Guru benar"], 10)),
+      tambah("kembali", ...kartu("m3", 60, 130, 180, 34, W.krem, ["hitungan sudah benar"], 10)),
     ),
   ],
 };
@@ -164,7 +164,7 @@ export const ADEGAN_LUAR_IC_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan: empat metode untuk operasi hitung bilangan besar",
-  sumber: "Ringkasan metode luar; angka Buku Siswa hlm. 17–28",
+  sumber: "Ringkasan metode luar",
   latar: "#F0F9FF",
   ketukan: [
     k(
@@ -184,16 +184,16 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("periksa", panah("u2a", 196, 95, 12, 0, W.merah, 2), ...kartu("u3", 210, 70, 82, 50, W.pink, ["3.", "periksa"], 8.6)),
     ),
     k(
-      "Angka buku: lima puluh tujuh ribu lima ratus ditambah dua puluh dua ribu, empat puluh tujuh ribu sembilan ratus dikurangi empat puluh lima ribu tujuh ratus lima puluh, dua belas kali lima ribu, dan enam puluh empat ribu dibagi empat.",
+      "Angka-angka kita: lima puluh tujuh ribu lima ratus ditambah dua puluh dua ribu, empat puluh tujuh ribu sembilan ratus dikurangi empat puluh lima ribu tujuh ratus lima puluh, dua belas kali lima ribu, dan enam puluh empat ribu dibagi empat.",
       bersih(0),
-      tambah(0, judul("Hasil dari buku")),
+      tambah(0, judul("Hasil hitungan kita")),
       tambah("ditambah", teks("z1", 150, 52, "57.500 + 22.000 = 79.500", 13, W.biru)),
       tambah("dikurangi", teks("z2", 150, 88, "47.900 − 45.750 = 2.150", 13, W.biru)),
       tambah("kali", teks("z3", 150, 124, "12 × 5.000 = 60.000", 13, W.biru)),
       tambah("dibagi", teks("z4", 150, 160, "64.000 ÷ 4 = 16.000", 13, W.biru)),
     ),
     k(
-      "Semua hasil itu cocok dengan buku. Karena bilangannya sampai seratus ribu, ketelitian tiap kolom dan pemeriksaan kecil sangat menolong.",
+      "Semua hasil itu cocok dan benar. Karena bilangannya sampai seratus ribu, ketelitian tiap kolom dan pemeriksaan kecil sangat menolong.",
       bersih(0),
       tambah(0, judul("Penutup metode luar")),
       tambah("Semua", emo("zz", 150, 84, "✅", 44)),

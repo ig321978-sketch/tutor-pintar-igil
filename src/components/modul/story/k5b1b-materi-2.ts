@@ -10,7 +10,7 @@ const barisTP = (i: number) => TP.filter((o) => o.id.startsWith(`tp-r${i}`));
 export const ADEGAN_TABEL: AdeganStory = {
   id: "tabel-nilai-tempat",
   judul: "Tabel nilai tempat harga papan dakon",
-  sumber: "Buku Siswa hlm. 11–12",
+  sumber: "Materi: tabel nilai tempat",
   latar: "#F5F3FF",
   kutipan: ["Kartu 1 : …. diperoleh nama : ….", "Kartu 2 : …. diperoleh nama : ….", "Nilai Tempat"],
   ketukan: [
@@ -51,7 +51,7 @@ const TP2 = tabelTempat("tq", 10, 34, DAKON.map((d) => ({ nama: d.nama, n: d.har
 export const ADEGAN_PERCAKAPAN: AdeganStory = {
   id: "percakapan",
   judul: "Ayo Menyimak Percakapan",
-  sumber: "Buku Siswa hlm. 12–13",
+  sumber: "Materi: puluh ribuan dan ribuan",
   latar: "#FFF7ED",
   kutipan: [
     "Ayo Menyimak Percakapan",
@@ -60,7 +60,7 @@ export const ADEGAN_PERCAKAPAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Menyimak Percakapan. Seorang anak bertanya, harga papan dakon mana yang angka puluh ribuannya paling kecil? Kolom jawaban teman bicaranya masih kosong di buku.",
+      "Ayo Menyimak Percakapan. Seorang anak bertanya, harga papan dakon mana yang angka puluh ribuannya paling kecil? Jawaban teman bicaranya masih kosong, kita isi bersama.",
       tambah(0, judul("Ayo Menyimak Percakapan")),
       tambah("Seorang", emo("c1", 40, 76, "🧒", 34), ...kartu("q1", 70, 44, 216, 56, W.krem, ["Harga papan dakon mana yang", "angka puluh ribuannya", "paling kecil?"], 9.4)),
       tambah("kosong", ...kartu("j1", 14, 114, 216, 40, W.langit, ["......................."], 10), emo("c2", 262, 138, "🙋", 34)),
@@ -104,7 +104,7 @@ const barisTH = (i: number) => TH.filter((o) => o.id.startsWith(`th-r${i}`));
 export const ADEGAN_URUT: AdeganStory = {
   id: "urut-harga",
   judul: "Mengurutkan harga papan dakon",
-  sumber: "Buku Siswa hlm. 13",
+  sumber: "Materi: mengurutkan harga",
   latar: "#F0FDF4",
   kutipan: [
     "Ayo kita cari tahu bersama dengan mengurutkan harganya.",
@@ -154,8 +154,8 @@ export const ADEGAN_URUT: AdeganStory = {
 /* ------------------------------ 8. Ayo Berpikir Kritis (Buku Siswa hlm. 14; Panduan Guru hlm. 27) ------------------------------ */
 export const ADEGAN_KRITIS: AdeganStory = {
   id: "berpikir-kritis",
-  judul: "Ayo Berpikir Kritis: mainan A atau mainan B",
-  sumber: "Buku Siswa hlm. 14; Panduan Guru hlm. 27",
+  judul: "Berpikir kritis: mainan A atau mainan B",
+  sumber: "Materi: berpikir kritis",
   latar: "#FEF2F2",
   kutipan: [
     "Ayo Berpikir Kritis",
@@ -169,7 +169,7 @@ export const ADEGAN_KRITIS: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Berpikir Kritis. Ada dua jenis mainan, yaitu mainan A dan mainan B.",
+      "Berpikir kritis. Ada dua jenis mainan, yaitu mainan A dan mainan B.",
       tambah(0, judul("Mainan A atau mainan B?")),
       tambah("mainan@2", emo("ma0", 70, 100, "🧸", 40), teks("ma1", 70, 140, "mainan A", 11, W.coklat)),
       tambah("mainan@3", emo("mb0", 230, 100, "🚗", 40), teks("mb1", 230, 140, "mainan B", 11, W.biru)),
@@ -182,18 +182,18 @@ export const ADEGAN_KRITIS: AdeganStory = {
       tambah("mainan@2", ...kartu("mb", 158, 46, 128, 70, W.hijauMuda, ["mainan B", "lebih mahal", "tidak secepat A rusak"], 9)),
     ),
     k(
-      "Mainan manakah yang akan kalian pilih, dan apa alasannya? Jawabannya ditulis di kolom yang tersedia.",
+      "Mainan manakah yang akan kalian pilih, dan apa alasannya? Tuliskan jawabanmu dan alasannya.",
       bersih(0),
       tambah(0, judul("Pilih yang mana?")),
       tambah(0, emo("mq", 150, 100, "🤔", 44)),
       tambah("alasannya?", teks("mr", 150, 160, "pilih yang mana, dan mengapa?", 10.4, W.merah)),
     ),
     k(
-      "Panduan guru mengingatkan: siswa bisa saja membeli mainan murah walaupun kualitasnya lebih rendah. Ajaklah mereka mengambil keputusan secara tepat. Harga yang lebih kecil belum tentu pilihan terbaik.",
+      "Hati-hati dalam memilih: kamu bisa saja tergoda membeli mainan murah walaupun kualitasnya lebih rendah. Ambillah keputusan secara tepat. Harga yang lebih kecil belum tentu pilihan terbaik.",
       bersih(0),
-      tambah(0, judul("Catatan guru")),
-      tambah("Panduan", ...kartu("g1", 24, 44, 252, 44, W.krem, ["murah tetapi kualitas lebih rendah", "bisa saja dibeli siswa"], 9.4)),
-      tambah("Ajaklah", ...kartu("g2", 24, 104, 252, 44, W.hijauMuda, ["ajak mengambil keputusan", "secara tepat"], 9.4)),
+      tambah(0, judul("Pesan guru")),
+      tambah("Hati-hati", ...kartu("g1", 24, 44, 252, 44, W.krem, ["murah tetapi kualitas lebih rendah", "bisa saja tergoda membeli"], 9.4)),
+      tambah("Ambillah", ...kartu("g2", 24, 104, 252, 44, W.hijauMuda, ["ambil keputusan", "secara tepat"], 9.4)),
       tambah("Harga", teks("g3", 150, 182, "harga kecil belum tentu terbaik", 10.4, W.merah)),
     ),
   ],

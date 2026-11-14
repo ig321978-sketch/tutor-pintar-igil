@@ -17,7 +17,7 @@ const SUARA_NR3 = "Angka nol tidak dibaca. Pada empat puluh ribu tiga ratus lima
 export const ADEGAN_LUAR_BACA: AdeganStory = {
   id: "luar-baca",
   judul: "Number Reading: membaca bilangan besar dua bagian",
-  sumber: "Metode luar: Number Reading; angka Buku Siswa hlm. 7",
+  sumber: "Metode luar: Number Reading",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -67,14 +67,14 @@ const belahBaca = (id: string, kiriAngka: string, kananAngka: string, kiriKata: 
   teks(`${id}e`, 221, 132, kananKata, 9, W.biru),
 ];
 const SUARA_NT1 = "Terapkan pada dua puluh enam ribu sembilan ratus tiga puluh dua. Bagian kiri dua puluh enam, bagian kanan sembilan ratus tiga puluh dua.";
-const SUARA_NT2 = "Gabungkan: dua puluh enam, ribu, sembilan ratus tiga puluh dua. Hasilnya sama dengan jawaban di panduan guru.";
-const SUARA_NT3 = "Sekarang delapan puluh delapan ribu sembilan ratus tujuh puluh enam dari Ayo Berlatih. Bagian kiri delapan puluh delapan, bagian kanan sembilan ratus tujuh puluh enam.";
+const SUARA_NT2 = "Gabungkan: dua puluh enam, ribu, sembilan ratus tiga puluh dua. Hasilnya sama dengan bacaan utuh tadi.";
+const SUARA_NT3 = "Sekarang delapan puluh delapan ribu sembilan ratus tujuh puluh enam dari latihan tadi. Bagian kiri delapan puluh delapan, bagian kanan sembilan ratus tujuh puluh enam.";
 const SUARA_NT4 = "Dan tiga belas ribu empat ratus lima puluh enam: tiga belas, ribu, empat ratus lima puluh enam. Semua bilangan lima angka dibaca dengan cara yang sama.";
 
 export const ADEGAN_LUAR_BACA_TERAPAN: AdeganStory = {
   id: "luar-baca-terapan",
   judul: "Number Reading pada 26.932, 88.976, dan 13.456",
-  sumber: "Metode luar: Number Reading; angka Buku Siswa hlm. 7–9",
+  sumber: "Metode luar: Number Reading",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -166,7 +166,7 @@ const SUARA_PU4 = "Titik hanya memisahkan ribuan, bukan koma desimal. Karena itu
 export const ADEGAN_LUAR_PERIODE_TERAPAN: AdeganStory = {
   id: "luar-periode-terapan",
   judul: "Period Grouping pada 88.976, 54.675, dan 100.000",
-  sumber: "Metode luar: Period Grouping; angka Buku Siswa hlm. 9",
+  sumber: "Metode luar: Period Grouping",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -203,7 +203,7 @@ export const ADEGAN_LUAR_PERIODE_TERAPAN: AdeganStory = {
 /* ------------------------------ 10. Ringkasan empat metode ------------------------------ */
 export const TB_R = { x: 20, y: 40, cw: 52, o: { ch: 30, u: 16 } };
 const KOSONG5 = [["", "", "", "", ""]];
-const SUARA_R1 = "Ringkasan: bilangan tiga belas ribu empat ratus lima puluh enam, dari Ayo Berlatih nomor dua, kita tulis dengan empat cara.";
+const SUARA_R1 = "Ringkasan: bilangan tiga belas ribu empat ratus lima puluh enam, dari latihan tadi, kita tulis dengan empat cara.";
 const SUARA_R2 = "Tabel nilai tempat menaruh satu angka tiap kolom: satu, tiga, empat, lima, enam. Extended Dienes menghitung balok dengan angka yang sama.";
 const SUARA_R3 = "Number Reading membaca tiga belas, ribu, lalu empat ratus lima puluh enam. Period Grouping menaruh titik di antara kelompok tiga angka.";
 const SUARA_R4 = "Keempat cara menuju bilangan yang sama. Pilih yang paling nyaman, lalu periksa dengan cara lain.";
@@ -212,7 +212,7 @@ const NAMA2 = [["Place-Value", "Chart"], ["Extended", "Dienes"], ["Number", "Rea
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan: empat metode untuk satu bilangan",
-  sumber: "Ringkasan metode luar; angka Buku Siswa hlm. 9",
+  sumber: "Ringkasan metode luar",
   latar: "#FFF7ED",
   ketukan: [
     k(

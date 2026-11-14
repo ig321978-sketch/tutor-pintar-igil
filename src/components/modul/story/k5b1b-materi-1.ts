@@ -123,8 +123,8 @@ export const ADEGAN_PERSIAPAN: AdeganStory = {
 const WARNA_DAKON = [W.hijauPita, W.merahPita, W.jingga, W.langit];
 export const ADEGAN_MASALAH: AdeganStory = {
   id: "masalah-lukas",
-  judul: "Eksplorasi 1.2: Masalah Lukas",
-  sumber: "Buku Siswa hlm. 10",
+  judul: "Masalah Lukas",
+  sumber: "Materi: harga papan dakon",
   latar: "#F0FDF4",
   kutipan: [
     "Eksplorasi 1.2",
@@ -143,8 +143,8 @@ export const ADEGAN_MASALAH: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi satu titik dua, Masalah Lukas. Lukas, siswa kelas lima SD Pancasila, diminta gurunya membelikan papan mainan dakon di minimarket milik Komang.",
-      tambah(0, judul("Eksplorasi 1.2: Masalah Lukas")),
+      "Masalah Lukas. Lukas, siswa kelas lima SD Pancasila, diminta gurunya membelikan papan mainan dakon di minimarket milik Komang.",
+      tambah(0, judul("Masalah Lukas")),
       tambah("Lukas,", emo("lk", 60, 96, "🧒", 38)),
       tambah("papan", emo("dk", 150, 96, "🎲", 34)),
       tambah("minimarket", emo("mm", 240, 96, "🏪", 38)),
@@ -177,7 +177,7 @@ export const ADEGAN_MASALAH: AdeganStory = {
 export const ADEGAN_BERMAIN: AdeganStory = {
   id: "ayo-bermain",
   judul: "Ayo Bermain: kartu papan dakon",
-  sumber: "Buku Siswa hlm. 11–12",
+  sumber: "Materi: permainan kartu harga",
   latar: "#FFF7ED",
   kutipan: [
     "Ayo Bermain",
