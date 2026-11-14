@@ -10,7 +10,6 @@ import {
   LabelSvg,
   PapanDigit,
   PizzaSvg,
-  SudutSvg,
   SusunSvg,
   progresDari,
   nyalaDariWaktu,
@@ -138,19 +137,6 @@ export function visualK5(kode: string, v: number, a: number, k: number, t = 0): 
         <BangunLuas kolom={4} baris={3} nyala={Math.min(12, k >= 1 ? 12 : Math.floor(p * 12))} x={40} y={50} ukuran={20} />
         <BangunLuas kolom={3} baris={2} nyala={k >= 2 ? 6 : k >= 1 ? Math.floor(p * 6) : 0} x={160} y={70} ukuran={20} />
         {k >= 3 ? <LabelSvg x={90} y={160} w={120} teks="luas gabungan" ukuran={12} /> : null}
-      </>
-    );
-  }
-
-  if (bab === "k5b6") {
-    const deg = sub === "a" ? 90 : sub === "c" ? 50 : sub === "d" ? 60 : 45;
-    const tahap = Math.min(3, k + (p > 0.45 ? 1 : 0));
-    return (
-      <>
-        <SudutSvg deg={deg} k={tahap} />
-        {k >= 2 ? (
-          <LabelSvg x={40} y={40} w={120} teks={deg === 90 ? "siku-siku" : deg > 90 ? "tumpul" : "lancip"} ukuran={12} warna={ORANYE} />
-        ) : null}
       </>
     );
   }

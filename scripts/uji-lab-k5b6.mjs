@@ -84,7 +84,9 @@ const tanpaUkuran = (t) => !/°|\d{2,}/.test(String(t));
   const data = readFileSync(new URL("../src/components/modul/data-k5b6.ts", import.meta.url), "utf8");
   cek(A.SIKU === 90 && /Sudut siku-siku = 90°/.test(data) && /Besar sudut siku-siku\?", jawab: "90°"/.test(data), "patokan siku-siku 90 sama dengan data buku");
   cek(naskah.includes("Right Angle Benchmark") && naskah.includes("Paper Fold Benchmark") && naskah.includes("Angle Detective"), "naskah memuat tiga metode luar Sub-Bab A");
-  cek(naskah.includes("Pojok Bingkai Siku") && naskah.includes("Eksplorasi 6.1") && naskah.includes("penggaris siku"), "naskah memuat bingkai, Eksplorasi 6.1, dan penggaris siku");
+  // Naskah video lama dihapus; materi bingkai, Eksplorasi 6.1, dan penggaris siku kini ada di video Story baru Sub-Bab A.
+  const materiA = [1, 2, 3].map((n) => readFileSync(new URL(`../src/components/modul/story/k5b6a-materi-${n}.ts`, import.meta.url), "utf8")).join(String.fromCharCode(10));
+  cek(/bingkai/i.test(materiA) && materiA.includes("Eksplorasi 6.1") && /penggaris siku/i.test(materiA), "video Story A memuat bingkai, Eksplorasi 6.1, dan penggaris siku");
   cek(/sudut 45° → lancip|45° < 90° → lancip/.test(data) && /120° > 90°/.test(data), "data buku memuat 45 lancip dan 120 tumpul");
 }
 
