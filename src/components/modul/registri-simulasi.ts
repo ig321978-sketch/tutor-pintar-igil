@@ -7,6 +7,7 @@
  * Peta file pemutar: naskah/igil-module-player-peta.md
  */
 import type { ComponentType } from "react";
+import type { DataPetaSusun, DataTabelSusun } from "@/components/modul/susun-logika";
 import dynamic from "next/dynamic";
 import SimulasiBab1Materi, { misiAwalBab1 } from "@/components/modul/SimulasiBab1";
 import SimulasiBab2Materi, { misiAwalBab2 } from "@/components/modul/SimulasiBab2";
@@ -135,7 +136,8 @@ export type SimulasiBabProps = {
   onKeLatihan: () => void;
 };
 
-export type RingkasSub = { peta: DataPeta; infografis: DataInfografis };
+/** petaSusun dan tabelSusun (opsional): Mind-Map dan Infografis versi susun tab; bila ada, dipakai menggantikan peta dan infografis lama. */
+export type RingkasSub = { peta: DataPeta; infografis: DataInfografis; petaSusun?: DataPetaSusun; tabelSusun?: DataTabelSusun };
 
 /** Bab SMISCPA: Simulasi di dalam Materi; tab Simulasi tidak ditampilkan. */
 export const SIMULASI_MATERI: Partial<Record<string, ComponentType<SimulasiMateriProps>>> = {

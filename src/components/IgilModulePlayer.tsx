@@ -87,6 +87,8 @@ import {
 } from "@/components/modul/SubBabB8Diagram";
 import PetaKonsep from "@/components/modul/PetaKonsep";
 import InfografisRingkas from "@/components/modul/InfografisRingkas";
+import PetaKonsepSusun from "@/components/modul/PetaKonsepSusun";
+import InfografisTabelSusun from "@/components/modul/InfografisTabelSusun";
 import {
   RINGKAS_BAB,
   SIMULASI_BAB,
@@ -2209,7 +2211,24 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             pertahankan={adaSimMateri}
             tutupDiLatar={!adaSimMateri}
           >
-            {ringkasSub ? (
+            {ringkasSub?.petaSusun ? (
+            <PetaKonsepSusun
+              key={`${bab}-${activeSubBab}-susun`}
+              data={ringkasSub.petaSusun}
+              judul={judulSubBab}
+              benih={activeSubBab.charCodeAt(0)}
+              maskot={maskotPeta}
+              speakGuru={speakGuru}
+              teksLanjut="LANJUTKAN KE INFOGRAFIS ⬇️"
+              onLanjut={() =>
+                handleUnlockNextSmicpa(
+                  3,
+                  infografisRef,
+                  "Peta konsep sudah lengkap! Sekarang kita buka Infografis."
+                )
+              }
+            />
+            ) : ringkasSub ? (
             <PetaKonsep
               key={`${bab}-${activeSubBab}`}
               data={ringkasSub.peta}
@@ -2274,7 +2293,23 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             pertahankan={adaSimMateri}
             tutupDiLatar={!adaSimMateri}
           >
-            {ringkasSub ? (
+            {ringkasSub?.tabelSusun ? (
+            <InfografisTabelSusun
+              key={`${bab}-${activeSubBab}-tabel`}
+              data={ringkasSub.tabelSusun}
+              benih={activeSubBab.charCodeAt(0)}
+              maskot={maskotPeta}
+              speakGuru={speakGuru}
+              teksLanjut="LANJUTKAN KE SIMULASI ⬇️"
+              onLanjut={() =>
+                handleUnlockNextSmicpa(
+                  TAHAP_SIMULASI,
+                  simulasiRef,
+                  `Infografis selesai! Sekarang kita bereksperimen di Simulasi. ${SIMULASI_MISI_AWAL[bab]?.(activeSubBab) ?? ""}`.trim()
+                )
+              }
+            />
+            ) : ringkasSub ? (
             <InfografisRingkas
               key={`${bab}-${activeSubBab}`}
               data={ringkasSub.infografis}
