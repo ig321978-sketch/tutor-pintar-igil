@@ -2,7 +2,7 @@
 
 Tiap sub-bab memuat **dua video terpisah**: **Video Materi Kurikulum** (Buku Siswa dilengkapi Buku Panduan Guru) dan **Video Metode Luar**. Mesin sama dengan Kelas 4 Bab 5 dan 6, Kelas 5 dan Kelas 6 (`story/logika-story.ts`, `story/mesin-story.tsx`; lihat `naskah/story-video-k4b5.md`). Gambar dirancang khusus tiap sub-bab: `story/k4b4a-*` dan `story/k4b4b-*`. Pembungkus: `video-k4b4a.tsx` dan `video-k4b4b.tsx` (ekspor `VideoK4B4A/B({ speakGuru })` tidak berubah).
 
-Offset halaman kelas IV: Buku Siswa = PDF dikurangi 12, Panduan Guru = PDF dikurangi 12. A (pembuka bab dan Pengukuran Luas): Buku Siswa PDF 115-133, Panduan Guru PDF 156-166. B (Pengukuran Volume, penutup bab): Buku Siswa PDF 134-150 (Uji Kompetensi, Refleksi), Panduan Guru PDF 167 sampai akhir bab (kunci, rubrik, remedial, pengayaan, interaksi orang tua). Refleksi hhanya satu untuk seluruh bab: A ambil butir luas, B butir volume dan penutup.
+Offset halaman kelas IV: Buku Siswa = PDF dikurangi 12, Panduan Guru = PDF dikurangi 12. A (pembuka bab dan Pengukuran Luas): Buku Siswa PDF 115-133, Panduan Guru PDF 156-166. B (Pengukuran Volume, penutup bab): Buku Siswa PDF 134-150 (Uji Kompetensi, Refleksi), Panduan Guru PDF 167 sampai akhir bab (kunci, rubrik, remedial, pengayaan, interaksi orang tua). Refleksi hanya satu untuk seluruh bab: A ambil butir luas, B butir volume dan penutup.
 
 ## Ukuran (perkiraan suara 0,5 detik per kata)
 | Video | Adegan | Ketukan | Kata | Durasi |
@@ -31,4 +31,4 @@ Lengkap di catatan sesi `temuan-k4b4a.md` dan `temuan-k4b4b.md`. Angka kunci dis
 Seluruh 206 ketukan (4 video) dirender lewat rute pratinjau sementara (sudah dihapus; server dev port 3100 mode webpack, sudah dihentikan) dengan `Panggung` pada t=999; kotak batas semua teks terlihat diukur terhadap kanvas 300x208. Dua temuan diperbaiki: teks sumber adegan metode luar B terlalu panjang (keluar kanvas, dipersingkat) dan label "A" tumpang tindih emoji botol di B materi adegan 3 (digeser turun). Ukuran ulang: bersih.
 
 ## Verifikasi live
-(diisi setelah deploy)
+Deploy Vercel (commit 7210376) Ready. HTML `igiligil.xyz/ruang-belajar/mtk-4-bab4` diunduh, rantai chunk `_next/static` diikuti tuntas (tiga putaran, 81 chunk); satu chunk memuat keempat nama metode baru (Grid Count, Benchmark Referents, Patokan Benda Sehari-hari, dan Hitung Petak; "Hitung Petak" juga muncul di satu chunk lain sebagai teks lab/game bab ini). Id video lama (K4B4A-V1, K4B4B-V1) dan judul lama "Meja dan Uang Kertas", "Latihan: Luas Susunan", "Siap pakai Nonstandard then Standard", "Botol Sabun A, B, C" tidak ada di chunk mana pun.
