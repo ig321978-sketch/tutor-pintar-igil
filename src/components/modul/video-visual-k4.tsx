@@ -6,13 +6,11 @@ import {
   BandingSvg,
   BangunKeliling,
   BangunLuas,
-  BatangDataSvg,
   BatangPecahanSvg,
   DeretSvg,
   GarisBilanganSvg,
   LabelSvg,
   PapanDigit,
-  PiktogramSvg,
   PizzaSvg,
   PolaBentukSvg,
   SegitigaKeliling,
@@ -187,31 +185,6 @@ export function visualK4(kode: string, v: number, a: number, k: number, t = 0): 
         <SegitigaKeliling sisi={[3, 4, 5]} jalan={progresDari(t, 5)} tampilJumlah={false} tandaSiku />
         {k >= 2 ? <LabelSvg x={90} y={40} w={120} teks="3 sisi · siku" ukuran={11} /> : null}
         {k >= 3 ? <LabelSvg x={80} y={40} w={140} teks="ciri bangun" ukuran={12} warna={HIJAU} /> : null}
-      </>
-    );
-  }
-
-  if (bab === "k4b6") {
-    if (sub === "a" || v === 0) {
-      const baris = a === 0 ? [2, 4, 3] : [3, 5, 2];
-      return (
-        <>
-          <PiktogramSvg k={nyalaSeirama(k, t, baris.length, 1.4) - 1} baris={baris} e="🍎" label={["Sen", "Sel", "Rab"]} />
-          {k >= 2 ? <LabelSvg x={90} y={165} w={120} teks="1 gambar = 1" ukuran={11} /> : null}
-        </>
-      );
-    }
-    return (
-      <>
-        <BatangDataSvg
-          k={nyalaSeirama(k, t, 3, 1.5) - 1}
-          data={[
-            { n: 4, label: "Sen" },
-            { n: 6, label: "Sel" },
-            { n: 3, label: "Rab" },
-          ]}
-        />
-        {k >= 2 ? <LabelSvg x={90} y={40} w={120} teks="baca tinggi" ukuran={12} warna={HIJAU} /> : null}
       </>
     );
   }
