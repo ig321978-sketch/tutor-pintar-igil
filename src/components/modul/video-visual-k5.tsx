@@ -4,7 +4,6 @@ import React from "react";
 
 import {
   BandingSvg,
-  DeretSvg,
   LabelSvg,
   PapanDigit,
   PizzaSvg,
@@ -55,23 +54,6 @@ export function visualK5(kode: string, v: number, a: number, k: number, t = 0): 
       <>
         <SusunSvg atas={12580} bawah={3460} hasil={16040} op="+" k={Math.min(3, k + (p > 0.55 ? 1 : 0))} />
         {k >= 2 ? <LabelSvg x={95} y={165} w={110} teks="operasi besar" ukuran={11} warna={HIJAU} /> : null}
-      </>
-    );
-  }
-
-  if (bab === "k5b2") {
-    const tabel: Record<string, { isi: number[]; judul: string }> = {
-      a: { isi: [4, 8, 12, 16, 20], judul: "kelipatan 4" },
-      b: { isi: [6, 12, 18, 24], judul: "KPK lewat daftar" },
-      c: { isi: [1, 2, 3, 6, 9, 18], judul: "faktor 18" },
-      d: { isi: [1, 2, 4], judul: "FPB 12 & 20" },
-      e: { isi: [2, 2, 3, 5], judul: "faktor prima" },
-    };
-    const conf = tabel[sub] ?? tabel.e;
-    return (
-      <>
-        <DeretSvg isi={conf.isi} k={nyalaSeirama(k, t, conf.isi.length, 1.25) - 1} judul={conf.judul} />
-        {k >= 2 ? <LabelSvg x={90} y={165} w={120} teks={a === 0 ? "daftar dulu" : "cari pola"} ukuran={11} warna={HIJAU} /> : null}
       </>
     );
   }

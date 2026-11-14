@@ -68,14 +68,15 @@ const jumlahKe = (d, k) => kelipatanMandiri(d, d * 20)[k - 1];
 }
 
 /* ------------------------------ Data sama dengan buku ------------------------------ */
+// Naskah video lama dihapus: pemeriksaan kalimat naskah video untuk jarak 4, tabel 5, dan cek 12/3 dibuang; datanya tetap diperiksa.
 {
   const naskah = readFileSync(new URL("../src/components/modul/naskah-k5b2.ts", import.meta.url), "utf8");
   cek(naskah.includes("jarak sama: 3, 6, 9, 12") && A.JARAK.includes(3), "Lompat: jarak tiga dari naskah (3, 6, 9, 12)");
   cek(D.RONDE_KELIPATAN_CA.flat().some((r) => r.dari === 7) && A.JARAK.includes(7), "Lompat: jarak tujuh dari data buku");
-  cek(naskah.includes("Kelipatan empat: empat, delapan, dua belas, enam belas") && A.JARAK.includes(4) && A.DATA_TABEL.includes(4), "jarak empat dari naskah");
-  cek(naskah.includes("Warnai semua kelipatan lima") && A.DATA_TABEL.includes(5), "Tabel: kelipatan lima dari naskah");
+  cek(A.JARAK.includes(4) && A.DATA_TABEL.includes(4), "jarak empat tersedia");
+  cek(A.DATA_TABEL.includes(5), "Tabel: kelipatan lima tersedia");
   cek(D.RONDE_CERITA_CA.flat().some((r) => r.teks.includes("kelipatan 9")) && A.DATA_TABEL.includes(9), "Tabel: kelipatan sembilan dari data buku");
-  cek(naskah.includes("Apakah dua belas kelipatan tiga? Ya, karena dua belas dibagi tiga sisa nol") && A.DATA_CEK.some((d) => d.n === 12 && d.d === 3), "Cek: 12 dan 3 dari naskah");
+  cek(A.DATA_CEK.some((d) => d.n === 12 && d.d === 3), "Cek: 12 dan 3 tersedia");
   cek(D.RONDE_BENARSALAH_QA.flat().some((r) => r.teks.includes("10 adalah kelipatan 3")) && A.DATA_CEK.some((d) => d.n === 14 && d.d === 3), "Cek: bukan kelipatan tiga seperti di buku");
   cek(D.RONDE_KELIPATAN_CA.flat().some((r) => r.dari === 7 && r.tanya === 21) && A.DATA_CEK.some((d) => d.n === 28 && d.d === 7), "Cek: kelipatan tujuh dari data buku");
   for (const d of [3, 4, 5, 7, 9]) sama(D.kelipatan(d, 10), kelipatanMandiri(d, d * 10), `data buku: kelipatan ${d} sama dengan penjumlahan berulang`);
