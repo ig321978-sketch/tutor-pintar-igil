@@ -5,12 +5,10 @@ import { Muncul } from "./video-cerita";
 import {
   BandingSvg,
   BatangPecahanSvg,
-  DeretSvg,
   GarisBilanganSvg,
   LabelSvg,
   PapanDigit,
   PizzaSvg,
-  PolaBentukSvg,
   SusunSvg,
   progresDari,
   nyalaDariWaktu,
@@ -119,24 +117,6 @@ export function visualK4(kode: string, v: number, a: number, k: number, t = 0): 
         <PizzaSvg x={90} y={100} q={2} p={1} r={40} k={Math.min(1, nyalaDariWaktu(t, 2, 1.5) - 1)} />
         <PizzaSvg x={210} y={100} q={4} p={1} r={40} k={k >= 1 ? Math.min(3, nyalaDariWaktu(t, 4, 1.2) - 1) : -1} />
         {k >= 2 || p > 0.6 ? <LabelSvg x={95} y={160} w={110} teks="1/2 > 1/4" ukuran={13} warna={HIJAU} /> : null}
-      </>
-    );
-  }
-
-  if (bab === "k4b3") {
-    if (a === 0 || v === 0) {
-      return (
-        <>
-          <PolaBentukSvg k={Math.min(3, k + (p > 0.4 ? 1 : 0))} />
-          {k >= 2 ? <LabelSvg x={90} y={165} w={120} teks="pola bentuk" ukuran={12} warna={HIJAU} /> : null}
-        </>
-      );
-    }
-    const deret = v === 1 ? [2, 4, 6, 8, 10] : [5, 10, 15, 20, 25];
-    return (
-      <>
-        <DeretSvg isi={deret} k={nyalaSeirama(k, t, deret.length, 1.2) - 1} judul={v === 1 ? "pola +2" : "pola +5"} />
-        {k >= 3 ? <LabelSvg x={90} y={165} w={120} teks="suku berikutnya" ukuran={11} /> : null}
       </>
     );
   }

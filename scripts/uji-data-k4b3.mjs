@@ -30,7 +30,7 @@ for (const [nama, daftar] of Object.entries(D).filter(([k, v]) => k.startsWith("
 for (const sub of N.SUB_BAB_K4B3) {
   cek(`${sub.id}: 30 permainan`, sub.games.length === 30);
   cek(`${sub.id}: 10 Concrete/Picture/Abstract`, ["Concrete", "Picture", "Abstract"].every((st) => sub.games.filter((g) => g.stage === st).length === 10));
-  cek(`${sub.id}: 3 video × 3 adegan`, sub.videos.length === 3 && sub.videos.every((v) => v.adegan.length === 3 && v.adegan.every((a) => a.ketukan.length === 4)));
+  cek(`${sub.id}: video lama dihapus (videos kosong; video baru diuji di uji-story-k4b3)`, sub.videos.length === 0);
   cek(`${sub.id}: mindMaps & infografis`, sub.mindMaps.length >= 6 && sub.infografis.length >= 6);
   cek(`${sub.id}: poin berikon & suara`, sub.poin.every((p) => p.ikon && p.suara) && !!sub.cara.suara);
 }
