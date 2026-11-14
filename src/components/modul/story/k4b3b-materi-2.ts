@@ -12,8 +12,8 @@ const D_L3 = deret("l3", 36, 84, ["96", "85", "74", "63", "?"], L1);
 const B_L3 = busurSemua("l3", 36, 84, ["−11", "−11", "−11", "−11"], L1);
 export const ADEGAN_BERLATIH_1: AdeganStory = {
   id: "berlatih-1",
-  judul: "Ayo Berlatih, Latihan 2: soal 1 sampai 3",
-  sumber: "Buku Siswa hlm. 99; Panduan Guru hlm. 132",
+  judul: "Latihan 1 sampai 3",
+  sumber: "Materi: latihan pola bilangan",
   latar: "#FFF7ED",
   kutipan: [
     "Latihan 2",
@@ -24,18 +24,18 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo berlatih, Latihan dua. Soal satu: tujuh, sembilan belas, tiga puluh satu, empat puluh tiga. Selisihnya dua belas, jadi bilangan berikutnya lima puluh lima.",
+      "Ayo berlatih. Latihan satu: tujuh, sembilan belas, tiga puluh satu, empat puluh tiga. Selisihnya dua belas, jadi bilangan berikutnya lima puluh lima.",
       bersih(0),
-      tambah(0, judul("Soal 1")),
-      ...muncul(D_L1, B_L1, ["tujuh,", "belas,", "satu@2", "tiga@2", null], ["Selisihnya", "dua@2", "belas@2", null]),
+      tambah(0, judul("Latihan 1")),
+      ...muncul(D_L1, B_L1, ["tujuh,", "belas,", "satu@2", "tiga@2", null], ["Selisihnya", "dua", "belas@2", null]),
       tambah("berikutnya", ...suku(D_L1, 4), ...B_L1[3]),
       tambah("berikutnya", ...kartu("l1k", 70, 140, 160, 28, W.krem, ["beda tetap: +12"], 10)),
       isiKotak("lima@2", "l1", 4, "55"),
     ),
     k(
-      "Soal dua: dua belas, dua puluh tujuh, empat puluh dua. Selisihnya lima belas, jadi bilangan berikutnya lima puluh tujuh, lalu tujuh puluh dua.",
+      "Latihan dua: dua belas, dua puluh tujuh, empat puluh dua. Selisihnya lima belas, jadi bilangan berikutnya lima puluh tujuh, lalu tujuh puluh dua.",
       bersih(0),
-      tambah(0, judul("Soal 2")),
+      tambah(0, judul("Latihan 2")),
       ...muncul(D_L2, B_L2, ["belas,", "tujuh,", "dua@4", null, null], ["Selisihnya", "lima", null, null]),
       tambah("berikutnya", ...suku(D_L2, 3), ...B_L2[2]),
       tambah("lalu", ...suku(D_L2, 4), ...B_L2[3]),
@@ -44,9 +44,9 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
       isiKotak("dua@5", "l2", 4, "72"),
     ),
     k(
-      "Soal tiga: sembilan puluh enam, delapan puluh lima, tujuh puluh empat, enam puluh tiga. Selisihnya kurang sebelas, jadi bilangan berikutnya lima puluh dua. Pola ini mengecil.",
+      "Latihan tiga: sembilan puluh enam, delapan puluh lima, tujuh puluh empat, enam puluh tiga. Selisihnya kurang sebelas, jadi bilangan berikutnya lima puluh dua. Pola ini mengecil.",
       bersih(0),
-      tambah(0, judul("Soal 3", W.merah)),
+      tambah(0, judul("Latihan 3", W.merah)),
       ...muncul(D_L3, B_L3, ["enam,", "lima,", "empat,", "tiga@2", null], ["Selisihnya", "kurang", "sebelas,", null]),
       tambah("berikutnya", ...suku(D_L3, 4), ...B_L3[3]),
       tambah("mengecil.", ...kartu("l3k", 70, 140, 160, 28, W.merahMuda, ["beda tetap: −11, mengecil"], 9.4)),
@@ -63,15 +63,15 @@ const D_L5 = deret("l5", 34, 84, ["13", "22", "31", "?", "49", "?"], L5);
 const B_L5 = busurSemua("l5", 34, 84, ["+9", "+9", "+9", "+9", "+9"], L5);
 export const ADEGAN_BERLATIH_2: AdeganStory = {
   id: "berlatih-2",
-  judul: "Latihan 2: soal 4 dan 5",
-  sumber: "Buku Siswa hlm. 100; Panduan Guru hlm. 132",
+  judul: "Latihan 4 dan 5",
+  sumber: "Materi: latihan pola bilangan",
   latar: "#FFFBEB",
   kutipan: ["91, 77 (91-14), 63 (77-14) , 49 (63-14), 35 (49-14)", "13, 22 (13+9), 31 (22+9), 40 (31+9), 49 (40+9), 58 (49+9)"],
   ketukan: [
     k(
-      "Soal empat: sembilan puluh satu, tujuh puluh tujuh, enam puluh tiga. Selisihnya kurang empat belas, jadi dua kotak berikutnya empat puluh sembilan dan tiga puluh lima.",
+      "Latihan empat: sembilan puluh satu, tujuh puluh tujuh, enam puluh tiga. Selisihnya kurang empat belas, jadi dua kotak berikutnya empat puluh sembilan dan tiga puluh lima.",
       bersih(0),
-      tambah(0, judul("Soal 4", W.merah)),
+      tambah(0, judul("Latihan 4", W.merah)),
       ...muncul(D_L4, B_L4, ["satu,", "tujuh@2", "tiga.", null, null], ["Selisihnya", "kurang", "belas,", null]),
       tambah("berikutnya", ...suku(D_L4, 3), ...B_L4[3], ...suku(D_L4, 4)),
       isiKotak("sembilan@2", "l4", 3, "49"),
@@ -79,19 +79,19 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
       tambah("kurang", ...kartu("l4k", 70, 140, 160, 28, W.merahMuda, ["beda tetap: −14"], 10)),
     ),
     k(
-      "Soal lima punya kotak kosong di tengah: tiga belas, dua puluh dua, tiga puluh satu, kosong, empat puluh sembilan, kosong. Dari tiga puluh satu ke empat puluh sembilan naik delapan belas dalam dua langkah, jadi bedanya sembilan.",
+      "Latihan lima punya kotak kosong di tengah: tiga belas, dua puluh dua, tiga puluh satu, kosong, empat puluh sembilan, kosong. Dari tiga puluh satu ke empat puluh sembilan naik delapan belas dalam dua langkah, jadi bedanya sembilan.",
       bersih(0),
-      tambah(0, judul("Soal 5: kotak di tengah")),
+      tambah(0, judul("Latihan 5: kotak di tengah")),
       ...muncul(D_L5, B_L5, ["belas,", "dua@2", "satu,", "kosong@2", "sembilan,", "kosong@3"]),
       tambah("langkah,", ...kartu("l5k", 20, 132, 260, 28, W.krem, ["49 − 31 = 18, dua langkah, 18 ÷ 2 = 9"], 9.4)),
       tambah("bedanya", ...B_L5[0], ...B_L5[1]),
     ),
     k(
-      "Kotak kosongnya empat puluh dan lima puluh delapan. Kunci Panduan Guru memberi urutan tiga belas, dua puluh dua, tiga puluh satu, empat puluh, empat puluh sembilan, lima puluh delapan.",
+      "Kotak kosongnya empat puluh dan lima puluh delapan. Jadi urutan lengkapnya tiga belas, dua puluh dua, tiga puluh satu, empat puluh, empat puluh sembilan, lima puluh delapan.",
       isiKotak("empat", "l5", 3, "40"),
       isiKotak("delapan", "l5", 5, "58"),
-      tambah("Kunci", ...B_L5[2], ...B_L5[3], ...B_L5[4]),
-      tambah("Kunci", ...kartu("l5q", 20, 168, 260, 26, W.hijauMuda, ["kunci: 13, 22, 31, 40, 49, 58"], 9.6)),
+      tambah("Jadi", ...B_L5[2], ...B_L5[3], ...B_L5[4]),
+      tambah("Jadi", ...kartu("l5q", 20, 168, 260, 26, W.hijauMuda, ["urutan: 13, 22, 31, 40, 49, 58"], 9.6)),
     ),
   ],
 };
@@ -124,8 +124,8 @@ const TAB_TV = tabel(
 );
 export const ADEGAN_BERLATIH_CERITA: AdeganStory = {
   id: "berlatih-cerita",
-  judul: "Latihan 2: soal cerita 6 sampai 8",
-  sumber: "Buku Siswa hlm. 100; Panduan Guru hlm. 132–133",
+  judul: "Latihan 6 sampai 8: soal cerita",
+  sumber: "Materi: latihan soal cerita",
   latar: "#F0FDFA",
   kutipan: [
     "Ali diberi tugas oleh guru untuk menata buku pada rak di perpustakaan.",
@@ -139,10 +139,10 @@ export const ADEGAN_BERLATIH_CERITA: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal enam: Ali menata lima buku di rak pertama, sembilan di rak kedua, tiga belas di rak ketiga. Selisihnya empat, jadi rak keempat tujuh belas dan rak kelima dua puluh satu buku.",
+      "Latihan enam: Ali menata lima pensil di rak pertama, sembilan di rak kedua, tiga belas di rak ketiga. Selisihnya empat, jadi rak keempat tujuh belas dan rak kelima dua puluh satu pensil.",
       bersih(0),
-      tambah(0, judul("Soal 6: rak buku")),
-      tambah("Ali", emo("rke", 150, 62, "📚", 24)),
+      tambah(0, judul("Latihan 6: rak pensil")),
+      tambah("Ali", emo("rke", 150, 62, "✏", 24)),
       tambah("lima", ...suku(D_RAK, 0), teks("rkl0", 46, 126, "rak 1", 8, W.coklat)),
       tambah("sembilan", ...suku(D_RAK, 1), teks("rkl1", 98, 126, "rak 2", 8, W.coklat)),
       tambah("tiga", ...suku(D_RAK, 2), teks("rkl2", 150, 126, "rak 3", 8, W.coklat)),
@@ -151,9 +151,9 @@ export const ADEGAN_BERLATIH_CERITA: AdeganStory = {
       tambah("kelima", ...suku(D_RAK, 4), ...B_RAK[3], teks("rkl4", 254, 126, "rak 5", 8, W.coklat)),
     ),
     k(
-      "Soal tujuh: gedung pertemuan punya sepuluh baris kursi. Baris pertama dua puluh kursi, baris kedua dua puluh tiga, baris ketiga dua puluh enam. Selisihnya tiga. Baris kelima tiga puluh dua kursi, baris ketujuh tiga puluh delapan kursi.",
+      "Latihan tujuh: aula punya sepuluh baris kursi. Baris pertama dua puluh kursi, baris kedua dua puluh tiga, baris ketiga dua puluh enam. Selisihnya tiga. Baris kelima tiga puluh dua kursi, baris ketujuh tiga puluh delapan kursi.",
       bersih(0),
-      tambah(0, judul("Soal 7: baris kursi")),
+      tambah(0, judul("Latihan 7: baris kursi")),
       tambah("pertama", ...suku(D_KURSI, 0)),
       tambah("kedua", ...suku(D_KURSI, 1)),
       tambah("ketiga", ...suku(D_KURSI, 2)),
@@ -164,9 +164,9 @@ export const ADEGAN_BERLATIH_CERITA: AdeganStory = {
       tambah("ketujuh", ...kartu("kuk", 40, 150, 220, 28, W.krem, ["baris 5: 32 kursi, baris 7: 38 kursi"], 9.4)),
     ),
     k(
-      "Soal delapan: pabrik televisi memproduksi tujuh puluh buah pada Januari, enam puluh empat pada Februari, lima puluh delapan pada Maret, dan lima puluh dua pada April. Polanya mengecil enam setiap bulan.",
+      "Latihan delapan: pabrik televisi memproduksi tujuh puluh buah pada Januari, enam puluh empat pada Februari, lima puluh delapan pada Maret, dan lima puluh dua pada April. Polanya mengecil enam setiap bulan.",
       bersih(0),
-      tambah(0, judul("Soal 8: produksi televisi")),
+      tambah(0, judul("Latihan 8: produksi televisi")),
       tambah("televisi", emo("tve", 238, 56, "📺", 30)),
       tambah("televisi", ...barisTabel(TAB_TV, "tv", 0)),
       tambah("Januari,", ...barisTabel(TAB_TV, "tv", 1)),
@@ -188,12 +188,12 @@ export const ADEGAN_BERLATIH_CERITA: AdeganStory = {
 
 /* ------------------------------ 9. Rekap beda dan diferensiasi (Panduan Guru hlm. 132-133) ------------------------------ */
 const BEDA_LATIH = ["+12", "+15", "−11", "−14", "+9", "+4", "+3", "−6"];
-const TAB_BEDA_1 = tabel("tb1", 20, 36, [50, 70], [["Soal", "Beda"], ...BEDA_LATIH.slice(0, 4).map((b, i) => [String(i + 1), b])], 17, 9);
-const TAB_BEDA_2 = tabel("tb2", 160, 36, [50, 70], [["Soal", "Beda"], ...BEDA_LATIH.slice(4).map((b, i) => [String(i + 5), b])], 17, 9);
+const TAB_BEDA_1 = tabel("tb1", 20, 36, [50, 70], [["Latihan", "Beda"], ...BEDA_LATIH.slice(0, 4).map((b, i) => [String(i + 1), b])], 17, 9);
+const TAB_BEDA_2 = tabel("tb2", 160, 36, [50, 70], [["Latihan", "Beda"], ...BEDA_LATIH.slice(4).map((b, i) => [String(i + 5), b])], 17, 9);
 export const ADEGAN_REKAP_BEDA: AdeganStory = {
   id: "rekap-beda",
-  judul: "Rekap beda dan diferensiasi",
-  sumber: "Panduan Guru hlm. 132–133",
+  judul: "Rekap beda tiap latihan",
+  sumber: "Materi: rekap beda dan cara belajar",
   latar: "#F5F3FF",
   kutipan: [
     "Selama proses pembelajaran sering terjadi adanya keberagaman",
@@ -208,9 +208,9 @@ export const ADEGAN_REKAP_BEDA: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Rekap delapan soal Ayo Berlatih: bedanya tambah dua belas, tambah lima belas, kurang sebelas, kurang empat belas, tambah sembilan, tambah empat, tambah tiga, dan kurang enam. Lima soal membesar, tiga soal mengecil.",
+      "Rekap delapan latihan tadi: bedanya tambah dua belas, tambah lima belas, kurang sebelas, kurang empat belas, tambah sembilan, tambah empat, tambah tiga, dan kurang enam. Lima soal membesar, tiga soal mengecil.",
       bersih(0),
-      tambah(0, judul("Beda tiap soal")),
+      tambah(0, judul("Beda tiap latihan")),
       tambah(0, ...barisTabel(TAB_BEDA_1, "tb1", 0), ...barisTabel(TAB_BEDA_2, "tb2", 0)),
       tambah("dua", ...barisTabel(TAB_BEDA_1, "tb1", 1)),
       tambah("lima", ...barisTabel(TAB_BEDA_1, "tb1", 2)),
@@ -224,8 +224,8 @@ export const ADEGAN_REKAP_BEDA: AdeganStory = {
       tambah("mengecil.", ...kartu("tbn", 160, 132, 120, 30, W.merahMuda, ["mengecil: 3 soal"], 9.4)),
     ),
     k(
-      "Panduan Guru tentang keberagaman murid: tingkatkan motivasi, ciptakan suasana belajar nyaman dan kreatif, pilih model pembelajaran yang tepat, lalu bentuk kelompok bervariasi dengan tutor sebaya.",
-      ...daftar("dk", "Diferensiasi", [
+      "Murid kita beragam, jadi guru perlu menjaga motivasi, menciptakan suasana belajar yang nyaman dan kreatif, memilih model pembelajaran yang tepat, lalu membentuk kelompok bervariasi dengan tutor sebaya.",
+      ...daftar("dk", "Belajar bersama", [
         { at: "motivasi,", t: "1. tingkatkan motivasi murid", w: W.hijauMuda, u: 9.4 },
         { at: "suasana", t: "2. suasana belajar nyaman dan kreatif", w: W.krem, u: 9 },
         { at: "model", t: "3. pilih model pembelajaran yang tepat", w: W.langit, u: 9 },
@@ -255,8 +255,8 @@ const FIG_UK4 = [
 const jawab = (id: string, x: number, isi: string) => [kotak(`${id}-k`, x, 76, 36, 30, W.hijauMuda, W.hijau, { rx: 6 }), teks(`${id}-v`, x + 18, 96, isi, 14, W.hijau)];
 export const ADEGAN_UK_GAMBAR: AdeganStory = {
   id: "uk-gambar",
-  judul: "Uji Kompetensi 1 sampai 4: pola gambar",
-  sumber: "Buku Siswa hlm. 101; Panduan Guru hlm. 134",
+  judul: "Uji 1 sampai 4: pola gambar",
+  sumber: "Materi: uji pola gambar",
   latar: "#FFF7ED",
   kutipan: [
     "Uji Kompetensi",
@@ -267,9 +267,9 @@ export const ADEGAN_UK_GAMBAR: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Uji Kompetensi memuat sepuluh soal. Soal satu sampai empat memakai pola gambar. Soal satu: bulatan hijau satu, tiga, lima, tujuh. Bedanya dua, jadi gambar berikutnya sembilan bulatan.",
+      "Sekarang kita uji kemampuan dengan sepuluh soal. Uji satu sampai empat memakai pola gambar. Uji satu: bulatan hijau satu, tiga, lima, tujuh. Bedanya dua, jadi gambar berikutnya sembilan bulatan.",
       bersih(0),
-      tambah(0, judul("Soal 1: bulatan")),
+      tambah(0, judul("Uji 1: bulatan")),
       tambah("satu@3", ...FIG_UK1[0], teks("u1a-v", 26, 140, "1", 11, W.biru)),
       tambah("tiga,", ...FIG_UK1[1], teks("u1b-v", 80, 140, "3", 11, W.biru)),
       tambah("lima,", ...FIG_UK1[2], teks("u1c-v", 138, 140, "5", 11, W.biru)),
@@ -278,9 +278,9 @@ export const ADEGAN_UK_GAMBAR: AdeganStory = {
       tambah("sembilan", ...jawab("u1z", 252, "9")),
     ),
     k(
-      "Soal dua: segi enam biru berjumlah dua, empat, enam. Naik dua demi dua, jadi gambar berikutnya delapan segi enam.",
+      "Uji dua: segi enam biru berjumlah dua, empat, enam. Naik dua demi dua, jadi gambar berikutnya delapan segi enam.",
       bersih(0),
-      tambah(0, judul("Soal 2: segi enam")),
+      tambah(0, judul("Uji 2: segi enam")),
       tambah("dua@2", ...FIG_UK2[0], teks("u2a-v", 46, 140, "2", 11, W.biru)),
       tambah("empat,", ...FIG_UK2[1], teks("u2b-v", 125, 140, "4", 11, W.biru)),
       tambah("enam@2", ...FIG_UK2[2], teks("u2c-v", 200, 140, "6", 11, W.biru)),
@@ -288,9 +288,9 @@ export const ADEGAN_UK_GAMBAR: AdeganStory = {
       tambah("delapan", ...jawab("u2z", 252, "8")),
     ),
     k(
-      "Soal tiga: tumpukan kaleng berisi sepuluh, delapan, dan enam kaleng. Turunnya dua demi dua, jadi gambar berikutnya empat kaleng.",
+      "Uji tiga: tumpukan kaleng berisi sepuluh, delapan, dan enam kaleng. Turunnya dua demi dua, jadi gambar berikutnya empat kaleng.",
       bersih(0),
-      tambah(0, judul("Soal 3: kaleng", W.merah)),
+      tambah(0, judul("Uji 3: kaleng", W.merah)),
       tambah("sepuluh,", ...FIG_UK3[0], teks("u3a-v", 55, 140, "10", 11, W.biru)),
       tambah("delapan,", ...FIG_UK3[1], teks("u3b-v", 130, 140, "8", 11, W.biru)),
       tambah("enam", ...FIG_UK3[2], teks("u3c-v", 205, 140, "6", 11, W.biru)),
@@ -298,15 +298,15 @@ export const ADEGAN_UK_GAMBAR: AdeganStory = {
       tambah("empat", ...jawab("u3z", 252, "4")),
     ),
     k(
-      "Soal empat: tembok batu bata berisi delapan belas, lima belas, dan dua belas bata. Turunnya tiga demi tiga, jadi berikutnya sembilan bata. Kunci Panduan Guru: sembilan, delapan, empat, sembilan.",
+      "Uji empat: tembok batu bata berisi delapan belas, lima belas, dan dua belas bata. Turunnya tiga demi tiga, jadi berikutnya sembilan bata. Jawaban keempat soal: sembilan, delapan, empat, sembilan.",
       bersih(0),
-      tambah(0, judul("Soal 4: batu bata", W.merah)),
+      tambah(0, judul("Uji 4: batu bata", W.merah)),
       tambah("delapan", ...FIG_UK4[0], teks("u4a-v", 44, 140, "18", 11, W.biru)),
       tambah("lima", ...FIG_UK4[1], teks("u4b-v", 119, 140, "15", 11, W.biru)),
       tambah("dua", ...FIG_UK4[2], teks("u4c-v", 194, 140, "12", 11, W.biru)),
       tambah("Turunnya", ...kartu("u4k", 60, 156, 120, 28, W.merahMuda, ["beda tetap: −3"], 9.6)),
       tambah("sembilan", ...jawab("u4z", 252, "9")),
-      tambah("Kunci", ...kartu("u4q", 190, 156, 100, 28, W.hijauMuda, ["kunci: 9, 8, 4, 9"], 8.8)),
+      tambah("Jawaban", ...kartu("u4q", 190, 156, 100, 28, W.hijauMuda, ["jawab: 9, 8, 4, 9"], 8.8)),
     ),
   ],
 };
@@ -324,8 +324,8 @@ const D_U8 = deret("v8", 34, 84, ["40", "34", "?", "22", "16", "?"], U6);
 const B_U8 = busurSemua("v8", 34, 84, ["−6", "−6", "−6", "−6", "−6"], U6);
 export const ADEGAN_UK_BILANGAN: AdeganStory = {
   id: "uk-bilangan",
-  judul: "Uji Kompetensi 5 sampai 8: pola bilangan",
-  sumber: "Buku Siswa hlm. 101–102; Panduan Guru hlm. 134",
+  judul: "Uji 5 sampai 8: pola bilangan",
+  sumber: "Materi: uji pola bilangan",
   latar: "#FFFBEB",
   kutipan: [
     "Tentukan bilangan yang tepat sesuai pola bilangan yang diberikan!",
@@ -336,18 +336,18 @@ export const ADEGAN_UK_BILANGAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal lima: lima, sembilan, tiga belas, tujuh belas. Selisihnya empat, jadi bilangan berikutnya dua puluh satu.",
+      "Uji lima: lima, sembilan, tiga belas, tujuh belas. Selisihnya empat, jadi bilangan berikutnya dua puluh satu.",
       bersih(0),
-      tambah(0, judul("Soal 5")),
+      tambah(0, judul("Uji 5")),
       ...muncul(D_U5, B_U5, ["lima@2", "sembilan,", "belas,", "belas@2", null], ["Selisihnya", "empat,", "jadi", null]),
       tambah("berikutnya", ...suku(D_U5, 4), ...B_U5[3]),
       tambah("berikutnya", ...kartu("v5k", 70, 140, 160, 28, W.krem, ["beda tetap: +4"], 10)),
       isiKotak("satu.", "v5", 4, "21"),
     ),
     k(
-      "Soal enam: enam, dua belas, kosong, dua puluh empat, kosong. Dari enam ke dua belas selisihnya enam, jadi kotak kosong itu delapan belas dan tiga puluh. Dua kali lipat tidak cocok, sebab dua puluh empat berada di urutan keempat.",
+      "Uji enam: enam, dua belas, kosong, dua puluh empat, kosong. Dari enam ke dua belas selisihnya enam, jadi kotak kosong itu delapan belas dan tiga puluh. Dua kali lipat tidak cocok, sebab dua puluh empat berada di urutan keempat.",
       bersih(0),
-      tambah(0, judul("Soal 6: kotak kosong")),
+      tambah(0, judul("Uji 6: kotak kosong")),
       ...muncul(D_U6, B_U6, ["enam@2", "belas,", "kosong,", "empat,", "kosong@2"]),
       tambah("selisihnya", ...B_U6[0], ...B_U6[1]),
       tambah("kosong@3", ...B_U6[2], ...B_U6[3]),
@@ -356,18 +356,18 @@ export const ADEGAN_UK_BILANGAN: AdeganStory = {
       tambah("lipat", ...kartu("v6k", 40, 140, 220, 28, W.krem, ["dikali 2? 6, 12, 24 ✖"], 9.6)),
     ),
     k(
-      "Soal tujuh: tiga puluh empat, dua puluh tujuh, dua puluh, tiga belas. Selisihnya kurang tujuh, jadi bilangan berikutnya enam.",
+      "Uji tujuh: tiga puluh empat, dua puluh tujuh, dua puluh, tiga belas. Selisihnya kurang tujuh, jadi bilangan berikutnya enam.",
       bersih(0),
-      tambah(0, judul("Soal 7", W.merah)),
+      tambah(0, judul("Uji 7", W.merah)),
       ...muncul(D_U7, B_U7, ["empat,", "tujuh@2", "puluh@3", "belas.", null], ["Selisihnya", "kurang", "tujuh@3", null]),
       tambah("berikutnya", ...suku(D_U7, 4), ...B_U7[3]),
       tambah("berikutnya", ...kartu("v7k", 70, 140, 160, 28, W.merahMuda, ["beda tetap: −7"], 10)),
       isiKotak("enam.", "v7", 4, "6"),
     ),
     k(
-      "Soal delapan: empat puluh, tiga puluh empat, kosong, dua puluh dua, enam belas, kosong. Selisihnya kurang enam, jadi dua kotak kosong itu dua puluh delapan dan sepuluh.",
+      "Uji delapan: empat puluh, tiga puluh empat, kosong, dua puluh dua, enam belas, kosong. Selisihnya kurang enam, jadi dua kotak kosong itu dua puluh delapan dan sepuluh.",
       bersih(0),
-      tambah(0, judul("Soal 8", W.merah)),
+      tambah(0, judul("Uji 8", W.merah)),
       ...muncul(D_U8, B_U8, ["puluh,", "empat@2", "kosong,", "dua@2", "belas,", "kosong@2"]),
       tambah("Selisihnya", ...B_U8[0], ...B_U8[1], ...B_U8[2], ...B_U8[3], ...B_U8[4]),
       isiKotak("delapan@2", "v8", 2, "28"),

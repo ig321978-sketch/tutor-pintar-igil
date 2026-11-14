@@ -81,7 +81,7 @@ const TAB_AMATI = tabel(
 export const ADEGAN_MENGAMATI: AdeganStory = {
   id: "mengamati",
   judul: "Ayo Mengamati dan Ayo Berpikir",
-  sumber: "Buku Siswa hlm. 95–97; Panduan Guru hlm. 131",
+  sumber: "Materi: mengamati dan berpikir",
   latar: "#FFFBEB",
   kutipan: [
     "Dapatkah kalian mengisi angka berikutnya?",
@@ -105,13 +105,13 @@ export const ADEGAN_MENGAMATI: AdeganStory = {
       tambah("Dapatkah", ...kartu("amq", 40, 136, 220, 30, W.krem, ["angka berikutnya?"], 10)),
     ),
     k(
-      "Ayo berpikir. Ada berapa bilangan di sana, dan berapa bilangan ke-enam? Seorang murid menjawab dua belas. Kata Ibu guru, jawaban itu kurang tepat.",
+      "Ayo berpikir. Ada berapa bilangan di sana, dan berapa bilangan ke-enam? Seorang murid menjawab dua belas. Ternyata jawaban itu kurang tepat.",
       bersih(0),
       tambah(0, judul("Ayo Berpikir")),
       tambah(0, teks("bk", 150, 66, "ada berapa bilangan? bilangan ke-6?", 9.6, W.coklat)),
       ...muncul(D_AMATI, [], [0, 1, 2, 3, 4, 5]),
       tambah("murid", ...kartu("amj", 20, 136, 110, 28, W.merahMuda, ["jawab: 12 ✖"], 9.6)),
-      tambah("Kata", ...kartu("amg", 150, 136, 130, 28, W.krem, ["kurang tepat"], 9.6)),
+      tambah("Ternyata", ...kartu("amg", 150, 136, 130, 28, W.krem, ["kurang tepat"], 9.6)),
     ),
     k(
       "Untuk tahu pola penyusunannya, amati hubungan antarbilangan lewat tabel urutan, bilangan, dan uraian. Mulai dari tiga, lalu tiga tambah dua, lima tambah dua, tujuh tambah dua, sembilan tambah dua.",
@@ -130,12 +130,12 @@ export const ADEGAN_MENGAMATI: AdeganStory = {
       tambah("bukan", ...kartu("amk", 40, 160, 220, 26, W.hijauMuda, ["ke-6 adalah 13, bukan 12"], 9.6)),
     ),
     k(
-      "Panduan Guru: murid menuliskan pola dalam tabel analisis, guru memberi contoh lain pola mengecil, menegaskan dua tipe pola, dan memberi contoh soal kehidupan sehari-hari.",
-      ...daftar("pg", "Panduan Guru: Ayo Berpikir", [
-        { at: "menuliskan", t: "murid menulis pola dalam tabel analisis", w: W.krem, u: 8.8 },
-        { at: "mengecil,", t: "guru memberi contoh pola mengecil", w: W.merahMuda, u: 9 },
-        { at: "menegaskan", t: "dua tipe: membesar dan mengecil", w: W.langit, u: 9 },
-        { at: "soal", t: "contoh soal kehidupan sehari-hari", w: W.hijauMuda, u: 9 },
+      "Langkah belajarnya: menuliskan pola dalam tabel analisis, mencari contoh pola yang mengecil, mengenali dua tipe pola, lalu menemukan soal dari kehidupan sehari-hari.",
+      ...daftar("pg", "Langkah belajar: Ayo Berpikir", [
+        { at: "menuliskan", t: "menulis pola dalam tabel analisis", w: W.krem, u: 8.8 },
+        { at: "mengecil,", t: "cari contoh pola mengecil", w: W.merahMuda, u: 9 },
+        { at: "mengenali", t: "kenali dua tipe: membesar, mengecil", w: W.langit, u: 9 },
+        { at: "soal", t: "temukan soal sehari-hari", w: W.hijauMuda, u: 9 },
       ]),
     ),
   ],
@@ -147,7 +147,7 @@ const B_K1 = busurSemua("c1", 24, 84, ["+3", "+3", "+3", "+3"], { bw: 36, gap: 1
 export const ADEGAN_KASUS_1: AdeganStory = {
   id: "kasus-1",
   judul: "Kasus 1: pola membesar",
-  sumber: "Buku Siswa hlm. 97",
+  sumber: "Materi: pola membesar",
   latar: "#F0FDF4",
   kutipan: [
     "Perhatikan berbagai macam kasus pola bilangan berikut.",
@@ -196,7 +196,7 @@ const D_KECIL = deret("ik", 41, 126, ["32", "28", "24", "20", "16"], { bw: 34, g
 export const ADEGAN_KASUS_2: AdeganStory = {
   id: "kasus-2",
   judul: "Kasus 2 dan Ingat!",
-  sumber: "Buku Siswa hlm. 98",
+  sumber: "Materi: pola mengecil dan ciri pola",
   latar: "#FEF2F2",
   kutipan: [
     "Kasus 2 :",
@@ -273,7 +273,7 @@ const B_TELUR2 = busurSemua("tf", 26, 84, ["+8", "+8", "+8", "+8"], { bw: 40, ga
 export const ADEGAN_TELUR: AdeganStory = {
   id: "telur",
   judul: "Contoh: hasil panen telur",
-  sumber: "Buku Siswa hlm. 98–99",
+  sumber: "Materi: pola dengan tabel, hasil panen telur",
   latar: "#FFF7ED",
   kutipan: [
     "Seorang peternak telur ayam mencatat hasil panen selama 5 hari berturut-",

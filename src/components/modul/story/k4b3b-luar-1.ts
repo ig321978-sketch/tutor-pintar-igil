@@ -6,15 +6,15 @@ import { bersih, k, tambah } from "./k4b3b-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk pola bilangan",
-  sumber: "Metode luar: pembuka; angka Buku Siswa hlm. 95–102",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana belajar pola bilangan dengan baik? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.",
+      "Bagaimana belajar pola bilangan dengan baik? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka pola bilangan yang sama.",
       bersih(0),
       tambah(0, judul("Empat metode dari luar")),
       tambah("berbagai", emo("gl", 150, 100, "🌍", 56)),
-      tambah("empat", ...kartu("pa", 30, 128, 240, 34, W.krem, ["pola bilangan: angka dari buku"], 9.4)),
+      tambah("empat", ...kartu("pa", 30, 128, 240, 34, W.krem, ["pola bilangan: angka yang sama"], 9.4)),
     ),
     k(
       "Empat metode itu: Arithmetic Sequence, Function Machine, Table of Values, dan Number Line Jumps.",
@@ -92,8 +92,8 @@ function ketukanAS(c: Kasus) {
 }
 export const ADEGAN_LUAR_AS_TERAPAN: AdeganStory = {
   id: "luar-as-terapan",
-  judul: "Arithmetic Sequence diterapkan pada angka buku",
-  sumber: "Metode luar: Arithmetic Sequence pada soal Buku Siswa",
+  judul: "Arithmetic Sequence diterapkan pada soal tadi",
+  sumber: "Metode luar: Arithmetic Sequence pada soal",
   latar: "#F0FDF4",
   ketukan: [
     ketukanAS({
@@ -205,8 +205,8 @@ function ketukanFM(c: KasusFM) {
 }
 export const ADEGAN_LUAR_FM_TERAPAN: AdeganStory = {
   id: "luar-fm-terapan",
-  judul: "Function Machine diterapkan pada angka buku",
-  sumber: "Metode luar: Function Machine pada soal Buku Siswa",
+  judul: "Function Machine diterapkan pada soal tadi",
+  sumber: "Metode luar: Function Machine pada soal",
   latar: "#EFF6FF",
   ketukan: [
     ketukanFM({
@@ -215,23 +215,23 @@ export const ADEGAN_LUAR_FM_TERAPAN: AdeganStory = {
       aturan: "× 2 + 1",
       masuk: "6",
       keluar: "13",
-      suara: "Pola tiga, lima, tujuh, sembilan, sebelas punya aturan: kali dua tambah satu. Masukan enam: enam kali dua tambah satu sama dengan tiga belas. Cocok dengan buku.",
+      suara: "Pola tiga, lima, tujuh, sembilan, sebelas punya aturan: kali dua tambah satu. Masukan enam: enam kali dua tambah satu sama dengan tiga belas. Cocok dengan hasil tadi.",
       mesinAt: "aturan:",
       masukAt: "Masukan",
       eq: "6 × 2 + 1 = 13",
       eqAt: "enam@2",
       keluarAt: "belas@2",
-      catatan: "cocok: suku ke-6 buku adalah 13",
+      catatan: "cocok: suku ke-6 adalah 13",
       catatanAt: "Cocok",
       warna: W.hijauMuda,
     }),
     ketukanFM({
       id: "fb",
-      judul: "Rak buku Ali",
+      judul: "Rak pensil Ali",
       aturan: "× 4 + 1",
       masuk: "5",
       keluar: "21",
-      suara: "Rak buku: lima, sembilan, tiga belas. Aturannya kali empat tambah satu. Rak kelima: lima kali empat tambah satu sama dengan dua puluh satu.",
+      suara: "Rak pensil: lima, sembilan, tiga belas. Aturannya kali empat tambah satu. Rak kelima: lima kali empat tambah satu sama dengan dua puluh satu.",
       mesinAt: "Aturannya",
       masukAt: "kelima:",
       eq: "5 × 4 + 1 = 21",
@@ -243,7 +243,7 @@ export const ADEGAN_LUAR_FM_TERAPAN: AdeganStory = {
     }),
     ketukanFM({
       id: "fk",
-      judul: "Kursi gedung pertemuan",
+      judul: "Kursi aula",
       aturan: "× 3 + 17",
       masuk: "7",
       keluar: "38",

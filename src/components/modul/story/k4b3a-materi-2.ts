@@ -6,18 +6,18 @@ const WARNA_KEL = [W.biruMuda, W.oranye, W.hijau, W.merahTua] as const;
 const KOL_SEL = [58, 44, 44, 44, 44, 50];
 
 /* ------------------------------ 5. Hitungan Aktivitas 1: selisih dan kumpulan keempat (Buku Siswa hlm. 88; Panduan Guru hlm. 126) ------------------------------ */
-const SUARA_H1 = "Mari isi tabel hitungannya. Buku tidak memberi kunci, jadi ini hitungan kita. Kelompok satu: satu, dua, tiga kelereng, selisihnya selalu satu, sehingga kumpulan keempat berisi empat.";
+const SUARA_H1 = "Mari isi tabel hitungannya bersama. Kelompok satu: satu, dua, tiga kelereng, selisihnya selalu satu, sehingga kumpulan keempat berisi empat.";
 const SUARA_H2 = "Kelompok dua: dua, empat, enam, selisihnya dua, jadi kumpulan keempat delapan. Kelompok tiga: satu, tiga, lima, selisihnya juga dua, jadi kumpulan keempat tujuh.";
 const SUARA_H3 = "Kelompok empat: dua, lima, delapan, selisihnya tiga, jadi kumpulan keempat sebelas. Selisih kumpulan satu dan dua sama dengan selisih kumpulan dua dan tiga, jadi bedanya tetap.";
 const SUARA_H4 = "Jawaban diskusi: polanya membesar, semakin ke kanan benda semakin banyak, sebab tiap kumpulan ditambah selisih yang sama. Kesimpulannya, pola gambar membesar bertambah dengan aturan yang tetap.";
 
-/** Tabel hitungan Aktivitas 1: kelompok, kumpulan 1 sampai 4, selisih (hitungan mandiri, buku tanpa kunci). */
+/** Tabel hitungan Aktivitas 1: kelompok, kumpulan 1 sampai 4, selisih (hitungan mandiri). */
 export const TABEL_AKTIVITAS_SATU: readonly (readonly string[])[] = KELOMPOK_MEMBESAR.map((b, i) => [String(i + 1), String(b[0]), String(b[1]), String(b[2]), String(b[2] + (b[2] - b[1])), String(b[1] - b[0])]);
 
 export const ADEGAN_AKTIVITAS_SATU_HASIL: AdeganStory = {
   id: "aktivitas-satu-hasil",
   judul: "Hitungan Aktivitas 1: selisih dan kumpulan ke-4",
-  sumber: "Buku Siswa hlm. 88; Panduan Guru hlm. 126",
+  sumber: "Materi: Selisih dan kumpulan ke-4",
   latar: "#EFF6FF",
   kutipan: [
     "Kumpulan-1",
@@ -66,7 +66,7 @@ const SUARA_J1 = "Ayo Mengamati. Di papan tulis ada jeruk: dua jeruk, empat jeru
 const SUARA_J2 = "Untuk menjawabnya, ingat kembali penjumlahan dan pengurangan bilangan cacah. Kumpulan satu berisi dua jeruk, kumpulan dua empat jeruk, kumpulan tiga enam jeruk. Jadi untuk kumpulan berikutnya tinggal menambahkan dua jeruk.";
 const SUARA_J3 = "Murid bertanya: jadi banyak jeruk pada kumpulan ke tujuh adalah dua dijumlahkan sebanyak tujuh kali, atau empat belas, ya Bu? Bu guru menjawab: betul sekali, bisa memakai tabel.";
 const SUARA_J4 = "Tabelnya: kumpulan satu dua, kumpulan dua empat, lalu enam, delapan, sepuluh, dua belas, dan kumpulan tujuh empat belas. Setiap baris sama dengan baris sebelumnya ditambah dua.";
-const SUARA_J5 = "Panduan guru menekankan: pola gambar membesar berarti benda yang muncul setelahnya semakin banyak. Guru boleh memberi contoh lain, dan meminta murid berpikir cara menentukan polanya dari gambar.";
+const SUARA_J5 = "Ingat, pola gambar membesar berarti benda yang muncul setelahnya semakin banyak. Sekarang coba kamu cari contoh lain, dan berpikir cara menentukan polanya dari gambar.";
 
 /** Kotak kumpulan jeruk: `n` jeruk dua baris dalam kotak (bx, by) lebar bw. Id `${id}-o{i}`. */
 const jerukDalam = (id: string, bx: number, bw: number, n: number, op = 1) => {
@@ -78,7 +78,7 @@ const jerukDalam = (id: string, bx: number, bw: number, n: number, op = 1) => {
 export const ADEGAN_AMATI_JERUK: AdeganStory = {
   id: "amati-jeruk",
   judul: "Ayo Mengamati: jeruk dan tabel sampai kumpulan ke-7",
-  sumber: "Buku Siswa hlm. 89–90; Panduan Guru hlm. 126",
+  sumber: "Materi: Jeruk dan tabel kumpulan ke-7",
   latar: "#FFF7ED",
   kutipan: [
     "Ayo Mengamati",
@@ -143,10 +143,10 @@ export const ADEGAN_AMATI_JERUK: AdeganStory = {
     k(
       SUARA_J5,
       bersih(0),
-      tambah(0, judul("Pesan panduan guru")),
+      tambah(0, judul("Pesan penting")),
       tambah("pola", ...kartu("jg1", 14, 34, 272, 38, W.hijauMuda, ["pola gambar membesar:", "benda setelahnya semakin banyak"], 8.8)),
-      tambah("contoh", ...kartu("jg2", 14, 80, 272, 30, W.langit, ["guru memberi contoh lain"], 9)),
-      tambah("berpikir", ...kartu("jg3", 14, 118, 272, 34, W.krem, ["murid berpikir cara menentukan pola"], 9)),
+      tambah("contoh", ...kartu("jg2", 14, 80, 272, 30, W.langit, ["cari contoh lain sendiri"], 9)),
+      tambah("berpikir", ...kartu("jg3", 14, 118, 272, 34, W.krem, ["berpikir cara menentukan pola"], 9)),
       tambah(idx(SUARA_J5, "gambar", 2), emo("jg4", 150, 180, "🤔", 26)),
     ),
   ],
@@ -159,19 +159,19 @@ export const JERUK_GAMBAR = JERUK;
 const SUARA_B1 = "Pola gambar mengecil. Bu guru mengingatkan, pada pola membesar semakin ke kanan benda semakin banyak. Tahukah kalian bahwa pola gambar juga ada yang mengecil?";
 const SUARA_B2 = "Aktivitas dua memakai kelereng atau batu kerikil, pensil, dan kertas. Langkahnya serupa: empat kelompok beranggotakan lima sampai enam orang, tiga kumpulan sesuai tabel, hitung benda dan selisihnya, temukan pola, diskusi, lalu presentasi.";
 const SUARA_B3 = "Tabel kumpulan kelereng menurun. Kelompok satu: empat, tiga, dua. Kelompok dua: enam, empat, dua. Kelompok tiga: tujuh, lima, tiga. Kelompok empat: delapan, enam, empat.";
-const SUARA_B4 = "Selisih tiap kumpulan: kelompok satu berkurang satu, kelompok dua, tiga, dan empat berkurang dua. Buku tidak memberi kunci, jadi ini hitungan kita. Kumpulan keempat: satu, nol, satu, dan dua kelereng.";
-const SUARA_B5 = "Kesimpulannya: semakin ke kanan benda semakin sedikit, selisihnya tetap, dan banyak benda selanjutnya diperoleh dengan mengurangi selisih itu. Panduan guru meminta guru memberi contoh lain pola gambar mengecil.";
+const SUARA_B4 = "Selisih tiap kumpulan: kelompok satu berkurang satu, kelompok dua, tiga, dan empat berkurang dua. Sekarang hitungan kita. Kumpulan keempat: satu, nol, satu, dan dua kelereng.";
+const SUARA_B5 = "Kesimpulannya: semakin ke kanan benda semakin sedikit, selisihnya tetap, dan banyak benda selanjutnya diperoleh dengan mengurangi selisih itu. Sekarang coba kamu cari contoh lain pola gambar mengecil.";
 
 const X_KUM = [92, 160, 232] as const;
 const Y_KEL = [38, 74, 110, 146] as const;
 
-/** Tabel hitungan Aktivitas 2: kelompok, kumpulan 1 sampai 4, selisih (hitungan mandiri, buku tanpa kunci). */
+/** Tabel hitungan Aktivitas 2: kelompok, kumpulan 1 sampai 4, selisih (hitungan mandiri). */
 export const TABEL_AKTIVITAS_DUA: readonly (readonly string[])[] = KELOMPOK_MENGECIL.map((b, i) => [String(i + 1), String(b[0]), String(b[1]), String(b[2]), String(b[2] - (b[1] - b[2])), `−${b[0] - b[1]}`]);
 
 export const ADEGAN_AKTIVITAS_DUA: AdeganStory = {
   id: "aktivitas-dua",
   judul: "Aktivitas 2: pola gambar mengecil",
-  sumber: "Buku Siswa hlm. 91–92; Panduan Guru hlm. 126–127",
+  sumber: "Materi: Pola gambar mengecil",
   latar: "#F5F3FF",
   kutipan: [
     "2. Pola Gambar Mengecil",
@@ -239,12 +239,12 @@ export const ADEGAN_AKTIVITAS_DUA: AdeganStory = {
 /* ------------------------------ 8. Ayo Mengamati: permen 9, 7, 5 dan tabel sampai kumpulan 5 (Buku Siswa hlm. 92–93; Panduan Guru hlm. 127) ------------------------------ */
 const SUARA_M1 = "Ayo Mengamati. Ada tiga kumpulan permen lolipop yang semakin sedikit: kumpulan satu sembilan, kumpulan dua tujuh, kumpulan tiga lima. Bagaimana bentuk kumpulan kelima, dan bagaimana cara menentukannya?";
 const SUARA_M2 = "Caranya sama dengan tabel jeruk, tetapi dikurangi. Kumpulan satu sembilan. Kumpulan dua sembilan dikurangi dua, jadi tujuh. Kumpulan tiga lima, kumpulan empat tiga, dan kumpulan lima satu.";
-const SUARA_M3 = "Hasil analisis: banyak permen pada kumpulan kelima hanya satu. Jumlah permen tiap kumpulan semakin lama semakin sedikit, atau mengecil. Panduan guru menegaskan dua tipe pola gambar, yaitu membesar dan mengecil.";
+const SUARA_M3 = "Hasil analisis: banyak permen pada kumpulan kelima hanya satu. Jumlah permen tiap kumpulan semakin lama semakin sedikit, atau mengecil. Jadi ada dua tipe pola gambar, yaitu membesar dan mengecil.";
 
 export const ADEGAN_AMATI_PERMEN: AdeganStory = {
   id: "amati-permen",
   judul: "Ayo Mengamati: permen dan tabel sampai kumpulan ke-5",
-  sumber: "Buku Siswa hlm. 92–93; Panduan Guru hlm. 127",
+  sumber: "Materi: Permen dan tabel kumpulan ke-5",
   latar: "#FDF2F8",
   kutipan: [
     "Kumpulan 1",

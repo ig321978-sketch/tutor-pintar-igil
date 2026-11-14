@@ -14,8 +14,8 @@ const D_BIO = deret("bi", 16.5, 84, ["10", "14", "18", "22", "26", "30", "34", "
 const B_BIO = busurSemua("bi", 16.5, 84, Array(9).fill("+4"), { ...BS, tinggi: 9 });
 export const ADEGAN_UK_CERITA: AdeganStory = {
   id: "uk-cerita",
-  judul: "Uji Kompetensi 9 dan 10: soal cerita",
-  sumber: "Buku Siswa hlm. 102; Panduan Guru hlm. 135",
+  judul: "Uji 9 dan 10: soal cerita",
+  sumber: "Materi: uji soal cerita",
   latar: "#F0FDF4",
   kutipan: [
     "Seorang petani sedang mencatat penjualan buah kelapa",
@@ -30,9 +30,9 @@ export const ADEGAN_UK_CERITA: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal sembilan: petani mencatat kelapa selama tujuh hari berturut-turut, dan jumlahnya menurun. Hari pertama tiga puluh enam, kedua tiga puluh satu, ketiga dua puluh enam, keempat dua puluh satu.",
+      "Uji sembilan: petani mencatat kelapa selama tujuh hari berturut-turut, dan jumlahnya menurun. Hari pertama tiga puluh enam, kedua tiga puluh satu, ketiga dua puluh enam, keempat dua puluh satu.",
       bersih(0),
-      tambah(0, judul("Soal 9: kelapa menurun", W.merah)),
+      tambah(0, judul("Uji 9: kelapa menurun", W.merah)),
       tambah("pertama", ...suku(D_KEL, 0)),
       tambah("kedua", ...suku(D_KEL, 1)),
       tambah("ketiga", ...suku(D_KEL, 2)),
@@ -43,7 +43,7 @@ export const ADEGAN_UK_CERITA: AdeganStory = {
       tambah("keempat", teks("klh", 150, 132, "hari 1 sampai hari 4", 9, W.coklat)),
     ),
     k(
-      "Selisihnya kurang lima setiap hari. Hari kelima enam belas, hari keenam sebelas, hari ketujuh enam. Jadi kelapa pada hari ketujuh adalah enam buah, sesuai kunci.",
+      "Selisihnya kurang lima setiap hari. Hari kelima enam belas, hari keenam sebelas, hari ketujuh enam. Jadi kelapa pada hari ketujuh adalah enam buah.",
       tambah("Selisihnya", teks("klb", 150, 146, "beda tetap: −5", 9.6, W.merah)),
       tambah("kelima", ...suku(D_KEL, 4), ...B_KEL[3]),
       tambah("keenam", ...suku(D_KEL, 5), ...B_KEL[4]),
@@ -60,9 +60,9 @@ export const ADEGAN_UK_CERITA: AdeganStory = {
       tambah("Tiga", ...kartu("kc3", 20, 124, 260, 30, W.hijauMuda, ["36 − 30 = 6"], 11)),
     ),
     k(
-      "Soal sepuluh: gedung bioskop punya sepuluh baris kursi. Baris pertama sepuluh kursi, baris kedua empat belas, baris ketiga delapan belas. Selisihnya empat.",
+      "Uji sepuluh: gedung bioskop punya sepuluh baris kursi. Baris pertama sepuluh kursi, baris kedua empat belas, baris ketiga delapan belas. Selisihnya empat.",
       bersih(0),
-      tambah(0, judul("Soal 10: kursi bioskop")),
+      tambah(0, judul("Uji 10: kursi bioskop")),
       tambah("pertama", ...suku(D_BIO, 0)),
       tambah("kedua", ...suku(D_BIO, 1)),
       tambah("ketiga", ...suku(D_BIO, 2)),
@@ -208,8 +208,8 @@ const G1 = [1, 2, 3, 4].map((n, i) => kisiPengayaan1(`g1${i}`, [28, 84, 140, 196
 const G2 = [1, 2, 3, 4].map((n, i) => kisiPengayaan2(`g2${i}`, [16, 66, 126, 196][i], 32, 7, n));
 export const ADEGAN_PENGAYAAN_1: AdeganStory = {
   id: "pengayaan-1",
-  judul: "Pengayaan 1 dan 2: persegi satuan",
-  sumber: "Panduan Guru hlm. 140–142",
+  judul: "Tantangan 1 dan 2: persegi satuan",
+  sumber: "Materi: tantangan persegi satuan",
   latar: "#EFF6FF",
   kutipan: [
     "Soal-soal Pengayaan",
@@ -223,9 +223,9 @@ export const ADEGAN_PENGAYAAN_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Pengayaan satu dan dua memakai persegi satuan. Pada soal satu, pola pertama punya satu persegi biru dan delapan putih. Tiap pola, biru bertambah satu dan putih bertambah dua: delapan, sepuluh, dua belas, empat belas. Jadi saat biru empat, putih empat belas.",
+      "Tantangan satu dan dua memakai persegi satuan. Pada tantangan satu, pola pertama punya satu persegi biru dan delapan putih. Tiap pola, biru bertambah satu dan putih bertambah dua: delapan, sepuluh, dua belas, empat belas. Jadi saat biru empat, putih empat belas.",
       bersih(0),
-      tambah(0, judul("Pengayaan 1: biru dan putih")),
+      tambah(0, judul("Tantangan 1: biru dan putih")),
       tambah("pertama", ...G1[0]),
       tambah("Tiap", ...G1[1], ...G1[2], ...G1[3], ...barisTabel(TAB_P1, "pa", 0), ...barisTabel(TAB_P1, "pa", 1)),
       tambah("putih@2", ...sel(TAB_P1, "pa", 2, 0)),
@@ -236,9 +236,9 @@ export const ADEGAN_PENGAYAAN_1: AdeganStory = {
       tambah("Jadi", ...kartu("pak", 40, 158, 220, 28, W.hijauMuda, ["biru 4 → putih 14"], 10)),
     ),
     k(
-      "Soal dua: persegi biru satu, empat, sembilan, enam belas, dalam kisi yang makin besar. Putihnya delapan, dua belas, enam belas, dua puluh, bertambah empat. Jadi saat biru enam belas, putih dua puluh.",
+      "Tantangan dua: persegi biru satu, empat, sembilan, enam belas, dalam kisi yang makin besar. Putihnya delapan, dua belas, enam belas, dua puluh, bertambah empat. Jadi saat biru enam belas, putih dua puluh.",
       bersih(0),
-      tambah(0, judul("Pengayaan 2: kisi makin besar")),
+      tambah(0, judul("Tantangan 2: kisi makin besar")),
       tambah(0, ...barisTabel(TAB_P2, "pb", 0), ...sel(TAB_P2, "pb", 1, 0), ...sel(TAB_P2, "pb", 2, 0)),
       tambah("satu,", ...G2[0], ...sel(TAB_P2, "pb", 1, 1)),
       tambah("empat,", ...G2[1], ...sel(TAB_P2, "pb", 1, 2)),
@@ -251,11 +251,11 @@ export const ADEGAN_PENGAYAAN_1: AdeganStory = {
       tambah("bertambah", ...kartu("pbk", 40, 158, 220, 28, W.krem, ["putih bertambah 4 tiap pola"], 9.6)),
     ),
     k(
-      "Cek sendiri: pola empat soal satu berukuran tiga kali enam, delapan belas kotak, biru empat, jadi putih empat belas. Pola empat soal dua berukuran enam kali enam, tiga puluh enam kotak, biru enam belas, jadi putih dua puluh.",
+      "Cek sendiri: pola empat tantangan satu berukuran tiga kali enam, delapan belas kotak, biru empat, jadi putih empat belas. Pola empat tantangan dua berukuran enam kali enam, tiga puluh enam kotak, biru enam belas, jadi putih dua puluh.",
       bersih(0),
       tambah(0, judul("Cek: kotak seluruhnya")),
-      tambah("Cek", ...kartu("pc1", 12, 38, 276, 54, W.hijauMuda, ["soal 1, pola 4: 3 × 6 = 18 kotak", "18 − 4 = 14 putih"], 10.4)),
-      tambah("Pola@2", ...kartu("pc2", 12, 104, 276, 54, W.langit, ["soal 2, pola 4: 6 × 6 = 36 kotak", "36 − 16 = 20 putih"], 10.4)),
+      tambah("Cek", ...kartu("pc1", 12, 38, 276, 54, W.hijauMuda, ["tantangan 1, pola 4: 3 × 6 = 18 kotak", "18 − 4 = 14 putih"], 10.4)),
+      tambah("Pola@2", ...kartu("pc2", 12, 104, 276, 54, W.langit, ["tantangan 2, pola 4: 6 × 6 = 36 kotak", "36 − 16 = 20 putih"], 10.4)),
     ),
   ],
 };
@@ -272,8 +272,8 @@ const D_P5 = deret("p5", 24, 84, ["50", "49", "47", "44", "40"], P4);
 const B_P5 = busurSemua("p5", 24, 84, ["−1", "−2", "−3", "−4"], P4);
 export const ADEGAN_PENGAYAAN_2: AdeganStory = {
   id: "pengayaan-2",
-  judul: "Pengayaan 3 sampai 5: beda berubah",
-  sumber: "Panduan Guru hlm. 140–143",
+  judul: "Tantangan 3 sampai 5: beda berubah",
+  sumber: "Materi: tantangan beda berubah",
   latar: "#FFFBEB",
   kutipan: [
     "Tentukan banyak benda selanjutnya sesuai pola gambar yang diberikan!",
@@ -286,9 +286,9 @@ export const ADEGAN_PENGAYAAN_2: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Pengayaan tiga: tumpukan kaleng sepuluh, sembilan, tujuh. Berkurang satu, lalu dua, jadi berikutnya berkurang tiga, yaitu empat kaleng.",
+      "Tantangan tiga: tumpukan kaleng sepuluh, sembilan, tujuh. Berkurang satu, lalu dua, jadi berikutnya berkurang tiga, yaitu empat kaleng.",
       bersih(0),
-      tambah(0, judul("Pengayaan 3: kaleng", W.merah)),
+      tambah(0, judul("Tantangan 3: kaleng", W.merah)),
       tambah("sepuluh,", ...KAL[0], ...suku(D_P3, 0)),
       tambah("sembilan,", ...KAL[1], ...suku(D_P3, 1)),
       tambah("tujuh.", ...KAL[2], ...suku(D_P3, 2)),
@@ -298,9 +298,9 @@ export const ADEGAN_PENGAYAAN_2: AdeganStory = {
       tambah("empat", ...KAL[3], ...suku(D_P3, 3)),
     ),
     k(
-      "Pengayaan empat: sepuluh, sebelas, tiga belas, enam belas. Bedanya tidak tetap: tambah satu, tambah dua, tambah tiga. Beda berikutnya tambah empat, jadi bilangan berikutnya dua puluh.",
+      "Tantangan empat: sepuluh, sebelas, tiga belas, enam belas. Bedanya tidak tetap: tambah satu, tambah dua, tambah tiga. Beda berikutnya tambah empat, jadi bilangan berikutnya dua puluh.",
       bersih(0),
-      tambah(0, judul("Pengayaan 4: beda bertambah")),
+      tambah(0, judul("Tantangan 4: beda bertambah")),
       tambah("sepuluh,", ...suku(D_P4, 0)),
       tambah("sebelas,", ...suku(D_P4, 1)),
       tambah("belas@2", ...suku(D_P4, 2)),
@@ -313,9 +313,9 @@ export const ADEGAN_PENGAYAAN_2: AdeganStory = {
       tambah("tidak", teks("p4t", 150, 132, "beda berubah: +1, +2, +3, +4", 9.6, W.coklat)),
     ),
     k(
-      "Pengayaan lima: lima puluh, empat puluh sembilan, empat puluh tujuh, empat puluh empat. Dikurangi satu, dua, tiga, jadi berikutnya dikurangi empat, yaitu empat puluh.",
+      "Tantangan lima: lima puluh, empat puluh sembilan, empat puluh tujuh, empat puluh empat. Dikurangi satu, dua, tiga, jadi berikutnya dikurangi empat, yaitu empat puluh.",
       bersih(0),
-      tambah(0, judul("Pengayaan 5: beda bertambah", W.merah)),
+      tambah(0, judul("Tantangan 5: beda bertambah", W.merah)),
       tambah("puluh,", ...suku(D_P5, 0)),
       tambah("sembilan,", ...suku(D_P5, 1)),
       tambah("tujuh,", ...suku(D_P5, 2)),
@@ -328,9 +328,9 @@ export const ADEGAN_PENGAYAAN_2: AdeganStory = {
       tambah("yaitu", teks("p5t", 150, 132, "beda berubah: −1, −2, −3, −4", 9.6, W.coklat)),
     ),
     k(
-      "Pada pengayaan tiga sampai lima, bedanya sendiri berpola, naik atau turun satu setiap langkah. Beda tetap adalah dasarnya, beda yang berubah adalah tantangan.",
+      "Pada tantangan tiga sampai lima, bedanya sendiri berpola, naik atau turun satu setiap langkah. Beda tetap adalah dasarnya, beda yang berubah adalah tantangan.",
       ...daftar("pt", "Dua macam beda", [
-        { at: "bedanya", t: "pengayaan 3 sampai 5: beda berpola", w: W.pink, u: 9.2 },
+        { at: "bedanya", t: "tantangan 3 sampai 5: beda berpola", w: W.pink, u: 9.2 },
         { at: "tetap", t: "beda tetap: dasar", w: W.hijauMuda, u: 10 },
         { at: "berubah", t: "beda berubah: tantangan", w: W.langit, u: 10 },
       ]),

@@ -224,10 +224,10 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
 };
 
 /* ------------------------------ 4. Aktivitas 1: pola gambar membesar (Buku Siswa hlm. 87–88; Panduan Guru hlm. 125–126) ------------------------------ */
-const SUARA_AK1 = "Subbab A dibuka dengan rak buku. Bintang di atasnya berjumlah satu, tiga, lalu lima. Tahukah kalian? Susunan gambar yang ditata dapat membentuk sebuah pola tertentu.";
+const SUARA_AK1 = "Kita mulai dengan sebuah rak. Bintang di atasnya berjumlah satu, tiga, lalu lima. Perhatikan, susunan gambar yang ditata dapat membentuk sebuah pola tertentu.";
 const SUARA_AK2 = "Aktivitas satu, pola gambar membesar. Alat dan bahan: kelereng atau batu kerikil, alat tulis, dan kertas. Buatlah empat kelompok beranggotakan lima sampai enam orang.";
 const SUARA_AK3 = "Langkah dua: susun kelereng menjadi tiga kumpulan sesuai tabel. Kelompok satu: satu, dua, tiga kelereng. Kelompok dua: dua, empat, enam. Kelompok tiga: satu, tiga, lima. Kelompok empat: dua, lima, delapan.";
-const SUARA_AK4 = "Panduan guru: bagi kelas menjadi empat kelompok heterogen. Tiap kelompok mendapat permasalahan pola gambar membesar yang berbeda, dan memakai alat peraga. Guru bertanya, dapatkah murid menemukan polanya dan banyak benda setelahnya?";
+const SUARA_AK4 = "Sekarang kelas kita bagi menjadi empat kelompok heterogen. Tiap kelompok mendapat permasalahan pola gambar membesar yang berbeda, dan memakai alat peraga. Coba kamu temukan polanya dan banyak benda setelahnya, bisakah?";
 const SUARA_AK5 = "Langkah tiga sampai enam: hitung banyak benda serta selisihnya dalam tabel, temukan pola lewat diskusi, jawab lima pertanyaan, lalu presentasikan di depan kelas. Kelompok lain boleh bertanya.";
 
 const X_KUM = [92, 160, 232] as const;
@@ -237,7 +237,7 @@ const WARNA_KEL = [W.biruMuda, W.oranye, W.hijau, W.merahTua] as const;
 export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
   id: "aktivitas-satu",
   judul: "Aktivitas 1: pola gambar membesar",
-  sumber: "Buku Siswa hlm. 87–88; Panduan Guru hlm. 125–126",
+  sumber: "Materi: Pola gambar membesar",
   latar: "#F0F9FF",
   kutipan: [
     "A. Pola Gambar",
@@ -263,11 +263,11 @@ export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
   ketukan: [
     k(
       SUARA_AK1,
-      tambah(0, judul("Subbab A: rak buku dan bintang")),
-      tambah("rak", kotak("rk", 30, 96, 130, 60, W.emas, W.coklat, { rx: 3, tebal: 2 }), teks("rkt", 95, 130, "rak buku", 9, W.coklat)),
+      tambah(0, judul("Rak dan bintang")),
+      tambah("rak", kotak("rk", 30, 96, 130, 60, W.emas, W.coklat, { rx: 3, tebal: 2 }), teks("rkt", 95, 130, "rak", 9, W.coklat)),
       tambah("Bintang", ...benda("bt1", 190, 50, 1, 1, 14, 5, W.emas, W.coklat), ...benda("bt2", 190, 76, 3, 3, 14, 5, W.hijau, W.coklat), ...benda("bt3", 190, 102, 5, 5, 14, 5, W.biruMuda, W.coklat)),
       tambah("tiga,", teks("bn1", 175, 54, "1", 9, W.biru), teks("bn3", 175, 80, "3", 9, W.biru), teks("bn5", 175, 106, "5", 9, W.biru)),
-      tambah("Tahukah", ...kartu("bp", 20, 160, 260, 32, W.langit, ["susunan gambar yang ditata", "membentuk sebuah pola"], 8.2)),
+      tambah("Perhatikan,", ...kartu("bp", 20, 160, 260, 32, W.langit, ["susunan gambar yang ditata", "membentuk sebuah pola"], 8.2)),
     ),
     k(
       SUARA_AK2,
@@ -289,11 +289,11 @@ export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
     k(
       SUARA_AK4,
       bersih(0),
-      tambah(0, judul("Peran guru dalam Aktivitas 1")),
+      tambah(0, judul("Kelompok dan tugasnya")),
       tambah("empat", ...kartu("ag1", 14, 32, 272, 30, W.hijauMuda, ["4 kelompok heterogen"], 9)),
       tambah("berbeda,", ...kartu("ag2", 14, 68, 272, 30, W.langit, ["tiap kelompok: permasalahan yang berbeda"], 8.6)),
       tambah("peraga.", ...kartu("ag3", 14, 104, 272, 30, W.krem, ["memakai alat peraga"], 9)),
-      tambah("bertanya,", ...kartu("ag4", 14, 140, 272, 40, W.emas, ["dapatkah menemukan pola dan", "banyak benda setelahnya?"], 8.8)),
+      tambah("temukan", ...kartu("ag4", 14, 140, 272, 40, W.emas, ["dapatkah kamu menemukan pola dan", "banyak benda setelahnya?"], 8.8)),
     ),
     k(
       SUARA_AK5,

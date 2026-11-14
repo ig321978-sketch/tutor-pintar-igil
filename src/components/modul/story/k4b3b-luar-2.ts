@@ -92,8 +92,8 @@ const TAB_U8 = tabel(
 const isi = (id: string, r: number, nilai: string, warna: string): Aksi[] => [{ ubah: [{ id: `${id}-t${r}1`, isi: nilai, warna }, { id: `${id}-s${r}1`, warna: W.hijauMuda }] }];
 export const ADEGAN_LUAR_TV_TERAPAN: AdeganStory = {
   id: "luar-tv-terapan",
-  judul: "Table of Values diterapkan pada angka buku",
-  sumber: "Metode luar: Table of Values pada soal Buku Siswa",
+  judul: "Table of Values diterapkan pada soal tadi",
+  sumber: "Metode luar: Table of Values pada soal",
   latar: "#FEFCE8",
   ketukan: [
     k(
@@ -116,10 +116,10 @@ export const ADEGAN_LUAR_TV_TERAPAN: AdeganStory = {
       ...isi("tl", 6, "58", W.hijau).map((a) => ({ ...a, at: "delapan@2" })),
     ),
     k(
-      "Soal delapan Uji Kompetensi: empat puluh, tiga puluh empat, kosong, dua puluh dua, enam belas, kosong.",
+      "Uji delapan: empat puluh, tiga puluh empat, kosong, dua puluh dua, enam belas, kosong.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 8: isi tabel", W.merah)),
-      tambah("Soal", ...sel(TAB_U8, "tm", [0], [0, 1, 2])),
+      tambah(0, judul("Uji 8: isi tabel", W.merah)),
+      tambah("Uji", ...sel(TAB_U8, "tm", [0], [0, 1, 2])),
       tambah("puluh,", ...sel(TAB_U8, "tm", [1], [0, 1])),
       tambah("empat@2", ...sel(TAB_U8, "tm", [2], [0, 1])),
       tambah("kosong,", ...sel(TAB_U8, "tm", [3], [0, 1])),
@@ -178,9 +178,9 @@ export const ADEGAN_LUAR_NJ: AdeganStory = {
       tambah("kiri.", ...loncat("kbj0", 150, LB.px(8), LB.px(3), "−5", 18), teks("kbt", 252, 118, "ke kiri", 9, W.merah)),
     ),
     k(
-      "Dalam kunci Panduan Guru, loncatan digambar sebagai busur di antara kotak: tambah satu, tambah dua, tambah tiga, tambah empat. Panjang loncatan boleh berubah.",
+      "Pada deret bilangan, loncatan digambar sebagai busur di antara kotak: tambah satu, tambah dua, tambah tiga, tambah empat. Panjang loncatan boleh berubah.",
       bersih(0),
-      tambah(0, judul("Busur loncatan di buku")),
+      tambah(0, judul("Busur loncatan di antara kotak")),
       ...muncul(D_KJ, B_KJ, ["kotak:", "kotak:", "kotak:", "kotak:", "kotak:"], ["satu,", "dua,", "tiga,", "empat."]),
       tambah("Panjang", ...kartu("kd2", 40, 136, 220, 28, W.krem, ["panjang loncatan boleh berubah"], 9.4)),
     ),
@@ -215,8 +215,8 @@ const NC = mk("nc", (b) => 10 + 2 * b);
 const ND = mk("nd", (b) => 10 + 2 * b);
 export const ADEGAN_LUAR_NJ_TERAPAN: AdeganStory = {
   id: "luar-nj-terapan",
-  judul: "Number Line Jumps diterapkan pada angka buku",
-  sumber: "Metode luar: Number Line Jumps pada soal Buku Siswa",
+  judul: "Number Line Jumps diterapkan pada soal tadi",
+  sumber: "Metode luar: Number Line Jumps pada soal",
   latar: "#ECFEFF",
   ketukan: [
     k(
@@ -244,9 +244,9 @@ export const ADEGAN_LUAR_NJ_TERAPAN: AdeganStory = {
       tambah("tiga@3", ...NB.loncatan[3], ...NB.titik[4]),
     ),
     k(
-      "Pengayaan empat: sepuluh, sebelas, tiga belas, enam belas. Loncatannya satu, dua, tiga, lalu empat, makin panjang, dan mendarat di dua puluh.",
+      "Tantangan empat: sepuluh, sebelas, tiga belas, enam belas. Loncatannya satu, dua, tiga, lalu empat, makin panjang, dan mendarat di dua puluh.",
       bersih(0),
-      tambah(0, judul("Pengayaan 4: loncatan makin panjang")),
+      tambah(0, judul("Tantangan 4: loncatan makin panjang")),
       tambah(0, ...NC.g.objs),
       tambah("sepuluh,", ...NC.titik[0]),
       tambah("sebelas,", ...NC.titik[1]),
@@ -259,9 +259,9 @@ export const ADEGAN_LUAR_NJ_TERAPAN: AdeganStory = {
       tambah("makin", ...kartu("nck", 40, 156, 220, 28, W.krem, ["beda berubah: +1, +2, +3, +4"], 9.6)),
     ),
     k(
-      "Pengayaan lima: lima puluh, empat puluh sembilan, empat puluh tujuh, empat puluh empat. Loncatan ke kiri satu, dua, tiga, lalu empat mendarat di empat puluh.",
+      "Tantangan lima: lima puluh, empat puluh sembilan, empat puluh tujuh, empat puluh empat. Loncatan ke kiri satu, dua, tiga, lalu empat mendarat di empat puluh.",
       bersih(0),
-      tambah(0, judul("Pengayaan 5: ke kiri makin panjang", W.merah)),
+      tambah(0, judul("Tantangan 5: ke kiri makin panjang", W.merah)),
       tambah(0, ...ND.g.objs),
       tambah("puluh,", ...ND.titik[0]),
       tambah("sembilan,", ...ND.titik[1]),
@@ -281,7 +281,7 @@ export const ADEGAN_LUAR_NJ_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan empat metode luar",
-  sumber: "Ringkasan metode luar: telur Buku Siswa hlm. 98–99",
+  sumber: "Metode luar: ringkasan",
   latar: "#F5F3FF",
   ketukan: [
     k(
@@ -303,10 +303,10 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("loncatan", ...kartu("rt4", 12, 150, 276, 30, W.pink, ["Loncatan: 20 → 28 → 36 → 44 → 52"], 9.4)),
     ),
     k(
-      "Metode luar hanya tambahan. Jawaban resmi tetap mengikuti buku: cari bedanya, tulis dalam tabel, lalu lanjutkan polanya.",
-      ...daftar("rz", "Tetap ikuti buku", [
+      "Metode luar hanya tambahan. Cara utama kita tetap sama: cari bedanya, tulis dalam tabel, lalu lanjutkan polanya.",
+      ...daftar("rz", "Cara utama tetap", [
         { at: "tambahan.", t: "metode luar: tambahan", w: W.krem, u: 10 },
-        { at: "buku:", t: "resmi: cari beda, tabel, lanjutkan", w: W.hijauMuda, u: 9.4 },
+        { at: "sama:", t: "utama: cari beda, tabel, lanjutkan", w: W.hijauMuda, u: 9.4 },
       ]),
     ),
   ],

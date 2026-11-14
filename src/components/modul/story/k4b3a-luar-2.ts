@@ -61,15 +61,15 @@ export const ADEGAN_LUAR_STRUKTUR: AdeganStory = {
 };
 
 /* ------------------------------ 7. Visual Structure: penerapan pada semangka dan bola sepak (Buku Siswa hlm. 93) ------------------------------ */
-const SUARA_W1 = "Semangka di buku, kumpulan kedua: bingkai tiga kali tiga tanpa tengah, delapan semangka. Terbagi empat bagian sama, tiap bagian dua semangka.";
+const SUARA_W1 = "Semangka, kumpulan kedua: bingkai tiga kali tiga tanpa tengah, delapan semangka. Terbagi empat bagian sama, tiap bagian dua semangka.";
 const SUARA_W2 = "Kumpulan ketiga: bingkai empat kali empat tanpa tengah, dua belas semangka. Empat bagian, tiap bagian tiga semangka. Bagiannya bertambah satu, jadi totalnya bertambah empat.";
-const SUARA_W3 = "Kumpulan keempat: tiap bagian empat semangka, jadi empat kali empat sama dengan enam belas. Cocok dengan kunci buku.";
+const SUARA_W3 = "Kumpulan keempat: tiap bagian empat semangka, jadi empat kali empat sama dengan enam belas. Cocok dengan hitungan tadi.";
 const SUARA_W4 = "Bola sepak: satu bola di pusat dan empat lengan. Panjang lengan nol, satu, dua, lalu tiga, jadi satu, lima, sembilan, dan tiga belas bola.";
 
 export const ADEGAN_LUAR_STRUKTUR_TERAPAN: AdeganStory = {
   id: "luar-struktur-terapan",
   judul: "Visual Structure pada semangka dan bola sepak",
-  sumber: "Metode luar: Visual Structure; BS hlm. 93",
+  sumber: "Metode luar: Visual Structure",
   latar: "#FEF3C7",
   ketukan: [
     k(
@@ -95,7 +95,7 @@ export const ADEGAN_LUAR_STRUKTUR_TERAPAN: AdeganStory = {
       tambah(0, judul("Semangka kumpulan 4")),
       tambah("tiap", ...cincinBagian("wc", 30, 52, 5, 16, 6, WARNA_SISI), teks("wc1", 215, 74, "4 bagian sama", 9.4, W.biru), teks("wc2", 215, 90, "tiap bagian: 4", 9.4, W.biru)),
       tambah("sama", teks("wc3", 215, 124, "4 × 4 = 16", 13, W.hijau)),
-      tambah("Cocok", ...kartu("wc4", 160, 144, 130, 28, W.emas, [`kunci buku: ${KUNCI_LATIHAN.semangka}`], 8.8)),
+      tambah("Cocok", ...kartu("wc4", 160, 144, 130, 28, W.emas, [`hitungan tadi: ${KUNCI_LATIHAN.semangka}`], 8.8)),
     ),
     k(
       SUARA_W4,
@@ -162,15 +162,15 @@ export const ADEGAN_LUAR_GAMBAR: AdeganStory = {
 };
 
 /* ------------------------------ 9. Draw the Next Term: penerapan pada bola, semangka, dan ubin (Buku Siswa hlm. 93–94) ------------------------------ */
-const SUARA_Y1 = "Terapkan pada bola sepak di buku: satu, lima, sembilan. Selisihnya empat dan empat. Tebakan kumpulan keempat: sembilan ditambah empat, yaitu tiga belas.";
+const SUARA_Y1 = "Terapkan pada bola sepak: satu, lima, sembilan. Selisihnya empat dan empat. Tebakan kumpulan keempat: sembilan ditambah empat, yaitu tiga belas.";
 const SUARA_Y2 = "Sekarang gambar kumpulan keempat: satu bola di pusat dan tiga bola pada tiap lengan. Hitung gambarnya: tiga belas bola. Tebakan sama dengan gambar, jadi aturannya benar.";
-const SUARA_Y3 = "Semangka di buku: empat, delapan, dua belas. Tebakan kumpulan keempat: dua belas ditambah empat, yaitu enam belas. Gambar bingkai lima kali lima tanpa tengah, hitung: enam belas. Sama.";
-const SUARA_Y4 = "Pola mengecil juga bisa diperiksa. Ubin belah ketupat di buku: tiga belas, sepuluh, tujuh. Tebakan: tujuh dikurangi tiga, yaitu empat. Gambar empat ubin dan hitung: empat, cocok dengan kunci buku.";
+const SUARA_Y3 = "Semangka: empat, delapan, dua belas. Tebakan kumpulan keempat: dua belas ditambah empat, yaitu enam belas. Gambar bingkai lima kali lima tanpa tengah, hitung: enam belas. Sama.";
+const SUARA_Y4 = "Pola mengecil juga bisa diperiksa. Ubin belah ketupat: tiga belas, sepuluh, tujuh. Tebakan: tujuh dikurangi tiga, yaitu empat. Gambar empat ubin dan hitung: empat, cocok dengan tebakan.";
 
 export const ADEGAN_LUAR_GAMBAR_TERAPAN: AdeganStory = {
   id: "luar-gambar-terapan",
   judul: "Draw the Next Term pada bola, semangka, dan ubin",
-  sumber: "Metode luar: Draw the Next Term; BS hlm. 93–94",
+  sumber: "Metode luar: Draw the Next Term",
   latar: "#FFF1F2",
   ketukan: [
     k(
@@ -195,7 +195,7 @@ export const ADEGAN_LUAR_GAMBAR_TERAPAN: AdeganStory = {
       SUARA_Y3,
       bersih(0),
       tambah(0, judul("Semangka: tebak, gambar, periksa")),
-      tambah("Semangka", teks("zh", 150, 40, "buku: 4, 8, 12", 9.4, W.biru)),
+      tambah("Semangka", teks("zh", 150, 40, "kumpulan: 4, 8, 12", 9.4, W.biru)),
       tambah("Tebakan", teks("zi", 210, 76, "tebakan:", 9, W.coklat), teks("zj", 210, 92, "12 + 4 = 16", 12, W.hijau)),
       tambah("Gambar", ...cincinBagian("zk", 30, 60, 5, 15, 5.5, SATU_WARNA)),
       tambah("hitung:", teks("zl", 210, 122, "hitung gambar: 16", 9.4, W.hijau)),
@@ -205,7 +205,7 @@ export const ADEGAN_LUAR_GAMBAR_TERAPAN: AdeganStory = {
       SUARA_Y4,
       bersih(0),
       tambah(0, judul("Pola mengecil: ubin")),
-      tambah("Ubin", teks("zn", 150, 40, "buku: 13, 10, 7", 9.4, W.biru)),
+      tambah("Ubin", teks("zn", 150, 40, "kumpulan: 13, 10, 7", 9.4, W.biru)),
       tambah("Tebakan", teks("zo", 215, 80, "tebakan:", 9, W.coklat), teks("zp", 215, 96, "7 − 3 = 4", 12, W.hijau)),
       tambah("Gambar", ...ubinBelah("zq", 30, 64, UBIN_PETA[3], 14, 8, "#FDE047")),
       tambah("hitung:", teks("zr", 215, 126, "hitung gambar: 4", 9.4, W.hijau)),
@@ -216,7 +216,7 @@ export const ADEGAN_LUAR_GAMBAR_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 10. Ringkasan metode luar ------------------------------ */
 const SUARA_Z1 = "Ringkasnya, empat metode dari luar: mengulang satuan, menambah selisih tetap, melihat bagian bentuk, dan menggambar lalu memeriksa.";
-const SUARA_Z2 = "Angka buku yang dipakai tadi: jeruk dua, empat, enam sampai empat belas; kelereng dua, lima, delapan; semangka empat, delapan, dua belas, enam belas; dan bola satu, lima, sembilan, tiga belas.";
+const SUARA_Z2 = "Angka yang kita pakai tadi: jeruk dua, empat, enam sampai empat belas; kelereng dua, lima, delapan; semangka empat, delapan, dua belas, enam belas; dan bola satu, lima, sembilan, tiga belas.";
 const SUARA_Z3 = "Pilih metode menurut gambarnya: aturan selisih untuk tabel, bagian bentuk untuk susunan yang teratur, dan selalu periksa dengan menggambar atau menghitung.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
@@ -233,7 +233,7 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_Z2,
       bersih(0),
-      tambah(0, judul("Angka buku yang dipakai")),
+      tambah(0, judul("Angka yang dipakai")),
       tambah("Angka", ...barisTabel("rt0", 20, 34, [70, 190], ["benda", "banyak tiap kumpulan"], 22, 8.6, true)),
       tambah("jeruk", ...barisTabel("rt1", 20, 56, [70, 190], ["jeruk", "2, 4, 6, ..., 14"], 22, 8.6)),
       tambah("kelereng", ...barisTabel("rt2", 20, 78, [70, 190], ["kelereng", "2, 5, 8 (lalu 11, 14)"], 22, 8.6)),

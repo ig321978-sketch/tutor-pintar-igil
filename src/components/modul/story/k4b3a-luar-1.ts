@@ -11,7 +11,7 @@ const IKON_METODE = ["🔁", "➕", "🧩", "✏"];
 const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana kita melihat pola pada gambar yang berubah? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana kita melihat pola pada gambar yang berubah? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai contoh jeruk, kelereng, semangka, dan bola.";
 const SUARA_O2 = "Empat metode itu: Repeating Pattern, Growing Pattern, Visual Structure, dan Draw the Next Term.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Pola Berulang, Pola Bertambah, Struktur Visual, dan Gambar Suku Berikutnya.";
 const SUARA_O4 = "Semuanya menjawab satu pertanyaan: bagaimana kumpulan berikutnya? Dengan mengulang satuan, menambah selisih tetap, melihat bagian bentuk, dan menggambar lalu memeriksa.";
@@ -19,7 +19,7 @@ const SUARA_O4 = "Semuanya menjawab satu pertanyaan: bagaimana kumpulan berikutn
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk membaca pola gambar",
-  sumber: "Metode luar: pembuka; BS hlm. 87–94",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -107,17 +107,17 @@ export const ADEGAN_LUAR_ULANG: AdeganStory = {
 };
 
 /* ------------------------------ 3. Repeating Pattern: penerapan pada jeruk dan permen (Buku Siswa hlm. 89–93) ------------------------------ */
-const SUARA_A1 = "Terapkan pada jeruk di buku. Kumpulan pertama dua jeruk. Satuan yang berulang adalah tambah dua jeruk.";
-const SUARA_A2 = "Kumpulan ketujuh memuat tujuh satuan dua jeruk. Tujuh satuan dua jeruk menjadi empat belas jeruk, sama dengan tabel di buku.";
-const SUARA_A3 = "Pola mengecil juga berulang. Permen di buku: sembilan, tujuh, lima. Satuan yang berulang adalah kurang dua permen.";
-const SUARA_A4 = "Ulangi kurang dua dari lima: tiga, lalu satu. Kumpulan kelima berisi satu permen, sama dengan tabel di buku.";
+const SUARA_A1 = "Terapkan pada jeruk. Kumpulan pertama dua jeruk. Satuan yang berulang adalah tambah dua jeruk.";
+const SUARA_A2 = "Kumpulan ketujuh memuat tujuh satuan dua jeruk. Tujuh satuan dua jeruk menjadi empat belas jeruk, sama dengan tabel jeruk.";
+const SUARA_A3 = "Pola mengecil juga berulang. Permen: sembilan, tujuh, lima. Satuan yang berulang adalah kurang dua permen.";
+const SUARA_A4 = "Ulangi kurang dua dari lima: tiga, lalu satu. Kumpulan kelima berisi satu permen, sama dengan tabel permen.";
 
 const X_PERMEN = [30, 90, 150, 210, 266] as const;
 
 export const ADEGAN_LUAR_ULANG_TERAPAN: AdeganStory = {
   id: "luar-ulang-terapan",
   judul: "Repeating Pattern pada jeruk dan permen",
-  sumber: "Metode luar: Repeating Pattern; BS hlm. 89–93",
+  sumber: "Metode luar: Repeating Pattern",
   latar: "#ECFDF5",
   ketukan: [
     k(
@@ -134,7 +134,7 @@ export const ADEGAN_LUAR_ULANG_TERAPAN: AdeganStory = {
       tambah("tujuh", ...Array.from({ length: 7 }, (_, i) => benda(`jy${i}`, 32 + i * 36, 66, 2, 1, 14, 5, W.oranye, W.coklat)).flat()),
       tambah("satuan", teks("jz1", 150, 112, "7 satuan, tiap satuan 2 jeruk", 9, W.coklat)),
       tambah("menjadi", teks("jz2", 150, 140, "7 × 2 = 14", 13, W.hijau)),
-      tambah("tabel", ...kartu("jz3", 40, 156, 220, 28, W.krem, ["sama dengan tabel di buku: 14"], 8.8)),
+      tambah("tabel", ...kartu("jz3", 40, 156, 220, 28, W.krem, ["sama dengan tabel jeruk: 14"], 8.8)),
     ),
     k(
       SUARA_A3,
@@ -147,7 +147,7 @@ export const ADEGAN_LUAR_ULANG_TERAPAN: AdeganStory = {
       SUARA_A4,
       tambah("tiga,", teks("pd3", 180, 56, "−2", 10, W.merah), ...benda("pa3", X_PERMEN[3] - 9, 70, 3, 3, 9, 3.6, W.merahTua, W.coklat), teks("pb3", X_PERMEN[3], 122, "3", 11, W.biru), teks("pc3", X_PERMEN[3], 136, "kumpulan 4", 7.6, W.coklat)),
       tambah("satu.", teks("pd4", 238, 56, "−2", 10, W.merah), ...benda("pa4", X_PERMEN[4] - 9, 70, 1, 3, 9, 3.6, W.merahTua, W.coklat), teks("pb4", X_PERMEN[4], 122, "1", 11, W.biru), teks("pc4", X_PERMEN[4], 136, "kumpulan 5", 7.6, W.coklat)),
-      tambah("sama", ...kartu("pe", 50, 154, 200, 28, W.emas, ["kumpulan 5: 1 permen, cocok dengan buku"], 8.2)),
+      tambah("sama", ...kartu("pe", 50, 154, 200, 28, W.emas, ["kumpulan 5: 1 permen, cocok dengan tabel"], 8.2)),
     ),
   ],
 };
@@ -203,7 +203,7 @@ export const ADEGAN_LUAR_TUMBUH: AdeganStory = {
 };
 
 /* ------------------------------ 5. Growing Pattern: penerapan pada kelereng (Buku Siswa hlm. 87–88 dan 91) ------------------------------ */
-const SUARA_H1 = "Terapkan pada kelompok empat kegiatan kelereng di buku: dua, lima, delapan kelereng. Buat tabel nomor kumpulan, banyak benda, dan selisih.";
+const SUARA_H1 = "Terapkan pada kelompok empat kegiatan kelereng: dua, lima, delapan kelereng. Buat tabel nomor kumpulan, banyak benda, dan selisih.";
 const SUARA_H2 = "Selisihnya tiga dan tiga, selalu sama. Jadi aturannya: tiap kumpulan bertambah tiga kelereng.";
 const SUARA_H3 = "Kumpulan keempat adalah delapan ditambah tiga, yaitu sebelas. Kumpulan kelima sebelas ditambah tiga, yaitu empat belas.";
 const SUARA_H4 = "Pola mengecil memakai aturan yang sama dengan tanda kurang. Kelompok tiga kegiatan mengecil: tujuh, lima, tiga. Selisihnya kurang dua, jadi kumpulan keempat satu.";
@@ -214,7 +214,7 @@ const hasil = (id: string, y: number, isi: string[]) => barisTabel(id, 60, y, KO
 export const ADEGAN_LUAR_TUMBUH_TERAPAN: AdeganStory = {
   id: "luar-tumbuh-terapan",
   judul: "Growing Pattern pada kelereng kelompok empat",
-  sumber: "Metode luar: Growing Pattern; BS hlm. 88, 91",
+  sumber: "Metode luar: Growing Pattern",
   latar: "#F5F3FF",
   ketukan: [
     k(
