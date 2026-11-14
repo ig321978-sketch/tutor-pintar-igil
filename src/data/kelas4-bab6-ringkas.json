@@ -726,41 +726,41 @@
           {
             "label": "Sepak Bola",
             "sel": [
-              "9",
-              "1",
-              "0"
+              "9 siswa",
+              "ke-1",
+              "0 siswa"
             ]
           },
           {
             "label": "Tari",
             "sel": [
-              "1",
-              "5",
-              "8"
+              "1 siswa",
+              "ke-5",
+              "8 siswa"
             ]
           },
           {
             "label": "Menyanyi",
             "sel": [
-              "5",
-              "3",
-              "4"
+              "5 siswa",
+              "ke-3",
+              "4 siswa"
             ]
           },
           {
             "label": "Catur",
             "sel": [
-              "2",
-              "4",
-              "7"
+              "2 siswa",
+              "ke-4",
+              "7 siswa"
             ]
           },
           {
             "label": "Basket",
             "sel": [
-              "6",
-              "2",
-              "3"
+              "6 siswa",
+              "ke-2",
+              "3 siswa"
             ]
           }
         ]
