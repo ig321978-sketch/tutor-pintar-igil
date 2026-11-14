@@ -312,38 +312,51 @@
         ]
       },
       "tabelSusun": {
-        "judul": "Tiga metode membaca dan menulis",
+        "judul": "Empat tempat pada 3.286",
         "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
-        "suara": "Tabel ini memuat tiga metode, cara melakukannya, contoh bilangan, dan hasil yang diharapkan.",
-        "pojok": "Metode",
+        "suara": "Tabel empat tempat pada bilangan tiga ribu dua ratus delapan puluh enam. Pasang kemasan, nilai satu kemasan, angka di tempat itu, dan cara membacanya.",
+        "pojok": "Tempat",
         "kolom": [
-          "Cara melakukannya",
-          "Contoh",
-          "Hasil yang diharapkan"
+          "Kemasan",
+          "Nilai satu",
+          "Angka di 3.286",
+          "Dibaca"
         ],
         "baris": [
           {
-            "label": "Kartu bilangan",
+            "label": "Ribuan",
             "sel": [
-              "Susun kartu angka",
-              "3.286",
-              "Bisa membaca bilangan"
+              "Peti",
+              "1.000",
+              "3",
+              "tiga ribu"
             ]
           },
           {
-            "label": "Tabel empat tempat",
+            "label": "Ratusan",
             "sel": [
-              "Isi tiap tempat, baca kiri",
-              "2.634",
-              "Bisa menulis bilangan"
+              "Dus",
+              "100",
+              "2",
+              "dua ratus"
             ]
           },
           {
-            "label": "Aturan nol",
+            "label": "Puluhan",
             "sel": [
-              "Nol dilewati, tapi ditulis",
-              "7.003",
-              "Bisa membaca & menulis nol"
+              "Bungkus",
+              "10",
+              "8",
+              "delapan puluh"
+            ]
+          },
+          {
+            "label": "Satuan",
+            "sel": [
+              "Benda",
+              "1",
+              "6",
+              "enam"
             ]
           }
         ]

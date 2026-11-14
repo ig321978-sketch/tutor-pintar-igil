@@ -79,3 +79,7 @@ Atas permintaan pemilik, Mind-Map (tahap 2) dan Infografis (tahap 3) Kelas 4 Bab
 - **Infografis susun.** Tabel dengan poin yang sama dengan Mind-Map: baris = metode, kolom "Cara melakukannya", "Hasil yang diharapkan", dan "Contoh" (angka sub-bab). Teks sel sama dengan atau ringkasan dari simpul peta. Ukuran tiap sub-bab: 3 baris x 3 kolom.
 - Beberapa isi disesuaikan agar lolos uji kebocoran konsep sub-bab berikutnya (`uji-lab-k4b1`): tanpa tanda kali di sub-bab B dan D, tanpa kata "urutan" di B.
 - Catatan pelaksanaan: beberapa agen sempat menjalankan `git stash` di repo bersama; semua berkas diperiksa ulang, dinormalkan ke LF, dan semua uji dijalankan ulang (uji-story a sampai i, uji-susun, uji-lab, uji-statis, uji-data, uji-skenario-umum, tsc, eslint).
+
+### Pembedaan fungsi Mind-Map dan Infografis (contoh Sub-Bab A, diterapkan dulu di A saja)
+- **Mind-Map** menunjukkan hubungan: topik terdiri dari apa saja (tiga cabang: metode yang dipakai, cara melakukannya, hasil yang diharapkan).
+- **Infografis** menunjukkan perbandingan dan contoh dengan angka sub-bab itu sendiri. Sub-Bab A: tabel "Empat tempat pada 3.286" (baris Ribuan, Ratusan, Puluhan, Satuan; kolom Kemasan, Nilai satu, Angka di 3.286, Dibaca), sehingga tab Infografis A berupa angka dan kata bilangan, bukan teks yang sama dengan peta. Sub-bab B sampai I masih memakai tabel metode lama; menunggu persetujuan pemilik sebelum diubah.
