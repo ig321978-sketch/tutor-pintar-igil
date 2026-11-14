@@ -1,0 +1,306 @@
+import type { AdeganStory } from "./logika-story";
+import { W, emo, judul, kartu, kotak, rumus, sel, tabel, teks } from "./k5b3c-gambar";
+import { bersih, k, tambah, warnai } from "./k5b3c-bantu";
+
+/** Kunci Uji Kompetensi (Panduan Guru hlm. 110): nomor 1 sampai 4 pecahan, nomor 5 sampai 10 benar atau salah. */
+export const KUNCI_TABEL = ["3/5", "13/60", "7/40", "1", "B", "S", "S", "B", "B", "S"];
+
+/* ------------------------------ 8. Ayo Berlatih (Buku Siswa hlm. 101 sampai 102) ------------------------------ */
+export const ADEGAN_LATIHAN: AdeganStory = {
+  id: "ayo-berlatih",
+  judul: "Ayo Berlatih: enam soal hitung dan dua soal cerita",
+  sumber: "Buku Siswa hlm. 101–102",
+  latar: "#FFF7ED",
+  kutipan: [
+    "Ayo Berlatih",
+    "Tuliskan hasil perhitungan berikut ini.",
+    "Joko akan membuat kue apem maka",
+    "Joko pergi belanja di Pasar Beringharjo.",
+    "Berapa kg berat seluruh",
+    "belanjaan Joko?",
+    "Persediaan gula jawa Ibu tinggal",
+    "Gula jawa tersebut digunakan untuk",
+    "gula jawa yang dimiliki Ibu?",
+  ],
+  ketukan: [
+    k(
+      "Ayo Berlatih nomor satu memuat enam soal. Soal a: satu per empat ditambah tiga per empat sama dengan satu utuh. Soal b: dua per tujuh dikurangi satu per tujuh sama dengan satu per tujuh.",
+      tambah(0, judul("Ayo Berlatih 1a dan 1b")),
+      tambah("empat", teks("la", 20, 76, "a.", 10, W.coklat), ...rumus("ra", 160, 72, "1/4 + 3/4 = 4/4 = 1", 19)),
+      tambah("tujuh", teks("lb", 20, 136, "b.", 10, W.coklat), ...rumus("rb", 160, 132, "2/7 − 1/7 = 1/7", 19)),
+    ),
+    k(
+      "Soal c: empat per lima ditambah satu per empat. KPK-nya dua puluh, jadi enam belas per dua puluh ditambah lima per dua puluh sama dengan satu satu per dua puluh.",
+      bersih(0),
+      tambah(0, judul("Ayo Berlatih 1c")),
+      tambah("KPK-nya", teks("kp", 150, 48, "KPK dari 5 dan 4 = 20", 10, W.coklat)),
+      tambah("empat", ...rumus("rc", 150, 90, "4/5 + 1/4 = 16/20 + 5/20", 17)),
+      tambah("sama", ...rumus("rd", 150, 144, "16/20 + 5/20 = 21/20 = 1 1/20", 17)),
+    ),
+    k(
+      "Soal d: satu per tiga dikurangi satu per lima. Dengan penyebut lima belas, lima per lima belas dikurangi tiga per lima belas sama dengan dua per lima belas.",
+      bersih(0),
+      tambah(0, judul("Ayo Berlatih 1d")),
+      tambah("Dengan", teks("kp", 150, 56, "KPK dari 3 dan 5 = 15", 10, W.coklat)),
+      tambah("satu", ...rumus("re", 150, 110, "1/3 − 1/5 = 5/15 − 3/15 = 2/15", 17)),
+    ),
+    k(
+      "Soal e: tiga per lima ditambah satu per tiga sama dengan empat belas per lima belas. Soal f: empat per enam dikurangi dua per empat sama dengan satu per enam.",
+      bersih(0),
+      tambah(0, judul("Ayo Berlatih 1e dan 1f")),
+      tambah("tiga", teks("le", 20, 76, "e.", 10, W.coklat), ...rumus("rf", 160, 72, "3/5 + 1/3 = 9/15 + 5/15 = 14/15", 16)),
+      tambah("Soal@2", teks("lf", 20, 140, "f.", 10, W.coklat), ...rumus("rg", 160, 136, "4/6 − 2/4 = 8/12 − 6/12 = 2/12 = 1/6", 16)),
+    ),
+    k(
+      "Soal dua: satu setengah kilogram ditambah dua setengah kilogram sama dengan empat kilogram. Soal tiga: dua satu per empat dikurangi dua satu per lima sama dengan satu per dua puluh kilogram.",
+      bersih(0),
+      tambah(0, judul("Soal cerita: Joko dan Ibu")),
+      tambah("Soal", emo("jk", 24, 74, "🍰", 26), ...rumus("rh", 160, 72, "1 1/2 + 2 1/2 = 4", 19), teks("jt", 160, 108, "berat belanjaan Joko (kg)", 9, W.coklat)),
+      tambah("tiga:", ...rumus("ri", 150, 140, "2 1/4 − 2 1/5 = 1/4 − 1/5 = 5/20 − 4/20 = 1/20", 15), teks("it", 150, 178, "sisa gula jawa Ibu (kg)", 9, W.coklat)),
+    ),
+  ],
+};
+
+/* ------------------------------ 9. Panduan Guru: tujuan, peran guru, miskonsepsi, diferensiasi (Panduan Guru hlm. 108 sampai 110) ------------------------------ */
+export const ADEGAN_MISKONSEPSI: AdeganStory = {
+  id: "miskonsepsi",
+  judul: "Panduan Guru: peran guru, miskonsepsi, dan diferensiasi",
+  sumber: "Panduan Guru hlm. 107–110",
+  latar: "#F0F9FF",
+  kutipan: [
+    "Tujuan dari aktivitas ini adalah untuk melakukan pengurangan pecahan.",
+    "Pada akhir kegiatan pembelajaran, peserta didik diminta",
+    "untuk membuat kesimpulan tentang cara termudah untuk menentukan",
+    "pengurangan bilangan pecahan.",
+    "Guru menjadi fasilitator.",
+    "Berikan kesempatan kepada peserta didik untuk mempresentasikan hasil",
+    "kerjanya.",
+    "Ajak peserta didik untuk menyimpulkan hal-hal penting yang harus",
+    "Kesalahan peserta didik yang mungkin terjadi adalah menyamakan penyebut",
+    "pecahan serta melakukan pengurangan pada bilangan campuran.",
+    "Bagi peserta didik dengan kecepatan belajar tinggi (advanced), minta",
+    "Setelah mempelajari bagian B ini,",
+    "penjumlahan bilangan yang sering mereka temui dalam kehidupan sehari-hari.",
+  ],
+  ketukan: [
+    k(
+      "Tujuan Eksplorasi tiga titik tiga menurut Panduan Guru: melakukan pengurangan pecahan berpenyebut sama dan berbeda. Pada akhir kegiatan, peserta didik membuat kesimpulan tentang cara termudah mengurangi pecahan.",
+      tambah(0, judul("Tujuan Eksplorasi 3.3")),
+      tambah("melakukan", ...kartu("t1", 20, 36, 260, 40, W.langit, ["melakukan pengurangan pecahan", "berpenyebut sama dan berbeda"], 9.4)),
+      tambah("kesimpulan", ...kartu("t2", 20, 92, 260, 40, W.hijauMuda, ["membuat kesimpulan:", "cara termudah mengurangi pecahan"], 9.4), emo("t3", 150, 172, "💡", 26)),
+    ),
+    k(
+      "Guru berperan sebagai fasilitator: berkeliling memeriksa kerja kelompok, memberi bimbingan, lalu meminta peserta didik mempresentasikan dan menyimpulkan hal penting.",
+      bersih(0),
+      tambah(0, judul("Peran guru")),
+      tambah("fasilitator:", emo("g1", 50, 84, "🚶", 28), ...kartu("g1k", 14, 98, 84, 40, W.langit, ["berkeliling,", "memeriksa"], 8.6)),
+      tambah("bimbingan", emo("g2", 150, 84, "🤝", 28), ...kartu("g2k", 108, 98, 84, 40, W.krem, ["bimbingan", "kelompok"], 8.6)),
+      tambah("mempresentasikan", emo("g3", 250, 84, "🎤", 28), ...kartu("g3k", 202, 98, 84, 40, W.hijauMuda, ["presentasi", "dan simpulan"], 8.6)),
+    ),
+    k(
+      "Miskonsepsi menurut buku: peserta didik keliru menyamakan penyebut, dan keliru mengurangkan pecahan campuran. Contoh kesalahan yang sering terjadi: dua per tiga dikurangi satu per dua ditulis satu per satu. Yang benar satu per enam.",
+      bersih(0),
+      tambah(0, judul("Miskonsepsi")),
+      tambah("Contoh", kotak("m1", 14, 40, 130, 84, W.merahMuda, W.merah, { rx: 8 }), teks("m1t", 79, 56, "kesalahan umum", 9, W.merah), ...rumus("m1r", 79, 92, "2/3 − 1/2 = 1/1", 13, W.biru, {}, false)),
+      tambah("ditulis", emo("m1e", 79, 152, "❌", 24)),
+      tambah("benar", kotak("m2", 156, 40, 130, 84, W.hijauMuda, W.hijau, { rx: 8 }), teks("m2t", 221, 56, "yang benar", 9, W.hijau), ...rumus("m2r", 221, 92, "2/3 − 1/2 = 1/6", 13), emo("m2e", 221, 152, "✅", 24)),
+    ),
+    k(
+      "Diferensiasi: yang cepat belajar mengerjakan latihan tanpa bantuan. Catatan guru: Diferensiasi dan Refleksi di bagian ini menyebut penjumlahan, dan pengalaman belajar menulis bagian B, padahal ini bagian C. Salinan dari Sub-Bab B.",
+      bersih(0),
+      tambah(0, judul("Diferensiasi dan catatan guru")),
+      tambah("Diferensiasi:", ...kartu("d1", 20, 34, 260, 34, W.hijauMuda, ["cepat belajar: latihan tanpa bantuan"], 9.4)),
+      tambah("Catatan", ...kartu("d2", 20, 80, 260, 34, W.merahMuda, ["tertulis: penjumlahan dan bagian B"], 9.4)),
+      tambah("padahal", ...kartu("d3", 20, 126, 260, 34, W.krem, ["seharusnya: pengurangan dan bagian C"], 9.4)),
+    ),
+  ],
+};
+
+/* ------------------------------ 10. Uji Kompetensi nomor 1 sampai 4 (Buku Siswa hlm. 103 sampai 104) ------------------------------ */
+export const ADEGAN_UK_1: AdeganStory = {
+  id: "uk-1",
+  judul: "Uji Kompetensi nomor 1 sampai 4",
+  sumber: "Buku Siswa hlm. 103–104; Panduan Guru hlm. 110",
+  latar: "#FDF4FF",
+  kutipan: [
+    "Uji Kompetensi",
+    "Populasi penduduk dari Kabupaten Sleman adalah",
+    "penduduk Kabupaten Kulonprogo",
+    "Berapa jumlah populasi penduduk dari",
+    "Kabupaten Sleman dan Kulonprogo?",
+    "Populasi suku Batak di Indonesia",
+    "Berapa jumlah populasi suku Batak dan suku",
+    "Jawa dari seluruh penduduk Indonesia?",
+    "Di daerah Nusa Tenggara Timur terdapat beberapa macam",
+    "bahasa yang digunakan sehari-hari.",
+    "Berapa bagian selisih penggunaan bahasa indonesia dan bahasa",
+    "daerah dalam percakapan sehari-hari?",
+    "Beni memiliki",
+    "Berapa bagian sisa bika",
+    "Ambon yang masih dimiliki Beni?",
+  ],
+  ketukan: [
+    k(
+      "Uji Kompetensi memuat sepuluh soal. Soal satu: penduduk Sleman dua per lima dan Kulonprogo satu per lima. Penyebutnya sama, jadi jumlahnya tiga per lima.",
+      tambah(0, judul("Uji Kompetensi 1")),
+      tambah("Sleman", ...sel("p", 40, 60, 220, 34, 5, [0, 1], W.langit), teks("p1", 84, 112, "Sleman 2/5", 9, W.biru)),
+      tambah("Kulonprogo", teks("p2", 200, 112, "Kulonprogo 1/5", 9, W.hijau)),
+      warnai("Kulonprogo", W.hijau, "p-c2"),
+      tambah("Penyebutnya", ...rumus("r", 150, 156, "2/5 + 1/5 = 3/5", 19)),
+    ),
+    k(
+      "Soal dua: suku Batak satu per dua puluh, suku Jawa satu per enam. KPK dari dua puluh dan enam adalah enam puluh, jadi jumlahnya tiga belas per enam puluh.",
+      bersih(0),
+      tambah(0, judul("Uji Kompetensi 2")),
+      tambah("Batak", teks("b1", 80, 44, "suku Batak 1/20", 9.4, W.biru)),
+      tambah("Jawa", teks("b2", 220, 44, "suku Jawa 1/6", 9.4, W.hijau)),
+      tambah("KPK", teks("kp", 150, 72, "KPK dari 20 dan 6 = 60", 10, W.coklat)),
+      tambah("jadi", ...rumus("r", 150, 118, "1/20 + 1/6 = 3/60 + 10/60 = 13/60", 17)),
+    ),
+    k(
+      "Soal tiga: bahasa Indonesia satu per delapan bagian dan bahasa daerah tiga per sepuluh. Selisihnya: KPK-nya empat puluh, jadi tujuh per empat puluh.",
+      bersih(0),
+      tambah(0, judul("Uji Kompetensi 3")),
+      tambah("bahasa", teks("c1", 80, 44, "bahasa Indonesia 1/8", 9, W.biru)),
+      tambah("daerah", teks("c2", 222, 44, "bahasa daerah 3/10", 9, W.hijau)),
+      tambah("KPK-nya", teks("kp", 150, 72, "KPK dari 8 dan 10 = 40", 10, W.coklat)),
+      tambah("jadi", ...rumus("r", 150, 118, "3/10 − 1/8 = 12/40 − 5/40 = 7/40", 17)),
+    ),
+    k(
+      "Soal empat: Beni punya satu satu per delapan bagian bika Ambon, dan satu per delapan bagian diberikan kepada neneknya. Sisanya satu bagian utuh, sebab satu per delapan dikurangi satu per delapan habis.",
+      bersih(0),
+      tambah(0, judul("Uji Kompetensi 4")),
+      tambah("Beni", emo("bk", 60, 84, "🍰", 32), teks("bt", 60, 112, "bika Ambon", 9, W.coklat)),
+      tambah("diberikan", ...rumus("r", 190, 84, "1 1/8 − 1/8 = 1", 19)),
+      tambah("Sisanya", ...kartu("bs", 60, 140, 180, 34, W.hijauMuda, ["sisa bika Ambon: 1 bagian utuh"], 9.4)),
+    ),
+  ],
+};
+
+/* ------------------------------ 11. Uji Kompetensi nomor 5 sampai 10, kunci, dan rubrik (Buku Siswa hlm. 104; Panduan Guru hlm. 110) ------------------------------ */
+export const ADEGAN_UK_2: AdeganStory = {
+  id: "uk-2",
+  judul: "Uji Kompetensi nomor 5 sampai 10, kunci, dan rubrik",
+  sumber: "Buku Siswa hlm. 104; Panduan Guru hlm. 110",
+  latar: "#FDF4FF",
+  kutipan: [
+    "Soal No 5–6",
+    "Berikan tanda centang (√) pada kolom yang sesuai dari pernyataan-",
+    "pernyataan berikut ini",
+    "Hasil pengurangan yang hasilnya",
+    "Hasil dari 6 – 3",
+    "Operasi penjumlahan yang hasilnya",
+    "A. Kunci Jawaban Uji Kompetensi",
+    "B. Rubrik Penilaian",
+    "SKOR BENAR x 10",
+  ],
+  ketukan: [
+    k(
+      "Soal lima sampai sepuluh berupa pernyataan benar atau salah. Soal lima: satu satu per delapan dikurangi satu per dua. Sembilan per delapan dikurangi empat per delapan sama dengan lima per delapan, jadi benar.",
+      tambah(0, judul("Uji Kompetensi 5")),
+      tambah("Soal@2", ...rumus("q", 150, 76, "1 1/8 − 1/2 = 9/8 − 4/8 = 5/8", 17)),
+      tambah("benar.@2", ...kartu("qs", 50, 128, 200, 34, W.hijauMuda, ["tertulis 5/8: BENAR"], 10), emo("qe", 150, 184, "✅", 20)),
+    ),
+    k(
+      "Soal enam: enam dikurangi tiga satu per delapan sama dengan dua tujuh per delapan, bukan tiga tujuh per delapan. Salah.",
+      bersih(0),
+      tambah(0, judul("Uji Kompetensi 6")),
+      tambah("Soal", ...rumus("q", 150, 76, "6 − 3 1/8 = 2 7/8", 19)),
+      tambah("bukan", ...kartu("qs", 50, 128, 200, 34, W.merahMuda, ["tertulis 3 7/8: SALAH"], 10), emo("qe", 150, 184, "❌", 20)),
+    ),
+    k(
+      "Soal tujuh: satu per empat ditambah satu satu per tiga sama dengan satu tujuh per dua belas, bukan satu lima per enam. Salah.",
+      bersih(0),
+      tambah(0, judul("Uji Kompetensi 7")),
+      tambah("Soal", ...rumus("q", 150, 76, "1/4 + 1 1/3 = 3/12 + 1 4/12 = 1 7/12", 16)),
+      tambah("bukan", ...kartu("qs", 50, 128, 200, 34, W.merahMuda, ["tertulis 1 5/6: SALAH"], 10), emo("qe", 150, 184, "❌", 20)),
+    ),
+    k(
+      "Soal delapan: empat per tujuh ditambah dua per tujuh sama dengan enam per tujuh, benar. Soal sembilan: dua satu per lima ditambah satu lima per delapan sama dengan tiga tiga puluh tiga per empat puluh, benar.",
+      bersih(0),
+      tambah(0, judul("Uji Kompetensi 8 dan 9")),
+      tambah("Soal", teks("l8", 20, 64, "8.", 10, W.coklat), ...rumus("q8", 160, 60, "4/7 + 2/7 = 6/7", 17)),
+      tambah("sembilan:", teks("l9", 20, 120, "9.", 10, W.coklat), ...rumus("q9", 160, 116, "2 1/5 + 1 5/8 = 3 33/40", 16), ...kartu("qs", 50, 156, 200, 30, W.hijauMuda, ["8 dan 9: BENAR"], 10)),
+    ),
+    k(
+      "Soal sepuluh: dua satu per tiga dikurangi satu lima per enam sama dengan tiga per enam, yaitu setengah, bukan satu per tiga. Salah.",
+      bersih(0),
+      tambah(0, judul("Uji Kompetensi 10")),
+      tambah("Soal", ...rumus("q", 150, 76, "2 1/3 − 1 5/6 = 14/6 − 11/6 = 3/6 = 1/2", 15)),
+      tambah("bukan", ...kartu("qs", 50, 128, 200, 34, W.merahMuda, ["tertulis 1/3: SALAH"], 10), emo("qe", 150, 184, "❌", 20)),
+    ),
+    k(
+      "Kunci Panduan Guru: nomor satu tiga per lima, nomor dua tiga belas per enam puluh, nomor tiga tujuh per empat puluh, nomor empat satu. Lima benar, enam salah, tujuh salah, delapan benar, sembilan benar, sepuluh salah. Semua cocok.",
+      bersih(0),
+      tambah(0, judul("Kunci Jawaban Uji Kompetensi")),
+      tambah("Kunci", ...tabel("kn", 12, 40, [36, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24], [["No", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], ["Kunci", ...KUNCI_TABEL]], 24, 7.4)),
+      tambah("Semua", ...kartu("kk", 50, 112, 200, 34, W.hijauMuda, ["semua cocok dengan hitungan"], 10), emo("ke", 150, 176, "✅", 22)),
+    ),
+    k(
+      "Rubrik penilaian: skor benar dikali sepuluh. Dengan sepuluh soal yang benar semua, nilainya seratus.",
+      bersih(0),
+      tambah(0, judul("Rubrik penilaian")),
+      tambah("Rubrik", ...kartu("rb", 50, 36, 200, 34, W.krem, ["skor benar × 10"], 10)),
+      tambah("sepuluh@2", ...rumus("rr", 150, 112, "10 × 10 = 100", 22)),
+      tambah("seratus.", ...kartu("rn", 70, 148, 160, 32, W.hijauMuda, ["nilai tertinggi: 100"], 10)),
+    ),
+  ],
+};
+
+/* ------------------------------ 12. Refleksi, remedial, pengayaan, dan penutup bab (Buku Siswa hlm. 102 sampai 103; Panduan Guru hlm. 110 sampai 112) ------------------------------ */
+export const ADEGAN_PENUTUP: AdeganStory = {
+  id: "penutup",
+  judul: "Refleksi, remedial, pengayaan, dan penutup bab",
+  sumber: "Buku Siswa hlm. 102–103; Panduan Guru hlm. 110–112",
+  latar: "#F0FDF4",
+  kutipan: [
+    "Setelah mempelajari materi terkait bilangan pecahan, isilah tabel",
+    "berikut sesuai dengan pemahaman kalian.",
+    "Aku dapat mengurutkan bilangan pecahan.",
+    "Aku dapat membandingkan bilangan pecahan.",
+    "Aku dapat menentukan penjumlahan pada",
+    "Aku dapat menentukan pengurangan pada",
+    "Bimbingan individu",
+    "Bimbingan kelompok",
+    "Pembelajaran ulang dengan menggunakan metode dan media",
+    "Pengayaan dapat diberikan kepada peserta didik",
+    "Berapakah jumlah penggunaan uang di rumah masing-",
+    "masing?",
+    "peserta didik dapat diajak berkreasi menyusun alat peraga pecahan di rumah",
+    "Sumber Bacaan",
+    "Matematika untuk SD Kelas V Vol. 2",
+  ],
+  ketukan: [
+    k(
+      "Refleksi akhir bab berupa tabel empat pernyataan dengan pilihan Ya atau Tidak. Aku dapat mengurutkan dan membandingkan pecahan, aku dapat menentukan penjumlahan, dan aku dapat menentukan pengurangan pada bilangan pecahan.",
+      tambah(0, judul("Refleksi akhir bab")),
+      tambah("tabel", ...tabel("rf", 14, 34, [200, 36, 36], [["Pernyataan", "Ya", "Tidak"], ["1 Aku dapat mengurutkan pecahan", "", ""], ["2 Aku dapat membandingkan pecahan", "", ""], ["3 Aku dapat menentukan penjumlahan", "", ""], ["4 Aku dapat menentukan pengurangan", "", ""]], 24, 7.6)),
+      warnai("pengurangan", W.hijauMuda, "rf-s40", "rf-s41", "rf-s42"),
+    ),
+    k(
+      "Remedial bagi yang belum mencapai kriteria minimum: bimbingan individu, bimbingan kelompok, atau pembelajaran ulang dengan metode dan media berbeda, dengan soal yang lebih mudah saat tes ulang.",
+      bersih(0),
+      tambah(0, judul("Panduan remedial")),
+      tambah("individu,", ...kartu("e1", 20, 36, 260, 32, W.langit, ["1. bimbingan individu"], 9.6)),
+      tambah("kelompok,", ...kartu("e2", 20, 80, 260, 32, W.hijauMuda, ["2. bimbingan kelompok"], 9.6)),
+      tambah("pembelajaran", ...kartu("e3", 20, 124, 260, 44, W.krem, ["3. pembelajaran ulang:", "metode dan media berbeda"], 9)),
+    ),
+    k(
+      "Pengayaan bagi yang sudah tuntas: proyek mengamati penggunaan uang di rumah masing-masing, merinci kebutuhan rumah tangga, lalu menganalisis apakah pemasukan lebih besar dari kebutuhan. Orang tua mendampingi anak menyusun alat peraga pecahan di rumah.",
+      bersih(0),
+      tambah(0, judul("Pengayaan dan orang tua")),
+      tambah("proyek", ...kartu("y1", 14, 34, 130, 82, W.krem, ["proyek pengamatan:", "uang di rumah,", "kebutuhan rumah tangga,", "pemasukan dan kebutuhan"], 8)),
+      tambah("Orang", ...kartu("y2", 156, 34, 130, 82, W.hijauMuda, ["orang tua", "mendampingi anak", "menyusun alat peraga", "pecahan di rumah"], 8)),
+      tambah("alat", emo("y3", 150, 160, "👪", 34)),
+    ),
+    k(
+      "Penutup Bab tiga. Pecahan bisa dibandingkan, diurutkan, dijumlahkan, dan dikurangkan. Untuk mengurangkan: samakan penyebut, kurangi pembilangnya, ubah campuran ke biasa atau pisahkan bulat dan pecahan. Sumber bacaan: Matematika untuk SD Kelas tiga dan kelas lima.",
+      bersih(0),
+      tambah(0, judul("Penutup Bab 3")),
+      tambah("mengurangkan:", ...kartu("z1", 20, 34, 260, 30, W.langit, ["1. samakan penyebut"], 9.6)),
+      tambah("kurangi", ...kartu("z2", 20, 74, 260, 30, W.hijauMuda, ["2. kurangi pembilangnya"], 9.6)),
+      tambah("ubah", ...kartu("z3", 20, 114, 260, 30, W.krem, ["3. campuran: ubah ke biasa atau pisahkan"], 9.6)),
+      tambah("Sumber", teks("zs", 150, 172, "sumber: Matematika untuk SD Kelas 3 dan 5", 9, W.coklat)),
+    ),
+  ],
+};

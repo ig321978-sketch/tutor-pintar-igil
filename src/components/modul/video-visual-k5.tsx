@@ -4,7 +4,6 @@ import React from "react";
 
 import {
   BandingSvg,
-  BatangPecahanSvg,
   DeretSvg,
   LabelSvg,
   PapanDigit,
@@ -15,7 +14,6 @@ import {
   nyalaSeirama,
   HIJAU,
   MERAH,
-  ORANYE,
 } from "./video-visual-kit";
 
 /** Koreografi visual Story Kelas 5 — seirama ketukan `k` + waktu suara `t`. */
@@ -74,35 +72,6 @@ export function visualK5(kode: string, v: number, a: number, k: number, t = 0): 
       <>
         <DeretSvg isi={conf.isi} k={nyalaSeirama(k, t, conf.isi.length, 1.25) - 1} judul={conf.judul} />
         {k >= 2 ? <LabelSvg x={90} y={165} w={120} teks={a === 0 ? "daftar dulu" : "cari pola"} ukuran={11} warna={HIJAU} /> : null}
-      </>
-    );
-  }
-
-  if (bab === "k5b3") {
-    if (v === 0) {
-      const n = nyalaDariWaktu(t, 4, 1.3);
-      return (
-        <>
-          <PizzaSvg x={90} y={100} q={4} p={1} r={38} k={Math.max(0, n - 1)} />
-          <PizzaSvg x={210} y={100} q={8} p={3} r={38} k={k >= 1 ? Math.max(0, nyalaDariWaktu(t, 8, 0.9) - 1) : -1} />
-          {k >= 2 || p > 0.65 ? <LabelSvg x={95} y={160} w={110} teks="banding pecahan" ukuran={11} /> : null}
-          {k >= 3 ? <LabelSvg x={100} y={40} w={100} teks="1/4 vs 3/8" ukuran={12} warna={HIJAU} /> : null}
-        </>
-      );
-    }
-    if (v === 1) {
-      return (
-        <>
-          <BatangPecahanSvg q={6} p={5} k={nyalaSeirama(k, t, 6, 1.1) - 1} />
-          {k >= 2 ? <LabelSvg x={90} y={155} w={120} teks={a === 0 ? "bagian hampir penuh" : "5/6"} ukuran={12} warna={ORANYE} /> : null}
-        </>
-      );
-    }
-    return (
-      <>
-        <BatangPecahanSvg y={70} q={4} p={3} k={nyalaSeirama(k, t, 4, 1.2) - 1} />
-        {k >= 2 ? <LabelSvg x={90} y={145} w={120} teks="sama penyebut" ukuran={12} warna={HIJAU} /> : null}
-        {k >= 3 ? <LabelSvg x={95} y={170} w={110} teks="jumlah / kurang" ukuran={11} /> : null}
       </>
     );
   }

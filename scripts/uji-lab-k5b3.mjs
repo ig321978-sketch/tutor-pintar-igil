@@ -127,7 +127,9 @@ const teksCamp = (x) => {
   cek(D.ANGKA_BUKU.lompat1 === "2 3/4" && D.ANGKA_BUKU.lompat1Biasa === "11/4" && ada({ p: 11, q: 4 }), "Garis: 2 3/4 dan 11/4 dari data buku");
   cek(D.ANGKA_BUKU.lompat2 === "3 1/2" && D.ANGKA_BUKU.lompat2Biasa === "7/2" && ada({ p: 7, q: 2 }), "Garis: 3 1/2 dan 7/2 dari data buku");
   cek(D.ANGKA_BUKU.lompat3 === "7/8" && ada({ p: 7, q: 8 }), "Garis: 7/8 dari data buku");
-  cek(naskah.includes("11/4") && naskah.includes("3 1/2"), "naskah memuat 11/4 dan 3 1/2");
+  // Naskah video lama dihapus; angka buku kini ada di video Story baru Sub-Bab A (story/k5b3a-materi-*.ts).
+  const videoA = ["1", "2", "3"].map((n) => readFileSync(new URL(`../src/components/modul/story/k5b3a-materi-${n}.ts`, import.meta.url), "utf8")).join(" ");
+  cek(videoA.includes("11/4") && videoA.includes("3 1/2"), "video A memuat 11/4 dan 3 1/2");
   const pasang = D.RONDE_BANDING_CA.flat();
   cek(pasang.some((r) => r.a === "1/2" && r.b === "1/5" && r.tanda === ">") && A.DATA_BANDING.some((p) => teksPec(p.a) === "1/2" && teksPec(p.b) === "1/5"), "Banding: 1/2 dan 1/5 dari data buku");
   cek(pasang.some((r) => r.a === "3/8" && r.b === "5/8" && r.tanda === "<") && A.DATA_BANDING.some((p) => teksPec(p.a) === "3/8" && teksPec(p.b) === "5/8"), "Banding: 3/8 dan 5/8 dari data buku");
