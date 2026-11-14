@@ -147,7 +147,11 @@ for (const v of VIDEO) {
 const G = await import("../src/components/modul/story/k4b1b-gambar.ts");
 const U1 = await import("../src/components/modul/story/k4b1b-luar-1.ts");
 const U2 = await import("../src/components/modul/story/k4b1b-luar-2.ts");
-const M = V.VIDEO_MATERI_K4B1B;
+const M_VIDEO = V.VIDEO_MATERI_K4B1B;
+// Pembuka administratif (tujuan, peta konsep, panduan awal; di I: rubrik, refleksi, interaksi orang tua) tidak lagi diputar di video materi.
+// Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
+const MODUL_MATERI = Object.assign({}, await import("../src/components/modul/story/k4b1b-materi-1.ts"), await import("../src/components/modul/story/k4b1b-materi-2.ts"), await import("../src/components/modul/story/k4b1b-materi-3.ts"));
+const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_STRUK, MODUL_MATERI.ADEGAN_PANDUAN_AWAL, MODUL_MATERI.ADEGAN_AKTIVITAS_ALAT, MODUL_MATERI.ADEGAN_AKTIVITAS_KARTU, MODUL_MATERI.ADEGAN_AMBIL, MODUL_MATERI.ADEGAN_CONTOH, MODUL_MATERI.ADEGAN_LATIH_SATU, MODUL_MATERI.ADEGAN_LATIH_DUA, MODUL_MATERI.ADEGAN_LATIH_TIGA, MODUL_MATERI.ADEGAN_KUNCI_EMPAT, MODUL_MATERI.ADEGAN_MISKONSEPSI, MODUL_MATERI.ADEGAN_DIFERENSIASI] };
 const U = V.VIDEO_LUAR_K4B1B;
 const adegan = (v, id) => v.adegan.find((a) => a.id === id);
 const akhirAdegan = (a, ke = a.ketukan.length - 1) => L.keadaanStory(a, ke, 9999);
@@ -176,7 +180,7 @@ const titik = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-nilai", "luar-nilai-terapan", "luar-tukar", "luar-tukar-terapan", "luar-uraian", "luar-uraian-terapan", "luar-cakram", "luar-cakram-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[0].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
-  cek(M.adegan.length === 12 && U.adegan.length === 10, "12 adegan materi dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 11 && U.adegan.length === 10, "11 adegan materi dan 10 adegan metode luar");
   cek(M.id === "k4b1b-materi" && U.id === "k4b1b-luar", "id video k4b1b-materi dan k4b1b-luar");
   // Tidak membocorkan materi sub-bab lain (komposisi, pengurangan, pembagian, faktor, penutup bab). Membandingkan dan mengurutkan hanya muncul di kalimat pengalaman belajar Panduan Guru hlm. 35 (sub-bab B sendiri memakainya).
   const BOCOR = /komposisi|dekomposisi|pengurangan|pembagian|faktor|kelipatan|uji kompetensi|refleksi|pengayaan|remedial/i;
@@ -184,7 +188,7 @@ const titik = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   for (const a of [...M.adegan.filter((x) => x.id !== "panduan-awal"), ...U.adegan]) cek(!/membandingkan|mengurutkan|urutan bilangan/i.test(teksAdegan(a)), `${a.id} tidak membahas membandingkan atau mengurutkan (milik sub-bab lain)`);
   cek(/membandingkan dan mengurutkan/i.test(teksAdegan(adegan(M, "panduan-awal"))), "Panduan Guru hlm. 35: kalimat pengalaman belajar dicatat apa adanya");
   cek(totalKetukan >= 80, `total ketukan cukup dalam (${totalKetukan})`);
-  cek(M.adegan.map((a) => a.id).join() === "struk-belanja,panduan-awal,aktivitas-alat,aktivitas-kartu,aktivitas-ambil,contoh-2150,berlatih-satu,berlatih-dua,berlatih-tiga,kunci-empat,miskonsepsi,diferensiasi", "urutan adegan materi");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "struk-belanja,aktivitas-alat,aktivitas-kartu,aktivitas-ambil,contoh-2150,berlatih-satu,berlatih-dua,berlatih-tiga,kunci-empat,miskonsepsi,diferensiasi", "urutan adegan materi");
   cek(U.adegan.map((a) => a.id).join() === "luar-pembuka,luar-nilai,luar-nilai-terapan,luar-tukar,luar-tukar-terapan,luar-uraian,luar-uraian-terapan,luar-cakram,luar-cakram-terapan,luar-ringkas", "urutan adegan metode luar");
   // Tiga nama metode lama sama dengan naskah bab; nama metode baru belum dipakai naskah, judul, atau lab lain pada bab ini.
   const modul = new URL("../src/components/modul/", import.meta.url);

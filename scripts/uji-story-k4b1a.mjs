@@ -147,7 +147,11 @@ for (const v of VIDEO) {
 /* ------------------------------ Pemisahan materi dan metode luar ------------------------------ */
 const G = await import("../src/components/modul/story/k4b1a-gambar.ts");
 const U1 = await import("../src/components/modul/story/k4b1a-luar-1.ts");
-const M = V.VIDEO_MATERI_K4B1A;
+const M_VIDEO = V.VIDEO_MATERI_K4B1A;
+// Pembuka administratif (tujuan, peta konsep, panduan awal; di I: rubrik, refleksi, interaksi orang tua) tidak lagi diputar di video materi.
+// Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
+const MODUL_MATERI = Object.assign({}, await import("../src/components/modul/story/k4b1a-materi-1.ts"), await import("../src/components/modul/story/k4b1a-materi-2.ts"), await import("../src/components/modul/story/k4b1a-materi-3.ts"));
+const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_PEMBUKA, MODUL_MATERI.ADEGAN_PETA, MODUL_MATERI.ADEGAN_PANDUAN_AWAL, MODUL_MATERI.ADEGAN_CERITA, MODUL_MATERI.ADEGAN_JARAK, MODUL_MATERI.ADEGAN_AKTIVITAS, MODUL_MATERI.ADEGAN_CARA_BACA, MODUL_MATERI.ADEGAN_MENULIS, MODUL_MATERI.ADEGAN_NAMA, MODUL_MATERI.ADEGAN_LATIHAN_SATU, MODUL_MATERI.ADEGAN_LATIHAN_DUA, MODUL_MATERI.ADEGAN_LATIHAN_EMPAT] };
 const U = V.VIDEO_LUAR_K4B1A;
 const adegan = (v, id) => v.adegan.find((a) => a.id === id);
 const akhirAdegan = (a, ke = a.ketukan.length - 1) => L.keadaanStory(a, ke, 9999);
@@ -171,7 +175,7 @@ const NAMA_LUAR = /Dienes Blocks|Place-Value Chart|Zero as Placeholder|Say-Write
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-dienes", "luar-dienes-terapan", "luar-papan", "luar-papan-terapan", "luar-nol", "luar-nol-terapan", "luar-ucap", "luar-ucap-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[0].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
-  cek(M.adegan.length === 12 && U.adegan.length === 10, "12 adegan materi dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 9 && U.adegan.length === 10, "9 adegan materi dan 10 adegan metode luar");
   cek(M.id === "k4b1a-materi" && U.id === "k4b1a-luar", "id video k4b1a-materi dan k4b1a-luar");
   // Sub-Bab A tidak membocorkan materi sub-bab B sampai I. Pembuka bab, peta konsep, dan Panduan Guru awal boleh menyebut nilai tempat, komposisi, operasi, faktor, dan kelipatan sebagai tujuan, kata kunci, dan cabang peta.
   const BOCOR = /membandingkan|mengurutkan|komposisi|dekomposisi|menguraikan|menyusun|penjumlahan|pengurangan|perkalian|pembagian|faktor|kelipatan|nilai tempat|uji kompetensi|refleksi|pengayaan|remedial|lebih besar|lebih kecil/i;
@@ -180,7 +184,7 @@ const NAMA_LUAR = /Dienes Blocks|Place-Value Chart|Zero as Placeholder|Say-Write
   for (const a of U.adegan) cek(!BOCOR.test(teksAdegan(a).replace(/Papan Nilai Tempat|Place-Value Chart/g, "")), `metode luar ${a.id} tidak membocorkan sub-bab B sampai I`);
   cek(/nilai tempat/i.test(teksAdegan(adegan(M, "pembuka-bab"))) && /nilai tempat/i.test(teksAdegan(adegan(M, "peta-konsep"))), "pembuka bab dan peta konsep menyebut nilai tempat sebagai tujuan, kata kunci, dan cabang peta");
   cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
-  cek(M.adegan.map((a) => a.id).join() === "pembuka-bab,peta-konsep,panduan-awal,cerita-minimarket,jarak-rumah,aktivitas-satu,cara-membaca,menulis-bilangan,nama-bilangan,berlatih-satu,berlatih-dua-tiga,berlatih-empat", "urutan adegan materi");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "cerita-minimarket,jarak-rumah,aktivitas-satu,cara-membaca,menulis-bilangan,nama-bilangan,berlatih-satu,berlatih-dua-tiga,berlatih-empat", "urutan adegan materi");
   cek(U.adegan.map((a) => a.id).join() === "luar-pembuka,luar-dienes,luar-dienes-terapan,luar-papan,luar-papan-terapan,luar-nol,luar-nol-terapan,luar-ucap,luar-ucap-terapan,luar-ringkas", "urutan adegan metode luar");
   // Tiga nama metode lama sama dengan naskah bab; nama metode baru belum dipakai naskah, judul, atau lab lain pada bab ini.
   const modul = new URL("../src/components/modul/", import.meta.url);

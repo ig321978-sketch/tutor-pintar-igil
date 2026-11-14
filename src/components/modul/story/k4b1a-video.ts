@@ -1,5 +1,5 @@
 import type { VideoStory } from "./logika-story";
-import { ADEGAN_CERITA, ADEGAN_PANDUAN_AWAL, ADEGAN_PEMBUKA, ADEGAN_PETA } from "./k4b1a-materi-1";
+import { ADEGAN_CERITA } from "./k4b1a-materi-1";
 import { ADEGAN_AKTIVITAS, ADEGAN_CARA_BACA, ADEGAN_JARAK, ADEGAN_MENULIS } from "./k4b1a-materi-2";
 import { ADEGAN_LATIHAN_DUA, ADEGAN_LATIHAN_EMPAT, ADEGAN_LATIHAN_SATU, ADEGAN_NAMA } from "./k4b1a-materi-3";
 import { ADEGAN_LUAR_DIENES, ADEGAN_LUAR_DIENES_TERAPAN, ADEGAN_LUAR_PAPAN, ADEGAN_LUAR_PAPAN_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k4b1a-luar-1";
@@ -12,9 +12,6 @@ export const VIDEO_MATERI_K4B1A: VideoStory = {
   subjudul: "Materi kurikulum · Buku Siswa hlm. 1–12",
   jenis: "materi",
   adegan: [
-    ADEGAN_PEMBUKA,
-    ADEGAN_PETA,
-    ADEGAN_PANDUAN_AWAL,
     ADEGAN_CERITA,
     ADEGAN_JARAK,
     ADEGAN_AKTIVITAS,

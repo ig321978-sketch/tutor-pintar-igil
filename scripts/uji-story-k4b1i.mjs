@@ -218,7 +218,11 @@ for (const v of VIDEO) {
 }
 
 /* ------------------------------ Pemisahan materi dan metode luar ------------------------------ */
-const M = V.VIDEO_MATERI_K4B1I;
+const M_VIDEO = V.VIDEO_MATERI_K4B1I;
+// Pembuka administratif (tujuan, peta konsep, panduan awal; di I: rubrik, refleksi, interaksi orang tua) tidak lagi diputar di video materi.
+// Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
+const MODUL_MATERI = Object.assign({}, await import("../src/components/modul/story/k4b1i-materi-1.ts"), await import("../src/components/modul/story/k4b1i-materi-2.ts"), await import("../src/components/modul/story/k4b1i-materi-3.ts"));
+const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_PEMBUKA_I, MODUL_MATERI.ADEGAN_FAKTOR_12, MODUL_MATERI.ADEGAN_BUKAN_FAKTOR, MODUL_MATERI.ADEGAN_BERLATIH_FAKTOR_1, MODUL_MATERI.ADEGAN_BERLATIH_FAKTOR_2, MODUL_MATERI.ADEGAN_BERAS, MODUL_MATERI.ADEGAN_KELIPATAN_KAREL, MODUL_MATERI.ADEGAN_MENCOBA_SLAMET, MODUL_MATERI.ADEGAN_BERLATIH_KELIPATAN, MODUL_MATERI.ADEGAN_MISKONSEPSI, MODUL_MATERI.ADEGAN_UK_NILAI_TEMPAT, MODUL_MATERI.ADEGAN_UK_HITUNG, MODUL_MATERI.ADEGAN_UK_FAKTOR_KELIPATAN, MODUL_MATERI.ADEGAN_UK_CERITA, MODUL_MATERI.ADEGAN_RUBRIK, MODUL_MATERI.ADEGAN_REFLEKSI, MODUL_MATERI.ADEGAN_PENGAYAAN_1, MODUL_MATERI.ADEGAN_PENGAYAAN_2, MODUL_MATERI.ADEGAN_ORANG_TUA] };
 const U = V.VIDEO_LUAR_K4B1I;
 const adegan = (v, id) => v.adegan.find((a) => a.id === id);
 const akhirAdegan = (a, ke = a.ketukan.length - 1) => L.keadaanStory(a, ke, 9999);
@@ -239,7 +243,7 @@ const seluruhTeks = (v) => v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map
   for (const kata of ["Sub-Bab I", "Ayo Mengamati", "Ayo Mencoba", "Ayo Berlatih", "Uji Kompetensi", "Pengayaan", "Refleksi", "orang tua", "Panduan Guru", "Rubrik", "remedial", "Diferensiasi", "Miskonsepsi", "faktor", "kelipatan"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-fp", "luar-fp-terapan", "luar-sk", "luar-sk-terapan", "luar-dv", "luar-dv-terapan", "luar-sv", "luar-sv-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
-  cek(M.adegan.length === 19 && U.adegan.length === 10, "19 adegan materi dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 16 && U.adegan.length === 10, "16 adegan materi dan 10 adegan metode luar");
   cek(!/piktogram|diagram batang|pecahan|volume|pola bilangan|pola gambar/i.test(materi + luar), `tidak membahas bab lain (${(materi + luar).match(/piktogram|diagram batang|pecahan|volume|pola bilangan|pola gambar/i)?.[0]})`);
   cek(totalKetukan >= 80, `total ketukan cukup dalam (${totalKetukan})`);
   for (const kata of ["12 : 1 = 12", "12 : 5 = 2 sisa 2", "2 + 2 + 2 + 2 = 8", "8 = 4 × 2", "3 × 4 = 12", "42 > 40"]) cek(materi.includes(kata), `video materi memuat "${kata}"`);

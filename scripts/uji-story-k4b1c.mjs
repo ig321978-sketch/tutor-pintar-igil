@@ -42,7 +42,11 @@ const titikJalur = (o) => {
 
 /* ------------------------------ Isi dua video ------------------------------ */
 const VIDEO = [V.VIDEO_MATERI_K4B1C, V.VIDEO_LUAR_K4B1C];
-const M = V.VIDEO_MATERI_K4B1C;
+const M_VIDEO = V.VIDEO_MATERI_K4B1C;
+// Pembuka administratif (tujuan, peta konsep, panduan awal; di I: rubrik, refleksi, interaksi orang tua) tidak lagi diputar di video materi.
+// Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
+const MODUL_MATERI = Object.assign({}, await import("../src/components/modul/story/k4b1c-materi-1.ts"), await import("../src/components/modul/story/k4b1c-materi-2.ts"), await import("../src/components/modul/story/k4b1c-materi-3.ts"));
+const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_PEMBUKA, MODUL_MATERI.ADEGAN_PASAR, MODUL_MATERI.ADEGAN_KARTU, MODUL_MATERI.ADEGAN_PAPAN, MODUL_MATERI.ADEGAN_RIBUAN, MODUL_MATERI.ADEGAN_LANJUT, MODUL_MATERI.ADEGAN_SAMA, MODUL_MATERI.ADEGAN_LATIH_SATU, MODUL_MATERI.ADEGAN_LATIH_DUA, MODUL_MATERI.ADEGAN_GUNUNG, MODUL_MATERI.ADEGAN_URUT, MODUL_MATERI.ADEGAN_BERPIKIR, MODUL_MATERI.ADEGAN_CATATAN] };
 const U = V.VIDEO_LUAR_K4B1C;
 const bilanganDari = (t) => (t.match(/\d[\d.]*\d|\d/g) ?? []).map((v) => v.replace(/\./g, ""));
 const semuaSidik = new Map();
@@ -258,13 +262,13 @@ const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-kiri", "luar-kiri-terapan", "luar-garis", "luar-garis-terapan", "luar-himpunan", "luar-himpunan-terapan", "luar-batang", "luar-batang-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[0].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
-  cek(M.adegan.length === 13 && U.adegan.length === 10, "13 adegan materi dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 12 && U.adegan.length === 10, "12 adegan materi dan 10 adegan metode luar");
   // Sub-Bab C tidak membocorkan sub-bab lain (komposisi, penjumlahan, pengurangan, perkalian, pembagian, faktor) dan penutup bab.
   const BOCOR = /komposisi|dekomposisi|penjumlahan|pengurangan|perkalian|pembagian|faktor|kelipatan|pembulatan|uji kompetensi|refleksi|pengayaan|remedial/i;
   for (const a of M.adegan) cek(!BOCOR.test(teksAdegan(a)), `materi ${a.id} tidak membocorkan sub-bab lain`);
   for (const a of U.adegan) cek(!BOCOR.test(teksAdegan(a)), `metode luar ${a.id} tidak membocorkan sub-bab lain`);
   cek(totalKetukan >= 90, `total ketukan cukup dalam (${totalKetukan})`);
-  cek(M.adegan.map((a) => a.id).join() === "pembuka,pasar,kartu,papan,ribuan,lanjut,sama,latih-satu,latih-dua,gunung,urut,berpikir,catatan", "urutan adegan materi");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "pasar,kartu,papan,ribuan,lanjut,sama,latih-satu,latih-dua,gunung,urut,berpikir,catatan", "urutan adegan materi");
   cek(U.adegan.map((a) => a.id).join() === "luar-pembuka,luar-kiri,luar-kiri-terapan,luar-garis,luar-garis-terapan,luar-himpunan,luar-himpunan-terapan,luar-batang,luar-batang-terapan,luar-ringkas", "urutan adegan metode luar");
   // Nama metode baru belum dipakai metode, judul, atau lab lain pada bab ini; tiga nama lama sama dengan naskah bab.
   const baca = (n) => readFileSync(new URL(`../src/components/modul/${n}`, import.meta.url), "utf8");

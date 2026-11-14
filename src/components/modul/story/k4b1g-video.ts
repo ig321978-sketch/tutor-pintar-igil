@@ -1,5 +1,5 @@
 import type { VideoStory } from "./logika-story";
-import { ADEGAN_AMATI_DONAT, ADEGAN_CARA_PANJANG, ADEGAN_PANDUAN_AWAL, ADEGAN_PEMANTIK } from "./k4b1g-materi-1";
+import { ADEGAN_AMATI_DONAT, ADEGAN_CARA_PANJANG, ADEGAN_PEMANTIK } from "./k4b1g-materi-1";
 import { ADEGAN_AYO_MENCOBA, ADEGAN_KELERENG, ADEGAN_SUSUN_SIMPAN, ADEGAN_SUSUN_TANPA } from "./k4b1g-materi-2";
 import { ADEGAN_BERLATIH_DUA_A, ADEGAN_BERLATIH_DUA_B, ADEGAN_BERLATIH_SATU, ADEGAN_MISKONSEPSI } from "./k4b1g-materi-3";
 import { ADEGAN_LUAR_KELOMPOK, ADEGAN_LUAR_KELOMPOK_TERAPAN, ADEGAN_LUAR_PEMBUKA, ADEGAN_LUAR_SUSUNAN, ADEGAN_LUAR_SUSUNAN_TERAPAN } from "./k4b1g-luar-1";
@@ -12,7 +12,6 @@ export const VIDEO_MATERI_K4B1G: VideoStory = {
   subjudul: "Materi kurikulum · Buku Siswa hlm. 39–43",
   jenis: "materi",
   adegan: [
-    ADEGAN_PANDUAN_AWAL,
     ADEGAN_PEMANTIK,
     ADEGAN_AMATI_DONAT,
     ADEGAN_CARA_PANJANG,

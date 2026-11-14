@@ -1,5 +1,5 @@
 import type { VideoStory } from "./logika-story";
-import { ADEGAN_KARTU, ADEGAN_PAPAN, ADEGAN_PASAR, ADEGAN_PEMBUKA } from "./k4b1c-materi-1";
+import { ADEGAN_KARTU, ADEGAN_PAPAN, ADEGAN_PASAR } from "./k4b1c-materi-1";
 import { ADEGAN_LANJUT, ADEGAN_LATIH_DUA, ADEGAN_LATIH_SATU, ADEGAN_RIBUAN, ADEGAN_SAMA } from "./k4b1c-materi-2";
 import { ADEGAN_BERPIKIR, ADEGAN_CATATAN, ADEGAN_GUNUNG, ADEGAN_URUT } from "./k4b1c-materi-3";
 import { ADEGAN_LUAR_GARIS, ADEGAN_LUAR_GARIS_TERAPAN, ADEGAN_LUAR_KIRI, ADEGAN_LUAR_KIRI_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k4b1c-luar-1";
@@ -12,7 +12,6 @@ export const VIDEO_MATERI_K4B1C: VideoStory = {
   subjudul: "Materi kurikulum · Buku Siswa hlm. 16–23 (Aktivitas 3)",
   jenis: "materi",
   adegan: [
-    ADEGAN_PEMBUKA,
     ADEGAN_PASAR,
     ADEGAN_KARTU,
     ADEGAN_PAPAN,

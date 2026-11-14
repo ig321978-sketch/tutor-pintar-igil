@@ -146,7 +146,11 @@ for (const v of VIDEO) {
 /* ------------------------------ Pemisahan materi dan metode luar ------------------------------ */
 const G = await import("../src/components/modul/story/k4b1e-gambar.ts");
 const U1 = await import("../src/components/modul/story/k4b1e-luar-1.ts");
-const M = V.VIDEO_MATERI_K4B1E;
+const M_VIDEO = V.VIDEO_MATERI_K4B1E;
+// Pembuka administratif (tujuan, peta konsep, panduan awal; di I: rubrik, refleksi, interaksi orang tua) tidak lagi diputar di video materi.
+// Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
+const MODUL_MATERI = Object.assign({}, await import("../src/components/modul/story/k4b1e-materi-1.ts"), await import("../src/components/modul/story/k4b1e-materi-2.ts"));
+const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_PANDUAN_AWAL, MODUL_MATERI.ADEGAN_TONI_PANJANG, MODUL_MATERI.ADEGAN_TONI_PENDEK, MODUL_MATERI.ADEGAN_BUKU_TIGA, MODUL_MATERI.ADEGAN_SIMPAN_PANJANG, MODUL_MATERI.ADEGAN_SIMPAN_PENDEK, MODUL_MATERI.ADEGAN_PANDUAN_AMATI, MODUL_MATERI.ADEGAN_BERLATIH_SATU, MODUL_MATERI.ADEGAN_BERLATIH_DUA_SATU, MODUL_MATERI.ADEGAN_BERLATIH_DUA_DUA, MODUL_MATERI.ADEGAN_BERLATIH_TIGA_EMPAT, MODUL_MATERI.ADEGAN_BERLATIH_LIMA, MODUL_MATERI.ADEGAN_MISKONSEPSI] };
 const U = V.VIDEO_LUAR_K4B1E;
 const adegan = (v, id) => v.adegan.find((a) => a.id === id);
 const akhirAdegan = (a, ke = a.ketukan.length - 1) => L.keadaanStory(a, ke, 9999);
@@ -172,14 +176,14 @@ const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-standar", "luar-standar-terapan", "luar-simpan", "luar-simpan-terapan", "luar-maju", "luar-maju-terapan", "luar-sebagian", "luar-sebagian-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[0].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
-  cek(M.adegan.length === 13 && U.adegan.length === 10, "13 adegan materi dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 12 && U.adegan.length === 10, "12 adegan materi dan 10 adegan metode luar");
   cek(M.id === "k4b1e-materi" && U.id === "k4b1e-luar", "id video k4b1e-materi dan k4b1e-luar");
   // Sub-Bab E tidak membocorkan materi sub-bab lain (pengurangan, perkalian, pembagian, faktor, kelipatan) dan penutup bab.
   const BOCOR = /pengurangan|dikurang|kurangkan|perkalian|pembagian|faktor|kelipatan|uji kompetensi|refleksi|pengayaan|remedial/i;
   for (const a of M.adegan) cek(!BOCOR.test(teksAdegan(a)), `materi ${a.id} tidak membocorkan sub-bab lain`);
   for (const a of U.adegan) cek(!BOCOR.test(teksAdegan(a)), `metode luar ${a.id} tidak membocorkan sub-bab lain`);
   cek(totalKetukan >= 80, `total ketukan cukup dalam (${totalKetukan})`);
-  cek(M.adegan.map((a) => a.id).join() === "panduan-awal,toni-panjang,toni-pendek,buku-tiga,simpan-panjang,simpan-pendek,panduan-amati,berlatih-satu,berlatih-dua-satu,berlatih-dua-dua,berlatih-tiga-empat,berlatih-lima,miskonsepsi", "urutan adegan materi");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "toni-panjang,toni-pendek,buku-tiga,simpan-panjang,simpan-pendek,panduan-amati,berlatih-satu,berlatih-dua-satu,berlatih-dua-dua,berlatih-tiga-empat,berlatih-lima,miskonsepsi", "urutan adegan materi");
   cek(U.adegan.map((a) => a.id).join() === "luar-pembuka,luar-standar,luar-standar-terapan,luar-simpan,luar-simpan-terapan,luar-maju,luar-maju-terapan,luar-sebagian,luar-sebagian-terapan,luar-ringkas", "urutan adegan metode luar");
   // Tidak ada digit di suara (angka ditulis dengan kata).
   for (const v of [M, U]) for (const a of v.adegan) a.ketukan.forEach((kt, i) => cek(!/\d/.test(kt.suara), `${v.id}/${a.id}#${i + 1}: suara tanpa digit`));
