@@ -11,15 +11,15 @@ const IKON_METODE = ["🍕", "🧩", "📏", "👥"];
 const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana kita membandingkan dua pecahan dengan pembilang satu, mana yang lebih besar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana kita membandingkan dua pecahan dengan pembilang satu, mana yang lebih besar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka soal latihan.";
 const SUARA_O2 = "Empat metode itu: Unit Fraction, Area Model, Number Line Unit, dan Fair Sharing.";
-const SUARA_O3 = "Nama dalam bahasa Indonesia: Pecahan Satuan, Model Daerah, Pecahan di Garis, dan Bagi Adil. Metode keempat adalah tambahan yang cocok dengan soal pizza di buku.";
+const SUARA_O3 = "Nama dalam bahasa Indonesia: Pecahan Satuan, Model Daerah, Pecahan di Garis, dan Bagi Adil. Metode keempat cocok dengan soal berbagi pizza.";
 const SUARA_O4 = "Semuanya menjawab satu pertanyaan: pecahan mana yang lebih besar? Dengan menghitung bagian sama, membandingkan luas arsiran, menaruh titik pada garis, dan membagi benda kepada sejumlah orang.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk membandingkan pecahan",
-  sumber: "Metode luar: pembuka; BS hlm. 55–63",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -41,7 +41,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       bersih(0),
       tambah(0, judul("Nama dalam bahasa Indonesia")),
       ...NAMA_METODE_ID.map((m, i) => tambah(idx(SUARA_O3, ["Satuan", "Daerah", "Garis", "Adil"][i]), ...kartu(`n${i}`, 12, 34 + i * 38, 276, 30, WARNA_METODE[i], [`${i + 1}. ${m}`], 9.6))),
-      tambah("tambahan", emo("n4", 262, 140, "⭐", 20)),
+      tambah("cocok", emo("n4", 262, 140, "⭐", 20)),
     ),
     k(
       SUARA_O4,
@@ -104,20 +104,20 @@ export const ADEGAN_LUAR_SATUAN: AdeganStory = {
 };
 
 /* ------------------------------ 3. Unit Fraction: penerapan dengan angka buku ------------------------------ */
-const SUARA_T1 = "Terapkan pada pizza di buku. Pizza dipotong empat bagian yang sama, dan tiap anak mendapat satu bagian. Penyebutnya empat, pembilangnya satu, jadi satu per empat.";
-const SUARA_T2 = "Kisi pada soal latihan nomor tiga punya lima kolom dan dua baris. Hitung bagian sama: ada sepuluh, satu diarsir, jadi satu per sepuluh.";
-const SUARA_T3 = "Kincir pada nomor empat punya tiga bagian sama, jadi satu per tiga. Kipas pada nomor lima punya lima kelopak sama, jadi satu per lima.";
-const SUARA_T4 = "Periksa dengan kunci buku: segitiga satu per dua, batang satu per empat, kisi satu per sepuluh, kincir satu per tiga, dan kipas satu per lima. Semuanya cocok dengan hitungan bagian.";
+const SUARA_T1 = "Terapkan pada satu pizza. Pizza dipotong empat bagian yang sama, dan tiap anak mendapat satu bagian. Penyebutnya empat, pembilangnya satu, jadi satu per empat.";
+const SUARA_T2 = "Sekarang kisi dengan lima kolom dan dua baris. Hitung bagian sama: ada sepuluh, satu diarsir, jadi satu per sepuluh.";
+const SUARA_T3 = "Kincir dengan tiga bagian sama, jadi satu per tiga. Kipas dengan lima kelopak sama, jadi satu per lima.";
+const SUARA_T4 = "Periksa semua gambar: segitiga satu per dua, batang satu per empat, kisi satu per sepuluh, kincir satu per tiga, dan kipas satu per lima. Semuanya cocok dengan hitungan bagian.";
 
 export const ADEGAN_LUAR_SATUAN_TERAPAN: AdeganStory = {
   id: "luar-satuan-terapan",
-  judul: "Unit Fraction pada gambar buku",
-  sumber: "Metode luar: Unit Fraction; BS hlm. 58–60",
+  judul: "Unit Fraction pada gambar latihan",
+  sumber: "Metode luar: Unit Fraction",
   latar: "#ECFDF5",
   ketukan: [
     k(
       SUARA_T1,
-      tambah(0, judul("Unit Fraction: pizza buku")),
+      tambah(0, judul("Unit Fraction: pizza empat potong")),
       tambah("Terapkan", kepala(0)),
       tambah("pizza", ...lingkaranBagi("ua", 90, 122, 46, 4, 1, W.jingga)),
       tambah("tiap", teks("ub", 215, 80, "4 bagian sama", 9, W.biru), teks("ub2", 215, 94, "tiap anak: 1 bagian", 9, W.biru)),
@@ -143,7 +143,7 @@ export const ADEGAN_LUAR_SATUAN_TERAPAN: AdeganStory = {
     k(
       SUARA_T4,
       bersih(0),
-      tambah(0, judul("Cocok dengan kunci buku")),
+      tambah(0, judul("Semua cocok dengan hitungan bagian")),
       tambah("Periksa", ...barisTabel("uk0", 20, 28, [90, 80, 90], ["gambar", "penyebut", "pecahan"], 22, 8.6, true)),
       ...BENTUK_LATIHAN.map(([n, a], i) => tambah(["segitiga", "batang", "kisi", "kincir", "kipas"][i], ...barisTabel(`uk${i + 1}`, 20, 28 + (i + 1) * 22, [90, 80, 90], [["segitiga", "batang", "kisi", "kincir", "kipas"][i], String(n), `${a}/${n}`], 22, 9))),
       tambah("cocok", emo("ul", 150, 186, "✅", 20)),
@@ -155,7 +155,7 @@ export const ADEGAN_LUAR_SATUAN_TERAPAN: AdeganStory = {
 const SUARA_D1 = "Metode kedua, Area Model, atau Model Daerah. Pecahan dipandang sebagai luas daerah yang diarsir dari keseluruhan. Untuk membandingkan, samakan dulu keseluruhannya.";
 const SUARA_D2 = "Langkah pertama: gambar dua benda yang sama besar, lalu bagi masing-masing sesuai penyebutnya. Langkah kedua: arsir satu bagian pada tiap gambar.";
 const SUARA_D3 = "Langkah ketiga: bandingkan luas arsiran. Yang arsirannya lebih luas, pecahannya lebih besar. Syarat utamanya, keseluruhan kedua gambar harus sama besar.";
-const SUARA_D4 = "Bila keseluruhannya berbeda, arsiran yang sama luas menipu, seperti gambar nomor tiga di buku yang memakai petak sama lebar. Karena itu keseluruhan harus sama.";
+const SUARA_D4 = "Bila keseluruhannya berbeda, arsiran yang sama luas menipu, seperti satu per tiga pada batang pendek dan satu per empat pada batang panjang. Karena itu keseluruhan harus sama.";
 
 export const ADEGAN_LUAR_DAERAH: AdeganStory = {
   id: "luar-daerah",
@@ -193,22 +193,22 @@ export const ADEGAN_LUAR_DAERAH: AdeganStory = {
       bersih(0),
       tambah(0, judul("Awas: keseluruhan berbeda")),
       tambah("berbeda,", ...kisi("dz1", 20, 54, 3, 1, 24, 30, 1), ...kisi("dz2", 20, 100, 4, 1, 24, 30, 1)),
-      tambah("sama@2", teks("dz3", 175, 74, "1/3: batang pendek", 8.6, W.biru), teks("dz4", 175, 120, "1/4: batang panjang", 8.6, W.biru)),
-      tambah("menipu", ...kartu("dz5", 20, 146, 260, 40, W.merahMuda, ["arsiran sama luas, tetapi", "keseluruhannya berbeda: menipu"], 8.8)),
+      tambah("pendek", teks("dz3", 175, 74, "1/3: batang pendek", 8.6, W.biru), teks("dz4", 175, 120, "1/4: batang panjang", 8.6, W.biru)),
+      tambah("Karena", ...kartu("dz5", 20, 146, 260, 40, W.merahMuda, ["arsiran sama luas, tetapi", "keseluruhannya berbeda: menipu"], 8.8)),
     ),
   ],
 };
 
 /* ------------------------------ 5. Area Model: penerapan dengan angka buku ------------------------------ */
-const SUARA_E1 = "Terapkan pada angka buku. Dua batang sama panjang: satu dibagi dua dan satu dibagi empat, masing-masing satu bagian diarsir. Arsiran satu per dua lebih luas, jadi satu per dua lebih besar.";
+const SUARA_E1 = "Terapkan pada contoh. Dua batang sama panjang: satu dibagi dua dan satu dibagi empat, masing-masing satu bagian diarsir. Arsiran satu per dua lebih luas, jadi satu per dua lebih besar.";
 const SUARA_E2 = "Batang sama panjang lainnya: satu dibagi sepuluh dan satu dibagi lima. Arsiran satu per sepuluh lebih sempit, jadi satu per sepuluh kurang dari satu per lima.";
-const SUARA_E3 = "Nomor dua di soal latihan: kisi dengan enam bagian, satu diarsir, dan kisi dengan tiga bagian, satu diarsir. Keseluruhan sama besar, arsiran satu per enam lebih sempit, jadi kurang dari satu per tiga.";
+const SUARA_E3 = "Sekarang soal lain: kisi dengan enam bagian, satu diarsir, dan kisi dengan tiga bagian, satu diarsir. Keseluruhan sama besar, arsiran satu per enam lebih sempit, jadi kurang dari satu per tiga.";
 const SUARA_E4 = "Soal Tiara: bawang putih satu per dua kilogram dan gula satu per empat kilogram. Gambar dua batang sama panjang, arsiran satu per dua lebih luas, jadi bawang putih lebih berat.";
 
 export const ADEGAN_LUAR_DAERAH_TERAPAN: AdeganStory = {
   id: "luar-daerah-terapan",
-  judul: "Area Model pada soal buku",
-  sumber: "Metode luar: Area Model; BS hlm. 60–63",
+  judul: "Area Model pada soal latihan",
+  sumber: "Metode luar: Area Model",
   latar: "#DBEAFE",
   ketukan: [
     k(
@@ -232,7 +232,7 @@ export const ADEGAN_LUAR_DAERAH_TERAPAN: AdeganStory = {
     k(
       SUARA_E3,
       bersih(0),
-      tambah(0, judul("Area Model: nomor dua")),
+      tambah(0, judul("Area Model: kisi dan batang")),
       tambah("enam", ...kisi("we", 20, 56, 3, 2, 28, 30, 1)),
       tambah("tiga", ...kisi("wf", 130, 56, 3, 1, 28, 60, 1)),
       tambah("sempit,", ...pecahan("wer", 62, 150, "1", "6", 22), ...pecahan("wfr", 172, 150, "1", "3", 22)),

@@ -76,15 +76,15 @@ export const ADEGAN_PENGALAMAN: AdeganStory = {
 };
 
 /* ------------------------------ 2. Aktivitas 2: alat dan langkah 1-3 (Buku Siswa hlm. 66; Panduan Guru hlm. 101) ------------------------------ */
-const SUARA_A1 = "Ayo Beraktivitas. Aktivitas dua berjudul Konsep Pecahan Senilai. Alatnya dua lembar kertas persegi atau origami, gunting, lem, buku tulis, dan pensil warna.";
-const SUARA_A2 = "Langkah satu: buat kelompok beranggotakan tiga sampai empat orang. Panduan guru menyarankan kelompok heterogen, yaitu campuran karakteristik dan kemampuan murid.";
+const SUARA_A1 = "Hari ini kita beraktivitas untuk mengenal pecahan senilai. Alatnya dua lembar kertas persegi atau origami, gunting, lem, dan pensil warna.";
+const SUARA_A2 = "Langkah satu: buat kelompok beranggotakan tiga sampai empat orang. Sebaiknya anggotanya campuran, ada yang cepat belajar dan ada yang perlu dibantu.";
 const SUARA_A3 = "Langkah dua: lipat kertas pertama menjadi empat bagian yang sama, warnai satu kotak, lalu potong.";
 const SUARA_A4 = "Langkah tiga: lipat kertas kedua menjadi enam belas bagian yang sama, warnai empat kotak, lalu potong.";
 
 export const ADEGAN_AKTIVITAS_ALAT: AdeganStory = {
   id: "aktivitas-alat",
-  judul: "Aktivitas 2: alat dan langkah 1 sampai 3",
-  sumber: "Buku Siswa hlm. 66; Panduan Guru hlm. 101",
+  judul: "Aktivitas kertas lipat: alat dan langkah awal",
+  sumber: "Materi: Aktivitas kertas lipat",
   latar: "#F0FDF4",
   kutipan: [
     "Ayo Beraktivitas",
@@ -99,7 +99,7 @@ export const ADEGAN_AKTIVITAS_ALAT: AdeganStory = {
   ketukan: [
     k(
       SUARA_A1,
-      tambah(0, judul("Aktivitas 2: Konsep Pecahan Senilai")),
+      tambah(0, judul("Aktivitas: Konsep Pecahan Senilai")),
       tambah("lembar", kotak("ka", 30, 44, 72, 72, W.krem, W.biru, { rx: 2 }), teks("kat", 66, 134, "kertas 1", 9), kotak("kb", 198, 44, 72, 72, W.langit, W.biru, { rx: 2 }), teks("kbt", 234, 134, "kertas 2", 9)),
       tambah("gunting,", emo("kg", 150, 72, "✂", 28)),
       tambah("pensil", emo("kp", 150, 112, "🖍", 28)),
@@ -111,7 +111,7 @@ export const ADEGAN_AKTIVITAS_ALAT: AdeganStory = {
       tambah(0, judul("Langkah 1: buat kelompok")),
       tambah("kelompok", emo("o1", 60, 70, "🙂", 28), emo("o2", 120, 70, "😀", 28), emo("o3", 180, 70, "😊", 28), emo("o4", 240, 70, "🤓", 28)),
       tambah("tiga", ...kartu("ok", 40, 92, 220, 28, W.hijauMuda, ["3 sampai 4 orang per kelompok"], 9.4)),
-      tambah("heterogen,", ...kartu("oh", 20, 130, 260, 28, W.langit, ["heterogen: karakter dan kemampuan campur"], 9)),
+      tambah("campuran,", ...kartu("oh", 20, 130, 260, 28, W.langit, ["kelompok campuran kemampuan"], 9)),
     ),
     k(
       SUARA_A3,
@@ -136,18 +136,18 @@ export const ADEGAN_AKTIVITAS_ALAT: AdeganStory = {
 
 /* ------------------------------ 3. Aktivitas 2: langkah 4-6 dan diskusi (Buku Siswa hlm. 66-67; Panduan Guru hlm. 101) ------------------------------ */
 const SUARA_H1 = "Langkah empat: bandingkan kedua kertas yang sudah diwarnai. Kertas pertama memberi satu potong berwarna, sedangkan kertas kedua memberi empat potong berwarna yang kecil.";
-const SUARA_H2 = "Diskusi a: tuliskan bentuk pecahan gambar satu dan gambar dua. Gambar satu adalah satu per empat, gambar dua adalah empat per enam belas.";
-const SUARA_H3 = "Diskusi b: apakah kedua kertas yang telah diwarnai sama besar? Susun empat potong kecil tepat di atas satu potong besar, ternyata keduanya sama besar.";
+const SUARA_H2 = "Pertanyaan pertama: tuliskan bentuk pecahan gambar satu dan gambar dua. Gambar satu adalah satu per empat, gambar dua adalah empat per enam belas.";
+const SUARA_H3 = "Pertanyaan kedua: apakah kedua kertas yang telah diwarnai sama besar? Susun empat potong kecil tepat di atas satu potong besar, ternyata keduanya sama besar.";
 const SUARA_H4 = "Langkah lima: presentasikan hasil diskusi kelompok di depan kelas, dengan menceritakan cara melipat, mewarnai, dan membandingkan.";
-const SUARA_H5 = "Langkah enam: tulis kesimpulan. Menurut panduan guru, satu per empat sama dengan empat per enam belas. Dua pecahan bernilai sama seperti ini kita sebut pecahan senilai.";
+const SUARA_H5 = "Langkah enam: tulis kesimpulan. Satu per empat sama dengan empat per enam belas. Dua pecahan bernilai sama seperti ini kita sebut pecahan senilai.";
 
 const KECIL = [[196, 62], [220, 62], [196, 86], [220, 86]] as const;
 const ANAK = ["Putu", "Karel", "Azizah"] as const;
 
 export const ADEGAN_AKTIVITAS_HASIL: AdeganStory = {
   id: "aktivitas-hasil",
-  judul: "Aktivitas 2: perbandingan, diskusi, dan kesimpulan",
-  sumber: "Buku Siswa hlm. 66–67; Panduan Guru hlm. 101",
+  judul: "Aktivitas kertas lipat: perbandingan dan kesimpulan",
+  sumber: "Materi: Perbandingan dan kesimpulan",
   latar: "#ECFDF5",
   kutipan: [
     "4. Selanjutnya, bandingkanlah kedua kertas yang telah diwarnai tersebut.",
@@ -202,18 +202,18 @@ export const ADEGAN_AKTIVITAS_HASIL: AdeganStory = {
 };
 
 /* ------------------------------ 4. Ayo Mengamati: dua batang coklat (Buku Siswa hlm. 67) ------------------------------ */
-const SUARA_C1 = "Ayo Mengamati. Ibu Guru mempunyai dua batang coklat. Coklat pertama dibagi menjadi enam bagian yang sama, dan coklat kedua dibagi menjadi tiga bagian yang sama.";
+const SUARA_C1 = "Ayo kita amati. Ibu Guru mempunyai dua batang coklat. Coklat pertama dibagi menjadi enam bagian yang sama, dan coklat kedua dibagi menjadi tiga bagian yang sama.";
 const SUARA_C2 = "Coklat pertama dibagikan kepada Putu, Karel, dan Azizah dengan bagian yang sama. Enam bagian untuk tiga anak, jadi tiap anak menerima dua bagian.";
 const SUARA_C3 = "Coklat kedua juga dibagikan kepada ketiga anak itu dengan bagian yang sama. Tiga bagian untuk tiga anak, jadi tiap anak menerima satu bagian.";
-const SUARA_C4 = "Bagian Putu pada pembagian pertama adalah dua per enam, dan pada pembagian kedua satu per tiga. Pertanyaan buku: apakah kedua coklat yang diterima Putu besarnya sama?";
+const SUARA_C4 = "Bagian Putu pada pembagian pertama adalah dua per enam, dan pada pembagian kedua satu per tiga. Pertanyaannya: apakah kedua coklat yang diterima Putu besarnya sama?";
 
 const WARNA_ANAK = [W.jingga, W.hijauMuda, W.pink];
 const NAMA_ANAK = ["Putu", "Karel", "Azizah"];
 
 export const ADEGAN_AMATI_COKLAT: AdeganStory = {
   id: "amati-coklat",
-  judul: "Ayo Mengamati: dua batang coklat untuk tiga anak",
-  sumber: "Buku Siswa hlm. 67; Panduan Guru hlm. 102",
+  judul: "Mengamati dua batang coklat untuk tiga anak",
+  sumber: "Materi: Dua batang coklat",
   latar: "#FFF7ED",
   kutipan: [
     "Ayo Mengamati",
@@ -229,7 +229,7 @@ export const ADEGAN_AMATI_COKLAT: AdeganStory = {
   ketukan: [
     k(
       SUARA_C1,
-      tambah(0, judul("Ayo Mengamati: dua batang coklat")),
+      tambah(0, judul("Mengamati: dua batang coklat")),
       tambah("pertama", ...batang("c1", 20, 50, 200, 28, 6, [], W.arsir, W.cok), teks("l1", 262, 68, "6 bagian", 8.6)),
       tambah("kedua", ...batang("c2", 20, 110, 200, 28, 3, [], W.arsir, W.cok), teks("l2", 262, 128, "3 bagian", 8.6)),
       tambah("tiga", emo("ce", 150, 180, "🍫", 24)),

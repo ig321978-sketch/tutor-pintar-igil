@@ -56,21 +56,21 @@ export const ADEGAN_LUAR_BATANG: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 2. Fraction Bars: penerapan pada nomor 2 dan tongkat (Buku Siswa hlm. 65) ------------------------------ */
-const SUARA_BT1 = "Terapkan pada nomor dua di buku. Dua batang sama panjang, masing-masing dibagi enam. Batang atas diarsir dua bagian, batang bawah empat bagian.";
-const SUARA_BT2 = "Daerah arsir batang bawah lebih panjang, jadi dua per enam kurang dari empat per enam, sesuai kunci.";
+/* ------------------------------ 2. Fraction Bars: penerapan pada dua batang dan tongkat ------------------------------ */
+const SUARA_BT1 = "Terapkan pada dua batang tadi. Dua batang sama panjang, masing-masing dibagi enam. Batang atas diarsir dua bagian, batang bawah empat bagian.";
+const SUARA_BT2 = "Daerah arsir batang bawah lebih panjang, jadi dua per enam kurang dari empat per enam.";
 const SUARA_BT3 = "Sekarang tongkat Asep sepanjang tiga per enam meter dan tongkat Azizah dua per enam meter. Gambar keduanya sebagai batang yang dibagi enam.";
 const SUARA_BT4 = "Batang Asep diarsir tiga bagian, batang Azizah dua bagian. Batang Asep lebih panjang, jadi tongkat Asep lebih panjang, selisihnya satu bagian.";
 
 export const ADEGAN_LUAR_BATANG_TERAPAN: AdeganStory = {
   id: "luar-batang-terapan",
-  judul: "Fraction Bars pada nomor dua dan tongkat Asep",
-  sumber: "Metode luar: Fraction Bars; BS hlm. 65",
+  judul: "Fraction Bars pada dua batang dan tongkat",
+  sumber: "Metode luar: Fraction Bars",
   latar: "#FEFCE8",
   ketukan: [
     k(
       SUARA_BT1,
-      tambah(0, judul("Batang pecahan: nomor 2")),
+      tambah(0, judul("Batang pecahan: dua batang")),
       tambah("batang", ...batang("bu1", 40, 48, 210, 28, 6, 0), ...batang("bu2", 40, 100, 210, 28, 6, 0)),
       warnai("atas", W.emas, "bu1-b0", "bu1-b1"),
       tambah("atas", teks("bu3", 276, 66, "2/6", 9, W.biru)),
@@ -156,21 +156,21 @@ export const ADEGAN_LUAR_KARTU: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 4. Fraction Card Sort: penerapan pada nomor 3 dan 4 (Buku Siswa hlm. 65) ------------------------------ */
-const SUARA_CT1 = "Terapkan pada nomor tiga. Tiga kartu bertuliskan lima per enam, tiga per enam, dan satu per enam, tersusun acak.";
+/* ------------------------------ 4. Fraction Card Sort: penerapan pada tiga kartu dan dua pasang ------------------------------ */
+const SUARA_CT1 = "Terapkan pada tiga pecahan tadi. Tiga kartu bertuliskan lima per enam, tiga per enam, dan satu per enam, tersusun acak.";
 const SUARA_CT2 = "Lihat pembilangnya: tiga, lima, satu. Susun dari yang terkecil: satu, tiga, lima.";
-const SUARA_CT3 = "Dari kiri ke kanan: satu per enam, tiga per enam, lima per enam. Dari besar ke kecil, urutannya lima per enam, tiga per enam, satu per enam, sama dengan kunci buku.";
-const SUARA_CT4 = "Coba juga pasangan nomor empat: dua per delapan dan tiga per delapan, lalu sebelas per tiga belas dan dua belas per tiga belas. Tiap pasang cukup disusun dua kartu.";
+const SUARA_CT3 = "Dari kiri ke kanan: satu per enam, tiga per enam, lima per enam. Dari besar ke kecil, urutannya lima per enam, tiga per enam, satu per enam, sama seperti tadi.";
+const SUARA_CT4 = "Coba juga dua pasangan lain: dua per delapan dan tiga per delapan, lalu sebelas per tiga belas dan dua belas per tiga belas. Tiap pasang cukup disusun dua kartu.";
 
 export const ADEGAN_LUAR_KARTU_TERAPAN: AdeganStory = {
   id: "luar-kartu-terapan",
-  judul: "Fraction Card Sort pada nomor tiga dan empat",
-  sumber: "Metode luar: Fraction Card Sort; BS hlm. 65",
+  judul: "Fraction Card Sort pada tiga kartu dan dua pasang",
+  sumber: "Metode luar: Fraction Card Sort",
   latar: "#FAF5FF",
   ketukan: [
     k(
       SUARA_CT1,
-      tambah(0, judul("Susun kartu: nomor 3")),
+      tambah(0, judul("Susun kartu: tiga pecahan")),
       tambah(idx(SUARA_CT1, "tiga", 3), ...kartuPecahan("ct1", 30, 66, 3, 6)),
       tambah(idx(SUARA_CT1, "lima"), ...kartuPecahan("ct2", 122, 66, 5, 6)),
       tambah("satu", ...kartuPecahan("ct3", 214, 66, 1, 6)),
@@ -195,12 +195,12 @@ export const ADEGAN_LUAR_KARTU_TERAPAN: AdeganStory = {
       tambah("kiri", ...pecahan("cx1", 55, 56, 1, 6, 20), teks("cx2", 102, 66, "<", 22, W.merah), ...pecahan("cx3", 150, 56, 3, 6, 20), teks("cx4", 197, 66, "<", 22, W.merah), ...pecahan("cx5", 245, 56, 5, 6, 20)),
       tambah("besar", teks("cx6", 150, 112, "dari besar ke kecil", 9, W.coklat)),
       tambah("urutannya", ...pecahan("cy1", 55, 148, 5, 6, 20), teks("cy2", 102, 158, ">", 22, W.merah), ...pecahan("cy3", 150, 148, 3, 6, 20), teks("cy4", 197, 158, ">", 22, W.merah), ...pecahan("cy5", 245, 148, 1, 6, 20)),
-      tambah("kunci", emo("cy6", 280, 128, "✅", 18)),
+      tambah("tadi.", emo("cy6", 280, 128, "✅", 18)),
     ),
     k(
       SUARA_CT4,
       bersih(0),
-      tambah(0, judul("Pasangan dari nomor 4")),
+      tambah(0, judul("Dua pasangan lain")),
       tambah("dua", ...kartuPecahan("cz1", 70, 40, 2, 8, W.hijauMuda), teks("cz2", 150, 68, "<", 22, W.merah), ...kartuPecahan("cz3", 174, 40, 3, 8, W.hijauMuda)),
       tambah("sebelas", ...kartuPecahan("cz4", 70, 112, 11, 13, W.hijauMuda), teks("cz5", 150, 140, "<", 22, W.merah), ...kartuPecahan("cz6", 174, 112, 12, 13, W.hijauMuda)),
       tambah("Tiap", teks("cz7", 150, 190, "tiap pasang: dua kartu", 9, W.coklat)),
@@ -210,7 +210,7 @@ export const ADEGAN_LUAR_KARTU_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 5. Ringkasan metode luar ------------------------------ */
 const SUARA_R1 = "Ringkasan empat metode dari luar. Penyebut Sama: potongan sama besar. Banding Pembilang: pembilang yang menentukan. Batang Pecahan: lihat panjang arsir. Susun Kartu Pecahan: urutkan kartu.";
-const SUARA_R2 = "Angka buku yang dipakai: satu per tiga dan dua per tiga, dua per sepuluh dan satu per sepuluh; nomor empat, lima pasang; nomor dua dan tongkat Asep; serta nomor tiga, lima per enam, tiga per enam, satu per enam.";
+const SUARA_R2 = "Angka yang dipakai: satu per tiga dan dua per tiga, dua per sepuluh dan satu per sepuluh; lima pasang pecahan; dua batang dan tongkat Asep; serta tiga segi enam, lima per enam, tiga per enam, satu per enam.";
 const SUARA_R3 = "Pesan akhirnya: apa pun metodenya, penyebut sama berarti potongan sama besar, dan pembilang yang lebih besar berarti pecahan yang lebih besar.";
 const RINGKAS = ["potongan sama besar", "pembilang menentukan", "lihat panjang arsir", "urutkan kartu"] as const;
 const WARNA = [W.hijauMuda, W.langit, W.krem, W.pink] as const;
@@ -229,10 +229,10 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_R2,
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka yang dipakai")),
       tambah("satu", ...barisTabel("rt0", 14, 36, [100, 172], ["Penyebut Sama", "1/3 < 2/3 ; 2/10 > 1/10"], 26, 8.2)),
-      tambah("empat,", ...barisTabel("rt1", 14, 66, [100, 172], ["Banding Pembilang", "nomor 4: < < > > <"], 26, 8.2)),
-      tambah("tongkat", ...barisTabel("rt2", 14, 96, [100, 172], ["Batang Pecahan", "2/6 < 4/6 ; 3/6 > 2/6"], 26, 8.2)),
+      tambah(idx(SUARA_R2, "pasang"), ...barisTabel("rt1", 14, 66, [100, 172], ["Banding Pembilang", "5 pasang: < < > > <"], 26, 8.2)),
+      tambah(idx(SUARA_R2, "batang"), ...barisTabel("rt2", 14, 96, [100, 172], ["Batang Pecahan", "2/6 < 4/6 ; 3/6 > 2/6"], 26, 8.2)),
       tambah("serta", ...barisTabel("rt3", 14, 126, [100, 172], ["Susun Kartu", "5/6 > 3/6 > 1/6"], 26, 8.2)),
     ),
     k(

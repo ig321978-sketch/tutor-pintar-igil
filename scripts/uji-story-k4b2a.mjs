@@ -147,7 +147,11 @@ for (const v of VIDEO) {
 const G = await import("../src/components/modul/story/k4b2a-gambar.ts");
 const M1 = await import("../src/components/modul/story/k4b2a-materi-1.ts");
 const U1 = await import("../src/components/modul/story/k4b2a-luar-1.ts");
-const M = V.VIDEO_MATERI_K4B2A;
+const M_VIDEO = V.VIDEO_MATERI_K4B2A;
+// Adegan administratif (pembuka, tujuan, peta konsep, panduan awal; di E: rubrik, refleksi, orang tua dan penutup) tidak lagi diputar di video materi.
+// Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
+const MODUL_MATERI = Object.assign({}, await import("../src/components/modul/story/k4b2a-materi-1.ts"), await import("../src/components/modul/story/k4b2a-materi-2.ts"), await import("../src/components/modul/story/k4b2a-materi-3.ts"));
+const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_PEMBUKA, MODUL_MATERI.ADEGAN_PETA, MODUL_MATERI.ADEGAN_PANDUAN_AWAL, MODUL_MATERI.ADEGAN_AKTIVITAS_SATU, MODUL_MATERI.ADEGAN_AMATI_PIZZA, MODUL_MATERI.ADEGAN_PEMBILANG, MODUL_MATERI.ADEGAN_BERLATIH_BENTUK, MODUL_MATERI.ADEGAN_BANDING_BESAR, MODUL_MATERI.ADEGAN_BANDING_KECIL, MODUL_MATERI.ADEGAN_BERLATIH_BANDING_SATU, MODUL_MATERI.ADEGAN_BERLATIH_BANDING_DUA, MODUL_MATERI.ADEGAN_DIFERENSIASI] };
 const U = V.VIDEO_LUAR_K4B2A;
 const adegan = (v, id) => v.adegan.find((a) => a.id === id);
 const akhirAdegan = (a, ke = a.ketukan.length - 1) => L.keadaanStory(a, ke, 9999);
@@ -165,15 +169,30 @@ const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.
   for (const m of [...METODE, ...NAMA_ID]) cek(luar.includes(m), `video metode luar memuat ${m}`);
   sama(U1.NAMA_METODE, METODE, "nama metode di berkas luar-1");
   sama(U1.NAMA_METODE_ID, NAMA_ID, "nama Indonesia metode luar");
-  cek(M.adegan.every((a) => /(Buku Siswa|Panduan Guru) hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
+  // Video diputar sebagai guru yang mengajar: tidak ada penyebutan sumber buku di suara, teks terlihat, label sumber, judul adegan, dan subjudul.
+  const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul video tanpa kata terlarang`);
+    for (const a of v.adegan) {
+      const semua = [a.judul, a.sumber];
+      a.ketukan.forEach((kt, i) => {
+        semua.push(kt.suara);
+        for (let p = 0; p < L.kataDari(kt.suara).length; p += 1) semua.push(...L.teksTerlihat(L.keadaanStory(a, i, p)));
+      });
+      const kena = semua.filter((t) => TERLARANG.test(t) || /soal nomor|Ayo Berlatih nomor|nomor [1-4]|catatan video|menurut buku/i.test(t));
+      cek(kena.length === 0, `${v.id}/${a.id}: tanpa penyebutan buku atau catatan sumber (${kena.slice(0, 2).join(" | ")})`);
+    }
+  }
+  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber)), "video materi: label sumber berbentuk Materi: ...");
   cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
   cek(U.adegan.every((a) => a.sumber.length <= 46), "video metode luar: label sumber cukup pendek untuk kanvas 300 lebar");
-  cek(M.adegan.every((a) => a.sumber.length <= 52), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
+  cek(M_VIDEO.adegan.every((a) => a.sumber.length <= 46), "video materi: label sumber cukup pendek untuk kanvas 300 lebar");
   for (const kata of ["Peta konsep", "Kata kunci", "Apersepsi", "Ayo Berlatih", "Ayo Berpikir", "Miskonsepsi", "Diferensiasi", "Refleksi", "Subbab", "Tujuan pembelajaran", "Panduan guru", "Aktivitas"]) cek(!luar.includes(kata), `video metode luar tidak memuat "${kata}" milik materi`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-satuan", "luar-satuan-terapan", "luar-daerah", "luar-daerah-terapan", "luar-garis", "luar-garis-terapan", "luar-bagi", "luar-bagi-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
   cek(U.adegan[0].id === "luar-pembuka" && U.adegan[U.adegan.length - 1].id === "luar-ringkas", "video metode luar: pembuka dan ringkasan");
-  cek(M.adegan.length === 12 && U.adegan.length === 10, "12 adegan materi dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 9 && U.adegan.length === 10, "9 adegan materi diputar dan 10 adegan metode luar");
   cek(M.id === "k4b2a-materi" && U.id === "k4b2a-luar", "id video k4b2a-materi dan k4b2a-luar");
   // Sub-Bab A tidak membocorkan materi sub-bab B sampai E. Pembuka bab, peta konsep, dan Panduan Guru awal boleh menyebut desimal, persen, senilai, dan penyebut sama sebagai judul, tujuan, kata kunci, cabang peta, dan macam pecahan.
   const BOCOR = /senilai|ekuivalen|persepuluhan|perseratusan|persen|desimal|penyebut sama|penyebut yang sama|uji kompetensi|refleksi|pengayaan|remedial|tongkat|coklat/i;
@@ -181,8 +200,8 @@ const teksAdegan = (a) => JSON.stringify([a.judul, a.ketukan.map((kt, i) => [kt.
   for (const a of M.adegan.filter((x) => !boleh.includes(x.id))) cek(!BOCOR.test(teksAdegan(a)), `materi ${a.id} tidak membocorkan sub-bab B sampai E`);
   for (const a of U.adegan) cek(!BOCOR.test(teksAdegan(a)), `metode luar ${a.id} tidak membocorkan sub-bab B sampai E`);
   cek(/desimal/i.test(teksAdegan(adegan(M, "pembuka-bab"))) && /desimal/i.test(teksAdegan(adegan(M, "peta-konsep"))), "pembuka bab dan peta konsep menyebut desimal sebagai tujuan, kata kunci, dan cabang peta");
-  cek(totalKetukan >= 80, `total ketukan cukup dalam (${totalKetukan})`);
-  cek(M.adegan.map((a) => a.id).join() === "pembuka-bab,peta-konsep,panduan-awal,aktivitas-satu,amati-pizza,pembilang-penyebut,berlatih-bentuk,banding-besar,banding-kecil,berlatih-banding-satu,berlatih-banding-dua,diferensiasi", "urutan adegan materi");
+  cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "aktivitas-satu,amati-pizza,pembilang-penyebut,berlatih-bentuk,banding-besar,banding-kecil,berlatih-banding-satu,berlatih-banding-dua,diferensiasi", "urutan adegan materi");
   cek(U.adegan.map((a) => a.id).join() === "luar-pembuka,luar-satuan,luar-satuan-terapan,luar-daerah,luar-daerah-terapan,luar-garis,luar-garis-terapan,luar-bagi,luar-bagi-terapan,luar-ringkas", "urutan adegan metode luar");
   // Tiga nama metode lama sama dengan naskah bab; nama metode baru belum dipakai naskah, judul, atau lab lain pada bab ini.
   const modul = new URL("../src/components/modul/", import.meta.url);
@@ -389,7 +408,7 @@ const objAda = (objs, id) => objs.find((o) => o.id === id);
   sama(pz0.filter((o) => /^ps\d$/.test(o.id)).length, 4, "pizza buku: 4 siswa");
   const pz2 = T(M, "amati-pizza", 2);
   cek(lingkaranOk(pz2, "pu", 4, 1) && pecahanSama(pz2, "pf", 1, 4), "pizza: 1 dari 4 bagian ditulis 1 per 4");
-  sama(nilaiId(T(M, "amati-pizza", 1), "pj-t0"), "tiap anak mendapatkan 1 Bu…", "jawaban murid terputus");
+  sama(nilaiId(T(M, "amati-pizza", 1), "pj-t0"), "tiap anak mendapatkan 1 …", "jawaban murid belum selesai");
   cek(pecahanSama(T(M, "pembilang-penyebut", 0), "pb", 1, 4), "pembilang dan penyebut: 1 di atas 4");
   cek(lingkaranOk(T(M, "pembilang-penyebut", 1), "pp", 4, 1), "pembilang dan penyebut: pizza kecil 4 juring, 1 diarsir");
   const pq = T(M, "pembilang-penyebut", 2);
@@ -466,7 +485,10 @@ const objAda = (objs, id) => objs.find((o) => o.id === id);
   sama([nilaiId(n5, "tb-t1"), nilaiId(n5, "tg-t1")], ["1/2 kg", "1/4 kg"], "nomor 5: 1/2 kg dan 1/4 kg");
   sama(nilaiId(n5, "tj-t0"), "bawang putih lebih berat", "nomor 5: jawaban bawang putih");
   const df = T(M, "diferensiasi", 5);
-  sama([nilaiId(df, "dm2-t0"), nilaiId(df, "dm2-t1")], ["tujuan bab: 10 di Buku Siswa,", "7 di Panduan Guru"], "temuan: 10 tujuan Buku Siswa dan 7 Panduan Guru");
+  sama([nilaiId(df, "dm2-t0"), nilaiId(df, "dm2-t1")], ["1/3 pada batang pendek,", "1/4 pada batang panjang"], "kesalahan umum: keseluruhan berbeda, arsiran tampak sama luas");
+  const dk = T(M, "diferensiasi", 3);
+  sama([nilaiId(dk, "dk2-t0"), nilaiId(dk, "dk2-t1")], ["benar: 1/5 lebih kecil", "daripada 1/3"], "kesalahan umum: 1/5 lebih kecil daripada 1/3");
+  cek(tandaDari(5, 3) === "<", "hitungan mandiri: penyebut 5 lebih besar daripada 3, jadi 1/5 kurang dari 1/3");
 
   /* ------------------------------ Metode luar ------------------------------ */
   const po = T(U, "luar-pembuka", 0);

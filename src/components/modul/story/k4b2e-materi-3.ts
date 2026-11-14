@@ -5,8 +5,8 @@ import { bersih, k, tambah } from "./k4b2e-bantu";
 /* ------------------------------ 9. Uji Kompetensi 1-4: pecahan (Buku Siswa hlm. 83; Panduan Guru hlm. 111-112) ------------------------------ */
 export const ADEGAN_UK_PECAHAN: AdeganStory = {
   id: "uk-pecahan",
-  judul: "Uji Kompetensi 1–4: membandingkan pecahan",
-  sumber: "Buku Siswa hlm. 83; Panduan Guru hlm. 111–112",
+  judul: "Latihan: membandingkan pecahan",
+  sumber: "Materi: membandingkan pecahan",
   latar: "#FFF7ED",
   kutipan: [
     "Uji Kompetensi",
@@ -20,9 +20,9 @@ export const ADEGAN_UK_PECAHAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Uji Kompetensi, penutup bab. Soal satu: bandingkan dua pecahan. Satu per tiga kurang dari satu per satu. Satu per tujuh kurang dari satu per lima. Lima per sembilan lebih dari tiga per sembilan.",
+      "Sebagai penutup bab, mari berlatih. Coba bandingkan dua pecahan. Satu per tiga kurang dari satu per satu. Satu per tujuh kurang dari satu per lima. Lima per sembilan lebih dari tiga per sembilan.",
       bersih(0),
-      tambah(0, judul("Soal 1: bandingkan")),
+      tambah(0, judul("Coba bandingkan")),
       tambah("tiga", ...kartu("u1a", 40, 34, 220, 26, W.krem, ["a. 1/3 < 1/1"], 11)),
       tambah("tujuh", ...kartu("u1b", 40, 68, 220, 26, W.krem, ["b. 1/7 < 1/5"], 11)),
       tambah("sembilan", ...kartu("u1c", 40, 102, 220, 26, W.krem, ["c. 5/9 > 3/9"], 11)),
@@ -40,31 +40,31 @@ export const ADEGAN_UK_PECAHAN: AdeganStory = {
       tambah("pembilang@2", ...kartu("ub", 12, 100, 276, 44, W.langit, ["pembilang sama:", "penyebut besar = nilai kecil"], 10)),
     ),
     k(
-      "Soal dua: urutkan dari yang terkecil. Satu per empat, satu per tiga, satu per dua. Lalu satu per dua puluh satu, satu per tujuh belas, satu per tiga belas. Dan dua per delapan, lima per delapan, tujuh per delapan.",
+      "Sekarang urutkan dari yang terkecil. Satu per empat, satu per tiga, satu per dua. Lalu satu per dua puluh satu, satu per tujuh belas, satu per tiga belas. Dan dua per delapan, lima per delapan, tujuh per delapan.",
       bersih(0),
-      tambah(0, judul("Soal 2: urut dari terkecil")),
+      tambah(0, judul("Urutkan dari terkecil")),
       tambah("empat", ...kartu("u2a", 20, 36, 260, 26, W.krem, ["a. 1/4, 1/3, 1/2"], 11)),
       tambah("Lalu", ...kartu("u2b", 20, 72, 260, 26, W.krem, ["b. 1/21, 1/17, 1/13"], 11)),
       tambah("delapan", ...kartu("u2c", 20, 108, 260, 26, W.krem, ["c. 2/8, 5/8, 7/8"], 11)),
     ),
     k(
-      "Berikutnya tiga per tujuh, enam per tujuh, tujuh per tujuh, dan dua belas per enam belas, empat belas per enam belas, lima belas per enam belas. Di buku soalnya acak, kuncinya terurut.",
+      "Berikutnya tiga per tujuh, enam per tujuh, tujuh per tujuh, dan dua belas per enam belas, empat belas per enam belas, lima belas per enam belas. Urutkan juga yang terakhir ini dari yang kecil ke yang besar.",
       tambah("Berikutnya", ...kartu("u2d", 20, 144, 260, 26, W.krem, ["d. 3/7, 6/7, 7/7"], 11)),
       tambah("dan", ...kartu("u2e", 20, 176, 260, 22, W.krem, ["e. 12/16, 14/16, 15/16"], 10.4)),
     ),
     k(
-      "Soal tiga: seperempat semangka untuk Helen, sisanya untuk Putu. Helen mendapat satu per empat, Putu tiga per empat. Bagian terbesar milik Putu.",
+      "Sekarang cerita semangka: seperempat untuk Helen, sisanya untuk Putu. Helen mendapat satu per empat, Putu tiga per empat. Bagian terbesar milik Putu.",
       bersih(0),
-      tambah(0, judul("Soal 3: semangka")),
+      tambah(0, judul("Cerita semangka")),
       tambah(0, emo("u3", 150, 82, "🍉", 40)),
       tambah("Helen", ...kartu("u3a", 20, 100, 120, 28, W.pink, ["Helen = 1/4"], 11)),
       tambah("Putu@2", ...kartu("u3b", 160, 100, 120, 28, W.hijauMuda, ["Putu = 3/4"], 11)),
       tambah("Bagian", ...kartu("u3c", 60, 144, 180, 30, W.krem, ["paling besar: Putu"], 11)),
     ),
     k(
-      "Soal empat: Wiwin mendapat satu per tiga roti, Tomas dua per tiga. Penyebutnya sama dan satu kurang dari dua, jadi paling sedikit Wiwin.",
+      "Sekarang cerita roti: Wiwin mendapat satu per tiga roti, Tomas dua per tiga. Penyebutnya sama dan satu kurang dari dua, jadi paling sedikit Wiwin.",
       bersih(0),
-      tambah(0, judul("Soal 4: roti")),
+      tambah(0, judul("Cerita roti")),
       tambah(0, emo("u4", 150, 82, "🍞", 40)),
       tambah("Wiwin", ...kartu("u4a", 20, 100, 120, 28, W.hijauMuda, ["Wiwin = 1/3"], 11)),
       tambah("Tomas", ...kartu("u4b", 160, 100, 120, 28, W.langit, ["Tomas = 2/3"], 11)),
@@ -76,8 +76,8 @@ export const ADEGAN_UK_PECAHAN: AdeganStory = {
 /* ------------------------------ 10. Uji Kompetensi 5-6: desimal (Buku Siswa hlm. 83-84; Panduan Guru hlm. 112; rubrik hlm. 115) ------------------------------ */
 export const ADEGAN_UK_DESIMAL: AdeganStory = {
   id: "uk-desimal",
-  judul: "Uji Kompetensi 5–6: pecahan ke desimal",
-  sumber: "Buku Siswa hlm. 83–84; Panduan Guru hlm. 112, 115",
+  judul: "Latihan: pecahan ke desimal",
+  sumber: "Materi: pecahan ke desimal",
   latar: "#F0FDF4",
   kutipan: [
     "Ubahkan pecahan biasa berikut menjadi pecahan desimal persepuluhan",
@@ -89,19 +89,19 @@ export const ADEGAN_UK_DESIMAL: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal lima: ubah ke desimal persepuluhan. Tiga per sepuluh jadi nol koma tiga, empat per sepuluh nol koma empat, dua per sepuluh nol koma dua, enam per sepuluh nol koma enam, dua puluh lima per sepuluh dua koma lima.",
+      "Sekarang ubah ke desimal persepuluhan. Tiga per sepuluh jadi nol koma tiga, empat per sepuluh nol koma empat, dua per sepuluh nol koma dua, enam per sepuluh nol koma enam, dua puluh lima per sepuluh dua koma lima.",
       bersih(0),
-      tambah(0, judul("Soal 5: persepuluhan")),
+      tambah(0, judul("Desimal persepuluhan")),
       tambah("Tiga", ...kartu("d5a", 40, 34, 220, 26, W.krem, ["a. 3/10 = 0,3"], 11)),
       tambah("empat", ...kartu("d5b", 40, 68, 220, 26, W.krem, ["b. 4/10 = 0,4"], 11)),
       tambah("dua", ...kartu("d5c", 40, 102, 220, 26, W.krem, ["c. 2/10 = 0,2"], 11)),
       tambah("enam", ...kartu("d5d", 40, 136, 220, 26, W.krem, ["d. 6/10 = 0,6"], 11)),
-      tambah("lima@2", ...kartu("d5e", 40, 170, 220, 26, W.krem, ["e. 25/10 = 2,5"], 11)),
+      tambah("lima", ...kartu("d5e", 40, 170, 220, 26, W.krem, ["e. 25/10 = 2,5"], 11)),
     ),
     k(
-      "Soal enam: ubah ke desimal perseratusan. Delapan puluh satu per seratus jadi nol koma delapan satu, tujuh puluh sembilan per seratus nol koma tujuh sembilan, empat puluh lima per seratus nol koma empat lima.",
+      "Lanjut, ubah ke desimal perseratusan. Delapan puluh satu per seratus jadi nol koma delapan satu, tujuh puluh sembilan per seratus nol koma tujuh sembilan, empat puluh lima per seratus nol koma empat lima.",
       bersih(0),
-      tambah(0, judul("Soal 6: perseratusan")),
+      tambah(0, judul("Desimal perseratusan")),
       tambah("Delapan", ...kartu("d6a", 40, 34, 220, 26, W.krem, ["a. 81/100 = 0,81"], 11)),
       tambah("tujuh", ...kartu("d6b", 40, 68, 220, 26, W.krem, ["b. 79/100 = 0,79"], 11)),
       tambah("empat@2", ...kartu("d6c", 40, 102, 220, 26, W.krem, ["c. 45/100 = 0,45"], 11)),
@@ -112,12 +112,12 @@ export const ADEGAN_UK_DESIMAL: AdeganStory = {
       tambah("Bagian@2", ...kartu("d6e", 40, 170, 220, 26, W.krem, ["e. 99/100 = 0,99"], 11)),
     ),
     k(
-      "Catatan guru: rubrik butir enam hanya memuat bagian a sampai d. Bagian e ada di Buku Siswa dan kunci, tetapi tidak tercantum di rubrik.",
+      "Hati-hati, kesalahan yang sering terjadi: menulis sembilan puluh sembilan per seratus menjadi nol koma sembilan. Ingat, perseratusan punya dua angka di belakang koma, jadi nol koma sembilan sembilan.",
       bersih(0),
-      tambah(0, judul("Catatan guru", W.merah)),
-      tambah("rubrik", ...kartu("d7a", 12, 44, 276, 30, W.merahMuda, ["rubrik butir 6: bagian a sampai d"], 10)),
-      tambah("Bagian@2", ...kartu("d7b", 12, 90, 276, 30, W.krem, ["Buku Siswa dan kunci: a sampai e"], 10)),
-      tambah("tetapi", ...kartu("d7c", 12, 136, 276, 30, W.hijauMuda, ["bagian e: 99/100 = 0,99 tetap benar"], 10)),
+      tambah(0, judul("Hati-hati", W.merah)),
+      tambah("kesalahan", ...kartu("d7a", 12, 44, 276, 30, W.merahMuda, ["sering keliru: hanya satu angka"], 10)),
+      tambah("Ingat", ...kartu("d7b", 12, 90, 276, 30, W.krem, ["perseratusan: dua angka setelah koma"], 10)),
+      tambah("jadi", ...kartu("d7c", 12, 136, 276, 30, W.hijauMuda, ["99/100 = 0,99 (bukan 0,9)"], 10)),
     ),
   ],
 };
@@ -155,8 +155,8 @@ const TAB_UK8 = tabel(
 );
 export const ADEGAN_UK_PERSEN: AdeganStory = {
   id: "uk-persen",
-  judul: "Uji Kompetensi 7–10: persen",
-  sumber: "Buku Siswa hlm. 84; Panduan Guru hlm. 113–114",
+  judul: "Latihan: desimal dan persen",
+  sumber: "Materi: desimal dan persen",
   latar: "#FDF4FF",
   kutipan: [
     "Ubahlah pecahan desimal perseratusan berikut menjadi bentuk persen",
@@ -170,42 +170,42 @@ export const ADEGAN_UK_PERSEN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal tujuh: desimal perseratusan menjadi persen. Nol koma nol lima menjadi lima persen. Nol koma dua lima menjadi dua puluh lima persen. Satu koma tiga delapan menjadi seratus tiga puluh delapan persen. Dua puluh koma nol lima menjadi dua ribu lima persen.",
+      "Sekarang desimal perseratusan menjadi persen. Nol koma nol lima menjadi lima persen. Nol koma dua lima menjadi dua puluh lima persen. Satu koma tiga delapan menjadi seratus tiga puluh delapan persen. Dua puluh koma nol lima menjadi dua ribu lima persen.",
       bersih(0),
-      tambah(0, judul("Soal 7: ke persen")),
-      tambah("Soal", ...barisTabel(TAB_UK7, "t7", 0)),
+      tambah(0, judul("Ke persen")),
+      tambah("Sekarang", ...barisTabel(TAB_UK7, "t7", 0)),
       tambah("Nol", ...barisTabel(TAB_UK7, "t7", 1)),
       tambah("Nol@3", ...barisTabel(TAB_UK7, "t7", 2)),
       tambah("Satu", ...barisTabel(TAB_UK7, "t7", 3)),
       tambah("Dua@3", ...barisTabel(TAB_UK7, "t7", 4)),
     ),
     k(
-      "Soal delapan: persen menjadi desimal perseratusan. Tiga puluh lima persen, nol koma tiga lima. Lima puluh enam persen, nol koma lima enam. Seratus dua puluh lima persen, satu koma dua lima. Empat ratus lima puluh lima persen, empat koma lima lima.",
+      "Sekarang kebalikannya: persen menjadi desimal perseratusan. Tiga puluh lima persen, nol koma tiga lima. Lima puluh enam persen, nol koma lima enam. Seratus dua puluh lima persen, satu koma dua lima. Empat ratus lima puluh lima persen, empat koma lima lima.",
       bersih(0),
-      tambah(0, judul("Soal 8: ke desimal")),
-      tambah("Soal", ...barisTabel(TAB_UK8, "t8", 0)),
+      tambah(0, judul("Ke desimal")),
+      tambah("Sekarang", ...barisTabel(TAB_UK8, "t8", 0)),
       tambah("Tiga", ...barisTabel(TAB_UK8, "t8", 1)),
       tambah("Lima@3", ...barisTabel(TAB_UK8, "t8", 2)),
       tambah("Seratus@2", ...barisTabel(TAB_UK8, "t8", 3)),
       tambah("Empat", ...barisTabel(TAB_UK8, "t8", 4)),
     ),
     k(
-      "Soal sembilan: sekolah memilih tiga puluh dari seratus siswa untuk lomba lari. Tiga puluh per seratus sama dengan nol koma tiga nol, yaitu tiga puluh persen.",
+      "Sekarang cerita lomba: sekolah memilih tiga puluh dari seratus siswa untuk lomba lari. Tiga puluh per seratus sama dengan nol koma tiga nol, yaitu tiga puluh persen.",
       bersih(0),
-      tambah(0, judul("Soal 9: lomba lari")),
+      tambah(0, judul("Lomba lari")),
       tambah("sekolah", ...kartu("w1", 12, 40, 150, 28, W.krem, ["30 dari 100 siswa"], 10)),
       tambah("Tiga", ...kartu("w2", 12, 84, 150, 28, W.langit, ["30/100 = 0,30"], 10.4)),
       tambah("yaitu", ...kartu("w3", 12, 128, 150, 30, W.pink, ["0,30 = 30%"], 11)),
       tambah("persen.", ...kisi100("kg", 180, 50, 10, 30)),
     ),
     k(
-      "Soal sepuluh: Nazilla menjawab benar enam dari sepuluh soal. Enam per sepuluh dikali seratus persen sama dengan enam puluh persen. Kunci buku juga menulis enam puluh persen.",
+      "Cerita berikutnya: Nazilla menjawab benar enam dari sepuluh pertanyaan. Enam per sepuluh dikali seratus persen sama dengan enam puluh persen. Jadi nilainya enam puluh persen.",
       bersih(0),
-      tambah(0, judul("Soal 10: soal benar")),
-      tambah("Nazilla", ...kartu("w4", 12, 40, 150, 28, W.krem, ["6 dari 10 soal benar"], 9.4)),
+      tambah(0, judul("Pertanyaan benar")),
+      tambah("Nazilla", ...kartu("w4", 12, 40, 150, 28, W.krem, ["6 dari 10 benar"], 9.4)),
       tambah("Enam@2", ...kartu("w5", 12, 84, 150, 30, W.langit, ["6/10 × 100% = 60%"], 9.4)),
-      tambah("Kunci", ...kartu("w6", 12, 128, 150, 30, W.pink, ["jawab: 60%"], 11)),
-      tambah("sepuluh@2", ...kisi100("kg", 180, 50, 10, 60)),
+      tambah("Jadi", ...kartu("w6", 12, 128, 150, 30, W.pink, ["jawab: 60%"], 11)),
+      tambah("sepuluh", ...kisi100("kg", 180, 50, 10, 60)),
     ),
   ],
 };
@@ -366,8 +366,8 @@ export const ADEGAN_REFLEKSI_E: AdeganStory = {
 /* ------------------------------ 14. Pengayaan 1-3 (Panduan Guru hlm. 118-119) ------------------------------ */
 export const ADEGAN_PENGAYAAN_1E: AdeganStory = {
   id: "pengayaan-1e",
-  judul: "Pengayaan: soal 1 sampai 3",
-  sumber: "Panduan Guru hlm. 118–119",
+  judul: "Pengayaan: tantangan 1 sampai 3",
+  sumber: "Materi: pengayaan",
   latar: "#FFFBEB",
   kutipan: [
     "Pedoman untuk Pengayaan",
@@ -382,22 +382,22 @@ export const ADEGAN_PENGAYAAN_1E: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Pengayaan memakai angka yang berbeda untuk pecahan, desimal, atau persen. Belajar kelompok: memecahkan masalah dunia nyata dan membaca referensi. Belajar mandiri: tugas proyek, lalu menjadi tutor bagi teman.",
-      ...daftar("pe", "Pedoman pengayaan", [
-        { at: "memakai", t: "angka berbeda: pecahan, desimal, persen", w: W.krem, u: 9 },
+      "Kamu yang sudah lancar boleh mencoba tantangan dengan angka yang berbeda untuk pecahan, desimal, atau persen. Belajar kelompok: memecahkan masalah dunia nyata. Belajar mandiri: membuat proyek, lalu menjadi tutor bagi teman.",
+      ...daftar("pe", "Tantangan pengayaan", [
+        { at: "angka", t: "angka berbeda: pecahan, desimal, persen", w: W.krem, u: 9 },
         { at: "kelompok:", t: "belajar kelompok: masalah dunia nyata", w: W.langit, u: 9 },
         { at: "mandiri:", t: "belajar mandiri: proyek, jadi tutor teman", w: W.hijauMuda, u: 8.8 },
       ]),
     ),
     k(
-      "Soal satu, jajanan khas Jember. Prol Tape: tepung tiga kilo dan gula dua setengah kilo, jumlahnya lima setengah kilo. Suwar Suwir: tepung dua setengah kilo dan gula satu kilo, jumlahnya tiga setengah kilo.",
+      "Tantangan pertama, jajanan khas Jember. Prol Tape: tepung tiga kilo dan gula dua setengah kilo, jumlahnya lima setengah kilo. Suwar Suwir: tepung dua setengah kilo dan gula satu kilo, jumlahnya tiga setengah kilo.",
       bersih(0),
       tambah(0, judul("Pengayaan 1: Jember")),
       tambah("Prol", ...kartu("p1a", 12, 40, 276, 34, W.krem, ["Prol Tape: 3 + 2½ = 5½ kilo"], 11)),
       tambah("Suwar", ...kartu("p1b", 12, 90, 276, 34, W.hijauMuda, ["Suwar Suwir: 2½ + 1 = 3½ kilo"], 11)),
     ),
     k(
-      "Soal dua: Putu memotong brownies menjadi sepuluh bagian dan memberi empat bagian kepada Karel. Karel menerima empat per sepuluh bagian, yaitu nol koma empat, atau empat puluh persen.",
+      "Tantangan kedua: Putu memotong brownies menjadi sepuluh bagian dan memberi empat bagian kepada Karel. Karel menerima empat per sepuluh bagian, yaitu nol koma empat, atau empat puluh persen.",
       bersih(0),
       tambah(0, judul("Pengayaan 2: brownies")),
       tambah("Putu", ...kartu("p2a", 12, 40, 150, 28, W.krem, ["4 dari 10 bagian"], 10)),
@@ -406,7 +406,7 @@ export const ADEGAN_PENGAYAAN_1E: AdeganStory = {
       tambah("sepuluh", ...kisi100("kg", 180, 50, 10, 40)),
     ),
     k(
-      "Soal tiga: Edamame lima puluh ribu rupiah per kilogram. Helen membeli setengah kilogram, jadi membayar dua puluh lima ribu rupiah.",
+      "Tantangan ketiga: Edamame lima puluh ribu rupiah per kilogram. Helen membeli setengah kilogram, jadi membayar dua puluh lima ribu rupiah.",
       bersih(0),
       tambah(0, judul("Pengayaan 3: Edamame")),
       tambah("Edamame", ...kartu("p3a", 12, 40, 276, 30, W.krem, ["1 kilogram: Rp50.000"], 10.4)),
@@ -420,8 +420,8 @@ export const ADEGAN_PENGAYAAN_1E: AdeganStory = {
 /* ------------------------------ 15. Pengayaan 4-5 dan catatan kunci (Panduan Guru hlm. 119) ------------------------------ */
 export const ADEGAN_PENGAYAAN_2E: AdeganStory = {
   id: "pengayaan-2e",
-  judul: "Pengayaan: soal 4 dan 5, catatan kunci",
-  sumber: "Panduan Guru hlm. 119",
+  judul: "Pengayaan: tantangan 4 dan 5",
+  sumber: "Materi: pengayaan dan diskon",
   latar: "#FEF2F2",
   kutipan: [
     "Edamame dan Suwar Suwir adalah salah satu jajanan khas Kota Jember",
@@ -435,7 +435,7 @@ export const ADEGAN_PENGAYAAN_2E: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal empat: Slamet membeli satu bungkus Edamame setengah kilogram dan satu bungkus Suwar Suwir seperempat kilogram. Setengah lebih besar daripada seperempat, jadi Edamame lebih berat.",
+      "Tantangan keempat: Slamet membeli satu bungkus Edamame setengah kilogram dan satu bungkus Suwar Suwir seperempat kilogram. Setengah lebih besar daripada seperempat, jadi Edamame lebih berat.",
       bersih(0),
       tambah(0, judul("Pengayaan 4: oleh-oleh")),
       tambah("Edamame", ...kartu("p4a", 20, 40, 120, 28, W.hijauMuda, ["Edamame 1/2 kg"], 10)),
@@ -444,7 +444,7 @@ export const ADEGAN_PENGAYAAN_2E: AdeganStory = {
       tambah("berat.", ...kartu("p4d", 60, 136, 180, 30, W.pink, ["paling berat: Edamame"], 10.4)),
     ),
     k(
-      "Soal lima: diskon Edamame lima persen. Lima persen sama dengan lima per seratus, atau nol koma nol lima. Jadi kasir seharusnya menjawab lima per seratus dari harga Edamame.",
+      "Tantangan kelima: diskon Edamame lima persen. Lima persen sama dengan lima per seratus, atau nol koma nol lima. Jadi kasir seharusnya menjawab lima per seratus dari harga Edamame.",
       bersih(0),
       tambah(0, judul("Pengayaan 5: diskon")),
       tambah("diskon", ...kartu("p5a", 12, 40, 150, 28, W.krem, ["diskon 5%"], 11)),
@@ -454,13 +454,13 @@ export const ADEGAN_PENGAYAAN_2E: AdeganStory = {
       tambah("seharusnya", teks("p5d", 230, 170, "5 dari 100 kotak", 8.6, W.biru)),
     ),
     k(
-      "Catatan guru: kunci soal empat menulis setengah kurang dari empat per sepuluh, padahal setengah sama dengan lima per sepuluh. Kunci soal lima menulis lima per sepuluh, seharusnya lima per seratus.",
+      "Hati-hati, kesalahan yang sering terjadi. Setengah sama dengan lima per sepuluh, jadi setengah lebih besar dari empat per sepuluh. Lima persen sama dengan lima per seratus, bukan lima per sepuluh.",
       bersih(0),
-      tambah(0, judul("Catatan kunci", W.merah)),
-      tambah("kunci", ...kartu("p6a", 12, 36, 276, 26, W.merahMuda, ["kunci 4: 1/2 < 4/10 (keliru)"], 9.6)),
-      tambah("padahal", ...kartu("p6b", 12, 68, 276, 26, W.hijauMuda, ["benar: 1/2 = 5/10 > 4/10"], 9.6)),
-      tambah("Kunci@2", ...kartu("p6c", 12, 110, 276, 26, W.merahMuda, ["kunci 5: 5% = 5/10 (keliru)"], 9.6)),
-      tambah("seharusnya", ...kartu("p6d", 12, 142, 276, 26, W.hijauMuda, ["benar: 5% = 5/100"], 9.6)),
+      tambah(0, judul("Hati-hati", W.merah)),
+      tambah("kesalahan", ...kartu("p6a", 12, 36, 276, 26, W.merahMuda, ["sering keliru: 1/2 dianggap kecil dari 4/10"], 9.2)),
+      tambah("Setengah", ...kartu("p6b", 12, 68, 276, 26, W.hijauMuda, ["benar: 1/2 = 5/10 > 4/10"], 9.6)),
+      tambah("Lima@2", ...kartu("p6c", 12, 110, 276, 26, W.merahMuda, ["sering keliru: 5% ditulis 5/10"], 9.6)),
+      tambah("bukan", ...kartu("p6d", 12, 142, 276, 26, W.hijauMuda, ["benar: 5% = 5/100"], 9.6)),
     ),
   ],
 };

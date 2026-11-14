@@ -10,7 +10,7 @@ const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
 export const kepala = (i: number) => kartu("hd", 6, 26, 288, 24, WARNA_METODE[i], [`${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`], 8.8);
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana membandingkan pecahan yang penyebutnya sama? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana membandingkan pecahan yang penyebutnya sama? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka yang sama seperti tadi.";
 const SUARA_O2 = "Empat metode itu: Same Denominator, Compare Numerators, Fraction Bars, dan Fraction Card Sort.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Penyebut Sama, Banding Pembilang, Batang Pecahan, dan Susun Kartu Pecahan.";
 const SUARA_O4 = "Semuanya menjawab satu pertanyaan: pecahan mana yang lebih besar? Dengan memeriksa potongan sama besar, membandingkan pembilang, menyejajarkan batang, dan menyusun kartu.";
@@ -18,7 +18,7 @@ const SUARA_O4 = "Semuanya menjawab satu pertanyaan: pecahan mana yang lebih bes
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk membandingkan pecahan",
-  sumber: "Metode luar: pembuka; BS hlm. 63–65",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -101,21 +101,21 @@ export const ADEGAN_LUAR_PENYEBUT: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Same Denominator: penerapan (Buku Siswa hlm. 63–64) ------------------------------ */
-const SUARA_T1 = "Terapkan pada buku. Gambar pertama dibagi tiga, jadi potongannya sama besar. Satu per tiga mengarsir satu potongan, dua per tiga mengarsir dua potongan.";
+/* ------------------------------ 3. Same Denominator: penerapan ------------------------------ */
+const SUARA_T1 = "Terapkan pada gambar tadi. Gambar pertama dibagi tiga, jadi potongannya sama besar. Satu per tiga mengarsir satu potongan, dua per tiga mengarsir dua potongan.";
 const SUARA_T2 = "Dua potongan lebih banyak dari satu potongan, maka satu per tiga kurang dari dua per tiga.";
 const SUARA_T3 = "Sekarang sepuluh potongan sama besar. Dua per sepuluh mengarsir dua potongan, satu per sepuluh mengarsir satu potongan.";
-const SUARA_T4 = "Dua potongan lebih banyak dari satu potongan, maka dua per sepuluh lebih dari satu per sepuluh. Cocok dengan buku.";
+const SUARA_T4 = "Dua potongan lebih banyak dari satu potongan, maka dua per sepuluh lebih dari satu per sepuluh. Hasilnya sama dengan hitungan tadi.";
 
 export const ADEGAN_LUAR_PENYEBUT_TERAPAN: AdeganStory = {
   id: "luar-penyebut-terapan",
   judul: "Same Denominator pada tiga bagian dan sepuluh bagian",
-  sumber: "Metode luar: Same Denominator; BS hlm. 63–64",
+  sumber: "Metode luar: Same Denominator",
   latar: "#ECFDF5",
   ketukan: [
     k(
       SUARA_T1,
-      tambah(0, judul("Penyebut Sama pada buku")),
+      tambah(0, judul("Penyebut Sama pada gambar")),
       tambah("Gambar", ...batang("ta1", 40, 50, 150, 30, 3, 0), ...batang("ta2", 40, 108, 150, 30, 3, 0)),
       tambah("Satu", ...pecahan("ta1f", 240, 66, 1, 3, 16)),
       warnai("satu@2", W.emas, "ta1-b0"),
@@ -151,7 +151,7 @@ export const ADEGAN_LUAR_PENYEBUT_TERAPAN: AdeganStory = {
       tambah("maka", ...pecahan("tf1", 90, 144, 2, 10, 18)),
       tambah("lebih@2", teks("tf2", 150, 152, ">", 24, W.merah)),
       tambah("satu@2", ...pecahan("tf3", 210, 144, 1, 10, 18)),
-      tambah("Cocok", emo("tf4", 262, 156, "✅", 22)),
+      tambah("Hasilnya", emo("tf4", 262, 156, "✅", 22)),
     ),
   ],
 };
@@ -205,11 +205,11 @@ export const ADEGAN_LUAR_PEMBILANG: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 5. Compare Numerators: penerapan pada Ayo Berlatih 4 (Buku Siswa hlm. 65) ------------------------------ */
-const SUARA_M1 = "Terapkan pada nomor empat. Pasangan a: pembilangnya satu dan tiga. Satu kurang dari tiga, jadi satu per lima kurang dari tiga per lima.";
+/* ------------------------------ 5. Compare Numerators: penerapan pada lima pasang pecahan ------------------------------ */
+const SUARA_M1 = "Terapkan pada lima pasang pecahan. Pasangan a: pembilangnya satu dan tiga. Satu kurang dari tiga, jadi satu per lima kurang dari tiga per lima.";
 const SUARA_M2 = "Pasangan b dan c. Dua kurang dari tiga, jadi dua per empat kurang dari tiga per empat. Tiga lebih dari dua, jadi tiga per delapan lebih dari dua per delapan.";
 const SUARA_M3 = "Pasangan d dan e. Lima lebih dari dua, jadi lima per sepuluh lebih dari dua per sepuluh. Sebelas kurang dari dua belas, jadi sebelas per tiga belas kurang dari dua belas per tiga belas.";
-const SUARA_M4 = "Lima pasang selesai hanya dengan membandingkan pembilang, dan hasilnya sama dengan kunci di buku: kurang, kurang, lebih, lebih, kurang.";
+const SUARA_M4 = "Lima pasang selesai hanya dengan membandingkan pembilang, dan hasilnya: kurang, kurang, lebih, lebih, kurang.";
 
 const HURUF = ["a", "b", "c", "d", "e"] as const;
 const yBaris = (i: number): number => 74 + i * 26;
@@ -226,12 +226,12 @@ const alasan = (i: number) => {
 export const ADEGAN_LUAR_PEMBILANG_TERAPAN: AdeganStory = {
   id: "luar-pembilang-terapan",
   judul: "Compare Numerators pada lima pasang pecahan",
-  sumber: "Metode luar: Compare Numerators; BS hlm. 65",
+  sumber: "Metode luar: Compare Numerators",
   latar: "#EFF6FF",
   ketukan: [
     k(
       SUARA_M1,
-      tambah(0, judul("Banding pembilang: nomor 4")),
+      tambah(0, judul("Banding pembilang: lima pasang")),
       tambah(0, kepala(1)),
       tambah("Pasangan", ...baris(0)),
       tambah(idx(SUARA_M1, "satu", 2), alasan(0)),
@@ -256,7 +256,7 @@ export const ADEGAN_LUAR_PEMBILANG_TERAPAN: AdeganStory = {
     k(
       SUARA_M4,
       bersih(0),
-      tambah(0, judul("Hasil sama dengan kunci buku")),
+      tambah(0, judul("Hasil lima pasang")),
       ...HURUF.map((h, i) => tambah(i < 2 ? idx(SUARA_M4, "kurang", i + 1) : i < 4 ? idx(SUARA_M4, "lebih", i - 1) : idx(SUARA_M4, "kurang", 3), ...kartu(`mz${i}`, 8 + i * 58, 70, 52, 44, W.langit, [`${h}.  ${KUNCI_EMPAT[i]}`], 12))),
       tambah("selesai", emo("mz9", 150, 150, "✅", 30)),
     ),

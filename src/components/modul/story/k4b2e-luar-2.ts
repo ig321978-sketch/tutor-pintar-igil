@@ -58,8 +58,8 @@ function ketukanJembatan(c: KasusJembatan) {
 }
 export const ADEGAN_LUAR_DP_TERAPAN: AdeganStory = {
   id: "luar-dp-terapan",
-  judul: "Decimal–Percent Link diterapkan pada angka buku",
-  sumber: "Metode luar: Decimal–Percent Link pada soal Buku Siswa",
+  judul: "Decimal–Percent Link diterapkan pada soal persen",
+  sumber: "Metode luar: Decimal–Percent Link",
   latar: "#FDF4FF",
   ketukan: [
     ketukanJembatan({
@@ -160,8 +160,8 @@ function ketukanSkala(c: KasusSkala) {
 }
 export const ADEGAN_LUAR_SB_TERAPAN: AdeganStory = {
   id: "luar-sb-terapan",
-  judul: "Scale to One Hundred diterapkan pada angka buku",
-  sumber: "Metode luar: Scale to One Hundred pada soal Buku Siswa",
+  judul: "Scale to One Hundred diterapkan pada soal persen",
+  sumber: "Metode luar: Scale to One Hundred",
   latar: "#FEFCE8",
   ketukan: [
     ketukanSkala({
@@ -177,24 +177,24 @@ export const ADEGAN_LUAR_SB_TERAPAN: AdeganStory = {
     }),
     ketukanSkala({
       id: "sb",
-      judul: "6 dari 10 soal",
+      judul: "6 dari 10 pertanyaan",
       asal: "6/10",
       pengali: 10,
       hasil: "60/100",
       persen: "60/100 = 60%",
       hitung: "100 ÷ 10 = 10",
-      suara: "Enam dari sepuluh soal benar. Seratus dibagi sepuluh sama dengan sepuluh. Enam kali sepuluh menjadi enam puluh, jadi enam puluh per seratus, yaitu enam puluh persen.",
+      suara: "Enam dari sepuluh pertanyaan dijawab benar. Seratus dibagi sepuluh sama dengan sepuluh. Enam kali sepuluh menjadi enam puluh, jadi enam puluh per seratus, yaitu enam puluh persen.",
       at: ["Enam", "dibagi", "menjadi", "Seratus", "yaitu"],
     }),
     ketukanSkala({
       id: "sc",
-      judul: "3/10 dari soal lima",
+      judul: "3/10 pertanyaan benar",
       asal: "3/10",
       pengali: 10,
       hasil: "30/100",
       persen: "30/100 = 30%",
       hitung: "100 ÷ 10 = 10",
-      suara: "Tiga per sepuluh dari soal lima. Seratus dibagi sepuluh sama dengan sepuluh, jadi tiga kali sepuluh menjadi tiga puluh per seratus. Itu tiga puluh persen, sama dengan nol koma tiga yang dikali seratus persen.",
+      suara: "Tiga per sepuluh pertanyaan dijawab benar. Seratus dibagi sepuluh sama dengan sepuluh, jadi tiga kali sepuluh menjadi tiga puluh per seratus. Itu tiga puluh persen, sama dengan nol koma tiga yang dikali seratus persen.",
       at: ["Tiga", "Seratus", "menjadi", "dibagi", "Itu"],
     }),
     ketukanSkala({
@@ -215,7 +215,7 @@ export const ADEGAN_LUAR_SB_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan empat metode",
-  sumber: "Ringkasan metode luar; angka Buku Siswa hlm. 75–84",
+  sumber: "Metode luar: ringkasan",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -237,11 +237,11 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       ]),
     ),
     k(
-      "Metode luar ini membantu persen terasa masuk akal. Saat mengerjakan soal buku, tetap tuliskan langkah seperti di buku, dan pilih metode yang membuatmu yakin.",
+      "Metode luar ini membantu persen terasa masuk akal. Saat mengerjakan soal persen, tetap tuliskan langkahmu dengan rapi, dan pilih metode yang membuatmu yakin.",
       bersih(0),
       tambah(0, judul("Pilih yang membuatmu yakin")),
       tambah("Metode", ...kartu("rz1", 20, 44, 260, 34, W.krem, ["metode luar: membuat persen masuk akal"], 9.6)),
-      tambah("langkah", ...kartu("rz2", 20, 94, 260, 34, W.hijauMuda, ["soal buku: tuliskan langkah dari buku"], 9.6)),
+      tambah("langkah", ...kartu("rz2", 20, 94, 260, 34, W.hijauMuda, ["soal persen: tulis langkahmu"], 9.6)),
       tambah("pilih", ...kartu("rz3", 20, 144, 260, 34, W.pink, ["pilih metode yang kamu yakini"], 9.6)),
     ),
   ],

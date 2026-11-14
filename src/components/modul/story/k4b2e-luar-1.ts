@@ -6,15 +6,15 @@ import { bersih, k, tambah } from "./k4b2e-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk persen",
-  sumber: "Metode luar: pembuka; angka Buku Siswa hlm. 75–84",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana belajar persen dengan baik? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.",
+      "Bagaimana belajar persen dengan baik? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka-angka persen yang sama.",
       bersih(0),
       tambah(0, judul("Empat metode dari luar")),
       tambah("berbagai", emo("gl", 150, 100, "🌍", 56)),
-      tambah("empat", ...kartu("pa", 30, 128, 240, 34, W.krem, ["persen: angka dari buku"], 9.6)),
+      tambah("empat", ...kartu("pa", 30, 128, 240, 34, W.krem, ["persen: empat cara belajar"], 9.6)),
     ),
     k(
       "Empat metode itu: Percent as Hundredths, Hundred Grid Percent, Decimal–Percent Link, dan Scale to One Hundred.",
@@ -80,8 +80,8 @@ function ketukanRantai(c: Kasus, y = 100) {
 }
 export const ADEGAN_LUAR_PH_TERAPAN: AdeganStory = {
   id: "luar-ph-terapan",
-  judul: "Percent as Hundredths diterapkan pada angka buku",
-  sumber: "Metode luar: Percent as Hundredths pada soal Buku Siswa",
+  judul: "Percent as Hundredths diterapkan pada soal persen",
+  sumber: "Metode luar: Percent as Hundredths",
   latar: "#F0FDF4",
   ketukan: [
     ketukanRantai({
@@ -173,8 +173,8 @@ function ketukanKisi(c: KasusKisi) {
 }
 export const ADEGAN_LUAR_HG_TERAPAN: AdeganStory = {
   id: "luar-hg-terapan",
-  judul: "Hundred Grid Percent diterapkan pada angka buku",
-  sumber: "Metode luar: Hundred Grid Percent pada soal Buku Siswa",
+  judul: "Hundred Grid Percent diterapkan pada soal persen",
+  sumber: "Metode luar: Hundred Grid Percent",
   latar: "#EFF6FF",
   ketukan: [
     ketukanKisi({

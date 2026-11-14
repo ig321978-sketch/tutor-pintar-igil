@@ -1,4 +1,5 @@
 // Uji Story Kelas 4 Bab 2 Sub-Bab E (Desimal Perseratusan dan Persen, penutup bab): dua video (materi kurikulum dan metode luar) dengan mesin animasi baru.
+// Video diputar bergaya guru: tanpa penyebutan buku, halaman, kunci, rubrik, atau catatan sumber (blok TERLARANG).
 // Memeriksa: pemicu kata, sinkron angka suara dan gambar (bilangan >= 100 yang diucapkan dengan kata dibaca ulang menjadi angka), perubahan gambar tiap ketukan,
 // keunikan antaradegan, batas kanvas, teks bertumpuk, pemisahan materi dan metode luar, kutipan buku (bila PDF ada), rantai pecahan-desimal-persen dihitung ulang,
 // kisi seratus kotak (kotak gelap dihitung dari lintasan), tabel konversi, hitungan mandiri kunci jawaban (perbandingan, urutan, desimal, persen, rubrik, pengayaan),
@@ -217,7 +218,11 @@ for (const v of VIDEO) {
 
 
 /* ------------------------------ Pemisahan materi dan metode luar ------------------------------ */
-const M = V.VIDEO_MATERI_K4B2E;
+const M_VIDEO = V.VIDEO_MATERI_K4B2E;
+// Adegan administratif (pembuka, tujuan, peta konsep, panduan awal; di E: rubrik, refleksi, orang tua dan penutup) tidak lagi diputar di video materi.
+// Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
+const MODUL_MATERI = Object.assign({}, await import("../src/components/modul/story/k4b2e-materi-1.ts"), await import("../src/components/modul/story/k4b2e-materi-2.ts"), await import("../src/components/modul/story/k4b2e-materi-3.ts"));
+const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_PEMBUKA_E, MODUL_MATERI.ADEGAN_MENGAMATI_E, MODUL_MATERI.ADEGAN_CONTOH_1E, MODUL_MATERI.ADEGAN_CONTOH_2E, MODUL_MATERI.ADEGAN_LANGSUNG, MODUL_MATERI.ADEGAN_GESER, MODUL_MATERI.ADEGAN_BERLATIH_1E, MODUL_MATERI.ADEGAN_BERLATIH_2E, MODUL_MATERI.ADEGAN_UK_PECAHAN, MODUL_MATERI.ADEGAN_UK_DESIMAL, MODUL_MATERI.ADEGAN_UK_PERSEN, MODUL_MATERI.ADEGAN_RUBRIK_E, MODUL_MATERI.ADEGAN_REFLEKSI_E, MODUL_MATERI.ADEGAN_PENGAYAAN_1E, MODUL_MATERI.ADEGAN_PENGAYAAN_2E, MODUL_MATERI.ADEGAN_PENUTUP_E] };
 const U = V.VIDEO_LUAR_K4B2E;
 const adegan = (v, id) => v.adegan.find((a) => a.id === id);
 const akhirAdegan = (a, ke = a.ketukan.length - 1) => L.keadaanStory(a, ke, 9999);
@@ -239,12 +244,28 @@ const seluruhTeks = (v) => v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map
   cek(!METODE_LAIN.test(materi + luar), `tidak memuat metode luar sub-bab lain (${(materi + luar).match(METODE_LAIN)?.[0]})`);
   // nama dan judul video tidak bentrok dengan metode
   cek(M.id === "k4b2e-materi" && U.id === "k4b2e-luar" && M.jenis === "materi" && U.jenis === "metode-luar", "id dan jenis video");
-  cek(M.adegan.every((a) => /(Buku Siswa|Panduan Guru) hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
-  cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Sub-Bab E", "Ayo Mengamati", "Ayo Berpikir", "Ayo Berlatih", "Tahukah Kalian", "Uji Kompetensi", "Pengayaan", "Refleksi", "orang tua", "Panduan Guru", "Rubrik", "remedial", "Diferensiasi", "Penutup Bab", "cara biasa", "cara langsung", "persen", "desimal perseratusan"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat "${kata}"`);
+  // Video diputar sebagai guru yang mengajar: tidak ada penyebutan sumber buku di suara, teks terlihat, label sumber, judul adegan, dan subjudul.
+  const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul video tanpa kata terlarang`);
+    for (const a of v.adegan) {
+      const semua = [a.judul, a.sumber];
+      a.ketukan.forEach((kt, i) => {
+        semua.push(kt.suara);
+        for (let p = 0; p < L.kataDari(kt.suara).length; p += 1) semua.push(...L.teksTerlihat(L.keadaanStory(a, i, p)));
+      });
+      const kena = semua.filter((t) => TERLARANG.test(t) || /soal nomor|Ayo Berlatih nomor|nomor [1-4]|catatan video|menurut buku/i.test(t));
+      cek(kena.length === 0, `${v.id}/${a.id}: tanpa penyebutan buku atau catatan sumber (${kena.slice(0, 2).join(" | ")})`);
+    }
+  }
+  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan paling banyak 46 huruf");
+  cek(U.adegan.every((a) => /^Metode luar: /.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber berbentuk Metode luar: ... dan paling banyak 46 huruf");
+  const materiDiputar = teksVideo(M_VIDEO);
+  for (const kata of ["Ayo Mengamati", "Ayo Berpikir", "Ayo Berlatih", "Tahukah kamu", "Pengayaan", "Hati-hati", "cara biasa", "cara langsung", "persen", "desimal perseratusan"]) cek(new RegExp(kata, "i").test(materiDiputar), `video materi memuat "${kata}"`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-ph", "luar-ph-terapan", "luar-hg", "luar-hg-terapan", "luar-dp", "luar-dp-terapan", "luar-sb", "luar-sb-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
-  cek(M.adegan.length === 16 && U.adegan.length === 10, "16 adegan materi dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 12 && U.adegan.length === 10, "12 adegan materi diputar dan 10 adegan metode luar");
   cek(!/volume|pola bilangan|diagram batang|piktogram/i.test(materi + luar), "tidak membahas bab lain");
   cek(totalKetukan >= 80, `total ketukan cukup dalam (${totalKetukan})`);
   // metode luar memakai angka buku

@@ -25,7 +25,7 @@ export function pasangan(id: string, p1: number, q1: number, p2: number, q2: num
 }
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana kita memastikan dua pecahan bernilai sama? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana kita memastikan dua pecahan bernilai sama? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar untuk mengenali pecahan senilai.";
 const SUARA_O2 = "Empat metode itu: Equivalent Fractions, Multiply Identity, Simplify, dan Fraction Wall.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Pecahan Senilai, Kali dengan Bentuk Satu, Sederhanakan, dan Dinding Pecahan.";
 const SUARA_O4 = "Semuanya menjawab satu pertanyaan: sama atau tidak? Dengan menunjuk bagian yang sama, mengalikan, membagi, dan menyusun dinding.";
@@ -33,7 +33,7 @@ const SUARA_O4 = "Semuanya menjawab satu pertanyaan: sama atau tidak? Dengan men
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk pecahan senilai",
-  sumber: "Metode luar: pembuka; BS hlm. 66–70",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -120,16 +120,16 @@ export const ADEGAN_LUAR_SENILAI: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Equivalent Fractions: penerapan pada coklat dan kertas (Buku Siswa hlm. 66–68) ------------------------------ */
-const SUARA_T1 = "Terapkan pada coklat di buku. Satu batang dibagi enam, satu batang dibagi tiga. Dua potong dari enam dan satu potong dari tiga menutupi panjang yang sama.";
+/* ------------------------------ 3. Equivalent Fractions: penerapan pada coklat dan kertas ------------------------------ */
+const SUARA_T1 = "Terapkan pada coklat tadi. Satu batang dibagi enam, satu batang dibagi tiga. Dua potong dari enam dan satu potong dari tiga menutupi panjang yang sama.";
 const SUARA_T2 = "Jadi dua per enam senilai dengan satu per tiga. Bagian Putu pada kedua batang coklat sama besar, walau satu batang punya enam potong dan satu lagi tiga potong.";
-const SUARA_T3 = "Terapkan pada kertas lipat di buku. Kertas pertama punya empat bagian dengan satu bagian diwarnai. Kertas kedua punya enam belas bagian dengan empat bagian diwarnai.";
+const SUARA_T3 = "Terapkan pada kertas lipat tadi. Kertas pertama punya empat bagian dengan satu bagian diwarnai. Kertas kedua punya enam belas bagian dengan empat bagian diwarnai.";
 const SUARA_T4 = "Daerah yang diwarnai sama luas, jadi satu per empat senilai dengan empat per enam belas. Dua tulisan, satu nilai yang sama.";
 
 export const ADEGAN_LUAR_SENILAI_TERAPAN: AdeganStory = {
   id: "luar-senilai-terapan",
   judul: "Equivalent Fractions pada coklat dan kertas",
-  sumber: "Metode luar: Equivalent Fractions; hlm. 66–68",
+  sumber: "Metode luar: Equivalent Fractions",
   latar: "#ECFDF5",
   ketukan: [
     k(
@@ -218,11 +218,11 @@ export const ADEGAN_LUAR_KALI: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 5. Multiply Identity: penerapan pada angka buku ------------------------------ */
-const SUARA_M1 = "Dari kotak kuning di buku: satu per tiga dikali dua per dua. Satu kali dua jadi dua, tiga kali dua jadi enam. Hasilnya dua per enam.";
-const SUARA_M2 = "Dari Latihan nomor satu: satu per dua dikali dua per dua. Satu kali dua jadi dua, dua kali dua jadi empat. Hasilnya dua per empat, sama dengan kunci buku.";
-const SUARA_M3 = "Dari kertas lipat: satu per empat dikali empat per empat. Satu kali empat jadi empat, empat kali empat jadi enam belas. Hasilnya empat per enam belas.";
-const SUARA_M4 = "Dari Latihan nomor tiga: satu per tiga dikali tiga per tiga. Satu kali tiga jadi tiga, tiga kali tiga jadi sembilan. Hasilnya tiga per sembilan, sama dengan kunci buku.";
+/* ------------------------------ 5. Multiply Identity: penerapan pada pecahan senilai ------------------------------ */
+const SUARA_M1 = "Pertama: satu per tiga dikali dua per dua. Satu kali dua jadi dua, tiga kali dua jadi enam. Hasilnya dua per enam.";
+const SUARA_M2 = "Kedua: satu per dua dikali dua per dua. Satu kali dua jadi dua, dua kali dua jadi empat. Hasilnya dua per empat.";
+const SUARA_M3 = "Ketiga, pada kertas lipat: satu per empat dikali empat per empat. Satu kali empat jadi empat, empat kali empat jadi enam belas. Hasilnya empat per enam belas.";
+const SUARA_M4 = "Keempat: satu per tiga dikali tiga per tiga. Satu kali tiga jadi tiga, tiga kali tiga jadi sembilan. Hasilnya tiga per sembilan.";
 
 /** Satu ketukan penerapan: pecahan awal, bentuk satu, dua hitungan, hasil, dan dua batang model. Kalimat berpola "dikali ... jadi ... jadi ... Hasilnya". */
 function ketukanKali(suara: string, id: string, q: number, n: number) {
@@ -239,8 +239,8 @@ function ketukanKali(suara: string, id: string, q: number, n: number) {
 }
 export const ADEGAN_LUAR_KALI_TERAPAN: AdeganStory = {
   id: "luar-kali-terapan",
-  judul: "Multiply Identity pada angka buku",
-  sumber: "Metode luar: Multiply Identity; BS hlm. 69–70",
+  judul: "Multiply Identity pada pecahan senilai",
+  sumber: "Metode luar: Multiply Identity",
   latar: "#E0F2FE",
   ketukan: [
     ketukanKali(SUARA_M1, "ma", 3, 2),

@@ -5,12 +5,12 @@ import { bersih, k, sorotkan, tambah } from "./k4b2d-bantu";
 /* ------------------------------ 5. Hati-hati dengan nol (catatan video, bukan dari buku; Buku Siswa hlm. 72-73) ------------------------------ */
 const SUARA_H1 = "Satu hal perlu hati-hati: nol koma nol tujuh dan nol koma tujuh bukan bilangan yang sama. Nol koma nol tujuh adalah tujuh per seratus, sedangkan nol koma tujuh adalah tujuh per sepuluh.";
 const SUARA_H2 = "Nol sesudah koma menjaga tempat. Nol koma nol satu adalah satu per seratus, lebih kecil dari nol koma satu, yaitu satu per sepuluh. Satu roti dari seratus lebih kecil daripada satu roti dari sepuluh.";
-const SUARA_H3 = "Kesalahan lain: menulis tujuh per seratus sebagai nol koma tujuh, karena lupa bahwa seratus butuh dua angka di belakang koma. Periksa dengan aturan buku. Catatan ini tambahan dari video, bukan dari buku.";
+const SUARA_H3 = "Hati-hati, kesalahan yang sering terjadi: menulis tujuh per seratus sebagai nol koma tujuh, karena lupa bahwa seratus butuh dua angka di belakang koma. Periksalah selalu dengan aturan banyak angka di belakang koma.";
 
 export const ADEGAN_HATI_HATI: AdeganStory = {
   id: "hati-hati-nol",
   judul: "Hati-hati dengan nol sesudah koma",
-  sumber: "Buku Siswa hlm. 72–73; catatan video",
+  sumber: "Materi: nol sesudah koma",
   latar: "#FEF2F2",
   kutipan: [
     "Karena terdapat 1 angka di belakang koma, maka nilai penyebut 10",
@@ -41,22 +41,22 @@ export const ADEGAN_HATI_HATI: AdeganStory = {
     k(
       SUARA_H3,
       bersih(0),
-      tambah(0, judul("Periksa dengan aturan buku")),
+      tambah(0, judul("Periksa dengan aturan koma")),
       tambah("menulis", ...kartu("hx", 14, 30, 272, 32, W.merahMuda, ["7/100 ditulis 0,7  (salah)"], 10)),
       tambah("lupa", emo("hy", 270, 82, "❌", 20)),
       tambah("seratus", ...kartu("hz", 14, 78, 272, 32, W.hijauMuda, ["100 butuh 2 angka: 7/100 = 0,07"], 10)),
       tambah("Periksa", emo("ia", 270, 130, "✅", 20)),
-      tambah("Catatan", ...kartu("ib", 14, 140, 272, 32, W.emas, ["catatan tambahan video, bukan dari buku"], 9)),
+      tambah("aturan", ...kartu("ib", 14, 140, 272, 32, W.emas, ["1 angka: penyebut 10;  2 angka: 100"], 9)),
     ),
   ],
 };
 
 /* ------------------------------ 6. Ayo Berlatih nomor 1 (Buku Siswa hlm. 74; Panduan Guru hlm. 105) ------------------------------ */
-const SUARA_L1 = "Ayo Berlatih nomor satu: nyatakan bagian yang berada dalam kotak sebagai pecahan biasa, kemudian ubahlah menjadi pecahan desimal. Buku sudah mengisi contoh pertama, yaitu nol koma empat.";
+const SUARA_L1 = "Sekarang coba kamu kerjakan latihan pertama: nyatakan bagian yang berada dalam kotak sebagai pecahan biasa, kemudian ubahlah menjadi pecahan desimal. Contoh pertama sudah Ibu isi, yaitu nol koma empat.";
 const SUARA_L2 = "Gambar pertama: sepuluh telur, dan empat telur ada dalam kotak. Pecahan biasanya empat per sepuluh, jadi desimalnya nol koma empat.";
 const SUARA_L3 = "Gambar kedua: sepuluh jeruk, dan lima jeruk ada dalam kotak. Pecahannya lima per sepuluh, jadi desimalnya nol koma lima.";
 const SUARA_L4 = "Gambar ketiga: sepuluh jam. Dalam kotak ada tiga jam. Pecahannya tiga per sepuluh, jadi desimalnya nol koma tiga.";
-const SUARA_L5 = "Kunci panduan guru cocok: empat per sepuluh nol koma empat, lima per sepuluh nol koma lima, dan tiga per sepuluh nol koma tiga. Hitungan kita pun sama.";
+const SUARA_L5 = "Mari kita cocokkan: empat per sepuluh nol koma empat, lima per sepuluh nol koma lima, dan tiga per sepuluh nol koma tiga. Semuanya cocok dengan hitungan kita.";
 
 /** Satu soal nomor 1: benda berbingkai di kiri, pecahan dan desimal di kanan. */
 const soalSatu = (nomor: number, jenis: "telur" | "jeruk" | "jam", judulTeks: string, at: [string, string, string]): Aksi[] => {
@@ -74,8 +74,8 @@ const soalSatu = (nomor: number, jenis: "telur" | "jeruk" | "jam", judulTeks: st
 
 export const ADEGAN_BERLATIH_SATU: AdeganStory = {
   id: "berlatih-satu",
-  judul: "Ayo Berlatih 1: bagian dalam kotak menjadi pecahan dan desimal",
-  sumber: "Buku Siswa hlm. 74; Panduan Guru hlm. 105",
+  judul: "Latihan 1: bagian dalam kotak menjadi pecahan dan desimal",
+  sumber: "Materi: latihan bagian dalam kotak",
   latar: "#FFFBEB",
   kutipan: [
     "Ayo Berlatih",
@@ -88,7 +88,7 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
   ketukan: [
     k(
       SUARA_L1,
-      tambah(0, judul("Ayo Berlatih 1")),
+      tambah(0, judul("Latihan 1")),
       tambah("nyatakan", ...kartu("l1", 8, 34, 82, 40, W.hijauMuda, ["bagian", "dalam kotak"], 8.4)),
       tambah("pecahan", { id: "l2p", t: "panah", x: 92, y: 54, x2: 16, y2: 0, warna: W.biru, tebal: 2 }, ...kartu("l2", 112, 34, 82, 40, W.langit, ["pecahan", "biasa"], 8.4)),
       tambah("desimal.", { id: "l3p", t: "panah", x: 196, y: 54, x2: 16, y2: 0, warna: W.biru, tebal: 2 }, ...kartu("l3", 216, 34, 78, 40, W.emas, ["pecahan", "desimal"], 8.4)),
@@ -100,21 +100,21 @@ export const ADEGAN_BERLATIH_SATU: AdeganStory = {
     k(
       SUARA_L5,
       bersih(0),
-      tambah(0, judul("Kunci nomor 1")),
+      tambah(0, judul("Jawaban latihan 1")),
       tambah(0, ...barisTabel("lk0", 20, 34, [90, 90, 80], ["gambar", "pecahan", "desimal"], 22, 8.6, true)),
       tambah("empat", ...barisTabel("lk1", 20, 56, [90, 90, 80], ["telur", "4/10", "0,4"], 22, 9.6)),
       tambah("lima", ...barisTabel("lk2", 20, 78, [90, 90, 80], ["jeruk", "5/10", "0,5"], 22, 9.6)),
       tambah("tiga", ...barisTabel("lk3", 20, 100, [90, 90, 80], ["jam", "3/10", "0,3"], 22, 9.6)),
-      tambah("cocok:", emo("lk4", 150, 150, "✅", 28)),
+      tambah("cocok", emo("lk4", 150, 150, "✅", 28)),
     ),
   ],
 };
 
 /* ------------------------------ 7. Ayo Berlatih nomor 2: persepuluhan (Buku Siswa hlm. 74; Panduan Guru hlm. 106) ------------------------------ */
-const SUARA_M1 = "Nomor dua: ubahlah pecahan biasa berikut menjadi pecahan desimal persepuluhan. Penyebutnya sepuluh, jadi cukup satu angka di belakang koma.";
+const SUARA_M1 = "Latihan kedua: ubahlah pecahan biasa berikut menjadi pecahan desimal persepuluhan. Penyebutnya sepuluh, jadi cukup satu angka di belakang koma.";
 const SUARA_M2 = "Bagian a: satu per sepuluh sama dengan nol koma satu. Bagian b: lima per sepuluh sama dengan nol koma lima.";
 const SUARA_M3 = "Bagian c: sembilan per sepuluh sama dengan nol koma sembilan. Sembilan dari sepuluh bagian berwarna, hanya satu bagian yang kosong.";
-const SUARA_M4 = "Kunci panduan guru: nol koma satu, nol koma lima, dan nol koma sembilan. Semuanya cocok dengan hitungan kita.";
+const SUARA_M4 = "Jadi jawabannya: nol koma satu, nol koma lima, dan nol koma sembilan. Semuanya cocok dengan hitungan kita.";
 
 /** Satu baris nomor 2: huruf, pecahan, desimal, dan batang sepuluh sel. */
 const barisDua = (i: number, at: [string, string, string]): Aksi[] => {
@@ -130,8 +130,8 @@ const barisDua = (i: number, at: [string, string, string]): Aksi[] => {
 
 export const ADEGAN_BERLATIH_DUA: AdeganStory = {
   id: "berlatih-dua",
-  judul: "Ayo Berlatih 2: persepuluhan menjadi desimal",
-  sumber: "Buku Siswa hlm. 74; Panduan Guru hlm. 106",
+  judul: "Latihan 2: persepuluhan menjadi desimal",
+  sumber: "Materi: latihan persepuluhan",
   latar: "#F0F9FF",
   kutipan: [
     "2. Ubahlah pecahan biasa berikut menjadi pecahan desimal persepuluhan!",
@@ -143,7 +143,7 @@ export const ADEGAN_BERLATIH_DUA: AdeganStory = {
   ketukan: [
     k(
       SUARA_M1,
-      tambah(0, judul("Ayo Berlatih 2")),
+      tambah(0, judul("Latihan 2")),
       tambah("pecahan", ...kartu("m1", 14, 34, 272, 40, W.hijauMuda, ["pecahan biasa  →  desimal persepuluhan"], 9.6)),
       tambah("Penyebutnya", ...kartu("m2", 14, 90, 272, 40, W.langit, ["penyebut 10  →  1 angka di belakang koma"], 9.6)),
       tambah("satu", emo("m3", 150, 170, "🔢", 26)),
@@ -157,7 +157,7 @@ export const ADEGAN_BERLATIH_DUA: AdeganStory = {
     k(
       SUARA_M4,
       bersih(0),
-      tambah(0, judul("Kunci nomor 2")),
+      tambah(0, judul("Jawaban latihan 2")),
       tambah(0, ...barisTabel("mk0", 20, 34, [60, 100, 100], ["soal", "pecahan", "desimal"], 22, 8.6, true)),
       tambah("satu", ...barisTabel("mk1", 20, 56, [60, 100, 100], ["a", "1/10", "0,1"], 22, 9.6)),
       tambah("lima", ...barisTabel("mk2", 20, 78, [60, 100, 100], ["b", "5/10", "0,5"], 22, 9.6)),
@@ -168,11 +168,11 @@ export const ADEGAN_BERLATIH_DUA: AdeganStory = {
 };
 
 /* ------------------------------ 8. Ayo Berlatih nomor 3: perseratusan (Buku Siswa hlm. 75; Panduan Guru hlm. 106) ------------------------------ */
-const SUARA_N1 = "Nomor tiga: ubahlah pecahan biasa berikut menjadi pecahan desimal perseratusan. Penyebutnya seratus, jadi ada dua angka di belakang koma.";
+const SUARA_N1 = "Latihan ketiga: ubahlah pecahan biasa berikut menjadi pecahan desimal perseratusan. Penyebutnya seratus, jadi ada dua angka di belakang koma.";
 const SUARA_N2 = "Bagian a: lima belas per seratus. Pembilangnya lima belas, ditulis dengan dua angka di belakang koma menjadi nol koma satu lima.";
 const SUARA_N3 = "Bagian b: enam puluh dua per seratus menjadi nol koma enam dua. Enam kolom penuh dan dua kotak lagi, jadi enam puluh dua kotak terwarnai.";
 const SUARA_N4 = "Bagian c: delapan puluh satu per seratus menjadi nol koma delapan satu. Delapan kolom penuh dan satu kotak lagi, jadi delapan puluh satu kotak terwarnai dari seratus kotak.";
-const SUARA_N5 = "Kunci panduan guru: nol koma satu lima, nol koma enam dua, dan nol koma delapan satu. Semuanya cocok dengan hitungan kita.";
+const SUARA_N5 = "Jadi jawabannya: nol koma satu lima, nol koma enam dua, dan nol koma delapan satu. Semuanya cocok dengan hitungan kita.";
 
 /** Satu bagian nomor 3: kisi seratus kotak, pecahan, desimal, dan keterangan. */
 const bagianSeratus = (i: number, caption: string, at: [string, string, string, string]): Aksi[] => {
@@ -190,8 +190,8 @@ const bagianSeratus = (i: number, caption: string, at: [string, string, string, 
 
 export const ADEGAN_BERLATIH_TIGA: AdeganStory = {
   id: "berlatih-tiga",
-  judul: "Ayo Berlatih 3: perseratusan menjadi desimal",
-  sumber: "Buku Siswa hlm. 75; Panduan Guru hlm. 106",
+  judul: "Latihan 3: perseratusan menjadi desimal",
+  sumber: "Materi: latihan perseratusan",
   latar: "#FDF4FF",
   kutipan: [
     "3. Ubahlah pecahan biasa berikut menjadi pecahan desimal perseratusan!",
@@ -204,7 +204,7 @@ export const ADEGAN_BERLATIH_TIGA: AdeganStory = {
   ketukan: [
     k(
       SUARA_N1,
-      tambah(0, judul("Ayo Berlatih 3")),
+      tambah(0, judul("Latihan 3")),
       tambah("pecahan", ...kartu("o1", 14, 34, 272, 40, W.hijauMuda, ["pecahan biasa  →  desimal perseratusan"], 9.4)),
       tambah("Penyebutnya", ...kartu("o2", 14, 90, 272, 40, W.langit, ["penyebut 100  →  2 angka di belakang koma"], 9.4)),
       tambah("dua", emo("o3", 150, 172, "🔢", 26)),
@@ -215,7 +215,7 @@ export const ADEGAN_BERLATIH_TIGA: AdeganStory = {
     k(
       SUARA_N5,
       bersih(0),
-      tambah(0, judul("Kunci nomor 3")),
+      tambah(0, judul("Jawaban latihan 3")),
       tambah(0, ...barisTabel("nk0", 20, 34, [60, 110, 90], ["soal", "pecahan", "desimal"], 22, 8.6, true)),
       tambah("satu", ...barisTabel("nk1", 20, 56, [60, 110, 90], ["a", "15/100", "0,15"], 22, 9.6)),
       tambah("enam", ...barisTabel("nk2", 20, 78, [60, 110, 90], ["b", "62/100", "0,62"], 22, 9.6)),

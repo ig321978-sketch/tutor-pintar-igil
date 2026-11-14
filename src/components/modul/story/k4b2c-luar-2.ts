@@ -54,11 +54,11 @@ export const ADEGAN_LUAR_SEDERHANA: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 7. Simplify: penerapan pada angka buku ------------------------------ */
-const SUARA_Q1 = "Dari Latihan nomor satu: dua per empat. FPB dua dan empat adalah dua. Dibagi dua, hasilnya satu per dua.";
-const SUARA_Q2 = "Dari Latihan nomor dua: dua per enam. FPB dua dan enam adalah dua. Dibagi dua, hasilnya satu per tiga.";
-const SUARA_Q3 = "Dari Latihan nomor tiga: tiga per sembilan. FPB tiga dan sembilan adalah tiga. Dibagi tiga, hasilnya satu per tiga.";
-const SUARA_Q4 = "Dari kertas lipat: empat per enam belas. FPB empat dan enam belas adalah empat. Dibagi empat, hasilnya satu per empat.";
+/* ------------------------------ 7. Simplify: penerapan pada pecahan senilai ------------------------------ */
+const SUARA_Q1 = "Pertama: dua per empat. FPB dua dan empat adalah dua. Dibagi dua, hasilnya satu per dua.";
+const SUARA_Q2 = "Kedua: dua per enam. FPB dua dan enam adalah dua. Dibagi dua, hasilnya satu per tiga.";
+const SUARA_Q3 = "Ketiga: tiga per sembilan. FPB tiga dan sembilan adalah tiga. Dibagi tiga, hasilnya satu per tiga.";
+const SUARA_Q4 = "Keempat, pada kertas lipat: empat per enam belas. FPB empat dan enam belas adalah empat. Dibagi empat, hasilnya satu per empat.";
 
 /** Satu ketukan penerapan Simplify: kalimat berpola "... FPB ... adalah ... Dibagi ..., hasilnya ...". */
 function ketukanBagi(suara: string, id: string, p: number, q: number, n: number, kataQ: string) {
@@ -75,8 +75,8 @@ function ketukanBagi(suara: string, id: string, p: number, q: number, n: number,
 }
 export const ADEGAN_LUAR_SEDERHANA_TERAPAN: AdeganStory = {
   id: "luar-sederhana-terapan",
-  judul: "Simplify pada angka buku",
-  sumber: "Metode luar: Simplify; BS hlm. 69–70",
+  judul: "Simplify pada pecahan senilai",
+  sumber: "Metode luar: Simplify",
   latar: "#FFFBEB",
   ketukan: [
     ketukanBagi(SUARA_Q1, "qa", 2, 4, 2, "adalah"),
@@ -132,13 +132,13 @@ export const ADEGAN_LUAR_DINDING: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 9. Fraction Wall: penerapan pada angka buku ------------------------------ */
+/* ------------------------------ 9. Fraction Wall: penerapan pada pecahan senilai ------------------------------ */
 const LAPIS_TERAPAN = [2, 3, 4, 6, 9] as const;
 const X_TERAPAN = 48;
 const Y_TERAPAN = 34;
-const SUARA_V1 = "Nomor satu pada dinding: ujung satu potongan lapis dua sejajar dengan ujung dua potongan lapis empat. Jadi dua per empat senilai dengan satu per dua, sama dengan kunci.";
-const SUARA_V2 = "Nomor dua: ujung satu potongan lapis tiga sejajar dengan ujung dua potongan lapis enam. Jadi dua per enam senilai dengan satu per tiga.";
-const SUARA_V3 = "Nomor tiga: ujung tiga potongan lapis sembilan sejajar dengan ujung satu potongan lapis tiga. Jadi tiga per sembilan senilai dengan satu per tiga.";
+const SUARA_V1 = "Pertama, pada dinding: ujung satu potongan lapis dua sejajar dengan ujung dua potongan lapis empat. Jadi dua per empat senilai dengan satu per dua.";
+const SUARA_V2 = "Kedua, ujung satu potongan lapis tiga sejajar dengan ujung dua potongan lapis enam. Jadi dua per enam senilai dengan satu per tiga.";
+const SUARA_V3 = "Ketiga, ujung tiga potongan lapis sembilan sejajar dengan ujung satu potongan lapis tiga. Jadi tiga per sembilan senilai dengan satu per tiga.";
 const SUARA_V4 = "Garis di tengah dinding melewati lapis dua, empat, dan enam. Di sana ada satu per dua, dua per empat, dan tiga per enam, semuanya senilai. Lapis sembilan tidak sejajar di titik itu.";
 
 /** Sorotan sel pada dinding terapan: lapis ke-`r` (penyebut n), sel nomor `sel` sampai `sel + banyak - 1`. */
@@ -149,14 +149,14 @@ const sorotLapis = (id: string, n: number, sel: number, banyak = 1) => {
 
 export const ADEGAN_LUAR_DINDING_TERAPAN: AdeganStory = {
   id: "luar-dinding-terapan",
-  judul: "Fraction Wall pada angka buku",
-  sumber: "Metode luar: Fraction Wall; BS hlm. 70",
+  judul: "Fraction Wall pada pecahan senilai",
+  sumber: "Metode luar: Fraction Wall",
   latar: "#FCE7F3",
   ketukan: [
     k(
       SUARA_V1,
       tambah(0, judul("Dinding: lapis 2, 3, 4, 6, 9")),
-      tambah("Nomor", ...dinding("dw", X_TERAPAN, Y_TERAPAN, LAPIS_TERAPAN, 22, 26)),
+      tambah("Pertama,", ...dinding("dw", X_TERAPAN, Y_TERAPAN, LAPIS_TERAPAN, 22, 26)),
       tambah("sejajar", garis("vg", X_TERAPAN + 108, 28, 0, 142, W.merah, 1.6, { putus: true })),
       tambah("lapis", sorotLapis("v1", 2, 0)),
       tambah("empat.", sorotLapis("v2", 4, 0, 2)),
@@ -165,7 +165,7 @@ export const ADEGAN_LUAR_DINDING_TERAPAN: AdeganStory = {
     k(
       SUARA_V2,
       hapus(0, "vg", "v1", "v2", "vk-k", "vk-t0"),
-      tambah("Nomor", garis("vh", X_TERAPAN + 72, 28, 0, 142, W.merah, 1.6, { putus: true })),
+      tambah("Kedua,", garis("vh", X_TERAPAN + 72, 28, 0, 142, W.merah, 1.6, { putus: true })),
       tambah("lapis", sorotLapis("v3", 3, 0)),
       tambah("enam.", sorotLapis("v4", 6, 0, 2)),
       tambah("Jadi", ...kartu("vm", 40, 176, 220, 24, W.emas, ["2/6 = 1/3"], 10)),
@@ -173,7 +173,7 @@ export const ADEGAN_LUAR_DINDING_TERAPAN: AdeganStory = {
     k(
       SUARA_V3,
       hapus(0, "vh", "v3", "v4", "vm-k", "vm-t0"),
-      tambah("Nomor", garis("vi", X_TERAPAN + 72, 28, 0, 142, W.merah, 1.6, { putus: true })),
+      tambah("Ketiga,", garis("vi", X_TERAPAN + 72, 28, 0, 142, W.merah, 1.6, { putus: true })),
       tambah("sembilan", sorotLapis("v5", 9, 0, 3)),
       tambah(idx(SUARA_V3, "tiga", 3), sorotLapis("v6", 3, 0)),
       tambah("Jadi", ...kartu("vn", 40, 176, 220, 24, W.emas, ["3/9 = 1/3"], 10)),
@@ -193,7 +193,7 @@ export const ADEGAN_LUAR_DINDING_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 10. Ringkasan ------------------------------ */
 const SUARA_R1 = "Ringkasan empat metode. Pecahan Senilai menyamakan daerah bagian. Kali dengan Bentuk Satu mengalikan atas dan bawah. Sederhanakan membagi atas dan bawah. Dinding Pecahan menyejajarkan ujung potongan.";
-const SUARA_R2 = "Angka buku yang dipakai: dua per empat dengan satu per dua, dua per enam dengan satu per tiga, tiga per sembilan dengan satu per tiga, dan satu per empat dengan empat per enam belas.";
+const SUARA_R2 = "Pasangan senilai yang kita pakai: dua per empat dengan satu per dua, dua per enam dengan satu per tiga, tiga per sembilan dengan satu per tiga, dan satu per empat dengan empat per enam belas.";
 const SUARA_R3 = "Kapan memakai yang mana? Mengalikan bila ingin pecahan yang lebih rinci, membagi bila ingin pecahan yang lebih sederhana, dan dinding atau gambar bila ingin melihat langsung.";
 const SUARA_R4 = "Apa pun caranya, aturannya satu: pembilang dan penyebut diperlakukan dengan bilangan yang sama, sehingga nilai pecahan tetap.";
 const WARNA_R = [W.hijauMuda, W.langit, W.krem, W.pink];
@@ -215,11 +215,11 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_R2,
       bersih(0),
-      tambah(0, judul("Angka buku yang dipakai")),
-      tambah("empat", ...barisTabel("rt0", 30, 34, [90, 150], ["sumber", "pasangan senilai"], 24, 9, true)),
-      tambah(idx(SUARA_R2, "dua", 2), ...barisTabel("rt1", 30, 58, [90, 150], ["Latihan 1", "2/4 = 1/2"], 24, 9)),
-      tambah(idx(SUARA_R2, "enam", 1), ...barisTabel("rt2", 30, 82, [90, 150], ["Latihan 2", "2/6 = 1/3"], 24, 9)),
-      tambah(idx(SUARA_R2, "sembilan", 1), ...barisTabel("rt3", 30, 106, [90, 150], ["Latihan 3", "3/9 = 1/3"], 24, 9)),
+      tambah(0, judul("Pasangan senilai yang dipakai")),
+      tambah("empat", ...barisTabel("rt0", 30, 34, [90, 150], ["contoh", "pasangan senilai"], 24, 9, true)),
+      tambah(idx(SUARA_R2, "dua", 2), ...barisTabel("rt1", 30, 58, [90, 150], ["Pasangan 1", "2/4 = 1/2"], 24, 9)),
+      tambah(idx(SUARA_R2, "enam", 1), ...barisTabel("rt2", 30, 82, [90, 150], ["Pasangan 2", "2/6 = 1/3"], 24, 9)),
+      tambah(idx(SUARA_R2, "sembilan", 1), ...barisTabel("rt3", 30, 106, [90, 150], ["Pasangan 3", "3/9 = 1/3"], 24, 9)),
       tambah("belas.", ...barisTabel("rt4", 30, 130, [90, 150], ["kertas lipat", "1/4 = 4/16"], 24, 9)),
     ),
     k(

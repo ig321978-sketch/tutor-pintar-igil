@@ -53,7 +53,7 @@ export const ADEGAN_PEMBUKA_E: AdeganStory = {
 export const ADEGAN_MENGAMATI_E: AdeganStory = {
   id: "mengamati-e",
   judul: "Ayo Mengamati: arti persen",
-  sumber: "Buku Siswa hlm. 76–77; Panduan Guru hlm. 108",
+  sumber: "Materi: arti persen",
   latar: "#FFFBEB",
   kutipan: [
     "bisakah kamu memberikan contoh pecahan desimal perseratusan",
@@ -68,14 +68,14 @@ export const ADEGAN_MENGAMATI_E: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo mengamati. Ibu guru meminta murid memberi contoh pecahan desimal perseratusan. Murid menjawab nol koma tujuh lima, dan ibu guru membenarkan.",
+      "Ayo kita amati. Coba sebutkan contoh pecahan desimal perseratusan. Misalnya nol koma tujuh lima. Betul sekali, itu contoh yang tepat.",
       bersih(0),
       tambah(0, judul("Ayo Mengamati")),
       tambah(0, emo("m1", 40, 64, "👩", 30)),
       tambah("contoh", ...kartu("m2", 70, 36, 220, 30, W.krem, ["contoh desimal perseratusan?"], 9.2)),
-      tambah("Murid", emo("m3", 40, 124, "👧", 30)),
+      tambah("Misalnya", emo("m3", 40, 124, "👧", 30)),
       tambah("nol", ...kartu("m4", 70, 98, 130, 30, W.hijauMuda, ["murid: 0,75"], 10.4)),
-      tambah("membenarkan.", ...kartu("m5", 70, 144, 220, 30, W.langit, ["betul sekali"], 10)),
+      tambah("Betul", ...kartu("m5", 70, 144, 220, 30, W.langit, ["betul sekali"], 10)),
     ),
     k(
       "Bagaimana mengubahnya menjadi pecahan biasa? Karena berbentuk desimal perseratusan, tinggal ditulis tujuh puluh lima per seratus.",
@@ -86,11 +86,11 @@ export const ADEGAN_MENGAMATI_E: AdeganStory = {
       tambah("tujuh", teks("p3", 224, 100, "75/100", 22, W.hijau)),
     ),
     k(
-      "Murid masih bingung soal persen. Ibu guru menjelaskan: persen adalah bentuk lain dari pecahan berpenyebut seratus. Contohnya lima persen artinya lima per seratus.",
+      "Mungkin kamu masih bingung, persen itu apa? Persen adalah bentuk lain dari pecahan berpenyebut seratus. Contohnya lima persen artinya lima per seratus.",
       bersih(0),
       tambah(0, judul("Arti persen")),
       tambah("bingung", ...kartu("a1", 12, 34, 276, 30, W.merahMuda, ["bingung: bentuk persen itu apa?"], 9.2)),
-      tambah("menjelaskan:", ...kartu("a2", 12, 74, 276, 32, W.krem, ["persen: bentuk lain pecahan berpenyebut 100"], 9)),
+      tambah("adalah", ...kartu("a2", 12, 74, 276, 32, W.krem, ["persen: bentuk lain pecahan berpenyebut 100"], 9)),
       tambah("Contohnya", teks("a3", 150, 150, "5% = 5/100", 24, W.hijau)),
     ),
     k(
@@ -116,7 +116,7 @@ export const ADEGAN_MENGAMATI_E: AdeganStory = {
 export const ADEGAN_CONTOH_1E: AdeganStory = {
   id: "contoh-1e",
   judul: "Ayo Berlatih: 0,35 dan 2,46",
-  sumber: "Buku Siswa hlm. 78–79; Panduan Guru hlm. 108–109",
+  sumber: "Materi: desimal ke persen",
   latar: "#F0FDF4",
   kutipan: [
     "Ubahlah pecahan desimal perseratusan berikut menjadi bentuk persen",
@@ -150,11 +150,11 @@ export const ADEGAN_CONTOH_1E: AdeganStory = {
       tambah("utuh.", ...kartu("b9", 60, 170, 180, 24, W.pink, ["jadi 2,46 = 246%"], 10.4)),
     ),
     k(
-      "Panduan Guru: guru menjelaskan langkah pengerjaan dan menanyakan bagian yang belum dipahami. Kuncinya sama: tiga puluh lima persen dan dua ratus empat puluh enam persen.",
-      ...daftar("g", "Panduan Guru", [
-        { at: "menjelaskan", t: "guru menjelaskan langkah pengerjaan", w: W.langit, u: 9.2 },
-        { at: "menanyakan", t: "guru bertanya: apa yang belum dipahami?", w: W.krem, u: 9.2 },
-        { at: "Kunci", t: "kunci: 0,35 = 35% dan 2,46 = 246%", w: W.hijauMuda, u: 9.6 },
+      "Sekarang periksa jawabanmu. Pecahan desimal perseratusan selalu berpenyebut seratus. Jadi nol koma tiga lima sama dengan tiga puluh lima persen, dan dua koma empat enam sama dengan dua ratus empat puluh enam persen.",
+      ...daftar("g", "Periksa jawabanmu", [
+        { at: "Sekarang", t: "periksa dulu jawabanmu", w: W.langit, u: 9.2 },
+        { at: "berpenyebut", t: "desimal perseratusan: penyebut 100", w: W.krem, u: 9.2 },
+        { at: "Jadi", t: "0,35 = 35% dan 2,46 = 246%", w: W.hijauMuda, u: 9.6 },
       ]),
     ),
   ],
@@ -164,7 +164,7 @@ export const ADEGAN_CONTOH_1E: AdeganStory = {
 export const ADEGAN_CONTOH_2E: AdeganStory = {
   id: "contoh-2e",
   judul: "Contoh: persen siswa berolahraga",
-  sumber: "Buku Siswa hlm. 79; Panduan Guru hlm. 109",
+  sumber: "Materi: persen dari pecahan",
   latar: "#FFF7ED",
   kutipan: [
     "Diketahui jumlah siswa kelas 4 SD di suatu sekolah adalah 50 siswa",

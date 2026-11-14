@@ -11,7 +11,7 @@ const IKON_METODE = ["🔢", "🔲", "🌉", "📋"];
 export const kepala = (i: number): ReturnType<typeof kartu> => kartu("hd", 6, 25, 288, 30, WARNA_METODE[i], [NAMA_METODE[i], NAMA_METODE_ID[i]], 7.8);
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana kita menghubungkan pecahan biasa dengan pecahan desimal? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.";
+const SUARA_O1 = "Bagaimana kita menghubungkan pecahan biasa dengan pecahan desimal? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka yang sudah kita kenal.";
 const SUARA_O2 = "Empat metode itu: Decimal Tenths Hundredths, Decimal Grid, Fraction–Decimal Link, dan Place Value Chart.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Desimal Persepuluhan Perseratusan, Kisi Desimal, Jembatan Pecahan–Desimal, dan Tabel Nilai Tempat.";
 const SUARA_O4 = "Semuanya menjawab satu pertanyaan: pecahan dengan penyebut sepuluh atau seratus ditulis bagaimana dalam desimal? Dengan menghitung angka, mewarnai kisi, menyeberang jembatan, atau mengisi tabel.";
@@ -19,7 +19,7 @@ const SUARA_O4 = "Semuanya menjawab satu pertanyaan: pecahan dengan penyebut sep
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk pecahan desimal",
-  sumber: "Metode luar: pembuka; BS hlm. 71–75",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -103,15 +103,15 @@ export const ADEGAN_LUAR_TENTHS: AdeganStory = {
 };
 
 /* ------------------------------ 3. Decimal Tenths Hundredths: penerapan pada roti, biskuit, contoh, telur (Buku Siswa hlm. 71–74) ------------------------------ */
-const SUARA_A1 = "Terapkan pada roti di buku. Satu dari sepuluh roti berselai. Penyebutnya sepuluh, jadi persepuluhan, satu angka di belakang koma: nol koma satu.";
-const SUARA_A2 = "Biskuit di buku: satu dari seratus. Penyebutnya seratus, jadi perseratusan, dua angka di belakang koma: nol koma nol satu.";
-const SUARA_A3 = "Contoh buku: nol koma dua lima punya dua angka, jadi penyebutnya seratus, yaitu dua puluh lima per seratus. Tujuh per seratus ditulis nol koma nol tujuh, dengan satu nol di depan agar tetap dua angka.";
-const SUARA_A4 = "Telur di buku: empat per sepuluh adalah persepuluhan, jadi nol koma empat. Lima belas per seratus adalah perseratusan, jadi nol koma satu lima.";
+const SUARA_A1 = "Terapkan pada roti tadi. Satu dari sepuluh roti berselai. Penyebutnya sepuluh, jadi persepuluhan, satu angka di belakang koma: nol koma satu.";
+const SUARA_A2 = "Biskuit tadi: satu dari seratus. Penyebutnya seratus, jadi perseratusan, dua angka di belakang koma: nol koma nol satu.";
+const SUARA_A3 = "Contoh lain: nol koma dua lima punya dua angka, jadi penyebutnya seratus, yaitu dua puluh lima per seratus. Tujuh per seratus ditulis nol koma nol tujuh, dengan satu nol di depan agar tetap dua angka.";
+const SUARA_A4 = "Telur tadi: empat per sepuluh adalah persepuluhan, jadi nol koma empat. Lima belas per seratus adalah perseratusan, jadi nol koma satu lima.";
 
 export const ADEGAN_LUAR_TENTHS_TERAPAN: AdeganStory = {
   id: "luar-persepuluhan-terapan",
   judul: "Decimal Tenths Hundredths pada roti, biskuit, dan telur",
-  sumber: "Metode luar: Tenths Hundredths; BS hlm. 71–74",
+  sumber: "Metode luar: Tenths Hundredths",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -135,7 +135,7 @@ export const ADEGAN_LUAR_TENTHS_TERAPAN: AdeganStory = {
     k(
       SUARA_A3,
       bersih(0),
-      tambah(0, judul("Contoh dalam buku")),
+      tambah(0, judul("Contoh lain")),
       tambah("Contoh", ...kartu("tj", 14, 34, 272, 40, W.hijauMuda, ["0,25  →  2 angka  →  25/100"], 10.4)),
       tambah("Tujuh", ...kartu("tk", 14, 86, 272, 40, W.langit, ["7/100  →  0,07  (satu nol di depan)"], 10.4)),
       tambah("tetap", ...kartu("tl", 40, 138, 220, 30, W.emas, ["tetap 2 angka di belakang koma"], 9)),
@@ -201,7 +201,7 @@ export const ADEGAN_LUAR_KISI: AdeganStory = {
 };
 
 /* ------------------------------ 5. Decimal Grid: penerapan pada telur dan Ayo Berlatih nomor 3 (Buku Siswa hlm. 74–75) ------------------------------ */
-const SUARA_T1 = "Telur di buku: empat dari sepuluh. Di kisi seratus, itu empat kolom penuh, yaitu empat puluh kotak, sama dengan nol koma empat.";
+const SUARA_T1 = "Telur tadi: empat dari sepuluh. Di kisi seratus, itu empat kolom penuh, yaitu empat puluh kotak, sama dengan nol koma empat.";
 const SUARA_T2 = "Lima belas per seratus: satu kolom penuh dan lima kotak. Ada lima belas kotak berwarna, jadi nol koma satu lima.";
 const SUARA_T3 = "Enam puluh dua per seratus: enam kolom penuh dan dua kotak, jadi nol koma enam dua.";
 const SUARA_T4 = "Delapan puluh satu per seratus: delapan kolom penuh dan satu kotak, jadi nol koma delapan satu. Sisanya sembilan belas kotak kosong.";
@@ -220,7 +220,7 @@ const bacaKisi = (id: string, n: number, atas: string, bawah: string, des: strin
 export const ADEGAN_LUAR_KISI_TERAPAN: AdeganStory = {
   id: "luar-kisi-terapan",
   judul: "Decimal Grid pada telur dan tiga soal perseratusan",
-  sumber: "Metode luar: Decimal Grid; BS hlm. 74–75",
+  sumber: "Metode luar: Decimal Grid",
   latar: "#EFF6FF",
   ketukan: [
     k(SUARA_T1, ...bacaKisi("ka", 40, "4", "10", "0,4", "4 kolom = 40 dari 100 kotak", ["kolom", "sepuluh.", "nol"])),

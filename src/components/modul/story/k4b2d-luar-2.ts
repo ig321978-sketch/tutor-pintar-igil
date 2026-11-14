@@ -64,20 +64,20 @@ export const ADEGAN_LUAR_JEMBATAN: AdeganStory = {
 };
 
 /* ------------------------------ 7. Fraction–Decimal Link: penerapan pada nomor 2, nomor 3, dan contoh buku (Buku Siswa hlm. 73–75) ------------------------------ */
-const SUARA_B1 = "Nomor dua di buku: satu per sepuluh menyeberang menjadi nol koma satu, lima per sepuluh menjadi nol koma lima, dan sembilan per sepuluh menjadi nol koma sembilan.";
-const SUARA_B2 = "Nomor tiga: lima belas per seratus menjadi nol koma satu lima, enam puluh dua per seratus menjadi nol koma enam dua, dan delapan puluh satu per seratus menjadi nol koma delapan satu.";
+const SUARA_B1 = "Soal persepuluhan tadi: satu per sepuluh menyeberang menjadi nol koma satu, lima per sepuluh menjadi nol koma lima, dan sembilan per sepuluh menjadi nol koma sembilan.";
+const SUARA_B2 = "Soal perseratusan tadi: lima belas per seratus menjadi nol koma satu lima, enam puluh dua per seratus menjadi nol koma enam dua, dan delapan puluh satu per seratus menjadi nol koma delapan satu.";
 const SUARA_B3 = "Menyeberang kembali dari desimal: nol koma empat dari contoh telur menjadi empat per sepuluh, dan nol koma nol tujuh dari contoh murid menjadi tujuh per seratus.";
 const SUARA_B4 = "Hasil sebuah jembatan harus kembali ke asal. Nol koma dua lima menjadi dua puluh lima per seratus, lalu kembali menjadi nol koma dua lima.";
 
 export const ADEGAN_LUAR_JEMBATAN_TERAPAN: AdeganStory = {
   id: "luar-jembatan-terapan",
-  judul: "Fraction–Decimal Link pada soal nomor 2 dan 3",
-  sumber: "Metode luar: Fraction–Decimal Link; BS 73–75",
+  judul: "Fraction–Decimal Link pada persepuluhan dan perseratusan",
+  sumber: "Metode luar: Fraction–Decimal Link",
   latar: "#FEFCE8",
   ketukan: [
     k(
       SUARA_B1,
-      tambah(0, judul("Nomor 2: persepuluhan")),
+      tambah(0, judul("Persepuluhan")),
       tambah(0, kepala(2)),
       tambah("satu", ...jembatan("ba", 64, "1/10", "0,1", "kanan")),
       tambah("lima", ...jembatan("bb", 104, "5/10", "0,5", "kanan")),
@@ -86,7 +86,7 @@ export const ADEGAN_LUAR_JEMBATAN_TERAPAN: AdeganStory = {
     k(
       SUARA_B2,
       bersih(0),
-      tambah(0, judul("Nomor 3: perseratusan")),
+      tambah(0, judul("Perseratusan")),
       tambah(0, kepala(2)),
       tambah("lima", ...jembatan("bd", 64, "15/100", "0,15", "kanan")),
       tambah("enam", ...jembatan("be", 104, "62/100", "0,62", "kanan")),
@@ -163,10 +163,10 @@ export const ADEGAN_LUAR_TEMPAT: AdeganStory = {
 };
 
 /* ------------------------------ 9. Place Value Chart: penerapan pada roti, biskuit, contoh, nomor 3 (Buku Siswa hlm. 71–75) ------------------------------ */
-const SUARA_Q1 = "Roti di buku: satu per sepuluh adalah nol koma satu. Tempat persepuluhan berisi satu, dan tempat perseratusan kosong.";
-const SUARA_Q2 = "Biskuit di buku: satu per seratus adalah nol koma nol satu. Tempat persepuluhan berisi nol, dan tempat perseratusan berisi satu.";
-const SUARA_Q3 = "Contoh buku: nol koma dua lima. Dua persepuluhan dan lima perseratusan, sama dengan dua puluh lima per seratus.";
-const SUARA_Q4 = "Jawaban nomor tiga: nol koma satu lima berarti satu persepuluhan dan lima perseratusan. Nol koma enam dua berarti enam persepuluhan dan dua perseratusan. Nol koma delapan satu berarti delapan persepuluhan dan satu perseratusan.";
+const SUARA_Q1 = "Roti tadi: satu per sepuluh adalah nol koma satu. Tempat persepuluhan berisi satu, dan tempat perseratusan kosong.";
+const SUARA_Q2 = "Biskuit tadi: satu per seratus adalah nol koma nol satu. Tempat persepuluhan berisi nol, dan tempat perseratusan berisi satu.";
+const SUARA_Q3 = "Contoh lain: nol koma dua lima. Dua persepuluhan dan lima perseratusan, sama dengan dua puluh lima per seratus.";
+const SUARA_Q4 = "Jawaban perseratusan tadi: nol koma satu lima berarti satu persepuluhan dan lima perseratusan. Nol koma enam dua berarti enam persepuluhan dan dua perseratusan. Nol koma delapan satu berarti delapan persepuluhan dan satu perseratusan.";
 
 /** Satu penerapan bagan: kepala, bagan satu baris, dan dua keterangan. */
 const bagan = (judulTeks: string, isi: readonly [string, string, string, string], kiri: string, kanan: string, bawah: string, at: [string, string, string]): Aksi[] => [
@@ -180,17 +180,17 @@ const bagan = (judulTeks: string, isi: readonly [string, string, string, string]
 
 export const ADEGAN_LUAR_TEMPAT_TERAPAN: AdeganStory = {
   id: "luar-tempat-terapan",
-  judul: "Place Value Chart pada roti, biskuit, dan nomor 3",
-  sumber: "Metode luar: Place Value Chart; BS hlm. 71–75",
+  judul: "Place Value Chart pada roti, biskuit, dan tiga jawaban",
+  sumber: "Metode luar: Place Value Chart",
   latar: "#FDF2F8",
   ketukan: [
     k(SUARA_Q1, ...bagan("Roti: 1/10", ["0", ",", "1", ""], "persepuluhan: 1", "perseratusan: kosong", "1/10 = 0,1", ["Tempat", "kosong.", "Roti"])),
     k(SUARA_Q2, ...bagan("Biskuit: 1/100", ["0", ",", "0", "1"], "persepuluhan: 0", "perseratusan: 1", "1/100 = 0,01", ["Tempat", "berisi@2", "Biskuit"])),
-    k(SUARA_Q3, ...bagan("Contoh buku: 0,25", ["0", ",", "2", "5"], "2 persepuluhan", "5 perseratusan", "2/10 + 5/100 = 25/100", ["Dua", "lima", "sama"])),
+    k(SUARA_Q3, ...bagan("Contoh lain: 0,25", ["0", ",", "2", "5"], "2 persepuluhan", "5 perseratusan", "2/10 + 5/100 = 25/100", ["Dua", "lima", "sama"])),
     k(
       SUARA_Q4,
       bersih(0),
-      tambah(0, judul("Nomor 3: tiga jawaban")),
+      tambah(0, judul("Tiga jawaban perseratusan")),
       tambah(0, kepala(3), ...barisTabel("qh", 32, 64, [48, 24, 82, 82], ["satuan", ",", "persepuluhan", "perseratusan"], 24, 7.2, true)),
       tambah("satu", ...barisTabel("qe", 32, 88, [48, 24, 82, 82], ["0", ",", "1", "5"], 24, 13)),
       tambah("enam", ...barisTabel("qf", 32, 112, [48, 24, 82, 82], ["0", ",", "6", "2"], 24, 13)),
@@ -202,7 +202,7 @@ export const ADEGAN_LUAR_TEMPAT_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 10. Ringkasan metode luar ------------------------------ */
 const SUARA_Z1 = "Ringkasnya, empat metode dari luar: menghitung angka menurut penyebut, mewarnai kisi seratus kotak, menyeberang lewat jembatan, dan mengisi tabel nilai tempat.";
-const SUARA_Z2 = "Angka buku yang dipakai tadi: satu, empat, lima, dan sembilan per sepuluh; satu, tujuh, lima belas, dua puluh lima, enam puluh dua, dan delapan puluh satu per seratus.";
+const SUARA_Z2 = "Angka yang dipakai tadi: satu, empat, lima, dan sembilan per sepuluh; satu, tujuh, lima belas, dua puluh lima, enam puluh dua, dan delapan puluh satu per seratus.";
 const SUARA_Z3 = "Pilih metode menurut keperluan: kisi untuk melihat bentuknya, jembatan untuk mengubah, tabel nilai tempat untuk memeriksa. Selalu cek dengan aturan: satu angka sepuluh, dua angka seratus.";
 
 const KEGUNAAN = ["hitung angka menurut penyebut", "warnai kisi 100 kotak", "seberangi jembatan", "isi tabel nilai tempat"];
@@ -221,8 +221,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_Z2,
       bersih(0),
-      tambah(0, judul("Angka buku yang dipakai")),
-      tambah(0, ...barisTabel("rt0", 10, 34, [90, 190], ["jenis", "angka dari buku"], 24, 8.6, true)),
+      tambah(0, judul("Angka yang dipakai")),
+      tambah(0, ...barisTabel("rt0", 10, 34, [90, 190], ["jenis", "angka yang dipakai"], 24, 8.6, true)),
       tambah("sepuluh;", ...barisTabel("rt1", 10, 58, [90, 190], ["persepuluhan", "1/10, 4/10, 5/10, 9/10"], 24, 8.4)),
       tambah("tujuh,", ...barisTabel("rt2", 10, 82, [90, 190], ["perseratusan", "1/100, 7/100, 15/100, 25/100"], 24, 8.4)),
       tambah("enam", ...barisTabel("rt3", 10, 106, [90, 190], ["perseratusan", "62/100, 81/100"], 24, 8.4)),

@@ -51,20 +51,20 @@ export const ADEGAN_LUAR_GARIS: AdeganStory = {
 };
 
 /* ------------------------------ 7. Number Line Unit: penerapan dengan angka buku ------------------------------ */
-const SUARA_H1 = "Letakkan pecahan dari soal buku pada satu garis dari nol sampai satu. Satu per dua dibuat dengan membagi garis menjadi dua bagian sama, dan titiknya tepat di tengah.";
+const SUARA_H1 = "Letakkan pecahan dari soal latihan pada satu garis dari nol sampai satu. Satu per dua dibuat dengan membagi garis menjadi dua bagian sama, dan titiknya tepat di tengah.";
 const SUARA_H2 = "Satu per tiga: bagi garis menjadi tiga bagian sama. Titik pertama setelah nol lebih dekat ke nol daripada satu per dua, jadi satu per tiga kurang dari satu per dua.";
 const SUARA_H3 = "Satu per empat dan satu per lima makin dekat ke nol. Dari kanan ke kiri urutannya satu per dua, satu per tiga, satu per empat, dan satu per lima, selalu dari besar ke kecil.";
-const SUARA_H4 = "Nomor empat bagian b: satu per empat dan satu per lima. Titik satu per empat ada di sebelah kanan titik satu per lima, jadi satu per empat lebih dari satu per lima, sesuai kunci buku.";
+const SUARA_H4 = "Sekarang bandingkan satu per empat dan satu per lima. Titik satu per empat ada di sebelah kanan titik satu per lima, jadi satu per empat lebih dari satu per lima.";
 
 export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
   id: "luar-garis-terapan",
-  judul: "Number Line Unit pada pecahan buku",
-  sumber: "Metode luar: Number Line Unit; BS hlm. 62",
+  judul: "Number Line Unit pada pecahan latihan",
+  sumber: "Metode luar: Number Line Unit",
   latar: "#FEF3C7",
   ketukan: [
     k(
       SUARA_H1,
-      tambah(0, judul("Pecahan di Garis: soal buku")),
+      tambah(0, judul("Pecahan di Garis: soal latihan")),
       tambah("Letakkan", kepala(2)),
       tambah("garis", ...GARIS_TERAPAN),
       munculkan("tengah.", 2),
@@ -132,20 +132,20 @@ export const ADEGAN_LUAR_BAGI: AdeganStory = {
 };
 
 /* ------------------------------ 9. Fair Sharing: penerapan dengan angka buku ------------------------------ */
-const SUARA_Y1 = "Pizza di buku dibagi kepada empat siswa. Empat orang berbagi, jadi tiap siswa mendapat satu per empat pizza.";
-const SUARA_Y2 = "Batang di buku: sepuluh anak berbagi satu batang, dan lima anak berbagi batang lain yang sama panjang. Anak dalam kelompok sepuluh mendapat bagian lebih kecil, jadi satu per sepuluh kurang dari satu per lima.";
-const SUARA_Y3 = "Bagian e: satu per sebelas dan satu per tiga belas. Sebelas anak berbagi satu benda, tiga belas anak berbagi benda yang sama. Bagian anak dari tiga belas lebih kecil, jadi satu per sebelas lebih dari satu per tiga belas.";
-const SUARA_Y4 = "Terakhir, bagian c: satu per delapan dan satu per dua. Dua orang berbagi, tiap orang mendapat bagian besar. Delapan orang berbagi, bagian tiap orang kecil. Jadi satu per delapan kurang dari satu per dua.";
+const SUARA_Y1 = "Pizza dibagi kepada empat siswa. Empat orang berbagi, jadi tiap siswa mendapat satu per empat pizza.";
+const SUARA_Y2 = "Sekarang dua batang sama panjang: sepuluh anak berbagi satu batang, dan lima anak berbagi batang lain yang sama panjang. Anak dalam kelompok sepuluh mendapat bagian lebih kecil, jadi satu per sepuluh kurang dari satu per lima.";
+const SUARA_Y3 = "Contoh berikutnya: satu per sebelas dan satu per tiga belas. Sebelas anak berbagi satu benda, tiga belas anak berbagi benda yang sama. Bagian anak dari tiga belas lebih kecil, jadi satu per sebelas lebih dari satu per tiga belas.";
+const SUARA_Y4 = "Terakhir: satu per delapan dan satu per dua. Dua orang berbagi, tiap orang mendapat bagian besar. Delapan orang berbagi, bagian tiap orang kecil. Jadi satu per delapan kurang dari satu per dua.";
 
 export const ADEGAN_LUAR_BAGI_TERAPAN: AdeganStory = {
   id: "luar-bagi-terapan",
-  judul: "Fair Sharing pada soal buku",
-  sumber: "Metode luar: Fair Sharing; BS hlm. 58–62",
+  judul: "Fair Sharing pada soal latihan",
+  sumber: "Metode luar: Fair Sharing",
   latar: "#FCE7F3",
   ketukan: [
     k(
       SUARA_Y1,
-      tambah(0, judul("Fair Sharing: pizza buku")),
+      tambah(0, judul("Fair Sharing: pizza empat siswa")),
       tambah("Pizza", kepala(3)),
       tambah("dibagi", ...lingkaranBagi("ya", 90, 124, 44, 4, 1, W.jingga)),
       tambah("siswa.", ...benda("yp", 175, 104, 4, 2, 24, 8, W.biruMuda, W.biru), teks("yq", 187, 154, "4 siswa", 9, W.biru)),
@@ -181,7 +181,7 @@ export const ADEGAN_LUAR_BAGI_TERAPAN: AdeganStory = {
 
 /* ------------------------------ 10. Ringkasan metode luar ------------------------------ */
 const SUARA_Z1 = "Ringkasnya, empat metode: Unit Fraction untuk menghitung bagian, Area Model untuk membandingkan arsiran, Number Line Unit untuk menaruh titik di garis, dan Fair Sharing untuk membagi benda.";
-const SUARA_Z2 = "Angka buku yang dipakai: lima gambar bentuk pecahan, batang satu per dua lawan satu per empat, satu per sepuluh lawan satu per lima, garis dari satu per dua sampai satu per lima, dan sebelas anak lawan tiga belas anak.";
+const SUARA_Z2 = "Angka yang dipakai: lima gambar bentuk pecahan, batang satu per dua lawan satu per empat, satu per sepuluh lawan satu per lima, garis dari satu per dua sampai satu per lima, dan sebelas anak lawan tiga belas anak.";
 const SUARA_Z3 = "Memilih metode: untuk membaca satu gambar, hitung bagiannya. Untuk membandingkan dua gambar, lihat arsirannya. Untuk mengurutkan, pakai garis. Untuk cerita membagi, pakai bagi adil. Selalu periksa lewat penyebutnya.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
@@ -198,8 +198,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_Z2,
       bersih(0),
-      tambah(0, judul("Angka buku yang dipakai")),
-      tambah("Angka", ...barisTabel("rt0", 14, 32, [92, 188], ["metode", "angka buku"], 24, 8.4, true)),
+      tambah(0, judul("Angka yang dipakai")),
+      tambah("Angka", ...barisTabel("rt0", 14, 32, [92, 188], ["metode", "angka yang dipakai"], 24, 8.4, true)),
       tambah("lima", ...barisTabel("rt1", 14, 56, [92, 188], ["Unit Fraction", BENTUK_LATIHAN.map(([n, a]) => `${a}/${n}`).join(", ")], 24, 8.2)),
       tambah("batang", ...barisTabel("rt2", 14, 80, [92, 188], ["Area Model", "1/2 : 1/4, 1/10 : 1/5"], 24, 8.2)),
       tambah("garis", ...barisTabel("rt3", 14, 104, [92, 188], ["Number Line Unit", "1/2, 1/3, 1/4, 1/5"], 24, 8.2)),

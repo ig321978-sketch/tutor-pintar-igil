@@ -68,12 +68,12 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
 const SUARA_R1 = "Ayo Mengamati. Ibu guru membuka pelajaran: hari ini kita akan belajar pecahan desimal. Seorang murid bertanya, pecahan desimal itu apa?";
 const SUARA_R2 = "Untuk menjawabnya, Ibu sudah menyiapkan roti yang jumlahnya sepuluh. Satu roti dilapisi selai coklat.";
 const SUARA_R3 = "Bagaimana bentuk pecahannya? Murid menjawab satu per sepuluh, karena satu dari sepuluh roti dilapisi selai.";
-const SUARA_R4 = "Panduan guru menambahkan: satu roti berselai dari sepuluh roti menandakan persepuluhan, atau satu per sepuluh, atau nol koma satu dalam pecahan desimal. Kegiatan ini boleh diganti dengan benda di sekitar murid.";
+const SUARA_R4 = "Jadi satu roti berselai dari sepuluh roti menandakan persepuluhan, atau satu per sepuluh, atau nol koma satu dalam pecahan desimal. Kegiatan ini boleh diganti dengan benda di sekitar kita.";
 
 export const ADEGAN_AMATI_ROTI: AdeganStory = {
   id: "amati-roti",
   judul: "Ayo Mengamati: sepuluh roti, satu berselai",
-  sumber: "Buku Siswa hlm. 71; Panduan Guru hlm. 105",
+  sumber: "Materi: sepuluh roti, satu berselai",
   latar: "#FEF3C7",
   kutipan: [
     "Ayo Mengamati",
@@ -117,7 +117,7 @@ export const ADEGAN_AMATI_ROTI: AdeganStory = {
       tambah("persepuluhan,", ...kartu("rz1", 12, 36, 84, 40, W.hijauMuda, ["persepuluhan"], 8.4)),
       tambah("satu@2", ...kartu("rz2", 108, 36, 78, 40, W.langit, ["1/10"], 13)),
       tambah("nol", ...kartu("rz3", 198, 36, 90, 40, W.emas, ["0,1"], 13)),
-      tambah("diganti", ...kartu("rz4", 14, 100, 272, 34, W.krem, ["boleh diganti benda di sekitar murid"], 9)),
+      tambah("diganti", ...kartu("rz4", 14, 100, 272, 34, W.krem, ["boleh diganti benda di sekitar kita"], 9)),
       tambah("benda", emo("rz5", 150, 170, "🍎", 26)),
     ),
   ],
@@ -132,7 +132,7 @@ const SUARA_B4 = "Ibu membenarkan: satu per seratus dituliskan dalam bentuk desi
 export const ADEGAN_TIGA_BISKUIT: AdeganStory = {
   id: "tiga-persepuluh-biskuit",
   judul: "Dari satu per sepuluh ke satu per seratus",
-  sumber: "Buku Siswa hlm. 72",
+  sumber: "Materi: dari persepuluhan ke perseratusan",
   latar: "#F0FDF4",
   kutipan: [
     "bisa dituliskan",
@@ -189,7 +189,7 @@ export const ADEGAN_TIGA_BISKUIT: AdeganStory = {
 
 /* ------------------------------ 4. Contoh pecahan desimal dan aturan angka di belakang koma (Buku Siswa hlm. 73) ------------------------------ */
 const SUARA_C1 = "Murid lain bertanya: jika saya punya tujuh per seratus, bisa dituliskan nol koma nol tujuh, apakah benar, Ibu? Ibu menjawab, betul sekali.";
-const SUARA_C2 = "Buku merangkumnya dalam kotak Contoh pecahan desimal. Contoh pertama: satu angka di belakang koma. Karena ada satu angka di belakang koma, nilai penyebutnya sepuluh. Jadi nol koma satu sama dengan satu per sepuluh.";
+const SUARA_C2 = "Sekarang perhatikan contoh pecahan desimal. Contoh pertama: satu angka di belakang koma. Karena ada satu angka di belakang koma, nilai penyebutnya sepuluh. Jadi nol koma satu sama dengan satu per sepuluh.";
 const SUARA_C3 = "Contoh kedua: dua angka di belakang koma. Karena ada dua angka di belakang koma, nilai penyebutnya seratus. Jadi nol koma dua lima sama dengan dua puluh lima per seratus.";
 const SUARA_C4 = "Aturannya mudah diingat: banyak angka di belakang koma menentukan penyebutnya. Satu angka berarti sepuluh, dua angka berarti seratus.";
 const SUARA_C5 = "Coba pada contoh tadi: nol koma tiga punya satu angka, jadi tiga per sepuluh. Nol koma nol tujuh punya dua angka, jadi tujuh per seratus.";
@@ -197,7 +197,7 @@ const SUARA_C5 = "Coba pada contoh tadi: nol koma tiga punya satu angka, jadi ti
 export const ADEGAN_CONTOH_KOMA: AdeganStory = {
   id: "contoh-angka-koma",
   judul: "Contoh pecahan desimal: banyak angka di belakang koma",
-  sumber: "Buku Siswa hlm. 73",
+  sumber: "Materi: angka di belakang koma",
   latar: "#F5F3FF",
   kutipan: [
     "Berarti jika saya punya bentuk pecahan",

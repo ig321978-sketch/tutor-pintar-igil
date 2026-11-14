@@ -6,7 +6,7 @@ import { bersih, k, tambah } from "./k4b2e-bantu";
 export const ADEGAN_LANGSUNG: AdeganStory = {
   id: "langsung",
   judul: "Ayo Berpikir: cara biasa dan cara langsung",
-  sumber: "Buku Siswa hlm. 79–81; Panduan Guru hlm. 109",
+  sumber: "Materi: cara biasa dan cara langsung",
   latar: "#EFF6FF",
   kutipan: [
     "Ibu untuk mengubah pecahan desimal perseratusan menjadi bentuk persen bolehkah langsung dikalikan 100%",
@@ -20,12 +20,12 @@ export const ADEGAN_LANGSUNG: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo berpikir. Murid bertanya: bolehkah desimal perseratusan langsung dikalikan dengan seratus persen? Ibu guru menjawab bahwa ada dua cara mengubahnya.",
+      "Ayo berpikir. Coba tebak, bolehkah desimal perseratusan langsung dikalikan dengan seratus persen? Boleh, karena ada dua cara mengubahnya.",
       bersih(0),
       tambah(0, judul("Ayo Berpikir")),
       tambah(0, emo("l1", 40, 66, "👧", 30)),
       tambah("bolehkah", ...kartu("l2", 70, 38, 220, 36, W.krem, ["boleh langsung dikali 100%?"], 10)),
-      tambah("Ibu", emo("l3", 40, 130, "👩", 30)),
+      tambah("karena", emo("l3", 40, 130, "👩", 30)),
       tambah("dua", ...kartu("l4", 70, 106, 220, 36, W.hijauMuda, ["ada dua cara"], 11)),
     ),
     k(
@@ -61,7 +61,7 @@ export const ADEGAN_LANGSUNG: AdeganStory = {
       tambah("Cara", ...kartu("l16", 12, 34, 276, 30, W.pink, ["kalikan dengan 100%"], 11)),
       tambah("Nol", ...kartu("l17", 12, 80, 276, 32, W.hijauMuda, ["0,25 × 100% = (0,25 × 100)% = 25%"], 9.2)),
       tambah("Dua@3", ...kartu("l18", 12, 124, 276, 32, W.hijauMuda, ["2,36 × 100% = (2,36 × 100)% = 236%"], 9.2)),
-      tambah("ratus@3", ...kartu("l19", 30, 168, 240, 26, W.krem, ["Panduan Guru menjelaskan cara langsung"], 8.6)),
+      tambah("ratus@3", ...kartu("l19", 30, 168, 240, 26, W.krem, ["hasilnya sama dengan cara biasa"], 8.6)),
     ),
   ],
 };
@@ -69,8 +69,8 @@ export const ADEGAN_LANGSUNG: AdeganStory = {
 /* ------------------------------ 6. Tahukah Kalian: menggeser koma (Buku Siswa hlm. 82) ------------------------------ */
 export const ADEGAN_GESER: AdeganStory = {
   id: "geser",
-  judul: "Tahukah Kalian: geser koma",
-  sumber: "Buku Siswa hlm. 82",
+  judul: "Tahukah kamu: geser koma",
+  sumber: "Materi: geser tanda koma",
   latar: "#FEFCE8",
   kutipan: [
     "Tahukah Kalian",
@@ -83,7 +83,7 @@ export const ADEGAN_GESER: AdeganStory = {
     k(
       "Tahukah kalian? Supaya mengalikan desimal perseratusan dengan seratus persen lebih mudah, geser tanda koma dua kali ke kanan.",
       bersih(0),
-      tambah(0, judul("Tahukah Kalian?")),
+      tambah(0, judul("Tahukah kamu?")),
       tambah(0, emo("g1", 150, 80, "💡", 40)),
       tambah("geser", ...kartu("g2", 30, 104, 240, 34, W.krem, ["tanda koma: geser 2 kali ke kanan"], 10)),
       tambah("seratus@2", ...kartu("g3", 60, 150, 180, 28, W.hijauMuda, ["× 100%"], 12)),
@@ -129,7 +129,7 @@ const TAB_LATIHAN_1 = tabel(
 export const ADEGAN_BERLATIH_1E: AdeganStory = {
   id: "berlatih-1e",
   judul: "Latihan 1: desimal ke persen",
-  sumber: "Buku Siswa hlm. 82; Panduan Guru hlm. 110",
+  sumber: "Materi: latihan desimal ke persen",
   latar: "#F0FDF4",
   kutipan: [
     "Kerjakan soal berikut pada buku tulis kalian",
@@ -143,10 +143,10 @@ export const ADEGAN_BERLATIH_1E: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Sekarang latihan mandiri, soal satu: ubah desimal perseratusan menjadi persen. Bagian a: nol koma satu dua, jadi dua belas persen. Bagian b: satu koma satu lima, jadi seratus lima belas persen.",
+      "Sekarang coba kamu: ubah desimal perseratusan menjadi persen. Bagian a: nol koma satu dua, jadi dua belas persen. Bagian b: satu koma satu lima, jadi seratus lima belas persen.",
       bersih(0),
       tambah(0, judul("Latihan 1: ke persen")),
-      tambah("Soal", ...barisTabel(TAB_LATIHAN_1, "lt", 0)),
+      tambah("Sekarang", ...barisTabel(TAB_LATIHAN_1, "lt", 0)),
       tambah("Bagian", ...barisTabel(TAB_LATIHAN_1, "lt", 1)),
       tambah("Bagian@2", ...barisTabel(TAB_LATIHAN_1, "lt", 2)),
     ),
@@ -156,12 +156,12 @@ export const ADEGAN_BERLATIH_1E: AdeganStory = {
       tambah("sepuluh", ...barisTabel(TAB_LATIHAN_1, "lt", 4)),
     ),
     k(
-      "Kunci Panduan Guru sama: dua belas, seratus lima belas, lima ratus enam puluh dua, dan seribu lima puluh lima persen. Periksa: sepuluh koma lima lima dikali seratus memang seribu lima puluh lima.",
+      "Periksa hasilnya: dua belas, seratus lima belas, lima ratus enam puluh dua, dan seribu lima puluh lima persen. Cek lagi: sepuluh koma lima lima dikali seratus memang seribu lima puluh lima.",
       bersih(0),
-      tambah(0, judul("Memeriksa kunci")),
-      tambah("Kunci", ...kartu("bt", 12, 40, 276, 32, W.hijauMuda, ["kunci: 12%, 115%, 562%, 1055%"], 10.4)),
-      tambah("Periksa", ...kartu("bu", 12, 90, 276, 32, W.krem, ["periksa: 10,55 × 100 = 1055"], 10.4)),
-      tambah("memang", ...kartu("bx", 60, 140, 180, 30, W.pink, ["kunci buku benar"], 10.4)),
+      tambah(0, judul("Memeriksa hasil")),
+      tambah("Periksa", ...kartu("bt", 12, 40, 276, 32, W.hijauMuda, ["hasil: 12%, 115%, 562%, 1055%"], 10.4)),
+      tambah("Cek", ...kartu("bu", 12, 90, 276, 32, W.krem, ["periksa: 10,55 × 100 = 1055"], 10.4)),
+      tambah("memang", ...kartu("bx", 60, 140, 180, 30, W.pink, ["hasilnya benar semua"], 10.4)),
     ),
   ],
 };
@@ -185,7 +185,7 @@ const TAB_LATIHAN_2 = tabel(
 export const ADEGAN_BERLATIH_2E: AdeganStory = {
   id: "berlatih-2e",
   judul: "Latihan 2: persen ke desimal",
-  sumber: "Buku Siswa hlm. 82; Panduan Guru hlm. 110",
+  sumber: "Materi: latihan persen ke desimal",
   latar: "#FFF7ED",
   kutipan: [
     "Ubahlah bentuk persen berikut menjadi bentuk pecahan desimal",
@@ -197,26 +197,26 @@ export const ADEGAN_BERLATIH_2E: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal dua kebalikannya: ubah persen menjadi desimal perseratusan. Caranya persen dibagi seratus, atau koma digeser dua kali ke kiri. Delapan belas persen menjadi nol koma satu delapan, enam puluh lima persen menjadi nol koma enam lima.",
+      "Sekarang kebalikannya: ubah persen menjadi desimal perseratusan. Caranya persen dibagi seratus, atau koma digeser dua kali ke kiri. Delapan belas persen menjadi nol koma satu delapan, enam puluh lima persen menjadi nol koma enam lima.",
       bersih(0),
       tambah(0, judul("Latihan 2: ke desimal")),
-      tambah("Soal", ...barisTabel(TAB_LATIHAN_2, "lp", 0)),
+      tambah("Sekarang", ...barisTabel(TAB_LATIHAN_2, "lp", 0)),
       tambah("Delapan", ...barisTabel(TAB_LATIHAN_2, "lp", 1)),
       tambah("enam@2", ...barisTabel(TAB_LATIHAN_2, "lp", 2)),
       tambah("Caranya", ...kartu("bv", 40, 140, 220, 30, W.krem, ["bagi 100: koma ke kiri 2 kali"], 9.6)),
     ),
     k(
-      "Seratus dua puluh tiga persen menjadi satu koma dua tiga. Enam ratus tujuh puluh lima persen menjadi enam koma tujuh lima. Semuanya cocok dengan kunci Panduan Guru.",
+      "Seratus dua puluh tiga persen menjadi satu koma dua tiga. Enam ratus tujuh puluh lima persen menjadi enam koma tujuh lima. Semuanya sudah kita periksa dan benar.",
       tambah("Seratus", ...barisTabel(TAB_LATIHAN_2, "lp", 3)),
       tambah("Enam", ...barisTabel(TAB_LATIHAN_2, "lp", 4)),
-      tambah("cocok", ...kartu("bw", 40, 178, 220, 22, W.hijauMuda, ["cocok dengan kunci buku"], 9)),
+      tambah("periksa", ...kartu("bw", 40, 178, 220, 22, W.hijauMuda, ["semuanya sudah benar"], 9)),
     ),
     k(
-      "Diferensiasi dari Panduan Guru: model Problem Based Learning dengan kelompok campuran, ketuanya murid berkemampuan tinggi. Murid yang cepat mengerjakan latihan tanpa bantuan atau soal tambahan. Guru mendampingi murid yang kesulitan.",
-      ...daftar("df", "Diferensiasi", [
-        { at: "Problem", t: "Problem Based Learning, kelompok campuran", w: W.langit, u: 9.2 },
-        { at: "cepat", t: "murid cepat: tanpa bantuan, soal tambahan", w: W.hijauMuda, u: 9 },
-        { at: "mendampingi", t: "guru mendampingi yang kesulitan", w: W.krem, u: 9.6 },
+      "Untuk berlatih, kita belajar dalam kelompok campuran, ketuanya teman yang sudah lancar. Kalau kamu sudah cepat, kerjakan soal tambahan tanpa bantuan. Kalau masih kesulitan, ibu guru akan mendampingi.",
+      ...daftar("df", "Belajar bersama", [
+        { at: "kelompok", t: "kelompok campuran, ketua yang lancar", w: W.langit, u: 9.2 },
+        { at: "cepat", t: "sudah cepat: soal tambahan sendiri", w: W.hijauMuda, u: 9 },
+        { at: "mendampingi", t: "masih sulit: didampingi guru", w: W.krem, u: 9.6 },
       ]),
     ),
   ],

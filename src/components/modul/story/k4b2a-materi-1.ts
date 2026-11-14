@@ -239,11 +239,11 @@ export const ADEGAN_PANDUAN_AWAL: AdeganStory = {
 };
 
 /* ------------------------------ 4. Aktivitas 1: konsep pecahan dengan lingkaran origami (Buku Siswa hlm. 57–58; Panduan Guru hlm. 93–94) ------------------------------ */
-const SUARA_AK1 = "Aktivitas satu: Konsep Pecahan. Alat dan bahan: kertas origami, pensil warna, gunting, lem, penggaris, dan buku tulis. Buatlah kelompok beranggotakan tiga sampai empat orang.";
+const SUARA_AK1 = "Kita mulai dengan percobaan lingkaran kertas. Siapkan kertas origami, pensil warna, gunting, lem, penggaris, dan selembar karton. Buatlah kelompok beranggotakan tiga sampai empat orang.";
 const SUARA_AK2 = "Potong kertas origami menjadi lingkaran sebanyak anggota kelompok. Ambil satu lingkaran, lalu bagi menjadi beberapa bagian yang sama dengan garis yang melalui titik pusat lingkaran.";
-const SUARA_AK3 = "Warnai satu bagian lingkaran dengan pensil warna. Ulangi untuk anggota lain pada potongan lingkaran yang lain, lalu tempel di buku tulis. Gambar di sini hanya contoh.";
+const SUARA_AK3 = "Warnai satu bagian lingkaran dengan pensil warna. Ulangi untuk anggota lain pada potongan lingkaran yang lain, lalu tempel di karton. Gambar di sini hanya contoh.";
 const SUARA_AK4 = "Presentasikan hasil di depan kelas, lalu tulis kesimpulan dari percobaan. Tabel Hasil Aktivitas diisi satu pecahan untuk tiap anggota, dari anggota satu sampai anggota empat.";
-const SUARA_AK5 = "Panduan guru: guru membentuk kelompok heterogen, lalu menjelaskan cara mengisi tabel. Tabel ini tanpa kunci, karena hasilnya bergantung pada lingkaran tiap murid. Memakai contoh tadi, hasilnya satu per dua, satu per tiga, satu per empat, dan satu per enam.";
+const SUARA_AK5 = "Guru membentuk kelompok yang beragam, lalu menjelaskan cara mengisi tabel. Hasilnya bergantung pada lingkaran tiap murid. Memakai contoh tadi, hasilnya satu per dua, satu per tiga, satu per empat, dan satu per enam.";
 
 /** Contoh lingkaran empat anggota pada gambar: banyak bagian sama tiap lingkaran (contoh, bukan data buku). */
 export const CONTOH_ANGGOTA = [2, 3, 4, 6] as const;
@@ -251,7 +251,7 @@ export const CONTOH_ANGGOTA = [2, 3, 4, 6] as const;
 export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
   id: "aktivitas-satu",
   judul: "Aktivitas 1: Konsep Pecahan",
-  sumber: "Buku Siswa hlm. 57–58; Panduan Guru hlm. 93–94",
+  sumber: "Materi: percobaan lingkaran kertas",
   latar: "#F0F9FF",
   kutipan: [
     "A. Pecahan dengan Pembilang Satu",
@@ -272,7 +272,7 @@ export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
     k(
       SUARA_AK1,
       tambah(0, judul("Aktivitas 1: Konsep Pecahan")),
-      tambah("Alat", ...kartu("al1", 14, 30, 272, 40, W.krem, ["kertas origami, pensil warna, gunting,", "lem, penggaris, dan buku tulis"], 8.4)),
+      tambah("Siapkan", ...kartu("al1", 14, 30, 272, 40, W.krem, ["kertas origami, pensil warna, gunting,", "lem, penggaris, dan selembar karton"], 8.4)),
       tambah("kelompok", emo("kl1", 80, 112, "🧒", 28), emo("kl2", 120, 112, "🧒", 28), emo("kl3", 160, 112, "🧒", 28), emo("kl4", 200, 112, "🧒", 28)),
       tambah("tiga", ...kartu("kl5", 60, 130, 180, 30, W.emas, ["kelompok 3-4 orang"], 9.6)),
     ),
@@ -290,7 +290,7 @@ export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
       bersih(0),
       tambah(0, judul("Contoh lingkaran tiap anggota")),
       ...CONTOH_ANGGOTA.map((n, i) => tambah(["Warnai", "Ulangi", "anggota", "potongan"][i], ...lingkaranBagi(`co${i + 1}`, 40 + i * 73.3, 80, 28, n, 1, W.oranye), teks(`co${i + 1}t`, 40 + i * 73.3, 128, `Anggota ${i + 1}`, 8, W.biru))),
-      tambah("tempel", ...kartu("co5", 30, 148, 240, 34, W.krem, ["ditempel di buku tulis"], 9.2)),
+      tambah("tempel", ...kartu("co5", 30, 148, 240, 34, W.krem, ["ditempel di karton"], 9.2)),
       tambah("contoh.", teks("co6", 150, 196, "gambar ini contoh", 8, W.coklat)),
     ),
     k(
@@ -302,8 +302,8 @@ export const ADEGAN_AKTIVITAS_SATU: AdeganStory = {
     ),
     k(
       SUARA_AK5,
-      tambah("heterogen,", ...kartu("hg", 20, 166, 260, 28, W.hijauMuda, ["kelompok heterogen; guru jelaskan cara isi"], 8.6)),
-      tambah("kunci,", teks("kn", 150, 160, "tanpa kunci: bergantung lingkaran", 8.2, W.merah)),
+      tambah("beragam,", ...kartu("hg", 20, 166, 260, 28, W.hijauMuda, ["kelompok beragam; guru jelaskan cara isi"], 8.6)),
+      tambah("bergantung", teks("kn", 150, 160, "hasil bergantung lingkaran tiap murid", 8.2, W.merah)),
       ...[1, 2, 3, 4].map((n) => ubah(["dua,", "tiga,", "empat,", "enam."][n - 1], { id: `tr${n}-t1`, isi: `1/${CONTOH_ANGGOTA[n - 1]}` })),
     ),
   ],
