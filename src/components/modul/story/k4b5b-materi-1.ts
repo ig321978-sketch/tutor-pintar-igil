@@ -165,8 +165,8 @@ export const ADEGAN_APERSEPSI: AdeganStory = {
 /* ------------------------------ 3. Aktivitas 6: komposisi bangun datar (Buku Siswa hlm. 167–168; Panduan Guru hlm. 196–197) ------------------------------ */
 export const ADEGAN_AKTIVITAS_6: AdeganStory = {
   id: "aktivitas-6",
-  judul: "Aktivitas 6: komposisi bangun datar",
-  sumber: "Buku Siswa hlm. 167–168; Panduan Guru hlm. 196–197",
+  judul: "Kegiatan menyusun tangram",
+  sumber: "Materi: menyusun tangram",
   latar: "#F5F3FF",
   kutipan: [
     "Aktivitas 6. Komposisi Bangun Datar",
@@ -184,8 +184,8 @@ export const ADEGAN_AKTIVITAS_6: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Aktivitas enam, komposisi bangun datar. Alat dan bahan: kertas lipat warna-warni, gunting dan lem, serta alat tulis. Bentuk kelompok tiga sampai empat orang.",
-      tambah(0, judul("Aktivitas 6")),
+      "Kegiatan pertama, menyusun bangun datar. Alat dan bahan yang kamu siapkan: kertas lipat warna-warni, gunting dan lem, serta alat tulis. Bentuk kelompok tiga sampai empat orang.",
+      tambah(0, judul("Menyusun tangram")),
       tambah("kertas", ...kartu("a61", 6, 34, 98, 30, W.krem, ["kertas lipat", "warna-warni"], 7.8)),
       tambah("gunting", ...kartu("a62", 6, 70, 98, 26, W.langit, ["gunting dan lem"], 7.8)),
       tambah("alat@2", ...kartu("a63", 6, 102, 98, 26, W.hijauMuda, ["alat tulis"], 8.4)),
@@ -196,7 +196,7 @@ export const ADEGAN_AKTIVITAS_6: AdeganStory = {
       "Langkah dua: potong kertas lipat memakai gunting menjadi beberapa bagian, lalu beri nomor. Hasilnya tujuh keping bernomor satu sampai tujuh.",
       hapus(0, "a61-k", "a61-t0", "a61-t1", "a62-k", "a62-t0", "a63-k", "a63-t0", "a64-k", "a64-t0", "a64-t1"),
       tambah("potong", ...kartu("lgk", 6, 40, 98, 40, W.langit, ["Langkah 2:", "potong, beri nomor"], 7.8)),
-      tambah("tujuh", ...kartu("lgn", 6, 90, 98, 40, W.krem, ["7 keping", "nomor 1 sampai 7"], 7.8)),
+      tambah("tujuh", ...kartu("lgn", 6, 90, 98, 40, W.krem, ["7 keping", "kode 1 sampai 7"], 7.8)),
       sorotkan("tujuh", ...NO.map((n) => `tg-p${n}`)),
       redamkan("tujuh@2", ...NO.map((n) => `tg-p${n}`)),
     ),
@@ -251,7 +251,7 @@ const pindah8 = (at: string | number | undefined, no: number, x: number, y: numb
 export const ADEGAN_BERPIKIR: AdeganStory = {
   id: "berpikir-kreatif",
   judul: "Ayo Berpikir Kreatif: delapan keping",
-  sumber: "Buku Siswa hlm. 169; Panduan Guru hlm. 197",
+  sumber: "Materi: menyusun delapan keping",
   latar: "#FFF1F2",
   kutipan: [
     "Ayo siapkan secarik kertas, pensil dan gunting.",
@@ -290,7 +290,7 @@ export const ADEGAN_BERPIKIR: AdeganStory = {
       tambah("tersisa", ...kartu("bq", 6, 94, 98, 40, W.pink, ["sisa: 5, 6, 7", "dirangkai sendiri"], 7.8)),
     ),
     k(
-      "Panduan Guru: guru memperagakan menyusun dua bangun dahulu, lalu tiga, empat, dan seterusnya, sambil bertanya nama bangun yang terbentuk, misalnya rumah, pot bunga, atau pesawat.",
+      "Cara berlatih: kita peragakan menyusun dua bangun dahulu, lalu tiga, empat, dan seterusnya, sambil bertanya nama bangun yang terbentuk, misalnya rumah, pot bunga, atau pesawat.",
       hapus(0, "bl-k", "bl-t0", "bl-t1", "bq-k", "bq-t0", "bq-t1"),
       redamkan(0, "dk-q5", "dk-q6", "dk-q7"),
       tambah("dahulu,", ...kartu("gb1", 6, 34, 98, 30, W.krem, ["dua bangun dahulu,", "lalu tiga"], 7.4)),
@@ -307,8 +307,8 @@ const FIG = 6;
 const dua = (id: string, x: number, y: number, a: [number, number][], b: [number, number][]): Obj[] => [poli(`${id}-a`, x, y, skala(a, FIG), "#FAA61A", W.putih, { tebal: 0.8 }), poli(`${id}-b`, x, y, skala(b, FIG), "#40AD49", W.putih, { tebal: 0.8 })];
 export const ADEGAN_KOMPOSISI_GURU: AdeganStory = {
   id: "komposisi-guru",
-  judul: "Kesimpulan, miskonsepsi, dan diferensiasi komposisi",
-  sumber: "Panduan Guru hlm. 197–198",
+  judul: "Kesimpulan dan kesalahan yang sering terjadi",
+  sumber: "Materi: kesimpulan komposisi",
   latar: "#F0FDF4",
   kutipan: [
     "Komposisi bangun datar adalah menyusun berbagai bangun datar menjadi suatu bangun datar tertentu dengan lebih dari satu cara yang mungkin.",
@@ -320,7 +320,7 @@ export const ADEGAN_KOMPOSISI_GURU: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Kesimpulan menurut Panduan Guru: komposisi bangun datar adalah menyusun berbagai bangun datar menjadi suatu bangun datar tertentu dengan lebih dari satu cara yang mungkin.",
+      "Kesimpulan kita: komposisi bangun datar adalah menyusun berbagai bangun datar menjadi suatu bangun datar tertentu dengan lebih dari satu cara yang mungkin.",
       tambah(0, judul("Kesimpulan komposisi")),
       tambah("menyusun", ...kartu("kc", 14, 30, 272, 40, W.hijauMuda, ["menyusun berbagai bangun datar", "menjadi satu bangun tertentu"], 8.4)),
       tambah("lebih", ...dua("c1", 22, 108, CARA_DUA[0].keping[0] as [number, number][], CARA_DUA[0].keping[1] as [number, number][]), teks("c1t", 46, 150, "persegi", 8, W.biru)),
@@ -329,18 +329,18 @@ export const ADEGAN_KOMPOSISI_GURU: AdeganStory = {
       tambah("mungkin.", teks("c4", 150, 176, "contoh: dua segitiga yang sama, tiga cara", 8.4, W.coklat)),
     ),
     k(
-      "Miskonsepsi pertama: peserta didik menyusun asal-asalan, yang penting menjadi satu bangun. Padahal satu bangun yang dimaksud adalah bangun tertentu yang sudah dipelajari.",
+      "Hati-hati, kesalahan pertama: menyusun asal-asalan, yang penting menjadi satu bangun. Padahal satu bangun yang dimaksud adalah bangun tertentu yang sudah dipelajari.",
       bersih(0),
-      tambah(0, judul("Miskonsepsi 1: asal-asalan")),
+      tambah(0, judul("Kesalahan 1: asal-asalan")),
       tambah("asal-asalan,", ...[[40, 70, 0.4], [64, 86, 1.1], [52, 106, 2.0], [90, 78, 0.8]].map(([x, y, r], i) => kotak(`ms${i}`, x, y, 22, 14, ["#FAA61A", "#57B0E3", "#40AD49", "#ED008C"][i], W.coklat, { rx: 2, rot: r * 20 })), emo("ms5", 130, 100, "✖", 20, { warna: W.merah })),
       tambah("Padahal", ...kartu("ms6", 160, 52, 124, 28, W.hijauMuda, ["bangun tertentu"], 9)),
       tambah("dipelajari.", ...kartu("ms7", 160, 90, 124, 28, W.krem, ["yang sudah dipelajari"], 8.4)),
       tambah("dipelajari.", emo("ms8", 150, 150, "✔", 20, { warna: W.hijau })),
     ),
     k(
-      "Miskonsepsi kedua: mengira bangun penyusun hanya boleh yang sudah dipelajari. Padahal boleh bangun yang belum dipelajari tetapi sudah dikenali, misalnya segienam dan lingkaran.",
+      "Hati-hati, kesalahan kedua: mengira bangun penyusun hanya boleh yang sudah dipelajari. Padahal boleh bangun yang belum dipelajari tetapi sudah dikenali, misalnya segienam dan lingkaran.",
       bersih(0),
-      tambah(0, judul("Miskonsepsi 2: hanya yang dipelajari")),
+      tambah(0, judul("Kesalahan 2: hanya yang dipelajari")),
       tambah("hanya", ...kartu("m21", 14, 36, 272, 28, W.langit, ["bangun penyusun yang sudah dipelajari"], 9)),
       tambah("belum", ...kartu("m22", 14, 84, 272, 28, W.krem, ["boleh juga yang belum dipelajari, tetapi dikenali"], 8.4)),
       tambah("segienam", poli("m23", 90, 138, [[10, 0], [22, 6], [22, 22], [10, 28], [-2, 22], [-2, 6]], "#40AD49", W.putih)),
@@ -348,9 +348,9 @@ export const ADEGAN_KOMPOSISI_GURU: AdeganStory = {
       tambah("segienam", teks("m25", 90, 180, "segienam", 8, W.biru), teks("m26", 200, 180, "lingkaran", 8, W.biru)),
     ),
     k(
-      "Diferensiasi untuk yang cepat belajar: menyusun bangun yang benar-benar berbeda dari sebelumnya, atau bila bangunnya diketahui, menentukan bangun apa saja yang diperlukan untuk membentuknya.",
+      "Tantangan untuk yang cepat belajar: menyusun bangun yang benar-benar berbeda dari sebelumnya, atau bila bangunnya diketahui, menentukan bangun apa saja yang diperlukan untuk membentuknya.",
       bersih(0),
-      tambah(0, judul("Diferensiasi")),
+      tambah(0, judul("Tantangan tambahan")),
       tambah("menyusun", ...kartu("df1", 14, 40, 272, 44, W.langit, ["tantangan 1", "susun bangun yang benar-benar berbeda"], 8.6)),
       tambah("bangunnya", ...kartu("df2", 14, 100, 272, 44, W.hijauMuda, ["tantangan 2", "bangun diketahui, cari bangun penyusunnya"], 8.6)),
       tambah("membentuknya.", emo("df3", 150, 176, "🏠", 22)),

@@ -76,7 +76,7 @@ export const ADEGAN_LUAR_PAPAN: AdeganStory = {
 const SUARA_T1 = "Terapkan seperti Aktivitas satu. Karet pada tiga paku membentuk segitiga: tiga titik sudut dan tiga sisi.";
 const SUARA_T2 = "Empat paku membentuk segiempat, misalnya persegi panjang: empat titik sudut dan empat sisi.";
 const SUARA_T3 = "Lima paku membentuk segilima, dengan lima sisi. Enam paku membentuk segienam, dengan enam sisi.";
-const SUARA_T4 = "Polanya sama dengan tabel buku: banyak sudut sama dengan banyak sisi, dan sama dengan banyak paku yang dipakai.";
+const SUARA_T4 = "Polanya sama dengan tabel tadi: banyak sudut sama dengan banyak sisi, dan sama dengan banyak paku yang dipakai.";
 export const TABEL_PAKU = [
   { paku: 3, nama: "segitiga", sisi: 3 },
   { paku: 4, nama: "segiempat", sisi: 4 },
@@ -87,7 +87,7 @@ export const TABEL_PAKU = [
 export const ADEGAN_LUAR_PAPAN_TERAPAN: AdeganStory = {
   id: "luar-papan-terapan",
   judul: "Geoboard: tiga, empat, lima, enam paku",
-  sumber: "Metode luar: Geoboard; Buku Siswa hlm. 143–144",
+  sumber: "Metode luar: Geoboard",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -120,7 +120,7 @@ export const ADEGAN_LUAR_PAPAN_TERAPAN: AdeganStory = {
     k(
       SUARA_T4,
       bersih(0),
-      tambah(0, judul("Pola dari tabel buku")),
+      tambah(0, judul("Pola dari tabel tadi")),
       tambah("tabel", ...tabel("tp", 30, 34, [80, 80, 80], [["paku", "sudut", "sisi"]], 22, 9)),
       ...TABEL_PAKU.map((r, i) => tambah([idx(SUARA_T4, "sudut"), idx(SUARA_T4, "sisi"), idx(SUARA_T4, "paku"), idx(SUARA_T4, "dipakai")][i], ...tabel(`tq${i}`, 30, 56 + i * 24, [80, 80, 80], [[String(r.paku), String(r.paku), String(r.sisi)]], 24, 10))),
       tambah(idx(SUARA_T4, "yang"), ...kartu("tk", 30, 156, 240, 28, W.emas, ["paku = sudut = sisi"], 9.4)),
@@ -216,7 +216,7 @@ export const MU_NILAI = [
   [false, true],
 ];
 const MC: Matriks = { x: 20, y: 40, lw: 110, cw: 80, hh: 30, rh: 26, kolom: MU_KOLOM, baris: MU_BARIS, nilai: MU_NILAI, skala: 0.45 };
-const SUARA_Y1 = "Terapkan pada belah ketupat dan layang-layang dari buku. Ciri layang-layang: empat sisi, dua pasang sisi berdekatan sama panjang, dan diagonal berpotongan tegak lurus.";
+const SUARA_Y1 = "Terapkan pada belah ketupat dan layang-layang. Ciri layang-layang: empat sisi, dua pasang sisi berdekatan sama panjang, dan diagonal saling tegak lurus.";
 const SUARA_Y2 = "Cek belah ketupat: keempat sisinya ada, dua pasang sisi berdekatan sama panjang, dan diagonalnya tegak lurus. Semua ada, jadi belah ketupat adalah layang-layang.";
 const SUARA_Y3 = "Balikkan. Ciri belah ketupat yang tidak ada pada layang-layang: semua sisi sama panjang dan dua pasang sisi sejajar. Maka layang-layang bukan belah ketupat.";
 const SUARA_Y4 = "Dengan cara sama, trapesium bukan jajargenjang: jajargenjang punya dua pasang sisi sejajar, trapesium hanya tepat sepasang. Matriks langsung menunjukkan sel yang berbeda.";
@@ -224,7 +224,7 @@ const SUARA_Y4 = "Dengan cara sama, trapesium bukan jajargenjang: jajargenjang p
 export const ADEGAN_LUAR_MATRIKS_TERAPAN: AdeganStory = {
   id: "luar-matriks-terapan",
   judul: "Property Matrix: belah ketupat dan layang-layang",
-  sumber: "Metode luar: Property Matrix; Panduan Guru hlm. 191",
+  sumber: "Metode luar: Property Matrix",
   latar: "#FFF1F2",
   ketukan: [
     k(
@@ -262,7 +262,7 @@ export const ADEGAN_LUAR_MATRIKS_TERAPAN: AdeganStory = {
 const SUARA_R1 = "Ringkasannya, empat metode dari luar. van Hiele Level nol dan satu: dari mengenali bentuk naik ke menyebut ciri.";
 const SUARA_R2 = "Attribute Sort: memilah bangun dengan pertanyaan ya atau tidak sampai ciri tiap bangun jelas. Geoboard: membuat bangun dengan karet pada paku, lalu menghitung sisi dan sudutnya.";
 const SUARA_R3 = "Property Matrix: membandingkan ciri banyak bangun dalam satu tabel untuk melihat hubungan, seperti belah ketupat dan layang-layang.";
-const SUARA_R4 = "Semua metode tetap kembali ke ciri yang sama di buku: sisi, sudut, sisi sejajar, dan diagonal. Pilih yang paling cocok dengan kelasmu.";
+const SUARA_R4 = "Semua metode tetap kembali ke ciri yang sama: sisi, sudut, sisi sejajar, dan diagonal. Pilih yang paling cocok dengan kelasmu.";
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
@@ -287,7 +287,7 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_R4,
       bersih(0),
-      tambah(0, judul("Kembali ke ciri di buku")),
+      tambah(0, judul("Kembali ke ciri bangun")),
       tambah("sisi,", ...kartu("f1", 20, 34, 128, 30, W.hijauMuda, ["sisi"], 9.4)),
       tambah("sudut,", ...kartu("f2", 152, 34, 128, 30, W.langit, ["sudut"], 9.4)),
       tambah("sejajar,", ...kartu("f3", 20, 72, 128, 30, W.krem, ["sisi sejajar"], 9.4)),

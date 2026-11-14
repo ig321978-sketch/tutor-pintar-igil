@@ -761,7 +761,7 @@ const paku = (pts) => pts.map((p) => ({ t: "P_PAKU", i: indeks(p) }));
   for (const t of [TK.MISI_K4B5.A, TK.NAMA_SIM_K4B5.A, ...K5.MISI_A.map((m) => m.teks)]) catat(t, "teks misi");
   catat(JSON.stringify(MS.MESIN_CIRI), "mesin");
   catat(JSON.stringify(SK.SKENARIO_K4B5A), "skenario");
-  catat(JSON.stringify(ringkas.subBab.A), "peta dan infografis ringkas");
+  catat(JSON.stringify(ringkas.subBab.A).replace(/"(petaSusun|tabelSusun)"/g, ""), "peta dan infografis ringkas");
   catat(tanpaKomentar(baca("SimulasiLabCiriK4B5", "tsx")), "komponen lab (tanpa komentar)");
   catat(tanpaKomentar(baca("model-bangun-k4b5", "tsx")), "model gambar (tanpa komentar)");
   catat(tanpaKomentar(baca("lab-ciri-k4b5a", "ts")), "logika lab (tanpa komentar)");

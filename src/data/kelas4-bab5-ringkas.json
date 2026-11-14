@@ -245,6 +245,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Mengenali Bangun Datar",
+          "ikon": "🔷",
+          "suara": "Ini peta tentang mengenali bangun datar dari ciri-cirinya. Ada hal yang dipelajari, cara mengenalinya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok nama bangun, bukan cara mengenalinya."
+          },
+          {
+            "id": "segibanyak",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Ciri segi banyak",
+            "petunjuk": "Bangun tertutup yang dibatasi ruas garis lurus."
+          },
+          {
+            "id": "segitiga",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Ciri segitiga",
+            "petunjuk": "Bangun yang punya tiga sisi."
+          },
+          {
+            "id": "segiempat",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Ciri segiempat",
+            "petunjuk": "Bangun yang punya empat sisi."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara mengenalinya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap bangun."
+          },
+          {
+            "id": "cara-tutup",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Cek tertutup dan tepi lurus",
+            "petunjuk": "Langkah untuk bangun yang dibatasi ruas garis."
+          },
+          {
+            "id": "cara-sisi",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Lihat sisi dan sudutnya",
+            "petunjuk": "Langkah untuk bangun yang bersisi tiga."
+          },
+          {
+            "id": "cara-sejajar",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Cek sisi sejajar, diagonal",
+            "petunjuk": "Langkah untuk bangun yang bersisi empat."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-ciri",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menyebut ciri bangun",
+            "petunjuk": "Kemampuan menyebut sisi, sudut, dan sisi sejajar."
+          },
+          {
+            "id": "hasil-jenis",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa menamai jenis bangun",
+            "petunjuk": "Kemampuan memberi nama bangun dari ciri-cirinya."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Ciri empat segiempat",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel ciri empat segiempat. Pasang sisi sama panjang, sudut siku-siku, dan sisi sejajar untuk tiap bangun.",
+        "pojok": "Bangun",
+        "kolom": [
+          "Sisi sama panjang",
+          "Sudut siku-siku",
+          "Sisi sejajar"
+        ],
+        "baris": [
+          {
+            "label": "Persegi",
+            "sel": [
+              "4 sisi",
+              "4 sudut",
+              "2 pasang"
+            ]
+          },
+          {
+            "label": "Persegi panjang",
+            "sel": [
+              "2 pasang",
+              "4 sudut",
+              "2 pasang"
+            ]
+          },
+          {
+            "label": "Belah ketupat",
+            "sel": [
+              "4 sisi",
+              "tidak ada",
+              "2 pasang"
+            ]
+          },
+          {
+            "label": "Layang-layang",
+            "sel": [
+              "2 pasang",
+              "tidak ada",
+              "tidak ada"
+            ]
+          }
+        ]
       }
     },
     "B": {
@@ -496,6 +631,149 @@
                   "isi": "tanpa celah"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Komposisi dan Dekomposisi",
+          "ikon": "🧩",
+          "suara": "Ini peta tentang menyusun dan mengurai bangun datar. Ada metode yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "metode",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Ada tiga metode",
+            "ikon": "🧰",
+            "petunjuk": "Ini kelompok nama-nama cara belajar, bukan langkahnya."
+          },
+          {
+            "id": "susun",
+            "nomor": 2,
+            "induk": "metode",
+            "teks": "Menyusun bangun",
+            "petunjuk": "Menggabungkan beberapa bangun menjadi satu bangun baru."
+          },
+          {
+            "id": "urai",
+            "nomor": 3,
+            "induk": "metode",
+            "teks": "Mengurai bangun",
+            "petunjuk": "Membagi satu bangun menjadi beberapa bangun."
+          },
+          {
+            "id": "banyak-cara",
+            "nomor": 4,
+            "induk": "metode",
+            "teks": "Banyak cara menyusun",
+            "petunjuk": "Bangun yang sama bisa dibuat dengan susunan yang berlainan."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap metode."
+          },
+          {
+            "id": "cara-susun",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Rapatkan keping, tanpa celah",
+            "petunjuk": "Langkah untuk metode yang menggabungkan keping."
+          },
+          {
+            "id": "cara-urai",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Garis bantu, lalu namai",
+            "petunjuk": "Langkah untuk metode yang membagi satu bangun."
+          },
+          {
+            "id": "cara-lain",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Coba susunan yang lain",
+            "petunjuk": "Langkah untuk metode yang mencari susunan berbeda."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-susun",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menyusun bangun baru",
+            "petunjuk": "Kemampuan membuat bangun baru dari keping-keping."
+          },
+          {
+            "id": "hasil-urai",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa menguraikan bangun",
+            "petunjuk": "Kemampuan memecah satu bangun menjadi bagian-bagiannya."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Tujuh keping tangram",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel tujuh keping tangram. Pasang banyaknya, jumlah sisi, dan nomor keping untuk tiap jenis bangun.",
+        "pojok": "Keping",
+        "kolom": [
+          "Banyak",
+          "Sisi",
+          "Nomor"
+        ],
+        "baris": [
+          {
+            "label": "Segitiga besar",
+            "sel": [
+              "2",
+              "3",
+              "1 dan 2"
+            ]
+          },
+          {
+            "label": "Segitiga sedang",
+            "sel": [
+              "1",
+              "3",
+              "7"
+            ]
+          },
+          {
+            "label": "Segitiga kecil",
+            "sel": [
+              "2",
+              "3",
+              "5 dan 6"
+            ]
+          },
+          {
+            "label": "Persegi",
+            "sel": [
+              "1",
+              "4",
+              "4"
+            ]
+          },
+          {
+            "label": "Jajar genjang",
+            "sel": [
+              "1",
+              "4",
+              "3"
             ]
           }
         ]

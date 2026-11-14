@@ -7,7 +7,7 @@ import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b5b-bantu";
 export const ADEGAN_MENGAMATI_DEK: AdeganStory = {
   id: "mengamati-dekomposisi",
   judul: "Dekomposisi: ayo mengamati rumah adat",
-  sumber: "Buku Siswa hlm. 170; Panduan Guru hlm. 198–200",
+  sumber: "Materi: mengurai bangun datar",
   latar: "#FFFBEB",
   kutipan: [
     "2. Dekomposisi Bangun Datar",
@@ -35,7 +35,7 @@ export const ADEGAN_MENGAMATI_DEK: AdeganStory = {
       tambah("Murid", ...kartu("pt2", 220, 96, 72, 30, W.hijauMuda, ["Bisa Bapak."], 8.6)),
     ),
     k(
-      "Tujuan menurut Panduan Guru: menyajikan, menganalisis, dan mengurai bangun datar menjadi beberapa bangun datar, serta menentukan cara mengurai yang mungkin.",
+      "Tujuan kita: menyajikan, menganalisis, dan mengurai bangun datar menjadi beberapa bangun datar, serta menentukan cara mengurai yang mungkin.",
       bersih(0),
       tambah(0, judul("Tujuan dekomposisi")),
       tambah("menyajikan,", ...kartu("td1", 30, 36, 240, 28, W.langit, ["menyajikan dan menganalisis"], 9.6)),
@@ -59,8 +59,8 @@ export const ADEGAN_MENGAMATI_DEK: AdeganStory = {
 const TB = tabel("tb", 20, 36, [96, 92, 72], [["Bentuk Bangun Datar", "Nama", "Banyaknya"], ["", "Trapesium", "2"], ["", "...", "..."], ["", "...", "..."], ["", "...", "..."], ["", "...", "..."]], 24, 7.8);
 export const ADEGAN_AKTIVITAS_7: AdeganStory = {
   id: "aktivitas-7",
-  judul: "Aktivitas 7: dekomposisi bangun datar",
-  sumber: "Buku Siswa hlm. 170–172; Panduan Guru hlm. 200",
+  judul: "Kegiatan mengurai rumah adat",
+  sumber: "Materi: mengurai rumah adat",
   latar: "#F0FDFA",
   kutipan: [
     "Aktivitas 7. Dekomposisi Bangun Datar",
@@ -78,8 +78,8 @@ export const ADEGAN_AKTIVITAS_7: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Aktivitas tujuh, dekomposisi bangun datar. Alat: alat tulis dan penggaris. Kelompok tiga sampai empat orang memperhatikan rumah adat Jawa dengan atap Kampung.",
-      tambah(0, judul("Aktivitas 7")),
+      "Kegiatan kedua, mengurai bangun datar. Alat: alat tulis dan penggaris. Kelompok tiga sampai empat orang memperhatikan rumah adat Jawa dengan atap Kampung.",
+      tambah(0, judul("Mengurai rumah adat")),
       tambah("Alat:", ...kartu("b71", 10, 40, 100, 26, W.krem, ["alat tulis"], 8.6)),
       tambah("penggaris.", ...kartu("b72", 10, 74, 100, 26, W.langit, ["penggaris"], 8.6)),
       tambah("orang", ...kartu("b73", 10, 108, 100, 26, W.pink, ["3 sampai 4 orang"], 8.6)),
@@ -94,22 +94,22 @@ export const ADEGAN_AKTIVITAS_7: AdeganStory = {
       tambah("Carilah", poli("tbm", 46, 66, skala([[8, 0], [34, 0], [42, 14], [0, 14]], 1), "#3B9AE0", W.biru, { tebal: 0.8 })),
     ),
     k(
-      "Contoh baris pertama dari buku: trapesium, banyaknya dua. Pada gambar atap Kampung tampak segitiga di puncak, trapesium di atap bawah, dan persegi panjang pada dinding dan pintu.",
+      "Contoh baris pertama: trapesium, banyaknya dua. Pada gambar atap Kampung tampak segitiga di puncak, trapesium di atap bawah, dan persegi panjang pada dinding dan pintu.",
       hapus(0, ...idDari(TB), "tbm"),
       tambah("Contoh", ...rumahAdat("ak", 16, 40, 2.3)),
-      tambah("trapesium,", ...kartu("cb1", 112, 44, 176, 26, W.krem, ["contoh buku: trapesium 2"], 8.6)),
+      tambah("trapesium,", ...kartu("cb1", 112, 44, 176, 26, W.krem, ["contoh: trapesium 2"], 8.6)),
       tambah("segitiga", ...kartu("cb2", 112, 80, 176, 26, W.langit, ["puncak atap: segitiga"], 8.6)),
       tambah("trapesium@2", ...kartu("cb3", 112, 116, 176, 26, W.hijauMuda, ["atap bawah: trapesium"], 8.6)),
       tambah("persegi", ...kartu("cb4", 112, 152, 176, 26, W.pink, ["dinding dan pintu: persegi panjang"], 7.8)),
     ),
     k(
-      "Lalu diskusikan ada berapa jenis bangun datar yang diperoleh, presentasikan hasilnya di depan kelas dengan percaya diri, dan simpulkan apakah dekomposisi itu. Guru ikut merumuskan kesimpulan.",
+      "Lalu diskusikan ada berapa jenis bangun datar yang diperoleh, presentasikan hasilnya di depan kelas dengan percaya diri, dan simpulkan apakah dekomposisi itu. Kesimpulannya kita rumuskan bersama.",
       bersih(0),
       tambah(0, judul("Diskusi, presentasi, kesimpulan")),
       tambah("diskusikan", ...kartu("s41", 14, 36, 272, 30, W.langit, ["4. diskusi: ada berapa jenis bangun?"], 9)),
       tambah("presentasikan", ...kartu("s42", 14, 76, 272, 30, W.krem, ["5. presentasikan dengan percaya diri"], 9)),
       tambah("simpulkan", ...kartu("s43", 14, 116, 272, 30, W.hijauMuda, ["6. simpulkan: apa dekomposisi itu?"], 9)),
-      tambah("Guru", teks("s44", 150, 172, "guru dan siswa merumuskan kesimpulan", 8.4, W.coklat)),
+      tambah("bersama.", teks("s44", 150, 172, "kita rumuskan kesimpulan bersama", 8.4, W.coklat)),
     ),
   ],
 };
@@ -126,8 +126,8 @@ const WARNA_MINI: Record<string, string> = { segitiga: "#0066B3", jajargenjang: 
 const baris = (nama: string, r: number): Obj[] => [poli(`tl-m${r}`, 214, 34 + 22 * r + 4, MINI[nama], WARNA_MINI[nama], W.putih, { tebal: 0.6 })];
 export const ADEGAN_BERLATIH_1: AdeganStory = {
   id: "berlatih-1",
-  judul: "Ayo Berlatih 1: perahu layar",
-  sumber: "Buku Siswa hlm. 172–173; Panduan Guru hlm. 200–201",
+  judul: "Latihan 1: perahu layar",
+  sumber: "Materi: perahu layar",
   latar: "#EFF6FF",
   kutipan: [
     "Kerjakan soal berikut pada buku tulis kalian.",
@@ -140,21 +140,21 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo berlatih satu: lakukan dekomposisi berbagai bangun datar pada gambar perahu layar. Isi tabel: nomor, nama bangun datar, gambar, dan banyaknya.",
-      tambah(0, judul("Ayo Berlatih 1")),
+      "Latihan satu: lakukan dekomposisi berbagai bangun datar pada gambar perahu layar. Isi tabel: nomor, nama bangun datar, gambar, dan banyaknya.",
+      tambah(0, judul("Latihan 1")),
       tambah("perahu", ...perahu(8, 44)),
       tambah("tabel:", ...tabel("tl", 148, 34, [52, 46, 46], [["Nama", "Gambar", "Banyaknya"], ["Segitiga", "", "..."], ["Jajargenjang", "", "..."], ["Persegi", "", "..."]], 22, 6.8)),
     ),
     k(
-      "Kunci Panduan Guru: segitiga sebanyak lima, jajargenjang satu, dan persegi satu. Panduan Guru menyebutnya latihan tiga, padahal di Buku Siswa tidak bernomor.",
+      "Hasilnya: segitiga sebanyak lima, jajargenjang satu, dan persegi satu. Jadi perahu ini tersusun dari tiga jenis bangun.",
       ...["segitiga", "jajargenjang", "persegi"].flatMap((n, i) => baris(n, i + 1).map((o) => ({ at: "segitiga", tambah: o }))),
       ubah("lima,", { id: "tl-t12", isi: "5", warna: W.merah }),
       ubah("jajargenjang", { id: "tl-t22", isi: "1", warna: W.merah }),
       ubah("persegi", { id: "tl-t32", isi: "1", warna: W.merah }),
-      tambah("latihan", teks("tlc", 220, 140, "Latihan 3 (Panduan Guru)", 6.8, W.coklat)),
+      tambah("jenis", teks("tlc", 220, 140, "3 jenis bangun", 6.8, W.coklat)),
     ),
     k(
-      "Hitungan mandiri dari gambar cocok: lima segitiga, satu jajargenjang, dan satu persegi. Lima tambah satu tambah satu sama dengan tujuh keping, sama seperti tangram.",
+      "Kita cek dengan menghitung gambar: lima segitiga, satu jajargenjang, dan satu persegi. Lima tambah satu tambah satu sama dengan tujuh keping, sama seperti tangram.",
       hapus(0, "tlc"),
       sorotkan("segitiga", ...[0, 1, 5, 6, 3].map((i) => `ph-p${i}`)),
       sorotkan("jajargenjang", "ph-p2"),
@@ -171,8 +171,8 @@ const JENIS_PAVING = ["segitiga", "trapesium", "jajargenjang", "trapesium", "per
 const WARNA_JENIS: Record<string, string> = { segitiga: "#0066B3", trapesium: "#FAA61A", jajargenjang: "#ED008C", persegi: "#FFF200", "persegi panjang": "#8B5CF6" };
 export const ADEGAN_BERLATIH_2: AdeganStory = {
   id: "berlatih-2",
-  judul: "Ayo Berlatih 2: motif paving",
-  sumber: "Buku Siswa hlm. 173; Panduan Guru hlm. 201–202",
+  judul: "Latihan 2: motif paving",
+  sumber: "Materi: motif paving",
   latar: "#F7FEE7",
   kutipan: [
     "Lakukan dekomposisi berbagai macam bangun datar yang ada pada",
@@ -182,14 +182,14 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal dua: lakukan dekomposisi bangun datar pada gambar motif paving. Lingkari setiap bangun, dari sebelas pilihan, yang menyusun motif paving.",
-      tambah(0, judul("Ayo Berlatih 2: motif paving")),
+      "Latihan dua: lakukan dekomposisi bangun datar pada gambar motif paving. Lingkari setiap bangun, dari sebelas pilihan, yang menyusun motif paving.",
+      tambah(0, judul("Latihan 2: motif paving")),
       tambah("paving.", ...PAVING.map((p, i) => keping(`pv-p${i}`, 10, 40, p, SV))),
       tambah("sebelas", ...kartu("pv1", 196, 50, 92, 40, W.krem, ["11 pilihan bangun", "untuk dilingkari"], 7.6)),
     ),
     k(
-      "Panduan Guru hanya mengulang soal dan tidak memberi kunci. Hitungan mandiri dari gambar: motif tersusun dari sepuluh keping.",
-      tambah("hanya", ...kartu("pv2", 196, 100, 92, 40, W.langit, ["tanpa kunci di", "Panduan Guru"], 7.6)),
+      "Perhatikan gambar dengan teliti, jangan hanya menebak. Hitungan kita: motif tersusun dari sepuluh keping.",
+      tambah("hanya", ...kartu("pv2", 196, 100, 92, 40, W.langit, ["hitung dengan", "teliti"], 7.6)),
       ...PAVING.map((_, i) => ubah(i < 5 ? "sepuluh" : "keping.", { id: `pv-p${i}`, warna: WARNA_JENIS[JENIS_PAVING[i]] })),
       tambah("sepuluh", ...kartu("pv3", 196, 148, 92, 28, W.hijauMuda, ["10 keping"], 9.6)),
     ),
@@ -204,11 +204,11 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
       tambah("Empat@2", ...kartu("lg6", 186, 158, 104, 26, W.hijauMuda, ["4 + 3 + 1 + 1 + 1 = 10"], 7.8)),
     ),
     k(
-      "Jadi menurut jenisnya yang menyusun motif: persegi, persegi panjang, segitiga siku-siku, trapesium, dan jajargenjang. Lingkaran, segienam, segitiga sama sisi, dan belah ketupat bukan. Ini hitungan mandiri, bukan kunci buku.",
+      "Jadi menurut jenisnya yang menyusun motif: persegi, persegi panjang, segitiga siku-siku, trapesium, dan jajargenjang. Lingkaran, segienam, segitiga sama sisi, dan belah ketupat bukan. Ini hasil hitungan kita.",
       hapus(0, "lg1-k", "lg1-t0", "lg2-k", "lg2-t0", "lg3-k", "lg3-t0", "lg4-k", "lg4-t0", "lg5-k", "lg5-t0", "lg6-k", "lg6-t0"),
       tambah("persegi,", ...kartu("pl", 180, 34, 112, 82, W.hijauMuda, ["✔ persegi", "✔ persegi panjang", "✔ segitiga siku-siku", "✔ trapesium", "✔ jajargenjang"], 7.4)),
       tambah("Lingkaran,", ...kartu("pm", 180, 124, 112, 56, W.merahMuda, ["✖ lingkaran, segienam", "✖ segitiga sama sisi", "✖ belah ketupat"], 7.4)),
-      tambah("Ini", teks("pn", 100, 188, "bukan kunci buku: hitungan mandiri", 7.6, W.coklat)),
+      tambah("Ini", teks("pn", 100, 188, "hasil hitungan kita", 7.6, W.coklat)),
     ),
   ],
 };

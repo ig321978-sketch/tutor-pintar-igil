@@ -8,15 +8,15 @@ const WARNA_METODE = [W.hijauMuda, W.langit, W.krem, W.pink];
 const IKON_METODE = ["🔍", "🗂", "📌", "📊"];
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Bagaimana cara mengenali bangun datar lewat ciri-cirinya? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai bangun dari buku.";
+const SUARA_O1 = "Bagaimana cara mengenali bangun datar lewat ciri-cirinya? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai bangun-bangun yang kita pelajari.";
 const SUARA_O2 = "Empat metode itu: van Hiele Level nol dan satu, Attribute Sort, Geoboard, dan Property Matrix.";
 const SUARA_O3 = "Semuanya menjawab pertanyaan yang sama dengan cara berbeda: mengamati bentuk lalu ciri, memilah dengan pertanyaan ya atau tidak, membuat bangun dengan karet, dan membandingkan dalam tabel.";
-const SUARA_O4 = "Bangunnya dari buku: segitiga menurut sisinya dan sudutnya, lalu jajargenjang, persegi panjang, belah ketupat, persegi, layang-layang, trapesium, dan segiempat sembarang.";
+const SUARA_O4 = "Bangunnya yang sudah kita pelajari: segitiga menurut sisinya dan sudutnya, lalu jajargenjang, persegi panjang, belah ketupat, persegi, layang-layang, trapesium, dan segiempat sembarang.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk ciri bangun datar",
-  sumber: "Metode luar: pembuka; bangun Buku Siswa hlm. 147–165",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -44,7 +44,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
     k(
       SUARA_O4,
       bersih(0),
-      tambah(0, judul("Bangun dari buku")),
+      tambah(0, judul("Bangun yang kita pelajari")),
       tambah("sisinya", ...kartu("a1", 14, 34, 272, 30, W.hijauMuda, ["segitiga menurut sisinya"], 9)),
       tambah("sudutnya,", ...kartu("a2", 14, 72, 272, 30, W.langit, ["segitiga menurut sudutnya"], 9)),
       tambah("jajargenjang,", ...kartu("a3", 14, 110, 272, 30, W.krem, ["jajargenjang, persegi panjang, belah ketupat, persegi"], 8.2)),
@@ -115,7 +115,7 @@ function sikuEmpat1(id: string, x: number, y: number, w: number, h: number) {
 }
 
 /* ------------------------------ 3. van Hiele Level 0-1: penerapan pada persegi panjang ABCD (Buku Siswa hlm. 159) ------------------------------ */
-const SUARA_W1 = "Terapkan pada persegi panjang ABCD di Buku Siswa. Tahap visual: anak melihat bangunnya seperti daun pintu dan menyebutnya persegi panjang.";
+const SUARA_W1 = "Terapkan pada persegi panjang ABCD. Tahap visual: anak melihat bangunnya seperti daun pintu dan menyebutnya persegi panjang.";
 const SUARA_W2 = "Tahap analisis: anak menghitung. Ada empat sisi dan empat titik sudut. AB sejajar CD, dan BC sejajar AD, jadi ada dua pasang sisi sejajar.";
 const SUARA_W3 = "Anak juga memeriksa sudutnya dengan busur: sudut A, B, C, dan D sama besar, dan semuanya siku-siku, yaitu sembilan puluh derajat.";
 const SUARA_W4 = "Naik lagi: anak membandingkan dengan jajargenjang. Jajargenjang juga punya dua pasang sisi sejajar, tetapi sudutnya tidak siku-siku. Ciri tambahan itu yang membedakan persegi panjang.";
@@ -123,7 +123,7 @@ const SUARA_W4 = "Naik lagi: anak membandingkan dengan jajargenjang. Jajargenjan
 export const ADEGAN_LUAR_VH_TERAPAN: AdeganStory = {
   id: "luar-vh-terapan",
   judul: "van Hiele Level 0-1 pada persegi panjang ABCD",
-  sumber: "Metode luar: van Hiele Level 0-1; Buku Siswa hlm. 159",
+  sumber: "Metode luar: van Hiele Level 0-1",
   latar: "#ECFDF5",
   ketukan: [
     k(
@@ -212,7 +212,7 @@ export const TUJUH_SEGIEMPAT: NamaBangun[] = ["jajar", "perpanjang", "belah", "p
 const SKALA7 = [0.5, 0.5, 0.55, 0.55, 0.5, 0.5, 0.5];
 const POSISI7: [number, number][] = [[10, 54], [52, 56], [94, 52], [140, 54], [176, 50], [208, 56], [252, 54]];
 const bangun7 = (id: string) => TUJUH_SEGIEMPAT.map((n, i) => bentuk(`${id}${i}`, POSISI7[i][0], POSISI7[i][1], n, [W.pink, W.langit, W.krem, W.hijauMuda, W.jingga, W.lavender, W.merahMuda][i], SKALA7[i]));
-const SUARA_Q1 = "Terapkan pada tujuh segiempat dari buku. Pertanyaan pertama: apakah keempat sisinya sama panjang?";
+const SUARA_Q1 = "Terapkan pada tujuh segiempat yang tadi kita pelajari. Pertanyaan pertama: apakah keempat sisinya sama panjang?";
 const SUARA_Q2 = "Jawaban ya hanya untuk belah ketupat dan persegi. Lima bangun lainnya masuk ke kotak tidak.";
 const SUARA_Q3 = "Pertanyaan kedua untuk kotak ya: apakah keempat sudutnya siku-siku? Persegi ya, belah ketupat tidak.";
 const SUARA_Q4 = "Dari dua pertanyaan, persegi punya dua ciri: sisi sama panjang dan sudut siku-siku. Belah ketupat hanya punya yang pertama, jadi persegi lebih khusus.";
@@ -220,12 +220,12 @@ const SUARA_Q4 = "Dari dua pertanyaan, persegi punya dua ciri: sisi sama panjang
 export const ADEGAN_LUAR_PILAH_TERAPAN: AdeganStory = {
   id: "luar-pilah-terapan",
   judul: "Attribute Sort pada tujuh segiempat",
-  sumber: "Metode luar: Attribute Sort; Buku Siswa hlm. 163–164",
+  sumber: "Metode luar: Attribute Sort",
   latar: "#EEF2FF",
   ketukan: [
     k(
       SUARA_Q1,
-      tambah(0, judul("Tujuh segiempat dari buku")),
+      tambah(0, judul("Tujuh segiempat")),
       tambah("segiempat", ...bangun7("s")),
       tambah("Pertanyaan", ...kartu("qa", 30, 120, 240, 40, W.emas, ["apakah keempat sisinya", "sama panjang?"], 9)),
     ),

@@ -143,12 +143,12 @@ export const ADEGAN_PETA: AdeganStory = {
 const SUARA_S1 = "Banyak benda di sekitar kita berbentuk bangun datar. Di antaranya ada yang termasuk segi banyak, dan ada juga yang bukan segi banyak.";
 const SUARA_S2 = "Contoh segi banyak: yang pertama punya tiga sisi berbentuk garis lurus, yang kedua punya empat sisi berbentuk garis lurus, dan antarsisinya membentuk kurva tertutup.";
 const SUARA_S3 = "Contoh yang bukan segi banyak: ada yang punya satu sisi tidak lurus tetapi kurvanya tertutup, dan ada yang kurvanya terbuka.";
-const SUARA_S4 = "Kesimpulan buku: segi banyak adalah suatu kurva tertutup yang dibatasi paling sedikit tiga buah ruas garis.";
+const SUARA_S4 = "Kesimpulannya: segi banyak adalah suatu kurva tertutup yang dibatasi paling sedikit tiga buah ruas garis.";
 
 export const ADEGAN_SEGIBANYAK: AdeganStory = {
   id: "segi-banyak",
   judul: "Segi banyak: kurva tertutup dari ruas garis",
-  sumber: "Buku Siswa hlm. 142–143",
+  sumber: "Materi: segi banyak",
   latar: "#FEFCE8",
   kutipan: [
     "A. Ciri-Ciri Bangun Datar",
@@ -211,15 +211,15 @@ export const SEGI_BANYAK = [
   { nama: "Segienam", sudut: 6, sisi: 6 },
 ];
 const SUARA_A1 = "Aktivitas satu, jenis segi banyak. Alat dan bahannya: sedotan atau lidi, gunting, lem, dan kertas.";
-const SUARA_A2 = "Langkah kerja: potong sedotan menjadi tiga bagian, hubungkan ujung-ujungnya sambung-menyambung, lalu tempel di kertas. Bangun apa yang terbentuk? Gambarkan di buku.";
+const SUARA_A2 = "Langkah kerja: gunting sedotan menjadi tiga bagian, hubungkan ujung-ujungnya sambung-menyambung, lalu tempel di kertas. Bangun apa yang terbentuk? Gambarkan di kertasmu.";
 const SUARA_A3 = "Lakukan hal serupa dengan memotong sedotan menjadi empat, lima, dan enam bagian. Hasilnya segitiga, segiempat, segilima, dan segienam.";
-const SUARA_A4 = "Tabel hasilnya menurut kunci panduan guru: segitiga punya tiga sudut dan tiga sisi, segiempat empat dan empat, segilima lima dan lima, segienam enam dan enam.";
+const SUARA_A4 = "Tabel hasilnya: segitiga punya tiga sudut dan tiga sisi, segiempat empat dan empat, segilima lima dan lima, segienam enam dan enam.";
 const SUARA_A5 = "Pemberian nama pada segi banyak disesuaikan dengan banyaknya sisi. Pada tabel itu, banyak sudut selalu sama dengan banyak sisi.";
 
 export const ADEGAN_AKTIVITAS1: AdeganStory = {
   id: "aktivitas-satu",
   judul: "Aktivitas 1: jenis segi banyak",
-  sumber: "Buku Siswa hlm. 143–144; Panduan Guru hlm. 180–181",
+  sumber: "Materi: aktivitas jenis segi banyak",
   latar: "#FFF7ED",
   kutipan: [
     "Aktivitas 1. Jenis segi banyak",
@@ -249,7 +249,7 @@ export const ADEGAN_AKTIVITAS1: AdeganStory = {
       SUARA_A2,
       bersih(0),
       tambah(0, judul("Langkah kerja")),
-      tambah("tiga", garis("ts1", 30, 70, 60, 0, W.merah, 4), garis("ts2", 30, 90, 60, 0, W.hijau, 4), garis("ts3", 30, 110, 60, 0, W.biru, 4), teks("tl", 60, 134, "3 potong sedotan", 8.6, W.biru)),
+      tambah("tiga", garis("ts1", 30, 70, 60, 0, W.merah, 4), garis("ts2", 30, 90, 60, 0, W.hijau, 4), garis("ts3", 30, 110, 60, 0, W.biru, 4), teks("tl", 60, 134, "3 bagian sedotan", 8.6, W.biru)),
       tambah("hubungkan", panah("tp", 112, 90, 40, 0, W.coklat, 2)),
       tambah("sambung-menyambung,", bentuk("tg", 176, 54, "sama-sisi", "none", 1.2, { tebal: 4 })),
       tambah("tempel", ...kartu("tk", 160, 124, 100, 28, W.langit, ["tempel di kertas"], 8.2)),

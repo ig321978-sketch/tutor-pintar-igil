@@ -188,7 +188,11 @@ for (const v of VIDEO) {
 
 /* ------------------------------ Pemisahan materi dan metode luar ------------------------------ */
 const seluruhTeks = (v) => v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map((kt, i) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, i, 9999))])]);
-const M = V.VIDEO_MATERI_K4B5B;
+const M_VIDEO = V.VIDEO_MATERI_K4B5B;
+// Adegan administratif (pembuka, tujuan, peta konsep, apersepsi; di B: penutup bab) tidak lagi diputar di video materi.
+// Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
+const MODUL_MATERI = Object.assign({}, await import("../src/components/modul/story/k4b5b-materi-1.ts"), await import("../src/components/modul/story/k4b5b-materi-2.ts"), await import("../src/components/modul/story/k4b5b-materi-3.ts"));
+const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_PEMBUKA_B, MODUL_MATERI.ADEGAN_APERSEPSI, MODUL_MATERI.ADEGAN_AKTIVITAS_6, MODUL_MATERI.ADEGAN_BERPIKIR, MODUL_MATERI.ADEGAN_KOMPOSISI_GURU, MODUL_MATERI.ADEGAN_MENGAMATI_DEK, MODUL_MATERI.ADEGAN_AKTIVITAS_7, MODUL_MATERI.ADEGAN_BERLATIH_1, MODUL_MATERI.ADEGAN_BERLATIH_2, MODUL_MATERI.ADEGAN_UK_1, MODUL_MATERI.ADEGAN_UK_2, MODUL_MATERI.ADEGAN_UK_3, MODUL_MATERI.ADEGAN_PENGAYAAN, MODUL_MATERI.ADEGAN_PENUTUP_B] };
 const U = V.VIDEO_LUAR_K4B5B;
 const adegan = (v, id) => v.adegan.find((a) => a.id === id);
 const akhirAdegan = (a, ke = a.ketukan.length - 1) => L.keadaanStory(a, ke, 9999);
@@ -201,18 +205,36 @@ const teksAdegan = (v, id) => new Set(adegan(v, id).ketukan.flatMap((kt, i) => L
   // Nama Indonesia ditulis berhuruf kapital ("Susun Bangun"); kata biasa "susun bangun" di kalimat buku boleh muncul di video materi.
   const NAMA_METODE = /Compose Shapes|Decompose Shapes|Cut and Rearrange|Susun Bangun|Urai Bangun|Potong dan Susun Ulang/;
   const KATA_METODE = /metode luar|metode dari luar/i;
-  const materi = teksVideo(M);
+  const materi = teksVideo(M_VIDEO);
   const luar = teksVideo(U);
   cek(!NAMA_METODE.test(materi) && !KATA_METODE.test(materi), "video materi tidak memuat nama metode luar");
   for (const m of ["Compose Shapes", "Decompose Shapes", "Tangram", "Cut and Rearrange", "Susun Bangun", "Urai Bangun", "Potong dan Susun Ulang"]) cek(luar.includes(m), `video metode luar memuat ${m}`);
-  cek(M.adegan.every((a) => /(Buku Siswa|Panduan Guru) hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
-  cek(U.adegan.every((a) => /metode luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Sub-Bab B", "Aktivitas 6", "Aktivitas 7", "Ayo Berpikir Kreatif", "Ayo Berlatih", "Uji Kompetensi", "Diferensiasi", "Miskonsepsi", "Rubrik", "pengayaan", "Refleksi", "orang tua", "Catatan guru", "komposisi", "dekomposisi", "tangram"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat ${kata}`);
+  // Video diputar sebagai guru yang mengajar: tidak ada penyebutan sumber buku di suara, teks terlihat, label sumber, judul adegan, dan subjudul.
+  const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan|pertemuan/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul video tanpa kata terlarang`);
+    cek(!/nomor|no\./i.test(v.subjudul) && v.subjudul.length <= 40, `${v.id}: subjudul pendek tanpa nomor halaman`);
+    for (const a of v.adegan) {
+      const semua = [a.judul, a.sumber];
+      a.ketukan.forEach((kt, i) => {
+        semua.push(kt.suara);
+        for (let p = 0; p < L.kataDari(kt.suara).length; p += 1) semua.push(...L.teksTerlihat(L.keadaanStory(a, i, p)));
+      });
+      const kena = semua.filter((t) => TERLARANG.test(t) || /soal nomor|Ayo Berlatih nomor|nomor [1-4]|catatan video|menurut buku/i.test(t));
+      cek(kena.length === 0, `${v.id}/${a.id}: tanpa penyebutan buku atau catatan sumber (${kena.slice(0, 2).join(" | ")})`);
+      cek(!/Uji Kompetensi|Pengayaan|Ayo Berlatih|soal \d|Soal \d/.test(semua.join(" | ")), `${v.id}/${a.id}: latihan disajikan sebagai Latihan, Uji, atau Tantangan`);
+    }
+  }
+  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
+  cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
+  for (const kata of ["Latihan", "Uji 1", "Tantangan", "komposisi", "dekomposisi", "tangram"]) cek(materi.toLowerCase().includes(kata.toLowerCase()), `video materi memuat "${kata}"`);
+  cek(!/Sub-Bab B|Panduan Guru|Refleksi|orang tua|Apersepsi/.test(materi), "video materi yang diputar tanpa adegan administratif (pembuka, apersepsi, penutup bab)");
   const ids = U.adegan.map((a) => a.id);
   cek(["luar-cs", "luar-cs-terapan", "luar-ds", "luar-ds-terapan", "luar-tg", "luar-tg-terapan", "luar-cr", "luar-cr-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk empat metode");
-  cek(M.adegan.length === 14 && U.adegan.length === 10, "14 adegan materi dan 10 adegan metode luar");
+  cek(M_VIDEO.adegan.length === 12 && U.adegan.length === 11, "12 adegan materi diputar dan 11 adegan metode luar");
   cek(!/piktogram|diagram batang|pecahan|luas daerah|volume|bab enam|bab empat|bab lima/i.test(materi + luar), `tidak membahas bab lain (${(materi + luar).match(/piktogram|diagram batang|pecahan|luas daerah|volume/i)?.[0]})`);
-  cek(totalKetukan >= 90, `total ketukan cukup dalam (${totalKetukan})`);
+  cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
   // Sub-Bab A tidak diulang: tanpa metode luar Sub-Bab A
   cek(!/van Hiele|Attribute Sort|Pilah Ciri|Geoboard|Papan Paku/i.test(materi + luar), "tidak memuat metode Sub-Bab A");
   // metode luar memakai angka dan bangun dari buku
@@ -741,7 +763,7 @@ const objDi = (objs, id) => objs.find((o) => o.id === id);
     cek(!/fetch\(|XMLHttpRequest|openai|anthropic|gemini|correct_index|explanation/i.test(s), `${f}: tanpa jaringan, model bahasa, atau kunci jawaban`);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|k4b5b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b5b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k4b5b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k4b5b sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

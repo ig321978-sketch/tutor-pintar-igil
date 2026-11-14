@@ -8,11 +8,11 @@ import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k4b5b-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk menyusun dan mengurai bangun datar",
-  sumber: "Metode luar: pembuka; bangun dan angka Buku Siswa hlm. 166–173",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana belajar menyusun dan mengurai bangun datar dengan benar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai bangun dan angka dari buku.",
+      "Bagaimana belajar menyusun dan mengurai bangun datar dengan benar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai bangun dan angka yang sudah kita kenal.",
       tambah(0, judul("Empat metode dari luar")),
       tambah("berbagai", emo("gl", 150, 100, "🌍", 56)),
       tambah("empat", ...kartu("pa", 30, 128, 240, 34, W.krem, ["menyusun dan mengurai bangun datar"], 9.2)),
@@ -100,18 +100,18 @@ const CT = tabel("ct", 8, 40, [52, 44, 60], [["Langkah", "Keping", "Terpakai"], 
 const selTabel = (r: number, c: number): Obj[] => CT.filter((o) => o.id === `ct-s${r}${c}` || o.id === `ct-t${r}${c}`);
 export const ADEGAN_LUAR_CS_TERAPAN: AdeganStory = {
   id: "luar-cs-terapan",
-  judul: "Compose Shapes diterapkan pada Aktivitas 6",
-  sumber: "Metode luar: Compose Shapes pada Aktivitas 6, Buku Siswa hlm. 167–168",
+  judul: "Compose Shapes diterapkan pada tangram",
+  sumber: "Metode luar: Compose Shapes pada tangram",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapkan pada Aktivitas enam. Tujuh keping tangram disusun bertahap: langkah tiga memakai dua keping, langkah empat dua keping, langkah lima dua keping, dan langkah enam satu keping.",
+      "Terapkan pada kegiatan menyusun tangram tadi. Tujuh keping tangram disusun bertahap: langkah tiga memakai dua keping, langkah empat dua keping, langkah lima dua keping, dan langkah enam satu keping.",
       tambah(0, judul("Menyusun bertahap")),
       tambah("Terapkan", ...selTabel(0, 0), ...selTabel(0, 1)),
       tambah("tiga", ...selTabel(1, 0), ...selTabel(1, 1), ...LANGKAH[0].pecahan.map((n) => tangram("ct-g", n, TX, TY, TS))),
       tambah("empat", ...selTabel(2, 0), ...selTabel(2, 1), ...LANGKAH[1].pecahan.map((n) => tangram("ct-g", n, TX, TY, TS))),
       tambah("lima", ...selTabel(3, 0), ...selTabel(3, 1), ...LANGKAH[2].pecahan.map((n) => tangram("ct-g", n, TX, TY, TS))),
-      tambah("enam@2", ...selTabel(4, 0), ...selTabel(4, 1), ...LANGKAH[3].pecahan.map((n) => tangram("ct-g", n, TX, TY, TS))),
+      tambah("enam", ...selTabel(4, 0), ...selTabel(4, 1), ...LANGKAH[3].pecahan.map((n) => tangram("ct-g", n, TX, TY, TS))),
     ),
     k(
       "Jumlah keping yang sudah dipakai: dua, lalu empat, enam, dan akhirnya tujuh. Dua tambah dua tambah dua tambah satu sama dengan tujuh.",
@@ -129,8 +129,8 @@ export const ADEGAN_LUAR_CS_TERAPAN: AdeganStory = {
       tambah("disusun,", ...kartu("ct-g2", 8, 118, 164, 28, W.pink, ["setelah disusun: 4 sisi"], 9)),
     ),
     k(
-      "Catatan: kata langkah pertama dan langkah ketiga di buku bergantian. Gunakan nomor keping, bukan nomor langkah, agar tidak keliru.",
-      tambah("Catatan:", ...kartu("ct-n", 8, 154, 164, 26, W.merahMuda, ["pakai nomor keping, bukan langkah"], 7.6)),
+      "Ingat: pakai nomor keping, bukan nomor langkah, agar tidak keliru saat menyusun.",
+      tambah("Ingat:", ...kartu("ct-n", 8, 154, 164, 26, W.merahMuda, ["pakai nomor keping, bukan langkah"], 7.6)),
     ),
   ],
 };
@@ -170,12 +170,12 @@ export const ADEGAN_LUAR_DS: AdeganStory = {
       tambah("sama-sama", teks("dc3", 150, 192, "sama-sama 2 bagian", 8.4, W.coklat)),
     ),
     k(
-      "Cara ini cocok saat bangunnya rumit, seperti rumah bercerobong pada soal pengayaan. Garis bantu membuatnya mudah dihitung bagian demi bagian.",
+      "Cara ini cocok saat bangunnya rumit, seperti rumah bercerobong pada Tantangan lima. Garis bantu membuatnya mudah dihitung bagian demi bagian.",
       bersih(0),
       tambah(0, judul("Urai bangun yang rumit")),
       tambah("rumit,", poli("du-r", 16, 36, skala(RUMAH_URAI, 0.62), "#E5E7EB", W.hitam, { tebal: 1.4 })),
       tambah("Garis", garis("du-g", 48, 101, 95, 0, W.merah, 2, { putus: true })),
-      tambah("bercerobong", ...kartu("du1", 170, 44, 118, 30, W.langit, ["rumah bercerobong", "(pengayaan 5)"], 7.6)),
+      tambah("bercerobong", ...kartu("du1", 170, 44, 118, 30, W.langit, ["rumah bercerobong", "(Tantangan 5)"], 7.6)),
       tambah("mudah", ...kartu("du2", 170, 90, 118, 30, W.hijauMuda, ["bagian demi bagian"], 8)),
     ),
   ],
@@ -196,11 +196,11 @@ const selTu = (r: number): Obj[] => TT.filter((o) => new RegExp(`^tu-[st]${r}\\d
 export const ADEGAN_LUAR_DS_TERAPAN: AdeganStory = {
   id: "luar-ds-terapan",
   judul: "Decompose Shapes diterapkan pada motif paving",
-  sumber: "Metode luar: Decompose Shapes pada motif paving, Buku Siswa hlm. 173",
+  sumber: "Metode luar: Decompose Shapes pada paving",
   latar: "#F0F9FF",
   ketukan: [
     k(
-      "Terapkan pada motif paving di Ayo Berlatih dua. Motif ini sudah diurai oleh garis putih menjadi sepuluh keping.",
+      "Terapkan pada motif paving di Latihan dua. Motif ini sudah diurai oleh garis putih menjadi sepuluh keping.",
       tambah(0, judul("Urai motif paving")),
       tambah("paving", ...PAVING.map((p, i) => keping(`dp-p${i}`, 8, 40, p, 0.95))),
       tambah("sepuluh", ...kartu("dp1", 152, 60, 136, 40, W.hijauMuda, ["10 keping", "dari garis putih"], 8.8)),
@@ -223,9 +223,9 @@ export const ADEGAN_LUAR_DS_TERAPAN: AdeganStory = {
       tambah("gambar.", teks("dp3", 80, 176, "10 keping terhitung semua", 8.4, W.coklat)),
     ),
     k(
-      "Catatan: Panduan Guru tidak memberi kunci soal paving. Cocokkan hitunganmu dengan teman, lalu lingkari bangun yang menyusun motif.",
+      "Terakhir: cocokkan hitunganmu dengan teman, lalu lingkari bangun yang menyusun motif paving.",
       hapus(0, ...TT.map((o) => o.id), "dp2-k", "dp2-t0", "dp3"),
-      tambah("Catatan:", ...kartu("dp4", 152, 44, 136, 34, W.merahMuda, ["tanpa kunci", "di Panduan Guru"], 8)),
+      tambah("Terakhir:", ...kartu("dp4", 152, 44, 136, 34, W.merahMuda, ["periksa lagi", "hitunganmu"], 8)),
       tambah("Cocokkan", ...kartu("dp5", 152, 90, 136, 34, W.krem, ["cocokkan hitungan", "dengan teman"], 8)),
       tambah("lingkari", ...kartu("dp6", 152, 136, 136, 34, W.hijauMuda, ["lalu lingkari bangun", "penyusun motif"], 8)),
     ),

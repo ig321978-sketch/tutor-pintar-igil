@@ -6,12 +6,12 @@ import { bersih, idx, k, sorotkan, tambah } from "./k4b5a-bantu";
 const SUARA_B1 = "Berdasarkan besar sudut dan panjang sisinya, segi banyak dibedakan menjadi dua jenis: segi banyak beraturan dan segi banyak tak beraturan.";
 const SUARA_B2 = "Segi banyak beraturan: besar sudut-sudutnya sama, panjang sisi-sisinya sama, serta simetri lipat dan simetri putarnya sama dengan jumlah sudutnya.";
 const SUARA_B2B = "Contohnya segitiga, segiempat, segilima, segienam, dan segidelapan beraturan.";
-const SUARA_B3 = "Segi banyak tak beraturan: besar sudutnya tidak sama, panjang sisinya tidak sama, dan simetri lipat serta simetri putarnya tidak sama dengan jumlah sudutnya. Contohnya bangun-bangun lain pada gambar buku.";
+const SUARA_B3 = "Segi banyak tak beraturan: besar sudutnya tidak sama, panjang sisinya tidak sama, dan simetri lipat serta simetri putarnya tidak sama dengan jumlah sudutnya. Contohnya bangun-bangun lain seperti yang tampak di gambar.";
 
 export const ADEGAN_BERATURAN: AdeganStory = {
   id: "beraturan",
   judul: "Segi banyak beraturan dan tak beraturan",
-  sumber: "Buku Siswa hlm. 145–146",
+  sumber: "Materi: segi banyak beraturan",
   latar: "#F0FDF4",
   kutipan: [
     "A. Jenis Bangun Segi Banyak",
@@ -63,22 +63,22 @@ export const ADEGAN_BERATURAN: AdeganStory = {
       tambah("Contohnya", bentuk("u1", 8, 118, "siku", W.hijauMuda, 0.8)),
       tambah("bangun-bangun", bentuk("u2", 62, 122, "perpanjang", W.langit, 0.8), bentuk("u3", 114, 122, "jajar", W.pink, 0.7)),
       tambah("lain", bentuk("u4", 168, 122, "trapesium", W.krem, 0.8), bentuk("u5", 236, 116, "tak-beraturan", W.jingga)),
-      tambah("buku.", teks("ub", 150, 176, "contoh di gambar buku", 8.6, W.coklat)),
+      tambah("gambar.", teks("ub", 150, 176, "contoh bangun tak beraturan", 8.6, W.coklat)),
     ),
   ],
 };
 
 /* ------------------------------ 6. Ayo Berlatih segi banyak (Buku Siswa hlm. 146–147; Panduan Guru hlm. 182) ------------------------------ */
-const SUARA_L1 = "Ayo Berlatih satu: pilih bangun yang bukan segi banyak. Pilihannya belah ketupat, lingkaran, segitiga, dan trapesium. Kuncinya b, lingkaran, karena tidak dibatasi ruas garis.";
-const SUARA_L2 = "Nomor dua: persegi, persegi panjang, segitiga siku-siku, dan segitiga sama sisi. Yang beraturan adalah persegi dan segitiga sama sisi, nomor satu dan empat, pilihan b.";
-const SUARA_L3 = "Nomor tiga: segitiga siku-siku, belah ketupat, trapesium, dan persegi. Kunci buku untuk bangun yang tak beraturan adalah a, yaitu satu dan tiga.";
-const SUARA_L4 = "Catatan guru: belah ketupat sisinya sama, tetapi sudutnya tidak, jadi ia juga tak beraturan. Maka nomor dua dan tiga juga benar, sehingga pilihan c ikut benar.";
-const SUARA_L5 = "Nomor empat dan lima meminta menggambar tiga segi banyak beraturan dan tiga yang tak beraturan. Kunci panduan guru mengosongkannya, jadi bebas selama ciri bangunnya benar.";
+const SUARA_L1 = "Latihan satu: pilih bangun yang bukan segi banyak. Pilihannya belah ketupat, lingkaran, segitiga, dan trapesium. Jawabannya b, lingkaran, karena tidak dibatasi ruas garis.";
+const SUARA_L2 = "Latihan dua: persegi, persegi panjang, segitiga siku-siku, dan segitiga sama sisi. Yang beraturan adalah persegi dan segitiga sama sisi, bangun satu dan empat, pilihan b.";
+const SUARA_L3 = "Latihan tiga: segitiga siku-siku, belah ketupat, trapesium, dan persegi. Jawabannya a, yaitu satu dan tiga, untuk bangun yang tak beraturan.";
+const SUARA_L4 = "Hati-hati: belah ketupat sisinya sama, tetapi sudutnya tidak, jadi ia juga tak beraturan. Maka bangun dua dan tiga juga benar, sehingga pilihan c ikut benar.";
+const SUARA_L5 = "Latihan empat dan lima: gambarlah tiga segi banyak beraturan dan tiga yang tak beraturan. Jawabannya bebas, selama ciri bangunnya benar.";
 
 export const ADEGAN_BERLATIH_BANYAK: AdeganStory = {
   id: "berlatih-segibanyak",
-  judul: "Ayo Berlatih: segi banyak",
-  sumber: "Buku Siswa hlm. 146–147; Panduan Guru hlm. 182",
+  judul: "Latihan: segi banyak",
+  sumber: "Materi: latihan segi banyak",
   latar: "#FFF7ED",
   kutipan: [
     "Ayo Berlatih",
@@ -100,41 +100,41 @@ export const ADEGAN_BERLATIH_BANYAK: AdeganStory = {
   ketukan: [
     k(
       SUARA_L1,
-      tambah(0, judul("Ayo Berlatih 1")),
+      tambah(0, judul("Latihan 1")),
       tambah("pilih", ...kartu("q", 10, 28, 280, 26, W.krem, ["mana yang bukan segi banyak?"], 9)),
       tambah("belah", bentuk("oa", 14, 70, "belah", W.langit, 0.9), teks("la", 36, 124, "a", 11, W.biru)),
       tambah(idx(SUARA_L1, "lingkaran"), bulat("ob", 112, 90, 18, W.pink, W.biru), teks("lb", 112, 124, "b", 11, W.biru)),
       tambah(idx(SUARA_L1, "segitiga"), bentuk("oc", 166, 70, "lancip", W.hijauMuda, 0.8), teks("lc", 190, 124, "c", 11, W.biru)),
       tambah(idx(SUARA_L1, "trapesium"), bentuk("od", 236, 74, "trapesium", W.krem, 0.9), teks("ld", 260, 124, "d", 11, W.biru)),
-      tambah("Kuncinya", ...kartu("kn", 40, 146, 220, 28, W.emas, ["kunci: b, lingkaran"], 9.4)),
+      tambah("Jawabannya", ...kartu("kn", 40, 146, 220, 28, W.emas, ["jawaban: b, lingkaran"], 9.4)),
       sorotkan(idx(SUARA_L1, "lingkaran", 2), "ob", "lb"),
     ),
     k(
       SUARA_L2,
       bersih(0),
-      tambah(0, judul("Ayo Berlatih 2")),
+      tambah(0, judul("Latihan 2")),
       tambah(idx(SUARA_L2, "persegi"), bentuk("p1", 20, 48, "persegi", W.hijauMuda), teks("m1", 40, 108, "1", 11, W.biru)),
       tambah(idx(SUARA_L2, "panjang"), bentuk("p2", 82, 54, "perpanjang", W.langit, 0.9), teks("m2", 107, 108, "2", 11, W.biru)),
       tambah(idx(SUARA_L2, "siku-siku"), bentuk("p3", 156, 48, "siku", W.krem, 0.8), teks("m3", 178, 108, "3", 11, W.biru)),
       tambah(idx(SUARA_L2, "sisi"), bentuk("p4", 222, 48, "sama-sisi", W.pink, 0.9), teks("m4", 245, 108, "4", 11, W.biru)),
       sorotkan(idx(SUARA_L2, "persegi", 3), "p1@persegi"),
       sorotkan(idx(SUARA_L2, "sisi", 2), "p4@sama-sisi"),
-      tambah("pilihan", ...kartu("kn", 40, 140, 220, 30, W.emas, ["kunci: b (1 dan 4)"], 9.4)),
+      tambah("pilihan", ...kartu("kn", 40, 140, 220, 30, W.emas, ["jawaban: b (1 dan 4)"], 9.4)),
     ),
     k(
       SUARA_L3,
       bersih(0),
-      tambah(0, judul("Ayo Berlatih 3")),
+      tambah(0, judul("Latihan 3")),
       tambah("siku-siku,", bentuk("r1", 20, 48, "siku", W.hijauMuda, 0.9), teks("n1", 42, 112, "1", 11, W.biru)),
       tambah("belah", bentuk("r2", 94, 50, "belah", W.langit, 0.9), teks("n2", 116, 112, "2", 11, W.biru)),
       tambah("trapesium,", bentuk("r3", 152, 54, "trapesium", W.krem, 0.9), teks("n3", 176, 112, "3", 11, W.biru)),
       tambah("persegi.", bentuk("r4", 226, 48, "persegi", W.pink), teks("n4", 246, 112, "4", 11, W.biru)),
-      tambah("Kunci", ...kartu("kn", 40, 138, 220, 30, W.emas, ["kunci buku: a (1 dan 3)"], 9.4)),
+      tambah("Jawabannya", ...kartu("kn", 40, 138, 220, 30, W.emas, ["jawaban: a (1 dan 3)"], 9.4)),
     ),
     k(
       SUARA_L4,
       bersih(0),
-      tambah(0, judul("Catatan guru: nomor 3")),
+      tambah(0, judul("Hati-hati: belah ketupat")),
       tambah(0, bentuk("bk", 30, 44, "belah", W.langit, 1.6)),
       tambah("sisinya", ...[0, 1, 2, 3].map((i) => sisiGaris(`bg${i}`, 30, 44, "belah", i, W.merah, 1.6, 3))),
       tambah("sudutnya", teks("ta", 74, 38, "tumpul", 8.4, W.biru), teks("tl", 148, 92, "lancip", 8.4, W.biru)),
@@ -144,20 +144,20 @@ export const ADEGAN_BERLATIH_BANYAK: AdeganStory = {
     k(
       SUARA_L5,
       bersih(0),
-      tambah(0, judul("Ayo Berlatih 4 dan 5")),
+      tambah(0, judul("Latihan 4 dan 5")),
       tambah("beraturan", teks("g1", 150, 38, "beraturan", 9, W.hijau)),
       tambah("tiga", ...[0, 1, 2].map((i) => kotak(`bx${i}`, 10 + i * 100, 46, 88, 50, W.putih, W.biru, { rx: 4 }))),
       tambah("tak", teks("g2", 150, 114, "tak beraturan", 9, W.merah), ...[0, 1, 2].map((i) => kotak(`by${i}`, 10 + i * 100, 122, 88, 50, W.putih, W.biru, { rx: 4 }))),
-      tambah("mengosongkannya,", bentuk("e1", 28, 54, "sama-sisi", W.hijauMuda, 0.8), bentuk("e2", 134, 56, "persegi", W.langit, 0.8), bentuk("e3", 228, 52, "segilima", W.krem, 0.7), bentuk("f1", 24, 130, "siku", W.hijauMuda, 0.7), bentuk("f2", 124, 134, "jajar", W.pink, 0.7), bentuk("f3", 232, 130, "tak-beraturan", W.jingga, 0.9)),
-      tambah("Kunci", teks("g3", 150, 192, "kunci dikosongkan: bebas", 8.6, W.coklat)),
+      tambah("Jawabannya", bentuk("e1", 28, 54, "sama-sisi", W.hijauMuda, 0.8), bentuk("e2", 134, 56, "persegi", W.langit, 0.8), bentuk("e3", 228, 52, "segilima", W.krem, 0.7), bentuk("f1", 24, 130, "siku", W.hijauMuda, 0.7), bentuk("f2", 124, 134, "jajar", W.pink, 0.7), bentuk("f3", 232, 130, "tak-beraturan", W.jingga, 0.9)),
+      tambah("bebas,", teks("g3", 150, 192, "jawaban bebas, ciri harus benar", 8.6, W.coklat)),
     ),
   ],
 };
 
 /* ------------------------------ 7. Segitiga: sisi, sudut, titik sudut (Buku Siswa hlm. 147–148; Panduan Guru hlm. 182–183) ------------------------------ */
-const SUARA_T1 = "Banyak benda di sekitar kita berbentuk segitiga, seperti penggaris segitiga dan rambu lalu lintas. Buku memisalkan satu segitiga bernama segitiga ABC.";
+const SUARA_T1 = "Banyak benda di sekitar kita berbentuk segitiga, seperti penggaris segitiga dan rambu lalu lintas. Kita misalkan satu segitiga bernama segitiga ABC.";
 const SUARA_T2 = "Dalam segitiga ABC terdapat tiga ruas garis, yaitu AB, BC, dan AC. Ketiga ruas garis itu dinamakan sisi, sehingga segitiga memiliki tiga sisi: sisi AB, sisi BC, dan sisi AC.";
-const SUARA_T3 = "Segitiga juga memiliki tiga sudut, yaitu sudut A, sudut B, dan sudut C. Titik pertemuan sisinya disebut titik sudut, jadi ada tiga titik sudut: titik A, titik B, dan titik C.";
+const SUARA_T3 = "Segitiga juga memiliki tiga sudut, yaitu sudut A, sudut B, dan sudut C. Titik tempat sisinya bertemu disebut titik sudut, jadi ada tiga titik sudut: titik A, titik B, dan titik C.";
 const SUARA_T4 = "Ciri-cirinya: tiga sisi, tiga sudut, dan tiga titik sudut. Segitiga adalah bangun datar yang memiliki tiga sudut, dan segitiga adalah segi banyak yang memiliki tiga sisi.";
 /** Segitiga ABC pada Buku Siswa hlm. 147, digambar dengan bangun `sembarang`: B di puncak, C di kanan-bawah, A di kiri-bawah. */
 const abc = (id: string, x: number, y: number, s: number) => [
@@ -170,7 +170,7 @@ const abc = (id: string, x: number, y: number, s: number) => [
 export const ADEGAN_SEGITIGA: AdeganStory = {
   id: "segitiga",
   judul: "Segitiga: tiga sisi, tiga sudut, tiga titik sudut",
-  sumber: "Buku Siswa hlm. 147–148; Panduan Guru hlm. 182–183",
+  sumber: "Materi: segitiga, sisi dan sudut",
   latar: "#EFF6FF",
   kutipan: [
     "2. Segitiga",
@@ -224,17 +224,17 @@ export const ADEGAN_SEGITIGA: AdeganStory = {
 };
 
 /* ------------------------------ 8. Aktivitas 2: segitiga menurut sisinya (Buku Siswa hlm. 149–153; Panduan Guru hlm. 183–185) ------------------------------ */
-const SUARA_G1 = "Aktivitas dua, segitiga menurut sisinya. Potong sedotan jadi tiga bagian sama panjang, lalu tiga bagian dengan dua yang sama, lalu tiga bagian yang semuanya berbeda, dan sambung dengan benang.";
+const SUARA_G1 = "Aktivitas dua, segitiga menurut sisinya. Gunting sedotan jadi tiga bagian sama panjang, lalu tiga bagian dengan dua yang sama, lalu tiga bagian yang semuanya berbeda, dan sambung dengan benang.";
 const SUARA_G2 = "Hasilnya segitiga sama kaki dan segitiga sama sisi. Segitiga sama kaki punya dua sisi sama panjang, AC sama dengan BC. Segitiga sama sisi punya tiga sisi sama panjang, PQ, QR, dan PR.";
 const SUARA_G3 = "Hasil ketiga: segitiga sembarang, yang sisi-sisinya tidak ada yang sama panjang, yaitu DE, EF, dan DF berbeda.";
-const SUARA_G4 = "Dalam tabel buku, semua segitiga memiliki tiga sisi. Dua sisi sama panjang dimiliki sama kaki dan sama sisi, bukan sembarang. Tiga sisi sama panjang hanya dimiliki sama sisi.";
-const SUARA_G5 = "Panduan guru bertanya: adakah ciri segitiga sama kaki yang tidak dimiliki sama sisi? Tidak ada. Sebaliknya, tiga sisi sama panjang hanya dimiliki sama sisi. Jadi segitiga sama sisi juga dapat dinamakan segitiga sama kaki.";
+const SUARA_G4 = "Dalam tabel ini, semua segitiga memiliki tiga sisi. Dua sisi sama panjang dimiliki sama kaki dan sama sisi, bukan sembarang. Tiga sisi sama panjang hanya dimiliki sama sisi.";
+const SUARA_G5 = "Sekarang pertanyaannya: adakah ciri segitiga sama kaki yang tidak dimiliki sama sisi? Tidak ada. Sebaliknya, tiga sisi sama panjang hanya dimiliki sama sisi. Jadi segitiga sama sisi juga dapat dinamakan segitiga sama kaki.";
 const batang = (id: string, x: number, y: number, p: number, warna: string) => garis(id, x, y, p, 0, warna, 5);
 
 export const ADEGAN_SEGITIGA_SISI: AdeganStory = {
   id: "segitiga-sisi",
   judul: "Aktivitas 2: segitiga menurut sisinya",
-  sumber: "Buku Siswa hlm. 149–153; Panduan Guru hlm. 183–185",
+  sumber: "Materi: segitiga menurut sisinya",
   latar: "#F0FDF4",
   kutipan: [
     "Aktivitas 2. Pengelompokan segitiga berdasarkan sisinya",
@@ -259,7 +259,7 @@ export const ADEGAN_SEGITIGA_SISI: AdeganStory = {
   ketukan: [
     k(
       SUARA_G1,
-      tambah(0, judul("Aktivitas 2: tiga potong sedotan")),
+      tambah(0, judul("Aktivitas 2: tiga bagian sedotan")),
       tambah("panjang", batang("a1", 14, 50, 44, W.merah), batang("a2", 66, 50, 44, W.hijau), batang("a3", 118, 50, 44, W.biru), ...kartu("k1", 192, 38, 98, 26, W.hijauMuda, ["ketiganya sama"], 8.2)),
       tambah(idx(SUARA_G1, "dua", 2), batang("b1", 14, 100, 44, W.merah), batang("b2", 66, 100, 44, W.hijau), batang("b3", 118, 100, 66, W.biru), ...kartu("k2", 192, 88, 98, 26, W.krem, ["dua sama"], 8.2)),
       tambah("berbeda.", batang("c1", 14, 150, 30, W.merah), batang("c2", 52, 150, 48, W.hijau), batang("c3", 108, 150, 66, W.biru), ...kartu("k3", 192, 138, 98, 26, W.pink, ["semua berbeda"], 8.2)),
@@ -296,7 +296,7 @@ export const ADEGAN_SEGITIGA_SISI: AdeganStory = {
       SUARA_G5,
       bersih(0),
       tambah(0, judul("Sama sisi juga sama kaki")),
-      tambah("bertanya:", kotak("v1", 20, 32, 260, 118, W.langit, W.biru, { rx: 10 }), teks("v1t", 150, 50, "segitiga sama kaki", 9.4, W.biru)),
+      tambah("pertanyaannya:", kotak("v1", 20, 32, 260, 118, W.langit, W.biru, { rx: 10 }), teks("v1t", 150, 50, "segitiga sama kaki", 9.4, W.biru)),
       tambah(idx(SUARA_G5, "Tidak", 2), teks("v0", 150, 66, "semua cirinya ada di sama sisi", 8.2, W.hijau)),
       tambah("Sebaliknya,", kotak("v2", 70, 76, 160, 62, W.hijauMuda, W.hijau, { rx: 8 }), teks("v2t", 150, 98, "segitiga sama sisi", 9.4, W.biru), teks("v2u", 150, 120, "3 sisi sama panjang", 8.2, W.merah)),
       tambah("Jadi", ...kartu("vk", 20, 158, 260, 30, W.emas, ["sama sisi juga dinamakan sama kaki"], 8.6)),
@@ -306,9 +306,9 @@ export const ADEGAN_SEGITIGA_SISI: AdeganStory = {
 
 /* ------------------------------ 9. Aktivitas 3: segitiga menurut sudutnya (Buku Siswa hlm. 153–157; Panduan Guru hlm. 185–186) ------------------------------ */
 const SUARA_H1 = "Aktivitas tiga, segitiga menurut sudutnya. Guru membagikan segitiga kertas lipat. Kelompok memberi nama titik sudut, mengukur sudut dengan busur derajat, lalu menentukan jenis sudutnya.";
-const SUARA_H2 = "Tabel di panduan guru: segitiga l satu, ABC, punya tiga sudut lancip, nol siku-siku, nol tumpul. Segitiga l dua, DEF, dua lancip dan satu siku-siku. Segitiga l tiga, GHI, dua lancip dan satu tumpul.";
+const SUARA_H2 = "Tabel hasil pengukuran: segitiga l satu, ABC, punya tiga sudut lancip, nol siku-siku, nol tumpul. Segitiga l dua, DEF, dua lancip dan satu siku-siku. Segitiga l tiga, GHI, dua lancip dan satu tumpul.";
 const SUARA_H3 = "Segitiga lancip, misalnya KLM, ketiga sudutnya lancip. Segitiga siku-siku punya satu sudut siku-siku, yaitu sudut K. Segitiga tumpul, misalnya PQR, punya satu sudut tumpul, yaitu sudut P.";
-const SUARA_H4 = "Kesimpulan panduan guru: segitiga lancip tidak dapat disebut tumpul atau siku-siku, begitu pula sebaliknya. Tiap jenis punya satu ciri yang tidak dimiliki dua lainnya: tiga sudut lancip, satu sudut siku-siku, atau satu sudut tumpul.";
+const SUARA_H4 = "Kesimpulannya: segitiga lancip tidak dapat disebut tumpul atau siku-siku, begitu pula sebaliknya. Tiap jenis punya satu ciri yang tidak dimiliki dua lainnya: tiga sudut lancip, satu sudut siku-siku, atau satu sudut tumpul.";
 /** Hasil pengukuran Aktivitas 3 menurut Panduan Guru hlm. 185: banyak sudut lancip, siku-siku, dan tumpul pada l_1, l_2, l_3. */
 export const SUDUT_SEGITIGA = [
   { kode: "l_1", nama: "ABC", lancip: 3, siku: 0, tumpul: 0 },
@@ -319,7 +319,7 @@ export const SUDUT_SEGITIGA = [
 export const ADEGAN_SEGITIGA_SUDUT: AdeganStory = {
   id: "segitiga-sudut",
   judul: "Aktivitas 3: segitiga menurut sudutnya",
-  sumber: "Buku Siswa hlm. 153–157; Panduan Guru hlm. 185–186",
+  sumber: "Materi: segitiga menurut sudutnya",
   latar: "#FEFCE8",
   kutipan: [
     "Aktivitas 3. Pengelompokan segitiga berdasarkan sudutnya",
@@ -354,7 +354,7 @@ export const ADEGAN_SEGITIGA_SUDUT: AdeganStory = {
     k(
       SUARA_H2,
       bersih(0),
-      tambah(0, judul("Tabel Panduan Guru")),
+      tambah(0, judul("Tabel hasil pengukuran")),
       tambah("Tabel", ...tabel("ht", 8, 34, [44, 56, 60, 60, 64], [["Kode", "Segitiga", "Lancip", "Siku", "Tumpul"]], 22, 8)),
       ...SUDUT_SEGITIGA.map((s, i) => tambah(s.nama, ...tabel(`hr${i}`, 8, 56 + i * 24, [44, 56, 60, 60, 64], [[s.kode, s.nama, String(s.lancip), String(s.siku), String(s.tumpul)]], 24, 9.4))),
       tambah(idx(SUARA_H2, "tumpul", 2), ...kartu("hk", 30, 142, 240, 28, W.emas, ["jumlah sudut tiap segitiga: 3"], 8.6)),

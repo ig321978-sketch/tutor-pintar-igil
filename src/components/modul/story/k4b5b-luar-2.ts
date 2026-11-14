@@ -42,7 +42,7 @@ export const ADEGAN_LUAR_TG: AdeganStory = {
       tambah("Lima@2", ...kartu("tc2", 40, 110, 220, 34, W.krem, ["5 + 1 + 1 = 7 keping"], 10.4)),
     ),
     k(
-      "Dengan tujuh keping yang sama, buku membuat persegi di Aktivitas enam dan perahu layar di Ayo Berlatih satu. Siluetnya berbeda, kepingnya sama.",
+      "Dengan tujuh keping yang sama, kita bisa membuat persegi dan perahu layar. Siluetnya berbeda, kepingnya sama.",
       bersih(0),
       tambah(0, judul("Satu set, banyak siluet")),
       tambah("persegi", ...[1, 2, 3, 4, 5, 6, 7].map((n) => tangram("ts", n, 30, 50, 8)), teks("tst", 62, 130, "persegi", 8.6, W.biru)),
@@ -58,11 +58,11 @@ const GESER: [number, number][] = [[-6, 6], [-4, -6], [-2, 16], [8, 14], [6, 8],
 export const ADEGAN_LUAR_TG_TERAPAN: AdeganStory = {
   id: "luar-tg-terapan",
   judul: "Tangram diterapkan pada perahu layar",
-  sumber: "Metode luar: Tangram pada perahu layar, Buku Siswa hlm. 172",
+  sumber: "Metode luar: Tangram pada perahu layar",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      "Perahu layar di Ayo Berlatih satu adalah siluet tangram. Pisahkan kepingnya satu per satu.",
+      "Perahu layar pada Latihan satu adalah siluet tangram. Pisahkan kepingnya satu per satu.",
       tambah(0, judul("Perahu layar dari tangram")),
       tambah("Perahu", ...PERAHU.map((p, i) => keping(`tp-p${i}`, 8, 44, p, PS))),
       ...PERAHU.map((_, i) => ubah("Pisahkan", { id: `tp-p${i}`, x: 8 + GESER[i][0], y: 44 + GESER[i][1] })),
@@ -100,7 +100,7 @@ const JAJAR: [number, number][] = [[2, 0], [8, 0], [6, 4], [0, 4]];
 export const ADEGAN_LUAR_CR: AdeganStory = {
   id: "luar-cr",
   judul: "Cut and Rearrange (Potong dan Susun Ulang)",
-  sumber: "Metode luar: Cut and Rearrange (Potong dan Susun Ulang)",
+  sumber: "Metode luar: Cut and Rearrange",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -147,7 +147,7 @@ const DS7 = 7;
 export const ADEGAN_LUAR_CR_TERAPAN: AdeganStory = {
   id: "luar-cr-terapan",
   judul: "Cut and Rearrange diterapkan pada dua segitiga besar",
-  sumber: "Metode luar: Cut and Rearrange pada keping 1 dan 2, Buku Siswa hlm. 167–168",
+  sumber: "Metode luar: Cut and Rearrange pada tangram",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -158,7 +158,7 @@ export const ADEGAN_LUAR_CR_TERAPAN: AdeganStory = {
       tambah("sama", ...kartu("ca-c", 60, 140, 180, 28, W.krem, ["bentuk dan ukuran sama"], 9)),
     ),
     k(
-      "Cara satu: sisi miring dirapatkan, jadilah persegi. Cara dua: sisi tegak dirapatkan, jadilah segitiga besar seperti langkah tiga Aktivitas enam.",
+      "Cara satu: sisi miring dirapatkan, jadilah persegi. Cara dua: sisi tegak dirapatkan, jadilah segitiga besar seperti pada kegiatan menyusun tangram tadi.",
       bersih(0),
       tambah(0, judul("Dua cara menyusun")),
       tambah("satu", poli("c1a", 50, 84, skala(SEGITIGA_A, DS7), "#FAA61A", W.putih), poli("c1b", 50, 84, skala([[0, 0], [8, 0], [4, -4]], DS7), "#40AD49", W.putih), teks("c1t", 78, 134, "cara 1: persegi", 8, W.biru)),
@@ -185,7 +185,7 @@ export const ADEGAN_LUAR_CR_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan empat metode dari luar",
-  sumber: "Ringkasan metode luar; angka Buku Siswa hlm. 166–173",
+  sumber: "Ringkasan metode luar",
   latar: "#F0F9FF",
   ketukan: [
     k(
@@ -197,9 +197,9 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("Cut", ...kartu("r4", 12, 148, 276, 30, W.pink, ["Cut and Rearrange: potong, susun ulang"], 8.6)),
     ),
     k(
-      "Angka dari buku tadi: tujuh keping tangram, sepuluh keping motif paving, dan lima segitiga pada perahu layar.",
+      "Angka yang kita pakai tadi: tujuh keping tangram, sepuluh keping motif paving, dan lima segitiga pada perahu layar.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka yang dipakai")),
       tambah("tujuh", ...kartu("an1", 20, 44, 260, 34, W.krem, ["7 keping tangram"], 10)),
       tambah("sepuluh", ...kartu("an2", 20, 90, 260, 34, W.langit, ["10 keping motif paving"], 10)),
       tambah("lima", ...kartu("an3", 20, 136, 260, 34, W.hijauMuda, ["5 segitiga pada perahu layar"], 10)),
@@ -207,7 +207,7 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       "Ingat intinya: komposisi menyusun beberapa bangun menjadi satu, dan dekomposisi mengurai satu bangun menjadi beberapa.",
       bersih(0),
-      tambah(0, judul("Inti Sub-Bab B")),
+      tambah(0, judul("Inti materi")),
       tambah("komposisi", ...kartu("in1", 20, 50, 260, 44, W.hijauMuda, ["komposisi", "menyusun beberapa jadi satu"], 9.6)),
       tambah("dekomposisi", ...kartu("in2", 20, 110, 260, 44, W.pink, ["dekomposisi", "mengurai satu jadi beberapa"], 9.6)),
     ),
