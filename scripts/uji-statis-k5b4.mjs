@@ -43,10 +43,10 @@ cek("video: mulaiLangsung bawaan false", /mulaiLangsung = false/.test(baca("src/
 
 for (const [kode, berkas, sub] of [["A", "video-k5b4a.tsx", N.SUB_A54], ["B", "video-k5b4b.tsx", N.SUB_B54], ["C", "video-k5b4c.tsx", N.SUB_C54], ["D", "video-k5b4d.tsx", N.SUB_D54], ["E", "video-k5b4e.tsx", N.SUB_E54]]) {
   const t = baca(`src/components/modul/${berkas}`);
-  const adegan = sub.videos.flatMap((v) => v.adegan);
-  cek(`video ${kode}: 9 adegan di naskah`, adegan.length === 9);
+  // Dua video baru per sub-bab (materi kurikulum dan metode luar), diuji lengkap di scripts/uji-story-k5b4a.mjs sampai e. Naskah video lama dihapus.
   cek(`video ${kode}: DaftarVideoCerita tanpa mulaiLangsung di berkas`, /DaftarVideoCerita/.test(t) && !/mulaiLangsung/.test(t));
-  cek(`video ${kode}: satu sumber naskah`, t.includes(`SUB_${kode}54.videos`));
+  cek(`video ${kode}: dua video baru dari mesin Story`, new RegExp(`VIDEO_MATERI_K5B4${kode}`).test(t) && new RegExp(`VIDEO_LUAR_K5B4${kode}`).test(t) && !new RegExp(`SUB_${kode}54`).test(t));
+  cek(`naskah ${kode}: video lama dihapus (videos kosong)`, sub.videos.length === 0);
 }
 
 const json = JSON.parse(baca("src/data/kelas5-bab4.json"));
@@ -57,7 +57,7 @@ cek("JSON: tanpa simulasi", !/simulasi/i.test(JSON.stringify(json)));
 cek("JSON: chapter_id FASE_C grade 5", json.chapter_id === "k5-mat-bab4" && json.phase_code === "FASE_C" && json.grade === 5);
 cek("JSON: suara 0.7 / 1 perangkat", json.suaraLaju === 0.7 && json.suaraNada === 1 && json.suaraPerangkatSaja === true);
 cek("JSON: sub-bab A–E", Object.keys(json.subBabs).join() === "A,B,C,D,E");
-cek("JSON: tiap sub-bab 30 permainan", Object.values(json.subBabs).every((s) => s.interactiveGames.length === 30 && s.stories.length === 9));
+cek("JSON: tiap sub-bab 30 permainan", Object.values(json.subBabs).every((s) => s.interactiveGames.length === 30));
 cek("seed tidak dibuat", !fs.existsSync("supabase/seed/02_kelas5_bab4_keys.sql"));
 
 console.log(`uji-statis-k5b4: ${lulus} lulus, ${gagal} gagal`);
