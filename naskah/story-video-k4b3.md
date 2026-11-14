@@ -31,4 +31,4 @@ Lengkap di catatan sesi `temuan-k4b3a.md` dan `temuan-k4b3b.md`. Berbeda dengan 
 Seluruh 189 ketukan dirender lewat rute pratinjau sementara (sudah dihapus; server dev port 3100 mode webpack, sudah dihentikan) dengan `Panggung` pada t=999; kotak batas semua teks terlihat diukur terhadap kanvas 300x208. Satu temuan diperbaiki: tanda "+" dan "−" menimpa teks kartu di A materi adegan 1 (digeser ke bawah kartu). Subagen B sebelumnya juga memperbaiki tiga tumpang tindih lewat render sendiri. Ukuran ulang: bersih. Tumpang tindih emoji dan bangun tidak diukur.
 
 ## Verifikasi live
-(diisi setelah deploy)
+Deploy Vercel (commit 72e6254) Ready. HTML `igiligil.xyz/ruang-belajar/mtk-4-bab3` diunduh, rantai chunk `_next/static` diikuti tuntas (tiga putaran, 81 chunk); satu chunk memuat keempat nama metode baru (Draw the Next Term, Gambar Suku Berikutnya, Number Line Jumps, Loncatan di Garis Bilangan; "Number Line Jumps" juga muncul di satu chunk lain sebagai metode bab lain). Id video lama (K4B3A-V1, K4B3B-V1) dan judul lama "Jeruk Membesar", "Latihan: Pola Bertambah", "Siap pakai Visual Structure", "Beda Tetap", "Latihan: Mesin Fungsi" tidak ada di chunk mana pun.
