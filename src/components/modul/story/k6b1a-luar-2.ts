@@ -16,12 +16,12 @@ export const ADEGAN_LUAR_PANAH: AdeganStory = {
       tambah("posisi", teks("sp", 150, 176, "atas dengan atas, bawah dengan bawah", 10, W.hijau)),
     ),
     k(
-      "Panah pertama dibuat lurus di bagian atas, menghubungkan pembilang dengan pembilang. Hasil kalinya menjadi pembilang yang baru.",
+      "Panah pertama dibuat lurus di baris atas, menghubungkan pembilang dengan pembilang. Hasil kalinya menjadi pembilang yang baru.",
       tambah("pertama", panah("pa1", 84, 70, 72, 0, W.hijau, 3, { gambar: true })),
       tambah("pembilang", teks("pa1t", 120, 60, "atas", 9, W.hijau)),
     ),
     k(
-      "Panah kedua dibuat lurus di bagian bawah, menghubungkan penyebut dengan penyebut. Hasil kalinya menjadi penyebut yang baru.",
+      "Panah kedua dibuat lurus di baris bawah, menghubungkan penyebut dengan penyebut. Hasil kalinya menjadi penyebut yang baru.",
       tambah("kedua", panah("pa2", 84, 144, 72, 0, W.merah, 3, { gambar: true })),
       tambah("penyebut", teks("pa2t", 120, 158, "bawah", 9, W.merah)),
     ),
@@ -43,39 +43,39 @@ export const ADEGAN_LUAR_PANAH: AdeganStory = {
 /* ------------------------------ LB2. Straight-Arrow Multiply: penerapan ------------------------------ */
 export const ADEGAN_LUAR_PANAH_TERAPAN: AdeganStory = {
   id: "luar-panah-terapan",
-  judul: "Straight-Arrow Multiply: penerapan pada Ayo Berkomunikasi",
-  sumber: "Metode luar 3: penerapan pada soal Ayo Berkomunikasi",
+  judul: "Straight-Arrow Multiply: penerapan",
+  sumber: "Metode luar 3: penerapan soal tiga per empat",
   latar: "#F5F3FF",
   ketukan: [
     k(
-      "Terapan. Pada Ayo Berkomunikasi, hitunglah tiga per empat kali 8.",
+      "Terapan. Sekarang hitunglah tiga per empat kali delapan.",
       tambah(0, judul("penerapan: tiga per empat kali 8")),
       tambah("tiga", teks("q", 150, 100, "3/4 × 8", 30, W.biru)),
     ),
     k(
-      "Tulis 8 sebagai delapan per satu, sehingga kedua bilangan berbentuk pecahan.",
+      "Tulis delapan sebagai delapan per satu, sehingga kedua bilangan berbentuk pecahan.",
       bersih(0),
       tambah(0, judul("8 ditulis 8 per 1")),
       tambah("Tulis", ...frac("u1", 90, 100, 3, 4, 24, W.biru), teks("u2", 135, 106, "×", 24, W.biru)),
-      tambah("delapan", ...frac("u3", 180, 100, 8, 1, 24, W.merah)),
+      tambah("delapan@2", ...frac("u3", 180, 100, 8, 1, 24, W.merah)),
     ),
     k(
-      "Panah atas: 3 kali 8 menjadi 24. Pembilang barunya adalah 24.",
+      "Panah atas: tiga kali delapan menjadi dua puluh empat. Pembilang barunya adalah dua puluh empat.",
       tambah("Panah", panah("up1", 92, 64, 88, 0, W.hijau, 3, { gambar: true })),
-      tambah("24.", teks("up1t", 136, 52, "3 × 8 = 24", 12, W.hijau)),
+      tambah("barunya", teks("up1t", 136, 52, "3 × 8 = 24", 12, W.hijau)),
     ),
     k(
-      "Panah bawah: 4 kali 1 menjadi 4. Jadi hasilnya dua puluh empat per empat.",
+      "Panah bawah: empat kali satu menjadi empat. Jadi hasilnya dua puluh empat per empat.",
       tambah("Panah", panah("up2", 92, 138, 88, 0, W.merah, 3, { gambar: true })),
       tambah("menjadi", teks("up2t", 136, 158, "4 × 1 = 4", 12, W.merah)),
-      tambah("empat@2", teks("us", 225, 106, "=", 24, W.biru), ...frac("u4", 262, 100, 24, 4, 20, W.biru)),
+      tambah("hasilnya", teks("us", 225, 106, "=", 24, W.biru)), tambah("per", ...frac("u4", 262, 100, 24, 4, 20, W.biru)),
     ),
     k(
-      "Dua puluh empat per empat sama dengan 6. Hasil ini cocok dengan kunci Buku Panduan Guru, yaitu 6.",
+      "Dua puluh empat per empat sama dengan enam. Hasil ini cocok dengan hitungan di video materi, yaitu enam.",
       bersih(0),
       tambah(0, judul("hasil akhir")),
       tambah("Dua", teks("v1", 150, 80, "24/4 = 6", 28, W.merah)),
-      tambah("cocok", emo("ok", 150, 144, "✅", 40), teks("v2", 150, 178, "cocok dengan kunci buku", 10, W.hijau)),
+      tambah("cocok", emo("ok", 150, 144, "✅", 40), teks("v2", 150, 178, "cocok dengan hitungan tadi", 10, W.hijau)),
     ),
   ],
 };
@@ -86,7 +86,7 @@ const titik = (id: string, x: number, y: number, baris: number, kolom: number) =
 export const ADEGAN_LUAR_TUKAR: AdeganStory = {
   id: "luar-tukar",
   judul: "Commutative Multiply Check: konsep",
-  sumber: "Metode luar 4: pemeriksaan dengan menukar urutan kali",
+  sumber: "Metode luar 4: tukar urutan kali",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -96,12 +96,12 @@ export const ADEGAN_LUAR_TUKAR: AdeganStory = {
       tambah("ditukar.", panah("c2", 110, 128, 80, 0, W.hijau, 3, { gambar: true }), teks("c3", 150, 156, "tukar tempat", 10, W.hijau)),
     ),
     k(
-      "Contoh bilangan asli: 3 kali 4 dan 4 kali 3 sama-sama 12. Titik yang sama dapat dibaca dari dua arah.",
+      "Contoh bilangan asli: tiga kali empat dan empat kali tiga sama-sama dua belas. Titik yang sama dapat dibaca dari dua arah.",
       bersih(0),
       tambah(0, judul("3 baris 4 kolom")),
       tambah("Titik", ...titik("d", 30, 50, 3, 4)),
-      tambah("3", teks("d1", 215, 66, "3 × 4 = 12", 14, W.biru)),
-      tambah("4@2", teks("d2", 215, 100, "4 × 3 = 12", 14, W.biru)),
+      tambah("tiga", teks("d1", 215, 66, "3 × 4 = 12", 14, W.biru)),
+      tambah("empat@2", teks("d2", 215, 100, "4 × 3 = 12", 14, W.biru)),
     ),
     k(
       "Langkah satu, hitung dengan urutan asal. Langkah dua, tukar urutan lalu hitung lagi. Langkah tiga, bandingkan, dua hasil harus sama.",
@@ -112,10 +112,10 @@ export const ADEGAN_LUAR_TUKAR: AdeganStory = {
       tambah("tiga", ...kartu("g3", 20, 126, 260, 34, "#DCFCE7", ["3. bandingkan: hasil harus sama"], 9.6)),
     ),
     k(
-      "Contoh pecahan: 6 kali dua per tiga sama dengan dua belas per tiga, yaitu 4. Ditukar menjadi dua per tiga kali 6, juga 4.",
+      "Contoh pecahan: enam kali dua per tiga sama dengan dua belas per tiga, yaitu empat. Ditukar menjadi dua per tiga kali enam, juga empat.",
       bersih(0),
       tambah(0, judul("contoh pecahan")),
-      tambah("6", teks("e1", 150, 76, "6 × 2/3 = 12/3 = 4", 18, W.biru)),
+      tambah("enam", teks("e1", 150, 76, "6 × 2/3 = 12/3 = 4", 18, W.biru)),
       tambah("Ditukar", teks("e2", 150, 126, "2/3 × 6 = 12/3 = 4", 18, W.biru), emo("e3", 150, 168, "🔁", 28)),
     ),
     k(
@@ -131,28 +131,28 @@ export const ADEGAN_LUAR_TUKAR: AdeganStory = {
 /* ------------------------------ LB4. Commutative Multiply Check: penerapan ------------------------------ */
 export const ADEGAN_LUAR_TUKAR_TERAPAN: AdeganStory = {
   id: "luar-tukar-terapan",
-  judul: "Commutative Multiply Check: penerapan pada soal nomor 4",
-  sumber: "Metode luar 4: penerapan pada Latihan 1.1 nomor 4",
+  judul: "Commutative Multiply Check: penerapan",
+  sumber: "Metode luar 4: penerapan tukar urutan",
   latar: "#FEFCE8",
   ketukan: [
     k(
-      "Terapan. Latihan 1.1 nomor 4 meminta cerita untuk satu per empat kali 20. Hitung dulu dengan urutan asal.",
-      tambah(0, judul("penerapan: Latihan 1.1 nomor 4")),
+      "Terapan. Kita ingin menghitung satu per empat kali dua puluh. Hitung dulu dengan urutan asal.",
+      tambah(0, judul("penerapan: tukar urutan")),
       tambah("satu", teks("a1", 150, 100, "1/4 × 20", 30, W.biru)),
     ),
     k(
-      "Satu kali 20 menjadi 20, penyebut tetap 4. Hasilnya dua puluh per empat, yaitu 5.",
+      "Satu kali dua puluh menjadi dua puluh, penyebut tetap empat. Hasilnya dua puluh per empat, yaitu lima.",
       tambah("Hasilnya", teks("a2", 150, 160, "1/4 × 20 = 20/4 = 5", 16, W.merah)),
     ),
     k(
-      "Sekarang tukar urutan menjadi 20 kali satu per empat. Hasilnya juga dua puluh per empat, yaitu 5.",
+      "Sekarang tukar urutan menjadi dua puluh kali satu per empat. Hasilnya juga dua puluh per empat, yaitu lima.",
       bersih(0),
       tambah(0, judul("tukar urutan")),
       tambah("Sekarang", teks("b1", 150, 76, "20 × 1/4", 26, W.biru), emo("b2", 150, 116, "🔁", 28)),
       tambah("juga", teks("b3", 150, 170, "20 × 1/4 = 20/4 = 5", 16, W.merah)),
     ),
     k(
-      "Kedua hasil sama-sama 5, jadi jawaban 5 dapat dipercaya. Ini cocok dengan cerita Rani, yaitu 5 kilometer.",
+      "Kedua hasil sama-sama lima, jadi jawaban lima dapat dipercaya. Ini cocok dengan cerita Rani di video materi, yaitu lima kilometer.",
       bersih(0),
       tambah(0, judul("kedua hasil sama")),
       tambah("Kedua", ...kartu("k1", 20, 44, 120, 44, "#DBEAFE", ["1/4 × 20 = 5"], 11), ...kartu("k2", 160, 44, 120, 44, "#DBEAFE", ["20 × 1/4 = 5"], 11)),
@@ -172,12 +172,12 @@ export const ADEGAN_LUAR_TUKAR_TERAPAN: AdeganStory = {
 /* ------------------------------ LB5. Ringkasan empat metode luar ------------------------------ */
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode luar Subbab A",
-  sumber: "Ringkasan metode luar Subbab A",
+  judul: "Ringkasan empat metode luar perkalian pecahan",
+  sumber: "Ringkasan empat metode luar",
   latar: "#EEF2FF",
   ketukan: [
     k(
-      "Ringkasan. Metode pertama, Area Model Multiplication: gambar petak, bagi sesuai penyebut, arsir, lalu hitung lajurnya.",
+      "Ringkasan. Metode pertama, Area Model Multiplication: gambar petak, potong sesuai penyebut, arsir, lalu hitung lajurnya.",
       tambah(0, judul("ringkasan empat metode")),
       tambah("Metode", ...kartu("m1", 10, 34, 134, 66, "#FDE68A", ["Area Model", "Multiplication", "petak dan lajur"], 8.6)),
     ),

@@ -14,19 +14,19 @@ function kisiNilai(id: string, x: number, y: number, s: number, kolom: number, l
 export const ADEGAN_LUAR_C_KISI: AdeganStory = {
   id: "luarc-kisi",
   judul: "Grid Tenths-Hundredths Link: kisi seratus petak",
-  sumber: "Metode luar · Grid Tenths-Hundredths Link",
+  sumber: "Metode luar: kisi seratus petak",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Grid Tenths-Hundredths Link memakai persegi 10 kali 10 yang bernilai 1. Ada 100 petak, sehingga satu petak bernilai satu per seratus, yaitu 0,01.",
+      "Grid Tenths-Hundredths Link memakai persegi sepuluh kali sepuluh yang bernilai satu. Ada seratus petak, sehingga satu petak bernilai satu per seratus, yaitu nol koma nol satu.",
       tambah(0, teks("jud", 150, 22, "Persegi bernilai 1", 12, W.ungu)),
       tambah("persegi", kisi("g", 20, 34, 130, 10, 10)),
-      tambah("100", teks("sk", 85, 190, "10 x 10 = 100 petak", 9)),
+      tambah("seratus", teks("sk", 85, 190, "10 x 10 = 100 petak", 9)),
       tambah("petak,", arsir("pt", 20, 34, 130, 10, 10, 0, 0, 1, 1, W.merah)),
-      tambah("satu", pecahan("pk", 214, 76, "1", "100", 18), teks("pk2", 214, 126, "= 0,01", 20, W.merah)),
+      tambah("satu@2", pecahan("pk", 214, 76, "1", "100", 18), teks("pk2", 214, 126, "= 0,01", 20, W.merah)),
     ),
     k(
-      "Satu kolom berisi 10 petak. Jadi satu kolom bernilai 10 per 100, yaitu satu per sepuluh, atau 0,1.",
+      "Satu kolom berisi sepuluh petak. Jadi satu kolom bernilai sepuluh per seratus, yaitu satu per sepuluh, atau nol koma satu.",
       ubah(0, { id: "pt", op: 0 }),
       hapus(0, "pk-a", "pk-g", "pk-b", "pk2"),
       tambah("kolom", arsir("kl", 20, 34, 130, 10, 10, 0, 0, 1, 10)),
@@ -40,16 +40,16 @@ export const ADEGAN_LUAR_C_KISI: AdeganStory = {
       tambah("kedua", kartu("a2", 160, 50, 120, 50, W.langit, ["angka kedua", "petak lepas"], 9.4)),
     ),
     k(
-      "Contoh 0,37: tiga kolom penuh dan tujuh petak lepas. Jumlahnya 37 petak dari 100, jadi 0,37 sama dengan 37 per 100.",
+      "Contoh nol koma tiga tujuh: tiga kolom penuh dan tujuh petak lepas. Jumlahnya tiga puluh tujuh petak dari seratus, jadi nol koma tiga tujuh sama dengan tiga puluh tujuh per seratus.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "0,37 pada kisi", 12, W.ungu)),
       tambah("Contoh", ...kisiNilai("c", 20, 34, 130, 0, 0)),
-      tambah("tiga", arsir("c3", 20, 34, 130, 10, 10, 0, 0, 3, 10)),
-      tambah("tujuh", arsir("c7", 20, 34, 130, 10, 10, 3, 0, 1, 7, W.arsir2)),
+      tambah("kolom", arsir("c3", 20, 34, 130, 10, 10, 0, 0, 3, 10)),
+      tambah("tujuh@2", arsir("c7", 20, 34, 130, 10, 10, 3, 0, 1, 7, W.arsir2)),
       tambah("Jumlahnya", pecahan("c37", 214, 80, "37", "100", 20, W.hijau), teks("c37t", 214, 134, "= 0,37", 20, W.hijau)),
     ),
     k(
-      "Angka 0 pada 0,30 berarti nol petak lepas. Hanya tiga kolom penuh yang diarsir, sehingga 0,3 sama dengan 0,30.",
+      "Angka nol pada nol koma tiga nol berarti nol petak lepas. Hanya tiga kolom penuh yang diarsir, sehingga nol koma tiga sama dengan nol koma tiga nol.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "0,3 sama dengan 0,30", 12, W.ungu)),
       tambah("Angka", ...kisiNilai("d", 20, 34, 130, 3, 0)),
@@ -63,28 +63,28 @@ export const ADEGAN_LUAR_C_KISI: AdeganStory = {
 export const ADEGAN_LUAR_C_KISI_TERAPAN: AdeganStory = {
   id: "luarc-kisi-terapan",
   judul: "Grid Tenths-Hundredths Link: penerapan",
-  sumber: "Metode luar · penerapan pada 0,25 dan pecahan buku",
+  sumber: "Metode luar: penerapan pada kisi",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapan pada 0,25 dari Mengingat Kembali: dua kolom penuh dan lima petak lepas.",
+      "Terapan pada nol koma dua lima: dua kolom penuh dan lima petak lepas.",
       tambah(0, teks("jud", 150, 22, "0,25", 14, W.ungu)),
-      tambah("dua", ...kisiNilai("p", 20, 34, 130, 2, 0)),
-      tambah("lima", arsir("p5", 20, 34, 130, 10, 10, 2, 0, 1, 5, W.arsir2)),
+      tambah("dua@2", ...kisiNilai("p", 20, 34, 130, 2, 0)),
+      tambah("lima@2", arsir("p5", 20, 34, 130, 10, 10, 2, 0, 1, 5, W.arsir2)),
     ),
     k(
-      "Totalnya 25 petak dari 100, jadi 0,25 sama dengan 25 per 100, yang disederhanakan menjadi satu per empat.",
+      "Totalnya dua puluh lima petak dari seratus, jadi nol koma dua lima sama dengan dua puluh lima per seratus, yang disederhanakan menjadi satu per empat.",
       tambah("Totalnya", pecahan("q1", 214, 76, "25", "100", 20, W.hijau), teks("q1t", 214, 126, "= 1/4", 20, W.hijau)),
     ),
     k(
-      "Tiga perempat dari Latihan 1.3 berarti 75 petak: tujuh kolom penuh dan lima petak lepas. Jadi nilainya 0,75.",
+      "Tiga perempat berarti tujuh puluh lima petak: tujuh kolom penuh dan lima petak lepas. Jadi nilainya nol koma tujuh lima.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Latihan 1.3: 3/4 pada kisi", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "3/4 pada kisi", 12, W.ungu)),
       tambah("Tiga", ...kisiNilai("r", 20, 34, 130, 7, 5)),
       tambah("tujuh", pecahan("r1", 214, 80, "75", "100", 20, W.hijau), teks("r1t", 214, 134, "= 0,75", 20, W.hijau)),
     ),
     k(
-      "Setengah menutup lima kolom penuh dan nol petak lepas, jadi 0,50. Seperlima menutup dua kolom penuh, jadi 0,20.",
+      "Setengah menutup lima kolom penuh dan nol petak lepas, jadi nol koma lima nol. Seperlima menutup dua kolom penuh, jadi nol koma dua nol.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "1/2 dan 1/5", 14, W.ungu)),
       tambah("Setengah", ...kisiNilai("s", 14, 40, 124, 5, 0), teks("st", 76, 178, "1/2 = 0,50", 12, W.hijau)),
@@ -98,7 +98,7 @@ const KOL = [56, 56, 22, 76, 76];
 export const ADEGAN_LUAR_C_TEMPAT: AdeganStory = {
   id: "luarc-tempat",
   judul: "Decimal Place-Value Chart: tabel nilai tempat",
-  sumber: "Metode luar · Decimal Place-Value Chart",
+  sumber: "Metode luar: tabel nilai tempat",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -113,7 +113,7 @@ export const ADEGAN_LUAR_C_TEMPAT: AdeganStory = {
       tambah("nol,", teks("tw", 150, 128, "kolom kosong diisi 0", 10, W.merah)),
     ),
     k(
-      "Nilai sebuah angka adalah angka itu kali nilai kolomnya. Pada 2,49: angka 2 bernilai 2, angka 4 bernilai 0,4, dan angka 9 bernilai 0,09.",
+      "Nilai sebuah angka adalah angka itu kali nilai kolomnya. Pada dua koma empat sembilan: angka dua bernilai dua, angka empat bernilai nol koma empat, dan angka sembilan bernilai nol koma nol sembilan.",
       tambah("Pada", teks("v0", 150, 194, "2,49", 14, W.ungu)),
       sorotkan("angka@3", "w-s1"),
       tambah("bernilai@1", teks("v1", 66, 160, "2", 14, W.hijau)),
@@ -123,7 +123,7 @@ export const ADEGAN_LUAR_C_TEMPAT: AdeganStory = {
       tambah("bernilai@3", teks("v3", 248, 160, "0,09", 14, W.hijau)),
     ),
     k(
-      "Jadi 2,49 sama dengan 2 ditambah 0,4 ditambah 0,09. Bentuk panjang ini mencegah kolom tertukar.",
+      "Jadi dua koma empat sembilan sama dengan dua ditambah nol koma empat ditambah nol koma nol sembilan. Bentuk panjang ini mencegah kolom tertukar.",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Bentuk panjang", 13, W.ungu)),
       tambah("Jadi", teks("bp", 150, 90, "2,49 = 2 + 0,4 + 0,09", 16, W.hijau)),
@@ -136,32 +136,32 @@ export const ADEGAN_LUAR_C_TEMPAT: AdeganStory = {
 export const ADEGAN_LUAR_C_TEMPAT_TERAPAN: AdeganStory = {
   id: "luarc-tempat-terapan",
   judul: "Decimal Place-Value Chart: penerapan",
-  sumber: "Metode luar · penerapan pada jarak dan nilai gizi",
+  sumber: "Metode luar: penerapan jarak dan gizi",
   latar: "#EFF6FF",
   ketukan: [
     k(
-      "Terapan pada jarak Eksplorasi 1.6. Jarak 10,9 punya puluhan 1, satuan 0, dan persepuluhan 9.",
-      tambah(0, teks("jud", 150, 22, "Eksplorasi 1.6: 10,9 dan 11,3", 12, W.ungu)),
+      "Terapan pada jarak rumah ke sekolah. Jarak sepuluh koma sembilan punya puluhan satu, satuan nol, dan persepuluhan sembilan.",
+      tambah(0, teks("jud", 150, 22, "Jarak 10,9 dan 11,3", 12, W.ungu)),
       tambah("Terapan", ...tabel("t", 10, 40, KOL, 28, [["Puluhan", "Satuan", ",", "Persepuluhan", "Perseratusan"]], 6.6)),
-      tambah("10,9", ...barisTabel("a", 10, 68, KOL, 28, ["1", "0", ",", "9", "0"], 11)),
+      tambah("sembilan", ...barisTabel("a", 10, 68, KOL, 28, ["1", "0", ",", "9", "0"], 11)),
     ),
     k(
-      "Bentuk panjangnya, 10,9 sama dengan 10 ditambah 0 ditambah 0,9. Jarak 11,3 puluhan 1, satuan 1, persepuluhan 3.",
+      "Bentuk panjangnya, sepuluh koma sembilan sama dengan sepuluh ditambah nol ditambah nol koma sembilan. Jarak sebelas koma tiga puluhan satu, satuan satu, persepuluhan tiga.",
       tambah("Bentuk", teks("b1", 150, 126, "10,9 = 10 + 0 + 0,9", 12, W.hijau)),
-      tambah("11,3", ...barisTabel("b", 10, 140, KOL, 28, ["1", "1", ",", "3", "0"], 11)),
+      tambah("sebelas", ...barisTabel("b", 10, 140, KOL, 28, ["1", "1", ",", "3", "0"], 11)),
     ),
     k(
-      "Sama-sama punya puluhan 1, jadi bandingkan satuan. Satuan 0 lebih kecil dari 1, maka 10,9 lebih dekat daripada 11,3.",
+      "Sama-sama punya puluhan satu, jadi bandingkan satuan. Satuan nol lebih kecil dari satu, maka sepuluh koma sembilan lebih dekat daripada sebelas koma tiga.",
       sorotkan("satuan", "a-s1", "b-s1"),
       tambah("lebih", teks("b2", 150, 196, "10,9 lebih dekat dari 11,3", 11, W.merah)),
     ),
     k(
-      "Pada nilai gizi, karbohidrat 28,6 gram: puluhan 2, satuan 8, persepuluhan 6. Dibaca dua puluh delapan koma enam.",
+      "Pada nilai gizi, karbohidrat dua puluh delapan koma enam gram punya puluhan dua, satuan delapan, dan persepuluhan enam. Bentuk panjangnya dua puluh ditambah delapan ditambah nol koma enam.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Karbohidrat 28,6 g", 12, W.ungu)),
       tambah("gram", ...tabel("t", 10, 40, KOL, 28, [["Puluhan", "Satuan", ",", "Persepuluhan", "Perseratusan"]], 6.6)),
       tambah("puluhan", ...barisTabel("c", 10, 68, KOL, 28, ["2", "8", ",", "6", "0"], 11)),
-      tambah("Dibaca", teks("c1", 150, 130, "28,6 = 20 + 8 + 0,6", 14, W.hijau)),
+      tambah("Bentuk", teks("c1", 150, 130, "28,6 = 20 + 8 + 0,6", 14, W.hijau)),
     ),
   ],
 };
@@ -170,7 +170,7 @@ export const ADEGAN_LUAR_C_TEMPAT_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_C_URUT: AdeganStory = {
   id: "luarc-urut",
   judul: "Decimal Compare-and-Order: samakan, bandingkan, urutkan",
-  sumber: "Metode luar · Decimal Compare-and-Order",
+  sumber: "Metode luar: samakan, bandingkan, urutkan",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -180,7 +180,7 @@ export const ADEGAN_LUAR_C_URUT: AdeganStory = {
       tambah("menambah", teks("s2", 150, 80, "→", 22, W.merah), teks("s3", 220, 80, "2,90", 24, W.hijau)),
     ),
     k(
-      "Nol di kanan tidak mengubah nilai, jadi 2,9 sama dengan 2,90. Tetapi nol di sebelah kiri angka mengubah nilai, seperti 0,05 dan 0,5.",
+      "Nol di kanan tidak mengubah nilai, jadi dua koma sembilan sama dengan dua koma sembilan nol. Tetapi nol di sebelah kiri mengubah nilai, seperti nol koma nol lima dan nol koma lima.",
       tambah("Tetapi", teks("s4", 150, 130, "0,05 tidak sama dengan 0,5", 12, W.merah)),
     ),
     k(
@@ -213,39 +213,39 @@ export const ADEGAN_LUAR_C_URUT: AdeganStory = {
 export const ADEGAN_LUAR_C_URUT_TERAPAN: AdeganStory = {
   id: "luarc-urut-terapan",
   judul: "Decimal Compare-and-Order: penerapan",
-  sumber: "Metode luar · penerapan pada 2,49 dan 2,9, lompat jauh, nilai gizi",
+  sumber: "Metode luar: penerapan urutan desimal",
   latar: "#FDF2F8",
   ketukan: [
     k(
-      "Terapan pada klaim 2,49 dan 2,9. Samakan jadi 2,49 dan 2,90. Satuannya sama, yaitu 2. Persepuluhan 4 lebih kecil dari 9, jadi 2,49 lebih kecil.",
+      "Terapan pada pendapat tadi. Samakan dua koma empat sembilan dan dua koma sembilan menjadi dua koma sembilan nol. Satuannya sama, yaitu dua. Persepuluhan empat lebih kecil dari sembilan, jadi dua koma empat sembilan lebih kecil.",
       tambah(0, teks("jud", 150, 22, "2,49 dan 2,9", 14, W.ungu)),
       tambah("Samakan", teks("a1", 90, 70, "2,49", 24), teks("a2", 210, 70, "2,90", 24, W.hijau)),
       tambah("Persepuluhan", teks("a3", 150, 120, "4 lebih kecil dari 9", 13, W.merah)),
-      tambah("kecil.", teks("a4", 150, 160, "2,49 lebih kecil", 16, W.hijau)),
+      tambah("kecil@2", teks("a4", 150, 160, "2,49 lebih kecil", 16, W.hijau)),
     ),
     k(
-      "Lompat jauh: 3,7, 2,9, dan 3,6, semuanya satu angka di belakang koma. Satuan 2 paling kecil. Lalu 6 lebih kecil dari 7. Urutan terkecil: 2,9, 3,6, 3,7.",
+      "Lompat jauh: tiga koma tujuh, dua koma sembilan, dan tiga koma enam. Satuan dua paling kecil. Lalu enam lebih kecil dari tujuh. Urutannya dua koma sembilan, tiga koma enam, tiga koma tujuh.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Lompat jauh (meter)", 12, W.ungu)),
-      tambah("3,7", teks("l1", 60, 70, "3,7", 20), teks("l2", 150, 70, "2,9", 20), teks("l3", 240, 70, "3,6", 20)),
-      tambah("Urutan", teks("l4", 60, 140, "2,9", 20, W.hijau), teks("l5", 150, 140, "3,6", 20, W.hijau), teks("l6", 240, 140, "3,7", 20, W.hijau), teks("l7", 150, 170, "terkecil ke terbesar", 9)),
+      tambah("tiga", teks("l1", 60, 70, "3,7", 20), teks("l2", 150, 70, "2,9", 20), teks("l3", 240, 70, "3,6", 20)),
+      tambah("Urutannya", teks("l4", 60, 140, "2,9", 20, W.hijau), teks("l5", 150, 140, "3,6", 20, W.hijau), teks("l6", 240, 140, "3,7", 20, W.hijau), teks("l7", 150, 170, "terkecil ke terbesar", 9)),
     ),
     k(
-      "Nilai gizi: ubah 88,6 miligram menjadi 0,0886 gram, lalu samakan menjadi empat angka di belakang koma: 0,0886, 1,3000, 2,7000, 5,4000, dan 28,6000.",
+      "Nilai gizi: ubah delapan puluh delapan koma enam miligram menjadi nol koma nol delapan delapan enam gram. Lalu samakan semuanya menjadi empat angka di belakang koma.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Nilai gizi, semua dalam gram", 12, W.ungu)),
-      tambah("88,6", teks("zm", 150, 168, "88,6 mg = 0,0886 g", 11, W.merah)),
-      tambah("ubah", ...barisTabel("z1", 60, 40, [110, 80], 22, ["natrium", "0,0886"], 9.4)),
+      tambah("miligram", teks("zm", 150, 168, "88,6 mg = 0,0886 g", 11, W.merah)),
+      tambah("menjadi", ...barisTabel("z1", 60, 40, [110, 80], 22, ["natrium", "0,0886"], 9.4)),
       tambah("samakan", ...barisTabel("z2", 60, 62, [110, 80], 22, ["protein", "1,3000"], 9.4)),
-      tambah("2,7000,", ...barisTabel("z3", 60, 84, [110, 80], 22, ["serat pangan", "2,7000"], 9.4)),
-      tambah("5,4000,", ...barisTabel("z4", 60, 106, [110, 80], 22, ["lemak total", "5,4000"], 9.4)),
-      tambah("28,6000", ...barisTabel("z5", 60, 128, [110, 80], 22, ["karbohidrat", "28,6000"], 9.4)),
+      tambah("semuanya", ...barisTabel("z3", 60, 84, [110, 80], 22, ["serat pangan", "2,7000"], 9.4)),
+      tambah("empat", ...barisTabel("z4", 60, 106, [110, 80], 22, ["lemak total", "5,4000"], 9.4)),
+      tambah("belakang", ...barisTabel("z5", 60, 128, [110, 80], 22, ["karbohidrat", "28,6000"], 9.4)),
     ),
     k(
-      "Terkecil adalah 0,0886 milik natrium, lalu 1,3 protein, 2,7 serat pangan, 5,4 lemak total, dan 28,6 karbohidrat. Hasilnya sama dengan kunci Panduan Guru.",
+      "Hasilnya, yang terkecil nol koma nol delapan delapan enam milik natrium, lalu protein, serat pangan, lemak total, dan terakhir karbohidrat. Urutan ini cocok dengan hitungan tadi.",
       sorotkan("natrium", "z1-s0", "z1-s1"),
       sorotkan("karbohidrat", "z5-s0", "z5-s1"),
-      tambah("Hasilnya", teks("zk", 150, 190, "urutan sama dengan kunci buku", 10, W.hijau)),
+      tambah("Urutan", teks("zk", 150, 190, "urutan cocok dengan hitungan tadi", 10, W.hijau)),
     ),
   ],
 };
@@ -260,12 +260,12 @@ export const ADEGAN_LUAR_C_RINGKAS: AdeganStory = {
   latar: "#F5F3FF",
   ketukan: [
     k(
-      "Ringkasan. Equivalent Fraction to Tenths and Hundredths: cari pengali supaya penyebut menjadi 10 atau 100, lalu baca hasilnya sebagai desimal.",
+      "Ringkasan. Equivalent Fraction to Tenths and Hundredths: cari pengali supaya penyebut menjadi sepuluh atau seratus, lalu baca hasilnya sebagai desimal.",
       tambah(0, teks("jud", 150, 20, "Ringkasan empat metode", 12, W.ungu)),
       tambah("Equivalent", ...kartuRingkas("r1", 30, "Equivalent Fraction to Tenths and Hundredths", "penyebut jadi 10 atau 100", W.krem)),
     ),
     k(
-      "Grid Tenths-Hundredths Link: satu kolom bernilai 0,1 dan satu petak bernilai 0,01, jadi angka desimal bisa dihitung sebagai petak.",
+      "Grid Tenths-Hundredths Link: satu kolom bernilai nol koma satu dan satu petak bernilai nol koma nol satu, jadi angka desimal bisa dihitung sebagai petak.",
       tambah("Grid", ...kartuRingkas("r2", 74, "Grid Tenths-Hundredths Link", "kolom 0,1 dan petak 0,01", W.mint)),
     ),
     k(

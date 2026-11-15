@@ -2,16 +2,16 @@ import type { AdeganStory } from "./logika-story";
 import { W, bagi, emo, idBagi, kartu, kartuMetode, kotak, panah, pecahan, teks } from "./k6b1b-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k6b1b-bantu";
 
-/* ------------------------------ LB0. Empat metode luar Sub-Bab B ------------------------------ */
+/* ------------------------------ LB0. Empat metode luar pembagian pecahan ------------------------------ */
 export const ADEGAN_LUAR_B_PEMBUKA: AdeganStory = {
   id: "luarb1-pembuka",
   judul: "Empat metode luar untuk pembagian pecahan",
-  sumber: "Metode dari luar buku; contoh pembagian pecahan Sub-Bab B",
+  sumber: "Metode luar: empat cara membagi pecahan",
   latar: "#EEF2FF",
   ketukan: [
     k(
-      "Video ini membahas metode luar untuk Sub-Bab B. Metode ini membantu kita membagi pecahan dengan cepat dan memeriksa hasilnya.",
-      tambah(0, teks("jud", 150, 26, "Sub-Bab B: Pembagian Pecahan", 12, W.ungu)),
+      "Sekarang kita membahas metode luar untuk pembagian pecahan. Metode ini membantu kita membagi pecahan dengan cepat dan memeriksa hasilnya.",
+      tambah(0, teks("jud", 150, 26, "Pembagian Pecahan", 12, W.ungu)),
       tambah("metode", emo("e1", 70, 100, "🔭", 42), teks("t1", 70, 124, "metode luar", 9, W.merah)),
       tambah("membagi", emo("e2", 150, 100, "🧮", 42), teks("t2", 150, 124, "bagi dengan cepat", 9)),
       tambah("memeriksa", emo("e3", 230, 100, "🎯", 42), teks("t3", 230, 124, "periksa hasil", 9, W.hijau)),
@@ -38,7 +38,7 @@ export const ADEGAN_LUAR_B_PEMBUKA: AdeganStory = {
 export const ADEGAN_LUAR_B_PARTISI: AdeganStory = {
   id: "luarb1-partisi",
   judul: "Partition Division: potong tiap bagian",
-  sumber: "Metode dari luar buku; contoh dua per lima dibagi 3",
+  sumber: "Metode luar: dua per lima dibagi 3",
   latar: "#FFF4DD",
   ketukan: [
     k(
@@ -78,7 +78,7 @@ export const ADEGAN_LUAR_B_PARTISI: AdeganStory = {
 export const ADEGAN_LUAR_B_PARTISI_TERAPAN: AdeganStory = {
   id: "luarb1-partisi-terapan",
   judul: "Partition Division: pita tiga per empat meter",
-  sumber: "Metode dari luar buku; contoh pita dibagi untuk 2 adik",
+  sumber: "Metode luar: pita dibagi untuk 2 adik",
   latar: "#FEF2F2",
   ketukan: [
     k(
@@ -120,7 +120,7 @@ export const ADEGAN_LUAR_B_PARTISI_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_B_BALIK: AdeganStory = {
   id: "luarb1-balik",
   judul: "Reciprocal Flip: balik pembagi",
-  sumber: "Metode dari luar buku; kebalikan dan kali kebalikan",
+  sumber: "Metode luar: kebalikan dan kali kebalikan",
   latar: "#FDF4FF",
   ketukan: [
     k(
@@ -169,7 +169,7 @@ export const ADEGAN_LUAR_B_BALIK: AdeganStory = {
 export const ADEGAN_LUAR_B_BALIK_TERAPAN: AdeganStory = {
   id: "luarb1-balik-terapan",
   judul: "Reciprocal Flip: tali 9 meter",
-  sumber: "Metode dari luar buku; contoh tali dipotong tiap tiga per empat meter",
+  sumber: "Metode luar: tali dipotong tiga per empat",
   latar: "#F0FDFA",
   ketukan: [
     k(

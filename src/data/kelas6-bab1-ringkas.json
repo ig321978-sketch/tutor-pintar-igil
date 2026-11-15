@@ -224,6 +224,149 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa luas kebun Agam?",
+          "ikon": "🌱",
+          "suara": "Ini peta tentang kebun Agam yang disiram dengan ember besar dan ember kecil. Agam ingin tahu berapa luas kebun yang bisa disiram. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-asli",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Bilangan asli kali pecahan",
+            "ikon": "✖",
+            "petunjuk": "Mencari hasil ketika bilangan asli dikalikan dengan pecahan, seperti ember kecil Agam."
+          },
+          {
+            "id": "hal-pecahan",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Pecahan kali bilangan asli",
+            "ikon": "🥭",
+            "petunjuk": "Mencari sebagian dari sekumpulan benda, seperti pohon mangga manalagi."
+          },
+          {
+            "id": "hal-tukar",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Urutan kali boleh ditukar",
+            "ikon": "🔁",
+            "petunjuk": "Memahami bahwa hasil kali sama walaupun urutan dua bilangannya ditukar."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-gandakan",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Gandakan pecahan satuannya",
+            "ikon": "💧",
+            "petunjuk": "Langkah untuk bilangan asli kali pecahan: ulangi pecahan satuan sebanyak bilangan aslinya."
+          },
+          {
+            "id": "cara-pembilang",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Kalikan pembilang saja",
+            "ikon": "✏️",
+            "petunjuk": "Langkah untuk pecahan kali bilangan asli: pembilang dikali, penyebut dibiarkan tetap."
+          },
+          {
+            "id": "cara-tukar",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tukar urutan, cek hasilnya",
+            "ikon": "🔍",
+            "petunjuk": "Langkah untuk memeriksa jawaban: hitung dua kali dengan urutan berbeda."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-luas",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa hitung luas kebun",
+            "ikon": "🌾",
+            "petunjuk": "Kemampuan menghitung hasil perkalian pecahan dalam soal cerita."
+          },
+          {
+            "id": "hasil-cek",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa cek hasil dengan tukar",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan memeriksa jawaban sendiri dengan menukar urutan kali."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Perkalian pecahan dan hasilnya",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel perkalian pecahan dengan bilangan asli. Untuk tiap cerita, pasang perkaliannya, pecahan hasilnya, dan hasil akhirnya.",
+        "pojok": "Cerita",
+        "kolom": [
+          "Perkalian",
+          "Pecahan",
+          "Hasil akhir"
+        ],
+        "baris": [
+          {
+            "label": "Ember kecil",
+            "sel": [
+              "5 × 3/5",
+              "15/5",
+              "3 m²"
+            ]
+          },
+          {
+            "label": "Pita Hani",
+            "sel": [
+              "4 × 3/4",
+              "12/4",
+              "3 meter"
+            ]
+          },
+          {
+            "label": "Mangga",
+            "sel": [
+              "2/3 × 15",
+              "30/3",
+              "10 pohon"
+            ]
+          },
+          {
+            "label": "Musik",
+            "sel": [
+              "1/6 × 180",
+              "180/6",
+              "30 siswa"
+            ]
+          }
+        ]
       }
     },
     "B": {
@@ -444,6 +587,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Air Agam untuk gelas",
+          "ikon": "🥛",
+          "suara": "Ini peta masalah Agam yang membagi air minum ke dalam gelas. Kita ingin tahu berapa isi tiap gelas dan berapa banyak gelas yang terisi. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-asli",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Pecahan dibagi bilangan asli",
+            "petunjuk": "Memahami cara membagi sebuah pecahan menjadi beberapa bagian sama besar."
+          },
+          {
+            "id": "hal-pecahan",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Bilangan asli dibagi pecahan",
+            "petunjuk": "Memahami cara mencari berapa kali sebuah pecahan muat di dalam bilangan asli."
+          },
+          {
+            "id": "hal-balik",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Kebalikan sebuah pecahan",
+            "petunjuk": "Memahami pecahan yang atas dan bawahnya ditukar."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-kali",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Kalikan satu per pembagi",
+            "petunjuk": "Langkah membagi pecahan dengan bilangan asli."
+          },
+          {
+            "id": "cara-balik",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Balik pembagi, lalu kalikan",
+            "petunjuk": "Langkah membagi bilangan asli dengan pecahan."
+          },
+          {
+            "id": "cara-cek",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Periksa dengan perkalian",
+            "petunjuk": "Langkah terakhir untuk memastikan hasilnya benar."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-isi",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Isi tiap gelas diketahui",
+            "petunjuk": "Kemampuan menentukan nilai satu bagian setelah dibagi rata."
+          },
+          {
+            "id": "hasil-banyak",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Banyak gelas diketahui",
+            "petunjuk": "Kemampuan menentukan berapa wadah yang terisi penuh."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Tiga liter air Agam",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel tiga liter air Agam. Untuk tiap jenis, pasang isi wadahnya, kebalikan dari isi wadah itu, dan banyak wadah yang terisi.",
+        "pojok": "Jenis",
+        "kolom": [
+          "Isi wadah",
+          "Kebalikan",
+          "Banyak"
+        ],
+        "baris": [
+          {
+            "label": "Jeruk",
+            "sel": [
+              "1/4 liter",
+              "4",
+              "12 gelas"
+            ]
+          },
+          {
+            "label": "Jambu",
+            "sel": [
+              "1/2 liter",
+              "2",
+              "6 gelas"
+            ]
+          },
+          {
+            "label": "Mineral",
+            "sel": [
+              "1/5 liter",
+              "5",
+              "15 gelas"
+            ]
+          },
+          {
+            "label": "Botol",
+            "sel": [
+              "2/5 liter",
+              "5/2",
+              "15/2 botol"
+            ]
+          }
+        ]
       }
     },
     "C": {
@@ -661,6 +939,141 @@
                   "isi": "2,85 < 2,9 < 3,07 < 3,7"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Bagaimana mengenal bilangan desimal?",
+          "ikon": "🔢",
+          "suara": "Ini peta masalah mengenal bilangan desimal. Kita ingin tahu cara mengubah pecahan menjadi desimal, membaca nilai tempat desimal, dan mengurutkan desimal dari yang terkecil. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-ubah",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Pecahan menjadi desimal",
+            "petunjuk": "Hal yang dipelajari tentang menulis pecahan dalam bentuk desimal."
+          },
+          {
+            "id": "hal-tempat",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Nilai tempat desimal",
+            "petunjuk": "Hal yang dipelajari tentang tempat tiap angka di belakang koma."
+          },
+          {
+            "id": "hal-urut",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Mengurutkan desimal",
+            "petunjuk": "Hal yang dipelajari tentang menyusun desimal dari yang terkecil."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-penyebut",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Penyebut jadi 10 atau 100",
+            "petunjuk": "Langkah pertama: kalikan atas dan bawah sampai penyebutnya sepuluh atau seratus."
+          },
+          {
+            "id": "cara-tabel",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Isi tabel nilai tempat",
+            "petunjuk": "Langkah menaruh tiap angka pada kolomnya, nol mengisi kolom kosong."
+          },
+          {
+            "id": "cara-bandingkan",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Samakan angka, bandingkan",
+            "petunjuk": "Langkah menyamakan banyak angka di belakang koma, lalu membandingkan dari kiri."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-sama",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Pecahan dan desimal sama",
+            "petunjuk": "Kemampuan menyebut pecahan dan desimal yang nilainya sama."
+          },
+          {
+            "id": "hasil-urut",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Urutan dari kecil ke besar",
+            "petunjuk": "Kemampuan menyusun beberapa desimal dengan benar dari yang terkecil."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Pecahan, desimal, dan kisi",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel pecahan dan desimal. Pasang bentuk per seratus, desimal, dan banyak petak kisi untuk setengah, seperlima, seperempat, dan tiga perempat.",
+        "pojok": "Pecahan",
+        "kolom": [
+          "Per seratus",
+          "Desimal",
+          "Petak kisi"
+        ],
+        "baris": [
+          {
+            "label": "1/2",
+            "sel": [
+              "50/100",
+              "0,5",
+              "50 petak"
+            ]
+          },
+          {
+            "label": "1/5",
+            "sel": [
+              "20/100",
+              "0,2",
+              "20 petak"
+            ]
+          },
+          {
+            "label": "1/4",
+            "sel": [
+              "25/100",
+              "0,25",
+              "25 petak"
+            ]
+          },
+          {
+            "label": "3/4",
+            "sel": [
+              "75/100",
+              "0,75",
+              "75 petak"
             ]
           }
         ]

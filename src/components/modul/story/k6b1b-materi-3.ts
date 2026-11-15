@@ -2,11 +2,11 @@ import type { AdeganStory } from "./logika-story";
 import { W, bagi, emo, kartu, kotak, teks } from "./k6b1b-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k6b1b-bantu";
 
-/* ------------------------------ 9. Latihan 1.2 nomor 1 dan 2 (hlm. 28) ------------------------------ */
+/* ------------------------------ 9. Latihan 1 dan 2 ------------------------------ */
 export const ADEGAN_LATIHAN12A: AdeganStory = {
   id: "latihan12a",
-  judul: "Latihan 1.2 nomor 1 dan 2: tanah Pak Rudi dan gula Rina",
-  sumber: "Buku Siswa hlm. 28; kunci Buku Panduan Guru hlm. 41–42",
+  judul: "Latihan 1 dan 2: tanah Pak Rudi dan gula Rina",
+  sumber: "Materi: tanah Pak Rudi dan gula Rina",
   latar: "#FEFCE8",
   kutipan: [
     "Latihan 1.2",
@@ -19,8 +19,8 @@ export const ADEGAN_LATIHAN12A: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Latihan 1.2 nomor 1. Pak Rudi membagi dua per empat bagian tanahnya kepada 3 orang anak secara adil.",
-      tambah(0, teks("jud", 150, 24, "Latihan 1.2 nomor 1", 12, W.ungu)),
+      "Latihan 1. Pak Rudi membagi dua per empat bagian tanahnya kepada 3 orang anak secara adil.",
+      tambah(0, teks("jud", 150, 24, "Latihan 1", 12, W.ungu)),
       tambah("Rudi", emo("pr", 40, 120, "👨", 32), teks("prt", 40, 140, "Pak Rudi", 8.4)),
       tambah("tanahnya", bagi("tn", 80, 70, 200, 30, 4, 2, W.hijauMuda)),
       tambah("empat", teks("tt", 180, 62, "tanah: 2/4 bagian", 10, W.hijau)),
@@ -39,9 +39,9 @@ export const ADEGAN_LATIHAN12A: AdeganStory = {
       tambah("untuk", teks("hq", 150, 192, "tiap anak: 1/6 bagian tanah", 11, W.hijau)),
     ),
     k(
-      "Nomor 2. Rina punya 6 kg gula pasir. Setiap adonan kue bolu butuh tiga per empat kg gula. Berapa kue bolu yang dibuat Rina?",
+      "Latihan 2. Rina punya 6 kg gula pasir. Setiap adonan kue bolu butuh tiga per empat kg gula. Berapa kue bolu yang dibuat Rina?",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Latihan 1.2 nomor 2", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Latihan 2", 12, W.ungu)),
       tambah("Rina", kotak("gk", 30, 56, 110, 70, W.krem, W.coklat), teks("g1", 85, 98, "6 kg gula", 12)),
       tambah("adonan", emo("kb", 215, 90, "🧁", 34), teks("kt", 215, 118, "1 adonan: 3/4 kg", 9)),
       tambah("Berapa", teks("kq", 150, 170, "berapa kue bolu?", 12, W.merah)),
@@ -60,13 +60,13 @@ export const ADEGAN_LATIHAN12A: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 10. Latihan 1.2 nomor 3 dan 4 (hlm. 28) ------------------------------ */
+/* ------------------------------ 10. Latihan 3 dan 4 ------------------------------ */
 const batangX = [20, 62, 104, 146, 188];
 
 export const ADEGAN_LATIHAN12B: AdeganStory = {
   id: "latihan12b",
-  judul: "Latihan 1.2 nomor 3 dan 4: cokelat Astri dan soal cerita",
-  sumber: "Buku Siswa hlm. 28; kunci Buku Panduan Guru hlm. 42–43",
+  judul: "Latihan 3 dan 4: cokelat Astri dan soal cerita",
+  sumber: "Materi: cokelat Astri dan soal cerita",
   latar: "#FFF1F2",
   kutipan: [
     "Astri memiliki 5 batang cokelat",
@@ -76,8 +76,8 @@ export const ADEGAN_LATIHAN12B: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Nomor 3. Astri punya 5 batang cokelat. Tiap teman diberi dua per tiga bagian cokelat. Berapa teman yang mendapat cokelat?",
-      tambah(0, teks("jud", 150, 24, "Latihan 1.2 nomor 3", 12, W.ungu)),
+      "Latihan 3. Astri punya 5 batang cokelat. Tiap teman diberi dua per tiga bagian cokelat. Berapa teman yang mendapat cokelat?",
+      tambah(0, teks("jud", 150, 24, "Latihan 3", 12, W.ungu)),
       tambah("batang", ...batangX.map((x, i) => kotak(`cb${i}`, x, 56, 36, 22, "#92400E", W.hitam, { rx: 4 }))),
       tambah("cokelat.", teks("c5", 150, 100, "5 batang cokelat", 11)),
       tambah("Tiap", teks("c6", 150, 130, "tiap teman: 2/3 batang", 11, W.merah)),
@@ -101,14 +101,14 @@ export const ADEGAN_LATIHAN12B: AdeganStory = {
       tambah("Sisanya", teks("d2", 150, 112, "5 − 14/3 = 15/3 − 14/3 = 1/3", 14, W.merah)),
     ),
     k(
-      "Sisanya satu per tiga batang cokelat. Kunci menulis setengah bagian; itu setengah porsi dua per tiga, jadi sama dengan satu per tiga batang.",
+      "Sisanya satu per tiga batang cokelat. Sisa itu sama dengan setengah porsi seorang teman, sebab setengah kali dua per tiga sama dengan satu per tiga.",
       tambah("Sisanya", teks("d3", 150, 150, "sisa: 1/3 batang", 14, W.hijau)),
-      tambah("setengah", teks("d4", 150, 186, "kunci: 1/2 porsi = 1/2 × 2/3 = 1/3", 11, W.ungu)),
+      tambah("setengah", teks("d4", 150, 186, "1/2 porsi = 1/2 × 2/3 = 1/3", 11, W.ungu)),
     ),
     k(
-      "Nomor 4. Buat soal cerita. Pita satu per lima meter dipotong menjadi 4 bagian sama panjang, tiap potong satu per dua puluh meter.",
+      "Latihan 4. Buat soal cerita. Pita satu per lima meter dipotong menjadi 4 bagian sama panjang, tiap potong satu per dua puluh meter.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Latihan 1.2 nomor 4", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Latihan 4", 12, W.ungu)),
       tambah("Pita", bagi("pt", 30, 60, 240, 24, 4, 4, W.merahMuda), teks("p1", 150, 52, "pita 1/5 meter", 10, W.merah)),
       tambah("tiap", teks("p2", 150, 130, "1/5 ÷ 4 = 1/5 × 1/4 = 1/20", 14, W.ungu)),
     ),
@@ -119,22 +119,22 @@ export const ADEGAN_LATIHAN12B: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 11. Ayo Berefleksi (hlm. 29) ------------------------------ */
+/* ------------------------------ 11. Renungan: dua cara membagi pecahan (tidak diputar) ------------------------------ */
 export const ADEGAN_REFLEKSI12: AdeganStory = {
   id: "refleksi12",
-  judul: "Ayo Berefleksi: dua cara membagi pecahan",
-  sumber: "Buku Siswa hlm. 29; Buku Panduan Guru hlm. 43",
+  judul: "Renungan: dua cara membagi pecahan",
+  sumber: "Materi: renungan dua cara membagi",
   latar: "#F5F3FF",
   kutipan: [
     "Dari aktivitas yang telah kalian lakukan pada subbab ini",
     "Bagaimana cara kalian membagi pecahan dengan bilangan asli",
     "Bagaimana cara kalian membagi bilangan asli dengan pecahan",
-    "Ayo Berefleksi",
+    "Renungan",
   ],
   ketukan: [
     k(
-      "Ayo berefleksi. Pertanyaan a: bagaimana membagi pecahan dengan bilangan asli? Tentukan bagian pecahannya, lalu bagi sebanyak bilangan aslinya.",
-      tambah(0, teks("jud", 150, 24, "Ayo Berefleksi", 12, W.ungu)),
+      "Renungan. Pertanyaan a: bagaimana membagi pecahan dengan bilangan asli? Tentukan bagian pecahannya, lalu bagi sebanyak bilangan aslinya.",
+      tambah(0, teks("jud", 150, 24, "Renungan", 12, W.ungu)),
       tambah("Pertanyaan", kartu("qa", 16, 40, 268, 36, W.muda, ["a. pecahan dibagi bilangan asli?"], 9.6)),
       tambah("lalu", teks("ra", 150, 112, "a/b ÷ c = a/b × 1/c", 16, W.ungu)),
     ),
@@ -145,7 +145,7 @@ export const ADEGAN_REFLEKSI12: AdeganStory = {
     k(
       "Pertanyaan b: bagaimana membagi bilangan asli dengan pecahan? Cari ada berapa bagian pecahan itu di dalam bilangan asli, yaitu kalikan dengan kebalikannya.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Ayo Berefleksi", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Renungan", 12, W.ungu)),
       tambah("Pertanyaan", kartu("qb", 16, 40, 268, 36, W.hijauMuda, ["b. bilangan asli dibagi pecahan?"], 9.6)),
       tambah("kalikan", teks("rc", 150, 112, "a ÷ b/c = a/1 × c/b = ac/b", 15, W.ungu)),
     ),

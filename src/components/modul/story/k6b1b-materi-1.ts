@@ -2,11 +2,11 @@ import type { AdeganStory } from "./logika-story";
 import { W, bagi, botol, emo, gelas, kartu, pecahan, teks } from "./k6b1b-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k6b1b-bantu";
 
-/* ------------------------------ 1. Agam, botol, dan gelas (hlm. 16 dan 17) ------------------------------ */
+/* ------------------------------ 1. Agam, botol, dan gelas (cerita pembuka) ------------------------------ */
 export const ADEGAN_BOTOL: AdeganStory = {
   id: "botol-agam",
   judul: "Agam, botol, dan gelas",
-  sumber: "Buku Siswa hlm. 16–17",
+  sumber: "Materi: cerita Agam dan botol",
   latar: "#ECFEFF",
   kutipan: [
     "B. Pembagian Pecahan",
@@ -18,13 +18,7 @@ export const ADEGAN_BOTOL: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Sub-Bab B membahas Pembagian Pecahan. Pertama, pecahan dibagi bilangan asli. Kedua, bilangan asli dibagi pecahan.",
-      tambah(0, teks("jud", 150, 24, "Sub-Bab B: Pembagian Pecahan", 12, W.ungu)),
-      tambah("pertama", kartu("c1", 14, 46, 272, 44, W.muda, ["1. pecahan dibagi bilangan asli"], 9.4)),
-      tambah("kedua", kartu("c2", 14, 104, 272, 44, W.hijauMuda, ["2. bilangan asli dibagi pecahan"], 9.4)),
-    ),
-    k(
-      "Agam memiliki sebuah botol air minum. Botol itu berisi air sebanyak 1 liter.",
+      "Perhatikan cerita Agam. Agam memiliki sebuah botol air minum. Botol itu berisi air sebanyak 1 liter.",
       bersih(0),
       tambah("Agam", emo("ag", 70, 120, "👦", 36), teks("agt", 70, 142, "Agam", 9)),
       tambah("botol", botol("bt", 140, 60, W.air)),
@@ -47,15 +41,15 @@ export const ADEGAN_BOTOL: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 2. Eksplorasi 1.3 bagian a (hlm. 17 sampai 19) ------------------------------ */
+/* ------------------------------ 2. Eksplorasi 1.3 bagian a (satu liter ke tiga gelas) ------------------------------ */
 const PX = 30;
 const PW = 240;
 const pusat3 = [70, 150, 230];
 
 export const ADEGAN_EKSPLOR13A: AdeganStory = {
   id: "eks13a",
-  judul: "Eksplorasi 1.3 bagian a: 1 liter ke 3 gelas",
-  sumber: "Buku Siswa hlm. 17–19",
+  judul: "Bagian a: 1 liter ke 3 gelas",
+  sumber: "Materi: satu liter ke tiga gelas",
   latar: "#F0F9FF",
   kutipan: [
     "Eksplorasi 1.3",
@@ -67,8 +61,8 @@ export const ADEGAN_EKSPLOR13A: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi 1.3 bagian a. Botol Agam berisi 1 liter air, digambarkan sebagai satu kotak penuh.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 1.3 (a)", 12, W.ungu)),
+      "Mari kita kerjakan bagian a. Botol Agam berisi 1 liter air, digambarkan sebagai satu kotak penuh.",
+      tambah(0, teks("jud", 150, 24, "Bagian a: 1 liter ke 3 gelas", 12, W.ungu)),
       tambah("Botol", bagi("b", PX, 90, PW, 28, 1, 1)),
       tambah("liter", teks("tl", 150, 78, "1 liter = 1 kotak penuh", 10)),
     ),
@@ -101,14 +95,14 @@ export const ADEGAN_EKSPLOR13A: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Eksplorasi 1.3 bagian b dan c (hlm. 18 sampai 20) ------------------------------ */
+/* ------------------------------ 3. Eksplorasi 1.3 bagian b dan c (setengah dan sepertiga liter) ------------------------------ */
 const pusat6 = [50, 90, 130, 170, 210, 250];
 const pusat9 = Array.from({ length: 9 }, (_, i) => PX + (i + 0.5) * (PW / 9));
 
 export const ADEGAN_EKSPLOR13BC: AdeganStory = {
   id: "eks13bc",
-  judul: "Eksplorasi 1.3 bagian b dan c: setengah dan sepertiga liter",
-  sumber: "Buku Siswa hlm. 18–20",
+  judul: "Bagian b dan c: setengah dan sepertiga liter",
+  sumber: "Materi: setengah dan sepertiga liter",
   latar: "#F0FDF4",
   kutipan: [
     "Jika botol Agam berisi",
@@ -119,7 +113,7 @@ export const ADEGAN_EKSPLOR13BC: AdeganStory = {
   ketukan: [
     k(
       "Bagian b. Sekarang botol Agam hanya berisi setengah liter air, lalu dituang rata ke 3 gelas.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 1.3 (b)", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Bagian b: setengah liter", 12, W.ungu)),
       tambah("botol", bagi("b", PX, 80, PW, 28, 2, 0)),
       ubah("setengah", { id: "b0", warna: W.air }),
       tambah("setengah", pecahan("fh", 90, 66, "1", "2", 11, W.merah)),
@@ -128,7 +122,7 @@ export const ADEGAN_EKSPLOR13BC: AdeganStory = {
     k(
       "Bagi setengah itu menjadi tiga bagian sama besar. Setiap bagian digambar pada kotak satu liter yang sama.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 1.3 (b)", 12, W.ungu), bagi("d", PX, 80, PW, 28, 6, 3, W.air)),
+      tambah(0, teks("jud", 150, 24, "Bagian b: setengah liter", 12, W.ungu), bagi("d", PX, 80, PW, 28, 6, 3, W.air)),
       ubah("kotak", { id: "d1", warna: W.hijauMuda }, { id: "d2", warna: W.krem }),
       tambah("tiga", pecahan("fh", 90, 66, "1", "2", 11, W.merah)),
     ),
@@ -146,14 +140,14 @@ export const ADEGAN_EKSPLOR13BC: AdeganStory = {
     k(
       "Bagian c. Sekarang botol berisi sepertiga liter, dan dituang rata ke 3 gelas.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 1.3 (c)", 12, W.ungu), bagi("e", PX, 80, PW, 28, 3, 1, W.air)),
+      tambah(0, teks("jud", 150, 24, "Bagian c: sepertiga liter", 12, W.ungu), bagi("e", PX, 80, PW, 28, 3, 1, W.air)),
       tambah("sepertiga", pecahan("ft", 70, 66, "1", "3", 11, W.merah)),
       tambah("gelas.", teks("tg", 150, 150, "dituang ke 3 gelas", 10, W.hijau)),
     ),
     k(
       "Sepertiga itu dibagi 3 lagi. Seluruh kotak menjadi 9 bagian sama besar, sehingga satu bagian bernilai satu per sembilan.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 1.3 (c)", 12, W.ungu), bagi("f", PX, 80, PW, 28, 9, 3, W.air)),
+      tambah(0, teks("jud", 150, 24, "Bagian c: sepertiga liter", 12, W.ungu), bagi("f", PX, 80, PW, 28, 9, 3, W.air)),
       ubah("lagi", { id: "f1", warna: W.hijauMuda }, { id: "f2", warna: W.krem }),
       tambah("menjadi", teks("n9", 150, 140, "9 bagian sama besar", 10, W.hijau)),
       tambah("bernilai", pecahan("u0", pusat9[0], 166, "1", "9", 9, W.merah)),
@@ -167,11 +161,11 @@ export const ADEGAN_EKSPLOR13BC: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 4. Kesimpulan eksplorasi 1.3 (hlm. 20 dan 21) ------------------------------ */
+/* ------------------------------ 4. Kesimpulan pecahan dibagi bilangan asli ------------------------------ */
 export const ADEGAN_KESIMPULAN13: AdeganStory = {
   id: "kesimpulan13",
   judul: "Kesimpulan: pecahan dibagi bilangan asli",
-  sumber: "Buku Siswa hlm. 20–21",
+  sumber: "Materi: kesimpulan pecahan dibagi asli",
   latar: "#FFF7ED",
   kutipan: [
     "Apa yang dapat kalian simpulkan",
@@ -186,7 +180,7 @@ export const ADEGAN_KESIMPULAN13: AdeganStory = {
   ketukan: [
     k(
       "Dari bagian a, b, dan c, bagian pecahan bertambah banyak tetapi nilainya makin kecil, tergantung faktor pembaginya.",
-      tambah(0, teks("jud", 150, 24, "Hasil Eksplorasi 1.3", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Hasil bagian a, b, dan c", 12, W.ungu)),
       tambah(2, teks("ra", 150, 70, "a. 1 ÷ 3 = 1/3", 13)),
       tambah(3, teks("rb", 150, 110, "b. 1/2 ÷ 3 = 1/6", 13)),
       tambah(5, teks("rc", 150, 150, "c. 1/3 ÷ 3 = 1/9", 13)),
@@ -194,7 +188,7 @@ export const ADEGAN_KESIMPULAN13: AdeganStory = {
     k(
       "Ingat pelajaran sebelumnya: satu dibagi b sama dengan satu per b.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Intuisi Bilangan", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Ingat pelajaran sebelumnya", 12, W.ungu)),
       tambah("satu", teks("r1", 150, 100, "1 ÷ b = 1/b", 20, W.merah)),
       tambah("sama", teks("r2", 150, 150, "1 dibagi b sama rata", 9, W.hijau)),
     ),
@@ -220,7 +214,7 @@ export const ADEGAN_KESIMPULAN13: AdeganStory = {
     k(
       "Membagi pecahan dengan bilangan asli berarti membagi pecahan itu menjadi beberapa bagian sebanyak bilangan aslinya. Hasilnya menunjukkan nilai setiap bagian.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Kesimpulan buku", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Kesimpulan", 12, W.ungu)),
       tambah("Membagi", kartu("ks", 16, 40, 268, 60, W.muda, ["pecahan dibagi bilangan asli:", "bagi pecahan itu menjadi", "beberapa bagian sebanyak bilangannya"], 8.8)),
       tambah("Hasilnya", kartu("ks2", 16, 112, 268, 36, W.hijauMuda, ["hasil = nilai setiap bagian"], 9.6)),
       tambah("setiap", emo("ksm", 150, 184, "🥛", 26)),

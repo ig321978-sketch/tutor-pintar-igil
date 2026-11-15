@@ -1,12 +1,12 @@
 import type { AdeganStory } from "./logika-story";
-import { W, bagi, botol, emo, gelas, kartu, panah, pecahan, teks } from "./k6b1b-gambar";
+import { W, bagi, botol, emo, gelas, kartu, kotak, panah, pecahan, teks } from "./k6b1b-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k6b1b-bantu";
 
-/* ------------------------------ 5. Berpikir kritis dan kreatif: cara Rini (hlm. 21 dan 22) ------------------------------ */
+/* ------------------------------ 5. Tantangan: cara Rini ------------------------------ */
 export const ADEGAN_RINI: AdeganStory = {
   id: "rini-kreatif",
-  judul: "Ayo Berpikir Kritis dan Berpikir Kreatif",
-  sumber: "Buku Siswa hlm. 21–22; Buku Panduan Guru hlm. 36–37",
+  judul: "Tantangan: cara Rini dan cerita sendiri",
+  sumber: "Materi: tantangan cara Rini",
   latar: "#FDF2F8",
   kutipan: [
     "Rini menyelesaikan pembagian pecahan dengan cara berikut",
@@ -17,7 +17,7 @@ export const ADEGAN_RINI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Berpikir Kritis. Rini menghitung empat per tiga dibagi 2 dengan cara ini: 4 dibagi 2 sama dengan 2, penyebut 3 tetap.",
+      "Sekarang ada Tantangan. Rini menghitung empat per tiga dibagi 2 dengan cara ini: 4 dibagi 2 sama dengan 2, penyebut 3 tetap.",
       tambah(0, teks("jud", 150, 24, "Cara Rini", 12, W.ungu), emo("ri", 40, 100, "👧", 34)),
       tambah("Rini", teks("e1", 170, 100, "4/3 ÷ 2", 18)),
       tambah("tetap", teks("e2", 170, 140, "= (4 ÷ 2)/3 = 2/3", 15, W.merah)),
@@ -32,10 +32,10 @@ export const ADEGAN_RINI: AdeganStory = {
       tambah("yaitu", teks("gh", 150, 160, "2 potongan 1/3 = 2/3", 12, W.merah)),
     ),
     k(
-      "Buku Panduan Guru menyatakan hasilnya benar. Cara membagi pembilang hanya mudah bila pembilang habis dibagi. Cara umum: kalikan dengan satu per 2.",
+      "Hasilnya memang benar. Cara membagi pembilang hanya mudah bila pembilang habis dibagi. Cara umum: kalikan dengan satu per 2.",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Cara umum", 12, W.ungu)),
-      tambah("Guru", kartu("pg", 16, 40, 268, 40, W.krem, ["pembilang dibagi langsung:", "mudah bila habis dibagi"], 9)),
+      tambah("benar", kartu("pg", 16, 40, 268, 40, W.krem, ["pembilang dibagi langsung:", "mudah bila habis dibagi"], 9)),
       tambah("umum:", teks("cu", 150, 130, "4/3 × 1/2 = 4/6 = 2/3", 14, W.merah)),
     ),
     k(
@@ -46,7 +46,7 @@ export const ADEGAN_RINI: AdeganStory = {
       tambah("tetapi", teks("t2", 150, 130, "= 3/4 × 1/2 = 3/8", 16, W.merah)),
     ),
     k(
-      "Ayo Berpikir Kreatif. Buat cerita untuk satu per tiga dibagi 2. Misalnya, pita merah sepertiga meter dipotong menjadi 2 bagian sama panjang.",
+      "Tantangan berikutnya: buat cerita untuk satu per tiga dibagi 2. Misalnya, pita merah sepertiga meter dipotong menjadi 2 bagian sama panjang.",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Cerita pita merah", 12, W.ungu)),
       tambah("pita", bagi("pt", 30, 80, 240, 26, 1, 1, W.merahMuda), emo("pe", 150, 150, "🎀", 30)),
@@ -64,13 +64,13 @@ export const ADEGAN_RINI: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 6. Eksplorasi 1.4 bagian a sampai c (hlm. 22 sampai 25) ------------------------------ */
+/* ------------------------------ 6. Bilangan asli dibagi pecahan: bagian a sampai c ------------------------------ */
 const kolX = [14, 108, 202];
 
 export const ADEGAN_EKSPLOR14A: AdeganStory = {
   id: "eks14a",
-  judul: "Eksplorasi 1.4: 3 liter dibagi gelas kecil",
-  sumber: "Buku Siswa hlm. 22–25",
+  judul: "Bagian a sampai c: 3 liter dibagi gelas kecil",
+  sumber: "Materi: 3 liter dibagi gelas kecil",
   latar: "#FFF7ED",
   kutipan: [
     "2. Pembagian Bilangan Asli dengan Pecahan",
@@ -131,11 +131,11 @@ export const ADEGAN_EKSPLOR14A: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 7. Eksplorasi 1.4 bagian d dan e, pembahasan (hlm. 24 sampai 27) ------------------------------ */
+/* ------------------------------ 7. Bagian d dan e, lalu aturan kebalikan ------------------------------ */
 export const ADEGAN_EKSPLOR14B: AdeganStory = {
   id: "eks14b",
-  judul: "Eksplorasi 1.4 bagian d dan e, lalu aturan kebalikan",
-  sumber: "Buku Siswa hlm. 24–28",
+  judul: "Bagian d dan e, lalu aturan kebalikan",
+  sumber: "Materi: bagian d, e, dan kebalikan",
   latar: "#F5F3FF",
   kutipan: [
     "Yang dapat saya simpulkan adalah",
@@ -211,10 +211,18 @@ export const ADEGAN_EKSPLOR14B: AdeganStory = {
     k(
       "Aturannya: membagi bilangan asli dengan pecahan sama dengan mengalikan bilangan asli itu dengan kebalikan pecahannya.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Aturan buku", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Aturan kebalikan", 12, W.ungu)),
       tambah("Aturannya", kartu("ar", 16, 52, 268, 56, W.krem, ["a ÷ b/c = a × c/b"], 17)),
       tambah("kebalikan", teks("ar2", 150, 146, "pembagi dibalik, ÷ menjadi ×", 11, W.merah)),
       sorotkan("kebalikan", "ar-k"),
+    ),
+    k(
+      "Hati-hati, yang dibalik hanya pecahan pembagi, bukan bilangan yang dibagi. Contohnya 3 dibagi dua per lima menjadi 3 kali lima per dua.",
+      bersih(0),
+      tambah(0, teks("jud", 150, 24, "Hati-hati", 13, W.merah)),
+      tambah("pembagi,", teks("hh1", 150, 80, "3 ÷ 2/5", 20, W.biru), kotak("hh2", 168, 56, 62, 34, "none", W.merah, { putus: true, rx: 6 })),
+      tambah("Contohnya", teks("hh3", 150, 134, "3 tetap, 2/5 dibalik", 12, W.merah)),
+      tambah("menjadi", teks("hh4", 150, 172, "3 × 5/2", 20, W.hijau)),
     ),
   ],
 };

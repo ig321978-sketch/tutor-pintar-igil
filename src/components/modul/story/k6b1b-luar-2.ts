@@ -6,7 +6,7 @@ import { bersih, k, sorotkan, tambah } from "./k6b1b-bantu";
 export const ADEGAN_LUAR_B_SILANG: AdeganStory = {
   id: "luarb1-silang",
   judul: "Cross-Arrow Divide: panah silang",
-  sumber: "Metode dari luar buku; pembagian dua pecahan dengan dua panah silang",
+  sumber: "Metode luar: dua panah silang",
   latar: "#ECFDF5",
   ketukan: [
     k(
@@ -44,7 +44,7 @@ export const ADEGAN_LUAR_B_SILANG: AdeganStory = {
 export const ADEGAN_LUAR_B_SILANG_TERAPAN: AdeganStory = {
   id: "luarb1-silang-terapan",
   judul: "Cross-Arrow Divide: beras ke empat kantong",
-  sumber: "Metode dari luar buku; contoh dua per tiga kilogram beras dibagi 4 kantong",
+  sumber: "Metode luar: beras dibagi ke 4 kantong",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -85,7 +85,7 @@ const tangga = [30, 90, 150, 210];
 export const ADEGAN_LUAR_B_UKUR: AdeganStory = {
   id: "luarb1-ukur",
   judul: "Repeated-Subtraction Measurement: kurangi berulang",
-  sumber: "Metode dari luar buku; menghitung berapa kali pembagi muat",
+  sumber: "Metode luar: kurangi berulang",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -131,7 +131,7 @@ export const ADEGAN_LUAR_B_UKUR: AdeganStory = {
 export const ADEGAN_LUAR_B_UKUR_TERAPAN: AdeganStory = {
   id: "luarb1-ukur-terapan",
   judul: "Repeated-Subtraction Measurement: sirup dan botol",
-  sumber: "Metode dari luar buku; contoh 4 liter sirup ke botol tiga per delapan liter",
+  sumber: "Metode luar: sirup dan botol tiga per delapan",
   latar: "#FFF1F2",
   ketukan: [
     k(
@@ -172,8 +172,8 @@ export const ADEGAN_LUAR_B_UKUR_TERAPAN: AdeganStory = {
 /* ------------------------------ LB9. Ringkasan ------------------------------ */
 export const ADEGAN_LUAR_B_RINGKAS: AdeganStory = {
   id: "luarb1-ringkas",
-  judul: "Ringkasan empat metode luar Sub-Bab B",
-  sumber: "Ringkasan metode luar Sub-Bab B",
+  judul: "Ringkasan empat metode luar",
+  sumber: "Ringkasan empat metode luar",
   latar: "#F5F3FF",
   ketukan: [
     k(
