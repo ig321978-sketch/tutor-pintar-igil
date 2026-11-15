@@ -4,11 +4,11 @@ import { bersih, k, tambah, ubah } from "./k5b5d-bantu";
 
 const jud = (isi: string, y = 20, u = 12): Obj => teks("jud", 150, y, isi, u, W.ungu);
 
-/* ------------------------------ 8. Miskonsepsi dan diferensiasi (Panduan Guru hlm. 235) ------------------------------ */
+/* ------------------------------ 8. Pesan guru: hati-hati dan tantangan ------------------------------ */
 export const ADEGAN_MISKONSEPSI: AdeganStory = {
   id: "miskonsepsi-d",
-  judul: "Miskonsepsi dan diferensiasi pada Sub-Bab D",
-  sumber: "Buku Panduan Guru hlm. 235",
+  judul: "Hati-hati, tantangan, dan renungan",
+  sumber: "Materi: pesan guru tentang bentuk kerangka",
   latar: "#FFF1F2",
   kutipan: [
     "Guru perlu mengantisipasi jawaban nomor 5 dan 6",
@@ -23,52 +23,52 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Panduan guru meminta guru mengantisipasi dua jawaban pada tabel, yaitu nomor 5 dan nomor 6. Keduanya bisa memancing pertanyaan atau salah paham.",
-      tambah(0, jud("Dua jawaban perlu diantisipasi", 22, 11)),
-      tambah("nomor", kartu("mk1", 25, 50, 110, 64, W.hijauMuda, ["Nomor 5", "15 x 15"], 10)),
-      tambah("nomor@2", kartu("mk2", 165, 50, 110, 64, W.krem, ["Nomor 6", "18 x 12"], 10)),
-      tambah("salah", teks("mk3", 150, 160, "bisa memancing pertanyaan", 9.4, W.merah)),
+      "Hati-hati, ada dua jawaban yang perlu kamu pahami baik-baik, yaitu bentuk kelima dan bentuk keenam. Keduanya sering memancing salah paham.",
+      tambah(0, jud("Hati-hati: dua jawaban", 22, 11)),
+      tambah("kelima", kartu("mk1", 25, 50, 110, 64, W.hijauMuda, ["Bentuk 5", "15 x 15"], 10)),
+      tambah("keenam", kartu("mk2", 165, 50, 110, 64, W.krem, ["Bentuk 6", "18 x 12"], 10)),
+      tambah("salah", teks("mk3", 150, 160, "sering memancing salah paham", 9.4, W.merah)),
     ),
     k(
-      "Jawaban nomor 5 berarti siswa mengusulkan persegi. Siswa lain mungkin bertanya, bukankah soal meminta persegi panjang, bukan persegi?",
+      "Bentuk kelima berarti persegi. Mungkin ada yang bertanya, bukankah soalnya meminta persegi panjang, bukan persegi?",
       bersih(0),
-      tambah(0, jud("Nomor 5: bentuk persegi", 22, 11)),
+      tambah(0, jud("Bentuk 5: persegi", 22, 11)),
       tambah("persegi.", kotak("ms", 60, 70, 56, 56, W.hijauMuda, W.hijau, { tebal: 2.4 }), teks("mst", 88, 102, "persegi", 9.4, W.hijau)),
       tambah("bertanya,", kartu("mq", 140, 60, 140, 70, W.krem, ["bukan persegi panjang?", "soal minta persegi", "panjang"], 8.4)),
     ),
     k(
-      "Guru mengingatkan materi kelas empat: persegi juga merupakan persegi panjang. Perinciannya akan dipelajari pada Bab 7.",
+      "Ingat pelajaran kelas empat: persegi juga merupakan persegi panjang. Ciri-cirinya akan kita pelajari lebih rinci nanti.",
       bersih(0),
       tambah(0, jud("Persegi juga persegi panjang", 22, 11)),
       tambah("persegi", kotak("mo", 50, 50, 200, 100, W.muda, W.biru, { tebal: 2 }), teks("mot", 150, 66, "persegi panjang", 9.4)),
       tambah("juga", kotak("mi", 125, 84, 50, 50, W.hijauMuda, W.hijau, { tebal: 2 }), teks("mit", 150, 113, "persegi", 9, W.hijau)),
-      tambah("Bab", teks("mb", 150, 178, "rincian ciri: Bab 7", 9.4, W.ungu)),
+      tambah("rinci", teks("mb", 150, 178, "rinciannya dipelajari nanti", 9.4, W.ungu)),
     ),
     k(
-      "Jawaban nomor 6, yaitu 18 dan 12, berarti siswa tidak memakai petak sebagai satuan, sebab kertas berpetak hanya menampung kelipatan 5. Jawaban ini perlu diapresiasi, lalu dilanjutkan dengan eksplorasi tanpa kertas berpetak.",
+      "Jawaban bentuk keenam, yaitu delapan belas dan dua belas, berarti kamu tidak memakai petak sebagai satuan, sebab kertas berpetak hanya menampung kelipatan lima. Jawaban itu patut dihargai, lalu lanjutkan dengan mencoba tanpa kertas berpetak.",
       bersih(0),
-      tambah(0, jud("Nomor 6: 18 dan 12", 22, 11)),
+      tambah(0, jud("Bentuk 6: 18 dan 12", 22, 11)),
       tambah("petak", garis("gl", 30, 100, 240, 0, W.biru, 2.4)),
       tambah("kelipatan", ...[10, 15, 20].map((v, i) => [garis(`gt${i}`, 40 + i * 80, 94, 0, 12, W.biru, 2), teks(`gv${i}`, 40 + i * 80, 122, `${v}`, 9.4)]).flat(), teks("gk", 150, 150, "kelipatan 5", 9, W.ungu)),
-      tambah("18@1", bulat("g12", 72, 100, 4.6, W.merah, undefined), teks("g12t", 72, 86, "12", 9, W.merah), bulat("g18", 168, 100, 4.6, W.merah, undefined), teks("g18t", 168, 86, "18", 9, W.merah)),
-      tambah("diapresiasi,", teks("ga", 150, 182, "dihargai, lalu lanjut tanpa petak", 8.8, W.hijau)),
+      tambah("delapan", bulat("g12", 72, 100, 4.6, W.merah, undefined), teks("g12t", 72, 86, "12", 9, W.merah), bulat("g18", 168, 100, 4.6, W.merah, undefined), teks("g18t", 168, 86, "18", 9, W.merah)),
+      tambah("dihargai,", teks("ga", 150, 182, "dihargai, lalu lanjut tanpa petak", 8.8, W.hijau)),
     ),
     k(
-      "Untuk diferensiasi, kegiatan ini dirancang mengembangkan pola berpikir kreatif. Siswa menentukan ukuran persegi panjang dari kawat 60 sentimeter, dan guru membimbing siswa yang kesulitan secara proporsional.",
+      "Tantangan untukmu: dengan kawat enam puluh sentimeter, carilah ukuran persegi panjang lain yang kamu suka. Berpikirlah kreatif, dan mintalah bimbingan guru bila kesulitan.",
       bersih(0),
-      tambah(0, jud("Diferensiasi", 22)),
-      tambah("kreatif.", emo("df1", 70, 100, "💡", 40), teks("df1t", 70, 126, "berpikir kreatif", 8.8)),
+      tambah(0, jud("Tantangan", 22)),
       tambah("kawat", emo("df2", 150, 100, "📏", 36), teks("df2t", 150, 126, "kawat 60 cm", 8.8, W.merah)),
-      tambah("membimbing", emo("df3", 230, 100, "🤝", 36), teks("df3t", 230, 126, "bimbingan pas", 8.8, W.hijau)),
+      tambah("kreatif,", emo("df1", 70, 100, "💡", 40), teks("df1t", 70, 126, "berpikir kreatif", 8.8)),
+      tambah("bimbingan", emo("df3", 230, 100, "🤝", 36), teks("df3t", 230, 126, "bimbingan pas", 8.8, W.hijau)),
     ),
   ],
 };
 
-/* ------------------------------ 9. Refleksi nomor 15 sampai 18 (BS hlm. 161; Panduan Guru hlm. 235, 244, 245) ------------------------------ */
+/* ------------------------------ 9. Renungan untuk siswa ------------------------------ */
 export const ADEGAN_REFLEKSI_D: AdeganStory = {
   id: "refleksi-d",
-  judul: "Refleksi nomor 15 sampai 18",
-  sumber: "Buku Siswa hlm. 161; Buku Panduan Guru hlm. 235 dan 245",
+  judul: "Renungan tentang kerangka dan luas",
+  sumber: "Materi: renungan dan pertanyaan terbuka",
   latar: "#F5F3FF",
   kutipan: [
     "Aku bisa menemukan berbagai ukuran persegi panjang jika kelilingnya diketahui",
@@ -79,53 +79,53 @@ export const ADEGAN_REFLEKSI_D: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Pada tabel refleksi di buku siswa, nomor 15 untuk sub-bab D: aku bisa menemukan berbagai ukuran persegi panjang jika kelilingnya diketahui. Siswa memberi tanda centang pada kolom ya atau tidak.",
-      tambah(0, jud("Refleksi nomor 15", 22)),
-      tambah("nomor", kotak("rf", 15, 42, 270, 60, W.putih, W.biru, { rx: 6 }), teks("rf1", 24, 62, "15. Aku bisa menemukan berbagai ukuran", 8.2, W.biru, { anchor: "start" }), teks("rf2", 24, 76, "persegi panjang jika kelilingnya diketahui.", 8.2, W.biru, { anchor: "start" })),
-      tambah("centang", kotak("rya", 60, 120, 70, 28, W.hijauMuda, W.hijau, { rx: 6 }), teks("ryt", 95, 138, "✓ Ya", 11, W.hijau), kotak("rtd", 170, 120, 70, 28, W.merahMuda, W.merah, { rx: 6 }), teks("rtt", 205, 138, "Tidak", 11, W.merah)),
+      "Renungan untukmu. Apakah kamu bisa menemukan berbagai ukuran persegi panjang jika kelilingnya sudah diketahui? Coba jawab dalam hati.",
+      tambah(0, jud("Renungan", 22)),
+      tambah("Apakah", kotak("rf", 15, 42, 270, 60, W.putih, W.biru, { rx: 6 }), teks("rf1", 24, 62, "Aku bisa menemukan berbagai ukuran", 8.4, W.biru, { anchor: "start" }), teks("rf2", 24, 76, "persegi panjang jika kelilingnya diketahui.", 8.4, W.biru, { anchor: "start" })),
+      tambah("jawab", emo("rfe", 150, 140, "🤔", 34)),
     ),
     k(
-      "Setelah tabel, ada tiga pertanyaan terbuka. Nomor 16: menurutmu, bangun datar apakah yang paling mudah dihitung luas daerahnya, dan mengapa?",
+      "Pertanyaan pertama: menurutmu, bangun datar apakah yang paling mudah dihitung luas daerahnya, dan mengapa?",
       bersih(0),
-      tambah(0, jud("Tiga pertanyaan terbuka", 22)),
-      tambah("Nomor", kartu("q16", 25, 50, 250, 54, W.hijauMuda, ["16. bangun datar apa yang", "paling mudah dihitung luasnya?"], 9)),
+      tambah(0, jud("Pertanyaan pertama", 22)),
+      tambah("menurutmu", kartu("q16", 25, 50, 250, 54, W.hijauMuda, ["bangun datar apa yang", "paling mudah dihitung luasnya?"], 9)),
       tambah("mengapa?", teks("q16m", 150, 134, "Mengapa?", 12, W.ungu)),
     ),
     k(
-      "Nomor 17: sebaliknya, bangun datar apakah yang paling sulit dihitung luas daerahnya? Nomor 18: apa usahamu agar mampu menghitung luas bangun yang sulit itu dengan lebih baik?",
+      "Pertanyaan kedua: sebaliknya, bangun datar apakah yang paling sulit dihitung luas daerahnya? Pertanyaan ketiga: apa usahamu agar mampu menghitung luas bangun yang sulit itu dengan lebih baik?",
       bersih(0),
-      tambah(0, jud("Pertanyaan 17 dan 18", 22)),
-      tambah("Nomor", kartu("q17", 25, 42, 250, 54, W.merahMuda, ["17. bangun datar apa yang", "paling sulit dihitung luasnya?"], 9)),
-      tambah("Nomor@2", kartu("q18", 25, 108, 250, 54, W.krem, ["18. apa usahamu agar mampu", "menghitungnya lebih baik?"], 9)),
+      tambah(0, jud("Dua pertanyaan lagi", 22)),
+      tambah("sebaliknya,", kartu("q17", 25, 42, 250, 54, W.merahMuda, ["bangun datar apa yang", "paling sulit dihitung luasnya?"], 9)),
+      tambah("usahamu", kartu("q18", 25, 108, 250, 54, W.krem, ["apa usahamu agar mampu", "menghitungnya lebih baik?"], 9)),
     ),
     k(
-      "Nomor 1 sampai 14 sudah dipakai pada sub-bab A, B, dan C. Dengan nomor 15 sampai 18, refleksi seluruh bab selesai.",
+      "Bicarakan jawabanmu bersama teman. Ceritakan alasanmu, dengarkan pendapat temanmu, dan teruslah berlatih supaya makin mahir.",
       bersih(0),
-      tambah(0, jud("Refleksi satu bab", 22)),
-      tambah("Nomor", baris("rk1", 40, 50, 220, "1 sampai 14: sub-bab A, B, C", W.putih, 9.2, 26)),
-      tambah("nomor@2", baris("rk2", 40, 90, 220, "15 sampai 18: sub-bab D", W.hijauMuda, 9.2, 26)),
-      tambah("selesai.", teks("rk3", 150, 150, "refleksi bab 5 selesai ✓", 10, W.hijau)),
+      tambah(0, jud("Bicarakan bersama", 22)),
+      tambah("Ceritakan", baris("rk1", 40, 44, 220, "ceritakan alasanmu", W.putih, 9.2, 26)),
+      tambah("dengarkan", baris("rk2", 40, 84, 220, "dengarkan pendapat temanmu", W.hijauMuda, 9.2, 26)),
+      tambah("teruslah", teks("rk3", 150, 150, "teruslah berlatih ✓", 10, W.hijau)),
     ),
   ],
 };
 
-/* ------------------------------ 10. Soal pengayaan kolam renang (Panduan Guru hlm. 242–243) ------------------------------ */
+/* ------------------------------ 10. Tantangan: keramik tepi kolam renang ------------------------------ */
 /** Skala gambar kolam: piksel per meter. */
 const SK = 9;
 const KX = 78;
 const KY = 62;
-const luarP = KOLAM.p + KOLAM.tepi; // menurut kunci buku (16)
-const luarL = KOLAM.l + KOLAM.tepi; // menurut kunci buku (7)
+const luarP = KOLAM.p + 2 * KOLAM.tepi; // tepian di semua sisi: 17
+const luarL = KOLAM.l + 2 * KOLAM.tepi; // 8
 const gambarKolam = (): Obj[] => [
   kotak("kl", KX, KY, luarP * SK, luarL * SK, W.merahMuda, W.merah, { rx: 2, tebal: 1.8 }),
-  kotak("kd", KX + 4, KY + 3, KOLAM.p * SK, KOLAM.l * SK, W.langitMuda, W.biru, { rx: 2, tebal: 1.8 }),
-  teks("kdt", KX + 4 + (KOLAM.p * SK) / 2, KY + 3 + (KOLAM.l * SK) / 2 + 3, "kolam 15 x 6", 9.4),
+  kotak("kd", KX + KOLAM.tepi * SK, KY + KOLAM.tepi * SK, KOLAM.p * SK, KOLAM.l * SK, W.langitMuda, W.biru, { rx: 2, tebal: 1.8 }),
+  teks("kdt", KX + KOLAM.tepi * SK + (KOLAM.p * SK) / 2, KY + KOLAM.tepi * SK + (KOLAM.l * SK) / 2 + 3, "kolam 15 x 6", 9.4),
 ];
 
 export const ADEGAN_PENGAYAAN: AdeganStory = {
   id: "pengayaan-kolam",
-  judul: "Soal pengayaan: keramik tepi kolam renang",
-  sumber: "Buku Panduan Guru hlm. 242–243",
+  judul: "Tantangan: keramik tepi kolam renang",
+  sumber: "Materi: tantangan keramik tepi kolam",
   latar: "#ECFEFF",
   kutipan: [
     "Pengayaan dapat diberikan kepada peserta didik yang sudah mendapatkan nilai",
@@ -143,17 +143,17 @@ export const ADEGAN_PENGAYAAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Bagi siswa yang sudah mencapai kriteria ketuntasan, panduan guru menyediakan pengayaan berupa soal gaya asesmen kompetensi minimum. Judulnya: memasang keramik tepi kolam renang.",
-      tambah(0, jud("Soal pengayaan", 24)),
-      tambah("pengayaan", emo("pg1", 150, 100, "🏊", 44)),
+      "Sekarang Tantangan untukmu, soal bergaya asesmen kompetensi minimum. Judulnya: memasang keramik tepi kolam renang.",
+      tambah(0, jud("Tantangan", 24)),
+      tambah("Tantangan", emo("pg1", 150, 100, "🏊", 44)),
       tambah("Judulnya:", teks("pg2", 150, 140, "Keramik Tepi Kolam Renang", 10.4, W.merah)),
     ),
     k(
-      "Kolam berukuran panjang 15 meter dan lebar 6 meter. Di sekelilingnya ada tepian selebar 1 meter. Keramiknya 40 sentimeter kali 40 sentimeter, dan satu dus berisi 5 keramik.",
+      "Kolam berukuran panjang lima belas meter dan lebar enam meter. Di sekelilingnya ada tepian selebar satu meter. Keramiknya empat puluh sentimeter kali empat puluh sentimeter, dan satu dus berisi lima keramik.",
       bersih(0),
       tambah(0, jud("Kolam dan tepiannya", 24)),
       tambah("Kolam", gambarKolam()),
-      tambah("tepian", teks("kt", 150, 140, "tepian 1 m", 8.6, W.merah), panah("kta", 150, 132, 0, -14, W.merah, 1.6)),
+      tambah("tepian", teks("kt", 150, 150, "tepian 1 m", 8.6, W.merah), panah("kta", 150, 143, 0, -15, W.merah, 1.6)),
       tambah("Keramiknya", teks("ks1", 150, 168, "keramik 40 x 40 cm", 9.4, W.ungu)),
       tambah("dus", teks("ks2", 150, 184, "1 dus = 5 keramik", 9.4, W.ungu)),
     ),
@@ -166,45 +166,41 @@ export const ADEGAN_PENGAYAAN: AdeganStory = {
       ubah("dalam,", { id: "kd", warna: W.putih }),
     ),
     k(
-      "Menurut kunci buku, persegi panjang luar berukuran 16 kali 7, jadi luasnya 112. Kolam 15 kali 6 luasnya 90. Selisihnya 22 meter persegi.",
+      "Perhatikan, tepiannya ada di semua sisi, jadi kiri dan kanan menambah dua meter. Panjang luar lima belas ditambah dua sama dengan tujuh belas, dan lebar luar enam ditambah dua sama dengan delapan.",
       bersih(0),
-      tambah(0, jud("Kunci buku: luas jalan", 22, 11)),
-      tambah("luar", teks("kb1", 150, 56, "16 x 7 = 112", 11, W.merah)),
+      tambah(0, jud("Tepian di semua sisi", 22, 11)),
+      tambah("semua", teks("ct1", 150, 54, "tepian 1 m di semua sisi", 9, W.ungu)),
+      tambah("lima", teks("ct2", 150, 82, "15 + 2 = 17", 11, W.merah)),
+      tambah("enam", teks("ct3", 150, 108, "6 + 2 = 8", 11, W.merah)),
+    ),
+    k(
+      "Jadi persegi panjang luar berukuran tujuh belas kali delapan, luasnya seratus tiga puluh enam. Kolam lima belas kali enam luasnya sembilan puluh. Selisihnya empat puluh enam meter persegi.",
+      bersih(0),
+      tambah(0, jud("Luas jalan", 22)),
+      tambah("tujuh", teks("kb1", 150, 56, "17 x 8 = 136", 11, W.merah)),
       tambah("Kolam", teks("kb2", 150, 80, "15 x 6 = 90", 11, W.biru)),
-      tambah("Selisihnya", teks("kb3", 150, 106, "112 - 90 = 22", 11, W.hijau), teks("kb4", 150, 126, "luas jalan 22 m²", 10, W.hijau)),
+      tambah("Selisihnya", teks("kb3", 150, 106, "136 - 90 = 46", 11, W.hijau), teks("kb4", 150, 126, "luas jalan 46 m²", 10, W.hijau)),
     ),
     k(
-      "Langkah kedua: luas satu keramik 40 kali 40 hasilnya 1600 sentimeter persegi, yaitu 0,16 meter persegi. Banyak keramik dari kunci buku: 22 dibagi 0,16 sama dengan 137,5 buah.",
+      "Langkah kedua: luas satu keramik empat puluh kali empat puluh hasilnya seribu enam ratus sentimeter persegi, yaitu nol koma enam belas meter persegi.",
       bersih(0),
-      tambah(0, jud("Langkah 2: keramik", 22)),
-      tambah("40", teks("kr1", 150, 56, "40 x 40 = 1600", 11, W.biru)),
-      tambah("yaitu", teks("kr2", 150, 78, "1600 cm² jadi 0,16 m²", 10, W.ungu)),
-      tambah("dibagi", teks("kr3", 150, 106, "22 : 0,16 → 137,5 keramik", 10, W.merah)),
+      tambah(0, jud("Langkah 2: luas keramik", 22)),
+      tambah("empat", teks("kr1", 150, 62, "40 x 40 = 1600", 11, W.biru)),
+      tambah("yaitu", teks("kr2", 150, 90, "1600 cm² jadi 0,16 m²", 10, W.ungu)),
     ),
     k(
-      "Satu dus berisi 5 keramik, jadi 137,5 dibagi 5 hasilnya 27,5. Agar cukup, dibulatkan ke atas menjadi 28 dus keramik yang harus dibeli.",
+      "Banyak keramik sama dengan luas jalan dibagi luas satu keramik, yaitu empat puluh enam dibagi nol koma enam belas, hasilnya dua ratus delapan puluh tujuh koma lima buah.",
       bersih(0),
-      tambah(0, jud("Langkah 3: jumlah dus", 22)),
-      tambah("Satu", teks("du1", 150, 60, "137,5 : 5 → 27,5 dus", 11, W.biru)),
-      tambah("dibulatkan", teks("du2", 150, 96, "dibulatkan ke atas", 9.4, W.ungu), kartu("du3", 90, 112, 120, 44, W.hijauMuda, ["28 dus"], 14)),
+      tambah(0, jud("Langkah 3: banyak keramik", 22)),
+      tambah("dibagi", teks("kr0", 150, 60, "luas jalan : luas keramik", 10, W.ungu)),
+      tambah("hasilnya", teks("kr3", 150, 94, "46 : 0,16 → 287,5 keramik", 10, W.merah)),
     ),
     k(
-      "Catatan untuk guru: tepian 1 meter ada di semua sisi, sehingga kiri dan kanan menambah 2 meter. Persegi panjang luar seharusnya 17 kali 8, luasnya 136, dan luas jalan 136 dikurangi 90 sama dengan 46 meter persegi.",
+      "Satu dus berisi lima keramik, jadi dua ratus delapan puluh tujuh koma lima dibagi lima hasilnya lima puluh tujuh koma lima. Agar cukup, dibulatkan ke atas menjadi lima puluh delapan dus keramik yang harus dibeli.",
       bersih(0),
-      tambah(0, jud("Catatan guru: periksa ukuran luar", 22, 10.4)),
-      tambah("tepian", teks("ct1", 150, 54, "tepian 1 m di semua sisi", 9, W.ungu)),
-      tambah("kiri", teks("ct2", 150, 76, "15 + 2 = 17", 10.4, W.merah), teks("ct3", 150, 96, "6 + 2 = 8", 10.4, W.merah)),
-      tambah("17", teks("ct4", 150, 122, "17 x 8 = 136", 10.4, W.biru)),
-      tambah("136@2", teks("ct5", 150, 146, "136 - 90 = 46", 10.4, W.hijau), teks("ct6", 150, 166, "luas jalan 46 m²", 10, W.hijau)),
-    ),
-    k(
-      "Dengan luas jalan 46, keramik yang dibutuhkan 287,5 buah, dibagi 5 menjadi 57,5, dibulatkan ke atas 58 dus. Buku mencetak 28 dus; hitungan mandiri ini memberi 58.",
-      bersih(0),
-      tambah(0, jud("Hitungan mandiri", 22)),
-      tambah("keramik", teks("hm1", 150, 56, "46 : 0,16 → 287,5 keramik", 10, W.biru)),
-      tambah("dibagi", teks("hm2", 150, 80, "287,5 : 5 → 57,5 dus", 10, W.biru)),
-      tambah("dibulatkan", kartu("hm3", 40, 100, 100, 44, W.hijauMuda, ["58 dus", "hitungan mandiri"], 10)),
-      tambah("Buku", kartu("hm4", 160, 100, 100, 44, W.krem, ["28 dus", "kunci buku"], 10)),
+      tambah(0, jud("Langkah 4: jumlah dus", 22)),
+      tambah("hasilnya", teks("du1", 150, 60, "287,5 : 5 → 57,5 dus", 11, W.biru)),
+      tambah("dibulatkan", teks("du2", 150, 96, "dibulatkan ke atas", 9.4, W.ungu), kartu("du3", 90, 112, 120, 44, W.hijauMuda, ["58 dus"], 14)),
     ),
   ],
 };

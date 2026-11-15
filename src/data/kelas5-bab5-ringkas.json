@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-arti", "teks": "Ukuran daerah di dalam bangun", "ikon": "🟨", "cabang": "dalam", "petunjuk": "Arti luas itu soal daerah dalam. Coba cabang lain." },
-          { "id": "a-ubin", "teks": "Lantai ditutup ubin sampai rapat", "ikon": "🧱", "cabang": "dalam", "petunjuk": "Menutup daerah itu soal daerah dalam. Coba cabang lain." },
-          { "id": "a-satuan", "teks": "1 cm × 1 cm luasnya 1 cm²", "ikon": "🔲", "cabang": "petak", "petunjuk": "Petak satuan dan satuannya itu soal petak satuan. Coba cabang lain." },
-          { "id": "a-rapat", "teks": "Tutup rapat tanpa celah", "ikon": "✅", "cabang": "petak", "petunjuk": "Menutup rapat itu soal petak satuan. Coba cabang lain." },
-          { "id": "a-lima", "teks": "5 petak tiap baris, 2 baris = 10", "ikon": "🔢", "cabang": "baris", "petunjuk": "Petak tiap baris itu soal baris dan kolom. Coba cabang lain." },
-          { "id": "a-tiga", "teks": "3 × 3 = 9 petak", "ikon": "3️⃣", "cabang": "baris", "petunjuk": "Baris kali kolom itu soal baris dan kolom. Coba cabang lain." },
-          { "id": "a-yohana", "teks": "Cara Yohana: potong lalu tempel", "ikon": "✂️", "cabang": "pindah", "petunjuk": "Memotong dan menempel itu soal potong dan tempel. Coba cabang lain." },
-          { "id": "a-tetap", "teks": "Tangga 6 petak jadi 2 × 3, luas 6", "ikon": "⚖️", "cabang": "pindah", "petunjuk": "Luas yang tetap itu soal potong dan tempel. Coba cabang lain." }
+          {
+            "id": "a-arti",
+            "teks": "Ukuran daerah di dalam bangun",
+            "ikon": "🟨",
+            "cabang": "dalam",
+            "petunjuk": "Arti luas itu soal daerah dalam. Coba cabang lain."
+          },
+          {
+            "id": "a-ubin",
+            "teks": "Lantai ditutup ubin sampai rapat",
+            "ikon": "🧱",
+            "cabang": "dalam",
+            "petunjuk": "Menutup daerah itu soal daerah dalam. Coba cabang lain."
+          },
+          {
+            "id": "a-satuan",
+            "teks": "1 cm × 1 cm luasnya 1 cm²",
+            "ikon": "🔲",
+            "cabang": "petak",
+            "petunjuk": "Petak satuan dan satuannya itu soal petak satuan. Coba cabang lain."
+          },
+          {
+            "id": "a-rapat",
+            "teks": "Tutup rapat tanpa celah",
+            "ikon": "✅",
+            "cabang": "petak",
+            "petunjuk": "Menutup rapat itu soal petak satuan. Coba cabang lain."
+          },
+          {
+            "id": "a-lima",
+            "teks": "5 petak tiap baris, 2 baris = 10",
+            "ikon": "🔢",
+            "cabang": "baris",
+            "petunjuk": "Petak tiap baris itu soal baris dan kolom. Coba cabang lain."
+          },
+          {
+            "id": "a-tiga",
+            "teks": "3 × 3 = 9 petak",
+            "ikon": "3️⃣",
+            "cabang": "baris",
+            "petunjuk": "Baris kali kolom itu soal baris dan kolom. Coba cabang lain."
+          },
+          {
+            "id": "a-yohana",
+            "teks": "Cara Yohana: potong lalu tempel",
+            "ikon": "✂️",
+            "cabang": "pindah",
+            "petunjuk": "Memotong dan menempel itu soal potong dan tempel. Coba cabang lain."
+          },
+          {
+            "id": "a-tetap",
+            "teks": "Tangga 6 petak jadi 2 × 3, luas 6",
+            "ikon": "⚖️",
+            "cabang": "pindah",
+            "petunjuk": "Luas yang tetap itu soal potong dan tempel. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -72,7 +120,10 @@
                 "ikon": "🔲",
                 "isi": "Petak yang sama besar.",
                 "suara": "Pakai petak yang sama besar sebagai satuan. Satu petak satu sentimeter kali satu sentimeter luasnya satu sentimeter persegi.",
-                "visual": { "jenis": "teks", "isi": "1 cm²" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 cm²"
+                }
               },
               {
                 "id": "rapat",
@@ -80,7 +131,23 @@
                 "ikon": "🧱",
                 "isi": "Tanpa celah.",
                 "suara": "Tutup daerah sampai rapat. Daerah lima petak ke samping dan dua petak ke bawah punya baris pertama lima petak dan baris kedua lima petak.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Baris", "Petak"], "baris": [["pertama", 5], ["kedua", 5]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Baris",
+                    "Petak"
+                  ],
+                  "baris": [
+                    [
+                      "pertama",
+                      5
+                    ],
+                    [
+                      "kedua",
+                      5
+                    ]
+                  ]
+                }
               },
               {
                 "id": "hitung",
@@ -88,7 +155,10 @@
                 "ikon": "🔢",
                 "isi": "Jumlah semua petak.",
                 "suara": "Jumlahkan petak semua baris. Lima ditambah lima sama dengan sepuluh, jadi luasnya sepuluh sentimeter persegi.",
-                "visual": { "jenis": "teks", "isi": "5 + 5 = 10" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 + 5 = 10"
+                }
               }
             ]
           },
@@ -99,8 +169,28 @@
             "ide": "Dipindah, luas tetap.",
             "suara": "Lihat bangun tangga sebelum dan sesudah petaknya dipindah.",
             "sisi": [
-              { "id": "sebelum", "nama": "Sebelum", "ikon": "🪜", "catatan": "Tangga, ada petak menonjol.", "suara": "Sebelum dipindah, bangun tangga punya enam petak.", "visual": { "jenis": "teks", "isi": "6 petak" } },
-              { "id": "sesudah", "nama": "Sesudah", "ikon": "▭", "catatan": "Persegi panjang 2 × 3.", "suara": "Sesudah dipindah, persegi panjang dua baris tiga kolom tetap punya enam petak.", "visual": { "jenis": "teks", "isi": "6 petak" } }
+              {
+                "id": "sebelum",
+                "nama": "Sebelum",
+                "ikon": "🪜",
+                "catatan": "Tangga, ada petak menonjol.",
+                "suara": "Sebelum dipindah, bangun tangga punya enam petak.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 petak"
+                }
+              },
+              {
+                "id": "sesudah",
+                "nama": "Sesudah",
+                "ikon": "▭",
+                "catatan": "Persegi panjang 2 × 3.",
+                "suara": "Sesudah dipindah, persegi panjang dua baris tiga kolom tetap punya enam petak.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 petak"
+                }
+              }
             ],
             "kesimpulan": "Luas tidak berubah."
           },
@@ -111,9 +201,174 @@
             "ide": "Satuan luas memakai persegi.",
             "suara": "Ada tiga contoh satuan dan susunan petak. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "cm", "label": "cm²", "ikon": "📏", "isi": "Petak 1 cm kali 1 cm.", "suara": "Sentimeter persegi dipakai untuk daerah yang kecil, seperti kertas.", "visual": { "jenis": "teks", "isi": "1 cm × 1 cm = 1 cm²" } },
-              { "id": "m", "label": "m²", "ikon": "🏠", "isi": "Ubin 1 m kali 1 m.", "suara": "Meter persegi dipakai untuk daerah yang besar, seperti lantai Alun-Alun.", "visual": { "jenis": "teks", "isi": "1 m × 1 m = 1 m²" } },
-              { "id": "array", "label": "Baris", "ikon": "🔢", "isi": "Baris kali petak tiap baris.", "suara": "Tiga baris dengan empat petak tiap baris menutup dua belas petak.", "visual": { "jenis": "teks", "isi": "3 × 4 = 12" } }
+              {
+                "id": "cm",
+                "label": "cm²",
+                "ikon": "📏",
+                "isi": "Petak 1 cm kali 1 cm.",
+                "suara": "Sentimeter persegi dipakai untuk daerah yang kecil, seperti kertas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 cm × 1 cm = 1 cm²"
+                }
+              },
+              {
+                "id": "m",
+                "label": "m²",
+                "ikon": "🏠",
+                "isi": "Ubin 1 m kali 1 m.",
+                "suara": "Meter persegi dipakai untuk daerah yang besar, seperti lantai Alun-Alun.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 m × 1 m = 1 m²"
+                }
+              },
+              {
+                "id": "array",
+                "label": "Baris",
+                "ikon": "🔢",
+                "isi": "Baris kali petak tiap baris.",
+                "suara": "Tiga baris dengan empat petak tiap baris menutup dua belas petak.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 × 4 = 12"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Pasir dan ubin: berapa luasnya?",
+          "ikon": "🧱",
+          "suara": "Ini peta tentang pasir untuk alun-alun dan ubin untuk lantai rumah. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-ukuran",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Luas sebagai ukuran daerah",
+            "petunjuk": "Memahami bahwa luas menyatakan besar kecilnya daerah."
+          },
+          {
+            "id": "hal-satuan",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Satuan luas dan petak satuan",
+            "petunjuk": "Mengenal satuan yang dipakai untuk menyatakan luas."
+          },
+          {
+            "id": "hal-hitung",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menghitung luas dengan petak",
+            "petunjuk": "Memahami bahwa luas bisa dihitung dari banyaknya petak satuan."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-ubin",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Pasang ubin sampai rapat",
+            "petunjuk": "Langkah untuk memahami luas sebagai ukuran daerah."
+          },
+          {
+            "id": "cara-kotak",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Buat kotak satuan sama besar",
+            "petunjuk": "Langkah untuk mengenal satuan luas."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Hitung kotak, pindahkan sisa",
+            "petunjuk": "Langkah untuk menghitung luas dengan petak."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-arti",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Menjelaskan arti luas daerah",
+            "petunjuk": "Kemampuan menyebut apa yang dimaksud dengan luas."
+          },
+          {
+            "id": "hasil-luas",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Luas bangun dengan satuan",
+            "petunjuk": "Kemampuan menghitung luas bangun dan menyebut satuannya."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Ubin dan luas lantai rumah",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel ubin dan luas lantai rumah. Pasang ukuran, banyak kotak, dan luas untuk kamar tidur, dapur, kamar mandi, dan seluruh rumah.",
+        "pojok": "Ruang",
+        "kolom": [
+          "Ukuran",
+          "Kotak",
+          "Luas"
+        ],
+        "baris": [
+          {
+            "label": "Tidur",
+            "sel": [
+              "3 m × 3 m",
+              "9 kotak",
+              "9 m²"
+            ]
+          },
+          {
+            "label": "Dapur",
+            "sel": [
+              "3 m × 2 m",
+              "6 kotak",
+              "6 m²"
+            ]
+          },
+          {
+            "label": "Mandi",
+            "sel": [
+              "2 m × 1 m",
+              "2 kotak",
+              "2 m²"
+            ]
+          },
+          {
+            "label": "Rumah",
+            "sel": [
+              "semua ruang",
+              "39 kotak",
+              "39 m²"
             ]
           }
         ]
@@ -158,14 +413,62 @@
           }
         ],
         "kartu": [
-          { "id": "b-pp", "teks": "5 × 2 = 10 cm²", "ikon": "▭", "cabang": "kali", "petunjuk": "Alas kali tinggi itu soal alas kali tinggi. Coba cabang lain." },
-          { "id": "b-jajar", "teks": "Jajargenjang digeser jadi persegi panjang", "ikon": "▱", "cabang": "kali", "petunjuk": "Menggeser jajargenjang itu soal alas kali tinggi. Coba cabang lain." },
-          { "id": "b-garis", "teks": "Garis tegak lurus alas", "ikon": "📏", "cabang": "tegak", "petunjuk": "Garis tegak lurus itu soal tinggi tegak lurus. Coba cabang lain." },
-          { "id": "b-miring", "teks": "Sisi miring tidak dikali alas", "ikon": "🚫", "cabang": "tegak", "petunjuk": "Sisi miring yang tidak dipakai itu soal tinggi tegak lurus. Coba cabang lain." },
-          { "id": "b-segitiga", "teks": "½ × 6 × 4 = 12 cm²", "ikon": "🔺", "cabang": "setengah", "petunjuk": "Setengah alas kali tinggi itu soal setengah. Coba cabang lain." },
-          { "id": "b-dua", "teks": "Dua segitiga membentuk persegi panjang", "ikon": "🔻", "cabang": "setengah", "petunjuk": "Dua bangun sama itu soal setengah. Coba cabang lain." },
-          { "id": "b-trap", "teks": "½ × (5 + 3) × 4 = 16 cm²", "ikon": "📐", "cabang": "trapesium", "petunjuk": "Jumlah sisi sejajar itu soal trapesium. Coba cabang lain." },
-          { "id": "b-sejajar", "teks": "Jumlahkan dua sisi sejajar", "ikon": "➕", "cabang": "trapesium", "petunjuk": "Dua sisi sejajar itu soal trapesium. Coba cabang lain." }
+          {
+            "id": "b-pp",
+            "teks": "5 × 2 = 10 cm²",
+            "ikon": "▭",
+            "cabang": "kali",
+            "petunjuk": "Alas kali tinggi itu soal alas kali tinggi. Coba cabang lain."
+          },
+          {
+            "id": "b-jajar",
+            "teks": "Jajargenjang digeser jadi persegi panjang",
+            "ikon": "▱",
+            "cabang": "kali",
+            "petunjuk": "Menggeser jajargenjang itu soal alas kali tinggi. Coba cabang lain."
+          },
+          {
+            "id": "b-garis",
+            "teks": "Garis tegak lurus alas",
+            "ikon": "📏",
+            "cabang": "tegak",
+            "petunjuk": "Garis tegak lurus itu soal tinggi tegak lurus. Coba cabang lain."
+          },
+          {
+            "id": "b-miring",
+            "teks": "Sisi miring tidak dikali alas",
+            "ikon": "🚫",
+            "cabang": "tegak",
+            "petunjuk": "Sisi miring yang tidak dipakai itu soal tinggi tegak lurus. Coba cabang lain."
+          },
+          {
+            "id": "b-segitiga",
+            "teks": "½ × 6 × 4 = 12 cm²",
+            "ikon": "🔺",
+            "cabang": "setengah",
+            "petunjuk": "Setengah alas kali tinggi itu soal setengah. Coba cabang lain."
+          },
+          {
+            "id": "b-dua",
+            "teks": "Dua segitiga membentuk persegi panjang",
+            "ikon": "🔻",
+            "cabang": "setengah",
+            "petunjuk": "Dua bangun sama itu soal setengah. Coba cabang lain."
+          },
+          {
+            "id": "b-trap",
+            "teks": "½ × (5 + 3) × 4 = 16 cm²",
+            "ikon": "📐",
+            "cabang": "trapesium",
+            "petunjuk": "Jumlah sisi sejajar itu soal trapesium. Coba cabang lain."
+          },
+          {
+            "id": "b-sejajar",
+            "teks": "Jumlahkan dua sisi sejajar",
+            "ikon": "➕",
+            "cabang": "trapesium",
+            "petunjuk": "Dua sisi sejajar itu soal trapesium. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -179,9 +482,39 @@
             "ide": "Tiga bangun, satu rumus.",
             "suara": "Ada tiga bangun yang luasnya alas dikali tinggi. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "pp", "label": "Persegi panjang", "ikon": "▭", "isi": "Lima kali dua.", "suara": "Persegi panjang beralas lima dan tinggi dua. Luasnya lima dikali dua sama dengan sepuluh sentimeter persegi.", "visual": { "jenis": "teks", "isi": "5 × 2 = 10 cm²" } },
-              { "id": "persegi", "label": "Persegi", "ikon": "◼️", "isi": "Sisi kali sisi.", "suara": "Persegi bersisi empat. Luasnya empat dikali empat sama dengan enam belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "4 × 4 = 16 cm²" } },
-              { "id": "jajar", "label": "Jajargenjang", "ikon": "▱", "isi": "Digeser jadi persegi panjang.", "suara": "Jajargenjang beralas delapan dan tinggi tiga. Luasnya delapan dikali tiga sama dengan dua puluh empat sentimeter persegi.", "visual": { "jenis": "teks", "isi": "8 × 3 = 24 cm²" } }
+              {
+                "id": "pp",
+                "label": "Persegi panjang",
+                "ikon": "▭",
+                "isi": "Lima kali dua.",
+                "suara": "Persegi panjang beralas lima dan tinggi dua. Luasnya lima dikali dua sama dengan sepuluh sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 × 2 = 10 cm²"
+                }
+              },
+              {
+                "id": "persegi",
+                "label": "Persegi",
+                "ikon": "◼️",
+                "isi": "Sisi kali sisi.",
+                "suara": "Persegi bersisi empat. Luasnya empat dikali empat sama dengan enam belas sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 × 4 = 16 cm²"
+                }
+              },
+              {
+                "id": "jajar",
+                "label": "Jajargenjang",
+                "ikon": "▱",
+                "isi": "Digeser jadi persegi panjang.",
+                "suara": "Jajargenjang beralas delapan dan tinggi tiga. Luasnya delapan dikali tiga sama dengan dua puluh empat sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "8 × 3 = 24 cm²"
+                }
+              }
             ]
           },
           {
@@ -191,8 +524,28 @@
             "ide": "Pakai tinggi yang tegak lurus.",
             "suara": "Lihat dua pilihan untuk jajargenjang beralas delapan, tinggi tiga, dan sisi miring lima.",
             "sisi": [
-              { "id": "tinggi", "nama": "Pakai tinggi", "ikon": "✅", "catatan": "Tegak lurus alas.", "suara": "Dengan tinggi tiga, luasnya delapan dikali tiga sama dengan dua puluh empat sentimeter persegi. Ini benar.", "visual": { "jenis": "teks", "isi": "24 cm²" } },
-              { "id": "miring", "nama": "Pakai sisi miring", "ikon": "❌", "catatan": "Bukan tinggi.", "suara": "Dengan sisi miring lima, hasilnya empat puluh. Ini salah, karena sisi miring bukan tinggi.", "visual": { "jenis": "teks", "isi": "40 cm²" } }
+              {
+                "id": "tinggi",
+                "nama": "Pakai tinggi",
+                "ikon": "✅",
+                "catatan": "Tegak lurus alas.",
+                "suara": "Dengan tinggi tiga, luasnya delapan dikali tiga sama dengan dua puluh empat sentimeter persegi. Ini benar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "24 cm²"
+                }
+              },
+              {
+                "id": "miring",
+                "nama": "Pakai sisi miring",
+                "ikon": "❌",
+                "catatan": "Bukan tinggi.",
+                "suara": "Dengan sisi miring lima, hasilnya empat puluh. Ini salah, karena sisi miring bukan tinggi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "40 cm²"
+                }
+              }
             ],
             "kesimpulan": "Yang dikali alas adalah tinggi."
           },
@@ -203,9 +556,174 @@
             "ide": "Segitiga, trapesium, belah ketupat.",
             "suara": "Ada tiga bangun yang luasnya memakai setengah. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "segitiga", "label": "Segitiga", "ikon": "🔺", "isi": "Setengah alas kali tinggi.", "suara": "Segitiga beralas enam dan tinggi empat. Luasnya setengah dikali enam dikali empat sama dengan dua belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "½ × 6 × 4 = 12 cm²" } },
-              { "id": "trap", "label": "Trapesium", "ikon": "📐", "isi": "Setengah jumlah sisi sejajar kali tinggi.", "suara": "Trapesium dengan sisi sejajar lima dan tiga, tinggi empat. Luasnya setengah dikali delapan dikali empat sama dengan enam belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "½ × (5 + 3) × 4 = 16 cm²" } },
-              { "id": "belah", "label": "Belah ketupat", "ikon": "🔶", "isi": "Setengah diagonal kali diagonal.", "suara": "Belah ketupat dengan diagonal enam dan empat. Luasnya setengah dikali enam dikali empat sama dengan dua belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "½ × 6 × 4 = 12 cm²" } }
+              {
+                "id": "segitiga",
+                "label": "Segitiga",
+                "ikon": "🔺",
+                "isi": "Setengah alas kali tinggi.",
+                "suara": "Segitiga beralas enam dan tinggi empat. Luasnya setengah dikali enam dikali empat sama dengan dua belas sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "½ × 6 × 4 = 12 cm²"
+                }
+              },
+              {
+                "id": "trap",
+                "label": "Trapesium",
+                "ikon": "📐",
+                "isi": "Setengah jumlah sisi sejajar kali tinggi.",
+                "suara": "Trapesium dengan sisi sejajar lima dan tiga, tinggi empat. Luasnya setengah dikali delapan dikali empat sama dengan enam belas sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "½ × (5 + 3) × 4 = 16 cm²"
+                }
+              },
+              {
+                "id": "belah",
+                "label": "Belah ketupat",
+                "ikon": "🔶",
+                "isi": "Setengah diagonal kali diagonal.",
+                "suara": "Belah ketupat dengan diagonal enam dan empat. Luasnya setengah dikali enam dikali empat sama dengan dua belas sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "½ × 6 × 4 = 12 cm²"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Luas Daerah Bangun Datar",
+          "ikon": "📐",
+          "suara": "Ini peta masalah luas daerah bangun datar. Kita ingin tahu berapa banyak petak satuan yang menutupi daerah sebuah bangun, tanpa membilangnya satu per satu. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-kotak",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Persegi panjang dan persegi",
+            "petunjuk": "Dua bangun yang sudut-sudutnya siku-siku. Ini hal yang dipelajari."
+          },
+          {
+            "id": "hal-miring",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Segitiga dan jajargenjang",
+            "petunjuk": "Dua bangun yang bisa diubah menjadi persegi panjang."
+          },
+          {
+            "id": "hal-lain",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Trapesium dan bangun lainnya",
+            "petunjuk": "Bangun yang baru kita temukan luasnya di bagian akhir."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-kali",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Kalikan panjang dan lebar",
+            "petunjuk": "Langkah untuk bangun yang sudah berbentuk persegi panjang."
+          },
+          {
+            "id": "cara-pindah",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Potong dan pindahkan bagian",
+            "petunjuk": "Langkah untuk bangun yang bisa dipotong lalu dipindah menjadi persegi panjang."
+          },
+          {
+            "id": "cara-ubah",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Ubah ke bangun yang dikenal",
+            "petunjuk": "Langkah untuk bangun yang lebih rumit, ubah dulu menjadi bangun yang sudah kita kenal."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-rumus",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Menemukan rumus luas",
+            "petunjuk": "Kemampuan menemukan sendiri rumus tiap bangun."
+          },
+          {
+            "id": "hasil-luas",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu luas tiap bangun datar",
+            "petunjuk": "Kemampuan menjawab masalah di pusat peta."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Luas empat bangun datar",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel luas empat bangun datar. Pasang ukuran, cara menghitung, dan luas untuk persegi, segitiga, belah ketupat, dan persegi panjang.",
+        "pojok": "Bangun",
+        "kolom": [
+          "Ukuran",
+          "Hitungan",
+          "Luas"
+        ],
+        "baris": [
+          {
+            "label": "Persegi",
+            "sel": [
+              "sisi 4",
+              "4 x 4",
+              "16"
+            ]
+          },
+          {
+            "label": "Segitiga",
+            "sel": [
+              "5 dan 4",
+              "5 x 4 : 2",
+              "10"
+            ]
+          },
+          {
+            "label": "Belah ketupat",
+            "sel": [
+              "2 dan 4",
+              "2 x 4 : 2",
+              "4"
+            ]
+          },
+          {
+            "label": "Persegi panjang",
+            "sel": [
+              "4 dan 3",
+              "4 x 3",
+              "12"
             ]
           }
         ]
@@ -250,14 +768,62 @@
           }
         ],
         "kartu": [
-          { "id": "c-bagi", "teks": "Bagi denah menjadi dua persegi panjang", "ikon": "✂️", "cabang": "urai", "petunjuk": "Membagi bangun itu soal urai bagian. Coba cabang lain." },
-          { "id": "c-rumus", "teks": "Tiap bagian punya rumus luas", "ikon": "📐", "cabang": "urai", "petunjuk": "Bagian yang punya rumus itu soal urai bagian. Coba cabang lain." },
-          { "id": "c-dua", "teks": "12 + 8 = 20 cm²", "ikon": "➕", "cabang": "jumlah", "petunjuk": "Menjumlah luas bagian itu soal jumlahkan. Coba cabang lain." },
-          { "id": "c-tiga", "teks": "15 + 10 + 5 = 30 cm²", "ikon": "3️⃣", "cabang": "jumlah", "petunjuk": "Menjumlah tiga bagian itu soal jumlahkan. Coba cabang lain." },
-          { "id": "c-yohana", "teks": "Cara Yohana: 10 + 6 = 16", "ikon": "👧", "cabang": "silang", "petunjuk": "Cara membagi itu soal cek dua cara. Coba cabang lain." },
-          { "id": "c-komang", "teks": "Cara Komang: 12 + 4 = 16", "ikon": "🧒", "cabang": "silang", "petunjuk": "Cara membagi itu soal cek dua cara. Coba cabang lain." },
-          { "id": "c-irisan", "teks": "Bagian menumpuk jangan dihitung 2 kali", "ikon": "🚫", "cabang": "tumpang", "petunjuk": "Bagian yang menumpuk itu soal menumpuk. Coba cabang lain." },
-          { "id": "c-kurang", "teks": "12 + 12 − 6 = 18 cm²", "ikon": "➖", "cabang": "tumpang", "petunjuk": "Mengurangi bagian menumpuk itu soal menumpuk. Coba cabang lain." }
+          {
+            "id": "c-bagi",
+            "teks": "Bagi denah menjadi dua persegi panjang",
+            "ikon": "✂️",
+            "cabang": "urai",
+            "petunjuk": "Membagi bangun itu soal urai bagian. Coba cabang lain."
+          },
+          {
+            "id": "c-rumus",
+            "teks": "Tiap bagian punya rumus luas",
+            "ikon": "📐",
+            "cabang": "urai",
+            "petunjuk": "Bagian yang punya rumus itu soal urai bagian. Coba cabang lain."
+          },
+          {
+            "id": "c-dua",
+            "teks": "12 + 8 = 20 cm²",
+            "ikon": "➕",
+            "cabang": "jumlah",
+            "petunjuk": "Menjumlah luas bagian itu soal jumlahkan. Coba cabang lain."
+          },
+          {
+            "id": "c-tiga",
+            "teks": "15 + 10 + 5 = 30 cm²",
+            "ikon": "3️⃣",
+            "cabang": "jumlah",
+            "petunjuk": "Menjumlah tiga bagian itu soal jumlahkan. Coba cabang lain."
+          },
+          {
+            "id": "c-yohana",
+            "teks": "Cara Yohana: 10 + 6 = 16",
+            "ikon": "👧",
+            "cabang": "silang",
+            "petunjuk": "Cara membagi itu soal cek dua cara. Coba cabang lain."
+          },
+          {
+            "id": "c-komang",
+            "teks": "Cara Komang: 12 + 4 = 16",
+            "ikon": "🧒",
+            "cabang": "silang",
+            "petunjuk": "Cara membagi itu soal cek dua cara. Coba cabang lain."
+          },
+          {
+            "id": "c-irisan",
+            "teks": "Bagian menumpuk jangan dihitung 2 kali",
+            "ikon": "🚫",
+            "cabang": "tumpang",
+            "petunjuk": "Bagian yang menumpuk itu soal menumpuk. Coba cabang lain."
+          },
+          {
+            "id": "c-kurang",
+            "teks": "12 + 12 − 6 = 18 cm²",
+            "ikon": "➖",
+            "cabang": "tumpang",
+            "petunjuk": "Mengurangi bagian menumpuk itu soal menumpuk. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -271,9 +837,52 @@
             "ide": "Tiga langkah menghitung gabungan.",
             "suara": "Ada tiga langkah menghitung bangun gabungan. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "urai", "label": "Urai", "ikon": "✂️", "isi": "Bagi jadi bagian.", "suara": "Bagi bangun menjadi bagian yang punya rumus, misalnya dua persegi panjang.", "visual": { "jenis": "teks", "isi": "bagian 1 + bagian 2" } },
-              { "id": "hitung", "label": "Hitung", "ikon": "🔢", "isi": "Luas tiap bagian.", "suara": "Hitung luas tiap bagian dengan rumusnya. Persegi panjang empat kali tiga sama dengan dua belas, dan empat kali dua sama dengan delapan.", "visual": { "jenis": "tabel-menurun", "kepala": ["Bagian", "Luas"], "baris": [["pertama", 12], ["kedua", 8]] } },
-              { "id": "jumlah", "label": "Jumlah", "ikon": "➕", "isi": "Jumlahkan semua luas.", "suara": "Jumlahkan luas semua bagian. Dua belas ditambah delapan sama dengan dua puluh sentimeter persegi.", "visual": { "jenis": "teks", "isi": "12 + 8 = 20 cm²" } }
+              {
+                "id": "urai",
+                "label": "Urai",
+                "ikon": "✂️",
+                "isi": "Bagi jadi bagian.",
+                "suara": "Bagi bangun menjadi bagian yang punya rumus, misalnya dua persegi panjang.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "bagian 1 + bagian 2"
+                }
+              },
+              {
+                "id": "hitung",
+                "label": "Hitung",
+                "ikon": "🔢",
+                "isi": "Luas tiap bagian.",
+                "suara": "Hitung luas tiap bagian dengan rumusnya. Persegi panjang empat kali tiga sama dengan dua belas, dan empat kali dua sama dengan delapan.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Bagian",
+                    "Luas"
+                  ],
+                  "baris": [
+                    [
+                      "pertama",
+                      12
+                    ],
+                    [
+                      "kedua",
+                      8
+                    ]
+                  ]
+                }
+              },
+              {
+                "id": "jumlah",
+                "label": "Jumlah",
+                "ikon": "➕",
+                "isi": "Jumlahkan semua luas.",
+                "suara": "Jumlahkan luas semua bagian. Dua belas ditambah delapan sama dengan dua puluh sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 + 8 = 20 cm²"
+                }
+              }
             ]
           },
           {
@@ -283,8 +892,28 @@
             "ide": "Cara beda, luas sama.",
             "suara": "Lihat dua cara membagi denah L yang sama.",
             "sisi": [
-              { "id": "yohana", "nama": "Cara Yohana", "ikon": "👧", "catatan": "Dipotong mendatar.", "suara": "Cara Yohana memotong mendatar. Sepuluh ditambah enam sama dengan enam belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "10 + 6 = 16" } },
-              { "id": "komang", "nama": "Cara Komang", "ikon": "🧒", "catatan": "Dipotong tegak.", "suara": "Cara Komang memotong tegak. Dua belas ditambah empat sama dengan enam belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "12 + 4 = 16" } }
+              {
+                "id": "yohana",
+                "nama": "Cara Yohana",
+                "ikon": "👧",
+                "catatan": "Dipotong mendatar.",
+                "suara": "Cara Yohana memotong mendatar. Sepuluh ditambah enam sama dengan enam belas sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 + 6 = 16"
+                }
+              },
+              {
+                "id": "komang",
+                "nama": "Cara Komang",
+                "ikon": "🧒",
+                "catatan": "Dipotong tegak.",
+                "suara": "Cara Komang memotong tegak. Dua belas ditambah empat sama dengan enam belas sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 + 4 = 16"
+                }
+              }
             ],
             "kesimpulan": "Luas denah sama, 16 cm²."
           },
@@ -295,9 +924,174 @@
             "ide": "Hitung satu kali, bukan dua.",
             "suara": "Ada tiga langkah bila dua bangun saling menumpuk. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "irisan", "label": "Menumpuk", "ikon": "🧱", "isi": "Daerah milik kedua bangun.", "suara": "Cari daerah yang dimiliki kedua bangun sekaligus. Itu bagian yang menumpuk, luasnya enam sentimeter persegi.", "visual": { "jenis": "teks", "isi": "2 × 3 = 6 cm²" } },
-              { "id": "jumlah", "label": "Jumlah", "ikon": "➕", "isi": "Luas kedua bangun.", "suara": "Jumlahkan luas kedua bangun. Dua belas ditambah dua belas sama dengan dua puluh empat. Ini masih terlalu besar.", "visual": { "jenis": "teks", "isi": "12 + 12 = 24" } },
-              { "id": "kurang", "label": "Kurangi", "ikon": "➖", "isi": "Kurangi bagian menumpuk.", "suara": "Kurangi dengan bagian yang menumpuk. Dua puluh empat dikurangi enam sama dengan delapan belas sentimeter persegi.", "visual": { "jenis": "teks", "isi": "24 − 6 = 18 cm²" } }
+              {
+                "id": "irisan",
+                "label": "Menumpuk",
+                "ikon": "🧱",
+                "isi": "Daerah milik kedua bangun.",
+                "suara": "Cari daerah yang dimiliki kedua bangun sekaligus. Itu bagian yang menumpuk, luasnya enam sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 × 3 = 6 cm²"
+                }
+              },
+              {
+                "id": "jumlah",
+                "label": "Jumlah",
+                "ikon": "➕",
+                "isi": "Luas kedua bangun.",
+                "suara": "Jumlahkan luas kedua bangun. Dua belas ditambah dua belas sama dengan dua puluh empat. Ini masih terlalu besar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "12 + 12 = 24"
+                }
+              },
+              {
+                "id": "kurang",
+                "label": "Kurangi",
+                "ikon": "➖",
+                "isi": "Kurangi bagian menumpuk.",
+                "suara": "Kurangi dengan bagian yang menumpuk. Dua puluh empat dikurangi enam sama dengan delapan belas sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "24 − 6 = 18 cm²"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Luas Bangun Gabungan",
+          "ikon": "🧩",
+          "suara": "Ini peta tentang masalah luas bangun gabungan, yaitu bagaimana mencari luas bangun yang tersusun dari beberapa bangun datar. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-pecah",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Memecah bangun gabungan",
+            "petunjuk": "Hal yang dipelajari pertama: mengenali bangun-bangun datar penyusunnya."
+          },
+          {
+            "id": "hal-luas",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menghitung luas tiap bagian",
+            "petunjuk": "Hal yang dipelajari kedua: mencari luas satu per satu bagian."
+          },
+          {
+            "id": "hal-jumlah",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menjumlahkan luas bagian",
+            "petunjuk": "Hal yang dipelajari ketiga: menggabungkan luas semua bagian."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-bagi",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Bagi dengan garis lurus",
+            "petunjuk": "Langkah untuk memecah bangun: tarik garis pembagi."
+          },
+          {
+            "id": "cara-rumus",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Lengkapi ukuran, pakai rumus",
+            "petunjuk": "Langkah untuk mencari luas bagian: cari ukuran yang belum tertulis, lalu pakai rumus."
+          },
+          {
+            "id": "cara-tambah",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tambah semua, tulis satuan",
+            "petunjuk": "Langkah terakhir: hasil tiap bagian ditambah, lalu diberi satuan luas."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-tepat",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Luas gabungan dihitung tepat",
+            "petunjuk": "Kemampuan di akhir: luas seluruh bangun bisa dihitung dengan benar."
+          },
+          {
+            "id": "hasil-sama",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Dua cara pecah, luas sama",
+            "petunjuk": "Kemampuan di akhir: tahu bahwa cara memecah berbeda tetap memberi luas yang sama."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Luas bangun gabungan",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel luas bangun gabungan. Untuk tiap contoh, pasang luas bagian pertama, luas bagian kedua, dan luas seluruhnya.",
+        "pojok": "Contoh",
+        "kolom": [
+          "Bagian 1",
+          "Bagian 2",
+          "Luas"
+        ],
+        "baris": [
+          {
+            "label": "Yohana",
+            "sel": [
+              "10 satuan",
+              "5 satuan",
+              "15 satuan"
+            ]
+          },
+          {
+            "label": "Uji 2",
+            "sel": [
+              "128 cm²",
+              "96 cm²",
+              "224 cm²"
+            ]
+          },
+          {
+            "label": "Uji 3",
+            "sel": [
+              "2 satuan",
+              "20 satuan",
+              "22 satuan"
+            ]
+          },
+          {
+            "label": "Uji 4",
+            "sel": [
+              "14 satuan",
+              "6 satuan",
+              "20 satuan"
             ]
           }
         ]
@@ -342,14 +1136,62 @@
           }
         ],
         "kartu": [
-          { "id": "d-syarat", "teks": "2 × (p + l) = 60", "ikon": "🧵", "cabang": "kawat", "petunjuk": "Syarat kawat itu soal kawat tetap. Coba cabang lain." },
-          { "id": "d-tiga", "teks": "p + l = 30 cm", "ikon": "➕", "cabang": "kawat", "petunjuk": "Panjang tambah lebar itu soal kawat tetap. Coba cabang lain." },
-          { "id": "d-dua", "teks": "20 × 10 = 200 cm²", "ikon": "▭", "cabang": "beda", "petunjuk": "Luas satu kerangka itu soal luas berbeda. Coba cabang lain." },
-          { "id": "d-lima", "teks": "25 × 5 = 125 cm²", "ikon": "➖", "cabang": "beda", "petunjuk": "Luas kerangka yang pipih itu soal luas berbeda. Coba cabang lain." },
-          { "id": "d-persegi", "teks": "15 × 15 = 225 cm²", "ikon": "🟦", "cabang": "persegi", "petunjuk": "Persegi itu soal mendekati persegi. Coba cabang lain." },
-          { "id": "d-terbesar", "teks": "Luas terbesar pada persegi", "ikon": "🏆", "cabang": "persegi", "petunjuk": "Luas terbesar itu soal mendekati persegi. Coba cabang lain." },
-          { "id": "d-pagar", "teks": "Pagar kebun memakai keliling", "ikon": "🧱", "cabang": "pilih", "petunjuk": "Pagar itu soal keliling atau luas. Coba cabang lain." },
-          { "id": "d-ubin", "teks": "Ubin lantai memakai luas", "ikon": "🟨", "cabang": "pilih", "petunjuk": "Ubin itu soal keliling atau luas. Coba cabang lain." }
+          {
+            "id": "d-syarat",
+            "teks": "2 × (p + l) = 60",
+            "ikon": "🧵",
+            "cabang": "kawat",
+            "petunjuk": "Syarat kawat itu soal kawat tetap. Coba cabang lain."
+          },
+          {
+            "id": "d-tiga",
+            "teks": "p + l = 30 cm",
+            "ikon": "➕",
+            "cabang": "kawat",
+            "petunjuk": "Panjang tambah lebar itu soal kawat tetap. Coba cabang lain."
+          },
+          {
+            "id": "d-dua",
+            "teks": "20 × 10 = 200 cm²",
+            "ikon": "▭",
+            "cabang": "beda",
+            "petunjuk": "Luas satu kerangka itu soal luas berbeda. Coba cabang lain."
+          },
+          {
+            "id": "d-lima",
+            "teks": "25 × 5 = 125 cm²",
+            "ikon": "➖",
+            "cabang": "beda",
+            "petunjuk": "Luas kerangka yang pipih itu soal luas berbeda. Coba cabang lain."
+          },
+          {
+            "id": "d-persegi",
+            "teks": "15 × 15 = 225 cm²",
+            "ikon": "🟦",
+            "cabang": "persegi",
+            "petunjuk": "Persegi itu soal mendekati persegi. Coba cabang lain."
+          },
+          {
+            "id": "d-terbesar",
+            "teks": "Luas terbesar pada persegi",
+            "ikon": "🏆",
+            "cabang": "persegi",
+            "petunjuk": "Luas terbesar itu soal mendekati persegi. Coba cabang lain."
+          },
+          {
+            "id": "d-pagar",
+            "teks": "Pagar kebun memakai keliling",
+            "ikon": "🧱",
+            "cabang": "pilih",
+            "petunjuk": "Pagar itu soal keliling atau luas. Coba cabang lain."
+          },
+          {
+            "id": "d-ubin",
+            "teks": "Ubin lantai memakai luas",
+            "ikon": "🟨",
+            "cabang": "pilih",
+            "petunjuk": "Ubin itu soal keliling atau luas. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -363,9 +1205,39 @@
             "ide": "Panjang tambah lebar selalu tiga puluh.",
             "suara": "Ada tiga hal tentang kawat. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "kawat", "label": "Kawat", "ikon": "🧵", "isi": "Kawat 60 cm dibentuk kerangka.", "suara": "Kawat enam puluh sentimeter dibentuk menjadi kerangka persegi panjang.", "visual": { "jenis": "teks", "isi": "60 cm" } },
-              { "id": "syarat", "label": "Syarat", "ikon": "📏", "isi": "Dua kali panjang tambah lebar.", "suara": "Dua kali panjang tambah lebar harus sama dengan enam puluh.", "visual": { "jenis": "teks", "isi": "2 × (p + l) = 60" } },
-              { "id": "tiga", "label": "Tiga puluh", "ikon": "➕", "isi": "Panjang tambah lebar tiga puluh.", "suara": "Jadi panjang tambah lebar sama dengan tiga puluh. Dua puluh tambah sepuluh, atau dua puluh lima tambah lima.", "visual": { "jenis": "teks", "isi": "p + l = 30" } }
+              {
+                "id": "kawat",
+                "label": "Kawat",
+                "ikon": "🧵",
+                "isi": "Kawat 60 cm dibentuk kerangka.",
+                "suara": "Kawat enam puluh sentimeter dibentuk menjadi kerangka persegi panjang.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "60 cm"
+                }
+              },
+              {
+                "id": "syarat",
+                "label": "Syarat",
+                "ikon": "📏",
+                "isi": "Dua kali panjang tambah lebar.",
+                "suara": "Dua kali panjang tambah lebar harus sama dengan enam puluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 × (p + l) = 60"
+                }
+              },
+              {
+                "id": "tiga",
+                "label": "Tiga puluh",
+                "ikon": "➕",
+                "isi": "Panjang tambah lebar tiga puluh.",
+                "suara": "Jadi panjang tambah lebar sama dengan tiga puluh. Dua puluh tambah sepuluh, atau dua puluh lima tambah lima.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "p + l = 30"
+                }
+              }
             ]
           },
           {
@@ -375,8 +1247,28 @@
             "ide": "Keliling sama, luas berbeda.",
             "suara": "Lihat dua kerangka dari kawat yang sama.",
             "sisi": [
-              { "id": "dua", "nama": "20 kali 10", "ikon": "▭", "catatan": "Luas dua ratus.", "suara": "Kerangka dua puluh kali sepuluh luasnya dua ratus sentimeter persegi.", "visual": { "jenis": "teks", "isi": "200 cm²" } },
-              { "id": "lima", "nama": "25 kali 5", "ikon": "➖", "catatan": "Luas seratus dua puluh lima.", "suara": "Kerangka dua puluh lima kali lima luasnya seratus dua puluh lima sentimeter persegi, lebih kecil.", "visual": { "jenis": "teks", "isi": "125 cm²" } }
+              {
+                "id": "dua",
+                "nama": "20 kali 10",
+                "ikon": "▭",
+                "catatan": "Luas dua ratus.",
+                "suara": "Kerangka dua puluh kali sepuluh luasnya dua ratus sentimeter persegi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "200 cm²"
+                }
+              },
+              {
+                "id": "lima",
+                "nama": "25 kali 5",
+                "ikon": "➖",
+                "catatan": "Luas seratus dua puluh lima.",
+                "suara": "Kerangka dua puluh lima kali lima luasnya seratus dua puluh lima sentimeter persegi, lebih kecil.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "125 cm²"
+                }
+              }
             ],
             "kesimpulan": "Keliling sama belum tentu luas sama."
           },
@@ -387,9 +1279,195 @@
             "ide": "Pilih sesuai kebutuhan.",
             "suara": "Ada tiga kebutuhan. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "pagar", "label": "Pagar", "ikon": "🧱", "isi": "Panjang di tepi, keliling.", "suara": "Pagar dan kawat dipasang di tepi, jadi memakai keliling.", "visual": { "jenis": "teks", "isi": "keliling" } },
-              { "id": "ubin", "label": "Ubin", "ikon": "🟨", "isi": "Daerah di dalam, luas.", "suara": "Ubin dan pasir menutupi daerah di dalam, jadi memakai luas.", "visual": { "jenis": "teks", "isi": "luas" } },
-              { "id": "urut", "label": "Urutan", "ikon": "📊", "isi": "Lima kerangka, luas beda.", "suara": "Lima kerangka kawat berkeliling sama punya luas lima puluh enam, seratus dua puluh lima, seratus tujuh puluh enam, dua ratus enam belas, dan dua ratus dua puluh lima.", "visual": { "jenis": "tabel-menurun", "kepala": ["Kerangka", "Luas"], "baris": [["28 × 2", 56], ["25 × 5", 125], ["22 × 8", 176], ["15 × 15", 225]] } }
+              {
+                "id": "pagar",
+                "label": "Pagar",
+                "ikon": "🧱",
+                "isi": "Panjang di tepi, keliling.",
+                "suara": "Pagar dan kawat dipasang di tepi, jadi memakai keliling.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "keliling"
+                }
+              },
+              {
+                "id": "ubin",
+                "label": "Ubin",
+                "ikon": "🟨",
+                "isi": "Daerah di dalam, luas.",
+                "suara": "Ubin dan pasir menutupi daerah di dalam, jadi memakai luas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "luas"
+                }
+              },
+              {
+                "id": "urut",
+                "label": "Urutan",
+                "ikon": "📊",
+                "isi": "Lima kerangka, luas beda.",
+                "suara": "Lima kerangka kawat berkeliling sama punya luas lima puluh enam, seratus dua puluh lima, seratus tujuh puluh enam, dua ratus enam belas, dan dua ratus dua puluh lima.",
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Kerangka",
+                    "Luas"
+                  ],
+                  "baris": [
+                    [
+                      "28 × 2",
+                      56
+                    ],
+                    [
+                      "25 × 5",
+                      125
+                    ],
+                    [
+                      "22 × 8",
+                      176
+                    ],
+                    [
+                      "15 × 15",
+                      225
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Kawat Bapak: kerangka terluas",
+          "ikon": "📏",
+          "suara": "Ini peta tentang kawat Bapak yang dibentuk menjadi kerangka persegi panjang. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-ukuran",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Ukuran dari keliling tetap",
+            "petunjuk": "Memahami bahwa satu keliling bisa punya banyak pasangan panjang dan lebar."
+          },
+          {
+            "id": "hal-hitung",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menghitung keliling dan luas",
+            "petunjuk": "Memahami cara mendapatkan keliling dan luas tiap ukuran."
+          },
+          {
+            "id": "hal-terluas",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Bentuk dengan luas terbesar",
+            "petunjuk": "Memahami bentuk mana yang memberi luas paling besar."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-gambar",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Gambar kerangka pada petak",
+            "petunjuk": "Langkah untuk menemukan ukuran dari keliling tetap."
+          },
+          {
+            "id": "cara-tabel",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Isi tabel ukuran dan luas",
+            "petunjuk": "Langkah untuk menghitung keliling dan luas tiap ukuran."
+          },
+          {
+            "id": "cara-banding",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Bandingkan semua luasnya",
+            "petunjuk": "Langkah untuk mencari bentuk yang luasnya terbesar."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-ukuran",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Menemukan banyak ukuran",
+            "petunjuk": "Kemampuan menyebut berbagai ukuran dari keliling yang sama."
+          },
+          {
+            "id": "hasil-persegi",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu persegi paling luas",
+            "petunjuk": "Kemampuan menyebut bentuk yang memberi luas terbesar."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Kerangka dari kawat 60 cm",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel kerangka dari kawat. Pasang ukuran, keliling, dan luas untuk empat bentuk kerangka persegi panjang.",
+        "pojok": "Bentuk",
+        "kolom": [
+          "Ukuran",
+          "Keliling",
+          "Luas"
+        ],
+        "baris": [
+          {
+            "label": "Bentuk 1",
+            "sel": [
+              "20 cm × 10 cm",
+              "60 cm",
+              "200 cm²"
+            ]
+          },
+          {
+            "label": "Bentuk 3",
+            "sel": [
+              "5 cm × 25 cm",
+              "60 cm",
+              "125 cm²"
+            ]
+          },
+          {
+            "label": "Bentuk 5",
+            "sel": [
+              "15 cm × 15 cm",
+              "60 cm",
+              "225 cm²"
+            ]
+          },
+          {
+            "label": "Bentuk 6",
+            "sel": [
+              "18 cm × 12 cm",
+              "60 cm",
+              "216 cm²"
             ]
           }
         ]

@@ -19,12 +19,12 @@ const rumah = (id: string, ox: number, oy: number, s: number, wa: string, wb: st
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
-  judul: "Metode luar Subbab C: empat cara dan contoh bersama",
-  sumber: "Metode luar · pembuka dan contoh bersama dari Buku Siswa hlm. 158",
+  judul: "Metode luar: empat cara dan contoh bersama",
+  sumber: "Metode luar: pembuka dan contoh bersama",
   latar: "#F5F3FF",
   ketukan: [
     k(
-      "Selamat datang di video metode dari luar untuk Subbab C. Ada empat metode untuk menghitung luas daerah bangun gabungan.",
+      "Ada empat metode untuk menghitung luas daerah bangun gabungan. Kita lihat satu per satu, lalu kita coba dengan angka.",
       tambah(0, judul("metode luar: bangun gabungan")),
       tambah("empat", emo("ik", 150, 100, "🧩", 52)),
     ),
@@ -40,12 +40,12 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("Rearrangement", ...kartu("m4", 152, 100, 134, 52, W.pink, ["Rearrangement", "Invariance Check", "bandingkan dua cara"], 8.4)),
     ),
     k(
-      "Contoh bersama kita adalah bangun ABCDE dari Eksplorasi 5.3. Menurut buku, luasnya 15 satuan luas.",
+      "Contoh bersama kita adalah bangun ABCDE dari kegiatan tadi. Luasnya lima belas satuan luas.",
       bersih(0),
-      tambah(0, judul("contoh bersama: Eksplorasi 5.3")),
+      tambah(0, judul("contoh bersama: bangun ABCDE")),
       tambah("bangun", ...dasarEks("e", OX, OY, S)),
       tambah("ABCDE", ...hurufEks("h", OX, OY, S)),
-      tambah("15", ...kartu("cb", 166, 56, 120, 40, W.emas, ["luas = 15", "satuan luas"], 10)),
+      tambah("lima", ...kartu("cb", 166, 56, 120, 40, W.emas, ["luas = 15", "satuan luas"], 10)),
     ),
   ],
 };
@@ -54,7 +54,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 export const ADEGAN_LUAR_ADITIF: AdeganStory = {
   id: "luar-additif",
   judul: "Additive Decomposition: pecah lalu jumlahkan",
-  sumber: "Metode luar · Additive Decomposition",
+  sumber: "Metode luar: Additive Decomposition",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -91,32 +91,32 @@ export const ADEGAN_LUAR_ADITIF: AdeganStory = {
 /* ------------------------------ 3. Additive Decomposition: penerapan pada soal nomor 2 ------------------------------ */
 export const ADEGAN_LUAR_ADITIF_TERAPAN: AdeganStory = {
   id: "luar-additif-terapan",
-  judul: "Additive Decomposition pada Uji Kompetensi nomor 2",
-  sumber: "Metode luar · penerapan pada angka Buku Siswa hlm. 162",
+  judul: "Additive Decomposition pada Uji 2",
+  sumber: "Metode luar: penerapan pada Uji 2",
   latar: "#ECFDF5",
   ketukan: [
     k(
-      "Terapkan pada soal nomor 2. Garis mendatar sepanjang 16 memecah bangun menjadi dua bagian.",
-      tambah(0, judul("terapan: soal nomor 2", W.hijau)),
-      tambah("nomor", lukis("u2-b", L2.ox, L2.oy, L2.s, UJI2, W.putih, W.oranye)),
+      "Terapkan pada Uji dua. Garis mendatar sepanjang enam belas memecah bangun menjadi dua bagian.",
+      tambah(0, judul("terapan: Uji 2", W.hijau)),
+      tambah("dua.", lukis("u2-b", L2.ox, L2.oy, L2.s, UJI2, W.putih, W.oranye)),
       tambah("sepanjang", potong("u2-d1", L2.ox, L2.oy, L2.s, [0, 8], [16, 8], W.merah, { z: 5 }), teks("u2-n1", 70, 74, "16 cm", 8.6, W.merah, { z: 5 })),
     ),
     k(
-      "Bagian pertama jajargenjang beralas 16 dan tinggi 8. Luasnya 16 kali 8, yaitu 128.",
+      "Bagian pertama jajargenjang beralas enam belas dan tinggi delapan. Luasnya enam belas kali delapan, yaitu seratus dua puluh delapan.",
       tambah("jajargenjang", lukis("u2-p1", L2.ox, L2.oy, L2.s, UJI2_JAJAR, W.langit, W.oranye)),
       tambah("tinggi", teks("u2-n2", 96, 62, "8 cm", 8.6, W.hijau, { z: 5 })),
       tambah("Luasnya", ...deret("u2-a", PANEL_X, 90, ["bagian 1:", "16 × 8 = 128"], 9.6, W.biru, 14)),
     ),
     k(
-      "Bagian kedua segitiga beralas 16 dan tinggi 12. Luasnya setengah kali 16 kali 12, yaitu 96.",
+      "Bagian kedua segitiga beralas enam belas dan tinggi dua belas. Luasnya setengah kali enam belas kali dua belas, yaitu sembilan puluh enam.",
       redamkan(0, "u2-p1"),
       tambah("segitiga", lukis("u2-p2", L2.ox, L2.oy, L2.s, UJI2_SEGITIGA, W.krem, W.oranye), teks("u2-n3", 132, 112, "12 cm", 8.6, W.hijau, { z: 5 })),
       tambah("Luasnya", ...deret("u2-c", PANEL_X, 126, ["bagian 2:", "½ × 16 × 12 = 96"], 9.6, W.biru, 14)),
     ),
     k(
-      "Periksa dulu: kedua bagian berbagi sisi 16 dan tidak bertumpuk, jadi boleh dijumlahkan. 128 ditambah 96 sama dengan 224.",
+      "Periksa dulu: kedua bagian berbagi sisi enam belas dan tidak bertumpuk, jadi boleh dijumlahkan. Seratus dua puluh delapan ditambah sembilan puluh enam sama dengan dua ratus dua puluh empat.",
       tambah("Periksa", ...kartu("pr", 152, 46, 136, 30, W.hijauMuda, ["tidak bertumpuk ✓"], 9.6)),
-      tambah("128", ...kartu("hs", 40, 160, 220, 30, W.emas, ["128 + 96 = 224 satuan luas"], 11)),
+      tambah("Seratus", ...kartu("hs", 40, 160, 220, 30, W.emas, ["128 + 96 = 224 satuan luas"], 11)),
     ),
   ],
 };
@@ -125,7 +125,7 @@ export const ADEGAN_LUAR_ADITIF_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_KOMPOSIT: AdeganStory = {
   id: "luar-komposit",
   judul: "Composite Area Strategy: empat langkah kerja",
-  sumber: "Metode luar · Composite Area Strategy",
+  sumber: "Metode luar: Composite Area Strategy",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -159,35 +159,35 @@ export const ADEGAN_LUAR_KOMPOSIT: AdeganStory = {
 /* ------------------------------ 5. Composite Area Strategy: penerapan pada soal nomor 3 ------------------------------ */
 export const ADEGAN_LUAR_KOMPOSIT_TERAPAN: AdeganStory = {
   id: "luar-komposit-terapan",
-  judul: "Composite Area Strategy pada Uji Kompetensi nomor 3",
-  sumber: "Metode luar · penerapan pada angka Buku Siswa hlm. 162",
+  judul: "Composite Area Strategy pada Uji 3",
+  sumber: "Metode luar: penerapan pada Uji 3",
   latar: "#F0FDFA",
   ketukan: [
     k(
-      "Terapkan pada bangun A soal nomor 3. Langkah pertama, kita temukan layang-layang di atas dan trapesium di bawahnya.",
-      tambah(0, judul("terapan: bangun A, nomor 3", W.biru)),
+      "Terapkan pada bangun A di Uji tiga. Langkah pertama, kita temukan layang-layang di atas dan trapesium di bawahnya.",
+      tambah(0, judul("terapan: bangun A, Uji 3", W.biru)),
       tambah("bangun", petak("u3-g", L3.ox, L3.oy, 7, 6, L3.s), lukis("u3-b", L3.ox, L3.oy, L3.s, UJI3, W.putih, W.oranye, { tebal: 2.2 })),
       tambah("layang-layang", lukis("u3-p1", L3.ox, L3.oy, L3.s, UJI3_LAYANG, W.langit, W.oranye)),
       tambah("trapesium", lukis("u3-p2", L3.ox, L3.oy, L3.s, UJI3_TRAP_1, W.krem, W.oranye)),
     ),
     k(
-      "Langkah kedua, lengkapi ukuran dengan menghitung petak. Diagonal layang-layang 5 dan 4, sisi sejajar trapesium 2 dan 4, tingginya 4.",
-      tambah("5", potong("u3-d1", L3.ox, L3.oy, L3.s, [1, 2], [6, 2], W.merah)),
-      tambah("4,", potong("u3-d2", L3.ox, L3.oy, L3.s, [2, 0], [2, 4], W.hijau), ...deret("u3-n", PANEL_X, 74, ["layang-layang:", "diagonal 5 dan 4"], 9, W.biru, 14)),
+      "Langkah kedua, lengkapi ukuran dengan menghitung petak. Diagonal layang-layang lima dan empat, sisi sejajar trapesium dua dan empat, tingginya empat.",
+      tambah("lima", potong("u3-d1", L3.ox, L3.oy, L3.s, [1, 2], [6, 2], W.merah)),
+      tambah("empat,", potong("u3-d2", L3.ox, L3.oy, L3.s, [2, 0], [2, 4], W.hijau), ...deret("u3-n", PANEL_X, 74, ["layang-layang:", "diagonal 5 dan 4"], 9, W.biru, 14)),
       tambah("sejajar", teks("u3-s1", L3.ox + 1.2 * L3.s, L3.oy + 5.2 * L3.s, "2", 9, W.merah), teks("u3-s2", L3.ox + 6.6 * L3.s, L3.oy + 4.2 * L3.s, "4", 9, W.merah)),
       tambah("tingginya", ...deret("u3-m", PANEL_X, 112, ["trapesium:", "sisi 2 dan 4", "tinggi 4"], 9, W.biru, 14)),
     ),
     k(
-      "Langkah ketiga, hitung luas. Layang-layang setengah kali 5 kali 4, yaitu 10. Trapesium setengah kali 6 kali 4, yaitu 12.",
+      "Langkah ketiga, hitung luas. Layang-layang setengah kali lima kali empat, yaitu sepuluh. Trapesium setengah kali enam kali empat, yaitu dua belas.",
       hapus(0, ...idDeret("u3-n", 2), ...idDeret("u3-m", 3)),
       tambah("Layang-layang", ...deret("u3-f", PANEL_X, 74, ["layang-layang:", "½ × 5 × 4 = 10"], 9, W.hijau, 14)),
       tambah("Trapesium", ...deret("u3-g", PANEL_X, 112, ["trapesium:", "½ × 6 × 4 = 12"], 9, W.hijau, 14)),
     ),
     k(
-      "Langkah keempat, jumlahkan. 10 ditambah 12 sama dengan 22 satuan luas.",
+      "Langkah keempat, jumlahkan. Sepuluh ditambah dua belas sama dengan dua puluh dua satuan luas.",
       hapus(0, ...idDeret("u3-f", 2), ...idDeret("u3-g", 2), "u3-d1", "u3-d2"),
       tambah("jumlahkan.", ...kartu("u3-h", 150, 70, 140, 36, W.emas, ["10 + 12 = 22"], 11)),
-      tambah("22", teks("u3-r", PANEL_X, 130, "22 satuan luas", 10, W.hijau)),
+      tambah("puluh", teks("u3-r", PANEL_X, 130, "22 satuan luas", 10, W.hijau)),
     ),
   ],
 };

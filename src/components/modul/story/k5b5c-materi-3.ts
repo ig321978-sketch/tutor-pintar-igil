@@ -18,8 +18,8 @@ const L1 = LETAK_UJI.u1;
 
 export const ADEGAN_UJI_1: AdeganStory = {
   id: "uji-1",
-  judul: "Uji Kompetensi: empat soal dan soal nomor 1",
-  sumber: "Buku Siswa hlm. 162; Panduan Guru hlm. 236",
+  judul: "Empat uji, mulai dari Uji 1",
+  sumber: "Materi: Uji 1, layang-layang",
   latar: "#FFF1F2",
   kutipan: [
     "Uji Kompetensi",
@@ -31,28 +31,28 @@ export const ADEGAN_UJI_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Sekarang kita masuk ke Uji Kompetensi. Perintahnya, cobalah menghitung luas daerah bangun gabungan berikut. Ada empat soal.",
-      tambah(0, judul("Uji Kompetensi", W.merah)),
+      "Sekarang kita masuk ke bagian uji. Perintahnya, cobalah menghitung luas daerah bangun gabungan berikut. Ada empat soal.",
+      tambah(0, judul("Empat uji", W.merah)),
       tambah("menghitung", lukis("m1", 18, 76, 2.4, UJI1, W.langit, W.oranye), lukis("m2", 90, 76, 2.2, UJI2, W.krem, W.oranye)),
       tambah("empat", lukis("m3", 148, 76, 6, UJI3, W.hijauMuda, W.oranye), lukis("m4", 208, 76, 5, UJI4, W.pink, W.oranye)),
       tambah("soal.", bulat("c1", 47, 54, 9, W.pink), teks("c1-t", 47, 57.5, "1", 10), bulat("c2", 113, 54, 9, W.pink), teks("c2-t", 113, 57.5, "2", 10), bulat("c3", 172, 54, 9, W.pink), teks("c3-t", 172, 57.5, "3", 10), bulat("c4", 230, 54, 9, W.pink), teks("c4-t", 230, 57.5, "4", 10)),
     ),
     k(
-      "Soal nomor 1 berupa layang-layang. Diagonalnya 24 sentimeter mendatar dan 18 sentimeter tegak.",
+      "Uji satu berupa layang-layang. Diagonalnya dua puluh empat sentimeter mendatar dan delapan belas sentimeter tegak.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi nomor 1")),
+      tambah(0, judul("Uji 1")),
       tambah("layang-layang.", lukis("u1-b", L1.ox, L1.oy, L1.s, UJI1, W.langit, W.oranye)),
-      tambah("24", potong("u1-d1", L1.ox, L1.oy, L1.s, [0, 9], [24, 9], W.merah), teks("u1-n1", 124, 88, "24 cm", 8.8, W.merah)),
-      tambah("18", potong("u1-d2", L1.ox, L1.oy, L1.s, [5, 0], [5, 18], W.hijau), teks("u1-n2", 84, 64, "18 cm", 8.8, W.hijau)),
+      tambah("puluh", potong("u1-d1", L1.ox, L1.oy, L1.s, [0, 9], [24, 9], W.merah), teks("u1-n1", 124, 88, "24 cm", 8.8, W.merah)),
+      tambah("delapan", potong("u1-d2", L1.ox, L1.oy, L1.s, [5, 0], [5, 18], W.hijau), teks("u1-n2", 84, 64, "18 cm", 8.8, W.hijau)),
     ),
     k(
-      "Luas layang-layang adalah setengah kali diagonal 1 kali diagonal 2, yaitu setengah kali 24 kali 18, sama dengan 12 kali 18.",
+      "Luas layang-layang adalah setengah kali diagonal satu kali diagonal dua, yaitu setengah kali dua puluh empat kali delapan belas, sama dengan dua belas kali delapan belas.",
       tambah("Luas", teks("u1-f1", 150, 164, "Luas = ½ × diagonal 1 × diagonal 2", 9, W.biru)),
       tambah("yaitu", teks("u1-f2", 150, 180, "= ½ × 24 × 18 = 12 × 18", 9.6, W.biru)),
     ),
     k(
-      "Hasilnya 216. Jadi, luas layang-layang itu 216 sentimeter persegi.",
-      tambah("Hasilnya", teks("u1-f3", 150, 196, "= 216", 9.6, W.hijau)),
+      "Dua belas kali delapan belas hasilnya dua ratus enam belas. Jadi, luas layang-layang itu dua ratus enam belas sentimeter persegi.",
+      tambah("hasilnya", teks("u1-f3", 150, 196, "= 216", 9.6, W.hijau)),
       tambah("Jadi,", ...kartu("u1-h", 196, 60, 94, 36, W.emas, ["216 cm²"], 12)),
     ),
   ],
@@ -64,8 +64,8 @@ const PANEL_X = 222;
 
 export const ADEGAN_UJI_2: AdeganStory = {
   id: "uji-2",
-  judul: "Uji Kompetensi nomor 2: jajargenjang dan segitiga",
-  sumber: "Buku Siswa hlm. 162; Panduan Guru hlm. 236",
+  judul: "Uji 2: jajargenjang dan segitiga",
+  sumber: "Materi: Uji 2, jajargenjang dan segitiga",
   latar: "#FFF7ED",
   kutipan: [
     "8 cm",
@@ -79,27 +79,27 @@ export const ADEGAN_UJI_2: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal nomor 2 adalah bangun gabungan: jajargenjang di atas dan segitiga di bawahnya. Ukurannya 16, 8, dan 12 sentimeter.",
-      tambah(0, judul("Uji Kompetensi nomor 2")),
+      "Uji dua adalah bangun gabungan: jajargenjang di atas dan segitiga di bawahnya. Ukurannya enam belas, delapan, dan dua belas sentimeter.",
+      tambah(0, judul("Uji 2")),
       tambah("gabungan:", lukis("u2-b", L2.ox, L2.oy, L2.s, UJI2, W.putih, W.oranye)),
-      tambah("16,", potong("u2-d1", L2.ox, L2.oy, L2.s, [0, 8], [16, 8], W.merah, { z: 5 }), teks("u2-n1", 70, 74, "16 cm", 8.6, W.merah, { z: 5 })),
-      tambah("8,", potong("u2-d2", L2.ox, L2.oy, L2.s, [16, 0], [16, 8], W.hijau, { z: 5 }), teks("u2-n2", 96, 62, "8 cm", 8.6, W.hijau, { z: 5 })),
-      tambah("12", teks("u2-n3", 132, 112, "12 cm", 8.6, W.hijau, { z: 5 })),
+      tambah("enam", potong("u2-d1", L2.ox, L2.oy, L2.s, [0, 8], [16, 8], W.merah, { z: 5 }), teks("u2-n1", 70, 74, "16 cm", 8.6, W.merah, { z: 5 })),
+      tambah("delapan,", potong("u2-d2", L2.ox, L2.oy, L2.s, [16, 0], [16, 8], W.hijau, { z: 5 }), teks("u2-n2", 96, 62, "8 cm", 8.6, W.hijau, { z: 5 })),
+      tambah("sentimeter.", teks("u2-n3", 132, 112, "12 cm", 8.6, W.hijau, { z: 5 })),
     ),
     k(
-      "Pecah menjadi jajargenjang dengan alas 16 dan tinggi 8, ditambah segitiga dengan alas 16 dan tinggi 12.",
+      "Pecah menjadi jajargenjang dengan alas enam belas dan tinggi delapan, ditambah segitiga dengan alas enam belas dan tinggi dua belas.",
       tambah("jajargenjang", lukis("u2-p1", L2.ox, L2.oy, L2.s, UJI2_JAJAR, W.langit, W.oranye)),
       tambah("segitiga", lukis("u2-p2", L2.ox, L2.oy, L2.s, UJI2_SEGITIGA, W.krem, W.oranye)),
       tambah("ditambah", ...kartu("u2-k", 150, 44, 140, 34, W.hijauMuda, ["jajargenjang + segitiga"], 8.8)),
     ),
     k(
-      "Luas jajargenjang adalah alas kali tinggi, yaitu 16 kali 8, sama dengan 128.",
+      "Luas jajargenjang adalah alas kali tinggi, yaitu enam belas kali delapan, sama dengan seratus dua puluh delapan.",
       sorotkan(0, "u2-p1"),
       tambah("Luas", ...deret("u2-a", PANEL_X, 100, ["jajargenjang:", "alas × tinggi"], 8.8, W.biru, 14)),
       tambah("yaitu", ...deret("u2-b", PANEL_X, 128, ["= 16 × 8 = 128"], 9.6, W.hijau, 14)),
     ),
     k(
-      "Luas segitiga adalah setengah kali alas kali tinggi, yaitu setengah kali 16 kali 12, sama dengan 8 kali 12, yaitu 96.",
+      "Luas segitiga adalah setengah kali alas kali tinggi, yaitu setengah kali enam belas kali dua belas, sama dengan delapan kali dua belas, yaitu sembilan puluh enam.",
       redamkan(0, "u2-p1"),
       sorotkan(0, "u2-p2"),
       hapus(0, ...idDeret("u2-a", 2), ...idDeret("u2-b", 1)),
@@ -107,7 +107,7 @@ export const ADEGAN_UJI_2: AdeganStory = {
       tambah("yaitu", ...deret("u2-d", PANEL_X, 128, ["= ½ × 16 × 12", "= 8 × 12 = 96"], 9.6, W.hijau, 14)),
     ),
     k(
-      "Jumlahnya 128 ditambah 96, sama dengan 224. Jadi, luas bangun gabungan itu 224 sentimeter persegi.",
+      "Jumlahnya seratus dua puluh delapan ditambah sembilan puluh enam, sama dengan dua ratus dua puluh empat. Jadi, luas bangun gabungan itu dua ratus dua puluh empat sentimeter persegi.",
       redamkan(0, "u2-p2"),
       hapus(0, ...idDeret("u2-c", 2), ...idDeret("u2-d", 2), ...idKartu("u2-k", 1)),
       tambah("Jumlahnya", ...kartu("u2-h", 156, 90, 130, 36, W.emas, ["128 + 96 = 224"], 11)),
@@ -121,8 +121,8 @@ const L3 = LETAK_UJI.u3;
 
 export const ADEGAN_UJI_3: AdeganStory = {
   id: "uji-3",
-  judul: "Uji Kompetensi nomor 3: bangun A pada petak, dua cara",
-  sumber: "Buku Siswa hlm. 162; Panduan Guru hlm. 236–237",
+  judul: "Uji 3: bangun A pada petak, dua cara",
+  sumber: "Materi: Uji 3, bangun pada petak",
   latar: "#F0FDFA",
   kutipan: [
     "Cara 1",
@@ -138,28 +138,28 @@ export const ADEGAN_UJI_3: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal nomor 3 digambar di atas petak. Bangun A boleh dipecah dengan dua cara. Kita lihat cara pertama dulu.",
-      tambah(0, judul("Uji Kompetensi nomor 3")),
+      "Uji tiga digambar di atas petak. Bangun A boleh dipecah dengan dua cara. Kita lihat cara pertama dulu.",
+      tambah(0, judul("Uji 3")),
       tambah("digambar", petak("u3-g", L3.ox, L3.oy, 7, 6, L3.s), lukis("u3-b", L3.ox, L3.oy, L3.s, UJI3, W.putih, W.oranye, { tebal: 2.2 })),
       tambah("Bangun", teks("u3-A", L3.ox + 4 * L3.s, L3.oy + 3.6 * L3.s, "A", 11, W.biru)),
       tambah("cara", ...kartu("u3-c1", 150, 44, 140, 28, W.krem, ["bisa dipecah 2 cara"], 8.8)),
     ),
     k(
-      "Cara 1: pecah menjadi layang-layang dan trapesium. Diagonal layang-layang itu 5 mendatar dan 4 tegak.",
+      "Cara satu: pecah menjadi layang-layang dan trapesium. Diagonal layang-layang itu lima mendatar dan empat tegak.",
       hapus(0, "u3-c1-k", "u3-c1-t0"),
       tambah("layang-layang.", lukis("u3-p1", L3.ox, L3.oy, L3.s, UJI3_LAYANG, W.langit, W.oranye)),
       tambah("trapesium.", lukis("u3-p2", L3.ox, L3.oy, L3.s, UJI3_TRAP_1, W.krem, W.oranye)),
       tambah("Cara", ...kartu("u3-t1", 150, 44, 140, 28, W.hijauMuda, ["Cara 1"], 10)),
-      tambah("5", potong("u3-d1", L3.ox, L3.oy, L3.s, [1, 2], [6, 2], W.merah)),
-      tambah("4.", potong("u3-d2", L3.ox, L3.oy, L3.s, [2, 0], [2, 4], W.hijau), ...deret("u3-n", PANEL_X, 92, ["diagonal 1 = 5", "diagonal 2 = 4"], 8.8, W.biru, 14)),
+      tambah("lima", potong("u3-d1", L3.ox, L3.oy, L3.s, [1, 2], [6, 2], W.merah)),
+      tambah("empat", potong("u3-d2", L3.ox, L3.oy, L3.s, [2, 0], [2, 4], W.hijau), ...deret("u3-n", PANEL_X, 92, ["diagonal 1 = 5", "diagonal 2 = 4"], 8.8, W.biru, 14)),
     ),
     k(
-      "Luas layang-layang adalah setengah kali 5 kali 4, sama dengan 10.",
+      "Luas layang-layang adalah setengah kali lima kali empat, sama dengan sepuluh.",
       sorotkan(0, "u3-p1"),
       tambah("Luas", ...deret("u3-f", PANEL_X, 132, ["layang-layang:", "½ × 5 × 4 = 10"], 9, W.hijau, 14)),
     ),
     k(
-      "Trapesiumnya punya sisi sejajar 2 dan 4, dengan tinggi 4. Luasnya setengah kali 6 kali 4, sama dengan 12.",
+      "Trapesiumnya punya sisi sejajar dua dan empat, dengan tinggi empat. Luasnya setengah kali enam kali empat, sama dengan dua belas.",
       redamkan(0, "u3-p1"),
       sorotkan(0, "u3-p2"),
       hapus(0, ...idDeret("u3-n", 2), ...idDeret("u3-f", 2)),
@@ -168,16 +168,16 @@ export const ADEGAN_UJI_3: AdeganStory = {
       tambah("Luasnya", ...deret("u3-g", PANEL_X, 100, ["trapesium:", "½ × (2 + 4) × 4", "= ½ × 6 × 4 = 12"], 9, W.hijau, 14)),
     ),
     k(
-      "Jumlahnya 10 ditambah 12, sama dengan 22. Jadi, luas bangun A adalah 22 satuan luas.",
+      "Jumlahnya sepuluh ditambah dua belas, sama dengan dua puluh dua. Jadi, luas bangun A adalah dua puluh dua satuan luas.",
       redamkan(0, "u3-p2"),
       hapus(0, "u3-s1", "u3-s2", "u3-t", ...idDeret("u3-g", 3), "u3-d1", "u3-d2"),
       tambah("Jumlahnya", ...kartu("u3-h", 150, 90, 140, 36, W.emas, ["10 + 12 = 22"], 11)),
       tambah("Jadi,", teks("u3-r", PANEL_X, 150, "22 satuan luas", 10, W.hijau)),
     ),
     k(
-      "Cara 2: pecah menjadi segitiga di kiri dan trapesium besar. Segitiganya beralas 4 dan tinggi 1, luasnya 2.",
+      "Cara dua: pecah menjadi segitiga di kiri dan trapesium besar. Segitiganya beralas empat dan tinggi satu, luasnya dua.",
       bersih(0),
-      tambah(0, judul("nomor 3, cara 2")),
+      tambah(0, judul("Uji 3, cara 2")),
       tambah(0, petak("u3-g", L3.ox, L3.oy, 7, 6, L3.s), lukis("u3-b", L3.ox, L3.oy, L3.s, UJI3, W.putih, W.oranye, { tebal: 2.2 })),
       tambah("segitiga", lukis("u3-q1", L3.ox, L3.oy, L3.s, UJI3_SEGITIGA, W.langit, W.oranye)),
       tambah("trapesium", lukis("u3-q2", L3.ox, L3.oy, L3.s, UJI3_TRAP_2, W.krem, W.oranye)),
@@ -185,7 +185,7 @@ export const ADEGAN_UJI_3: AdeganStory = {
       tambah("beralas", ...deret("u3-m", PANEL_X, 100, ["segitiga:", "alas 4, tinggi 1", "½ × 4 × 1 = 2"], 9, W.hijau, 14)),
     ),
     k(
-      "Trapesium besarnya punya sisi sejajar 4 dan 6 dengan tinggi 4, luasnya 20. Jumlahnya 2 ditambah 20, tetap 22.",
+      "Trapesium besarnya punya sisi sejajar empat dan enam dengan tinggi empat, luasnya dua puluh. Jumlahnya dua ditambah dua puluh, tetap dua puluh dua.",
       sorotkan(0, "u3-q2"),
       hapus(0, ...idDeret("u3-m", 3)),
       tambah("Trapesium", ...deret("u3-n", PANEL_X, 100, ["trapesium besar:", "½ × (4 + 6) × 4", "= 20"], 9, W.hijau, 14)),
@@ -199,8 +199,8 @@ const L4 = LETAK_UJI.u4;
 
 export const ADEGAN_UJI_4: AdeganStory = {
   id: "uji-4",
-  judul: "Uji Kompetensi nomor 4: bangun B dan selisih angka di Panduan Guru",
-  sumber: "Buku Siswa hlm. 162; Panduan Guru hlm. 236–237, 241",
+  judul: "Uji 4: bangun B pada petak",
+  sumber: "Materi: Uji 4, bangun pada petak",
   latar: "#FEFCE8",
   kutipan: [
     "luas daerah persegi panjang 1 +",
@@ -214,36 +214,36 @@ export const ADEGAN_UJI_4: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal nomor 4 juga di atas petak. Bangun B terdiri atas dua persegi panjang dan satu trapesium di sisi kanan.",
-      tambah(0, judul("Uji Kompetensi nomor 4")),
+      "Uji empat juga di atas petak. Bangun B terdiri atas dua persegi panjang dan satu trapesium di sisi kanan.",
+      tambah(0, judul("Uji 4")),
       tambah("juga", petak("u4-g", L4.ox, L4.oy, 9, 6, L4.s), lukis("u4-b", L4.ox, L4.oy, L4.s, UJI4, W.putih, W.oranye, { tebal: 2.2 })),
       tambah("Bangun", teks("u4-B", L4.ox + 4.5 * L4.s, L4.oy + 2.2 * L4.s + 3, "B", 11, W.biru)),
       tambah("trapesium", lukis("u4-p3", L4.ox, L4.oy, L4.s, UJI4_TRAP, W.krem, W.oranye)),
     ),
     k(
-      "Persegi panjang pertama berukuran 2 kali 4, luasnya 8. Persegi panjang kedua berukuran 3 kali 2, luasnya 6.",
+      "Persegi panjang pertama berukuran dua kali empat, luasnya delapan. Persegi panjang kedua berukuran tiga kali dua, luasnya enam.",
       tambah("pertama", lukis("u4-p1", L4.ox, L4.oy, L4.s, UJI4_PP1, W.langit, W.oranye)),
       tambah("kedua", lukis("u4-p2", L4.ox, L4.oy, L4.s, UJI4_PP2, W.hijauMuda, W.oranye)),
       tambah("pertama", ...deret("u4-a", PANEL_X, 70, ["persegi panjang 1:", "2 × 4 = 8"], 9, W.biru, 14)),
       tambah("kedua", ...deret("u4-c", PANEL_X, 108, ["persegi panjang 2:", "3 × 2 = 6"], 9, W.hijau, 14)),
     ),
     k(
-      "Trapesium di kanan punya sisi sejajar 1 dan 2, dengan tinggi 4. Luasnya setengah kali 3 kali 4, sama dengan 6.",
+      "Trapesium di kanan punya sisi sejajar satu dan dua, dengan tinggi empat. Luasnya setengah kali tiga kali empat, sama dengan enam.",
       sorotkan(0, "u4-p3"),
       tambah("Trapesium", ...deret("u4-d", PANEL_X, 146, ["trapesium:", "½ × (1 + 2) × 4 = 6"], 9, W.hijau, 14)),
     ),
     k(
-      "Jumlahnya 8 ditambah 6 ditambah 6, sama dengan 20. Jadi, luas bangun B sesuai Cara 1 di Panduan Guru adalah 20 satuan luas.",
+      "Jumlahnya delapan ditambah enam ditambah enam, sama dengan dua puluh. Jadi, luas bangun B adalah dua puluh satuan luas.",
       redamkan(0, "u4-p3"),
       hapus(0, ...idDeret("u4-a", 2), ...idDeret("u4-c", 2), ...idDeret("u4-d", 2)),
       tambah("Jumlahnya", ...kartu("u4-h", 150, 60, 140, 36, W.emas, ["8 + 6 + 6 = 20"], 11)),
       tambah("Jadi,", teks("u4-r", PANEL_X, 120, "20 satuan luas", 10, W.hijau)),
     ),
     k(
-      "Catatan: rubrik Panduan Guru menulis jumlah sisi sejajar trapesium 3 ditambah 1, hasilnya 22. Petak menunjukkan 2 ditambah 1, jadi yang cocok 20.",
+      "Hati-hati dengan sisi sejajar trapesium. Hitunglah dari petak: sisi atasnya satu dan sisi bawahnya dua, jadi jumlahnya tiga, bukan empat.",
       hapus(0, "u4-r"),
-      tambah("rubrik", ...kartu("u4-w1", 150, 104, 140, 30, W.merahMuda, ["rubrik: (3 + 1) → 22"], 8.8)),
-      tambah("Petak", ...kartu("u4-w2", 150, 142, 140, 30, W.hijauMuda, ["petak: (2 + 1) → 20"], 8.8)),
+      tambah("atasnya", ...kartu("u4-w1", 150, 104, 140, 30, W.hijauMuda, ["sisi sejajar: 1 dan 2"], 8.8)),
+      tambah("jumlahnya", ...kartu("u4-w2", 150, 142, 140, 30, W.merahMuda, ["jumlah 3, bukan 4"], 8.8)),
     ),
   ],
 };

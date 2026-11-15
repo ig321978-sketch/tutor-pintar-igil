@@ -62,14 +62,14 @@ const tabelPP = (): Obj[] => [kotak("tb-k", 160, 40, 132, 118, W.putih, W.biru, 
 
 export const ADEGAN_PERSEGI_PANJANG: AdeganStory = {
   id: "persegi-panjang",
-  judul: "Eksplorasi 5.2A: luas persegi panjang",
-  sumber: "Buku Siswa hlm. 144–145; Buku Panduan Guru hlm. 201–204",
+  judul: "Menemukan luas persegi panjang",
+  sumber: "Materi: luas persegi panjang",
   latar: "#F0FDF4",
   kutipan: ["Ayo Menemukan Luas Daerah Persegi Panjang", "Temukan cara menghitung luas daerahnya", "Hitunglah panjang, lebar, dan luas daerah setiap kotak di atas", "Luas = panjang", "Apa yang kalian temukan?", "Guru meminta peserta didik mencermati hubungan antara"],
   ketukan: [
     k(
-      "Eksplorasi 5.2A, menemukan luas daerah persegi panjang. Buku menampilkan empat persegi panjang, A, B, C, dan D, pada kertas berpetak. Kita diminta menghitung panjang, lebar, dan luasnya.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 5.2A", 13, W.ungu)),
+      "Sekarang kita menemukan luas daerah persegi panjang. Perhatikan empat persegi panjang, A, B, C, dan D, pada kertas berpetak. Coba hitung panjang, lebar, dan luasnya.",
+      tambah(0, teks("jud", 150, 24, "Luas persegi panjang", 13, W.ungu)),
       tambah("empat", ...PERSEGI_PANJANG_ABCD.flatMap(([p, l], i) => {
         const pos: [number, number][] = [[20, 52], [110, 52], [20, 112], [130, 112]];
         const [x, y] = pos[i];
@@ -125,12 +125,12 @@ export const ADEGAN_PERSEGI_PANJANG: AdeganStory = {
       tambah("Untuk", ...kartu("gr", 40, 130, 220, 44, W.krem, ["Luas = panjang x lebar"], 14)),
     ),
     k(
-      "Di akhir kegiatan, guru memperkuat cara ini lewat tanya jawab. Bila murid kesulitan, cermati dua baris perkalian A dan B, lalu terapkan pada C dan D.",
+      "Sebagai penguat, coba jawab sendiri sebelum melihat hasilnya. Kalau kamu masih ragu, cermati dua baris perkalian A dan B, lalu terapkan pada C dan D.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Penguatan guru", 13, W.ungu), ...tabelPP()),
-      tambah("Bila", kolomTabel("tA", 78, "A: 2 x 1 = 2"), kolomTabel("tB", 100, "B: 5 x 2 = 10")),
+      tambah(0, teks("jud", 150, 24, "Penguatan", 13, W.ungu), ...tabelPP()),
+      tambah("Kalau", kolomTabel("tA", 78, "A: 2 x 1 = 2"), kolomTabel("tB", 100, "B: 5 x 2 = 10")),
       tambah("terapkan", kolomTabel("tC", 122, "C: 4 x 3 = 12", { warna: W.hijau }), kolomTabel("tD", 144, "D: 2 x 3 = 6", { warna: W.hijau })),
-      tambah("tanya", ...kartu("tj", 12, 70, 134, 56, W.merahMuda, ["tanya jawab", "penguatan", "dari guru"], 9)),
+      tambah("coba", ...kartu("tj", 12, 70, 134, 56, W.merahMuda, ["coba jawab", "sendiri", "dulu"], 9)),
     ),
   ],
 };
@@ -140,14 +140,14 @@ const kolomPersegi = (id: string, y: number, isi: string, o: Partial<Obj> = {}):
 
 export const ADEGAN_PERSEGI: AdeganStory = {
   id: "persegi",
-  judul: "Eksplorasi 5.2B: luas persegi",
-  sumber: "Buku Siswa hlm. 145–147; Buku Panduan Guru hlm. 204–207",
+  judul: "Menemukan luas persegi",
+  sumber: "Materi: luas persegi",
   latar: "#FEFCE8",
   kutipan: ["Ayo Menemukan Luas Daerah Persegi", "Apa nama bangun datar di atas", "Pada persegi, apakah panjang dan lebarnya", "Luas = sisi", "sisi-sisinya"],
   ketukan: [
     k(
-      "Eksplorasi 5.2B, menemukan luas daerah persegi. Kita sudah tahu luas persegi panjang. Sekarang perhatikan empat persegi, A sampai D, lalu hitung panjang, lebar, dan luasnya.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 5.2B", 13, W.ungu)),
+      "Sekarang kita menemukan luas daerah persegi. Kita sudah tahu luas persegi panjang. Perhatikan empat persegi, A sampai D, lalu hitung panjang, lebar, dan luasnya.",
+      tambah(0, teks("jud", 150, 24, "Luas persegi", 13, W.ungu)),
       tambah("empat", ...PERSEGI_ABCD.flatMap((n, i) => {
         const xs = [20, 52, 108, 188];
         const x = xs[i];
@@ -179,12 +179,12 @@ export const ADEGAN_PERSEGI: AdeganStory = {
       tambah("sama@2", ...kartu("er", 50, 148, 200, 36, W.krem, ["Luas = sisi x sisi"], 13)),
     ),
     k(
-      "Seperti pada persegi panjang, luas persegi dihitung dengan mengalikan sisi-sisinya. Bedanya, panjang dan lebar persegi sama. Guru memperkuatnya lewat tanya jawab.",
+      "Seperti pada persegi panjang, luas persegi dihitung dengan mengalikan sisi-sisinya. Bedanya, panjang dan lebar persegi sama. Coba ceritakan lagi dengan kata-katamu sendiri.",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Persegi dan persegi panjang", 12, W.ungu)),
       tambah("persegi", ...kartu("f1", 16, 44, 128, 70, W.hijauMuda, ["persegi panjang", "panjang x lebar"], 9.4), poli("f1b", 40, 120, persegiPanjang(3, 2), W.putih)),
       tambah("Bedanya,", ...kartu("f2", 156, 44, 128, 70, W.krem, ["persegi", "sisi x sisi"], 9.4), poli("f2b", 190, 120, persegiPanjang(2, 2), W.putih)),
-      tambah("tanya", teks("ftj", 150, 196, "tanya jawab penguatan", 8.6, W.ungu)),
+      tambah("ceritakan", teks("ftj", 150, 196, "ceritakan dengan katamu", 8.6, W.ungu)),
     ),
   ],
 };

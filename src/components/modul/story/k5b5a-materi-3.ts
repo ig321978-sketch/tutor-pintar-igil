@@ -15,8 +15,8 @@ const PETA_A_D: [string, number, number][] = [["A", 14, 40], ["B", 62, 36], ["C"
 
 export const ADEGAN_LATIHAN: AdeganStory = {
   id: "latihan-abcd",
-  judul: "Eksplorasi 5.1E: Ayo Berlatih pada kertas berpetak",
-  sumber: "Buku Siswa hlm. 142–143; Panduan Guru hlm. 195–196",
+  judul: "Latihan: luas bangun pada kertas berpetak",
+  sumber: "Materi: latihan kertas berpetak",
   latar: "#EFF6FF",
   kutipan: [
     "Eksplorasi 5.1E",
@@ -39,8 +39,8 @@ export const ADEGAN_LATIHAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi lima titik satu E, Ayo Berlatih. Hitunglah luas daerah bangun-bangun datar berikut dengan kertas berpetak. Ada tujuh bangun, dari A sampai G.",
-      tambah(0, judul("Eksplorasi 5.1E: Ayo Berlatih")),
+      "Sekarang Latihan satu. Hitunglah luas daerah bangun-bangun datar berikut dengan kertas berpetak. Ada tujuh bangun, dari A sampai G.",
+      tambah(0, judul("Latihan 1: kertas berpetak")),
       tambah("Hitunglah", ...(["A", "B", "C", "D"] as const).map((h, i) => bangunKartu(h, 8 + i * 72, 34, 7, [W.jingga, W.hijauMuda, W.langit, W.pink][i])).flat()),
       tambah("kertas", ...(["E", "F", "G"] as const).map((h, i) => bangunKartu(h, 8 + i * 72, 106, 7, [W.krem, W.merahMuda, W.hijauMuda][i])).flat()),
       tambah("tujuh", teks("tj", 252, 138, "7 bangun", 9.4, W.ungu), teks("tj2", 252, 152, "A sampai G", 8.6, W.ungu)),
@@ -61,11 +61,11 @@ export const ADEGAN_LATIHAN: AdeganStory = {
       tambah("tidak", ...kartu("ca", 50, 130, 200, 30, W.krem, ["jingga = kotak tidak utuh"], 9)),
     ),
     k(
-      "Panduan guru menyarankan guru menyiapkan duplikat bangun E, F, dan G beserta petak-petaknya. Duplikat itu dipotong-potong oleh peserta didik, sambil mencari cara menghitungnya.",
+      "Siapkan duplikat bangun E, F, dan G beserta petak-petaknya. Duplikat itu kita potong-potong sendiri, sambil mencari cara menghitungnya.",
       bersih(0),
       tambah(0, judul("Duplikat untuk dipotong")),
       tambah("duplikat", ...(["E", "F", "G"] as const).map((h, i) => bangunDiKisi(`dk${h}`, 14 + i * 92, 44, BANGUN_AG[h].p, 6, 3, 14, [W.krem, W.merahMuda, W.hijauMuda][i])).flat()),
-      tambah("dipotong-potong", emo("gt", 150, 130, "✂", 30), emo("lm", 90, 130, "📄", 28), emo("lm2", 210, 130, "🧴", 28)),
+      tambah("potong-potong", emo("gt", 150, 130, "✂", 30), emo("lm", 90, 130, "📄", 28), emo("lm2", 210, 130, "🧴", 28)),
       tambah("mencari", teks("mc", 150, 176, "cari cara menghitung luasnya", 9.4, W.hijau)),
     ),
   ],
@@ -79,7 +79,7 @@ const S = 16;
 export const ADEGAN_YOHANA: AdeganStory = {
   id: "cara-yohana",
   judul: "Cara Yohana: potong dan tempel",
-  sumber: "Buku Siswa hlm. 143; Panduan Guru hlm. 196–198",
+  sumber: "Materi: cara Yohana",
   latar: "#FDF4FF",
   kutipan: [
     "Aku punya ide. Coba perhatikan kotak-kotak",
@@ -169,8 +169,8 @@ const refleksi = (i: number, y: number, a: string, b: string, warna: string): Ob
 
 export const ADEGAN_REFLEKSI: AdeganStory = {
   id: "miskonsepsi-refleksi",
-  judul: "Miskonsepsi, diferensiasi, dan Refleksi subbab A",
-  sumber: "Panduan Guru hlm. 199–200; Buku Siswa hlm. 161",
+  judul: "Hati-hati, Tantangan, dan Renungan",
+  sumber: "Materi: pesan guru subbab ini",
   latar: "#F0F9FF",
   kutipan: [
     "Miskonsepsi yang dapat terjadi pada Subbab A adalah sebagai berikut.",
@@ -187,43 +187,43 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Panduan guru mencatat dua miskonsepsi. Pertama, murid bisa gagal paham bahwa bentuk awal dan bentuk hasil perubahan luasnya sama. Guru perlu menunjukkan bahwa bagian yang dipindah tidak hilang.",
-      tambah(0, judul("Miskonsepsi 1")),
+      "Hati-hati, ada kesalahan yang sering terjadi. Sebagian anak mengira bentuk awal dan bentuk hasil perubahan luasnya berbeda. Padahal bagian yang dipindah tidak hilang.",
+      tambah(0, judul("Hati-hati 1")),
       tambah("awal", ...bangunDiKisi("m1", 20, 56, BANGUN_AG.E.p, 6, 3, 14, W.krem), teks("m1t", 62, 112, "bentuk awal", 9, W.biru)),
       tambah("hasil", ...bangunDiKisi("m2", 190, 56, E_BARU, 6, 3, 14, W.hijauMuda), teks("m2t", 232, 112, "bentuk baru", 9, W.biru), teks("mq", 150, 96, "luas sama?", 10, W.merah)),
       tambah("dipindah", panah("ma", 108, 70, 70, 0, W.biru, 2.4, { gambar: true })),
       tambah("hilang.", ...kartu("mj", 40, 136, 220, 30, W.pink, ["bagian yang dipindah tidak hilang"], 9)),
     ),
     k(
-      "Kedua, petak yang hanya setengah tidak langsung bisa diganti bagian lain karena bentuknya berbeda. Murid mengira luasnya berbeda, padahal sama. Guru mengingatkan materi pecahan.",
+      "Hati-hati juga, petak yang hanya setengah tidak langsung bisa diganti bagian lain karena bentuknya berbeda. Kamu mungkin mengira luasnya berbeda, padahal sama. Ingatlah materi pecahan.",
       bersih(0),
-      tambah(0, judul("Miskonsepsi 2")),
+      tambah(0, judul("Hati-hati 2")),
       tambah("setengah", poligon("h1", 40, 50, [[0, 0], [40, 0], [0, 40]], W.jingga), poligon("h2", 100, 50, [[0, 0], [40, 40], [0, 40]], W.langit)),
       tambah("berbeda.", teks("hb", 90, 108, "bentuk berbeda", 9, W.merah)),
       tambah("sama.", teks("hs", 200, 80, "1/2 + 1/2 = 1", 11, W.hijau), sel("h3", 232, 100, 40, W.hijauMuda)),
       tambah("pecahan.", ...kartu("hp", 30, 136, 240, 30, W.krem, ["ingat pecahan: dua setengah = satu"], 9)),
     ),
     k(
-      "Dalam diferensiasi, kegiatan ini melatih berpikir tingkat tinggi. Jika murid belum siap mengubah bentuk, mulailah dari bangun sederhana pada satu petak, lalu empat petak, lalu enam belas petak.",
+      "Ini tantangan untukmu. Kegiatan ini melatih berpikir tingkat tinggi. Kalau belum siap mengubah bentuk, mulailah dari bangun sederhana pada satu petak, lalu empat petak, lalu enam belas petak.",
       bersih(0),
-      tambah(0, judul("Diferensiasi")),
+      tambah(0, judul("Tantangan")),
       tambah("satu", ...bangunDiKisi("d1", 30, 60, [[0, 0], [1, 0], [0, 1]], 1, 1, 40, W.jingga), teks("d1t", 50, 116, "1 petak", 9, W.biru)),
       tambah("empat", ...bangunDiKisi("d2", 110, 50, [[0, 0], [2, 0], [0, 2]], 2, 2, 40, W.langit), teks("d2t", 150, 146, "4 petak", 9, W.biru)),
       tambah("enam", ...bangunDiKisi("d3", 214, 40, [[0, 0], [4, 0], [0, 4]], 4, 4, 18, W.hijauMuda), teks("d3t", 250, 126, "16 petak", 9, W.biru)),
     ),
     k(
-      "Terakhir, tabel refleksi di buku siswa. Nomor satu: aku tahu saat harus memakai hitungan luas. Nomor dua: aku bisa menjelaskan pengertian luas daerah. Nomor tiga: aku bisa menghitung luas lantai lewat pengubinan.",
+      "Terakhir, renungkan dirimu sendiri. Apakah kamu tahu kapan harus memakai hitungan luas? Apakah kamu bisa menjelaskan pengertian luas daerah? Apakah kamu bisa menghitung luas lantai lewat pengubinan?",
       bersih(0),
-      tambah(0, judul("Refleksi 1 sampai 5")),
-      tambah("satu:", refleksi(1, 30, "1. Aku tahu saat harus menggunakan", "hitungan luas daerah bangun datar", W.hijauMuda)),
-      tambah("dua:", refleksi(2, 62, "2. Aku bisa menjelaskan pengertian", "luas daerah bangun datar", W.langit)),
-      tambah("tiga:", refleksi(3, 94, "3. Aku bisa menghitung luas lantai pada", "denah rumah melalui pengubinan", W.krem)),
+      tambah(0, judul("Renungan")),
+      tambah("tahu", refleksi(1, 30, "Apakah aku tahu saat harus menggunakan", "hitungan luas daerah bangun datar?", W.hijauMuda)),
+      tambah("menjelaskan", refleksi(2, 62, "Apakah aku bisa menjelaskan pengertian", "luas daerah bangun datar?", W.langit)),
+      tambah("menghitung", refleksi(3, 94, "Apakah aku bisa menghitung luas lantai", "pada denah rumah lewat pengubinan?", W.krem)),
     ),
     k(
-      "Nomor empat: aku bisa membuat persegi satuan. Nomor lima: aku bisa menghitung luas dengan petak satuan. Beri centang ya atau tidak, dengan jujur.",
-      tambah("empat:", refleksi(4, 126, "4. Aku bisa membuat", "persegi-persegi satuan", W.pink)),
-      tambah("lima:", refleksi(5, 158, "5. Aku bisa menghitung luas dengan", "petak-petak satuan", W.jingga)),
-      tambah("centang", emo("ct4", 270, 141, "✅", 16), emo("ct5", 270, 173, "✅", 16)),
+      "Apakah kamu bisa membuat persegi satuan? Dan apakah kamu bisa menghitung luas dengan petak satuan? Jawablah dengan jujur dalam hati.",
+      tambah("membuat", refleksi(4, 126, "Apakah aku bisa membuat", "persegi-persegi satuan?", W.pink)),
+      tambah("menghitung", refleksi(5, 158, "Apakah aku bisa menghitung luas dengan", "petak-petak satuan?", W.jingga)),
+      tambah("jujur", emo("ct4", 270, 141, "💭", 16), emo("ct5", 270, 173, "💭", 16)),
     ),
     k(
       "Ringkasnya, luas adalah ukuran besar kecilnya daerah, diukur dengan petak satuan, dan bentuk boleh diubah asalkan tidak ada bagian yang hilang.",

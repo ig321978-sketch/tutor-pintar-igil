@@ -9,7 +9,7 @@ const larik = (id: string, x: number, y: number, kol: number, baris: number, s: 
 export const ADEGAN_LUAR_ARRAY_TERAPAN: AdeganStory = {
   id: "luar-array-terapan",
   judul: "Array Model pada denah rumah",
-  sumber: "Metode luar: Array Model; contoh denah Buku Siswa hlm. 134–141",
+  sumber: "Metode luar: Array Model, denah rumah",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -79,7 +79,7 @@ export const ADEGAN_LUAR_KONSERVASI: AdeganStory = {
       tambah("Padahal,", ...kartu("pk", 110, 108, 168, 36, W.hijauMuda, ["tidak dibuang, tidak ditambah:", "luas tetap"], 8.8), emo("ce", 70, 150, "✅", 26)),
     ),
     k(
-      "Di buku, cara Yohana memakai gagasan ini: potong bagian petak yang tidak utuh, lalu tempelkan ke bagian lain, sehingga petaknya menjadi utuh.",
+      "Cara Yohana memakai gagasan ini: potong bagian petak yang tidak utuh, lalu tempelkan ke bagian lain, sehingga petaknya menjadi utuh.",
       bersih(0),
       tambah(0, judul("Potong, pindah, tempel")),
       tambah("potong", ...bangunDiKisi("cy", 20, 56, BANGUN_AG.F.p, 6, 3, 14, W.merahMuda), poligon("cyp", 90, 56, skala([[0, 0], [1, 0], [0, 3]], 14), W.pink, W.merah)),
@@ -103,7 +103,7 @@ export const ADEGAN_LUAR_KONSERVASI: AdeganStory = {
 export const ADEGAN_LUAR_KONSERVASI_TERAPAN: AdeganStory = {
   id: "luar-konservasi-terapan",
   judul: "Area Conservation pada bangun E, F, dan G",
-  sumber: "Metode luar: Area Conservation; contoh bangun E, F, G Buku Siswa hlm. 142–143",
+  sumber: "Metode luar: Area Conservation, E F G",
   latar: "#FDF4FF",
   ketukan: [
     k(
@@ -158,7 +158,7 @@ const petakAnalisis = (id: string, x: number, y: number, p: Titik[], kol: number
 export const ADEGAN_LUAR_GRID: AdeganStory = {
   id: "luar-grid",
   judul: "Grid Estimation of Partial Squares",
-  sumber: "Metode luar: Grid Estimation of Partial Squares",
+  sumber: "Metode luar: Grid Estimation",
   latar: "#FFF1F2",
   ketukan: [
     k(
@@ -210,7 +210,7 @@ const rincianGrid = (h: "E" | "F" | "G"): Obj[] => {
 export const ADEGAN_LUAR_GRID_TERAPAN: AdeganStory = {
   id: "luar-grid-terapan",
   judul: "Grid Estimation pada bangun E, F, dan G",
-  sumber: "Metode luar: Grid Estimation of Partial Squares; contoh bangun E, F, G Buku Siswa hlm. 142",
+  sumber: "Metode luar: Grid Estimation, E F G",
   latar: "#FFF1F2",
   ketukan: [
     k(
@@ -273,9 +273,9 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("miring", ...kartu("p3", 12, 118, 276, 34, W.pink, ["sisi miring → perkiraan grid"], 8.8)),
     ),
     k(
-      "Hasil keempat metode cocok dengan kunci buku. Ruang tamu tiga belas, kamar tidur sembilan, dapur enam, kamar mandi dua, dan bangun A sampai G adalah sembilan, dua belas, lima belas, enam belas, sembilan, lima belas, sembilan.",
+      "Hasil keempat metode cocok dengan hitungan tadi. Ruang tamu tiga belas, kamar tidur sembilan, dapur enam, kamar mandi dua, dan bangun A sampai G adalah sembilan, dua belas, lima belas, enam belas, sembilan, lima belas, sembilan.",
       bersih(0),
-      tambah(0, judul("Cocok dengan kunci buku")),
+      tambah(0, judul("Cocok dengan hitungan tadi")),
       tambah("Ruang", ...tabel("kn", 20, 36, [64, 64, 64, 64], [["Ruang tamu", "Kamar tidur", "Dapur", "K. mandi"], ["13", "9", "6", "2"]], 22, 8)),
       tambah("bangun", ...tabel("kb", 31, 100, [34, 34, 34, 34, 34, 34, 34], [["A", "B", "C", "D", "E", "F", "G"], ["9", "12", "15", "16", "9", "15", "9"]], 22, 9.4)),
     ),

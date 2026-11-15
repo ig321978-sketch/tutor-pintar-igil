@@ -137,8 +137,8 @@ export const ADEGAN_PETA: AdeganStory = {
 /* ------------------------------ 3. Eksplorasi 5.1A: Alun-Alun Utara (hlm. 133 dan 134; Panduan Guru hlm. 183 dan 184) ------------------------------ */
 export const ADEGAN_ALUN: AdeganStory = {
   id: "alun-alun",
-  judul: "Eksplorasi 5.1A: pasir untuk Alun-Alun Utara",
-  sumber: "Buku Siswa hlm. 133–134; Panduan Guru hlm. 183–184",
+  judul: "Kegiatan: pasir untuk Alun-Alun Utara",
+  sumber: "Materi: pasir untuk alun-alun",
   latar: "#FEF3C7",
   kutipan: [
     "Eksplorasi 5.1A",
@@ -150,8 +150,8 @@ export const ADEGAN_ALUN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi lima titik satu A, Ayo Berpikir Kreatif. Di bagian utara kompleks Keraton Yogyakarta ada tanah lapang yang sangat luas, bernama Alun-Alun Utara.",
-      tambah(0, judul("Eksplorasi 5.1A")),
+      "Anak-anak, mari kita mulai dengan sebuah cerita, dan berpikir kreatif ya. Di bagian utara kompleks Keraton Yogyakarta ada tanah lapang yang sangat luas, bernama Alun-Alun Utara.",
+      tambah(0, judul("Cerita Alun-Alun")),
       tambah("kompleks", emo("kr", 150, 62, "🏛", 40), teks("krt", 150, 80, "Keraton Yogyakarta", 8.6, W.coklat)),
       tambah("tanah", kotak("al", 40, 100, 220, 70, W.krem, W.coklat, { rx: 2, tebal: 2 }), teks("alt", 150, 140, "Alun-Alun Utara", 11, W.coklat)),
     ),
@@ -210,8 +210,8 @@ const labelDenah = (id: string, x: number, y: number, s: number): Obj[] => [
 
 export const ADEGAN_DENAH: AdeganStory = {
   id: "denah-ubin",
-  judul: "Eksplorasi 5.1B: denah rumah dan ubin",
-  sumber: "Buku Siswa hlm. 134–136; Panduan Guru hlm. 184–187",
+  judul: "Kegiatan: denah rumah dan ubin",
+  sumber: "Materi: denah rumah dan ubin",
   latar: "#ECFEFF",
   kutipan: [
     "Pernahkah kalian melihat pekerja bangunan memasang ubin di",
@@ -223,8 +223,8 @@ export const ADEGAN_DENAH: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi lima titik satu B. Pernahkah kalian melihat pekerja memasang ubin di lantai? Pekerja memastikan seluruh lantai terpasang ubin dengan rapat, tidak ada yang renggang dan tidak ada yang berlubang.",
-      tambah(0, judul("Eksplorasi 5.1B")),
+      "Sekarang kita pasang ubin. Pernahkah kalian melihat pekerja memasang ubin di lantai? Pekerja memastikan seluruh lantai terpasang ubin dengan rapat, tidak ada yang renggang dan tidak ada yang berlubang.",
+      tambah(0, judul("Memasang ubin")),
       tambah("pekerja", emo("pk", 44, 76, "👷", 34)),
       tambah("rapat,", ...petakIsiBerwarna("ubn", 90, 50, 6, 4, 22)),
       tambah("renggang", teks("rg", 222, 172, "rapat: tanpa celah", 9, W.hijau)),
@@ -233,7 +233,7 @@ export const ADEGAN_DENAH: AdeganStory = {
     k(
       "Perhatikan denah rumah ini. Jika seluruh lantai dipasang ubin berukuran satu meter kali satu meter, dapatkah kalian memperkirakan banyaknya ubin yang dibutuhkan?",
       bersih(0),
-      tambah(0, judul("Gambar 5.2: denah rumah")),
+      tambah(0, judul("Denah rumah")),
       tambah("denah", ...denahRingkas("dn", 24, 36, 21), ...labelDenah("dn", 24, 36, 21)),
       tambah("ubin", kotak("ub1", 168, 56, 22, 22, W.emas, W.biru, { rx: 0 }), teks("ub1t", 230, 70, "1 m × 1 m", 9.4, W.biru)),
       tambah("memperkirakan", teks("q", 228, 138, "berapa ubin?", 11, W.merah)),
@@ -249,7 +249,7 @@ export const ADEGAN_DENAH: AdeganStory = {
       tambah("Lukas", emo("tm", 150, 150, "👦", 36)),
     ),
     k(
-      "Menurut kunci panduan guru, ruangan yang butuh ubin paling banyak adalah ruang tamu, karena ukurannya paling besar dan lantainya paling luas. Yang paling sedikit adalah kamar mandi, yang paling kecil.",
+      "Ruangan yang butuh ubin paling banyak adalah ruang tamu, karena ukurannya paling besar dan lantainya paling luas. Yang paling sedikit adalah kamar mandi, yang paling kecil.",
       bersih(0),
       tambah(0, judul("Paling banyak, paling sedikit")),
       tambah(0, ...denahRingkas("dn", 24, 36, 21), ...labelDenah("dn", 24, 36, 21)),

@@ -12,7 +12,7 @@ const lencana = (id: string, y: number, benar: boolean): Obj[] => [
 export const ADEGAN_BENAR_SALAH: AdeganStory = {
   id: "benar-salah",
   judul: "Benar atau salah, lalu pengertian luas",
-  sumber: "Buku Siswa hlm. 136–137; Panduan Guru hlm. 186–188",
+  sumber: "Materi: benar atau salah dan pengertian",
   latar: "#F0FDF4",
   kutipan: [
     "Selanjutnya, tentukan benar atau salah terhadap pernyataan",
@@ -27,12 +27,12 @@ export const ADEGAN_BENAR_SALAH: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Sekarang tentukan benar atau salah. Pernyataan pertama: makin besar ruangan, makin luas lantainya. Kuncinya benar. Pernyataan kedua: makin luas lantai, makin banyak ubin. Kuncinya juga benar.",
+      "Sekarang tentukan benar atau salah. Pernyataan pertama: makin besar ruangan, makin luas lantainya. Itu benar. Pernyataan kedua: makin luas lantai, makin banyak ubin. Itu juga benar.",
       tambah(0, judul("Benar atau salah?")),
       tambah("pertama:", pernyataan("c1", 36, W.langit, "Makin besar ruangan,", "makin luas lantainya.")),
-      tambah("Kuncinya", lencana("b1", 50, true)),
+      tambah("Itu", lencana("b1", 50, true)),
       tambah("kedua:", pernyataan("c2", 80, W.hijauMuda, "Makin luas lantai, makin banyak", "ubin yang dibutuhkan.")),
-      tambah("Kuncinya@2", lencana("b2", 94, true)),
+      tambah("Itu@2", lencana("b2", 94, true)),
     ),
     k(
       "Pernyataan ketiga: jika dua lantai sama luasnya, banyak ubinnya tidak sama. Ini salah. Lantai yang sama luas membutuhkan ubin yang sama banyak.",
@@ -51,9 +51,9 @@ export const ADEGAN_BENAR_SALAH: AdeganStory = {
       tambah("Satuan", ...kartu("st", 120, 124, 168, 30, W.hijauMuda, ["satuannya: satuan luas"], 9)),
     ),
     k(
-      "Panduan guru memberi petunjuk. Jawaban kalian boleh memakai kata sendiri, asalkan mendekati kata kunci: ukuran, besar kecil, area, dan daerah bangun datar.",
+      "Kalau ditanya arti luas, kalian boleh menjawab dengan kata sendiri, asalkan mendekati kata penting ini: ukuran, besar kecil, area, dan daerah bangun datar.",
       bersih(0),
-      tambah(0, judul("Kata kunci jawaban")),
+      tambah(0, judul("Kata penting jawaban")),
       tambah("ukuran,", ...kartu("w1", 14, 40, 128, 30, W.krem, ["ukuran"], 9.4)),
       tambah("kecil,", ...kartu("w2", 158, 40, 128, 30, W.langit, ["besar kecil"], 9.4)),
       tambah("area,", ...kartu("w3", 14, 84, 128, 30, W.hijauMuda, ["area"], 9.4)),
@@ -61,7 +61,7 @@ export const ADEGAN_BENAR_SALAH: AdeganStory = {
       tambah("sendiri,", emo("ml", 150, 150, "💬", 30)),
     ),
     k(
-      "Untuk membandingkan luas, guru boleh memakai kertas origami seukuran ruangan pada denah. Lalu muncul pertanyaan besar: bagaimana cara menghitung luas daerah itu?",
+      "Untuk membandingkan luas, kita bisa memakai kertas origami seukuran ruangan pada denah. Lalu muncul pertanyaan besar: bagaimana cara menghitung luas daerah itu?",
       bersih(0),
       tambah(0, judul("Bagaimana cara menghitungnya?")),
       tambah("origami", kotak("o1", 40, 50, 60, 60, W.merahMuda, W.biru, { rx: 0 }), kotak("o2", 112, 50, 40, 40, W.langit, W.biru, { rx: 0 }), kotak("o3", 164, 50, 60, 40, W.hijauMuda, W.biru, { rx: 0 })),
@@ -74,8 +74,8 @@ export const ADEGAN_BENAR_SALAH: AdeganStory = {
 /* ------------------------------ 6. Eksplorasi 5.1C: satuan luas (hlm. 137 dan 138; Panduan Guru hlm. 188 sampai 190) ------------------------------ */
 export const ADEGAN_SATUAN: AdeganStory = {
   id: "satuan-luas",
-  judul: "Eksplorasi 5.1C: mengenal satuan luas",
-  sumber: "Buku Siswa hlm. 137–138; Panduan Guru hlm. 188–190",
+  judul: "Kegiatan: mengenal satuan luas",
+  sumber: "Materi: satuan luas",
   latar: "#FFFBEB",
   kutipan: [
     "Eksplorasi 5.1C",
@@ -90,8 +90,8 @@ export const ADEGAN_SATUAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi lima titik satu C, Ayo Mengenal Satuan Luas. Siapkan kertas berpetak. Tiap kotaknya berukuran panjang satu sentimeter dan lebar satu sentimeter. Kalau tidak ada, gambar sendiri di kertas kosong.",
-      tambah(0, judul("Eksplorasi 5.1C")),
+      "Sekarang kita mengenal satuan luas. Siapkan kertas berpetak. Tiap kotaknya berukuran panjang satu sentimeter dan lebar satu sentimeter. Kalau tidak ada, gambar sendiri di kertas kosong.",
+      tambah(0, judul("Mengenal satuan luas")),
       tambah("kertas", ...petakPenuh("kp", 60, 40, 6, 5, 18, W.putih), kisi("kk", 60, 40, 6, 5, 18, W.biru)),
       tambah("panjang", teks("pj", 114, 150, "panjang 1 cm", 8.8, W.merah)),
       tambah("lebar", teks("lb", 114, 164, "lebar 1 cm", 8.8, W.hijau)),
@@ -153,8 +153,8 @@ const ukuranTamu = (): Obj[] => [
 
 export const ADEGAN_TAMU: AdeganStory = {
   id: "ukur-ruang-tamu",
-  judul: "Eksplorasi 5.1D: menghitung luas ruang tamu",
-  sumber: "Buku Siswa hlm. 139–140; Panduan Guru hlm. 190–193",
+  judul: "Kegiatan: menghitung luas ruang tamu",
+  sumber: "Materi: luas ruang tamu",
   latar: "#FDF2F8",
   kutipan: [
     "Eksplorasi 5.1D",
@@ -167,15 +167,15 @@ export const ADEGAN_TAMU: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi lima titik satu D. Ubin yang dipasang berukuran panjang satu meter dan lebar satu meter. Satu kotak satuan mewakili satu ubin, yaitu satu meter persegi. Jadi luas lantai sama dengan banyaknya ubin.",
-      tambah(0, judul("Eksplorasi 5.1D")),
+      "Sekarang kita hitung luas lantai. Ubin yang dipasang berukuran panjang satu meter dan lebar satu meter. Satu kotak satuan mewakili satu ubin, yaitu satu meter persegi. Jadi luas lantai sama dengan banyaknya ubin.",
+      tambah(0, judul("Luas ruang tamu")),
       tambah("Ubin", kotak("ub", 40, 50, 50, 50, W.kayu, W.coklat, { rx: 0, tebal: 2 }), teks("ubt", 65, 116, "1 ubin", 9, W.coklat)),
       tambah("kotak", sel("ks", 130, 50, 50, W.emas, { tebal: 2 }), teks("kst", 155, 116, "1 kotak satuan", 8.6, W.biru), teks("sm1", 110, 80, "=", 20, W.merah)),
       tambah("persegi.", teks("mm", 232, 80, "1 m²", 13, W.hijau), teks("sm2", 200, 80, "=", 20, W.merah)),
       tambah("sama", ...kartu("lt", 30, 142, 240, 34, W.krem, ["luas lantai = banyaknya ubin"], 9.4)),
     ),
     k(
-      "Kita mulai dari ruang tamu. Panduan guru menegaskan, persegi panjang adalah bentuk ruang tamu bersama kamar mandi. Jadi lantai ruang tamu sendiri tidak berbentuk persegi panjang penuh.",
+      "Kita mulai dari ruang tamu. Perhatikan, ruang tamu bersama kamar mandi membentuk persegi panjang. Jadi lantai ruang tamu sendiri tidak berbentuk persegi panjang penuh.",
       bersih(0),
       tambah(0, judul("Denah ruang tamu")),
       tambah("tamu.", ...kerangkaTamu(), teks("rt", TX + 27, TY + 56, "R. Tamu", 8.4, W.biru), teks("kmt", TX + 36 + 18 - 18, TY + 12, "KM", 7.2, W.biru)),
@@ -207,8 +207,8 @@ const ruang = (id: string, x: number, y: number, kol: number, baris: number, s: 
 
 export const ADEGAN_KAMAR: AdeganStory = {
   id: "ukur-kamar-dapur",
-  judul: "Eksplorasi 5.1D: kamar tidur, dapur, kamar mandi, dan total luas",
-  sumber: "Buku Siswa hlm. 140–141; Panduan Guru hlm. 192–194",
+  judul: "Luas kamar tidur, dapur, kamar mandi, dan total",
+  sumber: "Materi: kamar, dapur, dan total luas",
   latar: "#F0FDFA",
   kutipan: [
     "Ada berapa kamar tidur?",
@@ -265,7 +265,7 @@ export const ADEGAN_KAMAR: AdeganStory = {
       tambah("ubin", teks("t39", 150, 160, "39 m² = 39 ubin", 12, W.hijau)),
     ),
     k(
-      "Guru menekankan hubungan luas lantai dan ubin. Luas lantai bisa dinyatakan dengan banyaknya ubin, atau dengan satuan baku meter persegi. Keduanya menunjukkan hal yang sama.",
+      "Ingat hubungan luas lantai dan ubin. Luas lantai bisa dinyatakan dengan banyaknya ubin, atau dengan satuan baku meter persegi. Keduanya menunjukkan hal yang sama.",
       bersih(0),
       tambah(0, judul("Dua cara menyatakan luas")),
       tambah("banyaknya", ...kartu("w1", 14, 44, 122, 50, W.krem, ["banyaknya ubin", "39 buah"], 9.4)),

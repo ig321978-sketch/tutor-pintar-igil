@@ -16,6 +16,9 @@ register(
 const L = await import("../src/components/modul/story/logika-story.ts");
 const V = await import("../src/components/modul/story/k5b5d-video.ts");
 const G = await import("../src/components/modul/story/k5b5d-gambar.ts");
+const M1 = await import("../src/components/modul/story/k5b5d-materi-1.ts");
+const M2 = await import("../src/components/modul/story/k5b5d-materi-2.ts");
+const M3 = await import("../src/components/modul/story/k5b5d-materi-3.ts");
 
 let lulus = 0;
 let gagal = 0;
@@ -144,25 +147,49 @@ for (const v of VIDEO) {
 
 /* ------------------------------ Pemisahan materi dan metode luar ------------------------------ */
 const teksVideo = (v) => JSON.stringify(v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map((kt, i) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, i, 9999))])]));
-const M = V.VIDEO_MATERI_K5B5D;
+const M_VIDEO = V.VIDEO_MATERI_K5B5D;
+// Adegan administratif (pembuka sub-bab, apersepsi, remedial, peran orang tua, penutup bab) tidak lagi diputar di video materi.
+// Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
+const MODUL_MATERI = Object.assign({}, M1, M2, M3);
+const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_PEMBUKA_D, MODUL_MATERI.ADEGAN_APERSEPSI_D, MODUL_MATERI.ADEGAN_SOAL_KAWAT, MODUL_MATERI.ADEGAN_BENTUK_1, MODUL_MATERI.ADEGAN_TABEL_1, MODUL_MATERI.ADEGAN_TABEL_2, MODUL_MATERI.ADEGAN_BANDING, MODUL_MATERI.ADEGAN_MISKONSEPSI, MODUL_MATERI.ADEGAN_REFLEKSI_D, MODUL_MATERI.ADEGAN_PENGAYAAN, MODUL_MATERI.ADEGAN_PENUTUP_D] };
 const U = V.VIDEO_LUAR_K5B5D;
 const adegan = (v, id) => v.adegan.find((x) => x.id === id);
 const keadaan = (v, id, i) => L.keadaanStory(adegan(v, id), i, 9999);
 const cari = (objs, id) => objs.find((o) => o.id === id);
 {
   const NAMA_METODE = /Isoperimetric|Fixed Perimeter|Fixed Area|Squareness|Maximize|Minimize|metode luar|metode dari luar/i;
-  const materi = teksVideo(M);
+  const materi = teksVideo(M_VIDEO);
   const luar = teksVideo(U);
   cek(!NAMA_METODE.test(materi), "video materi tidak memuat nama metode luar");
   for (const m of ["Isoperimetric Relationship", "Fixed Perimeter Maximize Area", "Fixed Area Minimize Perimeter", "Squareness Ratio"]) cek(luar.includes(m), `video metode luar memuat ${m}`);
   cek(!/Refleksi|Uji Kompetensi|Panduan Guru|miskonsepsi|remedial|pengayaan/i.test(luar), "video metode luar tidak memuat isi materi kurikulum");
-  cek(M.adegan.every((a) => /Buku (Siswa|Panduan Guru)/.test(a.sumber) && /hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
-  cek(U.adegan.every((a) => /metode (dari )?luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Sub-Bab D", "Eksplorasi 5.4", "Bapak", "kawat", "persegi panjang", "Refleksi", "miskonsepsi", "diferensiasi", "pengayaan", "kolam", "keramik", "remedial", "orang tua", "Panduan Guru", "kertas berpetak", "apersepsi|tanya jawab", "Bab 7", "dibulatkan", "225", "125", "216", "200"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
+  // Video diputar sebagai guru yang mengajar: tidak ada penyebutan sumber buku di suara, teks terlihat, label sumber, judul adegan, dan subjudul.
+  const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan|pertemuan/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul video tanpa kata terlarang`);
+    for (const a of v.adegan) {
+      const semua = [a.judul, a.sumber];
+      a.ketukan.forEach((kt, i) => {
+        semua.push(kt.suara);
+        for (let p = 0; p < L.kataDari(kt.suara).length; p += 1) semua.push(...L.teksTerlihat(L.keadaanStory(a, i, p)));
+      });
+      const kena = semua.filter((t) => TERLARANG.test(t) || /soal nomor|Ayo Berlatih nomor|nomor [1-4]|catatan video|menurut buku/i.test(t));
+      cek(kena.length === 0, `${v.id}/${a.id}: tanpa penyebutan buku atau catatan sumber (${kena.slice(0, 2).join(" | ")})`);
+      cek(!/Uji Kompetensi|Pengayaan|Ayo Berlatih|soal \d|Soal \d/.test(semua.join(" | ")), `${v.id}/${a.id}: latihan disajikan sebagai Latihan, Uji, atau Tantangan`);
+      cek(!/catatan guru|Eksplorasi/i.test(semua.join(" | ")), `${v.id}/${a.id}: tanpa catatan guru dan tanpa nomor Eksplorasi`);
+      cek(!/\d/.test(a.ketukan.map((kt) => kt.suara).join(" ")), `${v.id}/${a.id}: suara tanpa digit`);
+    }
+  }
+  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
+  cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: tiap adegan bersumber metode luar atau ringkasan, label pendek");
+  sama(M_VIDEO.adegan.map((a) => a.id), ["sapaan", "soal-kawat", "bentuk-1", "tabel-1", "tabel-2", "banding-luas", "miskonsepsi-d", "refleksi-d", "pengayaan-kolam"], "urutan adegan video materi");
+  cek(U.adegan[0].id === "sapaan" && U.adegan[1].id === "luar5d-pembuka", "video metode luar: sapaan lalu pembuka");
+  for (const kata of ["Bapak", "kawat", "persegi panjang", "kertas berpetak", "kolam", "keramik", "dibulatkan", "Hati-hati", "Tantangan", "Renungan", "persegi", "petak", "225", "125", "216", "200"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
   const ids = U.adegan.map((a) => a.id);
   cek(["luar5d-iso", "luar5d-iso-terapan", "luar5d-maks", "luar5d-maks-terapan", "luar5d-min", "luar5d-min-terapan", "luar5d-rasio", "luar5d-rasio-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
-  cek(M.adegan.length === 11 && U.adegan.length === 10, "11 adegan materi dan 10 adegan metode luar");
-  cek(totalKetukan >= 90, `total ketukan cukup dalam (${totalKetukan})`);
+  cek(M_VIDEO.adegan.length === 9 && M.adegan.length === 11 && U.adegan.length === 11, "9 adegan materi diputar (11 di berkas) dan 11 adegan metode luar (sapaan dan 10 isi)");
+  cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
   cek(diperiksa >= 60, `hubungan bilangan di gambar yang diperiksa mandiri (${diperiksa})`);
 }
 
@@ -241,29 +268,25 @@ const sama2 = (a, b) => js(a) === js(b);
     cek(225 - 125 === 100 && 18 * 12 === 216 && 18 - 12 === 6, "banding: hitungan 216 dan selisih 6 benar");
   }
 
-  // 5) Kolam renang pengayaan: kunci buku dan hitungan mandiri
+  // 5) Kolam renang tantangan: hitungan mandiri (tepian satu meter di semua sisi)
   {
     const K = G.KOLAM;
-    cek(K.p === 15 && K.l === 6 && K.tepi === 1 && K.keramik === 40 && K.perDus === 5, "data kolam sama dengan soal buku");
-    const luarBuku = [K.p + K.tepi, K.l + K.tepi];
-    sama(luarBuku, [16, 7], "kunci buku memakai ukuran luar 16 x 7");
-    const jalanBuku = luarBuku[0] * luarBuku[1] - K.p * K.l;
-    cek(jalanBuku === 22 && 16 * 7 === 112 && 112 - 90 === 22, "kunci buku: luas jalan 22");
+    cek(K.p === 15 && K.l === 6 && K.tepi === 1 && K.keramik === 40 && K.perDus === 5, "data kolam: 15 m x 6 m, tepian 1 m, keramik 40 cm, 5 keramik per dus");
     const keramikM2 = (K.keramik * K.keramik) / 10000;
     cek(Math.abs(keramikM2 - 0.16) < 1e-9 && K.keramik * K.keramik === 1600, "satu keramik 1600 cm2 atau 0,16 m2");
-    const buahBuku = jalanBuku / keramikM2;
-    cek(Math.abs(buahBuku - 137.5) < 1e-9 && Math.abs(buahBuku / K.perDus - 27.5) < 1e-9 && Math.ceil(buahBuku / K.perDus) === 28, "kunci buku: 137,5 keramik, 27,5 dus, dibulatkan 28");
     const luarSemuaSisi = [K.p + 2 * K.tepi, K.l + 2 * K.tepi];
     sama(luarSemuaSisi, [17, 8], "tepian di semua sisi: ukuran luar 17 x 8");
     const jalan = luarSemuaSisi[0] * luarSemuaSisi[1] - K.p * K.l;
     const buah = jalan / keramikM2;
-    cek(jalan === 46 && 17 * 8 === 136 && 136 - 90 === 46, "hitungan mandiri: luas jalan 46");
-    cek(Math.abs(buah - 287.5) < 1e-9 && Math.abs(buah / K.perDus - 57.5) < 1e-9 && Math.ceil(buah / K.perDus) === 58, "hitungan mandiri: 287,5 keramik, 57,5 dus, dibulatkan 58");
+    cek(jalan === 46 && 17 * 8 === 136 && 136 - 90 === 46, "luas jalan 46");
+    cek(Math.abs(buah - 287.5) < 1e-9 && Math.abs(buah / K.perDus - 57.5) < 1e-9 && Math.ceil(buah / K.perDus) === 58, "287,5 keramik, 57,5 dus, dibulatkan 58");
     const teksPengayaan = JSON.stringify(adegan(M, "pengayaan-kolam").ketukan.map((kt, i) => L.teksTerlihat(L.keadaanStory(adegan(M, "pengayaan-kolam"), i, 9999))));
-    for (const s of ["16 x 7 = 112", "15 x 6 = 90", "112 - 90 = 22", "40 x 40 = 1600", "137,5", "27,5", "28 dus", "17 x 8 = 136", "136 - 90 = 46", "287,5", "57,5", "58 dus"]) cek(teksPengayaan.includes(s), `pengayaan: gambar memuat ${s}`);
-    // gambar kolam: ukuran piksel sebanding dengan meter (kunci buku 16 x 7 dan dalam 15 x 6)
+    for (const s of ["15 + 2 = 17", "6 + 2 = 8", "17 x 8 = 136", "15 x 6 = 90", "136 - 90 = 46", "40 x 40 = 1600", "287,5", "57,5", "58 dus"]) cek(teksPengayaan.includes(s), `tantangan: gambar memuat ${s}`);
+    cek(!/16 x 7|112 - 90|137,5|27,5|28 dus/.test(teksPengayaan), "tantangan: hanya menyajikan hitungan yang benar");
+    // gambar kolam: ukuran piksel sebanding dengan meter (luar 17 x 8, dalam 15 x 6, tepian 1 m di semua sisi)
     const o = keadaan(M, "pengayaan-kolam", 1);
-    cek(cari(o, "kl") && cari(o, "kd") && hampir(cari(o, "kl").w / cari(o, "kl").h, 16 / 7, 0.02) && hampir(cari(o, "kd").w / cari(o, "kd").h, 15 / 6, 0.02), "gambar kolam: perbandingan sisi luar 16 : 7 dan dalam 15 : 6");
+    cek(cari(o, "kl") && cari(o, "kd") && hampir(cari(o, "kl").w / cari(o, "kl").h, 17 / 8, 0.02) && hampir(cari(o, "kd").w / cari(o, "kd").h, 15 / 6, 0.02), "gambar kolam: perbandingan sisi luar 17 : 8 dan dalam 15 : 6");
+    cek(hampir(cari(o, "kd").x - cari(o, "kl").x, cari(o, "kl").w / 17, 0.01) && hampir(cari(o, "kl").x + cari(o, "kl").w - (cari(o, "kd").x + cari(o, "kd").w), cari(o, "kl").w / 17, 0.01), "gambar kolam: tepian sama lebar di kiri dan kanan");
   }
 
   // 6) Metode luar Isoperimetric: tiga persegi panjang berkeliling 60 dengan luas 125, 200, 225
@@ -425,7 +448,7 @@ const sama2 = (a, b) => js(a) === js(b);
     cek(!/from "react"/.test(s), `${f}: logika dan data tanpa React`);
     cek(!/Math\.random/.test(s), `${f}: tanpa Math.random`);
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|k5b5d-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b5d sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k5b5d-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k5b5d sendiri (${impor.join(", ")})`);
   }
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");
   cek(!/video-visual-kit|video-visual-k[456]|AdeganVisual|visualK[456]/.test(mesin), "mesin-story: tanpa kit visual lama");

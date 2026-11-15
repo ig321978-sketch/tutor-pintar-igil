@@ -118,11 +118,11 @@ export const ADEGAN_APERSEPSI_D: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Soal cerita kawat 60 sentimeter (BS hlm. 159; Panduan Guru hlm. 233) ------------------------------ */
+/* ------------------------------ 3. Soal cerita kawat 60 sentimeter ------------------------------ */
 export const ADEGAN_SOAL_KAWAT: AdeganStory = {
   id: "soal-kawat",
-  judul: "Eksplorasi 5.4: kawat sepanjang 60 sentimeter",
-  sumber: "Buku Siswa hlm. 159; Buku Panduan Guru hlm. 233",
+  judul: "Soal kawat sepanjang 60 sentimeter",
+  sumber: "Materi: soal kawat dan kerangka",
   latar: "#F0FDF4",
   kutipan: [
     "Bapak memiliki kawat sepanjang 60 cm",
@@ -137,14 +137,14 @@ export const ADEGAN_SOAL_KAWAT: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Inilah soal Eksplorasi 5.4. Bapak memiliki kawat sepanjang 60 sentimeter. Dengan kawat itu, Bapak ingin membuat kerangka berbentuk persegi panjang.",
-      tambah(0, jud("Eksplorasi 5.4", 22, 12)),
+      "Sekarang kita mulai kegiatan baru. Bapak memiliki kawat sepanjang enam puluh sentimeter. Dengan kawat itu, Bapak ingin membuat kerangka berbentuk persegi panjang.",
+      tambah(0, jud("Kawat Bapak", 22, 12)),
       tambah("Bapak", emo("b1", 55, 100, "👨", 36), teks("b1t", 55, 126, "Bapak", 8.6)),
       tambah("kawat", gulungKawat("kw", 150, 98), teks("kwt", 150, 134, "kawat 60 cm", 9.6, W.merah)),
       tambah("kerangka", panah("ka", 185, 98, 36, 0, W.ungu, 2.4), kerangka("kr", 228, 78, 15, 10, 5, W.krem, W.jeruk, { w: 54, h: 36 })),
     ),
     k(
-      "Bantulah beliau menggambar kerangka itu. Ada berapa cara yang bisa dilakukan, dan manakah yang menghasilkan kerangka terluas? Gambarlah pada petak-petak.",
+      "Bantulah Bapak menggambar kerangka itu. Ada berapa cara yang bisa dilakukan, dan manakah yang menghasilkan kerangka terluas? Gambarlah pada petak-petak.",
       bersih(0),
       tambah(0, jud("Tiga pertanyaan", 22)),
       tambah("menggambar", kartu("pq1", 25, 40, 250, 36, W.krem, ["1. gambar kerangkanya"], 9.4)),
@@ -152,29 +152,29 @@ export const ADEGAN_SOAL_KAWAT: AdeganStory = {
       tambah("terluas?", kartu("pq3", 25, 132, 250, 36, W.hijauMuda, ["3. mana yang terluas?"], 9.4)),
     ),
     k(
-      "Untuk persiapan, guru menyiapkan gambar yang diperbesar dari buku siswa pada kertas berpetak, bisa berupa slide atau gambar yang ditempel di papan tulis. Siswa juga menerima kertas berpetak.",
+      "Untuk menggambarnya, kita pakai kertas berpetak. Setiap anak menerima kertas berpetak, dan gambar yang sama kita pasang besar di depan kelas supaya mudah dilihat.",
       bersih(0),
-      tambah(0, jud("Persiapan guru", 22)),
+      tambah(0, jud("Kertas berpetak", 22)),
       tambah("kertas", petak("gp", 70, 44, 12, 8, 13), teks("gpt", 148, 170, "kertas berpetak", 9.4, W.ungu)),
-      tambah("slide", teks("gs", 148, 190, "slide atau papan tulis", 8.4, W.hijau)),
+      tambah("depan", teks("gs", 148, 190, "dipasang besar di depan kelas", 8.4, W.hijau)),
     ),
     k(
-      "Saat pelaksanaan, guru mengajak siswa menyimak soal cerita. Siswa bereksplorasi dengan menggambar ukuran yang mungkin, lalu guru memeriksa dan mengoreksi bila ada yang keliru.",
+      "Caranya ada tiga langkah. Pertama, simak soal ceritanya. Kedua, gambar ukuran yang mungkin pada kertas berpetak. Ketiga, periksa hasilnya bersama temanmu, dan perbaiki bila ada yang keliru.",
       bersih(0),
-      tambah(0, jud("Pelaksanaan", 22)),
-      tambah("menyimak", baris("pl1", 25, 40, 250, "1. simak soal cerita", W.krem, 9, 26)),
-      tambah("menggambar", baris("pl2", 25, 76, 250, "2. gambar ukuran yang mungkin", W.muda, 9, 26)),
-      tambah("memeriksa", baris("pl3", 25, 112, 250, "3. guru periksa dan koreksi", W.hijauMuda, 9, 26)),
+      tambah(0, jud("Caranya", 22)),
+      tambah("simak", baris("pl1", 25, 40, 250, "1. simak soal cerita", W.krem, 9, 26)),
+      tambah("gambar", baris("pl2", 25, 76, 250, "2. gambar ukuran yang mungkin", W.muda, 9, 26)),
+      tambah("periksa", baris("pl3", 25, 112, 250, "3. periksa dan perbaiki bila keliru", W.hijauMuda, 9, 26)),
     ),
     k(
-      "Pada gambar buku, satu petak tampak mewakili 5 sentimeter. Jadi sisi 20 sentimeter membentang 4 petak, dan sisi 10 sentimeter membentang 2 petak.",
+      "Perhatikan petak-petaknya. Satu petak mewakili lima sentimeter. Jadi sisi dua puluh sentimeter membentang empat petak, dan sisi sepuluh sentimeter membentang dua petak.",
       bersih(0),
       tambah(0, jud("Satu petak 5 cm", 18, 11)),
       tambah("petak", petak("pg", 15, 40, 15, 10, 10, W.petak)),
-      tambah("20", kerangka("pk", 25, 50, 20, 10, 10), teks("p20", 45, 46, "20 cm", 8)),
-      tambah("10", teks("p10", 21, 72, "10 cm", 7, W.biru, { anchor: "end" })),
-      tambah("4", teks("p4", 215, 70, "4 petak", 9.4, W.merah)),
-      tambah("petak@3", teks("p2", 215, 90, "2 petak", 9.4, W.hijau)),
+      tambah("dua", kerangka("pk", 25, 50, 20, 10, 10), teks("p20", 45, 46, "20 cm", 8)),
+      tambah("sepuluh", teks("p10", 21, 72, "10 cm", 7, W.biru, { anchor: "end" })),
+      tambah("empat", teks("p4", 215, 70, "4 petak", 9.4, W.merah)),
+      tambah("dua@2", teks("p2", 215, 90, "2 petak", 9.4, W.hijau)),
     ),
   ],
 };

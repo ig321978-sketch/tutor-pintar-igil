@@ -14,7 +14,7 @@ const barisTamu = (id: string, x: number, y: number, s: number, r: number, warna
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk memahami luas",
-  sumber: "Metode luar: pembuka; contoh Buku Siswa hlm. 133–143",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -25,7 +25,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("empat", emo("gl", 190, 140, "🌍", 34)),
     ),
     k(
-      "Empat metode itu: Unit Square Covering, Array Model, Area Conservation yang di buku disebut cara Yohana, dan Grid Estimation of Partial Squares.",
+      "Empat metode itu: Unit Square Covering, Array Model, Area Conservation yang tadi kita sebut cara Yohana, dan Grid Estimation of Partial Squares.",
       bersih(0),
       tambah(0, judul("Empat metode")),
       tambah("Unit", ...kartu("m1", 12, 34, 276, 30, W.hijauMuda, ["1. Unit Square Covering"], 9.4)),
@@ -34,7 +34,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("Grid", ...kartu("m4", 12, 148, 276, 30, W.pink, ["4. Grid Estimation of Partial Squares"], 9.4)),
     ),
     k(
-      "Semua metode memegang satu gagasan dari buku: luas adalah banyaknya satuan luas yang menutup daerah dengan rapat, tanpa celah dan tanpa tumpang tindih.",
+      "Semua metode memegang satu gagasan yang sama: luas adalah banyaknya satuan luas yang menutup daerah dengan rapat, tanpa celah dan tanpa tumpang tindih.",
       bersih(0),
       tambah(0, judul("Satu gagasan yang sama")),
       tambah("satuan", ...petakPenuh("g", 90, 46, 4, 3, 30, W.emas), kisi("gk", 90, 46, 4, 3, 30, W.biru)),
@@ -42,9 +42,9 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("tumpang", teks("gt2", 150, 170, "tanpa tumpang tindih", 10, W.hijau)),
     ),
     k(
-      "Kita memakai angka dari buku: ruang tamu, kamar tidur, dapur, kamar mandi, dan bangun A sampai G pada kertas berpetak.",
+      "Kita memakai angka dari kegiatan tadi: ruang tamu, kamar tidur, dapur, kamar mandi, dan bangun A sampai G pada kertas berpetak.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka dari kegiatan tadi")),
       tambah("ruang", ...kartu("a1", 14, 36, 128, 30, W.langit, ["ruang tamu 13 m²"], 9)),
       tambah("kamar", ...kartu("a2", 158, 36, 128, 30, W.hijauMuda, ["kamar tidur 9 m²"], 9)),
       tambah("dapur,", ...kartu("a3", 14, 76, 128, 30, W.krem, ["dapur 6 m²"], 9)),
@@ -101,7 +101,7 @@ const hitungan = (isi: string): Obj => teks("ct", 220, 100, isi, 18, W.merah);
 export const ADEGAN_LUAR_USC_TERAPAN: AdeganStory = {
   id: "luar-usc-terapan",
   judul: "Unit Square Covering pada ruang tamu",
-  sumber: "Metode luar: Unit Square Covering; contoh ruang tamu Buku Siswa hlm. 139–140",
+  sumber: "Metode luar: Unit Square, ruang tamu",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -131,7 +131,7 @@ export const ADEGAN_LUAR_USC_TERAPAN: AdeganStory = {
       ubah("belas.", { id: "ct", isi: "13" }),
     ),
     k(
-      "Tidak ada celah dan tidak ada yang bertumpuk. Jadi luas ruang tamu tiga belas satuan luas, sama persis dengan hitungan di buku.",
+      "Tidak ada celah dan tidak ada yang bertumpuk. Jadi luas ruang tamu tiga belas satuan luas, sama persis dengan hitungan tadi.",
       tambah("celah", ...kartu("fk", 150, 160, 138, 34, W.hijauMuda, ["luas = 13 satuan luas"], 9.4)),
       tambah("sama", emo("fe", 100, 184, "✅", 18)),
     ),

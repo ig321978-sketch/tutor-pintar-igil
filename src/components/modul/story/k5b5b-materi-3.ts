@@ -1,5 +1,5 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { BK, JJG, KITE, W, bangunBerpetak, garis, kartu, kisi, kotak, lintasan, panah, poli, teks, type Pt } from "./k5b5b-gambar";
+import { BK, JJG, KITE, W, bangunBerpetak, garis, kartu, kisi, lintasan, panah, poli, teks, type Pt } from "./k5b5b-gambar";
 import { bersih, hapus, k, tambah, ubah } from "./k5b5b-bantu";
 
 const ket = (id: string, y: number, isi: string, warna: string = W.biru, x = 108): Obj => teks(id, x, y, isi, 8.8, warna, { anchor: "start" });
@@ -13,14 +13,14 @@ const YB = 56;
 
 export const ADEGAN_BELAH_KETUPAT: AdeganStory = {
   id: "belah-ketupat",
-  judul: "Eksplorasi 5.2F: luas belah ketupat",
-  sumber: "Buku Siswa hlm. 154–155; Buku Panduan Guru hlm. 220–223",
+  judul: "Menemukan luas belah ketupat",
+  sumber: "Materi: luas belah ketupat",
   latar: "#F0FDFA",
   kutipan: ["Ayo Menemukan Luas Daerah Belah Ketupat", "Manakah diagonal-diagonalnya", "Luas belah ketupat tetap, walaupun", "Sisi 1 = diagonal 1 belah ketupat", "Sisi 2 = setengah dari diagonal 2", "Luas = sisi"],
   ketukan: [
     k(
-      "Eksplorasi 5.2F, menemukan luas daerah belah ketupat. Perhatikan belah ketupat ABCD. Diagonal-diagonalnya AC dan DB. Diagonal 1 panjangnya 2 satuan, diagonal 2 panjangnya 4 satuan.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 5.2F", 13, W.ungu)),
+      "Sekarang kita menemukan luas daerah belah ketupat. Perhatikan belah ketupat ABCD. Diagonal-diagonalnya AC dan DB. Diagonal 1 panjangnya 2 satuan, diagonal 2 panjangnya 4 satuan.",
+      tambah(0, teks("jud", 150, 24, "Luas belah ketupat", 13, W.ungu)),
       tambah("belah@2", ...bangunBerpetak("bk", XB, YB, 2, 4, BK.asal, W.hijauMuda), nama("bka", XB - 10, YB + 44, "A"), nama("bkc", XB + 50, YB + 44, "C"), nama("bkd", XB + 20, YB - 4, "D"), nama("bkb", XB + 20, YB + 92, "B")),
       tambah("Diagonal-diagonalnya", garis("bkd1", XB, YB + 40, 40, 0, W.merah, 3.2), garis("bkd2", XB + 20, YB, 0, 80, W.ungu, 3.2, { putus: true })),
       tambah("Diagonal@2", ket("bkk1", 92, "diagonal 1 (AC) = 2 satuan", W.merah)),
@@ -64,14 +64,14 @@ const YK = 56;
 
 export const ADEGAN_LAYANG_LAYANG: AdeganStory = {
   id: "layang-layang",
-  judul: "Eksplorasi 5.2G: luas layang-layang",
-  sumber: "Buku Siswa hlm. 156–157; Buku Panduan Guru hlm. 223–226",
+  judul: "Menemukan luas layang-layang",
+  sumber: "Materi: luas layang-layang",
   latar: "#FFFBEB",
   kutipan: ["Ayo Menemukan Luas Daerah Layang-Layang", "Manakah diagonal-diagonalnya", "Luas layang-layang tetap, walaupun diubah bentuknya", "Sisi 1 = diagonal 1 layang-layang", "Luas daerah layang-"],
   ketukan: [
     k(
-      "Eksplorasi 5.2G, menemukan luas daerah layang-layang. Perhatikan layang-layang ABCD. Diagonal 1 panjangnya 5 satuan, diagonal 2 panjangnya 4 satuan.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 5.2G", 13, W.ungu)),
+      "Sekarang kita menemukan luas daerah layang-layang. Perhatikan layang-layang ABCD. Diagonal 1 panjangnya 5 satuan, diagonal 2 panjangnya 4 satuan.",
+      tambah(0, teks("jud", 150, 24, "Luas layang-layang", 13, W.ungu)),
       tambah("layang-layang@2", ...bangunBerpetak("ky", XK, YK, 5, 4, KITE.asal, W.merahMuda), nama("kya", XK - 10, YK + 44, "A"), nama("kyc", XK + 110, YK + 44, "C"), nama("kyd", XK + 40, YK - 4, "D"), nama("kyb", XK + 40, YK + 92, "B")),
       tambah("Diagonal", garis("kyd1", XK, YK + 40, 100, 0, W.merah, 3.2), ket("kyk1", 98, "diagonal 1 (AC) = 5 satuan", W.merah, 164)),
       tambah("diagonal@2", garis("kyd2", XK + 40, YK, 0, 80, W.ungu, 3.2, { putus: true }), ket("kyk2", 120, "diagonal 2 (DB) = 4 satuan", W.ungu, 164)),
@@ -110,51 +110,51 @@ export const ADEGAN_LAYANG_LAYANG: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 10. Miskonsepsi dan diferensiasi (Panduan Guru hlm. 226-227) ------------------------------ */
+/* ------------------------------ 10. Pesan guru: hati-hati, tantangan, renungan ------------------------------ */
 export const ADEGAN_MISKONSEPSI: AdeganStory = {
   id: "miskonsepsi",
-  judul: "Miskonsepsi dan diferensiasi Sub-Bab B",
-  sumber: "Buku Panduan Guru hlm. 226–227",
+  judul: "Hati-hati, tantangan, dan renungan",
+  sumber: "Materi: pesan guru tentang luas tetap",
   latar: "#FFF1F2",
   kutipan: ["Miskonsepsi yang dapat terjadi pada Subbab B", "kesulitan melihat bahwa suatu bentuk daerah", "alat peraga manipulatif berupa tangram", "panjang unsur-unsur yang akan dikalikan/dihitung telah berubah menjadi", "setengahnya", "pola berpikir tingkat tinggi", "belum mampu melihat pola perkalian pada luas persegi atau persegi panjang"],
   ketukan: [
     k(
-      "Panduan Guru menyebut dua miskonsepsi pada sub-bab ini. Miskonsepsi pertama: murid sulit percaya bahwa luas tetap ketika bentuk daerahnya diubah menjadi bangun lain.",
-      tambah(0, teks("jud", 150, 24, "Miskonsepsi pertama", 13, W.ungu)),
-      tambah("Miskonsepsi@2", poli("m1a", 20, 70, JJG.asal, W.langitMuda), panah("m1p", 134, 90, 28, 0, W.biru, 2.2), poli("m1b", 170, 70, JJG.hasil, W.hijauMuda)),
+      "Hati-hati, ada kesalahan yang sering terjadi. Kamu mungkin sulit percaya bahwa luas tetap ketika bentuk daerahnya diubah menjadi bangun lain.",
+      tambah(0, teks("jud", 150, 24, "Hati-hati", 13, W.merah)),
+      tambah("sulit", poli("m1a", 20, 70, JJG.asal, W.langitMuda), panah("m1p", 134, 90, 28, 0, W.biru, 2.2), poli("m1b", 170, 70, JJG.hasil, W.hijauMuda)),
       tambah("tetap", teks("m1t", 150, 126, "luasnya tetap?", 14, W.merah)),
     ),
     k(
-      "Pencegahnya adalah tangram bangun datar. Murid mengamati sendiri bahwa daerah yang dipindahkan tidak berkurang dan tidak bertambah, sehingga luasnya tetap.",
-      tambah("tangram", ...kartu("m2a", 20, 140, 124, 30, W.krem, ["tidak berkurang"], 9.4)),
+      "Buktikan sendiri dengan kertas lipat. Daerah yang dipindahkan tidak berkurang dan tidak bertambah, sehingga luasnya tetap.",
+      tambah("berkurang", ...kartu("m2a", 20, 140, 124, 30, W.krem, ["tidak berkurang"], 9.4)),
       tambah("bertambah,", ...kartu("m2b", 156, 140, 124, 30, W.krem, ["tidak bertambah"], 9.4)),
       ubah("sehingga", { id: "m1t", isi: "luasnya tetap", warna: W.hijau }),
       tambah("sehingga", tanda2("m2c", 150, 192)),
     ),
     k(
-      "Miskonsepsi kedua: murid sulit paham bahwa menghitung luas di bentuk baru sama dengan di bentuk lama, karena ukuran yang dikalikan menjadi setengahnya. Misalnya tinggi 4 menjadi lebar 2.",
+      "Hati-hati juga pada ukuran. Menghitung luas di bentuk baru sama saja dengan di bentuk lama, hanya ukuran yang dikalikan menjadi setengahnya. Misalnya tinggi 4 menjadi lebar 2.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Miskonsepsi kedua", 13, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Hati-hati: ukuran berubah", 13, W.merah)),
       tambah("bentuk", poli("m3a", 20, 70, [[0, 0], [0, 4], [4, 4]], W.langitMuda), teks("m3at", 60, 160, "bentuk lama", 8.6)),
       tambah("setengahnya.", poli("m3b", 170, 90, [[0, 0], [4, 0], [4, 2], [0, 2]], W.hijauMuda), teks("m3bt", 210, 160, "bentuk baru", 8.6)),
       tambah("tinggi", teks("m3c", 150, 60, "tinggi 4", 10, W.merah, { anchor: "middle" })),
       tambah("lebar", teks("m3d", 150, 180, "lebar 2 : separuh dari tinggi 4", 9.4, W.hijau)),
     ),
     k(
-      "Antisipasinya, guru mendemonstrasikan perbandingan ukuran bentuk baru dan bentuk lama. Guru perlu yakin bahwa menghubungkan luas satu bangun dengan bangun lain membuat murid berpikir kritis dan tahu asal rumus.",
+      "Sekarang Tantangan. Bandingkan ukuran bentuk baru dengan bentuk lama. Hubungkan luas satu bangun dengan bangun lain, lalu jelaskan asal rumusnya. Itu melatihmu berpikir kritis.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Cara mengantisipasi", 13, W.ungu)),
-      tambah("mendemonstrasikan", ...kartu("m4a", 20, 44, 260, 40, W.hijauMuda, ["tunjukkan perbandingan ukuran", "bentuk baru dan bentuk lama"], 9.2)),
-      tambah("menghubungkan", ...kartu("m4b", 20, 96, 260, 40, W.krem, ["luas bangun satu dihubungkan", "dengan bangun lain"], 9.2)),
-      tambah("berpikir", ...kartu("m4c", 20, 148, 260, 40, W.muda, ["murid berpikir kritis", "dan tahu asal rumus"], 9.2)),
+      tambah(0, teks("jud", 150, 24, "Tantangan", 13, W.ungu)),
+      tambah("Bandingkan", ...kartu("m4a", 20, 44, 260, 40, W.hijauMuda, ["bandingkan ukuran", "bentuk baru dan bentuk lama"], 9.2)),
+      tambah("Hubungkan", ...kartu("m4b", 20, 96, 260, 40, W.krem, ["hubungkan luas satu bangun", "dengan bangun lain"], 9.2)),
+      tambah("berpikir", ...kartu("m4c", 20, 148, 260, 40, W.muda, ["jelaskan asal rumus", "dan berpikir kritis"], 9.2)),
     ),
     k(
-      "Untuk diferensiasi, kegiatan ini melatih berpikir tingkat tinggi. Murid yang belum melihat pola perkalian, atau belum bisa membandingkan bentuk lama dan baru, diberi waktu lebih lama mengamati.",
+      "Renungan: sudahkah kamu melihat pola perkalian pada setiap bangun? Kalau belum, luangkan waktu lebih lama untuk mengamati hasil bentuknya, lalu coba lagi.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Diferensiasi", 13, W.ungu)),
-      tambah("tingkat", ...kartu("m5a", 20, 44, 260, 36, W.ungMuda, ["berpikir tingkat tinggi"], 10)),
-      tambah("belum", ...kartu("m5b", 20, 92, 260, 40, W.merahMuda, ["belum melihat pola perkalian", "atau belum bisa membandingkan"], 9.2)),
-      tambah("diberi", ...kartu("m5c", 20, 144, 260, 40, W.hijauMuda, ["beri waktu lebih lama", "mengamati pola dan hasil bentuk"], 9.2)),
+      tambah(0, teks("jud", 150, 24, "Renungan", 13, W.ungu)),
+      tambah("sudahkah", ...kartu("m5a", 20, 44, 260, 36, W.ungMuda, ["pola perkalian di setiap bangun?"], 10)),
+      tambah("Kalau", ...kartu("m5b", 20, 92, 260, 40, W.merahMuda, ["kalau belum yakin,", "amati lebih lama"], 9.2)),
+      tambah("coba", ...kartu("m5c", 20, 144, 260, 40, W.hijauMuda, ["lalu coba lagi", "dengan kertas berpetak"], 9.2)),
     ),
   ],
 };
@@ -163,37 +163,33 @@ function tanda2(id: string, x: number, y: number): Obj {
   return teks(id, x, y, "✓ luas tetap", 14, W.hijau);
 }
 
-/* ------------------------------ 11. Refleksi nomor 6 sampai 12 dan rumus yang ditemukan (hlm. 161) ------------------------------ */
+/* ------------------------------ 11. Renungan dan ringkasan rumus ------------------------------ */
 const BARIS = ["persegi panjang", "persegi", "segitiga", "jajargenjang", "trapesium", "belah ketupat", "layang-layang"];
 const barisRef = (i: number): Obj[] => {
-  const y = 52 + i * 20;
-  return [
-    teks(`rf${i}`, 14, y + 10, `${6 + i}. aku bisa menemukan luas ${BARIS[i]}`, 8.4, W.biru, { anchor: "start" }),
-    kotak(`rf${i}y`, 232, y + 2, 10, 10, W.putih, W.biru, { rx: 2 }),
-    kotak(`rf${i}n`, 268, y + 2, 10, 10, W.putih, W.biru, { rx: 2 }),
-  ];
+  const y = 44 + i * 20;
+  return [teks(`rf${i}`, 20, y + 10, `bisakah aku menemukan luas ${BARIS[i]}?`, 9, W.biru, { anchor: "start" })];
 };
 
 export const ADEGAN_REFLEKSI_B: AdeganStory = {
   id: "refleksi-b",
-  judul: "Refleksi nomor 6 sampai 12 dan ringkasan rumus",
-  sumber: "Buku Siswa hlm. 161 (Refleksi); Buku Panduan Guru hlm. 227",
+  judul: "Renungan dan ringkasan rumus",
+  sumber: "Materi: renungan dan ringkasan rumus",
   latar: "#EEF2FF",
   kutipan: ["Setelah mempelajari materi terkait luas daerah bangun datar", "Aku bisa menemukan cara menghitung luas daerah persegi panjang", "Aku bisa menemukan cara menghitung luas daerah segitiga", "Aku bisa menemukan cara menghitung luas daerah jajargenjang", "luas derah trapesium", "Aku bisa menemukan cara menghitung luas daerah belah ketupat", "Aku bisa menemukan cara menghitung luas daerah layang-layang"],
   ketukan: [
     k(
-      "Refleksi untuk sub-bab ini adalah nomor 6 sampai 12. Murid memberi tanda centang, ya atau tidak, pada tujuh pernyataan. Nomor 6, aku bisa menemukan luas persegi panjang. Nomor 7, persegi. Nomor 8, segitiga.",
-      tambah(0, teks("jud", 150, 22, "Refleksi 6 sampai 12", 12.5, W.ungu), teks("hy", 237, 44, "Ya", 8.6, W.hijau), teks("ht", 273, 44, "Tidak", 8.6, W.merah)),
-      tambah("Nomor@2", barisRef(0)),
-      tambah("Nomor@3", barisRef(1)),
-      tambah("Nomor@4", barisRef(2)),
+      "Renungan sebelum kita rangkum. Tanyakan pada dirimu sendiri, bisakah aku menemukan luas persegi panjang, persegi, dan segitiga?",
+      tambah(0, teks("jud", 150, 24, "Renungan", 13, W.ungu)),
+      tambah("persegi", barisRef(0)),
+      tambah("persegi@2", barisRef(1)),
+      tambah("segitiga", barisRef(2)),
     ),
     k(
-      "Nomor 9, jajargenjang. Nomor 10, trapesium. Nomor 11, belah ketupat. Nomor 12, layang-layang. Jawablah dengan jujur, karena ini cermin pemahaman kita sendiri.",
-      tambah("Nomor", barisRef(3)),
-      tambah("Nomor@2", barisRef(4)),
-      tambah("Nomor@3", barisRef(5)),
-      tambah("Nomor@4", barisRef(6)),
+      "Lalu jajargenjang, trapesium, belah ketupat, dan layang-layang. Kalau kamu belum yakin, ulangi kegiatan potong dan pindahkan pada kertas berpetak, sampai kamu bisa menjelaskannya.",
+      tambah("jajargenjang,", barisRef(3)),
+      tambah("trapesium,", barisRef(4)),
+      tambah("belah", barisRef(5)),
+      tambah("layang-layang.", barisRef(6)),
     ),
     k(
       "Rumus yang kita temukan. Persegi panjang: panjang kali lebar. Persegi: sisi kali sisi. Segitiga: setengah kali alas kali tinggi. Jajargenjang: alas kali tinggi.",

@@ -10,11 +10,11 @@ const tepi = (id: string, x: number, y: number, pts: Pt[]): Obj => poli(id, x, y
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luarb-pembuka",
   judul: "Empat metode luar untuk menemukan luas",
-  sumber: "Metode luar; empat cara menemukan luas daerah",
+  sumber: "Metode luar: empat cara menemukan luas",
   latar: "#EEF2FF",
   ketukan: [
     k(
-      "Video ini membahas metode luar untuk menemukan luas daerah bangun datar. Isinya empat cara berpikir, dan semuanya kita terapkan pada angka-angka yang ada di buku.",
+      "Video ini membahas metode luar untuk menemukan luas daerah bangun datar. Isinya empat cara berpikir, dan semuanya kita terapkan pada angka-angka bangun yang sudah kita pelajari.",
       tambah(0, teks("jud", 150, 26, "Luas daerah: metode luar", 12.5, W.ungu)),
       tambah("empat", emo("e1", 48, 100, "✂️", 34), teks("t1", 48, 124, "potong", 8.6, W.merah)),
       tambah("cara", emo("e2", 118, 100, "↔️", 34), teks("t2", 118, 124, "geser", 8.6)),
@@ -43,7 +43,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 export const ADEGAN_LUAR_DIS: AdeganStory = {
   id: "luarb-dis",
   judul: "Dissection Method: potong lalu susun ulang",
-  sumber: "Metode luar; memotong dan menyusun ulang bangun",
+  sumber: "Metode luar: memotong dan menyusun ulang",
   latar: "#FFF4DD",
   ketukan: [
     k(
@@ -71,7 +71,7 @@ export const ADEGAN_LUAR_DIS: AdeganStory = {
       tambah("Tiga,", ...kartu("l3", 14, 138, 272, 40, W.muda, ["3. hitung dengan rumus yang dikenal"], 9.4)),
     ),
     k(
-      "Kalau potongannya bisa disusun menjadi persegi panjang atau jajargenjang, luasnya langsung dapat dihitung. Karena itu rumus-rumus di buku berawal dari persegi panjang.",
+      "Kalau potongannya bisa disusun menjadi persegi panjang atau jajargenjang, luasnya langsung dapat dihitung. Karena itu rumus-rumus luas berawal dari persegi panjang.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Mengapa berhasil?", 13, W.ungu)),
       tambah("persegi", ...kartu("k1", 100, 40, 100, 34, W.hijauMuda, ["persegi panjang"], 9.4)),
@@ -90,7 +90,7 @@ const YE = 56;
 export const ADEGAN_LUAR_DIS_TERAPAN: AdeganStory = {
   id: "luarb-dis-terapan",
   judul: "Dissection Method: jajargenjang dan belah ketupat",
-  sumber: "Metode luar; penerapan pada angka Eksplorasi 5.2D dan 5.2F",
+  sumber: "Metode luar: jajargenjang dan belah ketupat",
   latar: "#FFF4DD",
   ketukan: [
     k(
@@ -136,7 +136,7 @@ const MIRING: Pt[] = [[0, 2], [4, 2], [5, 0], [1, 0]];
 export const ADEGAN_LUAR_SHR: AdeganStory = {
   id: "luarb-shr",
   judul: "Shear Principle: geser sejajar alas",
-  sumber: "Metode luar; menggeser bangun sejajar alasnya",
+  sumber: "Metode luar: menggeser sejajar alas",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -185,7 +185,7 @@ const SX = [
 export const ADEGAN_LUAR_SHR_TERAPAN: AdeganStory = {
   id: "luarb-shr-terapan",
   judul: "Shear Principle: segitiga PQR dan jajargenjang",
-  sumber: "Metode luar; penerapan pada angka Eksplorasi 5.2C dan 5.2D",
+  sumber: "Metode luar: segitiga PQR dan jajargenjang",
   latar: "#FDF2F8",
   ketukan: [
     k(

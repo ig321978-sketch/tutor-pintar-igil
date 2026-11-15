@@ -16,14 +16,14 @@ const Y1 = 58;
 
 export const ADEGAN_SEGITIGA_1: AdeganStory = {
   id: "segitiga-1",
-  judul: "Eksplorasi 5.2C: luas segitiga (alas 4, tinggi 4)",
-  sumber: "Buku Siswa hlm. 147–148; Buku Panduan Guru hlm. 207–210",
+  judul: "Menemukan luas segitiga (alas 4, tinggi 4)",
+  sumber: "Materi: luas segitiga",
   latar: "#FFF7ED",
   kutipan: ["Ayo Menemukan Luas Daerah Segitiga", "Kalian telah menemukan cara menghitung luas daerah persegi", "Buatlah dengan menggunakan kertas", "Bangun apa yang terbentuk", "Apakah ada bagian yang hilang", "Luas segitiga tetap, walaupun diubah bentuknya", "Lebar persegi panjang"],
   ketukan: [
     k(
-      "Eksplorasi 5.2C, menemukan luas daerah segitiga. Kita buat dengan kertas lipat. Pertanyaannya, dapatkah segitiga diubah menjadi persegi panjang, supaya luasnya bisa dihitung seperti persegi panjang?",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 5.2C", 13, W.ungu)),
+      "Sekarang kita menemukan luas daerah segitiga. Kita buat dengan kertas lipat. Pertanyaannya, dapatkah segitiga diubah menjadi persegi panjang, supaya luasnya bisa dihitung seperti persegi panjang?",
+      tambah(0, teks("jud", 150, 24, "Menemukan luas segitiga", 13, W.ungu)),
       tambah("segitiga.", ...bangunBerpetak("sg", X1, Y1, 4, 4, SEG1.asal, W.muda), nama("sga", X1 - 9, Y1 + 90, "A"), nama("sgb", X1 + 89, Y1 + 90, "B"), nama("sgc", X1 - 9, Y1 - 2, "C")),
       tambah("Pertanyaannya,", ...kartu("sgq", 138, 70, 150, 56, W.krem, ["dapatkah diubah menjadi", "persegi panjang?"], 9)),
     ),
@@ -71,7 +71,7 @@ export const ADEGAN_SEGITIGA_1: AdeganStory = {
 export const ADEGAN_SEGITIGA_2: AdeganStory = {
   id: "segitiga-2",
   judul: "Ayo mencoba lagi: segitiga PQR (alas 5, tinggi 4)",
-  sumber: "Buku Siswa hlm. 149–150; Buku Panduan Guru hlm. 211–213",
+  sumber: "Materi: luas segitiga PQR",
   latar: "#FEF2F2",
   kutipan: ["Ayo mencoba lagi", "Hitunglah luas daerah segitiga", "Dengan menggunakan kertas", "Luas = 1", "Luas daerah segitiga", "dihitung dengan cara", "mengalikan panjang", "alas dengan separuh"],
   ketukan: [
@@ -120,14 +120,14 @@ const Y2 = 74;
 
 export const ADEGAN_JAJARGENJANG: AdeganStory = {
   id: "jajargenjang",
-  judul: "Eksplorasi 5.2D: luas jajargenjang",
-  sumber: "Buku Siswa hlm. 150–152; Buku Panduan Guru hlm. 213–216",
+  judul: "Menemukan luas jajargenjang",
+  sumber: "Materi: luas jajargenjang",
   latar: "#F0F9FF",
   kutipan: ["Ayo Menemukan Luas Daerah Jajargenjang", "Bangun apakah itu", "Luas jajargenjang tetap, walaupun diubah bentuknya", "Luas = alas", "dihitung dengan cara mengalikan panjang"],
   ketukan: [
     k(
-      "Eksplorasi 5.2D, menemukan luas daerah jajargenjang. Perhatikan jajargenjang ABCD. Alas AB panjangnya 4 satuan, tinggi DO panjangnya 2 satuan.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 5.2D", 13, W.ungu)),
+      "Sekarang kita menemukan luas daerah jajargenjang. Perhatikan jajargenjang ABCD. Alas AB panjangnya 4 satuan, tinggi DO panjangnya 2 satuan.",
+      tambah(0, teks("jud", 150, 24, "Luas jajargenjang", 13, W.ungu)),
       tambah("jajargenjang.", ...bangunBerpetak("jj", X1, Y2, 5, 2, JJG.asal, W.langitMuda), nama("jja", X1 - 9, Y2 + 52, "A"), nama("jjb", X1 + 89, Y2 + 52, "B"), nama("jjc", X1 + 109, Y2 - 4, "C"), nama("jjd", X1 + 16, Y2 - 4, "D"), nama("jjo", X1 + 20, Y2 + 52, "O")),
       tambah("Alas", garis("jjal", X1, Y2 + 40, 80, 0, W.merah, 3.4), ket("jjk1", 92, "alas AB = 4 satuan", W.merah, 160)),
       tambah("tinggi", garis("jjti", X1 + 20, Y2, 0, 40, W.hijau, 3.4, { putus: true }), ket("jjk2", 114, "tinggi DO = 2 satuan", W.hijau, 160)),
@@ -168,14 +168,14 @@ const Y3 = 66;
 
 export const ADEGAN_TRAPESIUM: AdeganStory = {
   id: "trapesium",
-  judul: "Eksplorasi 5.2E: luas trapesium",
-  sumber: "Buku Siswa hlm. 152–154; Buku Panduan Guru hlm. 216–220",
+  judul: "Menemukan luas trapesium",
+  sumber: "Materi: luas trapesium",
   latar: "#FDF4FF",
   kutipan: ["Ayo Menemukan Luas Daerah Trapesium", "Kalian sudah bisa mencari luas jajargenjang", "Manakah sisi alasnya", "Alasnya tampak lebih panjang", "Luas trapesium tetap, walaupun diubah bentuknya", "Tinggi persegi panjang = setengah"],
   ketukan: [
     k(
-      "Eksplorasi 5.2E, menemukan luas daerah trapesium. Kita sudah bisa mencari luas jajargenjang, jadi trapesium akan kita ubah menjadi jajargenjang. Perhatikan trapesium ABCD.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 5.2E", 13, W.ungu)),
+      "Sekarang kita menemukan luas daerah trapesium. Kita sudah bisa mencari luas jajargenjang, jadi trapesium akan kita ubah menjadi jajargenjang. Perhatikan trapesium ABCD.",
+      tambah(0, teks("jud", 150, 24, "Luas trapesium", 13, W.ungu)),
       tambah("trapesium", ...bangunBerpetak("tp", X1, Y3, 5, 2, TRAP.asal, W.krem), nama("tpa", X1 - 9, Y3 + 52, "A"), nama("tpb", X1 + 109, Y3 + 52, "B"), nama("tpc", X1 + 69, Y3 - 4, "C"), nama("tpd", X1 + 29, Y3 - 4, "D")),
       tambah("jajargenjang,", ...kartu("tpq", 152, 70, 138, 52, W.hijauMuda, ["ubah menjadi", "jajargenjang"], 9.4)),
     ),

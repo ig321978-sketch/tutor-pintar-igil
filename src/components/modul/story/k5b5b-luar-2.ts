@@ -16,7 +16,7 @@ const baris = (id: string, y: number, nama: string, rumus: string, warna: string
 export const ADEGAN_LUAR_BXH: AdeganStory = {
   id: "luarb-bxh",
   judul: "Base×Height Unification: satu bentuk untuk semua rumus",
-  sumber: "Metode luar; alas efektif kali tinggi efektif",
+  sumber: "Metode luar: alas efektif kali tinggi efektif",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -71,12 +71,12 @@ const barisHasil = (i: number): Obj[] => {
 
 export const ADEGAN_LUAR_BXH_TERAPAN: AdeganStory = {
   id: "luarb-bxh-terapan",
-  judul: "Base×Height Unification: enam luas dari angka buku",
-  sumber: "Metode luar; penerapan pada angka Eksplorasi 5.2A sampai 5.2G",
+  judul: "Base×Height Unification: enam luas bangun",
+  sumber: "Metode luar: enam bangun dan luasnya",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Isi dengan angka buku. Persegi panjang B: 5 kali 2 menghasilkan 10. Jajargenjang: alas 4, tinggi 2, menghasilkan 8.",
+      "Sekarang kita isi dengan angka. Persegi panjang: 5 kali 2 menghasilkan 10. Jajargenjang: alas 4, tinggi 2, menghasilkan 8.",
       tambah(0, teks("jud", 150, 24, "Alas efektif x tinggi efektif", 12.5, W.ungu)),
       tambah("Persegi", barisHasil(0)),
       tambah("Jajargenjang:", barisHasil(1)),
@@ -113,7 +113,7 @@ const KITE_SUDUT: Pt[][] = [
 export const ADEGAN_LUAR_REH: AdeganStory = {
   id: "luarb-reh",
   judul: "Rectangle Enclosure Halving: bungkus lalu ambil separuh",
-  sumber: "Metode luar baru; persegi panjang pembungkus",
+  sumber: "Metode luar: persegi panjang pembungkus",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -154,7 +154,7 @@ const SEG_PQR: Pt[] = [[0, 4], [5, 4], [2, 0]];
 export const ADEGAN_LUAR_REH_TERAPAN: AdeganStory = {
   id: "luarb-reh-terapan",
   judul: "Rectangle Enclosure Halving: segitiga, belah ketupat, layang-layang",
-  sumber: "Metode luar baru; penerapan pada angka Eksplorasi 5.2C, 5.2F, 5.2G",
+  sumber: "Metode luar: tiga bangun dibungkus",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -202,7 +202,7 @@ export const ADEGAN_LUAR_REH_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luarb-ringkas",
   judul: "Ringkasan empat metode luar",
-  sumber: "Ringkasan metode luar; empat cara dan hasilnya",
+  sumber: "Ringkasan metode luar",
   latar: "#EEF2FF",
   ketukan: [
     k(
