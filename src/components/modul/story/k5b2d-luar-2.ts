@@ -51,8 +51,8 @@ export const ADEGAN_LUAR_EUCLID: AdeganStory = {
 /* ------------------------------ 7. Euclid Preview: penerapan ------------------------------ */
 export const ADEGAN_LUAR_EUCLID_TERAPAN: AdeganStory = {
   id: "luar-euclid-terapan",
-  judul: "Euclid Preview pada mawar Nisa dan Ayo Berlatih 1b",
-  sumber: "Metode luar: Euclid Preview; Buku Siswa hlm. 51–52",
+  judul: "Euclid Preview pada mawar Nisa dan contoh lain",
+  sumber: "Metode luar: Euclid Preview",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -77,15 +77,15 @@ export const ADEGAN_LUAR_EUCLID_TERAPAN: AdeganStory = {
       tambah("vas", emo("h3", 150, 156, "🏺", 30), teks("h4", 150, 190, "6 vas untuk Nisa", 9.6, W.coklat)),
     ),
     k(
-      "Contoh kedua, Ayo Berlatih satu b: empat puluh dua dan dua belas. Cara cepat memakai sisa pembagian: empat puluh dua dibagi dua belas sama dengan tiga sisa enam.",
+      "Contoh kedua: empat puluh dua dan dua belas. Cara cepat memakai sisa pembagian: empat puluh dua dibagi dua belas sama dengan tiga sisa enam.",
       bersih(0),
-      tambah(0, judul("Berlatih 1b: 42 dan 12")),
+      tambah(0, judul("Contoh: 42 dan 12")),
       tambah("Cara", teks("u1", 150, 52, "pakai sisa pembagian", 10.4, W.coklat)),
       tambah("dibagi", teks("u2", 150, 88, "42 : 12 = 3 sisa 6", 15, W.hitam)),
       tambah("tiga", teks("u3", 150, 122, "42 = 3 × 12 + 6", 13, W.hijau)),
     ),
     k(
-      "Lalu dua belas dibagi enam sama dengan dua sisa nol, jadi pembagi terakhir, enam, adalah FPB-nya. Cocok dengan kunci buku.",
+      "Lalu dua belas dibagi enam sama dengan dua sisa nol, jadi pembagi terakhir, enam, adalah FPB-nya. Cocok dengan hasil daftar faktor tadi.",
       tambah("dua@2", teks("u4", 150, 152, "12 = 2 × 6 + 0", 13, W.hijau)),
       tambah("nol,", teks("u5", 150, 172, "sisa 0: berhenti", 10.4, W.merah)),
       tambah("Cocok", teks("u6", 150, 192, "FPB dari 42 dan 12 adalah 6", 11, W.coklat)),
@@ -147,7 +147,7 @@ export const ADEGAN_LUAR_PAKET: AdeganStory = {
 export const ADEGAN_LUAR_PAKET_TERAPAN: AdeganStory = {
   id: "luar-paket-terapan",
   judul: "Equal Packing pada mawar Nisa dan paket Dania",
-  sumber: "Metode luar: Equal Packing; Buku Siswa hlm. 51–53; Panduan Guru hlm. 76",
+  sumber: "Metode luar: Equal Packing",
   latar: "#FEF2F2",
   ketukan: [
     k(
@@ -216,11 +216,11 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("berbeda.", teks("t5", 150, 150, "FPB 12 dan 18 adalah 6", 16, W.hijau)),
     ),
     k(
-      "Ingat, FPB mencari faktor yang sama dan terbesar, bukan kelipatan. Untuk soal cerita, kata kuncinya paling banyak. Coba semua metode, lalu pilih yang cocok.",
+      "Ingat, FPB mencari faktor yang sama dan terbesar, bukan kelipatan. Untuk soal cerita, kata pentingnya paling banyak. Coba semua metode, lalu pilih yang cocok.",
       bersih(0),
       tambah(0, judul("Pilih yang paling cocok")),
       tambah("FPB", ...kartu("u1", 30, 36, 240, 36, W.hijauMuda, ["FPB: faktor sama yang terbesar", "(bukan kelipatan)"], 9)),
-      tambah("kuncinya", ...kartu("u2", 30, 84, 240, 30, W.emas, ["kata kunci: paling banyak"], 9.6)),
+      tambah("pentingnya", ...kartu("u2", 30, 84, 240, 30, W.emas, ["kata penting: paling banyak"], 9.6)),
       tambah("Coba", emo("u3", 150, 152, "⭐", 36)),
     ),
   ],

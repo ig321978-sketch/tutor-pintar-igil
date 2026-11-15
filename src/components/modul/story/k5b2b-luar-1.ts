@@ -6,7 +6,7 @@ import { bersih, k, sorotkan, tambah, warnai } from "./k5b2b-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk mencari KPK",
-  sumber: "Metode luar: pembuka; contoh Buku Siswa hlm. 38–42",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -32,9 +32,9 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("Bedanya", teks("q2", 150, 136, "cara mencarinya yang berbeda", 10.4, W.merah)),
     ),
     k(
-      "Angka yang kita pakai dari buku: empat dan lima, enam dan delapan, tiga, empat, dan lima, serta jadwal renang Nisa, Yohana, Asep, dan Lukas.",
+      "Angka yang kita pakai sama seperti tadi: empat dan lima, enam dan delapan, tiga, empat, dan lima, serta jadwal renang Nisa, Yohana, Asep, dan Lukas.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka yang kita pakai")),
       tambah("empat", ...kartu("a1", 14, 34, 128, 40, W.hijauMuda, ["KPK 4 dan 5"], 9.4), ...kartu("a2", 158, 34, 128, 40, W.langit, ["KPK 6 dan 8"], 9.4)),
       tambah("tiga,", ...kartu("a3", 14, 88, 128, 40, W.krem, ["KPK 3, 4, dan 5"], 9.4)),
       tambah("jadwal", ...kartu("a4", 158, 88, 128, 40, W.pink, ["jadwal renang"], 9.4)),
@@ -88,12 +88,12 @@ const K4 = kelipatan(4, 11);
 const K5 = kelipatan(5, 9);
 export const ADEGAN_LUAR_DAFTAR_TERAPAN: AdeganStory = {
   id: "luar-daftar-terapan",
-  judul: "Daftar kelipatan bersama: angka dari buku",
-  sumber: "Metode luar: Common Multiples List; Buku Siswa hlm. 40; Panduan Guru hlm. 60",
+  judul: "Daftar kelipatan bersama: contoh angka",
+  sumber: "Metode luar: Common Multiples List",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapkan pada empat dan lima dari buku. Daftar kelipatan empat dan lima kita tulis sampai empat puluh empat dan empat puluh lima.",
+      "Terapkan pada empat dan lima. Daftar kelipatan empat dan lima kita tulis sampai empat puluh empat dan empat puluh lima.",
       tambah(0, judul("Daftar: empat dan lima")),
       tambah("empat", teks("d4", 150, 44, "kelipatan 4", 9, W.hijau), ...deretAngka("da", 18, 50, 24, 22, K4)),
       tambah("lima", teks("d5", 150, 100, "kelipatan 5", 9, W.coklat), ...deretAngka("db", 18, 106, 24, 22, K5)),
@@ -170,12 +170,12 @@ export const ADEGAN_LUAR_IRISAN: AdeganStory = {
 /* ------------------------------ 5. LCM Concept: penerapan (4 dan 5, angka buku) ------------------------------ */
 export const ADEGAN_LUAR_IRISAN_TERAPAN: AdeganStory = {
   id: "luar-irisan-terapan",
-  judul: "Irisan kelipatan: angka dari buku",
-  sumber: "Metode luar: LCM Concept; Buku Siswa hlm. 40",
+  judul: "Irisan kelipatan: contoh angka",
+  sumber: "Metode luar: LCM Concept",
   latar: "#EFF6FF",
   ketukan: [
     k(
-      "Terapkan pada empat dan lima dari buku. Lingkaran kiri memuat kelipatan empat, lingkaran kanan memuat kelipatan lima.",
+      "Terapkan pada empat dan lima. Lingkaran kiri memuat kelipatan empat, lingkaran kanan memuat kelipatan lima.",
       tambah(0, judul("Irisan: empat dan lima")),
       tambah("empat", ...lingkaranIrisan("j"), teks("jLa", 76, 40, "kelipatan 4", 9, W.hijau)),
       tambah("kanan", teks("jRa", 224, 40, "kelipatan 5", 9, W.coklat)),
@@ -186,7 +186,7 @@ export const ADEGAN_LUAR_IRISAN_TERAPAN: AdeganStory = {
       tambah("kanan", teks("jR1", 208, 98, "5, 10, 15", 9.6, W.hitam), teks("jR2", 208, 116, "25, 30", 9.6, W.hitam)),
     ),
     k(
-      "Di tengah hanya ada dua puluh dan empat puluh, pada daftar buku sampai empat puluh lima. Yang terkecil dua puluh, jadi KPK empat dan lima adalah dua puluh.",
+      "Di tengah hanya ada dua puluh dan empat puluh, pada daftar sampai empat puluh lima. Yang terkecil dua puluh, jadi KPK empat dan lima adalah dua puluh.",
       tambah("tengah", teks("jM1", 150, 98, "20", 10, W.merah), teks("jM2", 150, 116, "40", 10, W.merah)),
       sorotkan("terkecil", "jM1"),
       tambah("Jadi", teks("jh", 150, 188, "KPK 4 dan 5 = 20", 14, W.biru)),

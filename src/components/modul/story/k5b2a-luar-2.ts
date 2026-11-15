@@ -66,12 +66,12 @@ const kartuUji = (id: string, y: number, bilangan: string, hitung: string, warna
 
 export const ADEGAN_LUAR_CEK_TERAPAN: AdeganStory = {
   id: "luar-cek-terapan",
-  judul: "Divisibility Check pada kelipatan 9 dan 6 dari buku",
-  sumber: "Metode luar: Divisibility Check; angka Buku Siswa hlm. 36–37",
+  judul: "Divisibility Check pada kelipatan 9 dan 6",
+  sumber: "Metode luar: Divisibility Check",
   latar: "#FEFCE8",
   ketukan: [
     k(
-      "Terapkan pada kelipatan sembilan dari buku. Lima puluh empat: lima ditambah empat sama dengan sembilan, jadi kelipatan sembilan.",
+      "Terapkan pada kelipatan sembilan. Lima puluh empat: lima ditambah empat sama dengan sembilan, jadi kelipatan sembilan.",
       tambah(0, judul("Cek kelipatan 9")),
       tambah("empat:", ...kartuUji("u54", 56, "54", "5 + 4 = 9", W.krem, "✔")),
       tambah("kelipatan@2", teks("ub", 150, 150, "9 kelipatan 9, jadi 54 lolos", 10, W.hijau)),
@@ -100,7 +100,7 @@ export const ADEGAN_LUAR_CEK_TERAPAN: AdeganStory = {
       tambah("bukan@2", teks("ug", 150, 150, "10 bukan kelipatan 9, jadi 82 gagal", 10, W.merah)),
     ),
     k(
-      "Kelipatan enam pada nomor dua: tiga puluh. Satuannya nol, jadi genap, dan tiga ditambah nol sama dengan tiga, kelipatan tiga. Lolos dua aturan, jadi kelipatan enam.",
+      "Kelipatan enam pada Latihan dua: tiga puluh. Satuannya nol, jadi genap, dan tiga ditambah nol sama dengan tiga, kelipatan tiga. Lolos dua aturan, jadi kelipatan enam.",
       bersih(0),
       tambah(0, judul("Cek kelipatan 6")),
       tambah("tiga@1", ...kartuUji("u30", 40, "30", "3 + 0 = 3", W.pink, "✔")),
@@ -163,21 +163,21 @@ const SEMBILAN = [9, 18, 27, 36, 45, 54, 63, 72, 81, 90];
 const SATUAN_9 = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 const PULUHAN_9 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const SUARA_Q1 =
-  "Terapkan pada kelipatan sembilan dari buku: sembilan, delapan belas, dua puluh tujuh, tiga puluh enam, empat puluh lima, lima puluh empat, enam puluh tiga, tujuh puluh dua, delapan puluh satu, sembilan puluh.";
+  "Terapkan pada kelipatan sembilan: sembilan, delapan belas, dua puluh tujuh, tiga puluh enam, empat puluh lima, lima puluh empat, enam puluh tiga, tujuh puluh dua, delapan puluh satu, sembilan puluh.";
 const SUARA_Q2 = "Angka satuannya turun satu setiap langkah: sembilan, delapan, tujuh, enam, lima, empat, tiga, dua, satu, nol.";
 const SUARA_Q3 = "Sedangkan angka puluhannya naik satu: nol, satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan.";
 
 export const ADEGAN_LUAR_SATUAN_TERAPAN: AdeganStory = {
   id: "luar-satuan-terapan",
-  judul: "Last Digit Pattern pada kelipatan 9 dari buku",
-  sumber: "Metode luar: Last Digit Pattern; angka Buku Siswa hlm. 37",
+  judul: "Last Digit Pattern pada kelipatan 9",
+  sumber: "Metode luar: Last Digit Pattern",
   latar: "#FDF2F8",
   ketukan: [
     k(
       SUARA_Q1,
       tambah(0, judul("Kelipatan 9: angka satuan")),
       tambah(0, teks("c1", 150, 38, "kelipatan 9", 9, W.biru)),
-      ...SEMBILAN.map((n, i) => tambah([6, 8, 11, 14, 17, 20, 23, 26, 29, 31][i], ...kotakDigit("kn", i, String(n), 42, W.krem, 8.8))),
+      ...SEMBILAN.map((n, i) => tambah([4, 6, 9, 12, 15, 18, 21, 24, 27, 29][i], ...kotakDigit("kn", i, String(n), 42, W.krem, 8.8))),
     ),
     k(
       SUARA_Q2,
@@ -229,12 +229,12 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("delapan:", teks("l8", 150, 108, "kelipatan 8", 9, W.biru), ...[8, 16, 24, 32, 40].map((n, i) => kotakDigit("h8", i, String(n), 114, W.langit, 9.6, 70, 34)).flat()),
     ),
     k(
-      "Kelipatan tujuh sampai seratus ada empat belas, kelipatan sembilan ada sebelas. Kunci buku untuk sembilan perlu dilengkapi sampai sembilan puluh sembilan.",
+      "Kelipatan tujuh sampai seratus ada empat belas, kelipatan sembilan ada sebelas. Jadi jangan berhenti di delapan puluh satu: kelipatan sembilan berlanjut sampai sembilan puluh sembilan.",
       bersih(0),
       tambah(0, judul("Banyak kelipatan sampai 100")),
       tambah("tujuh", ...kartu("b7", 14, 40, 272, 34, W.krem, ["kelipatan 7: 14 bilangan"], 10)),
       tambah("sembilan", ...kartu("b9", 14, 84, 272, 34, W.hijauMuda, ["kelipatan 9: 11 bilangan"], 10)),
-      tambah("Kunci", ...kartu("bk", 14, 130, 272, 40, W.merahMuda, ["kunci buku untuk 9", "perlu sampai 99"], 10)),
+      tambah("Jadi", ...kartu("bk", 14, 130, 272, 40, W.merahMuda, ["kelipatan 9 berlanjut", "sampai 99"], 10)),
     ),
     k(
       "Intinya, kelipatan sebuah bilangan adalah hasil kali bilangan itu dengan satu, dua, tiga, dan seterusnya. Nol tidak dihitung.",

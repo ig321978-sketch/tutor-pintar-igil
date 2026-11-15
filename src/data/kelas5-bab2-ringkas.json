@@ -245,6 +245,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Kelipatan",
+          "ikon": "🔁",
+          "suara": "Ini peta tentang kelipatan sebuah bilangan. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-arti",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Arti kelipatan",
+            "petunjuk": "Memahami apa yang dimaksud dengan kelipatan sebuah bilangan."
+          },
+          {
+            "id": "hal-deret",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menulis deret kelipatan",
+            "petunjuk": "Menuliskan kelipatan sebuah bilangan secara berurutan."
+          },
+          {
+            "id": "hal-pola",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Pola warna di tabel seratus",
+            "petunjuk": "Melihat bentuk yang muncul ketika kelipatan diwarnai pada tabel."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-kali",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Kalikan dengan 1, 2, 3, ...",
+            "petunjuk": "Langkah untuk memahami arti kelipatan."
+          },
+          {
+            "id": "cara-tambah",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Tambah dengan langkah sama",
+            "petunjuk": "Langkah untuk menulis deret kelipatan."
+          },
+          {
+            "id": "cara-warna",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Warnai lalu amati polanya",
+            "petunjuk": "Langkah untuk menemukan pola pada tabel."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-sebut",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menyebut kelipatan",
+            "petunjuk": "Kemampuan menyebutkan kelipatan dari suatu bilangan."
+          },
+          {
+            "id": "hasil-nol",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu nol bukan kelipatan",
+            "petunjuk": "Kemampuan menyadari bahwa nol hanya titik mulai."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Kelipatan tiga bilangan",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel kelipatan. Pasang hasil kali tiap bilangan dengan satu, dengan dua, dan dengan tiga. Hasilnya adalah tiga kelipatan pertama bilangan itu.",
+        "pojok": "Bilangan",
+        "kolom": [
+          "Dikali 1",
+          "Dikali 2",
+          "Dikali 3"
+        ],
+        "baris": [
+          {
+            "label": "Empat",
+            "sel": [
+              "4",
+              "8",
+              "12"
+            ]
+          },
+          {
+            "label": "Lima",
+            "sel": [
+              "5",
+              "10",
+              "15"
+            ]
+          },
+          {
+            "label": "Tujuh",
+            "sel": [
+              "7",
+              "14",
+              "21"
+            ]
+          },
+          {
+            "label": "Sembilan",
+            "sel": [
+              "9",
+              "18",
+              "27"
+            ]
+          }
+        ]
       }
     },
     "B": {
@@ -479,6 +614,137 @@
                   "isi": "3 + 4 = 7"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Jadwal Latihan Renang",
+          "ikon": "🏊",
+          "suara": "Ini peta masalah jadwal latihan renang. Kita ingin tahu kapan dua teman berlatih bersama lagi. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-daftar",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Menulis daftar kelipatan",
+            "petunjuk": "Menderetkan kelipatan dari satu bilangan."
+          },
+          {
+            "id": "hal-sama",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Mencari kelipatan yang sama",
+            "petunjuk": "Mencari angka yang ada di kedua daftar."
+          },
+          {
+            "id": "hal-kpk",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menentukan KPK",
+            "petunjuk": "Memilih kelipatan sama yang terkecil."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-daftar",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tulis deret tiap bilangan",
+            "petunjuk": "Langkah untuk menulis daftar kelipatan."
+          },
+          {
+            "id": "cara-sama",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Tandai angka yang sama",
+            "petunjuk": "Langkah untuk mencari kelipatan yang sama."
+          },
+          {
+            "id": "cara-kpk",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Pilih yang paling kecil",
+            "petunjuk": "Langkah untuk menentukan KPK."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-kpk",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Paham arti KPK",
+            "petunjuk": "Kemampuan menjelaskan apa itu KPK."
+          },
+          {
+            "id": "hasil-jadwal",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu kapan bertemu lagi",
+            "petunjuk": "Kemampuan menghitung tanggal berlatih bersama lagi."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Jadwal latihan renang",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel jadwal latihan renang. Pasang selang hari, KPK, tanggal mulai, dan tanggal bertemu lagi untuk tiap pasangan teman.",
+        "pojok": "Teman",
+        "kolom": [
+          "Selang",
+          "KPK",
+          "Mulai",
+          "Bertemu"
+        ],
+        "baris": [
+          {
+            "label": "Nisa Yohana",
+            "sel": [
+              "3 dan 4 hari",
+              "12 hari",
+              "3 Agustus",
+              "15 Agustus"
+            ]
+          },
+          {
+            "label": "Asep Lukas",
+            "sel": [
+              "3 dan 5 hari",
+              "15 hari",
+              "1 Agustus",
+              "16 Agustus"
+            ]
+          },
+          {
+            "label": "Dinda Amelia",
+            "sel": [
+              "5 dan 2 hari",
+              "10 hari",
+              "14 Juli",
+              "24 Juli"
             ]
           }
         ]
@@ -719,6 +985,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Mencari Faktor",
+          "ikon": "🧩",
+          "suara": "Ini peta tentang mencari faktor dari sebuah bilangan. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-potong",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Memotong pita tanpa sisa",
+            "petunjuk": "Kegiatan membagi pita menjadi bagian sama panjang."
+          },
+          {
+            "id": "hal-tabel",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Tabel hasil potongan",
+            "petunjuk": "Mencatat panjang bagian dan banyak potongannya."
+          },
+          {
+            "id": "hal-pasang",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Faktor saling berpasangan",
+            "petunjuk": "Dua faktor yang dikalikan menghasilkan bilangan itu."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-potong",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Coba tiap panjang bagian",
+            "petunjuk": "Langkah untuk memotong pita dan memeriksa sisanya."
+          },
+          {
+            "id": "cara-tabel",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Isi tabel, tulis sekali",
+            "petunjuk": "Langkah untuk mencatat hasil potongan tanpa mengulang bilangan."
+          },
+          {
+            "id": "cara-pasang",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tulis pasangan kali",
+            "petunjuk": "Langkah untuk menemukan faktor yang berpasangan."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-arti",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu arti faktor",
+            "petunjuk": "Kemampuan menjelaskan apa itu faktor."
+          },
+          {
+            "id": "hasil-daftar",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa menulis semua faktor",
+            "petunjuk": "Kemampuan mendaftar faktor dari sebuah bilangan."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Faktor dan pasangannya",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel faktor. Pasang daftar faktor, banyaknya faktor, dan pasangan terakhir untuk tiap bilangan.",
+        "pojok": "Bilangan",
+        "kolom": [
+          "Faktor",
+          "Banyak",
+          "Terakhir"
+        ],
+        "baris": [
+          {
+            "label": "9",
+            "sel": [
+              "1, 3, 9",
+              "3 faktor",
+              "3 × 3"
+            ]
+          },
+          {
+            "label": "12",
+            "sel": [
+              "1, 2, 3, 4, 6, 12",
+              "6 faktor",
+              "3 × 4"
+            ]
+          },
+          {
+            "label": "16",
+            "sel": [
+              "1, 2, 4, 8, 16",
+              "5 faktor",
+              "4 × 4"
+            ]
+          },
+          {
+            "label": "24",
+            "sel": [
+              "1, 2, 3, 4, 6, 8, 12, 24",
+              "8 faktor",
+              "4 × 6"
+            ]
+          }
+        ]
       }
     },
     "D": {
@@ -952,6 +1353,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Membagi Mawar ke Vas",
+          "ikon": "🌹",
+          "suara": "Ini peta masalah membagi mawar ke dalam vas. Nisa ingin tahu paling banyak berapa vas yang bisa dipakai. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-sama",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Faktor persekutuan",
+            "petunjuk": "Faktor yang dimiliki dua bilangan sekaligus."
+          },
+          {
+            "id": "hal-fpb",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menentukan FPB",
+            "petunjuk": "Memilih faktor sama yang paling besar."
+          },
+          {
+            "id": "hal-bagi",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Membagi benda sama rata",
+            "petunjuk": "Memakai FPB untuk membagi benda ke beberapa tempat."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-sama",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tulis faktor, tandai sama",
+            "petunjuk": "Langkah untuk menemukan faktor persekutuan."
+          },
+          {
+            "id": "cara-fpb",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Pilih yang paling besar",
+            "petunjuk": "Langkah untuk menentukan FPB."
+          },
+          {
+            "id": "cara-bagi",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Banyak benda dibagi FPB",
+            "petunjuk": "Langkah untuk menemukan isi tiap tempat."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-vas",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu banyak vas terbanyak",
+            "petunjuk": "Kemampuan menentukan jumlah tempat paling banyak."
+          },
+          {
+            "id": "hasil-isi",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu isi tiap vas",
+            "petunjuk": "Kemampuan menghitung banyak bunga di setiap tempat."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "FPB dan hasil baginya",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel FPB. Pasang faktor yang sama, FPB, dan hasil bagi dengan FPB untuk tiap pasangan bilangan.",
+        "pojok": "Pasangan",
+        "kolom": [
+          "Faktor sama",
+          "FPB",
+          "Dibagi FPB"
+        ],
+        "baris": [
+          {
+            "label": "6 dan 12",
+            "sel": [
+              "1, 2, 3, 6",
+              "FPB 6",
+              "1 dan 2"
+            ]
+          },
+          {
+            "label": "15 dan 35",
+            "sel": [
+              "1, 5",
+              "FPB 5",
+              "3 dan 7"
+            ]
+          },
+          {
+            "label": "8 dan 20",
+            "sel": [
+              "1, 2, 4",
+              "FPB 4",
+              "2 dan 5"
+            ]
+          },
+          {
+            "label": "9 dan 15",
+            "sel": [
+              "1, 3",
+              "FPB 3",
+              "3 dan 5"
+            ]
+          }
+        ]
       }
     },
     "E": {
@@ -1170,6 +1706,141 @@
               }
             ],
             "kesimpulan": "KPK ambil terbanyak, FPB ambil paling sedikit."
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Faktor Prima",
+          "ikon": "🌳",
+          "suara": "Ini peta tentang KPK dan FPB dengan faktor prima. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-prima",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Mengenal bilangan prima",
+            "petunjuk": "Memahami bilangan yang hanya punya dua faktor."
+          },
+          {
+            "id": "hal-pohon",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Faktorisasi dengan pohon",
+            "petunjuk": "Memecah sebuah bilangan menjadi hasil kali bilangan prima."
+          },
+          {
+            "id": "hal-kpk",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menentukan KPK dan FPB",
+            "petunjuk": "Memakai faktor prima dua bilangan untuk mencari KPK dan FPB."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-saring",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Saring dengan Eratosthenes",
+            "petunjuk": "Langkah untuk mengenal bilangan prima."
+          },
+          {
+            "id": "cara-bagi",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Bagi dengan prima terkecil",
+            "petunjuk": "Langkah untuk membuat pohon faktor sampai ujungnya prima."
+          },
+          {
+            "id": "cara-cocok",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Cocokkan faktor yang sama",
+            "petunjuk": "Langkah untuk menentukan KPK dan FPB dari dua bilangan."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-sebut",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menyebut bilangan prima",
+            "petunjuk": "Kemampuan di akhir tentang bilangan prima, bukan topik yang dipelajari."
+          },
+          {
+            "id": "hasil-benar",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Jawaban KPK dan FPB tepat",
+            "petunjuk": "Kemampuan di akhir: hasil hitungan benar dan bisa diperiksa."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "KPK dan FPB dari faktor prima",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel KPK dan FPB. Untuk tiap pasangan bilangan, pasang faktor prima yang sama, FPB, dan KPK-nya.",
+        "pojok": "Pasangan",
+        "kolom": [
+          "Prima sama",
+          "FPB",
+          "KPK"
+        ],
+        "baris": [
+          {
+            "label": "12 dan 18",
+            "sel": [
+              "2 × 3",
+              "6",
+              "36"
+            ]
+          },
+          {
+            "label": "20 dan 30",
+            "sel": [
+              "2 × 5",
+              "10",
+              "60"
+            ]
+          },
+          {
+            "label": "15 dan 28",
+            "sel": [
+              "tidak ada",
+              "1",
+              "420"
+            ]
+          },
+          {
+            "label": "24 dan 72",
+            "sel": [
+              "2 × 2 × 2 × 3",
+              "24",
+              "72"
+            ]
           }
         ]
       }

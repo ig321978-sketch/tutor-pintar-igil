@@ -1,5 +1,6 @@
 import type { VideoStory } from "./logika-story";
-import { ADEGAN_PEMBUKA, ADEGAN_PERSIAPAN, ADEGAN_TEPUK } from "./k5b2b-materi-1";
+import { adeganSapaan } from "./sapaan";
+import { ADEGAN_TEPUK } from "./k5b2b-materi-1";
 import { ADEGAN_CARA_KPK, ADEGAN_DEFINISI, ADEGAN_RENANG, ADEGAN_TABEL } from "./k5b2b-materi-2";
 import { ADEGAN_BERLATIH, ADEGAN_DISKUSI, ADEGAN_MISKONSEPSI, ADEGAN_PENUTUP } from "./k5b2b-materi-3";
 import { ADEGAN_LUAR_DAFTAR, ADEGAN_LUAR_DAFTAR_TERAPAN, ADEGAN_LUAR_IRISAN, ADEGAN_LUAR_IRISAN_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k5b2b-luar-1";
@@ -8,12 +9,11 @@ import { ADEGAN_LUAR_PRIMA, ADEGAN_LUAR_PRIMA_TERAPAN, ADEGAN_LUAR_RINGKAS, ADEG
 /** Kelas 5 Bab 2 Sub-Bab B (kelipatan persekutuan dan KPK): video materi kurikulum dan video metode luar, dua video terpisah. */
 export const VIDEO_MATERI_K5B2B: VideoStory = {
   id: "k5b2b-materi",
-  judul: "Kelipatan Persekutuan dan KPK menurut Buku",
-  subjudul: "Materi kurikulum · Buku Siswa hlm. 38–42 dan Refleksi nomor 2, 3, 7",
+  judul: "Kelipatan Persekutuan dan KPK",
+  subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
-    ADEGAN_PEMBUKA,
-    ADEGAN_PERSIAPAN,
+    adeganSapaan({ jenis: "materi", topik: "kelipatan persekutuan dan KPK", daftar: ["Menulis daftar kelipatan", "Mencari kelipatan yang sama", "Menentukan KPK"] }),
     ADEGAN_TEPUK,
     ADEGAN_TABEL,
     ADEGAN_DEFINISI,
@@ -29,9 +29,10 @@ export const VIDEO_MATERI_K5B2B: VideoStory = {
 export const VIDEO_LUAR_K5B2B: VideoStory = {
   id: "k5b2b-luar",
   judul: "Kelipatan Persekutuan dan KPK: Metode dari Luar",
-  subjudul: "Empat metode luar · angka dari tepuk bilangan, jadwal renang, dan latihan buku",
+  subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "kelipatan persekutuan dan KPK" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_DAFTAR,
     ADEGAN_LUAR_DAFTAR_TERAPAN,

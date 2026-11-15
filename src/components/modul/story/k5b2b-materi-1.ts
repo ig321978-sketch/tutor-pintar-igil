@@ -128,8 +128,8 @@ export const ADEGAN_PERSIAPAN: AdeganStory = {
 /* ------------------------------ 3. Eksplorasi 2.2A: Tepuk Bilangan 2 dan 3 (Buku Siswa hlm. 38 dan 39; Panduan Guru hlm. 53 sampai 55) ------------------------------ */
 export const ADEGAN_TEPUK: AdeganStory = {
   id: "tepuk-2-3",
-  judul: "Eksplorasi 2.2A: Tepuk Bilangan 2 dan 3",
-  sumber: "Buku Siswa hlm. 38–39; Panduan Guru hlm. 53–54",
+  judul: "Ayo Bermain: Tepuk Bilangan 2 dan 3",
+  sumber: "Materi: tepuk bilangan kelipatan",
   latar: "#F0FDF4",
   kutipan: [
     "Eksplorasi 2.2A",
@@ -154,8 +154,8 @@ export const ADEGAN_TEPUK: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi dua titik dua A, Ayo Bermain. Kita bermain Tepuk Bilangan Kelipatan lagi dengan aturan tambahan. Buat kelompok besar, semua boleh duduk di kursi masing-masing.",
-      tambah(0, judul("Eksplorasi 2.2A: Ayo Bermain")),
+      "Ayo bermain! Kita bermain Tepuk Bilangan Kelipatan lagi, dengan aturan tambahan. Buat kelompok besar, dan semuanya boleh duduk di kursi masing-masing.",
+      tambah(0, judul("Ayo Bermain")),
       tambah("Bilangan", emo("e1", 75, 96, "👏", 40)),
       tambah("tambahan.", ...kartu("e2", 130, 62, 150, 44, W.krem, ["aturan ditambah"], 10.4)),
       tambah("kelompok", emo("e3", 150, 170, "👥", 34)),
@@ -187,7 +187,7 @@ export const ADEGAN_TEPUK: AdeganStory = {
       tambah("bersamaan.", teks("e7", 150, 196, "6, 12, 18, ...: tepuk dan Hore sekaligus!", 8.6, W.merah)),
     ),
     k(
-      "Buku bertanya, bagaimana perasaan kalian bermain Tepuk Bilangan Kelipatan dua dan tiga? Apakah ada teman yang terlewat sehingga tidak bertepuk tangan dan mengucapkan Hore?",
+      "Bagaimana perasaanmu bermain Tepuk Bilangan Kelipatan dua dan tiga? Apakah ada teman yang terlewat sehingga tidak bertepuk tangan dan mengucapkan Hore?",
       bersih(0),
       tambah(0, judul("Bagaimana perasaanmu?")),
       tambah("perasaan", emo("r1", 80, 90, "🤔", 40)),
@@ -195,7 +195,7 @@ export const ADEGAN_TEPUK: AdeganStory = {
       tambah("Hore", ...kartu("r3", 40, 124, 220, 40, W.krem, ["ada yang terlewat bertepuk", "atau lupa berkata Hore?"], 9)),
     ),
     k(
-      "Panduan guru memberi pertanyaan pemantik: kapan kalian harus bertepuk tangan dan berkata Hore pada saat yang bersamaan? Jawabannya mengarah ke satu hal penting: ada bilangan yang menjadi kelipatan bersama dari dua bilangan atau lebih.",
+      "Sekarang coba pikirkan: kapan kamu harus bertepuk tangan dan berkata Hore pada saat yang bersamaan? Jawabannya mengarah ke satu hal penting: ada bilangan yang menjadi kelipatan bersama dari dua bilangan atau lebih.",
       bersih(0),
       tambah(0, judul("Pertanyaan pemantik")),
       tambah("Kapan", ...kartu("pt1", 24, 40, 252, 44, W.langit, ["kapan bertepuk dan Hore", "pada saat bersamaan?"], 9.6)),

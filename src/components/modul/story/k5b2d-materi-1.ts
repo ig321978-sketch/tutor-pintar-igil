@@ -114,8 +114,8 @@ export const ADEGAN_PERSIAPAN: AdeganStory = {
 /* ------------------------------ 3. Ayo Menyimak: permainan congklak (Buku Siswa hlm. 46 dan 47) ------------------------------ */
 export const ADEGAN_MENYIMAK: AdeganStory = {
   id: "menyimak-congklak",
-  judul: "Ayo Menyimak: permainan congklak",
-  sumber: "Buku Siswa hlm. 46–47",
+  judul: "Menyimak: permainan congklak",
+  sumber: "Materi: permainan congklak",
   latar: "#FFF7ED",
   kutipan: [
     "Ayo Menyimak",
@@ -133,8 +133,8 @@ export const ADEGAN_MENYIMAK: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Kita mulai dengan Ayo Menyimak, permainan congklak. Congklak adalah permainan tradisional Indonesia yang banyak dimainkan di berbagai daerah di Indonesia.",
-      tambah(0, judul("Ayo Menyimak: congklak")),
+      "Kita mulai dengan menyimak permainan congklak. Congklak adalah permainan tradisional Indonesia yang banyak dimainkan di berbagai daerah di Indonesia.",
+      tambah(0, judul("Menyimak: congklak")),
       tambah("permainan", ...kartu("cg", 40, 44, 220, 40, W.krem, ["permainan tradisional", "Indonesia"], 9.6)),
       tambah("daerah", emo("dm", 150, 134, "🎲", 34)),
     ),
@@ -178,7 +178,7 @@ export const ADEGAN_MENYIMAK: AdeganStory = {
 export const ADEGAN_ATURAN: AdeganStory = {
   id: "aturan-congklak",
   judul: "Aturan permainan: bermain dengan faktor",
-  sumber: "Buku Siswa hlm. 47–48",
+  sumber: "Materi: aturan bermain dengan faktor",
   latar: "#F0FDF4",
   kutipan: [
     "Aturan Permainan",
@@ -201,7 +201,7 @@ export const ADEGAN_ATURAN: AdeganStory = {
       tambah(0, judul("Aturan 1 dan 2")),
       tambah("Satu,", ...papan("pp", 28, 52)),
       tambah("nomor", teks("a1", 150, 150, "dekatkan kedua papan", 10.4, W.hitam)),
-      tambah("delapan.", teks("a2", 150, 172, "nomor 1 sampai 28", 11, W.merah)),
+      tambah("delapan.", teks("a2", 150, 172, "lubang 1 sampai 28", 11, W.merah)),
     ),
     k(
       "Tiga, aturannya kita ubah. Kali ini kita bermain dengan faktor bilangan. Sebagai contoh, pemain satu memakai faktor dua belas, dan pemain dua memakai faktor delapan belas.",

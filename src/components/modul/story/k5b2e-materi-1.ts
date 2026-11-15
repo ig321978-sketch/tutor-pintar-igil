@@ -77,7 +77,7 @@ export const ADEGAN_PEMBUKA_E: AdeganStory = {
 export const ADEGAN_PRIMA: AdeganStory = {
   id: "prima",
   judul: "Bilangan prima dan tabel faktor 1 sampai 10",
-  sumber: "Buku Siswa hlm. 53; Panduan Guru hlm. 78",
+  sumber: "Materi: bilangan prima",
   latar: "#FFF7ED",
   kutipan: [
     "Tabel 2.4 Faktor Bilangan 1 Sampai 10",
@@ -89,7 +89,7 @@ export const ADEGAN_PRIMA: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Pemanasan: amati tabel faktor bilangan satu sampai sepuluh. Bilangan dua, tiga, lima, dan tujuh hanya punya dua faktor, yaitu satu dan bilangan itu sendiri.",
+      "Pemanasan: perhatikan tabel faktor bilangan satu sampai sepuluh. Bilangan dua, tiga, lima, dan tujuh hanya punya dua faktor, yaitu satu dan bilangan itu sendiri.",
       tambah(0, judul("Faktor bilangan 1 sampai 10")),
       tambah(1, ...tabel("ft", 60, 26, [56, 124], [["Bilangan", "Faktor"], ...Array.from({ length: 10 }, (_, i) => [String(i + 1), faktorDari(i + 1).join(", ")])], 14.4, 8)),
       ubah(9, ...[2].flatMap((n) => [`ft-s${n}0`, `ft-s${n}1`].map((id) => ({ id, warna: W.emas })))),
@@ -105,10 +105,10 @@ export const ADEGAN_PRIMA: AdeganStory = {
       tambah("Bilangan@2", ...kartu("sa", 20, 112, 260, 50, W.merahMuda, ["1 bukan bilangan prima", "faktornya hanya 1"], 9.4)),
     ),
     k(
-      "Contoh bilangan prima terkecil menurut buku: dua, tiga, lima, tujuh, sebelas, tiga belas, tujuh belas, dan seterusnya.",
+      "Contoh bilangan prima terkecil: dua, tiga, lima, tujuh, sebelas, tiga belas, tujuh belas, dan seterusnya.",
       bersih(0),
       tambah(0, judul("Bilangan prima terkecil")),
-      ...[2, 3, 5, 7, 11, 13, 17].map((n, i) => tambah(6 + (i < 5 ? i : i === 5 ? 5 : 7), bulat(`pc${n}`, 40 + i * 34, 98, 12, W.hijauMuda), teks(`pt${n}`, 40 + i * 34, 101.5, String(n), 9.4, W.biru))),
+      ...[2, 3, 5, 7, 11, 13, 17].map((n, i) => tambah(4 + (i < 5 ? i : i === 5 ? 5 : 7), bulat(`pc${n}`, 40 + i * 34, 98, 12, W.hijauMuda), teks(`pt${n}`, 40 + i * 34, 101.5, String(n), 9.4, W.biru))),
       tambah("seterusnya", teks("pdd", 280, 104, "…", 16, W.biru)),
     ),
     k(
@@ -131,7 +131,7 @@ const panel = (id: string, baris: string[], warna: string = W.biru) => baris.map
 export const ADEGAN_SARINGAN: AdeganStory = {
   id: "saringan",
   judul: "Saringan Eratosthenes: bilangan prima di bawah 100",
-  sumber: "Buku Siswa hlm. 54; Panduan Guru hlm. 78",
+  sumber: "Materi: saringan Eratosthenes",
   latar: "#F0FDF4",
   kutipan: [
     "Hapus 1.",
@@ -204,7 +204,7 @@ export const ADEGAN_SARINGAN: AdeganStory = {
 export const ADEGAN_FAKTORISASI: AdeganStory = {
   id: "faktorisasi",
   judul: "Faktorisasi prima dan cara membuat pohon faktor",
-  sumber: "Buku Siswa hlm. 55; Panduan Guru hlm. 79",
+  sumber: "Materi: faktorisasi prima dan pohon faktor",
   latar: "#FFFBEB",
   kutipan: [
     "Suatu bilangan ternyata dapat dinyatakan sebagai hasil kali dari bilangan prima.",
@@ -241,7 +241,7 @@ export const ADEGAN_FAKTORISASI: AdeganStory = {
       tambah("pohon", emo("bp", 150, 150, "🌳", 46), teks("bt", 150, 186, "pohon faktor", 10, W.hijau)),
     ),
     k(
-      "Cara membuat pohon faktor menurut Panduan Guru: bagi bilangan dengan bilangan prima terkecil yang dapat membaginya, lanjutkan dengan bilangan prima lainnya, dan berhenti jika hasilnya sudah berupa bilangan prima.",
+      "Cara membuat pohon faktor: bagi bilangan dengan bilangan prima terkecil yang dapat membaginya, lanjutkan dengan bilangan prima lainnya, dan berhenti jika hasilnya sudah berupa bilangan prima.",
       bersih(0),
       tambah(0, judul("Cara membuat pohon faktor")),
       tambah("bagi", ...kartu("w1", 20, 34, 260, 34, W.langit, ["1. bagi dengan prima terkecil yang bisa"], 9.4)),

@@ -11,7 +11,7 @@ const KELIPATAN_6_SD_50 = dari1Sampai(50).filter((n) => n % 6 === 0);
 export const ADEGAN_TABEL: AdeganStory = {
   id: "tabel-50",
   judul: "Tabel bilangan: kelipatan 2 dan 3",
-  sumber: "Buku Siswa hlm. 39; Panduan Guru hlm. 54–55",
+  sumber: "Materi: tabel kelipatan 2 dan 3",
   latar: "#FFF7ED",
   kutipan: [
     "Salin tabel berikut di buku tugasmu, kemudian temukan lagi",
@@ -25,7 +25,7 @@ export const ADEGAN_TABEL: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Setelah bermain, salin tabel bilangan satu sampai lima puluh di buku tugasmu. Lalu temukan lagi bilangan kelipatan dua dan tiga pada tabel itu.",
+      "Setelah bermain, salin tabel bilangan satu sampai lima puluh di kertasmu. Lalu temukan lagi bilangan kelipatan dua dan tiga pada tabel itu.",
       tambah(0, judul("Tabel bilangan 1 sampai 50")),
       tambah("tabel", ...tabelAngka("tb", 20, 32, 26, 24, 10, 1, 50)),
       tambah("kelipatan", teks("pn", 150, 176, "temukan kelipatan 2 dan 3", 10, W.merah)),
@@ -52,7 +52,7 @@ export const ADEGAN_TABEL: AdeganStory = {
       tambah("Ada@2", teks("c6", 150, 176, "6, 12, 18, 24, 30, 36, 42, 48", 10.4, W.merah), teks("c7", 150, 192, "ada 8 bilangan", 9.4, W.hitam)),
     ),
     k(
-      "Menurut panduan guru, ada tiga cara anak menemukannya. Pertama, langsung mewarnai berdasarkan hafalan saat bermain. Kedua, menandai kelipatan dua dahulu, lalu memilih yang kelipatan tiga. Ketiga, menandai dua dan tiga sekaligus, lalu mencari yang ditandai dua kali.",
+      "Ada tiga cara untuk menemukannya. Pertama, langsung mewarnai berdasarkan hafalan saat bermain. Kedua, menandai kelipatan dua dahulu, lalu memilih yang kelipatan tiga. Ketiga, menandai dua dan tiga sekaligus, lalu mencari yang ditandai dua kali.",
       bersih(0),
       tambah(0, judul("Tiga cara menemukannya")),
       tambah("Pertama,", ...kartu("c1", 20, 38, 260, 36, W.hijauMuda, ["1 langsung mewarnai dari hafalan", "saat bermain tepuk bilangan"], 8.8)),
@@ -60,10 +60,10 @@ export const ADEGAN_TABEL: AdeganStory = {
       tambah("Ketiga,", ...kartu("c3", 20, 130, 260, 36, W.krem, ["3 tandai 2 dan 3 sekaligus,", "cari yang ditandai dua kali"], 8.8)),
     ),
     k(
-      "Semua pendapat peserta didik diterima dan diapresiasi. Kalau ada yang masih keliru, guru mengarahkan mereka agar tidak terjadi miskonsepsi.",
+      "Semua pendapat kalian kami hargai. Kalau ada yang masih keliru, guru akan membantu meluruskan supaya tidak salah konsep.",
       bersih(0),
       tambah(0, judul("Terima semua pendapat")),
-      tambah("diapresiasi.", emo("ap", 150, 92, "🌟", 44)),
+      tambah("hargai.", emo("ap", 150, 92, "🌟", 44)),
       tambah("keliru,", ...kartu("kl", 40, 126, 220, 42, W.pink, ["yang keliru diarahkan", "agar tidak salah konsep"], 9.4)),
     ),
   ],
@@ -73,7 +73,7 @@ export const ADEGAN_TABEL: AdeganStory = {
 export const ADEGAN_DEFINISI: AdeganStory = {
   id: "definisi-kpk",
   judul: "Kelipatan persekutuan dan KPK",
-  sumber: "Buku Siswa hlm. 39–40; Panduan Guru hlm. 55",
+  sumber: "Materi: kelipatan persekutuan dan KPK",
   latar: "#EFF6FF",
   kutipan: [
     "Pada tabel sebelumnya, kalian menemukan bilangan-bilangan",
@@ -99,11 +99,11 @@ export const ADEGAN_DEFINISI: AdeganStory = {
       tambah("disebut", ...kartu("kp", 40, 138, 220, 44, W.krem, ["kelipatan yang sama", "disebut kelipatan persekutuan"], 9.6)),
     ),
     k(
-      "Jadi enam, dua belas, dan delapan belas adalah kelipatan persekutuan dari dua dan tiga. Panduan guru menuliskannya di papan tulis, dengan bilangan yang sama ditandai.",
+      "Jadi enam, dua belas, dan delapan belas adalah kelipatan persekutuan dari dua dan tiga. Perhatikan papan tulis, bilangan yang sama kita beri tanda.",
       bersih(0),
       tambah(0, judul("Papan tulis: yang sama ditandai")),
       tambah("Jadi", teks("pa", 150, 54, "kelipatan 2: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, ...", 8, W.hijau), teks("pb", 150, 78, "kelipatan 3: 3, 6, 9, 12, 15, 18, 21, ...", 8, W.coklat)),
-      tambah("ditandai.", teks("pc", 150, 118, "yang sama: 6, 12, 18, ...", 12, W.merah), ...kartu("pd", 40, 134, 220, 40, W.hijauMuda, ["6, 12, 18 = kelipatan persekutuan", "dari 2 dan 3"], 9.4)),
+      tambah("tanda.", teks("pc", 150, 118, "yang sama: 6, 12, 18, ...", 12, W.merah), ...kartu("pd", 40, 134, 220, 40, W.hijauMuda, ["6, 12, 18 = kelipatan persekutuan", "dari 2 dan 3"], 9.4)),
     ),
     k(
       "Dari semua kelipatan persekutuan, kelipatan yang paling kecil disebut kelipatan persekutuan terkecil, disingkat KPK.",
@@ -130,7 +130,7 @@ const K5 = kelipatan(5, 9);
 export const ADEGAN_CARA_KPK: AdeganStory = {
   id: "cara-kpk-4-5",
   judul: "Cara menentukan KPK dari 4 dan 5",
-  sumber: "Buku Siswa hlm. 40",
+  sumber: "Materi: cara mencari KPK 4 dan 5",
   latar: "#FEFCE8",
   kutipan: [
     "Bagaimana cara menentukan KPK dari dua bilangan atau lebih?",
@@ -180,8 +180,8 @@ export const ADEGAN_CARA_KPK: AdeganStory = {
 /* ------------------------------ 7. Eksplorasi 2.2B: Latihan Renang Nisa dan Yohana (Buku Siswa hlm. 41; Panduan Guru hlm. 56) ------------------------------ */
 export const ADEGAN_RENANG: AdeganStory = {
   id: "renang-nisa-yohana",
-  judul: "Eksplorasi 2.2B: Latihan Renang",
-  sumber: "Buku Siswa hlm. 41; Panduan Guru hlm. 56",
+  judul: "Latihan Renang Nisa dan Yohana",
+  sumber: "Materi: latihan renang Nisa dan Yohana",
   latar: "#F0F9FF",
   kutipan: [
     "Eksplorasi 2.2B",
@@ -202,8 +202,8 @@ export const ADEGAN_RENANG: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi dua titik dua B, Latihan Renang. Nisa dan Yohana latihan renang di tempat yang sama. Nisa berlatih setiap tiga hari sekali, dan Yohana setiap empat hari sekali.",
-      tambah(0, judul("Eksplorasi 2.2B: Latihan Renang")),
+      "Latihan Renang. Nisa dan Yohana latihan renang di tempat yang sama. Nisa berlatih setiap tiga hari sekali, dan Yohana setiap empat hari sekali.",
+      tambah(0, judul("Latihan Renang")),
       tambah("Nisa", emo("n1", 70, 78, "🏊", 36), ...kartu("n2", 20, 96, 100, 40, W.hijauMuda, ["Nisa", "tiap 3 hari"], 9.6)),
       tambah("Yohana", emo("y1", 230, 78, "🏊", 36), ...kartu("y2", 180, 96, 100, 40, W.langit, ["Yohana", "tiap 4 hari"], 9.6)),
     ),
@@ -236,12 +236,12 @@ export const ADEGAN_RENANG: AdeganStory = {
       tambah("lima", ...kartu("h3", 60, 112, 180, 44, W.hijauMuda, ["15 Agustus", "berlatih bersama lagi"], 10.4)),
     ),
     k(
-      "Panduan guru menyarankan guru lebih dulu menyampaikan manfaat belajar KPK, lalu membagi kelompok dan menyiapkan kalender Agustus dan September, minimal satu set tiap kelompok.",
+      "Sebelum lanjut, ingat manfaat belajar KPK: menyelesaikan masalah jadwal. Lalu kerjakan bersama kelompokmu, dengan kalender Agustus dan September di tangan.",
       bersih(0),
-      tambah(0, judul("Persiapan guru")),
-      tambah("manfaat", ...kartu("g1", 24, 40, 252, 34, W.krem, ["sampaikan manfaat belajar KPK"], 9.4)),
-      tambah("kelompok", ...kartu("g2", 24, 84, 252, 34, W.langit, ["bagi kelompok"], 9.4)),
-      tambah("kalender", ...kartu("g3", 24, 128, 252, 40, W.hijauMuda, ["kalender Agustus dan September", "minimal satu set tiap kelompok"], 9.4)),
+      tambah(0, judul("Sebelum lanjut")),
+      tambah("manfaat", ...kartu("g1", 24, 40, 252, 34, W.krem, ["ingat manfaat belajar KPK"], 9.4)),
+      tambah("kelompok", ...kartu("g2", 24, 84, 252, 34, W.langit, ["kerja bersama kelompok"], 9.4)),
+      tambah("kalender", ...kartu("g3", 24, 128, 252, 40, W.hijauMuda, ["kalender Agustus dan September", "satu set tiap kelompok"], 9.4)),
     ),
   ],
 };

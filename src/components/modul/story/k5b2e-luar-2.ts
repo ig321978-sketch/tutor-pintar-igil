@@ -48,7 +48,7 @@ export const ADEGAN_LUAR_LGB: AdeganStory = {
 export const ADEGAN_LUAR_LGB_TERAPAN: AdeganStory = {
   id: "luar-lgb-terapan",
   judul: "LCM-GCF Bridge pada 72 dan 150, 45 dan 135, 96 dan 120, 36 dan 108",
-  sumber: "Metode luar: LCM-GCF Bridge; Buku Siswa hlm. 57, 61",
+  sumber: "Metode luar: LCM-GCF Bridge",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -78,7 +78,7 @@ export const ADEGAN_LUAR_LGB_TERAPAN: AdeganStory = {
       tambah("KPK", teks("g3", 150, 176, "KPK = 480", 13, W.hijau)),
     ),
     k(
-      "Tiga puluh enam dan seratus delapan punya FPB tiga puluh enam. Hasil kalinya tiga ribu delapan ratus delapan puluh delapan, dibagi tiga puluh enam, KPK seratus delapan. Cocok dengan kunci Panduan Guru.",
+      "Tiga puluh enam dan seratus delapan punya FPB tiga puluh enam. Hasil kalinya tiga ribu delapan ratus delapan puluh delapan, dibagi tiga puluh enam, KPK seratus delapan. Cocok dengan hitungan tadi.",
       bersih(0),
       tambah(0, judul("Jembatan: 36 dan 108")),
       tambah("FPB", teks("h0", 150, 50, "FPB = 36", 13, W.merah)),
@@ -144,7 +144,7 @@ const KANAN2: [number, number][] = [[192, 104], [210, 104]];
 export const ADEGAN_LUAR_PV_TERAPAN: AdeganStory = {
   id: "luar-pv-terapan",
   judul: "Prime Venn Diagram pada 72 dan 150, 36 dan 108, 50 dan 105",
-  sumber: "Metode luar: Prime Venn Diagram; Buku Siswa hlm. 56–57; Panduan Guru hlm. 82",
+  sumber: "Metode luar: Prime Venn Diagram",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -164,7 +164,7 @@ export const ADEGAN_LUAR_PV_TERAPAN: AdeganStory = {
       tambah("KPK:", teks("v1-kpk", 150, 190, "KPK = 2 × 3 × 2 × 2 × 3 × 5 × 5 = 1.800", 8.8, W.hijau)),
     ),
     k(
-      "Soal tambahan Panduan Guru: tiga puluh enam dan seratus delapan. Irisan berisi dua, dua, tiga, tiga, dan sisi kanan hanya tersisa satu tiga. FPB tiga puluh enam, KPK seratus delapan.",
+      "Tantangan: tiga puluh enam dan seratus delapan. Irisan berisi dua, dua, tiga, tiga, dan sisi kanan hanya tersisa satu tiga. FPB tiga puluh enam, KPK seratus delapan.",
       bersih(0),
       tambah(0, judul("Venn: 36 dan 108"), ...venn("v2", VENN.xa, VENN.xb, VENN.y, VENN.r), teks("v2-A", 96, 44, "36", 11, W.biru), teks("v2-B", 204, 44, "108", 11, W.coklat), teks("v2-kosong", 90, 104, "kosong", 8.6, W.abu)),
       tambah("Irisan", ...isi("v2", "t", VENN_DATA.v2.t, TENGAH4, W.merah)),
@@ -201,9 +201,9 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("Prime@2", ...kartu("r4", 14, 158, 272, 34, W.pink, ["Prime Venn Diagram: keduanya sekaligus"], 9.2)),
     ),
     k(
-      "Semuanya memakai gagasan buku yang sama: faktorisasi prima, pasangan prima ditulis sekali, dan prima yang tidak berpasangan tetap ikut di KPK.",
+      "Semuanya memakai gagasan yang sama: faktorisasi prima, pasangan prima ditulis sekali, dan prima yang tidak berpasangan tetap ikut di KPK.",
       bersih(0),
-      tambah(0, judul("Gagasan yang sama dengan buku")),
+      tambah(0, judul("Gagasan yang sama")),
       tambah("faktorisasi", ...kartu("s1", 20, 36, 260, 34, W.langit, ["1. faktorisasi prima"], 10)),
       tambah("pasangan", ...kartu("s2", 20, 82, 260, 34, W.hijauMuda, ["2. pasangan prima ditulis sekali"], 10)),
       tambah("tidak", ...kartu("s3", 20, 128, 260, 34, W.krem, ["3. prima tanpa pasangan ikut di KPK"], 10)),

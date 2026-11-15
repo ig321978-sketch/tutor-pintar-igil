@@ -5,8 +5,8 @@ import { bersih, k, tambah } from "./k5b2e-bantu";
 /* ------------------------------ 9. Miskonsepsi, diferensiasi, dan Refleksi 8 sampai 9 (Panduan Guru hlm. 83 sampai 84) ------------------------------ */
 export const ADEGAN_MISKONSEPSI: AdeganStory = {
   id: "miskonsepsi",
-  judul: "Tiga miskonsepsi, diferensiasi, dan Refleksi 8 sampai 9",
-  sumber: "Panduan Guru hlm. 83–84; Buku Siswa hlm. 60",
+  judul: "Hati-hati: tiga kesalahan yang sering terjadi",
+  sumber: "Materi: kesalahan yang sering terjadi",
   latar: "#FEF2F2",
   kutipan: [
     "Kesalahan yang mungkin dilakukan peserta didik saat menentukan KPK dan FPB menggunakan faktorisasi prima adalah sebagai berikut.",
@@ -25,34 +25,34 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Miskonsepsi pertama: KPK dicari hanya dari faktor prima yang sama. Untuk tiga puluh enam dan seratus delapan hasilnya tiga puluh enam, padahal KPK-nya seratus delapan.",
-      tambah(0, judul("Miskonsepsi 1: KPK")),
+      "Hati-hati, kesalahan pertama: KPK dicari hanya dari faktor prima yang sama. Untuk tiga puluh enam dan seratus delapan hasilnya tiga puluh enam, padahal KPK-nya seratus delapan.",
+      tambah(0, judul("Hati-hati 1: KPK")),
       tambah("tiga@1", teks("m36", 150, 42, "36 = 2 × 2 × 3 × 3", 12, W.biru), teks("m108", 150, 62, "108 = 2 × 2 × 3 × 3 × 3", 12, W.biru)),
       tambah("hasilnya", ...kartu("w1", 20, 82, 260, 34, W.merahMuda, ["salah: KPK = 2 × 2 × 3 × 3 = 36"], 10)),
       tambah("padahal", ...kartu("b1", 20, 128, 260, 34, W.hijauMuda, ["benar: KPK = 2 × 2 × 3 × 3 × 3 = 108"], 10)),
     ),
     k(
-      "Miskonsepsi kedua: mengalikan semua faktor prima kedua bilangan, hasilnya tiga ribu delapan ratus delapan puluh delapan. Seharusnya pasangan ditulis sekali, jadi seratus delapan. Catatan: perkalian di buku hanya memuat tiga faktor tiga, padahal ada lima.",
+      "Hati-hati, kesalahan kedua: mengalikan semua faktor prima kedua bilangan, hasilnya tiga ribu delapan ratus delapan puluh delapan. Seharusnya pasangan ditulis sekali, jadi seratus delapan. Hitung semua faktor tiga: ada lima, dua dari tiga puluh enam dan tiga dari seratus delapan.",
       bersih(0),
-      tambah(0, judul("Miskonsepsi 2: KPK")),
+      tambah(0, judul("Hati-hati 2: KPK")),
       tambah("hasilnya", ...kartu("w2", 14, 34, 272, 40, W.merahMuda, ["salah: semua faktor dikalikan", "2 × 2 × 2 × 2 × 3 × 3 × 3 × 3 × 3 = 3.888"], 9)),
       tambah("Seharusnya", ...kartu("b2", 14, 86, 272, 34, W.hijauMuda, ["benar: pasangan sekali, KPK = 108"], 9.6)),
-      tambah("Catatan", ...kartu("c2", 14, 132, 272, 44, W.krem, ["kunci buku hanya menulis tiga faktor 3", "hitungan benar: lima faktor 3"], 9)),
+      tambah("Hitung", ...kartu("c2", 14, 132, 272, 44, W.krem, ["ada lima faktor 3 seluruhnya:", "dua dari 36, tiga dari 108"], 9)),
     ),
     k(
-      "Miskonsepsi ketiga: pada FPB, semua bilangan prima yang berpasangan ditulis, hasilnya seribu dua ratus sembilan puluh enam. Seharusnya cukup sekali, jadi FPB tiga puluh enam.",
+      "Hati-hati, kesalahan ketiga: pada FPB, semua bilangan prima yang berpasangan ditulis, hasilnya seribu dua ratus sembilan puluh enam. Seharusnya cukup sekali, jadi FPB tiga puluh enam.",
       bersih(0),
-      tambah(0, judul("Miskonsepsi 3: FPB")),
+      tambah(0, judul("Hati-hati 3: FPB")),
       tambah("semua", ...kartu("w3", 14, 40, 272, 40, W.merahMuda, ["salah: pasangan ditulis semuanya", "2 × 2 × 2 × 2 × 3 × 3 × 3 × 3 = 1.296"], 9.4)),
       tambah("Seharusnya", ...kartu("b3", 14, 96, 272, 40, W.hijauMuda, ["benar: pasangan cukup sekali", "FPB = 2 × 2 × 3 × 3 = 36"], 9.4)),
     ),
     k(
-      "Diferensiasi: siswa yang cepat mengerjakan latihan tanpa bantuan, sementara guru mendampingi yang kesulitan. Refleksi nomor delapan dan sembilan: aku dapat menyebutkan bilangan prima, dan membuat faktorisasi prima.",
+      "Tantangan: kamu yang sudah cepat, coba kerjakan latihan tanpa bantuan, dan minta didampingi kalau masih kesulitan. Renungan: bisakah kamu menyebutkan bilangan prima, dan membuat faktorisasi prima?",
       bersih(0),
-      tambah(0, judul("Diferensiasi dan Refleksi")),
-      tambah("Diferensiasi", emo("d1", 40, 70, "🚀", 28), ...kartu("d2", 70, 40, 216, 44, W.langit, ["siswa cepat: latihan tanpa bantuan", "guru mendampingi yang kesulitan"], 8.8)),
-      tambah("Refleksi", ...kartu("r8", 14, 100, 272, 32, W.hijauMuda, ["8. Aku dapat menyebutkan bilangan prima"], 9)),
-      tambah("membuat", ...kartu("r9", 14, 142, 272, 32, W.krem, ["9. Aku dapat membuat faktorisasi prima"], 9)),
+      tambah(0, judul("Tantangan dan renungan")),
+      tambah("Tantangan", emo("d1", 40, 70, "🚀", 28), ...kartu("d2", 70, 40, 216, 44, W.langit, ["coba kerjakan tanpa bantuan", "masih sulit? minta didampingi"], 8.8)),
+      tambah("Renungan", ...kartu("r8", 14, 100, 272, 32, W.hijauMuda, ["Bisakah aku menyebut bilangan prima?"], 9)),
+      tambah("membuat", ...kartu("r9", 14, 142, 272, 32, W.krem, ["Bisakah aku membuat faktorisasi prima?"], 9)),
     ),
   ],
 };
@@ -67,8 +67,8 @@ export const UK1 = [
 
 export const ADEGAN_UK_1: AdeganStory = {
   id: "uk-1",
-  judul: "Uji Kompetensi 1: KPK dan FPB empat kelompok bilangan",
-  sumber: "Buku Siswa hlm. 61; Panduan Guru hlm. 87–88",
+  judul: "Uji 1: KPK dan FPB empat kelompok bilangan",
+  sumber: "Materi: Uji 1 KPK dan FPB",
   latar: "#F0F9FF",
   kutipan: [
     "Tentukan KPK dan FPB dari pasangan bilangan berikut.",
@@ -87,8 +87,8 @@ export const ADEGAN_UK_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Uji Kompetensi satu a: empat puluh lima dan seratus tiga puluh lima. Empat puluh lima adalah tiga, tiga, lima. Seratus tiga puluh lima adalah tiga, tiga, tiga, lima. FPB-nya empat puluh lima, KPK-nya seratus tiga puluh lima.",
-      tambah(0, judul("Uji Kompetensi 1a")),
+      "Uji satu a: empat puluh lima dan seratus tiga puluh lima. Empat puluh lima adalah tiga, tiga, lima. Seratus tiga puluh lima adalah tiga, tiga, tiga, lima. FPB-nya empat puluh lima, KPK-nya seratus tiga puluh lima.",
+      tambah(0, judul("Uji 1a")),
       tambah("Empat@2", teks("a1", 150, 52, "45 = 3 × 3 × 5", 13, W.biru)),
       tambah("Seratus@2", teks("a2", 150, 78, "135 = 3 × 3 × 3 × 5", 13, W.biru)),
       tambah("FPB-nya", teks("a3", 150, 118, "FPB = 3 × 3 × 5 = 45", 13, W.merah)),
@@ -97,7 +97,7 @@ export const ADEGAN_UK_1: AdeganStory = {
     k(
       "Satu b: sembilan puluh enam dan seratus dua puluh. Faktor yang berpasangan adalah dua, dua, dua, dan tiga, jadi FPB-nya dua puluh empat. KPK-nya empat ratus delapan puluh.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 1b")),
+      tambah(0, judul("Uji 1b")),
       tambah("Satu", teks("b1", 150, 52, "96 = 2 × 2 × 2 × 2 × 2 × 3", 12, W.biru), teks("b2", 150, 74, "120 = 2 × 2 × 2 × 3 × 5", 12, W.biru)),
       tambah("FPB-nya", teks("b3", 150, 118, "FPB = 2 × 2 × 2 × 3 = 24", 13, W.merah)),
       tambah("KPK-nya", teks("b4", 150, 148, "KPK = 2 × 2 × 2 × 2 × 2 × 3 × 5 = 480", 11, W.hijau)),
@@ -105,19 +105,19 @@ export const ADEGAN_UK_1: AdeganStory = {
     k(
       "Satu c: dua puluh empat, tiga puluh enam, dan enam puluh. Pembagi yang membagi habis ketiganya adalah dua, dua, dan tiga, jadi FPB-nya dua belas. KPK-nya tiga ratus enam puluh.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 1c")),
+      tambah(0, judul("Uji 1c")),
       tambah("Satu", teks("c1", 150, 46, "24 = 2 × 2 × 2 × 3", 12, W.biru), teks("c2", 150, 66, "36 = 2 × 2 × 3 × 3", 12, W.biru), teks("c3", 150, 86, "60 = 2 × 2 × 3 × 5", 12, W.biru)),
       tambah("FPB-nya", teks("c4", 150, 124, "FPB = 2 × 2 × 3 = 12", 13, W.merah)),
       tambah("KPK-nya", teks("c5", 150, 152, "KPK = 2 × 2 × 3 × 2 × 3 × 5 = 360", 11.5, W.hijau)),
     ),
     k(
-      "Satu d: delapan puluh, seratus dua puluh, dan seratus enam puluh. FPB-nya empat puluh, KPK-nya empat ratus delapan puluh. Kunci Panduan Guru untuk keempat bagian benar semuanya.",
+      "Satu d: delapan puluh, seratus dua puluh, dan seratus enam puluh. FPB-nya empat puluh, KPK-nya empat ratus delapan puluh. Keempat bagian sudah kita periksa, dan semuanya benar.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 1d")),
+      tambah(0, judul("Uji 1d")),
       tambah("Satu", teks("d1", 150, 46, "80 = 2 × 2 × 2 × 2 × 5", 12, W.biru), teks("d2", 150, 66, "120 = 2 × 2 × 2 × 3 × 5", 12, W.biru), teks("d3", 150, 86, "160 = 2 × 2 × 2 × 2 × 2 × 5", 12, W.biru)),
       tambah("FPB-nya", teks("d4", 150, 124, "FPB = 2 × 2 × 2 × 5 = 40", 13, W.merah)),
       tambah("KPK-nya", teks("d5", 150, 152, "KPK = 2 × 2 × 2 × 2 × 2 × 3 × 5 = 480", 11, W.hijau)),
-      tambah("Kunci", emo("d6", 150, 186, "✅", 20)),
+      tambah("Keempat", emo("d6", 150, 186, "✅", 20)),
     ),
   ],
 };
@@ -125,8 +125,8 @@ export const ADEGAN_UK_1: AdeganStory = {
 /* ------------------------------ 11. Uji Kompetensi 2 sampai 4 (Buku Siswa hlm. 61 sampai 62, Panduan Guru hlm. 88 sampai 89) ------------------------------ */
 export const ADEGAN_UK_2: AdeganStory = {
   id: "uk-2",
-  judul: "Uji Kompetensi 2 sampai 4: kelompok belajar, lampu, kalender",
-  sumber: "Buku Siswa hlm. 61–62; Panduan Guru hlm. 88–89",
+  judul: "Uji 2 sampai 4: kelompok belajar, lampu, kalender",
+  sumber: "Materi: Uji 2 sampai 4",
   latar: "#FFFBEB",
   kutipan: [
     "Kelas V SD Mutiara Indah terdiri atas 12 siswa perempuan dan 18 siswa laki-laki.",
@@ -147,34 +147,34 @@ export const ADEGAN_UK_2: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal dua, kelompok belajar: dua belas siswa perempuan dan delapan belas siswa laki-laki. FPB-nya enam, jadi paling banyak enam kelompok, masing-masing tiga laki-laki dan dua perempuan.",
-      tambah(0, judul("Uji Kompetensi 2")),
+      "Uji dua, kelompok belajar: dua belas siswa perempuan dan delapan belas siswa laki-laki. FPB-nya enam, jadi paling banyak enam kelompok, masing-masing tiga laki-laki dan dua perempuan.",
+      tambah(0, judul("Uji 2")),
       tambah("dua@2", ...kartu("g1", 14, 34, 130, 40, W.merahMuda, ["12 siswa perempuan", "18 siswa laki-laki"], 9)),
       tambah("FPB-nya", ...kartu("g2", 156, 34, 130, 40, W.krem, ["FPB 12 dan 18", "adalah 6"], 9)),
       tambah("enam@2", ...kartu("g3", 14, 90, 272, 34, W.hijauMuda, ["paling banyak 6 kelompok"], 10)),
       tambah("tiga@1", teks("g4", 150, 150, "tiap kelompok: 3 laki-laki + 2 perempuan", 10, W.hijau)),
     ),
     k(
-      "Soal tiga, lampu lalu lintas menyala merah setiap lima belas, dua puluh empat, dan tiga puluh enam detik. KPK-nya tiga ratus enam puluh detik, yaitu enam menit.",
+      "Uji tiga, lampu lalu lintas menyala merah setiap lima belas, dua puluh empat, dan tiga puluh enam detik. KPK-nya tiga ratus enam puluh detik, yaitu enam menit.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 3: lampu merah")),
-      tambah("Soal", emo("l1", 60, 64, "🚦", 30), emo("l2", 150, 64, "🚦", 30), emo("l3", 240, 64, "🚦", 30)),
+      tambah(0, judul("Uji 3: lampu merah")),
+      tambah("Uji", emo("l1", 60, 64, "🚦", 30), emo("l2", 150, 64, "🚦", 30), emo("l3", 240, 64, "🚦", 30)),
       tambah("lima", teks("lt1", 60, 98, "setiap 15 detik", 9, W.biru), teks("lt2", 150, 98, "setiap 24 detik", 9, W.biru), teks("lt3", 240, 98, "setiap 36 detik", 9, W.biru)),
       tambah("KPK-nya", teks("lk", 150, 138, "KPK 15, 24, 36 = 360 detik", 12, W.hijau)),
       tambah("enam@3", teks("lm", 150, 164, "360 detik = 6 menit", 12, W.merah)),
     ),
     k(
-      "Mulai pukul lima belas tiga puluh, lampu bersamaan lagi pukul lima belas tiga puluh enam. Kunci Panduan Guru menulis lima belas empat puluh satu, dan itu keliru.",
+      "Mulai pukul lima belas tiga puluh, lampu bersamaan lagi enam menit kemudian. Jadi lampu menyala bersamaan pukul lima belas tiga puluh enam.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 3: pukul berapa?")),
+      tambah(0, judul("Uji 3: pukul berapa?")),
       tambah("Mulai", teks("p1", 150, 60, "mulai 15.30", 14, W.biru)),
       tambah("bersamaan", teks("p2", 150, 100, "15.30 + 6 menit = 15.36", 14, W.hijau)),
-      tambah("Kunci", teks("p3", 150, 142, "kunci buku: pukul 15.41", 11, W.merah), emo("p4", 150, 178, "❌", 22)),
+      tambah("Jadi", teks("p3", 150, 142, "bersamaan lagi pukul 15.36", 11, W.merah), emo("p4", 150, 178, "✅", 22)),
     ),
     k(
-      "Soal empat, pasaran lima hari. Pahing pada Selasa, lima hari kemudian Minggu, benar. Pon pada Minggu, lima hari kemudian Jumat, bukan Kamis, salah. Pahing tanggal sembilan belas, lalu dua puluh empat, benar.",
+      "Uji empat, pasaran lima hari. Pahing pada Selasa, lima hari kemudian Minggu, benar. Pon pada Minggu, lima hari kemudian Jumat, bukan Kamis, salah. Pahing tanggal sembilan belas, lalu dua puluh empat, benar.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 4a: benar atau salah")),
+      tambah(0, judul("Uji 4a: benar atau salah")),
       tambah("Pahing", ...kartu("q1", 14, 34, 272, 36, W.hijauMuda, ["i. Pahing Selasa, 5 hari lagi Minggu: Benar"], 9)),
       tambah("Pon", ...kartu("q2", 14, 80, 272, 36, W.merahMuda, ["ii. Pon Minggu, 5 hari lagi Jumat: Salah"], 9)),
       tambah("tanggal", ...kartu("q3", 14, 126, 272, 36, W.hijauMuda, ["iii. Pahing 19 Agustus, lalu 24 Agustus: Benar"], 9)),
@@ -182,7 +182,7 @@ export const ADEGAN_UK_2: AdeganStory = {
     k(
       "Bagian b: Sabtu Kliwon berulang setiap tiga puluh lima hari, KPK dari tujuh dan lima. Dua puluh tujuh Agustus ditambah tiga puluh lima hari jatuh pada satu Oktober.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 4b: Sabtu Kliwon")),
+      tambah(0, judul("Uji 4b: Sabtu Kliwon")),
       tambah("Sabtu", teks("s1", 150, 56, "KPK 7 dan 5 = 35", 14, W.hijau)),
       tambah("Dua", teks("s2", 150, 100, "27 Agustus + 35 hari", 14, W.biru)),
       tambah("satu", teks("s3", 150, 142, "= 1 Oktober 2022", 14, W.merah), emo("s4", 150, 180, "📅", 22)),

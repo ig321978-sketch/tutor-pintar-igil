@@ -15,7 +15,7 @@ export const POHON_150 = tangga(150, [2, 3, 5, 5]);
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk KPK dan FPB dengan faktor prima",
-  sumber: "Metode luar: pembuka; contoh Buku Siswa hlm. 53–62",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -43,13 +43,13 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("sidik", emo("g3", 150, 160, "🔍", 36)),
     ),
     k(
-      "Angkanya dari buku: tujuh puluh dua dan seratus lima puluh, seratus sembilan puluh enam, tiga ratus, dua ratus tujuh puluh, serta soal Uji Kompetensi dan soal tambahan.",
+      "Angkanya begini: tujuh puluh dua dan seratus lima puluh, seratus sembilan puluh enam, tiga ratus, dua ratus tujuh puluh, serta soal Uji satu dan tantangan.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka yang kita pakai")),
       tambah("tujuh", ...kartu("a1", 20, 32, 260, 30, W.langit, ["72 dan 150"], 9.6)),
       tambah("seratus@2", ...kartu("a2", 20, 72, 260, 30, W.hijauMuda, ["196, 300, dan 270"], 9.6)),
-      tambah("Uji", ...kartu("a3", 20, 112, 260, 30, W.krem, ["Uji Kompetensi: 45 dan 135, 96 dan 120"], 9.6)),
-      tambah("tambahan.", ...kartu("a4", 20, 152, 260, 30, W.pink, ["soal tambahan: 36 dan 108"], 9.6)),
+      tambah("Uji", ...kartu("a3", 20, 112, 260, 30, W.krem, ["Uji 1: 45 dan 135, 96 dan 120"], 9.6)),
+      tambah("tantangan.", ...kartu("a4", 20, 152, 260, 30, W.pink, ["tantangan: 36 dan 108"], 9.6)),
     ),
   ],
 };
@@ -108,12 +108,12 @@ const g150 = pohon("g150", POHON_150, 225, 44, 22, 26, 7.5, 7.6, 0.75);
 
 export const ADEGAN_LUAR_FT_TERAPAN: AdeganStory = {
   id: "luar-ft-terapan",
-  judul: "Factor Tree pada angka buku: 196, 300, 270, 72, dan 150",
-  sumber: "Metode luar: Factor Tree; Buku Siswa hlm. 56–57",
+  judul: "Factor Tree pada 196, 300, 270, 72, dan 150",
+  sumber: "Metode luar: Factor Tree",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Contoh buku: seratus sembilan puluh enam menjadi dua kali sembilan puluh delapan, lalu dua kali empat puluh sembilan, lalu tujuh kali tujuh. Ujungnya dua, dua, tujuh, tujuh.",
+      "Contoh pertama: seratus sembilan puluh enam menjadi dua kali sembilan puluh delapan, lalu dua kali empat puluh sembilan, lalu tujuh kali tujuh. Ujungnya dua, dua, tujuh, tujuh.",
       tambah(0, judul("Factor Tree: 196"), ...g196.tingkat[0]),
       tambah(6, ...g196.tingkat[1]),
       tambah(12, ...g196.tingkat[2]),
@@ -189,7 +189,7 @@ export const ADEGAN_LUAR_PER: AdeganStory = {
 export const ADEGAN_LUAR_PER_TERAPAN: AdeganStory = {
   id: "luar-per-terapan",
   judul: "Prime Exponent Rules pada 72 dan 150, 45 dan 135",
-  sumber: "Metode luar: Prime Exponent Rules; Buku Siswa hlm. 56–57, 61",
+  sumber: "Metode luar: Prime Exponent Rules",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -216,7 +216,7 @@ export const ADEGAN_LUAR_PER_TERAPAN: AdeganStory = {
     k(
       "Cara sama untuk empat puluh lima dan seratus tiga puluh lima: tiga pangkat dua kali lima, dan tiga pangkat tiga kali lima. FPB-nya empat puluh lima, KPK-nya seratus tiga puluh lima.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 1a")),
+      tambah(0, judul("Uji 1a")),
       tambah("Empat", teks("u1", 90, 56, "45 =", 13, W.biru), ...pangkat("u2", 160, 56, [[3, 2], [5, 1]], 13, W.biru)),
       tambah("seratus", teks("u3", 90, 90, "135 =", 13, W.biru), ...pangkat("u4", 160, 90, [[3, 3], [5, 1]], 13, W.biru)),
       tambah("FPB-nya", teks("u5", 150, 130, "FPB = 3² × 5 = 9 × 5 = 45", 13, W.merah)),

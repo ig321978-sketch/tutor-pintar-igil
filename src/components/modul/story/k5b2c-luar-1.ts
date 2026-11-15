@@ -16,7 +16,7 @@ const k5 = kurungDeret("g12", xs5, 76, 15, 5);
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk mencari faktor",
-  sumber: "Metode luar: pembuka; contoh Buku Siswa hlm. 43–46",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -44,11 +44,11 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("sendiri.", teks("g3", 150, 164, "cara menampilkannya berbeda-beda", 10, W.merah)),
     ),
     k(
-      "Angka yang kita pakai dari buku: dua belas dan delapan belas dari eksplorasi, serta dua puluh empat, tiga puluh enam, lima puluh empat, tujuh puluh dua, dan sembilan puluh enam dari Ayo Berlatih.",
+      "Angka yang kita pakai: dua belas dan delapan belas dari kegiatan memotong pita, serta dua puluh empat, tiga puluh enam, lima puluh empat, tujuh puluh dua, dan sembilan puluh enam dari latihan.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
-      tambah("dua", ...kartu("a1", 14, 36, 272, 44, W.hijauMuda, ["Eksplorasi 2.3A: 12", "Eksplorasi 2.3B: 18"], 9.4)),
-      tambah("serta", ...kartu("a2", 14, 94, 272, 36, W.pink, ["Ayo Berlatih: 24, 36, 54, 72, 96"], 9.4)),
+      tambah(0, judul("Angka yang kita pakai")),
+      tambah("dua", ...kartu("a1", 14, 36, 272, 44, W.hijauMuda, ["Memotong pita: 12", "Memotong pita: 18"], 9.4)),
+      tambah("serta", ...kartu("a2", 14, 94, 272, 36, W.pink, ["Latihan: 24, 36, 54, 72, 96"], 9.4)),
     ),
   ],
 };
@@ -97,14 +97,14 @@ export const ADEGAN_LUAR_PASANGAN: AdeganStory = {
 /* ------------------------------ 3. Factor Pairs: penerapan ------------------------------ */
 export const ADEGAN_LUAR_PASANGAN_TERAPAN: AdeganStory = {
   id: "luar-pasangan-terapan",
-  judul: "Factor Pairs pada angka buku",
-  sumber: "Metode luar: Factor Pairs; Buku Siswa hlm. 46",
+  judul: "Factor Pairs pada angka latihan",
+  sumber: "Metode luar: Factor Pairs",
   latar: "#ECFDF5",
   ketukan: [
     k(
-      "Terapkan pada tiga puluh enam, Ayo Berlatih nomor dua. Pasangannya: satu kali tiga puluh enam, dua kali delapan belas, tiga kali dua belas, dan empat kali sembilan.",
+      "Terapkan pada tiga puluh enam, salah satu bilangan Latihan. Pasangannya: satu kali tiga puluh enam, dua kali delapan belas, tiga kali dua belas, dan empat kali sembilan.",
       tambah(0, judul("Faktor dari 36")),
-      tambah(5, teks("nb", 150, 36, "Ayo Berlatih nomor 2", 9, W.coklat)),
+      tambah(5, teks("nb", 150, 36, "Latihan: 36", 9, W.coklat)),
       tambah(10, pas("q1", 60, 1, 36, 36, WARNA_PASANGAN[0])),
       tambah(15, pas("q2", 88, 2, 18, 36, WARNA_PASANGAN[1])),
       tambah(19, pas("q3", 116, 3, 12, 36, WARNA_PASANGAN[2])),
@@ -117,10 +117,10 @@ export const ADEGAN_LUAR_PASANGAN_TERAPAN: AdeganStory = {
       tambah("Faktornya", teks("ql", 150, 192, "faktor 36: 1, 2, 3, 4, 6, 9, 12, 18, 36", 10, W.hijau)),
     ),
     k(
-      "Sekarang lima puluh empat, Ayo Berlatih nomor tiga: satu kali lima puluh empat, dua kali dua puluh tujuh, tiga kali delapan belas, dan enam kali sembilan.",
+      "Sekarang lima puluh empat, bilangan Latihan yang berikutnya: satu kali lima puluh empat, dua kali dua puluh tujuh, tiga kali delapan belas, dan enam kali sembilan.",
       bersih(0),
       tambah(0, judul("Faktor dari 54")),
-      tambah(4, teks("nb", 150, 36, "Ayo Berlatih nomor 3", 9, W.coklat)),
+      tambah(4, teks("nb", 150, 36, "Latihan: 54", 9, W.coklat)),
       tambah(8, pas("r1", 60, 1, 54, 54, WARNA_PASANGAN[0])),
       tambah(13, pas("r2", 88, 2, 27, 54, WARNA_PASANGAN[1])),
       tambah(18, pas("r3", 116, 3, 18, 54, WARNA_PASANGAN[2])),

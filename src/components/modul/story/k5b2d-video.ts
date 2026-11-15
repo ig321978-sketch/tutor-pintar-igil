@@ -1,5 +1,6 @@
 import type { VideoStory } from "./logika-story";
-import { ADEGAN_ATURAN, ADEGAN_MENYIMAK, ADEGAN_PEMBUKA, ADEGAN_PERSIAPAN } from "./k5b2d-materi-1";
+import { adeganSapaan } from "./sapaan";
+import { ADEGAN_ATURAN, ADEGAN_MENYIMAK } from "./k5b2d-materi-1";
 import { ADEGAN_EKS_A_AB, ADEGAN_EKS_A_C, ADEGAN_EKS_B_MASALAH, ADEGAN_FAKTOR_PERSEKUTUAN } from "./k5b2d-materi-2";
 import { ADEGAN_BERLATIH_1, ADEGAN_BERLATIH_2, ADEGAN_EKS_B_HASIL, ADEGAN_PENUTUP } from "./k5b2d-materi-3";
 import { ADEGAN_LUAR_DAFTAR, ADEGAN_LUAR_DAFTAR_TERAPAN, ADEGAN_LUAR_GCF, ADEGAN_LUAR_GCF_TERAPAN, ADEGAN_LUAR_PEMBUKA } from "./k5b2d-luar-1";
@@ -8,12 +9,11 @@ import { ADEGAN_LUAR_EUCLID, ADEGAN_LUAR_EUCLID_TERAPAN, ADEGAN_LUAR_PAKET, ADEG
 /** Kelas 5 Bab 2 Sub-Bab D (faktor persekutuan dan FPB): video materi kurikulum dan video metode luar, dua video terpisah. */
 export const VIDEO_MATERI_K5B2D: VideoStory = {
   id: "k5b2d-materi",
-  judul: "Faktor Persekutuan dan FPB menurut Buku",
-  subjudul: "Materi kurikulum · Buku Siswa hlm. 46–53 dan Refleksi nomor 5, 6, 7",
+  judul: "Faktor Persekutuan dan FPB",
+  subjudul: "Materi kurikulum",
   jenis: "materi",
   adegan: [
-    ADEGAN_PEMBUKA,
-    ADEGAN_PERSIAPAN,
+    adeganSapaan({ jenis: "materi", topik: "faktor yang sama dari dua bilangan", daftar: ["Faktor persekutuan", "Menentukan FPB", "Membagi benda sama rata"] }),
     ADEGAN_MENYIMAK,
     ADEGAN_ATURAN,
     ADEGAN_FAKTOR_PERSEKUTUAN,
@@ -30,9 +30,10 @@ export const VIDEO_MATERI_K5B2D: VideoStory = {
 export const VIDEO_LUAR_K5B2D: VideoStory = {
   id: "k5b2d-luar",
   judul: "Faktor Persekutuan dan FPB: Metode dari Luar",
-  subjudul: "Empat metode luar · faktor dua belas dan delapan belas, mawar Nisa, dan paket Dania",
+  subjudul: "Empat metode luar",
   jenis: "metode-luar",
   adegan: [
+    adeganSapaan({ jenis: "metode-luar", topik: "faktor yang sama dari dua bilangan" }),
     ADEGAN_LUAR_PEMBUKA,
     ADEGAN_LUAR_DAFTAR,
     ADEGAN_LUAR_DAFTAR_TERAPAN,

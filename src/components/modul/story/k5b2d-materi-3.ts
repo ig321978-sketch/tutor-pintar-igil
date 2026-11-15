@@ -13,7 +13,7 @@ const F18 = [1, 2, 3, 6, 9, 18];
 export const ADEGAN_EKS_B_HASIL: AdeganStory = {
   id: "eks-24b-hasil",
   judul: "Eksplorasi 2.4B: faktor persekutuan, FPB, dan jumlah vas",
-  sumber: "Buku Siswa hlm. 52; Panduan Guru hlm. 73–74",
+  sumber: "Materi: FPB dan banyak vas",
   latar: "#F0FDF4",
   kutipan: [
     "Coba kita perhatikan Tabel 2.2.",
@@ -30,14 +30,13 @@ export const ADEGAN_EKS_B_HASIL: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Perhatikan Tabel dua titik dua. Bilangan dua, tiga, dan enam adalah faktor persekutuan dari delapan belas dan dua puluh empat. Bilangan enam adalah FPB dari dua puluh empat dan delapan belas.",
+      "Perhatikan tabelnya. Bilangan satu, dua, tiga, dan enam adalah faktor persekutuan dari delapan belas dan dua puluh empat. Bilangan enam adalah FPB dari dua puluh empat dan delapan belas.",
       tambah("Perhatikan", teks("lb1", 22, 66, "24", 11, W.merah), ...barisSel("a", 40, 50, 31, 22, F24, W.merahMuda, 9.4), teks("lb2", 22, 108, "18", 11, W.hijau), ...barisSel("b", 40, 92, 31, 22, F18, W.hijauMuda, 9.4)),
-      ubah("persekutuan", ...ubahSama("a", F24, [2, 3, 6], W.merahMuda), ...ubahSama("b", F18, [2, 3, 6], W.hijauMuda)),
+      ubah("persekutuan", ...ubahSama("a", F24, [1, 2, 3, 6], W.merahMuda), ...ubahSama("b", F18, [1, 2, 3, 6], W.hijauMuda)),
       tambah("FPB", teks("fb", 150, 150, "FPB dari 24 dan 18 adalah 6", 12, W.coklat)),
     ),
     k(
-      "Catatan guru: buku tidak menyebut satu, padahal satu juga faktor persekutuan keduanya. Daftar lengkapnya satu, dua, tiga, dan enam.",
-      ubah("padahal", ...ubahSama("a", F24, [1, 2, 3, 6], W.merahMuda), ...ubahSama("b", F18, [1, 2, 3, 6], W.hijauMuda)),
+      "Hati-hati, jangan lupa angka satu. Satu selalu menjadi faktor persekutuan, sebab satu membagi habis semua bilangan. Daftar lengkapnya satu, dua, tiga, dan enam.",
       tambah("Daftar", teks("fc", 150, 176, "lengkap: 1, 2, 3, 6", 10.4, W.hitam)),
     ),
     k(
@@ -57,20 +56,20 @@ export const ADEGAN_EKS_B_HASIL: AdeganStory = {
       tambah("putih.", teks("pe5", 150, 182, "semua bunga habis terpakai", 10, W.coklat)),
     ),
     k(
-      "Kata kuncinya adalah paling banyak. Menurut Panduan Guru, wadah yang dibutuhkan paling banyak sama saja dengan FPB dari banyaknya bilangan yang akan dibagi.",
+      "Kata pentingnya adalah paling banyak. Jumlah wadah paling banyak sama dengan FPB dari banyaknya benda yang akan dibagi.",
       bersih(0),
-      tambah(0, judul("Kata kunci: paling banyak")),
-      tambah("kuncinya", ...kartu("kk", 40, 44, 220, 40, W.emas, ["kata kunci:", "paling banyak"], 10.4)),
+      tambah(0, judul("Kata penting: paling banyak")),
+      tambah("pentingnya", ...kartu("kk", 40, 44, 220, 40, W.emas, ["kata penting:", "paling banyak"], 10.4)),
       tambah("wadah", ...kartu("kw", 20, 104, 260, 44, W.hijauMuda, ["wadah paling banyak", "sama dengan FPB banyak benda"], 9.4)),
     ),
     k(
-      "Ayo Berdiskusi: apa hubungan faktor dengan pembagian benda? Banyak vas adalah faktor banyak bunga; yang cocok untuk kedua jenis bunga adalah faktor persekutuan, yang terbesar memberi vas terbanyak.",
+      "Coba diskusikan: apa hubungan faktor dengan pembagian benda? Banyak vas adalah faktor banyak bunga; yang cocok untuk kedua jenis bunga adalah faktor persekutuan, yang terbesar memberi vas terbanyak.",
       bersih(0),
-      tambah(0, judul("Ayo Berdiskusi")),
+      tambah(0, judul("Berdiskusi")),
       tambah("hubungan", ...kartu("d1", 20, 40, 260, 34, W.langit, ["banyak vas: faktor dari banyak bunga"], 9)),
       tambah("kedua", ...kartu("d2", 20, 84, 260, 34, W.krem, ["cocok untuk keduanya: faktor persekutuan"], 9)),
       tambah("terbesar", ...kartu("d3", 20, 128, 260, 34, W.hijauMuda, ["terbesar: vas paling banyak"], 9.4)),
-      tambah("terbanyak.", teks("d4", 150, 182, "buku tanpa kunci: penjelasan dari tabel", 8.6, W.coklat)),
+      tambah("terbanyak.", teks("d4", 150, 182, "jawabannya ada di tabel tadi", 8.6, W.coklat)),
     ),
   ],
 };
@@ -82,8 +81,8 @@ const F12 = [1, 2, 3, 4, 6, 12];
 const F42 = [1, 2, 3, 6, 7, 14, 21, 42];
 export const ADEGAN_BERLATIH_1: AdeganStory = {
   id: "berlatih-1",
-  judul: "Ayo Berlatih nomor 1: FPB dua bilangan",
-  sumber: "Buku Siswa hlm. 52; Panduan Guru hlm. 75–76",
+  judul: "Latihan 1: FPB dua bilangan",
+  sumber: "Materi: latihan FPB dua bilangan",
   latar: "#FEFCE8",
   kutipan: [
     "Ayo Berlatih",
@@ -95,8 +94,8 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Berlatih nomor satu: temukan FPB dari lima belas dan tiga puluh lima. Faktor lima belas adalah satu, tiga, lima, dan lima belas. Faktor tiga puluh lima adalah satu, lima, tujuh, dan tiga puluh lima.",
-      tambah(0, judul("Berlatih 1a: 15 dan 35")),
+      "Latihan satu: temukan FPB dari lima belas dan tiga puluh lima. Faktor lima belas adalah satu, tiga, lima, dan lima belas. Faktor tiga puluh lima adalah satu, lima, tujuh, dan tiga puluh lima.",
+      tambah(0, judul("Latihan 1a: 15 dan 35")),
       tambah("Faktor", teks("n1", 26, 70, "15", 11, W.merah), ...barisSel("n15", 54, 54, 48, 26, F15, W.merahMuda, 11)),
       tambah("Faktor@2", teks("n2", 26, 118, "35", 11, W.hijau), ...barisSel("n35", 54, 102, 48, 26, F35, W.hijauMuda, 11)),
     ),
@@ -108,15 +107,14 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
     k(
       "Soal b: dua belas dan empat puluh dua. Faktor dua belas adalah satu, dua, tiga, empat, enam, dan dua belas. Faktor empat puluh dua adalah satu, dua, tiga, enam, tujuh, empat belas, dua puluh satu, dan empat puluh dua.",
       bersih(0),
-      tambah(0, judul("Berlatih 1b: 12 dan 42")),
+      tambah(0, judul("Latihan 1b: 12 dan 42")),
       tambah("Faktor", teks("o1", 24, 74, "12", 11, W.merah), ...barisSel("o12", 40, 58, 36, 26, F12, W.merahMuda, 10.4)),
       tambah("Faktor@2", teks("o2", 24, 122, "42", 11, W.hijau), ...barisSel("o42", 40, 106, 31, 26, F42, W.hijauMuda, 10)),
     ),
     k(
-      "Faktor persekutuannya satu, dua, tiga, dan enam, sehingga FPB dua belas dan empat puluh dua adalah enam, sesuai kunci halaman tujuh puluh lima.",
+      "Faktor persekutuannya satu, dua, tiga, dan enam, sehingga FPB dua belas dan empat puluh dua adalah enam.",
       ubah("persekutuannya", ...ubahSama("o12", F12, [1, 2, 3, 6], W.merahMuda), ...ubahSama("o42", F42, [1, 2, 3, 6], W.hijauMuda)),
       tambah("sehingga", teks("o3", 150, 164, "FPB dari 12 dan 42 adalah 6", 12, W.coklat)),
-      tambah("Kunci", teks("o4", 150, 184, "kunci: Panduan Guru hlm. 75", 9, W.coklat)),
     ),
   ],
 };
@@ -128,8 +126,8 @@ const P_BISKUIT = [24, 12, 8, 6, 4, 3, 2, 1];
 const P_SAMA = [12, 6, 4, 3, 2, 1];
 export const ADEGAN_BERLATIH_2: AdeganStory = {
   id: "berlatih-2",
-  judul: "Ayo Berlatih nomor 2: paket ulang tahun Dania",
-  sumber: "Buku Siswa hlm. 53; Panduan Guru hlm. 76",
+  judul: "Latihan 2: paket ulang tahun Dania",
+  sumber: "Materi: latihan paket ulang tahun",
   latar: "#FDF2F8",
   kutipan: [
     "Dania akan merayakan ulang tahun.",
@@ -148,7 +146,7 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Nomor dua. Dania membuat bingkisan ulang tahun. Tiap paket berisi susu kotak, permen lolipop, dan biskuit dengan isi sama. Ia punya tiga puluh enam susu, empat puluh delapan permen, dan dua puluh empat biskuit. Berapa paket paling banyak?",
+      "Latihan dua. Dania membuat bingkisan ulang tahun. Tiap paket berisi susu kotak, permen lolipop, dan biskuit dengan isi sama. Ia punya tiga puluh enam susu, empat puluh delapan permen, dan dua puluh empat biskuit. Berapa paket paling banyak?",
       tambah(0, judul("Paket ulang tahun Dania")),
       tambah("susu", emo("d1e", 38, 66, "🥛", 26), ...kartu("d1", 64, 40, 216, 34, W.langit, ["36 susu kotak"], 10)),
       tambah("permen", emo("d2e", 38, 110, "🍭", 26), ...kartu("d2", 64, 84, 216, 34, W.pink, ["48 permen lolipop"], 10)),
@@ -156,7 +154,7 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
       tambah("paling", teks("q2", 150, 190, "FPB dari 36, 48, dan 24 ?", 11, W.merah)),
     ),
     k(
-      "Tabel kunci untuk susu kotak. Susu di tiap paket: satu, dua, tiga, empat, enam, sembilan, dua belas, delapan belas, tiga puluh enam. Paket yang dapat dibuat: tiga puluh enam, delapan belas, dua belas, sembilan, enam, empat, tiga, dua, satu.",
+      "Tabel untuk susu kotak. Susu di tiap paket: satu, dua, tiga, empat, enam, sembilan, dua belas, delapan belas, tiga puluh enam. Paket yang dapat dibuat: tiga puluh enam, delapan belas, dua belas, sembilan, enam, empat, tiga, dua, satu.",
       bersih(0),
       tambah(0, judul("Tabel: 36 susu kotak")),
       tambah("Susu@2", teks("s1", 21, 80, "per paket", 7, W.hitam), ...barisSel("sa", 42, 64, 28, 24, [1, 2, 3, 4, 6, 9, 12, 18, 36], W.langit, 9)),
@@ -180,12 +178,14 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
       tambah("Setiap", teks("pu", 150, 150, "12 paket: tiap paket 3 susu, 4 permen, 2 biskuit", 8.6, W.hijau)),
     ),
     k(
-      "Catatan guru: kunci menulis permen empat puluh delapan kotak dan biskuit dua puluh empat kotak, padahal satuannya buah dan bungkus. Hitungannya tetap benar.",
+      "Perhatikan satuannya: susu kotak, permen buah, biskuit bungkus. Periksa: dua belas kali tiga sama dengan tiga puluh enam, dua belas kali empat sama dengan empat puluh delapan, dan dua belas kali dua sama dengan dua puluh empat.",
       bersih(0),
-      tambah(0, judul("Catatan kunci")),
-      tambah("kunci", ...kartu("ck", 20, 40, 260, 36, W.merahMuda, ["kunci menulis: 48 kotak dan 24 kotak"], 9)),
-      tambah("padahal", ...kartu("cs", 20, 86, 260, 36, W.hijauMuda, ["satuannya: buah dan bungkus"], 9.4)),
-      tambah("Hitungannya", teks("c1", 150, 146, "12 × 3 = 36", 12, W.hijau), teks("c2", 150, 164, "12 × 4 = 48", 12, W.hijau), teks("c3", 150, 182, "12 × 2 = 24", 12, W.hijau)),
+      tambah(0, judul("Periksa hasilnya")),
+      tambah("satuannya:", ...kartu("ck", 20, 40, 260, 36, W.langit, ["susu: kotak; permen: buah"], 9.4)),
+      tambah("biskuit", ...kartu("cs", 20, 86, 260, 36, W.hijauMuda, ["biskuit: bungkus"], 9.4)),
+      tambah("tiga", teks("c1", 150, 146, "12 × 3 = 36", 12, W.hijau)),
+      tambah("empat", teks("c2", 150, 164, "12 × 4 = 48", 12, W.hijau)),
+      tambah("dua@4", teks("c3", 150, 182, "12 × 2 = 24", 12, W.hijau)),
     ),
   ],
 };
@@ -193,8 +193,8 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
 /* ------------------------------ 12. Penutup: miskonsepsi, diferensiasi, dan refleksi (Panduan Guru hlm. 74 dan 75; Buku Siswa hlm. 60) ------------------------------ */
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup-guru",
-  judul: "Miskonsepsi, diferensiasi, dan refleksi Subbab D",
-  sumber: "Panduan Guru hlm. 74–75; Buku Siswa hlm. 60",
+  judul: "Hati-hati, tantangan, dan renungan",
+  sumber: "Materi: pesan guru dan renungan",
   latar: "#F5F3FF",
   kutipan: [
     "Miskonsepsi",
@@ -223,57 +223,56 @@ export const ADEGAN_PENUTUP: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Miskonsepsi pertama: peserta didik terbalik antara faktor dan kelipatan, sehingga yang dicari justru kelipatan, padahal seharusnya faktor.",
-      tambah(0, judul("Miskonsepsi 1: faktor atau kelipatan")),
+      "Hati-hati, ada kesalahan yang sering terjadi. Kadang kita terbalik antara faktor dan kelipatan, sehingga yang dicari justru kelipatan, padahal seharusnya faktor.",
+      tambah(0, judul("Hati-hati: faktor atau kelipatan")),
       tambah("terbalik", ...kartu("m1", 20, 44, 260, 40, W.hijauMuda, ["faktor 12: 1, 2, 3, 4, 6, 12", "(membagi habis 12)"], 9)),
       tambah("kelipatan,", ...kartu("m2", 20, 100, 260, 40, W.merahMuda, ["kelipatan 12: 12, 24, 36, ...", "(bukan yang dicari)"], 9)),
     ),
     k(
-      "Miskonsepsi kedua: keliru antara KPK dan FPB. Guru dapat menyajikan dua bilangan dengan FPB tertulis, padahal sebenarnya KPK, lalu meminta peserta didik menganalisis tepat atau tidaknya.",
+      "Hati-hati juga, jangan keliru antara KPK dan FPB. Misalnya ada yang menulis, FPB dua belas dan delapan belas adalah tiga puluh enam. Coba analisis, tepatkah?",
       bersih(0),
-      tambah(0, judul("Miskonsepsi 2: KPK atau FPB")),
-      tambah("menyajikan", ...kartu("x1", 20, 44, 260, 36, W.krem, ["FPB dari 12 dan 18 adalah 36 ?"], 10)),
-      tambah("menganalisis", ...kartu("x2", 20, 94, 260, 40, W.hijauMuda, ["salah: 36 adalah KPK", "FPB 12 dan 18 adalah 6"], 9.4)),
-      tambah("tidaknya.", teks("x3", 150, 166, "contoh kita sendiri", 9, W.coklat)),
+      tambah(0, judul("Hati-hati: KPK atau FPB")),
+      tambah("Misalnya", ...kartu("x1", 20, 44, 260, 36, W.krem, ["FPB dari 12 dan 18 adalah 36 ?"], 10)),
+      tambah("analisis,", ...kartu("x2", 20, 94, 260, 40, W.hijauMuda, ["salah: 36 adalah KPK", "FPB 12 dan 18 adalah 6"], 9.4)),
+      tambah("tepatkah?", teks("x3", 150, 166, "FPB mencari faktor, bukan kelipatan", 9, W.coklat)),
     ),
     k(
-      "Diferensiasi, soal tambahan satu: FPB dari empat puluh delapan dan enam puluh, enam puluh dan seratus dua puluh, serta lima puluh empat, tujuh puluh dua, dan seratus dua puluh.",
+      "Tantangan satu: FPB dari empat puluh delapan dan enam puluh, enam puluh dan seratus dua puluh, serta lima puluh empat, tujuh puluh dua, dan seratus dua puluh.",
       bersih(0),
-      tambah(0, judul("Diferensiasi: soal tambahan 1")),
+      tambah(0, judul("Tantangan 1")),
       tambah("empat", teks("df1", 90, 70, "a. 48 dan 60", 13, W.hitam)),
       tambah("enam@2", teks("df2", 90, 104, "b. 60 dan 120", 13, W.hitam)),
       tambah("serta", teks("df3", 90, 138, "c. 54, 72, dan 120", 13, W.hitam)),
     ),
     k(
-      "Kunci buku tidak ada. Hitungan mandiri kita: FPB-nya dua belas, enam puluh, dan enam.",
+      "Hitungan kita: FPB-nya dua belas, enam puluh, dan enam.",
       tambah("belas,", teks("dg1", 235, 70, "FPB 12", 11, W.hijau)),
       tambah("puluh,", teks("dg2", 235, 104, "FPB 60", 11, W.hijau)),
       tambah("enam@2", teks("dg3", 235, 138, "FPB 6", 11, W.hijau)),
-      tambah("Kunci", teks("dg4", 150, 182, "kunci: hitungan mandiri", 9, W.coklat)),
     ),
     k(
-      "Soal tambahan dua, benar atau salah. A: FPB tiga puluh dan sembilan puluh adalah sembilan puluh. B: FPB empat puluh dua dan enam puluh adalah enam. C: dua puluh tiga dan dua puluh tujuh tidak mempunyai FPB.",
+      "Tantangan dua, benar atau salah. A: FPB tiga puluh dan sembilan puluh adalah sembilan puluh. B: FPB empat puluh dua dan enam puluh adalah enam. C: dua puluh tiga dan dua puluh tujuh tidak mempunyai FPB.",
       bersih(0),
-      tambah(0, judul("Soal tambahan 2: benar atau salah")),
+      tambah(0, judul("Tantangan 2: benar atau salah")),
       tambah("sembilan", ...kartu("bs1", 20, 40, 260, 34, W.langit, ["A. FPB dari 30 dan 90 adalah 90"], 9.4)),
       tambah("empat", ...kartu("bs2", 20, 84, 260, 34, W.krem, ["B. FPB dari 42 dan 60 adalah 6"], 9.4)),
       tambah("tujuh", ...kartu("bs3", 20, 128, 260, 34, W.pink, ["C. 23 dan 27 tidak mempunyai FPB"], 9.4)),
     ),
     k(
-      "Hitungan mandiri: A salah, FPB-nya tiga puluh. B benar, FPB-nya enam. C salah: FPB-nya satu, sebab dua bilangan apa pun selalu punya FPB.",
+      "Hitungan kita: A salah, FPB-nya tiga puluh. B benar, FPB-nya enam. C salah: FPB-nya satu, sebab dua bilangan apa pun selalu punya FPB.",
       bersih(0),
-      tambah(0, judul("Hitungan mandiri soal tambahan 2")),
+      tambah(0, judul("Jawaban Tantangan 2")),
       tambah("tiga", teks("bj1", 150, 70, "A salah: FPB-nya 30", 13, W.merah)),
       tambah("enam.", teks("bj2", 150, 108, "B benar: FPB-nya 6", 13, W.hijau)),
       tambah("satu;", teks("bj3", 150, 146, "C salah: FPB-nya 1", 13, W.merah)),
     ),
     k(
-      "Terakhir, Refleksi nomor lima, enam, dan tujuh: aku dapat menemukan faktor persekutuan, aku dapat menemukan FPB, dan aku dapat menyelesaikan masalah memakai KPK dan FPB.",
+      "Terakhir, renungkan tiga pertanyaan. Pertama, apakah aku dapat menemukan faktor persekutuan? Kedua, apakah aku dapat menemukan FPB? Ketiga, apakah aku dapat menyelesaikan masalah memakai KPK dan FPB?",
       bersih(0),
-      tambah(0, judul("Refleksi nomor 5, 6, dan 7")),
-      tambah("lima,", ...kartu("rf1", 20, 40, 260, 34, W.hijauMuda, ["5. aku dapat menemukan faktor persekutuan"], 8.6)),
-      tambah("enam,", ...kartu("rf2", 20, 84, 260, 34, W.langit, ["6. aku dapat menemukan FPB"], 9.4)),
-      tambah("tujuh:", ...kartu("rf3", 20, 128, 260, 34, W.krem, ["7. aku dapat menyelesaikan masalah KPK dan FPB"], 8.4)),
+      tambah(0, judul("Renungan")),
+      tambah("Pertama,", ...kartu("rf1", 20, 40, 260, 34, W.hijauMuda, ["Dapatkah aku menemukan faktor persekutuan?"], 8.6)),
+      tambah("Kedua,", ...kartu("rf2", 20, 84, 260, 34, W.langit, ["Dapatkah aku menemukan FPB?"], 9.4)),
+      tambah("Ketiga,", ...kartu("rf3", 20, 128, 260, 34, W.krem, ["Dapatkah aku memakai KPK dan FPB?"], 8.4)),
     ),
   ],
 };

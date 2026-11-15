@@ -31,8 +31,8 @@ const SUARA_T2 = "Aturan satu dan dua: buat kelompok besar dengan anggota paling
 
 export const ADEGAN_ATURAN: AdeganStory = {
   id: "tepuk-aturan",
-  judul: "Eksplorasi 2.1: aturan Tepuk Bilangan Kelipatan",
-  sumber: "Buku Siswa hlm. 33; Panduan Guru hlm. 48",
+  judul: "Permainan: aturan Tepuk Bilangan Kelipatan",
+  sumber: "Materi: aturan Tepuk Bilangan Kelipatan",
   latar: "#FEFCE8",
   kutipan: [
     "A. Kelipatan",
@@ -47,9 +47,9 @@ export const ADEGAN_ATURAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Subbab A dibuka dengan Eksplorasi dua titik satu, Ayo Bermain Tepuk Bilangan Kelipatan.",
-      tambah(0, judul("A. Kelipatan · Eksplorasi 2.1")),
-      tambah("Eksplorasi", emo("tp", 150, 88, "👏", 50)),
+      "Sekarang kita bermain Tepuk Bilangan Kelipatan. Permainan ini melatih kita menyebut kelipatan dengan cepat dan tepat.",
+      tambah(0, judul("Ayo Bermain")),
+      tambah("Sekarang", emo("tp", 150, 88, "👏", 50)),
       tambah("Bermain", ...kartu("tt", 50, 120, 200, 44, W.emas, ["Tepuk Bilangan", "Kelipatan"], 11)),
     ),
     k(
@@ -69,18 +69,18 @@ export const ADEGAN_ATURAN: AdeganStory = {
       ubah("pertama", { id: "rg-p0", warna: W.emas, sorot: true }),
     ),
     k(
-      "Aturan lima: orang pertama menyebut satu bilangan, misalnya tiga, dilanjutkan oleh orang di sebelah kanan atau kirinya, dan seterusnya.",
+      "Aturan lima: orang pertama menyebut satu bilangan, misalnya tiga, dilanjutkan oleh orang di sebelah kanan atau kirinya, dan seterusnya. Pemain berikutnya melanjutkan ke arah yang sama, tanpa melompati teman.",
       redamkan("pertama", "rg-p0"),
       tambah("tiga,", angka("rg", 0, "3", W.merah)),
       tambah("dilanjutkan", talia("tl", 0, 1)),
       ubah("kanan", { id: "rg-p1", warna: W.hijauMuda, sorot: true }),
     ),
     k(
-      "Panduan guru menambahkan, kegiatan eksplorasi pada bab ini banyak disajikan menggunakan permainan.",
+      "Ingat, belajar bisa sambil bermain, jadi kegiatan seperti ini akan sering kita lakukan.",
       bersih(0),
-      tambah(0, judul("Eksplorasi berbasis permainan")),
-      tambah("eksplorasi", emo("gm", 150, 90, "🎮", 48)),
-      tambah("permainan.", ...kartu("gk", 30, 122, 240, 34, W.hijauMuda, ["banyak permainan di bab ini"], 10)),
+      tambah(0, judul("Belajar sambil bermain")),
+      tambah("belajar", emo("gm", 150, 90, "🎮", 48)),
+      tambah("bermain,", ...kartu("gk", 30, 122, 240, 34, W.hijauMuda, ["belajar sambil bermain"], 10)),
     ),
   ],
 };
@@ -91,7 +91,7 @@ const SUARA_L1 = "Aturan enam: setiap orang menyebutkan bilangan kelipatan tiga 
 export const ADEGAN_LANJUT: AdeganStory = {
   id: "tepuk-lanjut",
   judul: "Tepuk Bilangan Kelipatan: berurutan, putaran kedua, dan cerita Asep",
-  sumber: "Buku Siswa hlm. 34; Panduan Guru hlm. 49",
+  sumber: "Materi: tepuk berurutan dan cerita Asep",
   latar: "#FEFCE8",
   kutipan: [
     "kelipatan 3 secara berurutan, misalnya 3, 6, 9, dan seterusnya.",
@@ -117,14 +117,14 @@ export const ADEGAN_LANJUT: AdeganStory = {
       tambah("seterusnya.", angka("rg", 3, "12"), angka("rg", 4, "15"), angka("rg", 5, "18"), angka("rg", 6, "21"), angka("rg", 7, "24")),
     ),
     k(
-      "Jika satu putaran selesai, bilangan boleh terus dilanjutkan: dua puluh tujuh, tiga puluh, tiga puluh tiga, dan seterusnya.",
+      "Jika satu putaran selesai, bilangan boleh terus dilanjutkan: dua puluh tujuh, tiga puluh, tiga puluh tiga, dan seterusnya. Jadi permainan tidak berhenti, hitungannya terus berlanjut.",
       ubah(10, { id: "rg-n0", isi: "27", warna: W.merah }),
       ubah(12, { id: "rg-n1", isi: "30", warna: W.merah }),
       ubah(15, { id: "rg-n2", isi: "33", warna: W.merah }),
       ubah("seterusnya.", { id: "kt-t0", isi: "putaran ke-2" }),
     ),
     k(
-      "Aturan delapan: kalian boleh melanjutkan permainan dengan kelipatan bilangan yang lain.",
+      "Aturan delapan: kalian boleh melanjutkan permainan dengan kelipatan bilangan yang lain. Pilih bilangan yang kalian suka, misalnya empat atau lima.",
       bersih(0),
       tambah(0, judul("Aturan 8")),
       tambah("Aturan", ...kartu("l3", 24, 72, 110, 36, W.krem, ["kelipatan 3"], 10)),
@@ -133,9 +133,9 @@ export const ADEGAN_LANJUT: AdeganStory = {
       tambah("kelipatan", emo("ul", 150, 150, "🔁", 34)),
     ),
     k(
-      "Di buku, seorang teman bertanya tentang pengalaman bermain, lalu bercerita bahwa saat bilangan disebut cepat, Asep melakukan kesalahan.",
+      "Sekarang dengarkan cerita Asep. Seorang teman bertanya tentang pengalaman bermain, lalu bercerita bahwa saat bilangan disebut cepat, Asep melakukan kesalahan.",
       bersih(0),
-      tambah(0, judul("Cerita di buku")),
+      tambah(0, judul("Cerita Asep")),
       tambah("bertanya", ...kartu("b1", 14, 32, 272, 44, W.langit, ["Bagaimana pengalaman bermain", "Tepuk Bilangan Kelipatan?"], 9)),
       tambah("bercerita", ...kartu("b2", 14, 88, 272, 44, W.krem, ["Saat bilangan disebut cepat,", "Asep melakukan kesalahan."], 9)),
       tambah("Asep", emo("as", 150, 168, "😅", 36)),
@@ -150,12 +150,12 @@ export const ADEGAN_LANJUT: AdeganStory = {
       tambah("lantang.", teks("la6", 220, 178, "6!", 34, W.merah)),
     ),
     k(
-      "Buku bertanya, adakah anggota kelompokmu yang melakukan kesalahan seperti Asep? Catatan guru: langkah enam menyuruh menyebut bilangan, sedangkan cerita Asep memakai tepuk dan diam, jadi sepakati aturannya sebelum bermain.",
+      "Coba kalian ingat, adakah anggota kelompokmu yang melakukan kesalahan seperti Asep? Hati-hati, sepakati dulu aturannya sebelum bermain: menyebut bilangan, atau bertepuk tangan dan diam.",
       bersih(0),
-      tambah(0, judul("Catatan guru")),
-      tambah("Buku", emo("tn", 262, 50, "❓", 24)),
-      tambah("langkah", ...kartu("c1", 14, 62, 272, 30, W.langit, ["langkah 6: sebut bilangan"], 9.6)),
-      tambah("cerita", ...kartu("c2", 14, 100, 272, 30, W.krem, ["cerita Asep: tepuk dan diam"], 9.6)),
+      tambah(0, judul("Hati-hati")),
+      tambah("Coba", emo("tn", 262, 50, "❓", 24)),
+      tambah("menyebut", ...kartu("c1", 14, 62, 272, 30, W.langit, ["giliran kelipatan: sebut bilangan"], 9.6)),
+      tambah("bertepuk", ...kartu("c2", 14, 100, 272, 30, W.krem, ["atau bertepuk tangan dan diam"], 9.6)),
       tambah("sepakati", ...kartu("c3", 14, 142, 272, 36, W.emas, ["sepakati aturan sebelum bermain"], 9.6)),
     ),
   ],

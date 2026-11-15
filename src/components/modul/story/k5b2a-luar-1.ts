@@ -26,11 +26,11 @@ const langkahHC = (id: string, a: number, b: number, warna: string = W.merah): O
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk menentukan kelipatan",
-  sumber: "Metode luar: pembuka; angka Buku Siswa hlm. 35–37",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana kita menentukan kelipatan sebuah bilangan? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.",
+      "Bagaimana kita menentukan kelipatan sebuah bilangan? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari tabel dan permainan tadi.",
       tambah(0, judul("Empat metode dari luar")),
       tambah("bilangan?", ...kartu("kp", 40, 40, 90, 44, W.krem, ["3, 6, 9, ..."], 11)),
       tambah("berbagai", emo("gl", 195, 96, "🌍", 46)),
@@ -55,9 +55,9 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("satuan.", emo("i4", 255, 80, "🔢", 34), teks("i4t", 255, 112, "satuan", 8.6, W.biru)),
     ),
     k(
-      "Angkanya dari buku: kelipatan tiga sampai lima puluh, kelipatan tujuh dan sembilan sampai seratus, serta kelipatan enam dan delapan.",
+      "Angkanya dari latihan tadi: kelipatan tiga sampai lima puluh, kelipatan tujuh dan sembilan sampai seratus, serta kelipatan enam dan delapan.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka dari latihan tadi")),
       tambah("tiga", ...kartu("a1", 14, 34, 272, 30, W.hijauMuda, ["kelipatan 3 sampai 50"], 9.6)),
       tambah("tujuh", ...kartu("a2", 14, 72, 272, 30, W.langit, ["kelipatan 7 dan 9 sampai 100"], 9.6)),
       tambah("enam", ...kartu("a3", 14, 110, 272, 30, W.pink, ["kelipatan 6 dan 8"], 9.6)),
@@ -123,12 +123,12 @@ const garis8 = () => garisLompat("sh", GL8.x0, GL8.y, GL8.satuan, GL8.maks, GL8.
 
 export const ADEGAN_LUAR_LOMPAT_TERAPAN: AdeganStory = {
   id: "luar-lompat-terapan",
-  judul: "Skip Counting pada Ayo Berlatih nomor 2 dan 3",
-  sumber: "Metode luar: Skip Counting; angka Buku Siswa hlm. 37",
+  judul: "Skip Counting pada Latihan 2 dan 3",
+  sumber: "Metode luar: Skip Counting",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapkan pada Ayo Berlatih nomor dua: lima bilangan kelipatan enam. Mulai dari nol, lompat enam, berkali-kali.",
+      "Terapkan pada Latihan dua: lima bilangan kelipatan enam. Mulai dari nol, lompat enam, berkali-kali.",
       tambah(0, judul("Kelipatan 6: lompat 6")),
       tambah("Mulai", ...garis6()),
       tambah("lompat", teks("lb", 150, 60, "paling sedikit 5 bilangan", 10, W.merah)),
@@ -138,7 +138,7 @@ export const ADEGAN_LUAR_LOMPAT_TERAPAN: AdeganStory = {
       ...[1, 2, 3, 4, 5].map((i, j) => tambah([2, 4, 6, 9, 11][j], busur("sg", GL6.x0, GL6.y, GL6.satuan, GL6.langkah, i), pendaratan("sg", GL6.x0, GL6.y, GL6.satuan, GL6.langkah, i))),
     ),
     k(
-      "Nomor tiga: kelipatan delapan. Lompat delapan: delapan, enam belas, dua puluh empat, tiga puluh dua, empat puluh.",
+      "Latihan tiga: kelipatan delapan. Lompat delapan: delapan, enam belas, dua puluh empat, tiga puluh dua, empat puluh.",
       tambah("delapan.", ...garis8()),
       ...[1, 2, 3, 4, 5].map((i, j) => tambah([6, 8, 11, 14, 16][j], busur("sh", GL8.x0, GL8.y, GL8.satuan, GL8.langkah, i, W.hijau), pendaratan("sh", GL8.x0, GL8.y, GL8.satuan, GL8.langkah, i, W.hijau))),
     ),
@@ -188,15 +188,15 @@ export const ADEGAN_LUAR_SERATUS: AdeganStory = {
 };
 
 /* ------------------------------ 5. Hundred Chart: penerapan pada kelipatan 7 dan 9 ------------------------------ */
-const SUARA_HT1 = "Terapkan pada kelipatan tujuh dari buku. Warnai tujuh, empat belas, dan seterusnya sampai sembilan puluh delapan: empat belas bilangan.";
+const SUARA_HT1 = "Terapkan pada kelipatan tujuh. Warnai tujuh, empat belas, dan seterusnya sampai sembilan puluh delapan: empat belas bilangan.";
 const SUARA_HT3 = "Sekarang kelipatan sembilan. Warnai sembilan sampai sembilan puluh sembilan: sebelas bilangan.";
 const SUARA_HT4 = "Kelipatan sembilan membentuk garis miring, tiap baris bergeser satu kotak ke kiri. Tabel ini juga memuat sembilan puluh dan sembilan puluh sembilan, dua bilangan terakhir.";
 const SEMBILAN = kelipatan(9, 100);
 
 export const ADEGAN_LUAR_SERATUS_TERAPAN: AdeganStory = {
   id: "luar-seratus-terapan",
-  judul: "Hundred Chart pada kelipatan 7 dan 9 dari buku",
-  sumber: "Metode luar: Hundred Chart; angka Buku Siswa hlm. 36–37",
+  judul: "Hundred Chart pada kelipatan 7 dan 9",
+  sumber: "Metode luar: Hundred Chart",
   latar: "#EFF6FF",
   ketukan: [
     k(

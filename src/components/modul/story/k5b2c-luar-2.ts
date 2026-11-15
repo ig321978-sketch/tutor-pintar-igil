@@ -14,8 +14,8 @@ const k72 = kurungDeret("f72", xs12, 76, 10, 12);
 /* ------------------------------ 5. Factor Rainbow: penerapan ------------------------------ */
 export const ADEGAN_LUAR_PELANGI_TERAPAN: AdeganStory = {
   id: "luar-pelangi-terapan",
-  judul: "Factor Rainbow pada angka buku",
-  sumber: "Metode luar: Factor Rainbow; Buku Siswa hlm. 46",
+  judul: "Factor Rainbow pada angka latihan",
+  sumber: "Metode luar: Factor Rainbow",
   latar: "#E0F2FE",
   ketukan: [
     k(
@@ -39,10 +39,10 @@ export const ADEGAN_LUAR_PELANGI_TERAPAN: AdeganStory = {
       tambah(23, teks("lk", 150, 160, "8 faktor, 4 pasang, lengkap", 11, W.hijau)),
     ),
     k(
-      "Sekarang tujuh puluh dua, Ayo Berlatih nomor empat. Faktornya dua belas: satu, dua, tiga, empat, enam, delapan, sembilan, dua belas, delapan belas, dua puluh empat, tiga puluh enam, dan tujuh puluh dua.",
+      "Sekarang tujuh puluh dua, bilangan Latihan yang berikutnya. Faktornya dua belas: satu, dua, tiga, empat, enam, delapan, sembilan, dua belas, delapan belas, dua puluh empat, tiga puluh enam, dan tujuh puluh dua.",
       bersih(0),
       tambah(0, judul("Pelangi faktor 72")),
-      tambah(4, teks("nb", 150, 36, "Ayo Berlatih nomor 4", 9, W.coklat)),
+      tambah(4, teks("nb", 150, 36, "Latihan: 72", 9, W.coklat)),
       tambah(11, c72.slice(0, 2)),
       tambah(12, c72.slice(2, 4)),
       tambah(13, c72.slice(4, 6)),
@@ -113,13 +113,13 @@ export const ADEGAN_LUAR_SUSUNAN: AdeganStory = {
 /* ------------------------------ 7. Array Model: penerapan ------------------------------ */
 export const ADEGAN_LUAR_SUSUNAN_TERAPAN: AdeganStory = {
   id: "luar-susunan-terapan",
-  judul: "Array Model pada angka buku",
-  sumber: "Metode luar: Array Model; Buku Siswa hlm. 44–46",
+  judul: "Array Model pada angka lain",
+  sumber: "Metode luar: Array Model",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      "Terapkan pada delapan belas petak, Eksplorasi dua titik tiga B. Tiga susunan: satu baris delapan belas petak, dua baris sembilan petak, dan tiga baris enam petak.",
-      tambah(0, judul("Eksplorasi 2.3B: 18 petak")),
+      "Terapkan pada delapan belas petak, seperti pada kegiatan kita tadi. Tiga susunan: satu baris delapan belas petak, dua baris sembilan petak, dan tiga baris enam petak.",
+      tambah(0, judul("Susunan untuk 18 petak")),
       tambah(12, ...kisi("b1x18", 42, 48, 12, 1, 18, 18), teks("m1", 150, 42, "1 × 18", 10, W.oranye)),
       tambah(17, ...kisi("b2x9", 42, 74, 12, 2, 9, 18, W.jingga), teks("m2", 190, 92, "2 × 9", 11, W.biru)),
       tambah(22, ...kisi("b3x6", 42, 114, 12, 3, 6, 18, W.pink), teks("m3", 160, 134, "3 × 6", 11, W.pinkTua)),
@@ -209,14 +209,14 @@ const uji = (d: number): ReturnType<typeof teks> => {
 };
 export const ADEGAN_LUAR_TANGGA_TERAPAN: AdeganStory = {
   id: "luar-tangga-terapan",
-  judul: "Trial Division Ladder pada angka buku",
-  sumber: "Metode luar: Trial Division Ladder; Buku Siswa hlm. 46",
+  judul: "Trial Division Ladder pada angka latihan",
+  sumber: "Metode luar: Trial Division Ladder",
   latar: "#EDE9FE",
   ketukan: [
     k(
-      "Terapkan pada sembilan puluh enam, Ayo Berlatih nomor lima. Uji satu: habis, hasilnya sembilan puluh enam. Uji dua: habis, hasilnya empat puluh delapan. Uji tiga: habis, hasilnya tiga puluh dua.",
+      "Terapkan pada sembilan puluh enam, bilangan Latihan yang terakhir. Uji satu: habis, hasilnya sembilan puluh enam. Uji dua: habis, hasilnya empat puluh delapan. Uji tiga: habis, hasilnya tiga puluh dua.",
       tambah(0, judul("Tangga uji bagi: 96")),
-      tambah(5, teks("nb", 150, 34, "Ayo Berlatih nomor 5", 9, W.coklat)),
+      tambah(5, teks("nb", 150, 34, "Latihan: 96", 9, W.coklat)),
       tambah(10, uji(1)),
       tambah(17, uji(2)),
       tambah(24, uji(3)),
@@ -239,10 +239,10 @@ export const ADEGAN_LUAR_TANGGA_TERAPAN: AdeganStory = {
       tambah(18, emo("st", 150, 156, "🛑", 22)),
     ),
     k(
-      "Kumpulkan semua pembagi yang habis dan hasil baginya: satu, dua, tiga, empat, enam, delapan, dua belas, enam belas, dua puluh empat, tiga puluh dua, empat puluh delapan, dan sembilan puluh enam. Semuanya cocok dengan kunci buku.",
+      "Kumpulkan semua pembagi yang habis dan hasil baginya: satu, dua, tiga, empat, enam, delapan, dua belas, enam belas, dua puluh empat, tiga puluh dua, empat puluh delapan, dan sembilan puluh enam. Jadi ada dua belas faktor.",
       hapus(0, "st"),
       tambah(9, teks("fl", 150, 148, "faktor 96: 1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 96", 9.4, W.hijau)),
-      tambah("Semuanya", ...kartu("kn", 5, 160, 290, 36, W.hijauMuda, ["kunci buku 96: 1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 96", "benar"], 7.4)),
+      tambah("Jadi", ...kartu("kn", 5, 160, 290, 36, W.hijauMuda, ["12 faktor, 6 pasang, lengkap"], 9.4)),
     ),
   ],
 };
@@ -251,7 +251,7 @@ export const ADEGAN_LUAR_TANGGA_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan empat metode luar",
-  sumber: "Ringkasan metode luar: Factor Pairs, Factor Rainbow, Array Model, Trial Division Ladder",
+  sumber: "Ringkasan metode luar",
   latar: "#FFF1F2",
   ketukan: [
     k(
@@ -271,20 +271,20 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah(21, teks("d8", 150, 164, "8 faktor", 14, W.biru)),
     ),
     k(
-      "Untuk memeriksa jawaban, gabungkan dua cara. Tangga uji bagi dipakai untuk mencari, dan busur pelangi untuk memeriksa kelengkapan. Kunci buku pun bisa diperiksa dengan cara ini.",
+      "Untuk memeriksa jawaban, gabungkan dua cara. Tangga uji bagi dipakai untuk mencari, dan busur pelangi untuk memeriksa kelengkapan. Dengan cara ini, jawabanmu bisa langsung diperiksa sendiri.",
       bersih(0),
       tambah(0, judul("Gabungkan dua cara")),
       tambah("Tangga", ...kartu("c1", 30, 36, 240, 36, W.langit, ["1. mencari: tangga uji bagi"], 10)),
       tambah("busur", ...kartu("c2", 30, 84, 240, 36, W.hijauMuda, ["2. memeriksa: busur pelangi"], 10)),
-      tambah("Kunci", ...kartu("c3", 30, 132, 240, 36, W.krem, ["kunci buku pun bisa diperiksa"], 10)),
+      tambah("Dengan", ...kartu("c3", 30, 132, 240, 36, W.krem, ["periksa sendiri jawabanmu"], 10)),
     ),
     k(
-      "Dengan begitu, kesalahan di kunci langsung ketahuan. Enam yang terlewat pada tiga puluh enam, dan empat yang salah masuk pada lima puluh empat. Metode mana pun pilihanmu, hasilnya harus sama.",
+      "Dengan begitu, kesalahan langsung ketahuan. Hati-hati: pada tiga puluh enam, angka enam sering terlewat, dan pada lima puluh empat, angka empat sering salah masuk. Metode mana pun pilihanmu, hasilnya harus sama.",
       bersih(0),
-      tambah(0, judul("Kesalahan kunci ketahuan", W.merah)),
-      tambah(7, ...kartu("e1", 20, 40, 260, 46, W.merahMuda, ["36: angka 6 terlewat", "kunci buku 36: 1, 2, 3, 4, 9, 12, 18, 36"], 9.4)),
-      tambah(14, ...kartu("e2", 20, 96, 260, 46, W.merahMuda, ["54: angka 4 salah masuk", "kunci buku 54: 1, 2, 3, 4, 9, 18, 27, 54"], 9.4)),
-      tambah(23, ...kartu("e3", 40, 152, 220, 34, W.hijauMuda, ["metode apa pun: hasil sama"], 10)),
+      tambah(0, judul("Hati-hati, kesalahan umum", W.merah)),
+      tambah("tiga", ...kartu("e1", 20, 40, 260, 46, W.merahMuda, ["36: angka 6 sering terlewat", "faktor 36: 1, 2, 3, 4, 6, 9, 12, 18, 36"], 9.4)),
+      tambah("lima", ...kartu("e2", 20, 96, 260, 46, W.merahMuda, ["54: angka 4 sering salah masuk", "faktor 54: 1, 2, 3, 6, 9, 18, 27, 54"], 9.4)),
+      tambah("Metode", ...kartu("e3", 40, 152, 220, 34, W.hijauMuda, ["metode apa pun: hasil sama"], 10)),
     ),
   ],
 };

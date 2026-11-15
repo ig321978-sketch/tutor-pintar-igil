@@ -17,8 +17,8 @@ const tabelPenuh = (n: number): Obj[] => [...rangkaTabel(), ...faktor(n).flatMap
 /* ------------------------------ 5. Eksplorasi 2.3A: memotong pita (Buku Siswa hlm. 43) ------------------------------ */
 export const ADEGAN_EKS23A: AdeganStory = {
   id: "eks-23a",
-  judul: "Eksplorasi 2.3A: Ayo Berkreasi",
-  sumber: "Buku Siswa hlm. 43",
+  judul: "Memotong pita kertas",
+  sumber: "Materi: memotong pita kertas",
   latar: "#FFF7ED",
   kutipan: [
     "Eksplorasi 2.3A",
@@ -31,11 +31,11 @@ export const ADEGAN_EKS23A: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi dua titik tiga A, Ayo Berkreasi. Langkah satu: sediakan enam lembar potongan kertas berpetak. Tiap potongan panjangnya dua belas petak dan lebarnya satu petak.",
-      tambah(0, judul("Eksplorasi 2.3A")),
+      "Sekarang kita potong pita kertas berpetak. Langkah satu: sediakan enam lembar potongan kertas berpetak. Tiap potongan panjangnya dua belas petak dan lebarnya satu petak.",
+      tambah(0, judul("Memotong pita kertas")),
       tambah("Langkah", teks("l1", 150, 40, "Langkah 1", 11, W.merah)),
       tambah("enam", teks("l6", 150, 58, "6 lembar", 11, W.coklat)),
-      tambah("dua@2", ...pita("p12x12", 42, 82, 216, 18, 12, 12, W.hijauPita), teks("kp", 150, 74, "panjang 12 petak", 10, W.hitam)),
+      tambah("dua", ...pita("p12x12", 42, 82, 216, 18, 12, 12, W.hijauPita), teks("kp", 150, 74, "panjang 12 petak", 10, W.hitam)),
       tambah("lebarnya", teks("lb", 150, 120, "lebar 1 petak", 10, W.hitam)),
     ),
     k(
@@ -76,7 +76,7 @@ export const ADEGAN_EKS23A: AdeganStory = {
 export const ADEGAN_TABEL12: AdeganStory = {
   id: "tabel-12",
   judul: "Tabel potongan dan faktor dari 12",
-  sumber: "Buku Siswa hlm. 44; Panduan Guru hlm. 64",
+  sumber: "Materi: faktor dari 12",
   latar: "#F0F9FF",
   kutipan: [
     "Tuliskan hasil pemotongan kertas pada tabel berikut.",
@@ -155,8 +155,8 @@ export const ADEGAN_TABEL12: AdeganStory = {
 /* ------------------------------ 7. Eksplorasi 2.3B: faktor dari 18 (Buku Siswa hlm. 44 dan 45; Panduan Guru hlm. 64 dan 65) ------------------------------ */
 export const ADEGAN_EKS23B: AdeganStory = {
   id: "eks-23b",
-  judul: "Eksplorasi 2.3B: faktor dari 18",
-  sumber: "Buku Siswa hlm. 44–45; Panduan Guru hlm. 64–65",
+  judul: "Faktor dari 18",
+  sumber: "Materi: faktor dari 18",
   latar: "#ECFDF5",
   kutipan: [
     "Eksplorasi 2.3B Ayo Menemukan Faktor dari 18",
@@ -171,11 +171,11 @@ export const ADEGAN_EKS23B: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi dua titik tiga B, Ayo Menemukan Faktor dari delapan belas. Kegiatannya sama dengan sebelumnya, dan boleh dikerjakan bersama-sama. Sekarang yang dicari faktornya adalah delapan belas.",
-      tambah(0, judul("Eksplorasi 2.3B")),
-      tambah("Menemukan", teks("n18", 150, 100, "18", 52, W.hijau)),
-      tambah("sebelumnya,", ...kartu("e1", 40, 118, 220, 32, W.langit, ["kegiatan sama dengan 2.3A"], 9.8)),
-      tambah("Sekarang", teks("e2", 150, 176, "cari faktor dari 18", 12, W.ungu)),
+      "Sekarang kita cari faktor dari delapan belas. Kegiatannya sama dengan sebelumnya, dan boleh dikerjakan bersama-sama. Pita yang dipotong sekarang panjangnya delapan belas petak.",
+      tambah(0, judul("Faktor dari 18")),
+      tambah("delapan", teks("n18", 150, 100, "18", 52, W.hijau)),
+      tambah("sebelumnya,", ...kartu("e1", 40, 118, 220, 32, W.langit, ["kegiatan sama dengan tadi"], 9.8)),
+      tambah("petak.", teks("e2", 150, 176, "cari faktor dari 18", 12, W.ungu)),
     ),
     k(
       "Langkah satu: gambar enam persegi panjang dengan panjang delapan belas satuan. Bagi tiap persegi panjang menjadi bagian sama panjang tanpa sisa, lalu warnai bagian yang berdekatan dengan warna berbeda.",
@@ -242,7 +242,7 @@ const ks12 = kurungDeret("f12", xs6, 70, 15, 6);
 export const ADEGAN_PASANGAN: AdeganStory = {
   id: "pasangan-faktor",
   judul: "Faktor saling berpasangan",
-  sumber: "Buku Siswa hlm. 45",
+  sumber: "Materi: faktor berpasangan",
   latar: "#FDF4FF",
   kutipan: [
     "Faktor-faktor pada suatu bilangan saling berpasangan. Contohnya faktor dari 18 berikut.",
@@ -252,9 +252,9 @@ export const ADEGAN_PASANGAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Perhatikan kotak ide di buku: faktor-faktor pada suatu bilangan saling berpasangan. Contohnya faktor dari delapan belas.",
+      "Perhatikan ini: faktor-faktor pada suatu bilangan saling berpasangan. Contohnya faktor dari delapan belas.",
       tambah(0, judul("Faktor saling berpasangan")),
-      tambah("kotak", emo("id", 150, 150, "💡", 30)),
+      tambah(1, emo("id", 150, 150, "💡", 30)),
       tambah("Contohnya", ...deret("f18", xs6, 70, 15, faktor(18))),
     ),
     k(
@@ -285,7 +285,7 @@ export const ADEGAN_PASANGAN: AdeganStory = {
     k(
       "Cara berpikir ini membantu: kalau kita sudah menemukan sebuah faktor, pasangannya langsung ikut ketemu.",
       bersih(0),
-      tambah(0, judul("Satu faktor, dua temuan")),
+      tambah(0, judul("Satu faktor, dua pasangan")),
       tambah("menemukan", teks("m1", 150, 72, "ketemu faktor 3", 14, W.pinkTua)),
       tambah("pasangannya", teks("m2", 150, 112, "12 : 3 = 4", 22, W.hijau), teks("m3", 150, 144, "pasangannya 4", 12, W.biru)),
     ),

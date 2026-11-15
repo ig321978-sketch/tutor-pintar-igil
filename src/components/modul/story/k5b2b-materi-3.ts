@@ -6,7 +6,7 @@ import { bersih, k, sorotkan, tambah, warnai } from "./k5b2b-bantu";
 export const ADEGAN_DISKUSI: AdeganStory = {
   id: "diskusi-asep-lukas",
   judul: "Ayo Berdiskusi: jadwal Asep dan Lukas",
-  sumber: "Buku Siswa hlm. 42; Panduan Guru hlm. 56–58",
+  sumber: "Materi: jadwal latihan Asep dan Lukas",
   latar: "#F5F3FF",
   kutipan: [
     "Ayo Berdiskusi",
@@ -29,7 +29,7 @@ export const ADEGAN_DISKUSI: AdeganStory = {
   ketukan: [
     k(
       "Ayo Berdiskusi. Pertama, perhatikan cara Nisa dan Yohana menentukan jadwal latihan terdekat, diskusikan dengan teman kelompokmu, lalu presentasikan.",
-      tambah(0, judul("Ayo Berdiskusi 1")),
+      tambah(0, judul("Berdiskusi: cara Nisa")),
       tambah("Nisa", ...kartu("d1", 24, 40, 252, 36, W.langit, ["cara Nisa dan Yohana", "menentukan jadwal terdekat"], 9)),
       tambah("kelompokmu,", emo("d2", 60, 128, "💬", 30), ...kartu("d3", 100, 100, 176, 40, W.hijauMuda, ["diskusi dengan", "teman kelompok"], 9)),
       tambah("presentasikan", emo("d4", 150, 178, "📢", 26)),
@@ -37,16 +37,16 @@ export const ADEGAN_DISKUSI: AdeganStory = {
     k(
       "Kedua, Asep dan Lukas juga ikut kelas berenang di tempat yang sama. Asep berlatih setiap tiga hari dan Lukas setiap lima hari. Pada tanggal dua puluh Agustus mereka berlatih bersama. Kapan lagi paling dekat?",
       bersih(0),
-      tambah(0, judul("Ayo Berdiskusi 2")),
+      tambah(0, judul("Berdiskusi: Asep dan Lukas")),
       tambah("Asep@2", ...kartu("as", 20, 40, 120, 40, W.hijauMuda, ["Asep", "tiap 3 hari"], 9.6)),
       tambah("Lukas@2", ...kartu("lk", 160, 40, 120, 40, W.langit, ["Lukas", "tiap 5 hari"], 9.6)),
       tambah("tanggal", ...kartu("tg", 60, 100, 180, 40, W.krem, ["20 Agustus", "berlatih bersama"], 10)),
       tambah("Kapan", teks("kp", 150, 178, "bersama lagi kapan?", 14, W.merah)),
     ),
     k(
-      "Panduan guru menunjukkan dua cara. Cara pertama memakai kalender, menandai hari latihan satu per satu. Cara kedua memakai KPK, lalu menambahkannya ke tanggal terakhir berlatih.",
+      "Ada dua cara untuk menjawabnya. Cara pertama memakai kalender, menandai hari latihan satu per satu. Cara kedua memakai KPK, lalu menambahkannya ke tanggal terakhir berlatih.",
       bersih(0),
-      tambah(0, judul("Dua cara menurut panduan guru")),
+      tambah(0, judul("Dua cara menjawabnya")),
       tambah("pertama", ...kartu("c1", 20, 44, 260, 44, W.hijauMuda, ["Cara 1: kalender", "tandai hari latihan satu per satu"], 9.4)),
       tambah("kedua", ...kartu("c2", 20, 108, 260, 44, W.langit, ["Cara 2: KPK", "tambahkan ke tanggal terakhir berlatih"], 9.4)),
     ),
@@ -65,11 +65,11 @@ export const ADEGAN_DISKUSI: AdeganStory = {
       tambah("satu", teks("am2", 222, 114, "September", 8.4, W.coklat)),
     ),
     k(
-      "Kedua jadwal bertemu pertama kali pada tanggal empat September. Catatan guru: daftar Asep di panduan guru melompat dari dua puluh sembilan Agustus ke empat September, melewatkan satu September.",
+      "Kedua jadwal bertemu pertama kali pada tanggal empat September. Hati-hati, jangan sampai satu September terlewat saat menandai jadwal Asep.",
       warnai("empat", W.emas, "lk-3", "ap-5"),
       sorotkan("empat", "lk-3", "ap-5"),
       tambah("empat", teks("bt", 150, 164, "bersama lagi: 4 September", 12, W.merah)),
-      tambah("Catatan", teks("ct", 150, 184, "daftar Asep di panduan guru melewatkan 1 September", 7.6, W.coklat)),
+      tambah("Hati-hati", teks("ct", 150, 184, "jangan lewatkan 1 September di jadwal Asep", 8, W.coklat)),
     ),
     k(
       "Cara dua, KPK. Kelipatan tiga dan kelipatan lima pertama kali sama pada lima belas. Jadi KPK tiga dan lima adalah lima belas.",
@@ -110,8 +110,8 @@ export const ADEGAN_DISKUSI: AdeganStory = {
 /* ------------------------------ 9. Ayo Berlatih (Buku Siswa hlm. 42; Panduan Guru hlm. 60) ------------------------------ */
 export const ADEGAN_BERLATIH: AdeganStory = {
   id: "berlatih-b",
-  judul: "Ayo Berlatih: KPK dan les piano",
-  sumber: "Buku Siswa hlm. 42; Panduan Guru hlm. 60",
+  judul: "Latihan: KPK dan les piano",
+  sumber: "Materi: latihan KPK dan les piano",
   latar: "#FEFCE8",
   kutipan: [
     "Ayo Berlatih",
@@ -130,17 +130,17 @@ export const ADEGAN_BERLATIH: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Berlatih. Nomor satu: tentukan KPK dari lima dan tujuh, dari enam dan delapan, serta dari tiga, empat, dan lima. Nomor dua tentang les piano Dinda dan Amelia.",
-      tambah(0, judul("Ayo Berlatih")),
+      "Sekarang Latihan satu: tentukan KPK dari lima dan tujuh, dari enam dan delapan, serta dari tiga, empat, dan lima. Lalu Latihan dua tentang les piano Dinda dan Amelia.",
+      tambah(0, judul("Latihan 1 dan Latihan 2")),
       tambah("lima", ...kartu("a", 14, 36, 128, 50, W.hijauMuda, ["1a", "KPK 5 dan 7"], 9.6)),
       tambah("enam", ...kartu("b", 158, 36, 128, 50, W.langit, ["1b", "KPK 6 dan 8"], 9.6)),
       tambah("tiga,", ...kartu("c", 14, 104, 128, 50, W.krem, ["1c", "KPK 3, 4, dan 5"], 9.6)),
       tambah("piano", ...kartu("d", 158, 104, 128, 50, W.pink, ["2", "les piano"], 9.6)),
     ),
     k(
-      "Soal a, lima dan tujuh. Kelipatan lima dan kelipatan tujuh pertama kali sama pada tiga puluh lima. Jadi KPK lima dan tujuh adalah tiga puluh lima. Berikutnya tujuh puluh.",
+      "Bagian a, lima dan tujuh. Kelipatan lima dan kelipatan tujuh pertama kali sama pada tiga puluh lima. Jadi KPK lima dan tujuh adalah tiga puluh lima. Berikutnya tujuh puluh.",
       bersih(0),
-      tambah(0, judul("1a: KPK 5 dan 7")),
+      tambah(0, judul("Latihan 1a: KPK 5 dan 7")),
       tambah("lima", teks("t5", 150, 42, "kelipatan 5", 9, W.hijau), ...deretAngka("p5", 24, 48, 36, 22, kelipatan(5, 7))),
       tambah("tujuh", teks("t7", 150, 96, "kelipatan 7", 9, W.coklat), ...deretAngka("p7", 24, 102, 36, 22, kelipatan(7, 5))),
       warnai("tiga", W.emas, "p5-6", "p7-4"),
@@ -148,9 +148,9 @@ export const ADEGAN_BERLATIH: AdeganStory = {
       tambah("Berikutnya", teks("h2", 150, 182, "berikutnya: 70", 10, W.merah)),
     ),
     k(
-      "Soal b, enam dan delapan. Kelipatan enam dan kelipatan delapan pertama kali sama pada dua puluh empat, lalu empat puluh delapan. Jadi KPK enam dan delapan adalah dua puluh empat.",
+      "Bagian b, enam dan delapan. Kelipatan enam dan kelipatan delapan pertama kali sama pada dua puluh empat, lalu empat puluh delapan. Jadi KPK enam dan delapan adalah dua puluh empat.",
       bersih(0),
-      tambah(0, judul("1b: KPK 6 dan 8")),
+      tambah(0, judul("Latihan 1b: KPK 6 dan 8")),
       tambah("enam", teks("u6", 150, 42, "kelipatan 6", 9, W.hijau), ...deretAngka("q6", 30, 48, 30, 22, kelipatan(6, 8))),
       tambah("delapan", teks("u8", 150, 96, "kelipatan 8", 9, W.coklat), ...deretAngka("q8", 30, 102, 30, 22, kelipatan(8, 6))),
       warnai("dua", W.merahPita, "q6-3", "q8-2"),
@@ -158,26 +158,26 @@ export const ADEGAN_BERLATIH: AdeganStory = {
       tambah("Jadi", teks("g1", 150, 164, "KPK 6 dan 8 = 24", 16, W.biru)),
     ),
     k(
-      "Soal c, tiga, empat, dan lima. Kelipatan tiga dan empat bertemu di dua belas, dua puluh empat, tiga puluh enam, empat puluh delapan, enam puluh. Hanya enam puluh yang juga kelipatan lima.",
+      "Bagian c, tiga, empat, dan lima. Kelipatan tiga dan empat bertemu di dua belas, dua puluh empat, tiga puluh enam, empat puluh delapan, enam puluh. Hanya enam puluh yang juga kelipatan lima.",
       bersih(0),
-      tambah(0, judul("1c: KPK 3, 4, dan 5")),
+      tambah(0, judul("Latihan 1c: KPK 3, 4, dan 5")),
       tambah("Kelipatan", teks("v1", 150, 52, "3 dan 4 sama di: 12, 24, 36, 48, 60, ...", 9.4, W.hijau)),
       tambah("Hanya", teks("v2", 150, 78, "kelipatan 5: 5, 10, 15, ..., 55, 60", 9.4, W.coklat)),
       tambah("enam@3", teks("v3", 150, 112, "yang sama untuk ketiganya: 60", 12, W.merah)),
       tambah("lima@2", teks("v4", 150, 158, "KPK 3, 4, dan 5 = 60", 18, W.biru)),
     ),
     k(
-      "Dua catatan untuk kunci panduan guru. Pada daftar kelipatan enam tertulis tiga puluh dua; seharusnya tiga puluh. Pada daftar kelipatan tiga, bilangan sembilan terlewat. Kedua KPK tetap benar.",
+      "Mari periksa daftar kelipatan dengan teliti. Kelipatan enam: enam, dua belas, delapan belas, dua puluh empat, tiga puluh, tiga puluh enam. Kelipatan tiga: jangan lewatkan sembilan. Hasilnya cocok, KPK dua puluh empat dan enam puluh.",
       bersih(0),
-      tambah(0, judul("Dua catatan untuk kunci")),
-      tambah("enam", ...kartu("n1", 14, 40, 272, 50, W.pink, ["kelipatan 6 di kunci: 24, 32, 36", "seharusnya: 24, 30, 36"], 9.4)),
-      tambah("sembilan", ...kartu("n2", 14, 106, 272, 50, W.krem, ["kelipatan 3 di kunci: 3, 6, 12, 15", "seharusnya: 3, 6, 9, 12, 15"], 9.4)),
-      tambah("benar.", teks("n3", 150, 184, "KPK 24 dan 60 tetap benar", 10, W.hijau)),
+      tambah(0, judul("Periksa daftar kelipatan")),
+      tambah("enam", ...kartu("n1", 14, 40, 272, 50, W.pink, ["kelipatan 6: 6, 12, 18, 24, 30, 36", "jangan sampai salah menulis"], 9.4)),
+      tambah("sembilan", ...kartu("n2", 14, 106, 272, 50, W.krem, ["kelipatan 3: 3, 6, 9, 12, 15", "9 jangan terlewat"], 9.4)),
+      tambah("cocok", teks("n3", 150, 184, "KPK 24 dan 60 cocok", 10, W.hijau)),
     ),
     k(
-      "Nomor dua. Dinda berlatih setiap lima hari dan Amelia setiap dua hari. Pada tanggal empat belas Juli mereka berlatih bersama. Kelipatan dua dan lima pertama kali sama pada sepuluh, jadi KPK dua dan lima adalah sepuluh.",
+      "Latihan dua. Dinda berlatih setiap lima hari dan Amelia setiap dua hari. Pada tanggal empat belas Juli mereka berlatih bersama. Kelipatan dua dan lima pertama kali sama pada sepuluh, jadi KPK dua dan lima adalah sepuluh.",
       bersih(0),
-      tambah(0, judul("Nomor 2: les piano")),
+      tambah(0, judul("Latihan 2: les piano")),
       tambah("Dinda", ...kartu("l1", 20, 34, 120, 36, W.hijauMuda, ["Dinda", "tiap 5 hari"], 9.4), ...kartu("l2", 160, 34, 120, 36, W.langit, ["Amelia", "tiap 2 hari"], 9.4)),
       tambah("tanggal", teks("l3", 150, 94, "14 Juli: berlatih bersama", 10.4, W.coklat)),
       tambah("Kelipatan", teks("l4", 150, 120, tulisKelipatan(2, 6), 9, W.hijau), teks("l5", 150, 140, tulisKelipatan(5, 4), 9, W.coklat)),
@@ -197,8 +197,8 @@ export const ADEGAN_BERLATIH: AdeganStory = {
 /* ------------------------------ 10. Miskonsepsi dan diferensiasi (Panduan Guru hlm. 58) ------------------------------ */
 export const ADEGAN_MISKONSEPSI: AdeganStory = {
   id: "miskonsepsi-b",
-  judul: "Tiga kesalahan umum dan diferensiasi",
-  sumber: "Panduan Guru hlm. 58",
+  judul: "Hati-hati dan tantangan",
+  sumber: "Materi: kesalahan yang sering terjadi",
   latar: "#FFF1F2",
   kutipan: [
     "Kesalahan yang mungkin dilakukan peserta didik saat menentukan KPK adalah",
@@ -215,10 +215,10 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Panduan guru mencatat tiga kesalahan yang mungkin terjadi saat menentukan KPK. Kesalahan pertama: keliru dengan konsep FPB, yang baru kita pelajari nanti. Guru memastikan keduanya bisa dibedakan.",
-      tambah(0, judul("Tiga kesalahan umum")),
-      tambah("pertama:", teks("s1", 36, 70, "1", 26, W.merah), ...kartu("m1", 62, 48, 220, 46, W.pink, ["tertukar dengan konsep FPB", "(dipelajari nanti)"], 9.4)),
-      tambah("dibedakan.", emo("m2", 150, 150, "🤔", 34)),
+      "Hati-hati, ada tiga kesalahan yang sering terjadi saat menentukan KPK. Kesalahan pertama: mengira KPK sama dengan jumlah kedua bilangan. Tiga ditambah empat sama dengan tujuh, tetapi KPK tiga dan empat adalah dua belas.",
+      tambah(0, judul("Hati-hati: tiga kesalahan")),
+      tambah("pertama:", teks("s1", 36, 70, "1", 26, W.merah), ...kartu("m1", 62, 48, 220, 46, W.pink, ["KPK bukan jumlah dua bilangan", "3 + 4 = 7, KPK 3 dan 4 = 12"], 9.4)),
+      tambah("tetapi", emo("m2", 150, 150, "🤔", 34)),
     ),
     k(
       "Kesalahan kedua: mengira KPK dari dua bilangan selalu hasil kalinya. Cara itu memang menghasilkan sebuah kelipatan persekutuan, tetapi belum tentu yang terkecil.",
@@ -229,10 +229,10 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
       tambah("terkecil.", ...kartu("k3", 70, 116, 160, 42, W.hijauMuda, ["KPK 6 dan 8 = 24", "24 lebih kecil dari 48"], 10)),
     ),
     k(
-      "Hasil kali itu menjadi KPK hanya jika kedua bilangan tidak punya pembagi bersama selain satu. Contohnya lima dan tujuh: lima kali tujuh adalah tiga puluh lima, dan itu memang KPK-nya.",
+      "Kadang hasil kali kebetulan sama dengan KPK, tetapi tidak selalu. Contohnya lima dan tujuh: lima kali tujuh adalah tiga puluh lima, dan itu memang KPK-nya.",
       bersih(0),
-      tambah(0, judul("Kapan hasil kali = KPK?")),
-      tambah("hanya", ...kartu("h1", 24, 38, 252, 40, W.krem, ["hanya jika kedua bilangan tidak punya", "pembagi bersama selain 1"], 9)),
+      tambah(0, judul("Hasil kali kadang sama")),
+      tambah("Kadang", ...kartu("h1", 24, 38, 252, 40, W.krem, ["kadang hasil kali = KPK,", "tetapi tidak selalu"], 9)),
       tambah("Contohnya", teks("h2", 150, 120, "5 × 7 = 35", 20, W.hitam)),
       tambah("memang", teks("h3", 150, 154, "KPK 5 dan 7 = 35", 15, W.biru)),
     ),
@@ -244,20 +244,19 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
       tambah("Seharusnya", ...kartu("t2", 20, 100, 260, 44, W.hijauMuda, ["60: kelipatan 3, 4, dan 5", "KPK 3, 4, dan 5 = 60"], 9.4)),
     ),
     k(
-      "Untuk peserta didik berkecepatan belajar tinggi, mintalah mereka mengerjakan latihan tanpa bantuan, sementara guru mendampingi yang kesulitan. Guru juga dapat memberi soal tambahan.",
+      "Tantangan untukmu: coba cari KPK dua bilangan lain tanpa bantuan, lalu jelaskan caramu kepada temanmu. Renungan: bagian mana yang masih membuatmu ragu?",
       bersih(0),
-      tambah(0, judul("Diferensiasi")),
-      tambah("tinggi,", emo("f1", 70, 90, "🚀", 36), ...kartu("f2", 110, 70, 170, 40, W.langit, ["latihan tanpa bantuan"], 9.4)),
-      tambah("mendampingi", emo("f3", 70, 150, "🤝", 36), ...kartu("f4", 110, 130, 170, 40, W.hijauMuda, ["guru mendampingi", "yang kesulitan"], 9.4)),
+      tambah(0, judul("Tantangan dan renungan")),
+      tambah("Tantangan", emo("f1", 70, 76, "🚀", 36), ...kartu("f2", 110, 56, 170, 40, W.langit, ["cari KPK dua bilangan lain", "tanpa bantuan"], 9.4)),
+      tambah("Renungan", emo("f3", 70, 146, "💭", 36), ...kartu("f4", 110, 126, 170, 40, W.hijauMuda, ["bagian mana yang", "masih membuatku ragu?"], 9.4)),
     ),
   ],
 };
 
-/* ------------------------------ 11. Soal tambahan Warung Kelontong dan Refleksi (Panduan Guru hlm. 59; Buku Siswa hlm. 60) ------------------------------ */
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup-b",
-  judul: "Soal tambahan dan Refleksi",
-  sumber: "Panduan Guru hlm. 59; Buku Siswa hlm. 60",
+  judul: "Tantangan dan renungan",
+  sumber: "Materi: tantangan Warung Kelontong",
   latar: "#F0FDF4",
   kutipan: [
     "Soal Tambahan",
@@ -279,8 +278,8 @@ export const ADEGAN_PENUTUP: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Soal tambahan, Warung Kelontong. Sebuah warung menerima pasokan telur setiap tiga hari, beras setiap lima hari, dan gula pasir setiap tujuh hari. Pada tanggal dua puluh September ketiganya datang bersamaan.",
-      tambah(0, judul("Soal tambahan: Warung Kelontong")),
+      "Tantangan, Warung Kelontong. Sebuah warung menerima pasokan telur setiap tiga hari, beras setiap lima hari, dan gula pasir setiap tujuh hari. Pada tanggal dua puluh September ketiganya datang bersamaan.",
+      tambah(0, judul("Tantangan: Warung Kelontong")),
       tambah("telur", emo("w1", 60, 70, "🥚", 28), ...kartu("w2", 20, 88, 80, 36, W.krem, ["telur", "tiap 3 hari"], 8.8)),
       tambah("beras", emo("w3", 150, 70, "🌾", 28), ...kartu("w4", 110, 88, 80, 36, W.hijauMuda, ["beras", "tiap 5 hari"], 8.8)),
       tambah("gula", emo("w5", 240, 70, "🧂", 28), ...kartu("w6", 200, 88, 80, 36, W.langit, ["gula pasir", "tiap 7 hari"], 8.8)),
@@ -295,21 +294,21 @@ export const ADEGAN_PENUTUP: AdeganStory = {
       tambah("seratus", teks("x3", 150, 140, "KPK 3, 5, dan 7 = 105", 17, W.biru)),
     ),
     k(
-      "Panduan guru tidak memberi kunci soal ini. Hitungan kita: seratus lima hari setelah dua puluh September jatuh pada tanggal tiga Januari tahun berikutnya.",
+      "Mari kita hitung seratus lima hari setelah dua puluh September. Sisa September sepuluh hari, Oktober tiga puluh satu, November tiga puluh, Desember tiga puluh satu. Tinggal tiga hari lagi, jadi jatuh pada tanggal tiga Januari.",
       bersih(0),
-      tambah(0, judul("Hitungan kita sendiri")),
-      tambah("tidak", ...kartu("y1", 30, 40, 240, 40, W.pink, ["panduan guru tidak memberi kunci", "untuk soal tambahan ini"], 9)),
+      tambah(0, judul("Hitung harinya")),
+      tambah("Sisa", ...kartu("y1", 30, 40, 240, 40, W.pink, ["sisa September 10, Oktober 31,", "November 30, Desember 31"], 9)),
       tambah("seratus", teks("y2", 150, 112, "20 September + 105 hari", 12, W.hitam)),
       tambah("tanggal", ...kartu("y3", 60, 128, 180, 44, W.hijauMuda, ["3 Januari 2023", "ketiganya datang lagi"], 10.4)),
     ),
     k(
-      "Guru menutup dengan refleksi. Peserta didik menjawab pertanyaan refleksi nomor dua, tiga, dan tujuh pada tabel di buku siswa, dengan memberi tanda centang pada ya atau tidak.",
+      "Sebagai renungan, tanyakan pada dirimu. Apakah aku dapat menemukan kelipatan persekutuan dua bilangan atau lebih? Apakah aku dapat menemukan KPK? Dan apakah aku dapat menyelesaikan masalah jadwal dengan KPK?",
       bersih(0),
-      tambah(0, judul("Refleksi nomor 2, 3, dan 7")),
-      tambah("dua,", ...kartu("r2", 14, 38, 272, 36, W.hijauMuda, ["2 Aku dapat menemukan kelipatan persekutuan", "dua bilangan atau lebih"], 8.6)),
-      tambah("tiga,", ...kartu("r3", 14, 84, 272, 36, W.langit, ["3 Aku dapat menemukan kelipatan persekutuan", "terkecil (KPK) dua bilangan atau lebih"], 8.6)),
-      tambah("tujuh", ...kartu("r7", 14, 130, 272, 36, W.krem, ["7 Aku dapat menyelesaikan masalah", "menggunakan KPK dan FPB"], 8.6)),
-      tambah("centang", teks("r8", 80, 192, "✓ Ya", 11, W.hijau), teks("r9", 220, 192, "✗ Tidak", 11, W.merah)),
+      tambah(0, judul("Renungan")),
+      tambah("kelipatan", ...kartu("r2", 14, 38, 272, 36, W.hijauMuda, ["Aku dapat menemukan kelipatan persekutuan", "dua bilangan atau lebih"], 8.6)),
+      tambah("KPK", ...kartu("r3", 14, 84, 272, 36, W.langit, ["Aku dapat menemukan kelipatan persekutuan", "terkecil (KPK) dua bilangan atau lebih"], 8.6)),
+      tambah("jadwal", ...kartu("r7", 14, 130, 272, 36, W.krem, ["Aku dapat menyelesaikan masalah", "jadwal dengan KPK"], 8.6)),
+      tambah("renungan,", emo("r8", 150, 190, "💭", 22)),
     ),
   ],
 };

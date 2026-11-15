@@ -9,7 +9,7 @@ const ubahSama = (id: string, isi: number[], sama: number[], lain: string) => is
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk mencari FPB",
-  sumber: "Metode luar: pembuka; contoh Buku Siswa hlm. 48–53 dan Panduan Guru hlm. 72–76",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -36,11 +36,11 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("jalan", teks("g4", 150, 164, "jalan menemukannya berbeda", 10.4, W.merah)),
     ),
     k(
-      "Angka dari buku: dua belas dan delapan belas, soal tambahan, pasangan delapan dan dua puluh, mawar Nisa, dan paket Dania.",
+      "Angka yang kita pakai: dua belas dan delapan belas, pasangan lain, pasangan delapan dan dua puluh, mawar Nisa, dan paket Dania.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka yang kita pakai")),
       tambah("belas", ...kartu("a1", 14, 32, 272, 28, W.hijauMuda, ["daftar: 12 dan 18; 18 dan 24; 14 dan 28"], 8.6)),
-      tambah("pasangan", ...kartu("a2", 14, 68, 272, 28, W.langit, ["irisan: 8 dan 20; 12 dan 28; 6 dan 12"], 8.6)),
+      tambah("pasangan@2", ...kartu("a2", 14, 68, 272, 28, W.langit, ["irisan: 8 dan 20; 12 dan 28; 6 dan 12"], 8.6)),
       tambah("mawar", ...kartu("a3", 14, 104, 272, 28, W.krem, ["selisih: 24 dan 18; 42 dan 12"], 8.6)),
       tambah("Dania.", ...kartu("a4", 14, 140, 272, 28, W.pink, ["paket: mawar 24 dan 18; Dania 36, 48, 24"], 8.2)),
     ),
@@ -95,13 +95,13 @@ const E14 = [1, 2, 7, 14];
 const E28 = [1, 2, 4, 7, 14, 28];
 export const ADEGAN_LUAR_DAFTAR_TERAPAN: AdeganStory = {
   id: "luar-daftar-terapan",
-  judul: "Common Factors List pada soal tambahan buku",
-  sumber: "Metode luar: Common Factors List; Panduan Guru hlm. 72 (soal tambahan 1 dan 2)",
+  judul: "Common Factors List pada dua contoh lagi",
+  sumber: "Metode luar: Common Factors List",
   latar: "#ECFDF5",
   ketukan: [
     k(
-      "Terapkan pada soal tambahan nomor satu: delapan belas dan dua puluh empat. Faktor delapan belas: satu, dua, tiga, enam, sembilan, delapan belas. Faktor dua puluh empat: satu, dua, tiga, empat, enam, delapan, dua belas, dua puluh empat.",
-      tambah(0, judul("Soal tambahan 1: 18 dan 24")),
+      "Terapkan pada pasangan pertama: delapan belas dan dua puluh empat. Faktor delapan belas: satu, dua, tiga, enam, sembilan, delapan belas. Faktor dua puluh empat: satu, dua, tiga, empat, enam, delapan, dua belas, dua puluh empat.",
+      tambah(0, judul("Contoh 1: 18 dan 24")),
       tambah("Faktor", teks("s18", 20, 74, "18", 10.4, W.hijau), ...barisSel("t18", 38, 58, 31, 24, E18, W.hijauMuda, 9.6)),
       tambah("Faktor@2", teks("s24", 20, 122, "24", 10.4, W.merah), ...barisSel("t24", 38, 106, 31, 24, E24, W.merahMuda, 9.6)),
     ),
@@ -111,9 +111,9 @@ export const ADEGAN_LUAR_DAFTAR_TERAPAN: AdeganStory = {
       tambah("jadi", teks("sf", 150, 170, "FPB dari 18 dan 24 adalah 6", 12, W.hijau)),
     ),
     k(
-      "Contoh kedua, soal tambahan nomor dua: empat belas dan dua puluh delapan. Faktor empat belas: satu, dua, tujuh, empat belas. Faktor dua puluh delapan: satu, dua, empat, tujuh, empat belas, dua puluh delapan.",
+      "Contoh kedua: empat belas dan dua puluh delapan. Faktor empat belas: satu, dua, tujuh, empat belas. Faktor dua puluh delapan: satu, dua, empat, tujuh, empat belas, dua puluh delapan.",
       bersih(0),
-      tambah(0, judul("Soal tambahan 2: 14 dan 28")),
+      tambah(0, judul("Contoh 2: 14 dan 28")),
       tambah("Faktor", teks("u14", 20, 74, "14", 10.4, W.hijau), ...barisSel("v14", 40, 58, 40, 24, E14, W.hijauMuda, 10)),
       tambah("Faktor@2", teks("u28", 20, 122, "28", 10.4, W.merah), ...barisSel("v28", 40, 106, 40, 24, E28, W.merahMuda, 10)),
     ),
@@ -140,7 +140,7 @@ export const ADEGAN_LUAR_GCF: AdeganStory = {
       tambah("beririsan.", teks("vi", 150, 176, "irisan: faktor persekutuan", 10.4, W.coklat)),
     ),
     k(
-      "Contohnya delapan dan dua puluh, dari soal b Eksplorasi dua titik empat A. Faktor delapan: satu, dua, empat, delapan. Faktor dua puluh: satu, dua, empat, lima, sepuluh, dua puluh.",
+      "Contohnya delapan dan dua puluh, seperti pada permainan congklak tadi. Faktor delapan: satu, dua, empat, delapan. Faktor dua puluh: satu, dua, empat, lima, sepuluh, dua puluh.",
       ubah("Contohnya", { id: "va", isi: "faktor 8" }, { id: "vb", isi: "faktor 20" }),
       tambah("delapan@3", ...irisan("g", 100, 160, 104, 44, [8], [1, 2, 4], []).filter((o) => /^g-[lm]/.test(o.id))),
       tambah("puluh@3", ...irisan("g", 100, 160, 104, 44, [], [], [5, 10, 20]).filter((o) => /^g-r/.test(o.id))),
@@ -166,13 +166,13 @@ export const ADEGAN_LUAR_GCF: AdeganStory = {
 /* ------------------------------ 5. GCF Concept: penerapan ------------------------------ */
 export const ADEGAN_LUAR_GCF_TERAPAN: AdeganStory = {
   id: "luar-gcf-terapan",
-  judul: "GCF Concept pada Eksplorasi 2.4A soal c dan a",
-  sumber: "Metode luar: GCF Concept; Buku Siswa hlm. 49–50; Panduan Guru hlm. 70–71",
+  judul: "GCF Concept pada dua pasangan bilangan",
+  sumber: "Metode luar: GCF Concept",
   latar: "#E0F2FE",
   ketukan: [
     k(
-      "Terapkan pada soal c Eksplorasi dua titik empat A: dua belas dan dua puluh delapan. Faktor dua belas adalah satu, dua, tiga, empat, enam, dan dua belas.",
-      tambah(0, judul("Soal c: 12 dan 28")),
+      "Terapkan pada dua belas dan dua puluh delapan, pasangan yang tadi kita mainkan. Faktor dua belas adalah satu, dua, tiga, empat, enam, dan dua belas.",
+      tambah(0, judul("Contoh: 12 dan 28")),
       tambah("Terapkan", ...irisan("h", 100, 160, 100, 44, [], [], []), teks("va", 76, 50, "faktor 12", 9.4, W.hijau), teks("vb", 184, 50, "faktor 28", 9.4, W.merah)),
       tambah("Faktor", ...irisan("h", 100, 160, 100, 44, [3, 6, 12], [1, 2, 4], []).filter((o) => /^h-[lm]/.test(o.id))),
     ),
@@ -182,15 +182,15 @@ export const ADEGAN_LUAR_GCF_TERAPAN: AdeganStory = {
       tambah("hanya", teks("vt", 150, 172, "7, 14, 28 hanya milik 28", 10, W.coklat)),
     ),
     k(
-      "Irisannya satu, dua, dan empat. Yang terbesar di irisan adalah empat, jadi FPB dua belas dan dua puluh delapan adalah empat, sesuai kunci Panduan Guru.",
+      "Irisannya satu, dua, dan empat. Yang terbesar di irisan adalah empat, jadi FPB dua belas dan dua puluh delapan adalah empat.",
       ubah("Irisannya", { id: "h-m1", warna: W.hijau }, { id: "h-m2", warna: W.hijau }, { id: "h-m4", warna: W.hijau }),
       ubah("terbesar", { id: "h-m4", warna: W.merah, u: 12 }),
       tambah("jadi", teks("hf", 150, 190, "FPB dari 12 dan 28 adalah 4", 11, W.hijau)),
     ),
     k(
-      "Contoh kedua, soal a: enam dan dua belas. Faktor enam adalah satu, dua, tiga, dan enam. Semuanya juga faktor dua belas, sehingga bagian khusus enam kosong.",
+      "Contoh kedua: enam dan dua belas. Faktor enam adalah satu, dua, tiga, dan enam. Semuanya juga faktor dua belas, sehingga bagian khusus enam kosong.",
       bersih(0),
-      tambah(0, judul("Soal a: 6 dan 12")),
+      tambah(0, judul("Contoh: 6 dan 12")),
       tambah("Contoh", ...irisan("i", 100, 160, 100, 44, [], [], []), teks("ia", 76, 50, "faktor 6", 9.4, W.hijau), teks("ib", 184, 50, "faktor 12", 9.4, W.merah)),
       tambah("Faktor", ...irisan("i", 100, 160, 100, 44, [], [1, 2, 3, 6], []).filter((o) => /^i-m/.test(o.id))),
       tambah("Semuanya", ...irisan("i", 100, 160, 100, 44, [], [], [4, 12]).filter((o) => /^i-r/.test(o.id))),

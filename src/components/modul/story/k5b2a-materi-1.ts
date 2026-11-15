@@ -167,7 +167,7 @@ export const ADEGAN_PETA: AdeganStory = {
 export const ADEGAN_RENANG: AdeganStory = {
   id: "latihan-renang",
   judul: "Latihan Renang: cerita pembuka bab",
-  sumber: "Buku Siswa hlm. 31; Panduan Guru hlm. 48",
+  sumber: "Materi: cerita latihan renang",
   latar: "#E0F2FE",
   kutipan: [
     "Nisa dan Yohana latihan berenang di tempat yang sama.",
@@ -179,7 +179,7 @@ export const ADEGAN_RENANG: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Bab ini dibuka dengan cerita Latihan Renang. Nisa dan Yohana berlatih berenang di tempat yang sama.",
+      "Kita mulai dengan cerita Latihan Renang. Nisa dan Yohana berlatih berenang di tempat yang sama.",
       tambah(0, judul("Latihan Renang")),
       tambah("Nisa", emo("sn", 90, 92, "🏊", 42), teks("snt", 90, 122, "Nisa", 10, W.biru)),
       tambah("Yohana", emo("sy", 210, 92, "🏊", 42), teks("syt", 210, 122, "Yohana", 10, W.merah)),
@@ -201,14 +201,14 @@ export const ADEGAN_RENANG: AdeganStory = {
       tambah("bersama-sama.", ...kartu("bs", 30, 146, 240, 30, W.hijauMuda, ["Nisa dan Yohana latihan bersama"], 9.4)),
     ),
     k(
-      "Pertanyaannya, kapan mereka akan latihan renang bersama kembali?",
+      "Pertanyaannya, kapan mereka akan latihan renang bersama kembali? Coba kalian tebak dulu, jangan buru-buru menjawab.",
       bersih(0),
       tambah(0, judul("Pertanyaan")),
       tambah("Pertanyaannya,", teks("tn", 150, 112, "?", 70, W.merah)),
       tambah("kapan", ...kartu("kp", 30, 140, 240, 34, W.krem, ["Kapan latihan bersama lagi?"], 10)),
     ),
     k(
-      "Menurut buku, masalah jadwal ini dapat diselesaikan dengan KPK. Panduan guru meminta kita belajar kelipatan dan kelipatan persekutuan dulu, jadi jawabannya kita tunggu di subbab berikutnya.",
+      "Masalah jadwal seperti ini nanti bisa diselesaikan dengan KPK. Tapi sebelum itu, kita belajar kelipatan dulu, jadi jawabannya kita tunggu nanti.",
       bersih(0),
       tambah(0, judul("Jawabannya menunggu")),
       tambah("jadwal", ...kartu("w1", 8, 70, 84, 40, W.langit, ["jadwal", "renang"], 9)),

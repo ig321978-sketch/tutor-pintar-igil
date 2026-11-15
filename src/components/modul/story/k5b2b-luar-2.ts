@@ -46,12 +46,12 @@ export const ADEGAN_LUAR_PRIMA: AdeganStory = {
 /* ------------------------------ 7. Prime Factor Preview: penerapan (3, 4, dan 5; angka buku) ------------------------------ */
 export const ADEGAN_LUAR_PRIMA_TERAPAN: AdeganStory = {
   id: "luar-prima-terapan",
-  judul: "Faktor prima: angka dari buku",
-  sumber: "Metode luar: Prime Factor Preview; Panduan Guru hlm. 60",
+  judul: "Faktor prima: contoh angka",
+  sumber: "Metode luar: Prime Factor Preview",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      "Terapkan pada tiga, empat, dan lima dari buku. Tiga dan lima sudah prima, sedangkan empat sama dengan dua kali dua.",
+      "Terapkan pada tiga, empat, dan lima. Tiga dan lima sudah prima, sedangkan empat sama dengan dua kali dua.",
       tambah(0, judul("KPK 3, 4, dan 5")),
       tambah("tiga", teks("e3", 60, 90, "3", 26, W.hijau)),
       tambah("empat", teks("e4", 150, 90, "4 = 2 × 2", 17, W.hitam)),
@@ -65,7 +65,7 @@ export const ADEGAN_LUAR_PRIMA_TERAPAN: AdeganStory = {
       tambah("Kalikan", teks("f4", 258, 146, "× semua", 10, W.merah)),
     ),
     k(
-      "Hasilnya enam puluh, sama dengan KPK tiga, empat, dan lima pada kunci buku. Kita tidak perlu menulis daftar yang panjang.",
+      "Hasilnya enam puluh, sama dengan KPK tiga, empat, dan lima dari cara daftar tadi. Kita tidak perlu menulis daftar yang panjang.",
       bersih(0),
       tambah(0, judul("Hasil: enam puluh")),
       tambah("Hasilnya", teks("g1", 150, 66, "2 × 2 × 3 × 5 = 60", 20, W.hitam)),
@@ -73,11 +73,11 @@ export const ADEGAN_LUAR_PRIMA_TERAPAN: AdeganStory = {
       tambah("daftar", ...kartu("g3", 50, 130, 200, 40, W.hijauMuda, ["tanpa daftar panjang"], 10.4)),
     ),
     k(
-      "Dengan cara yang sama untuk empat dan lima: dua kali dua kali lima menjadi dua puluh, sesuai contoh di buku. Ini baru pratinjau ringan, cara lengkapnya dibahas nanti.",
+      "Dengan cara yang sama untuk empat dan lima: dua kali dua kali lima menjadi dua puluh, sesuai contoh tadi. Ini baru pratinjau ringan, cara lengkapnya dibahas nanti.",
       bersih(0),
       tambah(0, judul("Empat dan lima juga")),
       tambah("kali@2", teks("h1", 150, 70, "2 × 2 × 5 = 20", 20, W.hitam)),
-      tambah("buku.", teks("h2", 150, 112, "KPK 4 dan 5 = 20", 18, W.biru)),
+      tambah("tadi.", teks("h2", 150, 112, "KPK 4 dan 5 = 20", 18, W.biru)),
       tambah("pratinjau", emo("h3", 150, 162, "👀", 30)),
     ),
   ],
@@ -121,8 +121,8 @@ export const ADEGAN_LUAR_SIKLUS: AdeganStory = {
 /* ------------------------------ 9. Meeting Cycle: penerapan (tiga jadwal buku) ------------------------------ */
 export const ADEGAN_LUAR_SIKLUS_TERAPAN: AdeganStory = {
   id: "luar-siklus-terapan",
-  judul: "Siklus bertemu: jadwal dari buku",
-  sumber: "Metode luar: Meeting Cycle; Buku Siswa hlm. 41–42; Panduan Guru hlm. 57 dan 60",
+  judul: "Siklus bertemu: tiga jadwal",
+  sumber: "Metode luar: Meeting Cycle",
   latar: "#F0F9FF",
   ketukan: [
     k(
