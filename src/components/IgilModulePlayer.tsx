@@ -2,11 +2,13 @@
 
 import React, { useState, useEffect, useRef, useCallback, type ComponentType } from "react";
 import {
+  bukaLembarLatihan,
   kirimJawabanLatihan,
   PanelProfilBelajar,
   UjianServer,
   useProfilBelajar,
   type HasilLatihanServer,
+  type SoalLatihanAcak,
 } from "@/components/modul/BelajarServer";
 import { hentikanSuaraGuruModul, ucapkanGuruModul } from "@/lib/suara-guru-modul";
 import materiBab1 from "@/data/kelas1-bab1.json";
@@ -369,7 +371,7 @@ interface SubBabContent {
 }
 
 interface QuestionItem {
-  id: number;
+  id: number | string;
   level: "LOTS (30%)" | "MOTS (30%)" | "HOTS (40%)" | "HOTS UJIAN FORMAL";
   prompt: string;
   visualEmojis: string[];
@@ -1016,6 +1018,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const soalSiap = PRACTICE_QUESTIONS.length > 0;
   /** Kode bab di server. Soal Ujian tidak ada di berkas ini, hanya dikirim server saat ujian dimulai. */
   const idBabServer = materi.chapter_id ?? "";
+  const bankAcak = idBabServer === "k1-mat-bab1";
   const profilBelajar = useProfilBelajar();
   const poin = materi.tokens ?? POIN_BAWAAN;
   const peta = paket ? paket.emoji : adaK2B8 ? SUB_ANAK_K2B8 : adaK2B7 ? SUB_ANAK_K2B7 : adaK2B6 ? SUB_ANAK_K2B6 : adaK2B5 ? SUB_ANAK_K2B5 : adaK2B4 ? SUB_ANAK_K2B4 : adaK2B3 ? SUB_ANAK_K2B3 : adaK2B2 ? SUB_ANAK_K2B2 : adaK2B1 ? SUB_ANAK_K2B1 : adaBab8 ? SUB_ANAK_BAB8 : adaBab7 ? SUB_ANAK_BAB7 : adaBab6 ? SUB_ANAK_BAB6 : adaBab5 ? SUB_ANAK_BAB5 : adaBab4 ? SUB_ANAK_BAB4 : adaBab3 ? SUB_ANAK_BAB3 : adaBab2 ? SUB_ANAK_BAB2 : SUB_ANAK;
@@ -1284,11 +1287,46 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   // 6. State Halaman Latihan (10 Soal: LOTS 30%, MOTS 30%, HOTS 40%)
   const [practiceIdx, setPracticeIdx] = useState<number>(0);
   /** Pilihan siswa per soal (teks). Tanpa server, hanya mencatat pilihan tanpa menilai. */
-  const [practiceAnswers, setPracticeAnswers] = useState<Record<number, string>>({});
+  const [practiceAnswers, setPracticeAnswers] = useState<Record<string, string>>({});
   /** Hasil penilaian server per soal Latihan: benar atau salah dan pembahasan. */
-  const [hasilLatihan, setHasilLatihan] = useState<Record<number, HasilLatihanServer>>({});
+  const [hasilLatihan, setHasilLatihan] = useState<Record<string, HasilLatihanServer>>({});
   const [sedangKirimLatihan, setSedangKirimLatihan] = useState<boolean>(false);
   const [pesanLatihan, setPesanLatihan] = useState<string>("");
+  const [lembarLatihan, setLembarLatihan] = useState<SoalLatihanAcak[] | null>(null);
+  const [memuatLembar, setMemuatLembar] = useState(false);
+  const akunSiap = profilBelajar.status === "siap" && Boolean(profilBelajar.aktif?.id);
+  const pakaiBank = bankAcak && akunSiap;
+  const tungguLembar = (bankAcak && profilBelajar.status === "memuat") || (pakaiBank && memuatLembar);
+  const soalLatihan: QuestionItem[] = pakaiBank && lembarLatihan ? lembarLatihan : PRACTICE_QUESTIONS;
+
+  useEffect(() => {
+    if (!pakaiBank || activeMainTab !== "latihan") return;
+    const idAnak = profilBelajar.aktif?.id;
+    if (!idAnak) return;
+    let batal = false;
+    setMemuatLembar(true);
+    setLembarLatihan(null);
+    setPesanLatihan("");
+    void (async () => {
+      const res = await bukaLembarLatihan(idAnak, idBabServer);
+      if (batal) return;
+      setMemuatLembar(false);
+      if (res.jenis === "ok") {
+        setLembarLatihan(res.soal);
+        setPracticeIdx(0);
+        setPracticeAnswers({});
+        setHasilLatihan({});
+      } else if (res.jenis === "belum_siap") {
+        setLembarLatihan(null);
+      } else {
+        setLembarLatihan(null);
+        setPesanLatihan(res.pesan);
+      }
+    })();
+    return () => {
+      batal = true;
+    };
+  }, [pakaiBank, activeMainTab, profilBelajar.aktif?.id, idBabServer]);
 
   // 7. Ujian Formal (10 soal 100% HOTS, tanpa kamera): lembar dan nilai datang dari server.
   const [examScore, setExamScore] = useState<number | null>(null);
@@ -1297,7 +1335,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   // Latihan: poin terbit penuh (30) setelah semua soal terjawab dan dinilai server, tanpa
   // melihat berapa yang benar. Sama dengan aturan server (poin terbit sekali saat 10 jawaban masuk).
   const latihanSelesai =
-    PRACTICE_QUESTIONS.length > 0 && PRACTICE_QUESTIONS.every((q) => hasilLatihan[q.id] !== undefined);
+    soalLatihan.length > 0 && soalLatihan.every((q) => hasilLatihan[String(q.id)] !== undefined);
   const practiceTokens = latihanSelesai ? poin.practice : 0;
   const examTokens = examScore === 100 ? poin.exam : 0;
   const batasToken =
@@ -3812,15 +3850,27 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
         </section>
       )}
 
-      {activeMainTab === "latihan" && materiSelesai && soalSiap && (
+      {activeMainTab === "latihan" && materiSelesai && soalSiap && tungguLembar && (
+        <section className="mx-auto mt-4 w-[98%] space-y-3 rounded-3xl border-2 border-[#F59E0B] bg-[#FFFBEB] p-8 text-center">
+          <div className="text-5xl" aria-hidden="true">🎲</div>
+          <h2 className="text-xl font-black text-[#1C01A5]">Menyusun lembar latihan untukmu</h2>
+          <p className="text-base font-bold text-[#334155]">
+            3 soal LOTS, 3 soal MOTS, dan 4 soal HOTS. Lembar ini berbeda dari siswa lain.
+          </p>
+        </section>
+      )}
+
+      {activeMainTab === "latihan" && materiSelesai && soalSiap && !tungguLembar && (
         <>
         <PanelProfilBelajar profil={profilBelajar} kembaliKe={`/ruang-belajar/${bab}`} />
         <section className="w-[98%] mx-auto mt-4 bg-[#FFFBEB] border-2 border-[#F59E0B] rounded-3xl p-5 md:p-7 space-y-5">
           {(() => {
-            const q = PRACTICE_QUESTIONS[practiceIdx];
-            const chosen = practiceAnswers[q.id];
+            const q = soalLatihan[practiceIdx];
+            if (!q) return null;
+            const kunci = String(q.id);
+            const chosen = practiceAnswers[kunci];
             const isAnswered = Boolean(chosen);
-            const hasil = hasilLatihan[q.id];
+            const hasil = hasilLatihan[kunci];
             const adaKunci = Boolean(hasil);
             const isRight = hasil?.benar === true;
             const idAnakAktif = profilBelajar.status === "siap" ? (profilBelajar.aktif?.id ?? null) : null;
@@ -3829,17 +3879,17 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               setPesanLatihan("");
               if (!idAnakAktif || !idBabServer) {
                 // Server belum bisa menilai: catat pilihan saja, tanpa benar-salah.
-                setPracticeAnswers((prev) => ({ ...prev, [q.id]: opt }));
+                setPracticeAnswers((prev) => ({ ...prev, [kunci]: opt }));
                 return;
               }
               setSedangKirimLatihan(true);
-              const balasan = await kirimJawabanLatihan(idAnakAktif, idBabServer, q.id, q.options.indexOf(opt));
+              const balasan = await kirimJawabanLatihan(idAnakAktif, idBabServer, kunci, q.options.indexOf(opt));
               setSedangKirimLatihan(false);
               if (balasan.jenis === "ok") {
-                setPracticeAnswers((prev) => ({ ...prev, [q.id]: opt }));
-                setHasilLatihan((prev) => ({ ...prev, [q.id]: balasan.hasil }));
+                setPracticeAnswers((prev) => ({ ...prev, [kunci]: opt }));
+                setHasilLatihan((prev) => ({ ...prev, [kunci]: balasan.hasil }));
               } else if (balasan.jenis === "belum_siap") {
-                setPracticeAnswers((prev) => ({ ...prev, [q.id]: opt }));
+                setPracticeAnswers((prev) => ({ ...prev, [kunci]: opt }));
               } else {
                 setPesanLatihan(balasan.pesan);
               }
@@ -3850,7 +3900,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
                     <span className="px-3 py-1 rounded-full bg-[#1C01A5] text-[#FFE566] font-black text-xs">
-                      SOAL LATIHAN {q.id} DARI 10 • LEVEL: {q.level}
+                      SOAL LATIHAN {practiceIdx + 1} DARI {soalLatihan.length} • LEVEL: {q.level}
                     </span>
                     <h2 className="text-lg md:text-xl font-black text-[#1C01A5] mt-1">
                       {q.prompt}
@@ -3956,7 +4006,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                     <button
                       type="button"
                       onClick={() => {
-                        if (practiceIdx < PRACTICE_QUESTIONS.length - 1) {
+                        if (practiceIdx < soalLatihan.length - 1) {
                           setPracticeIdx((i) => i + 1);
                         } else {
                           setActiveMainTab("ujian");
@@ -3970,7 +4020,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                     <button
                       type="button"
                       onClick={() => {
-                        if (practiceIdx < PRACTICE_QUESTIONS.length - 1) {
+                        if (practiceIdx < soalLatihan.length - 1) {
                           setPracticeIdx((i) => i + 1);
                         } else {
                           setActiveMainTab("ujian");
@@ -3978,7 +4028,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
                       }}
                       className="px-8 py-3 rounded-2xl bg-[#1C01A5] text-[#FFE566] border-2 border-[#FFE566] font-black text-xs md:text-sm shadow-md"
                     >
-                      {practiceIdx < PRACTICE_QUESTIONS.length - 1
+                      {practiceIdx < soalLatihan.length - 1
                         ? "LANJUTKAN ➡️"
                         : "LANJUTKAN KE UJIAN FORMAL ➡️"}
                     </button>

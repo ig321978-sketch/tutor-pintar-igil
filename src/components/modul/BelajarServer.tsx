@@ -97,6 +97,34 @@ export type BalasanLatihan =
   | { jenis: "belum_siap" }
   | { jenis: "galat"; pesan: string };
 
+export interface SoalLatihanAcak {
+  id: string;
+  prompt: string;
+  options: string[];
+  level: "LOTS (30%)" | "MOTS (30%)" | "HOTS (40%)";
+  visualEmojis: string[];
+  secondaryGroupEmojis?: string[];
+}
+
+export type BalasanBukaLatihan =
+  | { jenis: "ok"; soal: SoalLatihanAcak[] }
+  | { jenis: "belum_siap" }
+  | { jenis: "galat"; pesan: string };
+
+/** Buka lembar Latihan baru. Server mengundi 10 soal yang tidak sama dengan lembar aktif siswa lain. */
+export async function bukaLembarLatihan(anak: string, bab: string): Promise<BalasanBukaLatihan> {
+  const res = await panggil<{ status: string; soal?: SoalLatihanAcak[]; pesan?: string }>(
+    "/api/belajar/latihan/mulai",
+    { anak, bab },
+  );
+  if (!res) return { jenis: "galat", pesan: "Tidak ada sinyal. Coba buka latihan lagi." };
+  if (res.status === "ok" && Array.isArray(res.soal) && res.soal.length === 10) {
+    return { jenis: "ok", soal: res.soal };
+  }
+  if (res.status === "belum_siap" || res.status === "belum_masuk") return { jenis: "belum_siap" };
+  return { jenis: "galat", pesan: res.pesan ?? "Lembar latihan belum bisa diundi." };
+}
+
 /** Kirim satu jawaban Latihan. Server menilai dan mengembalikan benar atau salah beserta pembahasan. */
 export async function kirimJawabanLatihan(
   anak: string,
@@ -385,6 +413,9 @@ export function UjianServer({
           <li>Server hanya memberi tahu nilai akhir, tidak memberi tahu nomor soal yang salah.</li>
           <li>Lembar yang diserahkan terlalu cepat tidak dihitung.</li>
           <li>Jika belum 100%, ujian bisa diulang setelah masa jeda.</li>
+          {chapterId === "k1-mat-bab1" ? (
+            <li>Setiap kali ujian dimulai, 10 soal HOTS diundi baru dan berbeda dari lembar siswa lain.</li>
+          ) : null}
         </ul>
         {jedaAktif && statusBab?.jedaSampai ? (
           <p className="rounded-2xl bg-white p-3 text-sm font-black text-[#991B1B]">
@@ -398,7 +429,11 @@ export function UjianServer({
           onClick={() => void mulai()}
           className="rounded-2xl border-2 border-[#FFE566] bg-[#1C01A5] px-8 py-3 text-sm font-black text-[#FFE566] shadow-md disabled:opacity-50"
         >
-          {fase === "memuat" ? "Memuat lembar..." : statusBab?.ujianBerjalan ? "LANJUTKAN UJIAN ➡️" : "MULAI UJIAN ➡️"}
+          {fase === "memuat"
+            ? "Memuat lembar..."
+            : chapterId === "k1-mat-bab1" || !statusBab?.ujianBerjalan
+              ? "MULAI UJIAN ➡️"
+              : "LANJUTKAN UJIAN ➡️"}
         </button>
       </section>
     );

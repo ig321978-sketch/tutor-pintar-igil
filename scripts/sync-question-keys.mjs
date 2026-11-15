@@ -158,9 +158,30 @@ function sqlBab(master) {
     .map((soal) => `(${sqlTeks(soal.packageCode)}, ${sqlTeks(soal.questionId)})`)
     .join(", ");
 
+  const pengamanBank =
+    bab === "k1-mat-bab1"
+      ? `
+do $$
+begin
+  if exists (
+    select 1 from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'server_chapters'
+      and column_name = 'mode_undian'
+  ) and exists (
+    select 1 from public.server_chapters
+    where chapter_id = 'k1-mat-bab1' and mode_undian = 'acak'
+  ) then
+    raise exception 'Bank acak Kelas 1 Bab 1 sudah aktif. Jangan timpa dengan seed 10 soal. Pakai 02_kelas1_bab1_bank_keys.sql.';
+  end if;
+end $$;
+`
+      : "";
+
   return `-- Dihasilkan oleh npm run sync:keys. Jangan edit tangan.
 -- Sumber lokal: src/content-master (tidak di-commit, tidak di-import frontend).
 begin;
+${pengamanBank}
 
 insert into public.server_chapters (chapter_id, phase_code, grade)
 values (${sqlTeks(bab)}, ${sqlTeks(fase)}, ${kelas})
