@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-dibelah", "teks": "Roti dibelah jadi dua", "ikon": "🍞", "cabang": "dua-bagian", "petunjuk": "Membelah menjadi dua potong itu dua bagian. Coba cabang lain." },
-          { "id": "a-dua", "teks": "Dua potong, tidak lebih", "ikon": "2️⃣", "cabang": "dua-bagian", "petunjuk": "Tepat dua potong itu dua bagian. Coba cabang lain." },
-          { "id": "a-tumpuk", "teks": "Ditumpuk jadi pas", "ikon": "📚", "cabang": "sama-besar", "petunjuk": "Bagian yang pas saat ditumpuk itu sama besar. Coba cabang lain." },
-          { "id": "a-adil", "teks": "Tidak ada yang lebih besar", "ikon": "🤝", "cabang": "sama-besar", "petunjuk": "Tidak ada yang lebih besar itu sama besar. Coba cabang lain." },
-          { "id": "a-lambang", "teks": "Ditulis dengan ½", "ikon": "🔢", "cabang": "setengah", "petunjuk": "Lambang ½ itu setengah. Coba cabang lain." },
-          { "id": "a-satu", "teks": "Satu dari dua bagian sama besar", "ikon": "☝️", "cabang": "setengah", "petunjuk": "Satu dari dua bagian sama besar itu setengah. Coba cabang lain." },
-          { "id": "a-besar-kecil", "teks": "Satu besar, satu kecil", "ikon": "🍰", "cabang": "bukan-setengah", "petunjuk": "Bagian yang tidak sama besar itu bukan setengah. Coba cabang lain." },
-          { "id": "a-empat", "teks": "Dipotong jadi empat", "ikon": "4️⃣", "cabang": "bukan-setengah", "petunjuk": "Bukan dua bagian itu bukan setengah. Coba cabang lain." }
+          {
+            "id": "a-dibelah",
+            "teks": "Roti dibelah jadi dua",
+            "ikon": "🍞",
+            "cabang": "dua-bagian",
+            "petunjuk": "Membelah menjadi dua potong itu dua bagian. Coba cabang lain."
+          },
+          {
+            "id": "a-dua",
+            "teks": "Dua potong, tidak lebih",
+            "ikon": "2️⃣",
+            "cabang": "dua-bagian",
+            "petunjuk": "Tepat dua potong itu dua bagian. Coba cabang lain."
+          },
+          {
+            "id": "a-tumpuk",
+            "teks": "Ditumpuk jadi pas",
+            "ikon": "📚",
+            "cabang": "sama-besar",
+            "petunjuk": "Bagian yang pas saat ditumpuk itu sama besar. Coba cabang lain."
+          },
+          {
+            "id": "a-adil",
+            "teks": "Tidak ada yang lebih besar",
+            "ikon": "🤝",
+            "cabang": "sama-besar",
+            "petunjuk": "Tidak ada yang lebih besar itu sama besar. Coba cabang lain."
+          },
+          {
+            "id": "a-lambang",
+            "teks": "Ditulis dengan ½",
+            "ikon": "🔢",
+            "cabang": "setengah",
+            "petunjuk": "Lambang ½ itu setengah. Coba cabang lain."
+          },
+          {
+            "id": "a-satu",
+            "teks": "Satu dari dua bagian sama besar",
+            "ikon": "☝️",
+            "cabang": "setengah",
+            "petunjuk": "Satu dari dua bagian sama besar itu setengah. Coba cabang lain."
+          },
+          {
+            "id": "a-besar-kecil",
+            "teks": "Satu besar, satu kecil",
+            "ikon": "🍰",
+            "cabang": "bukan-setengah",
+            "petunjuk": "Bagian yang tidak sama besar itu bukan setengah. Coba cabang lain."
+          },
+          {
+            "id": "a-empat",
+            "teks": "Dipotong jadi empat",
+            "ikon": "4️⃣",
+            "cabang": "bukan-setengah",
+            "petunjuk": "Bukan dua bagian itu bukan setengah. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -72,7 +120,10 @@
                 "ikon": "🍞",
                 "isi": "Roti dibelah dua sama besar.",
                 "suara": "Roti dibelah dua sama besar. Satu bagiannya adalah setengah roti.",
-                "visual": { "jenis": "teks", "isi": "1 roti → 2 bagian sama besar → setengah roti" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 roti → 2 bagian sama besar → setengah roti"
+                }
               },
               {
                 "id": "kertas",
@@ -80,7 +131,10 @@
                 "ikon": "📄",
                 "isi": "Kertas dilipat, ujung bertemu ujung.",
                 "suara": "Kertas dilipat dengan ujung bertemu ujung, lalu digunting di lipatannya. Kedua potongan pas bila ditumpuk, jadi masing-masing setengah kertas.",
-                "visual": { "jenis": "teks", "isi": "Lipat pas → dua potongan sama besar → setengah kertas" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Lipat pas → dua potongan sama besar → setengah kertas"
+                }
               },
               {
                 "id": "pizza",
@@ -88,7 +142,10 @@
                 "ikon": "🍕",
                 "isi": "Pizza dipotong lurus lewat tengah.",
                 "suara": "Pizza dipotong lurus tepat lewat tengah. Kedua bagiannya sama besar, jadi masing-masing setengah pizza.",
-                "visual": { "jenis": "teks", "isi": "Potong lewat tengah → dua bagian sama besar → setengah pizza" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Potong lewat tengah → dua bagian sama besar → setengah pizza"
+                }
               }
             ]
           },
@@ -105,7 +162,10 @@
                 "ikon": "✅",
                 "catatan": "Dua bagian, sama besar.",
                 "suara": "Setengah. Kue dibagi dua dan kedua bagiannya sama besar. Setiap bagian adalah setengah.",
-                "visual": { "jenis": "teks", "isi": "2 bagian sama besar → setiap bagian ½" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 bagian sama besar → setiap bagian ½"
+                }
               },
               {
                 "id": "bukan",
@@ -113,7 +173,10 @@
                 "ikon": "🚫",
                 "catatan": "Dua bagian, tidak sama besar.",
                 "suara": "Bukan setengah. Kue juga dibagi dua, tetapi satu bagian lebih besar. Karena tidak sama besar, tidak boleh disebut setengah.",
-                "visual": { "jenis": "teks", "isi": "2 bagian, satu besar satu kecil → bukan ½" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 bagian, satu besar satu kecil → bukan ½"
+                }
               }
             ],
             "kesimpulan": "Setengah hanya untuk dua bagian yang sama besar."
@@ -131,7 +194,10 @@
                 "ikon": "🔢",
                 "isi": "Ada berapa bagian?",
                 "suara": "Hitung. Ada berapa bagian pada bentuk ini? Setengah hanya untuk tepat dua bagian.",
-                "visual": { "jenis": "teks", "isi": "Pertanyaan 1: ada berapa bagian?" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Pertanyaan 1: ada berapa bagian?"
+                }
               },
               {
                 "id": "banding",
@@ -139,7 +205,10 @@
                 "ikon": "⚖️",
                 "isi": "Apakah semua bagian sama besar?",
                 "suara": "Bandingkan. Apakah semua bagiannya sama besar? Tumpuk atau lihat batang perbandingan.",
-                "visual": { "jenis": "teks", "isi": "Pertanyaan 2: sama besar atau tidak?" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Pertanyaan 2: sama besar atau tidak?"
+                }
               },
               {
                 "id": "sebut",
@@ -147,8 +216,150 @@
                 "ikon": "💬",
                 "isi": "Dua bagian sama besar disebut setengah.",
                 "suara": "Sebut. Kalau dua bagian dan sama besar, setiap bagian disebut setengah.",
-                "visual": { "jenis": "teks", "isi": "Pertanyaan 3: setengah atau bukan?" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Pertanyaan 3: setengah atau bukan?"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Apa itu setengah?",
+          "ikon": "🍰",
+          "suara": "Ini peta tentang setengah. Kita ingin tahu apa itu setengah dan bagaimana menemukannya. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-bagi",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Dua bagian sama besar",
+            "ikon": "🍰",
+            "petunjuk": "Membagi satu benda utuh dengan garis potong menjadi dua bagian yang sama besar."
+          },
+          {
+            "id": "hal-benda",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Setengah pada banyak benda",
+            "ikon": "🍉",
+            "petunjuk": "Menemukan setengah pada semangka, kue bolu, lingkaran, persegi, dan gelas air."
+          },
+          {
+            "id": "hal-lipat",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Melipat gambar di layar",
+            "ikon": "📐",
+            "petunjuk": "Memeriksa dengan melipat gambar di layar: pas menumpuk berarti sama besar."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-bagi",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Bagi benda jadi dua",
+            "ikon": "📏",
+            "petunjuk": "Langkah untuk dua bagian: tarik garis potong tepat di tengah benda."
+          },
+          {
+            "id": "cara-periksa",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Periksa bagian sama besar",
+            "ikon": "🔍",
+            "petunjuk": "Langkah untuk setengah: periksa apakah kedua bagian sama besar."
+          },
+          {
+            "id": "cara-lipat",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Lipat lalu cek pas",
+            "ikon": "🧩",
+            "petunjuk": "Langkah untuk melipat: lipat gambar, lalu lihat apakah pas menumpuk."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-tunjuk",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menunjukkan setengah",
+            "ikon": "🏷️",
+            "petunjuk": "Kemampuan menunjukkan setengah dari benda utuh dengan benar."
+          },
+          {
+            "id": "hasil-beda",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu mana bukan setengah",
+            "ikon": "🔎",
+            "petunjuk": "Kemampuan membedakan bagian sama besar dari bagian yang bukan setengah."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Setengah atau bukan?",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel pembagian benda. Untuk tiap cara membagi, pasang bentuk benda, jenis garis, besar kedua bagian, dan apakah hasilnya setengah.",
+        "pojok": "Cara",
+        "kolom": [
+          "Bentuk",
+          "Garis",
+          "Besar",
+          "Setengah"
+        ],
+        "baris": [
+          {
+            "label": "Tengah",
+            "sel": [
+              "bulat",
+              "tegak",
+              "sama",
+              "ya"
+            ]
+          },
+          {
+            "label": "Geser",
+            "sel": [
+              "bulat",
+              "tegak",
+              "beda",
+              "tidak"
+            ]
+          },
+          {
+            "label": "Pojok",
+            "sel": [
+              "persegi",
+              "miring",
+              "sama",
+              "ya"
             ]
           }
         ]
@@ -193,14 +404,62 @@
           }
         ],
         "kartu": [
-          { "id": "b-bagi", "teks": "Membagi 8 apel untuk dua adik", "ikon": "🍎", "cabang": "bagi-dua", "petunjuk": "Membagi benda ke dua orang itu bagi dua kelompok. Coba cabang lain." },
-          { "id": "b-gilir", "teks": "Bagi satu-satu bergantian", "ikon": "🔄", "cabang": "bagi-dua", "petunjuk": "Bergantian ke dua kelompok itu bagi dua kelompok. Coba cabang lain." },
-          { "id": "b-pasang", "teks": "Semua benda punya pasangan", "ikon": "👫", "cabang": "sama-banyak", "petunjuk": "Semua punya pasangan itu sama banyak. Coba cabang lain." },
-          { "id": "b-tiga-tiga", "teks": "3 dan 3, tidak ada selisih", "ikon": "⚖️", "cabang": "sama-banyak", "petunjuk": "Kedua kelompok tanpa selisih itu sama banyak. Coba cabang lain." },
-          { "id": "b-sepuluh", "teks": "Setengah dari 10 adalah 5", "ikon": "🔟", "cabang": "setengahnya", "petunjuk": "Banyak benda di satu kelompok itu setengahnya. Coba cabang lain." },
-          { "id": "b-satu-kelompok", "teks": "Banyak di satu kelompok", "ikon": "👆", "cabang": "setengahnya", "petunjuk": "Banyak benda di satu kelompok itu setengahnya. Coba cabang lain." },
-          { "id": "b-tujuh", "teks": "7 benda, tersisa satu", "ikon": "7️⃣", "cabang": "ganjil", "petunjuk": "Tersisa satu itu bilangan ganjil. Coba cabang lain." },
-          { "id": "b-tidak", "teks": "Tidak bisa sama banyak", "ikon": "🚫", "cabang": "ganjil", "petunjuk": "Tidak bisa dibagi sama banyak itu bilangan ganjil. Coba cabang lain." }
+          {
+            "id": "b-bagi",
+            "teks": "Membagi 8 apel untuk dua adik",
+            "ikon": "🍎",
+            "cabang": "bagi-dua",
+            "petunjuk": "Membagi benda ke dua orang itu bagi dua kelompok. Coba cabang lain."
+          },
+          {
+            "id": "b-gilir",
+            "teks": "Bagi satu-satu bergantian",
+            "ikon": "🔄",
+            "cabang": "bagi-dua",
+            "petunjuk": "Bergantian ke dua kelompok itu bagi dua kelompok. Coba cabang lain."
+          },
+          {
+            "id": "b-pasang",
+            "teks": "Semua benda punya pasangan",
+            "ikon": "👫",
+            "cabang": "sama-banyak",
+            "petunjuk": "Semua punya pasangan itu sama banyak. Coba cabang lain."
+          },
+          {
+            "id": "b-tiga-tiga",
+            "teks": "3 dan 3, tidak ada selisih",
+            "ikon": "⚖️",
+            "cabang": "sama-banyak",
+            "petunjuk": "Kedua kelompok tanpa selisih itu sama banyak. Coba cabang lain."
+          },
+          {
+            "id": "b-sepuluh",
+            "teks": "Setengah dari 10 adalah 5",
+            "ikon": "🔟",
+            "cabang": "setengahnya",
+            "petunjuk": "Banyak benda di satu kelompok itu setengahnya. Coba cabang lain."
+          },
+          {
+            "id": "b-satu-kelompok",
+            "teks": "Banyak di satu kelompok",
+            "ikon": "👆",
+            "cabang": "setengahnya",
+            "petunjuk": "Banyak benda di satu kelompok itu setengahnya. Coba cabang lain."
+          },
+          {
+            "id": "b-tujuh",
+            "teks": "7 benda, tersisa satu",
+            "ikon": "7️⃣",
+            "cabang": "ganjil",
+            "petunjuk": "Tersisa satu itu bilangan ganjil. Coba cabang lain."
+          },
+          {
+            "id": "b-tidak",
+            "teks": "Tidak bisa sama banyak",
+            "ikon": "🚫",
+            "cabang": "ganjil",
+            "petunjuk": "Tidak bisa dibagi sama banyak itu bilangan ganjil. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -220,7 +479,10 @@
                 "ikon": "🤲",
                 "isi": "Bagi satu-satu ke dua kelompok.",
                 "suara": "Langkah satu, bagi benda satu-satu bergantian ke dua kelompok.",
-                "visual": { "jenis": "teks", "isi": "kiri, kanan, kiri, kanan, … sampai habis" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "kiri, kanan, kiri, kanan, … sampai habis"
+                }
               },
               {
                 "id": "cek",
@@ -228,7 +490,10 @@
                 "ikon": "🔍",
                 "isi": "Apakah kedua kelompok sama banyak?",
                 "suara": "Langkah dua, cek apakah kedua kelompok sama banyak. Pasangkan benda satu-satu.",
-                "visual": { "jenis": "teks", "isi": "Semua punya pasangan → sama banyak" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Semua punya pasangan → sama banyak"
+                }
               },
               {
                 "id": "hitung",
@@ -236,7 +501,10 @@
                 "ikon": "🔢",
                 "isi": "Hitung satu kelompok saja.",
                 "suara": "Langkah tiga, hitung satu kelompok saja. Itulah setengahnya.",
-                "visual": { "jenis": "teks", "isi": "Satu kelompok = setengah dari semuanya" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Satu kelompok = setengah dari semuanya"
+                }
               }
             ]
           },
@@ -253,7 +521,32 @@
                 "ikon": "✅",
                 "isi": "2, 4, 6, 8 bisa dibagi dua sama banyak.",
                 "suara": "Bilangan genap seperti dua, empat, enam, dan delapan bisa dibagi dua sama banyak. Setengahnya satu, dua, tiga, dan empat.",
-                "visual": { "jenis": "tabel-menurun", "judul": "Setengah dari bilangan genap", "kepala": ["Semua", "Setengahnya"], "baris": [["2", 1], ["4", 2], ["6", 3], ["8", 4]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "Setengah dari bilangan genap",
+                  "kepala": [
+                    "Semua",
+                    "Setengahnya"
+                  ],
+                  "baris": [
+                    [
+                      "2",
+                      1
+                    ],
+                    [
+                      "4",
+                      2
+                    ],
+                    [
+                      "6",
+                      3
+                    ],
+                    [
+                      "8",
+                      4
+                    ]
+                  ]
+                }
               },
               {
                 "id": "ganjil",
@@ -261,7 +554,10 @@
                 "ikon": "🚫",
                 "isi": "1, 3, 5, 7 selalu tersisa satu.",
                 "suara": "Bilangan ganjil seperti tiga, lima, dan tujuh selalu tersisa satu. Jadi tidak ada setengahnya.",
-                "visual": { "jenis": "teks", "isi": "3, 5, 7, 9 → selalu sisa 1 → tidak ada setengah" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3, 5, 7, 9 → selalu sisa 1 → tidak ada setengah"
+                }
               }
             ]
           },
@@ -278,7 +574,10 @@
                 "ikon": "✅",
                 "catatan": "3 pasang, tidak ada sisa.",
                 "suara": "Enam benda. Ada tiga pasang dan tidak ada sisa. Dua kelompok sama banyak, setengahnya tiga.",
-                "visual": { "jenis": "teks", "isi": "6 benda → 3 pasang → setengahnya 3" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 benda → 3 pasang → setengahnya 3"
+                }
               },
               {
                 "id": "tujuh",
@@ -286,10 +585,156 @@
                 "ikon": "🚫",
                 "catatan": "3 pasang dan 1 tanpa pasangan.",
                 "suara": "Tujuh benda. Ada tiga pasang, dan satu benda tidak punya pasangan. Dua kelompok tidak bisa sama banyak.",
-                "visual": { "jenis": "teks", "isi": "7 benda → 3 pasang + 1 sisa → tidak ada setengah" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7 benda → 3 pasang + 1 sisa → tidak ada setengah"
+                }
               }
             ],
             "kesimpulan": "Kalau semua benda punya pasangan, kumpulan itu punya setengah."
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Apa setengah dari kumpulan?",
+          "ikon": "🔵",
+          "suara": "Ini peta tentang setengah dari kumpulan benda. Kita ingin tahu apa itu setengah dari kumpulan dan bagaimana mencarinya. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-bagi",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Bagi dua sama banyak",
+            "ikon": "⚖️",
+            "petunjuk": "Kumpulan benda dibagi menjadi dua bagian yang sama banyak, dan satu bagian adalah setengahnya."
+          },
+          {
+            "id": "hal-pola",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Pola setengah bilangan",
+            "ikon": "🔢",
+            "petunjuk": "Setengah dari empat, enam, delapan, dan sepuluh membentuk pola yang naik satu-satu."
+          },
+          {
+            "id": "hal-genap",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Mengenal genap dan ganjil",
+            "ikon": "🔍",
+            "petunjuk": "Bilangan genap bisa dibagi dua sama banyak, sedangkan bilangan ganjil tersisa satu."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah untuk mencari setengah dari kumpulan benda."
+          },
+          {
+            "id": "cara-pindah",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Pindahkan ke dua tempat",
+            "ikon": "🔄",
+            "petunjuk": "Langkah pertama: pindahkan benda satu demi satu ke dua tempat secara bergantian."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Hitung tiap tempat",
+            "ikon": "🧮",
+            "petunjuk": "Langkah kedua: hitung benda di tiap tempat."
+          },
+          {
+            "id": "cara-periksa",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Periksa sama banyak",
+            "ikon": "✅",
+            "petunjuk": "Langkah ketiga: pastikan kedua tempat sama banyak, lalu sebut banyak benda di satu tempat."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-sebut",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Menyebut setengah kumpulan",
+            "ikon": "🏆",
+            "petunjuk": "Kemampuan menyebut setengah dari kumpulan benda, misalnya setengah dari enam ikan adalah tiga ikan."
+          },
+          {
+            "id": "hasil-beda",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Membedakan genap dan ganjil",
+            "ikon": "🌟",
+            "petunjuk": "Kemampuan menjelaskan bahwa bilangan ganjil tidak punya setengah yang utuh karena tersisa satu."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Bagian, sisa, dan jenis",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel bagian, sisa, dan jenis bilangan. Untuk tiap bilangan, pasang banyak benda tiap bagian kalau dibagi dua, sisanya, dan jenis bilangannya, genap atau ganjil.",
+        "pojok": "Bilangan",
+        "kolom": [
+          "Bagian",
+          "Sisa",
+          "Jenis"
+        ],
+        "baris": [
+          {
+            "label": "Empat",
+            "sel": [
+              "2",
+              "0",
+              "Genap"
+            ]
+          },
+          {
+            "label": "Enam",
+            "sel": [
+              "3",
+              "0",
+              "Genap"
+            ]
+          },
+          {
+            "label": "Tujuh",
+            "sel": [
+              "3",
+              "1",
+              "Ganjil"
+            ]
+          },
+          {
+            "label": "Sepuluh",
+            "sel": [
+              "5",
+              "0",
+              "Genap"
+            ]
           }
         ]
       }
@@ -333,14 +778,62 @@
           }
         ],
         "kartu": [
-          { "id": "c-dua-garis", "teks": "Dua garis lewat tengah", "ikon": "➕", "cabang": "empat-sama", "petunjuk": "Dua garis lewat tengah membuat empat bagian sama besar. Coba cabang lain." },
-          { "id": "c-pas", "teks": "Ditumpuk, keempatnya pas", "ikon": "📚", "cabang": "empat-sama", "petunjuk": "Pas saat ditumpuk itu empat bagian sama besar. Coba cabang lain." },
-          { "id": "c-lambang", "teks": "Ditulis dengan ¼", "ikon": "🔢", "cabang": "seperempat", "petunjuk": "Lambang ¼ itu seperempat. Coba cabang lain." },
-          { "id": "c-satu", "teks": "Satu dari empat bagian sama besar", "ikon": "☝️", "cabang": "seperempat", "petunjuk": "Satu dari empat bagian sama besar itu seperempat. Coba cabang lain." },
-          { "id": "c-dua-q", "teks": "Dua seperempat sama dengan setengah", "ikon": "🍰", "cabang": "gabungan", "petunjuk": "Menyatukan seperempat itu gabungan seperempat. Coba cabang lain." },
-          { "id": "c-empat-q", "teks": "Empat seperempat jadi satu utuh", "ikon": "🎂", "cabang": "gabungan", "petunjuk": "Menyatukan seperempat itu gabungan seperempat. Coba cabang lain." },
-          { "id": "c-kecil", "teks": "Satu bagian jauh lebih kecil", "ikon": "🍪", "cabang": "bukan-seperempat", "petunjuk": "Bagian yang tidak sama besar itu bukan seperempat. Coba cabang lain." },
-          { "id": "c-tiga", "teks": "Dipotong jadi tiga", "ikon": "3️⃣", "cabang": "bukan-seperempat", "petunjuk": "Bukan empat bagian itu bukan seperempat. Coba cabang lain." }
+          {
+            "id": "c-dua-garis",
+            "teks": "Dua garis lewat tengah",
+            "ikon": "➕",
+            "cabang": "empat-sama",
+            "petunjuk": "Dua garis lewat tengah membuat empat bagian sama besar. Coba cabang lain."
+          },
+          {
+            "id": "c-pas",
+            "teks": "Ditumpuk, keempatnya pas",
+            "ikon": "📚",
+            "cabang": "empat-sama",
+            "petunjuk": "Pas saat ditumpuk itu empat bagian sama besar. Coba cabang lain."
+          },
+          {
+            "id": "c-lambang",
+            "teks": "Ditulis dengan ¼",
+            "ikon": "🔢",
+            "cabang": "seperempat",
+            "petunjuk": "Lambang ¼ itu seperempat. Coba cabang lain."
+          },
+          {
+            "id": "c-satu",
+            "teks": "Satu dari empat bagian sama besar",
+            "ikon": "☝️",
+            "cabang": "seperempat",
+            "petunjuk": "Satu dari empat bagian sama besar itu seperempat. Coba cabang lain."
+          },
+          {
+            "id": "c-dua-q",
+            "teks": "Dua seperempat sama dengan setengah",
+            "ikon": "🍰",
+            "cabang": "gabungan",
+            "petunjuk": "Menyatukan seperempat itu gabungan seperempat. Coba cabang lain."
+          },
+          {
+            "id": "c-empat-q",
+            "teks": "Empat seperempat jadi satu utuh",
+            "ikon": "🎂",
+            "cabang": "gabungan",
+            "petunjuk": "Menyatukan seperempat itu gabungan seperempat. Coba cabang lain."
+          },
+          {
+            "id": "c-kecil",
+            "teks": "Satu bagian jauh lebih kecil",
+            "ikon": "🍪",
+            "cabang": "bukan-seperempat",
+            "petunjuk": "Bagian yang tidak sama besar itu bukan seperempat. Coba cabang lain."
+          },
+          {
+            "id": "c-tiga",
+            "teks": "Dipotong jadi tiga",
+            "ikon": "3️⃣",
+            "cabang": "bukan-seperempat",
+            "petunjuk": "Bukan empat bagian itu bukan seperempat. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -360,7 +853,10 @@
                 "ikon": "✂️",
                 "isi": "Belah dua, lalu belah dua lagi.",
                 "suara": "Belah benda menjadi dua sama besar. Lalu belah tiap bagian menjadi dua lagi. Hasilnya empat bagian sama besar.",
-                "visual": { "jenis": "teks", "isi": "1 utuh → 2 setengah → 4 seperempat" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 utuh → 2 setengah → 4 seperempat"
+                }
               },
               {
                 "id": "empat-teman",
@@ -368,7 +864,10 @@
                 "ikon": "🤝",
                 "isi": "Empat teman, bagian sama besar.",
                 "suara": "Kue dibagi untuk empat teman dengan bagian sama besar. Setiap teman mendapat seperempat kue.",
-                "visual": { "jenis": "teks", "isi": "4 teman → 4 bagian sama besar → ¼ kue untuk tiap teman" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 teman → 4 bagian sama besar → ¼ kue untuk tiap teman"
+                }
               },
               {
                 "id": "setengah-dibelah",
@@ -376,7 +875,10 @@
                 "ikon": "🍰",
                 "isi": "Setengah dibelah dua sama besar.",
                 "suara": "Setengah kue dibelah lagi menjadi dua bagian sama besar. Setiap bagian baru adalah seperempat kue.",
-                "visual": { "jenis": "teks", "isi": "½ dibelah dua → ¼ dan ¼" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "½ dibelah dua → ¼ dan ¼"
+                }
               }
             ]
           },
@@ -393,7 +895,10 @@
                 "ikon": "🍞",
                 "catatan": "2 bagian sama besar. Lebih besar.",
                 "suara": "Setengah. Benda dibagi dua sama besar, jadi setiap bagian lebih besar.",
-                "visual": { "jenis": "teks", "isi": "2 bagian sama besar → setiap bagian ½" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 bagian sama besar → setiap bagian ½"
+                }
               },
               {
                 "id": "seperempat",
@@ -401,7 +906,10 @@
                 "ikon": "🎂",
                 "catatan": "4 bagian sama besar. Lebih kecil.",
                 "suara": "Seperempat. Benda dibagi empat sama besar, jadi setiap bagian lebih kecil dari setengah.",
-                "visual": { "jenis": "teks", "isi": "4 bagian sama besar → setiap bagian ¼" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 bagian sama besar → setiap bagian ¼"
+                }
               }
             ],
             "kesimpulan": "Makin banyak bagian yang sama besar, makin kecil setiap bagiannya."
@@ -419,7 +927,10 @@
                 "ikon": "1️⃣",
                 "isi": "Satu dari empat bagian.",
                 "suara": "Satu seperempat adalah satu dari empat bagian yang sama besar.",
-                "visual": { "jenis": "teks", "isi": "¼" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "¼"
+                }
               },
               {
                 "id": "dua",
@@ -427,7 +938,10 @@
                 "ikon": "2️⃣",
                 "isi": "Sama dengan satu setengah.",
                 "suara": "Dua seperempat disatukan sama panjang dengan satu setengah.",
-                "visual": { "jenis": "teks", "isi": "¼ + ¼ = ½" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "¼ + ¼ = ½"
+                }
               },
               {
                 "id": "empat",
@@ -435,8 +949,146 @@
                 "ikon": "4️⃣",
                 "isi": "Sama dengan satu utuh.",
                 "suara": "Empat seperempat disatukan menjadi satu utuh.",
-                "visual": { "jenis": "teks", "isi": "¼ + ¼ + ¼ + ¼ = 1 utuh" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "¼ + ¼ + ¼ + ¼ = 1 utuh"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Cara mendapat seperempat?",
+          "ikon": "🍕",
+          "suara": "Ini peta tentang seperempat. Kita ingin tahu cara mendapat seperempat dari satu benda utuh. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-empat",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Empat bagian sama besar",
+            "ikon": "🧩",
+            "petunjuk": "Satu benda utuh dibagi menjadi empat bagian yang sama besar, dan satu bagian disebut seperempat."
+          },
+          {
+            "id": "hal-setengah",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Setengah dari setengah",
+            "ikon": "🍎",
+            "petunjuk": "Potong dua kali: setengah dibagi dua lagi, hasilnya seperempat."
+          },
+          {
+            "id": "hal-utuh",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Utuh, setengah, seperempat",
+            "ikon": "🍰",
+            "petunjuk": "Dua seperempat sama besar dengan setengah, dan empat seperempat sama besar dengan satu utuh."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-potong",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Potong jadi empat bagian",
+            "ikon": "✂️",
+            "petunjuk": "Langkah untuk empat bagian: tarik dua garis lewat tengah benda."
+          },
+          {
+            "id": "cara-dua",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Potong setengah, lalu lagi",
+            "ikon": "🔁",
+            "petunjuk": "Langkah untuk setengah dari setengah: bagi dua, lalu bagi dua lagi tiap bagian."
+          },
+          {
+            "id": "cara-periksa",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Periksa semua sama besar",
+            "ikon": "🧐",
+            "petunjuk": "Langkah untuk memeriksa: pastikan keempat bagian sama besar."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-sebut",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menyebut seperempat",
+            "ikon": "🏷️",
+            "petunjuk": "Kemampuan menyebut satu dari empat bagian sama besar sebagai seperempat."
+          },
+          {
+            "id": "hasil-pilih",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa memilih yang seperempat",
+            "ikon": "🔎",
+            "petunjuk": "Kemampuan membedakan bagian yang seperempat dari yang bukan seperempat."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Utuh, setengah, seperempat",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel utuh, setengah, dan seperempat. Untuk tiap pecahan, pasang berapa kali dipotong, berapa bagian sama besar, dan lambangnya.",
+        "pojok": "Pecahan",
+        "kolom": [
+          "Utuh",
+          "Setengah",
+          "Seperempat"
+        ],
+        "baris": [
+          {
+            "label": "Potong",
+            "sel": [
+              "nol kali",
+              "sekali",
+              "dua kali"
+            ]
+          },
+          {
+            "label": "Bagian",
+            "sel": [
+              "satu",
+              "dua",
+              "empat"
+            ]
+          },
+          {
+            "label": "Lambang",
+            "sel": [
+              "1",
+              "½",
+              "¼"
             ]
           }
         ]
