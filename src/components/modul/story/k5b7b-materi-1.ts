@@ -104,14 +104,14 @@ const TRAPESIUM_DASAR = (): Obj[] => [bangun("tb", "sembarang", T.cx, T.cy, T.s,
 
 export const ADEGAN_TRAPESIUM: AdeganStory = {
   id: "trapesium",
-  judul: "Eksplorasi 7.2B: mengingat kembali ciri-ciri trapesium",
-  sumber: "Buku Siswa hlm. 210–211; Buku Panduan Guru hlm. 316–318",
+  judul: "Mengingat kembali ciri-ciri trapesium",
+  sumber: "Materi: ciri-ciri trapesium",
   latar: "#FFF7ED",
   kutipan: ["Ayo Mengingat Kembali Ciri-Ciri Trapesium", "dinamakan trapesium", "tegak lurus ke", "Apakah DE = CF", "Trapesium sembarang", "Trapesium siku-siku", "Trapesium sama kaki"],
   ketukan: [
     k(
-      "Eksplorasi 7.2B, mengingat kembali ciri-ciri trapesium. Di kelas empat kita belajar bahwa bangun ABCD ini dinamakan trapesium.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 7.2B", 13, W.ungu)),
+      "Mari kita mengingat kembali ciri-ciri trapesium. Di kelas empat kita belajar bahwa bangun ABCD ini dinamakan trapesium, salah satu jenis segi empat.",
+      tambah(0, teks("jud", 150, 24, "Ciri-ciri trapesium", 13, W.ungu)),
       tambah("bangun", TRAPESIUM_DASAR().filter((o) => o.id === "tb")),
       tambah("ABCD", TRAPESIUM_DASAR().filter((o) => o.id !== "tb")),
     ),
@@ -159,27 +159,27 @@ export const ADEGAN_TRAPESIUM: AdeganStory = {
 /* ------------------------------ 3. Definisi trapesium dan Ayo Berpikir Kritis (hlm. 212) ------------------------------ */
 export const ADEGAN_TRAPESIUM_DEF: AdeganStory = {
   id: "trapesium-def",
-  judul: "Rangkuman trapesium dan Ayo Berpikir Kritis",
-  sumber: "Buku Siswa hlm. 212; Buku Panduan Guru hlm. 318",
+  judul: "Rangkuman trapesium dan berpikir kritis",
+  sumber: "Materi: rangkuman trapesium",
   latar: "#EEF2FF",
   kutipan: ["Trapesium adalah segi empat yang mempunyai setidaknya sepasang sisi sejajar", "Trapesium siku-siku adalah trapesium yang salah satu", "Trapesium sama kaki adalah trapesium yang memiliki satu simetri lipat", "Ayo Berpikir Kritis", "hanya memiliki sepasang sisi yang sejajar", "keduanya dapat dibenarkan", "kita bersepakat menggunakan pengertian yang"],
   ketukan: [
     k(
-      "Inilah rangkuman buku. Trapesium adalah segi empat yang mempunyai setidaknya sepasang sisi sejajar. Trapesium siku-siku salah satu sudutnya siku-siku, dan trapesium sama kaki memiliki satu simetri lipat.",
+      "Inilah rangkuman singkatnya. Trapesium adalah segi empat yang mempunyai setidaknya sepasang sisi sejajar. Trapesium siku-siku salah satu sudutnya siku-siku, dan trapesium sama kaki memiliki satu simetri lipat.",
       tambah(0, teks("jud", 150, 22, "Rangkuman trapesium", 13, W.ungu)),
       tambah(3, kartu("r1", 20, 34, 260, 36, W.hijauMuda, ["Trapesium", "segi empat dengan setidaknya sepasang sisi sejajar"], 8.2)),
       tambah(13, kartu("r2", 20, 80, 260, 36, W.muda, ["Trapesium siku-siku", "salah satu sudutnya siku-siku"], 8.2)),
       tambah(20, kartu("r3", 20, 126, 260, 36, W.krem, ["Trapesium sama kaki", "memiliki satu simetri lipat"], 8.2)),
     ),
     k(
-      "Ayo berpikir kritis. Lukas bertanya, apakah trapesium boleh memiliki lebih dari sepasang sisi sejajar? Padahal di kelas empat kita belajar, trapesium hanya memiliki sepasang sisi sejajar.",
+      "Mari berpikir kritis. Lukas bertanya, apakah trapesium boleh memiliki lebih dari sepasang sisi sejajar? Padahal di kelas empat kita belajar, trapesium hanya memiliki sepasang sisi sejajar.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Ayo Berpikir Kritis", 13, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Mari Berpikir Kritis", 13, W.ungu)),
       tambah("Lukas", ide("lk", 14, 34, 272, 54, "Lukas", ["Apakah trapesium boleh memiliki", "lebih dari sepasang sisi sejajar?"], W.krem, 8.4)),
       tambah("Padahal", ide("lb", 14, 98, 272, 54, "Di kelas IV", ["trapesium hanya memiliki sepasang", "sisi yang sejajar."], W.muda, 8.4)),
     ),
     k(
-      "Menurut buku, kedua pendapat dapat dibenarkan: setidaknya sepasang sisi sejajar, atau tepat sepasang sisi sejajar. Alasan keduanya sama kuat.",
+      "Kedua pendapat dapat dibenarkan: setidaknya sepasang sisi sejajar, atau tepat sepasang sisi sejajar. Alasan keduanya sama kuat.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Dua pendapat", 13, W.ungu)),
       tambah("setidaknya", kartu("p1", 14, 44, 128, 70, W.hijauMuda, ["setidaknya", "sepasang sisi", "sejajar"], 9)),
@@ -187,9 +187,9 @@ export const ADEGAN_TRAPESIUM_DEF: AdeganStory = {
       tambah("sama", teks("p3", 150, 146, "alasan sama kuat", 11, W.merah)),
     ),
     k(
-      "Di buku ini kita bersepakat memakai pengertian yang pertama, supaya wawasanmu lebih luas.",
+      "Di sini kita bersepakat memakai pengertian yang pertama, supaya wawasanmu lebih luas.",
       ubah(0, { id: "p1-k", warna: W.emas }, { id: "p2-k", op: 0.45 }, { id: "p2-t0", op: 0.45 }, { id: "p2-t1", op: 0.45 }, { id: "p2-t2", op: 0.45 }),
-      tambah("pertama,", teks("p4", 78, 134, "✓", 20, W.hijau), teks("p5", 150, 176, "dipakai di buku ini", 10.4, W.hijau)),
+      tambah("pertama,", teks("p4", 78, 134, "✓", 20, W.hijau), teks("p5", 150, 176, "pengertian yang kita pakai", 10.4, W.hijau)),
       hapus("pertama,", "p3"),
     ),
   ],
@@ -205,14 +205,14 @@ const tegakH = tegakLurus("gh", "jajar", J.cx, J.cy, J.s, "D", "B", "C", "H");
 
 export const ADEGAN_JAJAR_PERIKSA: AdeganStory = {
   id: "jajar-periksa",
-  judul: "Eksplorasi 7.2C: Nisa dan Komang memeriksa jajargenjang",
-  sumber: "Buku Siswa hlm. 213–214; Buku Panduan Guru hlm. 319–321",
+  judul: "Nisa dan Komang memeriksa jajargenjang",
+  sumber: "Materi: memeriksa jajargenjang",
   latar: "#FDF2F8",
   kutipan: ["Ayo Mengingat Kembali Jajargenjang", "Nisa dan Komang bersama-", "sama memeriksa ciri-ciri jajar-", "genjang ABCD di samping", "Dengan menggunakan busur", "Coba ukurlah panjang DE dan FB", "Coba ukurlah panjang GB dan DH", "Pasangan sudut mana saja yang", "sama besar? A = C dan B = D"],
   ketukan: [
     k(
-      "Eksplorasi 7.2C, mengingat kembali jajargenjang. Nisa dan Komang bersama-sama memeriksa ciri-ciri jajargenjang ABCD.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 7.2C", 13, W.ungu)),
+      "Sekarang kita mengingat kembali jajargenjang. Nisa dan Komang bersama-sama memeriksa ciri-ciri jajargenjang ABCD.",
+      tambah(0, teks("jud", 150, 24, "Jajargenjang ABCD", 13, W.ungu)),
       tambah("jajargenjang", jDasar().filter((o) => o.id === "jb")),
       tambah("ABCD.", jDasar().filter((o) => o.id !== "jb")),
     ),

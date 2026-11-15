@@ -174,8 +174,8 @@ const BARIS_SEDOTAN = [KEPALA_SEDOTAN, ["1", "5", "6", "7", "bisa", "13", "12", 
 
 export const ADEGAN_SEDOTAN: AdeganStory = {
   id: "ekspl-71a",
-  judul: "Eksplorasi 7.1A: Ayo Membuat Segitiga",
-  sumber: "Buku Siswa hlm. 196; Panduan Guru hlm. 294–295",
+  judul: "Percobaan: membuat segitiga dari sedotan",
+  sumber: "Materi: percobaan tiga sedotan",
   latar: "#FEFCE8",
   kutipan: [
     "Eksplorasi 7.1A",
@@ -191,8 +191,8 @@ export const ADEGAN_SEDOTAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi 7.1A, Ayo Membuat Segitiga. Pertanyaannya: jika punya sembarang tiga ruas garis, apakah pasti bisa membentuk segitiga?",
-      tambah(0, judul("Eksplorasi 7.1A: Ayo Membuat Segitiga")),
+      "Mari mulai dengan percobaan, kita membuat segitiga. Pertanyaannya: jika punya sembarang tiga ruas garis, apakah pasti bisa membentuk segitiga?",
+      tambah(0, judul("Percobaan: membuat segitiga")),
       tambah("Segitiga", segitiga("sg", 100, 140, titikSisi(5, 6, 7, 14), W.jingga)),
       tambah("Pertanyaannya:", teks("qq", 150, 176, "3 ruas garis, pasti jadi segitiga?", 9.4, W.merah)),
     ),
@@ -204,21 +204,21 @@ export const ADEGAN_SEDOTAN: AdeganStory = {
       tambah("diikat", garis("pa", 126, 70, 20, 0, W.hijau, 3, { gambar: true }), segitiga("sg2", 160, 110, titikSisi(5, 6, 7, 11), W.jingga)),
     ),
     k(
-      "Hasil dicatat pada tabel: panjang a, b, c, bisa atau tidak, dan jumlah dua sisi. Nomor satu, lima, enam, tujuh, bisa; jumlahnya tiga belas, dua belas, sebelas.",
+      "Hasil dicatat pada tabel: panjang a, b, c, bisa atau tidak, dan jumlah dua sisi. Kelompok satu, lima, enam, tujuh, bisa; jumlahnya tiga belas, dua belas, sebelas.",
       bersih(0),
       tambah(0, judul("tabel hasil percobaan")),
       tambah("tabel:", ...tabel("tb", 29, 36, KOL_SEDOTAN, BARIS_SEDOTAN, 17, 8.2)),
-      sorotkan("Nomor", ...idBaris("tb", 1, 8).filter((i) => i.includes("-t"))),
+      sorotkan("Kelompok", ...idBaris("tb", 1, 8).filter((i) => i.includes("-t"))),
     ),
     k(
-      "Kunci Panduan Guru: nomor dua, empat enam enam, bisa; jumlahnya dua belas, sepuluh, sepuluh. Nomor tiga, lima empat dua belas, tidak bisa; jumlahnya enam belas, tujuh belas, sembilan.",
+      "Kita lengkapi dulu: kelompok dua, empat enam enam, bisa; jumlahnya dua belas, sepuluh, sepuluh. Kelompok tiga, lima empat dua belas, tidak bisa; jumlahnya enam belas, tujuh belas, sembilan.",
       ubah(4, { id: "tb-t24", isi: "bisa" }, { id: "tb-t25", isi: "12" }, { id: "tb-t26", isi: "10" }, { id: "tb-t27", isi: "10" }),
-      ubah("Nomor@2", { id: "tb-t34", isi: "tidak", warna: W.merah }, { id: "tb-t35", isi: "16" }, { id: "tb-t36", isi: "17" }, { id: "tb-t37", isi: "9" }),
+      ubah("Kelompok@2", { id: "tb-t34", isi: "tidak", warna: W.merah }, { id: "tb-t35", isi: "16" }, { id: "tb-t36", isi: "17" }, { id: "tb-t37", isi: "9" }),
     ),
     k(
-      "Nomor empat: sepuluh, lima, lima belas: tidak bisa; jumlahnya dua puluh, dua puluh lima, lima belas. Nomor lima: lima, dua belas, tiga belas: bisa; jumlahnya dua puluh lima, delapan belas, tujuh belas.",
+      "Kelompok empat: sepuluh, lima, lima belas: tidak bisa; jumlahnya dua puluh, dua puluh lima, lima belas. Kelompok lima: lima, dua belas, tiga belas: bisa; jumlahnya dua puluh lima, delapan belas, tujuh belas.",
       ubah("empat:", { id: "tb-t44", isi: "tidak", warna: W.merah }, { id: "tb-t45", isi: "20" }, { id: "tb-t46", isi: "25" }, { id: "tb-t47", isi: "15" }),
-      ubah("Nomor@2", { id: "tb-t54", isi: "bisa" }, { id: "tb-t55", isi: "25" }, { id: "tb-t56", isi: "18" }, { id: "tb-t57", isi: "17" }),
+      ubah("Kelompok@2", { id: "tb-t54", isi: "bisa" }, { id: "tb-t55", isi: "25" }, { id: "tb-t56", isi: "18" }, { id: "tb-t57", isi: "17" }),
     ),
   ],
 };

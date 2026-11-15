@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-uji", "teks": "5 + 6 lebih dari 7, lolos", "ikon": "✅", "cabang": "syarat", "petunjuk": "Menguji jumlah dua sisi itu soal syarat sisi. Coba cabang lain." },
-          { "id": "a-gagal", "teks": "5 + 4 kurang dari 12, gagal", "ikon": "❌", "cabang": "syarat", "petunjuk": "Menguji jumlah dua sisi itu soal syarat sisi. Coba cabang lain." },
-          { "id": "a-seratus", "teks": "Tiga sudut = 180°", "ikon": "➕", "cabang": "sudut", "petunjuk": "Jumlah tiga sudut itu soal jumlah sudut. Coba cabang lain." },
-          { "id": "a-tumpul", "teks": "Satu sudut tumpul, segitiga tumpul", "ikon": "∠", "cabang": "sudut", "petunjuk": "Jenis menurut sudut itu soal jumlah sudut. Coba cabang lain." },
-          { "id": "a-kaki", "teks": "Dua sisi sama = sama kaki", "ikon": "🦵", "cabang": "sisi", "petunjuk": "Menghitung sisi yang sama itu soal jenis sisi. Coba cabang lain." },
-          { "id": "a-sembarang", "teks": "Semua sisi berbeda = sembarang", "ikon": "🔀", "cabang": "sisi", "petunjuk": "Menghitung sisi yang sama itu soal jenis sisi. Coba cabang lain." },
-          { "id": "a-sama-sisi", "teks": "Sama sisi juga sama kaki", "ikon": "🔺", "cabang": "hierarki", "petunjuk": "Hubungan antarjenis itu soal hierarki. Coba cabang lain." },
-          { "id": "a-dibalik", "teks": "Sama kaki belum tentu sama sisi", "ikon": "↩️", "cabang": "hierarki", "petunjuk": "Hubungan antarjenis itu soal hierarki. Coba cabang lain." }
+          {
+            "id": "a-uji",
+            "teks": "5 + 6 lebih dari 7, lolos",
+            "ikon": "✅",
+            "cabang": "syarat",
+            "petunjuk": "Menguji jumlah dua sisi itu soal syarat sisi. Coba cabang lain."
+          },
+          {
+            "id": "a-gagal",
+            "teks": "5 + 4 kurang dari 12, gagal",
+            "ikon": "❌",
+            "cabang": "syarat",
+            "petunjuk": "Menguji jumlah dua sisi itu soal syarat sisi. Coba cabang lain."
+          },
+          {
+            "id": "a-seratus",
+            "teks": "Tiga sudut = 180°",
+            "ikon": "➕",
+            "cabang": "sudut",
+            "petunjuk": "Jumlah tiga sudut itu soal jumlah sudut. Coba cabang lain."
+          },
+          {
+            "id": "a-tumpul",
+            "teks": "Satu sudut tumpul, segitiga tumpul",
+            "ikon": "∠",
+            "cabang": "sudut",
+            "petunjuk": "Jenis menurut sudut itu soal jumlah sudut. Coba cabang lain."
+          },
+          {
+            "id": "a-kaki",
+            "teks": "Dua sisi sama = sama kaki",
+            "ikon": "🦵",
+            "cabang": "sisi",
+            "petunjuk": "Menghitung sisi yang sama itu soal jenis sisi. Coba cabang lain."
+          },
+          {
+            "id": "a-sembarang",
+            "teks": "Semua sisi berbeda = sembarang",
+            "ikon": "🔀",
+            "cabang": "sisi",
+            "petunjuk": "Menghitung sisi yang sama itu soal jenis sisi. Coba cabang lain."
+          },
+          {
+            "id": "a-sama-sisi",
+            "teks": "Sama sisi juga sama kaki",
+            "ikon": "🔺",
+            "cabang": "hierarki",
+            "petunjuk": "Hubungan antarjenis itu soal hierarki. Coba cabang lain."
+          },
+          {
+            "id": "a-dibalik",
+            "teks": "Sama kaki belum tentu sama sisi",
+            "ikon": "↩️",
+            "cabang": "hierarki",
+            "petunjuk": "Hubungan antarjenis itu soal hierarki. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -72,7 +120,10 @@
                 "ikon": "✅",
                 "isi": "Semua pasangan lolos.",
                 "suara": "Sedotan lima, enam, dan tujuh bisa menjadi segitiga, karena ketiga pasangan lolos uji.",
-                "visual": { "jenis": "teks", "isi": "5, 6, 7" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5, 6, 7"
+                }
               },
               {
                 "id": "tidak",
@@ -80,7 +131,10 @@
                 "ikon": "❌",
                 "isi": "Ada pasangan gagal.",
                 "suara": "Sedotan lima, empat, dan dua belas tidak bisa, karena lima ditambah empat hanya sembilan, kurang dari dua belas.",
-                "visual": { "jenis": "teks", "isi": "5, 4, 12" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5, 4, 12"
+                }
               },
               {
                 "id": "lurus",
@@ -88,7 +142,10 @@
                 "ikon": "➖",
                 "isi": "Jumlah sama, jadi garis lurus.",
                 "suara": "Sedotan tiga, empat, dan tujuh juga tidak bisa. Tiga ditambah empat sama dengan tujuh, jadi hanya menjadi garis lurus.",
-                "visual": { "jenis": "teks", "isi": "3 + 4 = 7" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 + 4 = 7"
+                }
               }
             ]
           },
@@ -105,7 +162,10 @@
                 "ikon": "∟",
                 "catatan": "Satu sudut tepat siku.",
                 "suara": "Segitiga siku-siku punya satu sudut sembilan puluh derajat.",
-                "visual": { "jenis": "teks", "isi": "90°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "90°"
+                }
               },
               {
                 "id": "tumpul",
@@ -113,7 +173,10 @@
                 "ikon": "∠",
                 "catatan": "Satu sudut lebih lebar dari siku.",
                 "suara": "Segitiga tumpul punya satu sudut yang lebih besar dari sembilan puluh derajat.",
-                "visual": { "jenis": "teks", "isi": "> 90°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "> 90°"
+                }
               }
             ],
             "kesimpulan": "Paling banyak satu sudut siku atau tumpul."
@@ -131,7 +194,10 @@
                 "ikon": "🦵",
                 "isi": "Dua sisi sama panjang.",
                 "suara": "Segitiga sama kaki punya dua sisi sama panjang, dan sudut di depan kaki itu juga sama besar.",
-                "visual": { "jenis": "teks", "isi": "2 sisi sama" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 sisi sama"
+                }
               },
               {
                 "id": "sisi",
@@ -139,7 +205,10 @@
                 "ikon": "🔺",
                 "isi": "Tiga sisi sama panjang.",
                 "suara": "Segitiga sama sisi punya tiga sisi sama panjang. Tiap sudutnya enam puluh derajat.",
-                "visual": { "jenis": "teks", "isi": "3 sisi, 60°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 sisi, 60°"
+                }
               },
               {
                 "id": "simetri",
@@ -147,8 +216,155 @@
                 "ikon": "↔️",
                 "isi": "Banyak simetri lipat.",
                 "suara": "Segitiga sama kaki punya satu simetri lipat, sama sisi punya tiga, dan sembarang tidak punya.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Jenis", "Simetri lipat"], "baris": [["sama kaki", 1], ["sama sisi", 3], ["sembarang", 0]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Jenis",
+                    "Simetri lipat"
+                  ],
+                  "baris": [
+                    [
+                      "sama kaki",
+                      1
+                    ],
+                    [
+                      "sama sisi",
+                      3
+                    ],
+                    [
+                      "sembarang",
+                      0
+                    ]
+                  ]
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Sama sisi atau sama kaki?",
+          "ikon": "🔺",
+          "suara": "Ini peta tentang Komang dan Nisa yang berbeda pendapat tentang sebuah segitiga, apakah sama sisi atau sama kaki. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-syarat",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Syarat tiga sedotan",
+            "petunjuk": "Memahami kapan tiga sedotan bisa membentuk sebuah segitiga."
+          },
+          {
+            "id": "hal-sudut",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Jumlah sudut segitiga",
+            "petunjuk": "Memahami berapa jumlah ketiga sudut di dalam segitiga."
+          },
+          {
+            "id": "hal-sisi",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Sama kaki dan sama sisi",
+            "petunjuk": "Memahami dua jenis segitiga menurut panjang sisinya dan hubungannya."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-coba",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Coba tiga sedotan berbeda",
+            "petunjuk": "Langkah untuk menemukan syarat tiga sedotan."
+          },
+          {
+            "id": "cara-potong",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Potong, impitkan tiga sudut",
+            "petunjuk": "Langkah untuk menemukan jumlah sudut segitiga."
+          },
+          {
+            "id": "cara-impit",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Impitkan sisi, bandingkan",
+            "petunjuk": "Langkah untuk membandingkan sama kaki dengan sama sisi."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-syarat",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Menjelaskan syarat segitiga",
+            "petunjuk": "Kemampuan menjelaskan kapan tiga sisi bisa menjadi segitiga."
+          },
+          {
+            "id": "hasil-golong",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Menjawab: boleh sama kaki?",
+            "petunjuk": "Kemampuan menjawab apakah segitiga sama sisi boleh disebut sama kaki."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Tiga sedotan dan segitiga",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel tiga sedotan. Untuk tiap kelompok, pasang panjang sedotan, jumlah dua sisi, dan hasil bandingnya dengan sisi ketiga.",
+        "pojok": "Hasil",
+        "kolom": [
+          "Panjang",
+          "Dua sisi",
+          "Banding"
+        ],
+        "baris": [
+          {
+            "label": "Lolos",
+            "sel": [
+              "5, 6, 7 cm",
+              "5 + 6 = 11",
+              "lebih dari 7"
+            ]
+          },
+          {
+            "label": "Gagal",
+            "sel": [
+              "5, 4, 12 cm",
+              "5 + 4 = 9",
+              "kurang dari 12"
+            ]
+          },
+          {
+            "label": "Lurus",
+            "sel": [
+              "10, 5, 15 cm",
+              "10 + 5 = 15",
+              "sama dengan 15"
             ]
           }
         ]
@@ -193,14 +409,62 @@
           }
         ],
         "kartu": [
-          { "id": "b-satu-pasang", "teks": "Setidaknya sepasang sisi sejajar", "ikon": "∥", "cabang": "trapesium", "petunjuk": "Ciri sisi sejajar yang paling sedikit itu soal trapesium. Coba cabang lain." },
-          { "id": "b-siku-sama", "teks": "Trapesium siku-siku dan sama kaki", "ikon": "📐", "cabang": "trapesium", "petunjuk": "Jenis trapesium itu soal trapesium. Coba cabang lain." },
-          { "id": "b-dua-pasang", "teks": "Dua pasang sisi berhadapan sejajar", "ikon": "▱", "cabang": "jajar", "petunjuk": "Dua pasang sisi sejajar itu soal jajargenjang. Coba cabang lain." },
-          { "id": "b-persegi-panjang", "teks": "Persegi panjang: jajargenjang bersudut siku", "ikon": "▭", "cabang": "jajar", "petunjuk": "Jajargenjang bersudut siku itu soal jajargenjang. Coba cabang lain." },
-          { "id": "b-empat-sama", "teks": "Empat sisi sama panjang", "ikon": "◇", "cabang": "belah", "petunjuk": "Empat sisi sama panjang itu soal belah ketupat. Coba cabang lain." },
-          { "id": "b-layang", "teks": "Belah ketupat juga layang-layang", "ikon": "🪁", "cabang": "belah", "petunjuk": "Belah ketupat dan layang-layang itu soal cabang belah ketupat. Coba cabang lain." },
-          { "id": "b-persegi-pusat", "teks": "Persegi ada di pusat tangga", "ikon": "⬜", "cabang": "persegi", "petunjuk": "Persegi di pusat itu soal persegi. Coba cabang lain." },
-          { "id": "b-persegi-semua", "teks": "Persegi juga persegi panjang dan belah ketupat", "ikon": "⬆️", "cabang": "persegi", "petunjuk": "Persegi termasuk golongan lain itu soal persegi. Coba cabang lain." }
+          {
+            "id": "b-satu-pasang",
+            "teks": "Setidaknya sepasang sisi sejajar",
+            "ikon": "∥",
+            "cabang": "trapesium",
+            "petunjuk": "Ciri sisi sejajar yang paling sedikit itu soal trapesium. Coba cabang lain."
+          },
+          {
+            "id": "b-siku-sama",
+            "teks": "Trapesium siku-siku dan sama kaki",
+            "ikon": "📐",
+            "cabang": "trapesium",
+            "petunjuk": "Jenis trapesium itu soal trapesium. Coba cabang lain."
+          },
+          {
+            "id": "b-dua-pasang",
+            "teks": "Dua pasang sisi berhadapan sejajar",
+            "ikon": "▱",
+            "cabang": "jajar",
+            "petunjuk": "Dua pasang sisi sejajar itu soal jajargenjang. Coba cabang lain."
+          },
+          {
+            "id": "b-persegi-panjang",
+            "teks": "Persegi panjang: jajargenjang bersudut siku",
+            "ikon": "▭",
+            "cabang": "jajar",
+            "petunjuk": "Jajargenjang bersudut siku itu soal jajargenjang. Coba cabang lain."
+          },
+          {
+            "id": "b-empat-sama",
+            "teks": "Empat sisi sama panjang",
+            "ikon": "◇",
+            "cabang": "belah",
+            "petunjuk": "Empat sisi sama panjang itu soal belah ketupat. Coba cabang lain."
+          },
+          {
+            "id": "b-layang",
+            "teks": "Belah ketupat juga layang-layang",
+            "ikon": "🪁",
+            "cabang": "belah",
+            "petunjuk": "Belah ketupat dan layang-layang itu soal cabang belah ketupat. Coba cabang lain."
+          },
+          {
+            "id": "b-persegi-pusat",
+            "teks": "Persegi ada di pusat tangga",
+            "ikon": "⬜",
+            "cabang": "persegi",
+            "petunjuk": "Persegi di pusat itu soal persegi. Coba cabang lain."
+          },
+          {
+            "id": "b-persegi-semua",
+            "teks": "Persegi juga persegi panjang dan belah ketupat",
+            "ikon": "⬆️",
+            "cabang": "persegi",
+            "petunjuk": "Persegi termasuk golongan lain itu soal persegi. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -220,7 +484,10 @@
                 "ikon": "∥",
                 "isi": "Satu pasang sudah cukup.",
                 "suara": "Trapesium punya setidaknya sepasang sisi sejajar. Satu pasang sudah cukup.",
-                "visual": { "jenis": "teks", "isi": "1 pasang atau lebih" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 pasang atau lebih"
+                }
               },
               {
                 "id": "jajar",
@@ -228,7 +495,10 @@
                 "ikon": "▱",
                 "isi": "Dua pasang, juga trapesium.",
                 "suara": "Jajargenjang punya dua pasang sisi sejajar, jadi jajargenjang juga trapesium.",
-                "visual": { "jenis": "teks", "isi": "2 pasang" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 pasang"
+                }
               },
               {
                 "id": "jenis",
@@ -236,7 +506,10 @@
                 "ikon": "📐",
                 "isi": "Siku-siku dan sama kaki.",
                 "suara": "Ada trapesium siku-siku yang punya sudut siku-siku, dan trapesium sama kaki yang kakinya sama panjang.",
-                "visual": { "jenis": "teks", "isi": "siku-siku, sama kaki" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "siku-siku, sama kaki"
+                }
               }
             ]
           },
@@ -253,7 +526,10 @@
                 "ikon": "▭",
                 "catatan": "Empat sudut siku-siku.",
                 "suara": "Persegi panjang punya empat sudut siku-siku dan dua pasang sisi sejajar.",
-                "visual": { "jenis": "teks", "isi": "4 siku-siku" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 siku-siku"
+                }
               },
               {
                 "id": "ketupat",
@@ -261,7 +537,10 @@
                 "ikon": "◇",
                 "catatan": "Empat sisi sama panjang.",
                 "suara": "Belah ketupat punya empat sisi sama panjang dan diagonal yang saling tegak lurus.",
-                "visual": { "jenis": "teks", "isi": "4 sisi sama" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 sisi sama"
+                }
               }
             ],
             "kesimpulan": "Persegi punya empat siku dan empat sisi sama."
@@ -279,7 +558,10 @@
                 "ikon": "⬆️",
                 "isi": "Banyak ciri, naik golongan.",
                 "suara": "Persegi panjang dan belah ketupat sama-sama termasuk jajargenjang. Belah ketupat juga termasuk layang-layang.",
-                "visual": { "jenis": "teks", "isi": "persegi panjang → jajargenjang" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "persegi panjang → jajargenjang"
+                }
               },
               {
                 "id": "pusat",
@@ -287,7 +569,10 @@
                 "ikon": "⬜",
                 "isi": "Ada di pusat tangga.",
                 "suara": "Persegi termasuk persegi panjang, belah ketupat, jajargenjang, dan trapesium. Tetapi hubungannya tidak berlaku sebaliknya.",
-                "visual": { "jenis": "teks", "isi": "persegi di pusat" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "persegi di pusat"
+                }
               },
               {
                 "id": "tabel",
@@ -295,8 +580,163 @@
                 "ikon": "∥",
                 "isi": "Banyak pasang sisi sejajar.",
                 "suara": "Trapesium biasa punya satu pasang sisi sejajar, jajargenjang dua pasang, dan layang-layang tidak punya.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Bangun", "Pasang sejajar"], "baris": [["trapesium biasa", 1], ["jajargenjang", 2], ["layang-layang", 0]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Bangun",
+                    "Pasang sejajar"
+                  ],
+                  "baris": [
+                    [
+                      "trapesium biasa",
+                      1
+                    ],
+                    [
+                      "jajargenjang",
+                      2
+                    ],
+                    [
+                      "layang-layang",
+                      0
+                    ]
+                  ]
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Persegi termasuk bangun apa?",
+          "ikon": "⬜",
+          "suara": "Ini peta masalah membandingkan segi empat. Kita ingin tahu persegi itu termasuk bangun apa saja, dan mengapa bisa begitu. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-trapesium",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Pengertian trapesium",
+            "petunjuk": "Hal yang dipelajari tentang bangun yang punya sepasang sisi sejajar."
+          },
+          {
+            "id": "hal-ciri",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Ciri tiap segi empat",
+            "petunjuk": "Hal yang dipelajari tentang sisi, sudut, diagonal, dan sumbu simetri."
+          },
+          {
+            "id": "hal-hubungan",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Hubungan antarbangun",
+            "petunjuk": "Hal yang dipelajari tentang bangun mana yang termasuk bangun lain."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-sejajar",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Hitung pasangan sisi sejajar",
+            "petunjuk": "Langkah untuk memutuskan apakah sebuah bangun termasuk trapesium."
+          },
+          {
+            "id": "cara-cocok",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Cocokkan ciri satu per satu",
+            "petunjuk": "Langkah untuk menemukan ciri apa saja yang dimiliki sebuah bangun."
+          },
+          {
+            "id": "cara-tambah",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tambah satu ciri khusus",
+            "petunjuk": "Langkah untuk berpindah dari bangun umum ke bangun yang lebih khusus."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-banding",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Membandingkan dua segi empat",
+            "petunjuk": "Kemampuan menjelaskan mengapa sebuah bangun termasuk bangun lain."
+          },
+          {
+            "id": "hasil-tangga",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Menyusun tangga golongan",
+            "petunjuk": "Kemampuan mengurutkan bangun dari yang umum sampai yang khusus."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Sumbu simetri dan sudut siku-siku",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel sumbu simetri. Pasang nama bangun, banyak pasang sisi sejajar, dan banyak sudut siku-siku untuk bangun yang punya nol, satu, dua, dan empat sumbu simetri.",
+        "pojok": "Simetri",
+        "kolom": [
+          "Bangun",
+          "Sejajar",
+          "Siku-siku"
+        ],
+        "baris": [
+          {
+            "label": "0 sumbu",
+            "sel": [
+              "jajar genjang",
+              "2 pasang",
+              "0 sudut"
+            ]
+          },
+          {
+            "label": "1 sumbu",
+            "sel": [
+              "layang-layang",
+              "tidak ada",
+              "0 sudut"
+            ]
+          },
+          {
+            "label": "2 sumbu",
+            "sel": [
+              "belah ketupat",
+              "2 pasang",
+              "0 sudut"
+            ]
+          },
+          {
+            "label": "4 sumbu",
+            "sel": [
+              "persegi",
+              "2 pasang",
+              "4 sudut"
             ]
           }
         ]

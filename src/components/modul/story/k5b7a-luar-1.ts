@@ -6,14 +6,14 @@ import { bersih, k, tambah, warnai } from "./k5b7a-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode luar untuk membandingkan ciri-ciri segitiga",
-  sumber: "Metode luar buku; contoh dari Buku Siswa hlm. 196–208",
+  sumber: "Metode luar: pembuka",
   latar: "#EAF2FF",
   ketukan: [
     k(
-      "Video ini membahas empat metode luar untuk Subbab A, yaitu cara tambahan di luar buku untuk membandingkan ciri-ciri segitiga.",
-      tambah(0, judul("metode luar Subbab A")),
+      "Video ini membahas empat metode luar untuk ciri-ciri segitiga, yaitu cara tambahan di luar kurikulum untuk membandingkan ciri-ciri segitiga.",
+      tambah(0, judul("metode luar: segitiga")),
       tambah(4, emo("dunia", 80, 100, "🌐", 44), teks("l1", 80, 132, "metode luar", 9, W.merah)),
-      tambah(7, emo("buku", 220, 100, "📘", 44), teks("l2", 220, 132, "Subbab A", 9)),
+      tambah(7, emo("buku", 220, 100, "📘", 44), teks("l2", 220, 132, "ciri-ciri", 9)),
       tambah(11, garis("pa", 112, 100, 74, 0, W.hijau, 4, { gambar: true })),
     ),
     k(
@@ -29,13 +29,13 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah(10, ...kartu("m4", 156, 112, 134, 66, "#BFDBFE", ["Inclusive Triangle", "Hierarchy", "golongan bersarang"], 8.4)),
     ),
     k(
-      "Tiap metode dipelajari dalam dua bagian, konsep lalu penerapan, memakai angka dari Buku Siswa seperti sedotan lima, enam, tujuh dan segitiga siku-siku sama kaki.",
+      "Tiap metode dipelajari dalam dua bagian, konsep lalu penerapan, memakai angka dari contoh nyata seperti sedotan lima, enam, tujuh, sudut seratus delapan puluh derajat, dan segitiga siku-siku sama kaki.",
       bersih(0),
       tambah(0, judul("konsep, lalu penerapan")),
       tambah("konsep", ...kartu("c1", 30, 44, 100, 46, W.krem, ["konsep", "cara kerja"], 10)),
-      tambah("penerapan", garis("cp", 134, 67, 32, 0, W.hijau, 3, { gambar: true }), ...kartu("c2", 170, 44, 100, 46, W.hijauMuda, ["penerapan", "angka buku"], 10)),
+      tambah("penerapan", garis("cp", 134, 67, 32, 0, W.hijau, 3, { gambar: true }), ...kartu("c2", 170, 44, 100, 46, W.hijauMuda, ["penerapan", "angka nyata"], 10)),
       tambah("sedotan", emo("sd", 70, 140, "🥤", 30), teks("sdt", 70, 164, "sedotan 5, 6, 7", 8.6)),
-      tambah("Siswa", emo("dr", 150, 140, "📐", 30), teks("drt", 150, 164, "sudut 180°", 8.6)),
+      tambah("sudut", emo("dr", 150, 140, "📐", 30), teks("drt", 150, 164, "sudut 180°", 8.6)),
       tambah("segitiga", emo("sg", 230, 140, "🔺", 30), teks("sgt", 230, 164, "sama kaki", 8.6)),
     ),
   ],
@@ -45,7 +45,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 export const ADEGAN_LUAR_KETAKSAMAAN: AdeganStory = {
   id: "luar-ketaksamaan",
   judul: "Triangle Inequality Theorem: konsep",
-  sumber: "Metode luar 1: syarat tiga sisi membentuk segitiga",
+  sumber: "Metode luar 1: syarat sisi segitiga",
   latar: "#ECFDF5",
   ketukan: [
     k(
@@ -93,35 +93,35 @@ const barisUji = (r: number) => tabel(`lt${r}`, 15, 54 + (r - 1) * 20, KOL_UJI, 
 
 export const ADEGAN_LUAR_KETAKSAMAAN_TERAPAN: AdeganStory = {
   id: "luar-ketaksamaan-terapan",
-  judul: "Triangle Inequality Theorem: penerapan pada sedotan Buku Siswa",
-  sumber: "Metode luar 1: penerapan pada percobaan sedotan hlm. 196 dan Uji Kompetensi hlm. 234",
+  judul: "Triangle Inequality Theorem: penerapan pada sedotan",
+  sumber: "Metode luar 1: penerapan pada sedotan",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapkan pada lima kelompok sedotan Buku Siswa. Nomor satu: lima, enam, tujuh. Dua sisi terpendek lima tambah enam sebelas, lebih dari tujuh, jadi bisa.",
+      "Terapkan pada lima kelompok sedotan percobaan tadi. Kelompok satu: lima, enam, tujuh. Dua sisi terpendek lima tambah enam sebelas, lebih dari tujuh, jadi bisa.",
       tambah(0, judul("lima kelompok sedotan")),
       tambah(0, ...tabel("lt0", 15, 34, KOL_UJI, [["No", "a, b, c", "dua terpendek", "terpanjang", "hasil"]], 20, 7.8)),
       tambah(7, ...barisUji(1)),
       warnai(22, W.hijau, "lt1-t04"),
     ),
     k(
-      "Nomor dua: empat, enam, enam. Empat tambah enam sepuluh, lebih dari enam, bisa. Nomor tiga: lima, empat, dua belas. Empat tambah lima hanya sembilan, kurang dari dua belas, tidak bisa.",
+      "Kelompok dua: empat, enam, enam. Empat tambah enam sepuluh, lebih dari enam, bisa. Kelompok tiga: lima, empat, dua belas. Empat tambah lima hanya sembilan, kurang dari dua belas, tidak bisa.",
       tambah(0, ...barisUji(2)),
       warnai(12, W.hijau, "lt2-t04"),
       tambah(13, ...barisUji(3)),
       warnai(29, W.merah, "lt3-t04"),
     ),
     k(
-      "Nomor empat: sepuluh, lima, lima belas. Lima tambah sepuluh sama dengan lima belas, belum lebih, jadi tidak bisa. Nomor lima: lima, dua belas, tiga belas. Lima tambah dua belas tujuh belas, lebih dari tiga belas, bisa.",
+      "Kelompok empat: sepuluh, lima, lima belas. Lima tambah sepuluh sama dengan lima belas, belum lebih, jadi tidak bisa. Kelompok lima: lima, dua belas, tiga belas. Lima tambah dua belas tujuh belas, lebih dari tiga belas, bisa.",
       tambah(0, ...barisUji(4)),
       warnai(17, W.merah, "lt4-t04"),
       tambah(18, ...barisUji(5)),
       warnai(35, W.hijau, "lt5-t04"),
     ),
     k(
-      "Terapkan pada Uji Kompetensi satu: lima, tujuh, dan satu sentimeter. Dua sisi terpendek: satu tambah lima sama dengan enam. Enam tidak melebihi tujuh, jadi tidak bisa.",
+      "Terapkan pada Uji satu ini: lima, tujuh, dan satu sentimeter. Dua sisi terpendek: satu tambah lima sama dengan enam. Enam tidak melebihi tujuh, jadi tidak bisa.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 1: 5, 7, dan 1")),
+      tambah(0, judul("Uji 1: 5, 7, dan 1")),
       tambah(6, teks("lc", 26, 69, "c", 9), ...sedotan("sc", 44, 62, 7, W.hijauMuda, 11)),
       tambah(13, teks("la", 26, 105, "a + b", 8.6), ...sedotan("sa", 44, 98, 1, W.langit, 11), ...sedotan("sb", 55, 98, 5, W.jingga, 11)),
       tambah(18, teks("e6", 210, 105, "1 + 5 = 6", 10, W.ungu), teks("e7", 210, 69, "c = 7", 10, W.ungu)),
@@ -146,7 +146,7 @@ export const ADEGAN_LUAR_KETAKSAMAAN_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_JUMLAH: AdeganStory = {
   id: "luar-jumlah",
   judul: "Angle Sum Property: konsep",
-  sumber: "Metode luar 2: jumlah sudut segitiga seratus delapan puluh derajat",
+  sumber: "Metode luar 2: jumlah sudut segitiga",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -182,8 +182,8 @@ export const ADEGAN_LUAR_JUMLAH: AdeganStory = {
 /* ------------------------------ LA4. Angle Sum Property: penerapan ------------------------------ */
 export const ADEGAN_LUAR_JUMLAH_TERAPAN: AdeganStory = {
   id: "luar-jumlah-terapan",
-  judul: "Angle Sum Property: penerapan pada segitiga Buku Siswa",
-  sumber: "Metode luar 2: penerapan pada hlm. 205–206 dan soal pengayaan Panduan Guru",
+  judul: "Angle Sum Property: penerapan pada contoh segitiga",
+  sumber: "Metode luar 2: penerapan pada segitiga",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -203,9 +203,9 @@ export const ADEGAN_LUAR_JUMLAH_TERAPAN: AdeganStory = {
       tambah(16, teks("q2", 215, 98, "60 + 60 + 60 = 180", 10, W.hijau)),
     ),
     k(
-      "Soal pengayaan: dua sudut empat puluh lima derajat. Empat puluh lima tambah empat puluh lima sama dengan sembilan puluh. Sudut ketiga seratus delapan puluh dikurang sembilan puluh, yaitu sembilan puluh derajat.",
+      "Tantangan lain: dua sudut empat puluh lima derajat. Empat puluh lima tambah empat puluh lima sama dengan sembilan puluh. Sudut ketiga seratus delapan puluh dikurang sembilan puluh, yaitu sembilan puluh derajat.",
       bersih(0),
-      tambah(0, judul("soal pengayaan")),
+      tambah(0, judul("tantangan lain")),
       tambah(8, teks("q1", 150, 60, "45 + 45 = 90", 11, W.biru)),
       tambah(19, teks("q2", 150, 90, "180 - 90 = 90", 11, W.ungu)),
       tambah(27, teks("q3", 150, 122, "sudut ketiga 90°", 11, W.merah), teks("q4", 150, 146, "siku-siku sama kaki", 10, W.hijau)),

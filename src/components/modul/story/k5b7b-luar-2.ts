@@ -23,7 +23,7 @@ const tandaUmum = (c: number): Obj[] => CENTANG_UMUM[c].map((ya, i) => tanda(`gt
 export const ADEGAN_LUAR_MATRIKS: AdeganStory = {
   id: "luarb-matriks",
   judul: "Property Comparison Matrix: tabel perbandingan ciri",
-  sumber: "Metode luar; tabel ciri bangun datar dan aturan golongan",
+  sumber: "Metode luar: tabel perbandingan ciri",
   latar: "#ECFDF5",
   ketukan: [
     k(
@@ -85,7 +85,7 @@ const jumlah = (c: number): Obj => teks(`a-j${c}`, CX(c) + 21, RY(6) + 15, Strin
 export const ADEGAN_LUAR_MATRIKS_TERAPAN: AdeganStory = {
   id: "luarb-matriks-terapan",
   judul: "Mengisi matriks: empat bangun dan enam ciri",
-  sumber: "Metode luar; ciri jajargenjang sampai persegi, Buku Siswa hlm. 213–229",
+  sumber: "Metode luar: matriks empat bangun",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -145,7 +145,7 @@ const sumbuKolom = (): Obj[] => [
 export const ADEGAN_LUAR_DIAGONAL: AdeganStory = {
   id: "luarb-diagonal",
   judul: "Diagonal Property Test: tiga pertanyaan tentang diagonal",
-  sumber: "Metode luar; sifat diagonal enam segi empat",
+  sumber: "Metode luar: sifat diagonal",
   latar: "#FFF1F2",
   ketukan: [
     k(
@@ -198,7 +198,7 @@ const jawaban = (i: number): Obj[] => [bangun("jw", TEBAK[i].b, 232, 92, 24, W.k
 export const ADEGAN_LUAR_DIAGONAL_TERAPAN: AdeganStory = {
   id: "luarb-diagonal-terapan",
   judul: "Menebak bangun dari sifat diagonal dan sumbu simetri",
-  sumber: "Metode luar; empat bangun misterius, sumbu simetri Buku Siswa hlm. 216–232",
+  sumber: "Metode luar: menebak bangun misterius",
   latar: "#FEF2F2",
   ketukan: [
     k(
@@ -246,7 +246,7 @@ export const ADEGAN_LUAR_DIAGONAL_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luarb-ringkas",
   judul: "Ringkasan empat metode luar untuk segi empat",
-  sumber: "Ringkasan; empat metode luar Sub-Bab B",
+  sumber: "Ringkasan metode luar",
   latar: "#EEF2FF",
   ketukan: [
     k(
@@ -264,8 +264,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah(0, kartuMetode("r4", 156, 112, "#BFDBFE", ["Diagonal Property", "Test"], "tiga tanya diagonal")),
     ),
     k(
-      "Ingat, metode ini melengkapi isi buku. Tetap periksa ciri satu per satu sebelum menyimpulkan.",
-      tambah(0, teks("rk", 150, 196, "melengkapi isi buku", 10.4, W.hijau)),
+      "Ingat, metode ini membantu kita berpikir lebih jelas. Tetap periksa ciri satu per satu sebelum menyimpulkan.",
+      tambah(0, teks("rk", 150, 196, "periksa ciri satu per satu", 10.4, W.hijau)),
       sorotkan(5, "r1-k", "r2-k", "r3-k", "r4-k"),
     ),
   ],

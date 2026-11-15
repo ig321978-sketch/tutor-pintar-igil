@@ -39,3 +39,14 @@ Sub-Bab B (`temuan-k5b7b.md`):
 
 ## Audit visual
 Seluruh 209 ketukan (4 video) dirender lewat rute pratinjau sementara (sudah dihapus) dengan `Panggung` pada t=999, dan kotak batas semua teks (2.180 teks) diukur untuk mencari teks bertumpuk atau keluar kanvas 300x208: 0 temuan. Satu tangkapan layar dilihat langsung (pembuka, Candi Sewu, tiga pertanyaan, denah): tata letak wajar. Uji tiap sub-bab juga memeriksa tumpang tindih lewat kotak teks perkiraan (6.761 pasangan di A, 0 temuan) dan geometri gambar (26 busur sudut, 8 tanda siku-siku, 3 kelompok baji 180 derajat).
+
+## Revisi sesuai pola Kelas 4 Bab 1 sampai 6 dan Kelas 5 Bab 1 sampai 6 (gaya guru, pemadatan, sapaan, Mind-Map dan Infografis susun tab)
+
+- **Video bergaya guru.** Video materi dan metode luar sub-bab A dan B tidak lagi menyebut buku, halaman, Panduan Guru, soal nomor, kunci, atau rubrik. Judul tanpa "menurut Buku"; subjudul tepat "Materi kurikulum" dan "Empat metode luar"; sumber "Materi: ..." dan "Metode luar: ...". Eksplorasi menjadi Percobaan; Ayo Berlatih dan Uji disajikan sebagai Latihan dan Uji; pengayaan menjadi Tantangan; refleksi dan miskonsepsi menjadi Renungan dan Hati-hati.
+- **Pemadatan.** Tidak diputar lagi (tetap di berkas materi): A `pembuka-candi` dan `denah-peta`; B `pembuka-b`. Pembuka B sebenarnya memuat Eksplorasi 7.2A, jadi adegan trapesium diberi kalimat jembatan "salah satu jenis segi empat".
+- **Sapaan.** Tiap video dibuka adegan `sapaan`; daftar hal yang dipelajari sama persis dengan tiga anak cabang pertama Mind-Map.
+- **Ukuran yang diputar** (kata per 2 per menit, sapaan termasuk): A materi 1.128 kata (9,4 menit, 10 adegan), luar 915 (7,6; 11 adegan); B materi 1.415 (11,8; 12 adegan), luar 818 (6,8; 11 adegan).
+- **Mind-Map susun** (11 simpul, tiga cabang): A "Sama sisi atau sama kaki?", B "Persegi termasuk bangun apa?". **Infografis susun:** A "Tiga sedotan dan segitiga" (3 baris x 3 kolom), B "Sumbu simetri dan sudut siku-siku" (4 x 3). Ikon cabang "Cara melakukannya" memakai 🔧 karena 🪜 melampaui batas Emoji 12 pada uji-lab.
+- **Uji:** uji-story-k5b7a (10.021), b (4.257), uji-statis (51), uji-lab (1.081), uji-susun-k5b7 (36), uji-susun-logika (4.621), uji-skenario-umum (8.433), uji-peta-konsep, uji-infografis-ringkas: 0 gagal; `tsc` dan eslint bersih.
+- **Audit peramban** (server dev 3100, 405 px, profil uji Kelas 5): Mind-Map dan Infografis A dan B diselesaikan lewat skrip, tiga warna cabang, tanpa halaman melebar, tanpa sel meluap. Sel "jajargenjang" semula menempel ke tepi kolom (sisa 1 px), diubah menjadi "jajar genjang" (sisa 16 px).
+- **Temuan buku yang disajikan benar:** sudut belah ketupat: Buku Siswa menulis A = B dan C = D, Panduan Guru menulis A = C dan D = B; video memakai A = B dan C = D sesuai uji geometri. Sub-bab A tidak ada kunci keliru. Catatan lengkap di catatan sesi `temuan-k5b7a.md` dan `temuan-k5b7b.md`.

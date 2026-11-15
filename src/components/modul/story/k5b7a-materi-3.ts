@@ -13,8 +13,8 @@ const TUMPUL: [number, number][] = [
 
 export const ADEGAN_JUMLAH: AdeganStory = {
   id: "ekspl-71c",
-  judul: "Eksplorasi 7.1C: jumlah sudut dalam segitiga",
-  sumber: "Buku Siswa hlm. 201–202; Panduan Guru hlm. 301–304",
+  judul: "Jumlah sudut dalam segitiga",
+  sumber: "Materi: jumlah sudut dalam segitiga",
   latar: "#FFFBEB",
   kutipan: [
     "Eksplorasi 7.1C",
@@ -32,8 +32,8 @@ export const ADEGAN_JUMLAH: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi 7.1C menjumlahkan sudut segitiga. Asep menggambar segitiga lancip, menandai sudutnya A, B, C, lalu memotong ketiga sudut itu.",
-      tambah(0, judul("Eksplorasi 7.1C: jumlah sudut")),
+      "Sekarang kita menjumlahkan sudut segitiga. Asep menggambar segitiga lancip, menandai sudutnya A, B, C, lalu memotong ketiga sudut itu.",
+      tambah(0, judul("Jumlah sudut dalam segitiga")),
       tambah(6, segitiga("sg", 30, 130, [[0, 0], [100, 0], [55, -75]], W.hijauMuda), teks("tA", 22, 144, "A", 9.6), teks("tB", 138, 144, "B", 9.6), teks("tC", 85, 48, "C", 9.6)),
       tambah(11, busur("aA", 30, 130, 16, -53.7, 0, W.merah)),
       tambah(12, busur("aB", 130, 130, 16, -180, -121, W.hijau)),
@@ -86,8 +86,8 @@ export const ADEGAN_JUMLAH: AdeganStory = {
 /* ------------------------------ 8. Eksplorasi 7.1D: segitiga sama kaki (hlm. 202 sampai 205) ------------------------------ */
 export const ADEGAN_SAMA_KAKI: AdeganStory = {
   id: "ekspl-71d-sama-kaki",
-  judul: "Eksplorasi 7.1D: segitiga sama kaki",
-  sumber: "Buku Siswa hlm. 202–205; Panduan Guru hlm. 304–307",
+  judul: "Segitiga sama kaki",
+  sumber: "Materi: segitiga sama kaki",
   latar: "#F0FDFA",
   kutipan: [
     "Eksplorasi 7.1D",
@@ -105,8 +105,8 @@ export const ADEGAN_SAMA_KAKI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi 7.1D mengelompokkan segitiga menurut panjang sisinya. Pada alat peraga segitiga JKL, sisi LJ dan sisi LK tepat berimpit.",
-      tambah(0, judul("Eksplorasi 7.1D: panjang sisi")),
+      "Sekarang kita mengelompokkan segitiga menurut panjang sisinya. Pada alat peraga segitiga JKL, sisi LJ dan sisi LK tepat berimpit.",
+      tambah(0, judul("Menurut panjang sisinya")),
       tambah(11, segitiga("jkl", 60, 150, [[0, 0], [100, 0], [50, -80]], W.jingga), teks("tJ", 52, 164, "J", 9.6), teks("tK", 168, 164, "K", 9.6), teks("tL", 110, 62, "L", 9.6)),
       tambah(13, garis("lj", 60, 150, 50, -80, W.merah, 3.2)),
       tambah(16, garis("lk", 160, 150, -50, -80, W.merah, 3.2)),
@@ -163,7 +163,7 @@ const KOL_RANGKUM = [74, 48, 48, 48, 48];
 export const ADEGAN_SAMA_SISI: AdeganStory = {
   id: "ekspl-71d-sama-sisi",
   judul: "Segitiga sama sisi dan segitiga sembarang",
-  sumber: "Buku Siswa hlm. 205–207; Panduan Guru hlm. 307–309",
+  sumber: "Materi: sama sisi dan sembarang",
   latar: "#FDF4FF",
   kutipan: [
     "Pada alat peraga segitiga yang",
@@ -209,9 +209,9 @@ export const ADEGAN_SAMA_SISI: AdeganStory = {
       tambah(20, teks("c4", 225, 126, "3 simetri putar", 9, W.hijau)),
     ),
     k(
-      "Ayo Berpikir Kreatif: bagaimana segitiga yang tidak memenuhi ciri itu? Pada segitiga ABC ini tidak ada sisi sama, sudut sama, atau simetri lipat.",
+      "Mari berpikir kreatif: bagaimana segitiga yang tidak memenuhi ciri itu? Pada segitiga ABC ini tidak ada sisi sama, sudut sama, atau simetri lipat.",
       bersih(0),
-      tambah(0, judul("Ayo Berpikir Kreatif")),
+      tambah(0, judul("Berpikir kreatif")),
       tambah(12, segitiga("abc", 30, 150, [[0, 0], [70, -90], [160, 0]], W.langit), teks("tA", 22, 164, "A", 9.6), teks("tB", 100, 52, "B", 9.6), teks("tC", 198, 164, "C", 9.6)),
       tambah(16, ...kartu("n1", 205, 40, 88, 34, W.krem, ["sisi sama", "tidak ada"], 8.2)),
       tambah(18, ...kartu("n2", 205, 82, 88, 34, W.krem, ["sudut sama", "tidak ada"], 8.2)),
@@ -239,7 +239,7 @@ export const ADEGAN_SAMA_SISI: AdeganStory = {
 export const ADEGAN_BANDING: AdeganStory = {
   id: "banding-kaki-sisi",
   judul: "Apakah sama sisi boleh disebut sama kaki?",
-  sumber: "Buku Siswa hlm. 207–208; Panduan Guru hlm. 309–311",
+  sumber: "Materi: sama sisi dan sama kaki",
   latar: "#ECFEFF",
   kutipan: [
     "Teman-teman, apakah",
@@ -274,7 +274,7 @@ export const ADEGAN_BANDING: AdeganStory = {
       tambah(13, ...kartu("ok", 30, 152, 240, 34, W.hijauMuda, ["semua ciri sama kaki dimiliki sama sisi"], 9)),
     ),
     k(
-      "Kesimpulan buku: segitiga sama sisi dapat digolongkan sebagai segitiga sama kaki. Bila semua ciri A dimiliki B, maka B juga A.",
+      "Kesimpulan kita: segitiga sama sisi dapat digolongkan sebagai segitiga sama kaki. Bila semua ciri A dimiliki B, maka B juga A.",
       bersih(0),
       tambah(0, judul("sama sisi termasuk sama kaki")),
       tambah(4, kotak("in", 80, 70, 140, 70, W.hijauMuda, W.hijau, { rx: 6, z: 1 }), teks("int", 150, 110, "segitiga sama sisi", 10, W.hijau, { z: 2 })),
@@ -282,7 +282,7 @@ export const ADEGAN_BANDING: AdeganStory = {
       tambah(11, teks("kk", 150, 186, "ciri A dimiliki B, maka B juga A", 9, W.ungu)),
     ),
     k(
-      "Bagaimana jika dibalik? Menurut Panduan Guru, sama kaki belum tentu punya tiga sisi sama, tiga sudut sama, tiga lipat, dan tiga putar. Jawabannya tidak selalu.",
+      "Bagaimana jika dibalik? Coba kita periksa, sama kaki belum tentu punya tiga sisi sama, tiga sudut sama, tiga lipat, dan tiga putar. Jawabannya tidak selalu.",
       bersih(0),
       tambah(0, judul("bagaimana jika dibalik?")),
       tambah(12, teks("d1", 150, 54, "3 sisi sama panjang: tidak selalu", 9, W.biru)),
@@ -292,12 +292,12 @@ export const ADEGAN_BANDING: AdeganStory = {
       tambah(22, ...kartu("jw", 60, 148, 180, 34, W.merahMuda, ["jawabannya: tidak selalu"], 9.6)),
     ),
     k(
-      "Jadi sama sisi pasti sama kaki, tetapi sama kaki belum tentu sama sisi. Pertanyaan ketiga di awal bab terjawab: boleh.",
+      "Jadi sama sisi pasti sama kaki, tetapi sama kaki belum tentu sama sisi. Pertanyaan kita pun terjawab: sama sisi boleh disebut sama kaki.",
       bersih(0),
-      tambah(0, judul("jawaban pertanyaan ketiga")),
+      tambah(0, judul("jawaban pertanyaan kita")),
       tambah(4, ...kartu("a1", 20, 38, 260, 40, W.hijauMuda, ["sama sisi → pasti sama kaki", "(boleh disebut sama kaki)"], 9.4)),
       tambah(9, ...kartu("a2", 20, 90, 260, 36, W.merahMuda, ["sama kaki → belum tentu sama sisi"], 9.4)),
-      tambah(13, ...kartu("a3", 60, 142, 180, 34, W.krem, ["pertanyaan 3: boleh"], 10)),
+      tambah(13, ...kartu("a3", 60, 142, 180, 34, W.krem, ["jawabannya: boleh"], 10)),
     ),
   ],
 };
@@ -305,8 +305,8 @@ export const ADEGAN_BANDING: AdeganStory = {
 /* ------------------------------ 11. Uji Kompetensi 1 sampai 4, pengayaan, dan refleksi (hlm. 233 sampai 234) ------------------------------ */
 export const ADEGAN_UJI: AdeganStory = {
   id: "uji-refleksi",
-  judul: "Uji Kompetensi, pengayaan, dan refleksi Subbab A",
-  sumber: "Buku Siswa hlm. 233–234; Panduan Guru hlm. 339–343",
+  judul: "Uji, tantangan, dan renungan",
+  sumber: "Materi: uji, tantangan, dan renungan",
   latar: "#FEF2F2",
   kutipan: [
     "Uji Kompetensi",
@@ -325,27 +325,26 @@ export const ADEGAN_UJI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Uji Kompetensi halaman dua ratus tiga puluh empat. Soal satu: lima, tujuh, dan satu sentimeter. Lima tambah satu hanya enam, tidak melebihi tujuh. Salah.",
-      tambah(0, judul("Uji Kompetensi 1")),
-      tambah(2, teks("hl", 150, 38, "hlm. 234", 9, W.ungu)),
-      tambah(10, teks("la", 26, 105, "a + b", 8.6), ...sedotan("sa", 44, 98, 5, W.jingga, 11)),
-      tambah(11, teks("lc", 26, 69, "c", 9), ...sedotan("sc", 44, 62, 7, W.hijauMuda, 11)),
-      tambah(13, ...sedotan("sb", 99, 98, 1, W.langit, 11)),
-      tambah(19, teks("e6", 210, 105, "5 + 1 = 6", 10, W.ungu), teks("e7", 210, 69, "c = 7", 10, W.ungu)),
-      tambah(23, teks("lb", 150, 140, "6 lebih pendek dari 7", 10, W.merah), ...kartu("sl", 110, 154, 80, 26, W.merahMuda, ["Salah"], 10)),
+      "Sekarang Uji satu. Ada tiga sedotan: lima, tujuh, dan satu sentimeter. Lima tambah satu hanya enam, tidak melebihi tujuh. Jadi pernyataannya salah.",
+      tambah(0, judul("Uji 1")),
+      tambah(6, teks("la", 26, 105, "a + b", 8.6), ...sedotan("sa", 44, 98, 5, W.jingga, 11)),
+      tambah(7, teks("lc", 26, 69, "c", 9), ...sedotan("sc", 44, 62, 7, W.hijauMuda, 11)),
+      tambah(9, ...sedotan("sb", 99, 98, 1, W.langit, 11)),
+      tambah(15, teks("e6", 210, 105, "5 + 1 = 6", 10, W.ungu), teks("e7", 210, 69, "c = 7", 10, W.ungu)),
+      tambah(21, teks("lb", 150, 140, "6 lebih pendek dari 7", 10, W.merah), ...kartu("sl", 110, 154, 80, 26, W.merahMuda, ["Salah"], 10)),
     ),
     k(
-      "Soal dua: semua sudut segitiga siku-siku adalah siku-siku? Salah, hanya satu. Soal tiga: jumlah sudut segitiga seratus delapan puluh derajat? Benar. Soal empat: sama sisi juga sama kaki? Benar.",
+      "Uji dua: semua sudut segitiga siku-siku adalah siku-siku? Salah, hanya satu. Uji tiga: jumlah sudut segitiga seratus delapan puluh derajat? Benar. Uji empat: sama sisi juga sama kaki? Benar.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 2, 3, dan 4")),
-      tambah(0, ...kartu("u2", 14, 34, 272, 44, W.krem, ["2. Semua sudut segitiga siku-siku adalah", "sudut siku-siku? SALAH: hanya 1"], 8.8)),
-      tambah(11, ...kartu("u3", 14, 90, 272, 44, W.langit, ["3. Jumlah tiga sudut dalam segitiga", "adalah 180°? BENAR"], 8.8)),
-      tambah(21, ...kartu("u4", 14, 146, 272, 40, W.hijauMuda, ["4. Segitiga sama sisi juga", "sama kaki? BENAR"], 8.8)),
+      tambah(0, judul("Uji 2, 3, dan 4")),
+      tambah(0, ...kartu("u2", 14, 34, 272, 44, W.krem, ["Uji 2: semua sudut segitiga siku-siku", "adalah siku-siku? SALAH: hanya 1"], 8.8)),
+      tambah(11, ...kartu("u3", 14, 90, 272, 44, W.langit, ["Uji 3: jumlah tiga sudut dalam", "segitiga adalah 180°? BENAR"], 8.8)),
+      tambah(21, ...kartu("u4", 14, 146, 272, 40, W.hijauMuda, ["Uji 4: segitiga sama sisi juga", "sama kaki? BENAR"], 8.8)),
     ),
     k(
-      "Pengayaan Panduan Guru: segitiga dengan dua sudut empat puluh lima derajat. Sudut ketiganya seratus delapan puluh dikurang empat puluh lima dikurang empat puluh lima, yaitu sembilan puluh.",
+      "Tantangan untuk kalian: segitiga dengan dua sudut empat puluh lima derajat. Sudut ketiganya seratus delapan puluh dikurang empat puluh lima dikurang empat puluh lima, yaitu sembilan puluh.",
       bersih(0),
-      tambah(0, judul("soal pengayaan")),
+      tambah(0, judul("Tantangan")),
       tambah(3, segitiga("pg", 30, 150, [[0, 0], [120, 0], [60, -60]], W.krem)),
       tambah(7, teks("s1", 50, 143, "45°", 9, W.ungu), teks("s2", 128, 143, "45°", 9, W.ungu)),
       tambah(12, teks("s3", 90, 108, "?", 12, W.merah)),
@@ -354,21 +353,21 @@ export const ADEGAN_UJI: AdeganStory = {
     k(
       "Maka segitiga lancip salah, karena ada sudut sembilan puluh. Sama kaki benar. Siku-siku sama kaki juga benar.",
       bersih(0),
-      tambah(0, judul("kunci pengayaan")),
+      tambah(0, judul("jawaban tantangan")),
       tambah(3, ...kartu("i1", 20, 36, 260, 44, W.merahMuda, ["i. segitiga lancip: SALAH", "(ada sudut 90°)"], 9.4)),
       tambah(11, ...kartu("i2", 20, 92, 260, 44, W.hijauMuda, ["ii. segitiga sama kaki: BENAR", "(dua sudutnya sama, 45° dan 45°)"], 9.4)),
       tambah(16, ...kartu("i3", 20, 148, 260, 38, W.hijauMuda, ["iii. segitiga siku-siku sama kaki: BENAR"], 9.4)),
     ),
     k(
-      "Refleksi satu sampai lima. Aku tahu syarat segitiga, bisa mendaftar ciri menurut sudut dan sisinya, menghitung jumlah sudut, serta membandingkan sama kaki dengan sama sisi. Berikutnya Subbab B.",
+      "Renungan untuk dirimu sendiri. Aku tahu syarat segitiga, bisa mendaftar ciri menurut sudut dan sisinya, menghitung jumlah sudut, serta membandingkan sama kaki dengan sama sisi. Teruslah semangat belajar!",
       bersih(0),
-      tambah(0, judul("Refleksi 1 sampai 5")),
-      tambah(6, ...kartu("f1", 20, 30, 260, 28, W.krem, ["1. Aku tahu syarat ruas garis jadi segitiga"], 8.4)),
-      tambah(12, ...kartu("f2", 20, 64, 260, 28, W.krem, ["2. Aku bisa mendaftar ciri menurut sudutnya"], 8.4)),
-      tambah(15, ...kartu("f3", 20, 98, 260, 28, W.krem, ["3. Aku bisa menghitung jumlah sudut segitiga"], 8.4)),
-      tambah(14, ...kartu("f4", 20, 132, 260, 28, W.krem, ["4. Aku bisa mendaftar ciri menurut panjang sisi"], 8.4)),
-      tambah(19, ...kartu("f5", 20, 166, 260, 28, W.krem, ["5. Aku bisa membandingkan sama kaki dan sama sisi"], 8.4)),
-      tambah(26, teks("nx", 250, 18, "→ Subbab B", 9, W.ungu)),
+      tambah(0, judul("Renungan")),
+      tambah(6, ...kartu("f1", 20, 30, 260, 28, W.krem, ["Aku tahu syarat ruas garis jadi segitiga"], 8.4)),
+      tambah(12, ...kartu("f2", 20, 64, 260, 28, W.krem, ["Aku bisa mendaftar ciri menurut sudutnya"], 8.4)),
+      tambah(15, ...kartu("f3", 20, 98, 260, 28, W.krem, ["Aku bisa menghitung jumlah sudut segitiga"], 8.4)),
+      tambah(14, ...kartu("f4", 20, 132, 260, 28, W.krem, ["Aku bisa mendaftar ciri menurut panjang sisi"], 8.4)),
+      tambah(19, ...kartu("f5", 20, 166, 260, 28, W.krem, ["Aku bisa membandingkan sama kaki dan sama sisi"], 8.4)),
+      tambah(26, teks("nx", 250, 18, "Hebat!", 9, W.ungu)),
     ),
   ],
 };

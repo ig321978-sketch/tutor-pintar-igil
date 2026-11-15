@@ -7,7 +7,7 @@ import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k5b7b-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luarb-pembuka",
   judul: "Empat metode luar untuk membandingkan segi empat",
-  sumber: "Metode luar; empat cara membandingkan segi empat",
+  sumber: "Metode luar: empat cara membandingkan",
   latar: "#EEF2FF",
   ketukan: [
     k(
@@ -40,7 +40,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 export const ADEGAN_LUAR_TRAPESIUM: AdeganStory = {
   id: "luarb-trapesium",
   judul: "Inclusive Trapezoid Definition: setidaknya sepasang sisi sejajar",
-  sumber: "Metode luar; definisi inklusif dan eksklusif trapesium",
+  sumber: "Metode luar: definisi trapesium",
   latar: "#FFF4DD",
   ketukan: [
     k(
@@ -68,9 +68,9 @@ export const ADEGAN_LUAR_TRAPESIUM: AdeganStory = {
       tambah(13, kartu("c3", 20, 120, 260, 32, W.hijauMuda, ["3. ya: termasuk trapesium"], 9)),
     ),
     k(
-      "Buku ini memilih definisi inklusif, supaya hubungan antarbangun lebih rapi dan wawasan lebih luas.",
+      "Kita juga memilih definisi inklusif, supaya hubungan antarbangun lebih rapi dan wawasan lebih luas.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Pilihan buku", 12.5, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Pilihan kita", 12.5, W.ungu)),
       tambah(3, kartu("p1", 20, 44, 260, 40, W.hijauMuda, ["definisi inklusif", "setidaknya sepasang sisi sejajar"], 9)),
       tambah(3, tanda("p2", 150, 118, true, 24)),
       tambah(8, teks("p3", 150, 152, "hubungan antarbangun lebih rapi", 9.6, W.hijau)),
@@ -101,7 +101,7 @@ const cacah = (i: number): Obj => teks(`s${i}c`, POS[i].x, POS[i].y + 39, `${ENA
 export const ADEGAN_LUAR_TRAPESIUM_TERAPAN: AdeganStory = {
   id: "luarb-trapesium-terapan",
   judul: "Menghitung pasangan sisi sejajar pada enam bangun",
-  sumber: "Metode luar; enam segi empat Buku Siswa hlm. 209–232",
+  sumber: "Metode luar: enam segi empat",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -149,7 +149,7 @@ const simpul = (id: string, x: number, y: number, isi: string, warna: string, w 
 export const ADEGAN_LUAR_HIERARKI: AdeganStory = {
   id: "luarb-hierarki",
   judul: "Inclusive Quadrilateral Hierarchy (Van Hiele): segi empat sebagai tingkatan",
-  sumber: "Metode luar; hierarki golongan segi empat model Van Hiele",
+  sumber: "Metode luar: hierarki segi empat",
   latar: "#F0F9FF",
   ketukan: [
     k(
@@ -175,7 +175,7 @@ export const ADEGAN_LUAR_HIERARKI: AdeganStory = {
       tambah(16, teks("v7", 150, 194, "jaring, bukan tangga lurus", 9.4, W.merah)),
     ),
     k(
-      "Kunci memakainya: untuk turun satu tingkat, tambahkan satu ciri. Untuk naik, lepaskan ciri tambahan itu.",
+      "Triknya mudah: untuk turun satu tingkat, tambahkan satu ciri. Untuk naik, lepaskan ciri tambahan itu.",
       bersih(0),
       tambah(0, teks("jud", 150, 20, "Turun dan naik", 12, W.ungu)),
       tambah(3, kartu("t1", 20, 40, 120, 60, W.hijauMuda, ["turun", "tambah 1 ciri"], 9.4), panah("t2", 80, 108, 0, 40, W.hijau, 2.4)),
@@ -206,7 +206,7 @@ const batang = (i: number): Obj[] => [
 export const ADEGAN_LUAR_HIERARKI_TERAPAN: AdeganStory = {
   id: "luarb-hierarki-terapan",
   judul: "Turun tingkat dengan satu ciri, sumbu simetri bertambah",
-  sumber: "Metode luar; sudut 90° dan sumbu simetri, Buku Siswa hlm. 216–232",
+  sumber: "Metode luar: tambah ciri dan sumbu simetri",
   latar: "#F5F3FF",
   ketukan: [
     k(

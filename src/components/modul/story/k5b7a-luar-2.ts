@@ -8,7 +8,7 @@ const KOL_GRID = [66, 68, 68, 68];
 export const ADEGAN_LUAR_KLASIFIKASI: AdeganStory = {
   id: "luar-klasifikasi",
   judul: "Side-Angle Classification: konsep",
-  sumber: "Metode luar 3: nama segitiga dari label sudut dan label sisi",
+  sumber: "Metode luar 3: nama dari sudut dan sisi",
   latar: "#F5F3FF",
   ketukan: [
     k(
@@ -49,13 +49,13 @@ export const ADEGAN_LUAR_KLASIFIKASI: AdeganStory = {
 /* ------------------------------ LB2. Side-Angle Classification: penerapan ------------------------------ */
 export const ADEGAN_LUAR_KLASIFIKASI_TERAPAN: AdeganStory = {
   id: "luar-klasifikasi-terapan",
-  judul: "Side-Angle Classification: penerapan pada segitiga Buku Siswa",
-  sumber: "Metode luar 3: penerapan pada segitiga ABC dan PQR hlm. 204–206",
+  judul: "Side-Angle Classification: penerapan pada ABC dan PQR",
+  sumber: "Metode luar 3: penerapan pada ABC dan PQR",
   latar: "#FAF5FF",
   ketukan: [
     k(
-      "Segitiga ABC dari buku: siku-siku di B dan sisi AB sama panjang dengan BC. Labelnya siku-siku dan sama kaki, jadi namanya segitiga siku-siku sama kaki.",
-      tambah(0, judul("segitiga ABC dari buku")),
+      "Segitiga ABC dari percobaan: siku-siku di B dan sisi AB sama panjang dengan BC. Labelnya siku-siku dan sama kaki, jadi namanya segitiga siku-siku sama kaki.",
+      tambah(0, judul("segitiga ABC dari percobaan")),
       tambah(1, segitiga("abc", 30, 150, [[0, 0], [70, 0], [0, -70]], W.langit), tandaSiku("sk", 30, 150, 10, 1, -1), tandaSisi("ta", 30, 150, 30, 80), tandaSisi("tb", 30, 150, 100, 150), teks("tA", 22, 76, "A", 9.6), teks("tB", 22, 164, "B", 9.6), teks("tC", 108, 164, "C", 9.6)),
       tambah(4, ...kartu("k1", 160, 40, 130, 30, W.krem, ["label sudut: siku-siku"], 8.4)),
       tambah(8, ...kartu("k2", 160, 80, 130, 30, W.krem, ["label sisi: sama kaki"], 8.4)),
@@ -64,7 +64,7 @@ export const ADEGAN_LUAR_KLASIFIKASI_TERAPAN: AdeganStory = {
     k(
       "Segitiga PQR: sudutnya tumpul dan sisi PQ sama dengan QR. Labelnya tumpul dan sama kaki, jadi segitiga tumpul sama kaki.",
       bersih(0),
-      tambah(0, judul("segitiga PQR dari buku")),
+      tambah(0, judul("segitiga PQR dari percobaan")),
       tambah(1, segitiga("pqr", 20, 140, [[0, 0], [60, -20], [120, 0]], W.merahMuda), tandaSisi("tp", 20, 140, 80, 120), tandaSisi("tq", 80, 120, 140, 140), teks("tP", 12, 154, "P", 9.6), teks("tQ", 80, 112, "Q", 9.6), teks("tR", 148, 154, "R", 9.6)),
       tambah(3, ...kartu("k1", 160, 40, 130, 30, W.krem, ["label sudut: tumpul"], 8.4)),
       tambah(5, ...kartu("k2", 160, 80, 130, 30, W.krem, ["label sisi: sama kaki"], 8.4)),
@@ -94,7 +94,7 @@ export const ADEGAN_LUAR_KLASIFIKASI_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_HIERARKI: AdeganStory = {
   id: "luar-hierarki",
   judul: "Inclusive Triangle Hierarchy: konsep",
-  sumber: "Metode luar 4: golongan segitiga yang bersarang",
+  sumber: "Metode luar 4: golongan yang bersarang",
   latar: "#ECFEFF",
   ketukan: [
     k(
@@ -135,7 +135,7 @@ const KOL_CIRI = [150, 110];
 export const ADEGAN_LUAR_HIERARKI_TERAPAN: AdeganStory = {
   id: "luar-hierarki-terapan",
   judul: "Inclusive Triangle Hierarchy: penerapan sama sisi dan sama kaki",
-  sumber: "Metode luar 4: penerapan pada hlm. 207–208 dan Panduan Guru hlm. 310–311",
+  sumber: "Metode luar 4: penerapan sama sisi, sama kaki",
   latar: "#F0FDFA",
   ketukan: [
     k(
@@ -178,7 +178,7 @@ export const ADEGAN_LUAR_HIERARKI_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan empat metode luar Subbab A",
-  sumber: "Ringkasan metode luar Subbab A",
+  sumber: "Ringkasan metode luar",
   latar: "#EAF2FF",
   ketukan: [
     k(
@@ -196,8 +196,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah(8, ...kartu("rg4", 156, 112, 134, 66, "#BFDBFE", ["Inclusive Triangle", "Hierarchy", "sama sisi di dalam sama kaki"], 8)),
     ),
     k(
-      "Dengan empat metode ini, kita siap menuju Subbab B, membandingkan ciri-ciri segi empat.",
-      tambah(5, teks("rg5", 150, 196, "lanjut ke Subbab B", 9.4, W.ungu)),
+      "Dengan empat metode ini, kita siap membandingkan ciri-ciri segitiga dengan yakin.",
+      tambah(5, teks("rg5", 150, 196, "siap membandingkan", 9.4, W.ungu)),
     ),
   ],
 };

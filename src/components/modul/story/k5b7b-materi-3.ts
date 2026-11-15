@@ -25,14 +25,14 @@ const rBaris = [barisRumus("ra", 58, "jajar", "persegiPanjang", "jajargenjang", 
 
 export const ADEGAN_PERSEGI: AdeganStory = {
   id: "persegi",
-  judul: "Eksplorasi 7.2F: persegi dibandingkan dengan belah ketupat dan persegi panjang",
-  sumber: "Buku Siswa hlm. 224–229; Buku Panduan Guru hlm. 330–334",
+  judul: "Persegi dibandingkan dengan belah ketupat dan persegi panjang",
+  sumber: "Materi: persegi dan golongannya",
   latar: "#F0FDF4",
   kutipan: ["Ayo Mengingat Kembali Persegi", "Semua sisinya", "Mempunyai 4", "Sudut-sudutnya", "Apakah sisi-sisi persegi sama panjang", "Apakah A = C", "Apakah diagonal-diagonal persegi", "Persegi adalah belah ketupat yang salah satu", "Persegi adalah persegi panjang yang sisi-sisi", "berurutan sama panjang"],
   ketukan: [
     k(
-      "Eksplorasi 7.2F, mengingat kembali persegi. Cirinya: sisi berhadapan sejajar, semua sisi sama panjang, semua sudut siku-siku, empat sumbu simetri, dan diagonal sama panjang serta tegak lurus.",
-      tambah(0, teks("jud", 150, 20, "Eksplorasi 7.2F", 12.5, W.ungu)),
+      "Sekarang kita mengingat kembali persegi. Cirinya: sisi berhadapan sejajar, semua sisi sama panjang, semua sudut siku-siku, empat sumbu simetri, dan diagonal sama panjang serta tegak lurus.",
+      tambah(0, teks("jud", 150, 20, "Persegi", 12.5, W.ungu)),
       tambah(0, sqBentuk()),
       tambah(6, sqCiri[0]),
       tambah(9, sqCiri[1]),
@@ -105,14 +105,14 @@ const LAY = BENTUK.layang.pts;
 
 export const ADEGAN_LAYANG: AdeganStory = {
   id: "layang",
-  judul: "Eksplorasi 7.2G: layang-layang dibandingkan dengan belah ketupat",
-  sumber: "Buku Siswa hlm. 229–232; Buku Panduan Guru hlm. 335–338",
+  judul: "Layang-layang dibandingkan dengan belah ketupat",
+  sumber: "Materi: layang-layang dan belah ketupat",
   latar: "#FEF2F2",
   kutipan: ["Ayo Mengingat Kembali Layang-Layang", "memiliki 2 pasang", "sisi berurutan sama", "Garis lipatan yang dihasilkan tersebut dinamakan sumbu simetri", "Layang-layang adalah segiempat yang salah satu", "diagonalnya merupakan sumbu simetri", "digolongkan sebagai layang-", "Belah ketupat adalah layang-layang yang semua", "diagonalnya merupakan sumbu simetri"],
   ketukan: [
     k(
-      "Eksplorasi 7.2G, mengingat kembali layang-layang. Cirinya: dua pasang sisi berurutan sama panjang, sepasang sudut sama besar, diagonal berpotongan tegak lurus, dan salah satu diagonalnya sumbu simetri.",
-      tambah(0, teks("jud", 150, 20, "Eksplorasi 7.2G", 12.5, W.ungu)),
+      "Sekarang kita mengingat kembali layang-layang. Cirinya: dua pasang sisi berurutan sama panjang, sepasang sudut sama besar, diagonal berpotongan tegak lurus, dan salah satu diagonalnya sumbu simetri.",
+      tambah(0, teks("jud", 150, 20, "Layang-layang", 12.5, W.ungu)),
       tambah(0, lyBentuk()),
       tambah(6, lyCiri[0], sama("m1", "layang", 56, 102, 24, "A", "D", 1, W.merah), sama("m2", "layang", 56, 102, 24, "D", "C", 1, W.merah), sama("m3", "layang", 56, 102, 24, "C", "B", 2, W.hijau), sama("m4", "layang", 56, 102, 24, "B", "A", 2, W.hijau)),
       tambah(12, lyCiri[1], titikSudut("m5", "layang", 56, 102, 24, "A", W.ungu), titikSudut("m6", "layang", 56, 102, 24, "C", W.ungu)),
@@ -166,66 +166,60 @@ export const ADEGAN_LAYANG: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 11. Refleksi, miskonsepsi, dan diferensiasi (hlm. 233; Buku Panduan Guru hlm. 338–339) ------------------------------ */
-const REFLEKSI = [
-  ["6", "membandingkan trapesium dan jajargenjang"],
-  ["7", "membandingkan persegi panjang dan jajargenjang"],
-  ["8", "membandingkan belah ketupat dan jajargenjang"],
-  ["9", "membandingkan persegi dengan belah ketupat, persegi panjang"],
-  ["10", "membandingkan layang-layang dan belah ketupat"],
-];
+/* ------------------------------ 11. Hati-hati dan renungan (dari refleksi dan miskonsepsi buku; ditulis ulang sebagai pesan guru) ------------------------------ */
+const RENUNGAN = ["trapesium dan jajargenjang", "persegi panjang dan jajargenjang", "belah ketupat dan jajargenjang", "persegi dan belah ketupat", "layang-layang dan belah ketupat"];
 const barisRefleksi = (i: number): Obj[] => [
   kotak(`rf${i}-k`, 14, 34 + i * 30, 272, 26, W.putih, W.biru, { rx: 6, tebal: 1.2 }),
-  teks(`rf${i}-n`, 28, 51 + i * 30, REFLEKSI[i][0], 9.4, W.merah),
-  teks(`rf${i}-t`, 44, 51 + i * 30, REFLEKSI[i][1], 6.6, W.biru, { anchor: "start" }),
+  teks(`rf${i}-n`, 28, 51 + i * 30, "•", 11, W.merah),
+  teks(`rf${i}-t`, 44, 51 + i * 30, RENUNGAN[i], 8.2, W.biru, { anchor: "start" }),
 ];
 
 export const ADEGAN_REFLEKSI: AdeganStory = {
   id: "refleksi",
-  judul: "Refleksi Sub-Bab B, miskonsepsi, dan diferensiasi",
-  sumber: "Buku Siswa hlm. 233; Buku Panduan Guru hlm. 338–339, 343",
+  judul: "Renungan dan hati-hati: membandingkan segi empat",
+  sumber: "Materi: renungan dan hati-hati",
   latar: "#EEF2FF",
   kutipan: ["Aku bisa membandingkan ciri-ciri trapesium dan", "Aku bisa membandingkan ciri-ciri persegi panjang", "Aku bisa membandingkan ciri-ciri belah ketupat dan", "Aku bisa membandingkan ciri-ciri persegi dengan", "Aku bisa membandingkan ciri-ciri layang-layang dan", "Miskonsepsi", "terbolak-balik", "alat peraga individual"],
   ketukan: [
     k(
-      "Setelah mempelajari Sub-Bab B, saatnya refleksi. Isilah tabel dengan tanda centang. Pernyataan nomor enam sampai sepuluh.",
-      tambah(0, teks("jud", 150, 22, "Refleksi Sub-Bab B", 13, W.ungu)),
-      tambah(11, barisRefleksi(0)),
-      tambah(12, barisRefleksi(1)),
-      tambah(13, barisRefleksi(2)),
-      tambah(14, barisRefleksi(3)),
-      tambah(15, barisRefleksi(4)),
+      "Mari kita renungkan sebentar. Tanyakan pada dirimu: dapatkah aku membandingkan trapesium dengan jajargenjang, persegi panjang dengan jajargenjang, belah ketupat dengan jajargenjang, persegi dengan belah ketupat, dan layang-layang dengan belah ketupat?",
+      tambah(0, teks("jud", 150, 22, "Renungan", 13, W.ungu)),
+      tambah("trapesium", barisRefleksi(0)),
+      tambah("persegi", barisRefleksi(1)),
+      tambah("belah", barisRefleksi(2)),
+      tambah("persegi@2", barisRefleksi(3)),
+      tambah("layang-layang", barisRefleksi(4)),
     ),
     k(
-      "Aku bisa membandingkan ciri-ciri trapesium, persegi panjang, belah ketupat, persegi, dan layang-layang dengan bangun lain.",
-      tambah(4, tanda("rc0", 272, 52, true, 14)),
-      tambah(5, tanda("rc1", 272, 82, true, 14)),
+      "Kalau jawabanmu ya untuk kelimanya, berarti kamu sudah paham cara membandingkan ciri-ciri segi empat. Kalau belum, ulangi pelan-pelan satu per satu.",
+      tambah(2, tanda("rc0", 272, 52, true, 14)),
+      tambah(4, tanda("rc1", 272, 82, true, 14)),
       tambah(7, tanda("rc2", 272, 112, true, 14)),
       tambah(9, tanda("rc3", 272, 142, true, 14)),
       tambah(11, tanda("rc4", 272, 172, true, 14)),
     ),
     k(
-      "Buku Panduan Guru menyebut dua miskonsepsi. Pertama, siswa terbolak-balik: kalau semua ciri persegi panjang ada pada persegi, yang benar persegi termasuk persegi panjang, bukan sebaliknya.",
+      "Hati-hati, ada dua kesalahan yang sering terjadi. Pertama, terbolak-balik: kalau semua ciri persegi panjang ada pada persegi, yang benar persegi termasuk persegi panjang, bukan sebaliknya.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Miskonsepsi pertama: terbolak-balik", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Hati-hati: terbolak-balik", 12, W.ungu)),
       tambah(12, bangun("ka", "persegiPanjang", 60, 92, 15, W.krem), teks("kat", 60, 124, "persegi panjang", 8.2)),
       tambah(16, bangun("kb", "persegi", 240, 92, 15, W.hijauMuda), teks("kbt", 240, 124, "persegi", 8.2)),
-      tambah(20, panah("kp1", 214, 84, -126, 0, W.hijau, 2.2), teks("kp1t", 150, 76, "persegi termasuk PP ✓", 8.2, W.hijau)),
+      tambah(20, panah("kp1", 214, 84, -126, 0, W.hijau, 2.2), teks("kp1t", 150, 76, "termasuk ✓", 8.6, W.hijau)),
       tambah(23, panah("kp2", 98, 104, 110, 0, W.merah, 2.2), teks("kp2t", 150, 124, "terbalik ✗", 8.6, W.merah)),
     ),
     k(
-      "Kedua, siswa sulit menyebutkan ciri tambahan. Agar jajargenjang menjadi persegi panjang, salah satu sudutnya harus siku-siku. Guru bisa memberi petunjuk atau alat peraga yang dapat diraba.",
+      "Kedua, kita lupa menyebutkan ciri tambahan. Agar jajargenjang menjadi persegi panjang, salah satu sudutnya harus siku-siku. Bantu dirimu dengan benda yang dapat diraba, seperti sedotan tadi.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Miskonsepsi kedua: ciri tambahan", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Hati-hati: ciri tambahan", 12, W.ungu)),
       tambah(7, rumusBangun("rq", "jajar", "persegiPanjang", "jajargenjang", "persegi panjang", ["tambah: satu sudut", "siku-siku"]).dari),
       tambah(9, rumusBangun("rq", "jajar", "persegiPanjang", "jajargenjang", "persegi panjang", ["tambah: satu sudut", "siku-siku"]).ke),
       tambah(14, rumusBangun("rq", "jajar", "persegiPanjang", "jajargenjang", "persegi panjang", ["tambah: satu sudut", "siku-siku"]).panah),
-      tambah(20, kartu("ap", 50, 150, 200, 34, W.krem, ["alat peraga individual", "yang bisa diraba langsung"], 8.6)),
+      tambah(20, kartu("ap", 50, 150, 200, 34, W.krem, ["benda yang bisa diraba", "membantu memahami ciri"], 8.6)),
     ),
   ],
 };
 
-/* ------------------------------ 12. Uji Kompetensi dan pengayaan (hlm. 234; Buku Panduan Guru hlm. 339–343) ------------------------------ */
+/* ------------------------------ 12. Uji benar atau salah dan tantangan (dari Uji Kompetensi dan pengayaan buku) ------------------------------ */
 const KUNCI_UK = [false, false, true, true, false, true, true, false, false, true];
 const chip = (i: number): Obj[] => {
   const x = 15 + (i % 5) * 55;
@@ -241,20 +235,20 @@ const semuaChip = Array.from({ length: 10 }, (_, i) => chip(i)).flat();
 
 export const ADEGAN_UJI: AdeganStory = {
   id: "uji",
-  judul: "Uji Kompetensi, kunci jawaban, dan soal pengayaan",
-  sumber: "Buku Siswa hlm. 234; Buku Panduan Guru hlm. 339–343",
+  judul: "Uji benar atau salah dan tantangan",
+  sumber: "Materi: uji dan tantangan",
   latar: "#FFFBEB",
   kutipan: ["Uji Kompetensi", "Benar atau salahkah pernyataan-pernyataan berikut ini", "Aku dapat membuat bentuk segitiga", "5 cm, 7 cm, dan 1 cm", "Besar tiga sudut dalam segitiga jika", "Segitiga sama sisi juga dapat digolongkan", "Jajargenjang merupakan trapesium sama", "Persegi panjang adalah jajargenjang yang", "Belah ketupat dapat digolongkan sebagai", "Persegi tidak dapat disebut persegi panjang", "Persegi bukan belah ketupat", "Salah satu diagonal pada layang-layang", "Soal Pengayaan", "Memiliki 2 sudut yang besarnya", "Jajargenjang", "Trapesium sama kaki"],
   ketukan: [
     k(
-      "Uji Kompetensi berisi sepuluh pernyataan benar atau salah. Setiap jawaban yang tepat mendapat skor satu.",
-      tambah(0, teks("jud", 150, 20, "Uji Kompetensi", 12.5, W.ungu)),
-      tambah(3, semuaChip),
-      tambah(13, teks("sk", 150, 124, "skor: 10 x 1 = 10", 11, W.merah)),
+      "Sekarang saatnya uji. Ada sepuluh pernyataan benar atau salah. Jawab semuanya, lalu kita periksa bersama.",
+      tambah(0, teks("jud", 150, 20, "Uji: benar atau salah", 12.5, W.ungu)),
+      tambah(4, semuaChip),
+      tambah(13, teks("sk", 150, 124, "10 pernyataan", 11, W.merah)),
       tambah(13, teks("lg", 150, 146, "B = benar    S = salah", 9.4, W.biru)),
     ),
     k(
-      "Nomor satu: segitiga dari ruas garis 5 sentimeter, 7 sentimeter, dan 1 sentimeter. Karena 5 ditambah 1 sama dengan 6, yang kurang dari 7, segitiga tidak dapat dibentuk. Jawabannya salah.",
+      "Pernyataan satu: segitiga dari ruas garis 5 sentimeter, 7 sentimeter, dan 1 sentimeter. Karena 5 ditambah 1 sama dengan 6, yang kurang dari 7, segitiga tidak dapat dibentuk. Jawabannya salah.",
       hapus(0, "sk", "lg"),
       tambah(6, teks("n1a", 150, 124, "5 cm, 7 cm, 1 cm", 10.4, W.biru)),
       tambah(14, teks("n1b", 150, 144, "5 + 1 = 6", 11, W.merah)),
@@ -262,23 +256,24 @@ export const ADEGAN_UJI: AdeganStory = {
       tambah(28, jawab(0)),
     ),
     k(
-      "Nomor dua: semua sudut pada segitiga siku-siku adalah sudut siku-siku. Salah, hanya satu sudutnya. Nomor tiga: jumlah ketiga sudut segitiga adalah 180 derajat. Benar.",
+      "Pernyataan dua: semua sudut pada segitiga siku-siku adalah sudut siku-siku. Salah, hanya satu sudutnya. Pernyataan tiga: jumlah ketiga sudut segitiga adalah 180 derajat. Benar.",
       hapus(0, "n1a", "n1b", "n1c"),
       tambah(10, jawab(1)),
       tambah(11, teks("n2a", 150, 130, "segitiga siku-siku: 1 sudut siku-siku", 9, W.merah)),
+      tambah("hanya", teks("n2b", 150, 143, "90 + 90 = 180, sudah penuh", 8.4, W.merah)),
       tambah(21, teks("n3a", 150, 156, "jumlah tiga sudut segitiga: 180°", 9.6, W.hijau)),
       tambah(23, jawab(2)),
     ),
     k(
-      "Nomor empat: segitiga sama sisi juga termasuk segitiga sama kaki. Benar. Nomor lima: jajargenjang adalah trapesium sama kaki. Salah, karena sudut alasnya tidak sama besar.",
-      hapus(0, "n2a", "n3a"),
+      "Pernyataan empat: segitiga sama sisi juga termasuk segitiga sama kaki. Benar. Pernyataan lima: jajargenjang adalah trapesium sama kaki. Salah, karena sudut alasnya tidak sama besar.",
+      hapus(0, "n2a", "n2b", "n3a"),
       tambah(6, teks("n4a", 150, 130, "sama sisi termasuk sama kaki", 9.6, W.hijau)),
       tambah(10, jawab(3)),
       tambah(18, jawab(4)),
       tambah(20, teks("n5a", 150, 156, "jajargenjang: sudut alas tidak sama besar", 9, W.merah)),
     ),
     k(
-      "Nomor enam: persegi panjang adalah jajargenjang yang salah satu sudutnya siku-siku. Benar. Nomor tujuh: belah ketupat dapat digolongkan sebagai jajargenjang dan juga layang-layang. Benar.",
+      "Pernyataan enam: persegi panjang adalah jajargenjang yang salah satu sudutnya siku-siku. Benar. Pernyataan tujuh: belah ketupat dapat digolongkan sebagai jajargenjang dan juga layang-layang. Benar.",
       hapus(0, "n4a", "n5a"),
       tambah(5, teks("n6a", 150, 130, "persegi panjang: jajargenjang bersudut siku", 9, W.hijau)),
       tambah(11, jawab(5)),
@@ -286,7 +281,7 @@ export const ADEGAN_UJI: AdeganStory = {
       tambah(23, jawab(6)),
     ),
     k(
-      "Nomor delapan: persegi tidak dapat disebut persegi panjang. Salah. Nomor sembilan: persegi bukan belah ketupat. Salah. Nomor sepuluh: salah satu diagonal layang-layang merupakan sumbu simetri. Benar.",
+      "Pernyataan delapan: persegi tidak dapat disebut persegi panjang. Salah. Pernyataan sembilan: persegi bukan belah ketupat. Salah. Pernyataan sepuluh: salah satu diagonal layang-layang merupakan sumbu simetri. Benar.",
       hapus(0, "n6a", "n7a"),
       tambah(7, teks("n8a", 150, 126, "persegi termasuk persegi panjang", 9.4, W.merah)),
       tambah(8, jawab(7)),
@@ -296,9 +291,9 @@ export const ADEGAN_UJI: AdeganStory = {
       tambah(25, jawab(9)),
     ),
     k(
-      "Pengayaan nomor satu: bangun bersisi tiga dengan dua sudut 45 derajat. Karena 45 ditambah 45 sama dengan 90, sudut ketiganya 90 derajat. Jadi segitiga lancip salah, sama kaki benar, siku-siku sama kaki benar.",
+      "Tantangan satu, yaitu bangun bersisi tiga dengan dua sudut 45 derajat. Karena 45 ditambah 45 sama dengan 90, sudut ketiganya 90 derajat. Jadi segitiga lancip salah, sama kaki benar, siku-siku sama kaki benar.",
       bersih(0),
-      tambah(0, teks("jud", 150, 20, "Pengayaan 1", 12.5, W.ungu)),
+      tambah(0, teks("jud", 150, 20, "Tantangan 1", 12.5, W.ungu)),
       tambah(3, poli("sg", 62, 104, [[-1.2, 0.9], [1.2, 0.9], [-1.2, -1.5]], 26, W.hijauMuda, W.biru)),
       tambah(8, teks("ga", 74, 122, "45°", 8.4, W.merah), teks("gb", 38, 86, "45°", 8.4, W.merah)),
       tambah(12, teks("e1", 205, 52, "45 + 45 = 90", 11, W.biru)),
@@ -308,9 +303,9 @@ export const ADEGAN_UJI: AdeganStory = {
       tambah(30, panelCiri("pi", PX, 124, PW, ["iii. siku-siku sama kaki"], W.putih, 7.8)[0], centangBaris("pc2", PX, 70, PW, 2, true)),
     ),
     k(
-      "Pengayaan nomor dua: bangun bersisi empat dengan setidaknya sepasang sisi sejajar dan sepasang sisi sama panjang. Jajargenjang benar, layang-layang salah, trapesium sama kaki benar.",
+      "Tantangan dua, yaitu bangun bersisi empat dengan setidaknya sepasang sisi sejajar dan sepasang sisi sama panjang. Jajargenjang benar, layang-layang salah, trapesium sama kaki benar.",
       bersih(0),
-      tambah(0, teks("jud", 150, 20, "Pengayaan 2", 12.5, W.ungu)),
+      tambah(0, teks("jud", 150, 20, "Tantangan 2", 12.5, W.ungu)),
       tambah(7, ...panelCiri("qa", 20, 30, 260, ["setidaknya sepasang sisi sejajar"], W.krem, 8)[0]),
       tambah(12, ...panelCiri("qb", 20, 56, 260, ["setidaknya sepasang sisi sama panjang"], W.krem, 8)[0]),
       tambah(16, bangun("qj", "jajar", 50, 116, 15, W.hijauMuda), teks("qjt", 50, 148, "jajargenjang", 8.2), tanda("qjc", 50, 176, true, 16)),

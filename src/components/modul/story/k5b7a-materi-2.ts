@@ -12,7 +12,7 @@ const tandai = (at: string | number, i: number, bisa: boolean) => [
 export const ADEGAN_SYARAT: AdeganStory = {
   id: "syarat-segitiga",
   judul: "Syarat tiga ruas garis membentuk segitiga",
-  sumber: "Buku Siswa hlm. 197; Panduan Guru hlm. 296–297",
+  sumber: "Materi: syarat membentuk segitiga",
   latar: "#F0F9FF",
   kutipan: [
     "Apakah semua kelompok sedotan dapat dibuat segitiga?",
@@ -24,7 +24,7 @@ export const ADEGAN_SYARAT: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Setelah mencoba, jawab pertanyaan. Apakah semua sedotan dapat dibuat segitiga? Tidak. Yang dapat: nomor satu, dua, dan lima. Nomor tiga dan empat tidak dapat.",
+      "Setelah mencoba, jawab pertanyaan. Apakah semua sedotan dapat dibuat segitiga? Tidak. Yang dapat: kelompok satu, dua, dan lima. Kelompok tiga dan empat tidak dapat.",
       tambah(0, judul("hasil percobaan sedotan")),
       tambah("semua", ...NOMOR_X.flatMap((x, i) => [bulat(`n${i}`, x, 80, 15, W.abu), teks(`nt${i}`, x, 84, String(i + 1), 11)])),
       ...tandai("satu,", 0, true),
@@ -34,9 +34,9 @@ export const ADEGAN_SYARAT: AdeganStory = {
       ...tandai("empat", 3, false),
     ),
     k(
-      "Perhatikan jumlah dua sisi. Pada nomor tiga, a tambah b hanya sembilan, padahal sisi ketiga, c, dua belas. Jumlah dua sisi tidak melebihi sisi ketiga.",
+      "Perhatikan jumlah dua sisi. Pada kelompok tiga, a tambah b hanya sembilan, padahal sisi ketiga, c, dua belas. Jumlah dua sisi tidak melebihi sisi ketiga.",
       bersih(0),
-      tambah(0, judul("nomor 3: 5, 4, dan 12")),
+      tambah(0, judul("kelompok 3: 5, 4, dan 12")),
       tambah("tiga,", teks("la", 26, 105, "a + b", 8.6), ...sedotan("sa", 44, 98, 5, W.jingga, 11), ...sedotan("sb", 99, 98, 4, W.langit, 11)),
       tambah("ketiga,", teks("lc", 26, 59, "c", 9), ...sedotan("sc", 44, 52, 12, W.hijauMuda, 11)),
       tambah("sembilan,", teks("e9", 230, 105, "5 + 4 = 9", 10, W.ungu)),
@@ -44,18 +44,18 @@ export const ADEGAN_SYARAT: AdeganStory = {
       tambah("melebihi", teks("ml", 150, 146, "9 lebih pendek dari 12", 10, W.merah)),
     ),
     k(
-      "Pada nomor empat, sepuluh tambah lima sama dengan lima belas, sama dengan sisi ketiga. Kedua sedotan hanya rebah, jadi tidak membentuk segitiga.",
+      "Pada kelompok empat, sepuluh tambah lima sama dengan lima belas, sama dengan sisi ketiga. Kedua sedotan hanya rebah, jadi tidak membentuk segitiga.",
       bersih(0),
-      tambah(0, judul("nomor 4: 10, 5, dan 15")),
+      tambah(0, judul("kelompok 4: 10, 5, dan 15")),
       tambah("sepuluh", teks("la", 26, 105, "a + b", 8.6), ...sedotan("sa", 44, 98, 10, W.jingga, 10)),
       tambah("lima", ...sedotan("sb", 144, 98, 5, W.langit, 10)),
       tambah("belas,", teks("lc", 26, 59, "c", 9), ...sedotan("sc", 44, 52, 15, W.hijauMuda, 10), teks("eq", 150, 134, "10 + 5 = 15", 11, W.ungu)),
       tambah("rebah", teks("rb", 150, 156, "sama panjang: rebah, tidak jadi segitiga", 9, W.merah)),
     ),
     k(
-      "Nomor satu: lima tambah enam sebelas, lebih dari tujuh. Enam tambah tujuh tiga belas, lebih dari lima. Lima tambah tujuh dua belas, lebih dari enam.",
+      "Kelompok satu: lima tambah enam sebelas, lebih dari tujuh. Enam tambah tujuh tiga belas, lebih dari lima. Lima tambah tujuh dua belas, lebih dari enam.",
       bersih(0),
-      tambah(0, judul("nomor 1: 5, 6, dan 7")),
+      tambah(0, judul("kelompok 1: 5, 6, dan 7")),
       tambah("satu,", segitiga("sg", 30, 150, titikSisi(5, 6, 7, 12), W.jingga)),
       tambah("sebelas,", teks("q1", 225, 70, "5 + 6 = 11 > 7", 9.4, W.hijau)),
       tambah("tiga", teks("q2", 225, 96, "6 + 7 = 13 > 5", 9.4, W.hijau)),
@@ -63,11 +63,11 @@ export const ADEGAN_SYARAT: AdeganStory = {
       tambah(24, teks("q4", 225, 152, "semua memenuhi", 9.4, W.ungu)),
     ),
     k(
-      "Kesimpulannya, tiga sisi dapat dibuat segitiga jika jumlah dua sisi lebih dari sisi ketiganya. Panduan Guru mengingatkan: jangan mengira sembarang tiga ruas garis pasti menjadi segitiga.",
+      "Kesimpulannya, tiga sisi dapat dibuat segitiga jika jumlah dua sisi lebih dari sisi ketiganya. Ingat juga, jangan mengira sembarang tiga ruas garis pasti menjadi segitiga.",
       bersih(0),
       tambah(0, judul("syarat membuat segitiga")),
       tambah("jika", ...kartu("rg", 20, 44, 260, 60, W.hijauMuda, ["jumlah panjang dua sisi", "lebih dari panjang sisi ketiga"], 11)),
-      tambah("Panduan", ...kartu("ws", 20, 120, 260, 56, W.merahMuda, ["tidak sembarang 3 ruas garis", "pasti jadi segitiga"], 10)),
+      tambah("Ingat", ...kartu("ws", 20, 120, 260, 56, W.merahMuda, ["tidak sembarang 3 ruas garis", "pasti jadi segitiga"], 10)),
     ),
   ],
 };
@@ -81,8 +81,8 @@ function sudutGambar(id: string, x: number, y: number, derajat: number, warna: s
 
 export const ADEGAN_LANCIP: AdeganStory = {
   id: "ekspl-71b-lancip",
-  judul: "Eksplorasi 7.1B: jenis sudut dan segitiga lancip",
-  sumber: "Buku Siswa hlm. 198–199; Panduan Guru hlm. 297–299",
+  judul: "Jenis sudut dan segitiga lancip",
+  sumber: "Materi: jenis sudut dan segitiga lancip",
   latar: "#F5F3FF",
   kutipan: [
     "Eksplorasi 7.1 B",
@@ -95,8 +95,8 @@ export const ADEGAN_LANCIP: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi 7.1B membandingkan segitiga menurut besar sudutnya. Ingat jenis sudut: lancip kurang dari sembilan puluh derajat, siku-siku tepat sembilan puluh, tumpul lebih dari sembilan puluh derajat.",
-      tambah(0, judul("Eksplorasi 7.1B: jenis sudut")),
+      "Sekarang kita membandingkan segitiga menurut besar sudutnya. Ingat jenis sudut: lancip kurang dari sembilan puluh derajat, siku-siku tepat sembilan puluh, tumpul lebih dari sembilan puluh derajat.",
+      tambah(0, judul("Jenis sudut")),
       tambah("lancip", ...sudutGambar("sl", 20, 120, 45, W.hijau), teks("slt", 50, 146, "lancip", 8.6), teks("slu", 50, 160, "kurang dari 90°", 8.4, W.hijau)),
       tambah("siku-siku", ...sudutGambar("ss", 118, 120, 90, W.merah), tandaSiku("ssk", 118, 120, 9, 1, -1), teks("sst", 148, 146, "siku-siku", 8.6), teks("ssu", 148, 160, "tepat 90°", 8.4, W.merah)),
       tambah("tumpul", ...sudutGambar("st", 245, 120, 130, W.ungu), teks("stt", 240, 146, "tumpul", 8.6), teks("stu", 240, 160, "lebih dari 90°", 8.4, W.ungu)),
@@ -139,7 +139,7 @@ function sudutGambarRefleks(): Obj[] {
 export const ADEGAN_SIKU_TUMPUL: AdeganStory = {
   id: "ekspl-71b-siku-tumpul",
   judul: "Segitiga siku-siku dan segitiga tumpul",
-  sumber: "Buku Siswa hlm. 199–201; Panduan Guru hlm. 299–301",
+  sumber: "Materi: segitiga siku-siku dan tumpul",
   latar: "#FFF1F2",
   kutipan: [
     "Ada berapa sudut siku-sikunya?",
@@ -184,12 +184,12 @@ export const ADEGAN_SIKU_TUMPUL: AdeganStory = {
       tambah("Segitiga@2", teks("ru", 150, 190, "salah satu sudutnya tumpul: segitiga tumpul", 8.6, W.merah)),
     ),
     k(
-      "Nisa bertanya: mungkinkah satu segitiga siku-siku punya dua sudut siku-siku? Atau segitiga tumpul punya dua sudut tumpul? Kita jawab di Eksplorasi 7.1C.",
+      "Nisa bertanya: mungkinkah satu segitiga siku-siku punya dua sudut siku-siku? Atau segitiga tumpul punya dua sudut tumpul? Kita jawab pada percobaan berikutnya.",
       bersih(0),
       tambah(0, judul("pertanyaan Nisa")),
       tambah("mungkinkah", ...kartu("pn1", 20, 40, 260, 44, W.krem, ["Mungkin 2 sudut siku-siku", "dalam 1 segitiga siku-siku?"], 9.4)),
       tambah("Atau", ...kartu("pn2", 20, 96, 260, 44, W.hijauMuda, ["Mungkin 2 sudut tumpul", "dalam 1 segitiga tumpul?"], 9.4)),
-      tambah("Kita", teks("pn3", 150, 170, "dijawab di Eksplorasi 7.1C", 10, W.ungu)),
+      tambah("Kita", teks("pn3", 150, 170, "dijawab pada percobaan berikutnya", 10, W.ungu)),
     ),
   ],
 };
