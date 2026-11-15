@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-atas", "teks": "Bola di atas kotak", "ikon": "⬆️", "cabang": "atas-bawah", "petunjuk": "Letak yang lebih tinggi itu atas dan bawah. Coba cabang lain." },
-          { "id": "a-lawan-atas", "teks": "Kotak di bawah bola", "ikon": "⬇️", "cabang": "atas-bawah", "petunjuk": "Lawan kata atas itu bawah, jadi ini atas dan bawah. Coba cabang lain." },
-          { "id": "a-menutupi", "teks": "Menutupi benda lain", "ikon": "🙈", "cabang": "depan-belakang", "petunjuk": "Menutupi berarti lebih dekat ke kita, jadi ini depan dan belakang. Coba cabang lain." },
-          { "id": "a-tertutup", "teks": "Tertutup benda lain", "ikon": "🌫️", "cabang": "depan-belakang", "petunjuk": "Tertutup berarti lebih jauh dari kita, jadi ini depan dan belakang. Coba cabang lain." },
-          { "id": "a-ikut-kita", "teks": "Ikut kita yang melihat", "ikon": "👁️", "cabang": "kanan-kiri", "petunjuk": "Mengikuti arah pandang kita itu kanan dan kiri. Coba cabang lain." },
-          { "id": "a-kanan-kiri", "teks": "Kanan lawannya kiri", "ikon": "🔄", "cabang": "kanan-kiri", "petunjuk": "Pasangan kanan dan kiri itu kanan dan kiri. Coba cabang lain." },
-          { "id": "a-aku", "teks": "Aku di atas jam, di kiri buku", "ikon": "🔍", "cabang": "acuan", "petunjuk": "Menggabung petunjuk terhadap benda lain itu benda acuan. Coba cabang lain." },
-          { "id": "a-cukup", "teks": "Satu petunjuk sering kurang", "ikon": "➕", "cabang": "acuan", "petunjuk": "Menambah petunjuk lewat benda acuan itu cabang benda acuan. Coba cabang lain." }
+          {
+            "id": "a-atas",
+            "teks": "Bola di atas kotak",
+            "ikon": "⬆️",
+            "cabang": "atas-bawah",
+            "petunjuk": "Letak yang lebih tinggi itu atas dan bawah. Coba cabang lain."
+          },
+          {
+            "id": "a-lawan-atas",
+            "teks": "Kotak di bawah bola",
+            "ikon": "⬇️",
+            "cabang": "atas-bawah",
+            "petunjuk": "Lawan kata atas itu bawah, jadi ini atas dan bawah. Coba cabang lain."
+          },
+          {
+            "id": "a-menutupi",
+            "teks": "Menutupi benda lain",
+            "ikon": "🙈",
+            "cabang": "depan-belakang",
+            "petunjuk": "Menutupi berarti lebih dekat ke kita, jadi ini depan dan belakang. Coba cabang lain."
+          },
+          {
+            "id": "a-tertutup",
+            "teks": "Tertutup benda lain",
+            "ikon": "🌫️",
+            "cabang": "depan-belakang",
+            "petunjuk": "Tertutup berarti lebih jauh dari kita, jadi ini depan dan belakang. Coba cabang lain."
+          },
+          {
+            "id": "a-ikut-kita",
+            "teks": "Ikut kita yang melihat",
+            "ikon": "👁️",
+            "cabang": "kanan-kiri",
+            "petunjuk": "Mengikuti arah pandang kita itu kanan dan kiri. Coba cabang lain."
+          },
+          {
+            "id": "a-kanan-kiri",
+            "teks": "Kanan lawannya kiri",
+            "ikon": "🔄",
+            "cabang": "kanan-kiri",
+            "petunjuk": "Pasangan kanan dan kiri itu kanan dan kiri. Coba cabang lain."
+          },
+          {
+            "id": "a-aku",
+            "teks": "Aku di atas jam, di kiri buku",
+            "ikon": "🔍",
+            "cabang": "acuan",
+            "petunjuk": "Menggabung petunjuk terhadap benda lain itu benda acuan. Coba cabang lain."
+          },
+          {
+            "id": "a-cukup",
+            "teks": "Satu petunjuk sering kurang",
+            "ikon": "➕",
+            "cabang": "acuan",
+            "petunjuk": "Menambah petunjuk lewat benda acuan itu cabang benda acuan. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -72,7 +120,10 @@
                 "ikon": "↕️",
                 "isi": "Bola di atas kotak, kotak di bawah bola.",
                 "suara": "Bola di atas kotak. Kalau dibalik, kotak di bawah bola. Atas lawannya bawah.",
-                "visual": { "jenis": "teks", "isi": "Bola di atas kotak ↔ kotak di bawah bola" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Bola di atas kotak ↔ kotak di bawah bola"
+                }
               },
               {
                 "id": "depan-belakang",
@@ -80,7 +131,10 @@
                 "ikon": "👀",
                 "isi": "Kucing di depan meja, meja di belakang kucing.",
                 "suara": "Kucing di depan meja. Kalau dibalik, meja di belakang kucing. Depan lawannya belakang.",
-                "visual": { "jenis": "teks", "isi": "Kucing di depan meja ↔ meja di belakang kucing" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Kucing di depan meja ↔ meja di belakang kucing"
+                }
               },
               {
                 "id": "kanan-kiri",
@@ -88,7 +142,10 @@
                 "ikon": "↔️",
                 "isi": "Buku di kanan kursi, kursi di kiri buku.",
                 "suara": "Buku di sebelah kanan kursi. Kalau dibalik, kursi di sebelah kiri buku. Kanan lawannya kiri.",
-                "visual": { "jenis": "teks", "isi": "Buku di kanan kursi ↔ kursi di kiri buku" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Buku di kanan kursi ↔ kursi di kiri buku"
+                }
               }
             ]
           },
@@ -105,7 +162,10 @@
                 "ikon": "👀",
                 "catatan": "Lebih dekat ke kita, menutupi benda lain.",
                 "suara": "Di depan. Benda ini lebih dekat ke kita, jadi bisa menutupi bagian benda lain.",
-                "visual": { "jenis": "teks", "isi": "Terlihat penuh, menutupi benda lain" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Terlihat penuh, menutupi benda lain"
+                }
               },
               {
                 "id": "belakang",
@@ -113,7 +173,10 @@
                 "ikon": "🌫️",
                 "catatan": "Lebih jauh dari kita, bisa tertutup.",
                 "suara": "Di belakang. Benda ini lebih jauh dari kita, jadi sebagian bisa tertutup benda lain.",
-                "visual": { "jenis": "teks", "isi": "Sebagian tertutup oleh benda lain" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Sebagian tertutup oleh benda lain"
+                }
               }
             ],
             "kesimpulan": "Yang menutupi ada di depan. Yang tertutup ada di belakang."
@@ -131,7 +194,10 @@
                 "ikon": "1️⃣",
                 "isi": "Masih banyak benda yang cocok.",
                 "suara": "Dengan satu petunjuk, biasanya masih banyak benda yang cocok.",
-                "visual": { "jenis": "teks", "isi": "Aku di atas boneka → ada 3 benda cocok" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Aku di atas boneka → ada 3 benda cocok"
+                }
               },
               {
                 "id": "dua",
@@ -139,7 +205,10 @@
                 "ikon": "2️⃣",
                 "isi": "Pilihan makin sedikit.",
                 "suara": "Dengan dua petunjuk, pilihan makin sedikit. Kadang sudah tinggal satu benda.",
-                "visual": { "jenis": "teks", "isi": "Di atas boneka, di kiri buku → tinggal 1 benda" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Di atas boneka, di kiri buku → tinggal 1 benda"
+                }
               },
               {
                 "id": "cukup",
@@ -147,8 +216,146 @@
                 "ikon": "✅",
                 "isi": "Tinggal satu benda yang cocok.",
                 "suara": "Petunjuk sudah cukup kalau tinggal satu benda yang cocok dengan semuanya.",
-                "visual": { "jenis": "teks", "isi": "Semua petunjuk cocok → itulah aku" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Semua petunjuk cocok → itulah aku"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Di mana letak benda itu?",
+          "ikon": "📍",
+          "suara": "Ini peta tentang letak benda. Kita ingin tahu di mana sebuah benda berada. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-kata",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Enam kata posisi",
+            "ikon": "🧭",
+            "petunjuk": "Kata atas, bawah, depan, belakang, kanan, dan kiri untuk menceritakan letak benda."
+          },
+          {
+            "id": "hal-kanan",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Kanan dan kiri pada gambar",
+            "ikon": "👀",
+            "petunjuk": "Menentukan kanan dan kiri menurut arah pandang kita yang melihat gambar."
+          },
+          {
+            "id": "hal-petunjuk",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menebak benda dari petunjuk",
+            "ikon": "🔍",
+            "petunjuk": "Menggabungkan petunjuk posisi sampai tinggal satu benda yang cocok."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-pilih",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Pilih kata posisi tepat",
+            "ikon": "✍️",
+            "petunjuk": "Langkah untuk kata posisi: sebut benda, kata posisi, lalu benda acuan."
+          },
+          {
+            "id": "cara-lihat",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Lihat dari arah kita",
+            "ikon": "🧐",
+            "petunjuk": "Langkah untuk kanan dan kiri: lihat dari arah kita yang melihat gambar."
+          },
+          {
+            "id": "cara-gabung",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Gabung dua petunjuk",
+            "ikon": "🧩",
+            "petunjuk": "Langkah untuk menebak: gabungkan dua petunjuk sampai tinggal satu benda."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-letak",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menyebut letak benda",
+            "ikon": "🏷️",
+            "petunjuk": "Kemampuan menceritakan letak benda dengan kata posisi yang tepat."
+          },
+          {
+            "id": "hasil-temu",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa menemukan benda",
+            "ikon": "🔎",
+            "petunjuk": "Kemampuan menemukan satu benda dari beberapa petunjuk posisi."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Letak dan lawannya",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel letak benda. Untuk tiap kata posisi, pasang lawannya, benda yang diceritakan, dan benda acuan.",
+        "pojok": "Kata",
+        "kolom": [
+          "Lawan",
+          "Benda",
+          "Acuan"
+        ],
+        "baris": [
+          {
+            "label": "Atas",
+            "sel": [
+              "bawah",
+              "bola",
+              "kotak"
+            ]
+          },
+          {
+            "label": "Depan",
+            "sel": [
+              "belakang",
+              "burung",
+              "ulat"
+            ]
+          },
+          {
+            "label": "Kanan",
+            "sel": [
+              "kiri",
+              "Kira",
+              "Halim"
             ]
           }
         ]
@@ -193,14 +400,62 @@
           }
         ],
         "kartu": [
-          { "id": "b-merah-biru", "teks": "Merah, biru, merah, biru", "ikon": "🔴", "cabang": "berulang", "petunjuk": "Kelompok yang muncul lagi dan lagi itu berulang dan teratur. Coba cabang lain." },
-          { "id": "b-sama", "teks": "Semua sama bukan pola", "ikon": "🚫", "cabang": "berulang", "petunjuk": "Pola butuh dua unsur berbeda, jadi ini berulang dan teratur. Coba cabang lain." },
-          { "id": "b-aab", "teks": "A A B, A A B", "ikon": "🔤", "cabang": "satuan", "petunjuk": "Kelompok yang berulang dari awal itu satuan pola. Coba cabang lain." },
-          { "id": "b-abab", "teks": "A B A B: satuannya A B", "ikon": "✂️", "cabang": "satuan", "petunjuk": "Memilih kelompok terpendek itu satuan pola. Coba cabang lain." },
-          { "id": "b-suara", "teks": "Tepuk keras, tepuk pelan", "ikon": "👏", "cabang": "macam", "petunjuk": "Pola pada suara itu macam pola. Coba cabang lain." },
-          { "id": "b-bentuk", "teks": "Lingkaran, persegi, lingkaran", "ikon": "🔵", "cabang": "macam", "petunjuk": "Pola pada bentuk itu macam pola. Coba cabang lain." },
-          { "id": "b-berikut", "teks": "Ulangi satuan, cari berikutnya", "ikon": "👉", "cabang": "lanjut", "petunjuk": "Mencari unsur berikutnya itu lanjutkan dan buat. Coba cabang lain." },
-          { "id": "b-hilang", "teks": "Isi bagian yang hilang", "ikon": "❓", "cabang": "lanjut", "petunjuk": "Mengisi bagian yang hilang itu lanjutkan dan buat. Coba cabang lain." }
+          {
+            "id": "b-merah-biru",
+            "teks": "Merah, biru, merah, biru",
+            "ikon": "🔴",
+            "cabang": "berulang",
+            "petunjuk": "Kelompok yang muncul lagi dan lagi itu berulang dan teratur. Coba cabang lain."
+          },
+          {
+            "id": "b-sama",
+            "teks": "Semua sama bukan pola",
+            "ikon": "🚫",
+            "cabang": "berulang",
+            "petunjuk": "Pola butuh dua unsur berbeda, jadi ini berulang dan teratur. Coba cabang lain."
+          },
+          {
+            "id": "b-aab",
+            "teks": "A A B, A A B",
+            "ikon": "🔤",
+            "cabang": "satuan",
+            "petunjuk": "Kelompok yang berulang dari awal itu satuan pola. Coba cabang lain."
+          },
+          {
+            "id": "b-abab",
+            "teks": "A B A B: satuannya A B",
+            "ikon": "✂️",
+            "cabang": "satuan",
+            "petunjuk": "Memilih kelompok terpendek itu satuan pola. Coba cabang lain."
+          },
+          {
+            "id": "b-suara",
+            "teks": "Tepuk keras, tepuk pelan",
+            "ikon": "👏",
+            "cabang": "macam",
+            "petunjuk": "Pola pada suara itu macam pola. Coba cabang lain."
+          },
+          {
+            "id": "b-bentuk",
+            "teks": "Lingkaran, persegi, lingkaran",
+            "ikon": "🔵",
+            "cabang": "macam",
+            "petunjuk": "Pola pada bentuk itu macam pola. Coba cabang lain."
+          },
+          {
+            "id": "b-berikut",
+            "teks": "Ulangi satuan, cari berikutnya",
+            "ikon": "👉",
+            "cabang": "lanjut",
+            "petunjuk": "Mencari unsur berikutnya itu lanjutkan dan buat. Coba cabang lain."
+          },
+          {
+            "id": "b-hilang",
+            "teks": "Isi bagian yang hilang",
+            "ikon": "❓",
+            "cabang": "lanjut",
+            "petunjuk": "Mengisi bagian yang hilang itu lanjutkan dan buat. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -220,7 +475,10 @@
                 "ikon": "🎨",
                 "isi": "Merah, biru, merah, biru.",
                 "suara": "Pola warna. Merah, biru, merah, biru. Dua warna berganti terus.",
-                "visual": { "jenis": "teks", "isi": "merah, biru, merah, biru, …" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "merah, biru, merah, biru, …"
+                }
               },
               {
                 "id": "bentuk",
@@ -228,7 +486,10 @@
                 "ikon": "🔺",
                 "isi": "Lingkaran, persegi, lingkaran, persegi.",
                 "suara": "Pola bentuk. Lingkaran, persegi, lingkaran, persegi.",
-                "visual": { "jenis": "teks", "isi": "lingkaran, persegi, lingkaran, persegi, …" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "lingkaran, persegi, lingkaran, persegi, …"
+                }
               },
               {
                 "id": "gerakan",
@@ -236,7 +497,10 @@
                 "ikon": "🙌",
                 "isi": "Berdiri, tangan naik, berdiri, tangan naik.",
                 "suara": "Pola gerakan. Berdiri, tangan naik, berdiri, tangan naik.",
-                "visual": { "jenis": "teks", "isi": "berdiri, tangan naik, berdiri, tangan naik, …" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "berdiri, tangan naik, berdiri, tangan naik, …"
+                }
               },
               {
                 "id": "suara",
@@ -244,7 +508,10 @@
                 "ikon": "👏",
                 "isi": "Tepuk keras, tepuk pelan, diam.",
                 "suara": "Pola suara. Tepuk keras, tepuk pelan, diam. Lalu ulang lagi dari awal.",
-                "visual": { "jenis": "teks", "isi": "keras, pelan, diam, keras, pelan, diam, …" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "keras, pelan, diam, keras, pelan, diam, …"
+                }
               }
             ]
           },
@@ -261,7 +528,10 @@
                 "ikon": "✅",
                 "catatan": "Kelompok merah, biru berulang teratur.",
                 "suara": "Pola. Kelompok merah, biru muncul lagi dan lagi dengan teratur.",
-                "visual": { "jenis": "teks", "isi": "merah, biru, merah, biru, merah, biru" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "merah, biru, merah, biru, merah, biru"
+                }
               },
               {
                 "id": "bukan",
@@ -269,7 +539,10 @@
                 "ikon": "🚫",
                 "catatan": "Semua sama, tidak ada dua unsur berbeda.",
                 "suara": "Bukan pola. Semua unsurnya sama, jadi tidak ada dua unsur yang berbeda.",
-                "visual": { "jenis": "teks", "isi": "kuning, kuning, kuning, kuning, kuning" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "kuning, kuning, kuning, kuning, kuning"
+                }
               }
             ],
             "kesimpulan": "Pola berulang teratur dan punya dua unsur berbeda."
@@ -287,7 +560,10 @@
                 "ikon": "🔍",
                 "isi": "Berulang teratur atau bukan?",
                 "suara": "Cek. Apakah barisan ini berulang dengan teratur, atau bukan pola?",
-                "visual": { "jenis": "teks", "isi": "Pertanyaan 1: pola atau bukan?" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Pertanyaan 1: pola atau bukan?"
+                }
               },
               {
                 "id": "ciri",
@@ -295,7 +571,10 @@
                 "ikon": "🧩",
                 "isi": "Cari kelompok terpendek yang berulang.",
                 "suara": "Ciri. Cari kelompok terpendek yang berulang dari awal barisan.",
-                "visual": { "jenis": "teks", "isi": "Pertanyaan 2: apa satuannya?" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Pertanyaan 2: apa satuannya?"
+                }
               },
               {
                 "id": "bukti",
@@ -303,8 +582,154 @@
                 "ikon": "🔎",
                 "isi": "Tentukan unsur berikutnya.",
                 "suara": "Bukti. Ulangi satuannya, lalu tentukan unsur berikutnya.",
-                "visual": { "jenis": "teks", "isi": "Pertanyaan 3: apa berikutnya?" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Pertanyaan 3: apa berikutnya?"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Apa itu pola?",
+          "ikon": "🔄",
+          "suara": "Ini peta tentang pola. Kita ingin tahu apa itu pola dan bagaimana melanjutkannya. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-satuan",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Pola dan satuan pola",
+            "ikon": "🧩",
+            "petunjuk": "Pola adalah hal yang berulang dan teratur, dan satuan pola adalah bagian terkecil yang berulang."
+          },
+          {
+            "id": "hal-lanjut",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Melanjutkan dan mengisi pola",
+            "ikon": "➡️",
+            "petunjuk": "Melanjutkan pola berarti menyebut benda berikutnya, dan mengisi pola berarti menemukan benda yang hilang."
+          },
+          {
+            "id": "hal-rancang",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Merancang pola sendiri",
+            "ikon": "✨",
+            "petunjuk": "Merancang pola berarti memilih satuan pola lalu mengulanginya sendiri."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-cari",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Cari bagian yang berulang",
+            "ikon": "🔍",
+            "petunjuk": "Langkah untuk mengenal pola: cari bagian terkecil yang berulang."
+          },
+          {
+            "id": "cara-ulang",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Ulangi satuan yang sama",
+            "ikon": "🔁",
+            "petunjuk": "Langkah untuk melanjutkan dan mengisi: ulangi satuan pola dengan urutan yang sama."
+          },
+          {
+            "id": "cara-periksa",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Periksa dari awal",
+            "ikon": "✅",
+            "petunjuk": "Langkah untuk memeriksa: baca barisan dari awal dan pastikan satuannya cocok."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-beda",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Membedakan pola dan bukan",
+            "ikon": "🏆",
+            "petunjuk": "Kemampuan menjelaskan bahwa barisan yang semuanya sama atau acak bukan pola."
+          },
+          {
+            "id": "hasil-rancang",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Pola sendiri berulang",
+            "ikon": "🌟",
+            "petunjuk": "Kemampuan merancang pola buatan sendiri yang berulang dan teratur."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Satuan dan kode pola",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel satuan dan kode pola. Untuk tiap jenis pola, pasang banyak benda dalam satuan, kode hurufnya, dan banyak satuan pada barisan.",
+        "pojok": "Pola",
+        "kolom": [
+          "Satuan",
+          "Kode",
+          "Ulang"
+        ],
+        "baris": [
+          {
+            "label": "Warna",
+            "sel": [
+              "2",
+              "AB",
+              "3"
+            ]
+          },
+          {
+            "label": "Bentuk",
+            "sel": [
+              "3",
+              "AAB",
+              "2"
+            ]
+          },
+          {
+            "label": "Suara",
+            "sel": [
+              "2",
+              "AB",
+              "2"
+            ]
+          },
+          {
+            "label": "Gerakan",
+            "sel": [
+              "2",
+              "AB",
+              "2"
             ]
           }
         ]
