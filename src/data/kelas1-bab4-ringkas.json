@@ -235,6 +235,149 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Benda ini bentuknya apa?",
+          "ikon": "🔷",
+          "suara": "Ini peta tentang bentuk benda. Kita ingin tahu benda ini bentuknya apa. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini daftar hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-lengkung",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Bentuk lengkung",
+            "ikon": "🔵",
+            "petunjuk": "Bentuk yang tepinya melengkung dan tidak punya sudut."
+          },
+          {
+            "id": "hal-segitiga",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Bentuk segitiga",
+            "ikon": "🔺",
+            "petunjuk": "Bentuk yang punya tiga sisi lurus dan tiga sudut."
+          },
+          {
+            "id": "hal-segiempat",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Bentuk segi empat",
+            "ikon": "🚪",
+            "petunjuk": "Bentuk yang punya empat sisi lurus dan empat sudut."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🧭",
+            "petunjuk": "Ini daftar langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-lihat",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Lihat garis tepinya",
+            "ikon": "👀",
+            "petunjuk": "Langkah pertama: lihat dulu tepi benda, lurus atau melengkung."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Hitung sisi dan sudutnya",
+            "ikon": "🔢",
+            "petunjuk": "Langkah untuk menghitung: ketuk tiap sisi dan sudut sambil menghitung."
+          },
+          {
+            "id": "cara-sebut",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Sebut nama bentuknya",
+            "ikon": "🗣️",
+            "petunjuk": "Langkah terakhir: sebut nama bentuk dan cirinya."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini daftar kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-nama",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu nama bentuk benda",
+            "ikon": "🏷️",
+            "petunjuk": "Kemampuan menyebut nama bentuk sebuah benda."
+          },
+          {
+            "id": "hasil-tetap",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bentuk tetap walau diputar",
+            "ikon": "🔄",
+            "petunjuk": "Kemampuan tahu bahwa bentuk tidak berubah karena diputar atau besar kecilnya."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Ciri tiga bentuk",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel ciri bentuk. Untuk tiap bentuk, pasang banyak sisi lurus, banyak sudut, dan contoh bendanya.",
+        "pojok": "Bentuk",
+        "kolom": [
+          "Sisi lurus",
+          "Sudut",
+          "Contoh"
+        ],
+        "baris": [
+          {
+            "label": "Lengkung",
+            "sel": [
+              "0",
+              "0",
+              "Piring"
+            ]
+          },
+          {
+            "label": "Segitiga",
+            "sel": [
+              "3",
+              "3",
+              "Tenda"
+            ]
+          },
+          {
+            "label": "Segi empat",
+            "sel": [
+              "4",
+              "4",
+              "Pintu"
+            ]
+          },
+          {
+            "label": "Persegi",
+            "sel": [
+              "4",
+              "4",
+              "Jendela"
+            ]
+          }
+        ]
       }
     },
     "B": {
@@ -485,6 +628,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Bagaimana mengelompokkan kue?",
+          "ikon": "🍪",
+          "suara": "Ini peta tentang kue di meja Ibu. Kita ingin tahu bagaimana mengelompokkan kue dengan satu aturan. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-aturan",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Memilih satu aturan",
+            "ikon": "☝️",
+            "petunjuk": "Memilih satu ciri saja: bentuk, warna, atau ukuran."
+          },
+          {
+            "id": "hal-periksa",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Memeriksa tiap benda",
+            "ikon": "🔎",
+            "petunjuk": "Melihat tiap benda, cocok atau tidak dengan aturan."
+          },
+          {
+            "id": "hal-hitung",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menghitung anggota",
+            "ikon": "🔢",
+            "petunjuk": "Menghitung banyak benda di tiap kelompok."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🛠️",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-amati",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Amati ciri tiap benda",
+            "ikon": "👀",
+            "petunjuk": "Langkah untuk memilih aturan: lihat bentuk, warna, dan ukuran."
+          },
+          {
+            "id": "cara-seret",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Seret benda ke nampan",
+            "ikon": "🧺",
+            "petunjuk": "Langkah untuk memeriksa: benda yang cocok masuk ke nampannya."
+          },
+          {
+            "id": "cara-nama",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Beri nama lalu hitung",
+            "ikon": "🏷️",
+            "petunjuk": "Langkah untuk menghitung: beri nama nampan, lalu hitung anggotanya."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-cocok",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Semua anggota cocok",
+            "ikon": "✅",
+            "petunjuk": "Setiap benda di nampan cocok dengan aturannya."
+          },
+          {
+            "id": "hasil-ganti",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Ganti aturan, ganti kelompok",
+            "ikon": "🔄",
+            "petunjuk": "Benda yang sama bisa masuk kelompok lain bila aturannya diganti."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Benda dan kelompoknya",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel ini mencocokkan benda dengan aturan, nama kelompok, dan banyak anggotanya. Untuk tiap benda, pasang aturan, nama, dan anggotanya.",
+        "pojok": "Benda",
+        "kolom": [
+          "Aturan",
+          "Nama",
+          "Anggota"
+        ],
+        "baris": [
+          {
+            "label": "Kue talam",
+            "sel": [
+              "Bentuk",
+              "Lengkung",
+              "Dua"
+            ]
+          },
+          {
+            "label": "Kue lupis",
+            "sel": [
+              "Warna",
+              "Hijau",
+              "Tiga"
+            ]
+          },
+          {
+            "label": "Anggur",
+            "sel": [
+              "Ukuran",
+              "Kecil",
+              "Empat"
+            ]
+          }
+        ]
       }
     },
     "C": {
@@ -724,6 +1002,149 @@
                   "isi": "4 + 2 = 6"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Bagaimana menyusun bangun?",
+          "ikon": "🧩",
+          "suara": "Ini peta menyusun dan mengurai bangun. Kita ingin tahu, bagaimana bentuk digabung dan dipisah. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini daftar hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-susun",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Menyusun bentuk",
+            "ikon": "🧱",
+            "petunjuk": "Menggabung beberapa bentuk menjadi bangun baru."
+          },
+          {
+            "id": "hal-urai",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Mengurai bangun",
+            "ikon": "✂️",
+            "petunjuk": "Memisahkan sebuah bangun menjadi bagian-bagiannya."
+          },
+          {
+            "id": "hal-hitung",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menghitung penyusunnya",
+            "ikon": "🔢",
+            "petunjuk": "Menyebut jenis dan banyak tiap bagian penyusun."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🧭",
+            "petunjuk": "Ini daftar langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-gabung",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Gabungkan dua keping",
+            "ikon": "🧩",
+            "petunjuk": "Langkah untuk menyusun: rapatkan keping dengan sisi yang pas."
+          },
+          {
+            "id": "cara-pisah",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Pisahkan jadi bagian",
+            "ikon": "🔧",
+            "petunjuk": "Langkah untuk mengurai: lepaskan tiap bagian bangun."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Hitung tiap jenis",
+            "ikon": "👆",
+            "petunjuk": "Langkah untuk menghitung: hitung segi empat, segitiga, lalu lengkung."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini daftar kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-susun",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menyusun bangun baru",
+            "ikon": "🏠",
+            "petunjuk": "Mampu menggabung bentuk menjadi bangun yang baru."
+          },
+          {
+            "id": "hasil-hitung",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa menghitung bagiannya",
+            "ikon": "✅",
+            "petunjuk": "Mampu menghitung banyak bagian dengan tambah dan kurang."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Bentuk penyusun benda",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel bentuk penyusun. Untuk tiap benda, pasang banyak segi empat, segitiga, dan lengkung yang menyusunnya.",
+        "pojok": "Benda",
+        "kolom": [
+          "Segi empat",
+          "Segitiga",
+          "Lengkung"
+        ],
+        "baris": [
+          {
+            "label": "Kereta",
+            "sel": [
+              "5",
+              "1",
+              "3"
+            ]
+          },
+          {
+            "label": "Rumah",
+            "sel": [
+              "3",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "label": "Roket",
+            "sel": [
+              "1",
+              "3",
+              "1"
+            ]
+          },
+          {
+            "label": "Mobil",
+            "sel": [
+              "2",
+              "0",
+              "2"
             ]
           }
         ]
