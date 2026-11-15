@@ -46,10 +46,15 @@ export default function Navbar() {
       <nav className="flex w-full items-center justify-between gap-4 px-2 py-3">
         <Link
           href="/ruang-belajar"
-          className="igil-tanpa-tepi shrink-0 rounded-xl px-2 py-1 text-xl font-extrabold tracking-tight text-[#1C01A5]"
+          className="igil-tanpa-tepi flex min-w-0 items-center gap-2 rounded-xl px-2 py-1 text-[#1C01A5]"
           onClick={() => setTerbuka(false)}
         >
-          <span className="mr-1 text-[#F0AB00]">🎓</span>$IGIL
+          <span className="shrink-0 text-xl font-extrabold tracking-tight">
+            <span className="mr-1 text-[#F0AB00]">🎓</span>$IGIL
+          </span>
+          <span className="min-w-0 text-[11px] font-bold leading-tight sm:text-xs">
+            Interactive Guided Independent Learning
+          </span>
         </Link>
 
         <div className="hidden items-center gap-1 lg:flex">
