@@ -98,6 +98,7 @@ import {
   SIMULASI_MISI_AWAL,
   TAHAP_SIMULASI,
 } from "@/components/modul/registri-simulasi";
+import { useBukaSemuaKunci } from "@/lib/buka-semua-kunci";
 import { CERITA_BARU } from "@/components/modul/registri-cerita-baru";
 import { CeritaDataA, PETA_PIKIRAN_A8 } from "@/components/modul/gambar-data-a8";
 import {
@@ -1040,7 +1041,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   // Mulai dari Story saja; isi tahap hanya dipasang di pop-up saat dibuka (hemat memori + layar desktop).
   const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(1); // 1=Story .. 6=Abstract
   // Hanya saat `next dev`. Di produksi nilai ini hilang, jadi siswa tetap melewati tahap satu per satu.
-  const periksaBebas = process.env.NODE_ENV === "development";
+  const periksaBebas = useBukaSemuaKunci();
   const tahapTerbuka = periksaBebas ? 99 : unlockedSmicpaStage;
   const [popupTahap, setPopupTahap] = useState<number | null>(null);
   const [concreteCounter, setConcreteCounter] = useState<number>(3);

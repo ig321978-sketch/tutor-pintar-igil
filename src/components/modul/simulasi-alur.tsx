@@ -1,5 +1,6 @@
 "use client";
 
+import { useBukaSemuaKunci } from "@/lib/buka-semua-kunci";
 import React, { useEffect, useRef, useState } from "react";
 import { TombolSuaraGuru } from "./tahap-b-gaya";
 import { TOMBOL_BIASA, TOMBOL_UTAMA } from "./simulasi-bersama";
@@ -91,7 +92,7 @@ export default function SimulasiAlur({
     const daftar = langkah[i].misiDaftar ?? [];
     return { adaMisi: daftar.length > 0, wajibSelesai: wajibSelesai(daftar, tercapaiPer[i]), dilewati: dilewati[i], disentuh: dimainkan[i] };
   };
-  const periksaBebas = process.env.NODE_ENV === "development";
+  const periksaBebas = useBukaSemuaKunci();
   const siapDi = (i: number) => periksaBebas || bolehLanjut(statusGerbang(i));
   const siap = siapDi(ke);
   const adaMisi = statusGerbang(ke).adaMisi;
