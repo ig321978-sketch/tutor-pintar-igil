@@ -235,6 +235,149 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Mana yang lebih panjang?",
+          "ikon": "📏",
+          "suara": "Ini peta tentang membandingkan panjang dan tinggi benda. Kita ingin tahu benda mana yang lebih panjang, dan benda mana yang paling pendek. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-dua",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Panjang dan tinggi dua benda",
+            "ikon": "↔️",
+            "petunjuk": "Membandingkan dua benda dengan kata lebih panjang, lebih pendek, lebih tinggi, lebih rendah, atau sama."
+          },
+          {
+            "id": "hal-paling",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Paling panjang dan urutan",
+            "ikon": "🏆",
+            "petunjuk": "Membandingkan tiga benda atau lebih dengan kata paling, lalu mengurutkannya."
+          },
+          {
+            "id": "hal-garis",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Garis awal yang sama",
+            "ikon": "📍",
+            "petunjuk": "Benda yang dibandingkan harus mulai dari garis awal yang sama."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-sejajar",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Sejajarkan di garis awal",
+            "ikon": "📐",
+            "petunjuk": "Langkah untuk garis awal: letakkan ujung kiri semua benda di garis yang sama."
+          },
+          {
+            "id": "cara-ujung",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Lihat ujung yang lebih jauh",
+            "ikon": "👀",
+            "petunjuk": "Langkah untuk membandingkan: ujung yang lebih jauh dari garis awal berarti lebih panjang."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Hitung kotak satuannya",
+            "ikon": "🔢",
+            "petunjuk": "Langkah untuk mengurutkan: hitung kotak satuan tiap benda, lalu urutkan."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-lebih",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu mana yang lebih panjang",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan menyebut benda mana yang lebih panjang, lebih pendek, atau sama."
+          },
+          {
+            "id": "hasil-urut",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa mengurutkan benda",
+            "ikon": "🥇",
+            "petunjuk": "Kemampuan mengurutkan benda dari yang paling pendek sampai yang paling panjang."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Panjang beberapa benda",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel panjang benda. Untuk tiap benda, pasang ukuran kotaknya, urutan dari yang paling pendek, dan kata yang cocok.",
+        "pojok": "Benda",
+        "kolom": [
+          "Ukuran",
+          "Urutan",
+          "Kata"
+        ],
+        "baris": [
+          {
+            "label": "Tali",
+            "sel": [
+              "4 kotak",
+              "pertama",
+              "pendek"
+            ]
+          },
+          {
+            "label": "Stik",
+            "sel": [
+              "6 kotak",
+              "kedua",
+              "tengah"
+            ]
+          },
+          {
+            "label": "Pita",
+            "sel": [
+              "8 kotak",
+              "ketiga",
+              "tengah"
+            ]
+          },
+          {
+            "label": "Sedotan",
+            "sel": [
+              "9 kotak",
+              "keempat",
+              "panjang"
+            ]
+          }
+        ]
       }
     },
     "B": {
@@ -492,6 +635,149 @@
                   "isi": "buku 3 jengkal"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa panjang pita Malosi?",
+          "ikon": "📏",
+          "suara": "Ini peta tentang panjang pita Malosi. Kita ingin tahu cara mengukurnya dengan satuan. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-satuan",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Mengukur dengan satuan",
+            "ikon": "📏",
+            "petunjuk": "Menaruh klip, stik, atau kotak berjajar di layar untuk mengukur panjang benda."
+          },
+          {
+            "id": "hal-benar",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Cara mengukur yang benar",
+            "ikon": "✅",
+            "petunjuk": "Aturan supaya hasil ukur tepat: dari ujung, rapat, tidak bertumpuk, tidak miring, dan satu jenis satuan."
+          },
+          {
+            "id": "hal-banding",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Membandingkan hasil ukur",
+            "ikon": "⚖️",
+            "petunjuk": "Memakai hasil ukur untuk menentukan benda yang lebih panjang, lebih pendek, atau sama panjang."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-ujung",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Taruh satuan dari ujung",
+            "ikon": "📍",
+            "petunjuk": "Langkah untuk mengukur: taruh satuan pertama tepat di garis awal, lalu hitung satuannya."
+          },
+          {
+            "id": "cara-rapat",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Rapat, lurus, satu jenis",
+            "ikon": "🧱",
+            "petunjuk": "Langkah agar ukuran benar: satuan rapat tanpa celah, tidak bertumpuk, tidak miring, dan sejenis."
+          },
+          {
+            "id": "cara-sama",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Pakai satuan yang sama",
+            "ikon": "🔁",
+            "petunjuk": "Langkah untuk membandingkan: ukur dua benda dengan satuan yang sama, dari garis awal yang sama."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-panjang",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Panjang benda diketahui",
+            "ikon": "🔎",
+            "petunjuk": "Kemampuan menyebut panjang benda dengan angka dan nama satuan."
+          },
+          {
+            "id": "hasil-banding",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Hasil ukur dibandingkan",
+            "ikon": "🏁",
+            "petunjuk": "Kemampuan menentukan benda yang lebih panjang, lebih pendek, atau sama panjang."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Tebakan dan hasil ukur",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel tebakan dan hasil ukur. Untuk tiap benda, pasang tebakan, hasil ukur, dan selisihnya.",
+        "pojok": "Benda",
+        "kolom": [
+          "Tebakan",
+          "Hasil",
+          "Selisih"
+        ],
+        "baris": [
+          {
+            "label": "Tali",
+            "sel": [
+              "4 stik",
+              "5 stik",
+              "1 stik"
+            ]
+          },
+          {
+            "label": "Pita",
+            "sel": [
+              "9 klip",
+              "7 klip",
+              "2 klip"
+            ]
+          },
+          {
+            "label": "Meja",
+            "sel": [
+              "8 kotak",
+              "6 kotak",
+              "2 kotak"
+            ]
+          },
+          {
+            "label": "Ikan",
+            "sel": [
+              "3 jepit",
+              "5 jepit",
+              "2 jepit"
             ]
           }
         ]
