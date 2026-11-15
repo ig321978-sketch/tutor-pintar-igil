@@ -64,9 +64,9 @@ import { AbstractK2B3B, ConcreteK2B3B, InfografisK2B3BKomponen, PictureK2B3B } f
 import { AbstractK2B3C, ConcreteK2B3C, InfografisK2B3CKomponen, PictureK2B3C } from "@/components/modul/SubBabK2B3C";
 import { PETA_PIKIRAN_K2B2A, PETA_PIKIRAN_K2B2B, PETA_PIKIRAN_K2B2C } from "@/components/modul/kit-k2b2";
 import { PopUpTahapSmicpa } from "@/components/modul/popup-tahap-smicpa";
-import { VideoPenjumlahanK2B2A } from "@/components/modul/video-k2b2a";
-import { VideoPenguranganK2B2B } from "@/components/modul/video-k2b2b";
-import { VideoSoalCeritaK2B2C } from "@/components/modul/video-k2b2c";
+import { VideoK2B2A } from "@/components/modul/video-k2b2a";
+import { VideoK2B2B } from "@/components/modul/video-k2b2b";
+import { VideoK2B2C } from "@/components/modul/video-k2b2c";
 import { AbstractK2B2A, ConcreteK2B2A, InfografisK2B2AKomponen, PictureK2B2A } from "@/components/modul/SubBabK2B2A";
 import { AbstractK2B2B, ConcreteK2B2B, InfografisK2B2BKomponen, PictureK2B2B } from "@/components/modul/SubBabK2B2B";
 import { AbstractK2B2C, ConcreteK2B2C, InfografisK2B2CKomponen, PictureK2B2C } from "@/components/modul/SubBabK2B2C";
@@ -577,9 +577,9 @@ const MODUL_SUBBAB: Record<string, ModulSubBab> = {
   "mtk-2-bab1-A": { Cerita: VideoHitungK2A, peta: PETA_PIKIRAN_K2A, Infografis: InfografisHitungK2A, Concrete: ConcreteHitungK2A, Picture: PictureHitungK2A, Abstract: AbstractHitungK2A },
   "mtk-2-bab1-B": { Cerita: VideoNilaiK2B, peta: PETA_PIKIRAN_K2B, Infografis: InfografisNilaiK2B, Concrete: ConcreteNilaiK2B, Picture: PictureNilaiK2B, Abstract: AbstractNilaiK2B },
   "mtk-2-bab1-C": { Cerita: VideoBandingK2C, peta: PETA_PIKIRAN_K2C, Infografis: InfografisBandingK2C, Concrete: ConcreteBandingK2C, Picture: PictureBandingK2C, Abstract: AbstractBandingK2C },
-  "mtk-2-bab2-A": { Cerita: VideoPenjumlahanK2B2A, peta: PETA_PIKIRAN_K2B2A, Infografis: InfografisK2B2AKomponen, Concrete: ConcreteK2B2A, Picture: PictureK2B2A, Abstract: AbstractK2B2A, uraianPeta: true },
-  "mtk-2-bab2-B": { Cerita: VideoPenguranganK2B2B, peta: PETA_PIKIRAN_K2B2B, Infografis: InfografisK2B2BKomponen, Concrete: ConcreteK2B2B, Picture: PictureK2B2B, Abstract: AbstractK2B2B, uraianPeta: true },
-  "mtk-2-bab2-C": { Cerita: VideoSoalCeritaK2B2C, peta: PETA_PIKIRAN_K2B2C, Infografis: InfografisK2B2CKomponen, Concrete: ConcreteK2B2C, Picture: PictureK2B2C, Abstract: AbstractK2B2C, uraianPeta: true },
+  "mtk-2-bab2-A": { Cerita: VideoK2B2A, peta: PETA_PIKIRAN_K2B2A, Infografis: InfografisK2B2AKomponen, Concrete: ConcreteK2B2A, Picture: PictureK2B2A, Abstract: AbstractK2B2A, uraianPeta: true },
+  "mtk-2-bab2-B": { Cerita: VideoK2B2B, peta: PETA_PIKIRAN_K2B2B, Infografis: InfografisK2B2BKomponen, Concrete: ConcreteK2B2B, Picture: PictureK2B2B, Abstract: AbstractK2B2B, uraianPeta: true },
+  "mtk-2-bab2-C": { Cerita: VideoK2B2C, peta: PETA_PIKIRAN_K2B2C, Infografis: InfografisK2B2CKomponen, Concrete: ConcreteK2B2C, Picture: PictureK2B2C, Abstract: AbstractK2B2C, uraianPeta: true },
   "mtk-2-bab3-A": { Cerita: VideoK2B3A, peta: PETA_PIKIRAN_K2B3A, Infografis: InfografisK2B3AKomponen, Concrete: ConcreteK2B3A, Picture: PictureK2B3A, Abstract: AbstractK2B3A, uraianPeta: true },
   "mtk-2-bab3-B": { Cerita: VideoK2B3B, peta: PETA_PIKIRAN_K2B3B, Infografis: InfografisK2B3BKomponen, Concrete: ConcreteK2B3B, Picture: PictureK2B3B, Abstract: AbstractK2B3B, uraianPeta: true },
   "mtk-2-bab3-C": { Cerita: VideoK2B3C, peta: PETA_PIKIRAN_K2B3C, Infografis: InfografisK2B3CKomponen, Concrete: ConcreteK2B3C, Picture: PictureK2B3C, Abstract: AbstractK2B3C, uraianPeta: true },
