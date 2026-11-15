@@ -98,6 +98,7 @@ import {
   SIMULASI_MISI_AWAL,
   TAHAP_SIMULASI,
 } from "@/components/modul/registri-simulasi";
+import { CERITA_BARU } from "@/components/modul/registri-cerita-baru";
 import { CeritaDataA, PETA_PIKIRAN_A8 } from "@/components/modul/gambar-data-a8";
 import {
   AbstractDataA,
@@ -1038,6 +1039,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const angkaMainanRef = useRef<Record<string, number>>({});
   // Mulai dari Story saja; isi tahap hanya dipasang di pop-up saat dibuka (hemat memori + layar desktop).
   const [unlockedSmicpaStage, setUnlockedSmicpaStage] = useState<number>(1); // 1=Story .. 6=Abstract
+  // Hanya saat `next dev`. Di produksi nilai ini hilang, jadi siswa tetap melewati tahap satu per satu.
+  const periksaBebas = process.env.NODE_ENV === "development";
+  const tahapTerbuka = periksaBebas ? 99 : unlockedSmicpaStage;
   const [popupTahap, setPopupTahap] = useState<number | null>(null);
   const [concreteCounter, setConcreteCounter] = useState<number>(3);
 
@@ -1341,7 +1345,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   const batasToken =
     poin.practice + poin.exam;
   // Bab 2: Latihan dan Ujian baru terbuka setelah semua sub-bab materi selesai.
-  const materiSelesai = !adaBab2 || daftarSubTersedia.every((id) => completedSubBabs.includes(id));
+  const materiSelesai = periksaBebas || !adaBab2 || daftarSubTersedia.every((id) => completedSubBabs.includes(id));
 
   // ============================================================================
   // SUARA GURU IGIL — audio statis yang dibuat sekali saat penulisan (public/audio-guru),
@@ -1461,6 +1465,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
 
   const currentSubContent = SUB_BABS[activeSubBab];
   const modulBaru = paket ? paket.sub[activeSubBab] : MODUL_SUBBAB[`${bab}-${activeSubBab}`];
+  const CeritaBaru = modulBaru ? undefined : CERITA_BARU[`${bab}-${activeSubBab}`];
   /** Data Mind-Map dan Infografis ringkas untuk sub-bab aktif (hanya bab pilot SMISCPA). */
   const ringkasSub = adaSimMateri ? RINGKAS_BAB[bab]?.[activeSubBab] : undefined;
   const subB2 = bab === "mtk-1-bab2" && activeSubBab === "B";
@@ -2122,7 +2127,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             ringkas="Cerita dan video"
             emoji="📖"
             badgeClass="bg-[#FEE2E2] text-[#991B1B]"
-            terbuka={unlockedSmicpaStage >= 1}
+            terbuka={tahapTerbuka >= 1}
             buka={popupTahap === 1}
             onBuka={() => setPopupTahap(1)}
             onTutup={() => setPopupTahap(null)}
@@ -2131,7 +2136,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             <>
             {suaraSeragam ? <InfoSuaraGuru /> : null}
             <div className="space-y-3">
-            {modulBaru ? (
+            {CeritaBaru ? (
+              <CeritaBaru speakGuru={speakGuru} />
+            ) : modulBaru ? (
               <modulBaru.Cerita speakGuru={speakGuru} />
             ) : subA8 ? (
               <CeritaDataA speakGuru={speakGuru} />
@@ -2242,7 +2249,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             ringkas={adaSimMateri ? "Peta konsep" : "Peta pikiran"}
             emoji="🗺️"
             badgeClass="bg-[#FEF3C7] text-[#92400E]"
-            terbuka={unlockedSmicpaStage >= 2}
+            terbuka={tahapTerbuka >= 2}
             buka={popupTahap === 2}
             onBuka={() => setPopupTahap(2)}
             onTutup={() => setPopupTahap(null)}
@@ -2324,7 +2331,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             ringkas={adaSimMateri ? "Ketuk dan bandingkan" : "Tabel ringkasan"}
             emoji="📊"
             badgeClass="bg-[#DCFCE7] text-[#166534]"
-            terbuka={unlockedSmicpaStage >= 3}
+            terbuka={tahapTerbuka >= 3}
             buka={popupTahap === 3}
             onBuka={() => setPopupTahap(3)}
             onTutup={() => setPopupTahap(null)}
@@ -2541,7 +2548,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             ringkas="Laboratorium"
             emoji="🧪"
             badgeClass="bg-[#EDE9FE] text-[#5B21B6]"
-            terbuka={unlockedSmicpaStage >= TAHAP_SIMULASI}
+            terbuka={tahapTerbuka >= TAHAP_SIMULASI}
             buka={popupTahap === TAHAP_SIMULASI}
             onBuka={() => setPopupTahap(TAHAP_SIMULASI)}
             onTutup={() => setPopupTahap(null)}
@@ -2576,7 +2583,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             ringkas="Benda nyata"
             emoji="🧱"
             badgeClass="bg-[#DBEAFE] text-[#1E3A8A]"
-            terbuka={unlockedSmicpaStage >= 4}
+            terbuka={tahapTerbuka >= 4}
             buka={popupTahap === 4}
             onBuka={() => setPopupTahap(4)}
             onTutup={() => setPopupTahap(null)}
@@ -3028,7 +3035,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             ringkas="Diagram gambar"
             emoji="🖼️"
             badgeClass="bg-[#FEF3C7] text-[#92400E]"
-            terbuka={unlockedSmicpaStage >= 5}
+            terbuka={tahapTerbuka >= 5}
             buka={popupTahap === 5}
             onBuka={() => setPopupTahap(5)}
             onTutup={() => setPopupTahap(null)}
@@ -3500,7 +3507,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
             ringkas="Angka dan simbol"
             emoji="🔢"
             badgeClass="bg-[#1C01A5] text-[#FFE566]"
-            terbuka={unlockedSmicpaStage >= 6}
+            terbuka={tahapTerbuka >= 6}
             buka={popupTahap === 6}
             onBuka={() => setPopupTahap(6)}
             onTutup={() => setPopupTahap(null)}
@@ -3757,7 +3764,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           </PopUpTahapSmicpa>
           </div>
 
-          {unlockedSmicpaStage >= 6 ? (
+          {tahapTerbuka >= 6 ? (
             <div ref={selesaiBabRef} className="mt-4 flex items-center justify-between rounded-3xl border-4 border-[#1C01A5] bg-white p-4 shadow-[0_5px_0_rgba(28,1,165,0.22)]">
               {activeSubBab !== "A" ? (
                 <button

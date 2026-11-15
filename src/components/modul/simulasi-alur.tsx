@@ -91,7 +91,8 @@ export default function SimulasiAlur({
     const daftar = langkah[i].misiDaftar ?? [];
     return { adaMisi: daftar.length > 0, wajibSelesai: wajibSelesai(daftar, tercapaiPer[i]), dilewati: dilewati[i], disentuh: dimainkan[i] };
   };
-  const siapDi = (i: number) => bolehLanjut(statusGerbang(i));
+  const periksaBebas = process.env.NODE_ENV === "development";
+  const siapDi = (i: number) => periksaBebas || bolehLanjut(statusGerbang(i));
   const siap = siapDi(ke);
   const adaMisi = statusGerbang(ke).adaMisi;
 
@@ -164,7 +165,8 @@ export default function SimulasiAlur({
           <li
             key={s.sub}
             aria-current={i === ke ? "step" : undefined}
-            className={`min-w-0 rounded-2xl border-4 px-3 py-1.5 font-black ${
+            onClick={periksaBebas && i !== ke ? () => pindah(i) : undefined}
+            className={`min-w-0 rounded-2xl border-4 px-3 py-1.5 font-black ${periksaBebas && i !== ke ? "cursor-pointer" : ""} ${
               i === ke
                 ? "border-[#F0AB00] bg-[#1C01A5] text-[#FFE566]"
                 : siapDi(i)
