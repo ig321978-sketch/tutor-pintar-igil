@@ -45,12 +45,48 @@
           }
         ],
         "kartu": [
-          { "id": "a-bola", "teks": "Bola dengan bola", "ikon": "🧺", "cabang": "kelompok", "petunjuk": "Mengumpulkan benda yang sama itu mengelompokkan. Coba cabang lain." },
-          { "id": "a-turus", "teks": "Turus", "ikon": "✏️", "cabang": "hitung", "petunjuk": "Turus dipakai untuk menghitung. Coba cabang lain." },
-          { "id": "a-daftar", "teks": "Daftar", "ikon": "📝", "cabang": "sajikan", "petunjuk": "Daftar adalah cara menyajikan data. Coba cabang lain." },
-          { "id": "a-tabel", "teks": "Tabel", "ikon": "🧾", "cabang": "sajikan", "petunjuk": "Tabel adalah cara menyajikan data. Coba cabang lain." },
-          { "id": "a-banyak", "teks": "Paling banyak", "ikon": "🏆", "cabang": "baca", "petunjuk": "Mencari yang paling banyak itu membaca data. Coba cabang lain." },
-          { "id": "a-jumlah", "teks": "Jumlah semuanya", "ikon": "➕", "cabang": "baca", "petunjuk": "Mencari jumlah semuanya itu membaca data. Coba cabang lain." }
+          {
+            "id": "a-bola",
+            "teks": "Bola dengan bola",
+            "ikon": "🧺",
+            "cabang": "kelompok",
+            "petunjuk": "Mengumpulkan benda yang sama itu mengelompokkan. Coba cabang lain."
+          },
+          {
+            "id": "a-turus",
+            "teks": "Turus",
+            "ikon": "✏️",
+            "cabang": "hitung",
+            "petunjuk": "Turus dipakai untuk menghitung. Coba cabang lain."
+          },
+          {
+            "id": "a-daftar",
+            "teks": "Daftar",
+            "ikon": "📝",
+            "cabang": "sajikan",
+            "petunjuk": "Daftar adalah cara menyajikan data. Coba cabang lain."
+          },
+          {
+            "id": "a-tabel",
+            "teks": "Tabel",
+            "ikon": "🧾",
+            "cabang": "sajikan",
+            "petunjuk": "Tabel adalah cara menyajikan data. Coba cabang lain."
+          },
+          {
+            "id": "a-banyak",
+            "teks": "Paling banyak",
+            "ikon": "🏆",
+            "cabang": "baca",
+            "petunjuk": "Mencari yang paling banyak itu membaca data. Coba cabang lain."
+          },
+          {
+            "id": "a-jumlah",
+            "teks": "Jumlah semuanya",
+            "ikon": "➕",
+            "cabang": "baca",
+            "petunjuk": "Mencari jumlah semuanya itu membaca data. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -70,7 +106,28 @@
                 "ikon": "🌀",
                 "catatan": "Sulit dihitung. Semua jenis bercampur.",
                 "suara": "Mainan berantakan. Sulit dihitung karena semua jenis bercampur.",
-                "visual": { "jenis": "benda-sebar", "isi": [["pesawat", 3], ["bola", 3], ["mobil", 2], ["boneka", 2]], "benih": 3 }
+                "visual": {
+                  "jenis": "benda-sebar",
+                  "isi": [
+                    [
+                      "pesawat",
+                      3
+                    ],
+                    [
+                      "bola",
+                      3
+                    ],
+                    [
+                      "mobil",
+                      2
+                    ],
+                    [
+                      "boneka",
+                      2
+                    ]
+                  ],
+                  "benih": 3
+                }
               },
               {
                 "id": "rapi",
@@ -78,7 +135,27 @@
                 "ikon": "🧺",
                 "catatan": "Mudah dihitung. Satu kelompok, satu jenis.",
                 "suara": "Mainan rapi. Setiap jenis ada di kelompoknya, jadi mudah dihitung.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["pesawat", 3], ["bola", 3], ["mobil", 2], ["boneka", 2]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "pesawat",
+                      3
+                    ],
+                    [
+                      "bola",
+                      3
+                    ],
+                    [
+                      "mobil",
+                      2
+                    ],
+                    [
+                      "boneka",
+                      2
+                    ]
+                  ]
+                }
               }
             ],
             "kesimpulan": "Mengelompokkan membuat data mudah dihitung."
@@ -96,7 +173,10 @@
                 "ikon": "🔴",
                 "isi": "Ada 7 bola merah.",
                 "suara": "Bola merah ada tujuh. Satu kelompok lima ditambah dua goresan.",
-                "visual": { "jenis": "turus", "n": 7 }
+                "visual": {
+                  "jenis": "turus",
+                  "n": 7
+                }
               },
               {
                 "id": "kuning",
@@ -104,7 +184,10 @@
                 "ikon": "🟡",
                 "isi": "Ada 4 bola kuning.",
                 "suara": "Bola kuning ada empat. Empat goresan tegak.",
-                "visual": { "jenis": "turus", "n": 4 }
+                "visual": {
+                  "jenis": "turus",
+                  "n": 4
+                }
               },
               {
                 "id": "hijau",
@@ -112,7 +195,10 @@
                 "ikon": "🟢",
                 "isi": "Ada 6 bola hijau.",
                 "suara": "Bola hijau ada enam. Satu kelompok lima ditambah satu goresan.",
-                "visual": { "jenis": "turus", "n": 6 }
+                "visual": {
+                  "jenis": "turus",
+                  "n": 6
+                }
               }
             ]
           },
@@ -129,7 +215,28 @@
                 "ikon": "⬇️",
                 "catatan": "Nama warna ada di bawah satu sama lain.",
                 "suara": "Tabel menurun. Nama warna ada di bawah satu sama lain.",
-                "visual": { "jenis": "tabel-menurun", "judul": "Tabel Bola Upe", "kepala": ["Warna", "Banyak"], "baris": [["Merah", 7], ["Kuning", 4], ["Hijau", 6]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "Tabel Bola Upe",
+                  "kepala": [
+                    "Warna",
+                    "Banyak"
+                  ],
+                  "baris": [
+                    [
+                      "Merah",
+                      7
+                    ],
+                    [
+                      "Kuning",
+                      4
+                    ],
+                    [
+                      "Hijau",
+                      6
+                    ]
+                  ]
+                }
               },
               {
                 "id": "mendatar",
@@ -137,10 +244,168 @@
                 "ikon": "➡️",
                 "catatan": "Nama warna berjajar ke samping.",
                 "suara": "Tabel mendatar. Nama warna berjajar ke samping.",
-                "visual": { "jenis": "tabel-mendatar", "judul": "Tabel Bola Upe", "labelNama": "Warna", "labelBanyak": "Banyak", "nama": ["Merah", "Kuning", "Hijau"], "nilai": [7, 4, 6] }
+                "visual": {
+                  "jenis": "tabel-mendatar",
+                  "judul": "Tabel Bola Upe",
+                  "labelNama": "Warna",
+                  "labelBanyak": "Banyak",
+                  "nama": [
+                    "Merah",
+                    "Kuning",
+                    "Hijau"
+                  ],
+                  "nilai": [
+                    7,
+                    4,
+                    6
+                  ]
+                }
               }
             ],
             "kesimpulan": "Datanya sama: merah 7, kuning 4, hijau 6."
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Mana yang paling banyak?",
+          "ikon": "📊",
+          "suara": "Ini peta tentang mengelompokkan data. Kita ingin tahu benda mana yang paling banyak, dan benda mana yang paling sedikit. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-kelompok",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Mengelompokkan benda",
+            "ikon": "🧺",
+            "petunjuk": "Mengumpulkan benda yang sejenis, lalu menghitung tiap kelompok."
+          },
+          {
+            "id": "hal-turus",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Turus dan tabel data",
+            "ikon": "📝",
+            "petunjuk": "Menghitung dengan turus, lalu menyajikan data dalam daftar dan tabel."
+          },
+          {
+            "id": "hal-banding",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Membandingkan data",
+            "ikon": "⚖️",
+            "petunjuk": "Membaca data untuk mencari paling banyak, paling sedikit, sama banyak, selisih, dan jumlah semuanya."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-kelompok",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Kelompokkan benda sejenis",
+            "ikon": "🧺",
+            "petunjuk": "Langkah untuk mengelompokkan: kumpulkan benda yang sejenis di satu tempat."
+          },
+          {
+            "id": "cara-turus",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Turus dan isi tabel",
+            "ikon": "✋",
+            "petunjuk": "Langkah untuk turus dan tabel: satu benda satu goresan, lalu tulis hasilnya di tabel."
+          },
+          {
+            "id": "cara-baca",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Bandingkan isi tabel",
+            "ikon": "🔍",
+            "petunjuk": "Langkah untuk membandingkan: baca tabel dan cari yang paling banyak."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-banyak",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu yang paling banyak",
+            "ikon": "🏆",
+            "petunjuk": "Kemampuan menyebut data mana yang paling banyak, paling sedikit, atau sama banyak."
+          },
+          {
+            "id": "hasil-jumlah",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu jumlah semuanya",
+            "ikon": "🔢",
+            "petunjuk": "Kemampuan mencari jumlah semuanya dari data pada tabel."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Data mainan toko",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel data mainan toko. Untuk tiap mainan, pasang banyaknya, urutan dari yang paling banyak, dan kata yang cocok.",
+        "pojok": "Mainan",
+        "kolom": [
+          "Banyak",
+          "Urutan",
+          "Kata"
+        ],
+        "baris": [
+          {
+            "label": "Kereta",
+            "sel": [
+              "6",
+              "pertama",
+              "banyak"
+            ]
+          },
+          {
+            "label": "Boneka",
+            "sel": [
+              "5",
+              "kedua",
+              "tengah"
+            ]
+          },
+          {
+            "label": "Mobil",
+            "sel": [
+              "4",
+              "ketiga",
+              "tengah"
+            ]
+          },
+          {
+            "label": "Bola",
+            "sel": [
+              "3",
+              "keempat",
+              "sedikit"
+            ]
           }
         ]
       }
@@ -184,12 +449,48 @@
           }
         ],
         "kartu": [
-          { "id": "b-tanya", "teks": "Sayur apa yang kamu suka?", "ikon": "❓", "cabang": "tanya", "petunjuk": "Pertanyaan untuk teman itu bagian Tanya. Coba cabang lain." },
-          { "id": "b-turus", "teks": "Turus", "ikon": "✏️", "cabang": "catat", "petunjuk": "Turus dipakai untuk mencatat. Coba cabang lain." },
-          { "id": "b-tabel", "teks": "Tabel", "ikon": "🧾", "cabang": "catat", "petunjuk": "Menulis hasil di tabel itu mencatat. Coba cabang lain." },
-          { "id": "b-satu", "teks": "Satu gambar, satu anak", "ikon": "🎨", "cabang": "gambar", "petunjuk": "Satu gambar mewakili satu data. Itu bagian Gambar. Coba cabang lain." },
-          { "id": "b-kotak", "teks": "Mulai dari kotak pertama", "ikon": "1️⃣", "cabang": "gambar", "petunjuk": "Mengisi gambar dari kotak pertama itu bagian Gambar. Coba cabang lain." },
-          { "id": "b-sedikit", "teks": "Paling sedikit", "ikon": "🔽", "cabang": "baca", "petunjuk": "Mencari yang paling sedikit itu membaca diagram. Coba cabang lain." }
+          {
+            "id": "b-tanya",
+            "teks": "Sayur apa yang kamu suka?",
+            "ikon": "❓",
+            "cabang": "tanya",
+            "petunjuk": "Pertanyaan untuk teman itu bagian Tanya. Coba cabang lain."
+          },
+          {
+            "id": "b-turus",
+            "teks": "Turus",
+            "ikon": "✏️",
+            "cabang": "catat",
+            "petunjuk": "Turus dipakai untuk mencatat. Coba cabang lain."
+          },
+          {
+            "id": "b-tabel",
+            "teks": "Tabel",
+            "ikon": "🧾",
+            "cabang": "catat",
+            "petunjuk": "Menulis hasil di tabel itu mencatat. Coba cabang lain."
+          },
+          {
+            "id": "b-satu",
+            "teks": "Satu gambar, satu anak",
+            "ikon": "🎨",
+            "cabang": "gambar",
+            "petunjuk": "Satu gambar mewakili satu data. Itu bagian Gambar. Coba cabang lain."
+          },
+          {
+            "id": "b-kotak",
+            "teks": "Mulai dari kotak pertama",
+            "ikon": "1️⃣",
+            "cabang": "gambar",
+            "petunjuk": "Mengisi gambar dari kotak pertama itu bagian Gambar. Coba cabang lain."
+          },
+          {
+            "id": "b-sedikit",
+            "teks": "Paling sedikit",
+            "ikon": "🔽",
+            "cabang": "baca",
+            "petunjuk": "Mencari yang paling sedikit itu membaca diagram. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -209,7 +510,10 @@
                 "ikon": "🏷️",
                 "isi": "Judul memberi tahu data apa yang digambar.",
                 "suara": "Judul memberi tahu data apa yang digambar. Ini diagram sayur kesukaan.",
-                "visual": { "jenis": "teks", "isi": "Diagram Sayur Kesukaan" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Diagram Sayur Kesukaan"
+                }
               },
               {
                 "id": "gambar",
@@ -220,8 +524,30 @@
                 "visual": {
                   "jenis": "diagram",
                   "arah": "tegak",
-                  "kat": [{ "nama": "Jagung", "jenis": "jagung" }, { "nama": "Wortel", "jenis": "wortel" }, { "nama": "Brokoli", "jenis": "brokoli" }, { "nama": "Kol", "jenis": "kol" }],
-                  "jumlah": [3, 4, 3, 2],
+                  "kat": [
+                    {
+                      "nama": "Jagung",
+                      "jenis": "jagung"
+                    },
+                    {
+                      "nama": "Wortel",
+                      "jenis": "wortel"
+                    },
+                    {
+                      "nama": "Brokoli",
+                      "jenis": "brokoli"
+                    },
+                    {
+                      "nama": "Kol",
+                      "jenis": "kol"
+                    }
+                  ],
+                  "jumlah": [
+                    3,
+                    4,
+                    3,
+                    2
+                  ],
                   "lambang": "benda"
                 }
               },
@@ -234,8 +560,30 @@
                 "visual": {
                   "jenis": "diagram",
                   "arah": "tegak",
-                  "kat": [{ "nama": "Jagung", "jenis": "jagung" }, { "nama": "Wortel", "jenis": "wortel" }, { "nama": "Brokoli", "jenis": "brokoli" }, { "nama": "Kol", "jenis": "kol" }],
-                  "jumlah": [3, 4, 3, 2],
+                  "kat": [
+                    {
+                      "nama": "Jagung",
+                      "jenis": "jagung"
+                    },
+                    {
+                      "nama": "Wortel",
+                      "jenis": "wortel"
+                    },
+                    {
+                      "nama": "Brokoli",
+                      "jenis": "brokoli"
+                    },
+                    {
+                      "nama": "Kol",
+                      "jenis": "kol"
+                    }
+                  ],
+                  "jumlah": [
+                    3,
+                    4,
+                    3,
+                    2
+                  ],
                   "lambang": "bulat"
                 }
               }
@@ -257,8 +605,30 @@
                 "visual": {
                   "jenis": "diagram",
                   "arah": "tegak",
-                  "kat": [{ "nama": "Jagung", "jenis": "jagung" }, { "nama": "Wortel", "jenis": "wortel" }, { "nama": "Brokoli", "jenis": "brokoli" }, { "nama": "Kol", "jenis": "kol" }],
-                  "jumlah": [3, 4, 3, 2],
+                  "kat": [
+                    {
+                      "nama": "Jagung",
+                      "jenis": "jagung"
+                    },
+                    {
+                      "nama": "Wortel",
+                      "jenis": "wortel"
+                    },
+                    {
+                      "nama": "Brokoli",
+                      "jenis": "brokoli"
+                    },
+                    {
+                      "nama": "Kol",
+                      "jenis": "kol"
+                    }
+                  ],
+                  "jumlah": [
+                    3,
+                    4,
+                    3,
+                    2
+                  ],
                   "lambang": "benda"
                 }
               },
@@ -271,8 +641,30 @@
                 "visual": {
                   "jenis": "diagram",
                   "arah": "mendatar",
-                  "kat": [{ "nama": "Jagung", "jenis": "jagung" }, { "nama": "Wortel", "jenis": "wortel" }, { "nama": "Brokoli", "jenis": "brokoli" }, { "nama": "Kol", "jenis": "kol" }],
-                  "jumlah": [3, 4, 3, 2],
+                  "kat": [
+                    {
+                      "nama": "Jagung",
+                      "jenis": "jagung"
+                    },
+                    {
+                      "nama": "Wortel",
+                      "jenis": "wortel"
+                    },
+                    {
+                      "nama": "Brokoli",
+                      "jenis": "brokoli"
+                    },
+                    {
+                      "nama": "Kol",
+                      "jenis": "kol"
+                    }
+                  ],
+                  "jumlah": [
+                    3,
+                    4,
+                    3,
+                    2
+                  ],
                   "lambang": "benda"
                 }
               }
@@ -295,10 +687,34 @@
                 "visual": {
                   "jenis": "diagram",
                   "arah": "tegak",
-                  "kat": [{ "nama": "Jagung", "jenis": "jagung" }, { "nama": "Wortel", "jenis": "wortel" }, { "nama": "Brokoli", "jenis": "brokoli" }, { "nama": "Kol", "jenis": "kol" }],
-                  "jumlah": [3, 4, 3, 2],
+                  "kat": [
+                    {
+                      "nama": "Jagung",
+                      "jenis": "jagung"
+                    },
+                    {
+                      "nama": "Wortel",
+                      "jenis": "wortel"
+                    },
+                    {
+                      "nama": "Brokoli",
+                      "jenis": "brokoli"
+                    },
+                    {
+                      "nama": "Kol",
+                      "jenis": "kol"
+                    }
+                  ],
+                  "jumlah": [
+                    3,
+                    4,
+                    3,
+                    2
+                  ],
                   "lambang": "benda",
-                  "sorotMax": [1]
+                  "sorotMax": [
+                    1
+                  ]
                 }
               },
               {
@@ -310,10 +726,34 @@
                 "visual": {
                   "jenis": "diagram",
                   "arah": "tegak",
-                  "kat": [{ "nama": "Jagung", "jenis": "jagung" }, { "nama": "Wortel", "jenis": "wortel" }, { "nama": "Brokoli", "jenis": "brokoli" }, { "nama": "Kol", "jenis": "kol" }],
-                  "jumlah": [3, 4, 3, 2],
+                  "kat": [
+                    {
+                      "nama": "Jagung",
+                      "jenis": "jagung"
+                    },
+                    {
+                      "nama": "Wortel",
+                      "jenis": "wortel"
+                    },
+                    {
+                      "nama": "Brokoli",
+                      "jenis": "brokoli"
+                    },
+                    {
+                      "nama": "Kol",
+                      "jenis": "kol"
+                    }
+                  ],
+                  "jumlah": [
+                    3,
+                    4,
+                    3,
+                    2
+                  ],
                   "lambang": "benda",
-                  "sorotMin": [3]
+                  "sorotMin": [
+                    3
+                  ]
                 }
               },
               {
@@ -322,8 +762,154 @@
                 "ikon": "➕",
                 "isi": "Semuanya ada 12 anak.",
                 "suara": "Jumlah semuanya. Tiga ditambah empat ditambah tiga ditambah dua sama dengan dua belas anak.",
-                "visual": { "jenis": "teks", "isi": "3 + 4 + 3 + 2 = 12" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 + 4 + 3 + 2 = 12"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Sayur apa paling disukai?",
+          "ikon": "🥕",
+          "suara": "Ini peta tentang sayur kesukaan anak-anak yang masih tercampur. Kita ingin tahu sayur yang paling disukai. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-baca",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Membaca diagram gambar",
+            "ikon": "📊",
+            "petunjuk": "Membaca diagram tegak dan mendatar, satu gambar mewakili satu data, serta bagian-bagiannya."
+          },
+          {
+            "id": "hal-buat",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Membuat tabel dan diagram",
+            "ikon": "📋",
+            "petunjuk": "Mencatat data dengan turus, menyajikannya dalam tabel, lalu menjadikannya diagram gambar."
+          },
+          {
+            "id": "hal-banding",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Membandingkan data diagram",
+            "ikon": "⚖️",
+            "petunjuk": "Memakai paling banyak, paling sedikit, lebih banyak, sama banyak, dan jumlah semuanya."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🛠️",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Hitung gambar tiap kolom",
+            "ikon": "🔢",
+            "petunjuk": "Langkah untuk membaca: hitung gambar pada setiap kolom atau baris, lihat juga judul dan keterangannya."
+          },
+          {
+            "id": "cara-turus",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Turus, tabel, lalu gambar",
+            "ikon": "✏️",
+            "petunjuk": "Langkah untuk membuat: satu goresan untuk satu data, pindahkan ke tabel, lalu susun satu gambar untuk satu data."
+          },
+          {
+            "id": "cara-banding",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Bandingkan tinggi kolom",
+            "ikon": "📏",
+            "petunjuk": "Langkah untuk membandingkan: kolom atau baris paling panjang berarti paling banyak, yang paling pendek paling sedikit."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-baca",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Data terbaca dengan mudah",
+            "ikon": "👀",
+            "petunjuk": "Kemampuan membaca data dari tabel dan diagram tanpa harus menghitung benda yang tercampur."
+          },
+          {
+            "id": "hasil-terbanyak",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Sayur terbanyak diketahui",
+            "ikon": "🥦",
+            "petunjuk": "Kemampuan menyebut yang paling banyak, yang paling sedikit, dan jumlah semua data."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Data buah kesukaan",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel data buah kesukaan. Untuk tiap buah, pasang turus, gambar, dan angka yang menyatakan banyak yang sama.",
+        "pojok": "Buah",
+        "kolom": [
+          "Turus",
+          "Gambar",
+          "Angka"
+        ],
+        "baris": [
+          {
+            "label": "Apel",
+            "sel": [
+              "||||/",
+              "5 gambar",
+              "5"
+            ]
+          },
+          {
+            "label": "Jeruk",
+            "sel": [
+              "||||",
+              "4 gambar",
+              "4"
+            ]
+          },
+          {
+            "label": "Pisang",
+            "sel": [
+              "|||",
+              "3 gambar",
+              "3"
+            ]
+          },
+          {
+            "label": "Mangga",
+            "sel": [
+              "||",
+              "2 gambar",
+              "2"
             ]
           }
         ]
