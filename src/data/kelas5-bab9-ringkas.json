@@ -245,6 +245,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa harga lemari Ibu?",
+          "ikon": "🗄",
+          "suara": "Ini peta tentang Nisa dan Ibu yang membeli lemari di Jepara. Mereka ingin tahu bagaimana membaca harganya dan apa nilai tiap angkanya. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-baca",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Membaca bilangan besar",
+            "petunjuk": "Memahami cara mengucapkan bilangan yang panjang dengan benar."
+          },
+          {
+            "id": "hal-tulis",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menulis dengan titik",
+            "petunjuk": "Memahami cara menuliskan bilangan besar dengan titik pemisah."
+          },
+          {
+            "id": "hal-tempat",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Nilai tempat tiap angka",
+            "petunjuk": "Memahami bahwa angka yang sama bisa bernilai berbeda di kolom berbeda."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-titik",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Beri titik tiap tiga angka",
+            "petunjuk": "Langkah untuk menulis bilangan, mulai dari angka paling kanan."
+          },
+          {
+            "id": "cara-tabel",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Isi tabel nilai tempat",
+            "petunjuk": "Langkah untuk menentukan kolom tiap angka, nol pun harus ditulis."
+          },
+          {
+            "id": "cara-baca",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Baca kiri, ribu, lalu kanan",
+            "petunjuk": "Langkah untuk membaca bilangan, titik pemisah tidak diucapkan."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-juta",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa baca sampai satu juta",
+            "petunjuk": "Kemampuan membaca dan menulis bilangan besar dengan tepat."
+          },
+          {
+            "id": "hasil-nilai",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu nilai tiap angka",
+            "petunjuk": "Kemampuan menyebut nilai sebuah angka dari kolom tempatnya."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Harga komputer dan angka 9",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel harga peralatan komputer. Untuk tiap barang, pasang harganya, kolom tempat angka sembilan, dan nilai angka sembilan itu.",
+        "pojok": "Barang",
+        "kolom": [
+          "Harga Rp",
+          "Angka 9 di",
+          "Nilainya"
+        ],
+        "baris": [
+          {
+            "label": "Speaker",
+            "sel": [
+              "296.575",
+              "10 ribu",
+              "90.000"
+            ]
+          },
+          {
+            "label": "Mouse",
+            "sel": [
+              "179.500",
+              "ribuan",
+              "9.000"
+            ]
+          },
+          {
+            "label": "Hardisk",
+            "sel": [
+              "834.759",
+              "satuan",
+              "9"
+            ]
+          },
+          {
+            "label": "Kabel",
+            "sel": [
+              "132.795",
+              "puluhan",
+              "90"
+            ]
+          }
+        ]
       }
     },
     "B": {
@@ -465,6 +600,133 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Sepatu siapa termahal?",
+          "ikon": "👟",
+          "suara": "Ini peta masalah membandingkan harga sepatu Komang, Lukas, dan Nisa. Kita ingin tahu cara membandingkan harga itu, lalu mengurutkannya dari yang termahal. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-banding",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Membandingkan dua bilangan",
+            "petunjuk": "Memahami cara menentukan bilangan mana yang lebih besar atau lebih kecil."
+          },
+          {
+            "id": "hal-urut",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Mengurutkan bilangan",
+            "petunjuk": "Memahami cara menata beberapa bilangan dari yang kecil atau dari yang besar."
+          },
+          {
+            "id": "hal-barisan",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Melengkapi barisan bilangan",
+            "petunjuk": "Memahami cara mengisi bilangan yang hilang dengan mencari selisihnya."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-tabel",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tulis di tabel nilai tempat",
+            "petunjuk": "Langkah pertama agar angka tiap kolom mudah dilihat."
+          },
+          {
+            "id": "cara-kiri",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Mulai dari angka paling kiri",
+            "petunjuk": "Langkah membandingkan, sebab kolom paling kiri nilainya paling besar."
+          },
+          {
+            "id": "cara-geser",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Geser bila angkanya sama",
+            "petunjuk": "Langkah lanjutan bila angka di kolom itu sama."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-besar",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu bilangan yang terbesar",
+            "petunjuk": "Kemampuan menentukan bilangan yang paling besar dari beberapa bilangan."
+          },
+          {
+            "id": "hasil-urut",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Urutan harga yang benar",
+            "petunjuk": "Kemampuan menyebut urutan harga dari termahal sampai termurah."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Harga tiga sepatu",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel harga sepatu. Untuk tiap anak, pasang harga sepatunya, angka paling kiri pada harga itu, dan urutan harganya dari yang termahal.",
+        "pojok": "Sepatu",
+        "kolom": [
+          "Harga",
+          "Angka kiri",
+          "Urutan"
+        ],
+        "baris": [
+          {
+            "label": "Lukas",
+            "sel": [
+              "432.543",
+              "4",
+              "termahal"
+            ]
+          },
+          {
+            "label": "Komang",
+            "sel": [
+              "342.231",
+              "3",
+              "tengah"
+            ]
+          },
+          {
+            "label": "Nisa",
+            "sel": [
+              "232.231",
+              "2",
+              "termurah"
+            ]
+          }
+        ]
       }
     },
     "C": {
@@ -682,6 +944,141 @@
                   "isi": "599.198 tetap 599.198"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Bagaimana menyusun dan menguraikan bilangan?",
+          "ikon": "🧩",
+          "suara": "Ini peta masalah menyusun dan menguraikan bilangan. Kita ingin tahu cara menyusun uang menjadi satu bilangan, lalu menguraikannya kembali menjadi bagian-bagian, dan mencari cara lain dengan jumlah yang sama. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-susun",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Menyusun uang jadi bilangan",
+            "petunjuk": "Hal yang dipelajari tentang menggabung nilai uang menjadi satu bilangan."
+          },
+          {
+            "id": "hal-urai",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menguraikan bilangan",
+            "petunjuk": "Hal yang dipelajari tentang memecah satu bilangan menjadi bagian-bagiannya."
+          },
+          {
+            "id": "hal-cara",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Cara lain membayar",
+            "petunjuk": "Hal yang dipelajari tentang susunan uang berbeda untuk harga yang sama."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-nilai",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tulis nilai tiap lembar",
+            "petunjuk": "Langkah pertama: kalikan banyak lembar dengan nilai satu lembar."
+          },
+          {
+            "id": "cara-tambah",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Tambahkan, isi tabel tempat",
+            "petunjuk": "Langkah untuk menjumlahkan semua nilai dan menulis tiap angka di kolomnya."
+          },
+          {
+            "id": "cara-tukar",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tukar lembar, cek jumlah",
+            "petunjuk": "Langkah mencari susunan lain, lalu memeriksa jumlahnya tetap."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-tepat",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bilangan utuh yang tepat",
+            "petunjuk": "Kemampuan menulis dan membaca bilangan dari bagian-bagiannya, nol tetap ditulis."
+          },
+          {
+            "id": "hasil-banyak",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Banyak cara, jumlah sama",
+            "petunjuk": "Kemampuan menyebut beberapa susunan yang jumlahnya tidak berubah."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Bagian besar, sisa, dan jumlah",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel bilangan tersusun. Pasang bagian besar, sisanya, dan jumlahnya untuk uang Yosep, uang Komang, harga jam tangan, dan bilangan pembuka bab.",
+        "pojok": "Bilangan",
+        "kolom": [
+          "Bagian besar",
+          "Sisanya",
+          "Jumlah"
+        ],
+        "baris": [
+          {
+            "label": "Yosep",
+            "sel": [
+              "500.000",
+              "123.000",
+              "623.000"
+            ]
+          },
+          {
+            "label": "Komang",
+            "sel": [
+              "400.000",
+              "93.000",
+              "493.000"
+            ]
+          },
+          {
+            "label": "Jam",
+            "sel": [
+              "345.000",
+              "600",
+              "345.600"
+            ]
+          },
+          {
+            "label": "Pembuka",
+            "sel": [
+              "500.000",
+              "99.198",
+              "599.198"
             ]
           }
         ]

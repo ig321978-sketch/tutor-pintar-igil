@@ -12,12 +12,12 @@ const pusatKolom = (c: number) => 56 + c * 40 + 20;
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luarb-pembuka",
   judul: "Empat metode luar untuk membandingkan dan mengurutkan",
-  sumber: "Metode luar; empat cara membandingkan dan mengurutkan bilangan Sub-Bab B",
+  sumber: "Metode luar: empat cara membandingkan",
   latar: "#EEF2FF",
   ketukan: [
     k(
-      "Video ini membahas metode luar untuk Sub-Bab B. Metode ini membantu kita membandingkan bilangan dengan cepat dan mengurutkan bilangan dengan rapi.",
-      tambah(0, teks("jud", 150, 26, "Sub-Bab B: metode luar", 12, W.ungu)),
+      "Video ini membahas empat metode luar. Metode ini membantu kita membandingkan bilangan dengan cepat dan mengurutkan bilangan dengan rapi.",
+      tambah(0, teks("jud", 150, 26, "Metode dari luar", 12, W.ungu)),
       tambah("metode", emo("e1", 70, 100, "🔭", 42), teks("t1", 70, 124, "metode luar", 9, W.merah)),
       tambah("membandingkan", emo("e2", 150, 100, "🧮", 42), teks("t2", 150, 124, "bandingkan cepat", 9)),
       tambah("mengurutkan", emo("e3", 230, 100, "🎯", 42), teks("t3", 230, 124, "urutkan rapi", 9, W.hijau)),
@@ -44,7 +44,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 export const ADEGAN_LUAR_KIRI: AdeganStory = {
   id: "luarb-kiri",
   judul: "Leftmost Place Priority: kolom paling kiri dulu",
-  sumber: "Metode luar; contoh sepatu 432.543 dan 342.231",
+  sumber: "Metode luar: kolom paling kiri dulu",
   latar: "#FFF4DD",
   ketukan: [
     k(
@@ -55,12 +55,12 @@ export const ADEGAN_LUAR_KIRI: AdeganStory = {
       tambah("berkuasa.", kartu("kr", 30, 104, 240, 48, W.krem, ["kolom paling kiri paling berkuasa", "nilainya paling besar"], 9.6)),
     ),
     k(
-      "Mengapa begitu? Satu ratus ribuan sama dengan sepuluh puluh ribuan. Setiap langkah ke kiri membuat nilainya sepuluh kali lebih besar.",
+      "Mengapa begitu? Setiap langkah ke kiri membuat nilai kolom sepuluh kali lebih besar. Puluh ribuan bernilai 10.000, sedangkan ratus ribuan bernilai 100.000.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Satu langkah ke kiri", 12, W.ungu)),
-      tambah("Satu", kotak("big", 30, 44, 240, 34, W.hijauMuda), teks("bigt", 150, 66, "1 ratus ribuan = 100.000", 11)),
-      tambah("sepuluh", Array.from({ length: 10 }, (_, i) => kotak(`sm${i}`, 30 + i * 24, 100, 24, 26, W.krem, W.biru, { rx: 0, tebal: 1 })), teks("smt", 150, 144, "10 puluh ribuan = 10 x 10.000", 10, W.merah)),
-      tambah("Setiap", teks("kali", 150, 182, "ke kiri: nilainya 10 kali lebih besar", 10, W.ungu)),
+      tambah("Setiap", teks("kali", 150, 52, "ke kiri: nilai kolom 10 kali lebih besar", 10, W.ungu)),
+      tambah("Puluh", teks("pl1", 30, 88, "puluh ribuan: 10.000", 9.4, W.biru, { anchor: "start" }), kotak("pk1", 30, 94, 24, 22, W.krem, W.biru, { rx: 3 })),
+      tambah("ratus", teks("pl2", 30, 142, "ratus ribuan: 100.000", 9.4, W.biru, { anchor: "start" }), kotak("pk2", 30, 148, 240, 22, W.hijauMuda, W.biru, { rx: 3 })),
     ),
     k(
       "Contoh: 432.543 dan 342.231. Kolom paling kiri berisi 4 dan 3, jadi 432.543 lebih besar, tanpa melihat kolom lain.",
@@ -82,12 +82,12 @@ export const ADEGAN_LUAR_KIRI: AdeganStory = {
 /* ------------------------------ LB2. Leftmost Place Priority: penerapan ------------------------------ */
 export const ADEGAN_LUAR_KIRI_TERAPAN: AdeganStory = {
   id: "luarb-kiri-terapan",
-  judul: "Leftmost Place Priority: contoh dari soal latihan dan data wisatawan",
-  sumber: "Metode luar; contoh 445.000 dan 545.000, data wisatawan, 657.000 dan 675.000",
+  judul: "Leftmost Place Priority: dua contoh penerapan",
+  sumber: "Metode luar: penerapan kolom kiri",
   latar: "#FEF2F2",
   ketukan: [
     k(
-      "Terapan: 445.000 dan 545.000 dari Ayo Berlatih. Kolom paling kiri berisi 4 dan 5, jadi 445.000 lebih kecil dari 545.000.",
+      "Terapan: 445.000 dan 545.000 dari latihan tadi. Kolom paling kiri berisi 4 dan 5, jadi 445.000 lebih kecil dari 545.000.",
       tambah(0, teks("jud", 150, 22, "Terapan: soal latihan", 12, W.ungu), kepalaTempat("kp", 40)),
       tambah("445.000", barisTempat("a", 58, "445000", "445.000", W.krem), barisTempat("b", 80, "545000", "545.000", W.hijauMuda)),
       sorotkan("kiri", "ac0", "bc0"),
@@ -122,7 +122,7 @@ export const ADEGAN_LUAR_KIRI_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_KOLOM: AdeganStory = {
   id: "luarb-kolom",
   judul: "Digit-by-Digit Comparison: geser sampai berbeda",
-  sumber: "Metode luar; contoh 657.000 dan 675.000",
+  sumber: "Metode luar: geser kolom demi kolom",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -156,12 +156,12 @@ export const ADEGAN_LUAR_KOLOM: AdeganStory = {
 export const ADEGAN_LUAR_KOLOM_TERAPAN: AdeganStory = {
   id: "luarb-kolom-terapan",
   judul: "Digit-by-Digit Comparison: 876.987 dan 876.789",
-  sumber: "Metode luar; contoh Ayo Berlatih 1e",
+  sumber: "Metode luar: penerapan geser kolom",
   latar: "#ECFEFF",
   ketukan: [
     k(
       "Terapan: 876.987 dan 876.789. Kolom pertama sampai ketiga, yaitu 8, 7, dan 6, sama semua, jadi kita terus bergeser.",
-      tambah(0, teks("jud", 150, 22, "Terapan: Ayo Berlatih 1e", 12, W.ungu), kepalaTempat("kp", 52)),
+      tambah(0, teks("jud", 150, 22, "Terapan: bilangan latihan tadi", 12, W.ungu), kepalaTempat("kp", 52)),
       tambah("876.987", barisTempat("a", 70, "876987", "876.987", W.krem), barisTempat("b", 92, "876789", "876.789", W.krem)),
       tambah("Kolom", panah("pt", pusatKolom(0), 32, 0, 16, W.merah, 3)),
       warnai("sama", kolom("a", "876987", [0, 1, 2]).concat(kolom("b", "876789", [0, 1, 2])), W.hijauMuda),

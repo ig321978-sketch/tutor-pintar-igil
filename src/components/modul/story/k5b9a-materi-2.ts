@@ -5,8 +5,8 @@ import { bersih, hapus, k, tambah, ubah, warnai } from "./k5b9a-bantu";
 /* ------------------------------ 4. Eksplorasi 9.1A: lemari Jepara 979.875 (hlm. 276 dan 277) ------------------------------ */
 export const ADEGAN_EKSPLORASI91A: AdeganStory = {
   id: "eksplorasi-91a",
-  judul: "Eksplorasi 9.1A: lemari Jepara 979.875",
-  sumber: "Buku Siswa hlm. 276–277",
+  judul: "Lemari Jepara: membaca 979.875",
+  sumber: "Materi: harga lemari Jepara",
   latar: "#FEF3C7",
   kutipan: [
     "Eksplorasi 9.1A",
@@ -23,33 +23,33 @@ export const ADEGAN_EKSPLORASI91A: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi 9.1A. Pada hari Minggu, Nisa mengantar Ibu membeli lemari di Jepara, kota mebel di Jawa Tengah.",
-      tambah(0, judul("Eksplorasi 9.1A")),
+      "Sekarang kita belajar dari sebuah cerita. Pada hari Minggu, Nisa mengantar Ibu membeli lemari di Jepara, kota mebel di Jawa Tengah.",
+      tambah(0, judul("Lemari Jepara")),
       tambah("Nisa", emo("ni", 40, 140, "👧", 34), teks("nit", 40, 160, "Nisa", 8.6)),
       tambah("Ibu", emo("ib", 260, 140, "👩", 34), teks("ibt", 260, 160, "Ibu", 8.6)),
       tambah("lemari", ...lemari("lm", 100, 38, 1.2)),
       tambah("Jepara,", teks("jp", 150, 188, "Jepara, Jawa Tengah", 10, W.hijau)),
     ),
     k(
-      "Lemari yang dipilih Nisa seharga sembilan ratus tujuh puluh sembilan ribu delapan ratus tujuh puluh lima rupiah. Soal pertama menanyakan harga lemari.",
+      "Lemari yang dipilih Nisa seharga sembilan ratus tujuh puluh sembilan ribu delapan ratus tujuh puluh lima rupiah. Pertanyaan pertama menanyakan harga lemari itu.",
       bersih(0),
-      tambah(0, judul("soal 1: harga lemari")),
+      tambah(0, judul("pertanyaan 1: harga lemari")),
       tambah(0, ...lemari("lm", 24, 50, 1.2)),
       tambah("sembilan", ...kartu("hg", 118, 62, 170, 46, W.krem, ["Rp979.875,00"], 15)),
-      tambah("Soal", teks("sq", 203, 140, "berapa harga lemari?", 10.4, W.merah)),
+      tambah("Pertanyaan", teks("sq", 203, 140, "berapa harga lemari?", 10.4, W.merah)),
     ),
     k(
-      "Soal dua: bacalah dan tuliskan. Dibaca sembilan ratus tujuh puluh sembilan ribu delapan ratus tujuh puluh lima rupiah.",
+      "Pertanyaan kedua: bacalah dan tuliskan harga itu. Dibaca sembilan ratus tujuh puluh sembilan ribu delapan ratus tujuh puluh lima rupiah.",
       bersih(0),
-      tambah(0, judul("soal 2: bacalah")),
+      tambah(0, judul("pertanyaan 2: bacalah")),
       tambah(0, teks("bg", 150, 68, "979.875", 30)),
       tambah("sembilan", ...bacaanDua("rd", 150, 92, "sembilan ratus tujuh puluh sembilan ribu", "delapan ratus tujuh puluh lima rupiah").slice(0, 2)),
       tambah("delapan", ...bacaanDua("rd", 150, 92, "sembilan ratus tujuh puluh sembilan ribu", "delapan ratus tujuh puluh lima rupiah").slice(2)),
     ),
     k(
-      "Soal tiga: tuliskan dalam tabel nilai tempat. Tabelnya punya enam kolom: ratus ribuan, puluh ribuan, ribuan, ratusan, puluhan, dan satuan.",
+      "Pertanyaan ketiga: tuliskan dalam tabel nilai tempat. Tabelnya punya enam kolom: ratus ribuan, puluh ribuan, ribuan, ratusan, puluhan, dan satuan.",
       bersih(0),
-      tambah(0, judul("soal 3: tabel nilai tempat")),
+      tambah(0, judul("pertanyaan 3: tabel nilai tempat")),
       tambah(0, tabelNilai("t", 12, 56, 46)),
       warnai(11, W.jingga, "t-h0"),
       warnai(13, W.jingga, "t-h1"),
@@ -81,8 +81,8 @@ export const ADEGAN_EKSPLORASI91A: AdeganStory = {
 /* ------------------------------ 5. Eksplorasi 9.1B: Gianyar 963.000 (hlm. 277 dan 278) ------------------------------ */
 export const ADEGAN_EKSPLORASI91B: AdeganStory = {
   id: "eksplorasi-91b",
-  judul: "Eksplorasi 9.1B: penduduk Gianyar 963.000",
-  sumber: "Buku Siswa hlm. 277–278",
+  judul: "Penduduk Gianyar: membaca 963.000",
+  sumber: "Materi: penduduk Gianyar",
   latar: "#ECFDF5",
   kutipan: [
     "Eksplorasi 9.1B",
@@ -100,14 +100,14 @@ export const ADEGAN_EKSPLORASI91B: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi 9.1B. Komang berasal dari Gianyar, kabupaten di Bali yang terkenal sebagai penghasil patung dan ukiran kayu.",
-      tambah(0, judul("Eksplorasi 9.1B")),
+      "Sekarang kita berkenalan dengan Komang. Komang berasal dari Gianyar, kabupaten di Bali yang terkenal sebagai penghasil patung dan ukiran kayu.",
+      tambah(0, judul("Penduduk Gianyar")),
       tambah("Komang", emo("ko", 50, 130, "🧒", 36), teks("kot", 50, 152, "Komang", 8.6)),
       tambah("Gianyar,", ...kartu("gy", 100, 44, 100, 40, W.langit, ["Gianyar, Bali"], 10)),
       tambah("patung", emo("pt", 150, 134, "🗿", 38), teks("ptt", 150, 156, "patung dan ukiran kayu", 8.6, W.coklat)),
     ),
     k(
-      "Menurut sensus penduduk tahun 2020, penduduk Gianyar berjumlah 963.000 jiwa. Tuliskan angka itu dalam tabel nilai tempat.",
+      "Menurut sensus penduduk tahun dua ribu dua puluh, penduduk Gianyar berjumlah sembilan ratus enam puluh tiga ribu jiwa. Tuliskan angka itu dalam tabel nilai tempat.",
       bersih(0),
       tambah(0, judul("sensus 2020: Gianyar")),
       tambah("berjumlah", teks("g", 150, 62, "963.000 jiwa", 26)),
@@ -137,8 +137,8 @@ export const ADEGAN_EKSPLORASI91B: AdeganStory = {
 /* ------------------------------ 6. Cara Membaca Bilangan dalam Bahasa Indonesia (hlm. 278) ------------------------------ */
 export const ADEGAN_CARA_BACA: AdeganStory = {
   id: "cara-baca",
-  judul: "Cara Membaca Bilangan dalam Bahasa Indonesia",
-  sumber: "Buku Siswa hlm. 278",
+  judul: "Cara membaca bilangan besar",
+  sumber: "Materi: cara membaca bilangan",
   latar: "#F5F3FF",
   kutipan: [
     "Cara Membaca Bilangan dalam",
@@ -152,7 +152,7 @@ export const ADEGAN_CARA_BACA: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Kotak Cara Membaca Bilangan dalam Bahasa Indonesia memberi aturan: pisahkan setiap tiga angka dengan titik.",
+      "Ada aturan sederhana untuk membaca bilangan yang panjang: pisahkan setiap tiga angka dengan titik.",
       tambah(0, judul("Cara Membaca Bilangan")),
       tambah("aturan:", ...kartu("at", 24, 34, 252, 34, W.krem, ["pisahkan setiap tiga angka dengan titik"], 9.6)),
       tambah(0, teks("ang", 150, 118, "875428", 34)),
@@ -164,7 +164,7 @@ export const ADEGAN_CARA_BACA: AdeganStory = {
       tambah("kirinya", teks("lr", 112, 76, "kelompok ribuan", 9.4, W.biru), panah("pr", 112, 80, 0, 10, W.biru, 2, { gambar: true })),
     ),
     k(
-      "Pada bilangan yang lebih panjang, kelompok berikutnya berarti jutaan, dan seterusnya. Karena itu satu juta ditulis 1.000.000.",
+      "Pada bilangan yang lebih panjang, kelompok berikutnya berarti jutaan, dan seterusnya. Karena itu satu juta ditulis dengan dua titik pemisah.",
       bersih(0),
       tambah(0, judul("kelompok berikutnya")),
       tambah(0, teks("jt", 150, 100, "1.000.000", 30)),
@@ -172,9 +172,9 @@ export const ADEGAN_CARA_BACA: AdeganStory = {
       tambah("satu", teks("sj", 150, 168, "satu juta", 12, W.ungu)),
     ),
     k(
-      "Contoh dari buku: 875.428 dibaca delapan ratus tujuh puluh lima ribu empat ratus dua puluh delapan.",
+      "Contoh pertama: bilangan ini dibaca delapan ratus tujuh puluh lima ribu empat ratus dua puluh delapan.",
       bersih(0),
-      tambah(0, judul("contoh dari buku")),
+      tambah(0, judul("contoh pertama")),
       tambah(0, teks("c", 150, 76, "875.428", 30)),
       tambah("delapan", ...bacaanDua("rc", 150, 100, "delapan ratus tujuh puluh lima ribu", "empat ratus dua puluh delapan").slice(0, 2)),
       tambah("empat", ...bacaanDua("rc", 150, 100, "delapan ratus tujuh puluh lima ribu", "empat ratus dua puluh delapan").slice(2)),
@@ -182,14 +182,14 @@ export const ADEGAN_CARA_BACA: AdeganStory = {
     k(
       "Caranya, baca kelompok kiri, ucapkan kata ribu, lalu baca kelompok kanan. Titik pemisahnya sendiri tidak dibaca.",
       bersih(0),
-      tambah(0, judul("urutan membaca")),
+      tambah(0, judul("langkah membaca")),
       tambah("kiri,", ...kartu("u1", 8, 52, 86, 44, W.langit, ["baca", "kelompok kiri"], 8.6)),
       tambah("ribu,", panah("ua", 96, 74, 14, 0, W.biru, 2, { gambar: true }), ...kartu("u2", 112, 52, 76, 44, W.merahMuda, ["ucapkan", "kata ribu"], 8.6)),
       tambah("kanan.", panah("ub", 190, 74, 14, 0, W.biru, 2, { gambar: true }), ...kartu("u3", 206, 52, 86, 44, W.krem, ["baca", "kelompok kanan"], 8.6)),
       tambah("tidak", teks("ut", 150, 140, "titik pemisah tidak dibaca", 11, W.merah)),
     ),
     k(
-      "Cobalah dengan harga lemari 979.875 dan penduduk Gianyar 963.000: kelompok kiri dulu, kata ribu, lalu kelompok kanan.",
+      "Cobalah dengan harga lemari dan jumlah penduduk Gianyar tadi: kelompok kiri dulu, kata ribu, lalu kelompok kanan.",
       bersih(0),
       tambah(0, judul("cobalah sendiri")),
       tambah("lemari", teks("x1", 80, 70, "979.875", 18), teks("x1b", 190, 70, "979 ribu 875", 12, W.hijau)),
@@ -202,8 +202,8 @@ export const ADEGAN_CARA_BACA: AdeganStory = {
 /* ------------------------------ 7. Ayo Bermain: kartu bilangan (hlm. 279 dan 280) ------------------------------ */
 export const ADEGAN_BERMAIN: AdeganStory = {
   id: "ayo-bermain",
-  judul: "Ayo Bermain: menyusun bilangan dari kartu",
-  sumber: "Buku Siswa hlm. 279–280",
+  judul: "Bermain: membentuk bilangan dari kartu",
+  sumber: "Materi: bermain kartu bilangan",
   latar: "#FFFBEB",
   kutipan: [
     "Ayo Bermain",
@@ -219,19 +219,19 @@ export const ADEGAN_BERMAIN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Bermain. Siapkan kartu bilangan satu sampai enam, kertas, dan alat tulis. Buat kelompok tiga atau empat anggota.",
-      tambah(0, judul("Ayo Bermain")),
+      "Sekarang kita bermain. Siapkan kartu bilangan satu sampai enam, kertas, dan alat tulis. Buat kelompok tiga atau empat anggota.",
+      tambah(0, judul("Bermain kartu bilangan")),
       tambah("kartu", ...["1", "2", "3", "4", "5", "6"].map((n, i) => kartuAngka(`kr${i}`, 24 + i * 44, 44, n))),
       tambah("kertas", emo("kz", 80, 140, "📝", 34), teks("kzt", 80, 162, "kertas dan alat tulis", 8.6)),
       tambah("kelompok", emo("kl", 220, 140, "👥", 34), teks("klt", 220, 162, "3 atau 4 anggota", 8.6)),
     ),
     k(
-      "Susunlah bilangan yang mungkin dibentuk dari kartu itu. Contohnya kartu satu sampai enam menjadi 123.456.",
+      "Bentuklah bilangan dari kartu itu, setiap kartu dipakai sekali. Contohnya kartu satu sampai enam membentuk bilangan ini.",
       bersih(0),
-      tambah(0, judul("contoh susunan")),
+      tambah(0, judul("contoh bilangan kartu")),
       tambah(0, tabelNilai("b", 12, 44, 46)),
       tambah("satu", ...["1", "2", "3", "4", "5", "6"].map((n, c) => digit("b", 12, 44, 46, 0, c, n, 17))),
-      tambah("123.456.", teks("bb", 150, 140, "123.456", 28, W.merah)),
+      tambah("ini.", teks("bb", 150, 140, "123.456", 28, W.merah)),
     ),
     k(
       "Contoh ini dibaca seratus dua puluh tiga ribu empat ratus lima puluh enam. Salin tabelnya dan tulis bilangan buatanmu.",
@@ -243,7 +243,7 @@ export const ADEGAN_BERMAIN: AdeganStory = {
       tambah("Salin", emo("bn", 150, 160, "📝", 32), teks("bnt", 150, 182, "tulis bilangan buatanmu", 9.4, W.hijau)),
     ),
     k(
-      "Contoh lain: kartu enam sampai satu menjadi 654.321, dibaca enam ratus lima puluh empat ribu tiga ratus dua puluh satu.",
+      "Contoh lain: kartu enam sampai satu menjadi bilangan ini, dibaca enam ratus lima puluh empat ribu tiga ratus dua puluh satu.",
       bersih(0),
       tambah(0, judul("contoh lain")),
       tambah(0, ...["6", "5", "4", "3", "2", "1"].map((n, i) => kartuAngka(`ke${i}`, 24 + i * 44, 32, n, W.langit))),
@@ -252,10 +252,10 @@ export const ADEGAN_BERMAIN: AdeganStory = {
       tambah("tiga", ...bacaanDua("re", 150, 114, "enam ratus lima puluh empat ribu", "tiga ratus dua puluh satu").slice(2)),
     ),
     k(
-      "Berapa banyak bilangan yang bisa disusun? Buku tidak memberi kuncinya. Hitungan kita: enam kali lima kali empat kali tiga kali dua kali satu menghasilkan 720 bilangan.",
+      "Berapa banyak bilangan yang bisa dibentuk? Kartu pertama dipilih dari enam kartu, lalu sisanya lima, empat, tiga, dua, dan satu. Hitungannya enam kali lima kali empat kali tiga kali dua kali satu menghasilkan tujuh ratus dua puluh bilangan.",
       bersih(0),
-      tambah(0, judul("berapa banyak susunan?")),
-      tambah("kuncinya.", teks("ky", 150, 52, "kunci di buku tidak ada", 10.4, W.merah)),
+      tambah(0, judul("berapa banyak bilangan?")),
+      tambah("pertama", teks("ky", 150, 52, "setiap kartu dipakai sekali", 10.4, W.merah)),
       tambah("enam", teks("eq", 150, 104, "6", 12)),
       ubah("lima", { id: "eq", isi: "6 × 5" }),
       ubah("empat", { id: "eq", isi: "6 × 5 × 4" }),
@@ -265,9 +265,9 @@ export const ADEGAN_BERMAIN: AdeganStory = {
       ubah("menghasilkan", { id: "eq", isi: "6 × 5 × 4 × 3 × 2 × 1 = 720" }),
     ),
     k(
-      "Karena ada 720 susunan, teman yang membuat lebih dari lima cara memang mungkin. Bacalah setiap susunan dengan tabel nilai tempat.",
+      "Karena ada tujuh ratus dua puluh bilangan, teman yang membuat lebih dari lima cara memang mungkin. Bacalah setiap bilangan dengan tabel nilai tempat.",
       tambah("teman", ...kartu("tm", 30, 126, 240, 40, W.krem, ["temanmu bisa lebih dari 5 cara"], 10.4)),
-      tambah("Bacalah", teks("tb", 150, 188, "baca setiap susunan dengan tabel", 9.6, W.hijau)),
+      tambah("Bacalah", teks("tb", 150, 188, "baca setiap bilangan dengan tabel", 9.6, W.hijau)),
     ),
   ],
 };

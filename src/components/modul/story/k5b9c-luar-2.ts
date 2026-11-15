@@ -6,7 +6,7 @@ import { bersih, hapus, k, tambah, ubah } from "./k5b9c-bantu";
 export const ADEGAN_LUAR_C_FLEKSIBEL: AdeganStory = {
   id: "luarc-fleksibel",
   judul: "Flexible Decomposition: menukar satu dengan sepuluh",
-  sumber: "Metode luar · Flexible Decomposition",
+  sumber: "Metode luar: Flexible Decomposition",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -26,9 +26,9 @@ export const ADEGAN_LUAR_C_FLEKSIBEL: AdeganStory = {
       tambah("ratusan.", teks("e3", 150, 154, "1.000 = 10 x 100", 10, W.hijau)),
     ),
     k(
-      "Arah sebaliknya juga boleh: sepuluh nilai di satu kolom ditukar menjadi satu nilai di kolom kirinya. Itulah yang terjadi saat 110.000 pindah kolom.",
+      "Arah sebaliknya juga boleh: sepuluh nilai di satu kolom ditukar menjadi satu nilai di kolom kirinya. Itulah yang terjadi saat seratus sepuluh ribu pindah kolom.",
       tambah("sebaliknya", teks("e4", 150, 176, "11 x 10.000 = 110.000", 10, W.merah)),
-      tambah("110.000", teks("e5", 150, 194, "110.000 = 100.000 + 10.000", 10, W.merah)),
+      tambah("seratus", teks("e5", 150, 194, "110.000 = 100.000 + 10.000", 10, W.merah)),
     ),
     k(
       "Aturannya: tukar satu menjadi sepuluh ke arah kanan, atau sepuluh menjadi satu ke arah kiri, dan jumlah seluruhnya tidak boleh berubah.",
@@ -45,30 +45,30 @@ export const ADEGAN_LUAR_C_FLEKSIBEL: AdeganStory = {
 export const ADEGAN_LUAR_C_FLEKSIBEL_TERAPAN: AdeganStory = {
   id: "luarc-fleksibel-terapan",
   judul: "Flexible Decomposition pada uang Yosep 623.000",
-  sumber: "Metode luar · Flexible Decomposition, contoh uang Yosep",
+  sumber: "Metode luar: Flexible, contoh uang Yosep",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Uang Yosep 623.000 tersusun 6 ratus ribuan, 2 puluh ribuan, dan 3 ribuan.",
+      "Uang Yosep enam ratus dua puluh tiga ribu tersusun enam ratus ribuan, dua puluh ribuan, dan tiga ribuan.",
       tambah(0, teks("jud", 150, 20, "Uang Yosep: 623.000", 13, W.ungu), ...tempat("tb", 18, 36)),
-      tambah(4, angka("dg", 18, 36, 0, "6")),
-      tambah(7, angka("dg", 18, 36, 1, "2")),
-      tambah(11, angka("dg", 18, 36, 2, "3")),
-      tambah(12, angka("dg", 18, 36, 3, "0", W.abu), angka("dg", 18, 36, 4, "0", W.abu), angka("dg", 18, 36, 5, "0", W.abu)),
-      tambah(12, teks("jm", 150, 112, "600.000 + 20.000 + 3.000 = 623.000", 10, W.hijau)),
+      tambah(9, angka("dg", 18, 36, 0, "6")),
+      tambah(12, angka("dg", 18, 36, 1, "2")),
+      tambah(16, angka("dg", 18, 36, 2, "3")),
+      tambah(17, angka("dg", 18, 36, 3, "0", W.abu), angka("dg", 18, 36, 4, "0", W.abu), angka("dg", 18, 36, 5, "0", W.abu)),
+      tambah(17, teks("jm", 150, 112, "600.000 + 20.000 + 3.000 = 623.000", 10, W.hijau)),
     ),
     k(
-      "Tukar satu ratus ribuan menjadi sepuluh puluh ribuan: ratus ribuan menjadi 5, puluh ribuan menjadi 12.",
+      "Tukar satu ratus ribuan menjadi sepuluh puluh ribuan: ratus ribuan menjadi lima, puluh ribuan menjadi dua belas.",
       ubah(11, { id: "dg0", isi: "5", warna: W.merah }),
       ubah(15, { id: "dg1", isi: "12", warna: W.merah }, { id: "jm", isi: "500.000 + 120.000 + 3.000 = 623.000" }),
     ),
     k(
-      "Tukar satu puluh ribuan menjadi sepuluh ribuan: puluh ribuan menjadi 11, ribuan menjadi 13.",
+      "Tukar satu puluh ribuan menjadi sepuluh ribuan: puluh ribuan menjadi sebelas, ribuan menjadi tiga belas.",
       ubah(10, { id: "dg1", isi: "11", warna: W.merah }),
       ubah(13, { id: "dg2", isi: "13", warna: W.merah }, { id: "jm", isi: "500.000 + 110.000 + 13.000 = 623.000" }),
     ),
     k(
-      "Ketiga bentuk itu berbeda cara menyusunnya, tetapi jumlahnya selalu sama, yaitu 623.000.",
+      "Ketiga bentuk itu berbeda cara menyusunnya, tetapi jumlahnya selalu sama, yaitu enam ratus dua puluh tiga ribu.",
       bersih(0),
       tambah(0, teks("jud", 150, 20, "Tiga bentuk, satu jumlah", 13, W.ungu)),
       tambah(1, teks("f1", 150, 52, "600.000 + 20.000 + 3.000 = 623.000", 10, W.biru)),
@@ -88,25 +88,25 @@ const langkah = (id: string, y: number, isi: string, warna: string) => kartu(id,
 
 export const ADEGAN_LUAR_C_UANG: AdeganStory = {
   id: "luarc-uang",
-  judul: "Money Denomination Composition: menyusun dari pecahan uang",
-  sumber: "Metode luar · Money Denomination Composition",
+  judul: "Money Denomination Composition: menyusun dari nilai uang",
+  sumber: "Metode luar: Money Denomination Composition",
   latar: "#FEFCE8",
   ketukan: [
     k(
-      "Money Denomination Composition: menyusun bilangan dari pecahan uang yang tersedia, mulai dari pecahan terbesar.",
+      "Money Denomination Composition: menyusun bilangan dari nilai uang yang tersedia, mulai dari nilai terbesar.",
       tambah(0, teks("jud", 150, 20, "Money Denomination Composition", 11, W.ungu)),
       tambah(7, ...lembar("u1", 14, 34, 100000, 62, 28), ...lembar("u2", 84, 34, 50000, 62, 28), ...lembar("u3", 154, 34, 20000, 62, 28), ...lembar("u4", 224, 34, 10000, 62, 28)),
       tambah(9, ...lembar("u5", 14, 72, 5000, 62, 28), ...lembar("u6", 84, 72, 2000, 62, 28), ...keping("c5", 190, 86, 500), ...keping("c1", 226, 86, 100)),
       tambah(13, panah("pk", 24, 130, 250, 0, W.merah, 2.5, { gambar: true }), teks("tt", 150, 150, "dari yang terbesar ke yang terkecil", 10, W.merah)),
     ),
     k(
-      "Langkah satu: ambil sebanyak mungkin pecahan terbesar yang tidak melebihi sisa uang.",
+      "Langkah satu: ambil sebanyak mungkin nilai terbesar yang tidak melebihi sisa uang.",
       bersih(0),
       tambah(0, teks("jud", 150, 20, "Tiga langkah", 13, W.ungu)),
-      tambah("Langkah", ...langkah("l1", 32, "1. Ambil pecahan terbesar yang muat", W.mint)),
+      tambah("Langkah", ...langkah("l1", 32, "1. Ambil nilai terbesar yang muat", W.mint)),
     ),
     k(
-      "Langkah dua: hitung sisanya, lalu ulangi dengan pecahan yang lebih kecil.",
+      "Langkah dua: hitung sisanya, lalu ulangi dengan nilai yang lebih kecil.",
       tambah("Langkah", ...langkah("l2", 76, "2. Hitung sisa, ulangi dengan yang lebih kecil", W.krem)),
     ),
     k(
@@ -114,7 +114,7 @@ export const ADEGAN_LUAR_C_UANG: AdeganStory = {
       tambah("Langkah", ...langkah("l3", 120, "3. Berhenti saat sisa nol, cek persediaan", W.mawar)),
     ),
     k(
-      "Dengan persediaan terbatas, cara ini bukan satu-satunya; kita boleh menukar pecahan untuk mendapat cara lain.",
+      "Dengan persediaan terbatas, cara ini bukan satu-satunya; kita boleh menukar lembar uang untuk mendapat cara lain.",
       tambah("boleh", teks("e1", 150, 186, "50.000 = 2 x 20.000 + 10.000", 10, W.hijau), emo("tk", 24, 202, "🔁", 14)),
     ),
   ],
@@ -127,37 +127,37 @@ const baris = (i: number, isi: string) => teks(`b${i}`, 150, 70 + i * 16, isi, 9
 export const ADEGAN_LUAR_C_UANG_TERAPAN: AdeganStory = {
   id: "luarc-uang-terapan",
   judul: "Money Denomination Composition: membayar 345.600",
-  sumber: "Metode luar · Money Denomination Composition, contoh jam tangan",
+  sumber: "Metode luar: Money Denomination, jam tangan",
   latar: "#F0F9FF",
   ketukan: [
     k(
-      "Terapan: bayar 345.600 dengan uang Ibu. Sisa awalnya 345.600.",
+      "Terapan: bayar tiga ratus empat puluh lima ribu enam ratus dengan uang Ibu. Sisa awalnya tiga ratus empat puluh lima ribu enam ratus.",
       tambah(0, teks("jud", 150, 20, "Bayar jam tangan dari uang Ibu", 11, W.ungu)),
       tambah("Sisa", sisa("345.600")),
     ),
     k(
-      "Ambil dua lembar seratus ribuan, jumlahnya 200.000. Sisanya 145.600.",
-      tambah(5, baris(0, "2 x 100.000 = 200.000")),
-      hapus(7, "ss"),
-      tambah(7, sisa("145.600")),
+      "Ambil dua lembar seratus ribuan, jumlahnya dua ratus ribu. Sisanya seratus empat puluh lima ribu enam ratus.",
+      tambah("jumlahnya", baris(0, "2 x 100.000 = 200.000")),
+      hapus("Sisanya", "ss"),
+      tambah("Sisanya", sisa("145.600")),
     ),
     k(
-      "Ambil dua lembar lima puluh ribuan, jumlahnya 100.000. Tiga lembar akan melebihi sisa. Sisanya 45.600.",
-      tambah(6, baris(1, "2 x 50.000 = 100.000")),
-      hapus(13, "ss"),
-      tambah(13, sisa("45.600")),
+      "Ambil dua lembar lima puluh ribuan, jumlahnya seratus ribu. Tiga lembar akan melebihi sisa. Sisanya empat puluh lima ribu enam ratus.",
+      tambah("jumlahnya", baris(1, "2 x 50.000 = 100.000")),
+      hapus("Sisanya", "ss"),
+      tambah("Sisanya", sisa("45.600")),
     ),
     k(
-      "Ambil dua lembar dua puluh ribuan, jumlahnya 40.000. Sisanya 5.600.",
-      tambah(6, baris(2, "2 x 20.000 = 40.000")),
-      hapus(8, "ss"),
-      tambah(8, sisa("5.600")),
+      "Ambil dua lembar dua puluh ribuan, jumlahnya empat puluh ribu. Sisanya lima ribu enam ratus.",
+      tambah("jumlahnya", baris(2, "2 x 20.000 = 40.000")),
+      hapus("Sisanya", "ss"),
+      tambah("Sisanya", sisa("5.600")),
     ),
     k(
-      "Sepuluh ribuan terlalu besar untuk sisa 5.600, jadi ambil satu lembar lima ribuan. Sisanya 600.",
-      tambah(8, baris(3, "1 x 5.000 = 5.000")),
-      hapus(13, "ss"),
-      tambah(13, sisa("600")),
+      "Sepuluh ribuan terlalu besar untuk sisa lima ribu enam ratus, jadi ambil satu lembar lima ribuan. Sisanya enam ratus.",
+      tambah("ambil", baris(3, "1 x 5.000 = 5.000")),
+      hapus("Sisanya", "ss"),
+      tambah("Sisanya", sisa("600")),
     ),
     k(
       "Ambil satu keping lima ratus dan satu keping seratus. Sisanya nol.",
@@ -166,7 +166,7 @@ export const ADEGAN_LUAR_C_UANG_TERAPAN: AdeganStory = {
       tambah(9, sisa("0")),
     ),
     k(
-      "Hasilnya cocok dengan cara empat di buku. Cara dua muncul bila satu lembar lima puluh ribuan ditukar dengan dua lembar dua puluh ribuan dan satu lembar sepuluh ribuan.",
+      "Hasilnya cocok dengan susunan terakhir, yaitu cara empat. Cara dua muncul bila satu lembar lima puluh ribuan ditukar dengan dua lembar dua puluh ribuan dan satu lembar sepuluh ribuan.",
       tambah("cocok", teks("c4", 150, 168, "Cara 4: dua, dua, dua, nol, satu, satu, satu", 8.6, W.hijau)),
       tambah("ditukar", teks("e1", 150, 188, "50.000 = 2 x 20.000 + 10.000", 10, W.merah)),
     ),
@@ -179,7 +179,7 @@ const ring = (id: string, y: number, nama: string, ket: string, warna: string) =
 export const ADEGAN_LUAR_C_RINGKAS: AdeganStory = {
   id: "luarc-ringkas",
   judul: "Ringkasan empat metode luar",
-  sumber: "Ringkasan metode luar Sub-Bab C",
+  sumber: "Ringkasan metode luar",
   latar: "#F5F3FF",
   ketukan: [
     k(
@@ -196,12 +196,12 @@ export const ADEGAN_LUAR_C_RINGKAS: AdeganStory = {
       tambah("Flexible", ...ring("s3", 104, "Flexible Decomposition", "tukar satu dengan sepuluh, jumlah tetap", W.langit)),
     ),
     k(
-      "Money Denomination Composition menyusun bilangan dari pecahan uang, mulai dari yang terbesar.",
-      tambah("Money", ...ring("s4", 142, "Money Denomination Composition", "mulai dari pecahan terbesar", W.mawar)),
+      "Money Denomination Composition menyusun bilangan dari nilai uang, mulai dari yang terbesar.",
+      tambah("Money", ...ring("s4", 142, "Money Denomination Composition", "mulai dari nilai terbesar", W.mawar)),
     ),
     k(
-      "Keempatnya menjawab pertanyaan pembuka bab: komposisi 599.198 adalah 500.000, 90.000, 9.000, 100, 90, dan 8.",
-      tambah("599.198", teks("jw", 150, 192, "500.000 + 90.000 + 9.000 + 100 + 90 + 8 = 599.198", 7, W.hijau), emo("ok", 24, 200, "✅", 12)),
+      "Keempatnya menjawab pertanyaan, bagaimana komposisi lima ratus sembilan puluh sembilan ribu seratus sembilan puluh delapan? Jawabannya lima ratus ribu, sembilan puluh ribu, sembilan ribu, seratus, sembilan puluh, dan delapan.",
+      tambah("komposisi", teks("jw", 150, 192, "500.000 + 90.000 + 9.000 + 100 + 90 + 8 = 599.198", 7, W.hijau), emo("ok", 24, 200, "✅", 12)),
     ),
   ],
 };

@@ -21,14 +21,14 @@ const lambang = (id: string, x: number, glyph: string, nama: string, warna: stri
 
 export const ADEGAN_LATIHAN_TANDA: AdeganStory = {
   id: "latihan-tanda",
-  judul: "Ayo Berlatih nomor 1: memakai tanda lebih besar, lebih kecil, atau sama dengan",
-  sumber: "Buku Siswa hlm. 287; kunci Buku Panduan Guru hlm. 406",
+  judul: "Latihan 1: memakai tanda lebih besar, lebih kecil, atau sama dengan",
+  sumber: "Materi: Latihan 1, tanda bilangan",
   latar: "#F5F3FF",
   kutipan: ["Tunjukkan hubungan antara kedua bilangan berikut dengan", "menggunakan tanda", "a. 445.000 ... 545.000", "b. 657.000 ... 675.000", "c. 876.000 ... 867.000", "d. 126.789 ... 126.789", "e. 876.987 ... 876.789"],
   ketukan: [
     k(
-      "Ayo Berlatih nomor 1. Tunjukkan hubungan dua bilangan memakai tanda lebih besar, lebih kecil, atau sama dengan.",
-      tambah(0, teks("jud", 150, 26, "Ayo Berlatih 1", 13, W.ungu)),
+      "Sekarang Latihan 1. Tunjukkan hubungan dua bilangan memakai tanda lebih besar, lebih kecil, atau sama dengan.",
+      tambah(0, teks("jud", 150, 26, "Latihan 1", 13, W.ungu)),
       tambah("besar,", lambang("g1", 12, ">", "lebih besar", W.hijauMuda)),
       tambah("kecil,", lambang("g2", 104, "<", "lebih kecil", W.merahMuda)),
       tambah("sama", lambang("g3", 196, "=", "sama dengan", W.muda)),
@@ -36,7 +36,7 @@ export const ADEGAN_LATIHAN_TANDA: AdeganStory = {
     k(
       "Soal a: 445.000 dan 545.000. Ratus ribuannya 4 dan 5, jadi 445.000 lebih kecil daripada 545.000.",
       bersih(0),
-      tambah(0, teks("jud", 150, 26, "Ayo Berlatih 1", 13, W.ungu), barisSoal(0)),
+      tambah(0, teks("jud", 150, 26, "Latihan 1", 13, W.ungu), barisSoal(0)),
       tambah("Ratus", teks("cap", 150, 192, "ratus ribuan: 4 < 5", 10, W.merah)),
       ubah("kecil", { id: "ls0", isi: "<", warna: W.hijau }),
     ),
@@ -77,14 +77,14 @@ const idSelisih = (id: string) => [0, 1, 2, 3].map((i) => `${id}${i}`);
 
 export const ADEGAN_LATIHAN_BARISAN: AdeganStory = {
   id: "latihan-barisan",
-  judul: "Ayo Berlatih nomor 2: melengkapi barisan bilangan",
-  sumber: "Buku Siswa hlm. 288; kunci Buku Panduan Guru hlm. 406",
+  judul: "Latihan 2: melengkapi barisan bilangan",
+  sumber: "Materi: Latihan 2, barisan bilangan",
   latar: "#ECFDF5",
   kutipan: ["Isilah dengan bilangan-bilangan yang urutannya sesuai", "a. 978.500 979.500 982.500", "b. 500.000 700.000", "c. 462.370 462.410 462.430"],
   ketukan: [
     k(
-      "Ayo Berlatih nomor 2. Lengkapi barisan bilangan sampai urutannya sesuai. Cari dulu selisih dari dua bilangan yang berdekatan.",
-      tambah(0, teks("jud", 150, 26, "Ayo Berlatih 2", 13, W.ungu)),
+      "Latihan 2. Lengkapi barisan bilangan sampai urutannya sesuai. Cari dulu selisih dari dua bilangan yang berdekatan.",
+      tambah(0, teks("jud", 150, 26, "Latihan 2", 13, W.ungu)),
       tambah("Lengkapi", kartu("in", 30, 56, 240, 56, W.krem, ["lengkapi barisan bilangan", "cari selisih dua bilangan berdekatan"], 9.6)),
     ),
     k(
@@ -108,7 +108,7 @@ export const ADEGAN_LATIHAN_BARISAN: AdeganStory = {
       tambah("naik", teks("cb", 150, 120, "naik 200.000 setiap langkah", 11, W.ungu)),
     ),
     k(
-      "Isinya 300.000, 900.000, dan 1.100.000. Catatan, 1.100.000 sudah melewati 1.000.000, tetapi kunci buku tetap menuliskannya.",
+      "Isinya 300.000, 900.000, dan 1.100.000. Catatan, 1.100.000 sudah melewati 1.000.000, tetapi polanya tetap sama, jadi isiannya tetap benar.",
       ubah("300.000", { id: "rbt0", isi: "300.000", warna: W.hijau }, { id: "rbk0", warna: W.hijauMuda }),
       ubah("900.000", { id: "rbt3", isi: "900.000", warna: W.hijau }, { id: "rbk3", warna: W.hijauMuda }),
       ubah("1.100.000", { id: "rbt4", isi: "1.100.000", warna: W.hijau }, { id: "rbk4", warna: W.hijauMuda }),
@@ -130,14 +130,14 @@ export const ADEGAN_LATIHAN_BARISAN: AdeganStory = {
 /* ------------------------------ 10. Kesalahan umum, diferensiasi, dan refleksi (hlm. 290; Buku Panduan Guru hlm. 406) ------------------------------ */
 export const ADEGAN_REFLEKSI_B: AdeganStory = {
   id: "refleksi-b",
-  judul: "Kesalahan umum, pendampingan, dan refleksi Sub-Bab B",
-  sumber: "Buku Siswa hlm. 290; Buku Panduan Guru hlm. 406",
+  judul: "Hati-hati, tantangan, dan renungan",
+  sumber: "Materi: hati-hati dan renungan",
   latar: "#FFF1F2",
   kutipan: ["Aku dapat membandingkan dua bilangan", "Aku dapat mengurutkan beberapa bilangan"],
   ketukan: [
     k(
-      "Kesalahan yang mungkin terjadi, kata Buku Panduan Guru: murid menganggap angka paling belakang menentukan urutan. Padahal angka paling kiri yang pertama kita lihat.",
-      tambah(0, teks("jud", 150, 26, "Kesalahan umum", 13, W.ungu)),
+      "Hati-hati dengan kesalahan yang sering terjadi: menganggap angka paling belakang menentukan urutan. Padahal angka paling kiri yang pertama kita lihat.",
+      tambah(0, teks("jud", 150, 26, "Hati-hati", 13, W.ungu)),
       tambah(0, kartuAngka("m1", 24, 56, 112, "876.987", W.putih, 14), kartuAngka("m2", 164, 56, 112, "876.789", W.putih, 14)),
       tambah("belakang", panah("pb", 270, 104, -230, 0, W.merah, 2, { gambar: true }), teks("pbt", 150, 124, "keliru: dilihat dari belakang", 10, W.merah)),
     ),
@@ -155,16 +155,16 @@ export const ADEGAN_REFLEKSI_B: AdeganStory = {
       tambah("jadi", emo("v1", 30, 196, "✅", 20), teks("cv", 150, 169, "876.987 lebih besar", 10, W.hijau)),
     ),
     k(
-      "Murid yang belajar cepat boleh mengerjakan latihan tanpa bantuan, atau mencari bilangan yang sering mereka temui. Guru mendampingi murid yang masih kesulitan.",
+      "Tantangan. Kalau kamu sudah lancar, carilah bilangan enam angka di sekitarmu, lalu bandingkan. Kalau masih ragu, tulis dulu di tabel nilai tempat.",
       bersih(0),
-      tambah(0, teks("jud", 150, 26, "Pendampingan guru", 13, W.ungu)),
-      tambah("cepat", kartu("d1", 20, 56, 120, 70, W.hijauMuda, ["murid cepat paham", "latihan tanpa bantuan", "cari bilangan lain"], 8.2)),
-      tambah("Guru", kartu("d2", 160, 56, 120, 70, W.krem, ["murid masih kesulitan", "didampingi guru"], 8.6)),
+      tambah(0, teks("jud", 150, 26, "Tantangan", 13, W.ungu)),
+      tambah("lancar,", kartu("d1", 20, 56, 120, 70, W.hijauMuda, ["sudah lancar", "cari bilangan enam angka", "lalu bandingkan"], 8.2)),
+      tambah("ragu,", kartu("d2", 160, 56, 120, 70, W.krem, ["masih ragu", "tulis di tabel nilai tempat"], 8.2)),
     ),
     k(
-      "Refleksi. Centang dalam hati: aku dapat membandingkan dua bilangan cacah sampai 1.000.000. Aku dapat mengurutkan beberapa bilangan cacah sampai 1.000.000.",
+      "Renungan. Tanyakan dalam hati: aku dapat membandingkan dua bilangan cacah sampai 1.000.000. Aku dapat mengurutkan beberapa bilangan cacah sampai 1.000.000.",
       bersih(0),
-      tambah(0, teks("jud", 150, 26, "Refleksi", 13, W.ungu)),
+      tambah(0, teks("jud", 150, 26, "Renungan", 13, W.ungu)),
       tambah("membandingkan", kotak("ck1", 18, 66, 12, 12, W.putih, W.biru, { rx: 2 }), teks("ct1", 38, 76, "Aku dapat membandingkan dua bilangan", 8.8, W.biru, { anchor: "start" })),
       tambah("mengurutkan", kotak("ck2", 18, 98, 12, 12, W.putih, W.biru, { rx: 2 }), teks("ct2", 38, 108, "Aku dapat mengurutkan beberapa bilangan", 8.8, W.biru, { anchor: "start" })),
       tambah("1.000.000.", teks("ctj", 150, 150, "cacah sampai 1.000.000", 11, W.merah)),

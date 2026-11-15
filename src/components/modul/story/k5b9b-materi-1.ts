@@ -60,14 +60,14 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
 /* ------------------------------ 2. Eksplorasi 9.2A: tiga harga sepatu (hlm. 284) ------------------------------ */
 export const ADEGAN_SEPATU_HARGA: AdeganStory = {
   id: "sepatu-harga",
-  judul: "Eksplorasi 9.2A: harga sepatu Komang, Lukas, dan Nisa",
-  sumber: "Buku Siswa hlm. 284",
+  judul: "Harga sepatu Komang, Lukas, dan Nisa",
+  sumber: "Materi: harga tiga sepatu",
   latar: "#FFF7ED",
   kutipan: ["Eksplorasi 9.2A", "Harga Sepatu Komang", "Rp342.231,00", "Rp432.543,00", "Rp232.231,00", "Bagaimana caramu mengurutkan harga dari yang termahal", "sampai yang termurah? Ayo kita selidiki!"],
   ketukan: [
     k(
-      "Eksplorasi 9.2A. Tiga anak membeli sepatu. Harga sepatu Komang 342.231 rupiah, sepatu Lukas 432.543 rupiah, dan sepatu Nisa 232.231 rupiah.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 9.2A", 13, W.ungu)),
+      "Mari mulai dengan sebuah masalah. Tiga anak membeli sepatu. Harga sepatu Komang 342.231 rupiah, sepatu Lukas 432.543 rupiah, dan sepatu Nisa 232.231 rupiah.",
+      tambah(0, teks("jud", 150, 24, "Harga tiga sepatu", 13, W.ungu)),
       tambah("Komang", kartuSepatu("s1", 10, 48, "Komang", "342.231", W.krem)),
       tambah("Lukas", kartuSepatu("s2", 107, 48, "Lukas", "432.543", W.hijauMuda)),
       tambah("Nisa", kartuSepatu("s3", 204, 48, "Nisa", "232.231", W.muda)),
@@ -99,8 +99,8 @@ const yBaris = (i: number) => Y_TABEL + 18 + i * 22;
 
 export const ADEGAN_SEPATU_TABEL: AdeganStory = {
   id: "sepatu-tabel",
-  judul: "Eksplorasi 9.2A: mengisi tabel nilai tempat tiga sepatu",
-  sumber: "Buku Siswa hlm. 285",
+  judul: "Mengisi tabel nilai tempat tiga sepatu",
+  sumber: "Materi: tabel nilai tempat sepatu",
   latar: "#FEFCE8",
   kutipan: ["Harga sepatu Komang", "Harga sepatu Lukas", "Harga sepatu Nisa", "Ribuan Ratusan Puluhan Satuan"],
   ketukan: [

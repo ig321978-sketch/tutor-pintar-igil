@@ -61,15 +61,15 @@ export const ADEGAN_PEMBUKA_C: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 2. Eksplorasi 9.3A: uang Yosep (hlm. 288) ------------------------------ */
+/* ------------------------------ 2. Latihan 1: uang Yosep ------------------------------ */
 const BARIS_Y = [32, 62, 92, 122, 152];
 const NILAI_Y = [100000, 20000, 10000, 5000, 2000];
 const JUMLAH_Y = [5, 4, 3, 1, 4];
 
 export const ADEGAN_YOSEP_UANG: AdeganStory = {
   id: "yosep-uang",
-  judul: "Eksplorasi 9.3A: uang Yosep",
-  sumber: "Buku Siswa hlm. 288",
+  judul: "Latihan 1: uang Yosep",
+  sumber: "Materi: uang Yosep",
   latar: "#FFFBEB",
   kutipan: [
     "Eksplorasi 9.3A",
@@ -79,8 +79,8 @@ export const ADEGAN_YOSEP_UANG: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi 9.3A. Yosep mempunyai lima lembar seratus ribuan, empat lembar dua puluh ribuan, tiga lembar sepuluh ribuan, satu lembar lima ribuan, dan empat lembar dua ribuan.",
-      tambah(0, teks("jud", 150, 16, "Eksplorasi 9.3A: uang Yosep", 10, W.ungu)),
+      "Latihan satu. Yosep mempunyai lima lembar seratus ribuan, empat lembar dua puluh ribuan, tiga lembar sepuluh ribuan, satu lembar lima ribuan, dan empat lembar dua ribuan.",
+      tambah(0, teks("jud", 150, 16, "Latihan 1: uang Yosep", 10, W.ungu)),
       tambah(6, ...deretLembar("y0", 56, BARIS_Y[0], NILAI_Y[0], JUMLAH_Y[0])),
       tambah(11, ...deretLembar("y1", 56, BARIS_Y[1], NILAI_Y[1], JUMLAH_Y[1])),
       tambah(15, ...deretLembar("y2", 56, BARIS_Y[2], NILAI_Y[2], JUMLAH_Y[2])),
@@ -88,7 +88,7 @@ export const ADEGAN_YOSEP_UANG: AdeganStory = {
       tambah(24, ...deretLembar("y4", 56, BARIS_Y[4], NILAI_Y[4], JUMLAH_Y[4])),
     ),
     k(
-      "Banyaknya lembar tiap pecahan kita catat: lima, empat, tiga, satu, dan empat lembar.",
+      "Banyaknya lembar tiap nilai kita catat: lima, empat, tiga, satu, dan empat lembar.",
       tambah(6, teks("n0", 6, BARIS_Y[0] + 14, "5 lembar", 7.6, W.merah, { anchor: "start" })),
       tambah(7, teks("n1", 6, BARIS_Y[1] + 14, "4 lembar", 7.6, W.merah, { anchor: "start" })),
       tambah(8, teks("n2", 6, BARIS_Y[2] + 14, "3 lembar", 7.6, W.merah, { anchor: "start" })),
@@ -96,12 +96,15 @@ export const ADEGAN_YOSEP_UANG: AdeganStory = {
       tambah(11, teks("n4", 6, BARIS_Y[4] + 14, "4 lembar", 7.6, W.merah, { anchor: "start" })),
     ),
     k(
-      "Nilai tiap kelompok: lima kali seratus ribu adalah 500.000, empat kali dua puluh ribu adalah 80.000, tiga kali sepuluh ribu adalah 30.000, satu lima ribuan adalah 5.000, dan empat dua ribuan adalah 8.000.",
-      tambah(8, teks("v0", 232, BARIS_Y[0] + 14, "500.000", 8, W.hijau, { anchor: "start" })),
-      tambah(15, teks("v1", 232, BARIS_Y[1] + 14, "80.000", 8, W.hijau, { anchor: "start" })),
-      tambah(21, teks("v2", 232, BARIS_Y[2] + 14, "30.000", 8, W.hijau, { anchor: "start" })),
-      tambah(26, teks("v3", 232, BARIS_Y[3] + 14, "5.000", 8, W.hijau, { anchor: "start" })),
-      tambah(32, teks("v4", 232, BARIS_Y[4] + 14, "8.000", 8, W.hijau, { anchor: "start" })),
+      "Nilai tiap kelompok: lima kali seratus ribu adalah lima ratus ribu, dan empat kali dua puluh ribu adalah delapan puluh ribu.",
+      tambah("lima@2", teks("v0", 232, BARIS_Y[0] + 14, "500.000", 8, W.hijau, { anchor: "start" })),
+      tambah("delapan", teks("v1", 232, BARIS_Y[1] + 14, "80.000", 8, W.hijau, { anchor: "start" })),
+    ),
+    k(
+      "Tiga kali sepuluh ribu adalah tiga puluh ribu, satu lembar lima ribuan adalah lima ribu, dan empat dua ribuan adalah delapan ribu.",
+      tambah("tiga@2", teks("v2", 232, BARIS_Y[2] + 14, "30.000", 8, W.hijau, { anchor: "start" })),
+      tambah("lima@2", teks("v3", 232, BARIS_Y[3] + 14, "5.000", 8, W.hijau, { anchor: "start" })),
+      tambah("delapan", teks("v4", 232, BARIS_Y[4] + 14, "8.000", 8, W.hijau, { anchor: "start" })),
     ),
     k(
       "Sekarang nilai-nilai ini kita gabungkan dengan bantuan tabel nilai tempat pada adegan berikutnya.",
@@ -110,11 +113,11 @@ export const ADEGAN_YOSEP_UANG: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Tabel nilai tempat uang Yosep (hlm. 288 dan 289) ------------------------------ */
+/* ------------------------------ 3. Tabel nilai tempat uang Yosep ------------------------------ */
 export const ADEGAN_YOSEP_TABEL: AdeganStory = {
   id: "yosep-tabel",
   judul: "Tabel nilai tempat uang Yosep",
-  sumber: "Buku Siswa hlm. 288–289",
+  sumber: "Materi: tabel nilai tempat uang Yosep",
   latar: "#F0FDF4",
   kutipan: [
     "Tuliskan uang Yosep pada tabel berikut",
@@ -124,27 +127,27 @@ export const ADEGAN_YOSEP_TABEL: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Isi tabel nilai tempat uang Yosep. Lima lembar seratus ribuan mengisi kolom ratus ribuan dengan angka 5, nilainya 500.000.",
+      "Isi tabel nilai tempat uang Yosep. Lima lembar seratus ribuan mengisi kolom ratus ribuan dengan angka lima, nilainya lima ratus ribu.",
       tambah(0, teks("jud", 150, 16, "Tabel nilai tempat uang Yosep", 10, W.ungu), tempat("tb", 18, 24)),
       tambah("angka", angka("dg", 18, 24, 0, "5", W.merah)),
       tambah("nilainya", teks("nl", 40, 88, "500.000", 8.4, W.hijau)),
     ),
     k(
-      "Empat lembar dua puluh ribuan bernilai 80.000 dan tiga lembar sepuluh ribuan bernilai 30.000. Keduanya mengisi kolom puluh ribuan.",
-      tambah("80.000", teks("e1", 150, 108, "4 x 20.000 = 80.000", 8.4)),
-      tambah("30.000", teks("e2", 150, 122, "3 x 10.000 = 30.000", 8.4)),
+      "Empat lembar dua puluh ribuan bernilai delapan puluh ribu, dan tiga lembar sepuluh ribuan bernilai tiga puluh ribu. Keduanya mengisi kolom puluh ribuan.",
+      tambah("delapan", teks("e1", 150, 108, "4 x 20.000 = 80.000", 8.4)),
+      tambah("tiga@2", teks("e2", 150, 122, "3 x 10.000 = 30.000", 8.4)),
     ),
     k(
-      "Delapan puluh ribu ditambah tiga puluh ribu sama dengan 110.000. Jumlah ini lebih dari satu kolom, sehingga satu ratus ribuan pindah ke kolom ratus ribuan.",
+      "Delapan puluh ribu ditambah tiga puluh ribu sama dengan seratus sepuluh ribu. Jumlah ini lebih dari satu kolom, sehingga satu ratus ribuan pindah ke kolom ratus ribuan.",
       tambah("Delapan", teks("e3", 150, 138, "80.000 + 30.000 = 110.000", 8.4, W.merah)),
       tambah("pindah", teks("e4", 150, 152, "110.000 = 100.000 + 10.000", 8.4, W.merah)),
     ),
     k(
-      "Lima ribu ditambah 8.000 sama dengan 13.000. Jadi ada satu puluh ribuan lagi dan tiga ribuan.",
-      tambah("13.000.", teks("e5", 150, 168, "5.000 + 8.000 = 13.000", 8.4, W.merah)),
+      "Lima ribu ditambah delapan ribu sama dengan tiga belas ribu. Jadi ada satu puluh ribuan lagi dan tiga ribuan.",
+      tambah("belas", teks("e5", 150, 168, "5.000 + 8.000 = 13.000", 8.4, W.merah)),
     ),
     k(
-      "Sekarang semua kolom terisi. Ratus ribuan 6, puluh ribuan 2, ribuan 3, dan sisanya nol. Uang Yosep 623.000, dibaca enam ratus dua puluh tiga ribu rupiah.",
+      "Sekarang semua kolom terisi. Ratus ribuan enam, puluh ribuan dua, ribuan tiga, dan sisanya nol. Uang Yosep enam ratus dua puluh tiga ribu rupiah.",
       hapus("Sekarang", "e1", "e2", "e3", "e4", "e5", "nl"),
       ubah(4, { id: "dg0", isi: "6", warna: W.biru }),
       tambah(7, angka("dg", 18, 24, 1, "2")),
@@ -155,7 +158,7 @@ export const ADEGAN_YOSEP_TABEL: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 4. Uang Komang dan perbandingan (hlm. 289) ------------------------------ */
+/* ------------------------------ 4. Uang Komang dan perbandingan ------------------------------ */
 const KOMANG = [
   ["4 x 100.000", "400.000"],
   ["3 x 20.000", "60.000"],
@@ -166,8 +169,8 @@ const KOMANG = [
 
 export const ADEGAN_KOMANG: AdeganStory = {
   id: "komang-uang",
-  judul: "Eksplorasi 9.3A: uang Komang dan perbandingan",
-  sumber: "Buku Siswa hlm. 289",
+  judul: "Latihan 1: uang Komang dan perbandingan",
+  sumber: "Materi: uang Komang dan perbandingan",
   latar: "#FDF2F8",
   kutipan: [
     "Komang mempunyai 4 lembar seratus ribuan, 3 lembar dua puluh ribuan, 2 lembar sepuluh ribuan, 1 lembar lima ribuan, dan 4 lembar dua ribuan",
@@ -186,24 +189,24 @@ export const ADEGAN_KOMANG: AdeganStory = {
       tambah(22, teks("l4", 40, 116, KOMANG[4][0], 10, W.biru, { anchor: "start" })),
     ),
     k(
-      "Nilai tiap kelompok berturut-turut 400.000, 60.000, 20.000, 5.000, dan 8.000.",
-      tambah(4, teks("w0", 150, 44, `= ${KOMANG[0][1]}`, 10, W.hijau, { anchor: "start" })),
-      tambah(5, teks("w1", 150, 62, `= ${KOMANG[1][1]}`, 10, W.hijau, { anchor: "start" })),
-      tambah(6, teks("w2", 150, 80, `= ${KOMANG[2][1]}`, 10, W.hijau, { anchor: "start" })),
-      tambah(7, teks("w3", 150, 98, `= ${KOMANG[3][1]}`, 10, W.hijau, { anchor: "start" })),
-      tambah(9, teks("w4", 150, 116, `= ${KOMANG[4][1]}`, 10, W.hijau, { anchor: "start" })),
+      "Nilai tiap kelompok berturut-turut empat ratus ribu, enam puluh ribu, dua puluh ribu, lima ribu, dan delapan ribu.",
+      tambah("ratus", teks("w0", 150, 44, `= ${KOMANG[0][1]}`, 10, W.hijau, { anchor: "start" })),
+      tambah("enam", teks("w1", 150, 62, `= ${KOMANG[1][1]}`, 10, W.hijau, { anchor: "start" })),
+      tambah("dua", teks("w2", 150, 80, `= ${KOMANG[2][1]}`, 10, W.hijau, { anchor: "start" })),
+      tambah("lima", teks("w3", 150, 98, `= ${KOMANG[3][1]}`, 10, W.hijau, { anchor: "start" })),
+      tambah("delapan", teks("w4", 150, 116, `= ${KOMANG[4][1]}`, 10, W.hijau, { anchor: "start" })),
     ),
     k(
-      "Enam puluh ribu ditambah 20.000 sama dengan 80.000, dan 5.000 ditambah 8.000 sama dengan 13.000.",
+      "Enam puluh ribu ditambah dua puluh ribu sama dengan delapan puluh ribu, dan lima ribu ditambah delapan ribu sama dengan tiga belas ribu.",
       tambah("Enam", teks("e1", 150, 142, "60.000 + 20.000 = 80.000", 9, W.merah)),
       tambah("dan", teks("e2", 150, 158, "5.000 + 8.000 = 13.000", 9, W.merah)),
     ),
     k(
-      "Jumlahnya 400.000 ditambah 80.000 ditambah 13.000, yaitu 493.000. Dibaca empat ratus sembilan puluh tiga ribu rupiah.",
+      "Jumlahnya empat ratus ribu ditambah delapan puluh ribu ditambah tiga belas ribu, yaitu empat ratus sembilan puluh tiga ribu rupiah.",
       tambah("Jumlahnya", teks("e3", 150, 182, "400.000 + 80.000 + 13.000 = 493.000", 9, W.ungu)),
     ),
     k(
-      "Siapa yang uangnya lebih banyak? Bandingkan dari kiri: ratus ribuan 6 lawan 4. Uang Yosep lebih banyak, selisihnya 130.000.",
+      "Siapa yang uangnya lebih banyak? Bandingkan dari kiri: ratus ribuan enam lawan empat. Uang Yosep lebih banyak, selisihnya seratus tiga puluh ribu rupiah.",
       bersih(0),
       tambah(0, teks("jud", 150, 20, "Siapa lebih banyak?", 12, W.ungu)),
       tambah("Siapa", ...kartu("yo", 20, 40, 120, 44, W.mint, ["Yosep", "623.000"], 11), ...kartu("ko", 160, 40, 120, 44, W.mawar, ["Komang", "493.000"], 11)),

@@ -13,7 +13,7 @@ const LANGKAH = [
 export const ADEGAN_LUAR_URUT: AdeganStory = {
   id: "luarb-urut",
   judul: "Ordering Protocol: empat langkah mengurutkan",
-  sumber: "Metode luar; aturan mengurutkan banyak bilangan",
+  sumber: "Metode luar: aturan mengurutkan bilangan",
   latar: "#F5F3FF",
   ketukan: [
     k(
@@ -49,7 +49,7 @@ const urutSelesai = ["69.968", "355.313", "397.951", "416.373", "433.027"];
 export const ADEGAN_LUAR_URUT_TERAPAN: AdeganStory = {
   id: "luarb-urut-terapan",
   judul: "Ordering Protocol: lima bilangan wisatawan Yogyakarta",
-  sumber: "Metode luar; contoh data wisatawan Eksplorasi 9.2B",
+  sumber: "Metode luar: contoh data wisatawan",
   latar: "#ECFEFF",
   ketukan: [
     k(
@@ -96,7 +96,7 @@ const ticks = () => TICK.flatMap((t, i) => [garis(`tk${i}`, xv(i * 200000), Y_G 
 export const ADEGAN_LUAR_GARIS: AdeganStory = {
   id: "luarb-garis",
   judul: "Number Line Placement: menaruh bilangan pada garis bilangan",
-  sumber: "Metode luar; garis bilangan 0 sampai 1.000.000",
+  sumber: "Metode luar: garis bilangan",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -130,7 +130,7 @@ export const ADEGAN_LUAR_GARIS: AdeganStory = {
 export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
   id: "luarb-garis-terapan",
   judul: "Number Line Placement: tiga harga sepatu",
-  sumber: "Metode luar; contoh harga sepatu Eksplorasi 9.2A",
+  sumber: "Metode luar: contoh harga sepatu",
   latar: "#FEF2F2",
   ketukan: [
     k(
@@ -161,7 +161,7 @@ export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luarb-ringkas",
   judul: "Ringkasan empat metode luar",
-  sumber: "Ringkasan empat metode luar Sub-Bab B",
+  sumber: "Ringkasan empat metode luar",
   latar: "#EEF2FF",
   ketukan: [
     k(

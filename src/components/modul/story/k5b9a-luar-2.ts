@@ -8,7 +8,7 @@ const NILAI_TEMPAT = ["100.000", "10.000", "1.000", "100", "10", "1"];
 export const ADEGAN_LUAR_NILAI: AdeganStory = {
   id: "luar-nilai",
   judul: "Digit-Place Value Link: konsep",
-  sumber: "Metode luar 3: mengaitkan angka dengan nilai tempatnya",
+  sumber: "Metode luar 3: angka dan nilai tempat",
   latar: "#F5F3FF",
   ketukan: [
     k(
@@ -48,11 +48,11 @@ export const ADEGAN_LUAR_NILAI: AdeganStory = {
 export const ADEGAN_LUAR_NILAI_TERAPAN: AdeganStory = {
   id: "luar-nilai-terapan",
   judul: "Digit-Place Value Link: penerapan pada angka sembilan",
-  sumber: "Metode luar 3: penerapan pada Ayo Berlatih nomor 3 dan batas satu juta",
+  sumber: "Metode luar 3: angka sembilan, satu juta",
   latar: "#FAF5FF",
   ketukan: [
     k(
-      "Terapkan pada harga headset, 159.899. Angka sembilan muncul tiga kali, tetapi di kolom yang berbeda.",
+      "Terapkan pada harga headset yang tampak di atas tabel. Angka sembilan muncul tiga kali, tetapi di kolom yang berbeda.",
       tambah(0, judul("harga headset")),
       tambah(0, teks("no", 150, 48, "159.899", 22), ...tabelNilai("w", 12, 56, 46)),
       tambah(0, ...["1", "5", "9", "8", "9", "9"].map((ch, c) => digit("w", 12, 56, 46, 0, c, ch, 17))),
@@ -69,7 +69,7 @@ export const ADEGAN_LUAR_NILAI_TERAPAN: AdeganStory = {
       tambah("satuan", teks("n5", 150, 184, "9 × 1 = 9", 10, W.merah)),
     ),
     k(
-      "Sekarang batas bab. Semua kolom berisi sembilan, yaitu 999.999. Kalau ditambah satu, semua kolom menjadi nol dan muncul angka satu di kolom jutaan.",
+      "Sekarang batas terakhir. Kalau semua kolom berisi sembilan, bilangannya sembilan ratus sembilan puluh sembilan ribu sembilan ratus sembilan puluh sembilan. Kalau ditambah satu, semua kolom menjadi nol dan muncul angka satu di kolom jutaan.",
       bersih(0),
       tambah(0, judul("batas satu juta")),
       tambah(0, ...tabelNilai("j", 52, 74, 40, 0, 5, 30)),
@@ -86,7 +86,7 @@ export const ADEGAN_LUAR_NILAI_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_KELOMPOK: AdeganStory = {
   id: "luar-kelompok",
   judul: "Three-Digit Group Chunking: konsep",
-  sumber: "Metode luar 4: memotong bilangan menjadi kelompok tiga angka",
+  sumber: "Metode luar 4: kelompok tiga angka",
   latar: "#FFF1F2",
   ketukan: [
     k(
@@ -107,7 +107,7 @@ export const ADEGAN_LUAR_KELOMPOK: AdeganStory = {
       tambah("titik.", teks("tt", 150, 168, "lalu beri titik", 10.4, W.merah)),
     ),
     k(
-      "Langkah dua, kalau masih ada angka di kiri, potong lagi tiga angka berikutnya. Contohnya satu juta, 1000000, menjadi 1.000.000.",
+      "Langkah dua, kalau masih ada angka di kiri, potong lagi tiga angka berikutnya. Contohnya satu juta tanpa titik, setelah dipotong menjadi tiga kelompok.",
       bersih(0),
       tambah(0, judul("langkah 2: potong lagi")),
       tambah(0, teks("no", 150, 92, "1000000", 30)),
@@ -137,44 +137,44 @@ export const ADEGAN_LUAR_KELOMPOK: AdeganStory = {
 /* ------------------------------ LA4T. Three-Digit Group Chunking: penerapan ------------------------------ */
 export const ADEGAN_LUAR_KELOMPOK_TERAPAN: AdeganStory = {
   id: "luar-kelompok-terapan",
-  judul: "Three-Digit Group Chunking: penerapan pada Gianyar dan pembuka bab",
-  sumber: "Metode luar 4: penerapan pada Eksplorasi 9.1B dan pembuka bab",
+  judul: "Three-Digit Group Chunking: penerapan pada Gianyar",
+  sumber: "Metode luar 4: penerapan Gianyar",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      "Terapkan pada Gianyar, 963000 tanpa titik. Dari kanan potong tiga angka, yaitu 000, lalu sisanya 963. Hasilnya 963.000.",
+      "Terapkan pada Gianyar, angka tanpa titik di atas. Dari kanan potong tiga angka, yaitu kelompok nol, lalu sisanya kelompok kiri. Hasilnya diberi titik.",
       tambah(0, judul("penduduk Gianyar")),
       tambah(2, teks("no", 150, 70, "963000", 34)),
-      tambah(12, ...kartu("gr", 144, 92, 70, 28, W.krem, ["000"], 13)),
-      tambah(15, ...kartu("gl", 86, 92, 56, 28, W.langit, ["963"], 13)),
-      ubah(17, { id: "no", isi: "963.000" }),
+      tambah(14, ...kartu("gr", 144, 92, 70, 28, W.krem, ["000"], 13)),
+      tambah(17, ...kartu("gl", 86, 92, 56, 28, W.langit, ["963"], 13)),
+      ubah(20, { id: "no", isi: "963.000" }),
     ),
     k(
-      "Kelompok kanan 000 semuanya nol, jadi tidak dibaca. Kelompok kiri 963 dibaca sembilan ratus enam puluh tiga, lalu ribu.",
+      "Kelompok kanan semuanya nol, jadi tidak dibaca. Kelompok kiri dibaca sembilan ratus enam puluh tiga, lalu ribu.",
       tambah("dibaca@2", teks("rk", 150, 140, "kiri 963: sembilan ratus enam puluh tiga ribu", 9, W.biru)),
       tambah("tidak", teks("rn", 150, 160, "kanan 000: tidak dibaca", 9.6, W.merah)),
     ),
     k(
-      "Sekarang 720736 dari pembuka bab. Dipotong dari kanan menjadi 720 dan 736, ditulis 720.736.",
+      "Sekarang bilangan lain, tanpa titik di atas. Dipotong dari kanan menjadi dua kelompok, lalu diberi titik.",
       bersih(0),
-      tambah(0, judul("bilangan pembuka bab")),
+      tambah(0, judul("bilangan lain")),
       tambah(0, teks("no", 150, 72, "720736", 34)),
-      tambah(9, ...kartu("pl", 86, 94, 56, 28, W.langit, ["720"], 13)),
-      tambah(11, ...kartu("pr", 144, 94, 70, 28, W.krem, ["736"], 13)),
+      tambah(11, ...kartu("pl", 86, 94, 56, 28, W.langit, ["720"], 13)),
+      tambah(12, ...kartu("pr", 144, 94, 70, 28, W.krem, ["736"], 13)),
       ubah(13, { id: "no", isi: "720.736" }),
     ),
     k(
-      "Bacaannya tujuh ratus dua puluh ribu tujuh ratus tiga puluh enam. Nol di ujung kelompok 720 tidak disebut.",
+      "Bacaannya tujuh ratus dua puluh ribu tujuh ratus tiga puluh enam. Nol di ujung kelompok kiri tidak disebut.",
       tambah("tujuh", ...bacaanDua("bq", 150, 132, "tujuh ratus dua puluh ribu", "tujuh ratus tiga puluh enam").slice(0, 2)),
       tambah("tujuh@2", ...bacaanDua("bq", 150, 132, "tujuh ratus dua puluh ribu", "tujuh ratus tiga puluh enam").slice(2)),
       tambah("Nol", teks("nn", 150, 184, "nol di ujung 720 tidak disebut", 9.6, W.merah)),
     ),
     k(
-      "Awas kesalahan titik: 96.3000 salah, sebab kelompok kanan harus tepat tiga angka. Potong dari kanan, bukan dari kiri.",
+      "Awas kesalahan titik. Kalau titiknya dipasang dari kiri, kelompok kanan jadi empat angka dan itu salah. Padahal kelompok kanan harus tepat tiga angka. Potong dari kanan, bukan dari kiri.",
       bersih(0),
       tambah(0, judul("awas salah titik")),
-      tambah("96.3000", ...kartu("sl", 14, 50, 128, 50, W.merahMuda, ["96.3000  ✗"], 14)),
-      tambah("sebab", ...kartu("bn", 158, 50, 128, 50, "#DCFCE7", ["963.000  ✓"], 14)),
+      tambah("dipasang", ...kartu("sl", 14, 50, 128, 50, W.merahMuda, ["96.3000  ✗"], 14)),
+      tambah("Padahal", ...kartu("bn", 158, 50, 128, 50, "#DCFCE7", ["963.000  ✓"], 14)),
       tambah("Potong", teks("sp", 150, 140, "potong dari kanan, bukan dari kiri", 10.4, W.hijau)),
     ),
   ],
@@ -202,9 +202,9 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("Three-Digit", ...kartu("s4", 154, 104, 138, 62, "#BFDBFE", ["Three-Digit", "Group Chunking", "potong tiga angka"], 8.6)),
     ),
     k(
-      "Keempat metode itu saling menguatkan dan semuanya menuju satu juta. Sampai jumpa di Subbab B tentang harga tiga pasang sepatu.",
+      "Keempat metode itu saling menguatkan dan semuanya menuju satu juta. Sampai jumpa di pelajaran berikutnya.",
       tambah("satu", ...kartu("sj", 60, 162, 180, 28, W.krem, ["sampai 1.000.000"], 11)),
-      tambah("Subbab", teks("sbb", 150, 204, "berikutnya: Subbab B", 8.6, W.ungu)),
+      tambah("berikutnya", teks("sbb", 150, 204, "sampai jumpa!", 8.6, W.ungu)),
     ),
   ],
 };
