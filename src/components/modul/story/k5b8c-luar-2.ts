@@ -9,7 +9,7 @@ const pertanyaan = (i: number, warna: string) => kartu(`q${i}`, 10 + (i % 2) * 1
 export const ADEGAN_LUAR_CBA: AdeganStory = {
   id: "luar-cba",
   judul: "Comparative Bar Analysis: enam pertanyaan analisis",
-  sumber: "Metode luar · Comparative Bar Analysis",
+  sumber: "Metode luar: Comparative Bar Analysis",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -58,17 +58,17 @@ const GP: GV = { x: 44, y: 130, w: 226, h: 84, maks: 60, langkah: 10 };
 export const ADEGAN_LUAR_CBA_TERAPAN: AdeganStory = {
   id: "luar-cba-terapan",
   judul: "Comparative Bar Analysis pada pengunjung perpustakaan",
-  sumber: "Metode luar · Comparative Bar Analysis, contoh Uji Kompetensi 1",
+  sumber: "Metode luar: Comparative, contoh perpustakaan",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapkan pada pengunjung perpustakaan. Senin 42, Selasa 60, Rabu 50, Kamis 36, Jumat 24, Sabtu 48.",
+      "Terapkan pada pengunjung perpustakaan. Senin empat puluh dua, Selasa enam puluh, Rabu lima puluh, Kamis tiga puluh enam, Jumat dua puluh empat, Sabtu empat puluh delapan.",
       tambah(0, teks("jud", 150, 16, "Pengunjung Perpustakaan SD Pancasila", 9, W.ungu)),
       tambah("perpustakaan.", ...sumbuV("gp", GP)),
       ...HARI.map(([hari, n], i) => tambah(hari, ...batangV(`h${i}`, GP, i, 6, n, W.batang, hari))),
     ),
     k(
-      "Tertinggi hari Selasa, 60. Terendah hari Jumat, 24. Selisihnya 60 dikurangi 24, yaitu 36.",
+      "Tertinggi hari Selasa, enam puluh. Terendah hari Jumat, dua puluh empat. Selisihnya enam puluh dikurangi dua puluh empat, yaitu tiga puluh enam.",
       sorotkan("Tertinggi", "h1-k"),
       tambah("Tertinggi", ...kartu("c1", 10, 152, 88, 40, W.mint, ["tertinggi", "Selasa 60"], 8.6)),
       sorotkan("Terendah", "h4-k"),
@@ -76,14 +76,14 @@ export const ADEGAN_LUAR_CBA_TERAPAN: AdeganStory = {
       tambah("Selisihnya", ...kartu("c3", 202, 152, 88, 40, W.krem, ["selisih", "60 - 24 = 36"], 8.6)),
     ),
     k(
-      "Jumlah seluruh pengunjung: 42 tambah 60 tambah 50 tambah 36 tambah 24 tambah 48, yaitu 260 orang.",
+      "Jumlah seluruh pengunjung: empat puluh dua tambah enam puluh tambah lima puluh tambah tiga puluh enam tambah dua puluh empat tambah empat puluh delapan, yaitu dua ratus enam puluh orang.",
       bersih(0),
       tambah(0, teks("jud", 150, 26, "Jumlah pengunjung seminggu", 11, W.ungu)),
-      tambah("42", teks("jm", 150, 90, "42 + 60 + 50 + 36 + 24 + 48 = 260", 11, W.ungu)),
-      tambah("260", emo("or", 150, 138, "👥", 30), teks("jc", 150, 168, "hitungan tambahan, tidak ditanyakan buku", 7.6, W.biru)),
+      tambah("empat", teks("jm", 150, 90, "42 + 60 + 50 + 36 + 24 + 48 = 260", 11, W.ungu)),
+      tambah("ratus", emo("or", 150, 138, "👥", 30), teks("jc", 150, 168, "jumlah pengunjung dalam seminggu", 7.6, W.biru)),
     ),
     k(
-      "Urutan dari yang paling sedikit: Jumat, Kamis, Senin, Sabtu, Rabu, Selasa. Dari Kamis ke Jumat, pengunjung turun 12.",
+      "Urutan dari yang paling sedikit: Jumat, Kamis, Senin, Sabtu, Rabu, Selasa. Dari Kamis ke Jumat, pengunjung turun dua belas.",
       bersih(0),
       tambah(0, teks("jud", 150, 16, "Urutan dari yang paling sedikit", 9.6, W.ungu)),
       tambah("Urutan", ...sumbuV("gp", GP)),
@@ -100,7 +100,7 @@ const GR: GV = { x: 50, y: 150, w: 220, h: 90, maks: 100, langkah: 25 };
 export const ADEGAN_LUAR_DBMT: AdeganStory = {
   id: "luar-dbmt",
   judul: "Double Bar Merge Table: tabel gabungan dan batang ganda",
-  sumber: "Metode luar · Double Bar Merge Table",
+  sumber: "Metode luar: Double Bar Merge Table",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -158,19 +158,19 @@ const GN: GV = { x: 40, y: 150, w: 232, h: 100, maks: 100, langkah: 25 };
 export const ADEGAN_LUAR_DBMT_TERAPAN: AdeganStory = {
   id: "luar-dbmt-terapan",
   judul: "Double Bar Merge Table pada nilai ulangan",
-  sumber: "Metode luar · Double Bar Merge Table, contoh Latihan nilai ulangan",
+  sumber: "Metode luar: Double Bar, contoh nilai ulangan",
   latar: "#F0F9FF",
   ketukan: [
     k(
-      "Terapkan pada nilai ulangan. Nama anak adalah kategori, nilai ulangan ke-1 dan ke-2 adalah dua kolom nilainya.",
+      "Terapkan pada nilai ulangan. Nama anak adalah kategori, nilai ulangan pertama dan kedua adalah dua kolom nilainya.",
       tambah(0, teks("jud", 150, 16, "Nilai ulangan Matematika", 10, W.ungu)),
       tambah("Nama", ...tabel("nl", 40, 24, [76, 72, 72], 19, [["Nama", "Ulangan ke-1", "Ulangan ke-2"]], 7.4)),
       tambah("kategori,", ...NILAI.flatMap(([nama, a, b], i) => barisTabel(`nl${i}`, 40, 43 + i * 19, [76, 72, 72], 19, [nama, String(a), String(b)], 8))),
-      sorotkan("ke-1", "nl-s01"),
-      sorotkan("ke-2", "nl-s02"),
+      sorotkan("pertama", "nl-s01"),
+      sorotkan("kedua", "nl-s02"),
     ),
     k(
-      "Nilai terbesar adalah 90, jadi skala nol sampai 100 cukup untuk kedua kolom.",
+      "Nilai terbesar adalah sembilan puluh, jadi skala nol sampai seratus cukup untuk kedua kolom.",
       bersih(0),
       tambah(0, teks("jud", 150, 14, "Satu skala: 0 sampai 100", 10, W.ungu)),
       tambah("terbesar", ...sumbuV("gn", GN), garis("tz", 40, 150 - 90, 232, 0, W.merah, 1.4, { putus: true }), teks("tx", 160, 44, "nilai terbesar: 90", 8, W.merah)),
@@ -183,7 +183,7 @@ export const ADEGAN_LUAR_DBMT_TERAPAN: AdeganStory = {
       sorotkan("biru", "n0a-k", "n1a-k", "n2a-k", "n3a-k", "n4a-k", "n5a-k"),
     ),
     k(
-      "Selisihnya terbaca dari pasangan batang: Komang naik 40, Lukas dan Nisa naik 15, Yohana turun 5, Asep turun 15, Robert turun 25.",
+      "Selisihnya terbaca dari pasangan batang: Komang naik empat puluh, Lukas dan Nisa naik lima belas, Yohana turun lima, Asep turun lima belas, Robert turun dua puluh lima.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Selisih tiap anak", 12, W.ungu)),
       tambah("Komang", ...kartu("d3", 106, 34, 88, 50, W.mint, ["Komang naik 40", "90 - 50 = 40"], 8.2)),

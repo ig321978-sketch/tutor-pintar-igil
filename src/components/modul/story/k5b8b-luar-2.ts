@@ -6,7 +6,7 @@ import { bersih, k, sorotkan, tambah } from "./k5b8b-bantu";
 export const ADEGAN_LUAR_CARI: AdeganStory = {
   id: "luarb-cari",
   judul: "Pictograph Error Hunt: berburu kesalahan dengan daftar periksa",
-  sumber: "Metode luar; daftar periksa piktogram",
+  sumber: "Metode luar: daftar periksa piktogram",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -16,19 +16,19 @@ export const ADEGAN_LUAR_CARI: AdeganStory = {
       tambah("daftar", teks("dp", 150, 140, "periksa dulu, baru percaya", 11, W.hijau)),
     ),
     k(
-      "Periksa empat hal: ada judul, ada kunci, ukuran gambar sama, dan setiap baris cocok dengan data.",
+      "Periksa empat hal: ada judul, ada keterangan gambar, ukuran gambar sama, dan setiap baris cocok dengan data.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Daftar periksa piktogram", 12, W.ungu)),
       tambah("judul,", kartu("d1", 40, 38, 220, 28, W.hijauMuda, ["ada judul"], 9.6)),
-      tambah("kunci,", kartu("d2", 40, 72, 220, 28, W.muda, ["ada kunci"], 9.6)),
+      tambah("keterangan", kartu("d2", 40, 72, 220, 28, W.muda, ["ada keterangan gambar"], 9.6)),
       tambah("ukuran", kartu("d3", 40, 106, 220, 28, W.krem, ["ukuran gambar sama"], 9.6)),
       tambah("baris", kartu("d4", 40, 140, 220, 28, W.merahMuda, ["setiap baris cocok dengan data"], 9.2)),
     ),
     k(
-      "Cara memeriksa baris: kalikan banyak gambar utuh dengan kunci, tambahkan nilai potongan, lalu bandingkan dengan data tabel.",
+      "Cara memeriksa baris: kalikan banyak gambar utuh dengan nilai satu gambar, tambahkan nilai potongan, lalu bandingkan dengan data tabel.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Memeriksa satu baris", 12, W.ungu)),
-      tambah("kalikan", kartu("f1", 40, 44, 220, 30, W.hijauMuda, ["gambar utuh x kunci"], 10)),
+      tambah("kalikan", kartu("f1", 40, 44, 220, 30, W.hijauMuda, ["gambar utuh x nilai gambar"], 10)),
       tambah("tambahkan", kartu("f2", 40, 84, 220, 30, W.muda, ["+ nilai potongan"], 10)),
       tambah("bandingkan", kartu("f3", 40, 124, 220, 30, W.krem, ["harus sama dengan data tabel"], 9.4)),
     ),
@@ -44,7 +44,7 @@ export const ADEGAN_LUAR_CARI: AdeganStory = {
 export const ADEGAN_LUAR_CARI_TERAPAN: AdeganStory = {
   id: "luarb-cari-terapan",
   judul: "Memeriksa piktogram apem: Senin cocok, Kamis kurang",
-  sumber: "Metode luar; piktogram apem Buku Siswa hlm. 250 dan Buku Panduan Guru hlm. 360",
+  sumber: "Metode luar: periksa piktogram apem",
   latar: "#FEFCE8",
   ketukan: [
     k(
@@ -66,7 +66,7 @@ export const ADEGAN_LUAR_CARI_TERAPAN: AdeganStory = {
       sorotkan("ditambah,", "kmq1"),
     ),
     k(
-      "Pelajarannya, jangan menebak dari bentuk gambar. Selalu hitung banyak gambar dikali kunci, lalu cocokkan dengan data.",
+      "Pelajarannya, jangan menebak dari bentuk gambar. Selalu hitung banyak gambar dikali nilai satu gambar, lalu cocokkan dengan data.",
       tambah("hitung", teks("kp", 150, 188, "hitung, lalu cocokkan dengan data", 10, W.hijau)),
     ),
   ],
@@ -78,7 +78,7 @@ const langkah = (id: string, y: number, warna: string, isi: string) => kartu(id,
 export const ADEGAN_LUAR_UBAH: AdeganStory = {
   id: "luarb-ubah",
   judul: "Frequency-to-Pictograph Conversion: dari tabel ke gambar",
-  sumber: "Metode luar; mengubah tabel frekuensi menjadi piktogram dengan contoh hari Jumat",
+  sumber: "Metode luar: dari tabel ke gambar, hari Jumat",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -89,19 +89,19 @@ export const ADEGAN_LUAR_UBAH: AdeganStory = {
       tambah("empat", panah("ap", 130, 92, 40, 0, W.merah, 2.4, { gambar: true })),
     ),
     k(
-      "Langkah satu, pilih kunci. Langkah dua, bagi frekuensi dengan kunci. Langkah tiga, hasil bagi menjadi gambar utuh dan sisanya menjadi potongan. Langkah empat, gambar dan periksa.",
+      "Langkah satu, pilih nilai satu gambar. Langkah dua, bagi frekuensi dengan nilai itu. Langkah tiga, hasil bagi menjadi gambar utuh dan sisanya menjadi potongan. Langkah empat, gambar dan periksa.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Empat langkah", 13, W.ungu)),
-      tambah("satu,", langkah("s1", 36, W.hijauMuda, "1. pilih kunci")),
-      tambah("dua,", langkah("s2", 74, W.muda, "2. bagi frekuensi dengan kunci")),
+      tambah("satu,", langkah("s1", 36, W.hijauMuda, "1. pilih nilai satu gambar")),
+      tambah("dua,", langkah("s2", 74, W.muda, "2. bagi frekuensi dengan nilai itu")),
       tambah("tiga,", langkah("s3", 112, W.krem, "3. hasil bagi: gambar utuh, sisa: potongan")),
       tambah("empat,", langkah("s4", 150, W.merahMuda, "4. gambar, lalu periksa")),
     ),
     k(
-      "Contoh hari Jumat: frekuensinya 27 dan kuncinya 4. Tulis 27 dibagi 4 sama dengan 6 sisa 3.",
+      "Contoh hari Jumat: frekuensinya 27 dan satu gambar mewakili 4. Tulis 27 dibagi 4 sama dengan 6 sisa 3.",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Contoh hari Jumat", 13, W.ungu)),
-      tambah("frekuensinya", teks("j1", 150, 60, "frekuensi 27, kunci 4", 12, W.biru)),
+      tambah("frekuensinya", teks("j1", 150, 60, "frekuensi 27, 1 gambar = 4", 12, W.biru)),
       tambah("Tulis", teks("j2", 150, 100, "27 : 4 = 6 sisa 3", 15, W.merah)),
     ),
     k(
@@ -116,13 +116,13 @@ export const ADEGAN_LUAR_UBAH: AdeganStory = {
 export const ADEGAN_LUAR_UBAH_TERAPAN: AdeganStory = {
   id: "luarb-ubah-terapan",
   judul: "Mengubah data Sabtu dan panen tomat menjadi gambar",
-  sumber: "Metode luar; hari Sabtu Buku Siswa hlm. 250 dan panen tomat minggu ke-2 hlm. 252",
+  sumber: "Metode luar: data Sabtu dan panen tomat",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Contoh hari Sabtu: frekuensinya 29 dan kuncinya 4. Hasil bagi 29 dibagi 4 adalah 7 sisa 1.",
+      "Contoh hari Sabtu: frekuensinya 29 dan satu gambar mewakili 4. Hasil bagi 29 dibagi 4 adalah 7 sisa 1.",
       tambah(0, teks("jud", 150, 24, "Contoh hari Sabtu", 13, W.ungu)),
-      tambah("frekuensinya", teks("s1", 150, 60, "frekuensi 29, kunci 4", 12, W.biru)),
+      tambah("frekuensinya", teks("s1", 150, 60, "frekuensi 29, 1 gambar = 4", 12, W.biru)),
       tambah("Hasil", teks("s2", 150, 96, "29 : 4 = 7 sisa 1", 15, W.merah)),
     ),
     k(
@@ -132,9 +132,9 @@ export const ADEGAN_LUAR_UBAH_TERAPAN: AdeganStory = {
       tambah("ditambah", teks("s4", 150, 176, "28 + 1 = 29", 12, W.hijau)),
     ),
     k(
-      "Cara ini berlaku juga untuk tomat. Dengan kunci 2 kilogram, panen minggu ke-2 sebesar 14 kilogram, jadi 14 dibagi 2 sama dengan 7 gambar tanpa sisa.",
+      "Cara ini berlaku juga untuk tomat. Jika satu gambar mewakili 2 kilogram, panen minggu ke-2 sebesar 14 kilogram, jadi 14 dibagi 2 sama dengan 7 gambar tanpa sisa.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Panen tomat dengan kunci 2 kg", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Panen tomat, 1 gambar = 2 kg", 12, W.ungu)),
       tambah("minggu", barisTomat("tm", 70, "Minggu 2", 14, 2)),
       tambah("jadi", teks("t1", 150, 116, "14 : 2 = 7 sisa 0", 14, W.merah)),
     ),
@@ -153,28 +153,28 @@ export const ADEGAN_LUAR_UBAH_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luarb-ringkas",
   judul: "Ringkasan empat metode luar piktogram",
-  sumber: "Ringkasan metode luar Sub-Bab B",
+  sumber: "Ringkasan metode luar",
   latar: "#EEF2FF",
   ketukan: [
     k(
-      "Ringkasan. Pictograph Scale Legend: pilih dan tulis kunci supaya gambar tidak terlalu banyak dan sebaiknya membagi habis semua data.",
+      "Ringkasan. Pictograph Scale Legend: pilih dan tulis keterangan gambar supaya gambar tidak terlalu banyak dan sebaiknya membagi habis semua data.",
       tambah(0, teks("jud", 150, 20, "Ringkasan metode luar", 12, W.ungu)),
-      tambah("Legend:", kartuMetode("m1", 10, 34, "#FDE68A", ["Pictograph", "Scale Legend"], "pilih dan tulis kunci")),
+      tambah("Legend:", kartuMetode("m1", 10, 34, "#FDE68A", ["Pictograph", "Scale Legend"], "pilih dan tulis arti gambar")),
     ),
     k(
       "Unit Symbol Consistency: satu simbol selalu bernilai sama dan berukuran sama di seluruh piktogram, dan potongan harus sebanding.",
       tambah("Consistency:", kartuMetode("m2", 156, 34, "#FBCFE8", ["Unit Symbol", "Consistency"], "simbol selalu sama")),
     ),
     k(
-      "Pictograph Error Hunt: periksa judul, kunci, ukuran, dan hitung tiap baris. Frequency-to-Pictograph Conversion: bagi frekuensi dengan kunci, lalu gambar utuh dan potongannya.",
+      "Pictograph Error Hunt: periksa judul, keterangan, ukuran, dan hitung tiap baris. Frequency-to-Pictograph Conversion: bagi frekuensi dengan nilai satu gambar, lalu gambar utuh dan potongannya.",
       tambah("Hunt:", kartuMetode("m3", 10, 112, "#BBF7D0", ["Pictograph", "Error Hunt"], "periksa dan hitung")),
       tambah("Conversion:", kartuMetode("m4", 156, 112, "#BFDBFE", ["Frequency-to-", "Pictograph Conversion"], "bagi, gambar, potong")),
     ),
     k(
-      "Ingat selalu baca kunci lebih dulu. Dengan empat metode ini, kamu dapat membuat, membaca, dan menganalisis piktogram dengan teliti.",
+      "Ingat selalu baca keterangan gambar lebih dulu. Dengan empat metode ini, kamu dapat membuat, membaca, dan menganalisis piktogram dengan teliti.",
       bersih(0),
-      tambah(0, teks("jud", 150, 26, "Ingat: baca kunci dulu", 13, W.ungu)),
-      tambah("kunci", emo("tr", 150, 98, "🏆", 46)),
+      tambah(0, teks("jud", 150, 26, "Ingat: baca keterangan dulu", 13, W.ungu)),
+      tambah("keterangan", emo("tr", 150, 98, "🏆", 46)),
       tambah("membuat,", teks("rg", 150, 146, "membuat, membaca, menganalisis", 11, W.hijau)),
     ),
   ],

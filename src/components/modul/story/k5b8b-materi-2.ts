@@ -10,8 +10,8 @@ const TABEL_APEM = tabelPerBaris("ta", 20, 38, ["Hari", "Banyaknya Penjualan"], 
 
 export const ADEGAN_APEM_TABEL: AdeganStory = {
   id: "apem-tabel",
-  judul: "Cerita Anggi dan Tabel 8.6 penjualan kue apem",
-  sumber: "Buku Siswa hlm. 250; Buku Panduan Guru hlm. 359–360",
+  judul: "Cerita Anggi dan tabel penjualan kue apem",
+  sumber: "Materi: cerita Anggi dan tabel apem",
   latar: "#FFF7ED",
   kutipan: ["Anggi sangat tekun mengejar cita-citanya menjadi pengusaha", "Tabel 8.6 Hasil Penjualan Kue Apem", "kue apem. Tabel berikut adalah hasil penjualan kue apem"],
   ketukan: [
@@ -23,10 +23,10 @@ export const ADEGAN_APEM_TABEL: AdeganStory = {
       tambah("pasar", teks("ps", 150, 172, "berjualan di pasar sore", 10.4, W.hijau)),
     ),
     k(
-      "Ibunya menjual kue apem, dan Anggi mencatat penjualannya selama seminggu pada Tabel 8.6. Hari Senin terjual 40 kue apem, hari Selasa terjual 35 kue apem.",
+      "Ibunya menjual kue apem, dan Anggi mencatat penjualannya selama seminggu dalam sebuah tabel. Hari Senin terjual 40 kue apem, hari Selasa terjual 35 kue apem.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Tabel 8.6 Hasil Penjualan Kue Apem", 10.4, W.ungu)),
-      tambah("Tabel", TABEL_APEM[0]),
+      tambah(0, teks("jud", 150, 22, "Hasil Penjualan Kue Apem", 11, W.ungu)),
+      tambah("tabel.", TABEL_APEM[0]),
       tambah("Senin", TABEL_APEM[1]),
       tambah("Selasa", TABEL_APEM[2]),
     ),
@@ -38,13 +38,13 @@ export const ADEGAN_APEM_TABEL: AdeganStory = {
       tambah("Sabtu", TABEL_APEM[6]),
     ),
     k(
-      "Anggi bertanya, bagaimana cara menampilkan data penjualan apem ini agar lebih menarik? Di kelas sebelumnya kita sudah membuat diagram dengan gambar-gambar.",
+      "Anggi bertanya, bagaimana cara menampilkan data penjualan apem ini agar lebih menarik? Ternyata kita bisa memakai gambar-gambar.",
       tambah("bertanya,", emo("bk", 238, 60, "🤔", 32)),
       tambah("menarik?", kartu("bq", 166, 82, 122, 46, W.putih, ["bagaimana menampilkan", "data agar lebih menarik?"], 7.8)),
     ),
     k(
-      "Jika memakai gambar, diagram jadi lebih menarik. Gambar apem itulah yang dipakai untuk piktogram, dengan kunci: satu gambar mewakili 4 kue apem.",
-      tambah("Gambar", teks("kk", 226, 150, "kunci piktogram", 8.4, W.ungu)),
+      "Jika memakai gambar, data jadi lebih menarik. Gambar apem itulah yang dipakai untuk piktogram, dengan keterangan gambar: satu gambar mewakili 4 kue apem.",
+      tambah("keterangan", teks("kk", 226, 150, "keterangan gambar", 8.4, W.ungu)),
       tambah("mewakili", kunciApem("kn", 160, 158, "mewakili 4 kue apem")),
     ),
   ],
@@ -55,20 +55,20 @@ const Y_APEM = (i: number) => 44 + i * 21;
 
 export const ADEGAN_APEM_PIKTOGRAM: AdeganStory = {
   id: "apem-piktogram",
-  judul: "Gambar 8.3: membaca piktogram penjualan kue apem",
-  sumber: "Buku Siswa hlm. 250",
+  judul: "Membaca piktogram penjualan kue apem",
+  sumber: "Materi: piktogram penjualan kue apem",
   latar: "#F0F9FF",
   kutipan: ["Banyaknya Penjualan Kue Apem", "mewakili 4 kue apem", "Gambar 8.3 Piktogram Hasil"],
   ketukan: [
     k(
-      "Inilah Gambar 8.3, piktogram penjualan kue apem. Di sebelah kiri tertulis nama hari, dan di sebelah kanan tertulis gambar kue apem.",
-      tambah(0, teks("jud", 150, 20, "Gambar 8.3: Penjualan Kue Apem", 11, W.ungu)),
+      "Inilah piktogram penjualan kue apem. Di sebelah kiri tertulis nama hari, dan di sebelah kanan tertulis gambar kue apem.",
+      tambah(0, teks("jud", 150, 20, "Piktogram Penjualan Kue Apem", 11, W.ungu)),
       tambah("kiri", garis("ax", PX - 8, 34, 0, 128, W.hitam, 2, { gambar: true })),
       tambah("kanan", teks("pk", 236, 34, "gambar kue apem", 8.6, W.merah)),
     ),
     k(
-      "Pertama kita baca kuncinya. Satu gambar kue apem utuh mewakili 4 kue apem.",
-      tambah("kuncinya.", kunciApem("kn", 86, 170, "mewakili 4 kue apem")),
+      "Pertama kita baca keterangan gambarnya. Satu gambar kue apem utuh mewakili 4 kue apem.",
+      tambah("gambarnya.", kunciApem("kn", 86, 170, "mewakili 4 kue apem")),
       sorotkan("utuh", "kn-g"),
     ),
     k(
@@ -87,9 +87,9 @@ export const ADEGAN_APEM_PIKTOGRAM: AdeganStory = {
       tambah("hasilnya", catatan("rbc", 192, Y_APEM(2) + 3, "30 : 4 = 7 sisa 2")),
     ),
     k(
-      "Gambar harus berukuran sama, dan potongan hanya mewakili sisa. Buku sengaja membuat satu gambar yang tidak tepat dan meminta kita menemukannya.",
+      "Gambar harus berukuran sama, dan potongan hanya mewakili sisa. Di piktogram berikutnya ada satu gambar yang tidak tepat, ayo kita temukan.",
       tambah("Gambar", kartu("pr", 40, 112, 220, 44, W.krem, ["gambar berukuran sama", "ada satu gambar tidak tepat"], 9)),
-      sorotkan("menemukannya.", "pr-k"),
+      sorotkan("temukan.", "pr-k"),
     ),
   ],
 };
@@ -97,14 +97,14 @@ export const ADEGAN_APEM_PIKTOGRAM: AdeganStory = {
 /* ------------------------------ 7. Ayo Berdiskusi 1 dan 2: menemukan kesalahan dan melengkapi (hlm. 251) ------------------------------ */
 export const ADEGAN_APEM_SALAH: AdeganStory = {
   id: "apem-salah",
-  judul: "Ayo Berdiskusi 1 dan 2: temukan kesalahan, lalu lengkapi piktogram",
-  sumber: "Buku Siswa hlm. 251; Buku Panduan Guru hlm. 360–361",
+  judul: "Latihan 1 dan 2: temukan kesalahan, lalu lengkapi piktogram",
+  sumber: "Materi: temukan kesalahan dan lengkapi",
   latar: "#FEFCE8",
   kutipan: ["Ayo Berdiskusi", "Temukan kesalahan pembuatan gambarnya", "perbaikilah sehingga gambar menjadi benar", "Piktogram tersebut belum selesai, salin dan lengkapi piktogram"],
   ketukan: [
     k(
-      "Ayo Berdiskusi nomor 1: temukan kesalahan pada gambar piktogram, lalu perbaiki. Caranya, banyak gambar dikali 4 harus sama dengan data tabel.",
-      tambah(0, teks("jud", 150, 22, "Ayo Berdiskusi nomor 1", 13, W.ungu)),
+      "Latihan 1: temukan kesalahan pada gambar piktogram, lalu perbaiki. Caranya, banyak gambar dikali 4 harus sama dengan data tabel.",
+      tambah(0, teks("jud", 150, 22, "Latihan 1", 13, W.ungu)),
       tambah("Caranya,", kartu("rg", 40, 56, 220, 54, W.krem, ["banyak gambar x 4", "harus sama dengan data tabel"], 10)),
     ),
     k(
@@ -114,15 +114,15 @@ export const ADEGAN_APEM_SALAH: AdeganStory = {
       tambah("Kamis:", barisApem("km", 100, "Kamis", 36), teks("kmc", 150, 122, "9 x 4 = 36, tabel 37: kurang", 9.4, W.merah)),
     ),
     k(
-      "Jadi gambar hari Kamis kurang satu kue. Buku Panduan Guru menambahkan seperempat gambar, sebab 36 ditambah 1 sama dengan 37.",
+      "Jadi gambar hari Kamis kurang satu kue. Kita perlu menambahkan seperempat gambar, sebab 36 ditambah 1 sama dengan 37.",
       tambah("seperempat", apem("kmq1", PX + 9 * PJ, 100, 1)),
       sorotkan("seperempat", "kmq1"),
       tambah("sebab", teks("kmd", 150, 150, "36 + 1 = 37", 12, W.hijau)),
     ),
     k(
-      "Nomor 2: piktogram belum selesai, jadi kita lengkapi. Jumat terjual 27, dan 27 dibagi 4 hasilnya 6 sisa 3, jadi 6 apem utuh dan potongan tiga perempat.",
+      "Latihan 2: piktogram belum selesai, jadi kita lengkapi. Jumat terjual 27, dan 27 dibagi 4 hasilnya 6 sisa 3, jadi 6 apem utuh dan potongan tiga perempat.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Nomor 2: lengkapi piktogram", 13, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Latihan 2: lengkapi piktogram", 13, W.ungu)),
       tambah("Jumat", barisApem("jm", 70, "Jumat", 27)),
       tambah("hasilnya", catatan("jmc", 176, 73, "27 : 4 = 6 sisa 3")),
     ),
@@ -151,14 +151,14 @@ function APEM_BARIS(i: number) {
 /* ------------------------------ 8. Ayo Berdiskusi 3 sampai 5 dan definisi piktogram (hlm. 251) ------------------------------ */
 export const ADEGAN_APEM_HITUNG: AdeganStory = {
   id: "apem-hitung",
-  judul: "Ayo Berdiskusi 3 sampai 5: total, keuntungan, dan arti piktogram",
-  sumber: "Buku Siswa hlm. 251; Buku Panduan Guru hlm. 361",
+  judul: "Latihan 3 sampai 5: total, keuntungan, dan arti piktogram",
+  sumber: "Materi: total, untung, dan arti piktogram",
   latar: "#F0FDF4",
   kutipan: ["Berapa banyaknya kue apem yang berhasil dijual selama", "Rp1.200,00", "Rp1.500,00", "Piktogram adalah penyajian data dengan"],
   ketukan: [
     k(
-      "Nomor 3: berapa kue apem yang terjual selama seminggu? Jumlahkan data tabel: 40 ditambah 35 sama dengan 75, lalu ditambah 30 sama dengan 105.",
-      tambah(0, teks("jud", 150, 22, "Nomor 3: total seminggu", 13, W.ungu)),
+      "Latihan 3: berapa kue apem yang terjual selama seminggu? Jumlahkan data tabel: 40 ditambah 35 sama dengan 75, lalu ditambah 30 sama dengan 105.",
+      tambah(0, teks("jud", 150, 22, "Latihan 3: total seminggu", 13, W.ungu)),
       tambah("75,", teks("e1", 150, 56, "40 + 35 = 75", 13, W.biru)),
       tambah("105.", teks("e2", 150, 82, "75 + 30 = 105", 13, W.biru)),
     ),
@@ -170,9 +170,9 @@ export const ADEGAN_APEM_HITUNG: AdeganStory = {
       tambah("apem.", teks("e6", 150, 186, "198 kue apem", 13, W.merah)),
     ),
     k(
-      "Nomor 4: satu kue apem dibeli seharga seribu dua ratus rupiah dan dijual seribu lima ratus rupiah. Jadi untung satu kue adalah tiga ratus rupiah.",
+      "Latihan 4: satu kue apem dibeli seharga seribu dua ratus rupiah dan dijual seribu lima ratus rupiah. Jadi untung satu kue adalah tiga ratus rupiah.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Nomor 4: keuntungan", 13, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Latihan 4: keuntungan", 13, W.ungu)),
       tambah("dibeli", teks("u1", 150, 56, "beli: Rp1.200 per kue", 12, W.biru)),
       tambah("dijual", teks("u2", 150, 82, "jual: Rp1.500 per kue", 12, W.biru)),
       tambah("untung", teks("u3", 150, 116, "1.500 - 1.200 = 300", 14, W.hijau)),
@@ -183,9 +183,9 @@ export const ADEGAN_APEM_HITUNG: AdeganStory = {
       sorotkan("Jadi", "u4"),
     ),
     k(
-      "Nomor 5: apa kelebihan piktogram? Data menjadi lebih menarik, mudah dibaca sekilas, dan banyaknya terlihat dari jumlah gambar. Alasan lain boleh, asal masuk akal.",
+      "Latihan 5: apa kelebihan piktogram? Data menjadi lebih menarik, mudah dibaca sekilas, dan banyaknya terlihat dari jumlah gambar. Alasan lain boleh, asal masuk akal.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Nomor 5: kelebihan piktogram", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Latihan 5: kelebihan piktogram", 12, W.ungu)),
       tambah("menarik,", kartu("v1", 40, 44, 220, 34, W.hijauMuda, ["lebih menarik"], 10)),
       tambah("sekilas,", kartu("v2", 40, 88, 220, 34, W.muda, ["mudah dibaca sekilas"], 10)),
       tambah("jumlah", kartu("v3", 40, 132, 220, 34, W.krem, ["banyaknya terlihat dari jumlah gambar"], 8.6)),

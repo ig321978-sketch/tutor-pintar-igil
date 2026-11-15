@@ -2,14 +2,14 @@ import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, batangH, batangV, emo, garis, kartu, kotak, sumbuH, sumbuV, tabel, teks, type GH, type GV } from "./k5b8c-gambar";
 import { bersih, k, sorotkan, tambah } from "./k5b8c-bantu";
 
-/* ------------------------------ 4. Eksplorasi 8.3B bagian a sampai e: membaca skala dan menilai pernyataan (hlm. 256 sampai 257; Buku Panduan Guru hlm. 368 sampai 369) ------------------------------ */
+/* ------------------------------ 4. Membaca skala dan menilai pernyataan tentang medali emas ------------------------------ */
 const GA: GV = { x: 30, y: 140, w: 100, h: 80, maks: 80, langkah: 20 };
 const GB: GV = { x: 170, y: 140, w: 100, h: 80, maks: 80, langkah: 20 };
 
 export const ADEGAN_SEAGAMES_TANYA: AdeganStory = {
   id: "seagames-tanya",
-  judul: "Eksplorasi 8.3B: membaca skala dan menilai pernyataan",
-  sumber: "Buku Siswa hlm. 256–257; Buku Panduan Guru hlm. 368–369",
+  judul: "Membaca skala dan menilai pernyataan",
+  sumber: "Materi: membaca skala dan menilai",
   latar: "#F0FDF4",
   kutipan: [
     "Gambar mana yang tepat untuk mewakili banyaknya medali emas pada tahun 2017",
@@ -20,70 +20,70 @@ export const ADEGAN_SEAGAMES_TANYA: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Bagian a, manakah dari dua gambar yang tepat mewakili medali emas 2017? Garis kecilnya bernilai empat.",
+      "Sekarang kita berlatih membaca skala. Manakah dari dua gambar yang tepat mewakili medali emas tahun dua ribu tujuh belas? Garis kecilnya bernilai empat.",
       tambah(0, teks("jud", 150, 18, "Manakah yang tepat untuk 2017?", 9.6, W.ungu)),
       tambah("dua", ...sumbuV("ga", GA), ...sumbuV("gb", GB)),
       tambah("gambar", ...batangV("a", GA, 2, 3, 38, W.batang, "2017", { angka: false }), teks("ha", 80, 166, "a", 11, W.merah)),
       tambah("tepat", ...batangV("b", GB, 2, 3, 36, W.batang, "2017", { angka: false }), teks("hb", 220, 166, "b", 11, W.merah)),
     ),
     k(
-      "Garis kecil dihitung empat demi empat: 36, lalu 40. Medali 38 ada di antara keduanya, jadi gambar a yang tepat.",
+      "Garis kecil dihitung empat demi empat: tiga puluh enam, lalu empat puluh. Medali tiga puluh delapan ada di antara keduanya, jadi gambar a yang tepat.",
       tambah("empat@2", ...[36, 40].map((n) => garis(`pa${n}`, 30, 140 - (n / 80) * 80, 100, 0, W.merah, 0.8, { putus: true })), teks("p36", 134, 112, "36", 6.8, W.merah, { anchor: "start" }), teks("p40", 134, 98, "40", 6.8, W.merah, { anchor: "start" })),
-      tambah("38", teks("v38", 112, 98, "38", 8, W.hijau)),
+      tambah("delapan", teks("v38", 112, 98, "38", 8, W.hijau)),
       tambah("tepat.", emo("ok", 80, 192, "✅", 14), emo("no", 220, 192, "❌", 14)),
     ),
     k(
-      "Bagian c: Nisa berkata medali emas selalu menurun sejak 2013 sampai 2021. Asep berkata, penurunan 2015 lebih banyak daripada penurunan 2021.",
+      "Berikutnya, Nisa berkata medali emas selalu menurun sejak dua ribu tiga belas. Asep berkata, penurunan dua ribu lima belas lebih banyak daripada dua ribu dua puluh satu.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Pernyataan siapa yang dapat diterima?", 9.6, W.ungu)),
       tambah("Nisa", ...kartu("n", 16, 40, 268, 50, W.mawar, ["Nisa: dari 2013 sampai 2021", "medali emas selalu menurun"], 8.8)),
       tambah("Asep", ...kartu("s", 16, 100, 268, 50, W.langit, ["Asep: penurunan 2015", "lebih banyak daripada 2021"], 8.8)),
     ),
     k(
-      "Periksa Nisa. Dari 2015 ke 2017 turun, tetapi dari 2017 ke 2019 naik, dari 38 menjadi 72. Jadi Nisa tidak tepat.",
+      "Periksa Nisa. Dari dua ribu lima belas ke dua ribu tujuh belas turun, tetapi dari dua ribu tujuh belas ke dua ribu sembilan belas naik. Jadi Nisa tidak tepat.",
       bersih(0),
       tambah(0, teks("jud", 150, 20, "Periksa pernyataan Nisa", 10.5, W.ungu)),
-      tambah("2015", ...[["2013", "65"], ["2015", "47"], ["2017", "38"], ["2019", "72"], ["2021", "69"]].flatMap(([th, n], i) => kartu(`r${i}`, 10 + i * 58, 50, 50, 40, i === 3 ? W.mint : W.krem, [th, n], 8.4))),
+      tambah("ribu@1", ...[["2013", "65"], ["2015", "47"], ["2017", "38"], ["2019", "72"], ["2021", "69"]].flatMap(([th, n], i) => kartu(`r${i}`, 10 + i * 58, 50, 50, 40, i === 3 ? W.mint : W.krem, [th, n], 8.4))),
       tambah("turun,", teks("t1", 63, 108, "turun", 7, W.merah), teks("t2", 121, 108, "turun", 7, W.merah)),
       tambah("naik,", teks("t3", 179, 108, "naik", 7, W.hijau)),
       sorotkan("naik,", "r3-k"),
       tambah("tidak", teks("tdk", 150, 150, "Nisa: tidak dapat diterima", 9.4, W.merah), emo("x", 150, 178, "❌", 16)),
     ),
     k(
-      "Periksa Asep. Tahun 2015 turun 18, dari 65 ke 47. Tahun 2021 turun hanya 3, dari 72 ke 69. Jadi Asep benar.",
+      "Periksa Asep. Tahun dua ribu lima belas turun delapan belas. Tahun dua ribu dua puluh satu turun hanya tiga. Jadi Asep benar.",
       bersih(0),
       tambah(0, teks("jud", 150, 20, "Periksa pernyataan Asep", 10.5, W.ungu)),
-      tambah("2015", ...kartu("p1", 20, 40, 260, 40, W.krem, ["2015: 65 - 47 = 18"], 10)),
-      tambah("2021", ...kartu("p2", 20, 92, 260, 40, W.mint, ["2021: 72 - 69 = 3"], 10)),
+      tambah("ribu@1", ...kartu("p1", 20, 40, 260, 40, W.krem, ["2015: 65 - 47 = 18"], 10)),
+      tambah("ribu@2", ...kartu("p2", 20, 92, 260, 40, W.mint, ["2021: 72 - 69 = 3"], 10)),
       tambah("benar.", teks("by", 150, 160, "18 lebih banyak daripada 3", 9.6, W.hijau), emo("ok", 150, 186, "✅", 16)),
     ),
     k(
-      "Bagian d dan e. Tahun 2019: 72 emas, 84 perak, 111 perunggu, jumlahnya 267. Pecahan emas 72 per 267. Emas terbanyak 2019, tersedikit 2017.",
+      "Selanjutnya tahun dua ribu sembilan belas: tujuh puluh dua emas, delapan puluh empat perak, seratus sebelas perunggu. Jumlahnya dua ratus enam puluh tujuh.",
       bersih(0),
       tambah(0, teks("jud", 150, 20, "Medali tahun 2019", 11, W.ungu)),
-      tambah("72", ...kartu("e1", 16, 36, 82, 40, W.jeruk, ["72 emas"], 9), ...kartu("e2", 109, 36, 82, 40, W.abu, ["84 perak"], 9), ...kartu("e3", 202, 36, 82, 40, W.krem, ["111 perunggu"], 9)),
-      tambah("jumlahnya", teks("jm", 150, 100, "72 + 84 + 111 = 267", 12, W.ungu)),
-      tambah("Pecahan", teks("pc", 150, 128, "pecahan emas: 72/267", 10, W.hijau)),
-      tambah("terbanyak", teks("mx", 150, 156, "terbanyak: 2019", 9, W.hijau), teks("mn", 150, 172, "tersedikit: 2017", 9, W.merah)),
+      tambah("emas,", ...kartu("e1", 16, 36, 82, 40, W.jeruk, ["72 emas"], 9)),
+      tambah("perak,", ...kartu("e2", 109, 36, 82, 40, W.abu, ["84 perak"], 9)),
+      tambah("perunggu.", ...kartu("e3", 202, 36, 82, 40, W.krem, ["111 perunggu"], 9)),
+      tambah("Jumlahnya", teks("jm", 150, 100, "72 + 84 + 111 = 267", 12, W.ungu)),
     ),
     k(
-      "Ayo berdiskusi. Mencari data tertinggi dan terendah lebih mudah lewat tabel atau diagram batang? Menurut Buku Panduan Guru, diagram batang.",
+      "Ayo berdiskusi. Mencari data tertinggi dan terendah lebih mudah lewat tabel atau diagram batang? Jawabannya diagram batang, sebab kita cukup melihat tinggi batangnya.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Tabel atau diagram batang?", 11, W.ungu)),
       tambah("tabel", ...kartu("d1", 16, 40, 124, 70, W.krem, ["Tabel", "baca angka satu per satu"], 8.6)),
       tambah("diagram", ...kartu("d2", 160, 40, 124, 70, W.mint, ["Diagram batang", "lihat tinggi batang"], 8.6)),
-      tambah("Panduan", emo("ok", 222, 140, "✅", 22)),
+      tambah("Jawabannya", emo("ok", 222, 140, "✅", 22)),
     ),
   ],
 };
 
-/* ------------------------------ 5. Eksplorasi 8.3C aktivitas 1: diagram batang horizontal (hlm. 257 sampai 259; Buku Panduan Guru hlm. 370 sampai 371) ------------------------------ */
+/* ------------------------------ 5. Diagram batang horizontal ------------------------------ */
 const GM: GH = { x: 62, y: 38, w: 200, h: 100, maks: 80, langkah: 20 };
 
 export const ADEGAN_HORIZONTAL_83C: AdeganStory = {
   id: "horizontal-83c",
-  judul: "Eksplorasi 8.3C: diagram batang horizontal",
-  sumber: "Buku Siswa hlm. 257–259; Buku Panduan Guru hlm. 370–371",
+  judul: "Diagram batang horizontal",
+  sumber: "Materi: diagram batang horizontal",
   latar: "#FFFBEB",
   kutipan: [
     "Eksplorasi 8.3C",
@@ -93,8 +93,8 @@ export const ADEGAN_HORIZONTAL_83C: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi 8.3C, diagram batang horizontal. Nisa dan Lukas melihat diagram yang batangnya mendatar, bukan tegak. Itulah diagram batang horizontal.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 8.3C", 13, W.ungu), teks("jud2", 150, 38, "Diagram Batang Horizontal", 9.4, W.biru)),
+      "Sekarang diagram batang horizontal. Nisa dan Lukas melihat diagram yang batangnya mendatar, bukan tegak. Itulah diagram batang horizontal.",
+      tambah(0, teks("jud", 150, 24, "Diagram Batang Horizontal", 12, W.ungu), teks("jud2", 150, 38, "batangnya mendatar", 9.4, W.biru)),
       tambah("tegak.", ...[30, 50, 40].map((h, i) => kotak(`v${i}`, 44 + i * 22, 140 - h, 14, h, W.batang, W.biru, { rx: 1, tebal: 1 })), teks("vt", 77, 160, "tegak", 8, W.merah)),
       tambah("mendatar,", ...[50, 30, 40].map((w, i) => kotak(`h${i}`, 180, 94 + i * 16, w, 11, W.batang2, W.biru, { rx: 1, tebal: 1 })), teks("ht", 205, 160, "mendatar", 8, W.hijau)),
     ),
@@ -107,22 +107,22 @@ export const ADEGAN_HORIZONTAL_83C: AdeganStory = {
       tambah("mendatar@2", teks("xt", 162, 168, "Perolehan medali emas", 7.4, W.biru)),
     ),
     k(
-      "Batang tahun 2013 panjangnya enam puluh lima, tahun 2015 empat puluh tujuh, dan tahun 2017 tiga puluh delapan.",
-      tambah("2013", ...batangH("h0", GM, 0, 5, 65, W.batang, "2013")),
-      tambah("2015", ...batangH("h1", GM, 1, 5, 47, W.batang, "2015")),
-      tambah("2017", ...batangH("h2", GM, 2, 5, 38, W.batang, "2017")),
+      "Batang dua ribu tiga belas panjangnya enam puluh lima, dua ribu lima belas empat puluh tujuh, dan dua ribu tujuh belas tiga puluh delapan.",
+      tambah("ribu@1", ...batangH("h0", GM, 0, 5, 65, W.batang, "2013")),
+      tambah("ribu@2", ...batangH("h1", GM, 1, 5, 47, W.batang, "2015")),
+      tambah("ribu@3", ...batangH("h2", GM, 2, 5, 38, W.batang, "2017")),
     ),
     k(
-      "Batang 2019 panjangnya tujuh puluh dua dan 2021 enam puluh sembilan. Datanya sama dengan diagram tegak, hanya arah batangnya yang berbeda.",
-      tambah("2019", ...batangH("h3", GM, 3, 5, 72, W.batang, "2019")),
-      tambah("2021", ...batangH("h4", GM, 4, 5, 69, W.batang, "2021")),
+      "Batang dua ribu sembilan belas panjangnya tujuh puluh dua, dan dua ribu dua puluh satu enam puluh sembilan. Datanya sama dengan diagram tegak, hanya arah batangnya yang berbeda.",
+      tambah("ribu@1", ...batangH("h3", GM, 3, 5, 72, W.batang, "2019")),
+      tambah("ribu@2", ...batangH("h4", GM, 4, 5, 69, W.batang, "2021")),
       sorotkan("sama", "h3-k"),
       tambah("sama", teks("sm", 150, 190, "data sama, arah batang berbeda", 8.6, W.hijau)),
     ),
   ],
 };
 
-/* ------------------------------ 6. Eksplorasi 8.3C aktivitas 2: panen lele Pak Bajuri (hlm. 259 sampai 261; Buku Panduan Guru hlm. 371 sampai 373) ------------------------------ */
+/* ------------------------------ 6. Panen lele Pak Bajuri ------------------------------ */
 const GL: GH = { x: 62, y: 36, w: 200, h: 100, maks: 40, langkah: 10 };
 const LELE: [string, number][] = [
   ["Kolam 1", 32],
@@ -134,8 +134,8 @@ const LELE: [string, number][] = [
 
 export const ADEGAN_LELE: AdeganStory = {
   id: "lele",
-  judul: "Eksplorasi 8.3C aktivitas 2: hasil panen lele",
-  sumber: "Buku Siswa hlm. 259–261; Buku Panduan Guru hlm. 371–373",
+  judul: "Hasil panen lele Pak Bajuri",
+  sumber: "Materi: hasil panen lele Pak Bajuri",
   latar: "#ECFEFF",
   kutipan: [
     "Pak Bajuri mempunyai beberapa kolam lele",
@@ -146,13 +146,13 @@ export const ADEGAN_LELE: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Aktivitas 2. Pak Bajuri punya lima kolam lele. Hasil panen tiap kolam ada di tabel, tetapi kolam 2 dan kolam 4 belum lengkap.",
-      tambah(0, teks("jud", 150, 18, "Aktivitas 2: Panen Lele Pak Bajuri", 9.6, W.ungu)),
+      "Sekarang latihan memakai data panen lele. Pak Bajuri punya lima kolam lele. Hasil panen tiap kolam ada di tabel, tetapi kolam dua dan kolam empat belum lengkap.",
+      tambah(0, teks("jud", 150, 18, "Panen Lele Pak Bajuri", 9.6, W.ungu)),
       tambah("tabel,", ...tabel("tb", 62, 28, [90, 86], 20, [["Kolam", "Hasil panen (kg)"]], 7.6)),
       tambah("kolam@3", ...LELE.flatMap(([nama, n], i) => barisTabel(`tb${i}`, 62, 48 + i * 20, [90, 86], 20, [nama, i === 1 || i === 3 ? "..." : String(n)], 8))),
     ),
     k(
-      "Dari diagram batang kita lengkapi: kolam 2 sampai 28 kilogram, kolam 4 sampai 16. Kolam 1, 3, dan 5 sudah terbaca.",
+      "Dari diagram batang kita lengkapi: kolam dua dua puluh delapan kilogram, kolam empat enam belas. Kolam lain sudah terbaca.",
       bersih(0),
       tambah(0, teks("jud", 150, 18, "Hasil Panen Lele Pak Bajuri", 9.6, W.ungu)),
       tambah("Dari", ...sumbuH("sl", GL)),
@@ -161,42 +161,42 @@ export const ADEGAN_LELE: AdeganStory = {
       tambah("sudah", ...batangH("l0", GL, 0, 5, 32, W.batang, "Kolam 1"), ...batangH("l2", GL, 2, 5, 21, W.batang, "Kolam 3"), ...batangH("l4", GL, 4, 5, 25, W.batang, "Kolam 5")),
     ),
     k(
-      "Jumlah seluruh panen: 32 tambah 28 tambah 21 tambah 16 tambah 25, yaitu 122 kilogram.",
+      "Jumlah seluruh panen adalah hasil menambah kelima kolam, yaitu seratus dua puluh dua kilogram.",
       tambah("Jumlah", teks("jm", 150, 170, "32 + 28 + 21 + 16 + 25 = 122", 10, W.ungu)),
     ),
     k(
-      "Pernyataan pertama, hasil panen tertinggi dari kolam 2, itu keliru. Batang terpanjang milik kolam 1, yaitu 32.",
+      "Pernyataan pertama, kolam dua tertinggi, itu keliru. Batang terpanjang milik kolam satu, yaitu tiga puluh dua.",
       sorotkan("keliru.", "l0-k"),
       tambah("keliru.", emo("x", 70, 188, "❌", 14), teks("kt", 150, 180, "tertinggi: Kolam 1", 8, W.merah)),
     ),
     k(
-      "Pernyataan kedua: selisih kolam 1 dan 4 melebihi seperempat total. Selisihnya 32 dikurangi 16, yaitu 16. Seperempat dari 122 adalah 30,5.",
+      "Pernyataan kedua: selisih kolam satu dan empat melebihi seperempat total. Selisihnya tiga puluh dua dikurangi enam belas, yaitu enam belas. Seperempat dari seratus dua puluh dua adalah tiga puluh koma lima.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Pernyataan kedua", 11, W.ungu)),
       tambah("Selisihnya", ...kartu("q1", 20, 40, 260, 34, W.krem, ["selisih: 32 - 16 = 16"], 10)),
       tambah("Seperempat@2", ...kartu("q2", 20, 84, 260, 34, W.mint, ["seperempat total: 122 : 4 = 30,5"], 10)),
-      tambah("30,5.", teks("q3", 150, 148, "16 kurang dari 30,5, jadi salah", 9.6, W.merah)),
+      tambah("lima.", teks("q3", 150, 148, "16 kurang dari 30,5, jadi salah", 9.6, W.merah)),
     ),
     k(
-      "Kunci Buku Panduan Guru menjumlahkan 32 dan 16 menjadi 48, lalu menyebut pernyataan itu benar. Padahal selisih adalah pengurangan, jadi tetap 16.",
+      "Hati-hati, jangan mencari selisih dengan penjumlahan. Tiga puluh dua tambah enam belas menjadi empat puluh delapan, lalu pernyataan dikira benar. Padahal selisih adalah pengurangan, jadi tetap enam belas.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Catatan atas kunci", 11, W.ungu)),
-      tambah("menjumlahkan", ...kartu("c1", 20, 40, 260, 34, W.mawar, ["kunci buku: 32 + 16 = 48"], 10)),
+      tambah(0, teks("jud", 150, 22, "Hati-hati: selisih", 11, W.ungu)),
+      tambah("penjumlahan,", ...kartu("c1", 20, 40, 260, 34, W.mawar, ["keliru: 32 + 16 = 48"], 10)),
       tambah("pengurangan,", ...kartu("c2", 20, 88, 260, 34, W.mint, ["selisih: 32 - 16 = 16"], 10)),
       tambah("tetap", teks("c3", 150, 150, "selisih adalah pengurangan", 9.6, W.ungu)),
     ),
     k(
-      "Terakhir, panen dijual 22.000 rupiah per kilogram. Pendapatan Pak Bajuri adalah 122 kali 22.000, yaitu 2.684.000 rupiah.",
+      "Panen dijual dua puluh dua ribu rupiah per kilogram, jadi pendapatannya seratus dua puluh dua kali dua puluh dua ribu, yaitu dua juta enam ratus delapan puluh empat ribu rupiah.",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Pendapatan Pak Bajuri", 12, W.ungu)),
-      tambah("22.000", ...kartu("g1", 20, 40, 260, 34, W.krem, ["harga: Rp22.000 per kg"], 10)),
-      tambah("122", ...kartu("g2", 20, 86, 260, 34, W.langit, ["122 x 22.000 = 2.684.000"], 10)),
-      tambah("2.684.000", emo("uang", 150, 156, "💰", 28), teks("g3", 150, 182, "Rp2.684.000", 11, W.hijau)),
+      tambah("dua", ...kartu("g1", 20, 40, 260, 34, W.krem, ["harga: Rp22.000 per kg"], 10)),
+      tambah("seratus", ...kartu("g2", 20, 86, 260, 34, W.langit, ["122 x 22.000 = 2.684.000"], 10)),
+      tambah("juta", emo("uang", 150, 156, "💰", 28), teks("g3", 150, 182, "Rp2.684.000", 11, W.hijau)),
     ),
   ],
 };
 
-/* ------------------------------ 7. Eksplorasi 8.3D: membandingkan dua diagram (hlm. 261 sampai 263; Buku Panduan Guru hlm. 373 sampai 375) ------------------------------ */
+/* ------------------------------ 7. Membandingkan dua diagram batang ------------------------------ */
 const LAKI = [14, 11, 16, 12, 15];
 const PEREMPUAN = [10, 13, 12, 16, 14];
 const TAHUN = ["2017", "2018", "2019", "2020", "2021"];
@@ -206,8 +206,8 @@ const GLK2: GV = { ...GLK, maks: 18, langkah: 6 };
 
 export const ADEGAN_GANDA_83D: AdeganStory = {
   id: "ganda-83d",
-  judul: "Eksplorasi 8.3D: membandingkan dua diagram batang",
-  sumber: "Buku Siswa hlm. 261–263; Buku Panduan Guru hlm. 373–375",
+  judul: "Membandingkan dua diagram batang",
+  sumber: "Materi: membandingkan dua diagram",
   latar: "#FDF4FF",
   kutipan: [
     "Eksplorasi 8.3D",
@@ -218,26 +218,26 @@ export const ADEGAN_GANDA_83D: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi 8.3D. Pak Guru menampilkan dua diagram batang, siswa laki-laki dan siswa perempuan di SD Pancasila. Asep berkata, setiap tahun siswa perempuan selalu lebih banyak.",
-      tambah(0, teks("jud", 150, 16, "Eksplorasi 8.3D", 11, W.ungu)),
+      "Sekarang kita bandingkan dua diagram batang. Pak Guru menampilkan banyaknya siswa laki-laki dan siswa perempuan di SD Pancasila. Asep berkata, setiap tahun siswa perempuan selalu lebih banyak.",
+      tambah(0, teks("jud", 150, 16, "Dua Diagram Batang", 11, W.ungu)),
       tambah("laki-laki", teks("tl", 84, 30, "Siswa laki-laki", 8, W.batang), ...sumbuV("gl", GLK), ...LAKI.flatMap((n, i) => batangV(`l${i}`, GLK, i, 5, n, W.batang, TAHUN[i], { angka: false }))),
       tambah("perempuan", teks("tp", 224, 30, "Siswa perempuan", 8, W.batang2), ...sumbuV("gp", GPR), ...PEREMPUAN.flatMap((n, i) => batangV(`p${i}`, GPR, i, 5, n, W.batang2, TAHUN[i], { angka: false }))),
     ),
     k(
-      "Sekilas batang perempuan tampak lebih tinggi. Tetapi lihat skalanya. Diagram laki-laki berskala sampai 30, diagram perempuan hanya sampai 18, jadi tinggi batang tidak bisa dibandingkan langsung.",
+      "Sekilas batang perempuan tampak lebih tinggi. Tetapi lihat skalanya. Diagram laki-laki berskala sampai tiga puluh, diagram perempuan hanya sampai delapan belas, jadi tinggi batang tidak bisa dibandingkan langsung.",
       sorotkan("skalanya.", "gl-a30", "gp-a18"),
       tambah("hanya", teks("pt", 150, 168, "skala berbeda: 30 dan 18", 9.4, W.merah)),
     ),
     k(
-      "Kita buat ulang dengan skala yang sama, nol sampai 18, pada kedua diagram.",
+      "Kita buat ulang dengan skala yang sama, nol sampai delapan belas, pada kedua diagram.",
       bersih(0),
       tambah(0, teks("jud", 150, 16, "Skala sama: nol sampai 18", 11, W.ungu)),
       tambah("ulang", teks("tl", 84, 30, "Siswa laki-laki", 8, W.batang), ...sumbuV("gl", GLK2), ...LAKI.flatMap((n, i) => batangV(`l${i}`, GLK2, i, 5, n, W.batang, TAHUN[i], { angka: false }))),
       tambah("sama,", teks("tp", 224, 30, "Siswa perempuan", 8, W.batang2), ...sumbuV("gp", GPR), ...PEREMPUAN.flatMap((n, i) => batangV(`p${i}`, GPR, i, 5, n, W.batang2, TAHUN[i], { angka: false }))),
     ),
     k(
-      "Hasilnya, tahun 2017, 2019, dan 2021 siswa laki-laki lebih banyak. Tahun 2018 dan 2020 siswa perempuan lebih banyak. Jadi pendapat Asep tidak tepat.",
-      tambah("2017,", ...TAHUN.map((t, i) => teks(`an${i}`, 30 + i * 60, 160, t, 7.4, W.biru)), ...TAHUN.map((_, i) => teks(`ak${i}`, 30 + i * 60, 172, i % 2 === 0 ? "laki-laki" : "perempuan", 6.6, i % 2 === 0 ? W.batang : W.batang2))),
+      "Hasilnya, tahun dua ribu tujuh belas, sembilan belas, dan dua puluh satu laki-laki lebih banyak. Tahun dua ribu delapan belas dan dua puluh perempuan lebih banyak. Jadi pendapat Asep tidak tepat.",
+      tambah("ribu@1", ...TAHUN.map((t, i) => teks(`an${i}`, 30 + i * 60, 160, t, 7.4, W.biru)), ...TAHUN.map((_, i) => teks(`ak${i}`, 30 + i * 60, 172, i % 2 === 0 ? "laki-laki" : "perempuan", 6.6, i % 2 === 0 ? W.batang : W.batang2))),
       tambah("tidak", teks("as", 150, 192, "pendapat Asep tidak tepat", 8.6, W.merah)),
     ),
     k(

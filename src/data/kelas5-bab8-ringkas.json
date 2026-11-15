@@ -245,6 +245,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Sayuran apa paling disukai?",
+          "ikon": "🥕",
+          "suara": "Ini peta tentang Yohana dan teman-temannya yang ingin tahu sayuran apa yang paling disukai di kelas mereka. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-turus",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Turus dan kelompok lima",
+            "petunjuk": "Memahami cara mencatat tiap jawaban dengan satu garis."
+          },
+          {
+            "id": "hal-tabel",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Tabel frekuensi sayuran",
+            "petunjuk": "Memahami cara menata hasil catatan ke dalam tabel."
+          },
+          {
+            "id": "hal-putus",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Keputusan dari data",
+            "petunjuk": "Memahami cara memakai isi tabel untuk mengambil keputusan."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-tanya",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tanyai teman, tulis turus",
+            "petunjuk": "Langkah untuk mencatat pilihan sayuran tiap teman."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Hitung turus jadi frekuensi",
+            "petunjuk": "Langkah untuk mengisi tabel frekuensi sayuran."
+          },
+          {
+            "id": "cara-periksa",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Periksa jumlah frekuensi",
+            "petunjuk": "Langkah untuk memastikan tidak ada data yang terlewat."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-rapi",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Data rapi, tak terlewat",
+            "petunjuk": "Kemampuan mengumpulkan dan menata data dengan teliti."
+          },
+          {
+            "id": "hasil-tahu",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu sayuran paling disukai",
+            "petunjuk": "Kemampuan menjawab pertanyaan dari tabel frekuensi."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Sayuran dan frekuensinya",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel sayuran favorit. Untuk tiap sayuran, pasang banyak garis turus, cara menghitungnya dengan kelompok lima, dan frekuensinya.",
+        "pojok": "Sayuran",
+        "kolom": [
+          "Turus",
+          "Hitung",
+          "Frekuensi"
+        ],
+        "baris": [
+          {
+            "label": "Wortel",
+            "sel": [
+              "8 garis",
+              "5 + 3",
+              "8 orang"
+            ]
+          },
+          {
+            "label": "Bayam",
+            "sel": [
+              "7 garis",
+              "5 + 2",
+              "7 orang"
+            ]
+          },
+          {
+            "label": "Kangkung",
+            "sel": [
+              "6 garis",
+              "5 + 1",
+              "6 orang"
+            ]
+          },
+          {
+            "label": "Kol",
+            "sel": [
+              "3 garis",
+              "tanpa kelompok",
+              "3 orang"
+            ]
+          }
+        ]
       }
     },
     "B": {
@@ -486,6 +621,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Data apem lebih menarik?",
+          "ikon": "🍰",
+          "suara": "Ini peta tentang Anggi yang ingin menampilkan data penjualan kue apem agar lebih menarik. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-buat",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Membuat piktogram",
+            "petunjuk": "Memahami cara menyajikan data memakai gambar."
+          },
+          {
+            "id": "hal-baca",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Membaca data piktogram",
+            "petunjuk": "Memahami cara membaca banyaknya data dari gambar."
+          },
+          {
+            "id": "hal-analisis",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menganalisis data piktogram",
+            "petunjuk": "Memahami cara menjawab pertanyaan dari data yang tampak di gambar."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-arti",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tentukan arti satu gambar",
+            "petunjuk": "Langkah pertama sebelum membuat dan membaca piktogram."
+          },
+          {
+            "id": "cara-bagi",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Bagi data dengan arti gambar",
+            "petunjuk": "Langkah untuk mengetahui banyak gambar utuh dan potongan sisanya."
+          },
+          {
+            "id": "cara-periksa",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Periksa baris dengan data",
+            "petunjuk": "Langkah untuk memastikan gambar tiap baris sama dengan data tabel."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-buat",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Membuat piktogram yang benar",
+            "petunjuk": "Kemampuan menggambar piktogram yang sesuai dengan data."
+          },
+          {
+            "id": "hasil-simpul",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Menyimpulkan dari gambar",
+            "petunjuk": "Kemampuan menarik kesimpulan dari data yang tampak di piktogram."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Penjualan apem dan gambarnya",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel penjualan kue apem. Untuk tiap hari, pasang banyak kue yang terjual, banyak gambar utuh, dan sisanya yang digambar sebagai potongan.",
+        "pojok": "Hari",
+        "kolom": [
+          "Terjual",
+          "Utuh",
+          "Sisa"
+        ],
+        "baris": [
+          {
+            "label": "Senin",
+            "sel": [
+              "40 kue",
+              "10 utuh",
+              "tanpa sisa"
+            ]
+          },
+          {
+            "label": "Selasa",
+            "sel": [
+              "35 kue",
+              "8 utuh",
+              "sisa 3"
+            ]
+          },
+          {
+            "label": "Rabu",
+            "sel": [
+              "30 kue",
+              "7 utuh",
+              "sisa 2"
+            ]
+          },
+          {
+            "label": "Kamis",
+            "sel": [
+              "37 kue",
+              "9 utuh",
+              "sisa 1"
+            ]
+          }
+        ]
       }
     },
     "C": {
@@ -724,6 +994,141 @@
                   "isi": "tinggi = nilai ÷ skala"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Bagaimana membuat dan membaca diagram batang?",
+          "ikon": "📊",
+          "suara": "Ini peta masalah diagram batang. Kita ingin tahu cara membuat diagram batang yang jujur, lalu membaca dan membandingkan datanya dengan cepat. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-skala",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Skala dan batang tegak",
+            "petunjuk": "Hal yang dipelajari tentang nilai tiap petak dan batang yang berdiri."
+          },
+          {
+            "id": "hal-datar",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Batang mendatar",
+            "petunjuk": "Hal yang dipelajari tentang batang yang berbaring ke arah kanan."
+          },
+          {
+            "id": "hal-ganda",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Diagram batang ganda",
+            "petunjuk": "Hal yang dipelajari tentang dua data yang digabung dalam satu diagram."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-petak",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tentukan nilai satu petak",
+            "petunjuk": "Langkah pertama sebelum menggambar batang, agar tinggi batang tepat."
+          },
+          {
+            "id": "cara-gambar",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Gambar batang sesuai data",
+            "petunjuk": "Langkah untuk membuat tinggi atau panjang batang sebanding dengan nilainya."
+          },
+          {
+            "id": "cara-sama",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Samakan skala dua diagram",
+            "petunjuk": "Langkah agar dua diagram bisa dibandingkan dengan jujur."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-baca",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Membaca data dengan cepat",
+            "petunjuk": "Kemampuan menemukan data tertinggi dan terendah hanya dengan melihat batang."
+          },
+          {
+            "id": "hasil-banding",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Membandingkan dua data",
+            "petunjuk": "Kemampuan menyebut selisih dan perubahan dari dua kelompok data."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Terbanyak, terendah, dan selisih",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel data diagram batang. Pasang data terbanyak, data terendah, dan selisihnya untuk medali emas, hasil panen lele, pengunjung perpustakaan, dan tabungan Nisa.",
+        "pojok": "Data",
+        "kolom": [
+          "Terbanyak",
+          "Terendah",
+          "Selisih"
+        ],
+        "baris": [
+          {
+            "label": "Medali",
+            "sel": [
+              "2019: 72 emas",
+              "2017: 38 emas",
+              "34 emas"
+            ]
+          },
+          {
+            "label": "Lele",
+            "sel": [
+              "Kolam 1: 32 kg",
+              "Kolam 4: 16 kg",
+              "16 kg"
+            ]
+          },
+          {
+            "label": "Perpus",
+            "sel": [
+              "Selasa: 60 orang",
+              "Jumat: 24 orang",
+              "36 orang"
+            ]
+          },
+          {
+            "label": "Nisa",
+            "sel": [
+              "Minggu 2: 24.000",
+              "Minggu 1: 17.000",
+              "Rp7.000"
             ]
           }
         ]

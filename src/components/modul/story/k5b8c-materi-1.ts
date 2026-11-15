@@ -70,13 +70,13 @@ export const ADEGAN_PEMBUKA_C: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 2. Eksplorasi 8.3A: skala persegi panjang (hlm. 252 sampai 253; Buku Panduan Guru hlm. 365 sampai 367) ------------------------------ */
+/* ------------------------------ 2. Skala persegi panjang: menemukan panjang ------------------------------ */
 const petak = (id: string, x: number, y: number, jumlah: number, ukuran: number, tinggi: number) => Array.from({ length: jumlah - 1 }, (_, i) => garis(`${id}${i}`, x + (i + 1) * ukuran, y, 0, tinggi, W.putih, 0.9));
 
 export const ADEGAN_SKALA_83A: AdeganStory = {
   id: "skala-83a",
-  judul: "Eksplorasi 8.3A: menemukan panjang dan skala",
-  sumber: "Buku Siswa hlm. 252–253; Buku Panduan Guru hlm. 365–367",
+  judul: "Menemukan panjang dan skala",
+  sumber: "Materi: menemukan panjang dan skala",
   latar: "#FFFBEB",
   kutipan: [
     "Eksplorasi 8.3A",
@@ -87,14 +87,14 @@ export const ADEGAN_SKALA_83A: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi 8.3A, Ayo Menemukan Panjangnya. Panjang persegi panjang pertama diketahui, yang kedua harus dicari.",
-      tambah(0, teks("jud", 150, 22, "Eksplorasi 8.3A", 12, W.ungu), teks("jud2", 150, 35, "Ayo Menemukan Panjangnya", 8.6, W.biru)),
-      tambah("Panjang", teks("sa", 30, 64, "soal a", 8, W.merah, { anchor: "start" })),
+      "Latihan satu, ayo menemukan panjangnya. Panjang persegi panjang pertama sepuluh satuan, yang kedua harus dicari.",
+      tambah(0, teks("jud", 150, 22, "Latihan 1", 12, W.ungu), teks("jud2", 150, 35, "Ayo Menemukan Panjangnya", 8.6, W.biru)),
+      tambah("Panjang", teks("sa", 30, 64, "bagian a", 8, W.merah, { anchor: "start" })),
       tambah("pertama", kotak("a1", 40, 74, 50, 20, W.batang, W.biru, { rx: 1, tebal: 1 }), teks("a1t", 65, 106, "10 satuan", 7.6)),
       tambah("kedua", kotak("a2", 110, 74, 90, 20, W.putih, W.merah, { rx: 1, tebal: 1.2, putus: true }), teks("a2t", 155, 106, "? satuan", 7.6, W.merah)),
     ),
     k(
-      "Pada soal a, sepuluh satuan sama dengan lima petak, jadi satu petak dua satuan. Sembilan petak berarti delapan belas satuan.",
+      "Pada bagian a, sepuluh satuan sama dengan lima petak, jadi satu petak dua satuan. Sembilan petak berarti delapan belas satuan.",
       tambah("lima", ...petak("p1", 40, 74, 5, 10, 20)),
       tambah("dua", teks("nilai", 150, 134, "1 petak = 2 satuan", 9.6, W.ungu)),
       tambah("sembilan", ...petak("p2", 110, 74, 9, 10, 20)),
@@ -102,22 +102,22 @@ export const ADEGAN_SKALA_83A: AdeganStory = {
       ubah("delapan", { id: "a2t", isi: "18 satuan", warna: W.hijau }),
     ),
     k(
-      "Soal b, 95 satuan sama dengan sembilan setengah petak, jadi satu petak sepuluh satuan. Empat petak berarti 40 satuan.",
+      "Bagian b, sembilan puluh lima satuan sama dengan sembilan setengah petak, jadi satu petak sepuluh satuan. Empat petak berarti empat puluh satuan.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Eksplorasi 8.3A", 12, W.ungu), teks("sb", 30, 64, "soal b", 8, W.merah, { anchor: "start" })),
-      tambah("95", kotak("b1", 30, 74, 95, 20, W.batang, W.biru, { rx: 1, tebal: 1 }), teks("b1t", 77, 106, "95 satuan", 7.6)),
+      tambah(0, teks("jud", 150, 22, "Latihan 1", 12, W.ungu), teks("sb", 30, 64, "bagian b", 8, W.merah, { anchor: "start" })),
+      tambah("sembilan", kotak("b1", 30, 74, 95, 20, W.batang, W.biru, { rx: 1, tebal: 1 }), teks("b1t", 77, 106, "95 satuan", 7.6)),
       tambah("setengah", ...petak("q1", 30, 74, 10, 10, 20)),
       tambah("sepuluh", teks("nilai", 150, 134, "1 petak = 10 satuan", 9.6, W.ungu)),
-      tambah("empat", kotak("b2", 150, 74, 40, 20, W.batang2, W.biru, { rx: 1, tebal: 1 }), teks("b2t", 170, 106, "40 satuan", 7.6, W.hijau)),
+      tambah("Empat", kotak("b2", 150, 74, 40, 20, W.batang2, W.biru, { rx: 1, tebal: 1 }), teks("b2t", 170, 106, "40 satuan", 7.6, W.hijau)),
     ),
     k(
-      "Soal c, 64 satuan sama dengan delapan petak, jadi satu petak delapan satuan. Enam petak berarti 48 satuan.",
+      "Bagian c, enam puluh empat satuan sama dengan delapan petak, jadi satu petak delapan satuan. Enam petak berarti empat puluh delapan satuan.",
       bersih(0),
-      tambah(0, teks("jud", 150, 20, "Eksplorasi 8.3A", 12, W.ungu), teks("sc", 30, 40, "soal c", 8, W.merah, { anchor: "start" })),
-      tambah("64", kotak("c1", 80, 76, 34, 64, W.batang, W.biru, { rx: 1, tebal: 1 }), teks("c1t", 97, 154, "64 satuan", 7.6)),
+      tambah(0, teks("jud", 150, 20, "Latihan 1", 12, W.ungu), teks("sc", 30, 40, "bagian c", 8, W.merah, { anchor: "start" })),
+      tambah("enam", kotak("c1", 80, 76, 34, 64, W.batang, W.biru, { rx: 1, tebal: 1 }), teks("c1t", 97, 154, "64 satuan", 7.6)),
       tambah("delapan", ...Array.from({ length: 7 }, (_, i) => garis(`rh${i}`, 80, 84 + i * 8, 34, 0, W.putih, 0.9))),
       tambah("delapan@2", teks("nilai", 215, 100, "1 petak = 8 satuan", 9.6, W.ungu)),
-      tambah("enam", kotak("c2", 170, 92, 34, 48, W.batang2, W.biru, { rx: 1, tebal: 1 }), teks("c2t", 187, 154, "48 satuan", 7.6, W.hijau)),
+      tambah("enam@2", kotak("c2", 170, 92, 34, 48, W.batang2, W.biru, { rx: 1, tebal: 1 }), teks("c2t", 187, 154, "48 satuan", 7.6, W.hijau)),
     ),
     k(
       "Tinggi batang harus tepat. Kalau sembarang, diagram menunjukkan nilai yang salah, sebab skala yang salah membuat diagram bermakna lain.",
@@ -128,33 +128,33 @@ export const ADEGAN_SKALA_83A: AdeganStory = {
       tambah("skala", teks("sk", 150, 176, "skala salah, arti diagram berubah", 8.4, W.merah)),
     ),
     k(
-      "Soal kedua: panjang 200 satuan, gambar panjang 120 satuan. Tinggi 140 satuan, gambar tinggi 80 satuan. Gambarnya harus sebanding.",
+      "Latihan dua: panjang dua ratus satuan, gambarnya seratus dua puluh. Tinggi seratus empat puluh satuan, gambarnya delapan puluh. Gambarnya harus sebanding.",
       bersih(0),
       tambah(0, teks("jud", 150, 20, "Menggambar sebanding", 12, W.ungu)),
-      tambah("200", kotak("m1", 20, 50, 100, 18, W.batang, W.biru, { rx: 1, tebal: 1 }), teks("m1t", 70, 82, "200 satuan", 7.6)),
-      tambah("120", kotak("m2", 20, 94, 60, 18, W.batang2, W.biru, { rx: 1, tebal: 1 }), teks("m2t", 50, 126, "120 satuan", 7.6, W.hijau)),
-      tambah("140", kotak("n1", 170, 70, 32, 70, W.batang, W.biru, { rx: 1, tebal: 1 }), teks("n1t", 186, 154, "140 satuan", 7.4)),
-      tambah("80", kotak("n2", 220, 100, 32, 40, W.batang2, W.biru, { rx: 1, tebal: 1 }), teks("n2t", 236, 154, "80 satuan", 7.4, W.hijau)),
+      tambah("ratus@1", kotak("m1", 20, 50, 100, 18, W.batang, W.biru, { rx: 1, tebal: 1 }), teks("m1t", 70, 82, "200 satuan", 7.6)),
+      tambah("ratus@2", kotak("m2", 20, 94, 60, 18, W.batang2, W.biru, { rx: 1, tebal: 1 }), teks("m2t", 50, 126, "120 satuan", 7.6, W.hijau)),
+      tambah("ratus@3", kotak("n1", 170, 70, 32, 70, W.batang, W.biru, { rx: 1, tebal: 1 }), teks("n1t", 186, 154, "140 satuan", 7.4)),
+      tambah("delapan", kotak("n2", 220, 100, 32, 40, W.batang2, W.biru, { rx: 1, tebal: 1 }), teks("n2t", 236, 154, "80 satuan", 7.4, W.hijau)),
     ),
     k(
       "Jadi sebelum membuat diagram batang, tanyakan selalu: satu petak mewakili berapa satuan?",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Satu petak mewakili berapa satuan?", 10.5, W.ungu)),
-      tambah("diagram", ...kartu("s1", 18, 50, 80, 50, W.langit, ["soal a", "2 satuan"], 9)),
-      tambah("petak", ...kartu("s2", 110, 50, 80, 50, W.mint, ["soal b", "10 satuan"], 9)),
-      tambah("berapa", ...kartu("s3", 202, 50, 80, 50, W.mawar, ["soal c", "8 satuan"], 9)),
+      tambah("diagram", ...kartu("s1", 18, 50, 80, 50, W.langit, ["bagian a", "2 satuan"], 9)),
+      tambah("petak", ...kartu("s2", 110, 50, 80, 50, W.mint, ["bagian b", "10 satuan"], 9)),
+      tambah("berapa", ...kartu("s3", 202, 50, 80, 50, W.mawar, ["bagian c", "8 satuan"], 9)),
       tambah("satuan?", emo("tny", 150, 150, "🤔", 30)),
     ),
   ],
 };
 
-/* ------------------------------ 3. Eksplorasi 8.3B: diagram batang vertikal Sea Games (hlm. 254 sampai 255; Buku Panduan Guru hlm. 367 sampai 369) ------------------------------ */
+/* ------------------------------ 3. Diagram batang vertikal: medali emas Sea Games ------------------------------ */
 const GS: GV = { x: 52, y: 158, w: 220, h: 104, maks: 80, langkah: 20 };
 
 export const ADEGAN_VERTIKAL_83B: AdeganStory = {
   id: "vertikal-83b",
-  judul: "Eksplorasi 8.3B: diagram batang vertikal medali emas",
-  sumber: "Buku Siswa hlm. 254–255; Buku Panduan Guru hlm. 367–369",
+  judul: "Diagram batang vertikal medali emas",
+  sumber: "Materi: diagram batang vertikal",
   latar: "#F0FDF4",
   kutipan: [
     "Eksplorasi 8.3B",
@@ -164,29 +164,25 @@ export const ADEGAN_VERTIKAL_83B: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi 8.3B, diagram batang vertikal. Komang bertanya, bagaimana cepat mengetahui data paling banyak dan paling sedikit?",
-      tambah(0, teks("jud", 150, 26, "Eksplorasi 8.3B", 13, W.ungu), teks("jud2", 150, 41, "Diagram Batang Vertikal", 9.4, W.biru)),
+      "Sekarang kita belajar diagram batang vertikal. Komang bertanya, bagaimana cara cepat mengetahui data paling banyak dan paling sedikit?",
+      tambah(0, teks("jud", 150, 26, "Diagram Batang Vertikal", 12, W.ungu), teks("jud2", 150, 41, "Cara cepat membaca data", 9.4, W.biru)),
       tambah("Komang", emo("tny", 150, 100, "🤔", 38)),
       tambah("cepat", teks("q", 150, 150, "Mana yang paling banyak dan paling sedikit?", 8.6, W.merah)),
     ),
     k(
-      "Datanya medali emas Indonesia di Sea Games: 2013 ada 65, 2015 ada 47, 2017 ada 38, 2019 ada 72, dan 2021 ada 69.",
+      "Datanya medali emas Indonesia di Sea Games. Tahun dua ribu tiga belas ada enam puluh lima, dua ribu lima belas ada empat puluh tujuh, dan dua ribu tujuh belas ada tiga puluh delapan.",
       bersih(0),
       tambah(0, teks("jud", 150, 18, "Medali Emas Indonesia di Sea Games", 9.6, W.ungu)),
       tambah("Datanya", ...tabel("tb", 50, 28, [100, 100], 20, [["Tahun", "Medali emas"]], 8)),
-      tambah("2013", ...barisTabel("tb1", 50, 48, [100, 100], 20, ["2013", "65"], 8)),
-      tambah("2015", ...barisTabel("tb2", 50, 68, [100, 100], 20, ["2015", "47"], 8)),
-      tambah("2017", ...barisTabel("tb3", 50, 88, [100, 100], 20, ["2017", "38"], 8)),
-      tambah("2019", ...barisTabel("tb4", 50, 108, [100, 100], 20, ["2019", "72"], 8)),
-      tambah("2021", ...barisTabel("tb5", 50, 128, [100, 100], 20, ["2021", "69"], 8)),
+      tambah("ribu@1", ...barisTabel("tb1", 50, 48, [100, 100], 20, ["2013", "65"], 8)),
+      tambah("ribu@2", ...barisTabel("tb2", 50, 68, [100, 100], 20, ["2015", "47"], 8)),
+      tambah("ribu@3", ...barisTabel("tb3", 50, 88, [100, 100], 20, ["2017", "38"], 8)),
     ),
     k(
-      "Sea Games diadakan setiap 2 tahun. Edisi 2021 baru terlaksana tahun 2022 karena pandemi.",
-      bersih(0),
-      tambah(0, teks("jud", 150, 24, "Tentang Sea Games", 12, W.ungu)),
-      tambah("setiap", ...kartu("s1", 40, 44, 220, 36, W.langit, ["Diadakan setiap 2 tahun"], 9.4)),
-      tambah("2021", ...kartu("s2", 40, 90, 220, 36, W.mint, ["Edisi 2021 di Hanoi, Vietnam"], 9.4)),
-      tambah("2022", ...kartu("s3", 40, 136, 220, 36, W.krem, ["Terlaksana pada tahun 2022"], 9.4)),
+      "Lalu dua ribu sembilan belas ada tujuh puluh dua, dan dua ribu dua puluh satu ada enam puluh sembilan.",
+      tambah("ribu@1", ...barisTabel("tb4", 50, 108, [100, 100], 20, ["2019", "72"], 8)),
+      tambah("ribu@2", ...barisTabel("tb5", 50, 128, [100, 100], 20, ["2021", "69"], 8)),
+      tambah("dua@3", teks("lm", 150, 168, "lima data", 9, W.hijau)),
     ),
     k(
       "Sumbu mendatar berisi tahun, sumbu tegak berisi medali emas dengan skala nol sampai delapan puluh, tiap langkah dua puluh.",
@@ -197,19 +193,19 @@ export const ADEGAN_VERTIKAL_83B: AdeganStory = {
       tambah("tegak", teks("yt", 20, 80, "Medali", 6.6, W.biru), teks("yt2", 20, 89, "emas", 6.6, W.biru)),
     ),
     k(
-      "Batang tahun 2013 setinggi 65, sedikit di atas garis enam puluh. Berikutnya 2015 setinggi 47, dan 2017 setinggi 38.",
-      tambah("2013", ...batangV("sb0", GS, 0, 5, 65, W.batang, "2013")),
-      tambah("2015", ...batangV("sb1", GS, 1, 5, 47, W.batang, "2015")),
-      tambah("2017", ...batangV("sb2", GS, 2, 5, 38, W.batang, "2017")),
+      "Batang tahun dua ribu tiga belas setinggi enam puluh lima, sedikit di atas garis enam puluh. Berikutnya dua ribu lima belas setinggi empat puluh tujuh, dan dua ribu tujuh belas setinggi tiga puluh delapan.",
+      tambah("ribu@1", ...batangV("sb0", GS, 0, 5, 65, W.batang, "2013")),
+      tambah("ribu@2", ...batangV("sb1", GS, 1, 5, 47, W.batang, "2015")),
+      tambah("ribu@3", ...batangV("sb2", GS, 2, 5, 38, W.batang, "2017")),
     ),
     k(
-      "Lalu 2019 setinggi 72 dan 2021 setinggi 69. Batang paling tinggi tahun 2019, paling pendek tahun 2017. Tanpa membaca angka, kita langsung tahu.",
-      tambah("2019", ...batangV("sb3", GS, 3, 5, 72, W.batang, "2019")),
-      tambah("2021", ...batangV("sb4", GS, 4, 5, 69, W.batang, "2021")),
-      sorotkan("tinggi@3", "sb3-k"),
-      tambah("tinggi@3", teks("tt", 150, 30, "tertinggi: 2019", 7.8, W.hijau)),
-      sorotkan("pendek", "sb2-k"),
-      tambah("pendek", teks("tr", 150, 41, "terendah: 2017", 7.8, W.merah)),
+      "Lalu dua ribu sembilan belas setinggi tujuh puluh dua, dan dua ribu dua puluh satu setinggi enam puluh sembilan. Batang tertinggi tahun dua ribu sembilan belas, terpendek tahun dua ribu tujuh belas.",
+      tambah("ribu@1", ...batangV("sb3", GS, 3, 5, 72, W.batang, "2019")),
+      tambah("ribu@2", ...batangV("sb4", GS, 4, 5, 69, W.batang, "2021")),
+      sorotkan("tertinggi", "sb3-k"),
+      tambah("tertinggi", teks("tt", 150, 30, "tertinggi: 2019", 7.8, W.hijau)),
+      sorotkan("terpendek", "sb2-k"),
+      tambah("terpendek", teks("tr", 150, 41, "terendah: 2017", 7.8, W.merah)),
     ),
   ],
 };

@@ -9,11 +9,11 @@ const metode = (id: string, x: number, y: number, nama: string[], ket: string, w
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode luar untuk diagram batang",
-  sumber: "Metode luar · peta empat metode",
+  sumber: "Metode luar: peta empat metode",
   latar: "#F5F3FF",
   ketukan: [
     k(
-      "Video ini membahas empat metode luar untuk diagram batang. Tiap metode kita lihat konsepnya, lalu kita terapkan pada data dari buku.",
+      "Video ini membahas empat metode luar untuk diagram batang. Tiap metode kita lihat konsepnya, lalu kita terapkan pada data contoh.",
       tambah(0, teks("jud", 150, 26, "Empat Metode Luar", 15, W.ungu)),
       tambah("metode", emo("alat", 150, 76, "🧰", 34)),
       tambah("konsepnya", ...kartu("kn", 40, 100, 100, 44, W.krem, ["konsep"], 11)),
@@ -45,9 +45,9 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       ubah("keempat,", { id: "m3-k", sorot: false }),
     ),
     k(
-      "Contoh datanya dari buku: kalori makanan, medali emas Sea Games, pengunjung perpustakaan, dan nilai ulangan Komang dan teman-temannya.",
+      "Contoh datanya adalah kalori makanan, medali emas Sea Games, pengunjung perpustakaan, dan nilai ulangan Komang dan teman-temannya.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Data contoh dari buku", 13, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Data contoh yang dipakai", 13, W.ungu)),
       tambah("kalori", ...kartu("a1", 40, 38, 220, 30, W.krem, ["kalori makanan"], 10)),
       tambah("medali", ...kartu("a2", 40, 76, 220, 30, W.mint, ["medali emas Sea Games"], 10)),
       tambah("pengunjung", ...kartu("a3", 40, 114, 220, 30, W.langit, ["pengunjung perpustakaan"], 10)),
@@ -63,7 +63,7 @@ const baris = (i: number, warna: string, id = "ls") => kartu(`${id}${i}`, 20, 40
 export const ADEGAN_LUAR_BCRP: AdeganStory = {
   id: "luar-bcrp",
   judul: "Bar Chart Reading Protocol: lima langkah membaca",
-  sumber: "Metode luar · Bar Chart Reading Protocol",
+  sumber: "Metode luar: Bar Chart Reading Protocol",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -113,11 +113,11 @@ const halus = Array.from({ length: 14 }, (_, i) => (i + 1) * 20).filter((n) => n
 export const ADEGAN_LUAR_BCRP_TERAPAN: AdeganStory = {
   id: "luar-bcrp-terapan",
   judul: "Bar Chart Reading Protocol pada diagram kalori",
-  sumber: "Metode luar · Bar Chart Reading Protocol, contoh kalori makanan",
+  sumber: "Metode luar: Bar Chart, contoh kalori",
   latar: "#ECFEFF",
   ketukan: [
     k(
-      "Terapkan pada diagram kalori makanan. Langkah pertama, judulnya Kandungan Kalori Per 100 Gram Makanan.",
+      "Terapkan pada diagram kalori makanan. Langkah pertama, judulnya Kandungan Kalori Per Seratus Gram Makanan.",
       tambah(0, teks("jud", 150, 14, "Kandungan Kalori Per 100 Gram Makanan", 8.6, W.ungu), teks("bdg", 150, 28, "Langkah 1: baca judul", 9, W.hijau)),
       tambah("judulnya", emo("em", 150, 100, "🥗", 40)),
       sorotkan("judulnya", "jud"),
@@ -136,13 +136,13 @@ export const ADEGAN_LUAR_BCRP_TERAPAN: AdeganStory = {
       tambah("kecilnya", ...halus.map((n) => garis(`gh${n}`, 84 + (n / 300) * 190, 36, 0, 98, W.abu, 0.5, { putus: true }))),
     ),
     k(
-      "Langkah keempat, batang tempe goreng berujung dua garis kecil setelah dua ratus, yaitu 240.",
+      "Langkah keempat, batang tempe goreng berujung dua garis kecil setelah dua ratus, yaitu dua ratus empat puluh.",
       ubah(0, { id: "bdg", isi: "Langkah 4: tarik garis ke sumbu" }),
       tambah("batang", ...KALORI4.flatMap(([nama, n], i) => batangH(`kb${i}`, GK2, i, 4, n, i === 2 ? W.batang2 : W.batang, nama))),
       sorotkan("tempe", "kb2-k"),
     ),
     k(
-      "Langkah kelima, jawab: dalam 100 gram tempe goreng ada 240 kilokalori, lebih banyak daripada nasi putih yang 130.",
+      "Langkah kelima, jawab: dalam seratus gram tempe goreng ada dua ratus empat puluh kilokalori, lebih banyak daripada nasi putih yang seratus tiga puluh.",
       ubah(0, { id: "bdg", isi: "Langkah 5: jawab dengan satuan" }),
       tambah("tempe", ...kartu("jw", 20, 164, 260, 32, W.mint, ["100 g tempe goreng: 240 kkal", "nasi putih: 130 kkal"], 8.6)),
     ),
@@ -155,7 +155,7 @@ const GZ: GV = { x: 70, y: 150, w: 90, h: 90, maks: 60, langkah: 20 };
 export const ADEGAN_LUAR_ASC: AdeganStory = {
   id: "luar-asc",
   judul: "Axis Scale Consistency: aturan skala sumbu",
-  sumber: "Metode luar · Axis Scale Consistency",
+  sumber: "Metode luar: Axis Scale Consistency",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -165,7 +165,7 @@ export const ADEGAN_LUAR_ASC: AdeganStory = {
       tambah("sama", ...kartu("s2", 40, 108, 220, 40, W.mint, ["harus sama dan jujur"], 10)),
     ),
     k(
-      "Aturan pertama, sumbu nilai mulai dari nol. Aturan kedua, jarak antargaris sama, misalnya tiap 20.",
+      "Aturan pertama, sumbu nilai mulai dari nol. Aturan kedua, jarak antargaris sama, misalnya tiap dua puluh.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Aturan 1 dan 2", 12, W.ungu)),
       tambah("nilai", ...sumbuV("az", GZ), ...batangV("az", GZ, 0, 1, 40, W.batang, "contoh", { angka: false })),
@@ -173,7 +173,7 @@ export const ADEGAN_LUAR_ASC: AdeganStory = {
       tambah("tiap", teks("n20", 190, 110, "tiap 20", 8, W.hijau, { anchor: "start" })),
     ),
     k(
-      "Aturan ketiga, garis kecil punya nilai sendiri. Jika garis besar 20 dan ada empat garis kecil, tiap garis kecil bernilai 4.",
+      "Aturan ketiga, garis kecil punya nilai sendiri. Jika garis besar dua puluh dan ada empat garis kecil, tiap garis kecil bernilai empat.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Aturan 3: garis kecil", 12, W.ungu)),
       tambah("ketiga,", garis("ax", 100, 160, 0, -120, W.biru, 1.6), teks("z20", 94, 163, "20", 8, W.biru, { anchor: "end" }), teks("z40", 94, 43, "40", 8, W.biru, { anchor: "end" })),
@@ -199,22 +199,22 @@ const GAL2: GV = { x: 40, y: 140, w: 90, h: 80, maks: 18, langkah: 6 };
 export const ADEGAN_LUAR_ASC_TERAPAN: AdeganStory = {
   id: "luar-asc-terapan",
   judul: "Axis Scale Consistency pada siswa laki-laki dan perempuan",
-  sumber: "Metode luar · Axis Scale Consistency, contoh Eksplorasi 8.3D",
+  sumber: "Metode luar: Axis Scale, contoh siswa",
   latar: "#FDF4FF",
   ketukan: [
     k(
-      "Contoh dari Eksplorasi 8.3D. Laki-laki tahun 2019 sebanyak 16, perempuan tahun 2020 juga sebanyak 16.",
-      tambah(0, teks("jud", 150, 16, "Eksplorasi 8.3D", 11, W.ungu)),
+      "Contoh dari data siswa. Laki-laki tahun dua ribu sembilan belas sebanyak enam belas, perempuan tahun dua ribu dua puluh juga sebanyak enam belas.",
+      tambah(0, teks("jud", 150, 16, "Data siswa SD Pancasila", 11, W.ungu)),
       tambah("Laki-laki", teks("tl", 85, 32, "Laki-laki", 8, W.batang), ...sumbuV("ga", GAL), ...batangV("la", GAL, 1, 3, 16, W.batang, "2019")),
       tambah("perempuan", teks("tp", 215, 32, "Perempuan", 8, W.batang2), ...sumbuV("gb", GAR), ...batangV("pa", GAR, 1, 3, 16, W.batang2, "2020")),
     ),
     k(
-      "Tetapi diagram laki-laki berskala sampai 30, diagram perempuan sampai 18. Karena skala beda, dua nilai yang sama tampak berbeda tinggi.",
+      "Tetapi diagram laki-laki berskala sampai tiga puluh, diagram perempuan sampai delapan belas. Karena skala beda, dua nilai yang sama tampak berbeda tinggi.",
       sorotkan("skala", "ga-a30", "gb-a18"),
       tambah("berbeda", teks("bd", 150, 176, "nilai sama, tinggi tampak berbeda", 8.8, W.merah)),
     ),
     k(
-      "Jadi samakan skalanya, nol sampai 18, pada kedua diagram. Sekarang dua batang 16 sama tinggi.",
+      "Jadi samakan skalanya, nol sampai delapan belas, pada kedua diagram. Sekarang dua batang enam belas sama tinggi.",
       bersih(0),
       tambah(0, teks("jud", 150, 16, "Skala disamakan: 0 sampai 18", 10.5, W.ungu)),
       tambah("samakan", teks("tl", 85, 32, "Laki-laki", 8, W.batang), ...sumbuV("ga", GAL2), ...batangV("la", GAL2, 1, 3, 16, W.batang, "2019")),

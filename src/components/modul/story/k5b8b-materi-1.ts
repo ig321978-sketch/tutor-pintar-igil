@@ -52,14 +52,14 @@ export const ADEGAN_PEMBUKA_B: AdeganStory = {
 /* ------------------------------ 2. Eksplorasi 8.2A teka-teki jeruk (hlm. 248) ------------------------------ */
 export const ADEGAN_TEKA_SATU: AdeganStory = {
   id: "teka-satu",
-  judul: "Eksplorasi 8.2A: menebak bilangan tersembunyi (jeruk)",
-  sumber: "Buku Siswa hlm. 248; Buku Panduan Guru hlm. 358",
+  judul: "Teka-teki: menebak bilangan tersembunyi (jeruk)",
+  sumber: "Materi: teka-teki jeruk",
   latar: "#FFF7ED",
   kutipan: ["Eksplorasi 8.2A", "Menebak bilangan tersembunyi", "mewakili 100"],
   ketukan: [
     k(
-      "Eksplorasi 8.2A, bermain teka-teki. Teka-teki pertama menebak bilangan tersembunyi. Petunjuknya, dua jeruk mewakili 100.",
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 8.2A", 13, W.ungu)),
+      "Ayo bermain teka-teki. Teka-teki pertama menebak bilangan tersembunyi. Petunjuknya, dua jeruk mewakili 100.",
+      tambah(0, teks("jud", 150, 24, "Teka-teki jeruk", 13, W.ungu)),
       tambah("Petunjuknya,", teks("pj", 150, 52, "Petunjuk", 9, W.merah)),
       tambah("dua", emo("j1", 94, 90, "🍊", 30), emo("j2", 136, 90, "🍊", 30)),
       tambah("100.", teks("n100", 210, 88, "mewakili 100", 11, W.biru)),
@@ -72,12 +72,12 @@ export const ADEGAN_TEKA_SATU: AdeganStory = {
     k(
       "Pertanyaannya, tiga jeruk mewakili bilangan berapa? Tiga kali 50 sama dengan 150.",
       bersih(0),
-      tambah(0, teks("jud", 150, 24, "Eksplorasi 8.2A", 13, W.ungu)),
+      tambah(0, teks("jud", 150, 24, "Teka-teki jeruk", 13, W.ungu)),
       tambah("tiga", emo("t1", 70, 80, "🍊", 30), emo("t2", 112, 80, "🍊", 30), emo("t3", 154, 80, "🍊", 30), teks("tq", 220, 78, "mewakili ?", 11, W.merah)),
       tambah("Tiga", teks("hit", 150, 128, "3 x 50 = 150", 14, W.hijau)),
     ),
     k(
-      "Buku Panduan Guru menegaskan jawabannya 150. Kegiatan ini melatih number sense, yaitu kemampuan merasakan nilai suatu gambar.",
+      "Jadi jawabannya 150. Kegiatan ini melatih number sense, yaitu kemampuan merasakan nilai suatu gambar.",
       sorotkan("150.", "hit"),
       tambah("number", kartu("ns", 40, 150, 220, 36, W.krem, ["number sense:", "merasakan nilai suatu gambar"], 8.8)),
     ),
@@ -87,8 +87,8 @@ export const ADEGAN_TEKA_SATU: AdeganStory = {
 /* ------------------------------ 3. Eksplorasi 8.2A teka-teki tomat dan wortel (hlm. 248) ------------------------------ */
 export const ADEGAN_TEKA_DUA: AdeganStory = {
   id: "teka-dua",
-  judul: "Eksplorasi 8.2A: mewakili bilangan apakah aku (tomat dan wortel)",
-  sumber: "Buku Siswa hlm. 248; Buku Panduan Guru hlm. 358",
+  judul: "Teka-teki: mewakili bilangan apakah aku (tomat dan wortel)",
+  sumber: "Materi: teka-teki tomat dan wortel",
   latar: "#FEF2F2",
   kutipan: ["Mewakili bilangan apakah aku?", "mewakili bilangan 60", "mewakili bilangan 40", "Coba kalian gambarkan simbol yang mewakili bilangan 28", "Bagaimana jika bilangan 100 dinyatakan dengan simbol di"],
   ketukan: [
@@ -121,7 +121,7 @@ export const ADEGAN_TEKA_DUA: AdeganStory = {
       tambah("Karena", teks("g1", 150, 136, "20 + 8 = 28", 14, W.biru)),
     ),
     k(
-      "Pertanyaan c: bagaimana jika bilangan 100 dinyatakan dengan simbol tadi? Jawabannya ada beberapa, dan Buku Panduan Guru meminta kita menggali semua kemungkinan.",
+      "Pertanyaan c: bagaimana jika bilangan 100 dinyatakan dengan simbol tadi? Jawabannya ada beberapa, jadi kita gali semua kemungkinan.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Pertanyaan c", 13, W.ungu)),
       tambah("100", teks("i0", 150, 60, "bilangan 100 = ?", 13, W.merah)),
@@ -153,14 +153,14 @@ const kartuKue = (id: string, x: number, y: number, warna: string, nama: string,
 
 export const ADEGAN_KUE: AdeganStory = {
   id: "kue-tradisional",
-  judul: "Eksplorasi 8.2B: Ayo Menyimak kue tradisional Indonesia",
-  sumber: "Buku Siswa hlm. 249; Buku Panduan Guru hlm. 359",
+  judul: "Ayo menyimak kue tradisional Indonesia",
+  sumber: "Materi: kue tradisional Indonesia",
   latar: "#FFFBEB",
   kutipan: ["Eksplorasi 8.2B", "Ayo Menyimak", "Kue Tradisional Indonesia", "Meskipun memakai nama Ambon", "Kue Jawada", "Kue Barongko", "Indonesia kaya akan keragaman budaya"],
   ketukan: [
     k(
-      "Eksplorasi 8.2B, Ayo Menyimak. Buku mengenalkan empat kue tradisional Indonesia, supaya kita mencintai budaya daerah.",
-      tambah(0, teks("jud", 150, 22, "Eksplorasi 8.2B", 13, W.ungu), teks("sub", 150, 40, "Kue Tradisional Indonesia", 10.4, W.merah)),
+      "Sekarang kita menyimak kue tradisional Indonesia. Ada empat kue yang kita kenal, supaya kita mencintai budaya daerah.",
+      tambah(0, teks("jud", 150, 22, "Ayo menyimak", 13, W.ungu), teks("sub", 150, 40, "Kue Tradisional Indonesia", 10.4, W.merah)),
       tambah("empat", emo("ik", 150, 100, "🍰", 40)),
       tambah("budaya", teks("bd", 150, 140, "cinta budaya daerah", 11, W.hijau)),
     ),
@@ -177,8 +177,8 @@ export const ADEGAN_KUE: AdeganStory = {
       tambah("barongko", kartuKue("q4", 156, 106, W.merahMuda, "Kue Barongko", "Sulawesi Selatan", "pisang, santan, gula, telur")),
     ),
     k(
-      "Buku bertanya, apa saja kue tradisional yang terkenal di daerah teman-temanmu, dan terbuat dari bahan apa saja kue itu?",
-      tambah("bertanya,", teks("qs", 150, 188, "kue khas daerahmu apa?", 11, W.merah)),
+      "Sekarang coba ceritakan, apa saja kue tradisional yang terkenal di daerah teman-temanmu, dan terbuat dari bahan apa saja kue itu?",
+      tambah("ceritakan,", teks("qs", 150, 188, "kue khas daerahmu apa?", 11, W.merah)),
       sorotkan("daerah", "q1-k", "q2-k", "q3-k", "q4-k"),
     ),
   ],

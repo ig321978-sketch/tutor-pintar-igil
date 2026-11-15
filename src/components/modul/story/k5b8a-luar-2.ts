@@ -49,32 +49,32 @@ const isiN = (at: string | number, r: number): Aksi[] => [hapus(at, ...idBarisFr
 
 export const ADEGAN_LUAR_TABEL_TERAPAN: AdeganStory = {
   id: "luar-tabel-terapan",
-  judul: "Frequency Table Construction: penerapan pada Tabel 8.5",
-  sumber: "Metode luar 3: penerapan pada Ayo Berlatih hlm. 247",
+  judul: "Frequency Table Construction: penerapan pada nilai ulangan",
+  sumber: "Metode luar 3: penerapan pada nilai ulangan",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapkan pada Tabel 8.5. Langkah satu: tulis nilai yang muncul sekali saja, yaitu 40, 50, 60, 70, 80, 90, dan 100. Itu tujuh kategori.",
-      tambah(0, judul("Tabel 8.5 nilai ulangan")),
+      "Terapkan pada nilai ulangan Mekarsari. Langkah satu: tulis nilai yang muncul sekali saja, yaitu empat puluh, lima puluh, enam puluh, tujuh puluh, delapan puluh, sembilan puluh, dan seratus. Itu tujuh kategori.",
+      tambah(0, judul("Tabel nilai ulangan")),
       tambah("Langkah", ...kepalaFrek("tn", 40, 34, ["Nilai", "Turus", "Frekuensi"], KOL_N, 15, 7.8)),
-      ...NILAI.map(([nama], i): Aksi => tambah(i === 6 ? "100." : `${nama},`, ...barisN(i + 1, null))),
+      ...NILAI.map((_, i): Aksi => tambah([14, 16, 18, 20, 22, 24, 27][i], ...barisN(i + 1, null))),
     ),
     k(
-      "Langkah dua dan tiga: beri goresan untuk tiap nilai, lalu tulis frekuensinya: 2, 1, 5, 6, 7, 3, dan 1.",
-      ...NILAI.flatMap(([, n], i): Aksi[] => isiN(i === 6 ? "1@2" : `${n},`, i + 1)),
+      "Langkah dua dan tiga: beri goresan untuk tiap nilai, lalu tulis frekuensinya: dua, satu, lima, enam, tujuh, tiga, dan satu.",
+      ...NILAI.flatMap((_, i): Aksi[] => isiN([12, 13, 14, 15, 16, 17, 19][i], i + 1)),
     ),
     k(
-      "Langkah empat: jumlah frekuensi 25 sama dengan banyaknya data, jadi tidak ada nilai yang terlewat atau terhitung dua kali.",
+      "Langkah empat: jumlah frekuensi dua puluh lima sama dengan banyaknya data, jadi tidak ada nilai yang terlewat atau terhitung dua kali.",
       tambah("jumlah", teks("tj", 150, 166, "2 + 1 + 5 + 6 + 7 + 3 + 1 = 25", 10, W.ungu)),
       tambah("banyaknya", teks("tj2", 150, 184, "banyaknya data: 25 nilai", 9.4, W.hijau)),
     ),
     k(
-      "Bandingkan dengan Tabel 8.4 sayuran: jumlah frekuensinya 39, bukan 16, karena satu siswa boleh memilih sampai tiga sayuran. Jadi periksa dulu aturan pengisiannya.",
+      "Bandingkan dengan tabel sayuran tadi: jumlah frekuensinya tiga puluh sembilan, bukan enam belas, karena satu siswa boleh memilih sampai tiga sayuran. Jadi periksa dulu aturan pengisiannya.",
       bersih(0),
       tambah(0, judul("periksa aturan pengisian")),
-      tambah("Tabel", ...kartu("pa", 14, 44, 126, 58, W.hijauMuda, ["Tabel 8.5", "25 data", "jumlah frekuensi 25"], 8.6)),
-      tambah("sayuran:", ...kartu("pb", 160, 44, 126, 58, W.krem, ["Tabel 8.4", "16 siswa", "jumlah frekuensi 39"], 8.6)),
-      tambah("tiga", teks("pc", 150, 136, "tiap siswa boleh sampai 3 pilihan", 9.6, W.merah)),
+      tambah("Tabel", ...kartu("pa", 14, 44, 126, 58, W.hijauMuda, ["Nilai ulangan", "25 data", "jumlah frekuensi 25"], 8.6)),
+      tambah("sayuran:", ...kartu("pb", 160, 44, 126, 58, W.krem, ["Sayuran favorit", "16 siswa", "jumlah frekuensi 39"], 8.6)),
+      tambah("boleh", teks("pc", 150, 136, "tiap siswa boleh sampai 3 pilihan", 9.6, W.merah)),
     ),
   ],
 };
@@ -83,7 +83,7 @@ export const ADEGAN_LUAR_TABEL_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_KEPUTUSAN: AdeganStory = {
   id: "luar-keputusan",
   judul: "Data-to-Decision Reading: konsep",
-  sumber: "Metode luar 4: membaca tabel untuk mengambil keputusan",
+  sumber: "Metode luar 4: dari tabel ke keputusan",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -135,27 +135,27 @@ const hasilDonat = (i: number) => teks(`dr${i}-h`, 250, 42 + i * 20 + 4, String(
 export const ADEGAN_LUAR_KEPUTUSAN_TERAPAN: AdeganStory = {
   id: "luar-keputusan-terapan",
   judul: "Data-to-Decision Reading: penerapan pada donat Anggi",
-  sumber: "Metode luar 4: penerapan pada Tabel 8.1 hlm. 237",
+  sumber: "Metode luar 4: penerapan pada donat Anggi",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Terapkan pada donat Anggi. Jumlahkan tiap rasa selama enam hari. Cokelat: 3 ditambah 4 ditambah 5 ditambah 5 ditambah 6 ditambah 7 adalah 30.",
+      "Terapkan pada donat Anggi. Jumlahkan tiap rasa selama enam hari. Cokelat: tiga ditambah empat ditambah lima ditambah lima ditambah enam ditambah tujuh adalah tiga puluh.",
       tambah(0, judul("donat Anggi, enam hari")),
       tambah("Terapkan", ...[0, 1, 2, 3].flatMap(barisDonat)),
       tambah("Cokelat:", teks("sc", 150, 136, "3 + 4 + 5 + 5 + 6 + 7 = 30", 8.8, W.ungu), hasilDonat(0)),
     ),
     k(
-      "Keju: 6 ditambah 4 ditambah 3 ditambah 4 ditambah 3 ditambah 5 adalah 25. Stroberi: 4 ditambah 6 ditambah 4 ditambah 5 ditambah 3 ditambah 4 adalah 26.",
+      "Keju: enam ditambah empat ditambah tiga ditambah empat ditambah tiga ditambah lima adalah dua puluh lima. Stroberi: empat ditambah enam ditambah empat ditambah lima ditambah tiga ditambah empat adalah dua puluh enam.",
       tambah("Keju:", teks("sk", 150, 150, "6 + 4 + 3 + 4 + 3 + 5 = 25", 8.8, W.ungu), hasilDonat(1)),
       tambah("Stroberi:", teks("ss", 150, 164, "4 + 6 + 4 + 5 + 3 + 4 = 26", 8.8, W.ungu), hasilDonat(2)),
     ),
     k(
-      "Kacang: 4 ditambah 3 ditambah 2 ditambah 1 ditambah 0 ditambah 0 adalah 10. Jumlah keempat rasa, 30, 25, 26, dan 10, adalah 91.",
+      "Kacang: empat ditambah tiga ditambah dua ditambah satu ditambah nol ditambah nol adalah sepuluh. Jumlah keempat rasa, tiga puluh, dua puluh lima, dua puluh enam, dan sepuluh, adalah sembilan puluh satu.",
       tambah("Kacang:", teks("sn", 150, 178, "4 + 3 + 2 + 1 + 0 + 0 = 10", 8.8, W.ungu), hasilDonat(3)),
       tambah("Jumlah", teks("st", 150, 192, "30 + 25 + 26 + 10 = 91", 9.4, W.hijau)),
     ),
     k(
-      "Terbanyak: cokelat 30. Tersedikit: kacang 10. Selisih keduanya 20. Keputusan Anggi sesuai data: tambah cokelat, hentikan kacang.",
+      "Terbanyak: cokelat tiga puluh. Tersedikit: kacang sepuluh. Selisih keduanya dua puluh. Keputusan Anggi sesuai data: tambah cokelat, hentikan kacang.",
       hapus(0, "sc", "sk", "ss", "sn", "st"),
       sorotkan("Terbanyak:", "dr0-h", "dr0-n"),
       sorotkan("Tersedikit:", "dr3-h", "dr3-n"),
@@ -169,7 +169,7 @@ export const ADEGAN_LUAR_KEPUTUSAN_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan empat metode luar Subbab A",
-  sumber: "Ringkasan metode luar Subbab A",
+  sumber: "Ringkasan metode luar",
   latar: "#EAF2FF",
   ketukan: [
     k(
