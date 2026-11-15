@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-mula", "teks": "Mula-mula 6 anak", "ikon": "🧩", "cabang": "bagian", "petunjuk": "Jumlah di awal itu mula-mula. Itu satu dari tiga bagian. Coba cabang lain." },
-          { "id": "a-sisa", "teks": "Sisa 4 anak", "ikon": "🧩", "cabang": "bagian", "petunjuk": "Yang masih tinggal itu sisa. Itu satu dari tiga bagian. Coba cabang lain." },
-          { "id": "a-pulang", "teks": "2 anak pulang", "ikon": "👋", "cabang": "berkurang", "petunjuk": "Yang pergi membuat benda berkurang. Coba cabang lain." },
-          { "id": "a-terbang", "teks": "2 kupu-kupu terbang", "ikon": "🦋", "cabang": "berkurang", "petunjuk": "Yang pergi membuat benda berkurang. Coba cabang lain." },
-          { "id": "a-tulis", "teks": "6 − 2 = 4", "ikon": "✏️", "cabang": "tulis", "petunjuk": "Menuliskan cerita dengan angka itu menulis. Coba cabang lain." },
-          { "id": "a-baca", "teks": "Enam dikurangi dua", "ikon": "🗣️", "cabang": "tulis", "petunjuk": "Menyebut kalimat dengan kata-kata itu membaca. Coba cabang lain." },
-          { "id": "a-nol", "teks": "3 − 3 = 0", "ikon": "0️⃣", "cabang": "nol", "petunjuk": "Semua pergi, sisanya nol. Coba cabang lain." },
-          { "id": "a-tetap", "teks": "7 − 0 = 7", "ikon": "0️⃣", "cabang": "nol", "petunjuk": "Tidak ada yang pergi, sisanya tetap sama. Itu soal nol. Coba cabang lain." }
+          {
+            "id": "a-mula",
+            "teks": "Mula-mula 6 anak",
+            "ikon": "🧩",
+            "cabang": "bagian",
+            "petunjuk": "Jumlah di awal itu mula-mula. Itu satu dari tiga bagian. Coba cabang lain."
+          },
+          {
+            "id": "a-sisa",
+            "teks": "Sisa 4 anak",
+            "ikon": "🧩",
+            "cabang": "bagian",
+            "petunjuk": "Yang masih tinggal itu sisa. Itu satu dari tiga bagian. Coba cabang lain."
+          },
+          {
+            "id": "a-pulang",
+            "teks": "2 anak pulang",
+            "ikon": "👋",
+            "cabang": "berkurang",
+            "petunjuk": "Yang pergi membuat benda berkurang. Coba cabang lain."
+          },
+          {
+            "id": "a-terbang",
+            "teks": "2 kupu-kupu terbang",
+            "ikon": "🦋",
+            "cabang": "berkurang",
+            "petunjuk": "Yang pergi membuat benda berkurang. Coba cabang lain."
+          },
+          {
+            "id": "a-tulis",
+            "teks": "6 − 2 = 4",
+            "ikon": "✏️",
+            "cabang": "tulis",
+            "petunjuk": "Menuliskan cerita dengan angka itu menulis. Coba cabang lain."
+          },
+          {
+            "id": "a-baca",
+            "teks": "Enam dikurangi dua",
+            "ikon": "🗣️",
+            "cabang": "tulis",
+            "petunjuk": "Menyebut kalimat dengan kata-kata itu membaca. Coba cabang lain."
+          },
+          {
+            "id": "a-nol",
+            "teks": "3 − 3 = 0",
+            "ikon": "0️⃣",
+            "cabang": "nol",
+            "petunjuk": "Semua pergi, sisanya nol. Coba cabang lain."
+          },
+          {
+            "id": "a-tetap",
+            "teks": "7 − 0 = 7",
+            "ikon": "0️⃣",
+            "cabang": "nol",
+            "petunjuk": "Tidak ada yang pergi, sisanya tetap sama. Itu soal nol. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -72,7 +120,15 @@
                 "ikon": "🧩",
                 "isi": "Enam anak bermain.",
                 "suara": "Mula-mula ada enam anak yang bermain tutup mata.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["boneka", 6]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "boneka",
+                      6
+                    ]
+                  ]
+                }
               },
               {
                 "id": "kurang",
@@ -80,7 +136,15 @@
                 "ikon": "👋",
                 "isi": "Dua anak pulang.",
                 "suara": "Berkurang dua. Dua anak harus pulang.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["boneka", 2]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "boneka",
+                      2
+                    ]
+                  ]
+                }
               },
               {
                 "id": "sisa",
@@ -88,7 +152,15 @@
                 "ikon": "✅",
                 "isi": "Empat anak masih bermain.",
                 "suara": "Sisanya empat anak. Enam dikurangi dua sama dengan empat.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["boneka", 4]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "boneka",
+                      4
+                    ]
+                  ]
+                }
               }
             ]
           },
@@ -105,7 +177,10 @@
                 "ikon": "🍰",
                 "catatan": "Ibu punya 6 kue. Upe makan 1. Sisa 5.",
                 "suara": "Ibu punya enam kue. Upe memakan satu kue. Sisa kue Ibu lima.",
-                "visual": { "jenis": "teks", "isi": "6 − 1 = 5" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 − 1 = 5"
+                }
               },
               {
                 "id": "nol",
@@ -113,7 +188,10 @@
                 "ikon": "🚗",
                 "catatan": "Tiga orang di mobil, semua turun.",
                 "suara": "Tiga orang di dalam mobil. Tiga orang turun. Sekarang tidak ada orang di mobil. Tiga dikurangi tiga hasilnya nol.",
-                "visual": { "jenis": "teks", "isi": "3 − 3 = 0" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 − 3 = 0"
+                }
               }
             ],
             "kesimpulan": "Nol artinya tidak ada yang tersisa."
@@ -131,7 +209,19 @@
                 "ikon": "🔴",
                 "isi": "Empat bola sisa, dua bola diambil.",
                 "suara": "Benda. Enam bola, dua bola diambil. Sisa empat bola.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 4], ["bola-biru", 2]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "bola-merah",
+                      4
+                    ],
+                    [
+                      "bola-biru",
+                      2
+                    ]
+                  ]
+                }
               },
               {
                 "id": "bingkai",
@@ -139,7 +229,10 @@
                 "ikon": "🔲",
                 "isi": "Dua kotak dicoret.",
                 "suara": "Bingkai sepuluh. Enam kotak terisi, dua kotak dicoret. Sisa empat kotak.",
-                "visual": { "jenis": "teks", "isi": "6 kotak, 2 dicoret, sisa 4" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 kotak, 2 dicoret, sisa 4"
+                }
               },
               {
                 "id": "goresan",
@@ -147,8 +240,154 @@
                 "ikon": "✏️",
                 "isi": "Satu goresan untuk satu benda.",
                 "suara": "Goresan. Enam goresan, dua goresan dicoret. Sisa empat goresan.",
-                "visual": { "jenis": "teks", "isi": "6 goresan, dicoret 2, sisa 4" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 goresan, dicoret 2, sisa 4"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Enam anak, dua pulang. Sisa berapa?",
+          "ikon": "🧒",
+          "suara": "Ini peta tentang cerita pengurangan. Enam anak bermain tutup mata, lalu dua anak pulang. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini daftar hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-kurang",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Benda yang berkurang",
+            "ikon": "👋",
+            "petunjuk": "Ada benda yang pergi, sehingga banyaknya menjadi lebih sedikit."
+          },
+          {
+            "id": "hal-sisa",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Benda yang tersisa",
+            "ikon": "🧺",
+            "petunjuk": "Benda yang masih tinggal sesudah ada yang pergi disebut sisa."
+          },
+          {
+            "id": "hal-susun",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menyusun kalimat kurang",
+            "ikon": "🧩",
+            "petunjuk": "Menyusun kartu cerita menjadi kalimat dengan tanda kurang dan sama dengan."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini daftar langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Hitung benda mula-mula",
+            "ikon": "👀",
+            "petunjuk": "Langkah pertama: hitung dulu semua benda sebelum ada yang pergi."
+          },
+          {
+            "id": "cara-coret",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Coret benda yang pergi",
+            "ikon": "❌",
+            "petunjuk": "Langkah untuk menunjukkan yang berkurang: ketuk lalu coret benda yang pergi."
+          },
+          {
+            "id": "cara-susun",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Susun dengan tanda − dan =",
+            "ikon": "🔢",
+            "petunjuk": "Langkah untuk menyusun kalimat: pakai tanda kurang dan tanda sama dengan."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini daftar kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-sisa",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu sisa sampai sepuluh",
+            "ikon": "🔟",
+            "petunjuk": "Kemampuan mencari sisa benda, dengan bilangan paling banyak sepuluh."
+          },
+          {
+            "id": "hasil-baca",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa membaca kalimat kurang",
+            "ikon": "🗣️",
+            "petunjuk": "Kemampuan membaca kalimat pengurangan dari kiri ke kanan."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Cerita pengurangan",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel cerita pengurangan. Untuk tiap cerita, pasang banyak benda di awal, banyak yang pergi, dan sisanya.",
+        "pojok": "Cerita",
+        "kolom": [
+          "Awal",
+          "Pergi",
+          "Sisa"
+        ],
+        "baris": [
+          {
+            "label": "Anak",
+            "sel": [
+              "6",
+              "2",
+              "4"
+            ]
+          },
+          {
+            "label": "Kue",
+            "sel": [
+              "6",
+              "1",
+              "5"
+            ]
+          },
+          {
+            "label": "Mobil",
+            "sel": [
+              "3",
+              "3",
+              "0"
+            ]
+          },
+          {
+            "label": "Kelereng",
+            "sel": [
+              "7",
+              "2",
+              "5"
             ]
           }
         ]
@@ -193,14 +432,62 @@
           }
         ],
         "kartu": [
-          { "id": "b-telur", "teks": "6 telur: 4 utuh, 2 pecah", "ikon": "🥚", "cabang": "pasangan", "petunjuk": "Gabungan dan sebagian itu pasangan bilangan. Coba cabang lain." },
-          { "id": "b-dua", "teks": "6 − 2 dan 6 − 4", "ikon": "🔗", "cabang": "pasangan", "petunjuk": "Satu bagan menghasilkan dua pengurangan. Itu pasangan bilangan. Coba cabang lain." },
-          { "id": "b-lompat", "teks": "Mulai 5, mundur 3", "ikon": "⏪", "cabang": "mundur", "petunjuk": "Melompat ke belakang itu hitung mundur. Coba cabang lain." },
-          { "id": "b-urut", "teks": "Empat, tiga, dua", "ikon": "👣", "cabang": "mundur", "petunjuk": "Menyebut bilangan dari besar ke kecil itu hitung mundur. Coba cabang lain." },
-          { "id": "b-kurang-nol", "teks": "5 − 0 = 5", "ikon": "0️⃣", "cabang": "nol", "petunjuk": "Dikurangi nol, hasilnya tetap. Itu soal nol. Coba cabang lain." },
-          { "id": "b-sama", "teks": "4 − 4 = 0", "ikon": "0️⃣", "cabang": "nol", "petunjuk": "Dikurangi bilangan yang sama, hasilnya nol. Coba cabang lain." },
-          { "id": "b-sepuluh", "teks": "10 − 7 = 3", "ikon": "🔟", "cabang": "sepuluh", "petunjuk": "Pengurangan dari sepuluh memakai bingkai sepuluh. Coba cabang lain." },
-          { "id": "b-kosong", "teks": "Petak kosong = sisa", "ikon": "🔲", "cabang": "sepuluh", "petunjuk": "Petak kosong di bingkai sepuluh adalah sisanya. Coba cabang lain." }
+          {
+            "id": "b-telur",
+            "teks": "6 telur: 4 utuh, 2 pecah",
+            "ikon": "🥚",
+            "cabang": "pasangan",
+            "petunjuk": "Gabungan dan sebagian itu pasangan bilangan. Coba cabang lain."
+          },
+          {
+            "id": "b-dua",
+            "teks": "6 − 2 dan 6 − 4",
+            "ikon": "🔗",
+            "cabang": "pasangan",
+            "petunjuk": "Satu bagan menghasilkan dua pengurangan. Itu pasangan bilangan. Coba cabang lain."
+          },
+          {
+            "id": "b-lompat",
+            "teks": "Mulai 5, mundur 3",
+            "ikon": "⏪",
+            "cabang": "mundur",
+            "petunjuk": "Melompat ke belakang itu hitung mundur. Coba cabang lain."
+          },
+          {
+            "id": "b-urut",
+            "teks": "Empat, tiga, dua",
+            "ikon": "👣",
+            "cabang": "mundur",
+            "petunjuk": "Menyebut bilangan dari besar ke kecil itu hitung mundur. Coba cabang lain."
+          },
+          {
+            "id": "b-kurang-nol",
+            "teks": "5 − 0 = 5",
+            "ikon": "0️⃣",
+            "cabang": "nol",
+            "petunjuk": "Dikurangi nol, hasilnya tetap. Itu soal nol. Coba cabang lain."
+          },
+          {
+            "id": "b-sama",
+            "teks": "4 − 4 = 0",
+            "ikon": "0️⃣",
+            "cabang": "nol",
+            "petunjuk": "Dikurangi bilangan yang sama, hasilnya nol. Coba cabang lain."
+          },
+          {
+            "id": "b-sepuluh",
+            "teks": "10 − 7 = 3",
+            "ikon": "🔟",
+            "cabang": "sepuluh",
+            "petunjuk": "Pengurangan dari sepuluh memakai bingkai sepuluh. Coba cabang lain."
+          },
+          {
+            "id": "b-kosong",
+            "teks": "Petak kosong = sisa",
+            "ikon": "🔲",
+            "cabang": "sepuluh",
+            "petunjuk": "Petak kosong di bingkai sepuluh adalah sisanya. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -220,7 +507,10 @@
                 "ikon": "🥚",
                 "isi": "Semua telur: enam. Paling besar.",
                 "suara": "Gabungan adalah semua telur, yaitu enam. Gabungan selalu paling besar dan ditulis pertama.",
-                "visual": { "jenis": "teks", "isi": "Gabungan = 6" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Gabungan = 6"
+                }
               },
               {
                 "id": "sebagian",
@@ -228,7 +518,19 @@
                 "ikon": "🧩",
                 "isi": "Empat utuh, dua pecah.",
                 "suara": "Sebagian adalah dua bagiannya. Empat telur utuh dan dua telur pecah.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 4], ["bola-biru", 2]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "bola-merah",
+                      4
+                    ],
+                    [
+                      "bola-biru",
+                      2
+                    ]
+                  ]
+                }
               },
               {
                 "id": "dua-kurang",
@@ -236,7 +538,10 @@
                 "ikon": "🔗",
                 "isi": "Satu bagan, dua kalimat.",
                 "suara": "Dari bagan ini ada dua pengurangan. Enam dikurangi dua sama dengan empat. Enam dikurangi empat sama dengan dua.",
-                "visual": { "jenis": "teks", "isi": "6 − 2 = 4 dan 6 − 4 = 2" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 − 2 = 4 dan 6 − 4 = 2"
+                }
               }
             ]
           },
@@ -253,7 +558,10 @@
                 "ikon": "⏪",
                 "isi": "Mulai 5, lompat mundur 3.",
                 "suara": "Mulai di lima. Lompat tiga langkah ke belakang: empat, tiga, dua. Mendarat di dua.",
-                "visual": { "jenis": "teks", "isi": "5 → 4, 3, 2" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 → 4, 3, 2"
+                }
               },
               {
                 "id": "kurang-nol",
@@ -261,7 +569,10 @@
                 "ikon": "0️⃣",
                 "isi": "Tidak melompat, tetap di tempat.",
                 "suara": "Lima dikurangi nol. Tidak ada lompatan, jadi tetap di lima.",
-                "visual": { "jenis": "teks", "isi": "5 − 0 = 5" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 − 0 = 5"
+                }
               },
               {
                 "id": "kurang-sama",
@@ -269,7 +580,10 @@
                 "ikon": "🏁",
                 "isi": "Mundur sampai nol.",
                 "suara": "Empat dikurangi empat. Lompat mundur empat langkah sampai di nol.",
-                "visual": { "jenis": "teks", "isi": "4 − 4 = 0" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 − 4 = 0"
+                }
               }
             ]
           },
@@ -286,7 +600,10 @@
                 "ikon": "🔟",
                 "isi": "Tujuh petak diisi, tiga kosong.",
                 "suara": "Sepuluh dikurangi tujuh sama dengan tiga.",
-                "visual": { "jenis": "teks", "isi": "10 − 7 = 3" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 − 7 = 3"
+                }
               },
               {
                 "id": "sepuluh-tiga",
@@ -294,7 +611,10 @@
                 "ikon": "🔟",
                 "isi": "Tiga petak diisi, tujuh kosong.",
                 "suara": "Sepuluh dikurangi tiga sama dengan tujuh.",
-                "visual": { "jenis": "teks", "isi": "10 − 3 = 7" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 − 3 = 7"
+                }
               },
               {
                 "id": "pasangan-sepuluh",
@@ -302,8 +622,146 @@
                 "ikon": "🤝",
                 "isi": "Dua bilangan, jumlahnya sepuluh.",
                 "suara": "Pasangan sepuluh: satu dan sembilan, dua dan delapan, tiga dan tujuh, empat dan enam, lima dan lima.",
-                "visual": { "jenis": "teks", "isi": "1+9  2+8  3+7  4+6  5+5" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1+9  2+8  3+7  4+6  5+5"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa telur yang utuh?",
+          "ikon": "🥚",
+          "suara": "Ini peta tentang telur Kira di taman. Kita ingin tahu berapa telur yang masih utuh setelah telur pecah diambil. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-pasangan",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Pasangan bilangan",
+            "ikon": "🥚",
+            "petunjuk": "Gabungan dan sebagian: satu bagan menghasilkan dua pengurangan."
+          },
+          {
+            "id": "hal-mundur",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Hitung mundur",
+            "ikon": "⏪",
+            "petunjuk": "Melompat ke arah angka yang lebih kecil di garis bilangan."
+          },
+          {
+            "id": "hal-bingkai",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Pengurangan di bingkai",
+            "ikon": "🔟",
+            "petunjuk": "Mengurangi dari sepuluh dengan melihat petak yang kosong."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🛠️",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-pisah",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Pisah gabungan jadi dua",
+            "ikon": "✂️",
+            "petunjuk": "Langkah untuk pasangan bilangan: pisahkan gabungan menjadi dua sebagian."
+          },
+          {
+            "id": "cara-lompat",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Lompat ke belakang",
+            "ikon": "👣",
+            "petunjuk": "Langkah untuk hitung mundur: lompat sebanyak pengurangnya."
+          },
+          {
+            "id": "cara-kosong",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Kosongkan petak",
+            "ikon": "⬜",
+            "petunjuk": "Langkah untuk bingkai: kosongkan petak, lalu hitung titik yang terisi."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-sisa",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Menemukan sisa dengan benar",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan menemukan sisa dari pengurangan sampai sepuluh."
+          },
+          {
+            "id": "hasil-pilih",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Memilih cara yang cocok",
+            "ikon": "🤔",
+            "petunjuk": "Kemampuan memilih satu cara yang paling cocok, lalu memeriksanya."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Soal dan caranya",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel ini mencocokkan soal pengurangan dengan caranya. Untuk tiap soal, pasang cara, bilangan awal, dan sisanya.",
+        "pojok": "Soal",
+        "kolom": [
+          "Cara",
+          "Mulai",
+          "Sisa"
+        ],
+        "baris": [
+          {
+            "label": "6 kurang 2",
+            "sel": [
+              "Pasangan",
+              "Enam",
+              "4"
+            ]
+          },
+          {
+            "label": "5 kurang 3",
+            "sel": [
+              "Mundur",
+              "Lima",
+              "2"
+            ]
+          },
+          {
+            "label": "10 kurang 7",
+            "sel": [
+              "Bingkai",
+              "Sepuluh",
+              "3"
             ]
           }
         ]
@@ -348,14 +806,62 @@
           }
         ],
         "kartu": [
-          { "id": "c-fam", "teks": "Keluarga 4, 3, 7", "ikon": "👪", "cabang": "keluarga", "petunjuk": "Tiga bilangan yang berhubungan itu keluarga bilangan. Coba cabang lain." },
-          { "id": "c-empat", "teks": "Dua tambah, dua kurang", "ikon": "👪", "cabang": "keluarga", "petunjuk": "Empat kalimat dari satu keluarga itu keluarga bilangan. Coba cabang lain." },
-          { "id": "c-maju", "teks": "3 + 4 = 7: maju", "ikon": "➡️", "cabang": "kebalikan", "petunjuk": "Tambah maju dan kurang mundur itu kebalikan. Coba cabang lain." },
-          { "id": "c-mundur", "teks": "7 − 4 = 3: mundur", "ikon": "⬅️", "cabang": "kebalikan", "petunjuk": "Tambah maju dan kurang mundur itu kebalikan. Coba cabang lain." },
-          { "id": "c-cek", "teks": "9 − 4 = 5, cek 5 + 4", "ikon": "✅", "cabang": "periksa", "petunjuk": "Mengecek dengan kebalikan itu memeriksa. Coba cabang lain." },
-          { "id": "c-cek2", "teks": "Cek 3 + 2 dengan 5 − 2", "ikon": "✅", "cabang": "periksa", "petunjuk": "Mengecek dengan kebalikan itu memeriksa. Coba cabang lain." },
-          { "id": "c-hilang", "teks": "6 + ? = 9", "ikon": "❓", "cabang": "hilang", "petunjuk": "Mencari bilangan yang tidak ada itu mencari yang hilang. Coba cabang lain." },
-          { "id": "c-tanda", "teks": "7 ○ 2 = 9: pilih tanda", "ikon": "❔", "cabang": "hilang", "petunjuk": "Memilih tanda yang tepat itu mencari yang hilang. Coba cabang lain." }
+          {
+            "id": "c-fam",
+            "teks": "Keluarga 4, 3, 7",
+            "ikon": "👪",
+            "cabang": "keluarga",
+            "petunjuk": "Tiga bilangan yang berhubungan itu keluarga bilangan. Coba cabang lain."
+          },
+          {
+            "id": "c-empat",
+            "teks": "Dua tambah, dua kurang",
+            "ikon": "👪",
+            "cabang": "keluarga",
+            "petunjuk": "Empat kalimat dari satu keluarga itu keluarga bilangan. Coba cabang lain."
+          },
+          {
+            "id": "c-maju",
+            "teks": "3 + 4 = 7: maju",
+            "ikon": "➡️",
+            "cabang": "kebalikan",
+            "petunjuk": "Tambah maju dan kurang mundur itu kebalikan. Coba cabang lain."
+          },
+          {
+            "id": "c-mundur",
+            "teks": "7 − 4 = 3: mundur",
+            "ikon": "⬅️",
+            "cabang": "kebalikan",
+            "petunjuk": "Tambah maju dan kurang mundur itu kebalikan. Coba cabang lain."
+          },
+          {
+            "id": "c-cek",
+            "teks": "9 − 4 = 5, cek 5 + 4",
+            "ikon": "✅",
+            "cabang": "periksa",
+            "petunjuk": "Mengecek dengan kebalikan itu memeriksa. Coba cabang lain."
+          },
+          {
+            "id": "c-cek2",
+            "teks": "Cek 3 + 2 dengan 5 − 2",
+            "ikon": "✅",
+            "cabang": "periksa",
+            "petunjuk": "Mengecek dengan kebalikan itu memeriksa. Coba cabang lain."
+          },
+          {
+            "id": "c-hilang",
+            "teks": "6 + ? = 9",
+            "ikon": "❓",
+            "cabang": "hilang",
+            "petunjuk": "Mencari bilangan yang tidak ada itu mencari yang hilang. Coba cabang lain."
+          },
+          {
+            "id": "c-tanda",
+            "teks": "7 ○ 2 = 9: pilih tanda",
+            "ikon": "❔",
+            "cabang": "hilang",
+            "petunjuk": "Memilih tanda yang tepat itu mencari yang hilang. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -375,7 +881,19 @@
                 "ikon": "👪",
                 "isi": "Empat, tiga, dan tujuh.",
                 "suara": "Empat, tiga, dan tujuh adalah satu keluarga bilangan.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 4], ["bola-biru", 3]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "bola-merah",
+                      4
+                    ],
+                    [
+                      "bola-biru",
+                      3
+                    ]
+                  ]
+                }
               },
               {
                 "id": "tambah",
@@ -383,7 +901,10 @@
                 "ikon": "➕",
                 "isi": "Gabungkan, hasilnya tujuh.",
                 "suara": "Dua penjumlahan. Empat tambah tiga sama dengan tujuh. Tiga tambah empat sama dengan tujuh.",
-                "visual": { "jenis": "teks", "isi": "4 + 3 = 7 dan 3 + 4 = 7" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 + 3 = 7 dan 3 + 4 = 7"
+                }
               },
               {
                 "id": "kurang",
@@ -391,7 +912,10 @@
                 "ikon": "➖",
                 "isi": "Ambil satu bagian dari tujuh.",
                 "suara": "Dua pengurangan. Tujuh kurang tiga sama dengan empat. Tujuh kurang empat sama dengan tiga.",
-                "visual": { "jenis": "teks", "isi": "7 − 3 = 4 dan 7 − 4 = 3" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7 − 3 = 4 dan 7 − 4 = 3"
+                }
               }
             ]
           },
@@ -408,7 +932,19 @@
                 "ikon": "➕",
                 "catatan": "Empat tambah tiga sama dengan tiga tambah empat.",
                 "suara": "Penjumlahan boleh bertukar tempat. Empat tambah tiga sama dengan tiga tambah empat, sama-sama tujuh.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 4], ["bola-biru", 3]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "bola-merah",
+                      4
+                    ],
+                    [
+                      "bola-biru",
+                      3
+                    ]
+                  ]
+                }
               },
               {
                 "id": "kurang",
@@ -416,7 +952,10 @@
                 "ikon": "➖",
                 "catatan": "Tujuh kurang tiga tidak sama dengan tiga kurang tujuh.",
                 "suara": "Pengurangan tidak boleh bertukar tempat. Tujuh kurang tiga tidak sama dengan tiga kurang tujuh.",
-                "visual": { "jenis": "teks", "isi": "7 − 3 ≠ 3 − 7" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7 − 3 ≠ 3 − 7"
+                }
               }
             ],
             "kesimpulan": "Hanya penjumlahan yang boleh ditukar."
@@ -434,7 +973,10 @@
                 "ikon": "✅",
                 "isi": "Cek kurang dengan tambah.",
                 "suara": "Sembilan kurang empat sama dengan lima. Periksa: lima tambah empat sama dengan sembilan. Cocok.",
-                "visual": { "jenis": "teks", "isi": "9 − 4 = 5, cek 5 + 4 = 9" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "9 − 4 = 5, cek 5 + 4 = 9"
+                }
               },
               {
                 "id": "hilang",
@@ -442,7 +984,10 @@
                 "ikon": "❓",
                 "isi": "Pakai kebalikannya.",
                 "suara": "Enam tambah berapa sama dengan sembilan? Pakai kebalikan: sembilan kurang enam sama dengan tiga. Angka yang hilang adalah tiga.",
-                "visual": { "jenis": "teks", "isi": "6 + ? = 9, jadi 9 − 6 = 3" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 + ? = 9, jadi 9 − 6 = 3"
+                }
               },
               {
                 "id": "tanda",
@@ -450,8 +995,154 @@
                 "ikon": "❔",
                 "isi": "Hasil lebih kecil: kurang.",
                 "suara": "Tujuh lingkaran tiga sama dengan empat. Empat lebih kecil dari tujuh, jadi tandanya kurang.",
-                "visual": { "jenis": "teks", "isi": "7 ○ 3 = 4, tandanya −" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7 ○ 3 = 4, tandanya −"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Apa hubungan tambah-kurang?",
+          "ikon": "🐰",
+          "suara": "Ini peta kelinci di kandang. Kita ingin tahu, apa hubungan penjumlahan dan pengurangan. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini daftar hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-keluarga",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Keluarga bilangan",
+            "ikon": "👪",
+            "petunjuk": "Tiga bilangan yang saling berhubungan."
+          },
+          {
+            "id": "hal-empat",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Dua tambah, dua kurang",
+            "ikon": "🔢",
+            "petunjuk": "Empat kalimat dari satu keluarga bilangan."
+          },
+          {
+            "id": "hal-periksa",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Memeriksa jawaban",
+            "ikon": "🔍",
+            "petunjuk": "Mengecek jawaban dengan kebalikannya."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🧭",
+            "petunjuk": "Ini daftar langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-cari",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Cari bilangan sekeluarga",
+            "ikon": "🧩",
+            "petunjuk": "Langkah untuk keluarga bilangan: cari tiga bilangan yang berhubungan."
+          },
+          {
+            "id": "cara-susun",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Susun empat kalimat",
+            "ikon": "🃏",
+            "petunjuk": "Langkah untuk dua tambah dan dua kurang: susun kalimat dari kartu."
+          },
+          {
+            "id": "cara-balik",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Balik tambah jadi kurang",
+            "ikon": "🔄",
+            "petunjuk": "Langkah untuk memeriksa: pakai kalimat kebalikannya."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini daftar kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-hilang",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa cari bilangan hilang",
+            "ikon": "❓",
+            "petunjuk": "Mampu mencari bilangan yang hilang dengan kebalikan."
+          },
+          {
+            "id": "hasil-cek",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa cek pakai kebalikan",
+            "ikon": "✅",
+            "petunjuk": "Mampu memeriksa jawaban dengan kalimat kebalikannya."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Semua, pergi, dan sisa",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel hubungan tambah dan kurang. Untuk tiap cerita, pasang jumlah semuanya, yang pergi, dan yang tersisa.",
+        "pojok": "Cerita",
+        "kolom": [
+          "Semua",
+          "Pergi",
+          "Sisa"
+        ],
+        "baris": [
+          {
+            "label": "Kelinci",
+            "sel": [
+              "7",
+              "3",
+              "4"
+            ]
+          },
+          {
+            "label": "Kaos",
+            "sel": [
+              "5",
+              "2",
+              "3"
+            ]
+          },
+          {
+            "label": "Kepik",
+            "sel": [
+              "4",
+              "1",
+              "3"
+            ]
+          },
+          {
+            "label": "Anak",
+            "sel": [
+              "8",
+              "2",
+              "6"
             ]
           }
         ]
@@ -496,14 +1187,62 @@
           }
         ],
         "kartu": [
-          { "id": "d-mula", "teks": "Mula-mula 8 burung", "ikon": "🐦", "cabang": "baca", "petunjuk": "Mencari jumlah di awal itu membaca cerita. Coba cabang lain." },
-          { "id": "d-terbang", "teks": "Dua burung terbang", "ikon": "🐦", "cabang": "baca", "petunjuk": "Mencari yang terjadi itu membaca cerita. Coba cabang lain." },
-          { "id": "d-kata1", "teks": "Kata: terbang, pergi, dimakan", "ikon": "🔍", "cabang": "kata", "petunjuk": "Kata yang berarti berkurang itu kata kunci. Coba cabang lain." },
-          { "id": "d-kata2", "teks": "Kata: diberikan, diambil", "ikon": "🔍", "cabang": "kata", "petunjuk": "Kata yang berarti berkurang itu kata kunci. Coba cabang lain." },
-          { "id": "d-pergi", "teks": "7 − 5 = ?: siapa yang pergi", "ikon": "❓", "cabang": "cari", "petunjuk": "Menentukan bagian yang dicari itu apa yang dicari. Coba cabang lain." },
-          { "id": "d-awal", "teks": "? − 3 = 4: cari mula-mula", "ikon": "❓", "cabang": "cari", "petunjuk": "Menentukan bagian yang dicari itu apa yang dicari. Coba cabang lain." },
-          { "id": "d-jawab", "teks": "Sisa burung ada 6 ekor", "ikon": "💬", "cabang": "jawab", "petunjuk": "Kalimat jawaban lengkap itu menjawab. Coba cabang lain." },
-          { "id": "d-cek", "teks": "Cek: 6 + 2 = 8", "ikon": "✅", "cabang": "jawab", "petunjuk": "Mengecek dengan penjumlahan itu memeriksa. Coba cabang lain." }
+          {
+            "id": "d-mula",
+            "teks": "Mula-mula 8 burung",
+            "ikon": "🐦",
+            "cabang": "baca",
+            "petunjuk": "Mencari jumlah di awal itu membaca cerita. Coba cabang lain."
+          },
+          {
+            "id": "d-terbang",
+            "teks": "Dua burung terbang",
+            "ikon": "🐦",
+            "cabang": "baca",
+            "petunjuk": "Mencari yang terjadi itu membaca cerita. Coba cabang lain."
+          },
+          {
+            "id": "d-kata1",
+            "teks": "Kata: terbang, pergi, dimakan",
+            "ikon": "🔍",
+            "cabang": "kata",
+            "petunjuk": "Kata yang berarti berkurang itu kata kunci. Coba cabang lain."
+          },
+          {
+            "id": "d-kata2",
+            "teks": "Kata: diberikan, diambil",
+            "ikon": "🔍",
+            "cabang": "kata",
+            "petunjuk": "Kata yang berarti berkurang itu kata kunci. Coba cabang lain."
+          },
+          {
+            "id": "d-pergi",
+            "teks": "7 − 5 = ?: siapa yang pergi",
+            "ikon": "❓",
+            "cabang": "cari",
+            "petunjuk": "Menentukan bagian yang dicari itu apa yang dicari. Coba cabang lain."
+          },
+          {
+            "id": "d-awal",
+            "teks": "? − 3 = 4: cari mula-mula",
+            "ikon": "❓",
+            "cabang": "cari",
+            "petunjuk": "Menentukan bagian yang dicari itu apa yang dicari. Coba cabang lain."
+          },
+          {
+            "id": "d-jawab",
+            "teks": "Sisa burung ada 6 ekor",
+            "ikon": "💬",
+            "cabang": "jawab",
+            "petunjuk": "Kalimat jawaban lengkap itu menjawab. Coba cabang lain."
+          },
+          {
+            "id": "d-cek",
+            "teks": "Cek: 6 + 2 = 8",
+            "ikon": "✅",
+            "cabang": "jawab",
+            "petunjuk": "Mengecek dengan penjumlahan itu memeriksa. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -523,7 +1262,10 @@
                 "ikon": "🐦",
                 "isi": "Ada 8 burung di pohon.",
                 "suara": "Mula-mula adalah jumlah di awal. Ada delapan burung di pohon.",
-                "visual": { "jenis": "teks", "isi": "8" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "8"
+                }
               },
               {
                 "id": "pergi",
@@ -531,7 +1273,10 @@
                 "ikon": "👋",
                 "isi": "Dua burung terbang.",
                 "suara": "Pergi adalah yang berkurang. Dua burung terbang.",
-                "visual": { "jenis": "teks", "isi": "− 2" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "− 2"
+                }
               },
               {
                 "id": "sisa",
@@ -539,7 +1284,10 @@
                 "ikon": "✅",
                 "isi": "Enam burung masih ada.",
                 "suara": "Sisa adalah yang masih tinggal. Delapan dikurangi dua sama dengan enam.",
-                "visual": { "jenis": "teks", "isi": "= 6" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "= 6"
+                }
               }
             ]
           },
@@ -556,7 +1304,10 @@
                 "ikon": "➖",
                 "catatan": "Terbang, pergi, dimakan: pakai kurang.",
                 "suara": "Kata terbang, pergi, dan dimakan berarti berkurang. Pakai tanda kurang. Delapan kurang dua sama dengan enam.",
-                "visual": { "jenis": "teks", "isi": "8 − 2 = 6" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "8 − 2 = 6"
+                }
               },
               {
                 "id": "tambah",
@@ -564,7 +1315,10 @@
                 "ikon": "➕",
                 "catatan": "Datang, bergabung: pakai tambah.",
                 "suara": "Kata datang dan bergabung berarti bertambah. Pakai tanda tambah. Enam tambah dua sama dengan delapan.",
-                "visual": { "jenis": "teks", "isi": "6 + 2 = 8" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 + 2 = 8"
+                }
               }
             ],
             "kesimpulan": "Baca kata kuncinya, lalu pilih tanda."
@@ -582,7 +1336,10 @@
                 "ikon": "✅",
                 "isi": "Delapan burung, dua terbang.",
                 "suara": "Mencari sisa. Delapan kurang dua sama dengan enam.",
-                "visual": { "jenis": "teks", "isi": "8 − 2 = 6" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "8 − 2 = 6"
+                }
               },
               {
                 "id": "pergi",
@@ -590,7 +1347,10 @@
                 "ikon": "👋",
                 "isi": "Tujuh siswa, lima masih di kelas.",
                 "suara": "Mencari yang pergi. Tujuh kurang lima sama dengan dua. Dua siswa pergi.",
-                "visual": { "jenis": "teks", "isi": "7 − 5 = 2" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7 − 5 = 2"
+                }
               },
               {
                 "id": "mula",
@@ -598,8 +1358,154 @@
                 "ikon": "🧩",
                 "isi": "Sisa dan yang pergi digabung.",
                 "suara": "Mencari mula-mula. Empat tambah tiga sama dengan tujuh.",
-                "visual": { "jenis": "teks", "isi": "4 + 3 = 7" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 + 3 = 7"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa sisa burung?",
+          "ikon": "🐦",
+          "suara": "Ini peta soal cerita burung di dahan. Ada burung yang terbang pergi, dan kita ingin tahu berapa sisanya. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini daftar hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-baca",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Membaca soal cerita",
+            "ikon": "📖",
+            "petunjuk": "Memahami cerita dan pertanyaannya."
+          },
+          {
+            "id": "hal-susun",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menyusun kalimat kurang",
+            "ikon": "🧩",
+            "petunjuk": "Menyusun cerita menjadi kalimat pengurangan dari kartu."
+          },
+          {
+            "id": "hal-jawab",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menjawab lalu memeriksa",
+            "ikon": "💬",
+            "petunjuk": "Menjawab dengan kalimat lengkap, lalu mengeceknya."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🧭",
+            "petunjuk": "Ini daftar langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-cari",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Cari mula-mula dan pergi",
+            "ikon": "🔍",
+            "petunjuk": "Langkah untuk membaca: cari jumlah di awal dan yang pergi."
+          },
+          {
+            "id": "cara-tanda",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Pakai tanda kurang",
+            "ikon": "➖",
+            "petunjuk": "Langkah untuk menyusun: kata petunjuk pergi berarti tanda kurang."
+          },
+          {
+            "id": "cara-cek",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Periksa dengan tambah",
+            "ikon": "🔄",
+            "petunjuk": "Langkah untuk memeriksa: sisa ditambah yang pergi sama dengan mula-mula."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini daftar kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-kerja",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa kerjakan soal cerita",
+            "ikon": "✅",
+            "petunjuk": "Mampu mengerjakan soal cerita pengurangan sampai sepuluh."
+          },
+          {
+            "id": "hasil-jawab",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa jawab dengan lengkap",
+            "ikon": "🏷️",
+            "petunjuk": "Mampu menjawab dengan sisa dan nama benda."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Bilangan dalam soal cerita",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel soal cerita pengurangan. Untuk tiap cerita, pasang bilangan yang ada mula-mula, yang pergi, dan sisanya.",
+        "pojok": "Cerita",
+        "kolom": [
+          "Ada",
+          "Pergi",
+          "Sisa"
+        ],
+        "baris": [
+          {
+            "label": "Burung",
+            "sel": [
+              "8",
+              "2",
+              "6"
+            ]
+          },
+          {
+            "label": "Kepik",
+            "sel": [
+              "10",
+              "2",
+              "8"
+            ]
+          },
+          {
+            "label": "Bola",
+            "sel": [
+              "10",
+              "3",
+              "7"
+            ]
+          },
+          {
+            "label": "Kue",
+            "sel": [
+              "7",
+              "2",
+              "5"
             ]
           }
         ]
