@@ -224,6 +224,149 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Donat siapa lebih banyak?",
+          "ikon": "🍩",
+          "suara": "Ini peta tentang membandingkan donat Halim dan donat Kira. Kita ingin tahu siapa yang lebih banyak, dan berapa selisihnya. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-pasang",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Memasangkan benda satu-satu",
+            "ikon": "🔗",
+            "petunjuk": "Membandingkan dua barisan benda dengan memasangkannya satu per satu."
+          },
+          {
+            "id": "hal-lebih",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Lebihnya dan kurangnya",
+            "ikon": "⚖️",
+            "petunjuk": "Memakai kata lebih dari, kurang dari, lebihnya, dan kurangnya."
+          },
+          {
+            "id": "hal-selisih",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Mencari selisih bilangan",
+            "ikon": "🔍",
+            "petunjuk": "Mencari beda dua bilangan sampai dua puluh."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-garis",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Sambungkan dengan garis",
+            "ikon": "✏️",
+            "petunjuk": "Langkah untuk memasangkan: tiap benda disambung dengan satu pasangannya."
+          },
+          {
+            "id": "cara-sisa",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Lihat benda yang tersisa",
+            "ikon": "👀",
+            "petunjuk": "Langkah untuk lebihnya dan kurangnya: benda tanpa pasangan adalah lebihnya."
+          },
+          {
+            "id": "cara-kurang",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Besar dikurangi kecil",
+            "ikon": "➖",
+            "petunjuk": "Langkah untuk selisih: bilangan yang besar dikurangi bilangan yang kecil."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-lebih",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu mana yang lebih banyak",
+            "ikon": "🧺",
+            "petunjuk": "Kemampuan menyebut barisan mana yang lebih banyak dan mana yang lebih sedikit."
+          },
+          {
+            "id": "hasil-selisih",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Selisih dua bilangan ketemu",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan mencari selisih dua bilangan dengan benar."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Selisih dua bilangan",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel selisih. Untuk tiap pasangan bilangan, pasang bilangan yang besar, bilangan yang kecil, dan selisihnya.",
+        "pojok": "Pasangan",
+        "kolom": [
+          "Besar",
+          "Kecil",
+          "Selisih"
+        ],
+        "baris": [
+          {
+            "label": "Tujuh dan enam",
+            "sel": [
+              "7",
+              "6",
+              "1"
+            ]
+          },
+          {
+            "label": "Sembilan dan lima",
+            "sel": [
+              "9",
+              "5",
+              "4"
+            ]
+          },
+          {
+            "label": "Delapan dan tiga",
+            "sel": [
+              "8",
+              "3",
+              "5"
+            ]
+          },
+          {
+            "label": "Sebelas dan delapan",
+            "sel": [
+              "11",
+              "8",
+              "3"
+            ]
+          }
+        ]
       }
     },
     "B": {
@@ -458,6 +601,149 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa donat Kira dan Wei?",
+          "ikon": "🍩",
+          "suara": "Ini peta tentang donat Kira dan Wei. Kita ingin tahu jumlah donat mereka. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-maju",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Menghitung maju",
+            "ikon": "🚶",
+            "petunjuk": "Mulai dari bilangan pertama, lalu maju sebanyak bilangan kedua."
+          },
+          {
+            "id": "hal-pisah",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Memisah dan menggabung",
+            "ikon": "🧩",
+            "petunjuk": "Memisah bilangan menjadi dua bagian, lalu menggabungkannya lagi."
+          },
+          {
+            "id": "hal-puluhan",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menambah puluhan dan satuan",
+            "ikon": "🏷️",
+            "petunjuk": "Menjumlahkan bilangan belasan dengan bilangan satuan."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-mulai",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Mulai dari bilangan besar",
+            "ikon": "👆",
+            "petunjuk": "Langkah untuk menghitung maju: mulai dari bilangan yang besar, lalu maju."
+          },
+          {
+            "id": "cara-sepuluh",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Genapkan sepuluh dulu",
+            "ikon": "📦",
+            "petunjuk": "Langkah untuk memisah dan menggabung: isi kotak sepuluh sampai penuh, lalu tambahkan sisanya."
+          },
+          {
+            "id": "cara-satuan",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Satuan dulu, puluhan tetap",
+            "ikon": "🧮",
+            "petunjuk": "Langkah untuk puluhan dan satuan: jumlahkan satuan dengan satuan, puluhannya tidak berubah."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-jumlah",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Jumlah donat diketahui",
+            "ikon": "🍩",
+            "petunjuk": "Kemampuan menyebut jumlah dua kumpulan benda dengan hasil kurang dari dua puluh."
+          },
+          {
+            "id": "hasil-cara",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Cara termudah dipilih",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan memilih cara yang paling mudah dan benar."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Soal jumlah dan hasilnya",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel jumlah. Untuk tiap soal, pasang bilangan awal, banyak langkah maju, dan jumlahnya.",
+        "pojok": "Soal",
+        "kolom": [
+          "Mulai",
+          "Maju",
+          "Jumlah"
+        ],
+        "baris": [
+          {
+            "label": "9 + 2",
+            "sel": [
+              "9",
+              "2",
+              "11"
+            ]
+          },
+          {
+            "label": "7 + 6",
+            "sel": [
+              "7",
+              "6",
+              "13"
+            ]
+          },
+          {
+            "label": "8 + 4",
+            "sel": [
+              "8",
+              "4",
+              "12"
+            ]
+          },
+          {
+            "label": "5 + 9",
+            "sel": [
+              "5",
+              "9",
+              "14"
+            ]
+          }
+        ]
       }
     },
     "C": {
@@ -689,6 +975,149 @@
                   "isi": "8 + 11 = 19"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa sisa apel Upe?",
+          "ikon": "🍎",
+          "suara": "Ini peta tentang apel Upe yang dimakan ulat. Kita ingin tahu berapa sisa apelnya. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-mundur",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Menghitung mundur",
+            "ikon": "⏪",
+            "petunjuk": "Mundur satu langkah untuk tiap benda yang pergi."
+          },
+          {
+            "id": "hal-pisah",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Memisah puluhan dan satuan",
+            "ikon": "🧩",
+            "petunjuk": "Memisah bilangan belasan menjadi puluhan dan satuannya."
+          },
+          {
+            "id": "hal-periksa",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Memeriksa dengan menambah",
+            "ikon": "🔄",
+            "petunjuk": "Menambah sisa dengan yang pergi, supaya kembali ke bilangan awal."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-mundur",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Mundur sebanyak yang pergi",
+            "ikon": "🐾",
+            "petunjuk": "Langkah untuk menghitung mundur: mundur sebanyak benda yang pergi, lalu lihat bilangan terakhir."
+          },
+          {
+            "id": "cara-satuan",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Kurangi satuannya saja",
+            "ikon": "➖",
+            "petunjuk": "Langkah untuk memisah: kotak sepuluh tidak disentuh, hanya satuannya yang dikurangi."
+          },
+          {
+            "id": "cara-tambah",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tambah lagi untuk periksa",
+            "ikon": "➕",
+            "petunjuk": "Langkah untuk memeriksa: sisa ditambah yang pergi harus sama dengan bilangan awal."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-sisa",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Sisa benda diketahui",
+            "ikon": "🧺",
+            "petunjuk": "Kemampuan menyebut sisa benda setelah ada yang pergi."
+          },
+          {
+            "id": "hasil-benar",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Hasil diperiksa benar",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan memastikan hasil pengurangan sudah benar."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Awal, pergi, dan sisa",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel pengurangan. Untuk tiap benda, pasang banyak benda mula-mula, yang pergi, dan sisanya.",
+        "pojok": "Benda",
+        "kolom": [
+          "Awal",
+          "Pergi",
+          "Sisa"
+        ],
+        "baris": [
+          {
+            "label": "Apel",
+            "sel": [
+              "15",
+              "3",
+              "12"
+            ]
+          },
+          {
+            "label": "Bolu",
+            "sel": [
+              "13",
+              "2",
+              "11"
+            ]
+          },
+          {
+            "label": "Stiker",
+            "sel": [
+              "18",
+              "4",
+              "14"
+            ]
+          },
+          {
+            "label": "Kelereng",
+            "sel": [
+              "16",
+              "6",
+              "10"
             ]
           }
         ]
