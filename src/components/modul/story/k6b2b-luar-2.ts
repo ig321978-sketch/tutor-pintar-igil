@@ -6,7 +6,7 @@ import { bersih, k, redamkan, sorotkan, tambah, ubah } from "./k6b2b-bantu";
 export const ADEGAN_LUAR_SATUAN: AdeganStory = {
   id: "luarb2-satuan",
   judul: "Unit Rate Method: nilai untuk satu satuan",
-  sumber: "Metode dari luar buku; rasio satuan, Buku Siswa hlm. 61–63",
+  sumber: "Metode luar: rasio satuan",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -19,7 +19,7 @@ export const ADEGAN_LUAR_SATUAN: AdeganStory = {
     k(
       "Langkahnya: bagi jumlah besaran dengan banyaknya. Setelah ada nilai per 1, dua penawaran berbeda jumlah bisa dibandingkan langsung.",
       bersih(0),
-      tambah("bagi", ...kartu("rm", 30, 24, 240, 40, "#FEF9C3", ["total ÷ banyak = nilai per 1"], 11)),
+      tambah("bagi", ...kartu("rm", 30, 24, 240, 40, "#FEF9C3", ["jumlah ÷ banyak = nilai per 1"], 11)),
       tambah("dua", ...kartu("pa", 30, 100, 100, 36, "#FFEDD5", ["penawaran A"], 10), ...kartu("pb", 170, 100, 100, 36, "#FFEDD5", ["penawaran B"], 10)),
       tambah("dibandingkan", teks("bd", 150, 124, "?", 18, W.merah), teks("bd2", 150, 172, "bandingkan nilai per 1", 11, W.hijau)),
     ),
@@ -45,7 +45,7 @@ export const ADEGAN_LUAR_SATUAN: AdeganStory = {
 export const ADEGAN_LUAR_SATUAN_TERAPAN: AdeganStory = {
   id: "luarb2-satuan-terapan",
   judul: "Unit Rate Method: harga bibit, kemasan, dan pena",
-  sumber: "Metode dari luar buku; penerapan Eksplorasi 2.4 dan Latihan 2.2, Buku Siswa hlm. 61–65",
+  sumber: "Metode luar: terapan rasio satuan",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -93,7 +93,7 @@ export const ADEGAN_LUAR_SATUAN_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_SKALA: AdeganStory = {
   id: "luarb2-skala",
   judul: "Recipe Scaling Factor: satu faktor untuk semua bahan",
-  sumber: "Metode dari luar buku; resep wedang jahe, Buku Siswa hlm. 64",
+  sumber: "Metode luar: faktor skala resep",
   latar: "#FEF2F2",
   ketukan: [
     k(
@@ -132,7 +132,7 @@ export const ADEGAN_LUAR_SKALA: AdeganStory = {
 export const ADEGAN_LUAR_SKALA_TERAPAN: AdeganStory = {
   id: "luarb2-skala-terapan",
   judul: "Recipe Scaling Factor: wedang jahe dan kopi Dona",
-  sumber: "Metode dari luar buku; penerapan Latihan 2.2 nomor 1 dan 3, Buku Siswa hlm. 64–65",
+  sumber: "Metode luar: terapan faktor skala",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -182,12 +182,12 @@ export const ADEGAN_LUAR_SKALA_TERAPAN: AdeganStory = {
 /* ------------------------------ LB8. Ringkasan empat metode luar ------------------------------ */
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luarb2-ringkas",
-  judul: "Ringkasan empat metode luar Sub-Bab B",
-  sumber: "Ringkasan metode luar Sub-Bab B",
+  judul: "Ringkasan empat metode luar",
+  sumber: "Ringkasan metode luar",
   latar: "#F5F3FF",
   ketukan: [
     k(
-      "Ringkasan empat metode luar untuk Sub-Bab B.",
+      "Mari kita ringkas keempat metode luar tadi.",
       tambah(0, teks("jud", 150, 20, "Ringkasan", 12, W.ungu)),
       tambah("empat", kartuMetode("m1", 10, 30, "#FDE68A", ["Equivalent", "Ratio Table"], "kali atau bagi sama"), kartuMetode("m2", 156, 30, "#FBCFE8", ["Fraction-Equivalence", "Bridge"], "kali silang")),
       tambah("metode", kartuMetode("m3", 10, 112, "#BBF7D0", ["Unit Rate", "Method"], "nilai per satu"), kartuMetode("m4", 156, 112, "#BFDBFE", ["Recipe Scaling", "Factor"], "faktor skala")),

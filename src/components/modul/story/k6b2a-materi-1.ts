@@ -2,31 +2,23 @@ import type { AdeganStory } from "./logika-story";
 import { W, balon, bibit, bulat, cemara, deret, emo, garis, kartu, kotak, panah, pucukMerah, teks } from "./k6b2a-gambar";
 import { bersih, hapus, k, sorotkan, tambah } from "./k6b2a-bantu";
 
-/* ------------------------------ 1. Poster Gerakan Satu Juta Pohon dan Pak Wayan (hlm. 46 dan 47) ------------------------------ */
+/* ------------------------------ 1. Poster Gerakan Satu Juta Pohon dan Pak Wayan ------------------------------ */
 export const ADEGAN_PEMBUKA: AdeganStory = {
   id: "pembuka-pohon",
   judul: "Poster Gerakan Satu Juta Pohon",
-  sumber: "Buku Siswa hlm. 46–47",
+  sumber: "Materi: Gerakan Satu Juta Pohon",
   latar: "#F0FDF4",
-  kutipan: [
-    "Gerakan Satu Juta Pohon",
-    "kalau gerakan satu juta pohon diperingati setiap tanggal 10 Januari",
-    "Pak Wayan, guru Matematika",
-    "memperhatikan jarak antar bibit pohon tersebut",
-    "dapat menerapkan konsep rasio",
-    "Rasio adalah perbandingan dua besaran yang sama",
-  ],
   ketukan: [
     k(
-      "Bab 2 Rasio dimulai di sekolah. Beberapa siswa sedang melihat poster Gerakan Satu Juta Pohon yang ditempel di dinding.",
-      tambah(0, teks("jud", 150, 24, "Bab 2 Rasio", 13, W.ungu)),
+      "Anak-anak, kita mulai pelajaran rasio dari sekolah. Beberapa siswa sedang melihat poster Gerakan Satu Juta Pohon yang ditempel di dinding.",
+      tambah(0, teks("jud", 150, 24, "Rasio", 13, W.ungu)),
       tambah("siswa", emo("s1", 50, 170, "👦", 30), emo("s2", 250, 170, "👧", 30)),
       tambah("poster", kotak("ps", 85, 40, 130, 92, W.krem, W.coklat, { rx: 4 }), teks("p1", 150, 62, "Gerakan", 11, W.hijau)),
       tambah("Satu", teks("p2", 150, 80, "Satu Juta Pohon", 11, W.hijau)),
       tambah("Pohon", emo("pe", 150, 116, "🌳", 24)),
     ),
     k(
-      "Pak Wayan, guru Matematika, mendekati mereka. Gerakan itu diperingati setiap tanggal 10 Januari untuk menyelamatkan hutan dan melestarikan lingkungan.",
+      "Pak Wayan, guru matematika, mendekati mereka. Gerakan itu diperingati setiap tanggal sepuluh Januari untuk menyelamatkan hutan dan menjaga lingkungan.",
       bersih(0),
       tambah("Wayan", emo("wy", 60, 120, "👨", 34), teks("wyt", 60, 142, "Pak Wayan", 8.4)),
       tambah("tanggal", kotak("kal", 150, 40, 90, 74, W.putih, W.merah, { rx: 6 }), kotak("kalh", 150, 40, 90, 20, W.merah, W.merah, { rx: 6 }), teks("kal1", 195, 100, "10", 28, W.merah), teks("kal2", 195, 55, "Januari", 11, W.putih)),
@@ -34,7 +26,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("lingkungan.", teks("lg", 215, 192, "selamatkan hutan", 8.6, W.hijau)),
     ),
     k(
-      "Sekolah kita ikut berpartisipasi. Besok semua siswa akan menanam bibit pohon bersama-sama di kebun sekolah.",
+      "Sekolah kita ikut berpartisipasi. Besok semua siswa akan menanam bibit pohon bersama-sama di kebun sekolah. Siapkan semangatmu, ya!",
       bersih(0),
       tambah("Sekolah", emo("sk", 150, 52, "🏫", 34), teks("skt", 150, 70, "sekolah ikut serta", 9)),
       tambah("Besok", teks("bs", 150, 100, "besok: menanam bibit", 10, W.ungu)),
@@ -42,7 +34,7 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("kebun", kotak("tnh", 30, 152, 240, 14, "#A16207", "#78350F", { rx: 3 })),
     ),
     k(
-      "Dalam menanam bibit, kita harus memperhatikan jarak antar bibit pohon. Jarak memberi ruang agar pohon tumbuh dengan baik.",
+      "Saat menanam bibit, kita perlu memperhatikan jarak antar bibit pohon. Jarak yang cukup memberi ruang agar pohon tumbuh dengan baik.",
       bersih(0),
       tambah(0, teks("jt", 150, 30, "jarak antar bibit", 12, W.ungu)),
       tambah("bibit,", cemara("pa", 70, 140), cemara("pb", 230, 140)),
@@ -50,25 +42,25 @@ export const ADEGAN_PEMBUKA: AdeganStory = {
       tambah("ruang", kotak("ru", 100, 90, 100, 52, "none", W.hijau, { putus: true, rx: 6 }), teks("rut", 150, 118, "ruang", 9, W.hijau)),
     ),
     k(
-      "Kita juga dapat mengatur susunan penanaman bibit berdasarkan jenisnya. Pengaturan jumlah bibit dan jarak ini menerapkan konsep rasio.",
+      "Kita juga bisa mengatur susunan tanam bibit menurut jenisnya. Banyak bibit tiap jenis kita bandingkan, dan itulah yang disebut rasio.",
       bersih(0),
       tambah("susunan", deret("pm", 60, 110, 2, 28, (id, x, y) => pucukMerah(id, x, y))),
-      tambah("berdasarkan", deret("cm", 130, 110, 3, 28, (id, x, y) => cemara(id, x, y))),
-      tambah("jumlah", teks("jt1", 74, 140, "jenis A", 9, W.merah), teks("jt2", 158, 140, "jenis B", 9, W.hijau)),
+      tambah("menurut", deret("cm", 130, 110, 3, 28, (id, x, y) => cemara(id, x, y))),
+      tambah("Banyak", teks("jt1", 74, 140, "jenis A", 9, W.merah), teks("jt2", 158, 140, "jenis B", 9, W.hijau)),
       tambah("rasio.", kotak("rs", 90, 160, 120, 28, W.krem, W.ungu, { rx: 8 }), teks("rst", 150, 179, "konsep rasio", 12, W.ungu)),
     ),
     k(
-      "Seorang siswa bertanya, apa yang dimaksud dengan rasio, Pak? Pak Wayan menjawab, rasio adalah perbandingan dua besaran yang sama.",
+      "Seorang siswa bertanya, apa itu rasio, Pak? Pak Wayan menjawab, rasio adalah perbandingan dua besaran yang sejenis.",
       bersih(0),
       tambah("siswa", emo("q1", 50, 150, "👧", 32), balon("bq", 100, 40, ["apa itu rasio, Pak?"], 110, W.putih, 8)),
-      tambah("Wayan", emo("q2", 250, 150, "👨", 32), balon("bw", 200, 90, ["rasio: perbandingan", "dua besaran yang sama"], 140, "#FEF9C3", 7.4)),
+      tambah("Wayan", emo("q2", 250, 150, "👨", 32), balon("bw", 200, 90, ["rasio: perbandingan", "dua besaran sejenis"], 140, "#FEF9C3", 7.4)),
     ),
     k(
-      "Mengapa harus memperhatikan jarak, Pak? Mari kita pelajari bab ini untuk memahami kegunaan rasio dalam kehidupan sehari-hari.",
+      "Mengapa kita harus memperhatikan jarak, Pak? Mari kita pelajari rasio, supaya bisa menjawabnya dan memakainya dalam kehidupan sehari-hari.",
       bersih(0),
       tambah("Mengapa", balon("bm", 100, 28, ["mengapa harus", "memperhatikan jarak?"], 120, W.putih, 8), emo("m1", 50, 120, "🙋", 30)),
       tambah("pelajari", panah("mp", 150, 120, 60, 0, W.hijau, 3, { gambar: true }), emo("mb", 250, 130, "📘", 40)),
-      tambah("kegunaan", teks("mk", 150, 184, "kegunaan rasio sehari-hari", 10, W.ungu)),
+      tambah("sehari", teks("mk", 150, 184, "rasio dalam hidup sehari-hari", 10, W.ungu)),
     ),
   ],
 };

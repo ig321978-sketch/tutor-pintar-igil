@@ -9,7 +9,7 @@ const kiri = (id: string, dari: number, ke: number, x: number, y: number, h: num
   return [panah(`${id}-p`, x - 8, y0, 0, y1 - y0, W.merah, 2, { gambar: true }), teks(`${id}-t`, x - 14, (y0 + y1) / 2 + 3, label, 9.5, W.merah, { anchor: "end" })];
 };
 
-/* ------------------------------ 3. Tabel rasio, pecahan senilai, dan pupuk (hlm. 59 dan 60) ------------------------------ */
+/* ------------------------------ 3. Tabel rasio, pecahan senilai, dan pupuk ------------------------------ */
 const X3 = 60;
 const Y3 = 34;
 const W3 = 60;
@@ -18,12 +18,12 @@ const H3 = 24;
 export const ADEGAN_TABEL_SENILAI: AdeganStory = {
   id: "b2-tabel-senilai",
   judul: "Tabel rasio dan pecahan senilai",
-  sumber: "Buku Siswa hlm. 59–60",
+  sumber: "Materi: tabel rasio dan pecahan senilai",
   latar: "#FDF2F8",
   kutipan: ["Kesamaan rasio memiliki prinsip yang sama dengan pecahan senilai", "Jadi, contoh rasio yang senilai dengan 10 : 12 adalah 30 : 36 dan 5 : 6", "Apabila kalian menanam 2 bibit tanaman diperlukan 5 gram pupuk"],
   ketukan: [
     k(
-      "Kesamaan rasio juga bisa dilihat pada tabel rasio. Baris 5 dan 6 dikali 5 menghasilkan baris 25 dan 30.",
+      "Kesamaan rasio juga bisa dilihat pada tabel rasio. Baris 5 dan 6 dikali 5 menghasilkan baris 25 dan 30. Setiap baris tabel ini bercerita tentang rasio yang sama.",
       bersih(0),
       tambah("tabel", kepalaTabel("t", X3, Y3, W3, H3, ["Lahan (m²)", "Bibit"])),
       tambah("5", sel("t-r0a", X3, Y3 + H3, W3, H3, "5")),
@@ -33,7 +33,7 @@ export const ADEGAN_TABEL_SENILAI: AdeganStory = {
       tambah("30.", sel("t-r1b", X3 + W3, Y3 + 2 * H3, W3, H3, "30")),
     ),
     k(
-      "Perhatikan, tiga rasio pada tabel ini sama: 5 banding 6, 10 banding 12, dan 25 banding 30.",
+      "Perhatikan, tiga rasio pada tabel ini sama: 5 banding 6, 10 banding 12, dan 25 banding 30. Wujudnya berbeda, tetapi nilainya sama.",
       tambah(7, teks("ban", 150, 150, "5 : 6", 13, W.merah)),
       ubah(10, { id: "ban", isi: "5 : 6 = 10 : 12" }),
       ubah(14, { id: "ban", isi: "5 : 6 = 10 : 12 = 25 : 30" }),
@@ -57,9 +57,9 @@ export const ADEGAN_TABEL_SENILAI: AdeganStory = {
       tambah("Jadi", teks("sm", 150, 196, "30 : 36 dan 5 : 6 senilai dengan 10 : 12", 9, W.hijau)),
     ),
     k(
-      "Ayo berpikir kritis. Menanam 2 bibit memerlukan 5 gram pupuk. Berapa gram pupuk untuk 11 bibit?",
+      "Sekarang ada tantangan untuk kita. Menanam 2 bibit memerlukan 5 gram pupuk. Berapa gram pupuk untuk 11 bibit?",
       bersih(0),
-      tambah("kritis.", teks("kj", 150, 24, "Berpikir kritis: pupuk untuk bibit", 10, W.ungu)),
+      tambah("tantangan", teks("kj", 150, 24, "Tantangan: pupuk untuk bibit", 10, W.ungu)),
       tambah("Menanam", kepalaTabel("u", X3, Y3 + 10, W3, H3, ["Bibit", "Pupuk (g)"])),
       tambah(4, sel("u-r0a", X3, Y3 + 10 + H3, W3, H3, "2")),
       tambah(7, sel("u-r0b", X3 + W3, Y3 + 10 + H3, W3, H3, "5")),
@@ -74,7 +74,7 @@ export const ADEGAN_TABEL_SENILAI: AdeganStory = {
       tambah(21, sel("u-r2b", X3 + W3, Y3 + 10 + 3 * H3, W3, H3, "2,5")),
     ),
     k(
-      "Lalu 11 bibit memerlukan 11 kali 2,5, yaitu 27,5 gram pupuk.",
+      "Lalu 11 bibit memerlukan 11 kali 2,5, yaitu 27,5 gram pupuk. Cara mencari nilai untuk satu bibit lebih dulu ini sangat berguna ketika pengalinya tidak bulat.",
       tambah("kali", kiri("w", 2, 1, X3, Y3 + 10, H3, "× 11")),
       ubah("27,5", { id: "u-r1b-t", isi: "27,5" }),
       sorotkan("gram", "u-r1a-k", "u-r1b-k"),
@@ -82,7 +82,7 @@ export const ADEGAN_TABEL_SENILAI: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 4. Memilih bibit TOGA dan rasio satuan (hlm. 61 dan 62) ------------------------------ */
+/* ------------------------------ 4. Memilih bibit TOGA dan rasio satuan ------------------------------ */
 const X4 = 8;
 const X4B = 156;
 const Y4 = 40;
@@ -92,13 +92,13 @@ const H4 = 24;
 export const ADEGAN_TOGA: AdeganStory = {
   id: "b2-toga",
   judul: "Memilih bibit TOGA dan rasio satuan",
-  sumber: "Buku Siswa hlm. 61–62",
+  sumber: "Materi: bibit TOGA dan rasio satuan",
   latar: "#ECFDF5",
   kutipan: ["TOGA adalah singkatan dari Tanaman Obat Keluarga", "Rasio satuan adalah ketika jumlah salah satu dari dua kuantitas dalam rasio sama dengan 1", "Harga paket berisi 3 bibit = Rp37.500,00"],
   ketukan: [
     k(
-      "Eksplorasi 2.4. Ibu mengajak Anike ke toko bibit. Ibu mencari bibit TOGA, singkatan dari Tanaman Obat Keluarga.",
-      tambah("Eksplorasi", teks("jud", 150, 24, "Eksplorasi 2.4: Memilih Bibit Tanaman", 10, W.ungu)),
+      "Kita lanjut ke cerita berikutnya. Ibu mengajak Anike ke toko bibit. Ibu mencari bibit TOGA, singkatan dari Tanaman Obat Keluarga.",
+      tambah("berikutnya", teks("jud", 150, 24, "Latihan bersama: Memilih Bibit Tanaman", 10, W.ungu)),
       tambah("Ibu", emo("ibu", 50, 90, "👩", 34), teks("ibut", 50, 108, "Ibu", 8.5)),
       tambah("Anike", emo("an", 110, 90, "👧", 34), teks("ant", 110, 108, "Anike", 8.5)),
       tambah("toko", emo("tk", 230, 90, "🏪", 38), teks("tkt", 230, 108, "toko bibit", 8.5)),
@@ -111,7 +111,7 @@ export const ADEGAN_TOGA: AdeganStory = {
       tambah(17, paketBibit("pb", 170, 50, 5, "Paket 5 bibit", "Rp58.000", "#FEF9C3")),
     ),
     k(
-      "Jika uang Anike sedikit, bibit mana yang dipilih? Kita cari harga satuan, yaitu harga untuk 1 bibit.",
+      "Jika uang Anike sedikit, bibit mana yang dipilih? Kita cari harga satuan, yaitu harga untuk 1 bibit. Dengan begitu, dua paket yang isinya berbeda bisa dibandingkan dengan adil.",
       tambah("uang", emo("tm", 150, 168, "🤔", 26)),
       tambah("satuan,", kartu("hs", 70, 176, 160, 26, "#FEE2E2", ["harga satuan = harga 1 bibit"], 9, W.merah)),
     ),
@@ -147,7 +147,7 @@ export const ADEGAN_TOGA: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 5. Rasio satuan pada besaran berbeda: mengemas bibit (hlm. 62 dan 63) ------------------------------ */
+/* ------------------------------ 5. Rasio satuan pada besaran berbeda: mengemas bibit ------------------------------ */
 const X5 = 50;
 const Y5 = 34;
 const W5 = 70;
@@ -156,7 +156,7 @@ const H5 = 24;
 export const ADEGAN_SATUAN_WAKTU: AdeganStory = {
   id: "b2-satuan-waktu",
   judul: "Rasio satuan: mengemas bibit per jam",
-  sumber: "Buku Siswa hlm. 62–63",
+  sumber: "Materi: rasio satuan mengemas bibit",
   latar: "#FFF7ED",
   kutipan: ["Waktu yang dibutuhkan untuk mengemas 6 bibit tanaman adalah 1,5 jam", "Pegawai toko mengemas 4 bibit tanaman/jam", "apakah itu merupakan contoh rasio satuan"],
   ketukan: [
@@ -167,7 +167,7 @@ export const ADEGAN_SATUAN_WAKTU: AdeganStory = {
       tambah(15, kartu("mn", 150, 80, 120, 44, "#DCFCE7", ["pembelian minimal", "5 bibit"], 9.5)),
     ),
     k(
-      "Sebelum dikirim, bibit dikemas. Waktu untuk mengemas 6 bibit adalah 1,5 jam.",
+      "Sebelum dikirim, bibit dikemas. Lama mengemas 6 bibit adalah 1,5 jam. Ingat, satu setengah jam, bukan dua jam.",
       bersih(0),
       tambah("dikemas.", emo("pk", 80, 100, "📦", 40), teks("pkt", 80, 120, "dikemas", 9)),
       tambah(7, teks("e6", 190, 92, "6 bibit", 14, W.hijau)),
@@ -176,7 +176,7 @@ export const ADEGAN_SATUAN_WAKTU: AdeganStory = {
     k(
       "Pertanyaan a: berapa bibit per jam? Bagi kedua besaran dengan 1,5. Enam dibagi 1,5 sama dengan 4, dan 1,5 dibagi 1,5 sama dengan 1.",
       bersih(0),
-      tambah("Pertanyaan", kepalaTabel("t", X5, Y5, W5, H5, ["Waktu (jam)", "Bibit"]), sel("t-r0a", X5, Y5 + H5, W5, H5, "1,5"), sel("t-r0b", X5 + W5, Y5 + H5, W5, H5, "6")),
+      tambah("Pertanyaan", kepalaTabel("t", X5, Y5, W5, H5, ["Lama (jam)", "Bibit"]), sel("t-r0a", X5, Y5 + H5, W5, H5, "1,5"), sel("t-r0b", X5 + W5, Y5 + H5, W5, H5, "6")),
       tambah("dibagi", pengali("m", 0, 1, X5, Y5, W5, H5, "÷ 1,5")),
       tambah(16, sel("t-r1b", X5 + W5, Y5 + 2 * H5, W5, H5, "4", "#FEF9C3")),
       tambah(23, sel("t-r1a", X5, Y5 + 2 * H5, W5, H5, "1", "#FEF9C3")),
@@ -190,20 +190,20 @@ export const ADEGAN_SATUAN_WAKTU: AdeganStory = {
     k(
       "Pertanyaan b: berapa bibit selesai dikemas dalam 4 jam? Dari 1 jam ke 4 jam dikali 4, jadi 4 bibit dikali 4 sama dengan 16 bibit.",
       bersih(0),
-      tambah(0, kepalaTabel("u", X5, Y5, W5, H5, ["Waktu (jam)", "Bibit"])),
+      tambah(0, kepalaTabel("u", X5, Y5, W5, H5, ["Lama (jam)", "Bibit"])),
       tambah(10, sel("u-r0a", X5, Y5 + H5, W5, H5, "1"), sel("u-r0b", X5 + W5, Y5 + H5, W5, H5, "4")),
       tambah(13, sel("u-r1a", X5, Y5 + 2 * H5, W5, H5, "4")),
       tambah("dikali", pengali("n", 0, 1, X5, Y5, W5, H5, "× 4")),
       tambah("16", sel("u-r1b", X5 + W5, Y5 + 2 * H5, W5, H5, "16", "#FEF9C3")),
     ),
     k(
-      "Lalu, apakah 50 km per jam contoh rasio satuan? Ya, sebab artinya jarak 50 km ditempuh dalam waktu 1 jam.",
+      "Lalu, apakah 50 km per jam contoh rasio satuan? Ya, sebab artinya jarak 50 km ditempuh dalam 1 jam saja.",
       bersih(0),
       tambah("apakah", emo("mb", 150, 62, "🚗", 34)),
       tambah("50", teks("kp", 150, 92, "50 km/jam", 15, W.merah)),
       tambah("Ya,", teks("ya", 150, 120, "ya, rasio satuan", 11, W.hijau)),
       tambah("jarak", teks("jk", 150, 148, "jarak 50 km", 10)),
-      tambah(18, teks("wk", 150, 168, "waktu 1 jam", 10), teks("rk", 150, 192, "50 km : 1 jam", 12, W.ungu)),
+      tambah(18, teks("wk", 150, 168, "lama 1 jam", 10), teks("rk", 150, 192, "50 km : 1 jam", 12, W.ungu)),
     ),
   ],
 };

@@ -1,6 +1,6 @@
 // Uji Story Kelas 6 Bab 2 Sub-Bab B (Konsep Kesamaan Rasio): dua video (materi kurikulum dan metode luar) dengan mesin animasi baru.
 // Memeriksa: pemicu kata, sinkron angka suara dan gambar, perubahan gambar tiap ketukan, keunikan antaradegan, batas kanvas,
-// pemisahan materi dan metode luar, kutipan buku (bila PDF ada), emoji paling tinggi Emoji 12, dan kemurnian berkas.
+// pemisahan materi dan metode luar, kata terlarang (video diputar seperti guru mengajar), kutipan buku (bila PDF ada), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k6b2b.mjs
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
@@ -13,6 +13,9 @@ register(
 );
 const L = await import("../src/components/modul/story/logika-story.ts");
 const V = await import("../src/components/modul/story/k6b2b-video.ts");
+const M1 = await import("../src/components/modul/story/k6b2b-materi-1.ts");
+const M2 = await import("../src/components/modul/story/k6b2b-materi-2.ts");
+const M3 = await import("../src/components/modul/story/k6b2b-materi-3.ts");
 
 let lulus = 0;
 let gagal = 0;
@@ -40,7 +43,7 @@ for (const v of VIDEO) {
   cek(new Set(v.adegan.map((a) => a.id)).size === v.adegan.length, `${v.id}: id adegan unik`);
   for (const a of v.adegan) {
     const nama = `${v.id}/${a.id}`;
-    cek(a.ketukan.length >= 4 && a.ketukan.length <= 14, `${nama}: 4 sampai 14 ketukan (ada ${a.ketukan.length})`);
+    cek(a.ketukan.length >= 3 && a.ketukan.length <= 14, `${nama}: 3 sampai 14 ketukan (ada ${a.ketukan.length})`);
     cek(a.sumber.length > 8 && a.judul.length > 5 && /^#[0-9A-Fa-f]{6}$/.test(a.latar), `${nama}: sumber, judul, dan latar ada`);
     let sebelumnya = null;
     const terlihat = new Set();
@@ -109,20 +112,49 @@ for (const v of VIDEO) {
 }
 
 /* ------------------------------ Pemisahan materi dan metode luar ------------------------------ */
-const teksVideo = (v) => JSON.stringify(v.adegan.map((a) => [a.judul, a.ketukan.map((kt) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, a.ketukan.indexOf(kt), 9999))])]));
+const M_VIDEO = V.VIDEO_MATERI_K6B2B;
+// Adegan administratif (renungan penutup) tidak lagi diputar di video materi.
+// Adegannya tetap ada di berkas materi, jadi pemeriksaan isi memakai daftar penuh; hanya jumlah dan urutan adegan diuji terhadap video yang diputar.
+const MODUL_MATERI = Object.assign({}, M1, M2, M3);
+const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_POLYBAG, MODUL_MATERI.ADEGAN_EKSPLORASI23, MODUL_MATERI.ADEGAN_TABEL_SENILAI, MODUL_MATERI.ADEGAN_TOGA, MODUL_MATERI.ADEGAN_SATUAN_WAKTU, MODUL_MATERI.ADEGAN_LATIHAN22, MODUL_MATERI.ADEGAN_REFLEKSI] };
+const U = V.VIDEO_LUAR_K6B2B;
 const suaraVideo = (v) => v.adegan.flatMap((a) => a.ketukan.map((kt) => kt.suara)).join(" ");
 {
+  const teksVideo = (v) => JSON.stringify(v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map((kt, i) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, i, 9999))])]));
   const NAMA_METODE = /Equivalent Ratio|Fraction-Equivalence|Unit Rate|Recipe Scaling|metode luar|jembatan|kali silang|faktor skala/i;
-  const materi = teksVideo(V.VIDEO_MATERI_K6B2B);
-  const luar = teksVideo(V.VIDEO_LUAR_K6B2B);
+  const materi = teksVideo(M_VIDEO);
+  const luar = teksVideo(U);
   cek(!NAMA_METODE.test(materi), "video materi tidak memuat nama metode luar");
   for (const m of ["Equivalent Ratio Table", "Fraction-Equivalence Bridge", "Unit Rate Method", "Recipe Scaling Factor"]) cek(luar.includes(m), `video metode luar memuat ${m}`);
-  cek(V.VIDEO_MATERI_K6B2B.adegan.every((a) => /Buku Siswa/.test(a.sumber) && /hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
-  cek(V.VIDEO_LUAR_K6B2B.adegan.every((a) => /metode (dari )?luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  for (const kata of ["Eksplorasi 2.3", "Eksplorasi 2.4", "Latihan 2.2", "polybag", "Pak Wayan", "Anike", "TOGA", "FPB", "rasio satuan", "pecahan senilai", "semen", "Dona", "Mutia", "berefleksi", "Berpikir kritis", "50 km"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
-  const ids = V.VIDEO_LUAR_K6B2B.adegan.map((a) => a.id);
-  cek(["luarb2-tabel", "luarb2-tabel-terapan", "luarb2-jembatan", "luarb2-satuan", "luarb2-satuan-terapan", "luarb2-skala", "luarb2-skala-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
-  cek(V.VIDEO_MATERI_K6B2B.adegan.length === 7 && V.VIDEO_LUAR_K6B2B.adegan.length === 9, "7 adegan materi dan 9 adegan metode luar");
+  // Video diputar sebagai guru yang mengajar: tidak ada penyebutan sumber buku di suara, teks terlihat, label sumber, judul adegan, dan subjudul.
+  // Adegan sapaan bersama (sapaan.ts) mengumumkan "beberapa cara lain" dan tidak termasuk pemeriksaan ini.
+  const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan|pertemuan/i;
+  // Sub-Bab B tidak membahas bagian terhadap keseluruhan, jumlah bagian, dan durasi waktu (Sub-Bab C).
+  const BOCOR_B = /(\bbagian\b|keseluruhan|\btotal\b|part-to-whole|additive|time-rate|\bmenit\b|durasi|konversi|\bwaktu\b|jumlah bagian|a:\(a\+b\)|\d : \d dan \d : \d bagian)/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul video tanpa kata terlarang`);
+    for (const a of v.adegan) {
+      const semua = [a.judul, a.sumber];
+      a.ketukan.forEach((kt, i) => {
+        semua.push(kt.suara);
+        for (let p = 0; p < L.kataDari(kt.suara).length; p += 1) semua.push(...L.teksTerlihat(L.keadaanStory(a, i, p)));
+      });
+      const kena = semua.filter((t) => TERLARANG.test(t) || /soal nomor|Ayo Berlatih nomor|nomor [1-5]|catatan video|menurut buku/i.test(t));
+      cek(kena.length === 0, `${v.id}/${a.id}: tanpa penyebutan buku atau catatan sumber (${kena.slice(0, 2).join(" | ")})`);
+      cek(!/Uji Kompetensi|Pengayaan|Ayo Berlatih|Ayo Berdiskusi|Ayo Berefleksi|Berpikir Kritis|Berpikir Kreatif|Eksplorasi|Latihan 2\.\d|Refleksi|Berefleksi|soal \d|Soal \d/.test(semua.join(" | ")), `${v.id}/${a.id}: latihan disajikan sebagai Latihan, Tantangan, atau Hati-hati, tanpa penomoran buku`);
+      const bocor = semua.filter((t) => BOCOR_B.test(t));
+      cek(bocor.length === 0, `${v.id}/${a.id}: bebas konsep bagian-total dan durasi waktu (${bocor.slice(0, 2).join(" | ")})`);
+    }
+  }
+  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
+  cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,b2-polybag,b2-eksplorasi23,b2-tabel-senilai,b2-toga,b2-satuan-waktu,b2-latihan22", "urutan adegan materi");
+  for (const kata of ["Latihan 1", "Latihan 4", "Tantangan", "Hati-hati", "polybag", "Pak Wayan", "Anike", "TOGA", "FPB", "rasio satuan", "pecahan senilai", "semen", "Dona", "Mutia", "50 km"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
+  const ids = U.adegan.map((a) => a.id);
+  cek(["luarb2-tabel", "luarb2-tabel-terapan", "luarb2-jembatan", "luarb2-jembatan-terapan", "luarb2-satuan", "luarb2-satuan-terapan", "luarb2-skala", "luarb2-skala-terapan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
+  cek(U.adegan[1].id === "luarb2-pembuka" && U.adegan[U.adegan.length - 1].id === "luarb2-ringkas" && M_VIDEO.adegan.length === 7 && U.adegan.length === 11, "6 adegan materi diputar ditambah sapaan dan 10 adegan metode luar ditambah sapaan");
+  cek(M.adegan.length === 7 && M.adegan[6].id === "b2-refleksi", "berkas materi tetap memuat 7 adegan termasuk renungan yang tidak diputar");
   cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
 }
 
@@ -130,8 +162,8 @@ const suaraVideo = (v) => v.adegan.flatMap((a) => a.ketukan.map((kt) => kt.suara
 {
   const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
   const senilai = (a, b, c, d) => a * d === b * c; // perkalian silang
-  const materi = suaraVideo(V.VIDEO_MATERI_K6B2B);
-  const luar = suaraVideo(V.VIDEO_LUAR_K6B2B);
+  const materi = suaraVideo(M_VIDEO);
+  const luar = suaraVideo(U);
   const semua = `${materi} ${luar}`;
   // Eksplorasi 2.3: 10 m2 untuk 12 bibit.
   const g = gcd(10, 12);
@@ -176,7 +208,7 @@ const suaraVideo = (v) => v.adegan.flatMap((a) => a.ketukan.map((kt) => kt.suara
     const bersih = (t) => t.toLowerCase().replace(/-\s*\n\s*/g, "-").replace(/\s+/g, " ").trim();
     const buku = bersih(cobaPdf.stdout);
     let n = 0;
-    for (const a of V.VIDEO_MATERI_K6B2B.adegan) for (const kt of a.kutipan ?? []) {
+    for (const a of M_VIDEO.adegan) for (const kt of a.kutipan ?? []) {
       n += 1;
       cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
@@ -205,7 +237,7 @@ const suaraVideo = (v) => v.adegan.flatMap((a) => a.ketukan.map((kt) => kt.suara
   for (const f of berkas.filter((x) => x.startsWith("k6b2b-"))) {
     const s = readFileSync(new URL(f, folder), "utf8");
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|k6b2b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k6b2b sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k6b2b-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika, sapaan, dan berkas bab k6b2b sendiri (${impor.join(", ")})`);
   }
   // mesin tidak memakai kit visual lama
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");

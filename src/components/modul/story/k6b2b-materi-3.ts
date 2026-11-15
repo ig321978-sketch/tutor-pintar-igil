@@ -2,12 +2,12 @@ import type { AdeganStory } from "./logika-story";
 import { W, emo, kartu, kepalaTabel, pengali, sel, teks } from "./k6b2b-gambar";
 import { bersih, k, sorotkan, tambah } from "./k6b2b-bantu";
 
-/* ------------------------------ 6. Latihan 2.2 nomor 1 sampai 4 (hlm. 64 dan 65) ------------------------------ */
+/* ------------------------------ 6. Latihan 1 sampai 4 ------------------------------ */
 const X = 50;
 const Y = 34;
 const BW = 70;
 const BH = 24;
-const JUDUL = (nomor: string) => teks("jud", 150, 22, `Latihan 2.2 nomor ${nomor}`, 11, W.ungu);
+const JUDUL = (nomor: string) => teks("jud", 150, 22, `Latihan ${nomor}`, 11, W.ungu);
 /** Tabel tiga kolom resep kopi: kolom air, kopi, gula. */
 const resep = (id: string, r: number, [a, b, c]: [string, string, string], warna: string = W.putih) => [
   ...sel(`${id}a`, 50, 40 + r * 24, 70, 24, a, warna),
@@ -17,8 +17,8 @@ const resep = (id: string, r: number, [a, b, c]: [string, string, string], warna
 
 export const ADEGAN_LATIHAN22: AdeganStory = {
   id: "b2-latihan22",
-  judul: "Latihan 2.2: wedang jahe, kopi, dan pena",
-  sumber: "Buku Siswa hlm. 64–65",
+  judul: "Latihan: wedang jahe, kopi, dan pena",
+  sumber: "Materi: latihan wedang jahe, kopi, pena",
   latar: "#FFFBEB",
   kutipan: [
     "Berapa buah jahe merah yang diperlukan jika kalian akan membuat wedang jahe sebanyak 8 liter air",
@@ -28,7 +28,7 @@ export const ADEGAN_LATIHAN22: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Latihan 2.2 nomor 1. Resep wedang jahe untuk 4 liter air memakai 12 jahe merah. Untuk 8 liter air, kita perlu berapa jahe?",
+      "Latihan 1. Resep wedang jahe untuk 4 liter air memakai 12 jahe merah. Untuk 8 liter air, kita perlu berapa jahe?",
       tambah(0, JUDUL("1")),
       tambah("wedang", emo("wj", 150, 80, "🍵", 36)),
       tambah(8, teks("w4", 70, 130, "4 liter air", 11)),
@@ -46,7 +46,7 @@ export const ADEGAN_LATIHAN22: AdeganStory = {
       tambah(20, sel("t-r1b", X + BW, Y + 2 * BH, BW, BH, "24", "#FEF9C3")),
     ),
     k(
-      "Nomor 2. Serai 8 batang dan lemon 4 buah. Rasio paling sederhana dibagi 4, yaitu 2 banding 1.",
+      "Latihan 2. Serai 8 batang dan lemon 4 buah. Rasio paling sederhana dibagi 4, yaitu 2 banding 1.",
       bersih(0),
       tambah(0, JUDUL("2"), kepalaTabel("s", X, Y + 10, BW, BH, ["Serai", "Lemon"])),
       tambah(3, sel("s-r0a", X, Y + 10 + BH, BW, BH, "8")),
@@ -62,7 +62,7 @@ export const ADEGAN_LATIHAN22: AdeganStory = {
       tambah(18, sel("s-r2b", X + BW, Y + 10 + 3 * BH, BW, BH, "3", "#BBF7D0")),
     ),
     k(
-      "Nomor 3. Ibu membuat kopi 250 mililiter dengan 1 sendok teh kopi dan 2 sendok teh gula. Dona memakai teko 1 liter, dengan 4 sendok teh kopi dan 10 sendok teh gula.",
+      "Latihan 3. Ibu membuat kopi 250 mililiter dengan 1 sendok teh kopi dan 2 sendok teh gula. Dona memakai teko 1 liter, dengan 4 sendok teh kopi dan 10 sendok teh gula.",
       bersih(0),
       tambah(0, JUDUL("3"), resep("h", 0, ["Air", "Kopi", "Gula"], "#DBEAFE")),
       tambah("Ibu", teks("lib", 44, 80, "Ibu", 9, W.biru, { anchor: "end" })),
@@ -82,7 +82,7 @@ export const ADEGAN_LATIHAN22: AdeganStory = {
       tambah("manis.", emo("mn", 150, 184, "🍬", 24), teks("mnt", 150, 202, "terlalu manis", 9.5, W.merah)),
     ),
     k(
-      "Nomor 4. Mutia membeli 1 kotak pena seharga Rp36.000 berisi 15 pena. Harga 1 pena adalah 36.000 dibagi 15 sama dengan Rp2.400.",
+      "Latihan 4. Mutia membeli 1 kotak pena seharga Rp36.000 berisi 15 pena. Harga 1 pena adalah 36.000 dibagi 15 sama dengan Rp2.400.",
       bersih(0),
       tambah(0, JUDUL("4"), kepalaTabel("p", X, Y + 10, BW, BH, ["Pena", "Harga (Rp)"])),
       tambah(8, sel("p-r0b", X + BW, Y + 10 + BH, BW, BH, "36.000")),
@@ -97,20 +97,48 @@ export const ADEGAN_LATIHAN22: AdeganStory = {
       tambah("kali", pengali("r", 1, 2, X + 0, Y + 10, BW, BH, "× 5", W.hijau)),
       tambah("Rp12.000.", sel("p-r2b", X + BW, Y + 10 + 3 * BH, BW, BH, "12.000", "#BBF7D0")),
     ),
+    k(
+      "Hati-hati, ada dua kesalahan yang sering terjadi. Pertama, menambah kedua bilangan dengan bilangan yang sama. Kedua, lupa menulis satuan, misalnya bibit per jam.",
+      bersih(0),
+      tambah(0, teks("zjud", 150, 26, "Hati-hati", 13, W.merah)),
+      tambah("Pertama,", ...kartu("z1", 30, 44, 240, 44, "#FEE2E2", ["jangan menambah kedua bilangan", "dengan bilangan yang sama"], 10, W.merah)),
+      tambah("Kedua,", ...kartu("z2", 30, 108, 240, 44, "#FEF9C3", ["jangan lupa satuan", "contoh: bibit per jam"], 10)),
+    ),
+    k(
+      "Tantangan sekaligus renungan: tuliskan rasio yang senilai dengan 12 banding 28. Bagi kedua bilangan dengan 2 menjadi 6 banding 14, lalu bagi dengan 4 menjadi 3 banding 7.",
+      bersih(0),
+      tambah(0, teks("zjud2", 150, 14, "Tantangan: senilai dengan 12 : 28", 11, W.ungu)),
+      tambah(8, ...kartu("zr0", 80, 24, 140, 32, "#FEF9C3", ["12 : 28"], 14)),
+      tambah(17, ...kartu("za", 20, 80, 120, 44, "#DBEAFE", ["÷ 2", "6 : 14"], 11)),
+      tambah(25, ...kartu("zb", 160, 80, 120, 44, "#DBEAFE", ["÷ 4", "3 : 7"], 11)),
+    ),
+    k(
+      "Kemudian kalikan dengan 2 menjadi 24 banding 56, dan kalikan dengan 3 menjadi 36 banding 84. Semuanya senilai dengan 12 banding 28.",
+      tambah(5, ...kartu("zc", 20, 138, 120, 44, "#DCFCE7", ["× 2", "24 : 56"], 11)),
+      tambah(13, ...kartu("zd", 160, 138, 120, 44, "#DCFCE7", ["× 3", "36 : 84"], 11)),
+      sorotkan("Semuanya", "zr0-k"),
+    ),
+    k(
+      "Itulah kesamaan rasio dan rasio satuan. Kalikan atau bagi kedua besaran dengan bilangan yang sama, dan cari nilai untuk satu satuan lebih dulu bila ingin membandingkan. Terima kasih sudah belajar bersama.",
+      bersih(0),
+      tambah("kesamaan", ...kartu("zp1", 30, 40, 240, 44, "#DBEAFE", ["kesamaan rasio", "kali atau bagi kedua besaran sama"], 10)),
+      tambah("nilai", ...kartu("zp2", 30, 110, 240, 44, "#DCFCE7", ["rasio satuan", "cari nilai per 1 untuk membandingkan"], 10)),
+      tambah("Terima", teks("zpt", 150, 186, "terima kasih, sampai jumpa", 10, W.ungu)),
+    ),
   ],
 };
 
-/* ------------------------------ 7. Ayo Berefleksi dan penutup (hlm. 65) ------------------------------ */
+/* ------------------------------ 7. Renungan dan penutup (tidak diputar) ------------------------------ */
 export const ADEGAN_REFLEKSI: AdeganStory = {
   id: "b2-refleksi",
-  judul: "Ayo Berefleksi: senilai dan rasio satuan",
-  sumber: "Buku Siswa hlm. 65",
+  judul: "Renungan: senilai dan rasio satuan",
+  sumber: "Materi: renungan penutup",
   latar: "#F5F3FF",
   kutipan: ["Tuliskan rasio yang memiliki kesamaan dengan 12 : 28", "Jelaskan pengertian dari rasio satuan dengan bahasa kalian sendiri"],
   ketukan: [
     k(
-      "Saatnya berefleksi. Pertama, tuliskan rasio yang senilai dengan 12 banding 28, minimal 4.",
-      tambah(0, teks("jud", 150, 28, "Ayo Berefleksi", 13, W.ungu)),
+      "Saatnya merenung. Pertama, tuliskan rasio yang senilai dengan 12 banding 28, minimal 4.",
+      tambah(0, teks("jud", 150, 28, "Renungan", 13, W.ungu)),
       tambah(8, ...kartu("r0", 80, 70, 140, 40, "#FEF9C3", ["12 : 28"], 16)),
       tambah("minimal", teks("mn", 150, 136, "tulis minimal 4 rasio senilai", 10, W.merah)),
     ),

@@ -2,16 +2,16 @@ import type { AdeganStory } from "./logika-story";
 import { W, emo, kartu, kartuMetode, kepalaTabel, jalur, panah, pecahan, pengali, pengaliKiri, sel, teks } from "./k6b2b-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k6b2b-bantu";
 
-/* ------------------------------ LB0. Empat metode luar Sub-Bab B ------------------------------ */
+/* ------------------------------ LB0. Empat metode luar ------------------------------ */
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luarb2-pembuka",
   judul: "Empat metode luar untuk kesamaan rasio",
-  sumber: "Metode dari luar buku; contoh dari Buku Siswa hlm. 56–65",
+  sumber: "Metode luar: empat cara menyamakan rasio",
   latar: "#EEF2FF",
   ketukan: [
     k(
-      "Video ini membahas metode luar untuk Sub-Bab B. Metode ini membantu kita menyamakan rasio dan membandingkan harga dengan rapi.",
-      tambah(0, teks("jud", 150, 26, "Sub-Bab B: Kesamaan Rasio", 12, W.ungu)),
+      "Sekarang kita belajar empat metode luar. Metode ini membantu kita menyamakan rasio dan membandingkan harga dengan rapi.",
+      tambah(0, teks("jud", 150, 26, "Kesamaan Rasio", 12, W.ungu)),
       tambah("metode", emo("tel", 70, 100, "🔭", 42), teks("t1", 70, 124, "metode luar", 9, W.merah)),
       tambah("rasio", emo("hit", 150, 100, "🧮", 42), teks("t2", 150, 124, "samakan rasio", 9)),
       tambah("harga", emo("uang", 230, 100, "💰", 42), teks("t3", 230, 124, "banding harga", 9, W.hijau)),
@@ -43,7 +43,7 @@ const TH = 24;
 export const ADEGAN_LUAR_TABEL: AdeganStory = {
   id: "luarb2-tabel",
   judul: "Equivalent Ratio Table: kali atau bagi sama",
-  sumber: "Metode dari luar buku; contoh lahan dan bibit, Buku Siswa hlm. 58–59",
+  sumber: "Metode luar: tabel rasio",
   latar: "#FFF4DD",
   ketukan: [
     k(
@@ -93,7 +93,7 @@ export const ADEGAN_LUAR_TABEL: AdeganStory = {
 export const ADEGAN_LUAR_TABEL_TERAPAN: AdeganStory = {
   id: "luarb2-tabel-terapan",
   judul: "Equivalent Ratio Table: lahan 25 dan bibit 24",
-  sumber: "Metode dari luar buku; penerapan Eksplorasi 2.3, Buku Siswa hlm. 57–59",
+  sumber: "Metode luar: terapan tabel rasio",
   latar: "#FFF1F2",
   ketukan: [
     k(
@@ -132,7 +132,7 @@ export const ADEGAN_LUAR_TABEL_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_JEMBATAN: AdeganStory = {
   id: "luarb2-jembatan",
   judul: "Fraction-Equivalence Bridge: kali silang",
-  sumber: "Metode dari luar buku; contoh 10 per 12 dan 5 per 6, Buku Siswa hlm. 59–60",
+  sumber: "Metode luar: jembatan pecahan",
   latar: "#F0FDFA",
   ketukan: [
     k(
@@ -168,11 +168,50 @@ export const ADEGAN_LUAR_JEMBATAN: AdeganStory = {
     k(
       "Dengan jembatan ini, 30 per 36 juga senilai dengan 5 per 6, karena 30 kali 6 sama dengan 180, dan 36 kali 5 juga sama dengan 180.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Contoh lain dari buku", 11, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Contoh lain", 11, W.ungu)),
       tambah(3, pecahan("h1", 60, 96, "30", "36", 15)),
       tambah(9, pecahan("h2", 240, 96, "5", "6", 15), teks("eq", 150, 100, "=", 22, W.hijau)),
       tambah(13, teks("e1", 90, 156, "30 × 6 = 180", 12, W.hijau)),
       tambah(20, teks("e2", 210, 156, "36 × 5 = 180", 12, W.hijau)),
+    ),
+  ],
+};
+
+/* ------------------------------ LB3b. Fraction-Equivalence Bridge: penerapan ------------------------------ */
+export const ADEGAN_LUAR_JEMBATAN_TERAPAN: AdeganStory = {
+  id: "luarb2-jembatan-terapan",
+  judul: "Fraction-Equivalence Bridge: mencari bilangan yang hilang",
+  sumber: "Metode luar: terapan jembatan pecahan",
+  latar: "#ECFEFF",
+  ketukan: [
+    k(
+      "Terapan: lahan 25 meter persegi, berapa bibitnya? Tulis jembatannya, 10 per 12 sama dengan 25 per bibit yang dicari.",
+      tambah(0, teks("jud", 150, 22, "Terapan: lahan 25 m²", 11, W.ungu)),
+      tambah(9, pecahan("f1", 70, 100, "10", "12", 15)),
+      tambah(12, teks("eq", 150, 104, "=", 22, W.hijau)),
+      tambah(14, pecahan("f2", 230, 100, "25", "?", 15)),
+    ),
+    k(
+      "Kali silang: 10 kali bibit sama dengan 12 kali 25, yaitu 300.",
+      tambah(0, panah("x1", 82, 88, 136, 24, W.merah, 2, { gambar: true }), panah("x2", 82, 112, 136, -24, W.hijau, 2, { gambar: true })),
+      tambah(2, teks("c1", 90, 160, "10 × bibit", 12, W.merah)),
+      tambah(7, teks("c2", 210, 160, "12 × 25 = 300", 12, W.hijau)),
+    ),
+    k(
+      "10 kali bibit sama dengan 300, sehingga bibit sama dengan 300 dibagi 10, yaitu 30. Jadi lahan 25 meter persegi memuat 30 bibit.",
+      tambah(11, teks("c3", 150, 192, "300 ÷ 10 = 30", 12, W.ungu)),
+      ubah(14, { id: "f2-b", isi: "30", warna: W.hijau }),
+      sorotkan(21, "f2-b"),
+    ),
+    k(
+      "Arah sebaliknya: bibit 24, berapa lahan? Kali silang, 10 kali 24 sama dengan 240, dibagi 12 hasilnya 20 meter persegi.",
+      bersih(0),
+      tambah(0, teks("jud", 150, 22, "Arah sebaliknya: bibit 24", 11, W.ungu)),
+      tambah(2, pecahan("g1", 70, 100, "10", "12", 15)),
+      tambah(3, teks("geq", 150, 104, "=", 22, W.hijau), pecahan("g2", 230, 100, "?", "24", 15)),
+      tambah(8, teks("k1", 150, 156, "10 × 24 = 240", 12, W.merah)),
+      tambah(14, teks("k2", 150, 180, "240 ÷ 12 = 20", 12, W.hijau)),
+      ubah(17, { id: "g2-a", isi: "20", warna: W.hijau }),
     ),
   ],
 };

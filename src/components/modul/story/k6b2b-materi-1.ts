@@ -2,11 +2,11 @@ import type { AdeganStory } from "./logika-story";
 import { W, barisTabel, emo, kartu, kebun, kepalaTabel, kotak, lahan, panah, pengali, rak, sel, garis, teks } from "./k6b2b-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k6b2b-bantu";
 
-/* ------------------------------ 1. Rak polybag dan lahan (hlm. 56 dan 57) ------------------------------ */
+/* ------------------------------ 1. Rak polybag dan lahan ------------------------------ */
 export const ADEGAN_POLYBAG: AdeganStory = {
   id: "b2-polybag",
   judul: "Rak polybag dan lahan menanam",
-  sumber: "Buku Siswa hlm. 56–57",
+  sumber: "Materi: rak polybag dan lahan",
   latar: "#F0FDF4",
   kutipan: ["Satu rak dapat memuat 6 polybag", "Berapa polybag yang dapat ditampung jika memiliki 3 rak", "diperkirakan dapat menampung 12 bibit tanaman"],
   ketukan: [
@@ -28,20 +28,20 @@ export const ADEGAN_POLYBAG: AdeganStory = {
       tambah("18", teks("l2", 150, 148, "6 + 6 + 6 = 18", 11, W.merah), teks("l3", 150, 166, "3 rak = 18 polybag", 9.5, W.hijau)),
     ),
     k(
-      "Itulah dasar kesamaan rasio: banyaknya rak berubah, tetapi perbandingan 1 rak dengan 6 polybag tetap sama.",
+      "Itulah dasar kesamaan rasio: banyaknya rak berubah, tetapi perbandingan 1 rak dengan 6 polybag tetap sama. Jadi, tiga rak dan delapan belas polybag sebanding dengan satu rak dan enam polybag.",
       tambah("perbandingan", kotak("ban", 50, 176, 200, 24, "#FEF9C3", W.biru, { rx: 8 }), teks("bant", 150, 193, "1 : 6 = 3 : 18", 12)),
       sorotkan(15, "ban"),
     ),
     k(
-      "Sekarang Eksplorasi 2.3. Siswa kelas VI membawa bibit dalam polybag, dan polybag di lahan harus diberi jarak.",
+      "Sekarang kita berlatih bersama. Siswa kelas VI membawa bibit dalam polybag, dan polybag di lahan harus diberi jarak supaya tanaman tidak berdesakan.",
       bersih(0),
-      tambah("Eksplorasi", teks("jud2", 150, 26, "Eksplorasi 2.3: Lahan untuk Menanam", 10, W.ungu)),
+      tambah("berlatih", teks("jud2", 150, 26, "Latihan bersama: Lahan untuk Menanam", 10, W.ungu)),
       tambah("membawa", lahan("lh", 70, 56, 160, 106)),
       tambah("polybag", kebun("pk", 92, 72, 4, 3, 36, 30)),
       tambah("jarak.", garis("jr", 104, 80, 24, 0, W.merah, 2, { putus: true }), teks("jrt", 116, 70, "jarak", 6.5, W.merah)),
     ),
     k(
-      "Pak Wayan menjelaskan bahwa lahan seluas 10 meter persegi diperkirakan dapat menampung 12 bibit tanaman.",
+      "Pak Wayan menjelaskan bahwa lahan seluas 10 meter persegi diperkirakan dapat menampung 12 bibit tanaman. Catat dua bilangan ini baik-baik, sebab kita akan memakainya terus.",
       sorotkan("lahan", "lh-f"),
       tambah("10", teks("lm", 150, 182, "lahan 10 m²", 11, W.coklat)),
       tambah("12", teks("lb", 150, 200, "12 bibit", 11, W.hijau)),
@@ -49,7 +49,7 @@ export const ADEGAN_POLYBAG: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 2. Pertanyaan a, b, c Eksplorasi 2.3 (hlm. 57 sampai 59) ------------------------------ */
+/* ------------------------------ 2. Pertanyaan a, b, c: rasio lahan dan bibit ------------------------------ */
 const TX = 50;
 const TY = 36;
 const TW = 70;
@@ -63,7 +63,7 @@ const sebelah = (id: string, dari: number, ke: number, label: string) => {
 export const ADEGAN_EKSPLORASI23: AdeganStory = {
   id: "b2-eksplorasi23",
   judul: "Pertanyaan a, b, c: rasio lahan dan bibit",
-  sumber: "Buku Siswa hlm. 57–59",
+  sumber: "Materi: rasio lahan dan bibit",
   latar: "#FFFBEB",
   kutipan: ["Tuliskan rasio lahan dan bibit tanaman dalam bentuk yang paling sederhana", "Jika lahan yang tersedia seluas 25m2, berapa bibit yang dapat ditanam", "FPB dari 10 dan 12 adalah 2", "campuran semen dan pasir harus dalam perbandingan tertentu agar bangunan kokoh"],
   ketukan: [
@@ -74,12 +74,12 @@ export const ADEGAN_EKSPLORASI23: AdeganStory = {
       tambah("10", barisTabel("t", 0, TX, TY, TW, TH, ["10", "12"])),
     ),
     k(
-      "Untuk menyederhanakan, bagi kedua bilangan dengan FPB. Faktor persekutuan terbesar dari 10 dan 12 adalah 2.",
+      "Untuk menyederhanakan, bagi kedua bilangan dengan FPB. Faktor persekutuan terbesar dari 10 dan 12 adalah 2. Dengan membagi memakai FPB, rasio langsung menjadi bentuk paling sederhana.",
       tambah("FPB.", kartu("fpb", 50, 110, 160, 30, "#FEF9C3", ["FPB dari 10 dan 12 = 2"], 9.5)),
       sorotkan("terbesar", "fpb-k"),
     ),
     k(
-      "Kedua bilangan dibagi 2. Sepuluh dibagi 2 menjadi 5, dan 12 dibagi 2 menjadi 6. Jadi rasio paling sederhana adalah 5 banding 6.",
+      "Kedua bilangan dibagi 2. Sepuluh dibagi 2 menjadi 5, dan 12 dibagi 2 menjadi 6. Jadi rasio paling sederhana adalah 5 banding 6. Mulai sekarang, bilangan lima dan enam inilah yang menjadi patokan kita.",
       hapus(0, "fpb-k", "fpb-t0"),
       tambah("dibagi", sebelah("d", 0, 1, "÷ 2")),
       tambah("5,", sel("t-r1a", TX, TY + 2 * TH, TW, TH, "5")),

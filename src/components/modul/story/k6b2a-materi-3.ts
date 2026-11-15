@@ -1,101 +1,128 @@
 import type { AdeganStory } from "./logika-story";
-import { W, batang, emo, garis, kartu, kotak, panah, tabel, teks } from "./k6b2a-gambar";
-import { bersih, k, sorotkan, tambah, ubah } from "./k6b2a-bantu";
+import { W, batang, emo, garis, kartu, kotak, teks } from "./k6b2a-gambar";
+import { bersih, k, tambah } from "./k6b2a-bantu";
 
-/* ------------------------------ 6. Latihan 2.1 nomor 2 dan 3 (hlm. 54 dan 55) ------------------------------ */
+/* ------------------------------ 6. Latihan 1 dan Latihan 2: antrean wahana dan minuman Banyu ------------------------------ */
 export const ADEGAN_LATIHAN21: AdeganStory = {
   id: "latihan21-wahana",
-  judul: "Latihan 2.1 antrean wahana dan minuman Banyu",
-  sumber: "Buku Siswa hlm. 54–55 dan Buku Panduan Guru",
+  judul: "Latihan 1 dan 2: antrean wahana dan minuman Banyu",
+  sumber: "Materi: antrean wahana dan minuman",
   latar: "#FEFCE8",
-  kutipan: [
-    "Berikut daftar banyak pengunjung yang sedang antre di beberapa wahana di taman hiburan",
-    "Roller coaster 24",
-    "Komidi putar 18",
-    "Tuliskan rasio banyak pengunjung yang antre di wahana roller coaster terhadap komidi putar",
-    "rasio pengunjung yang antre di wahana bianglala terhadap roller coaster adalah 4 : 3",
-    "maka besaran lain juga dikalikan bilangan yang sama",
-    "rasio pengunjung yang antre di wahana rumah hantu terhadap komidi putar adalah 2 : 6",
-    "Banyu menyiapkan 6 liter minuman untuk 15 orang teman yang datang di pagi hari",
-    "Di siang hari, akan datang teman sebanyak 10 orang, berapa liter minuman yang harus disiapkan",
-  ],
   ketukan: [
     k(
-      "Latihan 2.1 nomor 2 memuat antrean di taman hiburan. Roller coaster 24 pengunjung, dan komidi putar 18 pengunjung.",
-      tambah(0, teks("jud", 150, 22, "Latihan 2.1 nomor 2", 12, W.ungu)),
-      tambah("taman", emo("e1", 40, 160, "🎡", 30), emo("e2", 150, 160, "🎢", 30), emo("e3", 260, 160, "🎠", 30)),
-      tambah("Roller", batang("rc", 100, 44, 24, 6, "#FCA5A5", "roller coaster")),
-      tambah("komidi", batang("km", 100, 70, 18, 6, "#93C5FD", "komidi putar")),
+      "Kita berlatih. Di taman hiburan ada antrean di empat wahana. Roller coaster dua puluh empat pengunjung, komidi putar delapan belas, bianglala tiga puluh dua, dan rumah hantu enam.",
+      tambah(0, teks("jud", 150, 22, "Latihan 1: antrean wahana", 12, W.ungu)),
+      tambah("Roller", batang("rc", 100, 40, 24, 5, "#FCA5A5", "roller coaster"), emo("e1", 40, 186, "🎢", 28)),
+      tambah("komidi", batang("km", 100, 62, 18, 5, "#93C5FD", "komidi putar"), emo("e2", 110, 186, "🎠", 28)),
+      tambah("bianglala", batang("bi", 100, 84, 32, 5, "#86EFAC", "bianglala"), emo("e3", 190, 186, "🎡", 28)),
+      tambah("rumah", batang("rh", 100, 106, 6, 5, "#FDE68A", "rumah hantu"), emo("e4", 260, 186, "👻", 28)),
     ),
     k(
-      "Pertanyaan a: rasio roller coaster terhadap komidi putar adalah 24 banding 18. Bagi keduanya dengan 6, hasilnya 4 banding 3.",
-      tambah("Pertanyaan", teks("qa", 150, 100, "a. roller coaster terhadap komidi putar", 8.6, W.ungu)),
-      tambah("banding", teks("a1", 85, 126, "24 : 18", 18, W.biru)),
-      tambah("Bagi", teks("a2", 150, 146, "dibagi 6", 9, W.merah)),
-      tambah("hasilnya", teks("a3", 215, 126, "= 4 : 3", 18, W.hijau)),
-    ),
-    k(
-      "Pertanyaan b: rasio bianglala terhadap roller coaster adalah 4 banding 3. Roller coaster sebenarnya 24 pengunjung, jadi 3 dikali berapa sama dengan 24?",
+      "Pertanyaan a. Rasio roller coaster terhadap komidi putar adalah dua puluh empat banding delapan belas. FPB-nya enam, jadi hasilnya empat banding tiga.",
       bersih(0),
-      tambah(0, teks("jb", 150, 24, "b. bianglala terhadap roller coaster", 10, W.ungu)),
-      tambah("bianglala", tabel("tk", 70, 44, 80, [["bianglala", "roller coaster"], ["4", "3"], ["?", "24"]], 8.6)),
-      tambah("dikali", teks("te", 150, 136, "3 x ? = 24", 16, W.merah)),
+      tambah(0, teks("qa", 150, 26, "a. roller coaster terhadap komidi putar", 9.4, W.ungu)),
+      tambah("banding", teks("a1", 80, 90, "24 : 18", 24, W.biru)),
+      tambah("FPB", teks("a2", 150, 140, "FPB dari 24 dan 18 adalah 6", 10, W.merah)),
+      tambah("hasilnya", teks("a3", 220, 90, "= 4 : 3", 24, W.hijau)),
     ),
     k(
-      "Tiga kali 8 sama dengan 24. Maka 4 juga dikali 8, hasilnya 32. Bianglala ada 32 pengunjung.",
-      ubah("Tiga", { id: "te", isi: "3 x 8 = 24" }),
-      tambah("juga", teks("tf", 150, 160, "4 x 8 = 32", 16, W.hijau)),
-      ubah("hasilnya", { id: "tk-t20", isi: "32", warna: W.hijau }),
-      sorotkan("Bianglala", "tk-t20"),
+      "Baca hasilnya dengan kalimat sehari-hari. Setiap empat pengunjung roller coaster ada tiga pengunjung komidi putar.",
+      tambah("Setiap", ...balonLatihan("ba", 150, 156)),
+      tambah("roller", emo("ea", 40, 202, "🎢", 20)),
+      tambah("komidi", emo("eb", 260, 202, "🎠", 20)),
     ),
     k(
-      "Apabila satu besaran dikali bilangan tertentu, besaran lainnya dikali bilangan yang sama.",
+      "Pertanyaan b. Rasio bianglala terhadap roller coaster adalah tiga puluh dua banding dua puluh empat. FPB-nya delapan, jadi hasilnya empat banding tiga juga.",
       bersih(0),
-      tambah(0, teks("rj", 150, 30, "aturan yang sama", 12, W.ungu)),
-      tambah("satu", kartu("r1", 30, 50, 100, 40, "#FEF9C3", ["bianglala 4", "roller coaster 3"], 8.6)),
-      tambah("tertentu,", panah("r2", 134, 70, 32, 0, W.merah, 3, { gambar: true }), teks("r3", 150, 62, "x 8", 12, W.merah)),
-      tambah("sama.", kartu("r4", 170, 50, 100, 40, "#DCFCE7", ["bianglala 32", "roller coaster 24"], 8.6), teks("r5", 150, 130, "kedua suku dikali bilangan sama", 10, W.hijau)),
+      tambah(0, teks("qb", 150, 26, "b. bianglala terhadap roller coaster", 9.4, W.ungu)),
+      tambah("banding", teks("b1", 80, 90, "32 : 24", 24, W.biru)),
+      tambah("FPB", teks("b2", 150, 140, "FPB dari 32 dan 24 adalah 8", 10, W.merah)),
+      tambah("hasilnya", teks("b3", 220, 90, "= 4 : 3", 24, W.hijau)),
     ),
     k(
-      "Pertanyaan c: rumah hantu terhadap komidi putar adalah 2 banding 6. Komidi putar sebenarnya 18, dan 6 dikali 3 sama dengan 18.",
+      "Pertanyaan c. Rasio rumah hantu terhadap komidi putar adalah enam banding delapan belas. FPB-nya enam, jadi hasilnya satu banding tiga.",
       bersih(0),
-      tambah("Pertanyaan", teks("jc", 150, 24, "c. rumah hantu terhadap komidi putar", 10, W.ungu)),
-      tambah("rumah", tabel("th", 70, 44, 80, [["rumah hantu", "komidi putar"], ["2", "6"], ["?", "18"]], 8.6)),
-      tambah("dikali", teks("tg", 150, 136, "6 x 3 = 18", 16, W.merah)),
+      tambah(0, teks("qc", 150, 26, "c. rumah hantu terhadap komidi putar", 9.4, W.ungu)),
+      tambah("banding", teks("c1", 80, 90, "6 : 18", 24, W.biru)),
+      tambah("FPB", teks("c2", 150, 140, "FPB dari 6 dan 18 adalah 6", 10, W.merah)),
+      tambah("hasilnya", teks("c3", 220, 90, "= 1 : 3", 24, W.hijau)),
     ),
     k(
-      "Jadi 2 juga dikali 3 menjadi 6. Rumah hantu ada 6 pengunjung.",
-      tambah("juga", teks("th2", 150, 160, "2 x 3 = 6", 16, W.hijau)),
-      ubah("menjadi", { id: "th-t20", isi: "6", warna: W.hijau }),
-      sorotkan("Rumah", "th-t20"),
-    ),
-    k(
-      "Nomor 3. Banyu menyiapkan 6 liter minuman untuk 15 teman di pagi hari. Siang hari datang 10 teman, berapa liter minuman yang harus disiapkan?",
+      "Pada tiap rasio itu, kita cari FPB lebih dulu, lalu bagi kedua angkanya, dan hasilnya menjadi lebih sederhana. Cara yang sama kita pakai berulang-ulang.",
       bersih(0),
-      tambah(0, teks("n3", 150, 22, "Latihan 2.1 nomor 3", 12, W.ungu)),
-      tambah("Banyu", emo("by", 40, 90, "🥤", 32), kartu("pg", 70, 40, 210, 40, "#DBEAFE", ["pagi: 6 liter minuman", "untuk 15 teman"], 8.8)),
-      tambah("Siang", kartu("sg", 70, 94, 210, 40, "#FED7AA", ["siang: ? liter minuman", "untuk 10 teman"], 8.8)),
-      tambah("berapa", teks("bq", 150, 168, "berapa liter?", 14, W.merah)),
+      tambah(0, teks("g0", 150, 26, "cara yang sama untuk tiap rasio", 11, W.ungu)),
+      tambah("FPB", ...kartu("g1", 30, 46, 240, 32, "#FEF9C3", ["1. cari FPB kedua angka"], 10)),
+      tambah("bagi", ...kartu("g2", 30, 90, 240, 32, "#DBEAFE", ["2. bagi kedua angka dengan FPB"], 10)),
+      tambah("hasilnya", ...kartu("g3", 30, 134, 240, 32, "#DCFCE7", ["3. tulis hasilnya"], 10)),
     ),
     k(
-      "Rasio minuman terhadap tamu adalah 6 banding 15. Keduanya dibagi 3, menjadi 2 banding 5.",
+      "Pertanyaan d. Sekarang arahnya dibalik, komidi putar terhadap roller coaster. Rasionya delapan belas banding dua puluh empat, atau tiga banding empat.",
       bersih(0),
-      tambah(0, teks("m0", 150, 30, "minuman terhadap tamu", 11, W.ungu)),
-      tambah("banding", teks("m1", 90, 80, "6 : 15", 22, W.biru)),
-      tambah("dibagi", teks("m2", 150, 112, "dibagi 3", 11, W.merah), garis("m3", 100, 90, 100, 0, W.merah, 2)),
-      tambah("menjadi", teks("m4", 215, 80, "= 2 : 5", 22, W.hijau)),
+      tambah(0, teks("qd", 150, 26, "d. komidi putar terhadap roller coaster", 9, W.ungu)),
+      tambah("dibalik", emo("d0", 150, 150, "🔄", 30)),
+      tambah("banding", teks("d1", 80, 90, "18 : 24", 24, W.biru)),
+      tambah("atau", teks("d2", 220, 90, "= 3 : 4", 24, W.hijau)),
+      tambah("banding@2", teks("d3", 150, 190, "4 : 3 dan 3 : 4 berbeda arti", 11, W.merah)),
     ),
     k(
-      "Karena 5 dikali 2 sama dengan 10, maka 2 juga dikali 2, hasilnya 4. Banyu menyiapkan 4 liter minuman untuk 10 teman.",
+      "Hati-hati. Jangan menukar urutan angka. Yang disebut lebih dulu di dalam soal, angkanya ditulis lebih dulu.",
       bersih(0),
-      tambah(0, tabel("tm", 70, 36, 80, [["minuman (liter)", "tamu"], ["2", "5"], ["?", "10"]], 8.6)),
-      tambah("dikali", teks("m5", 150, 124, "5 x 2 = 10", 16, W.merah)),
-      tambah("juga", teks("m6", 150, 148, "2 x 2 = 4", 16, W.hijau)),
-      ubah("hasilnya", { id: "tm-t20", isi: "4", warna: W.hijau }),
-      tambah("Banyu", emo("m7", 150, 186, "🥤", 28), teks("m8", 190, 184, "4 liter", 12, W.hijau)),
+      tambah(0, teks("h0", 150, 26, "Hati-hati", 14, W.merah)),
+      tambah("Jangan", emo("h1", 150, 86, "⚠", 44)),
+      tambah("disebut", teks("h2", 150, 132, "yang disebut dulu", 12, W.biru)),
+      tambah("ditulis", teks("h3", 150, 160, "ditulis dulu di kiri", 12, W.hijau)),
+    ),
+    k(
+      "Latihan dua. Banyu menyiapkan enam gelas teh dan lima belas gelas jeruk untuk pesta. Tuliskan rasio gelas teh terhadap gelas jeruk.",
+      bersih(0),
+      tambah(0, teks("n0", 150, 22, "Latihan 2: minuman Banyu", 12, W.ungu)),
+      tambah("Banyu", emo("n1", 40, 150, "🥤", 32)),
+      tambah("enam", ...kartu("n2", 76, 40, 200, 40, "#FEF3C7", ["6 gelas teh"], 12), emo("n2e", 262, 64, "🍵", 18)),
+      tambah("lima", ...kartu("n3", 76, 92, 200, 40, "#FED7AA", ["15 gelas jeruk"], 12), emo("n3e", 262, 116, "🍊", 18)),
+    ),
+    k(
+      "Rasionya enam banding lima belas. FPB dari enam dan lima belas adalah tiga, jadi hasilnya dua banding lima.",
+      bersih(0),
+      tambah(0, teks("m0", 150, 26, "teh terhadap jeruk", 11, W.ungu)),
+      tambah("banding", teks("m1", 80, 90, "6 : 15", 24, W.biru)),
+      tambah("FPB", teks("m2", 150, 140, "FPB dari 6 dan 15 adalah 3", 10, W.merah)),
+      tambah("hasilnya", teks("m3", 220, 90, "= 2 : 5", 24, W.hijau)),
+    ),
+    k(
+      "Baca dengan kalimat: setiap dua gelas teh ada lima gelas jeruk. Kalau urutannya dibalik, jeruk terhadap teh, rasionya lima banding dua.",
+      bersih(0),
+      tambah("setiap", ...balonLatihan2("q", 150, 30)),
+      tambah("dibalik,", emo("q9", 150, 110, "🔄", 30)),
+      tambah("lima@2", teks("q8", 150, 170, "5 : 2", 30, W.biru)),
+    ),
+    k(
+      "Tantangan. Tulislah rasio dua benda di mejamu, lalu sederhanakan dengan FPB. Jangan lupa menjaga urutan, sebut benda pertama lebih dulu.",
+      bersih(0),
+      tambah(0, teks("t0", 150, 26, "Tantangan", 14, W.ungu), emo("t0e", 150, 66, "🏆", 34)),
+      tambah("Tulislah", ...kartu("t1", 30, 90, 240, 28, "#FEF9C3", ["1. tulis rasio dua benda"], 9.4)),
+      tambah("sederhanakan", ...kartu("t2", 30, 124, 240, 28, "#DBEAFE", ["2. sederhanakan dengan FPB"], 9.4)),
+      tambah("urutan", ...kartu("t3", 30, 158, 240, 28, "#DCFCE7", ["3. jaga urutan, sebut pertama dulu"], 9.4)),
+    ),
+    k(
+      "Renungan. Mengapa urutan angka dalam rasio itu penting? Coba pikirkan, apa artinya kalau antrean roller coaster dan komidi putar kita tukar.",
+      bersih(0),
+      tambah(0, teks("r0", 150, 26, "Renungan", 14, W.ungu)),
+      tambah("Mengapa", emo("r1", 150, 90, "❓", 44)),
+      tambah("roller", teks("r2", 80, 150, "24 : 18", 20, W.biru)),
+      tambah("tukar", teks("r3", 220, 150, "18 : 24", 20, W.merah), emo("r4", 150, 188, "🔄", 22)),
     ),
   ],
 };
+
+/** Balon kalimat untuk Latihan 1. */
+function balonLatihan(id: string, cx: number, y: number) {
+  return [kotak(`${id}-k`, cx - 130, y, 260, 40, W.krem, W.biru, { rx: 8 }), teks(`${id}-t0`, cx, y + 16, "setiap 4 pengunjung roller coaster", 9.4), teks(`${id}-t1`, cx, y + 30, "ada 3 pengunjung komidi putar", 9.4)];
+}
+
+/** Balon kalimat untuk Latihan 2. */
+function balonLatihan2(id: string, cx: number, y: number) {
+  return [kotak(`${id}-k`, cx - 110, y, 220, 40, W.krem, W.biru, { rx: 8 }), teks(`${id}-t0`, cx, y + 16, "setiap 2 gelas teh", 10.5), teks(`${id}-t1`, cx, y + 31, "ada 5 gelas jeruk", 10.5)];
+}
 
 /* ------------------------------ 7. Ayo berefleksi dan penutup (hlm. 55) ------------------------------ */
 export const ADEGAN_REFLEKSI: AdeganStory = {
