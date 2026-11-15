@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-lurus", "teks": "Semua sisinya lurus", "ikon": "📏", "cabang": "segi", "petunjuk": "Sisi lurus semua itu ciri segi banyak. Coba cabang lain." },
-          { "id": "a-sudut", "teks": "Punya sudut di pojok", "ikon": "📐", "cabang": "segi", "petunjuk": "Pojok-pojok bersudut itu ciri segi banyak. Coba cabang lain." },
-          { "id": "a-melengkung", "teks": "Tepinya melengkung", "ikon": "🌀", "cabang": "lengkung", "petunjuk": "Tepi yang melengkung itu bentuk lengkung. Coba cabang lain." },
-          { "id": "a-tanpa-sisi", "teks": "Tidak punya sisi lurus", "ikon": "🚫", "cabang": "lengkung", "petunjuk": "Tanpa sisi lurus itu bentuk lengkung. Coba cabang lain." },
-          { "id": "a-tiga", "teks": "3 sisi = segitiga", "ikon": "3️⃣", "cabang": "nama", "petunjuk": "Menamai dari banyak sisi itu nama dari sisi. Coba cabang lain." },
-          { "id": "a-enam", "teks": "6 sisi = segi enam", "ikon": "6️⃣", "cabang": "nama", "petunjuk": "Menamai dari banyak sisi itu nama dari sisi. Coba cabang lain." },
-          { "id": "a-pas", "teks": "Lingkaran selalu pas", "ikon": "✅", "cabang": "putar", "petunjuk": "Pas di segala arah itu hasil uji putar. Coba cabang lain." },
-          { "id": "a-lonjong", "teks": "Lonjong tidak selalu pas", "ikon": "⚠️", "cabang": "putar", "petunjuk": "Pas tidaknya bentuk diuji dengan memutar. Coba cabang lain." }
+          {
+            "id": "a-lurus",
+            "teks": "Semua sisinya lurus",
+            "ikon": "📏",
+            "cabang": "segi",
+            "petunjuk": "Sisi lurus semua itu ciri segi banyak. Coba cabang lain."
+          },
+          {
+            "id": "a-sudut",
+            "teks": "Punya sudut di pojok",
+            "ikon": "📐",
+            "cabang": "segi",
+            "petunjuk": "Pojok-pojok bersudut itu ciri segi banyak. Coba cabang lain."
+          },
+          {
+            "id": "a-melengkung",
+            "teks": "Tepinya melengkung",
+            "ikon": "🌀",
+            "cabang": "lengkung",
+            "petunjuk": "Tepi yang melengkung itu bentuk lengkung. Coba cabang lain."
+          },
+          {
+            "id": "a-tanpa-sisi",
+            "teks": "Tidak punya sisi lurus",
+            "ikon": "🚫",
+            "cabang": "lengkung",
+            "petunjuk": "Tanpa sisi lurus itu bentuk lengkung. Coba cabang lain."
+          },
+          {
+            "id": "a-tiga",
+            "teks": "3 sisi = segitiga",
+            "ikon": "3️⃣",
+            "cabang": "nama",
+            "petunjuk": "Menamai dari banyak sisi itu nama dari sisi. Coba cabang lain."
+          },
+          {
+            "id": "a-enam",
+            "teks": "6 sisi = segi enam",
+            "ikon": "6️⃣",
+            "cabang": "nama",
+            "petunjuk": "Menamai dari banyak sisi itu nama dari sisi. Coba cabang lain."
+          },
+          {
+            "id": "a-pas",
+            "teks": "Lingkaran selalu pas",
+            "ikon": "✅",
+            "cabang": "putar",
+            "petunjuk": "Pas di segala arah itu hasil uji putar. Coba cabang lain."
+          },
+          {
+            "id": "a-lonjong",
+            "teks": "Lonjong tidak selalu pas",
+            "ikon": "⚠️",
+            "cabang": "putar",
+            "petunjuk": "Pas tidaknya bentuk diuji dengan memutar. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -72,7 +120,10 @@
                 "ikon": "🔺",
                 "catatan": "Sisinya lurus dan bisa dihitung.",
                 "suara": "Segi banyak. Semua sisinya lurus, jadi sisinya bisa dihitung satu per satu.",
-                "visual": { "jenis": "teks", "isi": "Segitiga: 3 sisi, 3 sudut" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Segitiga: 3 sisi, 3 sudut"
+                }
               },
               {
                 "id": "lengkung",
@@ -80,7 +131,10 @@
                 "ikon": "⭕",
                 "catatan": "Tidak ada sisi lurus untuk dihitung.",
                 "suara": "Bentuk lengkung. Tepinya melengkung, jadi tidak ada sisi lurus untuk dihitung.",
-                "visual": { "jenis": "teks", "isi": "Lingkaran: 0 sisi lurus" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Lingkaran: 0 sisi lurus"
+                }
               }
             ],
             "kesimpulan": "Tepi lurus: segi banyak. Tepi melengkung: lengkung."
@@ -98,7 +152,10 @@
                 "ikon": "🔺",
                 "isi": "Segitiga.",
                 "suara": "Tiga sisi dan tiga sudut. Namanya segitiga.",
-                "visual": { "jenis": "teks", "isi": "3 sisi → segitiga" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 sisi → segitiga"
+                }
               },
               {
                 "id": "empat",
@@ -106,7 +163,10 @@
                 "ikon": "🟦",
                 "isi": "Segi empat.",
                 "suara": "Empat sisi dan empat sudut. Namanya segi empat.",
-                "visual": { "jenis": "teks", "isi": "4 sisi → segi empat" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 sisi → segi empat"
+                }
               },
               {
                 "id": "lima",
@@ -114,7 +174,10 @@
                 "ikon": "⬟",
                 "isi": "Segi lima.",
                 "suara": "Lima sisi dan lima sudut. Namanya segi lima.",
-                "visual": { "jenis": "teks", "isi": "5 sisi → segi lima" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 sisi → segi lima"
+                }
               },
               {
                 "id": "enam",
@@ -122,7 +185,10 @@
                 "ikon": "⬢",
                 "isi": "Segi enam.",
                 "suara": "Enam sisi dan enam sudut. Namanya segi enam, seperti sarang lebah.",
-                "visual": { "jenis": "teks", "isi": "6 sisi → segi enam" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 sisi → segi enam"
+                }
               }
             ]
           },
@@ -139,7 +205,10 @@
                 "ikon": "⭕",
                 "catatan": "Selalu pas, ke arah mana pun.",
                 "suara": "Lingkaran. Diputar berapa derajat pun, lingkaran selalu pas dengan cetakannya.",
-                "visual": { "jenis": "teks", "isi": "Putar 30°, 60°, 90°: tetap pas" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Putar 30°, 60°, 90°: tetap pas"
+                }
               },
               {
                 "id": "lonjong",
@@ -147,10 +216,156 @@
                 "ikon": "🥚",
                 "catatan": "Hanya pas di arah tertentu.",
                 "suara": "Bentuk lonjong. Kalau diputar sedikit, ujungnya keluar dari cetakan, jadi tidak selalu pas.",
-                "visual": { "jenis": "teks", "isi": "Putar 30°: tidak pas lagi" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Putar 30°: tidak pas lagi"
+                }
               }
             ],
             "kesimpulan": "Lingkaran selalu pas. Lonjong tidak."
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Apa nama bangun datar ini?",
+          "ikon": "🔷",
+          "suara": "Ini peta tentang mengenal bangun datar. Kita ingin tahu apa nama bangun datar yang kita lihat. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-segi",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Segi banyak dan lengkung",
+            "ikon": "🔷",
+            "petunjuk": "Membedakan bangun bertepi garis lurus dari bangun bertepi kurva."
+          },
+          {
+            "id": "hal-sisi",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menghitung sisi lalu menamai",
+            "ikon": "🔢",
+            "petunjuk": "Menghitung sisi segi banyak, lalu menyebut namanya: segitiga, segi empat, segi lima, atau segi enam."
+          },
+          {
+            "id": "hal-lingkaran",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Lingkaran yang bisa berputar",
+            "ikon": "⭕",
+            "petunjuk": "Mengenal lingkaran: bentuknya selalu pas ketika dicetak lalu diputar."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-tepi",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Lihat tepinya dulu",
+            "ikon": "👀",
+            "petunjuk": "Langkah untuk membedakan: lihat apakah tepinya garis lurus atau garis lengkung."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Hitung sisi lalu beri nama",
+            "ikon": "✍️",
+            "petunjuk": "Langkah untuk menamai: hitung sisinya, lalu sebut nama bangunnya."
+          },
+          {
+            "id": "cara-putar",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Putar untuk uji lingkaran",
+            "ikon": "🔄",
+            "petunjuk": "Langkah untuk lingkaran: cetak tepinya, lalu putar dan lihat apakah selalu pas."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-nama",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu nama segi banyak",
+            "ikon": "🏷️",
+            "petunjuk": "Kemampuan menyebut nama segi banyak dari banyaknya sisi."
+          },
+          {
+            "id": "hasil-lingkaran",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa mengenali lingkaran",
+            "ikon": "🔵",
+            "petunjuk": "Kemampuan membedakan lingkaran dari bentuk lengkung yang lain."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Nama bangun datar",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel nama bangun datar. Untuk tiap bangun, pasang banyak sisi, banyak pojok, dan contohnya.",
+        "pojok": "Bangun",
+        "kolom": [
+          "Sisi",
+          "Pojok",
+          "Contoh"
+        ],
+        "baris": [
+          {
+            "label": "Segitiga",
+            "sel": [
+              "3 sisi",
+              "3 pojok",
+              "rambu"
+            ]
+          },
+          {
+            "label": "Segi empat",
+            "sel": [
+              "4 sisi",
+              "4 pojok",
+              "bendera"
+            ]
+          },
+          {
+            "label": "Segi lima",
+            "sel": [
+              "5 sisi",
+              "5 pojok",
+              "rumah"
+            ]
+          },
+          {
+            "label": "Segi enam",
+            "sel": [
+              "6 sisi",
+              "6 pojok",
+              "sarang"
+            ]
           }
         ]
       }
@@ -194,14 +409,62 @@
           }
         ],
         "kartu": [
-          { "id": "b-garis", "teks": "Tarik garis untuk memotong", "ikon": "📏", "cabang": "urai", "petunjuk": "Memotong dengan garis itu mengurai. Coba cabang lain." },
-          { "id": "b-keping", "teks": "Satu bentuk jadi banyak keping", "ikon": "🔪", "cabang": "urai", "petunjuk": "Satu menjadi banyak itu mengurai. Coba cabang lain." },
-          { "id": "b-rapat", "teks": "Rapatkan tanpa celah", "ikon": "🤝", "cabang": "susun", "petunjuk": "Merapatkan keping itu menyusun. Coba cabang lain." },
-          { "id": "b-satu", "teks": "Keping jadi satu bentuk lagi", "ikon": "🔁", "cabang": "susun", "petunjuk": "Banyak keping kembali jadi satu itu menyusun. Coba cabang lain." },
-          { "id": "b-diagonal", "teks": "Diagonal atau garis tengah?", "ikon": "↗️", "cabang": "cara", "petunjuk": "Memilih garis berbeda itu cara yang memengaruhi hasil. Coba cabang lain." },
-          { "id": "b-beda", "teks": "Garis lain, keping lain", "ikon": "🎨", "cabang": "cara", "petunjuk": "Hasil berbeda karena garis berbeda itu cara memengaruhi hasil. Coba cabang lain." },
-          { "id": "b-kurang-dua", "teks": "Segi enam: 6 − 2 = 4 segitiga", "ikon": "➖", "cabang": "pola", "petunjuk": "Banyak sisi dikurangi dua itu pola segitiga. Coba cabang lain." },
-          { "id": "b-tengah", "teks": "Dari titik tengah: sebanyak sisinya", "ikon": "🎯", "cabang": "pola", "petunjuk": "Segitiga sebanyak sisi dari titik tengah itu pola segitiga. Coba cabang lain." }
+          {
+            "id": "b-garis",
+            "teks": "Tarik garis untuk memotong",
+            "ikon": "📏",
+            "cabang": "urai",
+            "petunjuk": "Memotong dengan garis itu mengurai. Coba cabang lain."
+          },
+          {
+            "id": "b-keping",
+            "teks": "Satu bentuk jadi banyak keping",
+            "ikon": "🔪",
+            "cabang": "urai",
+            "petunjuk": "Satu menjadi banyak itu mengurai. Coba cabang lain."
+          },
+          {
+            "id": "b-rapat",
+            "teks": "Rapatkan tanpa celah",
+            "ikon": "🤝",
+            "cabang": "susun",
+            "petunjuk": "Merapatkan keping itu menyusun. Coba cabang lain."
+          },
+          {
+            "id": "b-satu",
+            "teks": "Keping jadi satu bentuk lagi",
+            "ikon": "🔁",
+            "cabang": "susun",
+            "petunjuk": "Banyak keping kembali jadi satu itu menyusun. Coba cabang lain."
+          },
+          {
+            "id": "b-diagonal",
+            "teks": "Diagonal atau garis tengah?",
+            "ikon": "↗️",
+            "cabang": "cara",
+            "petunjuk": "Memilih garis berbeda itu cara yang memengaruhi hasil. Coba cabang lain."
+          },
+          {
+            "id": "b-beda",
+            "teks": "Garis lain, keping lain",
+            "ikon": "🎨",
+            "cabang": "cara",
+            "petunjuk": "Hasil berbeda karena garis berbeda itu cara memengaruhi hasil. Coba cabang lain."
+          },
+          {
+            "id": "b-kurang-dua",
+            "teks": "Segi enam: 6 − 2 = 4 segitiga",
+            "ikon": "➖",
+            "cabang": "pola",
+            "petunjuk": "Banyak sisi dikurangi dua itu pola segitiga. Coba cabang lain."
+          },
+          {
+            "id": "b-tengah",
+            "teks": "Dari titik tengah: sebanyak sisinya",
+            "ikon": "🎯",
+            "cabang": "pola",
+            "petunjuk": "Segitiga sebanyak sisi dari titik tengah itu pola segitiga. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -221,7 +484,10 @@
                 "ikon": "↗️",
                 "isi": "2 segitiga.",
                 "suara": "Satu garis diagonal membelah persegi menjadi dua segitiga yang sama besar.",
-                "visual": { "jenis": "teks", "isi": "1 diagonal → 2 segitiga" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 diagonal → 2 segitiga"
+                }
               },
               {
                 "id": "dua-diagonal",
@@ -229,7 +495,10 @@
                 "ikon": "✖️",
                 "isi": "4 segitiga.",
                 "suara": "Dua garis diagonal yang bersilangan membelah persegi menjadi empat segitiga.",
-                "visual": { "jenis": "teks", "isi": "2 diagonal → 4 segitiga" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 diagonal → 4 segitiga"
+                }
               },
               {
                 "id": "garis-tengah",
@@ -237,7 +506,10 @@
                 "ikon": "➗",
                 "isi": "2 persegi panjang.",
                 "suara": "Satu garis tengah membelah persegi menjadi dua persegi panjang yang sama besar.",
-                "visual": { "jenis": "teks", "isi": "1 garis tengah → 2 persegi panjang" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 garis tengah → 2 persegi panjang"
+                }
               }
             ]
           },
@@ -254,7 +526,10 @@
                 "ikon": "📍",
                 "catatan": "Banyak sisi dikurangi dua.",
                 "suara": "Dari satu pojok, segi enam diurai menjadi empat segitiga. Enam dikurangi dua sama dengan empat.",
-                "visual": { "jenis": "teks", "isi": "6 − 2 = 4 segitiga" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 − 2 = 4 segitiga"
+                }
               },
               {
                 "id": "tengah",
@@ -262,7 +537,10 @@
                 "ikon": "🎯",
                 "catatan": "Sebanyak sisinya.",
                 "suara": "Dari titik tengah ke setiap pojok, segi enam diurai menjadi enam segitiga. Banyaknya sama dengan banyak sisi.",
-                "visual": { "jenis": "teks", "isi": "6 sisi → 6 segitiga" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 sisi → 6 segitiga"
+                }
               }
             ],
             "kesimpulan": "Cara berbeda, banyak segitiga berbeda."
@@ -280,7 +558,10 @@
                 "ikon": "🟦",
                 "isi": "4 − 2 = 2 segitiga.",
                 "suara": "Segi empat dari satu pojok. Empat dikurangi dua sama dengan dua segitiga.",
-                "visual": { "jenis": "teks", "isi": "4 − 2 = 2" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 − 2 = 2"
+                }
               },
               {
                 "id": "lima",
@@ -288,7 +569,10 @@
                 "ikon": "⬟",
                 "isi": "5 − 2 = 3 segitiga.",
                 "suara": "Segi lima dari satu pojok. Lima dikurangi dua sama dengan tiga segitiga.",
-                "visual": { "jenis": "teks", "isi": "5 − 2 = 3" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 − 2 = 3"
+                }
               },
               {
                 "id": "enam",
@@ -296,8 +580,154 @@
                 "ikon": "⬢",
                 "isi": "6 − 2 = 4 segitiga.",
                 "suara": "Segi enam dari satu pojok. Enam dikurangi dua sama dengan empat segitiga.",
-                "visual": { "jenis": "teks", "isi": "6 − 2 = 4" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 − 2 = 4"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Bagaimana urai dan susun?",
+          "ikon": "🧩",
+          "suara": "Ini peta tentang mengurai dan menyusun bangun datar. Kita ingin tahu bagaimana memecah satu bangun menjadi keping dan menggabungkan keping menjadi satu bentuk. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-urai",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Mengurai satu bangun",
+            "ikon": "✂️",
+            "petunjuk": "Mengurai berarti memecah satu bangun menjadi beberapa keping dengan menarik garis."
+          },
+          {
+            "id": "hal-susun",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menyusun beberapa bangun",
+            "ikon": "🧩",
+            "petunjuk": "Menyusun berarti menggabungkan beberapa keping menjadi satu bentuk baru."
+          },
+          {
+            "id": "hal-pola",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Pola segitiga",
+            "ikon": "🔺",
+            "petunjuk": "Dari satu pojok, banyak segitiga adalah banyak sisi dikurangi dua; dari titik tengah, sama dengan banyak sisi."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-garis",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tarik garis lurus",
+            "ikon": "📏",
+            "petunjuk": "Langkah untuk mengurai: tarik garis lurus dari pojok ke pojok atau dari tepi ke tepi."
+          },
+          {
+            "id": "cara-tempel",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Tempelkan sisi yang sama",
+            "ikon": "🔗",
+            "petunjuk": "Langkah untuk menyusun: tempelkan sisi keping yang sama panjang."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Hitung sisi dan keping",
+            "ikon": "🔢",
+            "petunjuk": "Langkah untuk memeriksa: hitung sisi bangun dan banyak keping hasilnya."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-keping",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Keping dihitung benar",
+            "ikon": "🏆",
+            "petunjuk": "Kemampuan menyebut jumlah dan jenis keping hasil urai dengan tepat."
+          },
+          {
+            "id": "hasil-cara",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Cara memengaruhi hasil",
+            "ikon": "🔍",
+            "petunjuk": "Kemampuan menjelaskan bahwa garis atau susunan yang berbeda memberi hasil yang berbeda."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Urai dari satu pojok",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel urai dari satu pojok. Untuk tiap bangun, pasang banyak sisi, banyak segitiga hasil, dan banyak garis yang ditarik.",
+        "pojok": "Bangun",
+        "kolom": [
+          "Sisi",
+          "Segitiga",
+          "Garis"
+        ],
+        "baris": [
+          {
+            "label": "Segitiga",
+            "sel": [
+              "3",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "label": "Segi empat",
+            "sel": [
+              "4",
+              "2",
+              "1"
+            ]
+          },
+          {
+            "label": "Segi lima",
+            "sel": [
+              "5",
+              "3",
+              "2"
+            ]
+          },
+          {
+            "label": "Segi enam",
+            "sel": [
+              "6",
+              "4",
+              "3"
             ]
           }
         ]
@@ -342,14 +772,62 @@
           }
         ],
         "kartu": [
-          { "id": "c-isi", "teks": "Bisa diisi", "ikon": "💧", "cabang": "beda", "petunjuk": "Punya ruang yang bisa diisi itu bedanya bangun ruang dengan bangun datar. Coba cabang lain." },
-          { "id": "c-rata", "teks": "Rata seperti kertas", "ikon": "📄", "cabang": "beda", "petunjuk": "Rata dan tipis itu ciri bangun datar, bedanya dengan bangun ruang. Coba cabang lain." },
-          { "id": "c-kubus", "teks": "Kubus dan balok", "ikon": "📦", "cabang": "nama", "petunjuk": "Menyebut nama bangun ruang itu lima bangun ruang. Coba cabang lain." },
-          { "id": "c-bola", "teks": "Tabung, kerucut, bola", "ikon": "⚽", "cabang": "nama", "petunjuk": "Menyebut nama bangun ruang itu lima bangun ruang. Coba cabang lain." },
-          { "id": "c-semua-datar", "teks": "Kubus: datar semua", "ikon": "⬛", "cabang": "permukaan", "petunjuk": "Memeriksa permukaan itu cabang permukaan. Coba cabang lain." },
-          { "id": "c-campur", "teks": "Tabung: datar dan lengkung", "ikon": "🥫", "cabang": "permukaan", "petunjuk": "Memeriksa permukaan itu cabang permukaan. Coba cabang lain." },
-          { "id": "c-rebah", "teks": "Tabung rebah menggelinding", "ikon": "➡️", "cabang": "gelinding", "petunjuk": "Bergerak di lereng itu menggelinding. Coba cabang lain." },
-          { "id": "c-diam", "teks": "Kubus di lereng diam", "ikon": "🧍", "cabang": "gelinding", "petunjuk": "Diam atau bergerak di lereng itu menggelinding. Coba cabang lain." }
+          {
+            "id": "c-isi",
+            "teks": "Bisa diisi",
+            "ikon": "💧",
+            "cabang": "beda",
+            "petunjuk": "Punya ruang yang bisa diisi itu bedanya bangun ruang dengan bangun datar. Coba cabang lain."
+          },
+          {
+            "id": "c-rata",
+            "teks": "Rata seperti kertas",
+            "ikon": "📄",
+            "cabang": "beda",
+            "petunjuk": "Rata dan tipis itu ciri bangun datar, bedanya dengan bangun ruang. Coba cabang lain."
+          },
+          {
+            "id": "c-kubus",
+            "teks": "Kubus dan balok",
+            "ikon": "📦",
+            "cabang": "nama",
+            "petunjuk": "Menyebut nama bangun ruang itu lima bangun ruang. Coba cabang lain."
+          },
+          {
+            "id": "c-bola",
+            "teks": "Tabung, kerucut, bola",
+            "ikon": "⚽",
+            "cabang": "nama",
+            "petunjuk": "Menyebut nama bangun ruang itu lima bangun ruang. Coba cabang lain."
+          },
+          {
+            "id": "c-semua-datar",
+            "teks": "Kubus: datar semua",
+            "ikon": "⬛",
+            "cabang": "permukaan",
+            "petunjuk": "Memeriksa permukaan itu cabang permukaan. Coba cabang lain."
+          },
+          {
+            "id": "c-campur",
+            "teks": "Tabung: datar dan lengkung",
+            "ikon": "🥫",
+            "cabang": "permukaan",
+            "petunjuk": "Memeriksa permukaan itu cabang permukaan. Coba cabang lain."
+          },
+          {
+            "id": "c-rebah",
+            "teks": "Tabung rebah menggelinding",
+            "ikon": "➡️",
+            "cabang": "gelinding",
+            "petunjuk": "Bergerak di lereng itu menggelinding. Coba cabang lain."
+          },
+          {
+            "id": "c-diam",
+            "teks": "Kubus di lereng diam",
+            "ikon": "🧍",
+            "cabang": "gelinding",
+            "petunjuk": "Diam atau bergerak di lereng itu menggelinding. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -369,7 +847,10 @@
                 "ikon": "📄",
                 "catatan": "Rata, tidak bisa diisi.",
                 "suara": "Bangun datar rata seperti gambar di kertas. Tidak ada ruang di dalamnya untuk diisi.",
-                "visual": { "jenis": "teks", "isi": "Segi empat, segitiga, lingkaran" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Segi empat, segitiga, lingkaran"
+                }
               },
               {
                 "id": "ruang",
@@ -377,7 +858,10 @@
                 "ikon": "📦",
                 "catatan": "Punya ruang yang bisa diisi.",
                 "suara": "Bangun ruang punya ruang di dalam. Ruang itu bisa diisi, misalnya air atau pasir.",
-                "visual": { "jenis": "teks", "isi": "Kubus, balok, tabung, kerucut, bola" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Kubus, balok, tabung, kerucut, bola"
+                }
               }
             ],
             "kesimpulan": "Bangun ruang punya ruang untuk diisi."
@@ -395,7 +879,10 @@
                 "ikon": "⚽",
                 "isi": "Menggelinding.",
                 "suara": "Bola. Seluruh permukaannya lengkung, jadi bola menggelinding ke arah mana pun.",
-                "visual": { "jenis": "teks", "isi": "Lengkung semua → menggelinding" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Lengkung semua → menggelinding"
+                }
               },
               {
                 "id": "tabung",
@@ -403,7 +890,10 @@
                 "ikon": "🥫",
                 "isi": "Menggelinding.",
                 "suara": "Tabung yang direbahkan. Permukaan lengkungnya menyentuh lereng, jadi tabung menggelinding.",
-                "visual": { "jenis": "teks", "isi": "Rebah → selimut lengkung → menggelinding" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Rebah → selimut lengkung → menggelinding"
+                }
               },
               {
                 "id": "kerucut",
@@ -411,7 +901,10 @@
                 "ikon": "🍦",
                 "isi": "Melingkar.",
                 "suara": "Kerucut yang direbahkan. Ujungnya runcing, jadi geraknya melingkar, bukan lurus.",
-                "visual": { "jenis": "teks", "isi": "Ujung runcing → bergerak melingkar" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Ujung runcing → bergerak melingkar"
+                }
               },
               {
                 "id": "kubus",
@@ -419,7 +912,10 @@
                 "ikon": "🎲",
                 "isi": "Diam.",
                 "suara": "Kubus. Semua permukaannya datar, jadi kubus diam di lereng.",
-                "visual": { "jenis": "teks", "isi": "Datar semua → diam" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Datar semua → diam"
+                }
               }
             ]
           },
@@ -436,7 +932,10 @@
                 "ikon": "🎲",
                 "isi": "Segi empat yang sama sisinya.",
                 "suara": "Satu sisi kubus dicetak menjadi segi empat yang keempat sisinya sama panjang.",
-                "visual": { "jenis": "teks", "isi": "Sisi kubus → segi empat sama sisi" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Sisi kubus → segi empat sama sisi"
+                }
               },
               {
                 "id": "balok",
@@ -444,7 +943,10 @@
                 "ikon": "📦",
                 "isi": "Segi empat yang sisinya berbeda.",
                 "suara": "Satu sisi balok dicetak menjadi segi empat yang sisinya tidak semuanya sama.",
-                "visual": { "jenis": "teks", "isi": "Sisi balok → segi empat panjang" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Sisi balok → segi empat panjang"
+                }
               },
               {
                 "id": "tabung",
@@ -452,7 +954,10 @@
                 "ikon": "🥫",
                 "isi": "Lingkaran.",
                 "suara": "Alas tabung dicetak menjadi lingkaran. Lingkaran adalah bangun datar dari bagian pertama.",
-                "visual": { "jenis": "teks", "isi": "Alas tabung → lingkaran" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Alas tabung → lingkaran"
+                }
               },
               {
                 "id": "bola",
@@ -460,8 +965,162 @@
                 "ikon": "⚽",
                 "isi": "Tidak ada cetakan rapi.",
                 "suara": "Bola tidak punya permukaan datar, jadi tidak ada yang bisa dicetak dengan rapi.",
-                "visual": { "jenis": "teks", "isi": "Kulit bola lengkung → tidak ada cetakan" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Kulit bola lengkung → tidak ada cetakan"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Datar atau ruang?",
+          "ikon": "🧊",
+          "suara": "Ini peta tentang bangun ruang. Kita ingin tahu apakah sebuah benda bangun datar atau bangun ruang, dan apa namanya. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-datar",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Bangun datar dan ruang",
+            "ikon": "🔷",
+            "petunjuk": "Membedakan bangun datar yang tipis dari bangun ruang yang punya ruang di dalam dan bisa diisi."
+          },
+          {
+            "id": "hal-permukaan",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Permukaan datar dan lengkung",
+            "ikon": "⚽",
+            "petunjuk": "Mengelompokkan bangun ruang menurut permukaan datar atau lengkung lewat percobaan menggelinding di layar."
+          },
+          {
+            "id": "hal-nama",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Lima bangun ruang",
+            "ikon": "🎲",
+            "petunjuk": "Menamai kubus, balok, tabung, kerucut, dan bola, lalu menyebut sisi, rusuk, dan titik sudutnya."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🛠️",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-datar",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tanya: bisa diisi?",
+            "ikon": "❓",
+            "petunjuk": "Langkah untuk membedakan: tanyakan apakah benda itu bisa diisi. Bisa diisi berarti bangun ruang."
+          },
+          {
+            "id": "cara-lengkung",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Gelindingkan benda",
+            "ikon": "🔎",
+            "petunjuk": "Langkah untuk permukaan: gelindingkan benda di layar. Yang menggelinding punya permukaan lengkung."
+          },
+          {
+            "id": "cara-nama",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Hitung sisi, rusuk, sudut",
+            "ikon": "🧮",
+            "petunjuk": "Langkah untuk nama dan ciri: hitung sisi, rusuk, dan titik sudut, lalu sebut namanya."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-bedakan",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa membedakan bentuk",
+            "ikon": "🏆",
+            "petunjuk": "Kemampuan membedakan bangun datar dan bangun ruang, serta mengelompokkannya menurut permukaan."
+          },
+          {
+            "id": "hasil-nama",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa menamai bangun ruang",
+            "ikon": "💬",
+            "petunjuk": "Kemampuan menamai lima bangun ruang menurut cirinya dan menemukannya pada benda di layar."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Ciri lima bangun ruang",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel ciri bangun ruang. Untuk tiap bangun ruang, pasang banyak permukaan datarnya, banyak permukaan lengkungnya, dan apakah bangun itu bisa menggelinding.",
+        "pojok": "Bangun",
+        "kolom": [
+          "Datar",
+          "Lengkung",
+          "Gelinding"
+        ],
+        "baris": [
+          {
+            "label": "Kubus",
+            "sel": [
+              "6",
+              "0",
+              "tidak"
+            ]
+          },
+          {
+            "label": "Balok",
+            "sel": [
+              "6",
+              "0",
+              "tidak"
+            ]
+          },
+          {
+            "label": "Tabung",
+            "sel": [
+              "2",
+              "1",
+              "ya"
+            ]
+          },
+          {
+            "label": "Kerucut",
+            "sel": [
+              "1",
+              "1",
+              "ya"
+            ]
+          },
+          {
+            "label": "Bola",
+            "sel": [
+              "0",
+              "1",
+              "ya"
             ]
           }
         ]
