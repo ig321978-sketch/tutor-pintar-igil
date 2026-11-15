@@ -1356,7 +1356,9 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
 
   // PILOT suara seragam: Materi Kelas 1 Bab 1 Sub-Bab A saja. Semua pemutar suara di sana memakai satu jalur
   // (Web Speech API id-ID, laju 0,85, nada lembut) dengan guru pilihan siswa. Bagian lain tidak berubah.
-  const suaraSeragam = bab === "mtk-1-bab1" && activeSubBab === "A" && activeMainTab === "materi";
+  // Sub-bab dengan Story baru (CERITA_BARU) memakai suara yang sama dengan Kelas 4 sampai 6: Web Speech perangkat, profil 2 SD, laju 0,70, nada 1.
+  const suaraGayaK46 = activeMainTab === "materi" && CERITA_BARU[`${bab}-${activeSubBab}`] !== undefined;
+  const suaraSeragam = bab === "mtk-1-bab1" && activeSubBab === "A" && activeMainTab === "materi" && !suaraGayaK46;
 
   const speakGuru = useCallback((text: string, selesai?: () => void) => {
     const naskah = text.replace(/\s+/g, " ").trim();
@@ -1370,10 +1372,10 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
     const giliran = ++giliranSuara.current;
     // Guru yang bersuara adalah guru pilihan siswa (Bu Sari atau Pak Budi) dari PilihGuru.
     ucapkanGuruModul(naskah, {
-      kelas: materi.suaraPerangkatSaja ? "2 SD" : "1 SD",
-      perangkatSaja: materi.suaraPerangkatSaja === true,
-      laju: materi.suaraLaju,
-      nada: materi.suaraNada,
+      kelas: materi.suaraPerangkatSaja || suaraGayaK46 ? "2 SD" : "1 SD",
+      perangkatSaja: materi.suaraPerangkatSaja === true || suaraGayaK46,
+      laju: suaraGayaK46 ? 0.7 : materi.suaraLaju,
+      nada: suaraGayaK46 ? 1 : materi.suaraNada,
       seragam: suaraSeragam,
       selesai: selesai
         ? () => {
@@ -1384,7 +1386,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           }
         : undefined,
     });
-  }, [materi.suaraPerangkatSaja, materi.suaraLaju, materi.suaraNada, suaraSeragam]);
+  }, [materi.suaraPerangkatSaja, materi.suaraLaju, materi.suaraNada, suaraSeragam, suaraGayaK46]);
 
   useEffect(() => {
     window.speechSynthesis?.getVoices();
