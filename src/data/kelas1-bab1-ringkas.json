@@ -45,13 +45,55 @@
           }
         ],
         "kartu": [
-          { "id": "a-sentuh", "teks": "Sentuh tiap benda", "ikon": "👆", "cabang": "hitung", "petunjuk": "Menyentuh benda satu per satu itu menghitung. Coba cabang lain." },
-          { "id": "a-satu", "teks": "Satu benda, satu angka", "ikon": "1️⃣", "cabang": "hitung", "petunjuk": "Satu benda untuk satu angka itu menghitung. Coba cabang lain." },
-          { "id": "a-terakhir", "teks": "Angka terakhir", "ikon": "🔚", "cabang": "banyaknya", "petunjuk": "Angka terakhir menunjukkan banyaknya. Coba cabang lain." },
-          { "id": "a-nol", "teks": "Keranjang kosong: nol", "ikon": "🧺", "cabang": "banyaknya", "petunjuk": "Nol artinya tidak ada. Itu banyaknya. Coba cabang lain." },
-          { "id": "a-sekilas", "teks": "Tiga titik, langsung tahu", "ikon": "👀", "cabang": "sekilas", "petunjuk": "Mengenali banyak tanpa menghitung itu melihat sekilas. Coba cabang lain." },
-          { "id": "a-ucap", "teks": "Ucapkan: enam", "ikon": "🗣️", "cabang": "bacatulis", "petunjuk": "Menyebut nama bilangan itu membaca. Coba cabang lain." },
-          { "id": "a-angka", "teks": "Tulis angka 6", "ikon": "✏️", "cabang": "bacatulis", "petunjuk": "Menuliskan lambang angka itu menulis. Coba cabang lain." }
+          {
+            "id": "a-sentuh",
+            "teks": "Sentuh tiap benda",
+            "ikon": "👆",
+            "cabang": "hitung",
+            "petunjuk": "Menyentuh benda satu per satu itu menghitung. Coba cabang lain."
+          },
+          {
+            "id": "a-satu",
+            "teks": "Satu benda, satu angka",
+            "ikon": "1️⃣",
+            "cabang": "hitung",
+            "petunjuk": "Satu benda untuk satu angka itu menghitung. Coba cabang lain."
+          },
+          {
+            "id": "a-terakhir",
+            "teks": "Angka terakhir",
+            "ikon": "🔚",
+            "cabang": "banyaknya",
+            "petunjuk": "Angka terakhir menunjukkan banyaknya. Coba cabang lain."
+          },
+          {
+            "id": "a-nol",
+            "teks": "Keranjang kosong: nol",
+            "ikon": "🧺",
+            "cabang": "banyaknya",
+            "petunjuk": "Nol artinya tidak ada. Itu banyaknya. Coba cabang lain."
+          },
+          {
+            "id": "a-sekilas",
+            "teks": "Tiga titik, langsung tahu",
+            "ikon": "👀",
+            "cabang": "sekilas",
+            "petunjuk": "Mengenali banyak tanpa menghitung itu melihat sekilas. Coba cabang lain."
+          },
+          {
+            "id": "a-ucap",
+            "teks": "Ucapkan: enam",
+            "ikon": "🗣️",
+            "cabang": "bacatulis",
+            "petunjuk": "Menyebut nama bilangan itu membaca. Coba cabang lain."
+          },
+          {
+            "id": "a-angka",
+            "teks": "Tulis angka 6",
+            "ikon": "✏️",
+            "cabang": "bacatulis",
+            "petunjuk": "Menuliskan lambang angka itu menulis. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -71,7 +113,10 @@
                 "ikon": "🧺",
                 "isi": "Keranjang kosong, banyaknya nol.",
                 "suara": "Keranjang ini kosong. Tidak ada benda, jadi banyaknya nol.",
-                "visual": { "jenis": "teks", "isi": "Kosong = 0" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Kosong = 0"
+                }
               },
               {
                 "id": "tiga",
@@ -79,7 +124,15 @@
                 "ikon": "🍎",
                 "isi": "Ada 3 apel.",
                 "suara": "Apel ada tiga. Satu, dua, tiga.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["apel", 3]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "apel",
+                      3
+                    ]
+                  ]
+                }
               },
               {
                 "id": "lima",
@@ -87,7 +140,15 @@
                 "ikon": "🍊",
                 "isi": "Ada 5 jeruk.",
                 "suara": "Jeruk ada lima. Satu, dua, tiga, empat, lima.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["jeruk", 5]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "jeruk",
+                      5
+                    ]
+                  ]
+                }
               },
               {
                 "id": "tujuh",
@@ -95,7 +156,15 @@
                 "ikon": "🥭",
                 "isi": "Ada 7 mangga.",
                 "suara": "Mangga ada tujuh. Angka terakhir yang disebut adalah tujuh.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["mangga", 7]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "mangga",
+                      7
+                    ]
+                  ]
+                }
               }
             ]
           },
@@ -112,7 +181,16 @@
                 "ikon": "🌀",
                 "catatan": "Sulit dihitung. Mudah terlewat.",
                 "suara": "Benda berserakan. Sulit dihitung, dan ada yang mudah terlewat.",
-                "visual": { "jenis": "benda-sebar", "isi": [["apel", 7]], "benih": 5 }
+                "visual": {
+                  "jenis": "benda-sebar",
+                  "isi": [
+                    [
+                      "apel",
+                      7
+                    ]
+                  ],
+                  "benih": 5
+                }
               },
               {
                 "id": "baris",
@@ -120,7 +198,15 @@
                 "ikon": "🧺",
                 "catatan": "Mudah dihitung. Sentuh satu per satu.",
                 "suara": "Benda berbaris. Mudah dihitung dengan menyentuhnya satu per satu.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["apel", 7]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "apel",
+                      7
+                    ]
+                  ]
+                }
               }
             ],
             "kesimpulan": "Tujuh apel, tetapi yang berbaris lebih mudah dihitung."
@@ -138,7 +224,15 @@
                 "ikon": "🍎",
                 "isi": "Empat apel.",
                 "suara": "Benda. Ada empat apel.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["apel", 4]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "apel",
+                      4
+                    ]
+                  ]
+                }
               },
               {
                 "id": "titik",
@@ -146,7 +240,10 @@
                 "ikon": "⚫",
                 "isi": "Empat titik.",
                 "suara": "Titik. Satu titik untuk satu benda, jadi ada empat titik.",
-                "visual": { "jenis": "teks", "isi": "● ● ● ●" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "● ● ● ●"
+                }
               },
               {
                 "id": "angka",
@@ -154,7 +251,10 @@
                 "ikon": "4️⃣",
                 "isi": "Lambangnya 4.",
                 "suara": "Angka. Lambangnya empat.",
-                "visual": { "jenis": "teks", "isi": "4" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4"
+                }
               },
               {
                 "id": "kata",
@@ -162,8 +262,154 @@
                 "ikon": "🔤",
                 "isi": "Dibaca empat.",
                 "suara": "Kata. Dibaca empat.",
-                "visual": { "jenis": "teks", "isi": "empat" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "empat"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Ada berapa bola di taman?",
+          "ikon": "⚽",
+          "suara": "Ini peta tentang menghitung benda di taman. Kita ingin tahu ada berapa bola. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-hitung",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Menghitung benda",
+            "ikon": "🧮",
+            "petunjuk": "Menyebut banyaknya benda satu per satu sampai habis."
+          },
+          {
+            "id": "hal-baca",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Membaca angka",
+            "ikon": "🗣️",
+            "petunjuk": "Menyebut nama angka yang tertulis di kartu."
+          },
+          {
+            "id": "hal-tulis",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menulis angka",
+            "ikon": "✏️",
+            "petunjuk": "Membuat lambang angka dengan pensil di kertas."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-sentuh",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Sentuh benda satu-satu",
+            "ikon": "👆",
+            "petunjuk": "Langkah untuk menghitung: satu benda disentuh satu kali, sambil menyebut angkanya."
+          },
+          {
+            "id": "cara-baca",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Baca nama angka di kartu",
+            "ikon": "🃏",
+            "petunjuk": "Langkah untuk membaca: lihat kartu angka, lalu ucapkan namanya."
+          },
+          {
+            "id": "cara-tulis",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tulis angka pelan dan rapi",
+            "ikon": "📝",
+            "petunjuk": "Langkah untuk menulis: gerakkan pensil pelan-pelan dari atas."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-banyak",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu banyaknya, juga nol",
+            "ikon": "🧺",
+            "petunjuk": "Kemampuan menyebut banyak seluruh benda, termasuk keranjang yang kosong."
+          },
+          {
+            "id": "hasil-baca-tulis",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa baca dan tulis angka",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan membaca dan menulis angka nol sampai sepuluh dengan benar."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Banyak benda dan angkanya",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel banyak benda. Untuk tiap banyak benda, pasang angkanya, cara membacanya, dan bendanya.",
+        "pojok": "Banyak",
+        "kolom": [
+          "Angka",
+          "Dibaca",
+          "Bendanya"
+        ],
+        "baris": [
+          {
+            "label": "Kosong",
+            "sel": [
+              "0",
+              "nol",
+              "Tidak ada"
+            ]
+          },
+          {
+            "label": "Tiga",
+            "sel": [
+              "3",
+              "tiga",
+              "Tiga apel"
+            ]
+          },
+          {
+            "label": "Enam",
+            "sel": [
+              "6",
+              "enam",
+              "Enam balon"
+            ]
+          },
+          {
+            "label": "Sepuluh",
+            "sel": [
+              "10",
+              "sepuluh",
+              "Sepuluh bola"
             ]
           }
         ]
@@ -208,12 +454,48 @@
           }
         ],
         "kartu": [
-          { "id": "b-garis", "teks": "Garis penghubung", "ikon": "🔗", "cabang": "pasangkan", "petunjuk": "Garis penghubung dipakai untuk memasangkan. Coba cabang lain." },
-          { "id": "b-lebih", "teks": "6 > 4", "ikon": "🔺", "cabang": "banyak", "petunjuk": "Enam lebih banyak dari empat. Coba cabang lain." },
-          { "id": "b-sisa", "teks": "Ada benda sisa", "ikon": "➕", "cabang": "banyak", "petunjuk": "Benda sisa berarti kelompok itu lebih banyak. Coba cabang lain." },
-          { "id": "b-kurang", "teks": "4 < 6", "ikon": "🔻", "cabang": "sedikit", "petunjuk": "Empat lebih sedikit dari enam. Coba cabang lain." },
-          { "id": "b-sama", "teks": "3 = 3", "ikon": "🤝", "cabang": "sama", "petunjuk": "Tiga dan tiga sama banyak. Coba cabang lain." },
-          { "id": "b-habis", "teks": "Tidak ada sisa", "ikon": "✅", "cabang": "sama", "petunjuk": "Tidak ada sisa berarti sama banyak. Coba cabang lain." }
+          {
+            "id": "b-garis",
+            "teks": "Garis penghubung",
+            "ikon": "🔗",
+            "cabang": "pasangkan",
+            "petunjuk": "Garis penghubung dipakai untuk memasangkan. Coba cabang lain."
+          },
+          {
+            "id": "b-lebih",
+            "teks": "6 > 4",
+            "ikon": "🔺",
+            "cabang": "banyak",
+            "petunjuk": "Enam lebih banyak dari empat. Coba cabang lain."
+          },
+          {
+            "id": "b-sisa",
+            "teks": "Ada benda sisa",
+            "ikon": "➕",
+            "cabang": "banyak",
+            "petunjuk": "Benda sisa berarti kelompok itu lebih banyak. Coba cabang lain."
+          },
+          {
+            "id": "b-kurang",
+            "teks": "4 < 6",
+            "ikon": "🔻",
+            "cabang": "sedikit",
+            "petunjuk": "Empat lebih sedikit dari enam. Coba cabang lain."
+          },
+          {
+            "id": "b-sama",
+            "teks": "3 = 3",
+            "ikon": "🤝",
+            "cabang": "sama",
+            "petunjuk": "Tiga dan tiga sama banyak. Coba cabang lain."
+          },
+          {
+            "id": "b-habis",
+            "teks": "Tidak ada sisa",
+            "ikon": "✅",
+            "cabang": "sama",
+            "petunjuk": "Tidak ada sisa berarti sama banyak. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -233,7 +515,19 @@
                 "ikon": "🤝",
                 "catatan": "Semua benda dapat pasangan. Tidak ada sisa.",
                 "suara": "Tiga pesawat dan tiga bola. Semua dapat pasangan, jadi sama banyak.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["pesawat", 3], ["bola", 3]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "pesawat",
+                      3
+                    ],
+                    [
+                      "bola",
+                      3
+                    ]
+                  ]
+                }
               },
               {
                 "id": "beda",
@@ -241,7 +535,19 @@
                 "ikon": "↕️",
                 "catatan": "Ada pesawat sisa. Pesawat lebih banyak.",
                 "suara": "Lima pesawat dan tiga bola. Ada pesawat yang tidak dapat pasangan, jadi pesawat lebih banyak.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["pesawat", 5], ["bola", 3]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "pesawat",
+                      5
+                    ],
+                    [
+                      "bola",
+                      3
+                    ]
+                  ]
+                }
               }
             ],
             "kesimpulan": "Benda sisa berarti tidak sama banyak."
@@ -259,7 +565,10 @@
                 "ikon": "🔺",
                 "isi": "Mulut terbuka ke yang lebih banyak.",
                 "suara": "Tanda lebih besar. Enam lebih banyak dari empat. Mulutnya terbuka ke enam.",
-                "visual": { "jenis": "teks", "isi": "6 > 4" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 > 4"
+                }
               },
               {
                 "id": "kurang",
@@ -267,7 +576,10 @@
                 "ikon": "🔻",
                 "isi": "Ujung runcing ke yang lebih sedikit.",
                 "suara": "Tanda lebih kecil. Empat lebih sedikit dari enam. Ujungnya runcing ke empat.",
-                "visual": { "jenis": "teks", "isi": "4 < 6" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 < 6"
+                }
               },
               {
                 "id": "sama",
@@ -275,7 +587,10 @@
                 "ikon": "🤝",
                 "isi": "Dua garis sama panjang.",
                 "suara": "Tanda sama dengan. Tiga sama banyak dengan tiga.",
-                "visual": { "jenis": "teks", "isi": "3 = 3" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 = 3"
+                }
               }
             ]
           },
@@ -292,7 +607,19 @@
                 "ikon": "🔗",
                 "isi": "Benda sisa berarti lebih banyak.",
                 "suara": "Pasangan. Enam apel dan empat jeruk. Ada apel yang tidak dapat pasangan, jadi apel lebih banyak.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["apel", 6], ["jeruk", 4]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "apel",
+                      6
+                    ],
+                    [
+                      "jeruk",
+                      4
+                    ]
+                  ]
+                }
               },
               {
                 "id": "bingkai",
@@ -300,7 +627,10 @@
                 "ikon": "🔲",
                 "isi": "Bingkai yang lebih penuh, bilangannya lebih besar.",
                 "suara": "Bingkai sepuluh. Bingkai enam lebih penuh daripada bingkai empat, jadi enam lebih banyak.",
-                "visual": { "jenis": "teks", "isi": "6 terisi lebih penuh dari 4" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 terisi lebih penuh dari 4"
+                }
               },
               {
                 "id": "garis",
@@ -308,7 +638,10 @@
                 "ikon": "📏",
                 "isi": "Yang lebih ke kanan, bilangannya lebih besar.",
                 "suara": "Garis bilangan. Enam ada di sebelah kanan empat, jadi enam lebih besar.",
-                "visual": { "jenis": "teks", "isi": "4, 5, 6: enam lebih ke kanan" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4, 5, 6: enam lebih ke kanan"
+                }
               }
             ]
           }
@@ -354,12 +687,48 @@
           }
         ],
         "kartu": [
-          { "id": "c-maju", "teks": "1, 2, 3, 4", "ikon": "➡️", "cabang": "maju", "petunjuk": "Bilangan yang makin besar itu menghitung maju. Coba cabang lain." },
-          { "id": "c-mundur", "teks": "10, 9, 8, 7", "ikon": "⬅️", "cabang": "mundur", "petunjuk": "Bilangan yang makin kecil itu menghitung mundur. Coba cabang lain." },
-          { "id": "c-sebelum", "teks": "Sebelum 6 itu 5", "ikon": "⏮️", "cabang": "sekitar", "petunjuk": "Bilangan di sebelah kirinya itu sebelum. Coba cabang lain." },
-          { "id": "c-sesudah", "teks": "Sesudah 6 itu 7", "ikon": "⏭️", "cabang": "sekitar", "petunjuk": "Bilangan di sebelah kanannya itu sesudah. Coba cabang lain." },
-          { "id": "c-hilang1", "teks": "3, ?, 5", "ikon": "❓", "cabang": "lengkapi", "petunjuk": "Ada bilangan yang hilang. Itu melengkapi. Coba cabang lain." },
-          { "id": "c-hilang2", "teks": "8, 7, ?, 5", "ikon": "❔", "cabang": "lengkapi", "petunjuk": "Ada bilangan yang hilang. Itu melengkapi. Coba cabang lain." }
+          {
+            "id": "c-maju",
+            "teks": "1, 2, 3, 4",
+            "ikon": "➡️",
+            "cabang": "maju",
+            "petunjuk": "Bilangan yang makin besar itu menghitung maju. Coba cabang lain."
+          },
+          {
+            "id": "c-mundur",
+            "teks": "10, 9, 8, 7",
+            "ikon": "⬅️",
+            "cabang": "mundur",
+            "petunjuk": "Bilangan yang makin kecil itu menghitung mundur. Coba cabang lain."
+          },
+          {
+            "id": "c-sebelum",
+            "teks": "Sebelum 6 itu 5",
+            "ikon": "⏮️",
+            "cabang": "sekitar",
+            "petunjuk": "Bilangan di sebelah kirinya itu sebelum. Coba cabang lain."
+          },
+          {
+            "id": "c-sesudah",
+            "teks": "Sesudah 6 itu 7",
+            "ikon": "⏭️",
+            "cabang": "sekitar",
+            "petunjuk": "Bilangan di sebelah kanannya itu sesudah. Coba cabang lain."
+          },
+          {
+            "id": "c-hilang1",
+            "teks": "3, ?, 5",
+            "ikon": "❓",
+            "cabang": "lengkapi",
+            "petunjuk": "Ada bilangan yang hilang. Itu melengkapi. Coba cabang lain."
+          },
+          {
+            "id": "c-hilang2",
+            "teks": "8, 7, ?, 5",
+            "ikon": "❔",
+            "cabang": "lengkapi",
+            "petunjuk": "Ada bilangan yang hilang. Itu melengkapi. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -379,7 +748,10 @@
                 "ikon": "➡️",
                 "isi": "Makin ke kanan, makin besar.",
                 "suara": "Maju. Satu, dua, tiga, empat, lima. Bilangannya makin besar.",
-                "visual": { "jenis": "teks", "isi": "1, 2, 3, 4, 5" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1, 2, 3, 4, 5"
+                }
               },
               {
                 "id": "mundur",
@@ -387,7 +759,10 @@
                 "ikon": "⬅️",
                 "isi": "Makin ke kiri, makin kecil.",
                 "suara": "Mundur. Lima, empat, tiga, dua, satu. Bilangannya makin kecil.",
-                "visual": { "jenis": "teks", "isi": "5, 4, 3, 2, 1" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5, 4, 3, 2, 1"
+                }
               },
               {
                 "id": "mana-saja",
@@ -395,7 +770,10 @@
                 "ikon": "📍",
                 "isi": "Boleh mulai dari bilangan mana saja.",
                 "suara": "Kamu boleh mulai dari bilangan mana saja. Mulai dari enam, maju: enam, tujuh, delapan.",
-                "visual": { "jenis": "teks", "isi": "6, 7, 8" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6, 7, 8"
+                }
               }
             ]
           },
@@ -412,7 +790,15 @@
                 "ikon": "⏮️",
                 "catatan": "Lima. Satu lebih sedikit dari enam.",
                 "suara": "Sebelum enam adalah lima. Lima satu lebih sedikit dari enam.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["apel", 5]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "apel",
+                      5
+                    ]
+                  ]
+                }
               },
               {
                 "id": "sesudah",
@@ -420,7 +806,15 @@
                 "ikon": "⏭️",
                 "catatan": "Tujuh. Satu lebih banyak dari enam.",
                 "suara": "Sesudah enam adalah tujuh. Tujuh satu lebih banyak dari enam.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["apel", 7]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "apel",
+                      7
+                    ]
+                  ]
+                }
               }
             ],
             "kesimpulan": "Sebelum 6 itu 5, sesudah 6 itu 7."
@@ -438,7 +832,10 @@
                 "ikon": "➡️",
                 "isi": "Setelah 3 dan sebelum 5 itu 4.",
                 "suara": "Tiga, empat, lima. Yang hilang adalah empat.",
-                "visual": { "jenis": "teks", "isi": "3, 4, 5" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3, 4, 5"
+                }
               },
               {
                 "id": "mundur",
@@ -446,7 +843,10 @@
                 "ikon": "⬅️",
                 "isi": "Setelah 8 dan sebelum 6 itu 7.",
                 "suara": "Delapan, tujuh, enam. Yang hilang adalah tujuh.",
-                "visual": { "jenis": "teks", "isi": "8, 7, 6" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "8, 7, 6"
+                }
               }
             ]
           }
@@ -492,12 +892,48 @@
           }
         ],
         "kartu": [
-          { "id": "d-semua", "teks": "7 bola seluruhnya", "ikon": "⚽", "cabang": "gabungan", "petunjuk": "Seluruh bola yang berkumpul itu gabungan. Coba cabang lain." },
-          { "id": "d-satu", "teks": "Satu kelompok utuh", "ikon": "🟡", "cabang": "gabungan", "petunjuk": "Kelompok utuh itu gabungan. Coba cabang lain." },
-          { "id": "d-hijau", "teks": "3 bola hijau", "ikon": "🟢", "cabang": "sebagian", "petunjuk": "Tiga bola hijau hanya satu bagian. Itu sebagian. Coba cabang lain." },
-          { "id": "d-pecah", "teks": "5 jadi 2 dan 3", "ikon": "✂️", "cabang": "pisahkan", "petunjuk": "Memecah satu bilangan jadi dua itu memisahkan. Coba cabang lain." },
-          { "id": "d-empat", "teks": "Enam: 4 dan 2", "ikon": "🔄", "cabang": "pasangan", "petunjuk": "Empat dan dua adalah satu pasangan dari enam. Coba cabang lain." },
-          { "id": "d-tiga", "teks": "Enam: 3 dan 3", "ikon": "🔁", "cabang": "pasangan", "petunjuk": "Tiga dan tiga adalah pasangan lain dari enam. Coba cabang lain." }
+          {
+            "id": "d-semua",
+            "teks": "7 bola seluruhnya",
+            "ikon": "⚽",
+            "cabang": "gabungan",
+            "petunjuk": "Seluruh bola yang berkumpul itu gabungan. Coba cabang lain."
+          },
+          {
+            "id": "d-satu",
+            "teks": "Satu kelompok utuh",
+            "ikon": "🟡",
+            "cabang": "gabungan",
+            "petunjuk": "Kelompok utuh itu gabungan. Coba cabang lain."
+          },
+          {
+            "id": "d-hijau",
+            "teks": "3 bola hijau",
+            "ikon": "🟢",
+            "cabang": "sebagian",
+            "petunjuk": "Tiga bola hijau hanya satu bagian. Itu sebagian. Coba cabang lain."
+          },
+          {
+            "id": "d-pecah",
+            "teks": "5 jadi 2 dan 3",
+            "ikon": "✂️",
+            "cabang": "pisahkan",
+            "petunjuk": "Memecah satu bilangan jadi dua itu memisahkan. Coba cabang lain."
+          },
+          {
+            "id": "d-empat",
+            "teks": "Enam: 4 dan 2",
+            "ikon": "🔄",
+            "cabang": "pasangan",
+            "petunjuk": "Empat dan dua adalah satu pasangan dari enam. Coba cabang lain."
+          },
+          {
+            "id": "d-tiga",
+            "teks": "Enam: 3 dan 3",
+            "ikon": "🔁",
+            "cabang": "pasangan",
+            "petunjuk": "Tiga dan tiga adalah pasangan lain dari enam. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -517,7 +953,15 @@
                 "ikon": "🟢",
                 "isi": "3 bola hijau.",
                 "suara": "Sebagian pertama. Tiga bola hijau.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["bola-hijau", 3]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "bola-hijau",
+                      3
+                    ]
+                  ]
+                }
               },
               {
                 "id": "merah",
@@ -525,7 +969,15 @@
                 "ikon": "🔴",
                 "isi": "4 bola merah.",
                 "suara": "Sebagian yang lain. Empat bola merah.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["bola-merah", 4]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "bola-merah",
+                      4
+                    ]
+                  ]
+                }
               },
               {
                 "id": "gabungan",
@@ -533,7 +985,10 @@
                 "ikon": "🟡",
                 "isi": "Digabung jadi 7 bola.",
                 "suara": "Gabungan. Tiga dan empat digabung menjadi tujuh bola.",
-                "visual": { "jenis": "teks", "isi": "3 dan 4 jadi 7" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 dan 4 jadi 7"
+                }
               }
             ]
           },
@@ -550,7 +1005,19 @@
                 "ikon": "🔵",
                 "catatan": "Empat biru dan dua kuning.",
                 "suara": "Enam dipisahkan menjadi empat dan dua.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["kelereng-biru", 4], ["kelereng-kuning", 2]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "kelereng-biru",
+                      4
+                    ],
+                    [
+                      "kelereng-kuning",
+                      2
+                    ]
+                  ]
+                }
               },
               {
                 "id": "tiga-tiga",
@@ -558,7 +1025,19 @@
                 "ikon": "🟡",
                 "catatan": "Tiga biru dan tiga kuning.",
                 "suara": "Enam dipisahkan menjadi tiga dan tiga.",
-                "visual": { "jenis": "benda-kelompok", "isi": [["kelereng-biru", 3], ["kelereng-kuning", 3]] }
+                "visual": {
+                  "jenis": "benda-kelompok",
+                  "isi": [
+                    [
+                      "kelereng-biru",
+                      3
+                    ],
+                    [
+                      "kelereng-kuning",
+                      3
+                    ]
+                  ]
+                }
               }
             ],
             "kesimpulan": "Caranya beda, jumlahnya tetap 6."
@@ -579,8 +1058,28 @@
                 "visual": {
                   "jenis": "tabel-menurun",
                   "judul": "Pasangan 5",
-                  "kepala": ["Bagian 1", "Bagian 2"],
-                  "baris": [["1", 4], ["2", 3], ["3", 2], ["4", 1]]
+                  "kepala": [
+                    "Bagian 1",
+                    "Bagian 2"
+                  ],
+                  "baris": [
+                    [
+                      "1",
+                      4
+                    ],
+                    [
+                      "2",
+                      3
+                    ],
+                    [
+                      "3",
+                      2
+                    ],
+                    [
+                      "4",
+                      1
+                    ]
+                  ]
                 }
               },
               {
@@ -589,7 +1088,10 @@
                 "ikon": "🤝",
                 "isi": "Tiap pasangan jadi 5.",
                 "suara": "Satu dan empat jadi lima. Dua dan tiga juga jadi lima.",
-                "visual": { "jenis": "teks", "isi": "1 dan 4 jadi 5" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 dan 4 jadi 5"
+                }
               }
             ]
           }
