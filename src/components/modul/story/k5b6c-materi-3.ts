@@ -1,12 +1,12 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { W, bulat, busurJam, busurSudut, jam, judul, kartu, kaki, kotak, sudutDua, tabel, teks } from "./k5b6c-gambar";
+import { W, bulat, busurJam, busurSudut, emo, jam, judul, kartu, kaki, kotak, sudutDua, tabel, teks } from "./k5b6c-gambar";
 import { bersih, hapus, k, sorotkan, tambah, ubah } from "./k5b6c-bantu";
 
 /* ------------------------------ 9. Jenis sudut lain: refleks, nol, lurus, penuh (hlm. 180-181) ------------------------------ */
 export const ADEGAN_JENIS_LAIN: AdeganStory = {
   id: "jenis-lain",
   judul: "Sudut refleks, sudut nol, sudut lurus, dan sudut penuh",
-  sumber: "Buku Siswa hlm. 180–181",
+  sumber: "Materi: refleks, nol, lurus, dan penuh",
   latar: "#FDF4FF",
   kutipan: [
     "Tahukah kalian?",
@@ -68,7 +68,7 @@ export const ADEGAN_JENIS_LAIN: AdeganStory = {
 export const ADEGAN_TANTANGAN: AdeganStory = {
   id: "tantangan-refleks",
   judul: "Tantangan: mengukur sudut refleks dengan dua cara",
-  sumber: "Buku Siswa hlm. 181; Panduan Guru hlm. 265–266",
+  sumber: "Materi: Tantangan, sudut refleks",
   latar: "#FFF7ED",
   kutipan: [
     "Tantangan",
@@ -142,8 +142,8 @@ const SOAL_1: [number, number][] = [[1, 0], [9, 0], [4, 0], [1, 30]];
 
 export const ADEGAN_BERLATIH_1: AdeganStory = {
   id: "berlatih-jam-1",
-  judul: "Ayo Berlatih nomor 1: mengukur sudut jarum jam",
-  sumber: "Buku Siswa hlm. 182; Panduan Guru hlm. 267",
+  judul: "Latihan 1: mengukur sudut jarum jam",
+  sumber: "Materi: Latihan 1, sudut jarum jam",
   latar: "#F0FDFA",
   kutipan: [
     "Ukurlah sudut terkecil yang dibentuk oleh jarum jam pendek",
@@ -160,8 +160,8 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Berlatih nomor satu. Ukur sudut terkecil yang dibentuk jarum jam pendek dan jarum jam panjang pada empat jam.",
-      tambah("Ayo", judul("Ayo Berlatih 1: sudut jarum jam")),
+      "Latihan satu. Ukur sudut terkecil yang dibentuk jarum jam pendek dan jarum jam panjang pada empat jam.",
+      tambah("Latihan", judul("Latihan 1: sudut jarum jam")),
       tambah("Ukur", ...barisJam("jm", SOAL_1)),
       tambah("empat", teks("kk", 150, 188, "jarum pendek (hijau), jarum panjang (merah)", 8, W.coklat)),
     ),
@@ -183,11 +183,11 @@ export const ADEGAN_BERLATIH_1: AdeganStory = {
       tambah("sehingga", ...hasilJam("jm", 3, 1, 30, 135)),
     ),
     k(
-      "Hasil nomor satu: tiga puluh, sembilan puluh, seratus dua puluh, dan seratus tiga puluh lima derajat. Hasil ini cocok dengan kunci jawaban di Panduan Guru.",
+      "Hasil latihan satu: tiga puluh, sembilan puluh, seratus dua puluh, dan seratus tiga puluh lima derajat. Semua hasil ini sudah kita periksa dengan teliti.",
       bersih(0),
-      tambah(0, judul("hasil nomor 1")),
+      tambah(0, judul("hasil latihan 1")),
       tambah("Hasil", ...tabel("tj", 30, 34, [50, 110, 80], [["Jam", "Waktu", "Sudut"], ["a", "Pukul 01.00", "30°"], ["b", "Pukul 09.00", "90°"], ["c", "Pukul 04.00", "120°"], ["d", "Pukul 01.30", "135°"]], 22, 9.4)),
-      tambah("kunci", teks("tj-ok", 150, 178, "cocok dengan kunci Panduan Guru ✓", 8.6, W.hijau)),
+      tambah("periksa", teks("tj-ok", 150, 178, "semua hasil sudah diperiksa ✓", 8.6, W.hijau)),
     ),
   ],
 };
@@ -196,8 +196,8 @@ const SOAL_2: [number, number][] = [[10, 0], [15, 0], [7, 0], [4, 30]];
 
 export const ADEGAN_BERLATIH_2: AdeganStory = {
   id: "berlatih-jam-2",
-  judul: "Ayo Berlatih nomor 2: sudut terkecil pada empat waktu",
-  sumber: "Buku Siswa hlm. 182; Panduan Guru hlm. 267–268",
+  judul: "Latihan 2: sudut terkecil pada empat waktu",
+  sumber: "Materi: Latihan 2, sudut jarum jam",
   latar: "#FFFBEB",
   kutipan: [
     "Tentukan besar sudut terkecil yang dibentuk oleh jarum pendek",
@@ -214,8 +214,8 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Nomor dua, tentukan besar sudut terkecil yang dibentuk jarum jam pada pukul sepuluh, lima belas, tujuh, dan empat tiga puluh.",
-      tambah("Nomor", judul("Ayo Berlatih 2: sudut terkecil")),
+      "Latihan dua. Tentukan besar sudut terkecil yang dibentuk jarum jam pada pukul sepuluh, lima belas, tujuh, dan empat tiga puluh.",
+      tambah("Latihan", judul("Latihan 2: sudut terkecil")),
       tambah("sepuluh,", ...barisJam("jn", SOAL_2), labelWaktu("jn", 0, "10.00")),
       tambah("belas,", labelWaktu("jn", 1, "15.00")),
       tambah("tujuh,", labelWaktu("jn", 2, "07.00")),
@@ -241,11 +241,11 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
       tambah("sudutnya", busurJam("jz", 105, 112, 24, 4, 30, W.merah, { tebal: 2.4 }), teks("jz-n", 117, 143, "45°", 10, W.merah)),
     ),
     k(
-      "Kunci Panduan Guru: enam puluh, sembilan puluh, seratus lima puluh, dan empat puluh lima derajat. Hasil kita sama dengan kunci itu.",
+      "Hasil latihan dua: enam puluh, sembilan puluh, seratus lima puluh, dan empat puluh lima derajat. Semuanya cocok dengan hitungan kita tadi.",
       bersih(0),
-      tambah(0, judul("hasil nomor 2")),
-      tambah("Kunci", ...tabel("tn", 30, 34, [50, 110, 80], [["Jam", "Waktu", "Sudut"], ["a", "Pukul 10.00", "60°"], ["b", "Pukul 15.00", "90°"], ["c", "Pukul 07.00", "150°"], ["d", "Pukul 04.30", "45°"]], 22, 9.4)),
-      tambah("sama", teks("tn-ok", 150, 178, "sama dengan kunci Panduan Guru ✓", 8.6, W.hijau)),
+      tambah(0, judul("hasil latihan 2")),
+      tambah("Hasil", ...tabel("tn", 30, 34, [50, 110, 80], [["Jam", "Waktu", "Sudut"], ["a", "Pukul 10.00", "60°"], ["b", "Pukul 15.00", "90°"], ["c", "Pukul 07.00", "150°"], ["d", "Pukul 04.30", "45°"]], 22, 9.4)),
+      tambah("cocok", teks("tn-ok", 150, 178, "semua hasil cocok ✓", 8.6, W.hijau)),
     ),
   ],
 };
@@ -253,8 +253,8 @@ export const ADEGAN_BERLATIH_2: AdeganStory = {
 /* ------------------------------ 13. Refleksi 4 dan 5, diferensiasi, dan penutup (hlm. 187, Panduan Guru hlm. 267) ------------------------------ */
 export const ADEGAN_REFLEKSI_C: AdeganStory = {
   id: "refleksi-penutup",
-  judul: "Refleksi pernyataan 4 dan 5, diferensiasi, dan penutup",
-  sumber: "Buku Siswa hlm. 187; Panduan Guru hlm. 267",
+  judul: "Renungan, pesan guru, dan ringkasan",
+  sumber: "Materi: renungan dan ringkasan",
   latar: "#F0F9FF",
   kutipan: [
     "Setelah mempelajari materi terkait sudut, isilah tabel berikut sesuai",
@@ -270,25 +270,24 @@ export const ADEGAN_REFLEKSI_C: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Bagian akhir adalah refleksi. Buku Siswa meminta kita mengisi tabel dengan tanda centang. Pernyataan empat: aku dapat mengukur besar sudut dengan menggunakan busur derajat.",
-      tambah("Bagian", judul("Refleksi: beri tanda centang")),
-      tambah("empat:", ...kartu("p4", 10, 40, 280, 52, W.krem, ["4. Aku dapat mengukur besar sudut", "dengan menggunakan busur derajat"], 9.4)),
-      tambah("dapat", kotak("y4", 190, 100, 40, 20, W.putih, W.biru, { rx: 3 }), teks("y4-t", 202, 114, "Ya", 9, W.biru), kotak("n4", 240, 100, 40, 20, W.putih, W.biru, { rx: 3 }), teks("n4-t", 260, 114, "Tidak", 8.4, W.biru)),
-      tambah("derajat.", teks("y4-c", 219, 116, "✓", 12, W.hijau)),
+      "Sekarang saatnya merenung. Tanyakan pada dirimu sendiri, bisakah aku mengukur besar sudut dengan menggunakan busur derajat?",
+      tambah("Sekarang", judul("Renungan untukmu")),
+      tambah("bisakah", ...kartu("p4", 10, 40, 280, 52, W.krem, ["Bisakah aku mengukur besar sudut", "dengan menggunakan busur derajat?"], 9.4)),
+      tambah("busur", emo("rn4", 150, 142, "🤔", 38)),
     ),
     k(
-      "Pernyataan lima: aku dapat membandingkan besar sudut. Jika masih ragu, ulangi mengukur kipas dan jam sampai kita yakin.",
-      tambah("lima:", ...kartu("p5", 10, 132, 280, 34, W.langit, ["5. Aku dapat membandingkan besar sudut"], 9.4)),
-      tambah("dapat", kotak("y5", 190, 172, 40, 20, W.putih, W.biru, { rx: 3 }), teks("y5-t", 202, 186, "Ya", 9, W.biru), kotak("n5", 240, 172, 40, 20, W.putih, W.biru, { rx: 3 }), teks("n5-t", 260, 186, "Tidak", 8.4, W.biru)),
-      tambah("ragu,", teks("rg", 80, 186, "ragu? ulangi mengukur", 8.2, W.merah)),
-      tambah("yakin.", teks("y5-c", 219, 188, "✓", 12, W.hijau)),
+      "Pertanyaan kedua, bisakah aku membandingkan besar sudut? Jika masih ragu, ulangi mengukur kipas dan jam sampai kamu yakin.",
+      tambah("kedua,", ...kartu("p5", 10, 108, 280, 34, W.langit, ["Bisakah aku membandingkan besar sudut?"], 9.4)),
+      tambah("ragu,", teks("rg", 150, 170, "masih ragu? ulangi mengukur kipas dan jam", 8.8, W.merah)),
+      tambah("yakin.", emo("rn5", 150, 198, "💪", 22)),
     ),
     k(
-      "Panduan Guru juga menyarankan diferensiasi. Murid yang cepat belajar mengerjakan latihan tanpa bantuan, sementara guru mendampingi murid yang masih kesulitan.",
+      "Hati-hati, jangan menilai sudut dari panjang kakinya. Hati-hati juga saat memilih skala yang mulai dari nol. Sebagai tantangan, ukur sudut di sekitarmu, misalnya sudut pintu yang terbuka.",
       bersih(0),
-      tambah(0, judul("diferensiasi")),
-      tambah("cepat", ...kartu("df1", 20, 40, 260, 54, W.hijauMuda, ["murid yang cepat belajar", "mengerjakan latihan tanpa bantuan"], 9.4)),
-      tambah("guru", ...kartu("df2", 20, 112, 260, 54, W.pink, ["guru mendampingi murid", "yang masih mengalami kesulitan"], 9.4)),
+      tambah(0, judul("pesan guru")),
+      tambah("Hati-hati,", ...kartu("df1", 20, 34, 260, 44, W.merahMuda, ["Hati-hati: panjang kaki", "tidak mengubah besar sudut"], 9.4)),
+      tambah("juga", ...kartu("df2", 20, 88, 260, 44, W.krem, ["Hati-hati: pilih skala", "yang mulai dari nol"], 9.4)),
+      tambah("tantangan,", ...kartu("df3", 20, 142, 260, 44, W.hijauMuda, ["Tantangan: ukur sudut", "di sekitarmu"], 9.4)),
     ),
     k(
       "Sebagai penutup, empat hal yang perlu diingat: busur derajat mengukur sudut, satuannya derajat, kaki yang berimpit dengan garis dasar menunjuk nol, dan sudut dibandingkan lewat angka derajatnya.",

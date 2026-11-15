@@ -11,26 +11,26 @@ const AY = 160;
 export const ADEGAN_LUAR_TAMBAH: AdeganStory = {
   id: "luard-tambah",
   judul: "Angle Addition Construction: menyusun sudut dari patokan",
-  sumber: "Metode luar; penjumlahan dan selisih sudut patokan",
+  sumber: "Metode luar: menyusun sudut dari patokan",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Angle Addition Construction artinya menyusun sudut dari penjumlahan atau selisih sudut patokan yang sudah kita kenal, misalnya sudut siku-siku 90 derajat.",
+      "Angle Addition Construction artinya menyusun sudut dari penjumlahan atau selisih sudut patokan yang sudah kita kenal, misalnya sudut siku-siku sembilan puluh derajat.",
       tambah(0, jud("Angle Addition Construction", 20, 11)),
       tambah("sudut@2", juring("pj", AX, AY, 0, 90, 80, W.hijauMuda, W.biru), sinar("p1", AX, AY, 0, 120, W.biru, 2), sinar("p2", AX, AY, 90, 120, W.biru, 2)),
-      tambah("90", teks("p90", 100, 130, "90°", 11, W.hijau), teks("pt", 220, 100, "patokan siku-siku", 8.8, W.ungu)),
+      tambah("sembilan", teks("p90", 100, 130, "90°", 11, W.hijau), teks("pt", 220, 100, "patokan siku-siku", 8.8, W.ungu)),
     ),
     k(
-      "Contohnya, sudut 112 derajat sama dengan sudut siku-siku 90 derajat ditambah 22 derajat. Kita melukis siku-siku dulu, lalu menambah 22 derajat.",
+      "Contohnya, sudut seratus dua belas derajat sama dengan sudut siku-siku sembilan puluh derajat ditambah dua puluh dua derajat. Kita melukis siku-siku dulu, lalu menambah dua puluh dua derajat.",
       tambah("ditambah", sinar("p3", AX, AY, 112, 120, W.merah, 2.2, { gambar: true }), juring("pk", AX, AY, 90, 112, 70, W.merahMuda, W.merah)),
-      tambah("22", teks("p22", 62, 78, "22°", 9, W.merah), teks("pj1", 220, 130, "90 + 22 = 112", 11, W.biru)),
+      tambah("puluh@2", teks("p22", 62, 78, "22°", 9, W.merah), teks("pj1", 220, 130, "90 + 22 = 112", 11, W.biru)),
     ),
     k(
-      "Selisih juga bisa dipakai. Sudut 83 derajat sama dengan 90 dikurangi 7. Kita mulai dari siku-siku, lalu mengurangi 7 derajat.",
+      "Selisih juga bisa dipakai. Sudut delapan puluh tiga derajat sama dengan sembilan puluh dikurangi tujuh. Kita mulai dari siku-siku, lalu mengurangi tujuh derajat.",
       bersih(0),
       tambah(0, jud("Selisih dari patokan")),
       tambah("Sudut", sudut("s", AX, AY, 0, 83, 120, 30)),
-      tambah("90", sinar("sb", AX, AY, 90, 120, W.abu, 1.6, { putus: true }), teks("sL", 100, 134, "83°", 11, W.merah)),
+      tambah("sembilan", sinar("sb", AX, AY, 90, 120, W.abu, 1.6, { putus: true }), teks("sL", 100, 134, "83°", 11, W.merah)),
       tambah("dikurangi", teks("pj2", 220, 130, "90 - 7 = 83", 11, W.biru)),
     ),
     k(
@@ -49,28 +49,28 @@ const CY = 156;
 export const ADEGAN_LUAR_TAMBAH_TERAPAN: AdeganStory = {
   id: "luard-tambah-terapan",
   judul: "Angle Addition Construction: sudut 165 derajat",
-  sumber: "Metode luar; penerapan pada Ayo Berlatih 2d",
+  sumber: "Metode luar: sudut 165 derajat dari patokan",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapkan pada soal 2 d, sudut 165 derajat. Pilih patokan siku-siku 90 derajat, lalu cari sisanya: 165 dikurangi 90 sama dengan 75 derajat.",
-      tambah(0, jud("Soal 2d: susun sudut 165°", 20, 11)),
-      tambah("165", titikSudut("v", CX, CY, W.biru, 3.2), sinar("r1", CX, CY, 0, 120, W.biru, 2.4, { gambar: true })),
+      "Terapkan pada sudut seratus enam puluh lima derajat. Pilih patokan siku-siku sembilan puluh derajat, lalu cari sisanya: seratus enam puluh lima dikurangi sembilan puluh sama dengan tujuh puluh lima derajat.",
+      tambah(0, jud("Susun sudut 165°", 20, 11)),
+      tambah("seratus", titikSudut("v", CX, CY, W.biru, 3.2), sinar("r1", CX, CY, 0, 120, W.biru, 2.4, { gambar: true })),
       tambah("dikurangi", teks("h1", 232, 70, "165 - 90 = 75", 10.4, W.merah)),
     ),
     k(
-      "Lukis dulu sudut siku-siku 90 derajat dari kaki mendatar. Kemudian dari kaki kedua, tambahkan sudut 75 derajat, sama dengan gambar b pada soal satu.",
+      "Lukis dulu sudut siku-siku sembilan puluh derajat dari kaki mendatar. Kemudian dari kaki kedua, tambahkan sudut tujuh puluh lima derajat.",
       tambah("siku-siku", sinar("sk", CX, CY, 90, 110, W.hijau, 2.2, { gambar: true }), busurSudut("a1", CX, CY, 0, 90, 20, W.hijau, 1.8), teks("l90", 173, 133, "90°", 9, W.hijau)),
       tambah("tambahkan", busurSudut("a2", CX, CY, 90, 165, 32, W.merah, 1.8), teks("l75", 123, 126, "75°", 9, W.merah)),
     ),
     k(
-      "Hasilnya, sudut dari kaki pertama ke kaki ketiga: 90 ditambah 75 sama dengan 165 derajat, sudut tumpul yang hampir lurus.",
+      "Hasilnya, sudut dari kaki pertama ke kaki ketiga: sembilan puluh ditambah tujuh puluh lima sama dengan seratus enam puluh lima derajat, sudut tumpul yang hampir lurus.",
       tambah("ketiga:", sinar("r2", CX, CY, 165, 120, W.biru, 2.4, { gambar: true })),
       tambah("sama", teks("h2", 232, 100, "90 + 75 = 165", 10.4, W.biru)),
       tambah("tumpul", teks("rL", 122, 150, "165°", 10, W.merah), kartu("jn", 200, 166, 90, 28, W.merahMuda, ["sudut tumpul"], 8.6)),
     ),
     k(
-      "Periksa dengan busur: kaki ketiga tepat di angka 165. Dua cara memberi hasil yang sama, jadi gambar kita benar.",
+      "Periksa dengan busur: kaki ketiga tepat di angka seratus enam puluh lima. Dua cara memberi hasil yang sama, jadi gambar kita benar.",
       tambah("busur:", busurDerajat("bd", CX, CY, 100, "kanan", false, { z: 0 })),
       tambah("tepat", bulat("td", ...ujung(CX, CY, 165, 98), 3.4, W.merah, undefined, { z: 7 })),
       tambah("benar.", baris("ck", 196, 40, 98, "✓ tepat di 165", W.hijauMuda, 7.6, 18)),
@@ -84,17 +84,17 @@ const EY = 170;
 export const ADEGAN_LUAR_PERKIRAAN: AdeganStory = {
   id: "luard-perkiraan",
   judul: "Estimate-Then-Verify: perkirakan lalu periksa",
-  sumber: "Metode luar; perkiraan dan pemeriksaan sudut",
+  sumber: "Metode luar: perkiraan dan pemeriksaan",
   latar: "#EFF6FF",
   ketukan: [
     k(
-      "Estimate-Then-Verify artinya perkirakan dulu, baru periksa. Sebelum memakai busur, kita menebak ukuran sudut dengan patokan 90 dan 180 derajat.",
+      "Estimate-Then-Verify artinya perkirakan dulu, baru periksa. Sebelum memakai busur, kita menebak ukuran sudut dengan patokan sembilan puluh dan seratus delapan puluh derajat.",
       tambah(0, jud("Estimate-Then-Verify", 20, 11)),
       tambah("menebak", emo("ev", 150, 100, "🤔", 40)),
       tambah("patokan", teks("ev1", 80, 160, "patokan 90°", 10, W.hijau), teks("ev2", 220, 160, "patokan 180°", 10, W.merah)),
     ),
     k(
-      "Patokannya: kurang dari 90 derajat berarti lancip, tepat 90 siku-siku, dan antara 90 dan 180 tumpul. Dari situ kita menebak kira-kira di mana kaki kedua berada.",
+      "Patokannya: kurang dari sembilan puluh derajat berarti lancip, tepat sembilan puluh siku-siku, dan antara sembilan puluh dan seratus delapan puluh tumpul. Dari situ kita menebak kira-kira di mana kaki kedua berada.",
       bersih(0),
       tambah(0, jud("Zona perkiraan", 20, 11)),
       tambah("lancip,", juring("z1", EX, EY, 0, 90, 100, W.hijauMuda, W.biru), teks("zt1", 195, 110, "lancip", 9, W.hijau)),
@@ -110,11 +110,11 @@ export const ADEGAN_LUAR_PERKIRAAN: AdeganStory = {
       tambah("pasti", teks("vb3", 150, 130, "tidak cocok: baca ulang skala", 10, W.merah), teks("vb4", 150, 160, "✗", 22, W.merah)),
     ),
     k(
-      "Pemeriksaan ini menangkap kesalahan membaca skala dalam dan luar, seperti sudut 120 derajat yang tergambar 60 derajat.",
+      "Pemeriksaan ini menangkap kesalahan membaca skala dalam dan luar, seperti sudut seratus dua puluh derajat yang tergambar enam puluh derajat.",
       bersih(0),
       tambah(0, jud("Contoh kesalahan terdeteksi", 20, 11)),
       tambah("sudut", sudut("w", 80, 160, 0, 60, 90, 24, W.biru, W.merah), teks("wL", 112, 140, "60°", 10, W.merah)),
-      tambah("120", sudut("b", 230, 160, 0, 120, 60, 18, W.biru, W.hijau), teks("bL", 245, 130, "120°", 10, W.hijau)),
+      tambah("seratus", sudut("b", 230, 160, 0, 120, 60, 18, W.biru, W.hijau), teks("bL", 245, 130, "120°", 10, W.hijau)),
       tambah("tergambar", teks("wk1", 80, 190, "tergambar ✗", 8.6, W.merah), teks("bk1", 230, 190, "diminta ✓", 8.6, W.hijau)),
     ),
   ],
@@ -126,11 +126,11 @@ const FY = 160;
 export const ADEGAN_LUAR_PERKIRAAN_TERAPAN: AdeganStory = {
   id: "luard-perkiraan-terapan",
   judul: "Estimate-Then-Verify: sudut 140 derajat",
-  sumber: "Metode luar; penerapan pada Ayo Berlatih 1e",
+  sumber: "Metode luar: sudut 140 derajat",
   latar: "#EFF6FF",
   ketukan: [
     k(
-      "Terapkan pada gambar e, sudut 140 derajat. Tebakan: 140 lebih besar dari 90, jadi tumpul. Selisihnya dari 180 hanya 40, jadi kaki kedua dekat dengan garis lurus.",
+      "Terapkan pada sudut seratus empat puluh derajat. Tebakan: seratus empat puluh lebih besar dari sembilan puluh, jadi tumpul. Selisihnya dari seratus delapan puluh hanya empat puluh, jadi kaki kedua dekat dengan garis lurus.",
       tambah(0, jud("Perkirakan: sudut 140°", 20, 11)),
       tambah("tebakan:", teks("e1", 232, 60, "140 - 90 = 50", 10, W.biru), teks("e2", 232, 80, "tumpul", 9, W.merah)),
       tambah("Selisihnya", teks("e3", 232, 110, "180 - 140 = 40", 10, W.biru)),
@@ -141,13 +141,13 @@ export const ADEGAN_LUAR_PERKIRAAN_TERAPAN: AdeganStory = {
       tambah("Kita", sinar("pr", FX, FY, 150, 110, W.abu, 1.8, { putus: true, z: 3 }), teks("prt", 60, 80, "perkiraan kasar", 8.2, W.abu)),
     ),
     k(
-      "Lalu ukur dengan busur: tandai angka 140, hubungkan dengan titik sudut. Hasilnya cukup dekat dengan perkiraan, yaitu sudut tumpul.",
+      "Lalu ukur dengan busur: tandai angka seratus empat puluh, hubungkan dengan titik sudut. Hasilnya cukup dekat dengan perkiraan, yaitu sudut tumpul.",
       hapus(0, "pr", "prt"),
       tambah("busur:", busurDerajat("bd", FX, FY, 90, "kanan", false, { z: 0 })),
       tambah("hubungkan", bulat("td", ...ujung(FX, FY, 140, 88), 3.4, W.merah, undefined, { z: 7 }), sinar("r2", FX, FY, 140, 110, W.biru, 2.4, { z: 5, gambar: true })),
     ),
     k(
-      "Verifikasi terakhir: hasilnya tumpul, lebih besar dari 90, dan 40 derajat kurang dari garis lurus. Jadi gambar kita lolos pemeriksaan.",
+      "Verifikasi terakhir: hasilnya tumpul, lebih besar dari sembilan puluh, dan empat puluh derajat kurang dari garis lurus. Jadi gambar kita lolos pemeriksaan.",
       hapus(0, ids(busurDerajat("bd", FX, FY, 90, "kanan", false))),
       tambah("hasilnya", busurSudut("ar", FX, FY, 0, 140, 24, W.merah, 1.8, { z: 6 }), teks("rL", 125, 130, "140°", 10, W.merah)),
       tambah("kurang", teks("e4", 232, 140, "140 + 40 = 180", 10, W.hijau), baris("ck", 190, 160, 100, "✓ lolos pemeriksaan", W.hijauMuda, 7.6, 18)),
@@ -159,23 +159,23 @@ export const ADEGAN_LUAR_PERKIRAAN_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luard-ringkas",
   judul: "Ringkasan empat metode luar melukis sudut",
-  sumber: "Ringkasan metode luar; empat metode dan angka dari buku",
+  sumber: "Ringkasan metode luar",
   latar: "#EEF2FF",
   ketukan: [
     k(
-      "Ringkasan metode luar untuk melukis sudut. Empat metode saling melengkapi, dan semuanya memakai angka dari Ayo Berlatih.",
+      "Ringkasan metode luar untuk melukis sudut. Empat metode saling melengkapi, dan semuanya dipakai pada sudut yang sudah kita latih.",
       tambah(0, jud("Ringkasan empat metode", 22, 12)),
       tambah("Empat", emo("rg", 150, 100, "🧰", 44)),
     ),
     k(
-      "Constructing Angles Protocol memberi urutan langkah, dipakai pada sudut 52 derajat. Protractor Construction menjaga pembacaan busur, dipakai pada sudut 110 derajat.",
+      "Constructing Angles Protocol memberi urutan langkah, dipakai pada sudut lima puluh dua derajat. Protractor Construction menjaga pembacaan busur, dipakai pada sudut seratus sepuluh derajat.",
       bersih(0),
       tambah(0, jud("Urutan dan busur", 22, 12)),
       tambah("Constructing", kartu("rk1", 15, 44, 270, 46, W.krem, ["Constructing Angles Protocol", "urutan langkah · 52°"], 8.8)),
       tambah("Protractor", kartu("rk2", 15, 104, 270, 46, W.merahMuda, ["Protractor Construction", "baca busur benar · 110°"], 8.8)),
     ),
     k(
-      "Angle Addition Construction menyusun sudut dari patokan, dipakai pada sudut 165 derajat. Estimate-Then-Verify memeriksa hasil, dipakai pada sudut 140 derajat.",
+      "Angle Addition Construction menyusun sudut dari patokan, dipakai pada sudut seratus enam puluh lima derajat. Estimate-Then-Verify memeriksa hasil, dipakai pada sudut seratus empat puluh derajat.",
       bersih(0),
       tambah(0, jud("Patokan dan pemeriksaan", 22, 12)),
       tambah("Angle", kartu("rk3", 15, 44, 270, 46, W.hijauMuda, ["Angle Addition Construction", "susun dari patokan · 165°"], 8.8)),

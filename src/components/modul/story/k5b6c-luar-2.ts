@@ -6,7 +6,7 @@ import { bersih, k, tambah } from "./k5b6c-bantu";
 export const ADEGAN_LUAR_DERAJAT: AdeganStory = {
   id: "luar-derajat",
   judul: "Degree Measure: konsep",
-  sumber: "Metode luar 3: derajat sebagai bagian dari satu putaran",
+  sumber: "Metode luar: Degree Measure",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -32,7 +32,7 @@ export const ADEGAN_LUAR_DERAJAT: AdeganStory = {
       tambah("Makin", ...kartu("pp1", 190, 70, 100, 44, W.krem, ["makin jauh diputar", "makin besar sudut"], 8.6)),
     ),
     k(
-      "Karena yang dihitung adalah putaran, panjang kaki tidak mengubah besar sudut. Itulah jawaban untuk salah paham di Panduan Guru tentang jarak ujung kaki.",
+      "Karena yang dihitung adalah putaran, panjang kaki tidak mengubah besar sudut. Itulah jawaban untuk salah paham tentang jarak ujung kaki.",
       bersih(0),
       tambah(0, judul("panjang kaki tidak mengubah sudut")),
       tambah("putaran,", ...sudutDua("dk1", 30, 150, 32, 5, 35, W.biru), busurSudut("dk1", 30, 150, 16, 5, 35, W.hijau, { tebal: 2.2 }), teks("dk1-n", 66, 148, "30°", 9, W.hijau)),
@@ -48,7 +48,7 @@ const lingkaran = (id: string, x: number, y: number, r: number): Obj => bulat(id
 export const ADEGAN_LUAR_DERAJAT_TERAPAN: AdeganStory = {
   id: "luar-derajat-terapan",
   judul: "Degree Measure: penerapan pada sudut refleks, kipas, dan siku-siku",
-  sumber: "Metode luar 3: contoh Tantangan dan kipas Buku Siswa hlm. 176–181",
+  sumber: "Metode luar: Degree Measure pada contoh",
   latar: "#ECFEFF",
   ketukan: [
     k(
@@ -64,7 +64,7 @@ export const ADEGAN_LUAR_DERAJAT_TERAPAN: AdeganStory = {
       tambah("kurang", ...kartu("dtg", 150, 130, 140, 40, W.pink, ["360 - 120 = 240", "240/360 = 2/3 putaran"], 9)),
     ),
     k(
-      "Kipas tiga di buku terbuka seratus tiga puluh lima derajat. Seratus tiga puluh lima dari tiga ratus enam puluh adalah tiga perdelapan putaran.",
+      "Kipas tiga terbuka seratus tiga puluh lima derajat. Seratus tiga puluh lima dari tiga ratus enam puluh adalah tiga perdelapan putaran.",
       bersih(0),
       tambah(0, judul("kipas 3: tiga perdelapan putaran")),
       tambah("Kipas", lingkaran("dp-c", 75, 115, 50)),
@@ -96,7 +96,7 @@ const jariJam = (id: string, x: number, y: number, r: number): Obj[] => Array.fr
 export const ADEGAN_LUAR_MUKA_JAM: AdeganStory = {
   id: "luar-muka-jam",
   judul: "Clock Face Division: konsep",
-  sumber: "Metode luar 4: muka jam dibagi dua belas ruas",
+  sumber: "Metode luar: Clock Face Division",
   latar: "#FFF1F2",
   ketukan: [
     k(
@@ -143,12 +143,12 @@ const rumusJam = (i: number): Obj[] => [busurJam(`cj${HURUF[i]}`, POSISI[i], 96,
 
 export const ADEGAN_LUAR_MUKA_JAM_TERAPAN: AdeganStory = {
   id: "luar-muka-jam-terapan",
-  judul: "Clock Face Division: penerapan pada Ayo Berlatih nomor 2",
-  sumber: "Metode luar 4: contoh Ayo Berlatih Buku Siswa hlm. 182",
+  judul: "Clock Face Division: penerapan pada empat jam",
+  sumber: "Metode luar: muka jam pada empat waktu",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      "Terapkan pada Ayo Berlatih nomor dua. Pukul sepuluh, jarum pendek di angka sepuluh dan jarum panjang di angka dua belas. Jaraknya dua ruas, jadi enam puluh derajat.",
+      "Terapkan pada empat jam tadi. Pukul sepuluh, jarum pendek di angka sepuluh dan jarum panjang di angka dua belas. Jaraknya dua ruas, jadi enam puluh derajat.",
       tambah("Terapkan", judul("jam dihitung per ruas"), ...jamKecil(0), ...jamKecil(1), ...jamKecil(2), ...jamKecil(3)),
       tambah("Jaraknya", ...rumusJam(0)),
     ),
@@ -213,9 +213,9 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("khusus", ...kartu("w4", 20, 142, 260, 28, W.langit, ["Clock Face Division: soal jam"], 9)),
     ),
     k(
-      "Semua metode itu mengarah ke hasil yang sama dengan buku, misalnya kipas tiga seratus tiga puluh lima derajat, sudut refleks dua ratus empat puluh, dan jam setengah lima empat puluh lima derajat.",
+      "Semua metode itu mengarah ke hasil yang sama, misalnya kipas tiga seratus tiga puluh lima derajat, sudut refleks dua ratus empat puluh, dan jam setengah lima empat puluh lima derajat.",
       bersih(0),
-      tambah(0, judul("hasilnya sama dengan buku")),
+      tambah(0, judul("hasilnya selalu sama")),
       tambah("kipas", ...kartu("z1", 12, 60, 86, 70, W.hijauMuda, ["Kipas 3", "135°"], 11)),
       tambah("refleks", ...kartu("z2", 107, 60, 86, 70, W.pink, ["sudut refleks", "240°"], 10)),
       tambah("setengah", ...kartu("z3", 202, 60, 86, 70, W.langit, ["pukul 04.30", "45°"], 11)),

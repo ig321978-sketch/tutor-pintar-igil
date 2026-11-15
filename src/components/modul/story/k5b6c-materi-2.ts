@@ -8,7 +8,7 @@ const WARNA_KIPAS = [W.jingga, W.langit, W.hijauMuda, W.pink];
 export const ADEGAN_SALAH_BACA: AdeganStory = {
   id: "salah-baca",
   judul: "Kesalahan membaca skala dan busur yang miring",
-  sumber: "Panduan Guru hlm. 264",
+  sumber: "Materi: salah membaca skala",
   latar: "#FEF2F2",
   kutipan: [
     "Mungkin ada peserta didik yang salah membaca",
@@ -24,7 +24,7 @@ export const ADEGAN_SALAH_BACA: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Panduan Guru memperingatkan kesalahan yang sering terjadi, yaitu salah membaca skala. Ada murid yang membaca skala luar, padahal seharusnya membaca skala dalam.",
+      "Hati-hati, ada kesalahan yang sering terjadi, yaitu salah membaca skala. Ada murid yang membaca skala luar, padahal seharusnya membaca skala dalam.",
       tambah(0, judul("kesalahan: salah membaca skala"), ...busurDerajat("bs", 150, 172, 88, { op: 0.85 })),
       tambah(0, ...sudutDua("sb", 150, 172, 100, 180, 55, W.biru, 2.6, { z: 5 })),
       tambah("luar,", teks("bs-o", 209, 86, "55° ✗", 9, W.merah)),
@@ -60,8 +60,8 @@ export const ADEGAN_SALAH_BACA: AdeganStory = {
 const NILAI_KIPAS = [105, 130, 135, 85];
 export const ADEGAN_EKS_KIPAS: AdeganStory = {
   id: "eks-kipas",
-  judul: "Eksplorasi 6.3 nomor 1: mengukur empat kipas",
-  sumber: "Buku Siswa hlm. 176 dan 179; Panduan Guru hlm. 265",
+  judul: "Mengukur empat kipas pakarena",
+  sumber: "Materi: mengukur empat kipas",
   latar: "#FFFBEB",
   kutipan: [
     "Eksplorasi 6.3",
@@ -73,9 +73,9 @@ export const ADEGAN_EKS_KIPAS: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi enam titik tiga, Ayo Berdiskusi. Pertanyaan satu, kembali ke empat kipas tadi. Ukur sudut tiap kipas, lalu tentukan kipas yang terbuka paling lebar.",
-      tambah("Eksplorasi", judul("Eksplorasi 6.3: Ayo Berdiskusi")),
-      tambah("kembali", ...barisKipas("ek", NILAI_KIPAS, 130, 36, WARNA_KIPAS)),
+      "Berikut empat kipas lipat penari pakarena. Masing-masing dibuka selebar yang berbeda. Ukur sudut tiap kipas, lalu tentukan kipas yang terbuka paling lebar.",
+      tambah("Berikut", judul("Mengukur empat kipas")),
+      tambah("empat", ...barisKipas("ek", NILAI_KIPAS, 130, 36, WARNA_KIPAS)),
       tambah("Ukur", ...kartu("q1", 30, 154, 240, 34, W.krem, ["ukur tiap kipas, cari yang terlebar"], 9.2)),
     ),
     k(
@@ -112,8 +112,8 @@ export const ADEGAN_EKS_KIPAS: AdeganStory = {
 /* ------------------------------ 7. Eksplorasi 6.3 nomor 2 dan 3: siku-siku dan jodoh (hlm. 179-180) ------------------------------ */
 export const ADEGAN_SIKU_JODOH: AdeganStory = {
   id: "eks-siku-jodoh",
-  judul: "Eksplorasi 6.3 nomor 2 dan 3: sudut siku-siku dan menjodohkan",
-  sumber: "Buku Siswa hlm. 179–180; Panduan Guru hlm. 265",
+  judul: "Sudut siku-siku dan menjodohkan jenis sudut",
+  sumber: "Materi: siku-siku dan jenis sudut",
   latar: "#F5F3FF",
   kutipan: [
     "Buatlah sudut siku-siku dari",
@@ -130,8 +130,8 @@ export const ADEGAN_SIKU_JODOH: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Pertanyaan dua. Buat sudut siku-siku dari selembar kertas seperti di Subbab A, lalu ukur dengan busur derajat. Berapa derajat ukuran sudut siku-siku itu?",
-      tambah(0, judul("Eksplorasi 6.3 nomor 2")),
+      "Sekarang kita buat sudut siku-siku dari selembar kertas, seperti di pelajaran sebelumnya, lalu ukur dengan busur derajat. Berapa derajat ukuran sudut siku-siku itu?",
+      tambah(0, judul("sudut siku-siku dari kertas")),
       tambah("selembar", kotak("kr", 110, 92, 80, 80, W.krem, W.coklat, { rx: 1, z: -1 }), teks("kr-t", 172, 100, "kertas", 8.6, W.coklat)),
       tambah("ukur", ...busurDerajat("bk", 110, 172, 76, { op: 0.8 })),
       tambah("ukur", ...sudutDua("sk", 110, 172, 86, 0, 90, W.biru, 2.6, { z: 5 })),
@@ -144,9 +144,9 @@ export const ADEGAN_SIKU_JODOH: AdeganStory = {
       tambah("kurang.", ...kartu("hs", 196, 36, 94, 34, W.emas, ["siku-siku", "= 90°"], 9)),
     ),
     k(
-      "Pertanyaan tiga, menjodohkan. Sudut lancip besarnya lebih dari nol dan kurang dari sembilan puluh derajat. Sudut siku-siku tepat sembilan puluh derajat.",
+      "Sekarang kita menjodohkan jenis sudut dengan besarnya. Sudut lancip besarnya lebih dari nol dan kurang dari sembilan puluh derajat. Sudut siku-siku tepat sembilan puluh derajat.",
       bersih(0),
-      tambah(0, judul("Eksplorasi 6.3 nomor 3: jodohkan")),
+      tambah(0, judul("jodohkan jenis sudut")),
       tambah("menjodohkan.", ...kartu("jl", 10, 36, 100, 34, W.hijauMuda, ["Sudut lancip"], 9), ...kartu("js", 10, 92, 100, 34, W.langit, ["Sudut siku-siku"], 9), ...kartu("jt", 10, 148, 100, 34, W.pink, ["Sudut tumpul"], 9)),
       tambah("menjodohkan.", ...kartu("rs", 176, 36, 114, 34, W.krem, ["sudut yang besarnya", "90°"], 8.2), ...kartu("rt", 176, 92, 114, 34, W.krem, ["lebih dari 90° dan", "kurang dari 180°"], 8.2), ...kartu("rl", 176, 148, 114, 34, W.krem, ["lebih dari 0° dan", "kurang dari 90°"], 8.2)),
       tambah("lancip", garis("j1", 110, 53, 66, 112, W.hijau, 2.4, { gambar: true })),
@@ -172,8 +172,8 @@ export const ADEGAN_SIKU_JODOH: AdeganStory = {
 /* ------------------------------ 8. Miskonsepsi: lebar jarak ujung kaki (Panduan Guru hlm. 266) ------------------------------ */
 export const ADEGAN_MISKONSEPSI: AdeganStory = {
   id: "miskonsepsi-lebar",
-  judul: "Miskonsepsi: panjang kaki bukan ukuran sudut",
-  sumber: "Panduan Guru hlm. 266",
+  judul: "Hati-hati: panjang kaki bukan ukuran sudut",
+  sumber: "Materi: salah paham membandingkan sudut",
   latar: "#FFF1F2",
   kutipan: [
     "Kesalahan yang sering terjadi saat peserta didik membandingkan ukuran",
@@ -188,15 +188,15 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Panduan Guru mencatat kesalahan yang sering terjadi: murid mengira makin lebar jarak antara ujung kaki sudut, makin besar sudutnya.",
+      "Hati-hati, ini kesalahan yang sering terjadi: murid mengira makin lebar jarak antara ujung kaki sudut, makin besar sudutnya.",
       tambah(0, judul("anggapan: ujung kaki makin jauh")),
-      tambah("Panduan", ...sudutDua("s1", 25, 160, 46, 10, 50, W.biru), teks("s1-m", 50, 184, "Sudut 1", 9, W.biru)),
+      tambah("Hati-hati", ...sudutDua("s1", 25, 160, 46, 10, 50, W.biru), teks("s1-m", 50, 184, "Sudut 1", 9, W.biru)),
       tambah("jarak", garisUjung("s1-g", 25, 160, 46, 10, 50), teks("s1-t", 60, 124, "dekat", 8.4, W.merah)),
       tambah("lebar", ...sudutDua("s2", 160, 160, 100, 10, 50, W.biru), teks("s2-m", 210, 184, "Sudut 2", 9, W.biru)),
       tambah("sudutnya.", garisUjung("s2-g", 160, 160, 100, 10, 50), teks("s2-t", 266, 100, "jauh", 8.4, W.merah)),
     ),
     k(
-      "Pada gambar buku, banyak murid menjawab sudut dua lebih besar daripada sudut satu. Padahal ukuran kedua sudut itu sama.",
+      "Pada gambar ini, banyak murid menjawab sudut dua lebih besar daripada sudut satu. Padahal ukuran kedua sudut itu sama.",
       tambah("satu.", busurSudut("s1", 25, 160, 18, 10, 50, W.hijau, { tebal: 2.2 }), teks("s1-n", 72, 168, "40°", 9, W.hijau)),
       tambah("sama.", busurSudut("s2", 160, 160, 18, 10, 50, W.hijau, { tebal: 2.2 }), teks("s2-n", 212, 168, "40°", 9, W.hijau)),
       tambah("sama.", ...kartu("sm", 90, 30, 120, 30, W.emas, ["kedua sudut sama besar"], 8.6)),

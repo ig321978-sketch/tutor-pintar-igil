@@ -14,7 +14,7 @@ const gantiSudut = (at: string | number | undefined, id: string, cx: number, cy:
 export const ADEGAN_LUAR_ROT: AdeganStory = {
   id: "luarb-rot",
   judul: "Angle as Rotation: sudut sebagai besar putaran",
-  sumber: "Metode luar; sudut sebagai putaran satu kaki",
+  sumber: "Metode luar: sudut sebagai putaran",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -69,7 +69,7 @@ const kecilJam = (id: string, cx: number, j: number, m: number): Obj[] => [
 export const ADEGAN_LUAR_ROT_TERAPAN: AdeganStory = {
   id: "luarb-rot-terapan",
   judul: "Angle as Rotation diterapkan pada jarum jam",
-  sumber: "Metode luar; penerapan pada jam analog Soal 2",
+  sumber: "Metode luar: penerapan pada jam analog",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -78,7 +78,7 @@ export const ADEGAN_LUAR_ROT_TERAPAN: AdeganStory = {
       tambah("Jarum", ...panelJam("r1", ...JAM_ROT[0])),
     ),
     k(
-      "Pukul dua, putarannya lebih jauh tetapi masih lancip. Inilah contoh dari buku pada soal dua.",
+      "Pukul dua, putarannya lebih jauh tetapi masih lancip. Inilah contoh pada latihan dua.",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Jarum jam berputar", 13, W.ungu)),
       tambah("Pukul", ...panelJam("r2", ...JAM_ROT[1])),
@@ -114,7 +114,7 @@ export const ADEGAN_LUAR_ROT_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_ORI: AdeganStory = {
   id: "luarb-ori",
   judul: "Orientation Invariance Test: posisi tidak mengubah jenis",
-  sumber: "Metode luar; uji kesamaan jenis saat sudut diputar",
+  sumber: "Metode luar: jenis sama saat sudut diputar",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -125,7 +125,7 @@ export const ADEGAN_LUAR_ORI: AdeganStory = {
       tambah("lebar", teks("ot", 150, 188, "jenis tetap: lancip", 10, W.hijau)),
     ),
     k(
-      "Caranya: putar kertas atau bukumu, lalu bandingkan lagi dengan pojok patokan. Kalau hasilnya sama di semua posisi, jenis sudutnya sudah pasti.",
+      "Caranya: putar kertasmu, lalu bandingkan lagi dengan pojok patokan. Kalau hasilnya sama di semua posisi, jenis sudutnya sudah pasti.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Putar lalu bandingkan", 12.5, W.ungu)),
       tambah("putar", ...sudut("c0", 38, 120, 0, 135, 36), ...sudut("c1", 112, 100, 90, 135, 36), ...sudut("c2", 190, 90, 200, 135, 36), ...sudut("c3", 262, 90, 300, 135, 36)),
@@ -171,8 +171,8 @@ const empatPosisi = (n: number, id: string): Obj[] =>
 
 export const ADEGAN_LUAR_ORI_TERAPAN: AdeganStory = {
   id: "luarb-ori-terapan",
-  judul: "Orientation Invariance Test diterapkan pada tiga benda soal satu",
-  sumber: "Metode luar; penerapan pada Soal 1 bagian c, d, dan f",
+  judul: "Orientation Invariance Test diterapkan pada tiga benda",
+  sumber: "Metode luar: penerapan pada tiga benda",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -210,7 +210,7 @@ export const ADEGAN_LUAR_ORI_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luarb-ringkas",
   judul: "Ringkasan empat metode luar untuk sudut",
-  sumber: "Ringkasan; empat metode luar Sub-Bab B",
+  sumber: "Ringkasan metode luar",
   latar: "#EEF2FF",
   ketukan: [
     k(
@@ -228,8 +228,8 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah(0, kartuMetode("r4", 156, 112, "#BFDBFE", ["Orientation", "Invariance Test"], "posisi tidak mengubah")),
     ),
     k(
-      "Ingat, metode ini melengkapi isi buku. Tetap bandingkan dengan pojok lipatan kertas sebelum menyimpulkan.",
-      tambah(0, teks("rk", 150, 196, "melengkapi isi buku", 10.4, W.hijau)),
+      "Ingat, metode ini melengkapi cara yang sudah kita pelajari. Tetap bandingkan dengan pojok lipatan kertas sebelum menyimpulkan.",
+      tambah(0, teks("rk", 150, 196, "melengkapi pelajaran kita", 10.4, W.hijau)),
       sorotkan(5, "r1-k", "r2-k", "r3-k", "r4-k"),
     ),
   ],

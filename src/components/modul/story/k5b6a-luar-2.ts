@@ -10,7 +10,7 @@ export const SUDUT_RUNCING = sudutDalam(BANGUN_LATIHAN[2], 0);
 export const ADEGAN_LUAR_DETEKTIF: AdeganStory = {
   id: "luar-detektif",
   judul: "Angle Detective: mencatat bukti seperti detektif",
-  sumber: "Metode luar · Angle Detective",
+  sumber: "Metode luar: Angle Detective",
   latar: "#FEFCE8",
   ketukan: [
     k(
@@ -30,24 +30,24 @@ export const ADEGAN_LUAR_DETEKTIF: AdeganStory = {
       tambah("Keempat,", ...kartu("t4", 14, 154, 272, 32, W.hijauMuda, ["4. Tulis kesimpulan: siku-siku atau bukan"], 8.8)),
     ),
     k(
-      "Bukti dicatat dalam tabel, seperti Tabel enam titik dua di buku: nomor, nama benda, lalu kolom ya atau tidak. Catatan yang rapi membuat kesimpulan bisa diperiksa orang lain.",
+      "Bukti dicatat dalam tabel, seperti tabel Detektif Sudut tadi: nomor, nama benda, lalu kolom ya atau tidak. Catatan yang rapi membuat kesimpulan bisa diperiksa orang lain.",
       bersih(0),
       tambah(0, judul("Catatan bukti")),
       tambah("tabel", ...tabel("ct", 14, 44, [34, 110, 76, 58], [["No.", "Benda", "Bukti", "Ya/Tidak"], ["1", "", "", ""], ["2", "", "", ""], ["…", "", "", ""]], 28, 8.8)),
       tambah("rapi", teks("rp", 150, 178, "catatan rapi, bisa diperiksa orang lain", 9, W.ungu)),
     ),
     k(
-      "Kelebihannya, hasil temuan tercatat dan bisa dibagikan ke kelompok lain. Detektif yang baik juga memeriksa dua kali, supaya yakin.",
+      "Kelebihannya, hasil pengamatan tercatat dan bisa dibagikan ke kelompok lain. Detektif yang baik juga memeriksa dua kali, supaya yakin.",
       bersih(0),
       tambah(0, judul("Kelebihan dan kebiasaan baik")),
-      tambah("Kelebihannya,", ...kartu("k1", 20, 44, 260, 40, W.hijauMuda, ["Kelebihan:", "temuan tercatat dan bisa dibagikan"], 9)),
+      tambah("Kelebihannya,", ...kartu("k1", 20, 44, 260, 40, W.hijauMuda, ["Kelebihan:", "hasil tercatat dan bisa dibagikan"], 9)),
       tambah("dua", ...kartu("k2", 20, 100, 260, 40, W.krem, ["Kebiasaan baik:", "periksa dua kali supaya yakin"], 9)),
       tambah("yakin.", emo("lp", 150, 178, "🔍", 26)),
     ),
   ],
 };
 
-/* ------------------------------ 2. Angle Detective: contoh dari buku ------------------------------ */
+/* ------------------------------ 2. Angle Detective: contoh bangun ------------------------------ */
 const KOLOM_DETEKTIF = [26, 110, 70, 74];
 const BARIS_DETEKTIF: [string, string, string][] = [
   ["Persegi panjang", "4", "Ya"],
@@ -61,26 +61,26 @@ const barisCatatan = (r: number): Obj[] => tabel(`d${r}`, 10, 34 + r * 19, KOLOM
 
 export const ADEGAN_LUAR_DETEKTIF_TERAPAN: AdeganStory = {
   id: "luar-detektif-terapan",
-  judul: "Angle Detective: catatan enam bangun dari buku",
-  sumber: "Metode luar · Angle Detective, contoh Ayo Berlatih nomor 1 sampai 6",
+  judul: "Angle Detective: catatan enam bangun",
+  sumber: "Metode luar: Angle Detective, enam bangun",
   latar: "#FFFBEB",
   ketukan: [
     k(
-      "Sekarang catatan detektif untuk enam bangun. Nomor satu, persegi panjang: empat pojok pas, jadi ya. Nomor dua, segi enam: dua pojok pas, jadi ya.",
+      "Sekarang catatan detektif untuk enam bangun. Bangun satu, persegi panjang: empat pojok pas, jadi ya. Bangun dua, segi enam: dua pojok pas, jadi ya.",
       tambah(0, judul("Catatan Detektif Sudut")),
       tambah(0, ...tabel("d0", 10, 34, KOLOM_DETEKTIF, [["No.", "Bangun", "Pojok pas", "Siku-siku?"]], 19, 8, W.krem)),
-      tambah("Nomor", barisCatatan(1)),
-      tambah("Nomor@2", barisCatatan(2)),
+      tambah("satu", barisCatatan(1)),
+      tambah("dua", barisCatatan(2)),
     ),
     k(
-      "Nomor tiga, belah ketupat, dan nomor empat, segitiga. Keduanya tidak punya pojok yang pas dengan patokan, jadi nol dan kesimpulannya tidak.",
-      tambah("Nomor", barisCatatan(3)),
-      tambah("nomor@2", barisCatatan(4)),
+      "Bangun tiga, belah ketupat, dan bangun empat, segitiga. Keduanya tidak punya pojok yang pas dengan patokan, jadi nol dan kesimpulannya tidak.",
+      tambah("Bangun", barisCatatan(3)),
+      tambah("bangun@2", barisCatatan(4)),
     ),
     k(
-      "Nomor lima, persegi yang miring, punya empat pojok pas. Nomor enam, segi empat, hanya dua pojok bawah yang pas. Keduanya ya.",
-      tambah("Nomor", barisCatatan(5)),
-      tambah("Nomor@2", barisCatatan(6)),
+      "Bangun lima, persegi yang miring, punya empat pojok pas. Bangun enam, segi empat, hanya dua pojok bawah yang pas. Keduanya ya.",
+      tambah("Bangun", barisCatatan(5)),
+      tambah("Bangun@2", barisCatatan(6)),
     ),
     k(
       "Jumlahnya, empat tambah dua tambah nol tambah nol tambah empat tambah dua, sama dengan dua belas sudut siku-siku di enam bangun.",
@@ -97,7 +97,7 @@ const empatBaji = (awal: string, x: number, y: number, r: number, op = 1): Obj[]
 export const ADEGAN_LUAR_PUTARAN: AdeganStory = {
   id: "luar-putaran",
   judul: "Quarter-Turn Test: seperempat putaran",
-  sumber: "Metode luar · Quarter-Turn Test",
+  sumber: "Metode luar: Quarter-Turn Test",
   latar: "#F0F9FF",
   ketukan: [
     k(
@@ -139,50 +139,50 @@ function bulat0(x: number, y: number, r: number): Obj {
   return { id: "kel", t: "bulat", x, y, r, warna: "none", garis: W.biru, tebal: 1.4, putus: true };
 }
 
-/* ------------------------------ 4. Quarter-Turn Test: contoh dari buku ------------------------------ */
+/* ------------------------------ 4. Quarter-Turn Test: contoh bangun ------------------------------ */
 const R1 = taruh(0, 1.2, 66, 100);
 const R3 = taruh(2, 1.1, 66, 100);
 const R5 = taruh(4, 1.0, 66, 100);
 
 export const ADEGAN_LUAR_PUTARAN_TERAPAN: AdeganStory = {
   id: "luar-putaran-terapan",
-  judul: "Quarter-Turn Test: contoh dari buku",
-  sumber: "Metode luar · Quarter-Turn Test, contoh Ayo Berlatih nomor 1, 3, 5",
+  judul: "Quarter-Turn Test: contoh bangun",
+  sumber: "Metode luar: Quarter-Turn, contoh bangun",
   latar: "#E0F2FE",
   ketukan: [
     k(
-      "Terapkan pada nomor satu, persegi panjang. Keempat pojoknya kita salin dan tempel mengelilingi satu titik. Hasilnya menutup satu putaran penuh, pas tanpa celah.",
-      tambah(0, judul("Nomor 1")),
+      "Terapkan pada bangun satu, persegi panjang. Keempat pojoknya kita salin dan tempel mengelilingi satu titik. Hasilnya menutup satu putaran penuh, pas tanpa celah.",
+      tambah(0, judul("Bangun 1")),
       tambah(0, poligon("bg1", 0, 0, R1, W.langit)),
       tambah("Keempat", ...[0, 1, 2, 3].map((i) => penandaSiku(`pk${i}`, R1, i, 9))),
       tambah("salin", ...empatBaji("wb", 214, 100, 48)),
       tambah("celah.", teks("pt", 214, 176, "4 pojok = 1 putaran", 9.6, W.hijau)),
     ),
     k(
-      "Sekarang nomor tiga, belah ketupat. Satu pojok runcingnya kita salin empat kali. Keempat salinan hanya mengisi sebagian putaran, masih ada celah. Jadi bukan siku-siku.",
+      "Sekarang bangun tiga, belah ketupat. Satu pojok runcingnya kita salin empat kali. Keempat salinan hanya mengisi sebagian putaran, masih ada celah. Jadi bukan siku-siku.",
       bersih(0),
-      tambah(0, judul("Nomor 3")),
+      tambah(0, judul("Bangun 3")),
       tambah(0, poligon("bg3", 0, 0, R3, W.krem)),
       tambah("salin", ...[0, 1, 2, 3].map((i) => baji(`wg${i}`, 214, 100, 48, i * SUDUT_RUNCING, (i + 1) * SUDUT_RUNCING, WARNA_PUTAR[i]))),
       tambah("celah.", teks("cl", 214, 176, "ada celah: bukan siku-siku", 9.4, W.merah)),
     ),
     k(
-      "Cara ini juga menjelaskan mengapa persegi yang miring tetap siku-siku. Memiringkan bangun tidak mengubah ukuran pojoknya, jadi empat pojoknya tetap menutup satu putaran.",
+      "Cara ini juga menjelaskan mengapa persegi yang miring tetap siku-siku. Memiringkan bangun tidak mengubah besar pojoknya, jadi empat pojoknya tetap menutup satu putaran.",
       bersih(0),
-      tambah(0, judul("Nomor 5")),
+      tambah(0, judul("Bangun 5")),
       tambah(0, poligon("bg5", 0, 0, R5, W.jingga)),
       tambah("miring", ...[0, 1, 2, 3].map((i) => penandaSiku(`pk${i}`, R5, i, 9))),
       tambah("menutup", ...empatBaji("wb", 214, 100, 48)),
       tambah("putaran.", teks("pt", 214, 176, "miring tidak mengubah pojok", 9.2, W.hijau)),
     ),
     k(
-      "Ringkasnya, nomor satu dan nomor lima lolos uji putaran, nomor tiga tidak. Hasilnya cocok dengan kunci: empat, empat, dan nol.",
+      "Ringkasnya, bangun satu dan bangun lima lolos uji putaran, bangun tiga tidak. Hasilnya cocok dengan hasil tadi: empat, empat, dan nol.",
       bersih(0),
       tambah(0, judul("Hasil uji putaran")),
-      tambah("satu", ...kartu("h1", 30, 44, 240, 34, W.hijauMuda, ["Nomor 1: lolos, 4 sudut siku-siku"], 9.4)),
-      tambah("lima", ...kartu("h5", 30, 90, 240, 34, W.hijauMuda, ["Nomor 5: lolos, 4 sudut siku-siku"], 9.4)),
-      tambah("tiga", ...kartu("h3", 30, 136, 240, 34, W.merahMuda, ["Nomor 3: tidak, 0 sudut siku-siku"], 9.4)),
-      sorotkan("kunci:", "h1-k", "h5-k", "h3-k"),
+      tambah("satu", ...kartu("h1", 30, 44, 240, 34, W.hijauMuda, ["Bangun 1: lolos, 4 sudut siku-siku"], 9.4)),
+      tambah("lima", ...kartu("h5", 30, 90, 240, 34, W.hijauMuda, ["Bangun 5: lolos, 4 sudut siku-siku"], 9.4)),
+      tambah("tiga", ...kartu("h3", 30, 136, 240, 34, W.merahMuda, ["Bangun 3: tidak, 0 sudut siku-siku"], 9.4)),
+      sorotkan("tadi:", "h1-k", "h5-k", "h3-k"),
     ),
   ],
 };
@@ -194,7 +194,7 @@ const barisRingkas = (r: number, a: string, b: string): Obj[] => tabel(`rk${r}`,
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan empat metode luar Subbab A",
-  sumber: "Ringkasan metode luar Subbab A",
+  sumber: "Ringkasan metode luar",
   latar: "#F5F3FF",
   ketukan: [
     k(
@@ -216,7 +216,7 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("catat", teks("p3", 150, 190, "banyak benda: catat bukti", 9, W.ungu)),
     ),
     k(
-      "Keempatnya memberi jawaban yang sama untuk Ayo Berlatih: empat, dua, nol, nol, empat, dan dua. Metode boleh berbeda, hasilnya harus sama.",
+      "Keempatnya memberi jawaban yang sama untuk Latihan satu: empat, dua, nol, nol, empat, dan dua. Metode boleh berbeda, hasilnya harus sama.",
       bersih(0),
       tambah(0, judul("Hasil yang sama")),
       tambah("Keempatnya", ...tabel("kn", 13, 56, [64, 36, 36, 36, 36, 36, 36], [["No.", "1", "2", "3", "4", "5", "6"], ["Siku-siku", "4", "2", "0", "0", "4", "2"]], 30, 10)),

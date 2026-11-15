@@ -6,7 +6,7 @@ import { bersih, k, sorotkan, tambah, ubah } from "./k5b6b-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luarb-pembuka",
   judul: "Empat metode luar untuk memahami sudut",
-  sumber: "Metode luar; empat cara memahami sudut",
+  sumber: "Metode luar: empat cara memahami sudut",
   latar: "#EEF2FF",
   ketukan: [
     k(
@@ -39,7 +39,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 export const ADEGAN_LUAR_VRM: AdeganStory = {
   id: "luarb-vrm",
   judul: "Vertex-Ray Model: satu titik sudut dan dua kaki",
-  sumber: "Metode luar; sudut sebagai titik sudut dan dua sinar",
+  sumber: "Metode luar: titik sudut dan dua kaki",
   latar: "#FFF4DD",
   ketukan: [
     k(
@@ -49,12 +49,12 @@ export const ADEGAN_LUAR_VRM: AdeganStory = {
       tambah("ray,@2", ...sudut("v", 70, 150, 8, 45, 150).slice(0, 3), teks("vr", 232, 152, "ray = kaki sudut", 8.6, W.ungu)),
     ),
     k(
-      "Cara memakainya, ajukan tiga pertanyaan. Satu, adakah satu titik tempat dua garis bertemu? Dua, adakah dua kaki yang keluar dari titik itu? Tiga, apakah pertemuannya runcing, bukan melengkung?",
+      "Cara memakainya, ajukan tiga pertanyaan. Satu, adakah satu titik tempat dua garis bertemu? Dua, adakah dua kaki yang keluar dari titik itu? Tiga, apakah pojoknya runcing, bukan melengkung?",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Tiga pertanyaan", 13, W.ungu)),
       tambah("Satu,", ...kartu("p1", 20, 38, 260, 32, W.hijauMuda, ["1. satu titik tempat dua garis bertemu?"], 8.8)),
       tambah("Dua,", ...kartu("p2", 20, 80, 260, 32, W.muda, ["2. dua kaki keluar dari titik itu?"], 8.8)),
-      tambah("Tiga,", ...kartu("p3", 20, 122, 260, 32, W.krem, ["3. pertemuan runcing, bukan melengkung?"], 8.8)),
+      tambah("Tiga,", ...kartu("p3", 20, 122, 260, 32, W.krem, ["3. pojoknya runcing, bukan melengkung?"], 8.8)),
     ),
     k(
       "Kalau ketiganya dijawab ya, bangun itu sudut. Kalau satu saja dijawab tidak, bangun itu bukan sudut.",
@@ -64,9 +64,9 @@ export const ADEGAN_LUAR_VRM: AdeganStory = {
       tambah("satu", ...kartu("y2", 156, 44, 128, 60, W.merahMuda, ["ada yang tidak", "bukan sudut"], 10), tanda("y2c", 220, 132, false, 28)),
     ),
     k(
-      "Model ini sejalan dengan pengertian buku: dua garis yang bertemu di satu titik. Titik itu titik sudut dan garisnya kaki sudut.",
+      "Model ini sejalan dengan pengertian sudut: dua garis yang bertemu di satu titik. Titik itu titik sudut dan garisnya kaki sudut.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Sejalan dengan buku", 13, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Sejalan dengan pengertian", 13, W.ungu)),
       tambah("pengertian", ...kartu("b1", 20, 40, 260, 40, W.krem, ["Sudut: daerah yang dibentuk dua garis", "yang bertemu di satu titik"], 8.4)),
       tambah("titik@3", ...sudut("bv", 70, 162, 15, 50, 80), teks("bvt", 60, 184, "titik sudut", 8.4, W.merah)),
       tambah("kaki", teks("bvk", 190, 160, "kaki sudut", 9, W.ungu)),
@@ -94,12 +94,12 @@ const jumlahV = (i: number): Obj => teks(`v${i}j`, 296, 52 + i * 34 + 18, `${BEN
 
 export const ADEGAN_LUAR_VRM_TERAPAN: AdeganStory = {
   id: "luarb-vrm-terapan",
-  judul: "Vertex-Ray Model diterapkan pada benda dari buku",
-  sumber: "Metode luar; penerapan pada Gambar 6.6 dan Soal 1",
+  judul: "Vertex-Ray Model diterapkan pada benda sekitar",
+  sumber: "Metode luar: penerapan Vertex-Ray Model",
   latar: "#FFF4DD",
   ketukan: [
     k(
-      "Terapkan pada pojok kotak pensil dari buku. Garis pojoknya melengkung, jadi tidak ada satu titik temu yang runcing. Hasilnya bukan sudut, sesuai pendapat Yohana.",
+      "Terapkan pada pojok kotak pensil tadi. Garis pojoknya melengkung, jadi tidak ada satu titik temu yang runcing. Hasilnya bukan sudut, sesuai pendapat Yohana.",
       tambah(0, teks("jud", 150, 22, "Terapan: pemeriksaan benda", 12, W.ungu)),
       tambah("Terapkan", teks("h0", KOL_V[0], 44, "titik temu?", 7, W.ungu), teks("h1", KOL_V[1], 44, "dua kaki?", 7, W.ungu), teks("h2", KOL_V[2], 44, "runcing?", 7, W.ungu)),
       tambah("kotak", ...barisV(0)),
@@ -107,7 +107,7 @@ export const ADEGAN_LUAR_VRM_TERAPAN: AdeganStory = {
       tambah("sudut,", jumlahV(0)),
     ),
     k(
-      "Sekarang jarum jam pukul delapan. Dua jarum bertemu di pusat jam, jadi ada satu titik temu, dua kaki, dan pertemuan yang runcing. Ketiganya ya.",
+      "Sekarang jarum jam pukul delapan. Dua jarum bertemu di pusat jam, jadi ada satu titik temu, dua kaki, dan titik temu yang runcing. Ketiganya ya.",
       tambah("jarum", ...barisV(1)),
       tambah("pusat", ...tandaV(1)),
       tambah("Ketiganya", jumlahV(1)),
@@ -129,7 +129,7 @@ export const ADEGAN_LUAR_VRM_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_ARO: AdeganStory = {
   id: "luarb-aro",
   judul: "Acute-Right-Obtuse Classification: satu patokan, tiga golongan",
-  sumber: "Metode luar; penggolongan sudut dengan patokan siku-siku",
+  sumber: "Metode luar: penggolongan dengan patokan",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -156,7 +156,7 @@ export const ADEGAN_LUAR_ARO: AdeganStory = {
       tambah("luar", teks("c3", 225, 154, "di luar pojok", 10, W.merah), teks("c3u", 225, 168, "tumpul", 9, W.merah)),
     ),
     k(
-      "Dengan satu patokan saja, kita bisa menggolongkan sudut apa pun tanpa menebak. Itu sebabnya buku memakai lipatan kertas.",
+      "Dengan satu patokan saja, kita bisa menggolongkan sudut apa pun tanpa menebak. Itu sebabnya kita memakai lipatan kertas.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Satu patokan", 13, W.ungu)),
       tambah("satu", ...kartu("o1", 100, 40, 100, 34, W.krem, ["1 patokan"], 11)),
@@ -178,13 +178,13 @@ const chip = (h: string): Obj[] => {
 
 export const ADEGAN_LUAR_ARO_TERAPAN: AdeganStory = {
   id: "luarb-aro-terapan",
-  judul: "Acute-Right-Obtuse Classification diterapkan pada soal satu",
-  sumber: "Metode luar; penerapan pada enam benda Soal 1",
+  judul: "Acute-Right-Obtuse Classification diterapkan pada enam benda",
+  sumber: "Metode luar: penerapan pada enam benda",
   latar: "#FDF2F8",
   ketukan: [
     k(
-      "Terapkan pada enam benda soal satu. Pertama, kaki sudut jatuh di luar pojok patokan: jam pukul delapan, tangga rumah, dan kipas dibuka. Ketiganya tumpul.",
-      tambah(0, teks("jud", 150, 22, "Terapan: enam benda soal 1", 12, W.ungu)),
+      "Terapkan pada enam benda latihan satu. Pertama, kaki sudut jatuh di luar pojok patokan: jam pukul delapan, tangga rumah, dan kipas dibuka. Ketiganya tumpul.",
+      tambah(0, teks("jud", 150, 22, "Terapan: enam benda latihan 1", 12, W.ungu)),
       tambah("Terapkan", ...kartu("hl", 8, 34, 92, 24, W.hijauMuda, ["lancip"], 9.4), ...kartu("hs", 104, 34, 92, 24, W.krem, ["siku-siku"], 9.4), ...kartu("ht", 200, 34, 92, 24, W.merahMuda, ["tumpul"], 9.4)),
       tambah("jam", chip("a")),
       tambah("tangga", chip("c")),
@@ -201,11 +201,11 @@ export const ADEGAN_LUAR_ARO_TERAPAN: AdeganStory = {
       sorotkan("Hanya", "chf-k"),
     ),
     k(
-      "Hitung hasilnya. Tiga tumpul ditambah dua lancip sama dengan lima, ditambah satu siku-siku sama dengan enam benda. Hasilnya sama dengan kunci buku.",
+      "Hitung hasilnya. Tiga tumpul ditambah dua lancip sama dengan lima, ditambah satu siku-siku sama dengan enam benda. Hasilnya sama dengan jawaban kita tadi.",
       ubah(0, { id: "chf-k", sorot: false }),
       tambah("tumpul", teks("s1", 150, 168, "3 + 2 = 5", 14, W.merah)),
       tambah("ditambah@2", teks("s2", 150, 188, "5 + 1 = 6", 14, W.merah)),
-      tambah("kunci", tanda("s3", 262, 188, true, 20)),
+      tambah("jawaban", tanda("s3", 262, 188, true, 20)),
     ),
   ],
 };

@@ -62,29 +62,29 @@ const kotakPensil = (): Obj[] => [
 export const ADEGAN_KOTAK_PENSIL: AdeganStory = {
   id: "kotak-pensil",
   judul: "Apakah pojok kotak pensil termasuk sudut?",
-  sumber: "Buku Siswa hlm. 170–171; Buku Panduan Guru hlm. 258",
+  sumber: "Materi: pojok kotak pensil",
   latar: "#FFF7ED",
   kutipan: ["Gambar 6.6 Kotak Pensil", "Pojok kotak pensil ini termasuk", "sudut bukan, ya?", "Apakah pojok kotak pensil seperti pada Gambar 6.6", "ayo kalian simak penjelasan tentang sudut", "Apakah pojokan tempat pensil seperti gambar"],
   ketukan: [
     k(
-      "Perhatikan Gambar 6.6, sebuah kotak pensil. Seorang anak berkata, eeem, pojok kotak pensil ini termasuk sudut bukan, ya?",
+      "Perhatikan kotak pensil ini. Seorang anak berkata, eeem, pojok kotak pensil ini termasuk sudut bukan, ya?",
       tambah(0, teks("jud", 150, 24, "Kotak pensil", 13, W.ungu)),
       tambah("kotak", kotakPensil()),
-      tambah("Gambar", teks("cap", 88, 176, "Gambar 6.6 Kotak Pensil", 8.4, W.biru)),
+      tambah("pensil", teks("cap", 88, 176, "sebuah kotak pensil", 8.4, W.biru)),
       tambah("anak", ide("an", 172, 52, 118, 56, "Seorang anak", ["Pojok kotak pensil ini", "termasuk sudut bukan, ya?"], W.krem, 7.4)),
     ),
     k(
-      "Guru menyajikannya sebagai masalah: apakah pojokan tempat pensil seperti gambar ini termasuk sudut? Kita belum memutuskan, jadi pahami dulu pengertian sudut.",
+      "Ini masalah kita hari ini: apakah pojokan tempat pensil seperti gambar ini termasuk sudut? Kita belum memutuskan, jadi pahami dulu pengertian sudut.",
       tambah("pojokan", bulat("lg", 29, 59, 15, "none", W.merah, { tebal: 2.4 })),
       tambah("termasuk", teks("tq", 232, 150, "sudut?", 24, W.merah)),
       tambah("memutuskan,", teks("tp", 232, 176, "belum diputuskan", 8.4, W.hijau)),
     ),
     k(
-      "Perhatikan pojoknya. Pojok kotak pensil ini membulat, bukan pertemuan dua garis yang runcing. Ingat pengamatan ini, kita periksa lagi sesudah mengenal pengertian sudut.",
+      "Perhatikan pojoknya. Pojok kotak pensil ini membulat, bukan titik temu dua garis yang runcing. Ingat pengamatan ini, kita periksa lagi sesudah mengenal pengertian sudut.",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Perhatikan pojoknya", 12.5, W.ungu)),
       tambah("membulat,", jalur("pb", 40, 150, "M0 0 L0 -70 Q0 -90 20 -90 L80 -90", "none", W.biru, { tebal: 3.5 })),
-      tambah("pertemuan", teks("pbt", 74, 172, "pojok membulat", 9, W.merah)),
+      tambah("temu", teks("pbt", 74, 172, "pojok membulat", 9, W.merah)),
       tambah("runcing.", jalur("pr", 180, 150, "M0 0 L0 -90 M0 0 L80 0", "none", W.biru, { tebal: 3.5 }), teks("prt", 210, 172, "pojok runcing", 9, W.hijau)),
     ),
   ],
@@ -95,20 +95,20 @@ const PS = { x: 70, y: 150 };
 export const ADEGAN_PENGERTIAN: AdeganStory = {
   id: "pengertian",
   judul: "Pengertian sudut, titik sudut, dan kaki sudut",
-  sumber: "Buku Siswa hlm. 171; Buku Panduan Guru hlm. 258",
+  sumber: "Materi: pengertian sudut",
   latar: "#EEF2FF",
   kutipan: ["Sudut adalah daerah yang dibentuk oleh dua buah garis", "yang bertemu di satu titik", "Titik tempat pertemuan dua garis", "tersebut dinamakan titik sudut", "Kaki Sudut", "Apakah kalian dapat menemukan kaki", "Bagian mana titik sudutnya", "Apa kriteria sudut"],
   ketukan: [
     k(
-      "Inilah pengertian sudut dari buku. Sudut adalah daerah yang dibentuk oleh dua buah garis yang bertemu di satu titik.",
+      "Inilah pengertian sudut. Sudut adalah daerah yang dibentuk oleh dua buah garis yang bertemu di satu titik.",
       tambah(0, teks("jud", 150, 24, "Pengertian sudut", 13, W.ungu)),
       tambah("daerah", sudut("ps", PS.x, PS.y, 0, 40, 170).slice(0, 1)),
       tambah("garis", sudut("ps", PS.x, PS.y, 0, 40, 170).slice(1, 3)),
       tambah("titik.", sudut("ps", PS.x, PS.y, 0, 40, 170).slice(3)),
     ),
     k(
-      "Titik tempat pertemuan dua garis tersebut dinamakan titik sudut.",
-      tambah("pertemuan", teks("lt", 56, 176, "Titik Sudut", 10, W.merah), garis("ltg", 56, 166, 10, -10, W.merah, 1.6)),
+      "Titik tempat dua garis bertemu tersebut dinamakan titik sudut.",
+      tambah("bertemu", teks("lt", 56, 176, "Titik Sudut", 10, W.merah), garis("ltg", 56, 166, 10, -10, W.merah, 1.6)),
       ubah("titik", { id: "ps-t", r: 5 }),
     ),
     k(
@@ -123,7 +123,7 @@ export const ADEGAN_PENGERTIAN: AdeganStory = {
       ubah("daerah", { id: "ps-d", warna: W.merah, op: 0.55 }),
     ),
     k(
-      "Panduan guru menyarankan tanya jawab. Apakah kalian dapat menemukan kaki sudutnya? Bagian mana titik sudutnya? Jadi, pojokan itu sudut atau bukan? Apa kriteria sudut?",
+      "Sekarang kita tanya jawab. Apakah kalian dapat menemukan kaki sudutnya? Bagian mana titik sudutnya? Jadi, pojokan itu sudut atau bukan? Apa kriteria sudut?",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Tanya jawab guru", 13, W.ungu)),
       tambah("kaki", kartu("t1", 24, 38, 252, 26, W.hijauMuda, ["Adakah kaki sudutnya?"], 9)),
@@ -138,21 +138,21 @@ export const ADEGAN_PENGERTIAN: AdeganStory = {
 export const ADEGAN_YOHANA: AdeganStory = {
   id: "yohana",
   judul: "Pendapat Yohana: pojok kotak pensil bukan sudut",
-  sumber: "Buku Siswa hlm. 171; Buku Panduan Guru hlm. 258, 260",
+  sumber: "Materi: pendapat Yohana",
   latar: "#FDF2F8",
   kutipan: ["Jadi, apakah", "pojok kotak pensil pada Gambar", "termasuk sudut?", "Menurutku bukan", "tersebut tidak memiliki titik sudut", "Apakah kalian setuju dengan pendapat Yohana", "kriteria sudut"],
   ketukan: [
     k(
       "Kembali ke kotak pensil. Seorang anak bertanya, jadi apakah pojok kotak pensil pada gambar tadi termasuk sudut?",
       tambah(0, teks("jud", 150, 24, "Pendapat Yohana", 13, W.ungu)),
-      tambah("anak", ide("an", 20, 40, 190, 46, "Seorang anak", ["Jadi, apakah pojok kotak pensil", "pada Gambar 6.6 termasuk sudut?"], W.krem, 8)),
+      tambah("anak", ide("an", 20, 40, 190, 46, "Seorang anak", ["Jadi, apakah pojok kotak pensil", "pada gambar tadi termasuk sudut?"], W.krem, 8)),
     ),
     k(
       "Yohana menjawab, menurutku bukan, karena pojok kotak pensil tersebut tidak memiliki titik sudut.",
       tambah("Yohana", ide("yo", 90, 98, 190, 46, "Yohana", ["Menurutku bukan. Karena pojok", "kotak pensil tidak memiliki titik sudut."], W.hijauMuda, 8)),
     ),
     k(
-      "Buku bertanya, apakah kalian setuju dengan pendapat Yohana? Mari kita periksa, sudut harus punya dua kaki yang bertemu di satu titik sudut.",
+      "Apakah kalian setuju dengan pendapat Yohana? Mari kita periksa, sudut harus punya dua kaki yang bertemu di satu titik sudut.",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Setujukah dengan Yohana?", 12, W.ungu)),
       tambah("periksa,", kartu("pk", 30, 44, 240, 30, W.krem, ["syarat sudut: dua kaki bertemu di satu titik"], 8.2)),
@@ -167,7 +167,7 @@ export const ADEGAN_YOHANA: AdeganStory = {
       tambah("setuju", tanda("kbc", 100, 176, false, 20), teks("kbt", 180, 120, "bukan sudut", 12, W.merah)),
     ),
     k(
-      "Kriteria sudut: ada dua kaki yang bertemu di satu titik sudut. Kalau tidak ada titik pertemuan seperti itu, pojokan benda belum tentu sudut.",
+      "Kriteria sudut: ada dua kaki yang bertemu di satu titik sudut. Kalau tidak ada titik temu seperti itu, pojokan benda belum tentu sudut.",
       bersih(0),
       tambah(0, teks("jud", 150, 24, "Kriteria sudut", 13, W.ungu)),
       tambah("ada", ...sudut("kr", 70, 130, 10, 55, 70), teks("kra", 70, 160, "sudut", 10, W.hijau), tanda("krc", 70, 182, true, 16)),

@@ -41,7 +41,7 @@ const LANGKAH = ["titik sudut dan satu kaki", "pasang busur di titik sudut", "ta
 export const ADEGAN_LUAR_PROTOKOL: AdeganStory = {
   id: "luard-protokol",
   judul: "Constructing Angles Protocol: langkah baku",
-  sumber: "Metode luar; protokol melukis sudut dan daftar periksa",
+  sumber: "Metode luar: protokol dan daftar periksa",
   latar: "#FFF4DD",
   ketukan: [
     k(
@@ -51,7 +51,7 @@ export const ADEGAN_LUAR_PROTOKOL: AdeganStory = {
       tambah("tetap,", teks("p2", 150, 140, "urutan tetap = sedikit salah", 9.6, W.merah)),
     ),
     k(
-      "Protokolnya lima langkah: titik sudut dan satu kaki, pasang busur, tandai angka, hubungkan, dan periksa. Kelima langkah ini sama dengan langkah di buku.",
+      "Protokolnya lima langkah: titik sudut dan satu kaki, pasang busur, tandai angka, hubungkan, dan periksa. Kelima langkah ini kita pakai setiap kali melukis sudut.",
       bersih(0),
       tambah(0, jud("Lima langkah baku", 20, 11)),
       tambah("titik", baris("pl0", 30, 34, 240, `1. ${LANGKAH[0]}`, W.krem, 8.4, 22)),
@@ -85,24 +85,24 @@ const T52 = ujung(V1.x, V1.y, 52, V1.r - 2);
 export const ADEGAN_LUAR_PROTOKOL_TERAPAN: AdeganStory = {
   id: "luard-protokol-terapan",
   judul: "Constructing Angles Protocol: melukis sudut 52 derajat",
-  sumber: "Metode luar; penerapan pada Ayo Berlatih 1d",
+  sumber: "Metode luar: protokol pada sudut 52 derajat",
   latar: "#FFF4DD",
   ketukan: [
     k(
-      "Terapkan protokol pada gambar d, sudut 52 derajat. Langkah satu: titik sudut dan kaki sudut sudah ada. Putar bukumu sampai kaki mendatar agar busur mudah dipasang.",
+      "Terapkan protokol pada sudut lima puluh dua derajat. Langkah satu: titik sudut dan kaki sudut sudah ada. Putar kertasmu sampai kaki mendatar agar busur mudah dipasang.",
       tambah(0, jud("Protokol: sudut 52°", 20, 11)),
       tambah("titik", titikSudut("v", V1.x, V1.y, W.biru, 3.2, { z: 5 })),
       tambah("kaki", sinar("r1", V1.x, V1.y, 0, V1.r, W.biru, 2.4, { z: 5, gambar: true })),
-      tambah("Putar", kartu("pt", 190, 60, 100, 40, W.krem, ["putar buku", "sampai kaki mendatar"], 7.6)),
+      tambah("Putar", kartu("pt", 190, 60, 100, 40, W.krem, ["putar kertas", "sampai kaki mendatar"], 7.6)),
     ),
     k(
-      "Langkah dua dan tiga: pusat busur di titik sudut, dasar di kaki, lalu tandai angka 52 pada skala yang dimulai dari nol di kaki.",
+      "Langkah dua dan tiga: pusat busur di titik sudut, dasar di kaki, lalu tandai angka lima puluh dua pada skala yang dimulai dari nol di kaki.",
       hapus(0, "pt-k", "pt-t0", "pt-t1"),
       tambah("pusat", busur1()),
       tambah("tandai", bulat("td", T52[0], T52[1], 3.4, W.merah, undefined, { z: 7 }), teks("t52", T52[0] + 14, T52[1] - 4, "52", 9, W.merah, { z: 7 })),
     ),
     k(
-      "Langkah empat: angkat busur dan hubungkan titik sudut dengan tanda tadi. Langkah lima: periksa, hasilnya 52 derajat, sudut lancip.",
+      "Langkah empat: angkat busur dan hubungkan titik sudut dengan tanda tadi. Langkah lima: periksa, hasilnya lima puluh dua derajat, sudut lancip.",
       hapus(0, ids(busur1()), "t52"),
       tambah("hubungkan", sinar("r2", V1.x, V1.y, 52, V1.r, W.biru, 2.4, { z: 5, gambar: true }), busurSudut("ar", V1.x, V1.y, 0, 52, 22, W.merah, 1.8, { z: 6 })),
       tambah("periksa,", teks("rL", 130, 138, "52°", 10, W.merah), kartu("jn", 200, 130, 88, 30, W.hijauMuda, ["sudut lancip"], 8.6)),
@@ -122,11 +122,11 @@ export const ADEGAN_LUAR_PROTOKOL_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_BUSUR: AdeganStory = {
   id: "luard-busur",
   judul: "Protractor Construction: membaca busur derajat",
-  sumber: "Metode luar; melukis dengan busur derajat",
+  sumber: "Metode luar: membaca busur derajat",
   latar: "#FDF2F8",
   ketukan: [
     k(
-      "Protractor Construction artinya melukis dengan busur derajat sebagai alat pemetaan: setiap arah dari kaki sudut diberi satu angka dari nol sampai 180.",
+      "Protractor Construction artinya melukis dengan busur derajat sebagai alat pemetaan: setiap arah dari kaki sudut diberi satu angka dari nol sampai seratus delapan puluh.",
       tambah(0, jud("Protractor Construction", 20, 11)),
       tambah("busur", busurDerajat("bq", 150, 150, 100, "kanan", false, { z: 1 })),
     ),
@@ -138,7 +138,7 @@ export const ADEGAN_LUAR_BUSUR: AdeganStory = {
       tambah("kiri", teks("q2", 150, 188, "nol di kiri: deret dalam", 8.6, W.merah)),
     ),
     k(
-      "Dasar busur tidak harus mendatar; yang penting berimpit dengan kaki sudut. Putar busur atau bukumu sampai dasar menempel pada kaki.",
+      "Dasar busur tidak harus mendatar; yang penting berimpit dengan kaki sudut. Putar busur atau kertasmu sampai dasar menempel pada kaki.",
       hapus(0, ids(busurDerajat("bq", 150, 150, 100, "kanan", true)), "q1", "q2"),
       tambah("mendatar;", baris("dk", 50, 60, 200, "dasar busur = kaki sudut", W.hijauMuda, 9.2, 26)),
       tambah("Putar", emo("pb", 100, 130, "📐", 40), emo("pb2", 200, 130, "🔄", 28)),
@@ -162,11 +162,11 @@ const T110 = ujung(V2.x, V2.y, 70, V2.r - 2);
 export const ADEGAN_LUAR_BUSUR_TERAPAN: AdeganStory = {
   id: "luard-busur-terapan",
   judul: "Protractor Construction: sudut 110 derajat dengan kaki ke kiri",
-  sumber: "Metode luar; penerapan pada Ayo Berlatih 1c",
+  sumber: "Metode luar: sudut 110 derajat dari kiri",
   latar: "#FDF2F8",
   ketukan: [
     k(
-      "Terapkan pada gambar c, sudut 110 derajat. Titik sudut ada di ujung kanan dan kaki sudut mengarah ke kiri.",
+      "Terapkan pada sudut seratus sepuluh derajat. Titik sudut ada di ujung kanan dan kaki sudut mengarah ke kiri.",
       tambah(0, jud("Busur: sudut 110°", 20, 11)),
       tambah("Titik", titikSudut("v", V2.x, V2.y, W.biru, 3.2, { z: 5 })),
       tambah("kaki", sinar("r1", V2.x, V2.y, 180, V2.r, W.biru, 2.4, { z: 5, gambar: true })),
@@ -177,12 +177,12 @@ export const ADEGAN_LUAR_BUSUR_TERAPAN: AdeganStory = {
       tambah("nol", teks("n0", 150, 190, "nol di kiri → deret dari kiri", 8.6, W.merah)),
     ),
     k(
-      "Tandai angka 110, sedikit melewati angka 90, lalu hubungkan dengan titik sudut.",
+      "Tandai angka seratus sepuluh, sedikit melewati angka sembilan puluh, lalu hubungkan dengan titik sudut.",
       tambah("Tandai", bulat("td", T110[0], T110[1], 3.4, W.merah, undefined, { z: 7 }), teks("t110", T110[0] - 4, T110[1] - 8, "110", 8.6, W.merah, { z: 7 })),
       tambah("hubungkan", sinar("r2", V2.x, V2.y, 70, V2.r, W.biru, 2.4, { z: 5, gambar: true })),
     ),
     k(
-      "Hasilnya sudut 110 derajat, sudut tumpul. Seandainya deret yang salah dipakai, hasilnya 70 derajat, sudut lancip.",
+      "Hasilnya sudut seratus sepuluh derajat, sudut tumpul. Seandainya deret yang salah dipakai, hasilnya tujuh puluh derajat, sudut lancip.",
       hapus(0, ids(busur2()), "n0", "t110"),
       tambah("Hasilnya", busurSudut("ar", V2.x, V2.y, 70, 180, 22, W.merah, 1.8, { z: 6 }), teks("rL", 188, 118, "110°", 10, W.merah)),
       tambah("salah", sinar("w2", V2.x, V2.y, 110, V2.r, W.abu, 1.8, { z: 4, putus: true }), teks("wL", 170, 100, "70° ✗", 8.6, W.abu)),

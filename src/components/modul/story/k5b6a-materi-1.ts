@@ -116,7 +116,7 @@ const sudutL = (id: string, x: number, y: number, dx: number, dy: number): Obj[]
 export const ADEGAN_SEKITAR: AdeganStory = {
   id: "sekitar-kita",
   judul: "Sudut di sekitar kita",
-  sumber: "Buku Siswa hlm. 164–165",
+  sumber: "Materi: sudut di sekitar kita",
   latar: "#ECFEFF",
   kutipan: [
     "Sudut di Sekitar Kita",
@@ -129,16 +129,16 @@ export const ADEGAN_SEKITAR: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Sekarang bagian Sudut di Sekitar Kita. Kalian mungkin sering mengatakan pojokan permukaan meja atau pojokan buku.",
+      "Sekarang kita mulai dengan sudut di sekitar kita. Kalian mungkin sering mengatakan pojokan permukaan meja atau pojokan papan tulis.",
       tambah(0, judul("Sudut di Sekitar Kita")),
       tambah("pojokan", kotak("mj", 24, 56, 124, 76, W.kayu, W.coklat, { rx: 2, tebal: 2 }), teks("mjt", 86, 152, "permukaan meja", 9, W.coklat)),
       tambah("meja", bulat("mp", 24, 56, 5, W.merah, W.merah)),
-      tambah("pojokan@2", kotak("bk", 188, 62, 84, 64, W.langit, W.biru, { rx: 2, tebal: 2 }), teks("bkt", 230, 152, "buku", 9, W.biru)),
-      tambah("buku.", bulat("bp", 188, 62, 5, W.merah, W.merah)),
+      tambah("pojokan@2", kotak("bk", 188, 62, 84, 64, W.langit, W.biru, { rx: 2, tebal: 2 }), teks("bkt", 230, 152, "papan tulis", 9, W.biru)),
+      tambah("tulis.", bulat("bp", 188, 62, 5, W.merah, W.merah)),
     ),
     k(
-      "Gambar enam titik satu di buku memperlihatkan sebuah meja dan setumpuk buku. Pojokan keduanya adalah contoh sudut dalam kehidupan sehari-hari.",
-      tambah(0, teks("gb", 150, 176, "Gambar 6.1", 8.4, W.ungu)),
+      "Perhatikan meja dan papan tulis ini. Pojokan keduanya adalah contoh sudut dalam kehidupan sehari-hari. Ternyata, sudut ada di mana-mana.",
+      tambah(0, teks("gb", 150, 176, "meja dan papan tulis", 8.4, W.ungu)),
       tambah("Pojokan", ...sudutL("m", 24, 56, 30, 24)),
       tambah("contoh", ...sudutL("n", 188, 62, 30, 24), teks("cs", 150, 194, "contoh sudut dalam kehidupan sehari-hari", 8.4, W.hijau)),
     ),

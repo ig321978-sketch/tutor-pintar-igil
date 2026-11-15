@@ -104,7 +104,7 @@ const bd = (dua = false) => busurDerajat("bd", VX, VY, R, "kanan", dua, { z: 1 }
 export const ADEGAN_KIPAS_LANGKAH: AdeganStory = {
   id: "kipas-langkah",
   judul: "Ayo Menyimak: kipas Lukas dan langkah satu sampai dua",
-  sumber: "Buku Siswa hlm. 183; Buku Panduan Guru hlm. 270",
+  sumber: "Materi: kipas Lukas, langkah satu dan dua",
   latar: "#F0FDF4",
   kutipan: ["Halo Lukas, kamu sedang apa?", "Aku sedang membuat gambar kipas untuk tugas prakarya", "membentuk sudut dengan ukuran", "Buat titik sudut dan satu kaki sudut", "Letakkan pusat busur derajat pada titik sudut", "Pastikan dasar busur derajat berimpit dengan kaki sudut", "Ayo Menyimak", "Ayo, kita bantu Lukas dan teman-temannya"],
   ketukan: [
@@ -116,15 +116,15 @@ export const ADEGAN_KIPAS_LANGKAH: AdeganStory = {
       tambah("prakarya.", emo("ke", 40, 150, "🎨", 30)),
     ),
     k(
-      "Kipas Lukas harus membentuk sudut 150 derajat. Bagaimana caranya? Teman-temannya mengajak membuka buku dan mempelajari langkah melukis sudut bersama.",
+      "Kipas Lukas harus membentuk sudut seratus lima puluh derajat. Bagaimana caranya? Mari kita pelajari bersama langkah-langkah melukis sudut dengan busur derajat.",
       bersih(0),
       tambah(0, jud("Kipas harus membentuk sudut 150°", 20, 11)),
-      tambah("150", juring("kj", 100, 168, 15, 165, 80, W.krem, W.biru), sudut("kp", 100, 168, 15, 165, 80, 22)),
+      tambah("seratus", juring("kj", 100, 168, 15, 165, 80, W.krem, W.biru), sudut("kp", 100, 168, 15, 165, 80, 22)),
       tambah("derajat.", teks("kpL", 100, 128, "150°", 12, W.merah)),
       tambah("caranya?", teks("kc", 235, 100, "Bagaimana caranya?", 9, W.ungu, { op: 1 })),
     ),
     k(
-      "Langkah satu: buat titik sudut dan satu kaki sudut. Kaki sudut boleh mendatar ke kanan atau ke kiri, seperti dua gambar di buku.",
+      "Langkah satu: buat titik sudut dan satu kaki sudut. Kaki sudut boleh mendatar ke kanan atau ke kiri, sama saja.",
       bersih(0),
       tambah(0, jud("Langkah 1: titik sudut dan satu kaki")),
       tambah("titik", titikSudut("v", VX, VY, W.biru, 3.2, { z: 5 }), teks("vt", VX, VY + 16, "titik sudut", 8, W.ungu)),
@@ -160,12 +160,12 @@ const kipasRusuk = [15, 52.5, 90, 127.5, 165];
 export const ADEGAN_KIPAS_LANGKAH2: AdeganStory = {
   id: "kipas-langkah2",
   judul: "Ayo Menyimak: langkah tiga sampai lima, sudut 150 derajat",
-  sumber: "Buku Siswa hlm. 184; Buku Panduan Guru hlm. 271",
+  sumber: "Materi: kipas Lukas, langkah tiga sampai lima",
   latar: "#FFFBEB",
   kutipan: ["Misalkan kita akan membuat sudut", "Buat titik pada", "di busur derajat", "kaki sudut yang berimpit dengan dasar busur derajat selalu menunjukkan 0", "Jangan sampai salah membaca skala pada busur derajat", "Angkat busur derajat, lalu hubungkan titik sudut", "dengan sebuah garis lurus", "Kalian dapat memastikan ukuran sudut yang sudah kalian buat", "Terima kasih, teman-teman", "Sekarang aku bisa membuat gambar kipas yang aku mau"],
   ketukan: [
     k(
-      "Langkah tiga: karena kita ingin sudut 150 derajat, buat sebuah titik pada angka 150 di busur derajat.",
+      "Langkah tiga: karena kita ingin sudut seratus lima puluh derajat, buat sebuah titik pada angka seratus lima puluh di busur derajat.",
       tambah(0, jud("Langkah 3: titik pada angka 150")),
       tambah(0, titikSudut("v", VX, VY, W.biru, 3.2, { z: 5 }), sinar("r1", VX, VY, 0, R, W.biru, 2.4, { z: 5 })),
       tambah("karena", bdKipas()),
@@ -193,13 +193,13 @@ export const ADEGAN_KIPAS_LANGKAH2: AdeganStory = {
       tambah("garis", busurSudut("ar", VX, VY, 0, 150, 20, W.merah, 1.8, { z: 6 })),
     ),
     k(
-      "Hasilnya sudut 150 derajat, sebuah sudut tumpul yang lebar, karena lebih besar dari sudut siku-siku.",
+      "Hasilnya sudut seratus lima puluh derajat, sebuah sudut tumpul yang lebar, karena lebih besar dari sudut siku-siku.",
       tambah("Hasilnya", teks("rL", 123, 118, "150°", 10, W.merah)),
       tambah("tumpul", kartu("tp", 205, 48, 80, 30, W.merahMuda, ["sudut tumpul"], 8.6)),
       tambah("siku-siku.", garis("sk", VX, VY, 0, -62, W.abu, 1.4, { putus: true, z: 3 }), teks("skt", VX + 4, VY - 66, "90°", 7.6, W.abu, { anchor: "start" })),
     ),
     k(
-      "Langkah lima: pastikan ukurannya dengan mengukur sudut itu lagi memakai busur derajat. Garis kaki kedua harus tepat di angka 150.",
+      "Langkah lima: pastikan ukurannya dengan mengukur sudut itu lagi memakai busur derajat. Garis kaki kedua harus tepat di angka seratus lima puluh.",
       ubah(0, { id: "jud", isi: "Langkah 5: periksa dengan busur" }),
       tambah("mengukur", bdKipas()),
       tambah("tepat", baris("ck", 196, 84, 98, "✓ tepat di 150", W.hijauMuda, 7.6)),

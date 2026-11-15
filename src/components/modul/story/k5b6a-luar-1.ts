@@ -34,7 +34,7 @@ const WARNA4 = [W.hijauMuda, W.langit, W.krem, W.pink];
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Metode luar Subbab A: empat cara dan contoh bersama",
-  sumber: "Metode luar · pembuka dan contoh bersama dari Buku Siswa hlm. 169",
+  sumber: "Metode luar: pembuka dan contoh bersama",
   latar: "#F5F3FF",
   ketukan: [
     k(
@@ -44,17 +44,17 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("Subbab", teks("sa", 150, 160, "empat cara mengenali sudut siku-siku", 9.4, W.ungu)),
     ),
     k(
-      "Semua contoh memakai enam bangun dari Ayo Berlatih di Buku Siswa halaman seratus enam puluh sembilan.",
+      "Semua contoh memakai enam bangun yang tadi kita kerjakan pada Latihan satu. Jadi kita bisa membandingkan hasilnya.",
       bersih(0),
-      tambah(0, judul("Enam bangun dari buku")),
+      tambah(0, judul("Enam bangun dari Latihan 1")),
       tambah("enam", ...[0, 1, 2, 3, 4, 5].flatMap((i) => [bangun(i), ...lencana(i)])),
     ),
     k(
-      "Untuk setiap metode, pertanyaannya sama: berapa sudut siku-siku pada tiap bangun? Metode boleh berbeda, tetapi kuncinya harus sama, yaitu empat, dua, nol, nol, empat, dan dua.",
+      "Untuk setiap metode, pertanyaannya sama: berapa sudut siku-siku pada tiap bangun? Metode boleh berbeda, tetapi hasilnya harus sama, yaitu empat, dua, nol, nol, empat, dan dua.",
       bersih(0),
       tambah(0, judul("Satu pertanyaan, empat cara")),
       tambah("pertanyaannya", ...kartu("pq", 20, 40, 260, 36, W.krem, ["Berapa sudut siku-siku pada tiap bangun?"], 9.6)),
-      tambah("kuncinya", ...tabel("kj", 13, 100, [64, 36, 36, 36, 36, 36, 36], [["No.", "1", "2", "3", "4", "5", "6"], ["Kunci", "4", "2", "0", "0", "4", "2"]], 30, 10)),
+      tambah("hasilnya", ...tabel("kj", 13, 100, [64, 36, 36, 36, 36, 36, 36], [["No.", "1", "2", "3", "4", "5", "6"], ["Hasil", "4", "2", "0", "0", "4", "2"]], 30, 10)),
     ),
     k(
       "Jadi, kita tidak menebak. Setiap metode harus bisa menunjukkan alasannya, lewat patokan, lipatan, catatan, atau putaran. Mari kita mulai dari metode pertama.",
@@ -74,7 +74,7 @@ const POJOK_CELAH: Titik[] = geser([[0, 0], [80, 0], [-26, -56]], 170, 150);
 export const ADEGAN_LUAR_BENCHMARK: AdeganStory = {
   id: "luar-benchmark",
   judul: "Right Angle Benchmark: patokan sudut siku-siku",
-  sumber: "Metode luar · Right Angle Benchmark",
+  sumber: "Metode luar: Right Angle Benchmark",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -112,7 +112,7 @@ export const ADEGAN_LUAR_BENCHMARK: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 3. Right Angle Benchmark: contoh dari buku ------------------------------ */
+/* ------------------------------ 3. Right Angle Benchmark: contoh bangun ------------------------------ */
 const BINGKAI_PENGGARIS = patokanDi(POJOK_BINGKAI, 3, 50, 40);
 const B2 = taruh(1, 2.2, 150, 100);
 const B3 = taruh(2, 2, 150, 100);
@@ -120,39 +120,39 @@ const B5 = taruh(4, 1.8, 150, 98);
 
 export const ADEGAN_LUAR_BENCHMARK_TERAPAN: AdeganStory = {
   id: "luar-benchmark-terapan",
-  judul: "Right Angle Benchmark: contoh dari buku",
-  sumber: "Metode luar · Right Angle Benchmark, contoh bingkai dan Ayo Berlatih nomor 2, 3, 5",
+  judul: "Right Angle Benchmark: contoh bangun",
+  sumber: "Metode luar: Right Angle, contoh bangun",
   latar: "#ECFDF5",
   ketukan: [
     k(
-      "Kita terapkan pada bingkai di buku. Patokan kita ambil dari penggaris siku-siku. Pojok kiri bawah bingkai: sisi kiri dan sisi bawah sama-sama pas, jadi siku-siku.",
+      "Kita terapkan pada bingkai tadi. Patokan kita ambil dari penggaris siku-siku. Pojok kiri bawah bingkai: sisi kiri dan sisi bawah sama-sama pas, jadi siku-siku.",
       tambah(0, judul("Patokan di pojok bingkai")),
       tambah(0, ...bingkai("bf", 80, 50, 140, 100)),
       tambah("penggaris", poligon("pkP2", 0, 0, BINGKAI_PENGGARIS, W.jingga, W.coklat, { op: 0.8 })),
       tambah("pas,", penandaSiku("bm", POJOK_BINGKAI, 3, 12), teks("ok", 150, 178, "pas: siku-siku", 9.8, W.hijau)),
     ),
     k(
-      "Sekarang nomor dua. Di pojok kiri bawah patokan pas, jadi siku-siku. Di pojok kiri atas sisinya miring, ada celah, jadi bukan siku-siku.",
+      "Sekarang bangun dua. Di pojok kiri bawah patokan pas, jadi siku-siku. Di pojok kiri atas sisinya miring, ada celah, jadi bukan siku-siku.",
       bersih(0),
-      tambah(0, judul("Nomor 2")),
+      tambah(0, judul("Bangun 2")),
       tambah(0, poligon("bg2", 0, 0, B2, W.hijauMuda)),
       tambah("bawah", poligon("pkP3", 0, 0, patokanDi(B2, 5, 38, 38), W.jingga, W.coklat, { op: 0.75 }), penandaSiku("bm2", B2, 5, 11)),
       tambah("atas", poligon("pkG3", 0, 0, patokanDi(B2, 0, 38, 38), W.jingga, W.coklat, { op: 0.75 }), teks("cl", 56, 80, "celah", 9, W.merah)),
       tambah("bukan", teks("ts", 150, 176, "dua pojok bawah pas: 2", 9.6, W.hijau)),
     ),
     k(
-      "Nomor tiga, belah ketupat. Patokan diletakkan di pojok mana pun, selalu ada celah. Jadi tidak ada sudut siku-siku.",
+      "Bangun tiga, belah ketupat. Patokan diletakkan di pojok mana pun, selalu ada celah. Jadi tidak ada sudut siku-siku.",
       bersih(0),
-      tambah(0, judul("Nomor 3")),
+      tambah(0, judul("Bangun 3")),
       tambah(0, poligon("bg3", 0, 0, B3, W.krem)),
       tambah("Patokan", poligon("pkG4", 0, 0, patokanDi(B3, 0, 36, 32), W.jingga, W.coklat, { op: 0.75 })),
       tambah("selalu", silangDi("x30", B3, 0), silangDi("x31", B3, 1), silangDi("x32", B3, 2), silangDi("x33", B3, 3)),
       tambah("tidak", teks("nl", 150, 186, "0 sudut siku-siku", 9.6, W.merah)),
     ),
     k(
-      "Nomor lima, persegi yang miring. Patokan ikut diputar mengikuti pojoknya. Di setiap pojok sisinya pas, jadi ada empat sudut siku-siku.",
+      "Bangun lima, persegi yang miring. Patokan ikut diputar mengikuti pojoknya. Di setiap pojok sisinya pas, jadi ada empat sudut siku-siku.",
       bersih(0),
-      tambah(0, judul("Nomor 5")),
+      tambah(0, judul("Bangun 5")),
       tambah(0, poligon("bg5", 0, 0, B5, W.jingga)),
       tambah("Patokan", poligon("pkP5", 0, 0, patokanDi(B5, 0, 34, 34), W.hijauMuda, W.coklat, { op: 0.8 })),
       tambah("setiap", penandaSiku("bm50", B5, 0, 10), penandaSiku("bm51", B5, 1, 10)),
@@ -168,7 +168,7 @@ const LIPAT_AKHIR: Titik[] = [[0, 0], [78, 0], [82, -30], [68, -58], [0, -66]];
 export const ADEGAN_LUAR_LIPAT: AdeganStory = {
   id: "luar-lipat",
   judul: "Paper Fold Benchmark: patokan dari kertas lipat",
-  sumber: "Metode luar · Paper Fold Benchmark",
+  sumber: "Metode luar: Paper Fold Benchmark",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -205,7 +205,7 @@ export const ADEGAN_LUAR_LIPAT: AdeganStory = {
   ],
 };
 
-/* ------------------------------ 5. Paper Fold Benchmark: contoh dari buku ------------------------------ */
+/* ------------------------------ 5. Paper Fold Benchmark: contoh bangun ------------------------------ */
 const L5 = taruh(4, 1.8, 150, 100);
 const L6 = taruh(5, 2.2, 150, 100);
 const L3 = taruh(2, 2, 150, 100);
@@ -213,13 +213,13 @@ const kertasDi = (id: string, p: Titik[], vi: number): Obj => poligon(id, 0, 0, 
 
 export const ADEGAN_LUAR_LIPAT_TERAPAN: AdeganStory = {
   id: "luar-lipat-terapan",
-  judul: "Paper Fold Benchmark: contoh dari buku",
-  sumber: "Metode luar · Paper Fold Benchmark, contoh Ayo Berlatih nomor 5, 6, 3",
+  judul: "Paper Fold Benchmark: contoh bangun",
+  sumber: "Metode luar: Paper Fold, contoh bangun",
   latar: "#E0F2FE",
   ketukan: [
     k(
-      "Terapkan pada nomor lima, persegi yang miring. Lipatan kertas kita tempelkan di pojok pertama. Kedua sisinya berimpit, jadi pojok itu siku-siku.",
-      tambah(0, judul("Nomor 5 dengan kertas lipat")),
+      "Terapkan pada bangun lima, persegi yang miring. Lipatan kertas kita tempelkan di pojok pertama. Kedua sisinya berimpit, jadi pojok itu siku-siku.",
+      tambah(0, judul("Bangun 5 dengan kertas lipat")),
       tambah(0, poligon("bg5", 0, 0, L5, W.jingga)),
       tambah("tempelkan", kertasDi("pkP6", L5, 0)),
       tambah("berimpit,", penandaSiku("bm60", L5, 0, 10)),
@@ -231,18 +231,18 @@ export const ADEGAN_LUAR_LIPAT_TERAPAN: AdeganStory = {
       tambah("empat@2", teks("em", 150, 190, "4 sudut siku-siku", 9.6, W.hijau)),
     ),
     k(
-      "Nomor enam. Kertas pas di dua pojok bawah. Di pojok kiri atas kertas tidak pas, ada celah di bawah sisi miring. Jadi dua sudut siku-siku.",
+      "Bangun enam. Kertas pas di dua pojok bawah. Di pojok kiri atas kertas tidak pas, ada celah di bawah sisi miring. Jadi dua sudut siku-siku.",
       bersih(0),
-      tambah(0, judul("Nomor 6 dengan kertas lipat")),
+      tambah(0, judul("Bangun 6 dengan kertas lipat")),
       tambah(0, poligon("bg6", 0, 0, L6, W.merahMuda)),
       tambah("bawah.", kertasDi("pkP10", L6, 3), penandaSiku("bm64", L6, 3, 10), kertasDi("pkP11", L6, 2), penandaSiku("bm65", L6, 2, 10)),
       tambah("atas", kertasDi("pkG6", L6, 0), teks("cl", 62, 92, "celah", 9, W.merah)),
       tambah("Jadi", teks("dd", 150, 190, "2 sudut siku-siku", 9.6, W.hijau)),
     ),
     k(
-      "Pada nomor tiga, belah ketupat, kertas lipat di pojok mana pun selalu menyisakan celah. Hasilnya nol, sama dengan kunci buku.",
+      "Pada bangun tiga, belah ketupat, kertas lipat di pojok mana pun selalu menyisakan celah. Hasilnya nol, sama dengan hasil kita tadi.",
       bersih(0),
-      tambah(0, judul("Nomor 3 dengan kertas lipat")),
+      tambah(0, judul("Bangun 3 dengan kertas lipat")),
       tambah(0, poligon("bg3", 0, 0, L3, W.krem)),
       tambah("pojok", kertasDi("pkG7", L3, 1)),
       tambah("celah.", silangDi("x30", L3, 0), silangDi("x31", L3, 1), silangDi("x32", L3, 2), silangDi("x33", L3, 3)),

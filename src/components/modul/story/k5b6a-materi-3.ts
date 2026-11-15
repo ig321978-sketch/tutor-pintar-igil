@@ -35,8 +35,8 @@ const redupBawah = [4, 5, 6].flatMap((n) => [`bg${n}`, `nb${n}`, `nbt${n}`]);
 /* ------------------------------ 1. Ayo Berlatih nomor 1 sampai 3 (hlm. 169; Panduan Guru hlm. 256) ------------------------------ */
 export const ADEGAN_LATIHAN_1: AdeganStory = {
   id: "latihan-1",
-  judul: "Ayo Berlatih: nomor 1 sampai 3",
-  sumber: "Buku Siswa hlm. 169; Panduan Guru hlm. 256",
+  judul: "Latihan 1: bangun satu sampai tiga",
+  sumber: "Materi: latihan sudut siku-siku",
   latar: "#F0FDF4",
   kutipan: [
     "Ayo Berlatih",
@@ -49,13 +49,13 @@ export const ADEGAN_LATIHAN_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Sekarang Ayo Berlatih. Perhatikan bangun datar berikut, lalu temukan banyaknya sudut siku-siku pada setiap bangun.",
-      tambah(0, judul("Ayo Berlatih: hitung sudut siku-siku")),
+      "Sekarang Latihan satu. Perhatikan bangun datar berikut, lalu temukan banyaknya sudut siku-siku pada setiap bangun. Ada enam bangun, kita kerjakan satu per satu.",
+      tambah(0, judul("Latihan 1: hitung sudut siku-siku")),
       tambah("Perhatikan", ...[0, 1, 2, 3, 4, 5].flatMap((i) => [bangun(i), ...lencana(i)])),
       sorotkan("setiap", "nb1", "nb2", "nb3", "nb4", "nb5", "nb6"),
     ),
     k(
-      "Nomor satu, persegi panjang. Keempat pojoknya siku-siku, jadi ada empat sudut siku-siku.",
+      "Bangun satu, persegi panjang. Keempat pojoknya siku-siku, jadi ada empat sudut siku-siku.",
       ubah(0, ...redupBawah.map((id) => ({ id, op: 0.3 }))),
       redamkan(0, "nb1", "nb2", "nb3", "nb4", "nb5", "nb6"),
       tambah("Keempat", tandaSiku(0, 0)),
@@ -65,13 +65,13 @@ export const ADEGAN_LATIHAN_1: AdeganStory = {
       tambah("empat", jawab(0)),
     ),
     k(
-      "Nomor dua punya enam pojok. Dua pojok bawah siku-siku, sedangkan empat pojok lainnya miring. Jadi ada dua sudut siku-siku.",
+      "Bangun dua punya enam pojok. Dua pojok bawah siku-siku, sedangkan empat pojok lainnya miring. Jadi ada dua sudut siku-siku.",
       tambah("bawah", tandaSiku(1, 4), tandaSiku(1, 5)),
       tambah("sedangkan", silang(1, 0), silang(1, 1), silang(1, 2), silang(1, 3)),
       tambah("Jadi", jawab(1)),
     ),
     k(
-      "Nomor tiga, belah ketupat. Kita cek keempat pojoknya satu per satu. Tidak ada yang pas dengan lipatan kertas, jadi tidak ada sudut siku-siku.",
+      "Bangun tiga, belah ketupat. Kita cek keempat pojoknya satu per satu. Tidak ada yang pas dengan lipatan kertas, jadi tidak ada sudut siku-siku.",
       tambah("keempat", silang(2, 0), silang(2, 1)),
       tambah("satu", silang(2, 2), silang(2, 3)),
       tambah("jadi", jawab(2)),
@@ -82,40 +82,40 @@ export const ADEGAN_LATIHAN_1: AdeganStory = {
 /* ------------------------------ 2. Ayo Berlatih nomor 4 sampai 6 dan kunci (hlm. 169; Panduan Guru hlm. 256) ------------------------------ */
 export const ADEGAN_LATIHAN_2: AdeganStory = {
   id: "latihan-2",
-  judul: "Ayo Berlatih: nomor 4 sampai 6 dan kunci jawaban",
-  sumber: "Buku Siswa hlm. 169; Panduan Guru hlm. 256",
+  judul: "Latihan 1: bangun empat sampai enam",
+  sumber: "Materi: latihan sudut siku-siku, lanjutan",
   latar: "#ECFDF5",
   kutipan: ["Kunci Jawaban", "Memiliki 4 sudut siku-siku.", "Memiliki 2 sudut siku-siku.", "Tidak memiliki sudut siku-siku.", "No. Gambar Banyak Sudut Siku-Siku"],
   ketukan: [
     k(
-      "Lanjut ke nomor empat sampai enam. Hasil tiga nomor pertama kita simpan dulu: empat, dua, dan nol.",
-      tambah(0, judul("Lanjut: nomor 4 sampai 6")),
+      "Lanjut ke bangun empat sampai enam. Hasil tiga bangun pertama kita simpan dulu: empat, dua, dan nol. Tetap teliti, ya.",
+      tambah(0, judul("Lanjut: bangun 4 sampai 6")),
       tambah(0, ...[0, 1, 2, 3, 4, 5].flatMap((i) => [bangun(i), ...lencana(i)])),
       tambah("tiga", ...[0, 1, 2].flatMap((i) => [jawab(i)])),
       tambah("nol.", ...[3, 4, 5].map((i) => teks(`ph${i + 1}`, PUSAT[i][0] + 28, PUSAT[i][1] + 44, "?", 11, W.merah))),
     ),
     k(
-      "Nomor empat adalah segitiga. Ketiga pojoknya tidak ada yang siku-siku, jadi jawabannya nol.",
+      "Bangun empat adalah segitiga. Ketiga pojoknya tidak ada yang siku-siku, jadi jawabannya nol.",
       tambah("Ketiga", silang(3, 0), silang(3, 1), silang(3, 2)),
       ubah("nol.", { id: "ph4", isi: "0", warna: W.hijau }),
     ),
     k(
-      "Nomor lima adalah persegi yang posisinya miring. Walaupun miring, keempat pojoknya tetap siku-siku, jadi ada empat.",
+      "Bangun lima adalah persegi yang posisinya miring. Walaupun miring, keempat pojoknya tetap siku-siku, jadi ada empat.",
       tambah(7, tandaSiku(4, 0)),
       tambah(9, tandaSiku(4, 1), tandaSiku(4, 2), tandaSiku(4, 3)),
       ubah(15, { id: "ph5", isi: "4", warna: W.hijau }),
     ),
     k(
-      "Nomor enam punya empat pojok. Dua pojok bawahnya siku-siku, dua pojok atasnya tidak. Jadi ada dua sudut siku-siku.",
+      "Bangun enam punya empat pojok. Dua pojok bawahnya siku-siku, dua pojok atasnya tidak. Jadi ada dua sudut siku-siku.",
       tambah("bawahnya", tandaSiku(5, 2), tandaSiku(5, 3)),
       tambah("atasnya", silang(5, 0), silang(5, 1)),
       ubah(15, { id: "ph6", isi: "2", warna: W.hijau }),
     ),
     k(
-      "Cocokkan dengan kunci panduan guru: empat, dua, nol, nol, empat, dan dua. Kalau semua cocok, kalian sudah pandai membedakan sudut siku-siku.",
+      "Mari kita rangkum jawabannya: empat, dua, nol, nol, empat, dan dua. Kalau jawabanmu cocok, kalian sudah pandai membedakan sudut siku-siku.",
       bersih(0),
-      tambah(0, judul("Kunci Jawaban Ayo Berlatih")),
-      tambah("kunci", ...tabel("kn", 13, 62, [64, 36, 36, 36, 36, 36, 36], [["No.", "1", "2", "3", "4", "5", "6"], ["Siku-siku", "4", "2", "0", "0", "4", "2"]], 30, 10)),
+      tambah(0, judul("Jawaban Latihan 1")),
+      tambah("rangkum", ...tabel("kn", 13, 62, [64, 36, 36, 36, 36, 36, 36], [["No.", "1", "2", "3", "4", "5", "6"], ["Siku-siku", "4", "2", "0", "0", "4", "2"]], 30, 10)),
       sorotkan("pandai", "kn-s10", "kn-t10", "kn-s11", "kn-t11", "kn-s12", "kn-t12", "kn-s13", "kn-t13", "kn-s14", "kn-t14", "kn-s15", "kn-t15", "kn-s16", "kn-t16"),
     ),
   ],
@@ -131,8 +131,8 @@ const POSISI = [segiSiku(1, 50, 118, 0, W.langit), segiSiku(2, 112, 82, 90, W.hi
 
 export const ADEGAN_MISKONSEPSI: AdeganStory = {
   id: "miskonsepsi",
-  judul: "Kesalahan yang mungkin terjadi dan diferensiasi",
-  sumber: "Panduan Guru hlm. 255",
+  judul: "Hati-hati dan Tantangan",
+  sumber: "Materi: pesan guru subbab ini",
   latar: "#FFF1F2",
   kutipan: [
     "Miskonsepsi",
@@ -147,8 +147,8 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
   ketukan: [
     k(
       "Hati-hati dengan kesalahan yang mungkin muncul. Saat memakai kertas lipat, ada yang menempatkan kertasnya dengan tidak tepat.",
-      tambah(0, judul("Miskonsepsi: kertas tidak tepat")),
-      tambah("kertas", kotak("bk", 120, 50, 110, 76, W.langit, W.biru, { rx: 0, tebal: 2 }), teks("bkt", 175, 92, "buku", 10, W.biru)),
+      tambah(0, judul("Hati-hati: kertas tidak tepat")),
+      tambah("kertas", kotak("bk", 120, 50, 110, 76, W.langit, W.biru, { rx: 0, tebal: 2 }), teks("bkt", 175, 92, "papan tulis", 9, W.biru)),
       tambah("menempatkan", poligon("kp", 136, 126, KERTAS_LIPAT, W.putih, W.coklat)),
       tambah("tepat.", garis("cl", 120, 140, 16, 0, W.merah, 3.4, { gambar: true }), teks("ct", 96, 144, "celah", 8.8, W.merah)),
     ),
@@ -160,39 +160,40 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
     k(
       "Kesalahan lain, sudut siku-siku dianggap selalu digambar dengan posisi seperti ini: satu sisi mendatar, satu sisi tegak ke atas.",
       bersih(0),
-      tambah(0, judul("Miskonsepsi: posisi sudut")),
+      tambah(0, judul("Hati-hati: posisi sudut")),
       tambah("seperti", garis("pa", 90, 140, 100, 0, W.biru, 4, { gambar: true }), garis("pb", 90, 140, 0, -88, W.biru, 4, { gambar: true })),
       tambah("mendatar,", teks("mt", 180, 160, "mendatar", 9, W.biru)),
       tambah("tegak", teks("tg", 60, 94, "tegak", 9, W.biru)),
       tambah("dianggap", teks("sx", 220, 90, "selalu begini?", 9.6, W.merah)),
     ),
     k(
-      "Karena itu, guru sebaiknya memberi berbagai posisi sudut siku-siku, supaya kalian tidak mengira sudut harus digambar seperti tadi.",
+      "Karena itu, ingatlah bahwa sudut siku-siku bisa muncul dalam berbagai posisi. Jangan mengira sudut harus selalu digambar seperti tadi.",
       bersih(0),
       tambah(0, judul("Berbagai posisi siku-siku")),
-      tambah("berbagai", POSISI[0].poli, penandaSiku("mm1", POSISI[0].titik, 0, 8)),
-      tambah("posisi", POSISI[1].poli, penandaSiku("mm2", POSISI[1].titik, 0, 8)),
-      tambah("supaya", POSISI[2].poli, penandaSiku("mm3", POSISI[2].titik, 0, 8)),
+      tambah("ingatlah", POSISI[0].poli, penandaSiku("mm1", POSISI[0].titik, 0, 8)),
+      tambah("berbagai", POSISI[1].poli, penandaSiku("mm2", POSISI[1].titik, 0, 8)),
+      tambah("Jangan", POSISI[2].poli, penandaSiku("mm3", POSISI[2].titik, 0, 8)),
       tambah("tadi.", POSISI[3].poli, penandaSiku("mm4", POSISI[3].titik, 0, 8)),
     ),
     k(
-      "Semua gambar ini adalah sudut siku-siku, walaupun arahnya berbeda-beda. Yang menentukan adalah pas atau tidaknya dengan lipatan kertas.",
+      "Semua gambar ini adalah sudut siku-siku, walaupun arahnya berbeda-beda. Yang menentukan adalah pas atau tidaknya dengan lipatan kertas. Jadi, jangan terkecoh oleh arah gambarnya.",
       tambah("sudut", ...[0, 1, 2, 3].map((i) => teks(`ya${i}`, [96, 160, 214, 270][i], [108, 106, 138, 100][i], "✓", 14, W.hijau))),
       tambah("pas", ...kartu("sm", 40, 168, 220, 26, W.hijauMuda, ["bukan arahnya, tetapi pas atau tidak"], 8.8)),
     ),
     k(
-      "Untuk diferensiasi, kalian yang cepat belajar mengerjakan latihan tanpa bantuan. Pada saat yang sama, guru mendampingi kawan yang mengalami kesulitan.",
+      "Ini tantangan untukmu. Kalau kamu cepat belajar, kerjakan latihan tanpa bantuan. Kalau kamu butuh bantuan, jangan ragu bertanya kepada guru atau kawan.",
       bersih(0),
-      tambah(0, judul("Diferensiasi")),
+      tambah(0, judul("Tantangan")),
       tambah("cepat", emo("rk", 70, 80, "🚀", 40), ...kartu("d1", 24, 98, 120, 52, W.langit, ["Cepat belajar:", "kerjakan sendiri"], 9)),
-      tambah("guru", emo("hd", 230, 80, "🤝", 40), ...kartu("d2", 156, 98, 120, 52, W.krem, ["Butuh bantuan:", "didampingi guru"], 9)),
+      tambah("bertanya", emo("hd", 230, 80, "🤝", 40), ...kartu("d2", 156, 98, 120, 52, W.krem, ["Butuh bantuan:", "tanya guru atau kawan"], 9)),
     ),
     k(
-      "Di akhir pembelajaran, setiap kelompok mendapat kesempatan menyampaikan hasil diskusi dan menanggapi. Jadi tidak semua kelompok harus menjadi presenter.",
+      "Satu tantangan lagi untuk di rumah. Carilah tiga benda yang pojoknya siku-siku, dan satu benda yang pojoknya bukan siku-siku. Besok, ceritakan hasil pengamatanmu kepada kawan.",
       bersih(0),
-      tambah(0, judul("Akhir pembelajaran")),
-      tambah("setiap", emo("pr", 60, 90, "🗣", 36), ...kartu("hs", 100, 70, 170, 40, W.hijauMuda, ["menyampaikan hasil diskusi"], 9)),
-      tambah("semua", ...kartu("tg", 100, 126, 170, 40, W.langit, ["sebagian kelompok", "boleh menanggapi saja"], 9)),
+      tambah(0, judul("Tantangan di rumah")),
+      tambah("tiga", emo("ts", 60, 90, "🏠", 36), ...kartu("t3", 100, 70, 170, 40, W.hijauMuda, ["3 benda: pojoknya siku-siku"], 9)),
+      tambah("satu@2", ...kartu("t1", 100, 126, 170, 40, W.merahMuda, ["1 benda: bukan siku-siku"], 9)),
+      tambah("ceritakan", emo("cr", 60, 146, "🗣", 30)),
     ),
   ],
 };
@@ -200,8 +201,8 @@ export const ADEGAN_MISKONSEPSI: AdeganStory = {
 /* ------------------------------ 4. Refleksi nomor 1 dan rangkuman Subbab A (Buku Siswa hlm. 187; Panduan Guru hlm. 257) ------------------------------ */
 export const ADEGAN_REFLEKSI: AdeganStory = {
   id: "refleksi-rangkuman",
-  judul: "Refleksi nomor 1 dan rangkuman Subbab A",
-  sumber: "Buku Siswa hlm. 187; Panduan Guru hlm. 257",
+  judul: "Renungan dan rangkuman Subbab A",
+  sumber: "Materi: renungan dan rangkuman",
   latar: "#F5F3FF",
   kutipan: [
     "Setelah mempelajari materi terkait sudut, isilah tabel berikut sesuai",
@@ -215,33 +216,33 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Di akhir subbab, lakukan refleksi. Refleksi di buku siswa berupa tabel pernyataan dengan kolom ya dan tidak, yang diisi dengan tanda centang.",
-      tambah(0, judul("Refleksi")),
-      tambah("tabel", ...kartu("pn", 14, 40, 190, 56, W.krem, ["Pernyataan nomor 1", "..."], 9)),
+      "Di akhir subbab, mari kita merenung. Kita menjawab pernyataan tentang diri sendiri dengan kolom ya dan tidak, yang diisi dengan tanda centang.",
+      tambah(0, judul("Renungan")),
+      tambah("pernyataan", ...kartu("pn", 14, 40, 190, 56, W.krem, ["Pernyataan tentang", "diriku"], 9)),
       tambah("kolom", ...kartu("ya", 214, 40, 34, 56, W.hijauMuda, ["Ya"], 9.4), ...kartu("td", 252, 40, 38, 56, W.merahMuda, ["Tidak"], 9.4)),
       tambah("centang.", teks("cg", 150, 126, "isi dengan tanda centang", 9.6, W.ungu)),
     ),
     k(
-      "Pernyataan nomor satu berbunyi, aku dapat menemukan sudut siku-siku di lingkungan sekitarku. Centang ya, kalau kalian sudah bisa.",
-      ubah("berbunyi,", { id: "pn-t0", isi: "Aku dapat menemukan sudut" }, { id: "pn-t1", isi: "siku-siku di lingkungan sekitarku." }),
+      "Renungkan dirimu. Apakah aku dapat menemukan sudut siku-siku di lingkungan sekitarku? Centang ya, kalau kalian sudah bisa.",
+      ubah("Apakah", { id: "pn-t0", isi: "Apakah aku dapat menemukan sudut" }, { id: "pn-t1", isi: "siku-siku di sekitarku?" }),
       tambah("Centang", teks("c1", 231, 92, "✓", 18, W.hijau)),
       tambah("bisa.", teks("sd", 150, 160, "sudah bisa? centang ya", 10, W.hijau)),
     ),
     k(
-      "Menurut panduan guru, refleksi nomor satu menilai kemampuan kalian menemukan sudut siku-siku di sekitar. Ini membantu guru tahu siapa yang masih sulit membedakan sudut siku-siku dan bukan.",
+      "Renungan ini menilai kemampuanmu menemukan sudut siku-siku di sekitar. Ini membantu kita semua tahu siapa yang sudah bisa membedakan sudut siku-siku dan bukan, dan siapa yang masih perlu berlatih lagi.",
       bersih(0),
-      tambah(0, judul("Untuk apa refleksi nomor 1?")),
-      tambah("guru", emo("gu", 50, 90, "🧑", 40), emo("lp", 92, 80, "🔍", 24)),
-      tambah("membantu", ...kartu("sb", 130, 50, 150, 34, W.hijauMuda, ["sudah bisa membedakan"], 8.8)),
-      tambah("masih", ...kartu("ms", 130, 100, 150, 34, W.merahMuda, ["masih sulit membedakan"], 8.8)),
+      tambah(0, judul("Untuk apa merenung?")),
+      tambah("menilai", emo("gu", 50, 90, "🧑", 40), emo("lp", 92, 80, "🔍", 24)),
+      tambah("sudah", ...kartu("sb", 130, 50, 150, 34, W.hijauMuda, ["sudah bisa membedakan"], 8.8)),
+      tambah("masih", ...kartu("ms", 130, 100, 150, 34, W.merahMuda, ["masih perlu berlatih"], 8.8)),
     ),
     k(
-      "Rangkuman subbab A. Sudut siku-siku bisa kita temukan di sekitar, misalnya pada pojok bingkai, pojok meja, dan pojok buku.",
+      "Rangkuman subbab ini. Sudut siku-siku bisa kita temukan di sekitar, misalnya pada pojok bingkai, pojok meja, dan pojok papan tulis.",
       bersih(0),
       tambah(0, judul("Rangkuman Subbab A")),
       tambah("bingkai,", ...bingkaiMini()),
       tambah("meja,", kotak("rm", 112, 56, 70, 50, W.kayu, W.coklat, { rx: 1 }), teks("rmt", 147, 124, "pojok meja", 8.8, W.coklat)),
-      tambah("buku.", kotak("rb", 212, 58, 56, 46, W.langit, W.biru, { rx: 1 }), teks("rbt", 240, 124, "pojok buku", 8.8, W.biru)),
+      tambah("tulis.", kotak("rb", 212, 58, 56, 46, W.langit, W.biru, { rx: 1 }), teks("rbt", 240, 124, "pojok papan tulis", 8.4, W.biru)),
     ),
     k(
       "Alatnya sederhana, yaitu kertas yang dilipat mendatar lalu vertikal. Pojok lipatan itu kita cocokkan dengan sudut benda, dan sisi-sisinya harus berimpit.",

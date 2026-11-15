@@ -81,7 +81,7 @@ export const ADEGAN_PEMBUKA_C: AdeganStory = {
 export const ADEGAN_KIPAS_SUDUT: AdeganStory = {
   id: "kipas-sudut",
   judul: "Kipas membentuk sudut, satuan derajat, dan busur derajat",
-  sumber: "Buku Siswa hlm. 176–177; Panduan Guru hlm. 263–264",
+  sumber: "Materi: kipas, sudut, dan satuan derajat",
   latar: "#F0F9FF",
   kutipan: [
     "Bagaimana cara membandingkan seberapa lebar kipas-kipas",
@@ -101,16 +101,17 @@ export const ADEGAN_KIPAS_SUDUT: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Bagaimana cara membandingkan seberapa lebar kipas-kipas itu terbuka? Nisa berkata, kipas yang terbuka membentuk sudut, jadi kita bandingkan sudut yang dibentuk kipas.",
+      "Dalam tari pakarena dari Sulawesi Selatan, para penari membawa kipas lipat. Bagaimana cara membandingkan seberapa lebar kipas-kipas itu terbuka? Nisa berkata, kipas yang terbuka membentuk sudut, jadi kita bandingkan sudut yang dibentuk kipas.",
+      tambah(0, teks("pk-intro", 150, 18, "tari pakarena: kipas lipat", 9.4, W.ungu)),
       tambah("Bagaimana", ...kartu("qb", 20, 30, 260, 34, W.krem, ["Bagaimana membandingkan lebar kipas?"], 9.2)),
-      tambah("kipas@3", kipas("ks", 150, 160, 70, 37.5, 142.5, W.jingga), ...sudutDua("ks", 150, 160, 82, 37.5, 142.5, W.biru, 2.4)),
+      tambah("kipas@4", kipas("ks", 150, 160, 70, 37.5, 142.5, W.jingga), ...sudutDua("ks", 150, 160, 82, 37.5, 142.5, W.biru, 2.4)),
       tambah("sudut,", busurSudut("ks", 150, 160, 24, 37.5, 142.5, W.merah, { tebal: 2.4 }), teks("ks-m", 150, 138, "sudut", 9, W.merah)),
       tambah("bandingkan", ...kartu("qc", 40, 172, 220, 28, W.hijauMuda, ["bandingkan sudutnya"], 9)),
     ),
     k(
-      "Dua pertanyaan pemandu dari Panduan Guru: bagaimana cara membandingkannya, dan bagaimana cara mengetahui ukurannya? Pertanyaan itu menggiring kita pada kesimpulan bahwa sudut dapat diukur dengan alat.",
+      "Ada dua pertanyaan penting: bagaimana cara membandingkannya, dan bagaimana cara mengetahui ukurannya? Dari situ kita sampai pada kesimpulan bahwa sudut dapat diukur dengan alat.",
       bersih(0),
-      tambah(0, judul("dua pertanyaan pemandu")),
+      tambah(0, judul("dua pertanyaan penting")),
       tambah("membandingkannya,", ...kartu("p1", 20, 40, 260, 36, W.krem, ["1. Bagaimana cara membandingkannya?"], 9.2)),
       tambah("mengetahui", ...kartu("p2", 20, 88, 260, 36, W.langit, ["2. Bagaimana cara mengetahui ukurannya?"], 9.2)),
       tambah("kesimpulan", panah("pa", 150, 128, 0, 24, W.hijau, 3, { gambar: true })),
@@ -142,7 +143,7 @@ export const ADEGAN_KIPAS_SUDUT: AdeganStory = {
 export const ADEGAN_BAGIAN_BUSUR: AdeganStory = {
   id: "bagian-busur",
   judul: "Bagian-bagian busur derajat",
-  sumber: "Buku Siswa hlm. 177; Panduan Guru hlm. 264",
+  sumber: "Materi: bagian-bagian busur derajat",
   latar: "#FAF5FF",
   kutipan: [
     "Bagian-Bagian Busur Derajat",
@@ -194,7 +195,7 @@ export const ADEGAN_BAGIAN_BUSUR: AdeganStory = {
 export const ADEGAN_CARA_UKUR: AdeganStory = {
   id: "cara-ukur",
   judul: "Tiga langkah mengukur sudut dengan busur derajat",
-  sumber: "Buku Siswa hlm. 178–179",
+  sumber: "Materi: tiga langkah mengukur sudut",
   latar: "#F0FDF4",
   kutipan: [
     "Kita akan mengukur besar sudut yang dibentuk oleh kipas berikut",
@@ -212,7 +213,7 @@ export const ADEGAN_CARA_UKUR: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Sekarang kita ukur sudut yang dibentuk sebuah kipas lipat, seperti contoh di buku. Langkah satu, letakkan pusat busur derajat pada titik sudut yang akan diukur.",
+      "Sekarang kita ukur sudut yang dibentuk sebuah kipas lipat. Langkah satu, letakkan pusat busur derajat pada titik sudut yang akan diukur.",
       tambah(0, judul("mengukur sudut kipas")),
       tambah("kipas", kipas("ku", 150, 176, 74, 55, 180, W.jingga, { z: -1 })),
       tambah("titik", bulat("vt", 150, 176, 3.2, W.merah, W.merah, { tebal: 1, z: 4 }), teks("vt-t", 150, 200, "titik sudut", 8.4, W.merah)),

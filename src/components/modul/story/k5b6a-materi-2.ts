@@ -9,8 +9,8 @@ const tandaBingkai = (i: number) => penandaSiku(`bs${i}`, POJOK_BINGKAI, i, 10);
 
 export const ADEGAN_BINGKAI: AdeganStory = {
   id: "bingkai-siku",
-  judul: "Subbab A: bingkai foto dan penggaris siku-siku",
-  sumber: "Buku Siswa hlm. 166; Panduan Guru hlm. 252–253",
+  judul: "Bingkai foto dan penggaris siku-siku",
+  sumber: "Materi: bingkai dan penggaris siku-siku",
   latar: "#FFF1F2",
   kutipan: [
     "A. Sudut Siku-Siku",
@@ -25,16 +25,16 @@ export const ADEGAN_BINGKAI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Subbab A, Sudut Siku-Siku. Pernahkah kalian memperhatikan bingkai foto yang kalian temui di rumah atau di sekolah?",
-      tambah(0, judul("A. Sudut Siku-Siku")),
+      "Sekarang kita belajar sudut siku-siku. Pernahkah kalian memperhatikan bingkai foto yang kalian temui di rumah atau di sekolah?",
+      tambah(0, judul("Sudut Siku-Siku")),
       tambah("bingkai", ...bingkai("bf", 80, 50, 140, 100)),
       tambah("foto", emo("ft", 150, 112, "🌄", 44)),
       tambah("rumah", teks("rm", 95, 176, "di rumah", 9.4, W.coklat)),
       tambah("sekolah?", teks("sk", 205, 176, "di sekolah", 9.4, W.coklat)),
     ),
     k(
-      "Pojok bingkai pada Gambar enam titik dua membentuk sudut siku-siku. Lihat tanda merah di keempat pojoknya.",
-      tambah(0, teks("gm", 150, 196, "Gambar 6.2", 8.4, W.ungu)),
+      "Pojok bingkai foto ini membentuk sudut siku-siku. Lihat tanda merah di keempat pojoknya.",
+      tambah(0, teks("gm", 150, 196, "pojok bingkai foto", 8.4, W.ungu)),
       tambah("sudut", tandaBingkai(0), tandaBingkai(1)),
       tambah("merah", tandaBingkai(2), tandaBingkai(3)),
     ),
@@ -47,7 +47,7 @@ export const ADEGAN_BINGKAI: AdeganStory = {
       tambah("pojok", ...bingkai("bf", 168, 120, 90, 64)),
     ),
     k(
-      "Para pembuat bingkai foto menggunakan penggaris siku-siku untuk memastikan bahwa pojok bingkai yang dibuat sudah membentuk sudut siku-siku.",
+      "Para pembuat bingkai foto menggunakan penggaris siku-siku untuk memastikan bahwa pojok bingkai yang dibuat sudah membentuk sudut siku-siku. Satu pojok penggaris itu pasti siku-siku, jadi bisa kita jadikan patokan.",
       bersih(0),
       tambah(0, judul("Penggaris siku-siku")),
       tambah(0, ...bingkai("bf", 80, 50, 140, 100)),
@@ -57,15 +57,15 @@ export const ADEGAN_BINGKAI: AdeganStory = {
       tambah("membentuk", teks("ok", 150, 38, "pas di pojok: siku-siku", 9.6, W.hijau)),
     ),
     k(
-      "Panduan guru menyarankan, sebelum membahas penggaris siku-siku, beri kesempatan kalian menjawab dulu. Mungkin ada yang menjawab memakai busur, padahal busur belum dikenalkan di awal bab.",
+      "Sebelum membahas penggaris siku-siku, coba jawab dulu dengan idemu sendiri. Mungkin ada yang punya cara lain untuk memastikan pojok itu siku-siku. Tidak apa-apa, semua ide kita dengarkan.",
       bersih(0),
-      tambah(0, judul("Tanya jawab dulu")),
-      tambah("kesempatan", ...kartu("jw", 20, 44, 120, 40, W.krem, ["Jawaban kalian?"], 9.6)),
-      tambah("memakai", emo("bs", 200, 80, "📏", 40), teks("bsx", 200, 118, "pakai busur?", 9.4, W.merah)),
-      tambah("padahal", teks("sx", 250, 76, "✗", 28, W.merah), ...kartu("bl", 40, 140, 220, 34, W.merahMuda, ["busur belum dikenalkan di awal bab"], 8.8)),
+      tambah(0, judul("Jawab dulu dengan idemu")),
+      tambah("jawab", ...kartu("jw", 20, 44, 120, 40, W.krem, ["Idemu apa?"], 9.6)),
+      tambah("cara", emo("bs", 200, 80, "💡", 40), teks("bsx", 200, 118, "cara lain?", 9.4, W.biru)),
+      tambah("memastikan", ...kartu("bl", 40, 140, 220, 34, W.hijauMuda, ["pastikan pojoknya siku-siku"], 8.8)),
     ),
     k(
-      "Jika tanya jawab sudah cukup, kenalkan penggaris siku-siku. Lalu tekankan bahwa kita bisa membuat alat sederhana yang fungsinya sama, yaitu lipatan kertas.",
+      "Setelah itu, kita kenalan dengan penggaris siku-siku. Lalu kita buat sendiri alat sederhana yang fungsinya sama, yaitu lipatan kertas.",
       bersih(0),
       tambah(0, judul("Alat sederhana")),
       tambah("penggaris", emo("pk", 70, 100, "📐", 54), teks("pkt", 70, 140, "penggaris siku-siku", 8.8, W.coklat)),
@@ -83,8 +83,8 @@ const PENANDA_KERTAS = (id: string, x: number, y: number, dx = 0) => penandaSiku
 
 export const ADEGAN_EKSPLORASI_ALAT: AdeganStory = {
   id: "eksplorasi-alat",
-  judul: "Eksplorasi 6.1: membuat alat dari kertas lipat",
-  sumber: "Buku Siswa hlm. 167–168; Panduan Guru hlm. 253–254",
+  judul: "Kegiatan: membuat alat dari kertas lipat",
+  sumber: "Materi: alat dari kertas lipat",
   latar: "#F0F9FF",
   kutipan: [
     "Eksplorasi 6.1",
@@ -104,8 +104,8 @@ export const ADEGAN_EKSPLORASI_ALAT: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi enam titik satu, Menjadi Detektif Sudut. Kita bermain peran menjadi detektif, dengan tugas menemukan sebanyak mungkin sudut di sekitar kita.",
-      tambah(0, judul("Eksplorasi 6.1")),
+      "Sekarang kita punya kegiatan seru, Menjadi Detektif Sudut. Kita bermain peran menjadi detektif, dengan tugas menemukan sebanyak mungkin sudut di sekitar kita.",
+      tambah(0, judul("Kegiatan seru")),
       tambah("Menjadi", emo("dt", 150, 100, "🕵", 60)),
       tambah("detektif,", ...kartu("dj", 50, 130, 200, 30, W.krem, ["Menjadi Detektif Sudut"], 10)),
       tambah("menemukan", teks("sb", 150, 182, "temukan sebanyak mungkin sudut", 8.8, W.hijau)),
@@ -121,7 +121,7 @@ export const ADEGAN_EKSPLORASI_ALAT: AdeganStory = {
     k(
       "Guru membentuk kelompok terlebih dahulu. Setelah itu, setiap kelompok membuat alat sederhana untuk menentukan suatu sudut siku-siku atau bukan.",
       bersih(0),
-      tambah(0, judul("Persiapan guru")),
+      tambah(0, judul("Membentuk kelompok")),
       tambah("Guru", emo("gu", 50, 90, "🧑", 44)),
       tambah("kelompok", ...kartu("k1", 100, 50, 80, 30, W.krem, ["Kelompok 1"], 9), ...kartu("k2", 190, 50, 80, 30, W.langit, ["Kelompok 2"], 9), ...kartu("k3", 100, 92, 80, 30, W.pink, ["Kelompok 3"], 9), ...kartu("k4", 190, 92, 80, 30, W.jingga, ["Kelompok 4"], 9)),
       tambah("alat", ...kartu("al", 70, 142, 160, 34, W.hijauMuda, ["membuat alat sederhana"], 9.6)),
@@ -144,7 +144,7 @@ export const ADEGAN_EKSPLORASI_ALAT: AdeganStory = {
       tambah("siku-siku.", teks("ss", 238, 130, "sudut siku-siku", 9.4, W.merah)),
     ),
     k(
-      "Alat ini fungsinya mirip dengan penggaris siku-siku. Panduan guru menekankan, pastikan setiap kelompok sudah membuat alat dengan benar.",
+      "Alat ini fungsinya mirip dengan penggaris siku-siku. Pastikan setiap kelompok sudah membuat alat dengan benar, sebab alat yang keliru akan memberi jawaban yang keliru.",
       bersih(0),
       tambah(0, judul("Mirip penggaris siku-siku")),
       tambah("penggaris", poligon("pg", 36, 130, titikPenggaris(60, 52), W.jingga, W.coklat), teks("pgt", 70, 150, "penggaris siku-siku", 8.4, W.coklat)),
@@ -153,7 +153,7 @@ export const ADEGAN_EKSPLORASI_ALAT: AdeganStory = {
       tambah("benar.", teks("bn", 150, 186, "periksa tiap kelompok: alat sudah benar?", 8.6, W.merah)),
     ),
     k(
-      "Kertasnya boleh berbentuk bebas. Setelah alat jadi, ajak kelompok bereksplorasi di sekitar kelas atau di luar kelas, dengan tetap menjaga ketertiban agar tidak mengganggu kelas lain.",
+      "Kertasnya boleh berbentuk bebas. Setelah alat jadi, kelompok bereksplorasi di sekitar kelas atau di luar kelas, dengan tetap menjaga ketertiban agar tidak mengganggu kelas lain.",
       bersih(0),
       tambah(0, judul("Saatnya bereksplorasi")),
       tambah("bebas.", poligon("sh", 20, 100, [[0, 0], [60, 4], [56, 44], [2, 40]], W.putih)),
@@ -170,8 +170,8 @@ const BUKU = { x: 150, y: 60, w: 100, h: 70 };
 
 export const ADEGAN_EKSPLORASI_PERIKSA: AdeganStory = {
   id: "eksplorasi-periksa",
-  judul: "Eksplorasi 6.1: memeriksa sudut dan mencatat temuan",
-  sumber: "Buku Siswa hlm. 168–169; Panduan Guru hlm. 254–255",
+  judul: "Kegiatan: memeriksa sudut dan mencatat hasil",
+  sumber: "Materi: memeriksa sudut dan mencatat",
   latar: "#FEFCE8",
   kutipan: [
     "Temukan sudut-sudut yang ada di sekitar kalian.",
@@ -191,40 +191,40 @@ export const ADEGAN_EKSPLORASI_PERIKSA: AdeganStory = {
     k(
       "Sekarang temukan sudut-sudut di sekitar kalian, lalu periksa dengan lipatan kertas tadi. Apakah sudut yang kalian temukan termasuk sudut siku-siku?",
       tambah(0, judul("Periksa dengan lipatan kertas")),
-      tambah("sudut-sudut", kotak("bk", BUKU.x, BUKU.y, BUKU.w, BUKU.h, W.langit, W.biru, { rx: 0, tebal: 2 }), teks("bkt", 200, 104, "buku", 10, W.biru)),
+      tambah("sudut-sudut", kotak("bk", BUKU.x, BUKU.y, BUKU.w, BUKU.h, W.langit, W.biru, { rx: 0, tebal: 2 }), teks("bkt", 200, 104, "papan tulis", 9, W.biru)),
       tambah("lipatan", poligon("kp", 30, 190, KERTAS_LIPAT, W.putih), PENANDA_KERTAS("pm", 30, 190)),
       ubah("Apakah", { id: "kp", x: 150, y: 130 }, { id: "pm", x: 150, y: 130 }),
     ),
     k(
-      "Perhatikan caranya. Salah satu sisi pojok kertas harus berimpit dengan sisi pojok benda yang diperiksa. Kalau kedua sisi pas, itu sudut siku-siku.",
+      "Perhatikan caranya. Salah satu sisi pojok kertas harus berimpit dengan sisi pojok benda yang diperiksa. Kalau kedua sisi pas, itu sudut siku-siku. Kalau ada celah, berarti pojok itu bukan siku-siku.",
       tambah("sisi", garis("e1", 150, 130, 100, 0, W.hijau, 3.4, { gambar: true })),
       tambah("kedua", garis("e2", 150, 130, 0, -70, W.hijau, 3.4, { gambar: true })),
       tambah("pas,", teks("ya", 100, 156, "pas: siku-siku", 9.8, W.hijau)),
     ),
     k(
-      "Selama kegiatan, guru berkeliling sebagai fasilitator. Guru memeriksa hasil dan perkembangan kerja tiap kelompok, dan membimbing kelompok yang belum tepat memakai alatnya.",
+      "Selama kegiatan, guru berkeliling melihat kerja tiap kelompok. Guru memeriksa hasil dan perkembangan kalian, dan membimbing kelompok yang belum tepat memakai alatnya.",
       bersih(0),
-      tambah(0, judul("Peran guru: fasilitator")),
+      tambah(0, judul("Guru berkeliling")),
       tambah("guru", emo("gu", 50, 90, "🧑", 44), emo("lp", 92, 80, "🔍", 26)),
       tambah("kelompok", emo("o1", 170, 90, "🧒", 34), emo("o2", 215, 90, "👧", 34), emo("o3", 260, 90, "👦", 34)),
       tambah("membimbing", panah("pn", 100, 130, 70, 0, W.hijau, 3, { gambar: true }), ...kartu("bm", 60, 150, 180, 30, W.hijauMuda, ["bimbing yang belum tepat"], 9.2)),
     ),
     k(
-      "Lalu catat hasil temuan kalian pada tabel enam titik dua, Hasil Temuan Detektif Sudut. Ada kolom nomor, nama benda, dan apakah termasuk sudut siku-siku, ya atau tidak.",
+      "Lalu catat hasil pengamatan kalian pada tabel Detektif Sudut. Ada kolom nomor, nama benda, dan apakah termasuk sudut siku-siku, ya atau tidak.",
       bersih(0),
-      tambah(0, judul("Tabel 6.2 Hasil Temuan Detektif Sudut")),
+      tambah(0, judul("Tabel Detektif Sudut")),
       tambah("tabel", ...tabel("tt", 20, 44, [34, 130, 58, 58], [["No.", "Nama Benda", "Ya", "Tidak"], ["1", "", "", ""], ["2", "", "", ""], ["…", "", "", ""]], 24, 9)),
       tambah("apakah", teks("ap", 240, 41, "Termasuk Sudut Siku-Siku?", 6.4, W.ungu)),
     ),
     k(
-      "Isi tabel ini bebas sesuai temuan kalian. Sebagai contoh buatan kita sendiri, pojok buku dan pojok bingkai termasuk sudut siku-siku, sedangkan puncak atap segitiga bukan.",
-      tambah("buku", teks("n1", 119, 83, "pojok buku", 8.6), teks("c1", 213, 87, "✓", 11, W.hijau)),
+      "Isi tabel ini bebas sesuai pengamatan kalian. Sebagai contoh buatan kita sendiri, pojok papan tulis dan pojok bingkai termasuk sudut siku-siku, sedangkan puncak atap segitiga bukan.",
+      tambah("papan", teks("n1", 119, 83, "pojok papan tulis", 8.6), teks("c1", 213, 87, "✓", 11, W.hijau)),
       tambah("bingkai", teks("n2", 119, 107, "pojok bingkai", 8.6), teks("c2", 213, 111, "✓", 11, W.hijau)),
       tambah("puncak", teks("n3", 119, 131, "puncak atap segitiga", 8.6), teks("c3", 271, 135, "✓", 11, W.hijau)),
-      tambah("sendiri,", teks("nt", 150, 174, "contoh isian buatan sendiri, bukan dari buku", 8.6, W.hijau)),
+      tambah("sendiri,", teks("nt", 150, 174, "contoh isian buatan sendiri", 8.6, W.hijau)),
     ),
     k(
-      "Catatan di buku, tabel boleh ditambah barisnya sesuai kebutuhan. Setelah itu, kelompok menyampaikan hasil diskusi dan menanggapi. Tidak semua kelompok harus menjadi presenter.",
+      "Tabel boleh ditambah barisnya sesuai kebutuhan. Setelah itu, kelompok menyampaikan hasil diskusi dan saling menanggapi. Tidak semua kelompok harus menjadi presenter.",
       bersih(0),
       tambah(0, judul("Setelah mencatat")),
       tambah("tabel", ...kartu("tb", 30, 40, 240, 34, W.krem, ["tabel boleh ditambah barisnya"], 9.4)),

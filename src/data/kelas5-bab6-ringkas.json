@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-sembilan", "teks": "Sudut siku-siku = 90°", "ikon": "∟", "cabang": "patokan", "petunjuk": "Besar siku-siku itu soal patokan siku. Coba cabang lain." },
-          { "id": "a-bingkai", "teks": "Pojok bingkai foto tepat siku", "ikon": "🖼️", "cabang": "patokan", "petunjuk": "Pojok yang tepat siku itu soal patokan siku. Coba cabang lain." },
-          { "id": "a-lipat-satu", "teks": "Lipatan pertama membuat tepi lurus", "ikon": "📄", "cabang": "lipat", "petunjuk": "Melipat kertas itu soal lipat kertas. Coba cabang lain." },
-          { "id": "a-lipat-dua", "teks": "Lipatan kedua menimpa lipatan pertama", "ikon": "🔁", "cabang": "lipat", "petunjuk": "Tepi yang berimpit itu soal lipat kertas. Coba cabang lain." },
-          { "id": "a-sempit", "teks": "Lebih sempit dari patokan = lancip", "ikon": "∕", "cabang": "banding", "petunjuk": "Membandingkan dengan patokan itu soal banding pojok. Coba cabang lain." },
-          { "id": "a-lebar", "teks": "Lebih lebar dari patokan = tumpul", "ikon": "∠", "cabang": "banding", "petunjuk": "Membandingkan dengan patokan itu soal banding pojok. Coba cabang lain." },
-          { "id": "a-cek", "teks": "Periksa pojok meja dengan patokan", "ikon": "🔍", "cabang": "detektif", "petunjuk": "Memeriksa pojok benda itu soal detektif sudut. Coba cabang lain." },
-          { "id": "a-tidak", "teks": "Tidak semua pojok siku-siku", "ikon": "❓", "cabang": "detektif", "petunjuk": "Memeriksa dulu itu soal detektif sudut. Coba cabang lain." }
+          {
+            "id": "a-sembilan",
+            "teks": "Sudut siku-siku = 90°",
+            "ikon": "∟",
+            "cabang": "patokan",
+            "petunjuk": "Besar siku-siku itu soal patokan siku. Coba cabang lain."
+          },
+          {
+            "id": "a-bingkai",
+            "teks": "Pojok bingkai foto tepat siku",
+            "ikon": "🖼️",
+            "cabang": "patokan",
+            "petunjuk": "Pojok yang tepat siku itu soal patokan siku. Coba cabang lain."
+          },
+          {
+            "id": "a-lipat-satu",
+            "teks": "Lipatan pertama membuat tepi lurus",
+            "ikon": "📄",
+            "cabang": "lipat",
+            "petunjuk": "Melipat kertas itu soal lipat kertas. Coba cabang lain."
+          },
+          {
+            "id": "a-lipat-dua",
+            "teks": "Lipatan kedua menimpa lipatan pertama",
+            "ikon": "🔁",
+            "cabang": "lipat",
+            "petunjuk": "Tepi yang berimpit itu soal lipat kertas. Coba cabang lain."
+          },
+          {
+            "id": "a-sempit",
+            "teks": "Lebih sempit dari patokan = lancip",
+            "ikon": "∕",
+            "cabang": "banding",
+            "petunjuk": "Membandingkan dengan patokan itu soal banding pojok. Coba cabang lain."
+          },
+          {
+            "id": "a-lebar",
+            "teks": "Lebih lebar dari patokan = tumpul",
+            "ikon": "∠",
+            "cabang": "banding",
+            "petunjuk": "Membandingkan dengan patokan itu soal banding pojok. Coba cabang lain."
+          },
+          {
+            "id": "a-cek",
+            "teks": "Periksa pojok meja dengan patokan",
+            "ikon": "🔍",
+            "cabang": "detektif",
+            "petunjuk": "Memeriksa pojok benda itu soal detektif sudut. Coba cabang lain."
+          },
+          {
+            "id": "a-tidak",
+            "teks": "Tidak semua pojok siku-siku",
+            "ikon": "❓",
+            "cabang": "detektif",
+            "petunjuk": "Memeriksa dulu itu soal detektif sudut. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -72,7 +120,10 @@
                 "ikon": "📄",
                 "isi": "Tepi jadi lurus.",
                 "suara": "Lipat kertas sekali. Lipatan pertama membuat satu tepi yang lurus.",
-                "visual": { "jenis": "teks", "isi": "lipatan 1" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "lipatan 1"
+                }
               },
               {
                 "id": "dua",
@@ -80,7 +131,10 @@
                 "ikon": "🔁",
                 "isi": "Tepi menimpa tepi.",
                 "suara": "Lipat lagi sampai tepi lurus itu menimpa dirinya sendiri dengan rapi. Itu lipatan kedua.",
-                "visual": { "jenis": "teks", "isi": "lipatan 2" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "lipatan 2"
+                }
               },
               {
                 "id": "jadi",
@@ -88,7 +142,10 @@
                 "ikon": "∟",
                 "isi": "Pojoknya siku-siku.",
                 "suara": "Pojok lipatan menjadi patokan siku-siku. Besarnya sembilan puluh derajat.",
-                "visual": { "jenis": "teks", "isi": "90°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "90°"
+                }
               }
             ]
           },
@@ -99,8 +156,28 @@
             "ide": "Dibanding patokan, sempit atau lebar.",
             "suara": "Lihat dua pojok yang tidak berimpit dengan patokan.",
             "sisi": [
-              { "id": "lancip", "nama": "Lancip", "ikon": "∕", "catatan": "Lebih sempit dari patokan.", "suara": "Pojok yang lebih sempit dari patokan disebut lancip.", "visual": { "jenis": "teks", "isi": "< 90°" } },
-              { "id": "tumpul", "nama": "Tumpul", "ikon": "∠", "catatan": "Lebih lebar dari patokan.", "suara": "Pojok yang lebih lebar dari patokan disebut tumpul.", "visual": { "jenis": "teks", "isi": "> 90°" } }
+              {
+                "id": "lancip",
+                "nama": "Lancip",
+                "ikon": "∕",
+                "catatan": "Lebih sempit dari patokan.",
+                "suara": "Pojok yang lebih sempit dari patokan disebut lancip.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "< 90°"
+                }
+              },
+              {
+                "id": "tumpul",
+                "nama": "Tumpul",
+                "ikon": "∠",
+                "catatan": "Lebih lebar dari patokan.",
+                "suara": "Pojok yang lebih lebar dari patokan disebut tumpul.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "> 90°"
+                }
+              }
             ],
             "kesimpulan": "Berimpit berarti siku-siku."
           },
@@ -117,7 +194,23 @@
                 "ikon": "🖼️",
                 "isi": "Berapa pojok siku-siku.",
                 "suara": "Bingkai foto persegi panjang punya empat pojok siku-siku. Penggaris segitiga siku-siku hanya punya satu.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Bangun", "Pojok siku"], "baris": [["bingkai", 4], ["penggaris segitiga", 1]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Bangun",
+                    "Pojok siku"
+                  ],
+                  "baris": [
+                    [
+                      "bingkai",
+                      4
+                    ],
+                    [
+                      "penggaris segitiga",
+                      1
+                    ]
+                  ]
+                }
               },
               {
                 "id": "alat",
@@ -125,7 +218,10 @@
                 "ikon": "📐",
                 "isi": "Penggaris siku tukang.",
                 "suara": "Tukang kayu memakai penggaris siku supaya pojok bingkai tepat sembilan puluh derajat.",
-                "visual": { "jenis": "teks", "isi": "∟ = 90°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "∟ = 90°"
+                }
               },
               {
                 "id": "miring",
@@ -133,8 +229,138 @@
                 "ikon": "❓",
                 "isi": "Pojok yang bukan siku.",
                 "suara": "Pojok yang miring tidak berimpit dengan patokan, jadi bukan siku-siku. Pojok itu harus diganti.",
-                "visual": { "jenis": "teks", "isi": "bukan 90°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "bukan 90°"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Tukang kayu dan pojok bingkai",
+          "ikon": "🖼",
+          "suara": "Ini peta tentang tukang kayu yang membuat bingkai foto dan ingin memastikan pojoknya siku-siku. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-sekitar",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Sudut di sekitar kita",
+            "petunjuk": "Mengenal pojok benda sebagai contoh sudut dalam kehidupan sehari-hari."
+          },
+          {
+            "id": "hal-patokan",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Patokan sudut siku-siku",
+            "petunjuk": "Memahami sudut siku-siku yang dipakai sebagai patokan."
+          },
+          {
+            "id": "hal-periksa",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Memeriksa pojok dengan alat",
+            "petunjuk": "Memahami cara memeriksa sebuah pojok memakai alat sederhana."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-cari",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Cari pojok benda di sekitar",
+            "petunjuk": "Langkah untuk mengenal sudut di sekitar kita."
+          },
+          {
+            "id": "cara-lipat",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Lipat kertas jadi patokan",
+            "petunjuk": "Langkah untuk membuat patokan sudut siku-siku."
+          },
+          {
+            "id": "cara-tempel",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tempel, lihat pas atau celah",
+            "petunjuk": "Langkah untuk memeriksa pojok dengan alat."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-temu",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Menemukan siku-siku sekitar",
+            "petunjuk": "Kemampuan menemukan sudut siku-siku pada benda di sekitar."
+          },
+          {
+            "id": "hasil-bukti",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Membuktikan dengan lipatan",
+            "petunjuk": "Kemampuan menunjukkan dengan lipatan kertas bahwa sebuah pojok siku-siku atau bukan."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Pojok bangun dan sudut siku-siku",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel pojok bangun. Pasang banyak pojok, banyak siku-siku, dan banyak yang bukan siku-siku untuk segi enam, segitiga, dan persegi.",
+        "pojok": "Bangun",
+        "kolom": [
+          "Pojok",
+          "Siku-siku",
+          "Bukan"
+        ],
+        "baris": [
+          {
+            "label": "Segi enam",
+            "sel": [
+              "6 pojok",
+              "2 siku-siku",
+              "4 bukan"
+            ]
+          },
+          {
+            "label": "Segitiga",
+            "sel": [
+              "3 pojok",
+              "0 siku-siku",
+              "3 bukan"
+            ]
+          },
+          {
+            "label": "Persegi",
+            "sel": [
+              "4 pojok",
+              "4 siku-siku",
+              "0 bukan"
             ]
           }
         ]
@@ -179,14 +405,62 @@
           }
         ],
         "kartu": [
-          { "id": "b-titik", "teks": "Titik temu dua garis: titik sudut", "ikon": "•", "cabang": "bagian", "petunjuk": "Titik pertemuan itu soal titik dan kaki. Coba cabang lain." },
-          { "id": "b-kaki", "teks": "Dua garis pembentuk: kaki sudut", "ikon": "／", "cabang": "bagian", "petunjuk": "Garis pembentuk itu soal titik dan kaki. Coba cabang lain." },
-          { "id": "b-definisi", "teks": "Sudut adalah daerah dua garis bertemu", "ikon": "∠", "cabang": "daerah", "petunjuk": "Arti sudut itu soal daerah sudut. Coba cabang lain." },
-          { "id": "b-antara", "teks": "Daerah di antara kedua kaki", "ikon": "🟨", "cabang": "daerah", "petunjuk": "Daerah di antara kaki itu soal daerah sudut. Coba cabang lain." },
-          { "id": "b-lancip", "teks": "Lebih sempit dari siku-siku: lancip", "ikon": "∕", "cabang": "jenis", "petunjuk": "Membandingkan dengan siku-siku itu soal tiga jenis. Coba cabang lain." },
-          { "id": "b-tumpul", "teks": "Lebih lebar dari siku-siku: tumpul", "ikon": "∟", "cabang": "jenis", "petunjuk": "Membandingkan dengan siku-siku itu soal tiga jenis. Coba cabang lain." },
-          { "id": "b-dua", "teks": "Jam pukul 2: sudut lancip", "ikon": "🕑", "cabang": "jam", "petunjuk": "Jarum jam itu soal sudut jam. Coba cabang lain." },
-          { "id": "b-tiga", "teks": "Jam pukul 3: sudut siku-siku", "ikon": "🕒", "cabang": "jam", "petunjuk": "Jarum jam itu soal sudut jam. Coba cabang lain." }
+          {
+            "id": "b-titik",
+            "teks": "Titik temu dua garis: titik sudut",
+            "ikon": "•",
+            "cabang": "bagian",
+            "petunjuk": "Titik pertemuan itu soal titik dan kaki. Coba cabang lain."
+          },
+          {
+            "id": "b-kaki",
+            "teks": "Dua garis pembentuk: kaki sudut",
+            "ikon": "／",
+            "cabang": "bagian",
+            "petunjuk": "Garis pembentuk itu soal titik dan kaki. Coba cabang lain."
+          },
+          {
+            "id": "b-definisi",
+            "teks": "Sudut adalah daerah dua garis bertemu",
+            "ikon": "∠",
+            "cabang": "daerah",
+            "petunjuk": "Arti sudut itu soal daerah sudut. Coba cabang lain."
+          },
+          {
+            "id": "b-antara",
+            "teks": "Daerah di antara kedua kaki",
+            "ikon": "🟨",
+            "cabang": "daerah",
+            "petunjuk": "Daerah di antara kaki itu soal daerah sudut. Coba cabang lain."
+          },
+          {
+            "id": "b-lancip",
+            "teks": "Lebih sempit dari siku-siku: lancip",
+            "ikon": "∕",
+            "cabang": "jenis",
+            "petunjuk": "Membandingkan dengan siku-siku itu soal tiga jenis. Coba cabang lain."
+          },
+          {
+            "id": "b-tumpul",
+            "teks": "Lebih lebar dari siku-siku: tumpul",
+            "ikon": "∟",
+            "cabang": "jenis",
+            "petunjuk": "Membandingkan dengan siku-siku itu soal tiga jenis. Coba cabang lain."
+          },
+          {
+            "id": "b-dua",
+            "teks": "Jam pukul 2: sudut lancip",
+            "ikon": "🕑",
+            "cabang": "jam",
+            "petunjuk": "Jarum jam itu soal sudut jam. Coba cabang lain."
+          },
+          {
+            "id": "b-tiga",
+            "teks": "Jam pukul 3: sudut siku-siku",
+            "ikon": "🕒",
+            "cabang": "jam",
+            "petunjuk": "Jarum jam itu soal sudut jam. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -206,7 +480,10 @@
                 "ikon": "•",
                 "isi": "Titik temu dua garis.",
                 "suara": "Dua garis bertemu di satu titik. Titik itu disebut titik sudut.",
-                "visual": { "jenis": "teks", "isi": "1 titik sudut" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 titik sudut"
+                }
               },
               {
                 "id": "kaki",
@@ -214,7 +491,10 @@
                 "ikon": "／",
                 "isi": "Dua garis pembentuk.",
                 "suara": "Dua garis yang membentuk sudut disebut kaki sudut. Satu sudut punya dua kaki.",
-                "visual": { "jenis": "teks", "isi": "2 kaki sudut" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 kaki sudut"
+                }
               },
               {
                 "id": "daerah",
@@ -222,7 +502,10 @@
                 "ikon": "🟨",
                 "isi": "Di antara kedua kaki.",
                 "suara": "Daerah di antara kedua kaki adalah daerah sudut.",
-                "visual": { "jenis": "teks", "isi": "daerah sudut" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "daerah sudut"
+                }
               }
             ]
           },
@@ -233,8 +516,28 @@
             "ide": "Dibanding siku-siku, sempit atau lebar.",
             "suara": "Lihat dua jenis sudut yang tidak siku-siku.",
             "sisi": [
-              { "id": "lancip", "nama": "Lancip", "ikon": "∕", "catatan": "Lebih sempit dari siku-siku.", "suara": "Sudut yang lebih sempit dari siku-siku disebut lancip.", "visual": { "jenis": "teks", "isi": "< 90°" } },
-              { "id": "tumpul", "nama": "Tumpul", "ikon": "∠", "catatan": "Lebih lebar dari siku-siku.", "suara": "Sudut yang lebih lebar dari siku-siku disebut tumpul.", "visual": { "jenis": "teks", "isi": "> 90°" } }
+              {
+                "id": "lancip",
+                "nama": "Lancip",
+                "ikon": "∕",
+                "catatan": "Lebih sempit dari siku-siku.",
+                "suara": "Sudut yang lebih sempit dari siku-siku disebut lancip.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "< 90°"
+                }
+              },
+              {
+                "id": "tumpul",
+                "nama": "Tumpul",
+                "ikon": "∠",
+                "catatan": "Lebih lebar dari siku-siku.",
+                "suara": "Sudut yang lebih lebar dari siku-siku disebut tumpul.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "> 90°"
+                }
+              }
             ],
             "kesimpulan": "Tepat siku-siku adalah 90°."
           },
@@ -251,7 +554,10 @@
                 "ikon": "🕑",
                 "isi": "Sudutnya lancip.",
                 "suara": "Pada pukul dua, kedua jarum membentuk sudut yang lebih sempit dari siku-siku, yaitu lancip.",
-                "visual": { "jenis": "teks", "isi": "lancip" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "lancip"
+                }
               },
               {
                 "id": "tiga",
@@ -259,7 +565,10 @@
                 "ikon": "🕒",
                 "isi": "Sudutnya siku-siku.",
                 "suara": "Pada pukul tiga, kedua jarum membentuk sudut siku-siku.",
-                "visual": { "jenis": "teks", "isi": "∟ = 90°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "∟ = 90°"
+                }
               },
               {
                 "id": "empat",
@@ -267,8 +576,138 @@
                 "ikon": "🕓",
                 "isi": "Sudutnya tumpul.",
                 "suara": "Pada pukul empat, kedua jarum membentuk sudut yang lebih lebar dari siku-siku, yaitu tumpul.",
-                "visual": { "jenis": "teks", "isi": "tumpul" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "tumpul"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Apa itu sudut?",
+          "ikon": "∠",
+          "suara": "Ini peta masalah pengertian sudut. Kita ingin tahu apa sebenarnya sudut itu, dan apakah setiap pojok benda dapat disebut sudut. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-bagian",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Bagian-bagian sudut",
+            "petunjuk": "Hal yang dipelajari tentang apa saja yang membentuk sebuah sudut."
+          },
+          {
+            "id": "hal-jenis",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Jenis-jenis sudut",
+            "petunjuk": "Hal yang dipelajari tentang tiga golongan sudut."
+          },
+          {
+            "id": "hal-benda",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Sudut pada benda sekitar",
+            "petunjuk": "Hal yang dipelajari tentang pojok benda di sekitar kita."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-temu",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Cari titik temu dua garis",
+            "petunjuk": "Langkah untuk mengenali titik sudut dan kaki sudut."
+          },
+          {
+            "id": "cara-banding",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Banding dengan pojok kertas",
+            "petunjuk": "Langkah untuk menentukan jenis sudut: lebih sempit, sama, atau lebih lebar."
+          },
+          {
+            "id": "cara-periksa",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Cek pojok runcing atau bulat",
+            "petunjuk": "Langkah untuk memutuskan apakah pojok sebuah benda termasuk sudut."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-arti",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Menjelaskan arti sudut",
+            "petunjuk": "Kemampuan menjawab pertanyaan di pusat peta."
+          },
+          {
+            "id": "hasil-golong",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Menggolongkan sudut",
+            "petunjuk": "Kemampuan menyebut jenis sudut dengan tepat."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Tiga golongan sudut",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel tiga golongan sudut. Pasang contoh benda, pukul jam, dan jenis sudut untuk sudut yang lebih sempit, sama besar, dan lebih lebar dari pojok kertas.",
+        "pojok": "Banding",
+        "kolom": [
+          "Contoh benda",
+          "Jam",
+          "Jenis"
+        ],
+        "baris": [
+          {
+            "label": "Sempit",
+            "sel": [
+              "gunting dibuka",
+              "pukul 1",
+              "lancip"
+            ]
+          },
+          {
+            "label": "Sama",
+            "sel": [
+              "pojokan jendela",
+              "pukul 3",
+              "siku-siku"
+            ]
+          },
+          {
+            "label": "Lebar",
+            "sel": [
+              "kipas dibuka",
+              "pukul 4",
+              "tumpul"
             ]
           }
         ]
@@ -313,14 +752,62 @@
           }
         ],
         "kartu": [
-          { "id": "c-derajat", "teks": "Satuan sudut: derajat (°)", "ikon": "°", "cabang": "satuan", "petunjuk": "Satuan sudut itu soal satuan derajat. Coba cabang lain." },
-          { "id": "c-kipas", "teks": "Kipas lebih lebar, sudut lebih besar", "ikon": "🪭", "cabang": "satuan", "petunjuk": "Membandingkan lebar kipas itu soal satuan derajat. Coba cabang lain." },
-          { "id": "c-pusat", "teks": "Pusat busur di titik sudut", "ikon": "•", "cabang": "busur", "petunjuk": "Letak pusat busur itu soal pasang busur. Coba cabang lain." },
-          { "id": "c-dasar", "teks": "Garis dasar berimpit kaki pertama", "ikon": "／", "cabang": "busur", "petunjuk": "Garis dasar busur itu soal pasang busur. Coba cabang lain." },
-          { "id": "c-nol", "teks": "Baca dari nol di kaki pertama", "ikon": "0️⃣", "cabang": "baca", "petunjuk": "Membaca dari nol itu soal baca skala. Coba cabang lain." },
-          { "id": "c-125", "teks": "Kipas Pakarena: 125°", "ikon": "🔢", "cabang": "baca", "petunjuk": "Angka yang ditunjuk kaki kedua itu soal baca skala. Coba cabang lain." },
-          { "id": "c-lurus", "teks": "Sudut lurus = 180°", "ikon": "➖", "cabang": "patokan", "petunjuk": "Ukuran sudut lurus itu soal sudut patokan. Coba cabang lain." },
-          { "id": "c-penuh", "teks": "Sudut penuh = 360°", "ikon": "⭕", "cabang": "patokan", "petunjuk": "Ukuran sudut penuh itu soal sudut patokan. Coba cabang lain." }
+          {
+            "id": "c-derajat",
+            "teks": "Satuan sudut: derajat (°)",
+            "ikon": "°",
+            "cabang": "satuan",
+            "petunjuk": "Satuan sudut itu soal satuan derajat. Coba cabang lain."
+          },
+          {
+            "id": "c-kipas",
+            "teks": "Kipas lebih lebar, sudut lebih besar",
+            "ikon": "🪭",
+            "cabang": "satuan",
+            "petunjuk": "Membandingkan lebar kipas itu soal satuan derajat. Coba cabang lain."
+          },
+          {
+            "id": "c-pusat",
+            "teks": "Pusat busur di titik sudut",
+            "ikon": "•",
+            "cabang": "busur",
+            "petunjuk": "Letak pusat busur itu soal pasang busur. Coba cabang lain."
+          },
+          {
+            "id": "c-dasar",
+            "teks": "Garis dasar berimpit kaki pertama",
+            "ikon": "／",
+            "cabang": "busur",
+            "petunjuk": "Garis dasar busur itu soal pasang busur. Coba cabang lain."
+          },
+          {
+            "id": "c-nol",
+            "teks": "Baca dari nol di kaki pertama",
+            "ikon": "0️⃣",
+            "cabang": "baca",
+            "petunjuk": "Membaca dari nol itu soal baca skala. Coba cabang lain."
+          },
+          {
+            "id": "c-125",
+            "teks": "Kipas Pakarena: 125°",
+            "ikon": "🔢",
+            "cabang": "baca",
+            "petunjuk": "Angka yang ditunjuk kaki kedua itu soal baca skala. Coba cabang lain."
+          },
+          {
+            "id": "c-lurus",
+            "teks": "Sudut lurus = 180°",
+            "ikon": "➖",
+            "cabang": "patokan",
+            "petunjuk": "Ukuran sudut lurus itu soal sudut patokan. Coba cabang lain."
+          },
+          {
+            "id": "c-penuh",
+            "teks": "Sudut penuh = 360°",
+            "ikon": "⭕",
+            "cabang": "patokan",
+            "petunjuk": "Ukuran sudut penuh itu soal sudut patokan. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -340,7 +827,10 @@
                 "ikon": "•",
                 "isi": "Pusat busur di titik sudut.",
                 "suara": "Letakkan pusat busur tepat di titik sudut.",
-                "visual": { "jenis": "teks", "isi": "pusat = titik sudut" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "pusat = titik sudut"
+                }
               },
               {
                 "id": "dasar",
@@ -348,7 +838,10 @@
                 "ikon": "／",
                 "isi": "Dasar berimpit kaki pertama.",
                 "suara": "Putar busur sampai garis dasarnya berimpit dengan kaki pertama. Kaki pertama menunjuk nol.",
-                "visual": { "jenis": "teks", "isi": "kaki 1 = 0°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "kaki 1 = 0°"
+                }
               },
               {
                 "id": "baca",
@@ -356,7 +849,10 @@
                 "ikon": "👁️",
                 "isi": "Baca angka kaki kedua.",
                 "suara": "Baca angka yang ditunjuk kaki kedua. Contoh di buku, kipas Pakarena seratus dua puluh lima derajat.",
-                "visual": { "jenis": "teks", "isi": "kaki 2 = 125°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "kaki 2 = 125°"
+                }
               }
             ]
           },
@@ -367,8 +863,28 @@
             "ide": "Beda batas, jangan tertukar.",
             "suara": "Lihat dua jenis sudut yang lebih besar dari siku-siku.",
             "sisi": [
-              { "id": "tumpul", "nama": "Tumpul", "ikon": "∠", "catatan": "Kurang dari lurus.", "suara": "Sudut tumpul lebih besar dari siku-siku dan masih kurang dari sudut lurus.", "visual": { "jenis": "teks", "isi": "90° sampai 180°" } },
-              { "id": "releks", "nama": "Releks", "ikon": "⭕", "catatan": "Lebih dari lurus.", "suara": "Sudut releks lebih besar dari sudut lurus dan kurang dari sudut penuh.", "visual": { "jenis": "teks", "isi": "180° sampai 360°" } }
+              {
+                "id": "tumpul",
+                "nama": "Tumpul",
+                "ikon": "∠",
+                "catatan": "Kurang dari lurus.",
+                "suara": "Sudut tumpul lebih besar dari siku-siku dan masih kurang dari sudut lurus.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "90° sampai 180°"
+                }
+              },
+              {
+                "id": "releks",
+                "nama": "Releks",
+                "ikon": "⭕",
+                "catatan": "Lebih dari lurus.",
+                "suara": "Sudut releks lebih besar dari sudut lurus dan kurang dari sudut penuh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "180° sampai 360°"
+                }
+              }
             ],
             "kesimpulan": "Releks bukan tumpul."
           },
@@ -385,7 +901,10 @@
                 "ikon": "0️⃣",
                 "isi": "Kedua kaki berimpit.",
                 "suara": "Sudut nol punya ukuran nol derajat. Kedua kakinya berimpit.",
-                "visual": { "jenis": "teks", "isi": "0°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "0°"
+                }
               },
               {
                 "id": "siku",
@@ -393,7 +912,10 @@
                 "ikon": "∟",
                 "isi": "Setengah dari sudut lurus.",
                 "suara": "Sudut siku-siku sembilan puluh derajat, setengah dari sudut lurus.",
-                "visual": { "jenis": "teks", "isi": "90°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "90°"
+                }
               },
               {
                 "id": "lurus",
@@ -401,7 +923,10 @@
                 "ikon": "➖",
                 "isi": "Kaki membentuk garis lurus.",
                 "suara": "Sudut lurus seratus delapan puluh derajat. Kedua kakinya membentuk garis lurus.",
-                "visual": { "jenis": "teks", "isi": "180°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "180°"
+                }
               },
               {
                 "id": "penuh",
@@ -409,8 +934,146 @@
                 "ikon": "⭕",
                 "isi": "Satu putaran penuh.",
                 "suara": "Sudut penuh tiga ratus enam puluh derajat. Kaki kedua berputar satu putaran penuh.",
-                "visual": { "jenis": "teks", "isi": "360°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "360°"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Mengukur dan Membandingkan Sudut",
+          "ikon": "📐",
+          "suara": "Ini peta tentang masalah mengukur dan membandingkan sudut, yaitu bagaimana mengetahui besar sebuah sudut dan sudut mana yang lebih lebar. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-derajat",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Mengenal satuan derajat",
+            "petunjuk": "Hal yang dipelajari pertama: satuan untuk menyatakan besar sudut."
+          },
+          {
+            "id": "hal-busur",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Memakai busur derajat",
+            "petunjuk": "Hal yang dipelajari kedua: alat untuk mengukur sudut."
+          },
+          {
+            "id": "hal-banding",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Membandingkan besar sudut",
+            "petunjuk": "Hal yang dipelajari ketiga: menentukan sudut yang lebih besar atau lebih kecil."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-tulis",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tulis ukuran dengan tanda °",
+            "petunjuk": "Langkah untuk satuan derajat: setiap ukuran sudut ditulis dengan tanda derajat."
+          },
+          {
+            "id": "cara-pasang",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Pasang busur, baca skala",
+            "petunjuk": "Langkah untuk busur derajat: letakkan pusat dan garis dasar, lalu baca angkanya."
+          },
+          {
+            "id": "cara-banding",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Banding angka derajatnya",
+            "petunjuk": "Langkah terakhir: dua sudut dibandingkan lewat angka ukurannya."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-tepat",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Besar sudut terbaca tepat",
+            "petunjuk": "Kemampuan di akhir: ukuran sudut dibaca dengan benar, bukan tertukar skala."
+          },
+          {
+            "id": "hasil-urut",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Lebar sudut bisa diurutkan",
+            "petunjuk": "Kemampuan di akhir: beberapa sudut dapat diurutkan dari yang terlebar."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Besar dan jenis sudut",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel besar dan jenis sudut. Untuk tiap contoh, pasang besar sudut, jenis sudut, dan selisihnya dari sudut siku-siku.",
+        "pojok": "Contoh",
+        "kolom": [
+          "Besar",
+          "Jenis",
+          "Dari 90°"
+        ],
+        "baris": [
+          {
+            "label": "Kipas 4",
+            "sel": [
+              "85°",
+              "lancip",
+              "5° kurang"
+            ]
+          },
+          {
+            "label": "Jam 9",
+            "sel": [
+              "90°",
+              "siku-siku",
+              "sama"
+            ]
+          },
+          {
+            "label": "Kipas 3",
+            "sel": [
+              "135°",
+              "tumpul",
+              "45° lebih"
+            ]
+          },
+          {
+            "label": "Sisi luar",
+            "sel": [
+              "240°",
+              "refleks",
+              "150° lebih"
             ]
           }
         ]
@@ -455,14 +1118,62 @@
           }
         ],
         "kartu": [
-          { "id": "d-titik", "teks": "Buat titik sudut lebih dulu", "ikon": "•", "cabang": "titik", "petunjuk": "Titik sudut itu soal titik dan kaki. Coba cabang lain." },
-          { "id": "d-kaki-satu", "teks": "Kaki pertama: garis mendatar", "ikon": "➖", "cabang": "titik", "petunjuk": "Kaki pertama itu soal titik dan kaki. Coba cabang lain." },
-          { "id": "d-pusat", "teks": "Pusat busur di titik sudut", "ikon": "🎯", "cabang": "busur", "petunjuk": "Letak pusat busur itu soal pasang busur. Coba cabang lain." },
-          { "id": "d-dasar", "teks": "Dasar busur berimpit kaki pertama", "ikon": "／", "cabang": "busur", "petunjuk": "Garis dasar busur itu soal pasang busur. Coba cabang lain." },
-          { "id": "d-tanda", "teks": "Tanda di angka 75° dari nol", "ikon": "📍", "cabang": "tanda", "petunjuk": "Memberi tanda angka itu soal tanda dan kaki. Coba cabang lain." },
-          { "id": "d-kaki-dua", "teks": "Kaki kedua melalui tanda", "ikon": "✏️", "cabang": "tanda", "petunjuk": "Menggambar kaki kedua itu soal tanda dan kaki. Coba cabang lain." },
-          { "id": "d-cocok", "teks": "Hasil ukur ulang = target: akurat", "ikon": "✅", "cabang": "cek", "petunjuk": "Mencocokkan hasil dengan target itu soal ukur ulang. Coba cabang lain." },
-          { "id": "d-meleset", "teks": "Meleset: periksa pusat dan dasar", "ikon": "⚠️", "cabang": "cek", "petunjuk": "Mencari sebab meleset itu soal ukur ulang. Coba cabang lain." }
+          {
+            "id": "d-titik",
+            "teks": "Buat titik sudut lebih dulu",
+            "ikon": "•",
+            "cabang": "titik",
+            "petunjuk": "Titik sudut itu soal titik dan kaki. Coba cabang lain."
+          },
+          {
+            "id": "d-kaki-satu",
+            "teks": "Kaki pertama: garis mendatar",
+            "ikon": "➖",
+            "cabang": "titik",
+            "petunjuk": "Kaki pertama itu soal titik dan kaki. Coba cabang lain."
+          },
+          {
+            "id": "d-pusat",
+            "teks": "Pusat busur di titik sudut",
+            "ikon": "🎯",
+            "cabang": "busur",
+            "petunjuk": "Letak pusat busur itu soal pasang busur. Coba cabang lain."
+          },
+          {
+            "id": "d-dasar",
+            "teks": "Dasar busur berimpit kaki pertama",
+            "ikon": "／",
+            "cabang": "busur",
+            "petunjuk": "Garis dasar busur itu soal pasang busur. Coba cabang lain."
+          },
+          {
+            "id": "d-tanda",
+            "teks": "Tanda di angka 75° dari nol",
+            "ikon": "📍",
+            "cabang": "tanda",
+            "petunjuk": "Memberi tanda angka itu soal tanda dan kaki. Coba cabang lain."
+          },
+          {
+            "id": "d-kaki-dua",
+            "teks": "Kaki kedua melalui tanda",
+            "ikon": "✏️",
+            "cabang": "tanda",
+            "petunjuk": "Menggambar kaki kedua itu soal tanda dan kaki. Coba cabang lain."
+          },
+          {
+            "id": "d-cocok",
+            "teks": "Hasil ukur ulang = target: akurat",
+            "ikon": "✅",
+            "cabang": "cek",
+            "petunjuk": "Mencocokkan hasil dengan target itu soal ukur ulang. Coba cabang lain."
+          },
+          {
+            "id": "d-meleset",
+            "teks": "Meleset: periksa pusat dan dasar",
+            "ikon": "⚠️",
+            "cabang": "cek",
+            "petunjuk": "Mencari sebab meleset itu soal ukur ulang. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -482,7 +1193,10 @@
                 "ikon": "•",
                 "isi": "Titik sudut dan kaki pertama.",
                 "suara": "Langkah satu. Buat titik sudut dan satu kaki sudut.",
-                "visual": { "jenis": "teks", "isi": "titik + kaki 1" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "titik + kaki 1"
+                }
               },
               {
                 "id": "dua",
@@ -490,7 +1204,10 @@
                 "ikon": "📐",
                 "isi": "Pasang busur.",
                 "suara": "Langkah dua. Pasang busur, pusat di titik sudut dan dasar berimpit dengan kaki pertama.",
-                "visual": { "jenis": "teks", "isi": "pusat + dasar" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "pusat + dasar"
+                }
               },
               {
                 "id": "tiga",
@@ -498,7 +1215,10 @@
                 "ikon": "📍",
                 "isi": "Tandai angka target.",
                 "suara": "Langkah tiga. Tandai angka target pada skala yang mulai dari nol di kaki pertama. Contoh tujuh puluh lima derajat.",
-                "visual": { "jenis": "teks", "isi": "tanda 75°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "tanda 75°"
+                }
               },
               {
                 "id": "empat",
@@ -506,7 +1226,10 @@
                 "ikon": "✏️",
                 "isi": "Gambar kaki kedua.",
                 "suara": "Langkah empat. Gambar kaki kedua dari titik sudut melalui tanda.",
-                "visual": { "jenis": "teks", "isi": "kaki 2 lewat tanda" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "kaki 2 lewat tanda"
+                }
               }
             ]
           },
@@ -517,8 +1240,28 @@
             "ide": "Ukur ulang, bandingkan dengan target.",
             "suara": "Lihat dua hasil ukur ulang lukisan.",
             "sisi": [
-              { "id": "cocok", "nama": "Cocok", "ikon": "✅", "catatan": "Hasil sama dengan target.", "suara": "Hasil ukur ulang sama dengan target, jadi lukisan akurat.", "visual": { "jenis": "teks", "isi": "75° = 75°" } },
-              { "id": "meleset", "nama": "Meleset", "ikon": "⚠️", "catatan": "Hasil berbeda dari target.", "suara": "Hasil ukur ulang berbeda dari target, jadi lukisan perlu diulang.", "visual": { "jenis": "teks", "isi": "110° ≠ 70°" } }
+              {
+                "id": "cocok",
+                "nama": "Cocok",
+                "ikon": "✅",
+                "catatan": "Hasil sama dengan target.",
+                "suara": "Hasil ukur ulang sama dengan target, jadi lukisan akurat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "75° = 75°"
+                }
+              },
+              {
+                "id": "meleset",
+                "nama": "Meleset",
+                "ikon": "⚠️",
+                "catatan": "Hasil berbeda dari target.",
+                "suara": "Hasil ukur ulang berbeda dari target, jadi lukisan perlu diulang.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "110° ≠ 70°"
+                }
+              }
             ],
             "kesimpulan": "Meleset: cek pusat, dasar, dan skala."
           },
@@ -535,7 +1278,10 @@
                 "ikon": "∟",
                 "isi": "Siku-siku sembilan puluh.",
                 "suara": "Patokan siku-siku sembilan puluh derajat membantu menentukan lancip atau tumpul pada hasil lukisan.",
-                "visual": { "jenis": "teks", "isi": "90°" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "90°"
+                }
               },
               {
                 "id": "jenis",
@@ -543,7 +1289,10 @@
                 "ikon": "∠",
                 "isi": "Lancip atau tumpul.",
                 "suara": "Jenis sudut tetap berlaku pada hasil lukisan. Tiga puluh derajat lancip, seratus sepuluh derajat tumpul.",
-                "visual": { "jenis": "teks", "isi": "30° lancip, 110° tumpul" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "30° lancip, 110° tumpul"
+                }
               },
               {
                 "id": "busur",
@@ -551,8 +1300,146 @@
                 "ikon": "📏",
                 "isi": "Protokol sama dengan mengukur.",
                 "suara": "Memasang busur untuk melukis sama dengan saat mengukur. Pusat di titik sudut, dasar berimpit dengan kaki pertama.",
-                "visual": { "jenis": "teks", "isi": "ukur = lukis" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "ukur = lukis"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Kipas Lukas: melukis sudut",
+          "ikon": "📐",
+          "suara": "Ini peta tentang masalah kipas Lukas, yaitu bagaimana melukis sudut dengan ukuran tertentu memakai busur derajat. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-pasang",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Memasang busur derajat",
+            "petunjuk": "Hal yang dipelajari pertama: meletakkan busur dengan tepat pada sudut."
+          },
+          {
+            "id": "hal-tanda",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menandai ukuran sudut",
+            "petunjuk": "Hal yang dipelajari kedua: membuat titik pada angka yang diminta."
+          },
+          {
+            "id": "hal-periksa",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Memeriksa hasil lukisan",
+            "petunjuk": "Hal yang dipelajari ketiga: memastikan sudut yang dilukis sudah benar."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-pusat",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Pusat busur di titik sudut",
+            "petunjuk": "Langkah untuk memasang busur: pusat di titik sudut, dasar berimpit dengan kaki."
+          },
+          {
+            "id": "cara-tandai",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Tandai angka dari nol",
+            "petunjuk": "Langkah untuk menandai ukuran: hitung dari nol di kaki sudut."
+          },
+          {
+            "id": "cara-hubung",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Hubungkan lalu periksa",
+            "petunjuk": "Langkah terakhir: tarik garis lurus, lalu cek lagi dengan busur."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-sesuai",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Sudut sesuai ukuran diminta",
+            "petunjuk": "Kemampuan di akhir: sudut yang dilukis tepat seperti ukuran yang diminta."
+          },
+          {
+            "id": "hasil-skala",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tidak salah baca skala",
+            "petunjuk": "Kemampuan di akhir: memilih deret angka yang nolnya ada di kaki sudut."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Sudut yang dilukis",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel sudut yang dilukis. Untuk tiap gambar, pasang ukuran sudut, jenis sudut, dan selisihnya dari sudut siku-siku.",
+        "pojok": "Gambar",
+        "kolom": [
+          "Ukuran",
+          "Jenis",
+          "Dari 90°"
+        ],
+        "baris": [
+          {
+            "label": "Gambar a",
+            "sel": [
+              "30°",
+              "lancip",
+              "60° kurang"
+            ]
+          },
+          {
+            "label": "Gambar c",
+            "sel": [
+              "110°",
+              "tumpul",
+              "20° lebih"
+            ]
+          },
+          {
+            "label": "Gambar d",
+            "sel": [
+              "52°",
+              "lancip",
+              "38° kurang"
+            ]
+          },
+          {
+            "label": "Gambar e",
+            "sel": [
+              "140°",
+              "tumpul",
+              "50° lebih"
             ]
           }
         ]

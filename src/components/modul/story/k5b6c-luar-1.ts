@@ -8,14 +8,14 @@ const WARNA_KIPAS = [W.jingga, W.langit, W.hijauMuda, W.pink];
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode luar untuk mengukur dan membandingkan sudut",
-  sumber: "Metode luar buku; contoh dari Buku Siswa hlm. 175–182",
+  sumber: "Metode luar: pengantar empat metode",
   latar: "#EAF2FF",
   ketukan: [
     k(
-      "Video ini membahas empat metode luar untuk Subbab C, yaitu cara tambahan di luar buku untuk mengukur dan membandingkan sudut.",
+      "Video ini membahas empat metode luar, yaitu cara tambahan yang berbeda untuk mengukur dan membandingkan sudut.",
       tambah(0, judul("metode luar Subbab C")),
       tambah("metode", emo("dunia", 80, 100, "🌐", 44), teks("l1", 80, 132, "metode luar", 9, W.merah)),
-      tambah("Subbab", emo("buku", 220, 100, "📘", 44), teks("l2", 220, 132, "Subbab C", 9)),
+      tambah("tambahan", emo("alat", 220, 100, "📐", 44), teks("l2", 220, 132, "cara tambahan", 9)),
       tambah("mengukur", garis("pa", 112, 100, 74, 0, W.hijau, 4, { gambar: true })),
     ),
     k(
@@ -31,11 +31,11 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("Keempat,", ...kartu("m4", 156, 112, 134, 66, "#BFDBFE", ["Clock Face Division", "muka jam dibagi", "dua belas bagian"], 8.6)),
     ),
     k(
-      "Tiap metode dipelajari dalam dua bagian, konsep lalu penerapan, memakai angka dari Buku Siswa seperti kipas seratus dua puluh lima derajat dan jam pukul empat tiga puluh.",
+      "Tiap metode dipelajari dalam dua bagian, konsep lalu penerapan, memakai contoh yang sama seperti kipas seratus dua puluh lima derajat dan jam pukul empat tiga puluh.",
       bersih(0),
       tambah(0, judul("konsep, lalu penerapan")),
       tambah("konsep", ...kartu("c1", 30, 36, 100, 40, W.krem, ["konsep", "cara kerja"], 10)),
-      tambah("penerapan", garis("cp", 134, 56, 32, 0, W.hijau, 3, { gambar: true }), ...kartu("c2", 170, 36, 100, 40, W.hijauMuda, ["penerapan", "angka buku"], 10)),
+      tambah("penerapan", garis("cp", 134, 56, 32, 0, W.hijau, 3, { gambar: true }), ...kartu("c2", 170, 36, 100, 40, W.hijauMuda, ["penerapan", "contoh nyata"], 10)),
       tambah("kipas", kipas("mk", 70, 150, 40, 55, 180, W.jingga), teks("mk-n", 70, 172, "kipas 125°", 8.6, W.biru)),
       tambah("jam", ...jam("mj", 220, 128, 26, 4, 30), teks("mj-wk", 220, 172, "Pukul 04.30", 8.6, W.biru)),
     ),
@@ -46,7 +46,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 export const ADEGAN_LUAR_PROTOKOL: AdeganStory = {
   id: "luar-protokol",
   judul: "Protractor Reading Protocol: konsep",
-  sumber: "Metode luar 1: urutan baku membaca busur derajat",
+  sumber: "Metode luar: Protractor Reading Protocol",
   latar: "#ECFDF5",
   ketukan: [
     k(
@@ -69,7 +69,7 @@ export const ADEGAN_LUAR_PROTOKOL: AdeganStory = {
       hapus(0, "s1-k", "s1-t0", "s1-t1", "s2-k", "s2-t0", "s2-t1"),
     ),
     k(
-      "Urutan tetap ini mencegah dua kesalahan di Panduan Guru: salah memilih skala luar atau dalam, dan mengira busur harus selalu mendatar.",
+      "Urutan tetap ini mencegah dua kesalahan yang sering terjadi: salah memilih skala luar atau dalam, dan mengira busur harus selalu mendatar.",
       bersih(0),
       tambah(0, judul("dua kesalahan yang dicegah")),
       tambah("skala", ...kartu("x1", 20, 40, 260, 44, W.merahMuda, ["✗ salah memilih skala", "luar atau dalam"], 9.4)),
@@ -82,12 +82,12 @@ export const ADEGAN_LUAR_PROTOKOL: AdeganStory = {
 /* ------------------------------ LC2. Protractor Reading Protocol: penerapan ------------------------------ */
 export const ADEGAN_LUAR_PROTOKOL_TERAPAN: AdeganStory = {
   id: "luar-protokol-terapan",
-  judul: "Protractor Reading Protocol: penerapan pada kipas buku",
-  sumber: "Metode luar 1: contoh kipas Buku Siswa hlm. 176–179",
+  judul: "Protractor Reading Protocol: penerapan pada kipas lipat",
+  sumber: "Metode luar: protokol pada kipas",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapkan pada kipas contoh buku. Pusat: busur di titik sudut kipas. Nol: garis dasar menutupi kaki kiri, jadi skala dalam yang dipakai.",
+      "Terapkan pada kipas contoh tadi. Pusat: busur di titik sudut kipas. Nol: garis dasar menutupi kaki kiri, jadi skala dalam yang dipakai.",
       tambah(0, judul("terapan pada kipas contoh")),
       tambah("kipas", kipas("pt", 150, 176, 74, 55, 180, W.jingga, { z: -1 })),
       tambah("Pusat:", ...busurDerajat("pp", 150, 176, 82, { op: 0.8 })),
@@ -105,7 +105,7 @@ export const ADEGAN_LUAR_PROTOKOL_TERAPAN: AdeganStory = {
       tambah("gagal.", ...kartu("lg2", 204, 28, 88, 24, W.merahMuda, ["55° < 90° gagal"], 7.8)),
     ),
     k(
-      "Sekarang kipas empat di buku. Setelah empat langkah, hasilnya delapan puluh lima derajat. Cek: kurang dari sembilan puluh, dan kipas itu memang tampak lebih sempit dari siku-siku.",
+      "Sekarang kipas empat. Setelah empat langkah, hasilnya delapan puluh lima derajat. Cek: kurang dari sembilan puluh, dan kipas itu memang tampak lebih sempit dari siku-siku.",
       bersih(0),
       tambah(0, judul("kipas 4: protokol yang sama")),
       tambah("Sekarang", kipas("pu", 150, 176, 74, 95, 180, W.pink, { z: -1 }), ...busurDerajat("pq", 150, 176, 82, { op: 0.8 })),
@@ -127,7 +127,7 @@ export const ADEGAN_LUAR_PROTOKOL_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_PATOKAN: AdeganStory = {
   id: "luar-patokan",
   judul: "Benchmark Angles: konsep",
-  sumber: "Metode luar 2: sudut patokan untuk menaksir",
+  sumber: "Metode luar: Benchmark Angles",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -171,11 +171,11 @@ export const ADEGAN_LUAR_PATOKAN: AdeganStory = {
 export const ADEGAN_LUAR_PATOKAN_TERAPAN: AdeganStory = {
   id: "luar-patokan-terapan",
   judul: "Benchmark Angles: penerapan pada kipas dan sudut refleks",
-  sumber: "Metode luar 2: contoh kipas dan Tantangan Buku Siswa hlm. 176–181",
+  sumber: "Metode luar: patokan pada kipas, refleks",
   latar: "#FEFCE8",
   ketukan: [
     k(
-      "Taksir empat kipas di buku. Kipas empat tampak kurang dari siku-siku, jadi lancip. Kipas satu, dua, dan tiga tampak lebih dari siku-siku, jadi tumpul.",
+      "Taksir empat kipas tadi. Kipas empat tampak kurang dari siku-siku, jadi lancip. Kipas satu, dua, dan tiga tampak lebih dari siku-siku, jadi tumpul.",
       tambah(0, judul("menaksir empat kipas")),
       tambah("Taksir", ...barisKipas("bt", [105, 130, 135, 85], 120, 34, WARNA_KIPAS)),
       tambah("lancip.", teks("bt4-j", 262.5, 156, "lancip", 9, W.hijau)),
