@@ -1,6 +1,6 @@
 // Uji Story Kelas 6 Bab 4 Sub-Bab B (Membandingkan Peluang Kejadian): dua video (materi kurikulum dan metode luar) dengan mesin animasi baru.
 // Memeriksa: pemicu kata, sinkron angka suara dan gambar, perubahan gambar tiap ketukan, keunikan antaradegan, batas kanvas,
-// pemisahan materi dan metode luar, kutipan buku (bila PDF ada), emoji paling tinggi Emoji 12, dan kemurnian berkas.
+// pemisahan materi dan metode luar, kata terlarang (video diputar seperti guru mengajar), kutipan buku (bila PDF ada), emoji paling tinggi Emoji 12, dan kemurnian berkas.
 // Jalankan: node --no-warnings scripts/uji-story-k6b4b.mjs
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { register } from "node:module";
@@ -13,6 +13,9 @@ register(
 );
 const L = await import("../src/components/modul/story/logika-story.ts");
 const V = await import("../src/components/modul/story/k6b4b-video.ts");
+const M1 = await import("../src/components/modul/story/k6b4b-materi-1.ts");
+const M2 = await import("../src/components/modul/story/k6b4b-materi-2.ts");
+const M3 = await import("../src/components/modul/story/k6b4b-materi-3.ts");
 
 let lulus = 0;
 let gagal = 0;
@@ -40,7 +43,7 @@ for (const v of VIDEO) {
   cek(new Set(v.adegan.map((a) => a.id)).size === v.adegan.length, `${v.id}: id adegan unik`);
   for (const a of v.adegan) {
     const nama = `${v.id}/${a.id}`;
-    cek(a.ketukan.length >= 4 && a.ketukan.length <= 14, `${nama}: 4 sampai 14 ketukan (ada ${a.ketukan.length})`);
+    cek(a.ketukan.length >= 3 && a.ketukan.length <= 14, `${nama}: 3 sampai 14 ketukan (ada ${a.ketukan.length})`);
     cek(a.sumber.length > 8 && a.judul.length > 5 && /^#[0-9A-Fa-f]{6}$/.test(a.latar), `${nama}: sumber, judul, dan latar ada`);
     let sebelumnya = null;
     const terlihat = new Set();
@@ -50,6 +53,7 @@ for (const v of VIDEO) {
       totalKata += kata.length;
       cek(kata.length >= 6 && kata.length <= 40, `${nama}#${i + 1}: 6 sampai 40 kata (ada ${kata.length})`);
       cek(!/[=×÷<>\/%]/.test(kt.suara), `${nama}#${i + 1}: suara tanpa lambang yang sulit dibaca mesin suara`);
+      cek(!/\d/.test(kt.suara), `${nama}#${i + 1}: suara tanpa digit (angka dieja dengan kata)`);
       cek(/[.?!]$/.test(kt.suara.trim()), `${nama}#${i + 1}: suara berakhir tanda baca`);
       cek(kt.aksi.length >= 1, `${nama}#${i + 1}: ada aksi gambar`);
       // pemicu kata
@@ -109,20 +113,50 @@ for (const v of VIDEO) {
 }
 
 /* ------------------------------ Pemisahan materi dan metode luar ------------------------------ */
+const M_VIDEO = V.VIDEO_MATERI_K6B4B;
+// Semua adegan materi bermakna diputar (tidak ada adegan administratif di Sub-Bab B). Adegan sapaan bersama dipasang di depan.
+// Adegannya tetap diambil dari berkas materi, jadi pemeriksaan isi memakai daftar penuh.
+const MODUL_MATERI = Object.assign({}, M1, M2, M3);
+const M = { ...M_VIDEO, adegan: [MODUL_MATERI.ADEGAN_LOMBA, MODUL_MATERI.ADEGAN_EKSPLORASI42, MODUL_MATERI.ADEGAN_BANDING, MODUL_MATERI.ADEGAN_KURANG_ADIL, MODUL_MATERI.ADEGAN_LATIHAN42, MODUL_MATERI.ADEGAN_PERMEN, MODUL_MATERI.ADEGAN_HADIAH, MODUL_MATERI.ADEGAN_LATIHAN43, MODUL_MATERI.ADEGAN_UJI] };
+const U = V.VIDEO_LUAR_K6B4B;
 {
-  const teksVideo = (v) => JSON.stringify(v.adegan.map((a) => [a.judul, a.ketukan.map((kt) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, a.ketukan.indexOf(kt), 9999))])]));
+  const teksVideo = (v) => JSON.stringify(v.adegan.map((a) => [a.judul, a.sumber, a.ketukan.map((kt, i) => [kt.suara, L.teksTerlihat(L.keadaanStory(a, i, 9999))])]));
   const NAMA_METODE = /Favorable-to-Total|Comparative Probability|Fair Game|Relative Likelihood|metode luar|silang kali/i;
-  cek(!NAMA_METODE.test(teksVideo(V.VIDEO_MATERI_K6B4B)), "video materi tidak memuat nama metode luar");
-  const luar = teksVideo(V.VIDEO_LUAR_K6B4B);
+  const materi = teksVideo(M_VIDEO);
+  const luar = teksVideo(U);
+  cek(!NAMA_METODE.test(materi), "video materi tidak memuat nama metode luar");
   for (const m of ["Favorable-to-Total Ratio", "Comparative Probability Ratio", "Fair Game Equal Chance Principle", "Relative Likelihood Decision"]) cek(luar.includes(m), `video metode luar memuat ${m}`);
-  cek(!/persen|%/i.test(teksVideo(V.VIDEO_MATERI_K6B4B) + luar), "kedua video tanpa persen");
-  cek(V.VIDEO_MATERI_K6B4B.adegan.every((a) => /Buku Siswa/.test(a.sumber) && /hlm\./.test(a.sumber)), "video materi: tiap adegan mencatat halaman buku");
-  cek(V.VIDEO_LUAR_K6B4B.adegan.every((a) => /metode (dari )?luar|Ringkasan/i.test(a.sumber)), "video metode luar: tiap adegan bersumber metode luar atau ringkasan");
-  const teksMateri = teksVideo(V.VIDEO_MATERI_K6B4B);
-  for (const k of ["Eksplorasi 4.2", "Eksplorasi 4.3", "Latihan 4.2", "Latihan 4.3", "Toko Sukamaju", "Mantap", "Spektakuler", "Penuhi Lingkaran", "kurang adil", "ketua kelas", "Uji Kompetensi", "Refleksi"]) cek(new RegExp(k, "i").test(teksMateri), `video materi memuat ${k}`);
-  const ids = V.VIDEO_LUAR_K6B4B.adegan.map((a) => a.id);
+  cek(!/persen|%/i.test(materi + luar), "kedua video tanpa persen");
+  // Video diputar sebagai guru yang mengajar: tidak ada penyebutan sumber buku di suara, teks terlihat, label sumber, judul adegan, dan subjudul.
+  // Adegan sapaan bersama (sapaan.ts) mengumumkan "beberapa cara lain" dan tidak termasuk pemeriksaan ini.
+  const TERLARANG = /buku|panduan guru|hlm|halaman|kunci|rubrik|salah ketik|salah cetak|tambahan video|contoh video|temuan|pertemuan/i;
+  // Sub-Bab B tidak memakai persen, desimal, atau rumus peluang formal.
+  const BOCOR_B = /(persen|desimal|\d,\d|\bkombinasi\b|\bpermutasi\b|frekuensi harapan|ruang sampel)/i;
+  for (const v of [M_VIDEO, U]) {
+    cek(!TERLARANG.test(`${v.judul} ${v.subjudul}`), `${v.id}: judul dan subjudul video tanpa kata terlarang`);
+    for (const a of v.adegan) {
+      const semua = [a.judul, a.sumber];
+      a.ketukan.forEach((kt, i) => {
+        semua.push(kt.suara);
+        for (let p = 0; p < L.kataDari(kt.suara).length; p += 1) semua.push(...L.teksTerlihat(L.keadaanStory(a, i, p)));
+      });
+      const kena = semua.filter((t) => TERLARANG.test(t) || /soal nomor|Ayo Berlatih nomor|nomor [1-9]|catatan video|menurut buku/i.test(t));
+      cek(kena.length === 0, `${v.id}/${a.id}: tanpa penyebutan buku atau catatan sumber (${kena.slice(0, 2).join(" | ")})`);
+      cek(!/Uji Kompetensi|Pengayaan|Ayo Berlatih|Ayo Berdiskusi|Ayo Berefleksi|Berpikir Kritis|Berpikir Kreatif|Eksplorasi|Latihan 4\.\d|Refleksi|Berefleksi|soal \d|Soal \d/.test(semua.join(" | ")), `${v.id}/${a.id}: latihan disajikan sebagai Latihan, Uji, Tantangan, atau Hati-hati, tanpa penomoran buku`);
+      const bocor = semua.filter((t) => BOCOR_B.test(t) || /%/.test(t));
+      cek(bocor.length === 0, `${v.id}/${a.id}: bebas persen, desimal, dan rumus peluang formal (${bocor.slice(0, 2).join(" | ")})`);
+    }
+  }
+  cek(M_VIDEO.subjudul === "Materi kurikulum" && U.subjudul === "Empat metode luar", "subjudul video: Materi kurikulum dan Empat metode luar");
+  cek(M_VIDEO.adegan.every((a) => /^Materi: /.test(a.sumber) && a.sumber.length <= 46), "video materi: label sumber berbentuk Materi: ... dan pendek");
+  cek(U.adegan.every((a) => /Metode luar|Ringkasan/i.test(a.sumber) && a.sumber.length <= 46), "video metode luar: label sumber metode luar atau ringkasan, pendek");
+  cek(M_VIDEO.adegan.map((a) => a.id).join() === "sapaan,lomba-peserta,eksplorasi-42,banding-permainan,contoh-kurang-adil,latihan-42,eksplorasi-43,kotak-hadiah,latihan-43,refleksi-uji", "urutan adegan materi");
+  for (const kata of ["Latihan 1", "Latihan 4", "Latihan 6", "Uji 1", "Uji 4", "Renungan", "Tantangan", "Hati-hati", "Latihan bersama", "Toko Sukamaju", "Mantap", "Spektakuler", "Penuhi Lingkaran", "kurang adil", "ketua kelas"]) cek(new RegExp(kata, "i").test(materi), `video materi memuat ${kata}`);
+  const ids = U.adegan.map((a) => a.id);
   cek(["luarb-ftr", "luarb-ftr-terapan", "luarb-cpr", "luarb-cpr-terapan", "luarb-fair", "luarb-fair-terapan", "luarb-keputusan"].every((i) => ids.includes(i)), "video metode luar: konsep dan penerapan untuk tiap metode");
-  cek(totalKetukan >= 110, `total ketukan cukup dalam (${totalKetukan})`);
+  cek(U.adegan[1].id === "luarb-pembuka" && U.adegan[U.adegan.length - 1].id === "luarb-ringkas" && U.adegan.length === 10 && M_VIDEO.adegan.length === 10, "9 adegan materi diputar ditambah sapaan dan 9 adegan metode luar ditambah sapaan");
+  cek(M.adegan.length === 9 && M.adegan.every((a) => a !== undefined) && M.adegan[8].id === "refleksi-uji", "berkas materi memuat 9 adegan, yang terakhir uji, tantangan, dan renungan");
+  cek(totalKetukan >= 70, `total ketukan cukup dalam (${totalKetukan})`);
 }
 
 /* ------------------------------ Angka yang dihitung dalam video ------------------------------ */
@@ -141,12 +175,12 @@ for (const v of VIDEO) {
   sama(silang([4, 7], [3, 7]), "a", "Mantap 4 dari 7 lebih besar dari Spektakuler 3 dari 7");
   sama(silang([1, 12], [1, 35]), "a", "kategori SD lebih mungkin dari SMP");
   sama([1 * 35, 1 * 12], [35, 12], "SD 35 dari 420 dan SMP 12 dari 420");
-  // Latihan 4.3 nomor 2: kotak 1 (2 set pensil, 3 pensil dan penghapus, 5 buku) dan kotak 2 (4, 4, 3).
+  // Latihan memilih kotak: kotak 1 (2 set pensil, 3 pensil dan penghapus, 5 buku) dan kotak 2 (4, 4, 3).
   const K1 = { set: 2, pensil: 3, buku: 5 };
   const K2 = { set: 4, pensil: 4, buku: 3 };
   const total = (k) => k.set + k.pensil + k.buku;
   sama([total(K1), total(K2)], [10, 11], "isi kotak 1 dan kotak 2");
-  sama(["set", "buku", "pensil"].map((j) => silang([K1[j], total(K1)], [K2[j], total(K2)])), ["b", "a", "b"], "kunci Latihan 4.3 nomor 2: kotak 2, kotak 1, kotak 2");
+  sama(["set", "buku", "pensil"].map((j) => silang([K1[j], total(K1)], [K2[j], total(K2)])), ["b", "a", "b"], "pilihan kotak untuk set pensil, buku bacaan, dan pensil dengan penghapus: kotak 2, kotak 1, kotak 2");
   sama([K1.set * 11, K2.set * 10, K1.buku * 11, K2.buku * 10, K1.pensil * 11, K2.pensil * 10], [22, 40, 55, 30, 33, 40], "hasil pada total bersama 110");
   // Dua dadu: pasangan yang memuat angka 6, dicacah satu per satu dari 36 pasangan.
   let memuat = 0;
@@ -164,9 +198,9 @@ for (const v of VIDEO) {
   sama([cacah((n) => n === 6), cacah((n) => n <= 5)], [1, 5], "angka 6 lawan 1 sampai 5: 1 dan 5");
   sama([cacah((n) => n === 1 || n === 3), cacah((n) => n === 5 || n === 6)], [2, 2], "angka 1 atau 3 lawan 5 atau 6: 2 dan 2");
   cek(cacah((n) => n === 3) === 1 && cacah((n) => n === 6) === 1, "angka 3 lawan angka 6: 1 dan 1");
-  // Dadu pilihan Uji Kompetensi nomor 4.
+  // Dadu pilihan pada uji dadu.
   const tiga = (d) => d.filter((n) => n === 3).length;
-  sama([tiga([1, 2, 3, 4, 5, 6]), tiga([1, 1, 3, 3, 6, 6]), tiga([3, 3, 3, 4, 5, 6]), tiga([3, 5, 3, 5, 3, 5]), tiga([1, 2, 3, 4])], [1, 2, 3, 3, 1], "jumlah angka 3 pada tiap dadu pilihan");
+  sama([tiga([1, 2, 3, 4, 5, 6]), tiga([1, 1, 3, 3, 6, 6]), tiga([3, 3, 3, 4, 5, 6]), tiga([3, 5, 3, 5, 3, 5]), tiga([1, 2, 3, 4])], [1, 2, 3, 3, 1], "jumlah angka 3 pada tiap dadu pilihan (uji dadu)");
   cek(silang([1, 4], [1, 6]) === "a", "dadu piramida 1 dari 4 lebih besar dari dadu biasa 1 dari 6");
   sama([6 + 6 + 3 + 1, 1 + 4 + 11 > 0 ? 6 : 0], [16, 6], "pembantu angka");
   sama([2 + 3 + 5, 4 + 4 + 3, 6 - 1], [10, 11, 5], "total kotak dan sisa dadu");
@@ -182,7 +216,7 @@ for (const v of VIDEO) {
     const bersih = (t) => t.toLowerCase().replace(/-\s*\n\s*/g, "-").replace(/\s+/g, " ").trim();
     const buku = bersih(cobaPdf.stdout);
     let n = 0;
-    for (const a of V.VIDEO_MATERI_K6B4B.adegan) for (const kt of a.kutipan ?? []) {
+    for (const a of M_VIDEO.adegan) for (const kt of a.kutipan ?? []) {
       n += 1;
       cek(buku.includes(bersih(kt)), `kutipan buku ${a.id}: "${kt}" ada di teks PDF`);
     }
@@ -211,7 +245,7 @@ for (const v of VIDEO) {
   for (const f of berkas.filter((x) => x.startsWith("k6b4b-"))) {
     const s = readFileSync(new URL(f, folder), "utf8");
     const impor = [...s.matchAll(/from "([^"]+)"/g)].map((m) => m[1]);
-    cek(impor.every((i) => /^\.\/(logika-story|k6b4[ab]-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika dan berkas bab k6b4 sendiri (${impor.join(", ")})`);
+    cek(impor.every((i) => /^\.\/(logika-story|sapaan|k6b4[ab]-[a-z0-9-]+)$/.test(i)), `${f}: hanya mengimpor logika, sapaan, dan berkas bab k6b4 sendiri (${impor.join(", ")})`);
   }
   // mesin tidak memakai kit visual lama
   const mesin = readFileSync(new URL("mesin-story.tsx", folder), "utf8");

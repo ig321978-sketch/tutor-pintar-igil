@@ -224,6 +224,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Mungkinkah Dhien menang?",
+          "ikon": "🎤",
+          "suara": "Ini peta tentang Dhien yang ragu ikut lomba menyanyi. Ia mengira tidak punya peluang sama sekali. Kita ingin tahu seberapa mungkin ia menang. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-tingkat",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Lima tingkat kemungkinan",
+            "ikon": "📶",
+            "petunjuk": "Dari tidak mungkin, kurang mungkin, mungkin, sangat mungkin, sampai pasti."
+          },
+          {
+            "id": "hal-skala",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menyusun skala dari jumlah",
+            "ikon": "📏",
+            "petunjuk": "Menghitung tiap jenis benda, lalu menaruh kejadiannya di tempat yang tepat pada skala."
+          },
+          {
+            "id": "hal-roda",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Mencoba dengan roda putar",
+            "ikon": "🎡",
+            "petunjuk": "Membuat dugaan, memutar roda, lalu memeriksa dugaan itu dengan hasil putaran."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-kata",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Pilih kata yang tepat",
+            "ikon": "💬",
+            "petunjuk": "Langkah untuk lima tingkat: bayangkan kejadiannya, lalu pilih kata dari tidak mungkin sampai pasti."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Hitung tiap jenis benda",
+            "ikon": "🔢",
+            "petunjuk": "Langkah untuk menyusun skala: hitung benda tiap jenis, makin banyak makin ke kanan."
+          },
+          {
+            "id": "cara-dugaan",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Dugaan dulu, lalu putar",
+            "ikon": "✏️",
+            "petunjuk": "Langkah untuk percobaan: tulis dugaan sebelum memutar, lalu catat tiap hasilnya."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-nilai",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menilai kemungkinan",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan menyebut seberapa mungkin sebuah kejadian akan terjadi."
+          },
+          {
+            "id": "hasil-duga",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Dugaan berdasarkan data",
+            "ikon": "📊",
+            "petunjuk": "Kemampuan membuat dugaan dari jumlah dan hasil percobaan, bukan dari perasaan."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Pakaian di lemari Ayah",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel jawaban teka-teki lemari Ayah Dhien. Tiap jawaban berisi enam belas pakaian. Pasang banyak pakaian hitam, biru, dan hijau untuk tiap jawaban.",
+        "pojok": "Jawaban",
+        "kolom": [
+          "Hitam",
+          "Biru",
+          "Hijau"
+        ],
+        "baris": [
+          {
+            "label": "Contoh 1",
+            "sel": [
+              "2",
+              "5",
+              "9"
+            ]
+          },
+          {
+            "label": "Contoh 2",
+            "sel": [
+              "1",
+              "4",
+              "11"
+            ]
+          },
+          {
+            "label": "Contoh 3",
+            "sel": [
+              "3",
+              "6",
+              "7"
+            ]
+          }
+        ]
       }
     },
     "B": {
@@ -441,6 +576,141 @@
                   "isi": "besar bukan pasti"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Peluang mana lebih besar?",
+          "ikon": "🎲",
+          "suara": "Ini peta masalah membandingkan peluang. Dhien ikut lomba menyanyi di tiga kategori, dan kita ingin tahu di kategori mana peluang menangnya lebih besar. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-banding",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Membandingkan dua peluang",
+            "petunjuk": "Memahami bahwa dua kejadian bisa dibandingkan lewat peluangnya masing-masing."
+          },
+          {
+            "id": "hal-adil",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Adil dan kurang adil",
+            "petunjuk": "Memahami bahwa permainan adil bila peluang menang tiap pemain sama."
+          },
+          {
+            "id": "hal-pilih",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Memilih dengan peluang",
+            "petunjuk": "Memahami bahwa pilihan yang baik berpegang pada peluang yang lebih besar."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-tulis",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tulis peluang tiap kejadian",
+            "petunjuk": "Langkah menghitung hasil yang diharapkan dan semua hasil untuk tiap kejadian."
+          },
+          {
+            "id": "cara-samakan",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Samakan total lalu banding",
+            "petunjuk": "Langkah menyamakan total hasil dulu, baru membandingkan hasil yang diharapkan."
+          },
+          {
+            "id": "cara-periksa",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Periksa peluang tiap pemain",
+            "petunjuk": "Langkah memeriksa apakah tiap pemain punya kesempatan menang yang sama."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-putus",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Keputusan dengan alasan",
+            "petunjuk": "Kemampuan memilih yang peluangnya lebih besar dan menjelaskan alasannya."
+          },
+          {
+            "id": "hasil-adil",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Permainan jadi adil",
+            "petunjuk": "Kemampuan menilai dan memperbaiki permainan supaya peluang pemain sama."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Menang, semua, dan sisa",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel peluang beberapa contoh. Untuk tiap contoh, pasang banyak hasil yang menang, banyak semua hasil, dan banyak hasil sisanya.",
+        "pojok": "Contoh",
+        "kolom": [
+          "Menang",
+          "Semua",
+          "Sisa"
+        ],
+        "baris": [
+          {
+            "label": "Dadu",
+            "sel": [
+              "1 sisi",
+              "6 sisi",
+              "5 sisi"
+            ]
+          },
+          {
+            "label": "Mantap",
+            "sel": [
+              "4 bola",
+              "7 bola",
+              "3 bola"
+            ]
+          },
+          {
+            "label": "Lomba",
+            "sel": [
+              "1 anak",
+              "12 anak",
+              "11 anak"
+            ]
+          },
+          {
+            "label": "Pensil",
+            "sel": [
+              "4 set",
+              "11 buah",
+              "7 buah"
             ]
           }
         ]
