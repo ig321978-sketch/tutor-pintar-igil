@@ -49,4 +49,6 @@ export const CERITA_BARU: Record<string, ComponentType<PropsCerita>> = {
   "mtk-2-bab5-C": dynamic<PropsCerita>(() => import("@/components/modul/video-k2b5c").then((m) => m.VideoK2B5C), { ssr: false }),
   "mtk-2-bab6-A": dynamic<PropsCerita>(() => import("@/components/modul/video-k2b6a").then((m) => m.VideoK2B6A), { ssr: false }),
   "mtk-2-bab6-B": dynamic<PropsCerita>(() => import("@/components/modul/video-k2b6b").then((m) => m.VideoK2B6B), { ssr: false }),
+  "mtk-2-bab7-A": dynamic<PropsCerita>(() => import("@/components/modul/video-k2b7a").then((m) => m.VideoK2B7A), { ssr: false }),
+  "mtk-2-bab7-B": dynamic<PropsCerita>(() => import("@/components/modul/video-k2b7b").then((m) => m.VideoK2B7B), { ssr: false }),
 };
