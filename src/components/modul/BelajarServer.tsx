@@ -246,6 +246,106 @@ function teksJeda(iso: string): string {
   }
 }
 
+function PratinjauUjianLokal({
+  bab,
+  bacakan,
+}: {
+  bab: string;
+  bacakan: (teks: string) => void;
+}) {
+  const [soal, setSoal] = useState<{ id: string; pertanyaan: string; pilihan: string[] }[]>([]);
+  const [indeks, setIndeks] = useState(0);
+  const [pesan, setPesan] = useState("Membaca lembar ujian…");
+
+  useEffect(() => {
+    let batal = false;
+    (async () => {
+      const res = await panggil<{ status: string; soal?: { id: string; pertanyaan: string; pilihan: string[] }[] }>(
+        `/api/dev/pratinjau-ujian?bab=${encodeURIComponent(bab)}`,
+      );
+      if (batal) return;
+      if (!res || res.status !== "ok" || !res.soal || res.soal.length === 0) {
+        setPesan("Lembar ujian bab ini belum ada di berkas lokal.");
+        setSoal([]);
+        return;
+      }
+      setSoal(res.soal);
+      setPesan("");
+    })();
+    return () => {
+      batal = true;
+    };
+  }, [bab]);
+
+  if (soal.length === 0) {
+    return (
+      <section className="mx-auto mt-4 w-[98%] space-y-3 rounded-3xl border-2 border-[#EF4444] bg-[#FFF1F2] p-6 text-center">
+        <h2 className="text-lg font-black text-[#1C01A5] md:text-xl">Lembar Ujian</h2>
+        <p className="text-sm font-bold text-[#334155] md:text-base">{pesan}</p>
+      </section>
+    );
+  }
+
+  const q = soal[indeks];
+  return (
+    <section className="mx-auto mt-4 w-[98%] space-y-5 rounded-3xl border-2 border-[#EF4444] bg-[#FFF1F2] p-5 md:p-7">
+      <div className="rounded-2xl bg-[#1C01A5] p-4 text-white">
+        <span className="text-xs font-black uppercase text-[#FFE566]">Pratinjau Ujian • tidak dinilai</span>
+        <h2 className="text-base font-black md:text-lg">Soal bisa dibaca tanpa melewati materi. Poin tidak tercatat.</h2>
+      </div>
+      <div className="flex flex-wrap gap-2" role="group" aria-label="Nomor soal">
+        {soal.map((s, i) => (
+          <button
+            key={s.id}
+            type="button"
+            onClick={() => setIndeks(i)}
+            aria-label={`Soal ${i + 1}`}
+            className={`h-9 w-9 rounded-full border-2 text-xs font-black ${
+              i === indeks ? "border-[#FFE566] bg-[#1C01A5] text-[#FFE566]" : "border-slate-300 bg-white text-[#334155]"
+            }`}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
+      <div className="space-y-4 rounded-3xl border-2 border-[#FCA5A5] bg-white p-5">
+        <div className="flex flex-wrap items-start justify-between gap-2">
+          <span className="rounded-full bg-[#FEE2E2] px-3 py-1 text-xs font-black text-[#991B1B]">
+            Soal Formal #{indeks + 1} / {soal.length}
+          </span>
+          <TombolSuaraGuru kecil label="Bacakan Soal" onClick={() => bacakan(`${q.pertanyaan}. ${q.pilihan.join(". ")}`)} />
+        </div>
+        <p className="text-base font-black leading-relaxed text-[#1C01A5] md:text-lg">{q.pertanyaan}</p>
+        <div className="grid grid-cols-1 gap-2.5">
+          {q.pilihan.map((opt) => (
+            <p key={opt} className="rounded-2xl border-2 border-slate-300 bg-white p-3 text-left text-sm font-black text-[#334155] md:text-base">
+              {opt}
+            </p>
+          ))}
+        </div>
+      </div>
+      <div className="flex items-center justify-between gap-2 pt-1">
+        <button
+          type="button"
+          disabled={indeks === 0}
+          onClick={() => setIndeks((i) => Math.max(0, i - 1))}
+          className="rounded-2xl border-2 border-slate-300 bg-white px-6 py-3 text-xs font-black text-[#334155] disabled:opacity-40"
+        >
+          ⬅️ KEMBALI
+        </button>
+        <button
+          type="button"
+          disabled={indeks === soal.length - 1}
+          onClick={() => setIndeks((i) => Math.min(soal.length - 1, i + 1))}
+          className="rounded-2xl border-2 border-[#FFE566] bg-[#1C01A5] px-7 py-3 text-xs font-black text-[#FFE566] disabled:opacity-40"
+        >
+          SOAL BERIKUTNYA ➡️
+        </button>
+      </div>
+    </section>
+  );
+}
+
 export function UjianServer({
   bab,
   chapterId,
@@ -368,6 +468,11 @@ export function UjianServer({
   const jumlahJawab = useMemo(() => soal.filter((s) => jawaban[s.id] !== undefined).length, [soal, jawaban]);
   // Server hanya mengirim jedaSampai bila jeda masih berlaku saat status dibaca.
   const jedaAktif = Boolean(statusBab?.jedaSampai);
+
+  // Di komputer pengembangan, tab Ujian bisa dibaca tanpa akun. Tidak dinilai dan tidak menyimpan poin.
+  if (process.env.NODE_ENV === "development" && (profil.status !== "siap" || !idAnak)) {
+    return <PratinjauUjianLokal bab={chapterId} bacakan={bacakan} />;
+  }
 
   // ---------- Belum bisa dinilai server ----------
   if (profil.status !== "siap" || !idAnak) {
