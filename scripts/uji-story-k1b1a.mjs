@@ -388,8 +388,8 @@ let stat = { hitung: 0, titik: 0, tulis: 0 };
   cek(/Halo anak-anak/.test(sap.ketukan[0].suara) && /Menghitung benda/i.test(L.teksTerlihat(akhirAdegan(sap, 1)).join(" | ")), "sapaan materi: tiga hal yang dipelajari tampil");
   sama(L.teksTerlihat(akhirAdegan(sap, 1)).filter((t) => ["Menghitung benda", "Membaca angka", "Menulis angka"].includes(t)), ["Menghitung benda", "Membaca angka", "Menulis angka"], "sapaan materi: daftar tiga hal");
   cek(!/\d/.test(sap.ketukan[1].suara), "sapaan materi: tanpa angka");
-  if (existsSync(new URL("../.tmp-k1b1as/A.json", import.meta.url))) {
-    const A = JSON.parse(readFileSync(new URL("../.tmp-k1b1as/A.json", import.meta.url), "utf8"));
+  if (true) {
+    const A = JSON.parse(readFileSync(new URL("../src/data/kelas1-bab1-ringkas.json", import.meta.url), "utf8")).subBab.A;
     const peta = A.petaSusun.simpul;
     const anak = (id) => peta.filter((s) => s.induk === id).map((s) => s.teks);
     const akar = peta.filter((s) => s.induk === null);

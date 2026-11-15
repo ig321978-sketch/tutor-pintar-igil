@@ -646,6 +646,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Mana yang lebih banyak?",
+          "ikon": "⚖️",
+          "suara": "Ini peta tentang membandingkan benda di taman. Kita ingin tahu mana yang lebih banyak, kursi atau balon. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-pasang",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Memasangkan benda",
+            "ikon": "🔗",
+            "petunjuk": "Satu benda dipasangkan dengan satu benda dari kelompok lain."
+          },
+          {
+            "id": "hal-banyak",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Mengenal banyak dan sedikit",
+            "ikon": "⚖️",
+            "petunjuk": "Mengenal kelompok yang lebih banyak, lebih sedikit, atau sama banyak."
+          },
+          {
+            "id": "hal-tanda",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Memilih tanda yang tepat",
+            "ikon": "🐊",
+            "petunjuk": "Memilih tanda mulut buaya untuk dua bilangan."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-pasang",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Pasangkan satu dengan satu",
+            "ikon": "👆",
+            "petunjuk": "Langkah untuk memasangkan: tarik garis dari benda ke benda lawannya."
+          },
+          {
+            "id": "cara-sisa",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Lihat benda yang bersisa",
+            "ikon": "👀",
+            "petunjuk": "Langkah untuk mengenal banyak: lihat kelompok mana yang masih punya sisa."
+          },
+          {
+            "id": "cara-tanda",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Mulut tanda ke yang banyak",
+            "ikon": "✍️",
+            "petunjuk": "Langkah untuk memilih tanda: bukalah mulut tanda ke kelompok yang lebih banyak."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-tahu",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tahu sama, banyak, sedikit",
+            "ikon": "🤝",
+            "petunjuk": "Kemampuan menyebut dua kelompok sama banyak, lebih banyak, atau lebih sedikit."
+          },
+          {
+            "id": "hasil-tanda",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Menulis tanda dengan benar",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan menulis tanda lebih besar, lebih kecil, atau sama dengan untuk bilangan nol sampai sepuluh."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Memasangkan dua kelompok",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel memasangkan dua kelompok benda. Untuk tiap pasangan bilangan, pasang sisanya, kelompok kiri, dan tandanya.",
+        "pojok": "Pasangan",
+        "kolom": [
+          "Sisanya",
+          "Kiri",
+          "Tanda"
+        ],
+        "baris": [
+          {
+            "label": "3 dan 3",
+            "sel": [
+              "Tidak ada",
+              "Sama",
+              "="
+            ]
+          },
+          {
+            "label": "6 dan 4",
+            "sel": [
+              "Kiri ada",
+              "Banyak",
+              ">"
+            ]
+          },
+          {
+            "label": "4 dan 6",
+            "sel": [
+              "Kanan ada",
+              "Sedikit",
+              "<"
+            ]
+          }
+        ]
       }
     },
     "C": {
@@ -848,6 +983,149 @@
                   "isi": "8, 7, 6"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Upe naik dan turun tangga",
+          "ikon": "👣",
+          "suara": "Ini peta tentang Upe yang naik dan turun tangga. Kita ingin tahu bilangan apa saja yang disebut Upe. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-maju",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Menghitung maju",
+            "ikon": "➡️",
+            "petunjuk": "Menyebut bilangan dari yang kecil ke yang besar."
+          },
+          {
+            "id": "hal-mundur",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menghitung mundur",
+            "ikon": "⬅️",
+            "petunjuk": "Menyebut bilangan dari yang besar ke yang kecil."
+          },
+          {
+            "id": "hal-lengkapi",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Melengkapi urutan",
+            "ikon": "🧩",
+            "petunjuk": "Mengisi bilangan yang hilang di dalam urutan."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🧭",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-naik",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Naik tangga dari yang kecil",
+            "ikon": "🧒",
+            "petunjuk": "Langkah untuk menghitung maju: mulai dari bilangan kecil, lalu naik terus."
+          },
+          {
+            "id": "cara-turun",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Turun tangga dari yang besar",
+            "ikon": "🔽",
+            "petunjuk": "Langkah untuk menghitung mundur: mulai dari bilangan besar, lalu turun terus."
+          },
+          {
+            "id": "cara-tetangga",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Lihat tetangga kiri-kanan",
+            "ikon": "👀",
+            "petunjuk": "Langkah untuk melengkapi: lihat bilangan di sebelahnya, lalu isi yang hilang."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-lancar",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Lancar maju dan mundur",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan menghitung maju dan mundur dengan urutan yang benar."
+          },
+          {
+            "id": "hasil-isi",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa isi bilangan hilang",
+            "ikon": "🧮",
+            "petunjuk": "Kemampuan menemukan bilangan yang hilang di dalam urutan."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Sebelum dan sesudah bilangan",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel sebelum dan sesudah. Untuk tiap bilangan, pasang angkanya, bilangan yang ada sebelumnya, dan bilangan yang ada sesudahnya.",
+        "pojok": "Bilangan",
+        "kolom": [
+          "Angka",
+          "Sebelum",
+          "Sesudah"
+        ],
+        "baris": [
+          {
+            "label": "Tiga",
+            "sel": [
+              "3",
+              "2",
+              "4"
+            ]
+          },
+          {
+            "label": "Lima",
+            "sel": [
+              "5",
+              "4",
+              "6"
+            ]
+          },
+          {
+            "label": "Enam",
+            "sel": [
+              "6",
+              "5",
+              "7"
+            ]
+          },
+          {
+            "label": "Delapan",
+            "sel": [
+              "8",
+              "7",
+              "9"
             ]
           }
         ]
@@ -1093,6 +1371,149 @@
                   "isi": "1 dan 4 jadi 5"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Bagaimana membagi lima kue?",
+          "ikon": "🍩",
+          "suara": "Ini peta tentang pasangan bilangan. Kira ingin membagi kuenya ke dua piring. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-pisah",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Memisahkan satu bilangan",
+            "ikon": "✂️",
+            "petunjuk": "Membagi satu bilangan yang utuh menjadi dua bagian."
+          },
+          {
+            "id": "hal-gabung",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menggabungkan dua bagian",
+            "ikon": "🧺",
+            "petunjuk": "Menyatukan dua bagian menjadi satu bilangan yang utuh."
+          },
+          {
+            "id": "hal-pasang",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Mencari pasangan bilangan",
+            "ikon": "🔍",
+            "petunjuk": "Menemukan dua bilangan yang menjadi satu bilangan yang sama."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-pisah",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Pisahkan benda ke dua piring",
+            "ikon": "🍽️",
+            "petunjuk": "Langkah untuk memisahkan: benda dibagi ke dua tempat, lalu tiap bagian dihitung."
+          },
+          {
+            "id": "cara-gabung",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Gabungkan bagian jadi satu",
+            "ikon": "🧩",
+            "petunjuk": "Langkah untuk menggabungkan: dua bagian dikumpulkan, lalu dihitung semuanya."
+          },
+          {
+            "id": "cara-tukar",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tukar bagian, cari pasangan",
+            "ikon": "🔄",
+            "petunjuk": "Langkah untuk mencari pasangan: geser benda ke bagian lain, lalu lihat pasangan baru."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-paham",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Paham bagian dan utuh",
+            "ikon": "🟡",
+            "petunjuk": "Kemampuan membedakan bagian dan bilangan yang utuh."
+          },
+          {
+            "id": "hasil-banyak",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu bilangan punya pasangan",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan menyebut beberapa pasangan dari satu bilangan sampai sepuluh."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Pasangan dari bilangan utuh",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel pasangan bilangan. Untuk tiap bilangan utuh, pasang kedua bagiannya dan bendanya.",
+        "pojok": "Utuh",
+        "kolom": [
+          "Bagian",
+          "Bagian lain",
+          "Bendanya"
+        ],
+        "baris": [
+          {
+            "label": "Lima",
+            "sel": [
+              "2",
+              "3",
+              "Kue"
+            ]
+          },
+          {
+            "label": "Tujuh",
+            "sel": [
+              "3",
+              "4",
+              "Bola"
+            ]
+          },
+          {
+            "label": "Delapan",
+            "sel": [
+              "5",
+              "3",
+              "Mobil"
+            ]
+          },
+          {
+            "label": "Sepuluh",
+            "sel": [
+              "6",
+              "4",
+              "Keping"
             ]
           }
         ]

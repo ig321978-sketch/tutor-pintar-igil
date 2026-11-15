@@ -38,7 +38,7 @@ const args = process.argv.slice(2);
 if (args.length) for (const f of args) periksa(f, JSON.parse(fs.readFileSync(f, "utf8")));
 else {
   const j = JSON.parse(fs.readFileSync("src/data/kelas1-bab1-ringkas.json", "utf8"));
-  for (const s of "A") periksa(`sub-bab ${s}`, j.subBab[s]);
+  for (const s of "ABCD") periksa(`sub-bab ${s}`, j.subBab[s]);
 }
 console.log(`uji-susun-k1b1: ${lulus} lulus, ${gagal} gagal`);
 process.exit(gagal ? 1 : 0);
