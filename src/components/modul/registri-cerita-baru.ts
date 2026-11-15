@@ -53,4 +53,11 @@ export const CERITA_BARU: Record<string, ComponentType<PropsCerita>> = {
   "mtk-2-bab7-B": dynamic<PropsCerita>(() => import("@/components/modul/video-k2b7b").then((m) => m.VideoK2B7B), { ssr: false }),
   "mtk-2-bab8-A": dynamic<PropsCerita>(() => import("@/components/modul/video-k2b8a").then((m) => m.VideoK2B8A), { ssr: false }),
   "mtk-2-bab8-B": dynamic<PropsCerita>(() => import("@/components/modul/video-k2b8b").then((m) => m.VideoK2B8B), { ssr: false }),
+  "mtk-3-bab1-A": dynamic<PropsCerita>(() => import("@/components/modul/video-k3b1a").then((m) => m.VideoK3B1A), { ssr: false }),
+  "mtk-3-bab1-B": dynamic<PropsCerita>(() => import("@/components/modul/video-k3b1b").then((m) => m.VideoK3B1B), { ssr: false }),
+  "mtk-3-bab1-C": dynamic<PropsCerita>(() => import("@/components/modul/video-k3b1c").then((m) => m.VideoK3B1C), { ssr: false }),
+  "mtk-3-bab1-D": dynamic<PropsCerita>(() => import("@/components/modul/video-k3b1d").then((m) => m.VideoK3B1D), { ssr: false }),
+  "mtk-3-bab1-E": dynamic<PropsCerita>(() => import("@/components/modul/video-k3b1e").then((m) => m.VideoK3B1E), { ssr: false }),
+  "mtk-3-bab1-F": dynamic<PropsCerita>(() => import("@/components/modul/video-k3b1f").then((m) => m.VideoK3B1F), { ssr: false }),
+  "mtk-3-bab1-G": dynamic<PropsCerita>(() => import("@/components/modul/video-k3b1g").then((m) => m.VideoK3B1G), { ssr: false }),
 };

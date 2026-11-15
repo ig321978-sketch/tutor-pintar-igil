@@ -242,6 +242,149 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Bagaimana membaca bilangan?",
+          "ikon": "🔢",
+          "suara": "Ini peta tentang bilangan dan lambang bilangan. Kita ingin tahu cara membaca dan menulis bilangan tiga angka. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-satuan",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Satuan, puluhan, dan ratusan",
+            "ikon": "🧱",
+            "petunjuk": "Sepuluh satuan menjadi satu puluhan, dan sepuluh puluhan menjadi satu ratusan."
+          },
+          {
+            "id": "hal-baca",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Membaca bilangan tiga angka",
+            "ikon": "📖",
+            "petunjuk": "Bilangan dibaca dari ratusan dahulu, lalu puluhan, lalu satuan, dan angka nol tidak dibaca."
+          },
+          {
+            "id": "hal-tulis",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menulis lambang bilangan",
+            "ikon": "✍️",
+            "petunjuk": "Dari kata bilangan, kita tulis angka pada tempatnya, dan nol menjaga tempat yang kosong."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-balok",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Susun balok menurut tempat",
+            "ikon": "🧩",
+            "petunjuk": "Langkah untuk mengenal satuan, puluhan, dan ratusan: susun kotak kecil, batang, dan lempeng pada tempatnya."
+          },
+          {
+            "id": "cara-papan",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Isi papan tiga tempat",
+            "ikon": "🗂️",
+            "petunjuk": "Langkah untuk membaca: taruh bilangan di papan tiga tempat, lalu baca dari ratusan."
+          },
+          {
+            "id": "cara-dengar",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Dengar kata, isi angkanya",
+            "ikon": "👂",
+            "petunjuk": "Langkah untuk menulis lambang: dengar kata bilangan, lalu isi angka pada tiap tempat."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-baca",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa membaca bilangan",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan membaca bilangan tiga angka dengan benar, termasuk yang memuat angka nol."
+          },
+          {
+            "id": "hasil-tulis",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa menulis lambangnya",
+            "ikon": "🏆",
+            "petunjuk": "Kemampuan menulis lambang bilangan dari kata bilangannya."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Angka di tiap tempat",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Papan tiga tempat. Untuk tiap bilangan, pasang angka ratusan, angka puluhan, dan angka satuan.",
+        "pojok": "Bilangan",
+        "kolom": [
+          "Ratusan",
+          "Puluhan",
+          "Satuan"
+        ],
+        "baris": [
+          {
+            "label": "160",
+            "sel": [
+              "1",
+              "6",
+              "0"
+            ]
+          },
+          {
+            "label": "671",
+            "sel": [
+              "6",
+              "7",
+              "1"
+            ]
+          },
+          {
+            "label": "759",
+            "sel": [
+              "7",
+              "5",
+              "9"
+            ]
+          },
+          {
+            "label": "703",
+            "sel": [
+              "7",
+              "0",
+              "3"
+            ]
+          }
+        ]
       }
     },
     "B": {
@@ -498,6 +641,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa nilai tiap angka?",
+          "ikon": "🔢",
+          "suara": "Ini peta tentang nilai tempat pada bilangan tiga angka. Kita ingin tahu tempat dan nilai tiap angka, lalu menyusun dan mengurai bilangan. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-tempat",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Tempat dan nilai angka",
+            "ikon": "📍",
+            "petunjuk": "Mengenali ratusan, puluhan, dan satuan, lalu mencari nilai tiap angka menurut tempatnya."
+          },
+          {
+            "id": "hal-susun",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menyusun bilangan",
+            "ikon": "🧩",
+            "petunjuk": "Menjumlahkan nilai ratusan, puluhan, dan satuan menjadi satu bilangan."
+          },
+          {
+            "id": "hal-urai",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Mengurai bilangan",
+            "ikon": "🔬",
+            "petunjuk": "Memecah satu bilangan menjadi nilai ratusan, puluhan, dan satuan."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🛠️",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-papan",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Letakkan bilangan di papan",
+            "ikon": "📋",
+            "petunjuk": "Langkah untuk mencari tempat: tiap angka diletakkan pada ratusan, puluhan, atau satuan."
+          },
+          {
+            "id": "cara-kali",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Kalikan dengan nilai tempat",
+            "ikon": "✖️",
+            "petunjuk": "Langkah untuk mencari nilai: angka dikalikan dengan nilai tempatnya."
+          },
+          {
+            "id": "cara-jumlah",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Jumlahkan untuk mengecek",
+            "ikon": "➕",
+            "petunjuk": "Langkah untuk menyusun dan mengurai: nilai tiap tempat dijumlahkan sampai kembali menjadi bilangan."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-nilai",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Nilai angka terbaca benar",
+            "ikon": "👀",
+            "petunjuk": "Kemampuan menyebut nilai angka pada tiap tempat, termasuk angka nol."
+          },
+          {
+            "id": "hasil-bilangan",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bilangan diurai dan disusun",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan mengurai bilangan menjadi nilai dan menyusunnya kembali, dengan tabel diisi angka."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Angka pada tiap tempat",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel nilai tempat. Untuk tiap bilangan, pasang angka yang tepat pada ratusan, puluhan, dan satuan. Isi dengan angka, bukan nilainya.",
+        "pojok": "Bilangan",
+        "kolom": [
+          "Ratusan",
+          "Puluhan",
+          "Satuan"
+        ],
+        "baris": [
+          {
+            "label": "251",
+            "sel": [
+              "2",
+              "5",
+              "1"
+            ]
+          },
+          {
+            "label": "604",
+            "sel": [
+              "6",
+              "0",
+              "4"
+            ]
+          },
+          {
+            "label": "987",
+            "sel": [
+              "9",
+              "8",
+              "7"
+            ]
+          }
+        ]
       }
     },
     "C": {
@@ -733,6 +1011,149 @@
                   ]
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Mana yang lebih besar?",
+          "ikon": "⚖️",
+          "suara": "Ini peta tentang membandingkan dan mengurutkan bilangan. Kita ingin tahu bilangan mana yang lebih besar, dan bagaimana menyusunnya dari yang terkecil. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-banding",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Membandingkan dua bilangan",
+            "ikon": "⚖️",
+            "petunjuk": "Dua bilangan tiga angka dibandingkan tempat demi tempat pada papan nilai tempat."
+          },
+          {
+            "id": "hal-tanda",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Memakai tanda perbandingan",
+            "ikon": "🐊",
+            "petunjuk": "Hasil membandingkan dicatat dengan tanda kurang dari, lebih dari, atau sama dengan."
+          },
+          {
+            "id": "hal-urut",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Mengurutkan bilangan",
+            "ikon": "📈",
+            "petunjuk": "Beberapa bilangan disusun dari yang terkecil atau dari yang terbesar."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-tempat",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Ratusan dulu, lalu puluhan",
+            "ikon": "💯",
+            "petunjuk": "Langkah untuk membandingkan: lihat ratusan lebih dulu, lalu puluhan, lalu satuan."
+          },
+          {
+            "id": "cara-tanda",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Mulut tanda ke yang besar",
+            "ikon": "🔍",
+            "petunjuk": "Langkah untuk memakai tanda: mulut tanda selalu terbuka ke bilangan yang lebih besar."
+          },
+          {
+            "id": "cara-urut",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Cari yang terkecil dulu",
+            "ikon": "🔢",
+            "petunjuk": "Langkah untuk mengurutkan: cari bilangan terkecil, lalu bandingkan sisanya."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-banding",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa membandingkan bilangan",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan menentukan bilangan mana yang lebih besar, lebih kecil, atau sama."
+          },
+          {
+            "id": "hasil-urut",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa mengurutkan bilangan",
+            "ikon": "🏆",
+            "petunjuk": "Kemampuan menyusun urutan naik dan urutan turun dengan benar."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Banding empat pasang bilangan",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel perbandingan empat pasang bilangan. Untuk tiap pasang, pasang tempat yang menentukan, tandanya, dan katanya.",
+        "pojok": "Pasang",
+        "kolom": [
+          "Tempat",
+          "Tanda",
+          "Kata"
+        ],
+        "baris": [
+          {
+            "label": "339 421",
+            "sel": [
+              "ratusan",
+              "<",
+              "kurang"
+            ]
+          },
+          {
+            "label": "583 529",
+            "sel": [
+              "puluhan",
+              ">",
+              "lebih"
+            ]
+          },
+          {
+            "label": "769 761",
+            "sel": [
+              "satuan",
+              ">",
+              "lebih"
+            ]
+          },
+          {
+            "label": "804 804",
+            "sel": [
+              "semua",
+              "=",
+              "sama"
             ]
           }
         ]
@@ -974,6 +1395,149 @@
                   ]
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa jumlah dua bilangan?",
+          "ikon": "➕",
+          "suara": "Ini peta tentang penjumlahan sampai seratus. Kita ingin tahu berapa jumlah dua bilangan, lalu mencari caranya. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-pendek",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Susun pendek",
+            "ikon": "📏",
+            "petunjuk": "Bilangan disusun ke bawah, lalu satuan dijumlahkan dahulu, kemudian puluhan."
+          },
+          {
+            "id": "hal-panjang",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Susun panjang",
+            "ikon": "🧩",
+            "petunjuk": "Bilangan diurai menjadi puluhan dan satuan, lalu hasil uraian dijumlahkan."
+          },
+          {
+            "id": "hal-cerita",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Soal cerita penjumlahan",
+            "ikon": "📖",
+            "petunjuk": "Cerita yang meminta jumlah seluruhnya, jadi kita membuat kalimat penjumlahan dan menjawabnya lengkap."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-susun",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Susun satuan dan puluhan",
+            "ikon": "🔢",
+            "petunjuk": "Langkah untuk susun pendek: puluhan lurus dengan puluhan, satuan lurus dengan satuan."
+          },
+          {
+            "id": "cara-tukar",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Tukar sepuluh satuan",
+            "ikon": "🔁",
+            "petunjuk": "Langkah untuk menyimpan: sepuluh satuan ditukar dengan satu puluhan di atas kolom puluhan."
+          },
+          {
+            "id": "cara-urai",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Uraikan lalu jumlahkan",
+            "ikon": "✂️",
+            "petunjuk": "Langkah untuk susun panjang: puluhan dengan puluhan, satuan dengan satuan, lalu hasilnya digabung."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-jumlah",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menjumlahkan bilangan",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan menjumlahkan dua bilangan sampai seratus, dengan atau tanpa menyimpan."
+          },
+          {
+            "id": "hasil-cerita",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa menjawab soal cerita",
+            "ikon": "🏆",
+            "petunjuk": "Kemampuan mengubah cerita menjadi kalimat penjumlahan dan menjawabnya dengan satuan."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Berapa jumlahnya?",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel susun pendek. Untuk tiap soal, pasang jumlah satuan, banyak puluhan yang disimpan, dan jumlahnya.",
+        "pojok": "Soal",
+        "kolom": [
+          "Satuan",
+          "Simpan",
+          "Jumlah"
+        ],
+        "baris": [
+          {
+            "label": "23 + 16",
+            "sel": [
+              "9",
+              "0",
+              "39"
+            ]
+          },
+          {
+            "label": "48 + 16",
+            "sel": [
+              "14",
+              "1",
+              "64"
+            ]
+          },
+          {
+            "label": "37 + 25",
+            "sel": [
+              "12",
+              "1",
+              "62"
+            ]
+          },
+          {
+            "label": "54 + 29",
+            "sel": [
+              "13",
+              "1",
+              "83"
             ]
           }
         ]
@@ -1229,6 +1793,154 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa sisanya?",
+          "ikon": "➖",
+          "suara": "Ini peta pengurangan sampai seratus. Kita ingin tahu berapa sisanya setelah sebagian diambil. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-pendek",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Pengurangan susun pendek",
+            "ikon": "🧮",
+            "petunjuk": "Bilangan disusun ke bawah, lalu satuan dan puluhan dikurangi satu per satu."
+          },
+          {
+            "id": "hal-ambil",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Mengambil satu puluhan",
+            "ikon": "🔟",
+            "petunjuk": "Satu puluhan ditukar menjadi sepuluh satuan bila satuan atas kurang."
+          },
+          {
+            "id": "hal-panjang",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Pengurangan susun panjang",
+            "ikon": "📐",
+            "petunjuk": "Bilangan diurai menjadi puluhan dan satuan, lalu hasilnya digabung."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-satuan",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Satuan dulu, lalu puluhan",
+            "ikon": "1️⃣",
+            "petunjuk": "Langkah untuk susun pendek: mulai dari satuan, lanjut ke puluhan."
+          },
+          {
+            "id": "cara-ambil",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Satuan kurang, ambil puluhan",
+            "ikon": "🔁",
+            "petunjuk": "Langkah untuk mengambil satu puluhan: puluhan atas kurang satu, satuan atas tambah sepuluh."
+          },
+          {
+            "id": "cara-urai",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Uraikan, lalu kurangkan",
+            "ikon": "✂️",
+            "petunjuk": "Langkah untuk susun panjang: uraikan bilangan, kurangkan tiap bagian, lalu gabungkan."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-tepat",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Mengurangkan dengan tepat",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan mengurangkan dua bilangan sampai seratus, dengan atau tanpa mengambil satu puluhan."
+          },
+          {
+            "id": "hasil-periksa",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Periksa dengan penjumlahan",
+            "ikon": "🔍",
+            "petunjuk": "Kemampuan memeriksa hasil: sisa ditambah yang diambil sama dengan jumlah semula."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Berapa sisanya?",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel pengurangan empat cerita. Untuk tiap cerita, pasang apakah perlu mengambil satu puluhan, hasil satuan, hasil puluhan, dan sisanya.",
+        "pojok": "Cerita",
+        "kolom": [
+          "Ambil",
+          "Satuan",
+          "Puluhan",
+          "Hasil"
+        ],
+        "baris": [
+          {
+            "label": "Jeruk",
+            "sel": [
+              "Tidak",
+              "3",
+              "1",
+              "13"
+            ]
+          },
+          {
+            "label": "Apel",
+            "sel": [
+              "Tidak",
+              "3",
+              "3",
+              "33"
+            ]
+          },
+          {
+            "label": "Kelereng",
+            "sel": [
+              "Ya",
+              "6",
+              "2",
+              "26"
+            ]
+          },
+          {
+            "label": "Bunga",
+            "sel": [
+              "Ya",
+              "4",
+              "3",
+              "34"
+            ]
+          }
+        ]
       }
     },
     "F": {
@@ -1459,6 +2171,149 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa jumlah semuanya?",
+          "ikon": "🧮",
+          "suara": "Ini peta tentang perkalian. Kita ingin tahu berapa jumlah semuanya bila ada beberapa kelompok yang sama banyak. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-ulang",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Penjumlahan berulang",
+            "ikon": "➕",
+            "petunjuk": "Isi tiap kelompok yang sama banyak ditambahkan lagi dan lagi sampai semua kelompok terhitung."
+          },
+          {
+            "id": "hal-baca",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Membaca perkalian",
+            "ikon": "📖",
+            "petunjuk": "Bilangan pertama menunjukkan banyak kelompok, bilangan kedua menunjukkan isi tiap kelompok."
+          },
+          {
+            "id": "hal-tukar",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Menukar tempat bilangan",
+            "ikon": "🔄",
+            "petunjuk": "Dua bilangan pada perkalian boleh bertukar tempat, hasilnya tetap sama."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, urut dari mencari bilangan sampai menghitung hasil."
+          },
+          {
+            "id": "cara-kelompok",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Cari banyak kelompok",
+            "ikon": "🍽️",
+            "petunjuk": "Langkah pertama: hitung dulu ada berapa kelompok yang sama banyak."
+          },
+          {
+            "id": "cara-isi",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Cari isi tiap kelompok",
+            "ikon": "🍪",
+            "petunjuk": "Langkah kedua: lihat berapa benda di dalam satu kelompok."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tulis dan hitung hasilnya",
+            "ikon": "✏️",
+            "petunjuk": "Langkah ketiga dan keempat: tulis perkaliannya, lalu hitung hasilnya."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-kalimat",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Kalimat perkalian tepat",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan menyatakan banyak kelompok dan isi tiap kelompok sebagai perkalian."
+          },
+          {
+            "id": "hasil-jumlah",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Jumlah dan satuan benar",
+            "ikon": "🏆",
+            "petunjuk": "Kemampuan menyebut jumlah semuanya dengan satuan benda yang tepat."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Berapa jumlah semuanya?",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel perkalian tiap benda. Untuk tiap benda, pasang banyak kelompok, isi tiap kelompok, dan jumlah semuanya.",
+        "pojok": "Benda",
+        "kolom": [
+          "Kelompok",
+          "Isi",
+          "Jumlah"
+        ],
+        "baris": [
+          {
+            "label": "Kue",
+            "sel": [
+              "5",
+              "2",
+              "10"
+            ]
+          },
+          {
+            "label": "Bunga",
+            "sel": [
+              "4",
+              "5",
+              "20"
+            ]
+          },
+          {
+            "label": "Mobil",
+            "sel": [
+              "5",
+              "6",
+              "30"
+            ]
+          },
+          {
+            "label": "Apel",
+            "sel": [
+              "4",
+              "7",
+              "28"
+            ]
+          }
+        ]
       }
     },
     "G": {
@@ -1677,6 +2532,149 @@
               }
             ],
             "kesimpulan": "Hasil bagi dikali pembagi sama dengan bilangan yang dibagi."
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Bagaimana cara membagi?",
+          "ikon": "🍪",
+          "suara": "Ini peta tentang pembagian. Kita ingin tahu bagaimana cara membagi sebuah bilangan dengan benar. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-sama",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Membagi sama banyak",
+            "ikon": "🍪",
+            "petunjuk": "Benda dibagikan kepada beberapa bagian, dan semua bagian harus sama banyak."
+          },
+          {
+            "id": "hal-kurang",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Mengurangi berulang",
+            "ikon": "➖",
+            "petunjuk": "Pembagian adalah pengurangan bilangan yang sama terus-menerus sampai habis."
+          },
+          {
+            "id": "hal-kali",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Hubungan kali dan bagi",
+            "ikon": "🔗",
+            "petunjuk": "Perkalian dan pembagian berpasangan, jadi saling memeriksa."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-bagikan",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Bagikan satu per satu",
+            "ikon": "🧺",
+            "petunjuk": "Langkah untuk membagi sama banyak: bagikan bergiliran sampai benda habis."
+          },
+          {
+            "id": "cara-kurangi",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Kurangi sampai nol",
+            "ikon": "📏",
+            "petunjuk": "Langkah untuk mengurangi berulang: kurangi bilangan yang sama, lalu hitung banyak pengurangannya."
+          },
+          {
+            "id": "cara-periksa",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Periksa dengan kali",
+            "ikon": "✖️",
+            "petunjuk": "Langkah untuk hubungan kali dan bagi: hasil bagi dikali pembagi harus sama dengan bilangan yang dibagi."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-hitung",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menghitung hasil bagi",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan menghitung pembagian sampai seratus dan menyelesaikan soal cerita."
+          },
+          {
+            "id": "hasil-periksa",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa memeriksa hasilnya",
+            "ikon": "🏆",
+            "petunjuk": "Kemampuan memeriksa hasil bagi dengan perkalian."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Berapa tiap bagian?",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel pembagian. Untuk tiap benda, pasang bilangan yang dibagi, pembagi, dan hasil bagi.",
+        "pojok": "Benda",
+        "kolom": [
+          "Dibagi",
+          "Pembagi",
+          "Hasil bagi"
+        ],
+        "baris": [
+          {
+            "label": "Biskuit",
+            "sel": [
+              "12",
+              "2",
+              "6"
+            ]
+          },
+          {
+            "label": "Jeruk",
+            "sel": [
+              "15",
+              "3",
+              "5"
+            ]
+          },
+          {
+            "label": "Kelereng",
+            "sel": [
+              "10",
+              "2",
+              "5"
+            ]
+          },
+          {
+            "label": "Bintang",
+            "sel": [
+              "6",
+              "6",
+              "1"
+            ]
           }
         ]
       }
