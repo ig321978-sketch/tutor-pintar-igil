@@ -73,7 +73,7 @@ export type Kisi = {
 /**
  * Bidang berpetak: nk garis vertikal bernama huruf A dan seterusnya, nb garis horizontal bernama bilangan mulai dari `mulai`.
  * (ox, oy) letak titik (A, mulai); (ux, uy) langkah antar huruf; (vx, vy) langkah antar bilangan.
- * Kisi tegak: u = (sel, 0), v = (0, -sel). Kisi miring: u dan v miring seperti gambar isometrik buku.
+ * Kisi tegak: u = (sel, 0), v = (0, -sel). Kisi miring: u dan v miring seperti gambar isometrik.
  */
 export function kisi(p: string, ox: number, oy: number, ux: number, uy: number, vx: number, vy: number, nk: number, nb: number, mulai = 1, u = 7, tebal = 1): Kisi {
   const pt = (h: string, n: number): Titik => {

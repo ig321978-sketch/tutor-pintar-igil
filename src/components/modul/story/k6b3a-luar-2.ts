@@ -18,8 +18,8 @@ const MELAYANG = susunKubus("f", P(150, 100, 20), [[0, 0, 1]], BAHAN.kuning);
 
 export const ADEGAN_LUAR_A_SANGGA: AdeganStory = {
   id: "luara-sangga",
-  judul: "Hidden Support Rule: kubus penyangga yang tak tampak",
-  sumber: "Metode luar; contoh menara sudut dan Latihan 3.1 nomor 3 (Buku Siswa hlm. 84)",
+  judul: "Hidden Support Rule: kubus penyangga yang tak kelihatan",
+  sumber: "Metode luar: menara sudut dan kardus",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -30,38 +30,38 @@ export const ADEGAN_LUAR_A_SANGGA: AdeganStory = {
       tambah("tidak@2", teks("sy", 225, 106, "di bawahnya", 9, W.ungu), teks("sy2", 225, 120, "ada penyangga", 9, W.ungu)),
     ),
     k(
-      "Contoh kecil: sebuah menara 3 kubus di sudut, dengan satu kubus di depannya dan satu kubus di sampingnya. Kubus paling bawah menara tertutup dari tiga sisi, jadi tidak tampak.",
+      "Contoh kecil: sebuah menara tiga kubus di sudut, dengan satu kubus menempel di sisi kanannya dan satu kubus menempel di sisi kirinya. Kubus paling bawah menara tertutup dari tiga sisi, jadi tidak kelihatan.",
       bersih(0),
       tambah("menara", MS.objs),
-      tambah("3", teks("t3", 235, 60, "menara 3 kubus", 9, W.hijau)),
-      tambah("depannya", teks("t1", 235, 84, "+ 1 di depan", 9, W.coklat)),
-      tambah("sampingnya.", teks("t2", 235, 104, "+ 1 di samping", 9, W.merah)),
+      tambah("tiga", teks("t3", 235, 60, "menara 3 kubus", 9, W.hijau)),
+      tambah("kanannya", teks("t1", 235, 84, "+ 1 di kanan", 9, W.coklat)),
+      tambah("kirinya.", teks("t2", 235, 104, "+ 1 di kiri", 9, W.merah)),
       tambah("tertutup", teks("tt", 235, 136, "kubus bawah", 9, W.biru), teks("tt2", 235, 150, "tertutup tiga sisi", 9, W.biru)),
     ),
     k(
-      "Kita geser kedua kubus penutup, dan kubus tersembunyi itu pun tampak. Jadi terlihat 4 kubus, ditambah 1 kubus tersembunyi, totalnya 5 kubus.",
+      "Kita geser kedua kubus penutup, dan kubus tersembunyi itu pun kelihatan. Jadi terlihat empat kubus, ditambah satu kubus tersembunyi, totalnya lima kubus.",
       ...[3, 4].map((n) => ubah("geser", ...geserKe(MS.ids[n], MS.objs, n === 3 ? 26 : -26, 8))),
       sorotkan("tersembunyi", ...MS.ids[0]),
       tambah("Jadi", teks("v4", 150, 174, "terlihat 4 + tersembunyi 1", 10.4, W.biru)),
-      tambah("5", teks("v5", 150, 192, "total 5 kubus", 13, W.merah, { garis: W.emas })),
+      tambah("lima", teks("v5", 150, 192, "total 5 kubus", 13, W.merah, { garis: W.emas })),
     ),
     k(
-      "Terapkan pada Latihan 3.1 nomor 3. Terlihat tiga potong kardus yang masing-masing 2 kubus, jadi 6 kubus terlihat. Potongan paling atas tidak mungkin melayang.",
+      "Terapkan pada tumpukan kardus tadi. Terlihat tiga potong kardus yang masing-masing dua kubus, jadi enam kubus terlihat. Potongan paling atas tidak mungkin melayang.",
       bersih(0),
-      tambah(0, teks("jud", 150, 22, "Latihan 3.1, nomor 3", 12, W.ungu)),
+      tambah(0, teks("jud", 150, 22, "Latihan 3", 12, W.ungu)),
       tambah("Terlihat", D4.objs),
       tambah("tiga", A2.objs, teks("lt", 240, 70, "tiga potong kardus", 9, W.coklat)),
       tambah("masing-masing", teks("l2", 240, 82, "tiap potong 2 kubus", 8.6, W.coklat)),
-      tambah("6", teks("l6", 240, 100, "terlihat: 6 kubus", 10, W.biru)),
+      tambah("enam", teks("l6", 240, 100, "terlihat: 6 kubus", 10, W.biru)),
       tambah("melayang.", emo("hm", 150, 60, "🤔", 22), teks("hq", 240, 120, "atas tak boleh melayang", 8.6, W.merah)),
     ),
     k(
-      "Maka di bawahnya pasti ada 2 kubus tersembunyi sebagai penyangga. Jumlah seluruhnya 6 tambah 2, yaitu 8 kardus, sama dengan kunci buku.",
+      "Maka di bawahnya pasti ada dua kubus tersembunyi sebagai penyangga. Jumlah seluruhnya enam tambah dua, yaitu delapan kardus, sama dengan hitungan pada Latihan tiga.",
       hapus(0, "hm"),
       tambah("tersembunyi", G2.objs),
       sorotkan("tersembunyi", ...G2.semua),
-      tambah("2@2", teks("h2", 240, 144, "tersembunyi: 2", 10, W.ungu)),
-      tambah("tambah", teks("h8", 240, 172, "6 + 2 = 8", 15, W.merah, { garis: W.emas })),
+      tambah("dua@2", teks("h2", 240, 144, "tersembunyi: 2", 10, W.ungu)),
+      tambah("delapan", teks("h8", 240, 172, "6 + 2 = 8", 15, W.merah, { garis: W.emas })),
     ),
   ],
 };
@@ -77,7 +77,7 @@ const tigaKotak = (ox: number, oy: number, a: number, b: number, c: number, baha
 export const ADEGAN_LUAR_A_PUTAR: AdeganStory = {
   id: "luara-putar",
   judul: "Rotational Equivalence Check: sama bila bisa diputar",
-  sumber: "Metode luar; Eksplorasi 3.1 (Buku Siswa hlm. 81–83)",
+  sumber: "Metode luar: sama bila bisa diputar",
   latar: "#ECFDF5",
   ketukan: [
     k(
@@ -127,7 +127,7 @@ export const ADEGAN_LUAR_A_PUTAR: AdeganStory = {
 export const ADEGAN_LUAR_A_JEJAK: AdeganStory = {
   id: "luara-jejak",
   judul: "Minimal Footprint Packing: jejak lantai terkecil",
-  sumber: "Metode luar; Latihan 3.1 nomor 5 (Buku Siswa hlm. 84–85)",
+  sumber: "Metode luar: jejak lantai terkecil",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -144,18 +144,18 @@ export const ADEGAN_LUAR_A_JEJAK: AdeganStory = {
       tambah("sama", teks("fm", 150, 20, "jejak = volume : tinggi", 12, W.merah, { garis: W.emas })),
     ),
     k(
-      "Satu kardus bervolume 20 kali 30 kali 50, yaitu 30.000 sentimeter kubik. Untuk 30 kardus, volumenya 900.000 sentimeter kubik. Tinggi tumpukan yang boleh dipakai ada 300 sentimeter.",
+      "Satu kardus bervolume dua puluh kali tiga puluh kali lima puluh, yaitu tiga puluh ribu sentimeter kubik. Untuk tiga puluh kardus, volumenya sembilan ratus ribu sentimeter kubik. Tinggi tumpukan yang boleh dipakai ada tiga ratus sentimeter.",
       bersih(0),
       tambah("Satu", ...balokIso("kd", P(80, 110, 9), 0, 0, 0, 2, 3, 5, BAHAN.oranye), teks("k1", 80, 150, "20 x 30 x 50", 9), teks("k2", 80, 164, "= 30.000 cm³", 10, W.merah)),
       tambah("Untuk", teks("k3", 215, 80, "30 kardus", 11), teks("k4", 215, 100, "30 x 30.000", 10), teks("k5", 215, 118, "= 900.000 cm³", 11, W.merah)),
       tambah("Tinggi", teks("k6", 150, 192, "tinggi tumpukan 300 cm", 11, W.biru, { garis: W.emas })),
     ),
     k(
-      "Maka jejak lantainya adalah 900.000 dibagi 300, yaitu 3.000 sentimeter persegi. Hasil ini sama dengan jawaban di Buku Panduan Guru.",
+      "Maka jejak lantainya adalah sembilan ratus ribu dibagi tiga ratus, yaitu tiga ribu sentimeter persegi. Hasil ini bisa kita periksa dengan tiga cara menumpuk yang berbeda.",
       bersih(0),
       tambah("Maka", teks("b1", 150, 44, "jejak = 900.000 : 300", 14, W.biru)),
-      tambah("3.000", teks("b2", 150, 88, "3.000 cm²", 24, W.merah, { garis: W.emas })),
-      tambah("Buku@1", emo("cek", 150, 140, "✅", 28), teks("b3", 150, 176, "sama dengan kunci BG: 3.000 cm²", 9.4, W.hijau)),
+      tambah("ribu@2", teks("b2", 150, 88, "3.000 cm²", 24, W.merah, { garis: W.emas })),
+      tambah("periksa", emo("cek", 150, 140, "✅", 28), teks("b3", 150, 176, "jejak lantai: 3.000 cm²", 9.4, W.hijau)),
     ),
   ],
 };
@@ -167,41 +167,41 @@ const kolomKardus = (id: string, x: number, banyak: number, lebar: number, tingg
 export const ADEGAN_LUAR_A_JEJAK_TERAPAN: AdeganStory = {
   id: "luara-jejak-terapan",
   judul: "Tiga cara menegakkan kardus, jejak yang sama",
-  sumber: "Metode luar; Latihan 3.1 nomor 5 dan kunci Buku Panduan Guru hlm. 95",
+  sumber: "Metode luar: tiga cara menegakkan kardus",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Coba tegakkan kardus pada rusuk 30 sentimeter. Dalam 300 sentimeter muat 10 kardus per tumpukan, jadi dibutuhkan 3 tumpukan.",
+      "Coba tegakkan kardus pada rusuk tiga puluh sentimeter. Dalam tiga ratus sentimeter muat sepuluh kardus per tumpukan, jadi dibutuhkan tiga tumpukan.",
       tambah(0, teks("jud", 150, 22, "kardus tegak pada rusuk 30 cm", 11, W.ungu)),
       tambah("muat", ...kolomKardus("c", 40, 10, 40, 13, "#FCD34D"), teks("tc1", 60, 190, "10 per tumpukan", 8.4), teks("tc0", 236, 60, "tinggi 300 cm", 10, W.biru)),
-      tambah("3@3", ...[1, 2].flatMap((t) => kolomKardus(`c${t}`, 40 + t * 56, 10, 40, 13, "#FCD34D")), teks("tc3", 236, 76, "3 tumpukan", 11, W.merah)),
+      tambah("tiga@3", ...[1, 2].flatMap((t) => kolomKardus(`c${t}`, 40 + t * 56, 10, 40, 13, "#FCD34D")), teks("tc3", 236, 76, "3 tumpukan", 11, W.merah)),
     ),
     k(
-      "Alas satu tumpukan 20 kali 50, yaitu 1.000 sentimeter persegi. Tiga tumpukan memakai 3.000 sentimeter persegi. Jejaknya tetap sama.",
+      "Alas satu tumpukan dua puluh kali lima puluh, yaitu seribu sentimeter persegi. Tiga tumpukan memakai tiga ribu sentimeter persegi. Jejaknya tetap sama.",
       tambah("Alas", teks("a1", 230, 100, "alas 20 x 50", 9.4), teks("a2", 230, 114, "= 1.000 cm²", 10, W.merah)),
       tambah("Tiga", teks("a3", 230, 140, "3 x 1.000", 10), teks("a4", 230, 156, "= 3.000 cm²", 12, W.merah, { garis: W.emas })),
     ),
     k(
-      "Sekarang tegakkan pada rusuk 20 sentimeter. Muat 15 kardus per tumpukan, jadi hanya 2 tumpukan. Alasnya 30 kali 50, yaitu 1.500 sentimeter persegi.",
+      "Sekarang tegakkan pada rusuk dua puluh sentimeter. Muat lima belas kardus per tumpukan, jadi hanya dua tumpukan. Alasnya tiga puluh kali lima puluh, yaitu seribu lima ratus sentimeter persegi.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "kardus tegak pada rusuk 20 cm", 11, W.ungu)),
       tambah("Muat", ...kolomKardus("d", 40, 15, 40, 9, "#FCA5A5"), teks("td1", 60, 190, "15 per tumpukan", 8.4)),
-      tambah("2@2", ...kolomKardus("e", 100, 15, 40, 9, "#FCA5A5"), teks("td2", 236, 76, "2 tumpukan", 11, W.merah)),
+      tambah("dua@2", ...kolomKardus("e", 100, 15, 40, 9, "#FCA5A5"), teks("td2", 236, 76, "2 tumpukan", 11, W.merah)),
       tambah("Alasnya", teks("td3", 230, 100, "alas 30 x 50", 9.4), teks("td4", 230, 114, "= 1.500 cm²", 10, W.merah)),
     ),
     k(
-      "Dua tumpukan memakai 3.000 sentimeter persegi, tetap sama. Sebab 300 habis dibagi 20, 30, dan 50, ketiga cara menghasilkan jejak yang sama, yaitu 3.000.",
+      "Dua tumpukan memakai tiga ribu sentimeter persegi, tetap sama. Sebab tiga ratus habis dibagi dua puluh, tiga puluh, dan lima puluh, jadi ketiga cara menghasilkan jejak yang sama.",
       tambah("Dua", teks("td5", 230, 140, "2 x 1.500", 10), teks("td6", 230, 156, "= 3.000 cm²", 12, W.merah, { garis: W.emas })),
       tambah("Sebab", teks("td7", 225, 180, "300 habis dibagi 20, 30, dan 50", 8, W.hijau)),
     ),
     k(
-      "Jadi untuk soal ini, memilih rusuk terpanjang sebagai tinggi memang praktis, tetapi tidak lebih hemat. Jawaban 3.000 sentimeter persegi, atau 0,3 meter persegi, tetap benar.",
+      "Jadi untuk soal ini, memilih rusuk terpanjang sebagai tinggi memang praktis, tetapi tidak lebih hemat. Jawaban tiga ribu sentimeter persegi, atau nol koma tiga meter persegi, tetap benar.",
       bersih(0),
       tambah("memilih", teks("e1", 150, 44, "rusuk 50 tegak: 3.000 cm²", 11)),
       tambah("memang", teks("e2", 150, 78, "rusuk 30 tegak: 3.000 cm²", 11)),
       tambah("tetapi", teks("e3", 150, 112, "rusuk 20 tegak: 3.000 cm²", 11)),
       tambah("hemat,", teks("e4", 150, 150, "tidak ada yang lebih hemat", 11, W.merah)),
-      tambah("0,3", teks("e5", 150, 184, "3.000 cm² = 0,3 m²", 14, W.hijau, { garis: W.emas })),
+      tambah("nol", teks("e5", 150, 184, "3.000 cm² = 0,3 m²", 14, W.hijau, { garis: W.emas })),
     ),
   ],
 };
@@ -209,17 +209,17 @@ export const ADEGAN_LUAR_A_JEJAK_TERAPAN: AdeganStory = {
 /* ------------------------------ LA7. Ringkasan Sub-Bab A ------------------------------ */
 export const ADEGAN_LUAR_A_RINGKAS: AdeganStory = {
   id: "luara-ringkas",
-  judul: "Ringkasan empat metode luar Subbab A",
-  sumber: "Ringkasan metode luar Subbab A",
+  judul: "Ringkasan empat metode luar",
+  sumber: "Ringkasan metode luar",
   latar: "#F5F3FF",
   ketukan: [
-    k("Ringkasnya, ada empat metode luar untuk Subbab A. Pilih sesuai pertanyaan yang kita hadapi.", tambah(0, teks("jud", 150, 22, "Ringkasan metode luar", 12, W.ungu)), tambah("empat", emo("pil", 150, 92, "🧰", 44))),
+    k("Ringkasnya, ada empat metode luar untuk menyusun dan mengurai kubus. Pilih sesuai pertanyaan yang kita hadapi.", tambah(0, teks("jud", 150, 22, "Ringkasan metode luar", 12, W.ungu)), tambah("empat", emo("pil", 150, 92, "🧰", 44))),
     k(
-      "Ingin tahu jumlah kubus? Pakai Layer Counting, hitung per lapisan lalu jumlahkan. Ada bagian yang tidak tampak? Tambahkan penyangga dengan Hidden Support Rule.",
+      "Ingin tahu jumlah kubus? Pakai Layer Counting, hitung per lapisan lalu jumlahkan. Ada bagian yang tidak kelihatan? Tambahkan penyangga dengan Hidden Support Rule.",
       bersih(0),
       tambah(0, teks("jud", 150, 22, "Ringkasan metode luar", 12, W.ungu)),
       tambah("Layer", kotak("r1", 14, 34, 272, 36, "#FDE68A", W.biru, { rx: 10 }), teks("r1t", 150, 56, "jumlah kubus: Layer Counting", 10.4)),
-      tambah("Hidden", kotak("r2", 14, 76, 272, 36, "#FBCFE8", W.biru, { rx: 10 }), teks("r2t", 150, 98, "yang tak tampak: Hidden Support Rule", 10)),
+      tambah("Hidden", kotak("r2", 14, 76, 272, 36, "#FBCFE8", W.biru, { rx: 10 }), teks("r2t", 150, 98, "yang tak kelihatan: Hidden Support Rule", 10)),
     ),
     k(
       "Dua susunan mirip? Periksa dengan Rotational Equivalence Check. Menumpuk barang di ruang sempit? Hitung jejak lantainya dengan Minimal Footprint Packing.",
@@ -227,12 +227,12 @@ export const ADEGAN_LUAR_A_RINGKAS: AdeganStory = {
       tambah("Minimal", kotak("r4", 14, 154, 272, 30, "#BFDBFE", W.biru, { rx: 10 }), teks("r4t", 150, 173, "ruang sempit? Minimal Footprint Packing", 9.4)),
     ),
     k(
-      "Ingat, buku tetap menjadi dasar. Keempat metode ini hanya alat bantu supaya kita yakin pada hasilnya. Sampai jumpa di Subbab B tentang visualisasi spasial.",
+      "Ingat, hitungan dasar tetap kita pahami dulu. Keempat metode ini hanya alat bantu supaya kita yakin pada hasilnya. Sampai jumpa di pelajaran berikutnya.",
       bersih(0),
-      tambah("buku", emo("bk", 70, 80, "📘", 40), teks("bkt", 70, 110, "dasar: buku", 9)),
+      tambah("hitungan", emo("bk", 70, 80, "🧠", 40), teks("bkt", 70, 110, "dasar: paham dulu", 9)),
       tambah("alat", emo("al", 150, 80, "🧰", 40), teks("alt", 150, 110, "alat bantu", 9)),
       tambah("yakin", emo("yk", 230, 80, "✅", 40), teks("ykt", 230, 110, "yakin hasilnya", 9)),
-      tambah("Subbab", teks("sb", 150, 170, "Subbab B: Visualisasi Spasial", 12, W.ungu, { garis: W.emas })),
+      tambah("Sampai", teks("sb", 150, 170, "Sampai jumpa!", 13, W.ungu, { garis: W.emas })),
     ),
   ],
 };

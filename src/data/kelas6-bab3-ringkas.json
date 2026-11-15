@@ -120,7 +120,10 @@
                 "ikon": "🧱",
                 "isi": "Panjang kali lebar.",
                 "suara": "Lantai dasar balok lima kali tiga berisi lima belas kubus.",
-                "visual": { "jenis": "teks", "isi": "5 × 3 = 15" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 × 3 = 15"
+                }
               },
               {
                 "id": "semua",
@@ -128,7 +131,10 @@
                 "ikon": "📚",
                 "isi": "Kalikan banyak lantai.",
                 "suara": "Balok lima kali tiga kali dua berisi tiga puluh kubus, termasuk yang tertutup.",
-                "visual": { "jenis": "teks", "isi": "5 × 3 × 2 = 30" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5 × 3 × 2 = 30"
+                }
               },
               {
                 "id": "kecil",
@@ -136,7 +142,10 @@
                 "ikon": "🧊",
                 "isi": "Dua kali dua kali dua.",
                 "suara": "Kubus besar dua kali dua kali dua berisi delapan kubus satuan.",
-                "visual": { "jenis": "teks", "isi": "2 × 2 × 2 = 8" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 × 2 × 2 = 8"
+                }
               }
             ]
           },
@@ -153,7 +162,10 @@
                 "ikon": "✅",
                 "catatan": "Ada kubus di bawahnya.",
                 "suara": "Kubus di lantai kedua berada tepat di atas kubus lantai dasar. Susunan ini sah.",
-                "visual": { "jenis": "teks", "isi": "ada penyangga" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "ada penyangga"
+                }
               },
               {
                 "id": "melayang",
@@ -161,7 +173,10 @@
                 "ikon": "🚫",
                 "catatan": "Tidak ada kubus di bawahnya.",
                 "suara": "Kubus di lantai kedua berada di atas petak yang kosong. Susunan ini tidak sah, tambah penyangga dulu.",
-                "visual": { "jenis": "teks", "isi": "tanpa penyangga" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "tanpa penyangga"
+                }
               }
             ],
             "kesimpulan": "Kubus atas butuh penyangga."
@@ -179,7 +194,10 @@
                 "ikon": "🧱",
                 "isi": "Tiga kubus.",
                 "suara": "Bentuk L punya dua kubus mendatar dan satu kubus naik, jadi seluruhnya tiga kubus.",
-                "visual": { "jenis": "teks", "isi": "2 + 1 = 3" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 + 1 = 3"
+                }
               },
               {
                 "id": "lepas",
@@ -187,8 +205,146 @@
                 "ikon": "🧩",
                 "isi": "Kurangi lantai yang dilepas.",
                 "suara": "Menara dua lantai berisi empat kubus di bawah dan dua kubus di atas. Bila lantai teratas dilepas, tersisa empat kubus.",
-                "visual": { "jenis": "teks", "isi": "6 − 2 = 4" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6 − 2 = 4"
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa kubus dalam bangunan?",
+          "ikon": "🧱",
+          "suara": "Ini peta tentang bangunan yang tersusun dari kubus dan balok. Kita ingin tahu berapa banyak kubus yang dipakai, termasuk kubus yang tersembunyi di bagian bawah. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-susun",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Menyusun kubus dan balok",
+            "ikon": "🧊",
+            "petunjuk": "Menggabungkan kubus atau balok menjadi bangunan, lalu menguraikannya lagi menjadi bagian-bagian."
+          },
+          {
+            "id": "hal-lapis",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menghitung per lapisan",
+            "ikon": "🧮",
+            "petunjuk": "Membagi bangunan menjadi lantai-lantai datar, menghitung tiap lantai, lalu menjumlahkannya."
+          },
+          {
+            "id": "hal-sangga",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Kubus penyangga tersembunyi",
+            "ikon": "🧱",
+            "petunjuk": "Kubus di lantai atas harus bertumpu pada kubus di bawahnya, jadi ada kubus yang tertutup."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-susun",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Susun dan urai bertahap",
+            "ikon": "🏗️",
+            "petunjuk": "Langkah untuk menyusun: tambah satu kubus demi satu kubus, dan bongkar dengan urutan yang sama."
+          },
+          {
+            "id": "cara-jumlah",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Jumlahkan tiap lapisan",
+            "ikon": "➕",
+            "petunjuk": "Langkah untuk menghitung per lapisan: catat isi tiap lantai dari bawah, lalu jumlahkan semuanya."
+          },
+          {
+            "id": "cara-tambah",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tambah kubus penyangga",
+            "ikon": "🔍",
+            "petunjuk": "Langkah untuk bagian tersembunyi: periksa tiap kubus atas, pastikan ada kubus penyangga di bawahnya."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-total",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa hitung total kubus",
+            "ikon": "✅",
+            "petunjuk": "Kemampuan menyebut jumlah seluruh kubus, termasuk yang tertutup, dengan benar."
+          },
+          {
+            "id": "hasil-aman",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tak ada kubus melayang",
+            "ikon": "🛡️",
+            "petunjuk": "Kemampuan memastikan setiap susunan punya penyangga yang kokoh di bawahnya."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Kubus tiap lapisan",
+        "petunjuk": "Seret tab ke kotak yang cocok.",
+        "suara": "Daftar tiga susunan kubus. Untuk tiap susunan, pasang banyak kubus di lapisan bawah, banyak kubus di lapisan atas, dan jumlah seluruhnya.",
+        "pojok": "Susunan",
+        "kolom": [
+          "Bawah",
+          "Atas",
+          "Jumlah"
+        ],
+        "baris": [
+          {
+            "label": "Kardus",
+            "sel": [
+              "6",
+              "2",
+              "8"
+            ]
+          },
+          {
+            "label": "Lima kubus",
+            "sel": [
+              "3",
+              "2",
+              "5"
+            ]
+          },
+          {
+            "label": "Siku",
+            "sel": [
+              "2",
+              "1",
+              "3"
             ]
           }
         ]
@@ -308,7 +464,10 @@
                 "ikon": "📋",
                 "isi": "Depan 2 dan 1, belakang 3 dan 4.",
                 "suara": "Susunan dua kali dua punya baris depan dengan tinggi dua dan satu, dan baris belakang dengan tinggi tiga dan empat.",
-                "visual": { "jenis": "teks", "isi": "depan 2 1, belakang 3 4" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "depan 2 1, belakang 3 4"
+                }
               },
               {
                 "id": "total",
@@ -316,7 +475,10 @@
                 "ikon": "🧊",
                 "isi": "Jumlahkan semua tinggi.",
                 "suara": "Dua tambah satu tambah tiga tambah empat sama dengan sepuluh kubus seluruhnya.",
-                "visual": { "jenis": "teks", "isi": "2 + 1 + 3 + 4 = 10" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 + 1 + 3 + 4 = 10"
+                }
               }
             ]
           },
@@ -333,7 +495,10 @@
                 "ikon": "👀",
                 "isi": "Depan 1, belakang 3: tampak 3.",
                 "suara": "Kolom dengan tumpukan satu di depan dan tiga di belakang menampilkan tinggi tiga dari depan.",
-                "visual": { "jenis": "teks", "isi": "1 dan 3, tampak 3" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 dan 3, tampak 3"
+                }
               },
               {
                 "id": "kiri-kanan",
@@ -341,7 +506,10 @@
                 "ikon": "↔️",
                 "isi": "Kiri 3, kanan 4.",
                 "suara": "Pada susunan contoh, kolom kiri menampilkan tiga dan kolom kanan menampilkan empat dari depan.",
-                "visual": { "jenis": "teks", "isi": "3 dan 4" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 dan 4"
+                }
               },
               {
                 "id": "jumlah",
@@ -349,7 +517,10 @@
                 "ikon": "🧮",
                 "isi": "Tujuh petak.",
                 "suara": "Tiga ditambah empat sama dengan tujuh petak pada tampak depan, bukan sepuluh.",
-                "visual": { "jenis": "teks", "isi": "3 + 4 = 7" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 + 4 = 7"
+                }
               }
             ]
           },
@@ -366,7 +537,10 @@
                 "ikon": "👀",
                 "catatan": "Tinggi terlihat.",
                 "suara": "Empat kubus yang ditumpuk lurus tampak setinggi empat petak dari depan.",
-                "visual": { "jenis": "teks", "isi": "4 petak" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 petak"
+                }
               },
               {
                 "id": "atas",
@@ -374,10 +548,140 @@
                 "ikon": "⬆️",
                 "catatan": "Hanya satu petak.",
                 "suara": "Empat kubus yang ditumpuk lurus hanya tampak satu petak dari atas, karena tinggi tidak terlihat.",
-                "visual": { "jenis": "teks", "isi": "1 petak" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 petak"
+                }
               }
             ],
             "kesimpulan": "Dari atas tinggi tidak terlihat."
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Gedung dari berbagai arah",
+          "ikon": "🏢",
+          "suara": "Ini peta masalah gedung dari berbagai arah. Satu bangunan terlihat berbeda bila dipandang dari depan, kanan, atau atas, dan kita ingin tahu apakah gambar tampaknya cukup untuk menyusun kubusnya kembali. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-tampak",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Gambar tampak berbagai arah",
+            "petunjuk": "Memahami bahwa satu bangun ruang tampak berbeda dari arah yang berbeda."
+          },
+          {
+            "id": "hal-matriks",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Matriks tinggi tumpukan",
+            "petunjuk": "Memahami tabel angka yang menulis tinggi tumpukan kubus pada tiap sel."
+          },
+          {
+            "id": "hal-cocok",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Susunan yang cocok",
+            "petunjuk": "Memahami bahwa beberapa susunan kubus bisa cocok dengan gambar yang sama."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-pandang",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Pandang dari tiap arah",
+            "petunjuk": "Langkah menggambar apa yang terlihat dari depan, kanan, dan atas."
+          },
+          {
+            "id": "cara-tinggi",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Tulis tinggi tiap sel",
+            "petunjuk": "Langkah mengisi tabel tinggi, lalu mengambil tinggi terbesar tiap kolom atau baris."
+          },
+          {
+            "id": "cara-cocok",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Cocokkan dengan tampak",
+            "petunjuk": "Langkah terakhir: periksa susunan terhadap semua gambar yang diberikan."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-tampak",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Tampak tergambar benar",
+            "petunjuk": "Kemampuan menggambar tampak sebuah bangun ruang dari berbagai arah."
+          },
+          {
+            "id": "hasil-susun",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Susunan kubus tersusun",
+            "petunjuk": "Kemampuan menyusun kubus dari gambar tampaknya."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Kubus dan tampaknya",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel kubus dan tampaknya. Untuk tiap susunan, pasang banyak kubus, banyak kotak pada tampak depan, dan banyak sel pada tampak atas.",
+        "pojok": "Susunan",
+        "kolom": [
+          "Kubus",
+          "Depan",
+          "Atas"
+        ],
+        "baris": [
+          {
+            "label": "Anike",
+            "sel": [
+              "4 kubus",
+              "4 kotak",
+              "3 sel"
+            ]
+          },
+          {
+            "label": "Tumpukan",
+            "sel": [
+              "7 kubus",
+              "5 kotak",
+              "4 sel"
+            ]
+          },
+          {
+            "label": "Sejajar",
+            "sel": [
+              "2 kubus",
+              "2 kotak",
+              "2 sel"
+            ]
           }
         ]
       }
@@ -496,7 +800,10 @@
                 "ikon": "📍",
                 "isi": "Baris C, kolom 2.",
                 "suara": "Kota Makassar di peta berada di baris C dan kolom dua, ditulis C dua.",
-                "visual": { "jenis": "teks", "isi": "C2" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "C2"
+                }
               },
               {
                 "id": "terbalik",
@@ -504,7 +811,10 @@
                 "ikon": "🔄",
                 "isi": "Huruf dulu, bukan angka.",
                 "suara": "Letak ditulis huruf lebih dulu lalu angka. Dua C bukan letak yang benar.",
-                "visual": { "jenis": "teks", "isi": "C2, bukan 2C" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "C2, bukan 2C"
+                }
               }
             ]
           },
@@ -521,7 +831,10 @@
                 "ikon": "🔤",
                 "isi": "A ke E: 4 langkah.",
                 "suara": "Dari baris A ke baris E ada empat langkah petak.",
-                "visual": { "jenis": "teks", "isi": "A ke E = 4" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "A ke E = 4"
+                }
               },
               {
                 "id": "angka",
@@ -529,7 +842,10 @@
                 "ikon": "🔢",
                 "isi": "3 ke 5: 2 langkah.",
                 "suara": "Dari kolom tiga ke kolom lima ada dua langkah petak.",
-                "visual": { "jenis": "teks", "isi": "3 ke 5 = 2" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3 ke 5 = 2"
+                }
               },
               {
                 "id": "jumlah",
@@ -537,7 +853,10 @@
                 "ikon": "📏",
                 "isi": "Jumlahnya 6 langkah.",
                 "suara": "Empat ditambah dua sama dengan enam langkah dari A tiga ke E lima.",
-                "visual": { "jenis": "teks", "isi": "4 + 2 = 6" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4 + 2 = 6"
+                }
               }
             ]
           },
@@ -554,7 +873,10 @@
                 "ikon": "🚫",
                 "catatan": "Tidak diizinkan.",
                 "suara": "Gerak serong dari A tiga langsung ke B empat tidak diizinkan.",
-                "visual": { "jenis": "teks", "isi": "serong" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "serong"
+                }
               },
               {
                 "id": "lurus",
@@ -562,10 +884,148 @@
                 "ikon": "✅",
                 "catatan": "Turun satu, kanan satu.",
                 "suara": "Dari A tiga ke B empat, turun satu langkah lalu kanan satu langkah, jadi jaraknya dua langkah.",
-                "visual": { "jenis": "teks", "isi": "turun 1, kanan 1 = 2" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "turun 1, kanan 1 = 2"
+                }
               }
             ],
             "kesimpulan": "Jarak dihitung lewat gerak lurus."
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Bagaimana menentukan lokasi?",
+          "ikon": "🧭",
+          "suara": "Ini peta masalah menentukan lokasi. Tigor dan Tenri bercerita tentang perjalanan mereka ke Fort Rotterdam, dan kita ingin tahu di mana letak kota dan seberapa jauh perjalanannya. Kita belajar alamat huruf dan bilangan, jarak dua titik, dan banyak jalur terpendek. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-alamat",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Alamat huruf dan bilangan",
+            "petunjuk": "Hal yang dipelajari tentang menyebut letak sebuah titik pada kertas berpetak."
+          },
+          {
+            "id": "hal-jarak",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Jarak dua titik",
+            "petunjuk": "Hal yang dipelajari tentang seberapa jauh satu titik dari titik lain."
+          },
+          {
+            "id": "hal-jalur",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Banyak jalur terpendek",
+            "petunjuk": "Hal yang dipelajari tentang berapa cara menuju satu titik dengan langkah paling sedikit."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🔧",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-huruf",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Huruf dulu, lalu bilangan",
+            "petunjuk": "Langkah menulis alamat dengan garis huruf lebih dahulu, lalu garis bilangan."
+          },
+          {
+            "id": "cara-jumlah",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Jumlahkan dua selisih",
+            "petunjuk": "Langkah menambahkan selisih huruf dan selisih bilangan antara dua titik."
+          },
+          {
+            "id": "cara-tetangga",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Tambah kiri dan bawah",
+            "petunjuk": "Langkah menjumlahkan banyak cara dari titik di kiri dan titik di bawah."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-alamat",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Alamat titik ditulis tepat",
+            "petunjuk": "Kemampuan menyebut letak titik dengan pasangan huruf dan bilangan yang benar."
+          },
+          {
+            "id": "hasil-jarak",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Jarak dan jalur terjawab",
+            "petunjuk": "Kemampuan menjawab soal jarak dan banyak jalur antara dua titik."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Jarak dua titik di petak",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel jarak dua titik. Pasang titik awal, titik tujuan, dan jarak untuk empat rute di kertas berpetak.",
+        "pojok": "Rute",
+        "kolom": [
+          "Dari",
+          "Ke",
+          "Jarak"
+        ],
+        "baris": [
+          {
+            "label": "Rute 1",
+            "sel": [
+              "A 3",
+              "E 5",
+              "6"
+            ]
+          },
+          {
+            "label": "Rute 2",
+            "sel": [
+              "B 6",
+              "D 3",
+              "5"
+            ]
+          },
+          {
+            "label": "Rute 3",
+            "sel": [
+              "B 5",
+              "E 1",
+              "7"
+            ]
+          },
+          {
+            "label": "Rute 4",
+            "sel": [
+              "F 1",
+              "D 2",
+              "3"
+            ]
           }
         ]
       }

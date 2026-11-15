@@ -12,11 +12,11 @@ const TIGA = [".b", "bb", "bb"];
 export const ADEGAN_LUAR_OKLUSI: AdeganStory = {
   id: "luarb3-oklusi",
   judul: "Occlusion Max Rule: yang terlihat adalah yang tertinggi",
-  sumber: "Metode dari luar buku; contoh Buku Siswa hlm. 86–89",
+  sumber: "Metode luar: yang terlihat tertinggi",
   latar: "#EFFBF0",
   ketukan: [
     k(
-      "Occlusion Max Rule: bila dua tumpukan sejajar dengan arah pandang, kubus yang lebih dekat menutupi kubus di belakangnya. Yang terlihat adalah tinggi maksimum, yaitu 3.",
+      "Occlusion Max Rule: bila dua tumpukan sejajar dengan arah pandang, kubus yang lebih dekat menutupi kubus di belakangnya. Yang terlihat adalah tinggi maksimum, yaitu tiga.",
       tambah(0, teks("jud", 150, 22, "Occlusion Max Rule", 12, W.ungu)),
       tambah("tumpukan", ...[0, 1, 2].map((i) => kotak(`jauh${i}`, 130, 70 + i * 20, 20, 20, "#FB923C", W.biru, { rx: 1 })), kotak("dekat0", 104, 110, 20, 20, "#60A5FA", W.biru, { rx: 1 }), teks("tj", 140, 146, "jauh: 3", 9, W.merah), teks("td", 114, 160, "dekat: 1", 9, W.merah)),
       tambah("pandang,", emo("mata", 38, 112, "👀", 30), panah("ap", 62, 120, 36, 0, W.merah, 2.5, { gambar: true })),
@@ -24,7 +24,7 @@ export const ADEGAN_LUAR_OKLUSI: AdeganStory = {
       tambah("maksimum,", ...[0, 1, 2].map((i) => kotak(`lihat${i}`, 232, 70 + i * 20, 20, 20, "#FB923C", W.biru, { rx: 1 })), teks("tl", 242, 146, "terlihat: 3", 9, W.hijau)),
     ),
     k(
-      "Contoh: matriks dua baris dua kolom. Baris depan bertinggi 2 dan 1, baris belakang bertinggi 1 dan 3. Totalnya 2 tambah 1 tambah 1 tambah 3, yaitu 7 kubus.",
+      "Contoh: matriks dua baris dua kolom. Baris depan bertinggi dua dan satu, baris belakang bertinggi satu dan tiga. Totalnya dua tambah satu tambah satu tambah tiga, yaitu tujuh kubus.",
       bersih(0),
       tambah(0, teks("mt", 140, 28, "matriks tinggi", 10, W.ungu)),
       tambah("depan", ambil(MX.objs, "m-00", "m-n00", "m-01", "m-n01"), teks("b0", 92, 64, "depan", 8.5, W.ungu, { anchor: "end" })),
@@ -32,7 +32,7 @@ export const ADEGAN_LUAR_OKLUSI: AdeganStory = {
       tambah("Totalnya", teks("tt", 150, 150, "2 + 1 + 1 + 3 = 7 kubus", 13, W.merah, { garis: W.emas })),
     ),
     k(
-      "Tampak depan memakai maksimum tiap kolom. Kolom kiri: 2 dan 1, maksimumnya 2. Kolom kanan: 1 dan 3, maksimumnya 3. Jadi tampak depan terdiri atas 5 kotak.",
+      "Tampak depan memakai maksimum tiap kolom. Kolom kiri: dua dan satu, maksimumnya dua. Kolom kanan: satu dan tiga, maksimumnya tiga. Jadi tampak depan terdiri atas lima kotak.",
       bersih(0),
       tambah(0, MX_KECIL.objs, teks("td", 52, 36, "tampak depan", 8.5, W.ungu)),
       sorotkan("kiri:", "m-00", "m-10"),
@@ -40,10 +40,10 @@ export const ADEGAN_LUAR_OKLUSI: AdeganStory = {
       redamkan("kanan:", "m-00", "m-10"),
       sorotkan("kanan:", "m-01", "m-11"),
       tambah("maksimumnya@2", ...ambil(tampak("f", 170, 50, 26, TIGA).objs, "f-01", "f-11", "f-21")),
-      tambah("5", teks("jm", 196, 150, "5 kotak", 12, W.merah)),
+      tambah("lima", teks("jm", 196, 150, "5 kotak", 12, W.merah)),
     ),
     k(
-      "Tampak kanan memakai maksimum tiap baris. Baris depan: 2 dan 1, maksimumnya 2. Baris belakang: 1 dan 3, maksimumnya 3. Tampak kanan juga terdiri atas 5 kotak.",
+      "Tampak kanan memakai maksimum tiap baris. Baris depan: dua dan satu, maksimumnya dua. Baris belakang: satu dan tiga, maksimumnya tiga. Tampak kanan juga terdiri atas lima kotak.",
       bersih(0),
       tambah(0, MX_KECIL.objs, teks("td", 52, 36, "tampak kanan", 8.5, W.ungu)),
       sorotkan("depan:", "m-00", "m-01"),
@@ -51,16 +51,16 @@ export const ADEGAN_LUAR_OKLUSI: AdeganStory = {
       redamkan("belakang:", "m-00", "m-01"),
       sorotkan("belakang:", "m-10", "m-11"),
       tambah("maksimumnya@2", ...ambil(tampak("f", 170, 50, 26, TIGA.map((r) => r.replace(/b/g, "h"))).objs, "f-01", "f-11", "f-21")),
-      tambah("5", teks("jm", 196, 150, "5 kotak", 12, W.merah)),
+      tambah("lima", teks("jm", 196, 150, "5 kotak", 12, W.merah)),
     ),
     k(
-      "Kubus tersembunyi: ada 7 kubus, tetapi tampak depan hanya menunjukkan 5 kotak. Jadi 2 kubus tidak terlihat dari depan: satu di sel belakang kiri, dan satu di dasar tumpukan belakang kanan.",
+      "Kubus tersembunyi: ada tujuh kubus, tetapi tampak depan hanya menunjukkan lima kotak. Jadi dua kubus tidak terlihat dari depan: satu di sel belakang kiri, dan satu di dasar tumpukan belakang kanan.",
       bersih(0),
       tambah(0, MX.objs.map((o) => ({ ...o, x: (o.x ?? 0) - 40 }))),
       tambah("tersembunyi:", emo("tp", 232, 70, "🙈", 30)),
-      tambah("7", teks("a7", 232, 108, "7 kubus", 10.5, W.biru)),
-      tambah("5", teks("a5", 232, 126, "5 kotak terlihat", 8.5, W.hijau)),
-      tambah("2", teks("a2", 232, 146, "2 tersembunyi", 9.5, W.merah)),
+      tambah("tujuh", teks("a7", 232, 108, "7 kubus", 10.5, W.biru)),
+      tambah("lima", teks("a5", 232, 126, "5 kotak terlihat", 8.5, W.hijau)),
+      tambah("dua", teks("a2", 232, 146, "2 tersembunyi", 9.5, W.merah)),
       sorotkan("belakang", "m-10"),
       sorotkan("belakang@2", "m-11"),
     ),
@@ -85,7 +85,7 @@ const GAL = galeri(150, 40, 14, 44);
 export const ADEGAN_LUAR_REKONSTRUKSI: AdeganStory = {
   id: "luarb3-rekonstruksi",
   judul: "Reconstruction from Views: dari tampak menjadi susunan",
-  sumber: "Metode dari luar buku; contoh Buku Siswa hlm. 86–89",
+  sumber: "Metode luar: dari tampak ke susunan",
   latar: "#F3F0FF",
   ketukan: [
     k(
@@ -96,7 +96,7 @@ export const ADEGAN_LUAR_REKONSTRUKSI: AdeganStory = {
       tambah("beberapa", susunanIso("b", 124, 168, 12, CONTOH_A).objs, susunanIso("c", 206, 168, 12, CONTOH_B).objs, teks("bt", 150, 190, "beberapa susunan cocok", 8.5, W.merah)),
     ),
     k(
-      "Contoh Anike. Tampak atas: tiga sel berjajar, jadi matriksnya satu baris tiga kolom. Tampak depan bertinggi 1, 2, 1, jadi tiap sel terisi tepat setinggi itu. Hasilnya satu susunan, 4 kubus.",
+      "Contoh Anike. Tampak atas: tiga sel berjajar, jadi matriksnya satu baris tiga kolom. Tampak depan bertinggi satu, dua, satu, jadi tiap sel terisi tepat setinggi itu. Hasilnya satu susunan, empat kubus.",
       bersih(0),
       tambah("atas:", teks("ta", 54, 40, "tampak atas", 8.5, W.ungu), tampak("t", 24, 48, 24, ["kkk"]).objs),
       tambah("matriksnya", teks("tm", 218, 40, "matriks tinggi", 8.5, W.ungu), ...matriks("m", 182, 48, 24, [[1, 2, 1]]).objs),
@@ -104,17 +104,17 @@ export const ADEGAN_LUAR_REKONSTRUKSI: AdeganStory = {
       tambah("Hasilnya", teks("hs", 218, 130, "1 susunan", 14, W.merah, { garis: W.emas }), teks("hs2", 218, 152, "4 kubus", 14, W.merah)),
     ),
     k(
-      "Sekarang bayangkan hanya diberi tampak depan: dua kotak berjajar, tinggi 1. Pada lantai 2 kali 2, ada 9 susunan yang cocok. Paling sedikit 2 kubus, paling banyak 4.",
+      "Sekarang bayangkan hanya diberi tampak depan: dua kotak berjajar, tinggi satu. Pada lantai dua kali dua, ada sembilan susunan yang cocok. Paling sedikit dua kubus, paling banyak empat.",
       bersih(0),
       tambah("depan:", teks("tp", 42, 52, "tampak depan", 8.5, W.ungu), tampak("d", 14, 60, 28, ["bb"]).objs),
       tambah("tinggi", teks("t1", 42, 112, "tinggi 1", 9.5, W.merah)),
       tambah("lantai", teks("t2", 42, 130, "lantai 2 x 2", 9.5, W.merah)),
-      tambah("9", GAL, teks("t9", 208, 24, "9 susunan cocok", 10.5, W.hijau)),
+      tambah("sembilan", GAL, teks("t9", 208, 24, "9 susunan cocok", 10.5, W.hijau)),
       tambah("sedikit", teks("mn", 42, 160, "paling sedikit 2", 8.5, W.biru)),
       tambah("banyak", teks("mk", 42, 176, "paling banyak 4", 8.5, W.biru)),
     ),
     k(
-      "Tambahkan tampak kanan: kedua baris juga harus terisi. Dua susunan gugur, sehingga tinggal 7. Paling sedikit tetap 2 kubus, paling banyak 4.",
+      "Tambahkan tampak kanan: kedua baris juga harus terisi. Dua susunan gugur, sehingga tinggal tujuh. Paling sedikit tetap dua kubus, paling banyak empat.",
       bersih(0),
       tambah(0, tampak("d", 14, 60, 28, ["bb"]).objs, teks("tp", 42, 52, "tampak depan", 8.5, W.ungu), GAL),
       tambah("kanan:", tampak("r", 80, 60, 28, ["hh"]).objs, teks("tr", 108, 52, "tampak kanan", 8, W.ungu), teks("tr2", 108, 104, "2 baris terisi", 7.5, W.hijau)),
@@ -124,7 +124,7 @@ export const ADEGAN_LUAR_REKONSTRUKSI: AdeganStory = {
       tambah("banyak", teks("mk", 42, 176, "paling banyak 4", 8.5, W.biru)),
     ),
     k(
-      "Terakhir tampak atas. Pada contoh tinggi 1 ini, bila sel terisi diketahui, tinggal 1 susunan. Tampak atas berbentuk L dengan 3 sel hanya cocok dengan satu susunan.",
+      "Terakhir tampak atas. Pada contoh tinggi satu ini, bila sel terisi diketahui, tinggal satu susunan. Tampak atas berbentuk L dengan tiga sel hanya cocok dengan satu susunan.",
       bersih(0),
       tambah(0, GAL, teks("tg", 208, 24, "tinggi 1: 9 susunan cocok", 8.5, W.ungu)),
       tambah("atas", teks("ta", 42, 52, "tampak atas", 8.5, W.ungu), tampak("t", 16, 60, 26, ["k.", "kk"]).objs),
@@ -132,7 +132,7 @@ export const ADEGAN_LUAR_REKONSTRUKSI: AdeganStory = {
       hapus("tinggal", "tg"),
       tambah("tinggal", teks("t1", 208, 24, "tinggal 1 susunan", 11, W.hijau)),
       sorotkan("berbentuk", ...idGaleri(SUSUNAN_DEPAN.indexOf(SUSUNAN_L))),
-      tambah("3", teks("t3", 42, 130, "L: 3 sel", 9.5, W.merah)),
+      tambah("tiga", teks("t3", 42, 130, "L: 3 sel", 9.5, W.merah)),
     ),
   ],
 };
