@@ -1468,7 +1468,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
 
   const currentSubContent = SUB_BABS[activeSubBab];
   const modulBaru = paket ? paket.sub[activeSubBab] : MODUL_SUBBAB[`${bab}-${activeSubBab}`];
-  const CeritaBaru = modulBaru ? undefined : CERITA_BARU[`${bab}-${activeSubBab}`];
+  const CeritaBaru = CERITA_BARU[`${bab}-${activeSubBab}`];
   /** Data Mind-Map dan Infografis ringkas untuk sub-bab aktif (hanya bab pilot SMISCPA). */
   const ringkasSub = adaSimMateri ? RINGKAS_BAB[bab]?.[activeSubBab] : undefined;
   const subB2 = bab === "mtk-1-bab2" && activeSubBab === "B";
