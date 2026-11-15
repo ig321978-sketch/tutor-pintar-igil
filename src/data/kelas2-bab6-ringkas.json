@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-turun", "teks": "Ujung yang turun lebih berat", "ikon": "⬇️", "cabang": "cara-menimbang", "petunjuk": "Ujung timbangan yang turun itu cara menimbang. Coba cabang lain." },
-          { "id": "a-tangan", "teks": "Dua tangan untuk benda kecil", "ikon": "🤲", "cabang": "cara-menimbang", "petunjuk": "Memakai kedua tangan itu cara menimbang. Coba cabang lain." },
-          { "id": "a-semangka", "teks": "Semangka lebih berat dari apel", "ikon": "🍉", "cabang": "kata-berat", "petunjuk": "Kalimat perbandingan itu kata untuk berat. Coba cabang lain." },
-          { "id": "a-paling", "teks": "Tiga benda: paling berat, paling ringan", "ikon": "🏆", "cabang": "kata-berat", "petunjuk": "Paling berat dan paling ringan itu kata untuk berat. Coba cabang lain." },
-          { "id": "a-balon", "teks": "Balon besar, tetapi ringan", "ikon": "🎈", "cabang": "besar-berat", "petunjuk": "Besar tetapi ringan itu besar belum tentu berat. Coba cabang lain." },
-          { "id": "a-buktikan", "teks": "Tebak dulu, lalu buktikan", "ikon": "🔬", "cabang": "besar-berat", "petunjuk": "Membuktikan tebakan itu besar belum tentu berat. Coba cabang lain." },
-          { "id": "a-boneka", "teks": "Boneka sama dengan 4 bola tenis", "ikon": "🧸", "cabang": "satuan-tidak-baku", "petunjuk": "Mengukur dengan bola tenis itu satuan tidak baku. Coba cabang lain." },
-          { "id": "a-banyak", "teks": "Satuan ringan, hitungan lebih banyak", "ikon": "🔢", "cabang": "satuan-tidak-baku", "petunjuk": "Hitungan satuan itu satuan tidak baku. Coba cabang lain." }
+          {
+            "id": "a-turun",
+            "teks": "Ujung yang turun lebih berat",
+            "ikon": "⬇️",
+            "cabang": "cara-menimbang",
+            "petunjuk": "Ujung timbangan yang turun itu cara menimbang. Coba cabang lain."
+          },
+          {
+            "id": "a-tangan",
+            "teks": "Dua tangan untuk benda kecil",
+            "ikon": "🤲",
+            "cabang": "cara-menimbang",
+            "petunjuk": "Memakai kedua tangan itu cara menimbang. Coba cabang lain."
+          },
+          {
+            "id": "a-semangka",
+            "teks": "Semangka lebih berat dari apel",
+            "ikon": "🍉",
+            "cabang": "kata-berat",
+            "petunjuk": "Kalimat perbandingan itu kata untuk berat. Coba cabang lain."
+          },
+          {
+            "id": "a-paling",
+            "teks": "Tiga benda: paling berat, paling ringan",
+            "ikon": "🏆",
+            "cabang": "kata-berat",
+            "petunjuk": "Paling berat dan paling ringan itu kata untuk berat. Coba cabang lain."
+          },
+          {
+            "id": "a-balon",
+            "teks": "Balon besar, tetapi ringan",
+            "ikon": "🎈",
+            "cabang": "besar-berat",
+            "petunjuk": "Besar tetapi ringan itu besar belum tentu berat. Coba cabang lain."
+          },
+          {
+            "id": "a-buktikan",
+            "teks": "Tebak dulu, lalu buktikan",
+            "ikon": "🔬",
+            "cabang": "besar-berat",
+            "petunjuk": "Membuktikan tebakan itu besar belum tentu berat. Coba cabang lain."
+          },
+          {
+            "id": "a-boneka",
+            "teks": "Boneka sama dengan 4 bola tenis",
+            "ikon": "🧸",
+            "cabang": "satuan-tidak-baku",
+            "petunjuk": "Mengukur dengan bola tenis itu satuan tidak baku. Coba cabang lain."
+          },
+          {
+            "id": "a-banyak",
+            "teks": "Satuan ringan, hitungan lebih banyak",
+            "ikon": "🔢",
+            "cabang": "satuan-tidak-baku",
+            "petunjuk": "Hitungan satuan itu satuan tidak baku. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -72,7 +120,10 @@
                 "ikon": "⚖️",
                 "isi": "Ujung benda yang lebih berat turun.",
                 "suara": "Jungkat-jungkit adalah papan yang bagian tengahnya diam dan ujungnya naik turun. Taruh satu benda di tiap ujung. Ujung yang turun memegang benda yang lebih berat.",
-                "visual": { "jenis": "teks", "isi": "Apel turun, anggur naik → apel lebih berat dari anggur" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Apel turun, anggur naik → apel lebih berat dari anggur"
+                }
               },
               {
                 "id": "gantung",
@@ -80,7 +131,10 @@
                 "ikon": "🧺",
                 "isi": "Satu benda di tiap ujung gantungan.",
                 "suara": "Gantungan baju bekerja dengan cara yang sama. Gantung satu benda di tiap ujung, lalu lihat ujung mana yang turun.",
-                "visual": { "jenis": "teks", "isi": "Semangka turun, apel naik → semangka lebih berat dari apel" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Semangka turun, apel naik → semangka lebih berat dari apel"
+                }
               },
               {
                 "id": "tangan",
@@ -88,7 +142,10 @@
                 "ikon": "🤲",
                 "isi": "Angkat satu benda di tiap tangan.",
                 "suara": "Kedua tangan cocok untuk benda kecil yang aman diangkat. Angkat satu benda di tiap tangan, lalu rasakan tangan mana yang turun. Bila kedua tangan sejajar, kedua benda sama berat.",
-                "visual": { "jenis": "teks", "isi": "Tangan sejajar → jeruk sama berat dengan apel" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Tangan sejajar → jeruk sama berat dengan apel"
+                }
               }
             ]
           },
@@ -105,7 +162,10 @@
                 "ikon": "🎈",
                 "catatan": "Besar, tetapi sangat ringan.",
                 "suara": "Balon besar. Ukurannya besar, tetapi isinya hanya udara, jadi sangat ringan. Di jungkat-jungkit, balon naik.",
-                "visual": { "jenis": "teks", "isi": "Ukuran besar → berat ringan" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Ukuran besar → berat ringan"
+                }
               },
               {
                 "id": "batu",
@@ -113,7 +173,10 @@
                 "ikon": "🧱",
                 "catatan": "Kecil, tetapi terasa berat.",
                 "suara": "Batu kecil. Ukurannya kecil, tetapi terasa berat. Di jungkat-jungkit, batu turun, walaupun lebih kecil dari balon.",
-                "visual": { "jenis": "teks", "isi": "Ukuran kecil → berat banyak" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Ukuran kecil → berat banyak"
+                }
               }
             ],
             "kesimpulan": "Jangan menebak berat dari ukuran. Timbang dulu."
@@ -131,7 +194,10 @@
                 "ikon": "🎾",
                 "isi": "1 boneka sama dengan 4 bola tenis.",
                 "suara": "Dengan bola tenis, kita menaruh bola satu per satu sampai timbangan seimbang. Satu boneka sama dengan empat bola tenis.",
-                "visual": { "jenis": "teks", "isi": "1 boneka = 4 bola tenis" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 boneka = 4 bola tenis"
+                }
               },
               {
                 "id": "kelereng",
@@ -139,7 +205,10 @@
                 "ikon": "🔵",
                 "isi": "1 boneka sama dengan 10 kelereng.",
                 "suara": "Dengan kelereng, bonekanya sama, tetapi hasilnya sepuluh kelereng. Kelereng lebih ringan daripada bola tenis, jadi kita memerlukan lebih banyak.",
-                "visual": { "jenis": "teks", "isi": "1 boneka = 10 kelereng" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 boneka = 10 kelereng"
+                }
               },
               {
                 "id": "tabel-hasil",
@@ -147,8 +216,172 @@
                 "ikon": "📋",
                 "isi": "Satuan lebih ringan, hitungan lebih banyak.",
                 "suara": "Lihat tabelnya. Satu boneka yang sama punya empat hasil ukur. Makin ringan satuannya, makin banyak hitungannya.",
-                "visual": { "jenis": "tabel-menurun", "judul": "1 boneka sama dengan", "kepala": ["Satuan", "Banyak"], "baris": [["Bola tenis", 4], ["Balok mainan", 8], ["Kelereng", 10], ["Koin", 20]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "judul": "1 boneka sama dengan",
+                  "kepala": [
+                    "Satuan",
+                    "Banyak"
+                  ],
+                  "baris": [
+                    [
+                      "Bola tenis",
+                      4
+                    ],
+                    [
+                      "Balok mainan",
+                      8
+                    ],
+                    [
+                      "Kelereng",
+                      10
+                    ],
+                    [
+                      "Koin",
+                      20
+                    ]
+                  ]
+                }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Bagaimana mengukur berat?",
+          "ikon": "⚖️",
+          "suara": "Ini peta tentang berat. Kita ingin tahu bagaimana membandingkan dan mengukur berat benda. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-banding",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Membandingkan dua benda",
+            "ikon": "⚖️",
+            "petunjuk": "Membandingkan dua benda dengan timbangan jungkat-jungkit atau gantungan baju: benda yang lebih berat turun."
+          },
+          {
+            "id": "hal-paling",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Mengurutkan tiga benda",
+            "ikon": "🏆",
+            "petunjuk": "Mengurutkan tiga benda atau lebih, lalu menyebut yang paling berat dan yang paling ringan."
+          },
+          {
+            "id": "hal-satuan",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Satuan tidak baku",
+            "ikon": "🎾",
+            "petunjuk": "Mengukur berat dengan benda kecil yang sama, seperti kelereng, balok mainan, dan bola tenis."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-taruh",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Taruh benda di timbangan",
+            "ikon": "🍎",
+            "petunjuk": "Langkah untuk membandingkan: taruh satu benda di tiap piringan."
+          },
+          {
+            "id": "cara-lihat",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Lihat ujung yang turun",
+            "ikon": "🔍",
+            "petunjuk": "Langkah untuk mengurutkan: lihat ujung yang turun, itu benda yang lebih berat."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Hitung satuan sampai sejajar",
+            "ikon": "🧮",
+            "petunjuk": "Langkah untuk satuan tidak baku: tambah satuan sampai timbangan sejajar, lalu hitung."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-sebut",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menyebut lebih berat",
+            "ikon": "🏷️",
+            "petunjuk": "Kemampuan menyebut lebih berat, lebih ringan, dan sama berat dengan benar."
+          },
+          {
+            "id": "hasil-besar",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu besar belum tentu berat",
+            "ikon": "🎈",
+            "petunjuk": "Kemampuan memahami bahwa benda yang besar belum tentu berat, seperti balon dan batu."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Mana yang turun?",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel timbangan. Untuk tiap timbangan, pasang benda di kiri, benda di kanan, ujung yang turun, dan kata untuk benda kiri.",
+        "pojok": "Timbang",
+        "kolom": [
+          "Kiri",
+          "Kanan",
+          "Turun",
+          "Kata"
+        ],
+        "baris": [
+          {
+            "label": "Pertama",
+            "sel": [
+              "apel",
+              "anggur",
+              "kiri",
+              "berat"
+            ]
+          },
+          {
+            "label": "Kedua",
+            "sel": [
+              "anggur",
+              "jeruk",
+              "kanan",
+              "ringan"
+            ]
+          },
+          {
+            "label": "Ketiga",
+            "sel": [
+              "apel",
+              "jeruk",
+              "sejajar",
+              "sama"
             ]
           }
         ]
@@ -193,14 +426,62 @@
           }
         ],
         "kartu": [
-          { "id": "b-pendek", "teks": "Jarum pendek menunjukkan jam", "ikon": "🕔", "cabang": "baca-jam", "petunjuk": "Jarum pendek menunjukkan jam itu membaca jam. Coba cabang lain." },
-          { "id": "b-dua-belas", "teks": "Jarum panjang di angka 12: pukul tepat", "ikon": "🕛", "cabang": "baca-jam", "petunjuk": "Jarum panjang di angka dua belas itu membaca jam. Coba cabang lain." },
-          { "id": "b-nol-lima", "teks": "Pukul 5 tepat ditulis 05.00", "ikon": "🔢", "cabang": "analog-digital", "petunjuk": "Menulis dengan angka itu jam digital. Coba cabang lain." },
-          { "id": "b-enam-belas", "teks": "Pukul 4 sore ditulis 16.00", "ikon": "📟", "cabang": "analog-digital", "petunjuk": "Jam dua puluh empat jam itu jam digital. Coba cabang lain." },
-          { "id": "b-terbit", "teks": "Matahari baru terbit: pagi", "ikon": "🌅", "cabang": "bagian-hari", "petunjuk": "Pagi, siang, sore, dan malam itu bagian hari. Coba cabang lain." },
-          { "id": "b-gelap", "teks": "Langit gelap: malam", "ikon": "🌙", "cabang": "bagian-hari", "petunjuk": "Langit gelap itu bagian hari malam. Coba cabang lain." },
-          { "id": "b-olahraga", "teks": "Olahraga lebih lama dari mandi", "ikon": "⏳", "cabang": "urutan-lama", "petunjuk": "Membandingkan lama kegiatan itu urutan dan lama. Coba cabang lain." },
-          { "id": "b-satu-jam", "teks": "Pukul 6 sampai 7: satu jam", "ikon": "🗓️", "cabang": "urutan-lama", "petunjuk": "Menghitung jam yang berlalu itu urutan dan lama. Coba cabang lain." }
+          {
+            "id": "b-pendek",
+            "teks": "Jarum pendek menunjukkan jam",
+            "ikon": "🕔",
+            "cabang": "baca-jam",
+            "petunjuk": "Jarum pendek menunjukkan jam itu membaca jam. Coba cabang lain."
+          },
+          {
+            "id": "b-dua-belas",
+            "teks": "Jarum panjang di angka 12: pukul tepat",
+            "ikon": "🕛",
+            "cabang": "baca-jam",
+            "petunjuk": "Jarum panjang di angka dua belas itu membaca jam. Coba cabang lain."
+          },
+          {
+            "id": "b-nol-lima",
+            "teks": "Pukul 5 tepat ditulis 05.00",
+            "ikon": "🔢",
+            "cabang": "analog-digital",
+            "petunjuk": "Menulis dengan angka itu jam digital. Coba cabang lain."
+          },
+          {
+            "id": "b-enam-belas",
+            "teks": "Pukul 4 sore ditulis 16.00",
+            "ikon": "📟",
+            "cabang": "analog-digital",
+            "petunjuk": "Jam dua puluh empat jam itu jam digital. Coba cabang lain."
+          },
+          {
+            "id": "b-terbit",
+            "teks": "Matahari baru terbit: pagi",
+            "ikon": "🌅",
+            "cabang": "bagian-hari",
+            "petunjuk": "Pagi, siang, sore, dan malam itu bagian hari. Coba cabang lain."
+          },
+          {
+            "id": "b-gelap",
+            "teks": "Langit gelap: malam",
+            "ikon": "🌙",
+            "cabang": "bagian-hari",
+            "petunjuk": "Langit gelap itu bagian hari malam. Coba cabang lain."
+          },
+          {
+            "id": "b-olahraga",
+            "teks": "Olahraga lebih lama dari mandi",
+            "ikon": "⏳",
+            "cabang": "urutan-lama",
+            "petunjuk": "Membandingkan lama kegiatan itu urutan dan lama. Coba cabang lain."
+          },
+          {
+            "id": "b-satu-jam",
+            "teks": "Pukul 6 sampai 7: satu jam",
+            "ikon": "🗓️",
+            "cabang": "urutan-lama",
+            "petunjuk": "Menghitung jam yang berlalu itu urutan dan lama. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -220,7 +501,10 @@
                 "ikon": "🕔",
                 "isi": "Jarum pendek menunjukkan jam.",
                 "suara": "Jarum pendek menunjukkan jam. Lihat jarum pendek dulu untuk tahu jam berapa.",
-                "visual": { "jenis": "teks", "isi": "Pendek di angka 5 → jamnya 5" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Pendek di angka 5 → jamnya 5"
+                }
               },
               {
                 "id": "panjang",
@@ -228,7 +512,10 @@
                 "ikon": "🕛",
                 "isi": "Di angka 12: pukul tepat.",
                 "suara": "Jarum panjang menunjukkan menit. Bila jarum panjang di angka dua belas, waktunya pukul tepat.",
-                "visual": { "jenis": "teks", "isi": "Panjang di angka 12 → pukul tepat" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Panjang di angka 12 → pukul tepat"
+                }
               },
               {
                 "id": "analog",
@@ -236,7 +523,10 @@
                 "ikon": "⏰",
                 "isi": "Pendek di 5, panjang di 12: pukul 5.",
                 "suara": "Jam analog dengan jarum pendek di angka lima dan jarum panjang di angka dua belas menunjukkan pukul lima tepat. Halim bangun tidur pada waktu itu.",
-                "visual": { "jenis": "teks", "isi": "Pendek di 5 + panjang di 12 = pukul 5 tepat" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "Pendek di 5 + panjang di 12 = pukul 5 tepat"
+                }
               },
               {
                 "id": "digital",
@@ -244,7 +534,10 @@
                 "ikon": "📟",
                 "isi": "Pukul 5 tepat ditulis 05.00.",
                 "suara": "Jam digital menulis waktu dengan angka. Dua angka pertama adalah jam, dan dua angka sesudah titik adalah menit. Pukul lima tepat ditulis nol lima titik nol nol.",
-                "visual": { "jenis": "teks", "isi": "05.00 = pukul 5 tepat" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "05.00 = pukul 5 tepat"
+                }
               }
             ]
           },
@@ -261,7 +554,10 @@
                 "ikon": "🌅",
                 "isi": "Tika sarapan pukul 6 pagi.",
                 "suara": "Pagi hari matahari baru terbit. Tika sarapan pukul enam pagi, yang ditulis nol enam titik nol nol.",
-                "visual": { "jenis": "teks", "isi": "pukul 6 pagi = 06.00" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "pukul 6 pagi = 06.00"
+                }
               },
               {
                 "id": "siang",
@@ -269,7 +565,10 @@
                 "ikon": "☀️",
                 "isi": "Tika makan di kantin pukul 12.",
                 "suara": "Siang hari matahari berada paling tinggi. Tika makan di kantin pukul dua belas siang, yang ditulis dua belas titik nol nol.",
-                "visual": { "jenis": "teks", "isi": "pukul 12 siang = 12.00" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "pukul 12 siang = 12.00"
+                }
               },
               {
                 "id": "sore",
@@ -277,7 +576,10 @@
                 "ikon": "🌇",
                 "isi": "Tika bermain pukul 4 sore.",
                 "suara": "Sore hari matahari mulai turun. Tika bermain bersama adik pukul empat sore. Jam digital dua puluh empat jam menulisnya enam belas titik nol nol.",
-                "visual": { "jenis": "teks", "isi": "pukul 4 sore = 16.00" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "pukul 4 sore = 16.00"
+                }
               },
               {
                 "id": "malam",
@@ -285,7 +587,10 @@
                 "ikon": "🌙",
                 "isi": "Tika tidur pukul 9 malam.",
                 "suara": "Malam hari langit gelap. Tika tidur sejak pukul sembilan malam. Jam digital dua puluh empat jam menulisnya dua puluh satu titik nol nol.",
-                "visual": { "jenis": "teks", "isi": "pukul 9 malam = 21.00" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "pukul 9 malam = 21.00"
+                }
               }
             ]
           },
@@ -302,7 +607,10 @@
                 "ikon": "🏃",
                 "catatan": "Pukul 6 sampai 7: satu jam.",
                 "suara": "Berolahraga. Kira mulai pukul enam dan selesai pukul tujuh. Jarum pendek bergerak satu jam. Berolahraga lebih lama dari mandi.",
-                "visual": { "jenis": "teks", "isi": "pukul 6 → pukul 7 = 1 jam" }
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "pukul 6 → pukul 7 = 1 jam"
+                }
               },
               {
                 "id": "mandi",
@@ -310,10 +618,178 @@
                 "ikon": "🚿",
                 "catatan": "Hanya 15 menit, belum sampai satu jam.",
                 "suara": "Mandi. Kira mandi hanya lima belas menit, belum sampai satu jam. Mandi lebih sebentar dari berolahraga.",
-                "visual": { "jenis": "tabel-mendatar", "judul": "Lama kegiatan (menit)", "labelNama": "Kegiatan", "labelBanyak": "Menit", "nama": ["Cuci tangan", "Mandi", "Olahraga", "Tidur"], "nilai": [1, 15, 60, 480] }
+                "visual": {
+                  "jenis": "tabel-mendatar",
+                  "judul": "Lama kegiatan (menit)",
+                  "labelNama": "Kegiatan",
+                  "labelBanyak": "Menit",
+                  "nama": [
+                    "Cuci tangan",
+                    "Mandi",
+                    "Olahraga",
+                    "Tidur"
+                  ],
+                  "nilai": [
+                    1,
+                    15,
+                    60,
+                    480
+                  ]
+                }
               }
             ],
             "kesimpulan": "Lebih lama dan lebih sebentar membandingkan lama dua kegiatan."
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Bagaimana membaca waktu?",
+          "ikon": "⏰",
+          "suara": "Ini peta tentang waktu. Kita ingin tahu bagaimana membaca jam dan menceritakan kegiatan sehari. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-jam",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Jam analog dan digital",
+            "ikon": "⏰",
+            "petunjuk": "Jarum pendek menunjukkan jam dan jarum panjang menunjukkan menit pada jam analog."
+          },
+          {
+            "id": "hal-bagian",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Bagian hari dan kegiatan",
+            "ikon": "🌅",
+            "petunjuk": "Satu hari punya pagi, siang, sore, dan malam, dan tiap kegiatan terjadi pada waktunya."
+          },
+          {
+            "id": "hal-lama",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Lama dan urutan kegiatan",
+            "ikon": "⌛",
+            "petunjuk": "Kegiatan bisa diurutkan menurut waktunya dan dibandingkan lamanya."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah untuk membaca waktu dan membandingkan kegiatan."
+          },
+          {
+            "id": "cara-baca",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Baca dua jarum jam",
+            "ikon": "🕐",
+            "petunjuk": "Langkah pertama: lihat jarum pendek untuk jam dan jarum panjang untuk menit."
+          },
+          {
+            "id": "cara-bagian",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Pilih bagian hari",
+            "ikon": "🌤️",
+            "petunjuk": "Langkah kedua: tentukan kegiatan itu terjadi pagi, siang, sore, atau malam."
+          },
+          {
+            "id": "cara-banding",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Bandingkan lama kegiatan",
+            "ikon": "⏳",
+            "petunjuk": "Langkah ketiga: bandingkan lamanya dengan kata lebih lama dan lebih sebentar."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-pukul",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Menunjukkan pukul tepat",
+            "ikon": "🏆",
+            "petunjuk": "Kemampuan menunjukkan dan membaca pukul tepat pada jam."
+          },
+          {
+            "id": "hasil-urut",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Mengurutkan kegiatan sehari",
+            "ikon": "📅",
+            "petunjuk": "Kemampuan mengurutkan kegiatan sehari menurut waktunya."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Kegiatan, pukul, dan bagian hari",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel kegiatan Kira sepanjang hari. Untuk tiap kegiatan, pasang pukul berapa kegiatan itu, bagian harinya, dan urutannya dalam sehari.",
+        "pojok": "Kegiatan",
+        "kolom": [
+          "Pukul",
+          "Bagian",
+          "Urutan"
+        ],
+        "baris": [
+          {
+            "label": "Sarapan",
+            "sel": [
+              "6",
+              "Pagi",
+              "Pertama"
+            ]
+          },
+          {
+            "label": "Belajar",
+            "sel": [
+              "7",
+              "Pagi",
+              "Kedua"
+            ]
+          },
+          {
+            "label": "Makan siang",
+            "sel": [
+              "12",
+              "Siang",
+              "Ketiga"
+            ]
+          },
+          {
+            "label": "Bermain",
+            "sel": [
+              "4",
+              "Sore",
+              "Keempat"
+            ]
+          },
+          {
+            "label": "Tidur",
+            "sel": [
+              "9",
+              "Malam",
+              "Kelima"
+            ]
           }
         ]
       }
