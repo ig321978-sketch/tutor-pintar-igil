@@ -28,8 +28,8 @@ const LS = 11;
 
 export const ADEGAN_MISKON_1: AdeganStory = {
   id: "miskonsepsi-1",
-  judul: "Miskonsepsi 1: menjumlahkan keliling bangun penyusun",
-  sumber: "Panduan Guru hlm. 165–166",
+  judul: "Hati-hati: menjumlahkan keliling bangun penyusun",
+  sumber: "Materi: kesalahan umum, jumlah keliling",
   latar: "#FEF2F2",
   kutipan: [
     "Peserta didik keliru memahami bahwa keliling bangun gabungan adalah",
@@ -42,8 +42,8 @@ export const ADEGAN_MISKON_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Miskonsepsi pertama: peserta didik mengira keliling bangun gabungan adalah jumlah keliling bangun-bangun penyusunnya. Itu keliru, sebab keliling hanya menghitung panjang tepiannya saja.",
-      tambah(0, judul("Miskonsepsi 1")),
+      "Hati-hati, ini kesalahan yang sering terjadi: mengira keliling bangun gabungan adalah jumlah keliling bangun-bangun penyusunnya. Itu keliru, sebab keliling hanya menghitung panjang tepiannya saja.",
+      tambah(0, judul("Hati-hati")),
       tambah(0, ...denahRuang("mk", LX, LY, LS)),
       tambah("jumlah", ...kartu("m1", 170, 44, 124, 54, W.merahMuda, ["jumlah keliling", "tiap bagian"], 9), emo("m1e", 232, 120, "❌", 26)),
       tambah("tepiannya", denahTepi("mkt", LX, LY, LS, W.merah, 2.4, { z: 5 })),
@@ -60,13 +60,13 @@ export const ADEGAN_MISKON_1: AdeganStory = {
       tambah("seratus", teks("c8", 150, 192, "16 + 12 + 24 + 20 + 16 + 16 = 104", 8.4, W.merah)),
     ),
     k(
-      "Penyebabnya, peserta didik belajar luas bangun gabungan lebih dulu, yang diperoleh dengan menjumlahkan luas penyusunnya. Keliling tidak begitu.",
+      "Kesalahan ini muncul karena kita sudah belajar luas bangun gabungan lebih dulu, yang diperoleh dengan menjumlahkan luas bagian-bagiannya. Keliling tidak begitu.",
       hapus(0, "c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8"),
       tambah("luas", ...kartu("p1", 170, 44, 124, 50, W.hijauMuda, ["luas: jumlahkan", "luas bagian"], 9), emo("p1e", 150, 70, "✅", 18)),
       tambah("keliling", ...kartu("p2", 170, 104, 124, 50, W.merahMuda, ["keliling: bukan", "jumlah bagian"], 9), emo("p2e", 150, 130, "❌", 18)),
     ),
     k(
-      "Untuk mengantisipasi, guru mengingatkan konsep dasar keliling: hanya menghitung jumlah panjang sisi-sisi terluar, tepiannya saja.",
+      "Jadi ingatlah konsep dasarnya: keliling hanya menghitung jumlah panjang sisi-sisi terluar, tepiannya saja.",
       hapus(0, "p1-k", "p1-t0", "p1-t1", "p2-k", "p2-t0", "p2-t1", "p1e", "p2e"),
       tambah("konsep", ...kartu("q1", 168, 56, 128, 70, W.krem, ["keliling =", "jumlah panjang", "sisi terluar"], 9.2)),
       tambah("tepiannya", emo("q1e", 232, 154, "✅", 28)),
@@ -88,8 +88,8 @@ const hurufM2 = (id: string, h: string, dx: number, dy: number, warna: string = 
 
 export const ADEGAN_MISKON_2: AdeganStory = {
   id: "miskonsepsi-2",
-  judul: "Miskonsepsi 2: semua bangun dibungkus persegi besar",
-  sumber: "Panduan Guru hlm. 166–167",
+  judul: "Hati-hati: semua bangun dibungkus persegi besar",
+  sumber: "Materi: kesalahan umum, bingkai besar",
   latar: "#FFF7ED",
   kutipan: [
     "Karena sebagian peserta didik mungkin menyadari bahwa cara Komang",
@@ -116,8 +116,8 @@ export const ADEGAN_MISKON_2: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Miskonsepsi kedua: karena cara Komang lebih mudah, peserta didik mengira semua bangun gabungan bisa dibungkus persegi besar.",
-      tambah(0, judul("Miskonsepsi 2")),
+      "Hati-hati, ada kesalahan lain yang sering terjadi: karena cara Komang lebih mudah, kita mengira semua bangun gabungan bisa dibungkus persegi besar.",
+      tambah(0, judul("Hati-hati")),
       tambah(0, bentuk("s1", M1X, M1Y, 7, MISKON1, W.jingga)),
       tambah("dibungkus", bingkai("b1", M1X, M1Y, 7, 0, 0, 20, 12)),
       tambah("Komang", teks("q", 232, 100, "semua", 12, W.merah), teks("q2", 232, 116, "bangun?", 12, W.merah)),
@@ -159,11 +159,13 @@ export const ADEGAN_MISKON_2: AdeganStory = {
       tambah("Hasilnya", baris("r10", 104, "82 cm", 16, W.hijau)),
     ),
     k(
-      "Catatan guru: gambar buku menulis dua puluh di sisi atas, dan teks menulis C E sepuluh, padahal hitungan memakai delapan belas dan sembilan. Hasil delapan puluh dua cocok dengan hitungan itu.",
+      "Periksa lagi ukurannya. Sisi atas delapan belas, sebab A B dua belas ditambah D E enam. Dan C E sembilan, sebab C D tiga ditambah D E enam. Hasil delapan puluh dua pun cocok.",
       hapus(0, "r8", "r9", "r10", "hAB", "hFG", "hCE", "lAB", "lFG", "lCE"),
-      tambah("Catatan", emo("w", PX, 46, "⚠", 20), baris("w1", 70, "gambar buku: atas 20", 8.6, W.coklat)),
-      tambah("hitungan", baris("w2", 84, "hitungan buku: atas 18", 8.6, W.hijau)),
-      tambah("teks", baris("w3", 108, "teks buku: CE = 10", 8.6, W.coklat), baris("w4", 122, "hitungan buku: CE = 9", 8.6, W.hijau)),
+      tambah("Periksa", emo("w", PX, 46, "🔍", 20)),
+      tambah("atas", baris("w1", 70, "atas = 18 cm", 9, W.coklat)),
+      tambah("sebab", baris("w2", 84, "AB + DE = 12 + 6 = 18", 8.6, W.hijau)),
+      tambah("sembilan", baris("w3", 108, "CE = 9 cm", 9, W.coklat)),
+      tambah("sebab@2", baris("w4", 122, "CD + DE = 3 + 6 = 9", 8.6, W.hijau)),
     ),
     k(
       "Pelajarannya, cara bingkai aman bila sisi yang disamakan tidak tumpang tindih. Bingkai saja memberi tujuh puluh enam, kurang dari delapan puluh dua.",
@@ -172,12 +174,12 @@ export const ADEGAN_MISKON_2: AdeganStory = {
       tambah("kurang", baris("x3", 100, "keliling sebenarnya: 82", 9, W.hijau)),
     ),
     k(
-      "Diferensiasi: Sub-Bab E melatih berpikir tingkat tinggi, yaitu menguraikan bangun gabungan, C empat, dan menciptakan bangun baru, C enam. Bila belum siap, mulai dari persegi panjang dan persegi.",
+      "Tantangan untukmu: uraikan bangun gabungan menjadi bagian-bagiannya, lalu ciptakan bangun gabungan barumu sendiri. Kalau terasa sulit, mulailah dari persegi panjang dan persegi.",
       bersih(0),
-      tambah(0, judul("Diferensiasi")),
-      tambah("menguraikan", ...kartu("y1", 20, 40, 260, 38, W.langit, ["menguraikan bangun gabungan (C4)"], 9.4)),
-      tambah("menciptakan", ...kartu("y2", 20, 88, 260, 38, W.hijauMuda, ["menciptakan bangun baru (C6)"], 9.4)),
-      tambah("mulai", ...kartu("y3", 20, 136, 260, 40, W.krem, ["belum siap: mulai dari", "persegi panjang dan persegi"], 9)),
+      tambah(0, judul("Tantangan")),
+      tambah("uraikan", ...kartu("y1", 20, 40, 260, 38, W.langit, ["menguraikan bangun gabungan"], 9.4)),
+      tambah("ciptakan", ...kartu("y2", 20, 88, 260, 38, W.hijauMuda, ["menciptakan bangun baru"], 9.4)),
+      tambah("mulailah", ...kartu("y3", 20, 136, 260, 40, W.krem, ["terasa sulit: mulai dari", "persegi panjang dan persegi"], 9)),
     ),
   ],
 };
@@ -185,8 +187,8 @@ export const ADEGAN_MISKON_2: AdeganStory = {
 /* ------------------------------ 10. Uji Kompetensi nomor 1 sampai 3 (Buku Siswa hlm. 130; Panduan Guru hlm. 168) ------------------------------ */
 export const ADEGAN_UK_1: AdeganStory = {
   id: "uji-kompetensi-1",
-  judul: "Uji Kompetensi nomor 1 sampai 3",
-  sumber: "Buku Siswa hlm. 130; Panduan Guru hlm. 168",
+  judul: "Uji 1 sampai 3",
+  sumber: "Materi: Uji 1 sampai 3",
   latar: "#F5F3FF",
   kutipan: [
     "Uji Kompetensi",
@@ -206,34 +208,34 @@ export const ADEGAN_UK_1: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Uji Kompetensi. Tentukan keliling bangun berikut. Nomor satu: segitiga sama sisi, sisi delapan sentimeter. Keliling sama dengan tiga kali sisi, jadi tiga kali delapan, dua puluh empat sentimeter.",
-      tambah(0, judul("Uji Kompetensi 1")),
+      "Sekarang Uji satu. Tentukan keliling bangun berikut. Segitiga sama sisi, sisi delapan sentimeter. Keliling sama dengan tiga kali sisi, jadi tiga kali delapan, dua puluh empat sentimeter.",
+      tambah(0, judul("Uji 1")),
       tambah("segitiga", bentuk("u1", 36, 66, 14, UK1, W.langit), lbl("u1l", 36, 66, 14, UK1[0], UK1[2], "8 cm", -18, 0, 9.6, W.biru)),
-      tambah("Keliling", baris("t1", 90, "keliling = 3 × sisi", 9.6)),
+      tambah("Keliling@2", baris("t1", 90, "keliling = 3 × sisi", 9.6)),
       tambah("jadi", baris("t2", 110, "3 × 8 = 24 cm", 13, W.hijau)),
     ),
     k(
-      "Nomor dua: layang-layang A B C D. Sisi A B dan A D enam sentimeter, sisi C B dan C D empat. Keliling dua kali empat ditambah dua kali enam, delapan ditambah dua belas, dua puluh sentimeter.",
+      "Uji dua: layang-layang A B C D. Sisi A B dan A D enam sentimeter, sisi C B dan C D empat. Keliling dua kali empat ditambah dua kali enam, delapan ditambah dua belas, dua puluh sentimeter.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 2")),
+      tambah(0, judul("Uji 2")),
       tambah("layang-layang", jalur("u2", 28, 108, `M0 0 L${(2 * 18).toFixed(1)} ${(-3.464 * 18).toFixed(1)} L${(6.899 * 18).toFixed(1)} 0 L${(2 * 18).toFixed(1)} ${(3.464 * 18).toFixed(1)} Z`, W.krem, W.biru, { tebal: 2 }), teks("u2C", 20, 110, "C", 8, W.merah), teks("u2B", 66, 50, "B", 8, W.merah), teks("u2A", 160, 110, "A", 8, W.merah), teks("u2D", 66, 176, "D", 8, W.merah)),
       tambah("Sisi", teks("u2a", 120, 74, "6 cm", 9, W.biru), teks("u2c", 36, 148, "4 cm", 9, W.biru)),
       tambah("Keliling", baris("t3", 90, "(2 × 4) + (2 × 6) = 20", 9.4)),
       tambah("delapan", baris("t4", 110, "8 + 12 = 20 cm", 13, W.hijau)),
     ),
     k(
-      "Nomor tiga: segi delapan beraturan, sisi sepuluh sentimeter. Keliling sama dengan delapan kali sisi, yaitu delapan kali sepuluh, delapan puluh sentimeter.",
+      "Uji tiga: segi delapan beraturan, sisi sepuluh sentimeter. Keliling sama dengan delapan kali sisi, yaitu delapan kali sepuluh, delapan puluh sentimeter.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 3")),
+      tambah(0, judul("Uji 3")),
       tambah("segi", bentuk("u3", 92, 106, 4.2, UK3, W.hijauMuda), teks("u3l", 160, 108, "10 cm", 9.6, W.biru)),
       tambah("Keliling", baris("t5", 70, "keliling = 8 × sisi", 9.6)),
       tambah("yaitu", baris("t6", 130, "8 × 10 = 80 cm", 13, W.hijau)),
     ),
     k(
-      "Ketiganya cukup memakai rumus sub-bab sebelumnya. Hasilnya dua puluh empat, dua puluh, dan delapan puluh sentimeter.",
+      "Ketiganya cukup memakai rumus yang sudah kita pelajari. Hasilnya dua puluh empat, dua puluh, dan delapan puluh sentimeter.",
       bersih(0),
-      tambah(0, judul("Hasil nomor 1 sampai 3")),
-      tambah("Ketiganya", ...tabel("tb", 60, 44, [50, 130], [["No.", "Keliling"], ["1", ""], ["2", ""], ["3", ""]], 22, 10)),
+      tambah(0, judul("Hasil Uji 1 sampai 3")),
+      tambah("Ketiganya", ...tabel("tb", 60, 44, [50, 130], [["Uji", "Keliling"], ["1", ""], ["2", ""], ["3", ""]], 22, 10)),
       tambah("Hasilnya", teks("tb1", 175, 104, "24 cm", 11, W.hijau)),
       tambah("dua@2", teks("tb2", 175, 126, "20 cm", 11, W.hijau)),
       tambah("delapan", teks("tb3", 175, 148, "80 cm", 11, W.hijau)),
@@ -251,8 +253,8 @@ const U5S = 11;
 
 export const ADEGAN_UK_2: AdeganStory = {
   id: "uji-kompetensi-2",
-  judul: "Uji Kompetensi nomor 4 dan 5, dan rubrik penilaian",
-  sumber: "Buku Siswa hlm. 130; Panduan Guru hlm. 168–171",
+  judul: "Uji 4 dan 5, lalu renungan",
+  sumber: "Materi: Uji 4 dan 5",
   latar: "#F5F3FF",
   kutipan: [
     "Keliling = 12 + 16 + 12 + 12 + 20",
@@ -283,22 +285,22 @@ export const ADEGAN_UK_2: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Nomor empat: jajargenjang digabung segitiga siku-siku. Garis putus-putus enam belas sentimeter di dalam bangun, bukan sisi terluar, tetapi sama panjang dengan sisi atas jajargenjang.",
-      tambah(0, judul("Uji Kompetensi 4")),
+      "Uji empat: jajargenjang digabung segitiga siku-siku. Garis putus-putus enam belas sentimeter di dalam bangun, bukan sisi terluar, tetapi sama panjang dengan sisi atas jajargenjang.",
+      tambah(0, judul("Uji 4")),
       tambah("digabung", bentuk("v1", U4X, U4Y, U4S, UK4, W.krem, { z: 1 })),
       tambah("putus-putus", gs("v1d", U4X, U4Y, U4S, UK4_DALAM[0], UK4_DALAM[1], W.merah, 1.6, { putus: true }), lbl("v1dl", U4X, U4Y, U4S, UK4_DALAM[0], UK4_DALAM[1], "16 cm", -4, 11, 8, W.merah)),
       tambah("atas", lbl("v1a", U4X, U4Y, U4S, UK4[0], UK4[1], "16 cm", 0, -8, 8, W.hijau)),
       tambah("tetapi", baris("v1t", 70, "garis putus-putus", 9, W.merah), baris("v1u", 84, "di dalam: bukan sisi", 9, W.merah)),
     ),
     k(
-      "Kunci buku: keliling sama dengan dua belas ditambah enam belas ditambah dua belas ditambah dua belas ditambah dua puluh, yaitu tujuh puluh dua sentimeter.",
-      tambah("Kunci", lbl("v2a", U4X, U4Y, U4S, UK4[0], UK4[4], "12", -9, 0, 8, W.biru), lbl("v2b", U4X, U4Y, U4S, UK4[1], UK4[2], "12", 9, 0, 8, W.biru), lbl("v2c", U4X, U4Y, U4S, UK4[2], UK4[3], "12", 9, 0, 8, W.biru), lbl("v2d", U4X, U4Y, U4S, UK4[3], UK4[4], "20", -8, 6, 8, W.biru)),
+      "Jumlahkan semua sisi terluarnya: dua belas ditambah enam belas ditambah dua belas ditambah dua belas ditambah dua puluh, yaitu tujuh puluh dua sentimeter.",
+      tambah("Jumlahkan", lbl("v2a", U4X, U4Y, U4S, UK4[0], UK4[4], "12", -9, 0, 8, W.biru), lbl("v2b", U4X, U4Y, U4S, UK4[1], UK4[2], "12", 9, 0, 8, W.biru), lbl("v2c", U4X, U4Y, U4S, UK4[2], UK4[3], "12", 9, 0, 8, W.biru), lbl("v2d", U4X, U4Y, U4S, UK4[3], UK4[4], "20", -8, 6, 8, W.biru)),
       tambah("yaitu", baris("v2e", 118, "12 + 16 + 12 + 12 + 20 = 72", 9), baris("v2f", 140, "72 cm", 16, W.hijau)),
     ),
     k(
-      "Nomor lima: bangun berlekuk yang dibingkai garis putus-putus. Sisi kiri dua belas, sisi kanan sama, sisi atas delapan ditambah tiga, yaitu sebelas, dan sisi bawah sama dengan sisi atas.",
+      "Uji lima: bangun berlekuk yang dibingkai garis putus-putus. Sisi kiri dua belas, sisi kanan sama, sisi atas delapan ditambah tiga, yaitu sebelas, dan sisi bawah sama dengan sisi atas.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 5")),
+      tambah(0, judul("Uji 5")),
       tambah("bangun", bentuk("w1", U5X, U5Y, U5S, UK5, W.hijauMuda)),
       tambah("dibingkai", bingkai("w1b", U5X, U5Y, U5S, 0, 0, 11, 12)),
       tambah("Sisi", teks("w1l", U5X - 12, U5Y + 72, "12", 9, W.biru), teks("w1t", U5X + 44, U5Y - 4, "8", 8.6, W.biru), teks("w1t2", U5X + 110, U5Y - 4, "3", 8.6, W.biru), teks("w1v", U5X + 100, U5Y + 16, "3", 8.6, W.biru), teks("w1h", U5X + 80, U5Y + 76, "7", 8.6, W.biru)),
@@ -311,19 +313,28 @@ export const ADEGAN_UK_2: AdeganStory = {
       tambah("empat@2", baris("w2c", 150, "46 cm", 16, W.hijau)),
     ),
     k(
-      "Rubrik: skor nol sampai empat tiap butir. Nol tidak menjawab; satu hasil kurang tepat; dua hasil benar bersatuan tanpa cara; tiga ada cara tetapi kurang tepat; empat hasil, satuan, dan cara runtut.",
+      "Hati-hati, kesalahan yang sering terjadi: hanya menulis hasil akhir. Tulis juga satuannya, dan tulis caranya dengan runtut.",
       bersih(0),
-      tambah(0, judul("Rubrik penilaian")),
-      tambah("Nol", ...tabel("rb", 16, 34, [36, 232], [["Skor", "Pedoman"], ["0", "tidak menjawab sama sekali"], ["1", "hanya hasil akhir, kurang tepat"], ["2", "hasil benar + satuan, tanpa cara"], ["3", "ada cara, tetapi kurang tepat"], ["4", "hasil, satuan, dan cara runtut"]], 22, 8.4)),
-      tambah("tiap", teks("rb2", 150, 188, "5 butir, tiap butir skor 0 sampai 4", 9, W.coklat)),
+      tambah(0, judul("Hati-hati")),
+      tambah("hasil", ...kartu("rb1", 30, 40, 240, 34, W.merahMuda, ["hanya menulis hasil akhir"], 9.4)),
+      tambah("satuannya,", ...kartu("rb2", 30, 86, 240, 34, W.hijauMuda, ["tulis juga satuannya (cm)"], 9.4)),
+      tambah("runtut.", ...kartu("rb3", 30, 132, 240, 34, W.krem, ["tulis caranya dengan runtut"], 9.4)),
     ),
     k(
-      "Skor maksimum tiap butir empat, jadi lima butir berjumlah dua puluh. Kelima kunci Uji Kompetensi kami hitung ulang, dan semuanya cocok.",
+      "Sekarang kita periksa semua hasilnya: dua puluh empat, dua puluh, delapan puluh, tujuh puluh dua, dan empat puluh enam sentimeter. Semuanya sudah kita hitung ulang, dan cocok.",
       bersih(0),
-      tambah(0, judul("Skor dan pemeriksaan kunci")),
-      tambah("maksimum", ...kartu("z1", 40, 44, 220, 40, W.langit, ["5 × 4 = 20", "skor maksimum"], 10)),
-      tambah("Kelima", ...kartu("z2", 40, 96, 220, 60, W.hijauMuda, ["kunci nomor 1 sampai 5:", "24, 20, 80, 72, 46 cm", "dihitung ulang: cocok"], 9)),
+      tambah(0, judul("Hasil Uji 1 sampai 5")),
+      tambah("Semuanya", ...kartu("z1", 40, 44, 220, 40, W.langit, ["Uji 1 sampai 5", "semuanya selesai"], 10)),
+      tambah("hasilnya:", ...kartu("z2", 40, 96, 220, 60, W.hijauMuda, ["hasil Uji 1 sampai 5:", "24, 20, 80, 72, 46 cm", "dihitung ulang: cocok"], 9)),
       tambah("cocok", emo("z3", 150, 184, "✅", 22)),
+    ),
+    k(
+      "Renungan untukmu: bangun mana yang paling mudah kamu hitung kelilingnya, dan bangun mana yang paling sulit? Ceritakan mengapa.",
+      bersih(0),
+      tambah(0, judul("Renungan")),
+      tambah("mudah", ...kartu("rn1", 30, 40, 240, 34, W.hijauMuda, ["Bangun mana yang paling mudah?"], 9.4)),
+      tambah("sulit?", ...kartu("rn2", 30, 86, 240, 34, W.merahMuda, ["Bangun mana yang paling sulit?"], 9.4)),
+      tambah("mengapa.", emo("rn3", 150, 150, "🤔", 34)),
     ),
   ],
 };
@@ -339,8 +350,8 @@ const hurufG = (id: string, h: string, dx: number, dy: number): Obj => {
 
 export const ADEGAN_PENGAYAAN: AdeganStory = {
   id: "pengayaan-cat",
-  judul: "Remedial, pengayaan, dan soal mengecat dinding gedung",
-  sumber: "Panduan Guru hlm. 172–174",
+  judul: "Tantangan: mengecat dinding gedung sekolah",
+  sumber: "Materi: Tantangan, mengecat dinding gedung",
   latar: "#ECFEFF",
   kutipan: [
     "Remedial diberikan jika peserta didik belum mencapai kriteria minimum",
@@ -373,16 +384,16 @@ export const ADEGAN_PENGAYAAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Remedial lewat bimbingan individu, kelompok, atau pembelajaran ulang dengan metode dan media berbeda. Pengayaan memakai soal AKM tentang keliling bangun datar.",
-      tambah(0, judul("Remedial dan pengayaan")),
-      tambah("Remedial", ...kartu("r1", 14, 36, 128, 74, W.krem, ["remedial:", "bimbingan individu,", "kelompok, atau ulang", "dengan metode lain"], 8.4)),
-      tambah("Pengayaan", ...kartu("r2", 158, 36, 128, 74, W.hijauMuda, ["pengayaan:", "soal AKM tentang", "keliling bangun datar"], 8.4)),
-      tambah("keliling", emo("r3", 150, 150, "🎓", 30)),
+      "Sekarang saatnya Tantangan. Kita akan memakai keliling untuk soal nyata: mengecat dinding luar sebuah gedung sekolah.",
+      tambah(0, judul("Tantangan")),
+      tambah("Tantangan.", ...kartu("r1", 14, 36, 128, 74, W.krem, ["tantangan:", "keliling dipakai", "untuk soal nyata"], 8.4)),
+      tambah("mengecat", ...kartu("r2", 158, 36, 128, 74, W.hijauMuda, ["mengecat dinding", "luar gedung", "sekolah"], 8.4)),
+      tambah("gedung", emo("r3", 150, 150, "🎨", 30)),
     ),
     k(
-      "Soal pengayaan: mengecat dinding luar gedung sekolah. Denah gedung dua puluh empat kali dua puluh meter, dengan sisi tiga dan dua belas meter. Satu galon cat cukup untuk lima meter. Cukupkah delapan belas galon?",
+      "Soal tantangan: mengecat dinding luar gedung sekolah. Denah gedung dua puluh empat kali dua puluh meter, dengan sisi tiga dan dua belas meter. Satu galon cat cukup untuk lima meter. Cukupkah delapan belas galon?",
       bersih(0),
-      tambah(0, judul("Pengayaan: mengecat dinding")),
+      tambah(0, judul("Tantangan: mengecat dinding")),
       tambah("Denah", bentuk("g", GX, GY, GS, PENGAYAAN, W.langit)),
       tambah("dua@2", teks("g24", GX + 72, GY - 4, "24 m", 8.4, W.biru), teks("g20", GX + 24 * GS + 14, GY + 60, "20 m", 8.4, W.biru)),
       tambah("tiga", teks("g3", GX + 13.5 * GS, GY + 17 * GS - 5, "3 m", 7.6, W.biru), teks("g12", GX + 18 * GS, GY + 20 * GS + 10, "12 m", 7.6, W.biru)),
@@ -417,19 +428,19 @@ export const ADEGAN_PENGAYAAN: AdeganStory = {
       tambah("yaitu", baris("n3", 108, "94 m", 18, W.hijau)),
     ),
     k(
-      "Kunci buku lalu memakai dua puluh galon: dua puluh kali lima sama dengan seratus meter, jadi persediaan lebih dari cukup.",
+      "Sekarang jawab pertanyaannya. Satu galon cukup untuk lima meter, jadi delapan belas galon hanya cukup untuk sembilan puluh meter. Itu kurang dari sembilan puluh empat meter, jadi belum cukup.",
       hapus(0, "n1", "n2"),
-      tambah("Kunci", baris("o1", 70, "kunci buku: 20 galon", 9)),
-      tambah("dua@2", baris("o2", 88, "20 × 5 = 100 m", 11)),
-      tambah("lebih", baris("o3", 130, "100 m > 94 m: cukup", 9.4, W.hijau)),
+      tambah("Satu", baris("o1", 70, "1 galon = 5 m", 9.4)),
+      tambah("delapan", baris("o2", 88, "18 × 5 = 90 m", 11, W.merah)),
+      tambah("kurang", baris("o3", 130, "belum cukup", 10.4, W.merah)),
     ),
     k(
-      "Catatan guru: soal bertanya delapan belas galon, bukan dua puluh. Delapan belas kali lima hanya sembilan puluh meter, kurang dari sembilan puluh empat. Jadi perlu minimal sembilan belas galon.",
+      "Jadi perlu paling sedikit sembilan belas galon, sebab sembilan belas kali lima sama dengan sembilan puluh lima meter, lebih dari sembilan puluh empat.",
       hapus(0, "o1", "o2", "o3", "n3"),
-      tambah("Catatan", emo("p0", PX, 56, "⚠", 20)),
-      tambah("Delapan", baris("p1", 80, "18 × 5 = 90 m", 11, W.merah)),
-      tambah("kurang", baris("p2", 98, "kurang dari 94 m", 9.4, W.merah)),
-      tambah("minimal", baris("p3", 122, "19 galon: 19 × 5 = 95 m", 9.4, W.hijau)),
+      tambah("Jadi", emo("p0", PX, 56, "💡", 20)),
+      tambah("perlu", baris("p1", 80, "perlu paling sedikit", 9.4, W.coklat)),
+      tambah("galon", baris("p2", 102, "19 galon", 14, W.hijau)),
+      tambah("kali", baris("p3", 126, "19 × 5 = 95 m", 10.4, W.hijau)),
     ),
   ],
 };

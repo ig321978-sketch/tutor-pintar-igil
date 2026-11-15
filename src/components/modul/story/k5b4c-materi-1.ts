@@ -137,8 +137,8 @@ export const ADEGAN_APERSEPSI: AdeganStory = {
 /* ------------------------------ 3. Eksplorasi 4.3A: persegi panjang, mengukur dan menjumlahkan (hlm. 118; Panduan Guru hlm. 140 dan 141) ------------------------------ */
 export const ADEGAN_EKS_43A_UKUR: AdeganStory = {
   id: "eks-43a-ukur",
-  judul: "Eksplorasi 4.3A: keliling persegi panjang",
-  sumber: "Buku Siswa hlm. 118; Panduan Guru hlm. 140–141",
+  judul: "Keliling persegi panjang: mengukur dan menjumlahkan",
+  sumber: "Materi: keliling persegi panjang",
   latar: "#EFF6FF",
   kutipan: [
     "Eksplorasi 4.3A",
@@ -160,8 +160,8 @@ export const ADEGAN_EKS_43A_UKUR: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi empat titik tiga A, Ayo Menemukan. Perhatikan bangun datar ini. Apa namanya? Ukur sisi yang belum diketahui dengan penggaris. Apakah ada sisi yang sama panjang?",
-      tambah(0, judul("Eksplorasi 4.3A")),
+      "Kita mulai dengan persegi panjang. Perhatikan bangun datar ini. Apa namanya? Ukur sisi yang belum diketahui dengan penggaris. Apakah ada sisi yang sama panjang?",
+      tambah(0, judul("Mengukur sisi-sisinya")),
       tambah("bangun", bangunC("pp", 96, 58, "pp", 20, W.langit), ...labelSisi("pp", 96, 58, "pp", 20, ["5 cm", "… cm", "… cm", "3 cm"], 9)),
       tambah("namanya?", teks("nm", 150, 150, "bangun apa ini? persegi panjang", 9.4, W.ungu)),
       tambah("penggaris", ...penggaris("pg", 80, 166, 7, 20)),
@@ -204,8 +204,8 @@ export const ADEGAN_EKS_43A_UKUR: AdeganStory = {
 /* ------------------------------ 4. Eksplorasi 4.3A: rumus keliling persegi panjang (hlm. 118 dan 119; Panduan Guru hlm. 141 dan 142) ------------------------------ */
 export const ADEGAN_EKS_43A_RUMUS: AdeganStory = {
   id: "eks-43a-rumus",
-  judul: "Eksplorasi 4.3A: rumus keliling persegi panjang",
-  sumber: "Buku Siswa hlm. 118–119; Panduan Guru hlm. 141–142",
+  judul: "Rumus keliling persegi panjang",
+  sumber: "Materi: rumus keliling persegi panjang",
   latar: "#F5F3FF",
   kutipan: [
     "Keliling = panjang + lebar + … + …",
@@ -228,13 +228,13 @@ export const ADEGAN_EKS_43A_RUMUS: AdeganStory = {
       tambah("Keliling", teks("rf1", 150, 156, "Keliling = panjang + lebar + panjang + lebar", 9.2, W.biru)),
     ),
     k(
-      "Karena ada dua panjang dan dua lebar, ditulis dua kali panjang ditambah dua kali lebar. Inilah rumus keliling persegi panjang menurut buku.",
+      "Karena ada dua panjang dan dua lebar, ditulis dua kali panjang ditambah dua kali lebar. Inilah rumus keliling persegi panjang.",
       sorotkan("dua", "rf1"),
       tambah("ditulis", teks("rf2", 150, 172, "= (2 × panjang) + (2 × lebar)", 10.4, W.hijau)),
       tambah("rumus", kotak("rfk", 24, 160, 252, 18, "none", W.emas, { rx: 5, tebal: 2.4 })),
     ),
     k(
-      "Catatan dari buku panduan guru: banyaknya sisi yang sama panjang menjadi pengali dalam rumus keliling. Pada persegi panjang ada dua pasang sisi sama, maka tiap panjang sisi dikali dua.",
+      "Perhatikan: banyaknya sisi yang sama panjang menjadi pengali dalam rumus keliling. Pada persegi panjang ada dua pasang sisi sama, maka tiap panjang sisi dikali dua.",
       bersih(0),
       tambah(0, judul("Pengali = banyak sisi yang sama")),
       tambah("banyaknya", bangunC("pk", 100, 40, "pp", 20, W.langit), sisiGaris("pk1", 100, 40, "pp", 20, 0, W.merah), sisiGaris("pk3", 100, 40, "pp", 20, 2, W.merah), sisiGaris("pk2", 100, 40, "pp", 20, 1, W.hijau), sisiGaris("pk4", 100, 40, "pp", 20, 3, W.hijau)),
@@ -242,9 +242,9 @@ export const ADEGAN_EKS_43A_RUMUS: AdeganStory = {
       tambah("dikali", teks("pk6", 150, 156, "tiap sisi dikali 2", 12, W.merah)),
     ),
     k(
-      "Guru menutup eksplorasi dengan penguatan lewat tanya jawab. Pastikan kamu bisa menjawab dua hal: mengapa dikali dua, dan sisi mana saja yang dijumlahkan.",
+      "Sekarang coba kamu jawab dua pertanyaan ini sebelum lanjut. Mengapa dikali dua? Dan sisi mana saja yang dijumlahkan? Kalau sudah bisa menjawab, kamu siap ke bangun berikutnya.",
       bersih(0),
-      tambah(0, judul("Penguatan: tanya jawab")),
+      tambah(0, judul("Coba kamu jawab")),
       tambah("mengapa", ...kartu("t1", 14, 40, 272, 36, W.hijauMuda, ["Mengapa dikali dua?"], 10)),
       tambah("sisi", ...kartu("t2", 14, 92, 272, 36, W.langit, ["Sisi mana saja yang dijumlahkan?"], 10)),
       tambah("menjawab", emo("t3", 150, 172, "🙋", 28)),

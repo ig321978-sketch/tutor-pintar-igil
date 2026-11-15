@@ -17,7 +17,7 @@ const chipAngka = (i: number) => kartu(`ag${i}`, 12 + (i % 2) * 142, 34 + Math.f
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk keliling segi empat",
-  sumber: "Metode luar: pembuka; contoh Buku Siswa hlm. 118–121",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -45,9 +45,9 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("Keempat", teks("jt", 150, 150, "keliling = panjang jalur di tepi", 10.4, W.hijau)),
     ),
     k(
-      "Kita memakai angka dari buku: persegi panjang, jajargenjang, layang-layang, persegi, belah ketupat, trapesium, dan segi empat sembarang.",
+      "Kita memakai angka dari tujuh contoh: persegi panjang, jajargenjang, layang-layang, persegi, belah ketupat, trapesium, dan segi empat sembarang.",
       bersih(0),
-      tambah(0, judul("Angka dari buku (cm)")),
+      tambah(0, judul("Angka tiap contoh (cm)")),
       ...[0, 1, 2, 3, 4, 5, 6].map((i) => tambah(["persegi", "jajargenjang,", "layang-layang,", "persegi@2", "belah", "trapesium,", "sembarang."][i], chipAngka(i))),
     ),
   ],
@@ -99,7 +99,7 @@ export const ADEGAN_LUAR_RF: AdeganStory = {
 export const ADEGAN_LUAR_RF_TERAPAN: AdeganStory = {
   id: "luar-rf-terapan",
   judul: "Rectangle Formula pada persegi panjang, jajargenjang, dan layang-layang",
-  sumber: "Metode luar: Rectangle Formula; angka Buku Siswa hlm. 118–119",
+  sumber: "Metode luar: Rectangle Formula",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -127,7 +127,7 @@ export const ADEGAN_LUAR_RF_TERAPAN: AdeganStory = {
       tambah("dikali", teks("g2", 214, 116, "2 × 6 = 12", 15, W.hijau)),
     ),
     k(
-      "Periksa dengan jalan lain: dua kali dua ditambah dua kali empat sama dengan empat ditambah delapan, yaitu dua belas. Cocok. Jadi angka enam belas di panduan guru untuk layang-layang memang tidak sesuai.",
+      "Periksa dengan jalan lain: dua kali dua ditambah dua kali empat sama dengan empat ditambah delapan, yaitu dua belas. Cocok. Jadi keliling layang-layang ini dua belas sentimeter, bukan enam belas seperti persegi panjang tadi.",
       sorotkan("Periksa", "g2"),
       tambah("kali", teks("g3", 214, 150, "(2 × 2) + (2 × 4) = 4 + 8 = 12", 8.2, W.ungu)),
       tambah("Cocok.", emo("g4", 214, 180, "✅", 22)),
@@ -186,7 +186,7 @@ export const ADEGAN_LUAR_SS: AdeganStory = {
 export const ADEGAN_LUAR_SS_TERAPAN: AdeganStory = {
   id: "luar-ss-terapan",
   judul: "Square Shortcut pada persegi dan belah ketupat",
-  sumber: "Metode luar: Square Shortcut; angka Buku Siswa hlm. 119–120",
+  sumber: "Metode luar: Square Shortcut",
   latar: "#EFF6FF",
   ketukan: [
     k(

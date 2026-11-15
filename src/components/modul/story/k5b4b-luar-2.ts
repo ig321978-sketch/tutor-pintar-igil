@@ -9,12 +9,12 @@ const T7 = titikSegitiga(4, 6, 6, 12);
 /* ------------------------------ 5. Equilateral Shortcut: penerapan ------------------------------ */
 export const ADEGAN_LUAR_PINTAS_TERAPAN: AdeganStory = {
   id: "luar-pintas-terapan",
-  judul: "Equilateral Shortcut pada contoh buku",
-  sumber: "Metode luar: Equilateral Shortcut; Buku Siswa hlm. 116–117",
+  judul: "Equilateral Shortcut pada contoh segitiga",
+  sumber: "Metode luar: Equilateral Shortcut",
   latar: "#EFF6FF",
   ketukan: [
     k(
-      "Terapkan pada segitiga sama sisi di buku dengan sisi lima sentimeter. Tiga kali lima sama dengan lima belas. Cocok dengan Cara Asep dan Cara Nisa.",
+      "Terapkan pada segitiga sama sisi di atas dengan sisi lima sentimeter. Tiga kali lima sama dengan lima belas. Cocok dengan Cara Asep dan Cara Nisa.",
       tambah(0, judul("Pintasan: sisi 5 cm")),
       tambah("Terapkan", poligon("tg", 24, 50, T5, W.hijauMuda, W.biru, { tebal: 2.2 }), ...tandaSama("tg", 24, 50, T5, [0, 1, 2])),
       tambah(9, ...labelSisi("tg", 24, 50, T5, ["5 cm", "5 cm", "5 cm"], 8.6, W.merah, 15)),
@@ -62,10 +62,10 @@ export const ADEGAN_LUAR_UKUR: AdeganStory = {
   latar: "#FEFCE8",
   ketukan: [
     k(
-      "Metode ketiga, Measure Then Sum, artinya ukur dulu baru jumlahkan. Di buku, sisi segitiga pertama belum diberi angka, jadi kita harus mengukurnya sendiri.",
+      "Metode ketiga, Measure Then Sum, artinya ukur dulu baru jumlahkan. Pada gambar ini, sisi segitiga pertama belum diberi angka, jadi kita harus mengukurnya sendiri.",
       tambah(0, judul("Measure Then Sum")),
       tambah("Metode", poligon("tm", 20, 70, T1, W.langit, W.biru, { tebal: 2.2 })),
-      tambah("buku,", ...labelSisi("tm", 20, 70, T1, ["... cm", "... cm", "... cm"], 8.6, W.hitam, 15)),
+      tambah("gambar", ...labelSisi("tm", 20, 70, T1, ["... cm", "... cm", "... cm"], 8.6, W.hitam, 15)),
       tambah("mengukurnya", emo("rg", 230, 100, "📏", 34)),
     ),
     k(
@@ -87,7 +87,7 @@ export const ADEGAN_LUAR_UKUR: AdeganStory = {
       tambah("keempat:", ...kartu("l4", 30, 156, 240, 34, W.pink, ["4. jumlahkan, satuan sama"], 9)),
     ),
     k(
-      "Kelebihannya, metode ini bekerja walau angka sisi tidak tertulis. Kekurangannya, hasil ukur bisa berbeda tipis antaranak, jadi sepakati hasil yang paling banyak diperoleh, seperti saran Panduan Guru.",
+      "Kelebihannya, metode ini bekerja walau angka sisi tidak tertulis. Kekurangannya, hasil ukur bisa berbeda tipis antaranak, jadi sepakati hasil yang paling banyak diperoleh bersama teman.",
       bersih(0),
       tambah(0, judul("Kelebihan dan kekurangan")),
       tambah("Kelebihannya,", ...kartu("kl", 20, 34, 260, 44, W.hijauMuda, ["kelebihan:", "angka tak tertulis pun bisa"], 9)),
@@ -104,11 +104,11 @@ const barisUkur = (r: number) => TAB_UKUR.filter((o) => new RegExp(`^tb-[st]${r}
 export const ADEGAN_LUAR_UKUR_TERAPAN: AdeganStory = {
   id: "luar-ukur-terapan",
   judul: "Measure Then Sum pada segitiga pertama",
-  sumber: "Metode luar: Measure Then Sum; contoh Buku Siswa hlm. 115 dan Panduan Guru hlm. 130–131",
+  sumber: "Metode luar: Measure Then Sum",
   latar: "#FEFCE8",
   ketukan: [
     k(
-      "Ukur sisi pertama segitiga di buku. Ujung kiri tepat di angka nol, ujung kanan di angka enam. Sisi ini enam sentimeter.",
+      "Ukur sisi pertama segitiga di atas. Ujung kiri tepat di angka nol, ujung kanan di angka enam. Sisi ini enam sentimeter.",
       tambah(0, judul("Mengukur segitiga pertama")),
       tambah("Ukur", poligon("tm", 24, 48, titikSegitiga(6, 3, 5, 12), W.langit, W.biru, { tebal: 2 }), ...penggaris("pg", 20, 126, 7, 18)),
       tambah(6, garis("sg", 25, 112, 108, 0, W.merah, 3.4), teks("n0", 25, 152, "0", 9.4, W.merah)),
@@ -129,7 +129,7 @@ export const ADEGAN_LUAR_UKUR_TERAPAN: AdeganStory = {
       ubah("sentimeter.", { id: "tm", warna: W.hijauMuda }),
     ),
     k(
-      "Hasilnya sama dengan di buku. Kalau hasil ukurmu sedikit berbeda dari teman, periksa dulu cara mengukurnya, lalu sepakati hasil yang paling banyak diperoleh.",
+      "Hasilnya sama dengan hitungan tadi. Kalau hasil ukurmu sedikit berbeda dari teman, periksa dulu cara mengukurnya, lalu sepakati hasil yang paling banyak diperoleh.",
       tambah("Hasilnya", emo("ok", 190, 188, "✅", 18)),
       tambah("periksa", ...kartu("pr", 20, 164, 150, 34, W.krem, ["sedikit beda? periksa cara ukur"], 7.8)),
     ),
@@ -161,7 +161,7 @@ export const ADEGAN_LUAR_BENANG: AdeganStory = {
       tambah("keliling", teks("kt", 150, 136, "panjang benang = keliling", 9.4, W.merah)),
     ),
     k(
-      "Alasannya langsung dari buku: keliling adalah jumlah panjang sisi-sisinya, yaitu panjang seluruh tepi bangun. Benang yang melilit tepi sudah menjadi jalur itu, jadi panjang benang sama dengan keliling.",
+      "Alasannya langsung dari pengertian keliling: keliling adalah jumlah panjang sisi-sisinya, yaitu panjang seluruh tepi bangun. Benang yang melilit tepi sudah menjadi jalur itu, jadi panjang benang sama dengan keliling.",
       bersih(0),
       tambah(0, judul("Mengapa benar")),
       tambah(0, poligon("tb", 24, 70, TB, W.langit, W.biru, { tebal: 1.2 }), benangTepi("bn", 24, 70)),
@@ -183,8 +183,8 @@ const warnaSeg = [W.langit, W.hijauMuda, W.krem];
 
 export const ADEGAN_LUAR_BENANG_TERAPAN: AdeganStory = {
   id: "luar-benang-terapan",
-  judul: "String Unrolling pada tiga segitiga buku",
-  sumber: "Metode luar: String Unrolling; contoh Buku Siswa hlm. 115–117",
+  judul: "String Unrolling pada tiga segitiga",
+  sumber: "Metode luar: String Unrolling",
   latar: "#FDF4FF",
   ketukan: [
     k(
@@ -256,9 +256,9 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah(18, ...kartu("p4", 12, 152, 276, 32, W.pink, ["ingin bukti → luruskan benang"], 8.8)),
     ),
     k(
-      "Hasil keempat metode cocok dengan buku. Sembarang tiga, lima, enam empat belas, dan tujuh, empat, lima enam belas. Sama sisi lima lima belas, enam delapan belas. Sama kaki enam, enam, empat enam belas.",
+      "Hasil keempat metode cocok dengan hitungan. Sembarang tiga, lima, enam empat belas, dan tujuh, empat, lima enam belas. Sama sisi lima lima belas, enam delapan belas. Sama kaki enam, enam, empat enam belas.",
       bersih(0),
-      tambah(0, judul("Cocok dengan buku")),
+      tambah(0, judul("Hasil semua cocok")),
       tambah(0, ...barisTabel(0)),
       tambah(6, ...barisTabel(1)),
       tambah(13, ...barisTabel(2)),

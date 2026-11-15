@@ -157,8 +157,8 @@ const denahBagian = (x: number, y: number): Obj[] => BAGIAN_DENAH.map((b) => pol
 
 export const ADEGAN_BENTENG: AdeganStory = {
   id: "benteng-baluwarti",
-  judul: "Ayo Berpikir Kritis: Benteng Baluwarti",
-  sumber: "Buku Siswa hlm. 107–108; Panduan Guru hlm. 119–120",
+  judul: "Berpikir kritis: Benteng Baluwarti",
+  sumber: "Materi: Benteng Baluwarti dan keliling",
   latar: "#FEF3C7",
   kutipan: [
     "Dalam kehidupan sehari-hari, kita sering menghitung keliling suatu",
@@ -171,11 +171,11 @@ export const ADEGAN_BENTENG: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Subbab A dibuka dengan Ayo Berpikir Kritis. Dalam kehidupan sehari-hari, kita sering menghitung keliling suatu benda untuk berbagai keperluan. Lihat gambar empat titik satu: Benteng Baluwarti dan denahnya.",
-      tambah(0, judul("Ayo Berpikir Kritis")),
+      "Mari kita mulai dengan berpikir kritis. Dalam kehidupan sehari-hari, kita sering menghitung keliling suatu benda untuk berbagai keperluan. Lihat gambar Benteng Baluwarti dan denahnya.",
+      tambah(0, judul("Berpikir kritis")),
       tambah("Lihat", emo("bw", 70, 100, "🏰", 46)),
       tambah("denahnya.", poligon("dn0", 150, 52, TITIK_DENAH, W.krem, W.coklat, { tebal: 2 }), teks("dnt", 215, 143, "denah (sketsa)", 8, W.coklat)),
-      tambah("gambar", teks("g41", 150, 170, "Gambar 4.1: Benteng Baluwarti dan denahnya", 8.2, W.biru)),
+      tambah("gambar", teks("g41", 150, 170, "Benteng Baluwarti dan denahnya", 8.2, W.biru)),
     ),
     k(
       "Benteng Baluwarti adalah benteng pertahanan yang mengelilingi kompleks Keraton Yogyakarta. Dibangun pada masa Sri Sultan Hamengkubuwono pertama, tahun seribu tujuh ratus lima puluh lima sampai seribu tujuh ratus sembilan puluh dua, untuk bertahan dari serangan musuh.",
@@ -203,15 +203,15 @@ export const ADEGAN_BENTENG: AdeganStory = {
       tambah("keliling", ...kartu("kb", 60, 150, 180, 30, W.merahMuda, ["panjang benteng = keliling benteng"], 8.8)),
     ),
     k(
-      "Coba pikirkan: bagaimana cara kalian menghitung kelilingnya? Buku sengaja belum menjawabnya. Jawabannya akan kalian temukan sendiri lewat eksplorasi.",
+      "Coba pikirkan: bagaimana cara kalian menghitung kelilingnya? Jangan buru-buru menjawab dulu. Jawabannya akan kalian temukan sendiri lewat kegiatan berikut.",
       bersih(0),
       tambah(0, judul("Coba pikirkan")),
       tambah("bagaimana", teks("qb", 150, 100, "?", 60, W.merah)),
       tambah("kalian", ...kartu("qk", 40, 126, 220, 34, W.krem, ["Bagaimana cara menghitung", "keliling benteng?"], 9)),
-      tambah("eksplorasi.", emo("ls", 240, 80, "🔍", 32)),
+      tambah("kegiatan", emo("ls", 240, 80, "🔍", 32)),
     ),
     k(
-      "Panduan guru menyebut ini kajian etnomatematika, yaitu pendekatan yang mengangkat objek budaya di sekitar peserta didik sebagai titik awal pembelajaran. Manfaatnya, melestarikan nilai luhur bangsa dan membuat belajar lebih menyenangkan.",
+      "Cara belajar seperti ini disebut etnomatematika, yaitu pendekatan yang mengangkat objek budaya di sekitar kita sebagai titik awal pembelajaran. Manfaatnya, kita ikut melestarikan nilai luhur bangsa dan belajar menjadi lebih menyenangkan.",
       bersih(0),
       tambah(0, judul("Etnomatematika")),
       tambah("mengangkat", ...kartu("en", 14, 34, 272, 44, W.krem, ["objek budaya di sekitar siswa", "= titik awal belajar matematika"], 9)),
@@ -226,7 +226,7 @@ export const ADEGAN_BENTENG: AdeganStory = {
 export const ADEGAN_SEKELILING: AdeganStory = {
   id: "sekeliling",
   judul: "Benda sekeliling: pagar dan bingkai foto",
-  sumber: "Buku Siswa hlm. 108–109; Panduan Guru hlm. 118 dan 120",
+  sumber: "Materi: pagar dan bingkai foto",
   latar: "#F0FDF4",
   kutipan: [
     "Sekarang, perhatikan sekeliling kalian.",
@@ -264,13 +264,13 @@ export const ADEGAN_SEKELILING: AdeganStory = {
       tambah("belajar", panah("a2", 150, 130, 0, 24, W.biru, 2.2, { gambar: true }), ...kartu("c5", 70, 160, 160, 30, W.emas, ["belajar keliling"], 9.6)),
     ),
     k(
-      "Guru menyiapkan alat tulis, penggaris, spidol, dan gambar lapangan sepak bola yang diperbesar. Untuk apersepsi, siswa harus sudah mengenal benda yang mewakili bangun datar, lalu guru mengajak tanya jawab.",
+      "Sekarang siapkan alat tulis, penggaris, dan spidol. Kita juga memakai gambar lapangan sepak bola yang diperbesar. Sebelum mulai, coba sebutkan benda di sekitarmu yang mewakili bangun datar. Lalu kita bercerita bersama.",
       bersih(0),
-      tambah(0, judul("Persiapan guru")),
+      tambah(0, judul("Siapkan alat")),
       tambah("alat", ...kartu("g1", 14, 34, 272, 28, W.krem, ["alat tulis, penggaris, spidol"], 8.8), emo("g1e", 266, 55, "📏", 16)),
       tambah("gambar", ...kartu("g2", 14, 70, 272, 28, W.langit, ["gambar lapangan sepak bola diperbesar"], 8.8)),
-      tambah("apersepsi,", ...kartu("g3", 14, 106, 272, 40, W.hijauMuda, ["apersepsi: siswa mengenal benda", "yang mewakili bangun datar"], 8.8)),
-      tambah("tanya", ...kartu("g4", 14, 154, 272, 28, W.pink, ["lalu tanya jawab di kelas"], 8.8)),
+      tambah("sebutkan", ...kartu("g3", 14, 106, 272, 40, W.hijauMuda, ["sebutkan benda di sekitar", "yang mewakili bangun datar"], 8.8)),
+      tambah("bercerita", ...kartu("g4", 14, 154, 272, 28, W.pink, ["lalu bercerita bersama"], 8.8)),
     ),
   ],
 };

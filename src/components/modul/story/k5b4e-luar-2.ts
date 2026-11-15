@@ -58,8 +58,8 @@ export const ADEGAN_LUAR_ML: AdeganStory = {
 /* ------------------------------ 7. Missing Length: penerapan ------------------------------ */
 export const ADEGAN_LUAR_ML_TERAPAN: AdeganStory = {
   id: "luar-ml-terapan",
-  judul: "Missing Length pada denah rumah dan soal pengayaan",
-  sumber: "Metode luar: Missing Length; Buku Siswa hlm. 127; Panduan Guru hlm. 164 dan 173",
+  judul: "Missing Length pada denah rumah dan soal Tantangan",
+  sumber: "Metode luar: Missing Length (terapan)",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -82,9 +82,9 @@ export const ADEGAN_LUAR_ML_TERAPAN: AdeganStory = {
       tambah("yaitu", baris("t7", 112, "JI + ED = 12 − 8 = 4 m", 8.8, W.merah)),
     ),
     k(
-      "Pada soal pengayaan, bagian bawah E G dua belas meter dan E F tiga meter. Maka F G sama dengan dua belas dikurangi tiga, sembilan meter. Lalu A B sama dengan dua puluh empat dikurangi sembilan, lima belas meter.",
+      "Pada soal Tantangan, bagian bawah E G dua belas meter dan E F tiga meter. Maka F G sama dengan dua belas dikurangi tiga, sembilan meter. Lalu A B sama dengan dua puluh empat dikurangi sembilan, lima belas meter.",
       bersih(0),
-      tambah(0, judul("Pengayaan: sisi F G dan A B")),
+      tambah(0, judul("Tantangan: sisi F G dan A B")),
       tambah("soal", poligon("pe", 14, 44, skala(PENGAYAAN, 6), W.langit, W.biru, { tebal: 2 })),
       tambah("Maka", baris("u1", 66, "FG = 12 − 3 = 9", 9.6)),
       tambah("Lalu", baris("u2", 86, "AB = 24 − 9 = 15", 9.6, W.hijau)),
@@ -146,8 +146,8 @@ export const ADEGAN_LUAR_CPB: AdeganStory = {
 /* ------------------------------ 9. Closed Path Balance: penerapan ------------------------------ */
 export const ADEGAN_LUAR_CPB_TERAPAN: AdeganStory = {
   id: "luar-cpb-terapan",
-  judul: "Closed Path Balance pada denah rumah dan soal pengayaan",
-  sumber: "Metode luar: Closed Path Balance; Buku Siswa hlm. 126; Panduan Guru hlm. 173",
+  judul: "Closed Path Balance pada denah rumah dan soal Tantangan",
+  sumber: "Metode luar: Closed Path Balance (terapan)",
   latar: "#FDF4FF",
   ketukan: [
     k(
@@ -180,9 +180,9 @@ export const ADEGAN_LUAR_CPB_TERAPAN: AdeganStory = {
       tambah("yaitu", teks("x3", 150, 168, "24 + 24 = 48 m", 16, W.hijau)),
     ),
     k(
-      "Pada soal pengayaan: timur dua puluh empat ditambah tiga sama dengan barat dua belas ditambah A B. Jadi A B lima belas meter, dan keliling dua kali dua puluh tujuh ditambah dua kali dua puluh, sembilan puluh empat.",
+      "Pada soal Tantangan: timur dua puluh empat ditambah tiga sama dengan barat dua belas ditambah A B. Jadi A B lima belas meter, dan keliling dua kali dua puluh tujuh ditambah dua kali dua puluh, sembilan puluh empat.",
       bersih(0),
-      tambah(0, judul("Pengayaan: keseimbangan")),
+      tambah(0, judul("Tantangan: keseimbangan")),
       tambah("soal", poligon("px", 14, 44, skala(PENGAYAAN, 6), W.langit, W.biru, { tebal: 2 })),
       tambah("timur", baris("y1", 66, "timur: 24 + 3 = 27", 9.4, W.merah)),
       tambah("barat", baris("y2", 84, "barat: 12 + AB = 27", 9.4, W.biru)),
@@ -196,7 +196,7 @@ export const ADEGAN_LUAR_CPB_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan empat metode luar",
-  sumber: "Ringkasan metode luar; Sub-Bab E",
+  sumber: "Ringkasan metode luar",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -215,10 +215,10 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("menjorok", ...kartu("s2", 20, 94, 260, 40, W.krem, ["menjorok atau sisi hilang:", "cari sisi, periksa keseimbangan"], 9.4)),
     ),
     k(
-      "Apa pun metodenya, hasilnya sama. Denah rumah empat puluh delapan meter, Uji Kompetensi nomor lima empat puluh enam sentimeter, dan gedung sekolah sembilan puluh empat meter.",
+      "Apa pun metodenya, hasilnya sama. Denah rumah empat puluh delapan meter, Uji lima empat puluh enam sentimeter, dan gedung sekolah sembilan puluh empat meter.",
       bersih(0),
       tambah(0, judul("Hasil yang sama")),
-      tambah("Denah", ...tabel("hs", 30, 44, [150, 90], [["Soal", "Keliling"], ["denah rumah", "48 m"], ["Uji Kompetensi 5", "46 cm"], ["gedung sekolah", "94 m"]], 24, 9.4)),
+      tambah("Denah", ...tabel("hs", 30, 44, [150, 90], [["Soal", "Keliling"], ["denah rumah", "48 m"], ["Uji 5", "46 cm"], ["gedung sekolah", "94 m"]], 24, 9.4)),
       tambah("Apa", emo("hse", 150, 170, "🎯", 22)),
     ),
     k(

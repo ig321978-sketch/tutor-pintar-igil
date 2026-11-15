@@ -9,11 +9,11 @@ const persegiPanjang = (id: string, x: number, y: number, w: number, h: number, 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk memahami keliling",
-  sumber: "Metode luar: pembuka; contoh Buku Siswa hlm. 109–114",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana kita memahami keliling bangun datar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.",
+      "Bagaimana kita memahami keliling bangun datar? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari cerita Asep.",
       tambah(0, judul("Empat metode dari luar")),
       tambah("keliling", ...lapangan("pb", 30, 56, 140, 70), jalur("pbr", 30, 56, "M0 70 L140 70 L140 0 L0 0 L0 70", "none", W.biru, { tebal: 2.4, gambar: true })),
       tambah("berbagai", emo("gl", 232, 96, "🌍", 44)),
@@ -29,7 +29,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("Closed", ...kartu("m4", 12, 148, 276, 30, W.pink, ["4. Closed Loop Test"], 9.6)),
     ),
     k(
-      "Semuanya memegang satu gagasan dari buku: keliling adalah jumlahan panjang sisi-sisi bangun datar, sama dengan panjang rute yang mengelilingi tepinya satu kali.",
+      "Semuanya memegang satu gagasan yang sama: keliling adalah jumlahan panjang sisi-sisi bangun datar, sama dengan panjang rute yang mengelilingi tepinya satu kali.",
       bersih(0),
       tambah(0, judul("Satu gagasan yang sama")),
       tambah("keliling", persegiPanjang("g", 80, 46, 140, 70, W.krem)),
@@ -38,9 +38,9 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("kali.", ...kartu("gk", 40, 148, 220, 30, W.emas, ["keliling = jumlah semua sisi"], 9.6)),
     ),
     k(
-      "Kita memakai angka dari buku: lapangan seratus meter kali lima puluh meter, bangun dengan empat sisi empat sentimeter, dan bangun dengan sisi lima, empat, lima, lima sentimeter.",
+      "Kita memakai angka dari cerita: lapangan seratus meter kali lima puluh meter, bangun dengan empat sisi empat sentimeter, dan bangun dengan sisi lima, empat, lima, lima sentimeter.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka yang dipakai")),
       tambah(5, ...kartu("a1", 14, 38, 272, 34, W.hijauMuda, ["lapangan: 100 m dan 50 m"], 9.4)),
       tambah(12, ...kartu("a2", 14, 84, 272, 34, W.langit, ["bangun pertama: 4, 4, 4, 4 cm"], 9.4)),
       tambah(19, ...kartu("a3", 14, 130, 272, 34, W.krem, ["bangun kedua: 5, 4, 5, 5 cm"], 9.4)),
@@ -100,7 +100,7 @@ const hitung = (isi: string): Obj => teks("ct", 150, 182, isi, 12, W.merah);
 export const ADEGAN_LUAR_PATH_TERAPAN: AdeganStory = {
   id: "luar-path-terapan",
   judul: "Path Length pada lapangan sepak bola",
-  sumber: "Metode luar: Path Length; contoh lapangan Buku Siswa hlm. 113",
+  sumber: "Metode luar: Path Length pada lapangan",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -178,7 +178,7 @@ export const ADEGAN_LUAR_FENCING: AdeganStory = {
 export const ADEGAN_LUAR_FENCING_TERAPAN: AdeganStory = {
   id: "luar-fencing-terapan",
   judul: "Fencing Context pada bingkai dan pagar lapangan",
-  sumber: "Metode luar: Fencing Context; contoh Buku Siswa hlm. 113–114",
+  sumber: "Metode luar: Fencing Context, contoh",
   latar: "#EFF6FF",
   ketukan: [
     k(

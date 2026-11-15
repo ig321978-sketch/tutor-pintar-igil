@@ -75,8 +75,8 @@ export const ADEGAN_PEMBUKA_E: AdeganStory = {
 /* ------------------------------ 2. Eksplorasi 4.5: denah rumah (Buku Siswa hlm. 125; Panduan Guru hlm. 161 sampai 162) ------------------------------ */
 export const ADEGAN_DENAH_E: AdeganStory = {
   id: "denah-rumah",
-  judul: "Eksplorasi 4.5: denah rumah dan dinding terluar",
-  sumber: "Buku Siswa hlm. 125–126; Panduan Guru hlm. 161–162",
+  judul: "Denah rumah dan dinding terluar",
+  sumber: "Materi: denah rumah dan dinding luar",
   latar: "#FFF7ED",
   kutipan: [
     "Pernahkah kalian melihat denah rumah atau gedung?",
@@ -92,10 +92,10 @@ export const ADEGAN_DENAH_E: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi empat titik lima, Ayo Berpikir Kritis. Pernahkah kalian melihat denah rumah atau gedung? Perhatikan Gambar empat titik enam, denah rumah.",
-      tambah(0, judul("Eksplorasi 4.5: Ayo Berpikir Kritis")),
+      "Sekarang kita mulai dengan sebuah pertanyaan. Pernahkah kamu melihat denah rumah atau gedung? Perhatikan denah rumah ini.",
+      tambah(0, judul("Berpikir kritis")),
       tambah("denah", ...ruang("dn", TX, TY)),
-      tambah("Gambar", teks("cap", 150, 196, "Gambar 4.6 Denah Rumah", 8.6, W.coklat)),
+      tambah("Perhatikan", teks("cap", 150, 196, "Denah Rumah", 8.6, W.coklat)),
     ),
     k(
       "Di mana denah sering ditemukan? Di depan lift gedung, supaya kita tahu arah keluar jika terjadi kebakaran. Orang juga menggambar denah dahulu sebelum membangun rumah.",
@@ -105,7 +105,7 @@ export const ADEGAN_DENAH_E: AdeganStory = {
       tambah("Orang", ...kartu("u2", 154, 34, 130, 66, W.krem, ["menggambar denah", "dahulu, sebelum", "membangun rumah"], 8.4), emo("u2e", 220, 120, "📝", 24)),
     ),
     k(
-      "Sekarang perhatikan dinding terluar denah itu. Dapatkah kalian menghitung kelilingnya? Bagaimana caranya?",
+      "Sekarang perhatikan dinding terluar denah itu. Dapatkah kamu menghitung kelilingnya? Bagaimana caranya?",
       bersih(0),
       tambah(0, judul("Dinding terluar: kelilingnya?")),
       tambah("denah", ...ruang("dn", TX, TY)),
@@ -113,7 +113,7 @@ export const ADEGAN_DENAH_E: AdeganStory = {
       tambah("kelilingnya?", teks("tn", 252, 100, "?", 34, W.merah)),
     ),
     k(
-      "Guru memberi pengandaian: kita akan merenovasi dinding-dinding terluar rumah. Jadi yang diperhatikan hanya dinding paling luar.",
+      "Bayangkan kita akan merenovasi dinding-dinding terluar rumah ini. Jadi yang kita perhatikan hanya dinding paling luar.",
       ubah(0, { id: "tn", op: 0 }),
       tambah("merenovasi", emo("rn", 252, 90, "🔨", 28)),
       tambah("hanya", teks("rt", 150, 196, "yang dihitung: dinding paling luar", 9.4, W.merah)),
@@ -125,7 +125,7 @@ export const ADEGAN_DENAH_E: AdeganStory = {
 export const ADEGAN_DUGAAN: AdeganStory = {
   id: "dugaan-keliling",
   judul: "Dugaan: semua sisi dijumlahkan atau hanya sisi terluar",
-  sumber: "Buku Siswa hlm. 126; Panduan Guru hlm. 161–162",
+  sumber: "Materi: dugaan cara menghitung keliling",
   latar: "#FDF4FF",
   kutipan: [
     "Mungkin harus diukur",
@@ -151,15 +151,15 @@ export const ADEGAN_DUGAAN: AdeganStory = {
       tambah("Sisi", teks("sd", 80, 188, "sisi di dalam rumah: tidak ikut", 8.8, W.hijau)),
     ),
     k(
-      "Panduan guru memperkirakan sebagian peserta didik menjumlahkan keliling bangun penyusunnya satu per satu. Yang kritis mengoreksi: hanya sisi-sisi terluar yang dijumlahkan.",
+      "Sebagian anak mungkin menjumlahkan keliling bangun penyusunnya satu per satu. Anak yang kritis mengoreksi: hanya sisi-sisi terluar yang dijumlahkan.",
       hapus(0, "b1-k", "b1-t0", "b1-t1", "b1-t2", "b2-k", "b2-t0", "b2-t1", "b2-t2", "sd"),
       tambah("menjumlahkan", ...kartu("c1", 170, 40, 120, 50, W.merahMuda, ["keliru: jumlah", "keliling tiap ruangan"], 8.4), emo("c1e", 150, 70, "❌", 18)),
       tambah("kritis", ...kartu("c2", 170, 110, 120, 50, W.hijauMuda, ["benar: hanya sisi", "terluar yang dijumlahkan"], 8.4), emo("c2e", 150, 140, "✅", 18)),
     ),
     k(
-      "Guru menguatkan definisi keliling, yaitu jumlah panjang sisi-sisi terluar. Pada bangun gabungan, hanya sisi terluar yang dijumlahkan.",
+      "Ingat definisi keliling, yaitu jumlah panjang sisi-sisi terluar. Pada bangun gabungan, hanya sisi terluar yang dijumlahkan.",
       hapus(0, "c1-k", "c1-t0", "c1-t1", "c2-k", "c2-t0", "c2-t1", "c1e", "c2e"),
-      tambah("menguatkan", ...kartu("d1", 166, 54, 128, 74, W.krem, ["keliling =", "jumlah panjang", "sisi-sisi terluar"], 9)),
+      tambah("definisi", ...kartu("d1", 166, 54, 128, 74, W.krem, ["keliling =", "jumlah panjang", "sisi-sisi terluar"], 9)),
       tambah("hanya", emo("d1e", 230, 156, "✅", 26)),
     ),
   ],
@@ -169,7 +169,7 @@ export const ADEGAN_DUGAAN: AdeganStory = {
 export const ADEGAN_ASEP_1: AdeganStory = {
   id: "cara-asep-1",
   judul: "Cara Asep: bangun penyusun denah",
-  sumber: "Buku Siswa hlm. 126–127; Panduan Guru hlm. 163–164",
+  sumber: "Materi: Cara Asep, bangun penyusun denah",
   latar: "#F0FDF4",
   kutipan: [
     "Aku menggambar",

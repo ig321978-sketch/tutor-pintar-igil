@@ -20,11 +20,11 @@ const tengah = (titik: [number, number][], cx: number, cy: number, faktor: numbe
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar4d-pembuka",
   judul: "Empat metode luar untuk keliling segi banyak",
-  sumber: "Metode luar; empat cara menghitung keliling segi banyak",
+  sumber: "Metode luar: empat cara",
   latar: "#EEF2FF",
   ketukan: [
     k(
-      "Video ini membahas metode luar untuk keliling segi banyak. Semua metode memakai segi lima, segi enam, dan segi delapan beraturan yang bersisi 3 sentimeter sebagai contoh.",
+      "Video ini membahas metode luar untuk keliling segi banyak. Semua metode memakai segi lima, segi enam, dan segi delapan beraturan yang bersisi tiga sentimeter sebagai contoh.",
       tambah(0, jud("Keliling segi banyak: metode luar", 22, 11)),
       tambah("lima,", segiBeraturan("p5", 55, 100, 5, 30), teks("l5", 55, 148, "segi lima", 8.4)),
       tambah("enam,", segiBeraturan("p6", 150, 100, 6, 30, W.krem), teks("l6", 150, 148, "segi enam", 8.4)),
@@ -50,11 +50,11 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
 export const ADEGAN_LUAR_NGON: AdeganStory = {
   id: "luar4d-ngon",
   judul: "Regular n-gon: segi n beraturan",
-  sumber: "Metode luar; segi n beraturan dan rumus n kali sisi",
+  sumber: "Metode luar: Regular n-gon",
   latar: "#FFF4DD",
   ketukan: [
     k(
-      "Regular n-gon berarti segi n beraturan. Huruf n adalah banyak sisinya, dan semua sisinya sama panjang. Contohnya n sama dengan 5 untuk segi lima.",
+      "Regular n-gon berarti segi n beraturan. Huruf n adalah banyak sisinya, dan semua sisinya sama panjang. Contohnya n sama dengan lima untuk segi lima.",
       tambah(0, jud("Regular n-gon", 22)),
       tambah("segi", segiBeraturan("pk", 80, 116, 5, 44), tandaSisi("tt", 80, 116, 5, 44)),
       tambah("banyak", teks("t1", 218, 84, "n = banyak sisi", 10, W.biru)),
@@ -70,7 +70,7 @@ export const ADEGAN_LUAR_NGON: AdeganStory = {
       tambah("menjadi", panah("a3", 150, 108, 0, 14, W.ungu, 2.4), baris("a4", 30, 126, 240, "keliling = n x s", W.hijauMuda, 11, 28)),
     ),
     k(
-      "Ini sama dengan persegi: n sama dengan 4, jadi kelilingnya 4 kali s. Rumus segi n beraturan memperluas pola itu ke segi lima, segi enam, dan seterusnya.",
+      "Ini sama dengan persegi: n sama dengan empat, jadi kelilingnya empat kali s. Rumus segi n beraturan memperluas pola itu ke segi lima, segi enam, dan seterusnya.",
       bersih(0),
       tambah(0, jud("Dari persegi ke segi banyak", 20)),
       tambah("persegi:", kotak("q1", 30, 54, 50, 50, W.hijauMuda, W.biru, { rx: 1, tebal: 2.2 }), teks("q1t", 55, 124, "n = 4: 4 x s", 9, W.merah)),
@@ -100,43 +100,43 @@ export const ADEGAN_LUAR_NGON: AdeganStory = {
 export const ADEGAN_LUAR_NGON_TERAPAN: AdeganStory = {
   id: "luar4d-ngon-terapan",
   judul: "Regular n-gon: segi lima, enam, delapan, dan sepuluh",
-  sumber: "Metode luar; penerapan pada segi banyak bersisi 3 sentimeter",
+  sumber: "Metode luar: Regular n-gon, contoh",
   latar: "#FDF2F8",
   ketukan: [
     k(
-      "Segi lima dari buku: n sama dengan 5 dan s sama dengan 3 sentimeter. Kelilingnya 5 kali 3 sama dengan 15 sentimeter.",
+      "Segi lima dulu: n sama dengan lima dan s sama dengan tiga sentimeter. Kelilingnya lima kali tiga sama dengan lima belas sentimeter.",
       tambah(0, jud("Segi lima: n = 5", 22)),
       tambah("Segi", segiBeraturan("pk", 80, 116, 5, 44), tandaSisi("tt", 80, 116, 5, 44), ...labelSisi("ls", 80, 116, 5, 44, "3", 12, 8.4)),
       tambah("Kelilingnya", teks("h1", 220, 96, "5 x 3 = 15", 13, W.merah), teks("h2", 220, 118, "keliling 15 cm", 9.6, W.hijau)),
     ),
     k(
-      "Segi enam dari buku: n sama dengan 6 dan s sama dengan 3 sentimeter. Kelilingnya 6 kali 3 sama dengan 18 sentimeter.",
+      "Berikutnya segi enam: n sama dengan enam dan s sama dengan tiga sentimeter. Kelilingnya enam kali tiga sama dengan delapan belas sentimeter.",
       bersih(0),
       tambah(0, jud("Segi enam: n = 6", 22)),
       tambah("Segi", segiBeraturan("pk", 80, 116, 6, 44, W.krem), tandaSisi("tt", 80, 116, 6, 44), ...labelSisi("ls", 80, 116, 6, 44, "3", 12, 8.4)),
       tambah("Kelilingnya", teks("h1", 220, 96, "6 x 3 = 18", 13, W.merah), teks("h2", 220, 118, "keliling 18 cm", 9.6, W.hijau)),
     ),
     k(
-      "Segi delapan dengan s sama dengan 3 sentimeter, ukuran yang kita pilih sendiri: n sama dengan 8, jadi kelilingnya 8 kali 3 sama dengan 24 sentimeter.",
+      "Lalu segi delapan dengan s sama dengan tiga sentimeter, ukuran yang kita pilih sendiri: n sama dengan delapan, jadi kelilingnya delapan kali tiga sama dengan dua puluh empat sentimeter.",
       bersih(0),
       tambah(0, jud("Segi delapan: n = 8", 22)),
       tambah("Segi", segiBeraturan("pk", 80, 116, 8, 44, W.hijauMuda), tandaSisi("tt", 80, 116, 8, 44), ...labelSisi("ls", 80, 116, 8, 44, "3", 11, 8.4)),
       tambah("kelilingnya", teks("h1", 220, 96, "8 x 3 = 24", 13, W.merah), teks("h2", 220, 118, "keliling 24 cm", 9.6, W.hijau)),
     ),
     k(
-      "Bandingkan ketiganya dalam diagram batang: 15, 18, dan 24 sentimeter. Semakin banyak sisi yang sama panjang, semakin panjang kelilingnya.",
+      "Bandingkan ketiganya dalam diagram batang: lima belas, delapan belas, dan dua puluh empat sentimeter. Semakin banyak sisi yang sama panjang, semakin panjang kelilingnya.",
       bersih(0),
       tambah(0, jud("Keliling, sisi 3 cm", 20)),
-      tambah("15,", batang("g5", 40, 170, 50, 63, W.krem, "15"), teks("g5t", 65, 184, "segi lima", 8.2)),
-      tambah("18,", batang("g6", 125, 170, 50, 75, W.muda, "18"), teks("g6t", 150, 184, "segi enam", 8.2)),
-      tambah("24", batang("g8", 210, 170, 50, 100, W.hijauMuda, "24"), teks("g8t", 235, 184, "segi delapan", 8.2)),
+      tambah("lima", batang("g5", 40, 170, 50, 63, W.krem, "15"), teks("g5t", 65, 184, "segi lima", 8.2)),
+      tambah("belas@2", batang("g6", 125, 170, 50, 75, W.muda, "18"), teks("g6t", 150, 184, "segi enam", 8.2)),
+      tambah("dua", batang("g8", 210, 170, 50, 100, W.hijauMuda, "24"), teks("g8t", 235, 184, "segi delapan", 8.2)),
     ),
     k(
-      "Metode ini berlaku untuk n berapa pun. Misalnya n sama dengan 10 dengan sisi 3 sentimeter: 10 kali 3 sama dengan 30 sentimeter.",
+      "Metode ini berlaku untuk n berapa pun. Misalnya n sama dengan sepuluh dengan sisi tiga sentimeter: sepuluh kali tiga sama dengan tiga puluh sentimeter.",
       bersih(0),
       tambah(0, jud("Untuk n berapa pun", 22)),
       tambah("Misalnya", segiBeraturan("pk", 80, 116, 10, 44, W.ungMuda), tandaSisi("tt", 80, 116, 10, 44)),
-      tambah("10", teks("h0", 220, 84, "n = 10, s = 3", 10, W.biru), teks("h1", 220, 108, "10 x 3 = 30", 13, W.merah), teks("h2", 220, 130, "keliling 30 cm", 9.6, W.hijau)),
+      tambah("sepuluh", teks("h0", 220, 84, "n = 10, s = 3", 10, W.biru), teks("h1", 220, 108, "10 x 3 = 30", 13, W.merah), teks("h2", 220, 130, "keliling 30 cm", 9.6, W.hijau)),
     ),
   ],
 };
@@ -145,7 +145,7 @@ export const ADEGAN_LUAR_NGON_TERAPAN: AdeganStory = {
 export const ADEGAN_LUAR_JUMLAH: AdeganStory = {
   id: "luar4d-jumlah",
   judul: "Irregular Side Sum: sisi berbeda dijumlahkan",
-  sumber: "Metode luar; menjumlahkan sisi yang tidak sama panjang",
+  sumber: "Metode luar: Irregular Side Sum",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -165,7 +165,7 @@ export const ADEGAN_LUAR_JUMLAH: AdeganStory = {
       tambah("kembali", teks("mt2", 232, 116, "kembali ke awal", 9.6, W.ungu)),
     ),
     k(
-      "Supaya tidak ada sisi yang terlewat atau terhitung dua kali, beri nomor 1 sampai 5 pada sisi-sisinya.",
+      "Supaya tidak ada sisi yang terlewat atau terhitung dua kali, beri nomor satu sampai lima pada sisi-sisinya.",
       bersih(0),
       tambah(0, jud("Beri nomor tiap sisi", 22)),
       tambah(0, bentukBebas("pk", 90, 116, TITIK_LIMA, W.krem)),
@@ -173,7 +173,7 @@ export const ADEGAN_LUAR_JUMLAH: AdeganStory = {
       tambah("dua", teks("nt", 232, 100, "tiap sisi", 9.6, W.biru), teks("nt2", 232, 116, "dihitung sekali", 9.6, W.biru)),
     ),
     k(
-      "Sisi yang sama panjang boleh dikelompokkan. Misalnya tiga sisi 3 sentimeter menjadi 3 kali 3 sama dengan 9. Itu jembatan ke rumus kali, tetapi hanya untuk kelompok yang sama.",
+      "Sisi yang sama panjang boleh dikelompokkan. Misalnya tiga sisi tiga sentimeter menjadi tiga kali tiga sama dengan sembilan. Itu jembatan ke rumus kali, tetapi hanya untuk kelompok yang sama.",
       bersih(0),
       tambah(0, jud("Kelompokkan sisi yang sama", 20)),
       tambah("tiga", baris("kg1", 30, 44, 240, "3 + 3 + 3 = 9", W.krem, 11, 28)),
@@ -188,37 +188,37 @@ export const ADEGAN_LUAR_JUMLAH: AdeganStory = {
 export const ADEGAN_LUAR_JUMLAH_TERAPAN: AdeganStory = {
   id: "luar4d-jumlah-terapan",
   judul: "Irregular Side Sum: dua bangun bersisi berbeda",
-  sumber: "Metode luar; penerapan pada sisi 3, 4, 5 sentimeter",
+  sumber: "Metode luar: Irregular Side Sum, contoh",
   latar: "#FEF3C7",
   ketukan: [
     k(
-      "Segi lima dengan sisi 3, 3, 3, 4, dan 5 sentimeter. Ini ukuran kita sendiri, dengan sisi 3 sentimeter seperti di buku.",
+      "Segi lima dengan sisi tiga, tiga, tiga, empat, dan lima sentimeter. Ini ukuran kita sendiri, bukan ukuran tetap.",
       tambah(0, jud("Segi lima sisi berbeda", 22)),
       tambah("Segi", bentukBebas("pk", 90, 116, TITIK_LIMA, W.krem)),
-      tambah("3,", ...tengah(TITIK_LIMA, 90, 116, 1.28).map(([x, y], i) => teks(`ls${i}`, x, y + 3, ["3", "3", "3", "4", "5"][i], 10, W.merah))),
+      tambah("tiga,", ...tengah(TITIK_LIMA, 90, 116, 1.28).map(([x, y], i) => teks(`ls${i}`, x, y + 3, ["3", "3", "3", "4", "5"][i], 10, W.merah))),
       tambah("sendiri,", teks("bt", 232, 110, "ukuran kita", 9.4, W.ungu), teks("bt2", 232, 126, "sendiri", 9.4, W.ungu)),
     ),
     k(
-      "Jumlahkan berurutan: 3 ditambah 3 sama dengan 6, 6 ditambah 3 sama dengan 9, 9 ditambah 4 sama dengan 13, lalu 13 ditambah 5 sama dengan 18.",
+      "Jumlahkan berurutan: tiga ditambah tiga sama dengan enam, enam ditambah tiga sama dengan sembilan, sembilan ditambah empat sama dengan tiga belas, lalu tiga belas ditambah lima sama dengan delapan belas.",
       bersih(0),
       tambah(0, jud("Jumlahkan berurutan", 22)),
-      tambah("3", teks("j1", 150, 52, "3 + 3 = 6", 12, W.biru)),
-      tambah("6", teks("j2", 150, 80, "6 + 3 = 9", 12, W.biru)),
-      tambah("9", teks("j3", 150, 108, "9 + 4 = 13", 12, W.biru)),
-      tambah("13", teks("j4", 150, 136, "13 + 5 = 18", 12, W.hijau)),
+      tambah("tiga", teks("j1", 150, 52, "3 + 3 = 6", 12, W.biru)),
+      tambah("enam", teks("j2", 150, 80, "6 + 3 = 9", 12, W.biru)),
+      tambah("sembilan", teks("j3", 150, 108, "9 + 4 = 13", 12, W.biru)),
+      tambah("belas", teks("j4", 150, 136, "13 + 5 = 18", 12, W.hijau)),
     ),
     k(
-      "Segi enam dengan empat sisi 3 sentimeter dan dua sisi 5 sentimeter. Kelompokkan: 4 kali 3 sama dengan 12, 2 kali 5 sama dengan 10, lalu 12 ditambah 10 sama dengan 22.",
+      "Segi enam dengan empat sisi tiga sentimeter dan dua sisi lima sentimeter. Kelompokkan: empat kali tiga sama dengan dua belas, dua kali lima sama dengan sepuluh, lalu dua belas ditambah sepuluh sama dengan dua puluh dua.",
       bersih(0),
       tambah(0, jud("Segi enam, sisi 3 dan 5", 20)),
       tambah("Segi", bentukBebas("hk", 70, 108, TITIK_ENAM, W.muda)),
       tambah("Segi", ...tengah(TITIK_ENAM, 70, 108, 1.4).map(([x, y], i) => teks(`hl${i}`, x, y + 3, ["3", "3", "3", "3", "5", "5"][i], 9.4, W.merah))),
-      tambah("4", teks("k1", 214, 70, "4 x 3 = 12", 11, W.biru)),
-      tambah("2@2", teks("k2", 214, 96, "2 x 5 = 10", 11, W.biru)),
-      tambah("12@2", teks("k3", 214, 126, "12 + 10 = 22", 11, W.hijau)),
+      tambah("empat@2", teks("k1", 214, 70, "4 x 3 = 12", 11, W.biru)),
+      tambah("dua@3", teks("k2", 214, 96, "2 x 5 = 10", 11, W.biru)),
+      tambah("belas@2", teks("k3", 214, 126, "12 + 10 = 22", 11, W.hijau)),
     ),
     k(
-      "Hasilnya sama dengan menjumlahkan satu per satu: 3 ditambah 3 ditambah 3 ditambah 3 ditambah 5 ditambah 5 sama dengan 22. Jadi kelilingnya 22 sentimeter.",
+      "Hasilnya sama dengan menjumlahkan satu per satu: tiga ditambah tiga ditambah tiga ditambah tiga ditambah lima ditambah lima sama dengan dua puluh dua. Jadi kelilingnya dua puluh dua sentimeter.",
       bersih(0),
       tambah(0, jud("Cek satu per satu", 22)),
       tambah("satu", baris("c1", 20, 50, 260, "3+3+3+3+5+5 = 22", W.krem, 12, 30)),

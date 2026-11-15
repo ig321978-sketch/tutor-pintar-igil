@@ -13,8 +13,8 @@ const idKartu = (id: string, n: number): string[] => [`${id}-k`, ...Array.from({
 
 export const ADEGAN_UKUR_SATU: AdeganStory = {
   id: "eks-a-ukur",
-  judul: "Eksplorasi 4.2A: mengukur segitiga pertama",
-  sumber: "Buku Siswa hlm. 115; Panduan Guru hlm. 130–131",
+  judul: "Mengukur segitiga pertama",
+  sumber: "Materi: mengukur segitiga",
   latar: "#F0FDF4",
   kutipan: [
     "Eksplorasi 4.2A",
@@ -34,14 +34,14 @@ export const ADEGAN_UKUR_SATU: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi empat titik dua A, Ayo Menemukan. Perhatikan bangun-bangun datar berikut, lalu tentukan kelilingnya. Sisi segitiga pertama belum diberi angka, jadi kita ukur sendiri.",
-      tambah(0, judul("Eksplorasi 4.2A: Ayo Menemukan")),
+      "Mari kita menemukan keliling segitiga. Perhatikan bangun datar berikut, lalu tentukan kelilingnya. Sisi segitiga pertama ini belum diberi angka, jadi kita ukur sendiri.",
+      tambah(0, judul("Ayo menemukan keliling")),
       tambah("Perhatikan", poligon("ta", AX, AY, T1, W.langit, W.biru, { tebal: 2.2 }), ...labelSisi("ta", AX, AY, T1, ["... cm", "... cm", "... cm"], 8.6, W.hitam, 15)),
       tambah("tentukan", ...kartu("tn", 172, 56, 112, 44, W.krem, ["tentukan", "kelilingnya"], 9.4)),
     ),
     k(
-      "Aku coba mengukur menggunakan penggaris, kata anak di buku. Hasilnya tiga sentimeter, lima sentimeter, dan enam sentimeter.",
-      tambah("mengukur", ...penggaris("pg", 172, 128, 6, 18)),
+      "Sekarang kita ukur memakai penggaris. Hasilnya tiga sentimeter, lima sentimeter, dan enam sentimeter.",
+      tambah("ukur", ...penggaris("pg", 172, 128, 6, 18)),
       ubah("tiga", { id: "ta-l1", isi: "3 cm", warna: W.merah }),
       ubah("lima", { id: "ta-l2", isi: "5 cm", warna: W.merah }),
       ubah("enam", { id: "ta-l0", isi: "6 cm", warna: W.merah }),
@@ -60,11 +60,11 @@ export const ADEGAN_UKUR_SATU: AdeganStory = {
       tambah("enam", teks("hs", 228, 98, "3 + 5 + 6 = 14", 10.5, W.merah)),
     ),
     k(
-      "Kelilingnya empat belas sentimeter. Kalau hasil ukur antaranak berbeda, guru memeriksa cara mengukurnya, lalu mengajak kelas menyepakati hasil yang paling banyak diperoleh.",
+      "Kelilingnya empat belas sentimeter. Kalau hasil ukurmu berbeda dari temanmu, periksa lagi cara mengukurnya, lalu sepakati hasil yang paling banyak diperoleh.",
       ubah("Kelilingnya", { id: "ta", warna: W.hijauMuda }),
       tambah("sentimeter.", teks("kl", 228, 140, "keliling = 14 cm", 9.4, W.hijau)),
       tambah("berbeda,", emo("bg", 40, 186, "🤔", 20)),
-      tambah("menyepakati", teks("sp", 160, 190, "sepakati hasil yang paling banyak", 8.4, W.coklat)),
+      tambah("sepakati", teks("sp", 160, 190, "sepakati hasil yang paling banyak", 8.4, W.coklat)),
     ),
   ],
 };
@@ -74,8 +74,8 @@ const T2 = titikSegitiga(7, 4, 5, 18);
 
 export const ADEGAN_UKUR_DUA: AdeganStory = {
   id: "eks-a-dua",
-  judul: "Eksplorasi 4.2A: segitiga kedua dan Tabel 4.4",
-  sumber: "Buku Siswa hlm. 115; Panduan Guru hlm. 130–131",
+  judul: "Segitiga kedua dan alur menemukan",
+  sumber: "Materi: segitiga kedua",
   latar: "#F0FDF4",
   kutipan: [
     "Perhatikan panjang sisi-sisi bangun di",
@@ -122,21 +122,21 @@ export const ADEGAN_UKUR_DUA: AdeganStory = {
       ubah("kelilingnya@2", { id: "tb", warna: W.hijauMuda }),
     ),
     k(
-      "Seorang anak di buku berkata, sepertinya sama dengan bangun sebelumnya. Memang sama caranya: dua-duanya tinggal menjumlahkan tiga sisi.",
+      "Lihat, segitiga kedua ini sepertinya sama dengan bangun sebelumnya. Memang sama caranya: dua-duanya tinggal menjumlahkan tiga sisi.",
       bersih(0),
       tambah(0, judul("Dua segitiga, satu cara")),
-      tambah("Seorang", poligon("s1", 20, 64, titikSegitiga(6, 3, 5, 12), W.langit), poligon("s2", 158, 58, titikSegitiga(7, 4, 5, 12), W.krem)),
+      tambah("Lihat,", poligon("s1", 20, 64, titikSegitiga(6, 3, 5, 12), W.langit), poligon("s2", 158, 58, titikSegitiga(7, 4, 5, 12), W.krem)),
       tambah("sebelumnya.", teks("r1", 56, 122, "3 + 5 + 6 = 14", 9.4, W.merah), teks("r2", 200, 122, "7 + 4 + 5 = 16", 9.4, W.merah)),
       tambah("menjumlahkan", ...kartu("cr", 50, 146, 200, 34, W.hijauMuda, ["sama caranya: jumlahkan 3 sisi"], 8.8)),
     ),
     k(
-      "Alur Tabel empat titik empat di Panduan Guru: guru menampilkan gambar dan menanyakan jenis segitiga, peserta didik mengukur sisi, lalu menghitung keliling, dan terakhir bersama-sama menyimpulkan.",
+      "Jadi alurnya begini. Pertama kita perhatikan gambar dan tentukan jenis segitiganya. Lalu kita mengukur sisi-sisinya, menghitung keliling, dan terakhir menyimpulkan cara menghitungnya.",
       bersih(0),
-      tambah(0, judul("Alur Tabel 4.4")),
-      tambah("menampilkan", ...kartu("f1", 30, 30, 240, 32, W.langit, ["1. tampilkan gambar, tanya jenis"], 8.8)),
+      tambah(0, judul("Alur menemukan keliling")),
+      tambah("perhatikan", ...kartu("f1", 30, 30, 240, 32, W.langit, ["1. amati gambar, tentukan jenis"], 8.8)),
       tambah("mengukur", ...kartu("f2", 30, 68, 240, 32, W.hijauMuda, ["2. ukur sisi-sisinya"], 8.8)),
       tambah("menghitung", ...kartu("f3", 30, 106, 240, 32, W.krem, ["3. hitung keliling"], 8.8)),
-      tambah("menyimpulkan.", ...kartu("f4", 30, 144, 240, 32, W.pink, ["4. simpulkan cara menghitung"], 8.8)),
+      tambah("menyimpulkan", ...kartu("f4", 30, 144, 240, 32, W.pink, ["4. simpulkan cara menghitung"], 8.8)),
     ),
   ],
 };
@@ -148,8 +148,8 @@ const GY = 56;
 
 export const ADEGAN_UMUM_SEMBARANG: AdeganStory = {
   id: "eks-a-umum",
-  judul: "Eksplorasi 4.2A: rumus keliling segitiga sembarang",
-  sumber: "Buku Siswa hlm. 115; Panduan Guru hlm. 131–132",
+  judul: "Rumus keliling segitiga sembarang",
+  sumber: "Materi: rumus segitiga sembarang",
   latar: "#F0FDF4",
   kutipan: [
     "Perhatikan sisi-sisi bangun di samping.",
@@ -191,22 +191,22 @@ export const ADEGAN_UMUM_SEMBARANG: AdeganStory = {
       tambah("tiga.", teks("fm3", 150, 186, "+ panjang sisi 3", 8.6, W.biru)),
     ),
     k(
-      "Kalau peserta didik kebingungan karena belum mengenal variabel, guru menjajarkan gambar tiga segitiga sembarang yang sudah dihitung, lalu menunjukkan pola hitungannya di papan tulis.",
+      "Kalau kamu masih bingung dengan tulisan ini, jajarkan saja gambar tiga segitiga sembarang yang sudah dihitung, lalu perhatikan pola hitungannya di papan tulis.",
       bersih(0),
       tambah(0, judul("Menjajarkan tiga segitiga")),
-      tambah("menjajarkan", poligon("j1", 14, 56, titikSegitiga(6, 3, 5, 12), W.langit), poligon("j2", 108, 52, titikSegitiga(7, 4, 5, 12), W.krem), poligon("j3", 214, 56, titikSegitiga(6, 3, 5, 12), W.hijauMuda)),
+      tambah("jajarkan", poligon("j1", 14, 56, titikSegitiga(6, 3, 5, 12), W.langit), poligon("j2", 108, 52, titikSegitiga(7, 4, 5, 12), W.krem), poligon("j3", 214, 56, titikSegitiga(6, 3, 5, 12), W.hijauMuda)),
       tambah("dihitung,", teks("h1", 50, 112, "3 + 5 + 6 = 14", 8.6, W.merah), teks("h2", 150, 112, "7 + 4 + 5 = 16", 8.6, W.merah)),
       tambah("pola", teks("h3", 250, 112, "sisi + sisi + sisi", 8, W.merah)),
       tambah("papan", ...kartu("pl", 50, 138, 200, 34, W.hijauMuda, ["pola: jumlahkan ketiga sisi"], 8.8)),
     ),
     k(
-      "Kesimpulan dalam Panduan Guru: pada segitiga sembarang, keliling dihitung dengan cara menjumlahkan ketiga panjang sisinya. Kalau murid keliru menyimpulkan, guru mengoreksinya.",
+      "Kesimpulannya: pada segitiga sembarang, keliling dihitung dengan cara menjumlahkan ketiga panjang sisinya. Hati-hati, kalau ada sisi yang terlewat, hasilnya pasti keliru.",
       bersih(0),
       tambah(0, judul("Kesimpulan segitiga sembarang")),
       tambah("menjumlahkan", ...kartu("ks", 20, 34, 260, 50, W.krem, ["Keliling = sisi 1 + sisi 2 + sisi 3"], 10.5)),
       tambah("ketiga", poligon("tk", 108, 104, titikSegitiga(6, 3, 5, 14), W.langit)),
-      tambah("keliru", emo("kw", 250, 130, "⚠", 24)),
-      tambah("mengoreksinya.", teks("gk", 150, 178, "guru mengoreksi bila keliru", 8.6, W.merah)),
+      tambah("Hati-hati", emo("kw", 250, 130, "⚠", 24)),
+      tambah("terlewat", teks("gk", 150, 178, "jangan ada sisi yang terlewat", 8.6, W.merah)),
     ),
   ],
 };

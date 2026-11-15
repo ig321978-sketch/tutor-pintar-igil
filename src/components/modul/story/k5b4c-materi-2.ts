@@ -5,8 +5,8 @@ import { bersih, k, tambah, ubah } from "./k5b4c-bantu";
 /* ------------------------------ 5. Eksplorasi 4.3B bagian a: jajargenjang (hlm. 119; Panduan Guru hlm. 142 sampai 144) ------------------------------ */
 export const ADEGAN_EKS_43B_JAJAR: AdeganStory = {
   id: "eks-43b-jajargenjang",
-  judul: "Eksplorasi 4.3B bagian a: keliling jajargenjang",
-  sumber: "Buku Siswa hlm. 119; Panduan Guru hlm. 142–144",
+  judul: "Keliling jajargenjang",
+  sumber: "Materi: keliling jajargenjang",
   latar: "#FEF9C3",
   kutipan: [
     "Eksplorasi 4.3B",
@@ -31,8 +31,8 @@ export const ADEGAN_EKS_43B_JAJAR: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi empat titik tiga B, Ayo Berlatih. Bagian a menampilkan bangun dengan sisi lima sentimeter dan tiga sentimeter. Apa namanya? Jajargenjang. Apakah ada sisi yang sama panjang?",
-      tambah(0, judul("Eksplorasi 4.3B bagian a")),
+      "Sekarang bangun kedua. Perhatikan bangun dengan sisi lima sentimeter dan tiga sentimeter. Apa namanya? Jajargenjang. Apakah ada sisi yang sama panjang?",
+      tambah(0, judul("Jajargenjang")),
       tambah("bangun", bangunC("jg", 60, 60, "jg", 22, W.krem), ...labelSisi("jg", 60, 60, "jg", 22, ["5 cm", "3 cm", "5 cm", "3 cm"], 9)),
       tambah("Jajargenjang.", teks("nm", 150, 160, "jajargenjang", 10.4, W.ungu)),
       tambah("Apakah", emo("tq", 150, 188, "🤔", 20)),
@@ -79,8 +79,8 @@ export const ADEGAN_EKS_43B_JAJAR: AdeganStory = {
 /* ------------------------------ 6. Eksplorasi 4.3B bagian b: layang-layang (hlm. 119; Panduan Guru hlm. 144 sampai 146) ------------------------------ */
 export const ADEGAN_EKS_43B_LAYANG: AdeganStory = {
   id: "eks-43b-layang",
-  judul: "Eksplorasi 4.3B bagian b: keliling layang-layang",
-  sumber: "Buku Siswa hlm. 119; Panduan Guru hlm. 144–146",
+  judul: "Keliling layang-layang",
+  sumber: "Materi: keliling layang-layang",
   latar: "#FDF2F8",
   kutipan: [
     "Layang-layang",
@@ -106,8 +106,8 @@ export const ADEGAN_EKS_43B_LAYANG: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Sekarang bagian b: layang-layang. Dua sisinya bertanda dua sentimeter dan dua sisi lainnya empat sentimeter. Apakah ada sisi yang sama panjang?",
-      tambah(0, judul("Eksplorasi 4.3B bagian b")),
+      "Sekarang layang-layang. Dua sisinya bertanda dua sentimeter dan dua sisi lainnya empat sentimeter. Apakah ada sisi yang sama panjang?",
+      tambah(0, judul("Layang-layang")),
       tambah("layang-layang.", bangunC("ll", 112, 34, "ll", 17, W.pink), ...labelSisi("ll", 112, 34, "ll", 17, ["2 cm", "4 cm", null, null], 9)),
       tambah("Apakah", emo("tq", 40, 110, "🤔", 28), teks("tqt", 40, 140, "sisi sama?", 8.6, W.ungu)),
     ),
@@ -118,12 +118,12 @@ export const ADEGAN_EKS_43B_LAYANG: AdeganStory = {
       tambah("panjang@2", sisiGaris("q1", 112, 34, "ll", 17, 1, W.biru), sisiGaris("q2", 112, 34, "ll", 17, 2, W.biru), teks("kq", 252, 134, "dua sisi panjang", 8.4, W.biru), teks("kq2", 252, 146, "bertemu di bawah", 8.4, W.biru)),
     ),
     k(
-      "Perhatikan: buku panduan guru menyebut sisi yang sama itu berhadapan. Itu kurang tepat untuk layang-layang. Rumusnya tidak terpengaruh, tetapi sebagai guru kita perlu tahu bedanya.",
+      "Perhatikan baik-baik letaknya. Pada persegi panjang, sisi yang sama panjang saling berhadapan. Pada layang-layang tidak begitu, sisi yang sama panjang saling bersebelahan. Rumusnya tetap sejalan, tetapi kamu perlu tahu bedanya.",
       bersih(0),
-      tambah(0, judul("Catatan guru")),
-      tambah("Perhatikan:", ...kartu("cg1", 14, 36, 272, 40, W.merahMuda, ["Panduan Guru hlm. 145:", "sisi sama panjang “berhadapan”"], 9)),
-      tambah("kurang", ...kartu("cg2", 14, 92, 272, 40, W.hijauMuda, ["Layang-layang: sisi sama panjang", "saling bersebelahan"], 9)),
-      tambah("Rumusnya", teks("cg3", 150, 164, "rumus keliling tidak berubah", 10, W.ungu)),
+      tambah(0, judul("Letak sisi yang sama")),
+      tambah("Perhatikan:", ...kartu("cg1", 14, 36, 272, 40, W.langit, ["Persegi panjang: sisi sama panjang", "saling berhadapan"], 9)),
+      tambah("bersebelahan", ...kartu("cg2", 14, 92, 272, 40, W.hijauMuda, ["Layang-layang: sisi sama panjang", "saling bersebelahan"], 9)),
+      tambah("Rumusnya", teks("cg3", 150, 164, "rumus tetap sejalan, letaknya beda", 10, W.ungu)),
     ),
     k(
       "Namai dengan sisi pendek dan sisi panjang. Keliling sama dengan sisi pendek ditambah sisi pendek ditambah sisi panjang ditambah sisi panjang, yaitu dua kali sisi pendek ditambah dua kali sisi panjang.",
@@ -135,13 +135,13 @@ export const ADEGAN_EKS_43B_LAYANG: AdeganStory = {
       tambah("yaitu", teks("n4", 150, 136, "= (2 × pendek) + (2 × panjang)", 11, W.hijau)),
     ),
     k(
-      "Hitung dengan angka buku: dua ditambah dua ditambah empat ditambah empat sama dengan dua belas sentimeter. Panduan guru menulis enam belas, lalu empat belas. Dua-duanya keliru.",
+      "Hitung dengan angka tadi: dua ditambah dua ditambah empat ditambah empat sama dengan dua belas sentimeter. Cara kedua: dua kali dua ditambah dua kali empat sama dengan empat ditambah delapan, juga dua belas. Hasilnya sama, jadi hitungan kita teruji.",
       bersih(0),
       tambah(0, judul("Hitung ulang: dua belas")),
       tambah("Hitung", teks("w1", 150, 50, "2 + 2 + 4 + 4 = 12", 14, W.hijau)),
-      tambah("dua@3", teks("w2", 150, 76, "(2 × 2) + (2 × 4) = 4 + 8 = 12", 11, W.biru)),
-      tambah("Panduan", ...kartu("w3", 14, 100, 272, 44, W.merahMuda, ["Panduan Guru hlm. 146 menulis 16,", "lalu 14 cm: keduanya keliru"], 9)),
-      tambah("keliru.", emo("w4", 150, 174, "❌", 24)),
+      tambah("kedua", teks("w2", 150, 76, "(2 × 2) + (2 × 4) = 4 + 8 = 12", 11, W.biru)),
+      tambah("hasil", ...kartu("w3", 14, 100, 272, 44, W.hijauMuda, ["Dua cara memberi hasil sama:", "keliling layang-layang 12 cm"], 9)),
+      tambah("teruji.", emo("w4", 150, 174, "✅", 24)),
     ),
     k(
       "Jadi keliling layang-layang ini dua belas sentimeter. Rumusnya: dua kali sisi pendek ditambah dua kali sisi panjang.",
@@ -156,8 +156,8 @@ export const ADEGAN_EKS_43B_LAYANG: AdeganStory = {
 /* ------------------------------ 7. Eksplorasi 4.3C: persegi (hlm. 119 dan 120; Panduan Guru hlm. 146 sampai 148) ------------------------------ */
 export const ADEGAN_EKS_43C_PERSEGI: AdeganStory = {
   id: "eks-43c-persegi",
-  judul: "Eksplorasi 4.3C: keliling persegi",
-  sumber: "Buku Siswa hlm. 119–120; Panduan Guru hlm. 146–148",
+  judul: "Keliling persegi",
+  sumber: "Materi: keliling persegi",
   latar: "#F0FDF4",
   kutipan: [
     "Eksplorasi 4.3C",
@@ -180,8 +180,8 @@ export const ADEGAN_EKS_43C_PERSEGI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi empat titik tiga C, Ayo Menemukan. Perhatikan bangun ini. Salah satu sisinya tiga sentimeter. Apa namanya? Ukur sisi lain dengan penggaris. Apakah ada sisi yang sama panjang?",
-      tambah(0, judul("Eksplorasi 4.3C")),
+      "Sekarang persegi. Perhatikan bangun ini. Salah satu sisinya tiga sentimeter. Apa namanya? Ukur sisi lain dengan penggaris. Apakah ada sisi yang sama panjang?",
+      tambah(0, judul("Persegi")),
       tambah("bangun", bangunC("ps", 105, 50, "ps", 30, W.hijauMuda), ...labelSisi("ps", 105, 50, "ps", 30, ["… cm", "3 cm", "… cm", "… cm"], 9)),
       tambah("namanya?", teks("nm", 150, 168, "bangun apa ini? persegi", 10, W.ungu)),
     ),
@@ -230,8 +230,8 @@ export const ADEGAN_EKS_43C_PERSEGI: AdeganStory = {
 /* ------------------------------ 8. Eksplorasi 4.3D: belah ketupat (hlm. 120; Panduan Guru hlm. 148 sampai 150) ------------------------------ */
 export const ADEGAN_EKS_43D_BELAH: AdeganStory = {
   id: "eks-43d-belah-ketupat",
-  judul: "Eksplorasi 4.3D: keliling belah ketupat",
-  sumber: "Buku Siswa hlm. 120; Panduan Guru hlm. 149–151",
+  judul: "Keliling belah ketupat",
+  sumber: "Materi: keliling belah ketupat",
   latar: "#FFF7ED",
   kutipan: [
     "Eksplorasi 4.3D",
@@ -251,14 +251,14 @@ export const ADEGAN_EKS_43D_BELAH: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi empat titik tiga D, Ayo Berlatih. Apa nama bangun ini? Bagaimana cara menghitung kelilingnya? Apakah ada sisi yang sama panjang?",
-      tambah(0, judul("Eksplorasi 4.3D")),
+      "Sekarang belah ketupat. Apa nama bangun ini? Bagaimana cara menghitung kelilingnya? Apakah ada sisi yang sama panjang?",
+      tambah(0, judul("Belah ketupat")),
       tambah("bangun", bangunC("bk", 90, 40, "bk", 22, W.jingga)),
       tambah("Bagaimana", teks("nm", 150, 150, "belah ketupat: berapa kelilingnya?", 10, W.ungu)),
       tambah("Apakah", emo("tq", 150, 184, "🤔", 20)),
     ),
     k(
-      "Ya, belah ketupat punya empat sisi yang sama panjang, sama seperti persegi. Pada gambar panduan guru, tiap sisinya tiga sentimeter.",
+      "Ya, belah ketupat punya empat sisi yang sama panjang, sama seperti persegi. Pada gambar ini, tiap sisinya tiga sentimeter.",
       tambah("empat", ...labelSisi("bk", 90, 40, "bk", 22, ["3 cm", "3 cm", "3 cm", "3 cm"], 9)),
       tambah("sama", sisiGaris("b1", 90, 40, "bk", 22, 0, W.merah), sisiGaris("b2", 90, 40, "bk", 22, 1, W.merah), sisiGaris("b3", 90, 40, "bk", 22, 2, W.merah), sisiGaris("b4", 90, 40, "bk", 22, 3, W.merah)),
       ubah("Pada", { id: "nm", isi: "sama seperti persegi: empat sisi sama" }),
@@ -281,9 +281,9 @@ export const ADEGAN_EKS_43D_BELAH: AdeganStory = {
       tambah("yaitu", ...kartu("rs", 20, 148, 260, 32, W.krem, ["Keliling = 4 × panjang sisi"], 11)),
     ),
     k(
-      "Lalu ada kotak Ayo Mengingat Kembali: keliling bangun datar merupakan jumlahan panjang sisi-sisinya. Ingat ini, karena rumus tadi hanyalah jalan pintas dari penjumlahan.",
+      "Lalu ingat kembali: keliling bangun datar merupakan jumlahan panjang sisi-sisinya. Jangan lupa ini, karena rumus tadi hanyalah jalan pintas dari penjumlahan.",
       bersih(0),
-      tambah(0, judul("Ayo Mengingat Kembali")),
+      tambah(0, judul("Ingat kembali")),
       tambah("Lalu", ...kartu("mk", 20, 40, 260, 58, W.krem, ["Keliling bangun datar =", "jumlahan panjang sisi-sisinya"], 10.4)),
       tambah("rumus", emo("ml", 80, 150, "➕", 30)),
       tambah("jalan", emo("mm", 150, 150, "➡", 30)),

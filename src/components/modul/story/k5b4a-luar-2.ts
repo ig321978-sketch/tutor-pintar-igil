@@ -52,7 +52,7 @@ export const ADEGAN_LUAR_AREA: AdeganStory = {
 export const ADEGAN_LUAR_AREA_TERAPAN: AdeganStory = {
   id: "luar-area-terapan",
   judul: "Perimeter vs Area pada lapangan sepak bola",
-  sumber: "Metode luar: Perimeter vs Area; contoh lapangan Buku Siswa hlm. 113",
+  sumber: "Metode luar: Perimeter vs Area, contoh",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -146,7 +146,7 @@ const vonis = (i: number, isi: string, warna: string): Obj => teks(`${SEL[i].id}
 export const ADEGAN_LUAR_LOOP_TERAPAN: AdeganStory = {
   id: "luar-loop-terapan",
   judul: "Closed Loop Test pada empat rute lari",
-  sumber: "Metode luar: Closed Loop Test; rute Buku Siswa hlm. 110–111",
+  sumber: "Metode luar: Closed Loop Test, empat rute",
   latar: "#FAF5FF",
   ketukan: [
     k(
@@ -203,9 +203,9 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("memeriksa", ...kartu("p3", 12, 124, 276, 34, W.pink, ["memeriksa rute → Closed Loop Test"], 8.6)),
     ),
     k(
-      "Semua hasil cocok dengan buku. Lapangan tiga ratus meter, bangun pertama enam belas sentimeter, dan bangun kedua sembilan belas sentimeter.",
+      "Semua hasilnya sama di keempat metode. Lapangan tiga ratus meter, bangun pertama enam belas sentimeter, dan bangun kedua sembilan belas sentimeter.",
       bersih(0),
-      tambah(0, judul("Cocok dengan buku")),
+      tambah(0, judul("Hasil yang sama")),
       tambah("Lapangan", ...tabel("kn", 22, 50, [86, 86, 86], [["Lapangan", "Bangun pertama", "Bangun kedua"], ["300 m", "16 cm", "19 cm"]], 28, 8.4)),
       tambah("Semua", teks("kc", 150, 126, "sisi: 100, 50, 100, 50 | 4, 4, 4, 4 | 5, 4, 5, 5", 7.6, W.ungu)),
     ),

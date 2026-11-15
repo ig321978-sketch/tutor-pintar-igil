@@ -6,7 +6,7 @@ import { bersih, k, tambah, ubah } from "./k5b4b-bantu";
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk keliling segitiga",
-  sumber: "Metode luar: pembuka; contoh Buku Siswa hlm. 115–117",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -25,7 +25,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("String", ...kartu("m4", 20, 146, 260, 30, W.pink, ["4. String Unrolling"], 9.4)),
     ),
     k(
-      "Semua metode berangkat dari gagasan yang sama di buku: keliling adalah jumlah panjang sisi-sisinya, jadi tidak ada sisi yang boleh terlewat dan tidak ada yang dihitung dua kali.",
+      "Semua metode berangkat dari gagasan yang sama: keliling adalah jumlah panjang sisi-sisinya, jadi tidak ada sisi yang boleh terlewat dan tidak ada yang dihitung dua kali.",
       bersih(0),
       tambah(0, judul("Satu gagasan yang sama")),
       tambah("keliling", poligon("sg", 90, 50, titikSegitiga(6, 3, 5, 20), W.langit, W.biru, { tebal: 2.6 })),
@@ -33,9 +33,9 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("dua", teks("g2", 150, 160, "tidak ada yang dihitung dua kali", 9.8, W.hijau)),
     ),
     k(
-      "Angka yang kita pakai semuanya dari buku: segitiga dengan sisi tiga, lima, enam dan tujuh, empat, lima, segitiga sama sisi lima dan enam, serta segitiga sama kaki enam, enam, empat.",
+      "Angka yang kita pakai semuanya dari contoh: segitiga dengan sisi tiga, lima, enam dan tujuh, empat, lima, segitiga sama sisi lima dan enam, serta segitiga sama kaki enam, enam, empat.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka yang dipakai")),
       tambah(7, ...kartu("a1", 20, 34, 260, 40, W.langit, ["sembarang: 3, 5, 6 dan 7, 4, 5"], 9.4)),
       tambah(17, ...kartu("a2", 20, 84, 260, 40, W.hijauMuda, ["sama sisi: 5 dan 6"], 9.4)),
       tambah(24, ...kartu("a3", 20, 134, 260, 40, W.pink, ["sama kaki: 6, 6, 4"], 9.4)),
@@ -91,11 +91,11 @@ const T2 = titikSegitiga(7, 4, 5, 16);
 export const ADEGAN_LUAR_SISI_TERAPAN: AdeganStory = {
   id: "luar-sisi-terapan",
   judul: "Side Sum pada dua segitiga sembarang",
-  sumber: "Metode luar: Side Sum; contoh Buku Siswa hlm. 115 dan Panduan Guru hlm. 130–131",
+  sumber: "Metode luar: Side Sum",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Terapkan pada segitiga pertama di buku, dengan sisi tiga, lima, dan enam sentimeter. Mulai dengan menyebut sisinya satu per satu.",
+      "Terapkan pada segitiga pertama di atas, dengan sisi tiga, lima, dan enam sentimeter. Mulai dengan menyebut sisinya satu per satu.",
       tambah(0, judul("Side Sum: segitiga pertama")),
       tambah("Terapkan", poligon("ta", 20, 78, T1, W.langit, W.biru, { tebal: 2.2 })),
       tambah(8, ...labelSisi("ta", 20, 78, T1, ["", "3 cm", ""], 8.6, W.merah, 15)),
@@ -125,9 +125,9 @@ export const ADEGAN_LUAR_SISI_TERAPAN: AdeganStory = {
       tambah("enam", teks("u3", 232, 134, "keliling = 16 cm", 9.4, W.hijau)),
     ),
     k(
-      "Hasilnya sama persis dengan buku: empat belas sentimeter dan enam belas sentimeter. Side Sum selalu sampai pada jawaban yang benar.",
+      "Hasilnya sama persis dengan hitungan tadi: empat belas sentimeter dan enam belas sentimeter. Side Sum selalu sampai pada jawaban yang benar.",
       bersih(0),
-      tambah(0, judul("Cocok dengan buku")),
+      tambah(0, judul("Cocok dengan hitungan tadi")),
       tambah("Hasilnya", ...tabel("hb", 60, 44, [90, 90], [["sisi (cm)", "keliling"], ["3, 5, 6", "14 cm"], ["7, 4, 5", "16 cm"]], 24, 9.4)),
       tambah("selalu", emo("ok", 150, 150, "✅", 28)),
     ),

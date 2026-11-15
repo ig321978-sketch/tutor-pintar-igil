@@ -59,7 +59,7 @@ export const ADEGAN_LUAR_NAP: AdeganStory = {
 export const ADEGAN_LUAR_NAP_TERAPAN: AdeganStory = {
   id: "luar-nap-terapan",
   judul: "Not Area Product: membandingkan jawaban keliru dan benar",
-  sumber: "Metode luar: Not Area Product; angka Buku Siswa hlm. 118–120",
+  sumber: "Metode luar: Not Area Product",
   latar: "#FFF1F2",
   ketukan: [
     k(
@@ -150,7 +150,7 @@ const barisSlu = (r: number): Obj[] => [teks(`nb${r}`, 40, Y_BARIS[r] - 3, NAMA_
 export const ADEGAN_LUAR_SLU_TERAPAN: AdeganStory = {
   id: "luar-slu-terapan",
   judul: "Straight Line Unrolling pada empat segi empat",
-  sumber: "Metode luar: Straight Line Unrolling; angka Buku Siswa hlm. 118–121",
+  sumber: "Metode luar: Straight Line Unrolling",
   latar: "#F5F3FF",
   ketukan: [
     k(
@@ -192,8 +192,8 @@ const KUNCI_TABEL = [
 
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
-  judul: "Ringkasan empat metode dan kunci keliling",
-  sumber: "Ringkasan metode luar; angka Buku Siswa hlm. 118–121",
+  judul: "Ringkasan empat metode dan hasil keliling",
+  sumber: "Ringkasan metode luar",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -205,21 +205,21 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("Straight", ...kartu("r4", 12, 148, 276, 30, W.pink, ["Straight Line Unrolling: bangun apa saja"], 8.8)),
     ),
     k(
-      "Kunci hasil dari buku: persegi panjang enam belas, jajargenjang enam belas, layang-layang dua belas, persegi dua belas, belah ketupat dua belas, trapesium empat belas, segi empat sembarang empat belas.",
+      "Hasil keliling ketujuh bangun tadi: persegi panjang enam belas, jajargenjang enam belas, layang-layang dua belas, persegi dua belas, belah ketupat dua belas, trapesium empat belas, segi empat sembarang empat belas.",
       bersih(0),
-      tambah(0, judul("Kunci keliling (cm)")),
-      tambah("Kunci", ...tabel("kn", 40, 30, [150, 70], KUNCI_TABEL.slice(0, 1), 17, 8.6)),
+      tambah(0, judul("Hasil keliling (cm)")),
+      tambah("Hasil", ...tabel("kn", 40, 30, [150, 70], KUNCI_TABEL.slice(0, 1), 17, 8.6)),
       tambah("persegi", ...tabel("kn", 40, 30, [150, 70], KUNCI_TABEL, 17, 8.6).filter((o) => Number(o.id.charAt(4)) >= 1 && Number(o.id.charAt(4)) <= 3)),
       tambah("persegi@2", ...tabel("kn", 40, 30, [150, 70], KUNCI_TABEL, 17, 8.6).filter((o) => Number(o.id.charAt(4)) >= 4 && Number(o.id.charAt(4)) <= 5)),
       tambah("trapesium", ...tabel("kn", 40, 30, [150, 70], KUNCI_TABEL, 17, 8.6).filter((o) => Number(o.id.charAt(4)) >= 6)),
     ),
     k(
-      "Satu tanda penting: layang-layang dengan sisi dua dan empat harus dua belas. Angka enam belas dan empat belas di panduan guru untuk layang-layang adalah salah hitung.",
+      "Satu tanda penting: layang-layang dengan sisi dua dan empat kelilingnya dua belas. Periksa dengan dua cara: jumlahkan semua sisi, lalu hitung dua kali dua ditambah dua kali empat. Hasilnya sama.",
       bersih(0),
-      tambah(0, judul("Awas: layang-layang")),
+      tambah(0, judul("Periksa layang-layang")),
       tambah("layang-layang", bangunC("ll", 30, 36, "ll", 17, W.pink), ...labelSisi("ll", 30, 36, "ll", 17, ["2", "4", "4", "2"], 9)),
-      tambah("harus", teks("l1", 214, 80, "2 + 2 + 4 + 4 = 12", 11, W.hijau)),
-      tambah("Angka", teks("l2", 214, 116, "Panduan Guru:", 9, W.merah), teks("l3", 214, 130, "16 dan 14 (salah)", 10, W.merah), emo("l4", 214, 160, "❌", 22)),
+      tambah("kelilingnya", teks("l1", 214, 80, "2 + 2 + 4 + 4 = 12", 11, W.hijau)),
+      tambah("Periksa", teks("l2", 214, 116, "dicek dengan cara lain:", 9, W.coklat), teks("l3", 214, 130, "(2 × 2) + (2 × 4) = 12", 8.6, W.merah), emo("l4", 214, 160, "✅", 22)),
     ),
     k(
       "Apa pun metodenya, hasilnya harus sama dan satuannya sentimeter. Itu tandamu menghitung dengan benar. Sampai jumpa di video berikutnya.",

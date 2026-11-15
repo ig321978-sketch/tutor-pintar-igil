@@ -10,8 +10,8 @@ const pelari = (id = "rn"): Obj => emo(id, FX + 10, FY + LAP.ph - 8, "🏃", 16)
 /* ------------------------------ 5. Eksplorasi 4.1A: soal berlari 300 m (Buku Siswa hlm. 109 dan 110; Panduan Guru hlm. 121 dan 122) ------------------------------ */
 export const ADEGAN_SOAL: AdeganStory = {
   id: "eks-41a-soal",
-  judul: "Eksplorasi 4.1A: berlari 300 m di lapangan",
-  sumber: "Buku Siswa hlm. 109–110; Panduan Guru hlm. 121–122",
+  judul: "Kegiatan: berlari 300 m di lapangan",
+  sumber: "Materi: berlari 300 m di lapangan",
   latar: "#ECFDF5",
   kutipan: [
     "Eksplorasi 4.1A",
@@ -26,8 +26,8 @@ export const ADEGAN_SOAL: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi empat titik satu A. Suatu pagi, Asep bersama teman-teman mengikuti pelajaran olahraga. Pak Guru meminta anak-anak berlari sejauh tiga ratus meter di lapangan sepak bola.",
-      tambah(0, judul("Eksplorasi 4.1A")),
+      "Sekarang kita mulai kegiatan pertama. Suatu pagi, Asep bersama teman-teman mengikuti pelajaran olahraga. Pak Guru meminta anak-anak berlari sejauh tiga ratus meter di lapangan sepak bola.",
+      tambah(0, judul("Kegiatan pertama")),
       tambah("anak-anak", emo("as", 34, 100, "🏃", 22)),
       tambah("lapangan", ...lapangan("lp", FX, FY)),
       tambah("tiga", ...kartu("t3", 90, 156, 120, 30, W.krem, ["berlari sejauh 300 m"], 9.6)),
@@ -41,11 +41,11 @@ export const ADEGAN_SOAL: AdeganStory = {
     k(
       "Lapangannya berukuran seratus meter kali lima puluh meter, dengan titik start di pojok. Pertanyaannya: bagaimana lintasan berlari agar mencapai jarak tiga ratus meter?",
       bersih(0),
-      tambah(0, judul("Eksplorasi 4.1A"), ...lapanganLengkap()),
+      tambah(0, judul("Kegiatan pertama"), ...lapanganLengkap()),
       tambah("Pertanyaannya:", ...kartu("qq", 20, 164, 260, 28, W.langit, ["Lintasan seperti apa agar mencapai 300 m?"], 9)),
     ),
     k(
-      "Guru membagi kelas menjadi empat kelompok, atau berpasangan bila siswanya sedikit. Setiap kelompok mendapat gambar lapangan untuk mencoret rute alternatif di kertas.",
+      "Sekarang kita bekerja berkelompok, empat kelompok, atau berpasangan bila siswanya sedikit. Setiap kelompok mendapat gambar lapangan untuk mencoret rute alternatif di kertas.",
       bersih(0),
       tambah(0, judul("Kerja kelompok")),
       ...[0, 1, 2, 3].map((i) => tambah(4, ...kartu(`gk${i}`, 8 + i * 72, 38, 66, 22, [W.hijauMuda, W.langit, W.krem, W.pink][i], [`Kelompok ${i + 1}`], 8.2))),
@@ -54,12 +54,12 @@ export const ADEGAN_SOAL: AdeganStory = {
       tambah("kertas.", teks("kr", 150, 128, "coretan rute alternatif di kertas", 8.8, W.ungu)),
     ),
     k(
-      "Penting: guru memastikan siswa belum membuka halaman berikutnya, supaya ide mereka orisinal. Siswa mempresentasikan rute di depan kelas, lalu membandingkannya dengan rute tokoh di buku.",
+      "Penting: simpan dulu ide kalian sendiri, jangan mengintip jawaban teman, supaya ide kalian orisinal. Setelah itu, presentasikan rute kalian di depan kelas, lalu bandingkan dengan rute tokoh dalam cerita Asep.",
       bersih(0),
-      tambah(0, judul("Aturan guru")),
-      tambah("belum", emo("mk", 50, 90, "🙈", 40), teks("mkt", 50, 112, "jangan buka dulu", 8.2, W.merah)),
-      tambah("mempresentasikan", ...kartu("pr", 100, 48, 190, 34, W.langit, ["presentasi rute di depan kelas"], 9)),
-      tambah("membandingkannya", ...kartu("bd", 100, 96, 190, 34, W.hijauMuda, ["bandingkan dengan rute di buku"], 9)),
+      tambah(0, judul("Aturan kerja")),
+      tambah("simpan", emo("mk", 50, 90, "🙈", 40), teks("mkt", 50, 112, "simpan idemu dulu", 8.2, W.merah)),
+      tambah("presentasikan", ...kartu("pr", 100, 48, 190, 34, W.langit, ["presentasi rute di depan kelas"], 9)),
+      tambah("bandingkan", ...kartu("bd", 100, 96, 190, 34, W.hijauMuda, ["bandingkan dengan rute tokoh cerita"], 9)),
     ),
   ],
 };
@@ -68,7 +68,7 @@ export const ADEGAN_SOAL: AdeganStory = {
 export const ADEGAN_NISA_LUKAS: AdeganStory = {
   id: "rute-nisa-lukas",
   judul: "Rute Nisa dan Lukas: satu sisi lapangan",
-  sumber: "Buku Siswa hlm. 110–111; Panduan Guru hlm. 123",
+  sumber: "Materi: rute Nisa dan Lukas",
   latar: "#ECFDF5",
   kutipan: [
     "Lintasan Berlari Nisa",
@@ -116,7 +116,7 @@ export const ADEGAN_NISA_LUKAS: AdeganStory = {
 export const ADEGAN_YOHANA_ASEP: AdeganStory = {
   id: "rute-yohana-asep",
   judul: "Rute Yohana dan Asep: tengah atau tepian",
-  sumber: "Buku Siswa hlm. 111; Panduan Guru hlm. 124",
+  sumber: "Materi: rute Yohana dan Asep",
   latar: "#ECFDF5",
   kutipan: [
     "Lintasan Berlari Yohana",
@@ -170,7 +170,7 @@ const baris = (r: number, sel: string[]): Obj[] => tabel(`rt${r}`, 10, 34 + r * 
 export const ADEGAN_PILIH: AdeganStory = {
   id: "pilih-keliling",
   judul: "Cara mana yang paling disukai dan kata keliling",
-  sumber: "Buku Siswa hlm. 112–113; Panduan Guru hlm. 124",
+  sumber: "Materi: rute mengelilingi dan keliling",
   latar: "#FFFBEB",
   kutipan: [
     "Di antara cara Asep dan teman-temannya berlari untuk menempuh",
@@ -186,7 +186,7 @@ export const ADEGAN_PILIH: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Di antara semua cara itu, manakah yang paling kalian sukai? Buku merangkum: Nisa dan Lukas berlari hanya pada satu sisi lapangan sepak bola.",
+      "Di antara semua cara itu, manakah yang paling kalian sukai? Mari kita rangkum: Nisa dan Lukas berlari hanya pada satu sisi lapangan sepak bola.",
       tambah(0, judul("Cara mana yang kamu sukai?")),
       tambah(0, ...baris(0, ["Nama", "Rute", "Mengelilingi?"])),
       tambah("Nisa", ...baris(1, ["Nisa", "satu sisi lapangan", "tidak"])),
@@ -206,7 +206,7 @@ export const ADEGAN_PILIH: AdeganStory = {
       tambah("berhenti", emo("ok", FX + 30, FY + LAP.ph - 14, "✅", 16), teks("akt", 150, 180, "berhenti di titik semula", 9, W.hijau)),
     ),
     k(
-      "Panduan guru menambahkan: setiap sisi lapangan ia lalui satu kali. Mengelilingi tidak sama dengan bolak-balik pada sisi yang sama.",
+      "Perhatikan baik-baik: setiap sisi lapangan ia lalui satu kali. Mengelilingi tidak sama dengan bolak-balik pada sisi yang sama.",
       bersih(0),
       tambah(0, judul("Satu kali tiap sisi")),
       tambah("setiap", poligon("mr", 30, 52, [[0, 0], [100, 0], [100, 50], [0, 50]], W.rumput, W.biru, { tebal: 2 }), teks("m1", 80, 48, "1 kali", 8.2, W.biru), teks("m2", 142, 80, "1 kali", 8.2, W.biru, { anchor: "start" }), teks("m3", 80, 114, "1 kali", 8.2, W.biru), teks("m4", 24, 80, "1 kali", 8.2, W.biru, { anchor: "end" })),

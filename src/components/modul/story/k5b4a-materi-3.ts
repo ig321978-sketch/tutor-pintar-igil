@@ -5,8 +5,8 @@ import { bersih, hapus, k, tambah, ubah } from "./k5b4a-bantu";
 /* ------------------------------ 9. Eksplorasi 4.1B: lapangan sebagai bangun datar (Buku Siswa hlm. 113; Panduan Guru hlm. 125 dan 126) ------------------------------ */
 export const ADEGAN_EKS41B: AdeganStory = {
   id: "eks-41b",
-  judul: "Eksplorasi 4.1B: menjumlahkan panjang sisi lapangan",
-  sumber: "Buku Siswa hlm. 113; Panduan Guru hlm. 125–126",
+  judul: "Kegiatan: menjumlahkan panjang sisi lapangan",
+  sumber: "Materi: menjumlahkan panjang sisi",
   latar: "#ECFDF5",
   kutipan: [
     "Eksplorasi 4.1B",
@@ -19,8 +19,8 @@ export const ADEGAN_EKS41B: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi empat titik satu B. Perhatikan lagi lintasan Asep. Lapangan sepak bola dapat kita lihat sebagai bangun datar. Bagaimana menentukan panjang lintasan berlarinya?",
-      tambah(0, judul("Eksplorasi 4.1B")),
+      "Sekarang kegiatan kedua. Perhatikan lagi lintasan Asep. Lapangan sepak bola dapat kita lihat sebagai bangun datar. Bagaimana menentukan panjang lintasan berlarinya?",
+      tambah(0, judul("Kegiatan kedua")),
       tambah("lintasan", ...lapangan("lp", FX, FY), garisRute("ar", RUTE.asep, W.biru)),
       tambah("bangun", poligon("bd", FX, FY, [[0, 0], [LAP.pw, 0], [LAP.pw, LAP.ph], [0, LAP.ph]], "none", W.hitam, { tebal: 3 })),
       tambah("Bagaimana", teks("lt", FX + LAP.pw / 2, FY - 6, "100 m", 8.4, W.hitam), teks("lb", FX + LAP.pw / 2, FY + LAP.ph + 12, "100 m", 8.4, W.hitam), teks("ll", FX - 6, FY + LAP.ph / 2 + 3, "50 m", 8.4, W.hitam, { anchor: "end" }), teks("lr", FX + LAP.pw + 6, FY + LAP.ph / 2 + 3, "50 m", 8.4, W.hitam, { anchor: "start" })),
@@ -42,12 +42,12 @@ export const ADEGAN_EKS41B: AdeganStory = {
       tambah("kelilingnya", teks("kh", 150, 192, "keliling lapangan = 300 m", 9.4, W.hijau)),
     ),
     k(
-      "Pada pelaksanaannya, guru meminta siswa mengingat rute Asep, menekankan konsep keliling, dan memastikan panjang seluruh sisi lapangan dijumlahkan dengan benar.",
+      "Coba ingat kembali rute Asep dan bagaimana ia memperoleh panjangnya. Pegang konsep keliling dengan baik. Pastikan panjang seluruh sisi lapangan dijumlahkan dengan benar.",
       bersih(0),
-      tambah(0, judul("Peran guru")),
-      tambah("mengingat", ...kartu("g1", 14, 36, 272, 30, W.langit, ["ingat kembali rute Asep dan cara memperoleh panjangnya"], 8.4)),
-      tambah("menekankan", ...kartu("g2", 14, 76, 272, 30, W.krem, ["tekankan konsep keliling"], 8.8)),
-      tambah("memastikan", ...kartu("g3", 14, 116, 272, 30, W.hijauMuda, ["pastikan semua sisi lapangan dijumlahkan benar"], 8.4)),
+      tambah(0, judul("Ingat dan pastikan")),
+      tambah("ingat", ...kartu("g1", 14, 36, 272, 30, W.langit, ["ingat kembali rute Asep dan cara memperoleh panjangnya"], 8.4)),
+      tambah("Pegang", ...kartu("g2", 14, 76, 272, 30, W.krem, ["pegang konsep keliling"], 8.8)),
+      tambah("Pastikan", ...kartu("g3", 14, 116, 272, 30, W.hijauMuda, ["pastikan semua sisi lapangan dijumlahkan benar"], 8.4)),
     ),
   ],
 };
@@ -60,7 +60,7 @@ const tambahLabel = (id: string, x: number, y: number, isi: string, anchor: "sta
 export const ADEGAN_UKUR: AdeganStory = {
   id: "ukur-penggaris",
   judul: "Mengukur sisi dengan penggaris: dua bangun datar",
-  sumber: "Buku Siswa hlm. 114; Panduan Guru hlm. 126–127",
+  sumber: "Materi: mengukur sisi dengan penggaris",
   latar: "#EFF6FF",
   kutipan: [
     "Sekarang, perhatikan gambar-gambar berikut. Bagaimanakah cara",
@@ -93,9 +93,9 @@ export const ADEGAN_UKUR: AdeganStory = {
       tambah(22, teks("sh", 64, 170, "keliling 16 cm", 9.6, W.hijau)),
     ),
     k(
-      "Bangun kedua punya sisi atas empat sentimeter, sisi bawah lima sentimeter, dan kedua sisi miring masing-masing lima sentimeter. Di buku, bagian ini dibiarkan kosong untuk diisi siswa.",
+      "Bangun kedua punya sisi atas empat sentimeter, sisi bawah lima sentimeter, dan kedua sisi miring masing-masing lima sentimeter. Ini Latihan satu: coba isi sendiri bagian yang masih kosong.",
       bersih(0),
-      tambah(0, judul("Bangun kedua")),
+      tambah(0, judul("Latihan 1: bangun kedua")),
       tambah(0, poligon("b2", 115, 52, titikBangunDua(U2), W.krem, W.biru, { tebal: 2 })),
       tambah("atas", tambahLabel("t1", 150, 46, "4 cm")),
       tambah("bawah", tambahLabel("t2", 150, 134, "5 cm")),
@@ -103,18 +103,18 @@ export const ADEGAN_UKUR: AdeganStory = {
       tambah("kosong", ...kartu("kb", 40, 146, 220, 38, W.putih, ["Keliling = … + … + … + … = …", "Jadi, kelilingnya … cm."], 9)),
     ),
     k(
-      "Menurut kunci panduan guru, kelilingnya lima tambah empat tambah lima tambah lima sama dengan sembilan belas. Jadi kelilingnya sembilan belas sentimeter.",
+      "Perhatikan jawabannya: lima tambah empat tambah lima tambah lima sama dengan sembilan belas. Jadi kelilingnya sembilan belas sentimeter.",
       hapus(0, "kb-k", "kb-t0", "kb-t1"),
       tambah("lima", teks("te", 150, 160, "5 + 4 + 5 + 5 = 19", 11, W.biru)),
       tambah("Jadi", teks("th", 150, 180, "keliling 19 cm", 9.6, W.hijau)),
     ),
     k(
-      "Guru meminta siswa mengukur sisi dengan penggaris, mengisi titik-titik, lalu menghitung kelilingnya. Bila pengukuran salah, siswa diminta mengulanginya dengan lebih teliti.",
+      "Caranya: ukur sisi dengan penggaris, isi titik-titik, lalu hitung kelilingnya. Kalau pengukuranmu salah, jangan khawatir, ulangi dengan lebih teliti.",
       bersih(0),
-      tambah(0, judul("Peran guru")),
-      tambah("mengukur", ...kartu("l1", 14, 34, 272, 28, W.langit, ["1. ukur sisi dengan penggaris"], 8.8), emo("l1e", 266, 55, "📏", 16)),
-      tambah("mengisi", ...kartu("l2", 14, 70, 272, 28, W.krem, ["2. isi titik-titik dengan hasil ukur"], 8.8)),
-      tambah("menghitung", ...kartu("l3", 14, 106, 272, 28, W.hijauMuda, ["3. hitung kelilingnya"], 8.8)),
+      tambah(0, judul("Cara mengukur")),
+      tambah("ukur", ...kartu("l1", 14, 34, 272, 28, W.langit, ["1. ukur sisi dengan penggaris"], 8.8), emo("l1e", 266, 55, "📏", 16)),
+      tambah("isi", ...kartu("l2", 14, 70, 272, 28, W.krem, ["2. isi titik-titik dengan hasil ukur"], 8.8)),
+      tambah("hitung", ...kartu("l3", 14, 106, 272, 28, W.hijauMuda, ["3. hitung kelilingnya"], 8.8)),
       tambah("salah,", ...kartu("l4", 14, 142, 272, 34, W.merahMuda, ["salah ukur: ulangi dengan lebih teliti"], 8.8), emo("l4e", 266, 164, "🔁", 16)),
     ),
   ],
@@ -124,7 +124,7 @@ export const ADEGAN_UKUR: AdeganStory = {
 export const ADEGAN_KESIMPULAN: AdeganStory = {
   id: "kesimpulan-keliling",
   judul: "Kesimpulan: apakah keliling bangun datar itu?",
-  sumber: "Buku Siswa hlm. 114; Panduan Guru hlm. 124 dan 127",
+  sumber: "Materi: kesimpulan tentang keliling",
   latar: "#FFF7ED",
   kutipan: [
     "Jadi, dengan menggunakan kata-katamu sendiri, apakah keliling",
@@ -136,24 +136,24 @@ export const ADEGAN_KESIMPULAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Jadi, dengan kata-katamu sendiri, apakah keliling bangun datar itu? Guru mengajak siswa menyebutkannya secara lisan.",
+      "Jadi, dengan kata-katamu sendiri, apakah keliling bangun datar itu? Coba sebutkan secara lisan.",
       tambah(0, judul("Apa itu keliling?")),
       tambah("apakah", teks("qq", 150, 100, "?", 64, W.merah)),
       tambah("lisan.", emo("sy", 150, 150, "🗣", 34)),
     ),
     k(
-      "Kesimpulan buku: keliling bangun datar adalah jumlahan panjang sisi-sisi bangun datar tersebut.",
+      "Kesimpulannya: keliling bangun datar adalah jumlahan panjang sisi-sisi bangun datar tersebut.",
       bersih(0),
       tambah(0, judul("Kesimpulan")),
       tambah("keliling", ...kartu("df", 20, 46, 260, 70, W.emas, ["Keliling bangun datar adalah", "jumlahan panjang sisi-sisi", "bangun datar tersebut."], 10.4)),
       tambah("jumlahan", emo("lm", 270, 40, "💡", 24)),
     ),
     k(
-      "Kalau jawaban siswa kurang tepat, mereka diminta membaca kesimpulan di buku. Guru juga mengantisipasi ide mengelilingi, yaitu tiap sisi dilalui satu kali, bukan bolak-balik pada sisi yang sama.",
+      "Hati-hati, kesalahan yang sering terjadi: mengira mengelilingi berarti bolak-balik pada satu sisi. Ingat, mengelilingi berarti tiap sisi dilalui satu kali, bukan bolak-balik pada sisi yang sama.",
       bersih(0),
-      tambah(0, judul("Antisipasi guru")),
-      tambah("Kalau", ...kartu("an1", 14, 40, 272, 38, W.langit, ["jawaban kurang tepat:", "baca kesimpulan di buku"], 9)),
-      tambah("mengantisipasi", ...kartu("an2", 14, 90, 272, 38, W.krem, ["mengelilingi: tiap sisi dilalui satu kali,", "bukan bolak-balik di sisi yang sama"], 8.6)),
+      tambah(0, judul("Hati-hati")),
+      tambah("Hati-hati,", ...kartu("an1", 14, 40, 272, 38, W.langit, ["kesalahan yang sering terjadi:", "bolak-balik di satu sisi"], 9)),
+      tambah("Ingat,", ...kartu("an2", 14, 90, 272, 38, W.krem, ["mengelilingi: tiap sisi dilalui satu kali,", "bukan bolak-balik di sisi yang sama"], 8.6)),
     ),
     k(
       "Ringkasnya, keliling muncul dari rute yang mengelilingi tepian dan kembali ke titik semula. Lapangan seratus meter kali lima puluh meter berkeliling tiga ratus meter. Dua bangun tadi berkeliling enam belas dan sembilan belas sentimeter.",
@@ -165,12 +165,12 @@ export const ADEGAN_KESIMPULAN: AdeganStory = {
       tambah(31, ...tabel("rg3", 10, 108, [96, 112, 72], [["Bangun kedua", "4, 5, 5, 5", "19 cm"]], 24, 8.4, W.putih)),
     ),
     k(
-      "Dengan ini dua tujuan subbab A tercapai: kita mengenali situasi soal keliling dan menemukan keliling sebagai jumlahan panjang sisi-sisinya. Subbab berikutnya memakai gagasan ini untuk bangun-bangun yang lain.",
+      "Sekarang kita tahu kapan memakai keliling, dan keliling adalah jumlahan panjang sisi-sisinya. Tantangan untukmu: ukur keliling sebuah benda di rumah. Renungan: kapan kamu perlu menghitung keliling?",
       bersih(0),
-      tambah(0, judul("Tujuan subbab A tercapai")),
-      tambah("mengenali", ...kartu("tc1", 14, 36, 272, 32, W.hijauMuda, ["mengenali situasi soal keliling"], 9.2), emo("tc1e", 262, 58, "✅", 16)),
-      tambah("menemukan", ...kartu("tc2", 14, 78, 272, 32, W.hijauMuda, ["menemukan keliling = jumlah panjang sisi"], 9.2), emo("tc2e", 262, 100, "✅", 16)),
-      tambah("berikutnya", panah("tca", 150, 114, 0, 22, W.biru, 2.2, { gambar: true }), ...kartu("tc3", 50, 142, 200, 32, W.krem, ["subbab berikutnya: bangun lain"], 9.2)),
+      tambah(0, judul("Tantangan dan renungan")),
+      tambah("tahu", ...kartu("tc1", 14, 36, 272, 32, W.hijauMuda, ["tahu kapan memakai keliling"], 9.2), emo("tc1e", 262, 58, "✅", 16)),
+      tambah("jumlahan", ...kartu("tc2", 14, 78, 272, 32, W.hijauMuda, ["keliling = jumlah panjang sisi"], 9.2), emo("tc2e", 262, 100, "✅", 16)),
+      tambah("Tantangan", panah("tca", 150, 114, 0, 22, W.biru, 2.2, { gambar: true }), ...kartu("tc3", 50, 142, 200, 32, W.krem, ["Tantangan: ukur satu benda"], 9.2)),
     ),
   ],
 };

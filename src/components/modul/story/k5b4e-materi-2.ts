@@ -29,7 +29,7 @@ const baris = (id: string, i: number, isi: string, u = 9.6, warna: string = W.bi
 export const ADEGAN_SISI_HILANG: AdeganStory = {
   id: "sisi-hilang",
   judul: "Cara Asep: mencari sisi yang belum diketahui",
-  sumber: "Buku Siswa hlm. 127; Panduan Guru hlm. 164–165",
+  sumber: "Materi: mencari sisi yang belum diketahui",
   latar: "#FFFBEB",
   kutipan: [
     "Perhatikan persegi panjang",
@@ -99,7 +99,7 @@ export const ADEGAN_SISI_HILANG: AdeganStory = {
 export const ADEGAN_JUMLAH_ASEP: AdeganStory = {
   id: "jumlah-asep",
   judul: "Cara Asep: menjumlahkan semua sisi terluar",
-  sumber: "Buku Siswa hlm. 128; Panduan Guru hlm. 165",
+  sumber: "Materi: menjumlahkan semua sisi terluar",
   latar: "#F0FDF4",
   kutipan: [
     "Semua panjang sisi yang Asep",
@@ -154,7 +154,7 @@ const kelompok = (awalan: string, nama: string[], warna: string): Obj[] => nama.
 export const ADEGAN_KOMANG: AdeganStory = {
   id: "cara-komang",
   judul: "Cara Komang: persegi besar yang melingkupi denah",
-  sumber: "Buku Siswa hlm. 126–128; Panduan Guru hlm. 164–165",
+  sumber: "Materi: Cara Komang dan persegi besar",
   latar: "#EFF6FF",
   kutipan: [
     "Aku hanya",
@@ -222,12 +222,12 @@ export const ADEGAN_KOMANG: AdeganStory = {
       tambah("hasil:", teks("v3", 150, 150, "hasil sama: 48 m", 13, W.hijau)),
     ),
     k(
-      "Di akhir eksplorasi, guru menguatkan caranya dan memastikan pemahaman lewat tanya jawab.",
+      "Sebelum lanjut, coba ceritakan dengan kata-katamu sendiri cara menghitung keliling bangun gabungan, lalu kita tanya jawab bersama.",
       bersih(0),
-      tambah(0, judul("Akhir eksplorasi")),
-      tambah("menguatkan", ...kartu("w1", 40, 44, 220, 36, W.hijauMuda, ["kuatkan cara menghitung keliling", "bangun gabungan beraturan"], 8.8)),
-      tambah("memastikan", ...kartu("w2", 40, 96, 220, 30, W.krem, ["pastikan lewat tanya jawab"], 9)),
-      tambah("tanya", teks("w3", 150, 160, "?  ?  ?", 22, W.merah)),
+      tambah(0, judul("Ceritakan caranya")),
+      tambah("ceritakan", ...kartu("w1", 40, 44, 220, 36, W.hijauMuda, ["jelaskan cara menghitung keliling", "bangun gabungan"], 8.8)),
+      tambah("lalu", ...kartu("w2", 40, 96, 220, 30, W.krem, ["lalu kita tanya jawab"], 9)),
+      tambah("bersama", teks("w3", 150, 160, "?  ?  ?", 22, W.merah)),
     ),
   ],
 };

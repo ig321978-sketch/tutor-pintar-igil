@@ -11,8 +11,8 @@ const T5 = titikSegitiga(5, 5, 5, 22);
 
 export const ADEGAN_SAMA_SISI: AdeganStory = {
   id: "eks-b-sama-sisi",
-  judul: "Eksplorasi 4.2B: mengenali segitiga sama sisi",
-  sumber: "Buku Siswa hlm. 116; Panduan Guru hlm. 132–134",
+  judul: "Mengenali segitiga sama sisi",
+  sumber: "Materi: segitiga sama sisi",
   latar: "#FFF7ED",
   kutipan: [
     "Eksplorasi 4.2B",
@@ -38,8 +38,8 @@ export const ADEGAN_SAMA_SISI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi empat titik dua B, Ayo Menemukan. Perhatikan bangun datar berikut. Bangun apakah itu? Aku coba mengukur panjang sisi-sisinya dengan penggaris.",
-      tambah(0, judul("Eksplorasi 4.2B: Ayo Menemukan")),
+      "Ayo kita temukan sesuatu yang baru. Perhatikan bangun datar berikut. Bangun apakah itu? Coba kita ukur panjang sisi-sisinya dengan penggaris.",
+      tambah(0, judul("Ayo menemukan: bangun apa ini?")),
       tambah("Perhatikan", poligon("tg", 24, 40, T5, W.krem, W.biru, { tebal: 2.2 })),
       tambah("Bangun", ...kartu("bq", 172, 52, 112, 40, W.langit, ["bangun apakah itu?"], 8.6)),
       tambah("penggaris.", emo("rg", 230, 150, "📏", 28)),
@@ -59,11 +59,11 @@ export const ADEGAN_SAMA_SISI: AdeganStory = {
       tambah("ciri", teks("cr", 228, 176, "ketiga sisi sama", 8.6, W.hijau)),
     ),
     k(
-      "Panduan Guru memberi alurnya di Tabel empat titik lima. Guru menampilkan gambar dan menanyakan jenisnya, peserta didik mengukur lalu menemukan sisi-sisinya sama. Kalau ada hasil ukur yang berbeda, guru memeriksa cara mengukurnya.",
+      "Jadi alurnya begini. Pertama, perhatikan gambar dan tanyakan jenisnya. Lalu ukur, dan temukan bahwa sisi-sisinya sama. Kalau ada hasil ukur yang berbeda, periksa lagi cara mengukurnya.",
       bersih(0),
-      tambah(0, judul("Alur Tabel 4.5")),
-      tambah("menampilkan", ...kartu("f1", 30, 32, 240, 36, W.langit, ["1. tampilkan gambar, tanya jenis"], 8.8)),
-      tambah("mengukur@1", ...kartu("f2", 30, 78, 240, 36, W.hijauMuda, ["2. ukur, temukan sisi yang sama"], 8.8)),
+      tambah(0, judul("Alur mengenali segitiga")),
+      tambah("perhatikan", ...kartu("f1", 30, 32, 240, 36, W.langit, ["1. amati gambar, tanya jenis"], 8.8)),
+      tambah("ukur,", ...kartu("f2", 30, 78, 240, 36, W.hijauMuda, ["2. ukur, temukan sisi yang sama"], 8.8)),
       tambah("berbeda,", ...kartu("f3", 30, 124, 240, 36, W.merahMuda, ["3. hasil beda? periksa cara ukur"], 8.8)),
     ),
   ],
@@ -75,7 +75,7 @@ const T5K = titikSegitiga(5, 5, 5, 14);
 export const ADEGAN_ASEP_NISA: AdeganStory = {
   id: "eks-b-asep-nisa",
   judul: "Cara Asep dan Cara Nisa",
-  sumber: "Buku Siswa hlm. 116; Panduan Guru hlm. 133–134",
+  sumber: "Materi: cara Asep dan cara Nisa",
   latar: "#FFF7ED",
   kutipan: [
     "Setelah mengetahui panjang sisi-sisinya, coba tentukan keliling",
@@ -115,7 +115,7 @@ export const ADEGAN_ASEP_NISA: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Sekarang hitung kelilingnya. Dua anak di buku punya cara berbeda: Cara Asep dan Cara Nisa.",
+      "Sekarang hitung kelilingnya. Ada dua cara yang berbeda: Cara Asep dan Cara Nisa.",
       tambah(0, judul("Cara Asep dan Cara Nisa")),
       tambah("Asep", teks("ja", 70, 40, "Cara Asep", 9.4, W.biru), poligon("ta", 30, 56, T5K, W.krem, W.biru, { tebal: 2 }), ...labelSisi("ta", 30, 56, T5K, ["5 cm", "5 cm", "5 cm"], 8.4, W.hitam, 14), ...tandaSama("ta", 30, 56, T5K, [0, 1, 2])),
       tambah("Nisa", teks("jn", 230, 40, "Cara Nisa", 9.4, W.biru), poligon("tn", 190, 56, T5K, W.langit, W.biru, { tebal: 2 }), ...labelSisi("tn", 190, 56, T5K, ["5 cm", "5 cm", "5 cm"], 8.4, W.hitam, 14), ...tandaSama("tn", 190, 56, T5K, [0, 1, 2])),
@@ -131,20 +131,20 @@ export const ADEGAN_ASEP_NISA: AdeganStory = {
       tambah("belas.", teks("nl", 230, 174, "keliling = 15 cm", 9.4, W.hijau)),
     ),
     k(
-      "Dua cara, satu hasil. Perkalian itu penjumlahan berulang, jadi lima tambah lima tambah lima sama dengan tiga kali lima. Guru mengajak peserta didik membandingkan kedua hasil itu.",
+      "Dua cara, satu hasil. Perkalian itu penjumlahan berulang, jadi lima tambah lima tambah lima sama dengan tiga kali lima. Coba bandingkan kedua hasil itu.",
       bersih(0),
       tambah(0, judul("Penjumlahan berulang")),
       tambah("Perkalian", teks("pe", 150, 60, "5 + 5 + 5 = 3 × 5 = 15", 15, W.merah)),
       tambah("berulang,", ...kartu("br", 50, 82, 200, 34, W.hijauMuda, ["perkalian = penjumlahan berulang"], 8.8)),
-      tambah("membandingkan", ...kartu("bd", 50, 130, 200, 34, W.krem, ["hasil sama: 15 cm"], 9.4)),
+      tambah("bandingkan", ...kartu("bd", 50, 130, 200, 34, W.krem, ["hasil sama: 15 cm"], 9.4)),
     ),
     k(
-      "Kalau peserta didik belum bisa mengubah penjumlahan unsur yang sama menjadi perkalian, guru menjelaskan ulang kaidahnya. Mungkin juga ada anak yang langsung mengalikan panjang sisi dengan tiga.",
+      "Kalau kamu belum bisa mengubah penjumlahan angka yang sama menjadi perkalian, ingat saja bahwa perkalian adalah penjumlahan berulang. Boleh juga langsung mengalikan panjang sisi dengan tiga.",
       bersih(0),
-      tambah(0, judul("Antisipasi guru")),
+      tambah(0, judul("Kalau belum paham")),
       tambah("belum", ...kartu("an1", 30, 34, 240, 44, W.merahMuda, ["belum bisa ubah penjumlahan", "menjadi perkalian"], 8.8)),
-      tambah("menjelaskan", ...kartu("an2", 30, 84, 240, 30, W.hijauMuda, ["guru jelaskan ulang kaidahnya"], 8.8)),
-      tambah("langsung", ...kartu("an3", 30, 124, 240, 44, W.krem, ["anak langsung mengalikan:", "3 × 5 = 15, boleh"], 8.8)),
+      tambah("ingat", ...kartu("an2", 30, 84, 240, 30, W.hijauMuda, ["ingat: perkalian itu penjumlahan berulang"], 8.8)),
+      tambah("langsung", ...kartu("an3", 30, 124, 240, 44, W.krem, ["langsung dikali tiga juga boleh:", "3 × 5 = 15"], 8.8)),
     ),
   ],
 };
@@ -154,8 +154,8 @@ const T6 = titikSegitiga(6, 6, 6, 16);
 
 export const ADEGAN_UMUM_SAMA_SISI: AdeganStory = {
   id: "eks-b-umum",
-  judul: "Eksplorasi 4.2B: rumus keliling segitiga sama sisi",
-  sumber: "Buku Siswa hlm. 116–117; Panduan Guru hlm. 134–135",
+  judul: "Rumus keliling segitiga sama sisi",
+  sumber: "Materi: rumus sama sisi",
   latar: "#FFF7ED",
   kutipan: [
     "Jika panjang sisinya 6 cm, maka",
@@ -202,18 +202,18 @@ export const ADEGAN_UMUM_SAMA_SISI: AdeganStory = {
       tambah("Keliling@2", ...kartu("rm", 140, 50, 150, 54, W.krem, ["Keliling =", "3 × panjang sisi"], 10)),
     ),
     k(
-      "Karena peserta didik belum mengenal variabel, Panduan Guru menyarankan memakai istilah panjang sisi, bukan huruf.",
+      "Kita belum memakai huruf untuk mewakili angka, jadi cukup tuliskan istilah panjang sisi, bukan huruf.",
       tambah("istilah", ...kartu("v1", 20, 150, 128, 34, W.hijauMuda, ["istilah: panjang sisi"], 8.6)),
-      tambah("huruf.", ...kartu("v2", 156, 150, 128, 34, W.merahMuda, ["bukan huruf"], 8.6)),
+      tambah("huruf@2", ...kartu("v2", 156, 150, 128, 34, W.merahMuda, ["bukan huruf"], 8.6)),
     ),
     k(
-      "Kesimpulan guru: pada segitiga sama sisi, keliling dihitung dengan menjumlahkan ketiga sisinya atau dengan tiga kali panjang sisinya. Kalau murid keliru, guru mengoreksinya.",
+      "Kesimpulannya, pada segitiga sama sisi, keliling dihitung dengan menjumlahkan ketiga sisinya atau dengan tiga kali panjang sisinya. Hati-hati, kalau sisinya tidak sama, tiga kali panjang sisi tidak boleh dipakai.",
       bersih(0),
       tambah(0, judul("Kesimpulan sama sisi")),
       tambah("menjumlahkan", ...kartu("c1", 20, 32, 260, 40, W.krem, ["Keliling = sisi 1 + sisi 2 + sisi 3"], 10)),
       tambah("atau", teks("at", 150, 90, "atau", 10, W.merah)),
-      tambah(14, ...kartu("c2", 20, 100, 260, 40, W.langit, ["Keliling = panjang sisi × 3"], 10)),
-      tambah("keliru,", poligon("tk", 128, 154, titikSegitiga(5, 5, 5, 9), W.hijauMuda), emo("kw", 240, 170, "⚠", 24)),
+      tambah(13, ...kartu("c2", 20, 100, 260, 40, W.langit, ["Keliling = panjang sisi × 3"], 10)),
+      tambah("Hati-hati", poligon("tk", 128, 154, titikSegitiga(5, 5, 5, 9), W.hijauMuda), emo("kw", 240, 170, "⚠", 24)),
     ),
   ],
 };
@@ -225,8 +225,8 @@ const T7T = titikSegitiga(4, 6, 6, 14);
 
 export const ADEGAN_SAMA_KAKI: AdeganStory = {
   id: "eks-c-sama-kaki",
-  judul: "Eksplorasi 4.2C: mengenali segitiga sama kaki",
-  sumber: "Buku Siswa hlm. 117; Panduan Guru hlm. 135–136",
+  judul: "Mengenali segitiga sama kaki",
+  sumber: "Materi: segitiga sama kaki",
   latar: "#FDF4FF",
   kutipan: [
     "Eksplorasi 4.2C",
@@ -251,17 +251,17 @@ export const ADEGAN_SAMA_KAKI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi empat titik dua C, Ayo Berlatih. Di sini peserta didik menemukan sendiri keliling segitiga sama kaki, dengan pola yang sama seperti penemuan segitiga sama sisi. Boleh dikerjakan di rumah atau di sekolah.",
-      tambah(0, judul("Eksplorasi 4.2C: Ayo Berlatih")),
+      "Sekarang giliranmu berlatih. Kamu menemukan sendiri keliling segitiga sama kaki, dengan pola yang sama seperti penemuan segitiga sama sisi. Latihan ini boleh dikerjakan di rumah atau di sekolah.",
+      tambah(0, judul("Latihan: segitiga sama kaki")),
       tambah("menemukan", ...kartu("s1", 30, 34, 240, 44, W.langit, ["menemukan sendiri keliling", "segitiga sama kaki"], 8.8)),
       tambah("rumah", emo("rh", 90, 130, "🏠", 30), teks("rt", 90, 156, "di rumah", 8.8, W.biru)),
       tambah("sekolah.", emo("sk", 210, 130, "🏫", 30), teks("st", 210, 156, "di sekolah", 8.8, W.biru)),
     ),
     k(
-      "Soal satu: apakah nama bangun datar berikut? Sisinya enam sentimeter, empat sentimeter, dan enam sentimeter. Kamu bisa bertanya, apakah ada sisi yang sama panjang?",
+      "Latihan satu: apakah nama bangun datar berikut? Sisinya enam sentimeter, empat sentimeter, dan enam sentimeter. Kamu bisa bertanya, apakah ada sisi yang sama panjang?",
       bersih(0),
-      tambah(0, judul("Soal 1: nama bangun datar")),
-      tambah("Soal", poligon("tk", 40, 40, T7, W.krem, W.biru, { tebal: 2.2 }), ...kartu("n1", 160, 52, 124, 40, W.langit, ["apakah nama", "bangun datar ini?"], 8.6)),
+      tambah(0, judul("Latihan 1: nama bangun datar")),
+      tambah("Latihan", poligon("tk", 40, 40, T7, W.krem, W.biru, { tebal: 2.2 }), ...kartu("n1", 160, 52, 124, 40, W.langit, ["apakah nama", "bangun datar ini?"], 8.6)),
       tambah(8, ...labelSisi("tk", 40, 40, T7, ["", "", "6 cm"], 8.6, W.merah, 15)),
       tambah("empat", ...labelSisi("tk", 40, 40, T7, ["4 cm", "", ""], 8.6, W.merah, 15)),
       tambah(13, ...labelSisi("tk", 40, 40, T7, ["", "6 cm", ""], 8.6, W.merah, 15)),
@@ -277,18 +277,18 @@ export const ADEGAN_SAMA_KAKI: AdeganStory = {
       tambah("alas.", teks("al", 222, 140, "alas = 4 cm", 9.4, W.merah)),
     ),
     k(
-      "Panduan Guru menyiapkan dua gambar segitiga sama kaki, satu dengan posisi seperti di buku dan satu berdiri tegak.",
+      "Segitiga sama kaki bisa digambar dengan dua posisi, satu miring dan satu berdiri tegak. Ukurannya sama, hanya posisinya yang berbeda.",
       bersih(0),
       tambah(0, judul("Dua posisi segitiga sama kaki")),
-      tambah("posisi", poligon("m1", 40, 56, T7M, W.krem, W.biru, { tebal: 2 }), ...tandaSama("m1", 40, 56, T7M, [1, 2]), teks("m1t", 80, 160, "seperti di buku", 8.6, W.biru)),
+      tambah("posisi", poligon("m1", 40, 56, T7M, W.krem, W.biru, { tebal: 2 }), ...tandaSama("m1", 40, 56, T7M, [1, 2]), teks("m1t", 80, 160, "posisi miring", 8.6, W.biru)),
       tambah("tegak.", poligon("m2", 200, 50, T7T, W.hijauMuda, W.biru, { tebal: 2 }), ...tandaSama("m2", 200, 50, T7T, [1, 2]), teks("m2t", 228, 160, "berdiri tegak", 8.6, W.biru)),
     ),
     k(
-      "Soal dua: bagaimana cara menghitung kelilingnya? Di buku ruang jawabannya masih kosong, jadi kita bisa menjawabnya sendiri dulu sebelum melihat cara berikutnya.",
+      "Latihan dua: bagaimana cara menghitung kelilingnya? Jawabannya belum ada, jadi coba temukan sendiri dulu sebelum melihat cara berikutnya.",
       bersih(0),
-      tambah(0, judul("Soal 2: menghitung keliling")),
-      tambah("Soal", teks("tq", 62, 118, "?", 60, W.merah), ...kartu("q2", 110, 42, 176, 44, W.langit, ["2. bagaimana cara", "menghitung kelilingnya?"], 8.8)),
-      tambah("kosong,", ...kartu("kj", 110, 104, 176, 54, W.pink, ["(ruang jawaban kosong)"], 8.6)),
+      tambah(0, judul("Latihan 2: menghitung keliling")),
+      tambah("Latihan", teks("tq", 62, 118, "?", 60, W.merah), ...kartu("q2", 110, 42, 176, 44, W.langit, ["2. bagaimana cara", "menghitung kelilingnya?"], 8.8)),
+      tambah("belum", ...kartu("kj", 110, 104, 176, 54, W.pink, ["ayo cari jawabannya", "sendiri dulu"], 8.6)),
       tambah("sendiri", emo("bf", 198, 184, "🤔", 20)),
     ),
   ],
@@ -297,8 +297,8 @@ export const ADEGAN_SAMA_KAKI: AdeganStory = {
 /* ------------------------------ 10. Dua cara menghitung keliling segitiga sama kaki (Panduan Guru hlm. 137) ------------------------------ */
 export const ADEGAN_CARA_SAMA_KAKI: AdeganStory = {
   id: "eks-c-cara",
-  judul: "Eksplorasi 4.2C: dua cara menghitung keliling sama kaki",
-  sumber: "Panduan Guru hlm. 136–137",
+  judul: "Dua cara menghitung keliling sama kaki",
+  sumber: "Materi: keliling sama kaki",
   latar: "#FDF4FF",
   kutipan: [
     "Cara 1",
@@ -364,12 +364,12 @@ export const ADEGAN_CARA_SAMA_KAKI: AdeganStory = {
       tambah("alas.", teks("ct", 150, 172, "2 × 6 + 4 = 16", 11, W.hijau)),
     ),
     k(
-      "Seperti pada segitiga sama sisi, guru memakai istilah panjang sisi karena variabel belum dikenal. Kalau peserta didik belum bisa mengubah penjumlahan menjadi perkalian, guru menjelaskan ulang kaidahnya.",
+      "Seperti pada segitiga sama sisi, kita memakai istilah panjang sisi karena huruf pengganti angka belum kita pakai. Kalau kamu belum bisa mengubah penjumlahan menjadi perkalian, ingat bahwa perkalian adalah penjumlahan berulang.",
       bersih(0),
-      tambah(0, judul("Catatan guru")),
-      tambah("istilah", ...kartu("g1", 30, 34, 240, 44, W.hijauMuda, ["istilah: panjang sisi", "(variabel belum dikenal)"], 8.8)),
+      tambah(0, judul("Pesan guru")),
+      tambah("istilah", ...kartu("g1", 30, 34, 240, 44, W.hijauMuda, ["istilah: panjang sisi", "huruf belum dipakai"], 8.8)),
       tambah("belum@2", ...kartu("g2", 30, 90, 240, 44, W.krem, ["belum bisa ubah penjumlahan", "menjadi perkalian"], 8.8)),
-      tambah("menjelaskan", ...kartu("g3", 30, 144, 240, 34, W.pink, ["guru jelaskan ulang kaidahnya"], 8.8)),
+      tambah("ingat", ...kartu("g3", 30, 144, 240, 34, W.pink, ["ingat: perkalian itu penjumlahan berulang"], 8.8)),
     ),
   ],
 };
@@ -380,8 +380,8 @@ const CONTOH = tabel("ct", 20, 30, [80, 100, 80], [["jenis", "sisi (cm)", "kelil
 
 export const ADEGAN_REFLEKSI: AdeganStory = {
   id: "refleksi-b",
-  judul: "Rangkuman dan Refleksi nomor 3, 4, dan 5",
-  sumber: "Buku Siswa hlm. 129; Panduan Guru hlm. 138",
+  judul: "Rangkuman dan pesan guru",
+  sumber: "Materi: rangkuman keliling segitiga",
   latar: "#F5F3FF",
   kutipan: [
     "Setelah mempelajari materi terkait keliling bangun datar, isilah tabel",
@@ -398,17 +398,17 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Mari rangkum Subbab B. Ada tiga jenis segitiga dan tiga cara menghitung keliling. Sembarang: jumlahkan tiga sisi. Sama sisi: tiga kali panjang sisi. Sama kaki: dua kali sisi yang sama, ditambah alas.",
-      tambah(0, judul("Rangkuman Subbab B")),
+      "Mari rangkum pelajaran kita. Ada tiga jenis segitiga dan tiga cara menghitung keliling. Sembarang: jumlahkan tiga sisi. Sama sisi: tiga kali panjang sisi. Sama kaki: dua kali sisi yang sama, ditambah alas.",
+      tambah(0, judul("Rangkuman keliling segitiga")),
       tambah("Mari", ...barisTabel(RINGKAS, "rg", 0)),
       tambah(13, ...barisTabel(RINGKAS, "rg", 1)),
       tambah(17, ...barisTabel(RINGKAS, "rg", 2)),
       tambah(23, ...barisTabel(RINGKAS, "rg", 3)),
     ),
     k(
-      "Contoh angka dari buku: sembarang tiga, lima, enam menjadi empat belas. Tujuh, empat, lima menjadi enam belas. Sama sisi lima menjadi lima belas, enam menjadi delapan belas. Sama kaki enam, enam, empat menjadi enam belas.",
+      "Contoh angka tadi, yaitu sembarang tiga, lima, enam menjadi empat belas. Tujuh, empat, lima menjadi enam belas. Sama sisi lima menjadi lima belas, enam menjadi delapan belas. Sama kaki enam, enam, empat menjadi enam belas.",
       bersih(0),
-      tambah(0, judul("Contoh dari buku")),
+      tambah(0, judul("Contoh angka tadi")),
       tambah(0, ...barisTabel(CONTOH, "ct", 0)),
       tambah(4, ...barisTabel(CONTOH, "ct", 1)),
       tambah(11, ...barisTabel(CONTOH, "ct", 2)),
@@ -417,26 +417,30 @@ export const ADEGAN_REFLEKSI: AdeganStory = {
       tambah(27, ...barisTabel(CONTOH, "ct", 5)),
     ),
     k(
-      "Sekarang Refleksi, nomor tiga sampai lima di tabel refleksi Buku Siswa. Nomor tiga: aku bisa menghitung keliling segitiga sembarang. Nomor empat: aku bisa menemukan cara menghitung keliling segitiga sama sisi.",
+      "Hati-hati, ada kesalahan yang sering terjadi. Pada segitiga sembarang, jangan langsung mengalikan tiga, sebab sisinya berbeda panjang. Jumlahkan saja ketiga sisinya satu per satu.",
       bersih(0),
-      tambah(0, judul("Refleksi nomor 3, 4, dan 5")),
-      tambah(11, ...kartu("f3", 20, 34, 260, 40, W.langit, ["3. Aku bisa menghitung keliling", "segitiga sembarang."], 8.8)),
-      tambah(19, ...kartu("f4", 20, 82, 260, 40, W.hijauMuda, ["4. Aku bisa menemukan cara menghitung", "keliling segitiga sama sisi."], 8.8)),
+      tambah(0, judul("Hati-hati", W.merah)),
+      tambah("Hati-hati", emo("hh", 38, 60, "⚠", 26)),
+      tambah("sembarang,", ...kartu("f3", 70, 38, 210, 44, W.merahMuda, ["sembarang: jangan", "langsung dikali tiga"], 8.8)),
+      tambah("Jumlahkan", ...kartu("f4", 20, 104, 260, 44, W.hijauMuda, ["jumlahkan ketiga sisinya", "3 + 5 + 6 = 14"], 8.8)),
     ),
     k(
-      "Nomor lima: aku bisa menemukan cara menghitung keliling segitiga sama kaki. Centang ya atau tidak sesuai pemahamanmu. Kalau belum yakin, ulangi mengukur sisinya dengan penggaris.",
-      tambah("Nomor", ...kartu("f5", 20, 130, 260, 40, W.pink, ["5. Aku bisa menemukan cara menghitung", "keliling segitiga sama kaki."], 8.8)),
-      tambah("Centang", ...kartu("ya", 40, 176, 70, 24, W.hijauMuda, ["Ya"], 9), ...kartu("td", 190, 176, 70, 24, W.merahMuda, ["Tidak"], 9)),
-      tambah("penggaris.", emo("rg", 122, 196, "📏", 18)),
+      "Sekarang Tantangan. Carilah benda di sekitarmu yang berbentuk segitiga, misalnya penggaris segitiga. Ukur ketiga sisinya, lalu hitung kelilingnya dengan cara yang paling cocok.",
+      bersih(0),
+      tambah(0, judul("Tantangan")),
+      tambah("Carilah", emo("tn1", 60, 84, "📐", 36)),
+      tambah("Ukur", emo("tn2", 150, 84, "📏", 36)),
+      tambah("hitung", ...kartu("tn3", 40, 120, 220, 36, W.krem, ["keliling = jumlah ketiga sisi"], 9)),
+      tambah("cocok.", teks("tn4", 150, 182, "pilih cara yang paling cocok", 8.8, W.hijau)),
     ),
     k(
-      "Selesai Subbab B. Kamu sudah menemukan keliling tiga jenis segitiga dengan mengukur, menjumlahkan, dan membuat rumus sendiri. Guru menutup dengan penguatan dan tanya jawab.",
+      "Renungan terakhir. Kamu sudah menemukan keliling tiga jenis segitiga dengan mengukur, menjumlahkan, dan membuat rumus sendiri. Sudahkah kamu yakin bisa menghitung ketiganya? Kalau belum, ulangi mengukur sisinya dengan penggaris.",
       bersih(0),
-      tambah(0, judul("Selesai Subbab B")),
-      tambah("Selesai", poligon("z1", 20, 70, titikSegitiga(6, 3, 5, 10), W.langit), poligon("z2", 118, 54, titikSegitiga(5, 5, 5, 10), W.hijauMuda), poligon("z3", 214, 42, titikSegitiga(4, 6, 6, 10), W.pink)),
+      tambah(0, judul("Renungan")),
+      tambah("Renungan", poligon("z1", 20, 70, titikSegitiga(6, 3, 5, 10), W.langit), poligon("z2", 118, 54, titikSegitiga(5, 5, 5, 10), W.hijauMuda), poligon("z3", 214, 42, titikSegitiga(4, 6, 6, 10), W.pink)),
       tambah("mengukur,", teks("y1", 50, 112, "14 cm", 10, W.merah), teks("y2", 142, 112, "15 cm", 10, W.merah), teks("y3", 234, 112, "16 cm", 10, W.merah)),
       tambah("menjumlahkan,", teks("w1", 50, 128, "sembarang", 8.6), teks("w2", 142, 128, "sama sisi", 8.6), teks("w3", 234, 128, "sama kaki", 8.6)),
-      tambah("penguatan", emo("pa", 150, 176, "🎉", 30)),
+      tambah("yakin", emo("pa", 150, 176, "🤔", 30)),
     ),
   ],
 };

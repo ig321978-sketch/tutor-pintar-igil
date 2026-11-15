@@ -245,6 +245,133 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Rute lari Asep di lapangan",
+          "ikon": "🏃",
+          "suara": "Ini peta tentang rute lari Asep mengelilingi lapangan. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-rute",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Rute yang mengelilingi tepi",
+            "petunjuk": "Memahami rute yang berjalan di tepian lalu kembali ke titik awal."
+          },
+          {
+            "id": "hal-jumlah",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Menjumlahkan panjang sisi",
+            "petunjuk": "Memahami bahwa panjang rute didapat dari panjang tiap sisi."
+          },
+          {
+            "id": "hal-arti",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Arti keliling bangun datar",
+            "petunjuk": "Memahami apa yang dimaksud dengan keliling."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-susuri",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Susuri tepi, kembali ke awal",
+            "petunjuk": "Langkah untuk mengenali rute yang mengelilingi."
+          },
+          {
+            "id": "cara-ukur",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Ukur sisi, lalu jumlahkan",
+            "petunjuk": "Langkah untuk mendapatkan panjang rute."
+          },
+          {
+            "id": "cara-kata",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Katakan dengan kata sendiri",
+            "petunjuk": "Langkah untuk memahami arti keliling."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-rute",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Mengenali rute keliling",
+            "petunjuk": "Kemampuan membedakan rute yang mengelilingi dari rute lain."
+          },
+          {
+            "id": "hasil-jumlah",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Keliling jumlah semua sisi",
+            "petunjuk": "Kemampuan menyebut bahwa keliling adalah jumlah panjang sisi."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Keliling lapangan dan dua bangun",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel keliling lapangan dan dua bangun datar. Pasang panjang sisi, hitungan, dan keliling untuk lapangan serta kedua bangun.",
+        "pojok": "Benda",
+        "kolom": [
+          "Sisi",
+          "Hitung",
+          "Keliling"
+        ],
+        "baris": [
+          {
+            "label": "Lapangan",
+            "sel": [
+              "30 m dan 20 m",
+              "30 + 20 + 30 + 20",
+              "100 m"
+            ]
+          },
+          {
+            "label": "Bangun 1",
+            "sel": [
+              "4 cm semua",
+              "4+4+4+4",
+              "16 cm"
+            ]
+          },
+          {
+            "label": "Bangun 2",
+            "sel": [
+              "4 cm dan 5 cm",
+              "4+5+5+5",
+              "19 cm"
+            ]
+          }
+        ]
       }
     },
     "B": {
@@ -479,6 +606,133 @@
                   "isi": "3 + 4 + 5 = 12"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Keliling Segitiga",
+          "ikon": "🔺",
+          "suara": "Ini peta masalah keliling segitiga. Kita ingin tahu berapa panjang jalur yang mengelilingi tepi segitiga, apa pun jenisnya. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-sembarang",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Segitiga sembarang",
+            "petunjuk": "Segitiga yang ketiga sisinya berbeda panjang."
+          },
+          {
+            "id": "hal-sama-sisi",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Segitiga sama sisi",
+            "petunjuk": "Segitiga yang ketiga sisinya sama panjang."
+          },
+          {
+            "id": "hal-sama-kaki",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Segitiga sama kaki",
+            "petunjuk": "Segitiga yang dua sisinya sama panjang."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-sembarang",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Jumlahkan ketiga sisinya",
+            "petunjuk": "Langkah untuk segitiga yang sisinya berbeda semua."
+          },
+          {
+            "id": "cara-sama-sisi",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Panjang sisi dikali tiga",
+            "petunjuk": "Langkah untuk segitiga yang ketiga sisinya sama."
+          },
+          {
+            "id": "cara-sama-kaki",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Kali dua, tambah alas",
+            "petunjuk": "Langkah untuk segitiga yang hanya dua sisinya sama."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-cara",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Menemukan cara hitungnya",
+            "petunjuk": "Kemampuan menemukan cara menghitung dengan mengukur dan menjumlahkan."
+          },
+          {
+            "id": "hasil-keliling",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu keliling tiap segitiga",
+            "petunjuk": "Kemampuan menjawab masalah di pusat peta."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Keliling tiga jenis segitiga",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel keliling tiga jenis segitiga. Pasang panjang sisi, cara menghitung, dan keliling untuk segitiga sisi beda, sama sisi, dan sama kaki.",
+        "pojok": "Segitiga",
+        "kolom": [
+          "Sisi",
+          "Cara",
+          "Keliling"
+        ],
+        "baris": [
+          {
+            "label": "Sisi beda",
+            "sel": [
+              "3, 5, 6 cm",
+              "jumlah sisi",
+              "14 cm"
+            ]
+          },
+          {
+            "label": "Sama sisi",
+            "sel": [
+              "6, 6, 6 cm",
+              "sisi kali tiga",
+              "18 cm"
+            ]
+          },
+          {
+            "label": "Sama kaki",
+            "sel": [
+              "6, 6, 4 cm",
+              "kali dua + alas",
+              "16 cm"
             ]
           }
         ]
@@ -720,6 +974,141 @@
                   "isi": "24 dan 32"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Pagar Kebun Segi Empat",
+          "ikon": "🌳",
+          "suara": "Ini peta tentang masalah pagar kebun, yaitu berapa panjang pagar yang mengelilingi kebun segi empat. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-pasang",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Dua pasang sisi sama",
+            "petunjuk": "Bangun yang sisi berhadapannya sama panjang, atau sisi bersebelahannya sama panjang."
+          },
+          {
+            "id": "hal-empat",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Empat sisi sama panjang",
+            "petunjuk": "Bangun yang keempat sisinya sama panjang."
+          },
+          {
+            "id": "hal-beda",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Sisi tidak sama panjang",
+            "petunjuk": "Bangun yang tidak punya sisi sama panjang."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-pasang",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Dua kali tiap pasang sisi",
+            "petunjuk": "Langkah untuk bangun yang punya dua pasang sisi sama panjang."
+          },
+          {
+            "id": "cara-empat",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Empat kali panjang sisi",
+            "petunjuk": "Langkah untuk bangun yang keempat sisinya sama panjang."
+          },
+          {
+            "id": "cara-beda",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Jumlahkan keempat sisinya",
+            "petunjuk": "Langkah untuk bangun yang sisinya berbeda semua: tidak ada pintasan."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-benar",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Keliling dihitung tepat",
+            "petunjuk": "Kemampuan di akhir: panjang pagar bisa dihitung dengan benar."
+          },
+          {
+            "id": "hasil-jelas",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa menjelaskan caranya",
+            "petunjuk": "Kemampuan di akhir: bisa menerangkan mengapa caranya begitu."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Keliling segi empat",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel keliling segi empat. Untuk tiap benda, pasang sisi-sisinya, hitungannya, dan kelilingnya.",
+        "pojok": "Benda",
+        "kolom": [
+          "Sisi",
+          "Hitungan",
+          "Keliling"
+        ],
+        "baris": [
+          {
+            "label": "Kebun",
+            "sel": [
+              "5, 3, 5, 3",
+              "10 + 6",
+              "16 cm"
+            ]
+          },
+          {
+            "label": "Ubin",
+            "sel": [
+              "5, 5, 5, 5",
+              "4 × 5",
+              "20 cm"
+            ]
+          },
+          {
+            "label": "Layangan",
+            "sel": [
+              "2, 4, 4, 2",
+              "4 + 8",
+              "12 cm"
+            ]
+          },
+          {
+            "label": "Papan",
+            "sel": [
+              "2, 5, 3, 4",
+              "2 + 5 + 3 + 4",
+              "14 cm"
             ]
           }
         ]
@@ -985,6 +1374,141 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Pagar Taman Segi Banyak",
+          "ikon": "🌼",
+          "suara": "Ini peta tentang masalah pagar taman berbentuk segi banyak, yaitu berapa panjang pagar yang mengelilingi taman itu. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-lima",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Segi lima beraturan",
+            "petunjuk": "Bangun yang punya lima sisi sama panjang."
+          },
+          {
+            "id": "hal-enam",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Segi enam beraturan",
+            "petunjuk": "Bangun yang punya enam sisi sama panjang."
+          },
+          {
+            "id": "hal-delapan",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Segi delapan beraturan",
+            "petunjuk": "Bangun yang punya delapan sisi sama panjang."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-lima",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Lima kali panjang sisi",
+            "petunjuk": "Langkah untuk bangun yang punya lima sisi sama panjang."
+          },
+          {
+            "id": "cara-enam",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Enam kali panjang sisi",
+            "petunjuk": "Langkah untuk bangun yang punya enam sisi sama panjang."
+          },
+          {
+            "id": "cara-delapan",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Delapan kali panjang sisi",
+            "petunjuk": "Langkah untuk bangun yang punya delapan sisi sama panjang."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-benar",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Keliling dihitung tepat",
+            "petunjuk": "Kemampuan di akhir: panjang pagar bisa dihitung dengan benar."
+          },
+          {
+            "id": "hasil-pola",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Menemukan pola banyak sisi",
+            "petunjuk": "Kemampuan di akhir: melihat bahwa banyak sisi menjadi pengali."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Keliling segi banyak",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel keliling segi banyak. Untuk tiap bangun, pasang banyak sisinya, hitungannya, dan kelilingnya.",
+        "pojok": "Bangun",
+        "kolom": [
+          "Sisi",
+          "Hitung",
+          "Keliling"
+        ],
+        "baris": [
+          {
+            "label": "Segi lima",
+            "sel": [
+              "5 sisi sama",
+              "5 × 3",
+              "15 cm"
+            ]
+          },
+          {
+            "label": "Segi enam",
+            "sel": [
+              "6 sisi sama",
+              "6 × 3",
+              "18 cm"
+            ]
+          },
+          {
+            "label": "Segi delapan",
+            "sel": [
+              "8 sisi sama",
+              "8 × 3",
+              "24 cm"
+            ]
+          },
+          {
+            "label": "Sisi beda",
+            "sel": [
+              "5 sisi beda",
+              "3+4+4+5+5",
+              "21 cm"
+            ]
+          }
+        ]
       }
     },
     "E": {
@@ -1202,6 +1726,141 @@
                   "isi": "36 m"
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Keliling Denah Rumah",
+          "ikon": "🏠",
+          "suara": "Ini peta tentang masalah keliling denah rumah, yaitu berapa panjang dinding terluar yang mengelilingi rumah. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-tepi",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Sisi tepi luar denah",
+            "petunjuk": "Bagian denah yang ikut dihitung: hanya dinding paling luar."
+          },
+          {
+            "id": "hal-hilang",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Sisi yang belum diketahui",
+            "petunjuk": "Ada sisi yang panjangnya belum tertulis dan harus dicari."
+          },
+          {
+            "id": "hal-bingkai",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Bingkai persegi besar",
+            "petunjuk": "Gagasan membungkus seluruh denah dengan satu persegi besar."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-tepi",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Jumlahkan sisi tepi saja",
+            "petunjuk": "Langkah untuk sisi tepi luar: sekat di dalam tidak ikut."
+          },
+          {
+            "id": "cara-hilang",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Kurangkan dari panjang lain",
+            "petunjuk": "Langkah untuk sisi yang belum diketahui: panjangnya dicari dari ukuran yang ada."
+          },
+          {
+            "id": "cara-bingkai",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Hitung keliling bingkainya",
+            "petunjuk": "Langkah untuk bingkai persegi besar: kelilingnya sudah mewakili denah."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-tepat",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Keliling denah tepat",
+            "petunjuk": "Kemampuan di akhir: panjang dinding terluar bisa dihitung dengan benar."
+          },
+          {
+            "id": "hasil-sama",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Dua cara, hasilnya sama",
+            "petunjuk": "Kemampuan di akhir: dua cara berbeda memberi hasil yang sama."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Keliling bangun gabungan",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel keliling bangun gabungan. Untuk tiap benda, pasang ukuran bingkainya, hitungannya, dan kelilingnya.",
+        "pojok": "Benda",
+        "kolom": [
+          "Bingkai",
+          "Hitungan",
+          "Keliling"
+        ],
+        "baris": [
+          {
+            "label": "Denah",
+            "sel": [
+              "12 × 12 m",
+              "4 × 12",
+              "48 m"
+            ]
+          },
+          {
+            "label": "Berlekuk",
+            "sel": [
+              "11 × 12 cm",
+              "2 × (11 + 12)",
+              "46 cm"
+            ]
+          },
+          {
+            "label": "Tangga",
+            "sel": [
+              "20 × 12 cm",
+              "2 × (20 + 12)",
+              "64 cm"
+            ]
+          },
+          {
+            "label": "Gedung",
+            "sel": [
+              "24 × 20 m",
+              "88 + 2 × 3",
+              "94 m"
             ]
           }
         ]

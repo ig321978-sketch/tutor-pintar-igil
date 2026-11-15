@@ -1,5 +1,5 @@
 import type { AdeganStory } from "./logika-story";
-import { W, bangunC, emo, judul, kartu, kotak, labelSisi, tabel, teks } from "./k5b4c-gambar";
+import { W, bangunC, emo, judul, kartu, labelSisi, sisiGaris, tabel, teks } from "./k5b4c-gambar";
 import type { Obj } from "./logika-story";
 import { bersih, k, sorotkan, tambah, ubah } from "./k5b4c-bantu";
 
@@ -9,8 +9,8 @@ export const KUNCI_KELILING: Record<string, number> = { pp: 16, jg: 16, ll: 12, 
 /* ------------------------------ 9. Eksplorasi 4.3E bagian trapesium (hlm. 121; Panduan Guru hlm. 151 sampai 153) ------------------------------ */
 export const ADEGAN_EKS_43E_TRAPESIUM: AdeganStory = {
   id: "eks-43e-trapesium",
-  judul: "Eksplorasi 4.3E: keliling trapesium",
-  sumber: "Buku Siswa hlm. 121; Panduan Guru hlm. 151–153",
+  judul: "Keliling trapesium",
+  sumber: "Materi: keliling trapesium",
   latar: "#EFF6FF",
   kutipan: [
     "Eksplorasi 4.3E",
@@ -31,8 +31,8 @@ export const ADEGAN_EKS_43E_TRAPESIUM: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi empat titik tiga E, Ayo Menemukan. Bangun pertama memiliki sisi dua, lima, tiga, dan empat sentimeter. Bangun apakah ini? Ukur sisinya dan periksa, adakah yang sama panjang?",
-      tambah(0, judul("Eksplorasi 4.3E")),
+      "Sekarang bangun yang sisinya berbeda-beda. Bangun pertama memiliki sisi dua, lima, tiga, dan empat sentimeter. Bangun apakah ini? Ukur sisinya dan periksa, adakah yang sama panjang?",
+      tambah(0, judul("Trapesium")),
       tambah("pertama", bangunC("tr", 100, 40, "tr", 21, W.langit), ...labelSisi("tr", 100, 40, "tr", 21, ["2 cm", "5 cm", "3 cm", "4 cm"], 9)),
       tambah("apakah", teks("nm", 150, 170, "bangun apa ini? trapesium", 10, W.ungu)),
     ),
@@ -56,12 +56,12 @@ export const ADEGAN_EKS_43E_TRAPESIUM: AdeganStory = {
       tambah("terlewat.", emo("h4", 150, 178, "👀", 22)),
     ),
     k(
-      "Satu catatan: bila empat sisi ini digambar dengan skala yang tepat, bangunnya tidak bisa menjadi trapesium sungguhan. Gambar di buku hanya skema, tetapi hitungan kelilingnya tetap benar.",
+      "Hati-hati dengan satuannya. Keliling adalah panjang jalur di tepi bangun, jadi ditulis dalam sentimeter, bukan sentimeter persegi. Hitungan kita tadi tetap empat belas sentimeter.",
       bersih(0),
-      tambah(0, judul("Catatan guru: gambar skema")),
-      tambah("catatan:", ...kartu("cg", 14, 36, 272, 52, W.krem, ["Sisi sejajar 2 dan 3 selisih 1,", "sisi miring 4 dan 5: 1 + 4 = 5"], 9.4)),
-      tambah("tidak", teks("cg2", 150, 118, "segitiganya rata, bukan trapesium nyata", 9.4, W.merah)),
-      tambah("hitungan", teks("cg3", 150, 148, "4 + 2 + 5 + 3 = 14 tetap benar", 11, W.hijau)),
+      tambah(0, judul("Hati-hati: satuan keliling")),
+      tambah("satuannya.", ...kartu("cg", 14, 36, 272, 52, W.krem, ["Keliling = panjang jalur di tepi", "satuannya cm"], 9.4)),
+      tambah("sentimeter", teks("cg2", 150, 118, "bukan cm² (itu satuan isi)", 9.4, W.merah)),
+      tambah("Hitungan", teks("cg3", 150, 148, "4 + 2 + 5 + 3 = 14 cm", 11, W.hijau)),
     ),
   ],
 };
@@ -69,8 +69,8 @@ export const ADEGAN_EKS_43E_TRAPESIUM: AdeganStory = {
 /* ------------------------------ 10. Eksplorasi 4.3E bagian segi empat sembarang dan kotak kesimpulan (hlm. 121; Panduan Guru hlm. 153 dan 165) ------------------------------ */
 export const ADEGAN_EKS_43E_SEMBARANG: AdeganStory = {
   id: "eks-43e-sembarang",
-  judul: "Eksplorasi 4.3E: keliling segi empat sembarang",
-  sumber: "Buku Siswa hlm. 121; Panduan Guru hlm. 165",
+  judul: "Keliling segi empat sembarang",
+  sumber: "Materi: keliling segi empat sembarang",
   latar: "#FFF1F2",
   kutipan: [
     "Pada trapesium ataupun segi empat sembarang,",
@@ -96,7 +96,7 @@ export const ADEGAN_EKS_43E_SEMBARANG: AdeganStory = {
       tambah("Bangun@2", teks("nm", 150, 180, "bangun apa ini? segi empat sembarang", 9.6, W.ungu)),
     ),
     k(
-      "Ini segi empat sembarang. Keempat sisinya tidak sama panjang, seperti kata anak di buku: keduanya tidak memiliki sisi yang sama panjang.",
+      "Ini segi empat sembarang. Keempat sisinya tidak sama panjang, sama seperti trapesium tadi: keduanya tidak memiliki sisi yang sama panjang.",
       bersih(0),
       tambah(0, judul("Tidak ada sisi yang sama")),
       tambah("sembarang.", bangunC("ss", 20, 44, "ss", 18, W.pink), ...labelSisi("ss", 20, 44, "ss", 18, ["5 cm", "4 cm", "2 cm", "3 cm"], 8.6)),
@@ -118,12 +118,12 @@ export const ADEGAN_EKS_43E_SEMBARANG: AdeganStory = {
       tambah("sisi@2", ...kartu("pn", 14, 104, 272, 34, W.krem, ["Keliling = sisi 1 + sisi 2 + sisi 3 + sisi 4"], 9.6)),
     ),
     k(
-      "Awas, di buku siswa kotak kesimpulan menulis keliling sama dengan empat kali panjang sisi. Itu keliru, karena sisinya tidak sama. Yang benar adalah menjumlahkan keempat sisi, seperti di buku panduan guru.",
+      "Hati-hati, kesalahan yang sering terjadi: menulis keliling sama dengan empat kali panjang sisi. Itu keliru, karena sisinya tidak sama. Yang benar adalah menjumlahkan keempat sisi.",
       bersih(0),
-      tambah(0, judul("Awas: kotak kesimpulan keliru")),
-      tambah("Awas,", ...kartu("kk1", 14, 38, 272, 44, W.merahMuda, ["Buku Siswa hlm. 121:", "Keliling = 4 × panjang sisi"], 9.4), emo("kx", 262, 96, "❌", 22)),
+      tambah(0, judul("Hati-hati: jangan dikali empat")),
+      tambah("Hati-hati,", ...kartu("kk1", 14, 38, 272, 44, W.merahMuda, ["Jangan begini:", "Keliling = 4 × panjang sisi"], 9.4), emo("kx", 262, 96, "❌", 22)),
       tambah("Itu", teks("kk2", 150, 108, "sisinya tidak sama, jadi tidak boleh dikali 4", 8.8, W.merah)),
-      tambah("benar", ...kartu("kk3", 14, 122, 272, 44, W.hijauMuda, ["Yang benar (Panduan Guru hlm. 165):", "Keliling = sisi 1 + sisi 2 + sisi 3 + sisi 4"], 9.2), emo("kv", 262, 186, "✅", 20)),
+      tambah("benar", ...kartu("kk3", 14, 122, 272, 44, W.hijauMuda, ["Yang benar:", "Keliling = sisi 1 + sisi 2 + sisi 3 + sisi 4"], 9.2), emo("kv", 262, 186, "✅", 20)),
     ),
   ],
 };
@@ -144,21 +144,10 @@ const barisTabel = (r0: number, r1: number): Obj[] => tabel("tb", 6, 30, [100, 1
   const r = Number(o.id.charAt(4));
   return r >= r0 && r < r1;
 });
-const REFLEKSI = [
-  "6. menemukan keliling persegi panjang",
-  "7. menemukan keliling jajargenjang",
-  "8. menemukan keliling layang-layang",
-  "9. menemukan keliling persegi",
-  "10. menemukan keliling belah ketupat",
-  "11. menemukan keliling trapesium",
-  "12. menemukan keliling segi empat sembarang",
-];
-const barisRefleksi = (i: number) => [kotak(`rf${i}-k`, 14, 36 + i * 22, 272, 18, i % 2 === 0 ? W.krem : W.langit, W.biru, { rx: 4, tebal: 1 }), teks(`rf${i}-t0`, 24, 49 + i * 22, REFLEKSI[i], 8.8, W.biru, { anchor: "start" })];
-
 export const ADEGAN_REFLEKSI_C: AdeganStory = {
   id: "ringkasan-refleksi",
-  judul: "Ringkasan rumus dan Refleksi nomor 6 sampai 12",
-  sumber: "Buku Siswa hlm. 129; Panduan Guru hlm. 153",
+  judul: "Rangkuman rumus dan pesan guru",
+  sumber: "Materi: rangkuman dan pesan guru",
   latar: "#F5F3FF",
   kutipan: [
     "Releksi",
@@ -175,43 +164,52 @@ export const ADEGAN_REFLEKSI_C: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Mari rangkum rumus subbab C dalam satu tabel. Persegi panjang, jajargenjang, dan layang-layang punya dua pasang sisi sama. Persegi dan belah ketupat punya empat sisi sama. Trapesium dan segi empat sembarang tidak punya.",
-      tambah(0, judul("Rangkuman rumus subbab C")),
+      "Mari rangkum rumus keliling segi empat dalam satu tabel. Persegi panjang, jajargenjang, dan layang-layang punya dua pasang sisi sama. Persegi dan belah ketupat punya empat sisi sama. Trapesium dan segi empat sembarang tidak punya.",
+      tambah(0, judul("Rangkuman rumus keliling")),
       tambah("Mari", ...barisTabel(0, 1)),
       tambah("Persegi", ...barisTabel(1, 4)),
       tambah("Persegi@2", ...barisTabel(4, 6)),
       tambah("Trapesium", ...barisTabel(6, 8)),
     ),
     k(
-      "Sekarang Refleksi, nomor enam sampai dua belas. Centang ya atau tidak sesuai pemahamanmu. Nomor enam: aku bisa menemukan cara menghitung keliling persegi panjang.",
+      "Hati-hati, kesalahan yang sering terjadi: memakai empat kali panjang sisi untuk semua segi empat. Pintasan itu hanya untuk persegi dan belah ketupat, yang keempat sisinya sama panjang.",
       bersih(0),
-      tambah(0, judul("Refleksi nomor 6 sampai 12")),
-      tambah("Sekarang", ...barisRefleksi(0)),
-      tambah("Nomor@2", emo("rv0", 270, 49, "✅", 12)),
+      tambah(0, judul("Hati-hati: pintasan empat kali")),
+      tambah("memakai", ...kartu("ht1", 14, 34, 272, 44, W.merahMuda, ["4 × panjang sisi untuk semua bangun", "ini keliru"], 9.4), emo("ht1e", 262, 100, "❌", 20)),
+      tambah("hanya", ...kartu("ht2", 14, 108, 272, 44, W.hijauMuda, ["hanya untuk persegi", "dan belah ketupat"], 9.4), emo("ht2e", 262, 174, "✅", 20)),
     ),
     k(
-      "Nomor tujuh: jajargenjang. Nomor delapan: layang-layang. Kalau belum yakin, ukur sisinya lagi dan tuliskan jumlahannya.",
-      tambah("tujuh:", ...barisRefleksi(1)),
-      tambah("delapan:", ...barisRefleksi(2)),
-      sorotkan("ukur", "rf1-t0", "rf2-t0"),
-    ),
-    k(
-      "Nomor sembilan: persegi. Nomor sepuluh: belah ketupat. Ingat, keduanya punya empat sisi yang sama panjang.",
-      tambah("sembilan:", ...barisRefleksi(3)),
-      tambah("sepuluh:", ...barisRefleksi(4)),
-      ubah("Ingat,", { id: "rf1-t0", sorot: false }, { id: "rf2-t0", sorot: false }, { id: "rf3-t0", sorot: true }, { id: "rf4-t0", sorot: true }),
-    ),
-    k(
-      "Nomor sebelas: trapesium. Nomor dua belas: segi empat sembarang. Untuk dua bangun ini, kuncinya menjumlahkan semua sisi.",
-      tambah("sebelas:", ...barisRefleksi(5)),
-      tambah("belas@2", ...barisRefleksi(6)),
-      ubah("kuncinya", { id: "rf3-t0", sorot: false }, { id: "rf4-t0", sorot: false }, { id: "rf5-t0", sorot: true }, { id: "rf6-t0", sorot: true }),
-    ),
-    k(
-      "Itu seluruh isi subbab C menurut buku. Kuncinya satu: lihat dulu adakah sisi yang sama panjang, lalu jumlahkan, dan bila bisa ubah menjadi perkalian. Jangan lupa satuan sentimeter.",
+      "Kesalahan lain: ada sisi yang terlewat saat menjumlahkan, atau lupa menulis satuan sentimeter. Tandai tiap sisi yang sudah kamu jumlahkan, lalu periksa lagi sebelum menulis jawaban.",
       bersih(0),
-      tambah(0, judul("Kunci subbab C")),
-      tambah("Kuncinya", ...kartu("kc1", 20, 36, 260, 30, W.hijauMuda, ["1. ada sisi yang sama panjang?"], 9.6)),
+      tambah(0, judul("Hati-hati: sisi terlewat")),
+      tambah("terlewat", bangunC("hh", 104, 38, "tr", 16, W.langit), sisiGaris("hh1", 104, 38, "tr", 16, 0, W.merah), sisiGaris("hh2", 104, 38, "tr", 16, 1, W.merah), sisiGaris("hh3", 104, 38, "tr", 16, 2, W.merah), teks("hht", 150, 128, "baru tiga sisi: jumlahnya kurang", 9.4, W.merah)),
+      tambah("satuan", teks("hhs", 150, 152, "jangan lupa satuan: cm", 10, W.coklat)),
+      tambah("Tandai", sisiGaris("hh4", 104, 38, "tr", 16, 3, W.hijau)),
+      ubah("Tandai", { id: "hht", isi: "semua sisi bertanda: lengkap", warna: W.hijau }),
+    ),
+    k(
+      "Tantangan: sebuah persegi panjang kelilingnya enam belas sentimeter, dan panjangnya lima sentimeter. Berapa lebarnya? Petunjuknya, separuh keliling adalah panjang ditambah lebar. Coba cari dulu sendiri sebelum lanjut.",
+      bersih(0),
+      tambah(0, judul("Tantangan")),
+      tambah("kelilingnya", teks("tc1", 214, 66, "keliling 16 cm", 11, W.biru)),
+      tambah("panjangnya", bangunC("tc", 22, 54, "pp", 12, W.langit), ...labelSisi("tc", 22, 54, "pp", 12, ["5 cm", "l", null, null], 9)),
+      tambah("Berapa", teks("tc2", 214, 104, "lebarnya = ?", 12, W.merah)),
+      tambah("Petunjuknya,", teks("tc4", 150, 148, "separuh keliling = p + l", 10, W.ungu)),
+      tambah("Coba", emo("tc3", 150, 182, "🤔", 24)),
+    ),
+    k(
+      "Renungan: bangun mana yang paling mudah kamu hitung kelilingnya, dan bangun mana yang masih membingungkan? Ceritakan alasanmu kepada temanmu.",
+      bersih(0),
+      tambah(0, judul("Renungan")),
+      tambah("paling", ...kartu("rn1", 14, 34, 272, 40, W.hijauMuda, ["Bangun mana yang paling mudah?"], 10)),
+      tambah("masih", ...kartu("rn2", 14, 88, 272, 40, W.krem, ["Bangun mana yang masih membingungkan?"], 10)),
+      tambah("Ceritakan", emo("rn3", 150, 170, "🗣", 30)),
+    ),
+    k(
+      "Itu rangkuman keliling segi empat. Ingat tiga langkah: lihat dulu adakah sisi yang sama panjang, lalu jumlahkan, dan bila bisa ubah menjadi perkalian. Jangan lupa satuan sentimeter.",
+      bersih(0),
+      tambah(0, judul("Tiga langkah")),
+      tambah("lihat", ...kartu("kc1", 20, 36, 260, 30, W.hijauMuda, ["1. ada sisi yang sama panjang?"], 9.6)),
       tambah("jumlahkan,", ...kartu("kc2", 20, 76, 260, 30, W.langit, ["2. jumlahkan panjang semua sisi"], 9.6)),
       tambah("perkalian.", ...kartu("kc3", 20, 116, 260, 30, W.krem, ["3. bila bisa, ubah menjadi perkalian"], 9.6)),
       tambah("satuan", teks("kc4", 150, 174, "satuan keliling: cm", 11, W.merah)),

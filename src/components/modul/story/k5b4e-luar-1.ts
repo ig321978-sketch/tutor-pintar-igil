@@ -20,7 +20,7 @@ const bingkai = (id: string, ox: number, oy: number, s: number, x1: number, y1: 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk keliling bangun gabungan",
-  sumber: "Metode luar: pembuka; contoh Buku Siswa hlm. 125–130",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -48,12 +48,12 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("kembali", teks("ps", PX, 100, "satu putaran", 11, W.merah), teks("ps2", PX, 116, "penuh", 11, W.merah), emo("ps3", PX, 150, "🔄", 28)),
     ),
     k(
-      "Angkanya dari buku: denah rumah yang dindingnya mengelilingi bingkai dua belas kali dua belas, soal Uji Kompetensi, dan soal pengayaan gedung sekolah.",
+      "Contohnya memakai angka yang sama: denah rumah dengan bingkai dua belas kali dua belas, soal Uji empat dan Uji lima, dan soal Tantangan gedung sekolah.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka yang kita pakai")),
       tambah("denah", ...kartu("a1", 20, 36, 260, 34, W.langit, ["denah rumah, bingkai 12 m × 12 m"], 9.4)),
-      tambah("Uji", ...kartu("a2", 20, 82, 260, 34, W.hijauMuda, ["Uji Kompetensi nomor 4 dan 5"], 9.4)),
-      tambah("pengayaan", ...kartu("a3", 20, 128, 260, 34, W.krem, ["gedung sekolah 24 m × 20 m"], 9.4)),
+      tambah("Uji", ...kartu("a2", 20, 82, 260, 34, W.hijauMuda, ["Uji 4 dan Uji 5"], 9.4)),
+      tambah("Tantangan", ...kartu("a3", 20, 128, 260, 34, W.krem, ["gedung sekolah 24 m × 20 m"], 9.4)),
     ),
   ],
 };
@@ -99,8 +99,8 @@ export const ADEGAN_LUAR_OPO: AdeganStory = {
 /* ------------------------------ 3. Outer Path Only: penerapan pada denah dan soal nomor 4 ------------------------------ */
 export const ADEGAN_LUAR_OPO_TERAPAN: AdeganStory = {
   id: "luar-opo-terapan",
-  judul: "Outer Path Only pada denah rumah dan soal nomor 4",
-  sumber: "Metode luar: Outer Path Only; denah Buku Siswa hlm. 126; Uji Kompetensi hlm. 130",
+  judul: "Outer Path Only pada denah rumah dan Uji 4",
+  sumber: "Metode luar: Outer Path Only (terapan)",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -125,10 +125,10 @@ export const ADEGAN_LUAR_OPO_TERAPAN: AdeganStory = {
       tambah("dua", teks("ot8", PX, 168, "= 2 × 28 m sekat", 9.4, W.coklat)),
     ),
     k(
-      "Terapkan juga pada soal nomor empat: garis putus-putus di dalam bangun tidak ikut. Tepi luarnya dua belas, enam belas, dua belas, dua belas, dan dua puluh, jadi tujuh puluh dua sentimeter.",
+      "Terapkan juga pada Uji empat: garis putus-putus di dalam bangun tidak ikut. Tepi luarnya dua belas, enam belas, dua belas, dua belas, dan dua puluh, jadi tujuh puluh dua sentimeter.",
       bersih(0),
-      tambah(0, judul("Soal nomor 4: tepi luar")),
-      tambah("soal", bentuk("t4", 20, 96, 5.2, UK4, W.krem, { z: 1 })),
+      tambah(0, judul("Uji 4: tepi luar")),
+      tambah("Uji", bentuk("t4", 20, 96, 5.2, UK4, W.krem, { z: 1 })),
       tambah("putus-putus", garis("t4d", 20 + UK4_DALAM[0][0] * 5.2, 96, 16 * 5.2, 0, W.merah, 1.6, { putus: true, z: 6 }), emo("t4x", 70, 82, "❌", 16)),
       tambah("Tepi", baris("t4a", 70, "tepi luar saja:", 9.4, W.hijau)),
       tambah("jadi", baris("t4b", 94, "12 + 16 + 12 + 12 + 20 = 72", 8.8), baris("t4c", 120, "72 cm", 16, W.hijau)),
@@ -147,7 +147,7 @@ export const ADEGAN_LUAR_BR: AdeganStory = {
   latar: "#EFF6FF",
   ketukan: [
     k(
-      "Metode kedua, Bounding Rectangle, membungkus bangun gabungan dengan persegi panjang terkecil yang melingkupinya. Inilah ide Komang di buku.",
+      "Metode kedua, Bounding Rectangle, membungkus bangun gabungan dengan persegi panjang terkecil yang melingkupinya. Inilah ide Komang tadi.",
       tambah(0, judul("Bounding Rectangle")),
       tambah("Metode", bentuk("br", B1X, B1Y, B1S, MISKON1, W.jingga)),
       tambah("persegi", bingkai("brb", B1X, B1Y, B1S, 0, 0, 20, 12)),
@@ -187,8 +187,8 @@ const notchSel = (id: string, i: number): Obj => {
 };
 export const ADEGAN_LUAR_BR_TERAPAN: AdeganStory = {
   id: "luar-br-terapan",
-  judul: "Bounding Rectangle pada denah, soal nomor 5, dan soal pengayaan",
-  sumber: "Metode luar: Bounding Rectangle; Buku Siswa hlm. 126 dan 130",
+  judul: "Bounding Rectangle pada denah, Uji 5, dan Tantangan",
+  sumber: "Metode luar: Bounding Rectangle (terapan)",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -204,24 +204,24 @@ export const ADEGAN_LUAR_BR_TERAPAN: AdeganStory = {
       tambah("Hasilnya", emo("b2", PX, 124, "✅", 26), teks("b3", PX, 150, "sama dengan 14 sisi", 8.6, W.hijau)),
     ),
     k(
-      "Soal nomor lima: bingkainya sebelas kali dua belas. Dua kali dua belas ditambah dua kali sebelas sama dengan empat puluh enam sentimeter.",
+      "Uji lima: bingkainya sebelas kali dua belas. Dua kali dua belas ditambah dua kali sebelas sama dengan empat puluh enam sentimeter.",
       bersih(0),
-      tambah(0, judul("Soal nomor 5")),
-      tambah("Soal", bentuk("e1", 24, 40, 11, UK5, W.hijauMuda), bingkai("e1b", 24, 40, 11, 0, 0, 11, 12)),
+      tambah(0, judul("Uji 5")),
+      tambah("Uji", bentuk("e1", 24, 40, 11, UK5, W.hijauMuda), bingkai("e1b", 24, 40, 11, 0, 0, 11, 12)),
       tambah("sebelas", baris("e2", 90, "11 × 12", 11)),
       tambah("Dua", baris("e3", 116, "(2 × 12) + (2 × 11) = 46", 9)),
       tambah("empat", baris("e4", 140, "46 cm", 16, W.hijau)),
     ),
     k(
-      "Soal pengayaan: bingkai dua puluh empat kali dua puluh memberi delapan puluh delapan meter. Tetapi gedung punya bagian menjorok, yaitu kaki tiga meter, jadi bingkai saja belum cukup.",
+      "Soal Tantangan: bingkai dua puluh empat kali dua puluh memberi delapan puluh delapan meter. Tetapi gedung punya bagian menjorok, yaitu kaki tiga meter, jadi bingkai saja belum cukup.",
       bersih(0),
-      tambah(0, judul("Pengayaan: gedung sekolah")),
-      tambah("pengayaan", bentuk("p1", 14, 44, 6, PENGAYAAN, W.langit), bingkai("p1b", 14, 44, 6, 0, 0, 24, 20)),
+      tambah(0, judul("Tantangan: gedung sekolah")),
+      tambah("Tantangan", bentuk("p1", 14, 44, 6, PENGAYAAN, W.langit), bingkai("p1b", 14, 44, 6, 0, 0, 24, 20)),
       tambah("memberi", baris("p2", 66, "2 × (24 + 20) = 88", 9.6)),
       tambah("menjorok,", jalur("p3", 14 + 12 * 6, 44 + 17 * 6, "M0 0 L18 0 L18 18 L0 18 Z", W.merahMuda, W.merah, { tebal: 1.6, z: 6, op: 0.85 }), baris("p4", 90, "kaki menjorok: 3 m", 9.4, W.merah)),
     ),
     k(
-      "Tambahkan dua kali tiga untuk bagian yang menjorok. Delapan puluh delapan ditambah enam sama dengan sembilan puluh empat meter, sama dengan kunci buku.",
+      "Tambahkan dua kali tiga untuk bagian yang menjorok. Delapan puluh delapan ditambah enam sama dengan sembilan puluh empat meter, sama dengan hitungan kita tadi.",
       tambah("Tambahkan", baris("p5", 116, "88 + 2 × 3 = 94", 11)),
       tambah("sembilan", baris("p6", 140, "94 m", 18, W.hijau)),
     ),
