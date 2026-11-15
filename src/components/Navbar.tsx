@@ -52,7 +52,7 @@ export default function Navbar() {
           <span className="shrink-0 text-xl leading-none text-[#F0AB00]" aria-hidden="true">🎓</span>
           <span className="flex min-w-0 flex-col items-start">
             <span className="text-xl font-extrabold leading-none tracking-tight">$IGIL</span>
-            <span className="text-[11px] font-bold leading-tight text-[#F0AB00] sm:text-xs">
+            <span className="text-[11px] font-bold leading-tight text-[#1C01A5] sm:text-xs">
               Interactive Guided Independent Learning
             </span>
           </span>
