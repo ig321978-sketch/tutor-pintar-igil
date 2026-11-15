@@ -6,8 +6,8 @@ import { bersih, hapus, k, tambah, ubah } from "./k5b3b-bantu";
 // Urutan rasa di buku: cokelat, tiramisu, keju, teh hijau, oreo, karamel, nanas, stroberi. Komang menerima karamel dan stroberi, Lukas menerima nanas.
 export const ADEGAN_MARTABAK: AdeganStory = {
   id: "eks-a-martabak",
-  judul: "Eksplorasi 3.2A: martabak delapan rasa",
-  sumber: "Buku Siswa hlm. 76–78",
+  judul: "Martabak delapan rasa",
+  sumber: "Materi: martabak delapan rasa",
   latar: "#FFF7ED",
   kutipan: [
     "Eksplorasi 3.2A",
@@ -24,20 +24,20 @@ export const ADEGAN_MARTABAK: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi tiga titik dua A. Nisa punya martabak delapan rasa yang sama besar: cokelat, tiramisu, keju, teh hijau, oreo, karamel, nanas, dan stroberi.",
-      tambah(0, judul("Eksplorasi 3.2A")),
+      "Kegiatan pertama, martabak. Nisa punya martabak delapan rasa yang sama besar: cokelat, tiramisu, keju, teh hijau, oreo, karamel, nanas, dan stroberi.",
+      tambah(0, judul("Martabak delapan rasa")),
       tambah("Nisa", ...lingkaran("mt", 105, 108, 56, 8, [])),
       tambah("delapan", teks("d8", 215, 90, "8 bagian", 13, W.merah), teks("d9", 215, 110, "sama besar", 10, W.hitam)),
       tambah("cokelat,", emo("mk", 215, 150, "🥞", 26)),
     ),
     k(
-      "Nisa memberi Komang dua bagian, yaitu rasa karamel dan stroberi. Nisa memberi Lukas satu bagian, yaitu rasa nanas. Kalimat terakhir di buku menulis Nia, padahal maksudnya Nisa.",
+      "Nisa memberi Komang dua bagian, yaitu rasa karamel dan stroberi. Nisa memberi Lukas satu bagian, yaitu rasa nanas. Perhatikan warna tiap bagian pada gambar martabak.",
       hapus(0, "d8", "d9", "mk"),
       ubah("Komang", { id: "mt-5", warna: W.merahPita }, { id: "mt-7", warna: W.merahPita }),
       tambah("Komang", teks("kk", 215, 90, "Komang: 2", 11, W.merah), teks("kk2", 215, 104, "karamel, stroberi", 8.6, W.hitam)),
       ubah("Lukas", { id: "mt-6", warna: W.jingga }),
       tambah("Lukas", teks("ll", 215, 128, "Lukas: 1", 11, W.coklat), teks("ll2", 215, 142, "nanas", 8.6, W.hitam)),
-      ubah("Nia,", { id: "kk", warna: W.merah }),
+      ubah("Perhatikan", { id: "kk", warna: W.merah }),
     ),
     k(
       "Pertanyaannya, berapa jumlah bagian yang Nisa berikan kepada teman-temannya? Lukas mendapat satu bagian dari delapan bagian martabak, ditulis satu per delapan.",
@@ -57,7 +57,7 @@ export const ADEGAN_MARTABAK: AdeganStory = {
       tambah("sehingga", teks("k3", 200, 140, "1/8 + 2/8 = 3/8", 12, W.hijau)),
     ),
     k(
-      "Buku mengajak kita menunjukkan hal itu dengan arsiran. Martabak Lukas terarsir satu irisan, martabak Komang dua irisan, dan martabak keduanya tiga irisan.",
+      "Sekarang kita tunjukkan hal itu dengan arsiran. Martabak Lukas terarsir satu irisan, martabak Komang dua irisan, dan martabak keduanya tiga irisan.",
       bersih(0),
       tambah(0, judul("Arsiran: satu tambah dua")),
       tambah("Lukas", ...lingkaran("ma", 45, 100, 36, 8, [[0, 1, W.jingga]]), teks("ta", 45, 150, "1/8", 12, W.hitam)),
@@ -73,8 +73,8 @@ const YOH = W.pink;
 
 export const ADEGAN_PENGHAPUS: AdeganStory = {
   id: "eks-b-penghapus",
-  judul: "Eksplorasi 3.2B: sepuluh penghapus dan kesimpulan",
-  sumber: "Buku Siswa hlm. 78–80",
+  judul: "Sepuluh penghapus dan kesimpulan",
+  sumber: "Materi: sepuluh penghapus",
   latar: "#F5F3FF",
   kutipan: [
     "Eksplorasi 3.2B",
@@ -91,8 +91,8 @@ export const ADEGAN_PENGHAPUS: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi tiga titik dua B. Lukas punya sepuluh penghapus. Karena merasa punya banyak, ia memberikan dua buah kepada Asep dan tiga buah kepada Yohana.",
-      tambah(0, judul("Eksplorasi 3.2B")),
+      "Kegiatan kedua, penghapus. Lukas punya sepuluh penghapus. Karena merasa punya banyak, ia memberikan dua buah kepada Asep dan tiga buah kepada Yohana.",
+      tambah(0, judul("Sepuluh penghapus")),
       tambah("sepuluh", ...penghapus("ph", 66, 54, [])),
       tambah("sepuluh", teks("t10", 150, 112, "10 penghapus", 11, W.hitam)),
       tambah("Asep", ...penghapus("ph", 66, 54, [[0, 2, ASEP]])),
@@ -117,7 +117,7 @@ export const ADEGAN_PENGHAPUS: AdeganStory = {
       tambah("ditulis", teks("j2", 150, 142, "2/10 + 3/10 = 5/10", 17, W.hijau)),
     ),
     k(
-      "Buku meminta kita mengarsir model: penghapus Asep, penghapus Yohana, lalu penghapus Asep dan Yohana. Dua terarsir, ditambah tiga terarsir, sama dengan lima terarsir.",
+      "Sekarang kita arsir modelnya: penghapus Asep, penghapus Yohana, lalu penghapus Asep dan Yohana. Dua terarsir, ditambah tiga terarsir, sama dengan lima terarsir.",
       bersih(0),
       tambah(0, judul("Arsiran model penghapus")),
       tambah("Asep,", ...penghapus("ma", 12, 62, [[0, 2, ASEP]], 9, 7, 12), teks("ma-t", 42, 106, "2/10", 11, W.hitam)),
@@ -125,9 +125,9 @@ export const ADEGAN_PENGHAPUS: AdeganStory = {
       tambah("lima", teks("ms", 178, 82, "=", 14, W.merah), ...penghapus("mc", 196, 62, [[0, 2, ASEP], [2, 5, YOH]], 9, 7, 12), teks("mc-t", 226, 106, "5/10", 11, W.hitam)),
     ),
     k(
-      "Ayo Menyimpulkan. Jika ada dua pecahan berpenyebut sama, maka dapat dijumlahkan dengan cara menjumlahkan pembilangnya, sedangkan penyebutnya tetap. Itulah isian titik-titik di buku.",
+      "Mari menyimpulkan. Jika ada dua pecahan berpenyebut sama, maka dapat dijumlahkan dengan cara menjumlahkan pembilangnya, sedangkan penyebutnya tetap. Itulah kesimpulan kita.",
       bersih(0),
-      tambah(0, judul("Ayo Menyimpulkan")),
+      tambah(0, judul("Menyimpulkan")),
       tambah("menjumlahkan", ...kartu("s1", 22, 46, 256, 40, W.hijauMuda, ["jumlahkan pembilangnya"], 10.5)),
       tambah("penyebutnya", ...kartu("s2", 22, 98, 256, 40, W.krem, ["penyebutnya tetap"], 10.5)),
       tambah("Itulah", teks("s3", 150, 168, "2/10 + 3/10 = 5/10", 13, W.merah)),
@@ -138,8 +138,8 @@ export const ADEGAN_PENGHAPUS: AdeganStory = {
 /* ------------------------------ 6. Eksplorasi 3.2C: pita Yohana, Cara Lukas (Buku Siswa hlm. 80 dan 81) ------------------------------ */
 export const ADEGAN_PITA_LUKAS: AdeganStory = {
   id: "eks-c-lukas",
-  judul: "Eksplorasi 3.2C: Cara Lukas",
-  sumber: "Buku Siswa hlm. 80–81",
+  judul: "Masalah Yohana: Cara Lukas",
+  sumber: "Materi: pita Yohana, Cara Lukas",
   latar: "#F0FDF4",
   kutipan: [
     "Eksplorasi 3.2C",
@@ -155,7 +155,7 @@ export const ADEGAN_PITA_LUKAS: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi tiga titik dua C, Masalah Yohana. Yohana punya pita merah sepanjang dua satu per lima meter, dan pita hijau sepanjang tiga satu per lima meter. Kalau kedua pita digabungkan, berapa panjangnya?",
+      "Kegiatan ketiga, Masalah Yohana. Yohana punya pita merah sepanjang dua satu per lima meter, dan pita hijau sepanjang tiga satu per lima meter. Kalau kedua pita digabungkan, berapa panjangnya?",
       tambah(0, judul("Masalah Yohana")),
       tambah("merah", ...kartu("pm", 20, 44, 120, 40, W.merahPita, ["pita merah", "2 1/5 m"], 10)),
       tambah("hijau", ...kartu("ph", 160, 44, 120, 40, W.hijauPita, ["pita hijau", "3 1/5 m"], 10)),
@@ -205,7 +205,7 @@ const PITA_W = 110;
 export const ADEGAN_PITA_KOMANG: AdeganStory = {
   id: "eks-c-komang",
   judul: "Cara Komang dan model pita",
-  sumber: "Buku Siswa hlm. 82–84",
+  sumber: "Materi: pita Yohana, Cara Komang",
   latar: "#ECFDF5",
   kutipan: [
     "Cara Komang",
@@ -246,9 +246,9 @@ export const ADEGAN_PITA_KOMANG: AdeganStory = {
       tambah("sama", emo("g3", 150, 170, "✅", 24)),
     ),
     k(
-      "Ayo Menyimak, model masalah Yohana. Pita merah dua satu per lima: dua pita penuh dan satu bagian dari lima. Pita hijau tiga satu per lima: tiga pita penuh dan satu bagian dari lima.",
+      "Sekarang simak model masalah Yohana. Pita merah dua satu per lima: dua pita penuh dan satu bagian dari lima. Pita hijau tiga satu per lima: tiga pita penuh dan satu bagian dari lima.",
       bersih(0),
-      tambah(0, judul("Ayo Menyimak: model pita")),
+      tambah(0, judul("Menyimak: model pita")),
       tambah("merah", teks("m0", PITA_X + PITA_W / 2, 40, "pita merah 2 1/5", 9.4, W.merah), ...batang("m1", PITA_X, 46, PITA_W, 12, 1, [[0, 1, W.merahPita]]), ...batang("m2", PITA_X, 62, PITA_W, 12, 1, [[0, 1, W.merahPita]]), ...batang("m3", PITA_X, 78, PITA_W, 12, 5, [[0, 1, W.merahPita]])),
       tambah("hijau", teks("h0", 158 + PITA_W / 2, 40, "pita hijau 3 1/5", 9.4, W.hijau), ...batang("h1", 158, 46, PITA_W, 12, 1, [[0, 1, W.hijauPita]]), ...batang("h2", 158, 62, PITA_W, 12, 1, [[0, 1, W.hijauPita]]), ...batang("h3", 158, 78, PITA_W, 12, 1, [[0, 1, W.hijauPita]]), ...batang("h4", 158, 94, PITA_W, 12, 5, [[0, 1, W.hijauPita]])),
       tambah("bagian", teks("m4", PITA_X + PITA_W / 2, 130, "2 penuh + 1/5 pita", 8.8, W.hitam), teks("h5", 158 + PITA_W / 2, 130, "3 penuh + 1/5 pita", 8.8, W.hitam)),

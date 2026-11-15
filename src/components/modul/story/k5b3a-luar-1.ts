@@ -11,11 +11,11 @@ export const G23 = { x: 30, satuan: 230, y: 100, awal: 2 };
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk membandingkan dan mengurutkan pecahan",
-  sumber: "Metode luar: pembuka; angka Buku Siswa hlm. 66–75",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
-      "Bagaimana kita membandingkan dan mengurutkan pecahan? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari buku.",
+      "Bagaimana kita membandingkan dan mengurutkan pecahan? Guru di berbagai negara punya cara berbeda. Dalam video ini kita lihat empat metode dari luar, memakai angka dari lompatan Yohana dan pita Nisa.",
       tambah(0, judul("Empat metode dari luar")),
       tambah("pecahan?", ...pai("pp", 62, 112, 32, 4, 1)),
       tambah("berbagai", emo("gl", 170, 104, "🌍", 50)),
@@ -40,9 +40,9 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("ukuran", ...kartu("ig", 50, 136, 200, 34, W.emas, ["pecahan sebanding"], 10)),
     ),
     k(
-      "Angkanya dari buku: lompatan Yohana dua dan tiga per empat, tiga dan satu per dua, serta tujuh per delapan meter, juga pita Nisa dua dan dua per lima, dua dan satu per empat, serta dua dan satu per dua meter.",
+      "Angkanya: lompatan Yohana dua dan tiga per empat, tiga dan satu per dua, serta tujuh per delapan meter, juga pita Nisa dua dan dua per lima, dua dan satu per empat, serta dua dan satu per dua meter.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka dari dua cerita")),
       tambah("Yohana", ...kartu("a1", 14, 38, 272, 50, W.hijauMuda, ["lompatan Yohana", "2 3/4 m, 3 1/2 m, 7/8 m"], 9.6)),
       tambah("Nisa", ...kartu("a2", 14, 104, 272, 50, W.langit, ["pita Nisa", "2 2/5 m, 2 1/4 m, 2 1/2 m"], 9.6)),
     ),
@@ -105,7 +105,7 @@ const titikPita = (indeks: number, bawah: number, warna: string) => {
 export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
   id: "luar-garis-terapan",
   judul: "Number Line Fractions pada pita Nisa",
-  sumber: "Metode luar: Number Line Fractions; pita Nisa Buku Siswa hlm. 75",
+  sumber: "Metode luar: Number Line Fractions",
   latar: "#F5F3FF",
   ketukan: [
     k(
@@ -181,7 +181,7 @@ const bar = (id: string, y: number, pembilang: number, warna: string) => kotak(i
 export const ADEGAN_LUAR_SENILAI_TERAPAN: AdeganStory = {
   id: "luar-senilai-terapan",
   judul: "Equivalent Fractions pada lompatan Yohana",
-  sumber: "Metode luar: Equivalent Fractions; lompatan Yohana Buku Siswa hlm. 71–73",
+  sumber: "Metode luar: Equivalent Fractions",
   latar: "#F0F9FF",
   ketukan: [
     k(

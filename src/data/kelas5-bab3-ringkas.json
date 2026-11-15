@@ -45,14 +45,62 @@
           }
         ],
         "kartu": [
-          { "id": "a-lompatan", "teks": "7/8, 11/4, 7/2 di garis", "ikon": "🦘", "cabang": "garis", "petunjuk": "Letak di garis itu soal garis bilangan. Coba cabang lain." },
-          { "id": "a-kanan", "teks": "Makin ke kanan, makin besar", "ikon": "➡️", "cabang": "garis", "petunjuk": "Arah di garis itu soal garis bilangan. Coba cabang lain." },
-          { "id": "a-sepertiga", "teks": "1/3 = 2/6", "ikon": "🟨", "cabang": "senilai", "petunjuk": "Dua tulisan yang sama besar itu soal pecahan senilai. Coba cabang lain." },
-          { "id": "a-setengah-senilai", "teks": "1/2 = 5/10", "ikon": "🟩", "cabang": "senilai", "petunjuk": "Penyebut yang diganti itu soal pecahan senilai. Coba cabang lain." },
-          { "id": "a-duatigaperempat", "teks": "2 3/4 = 11/4", "ikon": "2️⃣", "cabang": "campuran", "petunjuk": "Bulat dan pecahan sekaligus itu soal campuran. Coba cabang lain." },
-          { "id": "a-tigasetengah", "teks": "3 1/2 = 7/2", "ikon": "3️⃣", "cabang": "campuran", "petunjuk": "Bentuk bulat dan pecahan itu soal campuran. Coba cabang lain." },
-          { "id": "a-setengah-lima", "teks": "1/2 > 1/5", "ikon": "✅", "cabang": "tanda", "petunjuk": "Tanda yang dipilih itu soal tanda banding. Coba cabang lain." },
-          { "id": "a-tiga-delapan", "teks": "3/8 < 5/8", "ikon": "❎", "cabang": "tanda", "petunjuk": "Tanda yang dipilih itu soal tanda banding. Coba cabang lain." }
+          {
+            "id": "a-lompatan",
+            "teks": "7/8, 11/4, 7/2 di garis",
+            "ikon": "🦘",
+            "cabang": "garis",
+            "petunjuk": "Letak di garis itu soal garis bilangan. Coba cabang lain."
+          },
+          {
+            "id": "a-kanan",
+            "teks": "Makin ke kanan, makin besar",
+            "ikon": "➡️",
+            "cabang": "garis",
+            "petunjuk": "Arah di garis itu soal garis bilangan. Coba cabang lain."
+          },
+          {
+            "id": "a-sepertiga",
+            "teks": "1/3 = 2/6",
+            "ikon": "🟨",
+            "cabang": "senilai",
+            "petunjuk": "Dua tulisan yang sama besar itu soal pecahan senilai. Coba cabang lain."
+          },
+          {
+            "id": "a-setengah-senilai",
+            "teks": "1/2 = 5/10",
+            "ikon": "🟩",
+            "cabang": "senilai",
+            "petunjuk": "Penyebut yang diganti itu soal pecahan senilai. Coba cabang lain."
+          },
+          {
+            "id": "a-duatigaperempat",
+            "teks": "2 3/4 = 11/4",
+            "ikon": "2️⃣",
+            "cabang": "campuran",
+            "petunjuk": "Bulat dan pecahan sekaligus itu soal campuran. Coba cabang lain."
+          },
+          {
+            "id": "a-tigasetengah",
+            "teks": "3 1/2 = 7/2",
+            "ikon": "3️⃣",
+            "cabang": "campuran",
+            "petunjuk": "Bentuk bulat dan pecahan itu soal campuran. Coba cabang lain."
+          },
+          {
+            "id": "a-setengah-lima",
+            "teks": "1/2 > 1/5",
+            "ikon": "✅",
+            "cabang": "tanda",
+            "petunjuk": "Tanda yang dipilih itu soal tanda banding. Coba cabang lain."
+          },
+          {
+            "id": "a-tiga-delapan",
+            "teks": "3/8 < 5/8",
+            "ikon": "❎",
+            "cabang": "tanda",
+            "petunjuk": "Tanda yang dipilih itu soal tanda banding. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -72,10 +120,54 @@
                 "ikon": "📏",
                 "isi": "Satu bulat dibagi empat bagian.",
                 "suara": "Satu bulat dibagi empat bagian sama panjang. Titik pertama satu per empat, lalu dua per empat, tiga per empat, dan empat per empat.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Titik", "Pembilang"], "baris": [["pertama", 1], ["kedua", 2], ["ketiga", 3], ["keempat", 4]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Titik",
+                    "Pembilang"
+                  ],
+                  "baris": [
+                    [
+                      "pertama",
+                      1
+                    ],
+                    [
+                      "kedua",
+                      2
+                    ],
+                    [
+                      "ketiga",
+                      3
+                    ],
+                    [
+                      "keempat",
+                      4
+                    ]
+                  ]
+                }
               },
-              { "id": "kanan", "label": "Urutan", "ikon": "➡️", "isi": "Makin ke kanan, makin besar.", "suara": "Tujuh per delapan lebih kecil dari sebelas per empat. Sebelas per empat lebih kecil dari tujuh per dua.", "visual": { "jenis": "teks", "isi": "7/8 < 11/4 < 7/2" } },
-              { "id": "bulat", "label": "Bulat", "ikon": "1️⃣", "isi": "Empat bagian membentuk satu bulat.", "suara": "Empat per empat sama dengan satu bulat penuh.", "visual": { "jenis": "teks", "isi": "4/4 = 1" } }
+              {
+                "id": "kanan",
+                "label": "Urutan",
+                "ikon": "➡️",
+                "isi": "Makin ke kanan, makin besar.",
+                "suara": "Tujuh per delapan lebih kecil dari sebelas per empat. Sebelas per empat lebih kecil dari tujuh per dua.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7/8 < 11/4 < 7/2"
+                }
+              },
+              {
+                "id": "bulat",
+                "label": "Bulat",
+                "ikon": "1️⃣",
+                "isi": "Empat bagian membentuk satu bulat.",
+                "suara": "Empat per empat sama dengan satu bulat penuh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4/4 = 1"
+                }
+              }
             ]
           },
           {
@@ -85,8 +177,28 @@
             "ide": "Penyebut harus sama dulu.",
             "suara": "Lihat dua cara membandingkan pecahan.",
             "sisi": [
-              { "id": "sama", "nama": "Penyebut sama", "ikon": "🟨", "catatan": "Langsung bandingkan pembilangnya.", "suara": "Tiga per delapan dan lima per delapan punya penyebut sama. Bandingkan pembilangnya saja.", "visual": { "jenis": "teks", "isi": "3/8 < 5/8" } },
-              { "id": "beda", "nama": "Penyebut beda", "ikon": "🟩", "catatan": "Samakan penyebut dengan pecahan senilai.", "suara": "Satu per dua dan tiga per lima berpenyebut beda. Samakan menjadi lima per sepuluh dan enam per sepuluh.", "visual": { "jenis": "teks", "isi": "5/10 < 6/10" } }
+              {
+                "id": "sama",
+                "nama": "Penyebut sama",
+                "ikon": "🟨",
+                "catatan": "Langsung bandingkan pembilangnya.",
+                "suara": "Tiga per delapan dan lima per delapan punya penyebut sama. Bandingkan pembilangnya saja.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3/8 < 5/8"
+                }
+              },
+              {
+                "id": "beda",
+                "nama": "Penyebut beda",
+                "ikon": "🟩",
+                "catatan": "Samakan penyebut dengan pecahan senilai.",
+                "suara": "Satu per dua dan tiga per lima berpenyebut beda. Samakan menjadi lima per sepuluh dan enam per sepuluh.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5/10 < 6/10"
+                }
+              }
             ],
             "kesimpulan": "Samakan penyebut dulu, lalu bandingkan pembilang."
           },
@@ -97,9 +209,166 @@
             "ide": "Hitung semua bagiannya.",
             "suara": "Ada tiga langkah mengubah campuran. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "bulat", "label": "Bulat", "ikon": "2️⃣", "isi": "Dua bulat berisi delapan bagian.", "suara": "Tiap bulat dibagi empat bagian. Dua bulat berisi delapan bagian.", "visual": { "jenis": "teks", "isi": "2 × 4 = 8" } },
-              { "id": "pecahan", "label": "Pecahan", "ikon": "🧩", "isi": "Masih ada tiga bagian pecahan.", "suara": "Delapan bagian dari bulatnya, lalu tiga bagian pecahannya, jadi sebelas bagian.", "visual": { "jenis": "teks", "isi": "8 dan 3 bagian" } },
-              { "id": "hasil", "label": "Hasil", "ikon": "✅", "isi": "Penyebutnya tetap empat.", "suara": "Dua dan tiga per empat sama dengan sebelas per empat.", "visual": { "jenis": "teks", "isi": "2 3/4 = 11/4" } }
+              {
+                "id": "bulat",
+                "label": "Bulat",
+                "ikon": "2️⃣",
+                "isi": "Dua bulat berisi delapan bagian.",
+                "suara": "Tiap bulat dibagi empat bagian. Dua bulat berisi delapan bagian.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 × 4 = 8"
+                }
+              },
+              {
+                "id": "pecahan",
+                "label": "Pecahan",
+                "ikon": "🧩",
+                "isi": "Masih ada tiga bagian pecahan.",
+                "suara": "Delapan bagian dari bulatnya, lalu tiga bagian pecahannya, jadi sebelas bagian.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "8 dan 3 bagian"
+                }
+              },
+              {
+                "id": "hasil",
+                "label": "Hasil",
+                "ikon": "✅",
+                "isi": "Penyebutnya tetap empat.",
+                "suara": "Dua dan tiga per empat sama dengan sebelas per empat.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2 3/4 = 11/4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Urutan lompatan Yohana",
+          "ikon": "🦘",
+          "suara": "Ini peta tentang mengurutkan lompatan Yohana dengan membandingkan pecahan. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-garis",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Pecahan di garis bilangan",
+            "petunjuk": "Memahami letak pecahan pada garis, makin ke kanan makin besar."
+          },
+          {
+            "id": "hal-pembilang",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Membandingkan pembilang",
+            "petunjuk": "Memahami cara membandingkan pecahan yang penyebutnya sudah sama."
+          },
+          {
+            "id": "hal-bulat",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Membandingkan bagian bulat",
+            "petunjuk": "Memahami cara membandingkan pecahan campuran lewat bilangan bulatnya."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-titik",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Tandai titik, lihat arahnya",
+            "petunjuk": "Langkah untuk membandingkan dengan garis bilangan."
+          },
+          {
+            "id": "cara-samakan",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Samakan penyebut dulu",
+            "petunjuk": "Langkah sebelum membandingkan pembilang."
+          },
+          {
+            "id": "cara-bulat",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Lihat bulatnya, urutkan",
+            "petunjuk": "Langkah untuk membandingkan pecahan campuran."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-urut",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Urutan lompatan benar",
+            "petunjuk": "Kemampuan menyusun lompatan dari yang terjauh sampai terdekat."
+          },
+          {
+            "id": "hasil-sama",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tiga cara, hasil sama",
+            "petunjuk": "Kemampuan menyadari bahwa cara apa pun memberi urutan yang sama."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Pita Nisa dalam tiga bentuk",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel pita Nisa. Pasang panjang tiap pita dalam bentuk campuran, bentuk biasa, dan bentuk dengan penyebut yang sama.",
+        "pojok": "Pita",
+        "kolom": [
+          "Campuran",
+          "Biasa",
+          "Per 20"
+        ],
+        "baris": [
+          {
+            "label": "Pertama",
+            "sel": [
+              "2 2/5 m",
+              "12/5 m",
+              "48/20 m"
+            ]
+          },
+          {
+            "label": "Kedua",
+            "sel": [
+              "2 1/4 m",
+              "9/4 m",
+              "45/20 m"
+            ]
+          },
+          {
+            "label": "Ketiga",
+            "sel": [
+              "2 1/2 m",
+              "5/2 m",
+              "50/20 m"
             ]
           }
         ]
@@ -144,14 +413,62 @@
           }
         ],
         "kartu": [
-          { "id": "b-martabak", "teks": "1/8 + 2/8 = 3/8", "ikon": "🥞", "cabang": "sama", "petunjuk": "Penyebut yang tetap itu soal penyebut sama. Coba cabang lain." },
-          { "id": "b-penghapus", "teks": "2/10 + 3/10 = 5/10", "ikon": "🧽", "cabang": "sama", "petunjuk": "Hanya pembilang yang dijumlahkan itu soal penyebut sama. Coba cabang lain." },
-          { "id": "b-wingko", "teks": "1/2 + 1/3 = 5/6", "ikon": "🍰", "cabang": "beda", "petunjuk": "Penyebut yang berbeda itu soal penyebut beda. Coba cabang lain." },
-          { "id": "b-dua-belas", "teks": "1/4 + 1/6 = 5/12", "ikon": "🔢", "cabang": "beda", "petunjuk": "KPK dari empat dan enam itu soal penyebut beda. Coba cabang lain." },
-          { "id": "b-satu-batang", "teks": "Arsiran bertemu di satu batang", "ikon": "📏", "cabang": "arsir", "petunjuk": "Arsiran pada batang itu soal model arsir. Coba cabang lain." },
-          { "id": "b-sama-besar", "teks": "Bagian harus sama besar", "ikon": "🟦", "cabang": "arsir", "petunjuk": "Bagian yang sama besar itu soal model arsir. Coba cabang lain." },
-          { "id": "b-enam-sembilan", "teks": "6/9 = 2/3", "ikon": "🔻", "cabang": "hasil", "petunjuk": "Bentuk paling sederhana itu soal hasil. Coba cabang lain." },
-          { "id": "b-tujuh-lima", "teks": "7/5 = 1 2/5", "ikon": "🔁", "cabang": "hasil", "petunjuk": "Bentuk campuran itu soal hasil. Coba cabang lain." }
+          {
+            "id": "b-martabak",
+            "teks": "1/8 + 2/8 = 3/8",
+            "ikon": "🥞",
+            "cabang": "sama",
+            "petunjuk": "Penyebut yang tetap itu soal penyebut sama. Coba cabang lain."
+          },
+          {
+            "id": "b-penghapus",
+            "teks": "2/10 + 3/10 = 5/10",
+            "ikon": "🧽",
+            "cabang": "sama",
+            "petunjuk": "Hanya pembilang yang dijumlahkan itu soal penyebut sama. Coba cabang lain."
+          },
+          {
+            "id": "b-wingko",
+            "teks": "1/2 + 1/3 = 5/6",
+            "ikon": "🍰",
+            "cabang": "beda",
+            "petunjuk": "Penyebut yang berbeda itu soal penyebut beda. Coba cabang lain."
+          },
+          {
+            "id": "b-dua-belas",
+            "teks": "1/4 + 1/6 = 5/12",
+            "ikon": "🔢",
+            "cabang": "beda",
+            "petunjuk": "KPK dari empat dan enam itu soal penyebut beda. Coba cabang lain."
+          },
+          {
+            "id": "b-satu-batang",
+            "teks": "Arsiran bertemu di satu batang",
+            "ikon": "📏",
+            "cabang": "arsir",
+            "petunjuk": "Arsiran pada batang itu soal model arsir. Coba cabang lain."
+          },
+          {
+            "id": "b-sama-besar",
+            "teks": "Bagian harus sama besar",
+            "ikon": "🟦",
+            "cabang": "arsir",
+            "petunjuk": "Bagian yang sama besar itu soal model arsir. Coba cabang lain."
+          },
+          {
+            "id": "b-enam-sembilan",
+            "teks": "6/9 = 2/3",
+            "ikon": "🔻",
+            "cabang": "hasil",
+            "petunjuk": "Bentuk paling sederhana itu soal hasil. Coba cabang lain."
+          },
+          {
+            "id": "b-tujuh-lima",
+            "teks": "7/5 = 1 2/5",
+            "ikon": "🔁",
+            "cabang": "hasil",
+            "petunjuk": "Bentuk campuran itu soal hasil. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -171,10 +488,50 @@
                 "ikon": "🥞",
                 "isi": "Satu bagian dan dua bagian.",
                 "suara": "Lukas makan satu per delapan martabak, Komang dua per delapan. Bagian terarsirnya satu, dua, lalu tiga.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Orang", "Bagian"], "baris": [["Lukas", 1], ["Komang", 2], ["Bersama", 3]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Orang",
+                    "Bagian"
+                  ],
+                  "baris": [
+                    [
+                      "Lukas",
+                      1
+                    ],
+                    [
+                      "Komang",
+                      2
+                    ],
+                    [
+                      "Bersama",
+                      3
+                    ]
+                  ]
+                }
               },
-              { "id": "hasil", "label": "Hasil", "ikon": "✅", "isi": "Penyebut tetap delapan.", "suara": "Satu per delapan ditambah dua per delapan sama dengan tiga per delapan.", "visual": { "jenis": "teks", "isi": "1/8 + 2/8 = 3/8" } },
-              { "id": "salah", "label": "Jangan", "ikon": "🚫", "isi": "Penyebut tidak dijumlahkan.", "suara": "Penyebut tidak dijumlahkan. Tiga per enam belas adalah jawaban yang salah.", "visual": { "jenis": "teks", "isi": "3/16 salah" } }
+              {
+                "id": "hasil",
+                "label": "Hasil",
+                "ikon": "✅",
+                "isi": "Penyebut tetap delapan.",
+                "suara": "Satu per delapan ditambah dua per delapan sama dengan tiga per delapan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1/8 + 2/8 = 3/8"
+                }
+              },
+              {
+                "id": "salah",
+                "label": "Jangan",
+                "ikon": "🚫",
+                "isi": "Penyebut tidak dijumlahkan.",
+                "suara": "Penyebut tidak dijumlahkan. Tiga per enam belas adalah jawaban yang salah.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3/16 salah"
+                }
+              }
             ]
           },
           {
@@ -184,8 +541,28 @@
             "ide": "Penyebut harus sama dahulu.",
             "suara": "Lihat dua cara menjumlahkan pecahan.",
             "sisi": [
-              { "id": "sama", "nama": "Penyebut sama", "ikon": "🟨", "catatan": "Langsung jumlahkan pembilang.", "suara": "Dua per sepuluh dan tiga per sepuluh punya penyebut sama. Jumlahkan pembilangnya saja.", "visual": { "jenis": "teks", "isi": "2/10 + 3/10 = 5/10" } },
-              { "id": "beda", "nama": "Penyebut beda", "ikon": "🧩", "catatan": "Samakan dengan KPK, lalu jumlahkan.", "suara": "Satu per dua dan satu per tiga berpenyebut beda. Samakan menjadi tiga per enam dan dua per enam.", "visual": { "jenis": "teks", "isi": "3/6 + 2/6 = 5/6" } }
+              {
+                "id": "sama",
+                "nama": "Penyebut sama",
+                "ikon": "🟨",
+                "catatan": "Langsung jumlahkan pembilang.",
+                "suara": "Dua per sepuluh dan tiga per sepuluh punya penyebut sama. Jumlahkan pembilangnya saja.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2/10 + 3/10 = 5/10"
+                }
+              },
+              {
+                "id": "beda",
+                "nama": "Penyebut beda",
+                "ikon": "🧩",
+                "catatan": "Samakan dengan KPK, lalu jumlahkan.",
+                "suara": "Satu per dua dan satu per tiga berpenyebut beda. Samakan menjadi tiga per enam dan dua per enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3/6 + 2/6 = 5/6"
+                }
+              }
             ],
             "kesimpulan": "Samakan penyebut dengan KPK, lalu jumlahkan pembilang."
           },
@@ -196,9 +573,174 @@
             "ide": "Sederhanakan atau ubah ke campuran.",
             "suara": "Ada tiga hal tentang hasil penjumlahan. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "sederhana", "label": "Sederhana", "ikon": "✂️", "isi": "Bagi dengan bilangan yang sama.", "suara": "Enam per sembilan dibagi tiga pada pembilang dan penyebut menjadi dua per tiga.", "visual": { "jenis": "teks", "isi": "6/9 = 2/3" } },
-              { "id": "kpk", "label": "KPK", "ikon": "🔢", "isi": "KPK empat dan enam adalah dua belas.", "suara": "Kelipatan persekutuan terkecil dari empat dan enam adalah dua belas.", "visual": { "jenis": "teks", "isi": "4, 8, 12 dan 6, 12" } },
-              { "id": "campuran", "label": "Campuran", "ikon": "🔁", "isi": "Lebih dari satu bulat.", "suara": "Tujuh per lima berisi satu bulat penuh dan dua per lima lagi.", "visual": { "jenis": "teks", "isi": "7/5 = 1 2/5" } }
+              {
+                "id": "sederhana",
+                "label": "Sederhana",
+                "ikon": "✂️",
+                "isi": "Bagi dengan bilangan yang sama.",
+                "suara": "Enam per sembilan dibagi tiga pada pembilang dan penyebut menjadi dua per tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6/9 = 2/3"
+                }
+              },
+              {
+                "id": "kpk",
+                "label": "KPK",
+                "ikon": "🔢",
+                "isi": "KPK empat dan enam adalah dua belas.",
+                "suara": "Kelipatan persekutuan terkecil dari empat dan enam adalah dua belas.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4, 8, 12 dan 6, 12"
+                }
+              },
+              {
+                "id": "campuran",
+                "label": "Campuran",
+                "ikon": "🔁",
+                "isi": "Lebih dari satu bulat.",
+                "suara": "Tujuh per lima berisi satu bulat penuh dan dua per lima lagi.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "7/5 = 1 2/5"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Wingko Lukas dan Komang",
+          "ikon": "🍰",
+          "suara": "Ini peta masalah wingko Lukas dan Komang. Kita ingin tahu berapa bagian wingko kalau bagian milik keduanya digabung. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-sama",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Penyebut yang sama",
+            "petunjuk": "Pecahan yang potongannya sudah sama besar."
+          },
+          {
+            "id": "hal-beda",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Penyebut yang berbeda",
+            "petunjuk": "Pecahan yang potongannya belum sama besar."
+          },
+          {
+            "id": "hal-campuran",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Pecahan campuran",
+            "petunjuk": "Bilangan bulat yang digabung dengan pecahan."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-sama",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Jumlahkan pembilangnya",
+            "petunjuk": "Langkah untuk penyebut yang sama."
+          },
+          {
+            "id": "cara-beda",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Samakan dulu penyebutnya",
+            "petunjuk": "Langkah untuk penyebut yang berbeda."
+          },
+          {
+            "id": "cara-campuran",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Ubah atau pisahkan bulatnya",
+            "petunjuk": "Langkah untuk pecahan campuran."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-bisa",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa menggabungkan pecahan",
+            "petunjuk": "Kemampuan menjumlahkan dua pecahan dengan cara yang tepat."
+          },
+          {
+            "id": "hasil-wingko",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Tahu hasil wingko gabungan",
+            "petunjuk": "Kemampuan menjawab masalah di pusat peta."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Contoh menjumlahkan pecahan",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel contoh menjumlahkan pecahan. Pasang soal, cara, dan hasil untuk martabak, pita, kertas, dan wingko.",
+        "pojok": "Contoh",
+        "kolom": [
+          "Soal",
+          "Cara",
+          "Hasil"
+        ],
+        "baris": [
+          {
+            "label": "Martabak",
+            "sel": [
+              "1/8 + 2/8",
+              "jumlah pembilang",
+              "3/8"
+            ]
+          },
+          {
+            "label": "Pita",
+            "sel": [
+              "1/5 + 3 1/5",
+              "bulat dipisah",
+              "3 2/5 m"
+            ]
+          },
+          {
+            "label": "Kertas",
+            "sel": [
+              "1/3 + 4/6",
+              "senilai 2/6",
+              "1 kertas"
+            ]
+          },
+          {
+            "label": "Wingko",
+            "sel": [
+              "1/2 + 1/3",
+              "KPK = 6",
+              "5/6"
             ]
           }
         ]
@@ -243,14 +785,62 @@
           }
         ],
         "kartu": [
-          { "id": "c-lukas", "teks": "2/3 − 1/3 = 1/3", "ikon": "🎨", "cabang": "sama", "petunjuk": "Penyebut yang tetap itu soal penyebut sama. Coba cabang lain." },
-          { "id": "c-delapan", "teks": "6/8 − 2/8 = 4/8", "ikon": "🟨", "cabang": "sama", "petunjuk": "Hanya pembilang yang dikurangkan itu soal penyebut sama. Coba cabang lain." },
-          { "id": "c-yohana", "teks": "2/3 − 1/2 = 1/6", "ikon": "🖌️", "cabang": "beda", "petunjuk": "Penyebut yang berbeda itu soal penyebut beda. Coba cabang lain." },
-          { "id": "c-dua-belas", "teks": "3/4 − 1/6 = 7/12", "ikon": "🔢", "cabang": "beda", "petunjuk": "KPK dari empat dan enam itu soal penyebut beda. Coba cabang lain." },
-          { "id": "c-diambil", "teks": "Bagian diambil dari batang", "ikon": "✋", "cabang": "sisa", "petunjuk": "Bagian yang diambil itu soal model sisa. Coba cabang lain." },
-          { "id": "c-tertinggal", "teks": "Bagian yang tertinggal", "ikon": "🧱", "cabang": "sisa", "petunjuk": "Bagian yang tertinggal itu soal model sisa. Coba cabang lain." },
-          { "id": "c-tambah", "teks": "1/3 + 1/3 = 2/3", "ikon": "✅", "cabang": "periksa", "petunjuk": "Menambah sisa dengan yang diambil itu soal memeriksa. Coba cabang lain." },
-          { "id": "c-sederhana", "teks": "4/8 = 1/2", "ikon": "✂️", "cabang": "periksa", "petunjuk": "Merapikan hasil itu bagian dari memeriksa. Coba cabang lain." }
+          {
+            "id": "c-lukas",
+            "teks": "2/3 − 1/3 = 1/3",
+            "ikon": "🎨",
+            "cabang": "sama",
+            "petunjuk": "Penyebut yang tetap itu soal penyebut sama. Coba cabang lain."
+          },
+          {
+            "id": "c-delapan",
+            "teks": "6/8 − 2/8 = 4/8",
+            "ikon": "🟨",
+            "cabang": "sama",
+            "petunjuk": "Hanya pembilang yang dikurangkan itu soal penyebut sama. Coba cabang lain."
+          },
+          {
+            "id": "c-yohana",
+            "teks": "2/3 − 1/2 = 1/6",
+            "ikon": "🖌️",
+            "cabang": "beda",
+            "petunjuk": "Penyebut yang berbeda itu soal penyebut beda. Coba cabang lain."
+          },
+          {
+            "id": "c-dua-belas",
+            "teks": "3/4 − 1/6 = 7/12",
+            "ikon": "🔢",
+            "cabang": "beda",
+            "petunjuk": "KPK dari empat dan enam itu soal penyebut beda. Coba cabang lain."
+          },
+          {
+            "id": "c-diambil",
+            "teks": "Bagian diambil dari batang",
+            "ikon": "✋",
+            "cabang": "sisa",
+            "petunjuk": "Bagian yang diambil itu soal model sisa. Coba cabang lain."
+          },
+          {
+            "id": "c-tertinggal",
+            "teks": "Bagian yang tertinggal",
+            "ikon": "🧱",
+            "cabang": "sisa",
+            "petunjuk": "Bagian yang tertinggal itu soal model sisa. Coba cabang lain."
+          },
+          {
+            "id": "c-tambah",
+            "teks": "1/3 + 1/3 = 2/3",
+            "ikon": "✅",
+            "cabang": "periksa",
+            "petunjuk": "Menambah sisa dengan yang diambil itu soal memeriksa. Coba cabang lain."
+          },
+          {
+            "id": "c-sederhana",
+            "teks": "4/8 = 1/2",
+            "ikon": "✂️",
+            "cabang": "periksa",
+            "petunjuk": "Merapikan hasil itu bagian dari memeriksa. Coba cabang lain."
+          }
         ]
       },
       "infografis": {
@@ -270,10 +860,50 @@
                 "ikon": "🎨",
                 "isi": "Lukas harus dua bagian, sudah satu.",
                 "suara": "Lukas harus melukis dua per tiga kertas dan sudah melukis satu per tiga. Bagian yang masih harus dilukis tinggal satu.",
-                "visual": { "jenis": "tabel-menurun", "kepala": ["Lukas", "Bagian"], "baris": [["Harus", 2], ["Sudah", 1], ["Sisa", 1]] }
+                "visual": {
+                  "jenis": "tabel-menurun",
+                  "kepala": [
+                    "Lukas",
+                    "Bagian"
+                  ],
+                  "baris": [
+                    [
+                      "Harus",
+                      2
+                    ],
+                    [
+                      "Sudah",
+                      1
+                    ],
+                    [
+                      "Sisa",
+                      1
+                    ]
+                  ]
+                }
               },
-              { "id": "hasil", "label": "Hasil", "ikon": "✅", "isi": "Penyebut tetap tiga.", "suara": "Dua per tiga dikurangi satu per tiga sama dengan satu per tiga.", "visual": { "jenis": "teks", "isi": "2/3 − 1/3 = 1/3" } },
-              { "id": "salah", "label": "Jangan", "ikon": "🚫", "isi": "Penyebut tidak dikurangi.", "suara": "Penyebut tidak dikurangi. Satu per nol adalah jawaban yang salah.", "visual": { "jenis": "teks", "isi": "1/0 salah" } }
+              {
+                "id": "hasil",
+                "label": "Hasil",
+                "ikon": "✅",
+                "isi": "Penyebut tetap tiga.",
+                "suara": "Dua per tiga dikurangi satu per tiga sama dengan satu per tiga.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "2/3 − 1/3 = 1/3"
+                }
+              },
+              {
+                "id": "salah",
+                "label": "Jangan",
+                "ikon": "🚫",
+                "isi": "Penyebut tidak dikurangi.",
+                "suara": "Penyebut tidak dikurangi. Satu per nol adalah jawaban yang salah.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1/0 salah"
+                }
+              }
             ]
           },
           {
@@ -283,8 +913,28 @@
             "ide": "Penyebut harus sama dahulu.",
             "suara": "Lihat dua cara mengurangkan pecahan.",
             "sisi": [
-              { "id": "sama", "nama": "Penyebut sama", "ikon": "🟦", "catatan": "Langsung kurangkan pembilang.", "suara": "Enam per delapan dan dua per delapan punya penyebut sama. Kurangkan pembilangnya saja.", "visual": { "jenis": "teks", "isi": "6/8 − 2/8 = 4/8" } },
-              { "id": "beda", "nama": "Penyebut beda", "ikon": "🧩", "catatan": "Samakan dengan KPK, lalu kurangkan.", "suara": "Dua per tiga dan satu per dua berpenyebut beda. Samakan menjadi empat per enam dan tiga per enam.", "visual": { "jenis": "teks", "isi": "4/6 − 3/6 = 1/6" } }
+              {
+                "id": "sama",
+                "nama": "Penyebut sama",
+                "ikon": "🟦",
+                "catatan": "Langsung kurangkan pembilang.",
+                "suara": "Enam per delapan dan dua per delapan punya penyebut sama. Kurangkan pembilangnya saja.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "6/8 − 2/8 = 4/8"
+                }
+              },
+              {
+                "id": "beda",
+                "nama": "Penyebut beda",
+                "ikon": "🧩",
+                "catatan": "Samakan dengan KPK, lalu kurangkan.",
+                "suara": "Dua per tiga dan satu per dua berpenyebut beda. Samakan menjadi empat per enam dan tiga per enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4/6 − 3/6 = 1/6"
+                }
+              }
             ],
             "kesimpulan": "Samakan penyebut dengan KPK, lalu kurangkan pembilang."
           },
@@ -295,9 +945,174 @@
             "ide": "Jumlahkan sisa dengan yang diambil.",
             "suara": "Ada tiga hal tentang memeriksa hasil pengurangan. Ketuk kotaknya satu per satu.",
             "butir": [
-              { "id": "periksa", "label": "Periksa", "ikon": "🔎", "isi": "Sisa ditambah yang diambil.", "suara": "Satu per tiga ditambah satu per tiga sama dengan dua per tiga, yaitu pecahan awalnya.", "visual": { "jenis": "teks", "isi": "1/3 + 1/3 = 2/3" } },
-              { "id": "sederhana", "label": "Sederhana", "ikon": "✂️", "isi": "Bagi dengan bilangan yang sama.", "suara": "Empat per delapan dibagi empat pada pembilang dan penyebut menjadi satu per dua.", "visual": { "jenis": "teks", "isi": "4/8 = 1/2" } },
-              { "id": "kpk", "label": "KPK", "ikon": "🔢", "isi": "KPK tiga dan dua adalah enam.", "suara": "Kelipatan persekutuan terkecil dari tiga dan dua adalah enam.", "visual": { "jenis": "teks", "isi": "3, 6 dan 2, 4, 6" } }
+              {
+                "id": "periksa",
+                "label": "Periksa",
+                "ikon": "🔎",
+                "isi": "Sisa ditambah yang diambil.",
+                "suara": "Satu per tiga ditambah satu per tiga sama dengan dua per tiga, yaitu pecahan awalnya.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1/3 + 1/3 = 2/3"
+                }
+              },
+              {
+                "id": "sederhana",
+                "label": "Sederhana",
+                "ikon": "✂️",
+                "isi": "Bagi dengan bilangan yang sama.",
+                "suara": "Empat per delapan dibagi empat pada pembilang dan penyebut menjadi satu per dua.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4/8 = 1/2"
+                }
+              },
+              {
+                "id": "kpk",
+                "label": "KPK",
+                "ikon": "🔢",
+                "isi": "KPK tiga dan dua adalah enam.",
+                "suara": "Kelipatan persekutuan terkecil dari tiga dan dua adalah enam.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "3, 6 dan 2, 4, 6"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Sisa Kertas Yohana",
+          "ikon": "🎨",
+          "suara": "Ini peta tentang masalah Yohana, yaitu berapa bagian kertas yang belum dilukis. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kelompok hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-sama",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Pengurangan penyebut sama",
+            "petunjuk": "Pecahan yang potongannya sudah sama besar."
+          },
+          {
+            "id": "hal-beda",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Pengurangan penyebut berbeda",
+            "petunjuk": "Pecahan yang potongannya belum sama besar."
+          },
+          {
+            "id": "hal-campur",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Pengurangan pecahan campuran",
+            "petunjuk": "Pecahan yang punya bilangan bulat di depannya."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kelompok langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-sama",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Kurangi pembilangnya saja",
+            "petunjuk": "Langkah untuk penyebut yang sudah sama: penyebut tetap."
+          },
+          {
+            "id": "cara-beda",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Samakan dengan KPK dahulu",
+            "petunjuk": "Langkah untuk penyebut yang berbeda: ubah dulu sebelum dikurangi."
+          },
+          {
+            "id": "cara-campur",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Ubah ke pecahan biasa",
+            "petunjuk": "Langkah untuk pecahan campuran sebelum dikurangi."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kelompok kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-sisa",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Sisa kertas dihitung benar",
+            "petunjuk": "Kemampuan di akhir: bisa menyebut bagian yang masih tersisa."
+          },
+          {
+            "id": "hasil-cek",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Jawaban bisa dicek ulang",
+            "petunjuk": "Kemampuan di akhir: memeriksa apakah hitungan sudah benar."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Mengurangkan pecahan",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel mengurangkan pecahan. Untuk tiap benda, pasang soalnya, bentuk setelah penyebut disamakan, dan selisihnya.",
+        "pojok": "Benda",
+        "kolom": [
+          "Soal",
+          "Disamakan",
+          "Selisih"
+        ],
+        "baris": [
+          {
+            "label": "Kertas",
+            "sel": [
+              "2/3 − 1/2",
+              "4/6 − 3/6",
+              "1/6 bagian"
+            ]
+          },
+          {
+            "label": "Jarak",
+            "sel": [
+              "5 2/3 − 1/3",
+              "17/3 − 1/3",
+              "5 1/3 km"
+            ]
+          },
+          {
+            "label": "Tali",
+            "sel": [
+              "4 1/2 − 2 1/3",
+              "27/6 − 14/6",
+              "2 1/6 m"
+            ]
+          },
+          {
+            "label": "Bahasa",
+            "sel": [
+              "3/10 − 1/8",
+              "12/40 − 5/40",
+              "7/40 bagian"
             ]
           }
         ]

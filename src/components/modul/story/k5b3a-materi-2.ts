@@ -71,7 +71,7 @@ const gelas = (id: string, x: number, y: number, isi: boolean) => [kotak(`${id}-
 export const ADEGAN_PENGERTIAN: AdeganStory = {
   id: "pengertian-pecahan",
   judul: "Pengertian pecahan, pembilang dan penyebut, pecahan biasa dan campuran",
-  sumber: "Buku Siswa hlm. 66–68",
+  sumber: "Materi: pengertian pecahan",
   latar: "#F0F9FF",
   kutipan: [
     "Pecahan merupakan bagian dari keseluruhan (part of a whole), pecahan",
@@ -87,13 +87,13 @@ export const ADEGAN_PENGERTIAN: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Pengertian pecahan. Pecahan adalah bagian dari keseluruhan, dan bisa juga diartikan sebagai bagian dari satuan.",
+      "Kita mulai dari pengertian pecahan. Pecahan adalah bagian dari keseluruhan, dan bisa juga diartikan sebagai bagian dari satuan.",
       tambah(0, judul("Pengertian pecahan")),
       tambah("keseluruhan,", ...pai("pg", 62, 96, 42, 4, 1), ...kartu("w1", 124, 56, 166, 36, W.krem, ["bagian dari keseluruhan", "(part of a whole)"], 8.4)),
       tambah("satuan.", ...kartu("w2", 124, 110, 166, 36, W.hijauMuda, ["bagian dari satuan", "(part of a unit)"], 8.4)),
     ),
     k(
-      "Contoh bagian dari satuan. Gelas ini berisi satu bagian dari dua bagian gelas. Satu bagian dari dua bagian ditulis satu per dua.",
+      "Perhatikan contoh bagian dari satuan. Gelas ini berisi satu bagian dari dua bagian gelas. Satu bagian dari dua bagian ditulis satu per dua.",
       bersih(0),
       tambah(0, judul("Bagian dari satuan")),
       tambah("Gelas", ...gelas("ge", 70, 52, false)),
@@ -102,7 +102,7 @@ export const ADEGAN_PENGERTIAN: AdeganStory = {
       tambah("ditulis", teks("gf", 205, 140, "1/2", 28, W.merah)),
     ),
     k(
-      "Contoh bagian dari keseluruhan. Yohana mengambil dua gelas air putih, lalu meminum satu gelas. Satu dari dua gelas, ditulis satu per dua.",
+      "Sekarang contoh bagian dari keseluruhan. Yohana mengambil dua gelas air putih, lalu meminum satu gelas. Satu dari dua gelas, ditulis satu per dua.",
       bersih(0),
       tambah(0, judul("Bagian dari keseluruhan")),
       tambah("mengambil", ...gelas("ga", 70, 52, true), ...gelas("gb", 150, 52, true), teks("g2", 150, 160, "2 gelas", 10, W.biru)),
@@ -119,7 +119,7 @@ export const ADEGAN_PENGERTIAN: AdeganStory = {
       tambah("penyebut@2", teks("ls", 184, 124, "penyebut", 9.6, W.hijau, { anchor: "start" })),
     ),
     k(
-      "Ada dua bentuk pecahan. Pecahan biasa, atau murni, punya pembilang dan penyebut, misalnya satu per dua dan tiga per empat. Pecahan campuran terdiri atas bilangan bulat dan pecahan murni, misalnya dua dan satu per dua.",
+      "Nah, ada dua bentuk pecahan. Pecahan biasa, atau murni, punya pembilang dan penyebut, misalnya satu per dua dan tiga per empat. Pecahan campuran terdiri atas bilangan bulat dan pecahan murni, misalnya dua dan satu per dua.",
       bersih(0),
       tambah(0, judul("Dua bentuk pecahan")),
       tambah("biasa,", ...kartu("bb", 10, 34, 134, 40, W.hijauMuda, ["Pecahan biasa", "(murni)"], 8.8)),
@@ -138,8 +138,8 @@ const POTONG = [2, 3, 5, 6];
 
 export const ADEGAN_EKS31A: AdeganStory = {
   id: "eks-31a-wingko",
-  judul: "Eksplorasi 3.1A: pecahan potongan wingko",
-  sumber: "Buku Siswa hlm. 68–70",
+  judul: "Pecahan potongan wingko",
+  sumber: "Materi: pecahan potongan wingko",
   latar: "#FFFBEB",
   kutipan: [
     "Wingko babat merupakan makanan khas dari Semarang.",
@@ -155,17 +155,17 @@ export const ADEGAN_EKS31A: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi tiga titik satu A. Wingko babat adalah makanan khas Semarang. Kini rasanya beraneka: orisinal, cokelat, stroberi, dan lainnya.",
-      tambah(0, judul("Eksplorasi 3.1A")),
+      "Sekarang kita belajar dari wingko babat. Wingko babat adalah makanan khas Semarang. Kini rasanya beraneka: orisinal, cokelat, stroberi, dan lainnya.",
+      tambah(0, judul("Wingko babat")),
       tambah("Wingko", ...pai("wg", 74, 104, 46, 1, 1, W.jingga), teks("wgt", 74, 170, "wingko babat", 9, W.coklat)),
       tambah("orisinal,", ...kartu("r0", 150, 52, 130, 26, W.krem, ["orisinal"], 9)),
       tambah("cokelat,", ...kartu("r1", 150, 88, 130, 26, W.jingga, ["cokelat"], 9)),
       tambah("stroberi,", ...kartu("r2", 150, 124, 130, 26, W.pink, ["stroberi"], 9)),
     ),
     k(
-      "Tugasnya menuliskan pecahan potongan wingko stroberi pada tabel. Ada empat gambar wingko: dibagi dua, tiga, lima, dan enam bagian sama besar.",
+      "Tugas kita menuliskan pecahan potongan wingko stroberi pada tabel. Ada empat gambar wingko: dibagi dua, tiga, lima, dan enam bagian sama besar.",
       bersih(0),
-      tambah(0, judul("Eksplorasi 3.1A")),
+      tambah(0, judul("Pecahan potongan wingko")),
       tambah("tabel.", baris("r0", 0, ["No.", "Wingko dibagi", "Pecahan stroberi"], true)),
       tambah("dua,", baris("r1", 1, ["1", `${POTONG[0]} bagian`, "..."])),
       tambah("tiga,", baris("r2", 2, ["2", `${POTONG[1]} bagian`, "..."])),
@@ -206,8 +206,8 @@ export const ADEGAN_EKS31A: AdeganStory = {
 /* ------------------------------ 7. Eksplorasi 3.1B: lompatan Yohana, mengubah campuran menjadi biasa (Buku Siswa hlm. 70 sampai 72) ------------------------------ */
 export const ADEGAN_EKS31B: AdeganStory = {
   id: "eks-31b-lompat",
-  judul: "Eksplorasi 3.1B: lompat jauh Yohana",
-  sumber: "Buku Siswa hlm. 70–72",
+  judul: "Lompat jauh Yohana",
+  sumber: "Materi: lompat jauh Yohana",
   latar: "#F0FDF4",
   kutipan: [
     "Yohana seorang atlet lompat jauh.",
@@ -220,8 +220,8 @@ export const ADEGAN_EKS31B: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi tiga titik satu B. Yohana atlet lompat jauh dan rajin berlatih untuk kejuaraan. Tiga lompatannya: dua dan tiga per empat meter, tiga dan satu per dua meter, serta tujuh per delapan meter.",
-      tambah(0, judul("Eksplorasi 3.1B")),
+      "Sekarang kita ikut latihan Yohana. Yohana atlet lompat jauh dan rajin berlatih untuk kejuaraan. Tiga lompatannya: dua dan tiga per empat meter, tiga dan satu per dua meter, serta tujuh per delapan meter.",
+      tambah(0, judul("Lompat jauh Yohana")),
       tambah("Yohana", emo("yh", 40, 66, "🤸", 34)),
       tambah("lompatannya:", ...tabel("lm", 70, 40, [64, 118], [["Lompatan", "Jarak"]], 22, 9, W.krem)),
       tambah("empat", ...tabel("lm1", 70, 62, [64, 118], [["1", "2 3/4 m"]], 22, 10, W.putih)),

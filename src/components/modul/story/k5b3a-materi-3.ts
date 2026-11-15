@@ -11,7 +11,7 @@ const penandaMerah = (id: string, y: number, nilai: number, label: string, bawah
 export const ADEGAN_GARIS: AdeganStory = {
   id: "garis-bilangan",
   judul: "Cara pertama: garis bilangan",
-  sumber: "Buku Siswa hlm. 71–72",
+  sumber: "Materi: garis bilangan",
   latar: "#F5F3FF",
   kutipan: [
     "Menggunakan Garis Bilangan",
@@ -76,7 +76,7 @@ export const ADEGAN_GARIS: AdeganStory = {
 export const ADEGAN_PEMBILANG: AdeganStory = {
   id: "bandingkan-pembilang",
   judul: "Cara kedua: membandingkan pembilang",
-  sumber: "Buku Siswa hlm. 72–74",
+  sumber: "Materi: membandingkan pembilang",
   latar: "#FFF7ED",
   kutipan: [
     "Membandingkan Pembilang",
@@ -144,7 +144,7 @@ export const ADEGAN_PEMBILANG: AdeganStory = {
 export const ADEGAN_BULAT: AdeganStory = {
   id: "bandingkan-bulat",
   judul: "Cara ketiga: membandingkan bilangan bulat",
-  sumber: "Buku Siswa hlm. 74; Panduan Guru hlm. 103",
+  sumber: "Materi: membandingkan bilangan bulat",
   latar: "#F0FDFA",
   kutipan: [
     "Membandingkan Bilangan bulat",
@@ -171,9 +171,9 @@ export const ADEGAN_BULAT: AdeganStory = {
       ubah("terkecil:", { id: "c1", isi: "urutan ke-2" }, { id: "c2", isi: "urutan ke-3" }, { id: "c3", isi: "urutan ke-1" }),
     ),
     k(
-      "Panduan guru berpesan: cara dengan bilangan bulat dipakai kalau soalnya pecahan campuran. Dan apa pun caranya, hasilnya harus sama.",
+      "Ingat pesan guru: cara dengan bilangan bulat dipakai kalau soalnya pecahan campuran. Dan apa pun caranya, hasilnya harus sama.",
       bersih(0),
-      tambah(0, judul("Pesan Panduan Guru")),
+      tambah(0, judul("Pesan guru")),
       tambah("dipakai", ...kartu("pg", 10, 40, 134, 34, W.hijauMuda, ["bilangan bulat:", "untuk pecahan campuran"], 8.4)),
       tambah("caranya,", ...kartu("pn", 156, 40, 134, 34, W.langit, ["garis bilangan"], 9), ...kartu("pm", 10, 84, 134, 34, W.krem, ["membandingkan", "pembilang"], 9)),
       tambah("sama.", emo("ok", 200, 112, "✅", 26), ...kartu("ps", 60, 140, 180, 36, W.emas, ["hasil harus sama"], 11)),
@@ -196,8 +196,8 @@ const pitaBar = (id: string, y: number, meter: number, warna: string): Obj => ko
 
 export const ADEGAN_BERLATIH: AdeganStory = {
   id: "ayo-berlatih",
-  judul: "Ayo Berlatih: membandingkan gambar dan mengurutkan pita",
-  sumber: "Buku Siswa hlm. 74–75; Panduan Guru hlm. 104",
+  judul: "Latihan: membandingkan gambar dan mengurutkan pita",
+  sumber: "Materi: latihan gambar dan pita",
   latar: "#FEFCE8",
   kutipan: [
     "Bandingkan kedua gambar berikut ini, kemudian isilah titik-titik",
@@ -208,19 +208,19 @@ export const ADEGAN_BERLATIH: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Berlatih, nomor satu: bandingkan dua gambar dengan tanda lebih kecil, sama dengan, atau lebih besar. Gambar a: dua lingkaran dibagi dua belas bagian. Kiri berwarna delapan bagian, kanan sebelas bagian. Kunci: kiri lebih kecil.",
-      tambah(0, judul("Ayo Berlatih 1a")),
+      "Latihan satu: bandingkan dua gambar dengan tanda lebih kecil, sama dengan, atau lebih besar. Gambar a: dua lingkaran dibagi dua belas bagian. Kiri berwarna delapan bagian, kanan sebelas bagian. Jawabannya, kiri lebih kecil.",
+      tambah(0, judul("Latihan 1a")),
       tambah("lingkaran", ...pai("pl", 75, 96, 46, 12, 0), ...pai("pr", 225, 96, 46, 12, 0), teks("ee", 150, 100, "...", 22, W.merah)),
       warnai("delapan", W.karang, ...Array.from({ length: 8 }, (_, i) => `pl-w${i}`)),
       tambah("delapan", teks("fl", 75, 166, "8/12", 14, W.biru)),
       warnai("sebelas", W.karang, ...Array.from({ length: 11 }, (_, i) => `pr-w${i}`)),
       tambah("sebelas", teks("fr", 225, 166, "11/12", 14, W.biru)),
-      ubah("Kunci:", { id: "ee", isi: "<" }),
+      ubah("Jawabannya,", { id: "ee", isi: "<" }),
     ),
     k(
       "Gambar b: segitiga kiri berwarna tiga dari empat bagian, segitiga kanan satu dari empat bagian. Kiri lebih besar.",
       bersih(0),
-      tambah(0, judul("Ayo Berlatih 1b")),
+      tambah(0, judul("Latihan 1b")),
       tambah("segitiga", ...segitiga4("tl", 20, 48, 110, 96, [0, 3, 2]), teks("la", 75, 166, "3/4", 14, W.biru)),
       tambah("kanan", ...segitiga4("tr", 170, 48, 110, 96, [3]), teks("lb", 225, 166, "1/4", 14, W.biru)),
       tambah("besar.", teks("lt", 150, 100, ">", 24, W.merah)),
@@ -228,7 +228,7 @@ export const ADEGAN_BERLATIH: AdeganStory = {
     k(
       "Gambar c: segitiga kiri tiga dari empat bagian berwarna, segitiga kanan sembilan dari enam belas bagian. Tiga per empat sama dengan dua belas per enam belas, jadi kiri lebih besar.",
       bersih(0),
-      tambah(0, judul("Ayo Berlatih 1c")),
+      tambah(0, judul("Latihan 1c")),
       tambah("segitiga", ...segitiga4("cl", 20, 44, 110, 96, [0, 1, 2]), teks("ma", 75, 158, "3/4", 14, W.biru)),
       tambah("kanan", ...segitiga16("cr", 170, 44, 110, 96, [0, 1, 2]), teks("mb", 225, 158, "9/16", 14, W.biru)),
       tambah("sama", teks("me", 150, 188, "3/4 = 12/16", 12, W.ungu)),
@@ -237,15 +237,15 @@ export const ADEGAN_BERLATIH: AdeganStory = {
     k(
       "Gambar d: kiri enam petak dengan tiga berwarna, kanan enam jalur dengan dua berwarna. Tiga per enam lebih besar daripada dua per enam.",
       bersih(0),
-      tambah(0, judul("Ayo Berlatih 1d")),
+      tambah(0, judul("Latihan 1d")),
       tambah("kiri", ...kisi("dl", 30, 60, 28, 36, 3, 2, [0, 2, 4]), teks("na", 72, 118 + 28, "3/6", 14, W.biru)),
       tambah("kanan", ...kisi("dr", 170, 60, 15, 72, 6, 1, [0, 2]), teks("nb", 215, 118 + 28, "2/6", 14, W.biru)),
       tambah("Tiga@2", ...kartu("nk", 80, 176, 140, 22, W.emas, ["3/6 > 2/6"], 10.4)),
     ),
     k(
-      "Nomor dua: Nisa punya tiga pita, dua dan dua per lima meter, dua dan satu per empat meter, dan dua dan satu per dua meter. Bulatnya sama, jadi bandingkan pecahannya. KPK lima, empat, dan dua adalah dua puluh.",
+      "Latihan dua: Nisa punya tiga pita, dua dan dua per lima meter, dua dan satu per empat meter, dan dua dan satu per dua meter. Bulatnya sama, jadi bandingkan pecahannya. KPK lima, empat, dan dua adalah dua puluh.",
       bersih(0),
-      tambah(0, judul("Ayo Berlatih 2: pita Nisa")),
+      tambah(0, judul("Latihan 2: pita Nisa")),
       tambah(10, pitaBar("pa", PITA_GAMBAR.baris[0], 2.4, W.pink), teks("ta", 174, PITA_GAMBAR.baris[0] + 14, "2 2/5 m", 8.4, W.biru, { anchor: "start" })),
       tambah(16, pitaBar("pb", PITA_GAMBAR.baris[1], 2.25, W.hijauMuda), teks("tb", 174, PITA_GAMBAR.baris[1] + 14, "2 1/4 m", 8.4, W.biru, { anchor: "start" })),
       tambah(23, pitaBar("pc", PITA_GAMBAR.baris[2], 2.5, W.langit), teks("tc", 174, PITA_GAMBAR.baris[2] + 14, "2 1/2 m", 8.4, W.biru, { anchor: "start" })),
@@ -259,11 +259,11 @@ export const ADEGAN_BERLATIH: AdeganStory = {
       tambah(20, teks("ec", 226, PITA_GAMBAR.baris[2] + 14, "1/2 = 10/20", 8.4, W.merah, { anchor: "start" })),
     ),
     k(
-      "Dari terpendek: dua dan satu per empat, dua dan dua per lima, lalu dua dan satu per dua. Sesuai kunci Panduan Guru.",
+      "Dari terpendek: dua dan satu per empat, dua dan dua per lima, lalu dua dan satu per dua. Cocokkan dengan hitunganmu, ya.",
       tambah(6, teks("r1", 32, PITA_GAMBAR.baris[1] + 14, "1", 11, W.merah)),
       tambah(11, teks("r2", 32, PITA_GAMBAR.baris[0] + 14, "2", 11, W.merah)),
       tambah(17, teks("r3", 32, PITA_GAMBAR.baris[2] + 14, "3", 11, W.merah)),
-      tambah("Sesuai", emo("ck", 150, 120, "✅", 22)),
+      tambah("Cocokkan", emo("ck", 150, 120, "✅", 22)),
     ),
   ],
 };
@@ -271,8 +271,8 @@ export const ADEGAN_BERLATIH: AdeganStory = {
 /* ------------------------------ 12. Penutup menurut Panduan Guru: miskonsepsi, diferensiasi, refleksi (Panduan Guru hlm. 104 sampai 105) ------------------------------ */
 export const ADEGAN_GURU: AdeganStory = {
   id: "penutup-guru",
-  judul: "Panduan Guru: miskonsepsi, diferensiasi, dan refleksi",
-  sumber: "Panduan Guru hlm. 104–105",
+  judul: "Pesan guru: hati-hati, tantangan, dan renungan",
+  sumber: "Materi: pesan guru dan rangkuman",
   latar: "#F5F3FF",
   kutipan: [
     "Miskonsepsi",
@@ -291,31 +291,32 @@ export const ADEGAN_GURU: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Panduan guru memperingatkan dua kesalahan yang sering muncul. Pertama, menyamakan penyebut tanpa mengalikan pembilangnya. Kedua, salah menghitung pada bilangan campuran.",
-      tambah(0, judul("Miskonsepsi")),
+      "Hati-hati, ada dua kesalahan yang sering terjadi. Pertama, menyamakan penyebut tanpa mengalikan pembilangnya. Kedua, salah menghitung pada bilangan campuran.",
+      tambah(0, judul("Hati-hati")),
       tambah("Pertama,", ...kartu("ms", 10, 34, 134, 56, W.merahMuda, ["salah", "11/4 → 11/8", "pembilang lupa dikali"], 8.2)),
       tambah("pembilangnya.", ...kartu("mb", 156, 34, 134, 56, W.hijauMuda, ["benar", "11/4 → 22/8", "atas dan bawah dikali 2"], 8.2)),
       tambah("Kedua,", ...kartu("mc", 10, 106, 280, 50, W.krem, ["salah hitung pada campuran, contoh:", "2 3/4 → 5/4, padahal seharusnya 11/4"], 8.6)),
     ),
     k(
-      "Untuk peserta didik yang cepat belajar, minta mereka mengerjakan latihan tanpa bantuan. Sementara itu guru mendampingi peserta didik yang mengalami kesulitan.",
+      "Sekarang tantangan untuk kalian yang cepat belajar: kerjakan latihan tanpa bantuan. Urutkan tiga per lima, tujuh per sepuluh, dan satu per dua dari yang terkecil. Kalau masih kesulitan, jangan ragu, minta guru mendampingi.",
       bersih(0),
-      tambah(0, judul("Diferensiasi")),
-      tambah("cepat", emo("rk", 70, 80, "🚀", 36), ...kartu("d1", 14, 100, 130, 40, W.hijauMuda, ["cepat belajar:", "kerjakan sendiri"], 8.8)),
-      tambah("Sementara", emo("jb", 230, 80, "🤝", 36), ...kartu("d2", 156, 100, 130, 40, W.langit, ["kesulitan:", "didampingi guru"], 8.8)),
+      tambah(0, judul("Tantangan")),
+      tambah("cepat", emo("rk", 70, 78, "🚀", 34), ...kartu("d1", 14, 96, 130, 40, W.hijauMuda, ["cepat belajar:", "kerjakan sendiri"], 8.8)),
+      tambah("Urutkan", ...kartu("d3", 14, 148, 272, 30, W.emas, ["Urutkan 3/5, 7/10, 1/2 dari terkecil"], 8.8)),
+      tambah("kesulitan,", emo("jb", 230, 78, "🤝", 34), ...kartu("d2", 156, 96, 130, 40, W.langit, ["kesulitan:", "didampingi guru"], 8.8)),
     ),
     k(
-      "Guru menutup pelajaran dengan refleksi tentang kemampuan membandingkan dan mengurutkan pecahan. Ingat, cara apa pun yang dipilih harus menghasilkan jawaban yang sama.",
+      "Sekarang renungan. Apakah kalian sudah bisa membandingkan pecahan? Apakah kalian sudah bisa mengurutkan pecahan? Ingat, cara apa pun yang dipilih harus menghasilkan jawaban yang sama.",
       bersih(0),
-      tambah(0, judul("Refleksi")),
-      tambah("membandingkan", ...kartu("f1", 20, 36, 260, 32, W.hijauMuda, ["kemampuan membandingkan pecahan"], 9)),
-      tambah("mengurutkan", ...kartu("f2", 20, 78, 260, 32, W.langit, ["kemampuan mengurutkan pecahan"], 9)),
+      tambah(0, judul("Renungan")),
+      tambah("membandingkan", ...kartu("f1", 20, 36, 260, 32, W.hijauMuda, ["Bisakah aku membandingkan pecahan?"], 9)),
+      tambah("mengurutkan", ...kartu("f2", 20, 78, 260, 32, W.langit, ["Bisakah aku mengurutkan pecahan?"], 9)),
       tambah("Ingat,", ...kartu("f3", 20, 120, 260, 32, W.krem, ["cara berbeda, hasil harus sama"], 9)),
     ),
     k(
-      "Jadi di subbab A kita belajar membandingkan dan mengurutkan pecahan dengan tiga cara: garis bilangan, membandingkan pembilang setelah penyebut disamakan, dan membandingkan bilangan bulat. Cara apa pun, hasilnya sama.",
+      "Jadi hari ini kita belajar membandingkan dan mengurutkan pecahan dengan tiga cara: garis bilangan, membandingkan pembilang setelah penyebut disamakan, dan membandingkan bilangan bulat. Cara apa pun, hasilnya sama.",
       bersih(0),
-      tambah(0, judul("Rangkuman Subbab A")),
+      tambah(0, judul("Rangkuman")),
       tambah("garis", ...kartu("z1", 14, 34, 272, 28, W.hijauMuda, ["1. garis bilangan"], 9.4)),
       tambah("pembilang", ...kartu("z2", 14, 68, 272, 28, W.langit, ["2. banding pembilang (penyebut disamakan)"], 9)),
       tambah("bulat.", ...kartu("z3", 14, 102, 272, 28, W.krem, ["3. banding bilangan bulat"], 9.4)),

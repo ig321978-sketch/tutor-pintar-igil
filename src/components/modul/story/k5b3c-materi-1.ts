@@ -62,7 +62,7 @@ export const ADEGAN_PEMBUKA_C: AdeganStory = {
 export const ADEGAN_MASALAH_YOHANA: AdeganStory = {
   id: "masalah-yohana",
   judul: "Masalah Yohana dan syarat pengurangan pecahan",
-  sumber: "Buku Siswa hlm. 91",
+  sumber: "Materi: masalah Yohana dan syarat",
   latar: "#FFF7ED",
   kutipan: [
     "C. Pengurangan Bilangan Pecahan",
@@ -77,13 +77,13 @@ export const ADEGAN_MASALAH_YOHANA: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Buku Siswa halaman sembilan puluh satu membuka Sub-Bab C dengan Masalah Yohana. Yohana punya tugas melukis dua per tiga kertas gambar yang diberikan gurunya.",
+      "Sekarang kita belajar mengurangkan pecahan. Perhatikan Masalah Yohana. Yohana punya tugas melukis dua per tiga bagian dari kertas gambar yang diberikan gurunya.",
       tambah(0, judul("Masalah Yohana")),
       tambah("melukis", ...sel("kt", 40, 34, 80, 108, 3, [0, 1], W.langit, true), teks("ktt", 80, 160, "kertas gambar", 9, W.biru)),
       tambah("dua", ...rumus("r", 205, 90, "2/3", 22, W.biru, {}, false), teks("rt", 205, 128, "harus dilukis", 9.4, W.biru)),
     ),
     k(
-      "Ia baru mengerjakan satu per dua bagian kertas. Pertanyaannya, berapakah kekurangan kertas yang belum dilukis oleh Yohana?",
+      "Ia baru mengerjakan satu per dua bagian kertas. Coba kamu pikirkan, berapakah kekurangan kertas yang belum dilukis oleh Yohana?",
       bersih(0),
       tambah(0, judul("Masalah Yohana")),
       tambah(0, ...sel("kt", 40, 34, 80, 108, 3, [0, 1], W.langit, true), teks("ktt", 80, 160, "kertas gambar", 9, W.biru)),
@@ -91,7 +91,7 @@ export const ADEGAN_MASALAH_YOHANA: AdeganStory = {
       tambah("kekurangan", teks("tn", 205, 148, "?", 36, W.merah)),
     ),
     k(
-      "Buku memberi syarat penting. Pengurangan pecahan hanya bisa dilakukan bila penyebutnya sudah sama. Kalau belum sama, samakan dahulu.",
+      "Ingat syarat penting ini. Pengurangan pecahan hanya bisa dilakukan bila penyebutnya sudah sama. Kalau belum sama, samakan dahulu.",
       bersih(0),
       tambah(0, judul("Syarat pengurangan")),
       tambah("syarat", ...kartu("sy", 40, 30, 220, 28, W.krem, ["penyebutnya harus sama"], 10)),
@@ -100,10 +100,10 @@ export const ADEGAN_MASALAH_YOHANA: AdeganStory = {
       tambah("samakan", kotak("b2", 156, 72, 126, 70, W.hijauMuda, W.hijau, { rx: 8 }), teks("b2t", 219, 88, "penyebut sama", 9.4, W.hijau), ...rumus("b2r", 219, 120, "4/6 − 3/6", 12, W.biru, {}, false), emo("b2e", 219, 168, "✅", 24)),
     ),
     k(
-      "Jika penyebut sudah sama, kurangkan pembilangnya. Karena itu Sub-Bab C dibagi dua: pengurangan berpenyebut sama, lalu berpenyebut berbeda. Masalah Yohana kita buka lagi nanti.",
+      "Jika penyebut sudah sama, kurangkan pembilangnya. Karena itu kita belajar dalam dua bagian: pengurangan berpenyebut sama, lalu berpenyebut berbeda. Masalah Yohana kita buka lagi nanti.",
       bersih(0),
-      tambah(0, judul("Dua bagian Sub-Bab C")),
-      tambah("dibagi", ...kartu("d1", 20, 36, 260, 38, W.langit, ["1. Pengurangan berpenyebut sama"], 10)),
+      tambah(0, judul("Dua bagian pelajaran")),
+      tambah("bagian", ...kartu("d1", 20, 36, 260, 38, W.langit, ["1. Pengurangan berpenyebut sama"], 10)),
       tambah("lalu", ...kartu("d2", 20, 86, 260, 38, W.krem, ["2. Pengurangan berpenyebut berbeda"], 10)),
       tambah("Masalah", ...kartu("d3", 50, 138, 200, 34, W.pink, ["Masalah Yohana: nanti"], 10)),
     ),
@@ -113,8 +113,8 @@ export const ADEGAN_MASALAH_YOHANA: AdeganStory = {
 /* ------------------------------ 3. Eksplorasi 3.3A: Masalah Lukas (Buku Siswa hlm. 91 sampai 93) ------------------------------ */
 export const ADEGAN_EKS_3A: AdeganStory = {
   id: "eks-3a",
-  judul: "Eksplorasi 3.3A: pengurangan pecahan berpenyebut sama",
-  sumber: "Buku Siswa hlm. 91–93",
+  judul: "Pengurangan pecahan berpenyebut sama",
+  sumber: "Materi: penyebut sama, kertas Lukas",
   latar: "#F0FDF4",
   kutipan: [
     "Eksplorasi 3.3A",
@@ -132,14 +132,14 @@ export const ADEGAN_EKS_3A: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi tiga titik tiga A, pengurangan berpenyebut sama. Masalah Lukas: tugasnya sama dengan Yohana, melukis dua per tiga kertas, dan ia sudah mengerjakan satu per tiga bagian kertas.",
-      tambah(0, judul("Eksplorasi 3.3A: Masalah Lukas")),
+      "Sekarang pecahan yang penyebutnya sama. Masalah Lukas: tugasnya sama dengan Yohana, melukis dua per tiga kertas, dan ia sudah mengerjakan satu per tiga bagian kertas. Berapa yang belum dilukis?",
+      tambah(0, judul("Penyebut sama: Masalah Lukas")),
       tambah("Masalah", ...kartu("lk", 100, 130, 100, 30, W.langit, ["Lukas"], 11)),
       tambah("melukis", ...rumus("r", 150, 80, "2/3 − 1/3", 24, W.biru, {}, false)),
       tambah("sudah", teks("tn", 150, 178, "kurangnya berapa?", 10, W.merah)),
     ),
     k(
-      "Cara Nisa, langkah pertama: arsir dua per tiga bagian kertas yang harus dilukis. Kertas dibagi menjadi tiga kotak sama besar, dan dua kotak diarsir.",
+      "Kita ikuti cara Nisa. Langkah pertama, arsir dua per tiga bagian kertas yang harus dilukis. Kertas dibagi menjadi tiga kotak sama besar, dan dua kotak diarsir.",
       bersih(0),
       tambah(0, judul("Cara Nisa 1: yang harus dilukis")),
       tambah("Kertas", ...sel("k1", 40, 34, 62, 120, 3, [], W.langit, true), teks("k1t", 71, 168, "harus dilukis", 8.6, W.biru)),
@@ -148,7 +148,7 @@ export const ADEGAN_EKS_3A: AdeganStory = {
       tambah("diarsir.", teks("n", 220, 140, "3 kotak, 2 diarsir", 9.4, W.biru)),
     ),
     k(
-      "Langkah kedua: arsir satu per tiga bagian kertas yang sudah dilukis. Satu kotak saja diarsir. Dari dua kotak yang harus dilukis, satu sudah selesai, sehingga tersisa satu kotak.",
+      "Langkah kedua, arsir satu per tiga bagian kertas yang sudah dilukis. Satu kotak saja diarsir. Coba lihat, dari dua kotak yang harus dilukis, satu sudah selesai, sehingga tersisa satu kotak.",
       bersih(0),
       tambah(0, judul("Cara Nisa 2: yang sudah dilukis")),
       tambah(0, ...sel("k1", 40, 34, 62, 120, 3, [0, 1], W.langit, true), teks("k1t", 71, 168, "harus dilukis", 8.6, W.biru)),
@@ -170,8 +170,8 @@ export const ADEGAN_EKS_3A: AdeganStory = {
 /* ------------------------------ 4. Eksplorasi 3.3B: apel Asep (Buku Siswa hlm. 93 sampai 95) ------------------------------ */
 export const ADEGAN_EKS_3B: AdeganStory = {
   id: "eks-3b",
-  judul: "Eksplorasi 3.3B: delapan apel Asep",
-  sumber: "Buku Siswa hlm. 93–95",
+  judul: "Pengurangan sepenyebut: delapan apel Asep",
+  sumber: "Materi: penyebut sama, apel Asep",
   latar: "#FEF2F2",
   kutipan: [
     "Eksplorasi 3.3B",
@@ -190,8 +190,8 @@ export const ADEGAN_EKS_3B: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi tiga titik tiga B, Masalah Asep. Asep punya delapan buah apel dan membagikan enam buah apelnya kepada Lukas. Selanjutnya Lukas membagikan dua buah apelnya kepada Yohana.",
-      tambah(0, judul("Eksplorasi 3.3B: Masalah Asep")),
+      "Masalah berikutnya tentang apel Asep. Asep punya delapan buah apel dan membagikan enam buah apelnya kepada Lukas. Selanjutnya Lukas membagikan dua buah apelnya kepada Yohana.",
+      tambah(0, judul("Masalah Asep: delapan apel")),
       tambah("delapan", ...apel("ap", 80, 66, () => W.merah), teks("at", 110, 44, "8 apel milik Asep", 9.4, W.coklat)),
       warnai("enam", W.hijau, ...ap("ap", LUKAS)),
       tambah("enam", teks("l1", 110, 124, "hijau: ke Lukas", 9, W.hijau)),
@@ -199,7 +199,7 @@ export const ADEGAN_EKS_3B: AdeganStory = {
       tambah("dua", teks("l2", 110, 140, "biru: ke Yohana", 9, W.biru)),
     ),
     k(
-      "Buku bertanya pecahan yang menyatakan sisa apel. Cara Nisa, langkah satu: arsir apel yang diberikan Asep kepada Lukas. Enam dari delapan apel, jadi enam per delapan.",
+      "Pertanyaannya, pecahan berapa yang menyatakan sisa apel? Ikuti cara Nisa, langkah satu: arsir apel yang diberikan Asep kepada Lukas. Enam dari delapan apel, jadi enam per delapan.",
       bersih(0),
       tambah(0, judul("Cara Nisa 1: apel Lukas")),
       tambah("Cara", ...apel("ap", 40, 66, (i) => (LUKAS.includes(i) ? W.hijau : W.putih))),
@@ -221,12 +221,12 @@ export const ADEGAN_EKS_3B: AdeganStory = {
       tambah("Penyebutnya", ...rumus("r", 150, 150, "6/8 − 2/8 = 4/8 = 1/2", 17)),
     ),
     k(
-      "Catatan guru: pertanyaan buku menyebut sisa apel Asep, tetapi langkah-langkahnya menghitung sisa apel Lukas. Sisa apel Asep sendiri delapan dikurangi enam, yaitu dua per delapan.",
+      "Hati-hati, tanyakan dulu sisa apel siapa. Yang kita hitung tadi sisa apel Lukas. Sisa apel Asep sendiri delapan dikurangi enam, yaitu dua per delapan.",
       bersih(0),
-      tambah(0, judul("Catatan guru")),
-      tambah("pertanyaan", kotak("c1", 14, 32, 130, 68, W.merahMuda, W.merah, { rx: 8 }), teks("c1t", 79, 48, "buku bertanya: sisa Asep", 8, W.merah)),
-      tambah("langkah-langkahnya", kotak("c2", 156, 32, 130, 68, W.hijauMuda, W.hijau, { rx: 8 }), teks("c2t", 221, 48, "buku menghitung: sisa Lukas", 8, W.hijau), ...rumus("c2r", 221, 80, "6/8 − 2/8 = 4/8", 11)),
-      tambah("Sisa@2", ...apel("ap", 80, 128, (i) => (ASEP.includes(i) ? W.emas : W.abu))),
+      tambah(0, judul("Hati-hati: sisa siapa?")),
+      tambah("siapa", kotak("c1", 14, 32, 130, 68, W.merahMuda, W.merah, { rx: 8 }), teks("c1t", 79, 48, "yang ditanya: sisa Asep", 8, W.merah)),
+      tambah("Lukas", kotak("c2", 156, 32, 130, 68, W.hijauMuda, W.hijau, { rx: 8 }), teks("c2t", 221, 48, "yang dihitung: sisa Lukas", 8, W.hijau), ...rumus("c2r", 221, 80, "6/8 − 2/8 = 4/8", 11)),
+      tambah("Sisa@3", ...apel("ap", 80, 128, (i) => (ASEP.includes(i) ? W.emas : W.abu))),
       tambah("delapan", ...rumus("c1r", 79, 80, "8/8 − 6/8 = 2/8", 11)),
     ),
   ],

@@ -8,8 +8,8 @@ const KW = 150;
 
 export const ADEGAN_NISA: AdeganStory = {
   id: "eks-d-nisa",
-  judul: "Eksplorasi 3.2D: Cara Nisa",
-  sumber: "Buku Siswa hlm. 85–86",
+  judul: "Penyebut berbeda: Cara Nisa",
+  sumber: "Materi: kertas, Cara Nisa",
   latar: "#FDF2F8",
   kutipan: [
     "2. Penjumlahan Pecahan Berbeda Penyebut",
@@ -29,8 +29,8 @@ export const ADEGAN_NISA: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Bagian dua, penjumlahan pecahan berbeda penyebut. Eksplorasi tiga titik dua D, Masalah Lukas. Lukas punya sebagian kertas, lalu Komang memberi Lukas sebagian kertas lagi. Berapa pecahan dari gabungan kedua kertas itu?",
-      tambah(0, judul("Eksplorasi 3.2D")),
+      "Sekarang penyebutnya berbeda. Masalah Lukas berikutnya: Lukas punya sebagian kertas, lalu Komang memberi Lukas sebagian kertas lagi. Berapa pecahan dari gabungan kedua kertas itu?",
+      tambah(0, judul("Penyebut berbeda")),
       tambah("Lukas", ...kartu("kl", 18, 44, 124, 40, W.langit, ["kertas Lukas", "sebagian"], 9.4)),
       tambah("Komang", teks("kp", 150, 70, "+", 18, W.merah), ...kartu("kk", 158, 44, 124, 40, W.krem, ["kertas dari Komang", "sebagian"], 9.4)),
       tambah("Berapa", teks("kq", 150, 130, "gabungan = ?", 15, W.merah)),
@@ -75,8 +75,8 @@ export const ADEGAN_NISA: AdeganStory = {
 /* ------------------------------ 9. Cara Komang dan Cara Yohana untuk satu per tiga ditambah empat per enam (Buku Siswa hlm. 86 sampai 88) ------------------------------ */
 export const ADEGAN_KOMANG_YOHANA: AdeganStory = {
   id: "eks-d-komang-yohana",
-  judul: "Eksplorasi 3.2D: Cara Komang dan Cara Yohana",
-  sumber: "Buku Siswa hlm. 86–88",
+  judul: "Penyebut berbeda: Cara Komang dan Yohana",
+  sumber: "Materi: kertas, Cara Komang dan Yohana",
   latar: "#FAF5FF",
   kutipan: [
     "Cara Komang",
@@ -154,8 +154,8 @@ export const ADEGAN_KOMANG_YOHANA: AdeganStory = {
 /* ------------------------------ 10. Eksplorasi 3.2E: denah rumah, Cara Yohana dan Cara Lukas (Buku Siswa hlm. 88 sampai 90) ------------------------------ */
 export const ADEGAN_DENAH: AdeganStory = {
   id: "eks-e-denah",
-  judul: "Eksplorasi 3.2E: jarak tiga rumah",
-  sumber: "Buku Siswa hlm. 88–90",
+  judul: "Jarak tiga rumah",
+  sumber: "Materi: denah tiga rumah",
   latar: "#F0F9FF",
   kutipan: [
     "Eksplorasi 3.2E",
@@ -174,8 +174,8 @@ export const ADEGAN_DENAH: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi tiga titik dua E, Masalah Komang. Pada denah, rumah Komang berada di antara rumah Yohana dan rumah Lukas.",
-      tambah(0, judul("Eksplorasi 3.2E: denah")),
+      "Masalah Komang. Perhatikan denah berikut. Pada denah, rumah Komang berada di antara rumah Yohana dan rumah Lukas.",
+      tambah(0, judul("Denah tiga rumah")),
       tambah("Yohana,", emo("r1", 50, 80, "🏠", 30), teks("r1t", 50, 104, "Yohana", 9.4, W.biru)),
       tambah("Komang@2", emo("r2", 150, 80, "🏠", 30), teks("r2t", 150, 104, "Komang", 9.4, W.biru)),
       tambah("Lukas.", emo("r3", 250, 80, "🏠", 30), teks("r3t", 250, 104, "Lukas", 9.4, W.biru)),
@@ -244,8 +244,8 @@ export const ADEGAN_DENAH: AdeganStory = {
 /* ------------------------------ 11. Akhir pembelajaran, miskonsepsi, diferensiasi, Refleksi nomor 3 (Panduan Guru hlm. 107; Buku Siswa hlm. 102 dan 103) ------------------------------ */
 export const ADEGAN_PENUTUP: AdeganStory = {
   id: "penutup-b",
-  judul: "Akhir pembelajaran dan Refleksi",
-  sumber: "Panduan Guru hlm. 106–107; Buku Siswa hlm. 103",
+  judul: "Hati-hati, tantangan, dan renungan",
+  sumber: "Materi: hati-hati, tantangan, renungan",
   latar: "#FFFBEB",
   kutipan: [
     "Akhir Pembelajaran",
@@ -266,50 +266,50 @@ export const ADEGAN_PENUTUP: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Akhir pembelajaran. Peserta didik mempresentasikan hasil kerjanya. Lalu kelas menyimpulkan hal-hal penting yang harus diperhatikan saat menjumlahkan pecahan.",
-      tambah(0, judul("Akhir pembelajaran")),
-      tambah("mempresentasikan", ...kartu("a1", 30, 46, 240, 40, W.langit, ["presentasikan hasil kerja"], 10)),
-      tambah("menyimpulkan", ...kartu("a2", 30, 106, 240, 40, W.hijauMuda, ["simpulkan hal penting"], 10)),
+      "Mari kita tutup bagian ini. Coba jelaskan hasil kerjamu kepada temanmu, lalu simpulkan hal-hal penting yang harus diperhatikan saat menjumlahkan pecahan.",
+      tambah(0, judul("Menutup pelajaran")),
+      tambah("jelaskan", ...kartu("a1", 30, 46, 240, 40, W.langit, ["jelaskan hasil kerjamu"], 10)),
+      tambah("simpulkan", ...kartu("a2", 30, 106, 240, 40, W.hijauMuda, ["simpulkan hal penting"], 10)),
     ),
     k(
-      "Guru memastikan setiap peserta didik menemukan hasil penjumlahan dengan cara yang paling mudah dan paling disukai. Cara Lukas, Komang, Nisa, atau Yohana boleh dipilih.",
+      "Pilihlah cara yang paling mudah dan paling kamu sukai. Cara Lukas, Komang, Nisa, atau Yohana boleh kamu pakai, asalkan hasilnya sama.",
       bersih(0),
       tambah(0, judul("Pilih cara yang paling mudah")),
       tambah("Lukas,", ...kartu("p1", 20, 46, 126, 36, W.langit, ["Cara Lukas"], 9.4)),
       tambah("Komang,", ...kartu("p2", 154, 46, 126, 36, W.hijauMuda, ["Cara Komang"], 9.4)),
       tambah("Nisa,", ...kartu("p3", 20, 94, 126, 36, W.pink, ["Cara Nisa"], 9.4)),
-      tambah("Yohana,", ...kartu("p4", 154, 94, 126, 36, W.krem, ["Cara Yohana"], 9.4)),
+      tambah("Yohana", ...kartu("p4", 154, 94, 126, 36, W.krem, ["Cara Yohana"], 9.4)),
       tambah("paling@2", emo("p5", 150, 168, "⭐", 26)),
     ),
     k(
-      "Miskonsepsi. Kesalahan yang mungkin terjadi: menyamakan penyebut dan menjumlahkan bilangan campuran. Contohnya, peserta didik yang tidak dapat menyamakan penyebut.",
+      "Hati-hati, kesalahan yang sering terjadi ada dua: lupa menyamakan penyebut, dan keliru menjumlahkan pecahan campuran. Contohnya, satu per tiga ditambah empat per enam bukan lima per sembilan, sebab penyebut tidak ikut dijumlahkan.",
       bersih(0),
-      tambah(0, judul("Miskonsepsi")),
+      tambah(0, judul("Hati-hati")),
       tambah("menyamakan", ...kartu("q1", 20, 40, 126, 36, W.merahMuda, ["menyamakan penyebut"], 9)),
       tambah("menjumlahkan", ...kartu("q2", 154, 40, 126, 36, W.merahMuda, ["bilangan campuran"], 9)),
       tambah("Contohnya,", teks("q3", 150, 108, "1/3 + 4/6 = 5/9 ?", 16, W.merah)),
       tambah("tidak", teks("q4", 150, 132, "penyebut ikut dijumlahkan: salah", 9.4, W.merah), teks("q5", 150, 156, "benar: 2/6 + 4/6 = 6/6 = 1", 11, W.hijau)),
     ),
     k(
-      "Diferensiasi. Peserta didik yang cepat mengerjakan latihan tanpa bantuan, atau menjelajahi penjumlahan sehari-hari. Pada saat yang sama, guru mendampingi peserta didik yang kesulitan.",
+      "Tantangan untukmu: carilah jumlah dua pecahan lain dengan cara yang kamu pilih, tanpa bantuan. Lalu bandingkan hasilmu dengan hasil temanmu, atau carilah contoh penjumlahan pecahan di sekitarmu.",
       bersih(0),
-      tambah(0, judul("Diferensiasi")),
-      tambah("cepat", ...kartu("d1", 20, 46, 126, 56, W.hijauMuda, ["belajar cepat", "latihan mandiri"], 9.4)),
-      tambah("mendampingi", ...kartu("d2", 154, 46, 126, 56, W.langit, ["butuh bantuan", "didampingi guru"], 9.4)),
-      tambah("sehari-hari.", emo("d3", 150, 140, "🧑", 28)),
+      tambah(0, judul("Tantangan")),
+      tambah("carilah", ...kartu("d1", 20, 46, 126, 56, W.hijauMuda, ["cari jumlah", "pecahan lain"], 9.4)),
+      tambah("bandingkan", ...kartu("d2", 154, 46, 126, 56, W.langit, ["bandingkan hasil", "dengan temanmu"], 9.4)),
+      tambah("sekitarmu.", emo("d3", 150, 140, "🔎", 28)),
     ),
     k(
-      "Refleksi. Guru menutup dengan meminta peserta didik menilai kemampuan menjumlahkan pecahan. Di tabel buku, pernyataan nomor tiga berbunyi: Aku dapat menentukan penjumlahan pada bilangan pecahan. Jawablah ya atau tidak dengan jujur.",
+      "Renungan: apakah kamu sudah bisa menjumlahkan pecahan? Coba pikirkan dalam hati, bagian mana yang sudah kamu kuasai dan bagian mana yang masih membuatmu ragu.",
       bersih(0),
-      tambah(0, judul("Refleksi nomor 3")),
-      tambah("tabel", ...kartu("f1", 16, 40, 268, 50, W.krem, ["3. Aku dapat menentukan", "penjumlahan pada bilangan pecahan"], 9.4)),
-      tambah("Jawablah", ...kartu("f2", 60, 108, 80, 32, W.hijauMuda, ["Ya"], 11), ...kartu("f3", 160, 108, 80, 32, W.merahMuda, ["Tidak"], 11)),
-      tambah("jujur.", emo("f4", 150, 172, "😊", 24)),
+      tambah(0, judul("Renungan")),
+      tambah("sudah@1", ...kartu("f1", 16, 40, 268, 50, W.hijauMuda, ["bagian mana yang", "sudah kamu kuasai?"], 9.4)),
+      tambah("masih", ...kartu("f2", 16, 104, 268, 50, W.krem, ["bagian mana yang", "masih membuatmu ragu?"], 9.4)),
+      tambah("hati,", emo("f4", 150, 178, "💭", 22)),
     ),
     k(
-      "Itulah penjumlahan pecahan di Subbab B. Penyebut sama, jumlahkan pembilangnya. Penyebut berbeda, samakan dulu dengan pecahan senilai. Pecahan campuran, ubah ke pecahan biasa atau pisahkan bilangan bulat dan pecahannya.",
+      "Itulah penjumlahan pecahan yang sudah kita pelajari. Penyebut sama, jumlahkan pembilangnya. Penyebut berbeda, samakan dulu dengan pecahan senilai. Pecahan campuran, ubah ke pecahan biasa atau pisahkan bilangan bulat dan pecahannya.",
       bersih(0),
-      tambah(0, judul("Rangkuman Subbab B")),
+      tambah(0, judul("Rangkuman penjumlahan pecahan")),
       tambah("sama,", ...kartu("r1", 20, 36, 260, 40, W.hijauMuda, ["penyebut sama:", "jumlahkan pembilang"], 9.4)),
       tambah("berbeda,", ...kartu("r2", 20, 84, 260, 40, W.pink, ["penyebut berbeda:", "samakan dulu"], 9.4)),
       tambah("campuran,", ...kartu("r3", 20, 132, 260, 40, W.krem, ["pecahan campuran:", "ubah atau pisahkan"], 9.4)),

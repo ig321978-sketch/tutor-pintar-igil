@@ -142,8 +142,8 @@ export const ADEGAN_PETA: AdeganStory = {
 /* ------------------------------ 3. Ayo Menyimak: Jajanan Pasar (Buku Siswa hlm. 64 dan 65) ------------------------------ */
 export const ADEGAN_MENYIMAK: AdeganStory = {
   id: "ayo-menyimak",
-  judul: "Ayo Menyimak: Jajanan Pasar",
-  sumber: "Buku Siswa hlm. 64–65",
+  judul: "Menyimak cerita: Jajanan Pasar",
+  sumber: "Materi: cerita jajanan pasar",
   latar: "#FFFBEB",
   kutipan: [
     "Indonesia merupakan negara yang kaya dengan makanan khas,",
@@ -162,8 +162,8 @@ export const ADEGAN_MENYIMAK: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Ayo Menyimak: Jajanan Pasar. Indonesia kaya makanan khas, salah satunya jajanan pasar, yang berbahan tepung, jagung, ketan, beras, dan lain-lain. Biasanya dipakai Ibu untuk menjamu tamu.",
-      tambah(0, judul("Ayo Menyimak: Jajanan Pasar")),
+      "Mari kita menyimak cerita tentang Jajanan Pasar. Indonesia kaya makanan khas, salah satunya jajanan pasar, yang berbahan tepung, jagung, ketan, beras, dan lain-lain. Biasanya dipakai Ibu untuk menjamu tamu.",
+      tambah(0, judul("Menyimak: Jajanan Pasar")),
       tambah("Jajanan", emo("e1", 60, 70, "🍡", 34)),
       tambah("makanan", emo("e2", 150, 70, "🥮", 34)),
       tambah("salah", emo("e3", 240, 70, "🍘", 34)),
@@ -174,7 +174,7 @@ export const ADEGAN_MENYIMAK: AdeganStory = {
       tambah("Ibu", emo("ib", 150, 170, "🍵", 26), teks("ibt", 150, 188, "menjamu tamu", 8.6, W.coklat)),
     ),
     k(
-      "Ibu sering meminta kalian mengantar jajanan pasar ke saudara atau tetangga. Dari semua makanan yang ada, berapa bagiankah yang akan kalian bagikan?",
+      "Coba bayangkan, Ibu sering meminta kalian mengantar jajanan pasar ke saudara atau tetangga. Dari semua makanan yang ada, berapa bagiankah yang akan kalian bagikan?",
       bersih(0),
       tambah(0, judul("Membagikan jajanan")),
       tambah("Ibu", emo("r1", 44, 90, "🏠", 34)),
@@ -183,7 +183,7 @@ export const ADEGAN_MENYIMAK: AdeganStory = {
       tambah("berapa", teks("tn", 150, 160, "berapa bagian?", 14, W.merah)),
     ),
     k(
-      "Soal pertama. Di dalam kardus ada empat potong makanan, dan kalian makan dua potong di antaranya. Bagaimana menuliskannya dalam kalimat matematika?",
+      "Sekarang soal pertama. Di dalam kardus ada empat potong makanan, dan kalian makan dua potong di antaranya. Bagaimana menuliskannya dalam kalimat matematika? Pikirkan dulu sebelum menjawab.",
       bersih(0),
       tambah(0, judul("Soal pertama")),
       tambah("kardus", ...batang("kd", 60, 60, 180, 36, 4, 0, W.karang)),
@@ -193,7 +193,7 @@ export const ADEGAN_MENYIMAK: AdeganStory = {
       tambah("Bagaimana", ...kartu("km", 40, 148, 220, 32, W.krem, ["kalimat matematikanya?"], 9.6)),
     ),
     k(
-      "Soal kedua. Sebuah roti di piring dipotong menjadi tiga bagian sama besar. Berapa bagian yang kalian dapatkan? Kalian akan bisa menjawabnya jika menguasai materi pecahan dengan baik.",
+      "Sekarang soal kedua. Sebuah roti di piring dipotong menjadi tiga bagian sama besar. Berapa bagian yang kalian dapatkan? Kalian pasti bisa menjawabnya kalau menguasai pecahan dengan baik.",
       bersih(0),
       tambah(0, judul("Soal kedua")),
       tambah("tiga", ...pai("ro", 150, 86, 44, 3, 0)),

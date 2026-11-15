@@ -5,12 +5,12 @@ import { bersih, k, tambah } from "./k5b3b-bantu";
 /* ------------------------------ 5. Common Denominator via LCM: penerapan ------------------------------ */
 export const ADEGAN_LUAR_KPK_TERAPAN: AdeganStory = {
   id: "luar-kpk-terapan",
-  judul: "Common Denominator via LCM pada angka buku",
-  sumber: "Metode luar: Common Denominator via LCM; Buku Siswa hlm. 85–90",
+  judul: "Common Denominator via LCM pada contoh tadi",
+  sumber: "Metode luar: Common Denominator via LCM",
   latar: "#EEF2FF",
   ketukan: [
     k(
-      "Terapkan pada kertas Lukas dan Komang, Eksplorasi tiga titik dua D: satu per tiga ditambah empat per enam. Penyebutnya tiga dan enam, berbeda, jadi potongannya belum sama.",
+      "Terapkan pada kertas Lukas dan Komang: satu per tiga ditambah empat per enam. Penyebutnya tiga dan enam, berbeda, jadi potongannya belum sama.",
       tambah(0, judul("Kertas Lukas dan Komang")),
       tambah("satu", teks("a1", 150, 72, "1/3 + 4/6", 24, W.hitam)),
       tambah("berbeda,", ...kartu("a2", 40, 100, 220, 32, W.merahMuda, ["penyebut 3 dan 6 berbeda"], 10)),
@@ -39,7 +39,7 @@ export const ADEGAN_LUAR_KPK_TERAPAN: AdeganStory = {
       tambah("Jadi", teks("d3", 150, 132, "= 3/6 + 2/6 = 5/6", 18, W.hijau)),
     ),
     k(
-      "Contoh paling besar di buku adalah jarak tiga rumah: satu per dua, satu per empat, dan satu per dua ratus. KPK dari dua, empat, dan dua ratus adalah dua ratus, sehingga jumlahnya seratus lima puluh satu per dua ratus.",
+      "Contoh paling besar tadi adalah jarak tiga rumah: satu per dua, satu per empat, dan satu per dua ratus. KPK dari dua, empat, dan dua ratus adalah dua ratus, sehingga jumlahnya seratus lima puluh satu per dua ratus.",
       bersih(0),
       tambah(0, judul("Tiga pecahan sekaligus")),
       tambah("Contoh", teks("e1", 150, 56, "1/2 + 1/4 + 1/200", 17, W.hitam)),
@@ -97,8 +97,8 @@ export const ADEGAN_LUAR_AREA: AdeganStory = {
 /* ------------------------------ 7. Area Model: penerapan ------------------------------ */
 export const ADEGAN_LUAR_AREA_TERAPAN: AdeganStory = {
   id: "luar-area-terapan",
-  judul: "Area Model pada angka buku",
-  sumber: "Metode luar: Area Model; Buku Siswa hlm. 76 dan 85–87",
+  judul: "Area Model pada contoh tadi",
+  sumber: "Metode luar: Area Model",
   latar: "#FEFCE8",
   ketukan: [
     k(
@@ -183,8 +183,8 @@ const HW = 250;
 
 export const ADEGAN_LUAR_GARIS_TERAPAN: AdeganStory = {
   id: "luar-garis-terapan",
-  judul: "Number Line Jumps pada angka buku",
-  sumber: "Metode luar: Number Line Jumps; Buku Siswa hlm. 78–80 dan 85–87",
+  judul: "Number Line Jumps pada contoh tadi",
+  sumber: "Metode luar: Number Line Jumps",
   latar: "#FAF5FF",
   ketukan: [
     k(
@@ -249,10 +249,10 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("berbeda.", teks("t5", 150, 150, "1/3 + 4/6 = 1", 20, W.hijau)),
     ),
     k(
-      "Buku juga meminta kita memilih cara yang paling mudah dan paling disukai. Jadi coba semuanya, lalu pilih satu yang paling cocok untukmu.",
+      "Terakhir, pilihlah cara yang paling mudah dan paling kamu sukai. Jadi coba semuanya, lalu pilih satu yang paling cocok untukmu.",
       bersih(0),
       tambah(0, judul("Pilih yang paling mudah")),
-      tambah("memilih", emo("u1", 150, 80, "⭐", 36)),
+      tambah("pilihlah", emo("u1", 150, 80, "⭐", 36)),
       tambah("coba", ...kartu("u2", 50, 104, 200, 40, W.hijauMuda, ["coba semua, pilih satu"], 10.4)),
     ),
   ],

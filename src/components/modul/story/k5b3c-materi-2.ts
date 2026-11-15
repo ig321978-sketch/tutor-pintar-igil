@@ -5,8 +5,8 @@ import { bersih, hapus, k, sorotkan, tambah, ubah, warnai } from "./k5b3c-bantu"
 /* ------------------------------ 5. Eksplorasi 3.3C: jarak Asep ke sekolah (Buku Siswa hlm. 96 sampai 98) ------------------------------ */
 export const ADEGAN_EKS_3C: AdeganStory = {
   id: "eks-3c",
-  judul: "Eksplorasi 3.3C: jarak Asep ke sekolah",
-  sumber: "Buku Siswa hlm. 96–98",
+  judul: "Pecahan campuran: jarak Asep ke sekolah",
+  sumber: "Materi: pecahan campuran, jarak Asep",
   latar: "#F0FDF4",
   kutipan: [
     "Eksplorasi 3.3C",
@@ -27,19 +27,19 @@ export const ADEGAN_EKS_3C: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Eksplorasi tiga titik tiga C, Masalah Asep. Jarak rumah ke sekolah lima dan dua per tiga kilometer. Pagi ini Asep sudah menempuh dua dan satu per tiga kilometer.",
-      tambah(0, judul("Eksplorasi 3.3C: Masalah Asep")),
+      "Sekarang pecahan campuran. Perhatikan masalah Asep. Jarak rumah ke sekolah lima dan dua per tiga kilometer. Pagi ini Asep sudah menempuh dua dan satu per tiga kilometer.",
+      tambah(0, judul("Jarak Asep ke sekolah")),
       tambah("Jarak", garis("jl", 46, 108, 208, 0, W.coklat, 3), emo("rm", 30, 114, "🏠", 26), emo("sk", 270, 114, "🏫", 26), teks("t1", 150, 40, "jarak ke sekolah (km)", 9.4, W.coklat)),
       tambah("lima", ...rumus("ja", 150, 68, "5 2/3", 17, W.biru, {}, false)),
       tambah("sudah", teks("t2", 150, 142, "sudah ditempuh (km)", 9.4, W.hijau), ...rumus("jb", 150, 164, "2 1/3", 17, W.biru, {}, false)),
     ),
     k(
-      "Perhatikan satuannya. Buku bertanya berapa meter lagi, padahal jarak diberikan dalam kilometer. Jadi jawabannya kita tulis dalam kilometer.",
+      "Yang ditanya, berapa kilometer lagi yang harus Asep tempuh? Perhatikan satuannya. Jarak diberikan dalam kilometer, jadi jawabannya kita tulis dalam kilometer.",
       bersih(0),
       tambah(0, judul("Perhatikan satuan")),
-      tambah("meter", ...kartu("s1", 20, 40, 260, 36, W.merahMuda, ["buku bertanya: berapa meter lagi?"], 9.4)),
-      tambah("kilometer,", ...kartu("s2", 20, 92, 260, 36, W.hijauMuda, ["jarak diberikan dalam kilometer (km)"], 9.4)),
-      tambah("Jadi", ...kartu("s3", 50, 144, 200, 36, W.krem, ["jawaban ditulis dalam km"], 9.4)),
+      tambah("ditanya", ...kartu("s1", 20, 40, 260, 36, W.merahMuda, ["yang ditanya: berapa km lagi?"], 9.4)),
+      tambah("diberikan", ...kartu("s2", 20, 92, 260, 36, W.hijauMuda, ["jarak diberikan dalam kilometer (km)"], 9.4)),
+      tambah("jadi", ...kartu("s3", 50, 144, 200, 36, W.krem, ["jawaban ditulis dalam km"], 9.4)),
     ),
     k(
       "Cara Lukas, langkah satu: ubah campuran menjadi pecahan biasa. Lima dikali tiga ditambah dua sama dengan tujuh belas, jadi tujuh belas per tiga. Dua dikali tiga ditambah satu sama dengan tujuh, jadi tujuh per tiga.",
@@ -76,7 +76,7 @@ const BAR_W = 222;
 export const ADEGAN_BEDA_PENYEBUT: AdeganStory = {
   id: "beda-penyebut",
   judul: "Pengurangan berpenyebut berbeda: masalah Yohana",
-  sumber: "Buku Siswa hlm. 98–99",
+  sumber: "Materi: penyebut berbeda, masalah Yohana",
   latar: "#FFFBEB",
   kutipan: [
     "2. Pengurangan Pecahan Berpenyebut Berbeda",
@@ -137,11 +137,11 @@ export const ADEGAN_BEDA_PENYEBUT: AdeganStory = {
       tambah("Yohana", ...kartu("yk", 40, 128, 220, 36, W.hijauMuda, ["Yohana kurang 1/6 bagian kertas"], 9.4)),
     ),
     k(
-      "Catatan guru: di buku tertulis KPK dari tiga dan enam, padahal seharusnya KPK dari dua dan tiga. Hasil satu per enam tetap benar.",
+      "Hati-hati saat memilih KPK. Kita mencari KPK dari penyebut soal, yaitu dua dan tiga. Hasilnya satu per enam.",
       bersih(0),
-      tambah(0, judul("Catatan guru")),
-      tambah("buku", ...kartu("g1", 20, 34, 260, 34, W.merahMuda, ["buku tertulis: KPK dari 3 dan 6"], 9.4)),
-      tambah("seharusnya", ...kartu("g2", 20, 80, 260, 34, W.hijauMuda, ["seharusnya: KPK dari 2 dan 3"], 9.4)),
+      tambah(0, judul("Hati-hati memilih KPK")),
+      tambah("memilih", ...kartu("g1", 20, 34, 260, 34, W.merahMuda, ["jangan lupa: cari KPK penyebut"], 9.4)),
+      tambah("yaitu", ...kartu("g2", 20, 80, 260, 34, W.hijauMuda, ["penyebut soal: 2 dan 3"], 9.4)),
       tambah("Hasil", ...rumus("g3", 150, 148, "2/3 − 1/2 = 1/6", 18)),
     ),
   ],
@@ -151,7 +151,7 @@ export const ADEGAN_BEDA_PENYEBUT: AdeganStory = {
 export const ADEGAN_KOMANG_TALI: AdeganStory = {
   id: "komang-tali",
   judul: "Masalah Komang: dua pecahan campuran",
-  sumber: "Buku Siswa hlm. 100–101",
+  sumber: "Materi: dua pecahan campuran, tali",
   latar: "#F5F3FF",
   kutipan: [
     "Masalah Komang",
@@ -169,7 +169,7 @@ export const ADEGAN_KOMANG_TALI: AdeganStory = {
   ],
   ketukan: [
     k(
-      "Masalah Komang. Untuk membuat jemuran, Komang memerlukan tali empat setengah meter, tetapi ia baru punya dua satu per tiga meter. Berapa meter tali yang harus ia beli?",
+      "Sekarang masalah Komang. Untuk membuat jemuran, Komang memerlukan tali empat setengah meter, tetapi ia baru punya dua satu per tiga meter. Berapa meter tali yang harus ia beli?",
       tambah(0, judul("Masalah Komang: tali jemuran")),
       tambah("memerlukan", teks("pa", 80, 44, "perlu (m)", 9.4, W.coklat), ...rumus("ra", 80, 68, "4 1/2", 18, W.biru, {}, false)),
       tambah("punya", teks("pb", 220, 44, "punya (m)", 9.4, W.hijau), ...rumus("rb", 220, 68, "2 1/3", 18, W.biru, {}, false)),

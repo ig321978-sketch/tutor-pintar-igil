@@ -108,7 +108,7 @@ export const ADEGAN_PERSIAPAN: AdeganStory = {
 export const ADEGAN_MASALAH: AdeganStory = {
   id: "masalah-lukas",
   judul: "Masalah Lukas dan syarat penjumlahan",
-  sumber: "Buku Siswa hlm. 76",
+  sumber: "Materi: masalah wingko Lukas",
   latar: "#FFF7ED",
   kutipan: [
     "Masalah Lukas",
@@ -128,7 +128,7 @@ export const ADEGAN_MASALAH: AdeganStory = {
       tambah("digabungkan,", teks("pl", 150, 80, "+", 18, W.merah), teks("gq", 150, 160, "hasilnya = ?", 14, W.merah)),
     ),
     k(
-      "Sebelum menjawab, buku memberi syarat. Syarat melakukan penjumlahan pecahan adalah penyebutnya harus sama.",
+      "Sebelum menjawab, ingat dulu satu syarat. Syarat melakukan penjumlahan pecahan adalah penyebutnya harus sama.",
       bersih(0),
       tambah(0, judul("Syarat penjumlahan")),
       tambah("syarat.", ...kartu("sy", 30, 50, 240, 50, W.krem, ["penyebut harus sama"], 12, { garis: W.merah })),

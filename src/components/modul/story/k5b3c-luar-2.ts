@@ -53,7 +53,7 @@ export const ADEGAN_LUAR_RAM: AdeganStory = {
 export const ADEGAN_LUAR_RAM_TERAPAN: AdeganStory = {
   id: "luar-ram-terapan",
   judul: "Residual Area Model pada kertas Yohana dan apel Asep",
-  sumber: "Metode luar: Residual Area Model; Buku Siswa hlm. 98–99, 93–95",
+  sumber: "Metode luar: Residual Area Model",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -134,8 +134,8 @@ export const ADEGAN_LUAR_AUP: AdeganStory = {
 /* ------------------------------ 9. Add-Up Check: penerapan ------------------------------ */
 export const ADEGAN_LUAR_AUP_TERAPAN: AdeganStory = {
   id: "luar-aup-terapan",
-  judul: "Add-Up Check pada hasil Yohana, Asep, dan Uji Kompetensi",
-  sumber: "Metode luar: Add-Up Check; Buku Siswa hlm. 98–99, 96–98, 104",
+  judul: "Add-Up Check pada hasil Yohana, Asep, dan Uji",
+  sumber: "Metode luar: Add-Up Check",
   latar: "#FDF2F8",
   ketukan: [
     k(
@@ -152,16 +152,16 @@ export const ADEGAN_LUAR_AUP_TERAPAN: AdeganStory = {
       tambah("sesuai", ...kartu("k", 50, 128, 200, 34, W.hijauMuda, ["sama dengan jarak 5 2/3 km"], 9.6), emo("e", 150, 184, "✅", 20)),
     ),
     k(
-      "Uji Kompetensi enam: enam dikurangi tiga satu per delapan tertulis tiga tujuh per delapan. Periksa: tiga tujuh per delapan ditambah tiga satu per delapan sama dengan tujuh, bukan enam. Pernyataan salah.",
+      "Uji enam: enam dikurangi tiga satu per delapan tertulis tiga tujuh per delapan. Periksa: tiga tujuh per delapan ditambah tiga satu per delapan sama dengan tujuh, bukan enam. Pernyataan salah.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 6")),
+      tambah(0, judul("Uji 6")),
       tambah("Periksa:", ...rumus("r", 150, 80, "3 7/8 + 3 1/8 = 7", 22)),
       tambah("bukan", ...kartu("k", 50, 128, 200, 34, W.merahMuda, ["hasilnya 7, bukan 6: SALAH"], 9.6), emo("e", 150, 184, "❌", 20)),
     ),
     k(
-      "Uji Kompetensi sepuluh: dua satu per tiga dikurangi satu lima per enam tertulis satu per tiga. Periksa: satu per tiga ditambah satu lima per enam sama dengan dua satu per enam, bukan dua satu per tiga. Salah.",
+      "Uji sepuluh: dua satu per tiga dikurangi satu lima per enam tertulis satu per tiga. Periksa: satu per tiga ditambah satu lima per enam sama dengan dua satu per enam, bukan dua satu per tiga. Salah.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 10")),
+      tambah(0, judul("Uji 10")),
       tambah("Periksa:", ...rumus("r", 150, 80, "1/3 + 1 5/6 = 2/6 + 1 5/6 = 2 1/6", 17)),
       tambah("bukan", ...kartu("k", 50, 128, 200, 34, W.merahMuda, ["hasilnya 2 1/6, bukan 2 1/3: SALAH"], 9.6), emo("e", 150, 184, "❌", 20)),
     ),
@@ -189,10 +189,10 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
       tambah("Add-Up", ...kartu("r4", 14, 92, 272, 44, W.pink, ["Add-Up Check", "periksa dengan penjumlahan balik"], 9.6)),
     ),
     k(
-      "Hasilnya dari buku: kertas Yohana satu per enam, jarak Asep tiga satu per tiga kilometer, tali Komang dua satu per enam meter, dan Uji Kompetensi tiga tujuh per empat puluh.",
+      "Hasil akhirnya: kertas Yohana satu per enam, jarak Asep tiga satu per tiga kilometer, tali Komang dua satu per enam meter, dan Uji tiga tujuh per empat puluh.",
       bersih(0),
-      tambah(0, judul("Hasil dari buku")),
-      tambah("kertas", ...tabel("hs", 30, 34, [150, 90], [["soal", "hasil"], ["kertas Yohana", "1/6"], ["jarak Asep", "3 1/3 km"], ["tali Komang", "2 1/6 m"], ["Uji Kompetensi 3", "7/40"]], 24, 8.6)),
+      tambah(0, judul("Hasil akhir")),
+      tambah("kertas", ...tabel("hs", 30, 34, [150, 90], [["soal", "hasil"], ["kertas Yohana", "1/6"], ["jarak Asep", "3 1/3 km"], ["tali Komang", "2 1/6 m"], ["Uji 3", "7/40"]], 24, 8.6)),
     ),
     k(
       "Pilih metode sesuai soal, dan ingat: kita hanya boleh mengurangi potongan yang sama besar.",

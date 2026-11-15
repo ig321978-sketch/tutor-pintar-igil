@@ -59,7 +59,7 @@ const barisCampuran = (b: (typeof BARIS_CAMPURAN)[number]) => [
 export const ADEGAN_LUAR_CAMPURAN_TERAPAN: AdeganStory = {
   id: "luar-campuran-terapan",
   judul: "Mixed to Improper pada pita Nisa",
-  sumber: "Metode luar: Mixed to Improper; pita Nisa Buku Siswa hlm. 75",
+  sumber: "Metode luar: Mixed to Improper",
   latar: "#FFFBEB",
   ketukan: [
     k(
@@ -145,12 +145,12 @@ export const ADEGAN_LUAR_PATOKAN: AdeganStory = {
 /* ------------------------------ 9. Benchmark Half Comparison: penerapan ------------------------------ */
 export const ADEGAN_LUAR_PATOKAN_TERAPAN: AdeganStory = {
   id: "luar-patokan-terapan",
-  judul: "Benchmark Half Comparison pada angka buku",
-  sumber: "Metode luar: Benchmark Half Comparison; Buku Siswa hlm. 66, 72–75",
+  judul: "Benchmark Half Comparison pada contoh angka",
+  sumber: "Metode luar: Benchmark Half Comparison",
   latar: "#FDF2F8",
   ketukan: [
     k(
-      "Contoh pertama, dari soal Mengingat Kembali: satu per dua atau satu per lima? Satu per dua adalah patokannya. Satu per lima berada di kiri patokan, jadi lebih kecil. Maka satu per dua lebih besar.",
+      "Contoh pertama: satu per dua atau satu per lima? Satu per dua adalah patokannya. Satu per lima berada di kiri patokan, jadi lebih kecil. Maka satu per dua lebih besar.",
       tambah(0, judul("1/2 atau 1/5?")),
       tambah(0, ...garisPatokan("t1")),
       tambah("patokannya.", ...patokanTanda("t1")),
@@ -159,7 +159,7 @@ export const ADEGAN_LUAR_PATOKAN_TERAPAN: AdeganStory = {
       tambah("Maka", ...kartu("tk", 80, 164, 140, 28, W.emas, ["1/2 > 1/5"], 12)),
     ),
     k(
-      "Contoh kedua, Ayo Berlatih d: tiga per enam dan dua per enam. Tiga per enam tepat setengah, sebab tiga adalah setengah dari enam. Dua per enam kurang dari setengah. Jadi tiga per enam lebih besar.",
+      "Contoh kedua: tiga per enam dan dua per enam. Tiga per enam tepat setengah, sebab tiga adalah setengah dari enam. Dua per enam kurang dari setengah. Jadi tiga per enam lebih besar.",
       bersih(0),
       tambah(0, judul("3/6 atau 2/6?")),
       tambah(0, ...garisPatokan("t2"), ...patokanTanda("t2")),
@@ -178,9 +178,9 @@ export const ADEGAN_LUAR_PATOKAN_TERAPAN: AdeganStory = {
       tambah("Jadi", ...kartu("tz", 70, 172, 160, 24, W.emas, ["7/8 paling kecil"], 10.4)),
     ),
     k(
-      "Tetapi pada Ayo Berlatih a, delapan per dua belas dan sebelas per dua belas. Keduanya lebih dari setengah, yaitu enam per dua belas. Patokan belum cukup, jadi bandingkan pembilangnya, delapan lebih kecil dari sebelas.",
+      "Tetapi ada contoh lain: delapan per dua belas dan sebelas per dua belas. Keduanya lebih dari setengah, yaitu enam per dua belas. Patokan belum cukup, jadi bandingkan pembilangnya, delapan lebih kecil dari sebelas.",
       bersih(0),
-      tambah(0, judul("Ayo Berlatih a: patokan belum cukup")),
+      tambah(0, judul("Patokan belum cukup")),
       tambah(0, ...garisPatokan("t4"), ...patokanTanda("t4")),
       tambah("delapan", ...titik("p8_12", 8 / 12, "8/12", W.biru)),
       tambah("sebelas", ...titik("p11_12", 11 / 12, "11/12", W.hijau)),
@@ -196,7 +196,7 @@ const KOLOM_KUNCI = [78, 110, 92];
 export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
   id: "luar-ringkas",
   judul: "Ringkasan empat metode dan hasil akhir",
-  sumber: "Ringkasan metode luar; angka Buku Siswa hlm. 71–75",
+  sumber: "Ringkasan metode luar",
   latar: "#F0FDF4",
   ketukan: [
     k(
@@ -219,14 +219,14 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       "Apa pun metodenya, hasilnya harus sama. Lompatan Yohana dari terjauh: tiga dan satu per dua meter, dua dan tiga per empat meter, tujuh per delapan meter.",
       bersih(0),
-      tambah(0, judul("Hasil akhir: kunci angka buku")),
+      tambah(0, judul("Hasil akhir semua metode")),
       tambah("Apa", ...tabel("kn0", 10, 44, KOLOM_KUNCI, [["Soal", "Urutan", "Arah"]], 22, 8, W.krem)),
       tambah("Lompatan", ...tabel("kn1", 10, 66, KOLOM_KUNCI, [["Lompatan Yohana", "3 1/2 > 2 3/4 > 7/8", "jauh → dekat"]], 22, 7.6, W.putih)),
     ),
     k(
-      "Pita Nisa dari yang terpendek: dua dan satu per empat meter, dua dan dua per lima meter, dua dan satu per dua meter. Itu sesuai kunci buku.",
+      "Pita Nisa dari yang terpendek: dua dan satu per empat meter, dua dan dua per lima meter, dua dan satu per dua meter. Hasilnya sama untuk semua metode.",
       tambah("Pita", ...tabel("kn2", 10, 88, KOLOM_KUNCI, [["Pita Nisa", "2 1/4 < 2 2/5 < 2 1/2", "pendek → panjang"]], 22, 7.6, W.putih)),
-      tambah("sesuai", emo("kc", 150, 150, "✅", 28), teks("kt", 150, 172, "hasil semua metode sama", 9.4, W.hijau)),
+      tambah("Hasilnya", emo("kc", 150, 150, "✅", 28), teks("kt", 150, 172, "hasil semua metode sama", 9.4, W.hijau)),
     ),
   ],
 };

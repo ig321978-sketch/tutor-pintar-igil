@@ -10,7 +10,7 @@ const ABU = W.abu;
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
   judul: "Empat metode dari luar untuk pengurangan pecahan",
-  sumber: "Metode luar: pembuka; contoh Buku Siswa hlm. 91–104",
+  sumber: "Metode luar: pembuka",
   latar: "#FFF7ED",
   ketukan: [
     k(
@@ -38,13 +38,13 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       tambah("sama", teks("gv", 150, 170, "hanya potongan sama besar yang boleh dikurangkan", 9, W.hijau)),
     ),
     k(
-      "Angkanya dari buku: kertas Yohana dan Lukas, delapan apel Asep, jarak ke sekolah, tali Komang, dan soal Uji Kompetensi.",
+      "Angka yang kita pakai berasal dari kertas Yohana dan Lukas, delapan apel Asep, jarak ke sekolah, tali Komang, dan soal Uji.",
       bersih(0),
-      tambah(0, judul("Angka dari buku")),
+      tambah(0, judul("Angka yang kita pakai")),
       tambah("kertas", ...kartu("a1", 20, 32, 260, 30, W.langit, ["kertas Yohana dan Lukas"], 9.6)),
       tambah("apel", ...kartu("a2", 20, 72, 260, 30, W.hijauMuda, ["8 apel Asep"], 9.6)),
       tambah("jarak", ...kartu("a3", 20, 112, 260, 30, W.krem, ["jarak ke sekolah dan tali Komang"], 9.6)),
-      tambah("Uji", ...kartu("a4", 20, 152, 260, 30, W.pink, ["soal Uji Kompetensi 3, 4, 6, 10"], 9.6)),
+      tambah("Uji", ...kartu("a4", 20, 152, 260, 30, W.pink, ["soal Uji 3, 4, 6, dan 10"], 9.6)),
     ),
   ],
 };
@@ -92,29 +92,29 @@ export const ADEGAN_LUAR_LDS: AdeganStory = {
 /* ------------------------------ 3. Like Denominator Subtract: penerapan ------------------------------ */
 export const ADEGAN_LUAR_LDS_TERAPAN: AdeganStory = {
   id: "luar-lds-terapan",
-  judul: "Like Denominator Subtract pada soal buku",
-  sumber: "Metode luar: Like Denominator Subtract; Buku Siswa hlm. 91, 101, 104",
+  judul: "Like Denominator Subtract pada contoh soal",
+  sumber: "Metode luar: Like Denominator Subtract",
   latar: "#F0FDF4",
   ketukan: [
     k(
-      "Eksplorasi tiga titik tiga A: Lukas melukis dua per tiga kertas dan sudah mengerjakan satu per tiga. Penyebutnya sama, jadi dua dikurangi satu sama dengan satu, hasilnya satu per tiga.",
-      tambah(0, judul("Eksplorasi 3.3A: kertas Lukas")),
-      tambah("Eksplorasi", ...sel("tk", 40, 44, 222, 34, 3, [0, 1], W.langit)),
+      "Masalah Lukas: Lukas melukis dua per tiga kertas dan sudah mengerjakan satu per tiga. Penyebutnya sama, jadi dua dikurangi satu sama dengan satu, hasilnya satu per tiga.",
+      tambah(0, judul("Masalah Lukas: kertas")),
+      tambah("Masalah", ...sel("tk", 40, 44, 222, 34, 3, [0, 1], W.langit)),
       tambah("sudah", ...silang("tk", 40, 44, 222, 34, 3, [0])),
       tambah("Penyebutnya", ...rumus("tr", 150, 124, "2/3 − 1/3 = 1/3", 22)),
     ),
     k(
-      "Ayo Berlatih soal b: dua per tujuh dikurangi satu per tujuh. Dua dikurangi satu sama dengan satu, penyebut tetap tujuh. Hasilnya satu per tujuh.",
+      "Latihan satu soal b: dua per tujuh dikurangi satu per tujuh. Dua dikurangi satu sama dengan satu, penyebut tetap tujuh. Hasilnya satu per tujuh.",
       bersih(0),
-      tambah(0, judul("Ayo Berlatih 1b")),
-      tambah("Ayo", ...sel("ay", 40, 44, 222, 30, 7, [0, 1], W.langit)),
+      tambah(0, judul("Latihan 1b")),
+      tambah("Latihan", ...sel("ay", 40, 44, 222, 30, 7, [0, 1], W.langit)),
       tambah("Dua@2", ...silang("ay", 40, 44, 222, 30, 7, [0])),
       tambah("Hasilnya", ...rumus("ar", 150, 124, "2/7 − 1/7 = 1/7", 22)),
     ),
     k(
-      "Uji Kompetensi empat: satu satu per delapan dikurangi satu per delapan. Meski campuran, penyebutnya sama. Pecahan satu per delapan habis, tinggal satu bulat.",
+      "Uji empat: satu satu per delapan dikurangi satu per delapan. Meski campuran, penyebutnya sama. Pecahan satu per delapan habis, tinggal satu bulat.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 4")),
+      tambah(0, judul("Uji 4")),
       tambah("dikurangi", ...rumus("ur", 150, 70, "1 1/8 − 1/8 = 1", 22)),
       tambah("Meski", ...rumus("us", 150, 124, "9/8 − 1/8 = 8/8 = 1", 18)),
       tambah("tinggal", ...kartu("uk", 70, 158, 160, 30, W.hijauMuda, ["sisa bika Ambon: 1 bulat"], 9.6)),
@@ -122,7 +122,7 @@ export const ADEGAN_LUAR_LDS_TERAPAN: AdeganStory = {
     k(
       "Apel Lukas: enam per delapan dikurangi dua per delapan. Penyebutnya sama, jadi enam dikurangi dua sama dengan empat. Hasilnya empat per delapan, atau setengah.",
       bersih(0),
-      tambah(0, judul("Eksplorasi 3.3B: apel Lukas")),
+      tambah(0, judul("Apel Lukas")),
       tambah("Apel", ...apel("ap", 80, 50, (i) => (YOHANA.includes(i) ? ABU : LUKAS.includes(i) ? W.hijau : W.putih))),
       tambah("Penyebutnya", ...rumus("pr", 150, 128, "6/8 − 2/8 = 4/8 = 1/2", 19)),
     ),
@@ -172,8 +172,8 @@ export const ADEGAN_LUAR_CDS: AdeganStory = {
 /* ------------------------------ 5. Common Denominator Subtract: penerapan ------------------------------ */
 export const ADEGAN_LUAR_CDS_TERAPAN: AdeganStory = {
   id: "luar-cds-terapan",
-  judul: "Common Denominator Subtract pada soal buku",
-  sumber: "Metode luar: Common Denominator Subtract; Buku Siswa hlm. 98–102, 103",
+  judul: "Common Denominator Subtract pada contoh soal",
+  sumber: "Metode luar: Common Denominator Subtract",
   latar: "#EFF6FF",
   ketukan: [
     k(
@@ -183,16 +183,16 @@ export const ADEGAN_LUAR_CDS_TERAPAN: AdeganStory = {
       tambah("Dua@4", ...rumus("r", 150, 100, "2/3 − 1/2 = 4/6 − 3/6 = 1/6", 19)),
     ),
     k(
-      "Uji Kompetensi tiga: tiga per sepuluh dikurangi satu per delapan. KPK dari sepuluh dan delapan adalah empat puluh. Hasilnya dua belas per empat puluh dikurangi lima per empat puluh, yaitu tujuh per empat puluh.",
+      "Uji tiga: tiga per sepuluh dikurangi satu per delapan. KPK dari sepuluh dan delapan adalah empat puluh. Hasilnya dua belas per empat puluh dikurangi lima per empat puluh, yaitu tujuh per empat puluh.",
       bersih(0),
-      tambah(0, judul("Uji Kompetensi 3")),
+      tambah(0, judul("Uji 3")),
       tambah("KPK", teks("kp", 150, 48, "KPK dari 10 dan 8 = 40", 10, W.coklat)),
       tambah("Hasilnya", ...rumus("r", 150, 100, "3/10 − 1/8 = 12/40 − 5/40 = 7/40", 17)),
     ),
     k(
-      "Ayo Berlatih soal d: satu per tiga dikurangi satu per lima. KPK-nya lima belas, jadi lima per lima belas dikurangi tiga per lima belas sama dengan dua per lima belas.",
+      "Latihan satu soal d: satu per tiga dikurangi satu per lima. KPK-nya lima belas, jadi lima per lima belas dikurangi tiga per lima belas sama dengan dua per lima belas.",
       bersih(0),
-      tambah(0, judul("Ayo Berlatih 1d")),
+      tambah(0, judul("Latihan 1d")),
       tambah("KPK-nya", teks("kp", 150, 48, "KPK dari 3 dan 5 = 15", 10, W.coklat)),
       tambah("jadi", ...rumus("r", 150, 100, "1/3 − 1/5 = 5/15 − 3/15 = 2/15", 17)),
     ),
