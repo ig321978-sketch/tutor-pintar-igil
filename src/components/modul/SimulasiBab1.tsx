@@ -5,6 +5,7 @@ import SimulasiAlur, { type LangkahSim } from "./simulasi-alur";
 import LabBertahap, { type TabLab } from "./LabBertahap";
 import SimulasiBilangan, { type TampilBilangan } from "./SimulasiBilangan";
 import SimulasiKatak from "./SimulasiKatak";
+import SimulasiKamarKaka from "./lemari-k1b1a/SimulasiKamarKaka";
 import SimulasiSkenario from "./SimulasiSkenario";
 import { SKENARIO_BAB1 } from "./skenario-kelas1";
 import { daftarMisiBab1, type KeadaanBab1 } from "./misi-bab1";
@@ -14,7 +15,7 @@ import { laporMisi, tampilMisi } from "./misi-simulasi";
 /* Simulasi Bab 1 di dalam Materi (tahap 4 SMISCPA, di antara Infografis    */
 /* dan Concrete). Pola hibrida: satu laboratorium yang alatnya bertambah    */
 /* per sub-bab, dengan misi wajib dan tantangan bebas (misi-bab1.ts).       */
-/*   Sub-Bab A (Menghitung 0 sampai 10): Laboratorium Bilangan, hanya benda.*/
+/*   Sub-Bab A (Menghitung 0 sampai 10): Kamar Kaka, Misi Rumah Rapi bagian satu. */
 /*   Sub-Bab B (Membandingkan): + bingkai sepuluh, garis bilangan, tanda.   */
 /*   Sub-Bab C (Maju dan mundur): lab B + tab Katak Maju Mundur.            */
 /*   Sub-Bab D (Pasangan bilangan, sub-bab akhir): semua alat + pasangan    */
@@ -26,7 +27,7 @@ import { laporMisi, tampilMisi } from "./misi-simulasi";
 const MAINKAN_DULU = "Mainkan dulu simulasinya, ya.";
 
 const MISI = {
-  A: "Hitung benda dari nol sampai sepuluh. Selesaikan misi di bawah, urutannya bebas.",
+  A: "Misi Rumah Rapi bagian satu: rapikan kamar Kaka. Pisahkan, hitung, lalu catat. Urutannya bebas.",
   B: "Bandingkan dua bilangan dengan benda, bingkai, dan garis. Selesaikan misi wajib, lalu coba tantangan bebas.",
   C: "Maju dan mundur di garis bilangan, lalu bantu Katak menyeberang. Selesaikan misi di bawah, urutannya bebas.",
   D: "Pecah bilangan, bandingkan, dan bantu Kasir Warung. Selesaikan semua misi wajib, lalu coba tantangan bebas.",
@@ -40,7 +41,7 @@ const langkahBab1 = (sub: string): LangkahSim[] => {
   return [
     {
       metode: "PhET",
-      sub: huruf === "D" ? "Lab Bilangan: Pencapaian Misi" : "Lab Bilangan",
+      sub: huruf === "D" ? "Lab Bilangan: Pencapaian Misi" : huruf === "A" ? "Kamar Kaka" : "Lab Bilangan",
       petunjuk: MAINKAN_DULU,
       misi: MISI[huruf],
       misiDaftar: tampilMisi(daftar),
@@ -50,11 +51,11 @@ const langkahBab1 = (sub: string): LangkahSim[] => {
         const selesai = (id: string) => lapor({ alat: "selesai", id });
         const bilangan: TabLab = {
           id: "bilangan",
-          nama: "Bilangan",
+          nama: huruf === "A" ? "Kamar Kaka" : "Bilangan",
           render: () => {
             switch (huruf) {
               case "A":
-                return <SimulasiBilangan speakGuru={a.speakGuru} tampil={["benda"]} onKeadaan={lapor} />;
+                return <SimulasiKamarKaka speakGuru={a.speakGuru} onKeadaan={lapor} />;
               case "D":
                 return <SimulasiBilangan speakGuru={a.speakGuru} tampil={SEMUA} onKeadaan={lapor} />;
               default:

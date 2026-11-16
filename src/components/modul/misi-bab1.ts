@@ -9,6 +9,7 @@
 
 // Hanya impor tipe: berkas ini diuji langsung di Node (tanpa pemaket), jadi tidak boleh mengimpor nilai dari berkas lain.
 import type { DefMisi, KeadaanSelesai } from "./misi-simulasi";
+import type { KeadaanKamar } from "./lemari-k1b1a/logika";
 
 export type KeadaanBilangan = {
   alat: "bilangan";
@@ -24,20 +25,23 @@ export type KeadaanBilangan = {
   banding: boolean;
 };
 
-export type KeadaanBab1 = KeadaanBilangan | KeadaanSelesai;
+export type KeadaanBab1 = KeadaanBilangan | KeadaanSelesai | KeadaanKamar;
 
 const bil = (k: KeadaanBab1): k is KeadaanBilangan => k.alat === "bilangan";
 const selesai = (k: KeadaanBab1, id: string) => k.alat === "selesai" && k.id === id;
 const beda = (k: KeadaanBilangan) => Math.abs(k.n - k.m);
 
-/** Sub-Bab A: menghitung 0 sampai 10 dengan benda bernomor. */
+/** Sub-Bab A: Misi Rumah Rapi bagian satu, kamar Kaka (Simulasi "Merapikan Lemari Mainan Igil"). Robot 6, yoyo 2, kelereng 8, pesawat 0. */
+const kamar = (k: KeadaanBab1): k is KeadaanKamar => k.alat === "kamar";
+const diRakSemua = (k: KeadaanKamar, j: string) => k.mainan.filter((m) => m.jenis === j).every((m) => m.tempat === j);
+const banyak = (k: KeadaanKamar, j: string) => k.mainan.filter((m) => m.jenis === j).length;
 export const MISI_A: DefMisi<KeadaanBab1>[] = [
-  { id: "a-lima", teks: "Ketuk kotak benda ke-5. Angka 5 muncul.", wajib: true, cek: (k) => bil(k) && k.n === 5 },
-  { id: "a-nol", teks: "Buat bilangan nol: tidak ada benda sama sekali.", wajib: true, cek: (k) => bil(k) && k.n === 0 },
-  { id: "a-sepuluh", teks: "Isi semua kotak sampai bilangan 10.", wajib: true, cek: (k) => bil(k) && k.n === 10 },
-  { id: "a-tujuh", teks: "Buat bilangan 7, lalu dengarkan namanya.", wajib: true, cek: (k) => bil(k) && k.n === 7 },
-  { id: "a-sembilan", teks: "Buat bilangan 9. Tinggal satu lagi menjadi 10.", wajib: false, cek: (k) => bil(k) && k.n === 9 },
-  { id: "a-dua", teks: "Buat bilangan 2, lalu hitung bendanya satu per satu.", wajib: false, cek: (k) => bil(k) && k.n === 2 },
+  { id: "a-rak", teks: "Pisahkan semua mainan ke rak yang sejenis.", wajib: true, cek: (k) => kamar(k) && k.mainan.every((m) => m.tempat === m.jenis) },
+  { id: "a-robot", teks: "Taruh semua robot di raknya, lalu tekan Hitung. Dengar angka terakhir.", wajib: true, cek: (k) => kamar(k) && diRakSemua(k, "robot") && k.dihitung.includes("robot") },
+  { id: "a-laci", teks: "Isi laci sepuluh kotak dengan semua kelereng.", wajib: true, cek: (k) => kamar(k) && banyak(k, "kelereng") > 0 && diRakSemua(k, "kelereng") },
+  { id: "a-catat", teks: "Catat banyak tiap mainan di tabel Kaka. Pesawat tidak ada: nol.", wajib: true, cek: (k) => kamar(k) && k.mainan.every((m) => m.tempat === m.jenis) && Object.keys(k.catat).every((j) => k.catat[j] === banyak(k, j)) },
+  { id: "a-sekilas", teks: "Tekan Sekilas di rak yoyo. Tebak tanpa menghitung.", wajib: false, cek: (k) => kamar(k) && k.sekilas.includes("yoyo") },
+  { id: "a-kosong", teks: "Tekan Hitung di rak pesawat. Kotak kosong, banyaknya nol.", wajib: false, cek: (k) => kamar(k) && k.dihitung.includes("pesawat") },
 ];
 
 /** Sub-Bab B: membandingkan dengan benda, bingkai sepuluh, dan garis bilangan. */

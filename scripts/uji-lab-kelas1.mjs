@@ -1183,8 +1183,12 @@ cek(/lebih banyak/.test(B1.ucapanLab(7, 2, true, 3)), "ucapan lab dengan banding
   }
   const ada = (sub, k, id) => M0.misiBaru(M1.daftarMisiBab1(sub), k, kosong).includes(id);
   const SEL = (id) => ({ alat: "selesai", id });
-  cek(ada("A", L({ n: 5 }), "a-lima") && ada("A", L({ n: 0 }), "a-nol") && ada("A", L({ n: 10 }), "a-sepuluh") && ada("A", L({ n: 7 }), "a-tujuh"), "bab1 A: wajib");
-  cek(ada("A", L({ n: 9 }), "a-sembilan") && ada("A", L({ n: 2 }), "a-dua"), "bab1 A: bebas");
+  // Sub-Bab A memakai Kamar Kaka (lemari-k1b1a): robot 6, yoyo 2, kelereng 8, pesawat 0. Rincian di scripts/uji-lemari-k1b1a.mjs.
+  const mainan = [["robot", 6], ["yoyo", 2], ["kelereng", 8]].flatMap(([j, n]) => Array.from({ length: n }, (_, i) => ({ id: `${j}${i}`, jenis: j, tempat: j })));
+  const K = (o) => ({ alat: "kamar", mainan, catat: { robot: null, yoyo: null, kelereng: null, pesawat: null }, dihitung: [], sekilas: [], ...o });
+  const catatPas = { robot: 6, yoyo: 2, kelereng: 8, pesawat: 0 };
+  cek(ada("A", K({}), "a-rak") && ada("A", K({}), "a-laci") && ada("A", K({ dihitung: ["robot"] }), "a-robot") && ada("A", K({ catat: catatPas }), "a-catat") && !ada("A", K({ catat: { ...catatPas, pesawat: 1 } }), "a-catat"), "bab1 A: wajib");
+  cek(ada("A", K({ sekilas: ["yoyo"] }), "a-sekilas") && ada("A", K({ dihitung: ["pesawat"] }), "a-kosong") && !ada("A", L({ n: 5 }), "a-rak"), "bab1 A: bebas");
   const B = (o) => L({ bingkai: true, garis: true, banding: true, ...o });
   cek(ada("B", B({ n: 4, m: 4 }), "b-sama") && !ada("B", L({ n: 4, m: 4 }), "b-sama"), "bab1 B: sama hanya bila Bandingkan menyala");
   cek(ada("B", B({ n: 2, m: 7 }), "b-kecil") && !ada("B", B({ n: 7, m: 7 }), "b-kecil"), "bab1 B: kedua lebih besar");
