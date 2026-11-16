@@ -1,5 +1,5 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { W, deret, emo, garis, judul, kartu, kartuAngka, keranjang, tata, teks, type Titik } from "./k1b1a-gambar";
+import { E, W, deret, deretMainan, emo, garis, judul, kartu, kartuAngka, keranjang, orang, tata, teks, type Titik } from "./k1b1a-gambar";
 import { bersih, hapus, hitungAksi, k, sorotkan, tambah, ubah, urutKata } from "./k1b1a-bantu";
 
 export const NAMA_METODE = ["One-to-One", "Cardinality", "Subitizing"];
@@ -16,11 +16,11 @@ const sambungan = (id: string, pts: Titik[], yKartu: number, ke: number): Obj[] 
 ];
 
 /* ------------------------------ 1. Pembuka metode luar ------------------------------ */
-const SUARA_O1 = "Guru di banyak negara mengajarkan cara berhitung yang berbeda-beda. Di video ini kita lihat tiga metode dari luar.";
+const SUARA_O1 = "Lemari Igil sudah rapi. Sekarang Kaka bercerita, anak-anak di negara lain juga belajar berhitung. Kita lihat tiga metode dari luar.";
 const SUARA_O2 = "Tiga metode itu: One-to-One, Cardinality, dan Subitizing.";
 const SUARA_O3 = "Nama dalam bahasa Indonesia: Korespondensi Satu-satu, Kardinalitas, dan Melihat Sekilas.";
-const SUARA_O4 = "Semua metode ini menjawab satu pertanyaan: bagaimana menghitung banyak benda dengan benar?";
-const SUARA_O5 = "Kita akan melihat tiap metode dengan benda-benda di taman, seperti bola, balon, dan kelereng.";
+const SUARA_O4 = "Semua metode ini menjawab satu pertanyaan Igil: bagaimana menghitung banyak mainan dengan benar?";
+const SUARA_O5 = "Kita coba tiap metode dengan mainan di kamar Igil, yaitu mobil, boneka, dan kelereng.";
 
 export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
   id: "luar-pembuka",
@@ -31,6 +31,7 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
     k(
       SUARA_O1,
       tambah(0, judul("Tiga metode dari luar")),
+      tambah(0, ...orang("kk", 40, 120, E.kaka, "Kaka")),
       tambah("negara", emo("gl", 150, 110, "\u{1F30D}", 50)),
       tambah("tiga", ...kartu("pk", 50, 140, 200, 32, W.emas, ["3 metode dari luar"], 11)),
     ),
@@ -50,25 +51,25 @@ export const ADEGAN_LUAR_PEMBUKA: AdeganStory = {
       SUARA_O4,
       bersih(0),
       tambah(0, judul("Satu pertanyaan")),
-      tambah("satu", emo("i1", 60, 90, "\u{1F446}", 36), emo("i2", 150, 90, "\u{1F9FA}", 36), emo("i3", 240, 90, "\u{1F440}", 36)),
+      tambah("satu", emo("i1", 60, 90, "\u{1F446}", 36), emo("i2", 150, 90, E.igil, 36), emo("i3", 240, 90, "\u{1F440}", 36)),
       tambah("pertanyaan:", ...kartu("iq", 20, 120, 260, 44, W.emas, ["bagaimana menghitung", "banyak benda dengan benar?"], 10)),
     ),
     k(
       SUARA_O5,
       bersih(0),
-      tambah(0, judul("Benda-benda di taman")),
-      tambah("bola,", ...deret("bola", "tb", [{ x: 60, y: 100 }], 16)),
-      tambah("balon,", ...deret("balon", "tc", [{ x: 150, y: 100 }], 18)),
+      tambah(0, judul("Mainan di kamar Igil")),
+      tambah("mobil,", emo("tb0", 60, 110, E.mobil, 40)),
+      tambah("boneka,", emo("tc0", 150, 110, E.boneka, 40)),
       tambah("kelereng.", ...deret("kelereng", "td", [{ x: 240, y: 100 }], 28)),
     ),
   ],
 };
 
 /* ------------------------------ 2. One-to-One: konsep ------------------------------ */
-const SUARA_S1 = "Metode pertama, One-to-One, atau Korespondensi Satu-satu. Satu benda dipasangkan dengan satu angka.";
-const SUARA_S2 = "Tiap benda mendapat tepat satu angka. Tidak boleh dua angka untuk satu benda.";
-const SUARA_S3 = "Juga tidak boleh ada benda yang terlewat. Semua benda harus mendapat angka.";
-const SUARA_S4 = "Jadi satu benda, satu angka, tanpa terlewat dan tanpa dobel. Itulah metode pertama.";
+const SUARA_S1 = "Metode pertama, One-to-One, atau Korespondensi Satu-satu. Abang memasangkan satu mobil dengan satu angka.";
+const SUARA_S2 = "Tiap mobil mendapat tepat satu angka. Tidak boleh dua angka untuk satu mobil, seperti Igil tadi.";
+const SUARA_S3 = "Juga tidak boleh ada mobil yang terlewat. Semua mobil harus mendapat angka.";
+const SUARA_S4 = "Jadi satu mainan, satu angka, tanpa terlewat dan tanpa dobel. Itulah metode pertama.";
 const P4 = tata(4, 84);
 
 export const ADEGAN_LUAR_SATU: AdeganStory = {
@@ -80,7 +81,7 @@ export const ADEGAN_LUAR_SATU: AdeganStory = {
     k(
       SUARA_S1,
       tambah("pertama,", ...kepala(0)),
-      tambah("benda", ...deret("bola", "sa", P4, 12)),
+      tambah("mobil", ...deretMainan(E.mobil, "sa", P4, 24)),
       tambah("angka.", ...[0, 1, 2, 3].flatMap((i) => sambungan("sa", P4, 126, i))),
     ),
     k(
@@ -106,10 +107,10 @@ export const ADEGAN_LUAR_SATU: AdeganStory = {
 };
 
 /* ------------------------------ 3. One-to-One: terapan ------------------------------ */
-const SUARA_T1 = "Sekarang terapkan pada enam kelereng. Kita pindahkan satu kelereng ke wadah sambil menyebut satu angka.";
+const SUARA_T1 = "Sekarang terapkan pada enam kelereng Igil. Igil memindahkan satu kelereng ke wadah sambil menyebut satu angka.";
 const SUARA_T2 = "Satu, dua, tiga, empat, lima, enam. Tiap kelereng pindah satu kali.";
-const SUARA_T3 = "Wadahnya sudah berisi enam kelereng. Di meja tidak ada kelereng yang tersisa.";
-const SUARA_T4 = "Cara ini membantu anak yang suka melewatkan benda. Coba di rumah dengan kancing atau biji-bijian.";
+const SUARA_T3 = "Wadahnya sudah berisi enam kelereng. Di lantai tidak ada kelereng yang tersisa.";
+const SUARA_T4 = "Cara ini membantu kalau kita suka melewatkan benda. Coba juga saat merapikan kancing atau kelereng.";
 const P6 = tata(6);
 const TUJUAN = (i: number): Titik => ({ x: 190 + (i % 3) * 30, y: 160 + Math.floor(i / 3) * 20 });
 const posKelereng = urutKata(SUARA_T2, ["satu", "dua", "tiga", "empat", "lima", "enam"]);
@@ -144,7 +145,7 @@ export const ADEGAN_LUAR_SATU_TERAPAN: AdeganStory = {
 const SUARA_K1 = "Metode kedua, Cardinality, atau Kardinalitas. Angka terakhir yang disebut adalah banyak seluruhnya.";
 const SUARA_K2 = "Kalau ditanya berapa banyak, jangan menghitung lagi dari awal. Cukup jawab dengan angka terakhir.";
 const SUARA_K3 = "Ada satu syarat. Kita harus menghitung dengan benar, satu benda satu angka.";
-const SUARA_K4 = "Angka terakhir berarti banyaknya. Ada lima balon, jadi banyaknya lima.";
+const SUARA_K4 = "Angka terakhir berarti banyaknya. Ada lima yoyo Igil, jadi banyaknya lima.";
 const P5 = tata(5, 90);
 
 export const ADEGAN_LUAR_KARDINAL: AdeganStory = {
@@ -156,7 +157,7 @@ export const ADEGAN_LUAR_KARDINAL: AdeganStory = {
     k(
       SUARA_K1,
       tambah("kedua,", ...kepala(1)),
-      tambah("Kardinalitas.", ...deret("balon", "ka", P5, 14)),
+      tambah("Kardinalitas.", ...deretMainan(E.yoyo, "ka", P5, 22)),
       tambah("Angka", ...[0, 1, 2, 3, 4].map((i) => teks(`kan${i}`, P5[i].x, P5[i].y - 22, String(i + 1), 11, W.merah))),
       sorotkan("terakhir", "ka4", "kan4"),
     ),
@@ -172,16 +173,16 @@ export const ADEGAN_LUAR_KARDINAL: AdeganStory = {
     ),
     k(
       SUARA_K4,
-      tambah("lima", ...kartu("kb", 80, 184, 140, 16, W.emas, ["Ada 5 balon"], 9)),
+      tambah("lima", ...kartu("kb", 80, 184, 140, 16, W.emas, ["Ada 5 yoyo"], 9)),
       ubah("jadi", { id: "ks-k", warna: W.krem }),
     ),
   ],
 };
 
 /* ------------------------------ 5. Cardinality: terapan ------------------------------ */
-const SUARA_R1 = "Sekarang ada delapan pensil. Hitung dari kiri ke kanan: satu, dua, tiga, empat, lima, enam, tujuh, delapan.";
-const SUARA_R2 = "Angka terakhir adalah delapan. Jadi ada delapan pensil.";
-const SUARA_R3 = "Kita hitung dari kanan ke kiri: satu, dua, tiga, empat, lima, enam, tujuh, delapan. Hasilnya tetap delapan.";
+const SUARA_R1 = "Kaka menemukan pensil warna Igil. Hitung dari kiri ke kanan: satu, dua, tiga, empat, lima, enam, tujuh, delapan.";
+const SUARA_R2 = "Angka terakhir adalah delapan. Jadi ada delapan pensil warna.";
+const SUARA_R3 = "Igil menghitung dari kanan ke kiri: satu, dua, tiga, empat, lima, enam, tujuh, delapan. Hasilnya tetap delapan.";
 const SUARA_R4 = "Urutan menghitung tidak mengubah banyaknya. Itulah inti Kardinalitas.";
 const P8 = tata(8).map((t) => ({ x: t.x, y: t.y + 12 }));
 const kataKe8 = ["satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan"];
@@ -193,7 +194,7 @@ export const ADEGAN_LUAR_KARDINAL_TERAPAN: AdeganStory = {
   sumber: "Metode luar: Cardinality, terapan",
   latar: "#EFF6FF",
   ketukan: [
-    k(SUARA_R1, tambah(0, ...kepala(1)), tambah("pensil.", ...deret("pensil", "pm", P8, 11)), ...hitungAksi(SUARA_R1, "pm", P8, "kanan:")),
+    k(SUARA_R1, tambah(0, ...kepala(1)), tambah("pensil", ...deret("pensil", "pm", P8, 11)), ...hitungAksi(SUARA_R1, "pm", P8, "kanan:")),
     k(SUARA_R2, sorotkan("terakhir", "pm7", "pmn7"), tambah("Jadi", ...kartu("rj", 90, 176, 120, 22, W.emas, ["Ada 8 pensil"], 10))),
     k(
       SUARA_R3,
@@ -202,6 +203,6 @@ export const ADEGAN_LUAR_KARDINAL_TERAPAN: AdeganStory = {
       ...posR3.map((p, i) => ubah(p, { id: `pmn${7 - i}`, isi: String(i + 1), warna: W.hijau }, { id: "tg", x: P8[7 - i].x, y: P8[7 - i].y + 33 })),
       tambah("tetap", ...kartu("rj2", 90, 176, 120, 22, W.hijauMuda, ["tetap 8 pensil"], 10)),
     ),
-    k(SUARA_R4, hapus(0, "tg"), tambah("inti", emo("ro", 262, 190, "\u{1F989}", 26)), tambah("Itulah", teks("rt", 52, 192, "urutan tidak penting", 8.6, W.ungu))),
+    k(SUARA_R4, hapus(0, "tg"), tambah("inti", emo("ro", 262, 190, E.igil, 26)), tambah("Itulah", teks("rt", 52, 192, "urutan tidak penting", 8.6, W.ungu))),
   ],
 };

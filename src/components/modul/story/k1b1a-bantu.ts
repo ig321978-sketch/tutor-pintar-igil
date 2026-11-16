@@ -55,3 +55,18 @@ export function hitungAksi(suara: string, id: string, pts: Titik[], setelah?: st
     return [angka, ubah(pos[i], { id: "tg", x: p.x, y: p.y + 33 })];
   });
 }
+
+/**
+ * Menghitung mainan emoji sambil menunjuk: tiap kata bilangan memunculkan angka `${id}n{i}` di atas mainan ke-i dan memindahkan tangan `tg` ke bawahnya.
+ * `urutan`: urutan mainan yang ditunjuk (bawaan kiri ke kanan); angka yang tampil di atas mainan adalah urutan sebutannya.
+ */
+export function hitungMainan(suara: string, id: string, pts: Titik[], u = 22, setelah?: string, urutan?: number[], tanganAda = false): Aksi[] {
+  const urut = urutan ?? pts.map((_, i) => i);
+  const pos = urutKata(suara, KATA_ANGKA.slice(0, urut.length), setelah);
+  return urut.flatMap((j, n) => {
+    const p = pts[j];
+    const angka = tambah(pos[n], teks(`${id}n${j}`, p.x, p.y - u - 1, String(n + 1), 11, W.merah));
+    if (n === 0 && !tanganAda) return [angka, tambah(pos[n], emo("tg", p.x, p.y + 22, "\u{1F446}", 18))];
+    return [angka, ubah(pos[n], { id: "tg", x: p.x, y: p.y + 22 })];
+  });
+}

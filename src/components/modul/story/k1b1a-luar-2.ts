@@ -1,5 +1,5 @@
 import type { AdeganStory } from "./logika-story";
-import { W, emo, judul, kartu, kartuTitik, kotak, teks } from "./k1b1a-gambar";
+import { E, W, emo, judul, kartu, kartuTitik, kotak, teks } from "./k1b1a-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k1b1a-bantu";
 import { NAMA_METODE, NAMA_METODE_ID, WARNA_METODE, kepala } from "./k1b1a-luar-1";
 
@@ -7,7 +7,7 @@ import { NAMA_METODE, NAMA_METODE_ID, WARNA_METODE, kepala } from "./k1b1a-luar-
 const SUARA_S1 = "Metode ketiga, Subitizing, atau Melihat Sekilas. Kita mengenali banyak benda tanpa menghitung satu-satu.";
 const SUARA_S2 = "Cara ini bekerja untuk banyak yang kecil, sampai lima. Titik yang tersusun rapi memudahkan mata.";
 const SUARA_S3 = "Kalau bendanya banyak, mata kita sulit mengenalinya sekilas. Kita kembali menghitung satu-satu.";
-const SUARA_S4 = "Guru di luar negeri sering memakai kartu titik dan dadu untuk melatih kemampuan ini.";
+const SUARA_S4 = "Di luar negeri, anak-anak berlatih dengan kartu titik dan dadu, seperti dadu mainan Abang.";
 
 export const ADEGAN_LUAR_SEKILAS: AdeganStory = {
   id: "luar-sekilas",
@@ -43,16 +43,16 @@ export const ADEGAN_LUAR_SEKILAS: AdeganStory = {
       tambah(0, judul("Alat latihan di luar negeri")),
       tambah("kartu", ...kartuTitik("ue", 40, 70, 4, 56)),
       tambah("dadu", emo("ud6", 200, 112, "\u{1F3B2}", 50)),
-      tambah("melatih", ...kartu("uf", 50, 152, 200, 30, W.hijauMuda, ["latih mata, latih tebakan"], 10)),
+      tambah("berlatih", ...kartu("uf", 50, 152, 200, 30, W.hijauMuda, ["latih mata, latih tebakan"], 10)),
     ),
   ],
 };
 
 /* ------------------------------ 2. Subitizing: terapan ------------------------------ */
-const SUARA_T1 = "Mari bermain tebak sekilas. Lihat kartu ini hanya sebentar.";
+const SUARA_T1 = "Kaka mengajak Igil bermain tebak sekilas. Lihat kartu ini hanya sebentar.";
 const SUARA_T2 = "Sekarang kartunya ditutup. Ada berapa titik tadi? Jawabannya lima.";
 const SUARA_T3 = "Sekarang kartu kedua dengan tiga titik. Jawabannya tiga.";
-const SUARA_T4 = "Kalau tebakannya benar, kita hebat. Kalau ragu, boleh dihitung satu-satu.";
+const SUARA_T4 = "Tebakan Igil benar semua. Kalau ragu, boleh dihitung satu-satu.";
 const IDT5 = [0, 1, 2, 3, 4].map((i) => `ta-t${i}`);
 
 export const ADEGAN_LUAR_SEKILAS_TERAPAN: AdeganStory = {
@@ -75,7 +75,7 @@ export const ADEGAN_LUAR_SEKILAS_TERAPAN: AdeganStory = {
       tambah("kedua", ...kartuTitik("tb", 110, 62, 3, 80)),
       tambah("Jawabannya", teks("tr", 150, 168, "3", 36, W.hijau)),
     ),
-    k(SUARA_T4, tambah("benar,", emo("tk", 60, 120, "✅", 40)), tambah("ragu,", ...kartu("tx", 190, 150, 100, 30, W.krem, ["ragu? hitung"], 9.6))),
+    k(SUARA_T4, tambah("benar", emo("tk", 60, 120, "✅", 40)), tambah("ragu,", ...kartu("tx", 190, 150, 100, 30, W.krem, ["ragu? hitung"], 9.6))),
   ],
 };
 
@@ -83,7 +83,7 @@ export const ADEGAN_LUAR_SEKILAS_TERAPAN: AdeganStory = {
 const SUARA_R1 = "Mari kita ringkas tiga metode dari luar tadi.";
 const SUARA_R2 = "One-to-One: satu benda dipasangkan dengan satu angka, tanpa terlewat.";
 const SUARA_R3 = "Cardinality: angka terakhir adalah banyaknya. Subitizing: kenali yang sedikit sekilas.";
-const SUARA_R4 = "Ketiganya membantu kita berhitung dari nol sampai sepuluh dengan benar. Terima kasih sudah belajar.";
+const SUARA_R4 = "Ketiganya membantu Igil, Kaka, dan Abang berhitung dari nol sampai sepuluh. Terima kasih sudah belajar.";
 const DESKRIPSI = ["satu benda, satu angka, tanpa terlewat", "angka terakhir adalah banyaknya", "kenali yang sedikit sekilas"];
 const kartuMetode = (i: number) => [kotak(`rm${i}-k`, 14, 34 + i * 54, 272, 46, WARNA_METODE[i], W.biru, { rx: 8, tebal: 1.5 }), teks(`rm${i}-n`, 150, 34 + i * 54 + 19, `${NAMA_METODE[i]} · ${NAMA_METODE_ID[i]}`, 10, W.biru)];
 const deskripsi = (i: number) => teks(`rm${i}-d`, 150, 34 + i * 54 + 36, DESKRIPSI[i], 8.8, W.merah);
@@ -100,7 +100,7 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_R4,
       bersih(0),
-      tambah(0, judul("Terima kasih"), emo("ow", 150, 100, "\u{1F989}", 54)),
+      tambah(0, judul("Terima kasih"), emo("ow", 90, 100, E.kaka, 40), emo("ow2", 150, 100, E.igil, 44), emo("ow3", 210, 100, E.abang, 40)),
       tambah("nol", ...kartu("rz", 60, 124, 180, 34, W.emas, ["berhitung 0 sampai 10"], 11)),
       tambah("Terima", teks("rt", 150, 184, "Sampai jumpa!", 12, W.ungu)),
     ),

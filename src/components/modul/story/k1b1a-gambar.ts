@@ -150,3 +150,55 @@ export function tulisAngka(id: string, x: number, y: number, angka: string, s = 
     gambar: true,
   }));
 }
+
+/* ------------------------------ Cerita lemari mainan Igil ------------------------------ */
+
+/** Emoji tokoh dan mainan cerita "Merapikan Lemari Mainan Igil" (semua paling tinggi Emoji 12). */
+export const E = {
+  igil: "\u{1F9D2}",
+  kaka: "\u{1F467}",
+  abang: "\u{1F466}",
+  mamah: "\u{1F469}",
+  mobil: "\u{1F697}",
+  boneka: "\u{1F9F8}",
+  bola: "\u{1F3C0}",
+  dino: "\u{1F996}",
+  robot: "\u{1F916}",
+  kereta: "\u{1F682}",
+  pesawat: "\u{1F6E9}️",
+  yoyo: "\u{1FA80}",
+  lelah: "\u{1F629}",
+  senang: "\u{1F604}",
+  pusing: "\u{1F4AB}",
+  catat: "\u{1F4DD}",
+  pensil: "✏️",
+  tanya: "❓",
+  benar: "✅",
+  pesta: "\u{1F389}",
+  mata: "\u{1F440}",
+  jempol: "\u{1F44D}",
+  kuat: "\u{1F4AA}",
+  alat: "\u{1F527}",
+  peluk: "\u{1F917}",
+  hati: "\u{1F496}",
+} as const;
+
+/** Tokoh berdiri: emoji `id` dan nama `${id}-n` di bawahnya. */
+export const orang = (id: string, x: number, y: number, e: string, nama: string, u = 30): Obj[] => [emo(id, x, y, e, u), teks(`${id}-n`, x, y + 13, nama, 8.4, W.ungu)];
+
+/** Balon ucapan satu baris: kotak `${id}-k` dan teks `${id}-t0`. */
+export const bicara = (id: string, x: number, y: number, w: number, isi: string, warna: string = W.putih): Obj[] => kartu(id, x, y, w, 20, warna, [isi], 8.6);
+
+/** Mainan sejenis (emoji) di titik-titik `pts`, id `${id}${i}`. */
+export const deretMainan = (e: string, id: string, pts: Titik[], u = 22): Obj[] => pts.map((p, i) => emo(`${id}${i}`, p.x, p.y, e, u));
+
+/** Lemari kayu dengan `rak` papan rak: badan `${id}-b`, papan `${id}-r{i}`. Pojok kiri-atas (x, y). */
+export function lemari(id: string, x: number, y: number, w: number, h: number, rak = 3): Obj[] {
+  const out: Obj[] = [kotak(`${id}-b`, x, y, w, h, "#F5D7A1", W.coklat, { rx: 4, tebal: 2 })];
+  for (let i = 1; i < rak; i += 1) out.push(garis(`${id}-r${i}`, x + 3, y + (h * i) / rak, w - 6, 0, W.coklat, 2.2));
+  return out;
+}
+
+/** Balok mainan berwarna, pusat (cx, cy), sisi `s`. */
+const WARNA_BALOK = ["#F87171", "#60A5FA", "#FACC15", "#4ADE80", "#C084FC"];
+export const balok = (id: string, cx: number, cy: number, i = 0, s = 16, o: Opsi = {}): Obj => kotak(id, cx - s / 2, cy - s / 2, s, s, WARNA_BALOK[i % 5], W.biru, { rx: 2, tebal: 1.3, ...o });
