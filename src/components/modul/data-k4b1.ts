@@ -2,7 +2,7 @@
  * Data murni Matematika Kelas 4 Bab 1 (Bilangan Cacah sampai 10.000): kata bilangan empat angka,
  * nilai tempat ribuan–satuan, dan semua ronde permainan Sub-Bab A (membaca & menulis), B (nilai tempat),
  * dan C (membandingkan & mengurutkan). Tanpa React, tanpa acak, tanpa jaringan.
- * Sumber angka dari Buku Siswa Matematika Kelas IV Kemendikbudristek Bab 1 hlm. 4–23.
+ * Rujukan topik dan rentang angka: Buku Siswa Matematika Kelas IV Bab 1 hlm. 4–23. Angka dan teks Sub-Bab A adalah naskah orisinal IGIL (draf).
  * Uji: scripts/uji-data-k4b1.mjs.
  */
 import type { BendaId } from "./data-k2b7";
@@ -68,7 +68,7 @@ function kataRatusan(n: number): string {
   return bagian.join(" ");
 }
 
-/** Kata bilangan Indonesia 0–10.000. 3.286 = tiga ribu dua ratus delapan puluh enam; 1.025 = seribu dua puluh lima. */
+/** Kata bilangan Indonesia 0–10.000. Angka 1 di tempat ribuan menjadi "seribu", bukan "satu ribu". */
 export function kata(n: number): string {
   if (n === 0) return "nol";
   if (n === 10000) return "sepuluh ribu";
@@ -213,16 +213,6 @@ export type RondeSemua = { syarat: Syarat; angka: number[]; benda?: BendaId; acu
 /* ====================================================================== */
 
 export const BUKU = {
-  jarakHelen: 3286,
-  hargaMinuman: 6750,
-  semeru: 3676,
-  tulisContoh: 3254,
-  baca4327: 4327,
-  baca1025: 1025,
-  harga7350: 7350,
-  uang9500: 9500,
-  kembalian2150: 2150,
-  jodoh: [2903, 2145, 6002, 9045] as const,
   nilai2150: 2150,
   tabel: [6192, 2910, 4128, 9217] as const,
   manggis: 7500,
@@ -259,31 +249,31 @@ export const BUKU = {
 
 export const RONDE_RAKIT_CA: Bundel[][] = [
   [
-    { n: 3286, benda: "jeruk" },
-    { n: 2145, benda: "jeruk" },
+    { n: 4618, benda: "jeruk" },
+    { n: 5240, benda: "jeruk" },
   ],
   [
-    { n: 3676, benda: "kelereng" },
-    { n: 1025, benda: "kelereng" },
+    { n: 8105, benda: "kelereng" },
+    { n: 2736, benda: "kelereng" },
   ],
   [
-    { n: 6750, benda: "kue" },
-    { n: 4327, benda: "kue" },
+    { n: 6409, benda: "kue" },
+    { n: 7821, benda: "kue" },
   ],
 ];
 
 export const RONDE_HITUNG_CA: Bundel[][] = [
   [
-    { n: 3286, benda: "jeruk" },
-    { n: 2903, benda: "jeruk" },
+    { n: 5927, benda: "jeruk" },
+    { n: 4302, benda: "jeruk" },
   ],
   [
-    { n: 7350, benda: "kue" },
-    { n: 2150, benda: "kue" },
+    { n: 8640, benda: "kue" },
+    { n: 3170, benda: "kue" },
   ],
   [
-    { n: 6002, benda: "kelereng" },
-    { n: 9045, benda: "kelereng" },
+    { n: 7001, benda: "kelereng" },
+    { n: 5806, benda: "kelereng" },
   ],
 ];
 
@@ -292,117 +282,117 @@ export const RONDE_SORTIR_CA: { benda: BendaId; item: Kelompok4[] }[] = [
   {
     benda: "jeruk",
     item: [
-      { jenis: "rb", k: 3 },
-      { jenis: "r", k: 2 },
-      { jenis: "p", k: 8 },
-      { jenis: "s", k: 6 },
-      { jenis: "rb", k: 1 },
-      { jenis: "p", k: 0 },
+      { jenis: "rb", k: 4 },
+      { jenis: "r", k: 7 },
+      { jenis: "p", k: 2 },
+      { jenis: "s", k: 5 },
+      { jenis: "rb", k: 2 },
+      { jenis: "p", k: 9 },
     ],
   },
   {
     benda: "kue",
     item: [
-      { jenis: "rb", k: 7 },
-      { jenis: "r", k: 3 },
-      { jenis: "p", k: 5 },
-      { jenis: "s", k: 0 },
+      { jenis: "rb", k: 6 },
       { jenis: "r", k: 0 },
-      { jenis: "s", k: 5 },
+      { jenis: "p", k: 3 },
+      { jenis: "s", k: 8 },
+      { jenis: "rb", k: 9 },
+      { jenis: "s", k: 1 },
     ],
   },
   {
     benda: "kelereng",
     item: [
-      { jenis: "rb", k: 4 },
-      { jenis: "r", k: 3 },
-      { jenis: "p", k: 2 },
-      { jenis: "s", k: 7 },
-      { jenis: "rb", k: 6 },
-      { jenis: "r", k: 5 },
+      { jenis: "rb", k: 5 },
+      { jenis: "r", k: 8 },
+      { jenis: "p", k: 4 },
+      { jenis: "s", k: 0 },
+      { jenis: "r", k: 2 },
+      { jenis: "p", k: 6 },
     ],
   },
 ];
 
 export const RONDE_PASANG_CA: Bundel[][] = [
   [
-    { n: 3286, benda: "jeruk" },
-    { n: 2145, benda: "jeruk" },
-    { n: 6002, benda: "jeruk" },
+    { n: 5130, benda: "jeruk" },
+    { n: 8764, benda: "jeruk" },
+    { n: 3009, benda: "jeruk" },
   ],
   [
-    { n: 7350, benda: "kue" },
-    { n: 9500, benda: "kue" },
-    { n: 2150, benda: "kue" },
+    { n: 6285, benda: "kue" },
+    { n: 9402, benda: "kue" },
+    { n: 1570, benda: "kue" },
   ],
   [
-    { n: 3676, benda: "kelereng" },
-    { n: 4327, benda: "kelereng" },
-    { n: 1025, benda: "kelereng" },
+    { n: 2056, benda: "kelereng" },
+    { n: 7938, benda: "kelereng" },
+    { n: 4813, benda: "kelereng" },
   ],
 ];
 
 export const RONDE_MEMORI_CA: Bundel[][] = [
   [
-    { n: 3286, benda: "jeruk" },
-    { n: 2145, benda: "jeruk" },
-    { n: 2903, benda: "jeruk" },
-    { n: 6002, benda: "jeruk" },
+    { n: 4806, benda: "jeruk" },
+    { n: 7152, benda: "jeruk" },
+    { n: 3490, benda: "jeruk" },
+    { n: 9027, benda: "jeruk" },
   ],
   [
-    { n: 7350, benda: "kue" },
-    { n: 2150, benda: "kue" },
-    { n: 9045, benda: "kue" },
-    { n: 1025, benda: "kue" },
+    { n: 2613, benda: "kue" },
+    { n: 5071, benda: "kue" },
+    { n: 8340, benda: "kue" },
+    { n: 6908, benda: "kue" },
   ],
   [
-    { n: 3676, benda: "kelereng" },
-    { n: 4327, benda: "kelereng" },
-    { n: 6750, benda: "kelereng" },
-    { n: 9500, benda: "kelereng" },
+    { n: 1784, benda: "kelereng" },
+    { n: 4250, benda: "kelereng" },
+    { n: 9306, benda: "kelereng" },
+    { n: 7015, benda: "kelereng" },
   ],
 ];
 
 export type RondeKetuk = { benda: BendaId; item: number[]; tanya: number[] };
 export const RONDE_KETUK_CA: RondeKetuk[] = [
-  { benda: "jeruk", item: [3286, 2386, 3826], tanya: [3286, 2386] },
-  { benda: "kue", item: [7350, 7530, 3750], tanya: [7350, 3750] },
-  { benda: "kelereng", item: [1025, 1205, 2015], tanya: [1025, 2015] },
+  { benda: "jeruk", item: [4731, 4371, 4713], tanya: [4731, 4713] },
+  { benda: "kue", item: [8520, 8250, 5280], tanya: [8520, 5280] },
+  { benda: "kelereng", item: [3068, 3608, 6038], tanya: [3068, 6038] },
 ];
 
 export const RONDE_SEMUA_CA: RondeSemua[] = [
-  { syarat: "puluhan-nol", angka: [2150, 3286, 9500, 4327], benda: "jeruk" },
-  { syarat: "ratusan-nol", angka: [1025, 6002, 3676, 2145], benda: "kue" },
-  { syarat: "satuan-nol", angka: [7350, 9500, 3286, 4327], benda: "kelereng" },
+  { syarat: "puluhan-nol", angka: [5407, 2938, 6905, 8142], benda: "jeruk" },
+  { syarat: "ratusan-nol", angka: [3092, 7405, 4015, 5836], benda: "kue" },
+  { syarat: "satuan-nol", angka: [5640, 2975, 8130, 6417], benda: "kelereng" },
 ];
 
 export const RONDE_BACA_CA: Bundel[][] = [
   [
-    { n: 3286, benda: "jeruk" },
-    { n: 7003, benda: "jeruk" },
+    { n: 5842, benda: "jeruk" },
+    { n: 8004, benda: "jeruk" },
   ],
   [
-    { n: 6570, benda: "kue" },
-    { n: 1025, benda: "kue" },
+    { n: 4630, benda: "kue" },
+    { n: 2051, benda: "kue" },
   ],
   [
-    { n: 9045, benda: "kelereng" },
-    { n: 6002, benda: "kelereng" },
+    { n: 7096, benda: "kelereng" },
+    { n: 3005, benda: "kelereng" },
   ],
 ];
 
 export const RONDE_PAPAN_CA: Bundel[][] = [
   [
-    { n: 3286, benda: "jeruk" },
-    { n: 3254, benda: "jeruk" },
+    { n: 6149, benda: "jeruk" },
+    { n: 6194, benda: "jeruk" },
   ],
   [
-    { n: 3676, benda: "kue" },
-    { n: 4327, benda: "kue" },
+    { n: 8230, benda: "kue" },
+    { n: 5706, benda: "kue" },
   ],
   [
-    { n: 2150, benda: "kelereng" },
-    { n: 1025, benda: "kelereng" },
+    { n: 3408, benda: "kelereng" },
+    { n: 9015, benda: "kelereng" },
   ],
 ];
 
@@ -411,22 +401,22 @@ export const RONDE_TUKAR_CA: { benda: BendaId; soal: SoalTukar[] }[] = [
   {
     benda: "jeruk",
     soal: [
-      { tanya: "10 dus ditukar menjadi …", benar: "1 peti (1.000)", salah: ["1 bungkus", "10 peti"], pesan: "Sepuluh dus (10 × 100) sama dengan satu peti (1.000)." },
-      { tanya: "1 peti berisi … dus", benar: "10 dus", salah: ["100 dus", "1 dus"], pesan: "Satu peti sama dengan sepuluh dus." },
+      { tanya: "Sepuluh dus digabung menjadi ...", benar: "satu peti", salah: ["satu bungkus", "sepuluh peti"], pesan: "Sepuluh dus, masing-masing seratus, bernilai seribu. Itu sama dengan satu peti." },
+      { tanya: "Satu peti dapat dibuka menjadi ... dus", benar: "sepuluh dus", salah: ["seratus dus", "satu dus"], pesan: "Seribu dibagi menjadi sepuluh bagian seratus, jadi satu peti berisi sepuluh dus." },
     ],
   },
   {
     benda: "kue",
     soal: [
-      { tanya: "10 bungkus ditukar menjadi …", benar: "1 dus (100)", salah: ["1 peti", "10 satuan"], pesan: "Sepuluh bungkus sama dengan satu dus." },
-      { tanya: "10 satuan ditukar menjadi …", benar: "1 bungkus (10)", salah: ["1 dus", "1 peti"], pesan: "Sepuluh satuan sama dengan satu bungkus." },
+      { tanya: "Sepuluh bungkus digabung menjadi ...", benar: "satu dus", salah: ["satu peti", "sepuluh benda lepas"], pesan: "Sepuluh bungkus, masing-masing sepuluh, bernilai seratus. Itu sama dengan satu dus." },
+      { tanya: "Sepuluh benda lepas digabung menjadi ...", benar: "satu bungkus", salah: ["satu dus", "satu peti"], pesan: "Sepuluh benda lepas bernilai sepuluh. Itu sama dengan satu bungkus." },
     ],
   },
   {
     benda: "kelereng",
     soal: [
-      { tanya: "1 dus berisi … bungkus", benar: "10 bungkus", salah: ["100 bungkus", "1 bungkus"], pesan: "Satu dus sama dengan sepuluh bungkus." },
-      { tanya: "1000 satuan sama dengan …", benar: "1 peti", salah: ["1 dus", "10 bungkus"], pesan: "Seribu satuan sama dengan satu peti." },
+      { tanya: "Satu dus dapat dibuka menjadi ... bungkus", benar: "sepuluh bungkus", salah: ["seratus bungkus", "satu bungkus"], pesan: "Seratus dibagi menjadi sepuluh bagian sepuluh, jadi satu dus berisi sepuluh bungkus." },
+      { tanya: "Seribu benda lepas bernilai sama dengan ...", benar: "satu peti", salah: ["satu dus", "sepuluh bungkus"], pesan: "Seribu satuan sama nilainya dengan satu peti." },
     ],
   },
 ];
@@ -436,49 +426,50 @@ export const RONDE_TUKAR_CA: { benda: BendaId; soal: SoalTukar[] }[] = [
 /* ====================================================================== */
 
 export const RONDE_HITUNG_PA: number[][] = [
-  [3286, 2145],
-  [3676, 1025],
-  [7350, 4327],
+  [5274, 4160],
+  [6038, 8315],
+  [7109, 2486],
 ];
 export const RONDE_PAPAN_PA: number[][] = [
-  [3286, 3254],
-  [2150, 4327],
-  [6192, 2910],
+  [5428, 5482],
+  [3860, 6217],
+  [8049, 9136],
 ];
 export const RONDE_TABEL_PA: number[][] = [
-  [3286, 2145, 6002],
-  [7350, 2150, 9045],
-  [3676, 4327, 1025],
+  [4283, 6150, 8007],
+  [5612, 3390, 7045],
+  [2874, 9420, 1608],
 ];
 export const RONDE_PASANG_PA: number[][] = [
-  [3286, 2145, 2903],
-  [7350, 9500, 2150],
-  [3676, 4327, 1025],
+  [5428, 6150, 3701],
+  [8530, 4096, 2307],
+  [7814, 5069, 9230],
 ];
 export const RONDE_MEMORI_PA: number[][] = [
-  [1000, 2000, 3000, 4000],
-  [1100, 2200, 3300, 4400],
-  [1025, 2150, 3286, 4327],
+  [5000, 6000, 7000, 8000],
+  [2300, 4500, 6700, 8900],
+  [3140, 5207, 6580, 9018],
 ];
 export const RONDE_KETUK_PA: { item: number[]; tanya: number[] }[] = [
-  { item: [3286, 2386, 3826], tanya: [3286, 2386] },
-  { item: [7350, 7530, 3750], tanya: [7350, 3750] },
-  { item: [1025, 1205, 2015], tanya: [1025, 2015] },
+  { item: [5362, 5632, 3652], tanya: [5362, 3652] },
+  { item: [8140, 8410, 4180], tanya: [8410, 4180] },
+  { item: [2057, 2507, 5207], tanya: [2057, 5207] },
 ];
 
 export type SoalGarisK4 = { dari: number; sampai: number; langkah: number; jawab: number };
+/** Jawaban selalu jatuh tepat pada salah satu titik garis (dari + kelipatan langkah). */
 export const RONDE_GARIS_PA: SoalGarisK4[][] = [
   [
-    { dari: 3000, sampai: 4000, langkah: 100, jawab: 3286 },
-    { dari: 2000, sampai: 3000, langkah: 100, jawab: 2145 },
+    { dari: 5000, sampai: 6000, langkah: 100, jawab: 5600 },
+    { dari: 2000, sampai: 3000, langkah: 100, jawab: 2300 },
   ],
   [
-    { dari: 3500, sampai: 3800, langkah: 10, jawab: 3676 },
-    { dari: 1000, sampai: 1100, langkah: 5, jawab: 1025 },
+    { dari: 6400, sampai: 6500, langkah: 10, jawab: 6470 },
+    { dari: 2000, sampai: 2500, langkah: 50, jawab: 2350 },
   ],
   [
-    { dari: 7000, sampai: 8000, langkah: 100, jawab: 7350 },
-    { dari: 9000, sampai: 9600, langkah: 100, jawab: 9500 },
+    { dari: 8000, sampai: 9000, langkah: 100, jawab: 8700 },
+    { dari: 9000, sampai: 10000, langkah: 100, jawab: 9400 },
   ],
 ];
 
@@ -491,16 +482,16 @@ export function jendelaGaris(nilai: number, langkah: number, nomor: number): { d
 }
 
 export const RONDE_SEMUA_PA: RondeSemua[] = [
-  { syarat: "puluhan-nol", angka: [2150, 3286, 9500, 4327] },
-  { syarat: "ratusan-nol", angka: [1025, 6002, 3676, 2145] },
-  { syarat: "angka-nol", angka: [3286, 1025, 4327, 2145] },
+  { syarat: "puluhan-nol", angka: [5402, 3691, 8709, 4126] },
+  { syarat: "ratusan-nol", angka: [3098, 7412, 6053, 9281] },
+  { syarat: "angka-nol", angka: [4739, 6081, 2954, 7360] },
 ];
 export const RONDE_SORTIR_PA: number[][] = [
-  [1025, 2340, 3600, 7821, 5080, 6192],
-  [4200, 2531, 9050, 3160, 7400, 8712],
-  [1500, 6032, 4820, 9201, 3370, 7050],
+  [5320, 4871, 6094, 7285, 8503, 3916],
+  [2140, 6538, 9702, 3457, 8160, 5249],
+  [4690, 7132, 3405, 8926, 6270, 1859],
 ];
-export const RONDE_KALIMAT_PA: number[] = [3286, 1025, 7350];
+export const RONDE_KALIMAT_PA: number[] = [4863, 6107, 9240];
 
 export type KalimatIsian = { depan: string; belakang: string; opsi: string[]; benar: number };
 export function kalimatTempat(n: number, nomor: number): KalimatIsian[] {
@@ -509,9 +500,9 @@ export function kalimatTempat(n: number, nomor: number): KalimatIsian[] {
   const b = susunOpsi(String(d.r), [String((d.r + 1) % 10), String((d.r + 3) % 10)], nomor + 1);
   const c = susunOpsi(String(nilaiTempat(n, "ribuan")), [String(d.rb * 100), String(d.rb * 10)], nomor + 2);
   return [
-    { depan: `Pada ${lambang(n)}, angka ribuan adalah`, belakang: ".", opsi: a.opsi, benar: a.jawab },
-    { depan: `Pada ${lambang(n)}, angka ratusan adalah`, belakang: ".", opsi: b.opsi, benar: b.jawab },
-    { depan: `Nilai tempat angka ${d.rb} pada ${lambang(n)} adalah`, belakang: ".", opsi: c.opsi, benar: c.jawab },
+    { depan: `Pada ${lambang(n)}, angka di tempat ribuan adalah`, belakang: ".", opsi: a.opsi, benar: a.jawab },
+    { depan: `Pada ${lambang(n)}, angka di tempat ratusan adalah`, belakang: ".", opsi: b.opsi, benar: b.jawab },
+    { depan: `Angka ${d.rb} pada ${lambang(n)} bernilai`, belakang: ".", opsi: c.opsi, benar: c.jawab },
   ];
 }
 
@@ -520,29 +511,29 @@ export function kalimatTempat(n: number, nomor: number): KalimatIsian[] {
 /* ====================================================================== */
 
 export const RONDE_SUSUN_QA: number[][] = [
-  [3286, 3254],
-  [3676, 1025],
-  [4327, 2145],
+  [5127, 5172],
+  [8340, 4706],
+  [6059, 9283],
 ];
 export const RONDE_BACA_QA: number[][] = [
-  [3286, 7003],
-  [6570, 1025],
-  [9045, 6002],
+  [6184, 4007],
+  [5390, 8021],
+  [2706, 9650],
 ];
 export const RONDE_PAPAN_QA: number[][] = [
-  [3254, 3676],
-  [2150, 4327],
-  [7350, 9500],
+  [7415, 5836],
+  [3190, 6208],
+  [9047, 8530],
 ];
 export const RONDE_PASANG_QA: number[][] = [
-  [2903, 2145, 6002],
-  [9045, 3286, 1025],
-  [7350, 9500, 2150],
+  [5604, 8137, 2090],
+  [4372, 6905, 3158],
+  [7240, 1863, 9406],
 ];
 export const RONDE_MEMORI_QA: number[][] = [
-  [3050, 4200, 5160, 6400],
-  [2180, 3500, 7090, 8600],
-  [1450, 2600, 4080, 9350],
+  [2760, 3140, 5280, 6930],
+  [1520, 4380, 7650, 9170],
+  [3680, 5940, 6210, 8430],
 ];
 
 export type TabelKata = { kepala: [string, string]; baris: { label: string; jawab: string }[]; kartu: string[] };
@@ -553,48 +544,48 @@ function tabelKata(daftar: number[], nomor: number): TabelKata {
   return { kepala: ["Bilangan", "Cara membaca"], baris, kartu };
 }
 export const RONDE_TABEL_QA: TabelKata[] = [
-  tabelKata([3286, 2145, 6002, 9045], 1),
-  tabelKata([7350, 2150, 1025, 4327], 2),
-  tabelKata([3676, 9500, 2903, 6192], 3),
+  tabelKata([4761, 3028, 6905, 7510], 1),
+  tabelKata([2457, 8302, 5019, 9640], 2),
+  tabelKata([6134, 1870, 7096, 3285], 3),
 ];
 
 export type Pernyataan = { teks: string; benar: boolean; penjelasan: string };
 export const RONDE_BENARSALAH_QA: Pernyataan[][] = [
   [
-    { teks: `${lambang(3286)} dibaca ${kata(3286)}.`, benar: true, penjelasan: "Ribuan, ratusan, puluhan, dan satuan dibaca dari kiri." },
-    { teks: `${lambang(7003)} dibaca tujuh ribu nol nol tiga.`, benar: false, penjelasan: "Nol tidak dibaca. Yang benar: tujuh ribu tiga." },
-    { teks: "Satu ribu ditulis seribu, bukan satu ribu.", benar: true, penjelasan: "Pada ribuan 1 dipakai kata seribu." },
-    { teks: `${lambang(1025)} punya angka ratusan 0.`, benar: true, penjelasan: "1.025 = 1 ribuan, 0 ratusan, 2 puluhan, 5 satuan." },
-    { teks: "Angka nol tidak perlu ditulis saat menulis lambang bilangan.", benar: false, penjelasan: "Nol menjaga tempat. Empat ratus lima ditulis 405, bukan 45." },
+    { teks: `${lambang(5214)} dibaca ${kata(5214)}.`, benar: true, penjelasan: "Sebut ribuannya dulu, lalu ratusan, puluhan, dan satuan." },
+    { teks: `${lambang(4008)} dibaca empat ribu nol nol delapan.`, benar: false, penjelasan: "Nol tidak disebut. Bacaan yang tepat adalah empat ribu delapan." },
+    { teks: `${lambang(1840)} dibaca ${kata(1840)}.`, benar: true, penjelasan: "Angka 1 di tempat ribuan disebut seribu." },
+    { teks: `${lambang(6302)} punya angka puluhan 0.`, benar: true, penjelasan: "6.302 terdiri atas 6 ribuan, 3 ratusan, 0 puluhan, dan 2 satuan." },
+    { teks: "Saat menulis bilangan, nol di tengah boleh dibuang.", benar: false, penjelasan: "Nol menjaga tempat. Delapan ribu sembilan ditulis 8.009, bukan 8.9." },
   ],
   [
-    { teks: "10 dus sama dengan 1 peti.", benar: true, penjelasan: "10 × 100 = 1.000." },
-    { teks: `${lambang(6570)} satuan dibaca karena angkanya 0.`, benar: false, penjelasan: "Satuan 0 tidak dibaca." },
-    { teks: "Membaca bilangan empat angka dimulai dari ribuan.", benar: true, penjelasan: "Dari kiri: ribuan → ratusan → puluhan → satuan." },
-    { teks: `${lambang(4327)} = empat ribu tiga ratus dua puluh tujuh.`, benar: true, penjelasan: "Sesuai Buku Siswa hlm. 9." },
-    { teks: "Bilangan 10.000 punya lima angka.", benar: true, penjelasan: "10.000 adalah sepuluh ribu, batas atas bab ini." },
+    { teks: "Sepuluh dus bernilai sama dengan satu peti.", benar: true, penjelasan: "Sepuluh kali seratus sama dengan seribu." },
+    { teks: `Pada ${lambang(9150)}, angka satuannya disebut nol.`, benar: false, penjelasan: "Satuan 0 tidak disebut. Bacaannya sembilan ribu seratus lima puluh." },
+    { teks: "Bilangan empat angka disebut mulai dari tempat paling kiri.", benar: true, penjelasan: "Urutannya ribuan, ratusan, puluhan, lalu satuan." },
+    { teks: `${lambang(7064)} dibaca ${kata(7064)}.`, benar: true, penjelasan: "Ratusannya 0 sehingga dilewati. Lalu puluhan dan satuan disebut." },
+    { teks: "Bilangan terbesar yang ditulis dengan empat angka adalah 9.999.", benar: true, penjelasan: "Satu lagi dari 9.999 adalah 10.000, yang memakai lima angka." },
   ],
 ];
 
 export type SoalDetektif = { klue: string[]; jawab: number; opsi: number[]; salah: string };
 export const RONDE_DETEKTIF_QA: SoalDetektif[] = [
-  { klue: ["Ribuan saya 3", "Satuan saya 6"], jawab: 3286, opsi: [3286, 3268, 2386], salah: "Hanya 3.286 yang ribuannya 3 dan satuannya 6." },
-  { klue: ["Ratusan saya 0", "Puluhan saya 2"], jawab: 1025, opsi: [1025, 1205, 2015], salah: "1.025 = seribu dua puluh lima." },
-  { klue: ["Saya dibaca tujuh ribu tiga ratus lima puluh", "Satuan saya 0"], jawab: 7350, opsi: [7350, 7530, 3705], salah: "7.350 cocok dengan bacaan dan satuan 0." },
-  { klue: ["Nilai tempat angka 9 saya adalah 9.000", "Puluhan saya 0"], jawab: 9045, opsi: [9045, 9405, 4905], salah: "9.045 punya 9 ribuan dan 0 puluhan." },
+  { klue: ["Ribuan saya 6", "Satuan saya 9"], jawab: 6419, opsi: [6419, 6491, 9416], salah: "Hanya 6.419 yang ribuannya 6 dan satuannya 9." },
+  { klue: ["Ribuan saya 8", "Ratusan dan puluhan saya sama-sama 0"], jawab: 8007, opsi: [8007, 8070, 7008], salah: "8.007 punya angka 8 di ribuan, kosong di ratusan dan puluhan, lalu angka 7 di satuan." },
+  { klue: ["Saya dibaca empat ribu enam ratus tiga puluh", "Jumlah semua angka saya 13"], jawab: 4630, opsi: [4630, 4360, 3604], salah: "4.630 dibaca empat ribu enam ratus tiga puluh, dan 4 + 6 + 3 + 0 = 13." },
+  { klue: ["Ribuan saya 3 dan ratusan saya 5", "Puluhan saya 0"], jawab: 3502, opsi: [3502, 3520, 5302], salah: "3.502 punya 3 ribuan, 5 ratusan, dan 0 puluhan." },
 ];
 
 export const RONDE_SEMUA_QA: RondeSemua[] = [
-  { syarat: "ribuan-3", angka: [3286, 2145, 3676, 4327] },
-  { syarat: "ratusan-nol", angka: [1025, 6002, 3286, 2145] },
-  { syarat: "satuan-nol", angka: [7350, 2150, 4327, 3676] },
+  { syarat: "ribuan-3", angka: [3480, 5163, 3906, 8305] },
+  { syarat: "ratusan-nol", angka: [4056, 7108, 9007, 2630] },
+  { syarat: "satuan-nol", angka: [6240, 3815, 9170, 5426] },
 ];
 
 export const RONDE_SUSUNKATA_QA: { kata: string[]; pengecoh: string }[] = [
-  { kata: ["tiga", "ribu", "dua", "ratus", "delapan", "puluh", "enam", "ditulis", "3.286"], pengecoh: "tujuh" },
-  { kata: ["seribu", "dua", "puluh", "lima", "ditulis", "1.025"], pengecoh: "ratus" },
-  { kata: ["angka", "nol", "tidak", "dibaca", "tapi", "menjaga", "tempat"], pengecoh: "dihapus" },
-  { kata: ["sepuluh", "dus", "sama", "dengan", "satu", "peti"], pengecoh: "bungkus" },
+  { kata: ["lima", "ribu", "seratus", "dua", "puluh", "tiga", "ditulis", "5.123"], pengecoh: "sembilan" },
+  { kata: ["delapan", "ribu", "tujuh", "ditulis", "8.007"], pengecoh: "ratus" },
+  { kata: ["nol", "tidak", "disebut", "tetapi", "tetap", "ditulis"], pengecoh: "dihapus" },
+  { kata: ["satu", "peti", "dapat", "dibuka", "menjadi", "sepuluh", "dus"], pengecoh: "seratus" },
 ];
 
 /* ====================================================================== */

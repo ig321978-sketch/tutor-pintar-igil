@@ -2,7 +2,7 @@
  * Empat definisi Mesin Bertahap Kelas 4 Bab 1 untuk bilangan sampai 10.000 (Sub-Bab A–D), dijalankan mesin
  * berstasiun mesin-bertahap-k3b1.ts. Semua pertanyaan, kunci, dan pengecoh DIHITUNG dari data kasusnya.
  * Letak jawaban benar diputar per kasus dan stasiun.
- *  - MESIN_BACA    (A): Rakit → Papan → Baca → Tulis          (3.286, 7.003, 1.025)
+ *  - MESIN_BACA    (A): Rakit → Papan → Baca → Tulis          (4.152, 5.007, 1.308; naskah orisinal IGIL, acuan topik Matematika SD/MI Kelas IV Bab 1 Sub-Bab A)
  *  - MESIN_NILAI   (B): Tempat → Nilai → Uraian → Tabel       (2.150, 8.463, 4.675)
  *  - MESIN_BANDING (C): Ribuan → Penentu → Tanda → Urut       (8.750 dan 7.500, 4.352 dan 4.365, 3.676 dan 3.726)
  *  - MESIN_SUSUN   (D): Susun → Urai → Nol → Periksa          (6.348, 6.035, 7.020)
@@ -41,9 +41,9 @@ export function bacaM(n: number): string {
 
 export type KasusBaca = { id: string; n: number; tulis: number };
 export const KASUS_BACA: KasusBaca[] = [
-  { id: "3286", n: 3286, tulis: 9045 },
-  { id: "7003", n: 7003, tulis: 6002 },
-  { id: "1025", n: 1025, tulis: 2903 },
+  { id: "4152", n: 4152, tulis: 4690 },
+  { id: "5007", n: 5007, tulis: 2004 },
+  { id: "1308", n: 1308, tulis: 9402 },
 ];
 
 export const STASIUN_BACA: StasiunDef[] = [

@@ -7,8 +7,8 @@ Offset halaman kelas IV: Buku Siswa = PDF dikurangi 12, Panduan Guru = PDF dikur
 ## Ukuran (perkiraan suara 0,5 detik per kata)
 | Video | Adegan | Ketukan | Kata | Durasi |
 |---|---|---|---|---|
-| A materi | 12 | 68 | 1566 | 13,1 menit |
-| A metode luar | 10 | 40 | 800 | 6,7 menit |
+| A materi | 15 | 66 | 812 | 6,8 menit |
+| A metode luar | 9 | 37 | 480 | 4,0 menit |
 | B materi | 12 | 50 | 1250 | 10,4 menit |
 | B metode luar | 10 | 41 | 943 | 7,9 menit |
 | C materi | 13 | 61 | 1604 | 13,4 menit |
@@ -30,7 +30,7 @@ Total 18 video, 202 adegan, 862 ketukan, 20.546 kata, sekitar 171 menit suara. M
 
 ## Isi
 Metode luar tiap sub-bab: tiga metode lama (nama lama) ditambah satu metode baru.
-- **A (Membaca dan Menulis):** Dienes Blocks, Place-Value Chart, Zero as Placeholder, baru **Say-Write-Show (Ucap, Tulis, Tunjuk)**.
+- **A (Membaca dan Menulis):** DITULIS ULANG ORISINAL IGIL (lihat bagian "Sub-Bab A ditulis ulang" di bawah): tiga metode luar bernama Indonesia **Balok Empat Tingkat**, **Papan Empat Tempat**, **Nol Penjaga Tempat** (nama Inggris dan metode keempat dihapus).
 - **B (Nilai Tempat):** Place Value, Dienes Trade, Expanded Form, baru **Place Value Disks (Cakram Nilai Tempat)**.
 - **C (Membandingkan dan Mengurutkan):** Compare Leftmost, Number Line Order, Ordering Sets, baru **Bar Model Compare (Banding Batang)**.
 - **D (Komposisi dan Dekomposisi):** Composition, Decomposition, Flexible Grouping, baru **Number Bonds (Ikatan Bilangan)**.
@@ -42,7 +42,7 @@ Metode luar tiap sub-bab: tiga metode lama (nama lama) ditambah satu metode baru
 
 ## Catatan temuan buku
 Lengkap di catatan sesi `temuan-k4b1a.md` sampai `temuan-k4b1i.md`. Angka kunci disajikan lebih dulu, lalu catatan guru dengan hitungan mandiri.
-- **A:** gambar jarak hlm. 5 bertuliskan 3.268 pada panah tetapi kotak hasil dan kalimat 3.286 (video memakai 3.286); tabel huruf A-D terbalik terhadap aturannya; kalimat Semeru berakhir "rupiah" padahal meter; "yaitu , ditulis" (angka hilang); soal 4 hlm. 34 contoh jawaban 8.888, 7.030, 0036 mengulang angka padahal diminta berbeda. Kunci 1-3 cocok.
+- **A (catatan naskah lama, tidak berlaku lagi setelah ditulis ulang):** gambar jarak hlm. 5 bertuliskan 3.268 pada panah tetapi kotak hasil dan kalimat 3.286 (video memakai 3.286); tabel huruf A-D terbalik terhadap aturannya; kalimat Semeru berakhir "rupiah" padahal meter; "yaitu , ditulis" (angka hilang); soal 4 hlm. 34 contoh jawaban 8.888, 7.030, 0036 mengulang angka padahal diminta berbeda. Kunci 1-3 cocok.
 - **B:** Panduan Guru hlm. 35 menyebut "membandingkan dan mengurut" (milik C); kunci nomor 4 (6.192, 2.910, 4.128, 9.217) tanpa soal di Buku Siswa; seluruh kunci benar.
 - **C:** Ayo Berpikir kunci b (9.215 dan 1.592) hanya benar untuk contoh a; terbesar sebenarnya 9.521 dan terkecil 1.259 (24 susunan). Kunci e (9.925 dan 1.155) hanya contoh d; bila angka boleh berulang 9.999 dan 1.111. Aktivitas 3: buku 10 kartu "2 paket" padahal 20. Tinggi gunung ada di gambar peta, bukan teks.
 - **D:** Panduan Guru hlm. 48 menulis 10.000 sebagai "1.0000"; 6.035 = 6.000 + 000 + 30 + 5 (nol ditulis berbilang); papan ketiga komposisi dikosongkan. Semua kunci cocok.
@@ -85,3 +85,11 @@ Atas permintaan pemilik, Mind-Map (tahap 2) dan Infografis (tahap 3) Kelas 4 Bab
 - **Infografis** menunjukkan perbandingan dan contoh dengan angka sub-bab itu sendiri. Sub-Bab A: tabel "Empat tempat pada 3.286" (baris Ribuan, Ratusan, Puluhan, Satuan; kolom Kemasan, Nilai satu, Angka di 3.286, Dibaca), sehingga tab Infografis A berupa angka dan kata bilangan, bukan teks yang sama dengan peta. Sub-bab B sampai I masih memakai tabel metode lama; menunggu persetujuan pemilik sebelum diubah.
 
 Pembaruan: Infografis B sampai I kini juga berupa tabel angka sub-bab masing-masing (bukan lagi tabel metode): B "Angka 6 pada empat bilangan" (tempat, nilai, angka di ribuan), C "Membandingkan enam pasang bilangan" (tempat penentu, tanda, yang lebih besar), D "Menguraikan tiga bilangan" (uraian, banyak bagian, ada angka nol), E "Empat contoh penjumlahan" (hasil, jumlah satuan, menyimpan), F "Empat contoh pengurangan" (soal, hitungan satuan, hasil), G "Langkah bersusun pendek" (satuan, puluhan, hasil), H "Soal cerita pembagian" (dibagi, pembagi, hasil bagi, arti hasil bagi), I "Faktor beberapa bilangan" (semua faktor, banyak faktor, pasangan tengah). Mind-Map tetap berpola metode, cara, hasil.
+
+## Sub-Bab A ditulis ulang (naskah orisinal IGIL, draf sampai disetujui pemilik)
+Mengikuti `naskah/brief-tulis-ulang-bab.md` dan pola Kelas 3 Bab 2 Sub-Bab A. Topik dan rentang angka tetap (bilangan cacah sampai sepuluh ribu, membaca dan menulis, tempat angka, nol); cerita, tokoh, dialog, contoh, dan angka diganti. Buku siswa Kelas IV Bab 1 Sub-Bab A (hlm. buku siswa 4 sampai 12) hanya acuan topik. Berkas `story/k4b1a-*` diganti seluruhnya (`bantu`, `gambar`, `materi-1` sampai `materi-4`, `luar-1`, `luar-2`, `video`); ekspor `VIDEO_MATERI_K4B1A` dan `VIDEO_LUAR_K4B1A` tidak berubah. Tanpa `kutipan` dan tanpa kutipan lokal.
+- **Video materi** (15 adegan, 66 ketukan): sapaan (daftar: Kartu angka dan tabel, Membaca dan menulis, Angka nol dalam bilangan), skor Kira di dunia permainan (5.842), kartu angka, tabel empat tempat, cara membaca, menulis dari nama (7.423), nol saat membaca (5.027, 8.206, 3.490), nol saat menulis (4.003 bukan 43), seribu, seratus, belas (1.350, 4.175, 4.612, 2.711, 5.310), sepuluh ribu (9.999 ke 10.000), Latihan 1 sampai 4 (6.904, 8.056, 1.409, 3.400), penutup empat langkah.
+- **Video metode luar** (9 adegan, 37 ketukan): Balok Empat Tingkat (peti, dus, bungkus, benda; terapan 4.063), Papan Empat Tempat (6.340; terapan papan Kira 2.091), Nol Penjaga Tempat (3.006 bukan 36; terapan Halim 5.003), dan ringkasan. Papan dan balok adalah gambar di layar (tanpa benda fisik).
+- Tokoh hanya Malosi, Kira, Upe, Wei, Halim, Igil; suara tanpa digit; konteks buku lama (minimarket, jarak rumah, gunung, harga, nama tokoh buku) tidak dipakai.
+- **Uji baru** `scripts/uji-story-k4b1a.mjs` (turunan `uji-story-k3b2A.mjs`): tanpa kutipan dan tanpa pencocokan PDF; menghitung ulang terbilang mandiri (1 sampai 10.000 dibaca balik), papan empat tempat, kartu bilangan dan kartu nama, balok digital, kartu angka, nol penjaga tempat, semua pilihan latihan dan kuncinya, serta bilangan lisan yang harus tampak di gambar; memeriksa semua aturan bentuk (kalimat pendek, 12 teks per ketukan, 34 huruf, gambar lebih banyak daripada teks, kata terlarang, tokoh, emoji sampai Emoji 12, kemurnian berkas).
+- Gerbang: `uji-story-k4b1a` lulus (7.874 cek, 0 gagal), `uji-orisinalitas --awalan k4b1a --n 5` 0 temuan, `tsc --noEmit` bersih, eslint berkas yang diubah bersih.

@@ -3,7 +3,7 @@
  * Diuji di scripts/uji-lab-k4b1.mjs.
  *
  * Simulasi bertahap per sub-bab (tiga alat: lab, mesin, skenario).
- *  A Membaca dan menulis   : Lab Kemasan (Rakit, Baca, Tulis)          + Mesin Baca    + Helen di Minimarket
+ *  A Membaca dan menulis   : Lab Kemasan (Rakit, Baca, Tulis)          + Mesin Baca    + Gim Kebun Kira
  *  B Nilai tempat          : Lab Nilai Tempat (Nilai, Uraian, Tabel)   + Mesin Nilai   + Struk Belanja Azizah
  *  C Membandingkan, urut   : Lab Banding (Dua Bilangan, Urut, Kartu)   + Mesin Banding + Harga di Pasar
  *  D Komposisi, dekomposisi: Lab Susun-Urai (Susun, Urai, Uang)        + Mesin Susun   + Uang Helen
@@ -36,20 +36,20 @@ const pernah = (k: KeadaanK4Bab1, alat: string, ...id: string[]) => k.alat === a
 const banyakAwalan = (k: KeadaanK4Bab1, alat: string, awalan: string) => (k.alat === alat && "pernah" in k ? k.pernah.filter((p) => p.startsWith(awalan)).length : 0);
 
 /** Id yang dilaporkan skenario dan mesin saat tuntas. */
-export const ID_SKENARIO_K4B1 = { A: "helen-minimarket", B: "struk-azizah", C: "harga-pasar", D: "uang-helen", E: "jeruk-pak-toni", F: "buku-perpustakaan", G: "donat-koperasi", H: "permen-wicak", I: "pameran-kelas4" } as const;
+export const ID_SKENARIO_K4B1 = { A: "kira-gim-kebun", B: "struk-azizah", C: "harga-pasar", D: "uang-helen", E: "jeruk-pak-toni", F: "buku-perpustakaan", G: "donat-koperasi", H: "permen-wicak", I: "pameran-kelas4" } as const;
 export const ID_MESIN_K4B1 = { A: "mesin-baca", B: "mesin-nilai", C: "mesin-banding", D: "mesin-susun", E: "mesin-jumlah", F: "mesin-kurang", G: "mesin-kali", H: "mesin-bagi", I: "mesin-faktor" } as const;
 
 export const MISI_A: DefMisi<KeadaanK4Bab1>[] = [
   { id: "a-tukar", teks: "Di Rakit, tambah dus sampai sepuluh dan lihat sepuluh dus ditukar menjadi satu peti.", wajib: true, cek: (k) => pernah(k, "kemasan", "tukar:dus") },
-  { id: "a-rakit", teks: "Rakit 3.286 (jarak rumah Helen) dengan Bacaan menyala.", wajib: true, cek: (k) => pernah(k, "kemasan", "baca:3286") },
-  { id: "a-nol", teks: "Rakit 7.003 dengan Bacaan menyala. Tempat mana yang dilewati saat dibaca?", wajib: true, cek: (k) => pernah(k, "kemasan", "baca:7003") },
-  { id: "a-seribu", teks: "Rakit 1.025 dengan Bacaan menyala. Mengapa dibaca seribu?", wajib: true, cek: (k) => pernah(k, "kemasan", "baca:1025") },
-  { id: "a-tulis", teks: "Di Tulis, susun kartu angka untuk tinggi Gunung Semeru, lalu tekan Periksa.", wajib: true, cek: (k) => pernah(k, "kemasan", "tulis:3676") },
+  { id: "a-rakit", teks: "Rakit 4.152 (koin panen Kira) dengan Bacaan menyala.", wajib: true, cek: (k) => pernah(k, "kemasan", "baca:4152") },
+  { id: "a-nol", teks: "Rakit 5.007 dengan Bacaan menyala. Tempat mana yang dilewati saat dibaca?", wajib: true, cek: (k) => pernah(k, "kemasan", "baca:5007") },
+  { id: "a-seribu", teks: "Rakit 1.308 dengan Bacaan menyala. Mengapa dibaca seribu?", wajib: true, cek: (k) => pernah(k, "kemasan", "baca:1308") },
+  { id: "a-tulis", teks: "Di Tulis, susun kartu angka untuk skor tertinggi gim, lalu tekan Periksa.", wajib: true, cek: (k) => pernah(k, "kemasan", "tulis:4718") },
   { id: "a-mesin", teks: "Selesaikan Mesin Baca sampai semua bilangan diperiksa.", wajib: true, cek: (k) => selesai(k, ID_MESIN_K4B1.A) },
-  { id: "a-skenario", teks: "Selesaikan skenario Helen di Minimarket sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B1.A) },
+  { id: "a-skenario", teks: "Selesaikan skenario Gim Kebun Kira sampai adegan akhir.", wajib: true, cek: (k) => selesai(k, ID_SKENARIO_K4B1.A) },
   { id: "a-sepuluh-ribu", teks: "Rakit 10.000. Berapa peti yang kamu perlukan?", wajib: false, cek: (k) => pernah(k, "kemasan", "rakit:10000") },
-  { id: "a-tulis-nol", teks: "Di Tulis, tulis sembilan ribu empat puluh lima dengan benar.", wajib: false, cek: (k) => pernah(k, "kemasan", "tulis:9045") },
-  { id: "a-2903", teks: "Rakit 2.903 dengan Bacaan menyala.", wajib: false, cek: (k) => pernah(k, "kemasan", "baca:2903") },
+  { id: "a-tulis-nol", teks: "Di Tulis, tulis tiga ribu tujuh puluh lima dengan benar.", wajib: false, cek: (k) => pernah(k, "kemasan", "tulis:3075") },
+  { id: "a-8209", teks: "Rakit 8.209 dengan Bacaan menyala.", wajib: false, cek: (k) => pernah(k, "kemasan", "baca:8209") },
 ];
 
 export const MISI_B: DefMisi<KeadaanK4Bab1>[] = [

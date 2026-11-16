@@ -3,74 +3,74 @@ import type { DefSkenario } from "./skenario-umum";
 /**
  * Empat skenario Kelas 4 Bab 1 untuk bilangan sampai 10.000 (Sub-Bab A–D). Tanpa jaringan, tanpa model bahasa.
  * Bilangan dan kunci dicek di scripts/uji-skenario-umum.mjs dan scripts/uji-lab-k4b1.mjs.
- *  - SKENARIO_K4B1A: Helen di Minimarket (membaca dan menulis; nol tidak dibaca; seribu)
+ *  - SKENARIO_K4B1A: Gim Kebun Kira (membaca dan menulis; nol dilewati; seribu). Naskah orisinal IGIL, acuan topik Matematika SD/MI Kelas IV Bab 1 Sub-Bab A.
  *  - SKENARIO_K4B1B: Struk Belanja Azizah (nilai tempat, uraian, tabel digit)
  *  - SKENARIO_K4B1C: Harga di Pasar (membandingkan dari ribuan, tanda, mengurutkan)
  *  - SKENARIO_K4B1D: Uang Helen (komposisi, dekomposisi, nol, uraian cara lain)
  */
 
 export const SKENARIO_K4B1A: DefSkenario = {
-  id: "helen-minimarket-k4b1",
-  judul: "Helen di Minimarket",
-  latar: "Bantu Helen membaca dan menulis bilangan empat angka di minimarket.",
-  tokoh: "👧",
-  nama: "Helen",
+  id: "kira-gim-kebun-k4b1",
+  judul: "Gim Kebun Kira",
+  latar: "Bantu Kira membaca dan menulis bilangan empat angka di gim kebunnya.",
+  tokoh: "🧒",
+  nama: "Kira",
   adegan: [
-    { id: "buka", jenis: "narasi", cerita: "Halo! Aku Helen. Aku mengantar Ibu ke minimarket. Banyak label harga dan bilangan empat angka di sini. Bantu aku membacanya, ya.", tombol: "Ayo mulai! ➡" },
+    { id: "buka", jenis: "narasi", cerita: "Halo! Aku Kira. Di gim kebunku, semua hasil panen dicatat dengan bilangan empat angka. Bantu aku membacanya, ya.", tombol: "Ayo mulai! ➡" },
     {
       id: "peti",
       jenis: "hitung",
-      cerita: "Di gudang ada peti air mineral. Satu peti berisi seribu botol. Tiap stik di bawah ini mewakili satu peti.",
+      cerita: "Di gudang gim ada peti koin. Satu peti memuat seribu koin. Tiap stik di bawah ini mewakili satu peti.",
       tanya: "Ketuk semua peti. Ada berapa peti?",
       objek: "stik",
-      jumlah: 3,
-      sukses: "Betul! Tiga peti, jadi ada 3.000 botol, dibaca tiga ribu.",
+      jumlah: 4,
+      sukses: "Betul! Empat peti, jadi ada 4.000 koin, dibaca empat ribu.",
       salah: "Hmm, ketuk tiap stik satu kali, lalu hitung lagi.",
     },
     {
       id: "harga",
       jenis: "soal",
-      cerita: "Minuman yang kuminta harganya Rp6.750.",
+      cerita: "Skor tertinggiku di gim ini 5.820 poin.",
       soal: [
-        { teks: "6.750 dibaca enam ribu tujuh ratus …", jawaban: "lima puluh", opsi: ["lima", "lima puluh", "lima ratus"] },
-        { teks: "Angka di tempat ratusan pada 6.750 adalah …", jawaban: "7", opsi: ["6", "5", "7"] },
-        { teks: "Angka di tempat satuan pada 6.750 adalah …", jawaban: "0", opsi: ["0", "5", "7"] },
+        { teks: "5.820 dibaca lima ribu delapan ratus …", jawaban: "dua puluh", opsi: ["dua", "dua puluh", "dua ratus"] },
+        { teks: "Angka di tempat ratusan pada 5.820 adalah …", jawaban: "8", opsi: ["5", "2", "8"] },
+        { teks: "Angka di tempat satuan pada 5.820 adalah …", jawaban: "0", opsi: ["0", "2", "8"] },
       ],
-      sukses: "Hebat! Enam ribu tujuh ratus lima puluh. Ratusannya 7 dan satuannya 0.",
+      sukses: "Hebat! Lima ribu delapan ratus dua puluh. Ratusannya 8 dan satuannya 0.",
       salah: "Hmm, hitung tempat dari kiri: ribuan, ratusan, puluhan, satuan. Coba lagi.",
     },
     {
       id: "nol",
       jenis: "pilih",
-      cerita: "Jarak minimarket ke rumah nenek 7.003 meter. Bagaimana membacanya?",
+      cerita: "Hari ini aku menempuh 5.007 langkah di kebun gim. Bagaimana membacanya?",
       opsi: [
-        { teks: "Tujuh ribu nol ratus nol puluh tiga", benar: false, umpan: "Tempat yang berisi nol tidak dibaca. Ratusan dan puluhannya nol, jadi dilewati." },
-        { teks: "Tujuh ribu tiga", benar: true, umpan: "Betul! Ratusan dan puluhan berisi nol, jadi dilewati. Tujuh ribu tiga." },
-        { teks: "Tujuh ratus tiga", benar: false, umpan: "Angka 7 ada di ribuan, bukan ratusan. Jadi dibaca tujuh ribu." },
+        { teks: "Lima ribu nol ratus nol puluh tujuh", benar: false, umpan: "Tempat yang berisi nol dilewati. Ratusan dan puluhannya nol, jadi tidak dibaca." },
+        { teks: "Lima ribu tujuh", benar: true, umpan: "Betul! Ratusan dan puluhan berisi nol, jadi dilewati. Lima ribu tujuh." },
+        { teks: "Lima ratus tujuh", benar: false, umpan: "Angka 5 ada di ribuan, bukan ratusan. Jadi dibaca lima ribu." },
       ],
     },
     {
       id: "seribu",
       jenis: "pilih",
-      cerita: "Ibu membeli tepung 1.025 gram. Bagaimana membacanya?",
+      cerita: "Kotak hadiahku berisi 1.308 koin emas. Bagaimana membacanya?",
       opsi: [
-        { teks: "Satu ribu dua puluh lima", benar: false, umpan: "Ribuan 1 dibaca seribu, bukan satu ribu." },
-        { teks: "Seratus dua puluh lima", benar: false, umpan: "Angka 1 ada di ribuan. Ratusannya 0, jadi tidak ada kata ratus." },
-        { teks: "Seribu dua puluh lima", benar: true, umpan: "Betul! Ribuan 1 dibaca seribu, dan ratusan 0 dilewati." },
+        { teks: "Satu ribu tiga ratus delapan", benar: false, umpan: "Ribuan 1 dibaca seribu, bukan satu ribu." },
+        { teks: "Seratus tiga puluh delapan", benar: false, umpan: "Angka 1 ada di ribuan, jadi ada kata ribu di depan." },
+        { teks: "Seribu tiga ratus delapan", benar: true, umpan: "Betul! Ribuan 1 dibaca seribu, lalu tiga ratus delapan." },
       ],
     },
     {
       id: "bungkus",
       jenis: "isi",
-      cerita: "Aku menyusun 3.286 dengan kemasan: 3 peti, 2 dus, beberapa bungkus, dan 6 benda. Masukkan stik sebanyak bungkusnya. Satu stik satu bungkus.",
+      cerita: "Aku menyusun 4.152 koin dengan kemasan: 4 peti, 1 dus, beberapa bungkus, dan 2 benda. Masukkan stik sebanyak bungkusnya. Satu stik satu bungkus.",
       objek: "stik",
-      target: 8,
+      target: 5,
       maks: 12,
-      sukses: "Pas! Puluhan pada 3.286 adalah 8, jadi ada 8 bungkus.",
-      kurang: "Stiknya masih kurang. Lihat angka di tempat puluhan pada 3.286.",
-      lebih: "Stiknya kelebihan. Lihat angka di tempat puluhan pada 3.286.",
+      sukses: "Pas! Puluhan pada 4.152 adalah 5, jadi ada 5 bungkus.",
+      kurang: "Stiknya masih kurang. Lihat angka di tempat puluhan pada 4.152.",
+      lebih: "Stiknya kelebihan. Lihat angka di tempat puluhan pada 4.152.",
     },
-    { id: "tutup", jenis: "akhir", cerita: "Terima kasih! Sekarang aku bisa membaca semua label. Ingat: baca dari kiri, nol tidak dibaca, dan ribuan 1 dibaca seribu." },
+    { id: "tutup", jenis: "akhir", cerita: "Terima kasih! Sekarang aku bisa membaca semua catatan panen. Ingat: baca dari kiri, nol dilewati, dan ribuan 1 dibaca seribu." },
   ],
 };
 

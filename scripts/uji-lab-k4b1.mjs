@@ -127,9 +127,9 @@ const pilihTarget = (x, n) => {
   }
   cek(okBaca, "bacaan dan lambang 0 sampai 10.000 sama dengan hitungan mandiri");
   cek(okBagian, "bagian bacaan empat tempat: tiap tempat bernilai nol dilewati, belasan digabung, kata 'nol' tidak pernah dibaca, gabungannya = bacaan mandiri");
-  sama(A.bagianBaca(7003).map((b) => (b.lewati ? "lewat" : b.kata)), ["tujuh ribu", "lewat", "lewat", "tiga"], "7.003: ratusan dan puluhan sama-sama tampak dilewati");
-  sama(A.bacaK4B1A(7003), "tujuh ribu tiga", "7.003 dibaca tujuh ribu tiga");
-  sama(A.bacaK4B1A(1025), "seribu dua puluh lima", "1.025 dibaca seribu dua puluh lima");
+  sama(A.bagianBaca(5007).map((b) => (b.lewati ? "lewat" : b.kata)), ["lima ribu", "lewat", "lewat", "tujuh"], "5.007: ratusan dan puluhan sama-sama tampak dilewati");
+  sama(A.bacaK4B1A(5007), "lima ribu tujuh", "5.007 dibaca lima ribu tujuh");
+  sama(A.bacaK4B1A(1308), "seribu tiga ratus delapan", "1.308 dibaca seribu tiga ratus delapan");
 
   // Penukaran berantai.
   const tukarDus = aa(a0, { t: "UBAH", jenis: "dus", d: 1 });
@@ -145,7 +145,7 @@ const pilihTarget = (x, n) => {
   cek(kosong.pesan.startsWith("Tidak ada peti"), "tidak bisa mengambil kemasan yang tidak ada");
 
   // Tulis: semua 10.000 susunan kartu untuk dua sasaran, tepat satu yang benar.
-  for (const t of [3676, 7003]) {
+  for (const t of [4718, 5007]) {
     let benar = 0;
     let okPesan = true;
     const s0 = pilihTarget(a0, t);
@@ -1275,12 +1275,12 @@ const faktorMandiri = (n) => {
   const benarPilih = (s, id) => ad(s, id).opsi.find((o) => o.benar).teks;
   // A
   const [h1, h2, h3] = ad(SB.SKENARIO_K4B1A, "harga").soal;
-  cek(bacaMandiri(6750) === `enam ribu tujuh ratus ${h1.jawaban}`, "A: 6.750 dibaca enam ribu tujuh ratus lima puluh");
-  cek(h2.jawaban === String(dig(6750)[1]) && h3.jawaban === String(dig(6750)[3]), "A: ratusan 7 dan satuan 0 pada 6.750");
-  cek(benarPilih(SB.SKENARIO_K4B1A, "nol").toLowerCase() === bacaMandiri(7003), "A: 7.003 dibaca tujuh ribu tiga");
-  cek(benarPilih(SB.SKENARIO_K4B1A, "seribu").toLowerCase() === bacaMandiri(1025), "A: 1.025 dibaca seribu dua puluh lima");
-  for (const o of ad(SB.SKENARIO_K4B1A, "nol").opsi.filter((q) => !q.benar)) cek(o.teks.toLowerCase() !== bacaMandiri(7003), `A: pengecoh "${o.teks}" bukan bacaan 7.003`);
-  cek(ad(SB.SKENARIO_K4B1A, "bungkus").target === dig(3286)[2], "A: bungkus pada 3.286 = 8");
+  cek(bacaMandiri(5820) === `lima ribu delapan ratus ${h1.jawaban}`, "A: 5.820 dibaca lima ribu delapan ratus dua puluh");
+  cek(h2.jawaban === String(dig(5820)[1]) && h3.jawaban === String(dig(5820)[3]), "A: ratusan 8 dan satuan 0 pada 5.820");
+  cek(benarPilih(SB.SKENARIO_K4B1A, "nol").toLowerCase() === bacaMandiri(5007), "A: 5.007 dibaca lima ribu tujuh");
+  cek(benarPilih(SB.SKENARIO_K4B1A, "seribu").toLowerCase() === bacaMandiri(1308), "A: 1.308 dibaca seribu tiga ratus delapan");
+  for (const o of ad(SB.SKENARIO_K4B1A, "nol").opsi.filter((q) => !q.benar)) cek(o.teks.toLowerCase() !== bacaMandiri(5007), `A: pengecoh "${o.teks}" bukan bacaan 5.007`);
+  cek(ad(SB.SKENARIO_K4B1A, "bungkus").target === dig(4152)[2] && ad(SB.SKENARIO_K4B1A, "peti").jumlah === dig(4152)[0], "A: bungkus pada 4.152 = 5 dan empat peti");
   // B
   const [n1, n2, n3] = ad(SB.SKENARIO_K4B1B, "nilai").soal;
   cek(angkaTeks(n1.jawaban) === 7000 && angkaTeks(n2.jawaban) === 500 && angkaTeks(n3.jawaban) === 2000, "B: nilai 7.000, 500, 2.000");
@@ -1444,22 +1444,22 @@ const AKSI_WAJIB = {};
   const nyala = aa(a0, { t: "TOGGLE", rep: "baca" });
   penuh("A", "a-tukar", ka(aa(a0, { t: "UBAH", jenis: "dus", d: 1 })));
   belum("A", "a-tukar", ka(aa(a0, { t: "UBAH", jenis: "bungkus", d: 1 })), "baru menambah bungkus");
-  penuh("A", "a-rakit", ka(rakit(nyala, 3286)));
-  belum("A", "a-rakit", ka(rakit(a0, 3286)), "Bacaan mati");
-  belum("A", "a-rakit", ka(rakit(nyala, 3268)), "3.268 bukan 3.286");
-  penuh("A", "a-nol", ka(rakit(nyala, 7003)));
-  belum("A", "a-nol", ka(rakit(nyala, 7030)), "7.030 bukan 7.003");
-  penuh("A", "a-seribu", ka(rakit(nyala, 1025)));
-  belum("A", "a-seribu", ka(rakit(nyala, 1205)), "1.205 bukan 1.025");
-  penuh("A", "a-tulis", ka(tulisKartu(pilihTarget(a0, 3676), 3676)));
-  belum("A", "a-tulis", ka(tulisKartu(pilihTarget(a0, 3676), 3667)), "kartu 3.667 keliru");
-  belum("A", "a-tulis", ka(tulisKartu(pilihTarget(a0, 3254), 3254)), "3.254 bukan Semeru");
+  penuh("A", "a-rakit", ka(rakit(nyala, 4152)));
+  belum("A", "a-rakit", ka(rakit(a0, 4152)), "Bacaan mati");
+  belum("A", "a-rakit", ka(rakit(nyala, 4125)), "4.125 bukan 4.152");
+  penuh("A", "a-nol", ka(rakit(nyala, 5007)));
+  belum("A", "a-nol", ka(rakit(nyala, 5070)), "5.070 bukan 5.007");
+  penuh("A", "a-seribu", ka(rakit(nyala, 1308)));
+  belum("A", "a-seribu", ka(rakit(nyala, 1380)), "1.380 bukan 1.308");
+  penuh("A", "a-tulis", ka(tulisKartu(pilihTarget(a0, 4718), 4718)));
+  belum("A", "a-tulis", ka(tulisKartu(pilihTarget(a0, 4718), 4781)), "kartu 4.781 keliru");
+  belum("A", "a-tulis", ka(tulisKartu(pilihTarget(a0, 6439), 6439)), "6.439 bukan skor tertinggi gim");
   penuh("A", "a-sepuluh-ribu", ka(rakit(a0, 10000)));
   belum("A", "a-sepuluh-ribu", ka(rakit(a0, 9999)), "9.999");
-  penuh("A", "a-tulis-nol", ka(tulisKartu(pilihTarget(a0, 9045), 9045)));
-  belum("A", "a-tulis-nol", ka(tulisKartu(pilihTarget(a0, 9045), 945)), "0945 tanpa ribuan 9");
-  penuh("A", "a-2903", ka(rakit(nyala, 2903)));
-  AKSI_WAJIB.A = [ka(aa(a0, { t: "UBAH", jenis: "dus", d: 1 })), ka(rakit(rakit(rakit(nyala, 3286), 7003), 1025)), ka(tulisKartu(pilihTarget(a0, 3676), 3676))];
+  penuh("A", "a-tulis-nol", ka(tulisKartu(pilihTarget(a0, 3075), 3075)));
+  belum("A", "a-tulis-nol", ka(tulisKartu(pilihTarget(a0, 3075), 75)), "0075 tanpa ribuan 3");
+  penuh("A", "a-8209", ka(rakit(nyala, 8209)));
+  AKSI_WAJIB.A = [ka(aa(a0, { t: "UBAH", jenis: "dus", d: 1 })), ka(rakit(rakit(rakit(nyala, 4152), 5007), 1308)), ka(tulisKartu(pilihTarget(a0, 4718), 4718))];
 }
 {
   const b0 = B.awalNilaiK4B1B();

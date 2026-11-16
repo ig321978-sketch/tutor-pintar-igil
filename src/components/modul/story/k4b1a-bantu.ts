@@ -1,6 +1,7 @@
 import type { Aksi, KetukanStory, Obj } from "./logika-story";
+import { W, emo, kartuAngka } from "./k4b1a-gambar";
 
-/** Penyingkat penulisan naskah Story Sub-Bab A Bab 1 Bilangan Cacah Kelas 4 (khusus sub-bab ini). */
+/** Penyingkat penulisan naskah Story Sub-Bab A Bab 1 Kelas 4 (khusus sub-bab ini). */
 type At = string | number | undefined;
 type Ubah = Partial<Obj> & { id: string };
 
@@ -14,9 +15,10 @@ export const redamkan = (at: At, ...ids: string[]): Aksi => ({ at, ubah: ids.map
 /** Ubah warna isi beberapa benda sekaligus. */
 export const warnai = (at: At, warna: string, ...ids: string[]): Aksi => ({ at, ubah: ids.map((id) => ({ id, warna })) });
 
-/** Nomor kata (mulai 0) ke-`n` yang persis sama dengan `kata` (tanpa tanda baca dan huruf besar). Galat bila tidak ada, supaya salah ketik pemicu ketahuan. */
+const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+/** Nomor kata (mulai 0) ke-`n` yang persis sama dengan `kata`. Galat bila tidak ada, supaya salah ketik pemicu ketahuan. */
 export const idx = (suara: string, kata: string, n = 1): number => {
-  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
   const kata2 = suara.split(/\s+/).filter(Boolean);
   let c = 0;
   for (let i = 0; i < kata2.length; i += 1) {
@@ -28,10 +30,21 @@ export const idx = (suara: string, kata: string, n = 1): number => {
   throw new Error(`pemicu "${kata}" ke-${n} tidak ada dalam: ${suara}`);
 };
 
-const hitungKata = (suara: string): number => suara.split(/\s+/).filter(Boolean).length;
-
-/** `n` nomor kata yang tersebar rata dalam kalimat `suara`, mulai kata `dari` sampai kata terakhir. */
-export const sebar = (suara: string, n: number, dari = 0): number[] => {
-  const akhir = hitungKata(suara) - 1;
-  return Array.from({ length: n }, (_, i) => (n === 1 ? dari : Math.round(dari + (i * (akhir - dari)) / (n - 1))));
+/** Pilihan kartu (id c1..cn), pojok kiri-atas di tinggi `y`; `u` = ukuran huruf. Untuk lambang (angka) atau kata pendek. */
+export const pilihKata = (y: number, isi: string[], u = 13): ReturnType<typeof kartuAngka> => {
+  const n = isi.length;
+  const w = n === 2 ? 120 : 88;
+  const jarak = n === 2 ? 20 : 6;
+  const x0 = (300 - (n * w + (n - 1) * jarak)) / 2;
+  return isi.flatMap((t, i) => kartuAngka(`c${i + 1}`, x0 + i * (w + jarak), y, t, [W.hijauMuda, W.pink, W.langit][i], w, 30, u));
 };
+
+/** Pilihan kartu bertumpuk ke bawah (id c1..cn), untuk kata panjang seperti nama bilangan. */
+export const pilihBaris = (y: number, isi: string[], u = 10): ReturnType<typeof kartuAngka> =>
+  isi.flatMap((t, i) => kartuAngka(`c${i + 1}`, 12, y + i * 28, t, [W.hijauMuda, W.pink, W.langit][i], 276, 24, u));
+
+/** Id semua benda kartu pilihan (c1..cn) untuk dihapus. */
+export const idPilihan = (n: number): string[] => Array.from({ length: n }, (_, i) => [`c${i + 1}-k`, `c${i + 1}-t`]).flat();
+
+/** Hiasan dua bintang di pojok atas adegan (gambar penghias; id `hs`, `hs2`). */
+export const hias = (kiri = "⭐", kanan = "\u{1F31F}"): Aksi => tambah(0, emo("hs", 18, 24, kiri, 14), emo("hs2", 282, 24, kanan, 14));

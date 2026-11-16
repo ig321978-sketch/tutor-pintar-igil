@@ -14,16 +14,16 @@ Berkas ini ditulis dari satu sumber, `src/components/modul/naskah-k4b1.ts` dan `
 Siswa membaca dan menulis bilangan cacah empat angka sampai 10.000, termasuk bilangan dengan nol (7.003, 1.025, 6.570), memakai papan ribuan–satuan, serta memahami 10 dus = 1 peti (1.000).
 
 - Capaian Pembelajaran: Siswa membaca, menulis, membandingkan, dan mengurutkan bilangan cacah sampai 10.000. Pada sub-bab ini fokus membaca dan menulis.
-- Acuan: Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab A hlm. 4–11) dan metode Dienes empat tingkat (peti–dus–bungkus–benda).
+- Acuan: Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab A hlm. 4–11) dan kemasan bertingkat rancangan IGIL (peti, dus, bungkus, benda lepas).
 
-## 3. Metode dari luar buku
+## 3. Cara belajar (rancangan IGIL)
 
-- **Balok Dienes empat tingkat**: peti (1.000), dus (100), bungkus (10), benda (1) memperluas model Kelas 3 ke ribuan.
-- **Papan nilai tempat empat kolom berwarna**: ribuan ungu, ratusan hijau, puluhan biru, satuan merah.
-- **Kartu angka empat digit**: menyusun lambang bilangan dengan empat kartu pada empat tempat.
-- **Miskonsepsi nol di tengah**: 7.003, 1.025, 6.570 dilatih agar nol menjaga tempat tanpa dibaca.
-- **Penukaran sepuluh dus = satu peti**: aturan ribuan tampak langsung saat merakit.
-- **Contoh kontekstual buku**: harga minimarket 6.750, jarak 3.286 m, tinggi Gunung Semeru 3.676 m.
+- **Kemasan bertingkat**: peti (1.000), dus (100), bungkus (10), dan benda lepas (1) untuk merakit bilangan empat angka.
+- **Papan empat tempat**: ribuan ungu, ratusan hijau, puluhan biru, satuan merah. Letak angka menentukan nilainya.
+- **Kartu angka**: menata empat kartu pada empat tempat.
+- **Nol penjaga tempat**: nol dilewati saat disebut, tetapi tetap ditulis.
+- **Sepuluh dus = satu peti**: aturan penggabungan tampak langsung saat merakit.
+- Status: draf naskah orisinal IGIL. Topik dan rentang angka mengacu pada Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 4–11. Angka dan kalimat soal tidak diambil dari buku.
 
 ## 4. Tahap 1: Story (video cerita animasi SVG)
 
@@ -100,112 +100,110 @@ Tiap video diputar satu per satu saat siswa mengetuk Putar. Tidak ada yang berja
 
 ## 5. Tahap 2: Mind map (peta pikiran)
 
-**1. Empat angka** 4️⃣ (START → 2)
+**1. Pahami soal** ❓ (Pahami soal → Kemasan bertingkat)
 
-Empat angka pada bilangan sampai 10.000.
+Baca soal pelan-pelan. Tandai bilangan yang harus disebut atau ditulis. Ucapkan ulang pertanyaannya dengan kata-katamu sendiri sebelum mulai bekerja.
 
-**2. Ribuan** 🟣 (1 → 3)
+**2. Kemasan bertingkat** 🧭 (Kemasan bertingkat → Papan empat tempat)
 
-Ribuan pada bilangan sampai 10.000.
+Peti bernilai seribu, dus seratus, bungkus sepuluh, dan benda lepas satu. Dengan kemasan ini, bilangan empat angka bisa dirakit dan isinya terlihat jelas.
 
-**3. Cara membaca** 🗣️ (2 → 4)
+**3. Papan empat tempat** 🛠️ (Papan empat tempat → Nol penjaga tempat)
 
-Cara membaca pada bilangan sampai 10.000.
+Papan punya empat kolom berurutan. Dari kiri: ribuan, ratusan, puluhan, lalu satuan. Letak sebuah angka menentukan nilainya.
 
-**4. Angka nol** ⭕ (3 → 5)
+**4. Nol penjaga tempat** ✨ (Nol penjaga tempat → Kerjakan)
 
-Angka nol pada bilangan sampai 10.000.
+Tempat yang kosong diisi angka nol. Saat disebut, nol dilewati. Saat ditulis, nol harus hadir supaya angka lain tidak bergeser.
 
-**5. Menulis lambang** ✍️ (4 → 6)
+**5. Kerjakan** ✏️ (Kerjakan → Cek masuk akal)
 
-Menulis lambang pada bilangan sampai 10.000.
+Kerjakan satu langkah demi satu langkah. Rakit atau isi papan lebih dulu, baru sebut atau tulis bilangannya. Bila ragu, kembali ke papan.
 
-**6. Kartu angka** 🃏 (5 → 7)
+**6. Cek masuk akal** ✅ (Cek masuk akal → Simpulkan)
 
-Kartu angka pada bilangan sampai 10.000.
+Periksa hasilnya. Apakah angkanya ada empat? Apakah kata ribu sesuai dengan angka di tempat ribuan? Bila tidak, cari langkah yang meleset.
 
-**7. Harga di minimarket** 🏪 (6 → 8)
+**7. Simpulkan** 💬 (Simpulkan → Main)
 
-Harga di minimarket pada bilangan sampai 10.000.
+Rangkum dengan kata-katamu: bagaimana cara menyebut dan menulis bilangan empat angka, dan apa tugas angka nol.
 
-**8. Siap membaca menulis** ✅ (7 → END)
+**8. Main** 🎮 (Main → Latihan Concrete–Abstract)
 
-Siap membaca menulis pada bilangan sampai 10.000.
+Lanjutkan ke permainan benda berwarna, diagram, dan simbol. Ulangi sampai lancar tanpa melihat petunjuk.
 
 ## 6. Tahap 3: Infografis
 
-1. **RIBUAN** 🟣: Tempat paling kiri pada bilangan empat angka adalah ribuan. Satu peti sama dengan seribu.
-2. **RATUSAN** 🟢: Di kanan ribuan ada ratusan. Satu dus sama dengan seratus.
-3. **PULUHAN** 🔵: Puluhan memakai kata puluh. Sepuluh satuan sama dengan satu puluhan.
-4. **SATUAN** 🔴: Satuan dibaca angkanya saja.
-5. **BACA DARI KIRI** ⬅️: Baca dari ribuan ke satuan. Contoh 3.286.
-6. **NOL TIDAK DIBACA** ⭕: 7.003 dibaca tujuh ribu tiga. Nol tidak dibaca.
-7. **SERIBU** 1️⃣: Ribuan 1 dibaca seribu, bukan satu ribu.
-8. **NOL MENJAGA TEMPAT** ✍️: Saat menulis, nol menjaga tempat yang kosong.
-9. **SEPULUH DUS = SATU PETI** 🔄: Sepuluh dus ditukar menjadi satu peti.
-10. **SAMPAI 10.000** 🔟: Batas bab ini adalah sepuluh ribu.
+1. **RIBUAN** 🟣: Angka di ujung kiri berada di tempat ribuan. Satu peti bernilai seribu.
+2. **RATUSAN** 🟢: Tempat kedua dari kiri adalah ratusan. Satu dus bernilai seratus.
+3. **PULUHAN** 🔵: Tempat ketiga adalah puluhan. Satu bungkus bernilai sepuluh.
+4. **SATUAN** 🔴: Tempat terakhir adalah satuan. Satu benda lepas bernilai satu.
+5. **BACA DARI KIRI** ⬅️: Mulai dari ribuan, lalu ratusan, puluhan, dan satuan. Contohnya lima ribu dua ratus tujuh puluh empat.
+6. **NOL TIDAK DISEBUT** ⭕: Delapan ribu empat. Ratusan dan puluhannya nol, jadi tidak disebut.
+7. **SERIBU** 1️⃣: Angka satu di tempat ribuan disebut seribu, bukan satu ribu.
+8. **NOL MENJAGA TEMPAT** ✍️: Saat menulis, tempat yang kosong tetap diisi angka nol supaya angka lain tidak bergeser.
+9. **SEPULUH DUS = SATU PETI** 🔄: Sepuluh dus digabung menjadi satu peti.
+10. **SAMPAI 10.000** 🔟: Bilangan terbesar pada bab ini adalah sepuluh ribu.
 
-## 7. Tahap 4: Concrete (benda nyata)
+## 7. Tahap 4: Concrete (benda berwarna)
 
-| No | Permainan | Jenis | Acuan buku | Tujuan | Cara main |
+| No | Permainan | Jenis | Rujukan | Tujuan | Cara main |
 |---|---|---|---|---|---|
-| 1 | Rakit Peti dan Dus | `build-with-exchange` | hlm. 4–6 (kartu bilangan; 10 dus = 1 peti) | Merakit bilangan empat angka dengan peti, dus, bungkus, dan benda lepas. | Tiga ronde, tiap ronde dua bilangan. Penukaran sepuluh otomatis. Tekan Periksa. |
-| 2 | Hitung Kemasan Empat Tingkat | `count-packages` | hlm. 5–6 (membaca 3.286) | Menghitung peti, dus, bungkus, dan benda lalu memilih lambangnya. | Tiga ronde, dua soal. Pilih satu dari tiga bilangan. |
-| 3 | Pilah Peti, Dus, Bungkus, Satuan | `sort-packages` | hlm. 5–6 (ribuan sampai satuan) | Memilah kemasan menurut nilainya. | Tiga ronde, enam kelompok ke empat kotak. |
-| 4 | Jodohkan Kemasan dan Bilangan | `match-package-number` | hlm. 6 (nama bilangan 3.286) | Menjodohkan kumpulan dengan lambang. | Tiga ronde, tiga pasangan. |
-| 5 | Memori Kemasan dan Bilangan | `memory-package-number` | hlm. 6–11 | Mencocokkan kumpulan dan lambang lewat memori. | Tiga ronde, empat pasang. |
-| 6 | Ketuk Kumpulan yang Dibaca | `tap-read-package` | hlm. 6 (cara membaca) | Mendengar kata bilangan lalu mengetuk kumpulan. | Tiga ronde, tiga kumpulan mirip. |
-| 7 | Ketuk Semua yang Cocok | `tap-all-packages` | hlm. 9–11 (nol pada tempat) | Menemukan semua kumpulan dengan syarat digit. | Tiga ronde, empat kumpulan. |
-| 8 | Baca Kumpulan | `read-package-words` | hlm. 6–9 (3.286, 7.003, 1.025) | Memilih cara membaca yang benar. | Tiga ronde, dua soal. |
-| 9 | Papan dari Kumpulan | `board-from-package` | hlm. 6 (tabel Ribuan–Satuan) | Mengisi papan empat kolom dari kumpulan. | Tiga ronde, dua soal. |
-| 10 | Tukar Kemasan sampai Peti | `exchange-packages` | hlm. 5–6 (10→1) | Memahami penukaran sampai peti 1.000. | Tiga ronde, dua soal. |
+| 1 | Rakit Bilangan dari Kemasan | `build-with-exchange` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 4–6 (acuan topik) | Merakit bilangan empat angka dari peti, dus, bungkus, dan benda lepas. | Tiga ronde, tiap ronde dua bilangan. Sepuluh kemasan kecil otomatis menyatu menjadi satu kemasan yang lebih besar. Tekan Periksa untuk mengecek. |
+| 2 | Hitung Isi Semua Kemasan | `count-packages` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 5–6 (acuan topik) | Menghitung isi tiap tingkat kemasan, lalu memilih angka yang sesuai. | Tiga ronde, dua soal. Pilih satu dari tiga angka. |
+| 3 | Masukkan Kemasan ke Kotak Nilai | `sort-packages` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 5–6 (acuan topik) | Memilah kelompok kemasan ke kotak ribuan, ratusan, puluhan, atau satuan. | Tiga ronde, enam kelompok, empat kotak. |
+| 4 | Pasangkan Kumpulan dengan Angka | `match-package-number` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6 (acuan topik) | Memasangkan kumpulan kemasan dengan angka yang sesuai. | Tiga ronde, tiga pasangan. |
+| 5 | Balik Kartu: Kumpulan dan Angka | `memory-package-number` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–11 (acuan topik) | Mengingat letak kartu kumpulan dan kartu angka yang sama. | Tiga ronde, empat pasang kartu. |
+| 6 | Ketuk Kumpulan yang Disebut | `tap-read-package` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6 (acuan topik) | Mendengar sebuah bilangan, lalu mengetuk kumpulan yang sesuai. | Tiga ronde, tiga kumpulan yang mirip. |
+| 7 | Ketuk Semua yang Sesuai Perintah | `tap-all-packages` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 9–11 (acuan topik) | Menemukan semua kumpulan yang memenuhi perintah tentang angka nol. | Tiga ronde, empat kumpulan. |
+| 8 | Pilih Bacaan Kumpulan | `read-package-words` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–9 (acuan topik) | Memilih cara menyebut bilangan dari kumpulan kemasan. | Tiga ronde, dua soal. |
+| 9 | Isi Papan dari Kumpulan | `board-from-package` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6 (acuan topik) | Mengisi papan empat tempat berdasarkan kumpulan kemasan. | Tiga ronde, dua soal. |
+| 10 | Gabungkan Sepuluh Jadi Satu | `exchange-packages` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 5–6 (acuan topik) | Memahami bahwa sepuluh kemasan kecil dapat digabung menjadi satu kemasan besar. | Tiga ronde, dua soal pilihan. |
 
 ## 8. Tahap 5: Picture (diagram)
 
-| No | Permainan | Jenis | Acuan buku | Tujuan | Cara main |
+| No | Permainan | Jenis | Rujukan | Tujuan | Cara main |
 |---|---|---|---|---|---|
-| 11 | Hitung Blok Empat Tempat | `count-blocks` | hlm. 6 | Membaca model blok menjadi lambang. | Tiga ronde, dua soal. |
-| 12 | Papan dari Blok | `board-from-blocks` | hlm. 6 dan 14 | Mengisi papan dari model blok. | Tiga ronde, dua soal. |
-| 13 | Isi Tabel Blok | `fill-block-table` | hlm. 16 (tabel nilai tempat) | Mengisi digit pada tabel dari model. | Tiga tabel, tiga baris. |
-| 14 | Jodohkan Blok dan Bilangan | `match-block-number` | hlm. 6 | Menjodohkan model dengan lambang. | Tiga ronde, tiga pasangan. |
-| 15 | Memori Blok dan Kata | `memory-block-word` | hlm. 6–9 | Mencocokkan model dengan kata. | Tiga ronde, empat pasang. |
-| 16 | Ketuk Blok yang Dibaca | `tap-block-read` | hlm. 6–9 | Mengetuk model sesuai bacaan. | Tiga ronde, dua pertanyaan. |
-| 17 | Garis Bilangan Ribuan | `number-line-read` | hlm. 4–11 | Menemukan bilangan pada garis. | Tiga ronde, dua soal. |
-| 18 | Ketuk Semua Blok | `tap-all-blocks` | hlm. 9–11 | Memilih model sesuai syarat digit. | Tiga ronde, empat model. |
-| 19 | Pilah Blok: Ada Nol atau Tidak | `sort-zero-blocks` | hlm. 6–9 (nol tidak dibaca) | Memilah model ada nol / tanpa nol. | Tiga ronde, enam model. |
-| 20 | Lengkapi Kalimat Blok | `complete-block-sentence` | hlm. 6–14 | Melengkapi kalimat tentang digit tempat. | Tiga model, tiga kalimat. |
+| 11 | Baca Bilangan dari Blok | `count-blocks` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6 (acuan topik) | Membaca gambar blok menjadi angka empat tempat. | Tiga ronde, dua soal. |
+| 12 | Isi Papan dari Gambar Blok | `board-from-blocks` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6 dan 14 (acuan topik) | Mengisi papan empat tempat dari gambar blok. | Tiga ronde, dua soal. |
+| 13 | Lengkapi Tabel dari Blok | `fill-block-table` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 16 (acuan topik) | Mengisi tabel empat kolom dari gambar blok. | Tiga tabel, tiga baris. |
+| 14 | Pasangkan Blok dengan Angka | `match-block-number` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6 (acuan topik) | Memasangkan gambar blok dengan angka yang sesuai. | Tiga ronde, tiga pasangan. |
+| 15 | Balik Kartu: Blok dan Kata | `memory-block-word` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–9 (acuan topik) | Mengingat pasangan gambar blok dan kata bilangan. | Tiga ronde, empat pasang kartu. |
+| 16 | Ketuk Blok yang Disebut | `tap-block-read` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–9 (acuan topik) | Mengetuk gambar blok yang sesuai dengan bilangan yang disebut. | Tiga ronde, dua pertanyaan. |
+| 17 | Cari Bilangan pada Garis | `number-line-read` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 4–11 (acuan topik) | Menemukan bilangan yang disebutkan pada garis bilangan. | Tiga ronde, dua soal. |
+| 18 | Ketuk Semua Blok yang Sesuai | `tap-all-blocks` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 9–11 (acuan topik) | Memilih semua gambar blok yang memenuhi syarat angka. | Tiga ronde, empat gambar. |
+| 19 | Kelompokkan: Ada Nol atau Tidak | `sort-zero-blocks` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–9 (acuan topik) | Mengelompokkan gambar blok menurut ada atau tidaknya angka nol. | Tiga ronde, enam gambar. |
+| 20 | Lengkapi Kalimat tentang Blok | `complete-block-sentence` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–14 (acuan topik) | Melengkapi kalimat tentang tempat dan nilai angka dari gambar blok. | Tiga gambar, tiga kalimat. |
 
 ## 9. Tahap 6: Abstract (kata dan angka)
 
-| No | Permainan | Jenis | Acuan buku | Tujuan | Cara main |
+| No | Permainan | Jenis | Rujukan | Tujuan | Cara main |
 |---|---|---|---|---|---|
-| 21 | Susun Empat Kartu | `compose-four-cards` | hlm. 5–8 (kartu bilangan) | Menulis lambang dari kata dengan empat kartu. | Tiga ronde, dua soal. |
-| 22 | Baca Bilangan Empat Angka | `read-number-choice` | hlm. 6–9 | Memilih cara membaca yang benar. | Tiga ronde, dua soal. |
-| 23 | Tulis Lambang di Papan | `write-on-board` | hlm. 7–9 (menulis 3.254) | Menulis dari kata ke papan empat kolom. | Tiga ronde, dua soal. |
-| 24 | Jodohkan Angka dan Kata | `match-number-word` | hlm. 11 (hubungkan) | Menjodohkan lambang dan bacaan. | Tiga ronde, tiga pasang. |
-| 25 | Memori Angka dan Kata | `memory-number-word` | hlm. 11 | Memori lambang dan kata. | Tiga ronde, empat pasang. |
-| 26 | Isi Tabel Cara Membaca | `fill-reading-table` | hlm. 11 | Melengkapi tabel bacaan. | Tiga tabel, empat baris. |
-| 27 | Benar atau Salah: Membaca | `true-false-reading` | hlm. 4–11 | Menilai pernyataan membaca/menulis. | Dua ronde, lima pernyataan. |
-| 28 | Detektif Bilangan Empat Angka | `detective-number` | hlm. 8–11 | Menemukan bilangan dari dua petunjuk. | Empat soal. |
-| 29 | Ketuk Semua yang Cocok: Angka | `select-all-numbers` | hlm. 9–11 | Memilih bilangan sesuai syarat digit. | Tiga ronde, empat bilangan. |
-| 30 | Susun Kata Bilangan | `build-number-sentence` | hlm. 6–9 | Menyusun kalimat tentang bilangan. | Empat kalimat. |
+| 21 | Tata Kartu Angka | `compose-four-cards` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 5–8 (acuan topik) | Menuliskan bilangan dari kata dengan menata empat kartu angka. | Tiga ronde, dua soal. |
+| 22 | Pilih Bacaan yang Tepat | `read-number-choice` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–9 (acuan topik) | Memilih cara menyebut sebuah bilangan empat angka. | Tiga ronde, dua soal. |
+| 23 | Tulis Angka pada Papan | `write-on-board` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 7–9 (acuan topik) | Menuliskan bilangan dari kata ke papan empat tempat. | Tiga ronde, dua soal. |
+| 24 | Pasangkan Angka dengan Bacaan | `match-number-word` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 11 (acuan topik) | Memasangkan angka dengan bacaannya. | Tiga ronde, tiga pasang. |
+| 25 | Balik Kartu: Angka dan Kata | `memory-number-word` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 11 (acuan topik) | Mengingat letak kartu angka dan kartu kata yang sama. | Tiga ronde, empat pasang kartu. |
+| 26 | Lengkapi Tabel Bacaan | `fill-reading-table` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 11 (acuan topik) | Melengkapi tabel yang memasangkan bilangan dengan bacaannya. | Tiga tabel, empat baris. |
+| 27 | Benar atau Salah | `true-false-reading` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 4–11 (acuan topik) | Menilai pernyataan tentang cara menyebut dan menulis bilangan. | Dua ronde, lima pernyataan. |
+| 28 | Tebak Bilangan Rahasia | `detective-number` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 8–11 (acuan topik) | Menemukan bilangan rahasia dari dua petunjuk. | Empat soal. |
+| 29 | Ketuk Semua Angka yang Sesuai | `select-all-numbers` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 9–11 (acuan topik) | Memilih bilangan yang memenuhi syarat tentang angka pada tempat tertentu. | Tiga ronde, empat bilangan. |
+| 30 | Rangkai Kalimat Bilangan | `build-number-sentence` | Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–9 (acuan topik) | Merangkai kata menjadi kalimat yang benar tentang bilangan. | Empat kalimat. |
 
 ## 10. Poin penting, cara, kegiatan di rumah, dan refleksi
 
-- 🟣 **Empat tempat**: ribuan, ratusan, puluhan, satuan. *Suara:* Bilangan empat angka punya empat tempat dari kiri: ribuan, ratusan, puluhan, dan satuan.
-- 🗣️ **Baca dari kiri**: 3.286 = tiga ribu dua ratus delapan puluh enam. *Suara:* Baca dari ribuan. 3.286 dibaca tiga ribu dua ratus delapan puluh enam.
-- ⭕ **Nol tidak dibaca**: 7.003 = tujuh ribu tiga. *Suara:* Nol tidak dibaca. 7.003 dibaca tujuh ribu tiga.
-- 1️⃣ **Seribu**: 1.025 = seribu dua puluh lima. *Suara:* Ribuan 1 dibaca seribu.
-- 🔄 **10 dus = 1 peti**: 1.000 satuan. *Suara:* Sepuluh dus sama dengan satu peti atau seribu.
+- 🟣 **Empat tempat**: ribuan, ratusan, puluhan, satuan *Suara:* Bilangan empat angka punya empat tempat, dari kiri ke kanan: ribuan, ratusan, puluhan, dan satuan.
+- 📦 **Kemasan bertingkat**: Peti seribu, dus seratus, bungkus sepuluh, benda lepas satu. *Suara:* Kemasan bertingkat. Peti seribu, dus seratus, bungkus sepuluh, dan benda lepas satu.
+- 🗂️ **Papan empat tempat**: Letak sebuah angka menentukan nilainya. *Suara:* Papan empat tempat. Letak sebuah angka menentukan nilainya.
+- ⭕ **Nol penjaga tempat**: Nol dilewati saat disebut, tetapi tetap ditulis. *Suara:* Nol penjaga tempat. Nol dilewati saat disebut, tetapi tetap ditulis.
 
-Ringkasan suara: Ingat! Empat tempat: ribuan, ratusan, puluhan, satuan. Baca dari kiri. Nol tidak dibaca. Ribuan 1 dibaca seribu. Sepuluh dus sama dengan satu peti.
+Ringkasan suara: Ingat: kemasan bertingkat, papan empat tempat, dan nol penjaga tempat.
 
-Cara menyebutkan: Cara membaca. Lihat ribuan, ratusan, puluhan, satuan. Baca berurutan, lewati nol. (ribuan, ratusan, puluhan, lewati nol)
+Cara menyebutkan: Cara menyebutnya: mulai dari ribuan, turun ke ratusan, puluhan, lalu satuan. Tempat yang bernilai nol dilewati. (ribuan, ratusan, puluhan, lewati nol)
 
-Ayo Mencoba di rumah: catat lima harga empat angka di warung atau struk belanja. Tulis lambangnya, tandai ribuan–satuan dengan empat warna, lalu bacakan.
+Ayo Mencoba: susun lima bilangan empat angka sesukamu pada papan di layar, lalu sebutkan satu per satu.
 
 Refleksi:
-- Aku dapat membaca bilangan empat angka.
-- Aku dapat menulis lambangnya dari kata.
-- Aku teliti saat ada nol.
-- Aku berani menjelaskan kepada teman.
+- Tempat mana yang paling sering membuatmu ragu?
+- Mengapa nol tetap ditulis walau tidak disebut?
+- Apa yang kamu lakukan saat sebuah bilangan punya nol di tengah?

@@ -4,13 +4,13 @@ Bab: Bilangan Cacah sampai 10.000 (`mtk-4-bab1`, `FASE_B`, kelas 4; kode data Ma
 
 Bab ini punya **sembilan sub-bab**: A (membaca dan menulis bilangan sampai 10.000), B (nilai tempat), C (membandingkan dan mengurutkan), D (komposisi dan dekomposisi), E (penjumlahan sampai 1.000), F (pengurangan sampai 1.000), G (perkalian sampai 100), H (pembagian sampai 100), dan I (faktor dan kelipatan). Sub-Bab I menjadi simulasi pencapaian misi bab: skenario Pameran Kelas 4 mengulang membaca, nilai tempat, membandingkan, uraian, menjumlah, mengurang, mengali, membagi, faktor, dan kelipatan.
 
-Berkas Materi bab ini tidak diubah (`SubBabK4B1A–I.tsx`, `data-k4b1.ts`, `naskah-k4b1.ts`, `paket-k4b1.ts`, `kit-k4b1.tsx`, `mesin-k4b1.tsx`, dan lainnya). Tokoh dan angka mengikuti Materi: Helen di minimarket (6.750), jarak 3.286 m, Gunung Semeru 3.676 m, Slamet dan struk 7.350, uang Helen Rp7.300 dan Rp10.000, jeruk Pak Toni (131 + 321, 189 + 245), buku dipinjam (265 − 132, 241 − 129, 253 − 176), donat 12 × 4, kelereng 14 × 5, pensil 12 × 8, permen Pak Wicak (48 : 4), kue 81 : 3, faktor 12 dan 20, serta kelipatan 2, 3, dan 5.
+Berkas Materi bab ini tidak diubah (`SubBabK4B1A–I.tsx`, `data-k4b1.ts`, `naskah-k4b1.ts`, `paket-k4b1.ts`, `kit-k4b1.tsx`, `mesin-k4b1.tsx`, dan lainnya). Sub-Bab A memakai naskah orisinal IGIL (tokoh Kira, gudang koin gim kebun; angka 4.152, 5.007, 1.308, 5.820, 4.718; rujukan topik: Matematika SD/MI Kelas IV, Bab 1 Sub-Bab A, hanya acuan; status draf). Sub-bab lain masih mengikuti Materi lama: Gunung Semeru 3.676 m, Slamet dan struk 7.350, uang Helen Rp7.300 dan Rp10.000, jeruk Pak Toni (131 + 321, 189 + 245), buku dipinjam (265 − 132, 241 − 129, 253 − 176), donat 12 × 4, kelereng 14 × 5, pensil 12 × 8, permen Pak Wicak (48 : 4), kue 81 : 3, faktor 12 dan 20, serta kelipatan 2, 3, dan 5.
 
 ## Alat
 
 | Sub-bab | Lab (tampilan) | Berkas | Mesin | Skenario |
 |---------|----------------|--------|-------|----------|
-| A | Lab Kemasan (Rakit, Tulis; Bacaan dan Papan) | `SimulasiLabKemasanK4.tsx` + `lab-kemasan-k4b1a.ts` | Mesin Baca | Helen di Minimarket |
+| A | Lab Kemasan (Rakit, Tulis; Bacaan dan Papan) | `SimulasiLabKemasanK4.tsx` + `lab-kemasan-k4b1a.ts` | Mesin Baca | Gim Kebun Kira |
 | B | Lab Nilai Tempat (Nilai dan Uraian, Tabel) | `SimulasiLabNilaiK4.tsx` + `lab-nilai-k4b1b.ts` | Mesin Nilai | Struk Belanja Azizah |
 | C | Lab Banding (Dua Bilangan, Urut, Kartu Digit) | `SimulasiLabBandingK4.tsx` + `lab-banding-k4b1c.ts` | Mesin Banding | Harga di Pasar |
 | D | Lab Susun-Urai (Susun, Urai, Uang) | `SimulasiLabSusunK4.tsx` + `lab-susun-k4b1d.ts` | Mesin Susun | Uang Helen |
@@ -34,7 +34,7 @@ Satu laboratorium per sub-bab, tiga alat. Gerbang LANJUTKAN KE CONCRETE aktif bi
 
 | Sub-bab | Misi wajib dari lab | Tantangan bebas |
 |---------|---------------------|-----------------|
-| A | Sepuluh dus ditukar satu peti; rakit 3.286, 7.003, dan 1.025 dengan Bacaan menyala; tulis tinggi Semeru dari kata | Rakit 10.000; tulis 9.045; rakit 2.903 |
+| A | Sepuluh dus ditukar satu peti; rakit 4.152, 5.007, dan 1.308 dengan Bacaan menyala; tulis skor tertinggi gim (4.718) dari kata | Rakit 10.000; tulis 3.075; rakit 8.209 |
 | B | Ketuk angka 2 pada 2.150; angka 6 di puluhan dan di ratusan; uraian dengan nol; tabel digit 7.812; menulis nilai penuh (7000) ditolak | Empat bilangan buku di tabel; empat angka 4 pada 4.444; angka 0 pada 2.150 |
 | C | Ribuan menentukan walau angka lain lebih besar; satuan menentukan; tanda sama dengan; urut tinggi tiga gunung; bilangan terbesar dari 1, 5, 9, 2 | Urut harga dari termahal; bilangan terkecil dari 3, 0, 7, 4 (ribuan bukan 0); ratusan menentukan |
 | D | Susun 6.348; kelompokkan keping tak baku; urai 6.035 dengan nol; urai 3.035 dengan dua cara; uang Rp7.300 | Urai 7.020; Rp10.000 dengan dua cara; 9.999 |
@@ -52,7 +52,7 @@ Empat stasiun per mesin, tiga kasus. Mesin menolak langkah yang melompat dan men
 
 | Mesin | Stasiun | Kasus |
 |-------|---------|-------|
-| Mesin Baca (A) | Rakit → Papan → Baca → Tulis | 3.286, 7.003, 1.025 |
+| Mesin Baca (A) | Rakit → Papan → Baca → Tulis | 4.152, 5.007, 1.308 |
 | Mesin Nilai (B) | Tempat → Nilai → Uraian → Tabel | 2.150, 8.463, 4.675 |
 | Mesin Banding (C) | Ribuan → Penentu → Tanda → Urut | 8.750 dan 7.500; 4.352 dan 4.365; 3.676 dan 3.726 |
 | Mesin Susun (D) | Susun → Urai → Nol → Periksa | 6.348, 6.035, 7.020 |
@@ -68,7 +68,7 @@ Pengecoh bersumber dari kesalahan umum: membaca nol, memakai satu ribu untuk 1.0
 
 | Skenario | Adegan | Isi |
 |----------|--------|-----|
-| Helen di Minimarket (A) | 7 | Tiga peti; 6.750 dibaca; 7.003 dan 1.025 dibaca; bungkus pada 3.286 |
+| Gim Kebun Kira (A) | 7 | Empat peti koin; 5.820 dibaca; 5.007 dan 1.308 dibaca; bungkus pada 4.152 |
 | Struk Belanja Azizah (B) | 7 | Nilai 7.000, 500, 2.000; uraian 2.150; 6 puluhan pada 8.463; kolom ribuan 7.812 diisi 7; 6 ratusan pada 4.675 |
 | Harga di Pasar (C) | 7 | Bengkoang 8.750 lebih mahal; tiga tanda; puluhan menentukan 4.352 dan 4.365; urutan naik tiga gunung |
 | Uang Helen (D) | 7 | Susun 6.348; uraian dengan nol; uang Rp7.300; uraian cara lain 5.000 + 1.348; sepuluh lembar Rp1.000 |
@@ -93,7 +93,7 @@ Pengecoh bersumber dari kesalahan umum: membaca nol, memakai satu ribu untuk 1.0
 
 ## Coba ini! (ringkas)
 
-- **A:** tambah dus sampai sepuluh; rakit 7.003 dan 1.025; tulis tinggi Semeru dari kata.
+- **A:** tambah dus sampai sepuluh; rakit 5.007 dan 1.308; tulis skor tertinggi gim dari kata.
 - **B:** angka 6 di puluhan lalu ratusan; uraian dengan nol; coba tulis 7000 di tabel.
 - **C:** 4.999 dan 5.111; dua bilangan yang berbeda hanya di satuan; ketuk gunung yang bukan terendah.
 - **D:** kelompokkan 12 keping ratusan; urai 3.035 dengan dua cara; susun Rp10.000.

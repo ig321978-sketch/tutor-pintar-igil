@@ -18,23 +18,23 @@
     "A": {
       "id": "A",
       "codeTitle": "Sub-Bab A (Membaca dan Menulis Bilangan)",
-      "fullTitle": "Sub-Bab A: Membaca dan Menulis Bilangan Cacah sampai 10.000",
-      "targetDescription": "Siswa membaca dan menulis bilangan cacah empat angka sampai 10.000, termasuk bilangan dengan nol (7.003, 1.025, 6.570), memakai papan ribuan–satuan, serta memahami 10 dus = 1 peti (1.000). Siswa memakai cara Balok Dienes Empat Tingkat, Papan Nilai Tempat, Nol Penjaga Tempat. Siswa memakai cara Balok Dienes Empat Tingkat, Papan Nilai Tempat, Nol Penjaga Tempat.",
+      "fullTitle": "Sub-Bab A: Menyebut dan Menuliskan Bilangan sampai 10.000",
+      "targetDescription": "Siswa menyebut dan menuliskan bilangan empat angka sampai sepuluh ribu, termasuk bilangan yang punya angka nol di tengah atau di ujung. Siswa merakit bilangan dari kemasan bertingkat, mengisi papan ribuan sampai satuan, dan memahami bahwa sepuluh dus bernilai satu peti. Cara yang dipakai: Kemasan Bertingkat, Papan Empat Tempat, dan Nol Penjaga Tempat.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#16A34A",
       "secondaryText": "#14532D",
       "silabus": {
-        "teksSuara": "Kita belajar membaca dan menulis bilangan cacah sampai sepuluh ribu. Helen melihat harga minuman enam ribu tujuh ratus lima puluh rupiah di minimarket, jarak rumah tiga ribu dua ratus delapan puluh enam meter, dan tinggi Gunung Semeru tiga ribu enam ratus tujuh puluh enam meter. Kita memakai kartu angka dan papan ribuan, ratusan, puluhan, satuan. Nol tidak dibaca, tetapi menjaga tempat saat menulis. Kita memakai cara: Balok Dienes Empat Tingkat, Papan Nilai Tempat, Nol Penjaga Tempat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan. Setiap digit punya nilai menurut tempatnya. Nol tidak dibaca keras, tetapi menjaga tempat digit. Kita melewati enam tahap seru: cerita, peta pikiran, infografis, benda nyata, gambar, dan simbol.",
-        "cp": "Siswa membaca, menulis, membandingkan, dan mengurutkan bilangan cacah sampai 10.000. Pada sub-bab ini fokus membaca dan menulis.",
+        "teksSuara": "Hari ini kita berlatih menyebut dan menuliskan bilangan empat angka, sampai sepuluh ribu. Kita merakit bilangan dari peti, dus, bungkus, dan benda lepas. Lalu kita mengisi papan ribuan, ratusan, puluhan, dan satuan. Angka nol tidak disebut saat membaca, tetapi tetap ditulis supaya tempatnya terjaga. Ada tiga cara yang kita pakai: kemasan bertingkat, papan empat tempat, dan nol penjaga tempat. Perjalanan kita lewat enam tahap: cerita, peta pikiran, infografis, benda berwarna, diagram, dan simbol.",
+        "cp": "Siswa menyebut, menulis, membandingkan, dan menyusun urutan bilangan sampai sepuluh ribu. Sub-bab ini memusatkan perhatian pada cara menyebut dan menulis bilangan.",
         "referensi": "Buku Siswa Matematika Kelas IV Kemendikbudristek (Bab 1 Sub-Bab A hlm. 4–11)."
       },
       "metodeLuar": [
         {
           "label": "METODE LUAR",
-          "nama": "Dienes Blocks",
-          "namaId": "Balok Dienes Empat Tingkat",
-          "asal": "Zoltan Dienes",
-          "ringkas": "Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan.",
+          "nama": "Kemasan Bertingkat",
+          "namaId": "Peti, dus, bungkus, benda",
+          "asal": "Rancangan IGIL",
+          "ringkas": "Peti seribu, dus seratus, bungkus sepuluh, dan benda lepas satu membantu merakit bilangan empat angka.",
           "tahap": [
             "Story",
             "Concrete",
@@ -43,10 +43,10 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Place-Value Chart",
-          "namaId": "Papan Nilai Tempat",
-          "asal": "Van de Walle",
-          "ringkas": "Setiap digit punya nilai menurut tempatnya.",
+          "nama": "Papan Empat Tempat",
+          "namaId": "Ribuan sampai satuan",
+          "asal": "Rancangan IGIL",
+          "ringkas": "Letak sebuah angka menentukan nilainya.",
           "tahap": [
             "Mind",
             "Abstract",
@@ -55,10 +55,10 @@
         },
         {
           "label": "METODE LUAR",
-          "nama": "Zero as Placeholder",
-          "namaId": "Nol Penjaga Tempat",
-          "asal": "Place-value pedagogy",
-          "ringkas": "Nol tidak dibaca keras, tetapi menjaga tempat digit.",
+          "nama": "Nol Penjaga Tempat",
+          "namaId": "Nol dilewati, nol ditulis",
+          "asal": "Rancangan IGIL",
+          "ringkas": "Nol dilewati saat disebut, tetapi tetap ditulis agar angka lain tidak bergeser.",
           "tahap": [
             "Story",
             "Abstract"
@@ -71,31 +71,31 @@
         {
           "stepNumber": 1,
           "stepTitle": "1. Pahami soal",
-          "stepDesc": "Apa yang ditanyakan pada Membaca dan Menulis Bilangan Cacah sampai 10.000?",
+          "stepDesc": "Baca soal pelan-pelan. Tandai bilangan yang harus disebut atau ditulis. Ucapkan ulang pertanyaannya dengan kata-katamu sendiri sebelum mulai bekerja.",
           "icon": "❓",
           "flowFrom": "START",
           "flowTo": "2"
         },
         {
           "stepNumber": 2,
-          "stepTitle": "2. Dienes Blocks",
-          "stepDesc": "Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan.",
+          "stepTitle": "2. Kemasan bertingkat",
+          "stepDesc": "Peti bernilai seribu, dus seratus, bungkus sepuluh, dan benda lepas satu. Dengan kemasan ini, bilangan empat angka bisa dirakit dan isinya terlihat jelas.",
           "icon": "🧭",
           "flowFrom": "1",
           "flowTo": "3"
         },
         {
           "stepNumber": 3,
-          "stepTitle": "3. Place-Value Chart",
-          "stepDesc": "Setiap digit punya nilai menurut tempatnya.",
+          "stepTitle": "3. Papan empat tempat",
+          "stepDesc": "Papan punya empat kolom berurutan. Dari kiri: ribuan, ratusan, puluhan, lalu satuan. Letak sebuah angka menentukan nilainya.",
           "icon": "🛠️",
           "flowFrom": "2",
           "flowTo": "4"
         },
         {
           "stepNumber": 4,
-          "stepTitle": "4. Zero as Placeholder",
-          "stepDesc": "Nol tidak dibaca keras, tetapi menjaga tempat digit.",
+          "stepTitle": "4. Nol penjaga tempat",
+          "stepDesc": "Tempat yang kosong diisi angka nol. Saat disebut, nol dilewati. Saat ditulis, nol harus hadir supaya angka lain tidak bergeser.",
           "icon": "✨",
           "flowFrom": "3",
           "flowTo": "5"
@@ -103,7 +103,7 @@
         {
           "stepNumber": 5,
           "stepTitle": "5. Kerjakan",
-          "stepDesc": "Terapkan cara itu pada angka atau gambar.",
+          "stepDesc": "Kerjakan satu langkah demi satu langkah. Rakit atau isi papan lebih dulu, baru sebut atau tulis bilangannya. Bila ragu, kembali ke papan.",
           "icon": "✏️",
           "flowFrom": "4",
           "flowTo": "6"
@@ -111,7 +111,7 @@
         {
           "stepNumber": 6,
           "stepTitle": "6. Cek masuk akal",
-          "stepDesc": "Apakah hasilnya masuk akal?",
+          "stepDesc": "Periksa hasilnya. Apakah angkanya ada empat? Apakah kata ribu sesuai dengan angka di tempat ribuan? Bila tidak, cari langkah yang meleset.",
           "icon": "✅",
           "flowFrom": "5",
           "flowTo": "7"
@@ -119,7 +119,7 @@
         {
           "stepNumber": 7,
           "stepTitle": "7. Simpulkan",
-          "stepDesc": "Jelaskan ide utamanya dengan kalimatmu.",
+          "stepDesc": "Rangkum dengan kata-katamu: bagaimana cara menyebut dan menulis bilangan empat angka, dan apa tugas angka nol.",
           "icon": "💬",
           "flowFrom": "6",
           "flowTo": "8"
@@ -127,7 +127,7 @@
         {
           "stepNumber": 8,
           "stepTitle": "8. Main",
-          "stepDesc": "Latih di Concrete sampai Abstract.",
+          "stepDesc": "Lanjutkan ke permainan benda berwarna, diagram, dan simbol. Ulangi sampai lancar tanpa melihat petunjuk.",
           "icon": "🎮",
           "flowFrom": "7",
           "flowTo": "END"
@@ -139,266 +139,266 @@
           "emoji": "🟣",
           "countNum": 1000,
           "countWord": "satu peti / seribu",
-          "voiceSentence": "Tempat paling kiri pada bilangan empat angka adalah ribuan. Satu peti sama dengan seribu."
+          "voiceSentence": "Angka di ujung kiri berada di tempat ribuan. Satu peti bernilai seribu."
         },
         {
           "fruitName": "RATUSAN",
           "emoji": "🟢",
           "countNum": 100,
           "countWord": "satu dus / seratus",
-          "voiceSentence": "Di kanan ribuan ada ratusan. Satu dus sama dengan seratus."
+          "voiceSentence": "Tempat kedua dari kiri adalah ratusan. Satu dus bernilai seratus."
         },
         {
           "fruitName": "PULUHAN",
           "emoji": "🔵",
           "countNum": 10,
           "countWord": "satu bungkus / sepuluh",
-          "voiceSentence": "Puluhan memakai kata puluh. Sepuluh satuan sama dengan satu puluhan."
+          "voiceSentence": "Tempat ketiga adalah puluhan. Satu bungkus bernilai sepuluh."
         },
         {
           "fruitName": "SATUAN",
           "emoji": "🔴",
           "countNum": 1,
           "countWord": "benda lepas",
-          "voiceSentence": "Satuan dibaca angkanya saja."
+          "voiceSentence": "Tempat terakhir adalah satuan. Satu benda lepas bernilai satu."
         },
         {
           "fruitName": "BACA DARI KIRI",
           "emoji": "⬅️",
-          "countNum": 3286,
-          "countWord": "tiga ribu dua ratus delapan puluh enam",
-          "voiceSentence": "Baca dari ribuan ke satuan. Contoh 3.286."
+          "countNum": 5274,
+          "countWord": "lima ribu dua ratus tujuh puluh empat",
+          "voiceSentence": "Mulai dari ribuan, lalu ratusan, puluhan, dan satuan. Contohnya lima ribu dua ratus tujuh puluh empat."
         },
         {
-          "fruitName": "NOL TIDAK DIBACA",
+          "fruitName": "NOL TIDAK DISEBUT",
           "emoji": "⭕",
-          "countNum": 7003,
-          "countWord": "tujuh ribu tiga",
-          "voiceSentence": "7.003 dibaca tujuh ribu tiga. Nol tidak dibaca."
+          "countNum": 8004,
+          "countWord": "delapan ribu empat",
+          "voiceSentence": "Delapan ribu empat. Ratusan dan puluhannya nol, jadi tidak disebut."
         },
         {
           "fruitName": "SERIBU",
           "emoji": "1️⃣",
-          "countNum": 1025,
-          "countWord": "seribu dua puluh lima",
-          "voiceSentence": "Ribuan 1 dibaca seribu, bukan satu ribu."
+          "countNum": 1830,
+          "countWord": "seribu delapan ratus tiga puluh",
+          "voiceSentence": "Angka satu di tempat ribuan disebut seribu, bukan satu ribu."
         },
         {
           "fruitName": "NOL MENJAGA TEMPAT",
           "emoji": "✍️",
-          "countNum": 405,
-          "countWord": "saat menulis tetap ditulis",
-          "voiceSentence": "Saat menulis, nol menjaga tempat yang kosong."
+          "countNum": 6038,
+          "countWord": "nol tetap ditulis",
+          "voiceSentence": "Saat menulis, tempat yang kosong tetap diisi angka nol supaya angka lain tidak bergeser."
         },
         {
           "fruitName": "SEPULUH DUS = SATU PETI",
           "emoji": "🔄",
           "countNum": 10,
           "countWord": "penukaran",
-          "voiceSentence": "Sepuluh dus ditukar menjadi satu peti."
+          "voiceSentence": "Sepuluh dus digabung menjadi satu peti."
         },
         {
           "fruitName": "SAMPAI 10.000",
           "emoji": "🔟",
           "countNum": 10000,
           "countWord": "sepuluh ribu",
-          "voiceSentence": "Batas bab ini adalah sepuluh ribu."
+          "voiceSentence": "Bilangan terbesar pada bab ini adalah sepuluh ribu."
         }
       ],
       "concreteSlides": [
         {
-          "title": "Rakit Peti dan Dus",
+          "title": "Rakit Bilangan dari Kemasan",
           "emoji": "📦",
           "targetCount": 6,
-          "voiceGuide": "Balok Dienes Empat Tingkat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan."
+          "voiceGuide": "Rakit sesuai bilangan yang kamu dengar, lalu periksa."
         },
         {
-          "title": "Hitung Kemasan Empat Tingkat",
+          "title": "Hitung Isi Semua Kemasan",
           "emoji": "🔢",
           "targetCount": 6,
-          "voiceGuide": "Balok Dienes Empat Tingkat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan."
+          "voiceGuide": "Hitung peti dulu, lalu dus, bungkus, dan benda lepas."
         },
         {
-          "title": "Pilah Peti, Dus, Bungkus, Satuan",
+          "title": "Masukkan Kemasan ke Kotak Nilai",
           "emoji": "🧺",
           "targetCount": 18,
-          "voiceGuide": "Balok Dienes Empat Tingkat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan."
+          "voiceGuide": "Tiap jenis kemasan punya kotak nilainya sendiri."
         },
         {
-          "title": "Jodohkan Kemasan dan Bilangan",
+          "title": "Pasangkan Kumpulan dengan Angka",
           "emoji": "🔗",
           "targetCount": 9,
-          "voiceGuide": "Balok Dienes Empat Tingkat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan."
+          "voiceGuide": "Hitung tiap tingkat sebelum memasangkan."
         },
         {
-          "title": "Memori Kemasan dan Bilangan",
+          "title": "Balik Kartu: Kumpulan dan Angka",
           "emoji": "🃏",
           "targetCount": 12,
-          "voiceGuide": "Balok Dienes Empat Tingkat. Mainkan dengan teliti."
+          "voiceGuide": "Balik dua kartu, cari yang sama."
         },
         {
-          "title": "Ketuk Kumpulan yang Dibaca",
+          "title": "Ketuk Kumpulan yang Disebut",
           "emoji": "👆",
           "targetCount": 6,
-          "voiceGuide": "Balok Dienes Empat Tingkat. Mainkan dengan teliti."
+          "voiceGuide": "Perhatikan tempat nol dan urutan kemasannya."
         },
         {
-          "title": "Ketuk Semua yang Cocok",
+          "title": "Ketuk Semua yang Sesuai Perintah",
           "emoji": "✔️",
           "targetCount": 3,
-          "voiceGuide": "Balok Dienes Empat Tingkat. Mainkan dengan teliti."
+          "voiceGuide": "Yang sesuai bisa lebih dari satu."
         },
         {
-          "title": "Baca Kumpulan",
+          "title": "Pilih Bacaan Kumpulan",
           "emoji": "🗣️",
           "targetCount": 6,
-          "voiceGuide": "Balok Dienes Empat Tingkat. Mainkan dengan teliti."
+          "voiceGuide": "Hitung dulu, lalu pilih bacaannya. Nol tidak disebut."
         },
         {
-          "title": "Papan dari Kumpulan",
+          "title": "Isi Papan dari Kumpulan",
           "emoji": "🗂️",
           "targetCount": 6,
-          "voiceGuide": "Balok Dienes Empat Tingkat. Mainkan dengan teliti."
+          "voiceGuide": "Peti untuk ribuan, dus untuk ratusan."
         },
         {
-          "title": "Tukar Kemasan sampai Peti",
+          "title": "Gabungkan Sepuluh Jadi Satu",
           "emoji": "🔄",
           "targetCount": 6,
-          "voiceGuide": "Balok Dienes Empat Tingkat. Mainkan dengan teliti."
+          "voiceGuide": "Sepuluh yang kecil sama dengan satu yang lebih besar."
         }
       ],
       "pictorialSlides": [
         {
-          "title": "Hitung Blok Empat Tempat",
+          "title": "Baca Bilangan dari Blok",
           "diagramType": "blocks-count",
           "numberA": 4,
           "numberB": 2,
-          "caption": "Pakai Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya. Latihan: Membaca model blok menjadi lambang.."
+          "caption": "Membaca gambar blok menjadi angka empat tempat."
         },
         {
-          "title": "Papan dari Blok",
+          "title": "Isi Papan dari Gambar Blok",
           "diagramType": "blocks-board",
           "numberA": 4,
           "numberB": 2,
-          "caption": "Pakai Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya. Latihan: Mengisi papan dari model blok.."
+          "caption": "Mengisi papan empat tempat dari gambar blok."
         },
         {
-          "title": "Isi Tabel Blok",
+          "title": "Lengkapi Tabel dari Blok",
           "diagramType": "blocks-table",
           "numberA": 4,
           "numberB": 3,
-          "caption": "Pakai Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya. Latihan: Mengisi digit pada tabel dari model.."
+          "caption": "Mengisi tabel empat kolom dari gambar blok."
         },
         {
-          "title": "Jodohkan Blok dan Bilangan",
+          "title": "Pasangkan Blok dengan Angka",
           "diagramType": "blocks-match",
           "numberA": 4,
           "numberB": 3,
-          "caption": "Pakai Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya. Latihan: Menjodohkan model dengan lambang.."
+          "caption": "Memasangkan gambar blok dengan angka yang sesuai."
         },
         {
-          "title": "Memori Blok dan Kata",
+          "title": "Balik Kartu: Blok dan Kata",
           "diagramType": "blocks-memory",
           "numberA": 4,
           "numberB": 4,
-          "caption": "Mencocokkan model dengan kata.. Ingat Papan Nilai Tempat. (Papan Nilai Tempat)"
+          "caption": "Mengingat pasangan gambar blok dan kata bilangan."
         },
         {
-          "title": "Ketuk Blok yang Dibaca",
+          "title": "Ketuk Blok yang Disebut",
           "diagramType": "blocks-tap",
           "numberA": 4,
           "numberB": 2,
-          "caption": "Mengetuk model sesuai bacaan.. Ingat Papan Nilai Tempat. (Papan Nilai Tempat)"
+          "caption": "Mengetuk gambar blok yang sesuai dengan bilangan yang disebut."
         },
         {
-          "title": "Garis Bilangan Ribuan",
+          "title": "Cari Bilangan pada Garis",
           "diagramType": "number-line",
           "numberA": 4,
           "numberB": 2,
-          "caption": "Menemukan bilangan pada garis.. Ingat Papan Nilai Tempat. (Papan Nilai Tempat)"
+          "caption": "Menemukan bilangan yang disebutkan pada garis bilangan."
         },
         {
-          "title": "Ketuk Semua Blok",
+          "title": "Ketuk Semua Blok yang Sesuai",
           "diagramType": "blocks-select",
           "numberA": 4,
           "numberB": 4,
-          "caption": "Memilih model sesuai syarat digit.. Ingat Papan Nilai Tempat. (Papan Nilai Tempat)"
+          "caption": "Memilih semua gambar blok yang memenuhi syarat angka."
         },
         {
-          "title": "Pilah Blok: Ada Nol atau Tidak",
+          "title": "Kelompokkan: Ada Nol atau Tidak",
           "diagramType": "blocks-sort",
           "numberA": 4,
           "numberB": 6,
-          "caption": "Memilah model ada nol / tanpa nol.. Ingat Papan Nilai Tempat. (Papan Nilai Tempat)"
+          "caption": "Mengelompokkan gambar blok menurut ada atau tidaknya angka nol."
         },
         {
-          "title": "Lengkapi Kalimat Blok",
+          "title": "Lengkapi Kalimat tentang Blok",
           "diagramType": "blocks-sentence",
           "numberA": 4,
           "numberB": 3,
-          "caption": "Melengkapi kalimat tentang digit tempat.. Ingat Papan Nilai Tempat. (Papan Nilai Tempat)"
+          "caption": "Melengkapi kalimat tentang tempat dan nilai angka dari gambar blok."
         }
       ],
       "abstractSlides": [
         {
-          "symbolLarge": "3.286",
-          "wordLarge": "SUSUN KARTU",
+          "symbolLarge": "5.127",
+          "wordLarge": "TATA KARTU",
           "mathNotation": "kata → angka",
-          "voiceReadout": "Nol Penjaga Tempat. Nol tidak dibaca keras, tetapi menjaga tempat digit."
+          "voiceReadout": "Dengar kata bilangannya, lalu tata kartunya dari ribuan."
         },
         {
-          "symbolLarge": "3.286",
+          "symbolLarge": "6.184",
           "wordLarge": "BACA",
           "mathNotation": "angka → kata",
-          "voiceReadout": "Nol Penjaga Tempat. Nol tidak dibaca keras, tetapi menjaga tempat digit."
+          "voiceReadout": "Mulai dari ribuan, dan lewati nol."
         },
         {
-          "symbolLarge": "3.254",
+          "symbolLarge": "7.415",
           "wordLarge": "TULIS",
           "mathNotation": "kata → angka",
-          "voiceReadout": "Nol Penjaga Tempat. Nol tidak dibaca keras, tetapi menjaga tempat digit."
+          "voiceReadout": "Tempat yang tidak disebut diisi nol."
         },
         {
-          "symbolLarge": "2.903",
-          "wordLarge": "JODOHKAN",
+          "symbolLarge": "5.604",
+          "wordLarge": "PASANGKAN",
           "mathNotation": "angka • kata",
-          "voiceReadout": "Nol Penjaga Tempat. Nol tidak dibaca keras, tetapi menjaga tempat digit."
+          "voiceReadout": "Baca tiap angka dari kiri ke kanan."
         },
         {
-          "symbolLarge": "3.050",
+          "symbolLarge": "2.760",
           "wordLarge": "MEMORI",
           "mathNotation": "angka • kata",
-          "voiceReadout": "Nol Penjaga Tempat. Mainkan dengan teliti."
+          "voiceReadout": "Ingat letak kartu, lalu cocokkan."
         },
         {
-          "symbolLarge": "7.350",
+          "symbolLarge": "4.761",
           "wordLarge": "TABEL",
-          "mathNotation": "bilangan • dibaca",
-          "voiceReadout": "Nol Penjaga Tempat. Mainkan dengan teliti."
+          "mathNotation": "bilangan • bacaan",
+          "voiceReadout": "Satu kartu bacaan tidak dipakai."
         },
         {
           "symbolLarge": "✓ ✗",
           "wordLarge": "BENAR SALAH",
           "mathNotation": "alasan",
-          "voiceReadout": "Nol Penjaga Tempat. Mainkan dengan teliti."
+          "voiceReadout": "Baca pernyataan dengan teliti, lalu putuskan."
         },
         {
           "symbolLarge": "?",
-          "wordLarge": "DETEKTIF",
+          "wordLarge": "TEBAK",
           "mathNotation": "dua petunjuk",
-          "voiceReadout": "Nol Penjaga Tempat. Mainkan dengan teliti."
+          "voiceReadout": "Pakai kedua petunjuk sekaligus."
         },
         {
           "symbolLarge": "✔✔",
-          "wordLarge": "SEMUA COCOK",
-          "mathNotation": "syarat digit",
-          "voiceReadout": "Nol Penjaga Tempat. Mainkan dengan teliti."
+          "wordLarge": "SEMUA SESUAI",
+          "mathNotation": "syarat angka",
+          "voiceReadout": "Lihat angka pada tempat yang ditanyakan."
         },
         {
           "symbolLarge": "Aa",
-          "wordLarge": "SUSUN KATA",
+          "wordLarge": "RANGKAI",
           "mathNotation": "kalimat",
-          "voiceReadout": "Nol Penjaga Tempat. Mainkan dengan teliti."
+          "voiceReadout": "Satu kata tidak dipakai."
         }
       ],
       "interactiveGames": [
@@ -407,330 +407,330 @@
           "gameNumber": 1,
           "stage": "Concrete",
           "gameType": "build-with-exchange",
-          "title": "Rakit Peti dan Dus",
-          "bookReference": "Buku Siswa hlm. 4–6 (kartu bilangan; 10 dus = 1 peti)",
-          "objective": "Pakai Balok Dienes Empat Tingkat: Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan. Latihan: Merakit bilangan empat angka dengan peti, dus, bungkus, dan benda lepas..",
-          "mechanicDescription": "Tiga ronde, tiap ronde dua bilangan. Penukaran sepuluh otomatis. Tekan Periksa. Saat bermain, ingat Balok Dienes Empat Tingkat: Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan.",
-          "voiceGuide": "Balok Dienes Empat Tingkat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan."
+          "title": "Rakit Bilangan dari Kemasan",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 4–6 (acuan topik)",
+          "objective": "Merakit bilangan empat angka dari peti, dus, bungkus, dan benda lepas.",
+          "mechanicDescription": "Tiga ronde, tiap ronde dua bilangan. Sepuluh kemasan kecil otomatis menyatu menjadi satu kemasan yang lebih besar. Tekan Periksa untuk mengecek.",
+          "voiceGuide": "Rakit sesuai bilangan yang kamu dengar, lalu periksa."
         },
         {
           "gameId": "subK4B1A-game-2",
           "gameNumber": 2,
           "stage": "Concrete",
           "gameType": "count-packages",
-          "title": "Hitung Kemasan Empat Tingkat",
-          "bookReference": "Buku Siswa hlm. 5–6 (membaca 3.286)",
-          "objective": "Pakai Balok Dienes Empat Tingkat: Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan. Latihan: Menghitung peti, dus, bungkus, dan benda lalu memilih lambangnya..",
-          "mechanicDescription": "Tiga ronde, dua soal. Pilih satu dari tiga bilangan. Saat bermain, ingat Balok Dienes Empat Tingkat: Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan.",
-          "voiceGuide": "Balok Dienes Empat Tingkat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan."
+          "title": "Hitung Isi Semua Kemasan",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 5–6 (acuan topik)",
+          "objective": "Menghitung isi tiap tingkat kemasan, lalu memilih angka yang sesuai.",
+          "mechanicDescription": "Tiga ronde, dua soal. Pilih satu dari tiga angka.",
+          "voiceGuide": "Hitung peti dulu, lalu dus, bungkus, dan benda lepas."
         },
         {
           "gameId": "subK4B1A-game-3",
           "gameNumber": 3,
           "stage": "Concrete",
           "gameType": "sort-packages",
-          "title": "Pilah Peti, Dus, Bungkus, Satuan",
-          "bookReference": "Buku Siswa hlm. 5–6 (ribuan sampai satuan)",
-          "objective": "Pakai Balok Dienes Empat Tingkat: Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan. Latihan: Memilah kemasan menurut nilainya..",
-          "mechanicDescription": "Tiga ronde, enam kelompok ke empat kotak. Saat bermain, ingat Balok Dienes Empat Tingkat: Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan.",
-          "voiceGuide": "Balok Dienes Empat Tingkat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan."
+          "title": "Masukkan Kemasan ke Kotak Nilai",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 5–6 (acuan topik)",
+          "objective": "Memilah kelompok kemasan ke kotak ribuan, ratusan, puluhan, atau satuan.",
+          "mechanicDescription": "Tiga ronde, enam kelompok, empat kotak.",
+          "voiceGuide": "Tiap jenis kemasan punya kotak nilainya sendiri."
         },
         {
           "gameId": "subK4B1A-game-4",
           "gameNumber": 4,
           "stage": "Concrete",
           "gameType": "match-package-number",
-          "title": "Jodohkan Kemasan dan Bilangan",
-          "bookReference": "Buku Siswa hlm. 6 (nama bilangan 3.286)",
-          "objective": "Pakai Balok Dienes Empat Tingkat: Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan. Latihan: Menjodohkan kumpulan dengan lambang..",
-          "mechanicDescription": "Tiga ronde, tiga pasangan. Saat bermain, ingat Balok Dienes Empat Tingkat: Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan.",
-          "voiceGuide": "Balok Dienes Empat Tingkat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan."
+          "title": "Pasangkan Kumpulan dengan Angka",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6 (acuan topik)",
+          "objective": "Memasangkan kumpulan kemasan dengan angka yang sesuai.",
+          "mechanicDescription": "Tiga ronde, tiga pasangan.",
+          "voiceGuide": "Hitung tiap tingkat sebelum memasangkan."
         },
         {
           "gameId": "subK4B1A-game-5",
           "gameNumber": 5,
           "stage": "Concrete",
           "gameType": "memory-package-number",
-          "title": "Memori Kemasan dan Bilangan",
-          "bookReference": "Buku Siswa hlm. 6–11",
-          "objective": "Mencocokkan kumpulan dan lambang lewat memori.. Ingat Balok Dienes Empat Tingkat. (Balok Dienes Empat Tingkat)",
-          "mechanicDescription": "Tiga ronde, empat pasang. Gunakan Balok Dienes Empat Tingkat.",
-          "voiceGuide": "Balok Dienes Empat Tingkat. Mainkan dengan teliti."
+          "title": "Balik Kartu: Kumpulan dan Angka",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–11 (acuan topik)",
+          "objective": "Mengingat letak kartu kumpulan dan kartu angka yang sama.",
+          "mechanicDescription": "Tiga ronde, empat pasang kartu.",
+          "voiceGuide": "Balik dua kartu, cari yang sama."
         },
         {
           "gameId": "subK4B1A-game-6",
           "gameNumber": 6,
           "stage": "Concrete",
           "gameType": "tap-read-package",
-          "title": "Ketuk Kumpulan yang Dibaca",
-          "bookReference": "Buku Siswa hlm. 6 (cara membaca)",
-          "objective": "Mendengar kata bilangan lalu mengetuk kumpulan.. Ingat Balok Dienes Empat Tingkat. (Balok Dienes Empat Tingkat)",
-          "mechanicDescription": "Tiga ronde, tiga kumpulan mirip. Gunakan Balok Dienes Empat Tingkat.",
-          "voiceGuide": "Balok Dienes Empat Tingkat. Mainkan dengan teliti."
+          "title": "Ketuk Kumpulan yang Disebut",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6 (acuan topik)",
+          "objective": "Mendengar sebuah bilangan, lalu mengetuk kumpulan yang sesuai.",
+          "mechanicDescription": "Tiga ronde, tiga kumpulan yang mirip.",
+          "voiceGuide": "Perhatikan tempat nol dan urutan kemasannya."
         },
         {
           "gameId": "subK4B1A-game-7",
           "gameNumber": 7,
           "stage": "Concrete",
           "gameType": "tap-all-packages",
-          "title": "Ketuk Semua yang Cocok",
-          "bookReference": "Buku Siswa hlm. 9–11 (nol pada tempat)",
-          "objective": "Menemukan semua kumpulan dengan syarat digit.. Ingat Balok Dienes Empat Tingkat. (Balok Dienes Empat Tingkat)",
-          "mechanicDescription": "Tiga ronde, empat kumpulan. Gunakan Balok Dienes Empat Tingkat.",
-          "voiceGuide": "Balok Dienes Empat Tingkat. Mainkan dengan teliti."
+          "title": "Ketuk Semua yang Sesuai Perintah",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 9–11 (acuan topik)",
+          "objective": "Menemukan semua kumpulan yang memenuhi perintah tentang angka nol.",
+          "mechanicDescription": "Tiga ronde, empat kumpulan.",
+          "voiceGuide": "Yang sesuai bisa lebih dari satu."
         },
         {
           "gameId": "subK4B1A-game-8",
           "gameNumber": 8,
           "stage": "Concrete",
           "gameType": "read-package-words",
-          "title": "Baca Kumpulan",
-          "bookReference": "Buku Siswa hlm. 6–9 (3.286, 7.003, 1.025)",
-          "objective": "Memilih cara membaca yang benar.. Ingat Balok Dienes Empat Tingkat. (Balok Dienes Empat Tingkat)",
-          "mechanicDescription": "Tiga ronde, dua soal. Gunakan Balok Dienes Empat Tingkat.",
-          "voiceGuide": "Balok Dienes Empat Tingkat. Mainkan dengan teliti."
+          "title": "Pilih Bacaan Kumpulan",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–9 (acuan topik)",
+          "objective": "Memilih cara menyebut bilangan dari kumpulan kemasan.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Hitung dulu, lalu pilih bacaannya. Nol tidak disebut."
         },
         {
           "gameId": "subK4B1A-game-9",
           "gameNumber": 9,
           "stage": "Concrete",
           "gameType": "board-from-package",
-          "title": "Papan dari Kumpulan",
-          "bookReference": "Buku Siswa hlm. 6 (tabel Ribuan–Satuan)",
-          "objective": "Mengisi papan empat kolom dari kumpulan.. Ingat Balok Dienes Empat Tingkat. (Balok Dienes Empat Tingkat)",
-          "mechanicDescription": "Tiga ronde, dua soal. Gunakan Balok Dienes Empat Tingkat.",
-          "voiceGuide": "Balok Dienes Empat Tingkat. Mainkan dengan teliti."
+          "title": "Isi Papan dari Kumpulan",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6 (acuan topik)",
+          "objective": "Mengisi papan empat tempat berdasarkan kumpulan kemasan.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Peti untuk ribuan, dus untuk ratusan."
         },
         {
           "gameId": "subK4B1A-game-10",
           "gameNumber": 10,
           "stage": "Concrete",
           "gameType": "exchange-packages",
-          "title": "Tukar Kemasan sampai Peti",
-          "bookReference": "Buku Siswa hlm. 5–6 (10→1)",
-          "objective": "Memahami penukaran sampai peti 1.000.. Ingat Balok Dienes Empat Tingkat. (Balok Dienes Empat Tingkat)",
-          "mechanicDescription": "Tiga ronde, dua soal. Gunakan Balok Dienes Empat Tingkat.",
-          "voiceGuide": "Balok Dienes Empat Tingkat. Mainkan dengan teliti."
+          "title": "Gabungkan Sepuluh Jadi Satu",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 5–6 (acuan topik)",
+          "objective": "Memahami bahwa sepuluh kemasan kecil dapat digabung menjadi satu kemasan besar.",
+          "mechanicDescription": "Tiga ronde, dua soal pilihan.",
+          "voiceGuide": "Sepuluh yang kecil sama dengan satu yang lebih besar."
         },
         {
           "gameId": "subK4B1A-game-11",
           "gameNumber": 11,
           "stage": "Picture",
           "gameType": "count-blocks",
-          "title": "Hitung Blok Empat Tempat",
-          "bookReference": "Buku Siswa hlm. 6",
-          "objective": "Pakai Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya. Latihan: Membaca model blok menjadi lambang..",
-          "mechanicDescription": "Tiga ronde, dua soal. Saat bermain, ingat Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya.",
-          "voiceGuide": "Papan Nilai Tempat. Setiap digit punya nilai menurut tempatnya."
+          "title": "Baca Bilangan dari Blok",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6 (acuan topik)",
+          "objective": "Membaca gambar blok menjadi angka empat tempat.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Kubus ungu untuk ribuan, lempeng hijau untuk ratusan."
         },
         {
           "gameId": "subK4B1A-game-12",
           "gameNumber": 12,
           "stage": "Picture",
           "gameType": "board-from-blocks",
-          "title": "Papan dari Blok",
-          "bookReference": "Buku Siswa hlm. 6 dan 14",
-          "objective": "Pakai Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya. Latihan: Mengisi papan dari model blok..",
-          "mechanicDescription": "Tiga ronde, dua soal. Saat bermain, ingat Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya.",
-          "voiceGuide": "Papan Nilai Tempat. Setiap digit punya nilai menurut tempatnya."
+          "title": "Isi Papan dari Gambar Blok",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6 dan 14 (acuan topik)",
+          "objective": "Mengisi papan empat tempat dari gambar blok.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Hitung tiap jenis blok, lalu isi papan."
         },
         {
           "gameId": "subK4B1A-game-13",
           "gameNumber": 13,
           "stage": "Picture",
           "gameType": "fill-block-table",
-          "title": "Isi Tabel Blok",
-          "bookReference": "Buku Siswa hlm. 16 (tabel nilai tempat)",
-          "objective": "Pakai Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya. Latihan: Mengisi digit pada tabel dari model..",
-          "mechanicDescription": "Tiga tabel, tiga baris. Saat bermain, ingat Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya.",
-          "voiceGuide": "Papan Nilai Tempat. Setiap digit punya nilai menurut tempatnya."
+          "title": "Lengkapi Tabel dari Blok",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 16 (acuan topik)",
+          "objective": "Mengisi tabel empat kolom dari gambar blok.",
+          "mechanicDescription": "Tiga tabel, tiga baris.",
+          "voiceGuide": "Satu baris, satu gambar blok."
         },
         {
           "gameId": "subK4B1A-game-14",
           "gameNumber": 14,
           "stage": "Picture",
           "gameType": "match-block-number",
-          "title": "Jodohkan Blok dan Bilangan",
-          "bookReference": "Buku Siswa hlm. 6",
-          "objective": "Pakai Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya. Latihan: Menjodohkan model dengan lambang..",
-          "mechanicDescription": "Tiga ronde, tiga pasangan. Saat bermain, ingat Papan Nilai Tempat: Setiap digit punya nilai menurut tempatnya.",
-          "voiceGuide": "Papan Nilai Tempat. Setiap digit punya nilai menurut tempatnya."
+          "title": "Pasangkan Blok dengan Angka",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6 (acuan topik)",
+          "objective": "Memasangkan gambar blok dengan angka yang sesuai.",
+          "mechanicDescription": "Tiga ronde, tiga pasangan.",
+          "voiceGuide": "Hitung dulu sebelum memasangkan."
         },
         {
           "gameId": "subK4B1A-game-15",
           "gameNumber": 15,
           "stage": "Picture",
           "gameType": "memory-block-word",
-          "title": "Memori Blok dan Kata",
-          "bookReference": "Buku Siswa hlm. 6–9",
-          "objective": "Mencocokkan model dengan kata.. Ingat Papan Nilai Tempat. (Papan Nilai Tempat)",
-          "mechanicDescription": "Tiga ronde, empat pasang. Gunakan Papan Nilai Tempat.",
-          "voiceGuide": "Papan Nilai Tempat. Mainkan dengan teliti."
+          "title": "Balik Kartu: Blok dan Kata",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–9 (acuan topik)",
+          "objective": "Mengingat pasangan gambar blok dan kata bilangan.",
+          "mechanicDescription": "Tiga ronde, empat pasang kartu.",
+          "voiceGuide": "Bacalah blok menjadi kata, lalu cari kartunya."
         },
         {
           "gameId": "subK4B1A-game-16",
           "gameNumber": 16,
           "stage": "Picture",
           "gameType": "tap-block-read",
-          "title": "Ketuk Blok yang Dibaca",
-          "bookReference": "Buku Siswa hlm. 6–9",
-          "objective": "Mengetuk model sesuai bacaan.. Ingat Papan Nilai Tempat. (Papan Nilai Tempat)",
-          "mechanicDescription": "Tiga ronde, dua pertanyaan. Gunakan Papan Nilai Tempat.",
-          "voiceGuide": "Papan Nilai Tempat. Mainkan dengan teliti."
+          "title": "Ketuk Blok yang Disebut",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–9 (acuan topik)",
+          "objective": "Mengetuk gambar blok yang sesuai dengan bilangan yang disebut.",
+          "mechanicDescription": "Tiga ronde, dua pertanyaan.",
+          "voiceGuide": "Cari gambar yang kosong di tempat yang tepat."
         },
         {
           "gameId": "subK4B1A-game-17",
           "gameNumber": 17,
           "stage": "Picture",
           "gameType": "number-line-read",
-          "title": "Garis Bilangan Ribuan",
-          "bookReference": "Buku Siswa hlm. 4–11",
-          "objective": "Menemukan bilangan pada garis.. Ingat Papan Nilai Tempat. (Papan Nilai Tempat)",
-          "mechanicDescription": "Tiga ronde, dua soal. Gunakan Papan Nilai Tempat.",
-          "voiceGuide": "Papan Nilai Tempat. Mainkan dengan teliti."
+          "title": "Cari Bilangan pada Garis",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 4–11 (acuan topik)",
+          "objective": "Menemukan bilangan yang disebutkan pada garis bilangan.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Lihat dulu loncatan tiap titik."
         },
         {
           "gameId": "subK4B1A-game-18",
           "gameNumber": 18,
           "stage": "Picture",
           "gameType": "tap-all-blocks",
-          "title": "Ketuk Semua Blok",
-          "bookReference": "Buku Siswa hlm. 9–11",
-          "objective": "Memilih model sesuai syarat digit.. Ingat Papan Nilai Tempat. (Papan Nilai Tempat)",
-          "mechanicDescription": "Tiga ronde, empat model. Gunakan Papan Nilai Tempat.",
-          "voiceGuide": "Papan Nilai Tempat. Mainkan dengan teliti."
+          "title": "Ketuk Semua Blok yang Sesuai",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 9–11 (acuan topik)",
+          "objective": "Memilih semua gambar blok yang memenuhi syarat angka.",
+          "mechanicDescription": "Tiga ronde, empat gambar.",
+          "voiceGuide": "Periksa tiap gambar satu per satu."
         },
         {
           "gameId": "subK4B1A-game-19",
           "gameNumber": 19,
           "stage": "Picture",
           "gameType": "sort-zero-blocks",
-          "title": "Pilah Blok: Ada Nol atau Tidak",
-          "bookReference": "Buku Siswa hlm. 6–9 (nol tidak dibaca)",
-          "objective": "Memilah model ada nol / tanpa nol.. Ingat Papan Nilai Tempat. (Papan Nilai Tempat)",
-          "mechanicDescription": "Tiga ronde, enam model. Gunakan Papan Nilai Tempat.",
-          "voiceGuide": "Papan Nilai Tempat. Mainkan dengan teliti."
+          "title": "Kelompokkan: Ada Nol atau Tidak",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–9 (acuan topik)",
+          "objective": "Mengelompokkan gambar blok menurut ada atau tidaknya angka nol.",
+          "mechanicDescription": "Tiga ronde, enam gambar.",
+          "voiceGuide": "Tempat yang kosong berarti angka nol."
         },
         {
           "gameId": "subK4B1A-game-20",
           "gameNumber": 20,
           "stage": "Picture",
           "gameType": "complete-block-sentence",
-          "title": "Lengkapi Kalimat Blok",
-          "bookReference": "Buku Siswa hlm. 6–14",
-          "objective": "Melengkapi kalimat tentang digit tempat.. Ingat Papan Nilai Tempat. (Papan Nilai Tempat)",
-          "mechanicDescription": "Tiga model, tiga kalimat. Gunakan Papan Nilai Tempat.",
-          "voiceGuide": "Papan Nilai Tempat. Mainkan dengan teliti."
+          "title": "Lengkapi Kalimat tentang Blok",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–14 (acuan topik)",
+          "objective": "Melengkapi kalimat tentang tempat dan nilai angka dari gambar blok.",
+          "mechanicDescription": "Tiga gambar, tiga kalimat.",
+          "voiceGuide": "Tiap bagian kosong punya satu jawaban yang tepat."
         },
         {
           "gameId": "subK4B1A-game-21",
           "gameNumber": 21,
           "stage": "Abstract",
           "gameType": "compose-four-cards",
-          "title": "Susun Empat Kartu",
-          "bookReference": "Buku Siswa hlm. 5–8 (kartu bilangan)",
-          "objective": "Pakai Nol Penjaga Tempat: Nol tidak dibaca keras, tetapi menjaga tempat digit. Latihan: Menulis lambang dari kata dengan empat kartu..",
-          "mechanicDescription": "Tiga ronde, dua soal. Saat bermain, ingat Nol Penjaga Tempat: Nol tidak dibaca keras, tetapi menjaga tempat digit.",
-          "voiceGuide": "Nol Penjaga Tempat. Nol tidak dibaca keras, tetapi menjaga tempat digit."
+          "title": "Tata Kartu Angka",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 5–8 (acuan topik)",
+          "objective": "Menuliskan bilangan dari kata dengan menata empat kartu angka.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Dengar kata bilangannya, lalu tata kartunya dari ribuan."
         },
         {
           "gameId": "subK4B1A-game-22",
           "gameNumber": 22,
           "stage": "Abstract",
           "gameType": "read-number-choice",
-          "title": "Baca Bilangan Empat Angka",
-          "bookReference": "Buku Siswa hlm. 6–9",
-          "objective": "Pakai Nol Penjaga Tempat: Nol tidak dibaca keras, tetapi menjaga tempat digit. Latihan: Memilih cara membaca yang benar..",
-          "mechanicDescription": "Tiga ronde, dua soal. Saat bermain, ingat Nol Penjaga Tempat: Nol tidak dibaca keras, tetapi menjaga tempat digit.",
-          "voiceGuide": "Nol Penjaga Tempat. Nol tidak dibaca keras, tetapi menjaga tempat digit."
+          "title": "Pilih Bacaan yang Tepat",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–9 (acuan topik)",
+          "objective": "Memilih cara menyebut sebuah bilangan empat angka.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Mulai dari ribuan, dan lewati nol."
         },
         {
           "gameId": "subK4B1A-game-23",
           "gameNumber": 23,
           "stage": "Abstract",
           "gameType": "write-on-board",
-          "title": "Tulis Lambang di Papan",
-          "bookReference": "Buku Siswa hlm. 7–9 (menulis 3.254)",
-          "objective": "Pakai Nol Penjaga Tempat: Nol tidak dibaca keras, tetapi menjaga tempat digit. Latihan: Menulis dari kata ke papan empat kolom..",
-          "mechanicDescription": "Tiga ronde, dua soal. Saat bermain, ingat Nol Penjaga Tempat: Nol tidak dibaca keras, tetapi menjaga tempat digit.",
-          "voiceGuide": "Nol Penjaga Tempat. Nol tidak dibaca keras, tetapi menjaga tempat digit."
+          "title": "Tulis Angka pada Papan",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 7–9 (acuan topik)",
+          "objective": "Menuliskan bilangan dari kata ke papan empat tempat.",
+          "mechanicDescription": "Tiga ronde, dua soal.",
+          "voiceGuide": "Tempat yang tidak disebut diisi nol."
         },
         {
           "gameId": "subK4B1A-game-24",
           "gameNumber": 24,
           "stage": "Abstract",
           "gameType": "match-number-word",
-          "title": "Jodohkan Angka dan Kata",
-          "bookReference": "Buku Siswa hlm. 11 (hubungkan)",
-          "objective": "Pakai Nol Penjaga Tempat: Nol tidak dibaca keras, tetapi menjaga tempat digit. Latihan: Menjodohkan lambang dan bacaan..",
-          "mechanicDescription": "Tiga ronde, tiga pasang. Saat bermain, ingat Nol Penjaga Tempat: Nol tidak dibaca keras, tetapi menjaga tempat digit.",
-          "voiceGuide": "Nol Penjaga Tempat. Nol tidak dibaca keras, tetapi menjaga tempat digit."
+          "title": "Pasangkan Angka dengan Bacaan",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 11 (acuan topik)",
+          "objective": "Memasangkan angka dengan bacaannya.",
+          "mechanicDescription": "Tiga ronde, tiga pasang.",
+          "voiceGuide": "Baca tiap angka dari kiri ke kanan."
         },
         {
           "gameId": "subK4B1A-game-25",
           "gameNumber": 25,
           "stage": "Abstract",
           "gameType": "memory-number-word",
-          "title": "Memori Angka dan Kata",
-          "bookReference": "Buku Siswa hlm. 11",
-          "objective": "Memori lambang dan kata.. Ingat Nol Penjaga Tempat. (Nol Penjaga Tempat)",
-          "mechanicDescription": "Tiga ronde, empat pasang. Gunakan Nol Penjaga Tempat.",
-          "voiceGuide": "Nol Penjaga Tempat. Mainkan dengan teliti."
+          "title": "Balik Kartu: Angka dan Kata",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 11 (acuan topik)",
+          "objective": "Mengingat letak kartu angka dan kartu kata yang sama.",
+          "mechanicDescription": "Tiga ronde, empat pasang kartu.",
+          "voiceGuide": "Ingat letak kartu, lalu cocokkan."
         },
         {
           "gameId": "subK4B1A-game-26",
           "gameNumber": 26,
           "stage": "Abstract",
           "gameType": "fill-reading-table",
-          "title": "Isi Tabel Cara Membaca",
-          "bookReference": "Buku Siswa hlm. 11",
-          "objective": "Melengkapi tabel bacaan.. Ingat Nol Penjaga Tempat. (Nol Penjaga Tempat)",
-          "mechanicDescription": "Tiga tabel, empat baris. Gunakan Nol Penjaga Tempat.",
-          "voiceGuide": "Nol Penjaga Tempat. Mainkan dengan teliti."
+          "title": "Lengkapi Tabel Bacaan",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 11 (acuan topik)",
+          "objective": "Melengkapi tabel yang memasangkan bilangan dengan bacaannya.",
+          "mechanicDescription": "Tiga tabel, empat baris.",
+          "voiceGuide": "Satu kartu bacaan tidak dipakai."
         },
         {
           "gameId": "subK4B1A-game-27",
           "gameNumber": 27,
           "stage": "Abstract",
           "gameType": "true-false-reading",
-          "title": "Benar atau Salah: Membaca",
-          "bookReference": "Buku Siswa hlm. 4–11",
-          "objective": "Menilai pernyataan membaca/menulis.. Ingat Nol Penjaga Tempat. (Nol Penjaga Tempat)",
-          "mechanicDescription": "Dua ronde, lima pernyataan. Gunakan Nol Penjaga Tempat.",
-          "voiceGuide": "Nol Penjaga Tempat. Mainkan dengan teliti."
+          "title": "Benar atau Salah",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 4–11 (acuan topik)",
+          "objective": "Menilai pernyataan tentang cara menyebut dan menulis bilangan.",
+          "mechanicDescription": "Dua ronde, lima pernyataan.",
+          "voiceGuide": "Baca pernyataan dengan teliti, lalu putuskan."
         },
         {
           "gameId": "subK4B1A-game-28",
           "gameNumber": 28,
           "stage": "Abstract",
           "gameType": "detective-number",
-          "title": "Detektif Bilangan Empat Angka",
-          "bookReference": "Buku Siswa hlm. 8–11",
-          "objective": "Menemukan bilangan dari dua petunjuk.. Ingat Nol Penjaga Tempat. (Nol Penjaga Tempat)",
-          "mechanicDescription": "Empat soal. Gunakan Nol Penjaga Tempat.",
-          "voiceGuide": "Nol Penjaga Tempat. Mainkan dengan teliti."
+          "title": "Tebak Bilangan Rahasia",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 8–11 (acuan topik)",
+          "objective": "Menemukan bilangan rahasia dari dua petunjuk.",
+          "mechanicDescription": "Empat soal.",
+          "voiceGuide": "Pakai kedua petunjuk sekaligus."
         },
         {
           "gameId": "subK4B1A-game-29",
           "gameNumber": 29,
           "stage": "Abstract",
           "gameType": "select-all-numbers",
-          "title": "Ketuk Semua yang Cocok: Angka",
-          "bookReference": "Buku Siswa hlm. 9–11",
-          "objective": "Memilih bilangan sesuai syarat digit.. Ingat Nol Penjaga Tempat. (Nol Penjaga Tempat)",
-          "mechanicDescription": "Tiga ronde, empat bilangan. Gunakan Nol Penjaga Tempat.",
-          "voiceGuide": "Nol Penjaga Tempat. Mainkan dengan teliti."
+          "title": "Ketuk Semua Angka yang Sesuai",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 9–11 (acuan topik)",
+          "objective": "Memilih bilangan yang memenuhi syarat tentang angka pada tempat tertentu.",
+          "mechanicDescription": "Tiga ronde, empat bilangan.",
+          "voiceGuide": "Lihat angka pada tempat yang ditanyakan."
         },
         {
           "gameId": "subK4B1A-game-30",
           "gameNumber": 30,
           "stage": "Abstract",
           "gameType": "build-number-sentence",
-          "title": "Susun Kata Bilangan",
-          "bookReference": "Buku Siswa hlm. 6–9",
-          "objective": "Menyusun kalimat tentang bilangan.. Ingat Nol Penjaga Tempat. (Nol Penjaga Tempat)",
-          "mechanicDescription": "Empat kalimat. Gunakan Nol Penjaga Tempat.",
-          "voiceGuide": "Nol Penjaga Tempat. Mainkan dengan teliti."
+          "title": "Rangkai Kalimat Bilangan",
+          "bookReference": "Buku Siswa Matematika Kelas IV, Bab 1 Sub-Bab A, hlm. 6–9 (acuan topik)",
+          "objective": "Merangkai kata menjadi kalimat yang benar tentang bilangan.",
+          "mechanicDescription": "Empat kalimat.",
+          "voiceGuide": "Satu kata tidak dipakai."
         }
       ],
       "poinPenting": {
@@ -738,31 +738,31 @@
           {
             "nama": "Empat tempat",
             "isi": "ribuan, ratusan, puluhan, satuan",
-            "suara": "Bilangan empat angka punya empat tempat dari kiri: ribuan, ratusan, puluhan, dan satuan."
+            "suara": "Bilangan empat angka punya empat tempat, dari kiri ke kanan: ribuan, ratusan, puluhan, dan satuan."
           },
           {
-            "nama": "Balok Dienes Empat Tingkat",
-            "isi": "Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan.",
-            "suara": "Balok Dienes Empat Tingkat. Peti–dus–bungkus–benda membantu membaca ribuan sampai satuan."
+            "nama": "Kemasan bertingkat",
+            "isi": "Peti seribu, dus seratus, bungkus sepuluh, benda lepas satu.",
+            "suara": "Kemasan bertingkat. Peti seribu, dus seratus, bungkus sepuluh, dan benda lepas satu."
           },
           {
-            "nama": "Papan Nilai Tempat",
-            "isi": "Setiap digit punya nilai menurut tempatnya.",
-            "suara": "Papan Nilai Tempat. Setiap digit punya nilai menurut tempatnya."
+            "nama": "Papan empat tempat",
+            "isi": "Letak sebuah angka menentukan nilainya.",
+            "suara": "Papan empat tempat. Letak sebuah angka menentukan nilainya."
           },
           {
-            "nama": "Nol Penjaga Tempat",
-            "isi": "Nol tidak dibaca keras, tetapi menjaga tempat digit.",
-            "suara": "Nol Penjaga Tempat. Nol tidak dibaca keras, tetapi menjaga tempat digit."
+            "nama": "Nol penjaga tempat",
+            "isi": "Nol dilewati saat disebut, tetapi tetap ditulis.",
+            "suara": "Nol penjaga tempat. Nol dilewati saat disebut, tetapi tetap ditulis."
           }
         ],
-        "suara": "Ingat: Balok Dienes Empat Tingkat, Papan Nilai Tempat, Nol Penjaga Tempat.",
+        "suara": "Ingat: kemasan bertingkat, papan empat tempat, dan nol penjaga tempat.",
         "caraMenyebutkan": "ribuan ratusan puluhan lewati nol",
-        "rumah": "Ayo Mencoba: terapkan Balok Dienes Empat Tingkat pada satu soal nyata di rumah.",
+        "rumah": "Ayo Mencoba: susun lima bilangan empat angka sesukamu pada papan di layar, lalu sebutkan satu per satu.",
         "refleksi": [
-          "Bagaimana Balok Dienes Empat Tingkat membantumu?",
-          "Kapan memakai Papan Nilai Tempat?",
-          "Apa bedanya dengan hanya menghafal tanpa arti?"
+          "Tempat mana yang paling sering membuatmu ragu?",
+          "Mengapa nol tetap ditulis walau tidak disebut?",
+          "Apa yang kamu lakukan saat sebuah bilangan punya nol di tengah?"
         ]
       }
     },
