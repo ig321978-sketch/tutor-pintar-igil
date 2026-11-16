@@ -280,6 +280,7 @@ import {
   TombolLanjutConcrete,
   fontAnak,
 } from "@/components/modul/elemen-kelas1";
+import { catatLatihanDinilai, catatSubBabSelesai } from "@/lib/capaian-klien";
 
 // ============================================================================
 // TIPE DATA & KONTRAK INTEGRASI CETAK BIRU IGIL
@@ -1432,6 +1433,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
     if (!completedSubBabs.includes(activeSubBab)) {
       setCompletedSubBabs((prev) => [...prev, activeSubBab]);
     }
+    catatSubBabSelesai(bab, activeSubBab); // capaian di perangkat untuk halaman Rapor
     const order = daftarSubTersedia;
     const currIdx = order.indexOf(activeSubBab);
     if (currIdx < order.length - 1) {
@@ -3898,6 +3900,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
               if (balasan.jenis === "ok") {
                 setPracticeAnswers((prev) => ({ ...prev, [kunci]: opt }));
                 setHasilLatihan((prev) => ({ ...prev, [kunci]: balasan.hasil }));
+                catatLatihanDinilai(bab, kunci, balasan.hasil.benar); // hanya jawaban yang dinilai server
               } else if (balasan.jenis === "belum_siap") {
                 setPracticeAnswers((prev) => ({ ...prev, [kunci]: opt }));
               } else {

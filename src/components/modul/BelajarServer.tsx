@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { catatUjianLulus } from "@/lib/praktikum-blok";
+import { catatUjianDinilai } from "@/lib/capaian-klien";
 import { TombolSuaraGuru } from "@/components/modul/tahap-b-gaya";
 
 /**
@@ -450,6 +451,7 @@ export function UjianServer({
       setNilai(res.nilai);
       setFase("selesai");
       onNilai(res.nilai);
+      catatUjianDinilai(bab, res.nilai); // capaian di perangkat untuk halaman Rapor
       if (res.nilai === 100) catatUjianLulus(bab);
       void muatStatus();
       return;
