@@ -2,9 +2,9 @@
 
 Dibuat otomatis oleh `scripts/buat-naskah-md-opsi2.mjs`. Jangan disunting tangan; ubah berkas adegan lalu cetak ulang.
 
-## o2k1a-materi: Apel di Keranjang: Hitung, Baca, Tulis Bilangan (Materi kurikulum)
+## o2k1a-materi: Apel di Keranjang: Hitung, Baca, Tulis Bilangan (Metode IGIL: Tunjuk, Geser, Isi, Tulis)
 
-Jenis: materi. 17 adegan, 115 ketukan, 644 kata, sekitar 5.4 menit suara.
+Jenis: materi. 17 adegan, 108 ketukan, 625 kata, sekitar 5.2 menit suara.
 
 ### 1. Sapaan dan tujuan video (`sapaan`)
 
@@ -12,7 +12,7 @@ Jenis: materi. 17 adegan, 115 ketukan, 644 kata, sekitar 5.4 menit suara.
    - Gambar: teks layar: "Halo!"; emoji: 👋; bentuk: 1 kotak
    - Pemicu kata (jumlah perubahan): Halo,(3)
 2. Suara: Hari ini kita belajar bilangan nol sampai sepuluh.
-   - Gambar: teks layar: "Hari ini kita belajar bilangan nol sampai sepuluh." "0" "10"; emoji: 🔢 ➡; bentuk: 3 kotak
+   - Gambar: teks layar: "Hari ini kita belajar bilangan nol sampai sepuluh." "0" "10"; emoji: 🔢, ➡; bentuk: 3 kotak
    - Pemicu kata (jumlah perubahan): Hari(0) Hari(3) Hari(5)
 3. Suara: Nanti kita belajar menghitung, membaca, dan menulis.
    - Gambar: teks layar: "Menghitung" "Membaca" "Menulis"; emoji: ✏; bentuk: 3 kotak
@@ -24,591 +24,359 @@ Jenis: materi. 17 adegan, 115 ketukan, 644 kata, sekitar 5.4 menit suara.
 ### 2. Kampung bersiap dan apel di kebun Nenek (`tiba`)
 
 1. Suara: Sebelumnya, Kampung Cemara bersiap untuk Pesta Panen.
-   - Gambar: emoji: 🏠 🏠 🎉; bentuk: 1 kotak
+   - Gambar: emoji: 2 x 🏠, 🎉; bentuk: 1 kotak
    - Pemicu kata (jumlah perubahan): Sebelumnya,(1) Kampung(2) Pesta(1)
 2. Suara: Lintang cucu Nenek. Nenek punya kebun apel.
-   - Gambar: tokoh: Lintang; teks layar: "Lintang"; emoji: 🏠 🏠 🎉 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak, 1 bulat
+   - Gambar: tokoh: Lintang; teks layar: "Lintang"; emoji: 2 x 🏠, 🎉, 10 x 🍎; bentuk: 2 kotak, 1 bulat
    - Pemicu kata (jumlah perubahan): Lintang(3) punya(2) kebun(10)
 3. Suara: Angin datang. Apel jatuh di rumput.
-   - Gambar: tokoh: Lintang; teks layar: "Lintang"; emoji: 🏠 🏠 🎉 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 💨; bentuk: 2 kotak, 1 bulat
+   - Gambar: tokoh: Lintang; teks layar: "Lintang"; emoji: 2 x 🏠, 🎉, 10 x 🍎, 💨; bentuk: 2 kotak, 1 bulat
    - Pemicu kata (jumlah perubahan): Angin(1) jatuh(10)
 4. Suara: Niko dan Tala datang membantu.
-   - Gambar: tokoh: Lintang, Niko, Tala; teks layar: "Lintang" "Niko" "Tala"; emoji: 🏠 🏠 🎉 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak, 1 bulat
+   - Gambar: tokoh: Lintang, Niko, Tala; teks layar: "Lintang" "Niko" "Tala"; emoji: 2 x 🏠, 🎉, 10 x 🍎; bentuk: 2 kotak, 1 bulat
    - Pemicu kata (jumlah perubahan): Niko(1) Niko(6)
 5. Suara: Kata Nenek, tolong kumpulkan apelnya.
-   - Gambar: tokoh: Lintang, Niko, Tala; emoji: 🏠 🏠 🎉 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 💬; bentuk: 2 kotak, 1 bulat
+   - Gambar: tokoh: Lintang, Niko, Tala; emoji: 2 x 🏠, 🎉, 10 x 🍎, 💬; bentuk: 2 kotak, 1 bulat
    - Pemicu kata (jumlah perubahan): Kata(3) Nenek,(1)
-6. Suara: Apelnya untuk kue Pesta Panen.
-   - Gambar: tokoh: Lintang, Niko, Tala; emoji: 🏠 🏠 🎉 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 💬 🍰; bentuk: 2 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Pesta(1)
 
-### 3. Aturan Igil (`aturan`)
+### 3. Tunjuk: Niko buru-buru lalu Tala menunjuk (`niko-salah`)
 
-1. Suara: Dari pohon beringin, Igil menyapa.
-   - Gambar: tokoh: Lintang, Tala, Niko, Igil; teks layar: "Lintang" "Tala" "Niko" "Igil"; emoji: 🦉; bentuk: 2 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Dari(10) beringin,(4)
-2. Suara: Igil punya aturan. Satu per satu, pelan-pelan.
-   - Gambar: tokoh: Lintang, Tala, Niko, Igil; teks layar: "Lintang" "Tala" "Niko" "Igil" "Satu per satu"; emoji: 🦉; disorot: tk-igil; bentuk: 3 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Igil(1) Satu(2)
-3. Suara: Niko bertanya, boleh cepat-cepat?
-   - Gambar: tokoh: Lintang, Tala, Niko, Igil; teks layar: "Lintang" "Tala" "Niko" "Igil" "Cepat-cepat?"; emoji: 🦉; bentuk: 3 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Niko(2) Niko(1) boleh(2)
-4. Suara: Igil menjawab, coba saja, kita lihat.
-   - Gambar: tokoh: Lintang, Tala, Niko, Igil; teks layar: "Lintang" "Tala" "Niko" "Igil" "Coba saja!"; emoji: 🦉; disorot: tk-igil; bentuk: 3 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Igil(2) coba(2) coba(1)
-
-### 4. Niko buru-buru lalu Tala menunjuk (`niko-salah`)
-
-1. Suara: Niko buru-buru memasukkan apel.
-   - Gambar: tokoh: Niko; teks layar: "Niko"; emoji: 🍎 🍎 🍎 🍎; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Niko(10)
-2. Suara: Satu, dua, tiga. Tiga!
-   - Gambar: tokoh: Niko; teks layar: "Niko" "3"; emoji: 🍎 🍎 🍎 🍎; disorot: a3; bentuk: 3 kotak
+1. Suara: Niko bertanya, boleh cepat-cepat?
+   - Gambar: tokoh: Niko, Igil; teks layar: "Niko" "Igil" "Cepat-cepat?"; emoji: 🦉; bentuk: 3 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Niko(4) bertanya,(4) boleh(2)
+2. Suara: Igil menjawab, coba saja, kita lihat.
+   - Gambar: tokoh: Niko, Igil; teks layar: "Niko" "Igil" "Coba saja!"; emoji: 🦉; disorot: tk-igil; bentuk: 3 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Igil(2) Igil(1) coba(2)
+3. Suara: Niko buru-buru memasukkan apel.
+   - Gambar: tokoh: Niko, Igil; teks layar: "Niko" "Igil"; emoji: 🦉, 4 x 🍎 di luar keranjang (rumput); bentuk: 3 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Niko(2) Niko(1) buru-buru(6)
+4. Suara: Satu, dua, tiga. Tiga!
+   - Gambar: tokoh: Niko, Igil; label penghitung (bukan jawaban): "3"; teks layar: "Niko" "Igil"; emoji: 🦉, 3 x 🍎 di keranjang, 🍎 di luar keranjang (rumput); disorot: a3; bentuk: 4 kotak, 1 bulat
    - Pemicu kata (jumlah perubahan): Satu,(2) Satu,(2) dua,(2) tiga.(2) Tiga!(1)
-3. Suara: Tala menunjuk apel yang terlewat.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "3" "Tala"; emoji: 🍎 🍎 🍎 🍎; disorot: a3; bentuk: 3 kotak, 1 panah
+5. Suara: Tala menunjuk apel yang lupa dihitung.
+   - Gambar: tokoh: Niko, Igil, Tala; label penghitung (bukan jawaban): "3"; teks layar: "Niko" "Igil" "Tala"; emoji: 🦉, 3 x 🍎 di keranjang, 🍎 di luar keranjang (rumput); disorot: a3; bentuk: 4 kotak, 1 bulat, 1 panah
    - Pemicu kata (jumlah perubahan): Tala(3) apel(1)
-4. Suara: Tala berkata, hampir pas!
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "3" "Tala" "Hampir pas!"; emoji: 🍎 🍎 🍎 🍎; disorot: a3; bentuk: 4 kotak
+6. Suara: Tala berkata, hampir pas!
+   - Gambar: tokoh: Niko, Igil, Tala; label penghitung (bukan jawaban): "3"; teks layar: "Niko" "Igil" "Tala" "Hampir pas!"; emoji: 🦉, 3 x 🍎 di keranjang, 🍎 di luar keranjang (rumput); disorot: a3; bentuk: 5 kotak, 1 bulat
    - Pemicu kata (jumlah perubahan): Tala(1) hampir(2)
-5. Suara: Tala mengulang dari awal.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "Tala"; emoji: 🍎 🍎 🍎 🍎; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Tala(4) Tala(4)
-6. Suara: Satu, dua, tiga, empat.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "Tala" "4"; emoji: 🍎 🍎 🍎 🍎; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): Satu,(2) Satu,(2) dua,(2) tiga,(2) empat.(2)
-7. Suara: Sekarang pas. Ada empat apel.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "Tala" "4"; emoji: 🍎 🍎 🍎 🍎 😊; disorot: kr-tp; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): Sekarang(2) Ada(1)
-8. Suara: Nenek menuang apel ke dapur. Keranjang kosong lagi.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "Tala"; emoji: 🏠; disorot: kr-tp; bentuk: 2 kotak
+7. Suara: Niko mengulang dari awal. Satu, dua, tiga, empat.
+   - Gambar: tokoh: Niko, Igil, Tala; label penghitung (bukan jawaban): "4"; teks layar: "Niko" "Igil" "Tala"; emoji: 🦉, 4 x 🍎 di keranjang; bentuk: 4 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Niko(4) Niko(4) Satu,(2) Satu,(2) dua,(2) tiga,(2) empat.(2)
+8. Suara: Igil berkata begini. Hitung satu per satu, yang terakhir adalah banyaknya.
+   - Gambar: tokoh: Niko, Igil, Tala; teks layar: "Niko" "Igil" "Tala" "Hitung satu" "per satu," "yang terakhir" "adalah banyaknya."; emoji: 🦉, 4 x 🍎 di keranjang; disorot: tk-igil; bentuk: 4 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Igil(2) Igil(1) Hitung(2) per(1) yang(1) adalah(1)
+9. Suara: Yang terakhir empat. Itu untuk semua apel.
+   - Gambar: tokoh: Niko, Igil, Tala; label penghitung (bukan jawaban): "4"; teks layar: "Niko" "Igil" "Tala"; emoji: 🦉, 4 x 🍎 di keranjang; disorot: a1, a2, a3, a4; bentuk: 5 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Yang(5) Yang(2) Yang(1) Itu(1) semua(4)
+10. Suara: Nenek menuang apelnya ke dapur.
+   - Gambar: tokoh: Niko, Igil, Tala; teks layar: "Niko" "Igil" "Tala"; emoji: 🦉, 🏠; bentuk: 3 kotak, 1 bulat
    - Pemicu kata (jumlah perubahan): menuang(1) dapur.(7)
 
-### 5. Menghitung satu per satu sampai yang terakhir (`hitung-lima`)
+### 4. Geser: tujuh apel untuk Nenek (`geser-sebar`)
 
-1. Suara: Sekarang Tala menghitung. Pelan-pelan.
-   - Gambar: tokoh: Tala; teks layar: "Tala"; emoji: 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Sekarang(11)
-2. Suara: Satu, dua, tiga, empat, lima.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "5"; emoji: 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): Satu,(2) Satu,(2) dua,(2) tiga,(2) empat,(2) lima.(2)
-3. Suara: Yang terakhir disebut adalah lima.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "5"; emoji: 🍎 🍎 🍎 🍎 🍎; disorot: a5; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): terakhir(1)
-4. Suara: Igil berkata, lima itu untuk semua apel ini.
-   - Gambar: tokoh: Tala, Igil; teks layar: "Tala" "5" "Igil"; emoji: 🍎 🍎 🍎 🍎 🍎 🦉; disorot: a1, a2, a3, a4, a5; bentuk: 5 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Igil(4) semua(1) semua(4)
-5. Suara: Ada berapa apel di keranjang?
-   - Gambar: tokoh: Tala, Igil; teks layar: "Tala" "Igil"; emoji: 🍎 🍎 🍎 🍎 🍎 🦉 ❓; disorot: a1, a2, a3, a4, a5; bentuk: 4 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Ada(2) berapa(1)
-6. Suara: Ada lima apel di keranjang.
-   - Gambar: tokoh: Tala, Igil; teks layar: "Tala" "Igil" "5"; emoji: 🍎 🍎 🍎 🍎 🍎 🦉; disorot: a1, a2, a3, a4, a5; bentuk: 5 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Ada(1) lima(2)
-7. Suara: Nenek menuang apel ke dapur. Keranjang kosong lagi.
-   - Gambar: tokoh: Tala, Igil; teks layar: "Tala" "Igil"; emoji: 🦉 🏠; bentuk: 3 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): menuang(1) dapur.(8)
+1. Suara: Kata Nenek, tolong ambil tujuh apel.
+   - Gambar: tokoh: Lintang; teks layar: "Lintang" "7"; emoji: 10 x 🍎 di luar keranjang (rumput), 💬; bentuk: 3 kotak
+   - Pemicu kata (jumlah perubahan): Kata(16) Nenek,(1) tujuh(2)
+2. Suara: Lintang menggeser apelnya. Satu, dua, tiga, empat, lima, enam, tujuh.
+   - Gambar: tokoh: Lintang; label penghitung (bukan jawaban): "7"; teks layar: "Lintang"; emoji: 7 x 🍎 di keranjang, 3 x 🍎 di luar keranjang (rumput); bentuk: 3 kotak
+   - Pemicu kata (jumlah perubahan): Lintang(3) Satu,(2) Satu,(2) dua,(2) tiga,(2) empat,(2) lima,(2) enam,(2) tujuh.(2)
+3. Suara: Lintang berhenti. Tepat tujuh apel.
+   - Gambar: tokoh: Lintang; label penghitung (bukan jawaban): "7"; teks layar: "Lintang"; emoji: 7 x 🍎 di keranjang, 3 x 🍎 di luar keranjang (rumput); bentuk: 4 kotak
+   - Pemicu kata (jumlah perubahan): Tepat(1)
+4. Suara: Yang sudah dihitung digeser, supaya tidak lupa.
+   - Gambar: tokoh: Lintang; label penghitung (bukan jawaban): "7"; teks layar: "Lintang"; emoji: 7 x 🍎 di keranjang, 3 x 🍎 di luar keranjang (rumput), ✅; bentuk: 3 kotak
+   - Pemicu kata (jumlah perubahan): Yang(1) digeser,(1)
+5. Suara: Igil berkata begini. Hitung satu per satu, yang terakhir adalah banyaknya.
+   - Gambar: tokoh: Lintang, Igil; teks layar: "Lintang" "Igil" "Hitung satu" "per satu," "yang terakhir" "adalah banyaknya."; emoji: 7 x 🍎 di keranjang, 3 x 🍎 di luar keranjang (rumput), 🦉; disorot: a1, a2, a3, a4, a5, a6, a7, tk-igil; bentuk: 4 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Igil(3) Igil(4) Igil(1) Hitung(2) per(1) yang(1) adalah(1) per(7)
 
-### 6. Tujuh apel dan kalimat kunci (`hitung-tujuh`)
+### 5. Geser: jeruk melingkar di piring (`geser-lingkar`)
 
-1. Suara: Giliran Lintang menghitung apel.
-   - Gambar: tokoh: Lintang; teks layar: "Lintang"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Giliran(13)
-2. Suara: Satu, dua, tiga, empat, lima, enam, tujuh.
-   - Gambar: tokoh: Lintang; teks layar: "Lintang" "7"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): Satu,(2) Satu,(2) dua,(2) tiga,(2) empat,(2) lima,(2) enam,(2) tujuh.(2)
-3. Suara: Lintang bertanya, kenapa yang terakhir?
-   - Gambar: tokoh: Lintang; teks layar: "Lintang" "7" "Kenapa terakhir?"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: a7; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): kenapa(2) terakhir?(1)
-4. Suara: Hitung satu per satu, yang terakhir adalah banyaknya.
-   - Gambar: tokoh: Lintang, Igil; teks layar: "Lintang" "Igil" "Hitung satu" "per satu," "yang terakhir" "adalah banyaknya."; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🦉; disorot: a7, tk-igil; bentuk: 5 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Hitung(4) Hitung(4) Hitung(1) Hitung(2) per(1) yang(1) adalah(1) banyaknya.(1)
+1. Suara: Di piring ada jeruk, melingkar.
+   - Gambar: tokoh: Tala; teks layar: "Tala"; emoji: 6 x 🍊; bentuk: 1 bulat
+   - Pemicu kata (jumlah perubahan): Di(4) ada(6)
+2. Suara: Ingat benda pertama. Berhenti sebelum kembali ke situ.
+   - Gambar: tokoh: Tala; teks layar: "Tala"; emoji: 6 x 🍊, 🚩; disorot: j1, bd; bentuk: 1 bulat
+   - Pemicu kata (jumlah perubahan): pertama.(1) pertama.(1) situ.(1)
+3. Suara: Satu, dua, tiga, empat, lima, enam.
+   - Gambar: tokoh: Tala; label penghitung (bukan jawaban): "6"; teks layar: "Tala"; emoji: 6 x 🍊, 🚩; disorot: j6; bentuk: 1 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Satu,(2) Satu,(2) Satu,(2) dua,(3) tiga,(3) empat,(3) lima,(3) enam.(3)
+4. Suara: Yang terakhir enam. Jeruk atau apel, caranya sama.
+   - Gambar: tokoh: Tala; teks layar: "Tala"; emoji: 7 x 🍊, 🚩, 🍎; bentuk: 2 bulat
+   - Pemicu kata (jumlah perubahan): Yang(2) Yang(1) terakhir(1) Jeruk(2)
 
-### 7. Membaca lambang satu sampai lima (`baca-1-5`)
-
-1. Suara: Lambang bilangan adalah tulisan angkanya.
-   - Gambar: teks layar: "2" "5" "8"; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): Lambang(1) angkanya.(6)
-2. Suara: Satu apel. Lambangnya satu.
-   - Gambar: teks layar: "1"; emoji: 🍎; disorot: lb-k, lb-t; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Satu(7) Satu(1) Lambangnya(1) Lambangnya(2)
-3. Suara: Dua apel. Lambangnya dua.
-   - Gambar: teks layar: "2"; emoji: 🍎 🍎; disorot: lb-k, lb-t; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Dua(3) Dua(2) Lambangnya(2) Lambangnya(2)
-4. Suara: Tiga apel. Lambangnya tiga.
-   - Gambar: teks layar: "3"; emoji: 🍎 🍎 🍎; disorot: lb-k, lb-t; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Tiga(4) Tiga(3) Lambangnya(3) Lambangnya(2)
-5. Suara: Empat apel. Lambangnya empat.
-   - Gambar: teks layar: "4"; emoji: 🍎 🍎 🍎 🍎; disorot: lb-k, lb-t; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Empat(5) Empat(4) Lambangnya(4) Lambangnya(2)
-6. Suara: Lima apel. Lambangnya lima.
-   - Gambar: teks layar: "5"; emoji: 🍎 🍎 🍎 🍎 🍎; disorot: lb-k, lb-t; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Lima(6) Lima(5) Lambangnya(5) Lambangnya(2)
-
-### 8. Membaca lambang enam sampai sepuluh (`baca-6-10`)
-
-1. Suara: Enam apel. Lambangnya enam.
-   - Gambar: teks layar: "6"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎; disorot: lb-k, lb-t; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Enam(6) Lambangnya(6) Lambangnya(2)
-2. Suara: Tujuh apel. Lambangnya tujuh.
-   - Gambar: teks layar: "7"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: lb-k, lb-t; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Tujuh(8) Tujuh(7) Lambangnya(7) Lambangnya(2)
-3. Suara: Delapan apel. Lambangnya delapan.
-   - Gambar: teks layar: "8"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: lb-k, lb-t; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Delapan(9) Delapan(8) Lambangnya(8) Lambangnya(2)
-4. Suara: Sembilan apel. Lambangnya sembilan.
-   - Gambar: teks layar: "9"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: lb-k, lb-t; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Sembilan(10) Sembilan(9) Lambangnya(9) Lambangnya(2)
-5. Suara: Sepuluh apel. Lambangnya sepuluh.
-   - Gambar: teks layar: "10"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: lb-k, lb-t; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Sepuluh(11) Sepuluh(10) Lambangnya(10) Lambangnya(2)
-6. Suara: Kita belajar sampai sepuluh.
-   - Gambar: teks layar: "10"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: lb-k, lb-t; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Kita(1) Kita(10)
-
-### 9. Nol: angin membuat keranjang kosong (`nol`)
+### 6. Nol: angin membuat keranjang kosong (`angin-nol`)
 
 1. Suara: Angin datang lagi, kencang sekali.
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 💨; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Angin(19) Angin(1)
-2. Suara: Keranjang terguling. Apel jatuh di rumput.
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 💨; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): terguling.(2) jatuh(7)
-3. Suara: Angin juga menjatuhkan apel lain.
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): juga(3) apel(3) lain.(1)
-4. Suara: Keranjangnya kosong. Tidak ada apel.
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: kr-tp; bentuk: 2 kotak
+   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko"; emoji: 7 x 🍎 di keranjang, 3 x 🍎 di luar keranjang (rumput), 💨; bentuk: 2 kotak
+   - Pemicu kata (jumlah perubahan): Angin(22) lagi,(1)
+2. Suara: Keranjang jatuh. Apel berserakan di rumput.
+   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko"; emoji: 10 x 🍎 di luar keranjang (rumput); bentuk: 2 kotak
+   - Pemicu kata (jumlah perubahan): jatuh.(2) berserakan(7) di(1)
+3. Suara: Keranjangnya kosong. Tidak ada apel.
+   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko"; emoji: 10 x 🍎 di luar keranjang (rumput); disorot: kr-tp; bentuk: 2 kotak
    - Pemicu kata (jumlah perubahan): Tidak(2)
-5. Suara: Ada berapa apel di keranjang?
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 ❓; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Ada(2) berapa(1)
-6. Suara: Tidak ada. Banyaknya adalah nol.
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko" "0"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): Tidak(1) nol.(2)
-7. Suara: Dibaca nol. Nol artinya tidak ada apa-apa.
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko" "0"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: lb-k, lb-t; bentuk: 3 kotak, 1 panah
-   - Pemicu kata (jumlah perubahan): Dibaca(2) artinya(1)
+4. Suara: Nol artinya tidak ada apel di keranjang.
+   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko" "0"; emoji: 10 x 🍎 di luar keranjang (rumput); disorot: lb-k, lb-t; bentuk: 3 kotak, 1 panah
+   - Pemicu kata (jumlah perubahan): Nol(2) Nol(2) Nol(2) di(1)
 
-### 10. Menulis lambang nol, satu, dua (`tulis-0-2`)
+### 7. Isi: nampan berlubang sepuluh (`isi`)
 
-1. Suara: Sekarang kita menulis. Ayo ikuti dengan jarimu.
-   - Gambar: emoji: 👆; bentuk: 1 kotak, 2 garis
-   - Pemicu kata (jumlah perubahan): Sekarang(3) jarimu.(1)
-2. Suara: Menulis nol. Mulai dari atas, putar ke kiri sampai bertemu.
-   - Gambar: teks layar: "0"; emoji: 👆; jalur tulis: jl-0-0; disorot: st, jl-0-0; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): nol.(3) putar(1)
-3. Suara: Sekarang kamu coba, ya.
-   - Gambar: teks layar: "0"; emoji: 👆; jalur tulis: jl-0-0; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Sekarang(3) kamu(1) coba,(1) ya.(1) Sekarang(1)
-4. Suara: Menulis satu. Mulai dari atas, garis lurus turun.
-   - Gambar: teks layar: "1"; emoji: 👆; jalur tulis: jl-1-0; disorot: st, jl-1-0; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Menulis(1) satu.(2) garis(1)
-5. Suara: Sekarang kamu coba, ya.
-   - Gambar: teks layar: "1"; emoji: 👆; jalur tulis: jl-1-0; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Sekarang(3) kamu(1) coba,(1) ya.(1) Sekarang(1)
-6. Suara: Menulis dua. Mulai dari atas, lengkungan ke kanan.
-   - Gambar: teks layar: "2"; emoji: 👆; jalur tulis: jl-2-0; disorot: st, jl-2-0; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Menulis(1) dua.(2) lengkungan(1)
-7. Suara: Lalu turun miring ke kiri.
-   - Gambar: teks layar: "2"; emoji: 👆; jalur tulis: jl-2-0, jl-2-1; disorot: st, jl-2-1; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Lalu(1) miring(1)
-8. Suara: Lalu garis lurus ke kanan di bawah.
-   - Gambar: teks layar: "2"; emoji: 👆; jalur tulis: jl-2-0, jl-2-1, jl-2-2; disorot: st, jl-2-2; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Lalu(1) garis(1)
-9. Suara: Sekarang kamu coba, ya.
-   - Gambar: teks layar: "2"; emoji: 👆; jalur tulis: jl-2-0, jl-2-1, jl-2-2; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Sekarang(3) kamu(1) coba,(1) ya.(1) Sekarang(3)
+1. Suara: Nampan Nenek ini bingkai sepuluh.
+   - Gambar: tokoh: Tala; label penghitung (bukan jawaban): "10"; teks layar: "Tala"; bentuk: 12 kotak
+   - Pemicu kata (jumlah perubahan): Nampan(14) sepuluh.(2)
+2. Suara: Isi dari baris atas, kiri ke kanan.
+   - Gambar: tokoh: Tala; label penghitung (bukan jawaban): "10"; teks layar: "Tala"; emoji: 👇; bentuk: 12 kotak
+   - Pemicu kata (jumlah perubahan): atas,(1) kanan.(1)
+3. Suara: Satu, dua, tiga, empat, lima, enam.
+   - Gambar: tokoh: Tala; label penghitung (bukan jawaban): "6"; teks layar: "Tala"; emoji: 6 x 🍎; bentuk: 12 kotak
+   - Pemicu kata (jumlah perubahan): Satu,(1) Satu,(1) Satu,(1) dua,(1) dua,(1) tiga,(1) tiga,(1) empat,(1) empat,(1) lima,(1) lima,(1) enam.(1) enam.(1)
+4. Suara: Banyaknya apel sama dengan petak yang terisi.
+   - Gambar: tokoh: Tala; label penghitung (bukan jawaban): "6"; teks layar: "Tala"; emoji: 6 x 🍎; disorot: bk1, bk2, bk3, bk4, bk5, bk6, f1, f2, f3, f4, f5, f6; bentuk: 12 kotak
+   - Pemicu kata (jumlah perubahan): apel(6) petak(6)
+5. Suara: Nampan penuh. Banyaknya sepuluh.
+   - Gambar: tokoh: Tala; label penghitung (bukan jawaban): "10"; teks layar: "Tala"; emoji: 10 x 🍎; bentuk: 12 kotak
+   - Pemicu kata (jumlah perubahan): Nampan(12) penuh.(4) sepuluh.(1)
+6. Suara: Nampan kosong. Banyaknya nol.
+   - Gambar: tokoh: Tala; label penghitung (bukan jawaban): "0"; teks layar: "Tala"; bentuk: 12 kotak
+   - Pemicu kata (jumlah perubahan): kosong.(10) nol.(1)
 
-### 11. Menulis lambang tiga, empat, lima (`tulis-3-5`)
+### 8. Isi: lihat sekilas lalu periksa (`sekilas`)
 
-1. Suara: Menulis tiga. Mulai dari atas, lengkungan menghadap kanan.
-   - Gambar: teks layar: "3"; jalur tulis: jl-3-0; disorot: st, jl-3-0; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Menulis(3) tiga.(3) lengkungan(1)
-2. Suara: Lalu lengkungan kedua, juga ke kanan.
-   - Gambar: teks layar: "3"; jalur tulis: jl-3-0, jl-3-1; disorot: st, jl-3-1; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Lalu(1) lengkungan(1)
-3. Suara: Sekarang kamu coba, ya.
-   - Gambar: teks layar: "3"; jalur tulis: jl-3-0, jl-3-1; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Sekarang(3) kamu(1) coba,(1) ya.(1) Sekarang(2)
-4. Suara: Menulis empat. Mulai dari atas, turun miring ke kiri.
-   - Gambar: teks layar: "4"; jalur tulis: jl-4-0; disorot: st, jl-4-0; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Menulis(2) empat.(2) miring(1)
+1. Suara: Lihat sekilas. Berapa apelnya?
+   - Gambar: tokoh: Tala; teks layar: "Tala"; emoji: ❓; bentuk: 11 kotak
+   - Pemicu kata (jumlah perubahan): Lihat(14) Lihat(2) Berapa(2) apelnya?(1)
+2. Suara: Kita periksa. Satu, dua.
+   - Gambar: tokoh: Tala; label penghitung (bukan jawaban): "2"; teks layar: "Tala"; emoji: 2 x 🍎; disorot: f2; bentuk: 12 kotak
+   - Pemicu kata (jumlah perubahan): Kita(1) periksa.(2) Satu,(2) Satu,(2) dua.(3)
+3. Suara: Lihat sekilas. Berapa apelnya?
+   - Gambar: tokoh: Tala; teks layar: "Tala"; emoji: ❓; bentuk: 11 kotak
+   - Pemicu kata (jumlah perubahan): Lihat(4) Lihat(3) Berapa(3) apelnya?(1)
+4. Suara: Kita periksa. Satu, dua, tiga.
+   - Gambar: tokoh: Tala; label penghitung (bukan jawaban): "3"; teks layar: "Tala"; emoji: 3 x 🍎; disorot: f3; bentuk: 12 kotak
+   - Pemicu kata (jumlah perubahan): Kita(1) periksa.(3) Satu,(2) Satu,(2) dua,(3) tiga.(3)
+5. Suara: Lihat sekilas. Berapa apelnya?
+   - Gambar: tokoh: Tala; teks layar: "Tala"; emoji: ❓; bentuk: 11 kotak
+   - Pemicu kata (jumlah perubahan): Lihat(5) Lihat(4) Berapa(4) apelnya?(1)
+6. Suara: Kita periksa. Satu, dua, tiga, empat.
+   - Gambar: tokoh: Tala; label penghitung (bukan jawaban): "4"; teks layar: "Tala"; emoji: 4 x 🍎; disorot: f4; bentuk: 12 kotak
+   - Pemicu kata (jumlah perubahan): Kita(1) periksa.(4) Satu,(2) Satu,(2) dua,(3) tiga,(3) empat.(3)
+
+### 9. Baca: lambang nol sampai sepuluh (`baca`)
+
+1. Suara: Lambang bilangan adalah tulisan angkanya.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "2" "5" "8"; emoji: 🦉; bentuk: 4 kotak
+   - Pemicu kata (jumlah perubahan): Lambang(3) angkanya.(6)
+2. Suara: Nol, satu, dua, tiga, empat, lima.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "0" "1" "2" "3" "4" "5"; emoji: 🦉; disorot: q5-k; bentuk: 6 kotak, 15 bulat
+   - Pemicu kata (jumlah perubahan): Nol,(7) Nol,(2) Nol,(1) satu,(3) satu,(2) dua,(4) dua,(2) tiga,(5) tiga,(2) empat,(6) empat,(2) lima.(7) lima.(2)
+3. Suara: Enam, tujuh, delapan, sembilan, sepuluh.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "6" "7" "8" "9" "10"; emoji: 🦉; disorot: q10-k; bentuk: 5 kotak, 40 bulat
+   - Pemicu kata (jumlah perubahan): Enam,(27) Enam,(8) Enam,(1) tujuh,(9) tujuh,(2) delapan,(10) delapan,(2) sembilan,(11) sembilan,(2) sepuluh.(12) sepuluh.(2)
+4. Suara: Sekarang dicampur. Enam, tiga, sembilan, nol.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "6" "3" "9" "0"; emoji: 🦉; disorot: r0-k; bentuk: 4 kotak, 18 bulat
+   - Pemicu kata (jumlah perubahan): Sekarang(50) Enam,(8) Enam,(1) tiga,(5) tiga,(2) sembilan,(11) sembilan,(2) nol.(2) nol.(2)
+5. Suara: Enam dan sembilan mirip. Lihat lingkarannya.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "6" "9"; emoji: 🦉; bentuk: 2 kotak, 2 bulat
+   - Pemicu kata (jumlah perubahan): Enam(26) Enam(2) sembilan(2) Lihat(1) lingkarannya.(1)
+
+### 10. Tulis: lambang nol sampai lima (`tulis-a`)
+
+1. Suara: Menulis nol dengan jarimu. Putar ke kiri sampai bertemu.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "0"; emoji: ⬅, 👆; jalur tulis: jl-0-0; disorot: st, jl-0-0; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Menulis(7) jarimu.(1) nol(3) Menulis(1) Putar(1)
+2. Suara: Menulis satu. Garis lurus turun.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "1"; emoji: ⬇, 👆; jalur tulis: jl-1-0; disorot: st, jl-1-0; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Menulis(1) satu.(2) Menulis(1) Garis(1)
+3. Suara: Menulis dua. Lengkung ke kanan.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "2"; emoji: ➡, 👆; jalur tulis: jl-2-0; disorot: st, jl-2-0; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Menulis(1) dua.(2) Menulis(1) Lengkung(1)
+4. Suara: Lalu turun miring ke kiri.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "2"; emoji: ⬅, 👆; jalur tulis: jl-2-0, jl-2-1; disorot: st, jl-2-1; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Lalu(1) Lalu(1) miring(1)
 5. Suara: Lalu garis lurus ke kanan.
-   - Gambar: teks layar: "4"; jalur tulis: jl-4-0, jl-4-1; disorot: st, jl-4-1; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Lalu(1) garis(1)
-6. Suara: Angkat jarimu. Mulai dari atas di kanan.
-   - Gambar: teks layar: "4"; jalur tulis: jl-4-0, jl-4-1; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Angkat(1) Angkat(1)
-7. Suara: Garis lurus turun, melewati garis tadi.
-   - Gambar: teks layar: "4"; jalur tulis: jl-4-0, jl-4-1, jl-4-2; disorot: st, jl-4-2; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Garis(1) turun,(1)
-8. Suara: Sekarang kamu coba, ya.
-   - Gambar: teks layar: "4"; jalur tulis: jl-4-0, jl-4-1, jl-4-2; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Sekarang(3) kamu(1) coba,(1) ya.(1) Sekarang(3)
-9. Suara: Menulis lima. Mulai dari atas di kanan, garis ke kiri.
-   - Gambar: teks layar: "5"; jalur tulis: jl-5-0; disorot: st, jl-5-0; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Menulis(3) lima.(2) garis(1)
-10. Suara: Lalu turun sedikit saja.
-   - Gambar: teks layar: "5"; jalur tulis: jl-5-0, jl-5-1; disorot: st, jl-5-1; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Lalu(1) turun(1)
-11. Suara: Lalu lengkungan besar ke kanan.
-   - Gambar: teks layar: "5"; jalur tulis: jl-5-0, jl-5-1, jl-5-2; disorot: st, jl-5-2; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Lalu(1) lengkungan(1)
-12. Suara: Sekarang kamu coba, ya.
-   - Gambar: teks layar: "5"; jalur tulis: jl-5-0, jl-5-1, jl-5-2; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Gambar: tokoh: Tala; teks layar: "Tala" "2"; emoji: ➡, 👆; jalur tulis: jl-2-0, jl-2-1, jl-2-2; disorot: st, jl-2-2; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Lalu(1) Lalu(1) garis(1)
+6. Suara: Menulis tiga. Lengkungan menghadap kanan.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "3"; emoji: ➡, 👆; jalur tulis: jl-3-0; disorot: st, jl-3-0; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Menulis(3) tiga.(2) Menulis(1) Lengkungan(1)
+7. Suara: Lalu lengkungan kedua, menghadap kanan.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "3"; emoji: ➡, 👆; jalur tulis: jl-3-0, jl-3-1; disorot: st, jl-3-1; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Lalu(1) Lalu(1) lengkungan(1)
+8. Suara: Menulis empat. Turun miring ke kiri.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "4"; emoji: ⬅, 👆; jalur tulis: jl-4-0; disorot: st, jl-4-0; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Menulis(2) empat.(2) Menulis(1) miring(1)
+9. Suara: Lalu garis lurus ke kanan.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "4"; emoji: ➡, 👆; jalur tulis: jl-4-0, jl-4-1; disorot: st, jl-4-1; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Lalu(1) Lalu(1) garis(1)
+10. Suara: Angkat jari. Garis lurus turun memotong.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "4"; emoji: ⬇, 👆; jalur tulis: jl-4-0, jl-4-1, jl-4-2; disorot: st, jl-4-2; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Angkat(1) Angkat(1) Angkat(1) turun(1)
+11. Suara: Menulis lima. Garis ke kiri di atas.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "5"; emoji: ⬅, 👆; jalur tulis: jl-5-0; disorot: st, jl-5-0; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Menulis(3) lima.(2) Menulis(1) Garis(1)
+12. Suara: Lalu turun sedikit saja.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "5"; emoji: ⬇, 👆; jalur tulis: jl-5-0, jl-5-1; disorot: st, jl-5-1; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Lalu(1) Lalu(1) turun(1)
+13. Suara: Lalu lengkung besar ke kanan.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "5"; emoji: ➡, 👆; jalur tulis: jl-5-0, jl-5-1, jl-5-2; disorot: st, jl-5-2; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Lalu(1) Lalu(1) lengkung(1)
+14. Suara: Sekarang kamu coba, ya.
+   - Gambar: tokoh: Tala; teks layar: "Tala" "5"; emoji: ➡, 👆; jalur tulis: jl-5-0, jl-5-1, jl-5-2; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
    - Pemicu kata (jumlah perubahan): Sekarang(3) kamu(1) coba,(1) ya.(1) Sekarang(3)
 
-### 12. Menulis lambang enam, tujuh, delapan (`tulis-6-8`)
+### 11. Tulis: lambang enam sampai sepuluh (`tulis-b`)
 
-1. Suara: Menulis enam. Mulai dari atas, lengkung turun.
-   - Gambar: teks layar: "6"; jalur tulis: jl-6-0; disorot: st, jl-6-0; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Menulis(3) enam.(3) lengkung(1)
+1. Suara: Menulis enam. Lengkung turun ke kiri.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "6"; emoji: 🦉, ⬅, 👆; jalur tulis: jl-6-0; disorot: st, jl-6-0; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Menulis(6) Menulis(1) enam.(3) Menulis(1) Lengkung(1)
 2. Suara: Lalu lingkaran kecil di bawah.
-   - Gambar: teks layar: "6"; jalur tulis: jl-6-0, jl-6-1; disorot: st, jl-6-1; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Lalu(1) lingkaran(1)
-3. Suara: Sekarang kamu coba, ya.
-   - Gambar: teks layar: "6"; jalur tulis: jl-6-0, jl-6-1; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Sekarang(3) kamu(1) coba,(1) ya.(1) Sekarang(2)
-4. Suara: Menulis tujuh. Mulai dari atas, garis ke kanan.
-   - Gambar: teks layar: "7"; jalur tulis: jl-7-0; disorot: st, jl-7-0; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Menulis(2) tujuh.(2) garis(1)
-5. Suara: Lalu miring turun ke kiri.
-   - Gambar: teks layar: "7"; jalur tulis: jl-7-0, jl-7-1; disorot: st, jl-7-1; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Lalu(1) miring(1)
-6. Suara: Sekarang kamu coba, ya.
-   - Gambar: teks layar: "7"; jalur tulis: jl-7-0, jl-7-1; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Sekarang(3) kamu(1) coba,(1) ya.(1) Sekarang(2)
-7. Suara: Menulis delapan. Mulai dari atas, lengkung ke kiri.
-   - Gambar: teks layar: "8"; jalur tulis: jl-8-0; disorot: st, jl-8-0; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Menulis(2) delapan.(2) lengkung(1)
-8. Suara: Turun menyilang ke kanan, lengkung di bawah.
-   - Gambar: teks layar: "8"; jalur tulis: jl-8-0, jl-8-1; disorot: st, jl-8-1; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Turun(1) menyilang(1)
-9. Suara: Lalu naik kembali ke atas.
-   - Gambar: teks layar: "8"; jalur tulis: jl-8-0, jl-8-1, jl-8-2; disorot: st, jl-8-2; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Lalu(1) naik(1)
-10. Suara: Sekarang kamu coba, ya.
-   - Gambar: teks layar: "8"; jalur tulis: jl-8-0, jl-8-1, jl-8-2; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Sekarang(3) kamu(1) coba,(1) ya.(1) Sekarang(3)
-
-### 13. Menulis lambang sembilan dan sepuluh (`tulis-9-10`)
-
-1. Suara: Menulis sembilan. Mulai dari atas, lingkaran kecil, putar ke kiri.
-   - Gambar: teks layar: "9"; jalur tulis: jl-9-0; disorot: st, jl-9-0; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Menulis(3) sembilan.(3) lingkaran(1)
-2. Suara: Lalu garis lurus turun di kanan.
-   - Gambar: teks layar: "9"; jalur tulis: jl-9-0, jl-9-1; disorot: st, jl-9-1; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Lalu(1) garis(1)
-3. Suara: Sekarang kamu coba, ya.
-   - Gambar: teks layar: "9"; jalur tulis: jl-9-0, jl-9-1; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Sekarang(3) kamu(1) coba,(1) ya.(1) Sekarang(2)
-4. Suara: Sepuluh ditulis dua lambang: satu, lalu nol. Dibaca sepuluh.
-   - Gambar: teks layar: "10"; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Gambar: tokoh: Igil; teks layar: "Igil" "6"; emoji: 🦉, ➡, 👆; jalur tulis: jl-6-0, jl-6-1; disorot: st, jl-6-1; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Lalu(1) Lalu(1) lingkaran(1)
+3. Suara: Menulis tujuh. Garis lurus ke kanan.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "7"; emoji: 🦉, ➡, 👆; jalur tulis: jl-7-0; disorot: st, jl-7-0; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Menulis(2) tujuh.(2) Menulis(1) Garis(1)
+4. Suara: Lalu miring turun ke kiri.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "7"; emoji: 🦉, ⬅, 👆; jalur tulis: jl-7-0, jl-7-1; disorot: st, jl-7-1; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Lalu(1) Lalu(1) miring(1)
+5. Suara: Menulis delapan. Mulai atas, lengkung ke kiri.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "8"; emoji: 🦉, ⬅, 👆; jalur tulis: jl-8-0; disorot: st, jl-8-0; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Menulis(2) delapan.(2) Menulis(1) lengkung(1)
+6. Suara: Turun menyilang ke kanan, lengkung bawah.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "8"; emoji: 🦉, ➡, 👆; jalur tulis: jl-8-0, jl-8-1; disorot: st, jl-8-1; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Turun(1) Turun(1) menyilang(1)
+7. Suara: Lalu naik menyilang, kembali ke awal.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "8"; emoji: 🦉, ⬆, 👆; jalur tulis: jl-8-0, jl-8-1, jl-8-2; disorot: st, jl-8-2; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Lalu(1) Lalu(1) naik(1)
+8. Suara: Menulis sembilan. Lingkaran kecil di atas.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "9"; emoji: 🦉, ⬅, 👆; jalur tulis: jl-9-0; disorot: st, jl-9-0; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Menulis(3) sembilan.(2) Menulis(1) Lingkaran(1)
+9. Suara: Lalu garis lurus turun di kanan.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "9"; emoji: 🦉, ⬇, 👆; jalur tulis: jl-9-0, jl-9-1; disorot: st, jl-9-1; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Lalu(1) Lalu(1) garis(1)
+10. Suara: Sepuluh ditulis dua lambang: satu, lalu nol. Dibaca sepuluh.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "10"; emoji: 🦉, ⬇, 👆; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
    - Pemicu kata (jumlah perubahan): Sepuluh(2) Sepuluh(2) dua(2) satu,(2) satu,(1) nol.(1) sepuluh.(1)
-5. Suara: Mulai dari atas, garis lurus turun.
-   - Gambar: teks layar: "1"; jalur tulis: jl-1-0; disorot: st, jl-1-0; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Mulai(1) garis(1)
-6. Suara: Lalu tulis nol di sebelah kanannya.
-   - Gambar: teks layar: "0"; jalur tulis: jl-1-0, jl-0-0; disorot: st, jl-0-0; bentuk: 2 kotak, 1 bulat, 2 garis
-   - Pemicu kata (jumlah perubahan): Lalu(1) nol(2) nol(1)
-7. Suara: Sekarang kamu coba, ya.
-   - Gambar: teks layar: "0"; jalur tulis: jl-1-0, jl-0-0; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
+11. Suara: Pertama, garis lurus turun.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "1"; emoji: 🦉, ⬇, 👆; jalur tulis: jl-1-0; disorot: st, jl-1-0; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Pertama,(2) garis(1)
+12. Suara: Lalu nol di sebelah kanannya.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "0"; emoji: 🦉, ➡, 👆; jalur tulis: jl-1-0, jl-0-0; disorot: st, jl-0-0; bentuk: 2 kotak, 1 bulat, 2 garis
+   - Pemicu kata (jumlah perubahan): Lalu(2) nol(2) nol(1)
+13. Suara: Sekarang kamu coba, ya.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "0"; emoji: 🦉, ➡, 👆; jalur tulis: jl-1-0, jl-0-0; disorot: st; bentuk: 2 kotak, 1 bulat, 2 garis
    - Pemicu kata (jumlah perubahan): Sekarang(3) kamu(1) coba,(1) ya.(1) Sekarang(2)
 
-### 14. Latihan pertama: menghitung apel di keranjang (`latihan-1`)
+### 12. Tulis: label dari Niko (`label`)
+
+1. Suara: Di keranjang ada enam apel. Niko menulis labelnya.
+   - Gambar: tokoh: Niko, Tala; label penghitung (bukan jawaban): "6"; teks layar: "Niko" "Tala"; emoji: 6 x 🍎 di keranjang, 👆; jalur tulis: jl-x; disorot: jl-x; bentuk: 4 kotak
+   - Pemicu kata (jumlah perubahan): Di(16) enam(2) menulis(1) labelnya.(1)
+2. Suara: Tala menunjuk. Itu sembilan, bukan enam.
+   - Gambar: tokoh: Niko, Tala; label penghitung (bukan jawaban): "6"; teks layar: "Niko" "Tala" "9"; emoji: 6 x 🍎 di keranjang, 👆, ❌; jalur tulis: jl-x; disorot: jl-x; bentuk: 5 kotak
+   - Pemicu kata (jumlah perubahan): sembilan,(2) bukan(1)
+3. Suara: Niko menulis lagi. Lengkung turun, lingkaran bawah.
+   - Gambar: tokoh: Niko, Tala; label penghitung (bukan jawaban): "6"; teks layar: "Niko" "Tala"; emoji: 6 x 🍎 di keranjang, 👆; jalur tulis: jl-6-0, jl-6-1; disorot: jl-6-1; bentuk: 4 kotak
+   - Pemicu kata (jumlah perubahan): Niko(4) Lengkung(1) lingkaran(1) lingkaran(1)
+4. Suara: Sekarang benar. Labelnya enam.
+   - Gambar: tokoh: Niko, Tala; label penghitung (bukan jawaban): "6"; teks layar: "Niko" "Tala"; emoji: 6 x 🍎 di keranjang, 👆, ✅; jalur tulis: jl-6-0, jl-6-1; bentuk: 4 kotak
+   - Pemicu kata (jumlah perubahan): Sekarang(1) benar.(1)
+
+### 13. Latihan pertama: apel di keranjang (`latihan-1`)
 
 1. Suara: Latihan pertama. Coba jawab dulu.
-   - Gambar: emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak
+   - Gambar: emoji: 6 x 🍎 di keranjang, 3 x 🍎 di luar keranjang (rumput); bentuk: 3 kotak
    - Pemicu kata (jumlah perubahan): Latihan(13)
-2. Suara: Hitung apel di keranjang saja. Tunjuk satu per satu.
-   - Gambar: emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 👆; disorot: mj; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): keranjang(1) Tunjuk(1)
-3. Suara: Ada berapa apel di keranjang?
-   - Gambar: teks layar: "5" "7" "6"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 👆 ❓; bentuk: 6 kotak
-   - Pemicu kata (jumlah perubahan): Ada(1) berapa(7)
-4. Suara: Tunggu sebentar. Pikirkan dulu.
-   - Gambar: teks layar: "5" "7" "6"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 ⏳; bentuk: 6 kotak
-   - Pemicu kata (jumlah perubahan): Tunggu(2) Tunggu(4) sebentar.(1) Pikirkan(1) dulu.(1)
-5. Suara: Ayo hitung dengan suara. Satu, dua, tiga, empat, lima, enam.
-   - Gambar: teks layar: "5" "7" "6" "6"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: a6; bentuk: 7 kotak
-   - Pemicu kata (jumlah perubahan): Ayo(1) Ayo(2) Satu,(2) dua,(3) tiga,(3) empat,(3) lima,(3) enam.(3)
-6. Suara: Yang terakhir enam. Jawabannya enam.
-   - Gambar: teks layar: "5" "7" "6" "6"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: c3-k; bentuk: 7 kotak
+2. Suara: Ada berapa apel di keranjang saja?
+   - Gambar: pilihan jawaban: c1="5" c2="7" c3="6"; teks layar: "5" "7" "6"; emoji: 6 x 🍎 di keranjang, 3 x 🍎 di luar keranjang (rumput), ❓; disorot: mj; bentuk: 6 kotak
+   - Pemicu kata (jumlah perubahan): keranjang(1) berapa(7)
+3. Suara: Tunggu sebentar. Pikirkan dulu.
+   - Gambar: pilihan jawaban: c1="5" c2="7" c3="6"; teks layar: "5" "7" "6"; emoji: 6 x 🍎 di keranjang, 3 x 🍎 di luar keranjang (rumput), ⏳; bentuk: 6 kotak
+   - Pemicu kata (jumlah perubahan): Tunggu(1) Tunggu(1) Tunggu(4) sebentar.(1) Pikirkan(1) dulu.(1)
+4. Suara: Satu, dua, tiga, empat, lima, enam.
+   - Gambar: label penghitung (bukan jawaban): "6"; pilihan jawaban: c1="5" c2="7" c3="6"; teks layar: "5" "7" "6"; emoji: 6 x 🍎 di keranjang, 3 x 🍎 di luar keranjang (rumput); disorot: a6; bentuk: 7 kotak
+   - Pemicu kata (jumlah perubahan): Satu,(1) Satu,(2) Satu,(2) dua,(3) tiga,(3) empat,(3) lima,(3) enam.(3)
+5. Suara: Yang terakhir enam. Jawabannya enam.
+   - Gambar: label penghitung (bukan jawaban): "6"; pilihan jawaban: c1="5" c2="7" c3="6"; teks layar: "5" "7" "6"; emoji: 6 x 🍎 di keranjang, 3 x 🍎 di luar keranjang (rumput); disorot: c3-k; bentuk: 7 kotak
    - Pemicu kata (jumlah perubahan): Yang(1) Jawabannya(1)
 
-### 15. Latihan kedua: lambang delapan (`latihan-2`)
+### 14. Latihan kedua: lambang delapan (`latihan-2`)
 
 1. Suara: Latihan kedua. Coba jawab dulu.
-   - Gambar: tokoh: Igil; teks layar: "Igil"; emoji: 🦉 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): Latihan(29)
-2. Suara: Igil menunjuk lambang delapan. Cari kumpulan delapan apel.
-   - Gambar: tokoh: Igil; teks layar: "Igil" "8"; emoji: 🦉 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 4 kotak, 1 panah
-   - Pemicu kata (jumlah perubahan): lambang(2) Cari(1)
+   - Gambar: tokoh: Igil; teks layar: "Igil"; emoji: 🦉, 18 x 🍎; bentuk: 3 kotak
+   - Pemicu kata (jumlah perubahan): Latihan(23)
+2. Suara: Igil menunjuk lambang delapan. Pilih kumpulannya.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "8"; emoji: 🦉, 18 x 🍎; bentuk: 4 kotak, 1 panah
+   - Pemicu kata (jumlah perubahan): delapan.(2) Pilih(1)
 3. Suara: Tunggu sebentar. Pikirkan dulu.
-   - Gambar: tokoh: Igil; teks layar: "Igil" "8"; emoji: 🦉 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 ⏳; bentuk: 4 kotak
+   - Gambar: tokoh: Igil; teks layar: "Igil" "8"; emoji: 🦉, 18 x 🍎, ⏳; bentuk: 4 kotak
    - Pemicu kata (jumlah perubahan): Tunggu(1) Tunggu(4) sebentar.(1) Pikirkan(1) dulu.(1)
-4. Suara: Satu, dua, tiga, empat, lima, enam, tujuh, delapan.
-   - Gambar: tokoh: Igil; teks layar: "Igil" "8" "8"; emoji: 🦉 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: g2-8; bentuk: 5 kotak
-   - Pemicu kata (jumlah perubahan): Satu,(1) Satu,(2) Satu,(2) dua,(3) tiga,(3) empat,(3) lima,(3) enam,(3) tujuh,(3) delapan.(3)
-5. Suara: Kumpulan ini ada delapan apel.
-   - Gambar: tokoh: Igil; teks layar: "Igil" "8"; emoji: 🦉 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: c2-k; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): Kumpulan(2) Kumpulan(1) ini(1)
-6. Suara: Kumpulan lain bukan delapan.
-   - Gambar: tokoh: Igil; teks layar: "Igil" "8"; emoji: 🦉 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: c2-k; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): Kumpulan(2)
+4. Suara: Kumpulan tengah. Satu, dua, tiga, empat, lima, enam, tujuh, delapan.
+   - Gambar: tokoh: Igil; label penghitung (bukan jawaban): "8"; teks layar: "Igil" "8"; emoji: 🦉, 18 x 🍎; disorot: g2-8; bentuk: 5 kotak
+   - Pemicu kata (jumlah perubahan): Kumpulan(1) Satu,(2) Satu,(2) dua,(3) tiga,(3) empat,(3) lima,(3) enam,(3) tujuh,(3) delapan.(3)
+5. Suara: Kumpulan tengah delapan. Lainnya bukan.
+   - Gambar: tokoh: Igil; teks layar: "Igil" "8"; emoji: 🦉, 18 x 🍎; disorot: c2-k; bentuk: 4 kotak
+   - Pemicu kata (jumlah perubahan): Kumpulan(2) Kumpulan(1) tengah(1) Lainnya(2)
 
-### 16. Latihan ketiga: keranjang kosong (`latihan-3`)
+### 15. Latihan ketiga: nama lambang sembilan (`latihan-3`)
 
 1. Suara: Latihan ketiga. Coba jawab dulu.
-   - Gambar: bentuk: 2 kotak
+   - Gambar: tokoh: Igil; teks layar: "Igil"; emoji: 🦉, 💭
    - Pemicu kata (jumlah perubahan): Latihan(3)
-2. Suara: Ada berapa apel di keranjang?
-   - Gambar: teks layar: "0" "10" "1"; emoji: ❓; bentuk: 5 kotak
+2. Suara: Igil menunjuk lambang ini. Apa namanya?
+   - Gambar: tokoh: Igil; pilihan jawaban: c1="sembilan" c2="tujuh" c3="enam"; teks layar: "Igil" "9" "sembilan" "tujuh" "enam"; emoji: 🦉, 💭; bentuk: 4 kotak
+   - Pemicu kata (jumlah perubahan): ini.(2) namanya?(6)
+3. Suara: Tunggu sebentar. Pikirkan dulu.
+   - Gambar: tokoh: Igil; pilihan jawaban: c1="sembilan" c2="tujuh" c3="enam"; teks layar: "Igil" "9" "sembilan" "tujuh" "enam"; emoji: 🦉, 💭, ⏳; bentuk: 4 kotak
+   - Pemicu kata (jumlah perubahan): Tunggu(4) sebentar.(1) Pikirkan(1) dulu.(1)
+4. Suara: Lingkaran di atas, garis turun. Namanya sembilan.
+   - Gambar: tokoh: Igil; pilihan jawaban: c1="sembilan" c2="tujuh" c3="enam"; teks layar: "Igil" "9" "sembilan" "tujuh" "enam"; emoji: 🦉, 💭; disorot: c1-k; bentuk: 4 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Lingkaran(1) Lingkaran(1) sembilan.(1)
+5. Suara: Lingkaran di bawah, namanya enam.
+   - Gambar: tokoh: Igil; pilihan jawaban: c1="sembilan" c2="tujuh" c3="enam"; teks layar: "Igil" "9" "sembilan" "tujuh" "enam" "6"; emoji: 🦉, 💭; disorot: c1-k; bentuk: 5 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Lingkaran(1) Lingkaran(2) bawah,(1)
+
+### 16. Latihan keempat: bunga di bingkai (`latihan-4`)
+
+1. Suara: Latihan keempat. Coba jawab dulu.
+   - Gambar: tokoh: Tala; teks layar: "Tala"; emoji: 7 x 🌼; bentuk: 10 kotak
+   - Pemicu kata (jumlah perubahan): Latihan(20)
+2. Suara: Ada berapa bunga di bingkai?
+   - Gambar: tokoh: Tala; pilihan jawaban: c1="7" c2="9" c3="8"; teks layar: "Tala" "7" "9" "8"; emoji: 7 x 🌼, ❓; bentuk: 13 kotak
    - Pemicu kata (jumlah perubahan): berapa(7)
 3. Suara: Tunggu sebentar. Pikirkan dulu.
-   - Gambar: teks layar: "0" "10" "1"; emoji: ⏳; bentuk: 5 kotak
+   - Gambar: tokoh: Tala; pilihan jawaban: c1="7" c2="9" c3="8"; teks layar: "Tala" "7" "9" "8"; emoji: 7 x 🌼, ⏳; bentuk: 13 kotak
    - Pemicu kata (jumlah perubahan): Tunggu(1) Tunggu(4) sebentar.(1) Pikirkan(1) dulu.(1)
-4. Suara: Tidak ada apel untuk dihitung.
-   - Gambar: teks layar: "0" "10" "1"; disorot: kr-tp; bentuk: 5 kotak
-   - Pemicu kata (jumlah perubahan): Tidak(1) Tidak(2)
-5. Suara: Jadi jawabannya adalah nol.
-   - Gambar: teks layar: "0" "10" "1"; disorot: c1-k; bentuk: 5 kotak
-   - Pemicu kata (jumlah perubahan): Jadi(2) nol.(1)
+4. Suara: Satu, dua, tiga, empat, lima, enam, tujuh.
+   - Gambar: tokoh: Tala; label penghitung (bukan jawaban): "7"; pilihan jawaban: c1="7" c2="9" c3="8"; teks layar: "Tala" "7" "9" "8"; emoji: 7 x 🌼; disorot: f7; bentuk: 14 kotak
+   - Pemicu kata (jumlah perubahan): Satu,(1) Satu,(2) Satu,(2) dua,(3) tiga,(3) empat,(3) lima,(3) enam,(3) tujuh.(3)
+5. Suara: Yang terakhir tujuh. Jawabannya tujuh.
+   - Gambar: tokoh: Tala; label penghitung (bukan jawaban): "7"; pilihan jawaban: c1="7" c2="9" c3="8"; teks layar: "Tala" "7" "9" "8"; emoji: 7 x 🌼; disorot: c1-k; bentuk: 14 kotak
+   - Pemicu kata (jumlah perubahan): Yang(1) Jawabannya(1)
 
-### 17. Penutup: sepuluh apel untuk kue (`penutup`)
+### 17. Puncak: sepuluh apel untuk kue (`puncak`)
 
 1. Suara: Ayo kumpulkan apelnya lagi.
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak
+   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko"; emoji: 10 x 🍎 di luar keranjang (rumput); bentuk: 2 kotak
    - Pemicu kata (jumlah perubahan): Ayo(22)
-2. Suara: Niko berkata, satu per satu, pelan-pelan!
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko" "Pelan-pelan!"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): satu(2)
-3. Suara: Satu, dua, tiga, empat, lima.
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko" "5"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak
+2. Suara: Niko ingin menghitung cepat-cepat.
+   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko" "Cepat-cepat?"; emoji: 10 x 🍎 di luar keranjang (rumput); bentuk: 3 kotak
+   - Pemicu kata (jumlah perubahan): menghitung(2)
+3. Suara: Igil menjawab begini. Coba saja, kita lihat. Tadi cepat-cepat ada yang lupa dihitung.
+   - Gambar: tokoh: Lintang, Tala, Niko, Igil; teks layar: "Lintang" "Tala" "Niko" "Igil" "Coba saja!"; emoji: 10 x 🍎 di luar keranjang (rumput), 🦉; disorot: tk-igil; bentuk: 4 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Igil(2) Igil(4) Igil(1) Coba(2)
+4. Suara: Niko berkata, satu per satu, pelan-pelan!
+   - Gambar: tokoh: Lintang, Tala, Niko, Igil; teks layar: "Lintang" "Tala" "Niko" "Igil" "Pelan-pelan!"; emoji: 10 x 🍎 di luar keranjang (rumput), 🦉; bentuk: 4 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Niko(2) Niko(1) satu(2)
+5. Suara: Satu, dua, tiga, empat, lima.
+   - Gambar: tokoh: Lintang, Tala, Niko, Igil; label penghitung (bukan jawaban): "5"; teks layar: "Lintang" "Tala" "Niko" "Igil"; emoji: 5 x 🍎 di keranjang, 5 x 🍎 di luar keranjang (rumput), 🦉; bentuk: 4 kotak, 1 bulat
    - Pemicu kata (jumlah perubahan): Satu,(2) Satu,(2) Satu,(2) dua,(2) tiga,(2) empat,(2) lima.(2)
-4. Suara: Enam, tujuh, delapan, sembilan, sepuluh.
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko" "10"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak
+6. Suara: Enam, tujuh, delapan, sembilan, sepuluh.
+   - Gambar: tokoh: Lintang, Tala, Niko, Igil; label penghitung (bukan jawaban): "10"; teks layar: "Lintang" "Tala" "Niko" "Igil"; emoji: 10 x 🍎 di keranjang, 🦉; bentuk: 4 kotak, 1 bulat
    - Pemicu kata (jumlah perubahan): Enam,(2) tujuh,(2) delapan,(2) sembilan,(2) sepuluh.(2)
-5. Suara: Nenek berkata, sepuluh apel, cukup untuk kue!
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko" "10"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 😊; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): sepuluh(1) apel,(1)
-6. Suara: Tala menunjuk satu per satu, lalu tersenyum.
-   - Gambar: tokoh: Lintang, Tala, Niko; teks layar: "Lintang" "Tala" "Niko" "Teliti!"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 😊; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): Tala(2) menunjuk(2)
-7. Suara: Hitung satu per satu, yang terakhir adalah banyaknya.
-   - Gambar: tokoh: Lintang, Tala, Niko, Igil; teks layar: "Lintang" "Tala" "Niko" "Igil" "Hitung satu" "per satu," "yang terakhir" "adalah banyaknya."; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 😊 🦉; disorot: tk-igil; bentuk: 5 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Hitung(2) Hitung(4) Hitung(1) Hitung(2) per(1) yang(1) adalah(1)
+7. Suara: Nenek berkata, sepuluh apel, cukup untuk kue!
+   - Gambar: tokoh: Lintang, Tala, Niko, Igil; label penghitung (bukan jawaban): "10"; teks layar: "Lintang" "Tala" "Niko" "Igil"; emoji: 10 x 🍎 di keranjang, 🦉, 😊, 🍰; bentuk: 5 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): sepuluh(1) apel,(2)
 8. Suara: Selanjutnya, Nenek menyiapkan makan sore.
-   - Gambar: tokoh: Lintang, Tala, Niko, Igil; teks layar: "Lintang" "Tala" "Niko" "Igil"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 😊 🦉 🍽️ 🍞; disorot: tk-igil; bentuk: 4 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Selanjutnya,(5) menyiapkan(2)
-
-## o2k1a-luar: Apel di Keranjang: Hitung, Baca, Tulis Bilangan (Tiga cara lain menghitung)
-
-Jenis: metode-luar. 9 adegan, 60 ketukan, 334 kata, sekitar 2.8 menit suara.
-
-### 1. Sapaan dan tujuan video (`sapaan`)
-
-1. Suara: Halo, selamat datang di pelajaran matematika.
-   - Gambar: teks layar: "Halo!"; emoji: 👋; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Halo,(3)
-2. Suara: Di video ini ada cara lain belajar.
-   - Gambar: teks layar: "Di video ini ada cara lain belajar."; emoji: 🔎; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Di(0) Di(3)
-3. Suara: Kita lihat caranya.
-   - Gambar: teks layar: "Kita lihat caranya."; emoji: 👀; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Kita(0) Kita(1) Kita(2)
-4. Suara: Siap? Ayo kita mulai.
-   - Gambar: teks layar: "Ayo kita mulai!"; emoji: 🚀; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Siap?(0) Siap?(3)
-
-### 2. Pembuka: kenapa diberi tanda (`pembuka`)
-
-1. Suara: Sebelumnya, Tala menghitung apel satu per satu.
-   - Gambar: tokoh: Tala; teks layar: "Tala"; emoji: 🍎 🍎 🍎 🍎 🍎; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Sebelumnya,(9) apel(5) satu.(5)
-2. Suara: Lintang bertanya, kenapa harus diberi tanda?
-   - Gambar: tokoh: Tala, Lintang; teks layar: "Tala" "Lintang" "Kenapa diberi tanda?"; emoji: 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak, 5 bulat
-   - Pemicu kata (jumlah perubahan): Lintang(5) tanda?(5)
-3. Suara: Tala menjawab. Supaya tidak terlewat atau dihitung dua kali.
-   - Gambar: tokoh: Tala, Lintang; teks layar: "Tala" "Lintang" "Jangan dua kali!" "2"; emoji: 🍎 🍎 🍎 🍎 🍎; disorot: a3; bentuk: 3 kotak, 6 bulat
-   - Pemicu kata (jumlah perubahan): Tala(2) Tala(2) dua(3) dua(1)
-
-### 3. Tanda Satu-Satu: konsep (`tanda-konsep`)
-
-1. Suara: Cara pertama: Tanda Satu-Satu.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Tanda Satu-Satu"; emoji: 🍎 🍎 🍎 🍎 🍎; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Cara(9) Tanda(1)
-2. Suara: Sebut apel, beri tanda.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Tanda Satu-Satu"; emoji: 🍎 🍎 🍎 🍎 🍎; disorot: a1; bentuk: 1 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Sebut(1) tanda.(1)
-3. Suara: Satu, dua, tiga, empat, lima.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Tanda Satu-Satu" "5"; emoji: 🍎 🍎 🍎 🍎 🍎; disorot: a5; bentuk: 2 kotak, 5 bulat
-   - Pemicu kata (jumlah perubahan): Satu,(2) Satu,(2) dua,(3) tiga,(3) empat,(3) lima.(3) dua,(1) tiga,(1) empat,(1) lima.(1)
-4. Suara: Tandanya lima. Apelnya juga lima.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Tanda Satu-Satu" "5"; emoji: 🍎 🍎 🍎 🍎 🍎; bentuk: 4 kotak, 5 bulat
-   - Pemicu kata (jumlah perubahan): Tandanya(1) Tandanya(1) Apelnya(1)
-5. Suara: Tanda menunjukkan apel yang sudah disebut.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Tanda Satu-Satu" "5"; emoji: 🍎 🍎 🍎 🍎 🍎; disorot: tn1, tn2, tn3, tn4, tn5; bentuk: 4 kotak, 5 bulat
-   - Pemicu kata (jumlah perubahan): apel(5)
-6. Suara: Kalau ada yang belum bertanda, kita tahu.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Tanda Satu-Satu" "5"; emoji: 🍎 🍎 🍎 🍎 🍎 💡; disorot: tn1, tn2, tn3, tn4, tn5; bentuk: 4 kotak, 5 bulat
-   - Pemicu kata (jumlah perubahan): Kalau(1)
-7. Suara: Tidak ada apel yang terlewat.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Tanda Satu-Satu" "5"; emoji: 🍎 🍎 🍎 🍎 🍎 ✅; disorot: tn1, tn2, tn3, tn4, tn5; bentuk: 4 kotak, 5 bulat
-   - Pemicu kata (jumlah perubahan): Tidak(1) apel(1)
-8. Suara: Tala berkata, tanda membantu kita teliti.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Tanda Satu-Satu" "5" "Teliti!"; emoji: 🍎 🍎 🍎 🍎 🍎 ✅; disorot: tn1, tn2, tn3, tn4, tn5; bentuk: 5 kotak, 5 bulat
-   - Pemicu kata (jumlah perubahan): Tala(2)
-
-### 4. Tanda Satu-Satu: apel yang belum bertanda (`tanda-terapan`)
-
-1. Suara: Niko memberi tanda pada apel.
-   - Gambar: tokoh: Niko; teks layar: "Niko"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 1 kotak, 5 bulat
-   - Pemicu kata (jumlah perubahan): Niko(10) pada(5)
-2. Suara: Niko berseru, lima, selesai!
-   - Gambar: tokoh: Niko; teks layar: "Niko" "5" "Selesai!"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak, 5 bulat
-   - Pemicu kata (jumlah perubahan): lima,(2) selesai!(2)
-3. Suara: Tala berkata, hampir pas!
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "5" "Tala" "Hampir pas!"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak, 5 bulat
-   - Pemicu kata (jumlah perubahan): Tala(2) Tala(3) hampir(2)
-4. Suara: Tala menunjuk apel yang belum bertanda.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "5" "Tala"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎; disorot: a5; bentuk: 2 kotak, 5 bulat, 1 panah
-   - Pemicu kata (jumlah perubahan): Tala(2) apel(1) apel(1)
-5. Suara: Niko memberi tanda pada apel itu.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "5" "Tala"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak, 6 bulat
-   - Pemicu kata (jumlah perubahan): pada(1) pada(1) apel(1)
-6. Suara: Niko menghitung ulang dari satu.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "1" "Tala"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak, 6 bulat
-   - Pemicu kata (jumlah perubahan): satu.(1)
-7. Suara: Satu, dua, tiga, empat, lima, enam.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "6" "Tala"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎; disorot: a6; bentuk: 2 kotak, 6 bulat
-   - Pemicu kata (jumlah perubahan): Satu,(2) dua,(3) tiga,(3) empat,(3) lima,(3) enam.(3)
-8. Suara: Ada enam apel, enam tanda.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "6" "Tala"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎; disorot: tn1, tn2, tn3, tn4, tn6, tn5; bentuk: 2 kotak, 6 bulat
-   - Pemicu kata (jumlah perubahan): Ada(1) tanda.(6)
-
-### 5. Baris Isi Lima: konsep (`baris-konsep`)
-
-1. Suara: Cara kedua: Baris Isi Lima.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Baris Isi Lima"; emoji: 🍎 🍎; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Cara(6) Baris(1)
-2. Suara: Tala mengatur apel dalam baris.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Baris Isi Lima"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Tala(2) dalam(7)
-3. Suara: Lima apel dalam satu baris, mudah dilihat.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Baris Isi Lima" "5" "1"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): Lima(3) satu(2)
-4. Suara: Sekarang hitung semuanya dari satu.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Baris Isi Lima" "1"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Sekarang(3) satu.(1)
-5. Suara: Satu, dua, tiga, empat, lima, enam, tujuh.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Baris Isi Lima" "7"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: a7; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Satu,(2) dua,(3) tiga,(3) empat,(3) lima,(3) enam,(3) tujuh.(3)
-6. Suara: Ada tujuh apel semuanya.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Baris Isi Lima" "7"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): Ada(1) apel(1)
-7. Suara: Baris isi lima membantu kita mengatur apel.
-   - Gambar: tokoh: Tala; teks layar: "Tala" "Baris Isi Lima" "7" "Rapi!"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): Baris(2)
-
-### 6. Baris Isi Lima: mengatur apel Niko (`baris-terapan`)
-
-1. Suara: Apel Niko tersebar di rumput.
-   - Gambar: tokoh: Niko; teks layar: "Niko"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Apel(12)
-2. Suara: Tala mengatur apel dalam baris.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "Tala"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Tala(3) dalam(8)
-3. Suara: Baris pertama penuh, isinya lima.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "Tala" "5"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): penuh,(1) lima.(2)
-4. Suara: Sekarang hitung semuanya dari satu.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "Tala" "1"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Sekarang(1) satu.(1)
-5. Suara: Satu, dua, tiga, empat, lima, enam, tujuh, delapan.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "Tala" "8"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: a8; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Satu,(2) dua,(3) tiga,(3) empat,(3) lima,(3) enam,(3) tujuh,(3) delapan.(3)
-6. Suara: Ada delapan apel semuanya.
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "Tala" "8"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Ada(1)
-7. Suara: Niko berseru, wah, mudah sekali!
-   - Gambar: tokoh: Niko, Tala; teks layar: "Niko" "Tala" "8" "Wah!"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): Niko(2)
-
-### 7. Geser yang Sudah Dihitung: konsep (`geser-konsep`)
-
-1. Suara: Cara ketiga: Geser yang Sudah Dihitung.
-   - Gambar: tokoh: Lintang; teks layar: "Lintang" "Geser yang" "Sudah Dihitung"; emoji: 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Cara(10) Geser(1) Sudah(1)
-2. Suara: Apel yang disebut digeser ke kanan, jadi hijau.
-   - Gambar: tokoh: Lintang; teks layar: "Lintang" "Geser yang" "Sudah Dihitung"; emoji: 🍎 🍎 🍎 🍎 🍎 ➡️; disorot: a1; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): disebut(1) kanan,(1)
-3. Suara: Yang belum dihitung tetap di sisi kiri.
-   - Gambar: tokoh: Lintang; teks layar: "Lintang" "Geser yang" "Sudah Dihitung"; emoji: 🍎 🍎 🍎 🍎 🍎 ➡️; disorot: a1, a2, a3, a4, a5; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Yang(4)
-4. Suara: Satu, dua, tiga, empat, lima.
-   - Gambar: tokoh: Lintang; teks layar: "Lintang" "Geser yang" "Sudah Dihitung" "5"; emoji: 🍏 🍏 🍏 🍏 🍏 ➡️; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): Satu,(2) Satu,(2) dua,(2) tiga,(2) empat,(2) lima.(2)
-5. Suara: Tidak ada apel yang tertinggal.
-   - Gambar: tokoh: Lintang; teks layar: "Lintang" "Geser yang" "Sudah Dihitung" "5"; emoji: 🍏 🍏 🍏 🍏 🍏; disorot: zn; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): Tidak(1) tertinggal.(1)
-6. Suara: Semua apel sudah dihitung.
-   - Gambar: tokoh: Lintang; teks layar: "Lintang" "Geser yang" "Sudah Dihitung" "5" "Teliti!"; emoji: 🍏 🍏 🍏 🍏 🍏; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): Semua(1) Semua(2)
-7. Suara: Cara ini cocok untuk apel yang tersebar.
-   - Gambar: tokoh: Lintang; teks layar: "Lintang" "Geser yang" "Sudah Dihitung" "5" "Teliti!"; emoji: 🍏 🍏 🍏 🍏 🍏 ✨; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): yang(1)
-8. Suara: Lintang berkata, aku suka cara ini.
-   - Gambar: tokoh: Lintang; teks layar: "Lintang" "Geser yang" "Sudah Dihitung" "5" "Suka!"; emoji: 🍏 🍏 🍏 🍏 🍏 ✨; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): Lintang(2) Lintang(2)
-
-### 8. Geser yang Sudah Dihitung: Niko bingung (`geser-terapan`)
-
-1. Suara: Niko mau menghitung apel yang tersebar.
-   - Gambar: tokoh: Niko; teks layar: "Niko"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Niko(11)
-2. Suara: Niko bingung. Apel mana yang sudah dihitung?
-   - Gambar: tokoh: Niko; teks layar: "Niko" "Bingung!"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 ❓; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): Niko(2) mana(1)
-3. Suara: Apel yang sudah dihitung diberi warna hijau.
-   - Gambar: tokoh: Niko; teks layar: "Niko"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎; disorot: zn; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Apel(3) warna(1)
-4. Suara: Niko menggeser apel yang dihitung.
-   - Gambar: tokoh: Niko; teks layar: "Niko"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 ➡️; bentuk: 2 kotak
-   - Pemicu kata (jumlah perubahan): Niko(1) apel(1)
-5. Suara: Satu, dua, tiga, empat, lima, enam.
-   - Gambar: tokoh: Niko; teks layar: "Niko" "6"; emoji: 🍏 🍏 🍏 🍏 🍏 🍏 ➡️; bentuk: 3 kotak
-   - Pemicu kata (jumlah perubahan): Satu,(2) Satu,(2) dua,(2) tiga,(2) empat,(2) lima,(2) enam.(2)
-6. Suara: Hasilnya enam. Tidak ada yang tertukar.
-   - Gambar: tokoh: Niko; teks layar: "Niko" "6" "Teliti!"; emoji: 🍏 🍏 🍏 🍏 🍏 🍏; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): Hasilnya(1) Hasilnya(2)
-
-### 9. Ringkasan tiga cara menghitung (`ringkasan`)
-
-1. Suara: Ada tiga cara menghitung apel.
-   - Gambar: teks layar: "3"; bentuk: 4 kotak
-   - Pemicu kata (jumlah perubahan): tiga(2) cara(3)
-2. Suara: Pertama, Tanda Satu-Satu agar tidak terlewat.
-   - Gambar: teks layar: "3" "Tanda"; emoji: 🍎; disorot: ka-k; bentuk: 4 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Tanda(1) Tanda(3)
-3. Suara: Kedua, Baris Isi Lima.
-   - Gambar: teks layar: "3" "Tanda" "Baris"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎; disorot: kb-k; bentuk: 4 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Kedua,(1) Baris(1) Baris(9)
-4. Suara: Ketiga, Geser yang Sudah Dihitung.
-   - Gambar: teks layar: "3" "Tanda" "Baris" "Geser"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 ➡️ 🍏; disorot: kc-k; bentuk: 4 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Ketiga,(1) Geser(1) Geser(4)
-5. Suara: Semuanya tetap menghitung satu per satu.
-   - Gambar: teks layar: "3" "Tanda" "Baris" "Geser"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 ➡️ 🍏; disorot: ka-k, kb-k, kc-k; bentuk: 4 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Semuanya(3)
-6. Suara: Tanda, baris, dan geser menjaga hitungan.
-   - Gambar: teks layar: "3" "Tanda" "Baris" "Geser"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 ➡️ 🍏; bentuk: 4 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Tanda,(3)
-7. Suara: Pilih cara yang kamu suka.
-   - Gambar: teks layar: "3" "Tanda" "Baris" "Geser"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 ➡️ 🍏; disorot: ka-k, kb-k, kc-k; bentuk: 4 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Pilih(3)
-8. Suara: Hitungan jadi tertib dan teliti.
-   - Gambar: teks layar: "3" "Tanda" "Baris" "Geser"; emoji: 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 🍎 ➡️ 🍏 👍; disorot: ka-k, kb-k, kc-k; bentuk: 4 kotak, 1 bulat
-   - Pemicu kata (jumlah perubahan): Hitungan(1)
-9. Suara: Selanjutnya, Nenek menyiapkan makan sore.
-   - Gambar: emoji: 🍽️ 🍞 🍰; bentuk: 1 kotak
-   - Pemicu kata (jumlah perubahan): Selanjutnya,(0) Selanjutnya,(4)
+   - Gambar: tokoh: Lintang, Tala, Niko, Igil; teks layar: "Lintang" "Tala" "Niko" "Igil"; emoji: 10 x 🍎 di keranjang, 🦉, 😊, 🍽️, 🍞; bentuk: 3 kotak, 1 bulat
+   - Pemicu kata (jumlah perubahan): Selanjutnya,(4) menyiapkan(2)

@@ -1,5 +1,5 @@
 import type { Aksi, KetukanStory, Obj } from "./logika-story";
-import { W, bulat, emo, garis, gambarTokoh, hapus, k, kotak, tambah, teks, ubah, type Tokoh } from "./kit/dasar";
+import { W, bulat, emo, garis, gambarTokoh, hapus, k, kartuAngka, kotak, tambah, teks, ubah, type Tokoh } from "./kit/dasar";
 import { BENDA, IGIL, benda, keranjang, lambang, pohon } from "./kit/dunia-k1";
 
 /**
@@ -60,16 +60,26 @@ export const dapur = (): Obj => emo("dp", 212, 78, "\u{1F3E0}", 30);
 export const APEL_HIJAU = "\u{1F34F}";
 /** Satu ketukan: Nenek menuang apel (ids) ke dapur, keranjang kosong lagi. `ekstra` = benda lain yang ikut dihapus (penghitung, cincin). */
 export const ketukanTuang = (ids: string[], ekstra: string[] = []): KetukanStory =>
-  k("Nenek menuang apel ke dapur. Keranjang kosong lagi.", tambah(1, dapur()), hapus(4, ...ids, ...ekstra));
+  k("Nenek menuang apelnya ke dapur.", tambah(1, dapur()), hapus(4, ...ids, ...ekstra));
+
+/** Id benda berurutan: awalan1 .. awalann. */
+export const idBenda = (awalan: string, n: number): string[] => Array.from({ length: n }, (_, i) => awalan + (i + 1));
+/** Sorot bergilir sambil menyebut bilangan: benda ke-i pada kata ke-(mulai + i), penghitung (cn-t) ikut berubah. */
+export const hitungBenda = (ids: string[], mulai = 0): Aksi[] =>
+  ids.map((id, i) => ubah(mulai + i, { id, sorot: true }, ...(i > 0 ? [{ id: ids[i - 1], sorot: false }] : []), { id: "cn-t", isi: String(i + 1) }));
+/** Menghapus tiga titik hitung mundur visual pada kata nomor 1, 2, 3 (satu titik tiap kata). */
+export const habisTitik = (): Aksi[] => ["jd1", "jd2", "jd3"].map((id, i) => hapus(i + 1, id));
+/** Tiga kartu pilihan jawaban c1..c3 di bawah layar (pojok kiri-atas kartu di y = 166). */
+export const pilihanAngka = (isi: string[], w = 44, u = 22): Obj[] => isi.flatMap((t, i) => kartuAngka(`c${i + 1}`, w === 44 ? 40 + i * 88 : 14 + i * 100, 166, t, W.krem, w, 36, u));
 
 /* ------------------------------ Kalimat kunci ------------------------------ */
 export const BARIS_KUNCI = ["Hitung satu", "per satu,", "yang terakhir", "adalah banyaknya."];
-/** Kartu kalimat kunci di kiri atas; baris muncul mengikuti kata (kata ke-0, 2, 4, 6). */
-export const aksiKunci = (): Aksi[] => [
-  tambah(0, kotak("kn-k", 8, 8, 150, 70, W.krem, W.emas, { rx: 10, tebal: 2.5 }), teks("kn-t0", 83, 28, BARIS_KUNCI[0], 11)),
-  tambah(2, teks("kn-t1", 83, 42, BARIS_KUNCI[1], 11)),
-  tambah(4, teks("kn-t2", 83, 56, BARIS_KUNCI[2], 11)),
-  tambah(6, teks("kn-t3", 83, 70, BARIS_KUNCI[3], 11)),
+/** Kartu kalimat kunci di kiri atas; baris muncul mengikuti kata (kata ke-0, 2, 4, 6 dihitung mulai dari kata nomor `mulai`). */
+export const aksiKunci = (mulai = 0): Aksi[] => [
+  tambah(mulai, kotak("kn-k", 8, 8, 150, 70, W.krem, W.emas, { rx: 10, tebal: 2.5 }), teks("kn-t0", 83, 28, BARIS_KUNCI[0], 11)),
+  tambah(mulai + 2, teks("kn-t1", 83, 42, BARIS_KUNCI[1], 11)),
+  tambah(mulai + 4, teks("kn-t2", 83, 56, BARIS_KUNCI[2], 11)),
+  tambah(mulai + 6, teks("kn-t3", 83, 70, BARIS_KUNCI[3], 11)),
 ];
 export const idKunci = ["kn-k", "kn-t0", "kn-t1", "kn-t2", "kn-t3"];
 
@@ -112,6 +122,8 @@ export const jalurSegmen = (angka: string, i: number, ox: number): Obj => ({
   gambar: true,
 });
 export const idJalur = (angka: string): string[] => MODEL_TULIS[angka].map((_, i) => `jl-${angka}-${i}`);
+/** Goresan ke-i dari lambang `angka` pada bingkai berpojok (ox, oy) (dipakai papan label di luar papan tulis). */
+export const jalurDi = (angka: string, i: number, ox: number, oy: number): Obj => ({ ...jalurSegmen(angka, i, ox), y: oy });
 /** Papan tulis putih dengan dua garis bantu (atas dan bawah lambang). */
 export const panelTulis = (): Obj[] => [
   kotak("pn", 96, 26, 196, 130, W.putih, W.biru, { rx: 8, tebal: 1.8 }),
@@ -125,3 +137,14 @@ export const titikMulai = (angka: string, ox: number): Obj => {
   const [sx, sy] = awalJalur(angka);
   return bulat("st", ox + sx, OY + sy, 5, W.hijau, W.biru, { sorot: true });
 };
+
+/* ------------------------------ Bingkai sepuluh (dua baris, lima petak tiap baris) ------------------------------ */
+export const BK = { x: 65, y: 80, sel: 34 } as const;
+/** Sepuluh petak putih. Id bk1..bk10 (kiri ke kanan, baris atas dulu). */
+export const bingkaiSepuluh = (): Obj[] =>
+  Array.from({ length: 10 }, (_, i) => kotak(`bk${i + 1}`, BK.x + (i % 5) * BK.sel, BK.y + Math.floor(i / 5) * BK.sel, BK.sel, BK.sel, W.putih, W.biru, { rx: 3, tebal: 1.5 }));
+export const idBingkai = Array.from({ length: 10 }, (_, i) => `bk${i + 1}`);
+/** Pusat petak ke-(i + 1) (letak dasar emoji). */
+export const petak = (i: number): [number, number] => [BK.x + (i % 5) * BK.sel + BK.sel / 2, BK.y + Math.floor(i / 5) * BK.sel + 27];
+/** Isi petak ke-n (1..10) dengan emoji pada kata nomor `kata`, sambil menyebut bilangan n (penghitung ikut berubah). Id f{n}. */
+export const isiPetak = (kata: number, n: number, emoji: string): Aksi[] => [tambah(kata, benda(`f${n}`, petak(n - 1)[0], petak(n - 1)[1], emoji, 24)), ubah(kata, { id: "cn-t", isi: String(n) })];

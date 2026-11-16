@@ -18,6 +18,8 @@ export const TOKOH_K1: readonly Tokoh[] = [LINTANG, NIKO, TALA, IGIL];
 export const KATA_KHAS_K1 = { mulai: "Ayo hitung!", igil: "Satu per satu, pelan-pelan!", hampir: "Hampir pas!" } as const;
 /** Kalimat kunci Sub-Bab A, diucapkan utuh oleh Igil (delapan kata). */
 export const KALIMAT_KUNCI_1A = "Hitung satu per satu, yang terakhir adalah banyaknya.";
+/** Nama Metode IGIL Sub-Bab A (empat langkah, bahasa Indonesia). Dipakai sebagai subjudul video. */
+export const NAMA_METODE_K1A = "Tunjuk, Geser, Isi, Tulis";
 
 /** Judul baru (tampil) per bab dan sub-bab Kelas 1, dari Kitab versi 2 bagian 5 dan 6. Penanda topik kurikulum tidak disimpan di sini. */
 export const JUDUL_BAB_K1: Record<number, string> = {
