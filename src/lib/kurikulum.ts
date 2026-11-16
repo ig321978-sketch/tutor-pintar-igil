@@ -943,7 +943,7 @@ function tanpaBabModul(data: Record<string, Record<string, string[]>>) {
 }
 
 export const JUDUL_MTK_1_BAB1 = "Bab 1: Ayo Membilang sampai dengan 10";
-export const JUDUL_MTK_1_BAB1_KEDUA = "Modul Kedua Kelas 1 Bab 1: Ayo Membilang sampai dengan 10";
+export const JUDUL_MTK_1_BAB1_KEDUA = "Bab 1: Ayo Membilang sampai dengan 10";
 export const JUDUL_MTK_1_BAB2 = "Bab 2: Penjumlahan sampai dengan 10";
 export const JUDUL_MTK_1_BAB3 = "Bab 3: Pengurangan sampai dengan 10";
 export const JUDUL_MTK_1_BAB4 = "Bab 4: Mengenal Bentuk";
@@ -965,7 +965,7 @@ export const JUDUL_MTK_3_BAB3 = "Bab 3: Pengukuran Panjang dan Berat";
 export const JUDUL_MTK_3_BAB4 = "Bab 4: Unsur-Unsur Bangun Datar";
 export const JUDUL_MTK_3_BAB5 = "Bab 5: Penyajian Data dalam Tabel";
 export const JUDUL_MTK_4_BAB1 = "Bab 1: Bilangan Cacah sampai 10.000";
-export const JUDUL_MTK_4_BAB1_KEDUA = "Bab 1: Bilangan Cacah sampai 10.000 (Modul Kedua)";
+export const JUDUL_MTK_4_BAB1_KEDUA = "Bab 1: Bilangan Cacah sampai 10.000 (Sub-Bab A)";
 export const JUDUL_MTK_4_BAB2 = "Bab 2: Pecahan";
 export const JUDUL_MTK_4_BAB3 = "Bab 3: Pola Gambar dan Pola Bilangan";
 export const JUDUL_MTK_4_BAB4 = "Bab 4: Pengukuran Luas dan Volume";
@@ -988,7 +988,7 @@ export const JUDUL_MTK_6_BAB4 = "Bab 4: Peluang";
 
 const BAB_TERPASANG: Record<string, Record<string, string[]>> = {
   "1 SD": {
-    Matematika: [JUDUL_MTK_1_BAB1, JUDUL_MTK_1_BAB1_KEDUA, JUDUL_MTK_1_BAB2, JUDUL_MTK_1_BAB3, JUDUL_MTK_1_BAB4, JUDUL_MTK_1_BAB5, JUDUL_MTK_1_BAB6, JUDUL_MTK_1_BAB7, JUDUL_MTK_1_BAB8],
+    Matematika: [JUDUL_MTK_1_BAB1, JUDUL_MTK_1_BAB2, JUDUL_MTK_1_BAB3, JUDUL_MTK_1_BAB4, JUDUL_MTK_1_BAB5, JUDUL_MTK_1_BAB6, JUDUL_MTK_1_BAB7, JUDUL_MTK_1_BAB8],
   },
   "2 SD": {
     Matematika: [JUDUL_MTK_2_BAB1, JUDUL_MTK_2_BAB2, JUDUL_MTK_2_BAB3, JUDUL_MTK_2_BAB4, JUDUL_MTK_2_BAB5, JUDUL_MTK_2_BAB6, JUDUL_MTK_2_BAB7, JUDUL_MTK_2_BAB8],
@@ -997,7 +997,7 @@ const BAB_TERPASANG: Record<string, Record<string, string[]>> = {
     Matematika: [JUDUL_MTK_3_BAB1, JUDUL_MTK_3_BAB2, JUDUL_MTK_3_BAB3, JUDUL_MTK_3_BAB4, JUDUL_MTK_3_BAB5],
   },
   "4 SD": {
-    Matematika: [JUDUL_MTK_4_BAB1, JUDUL_MTK_4_BAB1_KEDUA, JUDUL_MTK_4_BAB2, JUDUL_MTK_4_BAB3, JUDUL_MTK_4_BAB4, JUDUL_MTK_4_BAB5, JUDUL_MTK_4_BAB6],
+    Matematika: [JUDUL_MTK_4_BAB1, JUDUL_MTK_4_BAB2, JUDUL_MTK_4_BAB3, JUDUL_MTK_4_BAB4, JUDUL_MTK_4_BAB5, JUDUL_MTK_4_BAB6],
   },
   "5 SD": {
     Matematika: [JUDUL_MTK_5_BAB1, JUDUL_MTK_5_BAB2, JUDUL_MTK_5_BAB3, JUDUL_MTK_5_BAB4, JUDUL_MTK_5_BAB5, JUDUL_MTK_5_BAB6, JUDUL_MTK_5_BAB7, JUDUL_MTK_5_BAB8, JUDUL_MTK_5_BAB9],
@@ -1025,6 +1025,19 @@ export const DATA_KURIKULUM = pasangBabSiap(
     saringKurikulumMerdeka(perluasKurikulumMerdeka(DATA_INTI_KURIKULUM)),
   ),
 );
+
+/**
+ * Opsi 2 sumber belajar: modul dengan naskah orisinal IGIL (bukan dari buku). Dipisahkan dari Opsi 1 (buku Kurikulum Merdeka)
+ * sejak pilihan sumber di Ruang Belajar, jadi tidak lagi muncul di dropdown materi Opsi 1.
+ */
+export const DATA_MODUL_IGIL: Record<string, Record<string, string[]>> = {
+  "1 SD": { Matematika: [JUDUL_MTK_1_BAB1_KEDUA] },
+  "4 SD": { Matematika: [JUDUL_MTK_4_BAB1_KEDUA] },
+};
+export const JALUR_MODUL_IGIL: Record<string, string> = {
+  [JUDUL_MTK_1_BAB1_KEDUA]: "/ruang-belajar/mtk-1-bab1-kedua",
+  [JUDUL_MTK_4_BAB1_KEDUA]: "/ruang-belajar/mtk-4-bab1-kedua",
+};
 
 export const DAFTAR_KELAS = Object.keys(DATA_KURIKULUM);
 

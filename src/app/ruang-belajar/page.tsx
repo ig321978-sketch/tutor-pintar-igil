@@ -1,17 +1,18 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Sparkles, UploadCloud, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { BookOpen, Lightbulb, Sparkles } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import PilihGuru from "@/components/PilihGuru";
 import { MUAT_BAB_BARU } from "@/components/modul/registri-bab-baru";
 import { type KelaminGuru } from "@/lib/guru";
 import {
   DATA_KURIKULUM,
+  DATA_MODUL_IGIL,
+  JALUR_MODUL_IGIL,
   DAFTAR_KELAS,
   JUDUL_MTK_1_BAB1,
-  JUDUL_MTK_1_BAB1_KEDUA,
   JUDUL_MTK_1_BAB2,
   JUDUL_MTK_1_BAB3,
   JUDUL_MTK_1_BAB4,
@@ -28,7 +29,6 @@ import {
   JUDUL_MTK_2_BAB7,
   JUDUL_MTK_2_BAB8,
   JUDUL_MTK_4_BAB1,
-  JUDUL_MTK_4_BAB1_KEDUA,
   JUDUL_MTK_4_BAB2,
   JUDUL_MTK_4_BAB3,
   JUDUL_MTK_4_BAB4,
@@ -71,41 +71,11 @@ import { kelasKotak, kelasLabel, kelasTombolUtama } from "@/lib/tema";
 const OPSI_MAPEL_LAIN = OPSI_LAINNYA;
 const OPSI_MATERI_LAIN = OPSI_LAINNYA;
 const KUNCI_HALAMAN_BUKU = "igil-halaman-buku-v1";
-const BATAS_HALAMAN = 6;
-const BATAS_UKURAN_BYTE = 5 * 1024 * 1024;
-
-type SumberBelajar = "kurikulum" | "unggah";
-
-function kompresGambar(file: File): Promise<string> {
-  return new Promise((selesai, gagal) => {
-    const reader = new FileReader();
-    reader.onerror = () => gagal(new Error("Gagal membaca berkas."));
-    reader.onload = () => {
-      const gambar = new Image();
-      gambar.onload = () => {
-        const batas = 960;
-        const rasio = Math.min(1, batas / Math.max(gambar.width, gambar.height));
-        const kanvas = document.createElement("canvas");
-        kanvas.width = Math.max(1, Math.round(gambar.width * rasio));
-        kanvas.height = Math.max(1, Math.round(gambar.height * rasio));
-        const ctx = kanvas.getContext("2d");
-        if (!ctx) {
-          selesai(reader.result as string);
-          return;
-        }
-        ctx.drawImage(gambar, 0, 0, kanvas.width, kanvas.height);
-        selesai(kanvas.toDataURL("image/jpeg", 0.7));
-      };
-      gambar.onerror = () => selesai(reader.result as string);
-      gambar.src = reader.result as string;
-    };
-    reader.readAsDataURL(file);
-  });
-}
+/** Opsi 1: buku Kurikulum Merdeka. Opsi 2: modul naskah orisinal IGIL. */
+type SumberBelajar = "kurikulum" | "igil";
 
 export default function RuangBelajarPage() {
   const router = useRouter();
-  const inputBerkasRef = useRef<HTMLInputElement | null>(null);
   const { adalahAdmin } = useUserRole();
   const kunciPublik = situsHanyaAdmin() && !adalahAdmin;
   const [nama, setNama] = useState("");
@@ -127,8 +97,6 @@ export default function RuangBelajarPage() {
       "",
   );
   const [materiManual, setMateriManual] = useState("");
-  const [halamanBuku, setHalamanBuku] = useState<string[]>([]);
-  const [sedangSeret, setSedangSeret] = useState(false);
   const [pesanGalat, setPesanGalat] = useState("");
   const [guruKelamin, setGuruKelamin] = useState<KelaminGuru>("wanita");
   const [menyiapkanSapaan, setMenyiapkanSapaan] = useState(false);
@@ -145,11 +113,11 @@ export default function RuangBelajarPage() {
   }, [kelas, kunciPublik]);
   const daftarMateri = useMemo(() => {
     if (pilihanMapel === OPSI_MAPEL_LAIN) return [];
-    const buku = DATA_KURIKULUM[kelas]?.[pilihanMapel] ?? [];
+    const buku = (sumber === "igil" ? DATA_MODUL_IGIL : DATA_KURIKULUM)[kelas]?.[pilihanMapel] ?? [];
     if (!kunciPublik) return buku;
     if (adalahPilotMatematikaSd(kelas, pilihanMapel)) return buku;
     return [];
-  }, [kelas, kunciPublik, pilihanMapel]);
+  }, [kelas, kunciPublik, pilihanMapel, sumber]);
   const mapel =
     pilihanMapel === OPSI_MAPEL_LAIN ? mapelManual : pilihanMapel;
   const materi =
@@ -158,9 +126,7 @@ export default function RuangBelajarPage() {
   useEffect(() => {
     const data = bacaProgres();
     if (data.profil.nama) setNama(data.profil.nama);
-    if (kunciPublik) {
-      setSumber("kurikulum");
-    } else if (data.profil.kelas) {
+    if (!kunciPublik && data.profil.kelas) {
       setKelas(data.profil.kelas);
     }
     if (data.profil.kota) setKota(data.profil.kota);
@@ -183,27 +149,23 @@ export default function RuangBelajarPage() {
   }, [daftarMapel, pilihanMapel]);
 
   useEffect(() => {
-    if (pilihanMapel === OPSI_MAPEL_LAIN) {
+    if (sumber !== "igil" && pilihanMapel === OPSI_MAPEL_LAIN) {
       setPilihanMateri(OPSI_MATERI_LAIN);
       return;
     }
-    if (pilihanMateri === OPSI_MATERI_LAIN) return;
+    if (sumber !== "igil" && pilihanMateri === OPSI_MATERI_LAIN) return;
     if (!pilihanMateri || !daftarMateri.includes(pilihanMateri)) {
-      setPilihanMateri(daftarMateri[0] ?? OPSI_MATERI_LAIN);
+      setPilihanMateri(daftarMateri[0] ?? (sumber === "igil" ? "" : OPSI_MATERI_LAIN));
     }
-  }, [daftarMateri, pilihanMapel, pilihanMateri]);
+  }, [daftarMateri, pilihanMapel, pilihanMateri, sumber]);
 
   const naskahSapaanSesi = () => {
     const namaPakai = nama.trim() || "Siswa";
-    const judulMapel =
-      sumber === "kurikulum" ? mapel : "Berdasarkan Buku";
-    const judulMateri =
-      sumber === "kurikulum" ? materi : "Analisis halaman buku";
-    return naskahSapaanUntukSuara(namaPakai, judulMapel, judulMateri);
+    return naskahSapaanUntukSuara(namaPakai, mapel, materi);
   };
 
   useEffect(() => {
-    if (sumber === "kurikulum" && (!mapel.trim() || !materi.trim())) return;
+    if (!mapel.trim() || !materi.trim()) return;
     const naskah = naskahSapaanSesi();
     const t = window.setTimeout(() => {
       void siapkanAudioSapaan(naskah, guruKelamin, kelas);
@@ -213,61 +175,20 @@ export default function RuangBelajarPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nama, kelas, guruKelamin, sumber, mapel, materi]);
 
-  const tambahHalaman = async (berkas: FileList | File[] | null) => {
-    if (!berkas || berkas.length === 0) return;
-    const daftar = Array.from(berkas);
-    const sisa = BATAS_HALAMAN - halamanBuku.length;
-    if (sisa <= 0) {
-      setPesanGalat(`Maksimal ${BATAS_HALAMAN} halaman buku.`);
-      return;
-    }
-
-    const terpilih = daftar.slice(0, sisa);
-    const hasil: string[] = [];
-    for (const file of terpilih) {
-      if (!file.type.startsWith("image/")) {
-        setPesanGalat("Berkas harus berupa gambar PNG atau JPG.");
-        return;
-      }
-      if (file.size > BATAS_UKURAN_BYTE) {
-        setPesanGalat("Ukuran foto maksimal 5MB per halaman.");
-        return;
-      }
-      hasil.push(await kompresGambar(file));
-    }
-    setPesanGalat("");
-    setHalamanBuku((sebelum) => [...sebelum, ...hasil]);
-  };
-
   const mulaiPembelajaran = async () => {
-    if (
-      kunciPublik &&
-      (sumber !== "kurikulum" || !adalahPilotMatematikaSd(kelas, mapel))
-    ) {
+    if (kunciPublik && !adalahPilotMatematikaSd(kelas, mapel)) {
       setPesanGalat(PESAN_MATERI_TERKUNCI_PUBLIK);
       return;
     }
-    if (sumber === "kurikulum") {
-      if (!mapel.trim()) {
-        setPesanGalat("Mohon pilih mata pelajaran.");
-        return;
-      }
-      window.sessionStorage.removeItem(KUNCI_HALAMAN_BUKU);
-    } else {
-      if (halamanBuku.length === 0) {
-        setPesanGalat("Mohon unggah minimal satu halaman buku.");
-        return;
-      }
-      try {
-        window.sessionStorage.setItem(
-          KUNCI_HALAMAN_BUKU,
-          JSON.stringify(halamanBuku),
-        );
-      } catch {
-        setPesanGalat("Foto terlalu besar. Kurangi jumlah halaman, lalu coba lagi.");
-        return;
-      }
+    if (!mapel.trim()) {
+      setPesanGalat("Mohon pilih mata pelajaran.");
+      return;
     }
+    if (sumber === "igil" && !JALUR_MODUL_IGIL[materi]) {
+      setPesanGalat("Belum ada modul naskah IGIL untuk pilihan ini. Coba Opsi 1 (buku Kurikulum Merdeka).");
+      return;
+    }
+    window.sessionStorage.removeItem(KUNCI_HALAMAN_BUKU);
 
     simpanProfil({
       nama: nama.trim() || "Siswa",
@@ -280,7 +201,6 @@ export default function RuangBelajarPage() {
       kelas === "1 SD"
         ? {
             [JUDUL_MTK_1_BAB1]: "/ruang-belajar/mtk-1-bab1",
-            [JUDUL_MTK_1_BAB1_KEDUA]: "/ruang-belajar/mtk-1-bab1-kedua",
             [JUDUL_MTK_1_BAB2]: "/ruang-belajar/mtk-1-bab2",
             [JUDUL_MTK_1_BAB3]: "/ruang-belajar/mtk-1-bab3",
             [JUDUL_MTK_1_BAB4]: "/ruang-belajar/mtk-1-bab4",
@@ -292,7 +212,7 @@ export default function RuangBelajarPage() {
         : kelas === "2 SD"
           ? { [JUDUL_MTK_2_BAB1]: "/ruang-belajar/mtk-2-bab1", [JUDUL_MTK_2_BAB2]: "/ruang-belajar/mtk-2-bab2", [JUDUL_MTK_2_BAB3]: "/ruang-belajar/mtk-2-bab3", [JUDUL_MTK_2_BAB4]: "/ruang-belajar/mtk-2-bab4", [JUDUL_MTK_2_BAB5]: "/ruang-belajar/mtk-2-bab5", [JUDUL_MTK_2_BAB6]: "/ruang-belajar/mtk-2-bab6", [JUDUL_MTK_2_BAB7]: "/ruang-belajar/mtk-2-bab7", [JUDUL_MTK_2_BAB8]: "/ruang-belajar/mtk-2-bab8" }
           : kelas === "4 SD"
-            ? { [JUDUL_MTK_4_BAB1]: "/ruang-belajar/mtk-4-bab1", [JUDUL_MTK_4_BAB1_KEDUA]: "/ruang-belajar/mtk-4-bab1-kedua", [JUDUL_MTK_4_BAB2]: "/ruang-belajar/mtk-4-bab2", [JUDUL_MTK_4_BAB3]: "/ruang-belajar/mtk-4-bab3", [JUDUL_MTK_4_BAB4]: "/ruang-belajar/mtk-4-bab4", [JUDUL_MTK_4_BAB5]: "/ruang-belajar/mtk-4-bab5", [JUDUL_MTK_4_BAB6]: "/ruang-belajar/mtk-4-bab6" }
+            ? { [JUDUL_MTK_4_BAB1]: "/ruang-belajar/mtk-4-bab1", [JUDUL_MTK_4_BAB2]: "/ruang-belajar/mtk-4-bab2", [JUDUL_MTK_4_BAB3]: "/ruang-belajar/mtk-4-bab3", [JUDUL_MTK_4_BAB4]: "/ruang-belajar/mtk-4-bab4", [JUDUL_MTK_4_BAB5]: "/ruang-belajar/mtk-4-bab5", [JUDUL_MTK_4_BAB6]: "/ruang-belajar/mtk-4-bab6" }
             : kelas === "5 SD"
               ? { [JUDUL_MTK_5_BAB1]: "/ruang-belajar/mtk-5-bab1", [JUDUL_MTK_5_BAB2]: "/ruang-belajar/mtk-5-bab2", [JUDUL_MTK_5_BAB3]: "/ruang-belajar/mtk-5-bab3", [JUDUL_MTK_5_BAB4]: "/ruang-belajar/mtk-5-bab4", [JUDUL_MTK_5_BAB5]: "/ruang-belajar/mtk-5-bab5", [JUDUL_MTK_5_BAB6]: "/ruang-belajar/mtk-5-bab6", [JUDUL_MTK_5_BAB7]: "/ruang-belajar/mtk-5-bab7", [JUDUL_MTK_5_BAB8]: "/ruang-belajar/mtk-5-bab8", [JUDUL_MTK_5_BAB9]: "/ruang-belajar/mtk-5-bab9" }
               : kelas === "6 SD"
@@ -309,7 +229,7 @@ export default function RuangBelajarPage() {
     const kunciBabBaru = nomorKelas && nomorBab && mapel === "Matematika" ? `mtk-${nomorKelas}-bab${nomorBab}` : "";
     const jalurBabBaru = kunciBabBaru && kunciBabBaru in MUAT_BAB_BARU ? `/ruang-belajar/${kunciBabBaru}` : "";
     const jalurModul =
-      sumber === "kurikulum" ? (jalurKelas[materi] ?? jalurBabBaru) : "";
+      sumber === "igil" ? (JALUR_MODUL_IGIL[materi] ?? "") : (jalurKelas[materi] ?? jalurBabBaru);
     if (jalurModul) {
       router.push(
         `${jalurModul}?nama=${encodeURIComponent(nama.trim() || "Siswa")}`,
@@ -376,28 +296,38 @@ export default function RuangBelajarPage() {
         </div>
 
         <div className="rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
-        {kunciPublik ? null : (
-          <div className="flex flex-col gap-2 rounded-2xl bg-[#F0AB00]/15 p-1">
-            <button
-              type="button"
-              onClick={() => {
-                setSumber((sekarang) => (sekarang === "unggah" ? "kurikulum" : "unggah"));
-                setPesanGalat("");
-              }}
-              className={`flex w-full items-center justify-center gap-2 rounded-xl px-3 py-3 text-sm font-extrabold uppercase tracking-wide transition-all sm:text-base ${
-                sumber === "unggah"
-                  ? "bg-[#1C01A5] text-white shadow-sm"
-                  : "text-[#1C01A5] hover:text-[#1C01A5]"
-              }`}
-            >
-              <UploadCloud className="h-5 w-5 shrink-0" />
-              <span>Unggah Halaman Buku</span>
-            </button>
+        <div>
+          <label className={kelasLabel}>Pilih sumber pembelajaran</label>
+          <div className="grid gap-2 rounded-2xl bg-[#F0AB00]/15 p-1 sm:grid-cols-2" role="radiogroup" aria-label="Sumber pembelajaran">
+            {(
+              [
+                { nilai: "kurikulum", judul: "Opsi 1: Buku Kurikulum Merdeka", ikon: BookOpen },
+                { nilai: "igil", judul: "Opsi 2: Naskah Orisinal IGIL", ikon: Lightbulb },
+              ] as const
+            ).map(({ nilai, judul, ikon: Ikon }) => (
+              <button
+                key={nilai}
+                type="button"
+                role="radio"
+                aria-checked={sumber === nilai}
+                onClick={() => {
+                  setSumber(nilai);
+                  setPilihanMateri("");
+                  setMateriManual("");
+                  setPesanGalat("");
+                }}
+                className={`flex w-full items-center justify-center gap-2 rounded-xl px-3 py-3 text-center text-sm font-extrabold transition-all sm:text-base ${
+                  sumber === nilai ? "bg-[#1C01A5] text-white shadow-sm" : "text-[#1C01A5] hover:bg-white/60"
+                }`}
+              >
+                <Ikon className="h-5 w-5 shrink-0" />
+                <span>{judul}</span>
+              </button>
+            ))}
           </div>
-        )}
+        </div>
 
-        {kunciPublik || sumber === "kurikulum" ? (
-          <>
+        <>
             <div className="mt-6">
               <label className={kelasLabel}>Pilih mata pelajaran</label>
               <select
@@ -418,7 +348,7 @@ export default function RuangBelajarPage() {
                     {item}
                   </option>
                 ))}
-                {kunciPublik ? null : (
+                {kunciPublik || sumber === "igil" ? null : (
                   <option value={OPSI_MAPEL_LAIN}>{OPSI_MAPEL_LAIN}</option>
                 )}
               </select>
@@ -451,9 +381,16 @@ export default function RuangBelajarPage() {
                     {item}
                   </option>
                 ))}
-                <option value={OPSI_MATERI_LAIN}>{OPSI_MATERI_LAIN}</option>
+                {sumber === "igil" ? null : (
+                  <option value={OPSI_MATERI_LAIN}>{OPSI_MATERI_LAIN}</option>
+                )}
               </select>
-              {pilihanMateri === OPSI_MATERI_LAIN ? (
+              {sumber === "igil" && daftarMateri.length === 0 ? (
+                <p className="mt-2 text-sm font-semibold text-[#1C01A5]/80">
+                  Belum ada modul naskah IGIL untuk kelas ini. Pilih Opsi 1 atau kelas lain.
+                </p>
+              ) : null}
+              {sumber === "kurikulum" && pilihanMateri === OPSI_MATERI_LAIN ? (
                 <input
                   value={materiManual}
                   onChange={(e) => setMateriManual(e.target.value)}
@@ -462,79 +399,7 @@ export default function RuangBelajarPage() {
                 />
               ) : null}
             </div>
-          </>
-        ) : (
-          <div className="mt-6 space-y-4">
-            <label className={kelasLabel}>Unggah halaman buku pelajaran</label>
-            <button
-              type="button"
-              onClick={() => inputBerkasRef.current?.click()}
-              onDragOver={(e) => {
-                e.preventDefault();
-                setSedangSeret(true);
-              }}
-              onDragLeave={() => setSedangSeret(false)}
-              onDrop={(e) => {
-                e.preventDefault();
-                setSedangSeret(false);
-                void tambahHalaman(e.dataTransfer.files);
-              }}
-              className={`flex flex-col items-center justify-center w-full min-h-40 border-2 border-dashed rounded-2xl cursor-pointer transition-colors ${
-                sedangSeret
-                  ? "border-[#F0AB00] bg-white"
-                  : "border-[#1C01A5]/30 bg-white hover:bg-[#FFF8E8]"
-              }`}
-            >
-              <UploadCloud className="w-10 h-10 text-[#1C01A5] mb-3" />
-              <p className="mb-2 text-sm text-slate-600 font-bold">
-                <span className="text-[#1C01A5]">Klik untuk mengunggah</span> atau seret foto kemari
-              </p>
-              <p className="text-xs text-slate-500 font-medium">
-                Bisa beberapa halaman. PNG atau JPG, maks. 5MB per halaman, hingga {BATAS_HALAMAN} halaman.
-              </p>
-            </button>
-            <input
-              ref={inputBerkasRef}
-              type="file"
-              className="hidden"
-              accept="image/png, image/jpeg, image/jpg"
-              multiple
-              onChange={(e) => {
-                void tambahHalaman(e.target.files);
-                e.target.value = "";
-              }}
-            />
-            {halamanBuku.length > 0 ? (
-              <div className="grid gap-3">
-                {halamanBuku.map((src, indeks) => (
-                  <div key={`${indeks}-${src.slice(-12)}`} className="relative">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={src}
-                      alt={`Halaman buku ${indeks + 1}`}
-                      className="h-32 w-full rounded-xl object-cover border border-[#1C01A5]/15"
-                    />
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setHalamanBuku((sebelum) =>
-                          sebelum.filter((_, i) => i !== indeks),
-                        )
-                      }
-                      className="absolute top-2 right-2 rounded-full bg-white p-1 text-rose-600 shadow"
-                      title="Hapus halaman"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                    <p className="mt-1 text-center text-xs font-bold text-slate-500">
-                      Halaman {indeks + 1}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            ) : null}
-          </div>
-        )}
+        </>
         </div>
 
         <div className="rounded-3xl border border-[#1C01A5]/15 bg-white p-6 shadow-sm">
