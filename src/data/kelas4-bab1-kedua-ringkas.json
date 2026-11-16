@@ -1,0 +1,366 @@
+{
+  "chapter_id": "mtk-4-bab1-kedua",
+  "phase_code": "FASE_B",
+  "grade": 4,
+  "subject": "Matematika",
+  "title": "Bilangan Cacah sampai 10.000 (Modul Kedua)",
+  "catatan": "Data Mind-Map dan Infografis ringkas tahap SMISCPA. Dibaca oleh PetaKonsep.tsx dan InfografisRingkas.tsx. Tanpa kunci jawaban ujian, tanpa jaringan.",
+  "subBab": {
+    "A": {
+      "peta": {
+        "pusat": {
+          "judul": "Membaca dan Menulis Bilangan",
+          "ikon": "🔢",
+          "suara": "Ini peta membaca dan menulis bilangan sampai sepuluh ribu. Kita belajar empat tempat, cara membaca, aturan nol dan seribu, serta cara menulis lambang. Ketuk empat cabangnya satu per satu."
+        },
+        "petunjuk": "Ketuk tiap cabang. Lalu susun kartunya!",
+        "cabang": [
+          {
+            "id": "empat-tempat",
+            "judul": "Empat tempat",
+            "ikon": "🟣",
+            "ringkas": "Ribuan, ratusan, puluhan, dan satuan.",
+            "suara": "Empat tempat. Bilangan empat angka punya empat tempat dari kiri: ribuan, ratusan, puluhan, dan satuan. Di gudang gim Kira, satu peti memuat seribu koin, satu dus seratus koin, satu bungkus sepuluh koin, dan satu benda satu koin."
+          },
+          {
+            "id": "membaca",
+            "judul": "Cara membaca",
+            "ikon": "🗣️",
+            "ringkas": "Baca dari kiri, tempat demi tempat.",
+            "suara": "Cara membaca. Mulai dari tempat paling kiri. Ribuan diberi kata ribu, ratusan diberi kata ratus, puluhan diberi kata puluh, dan satuan cukup dibaca angkanya. Empat ribu seratus lima puluh dua."
+          },
+          {
+            "id": "nol-seribu",
+            "judul": "Nol dan seribu",
+            "ikon": "⭕",
+            "ringkas": "Nol dilewati. Satu ribu dibaca seribu.",
+            "suara": "Nol dan seribu. Tempat yang berisi nol dilewati saat dibaca. Bilangan dengan angka lima, nol, nol, tujuh dibaca lima ribu tujuh. Ribuan satu dibaca seribu, jadi angka satu, tiga, nol, delapan dibaca seribu tiga ratus delapan."
+          },
+          {
+            "id": "menulis",
+            "judul": "Menulis lambang",
+            "ikon": "✍️",
+            "ringkas": "Dengar kata, tulis angka tiap tempat.",
+            "suara": "Menulis lambang. Dengar kata bilangannya, lalu tulis angka untuk tiap tempat. Tempat yang tidak disebut diisi nol. Enam ribu empat ratus tiga puluh sembilan ditulis enam, empat, tiga, sembilan."
+          }
+        ],
+        "kartu": [
+          {
+            "id": "a-peti",
+            "teks": "1 peti = 1.000 koin",
+            "ikon": "📦",
+            "cabang": "empat-tempat",
+            "petunjuk": "Isi satu peti itu soal empat tempat. Coba cabang lain."
+          },
+          {
+            "id": "a-tukar",
+            "teks": "10 dus ditukar 1 peti",
+            "ikon": "🔄",
+            "cabang": "empat-tempat",
+            "petunjuk": "Penukaran kemasan itu soal empat tempat. Coba cabang lain."
+          },
+          {
+            "id": "a-kiri",
+            "teks": "Mulai dari kiri",
+            "ikon": "⬅️",
+            "cabang": "membaca",
+            "petunjuk": "Arah membaca itu soal cara membaca. Coba cabang lain."
+          },
+          {
+            "id": "a-4152",
+            "teks": "4.152: empat ribu seratus lima puluh dua",
+            "ikon": "🗣️",
+            "cabang": "membaca",
+            "petunjuk": "Membaca bilangan lengkap itu soal cara membaca. Coba cabang lain."
+          },
+          {
+            "id": "a-5007",
+            "teks": "5.007: lima ribu tujuh",
+            "ikon": "⭕",
+            "cabang": "nol-seribu",
+            "petunjuk": "Nol yang dilewati itu soal nol dan seribu. Coba cabang lain."
+          },
+          {
+            "id": "a-1308",
+            "teks": "1.308: seribu tiga ratus delapan",
+            "ikon": "1️⃣",
+            "cabang": "nol-seribu",
+            "petunjuk": "Kata seribu itu soal nol dan seribu. Coba cabang lain."
+          },
+          {
+            "id": "a-skor",
+            "teks": "Skor 4.718 ditulis dari kata",
+            "ikon": "🎮",
+            "cabang": "menulis",
+            "petunjuk": "Menulis skor dari kata itu soal menulis lambang. Coba cabang lain."
+          },
+          {
+            "id": "a-isi-nol",
+            "teks": "Tempat kosong diisi 0",
+            "ikon": "✍️",
+            "cabang": "menulis",
+            "petunjuk": "Mengisi tempat kosong saat menulis itu soal menulis lambang. Coba cabang lain."
+          }
+        ]
+      },
+      "infografis": {
+        "judul": "Membaca dan Menulis Bilangan Empat Angka",
+        "suara": "Ini tiga panel tentang membaca dan menulis bilangan empat angka. Ketuk kotaknya untuk membuka, lalu bandingkan dua hal.",
+        "panel": [
+          {
+            "id": "a-kemasan",
+            "tipe": "buka",
+            "judul": "Peti, dus, bungkus, benda",
+            "ide": "Empat kemasan untuk empat tempat.",
+            "suara": "Gudang gim punya empat kemasan koin. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "peti",
+                "label": "Peti",
+                "ikon": "📦",
+                "isi": "Seribu koin, tempat ribuan.",
+                "suara": "Satu peti memuat seribu koin. Peti menempati tempat ribuan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 peti = 1.000"
+                }
+              },
+              {
+                "id": "dus",
+                "label": "Dus dan bungkus",
+                "ikon": "🎁",
+                "isi": "Seratus dan sepuluh.",
+                "suara": "Satu dus memuat seratus koin, dan satu bungkus memuat sepuluh koin.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1 dus = 100, 1 bungkus = 10"
+                }
+              },
+              {
+                "id": "tukar",
+                "label": "Penukaran",
+                "ikon": "🔄",
+                "isi": "Sepuluh dus menjadi satu peti.",
+                "suara": "Setiap kali dus mencapai sepuluh, gudang menukarnya menjadi satu peti.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "10 dus → 1 peti"
+                }
+              }
+            ]
+          },
+          {
+            "id": "a-nol-banding",
+            "tipe": "banding",
+            "judul": "Membaca bilangan dengan nol",
+            "ide": "Nol menjaga tempat, tetapi tidak dibaca.",
+            "suara": "Bandingkan dua cara membaca bilangan dengan angka lima, nol, nol, tujuh. Hanya satu yang benar.",
+            "sisi": [
+              {
+                "id": "benar",
+                "nama": "Nol dilewati",
+                "ikon": "✅",
+                "catatan": "Lima ribu tujuh.",
+                "suara": "Ratusan dan puluhan berisi nol, jadi dilewati. Dibaca lima ribu tujuh. Ini benar.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "5.007 = lima ribu tujuh"
+                }
+              },
+              {
+                "id": "keliru",
+                "nama": "Nol ikut dibaca",
+                "ikon": "❌",
+                "catatan": "Lima ribu nol ratus. Keliru.",
+                "suara": "Lima ribu nol ratus nol puluh tujuh itu keliru. Tempat yang berisi nol tidak dibaca.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "lima ribu nol ratus ✗"
+                }
+              }
+            ],
+            "kesimpulan": "Nol tetap ditulis, tetapi tidak dibaca."
+          },
+          {
+            "id": "a-baca",
+            "tipe": "buka",
+            "judul": "Contoh membaca",
+            "ide": "Ribu, ratus, puluh, lalu satuan.",
+            "suara": "Ada tiga contoh membaca. Ketuk kotaknya satu per satu.",
+            "butir": [
+              {
+                "id": "koin",
+                "label": "Koin panen Kira",
+                "ikon": "💰",
+                "isi": "4.152 koin.",
+                "suara": "Empat ribu seratus lima puluh dua koin.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4.152 = empat ribu seratus lima puluh dua"
+                }
+              },
+              {
+                "id": "seribu",
+                "label": "Seribu",
+                "ikon": "1️⃣",
+                "isi": "Bukan satu ribu.",
+                "suara": "Angka satu, tiga, nol, delapan dibaca seribu tiga ratus delapan, bukan satu ribu tiga ratus delapan.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "1.308 = seribu tiga ratus delapan"
+                }
+              },
+              {
+                "id": "skor",
+                "label": "Skor tertinggi",
+                "ikon": "🎮",
+                "isi": "4.718 poin.",
+                "suara": "Skor tertinggi Kira empat ribu tujuh ratus delapan belas poin.",
+                "visual": {
+                  "jenis": "teks",
+                  "isi": "4.718 poin"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Membaca dan Menulis Bilangan",
+          "ikon": "🔢",
+          "suara": "Ini peta tentang membaca dan menulis bilangan. Ada alat bantu yang dipakai, cara memakainya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "metode",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga alat bantu",
+            "ikon": "🧰",
+            "petunjuk": "Ini kumpulan nama alat bantu, bukan langkahnya."
+          },
+          {
+            "id": "kartu",
+            "nomor": 2,
+            "induk": "metode",
+            "teks": "Kartu angka",
+            "petunjuk": "Alat ini memakai empat kartu digit di layar."
+          },
+          {
+            "id": "tabel",
+            "nomor": 3,
+            "induk": "metode",
+            "teks": "Papan empat tempat"
+          },
+          {
+            "id": "nol",
+            "nomor": 4,
+            "induk": "metode",
+            "teks": "Aturan nol"
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara memakainya",
+            "ikon": "🪜",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap alat."
+          },
+          {
+            "id": "cara-kartu",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Atur kartu sesuai kata",
+            "petunjuk": "Langkah untuk alat yang memakai kartu digit."
+          },
+          {
+            "id": "cara-tabel",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Isi tiap tempat, baca dari kiri",
+            "petunjuk": "Langkah untuk alat yang memakai papan."
+          },
+          {
+            "id": "cara-nol",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Nol ditulis, tetapi dilewati",
+            "petunjuk": "Langkah untuk aturan tentang angka nol."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-baca",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Mampu membaca bilangan"
+          },
+          {
+            "id": "hasil-tulis",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Mampu menulis bilangan"
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Empat tempat pada 4.152",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel empat tempat pada bilangan empat ribu seratus lima puluh dua. Pasang kemasan, nilai satu kemasan, angka di tempat itu, dan cara membacanya.",
+        "pojok": "Tempat",
+        "kolom": [
+          "Kemasan",
+          "Nilai satu",
+          "Angka di 4.152",
+          "Dibaca"
+        ],
+        "baris": [
+          {
+            "label": "Ribuan",
+            "sel": [
+              "Peti",
+              "1.000",
+              "4",
+              "empat ribu"
+            ]
+          },
+          {
+            "label": "Ratusan",
+            "sel": [
+              "Dus",
+              "100",
+              "1",
+              "seratus"
+            ]
+          },
+          {
+            "label": "Puluhan",
+            "sel": [
+              "Bungkus",
+              "10",
+              "5",
+              "lima puluh"
+            ]
+          },
+          {
+            "label": "Satuan",
+            "sel": [
+              "Benda",
+              "1",
+              "2",
+              "dua"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -394,7 +394,7 @@ export type BabLama = "mtk-1-bab1" | "mtk-1-bab2" | "mtk-1-bab3" | "mtk-1-bab4" 
  * Bab Kelas 3 sampai 6. Isinya TIDAK diimpor di sini: tiap bab membawa paketnya sendiri (data JSON dan komponen
  * tahapnya) yang dimuat malas lewat PemutarBabBaru dan registri-bab-baru.ts, supaya paket bab lain tidak ikut terunduh.
  */
-export type BabBaru = `mtk-${3 | 4 | 5 | 6}-bab${number}`;
+export type BabBaru = `mtk-${3 | 4 | 5 | 6}-bab${number}` | "mtk-4-bab1-kedua";
 
 export type BabModul = BabLama | BabBaru;
 

@@ -28,6 +28,7 @@ import {
   JUDUL_MTK_2_BAB7,
   JUDUL_MTK_2_BAB8,
   JUDUL_MTK_4_BAB1,
+  JUDUL_MTK_4_BAB1_KEDUA,
   JUDUL_MTK_4_BAB2,
   JUDUL_MTK_4_BAB3,
   JUDUL_MTK_4_BAB4,
@@ -291,7 +292,7 @@ export default function RuangBelajarPage() {
         : kelas === "2 SD"
           ? { [JUDUL_MTK_2_BAB1]: "/ruang-belajar/mtk-2-bab1", [JUDUL_MTK_2_BAB2]: "/ruang-belajar/mtk-2-bab2", [JUDUL_MTK_2_BAB3]: "/ruang-belajar/mtk-2-bab3", [JUDUL_MTK_2_BAB4]: "/ruang-belajar/mtk-2-bab4", [JUDUL_MTK_2_BAB5]: "/ruang-belajar/mtk-2-bab5", [JUDUL_MTK_2_BAB6]: "/ruang-belajar/mtk-2-bab6", [JUDUL_MTK_2_BAB7]: "/ruang-belajar/mtk-2-bab7", [JUDUL_MTK_2_BAB8]: "/ruang-belajar/mtk-2-bab8" }
           : kelas === "4 SD"
-            ? { [JUDUL_MTK_4_BAB1]: "/ruang-belajar/mtk-4-bab1", [JUDUL_MTK_4_BAB2]: "/ruang-belajar/mtk-4-bab2", [JUDUL_MTK_4_BAB3]: "/ruang-belajar/mtk-4-bab3", [JUDUL_MTK_4_BAB4]: "/ruang-belajar/mtk-4-bab4", [JUDUL_MTK_4_BAB5]: "/ruang-belajar/mtk-4-bab5", [JUDUL_MTK_4_BAB6]: "/ruang-belajar/mtk-4-bab6" }
+            ? { [JUDUL_MTK_4_BAB1]: "/ruang-belajar/mtk-4-bab1", [JUDUL_MTK_4_BAB1_KEDUA]: "/ruang-belajar/mtk-4-bab1-kedua", [JUDUL_MTK_4_BAB2]: "/ruang-belajar/mtk-4-bab2", [JUDUL_MTK_4_BAB3]: "/ruang-belajar/mtk-4-bab3", [JUDUL_MTK_4_BAB4]: "/ruang-belajar/mtk-4-bab4", [JUDUL_MTK_4_BAB5]: "/ruang-belajar/mtk-4-bab5", [JUDUL_MTK_4_BAB6]: "/ruang-belajar/mtk-4-bab6" }
             : kelas === "5 SD"
               ? { [JUDUL_MTK_5_BAB1]: "/ruang-belajar/mtk-5-bab1", [JUDUL_MTK_5_BAB2]: "/ruang-belajar/mtk-5-bab2", [JUDUL_MTK_5_BAB3]: "/ruang-belajar/mtk-5-bab3", [JUDUL_MTK_5_BAB4]: "/ruang-belajar/mtk-5-bab4", [JUDUL_MTK_5_BAB5]: "/ruang-belajar/mtk-5-bab5", [JUDUL_MTK_5_BAB6]: "/ruang-belajar/mtk-5-bab6", [JUDUL_MTK_5_BAB7]: "/ruang-belajar/mtk-5-bab7", [JUDUL_MTK_5_BAB8]: "/ruang-belajar/mtk-5-bab8", [JUDUL_MTK_5_BAB9]: "/ruang-belajar/mtk-5-bab9" }
               : kelas === "6 SD"
