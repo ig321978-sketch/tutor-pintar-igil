@@ -42,18 +42,27 @@ for (const t of K1.TOKOH_K1) {
   cek(JSON.stringify(g.map((o) => o.id)) === JSON.stringify(D.idTokoh(t)), `id tokoh ${t.nama} sesuai idTokoh`);
 }
 
-// Lentera dan Papan Lentera: id unik, di dalam kanvas, jumlah menyala sesuai.
-const papan = K1.papanLentera("pl", 10, 4);
-cek(new Set(papan.map((o) => o.id)).size === papan.length, "id Papan Lentera unik");
-cek(papan.every(dalamKanvas), "Papan Lentera di dalam kanvas");
-cek(papan.filter((o) => o.id.endsWith("-bd") && o.sorot).length === 4, "empat lentera menyala di Papan");
-cek(JSON.stringify(papan.map((o) => o.id).sort()) === JSON.stringify(K1.idPapan("pl", 10).sort()), "idPapan sama dengan benda yang dibuat");
-const sebagian = K1.papanLentera("pq", 7, 0);
-cek(sebagian.filter((o) => o.id.endsWith("-no")).map((o) => o.isi).join(",") === "1,2,3,4,5,6,7", "nomor Papan berurutan");
-const na = K1.nyalakan(0, "pl1");
-cek(na.ubah.length === 2 && na.ubah[0].sorot === true, "nyalakan mengubah badan dan api");
-const pa = K1.padamkan(0, "pl1");
-cek(pa.ubah[0].sorot === false, "padamkan mematikan sorot");
+// Benda keseharian, keranjang, pohon, lambang: di dalam kanvas, id unik, ujung garis relatif.
+const sedia = [
+  ...K1.kumpulBenda("ap", 10, 40, 60, K1.BENDA.apel),
+  ...K1.keranjang("kr", 100, 120, 90, 44),
+  ...K1.pohon("ph", 240, 150, 1),
+  ...K1.lambang("lb", 20, 20, "7"),
+  K1.rumput(150),
+  K1.jalanSetapak("js"),
+];
+cek(new Set(sedia.map((o) => o.id)).size === sedia.length, "id benda kit unik");
+cek(sedia.every(dalamKanvas), "benda kit di dalam kanvas");
+cek(K1.kumpulBenda("ap", 10, 40, 60, K1.BENDA.apel).map((o) => o.id).join(",") === K1.idKumpul("ap", 1, 10).join(","), "idKumpul sama dengan benda yang dibuat");
+cek(K1.idKeranjang("kr").length === 2 && K1.keranjang("kr", 0, 0).length === 2, "keranjang dua benda");
+cek(K1.idPohon("ph").length === 2 && K1.idLambang("lb").length === 2, "id pohon dan lambang");
+const js = K1.jalanSetapak("js");
+cek(js.x2 >= 0 && js.x2 < 300 && js.y2 === 0, "jalan setapak memakai ujung relatif (x2 positif pendek, y2 nol)");
+const kodeMaks = (s) => [...s].reduce((m, ch) => Math.max(m, ch.codePointAt(0)), 0);
+for (const [nama, e] of Object.entries(K1.BENDA)) cek(kodeMaks(e) <= 0x1fa95, `emoji benda ${nama} paling tinggi U+1FA95`);
+const ap = K1.benda("a", 10, 10, K1.BENDA.apel, 20, true);
+cek(ap.sorot === true && K1.benda("b", 10, 10, K1.BENDA.apel).sorot === undefined, "benda menyorot hanya bila diminta");
+cek(K1.KALIMAT_KUNCI_1A.split(" ").length === 8, "kalimat kunci delapan kata");
 
 // Judul: kelengkapan dan keunikan, tanpa gelar dan tanpa kata terlarang.
 cek(Object.keys(K1.JUDUL_BAB_K1).length === 8, "delapan judul bab");

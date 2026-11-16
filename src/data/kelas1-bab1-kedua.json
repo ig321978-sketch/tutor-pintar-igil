@@ -4,7 +4,7 @@
   "phase_code": "FASE_A",
   "grade": 1,
   "subjectLabel": "MATEMATIKA - KELAS 1 SD",
-  "title": "BAB 1: LENTERA PERTAMA: MENYALAKAN SEPULUH CAHAYA",
+  "title": "BAB 1: PENOLONG PESTA: MENGHITUNG SAMPAI SEPULUH",
   "silabusElemen": "🌈 Fase A • Elemen Bilangan",
   "suaraPerangkatSaja": true,
   "suaraLaju": 0.7,
@@ -18,7 +18,7 @@
     "A": {
       "id": "A",
       "codeTitle": "Sub-Bab A",
-      "fullTitle": "Sub-Bab A: Gerbang Lentera: Hitung, Baca, Tulis Cahaya",
+      "fullTitle": "Sub-Bab A: Apel di Keranjang: Hitung, Baca, Tulis Bilangan",
       "targetDescription": "Sedang disiapkan.",
       "secondaryBg": "#DCFCE7",
       "secondaryBorder": "#16A34A",
