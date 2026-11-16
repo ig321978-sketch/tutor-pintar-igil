@@ -6,7 +6,7 @@ import { KELOMPOK_POHON, PUSAT_POHON, SUARA_POHON, TEMPAT_POHON } from "./data";
 import { BakiLabel, CSS_LEMARI, TOMBOL_UTAMA, useTempel, type GayaLabel } from "./ui";
 
 /**
- * Mind-map Kelas 1 Bab 1 Sub-Bab A: Pohon Menghitung. Akar = masalah, daun = cara, buah = hasil (hanya poin pelajaran matematika).
+ * Mind-map Kelas 1 Bab 1 Sub-Bab A: Pohon Menghitung. Akar = Masalah, daun = Penyelesaian, buah = Hasil (hanya poin pelajaran matematika).
  * Tempat kosong dan label memakai warna kelompok yang sama (cokelat, hijau, merah) ditambah ikon, jadi anak cukup mencocokkan warna.
  * Label sekelompok boleh ditempel di tempat kosong mana pun yang sewarna. Salah warna: tempat bergoyang dan guru menyebut warna yang benar.
  */
@@ -20,8 +20,9 @@ const LETAK: Record<string, { x: number; y: number; w: number }> = {
   "daun-2": { x: 79, y: 27, w: 39 },
   "daun-3": { x: 21, y: 41, w: 39 },
   "daun-4": { x: 79, y: 41, w: 39 },
-  "akar-1": { x: 26, y: 86, w: 44 },
-  "akar-2": { x: 74, y: 86, w: 44 },
+  "akar-1": { x: 18, y: 88, w: 31 },
+  "akar-2": { x: 50, y: 88, w: 31 },
+  "akar-3": { x: 82, y: 88, w: 31 },
 };
 
 /** Warna tiap kelompok: garis, isi tempat kosong (muda), dan isi label atau tempat yang sudah terisi (tua). */
@@ -56,7 +57,7 @@ export default function PetaPohon({ speakGuru, onLanjut, teksLanjut }: { speakGu
         key={t.id}
         type="button"
         onClick={() => tp.ketukTempat(t)}
-        aria-label={teks ? `${k.nama}: ${teks}` : `Tempat kosong berwarna ${k.nama === "Masalah" ? "cokelat" : k.nama === "Cara" ? "hijau" : "merah"}, ${k.nama}, di ${k.letak}`}
+        aria-label={teks ? `${k.nama}: ${teks}` : `Tempat kosong berwarna ${k.warna}, ${k.nama}, di ${k.letak}`}
         className="absolute"
         style={{ left: `${p.x}%`, top: `${p.y}%`, width: `${p.w}%`, transform: "translate(-50%, -50%)" }}
       >
@@ -117,7 +118,7 @@ export default function PetaPohon({ speakGuru, onLanjut, teksLanjut }: { speakGu
 
       <BakiLabel sisa={tp.sisa} pilih={tp.pilih} onPilih={tp.ketukLabel} gaya={gayaLabel} />
       <p role="status" aria-live="polite" className="min-h-[1.5rem] text-center text-sm font-black text-[#1C01A5]">
-        {tp.selesai ? "Pohon lengkap! Masalah, cara, dan hasilnya sudah di tempat yang sewarna." : tp.pesan}
+        {tp.selesai ? "Pohon lengkap! Masalah, penyelesaian, dan hasilnya sudah di tempat yang sewarna." : tp.pesan}
       </p>
       {tp.selesai ? (
         <div className="flex justify-center">

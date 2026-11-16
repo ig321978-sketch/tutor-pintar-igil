@@ -40,27 +40,28 @@ export const NAMA: Record<string, string> = {
 
 /* ------------------------------ Mind-map: pohon menghitung (hanya poin pelajaran matematika) ------------------------------ */
 /**
- * Pohon belajar: akar = masalah matematikanya, daun cabang = cara menghitung (empat metode di Story: metode kurikulum dan tiga
- * metode luar), buah = hasil yang diharapkan. Tanpa poin cerita (mainan, lemari, tokoh). Tiap kelompok punya warna sendiri;
- * label dan tempat kosong memakai warna yang sama, dan label sekelompok boleh ditempel di cabang kosong berwarna itu.
+ * Pohon belajar menurut panduan pemilik: akar = Masalah (tiga pertanyaan), daun = Penyelesaian (empat langkah), buah = Hasil (tiga kemampuan).
+ * Tanpa poin cerita (mainan, lemari, tokoh). Tiap kelompok punya warna sendiri; label dan tempat kosong memakai warna yang sama,
+ * dan label sekelompok boleh ditempel di tempat kosong mana pun yang sewarna.
  */
 export const PUSAT_POHON = "Menghitung benda";
-export const KELOMPOK_POHON: Record<string, { nama: string; letak: string; ikon: string; petunjuk: string }> = {
-  masalah: { nama: "Masalah", letak: "akar", ikon: "\u{1F331}", petunjuk: "Warna label ini cokelat. Tempelkan di akar yang cokelat." },
-  metode: { nama: "Cara", letak: "daun", ikon: "\u{1F343}", petunjuk: "Warna label ini hijau. Tempelkan di daun yang hijau." },
-  hasil: { nama: "Hasil", letak: "buah", ikon: "\u{1F34E}", petunjuk: "Warna label ini merah. Tempelkan di buah yang merah." },
+export const KELOMPOK_POHON: Record<string, { nama: string; letak: string; ikon: string; warna: string; petunjuk: string }> = {
+  masalah: { nama: "Masalah", letak: "akar", ikon: "\u{1F331}", warna: "cokelat", petunjuk: "Warna label ini cokelat. Tempelkan di akar yang cokelat." },
+  metode: { nama: "Penyelesaian", letak: "daun", ikon: "\u{1F343}", warna: "hijau", petunjuk: "Warna label ini hijau. Tempelkan di daun yang hijau." },
+  hasil: { nama: "Hasil", letak: "buah", ikon: "\u{1F34E}", warna: "merah", petunjuk: "Warna label ini merah. Tempelkan di buah yang merah." },
 };
 const tp = (id: string, kelompok: string, kunci: string): Tempat => ({ id, kelompok, kunci });
 export const TEMPAT_POHON: Tempat[] = [
-  tp("akar-1", "masalah", "Berapa banyaknya?"),
-  tp("akar-2", "masalah", "Angkanya ditulis apa?"),
-  tp("daun-1", "metode", "Hitung, baca, tulis"),
-  tp("daun-2", "metode", "Tunjuk satu, sebut satu"),
-  tp("daun-3", "metode", "Angka terakhir = banyaknya"),
-  tp("daun-4", "metode", "Lihat sekilas"),
-  tp("buah-1", "hasil", "Tahu banyaknya benda"),
-  tp("buah-2", "hasil", "Bisa baca dan tulis angka"),
-  tp("buah-3", "hasil", "Tahu arti nol"),
+  tp("akar-1", "masalah", "Berapa jumlahnya?"),
+  tp("akar-2", "masalah", "Bagaimana menulisnya?"),
+  tp("akar-3", "masalah", "Bagaimana membacanya?"),
+  tp("daun-1", "metode", "Kelompokkan"),
+  tp("daun-2", "metode", "Hitung satu-satu"),
+  tp("daun-3", "metode", "Tuliskan"),
+  tp("daun-4", "metode", "Kosong = nol"),
+  tp("buah-1", "hasil", "Bisa menghitung"),
+  tp("buah-2", "hasil", "Bisa menulis"),
+  tp("buah-3", "hasil", "Bisa membaca"),
 ];
 export const SUARA_POHON =
   "Ini pohon belajar menghitung. Setiap label punya warna. Ketuk label, lalu ketuk tempat kosong yang warnanya sama.";

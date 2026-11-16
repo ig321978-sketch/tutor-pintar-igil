@@ -29,8 +29,8 @@ const TERLARANG = /\b(kelas|buku|teman|kelompok|tambah|kurang|jumlah|skor|nilai)
 /* ------------------------------ Mind-map pohon ------------------------------ */
 {
   const t = D.TEMPAT_POHON;
-  sama(t.length, 9, "pohon: sembilan tempat (lebih sederhana dari sebelas)");
-  sama(["masalah", "metode", "hasil"].map((k) => t.filter((x) => x.kelompok === k).length), [2, 4, 3], "pohon: dua akar, empat daun, tiga buah");
+  sama(t.length, 10, "pohon: sepuluh tempat sesuai panduan pemilik");
+  sama(["masalah", "metode", "hasil"].map((k) => t.filter((x) => x.kelompok === k).length), [3, 4, 3], "pohon: tiga akar, empat daun, tiga buah");
   cek(new Set(t.map((x) => x.kunci)).size === t.length && new Set(t.map((x) => x.id)).size === t.length, "pohon: kunci dan id unik");
   cek(t.every((x) => x.kunci.length <= 28), "pohon: label pendek");
   const lb = L.labelDari(t, 11);
@@ -38,26 +38,28 @@ const TERLARANG = /\b(kelas|buku|teman|kelompok|tambah|kurang|jumlah|skor|nilai)
   cek(!/\d/.test(D.SUARA_POHON) && !TERLARANG.test(D.SUARA_POHON), "pohon: suara tanpa digit dan kata terlarang");
   cek(JSON.stringify(L.labelDari(t, 11)) === JSON.stringify(lb) && JSON.stringify(L.labelDari(t, 12)) !== JSON.stringify(lb), "pohon: acak berbenih tetap");
   // Hanya poin pelajaran matematika: tanpa poin cerita (mainan, lemari, tokoh, kegiatan Story).
-  const CERITA = /mainan|lemari|rapi|berserakan|bingung|igil|kaka|abang|mamah|laci|tabel|pisahkan|kamar|rak\b/i;
+  const CERITA = /mainan|lemari|rapi|berserakan|bingung|igil|kaka|abang|mamah|laci|tabel|kamar|rak\b/i;
   cek(t.every((x) => !CERITA.test(x.kunci)) && !CERITA.test(D.PUSAT_POHON) && !CERITA.test(D.SUARA_POHON), "pohon: tanpa poin cerita, hanya pelajaran matematika");
-  // Empat metode Story ada di daun: metode kurikulum dan tiga metode luar.
-  for (const k of ["Hitung, baca, tulis", "Tunjuk satu, sebut satu", "Angka terakhir = banyaknya", "Lihat sekilas"]) cek(t.some((x) => x.kunci === k && x.kelompok === "metode"), `pohon: metode "${k}" ada di daun`);
-  for (const k of ["Berapa banyaknya?", "Angkanya ditulis apa?"]) cek(t.some((x) => x.kunci === k && x.kelompok === "masalah"), `pohon: masalah "${k}" ada di akar`);
-  for (const k of ["Tahu banyaknya benda", "Bisa baca dan tulis angka", "Tahu arti nol"]) cek(t.some((x) => x.kunci === k && x.kelompok === "hasil"), `pohon: hasil "${k}" ada di buah`);
+  // Panduan pemilik, persis: A Masalah, B Penyelesaian, C Hasil.
+  sama(t.filter((x) => x.kelompok === "masalah").map((x) => x.kunci), ["Berapa jumlahnya?", "Bagaimana menulisnya?", "Bagaimana membacanya?"], "pohon A. Masalah");
+  sama(t.filter((x) => x.kelompok === "metode").map((x) => x.kunci), ["Kelompokkan", "Hitung satu-satu", "Tuliskan", "Kosong = nol"], "pohon B. Penyelesaian");
+  sama(t.filter((x) => x.kelompok === "hasil").map((x) => x.kunci), ["Bisa menghitung", "Bisa menulis", "Bisa membaca"], "pohon C. Hasil");
+  sama(Object.values(D.KELOMPOK_POHON).map((k) => k.nama), ["Masalah", "Penyelesaian", "Hasil"], "pohon: nama kelompok A, B, C");
   // Cocok per warna: label boleh di tempat sewarna mana pun, dan tidak di tempat warna lain.
   let warnaOk = true;
   for (const l of lb) for (const x of t) if (L.cocokKelompok(t, x, l) !== (t.find((y) => y.kunci === l.teks).kelompok === x.kelompok)) warnaOk = false;
   cek(warnaOk, "pohon: label cocok dengan semua tempat sewarna dan tidak dengan warna lain");
-  sama(L.kelompokLabel(t, { id: "x", teks: "Lihat sekilas" }), "metode", "pohon: kelompok label dari teksnya");
+  sama(L.kelompokLabel(t, { id: "x", teks: "Tuliskan" }), "metode", "pohon: kelompok label dari teksnya");
   sama(L.kelompokLabel(t, { id: "x", teks: "tidak ada" }), undefined, "pohon: label asing tidak punya kelompok");
   // Tiga kelompok, tiga warna, tiga ikon, dan petunjuk salah menyebut warna.
   sama(Object.keys(D.KELOMPOK_POHON), ["masalah", "metode", "hasil"], "pohon: tiga kelompok");
   cek(new Set(Object.values(D.KELOMPOK_POHON).map((k) => k.ikon)).size === 3, "pohon: ikon tiap kelompok berbeda (selain warna)");
-  sama(Object.values(D.KELOMPOK_POHON).map((k) => /cokelat|hijau|merah/.exec(k.petunjuk)?.[0]), ["cokelat", "hijau", "merah"], "pohon: petunjuk salah menyebut warna kelompok");
+  sama(Object.values(D.KELOMPOK_POHON).map((k) => [k.warna, new RegExp(k.warna).test(k.petunjuk)]), [["cokelat", true], ["hijau", true], ["merah", true]], "pohon: petunjuk salah menyebut warna kelompok");
   cek(Object.values(D.KELOMPOK_POHON).every((k) => !/\d/.test(k.petunjuk) && !TERLARANG.test(k.petunjuk) && k.petunjuk.split(/[.!?]/).every((q) => q.trim().split(/\s+/).length <= 9)), "pohon: petunjuk tanpa digit dan pendek");
   const pohon = readFileSync(new URL("../src/components/modul/lemari-k1b1a/PetaPohon.tsx", import.meta.url), "utf8");
   cek(/cocokKelompok\(TEMPAT_POHON/.test(pohon) && /gaya=\{gayaLabel\}/.test(pohon), "pohon: komponen memakai cocok per warna dan label berwarna");
   cek(/#B45309/.test(pohon) && /#15803D/.test(pohon) && /#B91C1C/.test(pohon), "pohon: tiga warna kelompok (cokelat, hijau, merah) dipakai");
+  cek(t.every((x) => new RegExp(`"${x.id}":`).test(pohon)), "pohon: tiap tempat punya letak di gambar");
 }
 
 /* ------------------------------ Infografis rak (data dan angka Story) ------------------------------ */
