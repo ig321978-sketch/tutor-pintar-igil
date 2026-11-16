@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import type { Adegan, DataModul } from "@/lib/modul-kedua/tipe";
-import { berhenti, suaraNyala, ucapkan } from "./suara";
+import { IkonG } from "./Ikon";
+import { berhenti, suaraDidukung, suaraNyala, ucapkan } from "./suara";
 
 /** Tahap S (Story): animasi adegan SVG + narasi suara (Web Speech) + subtitle. Isi cerita dibaca dari berkas data. */
 
@@ -54,64 +55,76 @@ function Igil({ x }: { x: number }) {
   );
 }
 
-function Latar({ jenis }: { jenis: Adegan["latar"] }) {
-  if (jenis === "pantai")
-    return (
-      <g>
-        <rect width="400" height="260" fill="#bae6fd" />
-        <circle cx="330" cy="50" r="26" fill="#fbbf24" />
-        <rect y="110" width="400" height="55" fill="#38bdf8" />
-        <rect y="165" width="400" height="95" fill="#fde68a" />
-        <path d="M 60 120 L 120 120 L 108 138 L 72 138 Z" fill="#b45309" />
-        <line x1="90" y1="120" x2="90" y2="80" stroke="#78350f" strokeWidth="3" />
-        <polygon points="90,82 90,116 122,116" fill="#fef3c7" />
-      </g>
-    );
+function Latar() {
   return (
     <g>
-      <rect width="400" height="260" fill="#e0f2fe" />
-      {Array.from({ length: 8 }, (_, i) => (
-        <rect key={i} x={i * 50} y="0" width="50" height="34" fill={i % 2 ? "#fff" : "#ef4444"} />
-      ))}
-      <rect y="34" width="400" height="6" fill="#7f1d1d" opacity="0.3" />
-      <rect y="200" width="400" height="60" fill="#d6b88a" />
+      <rect width="400" height="260" fill="#bae6fd" />
+      <circle cx="360" cy="30" r="20" fill="#fbbf24" />
+      <ellipse cx="70" cy="30" rx="30" ry="11" fill="#fff" opacity="0.9" />
+      <ellipse cx="96" cy="26" rx="22" ry="9" fill="#fff" opacity="0.9" />
+      <rect y="150" width="400" height="110" fill="#86efac" />
+      <rect y="150" width="400" height="6" fill="#4ade80" />
+      <rect x="4" y="106" width="9" height="50" fill="#92400e" />
+      <circle cx="8" cy="98" r="24" fill="#22c55e" />
+      <rect x="388" y="112" width="9" height="44" fill="#92400e" />
+      <circle cx="392" cy="104" r="22" fill="#22c55e" />
     </g>
   );
 }
 
-function Benda({ emoji, jumlah, hitung }: { emoji: string; jumlah: number; hitung?: boolean }) {
-  if (jumlah === 0)
-    return (
-      <g>
-        <text x="200" y="104" textAnchor="middle" fontSize="54">
-          🧺
-        </text>
-        <text className="ikan" style={{ animationDelay: "0.6s" }} x="200" y="64" textAnchor="middle" fontSize="40" fontWeight="900" fill="#b91c1c">
-          0
-        </text>
-      </g>
-    );
-  const baris = jumlah > 5 ? 2 : 1;
-  const perBaris = Math.ceil(jumlah / baris);
+/** Kelompok benda yang muncul dan dihitung satu per satu; bilangan terakhir ditampilkan besar. */
+function KelompokBenda({ adegan }: { adegan: Adegan }) {
+  const g = adegan.kelompok;
+  if (g.length === 0) return null;
+  const total = g.reduce((t, k) => t + Math.max(k.jumlah, 1), 0);
+  const d = Math.min(0.9, (adegan.durasiDetik * 0.55) / Math.max(total, 1));
+  const lebarSlot = 368 / g.length;
+  const mulaiKelompok = g.reduce<number[]>((acc, k, gi) => {
+    acc.push(gi === 0 ? 0.6 : acc[gi - 1] + Math.max(g[gi - 1].jumlah, 1) * d + 0.5);
+    return acc;
+  }, []);
   return (
     <g>
-      <rect x="40" y="46" width="320" height={baris * 44 + 12} rx="18" fill="#fff" opacity="0.8" />
-      {Array.from({ length: jumlah }, (_, i) => {
-        const r = Math.floor(i / perBaris);
-        const k = i % perBaris;
-        const x = 200 + (k - (perBaris - 1) / 2) * 58;
-        const y = 90 + r * 44;
-        const delay = `${(i * (hitung ? 1.1 : 0.3)).toFixed(2)}s`;
+      <rect x="14" y="10" width="372" height="136" rx="16" fill="#fff" opacity="0.78" />
+      {g.map((k, gi) => {
+        const t0 = mulaiKelompok[gi];
+        const cx = 16 + lebarSlot * gi + lebarSlot / 2;
+        const baris = k.jumlah > 5 ? 2 : 1;
+        const perBaris = Math.ceil(k.jumlah / baris) || 1;
+        const sz = Math.min(k.wadah ? 22 : 52, (lebarSlot - 10) / perBaris);
+        const lebarIsi = perBaris * sz;
+        const x0 = cx - lebarIsi / 2;
+        const yBaris = k.wadah ? 46 : Math.max(50, 52 + (88 - baris * (sz + 12)) / 2);
+        const waktuBadge = (t0 + k.jumlah * d + 0.1).toFixed(2) + "s";
         return (
-          <g key={i}>
-            <text className="ikan" style={{ animationDelay: delay }} x={x} y={y} textAnchor="middle" fontSize="32">
-              {emoji}
-            </text>
-            {hitung ? (
-              <text className="ikan" style={{ animationDelay: delay }} x={x} y={y - 30} textAnchor="middle" fontSize="16" fontWeight="900" fill="#b91c1c">
-                {i + 1}
+          <g key={gi}>
+            {k.wadah ? <IkonG nama="keranjang" x={cx - 32} y={80} s={64} /> : null}
+            {Array.from({ length: k.jumlah }, (_, i) => {
+              const r = Math.floor(i / perBaris);
+              const c = i % perBaris;
+              const x = x0 + c * sz;
+              const y = yBaris + r * (sz + 12);
+              const delay = (t0 + i * d).toFixed(2) + "s";
+              return (
+                <g key={i} className="muncul" style={{ animationDelay: delay }}>
+                  <IkonG nama={k.ikon} x={x} y={y} s={sz - 2} variasi={i} />
+                  <text x={x + (sz - 2) / 2} y={y - 2} textAnchor="middle" fontSize="11" fontWeight="900" fill="#b91c1c">
+                    {i + 1}
+                  </text>
+                </g>
+              );
+            })}
+            {k.jumlah === 0 ? (
+              <text className="muncul" style={{ animationDelay: waktuBadge }} x={cx} y={74} textAnchor="middle" fontSize="16" fontWeight="900" fill="#64748b">
+                kosong
               </text>
             ) : null}
+            <g className="muncul" style={{ animationDelay: waktuBadge }}>
+              <circle cx={cx} cy="30" r="17" fill="#1e1b4b" />
+              <text x={cx} y="37" textAnchor="middle" fontSize="22" fontWeight="900" fill="#fde68a">
+                {k.jumlah}
+              </text>
+            </g>
           </g>
         );
       })}
@@ -122,19 +135,22 @@ function Benda({ emoji, jumlah, hitung }: { emoji: string; jumlah: number; hitun
 function AdeganSvg({ a }: { a: Adegan }) {
   return (
     <svg viewBox="0 0 400 260" className="w-full rounded-3xl border-4 border-indigo-900" role="img" aria-label={a.visual}>
-      <style>{`.ikan{animation:igilMuncul .5s both}@keyframes igilMuncul{from{opacity:0;transform:translateY(8px) scale(.6)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.ikan{animation:none}}`}</style>
-      <Latar jenis={a.latar} />
-      {a.benda ? <Benda emoji={a.benda.emoji} jumlah={a.benda.jumlah} hitung={a.benda.hitung} /> : null}
+      <style>{`.muncul{animation:igilMuncul .5s both}@keyframes igilMuncul{from{opacity:0;transform:translateY(6px) scale(.5)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.muncul{animation:none}}`}</style>
+      <Latar />
+      <KelompokBenda adegan={a} />
       {a.tokoh.map((t) => (t.nama === "Igil" ? <Igil key={t.nama} x={t.x} /> : <Anak key={t.nama} nama={t.nama} x={t.x} />))}
     </svg>
   );
 }
+
+const tidakLangganan = () => () => {};
 
 export default function TahapStory({ data, saatSelesai }: { data: DataModul; saatSelesai: () => void }) {
   const adegan = data.story.adegan;
   const [i, setI] = useState(0);
   const [status, setStatus] = useState<"belum" | "main" | "jeda" | "selesai">("belum");
   const a = adegan[i];
+  const adaSuara = useSyncExternalStore(tidakLangganan, suaraDidukung, () => false);
 
   useEffect(() => {
     if (status !== "main") return;
@@ -165,9 +181,13 @@ export default function TahapStory({ data, saatSelesai }: { data: DataModul; saa
     <section className="space-y-3">
       <h2 className="text-2xl font-black text-indigo-950">S: Cerita 🎬 {data.story.judul}</h2>
       <AdeganSvg key={a.id} a={a} />
-      <p aria-live="polite" className="min-h-20 rounded-2xl border-4 border-amber-400 bg-amber-50 p-3 text-lg font-bold leading-snug text-indigo-950">
-        {a.narasi}
+      <p aria-live="polite" className="rounded-2xl border-4 border-amber-400 bg-amber-50 p-3 text-center text-2xl font-black leading-snug text-indigo-950">
+        {a.caption}
       </p>
+      <details open={!adaSuara} className="rounded-2xl border-2 border-indigo-200 bg-white p-2 text-base text-indigo-950">
+        <summary className="min-h-10 cursor-pointer py-2 font-black">📖 Tampilkan teks cerita</summary>
+        <p className="font-bold leading-snug">{a.narasi}</p>
+      </details>
       <div className="flex items-center justify-between gap-2">
         <button
           type="button"
@@ -225,10 +245,10 @@ export default function TahapStory({ data, saatSelesai }: { data: DataModul; saa
           {adegan.map((x, n) => (
             <li key={x.id} className="rounded-xl bg-indigo-50 p-2">
               <b>
-                Adegan {n + 1} ({x.durasiDetik} dtk, latar {x.latar})
+                Adegan {n + 1} ({x.durasiDetik} dtk)
               </b>
               <br />
-              <i>Visual:</i> {x.visual}
+              <i>Visual:</i> {x.visual}<br /><i>Teks layar:</i> {x.caption}
               <br />
               <i>Narasi:</i> {x.narasi}
             </li>

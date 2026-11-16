@@ -5,139 +5,214 @@
  "fase": "A",
  "elemenKonten": "Bilangan",
  "tujuan": [
-  "Menghitung banyak benda sampai 10 dengan tepat.",
-  "Mengenal bilangan nol.",
-  "Membaca dan menulis lambang bilangan 0 sampai 10.",
-  "Membandingkan dan mengurutkan bilangan sampai 10."
+  "Menghitung banyak benda 1 sampai 10 dengan tepat.",
+  "Mengenal bilangan 0 (nol) pada wadah kosong.",
+  "Membaca nama bilangan dan menuliskan lambang angkanya."
  ],
  "story": {
-  "judul": "Ikan di Pasar Pagi",
-  "pertanyaanPemantik": "Bagaimana cara menghitung ikan supaya tidak ada yang terlewat dan tidak ada yang terhitung dua kali?",
+  "judul": "Di Taman Bermain",
+  "pertanyaanPemantik": "Bagaimana cara menghitung bola di taman supaya tidak ada yang terlewat, dan apa artinya keranjang yang kosong?",
   "adegan": [
    {
     "id": "s1",
-    "latar": "pantai",
     "tokoh": [
      {
       "nama": "Malosi",
-      "x": 30
+      "x": 14
      },
      {
       "nama": "Kira",
-      "x": 65
+      "x": 33
+     },
+     {
+      "nama": "Upe",
+      "x": 52
+     },
+     {
+      "nama": "Wei",
+      "x": 71
+     },
+     {
+      "nama": "Igil",
+      "x": 88
      }
     ],
-    "narasi": "Pagi hari di kampung nelayan. Malosi dan Kira berjalan ke pasar ikan. Angin laut bertiup sejuk.",
-    "visual": "Matahari terbit di atas laut. Perahu kecil di tepi pantai. Malosi dan Kira berjalan dari kiri ke kanan.",
+    "kelompok": [],
+    "caption": "Ayo bermain di taman!",
+    "narasi": "Malosi, Kira, Upe, dan Wei bermain di taman bersama Igil si burung hantu. Mereka gembira sekali. Wei ingin tahu, ada berapa benda di taman? Ayo kita hitung!",
+    "visual": "Taman bermain pagi hari. Empat anak berlari masuk dari kiri, Igil hinggap di bahu Wei. Mereka melompat gembira. Kamera berhenti di wajah Wei yang penasaran.",
     "durasiDetik": 12
    },
    {
     "id": "s2",
-    "latar": "pasar-ikan",
     "tokoh": [
      {
-      "nama": "Upe",
+      "nama": "Kira",
       "x": 50
      }
     ],
-    "benda": {
-     "emoji": "🐟",
-     "jumlah": 8,
-     "hitung": false
-    },
-    "narasi": "Di pasar, Upe menjaga lapak ikan milik Bapak. Ikannya banyak sekali, berkilau di atas meja.",
-    "visual": "Lapak ikan beratap kain. Ikan bermunculan satu per satu di meja. Upe tersenyum.",
+    "kelompok": [
+     {
+      "ikon": "jungkat",
+      "jumlah": 1
+     },
+     {
+      "ikon": "ayunan",
+      "jumlah": 2
+     },
+     {
+      "ikon": "perosotan",
+      "jumlah": 3
+     }
+    ],
+    "caption": "Satu, dua, tiga!",
+    "narasi": "Di taman ada satu jungkat-jungkit, dua ayunan, dan tiga perosotan. Kira mengelompokkan benda yang sama. Lalu Kira menghitungnya satu per satu. Bilangan terakhir yang disebut adalah banyaknya.",
+    "visual": "Tiga kelompok mainan berjajar. Tiap benda menyala satu per satu saat dihitung, nomornya muncul di atasnya. Setelah selesai, bilangan terakhir muncul besar di atas kelompok.",
     "durasiDetik": 12
    },
    {
     "id": "s3",
-    "latar": "pasar-ikan",
     "tokoh": [
      {
-      "nama": "Halim",
-      "x": 25
-     },
-     {
       "nama": "Upe",
-      "x": 70
+      "x": 50
      }
     ],
-    "benda": {
-     "emoji": "🐟",
-     "jumlah": 8,
-     "hitung": false
-    },
-    "narasi": "Halim datang. Halim berkata, aku mau membeli sepuluh ikan. Upe jadi bingung. Ikannya banyak. Upe takut salah hitung.",
-    "visual": "Halim di sisi kiri meja, tangan menunjuk ikan. Upe menggaruk kepala. Tanda tanya muncul di atas Upe.",
-    "durasiDetik": 14
+    "kelompok": [
+     {
+      "ikon": "sepeda",
+      "jumlah": 4
+     },
+     {
+      "ikon": "kursi",
+      "jumlah": 5
+     }
+    ],
+    "caption": "Empat sepeda. Lima kursi.",
+    "narasi": "Upe melihat empat sepeda dan lima kursi. Upe menghitung sepedanya lebih dulu. Sesudah itu, Upe menghitung kursinya. Banyak yang kecil bisa dikenali sekilas, tanpa menghitung satu-satu.",
+    "visual": "Sepeda dan kursi berjajar. Upe menunjuk sepeda satu per satu, lalu kursi. Di akhir, titik-titik pola dadu berkedip sekilas untuk menunjukkan melihat sekilas.",
+    "durasiDetik": 12
    },
    {
     "id": "s4",
-    "latar": "pasar-ikan",
-    "tokoh": [
-     {
-      "nama": "Igil",
-      "x": 20
-     },
-     {
-      "nama": "Upe",
-      "x": 75
-     }
-    ],
-    "benda": {
-     "emoji": "🐟",
-     "jumlah": 10,
-     "hitung": true
-    },
-    "narasi": "Igil si burung hantu terbang turun. Igil berkata, ayo hitung satu-satu. Satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh. Bilangan terakhir adalah banyak semuanya.",
-    "visual": "Igil hinggap di tiang lapak. Setiap ikan menyala saat dihitung, dan lambang bilangan muncul di atasnya.",
-    "durasiDetik": 22
-   },
-   {
-    "id": "s5",
-    "latar": "pasar-ikan",
     "tokoh": [
      {
       "nama": "Wei",
-      "x": 35
-     },
-     {
-      "nama": "Upe",
-      "x": 75
+      "x": 50
      }
     ],
-    "benda": {
-     "emoji": "🐟",
-     "jumlah": 0
-    },
-    "narasi": "Wei datang membawa satu keranjang. Keranjang itu tidak ada ikannya. Berapa ikan di dalam keranjang itu? Tidak ada. Itu namanya nol.",
-    "visual": "Wei menunjukkan keranjang anyaman kosong. Tutup keranjang terbuka. Tanda nol besar muncul.",
+    "kelompok": [
+     {
+      "ikon": "balon",
+      "jumlah": 6
+     },
+     {
+      "ikon": "buku",
+      "jumlah": 7
+     }
+    ],
+    "caption": "Enam balon. Tujuh buku.",
+    "narasi": "Wei menghitung enam balon dan tujuh buku. Wei menyentuh tiap benda satu kali sambil menghitung. Tidak ada yang terlewat.",
+    "visual": "Balon warna-warni dan tumpukan buku bergambar. Tangan Wei menyentuh tiap benda satu kali; benda yang sudah dihitung menyala.",
+    "durasiDetik": 12
+   },
+   {
+    "id": "s5",
+    "tokoh": [
+     {
+      "nama": "Wei",
+      "x": 30
+     },
+     {
+      "nama": "Kira",
+      "x": 70
+     }
+    ],
+    "kelompok": [
+     {
+      "ikon": "layang",
+      "jumlah": 8
+     },
+     {
+      "ikon": "kelereng",
+      "jumlah": 9
+     }
+    ],
+    "caption": "Delapan layang-layang. Sembilan kelereng.",
+    "narasi": "Wei menghitung delapan layang-layang dan sembilan kelereng. Kelompokkan benda yang sama, lalu hitung satu per satu.",
+    "visual": "Layang-layang dan kelereng tersusun dua baris. Saat dihitung, bilangan terakhir tiap kelompok membesar: delapan dan sembilan.",
+    "durasiDetik": 13
+   },
+   {
+    "id": "s5b",
+    "tokoh": [
+     {
+      "nama": "Wei",
+      "x": 30
+     },
+     {
+      "nama": "Kira",
+      "x": 70
+     }
+    ],
+    "kelompok": [
+     {
+      "ikon": "bola",
+      "jumlah": 10
+     }
+    ],
+    "caption": "Sepuluh bola!",
+    "narasi": "Wei menghitung sepuluh bola. Satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh. Sepuluh adalah bilangan terakhir, jadi bolanya ada sepuluh.",
+    "visual": "Sepuluh bola tersusun dua baris lima. Tiap bola menyala saat dihitung; bilangan terakhir, sepuluh, membesar di atasnya.",
     "durasiDetik": 14
    },
    {
     "id": "s6",
-    "latar": "pasar-ikan",
     "tokoh": [
      {
       "nama": "Igil",
       "x": 50
-     },
-     {
-      "nama": "Halim",
-      "x": 20
-     },
-     {
-      "nama": "Upe",
-      "x": 80
      }
     ],
-    "benda": {
-     "emoji": "🐟",
-     "jumlah": 10
-    },
-    "narasi": "Igil bertanya kepada kamu. Bagaimana cara menghitung ikan supaya tidak ada yang terlewat, dan tidak ada yang terhitung dua kali? Ayo kita cari tahu.",
-    "visual": "Semua tokoh menoleh ke layar. Tanda tanya besar bersinar. Layar berhenti pada pertanyaan pemantik.",
-    "durasiDetik": 12
+    "kelompok": [
+     {
+      "ikon": "bola",
+      "jumlah": 10,
+      "wadah": "keranjang"
+     },
+     {
+      "ikon": "bola",
+      "jumlah": 0,
+      "wadah": "keranjang"
+     }
+    ],
+    "caption": "Satu keranjang kosong: nol!",
+    "narasi": "Igil menunjuk dua keranjang. Satu keranjang berisi sepuluh bola. Keranjang di sebelahnya tidak ada isinya. Banyak isi keranjang yang kosong adalah nol.",
+    "visual": "Dua keranjang. Bola di keranjang kiri dihitung sampai sepuluh. Keranjang kanan kosong; angka nol besar menyala dan keranjang bergoyang pelan.",
+    "durasiDetik": 15
+   },
+   {
+    "id": "s7",
+    "tokoh": [
+     {
+      "nama": "Wei",
+      "x": 28
+     },
+     {
+      "nama": "Igil",
+      "x": 72
+     }
+    ],
+    "kelompok": [
+     {
+      "ikon": "bola",
+      "jumlah": 10
+     }
+    ],
+    "caption": "Ada berapa bola di taman?",
+    "narasi": "Wei bertanya, ada berapa bola di taman? Bolanya ada sepuluh, tetapi berserakan. Igil bertanya kepada kamu. Bagaimana cara menghitung bola supaya tidak ada yang terlewat? Dan apa artinya keranjang yang kosong? Ayo kita cari tahu.",
+    "visual": "Sepuluh bola berserakan di rumput, tanda tanya besar bersinar di atasnya. Wei dan Igil menoleh ke layar. Layar berhenti pada pertanyaan pemantik.",
+    "durasiDetik": 14
    }
   ]
  },
@@ -146,156 +221,179 @@
    {
     "id": "inti",
     "label": "Bilangan nol sampai sepuluh",
+    "ikon": "🔢",
     "jenis": "inti",
-    "penjelasan": "Bilangan dipakai untuk menyatakan banyak benda. Di bab ini kita mengenal nol sampai sepuluh.",
-    "contoh": "Ada sepuluh ikan di lapak Upe."
+    "penjelasan": "Bilangan memberi tahu banyaknya benda. Di bab ini kita mengenal nol sampai sepuluh.",
+    "contoh": "Ada sepuluh bola di taman."
    },
    {
-    "id": "membilang",
-    "label": "Membilang (menghitung)",
+    "id": "hitung",
+    "label": "Hitung",
+    "ikon": "👆",
     "jenis": "subkonsep",
-    "penjelasan": "Menyebut satu bilangan untuk satu benda. Bilangan terakhir adalah banyak semuanya.",
-    "contoh": "🐟🐟🐟: satu, dua, tiga. Banyaknya tiga."
+    "penjelasan": "Hitung benda dengan menyentuhnya satu per satu. Satu benda disentuh satu kali, sambil menyebut angkanya.",
+    "contoh": "Sentuh tiap bola: satu, dua, tiga."
    },
    {
-    "id": "membaca",
-    "label": "Membaca bilangan",
+    "id": "banyaknya",
+    "label": "Banyaknya",
+    "ikon": "🧺",
     "jenis": "subkonsep",
-    "penjelasan": "Lambang bilangan punya nama. Kita bisa mengucapkannya.",
-    "contoh": "Lambang 7 dibaca tujuh."
+    "penjelasan": "Angka terakhir yang kamu sebut adalah banyak seluruhnya. Kalau tidak ada benda, banyaknya nol.",
+    "contoh": "Keranjang kosong: banyaknya nol."
    },
    {
-    "id": "menulis",
-    "label": "Menulis lambang bilangan",
+    "id": "sekilas",
+    "label": "Sekilas",
+    "ikon": "👀",
     "jenis": "subkonsep",
-    "penjelasan": "Setiap nama bilangan punya lambang angka.",
-    "contoh": "Delapan ditulis 8."
+    "penjelasan": "Banyak yang kecil bisa dikenali sekilas, tanpa menghitung satu per satu.",
+    "contoh": "Tiga titik langsung terlihat tiga."
    },
    {
-    "id": "nol",
-    "label": "Bilangan nol",
+    "id": "bacatulis",
+    "label": "Baca dan tulis",
+    "ikon": "✏️",
     "jenis": "subkonsep",
-    "penjelasan": "Nol berarti tidak ada benda sama sekali.",
-    "contoh": "Keranjang kosong: banyak ikannya nol."
+    "penjelasan": "Baca bilangan dengan menyebut namanya, lalu tulis dengan lambang angka.",
+    "contoh": "Enam benda dibaca enam, ditulis 6."
    },
    {
-    "id": "membandingkan",
-    "label": "Lebih banyak, lebih sedikit",
-    "jenis": "subkonsep",
-    "penjelasan": "Bilangan yang lebih besar menyatakan benda yang lebih banyak.",
-    "contoh": "Delapan lebih banyak dari lima."
-   },
-   {
-    "id": "pra-menghitung",
-    "label": "Satu, dua, tiga (menghitung lisan)",
+    "id": "pra-lisan",
+    "label": "Menyebut satu, dua, tiga",
+    "ikon": "🗣️",
     "jenis": "prasyarat",
-    "penjelasan": "Sebelum bab ini, kamu sudah belajar menyebut satu, dua, tiga secara berurutan.",
+    "penjelasan": "Sebelum bab ini, kamu sudah bisa menyebut satu, dua, tiga secara berurutan.",
     "contoh": "Satu, dua, tiga, empat, lima."
    },
    {
     "id": "pra-banyak",
     "label": "Banyak dan sedikit",
+    "ikon": "🧮",
     "jenis": "prasyarat",
     "penjelasan": "Kamu sudah bisa melihat mana yang banyak dan mana yang sedikit.",
-    "contoh": "Satu kelompok punya lebih banyak ikan."
+    "contoh": "Satu kelompok punya lebih banyak bola."
    },
    {
-    "id": "lanjut-jumlah",
-    "label": "Penjumlahan sampai sepuluh",
+    "id": "lanjut-banding",
+    "label": "Membandingkan banyak benda",
+    "ikon": "⚖️",
     "jenis": "lanjutan",
-    "penjelasan": "Materi berikutnya: menggabungkan dua kelompok benda (Bab 2).",
-    "contoh": "Tiga ikan dan dua ikan menjadi lima ikan."
+    "penjelasan": "Materi berikutnya (Sub-Bab B): mana yang lebih banyak, lebih sedikit, atau sama banyak.",
+    "contoh": "Enam kursi dan empat balon."
    },
    {
-    "id": "lanjut-kurang",
-    "label": "Pengurangan sampai sepuluh",
+    "id": "lanjut-maju",
+    "label": "Menghitung maju dan mundur",
+    "ikon": "↔️",
     "jenis": "lanjutan",
-    "penjelasan": "Materi berikutnya: mengambil sebagian benda (Bab 3).",
-    "contoh": "Dari lima ikan, dua dibeli. Sisanya tiga."
+    "penjelasan": "Materi berikutnya (Sub-Bab C): sebelum dan sesudah suatu bilangan.",
+    "contoh": "Sesudah enam datang tujuh."
    },
    {
-    "id": "hidup-pasar",
-    "label": "Menghitung di pasar",
+    "id": "lanjut-pasangan",
+    "label": "Pasangan bilangan",
+    "ikon": "🧩",
+    "jenis": "lanjutan",
+    "penjelasan": "Materi berikutnya (Sub-Bab D): bilangan yang bisa dipecah menjadi dua bagian.",
+    "contoh": "Lima kue: dua dan tiga."
+   },
+   {
+    "id": "hidup-taman",
+    "label": "Menghitung di taman",
+    "ikon": "🌳",
     "jenis": "kehidupan",
-    "penjelasan": "Penjual dan pembeli selalu menghitung barang.",
-    "contoh": "Halim membeli sepuluh ikan."
+    "penjelasan": "Di taman kita menghitung ayunan, sepeda, dan bola.",
+    "contoh": "Ada tiga perosotan di taman."
    },
    {
     "id": "hidup-rumah",
     "label": "Menghitung di rumah",
+    "ikon": "🏠",
     "jenis": "kehidupan",
-    "penjelasan": "Kita menghitung banyak buah, piring, dan kursi di rumah.",
+    "penjelasan": "Di rumah kita menghitung piring, kursi, dan buah.",
     "contoh": "Ada lima piring di meja makan."
    }
   ],
   "lengkapi": [
-   "membilang",
-   "nol",
-   "lanjut-jumlah",
-   "pra-banyak",
-   "hidup-pasar"
+   "hitung",
+   "banyaknya",
+   "lanjut-banding",
+   "pra-lisan",
+   "hidup-taman"
   ]
  },
  "infografis": {
   "definisi": [
    "Bilangan menyatakan banyak benda.",
-   "Bilangan nol berarti tidak ada benda.",
-   "Kita mengenal bilangan 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10."
+   "Nol berarti tidak ada benda sama sekali."
   ],
   "aturan": [
-   "Satu benda, satu bilangan. Sebut satu kali untuk tiap benda.",
-   "Bilangan terakhir yang disebut adalah banyak semuanya.",
-   "Urutan bilangan naik satu-satu: setelah 6 datang 7.",
-   "Bilangan yang disebut lebih dulu lebih kecil."
+   "Satu benda, satu bilangan.",
+   "Bilangan terakhir yang disebut adalah banyaknya.",
+   "Banyak yang kecil bisa dikenali sekilas."
   ],
-  "contoh": [
+  "metode": [
    {
-    "teks": "Ada 5 ikan. Disebut: satu, dua, tiga, empat, lima. Banyaknya 5.",
-    "visual": "🐟🐟🐟🐟🐟"
+    "ikon": "👆",
+    "nama": "Satu benda, satu bilangan",
+    "istilah": "korespondensi satu-satu",
+    "teks": "Sentuh tiap benda satu kali sambil menghitung.",
+    "gambar": "🍎🍎🍎"
    },
    {
-    "teks": "Keranjang kosong. Banyaknya 0 (nol).",
-    "visual": "🧺"
+    "ikon": "🔚",
+    "nama": "Bilangan terakhir = banyaknya",
+    "istilah": "kardinalitas",
+    "teks": "Bilangan terakhir yang disebut menyatakan banyak seluruhnya.",
+    "gambar": "1 2 3 ➜ 3"
    },
    {
-    "teks": "Kelompok 7 lebih banyak dari kelompok 4, sebab 7 disebut sesudah 4.",
-    "visual": "🍎🍎🍎🍎🍎🍎🍎 dan 🍊🍊🍊🍊"
+    "ikon": "🎲",
+    "nama": "Melihat sekilas",
+    "istilah": "mengenali tanpa menghitung",
+    "teks": "Kenali banyak yang kecil tanpa menghitung satu-satu.",
+    "gambar": "⚀ ⚁ ⚂"
    }
   ],
+  "caraBanyak": {
+   "jumlah": 4,
+   "kata": "empat"
+  },
   "miskonsepsi": [
    {
     "salah": "Menghitung benda yang sama dua kali.",
-    "benar": "Sentuh tiap benda satu kali saja. Tandai yang sudah dihitung."
+    "benar": "Sentuh tiap benda satu kali saja."
    },
    {
     "salah": "Mengira keranjang kosong berisi satu.",
     "benar": "Keranjang kosong berisi nol. Nol berarti tidak ada."
    },
    {
-    "salah": "Mengira bilangan terakhir hanya nama benda terakhir.",
+    "salah": "Mengira bilangan terakhir hanya untuk benda yang terakhir.",
     "benar": "Bilangan terakhir adalah banyak seluruh benda."
    },
    {
-    "salah": "Melompati bilangan saat menghitung: 4, lalu 6.",
+    "salah": "Melompati bilangan: 4, lalu 6.",
     "benar": "Setelah 4 datang 5. Tidak boleh ada yang terlewat."
    }
   ],
   "faktaMenarik": "Dulu, orang belum punya lambang untuk \"tidak ada\". Lambang nol ditemukan kemudian dan sangat membantu kita menghitung."
  },
  "simulasi": {
-  "eksplorasi": "Ketuk tombol tambah untuk memasukkan bola ke keranjang. Ketuk bola untuk menghitung. Lihat angka, nama bilangan, dan kotak sepuluh berubah. Coba juga geser Igil di garis bilangan.",
+  "eksplorasi": "Ketuk tombol tambah untuk memasukkan bola ke keranjang. Ketuk bola untuk menghitung. Lihat angka dan nama bilangan berubah. Coba juga membuat keranjang kosong.",
   "tantangan": [
    {
     "id": "t1",
-    "instruksi": "Isi keranjang dengan {n} bola.",
-    "jenis": "buat-jumlah",
+    "instruksi": "Ketuk bola ke-{n}. Hitung dari bola pertama.",
+    "jenis": "ketuk-ke",
     "min": 3,
-    "max": 7,
-    "mengapa": "Kamu menambah bola satu-satu sampai hitungannya sama dengan {n}."
+    "max": 8,
+    "mengapa": "Kamu menghitung satu per satu sampai bilangan {n}. Bilangan terakhir yang kamu sebut adalah {n}."
    },
    {
     "id": "t2",
-    "instruksi": "Buat keranjang kosong. Berapa banyak bolanya?",
+    "instruksi": "Buat bilangan nol: keranjang tidak ada bola sama sekali.",
     "jenis": "buat-jumlah",
     "min": 0,
     "max": 0,
@@ -303,19 +401,19 @@
    },
    {
     "id": "t3",
-    "instruksi": "Geser Igil ke bilangan {n} di garis bilangan.",
-    "jenis": "geser-garis",
-    "min": 2,
-    "max": 9,
-    "mengapa": "Dari nol, ada {n} loncatan sampai ke bilangan {n}."
+    "instruksi": "Isi keranjang sampai ada {n} bola. Penuh!",
+    "jenis": "buat-jumlah",
+    "min": 10,
+    "max": 10,
+    "mengapa": "Kamu menambah bola satu-satu sampai hitungannya sampai {n}."
    },
    {
     "id": "t4",
-    "instruksi": "Isi keranjang dengan {n} bola. Yang ini lebih banyak!",
+    "instruksi": "Buat bilangan {n}, lalu ketuk bolanya dan dengarkan namanya.",
     "jenis": "buat-jumlah",
-    "min": 8,
-    "max": 10,
-    "mengapa": "Makin banyak bola, makin besar bilangannya. Kotak sepuluh ikut terisi."
+    "min": 6,
+    "max": 9,
+    "mengapa": "Kamu membuat {n} bola. Bilangan {n} punya nama yang bisa kamu dengar."
    }
   ],
   "refleksi": {
@@ -373,24 +471,24 @@
    },
    {
     "id": "pra-5",
-    "gen": "a-setelah",
+    "gen": "a-terakhir",
     "level": "Mahir",
     "kognitif": "applying",
-    "elemen": "mengurutkan",
+    "elemen": "membilang",
     "param": {
-     "min": 0,
-     "max": 9
+     "min": 1,
+     "max": 10
     }
    },
    {
     "id": "pra-6",
-    "gen": "a-bandingkan",
+    "gen": "c-sekilas",
     "level": "Mahir",
     "kognitif": "applying",
-    "elemen": "membandingkan",
+    "elemen": "membilang",
     "param": {
-     "min": 0,
-     "max": 10
+     "min": 1,
+     "max": 5
     }
    }
   ],
@@ -437,25 +535,21 @@
    },
    {
     "id": "pasca-5",
-    "gen": "a-setelah",
+    "gen": "a-terakhir",
     "level": "Mahir",
     "kognitif": "applying",
-    "elemen": "mengurutkan",
+    "elemen": "membilang",
     "param": {
-     "min": 0,
-     "max": 9
+     "min": 1,
+     "max": 10
     }
    },
    {
     "id": "pasca-6",
-    "gen": "a-bandingkan",
+    "gen": "a-nol-cerita",
     "level": "Mahir",
     "kognitif": "applying",
-    "elemen": "membandingkan",
-    "param": {
-     "min": 0,
-     "max": 10
-    }
+    "elemen": "membaca-menulis"
    },
    {
     "id": "pasca-7",
@@ -488,13 +582,13 @@
    },
    {
     "id": "c-2",
-    "gen": "c-hitung",
+    "gen": "c-sekilas",
     "level": "Dasar",
     "kognitif": "knowing",
     "elemen": "membilang",
     "param": {
      "min": 1,
-     "max": 5
+     "max": 3
     }
    },
    {
@@ -539,21 +633,21 @@
    },
    {
     "id": "c-7",
-    "gen": "c-lebih-banyak",
+    "gen": "c-sekilas",
     "level": "Mahir",
     "kognitif": "applying",
-    "elemen": "membandingkan",
+    "elemen": "membilang",
     "param": {
-     "min": 1,
+     "min": 4,
      "max": 6
     }
    },
    {
     "id": "c-8",
-    "gen": "c-paling-sedikit",
+    "gen": "c-pilih-kelompok",
     "level": "Juara",
     "kognitif": "applying",
-    "elemen": "membandingkan",
+    "elemen": "membilang",
     "param": {
      "min": 3,
      "max": 10
@@ -561,10 +655,10 @@
    },
    {
     "id": "c-9",
-    "gen": "c-sama-banyak",
+    "gen": "c-hitung-ganda",
     "level": "Juara",
     "kognitif": "reasoning",
-    "elemen": "membandingkan",
+    "elemen": "membilang",
     "param": {
      "min": 3,
      "max": 9
@@ -572,10 +666,10 @@
    },
    {
     "id": "c-10",
-    "gen": "c-lebih-banyak",
+    "gen": "c-pilih-kelompok",
     "level": "Juara",
     "kognitif": "reasoning",
-    "elemen": "membandingkan",
+    "elemen": "membilang",
     "param": {
      "min": 6,
      "max": 10
@@ -585,18 +679,18 @@
   "pictorial": [
    {
     "id": "p-1",
-    "gen": "p-turus",
+    "gen": "p-kotak-sepuluh",
     "level": "Dasar",
     "kognitif": "knowing",
     "elemen": "membilang",
     "param": {
-     "min": 1,
+     "min": 0,
      "max": 5
     }
    },
    {
     "id": "p-2",
-    "gen": "p-kotak-sepuluh",
+    "gen": "p-titik-hitung",
     "level": "Dasar",
     "kognitif": "knowing",
     "elemen": "membilang",
@@ -607,23 +701,23 @@
    },
    {
     "id": "p-3",
-    "gen": "p-garis-titik",
+    "gen": "p-titik-hitung",
     "level": "Dasar",
     "kognitif": "knowing",
-    "elemen": "membaca-menulis",
+    "elemen": "membilang",
     "param": {
-     "min": 0,
+     "min": 2,
      "max": 5
     }
    },
    {
     "id": "p-4",
-    "gen": "p-turus",
+    "gen": "p-kotak-sepuluh",
     "level": "Dasar",
     "kognitif": "knowing",
     "elemen": "membilang",
     "param": {
-     "min": 4,
+     "min": 5,
      "max": 8
     }
    },
@@ -640,18 +734,18 @@
    },
    {
     "id": "p-6",
-    "gen": "p-garis-titik",
+    "gen": "p-titik-hitung",
     "level": "Mahir",
     "kognitif": "applying",
-    "elemen": "membaca-menulis",
+    "elemen": "membilang",
     "param": {
-     "min": 5,
+     "min": 6,
      "max": 10
     }
    },
    {
     "id": "p-7",
-    "gen": "p-piktogram-banyak",
+    "gen": "p-petak-banyak",
     "level": "Mahir",
     "kognitif": "applying",
     "elemen": "membilang",
@@ -662,35 +756,35 @@
    },
    {
     "id": "p-8",
-    "gen": "p-piktogram-terbanyak",
+    "gen": "p-petak-banyak",
     "level": "Juara",
     "kognitif": "applying",
-    "elemen": "membandingkan",
+    "elemen": "membilang",
     "param": {
-     "min": 1,
-     "max": 8
+     "min": 4,
+     "max": 10
     }
    },
    {
     "id": "p-9",
-    "gen": "p-garis-sesudah",
-    "level": "Juara",
-    "kognitif": "reasoning",
-    "elemen": "mengurutkan",
-    "param": {
-     "min": 0,
-     "max": 9
-    }
-   },
-   {
-    "id": "p-10",
-    "gen": "p-piktogram-banyak",
+    "gen": "p-titik-hitung",
     "level": "Juara",
     "kognitif": "reasoning",
     "elemen": "membilang",
     "param": {
-     "min": 3,
-     "max": 9
+     "min": 8,
+     "max": 10
+    }
+   },
+   {
+    "id": "p-10",
+    "gen": "p-petak-banyak",
+    "level": "Juara",
+    "kognitif": "reasoning",
+    "elemen": "membilang",
+    "param": {
+     "min": 6,
+     "max": 10
     }
    }
   ],
@@ -703,7 +797,7 @@
     "elemen": "membaca-menulis",
     "param": {
      "min": 0,
-     "max": 5
+     "max": 3
     }
    },
    {
@@ -713,19 +807,19 @@
     "kognitif": "knowing",
     "elemen": "membaca-menulis",
     "param": {
-     "min": 6,
-     "max": 10
+     "min": 4,
+     "max": 7
     }
    },
    {
     "id": "a-3",
-    "gen": "a-tulis",
+    "gen": "a-baca",
     "level": "Dasar",
     "kognitif": "knowing",
     "elemen": "membaca-menulis",
     "param": {
-     "min": 0,
-     "max": 5
+     "min": 8,
+     "max": 10
     }
    },
    {
@@ -735,55 +829,67 @@
     "kognitif": "knowing",
     "elemen": "membaca-menulis",
     "param": {
-     "min": 6,
-     "max": 10
-    }
-   },
-   {
-    "id": "a-5",
-    "gen": "a-setelah",
-    "level": "Dasar",
-    "kognitif": "knowing",
-    "elemen": "mengurutkan",
-    "param": {
      "min": 0,
      "max": 5
     }
    },
    {
+    "id": "a-5",
+    "gen": "a-tulis",
+    "level": "Dasar",
+    "kognitif": "knowing",
+    "elemen": "membaca-menulis",
+    "param": {
+     "min": 6,
+     "max": 10
+    }
+   },
+   {
     "id": "a-6",
+    "gen": "a-terakhir",
+    "level": "Mahir",
+    "kognitif": "applying",
+    "elemen": "membilang",
+    "param": {
+     "min": 1,
+     "max": 5
+    }
+   },
+   {
+    "id": "a-7",
+    "gen": "a-nol-cerita",
+    "level": "Mahir",
+    "kognitif": "applying",
+    "elemen": "membaca-menulis"
+   },
+   {
+    "id": "a-8",
     "gen": "a-hilang",
     "level": "Mahir",
     "kognitif": "applying",
     "elemen": "mengurutkan"
    },
    {
-    "id": "a-7",
-    "gen": "a-bandingkan",
-    "level": "Mahir",
-    "kognitif": "applying",
-    "elemen": "membandingkan"
-   },
-   {
-    "id": "a-8",
-    "gen": "a-terkecil",
-    "level": "Mahir",
-    "kognitif": "applying",
-    "elemen": "membandingkan"
-   },
-   {
     "id": "a-9",
-    "gen": "a-antara",
+    "gen": "a-setelah",
     "level": "Mahir",
     "kognitif": "applying",
-    "elemen": "mengurutkan"
+    "elemen": "mengurutkan",
+    "param": {
+     "min": 0,
+     "max": 9
+    }
    },
    {
     "id": "a-10",
-    "gen": "a-cerita-sesudah",
+    "gen": "a-terakhir",
     "level": "Mahir",
     "kognitif": "applying",
-    "elemen": "mengurutkan"
+    "elemen": "membilang",
+    "param": {
+     "min": 6,
+     "max": 10
+    }
    },
    {
     "id": "a-11",
@@ -794,44 +900,44 @@
    },
    {
     "id": "a-12",
-    "gen": "a-mundur",
-    "level": "Juara",
-    "kognitif": "reasoning",
-    "elemen": "mengurutkan"
-   },
-   {
-    "id": "a-13",
     "gen": "a-misteri",
     "level": "Juara",
     "kognitif": "reasoning",
     "elemen": "mengurutkan"
    },
    {
-    "id": "a-14",
+    "id": "a-13",
     "gen": "a-banyak-bilangan",
     "level": "Juara",
     "kognitif": "reasoning",
     "elemen": "membilang"
    },
    {
-    "id": "a-15",
-    "gen": "a-terkecil",
+    "id": "a-14",
+    "gen": "a-banyak-angka",
     "level": "Juara",
     "kognitif": "reasoning",
-    "elemen": "membandingkan"
+    "elemen": "membaca-menulis"
+   },
+   {
+    "id": "a-15",
+    "gen": "a-hilang",
+    "level": "Juara",
+    "kognitif": "reasoning",
+    "elemen": "mengurutkan"
    }
   ]
  },
  "jembatan": {
-  "cp": "Gambar benda tadi sekarang menjadi diagram. Satu benda diganti satu garis atau satu bulatan.",
-  "pa": "Diagram tadi sekarang menjadi angka. Banyak garis atau bulatan ditulis sebagai satu lambang bilangan."
+  "cp": "Gambar benda tadi sekarang menjadi diagram. Satu benda diganti satu titik atau satu bulatan di bingkai sepuluh.",
+  "pa": "Diagram tadi sekarang menjadi angka. Banyak titik atau bulatan ditulis sebagai satu lambang bilangan."
  },
  "remedial": {
   "peta": {
    "penjelasan": [
     "Peta konsep itu seperti peta jalan. Di tengah ada bilangan nol sampai sepuluh.",
-    "Dari tengah, ada cabang: menghitung, membaca, menulis, dan nol.",
-    "Ke kanan, ada materi berikutnya. Ke bawah, ada contoh di kehidupan kita.",
+    "Dari tengah ada cabang: hitung, banyaknya, sekilas, dan baca tulis.",
+    "Ke kanan ada materi berikutnya. Ke bawah ada contoh di kehidupan kita.",
     "Ayo coba lagi. Pilih satu label, lalu ketuk kotak yang kosong."
    ],
    "soal": [
@@ -870,25 +976,21 @@
     },
     {
      "id": "rp-4",
-     "gen": "a-sebelum",
+     "gen": "a-terakhir",
      "level": "Dasar",
      "kognitif": "knowing",
-     "elemen": "mengurutkan",
+     "elemen": "membilang",
      "param": {
       "min": 1,
-      "max": 5
+      "max": 4
      }
     },
     {
      "id": "rp-5",
-     "gen": "a-bandingkan",
+     "gen": "a-nol-cerita",
      "level": "Dasar",
      "kognitif": "knowing",
-     "elemen": "membandingkan",
-     "param": {
-      "min": 0,
-      "max": 5
-     }
+     "elemen": "membaca-menulis"
     }
    ]
   },
@@ -942,13 +1044,13 @@
     },
     {
      "id": "rs-5",
-     "gen": "c-lebih-banyak",
+     "gen": "c-sekilas",
      "level": "Dasar",
      "kognitif": "knowing",
-     "elemen": "membandingkan",
+     "elemen": "membilang",
      "param": {
       "min": 1,
-      "max": 4
+      "max": 3
      }
     }
    ]
@@ -1003,28 +1105,28 @@
     },
     {
      "id": "rc-5",
-     "gen": "c-lebih-banyak",
+     "gen": "c-sekilas",
      "level": "Dasar",
      "kognitif": "knowing",
-     "elemen": "membandingkan",
+     "elemen": "membilang",
      "param": {
       "min": 1,
-      "max": 4
+      "max": 3
      }
     }
    ]
   },
   "pictorial": {
    "penjelasan": [
-    "Garis turus: satu garis sama dengan satu benda.",
-    "Kotak sepuluh: lima petak di atas dan lima petak di bawah.",
-    "Garis bilangan: mulai dari nol, lalu melompat satu-satu.",
+    "Titik: satu titik sama dengan satu benda.",
+    "Bingkai sepuluh: lima kotak di atas dan lima kotak di bawah.",
+    "Bingkai kosong berarti nol.",
     "Ayo berlatih diagram yang lebih mudah."
    ],
    "soal": [
     {
      "id": "rp2-1",
-     "gen": "p-turus",
+     "gen": "p-titik-hitung",
      "level": "Dasar",
      "kognitif": "knowing",
      "elemen": "membilang",
@@ -1040,24 +1142,13 @@
      "kognitif": "knowing",
      "elemen": "membilang",
      "param": {
-      "min": 1,
-      "max": 4
-     }
-    },
-    {
-     "id": "rp2-3",
-     "gen": "p-garis-titik",
-     "level": "Dasar",
-     "kognitif": "knowing",
-     "elemen": "membaca-menulis",
-     "param": {
       "min": 0,
       "max": 4
      }
     },
     {
-     "id": "rp2-4",
-     "gen": "p-turus",
+     "id": "rp2-3",
+     "gen": "p-titik-hitung",
      "level": "Dasar",
      "kognitif": "knowing",
      "elemen": "membilang",
@@ -1067,14 +1158,25 @@
      }
     },
     {
-     "id": "rp2-5",
-     "gen": "p-piktogram-banyak",
+     "id": "rp2-4",
+     "gen": "p-kotak-sepuluh",
      "level": "Dasar",
      "kognitif": "knowing",
      "elemen": "membilang",
      "param": {
       "min": 1,
-      "max": 4
+      "max": 3
+     }
+    },
+    {
+     "id": "rp2-5",
+     "gen": "p-petak-banyak",
+     "level": "Dasar",
+     "kognitif": "knowing",
+     "elemen": "membilang",
+     "param": {
+      "min": 1,
+      "max": 5
      }
     }
    ]
@@ -1083,7 +1185,7 @@
    "penjelasan": [
     "Angka adalah lambang untuk banyak benda.",
     "Urutan bilangan: nol, satu, dua, tiga, empat, lima, enam, tujuh, delapan, sembilan, sepuluh.",
-    "Sesudah artinya satu langkah maju. Sebelum artinya satu langkah mundur.",
+    "Bilangan terakhir yang disebut adalah banyaknya.",
     "Ayo berlatih angka yang lebih kecil dulu."
    ],
    "soal": [
@@ -1122,25 +1224,21 @@
     },
     {
      "id": "ra-4",
-     "gen": "a-sebelum",
+     "gen": "a-terakhir",
      "level": "Dasar",
      "kognitif": "knowing",
-     "elemen": "mengurutkan",
+     "elemen": "membilang",
      "param": {
       "min": 1,
-      "max": 5
+      "max": 4
      }
     },
     {
      "id": "ra-5",
-     "gen": "a-bandingkan",
+     "gen": "a-nol-cerita",
      "level": "Dasar",
      "kognitif": "knowing",
-     "elemen": "membandingkan",
-     "param": {
-      "min": 0,
-      "max": 5
-     }
+     "elemen": "membaca-menulis"
     }
    ]
   },
@@ -1187,25 +1285,21 @@
     },
     {
      "id": "rt-4",
-     "gen": "a-sebelum",
+     "gen": "a-terakhir",
      "level": "Dasar",
      "kognitif": "knowing",
-     "elemen": "mengurutkan",
+     "elemen": "membilang",
      "param": {
       "min": 1,
-      "max": 5
+      "max": 4
      }
     },
     {
      "id": "rt-5",
-     "gen": "a-bandingkan",
+     "gen": "a-nol-cerita",
      "level": "Dasar",
      "kognitif": "knowing",
-     "elemen": "membandingkan",
-     "param": {
-      "min": 0,
-      "max": 5
-     }
+     "elemen": "membaca-menulis"
     }
    ]
   }

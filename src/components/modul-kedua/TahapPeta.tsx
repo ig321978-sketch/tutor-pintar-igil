@@ -97,6 +97,7 @@ export default function TahapPeta({ data, benih, saatSelesai }: { data: DataModu
         }}
         className={`min-h-14 rounded-2xl border-4 px-3 py-2 text-base font-black ${WARNA[n.jenis]} ${aktif === n.id ? "ring-4 ring-amber-400" : ""}`}
       >
+        <span className="mr-1 text-2xl">{n.ikon}</span>
         {n.label}
       </button>
     );
@@ -129,6 +130,7 @@ export default function TahapPeta({ data, benih, saatSelesai }: { data: DataModu
 
       {langkah === "jelajah" && nodeAktif ? (
         <div className="space-y-2 rounded-3xl border-4 border-amber-400 bg-amber-50 p-3">
+          <p className="text-5xl">{nodeAktif.ikon}</p>
           <p className="text-lg font-black text-indigo-950">{nodeAktif.label}</p>
           <p className="text-base font-bold text-indigo-900">{nodeAktif.penjelasan}</p>
           <p className="text-base font-bold text-emerald-800">Contoh: {nodeAktif.contoh}</p>
@@ -155,6 +157,7 @@ export default function TahapPeta({ data, benih, saatSelesai }: { data: DataModu
                 {...ikat(id, peta(id).label)}
                 className={`flex min-h-14 select-none items-center rounded-2xl border-4 px-3 py-2 text-base font-black ${pilihan === id ? "border-amber-500 bg-amber-200" : "border-indigo-900 bg-white"} text-indigo-950`}
               >
+                <span className="mr-1 text-2xl">{peta(id).ikon}</span>
                 {peta(id).label}
               </div>
             ))}

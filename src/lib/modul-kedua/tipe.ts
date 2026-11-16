@@ -25,10 +25,10 @@ export type LangkahPolya = { tahap: "Pahami" | "Rencanakan" | "Lakukan" | "Perik
 export type VisualSoal =
   | { jenis: "benda"; emoji: string; jumlah: number; kotakKosong?: boolean; bisaKetuk?: boolean }
   | { jenis: "dua-kelompok"; a: { emoji: string; jumlah: number }; b: { emoji: string; jumlah: number } }
-  | { jenis: "turus"; jumlah: number }
   | { jenis: "kotak-sepuluh"; jumlah: number }
-  | { jenis: "garis-bilangan"; titik?: number; dari: number; sampai: number; sembunyi?: boolean }
-  | { jenis: "piktogram"; baris: { label: string; emoji: string; jumlah: number }[] }
+  | { jenis: "titik"; jumlah: number }
+  | { jenis: "sekilas"; emoji: string; jumlah: number }
+  | { jenis: "dua-baris-petak"; atas: number; bawah: number }
   | { jenis: "isi-keranjang"; emoji: string; sediaan: number; target: number }
   | { jenis: "angka-besar"; teks: string }
   | { jenis: "urutan"; deret: (number | null)[] }
@@ -104,11 +104,17 @@ export type DataModul = {
   remedial: Record<string, { penjelasan: string[]; soal: SpesifikasiSoal[] }>;
 };
 
+/** Satu kelompok benda yang dihitung satu per satu di adegan cerita. */
+export type KelompokAdegan = { ikon: IkonNama; jumlah: number; wadah?: "keranjang" };
+export type IkonNama = "jungkat" | "ayunan" | "perosotan" | "sepeda" | "kursi" | "balon" | "buku" | "layang" | "kelereng" | "bola" | "keranjang";
+
 export type Adegan = {
   id: string;
-  latar: "pasar-ikan" | "pantai" | "rumah";
   tokoh: { nama: string; x: number }[];
-  benda?: { emoji: string; jumlah: number; hitung?: boolean };
+  /** Kelompok benda yang muncul dan dihitung berurutan (visual utama adegan). */
+  kelompok: KelompokAdegan[];
+  /** Kalimat sangat pendek yang tampil besar di layar. */
+  caption: string;
   /** Narasi yang diucapkan: WAJIB tanpa digit. */
   narasi: string;
   /** Catatan produksi video: visual yang dibayangkan. */
@@ -119,6 +125,7 @@ export type Adegan = {
 export type PetaNode = {
   id: string;
   label: string;
+  ikon: string;
   jenis: "inti" | "subkonsep" | "prasyarat" | "lanjutan" | "kehidupan";
   penjelasan: string;
   contoh: string;
@@ -128,13 +135,16 @@ export type PetaKonsep = { node: PetaNode[]; lengkapi: string[] };
 export type Infografis = {
   definisi: string[];
   aturan: string[];
-  contoh: { teks: string; visual: string }[];
+  /** Tiga cara membilang (nama Indonesia), tiap cara punya gambar. */
+  metode: { ikon: string; nama: string; istilah: string; teks: string; gambar: string }[];
+  /** Empat cara menunjukkan satu bilangan. */
+  caraBanyak: { jumlah: number; kata: string };
   miskonsepsi: { salah: string; benar: string }[];
   faktaMenarik: string;
 };
 
 export type Simulasi = {
   eksplorasi: string;
-  tantangan: { id: string; instruksi: string; jenis: "buat-jumlah" | "geser-garis"; min: number; max: number; mengapa: string }[];
+  tantangan: { id: string; instruksi: string; jenis: "buat-jumlah" | "ketuk-ke"; min: number; max: number; mengapa: string }[];
   refleksi: { tanya: string; pilihan: string[]; benar: number; umpanBalik: string };
 };

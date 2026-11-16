@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { DataModul } from "@/lib/modul-kedua/tipe";
 import LatihanTahap, { type HasilLatihan } from "./LatihanTahap";
 import TombolSuara from "./TombolSuara";
-import { Turus } from "./VisualSoal";
+import { Titik } from "./VisualSoal";
 
 /** Tahap A (Abstract): latihan angka murni: 5 knowing, 5 applying, 5 reasoning (termasuk soal non-rutin). */
 export default function TahapAbstract({ data, benih, saatSelesai }: { data: DataModul; benih: number; saatSelesai: (h: HasilLatihan) => void }) {
@@ -15,7 +15,7 @@ export default function TahapAbstract({ data, benih, saatSelesai }: { data: Data
         <h2 className="text-2xl font-black text-indigo-950">A: Latihan Angka 🔢</h2>
         <div className="flex items-center justify-center gap-2 rounded-2xl bg-white p-3">
           <div className="w-24">
-            <Turus jumlah={3} />
+            <Titik jumlah={3} />
           </div>
           <span className="text-3xl font-black text-indigo-900">➜</span>
           <span className="text-6xl font-black text-indigo-950">3</span>

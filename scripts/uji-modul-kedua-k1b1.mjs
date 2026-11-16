@@ -67,34 +67,31 @@ const oracle = {
   "c-hitung": (f) => String(f.n),
   "c-kosong": (f) => String(f.n),
   "c-isi-keranjang": (f) => String(f.n),
-  "p-turus": (f) => String(f.n),
+  "c-sekilas": (f) => String(f.n),
+  "c-hitung-ganda": (f) => String(f.jawabanNama - 1),
   "p-kotak-sepuluh": (f) => String(f.n),
-  "p-garis-titik": (f) => String(f.n),
-  "p-piktogram-banyak": (f) => String(f.baris[f.idx]),
+  "p-titik-hitung": (f) => String(f.n),
+  "p-petak-banyak": (f) => (f.target === f.atas ? "Baris atas" : "Baris bawah"),
   "a-baca": (f) => eja(f.n),
   "a-tulis": (f) => String(f.n),
   "a-setelah": (f) => String(f.n + 1),
-  "a-sebelum": (f) => String(f.n - 1),
-  "p-garis-sesudah": (f) => String(f.n + 1),
-  "a-cerita-sesudah": (f) => String(f.n + 1),
   "a-kesalahan": (f) => String(f.n + 1),
-  "a-antara": (f) => String(f.a + 1),
+  "a-nol-cerita": () => "0",
+  "a-terakhir": (f) => String(f.seq[f.seq.length - 1]),
   "a-hilang": (f) => {
     const d = f.deret;
     const i = d.indexOf(-1);
     return String(i === 0 ? d[1] - 1 : d[i - 1] + 1);
   },
-  "a-bandingkan": (f) => String(f.besar ? Math.max(f.a, f.b) : Math.min(f.a, f.b)),
-  "a-terkecil": (f) => String(f.besar ? Math.max(...f.tiga) : Math.min(...f.tiga)),
   "a-banyak-bilangan": (f) => {
     let c = 0;
     for (let x = f.a; x <= f.b; x++) c++;
     return String(c);
   },
-  "a-mundur": (f) => {
-    let x = f.mulai;
-    for (let i = 1; i < f.ke; i++) x--;
-    return String(x);
+  "a-banyak-angka": (f) => {
+    let c = 0;
+    for (let x = f.s; x <= 10; x++) if (String(x).length === 1) c++;
+    return String(c);
   },
   "a-misteri": (f) => {
     const cocok = [];
@@ -102,12 +99,7 @@ const oracle = {
     return cocok.length === 1 ? String(cocok[0]) : `AMBIGU:${cocok.join(",")}`;
   },
 };
-const orakelDuaKelompok = (g, f, v) => {
-  const a = v.a.jumlah, b = v.b.jumlah;
-  if (g === "c-lebih-banyak") return a > b ? v.a.emoji : v.b.emoji;
-  if (g === "c-paling-sedikit") return a < b ? v.a.emoji : v.b.emoji;
-  return a === b ? "Sama banyak" : "Tidak sama";
-};
+const orakelPilihKelompok = (f, v) => (v.a.jumlah === f.target ? v.a.emoji : v.b.jumlah === f.target ? v.b.emoji : "TIDAK ADA");
 
 const BANYAK = 400;
 const cirikan = {};
@@ -122,10 +114,9 @@ for (const spec of semuaSpec) {
     const tag = `${spec.id}/${spec.gen}/benih${benih}`;
     // kunci dihitung ulang
     let harapan;
-    if (["c-lebih-banyak", "c-paling-sedikit", "c-sama-banyak"].includes(spec.gen)) harapan = orakelDuaKelompok(spec.gen, s.fakta, s.visual);
-    else if (spec.gen === "p-piktogram-terbanyak") {
-      const j = s.visual.baris.map((x) => x.jumlah);
-      harapan = s.visual.baris[j.indexOf(Math.max(...j))].emoji;
+    if (spec.gen === "c-pilih-kelompok") {
+      harapan = orakelPilihKelompok(s.fakta, s.visual);
+      cek(s.visual.a.jumlah !== s.visual.b.jumlah, `${tag}: dua kelompok sama banyak`);
     } else harapan = oracle[spec.gen](s.fakta);
     cek(s.kunci === harapan, `${tag}: kunci ${s.kunci} != hitung ulang ${harapan}`);
     // kunci ada di pilihan & pilihan unik
@@ -138,14 +129,13 @@ for (const spec of semuaSpec) {
     for (const p of s.pilihan) if (/^\d+$/.test(p)) cek(Number(p) >= 0 && Number(p) <= 10, `${tag}: pilihan di luar 0..10 (${p})`);
     // visual konsisten dengan fakta
     const v = s.visual;
-    if (v.jenis === "benda" || v.jenis === "turus" || v.jenis === "kotak-sepuluh") cek(v.jumlah === s.fakta.n && s.kunci === String(v.jumlah), `${tag}: visual != fakta`);
-    if (v.jenis === "garis-bilangan") cek(v.titik === s.fakta.n, `${tag}: titik garis != fakta`);
+    if (v.jenis === "benda" || v.jenis === "kotak-sepuluh" || v.jenis === "titik" || v.jenis === "sekilas") cek(v.jumlah === s.fakta.n && s.kunci === String(v.jumlah), `${tag}: visual != fakta`);
     if (v.jenis === "isi-keranjang") cek(v.target === s.fakta.n && v.sediaan >= v.target && v.sediaan <= 10, `${tag}: keranjang tidak konsisten`);
-    if (v.jenis === "piktogram") cek(v.baris.length === 3 && new Set(v.baris.map((x) => x.emoji)).size === 3 && v.baris.every((x) => x.jumlah >= 0 && x.jumlah <= 10), `${tag}: piktogram`);
     if (v.jenis === "dua-kelompok") cek(v.a.emoji !== v.b.emoji && v.a.jumlah <= 10 && v.b.jumlah <= 10, `${tag}: dua kelompok`);
+    if (v.jenis === "dua-baris-petak") cek(v.atas === s.fakta.atas && v.bawah === s.fakta.bawah && v.atas !== v.bawah && v.atas <= 10 && v.bawah <= 10, `${tag}: baris petak`);
     if (v.jenis === "urutan") cek(v.deret.length >= 3 && v.deret.every((x) => x === null || (x >= 0 && x <= 10)), `${tag}: deret`);
     // batas parameter dari berkas data
-    if (spec.param && typeof s.fakta.n === "number" && ["c-hitung", "c-isi-keranjang", "p-turus", "p-kotak-sepuluh", "p-garis-titik", "a-baca", "a-tulis", "a-setelah", "a-sebelum"].includes(spec.gen))
+    if (spec.param && typeof s.fakta.n === "number" && ["c-hitung", "c-isi-keranjang", "c-sekilas", "p-kotak-sepuluh", "p-titik-hitung", "a-baca", "a-tulis", "a-setelah"].includes(spec.gen))
       cek(s.fakta.n >= spec.param.min && s.fakta.n <= spec.param.max, `${tag}: n=${s.fakta.n} di luar [${spec.param.min},${spec.param.max}]`);
     // misteri harus tepat satu jawaban
     if (spec.gen === "a-misteri") cek(!String(harapan).startsWith("AMBIGU"), `${tag}: misteri ambigu`);
@@ -155,7 +145,7 @@ for (const spec of semuaSpec) {
     cek(s.mengapa.length > 10 && s.petunjuk.length > 5, `${tag}: pembahasan/petunjuk kosong`);
     // aturan konten & emoji
     const gabung = [s.teks, s.suara, s.mengapa, s.petunjuk, ...s.polya.map((p) => p.teks), ...s.pilihan].join(" ");
-    cek(!/menggambar|buku|teman|kerja kelompok|kelas /i.test(gabung), `${tag}: kata terlarang`);
+    cek(!/menggambar|buku (pelajaran|tulis|siswa)|teman|kerja kelompok|kelas /i.test(gabung), `${tag}: kata terlarang`);
     for (const ch of gabung) cek(ch.codePointAt(0) <= 0x1fa95, `${tag}: emoji melewati U+1FA95`);
     cirikan[spec.gen] = (cirikan[spec.gen] ?? 0) + 1;
   }
@@ -163,31 +153,42 @@ for (const spec of semuaSpec) {
   cek(teksBeda.size >= 2 || spec.gen === "c-kosong", `${spec.id}: soal tidak berubah antarpercobaan`);
 }
 // Pembangkit yang dipakai: semua dipakai oleh minimal satu spesifikasi
-for (const g of DAFTAR_PEMBANGKIT) cek(semuaSpec.some((s) => s.gen === g) || g === "a-sebelum" || g === "c-sama-banyak" || g === "p-garis-sesudah", `Pembangkit tak terpakai: ${g}`);
+for (const g of DAFTAR_PEMBANGKIT) cek(semuaSpec.some((s) => s.gen === g), `Pembangkit tak terpakai: ${g}`);
 // Soal non-rutin pada Abstract
 const nonRutin = data.latihan.abstract.filter((s) => bangunSoal(s, 5, "abstract").nonRutin);
 cek(nonRutin.length >= 2, `Abstract minimal 2 soal non-rutin (ada ${nonRutin.length})`);
 
 /* ---------- 3. Cerita, peta, infografis, simulasi ---------- */
 const TOKOH = new Set(["Malosi", "Kira", "Upe", "Wei", "Halim", "Igil"]);
+const IKON = new Set(["jungkat", "ayunan", "perosotan", "sepeda", "kursi", "balon", "buku", "layang", "kelereng", "bola", "keranjang"]);
 let durasi = 0;
 for (const a of data.story.adegan) {
   cek(!/\d/.test(a.narasi), `Narasi ${a.id} memuat digit`);
+  cek(!/\d/.test(a.caption) && a.caption.split(/\s+/).length <= 7, `Teks layar ${a.id} harus pendek dan tanpa digit: ${a.caption}`);
   cek(a.tokoh.every((t) => TOKOH.has(t.nama)), `Tokoh tidak dikenal di ${a.id}`);
+  cek(a.kelompok.every((k) => IKON.has(k.ikon) && k.jumlah >= 0 && k.jumlah <= 10), `Kelompok adegan ${a.id} di luar 0..10 atau ikon tak dikenal`);
+  cek(a.kelompok.length <= 3, `Adegan ${a.id} memuat terlalu banyak kelompok (maks 3)`);
   cek(a.visual.length > 10 && a.durasiDetik > 0, `Storyboard ${a.id} kurang lengkap`);
+  // narasi menyebut tiap bilangan kelompok dalam huruf
+  for (const k of a.kelompok) cek(a.narasi.toLowerCase().includes(eja(k.jumlah)), `Narasi ${a.id} tidak menyebut ${eja(k.jumlah)}`);
   durasi += a.durasiDetik;
 }
 cek(durasi >= 60 && durasi <= 120, `Durasi cerita Fase A 1-2 menit (ada ${durasi} detik)`);
 cek(!/\d/.test(data.story.pertanyaanPemantik), "Pertanyaan pemantik tanpa digit");
 const idNode = new Set(data.peta.node.map((n) => n.id));
 cek(data.peta.lengkapi.every((i) => idNode.has(i)), "Node 'lengkapi' ada semua");
+cek(data.peta.node.every((n) => n.ikon && n.penjelasan && n.contoh), "Setiap node peta punya ikon, penjelasan, contoh");
 for (const j of ["inti", "subkonsep", "prasyarat", "lanjutan", "kehidupan"]) cek(data.peta.node.some((n) => n.jenis === j), `Peta punya node ${j}`);
-cek(data.infografis.miskonsepsi.length >= 2 && data.infografis.contoh.length >= 2 && !!data.infografis.faktaMenarik, "Infografis lengkap");
-for (const t of data.simulasi.tantangan) cek(t.min >= 0 && t.max <= 10 && t.min <= t.max && (t.jenis !== "geser-garis" || t.min >= 1), `Tantangan simulasi ${t.id} dalam 0..10`);
+cek(data.infografis.metode.length === 3 && data.infografis.metode.every((m) => m.ikon && m.gambar && m.nama), "Infografis: tiga cara membilang bergambar");
+cek(data.infografis.caraBanyak.kata === eja(data.infografis.caraBanyak.jumlah), "Infografis: kata cocok dengan bilangan");
+cek(data.infografis.miskonsepsi.length >= 2 && !!data.infografis.faktaMenarik, "Infografis lengkap");
+for (const t of data.simulasi.tantangan) cek(t.min >= 0 && t.max <= 10 && t.min <= t.max && ["buat-jumlah", "ketuk-ke"].includes(t.jenis) && (t.jenis !== "ketuk-ke" || t.min >= 1), `Tantangan simulasi ${t.id} valid`);
 cek(data.simulasi.refleksi.pilihan.length >= 2 && data.simulasi.refleksi.benar < data.simulasi.refleksi.pilihan.length, "Refleksi simulasi valid");
 const teksData = JSON.stringify({ ...data, judul: "", subBab: "" });
 for (const ch of teksData) cek(ch.codePointAt(0) <= 0x1fa95, "Emoji data melewati U+1FA95");
-cek(!/menggambar|\bbuku\b|\bteman\b|kerja kelompok/i.test(teksData), "Data bebas kata terlarang (buku/teman/menggambar/kerja kelompok)");
+cek(!/one-to-one|cardinality|subitizing|ten-frame/i.test(teksData), "Data tanpa nama metode berbahasa Inggris");
+cek(!/menggambar|buku (pelajaran|tulis|siswa)|\bteman\b|kerja kelompok/i.test(teksData), "Data bebas kata terlarang (buku pelajaran/teman/menggambar/kerja kelompok)");
+cek(!/turus|piktogram|garis bilangan/i.test(teksData), "Data tanpa materi di luar Sub-Bab A (turus, piktogram, garis bilangan)");
 
 /* ---------- 4. Penguasaan, remedial, pengulangan ---------- */
 const b = (benar, percobaan = 1, petunjuk = 0, level = "Dasar", kognitif = "knowing", elemen = "membilang") => ({ idSoal: "x", gen: "g", level, kognitif, elemen, benar, percobaan, petunjuk, detik: 5 });

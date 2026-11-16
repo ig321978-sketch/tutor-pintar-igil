@@ -79,139 +79,93 @@ const PEMBANGKIT: Record<string, Pembangkit> = {
       fakta: { n },
     };
   },
-  "c-lebih-banyak": (r, p) => {
-    const lo = num(p, "min", 1), hi = num(p, "max", 6);
-    const a = r.int(lo, hi);
-    let b = r.int(lo, hi);
-    if (b === a) b = a === hi ? a - 1 : a + 1;
-    const [e1, e2] = r.kocok(BENDA).slice(0, 2);
-    const benar = a > b ? e1 : e2;
+
+  "c-sekilas": (r, p) => {
+    const n = r.int(num(p, "min", 1), num(p, "max", 5));
+    const e = r.pilih(BENDA);
     return {
-      teks: "Kelompok mana yang lebih banyak?",
-      visual: { jenis: "dua-kelompok", a: { emoji: e1, jumlah: a }, b: { emoji: e2, jumlah: b } },
-      mode: "pilih", pilihan: r.kocok([e1, e2]), kunci: benar,
-      petunjuk: "Hitung tiap kelompok. Bilangan yang lebih besar berarti lebih banyak.",
-      mengapa: `Kelompok ${e1} ada ${a}, kelompok ${e2} ada ${b}. ${Math.max(a, b)} lebih besar dari ${Math.min(a, b)}, jadi ${benar} lebih banyak.`,
-      polya: polya("Aku membandingkan dua kelompok.", "Aku hitung tiap kelompok, lalu bandingkan.", `${e1} ada ${a}, ${e2} ada ${b}.`, `Bilangan ${Math.max(a, b)} memang lebih besar.`),
-      fakta: { a, b, benarIsA: a > b ? 1 : 0 },
-      suara: "Kelompok mana yang lebih banyak? Hitung dulu tiap kelompok.",
+      teks: "Lihat sekilas, lalu jawab tanpa menghitung satu-satu. Ada berapa?",
+      visual: { jenis: "sekilas", emoji: e, jumlah: n },
+      mode: "pilih", pilihan: acakPilihan(r, n, 1, 10), kunci: String(n),
+      petunjuk: "Lihat pola susunannya, seperti titik pada dadu. Tekan Lihat lagi kalau perlu.",
+      mengapa: `Banyak yang kecil bisa dikenali dari polanya, tanpa menghitung satu-satu. Ada ${n}.`,
+      polya: polya("Aku harus tahu banyaknya sekilas.", "Aku lihat polanya, seperti titik dadu.", `Polanya menunjukkan ${n}.`, "Aku lihat lagi dan menghitung untuk memastikan."),
+      fakta: { n },
     };
   },
-  "c-paling-sedikit": (r, p) => {
-    const lo = num(p, "min", 1), hi = num(p, "max", 8);
+  "c-pilih-kelompok": (r, p) => {
+    const lo = num(p, "min", 1), hi = num(p, "max", 6);
     const [a, b] = r.kocok(rentang(lo, hi)).slice(0, 2);
     const [e1, e2] = r.kocok(BENDA).slice(0, 2);
-    const benar = a < b ? e1 : e2;
+    const benarIsA = r.float() < 0.5;
+    const target = benarIsA ? a : b;
     return {
-      teks: "Kelompok mana yang lebih sedikit?",
+      teks: `Kelompok mana yang banyaknya ${target}?`,
       visual: { jenis: "dua-kelompok", a: { emoji: e1, jumlah: a }, b: { emoji: e2, jumlah: b } },
-      mode: "pilih", pilihan: r.kocok([e1, e2]), kunci: benar,
-      petunjuk: "Hitung dulu tiap kelompok. Pilih yang bilangannya lebih kecil.",
-      mengapa: `${e1} ada ${a}, ${e2} ada ${b}. ${Math.min(a, b)} lebih kecil, jadi ${benar} lebih sedikit.`,
-      polya: polya("Aku mencari kelompok yang lebih sedikit.", "Aku hitung keduanya.", `${e1} = ${a}, ${e2} = ${b}.`, "Aku cek: bilangan yang lebih kecil berarti lebih sedikit."),
-      fakta: { a, b, benarIsA: a < b ? 1 : 0 },
-      suara: "Kelompok mana yang lebih sedikit? Hitung dulu tiap kelompok.",
+      mode: "pilih", pilihan: r.kocok([e1, e2]), kunci: benarIsA ? e1 : e2,
+      petunjuk: "Hitung kelompok pertama, lalu kelompok kedua. Pilih yang hasil hitungannya sama dengan yang ditanya.",
+      mengapa: `Kelompok ${e1} ada ${a}, kelompok ${e2} ada ${b}. Yang banyaknya ${target} adalah kelompok ${benarIsA ? e1 : e2}.`,
+      polya: polya(`Aku mencari kelompok yang banyaknya ${target}.`, "Aku hitung kedua kelompok satu per satu.", `${e1} = ${a}, ${e2} = ${b}.`, `Aku cek: ${target} memang ada di kelompok pilihanku.`),
+      fakta: { a, b, target, benarIsA: benarIsA ? 1 : 0 },
+      suara: `Kelompok mana yang banyaknya ${eja(target)}? Hitung dulu tiap kelompok.`,
     };
   },
-  "c-sama-banyak": (r, p) => {
-    const lo = num(p, "min", 2), hi = num(p, "max", 8);
-    const a = r.int(lo, hi);
-    const sama = r.float() < 0.5;
-    const b = sama ? a : a === hi ? a - 1 : a + 1;
-    const [e1, e2] = r.kocok(BENDA).slice(0, 2);
-    const kunci = sama ? "Sama banyak" : "Tidak sama";
+  "c-hitung-ganda": (r, p) => {
+    const n = r.int(num(p, "min", 3), num(p, "max", 9));
+    const nm = r.pilih(NAMA);
+    const e = r.pilih(BENDA);
     return {
-      teks: "Apakah dua kelompok ini sama banyak?",
-      visual: { jenis: "dua-kelompok", a: { emoji: e1, jumlah: a }, b: { emoji: e2, jumlah: b } },
-      mode: "pilih", pilihan: ["Sama banyak", "Tidak sama"], kunci,
-      petunjuk: "Hitung kedua kelompok. Apakah bilangannya sama?",
-      mengapa: sama ? `Keduanya ada ${a}. Bilangannya sama, jadi sama banyak.` : `Satu kelompok ada ${a}, yang lain ada ${b}. Bilangannya beda.`,
-      polya: polya("Aku memeriksa apakah banyaknya sama.", "Aku hitung dua kelompok.", `Kelompok pertama ${a}, kelompok kedua ${b}.`, "Aku bandingkan dua bilangan itu."),
-      fakta: { a, b },
+      teks: `${nm} menghitung benda ini dan menjawab ${n + 1}. Ternyata ${nm} menghitung satu benda dua kali. Ada berapa benda sebenarnya?`,
+      visual: { jenis: "benda", emoji: e, jumlah: n, bisaKetuk: true },
+      mode: "pilih", pilihan: acakPilihan(r, n, 0, 10), kunci: String(n),
+      petunjuk: "Hitung sendiri bendanya. Ketuk tiap benda satu kali saja.",
+      mengapa: `Satu benda terhitung dua kali, jadi ${nm} menjawab terlalu banyak. Kalau tiap benda dihitung satu kali, banyaknya ${n}.`,
+      polya: polya(`${nm} bilang ${n + 1}, tetapi mungkin keliru.`, "Aku hitung sendiri, satu benda satu kali.", `Hasilnya ${n}.`, `Aku cek: ${n + 1} terlalu banyak karena ada benda terhitung dua kali.`),
+      fakta: { n, jawabanNama: n + 1 },
+      nonRutin: true,
     };
   },
 
   /* ===== PICTORIAL ===== */
-  "p-turus": (r, p) => {
-    const n = r.int(num(p, "min", 1), num(p, "max", 5));
-    return {
-      teks: "Gambar benda tadi sekarang menjadi garis turus. Satu garis mewakili satu benda. Ada berapa garis?",
-      visual: { jenis: "turus", jumlah: n },
-      mode: "pilih", pilihan: acakPilihan(r, n, 0, 10), kunci: String(n),
-      petunjuk: "Hitung garisnya satu per satu. Empat garis lurus dan satu garis miring menjadi satu kelompok lima.",
-      mengapa: `Satu garis mewakili satu benda. Ada ${n} garis, jadi ada ${n} benda.`,
-      polya: polya("Aku menghitung garis turus.", "Satu garis sama dengan satu benda. Aku hitung garisnya.", `Banyak garis: ${n}.`, "Aku hitung ulang dalam kelompok lima."),
-      fakta: { n },
-    };
-  },
   "p-kotak-sepuluh": (r, p) => {
-    const n = r.int(num(p, "min", 1), num(p, "max", 10));
+    const n = r.int(num(p, "min", 0), num(p, "max", 10));
     return {
       teks: "Kotak sepuluh ini punya sepuluh petak. Petak berisi bulatan menunjukkan banyak benda. Ada berapa bulatan?",
       visual: { jenis: "kotak-sepuluh", jumlah: n },
       mode: "pilih", pilihan: acakPilihan(r, n, 0, 10), kunci: String(n),
       petunjuk: "Baris atas punya lima petak. Kalau penuh, itu lima. Lalu tambah baris bawah.",
-      mengapa: n >= 5 ? `Baris atas penuh, yaitu lima. Baris bawah ada ${n - 5}. Jadi seluruhnya ${n}.` : `Baris atas terisi ${n} petak. Jadi ada ${n} bulatan.`,
+      mengapa: n === 0 ? "Tidak ada bulatan sama sekali. Banyaknya nol." : n >= 5 ? `Baris atas penuh, yaitu lima. Baris bawah ada ${n - 5}. Jadi seluruhnya ${n}.` : `Baris atas terisi ${n} petak. Jadi ada ${n} bulatan.`,
       polya: polya("Aku menghitung bulatan di kotak sepuluh.", "Aku lihat baris atas, lalu baris bawah.", `Seluruhnya ${n} bulatan.`, "Petak yang kosong tidak ikut dihitung."),
       fakta: { n },
     };
   },
-  "p-garis-titik": (r, p) => {
-    const n = r.int(num(p, "min", 0), num(p, "max", 10));
+
+  "p-titik-hitung": (r, p) => {
+    const n = r.int(num(p, "min", 1), num(p, "max", 5));
     return {
-      teks: "Anak panah menunjuk satu bilangan di garis bilangan. Bilangan berapa?",
-      visual: { jenis: "garis-bilangan", titik: n, dari: 0, sampai: 10, sembunyi: true },
+      teks: "Gambar benda tadi sekarang menjadi titik. Satu titik mewakili satu benda. Ada berapa titik?",
+      visual: { jenis: "titik", jumlah: n },
       mode: "pilih", pilihan: acakPilihan(r, n, 0, 10), kunci: String(n),
-      petunjuk: "Mulai dari nol, lalu hitung loncatan kecilnya sampai ke panah.",
-      mengapa: `Dari nol ada ${n} loncatan sampai ke panah. Jadi panah menunjuk ${n}.`,
-      polya: polya("Aku mencari bilangan yang ditunjuk panah.", "Aku mulai dari nol dan melompat satu-satu.", `Setelah ${n} lompatan, aku sampai di panah.`, "Aku hitung lagi dari nol untuk memastikan."),
+      petunjuk: "Hitung titiknya satu per satu, dari kiri ke kanan.",
+      mengapa: `Satu titik mewakili satu benda. Ada ${n} titik, jadi ada ${n} benda.`,
+      polya: polya("Aku menghitung titik.", "Satu titik sama dengan satu benda. Aku hitung satu per satu.", `Banyak titik: ${n}.`, "Aku hitung ulang dari awal."),
       fakta: { n },
     };
   },
-  "p-piktogram-banyak": (r, p) => {
-    const lo = num(p, "min", 1), hi = num(p, "max", 6);
-    const em = r.kocok(BENDA).slice(0, 3);
-    const ang = r.kocok(rentang(lo, hi)).slice(0, 3);
-    const idx = r.int(0, 2);
-    const e = em[idx];
-    const n = ang[idx];
+  "p-petak-banyak": (r, p) => {
+    const lo = num(p, "min", 1), hi = num(p, "max", 10);
+    const [atas, bawah] = r.kocok(rentang(lo, hi)).slice(0, 2);
+    const benarAtas = r.float() < 0.5;
+    const target = benarAtas ? atas : bawah;
     return {
-      teks: `Piktogram ini memakai satu gambar untuk satu benda. Ada berapa ${e}?`,
-      visual: { jenis: "piktogram", baris: em.map((x, i) => ({ label: x, emoji: x, jumlah: ang[i] })) },
-      mode: "pilih", pilihan: acakPilihan(r, n, 0, 10), kunci: String(n),
-      petunjuk: "Cari baris yang gambarnya sama, lalu hitung gambarnya.",
-      mengapa: `Baris ${e} punya ${n} gambar. Satu gambar sama dengan satu benda.`,
-      polya: polya(`Aku mencari banyak ${e}.`, "Aku cari barisnya lalu hitung gambarnya.", `Ada ${n} gambar.`, "Aku pastikan tidak salah baris."),
-      fakta: { n, baris: ang, idx },
-      suara: "Piktogram ini memakai satu gambar untuk satu benda. Pilih baris yang ditanyakan, lalu hitung gambarnya.",
-    };
-  },
-  "p-piktogram-terbanyak": (r, p) => {
-    const lo = num(p, "min", 1), hi = num(p, "max", 8);
-    const em = r.kocok(BENDA).slice(0, 3);
-    const ang = r.kocok(rentang(lo, hi)).slice(0, 3);
-    const idx = ang.indexOf(Math.max(...ang));
-    return {
-      teks: "Lihat piktogram ini. Baris mana yang paling banyak?",
-      visual: { jenis: "piktogram", baris: em.map((e, i) => ({ label: e, emoji: e, jumlah: ang[i] })) },
-      mode: "pilih", pilihan: [...em], kunci: em[idx],
-      petunjuk: "Baris yang paling panjang punya gambar paling banyak.",
-      mengapa: `Baris ${em[idx]} punya ${ang[idx]} gambar. Itu bilangan terbesar di antara ${ang.join(", ")}.`,
-      polya: polya("Aku mencari baris paling banyak.", "Aku hitung tiap baris lalu bandingkan.", `Barisnya: ${ang.join(", ")}.`, "Aku cek: ada bilangan yang lebih besar?"),
-      fakta: { baris: ang, idx },
-      suara: "Lihat piktogram ini. Baris mana yang paling banyak? Hitung gambar di setiap baris.",
-    };
-  },
-  "p-garis-sesudah": (r, p) => {
-    const n = r.int(num(p, "min", 0), num(p, "max", 9));
-    return {
-      teks: `Di garis bilangan, bilangan apa yang ada tepat sesudah ${n}?`,
-      visual: { jenis: "garis-bilangan", titik: n, dari: 0, sampai: 10 },
-      mode: "pilih", pilihan: acakPilihan(r, n + 1, 0, 10), kunci: String(n + 1),
-      petunjuk: "Dari panah, melompatlah satu langkah ke kanan.",
-      mengapa: `Satu langkah ke kanan dari ${n} adalah ${n + 1}.`,
-      polya: polya(`Aku mencari bilangan sesudah ${n}.`, "Aku lompat satu langkah ke kanan.", `Sampai di ${n + 1}.`, `Aku hitung: ${n}, lalu ${n + 1}.`),
-      fakta: { n },
+      teks: `Mana baris yang punya ${target} petak?`,
+      visual: { jenis: "dua-baris-petak", atas, bawah },
+      mode: "pilih", pilihan: r.kocok(["Baris atas", "Baris bawah"]), kunci: benarAtas ? "Baris atas" : "Baris bawah",
+      petunjuk: "Hitung petak di baris atas, lalu di baris bawah.",
+      mengapa: `Baris atas ada ${atas} petak, baris bawah ada ${bawah} petak. ${target} ada di ${benarAtas ? "baris atas" : "baris bawah"}.`,
+      polya: polya(`Aku mencari baris dengan ${target} petak.`, "Aku hitung petak tiap baris.", `Atas ${atas}, bawah ${bawah}.`, `Aku cek lagi: ${target} cocok dengan baris pilihanku.`),
+      fakta: { atas, bawah, target, benarAtas: benarAtas ? 1 : 0 },
+      suara: `Mana baris yang punya ${eja(target)} petak? Hitung petak di tiap baris.`,
     };
   },
 
@@ -253,18 +207,6 @@ const PEMBANGKIT: Record<string, Pembangkit> = {
       fakta: { n },
     };
   },
-  "a-sebelum": (r, p) => {
-    const n = r.int(num(p, "min", 1), num(p, "max", 10));
-    return {
-      teks: `Bilangan sebelum ${n} adalah ...`,
-      visual: { jenis: "tidak-ada" },
-      mode: "pilih", pilihan: acakPilihan(r, n - 1, 0, 10), kunci: String(n - 1),
-      petunjuk: "Menghitung mundur satu langkah.",
-      mengapa: `Satu langkah sebelum ${n} adalah ${n - 1}.`,
-      polya: polya(`Aku mencari bilangan sebelum ${n}.`, "Aku menghitung mundur satu langkah.", `${n}, mundur menjadi ${n - 1}.`, "Aku cek: bilangan sebelum selalu lebih kecil."),
-      fakta: { n },
-    };
-  },
   "a-hilang": (r, p) => {
     const lo = num(p, "min", 0), hi = num(p, "max", 10);
     const awal = r.int(lo, hi - 4);
@@ -281,64 +223,6 @@ const PEMBANGKIT: Record<string, Pembangkit> = {
       polya: polya("Aku mencari bilangan yang hilang.", "Aku lihat bilangan di kiri dan kanan.", `Yang hilang ${n}.`, "Aku baca urutannya dari awal. Tidak ada yang melompat."),
       fakta: { deret: deret.map((x) => (x === null ? -1 : x)), n },
       suara: "Ada satu bilangan yang hilang dalam urutan. Bilangan apa?",
-    };
-  },
-  "a-bandingkan": (r, p) => {
-    const lo = num(p, "min", 0), hi = num(p, "max", 10);
-    const [a, b] = r.kocok(rentang(lo, hi)).slice(0, 2);
-    const besar = r.float() < 0.5;
-    const n = besar ? Math.max(a, b) : Math.min(a, b);
-    return {
-      teks: `Mana yang ${besar ? "lebih besar" : "lebih kecil"}: ${a} atau ${b}?`,
-      visual: { jenis: "tidak-ada" },
-      mode: "pilih", pilihan: r.kocok([String(a), String(b)]), kunci: String(n),
-      petunjuk: "Bilangan yang disebut lebih dulu saat menghitung maju adalah yang lebih kecil.",
-      mengapa: `${Math.min(a, b)} disebut lebih dulu daripada ${Math.max(a, b)} saat menghitung maju. Jadi ${Math.min(a, b)} lebih kecil dan ${Math.max(a, b)} lebih besar.`,
-      polya: polya("Aku membandingkan dua bilangan.", "Aku bayangkan menghitung maju dari nol.", `${Math.min(a, b)} lebih dulu, ${Math.max(a, b)} belakangan.`, "Aku cek jawaban dengan garis bilangan di kepala."),
-      fakta: { a, b, besar: besar ? 1 : 0 },
-    };
-  },
-  "a-terkecil": (r, p) => {
-    const lo = num(p, "min", 0), hi = num(p, "max", 10);
-    const tiga = r.kocok(rentang(lo, hi)).slice(0, 3);
-    const besar = r.float() < 0.5;
-    const n = besar ? Math.max(...tiga) : Math.min(...tiga);
-    const urut = [...tiga].sort((x, y) => x - y).join(", ");
-    return {
-      teks: `Dari ${tiga.join(", ")}, mana bilangan paling ${besar ? "besar" : "kecil"}?`,
-      visual: { jenis: "tidak-ada" },
-      mode: "pilih", pilihan: tiga.map(String), kunci: String(n),
-      petunjuk: "Urutkan dulu dari yang paling kecil ke paling besar.",
-      mengapa: `Urutannya: ${urut}. Paling ${besar ? "besar" : "kecil"} adalah ${n}.`,
-      polya: polya(`Aku mencari bilangan paling ${besar ? "besar" : "kecil"}.`, "Aku urutkan ketiga bilangan.", `Urutan: ${urut}.`, "Aku cek ujung urutannya."),
-      fakta: { tiga, besar: besar ? 1 : 0 },
-    };
-  },
-  "a-antara": (r, p) => {
-    const lo = num(p, "min", 0), hi = num(p, "max", 10);
-    const a = r.int(lo, hi - 2);
-    return {
-      teks: `Bilangan apa yang tepat di antara ${a} dan ${a + 2}?`,
-      visual: { jenis: "tidak-ada" },
-      mode: "pilih", pilihan: acakPilihan(r, a + 1, 0, 10), kunci: String(a + 1),
-      petunjuk: "Hitung maju dari bilangan pertama. Satu langkah, berhenti sebelum bilangan kedua.",
-      mengapa: `${a}, lalu ${a + 1}, lalu ${a + 2}. Yang di tengah adalah ${a + 1}.`,
-      polya: polya("Aku mencari bilangan di tengah.", "Aku hitung maju dari bilangan pertama.", `${a}, ${a + 1}, ${a + 2}.`, "Bilangan di tengah lebih besar dari yang kiri dan lebih kecil dari yang kanan."),
-      fakta: { a },
-    };
-  },
-  "a-cerita-sesudah": (r, p) => {
-    const n = r.int(num(p, "min", 1), num(p, "max", 8));
-    const nm = r.pilih(NAMA);
-    const benda = r.pilih(["mangga", "ikan", "kelereng", "pisang"]);
-    return {
-      teks: `${nm} punya ${n} ${benda}. Ibu memberi ${nm} satu lagi. ${nm} menghitung maju satu langkah dari ${n}. ${nm} menyebut bilangan ...`,
-      visual: { jenis: "tidak-ada" },
-      mode: "pilih", pilihan: acakPilihan(r, n + 1, 0, 10), kunci: String(n + 1),
-      petunjuk: "Satu lagi berarti satu langkah maju dalam urutan bilangan.",
-      mengapa: `Satu langkah sesudah ${n} adalah ${n + 1}. Jadi ${nm} sekarang punya ${n + 1}.`,
-      polya: polya(`${nm} punya ${n}, dapat satu lagi.`, "Aku hitung maju satu langkah.", `${n}, lalu ${n + 1}.`, "Banyaknya sekarang memang lebih besar dari tadi."),
-      fakta: { n },
     };
   },
   "a-banyak-bilangan": (r, p) => {
@@ -374,21 +258,6 @@ const PEMBANGKIT: Record<string, Pembangkit> = {
       nonRutin: true,
     };
   },
-  "a-mundur": (r) => {
-    const mulai = r.int(8, 10);
-    const ke = r.int(3, 5);
-    const n = mulai - (ke - 1);
-    return {
-      teks: `Halim menghitung mundur dari ${mulai}. Bilangan ke-${ke} yang Halim sebut adalah ...`,
-      visual: { jenis: "tidak-ada" },
-      mode: "pilih", pilihan: acakPilihan(r, n, 0, 10), kunci: String(n),
-      petunjuk: `Bilangan pertama yang disebut adalah ${mulai} sendiri. Lalu mundur satu-satu.`,
-      mengapa: `Urutannya: ${Array.from({ length: ke }, (_, i) => mulai - i).join(", ")}. Yang ke-${ke} adalah ${n}.`,
-      polya: polya(`Halim mundur dari ${mulai}.`, "Aku sebut bilangannya satu-satu dan menghitung urutannya.", `Yang ke-${ke}: ${n}.`, `Bilangan pertama memang ${mulai}.`),
-      fakta: { mulai, ke, n },
-      nonRutin: true,
-    };
-  },
   "a-kesalahan": (r) => {
     const n = r.int(2, 8);
     const nm = r.pilih(NAMA);
@@ -400,6 +269,48 @@ const PEMBANGKIT: Record<string, Pembangkit> = {
       mengapa: `${nm} melompati ${n + 1}. Urutan yang benar: ${n}, ${n + 1}, ${n + 2}. Jadi sesudah ${n} datang ${n + 1}.`,
       polya: polya(`${nm} mungkin keliru. Aku harus memeriksa.`, "Aku hitung maju satu langkah dari bilangan itu.", `${n}, lalu ${n + 1}.`, `Bilangan ${n + 2} datang dua langkah sesudah ${n}, bukan satu.`),
       fakta: { n, salah: n + 2 },
+    };
+  },
+  "a-terakhir": (r, p) => {
+    const n = r.int(num(p, "min", 1), num(p, "max", 10));
+    const nm = r.pilih(NAMA);
+    const benda = r.pilih(["ikan", "mangga", "kelereng", "pisang"]);
+    const seq = rentang(1, n).join(", ");
+    return {
+      teks: `${nm} menghitung ${benda}: ${seq}. Berapa banyak ${benda} ${nm}?`,
+      visual: { jenis: "tidak-ada" },
+      mode: "pilih", pilihan: acakPilihan(r, n, 1, 10), kunci: String(n),
+      petunjuk: "Lihat bilangan yang disebut paling akhir. Itu banyaknya.",
+      mengapa: `Bilangan terakhir yang disebut menyatakan banyak seluruhnya. ${nm} menyebut ${n} paling akhir, jadi ada ${n} ${benda}.`,
+      polya: polya(`${nm} menghitung ${benda} sambil menyebut bilangan.`, "Aku cari bilangan yang disebut paling akhir.", `Bilangan terakhir: ${n}.`, "Aku cek: satu benda satu bilangan, tidak ada yang terlewat."),
+      fakta: { n, seq: rentang(1, n) },
+    };
+  },
+  "a-nol-cerita": (r) => {
+    const nm = r.pilih(NAMA);
+    const benda = r.pilih(["bola", "mangga", "kelereng", "ikan"]);
+    return {
+      teks: `Keranjang ${nm} tidak ada isinya sama sekali. Banyak ${benda} di keranjang ${nm} ditulis dengan angka ...`,
+      visual: { jenis: "tidak-ada" },
+      mode: "pilih", pilihan: r.kocok(["0", "1", "2", "10"]), kunci: "0",
+      petunjuk: "Kalau tidak ada benda sama sekali, banyaknya disebut nol.",
+      mengapa: "Keranjang yang tidak ada isinya berarti tidak ada benda. Banyaknya nol, ditulis 0.",
+      polya: polya("Keranjang tidak ada isinya.", "Aku ingat: tidak ada benda berarti nol.", "Lambangnya 0.", "Nol bukan satu. Satu berarti ada satu benda."),
+      fakta: { n: 0 },
+    };
+  },
+  "a-banyak-angka": (r) => {
+    const s = r.int(0, 6);
+    const n = 10 - s;
+    return {
+      teks: `Kira menulis lambang bilangan dari ${s} sampai 10. Ada berapa lambang yang hanya memakai satu angka?`,
+      visual: { jenis: "tidak-ada" },
+      mode: "pilih", pilihan: acakPilihan(r, n, 1, 10), kunci: String(n),
+      petunjuk: "Tulis semua lambangnya. Ingat, lambang 10 memakai dua angka: satu dan nol.",
+      mengapa: `Lambang dari ${s} sampai 9 memakai satu angka, jadi ada ${n}. Lambang 10 memakai dua angka (satu dan nol), jadi tidak dihitung.`,
+      polya: polya(`Aku mencari lambang yang hanya satu angka dari ${s} sampai 10.`, "Aku tulis semua lambangnya lalu coret yang dua angka.", `${rentang(s, 9).join(", ")}: ada ${n}.`, "Aku cek lambang 10: dua angka, jadi tidak ikut."),
+      fakta: { s, n },
+      nonRutin: true,
     };
   },
 };
