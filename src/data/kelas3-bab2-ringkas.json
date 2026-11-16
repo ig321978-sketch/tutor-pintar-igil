@@ -274,6 +274,149 @@
             ]
           }
         ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Cara mengisi titik-titik?",
+          "ikon": "❓",
+          "suara": "Ini peta tentang kalimat Matematika penjumlahan. Kita ingin tahu cara mengisi titik-titik pada kalimat penjumlahan. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-tulis",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Menulis kalimat dari cerita",
+            "ikon": "📖",
+            "petunjuk": "Cerita penjumlahan ditulis menjadi kalimat Matematika, dan bilangan yang belum diketahui ditulis dengan titik-titik."
+          },
+          {
+            "id": "hal-isi",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Mengisi titik-titik",
+            "ikon": "🔎",
+            "petunjuk": "Titik-titik diisi dengan bilangan yang membuat kalimat Matematika menjadi benar."
+          },
+          {
+            "id": "hal-periksa",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Memeriksa dan kemungkinan",
+            "ikon": "✅",
+            "petunjuk": "Hasil diperiksa dengan menjumlahkan lagi, dan bila hanya jumlahnya yang diketahui, pasangan bilangannya ada banyak."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "📋",
+            "petunjuk": "Ini kumpulan langkah untuk mengisi titik-titik."
+          },
+          {
+            "id": "cara-titik",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Temukan titik-titik",
+            "ikon": "👀",
+            "petunjuk": "Langkah pertama: baca kalimat Matematikanya dan temukan bilangan yang belum diketahui."
+          },
+          {
+            "id": "cara-kurang",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Jumlah dikurangi bagian",
+            "ikon": "➖",
+            "petunjuk": "Langkah kedua: kurangkan jumlah dengan bilangan yang sudah diketahui."
+          },
+          {
+            "id": "cara-periksa",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Periksa dengan penjumlahan",
+            "ikon": "🔁",
+            "petunjuk": "Langkah ketiga: jumlahkan lagi untuk memeriksa hasilnya."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-isi",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Bisa mengisi titik-titik",
+            "ikon": "🏆",
+            "petunjuk": "Kemampuan mengisi bilangan yang belum diketahui, di depan maupun di belakang kalimat."
+          },
+          {
+            "id": "hasil-periksa",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Bisa memeriksa hasilnya",
+            "ikon": "⭐",
+            "petunjuk": "Kemampuan memeriksa jawaban dengan menjumlahkan kembali."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Kalimat dan isi titik-titik",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel kalimat penjumlahan. Untuk tiap kalimat, pasang bilangan yang diketahui, jumlahnya, dan bilangan yang mengisi titik-titik.",
+        "pojok": "Kalimat",
+        "kolom": [
+          "Diketahui",
+          "Jumlah",
+          "Titik-titik"
+        ],
+        "baris": [
+          {
+            "label": "8 + … = 19",
+            "sel": [
+              "8",
+              "19",
+              "11"
+            ]
+          },
+          {
+            "label": "23 + … = 45",
+            "sel": [
+              "23",
+              "45",
+              "22"
+            ]
+          },
+          {
+            "label": "… + 16 = 54",
+            "sel": [
+              "16",
+              "54",
+              "38"
+            ]
+          },
+          {
+            "label": "… + 36 = 68",
+            "sel": [
+              "36",
+              "68",
+              "32"
+            ]
+          }
+        ]
       }
     },
     "B": {
@@ -527,6 +670,149 @@
                   ]
                 }
               }
+            ]
+          }
+        ]
+      },
+      "petaSusun": {
+        "pusat": {
+          "judul": "Berapa titik-titik itu?",
+          "ikon": "➖",
+          "suara": "Ini peta kalimat Matematika pengurangan. Kita ingin mencari bilangan yang belum diketahui, yaitu titik-titik pada kalimat pengurangan. Ada hal yang dipelajari, cara melakukannya, dan hasil yang diharapkan."
+        },
+        "petunjuk": "Seret tab ke nomor yang cocok, sesuai peta masalahnya.",
+        "simpul": [
+          {
+            "id": "hal",
+            "nomor": 1,
+            "induk": null,
+            "teks": "Tiga hal yang dipelajari",
+            "ikon": "📚",
+            "petunjuk": "Ini kumpulan hal yang kita pelajari, bukan cara atau hasilnya."
+          },
+          {
+            "id": "hal-kalimat",
+            "nomor": 2,
+            "induk": "hal",
+            "teks": "Kalimat Matematika pengurangan",
+            "ikon": "📝",
+            "petunjuk": "Mengenal bentuk pengurangan yang memuat titik-titik untuk bilangan yang belum diketahui."
+          },
+          {
+            "id": "hal-dikurangkan",
+            "nomor": 3,
+            "induk": "hal",
+            "teks": "Mencari bilangan yang dikurangkan",
+            "ikon": "🔎",
+            "petunjuk": "Titik-titik berada di tengah, yaitu bilangan yang dikurangkan belum diketahui."
+          },
+          {
+            "id": "hal-awal",
+            "nomor": 4,
+            "induk": "hal",
+            "teks": "Mencari bilangan awal",
+            "ikon": "🏁",
+            "petunjuk": "Titik-titik berada di depan, yaitu bilangan awal belum diketahui."
+          },
+          {
+            "id": "cara",
+            "nomor": 5,
+            "induk": null,
+            "teks": "Cara melakukannya",
+            "ikon": "🛠️",
+            "petunjuk": "Ini kumpulan langkah, satu langkah untuk tiap hal yang dipelajari."
+          },
+          {
+            "id": "cara-letak",
+            "nomor": 6,
+            "induk": "cara",
+            "teks": "Lihat letak titik-titik",
+            "ikon": "👀",
+            "petunjuk": "Langkah untuk mengenal kalimat: cari dulu titik-titik berada di tengah atau di depan."
+          },
+          {
+            "id": "cara-hitung",
+            "nomor": 7,
+            "induk": "cara",
+            "teks": "Kurangkan atau tambahkan",
+            "ikon": "➕",
+            "petunjuk": "Langkah untuk mencari bilangan: kurangkan bila di tengah, tambahkan bila di depan."
+          },
+          {
+            "id": "cara-periksa",
+            "nomor": 8,
+            "induk": "cara",
+            "teks": "Periksa dengan mengurangkan",
+            "ikon": "✅",
+            "petunjuk": "Langkah untuk memeriksa: masukkan jawaban ke kalimat dan kurangkan lagi."
+          },
+          {
+            "id": "hasil",
+            "nomor": 9,
+            "induk": null,
+            "teks": "Hasil yang diharapkan",
+            "ikon": "🎯",
+            "petunjuk": "Ini kumpulan kemampuan yang kita capai di akhir."
+          },
+          {
+            "id": "hasil-isi",
+            "nomor": 10,
+            "induk": "hasil",
+            "teks": "Titik-titik terisi dengan benar",
+            "ikon": "🧩",
+            "petunjuk": "Kemampuan menentukan bilangan yang cocok, baik di tengah maupun di depan."
+          },
+          {
+            "id": "hasil-cek",
+            "nomor": 11,
+            "induk": "hasil",
+            "teks": "Jawaban selalu diperiksa",
+            "ikon": "🔁",
+            "petunjuk": "Kebiasaan memeriksa hasil dengan operasi kebalikan."
+          }
+        ]
+      },
+      "tabelSusun": {
+        "judul": "Mengisi titik-titik",
+        "petunjuk": "Seret tab ke kotak yang benar di dalam tabel.",
+        "suara": "Tabel kalimat Matematika pengurangan. Untuk tiap kalimat, pasang letak titik-titik, cara mencarinya, dan jawabannya.",
+        "pojok": "Kalimat",
+        "kolom": [
+          "Titik-titik",
+          "Cara",
+          "Jawaban"
+        ],
+        "baris": [
+          {
+            "label": "80 − … = 45",
+            "sel": [
+              "tengah",
+              "kurangi",
+              "35"
+            ]
+          },
+          {
+            "label": "… − 45 = 27",
+            "sel": [
+              "depan",
+              "tambahi",
+              "72"
+            ]
+          },
+          {
+            "label": "56 − … = 24",
+            "sel": [
+              "tengah",
+              "kurangi",
+              "32"
+            ]
+          },
+          {
+            "label": "… − 12 = 26",
+            "sel": [
+              "depan",
+              "tambahi",
+              "38"
             ]
           }
         ]
