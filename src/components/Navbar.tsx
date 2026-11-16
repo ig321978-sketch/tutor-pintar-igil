@@ -9,13 +9,13 @@ import { situsHanyaAdmin } from "@/lib/situs-hanya-admin";
 
 const MENU = [
   { href: "/ruang-belajar", label: "📚 Ruang Belajar" },
+  { href: "/rapor", label: "📊 Rapor & Sertifikat" },
   { href: "/ranking", label: "🏆 Ranking & Beasiswa" },
   { href: "/komunitas", label: "🏫 Komunitas IGIL" },
 ] as const;
 
 /** Menu lain masih tahap tinjau: hanya tampil untuk admin sampai data nyata tersambung. */
 const MENU_TINJAU = [
-  { href: "/rapor", label: "📊 Rapor & Sertifikat" },
   { href: "/dasbor", label: "🏠 Dasbor & Info" },
   { href: "/daftar", label: "📝 Pendaftaran Anak" },
 ] as const;
