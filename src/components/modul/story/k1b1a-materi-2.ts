@@ -1,5 +1,5 @@
 import type { AdeganStory } from "./logika-story";
-import { E, W, balok, bingkai, deretMainan, emo, judul, kartu, kartuAngka, kartuTitik, keranjang, orang, teks, tulisAngka, type Titik } from "./k1b1a-gambar";
+import { E, W, balok, wajah, bingkai, deretMainan, emo, judul, kartu, kartuAngka, kartuTitik, keranjang, orang, teks, tulisAngka, type Titik } from "./k1b1a-gambar";
 import { KATA_ANGKA, bersih, hapus, k, sorotkan, tambah, ubah, urutKata } from "./k1b1a-bantu";
 
 /* Lanjutan cerita "Merapikan Lemari Mainan Igil" (versi padat): melihat sekilas, sampai sepuluh, nol, serta membaca dan menulis angka. */
@@ -137,7 +137,7 @@ export const ADEGAN_BACA_TULIS: AdeganStory = {
   latar: "#FFFBEB",
   ketukan: [
     k(SUARA_H1, tambah(0, judul("Kartu angka nol sampai sepuluh")), ...pos1.map((p, i) => tambah(p, ...kartuKe(i), namaKe(i)))),
-    k(SUARA_H2, ...pos2.map((p, i) => tambah(p, ...kartuKe(i + 6), namaKe(i + 6))), tambah("sepuluh.", emo("kk", 270, 140, E.kaka, 26))),
+    k(SUARA_H2, ...pos2.map((p, i) => tambah(p, ...kartuKe(i + 6), namaKe(i + 6))), tambah("sepuluh.", ...wajah("kk", 270, 140, E.kaka, 26))),
     k(
       SUARA_I1,
       bersih(0),

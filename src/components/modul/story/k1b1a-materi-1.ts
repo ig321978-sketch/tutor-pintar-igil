@@ -1,5 +1,5 @@
 import type { AdeganStory, Obj } from "./logika-story";
-import { E, W, bicara, deretMainan, emo, garis, judul, kartu, kotak, lemari, orang, tata, teks, type Titik } from "./k1b1a-gambar";
+import { E, W, bicara, wajah, deretMainan, emo, garis, judul, kartu, kotak, lemari, orang, tata, teks, type Titik } from "./k1b1a-gambar";
 import { hapus, hitungMainan, idx, k, sorotkan, tambah, ubah } from "./k1b1a-bantu";
 
 /*
@@ -77,7 +77,7 @@ export const ADEGAN_DIBANTU: AdeganStory = {
   ketukan: [
     k(
       SUARA_B1,
-      tambah(0, judul("Pisahkan yang sejenis"), emo("kk2", 22, 50, E.kaka, 24)),
+      tambah(0, judul("Pisahkan yang sejenis"), ...wajah("kk2", 22, 50, E.kaka, 24)),
       tambah("Abang", emo("ab2", 278, 50, E.abang, 24)),
       tambah("Kata", ...bicara("kkb", 40, 32, 150, "Pisahkan yang sejenis!")),
       tambah("pisahkan", ...deretMainan(E.mobil, "pm", ACAK_MOBIL), ...deretMainan(E.boneka, "pb", ACAK_BONEKA), ...deretMainan(E.bola, "pl", ACAK_BOLA)),

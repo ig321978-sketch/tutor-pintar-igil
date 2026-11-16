@@ -156,6 +156,7 @@ export function tulisAngka(id: string, x: number, y: number, angka: string, s = 
 /** Emoji tokoh dan mainan cerita "Merapikan Lemari Mainan Igil" (semua paling tinggi Emoji 12). */
 export const E = {
   igil: "\u{1F9D2}",
+  /** Kaka: anak perempuan (diberi pita oleh `wajah` dan `orang`). */
   kaka: "\u{1F467}",
   abang: "\u{1F466}",
   mamah: "\u{1F469}",
@@ -183,8 +184,14 @@ export const E = {
   hati: "\u{1F496}",
 } as const;
 
-/** Tokoh berdiri: emoji `id` dan nama `${id}-n` di bawahnya. */
-export const orang = (id: string, x: number, y: number, e: string, nama: string, u = 30): Obj[] => [emo(id, x, y, e, u), teks(`${id}-n`, x, y + 13, nama, 8.4, W.ungu)];
+/** Pita merah muda di kepala Kaka supaya jelas anak perempuan: id `${id}-pita`. */
+const pita = (id: string, x: number, y: number, u: number): Obj => emo(`${id}-pita`, x + u * 0.3, y - u * 0.52, "\u{1F380}", Math.round(u * 0.5));
+
+/** Wajah tokoh tanpa nama. Kaka (anak perempuan) selalu memakai pita. */
+export const wajah = (id: string, x: number, y: number, e: string, u = 30): Obj[] => (e === E.kaka ? [emo(id, x, y, e, u), pita(id, x, y, u)] : [emo(id, x, y, e, u)]);
+
+/** Tokoh berdiri: wajah `id` dan nama `${id}-n` di bawahnya. */
+export const orang = (id: string, x: number, y: number, e: string, nama: string, u = 30): Obj[] => [...wajah(id, x, y, e, u), teks(`${id}-n`, x, y + 13, nama, 8.4, W.ungu)];
 
 /** Balon ucapan satu baris: kotak `${id}-k` dan teks `${id}-t0`. */
 export const bicara = (id: string, x: number, y: number, w: number, isi: string, warna: string = W.putih): Obj[] => kartu(id, x, y, w, 20, warna, [isi], 8.6);

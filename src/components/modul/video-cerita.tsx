@@ -163,8 +163,8 @@ export function VideoCerita({
   const [pos, setPos] = useState({ a: 0, k: 0 });
   const [t, setT] = useState(0);
   const [jeda, setJeda] = useState(false);
-  const [suara, setSuara] = useState(true);
   const [selesai, setSelesai] = useState(false);
+  const [teksTampil, setTeksTampil] = useState(true);
 
   useEffect(() => {
     bicaraRef.current = speakGuru;
@@ -241,30 +241,30 @@ export function VideoCerita({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const ubahJeda = () => {
+  /** Stop: suara dan gambar langsung berhenti (suara dibatalkan, bukan dijeda, supaya Play tidak menunggu mesin suara). */
+  const berhenti = () => {
     const s = S.current;
-    s.jeda = !s.jeda;
-    setJeda(s.jeda);
-    if (adaSuaraPerangkat()) {
-      if (s.jeda) window.speechSynthesis.pause();
-      else window.speechSynthesis.resume();
-    }
-  };
-
-  const ubahSuara = () => {
-    const s = S.current;
-    s.suara = !s.suara;
-    setSuara(s.suara);
-    if (!s.suara) {
-      hentikanSuaraGuruModul();
-      s.suaraBeres = true;
-    }
-  };
-
-  const ulang = () => {
+    s.jeda = true;
+    s.nomor += 1;
+    setJeda(true);
     hentikanSuaraGuruModul();
-    mulai(0);
+    if (adaSuaraPerangkat()) window.speechSynthesis.cancel();
   };
+
+  /** Play: langsung memutar lagi kalimat yang sedang tampil dari awal. Setelah video selesai, Play memutar dari adegan pertama. */
+  const putar = () => {
+    const s = S.current;
+    if (!s.jalan || s.selesai) {
+      hentikanSuaraGuruModul();
+      mulai(0);
+      return;
+    }
+    s.jeda = false;
+    setJeda(false);
+    ke(s.a, s.k);
+  };
+
+  const sedangMain = sudahMulai && !jeda && !selesai;
 
   const lompatKe = (a: number) => {
     hentikanSuaraGuruModul();
@@ -277,8 +277,10 @@ export function VideoCerita({
     const tersembunyi = () => {
       if (document.hidden && s.jalan && !s.jeda && !s.selesai) {
         s.jeda = true;
+        s.nomor += 1;
         setJeda(true);
-        if (adaSuaraPerangkat()) window.speechSynthesis.pause();
+        hentikanSuaraGuruModul();
+        if (adaSuaraPerangkat()) window.speechSynthesis.cancel();
       }
     };
     document.addEventListener("visibilitychange", tersembunyi);
@@ -291,7 +293,7 @@ export function VideoCerita({
   }, []);
 
   const ad = adegan[pos.a];
-  const kalimat = selesai ? "Selesai. Tekan Ulang untuk memutar lagi." : sudahMulai ? ad.ketukan[pos.k] : "Tekan Mulai untuk memutar video cerita.";
+  const kalimat = selesai ? "Selesai. Tekan Play untuk memutar lagi." : sudahMulai ? ad.ketukan[pos.k] : "Tekan Play untuk memutar video cerita.";
   const tombol = ringkas
     ? "rounded-full border-2 border-[#1C01A5] bg-white px-2.5 py-1 text-[11px] font-black text-[#1C01A5] shadow-[0_2px_0_rgba(28,1,165,0.22)]"
     : TOMBOL;
@@ -323,15 +325,17 @@ export function VideoCerita({
               aria-label={`Mulai putar video ${judul}`}
               className={`rounded-full border-4 border-[#1C01A5] bg-[#FFE566] font-black text-[#1C01A5] shadow-[0_4px_0_rgba(28,1,165,0.35)] ${ringkas ? "px-3 py-1 text-sm" : "px-6 py-2 text-lg"}`}
             >
-              ▶ Mulai
+              ▶ Play
             </button>
           </div>
         ) : null}
       </div>
 
+      {teksTampil ? (
       <p role="status" aria-live="polite" className={`rounded-2xl border-[#1C01A5] bg-[#FFF7CC] text-center font-black leading-snug text-[#1C01A5] ${ringkas ? "min-h-[2.6rem] border-2 px-2 py-1 text-[11px]" : "min-h-[3.4rem] border-4 px-3 py-2 text-base md:text-lg"}`}>
         {kalimat}
       </p>
+      ) : null}
 
       <div className={`flex flex-wrap items-center justify-center ${ringkas ? "gap-1" : "gap-1.5"}`} role="group" aria-label="Pilih adegan">
         {adegan.map((x, i) => (
@@ -349,15 +353,11 @@ export function VideoCerita({
       </div>
 
       <div className={`flex flex-wrap items-center justify-center ${ringkas ? "gap-1" : "gap-2"}`}>
-        <button type="button" onClick={ubahJeda} disabled={!sudahMulai || selesai} aria-pressed={jeda} className={`${tombol} disabled:opacity-40`}>
-          {jeda ? "▶ Lanjut" : "⏸ Jeda"}
+        <button type="button" onClick={sedangMain ? berhenti : putar} aria-pressed={sedangMain} aria-label={sedangMain ? "Stop video" : "Play video"} className={`${tombol} min-w-[6.5rem]`}>
+          {sedangMain ? "⏹ Stop" : "▶ Play"}
         </button>
-        <button type="button" onClick={ulang} disabled={!sudahMulai} className={`${tombol} disabled:opacity-40`}>
-          ↻ Ulang
-        </button>
-        <button type="button" onClick={ubahSuara} aria-pressed={suara} className={tombol}>
-          {suara ? "🔊" : "🔇"}
-          {ringkas ? "" : suara ? " Suara: hidup" : " Suara: mati"}
+        <button type="button" onClick={() => setTeksTampil((v) => !v)} aria-pressed={teksTampil} className={tombol}>
+          {teksTampil ? "🙈 Sembunyikan teks" : "👁 Tampilkan teks"}
         </button>
       </div>
     </div>

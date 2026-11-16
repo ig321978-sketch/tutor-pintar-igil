@@ -52,7 +52,9 @@ for (const s of SET) {
 
 cek("mesin: tanpa jaringan atau layanan suara", !/fetch\(|\/api\/|elevenlabs|XMLHttpRequest/i.test(mesin));
 cek("mesin: suara dihentikan saat dilepas", /hentikanSuaraGuruModul\(\)/.test(mesin));
-cek("mesin: ada Jeda, Ulang, Suara", /Jeda/.test(mesin) && /Ulang/.test(mesin) && /Suara:/.test(mesin));
+cek("mesin: satu tombol Play/Stop dan tombol tampil/sembunyi teks", /▶ Play/.test(mesin) && /⏹ Stop/.test(mesin) && /Sembunyikan teks/.test(mesin) && /Tampilkan teks/.test(mesin));
+cek("mesin: tanpa tombol Jeda, Ulang, dan Suara", !/⏸ Jeda|↻ Ulang|Suara: hidup|Suara: mati/.test(mesin));
+cek("mesin: Stop membatalkan suara (bukan jeda) supaya Play langsung jalan", /speechSynthesis\.cancel\(\)/.test(mesin) && !/speechSynthesis\.(pause|resume)\(\)/.test(mesin));
 cek("mesin: jeda otomatis saat layar disembunyikan", /visibilitychange/.test(mesin));
 cek("mesin: pengaman bila suara tidak melapor selesai", /batas = kalimat\.length \* 150/.test(mesin));
 cek("pemutar: slide Cerita K2 lama tidak dipasang lagi", !/Cerita: (CeritaHitungK2A|CeritaNilaiK2B|CeritaBandingK2C)/.test(pemutar));

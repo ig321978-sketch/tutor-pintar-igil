@@ -1,5 +1,5 @@
 import type { AdeganStory } from "./logika-story";
-import { E, W, emo, judul, kartu, kartuTitik, kotak, teks } from "./k1b1a-gambar";
+import { E, W, emo, wajah, judul, kartu, kartuTitik, kotak, teks } from "./k1b1a-gambar";
 import { bersih, k, sorotkan, tambah, ubah } from "./k1b1a-bantu";
 import { NAMA_METODE, NAMA_METODE_ID, WARNA_METODE, kepala } from "./k1b1a-luar-1";
 
@@ -100,7 +100,7 @@ export const ADEGAN_LUAR_RINGKAS: AdeganStory = {
     k(
       SUARA_R4,
       bersih(0),
-      tambah(0, judul("Terima kasih"), emo("ow", 90, 100, E.kaka, 40), emo("ow2", 150, 100, E.igil, 44), emo("ow3", 210, 100, E.abang, 40)),
+      tambah(0, judul("Terima kasih"), ...wajah("ow", 90, 100, E.kaka, 40), emo("ow2", 150, 100, E.igil, 44), emo("ow3", 210, 100, E.abang, 40)),
       tambah("nol", ...kartu("rz", 60, 124, 180, 34, W.emas, ["berhitung 0 sampai 10"], 11)),
       tambah("Terima", teks("rt", 150, 184, "Sampai jumpa!", 12, W.ungu)),
     ),
