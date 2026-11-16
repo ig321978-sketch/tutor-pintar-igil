@@ -19,7 +19,7 @@ export const TOMBOL_UTAMA =
 export function useTempel(
   tempat: readonly Tempat[],
   benih: number,
-  petunjuk: (label: Label) => string,
+  petunjuk: (label: Label, tempat: Tempat) => string,
   bicara: (t: string) => void,
   /** Aturan cocok. Bawaan: teks label sama persis dengan kunci tempat. Pohon memakai cocok per warna (kelompok). */
   cocokan: (t: Tempat, l: Label) => boolean = cocok,
@@ -50,7 +50,7 @@ export function useTempel(
       setPilih(null);
       setPesan("Cocok!");
     } else {
-      const p = petunjuk(l);
+      const p = petunjuk(l, t);
       setGoyang(t.id);
       window.setTimeout(() => setGoyang(null), 480);
       setPesan(p);

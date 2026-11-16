@@ -40,7 +40,7 @@ export const NAMA: Record<string, string> = {
 
 /* ------------------------------ Mind-map: pohon menghitung (hanya poin pelajaran matematika) ------------------------------ */
 /**
- * Pohon belajar menurut panduan pemilik: akar = Masalah (tiga pertanyaan), daun = Penyelesaian (empat langkah panduan pemilik + dua metode luar
+ * Pohon belajar menurut panduan pemilik: akar = Masalah (tiga pertanyaan), daun = Penyelesaian (enam langkah BERURUTAN bernomor: empat dari panduan pemilik + dua metode luar
  * di Story: Angka terakhir = banyaknya (Cardinality) dan Lihat sekilas (Subitizing), jadi keempat metode Story masuk ke cabang), buah = Hasil (tiga kemampuan).
  * Tanpa poin cerita (mainan, lemari, tokoh). Tiap kelompok punya warna sendiri; label dan tempat kosong memakai warna yang sama,
  * dan label sekelompok boleh ditempel di tempat kosong mana pun yang sewarna.
@@ -51,23 +51,27 @@ export const KELOMPOK_POHON: Record<string, { nama: string; letak: string; ikon:
   metode: { nama: "Penyelesaian", letak: "daun", ikon: "\u{1F343}", warna: "hijau", petunjuk: "Warna label ini hijau. Tempelkan di daun yang hijau." },
   hasil: { nama: "Hasil", letak: "buah", ikon: "\u{1F34E}", warna: "merah", petunjuk: "Warna label ini merah. Tempelkan di buah yang merah." },
 };
-const tp = (id: string, kelompok: string, kunci: string): Tempat => ({ id, kelompok, kunci });
+const tp = (id: string, kelompok: string, kunci: string, urutan?: number): Tempat => (urutan === undefined ? { id, kelompok, kunci } : { id, kelompok, kunci, urutan });
 export const TEMPAT_POHON: Tempat[] = [
   tp("akar-1", "masalah", "Berapa jumlahnya?"),
   tp("akar-2", "masalah", "Bagaimana menulisnya?"),
   tp("akar-3", "masalah", "Bagaimana membacanya?"),
-  tp("daun-1", "metode", "Kelompokkan"),
-  tp("daun-2", "metode", "Hitung satu-satu"),
-  tp("daun-3", "metode", "Tuliskan"),
-  tp("daun-4", "metode", "Kosong = nol"),
-  tp("daun-5", "metode", "Angka terakhir = banyaknya"),
-  tp("daun-6", "metode", "Lihat sekilas"),
+  // Penyelesaian: langkah BERURUTAN, diberi nomor. Urutan belajar menghitung: kelompokkan, hitung satu-satu, angka terakhir,
+  // lihat sekilas (jalan pintas untuk jumlah kecil), tuliskan angkanya, dan terakhir kasus khusus kosong = nol.
+  tp("daun-1", "metode", "Kelompokkan", 1),
+  tp("daun-2", "metode", "Hitung satu-satu", 2),
+  tp("daun-3", "metode", "Angka terakhir = banyaknya", 3),
+  tp("daun-4", "metode", "Lihat sekilas", 4),
+  tp("daun-5", "metode", "Tuliskan", 5),
+  tp("daun-6", "metode", "Kosong = nol", 6),
   tp("buah-1", "hasil", "Bisa menghitung"),
   tp("buah-2", "hasil", "Bisa menulis"),
   tp("buah-3", "hasil", "Bisa membaca"),
 ];
+/** Petunjuk saat label sewarna tetapi salah nomor pada langkah berurutan. Kalimat pendek, tanpa digit. */
+export const PETUNJUK_URUTAN = "Warnanya sudah benar. Urutan langkahnya belum pas. Mana yang dikerjakan lebih dulu?";
 export const SUARA_POHON =
-  "Ini pohon belajar menghitung. Setiap label punya warna. Ketuk label, lalu ketuk tempat kosong yang warnanya sama.";
+  "Ini pohon belajar menghitung. Setiap label punya warna. Daun hijau berisi langkah yang berurutan, ikuti nomornya. Ketuk label, lalu ketuk tempat kosong yang cocok.";
 
 /* ------------------------------ Infografis: rak tabel data ------------------------------ */
 export const KOLOM_RAK = ["Cara menghitung", "Angka", "Dibaca"] as const;

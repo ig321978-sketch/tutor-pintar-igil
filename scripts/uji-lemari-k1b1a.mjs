@@ -42,15 +42,26 @@ const TERLARANG = /\b(kelas|buku|teman|kelompok|tambah|kurang|jumlah|skor|nilai)
   cek(t.every((x) => !CERITA.test(x.kunci)) && !CERITA.test(D.PUSAT_POHON) && !CERITA.test(D.SUARA_POHON), "pohon: tanpa poin cerita, hanya pelajaran matematika");
   // Panduan pemilik, persis: A Masalah, B Penyelesaian, C Hasil.
   sama(t.filter((x) => x.kelompok === "masalah").map((x) => x.kunci), ["Berapa jumlahnya?", "Bagaimana menulisnya?", "Bagaimana membacanya?"], "pohon A. Masalah");
-  sama(t.filter((x) => x.kelompok === "metode").slice(0, 4).map((x) => x.kunci), ["Kelompokkan", "Hitung satu-satu", "Tuliskan", "Kosong = nol"], "pohon B. Penyelesaian: empat langkah panduan pemilik");
-  // Semua metode Story masuk ke cabang: metode kurikulum (Kelompokkan, Hitung, Tuliskan), One-to-One (Hitung satu-satu), Cardinality, Subitizing.
-  sama(t.filter((x) => x.kelompok === "metode").slice(4).map((x) => x.kunci), ["Angka terakhir = banyaknya", "Lihat sekilas"], "pohon B. Penyelesaian: Cardinality dan Subitizing");
+  // B. Penyelesaian: enam langkah BERURUTAN bernomor 1 sampai 6. Empat langkah panduan pemilik tetap berurutan relatif; Cardinality dan Subitizing masuk di fase menghitung.
+  const metode = t.filter((x) => x.kelompok === "metode");
+  sama(metode.map((x) => x.urutan), [1, 2, 3, 4, 5, 6], "pohon B. Penyelesaian: langkah bernomor 1 sampai 6 tanpa lompat");
+  sama(metode.map((x) => x.kunci), ["Kelompokkan", "Hitung satu-satu", "Angka terakhir = banyaknya", "Lihat sekilas", "Tuliskan", "Kosong = nol"], "pohon B. Penyelesaian: urutan langkah");
+  const urutPemilik = ["Kelompokkan", "Hitung satu-satu", "Tuliskan", "Kosong = nol"].map((k) => metode.find((x) => x.kunci === k).urutan);
+  cek(urutPemilik.every((n, i, a) => i === 0 || n > a[i - 1]), "pohon B. Penyelesaian: urutan panduan pemilik (Kelompokkan, Hitung satu-satu, Tuliskan, Kosong = nol) tetap terjaga");
+  cek(["masalah", "hasil"].every((g) => t.filter((x) => x.kelompok === g).every((x) => x.urutan === undefined)), "pohon: akar dan buah tanpa nomor (tidak berurutan)");
+  // Cocok pada langkah berurutan: hanya label dan nomornya sendiri; warna sama tetapi nomor lain ditolak.
+  let urutOk = true;
+  for (const x of metode) for (const l of lb) if (L.cocokKelompok(t, x, l) !== (l.teks === x.kunci)) urutOk = false;
+  cek(urutOk, "pohon: langkah bernomor hanya cocok dengan labelnya sendiri");
+  cek(!L.cocokKelompok(t, metode[0], { id: "x", teks: "Hitung satu-satu" }) && L.cocokKelompok(t, metode[1], { id: "x", teks: "Hitung satu-satu" }), "pohon: Hitung satu-satu ditolak di nomor 1 dan diterima di nomor 2");
+  cek(!/\d/.test(D.PETUNJUK_URUTAN) && D.PETUNJUK_URUTAN.split(/[.!?]/).every((q) => q.trim().split(/\s+/).length <= 9) && /urutan/i.test(D.PETUNJUK_URUTAN), "pohon: petunjuk salah nomor mengingatkan urutan, tanpa digit, kalimat pendek");
+  cek(/berurutan/i.test(D.SUARA_POHON) && /nomor/i.test(D.SUARA_POHON), "pohon: suara pembuka menyebut langkah berurutan dan nomor");
   sama(t.filter((x) => x.kelompok === "hasil").map((x) => x.kunci), ["Bisa menghitung", "Bisa menulis", "Bisa membaca"], "pohon C. Hasil");
   sama(Object.values(D.KELOMPOK_POHON).map((k) => k.nama), ["Masalah", "Penyelesaian", "Hasil"], "pohon: nama kelompok A, B, C");
   // Cocok per warna: label boleh di tempat sewarna mana pun, dan tidak di tempat warna lain.
   let warnaOk = true;
-  for (const l of lb) for (const x of t) if (L.cocokKelompok(t, x, l) !== (t.find((y) => y.kunci === l.teks).kelompok === x.kelompok)) warnaOk = false;
-  cek(warnaOk, "pohon: label cocok dengan semua tempat sewarna dan tidak dengan warna lain");
+  for (const l of lb) for (const x of t.filter((y) => y.urutan === undefined)) if (L.cocokKelompok(t, x, l) !== (t.find((y) => y.kunci === l.teks).kelompok === x.kelompok)) warnaOk = false;
+  cek(warnaOk, "pohon: pada akar dan buah, label cocok dengan semua tempat sewarna dan tidak dengan warna lain");
   sama(L.kelompokLabel(t, { id: "x", teks: "Tuliskan" }), "metode", "pohon: kelompok label dari teksnya");
   sama(L.kelompokLabel(t, { id: "x", teks: "tidak ada" }), undefined, "pohon: label asing tidak punya kelompok");
   // Tiga kelompok, tiga warna, tiga ikon, dan petunjuk salah menyebut warna.

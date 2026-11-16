@@ -9,8 +9,11 @@ export const KATA = ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tuj
 export const kata = (n: number): string => KATA[n] ?? String(n);
 
 /* ------------------------------ Tempel label (Mind-map dan Infografis) ------------------------------ */
-/** Tempat kosong yang harus diisi label tertentu. `kelompok` dipakai untuk petunjuk saat salah tempel. */
-export type Tempat = { id: string; kunci: string; kelompok: string };
+/**
+ * Tempat kosong yang harus diisi label tertentu. `kelompok` dipakai untuk petunjuk saat salah tempel.
+ * `urutan` (1, 2, ...) menandai langkah yang HARUS berurutan: tempat bernomor hanya cocok dengan labelnya sendiri.
+ */
+export type Tempat = { id: string; kunci: string; kelompok: string; urutan?: number };
 /** Label yang bisa ditempel. Label kembar (teks sama) boleh, karena pemeriksaan memakai teks. */
 export type Label = { id: string; teks: string };
 
@@ -20,8 +23,12 @@ export const cocok = (tempat: Tempat, label: Label): boolean => tempat.kunci ===
 /** Kelompok (warna) sebuah label: kelompok tempat yang kuncinya sama dengan teks label. undefined bila tidak ada. */
 export const kelompokLabel = (semua: readonly Tempat[], label: Label): string | undefined => semua.find((t) => t.kunci === label.teks)?.kelompok;
 
-/** Cocok per warna: label boleh ditempel di tempat kosong mana pun yang sekelompok (sewarna) dengannya. */
-export const cocokKelompok = (semua: readonly Tempat[], tempat: Tempat, label: Label): boolean => kelompokLabel(semua, label) === tempat.kelompok;
+/**
+ * Cocok per warna: label boleh ditempel di tempat kosong mana pun yang sekelompok (sewarna) dengannya.
+ * Pengecualian: tempat bernomor (`urutan`) adalah langkah berurutan, jadi hanya cocok dengan labelnya sendiri.
+ */
+export const cocokKelompok = (semua: readonly Tempat[], tempat: Tempat, label: Label): boolean =>
+  tempat.urutan !== undefined ? tempat.kunci === label.teks : kelompokLabel(semua, label) === tempat.kelompok;
 
 /** Petunjuk saat label salah: sebut kelompok tempat yang benar untuk label itu (bila ada), tanpa membocorkan tempatnya. */
 export function petunjukSalah(semua: readonly Tempat[], label: Label, kelompokBenar: Record<string, string>): string {

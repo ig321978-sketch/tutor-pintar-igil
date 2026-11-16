@@ -2,13 +2,14 @@
 
 import React from "react";
 import { cocokKelompok, kelompokLabel, type Label, type Tempat } from "./logika";
-import { KELOMPOK_POHON, PUSAT_POHON, SUARA_POHON, TEMPAT_POHON } from "./data";
+import { KELOMPOK_POHON, PETUNJUK_URUTAN, PUSAT_POHON, SUARA_POHON, TEMPAT_POHON } from "./data";
 import { BakiLabel, CSS_LEMARI, TOMBOL_UTAMA, useTempel, type GayaLabel } from "./ui";
 
 /**
  * Mind-map Kelas 1 Bab 1 Sub-Bab A: Pohon Menghitung. Akar = Masalah, daun = Penyelesaian, buah = Hasil (hanya poin pelajaran matematika).
  * Tempat kosong dan label memakai warna kelompok yang sama (cokelat, hijau, merah) ditambah ikon, jadi anak cukup mencocokkan warna.
- * Label sekelompok boleh ditempel di tempat kosong mana pun yang sewarna. Salah warna: tempat bergoyang dan guru menyebut warna yang benar.
+ * Label sekelompok boleh ditempel di tempat kosong mana pun yang sewarna, KECUALI langkah penyelesaian (daun) yang berurutan dan bernomor:
+ * hanya cocok di nomornya. Salah warna: guru menyebut warna yang benar. Warna benar tetapi salah nomor: guru mengingatkan urutan.
  */
 
 /** Letak tengah tiap tempat dalam persen (x, y) dan lebarnya. */
@@ -39,7 +40,10 @@ export default function PetaPohon({ speakGuru, onLanjut, teksLanjut }: { speakGu
   const tp = useTempel(
     TEMPAT_POHON,
     11,
-    (l: Label) => KELOMPOK_PETUNJUK[kelompokLabel(TEMPAT_POHON, l) ?? ""] ?? "Cocokkan warna label dengan warna tempatnya.",
+    (l: Label, t: Tempat) =>
+      t.urutan !== undefined && kelompokLabel(TEMPAT_POHON, l) === t.kelompok
+        ? PETUNJUK_URUTAN
+        : (KELOMPOK_PETUNJUK[kelompokLabel(TEMPAT_POHON, l) ?? ""] ?? "Cocokkan warna label dengan warna tempatnya."),
     speakGuru,
     (t, l) => cocokKelompok(TEMPAT_POHON, t, l),
   );
@@ -59,7 +63,13 @@ export default function PetaPohon({ speakGuru, onLanjut, teksLanjut }: { speakGu
         key={t.id}
         type="button"
         onClick={() => tp.ketukTempat(t)}
-        aria-label={teks ? `${k.nama}: ${teks}` : `Tempat kosong berwarna ${k.warna}, ${k.nama}, di ${k.letak}`}
+        aria-label={
+          teks
+            ? `${t.urutan !== undefined ? `Langkah ${t.urutan}` : k.nama}: ${teks}`
+            : t.urutan !== undefined
+              ? `Tempat kosong berwarna ${k.warna}, ${k.nama}, langkah ${t.urutan}, di ${k.letak}`
+              : `Tempat kosong berwarna ${k.warna}, ${k.nama}, di ${k.letak}`
+        }
         className="absolute"
         style={{ left: `${p.x}%`, top: `${p.y}%`, width: `${p.w}%`, transform: "translate(-50%, -50%)" }}
       >
@@ -67,8 +77,14 @@ export default function PetaPohon({ speakGuru, onLanjut, teksLanjut }: { speakGu
           className={`flex min-h-[46px] w-full items-center justify-center gap-1 rounded-2xl border-[3px] px-1.5 py-1 text-center text-[11px] font-black leading-tight text-[#1C01A5] sm:text-sm ${teks ? "lm-muncul" : "border-dashed"} ${tp.goyang === t.id ? "lm-goyang" : ""}`}
           style={{ borderColor: w.garis, background: teks ? w.tua : w.muda }}
         >
-          <span aria-hidden="true">{k.ikon}</span>
-          <span>{teks ?? `? ${k.nama}`}</span>
+          {t.urutan !== undefined ? (
+            <span aria-hidden="true" className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 text-xs font-black text-white sm:h-7 sm:w-7 sm:text-sm" style={{ borderColor: w.garis, background: w.garis }}>
+              {t.urutan}
+            </span>
+          ) : (
+            <span aria-hidden="true">{k.ikon}</span>
+          )}
+          <span>{teks ?? (t.urutan !== undefined ? "? Langkah" : `? ${k.nama}`)}</span>
         </span>
       </button>
     );
@@ -87,6 +103,7 @@ export default function PetaPohon({ speakGuru, onLanjut, teksLanjut }: { speakGu
             {Object.entries(KELOMPOK_POHON).map(([kode, k]) => (
               <li key={kode} className="rounded-full border-[3px] px-2 py-0.5 text-xs font-black text-[#1C01A5]" style={{ borderColor: WARNA[kode].garis, background: WARNA[kode].tua }}>
                 {k.ikon} {k.nama} = {k.letak}
+                {kode === "metode" ? " (berurutan 1, 2, 3...)" : ""}
               </li>
             ))}
           </ul>
