@@ -1,3 +1,5 @@
+import { pilihSuaraSeragam } from "./suara-guru-seragam";
+
 export type KelaminGuru = "wanita" | "pria";
 export type JenjangGuru = "SD" | "SMP" | "SMA";
 
@@ -124,39 +126,30 @@ export function pasanganGuru(kelas: string): ProfilGuru[] {
   return [GURU_PER_JENJANG[jenjang].wanita, GURU_PER_JENJANG[jenjang].pria];
 }
 
+/**
+ * Suara Bahasa Indonesia perangkat untuk guru `kelamin`. Memakai aturan pemilihan pasti `pilihSuaraSeragam`: suara neural
+ * (mis. Edge "Online (Natural)", Apple Premium) didahulukan karena paling natural, lalu suara Google, lalu suara lokal.
+ * `cadangan: true` mengembalikan suara lokal pengganti (untuk dipakai bila suara neural online gagal tanpa sinyal).
+ */
 export function pilihSuaraIndonesia(
   kelamin: KelaminGuru = "wanita",
+  cadangan = false,
 ): SpeechSynthesisVoice | null {
-  if (typeof window === "undefined") return null;
-  const daftar = window.speechSynthesis
-    .getVoices()
-    .filter(
-      (suara) =>
-        suara.lang.toLowerCase().startsWith("id") ||
-        /indonesia/i.test(suara.name),
-    );
-  const wanita = /female|woman|wanita|girl|zira|sari|gadis|damayanti/i;
-  const pria = /male|man|pria|boy|david|budi|dimas|andika|ardi/i;
-  if (kelamin === "wanita") {
-    return daftar.find((suara) => wanita.test(suara.name)) ?? daftar[0] ?? null;
-  }
-  return (
-    daftar.find((suara) => pria.test(suara.name)) ??
-    daftar.find((suara) => !wanita.test(suara.name)) ??
-    daftar[0] ??
-    null
-  );
+  if (typeof window === "undefined" || !("speechSynthesis" in window)) return null;
+  const hasil = pilihSuaraSeragam(window.speechSynthesis.getVoices(), kelamin);
+  return cadangan ? hasil.cadangan : hasil.suara;
 }
 
 export function buatUcapanGuru(
   teks: string,
   guru: ProfilGuru,
+  cadangan = false,
 ): SpeechSynthesisUtterance {
   const ucapan = new SpeechSynthesisUtterance(teks);
   ucapan.lang = "id-ID";
   ucapan.rate = guru.laju;
   ucapan.pitch = guru.nada;
-  const suara = pilihSuaraIndonesia(guru.kelamin);
+  const suara = pilihSuaraIndonesia(guru.kelamin, cadangan);
   if (suara) ucapan.voice = suara;
   return ucapan;
 }

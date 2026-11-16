@@ -280,6 +280,7 @@ import {
   fontAnak,
 } from "@/components/modul/elemen-kelas1";
 import { catatLatihanDinilai, catatSubBabSelesai } from "@/lib/capaian-klien";
+import { SUARA_SERAGAM } from "@/lib/suara-guru-seragam";
 
 // ============================================================================
 // TIPE DATA & KONTRAK INTEGRASI CETAK BIRU IGIL
@@ -1360,6 +1361,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
   // Sub-bab dengan Story baru (CERITA_BARU) memakai suara yang sama dengan Kelas 4 sampai 6: Web Speech perangkat, profil 2 SD, laju 0,70, nada 1.
   const suaraGayaK46 = activeMainTab === "materi" && CERITA_BARU[`${bab}-${activeSubBab}`] !== undefined;
   const suaraSeragam = bab === "mtk-1-bab1" && activeSubBab === "A" && activeMainTab === "materi" && !suaraGayaK46;
+  const suaraKelas1 = bab.startsWith("mtk-1-");
 
   const speakGuru = useCallback((text: string, selesai?: () => void) => {
     const naskah = text.replace(/\s+/g, " ").trim();
@@ -1375,8 +1377,10 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
     ucapkanGuruModul(naskah, {
       kelas: materi.suaraPerangkatSaja || suaraGayaK46 ? "2 SD" : "1 SD",
       perangkatSaja: materi.suaraPerangkatSaja === true || suaraGayaK46,
-      laju: suaraGayaK46 ? 0.7 : materi.suaraLaju,
+      // Kelas 1: lebih pelan (0,60) dan jeda 2 detik antar paragraf; Kelas 4 sampai 6 tetap 0,70.
+      laju: suaraGayaK46 ? (suaraKelas1 ? SUARA_SERAGAM.lajuCeritaKelas1 : 0.7) : materi.suaraLaju,
       nada: suaraGayaK46 ? 1 : materi.suaraNada,
+      jedaAntarParagrafMs: suaraGayaK46 && suaraKelas1 ? SUARA_SERAGAM.jedaAntarParagrafMs : undefined,
       seragam: suaraSeragam,
       selesai: selesai
         ? () => {
@@ -1387,7 +1391,7 @@ export default function IgilModulePlayer({ bab = "mtk-1-bab1", paket }: { bab?: 
           }
         : undefined,
     });
-  }, [materi.suaraPerangkatSaja, materi.suaraLaju, materi.suaraNada, suaraSeragam, suaraGayaK46]);
+  }, [materi.suaraPerangkatSaja, materi.suaraLaju, materi.suaraNada, suaraSeragam, suaraGayaK46, suaraKelas1]);
 
   useEffect(() => {
     window.speechSynthesis?.getVoices();

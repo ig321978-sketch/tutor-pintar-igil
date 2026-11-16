@@ -17,13 +17,15 @@ export type VideoSiapDaftar = {
 type PropsDaftar = {
   videos: VideoSiapDaftar[];
   speakGuru: (teks: string, selesai?: () => void) => void;
+  /** Jeda (ms) antar paragraf layar pada semua video di daftar ini. Bawaan 0 (tanpa jeda tambahan). */
+  jedaAntarParagrafMs?: number;
 };
 
 /**
  * Daftar video cerita menyamping seperti slide.
  * Ketuk Putar → pemutar muncul sebagai pop-up di atas tab mengambang (ukuran desktop-friendly).
  */
-export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
+export function DaftarVideoCerita({ videos, speakGuru, jedaAntarParagrafMs = 0 }: PropsDaftar) {
   const [aktif, setAktif] = useState<string | null>(null);
   const [ditonton, setDitonton] = useState<string[]>([]);
   const [portalSiap, setPortalSiap] = useState(false);
@@ -92,6 +94,7 @@ export function DaftarVideoCerita({ videos, speakGuru }: PropsDaftar) {
                   subjudul={videoAktif.naskah.subjudul}
                   adegan={videoAktif.adegan}
                   speakGuru={speakGuru}
+                  jedaAntarParagrafMs={jedaAntarParagrafMs}
                   mulaiLangsung
                   onSelesai={() =>
                     setDitonton((d) => (d.includes(videoAktif.naskah.id) ? d : [...d, videoAktif.naskah.id]))

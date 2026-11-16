@@ -126,6 +126,8 @@ type Peta = {
   ms: number;
   nomor: number;
   suaraBeres: boolean;
+  /** Waktu (ms) saat suara ketukan ini selesai pertama kali; null bila belum. Jeda antar paragraf dihitung dari sini. */
+  beresMs: number | null;
 };
 
 const adaSuaraPerangkat = () => typeof window !== "undefined" && "speechSynthesis" in window;
@@ -142,6 +144,7 @@ export function VideoCerita({
   mulaiLangsung = false,
   onSelesai,
   ringkas = false,
+  jedaAntarParagrafMs = 0,
 }: {
   judul: string;
   subjudul: string;
@@ -153,8 +156,11 @@ export function VideoCerita({
   onSelesai?: () => void;
   /** Mode kartu kecil di grid desktop (3 video sejajar). */
   ringkas?: boolean;
+  /** Jeda (ms) setelah suara satu ketukan (paragraf layar) selesai, sebelum ketukan berikutnya. 0 = tanpa jeda tambahan. */
+  jedaAntarParagrafMs?: number;
 }) {
-  const S = useRef<Peta>({ jalan: false, jeda: false, suara: true, selesai: false, a: 0, k: 0, ms: 0, nomor: 0, suaraBeres: false });
+  const S = useRef<Peta>({ jalan: false, jeda: false, suara: true, selesai: false, a: 0, k: 0, ms: 0, nomor: 0, suaraBeres: false, beresMs: null });
+  const jedaParagrafRef = useRef(jedaAntarParagrafMs);
   const bicaraRef = useRef(speakGuru);
   const adeganRef = useRef(adegan);
   const onSelesaiRef = useRef(onSelesai);
@@ -170,7 +176,8 @@ export function VideoCerita({
     bicaraRef.current = speakGuru;
     adeganRef.current = adegan;
     onSelesaiRef.current = onSelesai;
-  }, [speakGuru, adegan, onSelesai]);
+    jedaParagrafRef.current = jedaAntarParagrafMs;
+  }, [speakGuru, adegan, onSelesai, jedaAntarParagrafMs]);
 
   /** Pindah ke ketukan k pada adegan a, lalu bacakan kalimatnya. */
   const ke = useCallback((a: number, k: number) => {
@@ -179,6 +186,7 @@ export function VideoCerita({
     s.k = k;
     s.ms = 0;
     s.suaraBeres = false;
+    s.beresMs = null;
     s.selesai = false;
     const id = (s.nomor += 1);
     setPos({ a, k });
@@ -218,9 +226,13 @@ export function VideoCerita({
       const minimal = Math.max((ad.minimal?.[s.k] ?? 1.2) * 1000, dasar);
       const batas = kalimat.length * 150 + 6000;
       const suaraBeres = !adaSuara || s.suaraBeres || s.ms > batas;
-      if (ad.waktu) setT(s.ms / 1000);
+      if (suaraBeres && s.beresMs === null) s.beresMs = s.ms;
+      // Selama jeda antar paragraf, waktu gambar berhenti di saat suara selesai supaya kalibrasi kecepatan kata tidak ikut menghitung jeda.
+      if (ad.waktu) setT((s.beresMs ?? s.ms) / 1000);
       const terakhir = s.k === ad.ketukan.length - 1;
-      if (s.ms >= minimal + (terakhir ? 700 : 0) && suaraBeres) {
+      const videoTerakhir = terakhir && s.a === adeganRef.current.length - 1;
+      const jedaParagraf = videoTerakhir ? 0 : jedaParagrafRef.current;
+      if (s.ms >= minimal + (terakhir ? 700 : 0) && suaraBeres && s.ms - (s.beresMs ?? s.ms) >= jedaParagraf) {
         if (!terakhir) ke(s.a, s.k + 1);
         else if (s.a < adeganRef.current.length - 1) ke(s.a + 1, 0);
         else {

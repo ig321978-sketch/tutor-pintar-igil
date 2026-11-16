@@ -1,12 +1,13 @@
 import {
   buatUcapanGuru,
   normalisasiKelaminGuru,
+  pilihSuaraIndonesia,
   profilGuru,
   type KelaminGuru,
 } from "@/lib/guru";
 import { bacaProgres } from "@/lib/progres";
 import { mintaAudioTts, hentikanAudioGuruAktif, saatHentiAudioGuru } from "@/lib/putar-tts-klien";
-import { SUARA_SERAGAM, pecahKalimat, pilihSuaraSeragam, type PilihanSuara } from "@/lib/suara-guru-seragam";
+import { SUARA_SERAGAM, pilihSuaraSeragam, potongBerjeda, type PilihanSuara, type PotonganUcap } from "@/lib/suara-guru-seragam";
 import { adaIstilahInggris, ejaanInggrisUntukSuaraId } from "@/lib/ejaan-inggris-id";
 
 /**
@@ -42,6 +43,15 @@ export function kelaminGuruTersimpan(): KelaminGuru {
   } catch {
     return "wanita";
   }
+}
+
+/** Naskah per paragraf (pindah baris), tiap paragraf dirapikan dan dieja ulang untuk mesin suara id-ID, dipisah baris baru. */
+function naskahBerparagraf(teks: string): string {
+  return teks
+    .split(/\r?\n/)
+    .map((p) => ejaanInggrisUntukSuaraId(rapikanNaskahGuru(p)))
+    .filter(Boolean)
+    .join("\n");
 }
 
 /** Siapkan teks agar tanda matematika terbaca oleh mesin suara. */
@@ -105,10 +115,15 @@ export type OpsiSuaraGuruModul = {
   nada?: number;
   /**
    * Suara seragam (pilot Materi Kelas 1 Bab 1 Sub-Bab A): Web Speech API perangkat dengan parameter tetap
-   * (id-ID, laju 0,85, nada 1,1 untuk wanita) dan pemilihan suara yang pasti, selalu sesuai guru pilihan siswa.
-   * Mengabaikan berkas audio statis dan profil laju/nada guru lama.
+   * (id-ID, laju 0,75, nada 1,1 untuk wanita), pemilihan suara yang pasti dengan suara neural lebih dulu, jeda 2 detik antar
+   * paragraf, selalu sesuai guru pilihan siswa. Mengabaikan berkas audio statis dan profil laju/nada guru lama.
    */
   seragam?: boolean;
+  /**
+   * Jeda (milidetik) antar paragraf dalam satu naskah (pindah baris = paragraf baru), untuk jalur suara perangkat dengan laju/nada
+   * khusus. Bawaan 0. Jalur `seragam` selalu memakai SUARA_SERAGAM.jedaAntarParagrafMs.
+   */
+  jedaAntarParagrafMs?: number;
 };
 
 /** Suara dan parameter yang akan dipakai guru `kelamin` di perangkat ini. Untuk tampilan info dan uji. */
@@ -117,14 +132,15 @@ export function pilihanSuaraSeragamSaatIni(kelamin: KelaminGuru = kelaminGuruTer
   return pilihSuaraSeragam(daftar, kelamin);
 }
 
-/** Satu ucapan seragam: selalu id-ID, suara guru terpilih. */
-function buatUcapanSeragam(teks: string, kelamin: KelaminGuru): SpeechSynthesisUtterance {
+/** Satu ucapan seragam: selalu id-ID, suara guru terpilih. `cadangan`: pakai suara lokal cadangan (bila ada) alih-alih suara utama. */
+function buatUcapanSeragam(teks: string, kelamin: KelaminGuru, cadangan = false): SpeechSynthesisUtterance {
   const pilihan = pilihanSuaraSeragamSaatIni(kelamin);
   const ucapan = new SpeechSynthesisUtterance(teks);
   ucapan.lang = SUARA_SERAGAM.bahasa;
   ucapan.rate = pilihan.laju;
   ucapan.pitch = pilihan.nada;
-  if (pilihan.suara) ucapan.voice = pilihan.suara;
+  const suara = cadangan ? pilihan.cadangan : pilihan.suara;
+  if (suara) ucapan.voice = suara;
   return ucapan;
 }
 
@@ -144,26 +160,47 @@ function tungguSuaraSiap(maksMs = 1200): Promise<void> {
   });
 }
 
-function antreKalimatId(
-  naskahBicara: string,
-  buat: (teks: string) => SpeechSynthesisUtterance,
-  pecah: boolean,
+/**
+ * Ucapan suara perangkat berurutan dengan jeda antar paragraf. Bila suara utama (mis. neural online) gagal bicara, potongan itu
+ * diulang sekali dengan suara lokal cadangan (bila ada) supaya siswa tidak mendengar kesunyian saat tanpa jaringan.
+ */
+function antrePotongan(
+  potongan: PotonganUcap[],
+  buat: (teks: string, cadangan: boolean) => SpeechSynthesisUtterance,
+  adaCadangan: () => boolean,
   aktif: () => boolean,
   selesai: () => void,
 ): void {
-  const potongan = pecah ? pecahKalimat(naskahBicara) : [naskahBicara];
   let i = 0;
+  let pakaiCadangan = false;
   const lanjut = () => {
     if (!aktif()) return;
     if (i >= potongan.length) {
       selesai();
       return;
     }
-    const ucapan = buat(potongan[i]);
+    const kini = potongan[i];
     i += 1;
-    ucapan.onend = lanjut;
-    ucapan.onerror = selesai;
-    window.speechSynthesis.speak(ucapan);
+    const ucap = () => {
+      if (!aktif()) return;
+      const bicara = (cadangan: boolean) => {
+        const ucapan = buat(kini.teks, cadangan);
+        ucapan.onend = lanjut;
+        ucapan.onerror = () => {
+          if (!aktif()) return;
+          if (!cadangan && !pakaiCadangan && adaCadangan()) {
+            pakaiCadangan = true;
+            bicara(true);
+            return;
+          }
+          selesai();
+        };
+        window.speechSynthesis.speak(ucapan);
+      };
+      bicara(pakaiCadangan);
+    };
+    if (kini.jedaSebelumMs > 0) window.setTimeout(ucap, kini.jedaSebelumMs);
+    else ucap();
   };
   window.setTimeout(lanjut, 40);
 }
@@ -211,10 +248,12 @@ export function ucapkanGuruModul(teks: string, opsi: OpsiSuaraGuruModul = {}): v
     const aktif = () => saya === giliran && !tutup;
     const mulai = () => {
       if (!aktif()) return;
-      antreKalimatId(
-        naskahBicara,
-        (t) => buatUcapanGuru(t, profilPakai),
-        kustom,
+      // Laju/nada khusus: dipecah per kalimat (dan per paragraf dengan jeda). Tanpa itu: satu ucapan utuh seperti semula.
+      const potongan: PotonganUcap[] = kustom ? potongBerjeda(naskahBerparagraf(teks), opsi.jedaAntarParagrafMs ?? 0) : [{ teks: naskahBicara, jedaSebelumMs: 0 }];
+      antrePotongan(
+        potongan,
+        (t, cad) => buatUcapanGuru(t, profilPakai, cad),
+        () => pilihSuaraIndonesia(kelamin, true) !== null,
         aktif,
         selesai,
       );
@@ -239,7 +278,9 @@ export function ucapkanGuruModul(teks: string, opsi: OpsiSuaraGuruModul = {}): v
       if (window.speechSynthesis.getVoices().length === 0) await tungguSuaraSiap();
       if (saya !== giliran || tutup) return;
       const aktif = () => saya === giliran && !tutup;
-      antreKalimatId(naskahBicara, (t) => buatUcapanSeragam(t, kelamin), true, aktif, selesai);
+      // Paragraf (pindah baris) dijaga dari naskah asli, lalu tiap paragraf dieja ulang untuk mesin suara id-ID.
+      const potongan = potongBerjeda(naskahBerparagraf(teks));
+      antrePotongan(potongan, (t, cad) => buatUcapanSeragam(t, kelamin, cad), () => pilihanSuaraSeragamSaatIni(kelamin).cadangan !== null, aktif, selesai);
     };
     void bicaraSeragam();
     return;

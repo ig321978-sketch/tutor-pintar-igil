@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { SUARA_SERAGAM } from "@/lib/suara-guru-seragam";
 import { DaftarVideoCerita } from "./daftar-video-cerita";
 import { keVideoSiap } from "./story/mesin-story";
 import { VIDEO_LUAR_K1B1A, VIDEO_MATERI_K1B1A } from "./story/k1b1a-video";
@@ -8,5 +9,5 @@ import { VIDEO_LUAR_K1B1A, VIDEO_MATERI_K1B1A } from "./story/k1b1a-video";
 const VIDEO = [keVideoSiap(VIDEO_MATERI_K1B1A, { a: 0, k: 0 }), keVideoSiap(VIDEO_LUAR_K1B1A, { a: 1, k: 1 })];
 
 export function VideoK1B1A({ speakGuru }: { speakGuru: (teks: string) => void }) {
-  return <DaftarVideoCerita videos={VIDEO} speakGuru={speakGuru} />;
+  return <DaftarVideoCerita videos={VIDEO} speakGuru={speakGuru} jedaAntarParagrafMs={SUARA_SERAGAM.jedaAntarParagrafMs} />;
 }

@@ -2,9 +2,10 @@
  * Uji aturan pemilihan Suara Guru seragam (pilot Materi Kelas 1 Bab 1 Sub-Bab A).
  * Jalankan: node --no-warnings scripts/uji-suara-seragam.mjs
  * Daftar suara di bawah meniru perangkat nyata. Yang diuji: pemilihan pasti, gender mengikuti guru terpilih,
- * parameter tetap (id-ID, laju 0,85, nada lembut), dan pemecahan naskah panjang.
+ * parameter tetap (id-ID, laju 0,75, nada lembut), suara neural lebih dulu dengan cadangan lokal, jeda 2 detik antar paragraf, dan pemecahan naskah panjang.
  */
-import { SUARA_SERAGAM, adalahSuaraIndonesia, pecahKalimat, pilihSuaraSeragam } from "../src/lib/suara-guru-seragam.ts";
+import { readFileSync } from "node:fs";
+import { SUARA_SERAGAM, adalahSuaraIndonesia, pecahKalimat, pecahParagraf, pilihSuaraSeragam, potongBerjeda } from "../src/lib/suara-guru-seragam.ts";
 
 let lulus = 0;
 let gagal = 0;
@@ -16,6 +17,7 @@ function cek(kondisi, pesan) {
   }
 }
 const v = (name, lang, localService = true) => ({ name, lang, localService });
+const sama = (a, b, pesan) => cek(JSON.stringify(a) === JSON.stringify(b), `${pesan}: ${JSON.stringify(a)} != ${JSON.stringify(b)}`);
 
 const PERANGKAT = {
   "Android Chrome (satu suara Google)": [v("Indonesian (Indonesia)", "id-ID"), v("English (United States)", "en-US")],
@@ -36,13 +38,13 @@ const PERANGKAT = {
   "Hanya suara pria Indonesia": [v("Microsoft Andika - Indonesian (Indonesia)", "id-ID")],
 };
 
-// Parameter dasar sesuai permintaan: id-ID, laju 0,85, nada 1,1 untuk guru wanita.
-cek(SUARA_SERAGAM.bahasa === "id-ID" && SUARA_SERAGAM.laju === 0.85 && SUARA_SERAGAM.nadaWanita === 1.1, "parameter dasar");
+// Parameter dasar: id-ID, laju 0,75 (diperlambat dari 0,85), nada 1,1 untuk guru wanita, jeda 2 detik antar paragraf.
+cek(SUARA_SERAGAM.bahasa === "id-ID" && SUARA_SERAGAM.laju === 0.75 && SUARA_SERAGAM.nadaWanita === 1.1 && SUARA_SERAGAM.jedaAntarParagrafMs === 2000, "parameter dasar");
 
 for (const [nama, daftar] of Object.entries(PERANGKAT)) {
   const wanita = pilihSuaraSeragam(daftar, "wanita");
   const pria = pilihSuaraSeragam(daftar, "pria");
-  cek(wanita.laju === 0.85 && pria.laju === 0.85, `${nama}: laju 0,85 untuk keduanya`);
+  cek(wanita.laju === 0.75 && pria.laju === 0.75, `${nama}: laju 0,75 untuk keduanya`);
   const adaIndonesia = daftar.some(adalahSuaraIndonesia);
   if (!adaIndonesia) {
     cek(wanita.suara === null && pria.suara === null, `${nama}: tanpa suara Indonesia, tidak boleh memilih suara asing`);
@@ -83,8 +85,20 @@ for (const nama of ["Android Chrome (satu suara Google)", "Android lama (kode in
   const w = pilihSuaraSeragam(d, "wanita");
   const p = pilihSuaraSeragam(d, "pria");
   cek(/Gadis/.test(w.suara?.name ?? ""), "Edge: wanita memakai Gadis");
-  cek(/Ardi|Andika/.test(p.suara?.name ?? ""), "Edge: pria memakai suara pria asli");
-  cek(p.suara?.localService === true, "Edge: pria memilih suara lokal (bekerja tanpa sinyal) dibanding suara jaringan");
+  cek(/Ardi/.test(p.suara?.name ?? ""), "Edge: pria memakai Ardi Online (Natural), bukan Andika yang lebih robotik");
+  cek(/Natural/.test(w.suara?.name ?? "") && /Natural/.test(p.suara?.name ?? ""), "Edge: kedua guru memakai suara neural (Natural)");
+  cek(/Andika/.test(p.cadangan?.name ?? "") && p.cadangan?.localService === true, "Edge: cadangan pria adalah suara lokal (Andika) untuk jalan tanpa sinyal");
+  cek(w.cadangan === null, "Edge: wanita tidak punya suara lokal cadangan (hanya Gadis online)");
+}
+
+// Suara neural mengalahkan suara lokal biasa, suara Google mengalahkan suara lokal lama, dan tanpa itu suara lokal didahulukan.
+{
+  const acak = (d) => [d, [...d].reverse()];
+  for (const d of acak([v("Microsoft Gadis Online (Natural) - Indonesian (Indonesia)", "id-ID", false), v("Damayanti", "id-ID", true)])) cek(pilihSuaraSeragam(d, "wanita").suara?.name.includes("Natural"), "neural online mengalahkan suara lokal");
+  for (const d of acak([v("Damayanti (Premium)", "id-ID", true), v("Damayanti", "id-ID", true)])) cek(pilihSuaraSeragam(d, "wanita").suara?.name === "Damayanti (Premium)", "Apple Premium mengalahkan versi biasa");
+  for (const d of acak([v("Indonesian Lokal A", "id-ID", true), v("Indonesian Lokal B", "id-ID", false)])) cek(pilihSuaraSeragam(d, "wanita").suara?.name === "Indonesian Lokal A", "tanpa suara neural, suara lokal didahulukan (bekerja tanpa sinyal)");
+  cek(pilihSuaraSeragam([v("Indonesian (Indonesia)", "id-ID")], "wanita").cadangan === null, "satu suara saja: tidak ada cadangan");
+  cek(pilihSuaraSeragam([], "wanita").cadangan === null, "tanpa suara Indonesia: tidak ada cadangan");
 }
 
 // Hanya suara pria di perangkat: pria asli, wanita memakai suara itu dengan nada dinaikkan.
@@ -105,6 +119,35 @@ for (const nama of ["Android Chrome (satu suara Google)", "Android lama (kode in
   const tanpaTitik = "kata ".repeat(80).trim();
   cek(pecahKalimat(tanpaTitik, 100).every((x) => x.length <= 100), "kalimat panjang tanpa tanda baca tetap dipecah");
   cek(pecahKalimat("Satu, dua, tiga? Empat! Lima.").join(" ") === "Satu, dua, tiga? Empat! Lima.", "kalimat pendek tidak dipecah");
+}
+
+// Jeda 2 detik antar paragraf: paragraf dipisah pindah baris; jeda hanya sebelum potongan pertama tiap paragraf kedua dan seterusnya.
+{
+  sama(pecahParagraf("Satu.\n\n  Dua   tiga.\r\nEmpat.\n"), ["Satu.", "Dua tiga.", "Empat."], "paragraf dipisah baris kosong dan pindah baris");
+  sama(pecahParagraf("  \n \n"), [], "naskah hanya spasi: tanpa paragraf");
+  const p = potongBerjeda("Halo anak-anak. Ayo belajar.\nIni paragraf kedua.\nIni paragraf ketiga.");
+  sama(p.map((x) => x.jedaSebelumMs), [0, 2000, 2000], "jeda 2 detik sebelum paragraf kedua dan ketiga saja");
+  sama(p.map((x) => x.teks), ["Halo anak-anak. Ayo belajar.", "Ini paragraf kedua.", "Ini paragraf ketiga."], "isi potongan tetap");
+  const panjang = potongBerjeda(`${"Kalimat pendek satu. ".repeat(20).trim()}\nParagraf dua.`, 2000, 60);
+  cek(panjang.length > 2 && panjang.filter((x) => x.jedaSebelumMs > 0).length === 1 && panjang.at(-1).teks === "Paragraf dua." && panjang.at(-1).jedaSebelumMs === 2000, "paragraf panjang dipecah per kalimat, jeda hanya di awal paragraf berikutnya");
+  cek(potongBerjeda("Satu kalimat tanpa baris baru.").every((x) => x.jedaSebelumMs === 0), "satu paragraf: tanpa jeda");
+  cek(potongBerjeda("").length === 0, "naskah kosong: tanpa potongan");
+  sama(potongBerjeda("A.\nB.", 500).map((x) => x.jedaSebelumMs), [0, 500], "jeda bisa diatur");
+}
+
+// Terpasang di jalur yang dipakai Story Kelas 1: laju lebih pelan dari 0,70 (Kelas 4 sampai 6), jeda 2 detik, suara neural lebih dulu.
+{
+  const baca = (f) => readFileSync(new URL(`../${f}`, import.meta.url), "utf8");
+  cek(SUARA_SERAGAM.lajuCeritaKelas1 === 0.6 && SUARA_SERAGAM.lajuCeritaKelas1 < 0.7, "laju Story Kelas 1: 0,60 (lebih pelan dari 0,70)");
+  const player = baca("src/components/IgilModulePlayer.tsx");
+  cek(/SUARA_SERAGAM\.lajuCeritaKelas1/.test(player) && /bab\.startsWith\("mtk-1-"\)/.test(player) && /jedaAntarParagrafMs: suaraGayaK46 && suaraKelas1/.test(player), "pemutar: Kelas 1 memakai laju 0,60 dan jeda 2 detik; kelas lain tidak berubah");
+  const guru = baca("src/lib/guru.ts");
+  cek(/pilihSuaraSeragam\(window\.speechSynthesis\.getVoices\(\), kelamin\)/.test(guru) && /cadangan \? hasil\.cadangan : hasil\.suara/.test(guru), "guru.ts: suara perangkat dipilih dengan aturan neural lebih dulu dan cadangan lokal");
+  const modul = baca("src/lib/suara-guru-modul.ts");
+  cek(/antrePotongan\(/.test(modul) && !/antreKalimatId/.test(modul), "suara-guru-modul: semua jalur suara perangkat memakai antrean berjeda dengan cadangan");
+  cek(/jedaAntarParagrafMs\?: number/.test(modul), "suara-guru-modul: opsi jedaAntarParagrafMs tersedia");
+  const video = baca("src/components/modul/video-k1b1a.tsx");
+  cek(/jedaAntarParagrafMs=\{SUARA_SERAGAM\.jedaAntarParagrafMs\}/.test(video), "video Story Kelas 1 Bab 1 Sub-Bab A: jeda 2 detik antar paragraf layar");
 }
 
 console.log(`\nUji suara seragam: ${lulus} cek lulus, ${gagal} gagal.`);
