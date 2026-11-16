@@ -53,3 +53,6 @@ next-env.d.ts
 # bahan sumber internal (buku resmi, ekstrak teks). Repo ini publik: jangan di-commit.
 /bahan-sd/
 /sumber/
+
+# Sampel uji dengar suara guru (scripts/uji-suara-sampel.mjs)
+/uji-suara/
